@@ -1,278 +1,291 @@
 <properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="How to Configure Traffic Manager Settings" authors="" solutions="" manager="" editor="" />
 
-# 如何配置 Traffic Manager 设置
 
-利用 Azure Traffic Manager，可以控制分发给 Azure 托管服务的用户流量。
+#How to Configure Traffic Manager Settings#
+Azure Traffic Manager enables you to control the distribution of user traffic to Azure hosted services. 
 
-Traffic Manager 的工作方式是，向针对公司主域名的 DNS 查询应用智能策略引擎。更新你公司拥有的 DNS 资源记录以指向 Traffic Manager 域。随后，附加到这些域的 Traffic Manager 策略会将针对你的公司主域名的 DNS 查询解析为 Traffic Manager 策略中包含的特定 Azure 托管服务的 IP 地址。有关详细信息，请参阅 [Azure Traffic Manager 概述][]。
+Traffic Manager works by applying an intelligent policy engine to the DNS queries on your main company domain name. Update the DNS resource records that your company owns to point to Traffic Manager domains. Traffic Manager policies that are attached to those domains then resolve DNS queries on your main company domain name to the IP addresses of specific Azure hosted services contained in the Traffic Manager policies. For more information, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/hh744833.aspx).
 
-## 目录
+##Table of Contents
 
--   [如何：将公司 Internet 域指向 Traffic Manager 域][]
--   [如何：测试策略][]
--   [如何：临时禁用策略和托管服务][]
--   [如何：编辑策略][]
--   [如何：在一组托管服务中均等平衡负载流量][]
--   [如何：创建故障转移策略][]
--   [如何：基于网络性能将传入流量定向到托管服务][]
+* [How to: Point a Company Internet Domain to a Traffic Manager Domain](#howto_point_company) 
+* [How to: Test a Policy](#howto_test)
+* [How to: Temporarily Disable Policies and Hosted Services](#howto_temp_disable)
+* [How to: Edit a Policy](#howto_edit_policy)
+* [How to: Load Balance Traffic Equally Across a Set of Hosted Services](#howto_load_balance)
+* [How to: Create a Failover Policy](#howto_create_failover)
+* [How to: Direct Incoming Traffic to Hosted Services Based on Network Performance](#howto_direct)
 
-## 如何：将公司 Internet 域指向 Traffic Manager 域
 
-若要将公司域名指向 Traffic Manager 域，请使用 CNAME 编辑 DNS 服务器上的 DNS 资源记录。
+<h2><a id="howto_point_company"></a>How to: Point a Company Internet Domain to a Traffic Manager Domain</h2>
 
-例如，若要将公司主域 **www.contoso.com** 指向名为 **contoso.trafficmanager.net** 的 Traffic Manager 域，请更新 DNS 资源记录，如下所示：`www.contoso.com IN CNAME contoso.trafficmanager.net`
+To point your company domain name to a Traffic Manager domain, edit the DNS resource record on your DNS server using a CNAME. 
 
-此时，转到 *www.contoso.com* 的所有流量将重定向到 *contoso.trafficmanager.net*。请确保你使用的是希望将其中的所有流量重定向到 Traffic Manager 的域。
+For example, to point the main company domain **www.contoso.com** to a Traffic Manager domain named **contoso.trafficmanager.net**, update the DNS resource record as shown below:
+``www.contoso.com IN CNAME contoso.trafficmanager.net``
 
-## 如何：测试策略
+All traffic going to *www.contoso.com* will now redirect to *contoso.trafficmanager.net*. Be sure that you are using a domain where you want all traffic redirected to Traffic Manager. 
 
-测试策略的最佳方式是设置大量客户端，然后将策略中的服务一次关闭一个。下列提示将帮助你测试 Traffic Manager 策略：
+<h2><a id="howto_test"></a>How to: Test a Policy</h2>
 
--   **将 DNS TTL 设置得非常低**，以便快速传播更改（例如 30 秒）。
+The best way to test your policy is to set up a number of clients and then bring the services in your policy down one at a time. The following tips will help you test your Traffic Manager policy:
 
--   **知道要测试的策略中的 Azure 托管服务的 IP 地址**。你可以从 Azure 管理门户中获取此信息。单击服务的“生产部署”。在右侧的属性窗格中，最后一个条目将是 VIP，它是该托管服务的虚拟 IP 地址。
+- **Set the DNS TTL very low** so that changes will propagate quickly - 30 seconds, for example.
 
-    ![托管服务 IP 位置][]
+- **Know the IP addresses of the Azure hosted services** in the policy you are testing. You can obtain this information from the Azure Management Portal. Click on the Production Deployment of your service. In the properties pane on the right, the last entry will be the VIP, which is the virtual IP address of that hosted service.
 
-    **图 1** - 托管服务 IP 位置
+	![hosted service IP location][0]
 
--   **使用能够让你将 DNS 名称解析为 IP 地址并显示该地址的工具**。你将检查你的公司域名是否解析为策略中的托管服务的 IP 地址。它们应通过与 Traffic Manager 策略的负载平衡方法一致的方式进行解析。如果你使用的是 Windows 系统，则可在 CMD 窗口中使用 nslookup（下面将介绍）。此外，可以从 Internet 轻松获得允许你“挖掘”IP 地址的其他公用工具。
+	**Figure 1** -  hosted service IP location
 
--   使用 *nslookup* **检查 Traffic Manager 策略**。
+- **Use tools that let you resolve a DNS name to an IP address** and display that address. You are checking to see that your company domain name resolves to IP addresses of the hosted services in your policy. They should resolve in a manner consistent with the load balancing method of your Traffic Manager policy. If you are on a Windows system, you can use nslookup from a CMD window (explained below). Other publicly available tools that allow you to "dig" an IP address are also readily available on the Internet.
 
-> **使用 nslookup 检查 Traffic Manager 策略**
+- **Check the Traffic Manager policy** by using *nslookup*. 
 
-> 1.  单击“开始”-\>**运行**并键入 **CMD** 以启动 CMD 窗口。
+> **To check an Traffic Manager policy by using nslookup** 
 
-> 1.  键入 `ipconfig /flushdns` 以便刷新 DNS 解析器缓存。
+>1. Start a CMD window by clicking **Start-Run** and typing **CMD**.
 
-> 1.  键入命令 ``nslookup <your traffic manager domain>``。例如，以下命令将检查前缀为 *myapp.contoso* `nslookup myapp.contoso.trafficmanager.net` 的域
+>2. In order to flush the DNS resolver cache, type ``ipconfig /flushdns``.
 
-> > 典型结果将显示以下内容：
+>3. Type the command ``nslookup <your traffic manager domain>``.
+ For example, the following command checks the domain with the prefix *myapp.contoso* ``nslookup myapp.contoso.trafficmanager.net``
 
-> > -   为了解析此 Traffic Manager 域而要解析的 DNS 服务器的 DNS 名称和 IP 地址。
+>>A typical result will show the following:
 
-> > -   你在命令行中的“nslookup”后面键入的 Traffic Manager 域名以及 Traffic Manager 域将解析为的 IP 地址。需要重点检查第二个 IP 地址。该地址应与要测试的 Traffic Manager 策略中的某个托管服务的 VIP 匹配。
+>> - The DNS name and IP address of the DNS server being accessed to resolve this Traffic Manager domain.
 
-> > ![nslookup 命令示例][]
+>> - The Traffic Manager domain name you typed on the command line after "nslookup" and the IP address that Traffic Manager domain resolves to. 
+The second IP address is the important one to check. It should match a VIP for one of the hosted services in the Traffic Manager policy you are testing.
 
-> > **图 2** – nslookup 命令示例
+>>![nslookup command example][1]
 
--   **使用下面列出的其他测试方法之一。**选择适用于要测试的负载平衡类型的方法。
+>>**Figure 2** - nslookup command example
 
-### 性能策略
+- **Use one of the additional testing methods listed below.** Select the appropriate method for the type of load balancing you are testing.
 
-你将需要借助全球各个位置的客户端才能有效测试你的域。可以在 Azure 中创建将尝试通过公司域名调用服务的客户端。或者，如果你的公司是一家跨国公司，则可远程登录位于国家/地区的其他位置的客户端并从这些客户端进行测试。
+###Performance policies###
 
-可免费获得基于 Web 的 nslookup 和挖掘服务。借助其中的某些服务，你可以从不同的位置检查 DNS 名称解析。例如，对 nslookup 执行搜索。另一个选择是使用第三方解决方案（如 Gomez 或 Keynote）来确认你的策略正在按预期方式分发流量。
+You will need clients in different parts of the world to effectively test your domain. You could create clients in Azure which will attempt to call your services via your company domain name. Alternatively, if your corporation is global you can remotely log into clients in other parts of the country and test from those clients.
 
-### 故障转移策略
+There are free web based nslookup and dig services available. Some of these give you the ability to check DNS name resolution from various locations. Do a search on nslookup for examples. Another option is to use a 3rd party solution like Gomez or Keynote to confirm that your policies are distributing traffic as expected.
 
-1.  将所有服务保持运行。
+###Failover policies###
 
-2.  使用单一客户端。
+1. Leave all services up.
 
-3.  使用 ping 或类似实用工具请求适用于你的公司域的 DNS 解析。
+2. Use a single client.
 
-4.  确保你获取的 IP 地址适用于你的主托管服务。
+3. Request DNS resolution for your company domain using ping or a similar utility.
 
-5.  关闭你的主服务或删除正在监视的文件，以使 Traffic Manager 认为其已关闭。
+4. Ensure that the IP address your obtain is for your primary hosted service. 
 
-6.  至少等待 2 分钟。
+5. Bring your primary service down or remove the monitoring file so that Traffic Manager thinks it is down.
 
-7.  请求 DNS 解析。
+6. Wait at least 2 minutes. 
 
-8.  确保你获取的 IP 地址适用于你的辅助托管服务，并按照服务在“编辑 Traffic Manager 策略”对话框中的顺序显示。
+7. Request DNS resolution.
 
-9.  重复此过程，将关闭辅助服务，然后关闭第三位服务，依此类推。每次都请确保 DNS 解析返回列表中下一个服务的 IP 地址。关闭所有服务后，你应重新获取主托管服务的 IP 地址。
+8. Ensure that the IP address you obtain is for your secondary hosted service as shown by the order of the services in the Edit Traffic Manager Policy dialog box.
 
-### 循环法策略
+9. Repeat the process, bringing down the secondary service and then the tertiary and so on. Each time, be sure that the DNS resolution returns the IP address of the next service in the list. When all services are down, you should obtain the IP address of the primary hosted service again.
 
-1.  将所有服务保持运行。
+###Round Robin policies###
 
-2.  使用单一客户端。
+1. Leave all services up.
 
-3.  请求适用于顶级域的 DNS 解析。
+2. Use a single client.
 
-4.  确保你获取的 IP 地址是列表中的某个地址。
+3. Request DNS resolution for your top level domain.
 
-5.  重复此过程以让 DNS TTL 到期，这样你便能收到新的 IP 地址。你应看到为每个托管服务返回的 IP 地址。随后，此过程将重复。
+4. Ensure that the IP address you obtain is one of those in your list.
 
-## 如何：临时禁用策略和托管服务
+5. Repeat the process letting the DNS TTL expire so that you will receive a new IP address. You should see IP addresses returned for each of your hosted services. Then the process will repeat.
 
-你可以禁用之前创建的 Traffic Manager 策略，使其不再路由流量。禁用 Traffic Manager 策略后，该策略的信息将在 Traffic Manager 界面中保持不变且可编辑。可以轻松重新启用策略，并且路由将恢复。
 
-也可以禁用属于 Traffic Manager 策略的一部分的各个托管服务。虽然此操作可有效地将托管服务作为策略的一部分保留，但策略的工作方式就像它未包含托管服务时一样。对于临时删除处于维护模式中或要重新部署且很不稳定的托管服务，此操作很有用。在托管服务重新启动并运行后，可重新启用它。
+<h2><a id="howto_temp_disable"></a>How to: Temporarily Disable Policies and Hosted Services</h2>
 
-**注意**
-禁用托管服务与其在 Azure 中的部署状态无关。正常的服务将保持运行并能够接收流量（即使在 Traffic Manager 中已禁用这一行为）。此外，在一个策略中禁用某个托管服务不会影响该托管服务在其他策略中的状态。
+You can disable previously created Traffic Manager policies so they will not route traffic. When you disable a Traffic Manager policy, the information of the policy will remain intact and editable in the Traffic Manager interface. You can easily enable the policy again and routing will resume. 
 
-### 禁用策略
+You can also disable individual hosted services that are part of a Traffic Manager policy. This action effectively leaves the hosted service as part of the policy, but the policy acts as if the hosted service is not included in it. This action is very useful for temporarily removing a hosted service that is in maintenance mode or being redeployed and so unstable. After the hosted service is up and running again, it can be re-enabled. 
 
-1.  在 Traffic Manager 界面树中选择已启用的策略。
+**Note**  
+Disabling a hosted service has nothing to do with its deployment state in Azure. A healthy service will remain up and able to receive traffic even when disabled in Traffic Manager. Also, disabling a hosted service in one policy does not affect its status in another policy. 
 
-2.  单击顶部工具栏中的**禁用策略**。请注意，如果你突出显示已禁用的策略，则此按钮将灰显。
+###To disable a policy###
 
-### 启用策略
+1. Select an enabled policy in the Traffic Manager interface tree. 
 
-1.  在 Traffic Manager 界面树中选择已禁用的策略。
+2. Click **Disable Policy** on the top toolbar. Note that the button will be greyed out if you highlight a policy that is already disabled.
 
-2.  单击顶部工具栏中的**启用策略**。请注意，如果你突出显示已禁用的策略，则此按钮将灰显。
+###To enable a policy###
 
-### 禁用托管服务
+1. Select a disabled policy in the Traffic Manager interface tree. 
 
-1.  在 Traffic Manager 界面中选择策略中已启用的托管服务。你必须展开策略才能看到其中包含的托管服务。
+2. Click **Enable Policy** on the top toolbar. Note that the button will be greyed out if you highlight a policy that is already disabled.
 
-2.  单击顶部工具栏中的**禁用服务策略**。请注意，如果你突出显示已禁用的托管服务，则此按钮将灰显。
+###To disable a hosted service###
 
-3.  流量将基于为作为策略的一部分的 Traffic Manager 域设置的 DNS TTL 时间停止流入托管服务。有关详细信息，请参阅 [Azure Traffic Manager 概述][1]并滚动到“在 Azure Traffic Manager 中监视托管服务”一节。
+1. Select an enabled hosted service in a policy in the Traffic Manager interface. You will have to expand a policy in order to see the hosted services contained within it. 
 
-### 启用托管服务
+2. Click **Disable Service Policy** on the top toolbar. Note that the button will be greyed out if you highlight a hosted service that is already disabled.
 
-1.  在 Traffic Manager 界面中选择策略中已禁用的托管服务。你必须展开策略才能看到其中包含的托管服务。
+3. Traffic will stop flowing to the hosted service based on the DNS TTL time set for the Traffic Manager domain that is part of the policy. For more information, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to the section "Monitoring hosted services in Azure Traffic Manager."
 
-2.  单击顶部工具栏中的**启用服务策略**。请注意，如果你突出显示已启用的托管服务，则此按钮将灰显。
+###To enable a hosted service###
 
-3.  流量将重新开始流入策略所指定的托管服务。
+1. Select a disabled hosted service in a policy in the Traffic Manager interface. You will have to expand a policy in order to see the hosted services contained within it. 
 
-## 如何：编辑策略
+2. Click **Enable Service Policy** on the top toolbar. Note that the button will be greyed out if you highlight a hosted service that is already enabled.
 
-如果你只是需要临时禁用策略或策略中的特定托管服务，则可在不更改策略的情况下临时禁用它们。
+3. Traffic will start flowing to the hosted service again as dictated by the policy.  
 
-若要将策略更改为其他类型，请执行下列步骤：
+<h2><a id="howto_edit_policy"></a>How to: Edit a Policy</h2>
 
-1.  登录管理门户中的 **Traffic Manager 区域**，网址为 <http://manage.windowsazure.cn>。单击门户页左下角的**虚拟网络**，然后从左侧窗格中的选项中选择 **Traffic Manager**。
+If you just need to temporarily turn off a policy or particular hosted services in the policy, you can temporarily disable them without changing the policy.  
 
-2.  在管理门户的 Traffic Manager 屏幕**中选择要更改的策略**。
+To change a policy to a different type, use the following steps:
 
-3.  **单击顶部菜单栏上的配置**。
+1. **Log into the Traffic Manager area in the Management Portal** at [http://manage.windowsazure.cn](http://manage.windowsazure.cn). Click **Virtual Network** in the lower left of the portal pages and then choose **Traffic Manager** from the options in the left pane.
 
-4.  **对策略进行所需更改**。请注意，如果你更改负载平衡方法，则**选定托管服务**列表中的托管服务的顺序可能重要，也可能不重要，具体取决于所选的选项。
+2. **Select the policy** you want to change in the Traffic Manager screen in the Management Portal.
 
-5.  单击**保存**。
+3. **Click "Configure"** on the top menu bar.
 
-## 如何：在一组托管服务中均等平衡负载流量
+4. **Make the desired changes to the policy.** Note that if you change the load balancing method, depending on the selected option, the order of the hosted services in the **Selected hosted services** list may or may not be important.  
 
-常见负载平衡模式旨在提供一组相同的托管服务并通过循环法将流量发送到每个托管服务。本文概述了设置 Traffic Manager 域和策略以执行此类负载平衡的步骤。
+5. Click **Save**.
 
-有关 Traffic Manager 提供的各种负载平衡方法的详细信息，请参阅 [Azure Traffic Manager 概述][]并滚动到“Azure Traffic Manager 中的负载平衡方法”一节。
+<h2><a id="howto_load_balance"></a>How to: Load Balance Traffic Equally Across a Set of Hosted Services</h2>
 
-1.  **将托管服务部署到生产环境中**。有关开发和部署托管服务的信息，请参阅 [Azure 托管服务][]。
+A common load balancing pattern is to provide a set of identical hosted services and send traffic to each in a round-robin fashion. This article outlines the steps to set up a Traffic Manager domain and policy to perform this type of load balancing.
 
-2.  **登录管理门户中的 Traffic Manager 区域**，网址为 <http://manage.windowsazure.cn>。单击门户页左下角的**虚拟网络**，然后从左侧窗格中的选项中选择**Traffic Manager**。
+For more information on the different load balancing methods that Traffic Manager provides, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/hh744833.aspx) and scroll to the section "Load balancing methods in Azure Traffic Manager."
 
-3.  **选择“策略”并单击“创建”**。从左侧导航树中选择**策略**文件夹以启用顶部工具栏中的**创建**。选择**创建**。这将显示**创建 Traffic Manager 策略**对话框。
+1. **Deploy your hosted services** into your production environment. For information on developing and deploying [Azure hosted services](http://msdn.microsoft.com/library/gg432967.aspx).
 
-    ![针对策略的“创建”按钮][]
+2. **Log into the Traffic Manager area in the Management Portal** at [http://manage.windowsazure.cn](http://manage.windowsazure.cn). Click **Virtual Network** in the lower left of the portal pages and then choose **Traffic Manager** from the options in the left pane.
 
-    **图 1** - 针对策略的“创建”按钮
+3. **Choose Policies and click "Create".** Choose the folder **Policies** from the left navigation tree to enable **Create** in the top toolbar. Choose **Create**. The **Create Traffic Manager policy** dialog will appear.
 
-4.  **选择订阅。**策略和域将与单个订阅关联。
+	![Create button for policies][2]
 
-5.  **选择“循环法”负载平衡方法。**有关 Traffic Manager 提供的各种负载平衡方法的详细信息，请参阅 [Azure Traffic Manager 概述][]并滚动到 “Azure Traffic Manager 中的负载平衡方法”一节。
+	**Figure 1** - Create button for policies
 
-6.  **查找托管服务并将其添加到策略中**。使用筛选器框查找包含你在该框中键入的字符串的托管服务。清除该框可显示适用于在步骤 4 中选择的订阅的生产中的所有托管服务。使用这些箭头按钮可将托管服务添加到策略中。**选定 DNS 名称**框中的顺序与此负载平衡方法无关。
+4. **Choose a subscription.** Policies and domains are associated with single subscription.
 
-7.  **设置监视。**通过监视来确保不会向处于脱机状态的托管服务发送流量。你必须已设置特定的路径和文件名。有关详细信息，请参阅 [Azure Traffic Manager 概述][1]并滚动到“在 Azure Traffic Manager 中监视托管服务”一节。
+5. **Select the Round Robin load balance method.** For more information on the different load balancing methods that Traffic Manager provides, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/hh744833.aspx) and scroll to the section "Load balancing methods in Azure Traffic Manager."
 
-8.  **命名 Traffic Manager 域。**为你的域指定一个唯一名称。你只能指定域的前缀。将 DNS 生存时间保留为其默认时间。有关此设置的影响的详细信息，请参阅 [Azure Traffic Manager 概述][1]并滚动到“使用 Azure Traffic Manager 时托管服务和策略的最佳实践”一节。
+6. **Find hosted services and add them to the policy.** Use the filter box to find hosted services that contain the string you type into the box. Clear the box to display all hosted services in production for the subscription you selected in step 4. Use the arrow buttons to add them to the policy. The order in the **Selected DNS names** box does not matter for this load balancing method.
 
-    **创建 Traffic Manager 策略**对话框应与以下示例类似。
+7. **Set up monitoring.** Monitoring insures that hosted services that are offline are not sent traffic. You must have a specific path and filename set up.
+For more information, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to the section "Monitoring hosted services in Azure Traffic Manager."
 
-    ![“循环法”负载平衡方法的对话框][]
+8. **Name your Traffic Manager domain.** Give your domain a unique name. You can only specify the prefix for your domain. Leave the DNS time to live at its default time. 
+For more information about the effect of this setting, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to "Best practices for hosted services and policies when using Azure Traffic Manager."
 
-    **图 2** –“循环法”负载平衡方法的对话框
 
-9.  **测试 Traffic Manager 域和策略**。有关说明，请参阅[如何：测试 Azure Traffic Manager 策略][如何：测试策略]。
+	The **Create Traffic Manager policy** dialog box should be similar to the example below.
 
-10. **将 DNS 服务器指向 Traffic Manager 域。**在设置并运行 Traffic Manager 域后，请编辑权威 DNS 服务器上的 DNS 记录以将公司域指向 Traffic Manager 域。例如，以下命令会将转到 **www.contoso.com** 的所有流量路由至 Traffic Manager 域 **contoso.trafficmanager.net**：`www.contoso.com IN CNAME contoso.trafficmanager.net` 有关详细信息，请参阅[如何：将公司 Internet 域指向 Azure Traffic Manager 域][如何：将公司 Internet 域指向 Traffic Manager 域]。
+	![Dialog box for Round Robin load balancing method][3] 
 
-## 如何：创建故障转移策略
+	**Figure 2** - Dialog box for Round Robin load balancing method
 
-通常，组织希望为其服务提供可靠性。如果组织的主服务已关闭，则组织可通过提供备份服务来做到这一点。服务故障转移的常见模式是提供一组相同的托管服务并向主服务发送流量，并提供一个包含 1 个或多个备份的列表。本文概述了设置 Traffic Manager 策略以执行此类故障转移备份的步骤。
+9. **Test the Traffic Manager domain and policy.** For instructions, see  [How to: Test an Azure Traffic Manager Policy](#howto_test). 
 
-有关 Traffic Manager 提供的各种负载平衡方法的详细信息，请参阅 [Azure Traffic Manager 概述][]并滚动到“Azure Traffic Manager 中的负载平衡方法”一节。
+10. **Point your DNS Server to the Traffic Manager domain.** Once your Traffic Manager Domain is setup and working, edit the DNS record on your authoritative DNS server to point your company domain to the Traffic Manager domain. 
+For example, the following command routes all traffic going to **www.contoso.com** to the Traffic Manager domain **contoso.trafficmanager.net**: 
+`` www.contoso.com IN CNAME contoso.trafficmanager.net``
+For more information, see [How to: Point to a Company Internet Domain to an Azure Traffic Manager domain](#howto_point_company).
 
-1.  **将托管服务部署到生产环境中**。有关开发和部署托管服务的信息，请参阅 [Azure 托管服务][]。
+<h2><a id="howto_create_failover"></a>How to: Create a Failover Policy</h2>
 
-2.  **登录管理门户中的 Traffic Manager 区域**，网址为 <http://manage.windowsazure.cn>。单击门户页左下角的**虚拟网络**，然后从左侧窗格中的选项中选择 **Traffic Manager**。
+Often an organization wants to provide reliability for its services. It does this by providing backup services in case their primary service goes down. A common pattern for service failover is to provide a set of identical hosted services and send traffic to a primary service, with a list of 1 or more backups. This article outlines the steps to set up a Traffic Manager policy to perform this type of failover backup.
 
-3.  **选择“策略”并单击“创建”**。从左侧导航树中选择**策略**文件夹以启用顶部工具栏中的**创建**。选择**创建**。这将显示**创建 Traffic Manager 策略**对话框。
+For more information on the different load balancing methods that Traffic Manager provides, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/hh744833.aspx) and scroll to the section "Load balancing methods in Azure Traffic Manager."
 
-    ![针对策略的“创建”按钮][]
+1. **Deploy your hosted services** into your production environment. For information on developing and deploying hosted services, see [Azure hosted services](http://msdn.microsoft.com/library/gg432967.aspx).  
 
-    **图 1** - 针对策略的“创建”按钮
+2. **Log into the Traffic Manager area in the Management Portal** at [http://manage.windowsazure.cn](http://manage.windowsazure.cn). Click **Virtual Network** in the lower left of the portal pages and then choose **Traffic Manager** from the options in the left pane.
 
-4.  **选择订阅。**策略和域将与单个订阅关联。
+3. **Choose Policies and click "Create".** Choose the folder **Policies** from the left navigation tree to enable **Create** in the top toolbar. Choose **Create**. The **Create Traffic Manager policy** dialog will appear.
 
-5.  **选择“故障转移策略”负载平衡方法。**有关 Traffic Manager 提供的各种负载平衡方法的详细信息，请参阅 [Azure Traffic Manager 概述][]并滚动到 “Azure Traffic Manager 中的负载平衡方法”一节。
+	![Create button for policies][4]
 
-6.  **查找托管服务并将其添加到策略中。**使用筛选器框查找包含你在该框中键入的字符串的托管服务。清除该框可显示适用于在步骤 4 中选择的订阅的生产中的所有托管服务。使用这些箭头按钮可将托管服务添加到策略中。如果选择**故障转移**负载平衡方法，则选定服务的顺序很重要。主托管服务位于顶部。根据需要使用向上和向下箭头更改顺序。
+	**Figure 1** - Create button for policies
 
-7.  通过监视来确保不会向处于脱机状态的托管服务发送流量。在不设置监视的情况下使用故障转移策略是不起作用的，因为流量将发送到主托管服务，即使该托管服务显示为脱机。若要监视托管服务，你必须指定特定的路径和文件名。有关详细信息，请参阅 [Azure Traffic Manager 概述][1]并滚动到“在 Azure Traffic Manager 中监视托管服务”一节。
+4. **Choose a subscription.** Policies and domains are associated with single subscription.
 
-8.  **命名 Traffic Manager 域。**为你的域指定一个唯一名称。你只能指定域的前缀。将 **DNS 生存时间(TTL)**保留为其默认时间。有关此设置的影响的详细信息，请参阅 [Azure Traffic Manager 概述][1]并滚动到“使用 Azure Traffic Manager 时托管服务和策略的最佳实践”一节。
+5. **Select the Failover Policy load balance method.** For more information on the different load balancing methods that Traffic Manager provides, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/hh744833.aspx) and scroll to the section "Load balancing methods in Azure Traffic Manager."
 
-    **创建 Traffic Manager 策略**对话框应与以下示例类似。
+6. **Find hosted services and add them to the policy.** Use the filter box to find hosted services that contain the string you type into the box. Clear the box to display all hosted services in production for the subscription you selected in step 4. Use the arrow buttons to add them to the policy. When you select the **Failover** load balancing method, the order of the selected services matters. The primary hosted service is on top. Use the up and down arrows change the order as needed.
 
-    ![“故障转移”负载平衡方法的对话框][]
+7. Monitoring ensures that hosted services that are offline are not sent traffic. Using a failover policy without setting up monitoring is useless because traffic will be sent to the primary hosted service even if that hosted service is shown as offline. In order to monitor hosted services, you must specify a specific path and filename.
+For more information, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to the section "Monitoring hosted services in Azure Traffic Manager."
 
-    **图 2** –“故障转移”负载平衡方法的对话框
+8. **Name your Traffic Manager domain.** Give your domain a unique name. You can only specify the prefix for your domain. Leave the **DNS time to live (TTL)** at its default time.
+For more information about the effect of this setting, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to "Best practices for hosted services and policies when using Azure Traffic Manager."
+ 
+	The **Create Traffic Manager policy** dialog box should look similar to the example below. 
 
-9.  **测试 Traffic Manager 域和策略。**有关详细信息，请参阅[如何：测试 Azure Traffic Manager 策略][如何：测试策略]。
+	![Dialog box for Failover load balancing method][5]
 
-10. **将 DNS 服务器指向 Traffic Manager 域。**在设置并运行 Traffic Manager 域后，请编辑权威 DNS 服务器上的 DNS 记录以将公司域指向 Traffic Manager 域。有关详细信息，请参阅[如何将公司 Internet 域指向 Traffic Manager 域][如何：将公司 Internet 域指向 Traffic Manager 域]。例如，以下命令会将发往 **www.contoso.com** 的所有流量路由至 Traffic Manager 域 **contoso.trafficmanager.net** `www.contoso.com IN CNAME contoso.trafficmanager.net`
+	**Figure 2** - Dialog box for Failover load balancing method
 
-## 如何：基于网络性能将传入流量定向到托管服务
+9. **Test the Traffic Manager domain and policy.** For more information, see [How to: Test an Azure Traffic Manager Policy](#howto_test). 
 
-若要对位于全球各个数据中心的托管服务进行负载平衡，你可将传入流量定向到最近的托管服务。虽然“最近”可能直接对应于地理距离，但它还可对应于对响应请求的延迟最小的位置。利用“性能”负载平衡方法，你可根据位置和延迟进行分发，但无法考虑网络配置或负载中的实时更改。有关 Traffic Manager 提供的各种负载平衡方法的详细信息，请参阅 [Azure Traffic Manager 概述][]并滚动到 “Azure Traffic Manager 中的负载平衡方法”一节。
+10. **Point your DNS Server to the Traffic Manager domain.** After your Traffic Manager Domain is setup and working, edit the DNS record on your authoritative DNS server to point your company domain to the Traffic Manager domain. 
+For more information, see [How to Point a Company Internet Domain to a Traffic Manager Domain](#howto_point_company). 
+For example, the following command routes all traffic going to **www.contoso.com** to the Traffic Manager domain **contoso.trafficmanager.net**
+``www.contoso.com IN CNAME contoso.trafficmanager.net``
 
-下列步骤将为你演示此过程：
+<h2><a id="howto_direct"></a>How to: Direct Incoming Traffic to Hosted Services Based on Network Performance</h2>
 
-1.  **将托管服务部署到生产环境中**。有关详细信息，请参阅[创建 Azure 托管服务][]。另请参阅 [Azure Traffic Manager 概述][1]中的“托管服务和策略的最佳实践”一节。
+In order to load balance hosted service that are located in different datacenters across the globe, you can direct incoming traffic to the closest hosted service. Although "closest" may directly correspond to geographic distance, it can also correspond to the location with the lowest latency to service the request. The Performance load balancing method will allow you to distribute based on location and latency, but cannot take into account real-time changes in network configuration or load. For more information on the different load balancing methods that Traffic Manager provides, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/hh744833.aspx) and scroll to the section "Load balancing methods in Azure Traffic Manager."
 
-2.  **登录管理门户中的 Traffic Manager 区域**，网址为 <http://manage.windowsazure.cn>。单击门户页左下角的**虚拟网络**，然后从左侧窗格中的选项中选择**Traffic Manager**。
+The following steps will walk you through the process:
 
-3.  **选择“策略”并单击“创建”**。从左侧导航树中选择**策略**文件夹以启用顶部工具栏中的**创建**。选择**创建**。这将显示**创建 Traffic Manager 策略**对话框。
+1. **Deploy your hosted services** into your production environment. For more information, see [Creating a Hosted Service for Azure](http://msdn.microsoft.com/zh-cn/library/azure/gg432967.aspx).
+Also refer to "Best practices for hosted services and policies" in the [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring).
 
-    ![针对策略的“创建”按钮][]
+2. **Log into the Traffic Manager area in the Management Portal** at [http://manage.windowsazure.cn](http://manage.windowsazure.cn). Click **Virtual Network** in the lower left of the portal pages and then choose **Traffic Manager** from the options in the left pane.
 
-    **图 1** - 针对策略的“创建”按钮
+3. **Choose Policies and click "Create".** Choose the folder **Policies** from the left navigation tree to enable **Create** in the top toolbar. Choose **Create**. The **Create Traffic Manager policy** dialog will appear. 
 
-4.  **选择订阅。**策略和域将与单个订阅关联。
+	![Create button for policies][6]
+	
+	**Figure 1** - Create button for policies
 
-5.  **选取“性能”负载平衡方法。**有关 Traffic Manager 提供的各种负载平衡方法的详细信息，请参阅 [Azure Traffic Manager 概述][]并滚动到“Azure Traffic Manager 中的负载平衡方法”一节。
+4. **Choose a subscription.** Policies and domains are associated with single subscription. 
 
-6.  **查找托管服务并将其添加到策略中。**使用筛选器框查找包含你在该框中键入的字符串的托管服务。清除该框可显示适用于在步骤 4 中选择的订阅的生产中的所有托管服务。使用这些箭头按钮可将托管服务添加到策略中。**选定 DNS 名称**中的顺序与此负载平衡方法无关。
+5. **Pick the Performance load balance method.** For more information on the different load balancing methods that Traffic Manager provides, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/hh744833.aspx) and scroll to the section "Load balancing methods in Azure Traffic Manager."
 
-7.  **设置监视。**通过监视来确保不会向处于脱机状态的托管服务发送流量。你必须已设置特定的路径和文件名。有关详细信息，请参阅 [Azure Traffic Manager 概述][1]并滚动到“在 Azure Traffic Manager 中监视托管服务”一节。
+6. **Find hosted services and add them to the policy.** Use the filter box to find hosted services that contain the string you type into the box. Clear the box to display all hosted services in production for the subscription you selected in step 4. Use the arrow buttons to add them to the policy. The order in the **Selected DNS names** does not matter for this load balancing method.
 
-8.  **命名 Traffic Manager 域。**为你的域指定一个唯一名称。你只能指定域的前缀。将 **DNS 生存时间(TTL)**保留为其默认时间。有关此设置的影响的详细信息，请参阅 [Azure Traffic Manager 概述][1]并滚动到“使用 Azure Traffic Manager 时托管服务和策略的最佳实践”一节。
+7. **Set up monitoring.** Monitoring insures that hosted services that are offline are not sent traffic. You must have a specific path and filename set up. 
+For more information, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to the section "Monitoring hosted services in Azure Traffic Manager."
 
-    **创建 Traffic Manager 策略**对话框应与以下示例类似。
+8. **Name your Traffic Manager domain.** Give your domain a unique name. You can only specify the prefix for your domain. Leave the **DNS time to live (TTL)** at its default time. 
+For more information about the effect of this setting, see [Overview of Azure Traffic Manager](http://msdn.microsoft.com/zh-cn/library/azure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring) and scroll to "Best practices for hosted services and policies when using Azure Traffic Manager."
+ 
+	The **Create Traffic Manager policy** dialog box should look something like the example below. 
 
-    ![“性能”负载平衡方法的对话框][]
+	![Dialog box for Performance load balancing method][7]
 
-    **图 2** –“性能”负载平衡方法的对话框
+	**Figure 2** - Dialog box for Performance load balancing method
 
-9.  **测试 Traffic Manager 域和策略。**有关测试的详细信息，请参阅[如何：测试 Azure Traffic Manager 策略][如何：测试策略]。
+9. **Test the Traffic Manager domain and policy.** For more information about testing, see [How to: Test an Azure Traffic Manager Policy](#howto_test).
 
-10. **将 DNS 服务器指向 Traffic Manager 域。**在设置并运行 Traffic Manager 域后，请编辑权威 DNS 服务器上的 DNS 记录以将公司域指向 Traffic Manager 域。例如，以下命令会将发往 **www.contoso.com** 的所有流量路由至 Traffic Manager 域 **contoso.trafficmanager.net** `www.contoso.com IN CNAME contoso.trafficmanager.net` 有关详细信息，请参阅[如何：将公司 Internet 域指向 Azure Traffic Manager 域][如何：将公司 Internet 域指向 Traffic Manager 域]。
+10. **Point your DNS Server to the Traffic Manager domain.** Once your Traffic Manager Domain is setup and working, edit the DNS record on your authoritative DNS server to point your company domain to the Traffic Manager domain. 
+For example, the following command routes all traffic going to **www.contoso.com** to the Traffic Manager domain **contoso.trafficmanager.net**. 
+``www.contoso.com IN CNAME contoso.trafficmanager.net``
+For more information, see [How to: Point a Company Internet Domain to an Azure Traffic Manager Domain](#howto_point_company).
 
-  [Azure Traffic Manager 概述]: http://msdn.microsoft.com/zh-cn/library/azure/hh744833.aspx
-  [如何：将公司 Internet 域指向 Traffic Manager 域]: #howto_point_company
-  [如何：测试策略]: #howto_test
-  [如何：临时禁用策略和托管服务]: #howto_temp_disable
-  [如何：编辑策略]: #howto_edit_policy
-  [如何：在一组托管服务中均等平衡负载流量]: #howto_load_balance
-  [如何：创建故障转移策略]: #howto_create_failover
-  [如何：基于网络性能将传入流量定向到托管服务]: #howto_direct
-  [托管服务 IP 位置]: ./media/traffic-manager-configure-settings/hosted_service_IP_location.png
-  [nslookup 命令示例]: ./media/traffic-manager-configure-settings/nslookup_command_example.png
-  [1]: http://msdn.microsoft.com/zh-cn/library/azure/5229dd1c-5a91-4869-8522-bed8597d9cf5#BKMK_Monitoring
-  [Azure 托管服务]: http://msdn.microsoft.com/library/gg432967.aspx
-  [针对策略的“创建”按钮]: ./media/traffic-manager-configure-settings/Create_button_for_policies.png
-  [“循环法”负载平衡方法的对话框]: ./media/traffic-manager-configure-settings/Dialog_box_for_Round_Robin_load_balancing_method.png
-  [“故障转移”负载平衡方法的对话框]: ./media/traffic-manager-configure-settings/Dialog_box_for_Failover_load_balancing_method.png
-  [创建 Azure 托管服务]: http://msdn.microsoft.com/zh-cn/library/azure/gg432967.aspx
-  [“性能”负载平衡方法的对话框]: ./media/traffic-manager-configure-settings/Dialog_box_for_Performance_load_balancing_method.png
+[0]: ./media/traffic-manager-configure-settings/hosted_service_IP_location.png
+[1]: ./media/traffic-manager-configure-settings/nslookup_command_example.png
+[2]: ./media/traffic-manager-configure-settings/Create_button_for_policies.png
+[3]: ./media/traffic-manager-configure-settings/Dialog_box_for_Round_Robin_load_balancing_method.png
+[4]: ./media/traffic-manager-configure-settings/Create_button_for_policies.png
+[5]: ./media/traffic-manager-configure-settings/Dialog_box_for_Failover_load_balancing_method.png
+[6]: ./media/traffic-manager-configure-settings/Create_button_for_policies.png
+[7]: ./media/traffic-manager-configure-settings/Dialog_box_for_Performance_load_balancing_method.png

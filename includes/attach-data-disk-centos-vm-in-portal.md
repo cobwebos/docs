@@ -1,84 +1,116 @@
-﻿1. 在 [Windows Azure（预览版）管理门户][AzurePreviewPortal]中，单击“虚拟机”，然后选择刚才创建的虚拟机 (**testlinuxvm**)。
+1. In the [Azure Management Portal][AzurePortal], click **Virtual Machines** and then select the virtual machine you just created (**testlinuxvm**).
 
-2. 在命令栏上，单击“附加”，然后单击“附加空磁盘”。
+2. On the command bar click **Attach** and then click **Attach Empty Disk**.
 
-	将显示“附加空磁盘”对话框。
+	The **Attach Empty Disk** dialog box appears.
 
 
-3. 已为您定义好了“虚拟机名称”、“存储位置”和“文件名”。您只需要输入所需的磁盘大小。在“大小”字段中键入 5。
+3. The **Virtual Machine Name**, **Storage Location**, and **File Name** are already defined for you. All you have to do is enter the size that you want for the disk. Type **5** in the **Size** field.
 
-	![附加空磁盘][Image2]
+	![Attach Empty Disk][Image2]
 
-	**注意**：所有磁盘都是从 Windows Azure 存储中的 VHD 文件创建的。您可以为添加到存储的 VHD 文件提供名称，但是 Windows Azure 会自动生成磁盘名称。
+	**Note:** All disks are created from a VHD file in Azure storage. You can provide a name for the VHD file that is added to storage, but Azure generates the name of the disk automatically.
 
-4. 单击复选标记以将数据磁盘附加到虚拟机。
+4. Click the check mark to attach the data disk to the virtual machine.
 
-5. 单击虚拟机的名称可显示仪表板；这样您可以验证数据磁盘是否已成功附加到虚拟机。
+5. Click the name of the virtual machine to display the dashboard; this lets you verify that the data disk was successfully attached to the virtual machine.
 
-	现在虚拟机的磁盘数为 2 个。“磁盘”表中列出了您附加的磁盘。
+	The number of disks is now 2 for the virtual machine. The disk that you attached is listed in the **Disks** table.
 
-	![附加空磁盘][Image3]
+	![Attach Empty Disk][Image3]
 
-	在您将数据磁盘附加到虚拟机后，该磁盘会处于脱机和未初始化状态。您必须先登录虚拟机并初始化磁盘，才能使用该磁盘存储数据。
+	After you attach the data disk to the virtual machine, the disk is offline and not initialized. You have to log on to the virtual machine and initialize the disk before you can use it to store data.
 
-##使用 SSH 或 PuTTY 连接到虚拟机并完成安装
-您刚刚添加到虚拟机中的数据磁盘在您添加它后处于脱机和未初始化状态。您必须先登录到虚拟机并初始化磁盘，然后才能使用该磁盘存储数据。
+##Connect to the Virtual Machine Using SSH or PuTTY and Complete Setup
+The data disk that you just attached to the virtual machine is offline and not initialized after you add it. You must log on to the machine and initialize the disk to use it for storing data.
 
-1. 配置虚拟机后，使用 SSH 或 PuTTY 进行连接，并作为 newuser 进行登录（如上述步骤中所述）。	
+1. After the virtual machine is provisioned connect using SSH or PuTTY and login as **newuser** (as described in the steps above).	
 
-2. 在 SSH 或 PuTTY 窗口中，键入以下命令，然后输入帐户密码：
+
+2. In the SSH or PuTTY window type the following command and then enter the account password:
 
 	`$ sudo grep SCSI /var/log/messages`
 
-	您可以在所示消息中找到上次添加的数据磁盘的标识符（在此示例中为 sdc）。
+	You can find the identifier of the last data disk that was added in the messages that are displayed (**sdc**, in this example).
 
 	![GREP][Image4]
 
-3. 在 SSH 或 PuTTY 窗口中，输入以下命令，对磁盘 /dev/sdc 进行分区：
+
+3. In the SSH or PuTTY window, enter the following command to partition the disk **/dev/sdc**:
 
 	`$ sudo fdisk /dev/sdc`
 
-4. 输入 n 新建一个分区。
+
+4. Enter **n** to create a new partition.
 
 	![FDISK][Image5]
 
-5. 键入 p 将该分区设置为主分区，键入 1 将其设置为第一分区，然后键入 Enter 以接受柱面的默认值 (1)。
+
+5. Type **p** to make the partition the primary partition, type **1** to make it the first partition, and then type enter to accept the default value (1) for the cylinder.
 
 	![FDISK][Image6]
 
-6. 键入 p 以查看有关分区磁盘的详细信息。
+
+6. Type **p** to see the details about the disk that is being partitioned.
 
 	![FDISK][Image7]
 
-7. 键入 w 以写入磁盘的设置。
+
+7. Type **w** to write the settings for the disk.
 
 	![FDISK][Image8]
 
-8. 使用 mkfs.ext3 命令格式化新磁盘：
 
-	`$ sudo mkfs.ext3 /dev/sdc1`
+8. Format the new disk using the **mkfs** command:
 
-	![Format Disk][Image9]
+	`$ sudo mkfs -t ext4 /dev/sdc1`
 
-9.创建目录以便为驱动器设置装入点：
-
-	`$ sudo mkdir /mnt/datadrive`
-
-10. 安装驱动器：
-
-	`$ sudo mount /dev/sdc1 /mnt/datadrive`
-
-11. 打开 /etc/fstab 文件并附加以下行：
-
-	`/dev/sdc1        /mnt/datadrive      ext3    defaults   1 2`
-
-12. 保存并关闭 /etc/fstab 文件。
-
-13. 使用 e2label 标记分区：
-
-	`$ sudo e2label /dev/sdc1 /mnt/datadrive`
+	![Create file system](./media/howto-attach-disk-window-linux/DiskFileSystem.png)
 
 
+9. Next you must have a directory available to mount the new file system. As an example, type the following command to make a new directory for mounting the drive, and then enter the account password:
+
+	`sudo mkdir /datadrive`
+
+
+10. Type the following command to mount the drive:
+
+	`sudo mount /dev/sdc1 /datadrive`
+
+	The data disk is now ready to use as **/datadrive**.
+
+
+11. Add the new drive to /etc/fstab:
+
+	To ensure the drive is re-mounted automatically after a reboot it must be added to the /etc/fstab file. In addition, it is highly recommended that the UUID (Universally Unique IDentifier) is used in /etc/fstab to refer to the drive rather than just the device name (i.e. /dev/sdc1). To find the UUID of the new drive you can use the **blkid** utility:
+	
+		`sudo -i blkid`
+
+	The output will look similar to the following:
+
+		`/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"`
+		`/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"`
+		`/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"`
+
+	>[WACN.NOTE] blkid may not require sudo access in all cases, however, it may be easier to run with `sudo -i` on some distributions if /sbin or /usr/sbin are not in your `$PATH`.
+
+	**Caution:** Improperly editing the /etc/fstab file could result in an unbootable system. If unsure, please refer to the distribution's documentation for information on how to properly edit this file. It is also recommended that a backup of the /etc/fstab file is created before editing.
+
+	Using a text editor, enter the information about the new file system at the end of the /etc/fstab file.  In this example we will use the UUID value for the new **/dev/sdc1** device that was created in the previous steps, and the mountpoint **/datadrive**:
+
+		`UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2`
+
+	If additional data drives or partitions are created you will need to enter them into /etc/fstab separately as well.
+
+	You can now test that the file system is mounted properly by simply unmounting and then re-mounting the file system, i.e. using the example mount point `/datadrive` created in the earlier steps: 
+
+		`sudo umount /datadrive`
+		`sudo mount /datadrive`
+
+	If the second command produces an error, check the /etc/fstab file for correct syntax.
+
+
+	>[WACN.NOTE] Subsequently removing a data disk without editing fstab could cause the VM to fail to boot. If this is a common occurrence, then most distributions provide either the `nofail` and/or `nobootwait` fstab options that will allow a system to boot even if the disk is not present. Please consult your distribution's documentation for more information on these parameters.
 
 
 [Image2]: ./media/attach-data-disk-centos-vm-in-portal/AttachDataDiskLinuxVM2.png
@@ -89,6 +121,4 @@
 [Image7]: ./media/attach-data-disk-centos-vm-in-portal/fdisk3.png
 [Image8]: ./media/attach-data-disk-centos-vm-in-portal/fdisk4.png
 [Image9]: ./media/attach-data-disk-centos-vm-in-portal/mkfs.png
-
-
-
+[AzurePortal]: http://manage.windowsazure.cn

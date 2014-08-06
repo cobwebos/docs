@@ -1,86 +1,83 @@
-﻿#如何在 Windows Azure 中创建 MySQL 数据库
+#How to Create a MySQL Database in Azure
 
-本指南将说明如何通过 [ClearDB] 从 [Windows Azure 应用商店]创建 MySQL 数据库，以及如何在您创建 [Windows Azure 网站][waws]时创建作为链接资源的 MySQL 数据库。[ClearDB] 是可容错的数据库即服务提供商，允许您在 Windows Azure 数据中心中运行和管理 MySQL 数据库，并使您能够从任何应用程序连接到这些数据库。
+This guide will show you how to use [ClearDB] to create a MySQL database from the [Azure Store] and  how to create a MySQL database as a linked resource when you create a [Azure Web Site][waws] . [ClearDB] is a fault-tolerant database-as-a-service provider that allows you to run and manage MySQL databases in Azure datacenters and connect to them from any application.  
 
-##目录
-* [如何从 Windows Azure 应用商店创建 MySQL 数据库](#CreateFromStore)
-* [如何创建作为 Windows Azure 网站的链接资源的 MySQL 数据库](#CreateForWebSite)
-
-<div class="dev-callout"> 
-<b>注意</b> 
-<p>在创建网站期间创建 MySQL 数据库时，您只能创建免费数据库。从 Windows Azure 应用商店创建 MySQL 数据库将允许您创建免费数据库，但您也可以从付费选项中进行选择。</p>
-</div>
-
-<h2><a id="CreateFromStore"></a>如何从 Windows Azure 应用商店创建 MySQL 数据库</h2>
-
-若要从 [Windows Azure 应用商店]创建 MySQL 数据库，请执行以下操作：
-
-1. 登录到 [Windows Azure 管理门户][portal]。
-2. 单击页面底部的“+新建”，然后选择“应用商店”。
-
-	![从应用商店选择外接程序](./media/create-mysql-db/select-store.png)
-
-3. 选择“ClearDB MySQL 数据库”，然后单击页面底部的箭头。
-
-	![选择 ClearDB MySQL 数据库](./media/create-mysql-db/select-cleardb-mysql.png)
-
-4. 选择相应计划，输入数据库名称并选择区域，然后单击页面底部的箭头。
-
-	![从应用商店购买 MySQL 数据库](./media/create-mysql-db/purchase-mysql.png)
-
-5. 单击复选标记完成购买。
-
-	![查看和完成购买](./media/create-mysql-db/complete-mysql-purchase.png)
-
-6. 在创建数据库后，可以从管理门户中的“外接程序”选项卡管理该数据库。
-
-	![在 Windows Azure 门户中管理 MySQL 数据库](./media/create-mysql-db/manage-mysql-add-on.png)
-
-7. 通过单击页面底部的“连接信息”（如上图中所示），您可以获得数据库连接信息。
-
-	![MySql 连接信息](./media/create-mysql-db/mysql-conn-info.png)
-
-
-<h2><a id="CreateForWebSite"></a>如何创建作为 Windows Azure 网站的链接资源的 MySQL 数据库</h2>
-
-若要在创建 [Windows Azure 网站][waws]时创建作为链接资源的 MySQL 数据库，请执行以下操作：
-
-1. 登录到 [Windows Azure 管理门户][portal]。
-2. 单击页面底部的“+新建”，然后依次选择“计算”、“网站”和“与数据库一起创建”。
-
-	![创建网站和数据库](./media/create-mysql-db/custom_create.png)
-
-3. 提供您的网站的 URL，为网站选择“区域”，并从“数据库”下拉列表中选择“新建 MySQL 数据库”。还可以选择替换连接字符串的默认名称。单击页面底部的箭头。
-
-	![提供网站详细信息](./media/create-mysql-db/provide-website-details.png)
-
-4. 提供数据库“名称”，为数据库选择“区域”（这应该与网站区域相同），同意 ClearDB 的法律条款，然后单击页面底部的复选标记。
-
-	![提供 MySQL 详细信息](./media/create-mysql-db/provide-mysql-details.png)
-
-5. 在创建网站后，单击网站名称以转至网站仪表板。
-
-	![转至网站仪表板](./media/create-mysql-db/go-to-website-dashboard.png)
-
-6. 单击“配置”。
-
-	![转至“配置”选项卡](./media/create-mysql-db/go-to-configure-tab.png)
-
-7. 向下滚动到“连接字符串”部分，单击“显示连接字符串”。
-
-	![显示连接字符串](./media/create-mysql-db/show-conn-string.png)
-
-8. 复制要用于您的应用程序的连接字符串。
-
-	![显示连接字符串](./media/create-mysql-db/shown-conn-string.png)
+##Table of Contents
+* [How to: Create a MySQL database from the Azure Store](#CreateFromStore)
+* [How to: Create a MySQL database as a linked resource for Azure Web Site](#CreateForWebSite)
 
 <div class="dev-callout"> 
-<b>注意</b> 
-<p>您的网站应用程序可通过连接字符串名称来获取连接字符串。在 .NET 应用程序中，连接字符串在 <b>connectionStrings</b> 对象中提供。在其他编程语言中，连接字符串作为环境变量提供。有关更多信息，请参见<a href="/zh-cn/manage/services/web-sites/how-to-configure-websites/">如何配置网站</a>。</p>
+<b>Note</b> 
+<p>When you create a MySQL database as part of the Web Site creation process, you can only create a free database. Creating a MySQL database from the Azure Store allows you to create a free database or choose from paid options.</p> 
 </div>
 
-[ClearDB]：http://www.cleardb.com/
-[waws]：/zh-cn/manage/services/web-sites/
-[Windows Azure 应用商店]：/zh-cn/store/overview/
-[portal]：http://manage.windowsazure.com
+<h2><a id="CreateFromStore"></a>How to: Create a MySQL database from the Azure Store</h2>
 
+To create a MySQL database from the [Azure Store], do the following:
+
+1. Log in to the [Azure Management Portal][portal].
+2. Click **+NEW** at the bottom of the page, then select **STORE**.
+
+	![Select add-on from store](./media/create-mysql-db/select-store.png)
+
+3. Select **ClearDB MySQL Database**, then click the arrow at the bottom of the frame.
+
+	![Select ClearDB MySQL Database](./media/create-mysql-db/select-cleardb-mysql.png)
+
+4. Select a plan, enter a database name, and select a region, then click the arrow at the bottom of the frame.
+
+	![Purchase MySQL database from store](./media/create-mysql-db/purchase-mysql.png)
+
+5. Click the checkmark to complete your purchase.
+
+	![Review and complete your purchase](./media/create-mysql-db/complete-mysql-purchase.png)
+
+6. After your database has been created, you can manage it from the **ADD-ONS** tab in the management portal.
+
+	![Manage MySQL database in Azure portal](./media/create-mysql-db/manage-mysql-add-on.png)
+
+7. You can get the database connection information by clicking on **CONNECTION INFO** at the bottom of the page (shown above).
+
+	![MySql connection information](./media/create-mysql-db/mysql-conn-info.png) 
+
+
+<h2><a id="CreateForWebSite"></a>How to: Create a MySQL database as a linked resource for Azure Web Site</h2>
+
+To create a MySQL database as a linked resource when you create a [Azure Web Site][waws], do the following:
+
+1. Log in to the [Azure Management Portal][portal].
+2. Click **+NEW** at the bottom of the page, then select **COMPUTE**, **WEB SITE**, and **CREATE WITH DATABASE**.
+
+	![Create website with database](./media/create-mysql-db/custom_create.png)
+
+3. Provide a **URL** for your web site, select the **REGION** for your site, and choose **Create a new MySQL database** from the **DATABASE** dropdown. Optionally, you can replace the default name for the connection string. Click the arrow at the bottom of the page.
+
+	![Provide website details](./media/create-mysql-db/provide-website-details.png) 
+
+4. Provide a database **NAME**, select the **REGION** for your database (this should be same as the region for your web site), agree to ClearDB's legal terms, and click the checkmark at the bottom of the frame.
+
+	![Provide MySQL details](./media/create-mysql-db/provide-mysql-details.png)
+
+5. After your web site has been created, click on the name of your site to go to your site's dashboard.
+
+	![Go to web site dashboard](./media/create-mysql-db/go-to-website-dashboard.png)
+
+6. Click on **CONFIGURE**.
+
+	![Go to configure tab](./media/create-mysql-db/go-to-configure-tab.png)
+
+7. Scroll down to the **connection strings** section and click **Show Connection Strings**. 
+
+	![Show connection string](./media/create-mysql-db/show-conn-string.png)
+
+8. Copy the connection string for use in your application.
+
+	![Shown connection string](./media/create-mysql-db/shown-conn-string.png)
+
+> [WACN.NOTE] Connection strings are accessible to your web site application by connection string name. In .NET applications, connection strings are availble in the **connectionStrings** object. In other programming languages, connection strings are accessible as environment variables. For more information, see [How to Configure Web Sites][configure].
+
+[ClearDB]: http://www.cleardb.com/
+[waws]: /en-us/documentation/services/web-sites/
+[Azure Store]: /en-us/gallery/store/
+[portal]: http://manage.windowsazure.cn
+[configure]: ../web-sites-configure/

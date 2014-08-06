@@ -1,44 +1,44 @@
-﻿<properties writer="kathydav" editor="tysonn" manager="jeffreyg" /> 
+<properties writer="kathydav" editor="tysonn" manager="jeffreyg" /> 
 
-**注意**：本文创建的是不连接到虚拟网络的虚拟机。如果您希望您的虚拟机使用虚拟网络，以便可以按主机名直接连接到它或设置跨界连接，请在创建虚拟机时使用“从库中”方法并指定虚拟网络。有关虚拟网络的更多信息，请参见 [Windows Azure 虚拟网络概述](http://go.microsoft.com/fwlink/p/?LinkID=294063)。
+**Note**: This article creates a virtual machine that is not connected to a virtual network. If you want your virtual machine to use a virtual network so you can connect to your virtual machines directly by hostname or set up 
+cross-premises connections, use the **From Gallery** method instead and specify the virtual network when you create the virtual machine. For more information about virtual networks, see [Azure Virtual Network Overview](http://go.microsoft.com/fwlink/p/?LinkID=294063).
 
 
-可按照以下步骤创建虚拟机：
+Follow these steps to create a virtual machine:
 
-1. 使用您的 Windows Azure 帐户登录 [Windows Azure 管理门户](http://manage.windowsazure.com)。
+1. Login to the [Azure Management Portal](http://manage.windowsazure.cn) using your Azure account.
 
-2. 在管理门户中，在网页的左下角依次单击“+新建”、“虚拟机”，然后单击“从库中”。
-	![新建虚拟机][Image1]
+2. In the Management Portal, at the bottom left of the web page, click **+New**, click **Virtual Machine**, and then click **From Gallery**.
+	![Create a New Virtual Machine][Image1]
 
-3. 选择一个 Windows Server 2008 R2 SP1 虚拟机映像，然后单击页面右下角的下一步箭头。
+3. Select a Windows Server 2008 R2 SP1 virtual machine image, and then click the next arrow at the bottom right of the page.
 	
-4. 在“虚拟机配置”页上，提供下列信息：
+4. On the **Virtual machine configuration** page, provide the following information:
 
-- 提供“虚拟机名称”，例如“testwinvm”。
-- 在“新用户名”框中，键入“Administrator”。
-- 在“新密码”框中，键入一个[强密码](http://msdn.microsoft.com/zh-cn/library/ms161962.aspx)。
-- 在“确认密码”框中，再次键入该密码。
-- 从下拉列表中选择适当的“大小”。
+- Provide a **Virtual Machine Name**, such as "testwinvm".
+- In the **New User Name** box, type "Administrator".
+- In the **New Password** box, type a [strong password](http://msdn.microsoft.com/zh-cn/library/ms161962.aspx).
+- In the **Confirm Password** box, retype the password.
+- Select the appropriate **Size** from the drop down list.
 
-	单击下一步箭头以继续。
+	Click the next arrow to continue.
 
 
-5. 在“虚拟机模式”页上，提供下列信息：
+5. On the **Virtual machine mode** page, provide the following information:
 
-- 选择“独立虚拟机”。
-- 在“DNS 名称”框中，按照格式 testwinvm.cloudapp.net 键入一个有效子域
-- 在“区域/地缘组/虚拟网络”框中，选择将承载此虚拟映像的区域。
+- Select **Standalone Virtual Machine**.
+- In the **DNS Name** box, type a valid sub-domain in the format **testwinvm.chinacloudapp.cn**
+- In the **Region/Affinity Group/Virtual Network** box, select a region where this virtual image will be hosted.
 
-   单击下一步箭头以继续。
+   Click the next arrow to continue.
 
 	
-6. 在“虚拟机选项”页上，在“可用性集”框中选择“(无)”。单击复选标记以继续。
+6. On the **Virtual machine options** page, select **(none)** in the **Availability Set** box. Click the check mark to continue.
 	
 
-7. 请等候 Windows Azure 准备您的虚拟机。
+7. Wait while Azure prepares your virtual machine.
 
 
 [Image1]: ./media/create-and-configure-windows-server-2008-vm-in-portal/CreateWinVM.png
-
 
 

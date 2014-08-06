@@ -1,36 +1,35 @@
-﻿#如何在 Windows Azure 中创建 MongoDB 数据库
+#How to Create a MongoDB Database in Azure
 
-本文将说明如何通过 [MongoLab] 从 [Windows Azure 应用商店]创建 MongoDB 数据库。[MongoLab] 是“MongoDB 即服务”提供商，允许您在 Windows Azure 数据中心中运行和管理 MongoDB 数据库，并使您能够从任何应用程序连接到这些数据库。
+This article will show you how to use [MongoLab] to create a MongoDB database from the [Azure Store]. [MongoLab] is a MongoDB-as-a-service provider that allows you to run and manage MongoDB databases in Azure datacenters and connect to them from any application.  
 
-若要从 [Windows Azure 应用商店]创建 MongoDB 数据库，请执行以下操作：
+To create a MongoDB database from the [Azure Store], do the following:
 
-1. 登录到 [Windows Azure 管理门户][portal]。
-2. 单击页面底部的“+新建”，然后选择“应用商店”。
+1. Log in to the [Azure Management Portal][portal].
+2. Click **+NEW** at the bottom of the page, then select **STORE**.
 
-	![从应用商店选择外接程序](./media/create-mongolab-mongodb/select-store.png)
+	![Select add-on from store](./media/create-mongolab-mongodb/select-store.png)
 
-3. 选择 MongoLab，然后单击页面底部的箭头。
+3. Select **MongoLab**, then click the arrow at the bottom of the frame.
 
-	![选择 MongoLab](./media/create-mongolab-mongodb/select-mongo-db.png)
+	![Select MongoLab](./media/create-mongolab-mongodb/select-mongo-db.png)
 
-4. 输入数据库名称并选择区域，然后单击页面底部的箭头。
+4. Enter a database name, and select a region, then click the arrow at the bottom of the frame.
 
-	![从应用商店购买 MongoLab 数据库](./media/create-mongolab-mongodb/purchase-mongodb.png)
+	![Purchase MongoLab database from store](./media/create-mongolab-mongodb/purchase-mongodb.png)
 
-5. 单击复选标记完成购买。
+5. Click the checkmark to complete your purchase.
 
-	![查看和完成购买](./media/create-mongolab-mongodb/complete-mongolab-purchase.png)
+	![Review and complete your purchase](./media/create-mongolab-mongodb/complete-mongolab-purchase.png)
 
-6. 在创建数据库后，可以从管理门户中的“外接程序”选项卡管理该数据库。
+6. After your database has been created, you can manage it from the **ADD-ONS** tab in the management portal.
 
-	![在 Windows Azure 门户中管理 MongoLab 数据库](./media/create-mongolab-mongodb/manage-mongolab-add-on.png)
+	![Manage MongoLab database in Azure portal](./media/create-mongolab-mongodb/manage-mongolab-add-on.png)
 
-7. 通过单击页面底部的“连接信息”（如上图中所示），您可以获得数据库连接信息。
+7. You can get the database connection information by clicking on **CONNECTION INFO** at the bottom of the page (shown above).
 
-	![MongoLab 连接信息](./media/create-mongolab-mongodb/mongolab-conn-info.png)
+	![MongoLab connection information](./media/create-mongolab-mongodb/mongolab-conn-info.png) 
 
-[MongoLab]：https://mongolab.com/home
-[waws]：/zh-cn/manage/services/web-sites/
-[Windows Azure 应用商店]：/zh-cn/store/overview/
-[portal]：http://windows.azure.com/
-
+[MongoLab]: https://mongolab.com/home
+[waws]: /en-us/manage/services/web-sites/
+[Azure Store]: /en-us/store/overview/
+[portal]: http://manage.windowsazure.cn/

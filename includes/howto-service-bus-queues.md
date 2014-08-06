@@ -1,87 +1,105 @@
-﻿<a id="what-are-service-bus-queues"></a>
-##什么是 Service Bus 队列？
+<a id="what-are-service-bus-queues"></a>
+##What are Service Bus Queues?
 
-Service Bus 队列支持中转消息传递通信模型。在使用队列时，分布式应用程序的组件
-不会直接相互通信，而是通过
-充当中介的队列交换消息。消息创建方（发送方）
-将消息传送到队列，然后继续对其进行处理。
-消息使用方（接收方）以异步方式从队列中提取
-消息并处理它。创建方不必等待
-使用方的答复即可继续处理并发送更多
-消息。队列为一个或多个竞争使用方提供“先入先出 (FIFO)”
-消息传递方式。也就是说，接收方通常
-会按照消息添加到队列中的顺序来接收并处理
-消息，并且每条消息仅由一个消息使用方接收
-并处理。
+Service Bus Queues support a **brokered messaging communication**
+model. When using queues, components of a distributed application do not
+communicate directly with each other, they instead exchange messages via
+a queue, which acts as an intermediary. A message producer (sender)
+hands off a message to the queue and then continues its processing.
+Asynchronously, a message consumer (receiver) pulls the message from the
+queue and processes it. The producer does not have to wait for a reply
+from the consumer in order to continue to process and send further
+messages. Queues offer **First In, First Out (FIFO)** message delivery
+to one or more competing consumers. That is, messages are typically
+received and processed by the receivers in the order in which they were
+added to the queue, and each message is received and processed by only
+one message consumer.
 
 ![QueueConcepts](./media/howto-service-bus-queues/sb-queues-08.png)
 
-Service Bus 队列是一种可用于各种应用场景
-的通用技术：
+Service Bus queues are a general-purpose technology that can be used for
+a wide variety of scenarios:
 
--   多层 Windows Azure 应用程序中 Web 角色和辅助角色之间的通信
--   混合解决方案中本地应用程序和 Windows Azure 托管应用程序之间的通信
--   在不同组织或组织的各部门中本地运行的分布式应用程序组件之间
-    的通信
+-   Communication between web and worker roles in a multi-tier 
+    Azure application
+-   Communication between on-premises apps and Azure hosted apps
+    in a hybrid solution
+-   Communication between components of a distributed application
+    running on-premises in different organizations or departments of an
+    organization
 
-利用队列，您可以更好地向外扩展应用程序，并
-增强您的体系结构的恢复能力。
+Using queues can enable you to scale out your applications better, and
+enable more resiliency to your architecture.
 
 <a id="create-a-service-namespace"></a>
-<h2>创建服务命名空间</h2>
+<h2>Create a Service Namespace</h2>
 
-若要开始在 Windows Azure 中使用 Service Bus 队列，必须先
-创建一个服务命名空间。服务命名空间提供了
-用于对应用程序中的 Service Bus 资源进行寻址的范围容器。
+To begin using Service Bus queues in Azure, you must first
+create a service namespace. A service namespace provides a scoping
+container for addressing Service Bus resources within your application.
 
-创建服务命名空间：
+To create a service namespace:
 
-1. 登录到 [Windows Azure 管理门户][]。
+1.  Log on to the [Azure Management Portal][].
 
-2. 在该管理门户的左侧导航窗格中，单击 Service Bus。
+2.  In the left navigation pane of the Management Portal, click
+    **Service Bus**.
 
-3. 在管理门户的下方窗格中，单击“创建”。
+3.  In the lower pane of the Management Portal, click **Create**.   
 	![](./media/howto-service-bus-queues/sb-queues-03.png)
 
-4. 在“添加新命名空间”对话框中，输入命名空间名称。
-    系统会立即检查该名称是否可用。
+4.  In the **Add a new namespace** dialog, enter a namespace name.
+    The system immediately checks to see if the name is available.   
 	![](./media/howto-service-bus-queues/sb-queues-04.png)
 
-5. 在确保命名空间名称可用后，选择应承载您的命名空间的国家或地区
-（确保使用在其中部署计算资源的同一国家/地区）。
+5.  After making sure the namespace name is available, choose the
+    country or region in which your namespace should be hosted (make
+    sure you use the same country/region in which you are deploying your
+    compute resources).
 
-	重要说明：选取要部署应用程序的相同区域。这将为您提供最佳性能。
+	IMPORTANT: Pick the **same region** that you intend to choose for
+    deploying your application. This will give you the best performance.
 
-6.	单击复选标记。系统现已创建您的服务命名空间并
-   已将其启用。您可能需要等待几分钟，因为系统将为
-   您的帐户配置资源。
+6. 	Click the check mark. The system now creates your service
+    namespace and enables it. You might have to wait several minutes as
+    the system provisions resources for your account.
 
 	![](./media/howto-service-bus-queues/getting-started-multi-tier-27.png)
 
-您创建的命名空间随后将显示在管理门户中，然后要
-花费一段时间来激活。请等到状态变为“活动”后再继续。
+The namespace you created will then appear in the Management Portal and
+takes a moment to activate. Wait until the status is **Active** before
+continuing.
 
 <a id="obtain-default-credentials"></a>
-<h2>获取命名空间的默认管理凭据</h2>
+<h2>Obtain the Default Management Credentials for the Namespace</h2>
 
-若要在新命名空间上执行管理操作（如创建队列），
-则必须获取该命名空间的管理
-凭据。
+In order to perform management operations, such as creating a queue on
+the new namespace, you must obtain the management credentials for the
+namespace. You can obtain these credentials from either the Management Portal, or from the Visual Studio Server Explorer.
 
-1. 在左侧导航窗格中，单击 Service Bus 节点以显示
-    可用命名空间的列表：
+###To obtain management credentials from the portal
+
+1.  In the left navigation pane, click the **Service Bus** node, to
+    display the list of available namespaces:   
 	![](./media/howto-service-bus-queues/sb-queues-13.png)
 
-2. 从显示的列表中选择刚刚创建的命名空间：
+2.  Select the namespace you just created from the list shown:   
 	![](./media/howto-service-bus-queues/sb-queues-09.png)
 
-3. 单击“连接信息”。
+3.  Click **Connection Information**.   
 	![](./media/howto-service-bus-queues/sb-queues-06.png)
 
-4. 在“访问连接信息”对话框中，找到“默认颁发者”和“默认密钥”条目。记下这些值，因为您将在下面使用此信息来对命名空间执行操作。
+4.  In the **Access connection information** dialog, find the **Default Issuer** and **Default Key** entries. Make a note of these values, as you will use this information below to perform operations with the namespace.
 
-  [Windows Azure 管理门户]: http://manage.windowsazure.com
-  [Windows Azure 管理门户]: http://manage.windowsazure.com
+###To obtain management credentials from Server Explorer
 
+To obtain connection information using Visual Studio instead of the Management Portal, follow the procedure described [here](http://http://msdn.microsoft.com/en-us/library/windowsazure/ff687127.aspx), in the section titled **To connect to Azure from Visual Studio**. When you sign in to Azure, the **Service Bus** node under the **Microsoft Azure** tree in Server Explorer is automatically populated with any namespaces you've already created. Right-click any namespace, and then click **Properties** to see the connection string and other metadata associated with this namespace displayed in the Visual Studio **Properties** pane. 
 
+Make a note of the **SharedAccessKey** value, or copy it to the clipboard:
 
+![][34]
+
+  [Azure Management Portal]: http://manage.windowsazure.cn
+  [Azure Management Portal]: http://manage.windowsazure.cn
+
+  [34]: ./media/howto-service-bus-queues/VSProperties.png

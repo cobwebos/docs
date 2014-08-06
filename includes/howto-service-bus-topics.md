@@ -1,77 +1,100 @@
-﻿<h2><a name="what-are-service-bus-topics"></a>什么是 Service Bus 主题和订阅</h2>
+<h2><a name="what-are-service-bus-topics"></a>What are Service Bus Topics and Subscriptions</h2>
 
-Service Bus 主题和订阅支持发布/订阅消息通信模型。在使用主题和订阅时，分布式应用
-程序的组件不会直接相互通信，而是通过充当
-中介的主题交换消息。
+Service Bus topics and subscriptions support a **publish/subscribe
+messaging communication** model. When using topics and subscriptions,
+components of a distributed application do not communicate directly with
+each other, they instead exchange messages via a topic, which acts as an
+intermediary.
 
 ![TopicConcepts](./media/howto-service-bus-topics/sb-topics-01.png)
 
-与每条消息由单个使用方处理的 Service Bus 队列相比，主题和订阅
-通过发布/订阅模式提供一对多通信方式。可向一个
-主题注册多个订阅。当消息发送到主题时，每个订阅
-会分别对该消息进行处理。
+In contrast to Service Bus queues, where each message is processed by a
+single consumer, topics and subscriptions provide a **one-to-many** form
+of communication, using a publish/subscribe pattern. It is possible to
+register multiple subscriptions to a topic. When a message is sent to a
+topic, it is then made available to each subscription to handle/process
+independently.
 
-主题订阅类似于接收发送至该主题的消息副本的虚拟队列。您可以选择基于每个订阅
-注册主题的筛选规则，这样就可以筛选/限制哪些主题
-订阅接收发送至某个主题的哪些消息。
+A topic subscription resembles a virtual queue that receives copies of
+the messages that were sent to the topic. You can optionally register
+filter rules for a topic on a per-subscription basis, which allows you
+to filter/restrict which messages to a topic are received by which topic
+subscriptions.
 
-利用 Service Bus 主题和订阅，您可以进行扩展以处理跨大量
-用户和应用程序的许多消息。
+Service Bus topics and subscriptions enable you to scale to process a
+very large number of messages across a very large number of users and
+applications.
 
-<h2><a name="create-a-service-namespace"></a>创建服务命名空间</h2>
+<h2><a name="create-a-service-namespace"></a>Create a Service Namespace</h2>
 
-若要开始在 Windows Azure 中使用 Service Bus 主题和订阅，
-必须先创建一个服务命名空间。服务命名空间提供了
-用于对应用程序中的 Service Bus 资源进行寻址的范围容器。
+To begin using Service Bus topics and subscriptions in Azure,
+you must first create a service namespace. A service namespace provides
+a scoping container for addressing Service Bus resources within your
+application.
 
-创建服务命名空间：
+To create a service namespace:
 
-1. 登录到 [Windows Azure 管理门户][]。
+1.  Log on to the [Azure Management Portal][].
 
-2. 在该管理门户的左侧导航窗格中，单击 Service Bus。
+2.  In the left navigation pane of the Management Portal, click
+    **Service Bus**.
 
-3. 在管理门户的下方窗格中，单击“创建”。
+3.  In the lower pane of the Management Portal, click **Create**.   
     ![][0]
 
-4. 在“添加新命名空间”对话框中，输入命名空间名称。
-    系统会立即检查该名称是否可用。
+4.  In the **Add a new namespace** dialog, enter a namespace name.
+    The system immediately checks to see if the name is available.   
     ![][2]
 
-5. 在确保命名空间名称可用后，选择应承载您的命名空间的国家或地区
-（确保使用在其中部署计算资源的同一国家/地区）。
+5.  After making sure the namespace name is available, choose the
+    country or region in which your namespace should be hosted (make
+    sure you use the same country/region in which you are deploying your
+    compute resources).
 
-	重要说明：选取要部署应用程序的相同区域。这将为您提供最佳性能。
+	IMPORTANT: Pick the **same region** that you intend to choose for
+    deploying your application. This will give you the best performance.
 
-6.	单击复选标记。系统现已创建您的服务命名空间并
-   已将其启用。您可能需要等待几分钟，因为系统将为
-   您的帐户配置资源。
+6. 	Click the check mark. The system now creates your service
+    namespace and enables it. You might have to wait several minutes as
+    the system provisions resources for your account.
 
 	![][6]
 
 
-<h2><a name="obtain-default-credentials"></a>获取命名空间的默认管理凭据</h2>
+<h2><a name="obtain-default-credentials"></a>Obtain the Default Management Credentials for the Namespace</h2>
 
-若要在新命名空间上执行管理操作（如创建主题或订阅），则需要
-获取该命名空间的管理凭据。
+In order to perform management operations, such as creating a topic or
+subscription on the new namespace, you must obtain the management
+credentials for the namespace. You can obtain these credentials from either the Management Portal, or from the Visual Studio Server Explorer.
 
-1. 在左侧导航窗格中，单击 Service Bus 节点以显示
-   可用命名空间的列表：  
+###To obtain management credentials from the portal
+
+1.  In the left navigation pane, click the **Service Bus** node to
+    display the list of available namespaces:   
     ![][0]
 
-2. 从显示的列表中选择刚刚创建的命名空间：
+2.  Select the namespace you just created from the list shown:   
     ![][3]
 
-3. 单击“连接信息”。
+3.  Click **Connection Information**.   
     ![][4]
 
-4. 在“访问连接信息”对话框中，找到“默认颁发者”和“默认密钥”条目。记下这些值，因为您将在下面使用此信息来对命名空间执行操作。
+4.  In the **Access connection information** dialog, find the **Default Issuer** and **Default Key** entries. Make a note of these values, as you will use this information below to perform operations with the namespace. 
+
+###To obtain management credentials from Server Explorer
+
+To obtain connection information using Visual Studio instead of the Management Portal, follow the procedure described [here](http://http://msdn.microsoft.com/en-us/library/windowsazure/ff687127.aspx), in the section titled **To connect to Azure from Visual Studio**. When you sign in to Azure, the **Service Bus** node under the **Microsoft Azure** tree in Server Explorer is automatically populated with any namespaces you've already created. Right-click any namespace, and then click **Properties** to see the connection string and other metadata associated with this namespace displayed in the Visual Studio **Properties** pane. 
+
+Make a note of the **SharedAccessKey** value, or copy it to the clipboard:
+
+![][34]
 
  
-  [Windows Azure 管理门户]: http://manage.windowsazure.com
+  [Azure Management Portal]: http://manage.windowsazure.cn
   [0]: ./media/howto-service-bus-topics/sb-queues-13.png
   [2]: ./media/howto-service-bus-topics/sb-queues-04.png
   [3]: ./media/howto-service-bus-topics/sb-queues-09.png
   [4]: ./media/howto-service-bus-topics/sb-queues-06.png
   
   [6]: ./media/howto-service-bus-topics/getting-started-multi-tier-27.png
-
+  [34]: ./media/howto-service-bus-topics/VSProperties.png
