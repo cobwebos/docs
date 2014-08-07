@@ -5,7 +5,7 @@
 
 # Create a WordPress web site from the gallery in Azure
 
-[WACN.INCLUDE [website-from-gallery](../includes/website-from-gallery.md)]
+[WACOM.INCLUDE [website-from-gallery](../includes/website-from-gallery.md)]
 
 ##<a name="nextsteps"></a>Next Steps
 You've seen how to create and deploy a web site from the gallery. To learn more about how to create, configure, deploy, and scale Azure web sites, check out these resources:

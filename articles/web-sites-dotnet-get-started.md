@@ -29,7 +29,7 @@ The following illustration shows the completed application:
 * [Make a change and redeploy](#make-a-change-and-redeploy)
 * [Next steps](#next-steps)
 
-[WACN.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]
+[WACOM.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]
 
 
 ## Create an ASP.NET web application

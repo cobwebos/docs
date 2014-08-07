@@ -31,7 +31,7 @@ You'll build a simple contact list web application that is built on ASP.NET MVC 
 
 ![login page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxb.png)
 
-[WACN.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 In this tutorial:
 
@@ -165,7 +165,7 @@ This is all you need to do for now to create the application that you'll deploy 
 	![saving the .publishsettings file][firsdeploy002]
 
 
-	[WACN.INCLUDE [publishsettingsfilewarningchunk](../includes/publishsettingsfilewarningchunk.md)]
+	[WACOM.INCLUDE [publishsettingsfilewarningchunk](../includes/publishsettingsfilewarningchunk.md)]
 
 5. In Visual Studio, right-click the project in **Solution Explorer** and select **Publish** from the context menu.
 

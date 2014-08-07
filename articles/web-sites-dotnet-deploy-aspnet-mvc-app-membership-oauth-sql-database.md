@@ -39,7 +39,7 @@ In this tutorial:
 - [Next steps][]
 
 
-[WACN.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]
+[WACOM.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]
 
 To use the new SSL certificate for localhost, you will need to install [Visual Studio 2013 Update 2 RC](http://go.microsoft.com/fwlink/?LinkId=390521) or higher.
 

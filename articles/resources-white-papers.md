@@ -6,4 +6,4 @@
   <properties linkid="dev-net-white-papers" urlDisplayName="White Papers" headerExpose="" pageTitle="White Papers on Azure" metaKeywords="" footerExpose="" metaDescription="" umbracoNaviHide="0" disqusComments="1" />
 
 
- [WACN.INCLUDE [white-papers](../includes/white-papers.md)]
+ [WACOM.INCLUDE [white-papers](../includes/white-papers.md)]

@@ -22,10 +22,10 @@ more information on blobs, see the [Next steps][] section.
 -   [How to: Delete blobs][]
 -   [Next steps][]
 
-[WACN.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
 ##<a name="create-account"></a><span  class="short-header">Create an account</span>Create an Azure Storage account
-[WACN.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ##<a name="setup-connection-string"></a><span  class="short-header">Setup a connection string</span>Setup a storage connection string
 

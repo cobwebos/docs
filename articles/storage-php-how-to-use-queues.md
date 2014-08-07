@@ -22,11 +22,11 @@ This guide will show you how to perform common scenarios using the Azure Queue s
 * [How to: Delete a queue](#delete-queue)
 * [Next steps](#next-steps)
 
-[WACN.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
 <h2><a id="create-account"></a>Create an Azure storage account</h2>
 
-[WACN.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 <h2><a id="create-app"></a>Create a PHP application</h2>
 
@@ -36,7 +36,7 @@ In this guide, you will use Queue service features which can be called within a 
 
 <h2><a id="GetClientLibrary"></a>Get the Azure Client Libraries</h2>
 
-[WACN.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
+[WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
 <h2><a id="configure-app"></a>Configure your application to access the Queue service</h2>
 

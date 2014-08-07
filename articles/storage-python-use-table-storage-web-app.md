@@ -21,7 +21,7 @@ A screenshot of the completed application will be similar to the one below (the 
 
 ![](./media/storage-python-use-table-storage-web-app/web-app-with-storage-Finaloutput-mac.png)
 
-[WACN.INCLUDE [create-account-note](../includes/create-account-note.md)]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
 ## <a id="setup"> </a>Setting Up the Development Environment
 
@@ -33,7 +33,7 @@ A screenshot of the completed application will be similar to the one below (the 
 
 ## Create A Storage Account In Azure
 
-[WACN.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## Create A Django Project
 

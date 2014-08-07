@@ -30,7 +30,7 @@ libraries.  Since all installation is done in the cloud, users can access these
 resources without the need for any local configuration beyond a modern web
 browser.
 
-[WACN.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
+[WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
 ## Create and Configure a VM on Azure
 

@@ -4,7 +4,7 @@
 
 #What are Web Sites?
 
-[WACN.INCLUDE [disclaimer](../includes/disclaimer.md)]
+[WACOM.INCLUDE [disclaimer](../includes/disclaimer.md)]
 
 Web sites are web application hosts which support popular web application technologies such as .NET, Node.js and PHP without requiring any code changes to existing applications.  All of the common programming models and resources that .NET, Node.js and PHP developers use to access resources such as files and databases will continue to work as expected on web sites deployed to Azure.  Web sites provide access to file and database resources and to  all of the standard configuration files (such as web.config, php.ini and config.js) used by web applications today. A web site is the host for a web application running in the cloud that you can control and manage. 
 

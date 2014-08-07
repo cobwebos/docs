@@ -5,4 +5,4 @@
 
 
 
-[WACN.INCLUDE [training-kit](../includes/training-kit.md)]
+[WACOM.INCLUDE [training-kit](../includes/training-kit.md)]

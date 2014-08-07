@@ -31,7 +31,7 @@ more information on blobs, see the [Next Steps](#NextSteps) section.
 
 <h2><a id="CreateAccount"></a>Create an Azure storage account</h2>
 
-[WACN.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a name="CreateApplication"> </a>Create a Java application
 

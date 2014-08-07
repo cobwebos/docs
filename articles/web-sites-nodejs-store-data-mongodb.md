@@ -27,7 +27,7 @@ The steps in this tutorial use Node.js must have a recent version of [Node.js][n
 
 Additionally, the [Git] must be available from the command-line in your development environment, as this is used to deploy the application to an Azure Web Site.
 
-[WACN.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ##Create a virtual machine
 

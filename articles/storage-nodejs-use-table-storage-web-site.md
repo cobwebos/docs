@@ -44,7 +44,7 @@ Before following the instructions in this article, you should ensure that you ha
 
 * A web browser
 
-[WACN.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ##Create a storage account
 
@@ -523,7 +523,7 @@ The steps in this section use the Azure command-line tools to create a new Azure
 
 If you do not already have an Azure subscription, you can sign up [for free]. After signing up, follow these steps to enable the Azure Web Site feature.
 
-[WACN.INCLUDE [antares-iaas-signup](../includes/antares-iaas-signup.md)]
+[WACOM.INCLUDE [antares-iaas-signup](../includes/antares-iaas-signup.md)]
 
 ###Install the Azure command-line tool for Mac and Linux
 

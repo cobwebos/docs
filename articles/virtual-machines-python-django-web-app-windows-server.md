@@ -22,7 +22,7 @@ A screenshot of the completed application is below:
 
 ![A browser window displaying the hello world page on Azure][1]
 
-[WACN.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
+[WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
 ## Creating and configuring an Azure virtual machine to host Django
 

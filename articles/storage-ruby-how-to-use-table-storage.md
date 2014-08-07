@@ -31,11 +31,11 @@ information on tables, see the [Next Steps](#next-steps) section.
 * [How to: Delete a Table](#how-to-delete-a-table)
 * [Next Steps](#next-steps)
 
-[WACN.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
+[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
 ## <a id="create-a-windows-azure-storage-account"></a>Create an Azure Storage Account
 
-[WACN.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a id="create-a-ruby-application"></a>Create a Ruby Application
 

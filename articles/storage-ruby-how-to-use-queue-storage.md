@@ -31,11 +31,11 @@ Steps](#next-steps) section.
 * [How To: Delete a Queue](#how-to-delete-a-queue)
 * [Next Steps](#next-steps)
 
-[WACN.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
 ## <a id="CreateAccount"></a>Create an Azure storage account
 
-[WACN.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a id="create-a-ruby-application"></a>Create a Ruby Application
 

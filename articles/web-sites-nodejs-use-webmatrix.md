@@ -11,7 +11,7 @@ A screenshot of the completed application is below:
 
 ![Azure node Web site][webmatrix-node-completed]
 
-[WACN.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## Sign into Azure
 

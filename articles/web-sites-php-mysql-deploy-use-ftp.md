@@ -14,7 +14,7 @@ By following this tutorial, you will build a simple registration web application
 
 ![Azure PHP Web Site][running-app]
 
-[WACN.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ##Create an Azure Web Site and set up FTP publishing
 

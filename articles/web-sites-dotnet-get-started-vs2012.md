@@ -33,7 +33,7 @@ The following illustration shows the completed application:
 4. [Deploy the application to Azure][]
 5. [Next steps][]
 
-[WACN.INCLUDE [install-sdk-2012-only](../includes/install-sdk-2012-only.md)]
+[WACOM.INCLUDE [install-sdk-2012-only](../includes/install-sdk-2012-only.md)]
 
 <h2><a name="setupwindowsazure"></a><span class="short-header">Create site</span>Create a web site</h2>
 

@@ -6,13 +6,13 @@
 <div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/web-sites-moniker-custom-domain-name/" title="Web Sites">Web Site</a> | <a href="/en-us/documentation/articles/web-sites-moniker-traffic-manager-custom-domain-name/" title="Web Site using Traffic Manager" class="current">Web Site using Traffic Manager</a></div>
 
 
-[WACN.INCLUDE [intro](../includes/custom-dns-web-site-intro-traffic-manager.md)]
+[WACOM.INCLUDE [intro](../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
 This article provides instructions on using a custom domain name purchased from [Moniker](https://moniker.com) with Azure Web Sites.
 
-[WACN.INCLUDE [tmwebsitefooter](../includes/custom-dns-web-site-traffic-manager-notes.md)]
+[WACOM.INCLUDE [tmwebsitefooter](../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
-[WACN.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
+[WACOM.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
 In this article:
 
@@ -23,11 +23,11 @@ In this article:
 
 <h2><a name="understanding-records"></a>Understanding DNS records</h2>
 
-[WACN.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-traffic-manager.md)]
+[WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-traffic-manager.md)]
 
 <h2><a name="bkmk_configsharedmode"></a>Configure your web sites for standard mode</h2>
 
-[WACN.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
 <a name="bkmk_configurecname"></a><h2>Add a DNS record for your custom domain</h2>
 
@@ -65,4 +65,4 @@ To associate your custom domain with an Azure Web Site, you must add a new entry
 
 <h2><a name="enabledomain"></a>Enable Traffic Manager web site</h2>
 
-[WACN.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-traffic-manager.md)]

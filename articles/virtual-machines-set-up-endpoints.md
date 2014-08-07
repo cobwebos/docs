@@ -2,4 +2,4 @@
 
 
 
-[WACN.INCLUDE [howto-setup-endpoints](../includes/howto-setup-endpoints.md)]
+[WACOM.INCLUDE [howto-setup-endpoints](../includes/howto-setup-endpoints.md)]

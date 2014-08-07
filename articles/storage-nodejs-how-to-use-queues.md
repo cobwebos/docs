@@ -30,7 +30,7 @@ deleting queues**. For more information on queues, refer to the [Next Steps][] s
 * [How To: Delete a Queue][]   
 * [Next Steps][]
 
-[WACN.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
 <h2><a name="create-account"></a><span  class="short-header">Create an account</span>Create an Azure Storage account</h2>
 

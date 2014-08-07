@@ -6,4 +6,4 @@
 
 
 
-[WACN.INCLUDE [hybrid-solutions](../includes/hybrid-solutions.md)]
+[WACOM.INCLUDE [hybrid-solutions](../includes/hybrid-solutions.md)]

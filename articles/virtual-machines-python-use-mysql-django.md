@@ -24,7 +24,7 @@ The project files for this tutorial will be stored in **C:\django\helloworld** a
 
 ![][0]
 
-[WACN.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
+[WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
 ## Setting up a virtual machine to host MySQL and Django
 1. Follow the instructions given [here ][preview-portal-vm] to create an Azure virtual machine of the *Windows Server 2008 R2* distribution.

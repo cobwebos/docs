@@ -5,4 +5,4 @@
 
 
 
-[WACN.INCLUDE [sql-azure-management](../includes/sql-azure-management.md)]
+[WACOM.INCLUDE [sql-azure-management](../includes/sql-azure-management.md)]

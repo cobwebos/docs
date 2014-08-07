@@ -22,7 +22,7 @@ For this tutorial, you'll add mobile features to the simple conference-listing a
 
 ![MVC4 conference application main page.][AppMainPage]
 
-[WACN.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 <h2>Setting up the development environment</h2>
 
@@ -523,7 +523,7 @@ Refresh the mobile browser. The following image reflects the code changes that y
     
 	![download pub file](./media/web-sites-dotnet-deploy-aspnet-mvc-mobile-app/rzDown2.png)
     
-	[WACN.INCLUDE [publishsettingsfilewarningchunk](../includes/publishsettingsfilewarningchunk.md)]
+	[WACOM.INCLUDE [publishsettingsfilewarningchunk](../includes/publishsettingsfilewarningchunk.md)]
 </br>
     
 	1. In the **Import Azure Subscriptions** dialog box, click **Browse** and navigate to the *.publishsettings* file.

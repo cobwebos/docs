@@ -194,7 +194,7 @@ The app is now complete and can store a set of categories in the device local st
 
 <h2><a name="send"></a><span class="short-header">Send notifications</span>Send notifications from your back-end</h2>
 
-[WACN.INCLUDE [notification-hubs-back-end](../includes/notification-hubs-back-end.md)]
+[WACOM.INCLUDE [notification-hubs-back-end](../includes/notification-hubs-back-end.md)]
 
 ##<a name="test-app"></a>Run the app and generate notifications
 

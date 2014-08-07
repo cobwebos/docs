@@ -20,11 +20,11 @@ This guide will show you how to perform common scenarios using the Azure Blob se
 * [How to: Delete a Blob container](#DeleteContainer)
 * [Next steps](#NextSteps)
 
-[WACN.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
 <h2><a id="CreateAccount"></a>Create an Azure storage account</h2>
 
-[WACN.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 <h2><a id="CreateApplication"></a>Create a PHP application</h2>
 

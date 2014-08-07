@@ -14,7 +14,7 @@ You'll build an Orchard CMS site that uses a default template. [Orchard](http://
 
 ![Orchard blog][13]
 
-[WACN.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 <h2>Create an Orchard web site from the gallery</h2>
 

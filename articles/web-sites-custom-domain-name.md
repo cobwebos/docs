@@ -5,11 +5,11 @@
 <div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/web-sites-custom-domain-name" title="Custom Domain" class="current">Custom Domain</a><a href="/en-us/documentation/articles/web-sites-godaddy-custom-domain-name" title="GoDaddy">GoDaddy</a><a href="/en-us/documentation/articles/web-sites-network-solutions-custom-domain-name" title="Network Solutions">Network Solutions</a><a href="/en-us/documentation/articles/web-sites-registerdotcom-custom-domain-name" title="Register.com">Register.com</a><a href="/en-us/documentation/articles/web-sites-enom-custom-domain-name" title="Enom">Enom</a><a href="/en-us/documentation/articles/web-sites-moniker-custom-domain-name" title="Moniker">Moniker</a><a href="/en-us/documentation/articles/web-sites-dotster-custom-domain-name" title="Dotster">Dotster</a><a href="/en-us/documentation/articles/web-sites-domaindiscover-custom-domain-name" title="DomainDiscover">DomainDiscover</a><a href="/en-us/documentation/articles/web-sites-directnic-custom-domain-name" title="Directnic">Directnic</a></div>
 <div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/web-sites-custom-domain-name/" title="Web Sites" class="current">Web Site</a> | <a href="/en-us/documentation/articles/web-sites-traffic-manager-custom-domain-name/" title="Web Site using Traffic Manager">Web Site using Traffic Manager</a></div>
 
-[WACN.INCLUDE [intro](../includes/custom-dns-web-site-intro.md)]
+[WACOM.INCLUDE [intro](../includes/custom-dns-web-site-intro.md)]
 
 This article provides generic instructions for using a custom domain name with Azure Web Sites. Please check the tabs at the top of this article to see if your domain registrar is listed. If so, please select that tab for registrar specific steps.
 
-[WACN.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
+[WACOM.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
 In this article:
 
@@ -20,11 +20,11 @@ In this article:
 
 <h2><a name="understanding-records"></a>Understanding DNS records</h2>
 
-[WACN.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-raw.md)]
+[WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-raw.md)]
 
 <h2><a name="bkmk_configsharedmode"></a>Configure your web sites for basic, shared or standard mode</h2>
 
-[WACN.INCLUDE [modes](../includes/custom-dns-web-site-modes.md)]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes.md)]
 
 <a name="bkmk_configurecname"></a><h2>Add a DNS record for your custom domain</h2>
 
@@ -62,4 +62,4 @@ To associate your custom domain with an Azure Web Site, you must add a new entry
 
 <h2><a name="enabledomain"></a>Enable the domain name on your web site</h2>
 
-[WACN.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-web-site.md)]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-web-site.md)]

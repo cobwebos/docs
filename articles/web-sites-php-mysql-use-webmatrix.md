@@ -22,7 +22,7 @@ By following this tutorial, you will build a simple Tasklist web application in 
 
 ![Azure PHP Web Site][running-app]
 
-[WACN.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ##Prerequisites
 

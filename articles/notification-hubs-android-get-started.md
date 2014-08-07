@@ -27,7 +27,7 @@ Completing this tutorial is a prerequisite for all other notification hub tutori
 
 ##<a id="register"></a>Enable Google Cloud Messaging
 
-[WACN.INCLUDE [Enable GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
+[WACOM.INCLUDE [Enable GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
 Next, you will use this API key value to enable your notification hub to authenticate with GCM and send push notifications on behalf of your application.
 
@@ -74,7 +74,7 @@ Your notification hub is now configured to work with GCM, and you have the conne
 
 ###Add Google Play Services to the project
 
-[WACN.INCLUDE [Add Play Services](../includes/mobile-services-add-Google-play-services.md)]
+[WACOM.INCLUDE [Add Play Services](../includes/mobile-services-add-Google-play-services.md)]
 
 ###Add code
 

@@ -30,11 +30,11 @@ tables, see the [Next steps](#NextSteps) section.
 * [How to: Delete a table](#DeleteTable)
 * [Next steps](#NextSteps)
 
-[WACN.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
+[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
 ##<a name="CreateAccount"></a>Create an Azure storage account
 
-[WACN.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
 ## <a name="CreateApplication"></a>Create a Java application
 

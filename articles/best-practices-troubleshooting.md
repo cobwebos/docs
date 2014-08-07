@@ -6,4 +6,4 @@
 
 
 
-[WACN.INCLUDE [tshootguide](../includes/tshootguide.md)]
+[WACOM.INCLUDE [tshootguide](../includes/tshootguide.md)]

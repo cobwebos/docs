@@ -70,7 +70,7 @@ In this section, you will create a **server.js** file containing the 'hello worl
 3. Open the command-line, and use the following command to start the web page locally:
 
         node server.js
-    [WACN.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
+    [WACOM.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
 
 4. Open your web browser and navigate to http://localhost:1337. A web page displaying "Hello World" will appear as shown in the screenshot below:
 
@@ -163,8 +163,8 @@ If you encounter problems with your application after it has been deployed to Az
 
 
 
-[Azure Management Portal]: http://manage.windowsazure.cn
-[Azure Command-Line Tools for Mac and Linux]: /en-us/documentation/articles/xplat-cli/
+[Azure Management Portal]: http://manage.windowsazure.com
+[Azure Command-Line Tools for Mac and Linux]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
 
 [helloworld-completed]: ./media/web-sites-nodejs-develop-deploy-mac/helloazure.png
 [helloworld-localhost]: ./media/web-sites-nodejs-develop-deploy-mac/helloworldlocal.png

@@ -6,4 +6,4 @@
 
 
 
-[WACN.INCLUDE [identity](../includes/identity.md)]
+[WACOM.INCLUDE [identity](../includes/identity.md)]
