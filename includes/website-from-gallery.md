@@ -1,77 +1,82 @@
-The gallery makes available a wide range of popular web applications developed by Microsoft, third party companies, and open source software initiatives. Web applications created from the gallery do not require installation of any software other than the browser used to connect to the Azure Management Portal. 
+库中提供了众多由 Microsoft、第三方公司和开源软件计划开发的流行 Web 应用程序。从库中创建的 Web 应用程序不要求安装任何软件，只需通过浏览器连接到 Azure 管理门户即可。
 
-In this tutorial, you'll learn:
+在本教程中，你将学习：
 
-- How to create a new site through the gallery.
+-   如何通过库创建新网站。
 
-- How to deploy the site through the Azure Portal.
- 
-You'll build a WordPress blog that uses a default template. The following illustration shows the completed application:
+-   如何通过 Azure 门户部署网站。
 
+你将构建一个使用默认模板的 WordPress 博客。下图演示了完整的应用程序：
 
-![Wordpress blog][13]
+![Wordpress 博客][]
 
-<div class="dev-callout"><strong>Note</strong>
-<p>To complete this tutorial, you need an Azure account. You can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/develop/php/tutorials/create-a-windows-azure-account/" target="_blank">Create an Azure account</a>.</p>
-</div>
-<br />
+**说明**
 
-## Create a web site in the portal
+若要完成本教程，你需要一个 Azure 帐户。只需几分钟即可创建一个免费的试用帐户。有关详细信息，请参阅[创建 Azure 帐户][]。
 
-1. Login to the [Azure Management Portal](http://manage.windowsazure.cn).
+## 在门户中创建网站
 
-2. Click the **New** icon on the bottom left of the dashboard.
-	
-	![Create New][5]
+1.  登录到 [Azure 管理门户][]。
 
-3. Click the **Web Site** icon, and click **From Gallery**.
-	
-	![Create From Gallery][6]
+2.  单击仪表板左下角的**新建**图标。
 
-4. Locate and click the WordPress icon in list, and then click **Next**.
-	
-	![WordPress from list][7]
+    ![新建][]
 
-5. On the **Configure Your App** page, enter or select values for all fields:
-	
-- Enter a URL name of your choice	
-- Leave **Create a new MySQL database** selected in the **Database** field
-- Select the region closest to you
+3.  单击**网站**图标，然后单击**从库中**。
 
-	![configure your app][8]
+    ![从库创建][]
 
-6. Then click **Next**.
+4.  在列表中找到并单击 WordPress 图标，然后单击**下一步**。
 
-7. On the **Create New Database** page, you can specify a name for your new MySQL database or use the default name. Select the region closest to you as the hosting location. Select the box at the bottom of the screen to agree to ClearDB's usage terms for your hosted MySQL database. Then click the check to complete the site creation. 
-	
-	![create database][9]
+    ![列表中的 WordPress][]
 
-After you click **Complete** Azure will initiate build and deploy operations. While the web site is being built and deployed the status of these operations is displayed at the bottom of the Web Sites page. After all operations are performed,  A final status message when the site has been successfully deployed.
+5.  在**配置应用程序**页面上，为所有字段输入或选择值：
 
-## Launch and manage your WordPress site
+-   输入你选择的 URL 名称
+-   在**数据库**字段中使**新建 MySQL 数据库**保留选定状态
+-   选择离你最近的区域
 
-1. Click on your new site from the **Web Sites** page to open the dashboard for the site.
+    ![配置应用][]
 
-	![launch dashboard][10]
+1.  然后单击**下一步**。
 
-2. On the **Dashboard** management page, scroll down and click the link on the left under **Site Url** to open the site's welcome page.
+2.  在**创建新数据库**页面上，你可以为新的 MySQL 数据库指定名称或者使用默认名称。选择离你最近的区域作为托管位置。选中屏幕底部的框以针对你的托管 MySQL 数据库同意 ClearDB 的使用条款。然后，单击指示完成网站创建的复选框。
 
-	![site URL][11] 
+    ![创建数据库][]
 
-3. Enter appropriate configuration information required by WordPress and click **Install WordPress** to finalize configuration and open the web site's login page.
+单击**完成**后，Azure 将启动构建和部署操作。在构建和部署网站的过程中，“网站”页的底部会显示这些操作的状态。执行完所有操作后，当网站成功部署时，将显示一条最终状态消息。
 
-	![login to WordPress][12]
+## 启动和管理你的 WordPress 网站
 
-4. Login to the new WordPress web site by entering the username and password that you specified on the **Welcome** page.
+1.  在**网站**页上单击你的新网站以打开该网站的仪表板。
 
-5. You'll have a new WordPress site that looks similar to the site below.  
+    ![启动仪表板][]
 
-	![your WordPress site][13]
+2.  在**仪表板**管理页面上，向下滚动并在**网站 URL**下单击左侧的链接以打开网站的欢迎页面。
 
+    ![网站 URL][]
 
+3.  输入 WordPress 所需的正确配置信息，然后单击**安装 WordPress**以完成配置并打开网站的登录页面。
 
+    ![登录到 WordPress][]
 
+4.  通过输入你在**欢迎**页面上指定的用户名和密码登录到新的 WordPress 网站。
 
+5.  你将拥有一个新的 WordPress 网站，它看起来类似下面的网站。
+
+    ![你的 WordPress 网站][Wordpress 博客]
+
+  [Wordpress 博客]: ./media/website-from-gallery/wordpressgallery-09.png
+  [创建 Azure 帐户]: http://www.windowsazure.com/en-us/develop/php/tutorials/create-a-windows-azure-account/
+  [Azure 管理门户]: http://manage.windowsazure.cn
+  [新建]: ./media/website-from-gallery/wordpressgallery-01.png
+  [从库创建]: ./media/website-from-gallery/wordpressgallery-02.png
+  [列表中的 WordPress]: ./media/website-from-gallery/wordpressgallery-03.png
+  [配置应用]: ./media/website-from-gallery/wordpressgallery-04.png
+  [创建数据库]: ./media/website-from-gallery/wordpressgallery-05.png
+  [启动仪表板]: ./media/website-from-gallery/wordpressgallery-06.png
+  [网站 URL]: ./media/website-from-gallery/wordpressgallery-07.png
+  [登录到 WordPress]: ./media/website-from-gallery/wordpressgallery-08.png
 
 [5]: ./media/website-from-gallery/wordpressgallery-01.png
 [6]: ./media/website-from-gallery/wordpressgallery-02.png
@@ -82,8 +87,5 @@ After you click **Complete** Azure will initiate build and deploy operations. Wh
 [11]: ./media/website-from-gallery/wordpressgallery-07.png
 [12]: ./media/website-from-gallery/wordpressgallery-08.png
 [13]: ./media/website-from-gallery/wordpressgallery-09.png
-
-
-
 
 

@@ -1,13 +1,13 @@
-###Install via Composer
+﻿###通过 Composer 安装
 
-1. [Install Git][install-git]. 
+1. [安装 Git][install-git]。
 
 	<div class="dev-callout"> 
-	<b>Note</b> 
-	<p>On Windows, you will also need to add the Git executable to your PATH environment variable.</p>
+	<b>注意</b>
+	<p>在 Windows 上，您还需要向您的 PATH 环境变量中添加 Git 可执行文件。</p>
 	</div>
 
-2. Create a file named **composer.json** in the root of your project and add the following code to it:
+2. 在您的项目的根目录中创建名为 composer.json 的文件并向其中添加以下代码：
 
 		{
 			"require": {
@@ -22,30 +22,31 @@
 			"minimum-stability": "dev"
 		}
 
-3. Download **[composer.phar][composer-phar]** in your project root.
+3. 将 [composer.phar][composer-phar] 下载到项目根目录中。
 
-4. Open a command prompt and execute this in your project root
+4. 打开命令提示符并在项目根目录中执行该文件
 
 		php composer.phar install
 
-###Install manually
+###手动安装
 
-To download and install the PHP Client Libraries for Azure manually, follow these steps:
+要手动下载并安装用于 Windows Azure 的 PHP 客户端库，请执行以下步骤：
 
-1. Download a .zip archive that contains the libraries from [GitHub][php-sdk-github]. Alternatively, fork the repository and clone it to your local machine. (The latter option requires a GitHub account and having Git installed locally.)
+1. 下载包含 [GitHub][php-sdk-github] 中的库的 .zip 存档。或者，复制现有存储库并将其克隆到您的本地计算机。（后一种选择需要一个 GitHub 帐户并要求已在本地安装 Git。）
 
 	<div class="dev-callout"> 
-	<b>Note</b> 
-	<p>The PHP Client Libraries for Azure have a dependency on the <a href="http://pear.php.net/package/HTTP_Request2">HTTP_Request2</a>, <a href="http://pear.php.net/package/Mail_mime">Mail_mime</a>, and <a href="http://pear.php.net/package/Mail_mimeDecode">Mail_mimeDecode</a> PEAR packages. The recommended way to resolve these dependencies is to install these packages using the <a href="http://pear.php.net/manual/en/installation.php">PEAR package manager</a>.</p> 
+	<b>注意</b>
+	<p>用于 Windows Azure 的 PHP 客户端库依赖于 <a href="http://pear.php.net/package/HTTP_Request2">HTTP_Request2</a>、<a href="http://pear.php.net/package/Mail_mime">Mail_mime</a> 和 <a href="http://pear.php.net/package/Mail_mimeDecode">Mail_mimeDecode</a> PEAR 包。要处理这些依赖关系，建议使用 <a href="http://pear.php.net/manual/en/installation.php">PEAR 包管理器</a>安装这些包。</p>
 	</div>
 
 
-2. Copy the `WindowsAzure` directory of the downloaded archive to your application directory structure.
+2. 将已下载存档的“WindowsAzure”目录复制到您的应用程序目录结构中。
 
-For more information about installing the PHP Client Libraries for Azure (including information about installing as a PEAR package), see [Download the Azure SDK for PHP][download-SDK-PHP].
+有关安装用于 Windows Azure 的 PHP 客户端库的更多信息（包括安装为 PEAR 包的信息），请参见[下载 Windows Azure SDK for PHP][download-SDK-PHP]。
 
 
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [download-SDK-PHP]: ../php-download-sdk/
 [composer-phar]: http://getcomposer.org/composer.phar
+

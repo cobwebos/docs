@@ -1,91 +1,91 @@
-#Configuring a custom domain name for an Azure web site
+# 为 Azure 网站配置自定义域名
 
-When you create a web site, Azure provides a friendly subdomain on the azurewebsites.net domain so your users can access your web site using a URL like http://&lt;mysite>.azurewebsites.net. However, if you configure your web sites for Shared or Standard mode, you can map your web site to your own domain name.
+当你创建网站时，Azure 在 azurewebsites.net 域中提供了一个友好的子域，以使你的用户可使用类似 [http://\<mysite][]\>.azurewebsites.net 的 URL 访问你的网站。但是，如果你将网站配置为共享或标准模式，则可将网站映射到你自己的域名。
 
-Optionally, you can use Azure Traffic Manager to load balance incoming traffic to your web site. For more information on how Traffic Manager works with Web Sites, see [Controlling Azure Web Sites Traffic with Azure Traffic Manager][trafficmanager].
+另外，你可以使用 Azure Traffic Manager 对你的网站的传入流量进行负载平衡。有关 Traffic Manager 如何作用于网站的详细信息，请参阅[使用 Azure Traffic Manager 控制 Azure 网站流量][]。
 
-> [WACOM.NOTE] The procedures in this task apply to Azure Web Sites; for Cloud Services, see <a href="http://www.windowsazure.com/en-us/develop/net/common-tasks/custom-dns/">Configuring a Custom Domain Name in Azure</a>.
+> [WACOM.NOTE] 本任务中的过程适用于 Azure 网站；对于云服务，请参阅[在 Azure 中配置自定义域名][]。
 
-> [WACOM.NOTE] The steps in this task require you to configure your web sites for Shared or Standard mode, which may change how much you are billed for your subscription. See <a href="http://www.windowsazure.com/en-us/pricing/details/web-sites/">Web Sites Pricing Details</a> for more information.
+> [WACOM.NOTE] 本任务中的步骤要求你将网站配置为共享或标准模式，这可能会更改对你的订阅的计费量。有关详细信息，请参阅[网站定价详细信息][]。
 
-In this article:
+本文内容：
 
--   [Understanding CNAME and A records](#understanding-records)
--   [Configure your web sites for shared or standard mode](#bkmk_configsharedmode)
--   [Add your web sites to Traffic Manager](#trafficmanager)
--   [Add a CNAME for your custom domain](#bkmk_configurecname)
--   [Add an A record for your custom domain](#bkmk_configurearecord)
+-   [了解 CNAME 和 A 记录][]
+-   [将网站配置为共享或标准模式][]
+-   [将网站添加到 Traffic Manager][]
+-   [为自定义域添加 CNAME][]
+-   [为自定义域添加 A 记录][]
 
-<h2><a name="understanding-records"></a>Understand CNAME and A records</h2>
+<a name="understanding-records"></a>
+## 了解 CNAME 和 A 记录
 
-CNAME (or alias records) and A records both allow you to associate a domain name with a web site, however they each work differently.
+CNAME（即别名记录）和 A 记录都允许你将域名与网站进行关联，但是，它们的工作方式不同。
 
-###CNAME or Alias record
+### CNAME（即别名）记录
 
-A CNAME record maps a *specific* domain, such as **contoso.com** or **www.contoso.com**, to a canonical domain name. In this case, the canonical domain name is the either the **&lt;myapp>.azurewebsites.net** domain name of your Azure web site or the **&lt;myapp>.trafficmgr.com** domain name of your Traffic Manager profile. Once created, the CNAME creates an alias for the **&lt;myapp>.azurewebsites.net** or **&lt;myapp>.trafficmgr.com** domain name. The CNAME entry will resolve to the IP address of your **&lt;myapp>.azurewebsites.net** or **&lt;myapp>.trafficmgr.com** domain name automatically, so if the IP address of the web site changes, you do not have to take any action.
+CNAME 记录将*特定的*域（例如 **contoso.com** 或 **www.contoso.com**）映射到规范域名。在这种情况下，规范域名是你的 Azure 网站的 **\<myapp\>.azurewebsites.net** 域名或你的 Traffic Manager 配置文件的 **\<myapp\>.trafficmgr.com** 域名。一旦创建，CNAME 即为 **\<myapp\>.azurewebsites.net** 或 **\<myapp\>.trafficmgr.com** 域名创建别名。CNAME 条目将自动解析为你的 **\<myapp\>.azurewebsites.net** 或 **\<myapp\>.trafficmgr.com** 域名的 IP 地址。因此，如果网站的 IP 地址发生更改，你不必采取任何操作。
 
-> [WACOM.NOTE] Some domain registrars only allow you to map subdomains when using a CNAME record, such as www.contoso.com, and not root names, such as contoso.com. For more information on CNAME records, see the documentation provided by your registrar, <a href="http://en.wikipedia.org/wiki/CNAME_record">the Wikipedia entry on CNAME record</a>, or the <a href="http://tools.ietf.org/html/rfc1035">IETF Domain Names - Implementation and Specification</a> document.
+> [WACOM.NOTE] 某些域注册机构只允许你在使用 CNAME 记录（例如 www.contoso.com）而非根名称（例如 contoso.com）时对子域进行映射。有关 CNAME 记录的详细信息，请参阅你的注册机构提供的文档[关于 CNAME 记录的 Wikipedia 词条][]或 [IETF 域名 - 实现和规范][]文档。
 
-###A record
+### A 记录
 
-An A record maps a domain, such as **contoso.com** or **www.contoso.com**, *or a wildcard domain* such as **\*.contoso.com**, to an IP address. In the case of an Azure Web Site, either the virtual IP of the service or a specific IP address that you purchased for your web site. So the main benefit of an A record over a CNAME record is that you can have one entry that uses a wildcard, such as ***.contoso.com**, which would handle requests for multiple sub-domains such as **mail.contoso.com**, **login.contoso.com**, or **www.contso.com**.
+A 记录将域（例如 **contoso.com** 或 **www.contoso.com**）或*通配符域*（例如 **\*.contoso.com**）映射到 IP 地址。对于 Azure 网站而言，这是服务的虚拟 IP 或者你为网站购买的具体 IP 地址。与 CNAME 记录相比，A 记录的主要优势是你可以有一个使用通配符的条目，例如 \***.contoso.com**，它将处理针对多个子域（例如 **mail.contoso.com**、**login.contoso.com** 或 **www.contso.com**）的请求。
 
-> [WACOM.NOTE] Since an A record is mapped to a static IP address, it cannot automatically resolve changes to the IP address of your web site. An IP address for use with A records is provided when you configure custom domain name settings for your web site; however, this value may change if you delete and recreate your web site, or change the web site mode to back to free.
+> [WACOM.NOTE] 由于 A 记录映射到静态 IP 地址，因此它无法动态解析你的网站的 IP 地址的更改。用于 A 记录的 IP 地址是你为网站配置自定义域名设置时提供的；但是，如果你删除并重新创建了网站或者将网站模式改回了免费，则该值可能会更改。
 
-> [WACOM.NOTE] A records cannot be used for load balancing with Traffic Manager. For more information, see [Controlling Azure Web Sites Traffic with Azure Traffic Manager][trafficmanager].
- 
-<a name="bkmk_configsharedmode"></a><h2>Configure your web sites for shared or standard mode</h2>
+> [WACOM.NOTE] A 记录不能用于使用 Traffic Manager 的负载平衡。有关详细信息，请参阅[使用 Azure Traffic Manager 控制 Azure 网站流量][]。
 
-Setting a custom domain name on a web site is only available for the Shared and Standard modes for Azure web sites. Before switching a web site from the Free web site mode to the Shared or Standard web site mode, you must first remove spending caps in place for your Web Site subscription. For more information on Shared and Standard mode pricing, see [Pricing Details][PricingDetails].
+<a name="bkmk_configsharedmode"></a>
+## 将网站配置为共享或标准模式
 
-1. In your browser, open the [Management Portal][portal].
-2. In the **Web Sites** tab, click the name of your site.
+在网站上设置自定义域名只适用于 Azure 网站的共享和标准模式。将网站从免费网站模式切换到共享或标准网站模式之前，必须先取消网站订阅已有的支出上限。有关共享和标准模式定价的详细信息，请参阅[定价详细信息][]。
 
-	![][standardmode1]
+1.  在浏览器中，打开[管理门户][]。
+2.  在**网站**选项卡中，单击你的网站的名称。
 
-3. Click the **SCALE** tab.
+    ![][]
 
-	![][standardmode2]
+3.  单击**规模**选项卡。
 
-	
-4. In the **general** section, set the web site mode by clicking **SHARED**.
+    ![][1]
 
-	![][standardmode3]
+4.  在**常规**部分中，通过单击**共享**设置网站模式。
 
-	> [WACOM.NOTE] If you will be using Traffic Manager with this web site, you must use select Standard mode instead of Shared.
+    ![][2]
 
-5. Click **Save**.
-6. When prompted about the increase in cost for Shared mode (or for Standard mode if you choose Standard), click **Yes** if you agree.
+    > [WACOM.NOTE] 如果你将为此网站使用 Traffic Manager，则必须选择标准模式而非共享模式。
 
-	<!--![][standardmode4]-->
+5.  单击**保存**。
+6.  在系统提示你共享模式（如果你选择“标准”，则此处为标准模式）成本将增加时，如果你同意成本增加，则单击**是**。
 
-	**Note**<br /> 
-	If you receive a "Configuring scale for web site 'web site name' failed" error, you can use the details button to get more information. 
+    **注意**
+    如果出现“为网站‘网站名称’配置规模失败”错误，则可使用详细信息按钮获得详细信息。
 
-<a name="trafficmanager"></a><h2>(Optional) Add your web sites to Traffic Manager</h2>
+<a name="trafficmanager"></a>
+## （可选）将网站添加到 Traffic Manager
 
-If you want to use your web site with Traffic Manager, perform the following steps.
+如果希望为网站使用 Traffic Manager，请执行下列步骤。
 
-1. If you do not already have a Traffic Manager profile, use the information in [Create a Traffic Manager profile using Quick Create][createprofile] to create one. Note the **.trafficmgr.com** domain name associated with your Traffic Manager profile. This will be used in a later step.
+1.  如果还没有 Traffic Manager 配置文件，请根据[使用“快速创建”创建 Traffic Manager 配置文件][]中的信息创建一个。记下与你的 Traffic Manager 配置文件关联的 **.trafficmgr.com** 域名。这将在后面的步骤中使用。
 
-2. Use the information in [Add or Delete Endpoints][addendpoint] to add your web site as an endpoint in your Traffic Manager profile.
+2.  根据[添加或删除终结点][]中的信息在 Traffic Manager 配置文件中将你的网站添加为终结点。
 
-	> [WACOM.NOTE] If your web site is not listed when adding an endpoint, verify that it is configured for Standard mode. You must use Standard mode for your web site in order to work with Traffic Manager.
+    > [WACOM.NOTE] 如果在添加终结点时你的网站未列出，请验证是否已将其配置为标准模式。必须将网站配置为标准模式，Traffic Manager 才起作用。
 
-3. Log on to your DNS registrar's web site, and go to the page for managing DNS. Look for links or areas of the site labeled as **Domain Name**, **DNS**, or **Name Server Management**.
+3.  登录到你的 DNS 注册机构的网站，然后转至用于管理 DNS 的页面。查找网站中标签为**域名**、**DNS**或**名称服务器管理**的链接或区域。
 
-4. Now find where you can select or enter CNAME records. You may have to select the record type from a drop down, or go to an advanced settings page. You should look for the words **CNAME**, **Alias**, or **Subdomains**.
+4.  现在找到你可以在其中选择或输入 CNAME 记录的位置。你可能必须从下拉列表中选择记录类型，或者需要转到高级设置页。应当查找**CNAME**、**别名**或**子域**字样。
 
-5. You must also provide the domain or subdomain alias for the CNAME. For example, **www** if you want to create an alias for **www.customdomain.com**.
+5.  还必须为 CNAME 提供域或子域别名。例如，如果希望为 **www.customdomain.com** 创建别名，则输入 **www**。
 
-5. You must also provide a host name that is the canonical domain name for this CNAME alias. This is the **.trafficmgr.com** name for your web site.
+6.  还必须提供作为此 CNAME 别名的规范域名的主机名。这是你的网站的 **.trafficmgr.com** 名称。
 
-For example, the following CNAME record forwards all traffic from **www.contoso.com** to **contoso.trafficmgr.com**, the domain name of a web site:
+例如，以下 CNAME 记录会将 **www.contoso.com** 的全部流量转发至 **contoso.trafficmgr.com**（网站的域名）：
 
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tr>
-<td><strong>Alias/Host name/Subdomain</strong></td>
-<td><strong>Canonical domain</strong></td>
+<td><strong>别名/主机名/子域</strong></td>
+<td><strong>规范域</strong></td>
 </tr>
 <tr>
 <td>www</td>
@@ -93,43 +93,41 @@ For example, the following CNAME record forwards all traffic from **www.contoso.
 </tr>
 </table>
 
-A visitor of **www.contoso.com** will never see the true host
-(contoso.azurewebsite.net), so the forwarding process is invisible to the end user.
+**www.contoso.com** 的访问者将从不会看到真正的主机
+(contoso.azurewebsite.net)，因此，最终用户看不到转发过程。
 
-> [WACOM.NOTE] If you are using Traffic Manager with a web site, you do not need to follow the steps in the following sections, '**Add a CNAME for your custom domain**' and '**Add an A record for your custom domain**'. The CNAME record created in the previous steps will route incoming traffic to Traffic Manager, which then routes the traffic to the web site endpoint(s).
+> [WACOM.NOTE] 如果你在为网站使用 Traffic Manager，则不需要执行下面的部分（**为自定义域添加 CNAME** 和**为自定义域添加 A 记录**）中的步骤。在前面的步骤中创建的 CNAME 记录会将传入流量路由到 Traffic Manager，然后后者会将流量路由到网站终结点。
 
-<a name="bkmk_configurecname"></a><h2>Add a CNAME for your custom domain</h2>
+<a name="bkmk_configurecname"></a>
+## 为自定义域添加 CNAME
 
-To create a CNAME record, you must add a new entry in the DNS table for your custom domain by using tools provided by your registrar. Each registrar has a similar but slightly different method of specifying a CNAME record, but the concepts are the same.
+若要创建 CNAME 记录，必须使用你的注册机构提供的工具在 DNS 表中为你的自定义域添加一个新条目。每个注册机构指定 CNAME 记录的方法类似但略有不同，但概念是相同的。
 
-1. Use one of these methods to find the **.azurewebsite.net** domain name assigned to your web site.
-
-	* Login to the [Azure Management Portal][portal], select your web site, select **Dashboard**, and then find the **Site URL** entry in the **quick glance** section.
-
-	* Install and configure [Azure Powershell](http://www.windowsazure.com/en-us/manage/install-and-configure-windows-powershell/), and then use the following command:
-
+1.  使用下列方法之一查找分配给你的网站的 **.azurewebsite.net** 域名。
+    -   登录到 [Azure 管理门户][管理门户]，选择你的网站，选择**仪表板**，然后在**速览**部分中查找**网站 URL**条目。
+    -   安装并配置 [Azure Powershell][]，然后使用以下命令：
+			
 			get-azurewebsite yoursitename | select hostnames
-
-	* Install and configure the [Azure Cross-Platform Command Line Interface](http://www.windowsazure.com/en-us/manage/install-and-configure-cli/), and then use the following command:
-
+    -   安装并配置 [Azure 跨平台命令行界面][]，然后使用以下命令：
+            
 			azure site domain list yoursitename
+	保存此 **.azurewebsite.net** 名称，因为在下面的步骤中将使用该名称。
 
-	Save this **.azurewebsite.net** name, as it will be used in the following steps.
+2.  登录到你的 DNS 注册机构的网站，然后转至用于管理 DNS 的页面。查找网站中标签为**域名**、**DNS** 或**名称服务器管理**的链接或区域。
 
-3. Log on to your DNS registrar's web site, and go to the page for managing DNS. Look for links or areas of the site labeled as **Domain Name**, **DNS**, or **Name Server Management**.
+3.  现在找到你可以在其中选择或输入 CNAME 记录的位置。你可能必须从下拉列表中选择记录类型，或者需要转到高级设置页。应当查找**CNAME**、**别名**或**子域**字样。
 
-4. Now find where you can select or enter CNAME records. You may have to select the record type from a drop down, or go to an advanced settings page. You should look for the words **CNAME**, **Alias**, or **Subdomains**.
+4.  还必须为 CNAME 提供域或子域别名。例如，如果希望为 **www.customdomain.com** 创建别名，则输入 **www**。如果你希望为根域创建别名，则可以在你的注册机构的 DNS 工具中将其列出为
+    '\*\* at \*\*
+    ' 符号。
+5.  还必须提供作为此 CNAME 别名的规范域名的主机名。这是你的网站的 **.azurewebsite.net** 名称。
 
-5. You must also provide the domain or subdomain alias for the CNAME. For example, **www** if you want to create an alias for **www.customdomain.com**. If you want to create an alias for the root domain, it may be listed as the '**@**' symbol in your registrar's DNS tools.
-
-5. You must also provide a host name that is the canonical domain name for this CNAME alias. This is the **.azurewebsite.net** name for your web site.
-
-For example, the following CNAME record forwards all traffic from **www.contoso.com** to **contoso.azurewebsite.net**, the domain name of a web site:
+例如，以下 CNAME 记录会将 **www.contoso.com** 的全部流量转发至 **contoso.azurewebsite.net**（网站的域名）：
 
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tr>
-<td><strong>Alias/Host name/Subdomain</strong></td>
-<td><strong>Canonical domain</strong></td>
+<td><strong>别名/主机名/子域</strong></td>
+<td><strong>规范域</strong></td>
 </tr>
 <tr>
 <td>www</td>
@@ -137,101 +135,102 @@ For example, the following CNAME record forwards all traffic from **www.contoso.
 </tr>
 </table>
 
-A visitor of **www.contoso.com** will never see the true host
-(contoso.azurewebsite.net), so the forwarding process is invisible to the
-end user.
+**www.contoso.com** 的访问者将从不会看到真正的主机
+(contoso.azurewebsite.net)，因此，最终用户看不到
+转发过程。
 
-> [WACOM.NOTE] The example above only applies to traffic at the __www__ subdomain. Since you cannot use wildcards with CNAME records, you must create one CNAME for each domain/subdomain. If you want to direct  traffic from subdomains, such as *.contoso.com, to your azurewebsite.net address, you can configure a __URL Redirect__ or __URL Forward__ entry in your DNS settings, or create an A record.
+> [WACOM.NOTE] 以上示例仅适用于 **www** 子域的流量。因为无法为 CNAME 记录使用通配符，所以必须为每个域/子域创建一个 CNAME。如果希望将子域（例如 \*.contoso.com）的流量定向到你的 azurewebsite.net 地址，则可以在 DNS 设置中配置 **URL 重定向** 或 **URL 转发**条目，或者创建一个 A 记录。
 
-> [WACOM.NOTE] It can take some time for your CNAME to propagate through the DNS system. You cannot set the CNAME for the web site until the CNAME has propagated. You can use a service such as <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> to verify that the CNAME is available.
+> [WACOM.NOTE] CNAME 通过 DNS 系统向外传播可能需要一段时间。直到 CNAME 已传播出去，才能设置网站的 CNAME。可使用 <http://www.digwebinterface.com/> 之类的服务确认该 CNAME 是否可用。
 
-###Add the domain name to your web site
+### 将域名添加到网站
 
-After the CNAME record for domain name has propagated, you must associate it with your web site. You can add the custom domain name defined by the CNAME record to your web site by using either the Azure Cross-Platform Command-Line Interface or by using the Azure Management Portal.
+在域名的 CNAME 记录已传播后，必须将其与你的网站关联。你可以使用 Azure 跨平台命令行界面或 Azure 管理门户将 CNAME 记录定义的自定义域名添加到你的网站。
 
-**To add a domain name using the command-line tools**
+**使用命令行工具添加域名**
 
-Install and configure the [Azure Cross-Platform Command-Line Interface](http://www.windowsazure.com/en-us/manage/install-and-configure-cli/), and then use the following command:
+安装并配置 [Azure 跨平台命令行界面][]，然后使用以下命令：
 
-	azure site domain add customdomain yoursitename
+    azure site domain add customdomain yoursitename
 
-For example, the following will add a custom domain name of **www.contoso.com** to the **contoso.azurewebsite.net** web site:
+例如，以下命令会将 **www.contoso.com** 的自定义域名添加到 **contoso.azurewebsite.net** 网站：
 
-	azure site domain add www.contoso.com contoso
+    azure site domain add www.contoso.com contoso
 
-You can confirm that the custom domain name was added to the web site by using the following command:
+可以使用以下命令确认自定义域名是否已添加到网站：
 
-	azure site domain list yoursitename
+    azure site domain list yoursitename
 
-The list returned by this command should contain the custom domain name, as well as the default **.azurewebsite.net** entry.
+此命令返回的列表应当包含自定义域名以及默认的 **.azurewebsite.net** 条目。
 
-**To add a domain name using the Azure Management Portal**
+**使用 Azure 管理门户添加域名**
 
-1. In your browser, open the [Azure Management Portal][portal].
+1.  在浏览器中，打开 [Azure 管理门户][管理门户]。
 
-2. In the **Web Sites** tab, click the name of your site, select **Dashboard**, and then select **Manage Domains** from the bottom of the page.
+2.  在**网站**选项卡中，单击你的网站的名称，选择**仪表板**，然后从页面底部选择**管理域**。
 
-	![][setcname2]
+    ![][3]
 
-6. In the **DOMAIN NAMES** text box, type the domain name that you have configured. 
+3.  在**域名**文本框中，键入你已配置的域名。
 
-	![][setcname3]
+    ![][4]
 
-6. Click the check mark to accept the domain name.
+4.  单击复选标记以接受该域名。
 
-Once configuration has completed, the custom domain name will be listed in the **domain names** section of the **Configure** page of your web site. 
+在完成配置后，自定义域名将在你网站**配置**页的**域名**部分列出。
 
-<a name="bkmk_configurearecord"></a><h2>Add an A Record for your custom domain</h2>
+<a name="bkmk_configurearecord"></a>
+## 为自定义域添加 A 记录
 
-To create an A record, you must first find the IP address of your web site. Then add an entry in the DNS table for your custom domain by using the tools provided by your registrar. Each registrar has a similar but slightly different method of specifying an A record, but the concepts are the same. In addition to creating an A record, you must also create a CNAME record that Azure uses to verify the A record.
+若要创建 A 记录，必须首先找到你的网站的 IP 地址。然后，使用你的注册机构提供的工具在 DNS 表中为你的自定义域添加一个条目。每个注册机构指定 A 记录的方法类似但略有不同，但概念是相同的。除了创建 A 记录之外，还必须创建 Azure 用来验证 A 记录的 CNAME 记录。
 
-1. In your browser, open the [Azure Management Portal][portal].
+1.  在浏览器中，打开 [Azure 管理门户][管理门户]。
 
-2. In the **Web Sites** tab, click the name of your site, select **Dashboard**, and then select **Manage Domains** from the bottom of the screen.
+2.  在**网站**选项卡中，单击你的网站的名称，选择**仪表板**，然后从屏幕底部选择**管理域**。
 
-	![][setcname2]
+    ![][3]
 
-5. On the **Manage custom domains** dialog, locate **The IP Address to use when configuring A records**. Copy the IP address. This will be used when creating the A record.
+3.  在**管理自定义域**对话框上，找到**在配置 A 记录时要使用的 IP 地址**。复制 IP 地址。在创建 A 记录时将使用该地址。
 
-5. On the **Manage custom domains** dialog, note awverify domain name at the end of the text at the top of the dialog. It should be **awverify.mysite.azurewebsites.net** where **mysite** is the name of your web site. Copy this, as it is the domain name used when creating the verification CNAME record.
+4.  在**管理自定义域**对话框上，记下位于对话框顶部文本末尾的 awverify 域名。它应当是 **awverify.mysite.azurewebsites.net**，其中 **mysite** 是你的网站的名称。复制该域名，因为在创建验证用的 CNAME 记录时将使用该域名。
 
-6. Log on to your DNS registrar's web site, and go to the page for managing DNS. Look for links or areas of the site labeled as **Domain Name**, **DNS**, or **Name Server Management**.
+5.  登录到你的 DNS 注册机构的网站，然后转至用于管理 DNS 的页面。查找网站中标签为**域名**、**DNS**或**名称服务器管理**的链接或区域。
 
-6. Find where you can select or enter A and CNAME records. You may have to select the record type from a drop down, or go to an advanced settings page.
+6.  找到你可以在其中选择或输入 A 记录和 CNAME 记录的位置。你可能必须从下拉列表中选择记录类型，或者需要转到高级设置页。
 
-7. Perform the following steps to create the A record:
+7.  执行下列步骤以创建 A 记录：
 
-	1. Select or enter the domain or subdomain that will use the A record. For example, select **www** if you want to create an alias for **www.customdomain.com**. If you want to create a wildcard entry for all subdomains, enter '__*__'. This will cover all sub-domains such as **mail.customdomain.com**, **login.customdomain.com**, and **www.customdomain.com**.
+    1.  选择或输入将使用 A 记录的域或子域。例如，如果希望为 **www.customdomain.com** 创建别名，则选择 **www**。如果希望为所有子域创建通配符条目，请输入 '\_\_\*\_\_'。这将涵盖所有子域，例如 **mail.customdomain.com**、**login.customdomain.com** 和 **www.customdomain.com**。
 
-		If you want to create an A record for the root domain, it may be listed as the '**@**' symbol in your registrar's DNS tools.
+        如果你希望为根域创建 A 记录，则可以在你的注册机构的 DNS 工具中将其列出为 '**@**' 符号。
 
-	2. Enter the IP address of your cloud service in the provided field. This associates the domain entry used in the A record with the IP address of your cloud service deployment.
+    2.  在提供的字段中输入你的云服务的 IP 地址。这会将 A 记录中使用的域条目与你的云服务部署的 IP 地址相关联。
 
-		For example, the following A record forwards all traffic from **contoso.com** to **137.135.70.239**, the IP address of our deployed application:
+        例如，以下 A 记录会将 **contoso.com** 的全部流量转发至 **137.135.70.239**（我们所部署的应用程序的 IP 地址）：
 
-		<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
-		<tr>
-		<td><strong>Host name/Subdomain</strong></td>
-		<td><strong>IP address</strong></td>
-		</tr>
-		<tr>
-		<td>@</td>
-		<td>137.135.70.239</td>
-		</tr>
-		</table>
+        <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
+<tr>
+<td><strong>主机名/子域</strong></td>
+<td><strong>IP 地址</strong></td>
+</tr>
+<tr>
+<td>@</td>
+<td>137.135.70.239</td>
+</tr>
+</table>
 
-		This example demonstrates creating an A record for the root domain. If you wish to create a wildcard entry to cover all subdomains, you would enter '__*__' as the subdomain.
+        此示例展示了如何为根域创建 A 记录。如果希望创建一个通配符条目来涵盖所有子域，则输入 '__*__' 作为子域。
 
-7. Next, create a CNAME record that has an alias of **awverify**, and a canonical domain of **awverify.mysite.azurewebsites.net** that you obtained earlier.
+8.  接下来，创建一个别名为 **awverify** 且规范域为之前获得的 **awverify.mysite.azurewebsites.net** 的 CNAME 记录。
 
-	> [WACOM.NOTE] While an alias of awverify may work for some registrars, others may require the full alias domain name of awverify.www.customdomainname.com or awverify.customdomainname.com.
+    > [WACOM.NOTE] 虽然别名 awverify 对某些注册机构而言可能有效，但是另一些注册机构可能需要完整的别名域名 awverify.www.customdomainname.com 或 awverify.customdomainname.com。
 
-	For example, the following will create an CNAME record that Azure can use to verify the A record configuration.
+    例如，以下示例将创建 Azure 可以用来验证 A 记录配置的 CNAME 记录。
 
-	<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
+    <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 	<tr>
-	<td><strong>Alias/Host name/Subdomain</strong></td>
-	<td><strong>Canonical domain</strong></td>
+	<td><strong>别名/主机名/子域</strong></td>
+	<td><strong>规范域</strong></td>
 	</tr>
 	<tr>
 	<td>awverify</td>
@@ -239,52 +238,76 @@ To create an A record, you must first find the IP address of your web site. Then
 	</tr>
 	</table>
 
-> [WACOM.NOTE] It can take some time for the awverify CNAME to propagate through the DNS system. You cannot set the custom domain name defined by the A record for the web site until the awverify CNAME has propagated. You can use a service such as <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> to verify that the CNAME is available.
+> [WACOM.NOTE] awverify CNAME 通过 DNS 系统向外传播可能需要一段时间。在 awverify CNAME 传播出去之前，你无法为网站设置 A 记录定义的自定义域名。可使用 <http://www.digwebinterface.com/> 之类的服务确认该 CNAME 是否可用。
 
-###Add the domain name to your web site
+### 将域名添加到网站
 
-After the **awverify** CNAME record for domain name has propagated, you can then associate the custom domain defined by the A record with your web site. You can add the custom domain name defined by the A record to your web site by using either the Azure Cross-Platform Command-Line Interface or by using the Azure Management Portal.
+在域名的 **awverify** CNAME 记录已传播后，必须将 A 记录定义的自定义域与你的网站相关联。你可以使用 Azure 跨平台命令行界面或 Azure 管理门户将 A 记录定义的自定义域名添加到你的网站。
 
-**To add a domain name using the command-line tools**
+**使用命令行工具添加域名**
 
-Install and configure the [Azure Cross-Platform Command-Line Interface](http://www.windowsazure.com/en-us/manage/install-and-configure-cli/), and then use the following command:
+安装并配置 [Azure 跨平台命令行界面][]，然后使用以下命令：
 
-	azure site domain add customdomain yoursitename
+    azure site domain add customdomain yoursitename
 
-For example, the following will add a custom domain name of **contoso.com** to the **contoso.azurewebsite.net** web site:
+例如，以下命令会将 **contoso.com** 的自定义域名添加到 **contoso.azurewebsite.net** 网站：
 
-	azure site domain add contoso.com contoso
+    azure site domain add contoso.com contoso
 
-You can confirm that the custom domain name was added to the web site by using the following command:
+可以使用以下命令确认自定义域名是否已添加到网站：
 
-	azure site domain list yoursitename
+    azure site domain list yoursitename
 
-The list returned by this command should contain the custom domain name, as well as the default **.azurewebsite.net** entry.
+此命令返回的列表应当包含自定义域名以及默认的 **.azurewebsite.net** 条目。
 
-**To add a domain name using the Azure Management Portal**
+**使用 Azure 管理门户添加域名**
 
-1. In your browser, open the [Azure Management Portal][portal].
+1.  在浏览器中，打开 [Azure 管理门户][管理门户]。
 
-2. In the **Web Sites** tab, click the name of your site, select **Dashboard**, and then select **Manage Domains** from the bottom of the page.
+2.  在**网站**选项卡中，单击你的网站的名称，选择**仪表板**，然后从页面底部选择**管理域**。
 
-	![][setcname2]
+    ![][3]
 
-6. In the **DOMAIN NAMES** text box, type the domain name that you have configured. 
+3.  在**域名**文本框中，键入你已配置的域名。
 
-	![][setcname3]
+    ![][4]
 
-6. Click the check mark to accept the domain name.
+4.  单击复选标记以接受该域名。
 
-Once configuration has completed, the custom domain name will be listed in the **domain names** section of the **Configure** page of your web site.
+在完成配置后，自定义域名将在你网站**配置**页的**域名**部分列出。
 
-> [WACOM.NOTE] After you have added the custom domain name defined by the A record to your web site, you can remove the awverify CNAME record using the tools provided by your registrar. However, if you wish to add another A record in the future, you will have to recreate the awverify record before you can associate the new domain name defined by the new A record with the web site.
+> [WACOM.NOTE] 在将 A 记录定义的自定义域名添加到你的网站后，可以使用你的注册机构提供的工具删除 awverify CNAME 记录。不过，如果你将来希望添加其他 A 记录，则必须重新创建 awverify 记录，然后才能将新的 A 记录定义的新域名与网站相关联。
 
-## Next steps
+## 后续步骤
 
--   [How to manage web sites](http://www.windowsazure.cn/zh-cn/manage/services/web-sites/how-to-manage-websites/)
+-   [如何管理网站][]
 
--   [Configure an SSL certificate for Web Sites](http://www.windowsazure.com/en-us/develop/net/common-tasks/enable-ssl-web-site/)
+-   [为网站配置 SSL 证书][]
 
+  [http://\<mysite]: http://<mysite
+  [使用 Azure Traffic Manager 控制 Azure 网站流量]: /en-us/documentation/articles/web-sites-traffic-manager/
+  [在 Azure 中配置自定义域名]: http://www.windowsazure.com/en-us/develop/net/common-tasks/custom-dns/
+  [网站定价详细信息]: http://www.windowsazure.com/en-us/pricing/details/web-sites/
+  [了解 CNAME 和 A 记录]: #understanding-records
+  [将网站配置为共享或标准模式]: #bkmk_configsharedmode
+  [将网站添加到 Traffic Manager]: #trafficmanager
+  [为自定义域添加 CNAME]: #bkmk_configurecname
+  [为自定义域添加 A 记录]: #bkmk_configurearecord
+  [关于 CNAME 记录的 Wikipedia 词条]: http://en.wikipedia.org/wiki/CNAME_record
+  [IETF 域名 - 实现和规范]: http://tools.ietf.org/html/rfc1035
+  [定价详细信息]: http://www.windowsazure.cn/zh-cn/pricing/overview/
+  [管理门户]: http://manage.windowsazure.cn
+  []: ./media/custom-dns-web-site/dncmntask-cname-1.png
+  [1]: ./media/custom-dns-web-site/dncmntask-cname-2.png
+  [2]: ./media/custom-dns-web-site/dncmntask-cname-3.png
+  [使用“快速创建”创建 Traffic Manager 配置文件]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn339012.aspx
+  [添加或删除终结点]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh744839.aspx
+  [Azure Powershell]: http://www.windowsazure.com/en-us/manage/install-and-configure-windows-powershell/
+  [Azure 跨平台命令行界面]: http://www.windowsazure.com/en-us/manage/install-and-configure-cli/
+  [3]: ./media/custom-dns-web-site/dncmntask-cname-6.png
+  [4]: ./media/custom-dns-web-site/dncmntask-cname-7.png
+  [如何管理网站]: http://www.windowsazure.cn/zh-cn/manage/services/web-sites/how-to-manage-websites/
+  [为网站配置 SSL 证书]: http://www.windowsazure.com/en-us/develop/net/common-tasks/enable-ssl-web-site/
 
 <!-- Bookmarks -->
 

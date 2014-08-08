@@ -1,29 +1,30 @@
-<properties linkid="get-started-with-scheduler-API" urlDisplayName="Get started with the Scheduler API" pageTitle="Get started with the Scheduler API | Azure" metaKeywords="scheduler" description="TBD" umbracoNaviHide="0" disqusComments="1" editor="mattshel" manager="carolz" titel="Get started with the Scheduler API" authors="" title="Get started with the Scheduler API" />
+<properties linkid="get-started-with-scheduler-API" urlDisplayName="计划程序 API 入门" pageTitle="计划程序 API 入门 | Windows Azure" metaKeywords="计划程序" description="TBD" umbracoNaviHide="0" disqusComments="1" editor="mattshel" manager="carolz" titel="Get started with the Scheduler API" authors="" title="Get started with the Scheduler API" />
 
 
-# Get started with the Scheduler API
+#计划程序 API 入门
 
-(TODO: provide a short description of the article.)
+（TODO: 提供本文的简要说明。）
 
-You will learn:
+您将了解到以下内容：
 
-* (TODO: provide a bulleted list of items the customer will learn by completing this tutorial.  List items should begin with "how to," for example: "How to use Visual Studio to develop for Azure." Each bulleted list item should end in a period.
+*（TODO: 提供客户在完成本教程后将里了解的内容的项目符号列表。列表项应以“如何”开头，例如：“如何使用 Visual Studio 针对 Windows Azure 进行开发”。每个项目符号列表项应以句点结束。
 
-(TODO: provide a description of the final application, followed by a screenshot of the completed application.)
+（TODO: 提供最终应用程序的描述，后跟已完成应用程序的屏幕快照。）
 
-##(TODO: Add a header)
+##（TODO: 添加标头）
 
-(TODO: Step the user through the application. You can use as many h2 and h3 headers as necessary throughout the tutorial. Steps within the sections should be presented in ordered lists.)
+（TODO: 指导用户分步完成应用程序。在教程中，可以使用所需数量的 h2 和 h3 标头。各节中的步骤应在经过排序的列表中列出。）
 
-## Next steps
+## 后续步骤
 
-(TODO: Optional section that points the user to related topics and additional information.  Start with a short  summary and then transition to a list of related articles.)
+（TODO: 可选节，将用户指向相关主题和其他信息。以简短摘要开头，并转换为相关文章的列表。）
 
-* (TODO: Short sentence of link1): [(TODO: Enter link1 text)] [NextStepsLink1]
-* (TODO: Short sentence of link2): [(TODO: Enter link2 text)] [NextStepsLink2]
+* (TODO: link1 的简短句子): [(TODO: 输入 link1 文本)] [NextStepsLink1]
+* (TODO: link2 的简短句子): [(TODO: 输入 link2 文本)] [NextStepsLink2]
 
-enter Next Steps 1 URL)
-enter Next Steps 2 URL)
+输入后续步骤 1 URL)
+输入后续步骤 2 URL)
 
-if used an image1, enter the url here, otherwise delete this)
-if used an image2, enter the url here, otherwise delete this)
+如果使用的是 image1，则在此处输入 url，否则将其删除）
+如果使用的是 image2，则在此处输入 url，否则将其删除）
+

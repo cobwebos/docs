@@ -1,11 +1,11 @@
-Follow these steps to install and run MongoDB on a virtual machine running CentOS Linux.
+﻿按照以下步骤操作可在运行 CentOS Linux 的虚拟机上安装和运行 MongoDB。
 
 <div class="dev-callout">
-<b>Warning</b>
-<p>MongoDB security features, such as authentication and IP address binding, are not enabled by default. Security features should be enabled before deploying MongoDB to a production environment.  See <a href="http://www.mongodb.org/display/DOCS/Security+and+Authentication">Security and Authentication</a> for more information.</p>
+<b>警告</b>
+<p>默认情况下不启用 MongoDB 安全功能，例如身份验证和 IP 地址绑定。在将 MongoDB 部署到生产环境之前，应启用安全功能。有关更多信息，请参见<a href="http://www.mongodb.org/display/DOCS/Security+and+Authentication">安全性和身份验证（可能为英文页面）</a>。</p>
 </div>
 
-1. Configure the Package Management System (YUM) so that you can install MongoDB. Create a */etc/yum.repos.d/10gen.repo* file to hold information about your repository and add the following:
+1. 配置程序包管理系统 (YUM) 以便能够安装 MongoDB。创建 */etc/yum.repos.d/10gen.repo* 文件以保存有关您的存储库的信息并添加以下内容：
 
 		[10gen]
 		name=10gen Repository
@@ -13,29 +13,29 @@ Follow these steps to install and run MongoDB on a virtual machine running CentO
 		gpgcheck=0
 		enabled=1
 
-2. Save the repo file and then run the following command to update the local package database:
+2. 保存 repo 文件，然后运行以下命令以更新本地程序包数据库：
 
 		$ sudo yum update
-3. To install the package, run the following command to install the latest stable version of MongoDB and the associated tools:
+3. 若要安装程序包，请运行以下命令以安装最新的 MongoDB 稳定版本及相关工具：
 
 		$ sudo yum install mongo-10gen mongo-10gen-server
 
-	Wait while MongoDB downloads and installs.
+	下载和安装 MongoDB 时，请等待。
 
-4. Create a data directory. By default MongoDB stores data in the */data/db* directory, but you must create that directory. To create it, run:
+4. 创建数据目录。默认情况下，MongoDB 将数据存储在 */data/db* 目录中，但您必须创建该目录。若要创建它，请运行：
 
 		$ sudo mkdir -p /mnt/datadrive/data
 		$ sudo chown `id -u` /mnt/datadrive/data
 
-	For more information on installing MongoDB on Linux, see [Quickstart Unix][QuickstartUnix].
+	有关在 Linux 上安装 MongoDB 的更多信息，请参见[快速启动 Unix][QuickstartUnix]。
 
-5. To start the database, run:
+5. 若要启动数据库，请运行：
 
 		$ mongod --dbpath /mnt/datadrive/data --logpath /mnt/datadrive/data/mongod.log
 
-	All log messages will be directed to the */mnt/datadrive/data/mongod.log* file as MongoDB server starts and preallocates journal files. It may take several minutes for MongoDB to preallocate the journal files and start listening for connections.
+	当 mongod.exe 服务器启动和预分配日志文件时，所有日志消息都将定向到 */mnt/datadrive/data/mongod.log* 文件。MongoDB 可能需要几分钟来预分配日志文件和开始侦听连接。
 
-6. To start the MongoDB administrative shell, open a separate SSH or PuTTY window and run:
+6. 若要启动 MongoDB 命令行管理程序，请打开一个单独的 SSH 或 PuTTY 窗口并运行：
 
 		$ mongo
 		> db.foo.save ( { a:1 } )
@@ -47,19 +47,19 @@ Follow these steps to install and run MongoDB on a virtual machine running CentO
 		...  
 		> help  
 
-	The database is created by the insert.
+	通过 insert 创建数据库。
 
-7. Once MongoDB is installed you must configure an endpoint so that MongoDB can be accessed remotely. In the Management Portal, click **Virtual Machines**, then click the name of your new virtual machine, then click **Endpoints**.
+7. 在安装 MongoDB 后，您必须配置终结点才能远程访问 MongoDB。在“管理门户”中，依次单击“虚拟机”、您的新虚拟机的名称和“终结点”。
 	
-	![Endpoints][Image7]
+	![终结点][Image7]
 
-8. Click **Add Endpoint** at the bottom of the page.
+8. 单击页面底部的“添加终结点”。
 	
-	![Endpoints][Image8]
+	![终结点][Image8]
 
-9. Add an endpoint with name "Mongo", protocol **TCP**, and both **Public** and **Private** ports set to "27017". This will allow MongoDB to be accessed remotely.
+9. 添加名为“Mongo”的终结点、协议 TCP，并将“公用”和“专用”端口均设置为“27017”。这将允许对 MongoDB 进行远程访问。
 	
-	![Endpoints][Image9]
+	![终结点][Image9]
 
 
 [QuickStartUnix]: http://www.mongodb.org/display/DOCS/Quickstart+Unix
@@ -68,3 +68,4 @@ Follow these steps to install and run MongoDB on a virtual machine running CentO
 [Image7]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint.png
 [Image8]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint2.png
 [Image9]: ./media/install-and-run-mongo-on-centos-vm/LinuxVmAddEndpoint3.png
+

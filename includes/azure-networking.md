@@ -1,64 +1,61 @@
-#Azure Networking
+# Azure 网络
 
-The easiest way to connect to Azure applications and data is through an ordinary Internet connection. But this simple solution isn't always the best approach. Azure also provides technologies for connecting users to Azure datacenters.  This article takes a look at these technologies. 
+连接到 Azure 应用程序和数据的最简单办法是通过普通 Internet 连接。但这种简单办法通常不是最好的办法。Azure 还提供了将用户连接到 Azure 数据中心的技术。本文将介绍这些技术。
 
-##Table of Contents      
-- [Azure Virtual Network](#Vnet)
-- [Azure Traffic Manager](#TrafficMngr)
+## 目录
+
+-   [Azure 虚拟网络](#Vnet)
+-   [Azure Traffic Manager](#TrafficMngr)
 
 <a name="Vnet"></a>
-##Azure Virtual Network
+## Azure 虚拟网络
 
-Azure lets you create virtual machines (VMs) that run in Microsoft datacenters. Suppose your organization wants to use those VMs to run enterprise applications or other software that will be used by the employees in your firm. Maybe you want to create a SharePoint farm in the cloud, for example, or run an inventory management application. To make life as easy as possible for your users, you would like these applications to be accessible just as if they were running in your own datacenter.
+通过 Azure 可以创建在 Microsoft 数据中心中运行的虚拟机 (VM)。假设你的组织要使用这些 VM 运行供你公司员工使用的企业应用程序或其他软件。或许你想要在云中创建一个 SharePoint 服务器场，或运行库存管理应用程序。为了尽可能方便用户操作，你希望可以访问这些应用程序，就好像它们是在你自己的数据中心中运行一样。
 
-There is a standard solution to this kind of problem: create a virtual private network (VPN). Organizations of all sizes do this today to link, say, branch office computers to the main company datacenter. This same approach can work with Azure VMs, as Figure 1 shows.
+有一个标准解决方案可解决此问题：创建一个虚拟专用网络 (VPN)。例如，如今各种规模的组织都通过这种方法将分支办公室计算机链接到公司的主要数据中心。同样的方法也可用于 Azure VM，如图 1 所示。
 
 <a name="Fig1"></a>
-  
+
 ![01_Networking][01_Networking]
 
-**Figure 1: Azure Virtual Network allows creating a virtual network in the cloud that is connected to your on-premises datacenter.**
+**图 1：利用 Azure 虚拟网络，可以在云中创建一个连接到本地数据中心的虚拟网络。**
 
-As the figure shows, Azure Virtual Network lets you create a logical boundary around a group of VMs, called a *virtual network or VNET*, in an Azure datacenter. It then lets you establish an IPsec connection between this VNET and your local network.  The VMs in a VNET can be created using Azure Virtual Machines, Azure Cloud Services, or both. In other words, they can be VMs created using either the Azure Infrastructure as a Service (IaaS) technology or its Platform as a Service (PaaS) technology.
-Whatever choice you make, creating the IPsec connection requires a VPN gateway device, specialized hardware that is attached to your local network, and it also requires the services of your network administrator. Once this connection is in place, the Azure VMs running in your VNET look like just another part of the network in your organization.
+如图所示，利用 Azure 虚拟网络服务可在 Azure 数据中心的一组 VM 周围创建一个称为“虚拟网络或 VNET”**的逻辑边界。然后，你可以在此 VNET 与你的本地网络间建立 IPsec 连接。可以使用 Azure 虚拟机和/或 Azure 云服务创建 VNET 中的 VM。换言之，它们可以是使用 Azure 的“基础结构即服务”(IaaS) 技术或“平台即服务”(PaaS) 技术创建的 VM。不管作何选择，创建 IPsec 连接都需要一台 VPN 网关设备（挂接到本地网络的一个专门硬件），还需要你的网络管理员提供服务。此连接一旦建立，在 VNET 中运行的 Azure VM 就像是你的组织网络的另一部分。
 
-As [Figure 1](#Fig1) suggests, you allocate IP addresses for the Azure VMs from the same IP address space used in your own network. In the scenario shown here, which uses private IP addresses, the VMs in the cloud are just another IP subnet. Software running on your local network will see these VMs as if they were local, just as they do with traditional VPNs. And it is important to note that because this connection happens at the IP level, the virtual and physical machines on both sides can be running any operating system. Azure VMs running Windows Server or Linux can interact with on-premises machines running Windows, Linux, or other systems. It is also possible to use mainstream management tools, including System Center and others, to manage the cloud VMs and the applications they contain.
+如[Figure 1](#Fig1) 所示，你应从自己的网络所使用的同一 IP 地址空间为这些 Azure VM 分配 IP 地址。在此所示的方案中，使用了专用 IP 地址，云中的 VM 就像另一个 IP 子网。在本地网络上运行的软件会将这些 VM 看作本地 VM，就像它们对待传统 VPN 那样。而且，务必要注意，因为此连接发生在 IP 层，所以两端的虚拟机和物理机都可以运行任何操作系统。运行 Windows Server 或 Linux 的 Azure VM 可以与运行 Windows、Linux 或其他系统的本地计算机交互。也可以使用主流管理工具（包括 System Center 和其他工具）来管理云 VM 和它们所包含的应用程序。
 
-Using Azure Virtual Network makes sense in many situations. As already mentioned, this approach lets enterprise users more easily access cloud applications. An important aspect of this ease of use is the ability to make the Azure VMs part of an existing on-premises Active Directory domain to give users single sign-on to the applications they run. You can also create an Active Directory domain in the cloud if you prefer, then connect this domain to your on-premises network.
+使用 Azure 虚拟网络在许多情况下有重要意义。正如已经提到的，这种方法让企业用户能够更轻松地访问云应用程序。这种易用性的一个重要方面是，可以让 Azure VM 成为现有本地 Active Directory 域的一部分，用户凭借单一登录便能访问他们运行的应用程序。如果你愿意，还可以在云中创建 Active Directory 域，然后将此域连接到你的本地网络。
 
-Creating a VNET in an Azure datacenter effectively gives you access to a large pool of on-demand resources. You can create VMs on demand, pay for them while they are running, then remove them (and stop paying) when you no longer need them. This can be useful for scenarios that need fast access to a preconfigured machine, such as development teams building new software. Rather than wait for a local administrator to set up the resources they need, they can create these resources themselves in the public cloud. 
+在 Azure 数据中心中创建 VNET 可以让你高效地根据需要访问大型资源池。你可以按需创建 VM，在运行它们时才付费，不需要时则删除它们（同时停止付费）。这适用于需要快速访问预配置计算机的场景，例如生成新软件的开发团队。他们无需等待本地管理员设置所需的资源，自己就可以在公有云中创建这些资源。
 
-And just as Virtual Network makes Azure VMs appear local to on-premises resources, the reverse is also true: Software running in your local network now appears to be local to applications running in your Azure VNET. Suppose you would like to move an existing on-premises application to Azure, for example, because you have determined that it will be less expensive to operate in the cloud. But what if the data that application uses is required by law to be stored on premises? In a situation like this, using Virtual Network lets the cloud application see an on-premises database system as if it were local, and accessing it becomes straightforward. Whatever scenario you choose, the result is the same: Azure becomes an extension of your own datacenter.
+正如虚拟网络使得 Azure VM 对于本地资源就像是在本地一样，反过来也是如此：现在，在本地网络中运行的软件对于在 Azure VNET 中运行的应用程序就像是在本地。例如，因为你已确定在云中操作会更经济，所以要将一个现有本地应用程序移到 Azure 中。但是，如果按法律要求必须将该应用程序所使用的数据存储在本地，该怎么办？在这种情况下，使用虚拟网络可让云应用程序将本地数据库系统视为在本地，这样，即可轻松访问它。无论选择哪种方案，结果都一样：Azure 将成为你自己的数据中心的扩展。
 
 <a name="TrafficMngr"></a>
-##Azure Traffic Manager
+## Azure Traffic Manager
 
-Imagine that you have built a successful Azure application. Your application is used by many people in many countries around the world. This is a great thing, but as is so often the case, success brings new problems. For instance, your application most likely runs in multiple Azure datacenters in different parts of the world. How can you intelligently direct user request traffic across these datacenters so that your users always get the best experience?
+假设你已经构建了一个成功的 Azure 应用程序。世界各地许多国家/地区的许多人都在使用你的应用程序。这很了不起，但成功也带来了新问题，事情往往如此。例如，你的应用程序很有可能在世界不同地区的多个 Azure 数据中心中运行。如何跨这些数据中心智能地定向用户请求流量，从而让你的用户始终获得最佳体验呢？
 
-Azure Traffic Manager is designed to solve this problem. Figure 2 shows how.
+Azure Traffic Manager 就能解决此问题。图 2 演示了相关原理。
 
 <a name="Fig3"></a>
    
 ![03_TrafficManager][03_TrafficManager]
-   
-**Figure 2: Azure Traffic Manager intelligently directs requests from users across instances of an application running in different Azure datacenters.**
 
-In this example, your application is running in VMs spread across four datacenters: two in the US, one in Europe, and one in Asia. Suppose a user in Berlin wishes to access the application. If you are using Traffic Manager, here is what happens.
+**图 2：Azure Traffic Manager 可以跨运行于不同 Azure 数据中心中的应用程序实例智能地定向用户请求。**
 
-As usual, the user system looks up the DNS name of the application (Step 1). This query is directed to the Azure DNS system (Step 2), which then looks up the Traffic Manager policy for the application. Each policy is created by the owner of a particular Azure application, either through a graphical interface or a REST API. However it is created, the policy specifies one of three load balancing options:
+本例中，你的应用程序在分布在四个数据中心中的 VM 上运行：两个在美国，一个在欧洲，一个在亚洲。假设在柏林的一个用户想要访问该应用程序。如果你正在使用 Traffic Manager，就会发生以下情况。
 
-- **Performance:** All requests are sent to the datacenter with the lowest latency from the user system. 
-- **Failover:** All requests are sent to the datacenter specified by the creator of this policy, unless that datacenter is unavailable. In this case, requests are directed to other datacenters in the priority order defined by the creator of the policy.
-- **Round Robin:** All requests are spread equally across all datacenters in which the application is running.
+像往常一样，该用户的系统会查找你的应用程序的 DNS 名称（步骤 1）。此查询将重定向到 Azure DNS 系统（步骤 2），后者随后查找关于此应用程序的 Traffic Manager 策略。每个策略由特定 Azure 应用程序的所有者通过图形界面或 REST API 创建。无论是通过何种方式创建的，该策略都指定了下列三个负载平衡选项之一：
 
-Once it has the right policy, Traffic Manager figures out which datacenter this request should go to based on which of the three options is specified (Step 3). It then returns the location of the chosen datacenter to the user (Step 4), who accesses that instance of the application (Step 5).
+-   **性能：**所有请求都发送到与用户系统之间的延迟最短的数据中心。
+-   **故障转移：**将所有请求都发送到此策略的创建者所指定的数据中心，除非该数据中心不可用。在这种情况下，将按照策略创建者定义的优先次序将请求定向到其他数据中心。
+-   **循环：**所有请求均匀分布于在其中运行该应用程序的所有数据中心。
 
-For this to work, Traffic Manager must have a current picture of which instances of the application are up and running in each datacenter. To make this possible, Traffic Manager periodically pings each copy of the application via an HTTP GET, then records whether it receives a response. If an application instance stops responding, Traffic Manager will stop directing users to that instance until it resumes responding to pings. 
+一旦获得正确策略，Traffic Manager 就会根据所指定的三个选项之一来指出此请求应到达哪个数据中心（步骤 3）。然后，它将选定数据中心的位置返回给用户（步骤 4），然后此用户即可访问该应用程序实例（步骤 5）。
 
-Not every application is big enough or global enough to need Traffic Manager. For those that do, however, this can be a very useful service.
+为实现此目的，Traffic Manager 必须知道每个数据中心目前已启动并在运行该应用程序的哪些实例。为此，Traffic Manager 会定期通过 HTTP GET 对应用程序的每个副本执行 ping 操作，然后记录是否收到响应。如果一个应用程序实例停止响应，Traffic Manager 将停止将用户定向到该实例，直到它恢复响应 ping 为止。
+
+并非每个应用程序都足够大或使用面足够广到需要使用 Traffic Manager 的程度。但是，对于那些确实足够大或使用面足够广的应用程序而言，这可能是一项很有用的服务。
 
 [01_Networking]: ./media/azure-networking/Networking_01Networking.png
-<!--[03_TrafficManager]: ./media/azure-networking/Networking_03TrafficManager.png-->
-
-
-
+[03_TrafficManager]: ./media/azure-networking/Networking_03TrafficManager.png

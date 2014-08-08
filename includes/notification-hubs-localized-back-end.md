@@ -1,8 +1,8 @@
 
 
-In your back-end app, you now have to switch to sending template notifications instead of native payloads. This will simplify the back-end code as you will not have to send multiple payloads for the different platforms.
+在您的后端应用程序中，您现在必须切换到发送模板通知而不是本机负载。这将简化后端代码，因为您不必为不同的平台发送多个负载。
 
-When you send template notifications you only need to provide a set of properties, in our case we will send the set of properties containing the localized version of the current news, for instance:
+当您发送模板通知时，您只需提供一组属性，在本例中，我们将发送一组包含当前新闻的本地化版本的属性，例如：
 
 	{
 		"News_English": "World News in English!",
@@ -11,18 +11,18 @@ When you send template notifications you only need to provide a set of propertie
 	}
 
 
-This section shows how to send notifications in two different ways:
+本节演示如何通过两种不同的方式发送通知：
 
-- using a console app
-- using a Mobile Services script
+- 使用控制台应用程序
+- 使用移动服务脚本
 
-The included code broadcasts to both Windows Store and iOS devices, since the backend can broadcast to any of the supported devices.
+包括的代码将广播到 Windows 应用商店和 iOS 设备，因为该后端可广播到支持的任何设备。
 
 
 
-## To send notifications using a C# console app ##
+## 使用 C# 控制台应用程序发送通知##
 
-We will simply modify your *SendNotificationAsync* method by sending a single template notification.
+我们将只是通过发送一条模板通知来修改 *SendNotificationAsync* 方法。
 
 	var hub = NotificationHubClient.CreateClientFromConnectionString("<connection string>", "<hub name>");
     var notification = new Dictionary<string, string>() {
@@ -31,11 +31,11 @@ We will simply modify your *SendNotificationAsync* method by sending a single te
                             {"News_Mandarin", "World News in Mandarin!"}};
     await hub.SendTemplateNotificationAsync(notification, "World");
 
-Note that this simple call will deliver the correct localized piece of news to **all** your devices, irrespective of the platform, as your Notification Hub builds and delivers the correct native payload to all the devices subscribed to a specific tag.
+请注意，此简单调用不管平台如何都会将正确的本地化新闻传递到您的“所有”设备，因为您的通知中心将生成正确的本机负载并将其传递到已订阅特定标记的所有设备。
 
-### Mobile Services
+### 移动服务
 
-In your Mobile Service scheduler, overwrite your script with:
+在您的移动服务计划程序中，使用以下代码覆盖您的脚本：
 
 	var azure = require('azure');
     var notificationHubService = azure.createNotificationHubService('<hub name>', <connection string with full access>');
@@ -50,4 +50,6 @@ In your Mobile Service scheduler, overwrite your script with:
 		}
 	});
 	
-Note how in this case there is no need to send multiple notifications for different locales and platforms.
+请注意为何在本例中无需为不同的区域设置和平台发送多条通知。
+
+

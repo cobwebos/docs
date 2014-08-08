@@ -1,26 +1,27 @@
-While it's possible to paste a MongoLab URI into your code, we recommend configuring it in the environment for ease of management. This way, if the URI changes, you can update it through the Azure Portal without going to the code.
+﻿虽然可以将 MongoLab URI 粘贴到您的代码中，但建议在易于管理的环境中配置它。这样，您就可以在 URI 发生更改时通过 Windows Azure 门户更新它，而不需要使用代码。
 
 
-1. In the Azure Portal, select **Web Sites**.
-1. Click the name of the web site in the web site list.  
+1. 在 Windows Azure 门户中，选择“网站”。
+1. 在网站列表中单击网站的名称。
 ![WebSiteEntry][entry-website]  
-The Web Site Dashboard displays.
+将显示“网站仪表板”。
 
-1. Click **Configure** in the menu bar.  
+1. 单击菜单栏中的“配置”。
 ![WebSiteDashboardConfig][focus-mongolab-websitedashboard-config]
 
-1. Scroll down to the Connection Strings section.  
+1. 向下滚动到“连接字符串”部分。
 ![WebSiteConnectionStrings][focus-mongolab-websiteconnectionstring]
 
-1. For **Name**, enter MONGOLAB_URI.
-1. For **Value**, paste the connection string we obtained in the previous section.
-1. Select **Custom** in the **Type** drop-down list (instead of the default **SQLAzure**).
-1. Click **Save** on the toolbar.  
+1. 对于“名称”，请输入 MONGOLAB_URI。
+1. 对于“值”，请粘贴我们在上一节中获得的连接字符串。
+1. 在“类型”下拉列表中选择“自定义”（而不是默认的 SQLAzure）。
+1. 单击工具栏上的“保存”。
 ![SaveWebSite][button-website-save]
 
-**Note:** Azure adds the **CUSTOMCONNSTR\_** prefix to this variable, which is why the code above references **CUSTOMCONNSTR\_MONGOLAB_URI.**
+**注意：**Windows Azure 会向该变量中添加 CUSTOMCONNSTR\_ 前缀，这正是上面的代码引用 CUSTOMCONNSTR\_MONGOLAB_URI 的原因。
 
 [entry-website]: ./media/howto-save-connectioninfo-mongolab/entry-website.png
 [focus-mongolab-websitedashboard-config]: ./media/howto-save-connectioninfo-mongolab/focus-mongolab-websitedashboard-config.png
 [focus-mongolab-websiteconnectionstring]: ./media/howto-save-connectioninfo-mongolab/focus-mongolab-websiteconnectionstring.png
 [button-website-save]: ./media/howto-save-connectioninfo-mongolab/button-website-save.png
+
