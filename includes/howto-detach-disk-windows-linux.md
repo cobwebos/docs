@@ -1,106 +1,107 @@
-<properties writer="kathydav" editor="tysonn" manager="jeffreyg" />
+﻿<properties writer="kathydav" editor="tysonn" manager="jeffreyg" />
 
 
 
-#How to Detach a Data Disk from a Virtual Machine 
+#如何从虚拟机分离数据磁盘
 
 #
 
-- [Concepts](#concepts)
-- [How to: Find the disks that are attached to a virtual machine](#finddisks)
-- [How to: Detach a data disk](#detachdisk)
+- [概念](#concepts)
+- [如何查找附加到虚拟机的磁盘](#finddisks)
+- [如何分离数据磁盘](#detachdisk)
 
 
 
-## <a id="concepts"> </a>Concepts ##
+## <a id="concepts"> </a>概念##
 
 
 
-A virtual machine in Azure uses different types of disks, such as an operating system disk, a local temporary disk, and optional data disks. You can attach a data disk to a virtual machine to store application data. A data disk is a virtual hard disk (VHD) that you can create either locally with your own computer or in the cloud with Azure.
+Windows Azure 中的虚拟机使用各种类型的磁盘，例如操作系统磁盘、本地临时磁盘以及可选数据磁盘。您可以将数据磁盘附加到虚拟机以存储应用程序数据。数据磁盘是您可以使用自己的计算机在本地创建，或者使用 Windows Azure 在云中创建的虚拟硬盘 (VHD)。
 
-You can attach and detach data disks any time you want, but you are limited in the number of disks that you can attach to a virtual machine based on the size of the machine.
+您可以随时根据需要附加和分离数据磁盘，但会根据计算机的大小限制您可以附加到虚拟机的磁盘数。
 
-When you no longer need a data disk that is attached to a virtual machine, you can easily detach it. This process does not delete the disk from storage. If you want to use the existing data on the disk again, you can easily attach the disk again to the same virtual machine, or attach it to a new virtual machine.  
+当您不再需要附加到虚拟机中的数据磁盘时，您可以轻松地分离它。此过程不会从存储中删除磁盘。如果您希望再次使用磁盘上的现有数据，则可以轻松地将磁盘再次附加到相同的虚拟机，或者将其附加到新虚拟机。
 
-For more information about using data disks, see [Manage disks and images] [].
-
-
-
-## <a id="finddisks"> </a>How to: Find disks attached to a virtual machine ##
+有关使用数据磁盘的更多信息，请参见[管理磁盘和映像][]。
 
 
 
-You can find the disks that are attached to a virtual machine by using either the dashboard or the Disks page of Virtual Machines.
+## <a id="finddisks"> </a>如何查找附加到虚拟机的磁盘##
 
 
 
-###Use the dashboard to find information about attached disks###
+您可以使用仪表板或虚拟机的“磁盘”页面来查找附加到虚拟机中的磁盘。
 
 
 
-1. If you have not already done so, sign in to the Azure [Management Portal](http://manage.windowsazure.cn).
+###使用仪表板可查找有关所附加磁盘的信息###
 
 
 
-2. Click **Virtual Machines**, and then select the appropriate virtual machine.
+1. 登录到 Windows Azure [管理门户](http://manage.windowsazure.com)（如果您尚未这么做）。
 
 
 
-3. Click **Dashboard**. On the dashboard for the virtual machine, you can find the number of attached disks and the names of the disks. The following example shows one data disk attached to a virtual machine:
+2. 单击“虚拟机”，然后选择相应的虚拟机。
+
+
+
+3.单击“仪表板”。在该虚拟机的仪表板中，您可以找到附加的磁盘数和这些磁盘的名称。以下示例显示了附加到虚拟机的数据磁盘：
 
 		
-	![Find data disk](./media/howto-detach-disk-windows-linux/FindDataDisks.png)	
+	![查找数据磁盘](./media/howto-detach-disk-windows-linux/FindDataDisks.png)	
 	
 	
-**Note:** At least one disk is attached to all virtual machines. Each virtual machine has an operating system disk attached that you cannot detach without deleting the virtual machine. The local temporary disk is not listed in the disks section because it is not persistent.
+**注意**：至少应为所有虚拟机附加一个磁盘。每个虚拟机中都附加有一个操作系统磁盘，如果不删除虚拟机，则无法分离该磁盘。磁盘部分未列出本地临时磁盘，因为它不存在。
 
 
 
-###Use the Disks page of Virtual Machines to find information about attached disks###
+###使用虚拟机的“磁盘”页查找有关附加磁盘的信息###
 
 
 
-1. If you have not already done so, sign in to the Azure [Management Portal](http://manage.windowsazure.cn).
+1. 登录到 Windows Azure [管理门户](http://manage.windowsazure.com)（如果您尚未这么做）。
 
 
 
-2. Click **Virtual Machines**, and then click **Disks**. This page shows a list of all disks that are available to use with virtual machines and the disks that are being used by virtual machines. The list is a combination of operating system disks and data disks. To differentiate between the two types of disks that are attached to the virtual machine, use the dashboard.
+2. 单击“虚拟机”，然后单击“磁盘”。该页显示可用于虚拟机的所有磁盘的列表，以及正由虚拟机使用的磁盘。该列表同时包含操作系统磁盘和数据磁盘。若要区分附加到虚拟机的这两种类型的磁盘，请使用仪表板。
 
 
 
-	**Note:** When you attach a new data disk to a virtual machine, you can assign a name to the .vhd file that is used for the disk, but Azure assigns the name of the disk. The name consists of the cloud service name, the virtual machine name, and a numeric identifier.
+	**注意**：将新的数据磁盘附加到虚拟机时，您可以将一个名称分配给将用于该磁盘的 .vhd 文件，但 Windows Azure 分配该磁盘的名称。该名称由云服务名称、虚拟机名称和数字标识符组成。
 
 
 
-## <a id="detachdisk"> </a>How to: Detach a data disk ##
+## <a id="detachdisk"> </a>如何分离数据磁盘##
 
-After you find the name of the disk that you want to detach, you can complete the following steps to detach the disk from the virtual machine.
-
-
-
-1. If you have not already done so, sign in to the Azure Management Portal.
+在找到要分离的磁盘的名称后，您可以通过完成以下步骤来从虚拟机中分离该磁盘。
 
 
 
-2. Click **Virtual Machines**, select the virtual machine that has the data disk you want to detach, and then click **Detach The Disk**.
+1. 登录到 Windows Azure 管理门户（如果您尚未这么做）。
+
+
+
+2. 单击“虚拟机”，选择具有要分离的数据磁盘的虚拟机，然后单击“分离磁盘”。
 
 	
 
 
-3. Select the data disk, and then click the check mark to detach it.
+3. 选择数据磁盘，然后单击复选标记以分离该磁盘。
 
 
-	![Detach disk details](./media/howto-detach-disk-windows-linux/DetachDiskDetails.png)
+	![分离磁盘详细信息](./media/howto-detach-disk-windows-linux/DetachDiskDetails.png)
 
-	The disk remains in storage but is no longer attached to a virtual machine.
-
-
-You can now attach the disk again to the same virtual machine or to a new machine. For instructions, see [How to Attach a Data Disk to a Virtual Machine] [attachdisk].
+	磁盘将保留在存储中，但不再附加到虚拟机。
 
 
+您现在可以将该磁盘再次附加到同一虚拟机中，或附加到新虚拟机中。有关说明，请参见[如何将数据磁盘附加到虚拟机][attachdisk]。
 
 
 
-[attachdisk]:/en-us/manage/windows/how-to-guides/attach-a-disk/
 
-[Manage disks and images]:http://msdn.microsoft.com/library/azure/jj672979.aspx
+
+[attachdisk]：/zh-cn/manage/windows/how-to-guides/attach-a-disk/
+
+[管理磁盘和映像]：http://go.microsoft.com/fwlink/p/?LinkId=263439
+

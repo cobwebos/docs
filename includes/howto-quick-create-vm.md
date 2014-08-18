@@ -1,36 +1,37 @@
-<properties writer="kathydav" editor="tysonn" manager="jeffreyg" /> 
+﻿<properties writer="kathydav" editor="tysonn" manager="jeffreyg" /> 
 
-#How to Quickly Create a Virtual Machine
+#如何快速创建虚拟机
 
-You use the **Quick Create** method to quickly create a virtual machine in the Management Portal. When you create this machine, you use one dialog box to provide the configuration details.
+您可以使用管理门户中的“快速创建”方法快速创建虚拟机。在创建此虚拟机时，您将使用一个对话框来提供配置详细信息。
 
-**Note**: This article creates a virtual machine that is not connected to a virtual network. If you want your virtual machine to use a virtual network, use the **From Gallery** method instead and specify the virtual network when you create the virtual machine. For more information about virtual networks, see [Azure Virtual Network Overview](http://go.microsoft.com/fwlink/p/?LinkID=294063).
+**注意**：本文创建的是不连接到虚拟网络的虚拟机。如果您希望虚拟机使用虚拟网络，请改用“从库中”方法并在创建虚拟机时指定虚拟网络。有关虚拟网络的更多信息，请参见 [Windows Azure 虚拟网络概述](http://go.microsoft.com/fwlink/p/?LinkID=294063)。
 
-1. Sign in to the [Azure Management Portal](http://manage.windowsazure.cn).
+1. 登录到 [Windows Azure 管理门户](http://manage.windowsazure.com)。
 
-2. On the command bar, click **New**.
+2. 在命令栏上，单击“新建”。
 
-	![Create a new virtual machine](./media/howto-quick-create-vm/create.png)
+	![新建虚拟机](./media/howto-quick-create-vm/create.png)
 
-3. Click **Virtual Machines**, and then click **Quick Create**.
+3. 单击“虚拟机”，然后单击“快速创建”。
 
-	![Quick Create a new virtual machine](./media/howto-quick-create-vm/createquick.png)
+	![快速创建新的虚拟机](./media/howto-quick-create-vm/createquick.png)
 
-	The **Create a New Virtual Machine** dialog box appears.
+	将显示“新建虚拟机”对话框。
 
-4. Type the following information for the new virtual machine:
+4. 键入新虚拟机的以下信息：
 
-	- **DNS Name** - the name that is used for both the virtual machine that is created and the cloud service that contains the virtual machine.
-	- **Image** - the platform image that is used to create the virtual machine. 
-	- **User Name** - the name of the account that you want to use to manage the virtual machine.
-	- **Account Password** - type and confirm a strong password for the account.
-	- **Location** - the region that contains the virtual machine. 
+	- **DNS 名称** - 同时用于所创建的虚拟机和包含虚拟机的云服务的名称。
+	- **映像** - 用于创建虚拟机的平台映像。
+	- **用户名** - 要用于管理虚拟机的帐户的名称。
+	- **帐户密码** - 键入并确认帐户的强密码。
+	- **位置** - 包含虚拟机的区域。
 
-5. Click the check mark to create the virtual machine.
+5. 单击复选标记可创建虚拟机。
 
-	**Note:** A storage account is automatically created to contain this virtual machine.   
+	**注意**：将自动创建一个存储帐户以包含此虚拟机。
 
-	You will see the new virtual machine listed in on the **Virtual Machines** page.
+	“虚拟机”页中将列出新的虚拟机。
 
-	![Virtual machine creation success](./media/howto-quick-create-vm/vmsuccesswindows.png)
+	![成功创建虚拟机](./media/howto-quick-create-vm/vmsuccesswindows.png)
+
 

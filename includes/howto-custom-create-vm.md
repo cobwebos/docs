@@ -1,64 +1,67 @@
-<properties authors="kathydav" editor="tysonn" manager="jeffreyg" />
+<properties writer="kathydav" editor="tysonn" manager="jeffreyg" />
 
-#How to Create a Custom Virtual Machine
+#如何创建自定义虚拟机
 
-A *custom* virtual machine refers to a virtual machine you create using the **From Gallery** method because it lets you configure more options than the **Quick Create** method. These options include:
+通过创建自定义虚拟机，您可以选择在使用“快速创建”方法时不可用的选项。这些选项包括连接到虚拟网络、连接到现有云服务以及连接到可用性集。
 
-- More choices for the image to use to create the virtual machine (VM)
-- Connecting the VM to a virtual network 
-- Adding the VM to an existing cloud service 
-- Adding the VM to an availability set
+每台虚拟机都将独自或与位于相同云服务中的其他虚拟机一起与某个云服务相关联。在相同云服务中放置多台虚拟机一般是为了提供应用程序的负载平衡。如果您的应用程序只需要一台虚拟机，或者您要创建第一台虚拟机，则将在创建虚拟机时创建云服务。否则，您需将新的虚拟机添加到现有云服务。
 
-**Important**: If you want your virtual machine to use a virtual network so you can connect to it directly by hostname or set up cross-premises connections, make sure you specify the virtual network when you create the virtual machine. A virtual machine can be configured to join a virtual network only when you create the virtual machine. For more information about virtual networks, see [Azure Virtual Network Overview](http://go.microsoft.com/fwlink/p/?LinkID=294063).
+**重要说明**：如果您希望您的虚拟机使用虚拟网络，以便可以按主机名直接连接到它或者设置跨界连接，则请确保在创建虚拟机时指定虚拟网络。仅当创建虚拟机后，才能将该虚拟机配置为加入虚拟网络。有关虚拟网络的更多信息，请参见 [Windows Azure 虚拟网络概述](http://go.microsoft.com/fwlink/p/?LinkID=294063)。
 
-1. Sign in to the [Azure Management Portal](http://manage.windowsazure.cn).
+1. 登录到 [Windows Azure 管理门户](http://manage.windowsazure.com)。
 
-2. On the command bar, click **New**.
+2. 在命令栏上，单击“新建”。
 
-3. Click **Compute**, click **Virtual Machine**, and then click **From Gallery**.
+3. 依次单击“计算”、“虚拟机”和“从库中”。
 
-4. Choose the image you want to use, and then click the arrow to continue.
-
-5. If multiple versions of the image are available, in **Version Release Date**, pick the version you want to use. 
-
-6. In **Virtual Machine Name**, type the name that you want to use for the virtual machine.
-
-7. Use **Tier** and **Size** to select the appropriate size for the virtual machine. The size you select affects the maximum configuration of the virtual machine, as well as the pricing. For configuration details, see [Virtual Machine and Cloud Service Sizes for Azure](http://go.microsoft.com/fwlink/p/?LinkID=389844).
-
-8. In **New User Name**, type a name for the administrative account that you want to use to manage the server. 
-
-9. In **New Password**, type a strong password for the administrative account. In **Confirm Password**, retype the same password.
-
-10. Click the arrow to continue.
-
-11. In **Cloud Service**, do one of the following:
+4. 从“平台映像”选择想要使用的平台映像，然后单击箭头以继续。
 	
-	- If this is the first or only virtual machine in the cloud service, select **Create a New Cloud Service**. Then, in **Cloud Service DNS Name**, type a name that uses between 3 and 24 lowercase letters and numbers. This name becomes part of the URI that is used to contact the virtual machine through the cloud service.
-	- If this virtual machine is being added to a cloud service, select it in the list.
+5. 如果提供了多个版本的映像，请在“版本发布日期”中，选取您要使用的版本。
 
-	**Note**: For more information about placing virtual machines in the same cloud service, see [How to connect virtual machines in a cloud service](http://azure.microsoft.com/zh-cn/documentation/articles/cloud-services-connect-virtual-machine/).
+6. 在“虚拟机名称”中，键入您要用于该虚拟机的名称。
 
-12. In **Region/Affinity Group/Virtual Network**, select region, affinity group, or virtual network that you want to use for the virtual machine. For more information about affinity groups, see [About Affinity Groups for Virtual Network](http://msdn.microsoft.com/zh-cn/library/azure/jj156085.aspx).
+7. 在“大小”中，选择要用于该虚拟机的大小。所选大小具体取决于您应用程序所需的内核数。
 
-13. In **Storage Account**, select an existing storage account for the VHD file, or use an automatically generated storage account. Only one storage account per region is automatically created. All other virtual machines that you create with this setting are located in this storage account. You are limited to 20 storage accounts.
+8. 在“新用户名”中，键入要用于管理服务器的管理帐户的名称。
 
-14. If you want the virtual machine to belong to an availability set, in **Availability Set**, select **Create availability set** or add it to an existing availability set. 
+9. 在“新密码”中，为虚拟机上的管理帐户键入要使用的强密码。在“确认密码”中，重新键入相同密码。
 
-	**Note**: Virtual machine that are members of an availability set are deployed to different fault domains. Placing multiple virtual machines in an availability set helps ensure that your application is available during network failures, local disk hardware failures, and any planned downtime.
+10. 单击箭头以继续。
 
-15.  Under **Endpoints**, review the new endpoints that will be created to allow connections to the virtual machine, such through Remote Desktop or a Secure Shell (SSH) client. You also can add endpoints now, or create them later. For instructions on creating them later, see [How to Set Up Endpoints to a Virtual Machine](http://azure.microsoft.com/zh-cn/documentation/articles/virtual-machines-set-up-endpoints/). 
+11. 在“云服务”中，执行下列操作之一：
+	
+- 如果这是云服务中的第一台虚拟机或唯一的一台虚拟机，请选择“新建云服务”。然后，在“云服务 DNS 名称”中，键入使用 3 到 24 个小写字母和数字的名称。此名称将成为用于通过云服务联系虚拟机的 URI 的一部分。
+- 如果要将此虚拟机添加到云服务，请在列表中选择它。
 
-16.  Under **VM Agent**, decide whether to install the VM Agent. This agent provides the environment for you to install extensions that can help you interact with the virtual machine. For details, see [Manage Extensions](http://go.microsoft.com/FWLink/p/?LinkID=390493).
+	**注意**：有关在相同云服务中放置虚拟机的更多信息，请参见[如何连接云服务中的虚拟机](http://www.windowsazure.com/zh-cn/manage/windows/how-to-guides/connect-to-a-cloud-service/)。
 
-17. Click the arrow to create the virtual machine.
+12. 在“区域/地缘组/虚拟网络”中，选择要用于该虚拟机的区域、地缘组或虚拟网络。有关地缘组的更多信息，请参见[关于虚拟网络的地缘组][]。
+
+13. 在“存储帐户”中，选择 VHD 文件的现有存储帐户，或者使用自动生成的存储帐户。每个区域只能自动创建一个存储帐户。使用此设置创建的所有其他虚拟机也位于该存储帐户中。您最多只能创建 20 个存储帐户。
+
+14. 如果您希望虚拟机属于一个可用性集，请在“可用性集”中，选择“创建可用性集”或将虚拟机添加到现有可用性集。
+
+	**注意**：属于可用性集成员的虚拟机将部署到不同的故障域中。在一个可用性集中放置多台虚拟机将帮助确保您的应用程序在出现网络故障、本地磁盘硬件故障以及任何计划内停机时仍然可用。
+
+15. 在“VM 代理”下，确定是否要安装 VM 代理。此代理为您提供安装扩展的环境，可帮助您与虚拟机交互。有关详细信息，请参见[使用扩展](http://go.microsoft.com/FWLink/p/?LinkID=394093)。
+	**重要说明**：仅当您创建虚拟机时才能安装 VM 代理。
+
+15. 在“终结点”下，查看为了允许通过远程桌面或安全 Shell (SSH) 客户端等连接到虚拟机而要创建的新终结点。您还可现在添加终结点，或者稍后创建终结点。有关稍后创建终结点的说明，请参见[如何设置与虚拟机的通信](http://www.windowsazure.com/zh-cn/manage/linux/how-to-guides/setup-endpoints/)。
 
 
-	![Custom virtual machine creation successful](./media/howto-custom-create-vm/VMSuccessWindows.png)
+16. 单击箭头以创建虚拟机。
 
-##Next Steps##
-After the virtual machine is created, it's started automatically. When the portal shows the status as running, you can log in to the virtual machine. For instructions, see one of the following articles:
 
-- [How to Log on to a Virtual Machine Running Linux](../virtual-machines-linux-how-to-log-on)
-- [How to Log on to a Virtual Machine Running Windows Server](../virtual-machines-log-on-windows-server)
+	![成功创建自定义虚拟机](./media/howto-custom-create-vm/VMSuccessWindows.png)
+
+
+[将虚拟机添加到虚拟网络]：/zh-cn/manage/services/networking/add-a-vm-to-a-virtual-network/
+
+[关于虚拟网络的地缘组]：http://msdn.microsoft.com/zh-cn/library/windowsazure/
+
+[新建虚拟机]：./media/howto-custom-create-vm/Create.png
+
+[新建自定义虚拟机]：./media/howto-custom-create-vm/CreateNew.png
+
 
 

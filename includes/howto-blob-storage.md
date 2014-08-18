@@ -1,54 +1,51 @@
-## <a name="what-is"> </a>What is Blob Storage
+﻿## <a name="what-is"> </a>什么是 Blob 存储
 
-Azure Blob storage is a service for storing large amounts of
-unstructured data that can be accessed from anywhere in the world via
-HTTP or HTTPS. A single blob can be hundreds of gigabytes in size. 
+Windows Azure Blob 存储是一项可存储大量非结构化数据
+的服务，用户可在世界任何地方通过 HTTP 或 HTTPS 访问
+这些数据。单个 Blob 可包含数百 GB，单个存储帐户
+最多可包含 200TB 的 Blob，前提是它是在 2012 年 6 月 8 日
+或之后创建的；此日期之前创建的存储帐户最多可包含
+100TB 的 Blob。有关存储帐户容量的详细信息，请参见 [Windows Azure 存储可伸缩性和性能目标](http://msdn.microsoft.com/zh-cn/library/dn249410.aspx)。
 
-An Azure storage account can contain large amounts of blob, queue, and table data. See [Azure Storage Scalability and Performance Targets](http://msdn.microsoft.com/zh-cn/library/dn249410.aspx) for details about storage account capacity.
+Blob 存储的常见用途包括：
 
-Common uses of Blob storage include:
+-   直接为浏览器提供图像或文档
+-   存储文件以供分布式访问
+-   流式传输视频和音频
+-   执行安全备份和灾难恢复
+-   存储数据以供本地或 Windows Azure 托管服务执行分析
 
--   Serving images or documents directly to a browser
--   Storing files for distributed access
--   Streaming video and audio
--   Performing secure backup and disaster recovery
--   Storing data for analysis by an on-premises or Azure-hosted
-    service
+您可以使用 Blob 存储向外公布数据，或者私下公布数据以供在
+内部存储应用程序。
 
-You can use Blob storage to expose data publicly to the world or
-privately for internal application storage.
+## <a name="concepts"> </a>概念
 
-## <a name="concepts"> </a>Concepts
-
-The Blob service contains the following components:
+Blob 服务包含以下组件：
 
 ![Blob1][Blob1]
 
--   **Storage Account:** All access to Azure Storage is done
-    through a storage account. See [Azure Storage Scalability and Performance Targets](http://msdn.microsoft.com/zh-cn/library/dn249410.aspx) for details about storage account capacity.
+-   **存储帐户**：对 Windows Azure 存储服务的所有访问都要通过存储帐户完成。有关存储帐户容量的详细信息，请参见 [Windows Azure 存储可伸缩性和性能目标](http://msdn.microsoft.com/zh-cn/library/dn249410.aspx)。
 
--   **Container:** A container provides a grouping of a set of blobs.
-    All blobs must be in a container. An account can contain an
-    unlimited number of containers. A container can store an unlimited
-    number of blobs.
+-   **容器**：一个容器包含一组 blob 集。
+    所有 blob 必须位于相应的容器中。一个帐户可以包含无限个容器。一个容器可以存储无限个 blob。
 
--   **Blob:** A file of any type and size. There are two types of blobs
-    that can be stored in Azure Storage: block and page blobs.
-    Most files are block blobs. A single block blob can be up to 200 GB
-    in size. This tutorial uses block blobs. Page blobs, another blob
-    type, can be up to 1 TB in size, and are more efficient when ranges
-    of bytes in a file are modified frequently. For more information
-    about blobs, see [Understanding Block Blobs and Page Blobs][].
+-   **Blob**：任何类型和大小的文件。可将两类 Blob 存储到 Windows Azure 存储服务中：
+块 Blob 和页 Blob。
+    大部分文件都是块 blob。一个块 Blob 的大小可以达到 200 GB。本教程使用的是块 Blob。另一种 Blob 类型为页 Blob，
+其大小可以达 1 TB，在对文件中的一系列字节进行频繁修改时，
+这种 Blob 类型更加高效。有关 Blob 的更多信息，
+请参见[了解块 Blob 和页 Blob][]。
 
--   **URL format:** Blobs are addressable using the following URL
-    format:   
+-   **URL 格式**：使用以下 URL 格式对 Blob
+    寻址：   
     http://`<storage
-    account>`.blob.core.chinacloudapi.cn/`<container>`/`<blob>`
+    account>`.blob.core.windows.net/`<container>`/`<blob>`  
       
-    The following example URL could be used to address one of the blobs in the
-    diagram above:  
+    以下示例 URL 可用于对上图中的某个 Blob
+    寻址： 
     `http://sally.blob.core.windows.net/movies/MOV1.AVI`
 
 
-  [Understanding Block Blobs and Page Blobs]: http://msdn.microsoft.com/zh-cn/library/azure/ee691964.aspx
+  [了解块 Blob 和页 Blob]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ee691964.aspx
 [Blob1]: ./media/howto-blob-storage/blob1.jpg
+

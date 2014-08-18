@@ -1,178 +1,179 @@
 <properties writer="kathydav" editor="tysonn" manager="jeffreyg" /> 
 
-#Manage the Availability of Virtual Machines#
+#管理虚拟机的可用性#
 
-To help ensure the availability of your application, we strongly recommend using multiple virtual machines that provide redundancy. To provide redundancy, configure more than one virtual machine to perform the same function or role. This redundancy is required to receive a guaranteed level of service. Also be sure to consider dependencies. For example, if virtual machine "IIS1" depends on services provided by virtual machine "SQL1," redundancy for virtual machine "SQL1" is provided by "SQL2" to help avoid service interruptions. For more information about service level agreements,  see the "Cloud Services, Virtual Machines and Virtual Network" section in [Service Level Agreements](http://www.windowsazure.cn/zh-cn/support/legal/sla/).
+为了帮助确保您的应用程序的可用性，我们强烈建议使用可提供冗余的多台虚拟机。若要提供冗余，请配置多台虚拟机来执行相同的功能或角色。获得有保证的水平的服务需要此冗余。另请确保考虑依赖关系。例如，如果虚拟机“IIS1”依赖虚拟机“SQL1”提供的服务，“SQL2”将提供虚拟机“SQL1”的冗余来帮助避免服务中断。有关服务级别协议要求的更多信息，请参见[服务级别协议](http://www.windowsazure.com/zh-cn/support/legal/sla/)中的“云服务、虚拟机和虚拟网络”一节。
 
-This approach can help ensure that your application is available during local network failures, local disk hardware failures, and any planned downtime that the platform may require.
+此方法可帮助确保在出现本地网络故障、本地磁盘硬件故障以及平台可能需要的任何计划内停机时，应用程序仍然可用。
 
-You manage the availability of an application that uses multiple virtual machines by adding the virtual machines to an availability set. Availability sets are directly related to fault domains and update domains. A fault domain in Azure is defined by avoiding single points of failure, like the network switch or power unit of a rack of servers. In fact, a fault domain is closely equivalent to a rack of physical servers.  When multiple virtual machines are connected in a cloud service, an availability set places the virtual machines in different fault domains. The following diagram shows two availability sets with two virtual machines in each set.
+通过将多台虚拟机添加到一个可用性集中，您可以管理使用这些虚拟机的应用程序的可用性。可用性集直接与容错域和更新域相关。通过避免单点（例如服务器机架上的网络交换机或电源设备）故障，可定义 Windows Azure 中的容错域。事实上，容错域近似等同物理服务器机架。当多台虚拟机在云服务中连接在一起时，可用性集会将这些虚拟机放在不同的容错域中。下面的示意图显示两个可用性集，其中每个可用性集包含两台虚拟机。
 
-![Update domains](./media/manage-vm-availability/UpdateDomains.png)
+![更新域](./media/manage-vm-availability/UpdateDomains.png)
 
-Azure periodically updates the operating system that hosts the instances of an application. A virtual machine is shut down when an update is applied. An update domain is used to ensure that not all of the virtual machine instances are updated at the same time. When you assign multiple virtual machines to an availability set, Azure ensures that the machines are assigned to different update domains. The previous diagram shows two virtual machines running Internet Information Services (IIS) in separate update domains and two virtual machines running SQL Server also in separate update domains.
+Windows Azure 定期更新承载应用程序实例的操作系统。在应用更新时，虚拟机将关闭。更新域用来确保不是所有虚拟机实例都在同一时间更新。当您将多台虚拟机分配到某个可用性集时，Windows Azure 可确保这些虚拟机将分配到不同的更新域。上图显示两台运行 Internet Information Services (IIS) 的虚拟机位于不同的更新域中，两台运行 SQL Server 的虚拟机也位于不同的更新域中。
 
-You should use a combination of availability sets and load-balancing endpoints to help ensure that your application is always available and running efficiently. For more information about using load-balanced endpoints, see [Load Balancing Virtual Machines] [].
+应结合使用可用性集和负载平衡终结点，以帮助确保应用程序始终可用并且高效运行。有关使用负载平衡终结点的更多信息，请参见[对虚拟机进行负载平衡][]。
 
-This task includes the following steps:
+此任务包括下列步骤：
 
-- [Step 1: Create a virtual machine and an availability set] []
-- [Step 2: Add a virtual machine to the cloud service and assign it to the availability set during the creation process] []
-- [Step 3: (Optional) Create an availability set for previously created virtual machines] []
-- [Step 4: (Optional) Add a previously created virtual machine to an availability set] []
+- [步骤 1：创建虚拟机和可用性集][]
+- [步骤 2：在创建过程中将虚拟机添加到云服务中并将其分配给可用性集][]
+- [步骤 3：（可选）为先前创建的虚拟机创建可用性集][]
+- [步骤 4：（可选）将先前创建的虚拟机添加到可用性集中][]
 
-## <a id="createset"> </a>Step 1: Create a virtual machine and an availability set ##
+## <a id="createset"> </a>步骤 1：创建虚拟机和可用性集##
 
-To create an availability set that contains virtual machines, you can create the first virtual machine and the availability set at the same time, and then you can add virtual machines to the availability set as you create them. You can also create virtual machines, create an availability set, and then add all of the machines to the set.
+若要创建包含虚拟机的可用性集，可以同时创建第一台虚拟机和可用性集，然后在创建更多虚拟机的同时，将这些虚拟机添加到可用性集中。也可以创建虚拟机，创建一个可用性集，然后将所有这些虚拟机添加到该可用性集中。
 
-**To create a virtual machine and availability set**
+创建虚拟机和可用性集
 
-1. If you have not already done so, sign in to the Azure Management Portal.
+1. 登录到 Windows Azure 管理门户（如果您尚未这么做）。
 
-2. On the command bar, click **New**.
+2. 在命令栏上，单击“新建”。
 
-	![Create a virtual machine](./media/manage-vm-availability/Create.png)
+	![创建虚拟机](./media/manage-vm-availability/Create.png)
 
-3. Click **Virtual Machine**, and then click **From Gallery**.
+3. 单击“虚拟机”，然后单击“从库中”。
 
 
-	The **Select the virtual machine operating system** dialog box appears. 
+	将显示“选择虚拟机操作系统”对话框。
 	
-4. From **Platform Images**, select an image and then click the arrow to continue.
+4. 从“平台映像”中，选择一个映像，然后单击箭头以继续。
 
-	The **Virtual machine configuration** dialog box appears.
+	将显示“虚拟机配置”对话框。
 
-5. In **Virtual Machine Name**, type the name that you want to use for the virtual machine.
+5. 在“虚拟机名称”中，键入您要用于该虚拟机的名称。
 
-6. In **New User Name**, type a name for the administrative account that you want to use to manage the server. 
+6. 在“新用户名”中，键入要用于管理服务器的管理帐户的名称。
 
-7. In **New Password**, type a strong password for the administrative account. In **Confirm Password**, retype the password that you previously entered.
+7. 在“新密码”中，为管理帐户键入一个强密码。在“确认密码”中，再次键入您之前输入的密码。
 
-8. In **Size**, select the size that you want to use for the virtual machine. The size that you select depends on the number of cores that are needed for your application.
+8. 在“大小”中，选择要用于该虚拟机的大小。所选大小具体取决于您应用程序所需的内核数。
 
-9. Click the arrow to continue.
+9. 单击箭头以继续。
 
-	The **Virtual machine mode** dialog box appears.
+	将显示“虚拟机模式”对话框。
 	
-10. Choose **Stand-alone virtual machine**.
+10. 选择“独立虚拟机”。
 
-11.	In **DNS Name**, type a name for the cloud service that is created for the machine. The name can contain from 3 through 24 lowercase letters and numbers.
+11. 在“DNS 名称”中，键入为虚拟机创建的云服务的名称。该名称可包含 3 到 24 个小写字母和数字。
 
-12.	In **Storage Account**, select a storage account where the .vhd file is stored, or you can select to have a storage account automatically created. Only one storage account per region is automatically created. All other virtual machines that you create with this setting are located in this storage account. You are limited to 20 storage accounts.
+12. 在“存储帐户”中，选择存储 .vhd 文件的存储帐户，或者也可以选择自动创建存储帐户。每个区域只能自动创建一个存储帐户。使用此设置创建的所有其他虚拟机也位于该存储帐户中。您最多只能创建 20 个存储帐户。
 
-13.	In **Region/Affinity Group/Virtual Network**, select region, affinity group, or virtual network that you want to contain the virtual machine. For more information about affinity groups, see [About Affinity Groups for Virtual Network] [].
+13. 在“区域/地缘组/虚拟网络”中，选择要包含该虚拟机的区域、地缘组或虚拟网络。有关地缘组的更多信息，请参见[关于虚拟网络的地缘组][]。
 
-14. Click the arrow to continue.
+14. 单击箭头以继续。
 
-	The **Virtual machine options** dialog box appears.
+	将显示“虚拟机选项”对话框。
 
-15. In **Availability Set**, select **Create availability set**.
+15. 在“可用性集”中，选择“创建可用性集”。
  
-16. In **Availability Set Name**, enter the name for the availability set.
+16. 在“可用性集名称”中，输入可用性集的名称。
 
-17.	Click the arrow to create the virtual machine and the availability set.
+17. 单击箭头以创建虚拟机和可用性集。
 
-	From the dashboard of the new virtual machine, you can click **Configure** and see that the virtual machine is a member of the new availability set.
+	从新虚拟机的仪表板中，单击“配置”，您会看到该虚拟机现在是新可用性集的一个成员。
 
-## <a id="addmachine"> </a>Step 2: Add a virtual machine to the cloud service and assign it to the availability set during the creation process ##
+## <a id="addmachine"> </a>步骤 2：在创建过程中将虚拟机添加到云服务中并将其分配给可用性集##
 
-The previous step showed you how to create a virtual machine and availability set at the same time. You can now create a new virtual machine, connect it to the cloud service of the first virtual machine, and then add it to the availability set that you previously created.
+上一步向您展示了如何同时创建虚拟机和可用性集。现在，您可以创建一台新虚拟机，将其连接到包含第一台虚拟机的云服务，然后再将其添加到先前创建的可用性集中。
 
-**To connect a new virtual machine and add it to the availability set**
+连接新虚拟机并将其添加到可用性集中
 
-1. If you have not already done so, sign in to the Azure Management Portal.
+1. 登录到 Windows Azure 管理门户（如果您尚未这么做）。
 
-2. On the command bar, click **New**.
+2. 在命令栏上，单击“新建”。
 
-	![Create a virtual machine](./media/manage-vm-availability/Create.png)
+	![创建虚拟机](./media/manage-vm-availability/Create.png)
 
-3. Click **Virtual Machine**, and then click **From Gallery**.
+3. 单击“虚拟机”，然后单击“从库中”。
 
-	![Create from gallery](./media/manage-vm-availability/CreateNew.png)
+	![从库创建](./media/manage-vm-availability/CreateNew.png)
 
-	The **Select the virtual machine operating system** dialog box appears. You can now select an image from the Image Gallery.
-
-	
-4. Click **Platform Images**, select the platform image that you want to use, and then click the arrow to continue.
-
-	The **Virtual machine configuration** dialog box appears.
-
-5. In **Virtual Machine Name**, type the name that you want to use for the virtual machine.
-
-6. 6.In **New User Name**, type a name for the administrative account that you want to use to manage the server. 
-
-7. In **New Password**, type a strong password for the administrative account on the virtual machine. In **Confirm Password**, retype the password.
-
-8. In **Size**, select the size that you want to use for the virtual machine. The size that you select depends on the number of cores that are needed for your application.
-
-9. For a virtual machine running the Linux operating system, you can select to secure the machine with an SSH Key.
-
-10.	Click the arrow to continue.
-
-	The **Virtual machine mode** dialog box appears.
+	将显示“选择虚拟机操作系统”对话框。您现在可从映像库中选择一个映像。
 
 	
-11. Select **Connect to existing Virtual Machine** to create a new virtual machine that will be connected with the first virtual machine in the availability set.  Select the cloud service that contains the virtual machine in the availability set.
+4. 单击“平台映像”，选择想要使用的平台映像，然后单击箭头以继续。
 
-12. In **Storage Account**, select a storage account where the VHD file is stored.
+	将显示“虚拟机配置”对话框。
 
-13. In **Region/Affinity Group/Virtual Network**, select region that you want to contain the virtual machine.
+5. 在“虚拟机名称”中，键入您要用于该虚拟机的名称。
 
-14. Click the arrow to continue.
+6. 在“新用户名”中，键入要用于管理服务器的管理帐户的名称。
 
-	The **Virtual machine options** dialog box appears.
+7. 在“新密码”中，为虚拟机上的管理帐户键入强密码。在“确认密码”中，重新键入密码。
 
-15. Select the availability set that was created when you created the first virtual machine.
+8. 在“大小”中，选择要用于该虚拟机的大小。所选大小具体取决于您应用程序所需的内核数。
 
-16. Click the check mark to create the connected virtual machine and add it to the availability set.
+9. 对于运行 Linux 操作系统的虚拟机，您可以选择通过 SSH 密钥保护虚拟机。
 
-	From the dashboard of the new virtual machine, you can click **Configure** and see that the virtual machine is a member of the new availability set.
+10. 单击箭头以继续。
 
-## <a id="previousmachine"> </a>Step 3: (Optional) Create an availability set for previously created virtual machines ##
+	将显示“虚拟机模式”对话框。
 
-You can create an availability set and add a virtual machine to it after you create the machine. After you create a virtual machine, you can configure the size of the machine and whether it is a member of an availability set.
+	
+11. 选择“连接到现有虚拟机”以创建一台将与可用性集中第一台虚拟机连接的新虚拟机。选择包含可用性集中该虚拟机的云服务。
 
-**To create a new availability set**
+12. 在“存储帐户”中，选择存储 VHD 文件的存储帐户。
 
-1. If you have not already done so, sign in to the Azure Management Portal.
+13. 在“区域/地缘组/虚拟网络”中，选择要包含该虚拟机的区域。
 
-2. Click **Virtual Machines**, and then select the virtual machine that you want to configure.
+14. 单击箭头以继续。
 
-3. Click **Configure**.
+	将显示“虚拟机选项”对话框。
 
-4. In the **Availability Set** section, select **Create Availability Set**, and then enter a name for the set.
+15. 选择您在创建第一台虚拟机时创建的可用性集。
 
+16. 单击复选标记以创建已连接的虚拟机并将其添加到可用性集中。
 
-5. Click **Save**.
+	从新虚拟机的仪表板中，单击“配置”，您会看到该虚拟机现在是新可用性集的一个成员。
 
-	**Note:** This might result in the virtual machine being restarted to finalize the membership in the availability set. 
+## <a id="previousmachine"> </a>步骤 3：（可选）为先前创建的虚拟机创建可用性集##
 
-## <a id="existingset"> </a>Step 4: (Optional) Add a previously created virtual machine to an availability set ##
+您可以创建一个可用性集，在创建虚拟机后将其添加到该可用性集中。在创建虚拟机后，可以配置其大小以及它是否为某个可用性集的成员。
 
-You can easily add an existing virtual machine to an availability set that was previously created. To add a virtual machine to an availability set, it must connected to the same cloud service as the other virtual machines in the set. For more information about connecting virtual machines, see [How to Connect Virtual Machines in a Cloud Service] [].
+创建新的可用性集
 
-**To add an existing virtual machine to an availability set**
+1. 登录到 Windows Azure 管理门户（如果您尚未这么做）。
 
-1. If you have not already done so, sign in to the Azure Management Portal.
+2. 单击“虚拟机”，然后选择您要配置的虚拟机。
 
-2. Click **Virtual Machines**, and then select the virtual machine that you want to add to the availability set.
+3. 单击“配置”。
 
-3. Click **Configure**.
-
-4. In the **Availability Set** section, select the availability set that you previously created.
-
-5. Click **Save**. 
-
-	**Note:** This might result in the virtual machine being restarted to finalize the membership in the availability set.
+4. 在“可用性集”部分，选择“创建可用性集”，然后输入该可用性集的名称。
 
 
-[Step 1: Create a virtual machine and an availability set]: #createset
-[Step 2: Add a virtual machine to the cloud service and assign it to the availability set during the creation process]: #addmachine
-[Step 3: (Optional) Create an availability set for previously created virtual machines]: #previousmachine
-[Step 4: (Optional) Add a previously created virtual machine to an availability set]: #existingset
+5. 单击“保存”。
+
+	注意：这可能导致虚拟机重新启动以最终确定它在可用性集中的成员身份。
+
+## <a id="existingset"> </a>步骤 4：（可选）将先前创建的虚拟机添加到可用性集中##
+
+您可以轻松地将现有虚拟机添加到先前创建的可用性集中。若要将某台虚拟机添加到可用性集中，该虚拟机必须连接到包含此可用性集中其他虚拟机的同一云服务。有关连接虚拟机的更多信息，请参见[如何连接云服务中的虚拟机][]。
+
+将现有虚拟机添加到可用性集中
+
+1. 登录到 Windows Azure 管理门户（如果您尚未这么做）。
+
+2. 单击“虚拟机”，然后选择要添加到可用性集中的虚拟机。
+
+3. 单击“配置”。
+
+4. 在“可用性集”部分，选择先前创建的可用性集。
+
+5. 单击“保存”。
+
+	注意：这可能导致虚拟机重新启动以最终确定它在可用性集中的成员身份。
+
+
+[步骤 1：创建虚拟机和可用性集]: #createset
+[步骤 2：在创建过程中将虚拟机添加到云服务中并将其分配给可用性集]: #addmachine
+[步骤 3：（可选）为先前创建的虚拟机创建可用性集]: #previousmachine
+[步骤 4：（可选）将先前创建的虚拟机添加到可用性集中]: #existingset
 
 
 <!-- LINKS -->
-[Load Balancing Virtual Machines]: ../load-balance-virtual-machines
-[About Affinity Groups for Virtual Network]: http://msdn.microsoft.com/zh-cn/library/azure/jj156085.aspx
-[How to connect virtual machines in a cloud service]: ../virtual-machines-connect-cloud-service
+[对虚拟机进行负载平衡]：../load-balance-virtual-machines
+[关于虚拟网络的地缘组]：http://msdn.microsoft.com/library/windowsazure/jj156085.aspx
+[如何连接云服务中的虚拟机]：../virtual-machines-connect-cloud-service
+

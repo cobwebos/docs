@@ -1,30 +1,30 @@
 
-This section shows how to send notifications in two different ways:
+本节演示如何通过两种不同的方式发送通知：
 
-- [From a console app]
-- [From Mobile Services]
+- [通过控制台应用程序]
+- [通过移动服务]
 
-Both backends send notifications to both Windows Store and iOS devices. You can send notifications from any backend using the [Notification Hubs REST interface]. 
+这两种后端都会向 Windows 应用商店和 iOS 设备发送通知。您可使用[通知中心 REST 接口]通过任何后端发送通知。
 
-<h3><a name="console"></a>To send notifications from a console app in C#</h3>
+<h3><a name="console"></a>通过使用 C# 的控制台应用程序发送通知</h3>
 
-Skip steps 1-3 if you created a console app when you completed [Get started with Notification Hubs][get-started].
+如果您在完成[通知中心入门][get-started]时创建了控制台应用程序，则跳过步骤 1-3。
 
-1. In Visual Studio create a new Visual C# console application: 
+1. 在 Visual Studio 中创建新的 Visual C# 控制台应用程序：
 
    	![][13]
 
-2. In the Visual Studio main menu, click **Tools**, **Library Package Manager**, and **Package Manager Console**, then in the console window type the following and press **Enter**:
+2. 在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”，然后在控制台窗口中键入以下命令并按 **Enter**：
 
         Install-Package WindowsAzure.ServiceBus
  	
-	This adds a reference to the Azure Service Bus SDK by using the <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet package</a>. 
+	这将通过使用 <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 程序包</a>添加对 Azure Service Bus SDK 的引用。
 
-3. Open the file Program.cs and add the following `using` statement:
+3. 打开文件 Program.cs 并添加以下 `using` 语句：
 
         using Microsoft.ServiceBus.Notifications;
 
-4. In the `Program` class, add the following method, or replace it if it already exists:
+4. 在 `Program` 类中，添加以下方法，或替换此方法（如果已存在）：
 
         private static async void SendNotificationAsync()
         {
@@ -72,38 +72,38 @@ Skip steps 1-3 if you created a console app when you completed [Get started with
             }
 		 }
 
-	This code sends notifications for each of the six tags in the string array to Windows Store, Windows Phone and iOS devices. The use of tags makes sure that devices receive notifications only for the registered categories.
+	此代码将针对字符串数组中的所有 6 个标记将通知发送到 Windows 应用商店、Windows Phone 和 iOS 设备。使用标记是为了确保设备仅接收注册类别的通知。
 	
-	<div class="dev-callout"><strong>Note</strong> 
-		<p>This backend code supports Windows Store, Windows Phone and iOS clients. Send methods return an error response when the notification hub hasn't yet been configured for a particular client platform. </p>
+	<div class="dev-callout"><strong>注意</strong>
+		<p>此后端代码支持 Windows 应用商店、Windows Phone 和 iOS 客户端。发送方法将在尚未为特定客户端平台配置通知中心时返回错误响应。</p>
 	</div>
 
-6. In the above code, replace the `<hub name>` and `<connection string with full access>` placeholders with your notification hub name and the connection string for *DefaultFullSharedAccessSignature* that you obtained earlier.
+6. 在上面的代码中，将 `<hub name>` 和 `<connection string with full access>` 占位符替换为您的通知中心的名称和您之前获取的 *DefaultFullSharedAccessSignature* 的连接字符串。
 
-7. Add the following lines in the **Main** method:
+7. 在 **Main** 方法中添加下列行：
 
          SendNotificationAsync();
 		 Console.ReadLine();
 
-You can now proceed to [Run the app and generate notifications].
+您现在可继续[运行应用程序和生成通知]。
 
-###<a name="mobile-services"></a>To send notifications from Mobile Services
+###<a name="mobile-services"></a>通过移动服务发送通知
 
-To send a notification using a Mobile Service do the following:
+若要使用移动服务发送通知，请执行下列操作：
 
-0. Complete the tutorial [Get started with Mobile Services] to create your mobile service.
+0. 完成[移动服务入门]教程以创建您的移动服务。
 
-1. Log on to the [Azure Management Portal], click Mobile Services, then click your mobile service.
+1. 登录到 [Azure 管理门户]，单击“移动服务”，然后单击您的移动服务。
 
-2. Click the **Scheduler** tab, then click **Create**.
+2. 单击“计划程序”选项卡，然后单击“创建”。
 
    	![][15]
 
-3. In **Create new job**, type a name, select **On demand**, and then click the check to accept.
+3. 在“新建作业”中，键入名称，选择“按需”，然后单击对号以接受。
 
    	![][16]
 
-4. After the job is created, click the job name and then in the **Script** tab insert the following script inside the scheduled job function: 
+4. 创建作业后，单击作业名称，然后在“脚本”选项卡中，在计划的作业函数中插入以下脚本：
 
 	    var azure = require('azure');
 	    var notificationHubService = azure.createNotificationHubService(
@@ -127,11 +127,11 @@ To send a notification using a Mobile Service do the following:
 		        }, sendComplete);
 		    }
 
-	This code sends notifications for each of the six tags in the string array to Windows Store, Windows Phone and iOS devices. The use of tags makes sure that devices receive notifications only for the registered categories.
+	此代码将针对字符串数组中的所有 6 个标记将通知发送到 Windows 应用商店、Windows Phone 和 iOS 设备。使用标记是为了确保设备仅接收注册类别的通知。
 
-6. In the above code, replace the `<hub name>` and `<connection string with full access>` placeholders with your notification hub name and the connection string for *DefaultFullSharedAccessSignature* that you obtained earlier.
+6. 在上面的代码中，将 `<hub name>`` 和 <connection string with full access>`占位符替换为您的通知中心的名称和您之前获取的 *DefaultFullSharedAccessSignature* 的连接字符串。
 
-7. Add the following helper function after the scheduled job function, then click **Save**.: 
+7. 在计划的作业函数后添加以下帮助器函数，然后单击“保存”。
 	
         function sendComplete(error) {
  		   if (error) {
@@ -142,16 +142,16 @@ To send a notification using a Mobile Service do the following:
 	        }
 	    }
 	
-	<div class="dev-callout"><strong>Note</strong> 
-		<p>This code supports Windows Store, Windows Phone and iOS clients. Send methods return an error response when a registration doesn't exist for a particular platform. To avoid this, consider using template registrations to send a single notification to multiple platforms. For an example, see <a href="/en-us/manage/services/notification-hubs/breaking-news-localized-dotnet/">Use Notification Hubs to broadcast localized breaking news</a>. </p>
+	<div class="dev-callout"><strong>注意</strong>
+		<p>此代码支持 Windows 应用商店、Windows Phone 和 iOS 客户端。发送方法将在不存在特定平台的注册时返回错误响应。为了避免此种情况，请考虑使用模板注册将一条通知发送给多个平台。有关示例，请参见<a href="/zh-cn/manage/services/notification-hubs/breaking-news-localized-dotnet/">使用通知中心广播本地化的突发新闻</a>。</p>
 	</div>
 
-You can now proceed to [Run the app and generate notifications].
+您现在可继续[运行应用程序和生成通知]。
 
 <!-- Anchors -->
-[From a console app]: #console
-[From Mobile Services]: #mobile-services
-[Run the app and generate notifications]: #test-app
+[通过控制台应用程序]: #console
+[通过移动服务]: #mobile-services
+[运行应用程序和生成通知]: #test-app
 
 <!-- Images. -->
 [13]: ./media/notification-hubs-back-end/notification-hub-create-console-app.png
@@ -160,11 +160,12 @@ You can now proceed to [Run the app and generate notifications].
 [16]: ./media/notification-hubs-back-end/notification-hub-scheduler2.png
 
 <!-- URLs. -->
-[get-started]: /en-us/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Use Notification Hubs to send notifications to users]: ../notificationhubs/tutorial-notify-users-mobileservices.md
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
-[Azure Management Portal]: https://manage.windowsazure.cn/
-[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/zh-cn/library/jj927172.aspx
-[Notification Hubs REST interface]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn223264.aspx
+[get-started]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[使用通知中心向用户发送通知]: ../notificationhubs/tutorial-notify-users-mobileservices.md
+[移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started/#create-new-service
+[Azure 管理门户]: https://manage.windowsazure.com/
+[wns 对象]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+[通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
+[针对 Windows 应用商店的通知中心操作指南]: http://msdn.microsoft.com/zh-cn/library/jj927172.aspx
+[通知中心 REST 接口]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn223264.aspx
+

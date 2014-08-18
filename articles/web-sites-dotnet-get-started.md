@@ -1,251 +1,210 @@
-<properties linkid="develop-net-tutorials-get-started-vs2013" pageTitle="Get started with Azure Web Sites for ASP.NET" metaKeywords="" description="This tutorial shows you how to create an ASP.NET web project in Visual Studio 2013 and deploy it to an Azure Web Site. In less than 15 minutes you'll have an app up and running in the cloud." metaCanonical="" services="web-sites" documentationCenter=".NET" title="Get started with Azure Web Sites and ASP.NET" authors="tdykstra"  solutions="" manager="wpickett" editor="mollybos"  />
+﻿<properties linkid="develop-net-tutorials-get-started-vs2013" urlDisplayName="Windows Azure 入门" pageTitle="Windows Azure for .NET 入门" metaKeywords="" description="本教程说明如何使用 Visual Studio 2013 将 ASP.NET 网站部署到 Windows Azure。在不到 15 分钟内，您将有了在云中运行的应用程序。" metaCanonical="" services="web-sites" documentationCenter=".NET" title="Windows Azure 和 ASP.NET 入门" authors=""  solutions="" writer="tdykstra" manager="wpickett" editor="mollybos"  />
 
 
-# Get started with Azure Web Sites and ASP.NET
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/develop/net/tutorials/get-started/" title="Visual Studio 2013" class="current">Visual Studio 2013</a><a href="/en-us/develop/net/tutorials/get-started-vs2012/" title="Visual Studio 2012">Visual Studio 2012</a></div>
 
-This tutorial shows how to create an ASP.NET web application and deploy it to an Azure Web Site by using Visual Studio 2013 or Visual Studio 2013 for Web Express. The tutorial assumes that you have no prior experience using Azure or ASP.NET. On completing the tutorial, you'll have a simple web application up and running in the cloud.
 
-You can open an Azure account for free, and if you don't already have Visual Studio 2013, the SDK automatically installs Visual Studio 2013 for Web Express. So you can start developing for Azure entirely for free.
+# Windows Azure 和 ASP.NET 入门
+
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/develop/net/tutorials/get-started/" title="Visual Studio 2013" class="current">Visual Studio 2013</a><a href="/zh-cn/develop/net/tutorials/get-started-vs2012/" title="Visual Studio 2012">Visual Studio 2012</a></div>
+
+本教程说明如何使用 Visual Studio 2013 或 Visual Studio 2013 for Web Express 中的“发布 Web”向导将 ASP.NET Web 应用程序部署到 Windows Azure 网站。（如果您喜欢使用 Visual Studio 2012，请参见[本教程的上一版本](/zh-cn/develop/net/tutorials/get-started-vs2012/)。）
+
+您可以免费注册一个 Windows Azure 帐户，而且，如果您还没有 Visual Studio 2013，则此 SDK 会自动安装 Visual Studio 2013 for Web Express。这样您就能够完全免费地开始针对 Windows Azure 进行开发。
+
+本教程假定您之前未使用过 Windows Azure。完成本教程之后，您将能够在云中启动并运行简单的 Web 应用程序。
  
-You'll learn:
+您将了解到以下内容：
 
-* How to enable your machine for Azure development by installing the Azure SDK.
-* How to create a Visual Studio ASP.NET web project and deploy it to an Azure Web Site.
-* How to make a change to the project and redeploy.
+* 如何通过安装 Windows Azure SDK 来让您的计算机可以进行 Windows Azure 开发。
+* 如何创建 Visual Studio ASP.NET MVC 5 项目并将其发布到 Windows Azure 网站。
 
-The following illustration shows the completed application:
+下图演示了完整的应用程序：
 
-![Web site home page](./media/web-sites-dotnet-get-started-vs2013/deployedandazure.png)
+![网站主页](./media/web-sites-dotnet-get-started-vs2013/GS13homepage.png)
 
->[WACN.NOTE] To complete this tutorial, you need an Azure account. If you don't have an account, you can <a href="/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">activate your MSDN subscriber benefits</a> or <a href="/en-us/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">sign up for a free trial</a>.
+<div class="dev-callout"><strong>注意</strong><p>若要完成本教程，您需要一个 Windows Azure 帐户。如果您没有帐户，可以<a href="/zh-cn/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">激活 MSDN 订户权益</a>或<a href="/zh-cn/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">注册以获取免费试用版</a>。</p></div>
  
-### Tutorial segments
+### 教程章节
 
-* [Set up the development environment](#set-up-the-development-environment)
-* [Create an ASP.NET web project in Visual Studio](#create-an-asp.net-web-project)
-* [Deploy the application to Azure](#deploy-the-application-to-azure)
-* [Make a change and redeploy](#make-a-change-and-redeploy)
-* [Next steps](#next-steps)
+1. [设置开发环境](#setupdevenv)
+3. [创建 ASP.NET MVC 5 应用程序](#createapp)
+4. [将应用程序部署到 Windows Azure](#deploytowindowsazure)
+5. [后续步骤](#nextsteps)
 
 [WACOM.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]
 
 
-## Create an ASP.NET web application
+<h2><a name="createapp"></a><span class="short-header">创建应用程序</span>创建 ASP.NET MVC 5 应用程序</h2>
 
-Your first step is to create a web application project. Visual Studio will automatically create the Azure Web Site that you'll deploy your project to later. 
+第一步是创建要发布到 Windows Azure 的 Visual Studio Web 应用程序项目。
 
-1. Open Visual Studio 2013 or Visual Studio 2013 Express for Web.
+### 创建项目
 
-2. From the **File** menu, click **New Project**.
+1. 打开 Visual Studio 2013 或 Visual Studio 2013 Express for Web。
 
-	![New Project in File menu](./media/web-sites-dotnet-get-started-vs2013/gs13newproj.png)
+2. 从“文件”菜单，单击“新建项目”。
 
-3. In the **New Project** dialog box, expand **C#** or **Visual Basic** and select **Web** under **Installed Templates**, and then select **ASP.NET Web Application**.
+	![“文件”菜单中的“新建项目”](./media/web-sites-dotnet-get-started-vs2013/gs13newproj.png)
 
-3. Make sure that **.NET Framework 4.5** is selected as the target framework.
+3. 在“新建项目”对话框中，展开 C# 并在“已安装的模板”下选择 Web，然后选择“ASP.NET Web 应用程序”。
 
-4. Name the application **MyExample** and click **OK**.
+3. 确保选择 .NET Framework 4.5 作为目标框架。
 
-	![New Project dialog box](./media/web-sites-dotnet-get-started-vs2013/GS13newprojdb.png)
+4. 将该应用程序命名为 MyExample，然后单击“确定”。
 
-5. In the **New ASP.NET Project** dialog box, select the **MVC** or the **Web Forms** template, and then click **Change Authentication**.
+	![“新建项目”对话框](./media/web-sites-dotnet-get-started-vs2013/GS13newprojdb.png)
 
-	[MVC and Web Forms](http://www.asp.net/get-started/websites) are ASP.NET frameworks for creating web sites. If you have no preference and plan to do other Azure tutorials, MVC is a good choice because there are more Azure tutorials that use MVC.
+5. 在“新建 ASP.NET 项目”对话框中，选择 MVC 模板，然后单击“更改身份验证”。
 
-	![New ASP.NET Project dialog box](./media/web-sites-dotnet-get-started-vs2013/GS13changeauth.png)
+	![“新建 ASP.NET 项目”对话框](./media/web-sites-dotnet-get-started-vs2013/GS13changeauth.png)
 
-6. In the **Change Authentication** dialog box, click **No Authentication**, and then click **OK**.
+6. 在“更改身份验证”对话框中，单击“无身份验证”，然后单击“确定”。
 
-	![No Authentication](./media/web-sites-dotnet-get-started-vs2013/GS13noauth.png)
+	![无身份验证](./media/web-sites-dotnet-get-started-vs2013/GS13noauth.png)
 
-	The sample application you're creating won't have features that require users to log in. The [Next Steps](#next-steps) section at the end of the tutorial links to a tutorial that implements authentication and authorization.
+	您要创建的示例应用程序将没有需要用户登录的功能。有关如何实现身份验证和授权功能的信息，请参见本教程末尾的[后续步骤](#nextsteps)一节。
 
-5. Under **Azure** in the dialog box, leave the check box selected and the drop-down box set to **Web Site**. 
+5. 在“新建 ASP.NET 项目”对话框中，单击“确定”。
 
-	The check box caption might be **Host in the cloud** or **Create remote resources**. In either case the effect is the same. 
+	![“新建 ASP.NET 项目”对话框](./media/web-sites-dotnet-get-started-vs2013/GS13newaspnetprojdb.png)
 
-	These settings specify that Visual Studio will create an Azure Web Site for your web project. You'll deploy the web project to the newly created web site. (As an alternative you can change the drop-down box selection in order to have Visual Studio create an Azure Virtual Machine running IIS, but this tutorial doesn't detail the steps for that option.)
+### 在本地运行应用程序
 
-5. In the **New ASP.NET Project** dialog box, click **OK**.
+1. 按 Ctrl+F5 运行应用程序。
 
-	![New ASP.NET Project dialog box](./media/web-sites-dotnet-get-started-vs2013/GS13newaspnetprojdb.png)
+	随后在默认浏览器中显示该应用程序主页。
 
-	The screenshot shows the MVC template selected; if you chose Web Forms, **Web Forms** is selected. 
+	![正在本地运行的网站](./media/web-sites-dotnet-get-started-vs2013/GS13homepage.png)
 
-5. If you haven't already signed in to Azure, Visual Studio prompts you to do so. Click **Sign In**.
+	“http://localhost”URL 显示了应用程序正在您的本地计算机上运行。默认情况下，应用程序在 IIS Express 中运行。IIS Express 是 IIS 的轻型版本，专为在 Web 应用程序部署过程中使用而设计。
 
-	![Sign in to Azure](./media/web-sites-dotnet-get-started-vs2013/signin.png)
+	以上是创建可部署到 Windows Azure 的简单应用程序所需执行的全部步骤。
 
-6. Enter the ID and password of the account that you use to manage your Azure subscription.
 
-	![Sign in to Azure](./media/web-sites-dotnet-get-started-vs2013/signindb.png)
 
-	When you're signed in, the **Configure Azure Site Settings** dialog box asks you what resources you want to create.
 
-	![Signed in to Azure](./media/web-sites-dotnet-get-started-vs2013/configuresitesettings.png)
+<h2><a name="deploytowindowsazure"></a><span class="short-header">部署应用程序</span>将应用程序部署到 Windows Azure</h2>
 
-3. Visual Studio provides a default **Site name**, which Azure will use as the prefix for your application's URL. If you prefer, enter a different site name.
+1. 关闭浏览器。
 
-	The complete URL will consist of what you enter here plus the domain that you see next to the text box. For example, if the site name is `MyExample6442`, the URL will be `MyExample6442.chinacloudsites.cn`. If someone else has already used the URL you entered, you'll see a red exclamation mark to the right instead of a green check mark, and you'll need to enter a different value.
+5. 在 Visual Studio 中，在“解决方案资源管理器”中右键单击该项目，从上下文菜单中选择“发布”。
 
-4. In the **Region** drop-down list, choose the location that is closest to you.
+	![项目上下文菜单中的“发布”](./media/web-sites-dotnet-get-started-vs2013/GS13publish.png)
 
-	This setting specifies which Azure data center your web site will run in. 
+	“发布 Web”向导将打开。
 
-5. Leave the database fields unchanged.
+6. 在“发布 Web”向导的“配置文件”选项卡中，单击“导入”。
 
-	For this tutorial you aren't using a database. The [Next Steps](#next-steps) section at the end of the tutorial links to a tutorial that shows you how to use a database.
+	![导入发布设置](./media/web-sites-dotnet-get-started-vs2013/ImportPublishSettings.png)
 
-6. Click **OK**.
+	“导入发布配置文件”对话框随即出现。
 
-	In a few seconds, Visual Studio creates the web project in the folder you specified, and it creates the web site in the Azure region you specified.  
+5. 使用以下方法之一使 Visual Studio 能够连接到您的 Windows Azure 帐户。
 
-	The **Solution Explorer** window shows the files and folders in the new project. (The screenshot is for a Web Forms project; an MVC project has different folders and files.)
+	* 单击“登录”，然后输入您的 Windows Azure 帐户的凭据。
 
-	![Solution Explorer](./media/web-sites-dotnet-get-started-vs2013/solutionexplorer.png)
+		此方法虽然又快又简单，但如果您使用此方法，将无法在“服务器资源管理器”窗口中看到 Windows Azure SQL Database 或移动服务。
 
-	The **Web Publish Activity** window shows that the site has been created.
+	* 单击“管理订阅”以便安装允许访问您帐户的管理证书。
 
-	![Web site created](./media/web-sites-dotnet-get-started-vs2013/GS13sitecreated1.png)
+		在“管理 Windows Azure 订阅”对话框中，单击“证书”选项卡，然后单击“导入”。按照说明为您的 Windows Azure 帐户下载并导入一个订阅文件（也称为 *.publishsettings* 文件）。
 
+		> [WACOM.NOTE] 将此订阅文件下载到源代码目录之外的文件夹中（例如，在 Downloads 文件夹中），然后在导入完成后将其删除。获得了此订阅文件访问权的恶意用户可以编辑、创建和删除您的 Windows Azure 服务。
 
-## Deploy the application to Azure
+		有关更多信息，请参见[管理帐户、订阅和管理角色](http://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)。
 
-7. In the **Web Publish Activity** window, click **Publish MyExample to this site now**.
+2. 在“导入发布设置”对话框中，选择“从 Windows Azure 网站导入”单选按钮，然后单击“新建”。
 
-	![Web site created](./media/web-sites-dotnet-get-started-vs2013/GS13sitecreated.png)
+	![添加新网站](./media/web-sites-dotnet-get-started-vs2013/GS13NewSite.png)
 
-	In a few seconds the **Publish Web** wizard appears. The wizard creates a new *publish profile* that contains settings such as the web site URL that Visual Studio needs in order to deploy your project to Azure. The profile is automatically saved so that later when you make changes to the project you can easily redeploy the project to the same site.
+3. 在“在 Windows Azure 上创建网站”对话框中，在“网站名称”框中输入一个字符串作为您的应用程序的唯一 URL。
 
-8. In the **Connection** tab of the **Publish Web** wizard, click **Validate Connection** to make sure that Visual Studio can connect to Azure in order to deploy the web project.
+	完整的 URL 将包含您在此处输入的内容和您在文本框旁边看到的后缀。如果其他人已经使用您输入的 URL，您将看到右边是一个红色感叹号而不是绿色复选标记，您需要输入其他值。
 
-	![Validate connection](./media/web-sites-dotnet-get-started-vs2013/GS13ValidateConnection.png)
+4. 在“位置”下拉列表中，选择离您最近的位置。
 
-	When the connection has been validated, a green check mark is shown next to the **Validate Connection** button. 
+	此设置指定您的网站将在哪个数据中心运行。
 
-9. Click **Next**.
+5. 让数据库字段保持不变。
 
-	![Successfully validated connection](./media/web-sites-dotnet-get-started-vs2013/GS13ValidateConnectionSuccess.png)
+	在本教程中，您将不使用数据库。本教程末尾的[后续步骤](#nextsteps)一节包含说明如何使用数据库的教程的链接。
 
-10. In the **Settings** tab, click **Next**.
+6. 单击“创建”。<br/>
 
-	![Settings tab](./media/web-sites-dotnet-get-started-vs2013/GS13SettingsTab.png)
+	![创建新网站](./media/web-sites-dotnet-get-started-vs2013/GS13createsite.png)
 
-	You can accept the default settings on this tab.  You're deploying a Release build and you don't need to delete files at the destination server, precompile the application, or exclude files in the App_Data folder.   The [Next Steps](#next-steps) section at the end of the tutorial links to a tutorial that deploys a Debug build and shows how to run Visual Studio in debug mode remotely.
+	网站只需几秒就创建完成。当您返回到“导入发布设置”对话框时，将在下拉列表中选定新网站。
 
-11. In the **Preview** tab, click **Start Preview**.
+6. 单击“确定”。
 
-	![StartPreview button in the Preview tab](./media/web-sites-dotnet-get-started-vs2013/GS13Preview.png)
+	![创建的网站](./media/web-sites-dotnet-get-started-vs2013/GS13sitecreated.png)
 
-	The tab displays a list of the files that will be copied to the server. Displaying the preview isn't required to publish the application but is a useful function to be aware of.
+8. 在“发布 Web”向导的“连接”选项卡中，单击“验证连接”以确保设置正确。
 
-12. Click **Publish**.
+	![验证连接](./media/web-sites-dotnet-get-started-vs2013/GS13ValidateConnection.png)
 
-	![StartPreview file output](./media/web-sites-dotnet-get-started-vs2013/GS13previewoutput.png)
+	在连接通过验证后，“验证连接”按钮旁边会出现一个绿色复选标记。
 
-	Visual Studio begins the process of copying the files to the Azure server.
+9. 单击“下一步”。
 
-	The **Output** and **Web Publish Activity** windows show what deployment actions were taken and report successful completion of the deployment.
+	![验证成功的连接](./media/web-sites-dotnet-get-started-vs2013/GS13ValidateConnectionSuccess.png)
 
-	![Output window reporting successful deployment](./media/web-sites-dotnet-get-started-vs2013/PublishOutput.png)
+10. 在“设置”选项卡中，单击“下一步”。
 
-	Upon successful deployment, the default browser automatically opens to the URL of the deployed web site, and
-	the application that you created is now running in the cloud. The URL in the browser address bar shows that the site is being loaded from the Internet.
+	![“设置”选项卡](./media/web-sites-dotnet-get-started-vs2013/GS13SettingsTab.png)
 
-	![Web site running in Azure](./media/web-sites-dotnet-get-started-vs2013/GS13deployedsite.png)
+	您可以接受此选项卡上的默认设置。您将要部署“发布”生成配置，因此不需要在目标服务器上删除文件、预编译应用程序或排除 App_Data 文件夹中的文件。
 
-13. Close the browser.
+11. 在“预览”选项卡中，单击“开始预览”。
 
-## Make a change and redeploy
+	![“预览”选项卡中的“开始预览”按钮](./media/web-sites-dotnet-get-started-vs2013/GS13Preview.png)
 
-In this optional section of the tutorial, you change the web project, run the project locally on your development computer to verify the change, and then deploy the change to Azure.
+	该选项卡会显示将复制到服务器的文件的列表。显示预览并不是发布应用程序所必需的，但它是一个需要了解的很有用的功能。
 
-2. If you created an MVC project, open the *Views/Home/Index.cshtml* or *.vbhtml* file in **Solution Explorer**, change the **h1** heading from "ASP.NET" to "ASP.NET and Azure", and save the file. 
+12. 单击“发布”。
 
-	![MVC index.cshtml](./media/web-sites-dotnet-get-started-vs2013/index.png)
+	![“开始预览”文件输出](./media/web-sites-dotnet-get-started-vs2013/GS13previewoutput.png)
 
-	![MVC h1 change](./media/web-sites-dotnet-get-started-vs2013/mvcandazure.png)
+	Visual Studio 开始执行将文件复制到 Windows Azure 服务器的过程。
 
-1. If you created a Web Forms project, open the *Default.aspx* file in **Solution Explorer**, change the **h1** heading from "ASP.NET" to "ASP.NET and Azure", and save the file.
+13. “输出”窗口将显示已执行的部署操作并报告已成功完成部署。
 
-	![Web Forms default.aspx](./media/web-sites-dotnet-get-started-vs2013/default.png)
+	![报告部署成功的输出窗口](./media/web-sites-dotnet-get-started-vs2013/PublishOutput.png)
 
-	![Web Forms h1 change](./media/web-sites-dotnet-get-started-vs2013/wfandazure.png)
+14. 成功完成部署后，默认浏览器会自动打开并指向已部署网站的 URL。
 
-1. Press CTRL+F5 to test your change by running the site on your local computer.
+	您创建的应用程序现在在云中运行。
 
-	![Web site running locally](./media/web-sites-dotnet-get-started-vs2013/localandazure.png)
+	![在 Windows Azure 中运行的网站](./media/web-sites-dotnet-get-started-vs2013/GS13deployedsite.png)
 
-	The `http://localhost` URL shows that it's running on your local computer. By default it's running in IIS Express, which is a lightweight version of IIS designed for use during web application development.
+<h2><a name="nextsteps"></a><span class="short-header">后续步骤</span>后续步骤</h2>
 
+在本教程中，您已了解如何将简单的 Web 应用程序部署到 Windows Azure 网站。还提供了其他资源，旨在向您说明如何管理和缩放网站并对网站进行故障排除，如何添加数据库、身份验证和授权功能以及如何决定是否应在 Windows Azure 云服务中而不是 Windows Azure 网站中运行您的应用程序。
 
-1. Close the browser.
+<h3>如何管理网站</h3>
+[Windows Azure 管理门户][Portal]是可用于管理和监视所有 Windows Azure 服务的 Web 界面。
 
-1. In **Solution Explorer**, right-click the project, and choose **Publish**.
+您可以创建新网站、云服务、虚拟机和数据库等，可以从库中创建开放源应用程序。还可以管理已创建的服务。例如，以下屏幕快照显示了管理门户的“仪表板”选项卡中的 Windows Azure 网站的“停止”、“重新启动”和“删除”按钮。“仪表板”还显示了性能统计信息，如使用的 CPU 时间、请求数、传入和传出的数据以及可能已发生的任何错误。
 
-	![Chooose Publish](./media/web-sites-dotnet-get-started-vs2013/choosepublish.png)
+![管理门户仪表板选项卡](./media/web-sites-dotnet-get-started-vs2013/MPStopStartDelete.png)
 
-	The Preview tab of the **Publish Web** wizard appears. If you needed to change any publish settings you could choose a different tab, but now all you want to do is redeploy with the same settings.
+可以在“配置”选项卡上更改很多其他网站设置。有关更多信息，请参见[如何管理网站](/zh-cn/manage/services/web-sites/how-to-manage-websites/)。
 
-2. In the **Publish Web** wizard, click **Publish**.
+您还可以从 Visual Studio 中的“服务器资源管理器”中执行一些网站管理功能。有关可在“服务器资源管理器”中执行的操作的信息，请参见[在 Visual Studio 中对 Windows Azure 网站进行故障排除](/zh-cn/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)。
 
-	![Click Publish](./media/web-sites-dotnet-get-started-vs2013/clickpublish.png)
 
-	Visual Studio deploys the project to Azure and opens the site in the default browser.
+<h3>如何缩放网站</h3>
+随着您的网站公开并开始获得更多流量，响应时间可能会增加。若要改善此情况，您可以轻松地在管理门户的“缩放”选项卡中添加服务器资源。有关更多信息，请参见[如何缩放网站](/zh-cn/manage/services/web-sites/how-to-scale-websites/)。（通过添加服务器资源来缩放网站不是免费的。）
 
-	![Changed site deployed](./media/web-sites-dotnet-get-started-vs2013/deployedandazure.png)
+<h3>如何对网站进行故障排除</h3>
+您可能需要查看跟踪或日志输出来寻求帮助以进行故障排除。Visual Studio 提供了内置工具，使您能够在 Windows Azure 日志生成时轻松实时查看这些日志。您还可以在 Windows Azure 中采用调试模式远程运行。有关更多信息，请参见[在 Visual Studio 中对 Windows Azure 网站进行故障排除](/zh-cn/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/)。
 
-An even quicker way to redeploy when you don't need to change publish settings is to use the **Web One Click Publish** tool bar.
+<h3>如何添加数据库和授权功能</h3>
+大多数生产网站使用数据库并且只允许特定授权用户访问某些网站功能。有关说明如何开始使用数据库访问、身份验证和授权的教程，请参见[使用成员资格、OAuth 和 SQL Database 将安全 ASP.NET MVC 应用程序部署到 Windows Azure 网站](/zh-cn/develop/net/tutorials/web-site-with-sql-database/)。
 
-![Web One Click Publish Toolbar](./media/web-sites-dotnet-get-started-vs2013/weboneclickpublish.png)
+<h3>如何决定应用程序是否应在云服务中运行</h3>
+在某些方案中，您可能需要在 Windows Azure 云服务中而不是 Windows Azure 网站中运行应用程序。有关更多信息，请参见 [Windows Azure 执行模型](/zh-cn/develop/net/fundamentals/compute/)以及 [Windows Azure 网站、云服务和 VM：何时使用何种产品？](http://www.windowsazure.com/zh-cn/manage/services/web-sites/choose-web-app-service/)。有关说明如何创建多层 ASP.NET Web 应用程序并将其部署到云服务的系列教程，请参见[使用存储表、队列和 Blob 的 .NET 多层应用程序](/zh-cn/develop/net/tutorials/multi-tier-web-site/1-overview/)。
 
-The toolbar is not enabled by default; you enable it in the **View - Toolbars** menu. You can use it to select a profile, click a button to publish, or click a button to open the **Publish Web** wizard. 
+[门户]: http://manage.windowsazure.com
 
-## Next steps
-
-In this tutorial you've seen how to create a simple web application and deploy it to an Azure Web Site. Here are some related topics and resources for learning more about them.
-
-### Other ways to deploy a web project
-
-In this tutorial you saw the quickest way to create a site and deploy it all in one operation. For an overview of other ways to deploy, by using Visual Studio or by [automating deployment](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/continuous-integration-and-continuous-delivery) from a [source control system](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/source-control), see [How to Deploy an Azure Web Site](/en-us/documentation/articles/web-sites-deploy/"). 
-
-One way to automate deployment is to do it by using Windows PowerShell scripts. Visual Studio and Azure simplify that task by generating PowerShell scripts that you can use to perform the same deployment operations that you do in Visual Studio. For more information, see [Automate Everything (Building Real-World Cloud Apps with Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/automate-everything).
-
-### How to manage a web site
-
-The [Azure Management Portal](/en-us/services/management-portal/) is a web interface that enables you to manage and monitor your Azure services, such as web sites, cloud services, virtual machines, databases, and more. To see what you can do in the portal, go to [https://manage.windowsazure.cn](https://manage.windowsazure.cn), and sign in with the user name and password for your account that has administration rights to your Azure subscription. For more information, see [How to Manage Web Sites](/en-us/manage/services/web-sites/how-to-manage-websites/).
-
-You can also do some web site management functions right from **Server Explorer** in Visual Studio. For information about what you can do in **Server Explorer**, see [Troubleshooting Azure Web Sites in Visual Studio](/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/).
-
-### How to scale a web site
-
-When your site is public and it starts to get more traffic, response times might slow down. To remedy that, you can easily add server resources in the **Scale** tab of the management portal. For more information, see [How to Scale a Web Site](/en-us/manage/services/web-sites/how-to-scale-websites/). (Adding server resources to scale a web site is not free.)
-
-### How to troubleshoot a web site
-
-You might want to look at trace or log output for help with troubleshooting. Visual Studio provides built-in tooling to make it easy to view Azure logs as they are generated in real time. You can also run in debug mode remotely in Azure. For more information, see [Troubleshooting Azure Web Sites in Visual Studio](/en-us/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/).
-
-### How to add database and authorization functionality
-
-Most production web sites use a database and restrict some site functions to certain authorized users. For a tutorial that shows how to get started with database access, authentication, and authorization, see [Deploy a Secure ASP.NET MVC app with Membership, OAuth, and SQL Database to an Azure Web Site](/en-us/develop/net/tutorials/web-site-with-sql-database/).
-
-### How to add a custom domain name and SSL
-
-You might want to access a site by using your own domain, for example www.contoso.com instead of contoso.azurewebsites.net. And you can add SSL by using the shared azurewebsites.net domain, but SSL using your own domain would be more secure. For more information, see the following resources:
-
-* [Configuring a custom domain name for an Azure Web Site](/en-us/documentation/articles/web-sites-custom-domain-name/). 
-* [Enable HTTPS for an Azure web site](http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-configure-ssl-certificate/)
-
-### How to avoid wake-up wait time after idle time-outs 
-
-By default, web sites are unloaded if they have been idle for some period of time. The first request after that has to wait for the site to be reloaded. To avoid that wait time you can use enable the AlwaysOn feature. For more information, see configuration options in [How to Configure Web Sites](http://www.windowsazure.cn/zh-cn/manage/services/web-sites/how-to-configure-websites/).
-
-### How to implement a real-time service
-
-If your web site will include real-time features (such as a chat service, a game, a stock ticker, and so forth), you can get the best performance by using [ASP.NET SignalR](http://www.asp.net/signalr) with the WebSockets transport method. For more information, see [Using SignalR with Windows Azure Web Sites](http://www.asp.net/signalr/overview/signalr-20/getting-started-with-signalr-20/using-signalr-with-windows-azure-web-sites). 
-
-### How to decide if your application should run in a Cloud Service
-
-In Azure you can run web applications in Web Sites as shown in this tutorial, or in Cloud Services or Virtual Machines. For more information, see [Azure Execution Models](/en-us/develop/net/fundamentals/compute/) and [Azure Web Sites, Cloud Services, and VMs: When to use which?](/en-us/manage/services/web-sites/choose-web-app-service/).

@@ -1,192 +1,209 @@
-<properties linkid="dev-net-tutorials-web-app-with-sql-azure-vs2013" urlDisplayName="Web Site with SQL Database" pageTitle="Deploy a Secure ASP.NET MVC app with Membership, OAuth, and SQL Database to an Azure Web Site" metaKeywords="Azure hello world tutorial, Azure getting started tutorial, SQL Database tutorial, Azure .NET hello world tutorial, Azure C# hello world tutorial, SQL Azure C# tutorial" description="Learn how to develop an ASP.NET MVC 5 web site with a SQL Database back-end deploy it to Azure." metaCanonical="" services="web-sites,sql-database" documentationCenter=".NET" title="Deploy a Secure ASP.NET MVC 5 app with Membership, OAuth, and SQL Database to an Azure Web Site" authors="riande"  solutions="" writer="riande" manager="wpickett" editor="mollybos"  />
+﻿<properties linkid="dev-net-tutorials-web-app-with-sql-azure-vs2013" urlDisplayName="使用 SQL Database 创建网站" pageTitle="使用成员资格、OAuth 和 SQL Database 将安全的 ASP.NET MVC 应用程序部署到 Windows Azure 网站" metaKeywords="Azure Hello World 教程, Azure 入门教程, SQL Database 教程, Azure .NET Hello World 教程, Azure C# Hello World 教程, SQL Azure C# 教程" description="了解如何开发带有 SQL Database 后端的 ASP.NET MVC 5 网站并将其部署到 Windows Azure。" metaCanonical="" services="web-sites,sql-database" documentationCenter=".NET" title="OAuth" authors=""  solutions="" writer="riande" manager="wpickett" editor="mollybos"  />
 
 
 
-# Deploy a Secure ASP.NET MVC 5 app with Membership, OAuth, and SQL Database to an Azure Web Site
+# 使用成员资格、OAuth 和 SQL Database 将安全的 ASP.NET MVC 5 应用程序部署到 Windows Azure 网站
 
-***By [Rick Anderson](https://twitter.com/RickAndMSFT) and Tom Dykstra. Updated 2 April 2014.***
-
-This tutorial shows you how to build a secure ASP.NET MVC 5 web app that enables users to log in with credentials from Facebook or Google. You will also deploy the application to Azure.
-
-You can open an Azure account for free, and if you don't already have Visual Studio 2013, the SDK automatically installs Visual Studio 2013 for Web Express. You can start developing for Azure for free. If you want to use Visual Studio 2012, see the [previous tutorial](/en-us/develop/net/tutorials/web-site-with-sql-database-vs2012/). This version of the tutorial is far simpler than the previous version.
-
-This tutorial assumes that you have no prior experience using Azure. On completing this tutorial, you'll have a secure data-driven web application up and running in the cloud and using a cloud database.
-
-You'll learn:
-
-* How to create a secure ASP.NET MVC 5 project and publish it to an Azure Web Site.
-* How to use [OAuth](http://oauth.net/ "http://oauth.net/"), [OpenID](http://openid.net/) and the ASP.NET membership database to secure your application.
-* How to use the new membership API to add users and roles.
-* How to use a SQL database to store data in Azure.
-
-You'll build a simple contact list web application that is built on ASP.NET MVC 5 and uses the ADO.NET Entity Framework for database access. The following illustration shows the login page for the completed application:
-
-![login page][rxb]
-
->[WACN.NOTE] To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can <a href="/en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F" target="_blank">activate your MSDN subscriber benefits</a> or <a href="/en-us/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">sign up for a free trial</a>
+***由 [Rick Anderson](https://twitter.com/RickAndMSFT) 和 Tom Dykstra 撰写。上次更新时间：2013 年 10 月 18 日。***
 
 
-In this tutorial:
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/develop/net/tutorials/web-site-with-sql-database/" title="Visual Studio 2013" class="current">Visual Studio 2013</a><a href="/zh-cn/develop/net/tutorials/web-site-with-sql-database-vs2012/" title="Visual Studio 2012">Visual Studio 2012</a></div>
 
-- [Set up the development environment](#setupdevenv)
-- [Set up the Azure environment][setupwindowsazureenv]
-- [Create an ASP.NET MVC 5 application][createapplication]
-- [Deploy the application to Azure][deployapp1]
-- [Add a database to the application][adddb]
-- [Add an OAuth Provider][]
-- [Using the Membership API][]
-- [Deploy the app to Azure][deployapp11]
-- [Next steps][]
+本教程演示如何构建安全的 ASP.NET MVC 5 Web 应用程序，以便用户能够使用 Facebook 或 Google 凭据进行登录。您还会将应用程序部署到 Windows Azure。
+
+您可以免费注册一个 Windows Azure 帐户，而且，如果您还没有 Visual Studio 2013，则此 SDK 会自动安装 Visual Studio 2013 for Web Express。您可以免费开始针对 Windows Azure 进行开发。如果您要使用 Visual Studio 2012，请参见 [上一个教程](/zh-cn/develop/net/tutorials/web-site-with-sql-database-vs2012/)。此版本的教程比上一个版本简单得多。
+
+本教程假定您之前未使用过 Windows Azure。完成本教程之后，您将能够在云中启动并运行安全的数据驱动的 Web 应用程序，以及使用云数据库。
+
+您将了解到以下内容：
+
+* 如何创建安全的 ASP.NET MVC 5 项目并将其发布到 Windows Azure 网站。
+* 如何使用 [OAuth](http://oauth.net/ "http://oauth.net/")、[OpenID](http://openid.net/) 和 ASP.NET 成员资格数据库保护您的应用程序。
+* 如何使用新成员资格 API 添加用户和角色。
+* 如何使用 SQL Database 在 Windows Azure 中存储数据。
+
+您将生成一个简单的联系人列表 Web 应用程序，该应用程序基于 ASP.NET MVC 5 构建并使用 ADO.NET Entity Framework 进行数据库访问。下图演示了完整应用程序的登录页面：
+
+![登录页面][rxb]
+
+<div class="dev-callout"><p><strong>注意</strong> 若要完成本教程，您需要一个 Windows Azure 帐户。如果您没有帐户，则可以创建一个免费的试用帐户，只需几分钟即可完成。有关更多信息，请参见 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A261C142F" target="_blank">Windows Azure 免费试用</a>。</p></div>
+
+
+在本教程中：
+
+- [设置开发环境](#setupdevenv)
+- [设置 Windows Azure 环境][setupwindowsazureenv]
+- [创建 ASP.NET MVC 5 应用程序][createapplication]
+- [将应用程序部署到 Windows Azure][deployapp1]
+- [向应用程序添加数据库][adddb]
+- [添加 OAuth 提供程序][]
+- [使用成员资格 API][]
+- [将应用程序部署到 Windows Azure][deployapp11]
+- [后续步骤][]
 
 
 [WACOM.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]
 
-To use the new SSL certificate for localhost, you will need to install [Visual Studio 2013 Update 2 RC](http://go.microsoft.com/fwlink/?LinkId=390521) or higher.
 
-<h2><a name="bkmk_setupwindowsazure"></a>Set up the Azure environment</h2>
+<h2><a name="bkmk_setupwindowsazure"></a>设置 Windows Azure 环境</h2>
 
-Next, set up the Azure environment by creating an Azure Web Site and a SQL database.
+接下来，通过创建 Windows Azure 网站和 SQL Database 来设置 Windows Azure 环境。
 
-### Create a web site and a SQL database in Azure
+### 在 Windows Azure 中创建网站和 SQL 数据库
 
-Your Azure Web Site will run in a shared hosting environment, which means it runs on virtual machines (VMs) that are shared with other Azure clients. A shared hosting environment is a low-cost way to get started in the cloud. Later, if your web traffic increases, the application can scale to meet the need by running on dedicated VMs. If you need a more complex architecture, you can migrate to an Azure Cloud Service. Cloud services run on dedicated VMs that you can configure according to your needs.
+您的 Windows Azure 网站将在共享宿主环境中运行，这意味着它将在与其他 Windows Azure 客户端共享的虚拟机 (VM) 上运行。共享宿主环境是一种在云中开始工作的低成本方式。稍后，如果您的 Web 流量增加，则应用程序可进行扩展，通过在专用 VM 上运行来满足需要。如果您需要一个更复杂的体系结构，则可迁移到 Windows Azure 云服务。云服务在您可根据自己的需求进行配置的专用 VM 上运行。
 
-Azure SQL Database is a cloud-based relational database service that is built on SQL Server technologies. The tools and applications that work with SQL Server also work with SQL Database.
+Windows Azure SQL Database 是根据 SQL Server 技术构建的基于云的关系数据库服务。可以与 SQL Server 一起使用的工具和应用程序也可用于 SQL Database。
 
-1. In the [Azure Management Portal](https://manage.windowsazure.cn), click **Web Sites** in the left tab, and then click  **New**.
+1. 在 [Windows Azure 管理门户](https://manage.windowsazure.com) 中，单击左侧选项卡中的“网站”，然后单击“新建”。
 
-	![New button in Management Portal][rxWSnew]
+	![管理门户中的“新建”按钮][rxWSnew]
 
-1. Click **Web Site**, and then click **Custom Create**.
+1. 单击“网站”，然后单击“自定义创建”。
 
-	![Create with Database link in Management Portal][rxCreateWSwithDB] 
+	![管理门户中的“与数据库一起创建”链接][rxCreateWSwithDB]
 
-	The **New Web Site - Custom Create** wizard opens. 
+	“新网站 - 自定义创建”向导将打开。
 
-1. In the **Create Web Site** step of the wizard, enter a string in the **URL** box to use as the unique URL for your application. The complete URL will consist of what you enter here plus the suffix that you see next to the text box. The illustration shows a URL is that probably taken so you will have to choose a different one.
+1. 在该向导的“创建网站”步骤中，在“URL”框中输入将用作您的应用程序的唯一 URL 的字符串。完整的 URL 将包含您在此处输入的内容和您在文本框旁边看到的后缀。图中显示一个 URL，但可能已有人使用了该 URL，因此必须另外选择一个。
 
-	![Create with Database link in Management Portal][rr1]
+	![管理门户中的“与数据库一起创建”链接][rr1]
 
-1. In the **Database** drop-down list, choose **Create a free SQL database**.
+1. 在“数据库”下拉列表中，选择“创建免费的 20 MB SQL 数据库”。
 
-1. In the **Region** drop-down list, choose the same region you selected for the Web site.
-This setting specifies which data center your VM will run in. 
-1. In the **DB Connection String Name** box, leave the default value of *DefaultConnection*.
-1. Click the arrow that points to the right at the bottom of the box.
-The wizard advances to the **Specify database settings** step.
+1. 在“区域”下拉列表中，选择您为网站所选的同一区域。
+此设置指定将在哪个数据中心内运行您的 VM。
+1. 在“数据库连接字符串名称”框中，保留默认值 *DefaultConnection*。
+1. 单击对话框底部的向右箭头。
+该向导将前进到“指定数据库设置”步骤。
 
-1. In the **Name** box, enter *ContactDB*. (see the image below). 
-1. In the **Server** box, select **New SQL Database server**. (see the image below). Alternatively, if you previously created a SQL Server database, you can select that SQL Server from the dropdown control.
-1. Set the **Region** to the same area you created the Web Site.
-1. Enter an administrator **Login Name** and **Password**. If you selected **New SQL Database server** you aren't entering an existing name and password here, you're entering a new name and password that you're defining now to use later when you access the database. If you selected a SQL Server you've created previously, you'll be prompted for the password to the previous SQL Server account name you created. For this tutorial, we won't check the **Advanced** box.  For a free DB, you can only set the collation.
-1. Click the check mark at the bottom right of the box to indicate you're finished.
+1. 在“名称”框中，输入 *ContactDB*。（参见下图）。
+1. 在“服务器”框中，选择“新建 SQL Database 服务器”。（参见下图）。或者，如果您之前创建了 SQL Server 数据库，则可从下拉列表控件中选择 SQL Server。
+1. 将“区域”设置为创建网站的同一区域。
+1. 输入管理员“登录名”和“密码”。如果您选择了“新建 SQL Database 服务器”，则在此处不要输入现有名称和密码。您应输入新的名称和密码，您现在定义的名称和密码将在您以后访问数据库时使用。如果您选择了之前创建的 SQL Server，系统将提示您输入之前创建的 SQL Server 帐户名称的密码。在本教程中，我们不选中“高级”框。对于免费数据库，只能设置排序规则。
+1. 单击对话框右下角的复选标记以指示您已完成操作。
 
-	![Database Settings step of New Web Site - Create with Database wizard][setup007]
+	![“新建网站 - 与数据库一起创建”向导的“数据库设置”步骤][setup007]
 	
-	The following image shows using an existing SQL Server and Login.
+	下图显示了使用现有 SQL Server 和登录名。
 
-	![Database Settings step of New Web Site - Create with Database wizard][rxPrevDB]
+	![“新建网站 - 与数据库一起创建”向导的“数据库设置”步骤][rxPrevDB]
 
-	The Management Portal returns to the Web Sites page, and the **Status** column shows that the site is being created. After a while (typically less than a minute), the **Status** column shows that the site was successfully created. In the navigation bar at the left, the number of sites you have in your account appears next to the **Web Sites** icon, and the number of databases appears next to the **SQL Databases** icon.
+	管理门户返回到“网站”页面，“状态”列显示正在创建网站。稍后（通常不到一分钟），“状态”列会显示已成功创建网站。在左侧的导航栏中，您的帐户中拥有的网站的数量将会显示在“网站”图标旁边，而数据库的数量将会显示在“SQL Database”图标旁边。
 
-<h2><a name="bkmk_createmvc4app"></a>Create an ASP.NET MVC 5 application</h2>
+<h2><a name="bkmk_createmvc4app"></a>创建 ASP.NET MVC 5 应用程序</h2>
 
-You have created an Azure Web Site, but there is no content in it yet. Your next step is to create the Visual Studio web app that you'll publish to Azure.
+您已经创建了一个 Windows Azure 网站，但其中还没有内容。下一步将创建要发布到 Windows Azure 的 Visual Studio Web 应用程序。
 
-### Create the project
+### 创建项目
 
-2. From the **File** menu, click **New Project**.
+2. 从“文件”菜单，单击“新建项目”。
 
-   ![New Project in File menu](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/gs13newproj.png)
+   ![“文件”菜单中的“新建项目”](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/gs13newproj.png)
 
-3. In the **New Project** dialog box, expand **C#** and select **Web** under **Installed Templates**, and then select **ASP.NET Web Application**.
+3. 在“新建项目”对话框中，展开 C# 并在“已安装的模板”下选择 Web，然后选择“ASP.NET Web 应用程序”。
 
 
-4. Name the application **ContactManager** and click **OK**.
+4. 将该应用程序命名为 ContactManager，然后单击“确定”。
 
-   ![New Project dialog box](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/GS13newprojdb.png)
+   ![“新建项目”对话框](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/GS13newprojdb.png)
  
-   **Note:** The image shows "MyExample" as the name, but make sure you enter "ContactManager". Code blocks that you'll be copying later assume that the project name is ContactManager. 
+   **注意**：该图像显示“MyExample”作为名称，但请确保您输入了“ContactManager”。您稍后将复制的代码块假定项目名称为 ContactManager。
 
-5. In the **New ASP.NET Project** dialog box, select the **MVC** template, **uncheck** the **Create remote resources** check box and then click **OK**. (The check box might be labeled **Host in the cloud** instead of **Create remote resources**.)
+5. 在“新建 ASP.NET 项目”对话框中，选择 MVC 模板，然后单击“更改身份验证”。
 
-   ![New ASP.NET Project dialog box](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss1.PNG)
+   ![“新建 ASP.NET 项目”对话框](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/GS13changeauth.png)
 
+6. 在“更改身份验证”对话框中保留默认的“单个用户帐户”。
 
-### Set the page header and footer
+   该对话框说明“单个用户帐户”针对将用户配置文件存储在 SQL 数据库中的应用程序，在该数据库中，用户可使用其现有的 Facebook、Twitter 和 Google 帐户进行注册。有关其他身份验证选项的信息，请参见[在 Visual Studio 2013 中创建 ASP.NET Web 项目 - 身份验证方法](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#auth)。
 
+7. 单击“确定”。
 
-1. In **Solution Explorer** open the *Layout.cshtml* file in the *Views\Shared* folder.
+5. 在“新建 ASP.NET 项目”对话框中，单击“确定”。
 
-	![_Layout.cshtml in Solution Explorer][newapp004]
-
-1. Replace the two occurrences of "My ASP.NET MVC Application" with "Contact Manager".
-1. Replace "Application name" with "CM Demo". 
-
-2. Update the first Action link and replace *Home* with *Cm* to use the *Cm* Controller.
-
-	![code changes](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rs3.png)
+     ![“新建 ASP.NET 项目”对话框](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/GS13changeauth.png)
 
 
-### Run the application locally
+### 设置页眉和页脚
 
-1. Press CTRL+F5 to run the application.
 
-	The application home page appears in the default browser.
+1. 在“解决方案资源管理器”中，打开 *Views\Shared* 文件夹中的 *Layout.cshtml* 文件。
+	![解决方案资源管理器中的 _Layout.cshtml][newapp004]
+1. 将两处“我的 ASP.NET MVC 应用程序”替换为“Contact Manager”。
+1. 将“应用程序名称”替换为“CM 演示”。
+2. 更新第一个“操作”链接，并将 *Home* 替换为 *Cm* 以使用 *Cm* 控制器。
 
-	![Web site running locally](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr2.png)
+![代码更改](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rs3.png)
 
-This is all you need to do for now to create the application that you'll deploy to Azure. Later you'll add database functionality.
 
-<h2><a name="bkmk_deploytowindowsazure1"></a>Deploy the application to Azure</h2>
+### 在本地运行应用程序
 
-1. In Visual Studio, right-click the project in **Solution Explorer** and select **Publish** from the context menu.
+1. 按 Ctrl+F5 运行应用程序。
 
-   ![Publish in project context menu](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/GS13publish.png)
+	随后在默认浏览器中显示该应用程序主页。
+
+![正在本地运行的网站](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr2.png)
+
+这就是您创建将要部署到 Windows Azure 的应用程序目前所需的全部操作。稍后您将添加数据库功能。
+
+<h2><a name="bkmk_deploytowindowsazure1"></a>将应用程序部署到 Windows Azure</h2>
+
+5. 在 Visual Studio 中，在“解决方案资源管理器”中右键单击该项目，从上下文菜单中选择“发布”。
+
+   ![项目上下文菜单中的“发布”](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/GS13publish.png)
 	
-   The **Publish Web** wizard opens.
+   “发布 Web”向导将打开。
 
-1. In the **Profile** tab of the **Publish Web** wizard, click **Azure Web Sites**.
+6. 在“发布 Web”向导的“配置文件”选项卡中，单击“导入”。
 
-   ![Import publish settings](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss2.PNG)
+   ![导入发布设置][ImportPublishSettings]
 
-1. Click the **Sign In** button and log into the Azure portal.
+   “导入发布配置文件”对话框随即出现。
 
- ![sign in](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss22.PNG)
+5. 使用以下方法之一使 Visual Studio 能够连接到您的 Windows Azure 帐户。
 
+   
+	* 单击“登录”，然后输入您的 Windows Azure 帐户的凭据。
 
-   After logging in, the **Select Existing Web Site** dialog box appears.
+		此方法虽然又快又简单，但如果您使用此方法，将无法在“服务器资源管理器”窗口中看到 Windows Azure SQL Database 或移动服务。
 
-1. Select the web site you created in the first part of this tutorial, and then click **OK**.
+	* 单击“管理订阅”以便安装允许访问您帐户的管理证书。
 
- ![select web site](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss3.png)
+		在“管理 Windows Azure 订阅”对话框中，单击“证书”选项卡，然后单击“导入”。按照说明为您的 Windows Azure 帐户下载并导入一个订阅文件（也称为 *.publishsettings* 文件）。
 
+		> [WACOM.NOTE]
+		> 将此订阅文件下载到源代码目录之外的文件夹中（例如，在 Downloads 文件夹中），然后在导入完成后将其删除。获得了此订阅文件访问权的恶意用户可以编辑、创建和删除您的 Windows Azure 服务。
 
-1. In the **Publish Web** dialog box, click **Publish**.
+		有关更多信息，请参见[如何通过 Visual Studio 连接到 Windows Azure](http://go.microsoft.com/fwlink/?LinkId=324796)。
 
-	![Publish](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr3.png)
+7. 在“导入发布配置文件”对话框中，从下拉列表中选择网站，然后单击“确定”。
 
-	The application you created is now running in the cloud. The next time you deploy the application, only the changed (or new) files will be deployed.
+![导入发布配置文件](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rs4.png)
 
-	![Running in Cloud](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss4.PNG)
+1. 在“发布网站”对话框中，单击“发布”。
 
-<h2><a name="bkmk_addadatabase"></a>Add a database to the application</h2>
+	![发布](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr3.png)
 
-Next, you'll update the MVC application to add the ability to display and update contacts and store the data in a database. The application will use the Entity Framework to create the database and to read and update data in the database.
+	您创建的应用程序现在在云中运行。下次部署该应用程序时，仅会部署已更改（或新的）文件。
 
-### Add data model classes for the contacts
+<h2><a name="bkmk_addadatabase"></a>向应用程序添加数据库</h2>
 
-You begin by creating a simple data model in code.
+接下来，您将更新 MVC 应用程序以添加显示和更新联系人以及在数据库中存储数据的功能。应用程序将使用 Entity Framework 创建数据库并读取和更新数据库中的数据。
 
-1. In **Solution Explorer**, right-click the Models folder, click **Add**, and then **Class**.
+### 为联系人添加数据模型类
 
-	![Add Class in Models folder context menu](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr5.png)
+首先，使用代码创建一个简单的数据模型。
 
-2. In the **Add New Item** dialog box, name the new class file *Contact.cs*, and then click **Add**.
+1. 在“解决方案资源管理器”中，右键单击 Models 文件夹，单击“添加”，然后单击“类”。
 
-	![Add New Item dialog box][adddb002]
+![Models 文件夹上下文菜单中的“添加类”](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr5.png)
 
-3. Replace the contents of the Contacts.cs file with the following code.
+2. 在“添加新项”对话框中，将新的类文件命名为 *Contact.cs*，然后单击“添加”。
+
+![“添加新项”对话框][adddb002]
+
+3. 将 Contacts.cs 文件的内容替换为以下代码。
 
         using System.ComponentModel.DataAnnotations;
         using System.Globalization;
@@ -204,61 +221,59 @@ You begin by creating a simple data model in code.
                 public string Email { get; set; }
             }
         }
-The **Contacts** class defines the data that you will store for each contact, plus a primary key, *ContactID*, that is needed by the database.
+Contacts 类定义您将为每个联系人存储的数据以及数据库需要的主键 *ContactID*。
 
-### Create web pages that enable app users to work with the contacts
+### 创建使应用程序用户可以使用联系人的网页
 
-The ASP.NET MVC scaffolding feature can automatically generate code that performs create, read, update, and delete (CRUD) actions.
+ASP.NET MVC 基架功能可以自动生成用于执行创建、读取、更新和删除 (CRUD) 操作的代码。
 
-<h2><a name="bkmk_addcontroller"></a>Add a Controller and a view for the data</h2>
+<h2><a name="bkmk_addcontroller"></a>为数据添加控制器和视图</h2>
 
-1. Build the project **(Ctrl+Shift+B)**. (You must build the project before using the scaffolding mechanism.) 
-1. In **Solution Explorer**, right-click the Controllers folder and click **Add**, and then click **Controller**.
+1. 生成项目 (Ctrl+Shift+B)。（在使用基架机制前必须生成项目。）
+1. 在“解决方案资源管理器”中，右键单击 Controllers 文件夹，然后单击“添加”，再单击“控制器”。
 
-	![Add Controller in Controllers folder context menu][addcode001]
+	![Controllers 文件夹上下文菜单中的“添加控制器”][addcode001]
 
-5. In the **Add Scaffold** dialog box, select **MVC 5 Controller with views, using EF** and then click **Add**.
+5. 在“添加基架”对话框中，选择“带视图的 MVC 5 控制器，使用 EF”，然后单击“添加”。
 	
-	![Add Scaffold dlg](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr6.png)
+![添加基架 dlg](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr6.png)
 
+5. 在“添加控制器”对话框中，输入“CmController”作为控制器名称。（参见下图。）
+1. 在“模型类”下拉框中，选择 Contact (ContactManager.Models)。
+1. 在“数据上下文类”中，选择 ApplicationDbContext (ContactManager.Models)。ApplicationDbContext 将用于成员资格数据库和我们的联系人数据。
 
-1. In the **Model class** dropdown box, select **Contact (ContactManager.Models)**. (See the image below.)
-1. In the **Data context class**, select **ApplicationDbContext (ContactManager.Models)**. The **ApplicationDbContext** will be used for both the membership DB and our contact data.
-1. In the **Controller name** text entry box, enter "CmController" for the controller name. 
+![新建数据上下文 dlg](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrCtx.png)
 
-	![New data ctx dlg](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss5.PNG)
+1. 单击“添加”。
 
-1. Click **Add**.
+   Visual Studio 将创建一个控制器方法并为 Contact 对象的 CRUD 数据库操作创建视图。
 
-   Visual Studio creates a controller methods and views for CRUD database operations for **Contact** objects.
+## 启用迁移、创建数据库、添加示例数据和数据初始值设定项 ##
 
-## Enable Migrations, create the database, add sample data and a data initializer ##
+接下来的任务是启用[代码优先迁移](http://msdn.microsoft.com/library/hh770484.aspx) 功能以便基于您创建的数据模型创建数据库。
 
-The next task is to enable the [Code First Migrations](http://msdn.microsoft.com/library/hh770484.aspx) feature in order to create the database based on the data model you created.
-
-1. In the **Tools** menu, select **NuGet Package Manager** and then **Package Manager Console**.
-	![Package Manager Console in Tools menu](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/SS6.png)
-
-2. In the **Package Manager Console** window, enter the following command:
+1. 在“工具”菜单中，依次选择“库程序包管理器”和“程序包管理器控制台”。
+	![“工具”菜单中的“程序包管理器控制台”][addcode008]
+2. 在“程序包管理器控制台”窗口中，输入以下命令：
 
 		enable-migrations
-	The **enable-migrations** command creates a *Migrations* folder, and it puts in that folder a *Configuration.cs* file that you can edit to seed the database and configure Migrations. 
+	enable-migrations 命令将创建一个 *Migrations* 文件夹，并在该文件夹中放入一个可编辑以对数据库进行种子设定和配置迁移的 *Configuration.cs* 文件。
 
-2. In the **Package Manager Console** window, enter the following command:
+2. 在“程序包管理器控制台”窗口中，输入以下命令：
 
 		add-migration Initial
 
 
-	The **add-migration Initial** command generates a file named **&lt;date_stamp&gt;Initial** in the *Migrations* folder that creates the database. The first parameter ( **Initial** ) is arbitrary and is used to create the name of the file. You can see the new class files in **Solution Explorer**.
-	In the **Initial** class, the **Up** method creates the Contacts table, and the **Down** method (used when you want to return to the previous state) drops it.
-3. Open the *Migrations\Configuration.cs* file. 
-4. Add the following namespace. 
+	 add-migration Initial 命令将在创建数据库的 *Migrations* 文件夹中生成一个名为 &lt;date_stamp&gt;Initial 的文件。第一个参数 (Initial) 是任意参数并将用于创建文件名称。您可以在“解决方案资源管理器”中查看新的类文件。
+	在 Initial 类中，Up 方法用于创建 Contacts 表，而 Down 方法（在您想要返回到以前的状态时使用）用于删除该表。
+3. 打开 *Migrations\Configuration.cs* 文件。
+4. 添加以下命名空间。
 
     	 using ContactManager.Models;
 
 
 
-5. Replace the *Seed* method with the following code:
+5. 将 *Seed* 方法替换为以下代码：
 
         protected override void Seed(ContactManager.Models.ApplicationDbContext context)
         {
@@ -311,52 +326,48 @@ The next task is to enable the [Code First Migrations](http://msdn.microsoft.com
                 );
         }
 
-	This code initializes (seeds) the database with the contact information. For more information on seeding the database, see [Seeding and Debugging Entity Framework (EF) DBs](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx).
+	此代码将用联系信息初始化数据库或对其进行种子设定。有关对数据库进行种子设定的更多信息，请参见[对 Entity Framework (EF) 数据库进行种子设定和调试](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)。
 
 
-6. In the **Package Manager Console** enter the command:
+6. 在“程序包管理器控制台”中输入以下命令：
 
 		update-database
 
-	![Package Manager Console commands][addcode009]
+	![“程序包管理器控制台”命令][addcode009]
 
-	The **update-database** runs the first migration which creates the database. By default, the database is created as a SQL Server Express LocalDB database. 
+	update-database 用于运行将创建数据库的初始迁移。默认情况下，将以 SQL Server Express LocalDB 数据库的形式创建数据库。
 
-7. Press CTRL+F5 to run the application, and then click the **CM Demo** link; or navigate to http://localhost:(port#)/Cm. 
+7. 按 Ctrl+F5 运行应用程序，然后单击 CM Demo 链接；或者导航到 http://localhost:(port#)/Cm。
 
-	The application shows the seed data and provides edit, details and delete links. You can create, edit, delete and view data.
+应用程序将显示种子数据并提供编辑、详细信息和删除链接。您可以创建、编辑、删除和查看数据。
 
-	![MVC view of data][rx2]
+![数据的 MVC 视图][rx2]
 
-<h2><a name="addOauth"></a><span class="short-header">OAuth</span>Add an OAuth2 And OpenID Provider</h2>
+<h2><a name="addOauth"></a><span class="short-header">OAuth</span>添加 OAuth2 和 OpenID 提供程序</h2>
 
-[OAuth](http://oauth.net/ "http://oauth.net/") is an open protocol that allows secure authorization in a simple and standard method from web, mobile, and desktop applications. The ASP.NET MVC internet template uses OAuth and [OpenID](http://openid.net/) to expose Facebook, Twitter, Google and Microsoft as authentication providers. Although this tutorial uses only Google as the authentication provider, you can easily modify the code to use any of the providers. The steps to implement other providers are very similar to the steps you will see in this tutorial. To use Facebook as an authentication provider, see my tutorial [Create an ASP.NET MVC 5 App with Facebook and Google OAuth2 and OpenID Sign-on](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on).
+[OAuth](http://oauth.net/ "http://oauth.net/") 是一种开放协议，允许以一种简单而标准的方法从 Web、移动和桌面应用程序进行安全授权。ASP.NET MVC Internet 模板使用 OAuth 和 [OpenID](http://openid.net/) 公开 Facebook、Twitter、Google 和 Microsoft 以作为身份验证提供程序。虽然本教程仅使用 Google 作为身份验证提供程序，但您可轻松修改代码以使用任何提供程序。实施其他提供程序的步骤与您将在本教程中看到的步骤非常类似。若要将 Facebook 用作身份验证提供程序，请参见我的教程[使用 Facebook 和 Google 的 OAuth2 和 OpenID 登录名创建 ASP.NET MVC 5 应用程序](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on)。
 
-In addition to authentication, the tutorial will also use roles to implement authorization. Only those users you add to the *canEdit* role will be able to change data (that is, create, edit, or delete contacts).
+除了身份验证外，本教程还将使用角色实施授权。只有您添加到 *canEdit* 角色中的用户将能更改数据（即，创建、编辑或删除联系人）。
 
-1. Open the *App_Start\Startup.Auth.cs* file. Remove the comment characters from the *app.UseGoogleAuthentication()* method.
+1. 打开 *App_Start\Startup.Auth.cs* 文件。从 *app.UseGoogleAuthentication()* 方法中删除注释字符。
 
-1. Run the application and click  the **Log In** link. 
-1. Under **Use another service to log in**, click the **Google** button. 
+1. 运行应用程序并单击“登录”链接。
+1. 在“使用其他服务进行登录”下，单击 Google 按钮。
+1. 输入凭据。
+1. 单击“接受”以允许应用程序访问您的电子邮件和基本信息。
+1. 您将重定向到“注册”页。您可以根据需要更改“用户名”。单击“注册”。
 
-	![Goog login](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss23.PNG)
+![注册](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr8.png)
 
-1. Enter your  credentials.
-1. The Google authentication server will ask you for permission for the app to view your email address and basic information about your account. Click **Accept**.
-![GOOG asking for permission](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss7.PNG)
-1. You are redirected to the Register page. The user name defaults to the email alias you used to register, you can change it if you like. Click **Register**.
+<h2><a name="mbrDB"></a><span class="short-header">成员资格数据库</span>使用成员资格 API</h2>
+在本节中，您会将本地用户和 *canEdit* 角色添加到成员资格数据库。只有具有 *canEdit* 角色的用户才能编辑数据。最佳做法是按照角色可以执行的操作命名这些角色，因此 *canEdit* 优于名为 *admin* 的角色。在您的应用程序升级后，您可以添加新角色，例如 *canDeleteMembers*，而不是描述性较差的 *superAdmin*。
 
-	![register](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss8.PNG)
-
-<h2><a name="mbrDB"></a><span class="short-header">Membership DB</span>Using the Membership API</h2>
-In this section you will add a local user and the *canEdit* role to the membership database. Only those users in the *canEdit* role will be able to edit data. A best practice is to name roles by the actions they can perform, so *canEdit* is preferred over a role called *admin*. When your application evolves you can add new roles such as *canDeleteMembers* rather than the less descriptive *superAdmin*.
-
-1. Open the *migrations\configuration.cs* file and add the following `using` statements:
+1. 打开 *migrations\configuration.cs* 文件并添加以下 using 语句：
 
         using Microsoft.AspNet.Identity;
         using Microsoft.AspNet.Identity.EntityFramework;
 
-1. Add the following **AddUserAndRole** method to the class:
+1. 将以下 AddUserAndRole 方法添加到类：
 
     
          bool AddUserAndRole(ContactManager.Models.ApplicationDbContext context)
@@ -369,16 +380,16 @@ In this section you will add a local user and the *canEdit* role to the membersh
                 new UserStore<ApplicationUser>(context));
             var user = new ApplicationUser()
             {
-               UserName = "user1@contoso.com",
+               UserName = "user1",
             };
-            ir = um.Create(user, "P_assw0rd1");
+            ir = um.Create(user, "Passw0rd1");
             if (ir.Succeeded == false)
                return ir.Succeeded;
             ir = um.AddToRole(user.Id, "canEdit");
             return ir.Succeeded;
          }
 
-2. Call the new method from the **Seed** method:
+2. 从 Seed 方法中调用新类：
 
         protected override void Seed(ContactManager.Models.ApplicationDbContext context)
         {
@@ -387,37 +398,33 @@ In this section you will add a local user and the *canEdit* role to the membersh
                 // Code removed for brevity
         }
 
-	The following images shows the changes to *Seed* method:
+   此代码会创建名为 *canEdit* 的新角色，创建新的本地用户 *user1*，并将 *user1* 添加到 *canEdit* 角色。
 
-	![code image](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss24.PNG)
+## 使用临时代码将新的社交登录用户添加到 canEdit 角色##
+在本节中，您将临时修改帐户控制器中的 ExternalLoginConfirmation 方法以将使用 OAuth 或 OpenID 提供程序注册的新用户添加到 *canEdit* 角色。我们将临时修改 ExternalLoginConfirmation 方法以自动将新用户添加到管理角色。在我们提供添加和管理角色的工具前，我们将使用下面的临时自动注册代码。我们希望在将来提供与 [WSAT](http://msdn.microsoft.com/zh-cn/library/ms228053(v=vs.90).aspx) 类似的工具，该工具支持您创建和编辑用户帐户和角色。在本教程的后面，我将向您说明如何使用“服务器资源管理器”将用户添加到角色。
 
-   This code creates a new role called *canEdit*, creates a new local user *user1@contoso.com*, and adds *user1@contoso.com* to the *canEdit* role. For more information, see the [ASP.NET Identity resource page](http://curah.microsoft.com/55636/aspnet-identity).
+1. 打开 Controllers\AccountController.cs 文件并导航到 ExternalLoginConfirmation 方法。
+1. 在 SignInAsync 调用之前将以下调用添加到 AddToRoleAsync。
 
-## Use Temporary Code to Add New Social Login Users to the canEdit Role  ##
-In this section you will temporarily modify the **ExternalLoginConfirmation** method in the Account controller to add new users registering with an OAuth or OpenID provider to the *canEdit* role. We will temporarily modify the **ExternalLoginConfirmation** method to automatically add new users to an administrative role. Until we provide a tool to add and manage roles, we'll use the temporary automatic registration code below. We hope to provide a tool similar to [WSAT](http://msdn.microsoft.com/zh-cn/library/ms228053.aspx) in the future which allow you to create and edit user accounts and roles. Later in the tutorial I'll show how you can use **Server Explorer** to add users to roles.
+                await UserManager.AddToRoleAsync(user.Id, "CanEdit");
 
-1. Open the **Controllers\AccountController.cs** file and navigate to the **ExternalLoginConfirmation** method.
-1. Add the following call to **AddToRoleAsync** just before the **SignInAsync** call.
+   上面的代码会将新注册的用户添加到“CanEdit”角色，这为他们提供了对更改（编辑）数据的操作方法的访问权限。代码更改的图像如下所示：
 
-                await UserManager.AddToRoleAsync(user.Id, "canEdit");
+   ![代码](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr9.png)
 
-   The code above adds the newly registered user to the "canEdit" role, which gives them access to action methods that change (edit) data. An image of the code change is shown below:
+在本教程的后面，您会将应用程序部署到 Windows Azure，在其中，您将使用 Google 或其他第三方身份验证提供程序进行登录。这会将您新注册的帐户添加到 *canEdit* 角色。发现您网站的 URL 并且具有 Google ID 的任何人都能注册并更新您的数据库。若要阻止其他人这样做，您可以停止该网站。您可以通过检查数据库来验证具有 *canEdit* 角色的人员。
 
-   ![code](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss9.PNG)
-
-Later in the tutorial you will deploy the application to Azure, where you will log-on with Google or another third party authentication provider. This will add your newly registered account to the *canEdit* role. Anyone who finds your site's URL and has a Google ID can then register and update your database. To prevent other people from doing that, you can stop the site. You'll be able to verify who is in the *canEdit* role by examining the database.
-
-In the **Package Manager Console** hit the up arrow key to bring up the following command:
+在“程序包管理器控制台”中，点击向上键以显示以下命令：
 
 		Update-Database
 
-Run the  **Update-Database** command which will run the **Seed** method, and that will run the **AddUserAndRole** you just added. The **AddUserAndRole** will create the user *user1@contoso.com* and add her to the *canEdit* role.
+运行 Update-Database 命令以运行 Seed 方法，该方法将运行您刚刚添加的 AddUserAndRole。AddUserAndRole 将创建用户 *user1* 并将其添加到 *canEdit* 角色。
 
-## Protect the Application with SSL and the Authorize Attribute ##
+## 通过 SSL 和 Authorize 特性保护应用程序##
 
-In this section you will apply the [Authorize](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.authorizeattribute.aspx) attribute to restrict access to the action methods. Anonymous users will be able to view the **Index** action method of the home controller only. Registered users will be able to see contact data (The **Index** and **Details** pages of the Cm controller), the About, and the Contact pages. Only users in the *canEdit* role will be able to access action methods that change data.
+在本节中，您将应用 [Authorize](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) 特性限制对操作方法的访问。匿名用户将只能查看主控制器的 Index 操作方法。注册用户将能查看联系人数据（Cm 控制器的“索引”和“详细信息”页）、“关于”和“联系人”页。只有具有 *canEdit* 角色的用户才能访问可更改数据的操作方法。
 
-1. Add the [Authorize](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.authorizeattribute.aspx) filter and the [RequireHttps](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.requirehttpsattribute.aspx) filter to the application. An alternative approach is to add the [Authorize](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.authorizeattribute.aspx) attribute and the [RequireHttps](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.requirehttpsattribute.aspx) attribute to each controller, but it's considered a security best practice to apply them to the entire application. By adding them globally, every new controller and action method you add will automatically be protected, you won't need to remember to apply them. For more information see [Securing your ASP.NET MVC  App and the new AllowAnonymous Attribute](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx). Open the *App_Start\FilterConfig.cs* file and replace the *RegisterGlobalFilters* method with the following (which adds the two filters):
+1. 向应用程序中添加 [Authorize](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) 筛选器和 [RequireHttps](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx) 筛选器。替代方法是向每个控制器中添加 [Authorize](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) 和 [RequireHttps](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx) 属性，但最安全的做法是将这些属性应用于整个应用程序。通过全局添加这两个属性，您添加的每个新控制器和操作方法都将自动受到保护，您将无需记住应用它们。有关更多信息，请参见[保护 ASP.NET MVC 应用程序和新 AllowAnonymous 特性](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx)。打开 *App_Start\FilterConfig.cs* 文件并将 *RegisterGlobalFilters* 方法替换为以下内容（其中添加了两个筛选器）：
 
         public static void
         RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -427,264 +434,246 @@ In this section you will apply the [Authorize](http://msdn.microsoft.com/zh-cn/l
             filters.Add(new RequireHttpsAttribute());
         }
 
-	The following image shows the changed code:
+   上面的代码中应用的 [Authorize](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.authorizeattribute(v=vs.100).aspx) 筛选器将阻止匿名用户访问应用程序中的任何方法。您将使用 [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) 特性选择取消几个方法中的授权要求，因此匿名用户可以登录和查看主页。[RequireHttps](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.requirehttpsattribute(v=vs.108).aspx) 将要求对 Web 应用程序的所有访问都必须通过 HTTPS。
 
-	![code image](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss10.PNG)
+1. 将 [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) 特性添加到 Home 控制器的 Index 方法。[AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) 特性使您能够将您要选择取消授权的方法加入白名单。下面显示了一部分 HomeController：	
 
-	The [Authorize](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.authorizeattribute.aspx) filter applied in the code above will prevent anonymous users from accessing any methods in the application. You will use the [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) attribute to opt out of the authorization requirement in a couple methods, so anonymous users can log in and can view the home page. The  [RequireHttps](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.requirehttpsattribute.aspx) will require all access to the web app be through HTTPS.
+         namespace ContactManager.Controllers
+         {
+            public class HomeController : Controller
+            {
+               [AllowAnonymous]
+               public ActionResult Index()
+               {
+                  return View();
+               }
 
-1. Add the [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) attribute to the **Index** method of the Home controller. The [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) attribute enables you to white-list the methods you want to opt out of authorization. An image of a portion of the HomeController is shown below:	
+2. 对 *AllowAnonymous* 执行全局搜索，然后您可以看到它在 Account 控制器的登录和注册方法中使用。
+1. 在 *CmController.cs* 中，将 [Authorize(Roles = "canEdit")]` 添加到 *Cm* 控制器中可更改数据的 HttpGet 和 HttpPost 方法（Create、Edit、Delete，除 Index 和 Details 之外的所有操作方法）。下面显示了一部分已完成代码：
 
-  ![code](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss11.PNG)
+   ![代码的图像](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr11.png)
 
-2. Do a global search for *AllowAnonymous*, you can see it is used in the log in and registration methods of the Account controller.
-1. In *CmController.cs*, add `[Authorize(Roles = "canEdit")]` to the HttpGet and HttpPost methods that change data (Create, Edit, Delete, every action method except Index and Details) in the *Cm* controller. A portion of the completed code is shown below: 
+## 为项目启用 SSL##
 
-   ![img of code](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr11.png)
+1. 启用 SSL。在“解决方案资源管理器”中，单击 ContactManager 项目，然后单击 F4 以显示属性对话框。将“已启用 SSL”更改为 true。复制 SSL URL。SSL URL 将为 https://localhost:44300/，除非您之前已创建 SSL 网站。
 
-## Enable SSL for the Project ##
-
-1. Enable SSL. In Solution Explorer, click the **ContactManager** project, then click F4 to bring up the properties dialog. Change **SSL Enabled** to true. Copy the **SSL URL**. The SSL URL will be https://localhost:44300/ unless you've previously created SSL Web Sites.
-
-	![enable SSL][rxSSL]
+	![启用 SSL][rxSSL]
  
-1. In Solution Explorer, right click the **Contact Manager** project and click **Properties**.
-1. In the left tab, click **Web**.
-1. Change the **Project Url** to use the **SSL URL** and save the page (Control S).
+1. 在“解决方案资源管理器”中，右键单击 Contact Manager 项目，然后单击“属性”。
+1. 在左侧选项卡中，单击 Web。
+1. 将“项目 URL”更改为使用 SSL URL 并保存页面 (Ctrl+S)。
 
-	![enable SSL](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr1.png)
+	![启用 SSL](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr1.png)
  
-1. Verify Internet Explorer is the browser Visual Studio launches as shown in the image below:
-
-	![default browser](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss12.PNG)
-
-	The browser selector lets you specify the browser Visual Studio launches.
-
- ![browser selector](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss13.png)
-
-	You can select multiple browsers and have Visual Studio update each browser when you make changes. For more information see [Using Browser Link in Visual Studio 2013](http://www.asp.net/visual-studio/overview/2013/using-browser-link).
-
-
-1. Press CTRL+F5 to run the application. Follow the instructions to trust the self-signed certificate that IIS Express has generated.
-
-	 ![instructions to trust the self-signed certificate that IIS Express has generated](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss26.PNG)
-
-1. Read the **Security Warning** dialog and then click **Yes** if you want to install the certificate representing  **localhost**.
-
- ![localhost IIS Express certificate warning ](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss27.PNG)
-
-1. IE shows the *Home* page and there are no SSL warnings.
-
-	 ![IE with localhost SSL and no warnings](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss28.PNG)
-
-	Google Chrome also accepts the certificate and will show HTTPS content without a warning. Firefox uses its own certificate store, so it will display a warning. For our application you can safely click **I Understand the Risks**. 
-
-	 ![FireFox Cert Warning](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss30.PNG)
+1. 按 Ctrl+F5 运行应用程序。浏览器将显示一个证书警告。对于我们的应用程序，您可以安全地单击链接“继续浏览此网站”。
  
+	![认证警告][rxNOT]
 
-1. If you are still logged in from a previous session, hit the **Log out** link.
-1. Click on the **About** or **Contact** links. You will be redirected to the log in page because anonymous users cannot view those pages. 
-1. Click the **Register as a new user** link and add a local user with email *joe@contoso.com*. Verify *Joe* can view the Home, About and Contact pages. 
 
-	![login](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss14.PNG)
+	![认证警告][rxNOT2]
+ 
+   默认浏览器显示了主控制器的“索引”页。
 
-1. Click the *CM Demo* link and verify you see the data. 
-1. Click an edit link on the page, you will be redirected to the log in page (because a new local user is not added to the *canEdit* role).
-1. Log in as *user1@contoso.com* with password of "P_assw0rd1" (the "0" in "word" is a zero). You will be redirected to the edit page you previously selected. 
+1. 如果您仍是从前一个会话登录的，请点击“注销”链接。
+1. 单击“关于”或“联系人”链接。您将重定向到登录页，因为匿名用户无法查看这些页面。
+1. 单击“注册”链接添加名为 *Joe* 的本地用户。验证 *Joe* 是否能查看主页、“关于”页和“联系人”页。
+1. 单击“CM 演示”链接并验证您是否能看到数据。
+1. 单击页面上的编辑链接，您将重定向到登录页（因为新的本地用户未添加到 *canEdit* 角色）。
+1. 使用帐户 *user1* 和密码“Passw0rd1”（“word”中的“0”是零）登录。您将重定向到之前选择的编辑页。
 
-   If you can't log in with that account and password, try copying the password from the source code and pasting it. If you still can't log in, check the **UserName** column of the **AspNetUsers** table to verify *user1@contoso.com* was added. 
-1. Verify you can make data changes.
+   如果您无法使用该帐户和密码登录，请尝试从源代码中复制密码并粘贴它。如果您仍然无法登录，请检查 AspNetUsers 表以验证是否已添加 *user1*。在本教程的后面，我将演示如何检查 AspNetUsers 表。
+1. 验证您是否能执行数据更改。
 
-<h2><a name="bkmk_deploytowindowsazure11"></a>Deploy the app to Azure</h2>
+<h2><a name="bkmk_deploytowindowsazure11"></a>将应用程序部署到 Windows Azure</h2>
 
-1. In Visual Studio, right-click the project in **Solution Explorer** and select **Publish** from the context menu.
+1. 构建应用程序。
+1. 在 Visual Studio 中，在“解决方案资源管理器”中右键单击该项目，从上下文菜单中选择“发布”。
 
-	![Publish in project context menu][firsdeploy003]
+	![项目上下文菜单中的“发布”][firsdeploy003]
 
-	The **Publish Web** wizard opens.
+“发布 Web”向导将打开。
 
-1. Click the **Settings** tab on the left side of the **Publish Web** dialog box. Click the **v** icon to select the **Remote connection string** for **ApplicationDbContext** and select **ContactDB**.
+1. 单击“设置”选项卡。单击 v 图标为 ApplicationDbContext 选择“远程连接字符串”并选择 ContactDB。
 
-   
-	![settings](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrc2.png)
+   （如果您在创建发布配置文件后关闭并重新打开了 Visual Studio，您可能不会在下拉列表中看到连接字符串。在这种情况下，不要编辑您之前创建的发布配置文件，而是按与之前相同的方式创建新的发布配置文件，然后在“设置”选项卡上执行这些步骤。）
 
-1. Under **ContactManagerContext**, select **Execute Code First Migrations**.
+	![设置](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrc2.png)
 
-	![settings](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrc3.png)
+1. 在 ContactManagerContext 下，选择“执行 Code First 迁移”。
 
-1. Click **Publish**.
+![设置](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrc3.png)
 
-1. Log in as *user1@contoso.com* and verify you can edit data.
+1. 单击“发布”。
 
-1. Log out.
+1. 以 *user1* 身份登录并验证您是否能编辑数据。
 
-2. Log in using Google or Facebook. That will add the Google or Facebook account to the **canEdit** role.
+1. 注销。
 
-### Stop the web site to prevent other people from registering  
+2. 使用 Google 或 Facebook 登录。这会将 Google 或 Facebook 帐户添加到 canEdit 角色。
 
-1. In **Server Explorer**, navigate to **Web Sites**.
-4. Right click on each Web Site instance and select **Stop Web Site**. 
+### 停止网站以阻止其他人注册
 
-	![stop web site](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr2.png) 
+1. 在“服务器资源管理器”中，导航到“网站”。
+4. 右键单击每个网站实例并选择“停止网站”。
 
-	Alternatively, from the Azure management portal, you can select the web site, then click the **stop** icon at the bottom of the page.
+	![停止网站](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr2.png)
 
-	![stop web site](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr3.png)
+或者，也可以在 Windows Azure 管理门户中选择网站，然后单击页面底部的“停止”图标。
 
-### Remove AddToRoleAsync, Publish, and Test
+![停止网站](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr3.png)
 
-1. Comment out or remove the following code from the **ExternalLoginConfirmation** method in the Account controller: 
-                `await UserManager.AddToRoleAsync(user.Id, "canEdit");`
-1. Build the project (which saves the file changes and verify you don't have any compile errors).
-5. Right-click the project in **Solution Explorer** and select **Publish**.
+### 删除 AddToRoleAsync、发布和测试
 
-	   ![Publish in project context menu](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/GS13publish.png)
+1. 从 Account 控制器中的 ExternalLoginConfirmation 方法中删除以下代码：
+                `await UserManager.AddToRoleAsync(user.Id, "CanEdit");`
+1. 生成项目（该操作将保存文件更改并确认没有任何编译错误）。
+5. 在“解决方案资源管理器”中，右键单击该项目并选择“发布”。
+
+	   ![项目上下文菜单中的“发布”](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/GS13publish.png)
 	
-4. Click the **Start Preview** button. Only the files that need to be updated are deployed.
-5. Start the web site from Visual Studio or from the Portal. **You won't be able to publish while the web site is stopped**.
+4. 单击“开始预览”按钮。只会部署需要更新的文件。
+5. 启动网站。执行此操作最简单的方法是通过门户。网站停止时无法发布。
+5. 返回到 Visual Studio 并单击“发布”。
+3. Windows Azure 应用程序将在默认浏览器中打开。您将以匿名用户的身份查看主页。
+4. 单击“关于”链接。您将重定向到登录页。
+5. 单击登录页上的“注册”链接并创建本地帐户。我们将使用此本地帐户验证您是否能访问只读页，而无法访问更改数据的页面（受 *canEdit* 角色的保护）。在本教程的后面，您将删除本地帐户访问权限。
+<!--
+1. Log out of the local user account and log in with the Google account you previously registered with. Verify you can edit data. 
+-->
 
-	![start web site](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss15.png)
+![注销](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr6.png)
 
-5. Go back to Visual Studio and click **Publish**.
-3. Your Azure App opens up in your default browser. If you are logged in, log out so you can view the home page as an anonymous user.  
-4. Click the **About** link. You'll be redirected to the Log in page.
-5. Click the **Register** link on the Log in page and create local account. We will use this local account to verify you can access the read only pages but you cannot access pages that change data (which are protected by the *canEdit* role). Later on in the tutorial we will remove local account access. 
+1. 验证您是否能导航到“关于”和“联系人”页。
 
-	![Register](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss16.PNG)
+![注销](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr7.png)
 
-1. Verify you can navigate to the *About* and *Contact* pages.
+1. 单击“CM 演示”链接以导航到 Cm 控制器。或者，也可以将 *Cm* 附加到 URL。
 
-	![Log off](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss17.PNG)
-
-1. Click the **CM Demo** link to navigate to the **Cm** controller. Alternatively, you can append *Cm* to the URL. 
-
-	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr4.png)
+![CM 页](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr4.png)
  
-1. Click an Edit link. You will be redirected to the log in page. Under **Use another service to log in**, Click Google or Facebook and log in with the account you previously registered. (If you're working quickly and your session cookie has not timed out, you will be automatically logged in with the Google or Facebook account you previously used.)
-2. Verify you can edit data while logged into that account.
- 	**Note:** You cannot log out of Google from this app and log into a different google account with the same browser. If you are using one browser, you will have to navigate to Google and log out. You can log on with another account from the same third party authenticator (such as Google) by using a different browser.
+1. 单击“编辑”链接。您将重定向到登录页。在“使用其他服务进行登录”下，单击“Google”或“Facebook”并使用您之前注册的帐户进行登录。
+2. 验证您是否能在登录到该帐户时编辑数据。
+ 	注意：您无法从此应用程序注销 Google 并使用同一浏览器登录到其他 Google 帐户。如果您使用的是一个浏览器，则必须导航到 Google 并注销。您可以借助其他浏览器，使用来自同一第三方身份验证器（如 Google）的其他帐户登录。
 
-## Examine the SQL Azure DB ##
 
-1. In **Server Explorer**, navigate to the **ContactDB**
-2. Right click on **ContactDB** and select **Open in SQL Server Object Explorer**.
+## 检查 SQL Azure 数据库##
+
+1. 在“服务器资源管理器”中，导航到 ContactDB
+2. 右键单击 ContactDB 并选择“在 SQL Server 对象资源管理器中打开”。
  
-	![open in SSOX](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr12.png)
+![在 SSOX 中打开](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr12.png)
+
  
-**Note:** If you can't expand **SQL Databases** and *can't* see the **ContactDB** from Visual Studio, you will have to follow the instructions below to open a firewall port or a range of ports. Follow the instructions under **Set up Azure firewall rules**. You may have to wait for a few minutes to access the database after adding the firewall rule.
+**注意**：如果无法从 Visual Studio 展开 SQL Databases 并且无法看到 ContactDB，则必须按照下面的说明来打开防火墙端口或一系列端口。按照“添加一系列允许的 IP 地址”和“从 SSOX 连接到 SQL Azure 数据库”下面的说明操作。在添加防火墙规则后，您可能必须等待几分钟才能访问数据库。
  
-1. Right click on the **AspNetUsers** table and select **View Data**.
+1. 右键单击 AspNetUsers 表，然后选择“查看数据”。
 
-	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr8.png)
+![CM 页](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr8.png)
  
-1. Note the Id from the Google account you registered with to be in the **canEdit** role, and the Id of *user1@contoso.com*. These should be the only users in the **canEdit** role. (You'll verify that in the next step.)
+1. 请记下您注册的要具有 canEdit 角色的 Google 帐户中的 ID，并记下 *user1* 的 ID。这些 ID 只应是具有 canEdit 角色的用户。（您将在下一步中对此进行验证。）
 
-	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr9.png)
+![CM 页](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rrr9.png)
  
-2. In **SQL Server Object Explorer**, right click on **AspNetUserRoles** and select **View Data**.
+2. 在“SQL Server 对象资源管理器”中，右键单击 AspNetUserRoles，然后选择“查看数据”。
 
-	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rs1.png)
+![CM 页](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rs1.png)
  
-Verify the **UserId**s are from *user1@contoso.com* and the Google account you registered. 
+验证 UserId 是否来自 *user1* 和您注册的 Google 帐户。
 
 
-## Set up Azure firewall rules ##
+## 无法打开服务器登录错误##
 
-Follow the steps in this section if you can't connect to SQL Azure from Visual Studio or if you get an error dialog stating "Cannot open server".
+仅当遇到指示“无法打开服务器”的错误对话时才执行本节中的步骤。
+	![防火墙错误][rx5]
 
-![firewall error](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rx5.png)
+您需要将 IP 地址添加到允许的 IP。
 
-You will need to add your IP address to the allowed IPs.
+1. 在 Windows Azure 门户中的左侧选项卡中选择 SQL Databases。
+	![选择 SQL][rx6]
 
-1. In the Azure Portal, Select **SQL Databases** in the left tab.
+1. 选择您要打开的数据库。
+1. 单击“为此 IP 地址设置 Windows Azure 防火墙规则”链接。
 
-	![Select SQL][rx6]
+	![防火墙规则][rx7]
 
-1. Click on the **ContactDB**.
+1. 当系统提示您“现有防火墙规则中不包括当前 IP 地址 xxx.xxx.xxx.xxx。是否要更新防火墙规则？”，请单击“是”。在某些企业防火墙后，添加此地址通常还不够，您将需要添加一系列 IP 地址。
 
-1. Click the **Set up Azure firewall rules for this IP address** link.
+下一步是添加一系列允许的 IP 地址。
 
-	![firewall rules][rx7]
+1. 在 Windows Azure 门户中，单击 SQL Databases。
+1. 单击承载您的数据库的“服务器”。
 
-1. When you are prompted with "The current IP address xxx.xxx.xxx.xxx is not included in existing firewall rules. Do you want to update the firewall rules?", click **Yes**. Adding this address is often not enough behind some corporate firewalls, you will need to add a range of IP addresses.
+	![数据库服务器][rx8]
 
-The next step is to add a range of allowed IP addresses.
+1. 单击页面顶部的“配置”链接。
+1. 添加规则名称、起始和结束 IP 地址。
 
-1. In the Azure Portal, Click **SQL Databases**.
-1. Select the **Servers** tab, and then click on the server you wish to configure.
+	![IP 范围][rx9]
 
-	![Servers tab in Azure ](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss25.PNG)
+1. 在页面底部，单击“保存”。
+1. 请留下反馈，告诉我们您是否需要添加一系列 IP 地址以进行连接。
 
-1. Click the **Configure** tab.
+最后，您可以从 SSOX 连接到 SQL Database 实例
 
-1. Add a rule name, starting and ending IP addresses.
+1. 在“视图”菜单中，单击“SQL Server 对象资源管理器”。
+1. 右键单击“SQL Server”并选择“添加 SQL Server”。
+1. 在“连接到服务器”对话框中，将“身份验证”设置为“SQL Server 身份验证”。您将从 Windows Azure 门户中获取“服务器名称”和“登录名”。
+1. 在您的浏览器中，导航到门户并选择“SQL Database”。
+1. 选择 ContactDB，然后单击“查看 SQL Database 连接字符串”。
+1. 在“连接字符串”页中，复制“服务器”和“用户 ID”。
+1. 将“服务器”和“用户 ID”值传入 Visual Studio 中的“连接到服务器”对话框。“用户 ID”值将进入“登录名”条目。输入用于创建 SQL 数据库的密码。
 
-	![ip range][rx9]
+![连接到服务器 DLG](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rss1.png)
 
-1. At the bottom of the page, click **Save**.
-1. Please leave feedback and let me know if you needed to add a range of IP address to connect.
-
-Finally, you can connect to the SQL Database instance from SQL Server Object Explorer (SSOX)
-
-1. From the View menu, click **SQL Server Object Explorer**.
-1. Right click **SQL Server** and select **Add SQL Server**.
-1. In the **Connect to Server** dialog box, set the **Authentication** to **SQL Server Authentication**. You will get the **Server name** and **Login** from the Azure Portal.
-1. In your browser, navigate to the portal and select **SQL Databases**.
-1. Select the **ContactDB**, and then click **View SQL Database connection strings**.
-1. From the **Connection Strings** page, copy the **Server**  and **User ID**.
- 
-	![con string](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ss21.PNG)
-1. Past the **Server** and **User ID** values into the **Connect to Server** dialog in Visual Studio. The **User ID** value goes into the **Login** entry. Enter the password you used to create the SQL DB.
-
-	![Connect to Server DLG](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rss1.png)
-
-You can now navigate to the Contact DB using the instructions given earlier.
+您现在可以使用之前提供的说明导航到联系人数据库。
 
 
-## To Add a User to the canEdit Role by editing database tables
+## 通过编辑数据库角色将用户添加到 canEdit 角色
 
-Earlier in the tutorial you used code to add users to the canEdit role. An alternative method is to directly manipulate the data in the membership tables. The following steps show how to use this alternate method to add a user to a role.
+在本教程的前面部分，您使用代码将用户添加到了 canEdit 角色。一种替代方法是直接操作成员资格表中的数据。以下步骤说明如何使用此替代方法将用户添加到角色。
 
-2. In **SQL Server Object Explorer**, right click on **AspNetUserRoles** and select **View Data**.
+2. 在“SQL Server 对象资源管理器”中，右键单击 AspNetUserRoles，然后选择“查看数据”。
 
-	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rs1.png)
+![CM 页](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rs1.png)
 
-1. Copy the *RoleId* and paste it into the empty (new) row.
+1. 复制 *RoleId* 并将其粘贴到空（新）行中。
 	
-	![CM page](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rs2.png)
+![CM 页](./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rs2.png)
 	
-2. In the **AspNetUsers** table find the user you want to put in the role, and copy the  user's *Id*, and then paste it into the **UserId** column of the **AspNetUserRoles** table.
+2. 在 AspNetUsers 表中，查找要添加到角色的用户，复制用户的 *Id*，然后将其粘贴到 AspNetUserRoles 表的 UserId 列。
 
-We are working on a tool that will make managing users and roles much easier.
+我们正在开发可显著简化用户和角色管理的工具。
 
-## Local Registration Considerations ##
+## 本地注册注意事项##
 
-The current  ASP.NET membership registration in the project does not provide support for password resets and it does not verify that a human is registering (for example with a [CAPTCHA](http://www.asp.net/web-pages/tutorials/security/16-adding-security-and-membership)). Once a user is authenticated using one of the third party providers, they can register. If you choose to disable local registration, follow these steps:
-
-
-1. In the AccountController, remove the *[AllowAnonymous]* attribute from the GET and POST *Register* methods. This will prevent bots and anonymous users from registering.
-1. In the *Views\Shared* folder, *_LoginPartial.cshtml* file, remove the Register action link.
-2. In the *Views\Account\Login.cshtml* file, remove the Register action link.
-2. Deploy the app.
+项目中当前的 ASP.NET 成员身份注册不提供密码重置支持，并且不会验证用户是否正在注册（例如，使用 [CAPTCHA](http://www.asp.net/web-pages/tutorials/security/16-adding-security-and-membership)）。在使用某个第三方提供程序验证用户身份后，该用户即可进行注册。如果您选择禁用本地注册，请执行以下步骤：
 
 
-<h2><a name="nextsteps"></a><span class="short-header">Next steps</span>Next steps</h2>
+1. 在 AccountController 中，从 GET 和 POST 注册方法中删除 *[AllowAnonymous]* 特性。这将防止机器人和匿名用户进行注册。
+1. 在 *Views\Shared* 文件夹的 *_LoginPartial.cshtml* 文件中，删除“注册”操作链接。
+2. 在 *Views\Account\Login.cshtml* 文件中，删除“注册”操作链接。
+2. 部署应用程序。
 
-Follow my tutorial [Create an ASP.NET MVC 5 App with Facebook and Google OAuth2 and OpenID Sign-on](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on ) for instructions on how to add profile data to the user registration DB and for detailed instructions on using Facebook as an authentication provider.
 
-To enable the social login buttons shown at the top of this tutorial, see [Pretty social login buttons for ASP.NET MVC 5](http://www.beabigrockstar.com/pretty-social-login-buttons-for-asp-net-mvc-5/).
+<h2><a name="nextsteps"></a><span class="short-header">后续步骤</span>后续步骤</h2>
 
-A good place to learn more about ASP.NET MVC is my [Getting Started with ASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) tutorial. Tom Dykstra's excellent [Getting Started with EF and MVC](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) will show you more advanced MVC and EF programming.
+请遵循我的教程[使用 Facebook 和 Google 的 OAuth2 和 OpenID 登录名创建 ASP.NET MVC 5 应用程序](http://www.asp.net/mvc/tutorials/mvc-5/create-an-aspnet-mvc-5-app-with-facebook-and-google-oauth2-and-openid-sign-on )中有关如何将配置文件数据添加到用户注册数据库的说明以及有关将 Facebook 用作身份验证提供程序的详细说明。
 
-This tutorial and the sample application was written by [Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) with assistance from Tom Dykstra and Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)). 
 
-Please leave feedback on what you liked or what you would like to see improved, not only about the tutorial itself but also about the products that it demonstrates. Your feedback will help us prioritize improvements. You can also request and vote on new topics at [Show Me How With Code](http://aspnet.uservoice.com/forums/228522-show-me-how-with-code).
+若要了解有关 ASP.NET MVC 的更多信息，可以阅读我的 [ASP.NET MVC 5 入门](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)教程。Tom Dykstra 的绝佳的 [EF 和 MVC 入门](http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application)将更详细地说明高级 EF 编程。
 
+本教程和示例应用程序由 [Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) 在 Tom Dykstra 和 Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)) 的帮助下编写。
+
+请提供有关您喜欢的内容或者您希望看到改善的内容的反馈，不仅关于教程本身，也关于它所演示的产品。您的反馈将帮助我们确定优先改进哪些方面。
+
+<!--
+To get the colorful Facebook, Google and Yahoo log on buttons, see the blog post [Customizing External Login Buttons in ASP.NET MVC 5](http://www.beabigrockstar.com/customizing-external-login-buttons-in-asp-net-mvc-4/). 
+ -->
 <!-- bookmarks -->
-[Add an OAuth Provider]: #addOauth
-[Using the Membership API]:#mbrDB
-[Create a Data Deployment Script]:#ppd
-[Update the Membership Database]:#ppd2
+[添加 OAuth 提供程序]: #addOauth
+[使用成员资格 API]:#mbrDB
+[创建数据部署脚本]:#ppd
+[更新成员资格数据库]:#ppd2
 
 [setupwindowsazureenv]: #bkmk_setupwindowsazure
 [createapplication]: #bkmk_createmvc4app
@@ -693,8 +682,76 @@ Please leave feedback on what you liked or what you would like to see improved, 
 [adddb]: #bkmk_addadatabase
 
 
+
+
+<!-- links -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- links from Tom's hopefully no collisions -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- images-->
+
 [rx2]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rx2.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 [rx5]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rx5.png
 [rx6]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rx6.png
@@ -703,6 +760,7 @@ Please leave feedback on what you liked or what you would like to see improved, 
 [rx9]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rx9.png
 
 [rxb]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rxb.png
+
 
 
 [rxSSL]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rxSSL.png
@@ -715,28 +773,70 @@ Please leave feedback on what you liked or what you would like to see improved, 
 [rxNOT]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rxNOT.png
 [rr1]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rr1.png
 
+
 [rxPrevDB]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rxPrevDB.png
+
+
+
+
+
+
+
+
+
+
 
 [rxWSnew]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rxWSnew2.png
 [rxCreateWSwithDB]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/rxCreateWSwithDB.png
 
 [setup007]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/dntutmobile-setup-azure-site-004.png
 
+
+
+
+
 [newapp004]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/dntutmobile-createapp-004.png
+
+
+
+
 
 [firsdeploy003]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/dntutmobile-deploy1-publish-001.png
 
+
+
+
+
+
+
 [adddb002]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/dntutmobile-adddatabase-002.png
 [addcode001]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/dntutmobile-controller-add-context-menu.png
+
+
+
+
+
+
+
 
 [addcode008]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/dntutmobile-migrations-package-manager-menu.png
 [addcode009]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/dntutmobile-migrations-package-manager-console.png
 
 
-[Important information about ASP.NET in Azure Web Sites]: #aspnetwindowsazureinfo
-[Next steps]: #nextsteps
+
+
+
+
+
+
+
+[有关 Windows Azure 网站中的 ASP.NET 的重要信息]: #aspnetwindowsazureinfo
+[后续步骤]: #nextsteps
+
+
 
 [ImportPublishSettings]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2013/ImportPublishSettings.png
+
 
 
 

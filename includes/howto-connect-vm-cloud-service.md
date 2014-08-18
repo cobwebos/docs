@@ -1,61 +1,69 @@
-<properties authors="kathydav" editor="tysonn" manager="donaldg" /> 
+<properties writer="kathydav" editor="tysonn" manager="jeffreyg" /> 
 
 
-#How to Connect Virtual Machines in a Cloud Service
-
-
-
-When you create a virtual machine, a cloud service is automatically created to contain the machine. You can create multiple virtual machines under the same cloud service to enable the virtual machines to communicate with each other, to load-balance between virtual machines, and to maintain high availability of the machines. 
-
-For more information about load-balancing virtual machines, see [Load balancing virtual machines](../../articles/load-balance-virtual-machines/). For more information about managing the availability of your application, see [Manage the availability of virtual machines](../../articles/manage-availability-virtual-machines/). 
-
-
-First, you'll need to create a virtual machine with a new cloud service, and then you can connect additional virtual machines to the first virtual machine under the same cloud service. 
+#如何连接云服务中的虚拟机
 
 
 
-1. Create a virtual machine using the steps in [How to create a custom virtual machine](../../articles/virtual-machines-create-custom/).
+当您创建一台虚拟机后，会自动创建一项云服务来包含该虚拟机。您可以在同一云服务下创建多台虚拟机，然后使虚拟机之间能够相互通信，在虚拟机之间进行平衡负载，维护虚拟机的高可用性。
+
+有关对虚拟机进行负载平衡的更多信息，请参见[对虚拟机进行负载平衡][Load balancing virtual machines]。有关管理应用程序可用性的更多信息，请参见[管理虚拟机的可用性][Manage the availability of virtual machines]。
 
 
-2. After you create the first custom virtual machine, on the [Management Portal](http://manage.windowsazure.cn) command bar, click **New**.
+首先，您将需要创建一台虚拟机和新的云服务，然后在该云服务下将其他虚拟机与第一台虚拟机相连接。
 
 
-	![Create a new virtual machine](./media/howto-connect-vm-cloud-service/Create.png)
 
-3. Click **Virtual Machine**, and then click **From Gallery**.
+1. 使用[如何创建自定义虚拟机] [How to create a custom virtual machine]中的步骤创建虚拟机。
+
+
+2. 创建第一台自定义虚拟机后，在[管理门户](http://manage.windowsazure.com)命令栏上，单击“新建”。
+
+
+	![新建虚拟机](./media/howto-connect-vm-cloud-service/Create.png)
+
+3. 单击“虚拟机”，然后单击“从库中”。
 
 	
-	![Create a custom virtual machine](./media/howto-connect-vm-cloud-service/CreateNew.png)
+	![创建自定义虚拟机](./media/howto-connect-vm-cloud-service/CreateNew.png)
 
-	The **Select the virtual machine operating system** dialog box appears. 
-
-
-4. From the **Choose an image** page, select an image, and then click the arrow to continue.
+	将显示“选择虚拟机操作系统”对话框。
 
 
-	The first **Virtual machine configuration** page appears.
+4. 从“选择映像”页中，选择一个映像，然后单击箭头以继续。
 
 
-5. In **Virtual Machine Name**, type the name that you want to use for the virtual machine.
-
-6. In **Size**, select the size that you want to use for the virtual machine. The size that you select depends on the number of cores that are needed for your application.
-
-7. In **New User Name**, type a name for the administrative account that you want to use to manage the server.
+	将显示第一个“虚拟机配置”页。
 
 
-8. In **New Password**, type a strong password for the administrative account. In **Confirm Password**, retype the password.
+5. 在“虚拟机名称”中，键入您要用于该虚拟机的名称。
+
+6. 在“大小”中，选择要用于该虚拟机的大小。所选大小具体取决于您应用程序所需的内核数。
+
+7. 在“新用户名”中，键入要用于管理服务器的管理帐户的名称。
 
 
-9. For a virtual machine running the Linux operating system, you can select to secure the machine with an SSH Key.
+8. 在“新密码”中，为管理帐户键入一个强密码。在“确认密码”中，重新键入密码。
 
 
-10. In **Cloud Service**, select the cloud service that will contain the new virtual machine.
-
-11. In **Storage Account**, select a storage account to store the .vhd file, or leave the field set at the default to create the storage account automatically. Only one storage account is automatically created. All other virtual machines that you create with this setting are located in this storage account. You are limited to 20 storage accounts.
+9. 对于运行 Linux 操作系统的虚拟机，您可以选择通过 SSH 密钥保护虚拟机。
 
 
-12. To use an availability set, select the one was created when you created the first virtual machine.
+10. 在“云服务”中，选择将包含该新虚拟机的云服务。
 
-13. Review the default endpoint configuration, and modify if necessary. 
+11. 在“区域/地缘组/虚拟网络”中，选择要包含该虚拟机的区域。
 
-14. Click the check mark to create the connected virtual machine.
+12. 在“存储帐户”中，选择存储 .vhd 文件的存储帐户，或保留字段的默认设置以自动创建存储帐户。只能自动创建一个存储帐户。使用此设置创建的所有其他虚拟机也位于该存储帐户中。您最多只能创建 20 个存储帐户。
+
+
+13. 要使用可用性集，选择您在创建第一台虚拟机时创建的可用性集。
+
+14. 查看默认终结点配置，并根据需要修改。
+
+15. 单击复选标记以创建连接的虚拟机。
+
+
+[How to create a custom virtual machine]: http://windowsazure.com/zh-cn/documentation/articles/virtual-machines-create-custom/
+[Load balancing virtual machines]: http://windowsazure.com/zh-cn/documentation/articles/load-balance-virtual-machines/
+[Manage the availability of virtual machines]: http://windowsazure.com/zh-cn/documentation/articles/virtual-machines-manage-availability/
+

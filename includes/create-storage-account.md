@@ -1,33 +1,30 @@
-To use storage operations, you need an Azure storage account. You 
-can create a storage account by following these steps. (You can also
-create a storage account [using the REST API].)
+若要执行存储操作，您需要一个 Windows Azure 存储帐户。可
+通过以下步骤创建存储帐户。（也可以
+[使用 REST API]创建存储帐户。）
 
-1.  Log into the [Azure Management Portal].
+1. 登录到 [Windows Azure 管理门户]。
 
-2.  At the bottom of the navigation pane, click **NEW**.
+2. 在导航窗格的底部，单击“+新建”。
 
-	![+new][plus-new]
+	![+新建][plus-new]
 
-3.  Click **DATA SERVICES**, then **STORAGE**, and then click **QUICK CREATE**.
+3. 依次单击“数据服务”、“存储”和“快速创建”。
 
-	![Quick create dialog][quick-create-storage]
+	![“快速创建”对话框][quick-create-storage]
 
-4.  In URL, type a subdomain name to use in the URI for the
-    storage account. The entry can contain from 3-24 lowercase letters
-    and numbers. This value becomes the host name within the URI that is
-    used to address Blob, Queue, or Table resources for the
-    subscription.
+4. 在 URL 中，键入要在存储帐户的 URI 中使用的子域名称。输入的名称可包含 3-24 个小写字母和数字。此值将成为用于对订阅的 Blob、
+    队列或表资源进行寻址的 URI
+    中的主机名。
 
-5.  Choose a Region/Affinity Group in which to locate the
-    storage. If you will be using storage from your Azure
-    application, select the same region where you will deploy your
-    application.
+5. 选择要在其中查找存储的区域/地缘组。如果要使用 Windows Azure 应用程序中的存储，
+    请选择要在其中部署该应用程序的区域。
 
-6. Optionally, you can enable geo-replication.
+6. 还可以选择启用地域复制。
 
-6.  Click **CREATE STORAGE ACCOUNT**.
+6. 单击“创建存储帐户”。
 
-[using the REST API]: http://msdn.microsoft.com/zh-cn/library/azure/hh264518.aspx
-[Azure Management Portal]: http://manage.windowsazure.cn
+[使用 REST API]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh264518.aspx
+[Windows Azure 管理门户]: http://manage.windowsazure.com
 [plus-new]: ./media/create-storage-account/plus-new.png
 [quick-create-storage]: ./media/create-storage-account/quick-storage-2.png
+
