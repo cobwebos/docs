@@ -1,122 +1,119 @@
 <properties linkid="develop-media-services-how-to-guides-create-assets" urlDisplayName="Create Encrypted Asset and Upload to Storage" pageTitle="Create Encrypted Asset and Upload to Storage Azure" metaKeywords="" description="Learn how to get media content into Media Services by creating and uploading an encrypted asset." metaCanonical="" services="media-services" documentationCenter="" title="How to: Create an encrypted Asset and upload to storage" authors="migree" solutions="" manager="" editor="" />
 
+如何：创建加密的资产并上载到存储中
+==================================
 
+本文是介绍 Azure Media Services 编程的系列主题中的一篇。前一个主题是[针对 Media Services 设置计算机](http://go.microsoft.com/fwlink/?LinkID=301751&clcid=0x409)。
 
+若要将媒体内容添加到 Media Services 中，请先创建一个资产并在其中添加文件，然后上载该资产。此过程称为引入内容。
 
+创建资产时，可以指定三个不同的加密选项。
 
-<h1><a name="create-asset"> </a><span class="short header">How to: Create an encrypted Asset and upload to storage</span></h1>
+-   **AssetCreationOptions.None**：不加密。如果你想要创建不加密的资产，则必须设置此选项。
+-   **AssetCreationOptions.CommonEncryptionProtected**：适用于通用加密保护 (CENC) 文件，例如，已进行 PlayReady 加密的一组文件。
+-   **AssetCreationOptions.StorageEncrypted**：存储加密。将明文输入文件上载到 Azure 存储空间之前对其进行加密。
 
-This article is one in a series introducing Azure Media Services programming. The previous topic was [Setting Up Your Computer for Media Services](http://go.microsoft.com/fwlink/?LinkID=301751&clcid=0x409).
+**注意**：Media Services 提供磁盘存储加密，而不通过数字版权管理器 (DRM) 等途径加密。
 
-To get media content into Media Services, first create an asset and add files to it, and then upload the asset. This process is called ingesting content.  
+下面的示例代码将执行以下操作：
 
-When you create assets, you can specify three different options for encryption. 
+-   创建空资产。
+-   创建要与资产关联的 AssetFile 实例。
+-   创建用于定义权限以及资产访问持续时间的 AccessPolicy 实例。
+-   创建用于提供资产访问权限的 Locator 实例。
+-   将单个媒体文件上载到 Media Services。
 
-- **AssetCreationOptions.None**: no encryption. If you want to create an unencrypted asset, you must set this option.
-- **AssetCreationOptions.CommonEncryptionProtected**: for Common Encryption Protected (CENC) files. An example is a set of files that are already PlayReady encrypted. 
-- **AssetCreationOptions.StorageEncrypted**: storage encryption. Encrypts a clear input file before it is uploaded to Azure storage.
-
-**NOTE**: Note that Media Services provide on-disk storage encryption, not over the wire like Digital Rights Manager (DRM.)
-
-The sample code below does the following: 
-
-- Creates an empty Asset.
-- Creates an AssetFile instance that we want to associate with the asset.
-- Creates an AccessPolicy instance that defines the permissions and duration of access to the asset.
-- Creates a Locator instance that provides access to the asset.
-- Uploads a single media file into Media Services. 
-
-<pre><code>
+``` {}
 static private IAsset CreateEmptyAsset(string assetName, AssetCreationOptions assetCreationOptions)
 {
-    var asset = _context.Assets.Create(assetName, assetCreationOptions);
+var asset = _context.Assets.Create(assetName, assetCreationOptions);
 
-    Console.WriteLine("Asset name: " + asset.Name);
-    Console.WriteLine("Time created: " + asset.Created.Date.ToString());
+Console.WriteLine("Asset name:" + asset.Name);
+Console.WriteLine("Time created:" + asset.Created.Date.ToString());
 
-    return asset;
+return asset;
 }
 
 static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
 {
-    var assetName = "UploadSingleFile_" + DateTime.UtcNow.ToString();
-    var asset = CreateEmptyAsset(assetName, assetCreationOptions);
+var assetName = "UploadSingleFile_" + DateTime.UtcNow.ToString();
+var asset = CreateEmptyAsset(assetName, assetCreationOptions);
 
-    var fileName = Path.GetFileName(singleFilePath);
+var fileName = Path.GetFileName(singleFilePath);
 
-    var assetFile = asset.AssetFiles.Create(fileName);
+var assetFile = asset.AssetFiles.Create(fileName);
 
-    Console.WriteLine("Created assetFile {0}", assetFile.Name);
-    Console.WriteLine("Upload {0}", assetFile.Name);
+Console.WriteLine("Created assetFile {0}", assetFile.Name);
+Console.WriteLine("Upload {0}", assetFile.Name);
 
-    assetFile.Upload(singleFilePath);
-    Console.WriteLine("Done uploading of {0} using Upload()", assetFile.Name);
+assetFile.Upload(singleFilePath);
+Console.WriteLine("Done uploading of {0} using Upload()", assetFile.Name);
 
-    return asset;
+return asset;
 }
-</code></pre>
+```
 
-The following code shows how to create an asset and upload multiple files.
+以下代码演示如何创建资产及上载多个文件。
 
-<pre><code>
+``` {}
 static public IAsset CreateAssetAndUploadMultipleFiles( AssetCreationOptions assetCreationOptions, string folderPath)
 {
-    var assetName = "UploadMultipleFiles_" + DateTime.UtcNow.ToString();
+var assetName = "UploadMultipleFiles_" + DateTime.UtcNow.ToString();
 
-    var asset = CreateEmptyAsset(assetName, assetCreationOptions);
+var asset = CreateEmptyAsset(assetName, assetCreationOptions);
 
-    var accessPolicy = _context.AccessPolicies.Create(assetName, TimeSpan.FromDays(30),
-                                                        AccessPermissions.Write | AccessPermissions.List);
-    var locator = _context.Locators.CreateLocator(LocatorType.Sas, asset, accessPolicy);
+var accessPolicy = _context.AccessPolicies.Create(assetName, TimeSpan.FromDays(30),
+AccessPermissions.Write | AccessPermissions.List);
+var locator = _context.Locators.CreateLocator(LocatorType.Sas, asset, accessPolicy);
 
-    var blobTransferClient = new BlobTransferClient();
-	blobTransferClient.NumberOfConcurrentTransfers = 20;
-    blobTransferClient.ParallelTransferThreadCount = 20;
+var blobTransferClient = new BlobTransferClient();
+    blobTransferClient.NumberOfConcurrentTransfers = 20;
+blobTransferClient.ParallelTransferThreadCount = 20;
 
-    blobTransferClient.TransferProgressChanged += blobTransferClient_TransferProgressChanged;
+blobTransferClient.TransferProgressChanged += blobTransferClient_TransferProgressChanged;
 
-    var filePaths = Directory.EnumerateFiles(folderPath);
+var filePaths = Directory.EnumerateFiles(folderPath);
 
-    Console.WriteLine("There are {0} files in {1}", filePaths.Count(), folderPath);
+Console.WriteLine("There are {0} files in {1}", filePaths.Count(), folderPath);
 
-    if (!filePaths.Any())
+if (!filePaths.Any())
     {
-        throw new FileNotFoundException(String.Format("No files in directory, check folderPath: {0}", folderPath));
+throw new FileNotFoundException(String.Format("No files in directory, check folderPath:{0}", folderPath));
     }
 
-    var uploadTasks = new List&lt;Task&gt;();
-    foreach (var filePath in filePaths)
+var uploadTasks = new List<Task>();
+foreach (var filePath in filePaths)
     {
-        var assetFile = asset.AssetFiles.Create(Path.GetFileName(filePath));
-        Console.WriteLine("Created assetFile {0}", assetFile.Name);
+var assetFile = asset.AssetFiles.Create(Path.GetFileName(filePath));
+Console.WriteLine("Created assetFile {0}", assetFile.Name);
                 
-        // It is recommended to validate AccestFiles before upload. 
-        Console.WriteLine("Start uploading of {0}", assetFile.Name);
-        uploadTasks.Add(assetFile.UploadAsync(filePath, blobTransferClient, locator, CancellationToken.None));
+// It is recommended to validate AccestFiles before upload. 
+Console.WriteLine("Start uploading of {0}", assetFile.Name);
+uploadTasks.Add(assetFile.UploadAsync(filePath, blobTransferClient, locator, CancellationToken.None));
     }
 
-    Task.WaitAll(uploadTasks.ToArray());
-    Console.WriteLine("Done uploading the files");
+Task.WaitAll(uploadTasks.ToArray());
+Console.WriteLine("Done uploading the files");
 
-    blobTransferClient.TransferProgressChanged -= blobTransferClient_TransferProgressChanged;
+blobTransferClient.TransferProgressChanged -= blobTransferClient_TransferProgressChanged;
 
-    locator.Delete();
-    accessPolicy.Delete();
+locator.Delete();
+accessPolicy.Delete();
 
-    return asset;
+return asset;
 }
 
 static void  blobTransferClient_TransferProgressChanged(object sender, BlobTransferProgressChangedEventArgs e)
 {
-    if (e.ProgressPercentage > 4) // Avoid startup jitter, as the upload tasks are added.
+if (e.ProgressPercentage > 4) // Avoid startup jitter, as the upload tasks are added.
     {
-        Console.WriteLine("{0}% upload competed for {1}.", e.ProgressPercentage, e.LocalFile);
+Console.WriteLine("{0}% upload competed for {1}.", e.ProgressPercentage, e.LocalFile);
     }
 }
+```
 
-</code></pre>
+后续步骤
+--------
 
-<h2>Next Steps</h2>
-Now that you have uploaded an asset to Media Services, go to the [How to Get a Media Processor][] topic.
+将资产上载到 Media Services 后，请转到[如何获取媒体处理器](http://go.microsoft.com/fwlink/?LinkID=301732&clcid=0x409)主题。
 
-[How to Get a Media Processor]:http://go.microsoft.com/fwlink/?LinkID=301732&clcid=0x409

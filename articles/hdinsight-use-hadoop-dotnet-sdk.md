@@ -1,195 +1,199 @@
 <properties linkid="manage-services-hdinsight-howto-sdk" urlDisplayName="HDInsight SDK" pageTitle="How to use the HDInsight .NET libraries | Azure" metaKeywords="" description="Learn how to get the HDInsight NuGet packages and use them from your .NET application." metaCanonical="" services="hdinsight" documentationCenter="" title="Use the Hadoop .NET SDK with HDInsight" authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
 
+# 将 Hadoop .NET SDK 与 HDInsight 配合使用
 
+Hadoop .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 Hadoop 的操作。在本教程中，你将学习如何获取 Hadoop .NET SDK 并使用它来生成一个简单的基于 .NET 的应用程序，该程序使用 Azure HDInsight 服务运行 Hive 查询。给定一个 actors.txt 文件，你将编写应用程序来查找获奖最多的男女演员。
 
+若要启用 HDInsight，请单击[此处][]。
 
+## 本文内容
 
-#Use the Hadoop .NET SDK with HDInsight#
+-   [下载和安装 Hadoop .NET SDK][]
+-   [为教程做准备][]
+-   [创建应用程序][]
+-   [运行应用程序][]
+-   [后续步骤][]
 
-The Hadoop .NET SDK provides .NET client libraries that makes it easier to work with Hadoop from .NET. In this tutorial you will learn how to get the Hadoop .NET SDK and use it to build a simple .NET based application that runs Hive queries using the Azure HDInsight Service. Given an actors.txt file, you will write an application to find the actor/actress who gets the most awards. 
+## 下载和安装 Hadoop .NET SDK
 
-To enable HDInsight, click [here](https://account.windowsazure.com/PreviewFeatures).
+可以从 [NuGet][] 安装该 SDK 的最新发行版。该 SDK 包括以下组件：
 
-## In this Article
+-   **MapReduce 库** - 使用 Hadoop 流接口简化用 .NET 语言编写 MapReduce 作业的过程。
 
-* [Download and install the Hadoop .NET SDK](#install)
-* [Prepare for the tutorial](#prepare)
-* [Create the application](#create)
-* [Run the application](#run)
-* [Next Steps](#nextsteps)
+-   **LINQ to Hive 客户端库** - 将 C\# 或 F\# LINQ 查询转换为 HiveQL 查询，并在 Hadoop 群集上执行这些查询。此库还可从 .NET 应用程序执行任意 HiveQL 查询。
 
-##<a id="install"></a> Download and Install the Hadoop .NET SDK##
+-   **WebClient 库** - 包含用于 *WebHDFS* 和 *WebHCat* 的客户端库。
 
-You can install latest published build of the SDK from [NuGet](http://nuget.codeplex.com/wikipage?title=Getting%20Started). The SDK includes the following components:
+    -   **WebHDFS 客户端库** - 在 HDFS 和 Azure Blog 存储中处理文件。
 
-* **MapReduce library** - simplifies writing MapReduce jobs in .NET languages using the Hadoop streaming interface.
+    -   **WebHCat 客户端库** - 管理 HDInsight 群集中作业的计划和执行。
 
-* **LINQ to Hive client library** - translates C# or F# LINQ queries into HiveQL queries and executes them on the Hadoop cluster. This library can also execute arbitrary HiveQL queries from a .NET application.
+用于安装库的 NuGet 语法：
 
-* **WebClient library** - contains client libraries for *WebHDFS* and *WebHCat*.
+    install-package Microsoft.Hadoop.MapReduce
+    install-package Microsoft.Hadoop.Hive 
+    install-package Microsoft.Hadoop.WebClient 
+            
 
-	* **WebHDFS client library** - works with files in HDFS and Azure Blog Storage.
+这些命令将库以及引用添加到当前 Visual Studio 项目中。
 
-	* **WebHCat client library** - manages the scheduling and execution of jobs in HDInsight cluster.
-	
-The NuGet syntax to install the libraries:
-	
-	install-package Microsoft.Hadoop.MapReduce
-	install-package Microsoft.Hadoop.Hive 
-	install-package Microsoft.Hadoop.WebClient 
-			
-These commands add the libraries and references to the current Visual Studio project.
+## 为教程做准备
 
-##<a id="prepare"></a> Prepare for the Tutorial
+继续操作之前，你必须先有 [Azure 订阅][]和 [Azure 存储帐户][]。你还必须知道你的 Azure 存储帐户名称和帐户密钥。有关如何获取此信息的说明，请参阅[如何管理存储空间帐户][]中的*如何：查看、复制和重新生成存储访问密钥*一节。
 
-You must have a [Azure subscription][free-trial], and a [Azure Storage Account][create-storage-account] before you can proceed. You must also know your Azure storage account name and account key. For the instructions on how to  get this information, see the *How to: View, copy and regenerate storage access keys* section of [How to Manage Storage Accounts](/en-us/manage/services/storage/how-to-manage-a-storage-account/).
+你还必须下载本教程中使用的 Actors.txt 文件。执行以下步骤将此文件下载到你的开发环境中：
 
+1.  在本地计算机上创建 C:\\Tutorials 文件夹。
 
-You must also download the Actors.txt file used in this tutorial. Perform the following steps to download this file to your development environment:
+2.  下载 [Actors.txt][]，并将该文件保存到 C:\\Tutorials 文件夹。
 
-1. Create a C:\Tutorials folder on your local computer.
+## 创建应用程序
 
-2. Download [Actors.txt](http://www.microsoft.com/en-us/download/details.aspx?id=37003), and save the file to the C:\Tutorials folder.
+在本节中，你将了解如何以编程方式将文件上载到 Hadoop 群集，以及如何使用 LINQ to Hive 执行 Hive 作业。
 
-##<a id="create"></a>Create the Application
+1.  打开 Visual Studio 2012。
 
-In this section you will learn how to upload files to Hadoop cluster programmatically and how to execute Hive jobs using LINQ to Hive.
+2.  在“文件”菜单中，单击“新建” ，然后单击“项目” 。
 
-1. Open Visual Studio 2012.
-
-2. From the File menu, click **New**, and then click **Project**.
-
-3. From New Project, type or select the following values:
+3.  从“新建项目”中，键入或选择以下值：
 
 	<table style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse;">
 	<tr>
-	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">Property</th>
-	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">Value</th></tr>
+	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">属性</th>
+	<th style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; width:90px; padding-left:5px; padding-right:5px;">值</th></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Category</td>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">Templates/Visual C#/Windows</td></tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">类别</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px; padding-right:5px;">模板/Visual C#/Windows</td></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Template</td>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Console Application</td></tr>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">模板</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">控制台应用程序</td></tr>
 	<tr>
-	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">Name</td>
+	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">名称</td>
 	<td style="border-color: #c6c6c6; border-width: 2px; border-style: solid; border-collapse: collapse; padding-left:5px;">SimpleHiveJob</td></tr>
 	</table>
 
-4. Click **OK** to create the project.
+4.  单击“确定” 以创建该项目。
 
+5.  从“工具”菜单中 ，单击“库程序包管理器” ，然后单击“程序包管理器控制台” 。
 
-5. From the **Tools** menu, click **Library Package Manager**, click **Package Manager Console**.
+6.  在控制台中运行下列命令以安装程序包。
 
-6. Run the following commands in the console to install the packages.
+        install-package Microsoft.Hadoop.Hive 
+        install-package Microsoft.Hadoop.WebClient 
 
-		install-package Microsoft.Hadoop.Hive 
-		install-package Microsoft.Hadoop.WebClient 
+    这些命令将 .NET 库以及对这些库的引用添加到当前 Visual Studio 项目中。
 
-	These commands add .NET libraries and references to them to the current Visual Studio project.
+7.  从解决方案资源管理器中，双击 **Program.cs** 将其打开。
 
-7. From Solution Explorer, double-click **Program.cs** to open it.
+8.  将下列 using 语句添加到文件顶部：
 
-8. Add the following using statements to the top of the file:
+        using Microsoft.Hadoop.WebHDFS.Adapters;
+        using Microsoft.Hadoop.WebHDFS;
+        using Microsoft.Hadoop.Hive;
 
-		using Microsoft.Hadoop.WebHDFS.Adapters;
-		using Microsoft.Hadoop.WebHDFS;
-		using Microsoft.Hadoop.Hive;
-	
-9. In the Main() function, copy and paste the following code:
-		
-		// Upload actors.txt to Blob Storage
-		var asvAccount = [Storage-account-name.blob.core.chinacloudapi.cn];
-		var asvKey = [Storage account key];
-		var asvContainer = [Container name];
-		var localFile = "C:/Tutorials/Actors.txt";
-		var hadoopUser = [Hadoop user name]; // The HDInsight cluster user
-		var hadoopUserPassword = [Hadoop user password]; // The HDInsight cluster user password
-		var clusterURI = [HDInsight cluster URL]; //"https://HDInsightCluster Name.azurehdinsight.net:563";
-		
-		var storageAdapter = new BlobStorageAdapter(asvAccount, asvKey, asvContainer, true);
-		var HDFSClient = new WebHDFSClient(hadoopUser, storageAdapter);
-		
-		Console.WriteLine("Creating MovieData directory and uploading actors.txt...");
-		HDFSClient.CreateDirectory("/user/hadoop/MovieData").Wait();
-		HDFSClient.CreateFile(localFile, "/user/hadoop/MovieData/Actors.txt").Wait();
-		
-		// Create Hive connection
-		var hiveConnection = new HiveConnection(
-		  new System.Uri(clusterURI),
-		  hadoopUser, 
-		  hadoopUserPassword,
-		  asvAccount, 
-		  asvKey);
-		
-		// Drop any existing tables called Actors
-		// Only needed if you wish to rerun this application
-		// and drop a previous Actors table.
-		//hiveConnection.GetTable<HiveRow>("Actors").Drop();
+9.  在 Main() 函数中，复制并粘贴以下代码：
 
-		Console.WriteLine("Creating a Hive table named 'Actors'...");
-		string command =
-		  @"CREATE TABLE Actors(
-		            MovieId string, 
-		            ActorId string,
-		            Name string, 
-		            AwardsCount int) 
-		            row format delimited fields 
-		        terminated by ',';";
-		hiveConnection.ExecuteHiveQuery(command).Wait();
-		
-		Console.WriteLine("Load data from Actors.txt into the 'Actors' table in Hive...");
-		command =
-		  @"LOAD DATA INPATH 
-		        '/user/hadoop/MovieData/Actors.txt'
-		    OVERWRITE INTO TABLE Actors;";
-		hiveConnection.ExecuteHiveQuery(command).Wait();
-		
-		Console.WriteLine("Performing Hive query...");
-		var result = hiveConnection.ExecuteQuery(@"select name, awardscount
-		          from actors sort by awardscount desc
-		          limit 1");
-		result.Wait();
+        // 将 actors.txt 上载到 Blob 存储
+        var asvAccount = [Storage-account-name.blob.core.chinacloudapi.cn];
+        var asvKey = [Storage account key];
+        var asvContainer = [Container name];
+        var localFile = "C:/Tutorials/Actors.txt";
+        var hadoopUser = [Hadoop user name]; // The HDInsight cluster user
+        var hadoopUserPassword = [Hadoop user password]; // HDInsight 群集用户密码
+        var clusterURI = [HDInsight cluster URL]; //"https://HDInsightCluster Name.azurehdinsight.net:563";
 
-		Console.WriteLine("The results are: {0}", result.Result.ReadToEnd());
+        var storageAdapter = new BlobStorageAdapter(asvAccount, asvKey, asvContainer, true);
+        var HDFSClient = new WebHDFSClient(hadoopUser, storageAdapter);
+
+        Console.WriteLine("Creating MovieData directory and uploading actors.txt...");
+        HDFSClient.CreateDirectory("/user/hadoop/MovieData").Wait();
+        HDFSClient.CreateFile(localFile, "/user/hadoop/MovieData/Actors.txt").Wait();
+
+        // 创建 Hive 连接
+        var hiveConnection = new HiveConnection(
+        new System.Uri(clusterURI),
+        hadoopUser, 
+        hadoopUserPassword,
+        asvAccount, 
+        asvKey);
+
+        // 删除任何名为 Actors 的现有表
+        // 只在你希望重新运行此应用程序
+        // 并删除以前的 Actors 表时需要。
+        //hiveConnection.GetTable<HiveRow>("Actors").Drop();
+
+        Console.WriteLine("Creating a Hive table named 'Actors'...");
+        string command =
+        @"CREATE TABLE Actors(
+        MovieId string, 
+        ActorId string,
+        Name string, 
+        AwardsCount int) 
+        row format delimited fields 
+        terminated by ',';";
+        hiveConnection.ExecuteHiveQuery(command).Wait();
+
+        Console.WriteLine("Load data from Actors.txt into the 'Actors' table in Hive...");
+        command =
+        @"LOAD DATA INPATH 
+        '/user/hadoop/MovieData/Actors.txt'
+        OVERWRITE INTO TABLE Actors;";
+        hiveConnection.ExecuteHiveQuery(command).Wait();
+
+        Console.WriteLine("Performing Hive query...");
+        var result = hiveConnection.ExecuteQuery(@"select name, awardscount
+        from actors sort by awardscount desc
+        limit 1");
+        result.Wait();
+
+        Console.WriteLine("The results are:{0}", result.Result.ReadToEnd());
         Console.WriteLine("\nPress any key to continue.");
         Console.ReadKey();
 
-10. Update the constants in the application. Azure HDInsight Service uses Azure Blob storage as the default file system. During the HDInsight provision process, a blob is designated as the default file system. You have the options to use the default file system container or a container in a different Blob storage. For more information see [Use Azure Blob storage with HDInsight](/en-us/manage/services/hdinsight/howto-blob-store/).
+10. 更新应用程序中的常量。Azure HDInsight 服务使用 Azure Blob 存储作为默认文件系统。在 HDInsight 设置过程中，必须将一个 Blob 指定为默认文件系统。你可以选择使用默认文件系统容器，也可以选择使用其他 Blob 存储中的容器。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
 
-	If you choose to use the default file system container, you can find the storage account name, the storage key, and the container name from the *c:\apps\dist\hadoop-1.1.0-SNAPSHOT\conf>core-site.xml* configuration file by remoting to the cluster. The container used as the default file system can be found by search *fs.default.name*; the storage account name and the account key can be found by searching *fs.azure.account.key*.
-	
-##<a id="run"></a>Run the Application
+    如果你选择使用默认文件系统容器，可通过远程连接到该群集从 *c:\\apps\\dist\\hadoop-1.1.0-SNAPSHOT\\conf\>core-site.xml* 配置文件中找到存储帐户名、存储密钥和容器名。通过搜索 *fs.default.name* 可找到用作默认文件系统的容器；通过搜索 *fs.azure.account.key* 可找到存储帐户名和帐户密钥。
 
-While the application is open in Visual Studio, press **F5** to run the application. A console window should open and display the steps executed by the application as data is uploaded, stored into a Hive table, and finally queried. Once the application is complete and the query results have been returned, press any key to terminate the application.
+## 运行应用程序
 
-![HDI.HadoopSDKOutput](./media/hdinsight-use-hadoop-dotnet-sdk/HDI.HadoopSDKOutput.PNG "Console Application")
+该应用程序在 Visual Studio 中打开时，按 **F5** 键以运行该应用程序。此时将打开一个控制台窗口，其中显示在上载数据、将数据存储到 Hive 表中以及最终查询时，应用程序执行的步骤。该应用程序一运行完，查询结果就已经返回，按任意键可终止该应用程序。
 
-<div class="dev-callout">
-<strong>Note</strong>
-<p>Each step performed by the application may take seconds or even minutes to complete. The time to upload the Actors.txt file will vary based on your Internet connection to the Azure data center, while the other steps are dependent on cluster size.</p>
-</div>
+![HDI.HadoopSDKOutput][]
 
-<div class="dev-callout">
-<strong>Note</strong>
-<p>The LOAD DATA INPATH operation is a move operation that moves the Actors.txt data into the Hive-controlled file system namespace. This effectively removes the Actors.txt file from the upload location. Because of this, the Actors.txt file must be uploaded each time you run this application.</p>
-<p>For more information on loading data into Hive, see <a href="https://cwiki.apache.org/confluence/display/Hive/GettingStarted#GettingStarted-DMLOperations">Hive GettingStarted</a>.</p>
-</div>
+**说明**
 
-##<a id="nextsteps"></a>Next steps
-Now you understand how to create a .NET application using Hadoop .NET SDK. To learn more, see the following articles:
+该应用程序执行的每一步可能都需要数秒乃至数分钟才能完成。上载 Actors.txt 文件的时间因通过 Internet 连接到 Azure 数据中心的速度而异，其他步骤所需时间取决于群集大小。
 
-* [Get started with Azure HDInsight](/en-us/manage/services/hdinsight/get-started-hdinsight/)
-* [Use Pig with HDInsight][hdinsight-pig] 
-* [Use MapReduce with HDInsight][hdinsight-mapreduce]
-* [Use Hive with HDInsight](/en-us/manage/services/hdinsight/using-hive-with-hdinsight/)
+**说明**
 
-[hdinsight-pig]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
-[hdinsight-mapreduce]: /en-us/manage/services/hdinsight/using-mapreduce-with-hdinsight/
+LOAD DATA INPATH 操作是一个移动操作，它将 Actors.txt 数据移入由 Hive 控制的文件系统命名空间。这可以高效地从上载位置移除 Actors.txt 文件。因此，每次运行此应用程序时都必须上载 Actors.txt 文件。
 
+有关将数据载入 Hive 的详细信息，请参阅 [Hive 入门][]。
 
+## 后续步骤
 
-[free-trial]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
-[create-storage-account]: http://www.windowsazure.cn/zh-cn/manage/services/storage/how-to-create-a-storage-account/
+现在你了解了如何使用 Hadoop .NET SDK 创建 .NET 应用程序。若要了解更多信息，请参阅下列文章：
 
+-   [Azure HDInsight 入门][]
+-   [Pig 与 HDInsight 配合使用][]
+-   [MapReduce 与 HDInsight 配合使用][]
+-   [Hive 与 HDInsight 配合使用][]
 
+  [此处]: https://account.windowsazure.com/PreviewFeatures
+  [下载和安装 Hadoop .NET SDK]: #install
+  [为教程做准备]: #prepare
+  [创建应用程序]: #create
+  [运行应用程序]: #run
+  [后续步骤]: #nextsteps
+  [NuGet]: http://nuget.codeplex.com/wikipage?title=Getting%20Started
+  [Azure 订阅]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
+  [Azure 存储帐户]: http://www.windowsazure.cn/zh-cn/manage/services/storage/how-to-create-a-storage-account/
+  [如何管理存储空间帐户]: /en-us/manage/services/storage/how-to-manage-a-storage-account/
+  [Actors.txt]: http://www.microsoft.com/en-us/download/details.aspx?id=37003
+  [将 Azure Blob 存储与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/howto-blob-store/
+  [HDI.HadoopSDKOutput]: ./media/hdinsight-use-hadoop-dotnet-sdk/HDI.HadoopSDKOutput.PNG "控制台应用程序"
+  [Hive 入门]: https://cwiki.apache.org/confluence/display/Hive/GettingStarted#GettingStarted-DMLOperations
+  [Azure HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/
+  [Pig 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
+  [MapReduce 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-mapreduce-with-hdinsight/
+  [Hive 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/

@@ -1,64 +1,52 @@
 <properties linkid="manage-services-mediaservices-create-a-media-services-account" urlDisplayName="How to create" pageTitle="Create a Media Services Account - Azure" metaKeywords="" description="Describes how to create a new Media Services account in Azure." metaCanonical="" services="media-services" documentationCenter="" title="How to Create a Media Services Account" authors="migree" solutions="" manager="" editor="" />
 
+如何创建 Media Services 帐户
+============================
 
+使用 Azure 管理门户，你可以快速创建 Azure Media Services 帐户。你可以使用自己的帐户访问 Media Services，这些服务使你能够在 Azure 中存储、加密、编码、管理和流式传输媒体内容。创建 Media Services 帐户时，你还将在此帐户所在的地理区域内创建一个关联的 Media Services 帐户（或使用现有存储帐户）。
 
+本主题介绍如何使用“快速创建”方法创建新的 Media Services 帐户，然后将该帐户与存储帐户关联。
 
-#How to Create a Media Services Account
+目录
+----
 
-The Azure Management Portal provides a way to quickly create an Azure Media Services account. You can use your account to access Media Services that enable you to store, encrypt, encode, manage, and stream media content in Azure. At the time you create a Media Services account, you also create an associated storage account (or use an existing one) in the same geographic region as the Media Services account. 
+-   [概念](#concepts)
+-   [如何：使用“快速创建”创建 Media Services 帐户](#quick)
 
-This topic explains how to use the Quick Create method to create a new Media Services account and then associate it with a storage account. 
+概念
+----
 
-##Table of Contents
+访问 Media Services 需要两个关联的帐户：
 
--  [Concepts][]
--  [How to: Create a Media Services account using Quick Create][]
+-   **Media Services 帐户**。你可以使用你的帐户访问 Azure 中可用的一组基于云的 Media Services。Media Services 帐户不会存储实际媒体内容，而是存储有关你帐户中的媒体内容和媒体处理作业的元数据。创建该帐户时，需要选择一个可用的 Media Services 区域。所选的区域是存储你帐户的元数据记录的数据中心。
+    -   **注意** 可用 Media Services 区域包括：**西欧**、**东南亚**、**东亚**、**北欧**、**美国西部**、**美国东部**。Media Services 不使用地缘组。
+-   **关联的存储帐户**。你的存储帐户是一个与你的 Media Services 帐户关联的 Azure 存储帐户。该存储帐户为媒体文件提供了 Blob 存储，并且必须位于 Media Services 帐户所在的地理区域内。创建 Media Services 帐户时，你可以选择位于同一区域内的现有存储帐户，也可以在同一区域内创建新的存储帐户。如果你删除 Media Services 帐户，相关存储帐户中的 Blob 不会被删除。
 
+如何：使用“快速创建”创建 Media Services 帐户
+--------------------------------------------
 
-<h2><a id="concepts"></a>Concepts</h2>
-Accessing Media Services requires two associated accounts:
+1.  在[管理门户](http://manage.windowsazure.cn/)中，依次单击“新建”****、“Media Services”****和“快速创建”****。
 
--   **A Media Services account**. Your account gives you access to a set of cloud-based Media Services that are available in Azure. A Media Services account does not store actual media content. Instead it stores metadata about the media content and media processing jobs in your account. At the time you create the account, you select an available Media Services region. The region you select is a data center that stores the metadata records for your account. 
-    - **Note**  Available Media Services regions include the following: **West Europe**, **Southeast Asia**, **East Asia**, **North Europe**, **West US**, **East US**. Media Services does not use affinity groups. 
--   **An associated storage account**. Your storage account is an Azure storage account that is associated with your Media Services account. The storage account provides blob storage for media files, and must be located in the same geographic region as the Media Services account. When you create a Media Services account, you can either choose an existing storage account in the same region, or you can create a new storage account in the same region. If you delete a Media Services account, the blobs in your related storage account are not deleted. 
+    ![Media Services 快速创建](./media/media-services-create-account/wams-QuickCreate.png)
 
-<h2><a id="quick"></a>How to: Create a Media Services account using Quick Create</h2>
+2.  在**“名称”**中，输入新帐户的名称。Media Services 帐户名由小写字母或数字构成（不含空格），长度为 3 - 24 个字符。
 
-1. In the [Management Portal][], click **New**, click **Media Service**, and then click **Quick Create**.
-   
-	![Media Services Quick Create](./media/media-services-create-account/wams-QuickCreate.png)
+3.  在**“区域”**中，选择将用于存储 Media Services 帐户的元数据记录的地理区域。下拉列表中仅显示可用的 Media Services 区域。
 
-2. In **NAME**, enter the name of the new account. A Media Services account name is all lower-case numbers or letters with no spaces, and is 3 - 24 characters in length. 
+4.  在**“存储帐户”**中，选择一个存储帐户以便为 Media Services 帐户中的媒体内容提供 Blob 存储。你可以选择位于 Media Services 帐户所在的地理区域内的现有存储帐户，也可以创建一个新的存储帐户。将在同一区域内创建一个新的存储帐户。
 
-3. In **REGION**, select the geographic region that will be used to store the metadata records for your Media Services account. Only the available Media Services regions appear in the dropdown. 
+5.  如果你创建了一个新的存储帐户，请在**“新建存储帐户名称”**中输入该存储帐户的名称。适用于存储帐户名的规则对 Media Services 帐户同样适用。
 
-4. In **STORAGE ACCOUNT**, select a storage account to provide blob storage of the media content from your Media Services account. You can select an existing storage account in the same geographic region as your Media Services account, or you can create a new storage account. A new storage account is created in the same region. 
+6.  单击窗体底部的**“快速创建”**。
 
-5. If you created a new storage account, in **NEW STORAGE ACCOUNT NAME**, enter a name for the storage account. The rules for storage account names are the same as for Media Services accounts.
+    可以在窗口底部的消息区域中监视过程的状态。
 
-6. Click **Quick Create** at the bottom of the form.
+    将打开**“Media Services”**页，其中显示了新帐户。如果状态更改为“活动”，则表示已成功创建帐户。
 
-	You can monitor the status of the process in the message area at the bottom of the window.
+    ![“Media Services”页](./media/media-services-create-account/wams-mediaservices-page.png)
 
-	The **media services** page opens with the new account displayed. When the status changes to Active, it means the account is successfully created.
+    当你双击帐户名时，默认情况下会显示“快速启动”页。可从此页执行某些管理任务，而这些管理任务也可从该门户的其他页执行。例如，你可以从此页上载视频文件，也可以从“内容”页执行此操作。
 
-	![Media Services Page](./media/media-services-create-account/wams-mediaservices-page.png)
-
-	When you double-click on the account name, the Quick Start page is displayed by default. This page enables you to do some management tasks that are also available on other pages of the portal. For example, you can upload a video file from this page, or do it from the CONTENT page.
-
-	In addition, you can view code that uses Azure Media Services SDK to accomplish the following tasks: upload, encode, and publish videos. You can click on one of the links under WRITE SOME CODE section, copy the code  and use it in your application. 
-
-
-<!-- Reusable paths. -->
-
-<!-- Anchors. -->
-  [Concepts]: #concepts
-  [Before you begin]: #begin
-  [How to: Create a Media Services account using Quick Create]: #quick
-
-<!-- URLs. -->
-  [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
-  
-  [Management Portal]: http://manage.windowsazure.cn/
+    此外，你还可以查看使用 Azure Media Services SDK 完成以下任务的代码：上载、编码和发布视频。你可以单击“编写一些代码”部分下的某个链接，复制代码并在应用程序中使用该代码。
 
 

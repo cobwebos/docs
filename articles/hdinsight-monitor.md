@@ -1,50 +1,52 @@
 <properties linkid="manage-services-hdinsight-howto-monitor-hdinsight" urlDisplayName="Monitor" pageTitle="Monitor HDInsight | Azure" metaKeywords="" description="Learn how to monitor an HDInsight cluster and view Hadoop job history through the Azure management portal." metaCanonical="" services="hdinsight" documentationCenter="" title="How to Monitor HDInsight" authors="jgao" solutions="" manager="paulettm" editor="mollybos" />
 
+# 如何监视 HDInsight
 
+在本主题中，你将了解如何监视 HDInsight 群集。
 
+## 目录
 
-# How to Monitor HDInsight
+-   [如何：监视 HDInsight 群集][]
+-   [如何：查看 Hadoop 作业历史记录][]
 
-In this topic, you will learn how to monitor an HDInsight cluster.
+## 如何：监视 HDInsight 群集
 
-##Table of Contents
+若要监视 HDInsight 群集以及其上运行的 Hadoop 作业的运行状况，你可以连接到 HDInsight 仪表板，然后单击“监视群集”磁贴。
 
-* [How to: Monitor a HDInsight cluster](#monitorcluster)
-* [How to: View Hadoop job history](#jobhistory)
+![HDI.TileMonitorCluster][]
 
-##<a id="monitorcluster"></a> How to: Monitor an HDInsight cluster
+“监视”页与下面类似：
 
-To monitor the health of an HDInsight cluster and the Hadoop jobs running on the cluster, you can connect to the HDInsight Dashboard, and click the Monitor Cluster tile.
+![HDI.MonitorPage][]
 
-![HDI.TileMonitorCluster][hdi-monitor-cluster-tile]
+该页面的右侧指明了 Namenode 和作业跟踪器正在运行，并且有 4 个数据节点正在正常运行。
 
-The Monitor page looks like:
+该页面的左侧显示了过去 30 分钟的映射精简度量值。你可以将监视窗口更改为 30 分钟、1 小时、3 小时、12 小时、1 天、2 天、1 周和 2 周。
 
-![HDI.MonitorPage][hdi-monitor-page]
+## 如何：查看 Hadoop 作业历史记录
 
+若要查看 Hadoop 作业历史记录，请连接到 HDInsight 仪表板，然后单击“作业历史记录”磁贴。
 
-On the right, it shows both Namenode and job tracker are up running, and the 4 data nodes are running in the healthy state.
+![HDI.TileJobHistory][]
 
-On the left, it shows the map reduce metrics for the past 30 minutes. You can change the monitor windows to 30 minutes, 1 hour, 3 hours, 12 hours, 1 day, 2 days, 1 week and 2 weeks.
+该磁贴显示已经运行过的作业的数量；例如，前一张图指明 6 个作业有作业历史记录。“作业历史记录”页与下面类似：
 
-##<a id="jobhistory"></a> How to: View Hadoop job history
-To view Hadoop job history, connect to HDInsight Dashboard, and then click the Job History tile. 
+![HDI.JobHistoryPage][]
 
-![HDI.TileJobHistory][hdi-job-history-tile]
+## 另请参阅
 
-The tile shows the number of jobs that have been ran; for example, the previous image indicates job history is available for 6 jobs.  The job history page looks like the following:
+-   [如何：管理 HDInsight][]
+-   [如何：以编程方式部署 HDInsight 群集][]
+-   [如何：定期在你的 HDInsight 群集上执行远程作业][]
+-   [教程：Azure HDInsight 入门][]
 
-![HDI.JobHistoryPage][hdi-job-history-page]
-
-
-## See Also
-
-* [How to: Administer HDInsight](/en-us/manage/services/hdinsight/howto-administer-hdinsight/)
-* [How to: Deploy an HDInsight Cluster Programmatically](/en-us/manage/services/hdinsight/howto-deploy-cluster/)
-* [How to: Execute Remote Jobs on Your HDInsight Cluster Programmatically](/en-us/manage/services/hdinsight/howto-execute-jobs-programmatically/)
-* [Tutorial: Getting Started with Azure HDInsight](/en-us/manage/services/hdinsight/get-started-hdinsight/)
-
-[hdi-monitor-cluster-tile]: ./media/hdinsight-monitor/HDI.TileMonitorCluster.PNG
-[hdi-monitor-page]: ./media/hdinsight-monitor/HDI.MonitorPage.PNG
-[hdi-job-history-tile]: ./media/hdinsight-monitor/HDI.TileJobHistory.PNG
-[hdi-job-history-page]: ./media/hdinsight-monitor/HDI.JobHistoryPage.PNG
+  [如何：监视 HDInsight 群集]: #monitorcluster
+  [如何：查看 Hadoop 作业历史记录]: #jobhistory
+  [HDI.TileMonitorCluster]: ./media/hdinsight-monitor/HDI.TileMonitorCluster.PNG
+  [HDI.MonitorPage]: ./media/hdinsight-monitor/HDI.MonitorPage.PNG
+  [HDI.TileJobHistory]: ./media/hdinsight-monitor/HDI.TileJobHistory.PNG
+  [HDI.JobHistoryPage]: ./media/hdinsight-monitor/HDI.JobHistoryPage.PNG
+  [如何：管理 HDInsight]: /en-us/manage/services/hdinsight/howto-administer-hdinsight/
+  [如何：以编程方式部署 HDInsight 群集]: /en-us/manage/services/hdinsight/howto-deploy-cluster/
+  [如何：定期在你的 HDInsight 群集上执行远程作业]: /en-us/manage/services/hdinsight/howto-execute-jobs-programmatically/
+  [教程：Azure HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/

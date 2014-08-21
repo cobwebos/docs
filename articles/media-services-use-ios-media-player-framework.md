@@ -1,68 +1,68 @@
 <properties linkid="develop-media-services-how-to-guides-ios-media-player-framework" urlDisplayName="iOS Media Player Framework" pageTitle="Use the iOS Media Player Framework with Azure Media Services" metaKeywords="" description="Learn how to use the Media Services iOS Media Player Framework library to create rich, dynamic apps.," metaCanonical="" services="media-services" documentationCenter="" title="How to use the Azure Media Services iOS Media Player Framework" authors="" solutions="" manager="" editor="" />
 
+如何使用 Azure Media Services iOS Media Player Framework
+========================================================
 
+借助 Azure Media Services iOS Media Player Framework 库，iPod、iPhone 和 iPad 开发人员可以轻松创建功能丰富的动态客户端应用程序，以快速创建视频和音频流并将其混合在一起。例如，显示体育内容的应用程序可以轻松插入广告，并可以在任何情况下选择并控制这些广告的播放频率，即使回放主要内容，也可以做到这一点。教育应用程序也可以使用相同的功能，例如，创建一个内容区域，以便在其中插入主要讲座的旁白或边栏，然后在播放（显示）这些内容后返回到主要内容。
 
-#How to use the Azure Media Services iOS Media Player Framework
+通常，生成能够基于应用程序及其用户之间的交互创建内容流的应用程序相对较为复杂 - 一般情况下，你必须提前在服务器上从头开始创建整个流并将其保存。使用 iOS Media Player Framework 生成的客户端应用程序可以实现所有这一切，不需要你亲自控制或修改主要内容流。你可以：
 
-The Azure Media Services iOS Media Player Framework library makes it easy for iPod, iPhone, and iPad developers to create rich, dynamic client applications that create and mix video and audio streams together on the fly. For example, applications that display sports content can easily insert advertisements wherever they choose and control how often those advertisements appear even when the main content is rewound. Educational applications can use the same functionality, for example, to create content in which the main lectures have asides, or sidebars, before returning to the main content.
+-   提前在客户端设备上排定内容流。
+-   排定正片开始前的广告或插播内容。
+-   排定正片结束后的广告或插播内容。
+-   排定正片播放中途显示的广告或插播内容，并创建广告组合。
+-   控制是每次将内容时间线倒回后都播放正片中途广告或插播内容，还是只播放广告或插播内容一次，播放后即将其从时间线中删除。
+-   发生任何事件后直接在时间线中动态插入内容，不管是用户按下了某个按钮，还是应用程序收到了来自服务的通知 - 例如，新闻内容节目可以发送突发新闻通知，应用程序可以“暂停”主要内容，以动态加载突发新闻流。
 
-Typically it's relatively complex work to build an application that can create content streams that result from an interaction between the application and its user - normally, you must create the entire stream from scratch and store it, in advance, on the server. Using the iOS Media Player Framework, you can build client applications that can do all of this without having control over or modifying the main content stream. You can:
+将这些功能与 iOS 设备的媒体播放工具相结合，可以在很短的时间内使用较少的资源提供极其丰富的媒体体验。
 
-- Schedule content streams in advance on the client device.
-- Schedule pre-roll advertisements or inserts.
-- Schedule post-roll advertisements or inserts.
-- Schedule mid-roll advertisements or inserts and create ad pods.
-- Control whether the mid-roll advertisement or insert plays each time the content timeline is rewound or whether it only plays once and then removes itself from the timeline.
-- Dynamically insert content directly into the timeline as a result of any event, whether the user pushed a button or the application received a notification from a service - for example, a news content program could send notifications of breaking news and the application could "pause" the main content to dynamically load a breaking news stream. 
+SDK 包含一个 SamplePlayer 应用程序，它演示了如何生成一个 iOS 应用程序，以便使用上述大多数功能快速创建内容流，并允许用户通过按钮动态触发插播内容。本教程将演示 SamplePlayer 应用程序的主要组件，以及如何将它用作应用程序的起点。
 
-Combining these features with the media playing facilities of iOS devices makes it possible to build very rich media experiences in a very short time with fewer resources.
+示例播放器应用程序入门
+----------------------
 
-The SDK contains a SamplePlayer application that demonstrates how to build an iOS application that uses most of these features to create a content stream on the fly as well as enable the user to trigger an insert dynamically by pushing a button. This tutorial shows the main components of the SamplePlayer application and how you can use it as a starting point for your application.
+以下步骤描述如何获取该应用程序，并全方位展示该应用程序如何利用框架。
 
-## Getting Started with the Sample Player Application
-The following steps describe how to get the application and provide a tour of the areas of the application that make use of the framework. 
-
-1. Clone the git repository. 
+1.  克隆 git 存储库。
 
     `git clone https://github.com/WindowsAzure/azure-media-player-framework`
 
-2. Open project located at `azure-media-player-framework/src/iOS/HLSClient/`: **SamplePlayer.xcodeproj**.
+2.  打开位于 `azure-media-player-framework/src/iOS/HLSClient/` 中的项目：**SamplePlayer.xcodeproj**。
 
- 
-3. Here is the structure of the sample player:
+3.  以下是该示例播放器的结构：
 
-![HLS Sample Code structure](http://mingfeiy.com/wp-content/uploads/2013/01/HLS-Structure.png)
+![HLS 示例代码结构](http://mingfeiy.com/wp-content/uploads/2013/01/HLS-Structure.png)
 
-4. Under the iPad folder, there are two .xib files: **SeekbarViewController** and **SamplePlayerViewController**. They create the iPad application UI layout. Similarly, there are two .xib files under the iPhone folder defining the seekbar and controller. 
+1.  在 iPad 文件夹下，有两个 .xib 文件：**SeekbarViewController** 和 **SamplePlayerViewController**。它们用于创建 iPad 应用程序的 UI 布局。同样，在 iPhone 文件夹下有两个用于定义拖动条和控制器的 .xib 文件。
 
-6. Main application logic resides in **SamplePlayerViewController.m** under the `Shared` folder. Most of code snippets described below are located in that file. 
+2.  主应用程序逻辑驻留在 `Shared` 文件夹下的 **SamplePlayerViewController.m** 中。下面所述的大多数代码段都位于该文件中。
 
-## Understanding the UI Layout
-There are two .xib files define our player interface. (The following discussion uses the iPad layout as the example; but the iPhone layout is very similar and the principles are the same.)
-### SamplePlayerViewController_iPad.xib
-![Sample Player Address Bar](http://mingfeiy.com/wp-content/uploads/2013/01/addressbar.png)
+了解 UI 布局
+------------
 
-* The **Media URL** is the URL used to load a media stream. The application has a prepulated list of media URLs that you can use by using URL selection buttons. Alternatively, you can enter your own Http Live Streaming (HLS) content URL. This media content will be used as the first main content. 
-**Note: please don't leave this URL empty.**
+有两个用于定义播放器界面的 .xib 文件。（以下内容以 iPad 布局为例，不过，iPhone 布局与此十分相似，并且原理是相同的。）##\# SamplePlayerViewController\_iPad.xib ![示例播放器地址栏](http://mingfeiy.com/wp-content/uploads/2013/01/addressbar.png)
 
-* The **URL Selection** buttons enable you to select alternate URLs from the media URL list.
+-   **“媒体 URL”**是用于加载媒体流的 URL。该应用程序提供了预先填充的媒体 URL 列表，你可以通过 URL 选择按钮来使用这些 URL。或者，你可以输入自己的 Http 实时流 (HLS) 内容 URL。此媒体内容将用作第一个主要内容。**注意：请不要将此 URL 留空。**
 
-### SeekbarViewController_iPad.xib
-![Seek Bar Controller](http://mingfeiy.com/wp-content/uploads/2013/01/controller.png)
-* Use the **Play Button** to play and pause media playback.
+-   **“URL 选择”**按钮用于从媒体 URL 列表中选择备用 URL。
 
-* The **Seek bar** projects the entire playback timeline. When you seek, please press and hold, drag to the position you want, and release the seek button on seek bar. 
+### SeekbarViewController\_iPad.xib
 
-**Note**: When the viewer seeks into an advertisement, a new seek bar appears with advertisement's duration. The Main seek bar only presents the main content's duration (that is, an advertisement has a duration of 0 in main seek bar).
+![拖动条控制器](http://mingfeiy.com/wp-content/uploads/2013/01/controller.png) \* 使用**“播放”**按钮来播放媒体和暂停播放。
 
-* The **Player time** control shows two times (`Label:playerTime`), such as 00:23/02:10. In this case, 00:23 would be the current playback time and 02:10 would be the total duration of the media. 
+-   **“拖动条”**用于在整个播放时间线上定位。如果要定位，请按住鼠标，将指针拖到所需的位置，然后在拖动条上松开定位按钮。
 
-* **SkipFroward and SkipBackward button**s  do not currently work as expected; an updated version will be released soon.
+**注意**：当观看者定位到广告时，将出现一个新的拖动条，其中显示了广告的持续时间。主拖动条仅显示主要内容的持续时间（也就是说，广告的持续时间在主拖动条中为 0）。
 
-* Pressing the **Schedule Now button** while main content playing inserts an advertisement (you can define the ad source url in code-behind). Note: In the current version, you can't schedule an advertisement while the other advertisement is playing. 
+-   **“播放器时间”**控件显示两个时间 (`Label:playerTime`)，例如 00:23/02:10。在本例中，00:23 是当前已播放的时间，02:10 是媒体的总持续时间。
 
-### How to Schedule the Main Content
-Scheduled a content clip from 0 second to 80 seconds:
+-   “快进”和“快退”**按钮**目前不能按预期工作；我们即将发布更新版本。
+
+-   播放主要内容时按“立即排定”按钮会播入广告**（可以在代码隐藏文件中定义广告源 URL）**。注意：在当前版本中，播放一则广告时无法排定另一则广告。
+
+### 如何排定主要内容
+
+下面排定了从 0 秒播放到 80 秒的内容剪辑：
 
     //Schedule the main content
     MediaTime *mediaTime = [[[MediaTime alloc] init] autorelease];
@@ -73,20 +73,18 @@ Scheduled a content clip from 0 second to 80 seconds:
     int clipId = 0;
     if (![framework appendContentClip:[NSURL URLWithString:url] withMediaTime:mediaTime andGetClipId:&clipId])
     {
-        [self logFrameworkError];
+    [self logFrameworkError];
     }
 
-In the preceding sample code, the:
+在上面的示例代码中：
 
-* **MediaTime** object controls the video clip you want to schedule as the main content. In the preceding example, video clip will be scheduled to have a duration of 80 seconds (from 0 second to 80 seconds);
-* **clipBeginMediaTime** represents the starting time for a video to begin playback. For example, if **clipBeginMediaTime** = 5, then this video clip is started 5 seconds into the video clip.
-* **clipEndMediaTime** represents the end time for a video to play back. If **clipEndMediaTime**=100, the video playback ends at the 100th second of the video clip.
-*We then schedule the **MediaTime** by asking the framework to **appendContentClip**. In the preceding example, the main content URL is given in `[NSURL URLWithString:url]` and the scheduling for that media is set using **withMedia**:
- `[framework appendContentClip:[NSURL URLWithString:url] withMediaTime:mediaTime andGetClipId:&clipId])` .
+-   **MediaTime** 对象控制你要排定为主要内容的视频剪辑。在上面的示例中，已将视频剪辑排定为持续播放 80 秒（从 0 秒播放到 80 秒）；
+-   **clipBeginMediaTime** 表示视频的播放开始时间。例如，如果 **clipBeginMediaTime** = 5，则从视频剪辑的第 5 秒开始播放。
+-   **clipEndMediaTime** 表示视频的播放结束时间。如果 **clipEndMediaTime**=100，则在视频剪辑的第 100 秒结束视频播放。\*然后，我们通过要求框架执行 **appendContentClip** 来排定 **MediaTime**。在上面的示例中，主要内容 URL 是在 `[NSURL URLWithString:url]` 中指定的，该媒体的排程是使用以下 **withMedia** 属性设置的：`[framework appendContentClip:[NSURL URLWithString:url] withMediaTime:mediaTime andGetClipId:&clipId])`。
 
-**Note:** Always schedule main content before scheduling any advertisement (including pre-roll advertisement). 
+**注意：**请始终在排定任何广告（包括正片开始前的广告）之前排定主要内容。
 
-### Variation: If you have two main content clips playing, you could also schedule second clip after the first one with following code:
+### 不同的情况：如果你在播放两个主要内容剪辑，则也可以使用以下代码将第二个剪辑排在第一个剪辑的后面：
 
     //Schedule second content
     NSString *secondContent=@"http://wamsblureg001orig-hs.cloudapp.net/6651424c-a9d1-419b-895c-6993f0f48a26/The%20making%20of%20Microsoft%20Surface-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
@@ -95,24 +93,27 @@ In the preceding sample code, the:
     mediaTime.clipEndMediaTime = 80;
     if (![framework appendContentClip:[NSURL URLWithString:secondContent] withMediaTime:mediaTime andGetClipId:&clipId])
     {
-        [self logFrameworkError];
+    [self logFrameworkError];
     }
 
-Doing this following the preceding code schedules two content streams on the main content timeline. First one is scheduled based on `URLWithString:url` and second content is scheduled based on `URLWithString:secondContent`. For the second content, the content starts from a point 30 seconds into the media stream and ends at 80 seconds into it. 
+根据上面的代码进行这种排程会在主要内容时间线上排定两个内容流。第一个内容流是基于 `URLWithString:url` 排定的，第二个内容流是基于 `URLWithString:secondContent` 排定的。第二段内容从媒体流的第 30 秒开始播放，到第 80 秒结束。
 
-## Advertisement scheduling 
-In the current release, only a **pauseTimeline=false** advertisement is supported, which means that after an advertisement ends, the player will pick up from where main content left off. 
+排定广告
+--------
 
-Here are some key points:
-<ul><li> All **LinearTime.duration** needs to be 0 when scheduling an advertisement.</li>
-<li> When **clipEndMediaTime** is longer than the duration of the advertisement, the advertisement ends after it is finished and no exception is thrown. You are advised to verify whether advertisement natural duration is within the render time (**clipEndMediaTime**) so you don't lose an ad opportunity.</li> 
-<li> Pre-roll, mid-roll, and post-roll advertisements are supported. Pre-roll can only be scheduled at the very beginning of all content. For instance, you can't schedule a pre-roll for the second content in a rough cut editing (RCE) scenario. </li>
-<li> Sticky ads and play-once ads are supported and can be used in conjunction with either pre-roll, mid-roll or post-roll advertisement.</li>
-<li> Advertisement format can be either .Mp4 or HLS.</li>
-</ul>
-### How to Schedule Pre-roll, Mid-roll, Post-roll Ads, and Ad Pods
+在当前版本中，仅支持 **pauseTimeline=false** 广告，也就是说，在广告结束后，播放器将从主要内容暂停的位置接着播放。
 
-####Scheduling Pre-roll Advertisements
+请了解以下要点：
+
+-   排定广告时，所有的 \*\*LinearTime.duration\*\* 都应为 0。
+-   如果 \*\*clipEndMediaTime\*\* 长于广告持续时间，则广告在完成播放后就会结束，而不会引发任何异常。建议你确认广告固有持续时间是否在呈现时间 (\*\*clipEndMediaTime\*\*) 的范围内，以免遗漏广告的播放。
+-   支持正片开始前、正片中途和正片结束后的广告。正片开始前的广告只能排定在所有内容的最前面。例如，在粗剪编辑 (RCE) 方案中，你无法为第二段内容排定正片开始前的广告。
+-   支持粘性广告和一次性播放广告，可将此类广告与正片开始前、正片中途和正片结束后的广告结合使用。
+-   广告格式可以是 .Mp4 或 HLS。
+
+##\# 如何排定正片开始前、正片中途、正片结束后的广告和广告组合
+
+#### 排定正片开始前的广告
 
     LinearTime *adLinearTime = [[[LinearTime alloc] init] autorelease];
     NSString *adURLString = @"http://smoothstreamingdemo.blob.core.windows.net/videoasset/WA-BumpShort_120530-1.mp4";
@@ -127,21 +128,16 @@ Here are some key points:
     adLinearTime.duration = 0;
     if (![framework scheduleClip:adInfo atTime:adLinearTime forType:PlaylistEntryType_Media andGetClipId:&adIndex])
     {
-        [self logFrameworkError];
+    [self logFrameworkError];
     }
 
-The **AdInfo** object represents all the information about your ad clip:
-* The **ClipURL** is the URL for the clip source.
-* The **mediaTime** property indicates how long an ad gets to play. (**clipBeginMediaTime** is the starting time of an ad and **clipEndMediaTime** defines the end of the advertisement.) In the preceding sample code, we schedule an advertisement for 5 seconds, starting from 0 until the 5th second of the advertisement duration.
-* The **Policy** object is not currently used by the framework.
-* You must set the **appendTo** value to to -1 if it is not an Ad Pod. 
-* The **type** value can pre-roll, mid-roll, post-roll or ad pod. For pre-roll or post-roll, because there are no timings associated with it, specify the type. 
+**AdInfo** 对象表示有关广告剪辑的所有信息：\* **ClipURL** 是剪辑源的 URL。\* **mediaTime** 属性指示广告的播放持续时间。（**clipBeginMediaTime** 是广告的开始时间，**clipEndMediaTime** 定义广告的结束时间。）在上面的示例代码中，我们将一则广告排定为播放 5 秒：从广告时长的第 0 秒开始，到第 5 秒结束。\* 框架当前不使用 **Policy** 对象。\* 如果不是广告组合，则必须将 **appendTo** 值设置为 -1。\* **type** 值可以指定正片开始前、正片中途、正片结束后的广告或广告组合。由于正片开始前或正片结束后的广告没有关联的时间设置，因此我们在这里指定了该类型。
 
-####Scheduling Mid-roll Advertisements
+#### 排定正片中途广告
 
-If you add `adLinearTime.startTime = 23;` to the preceding code sample, the advertisement begins playing at 23 seconds in the main content timeline.
+如果将 `adLinearTime.startTime = 23;` 添加到上面的代码示例，广告将从主要内容时间线中的第 23 秒开始播放。
 
-####Scheduling Post-roll Advertisements
+#### 排定正片结束后的广告
 
     //Schedule Post Roll Ad
     NSString *postAdURLString=@"http://wamsblureg001orig-hs.cloudapp.net/aa152d7f-3c54-487b-ba07-a58e0e33280b/wp-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
@@ -155,15 +151,17 @@ If you add `adLinearTime.startTime = 23;` to the preceding code sample, the adve
     adLinearTime.duration = 0;
     if (![framework scheduleClip:postAdInfo atTime:adLinearTime forType:PlaylistEntryType_Media andGetClipId:&adIndex])
     {
-        [self logFrameworkError];
+    [self logFrameworkError];
     }
 
-The only difference from the pre-roll advertisement scheduling is `postAdInfo.type = AdType_Postroll;`. The preceding code scheduled a 5-second advertisement as post-roll. 
+与正片开始前的广告排程的唯一区别在于 `postAdInfo.type = AdType_Postroll;`。上面的代码将一段为时 5 秒的广告排定为正片结束后的广告。
 
-#### Scheduling Ad Pods
-Ad-Pod are an advertisement break with multiple advertisements playing back-to-back. Here is the code for scheduling two advertisements in one ad pod. 
+#### 排定广告组合
 
-    NSString *adpodSt1=@"https://portalvhdsq3m25bf47d15c.blob.core.windows.net/asset-e47b43fd-05dc-4587-ac87-5916439ad07f/Windows%208_%20Cliffjumpers.mp4?st=2012-11-28T16%3A31%3A57Z&se=2014-11-28T16%3A31%3A57Z&sr=c&si=2a6dbb1e-f906-4187-a3d3-7e517192cbd0&sig=qrXYZBekqlbbYKqwovxzaVZNLv9cgyINgMazSCbdrfU%3D";
+广告组合是连续插播的多则广告。以下代码将两则广告排定为一个广告组合。
+
+    NSString *adpodSt1=@"https://portalvhdsq3m25bf47d15c.blob.core.windows.net/asset-e47b43fd-05dc-4587-ac87-5916439ad07f/Windows%208_%20Cliffjumpers.mp4
+        st=2012-11-28T16%3A31%3A57Z&se=2014-11-28T16%3A31%3A57Z&sr=c&si=2a6dbb1e-f906-4187-a3d3-7e517192cbd0&sig=qrXYZBekqlbbYKqwovxzaVZNLv9cgyINgMazSCbdrfU%3D";
     AdInfo *adpodInfo1 = [[[AdInfo alloc] init] autorelease];
     adpodInfo1.clipURL = [NSURL URLWithString:adpodSt1];
     adpodInfo1.mediaTime = [[[ManifestTime alloc] init] autorelease];
@@ -175,10 +173,11 @@ Ad-Pod are an advertisement break with multiple advertisements playing back-to-b
     int32_t adIndex = 0;
     if (![framework scheduleClip:adpodInfo1 atTime:adLinearTime forType:PlaylistEntryType_Media andGetClipId:&adIndex])
     {
-        [self logFrameworkError];
+    [self logFrameworkError];
     }
         
-    NSString *adpodSt2=@"https://portalvhdsq3m25bf47d15c.blob.core.windows.net/asset-532531b8-fca4-4c15-86f6-45f9f45ec980/Windows%208_%20Sign%20in%20with%20a%20Smile.mp4?st=2012-11-28T16%3A35%3A26Z&se=2014-11-28T16%3A35%3A26Z&sr=c&si=c6ede35c-f212-4ccd-84da-805c4ebf64be&sig=zcWsj1JOHJB6TsiQL5ZbRmCSsEIsOJOcPDRvFVI0zwA%3D";
+    NSString *adpodSt2=@"https://portalvhdsq3m25bf47d15c.blob.core.windows.net/asset-532531b8-fca4-4c15-86f6-45f9f45ec980/Windows%208_%20Sign%20in%20with%20a%20Smile.mp4
+        st=2012-11-28T16%3A35%3A26Z&se=2014-11-28T16%3A35%3A26Z&sr=c&si=c6ede35c-f212-4ccd-84da-805c4ebf64be&sig=zcWsj1JOHJB6TsiQL5ZbRmCSsEIsOJOcPDRvFVI0zwA%3D";
     AdInfo *adpodInfo2 = [[[AdInfo alloc] init] autorelease];
     adpodInfo2.clipURL = [NSURL URLWithString:adpodSt2];
     adpodInfo2.mediaTime = [[[ManifestTime alloc] init] autorelease];
@@ -189,16 +188,15 @@ Ad-Pod are an advertisement break with multiple advertisements playing back-to-b
     adpodInfo2.appendTo = adIndex;
     if (![framework scheduleClip:adpodInfo2 atTime:adLinearTime forType:PlaylistEntryType_Media andGetClipId:&adIndex])
     {
-        [self logFrameworkError];
+    [self logFrameworkError];
     }
 
-There are a few things to note here:
-* For the first clip, the **appendTo** is -1. And when we call `[framework scheduleClip:adpodInfo1 atTime:adLinearTime forType:PlaylistEntryType_Media andGetClipId:&adIndex]`, `adIndex` receives a unique value indicating the end of this first clip in the ad pod. Then for the second clip in the ad pod, align the beginning of the second ad with the end of the first by setting **appendTo** as `adpodInfo2.appendTo = adIndex;`, which specifies the ending position of the first as the location to begin the second clip. 
-* Then you must set type as `AdType_Pod` to indicate this is a ad pod. 
+这里要注意几个问题：\* 对于第一个剪辑，**appendTo** 为 -1。当我们调用 `[framework scheduleClip:adpodInfo1 atTime:adLinearTime forType:PlaylistEntryType_Media andGetClipId:&adIndex]` 时，`adIndex` 将收到一个唯一值，该值指示广告组合中这第一个剪辑的结束时间。对于广告组合中的第二个剪辑，我们通过将 **appendTo** 设置为 `adpodInfo2.appendTo = adIndex;`（将第一个剪辑的结束位置指定为第二个剪辑的开始位置），使第二则广告的开始时间与第一则广告的结束时间重合。\* 然后，必须将类型设置为 `AdType_Pod` 以指明这是一个广告组合。
 
-### How to Schedule Play-Once or "Sticky" Advertisement
+### 如何排定一次性播放广告或“粘性”广告
+
     AdInfo *oneTimeInfo = [[[AdInfo alloc] init] autorelease];
     oneTimeInfo.deleteAfterPlay = YES;
 
-As illustrated in the preceding code example, if you set **deleteAfterPlay** to **YES**, this advertisement is played only once. And if you set **deleteAfterPlay** to **NO**, this advertisement continues to play, which we call a "Sticky Ad".
-### Please refer to the [Azure Media Player Framework wiki](https://github.com/WindowsAzure/azure-media-player-framework/wiki) for more information.
+如上面的代码示例中所示，如果将 **deleteAfterPlay** 设置为 **YES**，则此广告只播放一次。如果将 **deleteAfterPlay** 设置为 **NO**，则此广告会持续播放，我们称之为“粘性广告”。##\# 有关详细信息，请参阅 [Azure Media Player Framework Wiki](https://github.com/WindowsAzure/azure-media-player-framework/wiki)。
+

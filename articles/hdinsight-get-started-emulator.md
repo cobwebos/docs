@@ -1,622 +1,596 @@
 <properties linkid="manage-services-hdinsight-get-started-hdinsight" urlDisplayName="Get Started" pageTitle="Get started with the HDInsight Emulator | Azure" metaKeywords="hdinsight, Azure hdinsight, hdinsight azure, get started hdinsight, emulator, hdinsight emulator" description="Learn how to use HDInsight Emulator for Azure." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="hdinsight" title="Get started with the HDInsight Emulator" authors="jgao" />
 
+# HDInsight Emulator 入门
 
+本指南指导你开始使用 Microsoft HDInsight Emulator for Azure（以前称作 HDInsight Server 开发者预览版）。HDInsight Emulator 附带来自 Hadoop 生态系统的与 Azure HDInsight 相同的组件。有关详细信息（包括与部署的版本有关的信息），请参阅 [Azure HDInsight 包含哪个版本的 Hadoop？][]。
 
-# Get started with the HDInsight Emulator 
+HDInsight Emulator 提供了针对 Azure HDInsight 的本地开发环境。如果你对 Hadoop 比较熟悉，则可以开始通过 HDFS 使用 HDInsight Emulator。但在 HDInsight 中，默认文件系统是 Azure Blob 存储（WASB，即 Azure 存储空间 - Blob），因此，最终你将需要使用 WASB 开发你的作业。你可以通过使用 Azure 存储模拟器针对 WASB 开始开发 – 可能只需要使用你的少量数据（在 HDInsight Emulator 中无需更改配置，只是存储帐户名称不同）。然后，再次针对 Windows Azure 存储空间在本地测试你的作业 – 还是只使用你的少量数据（要求在 HDInsight Emulator 中进行配置更改）。最后，你准备好将你的作业的计算部分移到 HDInsight 并且针对生产数据运行作业。
 
-This tutorial gets you started using the Microsoft HDInsight Emulator for Azure (formerly HDInsight Server Developer Preview). The HDInsight Emulator comes with the same components from the Hadoop ecosystem as Azure HDInsight. For details, including information on the versions deployed, see [What version of Hadoop is in Azure HDInsight?](http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-component-versioning/ "HDInsight components and versions").
+> [WACOM.NOTE] HDInsight Emulator 只能使用单节点部署。
 
-HDInsight Emulator provides a local development environment for the Azure HDInsight. If you are familiar with Hadoop, you can get started with the Emulator using HDFS. But, in HDInsight, the default file system is Azure Blob storage (WASB, aka Azure Storage - Blobs), so eventually, you will want to develop your jobs using WASB. You can get started developing against WASB by using the Azure Storage Emulator - probably only want to use a small subset of your data (no config changes required in the HDInsight Emulator, just a different storage account name). Then, you test your jobs locally against Windows  Azure Storage - again, only using a subset of your data (requires a config change in the HDInsight Emulator). Finally, you are ready to move the compute portion of your job to HDInsight and run a job against production data.
+有关使用 HDInsight 的教程，请参阅[开始使用 Azure HDInsight][]。
 
-> [WACN.NOTE] The HDInsight Emulator can use only a single node deployment.
+**先决条件**
+在开始本教程之前，你必须具备以下先决条件：
 
-For a tutorial using HDInsight, see [Get started using Azure HDInsight][hdinsight-get-started].
+-   HDInsight Emulator 需要 64 位版本的 Windows。必须满足以下要求之一：
 
-**Prerequisites**	
-Before you begin this tutorial, you must have the following:
+    -   Windows 7 Service Pack 1
+    -   Windows Server 2008 R2 Service Pack1
+    -   Windows 8
+    -   Windows Server 2012。
+-   安装和配置 Azure PowerShell。有关说明，请参阅[安装和配置 Azure PowerShell][]。
 
-- The HDInsight Emulator requires a 64-bit version of Windows. One of the following requirements must be satisfied:
+## 在本教程中
 
-	- Windows 7 Service Pack 1
-	- Windows Server 2008 R2 Service Pack1
-	- Windows 8 
-	- Windows Server 2012.
+-   [安装 HDInsight Emulator][]
+-   [运行单词计数示例][]
+-   [运行入门示例][]
+-   [连接到 Azure Blob 存储][]
+-   [运行 HDInsight PowerShell][]
+-   [后续步骤][]
 
-- Install and configure Azure PowerShell. For instructions, see [Install and configure Azure PowerShell][powershell-install-configure]. 
+## 安装 HDInsight Emulator
 
-## In this tutorial
+Microsoft HDInsight Emulator 可通过 Microsoft Web 平台安装程序进行安装。
 
-* [Install the HDInsight Emulator](#install)
-* [Run the word count sample](#runwordcount)
-* [Run the getting started samples](#rungetstartedsamples)
-* [Connect to Azure Blob storage](#blobstorage)
-* [Run HDInsight PowerShell](#powershell)
-* [Next steps](#nextsteps)
+> [WACOM.NOTE] HDInsight Emulator 目前只支持英语 OS。
 
-##<a name="install"></a>Install the HDInsight Emulator
+> [WACOM.NOTE] 如果你已经安装了 Microsoft HDInsight 开发者预览版，则必须首先从“控制面板/程序和功能”中卸载以下两个组件。
+>
+> -   HDInsight 开发者预览版
+> -   Hortonworks Data Platform 开发者预览版
 
-The Microsoft HDInsight Emulator is installable via the Microsoft Web Platform Installer.  
+**安装 HDInsight Emulator**
 
-> [WACN.NOTE] The HDInsight Emulator currently only supports English OS.
+1.  打开 Internet Explorer，然后浏览到 [Microsoft HDInsight Emulator for Azure 安装页][]。
+2.  单击“立即安装” 。
+3.  在页面底部提示安装 HDINSIGHT.exe 时单击“运行” 。
+4.  在弹出的“用户帐户控制” 窗口中单击“是” 按钮，以便完成安装。你应该看到 Web 平台安装程序 4.6 窗口。
+5.  单击页面底部的“安装” 。
+6.  单击“我接受” 同意许可条款。
+7.  确认 Web 平台安装程序显示“已成功安装以下产品” ，然后单击“完成” 。
+8.  单击“退出” 以关闭 Web 平台安装程序 4.6 窗口。
 
+    该安装应该已经在你的桌面上安装了三个图标。这三个图标按如下所示进行链接：
 
-> [WACN.NOTE] If you have had Microsoft HDInsight Developer Preview installed, you must uninstall the following two components from Control Panel/Program and Features first.
-><ul>
-<li>HDInsight Developer Preview</li>
-<li>Hortonworks Data Platform Developer Preview</li>
-</ul>
+    -   **Hadoop 命令行**：在 HDInsight Emulator 中从其运行 MapReduce、Pig 和 Hive 作业的 Hadoop 命令提示符。
 
+    -   **Hadoop 名称节点状态**：NameNode 对于 HDFS 中的所有文件维持基于树的目录。它还跟踪 Hadoop 群集中所有文件的数据位置。客户端与 NameNode 进行通信，以便确定将所有文件的数据节点存储于何处。
 
-**To install HDInsight Emulator**
+    -   **Hadoop MapReduce 状态**：将 MapReduce 任务分配给群集中的节点的作业跟踪器。
 
-1. Open Internet Explorer, and then browse to the [Microsoft HDInsight Emulator for Azure installation page][hdinsight-emulator-install].
-2. Click **Install Now**. 
-3. Click **Run** when prompted for the installation of HDINSIGHT.exe at the bottom of the page. 
-4. Click the **Yes** button in the **User Account Control** window that pops up to complete the installation. You shall see the Web Platform Installer 4.6 window.
-6. Click **Install** on the bottom of the page.
-7. Click **I Accept** to agree to the licensing terms.
-8. Verify the Web Platform Installer shows **the following products were successfully installed**, and then click **Finish**.
-9. Click **Exit** to close the Web Platform Installer 4.6 window.
+    该安装应该还安装了若干本地服务。下面是“服务”窗口的屏幕快照：
 
-	The installation should have installed three icons on your desktop. The three icons are linked as follows: 
-	
-	- **Hadoop Command Line**: The Hadoop command prompt from which MapReduce, Pig and Hive jobs are run in the HDInsight Emulator.
+    ![HDI.Emulator.Services][]
 
-	- **Hadoop Name Node Status**: The NameNode maintains a tree-based directory for all the files in HDFS. It also keep tracks of where the data for all the files are kept in a Hadoop cluster. Clients communicate with the NameNode in order to figure out where the data nodes for all the files are stored.
-	
-	- **Hadoop MapReduce Status**: The job tracker that allocates MapReduce tasks to nodes in a cluster.
+    有关安装和运行 HDInsight Server 的已知问题，请参阅 [HDInsight Emulator 发行说明][]。安装日志位于 **C:\\HadoopFeaturePackSetup\\HadoopFeaturePackSetupTools\\gettingStarted.winpkg.install.log**。
 
-	The installation should have also installed several local services. The following is a screenshot of the Services window:
+## 运行单词计数 MapReduce 作业
 
-	![HDI.Emulator.Services][image-hdi-emulator-services]
+现在你已在工作站上配置了 HDInsight Emulator。你可以运行 MapReduce 作业以便测试安装。你将首先将某些文本文件上载到 HDFS，然后运行单词计数 MapReduce 作业以便计算该单词在这些文件中出现的频率。
 
-	For known issues with installing and running HDInsight Server, see the [HDInsight Emulator Release Notes][hdinsight-emulator-release-notes]. The installation log is located at **C:\HadoopFeaturePackSetup\HadoopFeaturePackSetupTools\gettingStarted.winpkg.install.log**.
+单词计数 MapReduce 程序已打包到 *hadoop-examples.jar* 中。jar 文件位于 *C:\\Hadoop\\hadoop-1.1.0-SNAPSHOT* 文件夹中。
 
+jar 命令的语法是：
 
+    hadoop jar <jar> [mainClass] args...
 
+你还将使用一些 fs 命令。有关 Hadoop 命令的详细信息，请参阅 [Hadoop 命令参考（可能为英文页面）][]。
 
-##<a name="runwordcount"></a>Run a word count MapReduce job
+单词计数 MapReduce 作业采用两个参数：输入文件夹和输出文件夹。你将使用 *hdfs://localhost/user/HDIUser* 作为输入文件夹，使用 *hdfs://localhost/user/HDIUser/WordCount\_Output* 作为输出目录。输出文件夹不能是现有文件夹，否则 MapReduce 作业将失败。如果要第二次运行 MapReduce 作业，则必须指定一个不同的输出文件夹，或删除现有的输出文件夹。
 
-Now you have the HDInsight emulator configured on your workstation. You can run a MapReduce job to test the installation. You will first upload some text files to HDFS, and then run a word count MapReduce job to count the word frequencies of those files. 
+**运行单词计数 MapReduce 作业**
 
-The word counting MapReduce program has been packaged into *hadoop-examples.jar*.  The jar file is located at the *C:\Hadoop\hadoop-1.1.0-SNAPSHOT* folder.
+1.  从桌面双击“Hadoop 命令行” 以打开 Hadoop 命令行窗口。当前文件夹应为：
 
-The syntax for the jar command is:
+        c:\Hadoop\hadoop-1.1.0-SNAPSHOT>
 
-	hadoop jar <jar> [mainClass] args...
+    如果不是，请运行以下命令：
 
-You will also use some fs commands. For more information on Hadoop commands, see [Hadoop commands manual][hadoop-commands-manual].
+        cd %hadoop_home%
 
-The word counting MapReduce job takes two arguments: an input folder and an output folder.  You will use *hdfs://localhost/user/HDIUser* as the input folder, and *hdfs://localhost/user/HDIUser/WordCount_Output* as the output directory. The output folder can not be an existing folder, otherwise the MapReduce job will fail. If you want to run the MapReduce job for the second time, you must either specify a different output folder or delete the existing output folder. 
+2.  运行以下 Hadoop 命令以使 HDFS 文件夹对输入和输出文件进行排序：
 
-**To run the word count MapReduce job**
+        hadoop fs -mkdir /user/HDIUser
 
-1. From the desktop, double-click **Hadoop Command Line** to open the Hadoop command line window.  The current folder should be:
+3.  运行以下 Hadoop 命令以便将某些本地文件复制到 HDFS：
 
-		c:\Hadoop\hadoop-1.1.0-SNAPSHOT>
+        hadoop fs -copyFromLocal *.txt /user/HDIUser/
 
-	If not, run the following command:
+4.  运行以下命令以便列出 /user/HDIUser 文件夹中的文件：
 
-		cd %hadoop_home%
+        hadoop fs -ls /user/HDIUser
 
-2. Run the following Hadoop command to make a HDFS folder for storing the input and output files:
+    你应该看到以下文件：
 
-		hadoop fs -mkdir /user/HDIUser
-	
-3. Run the following Hadoop command to copy some local files to HDFS:
+        c:\Hadoop\hadoop-1.1.0-SNAPSHOT>hadoop fs -ls /user/HDIUser
+        找到 8 项
+        -rw-r--r--   1 username supergroup      16372 2013-10-30 12:07 /user/HDIUser/CHANGES.branch-1-win.txt
+        -rw-r--r--   1 username supergroup     463978 2013-10-30 12:07 /user/HDIUser/CHANGES.txt
+        -rw-r--r--   1 username supergroup       6631 2013-10-30 12:07 /user/HDIUser/Jira-Analysis.txt
+        -rw-r--r--   1 username supergroup      13610 2013-10-30 12:07 /user/HDIUser/LICENSE.txt
+        -rw-r--r--   1 username supergroup       1663 2013-10-30 12:07 /user/HDIUser/Monarch-CHANGES.txt
+        -rw-r--r--   1 username supergroup        103 2013-10-30 12:07 /user/HDIUser/NOTICE.txt
+        -rw-r--r--   1 username supergroup       2295 2013-10-30 12:07 /user/HDIUser/README.Monarch.txt
+        -rw-r--r--   1 username supergroup       1397 2013-10-30 12:07 /user/HDIUser/README.txt
 
-		hadoop fs -copyFromLocal *.txt /user/HDIUser/
+5.  运行以下命令来运行单词计数 MapReduce 作业：
 
-4. Run the following command to list the files in the /user/HDIUser folder:
+        hadoop jar hadoop-examples.jar wordcount /user/HDIUser/*.txt /user/HDIUser/WordCount_Output
 
-		hadoop fs -ls /user/HDIUser
+6.  运行以下命令以便从输出文件中列出其中含有“windows”的单词：
 
-	You should see the following files:
+        hadoop fs -cat /user/HDIUser/WordCount_Output/part-r-00000 | findstr "windows"
 
-		c:\Hadoop\hadoop-1.1.0-SNAPSHOT>hadoop fs -ls /user/HDIUser
-		Found 8 items
-		-rw-r--r--   1 username supergroup      16372 2013-10-30 12:07 /user/HDIUser/CHANGES.branch-1-win.txt
-		-rw-r--r--   1 username supergroup     463978 2013-10-30 12:07 /user/HDIUser/CHANGES.txt
-		-rw-r--r--   1 username supergroup       6631 2013-10-30 12:07 /user/HDIUser/Jira-Analysis.txt
-		-rw-r--r--   1 username supergroup      13610 2013-10-30 12:07 /user/HDIUser/LICENSE.txt
-		-rw-r--r--   1 username supergroup       1663 2013-10-30 12:07 /user/HDIUser/Monarch-CHANGES.txt
-		-rw-r--r--   1 username supergroup        103 2013-10-30 12:07 /user/HDIUser/NOTICE.txt
-		-rw-r--r--   1 username supergroup       2295 2013-10-30 12:07 /user/HDIUser/README.Monarch.txt
-		-rw-r--r--   1 username supergroup       1397 2013-10-30 12:07 /user/HDIUser/README.txt
+    输出应该是：
 
-5. Run the following command to run the word count MapReduce job:
+        c:\Hadoop\hadoop-1.1.0-SNAPSHOT>hadoop fs -cat /user/HDIUser/WordCount_Output/pa
+        rt-r-00000 | findstr "windows"
+        windows 12
+        windows+java6.  1
+        windows.        3
 
-		hadoop jar hadoop-examples.jar wordcount /user/HDIUser/*.txt /user/HDIUser/WordCount_Output
+## 运行入门示例
 
-6. Run the following command to list the words with "windows" in them from the output file:
+HDInsight Emulator 安装提供了一些示例，以便新用户能够快速地在 Windows 上开始学习基于 Apache Hadoop 的服务。这些示例涉及在处理大型数据集时通常需要的一些任务。通过执行这些示例，你可以熟悉与 MapReduce 编程模型及其生态系统相关联的概念。
 
-		hadoop fs -cat /user/HDIUser/WordCount_Output/part-r-00000 | findstr "windows"
+这些示例是围绕处理 IIS W3C 日志数据方案进行组织的。提供数据生成工具以便创建不同大小的数据集并将这些数据集导入到 HDFS 或 WASB（Azure Blob 存储）中。有关详细信息，请参阅[将 Azure Blob 存储用于 HDInsight][]。然后，可以在 PowerShell 脚本生成的数据页上运行 MapReduce、Pig 或 Hive 作业。请注意，使用的 Pig 和 Hive 脚本都编译到 MapReduce 程序。用户可以运行一系列作业，以便亲自观察使用这些不同技术的影响以及数据大小对执行这些处理任务的影响。
 
-	The output should be:
+### 本节内容
 
-		c:\Hadoop\hadoop-1.1.0-SNAPSHOT>hadoop fs -cat /user/HDIUser/WordCount_Output/pa
-		rt-r-00000 | findstr "windows"
-		windows 12
-		windows+java6.  1
-		windows.        3
+-   [IIS w3c 日志数据方案][]
+-   [加载示例 w3c 日志数据][]
+-   [运行 Java MapReduce 作业][]
+-   [运行 Hive 作业][]
+-   [运行 Pig 作业][]
+-   [重新生成示例][]
 
+### IIS w3c 日志数据方案
 
-##<a name="rungetstartedsamples"></a> Run the get started samples
+w3c 方案生成以下三种大小的 IIS W3C 日志数据并且将这些数据导入到 HDFS 或 WASB 中：1MB、500MB 和 2GB。它提供三种作业类型并且分别在 C\#、Java、Pig 和 Hive 中实现它们。
 
-The HDInsight Emulator installation provides some samples to get new users started learning Apache Hadoop-based Services on Windows quickly. These samples covers some tasks that are typically needed when processing a big data set. Going through the samples can familiarize yourself with concepts associated with the MapReduce programming model and its ecosystem.
+-   **totalhits**：计算针对某一给定页的请求总数
+-   **avgtime**：计算每页某一请求所用的平均时间（单位为秒）
+-   **errors**：计算对于其状态为 404 或 500 的请求，每页、每小时的错误数
 
-The samples are organized around the processing IIS W3C log data scenarios. A data generation tool is provided to create and import the data sets in various sizes to HDFS or WASB (Azure Blob storage). See [Use Azure Blob storage for HDInsight][hdinsight-blob-store] for more information). MapReduce, Pig or Hive jobs may then be run on the pages of data generated by the PowerShell script. Note that the Pig and Hive scripts used both compile to MapReduce programs. Users may run a series of jobs to observe, for themselves, the effects of using these different technologies and the effects of the size of the data on the execution of the processing tasks. 
+这些示例及其文档并未提供针对关键 Hadoop 技术的深入研究或完整实现。使用的群集只具有单个节点，因此对于此版本，无法观察添加多个节点的影响。
 
-### In this section
+### 加载示例 W3c 日志数据
 
-- [The IIS w3c log data scenarios](#scenarios)
-- [Load sample w3c log data](#loaddata)
-- [Run Java MapReduce jobs](#javamapreduce)
-- [Run Hive jobs](#hive)
-- [Run Pig jobs](#pig)
-- [Rebuild the samples](#rebuild)
+使用 PowerShell 脚本 importdata.ps1 实现生成数据并且将数据导入到 HDFS。
 
-###<a name="scenarios"></a>The IIS w3c log data scenarios
+**导入示例 w3c 日志数据：**
 
-The w3c scenario generates and imports IIS W3C log data in three sizes into HDFS or WASB: 1MB, 500MB, and 2GB. It provides three job types and implements each of them in C#, Java, Pig and Hive.
+1.  从桌面打开 Hadoop 命令行。
+2.  运行以下命令以便将目录更改为 **C:\\Hadoop\\GettingStarted**：
 
-- **totalhits**: Calculates the total number of requests for a given page 
-- **avgtime**: Calculates the average time taken (in seconds) for a request per page 
-- **errors**: Calculates the number of errors per page, per hour, for requests whose status was 404 or 500 
+        cd \Hadoop\GettingStarted
 
-These samples and their documentation do not provide an in-depth study or full implementation of the key Hadoop technologies. The cluster used has only a single node and so the effect of adding more nodes cannot, with this release, be observed. 
+3.  运行以下命令以生成数据并且将数据导入到 HDFS：
 
-###<a name="loaddata"></a>Load sample W3c log data
+        powershell -File importdata.ps1 w3c -ExecutionPolicy unrestricted 
 
-Generating and importing the data to HDFS is done using the PowerShell script importdata.ps1.
+    如果要改为将数据导入到 WASB，请参阅[连接到 Azure Blob 存储][]。
 
-**To import sample w3c log data:**
+4.  从 Hadoop 命令行运行以下命令以便列出 HDFS 上导入的文件：
 
-1. Open Hadoop command line from desktop.
-2. Run the following command to change directory to **C:\Hadoop\GettingStarted**:
+        hadoop fs -lsr /w3c
 
-		cd \Hadoop\GettingStarted
+    输出应如下所示：
 
-3. Run the following command to generate and import data to HDFS:
+        c:\Hadoop\GettingStarted\w3c>hadoop fs -lsr /w3c
+        drwxr-xr-x   - username supergroup          0 2013-10-30 13:29 /w3c/input
+        drwxr-xr-x   - username supergroup          0 2013-10-30 13:29 /w3c/input/large
+        -rw-r--r--   1 username supergroup  543692369 2013-10-30 13:29 /w3c/input/large/data_w3c_large.txt
+        drwxr-xr-x   - username supergroup          0 2013-10-30 13:28 /w3c/input/medium
+        -rw-r--r--   1 username supergroup  272394671 2013-10-30 13:28 /w3c/input/medium/data_w3c_medium.txt
+        drwxr-xr-x   - username supergroup          0 2013-10-30 13:28 /w3c/input/small
+        -rw-r--r--   1 username supergroup    1058328 2013-10-30 13:28 /w3c/input/small/data_w3c_small.txt
 
-		powershell -File importdata.ps1 w3c -ExecutionPolicy unrestricted 
+5.  运行下列命令以便将数据文件之一显示到控制台窗口：
 
-	If you want to load data into WASB instead, see [Connect to Azure Blob storage](#blobstorage).
+        hadoop fs -cat /w3c/input/small/data_w3c_small.txt
 
-4. Run the following command from Hadoop command line to list the imported files on the HDFS:
+现在你已创建数据文件并已将其导入到 HDFS。你可以运行其他 Hadoop 作业。
 
-		hadoop fs -lsr /w3c
+### 运行 Java MapReduce 作业
 
-	The output should be similar to the following: 
+MapReduce 是针对 Hadoop 的基本计算引擎。默认情况下，它是在 Java 中实现的，但也有利用采用 C\# 的 .NET 和 Hadoop Streaming 的示例。运行 MapReduce 作业的语法是：
 
-		c:\Hadoop\GettingStarted\w3c>hadoop fs -lsr /w3c
-		drwxr-xr-x   - username supergroup          0 2013-10-30 13:29 /w3c/input
-		drwxr-xr-x   - username supergroup          0 2013-10-30 13:29 /w3c/input/large
-		-rw-r--r--   1 username supergroup  543692369 2013-10-30 13:29 /w3c/input/large/data_w3c_large.txt
-		drwxr-xr-x   - username supergroup          0 2013-10-30 13:28 /w3c/input/medium
-		-rw-r--r--   1 username supergroup  272394671 2013-10-30 13:28 /w3c/input/medium/data_w3c_medium.txt
-		drwxr-xr-x   - username supergroup          0 2013-10-30 13:28 /w3c/input/small
-		-rw-r--r--   1 username supergroup    1058328 2013-10-30 13:28 /w3c/input/small/data_w3c_small.txt
+    hadoop jar <jarFileName>.jar <className> <inputFiles> <outputFolder>
 
-5. Run the following command to display one of the data files to the console window:
+jar 文件和源文件位于 C:\\Hadoop\\GettingStarted\\Java 文件夹中。
 
-		hadoop fs -cat /w3c/input/small/data_w3c_small.txt
+**运行 MapReduce 作业以便计算网页点击数**
 
-Now you have the data file created and imported to HDFS.  You can run different Hadoop jobs.
+1.  打开 Hadoop 命令行。
+2.  运行以下命令以便将目录更改为 **C:\\Hadoop\\GettingStarted**：
 
-###<a name="javamapreduce"></a> Run Java MapReduce jobs
+        cd \Hadoop\GettingStarted
 
-MapReduce is the basic compute engine for Hadoop. By default, it is implemented in Java, but there are also examples that leverage .NET and Hadoop Streaming that use C#. The syntax for running a MapReduce job is:
+3.  运行以下命令以便在该文件夹存在时删除输出目录。如果输出文件夹已存在，该 MapReduce 作业将失败。
 
-	hadoop jar <jarFileName>.jar <className> <inputFiles> <outputFolder>
+        hadoop fs -rmr /w3c/output
 
-The jar file and the source files are located in the C:\Hadoop\GettingStarted\Java folder.
+4.  运行以下命令：
 
-**To run a MapReduce job for calculating web page hits**
+        hadoop jar .\Java\w3c_scenarios.jar "microsoft.hadoop.w3c.TotalHitsForPage" "/w3c/input/small/data_w3c_small.txt" "/w3c/output"
 
-1. Open the Hadoop command line.
-2. Run the following command to change directory to **C:\Hadoop\GettingStarted**:
+    下表介绍了该命令的元素：
 
-		cd \Hadoop\GettingStarted
+    参数
 
-3. Run the following command to remove the output directory in case the folder exists.  The MapReduce job will fail if the output folder already exists.
+    说明
 
-		hadoop fs -rmr /w3c/output
+    w3c\_scenarios.jar
 
-3. Run the following command:
+    jar 文件位于 C:\\Hadoop\\GettingStarted\\Java 文件夹中。
 
-		hadoop jar .\Java\w3c_scenarios.jar "microsoft.hadoop.w3c.TotalHitsForPage" "/w3c/input/small/data_w3c_small.txt" "/w3c/output"
+    microsoft.hadoop.w3c.TotalHitsForPage
 
-	The following table describes the elements of the command:
-	<table border="1">
-	<tr><td>Parameter</td><td>Note</td></tr>
-	<tr><td>w3c_scenarios.jar</td><td>The jar file is located in the C:\Hadoop\GettingStarted\Java folder.</td></tr>
-	<tr><td>microsoft.hadoop.w3c.TotalHitsForPage</td><td>The type can be substituted by one of the following: 
-	<ul>
-	<li>microsoft.hadoop.w3c.AverageTimeTaken</li>
-	<li>microsoft.hadoop.w3c.ErrorsByPage</li>
-	</ul></td></tr>
-	<tr><td>/w3c/input/small/data_w3c_small.txt</td><td>The input file can be substituted by the following:
-	<ul>
-	<li>/w3c/input/medium/data_w3c_medium.txt</li>
-	<li>/w3c/input/large/data_w3c_large.txt</li>
-	</ul></td></tr>
-	<tr><td>/w3c/output</td><td>This is the output folder name.</td></tr>
-	</table>
+    可使用以下项之一替代该类型：
 
-4. Run the following command to display the output file:
+    -   microsoft.hadoop.w3c.AverageTimeTaken
+    -   microsoft.hadoop.w3c.ErrorsByPage
 
-		hadoop fs -cat /w3c/output/part-00000
+    /w3c/input/small/data\_w3c\_small.txt
 
-	The output shall be similar to:
+    可使用以下项之一替代该输入文件：
 
-		c:\Hadoop\GettingStarted\Java>hadoop fs -cat /w3c/output/part-00000
-		/Default.aspx   3409
-		/Info.aspx      1115
-		/UserService    1130
+    -   /w3c/input/medium/data\_w3c\_medium.txt
+    -   /w3c/input/large/data\_w3c\_large.txt
 
-	So, the Default.aspx page gets 3409 hits and so on. 
+    /w3c/output
 
-### <a name="hive"></a>Run Hive jobs
-The Hive query engine will feel familiar to analysts with strong SQL skills. It provides a SQL-like interface and a relational data model for HDFS. Hive uses a language called HiveQL (or HQL), which is a dialect of SQL.
+    这是输出文件夹名称。
 
-**To run a Hive job**
+5.  运行以下命令以显示输出文件：
 
-1. Open Hadoop command line.
-2. Change directory to the **C:\Hadoop\GettingStarted** folder
-3. Run the following command to remove the **/w3c/hive/input** folder in case the folder exists.  The hive job will fail if the folder exists.
+        hadoop fs -cat /w3c/output/part-00000
 
-		hadoop fs -rmr /w3c/hive/input
+    输出应如下所示：
 
-4. Run the following command to create the **/w3c/hive/input** folder and copy the data file from the workstation to HDFS:
+        c:\Hadoop\GettingStarted\Java>hadoop fs -cat /w3c/output/part-00000
+        /Default.aspx   3409
+        /Info.aspx      1115
+        /UserService    1130
+
+    因此，Default.aspx 页得到了 3409 次点击，依此类推。
+
+### 运行 Hive 作业
+
+精通 SQL 的分析人士对于 Hive 查询引擎将会感到很熟悉。它提供与 SQL 类似的界面以及用于 HDFS 的关系数据模型。Hive 使用一种称作 HiveQL（或 HQL）的语言，这是一种 SQL 行话。
+
+**运行 Hive 作业**
+
+1.  打开 Hadoop 命令行。
+2.  将目录更改到 **C:\\Hadoop\\GettingStarted** 文件夹
+3.  运行以下命令以便在 **/w3c/hive/input** 文件夹存在时删除该文件夹。如果该文件夹存在，则 hive 作业将失败。
+
+        hadoop fs -rmr /w3c/hive/input
+
+4.  运行以下命令以便创建 **/w3c/hive/input** 文件夹，并且将数据文件从工作站复制到 HDFS：
 
         hadoop fs -mkdir /w3c/hive/input
         hadoop fs -cp /w3c/input/small/data_w3c_small.txt /w3c/hive/input
 
-5. Run the following command to execute the **w3ccreate.hql** script file.  The script creates a Hive table, and loads data to the Hive table:
-        
-		C:\Hadoop\hive-0.9.0\bin\hive.cmd -f ./Hive/w3c/w3ccreate.hql -hiveconf "input=/w3c/hive/input/data_w3c_small.txt"
+5.  运行以下命令以执行 **w3ccreate.hql** 脚本文件。该脚本将创建一个 Hive 表，并且将数据导入到该 Hive 表中：
 
-	The HiveQL script is:
-		
-		DROP TABLE w3c;
+        C:\Hadoop\hive-0.9.0\bin\hive.cmd -f ./Hive/w3c/w3ccreate.hql -hiveconf "input=/w3c/hive/input/data_w3c_small.txt"
 
-		CREATE TABLE w3c(
-		 logdate string,
-		 logtime string,
-		 c_ip string,
-		 cs_username string,
-		 s_ip string,
-		 s_port string,
-		 cs_method string,
-		 cs_uri_stem string,
-		 cs_uri_query string,
-		 sc_status int,
-		 sc_bytes int,
-		 cs_bytes int,
-		 time_taken int,
-		 cs_agent string, 
-		 cs_Referrer string)
-		ROW FORMAT delimited
-		FIELDS TERMINATED BY ' ';
+    该 HiveQL 脚本是：
 
-		LOAD DATA INPATH '${hiveconf:input}' OVERWRITE INTO TABLE w3c;
+        DROP TABLE w3c;
 
-	The output shall be similar to the following:
+        CREATE TABLE w3c(
+        logdate string,
+        logtime string,
+        c_ip string,
+        cs_username string,
+        s_ip string,
+        s_port string,
+        cs_method string,
+        cs_uri_stem string,
+        cs_uri_query string,
+        sc_status int,
+        sc_bytes int,
+        cs_bytes int,
+        time_taken int,
+        cs_agent string, 
+        cs_Referrer string)
+        ROW FORMAT delimited
+        FIELDS TERMINATED BY ' ';
 
-		c:\Hadoop\GettingStarted>C:\Hadoop\hive-0.9.0\bin\hive.cmd -f ./Hive/w3c/w3ccrea	te.hql -hiveconf "input=/w3c/hive/input/data_w3c_small.txt"
-		Hive history file=c:\hadoop\hive-0.9.0\logs\history/hive_job_log_username_201310311452_1053491002.txt
-		Logging initialized using configuration in file:/C:/Hadoop/hive-0.9.0/conf/hive-log4j.properties
-		OK
-		Time taken: 0.616 seconds
-		OK
-		Time taken: 0.139 seconds
-		Loading data to table default.w3c
-		Moved to trash: hdfs://localhost:8020/apps/hive/warehouse/w3c
-		OK
-		Time taken: 0.573 seconds
+        LOAD DATA INPATH '${hiveconf:input}' OVERWRITE INTO TABLE w3c;
 
-6. Run the following command to run the **w3ctotalhitsbypate.hql** HiveQL script file.  
+    输出将如下所示：
+
+        c:\Hadoop\GettingStarted>C:\Hadoop\hive-0.9.0\bin\hive.cmd -f ./Hive/w3c/w3ccrea    te.hql -hiveconf "input=/w3c/hive/input/data_w3c_small.txt"
+        Hive history file=c:\hadoop\hive-0.9.0\logs\history/hive_job_log_username_201310311452_1053491002.txt
+        Logging initialized using configuration in file:/C:/Hadoop/hive-0.9.0/conf/hive-log4j.properties
+        OK
+        Time taken:0.616 seconds
+        OK
+        Time taken:0.139 seconds
+        Loading data to table default.w3c
+        Moved to trash:hdfs://localhost:8020/apps/hive/warehouse/w3c
+        OK
+        Time taken:0.573 seconds
+
+6.  运行以下命令以便运行 **w3ctotalhitsbypate.hql** HiveQL 脚本文件。
 
         C:\Hadoop\hive-0.9.0\bin\hive.cmd -f ./Hive/w3c/w3ctotalhitsbypage.hql
 
-	The following table describes the elements of the command:
-	<table border="1">
-	<tr><td>File</td><td>Description</td></tr>
-	<tr><td>C:\Hadoop\hive-0.9.0\bin\hive.cmd</td><td>The Hive command script.</td></tr>
-	<tr><td>C:\Hadoop\GettingStarted\Hive\w3c\w3ctotalhitsbypage.hql</td><td> You can substitute the Hive script file with one of the following:
-	<ul>
-	<li>C:\Hadoop\GettingStarted\Hive\w3c\w3caveragetimetaken.hql</li>
-	<li>C:\Hadoop\GettingStarted\Hive\w3c\w3cerrorsbypage.hql</li>
-	</ul>
-	</td></tr>
+    下表介绍了该命令的元素：
 
+	<table border="1"><br /><tr><td>文件</td><td>说明</td></tr><br /><tr><td>C:\Hadoop\hive-0.9.0\bin\hive.cmd</td><td>Hive 命令脚本。</td></tr><br /><tr><td>C:\Hadoop\GettingStarted\Hive\w3c\w3ctotalhitsbypage.hql</td><td> 你可以使用以下文件之一替代该 Hive 脚本文件：<br /><ul><br /><li>C:\Hadoop\GettingStarted\Hive\w3c\w3caveragetimetaken.hql</li><br /><li>C:\Hadoop\GettingStarted\Hive\w3c\w3cerrorsbypage.hql</li><br /></ul><br /></td></tr></p>
 	</table>
 
-	The w3ctotalhitsbypage.hql HiveQL script is:
+    w3ctotalhitsbypage.hql HiveQL 脚本是：
 
-		SELECT filtered.cs_uri_stem,COUNT(*) 
-		FROM (
-		  SELECT logdate,cs_uri_stem from w3c WHERE logdate NOT RLIKE '.*#.*'
-		) filtered
-		GROUP BY (filtered.cs_uri_stem);
+        SELECT filtered.cs_uri_stem,COUNT(*) 
+        FROM (
+        SELECT logdate,cs_uri_stem from w3c WHERE logdate NOT RLIKE '.*#.*'
+        ) filtered
+        GROUP BY (filtered.cs_uri_stem);
 
-	The end of the output shall be similar to the following:
-		
-		MapReduce Total cumulative CPU time: 3 seconds 47 msec
-		Ended Job = job_201310291309_0006
-		MapReduce Jobs Launched:
-		Job 0: Map: 1  Reduce: 1   Cumulative CPU: 3.047 sec   HDFS Read: 1058546 HDFS W
-		rite: 53 SUCCESS
-		Total MapReduce CPU Time Spent: 3 seconds 47 msec
-		OK
-		/Default.aspx   3409
-		/Info.aspx      1115
-		/UserService    1130
-		Time taken: 34.68 seconds
+    输出的末尾将如下所示：
 
-Note that as a first step in each of the jobs, a table will be created and data will be loaded into the table from the file created earlier. You can browse the file that was created by looking under the /Hive node in HDFS using the following command:
+        MapReduce Total cumulative CPU time:3 seconds 47 msec
+        Ended Job = job_201310291309_0006
+        MapReduce Jobs Launched:
+        Job 0:Map:1  Reduce:1   Cumulative CPU:3.047 sec   HDFS Read:1058546 HDFS W
+        rite:53 SUCCESS
+        Total MapReduce CPU Time Spent:3 seconds 47 msec
+        OK
+        /Default.aspx   3409
+        /Info.aspx      1115
+        /UserService    1130
+        Time taken:34.68 seconds
 
-	hadoop fs -lsr /apps/hive/
+请注意，作为每个作业的第一步，将创建一个表并将之前创建的文件中的数据加载到该表中。你可以通过使用以下命令查看 HDFS 中的 /Hive 节点，浏览已创建的文件：
 
+    hadoop fs -lsr /apps/hive/
 
+### 运行 Pig 作业
 
+Pig 处理使用称作 *Pig Latin* 的数据流语言。Pig Latin 抽象提供了比 MapReduce 更丰富的数据结构，并为 Hadoop 执行 SQL 对 RDBMS 系统执行的操作。
 
+**运行 pig 作业：**
 
+1.  打开 Hadoop 命令行。
+2.  将目录更改到 C:\\Hadoop\\GettingStarted 文件夹。
+3.  运行以下命令来提交 Pig 作业：
 
+        C:\Hadoop\pig-0.9.3-SNAPSHOT\bin\pig.cmd -f ".\Pig\w3c\TotalHitsForPage.pig" -p "input=/w3c/input/small/data_w3c_small.txt"
 
-### <a name="pig"></a>Run Pig jobs
+    下表显示了该命令的元素：
 
-Pig processing uses a data flow language, called *Pig Latin*. Pig Latin abstractions provide richer data structures than MapReduce, and perform for Hadoop what SQL performs for RDBMS systems. 
-
-
-
-**To run the pig jobs:**
-
-1. Open Hadoop command line.
-2. Change directory to the C:\Hadoop\GettingStarted folder.
-3. Run the following command to submit a Pig job:
-
-		C:\Hadoop\pig-0.9.3-SNAPSHOT\bin\pig.cmd -f ".\Pig\w3c\TotalHitsForPage.pig" -p "input=/w3c/input/small/data_w3c_small.txt"
-
-	The following table shows the elements of the command:
-	<table border="1">
-	<tr><td>File</td><td>Description</td></tr>
-	<tr><td>C:\Hadoop\pig-0.9.3-SNAPSHOT\bin\pig.cmd</td><td>The Pig command script.</td></tr>
-	<tr><td>C:\Hadoop\GettingStarted\Pig\w3c\TotalHitsForPage.pig</td><td> You can substitute the Pig Latin script file with one of the following:
-	<ul>
-	<li>C:\Hadoop\GettingStarted\Pig\w3c\AverageTimeTaken.pig</li>
-	<li>C:\Hadoop\GettingStarted\Pig\w3c\ErrorsByPage.pig</li>
-	</ul>
-	</td></tr>
-	<tr><td>/w3c/input/small/data_w3c_small.txt</td><td> You can substitute the parameter with a larger file:
-	
+	<table border="1"><br /><tr><td>文件</td><td>说明</td></tr><br /><tr><td>C:\Hadoop\pig-0.9.3-SNAPSHOT\bin\pig.cmd</td><td>Pig 命令脚本。</td></tr><br /><tr><td>C:\Hadoop\GettingStarted\Pig\w3c\TotalHitsForPage.pig</td><td> 你可以使用以下文件之一替代该 Pig Latin 脚本文件：<br /><ul><br /><li>C:\Hadoop\GettingStarted\Pig\w3c\AverageTimeTaken.pig</li><br /><li>C:\Hadoop\GettingStarted\Pig\w3c\ErrorsByPage.pig</li><br /></ul><br /></td></tr><br /><tr><td>/w3c/input/small/data_w3c_small.txt</td><td> 你可以使用更大的文件替换该参数：</p>
 	<ul>
 	<li>/w3c/input/medium/data_w3c_medium.txt</li>
 	<li>/w3c/input/large/data_w3c_large.txt</li>
 	</ul>
 	
-	</td></tr>
+	
+	</td>
+	</tr>
+	
 	</table>
 
-	The output should be similar to the following:
+    输出应如下所示：
 
-		(/Info.aspx,1115)
-		(/UserService,1130)
-		(/Default.aspx,3409)
-		
-Note that since Pig scripts compile to MapReduce jobs, and potentially to more than one such job, users may see multiple MapReduce jobs executing in the course of processing a Pig job.
+        (/Info.aspx,1115)
+        (/UserService,1130)
+        (/Default.aspx,3409)
 
+请注意，因为 Pig 脚本编译到 MapReduce 作业，并且可能会编译到多个此类作业，所以，用户在处理 Pig 作业的过程中可能会看到多个 MapReduce 作业正在执行。
 
-### <a name="rebuild"></a>Rebuild the samples
-The samples currently contain all of the required binaries, so building is not required. If you'd like to make changes to the Java or .NET samples, you can rebuild them using either msbuild, or the included PowerShell script.
+### 重新生成示例
 
-**To rebuilt the samples**
+这些示例目前包含所有必需的二进制文件，因此无需生成。如果你想要对 Java 或 .NET 示例进行更改，则可以使用 msbuild 或随附的 PowerShell 脚本重新生成它们。
 
-1. Open Hadoop command line.
-2. Run the following command:
+**重新生成示例**
 
-		powershell -F buildsamples.ps1
+1.  打开 Hadoop 命令行。
+2.  运行以下命令：
 
+        powershell -F buildsamples.ps1
 
+## 连接到 Azure Blob 存储
 
+Azure HDInsight 将 Azure Blob 存储用作默认文件系统。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][将 Azure Blob 存储用于 HDInsight]。
 
+可以在 HDInsight Emulator 中配置本地群集，以便使用 Azure Blob 存储而不是本地存储。本节涉及：
 
+-   连接到存储模拟器
+-   连接到 Azure Blob 存储
+-   将 Azure Blob 存储配置为针对 HDInsight Emulator 的默认文件系统
 
-##<a name="blobstorage"></a>Connect to Azure Blob storage
-Azure HDInsight uses Azure Blob storage as the default file system. For more information, see [Use Azure blob Storage with HDInsight][hdinsight-blob-store]. 
+### 连接到存储模拟器
 
-It is possible to configure a local cluster in the HDInsight Emulator to use Azure Blob storage instead of local storage. The section covers:
+[Azure SDK for .NET][] 随附 Azure 存储模拟器。存储模拟器不会自动启动。你必须手动启动它。应用程序名称为“Azure 存储模拟器”**。若要启动/停止模拟器，请在 Windows 系统任务栏中右键单击蓝色的 Azure 图标，然后单击“显示存储模拟器 UI”。
 
-- connect to the storage emulator
-- connect to an Azure Blob storage
-- configure an Azure Blob storage as the default file system for the HDInsight Emulator
+> [WACOM.NOTE] 在启动存储模拟器时，你可能会看到以下错误消息：
 
-### Connect to the storage emulator
+>     进程无法访问该文件，因为它正在被另一个进程使用。
 
-The Azure Storage emulator comes with [Azure SDK for .NET][azure-sdk]. The storage emulator don't start automatically. You must manually start it.  The application name is *Azure Storage Emulator*. To start/stop the emulators, right-click the blue Azure icon in the Windows System Tray, and then click Show Storage Emulator UI.
+> 这是因为 Hadoop Hive 服务之一也使用端口 10000。若要解决该问题，请使用以下过程：
 
-> [WACN.NOTE] You might get the following error message when you start the storage emulator:
+> 1.  使用 services.msc 停止两个 Hadoop Hive 服务：Apache Hadoop hiveserver 和 Apache Hadoop Hiveserver2。
+> 2.  启动 Blob 存储模拟器。
+> 3.  重新启动两个 Hadoop Hive 服务。
 
-><pre><code>The process cannot access the file because it is being used by another process.
-</code></pre>
+用于访问存储模拟器的语法是：
 
-><p>This is because one of the Hadoop Hive services also uses port 10000. To work around the problem, use the following procedure:</p>
+    wasb://<ContainerName>@storageemulator
 
-><ol>
-<li>Stop the two Hadoop Hive services using services.msc: Apache Hadoop hiveserver and Apache Hadoop Hiveserver2.</li>
-<li>Start the Blob storage emulator. </li>
-<li>Restart the two Hadoop Hive services. </li>
-</ol>
+例如：
 
+    hadoop fs -ls wasb://myContainer@storageemulator
 
+> [WACOM.NOTE] 如果你看到以下错误消息：
 
-The syntax for access the storage emulator is: 
+>     ls:No FileSystem for scheme:wasb
 
-	wasb://<ContainerName>@storageemulator
+> 这是因为你仍在使用开发者预览版。请按照本文中“安装 HDInsight Emulator”一节中的说明卸载该开发者预览版，然后重新安装应用程序。
 
-For example:
+### 连接到 Azure Blob 存储
 
-	hadoop fs -ls wasb://myContainer@storageemulator
+有关创建存储帐户的说明，请参阅[如何创建存储帐户][]。
 
-> [WACN.NOTE] If you get the following error message:
+**创建容器**
 
-><pre><code>ls: No FileSystem for scheme: wasb</code></pre>
+1.  登录到[管理门户][]。
+2.  单击左侧的“存储” 。你应该在你的订阅下看到存储帐户的列表。
+3.  单击要从该列表创建容器的存储帐户。
+4.  单击页面顶部的“容器” 。
+5.  单击页面底部的“添加” 。
+6.  输入**名称**并选择“访问” 。你可以使用三种访问级别中的任何一种。默认级别为“私有” 。
+7.  单击“确定” 以保存更改。你将看到在门户上列出的新容器。
 
->It is because you are still using the Developer Preview version. Please follow the instructions found in the Install the HDInsight Emulator section of this article to uninstall the developer preview version, and then reinstall the application.
+必须先将帐户名称和帐户密钥添加到配置文件，然后才能访问 Azure 存储帐户。
 
-### Connect to Azure Blob storage
-For the instructions of creating a storage account, see [How To Create a Storage Account][azure-create-storage-account].
+**配置与 Azure 存储帐户的连接**
 
-**To create a container**
+1.  在记事本中打开 **C:\\Hadoop\\hadoop-1.1.0-SNAPSHOT\\conf\\core-site.xml**。
+2.  将以下 \<property\> 标记添加到其他 \<property\> 标记旁：
 
-1. Sign in to the [Management Portal][azure-management-portal].
-2. Click **STORAGE** on the left. You shall see a list of storage accounts under your subscription.
-3. Click the storage account where you want to create the container from the list.
-4. Click **CONTAINERS** from the top of the page.
-5. Click **ADD** on the bottom of the page.
-6. Enter **NAME** and select **ACCESS**. You can use any of the three access level.  The default is **Private**.
-7. Click **OK** to save the changes. You shall see the new container listed on the portal.
+        <property>
+        <name>fs.azure.account.key.<StorageAccountName>.blob.core.chinacloudapi.cn</name>
+        <value><StorageAccountKey></value>
+        </property>
 
-Before you can access an Azure Storage account, you must add the account name and the account key to the configuration file.
+    你必须使用与你的存储帐户信息匹配的值替代 \<StorageAccountName\> 和 \<StorageAccountKey\>。
 
-**To configure the connection to an Azure Storage account**
+3.  保存更改。你无需重新启动 Hadoop 服务。
 
-1. Open **C:\Hadoop\hadoop-1.1.0-SNAPSHOT\conf\core-site.xml** in Notepad.
-2. Add the following &lt;property> tag next to the other &lt;property> tags:
+使用以下语法可访问该存储帐户：
 
-		<property>
-		    <name>fs.azure.account.key.<StorageAccountName>.blob.core.chinacloudapi.cn</name>
-		    <value><StorageAccountKey></value>
-		</property>
+    wasb://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/
 
-	You must substitute &lt;StorageAccountName> and &lt;StorageAccountKey> with the values that match your storage account information.
+例如：
 
-3. Save the change.  You don't need to restart the Hadoop services.
+    hadoop fs -ls wasb://myContainer@myStorage.blob.core.chinacloudapi.cn/
 
-Use the following syntax to access the storage account:
+### 使用 Azure Blob 存储容器作为默认文件系统
 
-	wasb://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/
+还可以使用 Azure Blob 存储容器作为默认文件系统，就像在 Azure HDInsight 中一样。
 
-For example:
+**使用 Azure Blob 存储容器配置默认文件系统**
 
-	hadoop fs -ls wasb://myContainer@myStorage.blob.core.chinacloudapi.cn/
+1.  在记事本中打开 **C:\\Hadoop\\hadoop-1.1.0-SNAPSHOT\\conf\\core-site.xml**。
+2.  找到以下 \<property\> 标记：
 
-
-### Use an Azure Blob storage container as the default file system
-
-It is also possible to use an Azure Blob storage container as the default file system, as is the case in Azure HDInsight.  
-
-
-
-**To configure the default file system using an Azure Blob storage container**
-
-1. Open **C:\Hadoop\hadoop-1.1.0-SNAPSHOT\conf\core-site.xml** in Notepad.
-2. Locate the following &lt;property> tag:
-
-		<property>
-		  <name>fs.default.name</name>
-		  <!-- cluster variant -->
-		  <value>hdfs://localhost:8020</value>
-		  <description>The name of the default file system.  Either the	literal string "local" or a host:port for NDFS.</description>
-		  <final>true</final>
-		</property>
-	
-3. Replace it with the following two &lt;property> tags:
-
-		<property>
-		  <name>fs.default.name</name>
-		  <!-- cluster variant -->
-		  <!--<value>hdfs://localhost:8020</value>-->
-		  <value>wasb://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn</value>
-		  <description>The name of the default file system.  Either the	literal string "local" or a host:port for NDFS.</description>
-		  <final>true</final>
-		</property>
-		
-		<property>
-		  <name>dfs.namenode.rpc-address</name>
-		  <value>hdfs://localhost:8020</value>
-		  <description>A base for other temporary directories.</description>
-		</property>
-
-	You must substitute &lt;StorageAccountName> and &lt;StorageAccountKey> with the values that match your storage account information.
-
-4. Save the changes.
-5. Open the Hadoop command line on your desktop in elevated mode (Run as administrator)
-6. Run the following commands to restart the Hadoop services:
-
-		C:\Hadoop\stop-onebox.cmd
-		C:\Hadoop\start-onebox.cmd
-
-7. Run the following command to test the connection to the default file system:
-
-		hadoop fs -ls /
-
-	The following commands list the contents in the same folder:
-	
-		hadoop fs -ls wasb:///
-		hadoop fs -ls wasb://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/
-		hadoop fs -ls wasbs://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/
-	
-	To access HDFS, use the following command:
-	
-		hadoop fs -ls hdfs://localhost:8020/
-	
-
-##<a name="powershell"></a> Run HDInsight PowerShell
-Some of the HDInsight PowerShell cmdlets are supported on HDInsight Emulator.  These cmdlets include:
-
-- HDInsight job definition cmdlets
-	
-	- New-AzureHDInsightSqoopJobDefinition
-	- New-AzureHDInsightStreamingMapReduceJobDefinition
-	- New-AzureHDInsightPigJobDefinition                                                                                          
-	- New-AzureHDInsightHiveJobDefinition                                                                                           
-	- New-AzureHDInsightMapReduceJobDefinition
-- Start-AzureHDInsightJob
-- Get-AzureHDInsightJob
-- Wait-AzureHDInsightJob
-
-Here is a sample for submitting a Hadoop job:
-
-	$creds = Get-Credential (hadoop as username, password can be anything)
-	$hdinsightJob = <JobDefinition>
-	Start-AzureHDInsightJob -Cluster http://localhost:50111 -Credential $creds -JobDefinition $hdinsightJob
-
-You will get a prompt when calling Get-Credential. You must use **hadoop** as the username. The password can be any string. The cluster name is always **http://localhost:50111**.
-
-For more information for submitting Hadoop jobs, see [Submit Hadoop jobs programmatically][hdinsight-submit-jobs]. For more information about the HDInsight PowerShell cmdlets, see [HDInsight cmdlet reference][hdinsight-powershell-reference].
-
-
-
-##<a name="nextsteps"></a> Next steps
-In this tutorial, you have an HDInsight Emulator installed, and have ran some Hadoop jobs. To learn more, see the following articles:
-
-- [Get started using Azure HDInsight][hdinsight-get-started]
-- [Develop Java MapReduce programs for HDInsight][hdinsight-develop-mapreduce]
-- [Develop C# Hadoop streaming MapReduce programs for HDInsight][hdinsight-develop-deploy-streaming]
-- [HDInsight emulator release notes][hdinsight-emulator-release-notes]
-- [MSDN forum for discussing HDInsight](http://social.msdn.microsoft.com/Forums/windowsazure/zh-cn/home?forum=windowsazurezhchs&filter=alltypes&brandIgnore=True&sort=relevancedesc&filter=alltypes&searchTerm=hdinsight)
-
-
-
-[azure-sdk]: http://www.windowsazure.cn/zh-cn/downloads/
-[azure-create-storage-account]: ../storage-create-storage-account/
-[azure-management-portal]: https://manage.windowsazure.cn/
-
-[hdinsight-develop-mapreduce]: ../hdinsight-develop-deploy-java-mapreduce/
-
-[hdinsight-emulator-install]: http://www.microsoft.com/web/gallery/install.aspx?appid=HDINSIGHT
-[hdinsight-emulator-release-notes]: ../hdinsight-emulator-release-notes/
-
-[hdinsight-blob-store]: ../howto-blob-store/
-[hdinsight-submit-jobs]: ../hdinsight-submit-hadoop-jobs-programmatically/
-[hdinsight-powershell-reference]: http://msdn.microsoft.com/zh-cn/library/azure/dn479228.aspx
-[hdinsight-get-started]: ../hdinsight-get-started/
-[hdinsight-develop-deploy-streaming]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
-
-[Powershell-install-configure]: ../install-configure-powershell/
-
-[hadoop-commands-manual]: http://hadoop.apache.org/docs/r1.1.1/commands_manual.html
-
-[image-hdi-emulator-services]: ./media/hdinsight-get-started-emulator/HDI.Emulator.Services.png 
+        <property>
+        <name>fs.default.name</name>
+        <!-- 群集变量 -->
+        <value>hdfs://localhost:8020</value>
+        <description>默认文件系统的名称。文字字符串“local”或采用“主机:端口”形式（用于 NDFS）。</description>
+        <final>true</final>
+        </property>
+
+3.  用以下两个 \<property\> 标记替换它：
+
+        <property>
+        <name>fs.default.name</name>
+        <!-- 群集变量 -->
+        <!--<value>hdfs://localhost:8020</value>-->
+        <value>wasb://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn</value>
+        <description>默认文件系统的名称。文字字符串“local”或采用“主机:端口”形式（用于 NDFS）。</description>
+        <final>true</final>
+        </property>
+
+        <property>
+        <name>dfs.namenode.rpc-address</name>
+        <value>hdfs://localhost:8020</value>
+        <description>其他临时目录的基址。</description>
+        </property>
+
+    你必须使用与你的存储帐户信息匹配的值替代 \<StorageAccountName\> 和 \<StorageAccountKey\>。
+
+4.  保存更改。
+5.  在你的桌面上以提升的模式打开 Hadoop 命令行（以管理员身份运行）
+6.  运行以下命令以便重新启动 Hadoop 服务：
+
+        C:\Hadoop\stop-onebox.cmd
+        C:\Hadoop\start-onebox.cmd
+
+7.  运行以下命令以便测试与默认文件系统的连接:
+
+        hadoop fs -ls /
+
+    以下命令将列出相同文件夹中的内容：
+
+        hadoop fs -ls wasb:///
+        hadoop fs -ls wasb://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/
+        hadoop fs -ls wasbs://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/
+
+    若要访问 HDFS，请使用以下命令：
+
+        hadoop fs -ls hdfs://localhost:8020/
+
+## 运行 HDInsight PowerShell
+
+HDInsight Emulator 支持某些 HDInsight PowerShell cmdlet。这些 cmdlet 包括：
+
+-   HDInsight 作业定义 cmdlet
+
+    -   New-AzureHDInsightSqoopJobDefinition
+    -   New-AzureHDInsightStreamingMapReduceJobDefinition
+    -   New-AzureHDInsightPigJobDefinition
+    -   New-AzureHDInsightHiveJobDefinition
+    -   New-AzureHDInsightMapReduceJobDefinition
+-   Start-AzureHDInsightJob
+-   Get-AzureHDInsightJob
+-   Wait-AzureHDInsightJob
+
+下面是用于提交 Hadoop 作业的示例：
+
+    $creds = Get-Credential (hadoop as username, password can be anything)
+    $hdinsightJob = <JobDefinition>
+    Start-AzureHDInsightJob -Cluster http://localhost:50111 -Credential $creds -JobDefinition $hdinsightJob
+
+在调用 Get-Credential 时系统将会向你显示一个提示。你必须将 **hadoop** 用作用户名。密码可以是任意字符串。群集名称始终是 **<http://localhost:50111>**。
+
+有关提交 Hadoop 作业的详细信息，请参阅[以编程方式提交 Hadoop 作业][]。有关 HDInsight PowerShell cmdlet 的详细信息，请参阅 [HDInsight cmdlet 参考][]。
+
+## 后续步骤
+
+在本教程中，你安装了 HDInsight Emulator，并且运行了一些 Hadoop 作业。若要了解更多信息，请参阅下列文章：
+
+-   [开始使用 Azure HDInsight][]
+-   [为 HDInsight 开发 Java MapReduce 程序][]
+-   [为 HDInsight 开发 C\# Hadoop 流 MapReduce 程序][]
+-   [HDInsight Emulator 发行说明][]
+-   [用于讨论 HDInsight 的 MSDN 论坛][]
+
+  [Azure HDInsight 包含哪个版本的 Hadoop？]: http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-component-versioning/ "HDInsight 组件和版本"
+  [开始使用 Azure HDInsight]: ../hdinsight-get-started/
+  [安装和配置 Azure PowerShell]: ../install-configure-powershell/
+  [安装 HDInsight Emulator]: #install
+  [运行单词计数示例]: #runwordcount
+  [运行入门示例]: #rungetstartedsamples
+  [连接到 Azure Blob 存储]: #blobstorage
+  [运行 HDInsight PowerShell]: #powershell
+  [后续步骤]: #nextsteps
+  [Microsoft HDInsight Emulator for Azure 安装页]: http://www.microsoft.com/web/gallery/install.aspx?appid=HDINSIGHT
+  [HDI.Emulator.Services]: ./media/hdinsight-get-started-emulator/HDI.Emulator.Services.png
+  [HDInsight Emulator 发行说明]: ../hdinsight-emulator-release-notes/
+  [Hadoop 命令参考（可能为英文页面）]: http://hadoop.apache.org/docs/r1.1.1/commands_manual.html
+  [将 Azure Blob 存储用于 HDInsight]: ../howto-blob-store/
+  [IIS w3c 日志数据方案]: #scenarios
+  [加载示例 w3c 日志数据]: #loaddata
+  [运行 Java MapReduce 作业]: #javamapreduce
+  [运行 Hive 作业]: #hive
+  [运行 Pig 作业]: #pig
+  [重新生成示例]: #rebuild
+  [Azure SDK for .NET]: http://www.windowsazure.cn/zh-cn/downloads/
+  [如何创建存储帐户]: ../storage-create-storage-account/
+  [管理门户]: https://manage.windowsazure.cn/
+  [以编程方式提交 Hadoop 作业]: ../hdinsight-submit-hadoop-jobs-programmatically/
+  [HDInsight cmdlet 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dn479228.aspx
+  [为 HDInsight 开发 Java MapReduce 程序]: ../hdinsight-develop-deploy-java-mapreduce/
+  [为 HDInsight 开发 C\# Hadoop 流 MapReduce 程序]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
+  [用于讨论 HDInsight 的 MSDN 论坛]: http://social.msdn.microsoft.com/Forums/windowsazure/zh-cn/home?forum=windowsazurezhchs&filter=alltypes&brandIgnore=True&sort=relevancedesc&filter=alltypes&searchTerm=hdinsight

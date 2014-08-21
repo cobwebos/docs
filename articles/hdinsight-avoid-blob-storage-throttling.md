@@ -1,60 +1,56 @@
 <properties linkid="manage-services-hdinsight-avoid-WASB-throttling" urlDisplayName="HDInsight Administration" pageTitle="Avoid WASB throttling | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure" description="Learn how to avoid throttling with the Azure Storage Blob service."  services="HDInsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" title="TODO: Add title of the guide, using sentence casing" authors="" />
 
-# TODO: Add title of the guide, using sentence casing
+# TODO：使用句子大小写添加本指南的标题
 
-TODO: provide a short description of the article and what skills will be gained by following the steps in the guide.
+TODO：提供文章的简短描述，以及通过执行本指南中的步骤将获得哪些技能。
 
-##Table of Contents
+## 目录
 
-* [What is &lt;FeatureName&gt;?](#whatis)
-* [Concepts](#Concepts)
-* [TODO: Insert Prereq1 Name](#PreReq1)
-* [TODO: Insert Prereq2 Name](#PreReq2)
-* [TODO: Insert HowTo1 Name](#HowTo1)
-* [TODO: Insert HowTo2 Name](#HowTo2)
-* [Next Steps](#NextSteps)
+-   [什么是 \<FeatureName\>？][]
+-   [概念][]
+-   [TODO：插入 Prereq1 名称][]
+-   [TODO：插入 Prereq2 名称][]
+-   [TODO：插入 HowTo1 名称][]
+-   [TODO：插入 HowTo2 名称][]
+-   [后续步骤][]
 
-<a id="whatis"></a>
-<h2><span>What is &lt;FeatureName&gt;?</span>What is &lt;FeatureName&gt;?</h2>
+## 什么是 \<FeatureName\>？什么是 \<FeatureName\>？
 
-TODO: Considering this may be the first time the customer encounters information about a feature, the guide should provide a brief description of what the feature/service area is.  For third-party services, this is a good place to mention any special offers for Azure customers.
+TODO：考虑到这可能是客户第一次遇到有关某一功能的信息，本指南应提供有关该功能/服务领域内容的简短描述。对于第三方服务，这也适合向 Azure 客户提及特别优惠。
 
-<a id="concepts"></a>
-<h2>Concepts</h2>
+## 概念
 
-TODO: This section provides a conceptual overview of the feature or service.  A diagram is sometimes useful in visualizing how things are related to one another.  Thie information in this section is generally programming-language-neutral.  For third party services, it's fine to provide a brief overview and link to other documentation on the service provider's website for more information.
+TODO：本节提供功能或服务的概念性概述。关系图在直观地显示事物之间的相关性方面有时很有用。大致说来，本节中的信息与编程语言无关。对于第三方服务，最好提供简要概述以及指向服务提供商网站上的其他文档的链接，以便用户查看详细信息。
 
-<a id="prereq1"></a>
-<h2><span class="short-header">Short prereq1 title</span>TODO: Insert prereq1 title, using sentence casing</h2>
+## prereq1 短标题TODO：使用句子大小写插入 prereq1 标题
 
-TODO: These are optional, non-obvious tasks that may be required for the how-tos to be completed successfully.
+TODO：这些是可选的非典型任务，可能是成功完成操作方法所必需的。
 
-<a id="prereq"></a>
-<h2><span class="short-header">Short prereq2 title</span>TODO: Insert prereq2 title, using sentence casing</h2>
+## prereq2 短标题TODO：使用句子大小写插入 prereq2 标题
 
-(TODO: These are optional, non-obvious tasks that may be required for the how-tos to be completed successfully.)
+（TODO：这些是可选的非典型任务，可能是成功完成操作方法所必需的。）
 
-<a id="howto1"></a>
-<h2><span class="short-header">Short howto1 title</span>Insert howTo1 title, using sentence casing</h2>
+## howto1 短标题使用句子大小写插入 howTo1 标题
 
-TODO: Describe how to complete a common task for the feature. This section will often include code. The heading should be heading formatted as "How to: `<use the feature>`."  For example, "How to: Send an email". 
+TODO：描述如何完成该功能的常见任务。本节通常包含代码。标题应采用如下标题格式：“如何：`<使用该功能>`”。例如，“如何：发送电子邮件”。
 
-<a id="howto2"></a>
-<h2><span class="short-header">Short howto2 title</span>Insert howTo2 title, using sentence casing</h2>
+## howto2 短标题使用句子大小写插入 howTo2 标题
 
+TODO：描述如何完成该功能的常见任务。本节通常包含代码。标题应采用如下标题格式：“如何：`<使用该功能>`”。例如，“如何：发送电子邮件”。
 
-TODO: Describe how to complete a common task for the feature. This section will often include code. The heading should be heading formatted as "How to: `<use the feature>`."  For example, "How to: Send an email". 
+## 后续步骤
 
-<a id="nextsteps"></a>
-<h2>Next steps</h2>
+TODO：提供简短摘要，然后列出相关文章，并详述为什么这些文章与用户相关。
 
-TODO: Provide a short summary, then list related articles with details about why they are relevant to the user.
+-   （TODO：链接 1 的短句子）：[（TODO：输入链接 1 文本）][]
+-   （TODO：链接 2 的短句子）：[（TODO：输入链接 2 文本）][]
 
-* (TODO: Short sentence of link1): [(TODO: Enter link1 text)] [NextStepsLink1]
-* (TODO: Short sentence of link2): [(TODO: Enter link2 text)] [NextStepsLink2]
-
-[NextStepsLink1]: (TODO: enter Next Steps 1 URL)
-[NextStepsLink2]: (TODO: enter Next Steps 2 URL)
-
-
-
+  [什么是 \<FeatureName\>？]: #whatis
+  [概念]: #Concepts
+  [TODO：插入 Prereq1 名称]: #PreReq1
+  [TODO：插入 Prereq2 名称]: #PreReq2
+  [TODO：插入 HowTo1 名称]: #HowTo1
+  [TODO：插入 HowTo2 名称]: #HowTo2
+  [后续步骤]: #NextSteps
+  [（TODO：输入链接 1 文本）]:  "TODO：输入后续步骤 1 URL"
+  [（TODO：输入链接 2 文本）]:  "TODO：输入后续步骤 2 URL"

@@ -1,216 +1,216 @@
 <properties linkid="manage-services-hdinsight-howto-work-with-the-interactive-console" urlDisplayName="Interactive Console" pageTitle="How to work with the interactive console in HDInsight | Azure" metaKeywords="" description="In this guide, you'll learn how to perform common tasks such as file upload, run jobs, and visualize data using the interactive console for HDInsight Service." metaCanonical="" services="hdinsight" documentationCenter="" title="HDInsight Interactive JavaScript and Hive Consoles" authors="bradsev" solutions="" manager="paulettm" editor="cgronlun" />
 
+# HDInsight 交互式 JavaScript 和 Hive 控制台
 
+Microsoft Azure HDInsight 服务附带了适用于 JavaScript 和 Hive 的交互式控制台。这些控制台提供了简单的交互式读取-计算-打印循环 (REPL) 体验，用户可在其中输入表达式，计算这些表达式，然后立即查询并显示 MapReduce 作业的结果。JavaScript 控制台执行 Pig Latin 语句。 Hive 控制台将计算 Hive 查询语言 (Hive QL) 语句。这两种类型的语句已编译为 MapReduce 程序。与远程连接到 Hadoop 群集的头节点并直接处理 MapReduce 程序相比，在这些控制台上管理 Hadoop 作业要简单得多。
 
+**JavaScript 控制台**：一个提供 Hadoop 生态系统的流畅接口的命令外壳。流畅接口使用链接指令的方法，此方法将序列中某个调用的上下文中继到该序列中的后续调用。JavaScript 控制台提供：
 
-# HDInsight Interactive JavaScript and Hive Consoles
+-   对 Hadoop 群集、其资源以及 Hadoop 分布式文件系统 (HDFS) 命令的访问。
+-   对数据传入和传出 Hadoop 群集的管理和操作。
+-   一个流畅接口，此接口将计算 Pig Latin 和 JavaScript 语句来定义一系列 MapReduce 程序，从而创建数据处理工作流。
 
-Microsoft Azure HDInsight Service comes with interactive consoles for both JavaScript and Hive. These consoles provide a simple, interactive read-evaluate-print loop (REPL) experience, where users can enter expressions, evaluated them, and then query and display the results of a MapReduce job immediately. The JavaScript console executes Pig Latin statements. The Hive console evaluates Hive Query Language (Hive QL) statements. Both types of statements get compiled into MapReduce programs. Managing Hadoop jobs on these consoles is much simpler than remote connecting into the head node of the Hadoop cluster and working with MapReduce programs directly.
+**Hive 控制台**：Hive 是一个基于 Hadoop 构建的数据仓库框架，它提供了数据管理、查询和分析功能。它使用 HiveQL（一种 SQL 行话）查询存储在 Hadoop 群集中的数据。Hive 控制台提供：
 
-**The JavaScript Console**: a command shell that provides a fluent interface to the Hadoop ecosystem. A fluent interface uses a method of chaining instructions that relays the context of one call in a sequence to the subsequent call in that sequence. The JavaScript console provides:
-		
-- Access to the Hadoop cluster, its resources, and the Hadoop Distributed File System (HDFS) commands.
-- Management and manipulate of data coming into and out of the Hadoop cluster.
-- A fluent interface that evaluates Pig Latin and JavaScript statements to define a series of MapReduce programs to create data processing workflows.
+-   对 Hadoop 群集、其资源和 HDFS 命令的访问。
+-   对 Hive 框架的实现，此实现可在 Hadoop 群集上执行 HiveQL 语句。
+-   一种用于 HDFS 的关系数据库模型，利用它，你可以与分布式文件系统中存储的数据交互，就像那些数据是存储在表中一样。
+    JavaScript 控制台使用 Pig Latin（一种数据流语言），Hive 控制台使用 HiveQL（一种查询语言）。
 
-**The Hive Console**: Hive is a data warehouse framework, built on top of Hadoop, that provides data management, querying, and analysis. It uses HiveQL, an SQL dialect, to query data stored in a Hadoop cluster. The Hive console provides:
-			
-- Access to the Hadoop cluster, its resources, and the HDFS commands.		
-- An implementation of the Hive framework that can execute HiveQL statements on a Hadoop cluster.	
-- A relational database model for HDFS that enables you to interact with data stored in the distributed file system as if that data were stored in tables.		
-The JavaScript console uses Pig Latin, a data flow language, and the Hive console uses HiveQL, a query language. 	
+Pig（和 JavaScript 控制台）往往是那些更熟悉脚本方法的人员的首选，其中会使用一系列链接的（或流畅的）转换来定义数据处理工作流。如果你有高度非结构化的数据，它也是一个不错的选择。
 
-Pig (and the JavaScript console) will tend to be preferred by those who are more familiar with a scripting approach, where a sequence of chained (or fluent) transformations is used to define a data processing workflow. It is also a good choice if you have seriously unstructured data.	
+Hive（及其控制台）往往是那些更熟悉 SQL 和关系数据库环境的人员的首选。在 Hive 中使用架构和表抽象意味着，所获得的体验将非常接近通常在 RDBMS 中获得的体验。
 
-Hive (and its console) will tend to be preferred by those who are more familiar with SQL and a relational database environment. The use of schema and a table abstraction in Hive means the experience is very close to that typically encountered in a RDBMS.
+Pig 和 Hive 提供编译成 MapReduce 程序的更高级别的语言，这些程序用 Java 编写并在 HDFS 上运行。若要实现真正的精确控制或高性能，你需要直接编写 MapReduce 程序。
 
-Pig and Hive provide higher level languages that are compiled into MapReduce programs that are written in Java and that run on the HDFS. If you need really precise control or high performance you will need to write the MapReduce programs directly.
+## 在本教程中
 
+-   [使用 JavaScript 控制台运行 MapReduce 作业][]
+-   [使用 JavaScript 控制台以图形形式显示结果][]
+-   [使用 Hive 控制台将结果导出到 Hive 表][]
+-   [使用 Hive 控制台查询 Hive 表中的数据][]
 
-##In this tutorial
+## 使用 JavaScript 控制台运行 MapReduce 作业
 
-* [Use the JavaScript console to run a MapReduce job](#runjob)
-* [Use the JavaScript console to display the results graphically](#displayresults)
-* [Use the Hive console to export the results to a Hive table](#createhivetable)
-* [Use the Hive console to query the data in the Hive table](#queryhivetable)
+在本节中，你使用 JavaScript 控制台运行 HDInsight 服务附带的 WordCount 示例。此处运行的 JavaScript 查询使用在由交互式控制台提供的 Pig 上分层的流畅 API。此处分析的文本文件是 Project Gutenberg 电子书版本的《莱奥纳多.达.芬奇笔记》(The Notebooks of Leonardo Da Vinci)**。指定一个筛选器，以使 MapReduce 作业的结果仅包含 10 个最常出现的词。
 
+1.  登录到[管理门户][]。
+2.  单击“HDInsight” 。这将显示已部署的 Hadoop 群集的列表。
+3.  单击你要连接到的 HDInsight 群集的名称。
+4.  单击“管理群集” 。
+5.  输入你的凭据，然后单击“登录” 。
+6.  从 HDInsight 门户中，单击“示例” 。
 
-##<a name="runjob"></a>Use the JavaScript Console to Run a MapReduce Job
+    ![HDI.Tiles.Samples][]
 
-In this section, you use the JavaScript console to run the WordCount sample that ships with the HDInsight Service. The JavaScript query run here uses the fluent API layered on Pig that is provided by the Interactive Console.  The text file analyzed here is the Project Gutenberg eBook edition of *The Notebooks of Leonardo Da Vinci*. A filter is specified so that the results of the MapReduce job contains only the ten most frequently occurring words. 
+7.  从“Hadoop 示例库” 页中，单击“WordCount” 磁贴。
+8.  从右上位置单击 **WordCount.js**，将文件保存到本地目录中，例如 ../downloads 文件夹。
 
-1. Sign in to the [Management Portal](https://manage.windowsazure.cn).
-2. Click **HDINSIGHT**. You shall see a list of deployed Hadoop clusters.
-3. Click the name of the HDInsight cluster where you want to connect to.
-4. Click **Manage Cluster**.
-5. Enter your credential, and then click **Log On**.
-6. From the HDInsight portal, click **Samples**.
+    ![HDI.JsConsole.WordCountDownloads][]
 
-	![HDI.Tiles.Samples][hdi-tiles-samples]
+9.  单击左上角的 **Azure HDInsight**，以返回到群集仪表板页面。
+10. 单击“交互式群集” 以显示 JavaScript 控制台。
 
-7. From the **Hadoop Sample Gallery** page , click on the **WordCount**  tile. 
-8. Click **WordCount.js** from the upper right, and save the file  to a local directory, for example the ../downloads folder.
+    ![HDI.Tiles.InteractiveConsole][]
 
-	![HDI.JsConsole.WordCountDownloads][hdi-jsconsole-wordcount]
+11. 单击右上角的 **JavaScript**。
+12. 运行以下命令：
 
-9. Click **Azure HDInsight** on the upper left corner to go back to the cluster dashboard page.
-10. Click **Interactive Cluster** to bring up the JavaScript console. 
-	
-	![HDI.Tiles.InteractiveConsole][hdi-tiles-interactive-console]
-11. Click **JavaScript** on the upper right.
-12. Run the following command:
+    fs.put()
 
-	fs.put()
+13. 将以下参数输入“上载文件” 窗口：
 
-13. Enter the following parameters into the **Upload a file** window:  
+    -   **源：** \_..\\downloads\\Wordcount.js
+    -   **目标：** ./WordCount.js/
 
-	- **Source:** _..\downloads\Wordcount.js
- 	- **Destination:** ./WordCount.js/ 	
+    ![HDI.JsConsole.UploadJs][]
 
-	![HDI.JsConsole.UploadJs][hdi-jsconsole-upload]
+    浏览 WordCount.js 文件的位置。这将需要完整的本地路径。作为 HDFS 中相对地址的一部分，目标路径的开头需要有一个点。
 
-	Browse the location of the WordCount.js file. The full local path will be required. The single dot at the start of the destination path is needed as part of the relative address in HDFS.
+14. 单击**“上载”**按钮。
 
+15. 运行下列命令以列出文件并显示内容：
 
-14. Click the **Upload** button.
+        #ls
+        #cat WordCount.js
 
-15. Run the following commands to list the file and display the content:
+    ![HDI.JsConsole.JsCode][]
 
-		#ls
-		#cat WordCount.js
+    请注意，在化简函数中计算某个词的出现次数之前，JavaScript 映射函数会使用“toLowerCase()”方法从文本中删除大写字母。
 
-	![HDI.JsConsole.JsCode][hdi-jsconsole-jscode]
+16. 运行以下命令，以列出将由 WordCount MapReduce 作业处理的数据文件：
 
-	Note that the JavaScript map function removes capital letters from the text using the "toLowerCase()" method before counting the number of occurences of a word in the reduce function. 
-	
-16. Run the following command to list the data file that will be processed by the WordCount MapReduce job: 
+        #ls /example/data/gutenberg
 
- 		#ls /example/data/gutenberg
-	
-17. Run the following command to execute the MapReduce program: 
+17. 运行以下命令以执行 MapReduce 程序：
 
-		pig.from("/example/data/gutenberg/davinci.txt").mapReduce("/user/admin/WordCount.js", "word, count:long").orderBy("count DESC").take(10).to("DaVinciTop10Words")
-	
-	Replace admin to the current login username.
+        pig.from("/example/data/gutenberg/davinci.txt").mapReduce("/user/admin/WordCount.js", "word, count:long").orderBy("count DESC").take(10).to("DaVinciTop10Words")
 
-	Note how the instructions are "chained" together using the dot operator, and the output file is called *DaVinciTop10Words*. In the next section, you will access the output file. 
+    将 admin 替换为当前登录用户名。
 
-	Once completed, you shall see the following:
+    注意这些指令是如何使用圆点运算符连接起来的，输出文件称为“DaVinciTop10Words”**。在下一部分中，你将访问此输出文件。
 
-		pig.from("/example/data/gutenberg/davinci.txt").mapReduce("/user/admin/WordCount.js", "word, count:long").orderBy("count DESC").take(10).to("DaVinciTop10Words")
-		2013-04-25 18:54:28,116 [main] INFO  org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.MapReduceLauncher - Success! (View Log)
+    一旦完成，你将看到以下内容：
 
-18. Scroll to the right, and then click on **View Log** if you want to observe the job progress. This log will also provide diagnostics if the job fails to complete. When the job does complete, you will see the following message at the end of the log:
+        pig.from("/example/data/gutenberg/davinci.txt").mapReduce("/user/admin/WordCount.js", "word, count:long").orderBy("count DESC").take(10).to("DaVinciTop10Words")
+        2013-04-25 18:54:28,116 [main] INFO  org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.MapReduceLauncher - Success!(View Log)
 
-		[main] INFO org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.MapReduceLauncher - Success! followed by a link to the log file.
-	
-19. Run the following command to list the output file:
+18. 若要查看作业进度，请滚动到右侧并单击“查看日志” 。如果作业未能完成，则该日志还将提供诊断信息。作业完成后，你将在日志结尾看到以下消息：
 
-		#ls
+        [main] INFO org.apache.pig.backend.hadoop.executionengine.mapReduceLayer.MapReduceLauncher - Success! followed by a link to the log file.
 
-	Notice a DavinciTop10Words folder is created.
+19. 运行以下命令以列出输出文件：
 
-##<a name="displayresults"></a>Use the JavaScript Console to Display the Results Graphically
-In the last section, you ran a MapReduce job to retrieve the top 10 words from a text file. The output file is ./DaVinciTop10Words.
+        #ls
 
-1. Run the following command to display the results in the DaVinciTop10Words directory:
+    注意创建了一个 DavinciTop10Words 文件夹。
 
-		file = fs.read("DaVinciTop10Words")
+## 使用 JavaScript 控制台以图形形式显示结果
 
-	The result looks like:
+在上一部分中，你运行了 MapReduce 作业从一个文本文件中检索出现频率排前 10 位的单词。输出文件为 ./DaVinciTop10Words。
 
-		js> file=fs.read("DaVinciTop10Words")
-		the	22966
-		of	11228
-		and	8428
-		in	5737
-		to	5296
-		a	4791
-		is	4261
-		it	3073
-		that	2903
-		which	2544
-	
-2. Run the following command to parse the contents of the file into a data file:
+1.  运行下列命令以在 DaVinciTop10Words 目录中显示结果：
 
-		data = parse(file.data, "word, count:long")
-		
-3. Run the following command to plot the data
+        file = fs.read("DaVinciTop10Words")
 
-		graph.bar(data)
-		
-	![HDI.JsConsole.BarGraphTop10Words][hdi-jsconsole-bargraph-top10words]
+    结果与下面类似：
 
+        js> file=fs.read("DaVinciTop10Words")
+        the 22966
+        of  11228
+        and 8428
+        in  5737
+        to  5296
+        a   4791
+        is  4261
+        it  3073
+        that    2903
+        which   2544
 
-##<a name="createhivetable"></a>Use the Hive Console to Export the Results to a Hive Table
+2.  运行以下命令将此文件的内容解析到数据文件中：
 
-This section introduces you to the Hive interactive console. You will create a Hive table from the MapReduce job output. The next section shows how to query the data in this table. 
+        data = parse(file.data, "word, count:long")
 
-**Create the Hive table**
-	
-1. Click Hive on the upper right to open the Hive console.
-	
-2. Enter the following command to create a two column table named _DaVinciWordCountTable_ from the WordCount sample output that was saved in the "DaVinciTop10Words" folder:
-		
-		CREATE EXTERNAL TABLE DaVinciWordCountTable		
-		(word STRING,
-		count INT)	
-		ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'	
-		STORED AS TEXTFILE LOCATION '/user/admin/DaVinciTop10Words';	
+3.  运行以下命令以绘制数据的图表
 
-	Replace admin with the login username. 
+        graph.bar(data)
 
-	Note that the table is created as an EXTERNAL table to keep the folder targeted independent of the table. Also, note that you need only specify the folder in which the output file is located, not the file name itself.
+    ![HDI.JsConsole.BarGraphTop10Words][]
 
-3. Click **EVALUATE** on the lower left. 		
+## 使用 Hive 控制台将结果导出到 Hive 表
 
-4. Enter the following commands to confirm that the two column table has been created:
+本节介绍 Hive 交互式控制台。你将从 MapReduce 作业输出中创建 Hive 表。下一节介绍如何查询此表中的数据。
 
-		SHOW TABLES;
-		DESCRIBE DaVinciWordCountTable;
+**创建 Hive 表**
 
-5. Click **EVALUATE**.
-	
-	![HDI.Hive.ShowDescribeTable][hdi-hive-showdescribetable]
+1.  单击右上角的“Hive”打开 Hive 控制台。
 
-##<a name="queryhivetable"></a>Use the Hive Console to Query the Data in the Hive Table
+2.  输入以下命令，根据存储在“DaVinciTop10Words”文件夹中的 WordCount 示例输出结果，创建一个名为 *DaVinciWordCountTable* 的两列的表：
 
-1. Run the following command to query for the words with the top ten number of occurrences:
+        CREATE EXTERNAL TABLE DaVinciWordCountTable     
+        (word STRING,
+        count INT)  
+        ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'  
+        STORED AS TEXTFILE LOCATION '/user/admin/DaVinciTop10Words';    
 
-		SELECT word, count
-		FROM DaVinciWordCountTable
-		ORDER BY count DESC LIMIT 10
+    将 admin 替换为登录用户名。
 
-	The results of this query are:			
+    请注意，此表将作为 EXTERNAL 表创建以使目标文件夹独立于该表。另请注意，你只需指定输出文件所在的文件夹，不需指定文件名本身。
 
-		SELECT word, count FROM DaVinciWordCountTable ORDER BY count DESC LIMIT 10
-		the 22966
-		of 11228
-		and 8428
-		in 5737
-		to 5296
-		a 4791
-		is 4261
-		it 3073
-		that 2903
-		which 2544
+3.  单击左下角的**“计算”**。
 
-## Next Steps
+4.  输入以下命令，以确认已创建包含两个列的表：
 
-You have seen how to run a Hadoop job from the Interactive JavaScript console and how to inspect the results from a job using this console. You have also seen how the Interactive Hive console can be used to inspect and process the results of a Hadoop job by creating and querying a table that contains the output from a MapReduce program. You have seen examples of Pig Latin and Hive QL statements being used in the consoles. Finally, you have seen how the REPL interactive nature of the JavaScript and Hive consoles simplifies using a Hadoop cluster. To learn more, see the following articles:
+        SHOW TABLES;
+        DESCRIBE DaVinciWordCountTable;
 
-* [Using Pig with HDInsight][hdinsight-pig] 
-* [Using Hive with HDInsight][hdinsight-hive]
-* [Using MapReduce with HDInsight][hdinsight-mapreduce]
+5.  单击“计算” 。
 
-[hdinsight-pig]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
-[hdinsight-hive]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
-[hdinsight-mapreduce]: /en-us/manage/services/hdinsight/using-mapreduce-with-hdinsight/
+    [HDI.Hive.ShowDescribeTable][hdi-hive-showdescribetable]
 
-[hdi-tiles-samples]: ./media/hdinsight-interactive-console/HDI.TileSamples.PNG
-[hdi-jsconsole-wordcount]: ./media/hdinsight-interactive-console/HDI.JsConsole.WordCountDownloads.PNG
-[hdi-tiles-interactive-console]: ./media/hdinsight-interactive-console/HDI.TileInteractiveConsole.PNG
-[hdi-jsconsole-upload]: ./media/hdinsight-interactive-console/HDI.JsConsole.UploadJs.PNG
-[hdi-jsconsole-jscode]: ./media/hdinsight-interactive-console/HDI.JsConsole.JsCode.PNG
-[hdi-jsconsole-bargraph-top10words]: ./media/hdinsight-interactive-console/HDI.JsConsole.BarGraphTop10Words.PNG
-[hdi-hive-showdescribetable]: ./media/hdinsight-interactive-console/HDI.Hive.ShowDescribeTable.PNG "Hive Table Confirmation")
+## 使用 Hive 控制台查询 Hive 表中的数据
+
+1.  运行以下命令，以查询出现次数排名前 10 的单词：
+
+        SELECT word, count
+        FROM DaVinciWordCountTable
+        ORDER BY count DESC LIMIT 10
+
+    此查询的结果为：
+
+        SELECT word, count FROM DaVinciWordCountTable ORDER BY count DESC LIMIT 10
+        the 22966
+        of  11228
+        and 8428
+        in  5737
+        to  5296
+        a   4791
+        is  4261
+        it  3073
+        that    2903
+        which   2544
+
+## 后续步骤
+
+你已了解如何从交互式 JavaScript 控制台运行 Hadoop 作业，以及如何使用该控制台从作业中检查结果。此外，你已了解如何使用交互式 Hive 控制台创建并查询包含 MapReduce 程序中的输出的表，来检查和处理 Hadoop 作业的结果。你已查看控制台中使用的 Pig Latin 和 Hive QL 语句的示例。最后，你已了解如何使用 Hadoop 群集简化 JavaScript 和 Hive 控制台的 REPL 交互式特性。若要了解更多信息，请参阅下列文章：
+
+-   [将 Pig 与 HDInsight 配合使用][]
+-   [将 Hive 与 HDInsight 配合使用][]
+-   [将 MapReduce 与 HDInsight 配合使用][]
+
+[hdi-hive-showdescribetable]:./media/hdinsight-interactive-console/HDI.Hive.ShowDescribeTable.PNG "Hive Table Confirmation")
+
+  [使用 JavaScript 控制台运行 MapReduce 作业]: #runjob
+  [使用 JavaScript 控制台以图形形式显示结果]: #displayresults
+  [使用 Hive 控制台将结果导出到 Hive 表]: #createhivetable
+  [使用 Hive 控制台查询 Hive 表中的数据]: #queryhivetable
+  [管理门户]: https://manage.windowsazure.cn
+  [HDI.Tiles.Samples]: ./media/hdinsight-interactive-console/HDI.TileSamples.PNG
+  [HDI.JsConsole.WordCountDownloads]: ./media/hdinsight-interactive-console/HDI.JsConsole.WordCountDownloads.PNG
+  [HDI.Tiles.InteractiveConsole]: ./media/hdinsight-interactive-console/HDI.TileInteractiveConsole.PNG
+  [HDI.JsConsole.UploadJs]: ./media/hdinsight-interactive-console/HDI.JsConsole.UploadJs.PNG
+  [HDI.JsConsole.JsCode]: ./media/hdinsight-interactive-console/HDI.JsConsole.JsCode.PNG
+  [HDI.JsConsole.BarGraphTop10Words]: ./media/hdinsight-interactive-console/HDI.JsConsole.BarGraphTop10Words.PNG
+  [将 Pig 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
+  [将 Hive 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
+  [将 MapReduce 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-mapreduce-with-hdinsight/

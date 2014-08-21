@@ -1,288 +1,238 @@
 <properties linkid="manage-services-hdinsight-administer-hdinsight-using-powershell" urlDisplayName="HDInsight Administration" pageTitle="Administer HDInsight using PowerShell | Azure" metaKeywords="hdinsight, hdinsight administration, hdinsight administration azure" description="Learn how to perform administrative tasks for the HDInsight clusters using PowerShell." services="hdinsight" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" title="Administer HDInsight using PowerShell" authors="bradsev" />
 
-# Administer HDInsight using PowerShell
+# 使用 PowerShell 管理 HDInsight
 
-Azure PowerShell is a powerful scripting environment that you can use to control and automate the deployment and management of your workloads in Azure. In this article, you will learn how to manage HDInsight clusters using a local Azure PowerShell console through the use of Windows PowerShell. For the list of the HDInsight PowerShell cmdlets, see [HDInsight cmdlet reference][hdinsight-powershell-reference].
+Azure PowerShell 是一个功能强大的脚本编写环境，可用于在 Azure 中控制和自动执行工作负荷的部署和管理。在本文中，你将了解如何通过使用 Windows PowerShell 借助于本地 Azure PowerShell 控制台来管理 HDInsight 群集。有关 HDInsight PowerShell cmdlet 的列表，请参阅 [HDInsight cmdlet 参考][]。
 
-**Prerequisites:**
+**先决条件：**
 
-Before you begin this article, you must have the following:
+在开始阅读本文前，你必须具有：
 
-- An Azure subscription. Azure is a subscription-based platform. The HDInsight PowerShell cmdlets perform the tasks with your subscription. For more information about obtaining a subscription, see [Purchase Options][azure-purchase-options], [Member Offers][azure-member-offers], or [Free Trial][azure-free-trial].
+-   Azure 订阅。Azure 是基于订阅的平台。HDInsight PowerShell cmdlet 通过订阅执行任务。有关获取订阅的详细信息，请参阅[购买选项][]、[成员优惠][azure-member-offers] 或[免费试用][]。
 
-- A workstation with Azure PowerShell. For instructions, see [Install and configure Azure PowerShell][Powershell-install-configure].
+-   配备 Azure PowerShell 的工作站。有关说明，请参阅[安装和配置 Azure PowerShell][]。
 
-			
-	
+## 本文内容
 
-## In this article
+-   [设置群集][]
+-   [列出并显示群集][]
+-   [删除群集][]
+-   [授予/撤消 HTTP 服务访问权限][]
+-   [提交 MapReduce 作业][]
+-   [提交 Hive 作业][]
+-   [将数据上载到 Blob 存储][]
+-   [从 Blob 存储下载 MapReduce 输出数据][]
 
-* [Provision a cluster](#provision)
-* [List and show clusters](#listshow)
-* [Delete a cluster](#delete)
-* [Grant/Revoke HTTP services access](#httpservices)
-* [Submit MapReduce jobs](#mapreduce)
-* [Submit Hive jobs](#hive)
-* [Upload data to the Blob storage](#upload)
-* [Download MapReduce output data from the Blob storage](#download)
+## 设置 HDInsight 群集
 
+HDInsight 使用 Azure Blob 存储容器作为默认文件系统。你需要先拥有 Azure 存储帐户和存储容器，然后才能创建 HDInsight 群集。
 
-##<a id="provision"></a> Provision an HDInsight cluster
-HDInsight uses an Azure Blob Storage container as the default file system. An Azure storage account and storage container are required before you can create an HDInsight cluster. 
+**创建 Azure 存储帐户**
 
+在导入了 publishsettings 文件后，你可以使用以下命令创建一个存储帐户：
 
-**To create an Azure storage account**
+    # 创建 Azure 存储帐户
+    $storageAccountName = "<StorageAcccountName>"
+    $location = "<Microsoft data center>"           # 例如，“China East”
 
-After you have imported the publishsettings file, you can use the following command to create a storage account:
+    New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
 
-	# Create an Azure storage account
-	$storageAccountName = "<StorageAcccountName>"
-	$location = "<Microsoft data center>"           # For example, "China East"
+> [WACOM.NOTE] 存储帐户必须与 HDInsight 群集位于同一数据中心。目前，只能在以下数据中心内设置 HDInsight 群集：
 
-	New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $location
+> -   亚洲东南部
+> -   欧洲北部
+> -   欧洲西部
+> -   美国东部
+> -   美国西部
 
-> [WACN.NOTE] The storage account must be located in the same data center as the HDInsight Cluster. Currently, you can only provision HDInsight clusters in the following data centers:
+有关使用管理门户创建 Azure 存储帐户的信息，请参阅[如何创建存储帐户][]。
 
-><ul>
-<li>Southeast Asia</li>
-<li>North Europe</li>
-<li>West Europe</li>
-<li>East US</li>
-<li>West US</li>
-</ul>
+如果你已有存储帐户但是不知道帐户名称和帐户密钥，可以使用以下命令来检索该信息：
 
+    # 列出当前订阅的存储帐户
+    Get-AzureStorageAccount
+    # 列出存储帐户的密钥
+    Get-AzureStorageKey <StorageAccountName>
 
+有关使用管理门户获取信息的详细信息，请参阅[如何管理存储帐户][]中的*如何：查看、复制和重新生成存储访问密钥*一节。
 
-For information on creating an Azure storage account using the management portal, see [How to Create a Storage Account](/en-us/manage/services/storage/how-to-create-a-storage-account/).
+**创建 Azure 存储容器**
 
-If you have already had a storage account but do not know the account name and account key, you can use the following commands to retrieve the information:
+PowerShell 不能在 HDInsight 设置过程中创建 Blob 容器。你可以使用以下脚本创建一个容器：
 
-	# List storage accounts for the current subscription
-	Get-AzureStorageAccount
-	# List the keys for a storage account
-	Get-AzureStorageKey <StorageAccountName>
+    $storageAccountName = "<StorageAccountName>"
+    $storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
+    $containerName="<ContainerName>"
 
-For details on getting the information using the management portal, see the *How to: View, copy and regenerate storage access keys* section of [How to Manage Storage Accounts](/en-us/manage/services/storage/how-to-manage-a-storage-account/).
+    # 创建存储上下文对象
+    $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName 
+    -StorageAccountKey $storageAccountKey  
 
-**To create Azure storage container**
+    # 创建 Blob 存储容器
+    New-AzureStorageContainer -Name $containerName -Context $destContext
 
-PowerShell can not create a Blob container during the HDInsight provision process. You can create one using the following script:
+**设置群集**
 
-	$storageAccountName = "<StorageAccountName>"
-	$storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
-	$containerName="<ContainerName>"
+准备好存储帐户和 blob 容器后，你就可以创建群集了。
 
-	# Create a storage context object
-	$destContext = New-AzureStorageContext -StorageAccountName $storageAccountName 
-	                                       -StorageAccountKey $storageAccountKey  
-	
-	# Create a Blob storage container
-	New-AzureStorageContainer -Name $containerName -Context $destContext
+    $storageAccountName = "<StorageAccountName>"
+    $containerName = "<ContainerName>"
 
-**To provision a cluster**
+    $clusterName = "<HDInsightClusterName>"
+    $location = "<MicrosoftDataCenter>"
+    $clusterNodes = <ClusterSizeInNodes>
 
-Once you have the storage account and the blob container prepared, you are ready to create a cluster.    
-		
-	$storageAccountName = "<StorageAccountName>"
-	$containerName = "<ContainerName>"
+    # 获取存储帐户密钥
+    $storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
 
-	$clusterName = "<HDInsightClusterName>"
-	$location = "<MicrosoftDataCenter>"
-	$clusterNodes = <ClusterSizeInNodes>
+    # 新建 HDInsight 群集
+    New-AzureHDInsightCluster -Name $clusterName -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.chinacloudapi.cn" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainerName $containerName  -ClusterSizeInNodes $clusterNodes
 
-	# Get the storage account key
-	$storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
+下面的屏幕快照显示脚本执行：
 
-	# Create a new HDInsight cluster
-	New-AzureHDInsightCluster -Name $clusterName -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.chinacloudapi.cn" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainerName $containerName  -ClusterSizeInNodes $clusterNodes
+![HDI.PS.Provision][]
 
+## 列出并显示群集详细信息
 
-The following screenshot shows the script execution:
+使用以下命令来列出和显示群集详细信息：
 
-![HDI.PS.Provision][image-hdi-ps-provision]
+**列出当前订阅中的所有群集**
 
+    Get-AzureHDInsightCluster 
 
+**显示当前订阅中特定群集的详细信息**
 
+    Get-AzureHDInsightCluster -Name <ClusterName> 
 
-##<a id="listshow"></a> List and show cluster details
-Use the following commands to list and show cluster details:
+## 删除群集
 
-**To list all clusters in the current subscription**
+使用以下命令来删除群集：
 
-	Get-AzureHDInsightCluster 
+    Remove-AzureHDInsightCluster -Name <ClusterName> 
 
-**To show details of the specific cluster in the current subscription**
+## 授予/撤消 HTTP 服务访问权限
 
-	Get-AzureHDInsightCluster -Name <ClusterName> 
+HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样式的终结点）：
 
-##<a id="delete"></a> Delete a cluster
-Use the following command to delete a cluster:
+-   ODBC
+-   JDBC
+-   Ambari
+-   Oozie
+-   Templeton
 
-	Remove-AzureHDInsightCluster -Name <ClusterName> 
+默认情况下，将授权这些服务进行访问。你可以撤消/授予访问权限。下面是一个示例：
 
-##<a id="httpservice"></a> Grant/revoke HTTP services access
+    Revoke-AzureHDInsightHttpServicesAccess -Name hdiv2 -Location "China East"
 
-HDInsight clusters have the following HTTP Web services (all of these services have RESTful endpoints):
+在此示例中，*hdiv2* 是 HDInsight 群集名称。
 
-- ODBC
-- JDBC
-- Ambari
-- Oozie
-- Templeton
+> [WACOM.NOTE] 授予/撤消访问权限时，你将重设群集用户的用户名和密码。
 
+也可以使用 Windows Azure 管理门户完成此操作。请参阅[使用管理门户管理 HDInsight][]。
 
-By default, these services are granted for access. You can revoke/grant the access.  Here is a sample:
+## 提交 MapReduce 作业
 
-	Revoke-AzureHDInsightHttpServicesAccess -Name hdiv2 -Location "China East"
+HDInsight 群集分发附带一些 MapReduce 示例。其中一个示例是计算源文件中的单词频率。
 
-In the sample <i>hdiv2</i> is an HDInsight cluster name.
+**提交 MapReduce 作业**
 
->[WACN.NOTE] By granting/revoking the access, you will reset the cluster user username and password.
+下面的 PowerShell 脚本提交单词计数示例作业：
 
-This can also be done using the Windows Azure Management portal. See [Administer HDInsight using the Management portal][hdinsight-admin-portal].
+    $clusterName = "<HDInsightClusterName>"            
 
-##<a id="mapreduce"></a> Submit MapReduce jobs
-The HDInsight cluster distribution comes with some MapReduce samples. One of the samples is for counting word frequencies in source files.
+    # 定义 MapReduce 作业
+    $wordCountJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-examples.jar" -ClassName "wordcount" -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
 
-**To submit a MapReduce job**
+    # 运行作业并显示标准错误 
+    $wordCountJobDefinition | Start-AzureHDInsightJob -Cluster $clusterName | Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600 | %{ Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $_.JobId -StandardError}
 
-The following PowerShell script submits the word count sample job: 
-	
-	$clusterName = "<HDInsightClusterName>"            
-	
-	# Define the MapReduce job
-	$wordCountJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-examples.jar" -ClassName "wordcount" -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
-	
-	# Run the job and show the standard error 
-	$wordCountJobDefinition | Start-AzureHDInsightJob -Cluster $clusterName | Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600 | %{ Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $_.JobId -StandardError}
-	
-> [WACN.NOTE] *hadoop-examples.jar* comes with version 2.1 HDInsight clusters. The file has been renamed to *hadoop-mapreduce.jar* on version 3.0 HDInsight clusters.
+> [WACOM.NOTE] *hadoop-examples.jar* 随版本 2.1 HDInsight 群集提供。该文件在版本 3.0 HDInsight 群集上已被重命名为 *hadoop-mapreduce.jar*。
 
-For information about the WASB prefix, see [Use Azure Blob storage for HDInsight][hdinsight-
-storage].
+有关 WASB 前缀的信息，请参阅 [将 Azure Blob 存储用于 HDInsight][hdinsight-
+storage]。
 
-**To download the MapReduce job output**
+**下载 MapReduce 作业输出**
 
-The following PowerShell script retrieves the MapReduce job output from the last procedure:
+下面的 PowerShell 脚本从上一个过程中检索 MapReduce 作业输出：
 
-	$storageAccountName = "<StorageAccountName>"   
-	$containerName = "<ContainerName>"             
-		
-	# Create the storage account context object
-	$storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
-	$storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
-	
-	# Download the output to local computer
-	Get-AzureStorageBlobContent -Container $ContainerName -Blob example/data/WordCountOutput/part-r-00000 -Context $storageContext -Force
-	
-	# Display the output
-	cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
+    $storageAccountName = "<StorageAccountName>"   
+    $containerName = "<ContainerName>"             
+        
+    # 创建存储帐户上下文对象
+    $storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
+    $storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
 
-For more information on developing and running MapReduce jobs, see [Using MapReduce with HDInsight][hdinsight-mapreduce].
+    # 将输出下载到本地计算机
+    Get-AzureStorageBlobContent -Container $ContainerName -Blob example/data/WordCountOutput/part-r-00000 -Context $storageContext -Force
 
+    # 显示输出
+    cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
 
+有关开发和运行 MapReduce 作业的详细信息，请参阅[将 MapReduce 与 HDInsight 配合使用][]。
 
+## 提交 Hive 作业
 
+HDInsight 群集分发附带称作 *hivesampletable* 的示例 Hive 表。你可以使用 HiveQL“show tables;”列出群集上的 Hive 表。
 
+**提交 Hive 作业**
 
+下面的脚本提交一个 hive 作业以便列出 Hive 表：
 
+    $clusterName = "<HDInsightClusterName>"               
 
+    # HiveQL 查询
+    $querystring = @"
+    SHOW TABLES;
+    SELECT * FROM hivesampletable 
+    WHERE Country='United Kingdom'
+    LIMIT 10;
+    "@
 
+    Use-AzureHDInsightCluster -Name $clusterName
+    Invoke-Hive $querystring
 
+该 Hive 作业将首先显示在该群集上创建的 Hive 表，并且显示从 hivesampletable 返回的数据。
 
+有关使用 Hive 的详细信息，请参阅[将 Hive 与 HDInsight 配合使用][]。
 
+## 将数据上载到 Blob 存储
 
+请参阅[将数据上载到 HDInsight][]。
 
+## 从 Blob 存储下载 MapReduce 输出
 
+请参阅本文中的[提交 MapReduce 作业][]一节。
 
+## 另请参阅
 
+-   [HDInsight Cmdlet 参考文档][HDInsight cmdlet 参考]
+-   [使用管理门户管理 HDInsight][]
+-   [使用命令行接口管理 HDInsight][]
+-   [配置 HDInsight 群集][]
+-   [将数据上载到 HDInsight][]
+-   [以编程方式提交 Hadoop 作业][]
+-   [Azure HDInsight 入门][]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-##<a id="hive"></a> Submit Hive jobs
-The HDInsight cluster distribution comes with a sample Hive table called *hivesampletable*. You can use a HiveQL "show tables;" to list the Hive tables on a cluster.
-
-**To submit a Hive job**
-
-The following script submit a hive job to list the Hive tables:
-	
-	$clusterName = "<HDInsightClusterName>"               
-	
-	# HiveQL query
-	$querystring = @"
-		SHOW TABLES;
-		SELECT * FROM hivesampletable 
-			WHERE Country='United Kingdom'
-			LIMIT 10;
-	"@
-
-	Use-AzureHDInsightCluster -Name $clusterName
-	Invoke-Hive $querystring
-
-The Hive job will first show the Hive tables created on the cluster, and the data returned from the hivesampletable.
-
-For more information on using Hive, see [Using Hive with HDInsight][hdinsight-hive].
-
-
-##<a id="upload"></a>Upload data to the Blob storage
-See [Upload data to HDInsight][hdinsight-upload-data].
-
-##<a id="download"></a>Download the MapReduce output from the Blob storage
-See the [Submit MapReduce jobs](#mapreduce) session in this article.
-
-## See Also
-* [HDInsight Cmdlet Reference Documentation][hdinsight-powershell-reference]
-* [Administer HDInsight using management portal][hdinsight-admin-portal]
-* [Administer HDInsight using command-line interface][hdinsight-admin-cli]
-* [Provision HDInsight clusters][hdinsight-provision]
-* [Upload data to HDInsight][hdinsight-upload-data]
-* [Submit Hadoop jobs programmatically][hdinsight-submit-jobs]
-* [Get started with Azure HDInsight][hdinsight-get-started]
-
-
-[azure-purchase-options]: http://www.windowsazure.cn/zh-cn/pricing/overview/
-
-<!--
- [azure-member-offers]: https://www.windowsazure.com/en-us/pricing/member-offers/
- -->
-
-[azure-free-trial]: https://www.windowsazure.cn/zh-cn/pricing/free-trial/
-
-[hdinsight-get-started]: /en-us/documentation/articles/hdinsight-get-started/
-[hdinsight-provision]: /en-us/documentation/articles/hdinsight-provision-clusters/
-
-[hdinsight-submit-jobs]: /en-us/documentation/articles/hdinsight-submit-hadoop-jobs-programmatically/
-
-[hdinsight-admin-portal]: /en-us/documentation/articles/hdinsight-administer-use-management-portal/
-[hdinsight-admin-cli]: /en-us/documentation/articles/hdinsight-administer-use-command-line/
-[hdinsight-storage]: /en-us/documentation/articles/hdinsight-use-blob-storage/
-[hdinsight-mapreduce]: /en-us/documentation/articles/hdinsight-use-mapreduce/
-
-[hdinsight-hive]: /en-us/documentation/articles/hdinsight-use-hive/
-[hdinsight-upload-data]: /en-us/documentation/articles/hdinsight-upload-data/
-
-[hdinsight-powershell-reference]: http://msdn.microsoft.com/zh-cn/library/azure/dn479228.aspx
-
-[Powershell-install-configure]: /en-us/documentation/articles/install-configure-powershell/
-
-[image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
-
-
+  [HDInsight cmdlet 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dn479228.aspx
+  [购买选项]: http://www.windowsazure.cn/zh-cn/pricing/overview/
+  [免费试用]: https://www.windowsazure.cn/zh-cn/pricing/free-trial/
+  [安装和配置 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/
+  [设置群集]: #provision
+  [列出并显示群集]: #listshow
+  [删除群集]: #delete
+  [授予/撤消 HTTP 服务访问权限]: #httpservices
+  [提交 MapReduce 作业]: #mapreduce
+  [提交 Hive 作业]: #hive
+  [将数据上载到 Blob 存储]: #upload
+  [从 Blob 存储下载 MapReduce 输出数据]: #download
+  [如何创建存储帐户]: /en-us/manage/services/storage/how-to-create-a-storage-account/
+  [如何管理存储帐户]: /en-us/manage/services/storage/how-to-manage-a-storage-account/
+  [HDI.PS.Provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
+  [使用管理门户管理 HDInsight]: /en-us/documentation/articles/hdinsight-administer-use-management-portal/
+  [将 MapReduce 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-mapreduce/
+  [将 Hive 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-hive/
+  [将数据上载到 HDInsight]: /en-us/documentation/articles/hdinsight-upload-data/
+  [使用命令行接口管理 HDInsight]: /en-us/documentation/articles/hdinsight-administer-use-command-line/
+  [配置 HDInsight 群集]: /en-us/documentation/articles/hdinsight-provision-clusters/
+  [以编程方式提交 Hadoop 作业]: /en-us/documentation/articles/hdinsight-submit-hadoop-jobs-programmatically/
+  [Azure HDInsight 入门]: /en-us/documentation/articles/hdinsight-get-started/

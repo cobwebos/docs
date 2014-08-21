@@ -1,402 +1,310 @@
 <properties linkid="manage-services-hdinsight-get-started-hdinsight" urlDisplayName="Get Started" pageTitle="Get started using Hadoop 2.2 clusters with HDInsight | Azure" metaKeywords="" description="Get started using Hadoop 2.2 clusters with HDInsight, a big data solution. Learn how to provision clusters, run MapReduce jobs, and output data to Excel for analysis." metaCanonical="" services="hdinsight" documentationCenter="" title="Get started using Azure HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
+# 将 Hadoop 2.2 群集与 HDInsight 配合使用入门
 
+HDInsight 使 [Apache Hadoop][] 可在云中作为服务使用，并使 MapReduce 软件框架可用于更简单、缩放性更高且经济实用的 Azure 环境。HDInsight 还提供了使用 Azure Blob 存储管理和存储数据的经济实用方法。
 
+在本教程中，你将使用 Azure 管理门户对 HDInsight 群集进行设置，使用 PowerShell 提交一个 Hadoop MapReduce 作业，然后将该 MapReduce 作业的输出数据导入到 Excel 中进行检查。
 
-# Get started using Hadoop 2.2 clusters with HDInsight 
+> [WACOM.NOTE] 本教程介绍如何在 HDInsight 上使用 Hadoop 2.2 群集。有关在 HDInsight 上使用 Hadoop 1.2 群集的教程，请参阅[开始使用 Azure HDInsight][]。
 
-HDInsight makes [Apache Hadoop][apache-hadoop] available as a service in the cloud. It makes the MapReduce software framework available in a simpler, more scalable, and cost efficient Azure environment. HDInsight also provides a cost efficient approach to the managing and storing of data using Azure Blob storage. 
+> [WACOM.NOTE] HDInsight 群集版本 3.0 及将来的更高版本都不支持 *asv://* 语法。应改用 *wasb://* 语法。
 
-In this tutorial, you will provision an HDInsight cluster using the Azure Management Portal, submit a Hadoop MapReduce job using PowerShell, and then import the MapReduce job output data into Excel for examination.
+Microsoft 还发布了 HDInsight Emulator for Azure（以前称作 Microsoft HDInsight 开发者预览版），与 Azure HDInsight 的通用版本结合使用。该产品针对开发人员方案并因此仅支持单节点部署。有关如何使用 HDInsight Emulator 的信息，请参阅 [HDInsight Emulator 入门][]。
 
-> [WACN.NOTE] This tutorial covers using Hadoop 2.2 clusters on HDInsight. For the tutorial using Hadoop 1.2 clusters on HDInsight, see [Get started using Azure HDInsight][hdinsight-get-started].
+**先决条件：**
 
-> [WACN.NOTE]	The *asv://* syntax is not supported in HDInsight clusters version 3.0 and will not be supported in later versions. The *wasb://* syntax should be used instead.
+在开始阅读本教程前，你必须具有：
 
-In conjunction with the general availability of Azure HDInsight, Microsoft has also released HDInsight Emulator for Azure, formerly known as Microsoft HDInsight Developer Preview. This product targets developer scenarios and as such only supports single-node deployments. For using HDInsight Emulator, see [Get Started with the HDInsight Emulator][hdinsight-emulator].
+-   Azure 订阅。有关获取订阅的详细信息，请参阅[购买选项][]、[免费试用][]。
+-   运行 Windows 8、Windows 7、Windows Server 2012 或 Windows Server 2008 R2 的计算机。此计算机将用于提交 MapReduce 作业。
+-   Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone 或 Office 2010 Professional Plus。
 
-**Prerequisites:**
+**估计完成时间：**30 分钟
 
-Before you begin this tutorial, you must have the following:
+## 在本教程中
 
+-   [为运行的 PowerShell 设置本地环境][]
+-   [设置 HDInsight 群集][]
+-   [运行 WordCount MapReduce 程序][]
+-   [连接到 Microsoft 商业智能工具][]
+-   [后续步骤][]
 
-- An Azure subscription. For more information about obtaining a subscription, see [Purchase Options][azure-purchase-options], [Free Trial][azure-free-trial].
-- A computer that is running Windows 8, Windows 7, Windows Server 2012, or Windows Server 2008 R2. This computer will be used to submit MapReduce jobs.
-- Office 2013 Professional Plus, Office 365 Pro Plus, Excel 2013 Standalone, or Office 2010 Professional Plus.
+## 为运行 PowerShell 设置本地环境
 
-**Estimated time to complete:** 30 minutes
+有多种方法可将 MapReduce 作业提交到 HDInsight。在本教程中，你将使用 Azure PowerShell。若要安装 Azure PowerShell，请运行 [Microsoft Web 平台安装程序][]。出现提示时，依次单击“运行” 、“安装” ，然后按照说明进行操作。有关详细信息，请参阅[安装和配置 Azure PowerShell][]。
 
-##In this tutorial
+PowerShell cmdlet 需要使用你的订阅信息来管理你的服务。
 
-* [Set up local environment for running PowerShell](#setup)
-* [Provision an HDInsight cluster](#provision)
-* [Run a WordCount MapReduce program](#sample)
-* [Connect to Microsoft business intelligence tools](#powerquery)
-* [Next steps](#nextsteps)
+**使用 Azure AD 连接到你的订阅**
 
+1.  打开 Azure PowerShell 控制台，按照[如何：安装 Azure PowerShell][] 中的说明进行操作。
+2.  运行以下命令：
 
+        Add-AzureAccount
 
-##<a id="setup"></a> Set up local environment for running PowerShell
+3.  在窗口中，键入与你的帐户相关联的电子邮件地址和密码。Azure 将对凭据信息进行身份验证和保存，然后关闭该窗口。
 
-There are several ways to submit MapReduce jobs to HDInsight. In this tutorial, you will use Azure PowerShell. To install Azure PowerShell, run the [Microsoft Web Platform Installer][powershell-download]. Click **Run** when prompted, click **Install**, and then follow the instructions. For more information, see [Install and configure Azure PowerShell][powershell-install-configure].
+连接到你的订阅的另一个方法是使用证书方法。有关说明，请参阅[安装和配置 Azure PowerShell][]。
 
-The PowerShell cmdlets require your subscription information so that it can be used to manage your services.
+## 设置 HDInsight 群集
 
-**To connect to your subscription using Azure AD**
+HDInsight 设置过程要求某一 Azure 存储帐户用作默认文件系统。该存储帐户必须与 HDInsight 计算资源位于同一数据中心。目前，只能在以下数据中心内设置 HDInsight 群集：
 
-1. Open the Azure PowerShell console, as instructed in [How to: Install Azure PowerShell][powershell-open].
-2. Run the following command:
+-   中国东部
+-   中国北部
 
-		Add-AzureAccount
+你必须为你的 Azure 存储帐户选择五个数据中心中的一个。
 
-3. In the window, type the email address and password associated with your account. Azure authenticates and saves the credential information, and then closes the window.
+**创建 Azure 存储帐户**
 
-The other method to connect to  your subscription is using the certificate method. For instructions, see [Install and configure Azure PowerShell][powershell-install-configure].
-	
-##<a name="provision"></a>Provision an HDInsight cluster
+1.  登录到 [Azure 管理门户][]。
+2.  单击左下角的“新建” ，指向“数据服务” ，指向“存储” ，然后单击“快速创建” 。
 
-The HDInsight provision process requires an Azure Storage account to be used as the default file system. The storage account must be located in the same data center as the HDInsight compute resources. Currently, you can only provision HDInsight clusters in the following data centers:
+    ![HDI.StorageAccount.QuickCreate][]
 
-- China East
-- China North
+3.  输入“URL” 、“位置” 和“复制” ，然后单击“创建存储帐户” 。不支持地缘组。你将在存储列表中看到新的存储帐户。
+4.  等到新存储帐户的**“状态”**更改为“联机” 。
+5.  从列表中单击新存储帐户以选中它。
+6.  单击页面底部的“管理访问密钥” 。
+7.  记下**存储帐户名称**和**主访问密钥**。本教程后面的步骤中将会用到它们。
 
-You must choose one of the five data centers for your Azure Storage account.
+有关详细说明，请参阅
+[如何创建存储帐户][]和[将 Azure Blob 存储与 HDInsight 配合使用][]。
 
-**To create an Azure Storage account**
+目前仅支持使用“自定义创建”选项设置 HDInsight 3.0 群集。
 
-1. Sign in to the [Azure Management Portal][azure-management-portal].
-2. Click **NEW** on the lower left corner, point to **DATA SERVICES**, point to **STORAGE**, and then click **QUICK CREATE**.
+**设置 HDInsight 群集**
 
-	![HDI.StorageAccount.QuickCreate][image-hdi-storageaccount-quickcreate]
+1.  登录到 [Azure 管理门户][]。
 
-3. Enter **URL**, **LOCATION** and **REPLICATION**, and then click **CREATE STORAGE ACCOUNT**. Affinity groups are not supported. You will see the new storage account in the storage list. 
-4. Wait until the **STATUS** of the new storage account is changed to **Online**.
-5. Click the new storage account from the list to select it.
-6. Click **MANAGE ACCESS KEYS** from the bottom of the page.
-7. Make a note of the **STORAGE ACCOUNT NAME** and the **PRIMARY ACCESS KEY**.  You will need them later in the tutorial.
+2.  单击左侧的“HDINSIGHT” 以便列出你的帐户下的 HDInsight 群集。在下面的屏幕截图中，没有现有的 HDInsight 群集。
 
+    ![HDI.ClusterStatus][]
 
-For the detailed instructions, see
-[How to Create a Storage Account][azure-create-storageaccount] and [Use Azure Blob Storage with HDInsight][hdinsight-storage].
+3.  单击左下角的“新建” ，然后依次单击“数据服务”、 “HDINSIGHT” 和“自定义创建” 。
 
+    ![HDI.CustomCreateCluster][]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Provision HDInsight 3.0 clusters is currently only supported using the custom create option.
-
-**To provision an HDInsight cluster** 
-
-1. Sign in to the [Azure Management Portal][azure-management-portal]. 
-
-2. Click **HDINSIGHT** on the left to list the HDInsight clusters under your account. In the following screenshot, there is no existing HDInsight cluster.
-
-	![HDI.ClusterStatus][image-hdi-clusterstatus]
-
-3. Click **NEW** on the lower left side, click **DATA SERVICES**, click **HDINSIGHT**, and then click **CUSTOM CREATE**.
-
-	![HDI.CustomCreateCluster][image-hdi-customcreatecluster]
-
-4. From the Cluster Details tab, enter or select the following values:
+4.  在“群集详细信息”选项卡上，输入或选择以下值：
 
 	<table border="1">
-	<tr><th>Name</th><th>Value</th></tr>
-	<tr><td><strong>Cluster Name</strong></td><td>Name of the cluster.</td></tr>
-	<tr><td><strong>Data Nodes</strong></td><td>Number of data nodes you want to deploy. For testing purposes, create a single node cluster. <br />The cluster size limit varies for Azure subscriptions. Contact Azure billing support to increase the limit.</td></tr>
-	<tr><td><strong>HDInsight Version</strong></td><td>Choose <strong>3.0</strong> to create a Hadoop 2.2 cluster on HDInsight.</td></tr>
-	<tr><td><strong>Region</strong></td><td>Choose the same region as the storage account you created in the last procedure. HDInsight requires the storage account located in the same region. Later in the configuration, you can only choose a storage account that is in the same region as you specified here.
+	<tr><th>名称</th><th>值</th></tr>
+	<tr><td><strong>群集名称</strong></td><td>群集的名称。</td></tr>
+	<tr><td><strong>数据节点</strong></td><td>要部署的数据节点的数目。出于测试目的，请创建单节点群集。<br />群集大小限制因 Azure 订阅而异。若要提高限制的大小，请联系 Azure 计费支持。</td></tr>
+	<tr><td><strong>HDInsight 版本</strong></td><td>选择 <strong>3.0</strong> 以在 HDInsight 上创建 Hadoop 2.2 群集。</td></tr>
+	<tr><td><strong>区域</strong></td><td>选择与上一个过程中创建的存储帐户相同的区域。HDInsight 要求存储帐户位于同一区域。在以后的配置中，你只能选择你在此处指定的区域中的存储帐户。
 	</td></tr>
 	</table>
 
-4. Click the right arrow in the bottom right corner to configure cluster user. 
-4. From the Configure Cluster user tab, enter **User Name** and **Password** for the HDInsight cluster user account. In addition to this account, you can create a RDP user account after the cluster is provisioned, so you can remote desktop into the cluster. For instructions, see [Administer HDInsight using Management portal][hdinsight-admin-portal]
-4. Click the right arrow in the bottom right corner to configure the storage account. 
-5. From the Storage Account tag, enter or select the following values:
+5.  单击右下角的右箭头以配置群集用户。
+6.  在“配置群集用户”选项卡中，输入 HDInsight 群集用户帐户的**用户名**和**密码**。除了此帐户外，你还可以在设置群集后创建一个 RDP 用户帐户，以便通过远程桌面访问群集。有关说明，请参阅[使用管理门户管理 HDInsight][]
+7.  单击右下角的右箭头以配置存储帐户。
+8.  在“存储帐户”标签上，输入或选择以下值：
 
 	<table border="1">
-	<tr><th>Name</th><th>Value</th></tr>
-	<tr><td>STORAGE ACCOUNT</td><td>Select <strong>Use Existing Storage</strong>. You also have the option to have the management portal to create a new storage account if you don't have one created.</td></tr>
-	<tr><td>ACCOUNT NAME</td><td>Specify the storage account you created in the last procedure of this tutorial. Note only the storage accounts in the same region are displayed in the list box.</td></tr>
-	<tr><td>DEFAULT CONTAINER</td><td>Select <strong>Create defatul container</strong>. When this options is chosen, the default container name has the same name as the cluster name.</td></tr>
-	<tr><td>ADDITIONAL STORATGE ACCOUNT</td><td>Select <strong>0</strong>. You have the option to connect the cluster to up to 7 additional storage acounts.</td></tr>
+	<tr><th>名称</th><th>值</th></tr>
+	<tr><td>存储帐户</td><td>选择&ldquo;使用现有存储&rdquo;<strong></strong>。你也可以选择让管理门户创建一个新的存储帐户（如果你尚未创建）。</td></tr>
+	<tr><td>帐户名称</td><td>指定你在本教程的上一个过程中创建的存储帐户。请注意，只有同一区域中的存储帐户才显示在列表框中。</td></tr>
+	<tr><td>默认容器</td><td>选择&ldquo;创建默认容器&rdquo;<strong></strong>。选择了此选项时，默认容器名称将与群集名称相同。</td></tr>
+	<tr><td>其他存储帐户</td><td>选择 <strong>0</strong>。你可以选择将群集连接到最多 7 个其他存储帐户。</td></tr>
 	</table>
 
-5. Click the check icon in the bottom right corner to create the cluster. When the provision process completes, the  status column will show **Running**.
+9.  单击右下角的复选图标以创建群集。完成设置过程后，状态列将显示“正在运行” 。
 
+## 运行 WordCount MapReduce 作业
 
+现在你已设置了一个 HDInsight 群集。下一步是运行一个 MapReduce 作业，以便对文本文件中的单词进行计数。
 
+运行 MapReduce 作业要求以下元素：
 
+-   MapReduce 程序。在本教程中，你将使用 HDInsight 群集分发随附的 WordCount 示例，因此，你无需编写自己的 MapReduce 程序。该示例位于 */example/jars/hadoop-mapreduce-examples.jar*。有关编写自己的 MapReduce 作业的说明，请参阅[为 HDInsight 开发 Java MapReduce 程序][]。
 
+-   一个输入文件。你将使用 */example/data/gutenberg/davinci.txt* 作为输入文件。有关上载文件的信息，请参见[将数据上载到 HDInsight][]。
+-   输出文件文件夹。你将使用 */example/data/WordCountOutput* 作为输出文件文件夹。如果该文件夹不存在，系统将会创建。
 
+用于访问 Blob 存储中的文件的 URI 方案为：
 
+    wasb[s]://<containername>@<storageaccountname>.blob.core.chinacloudapi.cn/<路径>
 
-##<a name="sample"></a>Run a WordCount MapReduce job
+> [WACOM.NOTE] 默认情况下，用于默认文件系统的 Blob 容器与 HDInsight 群集同名。
 
-Now you have an HDInsight cluster provisioned. The next step is to run a MapReduce job to count words in a text file. 
+URI 方案提供了使用 *wasb:*前缀的未加密访问和使用 wasbs 的 SSL 加密访问。建议尽量使用 wasbs，即使在访问位于同一 Azure 数据中心内的数据时也是如此。
 
-Running a MapReduce job requires the following elements:
+由于 HDInsight 使用 Blob 存储容器作为默认文件系统，因此你可以使用相对或绝对路径引用默认文件系统中的文件和目录。
 
-* A MapReduce program. In this tutorial, you will use the WordCount sample that comes with the HDInsight cluster distribution so you don't need to write your own. It is located on */example/jars/hadoop-mapreduce-examples.jar*. For instructions on writing your own MapReduce job, see [Develop Java MapReduce programs for HDInsight][hdinsight-develop-MapReduce].
+例如，若要访问 hadoop-mapreduce-examples.jar，你可以使用以下选项之一：
 
-* An input file. You will use */example/data/gutenberg/davinci.txt* as the input file. For information on upload files, see [Upload Data to HDInsight][hdinsight-upload-data].
-* An output file folder. You will use */example/data/WordCountOutput* as the output file folder. The system will create the folder if it doesn't exist.
+    ● wasb://<containername>@<storageaccountname>.blob.core.chinacloudapi.cn/example/jars/hadoop-mapreduce-examples.jar
+    ● wasb:///example/jars/hadoop-mapreduce-examples.jar
+    ● /example/jars/hadoop-mapreduce-examples.jar
+                
 
-The URI scheme for accessing files in Blob storage is:
+前缀 *wasb://* 在这些文件的路径中的使用。需要指出 Azure Blob 存储正用于输入和输出文件。输出目录假定一个相对于 *wasb:///user/\<username\>* 文件夹的默认路径。
 
-	wasb[s]://<containername>@<storageaccountname>.blob.core.chinacloudapi.cn/<path>
+有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
 
-> [WACN.NOTE] By default, the Blob container used for the default file system has the same name as the HDInsight cluster.
+**运行 WordCount 示例**
 
-The URI scheme provides both unencrypted access with the *wasb:* prefix, and SSL encrypted access with wasbs. We recommend using wasbs wherever possible, even when accessing data that lives inside the same Azure data center.
+1.  打开 **Azure PowerShell**。有关打开 Azure PowerShell 控制台窗口的说明，请参阅[安装和配置 Azure PowerShell][]。
 
-Because HDInsight uses a Blob Storage container as the default file system, you can refer to files and directories inside the default file system using relative or absolute paths.
+2.  运行以下命令以设置变量。
 
-For example, to access the hadoop-mapreduce-examples.jar, you can use one of the following options:
+        $subscriptionName = "<SubscriptionName>" 
+        $clusterName = "<HDInsightClusterName>"        
 
-	● wasb://<containername>@<storageaccountname>.blob.core.chinacloudapi.cn/example/jars/hadoop-mapreduce-examples.jar
-	● wasb:///example/jars/hadoop-mapreduce-examples.jar
-	● /example/jars/hadoop-mapreduce-examples.jar
-				
-The use of the *wasb://* prefix in the paths of these files. This is needed to indicate Azure Blob Storage is being used for input and output files. The output directory assumes a default path relative to the *wasb:///user/&lt;username&gt;* folder. 
+3.  运行以下命令创建 MapReduce 作业定义：
 
-For more information, see [Use Azure Blob Storage with HDInsight][hdinsight-storage].
+        # 定义 MapReduce 作业
+        $wordCountJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" -ClassName "wordcount" -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
 
+    hadoop-mapreduce-examples.jar 文件随 HDInsight 群集分发提供。此 MapReduce 作业有两个参数。第一个参数是源文件名，第二个参数是输出文件路径。源文件随 HDInsight 群集分发提供，输出文件路径将会在运行时创建。
 
+4.  运行以下命令来提交 MapReduce 作业：
 
+        # 提交作业
+        Select-AzureSubscription $subscriptionName
+        $wordCountJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $wordCountJobDefinition 
 
+    除了 MapReduce 作业定义外，你还必须提供要运行 MapReduce 作业的 HDInsight 群集名称。
 
+    *Start-AzureHDInsightJob* 是异步调用。若要检查作业是否完成，请使用 *Wait-AzureHDInsightJob* cmdlet。
 
+5.  运行以下命令来检查 MapReduce 作业的完成：
 
+        Wait-AzureHDInsightJob -Job $wordCountJob -WaitTimeoutInSeconds 3600 
 
+6.  运行以下命令来检查运行 MapReduce 作业时的错误：
 
+        # 获取作业输出
+        Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $wordCountJob.JobId -StandardError
 
+    以下屏幕截图显示了成功运行的输出。否则，你将看到一些错误消息。
 
+    ![HDI.GettingStarted.RunMRJob][]
 
+**检索 MapReduce 作业的结果**
 
+1.  打开 **Azure PowerShell**。
+2.  运行以下命令创建 C:\\Tutorials 文件夹，并将目录更改为该文件夹：
 
+        mkdir \Tutorials
+        cd \Tutorials
 
+    默认 Azure Powershell 目录是 *C:\\Windows\\System32\\WindowsPowerShell\\v1.0*。默认情况下，你对此文件夹没有写入权限。必须将目录更改为你有写入权限的文件夹。
 
+3.  在以下命令中设置三个变量，然后运行它们：
 
+        $subscriptionName = "<SubscriptionName>"       
+        $storageAccountName = "<StorageAccountName>"   
+        $containerName = "<ContainerName>"             
 
+    Azure 存储帐户是你在本教程前面部分创建的帐户。存储帐户用于承载作为默认 HDInsight 群集文件系统的 Blob 容器。Blob 存储容器通常与 HDInsight 群集共享相同的名称，除非你在设置群集时指定其他名称。
 
+4.  运行以下命令以创建 Azure 存储上下文对象：
 
+        # 创建存储帐户上下文对象
+        Select-AzureSubscription $subscriptionName
+        $storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
+        $storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
 
-**To run the WordCount sample**
+    *Select-AzureSubscription* 用于在你有多个订阅但默认订阅不是要使用的订阅时设置当前订阅。
 
-1. Open **Azure PowerShell**. For instructions of opening Azure PowerShell console window, see [Install and configure Azure PowerShell][powershell-install-configure].
+5.  运行以下命令，将 MapReduce 作业输出从 Blob 容器下载到工作站：
 
-3. Run the following commands to set the variables.  
-		
-		$subscriptionName = "<SubscriptionName>" 
-		$clusterName = "<HDInsightClusterName>"        
-		
-5. Run the following commands to create a MapReduce job definition:
+        # 将作业输出下载到工作站
+        Get-AzureStorageBlobContent -Container $ContainerName -Blob example/data/WordCountOutput/part-r-00000 -Context $storageContext -Force
 
-		# Define the MapReduce job
-		$wordCountJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" -ClassName "wordcount" -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
+    *example/data/WordCountOutput* 文件夹是你在运行 MapReduce 作业时指定的输出文件夹。*part-r-00000* 是 MapReduce 作业输出的默认文件名。此文件将下载到本地文件夹上的相同文件夹结构。例如，在以下屏幕快照中，当前文件是 C 根文件夹。此文件将下载到 *C:\\example\\data\\WordCountOutput\\* 文件夹。
 
-	The hadoop-mapreduce-examples.jar file comes with the HDInsight cluster distribution. There are two arguments for the MapReduce job. The first one is the source file name, and the second is the output file path. The source file comes with the HDInsight cluster distribution, and the output file path will be created at the run-time.
+6.  运行以下命令来打印 MapReduce 作业输出文件：
 
-6. Run the following command to submit the MapReduce job:
+        cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
 
-		# Submit the job
-		Select-AzureSubscription $subscriptionName
-		$wordCountJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $wordCountJobDefinition 
-		
-	In addition to the MapReduce job definition, you must also provide the HDInsight cluster name where you want to run the MapReduce job. 
+    ![HDI.GettingStarted.MRJobOutput][]
 
-	The *Start-AzureHDInsightJob* is an asynchroized call.  To check the completion of the job, use the *Wait-AzureHDInsightJob* cmdlet.
+    MapReduce 作业将生成一个名为 part-r-00000** 的文件，其中包含单词和计数。此脚本使用 findstr 命令来列出包含“there”**的所有单词。
 
-6. Run the following command to check the completion of the MapReduce job:
+> [WACOM.NOTE] 如果你在记事本中打开 *./example/data/WordCountOutput/part-r-00000*（MapReduce 作业的多行输出），将会注意到断行未正确呈现。这是正常情况。
 
-		Wait-AzureHDInsightJob -Job $wordCountJob -WaitTimeoutInSeconds 3600 
-		
-8. Run the following command to check any errors with running the MapReduce job:	
-	
-		# Get the job output
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $wordCountJob.JobId -StandardError
-		
-	The following screenshot shows the output of a successful run. Otherwise, you will see some error messages.
+## 连接到 Microsoft 商业智能工具
 
-	![HDI.GettingStarted.RunMRJob][image-hdi-gettingstarted-runmrjob]
+可以使用用于 Excel 的 Power Query 外接程序将 HDInsight 的输出导出到 Excel 中，在 Excel 中可以使用 Microsoft 商业智能 (BI) 工具进一步处理或显示结果。
 
+要完成本部分教程，必须已安装 Excel 2010 或 2013。这里我们将导入在 HDInsight 中随附的默认 Hive 表。
 
+**下载 Microsoft PowerQuery for Excel**
 
+-   从 [Microsoft 下载中心][]下载 Microsoft Power Query for Excel 并安装它。
 
+**导入 HDInsight 数据**
 
+1.  打开 Excel，然后创建一个新的空白工作簿。
+2.  依次单击“Power Query” 菜单、“从其他源” 和“从 Azure HDInsight” 。
 
+    ![HDI.GettingStarted.PowerQuery.ImportData][]
 
+3.  输入与你的群集关联的 Azure Blob 存储帐户的**帐户名称**，然后单击“确定” 。这是先前在教程中创建的存储帐户。
+4.  输入 Azure Blob 存储帐户的**帐户密钥**，然后单击“保存” 。
+5.  在右侧的“导航器”窗格中，双击 Blob 存储容器名称。默认情况下，该容器名称与群集名称相同。
 
+6.  在“名称”列 中找到 **part-r-00000**（路径是 *.../example/data/WordCountOutput*），然后单击 **part-r-00000** 左侧的“二进制” 。
 
+    ![HDI.GettingStarted.PowerQuery.ImportData2][]
 
+7.  右键单击“Column1.1” ，然后选择“重命名” 。
+8.  将名称更改为“Word” 。
+9.  重复该过程以便将“Column1.2” 重命名为“Count” 。
 
+    ![HDI.GettingStarted.PowerQuery.ImportData3][]
 
+10. 单击左上角的“应用并关闭” 。然后，该查询将单词计数 MapReduce 作业输出导入到 Excel 中。
 
+## 后续步骤
 
+在本教程中，你已了解了如何使用 HDInsight 设置群集、如何对其运行 MapReduce 作业，以及如何将结果导入到 Excel 中，在 Excel 中，可以使用 BI 工具进一步处理结果以及以图形方式显示结果。若要了解更多信息，请参阅下列文章：
 
+-   [HDInsight 入门][开始使用 Azure HDInsight]
+-   [HDInsight Emulator 入门][]
+-   [将 Azure Blob 存储与 HDInsight 配合使用][]
+-   [使用 PowerShell 管理 HDInsight][]
+-   [将数据上载到 HDInsight][]
+-   [将 Hive 与 HDInsight 配合使用][]
+-   [将 Pig 与 HDInsight 配合使用][]
+-   [将 Oozie 与 HDInsight 配合使用][]
+-   [为 HDInsight 开发 C\# Hadoop 流 MapReduce 程序][]
+-   [为 HDInsight 开发 Java MapReduce 程序][]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-**To retrieve the results of the MapReduce job**
-
-1. Open **Azure PowerShell**.
-2. Run the following commands to create a C:\Tutorials folder, and change directory to the folder:
-
-		mkdir \Tutorials
-		cd \Tutorials
-	
-	The default Azure Powershell directory is *C:\Windows\System32\WindowsPowerShell\v1.0*. By default, you don't have the write permission on this folder. You must change directory to a folder where you have write permission.
-	
-2. Set the three variables in the following commands, and then run them:
-
-		$subscriptionName = "<SubscriptionName>"       
-		$storageAccountName = "<StorageAccountName>"   
-		$containerName = "<ContainerName>"			   
-
-	The Azure Storage account is the one you created earlier in the tutorial. The storage account is used to host the Blob container that is used as the default HDInsight cluster file system.  The Blob storage container name usually share the same name as the HDInsight cluster unless you specify a different name when you provision the cluster.
-
-3. Run the following commands to create an Azure storage context object:
-		
-		# Create the storage account context object
-		Select-AzureSubscription $subscriptionName
-		$storageAccountKey = Get-AzureStorageKey $storageAccountName | %{ $_.Primary }
-		$storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
-
-	The *Select-AzureSubscription* is used to set the current subscription in case you have multiple subscriptions, and the default subscription is not the one to use. 
-
-4. Run the following command to download the MapReduce job output from the Blob container to the workstation:
-
-		# Download the job output to the workstation
-		Get-AzureStorageBlobContent -Container $ContainerName -Blob example/data/WordCountOutput/part-r-00000 -Context $storageContext -Force
-
-	The *example/data/WordCountOutput* folder is the output folder specified when you run the MapReduce job. *part-r-00000* is the default file name for MapReduce job output.  The file will be download to the same folder structure on the local folder. For example, in the following screenshot, the current folder is the C root folder. The file will be downloaded to the *C:\example\data\WordCountOutput&#92;* folder.
-
-5. Run the following command to print the MapReduce job output file:
-
-		cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
-
-	![HDI.GettingStarted.MRJobOutput][image-hdi-gettingstarted-mrjoboutput]
-
-	The MapReduce job produces a file named *part-r-00000* with the words and the counts.  The script uses the findstr command to list all of the words that contains *"there"*.
-
-
-> [WACN.NOTE] If you open <i>./example/data/WordCountOutput/part-r-00000</i>, a multi-line output from a MapReduce job, in Notepad, you will notice the line breaks are not renter correctly. This is expected.
-
-
-	
-##<a name="powerquery"></a>Connect to Microsoft business intelligence tools 
-
-The Power Query add-in for Excel can be used to export output from HDInsight into Excel where Microsoft Business Intelligence (BI) tools can be used to further process or display the results. 
-
-You must have Excel 2010 or 2013 installed to complete this part of the tutorial. Here we will import the default Hive table that ships in HDInsight.
-
-**To download Microsoft PowerQuery for Excel**
-
-- Download Microsoft Power Query for Excel from the [Microsoft Download Center](http://www.microsoft.com/zh-cn/download/details.aspx?id=39379) and install it.
-
-**To import HDInsight data**
-
-1. Open Excel, and create a new blank workbook.
-3. Click the **Power Query** menu, click **From Other Sources**, and then click **From Azure HDInsight**.
-
-	![HDI.GettingStarted.PowerQuery.ImportData][image-hdi-gettingstarted-powerquery-importdata]
-
-3. Enter the **Account Name** of the Azure Blob Storage Account associated with your cluster, and then click **OK**. This is the storage account you created earlier in the tutorial.
-4. Enter the **Account Key** for the Azure Blob Storage Account, and then click **Save**. 
-5. In the Navigator pane on the right, double-click the Blob storage container name. By default the container name is the same name as the cluster name. 
-
-6. Locate **part-r-00000** in the **Name** column (the path is *.../example/data/WordCountOutput*), and then click **Binary** on the left of **part-r-00000**.
-
-	![HDI.GettingStarted.PowerQuery.ImportData2][image-hdi-gettingstarted-powerquery-importdata2]
-
-8. Right-click **Column1.1**, and then select **Rename**.
-9. Change the name to **Word**.
-10. Repeat the process to rename **Column1.2** to **Count**.
-
-	![HDI.GettingStarted.PowerQuery.ImportData3][image-hdi-gettingstarted-powerquery-importdata3]
-
-9. Click **Apply & Close** in the upper left corner. The query then imports the word counting MapReduce job output into Excel.
-
-##<a name="nextsteps"></a>Next steps
-In this tutorial, you have learned how to provision a cluster with HDInsight, run a MapReduce job on it, and import the results into Excel where they can be further processed and graphically displayed using BI tools. To learn more, see the following articles:
-
-- [Get started with HDInsight][hdinsight-get-started]
-- [Get started with the HDInsight Emulator][hdinsight-emulator]
-- [Use Azure Blob storage with HDInsight][hdinsight-storage]
-- [Administer HDInsight using PowerShell][hdinsight-admin-powershell]
-- [Upload data to HDInsight][hdinsight-upload-data]
-- [Use Hive with HDInsight][hdinsight-hive]
-- [Use Pig with HDInsight][hdinsight-pig]
-- [Use Oozie with HDInsight][hdinsight-oozie]
-- [Develop C# Hadoop streaming MapReduce programs for HDInsight][hdinsight-develop-streaming]
-- [Develop Java MapReduce programs for HDInsight][hdinsight-develop-mapreduce]
-
-
-[hdinsight-get-started]: /en-us/documentation/articles/hdinsight-get-started/
-[hdinsight-get-started-3.0]: /en-us/documentation/articles/hdinsight-get-started-30/
-[hdinsight-provision]: /en-us/documentation/articles/hdinsight-provision-clusters/
-[hdinsight-admin-powershell]: /en-us/documentation/articles/hdinsight-administer-use-powershell/
-[hdinsight-upload-data]: /en-us/documentation/articles/hdinsight-upload-data/
-[hdinsight-mapreduce]: /en-us/documentation/articles/hdinsight-use-mapreduce
-[hdinsight-hive]: /en-us/documentation/articles/hdinsight-use-hive/
-[hdinsight-pig]: /en-us/documentation/articles/hdinsight-use-pig/
-[hdinsight-oozie]: /en-us/documentation/articles/hdinsight-use-oozie/
-[hdinsight-storage]: /en-us/documentation/articles/hdinsight-use-blob-storage/
-[hdinsight-emulator]: /en-us/documentation/articles/hdinsight-get-started-emulator/
-[hdinsight-develop-streaming]: /en-us/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
-[hdinsight-develop-mapreduce]: /en-us/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
-[hdinsight-admin-portal]: /en-us/documentation/articles/hdinsight-administer-use-management-portal/
-[hdinsight-develop-streaming]: /en-us/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
-
-[azure-purchase-options]: http://www.windowsazure.cn/zh-cn/pricing/overview/
-
-<!--
-[azure-member-offers]: https://www.windowsazure.com/en-us/pricing/member-offers/
--->
-
-[azure-free-trial]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
-[azure-management-portal]: https://manage.windowsazure.cn/
-[azure-create-storageaccount]: /en-us/documentation/articles/storage-create-storage-account/ 
-
-[apache-hadoop]: http://hadoop.apache.org/
-
-[powershell-download]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[powershell-install-configure]: /en-us/documentation/articles/install-configure-powershell/
-[powershell-open]: /en-us/documentation/articles/install-configure-powershell/#install
-
-[image-hdi-storageaccount-quickcreate]: ./media/hdinsight-get-started-3.0/HDI.StorageAccount.QuickCreate.png
-[image-hdi-clusterstatus]: ./media/hdinsight-get-started-3.0/HDI.ClusterStatus.png
-[image-hdi-customcreatecluster]: ./media/hdinsight-get-started-3.0/HDI.CustomCreateCluster.png
-[image-hdi-wordcountdiagram]: ./media/hdinsight-get-started-3.0/HDI.WordCountDiagram.gif
-[image-hdi-gettingstarted-mrjoboutput]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.MRJobOutput.png
-[image-hdi-gettingstarted-runmrjob]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.RunMRJob.png
-[image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.PowerQuery.ImportData.png
-[image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.PowerQuery.ImportData2.png
-[image-hdi-gettingstarted-powerquery-importdata3]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.PowerQuery.ImportData3.png
+  [Apache Hadoop]: http://hadoop.apache.org/
+  [开始使用 Azure HDInsight]: /en-us/documentation/articles/hdinsight-get-started/
+  [HDInsight Emulator 入门]: /en-us/documentation/articles/hdinsight-get-started-emulator/
+  [购买选项]: http://www.windowsazure.cn/zh-cn/pricing/overview/
+  [免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
+  [为运行的 PowerShell 设置本地环境]: #setup
+  [设置 HDInsight 群集]: #provision
+  [运行 WordCount MapReduce 程序]: #sample
+  [连接到 Microsoft 商业智能工具]: #powerquery
+  [后续步骤]: #nextsteps
+  [Microsoft Web 平台安装程序]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
+  [安装和配置 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/
+  [如何：安装 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/#install
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  [HDI.StorageAccount.QuickCreate]: ./media/hdinsight-get-started-3.0/HDI.StorageAccount.QuickCreate.png
+  [如何创建存储帐户]: /en-us/documentation/articles/storage-create-storage-account/
+  [将 Azure Blob 存储与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-blob-storage/
+  [HDI.ClusterStatus]: ./media/hdinsight-get-started-3.0/HDI.ClusterStatus.png
+  [HDI.CustomCreateCluster]: ./media/hdinsight-get-started-3.0/HDI.CustomCreateCluster.png
+  [使用管理门户管理 HDInsight]: /en-us/documentation/articles/hdinsight-administer-use-management-portal/
+  [为 HDInsight 开发 Java MapReduce 程序]: /en-us/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
+  [将数据上载到 HDInsight]: /en-us/documentation/articles/hdinsight-upload-data/
+  [HDI.GettingStarted.RunMRJob]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.RunMRJob.png
+  [HDI.GettingStarted.MRJobOutput]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.MRJobOutput.png
+  [Microsoft 下载中心]: http://www.microsoft.com/zh-cn/download/details.aspx?id=39379
+  [HDI.GettingStarted.PowerQuery.ImportData]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.PowerQuery.ImportData.png
+  [HDI.GettingStarted.PowerQuery.ImportData2]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.PowerQuery.ImportData2.png
+  [HDI.GettingStarted.PowerQuery.ImportData3]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.PowerQuery.ImportData3.png
+  [使用 PowerShell 管理 HDInsight]: /en-us/documentation/articles/hdinsight-administer-use-powershell/
+  [将 Hive 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-hive/
+  [将 Pig 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-pig/
+  [将 Oozie 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-oozie/
+  [为 HDInsight 开发 C\# Hadoop 流 MapReduce 程序]: /en-us/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/

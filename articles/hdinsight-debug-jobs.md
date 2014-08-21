@@ -1,263 +1,344 @@
 <properties linkid="manage-services-hdinsight-debug-error-messages" urlDisplayName="Debug HDInsight Errors" pageTitle="Debug HDInsight: Error messages | Azure" metaKeywords="dinsight, hdinsight service, hdinsight azure, debug, error messages, errors" description="Learn about the error messages you might receive when administering HDInsight using PowerShell, and steps you can take to recover." services="hdinsight" title="Debug HDInsight: Error messages" umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" authors="bradsev" />
 
-# Debug HDInsight: Error messages
-
-##Introduction
-The error messages itemized in this topic are provided to help the users of Azure HDInsight understand possible error conditions that they can encounter when administering the service using Azure PowerShell and to advise them on the steps which can be taken to recover from the error. 
-
-Some of these error mssages could also be seen in the Azure portal when used manage HDinsight clusters. But other error messages you might encounter there are less granular due to the constraints on the remedial actions possible in this context. Other error messages are provided in the contexts where the mitigation is obvious. If the constraints on paramters are violated, for example, the message pops-up in on the right side of the box where the value was entered. Here is a case where too many data nodes have been requested. The remedy is to reduce the number to an allowed value that is 22 or less.
-
-![HDI.Debugging.ErrorMessages.Portal][image-hdi-debugging-error-messages-portal]
-
-The errors a user can encounter in Azure PowerShell or in the Azure Portal are listed alphabetically by name in the [HDInsight Errors](#hdinsight-error-messages) section where they are linked to an entry in the [Discription and Mitigation of Errors](#discription-mitigation-errors) section that provide the following infomation for the error:
- 	
-- **Description**: the error message users see	
-- **Mitigation**: what steps can be taken to recover from the error. 
-
-###HDInsight Errors
-
-[AtleastOneSqlMetastoreMustBeProvided](#AtleastOneSqlMetastoreMustBeProvided)	
-[AzureRegionNotSupported](#AzureRegionNotSupported)		
-[ClusterContainerRecordNotFound](#ClusterContainerRecordNotFound)	 
-[ClusterDnsNameInvalidReservedWord](#ClusterDnsNameInvalidReservedWord)		
-[ClusterNameUnavailable](#ClusterNameUnavailable)	
-[ClusterUserNameInvalid](#ClusterUserNameInvalid)	
-[ClusterUserNameInvalidReservedWord](#ClusterUserNameInvalidReservedWord)	
-[ContainerNameMisMatchWithDnsName](#ContainerNameMisMatchWithDnsName)	
-[DataNodeDefinitionNotFound](#DataNodeDefinitionNotFound)	
-[DeploymentDeletionFailure](#DeploymentDeletionFailure)	
-[DnsMappingNotFound](#DnsMappingNotFound)	
-[DuplicateClusterContainerRequest](#DuplicateClusterContainerRequest)	
-[DuplicateClusterInHostedService](#DuplicateClusterInHostedService)		
-[FailureToUpdateDeploymentStatus](#FailureToUpdateDeploymentStatus)		
-[HdiRestoreClusterAltered](#HdiRestoreClusterAltered)	
-[HeadNodeConfigNotFound](#HeadNodeConfigNotFound)	
-[HeadNodeConfigNotFound](#HeadNodeConfigNotFound)	 
-[HostedServiceCreationFailure](#HostedServiceCreationFailure)	
-[HostedServiceHasProductionDeployment](#HostedServiceHasProductionDeployment)	
-[HostedServiceNotFound](#HostedServiceNotFound)		
-[HostedServiceWithNoDeployment](#HostedServiceWithNoDeployment)		
-[InsufficientResourcesCores](#InsufficientResourcesCores)	
-[InsufficientResourcesHostedServices](#InsufficientResourcesHostedServices)		
-[InternalErrorRetryRequest](#InternalErrorRetryRequest)		
-[InvalidAzureStorageLocation](#InvalidAzureStorageLocation)		
-[InvalidNodeSizeForDataNode](#InvalidNodeSizeForDataNode)	
-[InvalidNodeSizeForHeadNode](#InvalidNodeSizeForHeadNode)	
-[InvalidRightsForDeploymentDeletion](#InvalidRightsForDeploymentDeletion)	
-[InvalidStorageAccountBlobContainerName](#InvalidStorageAccountBlobContainerName)	
-[InvalidStorageAccountConfigurationSecretKey](#InvalidStorageAccountConfigurationSecretKey)	
-[InvalidVersionHeaderFormat](#InvalidVersionHeaderFormat)	
-[MoreThanOneHeadNode](#MoreThanOneHeadNode)	
-[OperationTimedOutRetryRequest](#OperationTimedOutRetryRequest)	
-[ParameterNullOrEmpty](#ParameterNullOrEmpty)	
-[PreClusterCreationValidationFailure](#PreClusterCreationValidationFailure)	
-[RegionCapabilityNotAvailable](#RegionCapabilityNotAvailable)	
-[StorageAccountNotColocated](#StorageAccountNotColocated)	
-[SubscriptionIdNotActive](#SubscriptionIdNotActive)	
-[SubscriptionIdNotFound](#SubscriptionIdNotFound)	
-[UnableToResolveDNS](#UnableToResolveDNS)	
-[UnableToVerifyLocationOfResource](#UnableToVerifyLocationOfResource)	
-[VersionCapabilityNotAvailable](#VersionCapabilityNotAvailable)	
-[VersionNotSupported](#VersionNotSupported)	
-[VersionNotSupportedInRegion](#VersionNotSupportedInRegion)	
-[WasbAccountConfigNotFound](#WasbAccountConfigNotFound)	
-
-
-
-<h2><a id="discription-mitigation-errors"></a>Diagnosis and Mitigation of Errors</h2> 
-
-
-<h3><a id="AtleastOneSqlMetastoreMustBeProvided"></a>AtleastOneSqlMetastoreMustBeProvided</h3>
-- **Description**: Please provide Azure SQL database details for at least one component in order to use custom settings for Hive and Oozie metastores.   
-- **Mitigation**: The user needs to supply a valid SQL Azure metastore and retry the request.  
-
-<h3><a id="AzureRegionNotSupported"></a>AzureRegionNotSupported</h3>
-- **Description**: Could not create cluster in region *nameOfYourRegion*. Use a valid HDInsight region and retry request.   
-- **Mitigation**: Customer should create the cluster region that currently supports them: China East, China North.  
-
-<h3><a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound</h3>
-- **Description**: The server could not find the requested cluster record.  
-- **Mitigation**: Retry the operation. 
-
-<h3><a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord</h3>
-- **Description**: Cluster DNS name *yourDnsName* is invalid. Please ensure name starts and ends with alphanumeric and can only contain '-' special character  
-- **Mitigation**: Make sure that you have used a valid DNS name for your cluster that starts and ends with alphanumeric and contains no special characters other than the dash '-' and then retry the operation.
-
-<h3><a id="ClusterNameUnavailable"></a>ClusterNameUnavailable</h3>
-- **Description**: Cluster name *yourClusterName* is unavailable. Please pick another name.  
-- **Mitigation**: The user should specify a clustername that is unique and does not exist and retry. If the user is using the portal, the UI will notify them if a cluster name is already being used during the create steps. 
- 
-
-<h3><a id="ClusterPasswordInvalid"></a>ClusterPasswordInvalid</h3>
-- **Description**: Cluster password is invalid. Password must be at least 10 characters long and must contain at least one number, uppercase letter, lowercase letter and special character with no spaces and should not contain the username as part of it.  
-- **Mitigation**: Provide a valid cluster password and retry the operation.
-
-<h3><a id="ClusterUserNameInvalid"></a>ClusterUserNameInvalid</h3>
-- **Description**: Cluster username is invalid. Please ensure username doesn't contain special characters or spaces.  
-- **Mitigation**: Provide a valid cluster username and retry the operation.
-
-<h3><a id="ClusterUserNameInvalidReservedWord"></a>ClusterUserNameInvalidReservedWord</h3>
-- **Description**: Cluster DNS name *yourDnsClusterName* is invalid. Please ensure name starts and ends with alphanumeric and can only contain '-' special character  
-- **Mitigation**: Provide a valid DNS cluster username and retry the operation.
-
-<h3><a id="ContainerNameMisMatchWithDnsName"></a>ContainerNameMisMatchWithDnsName</h3>
-- **Description**: Container name in URI *yourcontainerURI* and DNS name *yourDnsName* in request body must be the same.  
-- **Mitigation**: Make sure that your container Name and your DNS name are the same and retry the operation.
-
-<h3><a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound</h3>
-- **Description**: Invalid cluster configuration. Unable to find any data node definitions in node size.  
-- **Mitigation**: Retry the operation.
-
-<h3><a id="DeploymentDeletionFailure"></a>DeploymentDeletionFailure</h3> 	
-- **Description**: Deletion of deployment failed for the Cluster  
-- **Mitigation**: Retry the delete operation.
-
-<h3><a id="DnsMappingNotFound"></a>DnsMappingNotFound</h3> 
-- **Description**: Service configuration error. Required DNS mapping information not found.  
-- **Mitigation**: Delete cluster and create a new cluster.
-
-<h3><a id="DuplicateClusterContainerRequest"></a>DuplicateClusterContainerRequest</h3>
-- **Description**: Duplicate cluster container creation attempt. Record exists for *nameOfYourContainer* but Etags do not match.   
-- **Mitigation**: Provide a unique name for the container and retry the create operation. 
-
-<h3><a id="DuplicateClusterInHostedService"></a>DuplicateClusterInHostedService</h3>
-- **Description**: Hosted service *nameOfYourHostedService* already contains a cluster. A hosted service cannot contain multiple clusters  
-- **Mitigation**: Host the cluster in another hosted service. 
-
-<h3><a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus</h3>
-- **Description**: The server could not update the state of the cluster deployment.  
-- **Mitigation**: Retry the operation. If this happens multiple times, contact CSS. 
-
-<h3><a id="HdiRestoreClusterAltered"></a>HdiRestoreClusterAltered</h3>
-- **Description**: Cluster *yourClusterName* was deleted as part of maintenance. Please recreate the cluster.     
-- **Mitigation**: Recreate the cluster.
-
-<h3><a id="HeadNodeConfigNotFound"></a>HeadNodeConfigNotFound</h3>
-- **Description**: Invalid cluster configuration. Required head node configuration not found in node sizes.
-- **Mitigation**: Retry the operation.
-
-<h3><a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure</h3>
-- **Description**: Unable to create hosted service *nameOfYourHostedService*. Please retry request.  
-- **Mitigation**: Retry the request.
-
-<h3><a id="HostedServiceHasProductionDeployment"></a>HostedServiceHasProductionDeployment</h3>
-- **Description**: Hosted Service *nameOfYourHostedService* already has a production deployment. A hosted service cannot contain multiple production deployments. Retry the request with a different cluster name.   
-- **Mitigation**: Use a different cluster name and retry the request.
-
-<h3><a id="HostedServiceNotFound"></a>HostedServiceNotFound</h3>
-- **Description**: Hosted Service *nameOfYourHostedService* for the cluster could not be found.  
-- **Mitigation**: If the cluster is in error state, delete it and then try again. 
-
-<h3><a id="HostedServiceWithNoDeployment"></a>HostedServiceWithNoDeployment</h3>
-- **Description**: Hosted Service *nameOfYourHostedService* has no associated deployment.  
-- **Mitigation**: If the cluster is in error state, delete it and then try again. 
+# 调试 HDInsight：错误消息
+
+## 介绍
+
+本主题中列举的错误消息旨在帮助 Azure HDInsight 用户了解在使用 Azure PowerShell 管理服务时可能会遇到的错误情况，并向他们建议从错误中恢复时可以执行哪些步骤。
+
+其中某些错误消息也可以在使用 Azure 门户管理 HDinsight 群集时在该门户中看到。但是，由于在此上下文中针对可能的补救措施的约束，你可能会遇到的其他一些错误消息可能不是很精细。将在问题得到明显缓解的上下文中提供其他错误消息。例如，如果违反了针对参数的约束，将在输入了值的框的右侧弹出消息。这里是请求了过多的数据节点的情形。补救措施是将该数值减少到 22 或更小的允许值。
 
-<h3><a id="InsufficientResourcesCores"></a>InsufficientResourcesCores</h3>
-- **Description**: The SubscriptionId *yourSubscriptionId* does not have cores left to create cluster *yourClusterName*. Required: *resourcesRequired*, Available: *resourcesAvailable*.  
-- **Mitigation**: Free up resources in your subscription or increase the resources available to the subscription and try to create the cluster again.
+![HDI.Debugging.ErrorMessages.Portal][]
+
+用户在 Azure PowerShell 或 Azure 门户中可能会遇到的错误将在 [HDInsight 错误][]一节中按名称的字母顺序列出，在该节中，这些错误将链接到[错误描述和缓解][]一节中提供该错误的以下信息的相应条目：
 
-<h3><a id="InsufficientResourcesHostedServices"></a>InsufficientResourcesHostedServices</h3>
-- **Description**: Subscription ID *yourSubscriptionId* does not have quota for a new HostedService to create cluster *yourClusterName*.  
-- **Mitigation**: Free up resources in your subscription or increase the resources available to the subscription and try to create the cluster again.
+-   **描述**：用户看到的错误消息
+-   **缓解**：从错误中恢复时可以执行的步骤。
 
-<h3><a id="InternalErrorRetryRequest"></a>InternalErrorRetryRequest</h3>
-- **Description**: The server encountered an internal error. Please retry request.  
-- **Mitigation**: Retry the request. 
+### HDInsight 错误
 
-<h3><a id="InvalidAzureStorageLocation"></a>InvalidAzureStorageLocation</h3>
-- **Description**: Azure Storage location *dataRegionName* is not a valid location. Make sure the region is correct and retry request.   
-- **Mitigation**: Select a Storage location that supports HDInsight, check that your cluster is co-located and retry the operation. 
+[AtleastOneSqlMetastoreMustBeProvided][]
+[AzureRegionNotSupported][]
+[ClusterContainerRecordNotFound][]
+[ClusterDnsNameInvalidReservedWord][]
+[ClusterNameUnavailable][]
+[ClusterUserNameInvalid][]
+[ClusterUserNameInvalidReservedWord][]
+[ContainerNameMisMatchWithDnsName][]
+[DataNodeDefinitionNotFound][]
+[DeploymentDeletionFailure][]
+[DnsMappingNotFound][]
+[DuplicateClusterContainerRequest][]
+[DuplicateClusterInHostedService][]
+[FailureToUpdateDeploymentStatus][]
+[HdiRestoreClusterAltered][]
+[HeadNodeConfigNotFound][]
+[HeadNodeConfigNotFound][]
+[HostedServiceCreationFailure][]
+[HostedServiceHasProductionDeployment][]
+[HostedServiceNotFound][]
+[HostedServiceWithNoDeployment][]
+[InsufficientResourcesCores][]
+[InsufficientResourcesHostedServices][]
+[InternalErrorRetryRequest][]
+[InvalidAzureStorageLocation][]
+[InvalidNodeSizeForDataNode][]
+[InvalidNodeSizeForHeadNode][]
+[InvalidRightsForDeploymentDeletion][]
+[InvalidStorageAccountBlobContainerName][]
+[InvalidStorageAccountConfigurationSecretKey][]
+[InvalidVersionHeaderFormat][]
+[MoreThanOneHeadNode][]
+[OperationTimedOutRetryRequest][]
+[ParameterNullOrEmpty][]
+[PreClusterCreationValidationFailure][]
+[RegionCapabilityNotAvailable][]
+[StorageAccountNotColocated][]
+[SubscriptionIdNotActive][]
+[SubscriptionIdNotFound][]
+[UnableToResolveDNS][]
+[UnableToVerifyLocationOfResource][]
+[VersionCapabilityNotAvailable][]
+[VersionNotSupported][]
+[VersionNotSupportedInRegion][]
+[WasbAccountConfigNotFound][]
 
-<h3><a id="InvalidNodeSizeForDataNode"></a>InvalidNodeSizeForDataNode</h3>
-- **Description**: Invalid VM size for data nodes. Only 'Large VM' size is supported for all data nodes.  
-- **Mitigation**: Specify the supported node size for the data node and retry the operation. 
+## 错误的诊断和缓解
 
-<h3><a id="InvalidNodeSizeForHeadNode"></a>InvalidNodeSizeForHeadNode</h3>
-- **Description**: Invalid VM size for head node. Only 'ExtraLarge VM' size is supported for head node.  
-- **Mitigation**: Specify the supported node size for the head node and retry the operation
+### AtleastOneSqlMetastoreMustBeProvided
 
-<h3><a id="InvalidRightsForDeploymentDeletion"></a>InvalidRightsForDeploymentDeletion</h3>
-- **Description**: Subscription ID *yourSubscriptionId* being used does not have sufficient permissions to execute delete operation for cluster *yourClusterName*.  
-- **Mitigation**: If the cluster is in error state, drop it and then try again.  
+-   **描述**：请至少为一个组件提供 Azure SQL Database 以便对配置单元和 Oozie 元存储使用自定义设置。
+-   **缓解**：用户需要提供有效的 SQL Azure 元存储，然后重试该请求。
 
-<h3><a id="InvalidStorageAccountBlobContainerName"></a>InvalidStorageAccountBlobContainerName</h3>
-- **Description**: External storage account blob container name *yourContainerName* is invalid. Make sure name starts with a letter and contains only lowercase letters, numbers and dash.  
-- **Mitigation**: Specify a valid storage account blob container name and retry the operation.
+### AzureRegionNotSupported
 
-<h3><a id="InvalidStorageAccountConfigurationSecretKey"></a>InvalidStorageAccountConfigurationSecretKey</h3>
-- **Description**: Configuration for external storage account *yourStorageAccountName* is required to have secret key details to be set.  
-- **Mitigation**: Specify a valid secret key for the storage account and retry the operation.
+-   **描述**：无法在区域 *nameOfYourRegion* 中创建群集。使用有效的 HDInsight 区域并且重试请求。
+-   **缓解**：用户应该创建当前支持它们的群集区域：中国东部、中国北部。
 
-<h3><a id="InvalidVersionHeaderFormat"></a>InvalidVersionHeaderFormat</h3>
-- **Description**: Version header *yourVersionHeader* is not in valid format of yyyy-mm-dd.  
-- **Mitigation**: Specify a valid format for the version-header and retry the request. 
+### ClusterContainerRecordNotFound
 
-<h3><a id="MoreThanOneHeadNode"></a>MoreThanOneHeadNode</h3>
-- **Description**: Invalid cluster configuration. Found more than one head node configuration.  
-- **Mitigation**: Edit the configuration so that only one head node is specified.
+-   **描述**：服务器无法找到请求的群集记录。
+-   **缓解**：重试操作。
 
-<h3><a id="OperationTimedOutRetryRequest"></a>OperationTimedOutRetryRequest</h3>
-- **Description**: The operation could not be completed within the permitted time or the maximum retry attempts possible. Please retry request.  
-- **Mitigation**: Retry the request. 
+### ClusterDnsNameInvalidReservedWord
 
-<h3><a id="ParameterNullOrEmpty"></a>ParameterNullOrEmpty</h3>
-- **Description**: Parameter *yourParameterName* cannot be null or empty.  
-- **Mitigation**: Specify a valid value for the parameter. 
+-   **描述**：群集 DNS 名称 *yourDnsName* 无效。请确保名称以字母数字开头和结尾，并且只能包含“-”特殊符号
+-   **缓解**：确保你已将有效的 DNS 名称用于群集，该名称以字母数字开头和结尾，并且不包含除了短划线“-”之外的任何特殊字符，然后重试操作。
 
-<h3><a id="PreClusterCreationValidationFailure"></a>PreClusterCreationValidationFailure</h3>
-- **Description**: One or more of the cluster creation request inputs is not valid. Make sure the input values are correct and retry request.  
-- **Mitigation**: Make sure the input values are correct and retry request. 
+### ClusterNameUnavailable
 
-<h3><a id="RegionCapabilityNotAvailable"></a>RegionCapabilityNotAvailable</h3>
-- **Description**: Region capability not available for region *yourRegionName* and Subscription ID *yourSubscriptionId*.  
-- **Mitigation**: Specify a region that supports HDInsight clusters. The publicly supported regions are: China East and China North 
+-   **描述**：群集名称 *yourClusterName* 不可用。请选取另一个名称。
+-   **缓解**：用户应该指定唯一且不存在的群集名称，然后重试。如果用户正在使用门户，则 UI 将通知他们该群集名称是否已在创建步骤期间使用。
 
-<h3><a id="StorageAccountNotColocated"></a>StorageAccountNotColocated</h3>
-- **Description**: Storage account *yourStorageAccountName* is in region *currentRegionName*. It should be same as the cluster region *yourClusterRegionName*.  
-- **Mitigation**: Either specify a storage account in the same region that your cluster is in or if your data is already in the storage account, create a new cluster in the same region as the existing storage account. If you are using the portal, the UI will notify them of this issue in advance. 
+### ClusterPasswordInvalid
 
-<h3><a id="SubscriptionIdNotActive"></a>SubscriptionIdNotActive</h3>
-- **Description**: Given Subscription ID *yourSubscriptionId* is not active.  
-- **Mitigation**: Re-activate your subscription or get a new valid subscription.
+-   **描述**：群集密码无效。密码的长度必须至少为 10 个字符，并且必须包含至少一个数字、大写字母、小写字母和特殊字符且没有空格，不应包含用户名作为密码的一部分。
+-   **缓解**：提供有效的群集密码，然后重试操作。
 
-<h3><a id="SubscriptionIdNotFound"></a>SubscriptionIdNotFound</h3>
-- **Description**: Subscription ID *yourSubscriptionId* could not be found.  
-- **Mitigation**: Check that your subscription ID is valid and retry the operation. 
+### ClusterUserNameInvalid
 
-<h3><a id="UnableToResolveDNS"></a>UnableToResolveDNS</h3>
-- **Description**: Unable to resolve DNS *yourDnsUrl*. Please ensure the fully qualified URL for the blob endpoint is provided.  
-- **Mitigation**: Supply a valid blob URL. The URL MUST be fully valid, including starting with *http://* and ending in *.cn*. The fully qualified URL can usually be found in the storage tab of the manage.windowsazure.cn portal.
+-   **描述**：群集用户名无效。请确保用户名不包含特殊字符或空格。
+-   **缓解**：提供有效的群集用户名，然后重试操作。
 
-<h3><a id="UnableToVerifyLocationOfResource"></a>UnableToVerifyLocationOfResource</h3>
-- **Description**: Unable to verify location of resource *yourDnsUrl*. Please ensure the fully qualified URL for the blob endpoint is provided.  
-- **Mitigation**: Supply a valid blob URL. The URL MUST be fully valid, including starting with *http://* and ending in *.cn*. The fully qualified URL can usually be found in the storage tab of the manage.windowsazure.cn portal.
+### ClusterUserNameInvalidReservedWord
 
-<h3><a id="VersionCapabilityNotAvailable"></a>VersionCapabilityNotAvailable</h3>
-- **Description**: Version capability not available for version *specifiedVersion* and Subscription ID *yourSubscriptionId*.  
-- **Mitigation**: Choose a version that is available and retry the operation. 
+-   **描述**：群集 DNS 名称 *yourDnsClusterName* 无效。请确保名称以字母数字开头和结尾，并且只能包含“-”特殊符号
+-   **缓解**：提供有效的 DNS 群集用户名，然后重试操作。
 
-<h3><a id="VersionNotSupported"></a>VersionNotSupported</h3>
-- **Description**: Version *specifiedVersion* not supported.   
-- **Mitigation**: Choose a version that is supported and retry the operation.
+### ContainerNameMisMatchWithDnsName
 
-<h3><a id="VersionNotSupportedInRegion"></a>VersionNotSupportedInRegion</h3>
-- **Description**: Version *specifiedVersion* is not available in Azure region *specifiedRegion*.  
-- **Mitigation**: Choose a version that is supported in the region specified and retry the operation. 
+-   **描述**：URI *yourcontainerURI* 中的容器名称和请求正文中的 DNS 名称 *yourDnsName* 必须相同。
+-   **缓解**：确保容器名称和 DNS 名称相同，然后重试操作。
 
-<h3><a id="WasbAccountConfigNotFound"></a>WasbAccountConfigNotFound</h3>
-- **Description**: Invalid cluster configuration. Required WASB account configuration not found in external accounts.  
-- **Mitigation**: Verify that the account exists and is properly specified in configuration and retry the operation. 
+### DataNodeDefinitionNotFound
 
-<h2><a id="resources"></a>Additional Debugging Resources</h2> 
+-   **描述**：无效的群集配置。在节点大小中找不到任何数据节点定义。
+-   **缓解**：重试操作。
 
-* [Azure HDInsight SDK documentation][hdinsight-sdk-documentation]
+### DeploymentDeletionFailure
 
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/en-us/library/dn479185.aspx
+-   **描述**：针对群集的部署删除失败
+-   **缓解**：重试删除操作。
 
-[image-hdi-debugging-error-messages-portal]: ./media/hdinsight-debug-jobs/hdi-debug-errormessages-portal.png
+### DnsMappingNotFound
 
+-   **描述**：服务配置错误。未找到请求的 DNS 映射信息。
+-   **缓解**：删除群集，然后创建一个新群集。
 
+### DuplicateClusterContainerRequest
 
+-   **描述**：重复群集容器创建尝试。存在针对 *nameOfYourContainer* 的记录，但 Etags 不匹配。
+-   **缓解**：为容器提供唯一名称，然后重试创建操作。
 
+### DuplicateClusterInHostedService
 
+-   **描述**：托管服务 *nameOfYourHostedService* 已包含群集。托管服务不能包含多个群集
+-   **缓解**：在其他托管服务中托管群集。
 
+### FailureToUpdateDeploymentStatus
+
+-   **描述**：服务器无法更新群集部署的状态。
+-   **缓解**：重试操作。如果此情况多次发生，请与 CSS 联系。
+
+### HdiRestoreClusterAltered
+
+-   **描述**：作为维护的一部分删除了群集 *yourClusterName*。请重新创建群集。
+-   **缓解**：重新创建群集。
+
+### HeadNodeConfigNotFound
+
+-   **描述**：无效的群集配置。在节点大小中找不到所需头节点配置。
+-   **缓解**：重试操作。
+
+### HostedServiceCreationFailure
+
+-   **描述**：无法创建托管服务 *nameOfYourHostedService*。请重试请求。
+-   **缓解**：重试请求。
+
+### HostedServiceHasProductionDeployment
+
+-   **描述**：托管服务 *nameOfYourHostedService* 已有生产部署。托管服务不能包含多个生产部署。请使用不同的群集名称重试请求。
+-   **缓解**：使用不同的群集名称重试请求。
+
+### HostedServiceNotFound
+
+-   **描述**：无法找到群集的托管服务 *nameOfYourHostedService*。
+-   **缓解**：如果该群集处于错误状态，则删除该群集，然后重试。
+
+### HostedServiceWithNoDeployment
+
+-   **描述**：托管服务 *nameOfYourHostedService* 没有关联的部署。
+-   **缓解**：如果该群集处于错误状态，则删除该群集，然后重试。
+
+### InsufficientResourcesCores
+
+-   **描述**：SubscriptionId *yourSubscriptionId* 没有可供创建群集 *yourClusterName* 的内核。需要的功能:*resourcesRequired*，可用：*resourcesAvailable*。
+-   **缓解**：释放你的订阅中的资源或者增加可用于订阅的资源，然后尝试再次创建群集。
+
+### InsufficientResourcesHostedServices
+
+-   **描述**：订阅 ID *yourSubscriptionId* 没有用于新 HostedService 的配额以便创建群集 *yourClusterName*。
+-   **缓解**：释放你的订阅中的资源或者增加可用于订阅的资源，然后尝试再次创建群集。
+
+### InternalErrorRetryRequest
+
+-   **描述**：服务器遇到内部错误。请重试请求。
+-   **缓解**：重试请求。
+
+### InvalidAzureStorageLocation
+
+-   **描述**：Azure 存储位置 *dataRegionName* 不是有效位置。请确保区域正确并重试请求。
+-   **缓解**：选择支持 HDInsight 的存储位置，检查你的群集是否是共置的，然后重试操作。
+
+### InvalidNodeSizeForDataNode
+
+-   **描述**：数据节点的 VM 大小无效。所有数据节点仅支持“大型 VM”大小。
+-   **缓解**：指定数据节点支持的节点大小，然后重试操作。
+
+### InvalidNodeSizeForHeadNode
+
+-   **描述**：头节点的 VM 大小无效。头节点仅支持“特大型 VM”大小。
+-   **缓解**：为头节点指定支持的节点大小，然后重试操作
+
+### InvalidRightsForDeploymentDeletion
+
+-   **描述**：要使用的订阅 ID *yourSubscriptionId* 没有对群集 *yourClusterName* 执行删除操作所需的足够权限。
+-   **缓解**：如果该群集处于错误状态，则删除该群集，然后重试。
+
+### InvalidStorageAccountBlobContainerName
+
+-   **描述**：外部存储帐户 Blob 容器名称 *yourContainerName* 无效。请确保名称以字母开头，并且仅包含小写字母、数字和短划线。
+-   **缓解**：指定有效的存储帐户 Blob 容器名称，然后重试操作。
+
+### InvalidStorageAccountConfigurationSecretKey
+
+-   **描述**：针对外部存储帐户 *yourStorageAccountName* 的配置需要设置密钥详细信息。
+-   **缓解**：为存储帐户指定有效密钥，然后重试操作。
+
+### InvalidVersionHeaderFormat
+
+-   **描述**：版本标头 *yourVersionHeader* 的格式不是有效的 yyyy-mm-dd 格式。
+-   **缓解**：为版本标头指定有效格式，然后重试请求。
+
+### MoreThanOneHeadNode
+
+-   **描述**：无效的群集配置。找到了多个头节点配置。
+-   **缓解**：对配置进行编辑，以便仅指定一个头节点。
+
+### OperationTimedOutRetryRequest
+
+-   **描述**：无法在允许的时间内或可能的最大重试尝试次数内完成该操作。请重试请求。
+-   **缓解**：重试请求。
+
+### ParameterNullOrEmpty
+
+-   **描述**：参数 *yourParameterName* 不能为 Null 或为空。
+-   **缓解**：为该参数指定有效值。
+
+### PreClusterCreationValidationFailure
+
+-   **描述**：一个或多个群集创建请求输入是无效的。请确保输入值正确，然后重试请求。
+-   **缓解**：请确保输入值正确，然后重试请求。
+
+### RegionCapabilityNotAvailable
+
+-   **描述**：区域容量不可用于 *yourRegionName* 和订阅 ID *yourSubscriptionId*。
+-   **缓解**：指定支持 HDInsight 群集的区域。公开支持的区域有：中国东部和中国北部
+
+### StorageAccountNotColocated
+
+-   **描述**：存储帐户 *yourStorageAccountName* 位于区域 *currentRegionName* 中。它应该与群集区域 *yourClusterRegionName* 相同。
+-   **缓解**：在与你的群集所在区域相同的区域中指定存储帐户；或者如果你的数据已处于该存储帐户中，则在与现有存储帐户相同的区域中创建新群集。如果你在使用门户，则 UI 将会事先通知存在此问题。
+
+### SubscriptionIdNotActive
+
+-   **描述**：给定的订阅 ID *yourSubscriptionId* 不是活动的。
+-   **缓解**：重新激活你的订阅，或者获取新的有效订阅。
+
+### SubscriptionIdNotFound
+
+-   **描述**：找不到订阅 ID *yourSubscriptionId*。
+-   **缓解**：检查你的订阅 ID 是否有效，然后重试操作。
+
+### UnableToResolveDNS
+
+-   **描述**：无法解析 DNS *yourDnsUrl*。请确保提供针对 Blob 终结点的完全限定 URL。
+-   **缓解**：提供有效的 Blob URL。该 URL 必须完全有效，包括以 *<http://>* 开头和以 *.cn* 结尾。通常可以在 manage.windowsazure.cn 门户的“存储”选项卡中找到该完全限定 URL。
+
+### UnableToVerifyLocationOfResource
+
+-   **描述**：无法验证资源 *yourDnsUrl* 的位置。请确保提供针对 Blob 终结点的完全限定 URL。
+-   **缓解**：提供有效的 Blob URL。该 URL 必须完全有效，包括以 *<http://>* 开头和以 *.cn* 结尾。通常可以在 manage.windowsazure.cn 门户的“存储”选项卡中找到该完全限定 URL。
+
+### VersionCapabilityNotAvailable
+
+-   **描述**：版本功能不可用于版本 *specifiedVersion* 和订阅 ID *yourSubscriptionId*。
+-   **缓解**：选择一个可用版本，然后重试操作。
+
+### VersionNotSupported
+
+-   **描述**：不受支持的版本 *specifiedVersion*。
+-   **缓解**：选择一个支持的版本，然后重试操作。
+
+### VersionNotSupportedInRegion
+
+-   **描述**：版本 *specifiedVersion* 在 Azure 区域 *specifiedRegion* 中不可用。
+-   **缓解**：选择一个在指定的区域中支持的版本，然后重试操作。
+
+### WasbAccountConfigNotFound
+
+-   **描述**：无效的群集配置。在外部帐户中找不到所需的 WASB 帐户配置。
+-   **缓解**：确认该帐户存在并且在配置中正确指定，然后重试操作。
+
+## 其他调试资源
+
+-   [Azure HDInsight SDK 文档][]
+
+  [HDI.Debugging.ErrorMessages.Portal]: ./media/hdinsight-debug-jobs/hdi-debug-errormessages-portal.png
+  [HDInsight 错误]: #hdinsight-error-messages
+  [错误描述和缓解]: #discription-mitigation-errors
+  [AtleastOneSqlMetastoreMustBeProvided]: #AtleastOneSqlMetastoreMustBeProvided
+  [AzureRegionNotSupported]: #AzureRegionNotSupported
+  [ClusterContainerRecordNotFound]: #ClusterContainerRecordNotFound
+  [ClusterDnsNameInvalidReservedWord]: #ClusterDnsNameInvalidReservedWord
+  [ClusterNameUnavailable]: #ClusterNameUnavailable
+  [ClusterUserNameInvalid]: #ClusterUserNameInvalid
+  [ClusterUserNameInvalidReservedWord]: #ClusterUserNameInvalidReservedWord
+  [ContainerNameMisMatchWithDnsName]: #ContainerNameMisMatchWithDnsName
+  [DataNodeDefinitionNotFound]: #DataNodeDefinitionNotFound
+  [DeploymentDeletionFailure]: #DeploymentDeletionFailure
+  [DnsMappingNotFound]: #DnsMappingNotFound
+  [DuplicateClusterContainerRequest]: #DuplicateClusterContainerRequest
+  [DuplicateClusterInHostedService]: #DuplicateClusterInHostedService
+  [FailureToUpdateDeploymentStatus]: #FailureToUpdateDeploymentStatus
+  [HdiRestoreClusterAltered]: #HdiRestoreClusterAltered
+  [HeadNodeConfigNotFound]: #HeadNodeConfigNotFound
+  [HostedServiceCreationFailure]: #HostedServiceCreationFailure
+  [HostedServiceHasProductionDeployment]: #HostedServiceHasProductionDeployment
+  [HostedServiceNotFound]: #HostedServiceNotFound
+  [HostedServiceWithNoDeployment]: #HostedServiceWithNoDeployment
+  [InsufficientResourcesCores]: #InsufficientResourcesCores
+  [InsufficientResourcesHostedServices]: #InsufficientResourcesHostedServices
+  [InternalErrorRetryRequest]: #InternalErrorRetryRequest
+  [InvalidAzureStorageLocation]: #InvalidAzureStorageLocation
+  [InvalidNodeSizeForDataNode]: #InvalidNodeSizeForDataNode
+  [InvalidNodeSizeForHeadNode]: #InvalidNodeSizeForHeadNode
+  [InvalidRightsForDeploymentDeletion]: #InvalidRightsForDeploymentDeletion
+  [InvalidStorageAccountBlobContainerName]: #InvalidStorageAccountBlobContainerName
+  [InvalidStorageAccountConfigurationSecretKey]: #InvalidStorageAccountConfigurationSecretKey
+  [InvalidVersionHeaderFormat]: #InvalidVersionHeaderFormat
+  [MoreThanOneHeadNode]: #MoreThanOneHeadNode
+  [OperationTimedOutRetryRequest]: #OperationTimedOutRetryRequest
+  [ParameterNullOrEmpty]: #ParameterNullOrEmpty
+  [PreClusterCreationValidationFailure]: #PreClusterCreationValidationFailure
+  [RegionCapabilityNotAvailable]: #RegionCapabilityNotAvailable
+  [StorageAccountNotColocated]: #StorageAccountNotColocated
+  [SubscriptionIdNotActive]: #SubscriptionIdNotActive
+  [SubscriptionIdNotFound]: #SubscriptionIdNotFound
+  [UnableToResolveDNS]: #UnableToResolveDNS
+  [UnableToVerifyLocationOfResource]: #UnableToVerifyLocationOfResource
+  [VersionCapabilityNotAvailable]: #VersionCapabilityNotAvailable
+  [VersionNotSupported]: #VersionNotSupported
+  [VersionNotSupportedInRegion]: #VersionNotSupportedInRegion
+  [WasbAccountConfigNotFound]: #WasbAccountConfigNotFound
+  [Azure HDInsight SDK 文档]: http://msdnstage.redmond.corp.microsoft.com/en-us/library/dn479185.aspx

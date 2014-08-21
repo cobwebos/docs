@@ -1,217 +1,212 @@
 <properties linkid="manage-services-hdinsight-howto-administer-hdinsight" urlDisplayName="Administration" pageTitle="Administer HDInsight clusters with Management Portal | Azure" metaKeywords="" description="Learn how to administer HDInsight Service. Create an HDInsight cluster, open the interactive JavaScript console, and open the Hadoop command console." metaCanonical="" services="hdinsight" documentationCenter="" title="Administer HDInsight clusters using Management Portal" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
+# 使用管理门户管理 HDInsight 群集
 
+使用 Azure 管理门户，可以设置 HDInsight 集群、更改 Hadoop 用户密码，以及启用 RDP 以访问群集上的 Hadoop 命令控制台。除了管理门户外，还有其他可用于管理 HDInsight 的工具。
 
-# Administer HDInsight clusters using Management Portal
+-   有关使用 Azure PowerShell 管理 HDInsight 的详细信息，请参阅[使用 PowerShell 管理 HDInsight][]。
 
-Using the Azure management portal, you can provision HDInsight clusters, change the Hadoop user password, and enable RDP so you can access the Hadoop command console on the cluster. There are also other tools available for administrating HDInsight in addition to the Management portal. 
+-   有关使用跨平台命令行工具管理 HDInsight 的详细信息，请参阅[使用跨平台命令行界面管理 HDInsight][]。
 
-- For more information on administering HDInsight using Azure PowerShell, see [Administer HDInsight Using PowerShell][hdinsight-admin-powershell].
+**先决条件：**
 
-- For more information on administering HDInsight using the Cross-platform Command-line Tools, see [Administer HDInsight Using Cross-platform Command-line Interface][hdinsight-admin-cross-platform]. 
+在开始阅读本文前，你必须具有：
 
-**Prerequisites:**
+-   **Azure 订阅**。Azure 是基于订阅的平台。有关获取订阅的信息，请参阅[购买选项][]、[成员优惠][购买选项]或[免费试用][]。
 
-Before you begin this article, you must have the following:
+## 本文内容
 
-- **Azure subscription**. Azure is a subscription-based platform. For information about obtaining a subscription, see [Purchase Options][azure-purchase-options], [Member Offers][azure-member-offers], or [Free Trial][azure-free-trial].
+-   [配置 HDInsight 群集][]
+-   [自定义 HDInsight 群集][]
+-   [更改 HDInsight 群集用户名和密码][]
+-   [使用 RDP 连接到 HDInsight 群集][]
+-   [授予/撤消 HTTP 服务访问权限][]
+-   [打开 Hadoop 命令控制台][]
+-   [后续步骤][]
 
+## 设置 HDInsight 群集
 
-##In this article
+有几种方法可创建 HDInsight 群集，本文只介绍如何使用 Azure 管理门户上的“快速创建”选项。有关其他选项，请参阅[设置 HDInsight 群集][]。
 
-* [Provision HDInsight clusters](#create)
-* [Customize HDInsight clusters](#customize)
-* [Change HDInsight cluster username and password](#password)
-* [Connect to HDInsight clusters using RDP](#rdp)
-* [Grant/revoke HTTP services access](#httpservice)
-* [Open Hadoop command console](#hadoopcmd)
-* [Next steps](#nextsteps)
+HDInsight 群集使用 Azure Blob 存储容器作为默认文件系统。有关 Azure Blob 存储如何提供与 HDInsight 群集的无缝体验的详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
 
-##<a id="create"></a> Provision HDInsight clusters
+必须在设置 HDInsight 群集的同一数据中心内创建 Azure 存储帐户。当前可以在五个数据中心内设置 HDInsight 群集：
 
-There are several methods for creating HDInsight clusters, this article only covers using the Quick Create option on Azure Management portal. For other options, see [Provision HDInsight clusters][hdinsight-provision].
+-   亚洲东南部
+-   欧洲北部
+-   欧洲西部
+-   美国东部
+-   美国西部
 
-An HDInsight cluster uses an Azure Blob Storage container as the default file system. For more information about how Azure Blob Storage provides a seamless experience with HDInsight clusters, see [Use Azure Blob Storage with HDInsight][hdinsight-storage].
+有关创建 Azure 存储帐户的详细信息，请参阅[如何创建存储帐户][]。
 
-An Azure storage account must be created in the same data center in which your HDInsight cluster is to be provisioned. Currently HDInsight clusters can be provisioned in five data centers: 
+**设置 HDInsight 群集**
 
-- Southeast Asia 
-- North Europe
-- West Europe 
-- East US 
-- West US 
+1.  登录到 [Azure 管理门户][]。
+2.  单击页面底部的“新建” ，然后依次单击“数据服务”、 “HDINSIGHT” 和“快速创建” 。
 
-For details on creating an Azure storage account, see [How to Create a Storage Account][azure-create-storageaccount].
+3.  提供“群集名称” 、“群集大小” 、“群集管理员密码” 和 Azure“存储帐户” ，然后单击“创建 HDInsight 群集” 。创建并运行群集后，状态将显示“正在运行”**。
 
+    ![HDI.QuickCreate][]
 
-**To provision an HDInsight cluster**
+    当使用“快速创建”选项创建群集时，管理员帐户的默认用户名为“admin”**。若要为该帐户提供其他用户名，可以使用“自定义创建”选项，而不是“快速创建”选项。也可以在设置之后更改帐户名称。
 
-1. Sign in to the [Azure Management Portal][azure-management-portal].
-2. Click **NEW** on the bottom of the page, click **DATA SERVICES**, click **HDINSIGHT**, and then click **QUICK CREATE**.
+    使用“快速创建”选项创建群集时，将在指定的存储帐户中自动创建一个带 HDInsight 群集名称的新容器。如果要自定义由群集默认使用的容器的名称，则必须使用“自定义创建”选项。
 
-3. Provide **Cluster Name**, **Cluster Size**, **Cluster Admin Password**, and an Azure **Storage Account** and then click **Create HDInsight Cluster**. Once the cluster is created and running, the status shows *Running*.
+    > [WACOM.NOTE] 为 HDInsight 群集选择 Azure 存储帐户后，更改存储帐户的唯一方法是删除群集并使用所需的存储帐户创建新群集。
 
-	![HDI.QuickCreate][image-cluster-quickcreate]
+4.  单击新创建的群集。这将显示登录页：
 
-	When using the Quick Create option to create a cluster, the default username for the administrator account is *admin*. To give the account a different username, you can use the Custom Create option instead of Quick Create option. Or change the account name after it is provisioned.
+    ![HDI.ClusterLanding][]
 
-	When using the Quick Create option to create a cluster, a new container with the name of the HDInsight cluster is created automatically in the storage account specified. If you want to customize the name of the container to be used by default by the cluster, you must use the custom create option. 
+## 自定义 HDInsight 群集
 
-	> [WACN.NOTE] Once an Azure storage account is chosen for your HDInsight cluster, the only way to change the storage account is to delete the cluster and create a new cluster with the desired storage account.
+HDInsight 使用各种 Hadoop 组件。有关已获得验证和支持的组件的列表，请参阅 [Azure HDInsight 包含哪个版本的 Hadoop？][]。可使用以下选项之一进行 HDInsight 自定义：
 
-4. Click the newly created cluster.  It shows the landing page:
+-   在群集设置期间使用 HDInsight .NET SDK 或 Azure PowerShell 中的群集自定义参数。通过这样做，这些配置更改将在群集的整个生存期内保留，并且不受 Azure 平台在维护时定期执行的群集节点重置映像影响。有关使用群集自定义参数的详细信息，请参阅[设置 HDInsight 群集][]。
+-   一些本机 Java 组件（如 Mahout、Cascading）可以在群集上作为 JAR 文件运行。可以使用 Hadoop 作业提交机制将这些 JAR 文件分发到 Azure Blob 存储 (WASB)，并提交到 HDInsight 群集。有关详细信息，请参阅[以编程方式提交 Hadoop 作业][]。
 
-	![HDI.ClusterLanding][image-cluster-landing]
+    > [WACOM.NOTE] 如果你在将 jar 文件部署到 HDInsight 群集或调用 HDInsight 群集上的 jar 文件时遇到问题，请联系 [Microsoft 技术支持][]。
 
+    > Mahout 和 Cascading 不受 HDInsight 支持，因此不符合 Microsoft 技术支持的条件。有关支持的组件的列表，请参阅 [HDInsight 提供的群集版本有哪些新功能？][Azure HDInsight 包含哪个版本的 Hadoop？]。
 
-##<a id="customize"></a> Customize HDInsight clusters
+不支持使用远程桌面连接在群集上安装自定义软件。你应该避免在头节点的驱动器上存储任何文件，因为如果你需要重新创建群集，这些文件会丢失。建议你在 Azure Blob 存储中存储文件。Blob 存储是持久性的。
 
-HDInsight works with a wide range of Hadoop components. For the list of the components that have been verified and supported, see [What version of Hadoop is in Azure HDInsight][hdinsight-version]. HDInsight customization can be done using one of the following options:
+## 更改 HDInsight 群集用户名和密码
 
-- Use the cluster customization parameters in HDInsight .NET SDK or Azure PowerShell during cluster provision. By doing so, these configuration changes are preserved through lifetime of the cluster and not affected by cluster node reimages that Azure platform periodically performs for maintenance. For more information on using the cluster customization parameters, see [Provision HDInsight clusters][hdinsight-provision].
-- Some native Java components, like Mahout, Cascading, can be run on the cluster as JAR files. These JAR files can be distributed to Azure Blob storage (WASB), and submitted to HDInsight clusters using Hadoop job submission mechanisms. For more information see [Submit Hadoop jobs programmatically][hdinsight-submit-jobs]. 
+HDInsight 群集可以有两个用户帐户。HDInsight 群集用户帐户是在设置过程中创建的。你还可以创建通过 RDP 访问群集的 RDP 用户帐户。请参阅[启用远程桌面][]。
 
+**更改 HDInsight 群集用户名和密码**
 
-	>[WACN.NOTE] If you have issues deploying jar files to HDInsight clusters or calling jar files on HDInsight clusters, contact [Microsoft Support][hdinsight-support].
-	
-	> Both Mahout and Cascading aren’t supported by HDInsight, and aren’t eligible for Microsoft Support. For lists of supported components, see [What's new in the cluster versions provided by HDInsight?][hdinsight-version].
+1.  登录到 [Azure 管理门户][]。
+2.  单击左窗格中的“HDINSIGHT” 。这将显示已部署的 HDInsight 群集的列表。
+3.  单击要重设用户名和密码的 HDInsight 群集。
+4.  在页面顶部，单击“配置” 。
+5.  单击“HADOOP 服务” 旁边的“关闭” 。
+6.  单击页面底部的“保存” ，然后等待禁用操作完成。
+7.  在该服务已禁用后，单击“HADOOP 服务” 旁边的“打开” 。
+8.  输入**用户名**和**新密码**。这些将是群集的新用户名和密码。
+9.  单击“保存” 。
 
+## 使用 RDP 连接到 HDInsight 群集
 
-Installation of custom software on the cluster using remote desktop connection is not supported. You should avoid storing any files on the drives of the head node as they are lost if you need to recreate the clusters. We recommend to store files on Azure Blob storage. Blob storage is persistent.
+通过你在创建群集时提供的凭据，可以访问群集上的服务，但无法通过远程桌面访问群集本身。远程桌面访问默认情况下处于关闭状态，因此，使用它来直接访问群集时，要求一些其他的创建后配置。
 
-##<a id="password"></a> Change the HDInsight cluster username and password
-An HDInsight cluster can have two user accounts.  The HDInsight cluster user account is created during the provision processs.  You can also create a RDP user account for accessing the cluster via RDP. See [Enable remote desktop](#enablerdp).
+**启用远程桌面**
 
-**To change HDInsight cluster username and password**
+1.  登录到 [Azure 管理门户][]。
+2.  单击左窗格中的“HDINSIGHT” 。这将显示已部署的 HDInsight 群集的列表。
+3.  单击要连接到的 HDInsight 群集。
+4.  在页面顶部，单击“配置” 。
+5.  从页面底部，单击“启用远程” 。
+6.  在“配置远程桌面” 向导中，输入远程桌面的用户名和密码。注意，此用户名必须不同于用来创建群集的用户名（默认情况下，指使用“快速创建”选项时的“admin”**）。在“截止日期” 框中输入到期日期。注意，到期日期必须为将来日期，但不超过从现在开始的一周。此日期的到期时间默认为指定日期的午夜。然后，单击复选图标。
 
-1. Sign in to the [Azure Management Portal][azure-management-portal].
-2. Click **HDINSIGHT** on the left pane. You will see a list of deployed HDInsight clusters.
-3. Click the HDInsight cluster that you want to reset the username and password.
-4. From the top of the page, click **CONFIGURATION**.
-5. Click **OFF** next  to **HADOOP SERVICES**.
-6. Click **SAVE** on the bottom of the page, and wait for the disabling to complete.
-7. After the service has been disabled, click **ON** next to **HADOOP SERVICES**.
-8. Enter **USER NAME** and **NEW PASSWORD**.  These will be the new username and password for the cluster.
-8. Click **SAVE**.
+    ![HDI.CreateRDPUser][]
 
+    到期日期必须是将来的日期，且必须与现在最多相隔七天。时间为所选日期的午夜。
 
+> [WACOM.NOTE] 为群集启用 RDP 后，必须刷新页面，然后才能连接到群集。
 
-##<a id="rdp"></a> Connect to HDInsight clusters using RDP
+**使用 RDP 连接到群集**
 
-The credentials for the cluster that you provided at its creation give access to the services on the cluster, but not to the cluster itself through remote desktop. Remote Desktop access is turned off by default and so direct access to the cluster using it requires some additional, post-creation configuration.
-
-**To enable remote desktop**
-
-1. Sign in to the [Azure Management Portal][azure-management-portal].
-2. Click **HDINSIGHT** on the left pane. You will see a list of deployed HDInsight clusters.
-3. Click the HDInsight cluster that you want to connect to.
-4. From the top of the page, click **CONFIGURATION**.
-5. From the bottom of the page, click **ENABLE REMOTE**.
-6. In the **Configure Remote Desktop** wizard, enter a username and password for the remote desktop. Note that the username must be different than the one used to create the cluster (*admin* by default with the Quick Create option). Enter an expiration date in the **EXPIRES ON** box. Note that the expiration date must be in the future and no more than a week from the present. The expiration time of day is assumed by default to be midnight of the specified date. Then click the check icon.
-
-	![HDI.CreateRDPUser][image-hdi-create-rpd-user]
-
-	The expiration date must be in the future, and at most seven days from now. And the time is the midnight of the selected date.
-
-> [WACN.NOTE] Once RDP is enabled for a cluster, you must refresh the page before you can connect to the cluster.
- 
-**To connect to a cluster using RDP**
-
-1. Sign in to the [Azure Management Portal][azure-management-portal].
-2. Click **HDINSIGHT** on the left pane. You will see a list of deployed HDInsight clusters.
-3. Click the HDInsight cluster that you want to connect to.
-4. From the top of the page, click **CONFIGURATION**.
-5. Click **CONNECT**, and then follow the instructions.
-
-##<a id="httpservice"></a> Grant/revoke HTTP services access
-
-HDInsight clusters have the following HTTP Web services (all of these services have RESTful endpoints):
-
-- ODBC
-- JDBC
-- Ambari
-- Oozie
-- Templeton
-
-By default, these services are granted for access. You can revoke/grant the access from the Management portal. 
-
->[WACN.NOTE] By granting/revoking the access, you will reset the cluster user username and password.
-
-**To grant/revoke HTTP Web services access**
-
-1. Sign in to the [Azure Management Portal][azure-management-portal].
-2. Click **HDINSIGHT** on the left pane. You will see a list of deployed HDInsight clusters.
-3. Click the HDInsight cluster that you want to configure.
-4. From the top of the page, click **CONFIGURATION**.
-5. Click **ON** or **OFF** next  to **HADOOP SERVICES**.  
-6. Enter **USER NAME** and **NEW PASSWORD**.  These will be the new username and password for the cluster.
-7. Click **SAVE**.
-
-This can also be done using the Azure PowerShell cmdlets:
-
-- Grant-AzureHDInsightHttpServicesAccess
-- Revoke-AzureHDInsightHttpServicesAccess
-
-See [Administer HDInsight using PowerShell][hdinsight-admin-powershell].
-
-##<a id="hadoopcmd"></a> Open Hadoop command line
-
-To connect to the cluster using remote desktop and use the Hadoop command line, you must first have enabled remote desktop access to the cluster as described in the previous section. 
-
-**To open Hadoop command line**
-
-1. Sign in to the [Azure Management Portal][azure-management-portal].
-2. Click **HDINSIGHT** on the left pane. You will see a list of deployed Hadoop clusters.
-3. Click the HDInsight cluster that you want to connect to.
-3. Click **CONFIGURATION** on the top of the page.
-4. Click **Connect** on the bottom of the page.
-5. Click **Open**.
-6. Enter your credentials, and then click **OK**.  Use the username and password you configured when you created the cluster.
-7. Click **Yes**.
-8. From the desktop, double-click **Hadoop Command Line**.
-		
-	![HDI.HadoopCommandLine][image-hadoopcommandline]
-
-
-	For more information on Hadoop command, see [Hadoop commands reference][hadoop-command-reference].
-
-On the previous screenshot, the folder name has the Hadoop version number embedded. The version number can changed based on the version of the Hadoop components installed on the cluster. You can use Hadoop environment variables to refer to those folders.  For example:
-
-	cd %hadoop_home%
-	cd %hive_home%
-	cd %pig_home%
-	cd %sqoop_home%   
-	cd %hcatalog_home%
-
-##<a id="nextsteps"></a> Next steps
-In this article, you have learned how to create an HDInsight cluster using the Azure Management Portal, and how to open the Hadoop command line tool. To learn more, see the following articles:
-
-* [Administer HDInsight Using PowerShell][hdinsight-admin-powershell]
-* [Administer HDInsight Using Cross-platform Command-line Interface][hdinsight-admin-cross-platform]
-* [Provision HDInsight clusters][hdinsight-provision]
-* [Submit Hadoop jobs programmatically][hdinsight-submit-jobs]
-* [Get Started with Azure HDInsight][hdinsight-getting-started]
-* [What version of Hadoop is in Azure HDInsight?][hdinsight-version]
-
-[hdinsight-admin-cross-platform]: /en-us/manage/services/hdinsight/administer-hdinsight-using-command-line-interface/
-[hdinsight-admin-powershell]: /en-us/manage/services/hdinsight/administer-hdinsight-using-powershell/
-[hdinsight-getting-started]: /en-us/manage/services/hdinsight/get-started-hdinsight/
-[hdinsight-provision]: /en-us/manage/services/hdinsight/provision-hdinsight-clusters/
-[hdinsight-submit-jobs]: /en-us/manage/services/hdinsight/submit-hadoop-jobs-programmatically/
-[hdinsight-storage]: /en-us/manage/services/hdinsight/howto-blob-store/
-[hdinsight-version]: /en-us/manage/services/hdinsight/versioning-in-hdinsight/
-[hdinsight-support]: http://www.windowsazure.cn/zh-cn/support/contact/
-
-[azure-create-storageaccount]: /en-us/manage/services/storage/how-to-create-a-storage-account/ 
-[azure-management-portal]: https://manage.windowsazure.cn/
-[azure-purchase-options]: http://www.windowsazure.cn/zh-cn/pricing/overview/
-[azure-member-offers]: http://www.windowsazure.cn/zh-cn/pricing/overview/
-[azure-free-trial]: https://www.windowsazure.cn/zh-cn/pricing/free-trial/
-
-
-[hadoop-command-reference]: http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html
-
-[image-cluster-quickcreate]: ./media/hdinsight-administer-use-management-portal/HDI.QuickCreateCluster.png
-[image-cluster-landing]: ./media/hdinsight-administer-use-management-portal/HDI.ClusterLanding.PNG "Cluster landing page"
-[image-hdi-create-rpd-user]: ./media/hdinsight-administer-use-management-portal/HDI.CreateRDPUser.png
-[image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/HDI.HadoopCommandLine.PNG "Hadoop command line"
+1.  登录到 [Azure 管理门户][]。
+2.  单击左窗格中的“HDINSIGHT” 。这将显示已部署的 HDInsight 群集的列表。
+3.  单击要连接到的 HDInsight 群集。
+4.  在页面顶部，单击“配置” 。
+5.  单击“连接” ，然后按照说明进行操作。
+
+## 授予/撤消 HTTP 服务访问权限
+
+HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样式的终结点）：
+
+-   ODBC
+-   JDBC
+-   Ambari
+-   Oozie
+-   Templeton
+
+默认情况下，将授权这些服务进行访问。你可以从管理门户撤消/授予访问权限。
+
+> [WACOM.NOTE] 授予/撤消访问权限时，你将重设群集用户的用户名和密码。
+
+**授予/撤消 HTTP Web 服务访问权限**
+
+1.  登录到 [Azure 管理门户][]。
+2.  单击左窗格中的“HDINSIGHT” 。这将显示已部署的 HDInsight 群集的列表。
+3.  单击要配置的 HDInsight 群集。
+4.  在页面顶部，单击“配置” 。
+5.  单击“HADOOP 服务” 旁边的“打开” 或“关闭” 。
+6.  输入**用户名**和**新密码**。这些将是群集的新用户名和密码。
+7.  单击“保存” 。
+
+也可以使用 Azure PowerShell cmdlet 来完成此操作：
+
+-   Grant-AzureHDInsightHttpServicesAccess
+-   Revoke-AzureHDInsightHttpServicesAccess
+
+请参阅[使用 PowerShell 管理 HDInsight][]。
+
+## 打开 Hadoop 命令行
+
+若要使用远程桌面连接到群集并使用 Hadoop 命令行，首先必须对群集启用远程桌面访问，如上一部分中所述。
+
+**打开 Hadoop 命令行**
+
+1.  登录到 [Azure 管理门户][]。
+2.  单击左窗格中的“HDINSIGHT” 。这将显示已部署的 Hadoop 群集的列表。
+3.  单击要连接到的 HDInsight 群集。
+4.  单击页面顶部的“配置” 。
+5.  单击页面底部的“连接” 。
+6.  单击“打开” 。
+7.  输入你的凭据，然后单击“确定” 。使用在创建群集时配置的用户名和密码。
+8.  单击“是” 。
+9.  从桌面上双击“Hadoop 命令行” 。
+
+    ![HDI.HadoopCommandLine][]
+
+    有关 Hadoop 命令的详细信息，请参阅 [Hadoop 命令参考（可能为英文页面）][]。
+
+在上面的屏幕快照中，文件夹名称嵌入了 Hadoop 版本号。版本号可以根据群集上安装的 Hadoop 组件的版本而更改。可以使用 Hadoop 环境变量来引用这些文件夹。例如：
+
+    cd %hadoop_home%
+    cd %hive_home%
+    cd %pig_home%
+    cd %sqoop_home%   
+    cd %hcatalog_home%
+
+## 后续步骤
+
+在本文中，你学习了如何使用 Azure 管理门户创建 HDInsight 群集以及如何打开 Hadoop 命令行工具。若要了解更多信息，请参阅下列文章：
+
+-   [使用 PowerShell 管理 HDInsight][]
+-   [使用跨平台命令行界面管理 HDInsight][]
+-   [配置 HDInsight 群集][设置 HDInsight 群集]
+-   [以编程方式提交 Hadoop 作业][]
+-   [Azure HDInsight 入门][]
+-   [Azure HDInsight 包含哪个版本的 Hadoop？][]
+
+  [使用 PowerShell 管理 HDInsight]: /en-us/manage/services/hdinsight/administer-hdinsight-using-powershell/
+  [使用跨平台命令行界面管理 HDInsight]: /en-us/manage/services/hdinsight/administer-hdinsight-using-command-line-interface/
+  [购买选项]: http://www.windowsazure.cn/zh-cn/pricing/overview/
+  [免费试用]: https://www.windowsazure.cn/zh-cn/pricing/free-trial/
+  [配置 HDInsight 群集]: #create
+  [自定义 HDInsight 群集]: #customize
+  [更改 HDInsight 群集用户名和密码]: #password
+  [使用 RDP 连接到 HDInsight 群集]: #rdp
+  [授予/撤消 HTTP 服务访问权限]: #httpservice
+  [打开 Hadoop 命令控制台]: #hadoopcmd
+  [后续步骤]: #nextsteps
+  [设置 HDInsight 群集]: /en-us/manage/services/hdinsight/provision-hdinsight-clusters/
+  [将 Azure Blob 存储与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/howto-blob-store/
+  [如何创建存储帐户]: /en-us/manage/services/storage/how-to-create-a-storage-account/
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  [HDI.QuickCreate]: ./media/hdinsight-administer-use-management-portal/HDI.QuickCreateCluster.png
+  [HDI.ClusterLanding]: ./media/hdinsight-administer-use-management-portal/HDI.ClusterLanding.PNG "群集登录页"
+  [Azure HDInsight 包含哪个版本的 Hadoop？]: /en-us/manage/services/hdinsight/versioning-in-hdinsight/
+  [以编程方式提交 Hadoop 作业]: /en-us/manage/services/hdinsight/submit-hadoop-jobs-programmatically/
+  [Microsoft 技术支持]: http://www.windowsazure.cn/zh-cn/support/contact/
+  [启用远程桌面]: #enablerdp
+  [HDI.CreateRDPUser]: ./media/hdinsight-administer-use-management-portal/HDI.CreateRDPUser.png
+  [HDI.HadoopCommandLine]: ./media/hdinsight-administer-use-management-portal/HDI.HadoopCommandLine.PNG "Hadoop 命令行"
+  [Hadoop 命令参考（可能为英文页面）]: http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html
+  [Azure HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/

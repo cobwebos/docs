@@ -1,29 +1,32 @@
 <properties linkid="manage-hdinsight-understand-nosql" urlDisplayName="Understand NoSQL technologies" pageTitle="Understanding NoSQL Technologies on Azure | Azure" metaKeywords="" description="Learn how NoSQL technologies on HDInsight can help you manage data not suited to relational databases, such as big data sets and JSON documents or graphs." umbracoNaviHide="0" disqusComments="1" editor="cgronlun" manager="paulettm" services="storage,hdinsight" documentationCenter="" title="Data management: Understanding NoSQL technologies on Azure" authors="dchappell" />
 
-# Data management: Understanding NoSQL technologies on Azure
+# 数据管理：了解 Azure 上的 NoSQL 技术
 
-**Summary:** Azure offers a broad array of options for your NoSQL workloads, but it can be challenging to determine which one is right for you.  This document explains NoSQL technologies on Azure and how to choose the right service to manage your non-relational data, which includes unstructured or particularly large data sets often referred to as "big data." 
+**摘要：**Azure 提供很多用于 NoSQL 工作负荷的选项，但是确定哪个适合你有点困难。本文解释了 Azure 上的 NoSQL 技术，以及如何选择正确服务来管理你的非关系数据，这种数据包括非结构化的或特别大的数据集（通常称为“大数据”）。
 
-Relational technology has long been the dominant approach for working with data. However, when you work with very large amounts of different types of data, scaling across many servers is challenging. Also, relational technology is not the best fit for managing some kinds of data, such as JSON documents or graphs. This guide walks through the options, explaining what each one provides and why you might want to use it.
+对于数据处理，关系技术很久以来都是主流方法。但是，当你处理不同类型的大量数据时，跨很多服务器进行扩展面临着挑战。此外，关系数据不是最合适管理某类数据的，例如 JSON 文档或图形。本指南介绍各种选项，解释每个选项所提供的内容以及你可能需要使用它的原因。
 
-**Contents:**
+**内容：**
 
-* Data on Azure: The Big Picture	
-* Azure Relational Technologies: A Quick Look	
-* Azure NoSQL Technologies: Operational Data	
-	* Key/Value Stores	
-	* Column Family Stores	
-	* Document Stores	
-	* Graph Databases	
-* Azure NoSQL Technologies: Analytical Data	
-	* Hadoop MapReduce	
-	* HDInsight	
+-   Azure 上的数据：大型图片
+-   Azure 关系技术：速览
+-   Azure NoSQL 技术：操作数据
 
-**Author:** David Chappell, Principal of Chappell & Associates
+    -   键/值存储
+    -   列系列存储
+    -   文档存储
+    -   图形数据库
+-   Azure NoSQL 技术：分析数据
 
-**Published:** November 2013
+    -   Hadoop MapReduce
+    -   HDInsight
 
-**Revision:** 1.0
+作者：David Chappell，Chappell & Associates 负责人
 
-**Download:** <a href="http://go.microsoft.com/fwlink/p/?LinkId=330292" target="_blank">Understanding NoSQL technologies on Azure PDF file</a>
+发布时间：2013 年 11 月
 
+版本： 1.0
+
+下载： [“了解 Azure 上的 NoSQL 技术”PDF 文件][]
+
+  [“了解 Azure 上的 NoSQL 技术”PDF 文件]: http://go.microsoft.com/fwlink/p/?LinkId=330292

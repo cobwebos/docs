@@ -1,576 +1,551 @@
 <properties linkid="dev-net-2-how-to-table-services" urlDisplayName="Table Service (2.0)" pageTitle="How to use table storage | Microsoft Azure" metaKeywords="Get started Azure table, Azure nosql, Azure large structured data store, Azure table, Azure table storage, Azure table .NET, Azure table storage .NET, Azure table C#, Azure table storage C#" description="Learn how to use table storage to create and delete tables and insert and query entities in a table." metaCanonical="" services="storage" documentationCenter=".NET" title="How to use the Table Storage Service" authors="" solutions="" manager="paulettm" editor="cgronlun" />
 
+# 如何使用表存储服务
 
+[1.7 版][] [2.0 版][]
 
+本指南将演示如何使用 Azure 表存储服务执行常见方案。
+示例是用 C\# 代码编写的且使用了 .NET API。
+涉及的方案包括**创建和删除表、在表中插入和查询实体**
+。有关表的详细信息，请参阅
+[后续步骤][]部分。
 
+## 目录
 
+-   [什么是表服务？][]
+-   [概念][]
+-   [创建 Azure 存储帐户][]
+-   [设置存储连接字符串][]
+-   [如何：以编程方式访问表存储][]
+-   [如何：创建表][]
+-   [如何：将实体添加到表][]
+-   [如何：插入一批实体][]
+-   [如何：检索分区中的所有实体][]
+-   [如何：检索分区中的一部分实体][]
+-   [如何：检索单个实体][]
+-   [如何：更新实体][]
+-   [如何：查询一部分实体属性][]
+-   [如何：插入或替换实体][]
+-   [如何：删除实体][]
+-   [如何：删除表][]
+-   [后续步骤][]
 
+[WACOM.INCLUDE [howto-table-storage][]]
 
+## 创建帐户创建 Azure 存储帐户
 
-# How to use the Table Storage Service
+[WACOM.INCLUDE [create-storage-account][]]
 
-<div class="dev-center-tutorial-selector">
-<a href="/en-us/develop/net/how-to-guides/table-services-v17/" title="version 1.7" class="current">version 1.7</a>
-<a href="/en-us/develop/net/how-to-guides/table-services/" title="version 2.0">version 2.0</a> 
-</div>
+## 设置连接字符串设置存储连接字符串
 
+Azure .NET 存储 API 支持
+使用存储连接字符串来配置用于访问存储
+服务的终结点和凭据。你可以将存储连接字符串放置在一个配置文件中，而不是
+在代码中对其进行硬编码：
 
-This guide will show you how to perform common scenarios using the
-Azure Table storage service. The samples are written in C\# code
-and use the .NET API. The scenarios covered include **creating and
-deleting a table, inserting and querying entities in a table**. For more
-information on tables, see the [Next steps][] section.
+-   当使用 Azure 云服务时，建议你使用 Azure 服务配置系统（`*.csdef` 和 `*.cscfg` 文件）来存储连接字符串。
+-   在使用 Azure 网站或 Azure 虚拟机时，建议使用 .NET 配置系统（如 `web.config` 文件）来存储连接字符串。
 
-## Table of Contents
+在上述两种情况下，你都可以使用 `CloudConfigurationManager.GetSetting` 方法检索连接字符串，本指南稍后将对此进行介绍。
 
--   [What is the Table Service][]
--   [Concepts][]
--   [Create an Azure Storage account][]
--   [Setup a storage connection string][]
--   [How to: Programmatically access table storage][]
--   [How to: Create a table][]
--   [How to: Add an entity to a table][]
--   [How to: Insert a batch of entities][]
--   [How to: Retrieve all entities in a partition][]
--   [How to: Retrieve a range of entities in a partition][]
--   [How to: Retrieve a single entity][]
--   [How to: Update an entity][]
--   [How to: Query a subset of entity properties][]
--   [How to: Insert-or-replace an entity][]
--   [How to: Delete an entity][]
--   [How to: Delete a table][]
--   [Next steps][]
+### 在使用云服务时配置连接字符串
 
-[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
+该服务配置机制是 Azure 云服务
+项目特有的，它使你能够从 Azure 管理
+门户动态更改配置设置，而无需部署你的应用程序。
 
-<h2><a name="create-account"></a><span class="short-header">Create an account</span>Create an Azure Storage account</h2>
+在 Azure 服务配置中配置连接字符串：
 
-[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
+1.  在 Visual Studio 解决方案资源管理器内 Azure 部署
+    项目的**“角色”**文件夹中，右键单击你的 Web 角色或辅助角色，
+    然后单击**“属性”**。
+    ![Blob5][]
 
-<h2><a name="setup-connection-string"></a><span class="short-header">Setup a connection string</span>Setup a storage connection string</h2>
+2.  单击**“设置”**选项卡并按**“添加设置”**按钮。
+    ![Blob6][]
 
-The Azure .NET storage API supports using a storage connection
-string to configure endpoints and credentials for accessing storage
-services. You can put your storage connection string in a configuration
-file, rather than hard-coding it in code:
+    新的 **Setting1** 条目稍后将显示在设置网格中。
 
-- When using Azure Cloud Services, it is recommended you store your connection string using the Azure service configuration system (`*.csdef` and `*.cscfg` files).
-- When using Azure Web Sites or Azure Virtual Machines, it is recommended you store your connection string using the .NET configuration system (e.g. `web.config` file).
+3.  在新的 **Setting1** 条目的**“类型”**下拉列表中，选择
+    **“连接字符串”**。
+    ![Blob7][]
 
-In both cases, you can retrieve your connection string using the `CloudConfigurationManager.GetSetting` method as shown later in this guide.
+4.  单击 **Setting1** 条目最右侧的 **...** 按钮。
+    此时将打开**“存储帐户连接字符串”**对话框。
 
-### Configuring your connection string when using Cloud Services
+5.  选择是要定位到存储模拟器（在本地计算机上模拟的 Windows
+    Azure 存储空间），还是要定位到云中的实际存储帐户。
+    本指南中的代码适用于其中任一方式。
+    如果你希望使用我们之前在 Azure 中创建的存储帐户
+    来存储 Blob 数据，请输入从本教程前面的步骤中
+    复制的**“主访问密钥”**值。
+    ![Blob8][]
 
-The service configuration mechanism is unique to Azure Cloud Services
-projects and enables you to dynamically change configuration settings
-from the Azure Management Portal without redeploying your
-application.
+6.  将条目**“名称”**从 **Setting1** 更改为更友好的名称，
+    例如 **StorageConnectionString**。在本指南后面的
+    代码中你将引用此连接字符串。
+    ![Blob9][]
 
-To configure your connection string in the Azure service
-configuration:
+### 在使用网站或虚拟机时配置连接字符串
 
-1.  Within the Solution Explorer of Visual Studio, in the **Roles**
-    folder of your Azure Deployment Project, right-click your
-    web role or worker role and click **Properties**.  
-    ![Blob5][Blob5]
+在使用网站或虚拟机时，建议你使用 .NET 配置系统（如 `web.config`）。你可以使用 `<appSettings>` 元素存储连接字符串：
 
-2.  Click the **Settings** tab and press the **Add Setting** button.  
-    ![Blob6][Blob6]
+    <configuration>
+    <appSettings>
+    <add key="StorageConnectionString"
+    value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
+    </appSettings>
+    </configuration>
 
-    A new **Setting1** entry will then show up in the settings grid.
+阅读[配置连接字符串][]，了解有关存储连接字符串的详细信息。
 
-3.  In the **Type** drop-down of the new **Setting1** entry, choose
-    **Connection String**.  
-    ![Blob7][Blob7]
+你现在即可准备执行本指南中的操作任务。
 
-4.  Click the **...** button at the right end of the **Setting1** entry.
-    The **Storage Account Connection String** dialog will open.
+## 以编程方式访问如何：以编程方式访问表存储
 
-5.  Choose whether you want to target the storage emulator (the Windows
-    Azure storage simulated on your local machine) or an actual storage
-    account in the cloud. The code in this guide works with either
-    option. Enter the **Primary Access Key** value copied from the
-    earlier step in this tutorial if you wish to store blob data in the
-    storage account we created earlier on Azure.   
-    ![Blob8][Blob8]
-
-6.  Change the entry **Name** from **Setting1** to a "friendlier" name
-    like **StorageConnectionString**. You will reference this
-    connection string later in the code in this guide.  
-    ![Blob9][Blob9]
-	
-### Configuring your connection string when using Web Sites or Virtual Machines
-
-When using Web Sites or Virtual Machines, it is recommended you use the .NET configuration system (e.g. `web.config`).  You store the connection string using the `<appSettings>` element:
-
-	<configuration>
-	    <appSettings>
-		    <add key="StorageConnectionString"
-			     value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
-		</appSettings>
-	</configuration>
-
-Read [Configuring Connection Strings][] for more information on storage connection strings.
-	
-You are now ready to perform the how-to tasks in this guide.
-
-
-<h2> <a name="configure-access"> </a><span  class="short-header">Access programmatically</span>How to: Programmatically access table storage</h2>
-
-Add the following code namespace declarations to the top of any C\# file
-in which you wish to programmatically access Azure Storage:
+在你希望在其中以编程方式访问 Azure 存储空间的任何 C\# 文件中，
+将以下代码命名空间声明添加到文件的顶部：
 
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.StorageClient;
 
-You can use the **CloudStorageAccount** type and
-**CloudConfigurationManager** type
-to retrieve your storage connection string and storage account
-information from the Azure service configuration:
+你可以使用 **CloudStorageAccount** 类型和
+**CloudConfigurationManager** 类型从
+Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
 
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
+## 创建表如何：创建表
 
-<h2><a name="create-table"></a><span class="short-header">Create a table</span>How to: Create a table</h2>
+利用 **CloudTableClient** 对象，你可以获得表和实体的引用对象。
+以下代码将创建 **CloudTableClient** 对象
+并使用它创建新表。本指南中的所有代码
+都使用存储在 Azure 应用程序的服务配置中的
+存储连接字符串。还有其他方法可用来
+创建 **CloudStorageAccount** 对象。
 
-A **CloudTableClient** object lets you get reference objects for tables
-and entities. The following code creates a **CloudTableClient** object
-and uses it to create a new table. All code in this guide uses a storage
-connection string stored in the Azure application's service
-configuration. There are also other ways to create
-**CloudStorageAccount** object.
-
-    // Retrieve storage account from connection string
+    // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // 创建表客户端
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    // Create the table if it doesn't exist
+    // 如果该表不存在，则创建它
     string tableName = "people";
     tableClient.CreateTableIfNotExist(tableName);
 
-<h2><a name="add-entity"></a><span class="short-header">Add an entity to a table</span>How to: Add an entity to a table</h2>
+## 将实体添加到表如何：将实体添加到表
 
-Entities map to C\# objects using a custom class derived from
-**TableServiceEntity**. To add an entity to a table, first create a
-class that defines the properties of your entity. The following code
-defines an entity class that uses the customer's first name as the row
-key, and last name as the partition key. Together, an entity's partition
-and row key uniquely identify the entity in the table. Entities with the
-same partition key can be queried faster than those with different
-partition keys.
+实体将映射到使用派生自 **TableServiceEntity** 的
+自定义类的 C\# 对象。若要将实体添加到表，请先创建用于
+定义实体的属性的类。以下代码定义了
+将客户的名字和姓氏分别用作行键和分区键的
+实体类。实体的分区键和行键共同唯一地标识
+表中的实体。查询分区键相同的
+实体的速度快于查询
+分区键不同的实体的速度。
 
-    public class CustomerEntity : TableServiceEntity
+    public class CustomerEntity :TableServiceEntity
     {
-        public CustomerEntity(string lastName, string firstName)
+    public CustomerEntity(string lastName, string firstName)
         {
-            this.PartitionKey = lastName;
-            this.RowKey = firstName;
+    this.PartitionKey = lastName;
+    this.RowKey = firstName;
         }
 
-        public CustomerEntity() { }
+    public CustomerEntity() { }
 
-        public string Email { get; set; }
+    public string Email { get; set; }
 
-        public string PhoneNumber { get; set; }
+    public string PhoneNumber { get; set; }
     }
 
-Table operations involving entities require a **TableServiceContext**
-object. This object tracks the client-side state of all table entities
-created and accessed in client code. Maintaining a client-side object
-representing each entity makes write operations more efficient because
-only objects with changes are updated on the table service when save
-operations are executed. The following code creates a
-**TableServiceContext** object by calling the **GetDataServiceContext**
-method. Then the code creates an instance of the **CustomerEntity**
-class. The code calls **serviceContext.AddObject** to insert the new
-entity into the table. This adds the entity object to the
-**serviceContext**, but no service operations occur. Finally, the code
-sends the new entity to the table service when the
-**SaveChangesWithRetries** method is called.
+涉及实体的表操作需要使用 **TableServiceContext** 对象。
+此对象可跟踪通过客户端代码创建和访问的所有表实体的
+客户端状态。保留代表单个实体的客户端对象
+可使写入操作更为有效，
+因为执行保存操作时只会
+在表服务中更新发生更改的对象。以下代码通过调用
+**GetDataServiceContext** 方法创建
+**TableServiceContext**
+ 对象。然后，该代码会创建 **CustomerEntity**
+ 类的实例。该代码会调用 **serviceContext.AddObject** 将新实体插入表中。
+这会向
+**serviceContext** 中添加实体对象，但不执行任何服务操作。最后，该代码
+会在调用 **SaveChangesWithRetries** 方法
+时将新实体发送到表服务。
 
-    // Retrieve storage account from connection string
+    // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // 创建表客户端
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    // Get the data service context
+    // 获取数据服务上下文
     TableServiceContext serviceContext = tableClient.GetDataServiceContext();
 
-    // Create a new customer entity
+    // 创建新的客户实体
     CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
     customer1.Email = "Walter@contoso.com";
     customer1.PhoneNumber = "425-555-0101";
 
-    // Add the new customer to the people table
+    // 将新客户添加到 people 表
     serviceContext.AddObject("people", customer1);
 
-    // Submit the operation to the table service
+    // 将操作提交到表服务
     serviceContext.SaveChangesWithRetries();
 
-<h2><a name="insert-batch"></a><span class="short-header">Insert a batch of entities</span>How to: Insert a batch of entities</h2>
+## 插入一批实体如何：插入一批实体
 
-You can insert a batch of entities to the table service in one write
-operation. The following code creates three entity objects and adds each
-to the service context using the **AddObject** method. Then the code
-calls **SaveChangesWithRetries** with the **SaveChangesOptions.Batch**
-parameter. If you omit **SaveChangesOptions.Batch**, three separate
-calls to the table service would occur. Some other notes on batch
-operations:
+你可以通过一个写入操作将一批实体插入到表服务。
+以下代码使用 **AddObject** 方法创建三个实体
+对象并将每个对象都添加到服务上下文中。然后，该代码
+使用 **SaveChangesOptions.Batch** 参数调用 **SaveChangesWithRetries**。
+如果你省略了 **SaveChangesOptions.Batch**，将分别
+调用表服务三次。有关批处理操作的一些其他
+注意事项：
 
-1.  You can perform batch updates, deletes, or inserts.
-2.  A single batch operation can include up to 100 entities.
-3.  All entities in a single batch operation must have the same
-    partition key.
+1.  你可以执行批处理更新、删除或插入操作。
+2.  单个批处理操作最多可包含 100 个实体。
+3.  单个批处理操作中的所有实体都必须具有相同的
+    分区键。
 
 <!-- -->
 
-    // Retrieve storage account from connection string
+    // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // 创建表客户端
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
     string tableName = "people";
 
-    // Get the data service context
+    // 获取数据服务上下文
     TableServiceContext serviceContext = tableClient.GetDataServiceContext();
 
-    // Create a customer entity and add to the table
+    // 创建一个客户实体并将其添加到表中
     CustomerEntity customer = new CustomerEntity("Smith", "Jeff");
     customer.Email = "Jeff@contoso.com";
     customer.PhoneNumber = "425-555-0104";
     serviceContext.AddObject(tableName, customer);
 
-    // Create another customer entity and add to the table
+    // 创建另一个客户实体并将其添加到表中
     CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
     customer2.Email = "Ben@contoso.com";
     customer2.PhoneNumber = "425-555-0102";
     serviceContext.AddObject(tableName, customer2);
 
-    // Create a customer entity and add to the table
+    // 创建一个客户实体并将其添加到表中
     CustomerEntity customer3 = new CustomerEntity("Smith", "Denise");
     customer3.Email = "Denise@contoso.com";
     customer3.PhoneNumber = "425-555-0103";
     serviceContext.AddObject(tableName, customer3);
 
-    // Submit the operation to the table service
+    // 将操作提交到表服务
     serviceContext.SaveChangesWithRetries(SaveChangesOptions.Batch);
 
-<h2><a name="retrieve-all-entities"></a><span class="short-header">Retrieve all entities</span>How to: Retrieve all entities in a partition</h2>
+## 检索所有实体如何：检索分区中的所有实体
 
-To query a table for entities in a partition, you can use a LINQ query.
-Call **serviceContext.CreateQuery** to create a query from your data
-source. The following code specifies a filter for entities where 'Smith'
-is the partition key. Call **AsTableServiceQuery&lt;CustomerEntity&gt;** on
-the result of the LINQ query to finish creating the **CloudTableQuery**
-object. You can then use the **partitionQuery** object you created in a
-**foreach** loop to consume the results. This code prints the fields of
-each entity in the query results to the console.
+若要查询表以获取分区中的实体，可以使用 LINQ 查询。
+可以调用 **serviceContext.CreateQuery** 从你的数据源
+创建查询。以下代码指定了一个筛选器，用于筛选分区键是“Smith”
+的实体。对 LINQ 查询的结果调用 **AsTableServiceQuery\<CustomerEntity\>**
+以完成创建 **CloudTableQuery** 对象。
+然后你可以使用在 **foreach** 循环中创建的
+**partitionQuery** 对象来使用结果。此代码会将查询结果中每个
+实体的字段输出到控制台。
 
-    // Retrieve storage account from connection string
+    // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // 创建表客户端
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    // Get the data service context
+    // 获取数据服务上下文
     TableServiceContext serviceContext = tableClient.GetDataServiceContext();
 
-    // Specify a partition query, using "Smith" as the partition key
+    // 指定一个分区查询，使用“Smith”作为分区键
     CloudTableQuery<CustomerEntity> partitionQuery =
-        (from e in serviceContext.CreateQuery<CustomerEntity>("people")
-         where e.PartitionKey == "Smith"
-         select e).AsTableServiceQuery<CustomerEntity>();
+    (from e in serviceContext.CreateQuery<CustomerEntity>("people")
+    where e.PartitionKey == "Smith"
+    select e).AsTableServiceQuery<CustomerEntity>();
 
-    // Loop through the results, displaying information about the entity
+    // 循环访问结果，显示实体的相关信息
     foreach (CustomerEntity entity in partitionQuery)
     {
-        Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
-            entity.Email, entity.PhoneNumber);
+    Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
+    entity.Email, entity.PhoneNumber);
     }
 
-<h2><a name="retrieve-range-entities"></a><span class="short-header">Retrieve a range of entities</span>How to: Retrieve a range of entities in a partition</h2>
+## 检索一部分实体如何：检索分区中的一部分实体
 
-If you don't want to query all the entities in a partition, you can
-specify a range by using the **CompareTo** method instead of using the
-usual greater-than (&gt;) and less-than (&lt;) operators. This is because the
-latter will result in improper query construction. The following code
-uses two filters to get all entities in partition 'Smith' where the row
-key (first name) starts with a letter up to 'E' in the alphabet. Then it
-prints the query results. If you use the entities added to the table in
-the batch insert section of this guide, only two entities are returned
-this time (Ben and Denise Smith); Jeff Smith is not included.
+如果不想查询分区中的所有实体，则可以使
+用 **CompareTo** 方法，而不是使用常见的
+大于 (\>) 和小于 (\<) 运算符来指定一个范围。这是因为
+后者将导致不适当的查询构造。以下代码使用
+两个筛选器来获取分区“Smith”中行键（名字）以字母表中字母
+“E”及其前面的字母开头的所有实体。然后，
+该代码输出查询结果。如果你使用在本指南的批量插入部分中
+添加到表的实体，则此次只会返回两个实体（Ben 和 Denise Smith），
+而不会包括 Jeff Smith。
 
-    // Retrieve storage account from connection string
+    // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // 创建表客户端
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    // Get the data service context
+    // 获取数据服务上下文
     TableServiceContext serviceContext = tableClient.GetDataServiceContext();
 
-    // Specify a partition query, using "Smith" as the partition key,
-    // with the row key being up to the letter "E"
+    // 指定一个分区查询，使用“Smith”作为分区键，
+    // 使用最大为字母“E”的行键
     CloudTableQuery<CustomerEntity> entityRangeQuery =
-        (from e in serviceContext.CreateQuery<CustomerEntity>("people")
-         where e.PartitionKey == "Smith" && e.RowKey.CompareTo("E") < 0
-         select e).AsTableServiceQuery<CustomerEntity>();
+    (from e in serviceContext.CreateQuery<CustomerEntity>("people")
+    where e.PartitionKey == "Smith" && e.RowKey.CompareTo("E") < 0
+    select e).AsTableServiceQuery<CustomerEntity>();
 
-    // Loop through the results, displaying information about the entity
+    // 循环访问结果，显示实体的相关信息
     foreach (CustomerEntity entity in entityRangeQuery)
     {
-        Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
-            entity.Email, entity.PhoneNumber);
+    Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
+    entity.Email, entity.PhoneNumber);
     }
 
-<h2><a name="retrieve-single-entity"></a><span class="short-header">Retrieve a single entity</span>How to: Retrieve a single entity</h2>
+## 检索单个实体如何：检索单个实体
 
-You can write a query to retrieve a single, specific entity. The
-following code uses two filters to specify the customer 'Jeff Smith'.
-Instead of calling **AsTableServiceQuery**, this code calls
-**FirstOrDefault**. This method returns just one entity, rather than a
-collection, so the code assigns the return value directly to a
-**CustomerEntity** object. A null value is returned if no entity has an
-exact partition and row key match. Specifying both partition and row
-keys in a query is the fastest way to retrieve a single entity from the
-Table service.
+你可以编写查询以检索单个特定实体。以下代码
+使用两个筛选器来指定客户“Jeff Smith”。
+该代码调用 **FirstOrDefault** 而不是
+调用 **AsTableServiceQuery**。此方法仅返回一个实体，而不是一个集合，
+因此代码会将返回值直接分配给
+**CustomerEntity** 对象。如果没有实体具有完全匹配的分区键和行键，
+则会返回 null 值。在查询中同时指定分区键和行键是
+从表服务中检索单个实体的最快方法。
 
-    // Retrieve storage account from connection string
+    // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // 创建表客户端
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    // Get the data service context
+    // 获取数据服务上下文
     TableServiceContext serviceContext = tableClient.GetDataServiceContext();
 
-    // Return the entity with partition key of "Smith" and row key of "Jeff"
+    // 返回分区键为“Smith”且行键为“Jeff”的实体
     CustomerEntity specificEntity =
-        (from e in serviceContext.CreateQuery<CustomerEntity>("people")
-         where e.PartitionKey == "Smith" && e.RowKey == "Jeff"
-         select e).FirstOrDefault();
+    (from e in serviceContext.CreateQuery<CustomerEntity>("people")
+    where e.PartitionKey == "Smith" && e.RowKey == "Jeff"
+    select e).FirstOrDefault();
 
-<h2><a name="update-entity"></a><span class="short-header">Update an entity</span>How to: Update an entity</h2>
+## 更新实体如何：更新实体
 
-To update an entity, retrieve it from the table service, modify the
-entity object, and save the changes back to the table service. The
-following code changes an existing customer's phone number. Instead of
-calling **AddObject** like we did to insert, this code calls
-**UpdateObject**. The **SaveChangesWithRetries** method calls the table
-service, and the entity is updated, unless another application changed
-it in the time since this application retrieved it. When that happens,
-an exception is thrown, and the entity must be retrieved, modified, and
-saved again. This retry pattern is common in a distributed storage
-system.
+若要更新实体，请从表服务中检索它，修改实体对象，
+然后将更改保存回表服务。以下代码
+将更改现有客户的电话号码。此代码
+将调用 **UpdateObject**，而不是像执行插入时那样
+调用 **AddObject**。**SaveChangesWithRetries** 方法将调用表服务，
+并更新该实体，除非在此应用程序检索到该实体之后
+另一个应用程序对它进行了更改。如果出现这种情况，
+则会引发异常，必须再次检索、修改并保存该实体。
+此重试模式在分布式存储系统中很常见。
 
-    // Retrieve storage account from connection string
+    // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // 创建表客户端
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    // Get the data service context
+    // 获取数据服务上下文
     TableServiceContext serviceContext = tableClient.GetDataServiceContext();
 
-    // Return the entity with partition key of "Smith" and row key of "Jeff"
+    // 返回分区键为“Smith”且行键为“Jeff”的实体
     CustomerEntity specificEntity =
-        (from e in serviceContext.CreateQuery<CustomerEntity>("people")
-         where e.PartitionKey == "Smith" && e.RowKey == "Jeff"
-         select e).FirstOrDefault();
+    (from e in serviceContext.CreateQuery<CustomerEntity>("people")
+    where e.PartitionKey == "Smith" && e.RowKey == "Jeff"
+    select e).FirstOrDefault();
 
-    // Specify a new phone number
+    // 指定一个新电话号码
     specificEntity.PhoneNumber = "425-555-0105";
 
-    // Update the entity
+    // 更新实体
     serviceContext.UpdateObject(specificEntity);
 
-    // Submit the operation to the table service
+    // 将操作提交到表服务
     serviceContext.SaveChangesWithRetries();
 
-<h2><a name="query-entity-properties"></a><span class="short-header">Query a subset of properties</span>How to: Query a subset of entity properties</h2>
+## 查询一部分属性如何：查询一部分实体属性
 
-A query to a table can retrieve just a few properties from an entity.
-This technique, called projection, reduces bandwidth and can improve
-query performance, especially for large entities. The query in the
-following code returns only the email addresses of entities in the
-table. You can learn more about projection in this [blog post][]. Note
-that projection is not supported on the local storage emulator, so this
-code runs only when using an account on the table service.
+对表的查询可以只检索实体中的少数几个属性。此方法称为投影，
+可减少带宽并提高查询性能，尤其适用于大型实体。
+以下代码
+中的查询只返回表中实体的电子邮件
+地址。你可以在此[博客文章][]中了解有关投影的详细信息。请注意，
+本地存储模拟器不支持投影，因此，此代码仅在使用表服务中的帐户时
+才能运行。
 
-    // Retrieve storage account from connection string
+    // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // 创建表客户端
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    // Get the data service context
+    // 获取数据服务上下文
     TableServiceContext serviceContext = tableClient.GetDataServiceContext();
 
-    // Define a projection query that retrieves only the Email property
+    // 定义一个仅检索 Email 属性的投影查询
     var projectionQuery = 
-        from e in serviceContext.CreateQuery<CustomerEntity>("people")
-        select new
+    from e in serviceContext.CreateQuery<CustomerEntity>("people")
+    select new
         {
-            Email = e.Email
-            // You can specify additional fields here
+    Email = e.Email
+    // 你可以在此处指定其他字段
         };
 
-    // Loop through the results, displaying the Email value
+    // 循环访问结果，显示 Email 值
     foreach (var person in projectionQuery)
     {
-        Console.WriteLine(person.Email);
+    Console.WriteLine(person.Email);
     }
 
-<h2><a name="insert-entity"></a><span class="short-header">Insert-or-replace an entity</span>How to: Insert-or-replace an entity</h2>
+## 插入或替换实体如何：插入或替换实体
 
-Often you want to add an entity to a table without knowing if it already
-exists in the table. An insert-or-replace operation allows you to make a
-single request which will insert the entity if it does not exist or
-replace the existing one if it does. Building on prior examples, the
-following code inserts or replaces the entity for 'Walter Harp'. After
-creating a new entity, this code calls the **serviceContext.AttachTo**
-method. This code then calls **UpdateObject**, and finally calls
-**SaveChangesWithRetries** with the
-**SaveChangesOptions.ReplaceOnUpdate** parameter. Omitting the
-**SaveChangesOptions.ReplaceOnUpdate** parameter causes an
-insert-or-merge operation. Note that insert-or-replace is not supported
-on the local storage emulator, so this code runs only when using an
-account on the table service. You can learn more about insert-or-replace
-and insert-or-merge in this [blog post][].
+很多时候，你需要将某个实体添加到表中，但又不知道该实体是否
+已存在于表中。利用“插入或替换”操作，你可以提出一个以下形式的
+请求：如果实体不存在，则插入一个实体；如果实体存在，
+则替换现有实体。以下代码基于前面的示例
+针对“Walter Harp”插入或替换实体。创建新实体后，
+此代码调用 **serviceContext.AttachTo**
+方法。然后，此代码会调用 **UpdateObject**，最后调用带
+**SaveChangesOptions.ReplaceOnUpdate** 参数的
+**SaveChangesWithRetries**。省略
+**SaveChangesOptions.ReplaceOnUpdate** 参数会导致“插入或合并”
+操作。请注意，本地存储模拟器不支持“插入或替换”，
+因此，此代码仅在使用表服务中的帐户时才能运行。
+你可以在此[博客文章][]中了解
+有关“插入或替换”和“插入或合并”的更多信息。
 
-    // Retrieve storage account from connection string
+    // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // 创建表客户端
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    // Get the data service context
+    // 获取数据服务上下文
     TableServiceContext serviceContext = tableClient.GetDataServiceContext();
 
-    // Create a new customer entity
+    // 创建新的客户实体
     CustomerEntity customer5 = new CustomerEntity("Harp", "Walter");
     customer5.Email = "Walter@contoso.com";
     customer5.PhoneNumber = "425-555-0106";
 
-    // Attach this customer to the people table
+    // 将此客户添加到 people 表
     serviceContext.AttachTo("people", customer5);
 
-    // Insert this customer if new, or replace if exists
+    // 如果此客户是新客户，则插入；如果已存在，则替换
     serviceContext.UpdateObject(customer5);
 
-    // Submit the operation the table service, using the ReplaceOnUpdate option
+    // 将操作提交到表服务，使用 ReplaceOnUpdate 选项
     serviceContext.SaveChangesWithRetries(SaveChangesOptions.ReplaceOnUpdate);
 
-<h2><a name="delete-entity"></a><span class="short-header">Delete an entity</span>How to: Delete an entity</h2>
+## 删除实体如何：删除实体
 
-You can easily delete an entity after you have retrieved it. You can
-also use the **AttachTo** method to begin tracking it without retrieving
-it from the server (see insert-or-replace above). Once the entity is
-tracked with **serviceContext**, call **DeleteObject** with the entity
-to delete. Then call **SaveChangesWithRetries**. The following code
-retrieves and deletes a customer entity.
+你可以在检索到实体后轻松将其删除。还可以
+使用 **AttachTo** 方法开始跟踪它，而无需从服务器中检索它
+（请参阅上面的“插入或替换”）。在使
+用 **serviceContext** 跟踪实体后，对要删除的实体
+调用 **DeleteObject**。然后调用 **SaveChangesWithRetries**。以下代码
+检索并删除一个客户实体。
 
-    // Retrieve storage account from connection string
+    // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // 创建表客户端
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    // Get the data service context
+    // 获取数据服务上下文
     TableServiceContext serviceContext = tableClient.GetDataServiceContext();
 
     CustomerEntity specificEntity =
-        (from e in serviceContext.CreateQuery<CustomerEntity>("people")
-         where e.PartitionKey == "Smith" && e.RowKey == "Jeff"
-         select e).FirstOrDefault();
+    (from e in serviceContext.CreateQuery<CustomerEntity>("people")
+    where e.PartitionKey == "Smith" && e.RowKey == "Jeff"
+    select e).FirstOrDefault();
 
-    // Delete the entity
+    // 删除实体
     serviceContext.DeleteObject(specificEntity);
 
-    // Submit the operation to the table service
+    // 将操作提交到表服务
     serviceContext.SaveChangesWithRetries();
 
-<h2><a name="delete-table"></a><span class="short-header">Delete a table</span>How to: Delete a table</h2>
+## 删除表如何：删除表
 
-Finally, the following code deletes a table from a storage account. A
-table which has been deleted will be unavailable to be recreated for a
-period of time following the deletion.
+最后，以下代码将从存储帐户中删除一个表。
+在删除表之后的一段时间
+内无法重新创建它。
 
-    // Retrieve storage account from connection string
+    // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-    // Create the table client
+    // 创建表客户端
     CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
-    // Delete the table it if exists
+    // 如果表存在，则将其删除
     tableClient.DeleteTableIfExist("people");
 
-<h2><a name="next-steps"></a><span class="short-header">Next steps</span>Next steps</h2>
+## 后续步骤后续步骤
 
-Now that you've learned the basics of table storage, follow these links
-to learn how to do more complex storage tasks.
+现在，你已了解有关表存储的基础知识，可单击下面的链接来了解如何
+执行更复杂的存储任务。
 
-<ul>
-<li>View the blob service reference documentation for complete details about available APIs:
-  <ul>
-    <li><a href="http://msdn.microsoft.com/zh-cn/library/azure/wa_storage_30_reference_home.aspx">.NET client library reference</a>
-    </li>
-    <li><a href="http://msdn.microsoft.com/zh-cn/library/azure/dd179355">REST API reference</a></li>
-  </ul>
-</li>
-<li>Learn about more advanced tasks you can perform with Azure Storage at <a href="http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx">Storing and Accessing Data in Azure</a>.</li>
-<li>View more feature guides to learn about additional options for storing data in Azure.
-  <ul>
-    <li>Use <a href="/en-us/develop/net/how-to-guides/blob-storage/">Blob Storage</a> to store unstructured data.</li>
-    <li>Use <a href="/en-us/develop/net/how-to-guides/sql-database/">SQL Database</a> to store relational data.</li>
-  </ul>
-</li>
-</ul>
+-   查看 Blob 服务参考文档，了解有关可用 API 的完整详情：
+    -   [.NET 客户端库引用][]
+    -   [REST API 参考][]
+-   在以下位置了解使用 Azure 存储空间能够执行的更高级任务：[在 Azure 中存储和访问数据][]。
+-   查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
+    -   使用 [Blob 存储][]来存储非结构化数据。
+    -   使用 [SQL Database][] 来存储关系数据。
 
-  [Next Steps]: #next-steps
-  [What is the Table Service]: #what-is
-  [Concepts]: #concepts
-  [Create an Azure Storage Account]: #create-account
-  [Create an Azure Project in Visual Studio]: #create-project
-  [Configure your Application to Access Storage]: #configure-access
-  [Setup a storage Connection String]: #setup-connection-string
-  [How to: Programmatically access table storage]: #configure-access
-  [How To: Create a Table]: #create-table
-  [How To: Add an Entity to a Table]: #add-entity
-  [How To: Insert a Batch of Entities]: #insert-batch
-  [How To: Retrieve All Entities in a Partition]: #retrieve-all-entities
-  [How To: Retrieve a Range of Entities in a Partition]: #retrieve-range-entities
-  [How To: Retrieve a Single Entity]: #retrieve-single-entity
-  [How To: Update an Entity]: #update-entity
-  [How To: Query a Subset of Entity Properties]: #query-entity-properties
-  [How To: Insert-or-Replace an Entity]: #insert-entity
-  [How To: Delete an Entity]: #delete-entity
-  [How To: Delete a Table]: #delete-table
-  [Download and install the Azure SDK for .NET]: /en-us/develop/net/
-  [Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/zh-cn/library/azure/ee405487.aspx
-  
+  [1.7 版]: /en-us/develop/net/how-to-guides/table-services-v17/ "1.7 版"
+  [2.0 版]: /en-us/develop/net/how-to-guides/table-services/ "2.0 版"
+  [后续步骤]: #next-steps
+  [什么是表服务？]: #what-is
+  [概念]: #concepts
+  [创建 Azure 存储帐户]: #create-account
+  [设置存储连接字符串]: #setup-connection-string
+  [如何：以编程方式访问表存储]: #configure-access
+  [如何：创建表]: #create-table
+  [如何：将实体添加到表]: #add-entity
+  [如何：插入一批实体]: #insert-batch
+  [如何：检索分区中的所有实体]: #retrieve-all-entities
+  [如何：检索分区中的一部分实体]: #retrieve-range-entities
+  [如何：检索单个实体]: #retrieve-single-entity
+  [如何：更新实体]: #update-entity
+  [如何：查询一部分实体属性]: #query-entity-properties
+  [如何：插入或替换实体]: #insert-entity
+  [如何：删除实体]: #delete-entity
+  [如何：删除表]: #delete-table
+  [howto-table-storage]: ../includes/howto-table-storage.md
+  [create-storage-account]: ../includes/create-storage-account.md
   [Blob5]: ./media/storage-dotnet-how-to-use-table-storage-17/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-table-storage-17/blob6.png
   [Blob7]: ./media/storage-dotnet-how-to-use-table-storage-17/blob7.png
   [Blob8]: ./media/storage-dotnet-how-to-use-table-storage-17/blob8.png
   [Blob9]: ./media/storage-dotnet-how-to-use-table-storage-17/blob9.png
-  
-  [blog post]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Configuring Connection Strings]: http://msdn.microsoft.com/zh-cn/library/azure/ee758697.aspx
+  [配置连接字符串]: http://msdn.microsoft.com/zh-cn/library/azure/ee758697.aspx
+  [博客文章]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
+  [.NET 客户端库引用]: http://msdn.microsoft.com/zh-cn/library/azure/wa_storage_30_reference_home.aspx
+  [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
+  [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
+  [Blob 存储]: /en-us/develop/net/how-to-guides/blob-storage/
+  [SQL Database]: /en-us/develop/net/how-to-guides/sql-database/

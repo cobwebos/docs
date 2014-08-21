@@ -1,142 +1,118 @@
 <properties linkid="" urlDisplayName="" pageTitle="" metaKeywords="" description="" metaCanonical="" services="" documentationCenter="" title="How to Use Media Services" authors="" solutions="" manager="" editor="" />
 
+如何使用 Media Services
+=======================
 
-#How to Use Media Services
+本指南说明如何开始使用 Azure Media Services 进行编程。本指南由几篇文章组成，并提供 Media Services 的技术概述、针对 Media Services 配置 Azure 帐户的步骤、开发设置指南，以及介绍如何完成典型编程任务的主题。演示的方案包括：上载资产、加密资产、为资产编码和交付资产。示例以 C\# 编写，并使用 Media Services SDK for .NET。有关 Azure Media Services 的详细信息，请参阅[后续步骤](#next-steps)主题。
 
-This guide shows you how to start programming with Azure Media Services. The guide consists of a set of articles and includes a technical overview of Media Services, steps to configure your Azure account for Media Services, a setup guide for development, and topics that show how to accomplish typical programming tasks. The scenarios demonstrated include: uploading assets, encrypting assets, encoding assets, and delivering assets.The samples are written in C# and use the Media Services SDK for .NET. For more information on Azure Media Services, refer to the [Next Steps][] topic.
+也可以使用基于 OData 的 REST API 为 Media Services 编程。通过 .NET 语言或其他编程语言对 Media Services 执行 REST API 调用便可生成应用程序。有关使用 Media Services REST API 进行编程的完整文档系列，请参阅[使用 Azure Media Services REST API 生成应用程序](http://go.microsoft.com/fwlink/?linkid=252967)。
 
-You can also program Media Services using the OData-based REST APIs. You can build an application making REST API calls to Media Services from .NET languages or other programming languages. For a full documentation series on programming with the Media Services REST API, see [Building Applications with the Azure Media Services REST API](http://go.microsoft.com/fwlink/?linkid=252967). 
+若要使用 Media Services REST API 或 Media Services SDK 开始编程，请先根据[针对 Media Services 设置 Azure 帐户](#setup-account)部分中所述，启用用于 Media Services 的 Azure 帐户。
 
-To start programming with the Media Services REST API or the Media Services SDK, first enable your Azure account for Media Services as described in the section [Setting Up an Azure Account for Media Services][].
+[此处](http://msdn.microsoft.com/zh-cn/library/hh973613.aspx)提供了最新的 Media Services SDK 文档。
 
-The most up-to-date Media Services SDK documentation is located [here](http://msdn.microsoft.com/zh-cn/library/hh973613.aspx). 
+什么是 Media Services？
+-----------------------
 
-##<a name="what-are"></a><span class="short header">What are Media Services?</span>
-Azure Media Services form an extensible media platform that integrates the best of the Microsoft Media Platform and third-party media components in Azure. Media Services provide a media pipeline in the cloud that enables industry partners to extend or replace component technologies. ISVs and media providers can use Media Services to build end-to-end media solutions. This overview describes the general architecture and common development scenarios for Media Services.
+Azure Media Services 构成了一个可扩展的媒体平台，它在 Azure 中集成了 Microsoft Media Platform 和第三方媒体组件的精华。Media Services 在云中提供一个媒体管道，让行业合作伙伴扩展或取代组件技术。ISV 和媒体提供商可以使用 Media Services 来生成端到端媒体解决方案。本概述主题将介绍 Media Services 的一般体系结构和常见开发方案。
 
-The following diagram illustrates the basic Media Services architecture.
+下图展示了 Media Services 的基本体系结构。
 
-![Media Services Architecture](./media/media-services-dotnet-how-to-use/wams-01.png)
+![Media Services 体系结构](./media/media-services-dotnet-how-to-use/wams-01.png)
 
-###Media Services Feature Support
-The current release of Media Services provides the following feature set for developing media applications in the cloud.
+### Media Services 功能支持
 
-- **Ingest**. Ingest operations bring assets into the system, for example by uploading them and encrypting them before they are placed into Azure Storage. Media Services offers integration with partner components to provide fast UDP (User Datagram Protocol) upload solutions.
-- **Encode**. Encode operations include encoding, transforming and converting media assets. You can run encoding tasks in the cloud using the Azure Media Encoder. Encoding options include the following:
-   - Use the Azure Media Encoder and work with a range of standard codecs and formats, including industry-leading IIS Smooth Streaming, MP4, and conversion to Apple HTTP Live Streaming.
-   - Convert entire libraries or individual files with total control over input and output.
-   - A large set of supported file types, formats, and codecs (see [Supported File Types for Media Services][]).
-   - Supported format conversions. Media Services enable you to convert ISO MP4 (.mp4) to Smooth Streaming File Format (PIFF 1.3) (.ismv; .isma). You can also convert Smooth Streaming File Format (PIFF) to Apple HTTP Live Streaming (.msu8, .ts).
-- **Protect**. Protecting content means encrypting live streaming or on demand content for secure transport, storage, and delivery. Media Services provide a DRM technology-agnostic solution for protecting content.  Currently supported DRM technologies are Microsoft PlayReady and MPEG Common Encryption. Support for additional DRM technologies will be available. 
-- **Stream**. Streaming content involves sending it live or on demand to clients, or you can download specific media files from the cloud. Media Services provide a format-agnostic solution for streaming content.  Media Services provide streaming origin support for Smooth Streaming, Apple HTTP Live Streaming, and MP4 formats. Support for additional formats will be available. You can also seamlessly deliver streaming content by using a third-party CDN, which enables the option  to scale to millions of users.   
+当前版本的 Media Services 提供以下功能集，用于在云中开发媒体应用程序。
 
-###Media Services Development Scenarios
-Media Services support several common media development scenarios as described in the following table. 
-<table border="2" cellspacing="0" cellpadding="5" style="border: 2px solid #000000;">
-  <thead>
-    <tr>
-       <th>Scenario</th>
-       <th>Description</th>
+-   **引入**。引入操作可将资产插入到系统，例如，先将其上载并加密，然后再将其放入 Azure 存储空间。Media Services 允许与合作伙伴组件相集成，以提供快速 UDP（用户数据报协议）上载解决方案。
+-   **编码**。编码操作包括编码、变换和转换媒体资产。你可以使用 Azure 媒体编码器在云中运行编码任务。编码选项包括：
+    -   使用 Azure 媒体编码器并操作一系列标准编解码器和格式，包括行业领先的 IIS 平滑流式处理和 MP4，以及将相关格式转换为 Apple HTTP 实时流。
+    -   转换整个库或单个文件，并获取对输入和输出的全面控制权。
+    -   受支持的文件类型、格式和编解码器众多（请参阅 [Media Services 支持的文件类型](http://msdn.microsoft.com/en-us/library/hh973634)）。
+    -   支持的格式转换。Media Services 允许你将 ISO MP4 (.mp4) 转换为平滑流式处理文件格式 (PIFF 1.3)（.ismv；.isma）。还可以将平滑流式处理文件格式 (PIFF) 转换为 Apple HTTP 实时流（.msu8、.ts）。
+-   **保护**。保护内容意味着对实时流内容或点播内容进行加密，以安全地进行传输、存储和交付。Media Services 提供 DRM 技术感知的解决方案来保护内容。当前支持的 DRM 技术包括 Microsoft PlayReady 和 MPEG 通用加密。将来会提供对其他 DRM 技术的支持。
+-   **流式处理**。流式处理内容涉及到将实时内容或点播内容发送到客户端，或者让你从云中下载特定的媒体文件。Media Services 提供格式感知的解决方案来流式处理内容。Media Services 针对平滑流式处理、Apple HTTP 实时流和 MP4 格式提供流式来源支持。将来会提供对其他格式的支持。你也可以使用第三方 CDN（启用相应的选项即可扩展为支持数百万个用户）无缝交付流式处理内容。
+
+### Media Services 开发方案
+
+Media Services 支持下表中所述的多种常见媒体开发方案。
+
+<table data-morhtml="true" border="2" cellspacing="0" cellpadding="5" style="border: 2px solid #000000;">
+  <thead data-morhtml="true">
+    <tr data-morhtml="true">
+<th data-morhtml="true">方案</th>
+<th data-morhtml="true">说明</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-        <td>Building end-to-end workflows</td>
-        <td>Build comprehensive media workflows entirely in the cloud. From uploading media to distributing content, Media Services provide a range of components that can be combined to handle specific application workflows. Current capabilities include upload, storage, encoding, format conversion, content protection, and on-demand streaming delivery.</td>
+  <tbody data-morhtml="true">
+    <tr data-morhtml="true">
+<td data-morhtml="true">生成端到端工作流</td>
+<td data-morhtml="true">完全在云中生成综合性的媒体工作流。从上载媒体到分发内容，Media Services 提供一系列组件，将这些组件相结合可以处理特定的应用工作流。当前功能包括上载、存储、编码、格式转换、内容保护和点播流交付。</td>
     </tr>
-    <tr>
-        <td>Building hybrid workflows</td>
-        <td>You can integrate Media Services with existing tools and processes. For example, encode content on-site then upload to Media Services for transcoding into multiple formats and deliver through Azure CDN, or a third-party CDN. Media Services can be called individually via standard REST APIs for integration with external applications and services.</td>
+    <tr data-morhtml="true">
+<td data-morhtml="true">生成混合工作流</td>
+<td data-morhtml="true">你可以将 Media Services 与现有工具和过程相集成。例如，在现场为内容编码，再将其上载到 Media Services 以转码为多种格式，然后通过 Azure CDN 或第三方 CDN 交付内容。可以通过标准 REST API 单独调用 Media Services，以将它与外部应用程序和服务相集成。</td>
     </tr>
-    <tr>
-        <td>Providing cloud support for media players</td>
-        <td>You can create, manage, and deliver media across multiple devices (including iOS, Android, and Windows devices) and platforms.</td>
+    <tr data-morhtml="true">
+<td data-morhtml="true">为媒体播放器提供云支持</td>
+<td data-morhtml="true">你可以跨多个设备（包括 iOS、Android 和 Windows 设备）与平台创建、管理和交付媒体。</td>
     </tr>
   </tbody>
 </table>
 
-<h3><a name="media-client"></a>Media Services Client Development</h3>
-Extend the reach of your Media Services solution by using SDKs and player frameworks to build media client applications. These clients are for developers who want to build Media Services applications that offer compelling user experiences across a range of devices and platforms. Depending on the target devices, there are options for SDKs and player frameworks available from Microsoft and third-party partners.  
+### Media Services 客户端开发
 
-The following provides a list of available client SDKs and player frameworks.  For more information on these and other planned SDKs and player frameworks, and the functionality they can support, see [Media Services Client Development][] in the Media Services forums. 
+使用 SDK 和播放器框架扩展 Media Services 解决方案的功能范围，以生成媒体客户端应用程序。开发人员可以使用这些客户端来生成 Media Services 应用程序，在各种设备和平台上提供引人入胜的用户体验。根据目标设备，你可以选择 Microsoft 和第三方合作伙伴提供的多种 SDK 和播放器框架。
 
-####Mac and PC client support  
-For PCs and Macs you can target a streaming experience using Microsoft Silverlight or Adobe Open Source Media Framework.
+下面提供了可用客户端 SDK 和播放器框架的列表。有关此处所列和其他已计划的 SDK 与播放器框架及其支持的功能的详细信息，请参阅 Media Services 论坛中的 [Media Services 客户端开发](http://social.msdn.microsoft.com/Forums/zh-cn/MediaServices/thread/e9092ec6-2dfc-44cb-adce-1dc935309d2a)。
 
--	[Smooth Streaming Client for Silverlight](http://www.microsoft.com/zh-cn/download/details.aspx?id=29940)
--	[Microsoft Media Platform: Player Framework for Silverlight](http://smf.codeplex.com/documentation)
--	[Smooth Streaming Plugin for OSMF 2.0](http://go.microsoft.com/fwlink/?LinkId=275022). For information on how to use this plug-in, see [How to Use Smooth Streaming Plugin for Adobe Open Source Media Framework](http://go.microsoft.com/fwlink/?LinkId=275034).
+#### Mac 和 PC 客户端支持
 
-####Windows 8 applications
-For Windows 8, you can build Windows Store applications using any of the supported development languages and constructs like HTML, Javascript, XAML, C# and C+.
+对于 PC 和 Mac，你可以使用 Microsoft Silverlight 或 Adobe Open Source Media Framework 来针对性地设计流式处理体验。
 
--	[Smooth Streaming Client SDK for Windows 8](http://go.microsoft.com/fwlink/?LinkID=246146). For more information on how to create a Windows Store application using this SDK, see [How to Build a Smooth Streaming Windows Store Application](http://go.microsoft.com/fwlink/?LinkId=271647). For information on how to create a smooth streaming player in HTML5, see [Walkthrough: Building Your First HTML5 Smooth Streaming Player](http://msdn.microsoft.com/en-us/library/jj573656(v=vs.90).aspx).
+-   [适用于 Silverlight 的平滑流式处理客户端](http://www.microsoft.com/zh-cn/download/details.aspx?id=29940)
+-   [Microsoft Media Platform：适用于 Silverlight 的播放器框架](http://smf.codeplex.com/documentation)
+-   [适用于 OSMF 2.0 的平滑流式处理插件](http://go.microsoft.com/fwlink/?LinkId=275022)。有关如何使用此插件的信息，请参阅[如何使用适用于 Adobe Open Source Media Framework 的平滑流式处理插件](http://go.microsoft.com/fwlink/?LinkId=275034)。
 
--	[Microsoft Media Platform: Player Framework for Windows 8 Windows Store Applications](http://playerframework.codeplex.com/wikipage?title=Player%20Framework%20for%20Windows%208%20Metro%20Style%20Apps&referringTitle=Home)
+#### Windows 8 应用程序
 
-####Xbox
-Xbox supports Xbox LIVE applications that can consume Smooth Streaming content. The Xbox LIVE Application Development Kit (ADK) includes:
+对于 Windows 8，你可以使用支持的任一开发语言和构造（例如 HTML、Javascript、XAML、C\# 和 C+）生成 Windows 应用商店应用程序。
 
--	Smooth Streaming client for Xbox LIVE ADK
--	Microsoft Media Platform: Player Framework for Xbox LIVE ADK
+-   [适用于 Windows 8 的平滑流式处理客户端 SDK](http://go.microsoft.com/fwlink/?LinkID=246146)。有关如何使用此 SDK 创建 Windows 应用商店应用程序的详细信息，请参阅[如何生成平滑流式处理 Windows 应用商店应用程序](http://go.microsoft.com/fwlink/?LinkId=271647)。有关如何使用 HTML5 语言创建平滑流式处理播放器的信息，请参阅[演练：生成你的第一个 HTML5 平滑流式处理播放器](http://msdn.microsoft.com/en-us/library/jj573656(v=vs.90).aspx)。
 
-####Embedded or dedicated devices
-Devices such as connected TVs, set-top boxes, Blu-Ray players, OTT TV boxes, and mobile devices that have a custom application development framework and a custom media pipeline. Microsoft provides the following porting kits that can be licensed, and enables partners to port Smooth Streaming playback for the platform.
+-   [Microsoft Media Platform：适用于 Windows 8 Windows 应用商店应用程序的播放器框架](http://playerframework.codeplex.com/wikipage?title=Player%20Framework%20for%20Windows%208%20Metro%20Style%20Apps&referringTitle=Home)
 
--	[Smooth Streaming Client Porting Kit](http://www.microsoft.com/zh-cn/mediaplatform/sspk.aspx)
--	[Microsoft PlayReady Device Porting Kit](http://www.microsoft.com/PlayReady/Licensing/device_technology.mspx)
+#### Xbox
 
-####Windows Phone
-Microsoft provides an SDK that can be used to build premium video applications for Windows Phone. 
+Xbox 支持可使用平滑流式处理内容的 Xbox LIVE 应用程序。Xbox LIVE 应用程序开发工具包 (ADK) 包含：
 
--	[Smooth Streaming Client for Silverlight](http://www.microsoft.com/zh-cn/download/details.aspx?id=29940)
--	[Microsoft Media Platform: Player Framework for Silverlight](http://smf.codeplex.com/documentation)
+-   适用于 Xbox LIVE ADK 的平滑流式处理客户端
+-   Microsoft Media Platform：适用于 Xbox LIVE ADK 的播放器框架
 
-####iOS devices
-For iOS devices including iPhone, iPod, and iPad, Microsoft ships an SDK that you can use to build applications for these platforms to deliver premium video content: Smooth Streaming SDK for iOS Devices with PlayReady.  The SDK is available only to licensees, so for more information, please [email Microsoft](mailto:askdrm@microsoft.com). For information on iOS development, see the [iOS Developer Center](https://developer.apple.com/devcenter/ios/index.action).
+#### 嵌入式设备或专用设备
 
-####Android devices
-Several Microsoft partners ship SDKs for the Android platform that add the capability to play back Smooth Streaming on an Android device. Please [email Microsoft](mailto:sspkinfo@microsoft.com?subject=Partner%20SDKs%20for%20Android%20Devices) for more details on the partners.
+联网的电视机、机顶盒、蓝光播放机、智能电视机顶盒等设备，以及带有自定义应用程序开发框架和自定义媒体管道的移动设备。Microsoft 提供以下可购买许可的移植工具包，并允许合作伙伴为平台移植平滑流式处理播放功能。
 
-##Next Steps
-Now that you have an overview of Media Services, go to the [Setting Up Your Computer for Media Services](http://go.microsoft.com/fwlink/?LinkId=301751) topic.
+-   [平滑流式处理客户端移植工具包](http://www.microsoft.com/zh-cn/mediaplatform/sspk.aspx)
+-   [Microsoft PlayReady 设备移植工具包](http://www.microsoft.com/PlayReady/Licensing/device_technology.mspx)
 
+#### Windows Phone
 
-  [What Are Media Services?]: #what-are
-  [Media Services Client Development]: #media-client
-  [Setting Up an Azure Account for Media Services]: #setup-account
-  [Setting up for Media Services Development]: #setup-dev
-  [How to: Connect to Media Services Programmatically]: #connect
-  [How to: Create an Encrypted Asset and Upload to Storage]: #create-asset
-  [How to: Get a Media Processor Instance]: #get-mediaproc
-  [How to: Check Job Progress]: #check-job-progress
-  [How to: Encode an Asset]: #encode-asset
-  [How to: Protect an Asset with PlayReady Protection]: #playready
-  [How to: Manage Assets in Storage]: #manage-asset
-  [How to: Deliver an Asset by Download]: #download-asset
-  [How to: Deliver Streaming Content]: #stream-asset
-  [How to: Deliver Apple HLS Streaming Content]: #stream-HLS
-  [How to: Enable Azure CDN]: #enable-cdn
-  [Next Steps]: #next-steps
+Microsoft 提供可用于生成 Windows Phone 版高级视频应用程序的 SDK。
 
-  [Building Applications with the Azure Media Services REST API]: http://go.microsoft.com/fwlink/?linkid=252967
-  [Open Data Protocol]: http://odata.org/
-  [WCF Data Services 5.0 for OData v3]: http://www.microsoft.com/download/en/details.aspx?id=29306
-  [Azure Marketplace]: https://datamarket.azure.com/
-  [Media Services Client Development]: http://social.msdn.microsoft.com/Forums/zh-cn/MediaServices/thread/e9092ec6-2dfc-44cb-adce-1dc935309d2a
-  [Media Services Preview:  Supported Features]: http://social.msdn.microsoft.com/Forums/zh-cn/MediaServices/thread/eb946433-16f2-4eac-834d-4057335233e0
-  [Media Services Upcoming Releases:  Planned Feature Support]: http://social.msdn.microsoft.com/Forums/en-US/MediaServices/thread/431ef036-0939-4784-a939-0ecb31151ded
-  [Media Services Preview Account Setup]: http://go.microsoft.com/fwlink/?linkid=247287
-  [Azure Media Services SDK for .NET]: http://go.microsoft.com/fwlink/?LinkID=256500
-  [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
-  [Installing the Azure SDK on Windows 8]: http://www.windowsazure.cn/zh-cn/develop/net/other-resources/windows-azure-on-windows-8/
-  [Azure Media Services Documentation]: http://go.microsoft.com/fwlink/?linkid=245437
-  [Getting Started with the Azure CDN]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ff919705.aspx
-  [Media Services Forum]: http://social.msdn.microsoft.com/Forums/zh-cn/MediaServices/threads
-  [Getting Started with the Media Services SDK for .NET]: http://go.microsoft.com/fwlink/?linkid=252966
-  [Building Applications with the Media Services SDK for .NET]: http://go.microsoft.com/fwlink/?linkid=247821
-  [Azure Management Portal]: https://manage.windowsazure.cn/
-  [How to Create a Media Services Account]: http://go.microsoft.com/fwlink/?linkid=256662
-  [Supported File Types for Media Services]: http://msdn.microsoft.com/en-us/library/hh973634
+-   [适用于 Silverlight 的平滑流式处理客户端](http://www.microsoft.com/zh-cn/download/details.aspx?id=29940)
+-   [Microsoft Media Platform：适用于 Silverlight 的播放器框架](http://smf.codeplex.com/documentation)
 
+#### iOS 设备
+
+对于 iPhone、iPod 和 iPad 等 iOS 设备，Microsoft 随附了一个 SDK，让你针对这些平台生成应用程序，以交付高级视频内容：适用于具有 PlayReady 功能的 iOS 设备的平滑流式处理 SDK。该 SDK 仅向许可接受方提供，有关详细信息，请[向 Microsoft 发送电子邮件](mailto:askdrm@microsoft.com)。有关 iOS 开发的信息，请参阅 [iOS 开发人员中心](https://developer.apple.com/devcenter/ios/index.action)。
+
+#### Android 设备
+
+有许多 Microsoft 合作伙伴针对 Android 平台提供 SDK，用于在 Android 设备上添加播放平滑流式处理内容的功能。有关这些合作伙伴的更多详细信息，请[向 Microsoft 发送电子邮件](mailto:sspkinfo@microsoft.com?subject=Partner%20SDKs%20for%20Android%20Devices)。
+
+后续步骤
+--------
+
+了解 Media Services 的概况后，请转到[针对 Media Services 设置计算机](http://go.microsoft.com/fwlink/?LinkId=301751)主题。
 
