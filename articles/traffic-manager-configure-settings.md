@@ -21,9 +21,9 @@ Traffic Manager 的工作方式是，向针对公司主域名的 DNS 查询应�
 
 若要将公司域名指向 Traffic Manager 域，请使用 CNAME 编辑 DNS 服务器上的 DNS 资源记录。
 
-例如，若要将公司主域 **www.contoso.com** 指向名为 **contoso.trafficmanager.net** 的 Traffic Manager 域，请更新 DNS 资源记录，如下所示：`www.contoso.com IN CNAME contoso.trafficmanager.net`
+例如，若要将公司主域 **www.contoso.com** 指向名为 **contoso.trafficmanager.cn** 的 Traffic Manager 域，请更新 DNS 资源记录，如下所示：`www.contoso.com IN CNAME contoso.trafficmanager.cn`
 
-此时，转到 *www.contoso.com* 的所有流量将重定向到 *contoso.trafficmanager.net*。请确保你使用的是希望将其中的所有流量重定向到 Traffic Manager 的域。
+此时，转到 *www.contoso.com* 的所有流量将重定向到 *contoso.trafficmanager.cn*。请确保你使用的是希望将其中的所有流量重定向到 Traffic Manager 的域。
 
 <a id="howto_test"></a>
 ## 如何：测试策略
@@ -48,7 +48,7 @@ Traffic Manager 的工作方式是，向针对公司主域名的 DNS 查询应�
 
 >2.  键入 `ipconfig /flushdns` 以便刷新 DNS 解析器缓存。
 
->3. 键入命令 ``nslookup <your traffic manager domain>``。例如，以下命令将检查前缀为 *myapp.contoso* `nslookup myapp.contoso.trafficmanager.net` 的域
+>3. 键入命令 ``nslookup <your traffic manager domain>``。例如，以下命令将检查前缀为 *myapp.contoso* `nslookup myapp.contoso.trafficmanager.cn` 的域
 
 >>典型结果将显示以下内容：
 
@@ -190,7 +190,7 @@ Traffic Manager 的工作方式是，向针对公司主域名的 DNS 查询应�
 
 9.  **测试 Traffic Manager 域和策略**。有关说明，请参阅[如何：测试 Azure Traffic Manager 策略](#howto_test)。
 
-10. **将 DNS 服务器指向 Traffic Manager 域。**在设置并运行 Traffic Manager 域后，请编辑权威 DNS 服务器上的 DNS 记录以将公司域指向 Traffic Manager 域。例如，以下命令会将转到 **www.contoso.com** 的所有流量路由至 Traffic Manager 域 **contoso.trafficmanager.net**：`www.contoso.com IN CNAME contoso.trafficmanager.net` 有关详细信息，请参阅[如何：将公司 Internet 域指向 Azure Traffic Manager 域](#howto_point_company)。
+10. **将 DNS 服务器指向 Traffic Manager 域。**在设置并运行 Traffic Manager 域后，请编辑权威 DNS 服务器上的 DNS 记录以将公司域指向 Traffic Manager 域。例如，以下命令会将转到 **www.contoso.com** 的所有流量路由至 Traffic Manager 域 **contoso.trafficmanager.cn**：`www.contoso.com IN CNAME contoso.trafficmanager.cn` 有关详细信息，请参阅[如何：将公司 Internet 域指向 Azure Traffic Manager 域](#howto_point_company)。
 
 <a id="howto_create_failover"></a>
 ## 如何：创建故障转移策略
@@ -227,7 +227,7 @@ Traffic Manager 的工作方式是，向针对公司主域名的 DNS 查询应�
 
 9.  **测试 Traffic Manager 域和策略。**有关详细信息，请参阅[如何：测试 Azure Traffic Manager 策略](#howto_test)。
 
-10. **将 DNS 服务器指向 Traffic Manager 域。**在设置并运行 Traffic Manager 域后，请编辑权威 DNS 服务器上的 DNS 记录以将公司域指向 Traffic Manager 域。有关详细信息，请参阅[如何将公司 Internet 域指向 Traffic Manager 域](#howto_point_company)。例如，以下命令会将发往 **www.contoso.com** 的所有流量路由至 Traffic Manager 域 **contoso.trafficmanager.net** `www.contoso.com IN CNAME contoso.trafficmanager.net`
+10. **将 DNS 服务器指向 Traffic Manager 域。**在设置并运行 Traffic Manager 域后，请编辑权威 DNS 服务器上的 DNS 记录以将公司域指向 Traffic Manager 域。有关详细信息，请参阅[如何将公司 Internet 域指向 Traffic Manager 域](#howto_point_company)。例如，以下命令会将发往 **www.contoso.com** 的所有流量路由至 Traffic Manager 域 **contoso.trafficmanager.cn** `www.contoso.com IN CNAME contoso.trafficmanager.cn`
 
 <a id="howto_direct"></a>
 ## 如何：基于网络性能将传入流量定向到托管服务
@@ -264,7 +264,7 @@ Traffic Manager 的工作方式是，向针对公司主域名的 DNS 查询应�
 
 9.  **测试 Traffic Manager 域和策略。**有关测试的详细信息，请参阅[如何：测试 Azure Traffic Manager 策略](#howto_test)。
 
-10. **将 DNS 服务器指向 Traffic Manager 域。**在设置并运行 Traffic Manager 域后，请编辑权威 DNS 服务器上的 DNS 记录以将公司域指向 Traffic Manager 域。例如，以下命令会将发往 **www.contoso.com** 的所有流量路由至 Traffic Manager 域 **contoso.trafficmanager.net** `www.contoso.com IN CNAME contoso.trafficmanager.net` 有关详细信息，请参阅[如何：将公司 Internet 域指向 Azure Traffic Manager 域](#howto_point_company)。
+10. **将 DNS 服务器指向 Traffic Manager 域。**在设置并运行 Traffic Manager 域后，请编辑权威 DNS 服务器上的 DNS 记录以将公司域指向 Traffic Manager 域。例如，以下命令会将发往 **www.contoso.com** 的所有流量路由至 Traffic Manager 域 **contoso.trafficmanager.cn** `www.contoso.com IN CNAME contoso.trafficmanager.cn` 有关详细信息，请参阅[如何：将公司 Internet 域指向 Azure Traffic Manager 域](#howto_point_company)。
 
 [0]: ./media/traffic-manager-configure-settings/hosted_service_IP_location.png
 [1]: ./media/traffic-manager-configure-settings/nslookup_command_example.png
