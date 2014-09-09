@@ -1,225 +1,218 @@
 <properties pageTitle="Get started with push notifications (Windows Phone) | Mobile Dev Center" metaKeywords="" description="Learn how to use Azure Mobile Services to send push notifications to your Windows Phone app." metaCanonical="" services="" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
+# 移动服务中的推送通知入门
 
-# Get started with push notifications in Mobile Services
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-push" title="Windows Store C#" >Windows 应用商店 C\#</a><a href="/zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-push" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/documentation/articles/mobile-services-windows-phone-get-started-push" title="Windows Phone" class="current">Windows Phone</a><a href="/zh-cn/documentation/articles/mobile-services-ios-get-started-push" title="iOS">iOS</a><a href="/zh-cn/documentation/articles/mobile-services-android-get-started-push" title="Android">Android</a><a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started-push" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started-push" title="Xamarin.Android">Xamarin.Android</a></div>
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-push" title="Windows Store C#" >Windows Store C#</a><a href="/en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-push" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started-push" title="Windows Phone" class="current">Windows Phone</a><a href="/en-us/documentation/articles/mobile-services-ios-get-started-push" title="iOS">iOS</a><a href="/en-us/documentation/articles/mobile-services-android-get-started-push" title="Android">Android</a><a href="/en-us/documentation/articles/partner-xamarin-mobile-services-ios-get-started-push" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/documentation/articles/partner-xamarin-mobile-services-android-get-started-push" title="Xamarin.Android">Xamarin.Android</a></div>
-
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/" title=".NET backend">.NET backend</a> | <a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started-push/"  title="JavaScript backend" class="current">JavaScript backend</a>
+<div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/" title=".NET backend">.NET 后端</a> | <a href="/zh-cn/documentation/articles/mobile-services-windows-phone-get-started-push/"  title="JavaScript backend" class="current">JavaScript 后端</a>
 </div>
 
-This topic shows you how to use Azure Mobile Services to send push notifications to a Windows Phone 8 app. 
-In this tutorial you add push notifications using the Microsoft Push Notification Service (MPNS) to the quickstart project. When complete, your mobile service will send a push notification each time a record is inserted.
+本主题说明如何使用 Azure 移动服务向 Windows Phone 8 应用程序发送推送通知。
+在本教程中，你将向快速入门项目添加使用 Microsoft 推送通知服务 (MPNS) 的推送通知功能。完成本教程后，每次插入一条记录时，你的移动服务就会发送一条推送通知。
 
->[WACOM.NOTE]Mobile Services now integrates with Azure Notification Hubs to support additional push notification functionality, such as templates, multiple platforms, and scale. This integrated functionality is currently in preview. For more information, see this version of [Get started with push notifications](/en-us/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/).
+> [WACOM.NOTE] 移动服务现在将与 Azure 通知中心集成，以支持附加的推送通知功能，如模板、多个平台和规模。此集成的功能目前处于预览状态。有关详细信息，请参阅此版本的[推送通知入门][]。
 
-This tutorial walks you through these basic steps to enable push notifications:
+本教程将指导你完成启用推送通知的以下基本步骤：
 
-1. [Create the Registrations table]
-2. [Add push notifications to the app]
-3. [Update scripts to send push notifications]
-4. [Insert data to receive notifications]
+1.  [创建 Registrations 表][]
+2.  [向应用程序添加推送通知][]
+3.  [更新脚本以发送推送通知][]
+4.  [插入数据以接收通知][]
 
-This tutorial requires [Visual Studio 2012 Express for Windows Phone], or a later version.
+本教程需要安装 [Visual Studio 2012 Express for Windows Phone][] 或更高版本。
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services]. 
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]。
 
-   >[WACOM.NOTE]When you send more than 500 messages per user each day, you must instead use Notification Hubs. For more information, see <a href="/en-us/manage/services/notification-hubs/getting-started-windows-dotnet/">Get started with Notification Hubs</a>.
+> [WACOM.NOTE] 如果你每天向每个用户发送超过 500 条的消息，则必须改用通知中心。有关详细信息，请参阅[通知中心入门][]。
 
-## <a name="create-table"></a>Create a new table
+<a name="create-table"></a>
+## 创建新表
 
-[WACOM.INCLUDE [mobile-services-create-new-push-table](../includes/mobile-services-create-new-push-table.md)]
+[WACOM.INCLUDE [mobile-services-create-new-push-table][]]
 
-<h2><a name="add-push"></a><span class="short-header">Add push notifications</span>Add push notifications to your app</h2>
-		
-1. In Visual Studio, open the project file MainPage.xaml.cs and add the following code that creates a new **Registrations** class:
+<a name="add-push"></a>
+## 添加推送通知向应用程序添加推送通知
 
-	    public class Registrations
-	    {
-	        public string Id { get; set; }
-	
-	        [JsonProperty(PropertyName = "handle")]
-	        public string Handle { get; set; }
-	    }
-	
-	The Handle property is used to store the channel URI.
+1.  在 Visual Studio 中，打开项目文件 MainPage.xaml.cs 并添加以下代码，以创建新的 "Registrations" 类：
 
-2. Open the file App.xaml.cs and add the following using statement:
+        public class Registrations
+        {
+        public string Id { get; set; }
+
+        [JsonProperty(PropertyName = "handle")]
+        public string Handle { get; set; }
+        }
+
+    Handle 属性用于存储通道 URI。
+
+2.  打开文件 App.xaml.cs 并添加以下 using 语句：
 
         using Microsoft.Phone.Notification;
 
-3. Add the following to App.xaml.cs:
-	
+3.  将以下代码添加到 App.xaml.cs：
+
         public static HttpNotificationChannel CurrentChannel { get; private set; }
 
-		private void AcquirePushChannel()
+        private void AcquirePushChannel()
         {
-            CurrentChannel = HttpNotificationChannel.Find("MyPushChannel");
+        CurrentChannel = HttpNotificationChannel.Find("MyPushChannel");
 
-            if (CurrentChannel == null)
+        if (CurrentChannel == null)
             {
-                CurrentChannel = new HttpNotificationChannel("MyPushChannel");
-                CurrentChannel.Open();
-                CurrentChannel.BindToShellTile();
+        CurrentChannel = new HttpNotificationChannel("MyPushChannel");
+        CurrentChannel.Open();
+        CurrentChannel.BindToShellTile();
             }
-                  
-	       IMobileServiceTable<Registrations> registrationsTable = App.MobileService.GetTable<Registrations>();
-	       var registration = new Registrations { Handle = CurrentChannel.Uri };
-	       await registrationsTable.InsertAsync(registration);
+
+        IMobileServiceTable<Registrations> registrationsTable = App.MobileService.GetTable<Registrations>();
+        var registration = new Registrations { Handle = CurrentChannel.Uri };
+        await registrationsTable.InsertAsync(registration);
         }
 
-   	This code acquires and stores a channel for a push notification subscription and binds it to the app's default tile.
+    此代码获取并存储推送通知订阅的通道，并将其绑定到应用程序的默认磁贴上。
 
-	<div class="dev-callout"><b>Note</b>
-		<p>In this this tutorial, the mobile service sends a flip Tile notification to the device. When you send a toast notification, you must instead call the <strong>BindToShellToast</strong> method on the channel. To support both toast and tile notifications, call both <strong>BindToShellTile</strong> and  <strong>BindToShellToast</strong> </p>
+	<div class="dev-callout"><b>说明</b>
+
+    <p>在本教程中，移动服务向设备发送翻转磁贴通知。当你发送 toast 通知时，必须改为对通道调用 <b>BindToShellToast</b> 方法。若要同时支持 toast 通知和磁贴通知，请同时调用 <b>BindToShellTile</b> 和 <b>BindToShellToast</b></p>
 	</div>
-    
-4. At the top of the **Application_Launching** event handler in App.xaml.cs, add the following call to the new **AcquirePushChannel** method:
+
+4.  在 App.xaml.cs 中 "Application\_Launching" 事件处理程序的顶部，添加对新的 "AcquirePushChannel" 方法的以下调用：
 
         AcquirePushChannel();
 
-   	This guarantees that the **CurrentChannel** property is initialized each time the application is launched.
+    这确保每次启动应用程序时都初始化 "CurrentChannel" 属性。
 
+5.  在解决方案资源管理器中，展开“属性” ，打开 WMAppManifest.xml 文件，单击“功能” 选项卡并确保选中 "ID\_"CAP"*PUSH*NOTIFICATION" 功能。
 
-5.	In the Solution Explorer, expand **Properties**, open the WMAppManifest.xml file, click the **Capabilities** tab and make sure that the **ID___CAP___PUSH_NOTIFICATION** capability is checked.
+    ![][]
 
-   	![][1]
+    这样可确保你的应用程序可收到推送通知。
 
-   	This makes sure that your app can receive push notifications.
+<a name="update-scripts"></a>
+## 更新插入脚本在管理门户中更新注册的插入脚本
 
-<h2><a name="update-scripts"></a><span class="short-header">Update the insert script</span>Update the registered insert scripts in the Management Portal</h2>
+[WACOM.INCLUDE [mobile-services-update-registrations-script][]]
 
-[WACOM.INCLUDE [mobile-services-update-registrations-script](../includes/mobile-services-update-registrations-script.md)]
+1.  单击“TodoItem” ，再单击“脚本”并选择“插入”。 
 
-4. Click **TodoItem**, click **Script** and select **Insert**. 
+    ![][1]
 
-   	![][10]
+2.  将 insert 函数替换为以下代码，然后单击“保存”： 
 
-3. Replace the insert function with the following code, and then click **Save**:
+        function insert(item, user, request) {
+        request.execute({
+        success:function() {
+        request.respond();
+        sendNotifications();
+                }
+            });
 
-	    function insert(item, user, request) {
-    	    request.execute({
-        	    success: function() {
-            	    request.respond();
-            	    sendNotifications();
-        	    }
-    	    });
+        function sendNotifications() {
+        var registrationsTable = tables.getTable('Registrations');
+        registrationsTable.read({
+        success:function(registrations) {
+        registrations.forEach(function(registration) {
+        push.mpns.sendFlipTile(registration.uri, {
+        title:item.text
+                            }, {
+        success:function(pushResponse) {
+        console.log("Sent push:", pushResponse);
+                                }
+                            });
+                        });
+                    }
+                });
+            }
+        }
 
-	        function sendNotifications() {
-        	    var registrationsTable = tables.getTable('Registrations');
-        	    registrationsTable.read({
-            	    success: function(registrations) {
-                	    registrations.forEach(function(registration) {
-                    	    push.mpns.sendFlipTile(registration.uri, {
-                        	    title: item.text
-                    	    }, {
-                        	    success: function(pushResponse) {
-                            	    console.log("Sent push:", pushResponse);
-                        	    }
-                    	    });
-                	    });
-            	    }
-        	    });
-    	    }
-	    }
+    此插入脚本会向 "Registrations" 表中存储的所有通道发送推送通知（包括已插入项的文本）。
 
-    This insert script sends a push notification (with the text of the inserted item) to all channels stored in the **Registrations** table.
+<a name="test"></a>
+## 测试应用程序在应用程序中测试推送通知
 
-<h2><a name="test"></a><span class="short-header">Test the app</span>Test push notifications in your app</h2>
+1.  在 Visual Studio 中，选择“生成” 菜单上的“部署解决方案” 。
 
-1. In Visual Studio, select **Deploy Solution** on the **Build**  menu.
+2.  在模拟器中，向左轻扫以显示已安装应用程序的列表，并找到新的 "TodoList" 应用程序。
 
-2. In the emulator, swipe to the left to reveal the list of installed apps and find the new **TodoList** app.
+3.  点击并按住该应用程序图标，然后从上下文菜单中选择“固定到‘开始’屏幕” 。
 
-3. Tap and hold on the app icon, and then select **pin to start** from the context menu.
+    ![][2]
 
-  	![][2]
+    这会将名为 "TodoList" 的磁贴固定到到“开始”菜单。
 
-  	This pins a tile named **TodoList** to the start menu.
+4.  点击名为 "TodoList" 的磁贴以启动应用程序。
 
-4. Tap the tile named **TodoList** to launch the app. 
+    ![][3]
 
-  	![][3]
+5.  在应用程序中的文本框内输入文本“hello push”，然后单击“保存” 。
 
-5. In the app, enter the text "hello push" in the textbox, and then click **Save**.
+    ![][4]
 
-   	![][4]
+    此时会将一个插入请求发送到移动服务，以存储添加的项。
 
-  	This sends an insert request to the mobile service to store the added item.
+6.  按“开始”按钮 以返回到“开始”菜单。
 
-6. Press the **Start** button to return to the start menu. 
+    ![][5]
 
-  	![][5]
+    请注意，应用程序已收到该推送通知，并且磁贴的标题现在是 "hello push"。
 
-  	Notice that the application received the push notification and that the title of the tile is now **hello push**.
+<a name="next-steps"> </a>
+## 后续步骤
 
-## <a name="next-steps"> </a>Next steps
+本教程演示了移动服务提供的基本推送通知功能。如果你的应用程序需要更高级功能，例如发送跨平台通知、基于订阅的路由或极大量的通知，请考虑为移动服务使用 Azure 通知中心。有关详细信息，请参阅下列通知中心主题之一：
 
-This tutorial demonstrates the basic push notification functionality provided by Mobile Services. If your app requires more advanced functionalities, such as sending cross-platform notifications, subscription-based routing, or very large volumes, consider using Azure Notification Hubs with your mobile service. For more information, see one of the following Notification Hubs topics:
+-   [通知中心入门][6]
+    了解如何在 Windows 应用商店应用程序中利用通知中心。
 
-+ [Get started with Notification Hubs]
-  <br/>Learn how to leverage Notification Hubs in your Windows Store app.
+-   [什么是通知中心？][]
+    了解如何创建通知并将通知推送到多个平台上的用户。
 
-+ [What are Notification Hubs?]
-	<br/>Learn how to create and push notifications to users on multiple platforms.
+-   [向订户发送通知][]
+    了解用户如何注册和接收他们感兴趣的类别的推送通知。
 
-+ [Send notifications to subscribers]
-	<br/>Learn how users can register and receive push notifications for categories they're interested in.
+建议你了解有关以下移动服务主题的详细信息：
 
-<!--+ [Send notifications to users]
-	<br/>Learn how to send push notifications from a Mobile Service to specific users on any device.
+-   [数据处理入门][]
+    了解有关使用移动服务存储和查询数据的详细信息。
 
-+ [Send cross-platform notifications to users]
-	<br/>Learn how to use templates to send push notifications from a Mobile Service, without having to craft platform-specific payloads in your back-end.
--->
+-   [身份验证入门][]
+    了解如何使用 Windows 帐户对应用程序用户进行身份验证。
 
-Consider finding out more about the following Mobile Services topics:
+-   [移动服务服务器脚本参考][]
+    了解有关注册和使用服务器脚本的详细信息。
 
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
+-   [移动服务 .NET 操作方法概念性参考][]
+    了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with Windows Account.
-
-* [Mobile Services server script reference]
-  <br/>Learn more about registering and using server scripts.
-
-* [Mobile Services .NET How-to Conceptual Reference]
-  <br/>Learn more about how to use Mobile Services with .NET. 
-
-<!-- Anchors. -->
-[Create the Registrations table]: #create-table
-[Update scripts to send push notifications]: #update-scripts
-[Add push notifications to the app]: #add-push
-[Insert data to receive notifications]: #test
-[Next Steps]:#next-steps
-
-<!-- Images. -->
-[1]: ./media/mobile-services-windows-phone-get-started-push/mobile-app-enable-push-wp8.png
-[2]: ./media/mobile-services-windows-phone-get-started-push/mobile-quickstart-push1-wp8.png
-[3]: ./media/mobile-services-windows-phone-get-started-push/mobile-quickstart-push2-wp8.png
-[4]: ./media/mobile-services-windows-phone-get-started-push/mobile-quickstart-push3-wp8.png
-[5]: ./media/mobile-services-windows-phone-get-started-push/mobile-quickstart-push4-wp8.png
-[10]: ./media/mobile-services-windows-phone-get-started-push/mobile-insert-script-push2.png
-
-
-
-<!-- URLs. -->
-[Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=268375
-[Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-wp8
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-wp8
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-wp8
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-wp8
-[Push notifications to app users]: /en-us/develop/mobile/tutorials/push-notifications-to-users-wp8
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-wp8
-
-[Azure Management Portal]: https://manage.windowsazure.com/
-[mpns object]: http://go.microsoft.com/fwlink/p/?LinkId=271130
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Mobile Services .NET How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-net-client-library/
-[Get started with Notification Hubs]: /en-us/manage/services/notification-hubs/get-started-notification-hubs-wp8/
-[What are Notification Hubs?]: /en-us/develop/net/how-to-guides/service-bus-notification-hubs/
-[Send notifications to subscribers]: /en-us/manage/services/notification-hubs/breaking-news-wp8/
-[Send notifications to users]: /en-us/manage/services/notification-hubs/notify-users/
-[Send cross-platform notifications to users]: /en-us/manage/services/notification-hubs/notify-users-xplat-mobile-services/
+  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-push "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-push "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-push "Windows Phone"
+  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-push "iOS"
+  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started-push "Android"
+  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started-push "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started-push "Xamarin.Android"
+  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/ ".NET 后端"
+  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-push/ "JavaScript 后端"
+  [推送通知入门]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/
+  [创建 Registrations 表]: #create-table
+  [向应用程序添加推送通知]: #add-push
+  [更新脚本以发送推送通知]: #update-scripts
+  [插入数据以接收通知]: #test
+  [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-wp8
+  [通知中心入门]: /zh-cn/manage/services/notification-hubs/getting-started-windows-dotnet/
+  [mobile-services-create-new-push-table]: ../includes/mobile-services-create-new-push-table.md
+  []: ./media/mobile-services-windows-phone-get-started-push/mobile-app-enable-push-wp8.png
+  [mobile-services-update-registrations-script]: ../includes/mobile-services-update-registrations-script.md
+  [1]: ./media/mobile-services-windows-phone-get-started-push/mobile-insert-script-push2.png
+  [2]: ./media/mobile-services-windows-phone-get-started-push/mobile-quickstart-push1-wp8.png
+  [3]: ./media/mobile-services-windows-phone-get-started-push/mobile-quickstart-push2-wp8.png
+  [4]: ./media/mobile-services-windows-phone-get-started-push/mobile-quickstart-push3-wp8.png
+  [5]: ./media/mobile-services-windows-phone-get-started-push/mobile-quickstart-push4-wp8.png
+  [6]: /zh-cn/manage/services/notification-hubs/get-started-notification-hubs-wp8/
+  [什么是通知中心？]: /zh-cn/develop/net/how-to-guides/service-bus-notification-hubs/
+  [向订户发送通知]: /zh-cn/manage/services/notification-hubs/breaking-news-wp8/
+  [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8
+  [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-wp8
+  [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/?LinkId=262293
+  [移动服务 .NET 操作方法概念性参考]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library/

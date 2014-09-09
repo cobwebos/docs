@@ -1,230 +1,139 @@
 <properties linkid="develop-mobile-tutorials-validate-modify-and-augment-data-ios" urlDisplayName="Validate Data" pageTitle="Use server scripts to validate and modify data (iOS) | Mobile Dev Center" metaKeywords="" description="Learn how to validate and modify data sent using server scripts from your iOS app." metaCanonical="" services="" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="" solutions="" manager="" editor="" />
 
-# Validate and modify data in Mobile Services by using server scripts
+# 使用服务器脚本在移动服务中验证和修改数据
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-validate-modify-data-server-scripts" title="Windows Store C#">Windows Store C#</a><a href="/en-us/documentation/articles/mobile-services-windows-store-javascript-validate-modify-data-server-scripts" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/documentation/articles/mobile-services-windows-phone-validate-modify-data-server-scripts" title="Windows Phone">Windows Phone</a><a href="/en-us/documentation/articles/mobile-services-ios-validate-modify-data-server-scripts" title="iOS" class="current">iOS</a><a href="/en-us/documentation/articles/mobile-services-android-validate-modify-data-server-scripts" title="Android">Android</a><a href="/en-us/documentation/articles/mobile-services-html-validate-modify-data-server-scripts" title="HTML">HTML</a><a href="/en-us/documentation/articles/partner-xamarin-mobile-services-ios-validate-modify-data-server-scripts" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/documentation/articles/partner-xamarin-mobile-services-android-validate-modify-data-server-scripts" title="Xamarin.Android">Xamarin.Android</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/documentation/articles/mobile-services-windows-store-dotnet-validate-modify-data-server-scripts" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/documentation/articles/mobile-services-windows-store-javascript-validate-modify-data-server-scripts" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/documentation/articles/mobile-services-windows-phone-validate-modify-data-server-scripts" title="Windows Phone">Windows Phone</a><a href="/zh-cn/documentation/articles/mobile-services-ios-validate-modify-data-server-scripts" title="iOS" class="current">iOS</a><a href="/zh-cn/documentation/articles/mobile-services-android-validate-modify-data-server-scripts" title="Android">Android</a><a href="/zh-cn/documentation/articles/mobile-services-html-validate-modify-data-server-scripts" title="HTML">HTML</a><a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-validate-modify-data-server-scripts" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-android-validate-modify-data-server-scripts" title="Xamarin.Android">Xamarin.Android</a></div>
 
-This topic shows you how to leverage server scripts in Azure Mobile Services. Server scripts are registered in a mobile service and can be used to perform a wide range of operations on data being inserted and updated, including validation and data modification. In this tutorial, you will define and register server scripts that validate and modify data. Because the behavior of server side scripts often affects the client, you will also update your iOS app to take advantage of these new behaviors.
+本主题说明如何在 Azure 移动服务中利用服务器脚本。你可以在移动服务中注册服务器脚本，然后使用这些脚本对所要插入和更新的数据执行各种操作，包括验证和数据修改。在本教程中，你将要定义并注册用于验证和修改数据的服务器脚本。由于服务器端脚本的行为往往会影响到客户端，因此你还要更新 iOS 应用程序以利用这些新行为。
 
-This tutorial walks you through these basic steps:
+本教程将指导你完成以下基本步骤：
 
-1. [Add string length validation]
-2. [Update the client to support validation]
+1.  [添加字符串长度验证][]
+2.  [更新客户端以支持验证][]
 
+本教程以前一教程[数据处理入门][]中的步骤和示例应用程序为基础。在开始本教程之前，必须先完成[数据处理入门][]。
 
-This tutorial builds on the steps and the sample app from the previous tutorial [Get started with data]. Before you begin this tutorial, you must first complete [Get started with data].  
+<a name="string-length-validation"></a>
+## 添加验证
 
-## <a name="string-length-validation"></a>Add validation
+验证用户提交的数据的长度总不失为一种良好做法。首先，你要注册一个脚本，用于验证发送到移动服务的字符串数据长度，并拒绝过长（在本例中为 10 个字符以上）的字符串。
 
-It is always a good practice to validate the length of data that is submitted by users. First, you register a script that validates the length of string data sent to the mobile service and rejects strings that are too long, in this case longer than 10 characters.
+1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app. 
+    ![][]
 
-   	![][0]
+2.  单击“数据” 选项卡，然后单击 TodoItem  表。
 
-2. Click the **Data** tab, then click the **TodoItem** table.
+    ![][1]
 
-   	![][1]
+3.  单击“脚本”，然后选择“插入”操作 。
 
-3. Click **Script**, then select the **Insert** operation.
+    ![][2]
 
-   	![][2]
+4.  将现有脚本替换为以下函数，然后单击“保存” 。
 
-4. Replace the existing script with the following function, and then click **Save**.
-
-        function insert(item, user, request) {
-            if (item.text.length > 10) {
-                request.respond(statusCodes.BAD_REQUEST, 'Text length must be 10 characters or less.');
-            } else {
-                request.execute();
+            function insert(item, user, request) {
+        if (item.text.length > 10) {
+        request.respond(statusCodes.BAD_REQUEST, 'Text length must be 10 characters or less.');
+        } else {
+        request.execute();
             }
         }
 
-    This script checks the length of the **text** property and sends an error response when the length exceeds 10 characters. Otherwise, the **execute** method is called to complete the insert.
+    此脚本将检查 "text" 属性的长度，如果该长度超过 10 个字符，则发送错误响应。如果未超过 10 个字符，将调用 "execute" 方法以完成插入。
 
-    <div class="dev-callout"> 
-	<b>Note</b> 
-	<p>You can remove a registered script on the <strong>Script</strong> tab by clicking <strong>Clear</strong> and then <strong>Save</strong>.</p></div>
+    <div class="dev-callout"><b>说明</b>
 
-## <a name="update-client-validation"></a>Update the client
+    <p>在“脚本”选项卡中，依次单击“清除”和“保存”可以删除某个已注册的脚本 。</p>
+	</div>
 
-Now that the mobile service is validating data and sending error responses, you need to update your app to be able to handle error responses from validation.
+<a name="update-client-validation"></a>
+## 更新客户端
 
-1. In Xcode, open the project that you modified when you completed the tutorial [Get started with data].
+移动服务会验证数据和发送错误响应，而你则需要更新你的应用程序，使之能够处理验证后生成的错误响应。
 
-2. Press the **Run** button (Command + R) to build the project and start the app, then type text longer than 10 characters in the textbox and click the  plus (**+**) icon.
+1.  在 Xcode 中，打开你在完成[数据处理入门][]教程后修改的项目。
 
-   	Notice that the app raises an unhandled error as a result of the 400 response (Bad Request) returned by the mobile service.	
+2.  按“运行”按钮 (Command + R) 生成项目并启动应用程序，在文本框中键入 10 个字符以上的文本，然后单击加号 ("+") 图标 。
 
-3. In the QSTodoService.m file, locate the following line of code in the **addItem** method:
-    
+    可以看到，由于移动服务返回了 400 响应（“错误的请求”），应用程序引发了一个未处理的错误。
+
+3.  在 QSTodoService.m 文件中，在 "addItem" 方法中找到以下代码行：
+
         [self logErrorIfNotNil:error]; 
 
-   	After this line of code, replace the remainder of the completion block with the following code:
+    在此代码行的后面，将 completion 块的余下部分替换为以下代码：
 
         BOOL goodRequest = !((error) && (error.code == MSErrorMessageErrorCode));
 
         // detect text validation error from service.
         if (goodRequest) // The service responded appropriately
         {
-            NSUInteger index = [items count];
-            [(NSMutableArray *)items insertObject:result atIndex:index];
-        
-            // Let the caller know that we finished
-            completion(index);
+        NSUInteger index = [items count];
+        [(NSMutableArray *)items insertObject:result atIndex:index];
+
+        // Let the caller know that we finished
+        completion(index);
         }
         else{
-        
-            // if there's an error that came from the service
-            // log it, and popup up the returned string.
-            if (error && error.code == MSErrorMessageErrorCode) {
-                NSLog(@"ERROR %@", error);
-                UIAlertView *av =
-                [[UIAlertView alloc]
-                 initWithTitle:@"Request Failed"
-                 message:error.localizedDescription
-                 delegate:nil
-                 cancelButtonTitle:@"OK"
-                 otherButtonTitles:nil
+
+        // if there's an error that came from the service
+        // log it, and popup up the returned string.
+        if (error && error.code == MSErrorMessageErrorCode) {
+        NSLog(@"ERROR %@", error);
+        UIAlertView *av =
+        [[UIAlertView alloc]
+        initWithTitle:@"Request Failed"
+        message:error.localizedDescription
+        delegate:nil
+        cancelButtonTitle:@"OK"
+        otherButtonTitles:nil
                  ];
-                [av show];
+        [av show];
             }
         }
 
-   	This logs the error to the output window and displays it to the user. 
+    这会将错误记录到输出窗口并显示给用户。
 
-4. Rebuild and start the app. 
+4.  重新生成并启动应用程序。
 
-   	![][4]
+    ![][3]
 
-  	Notice that error is handled and the error messaged is displayed to the user.
+    可以看到，错误已被处理，并且已向用户显示了错误消息。
 
-<!--## <a name="add-timestamp"></a>Add a timestamp
+<a name="next-steps"> </a>
+## 后续步骤
 
-The previous tasks validated an insert and either accepted or rejected it. Now, you will update inserted data by using a server script that adds a timestamp property to the object before it gets inserted.
+现在你已完成本教程，建议你继续学习数据系列中的最后一篇教程：[使用分页优化查询][]。
 
-1. In the **Scripts** tab in the [Management Portal], replace the current **Insert** script with the following function, and then click **Save**.
+在为用户授权以及发送推送通知时，也可以使用服务器脚本。有关详细信息，请参阅以下教程：
 
-        function insert(item, user, request) {
-            if (item.text.length > 10) {
-                request.respond(statusCodes.BAD_REQUEST, 'Text length must be under 10');
-            } else {
-                item.createdAt = new Date();
-                request.execute();
-            }
-        }
+-   [使用脚本为用户授权][]
+    了解如何基于某个已经过身份验证的用户的 ID 筛选数据。
 
-    This function augments the previous insert script by adding a new **createdAt** timestamp property to the object before it gets inserted by the call to **request**.**execute**. 
+-   [推送通知入门][]
+    了解如何向应用程序发送一条非常简单的推送通知。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>Dynamic schema must be enabled the first time that this insert script runs. With dynamic schema enabled, Mobile Services automatically adds the <strong>createdAt</strong> column to the <strong>TodoItem</strong> table on the first execution. Dynamic schema is enabled by default for a new mobile service, and it should be disabled before the app is published.</p>
-    </div>
+-   [移动服务服务器脚本参考][]
+    了解有关注册和使用服务器脚本的详细信息。
 
-2. In Visual Studio, press the **F5** key to run the app, then type text (shorter than 10 characters) in **Insert a TodoItem** and click **Save**.
-
-   	Notice that the new timestamp does not appear in the app UI.
-
-3. Back in the Management Portal, click the **Browse** tab in the **todoitem** table.
-   
-   	Notice that there is now a **createdAt** column, and the new inserted item has a timestamp value.
-  
-Next, you need to update the iOS app to display this new column.
-
-## <a name="update-client-timestamp"></a>Update the client again
-
-The Mobile Service client will ignore any data in a response that it cannot serialize into properties on the defined type. The final step is to update the client to display this new data.
-
-1. In Visual Studio, open the file MainPage.xaml.cs, then replace the existing **TodoItem** class with the following definition:
-
-	    public class TodoItem
-	    {
-	        public int Id { get; set; }
-          
-            [DataMember(Name="text")]
-	        public string Text { get; set; }
-
-            [DataMember(Name="complete")]
-	        public bool Complete { get; set; }
-	        
-            [DataMember(Name="createdAt")]
-	        public DateTime? CreatedAt { get; set; }
-	    }
-	
-    This new class definition includes the new timestamp property, as a nullable DateTime type.
-  
-    <div class="dev-callout"><b>Note</b>
-	<p>The <strong>DataMemberAttribute</strong> tells the client to map the new <strong>CreatedAt</strong> property in the app to the <strong>createdAt</strong> column defined in the TodoItem table, which has a different casing. By using this attribute, your app can have property names on objects that differ from column names in the SQL Database. Without this attribute, an error would occur because of the casing differences.</p>
-    </div>
-
-5. Add the following XAML element just below the **CheckBoxComplete** element in the MainPage.xaml file:
-	      
-        <TextBlock Name="WhenCreated" Text="{Binding CreatedAt}" VerticalAlignment="Center"/>
-
-   	This displays the new **CreatedAt** property in a text box. 
-	
-6. Press the **F5** key to run the app. 
-
-   Notice that the timestamp is only displayed for items inserted after you updated the insert script.
-
-7. Replace the existing **RefreshTodoItems** method with the following code:
- 
-        private void RefreshTodoItems()
-        { 
-            // This query filters out completed TodoItems and 
-            // items without a timestamp. 
-            items = todoTable
-               .Where(todoItem => todoItem.Complete == false
-                   && todoItem.CreatedAt != null)
-               .ToCollectionView();
-
-            ListItems.ItemsSource = items;
-        }
-
-   	This method updates the query to also filter out items that do not have a timestamp value.
-	
-8. Press the **F5** key to run the app.
-
-   	Notice that all items created without timestamp value disappear from the UI.
-
-You have completed this working with data tutorial.-->
-
-## <a name="next-steps"> </a>Next steps
-
-Now that you have completed this tutorial, consider continuing on with the final tutorial in the data series: [Refine queries with paging].
-
-Server scripts are also used when authorizing users and for sending push notifications. For more information see the following tutorials:
-
-* [Authorize users with scripts]
-  <br/>Learn how to filter data based on the ID of an authenticated user.
-
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
-
-* [Mobile Services server script reference]
-  <br/>Learn more about registering and using server scripts.
-
-<!-- Anchors. -->
-[Add string length validation]: #string-length-validation
-[Update the client to support validation]: #update-client-validation
-[Add a timestamp on insert]: #add-timestamp
-[Update the client to display the timestamp]: #update-client-timestamp
-[Next Steps]: #next-steps
-
-<!-- Images. -->
-[0]: ./media/mobile-services-ios-validate-modify-data-server-scripts/mobile-services-selection.png
-[1]: ./media/mobile-services-ios-validate-modify-data-server-scripts/mobile-portal-data-tables.png
-[2]: ./media/mobile-services-ios-validate-modify-data-server-scripts/mobile-insert-script-users.png
-
-[4]: ./media/mobile-services-ios-validate-modify-data-server-scripts/mobile-quickstart-data-error-ios.png
-
-<!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-ios
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-ios
-[Refine queries with paging]: /en-us/develop/mobile/tutorials/add-paging-to-data-ios
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-ios
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-ios
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-ios
-
-[Management Portal]: https://manage.windowsazure.com/
-[Azure Management Portal]: https://manage.windowsazure.com/
+  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-validate-modify-data-server-scripts "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-validate-modify-data-server-scripts "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-validate-modify-data-server-scripts "Windows Phone"
+  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-validate-modify-data-server-scripts "iOS"
+  [Android]: /zh-cn/documentation/articles/mobile-services-android-validate-modify-data-server-scripts "Android"
+  [HTML]: /zh-cn/documentation/articles/mobile-services-html-validate-modify-data-server-scripts "HTML"
+  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-validate-modify-data-server-scripts "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-validate-modify-data-server-scripts "Xamarin.Android"
+  [添加字符串长度验证]: #string-length-validation
+  [更新客户端以支持验证]: #update-client-validation
+  [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  []: ./media/mobile-services-ios-validate-modify-data-server-scripts/mobile-services-selection.png
+  [1]: ./media/mobile-services-ios-validate-modify-data-server-scripts/mobile-portal-data-tables.png
+  [2]: ./media/mobile-services-ios-validate-modify-data-server-scripts/mobile-insert-script-users.png
+  [3]: ./media/mobile-services-ios-validate-modify-data-server-scripts/mobile-quickstart-data-error-ios.png
+  [使用分页优化查询]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-ios
+  [使用脚本为用户授权]: /zh-cn/develop/mobile/tutorials/authorize-users-in-scripts-ios
+  [推送通知入门]: /zh-cn/develop/mobile/tutorials/get-started-with-push-ios
+  [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/?LinkId=262293

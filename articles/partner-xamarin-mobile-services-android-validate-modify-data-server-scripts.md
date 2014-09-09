@@ -1,185 +1,189 @@
 <properties linkid="develop-mobile-tutorials-validate-modify-and-augment-data-xamarin-android" urlDisplayName="Validate Data" pageTitle="Use server scripts to validate and modify data (Xamarin Android) | Mobile Dev Center" metaKeywords="access and change data, Azure Mobile Services, mobile devices, Azure, mobile, Xamarin.Android" description="Learn how to validate and modify data sent using server scripts from your Xamarin.Android app." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="" />
 
-# Validate and modify data in Mobile Services by using server scripts
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-html" title="HTML">HTML</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
+# 使用服务器脚本在移动服务中验证和修改数据
+
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-android" title="Android">Android</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-html" title="HTML">HTML</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
 </div>
 
+本主题说明如何在 Azure 移动服务中利用服务器脚本。你可以在移动服务中注册服务器脚本，然后使用这些脚本对所要插入和更新的数据执行各种操作，包括验证和数据修改。在本教程中，你将要定义并注册用于验证和修改数据的服务器脚本。由于服务器端脚本的行为往往会影响到客户端，因此你还要更新 Android 应用程序以利用这些新行为。在 [ValidateModifyData 应用程序][]示例中提供完成的代码。
 
-This topic shows you how to leverage server scripts in Azure Mobile Services. Server scripts are registered in a mobile service and can be used to perform a wide range of operations on data being inserted and updated, including validation and data modification. In this tutorial, you will define and register server scripts that validate and modify data. Because the behavior of server side scripts often affects the client, you will also update your Android app to take advantage of these new behaviors. The finished code is available in the [ValidateModifyData app][GitHub] sample.
+本教程将指导你完成以下基本步骤：
 
-This tutorial walks you through these basic steps:
+1.  [添加字符串长度验证][]
+2.  [更新客户端以支持验证][]
+3.  [在插入操作中添加时间戳][]
+4.  [更新客户端以显示时间戳][]
 
-1. [Add string length validation]
-2. [Update the client to support validation]
-3. [Add a timestamp on insert]
-4. [Update the client to display the timestamp]
+本教程以前一教程[数据处理入门][]中的步骤和示例应用程序为基础。在开始本教程之前，必须先完成[数据处理入门][]。
 
-This tutorial builds on the steps and the sample app from the previous tutorial [Get started with data]. Before you begin this tutorial, you must first complete [Get started with data].  
+<a name="string-length-validation"></a>
+## 添加验证
 
-## <a name="string-length-validation"></a>Add validation
+验证用户提交的数据的长度总不失为一种良好做法。首先，你要注册一个脚本，用于验证发送到移动服务的字符串数据长度，并拒绝过长（在本例中为 10 个字符以上）的字符串。
 
-It is always a good practice to validate the length of data that is submitted by users. First, you register a script that validates the length of string data sent to the mobile service and rejects strings that are too long, in this case longer than 10 characters.
+1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app. 
+    ![][]
 
-	![][0]
+2.  单击“数据” 选项卡，然后单击 TodoItem  表。
 
-2. Click the **Data** tab, then click the **TodoItem** table.
+    ![][1]
 
-	![][1]
+3.  单击“脚本”，然后选择“插入”操作 。
 
-3. Click **Script**, then select the **Insert** operation.
+    ![][2]
 
-	![][2]
-
-4. Replace the existing script with the following function, and then click **Save**.
+4.  将现有脚本替换为以下函数，然后单击“保存” 。
 
         function insert(item, user, request) {
-            if (item.text.length > 10) {
-                request.respond(statusCodes.BAD_REQUEST, 'Text length must be 10 characters or less.');
-            } else {
-                request.execute();
+        if (item.text.length > 10) {
+        request.respond(statusCodes.BAD_REQUEST, 'Text length must be 10 characters or less.');
+        } else {
+        request.execute();
             }
         }
 
-    This script checks the length of the **text** property and sends an error response when the length exceeds 10 characters. Otherwise, the **execute** method is called to complete the insert.
+    此脚本将检查 "text" 属性的长度，如果该长度超过 10 个字符，则发送错误响应。如果未超过 10 个字符，将调用 "execute" 方法以完成插入。
 
-    <div class="dev-callout"> 
-	<b>Note</b> 
-	<p>You can remove a registered script on the <strong>Script</strong> tab by clicking <strong>Clear</strong> and then <strong>Save</strong>.</p></div>
+    <div class="dev-callout">说明</b>
 
-## <a name="update-client-validation"></a>Update the client
+    <p>在“脚本”选项卡中，依次单击“清除”和“保存”可以删除某个已注册的脚本 。</p>
+	</div>
 
-Now that the mobile service is validating data and sending error responses, you need to verify that your app is correctly handling error responses from validation.
+<a name="update-client-validation"></a>
+## 更新客户端
 
-1. In Xamarin Studio, open the project that you created when you completed the tutorial [Get started with data].
+移动服务会验证数据和发送错误响应，而你则需要验证你的应用程序是否能够正确处理验证后生成的错误响应。
 
-2. In the TodoActivity.cs file, locate the **AddItem** method and replace the call to the CreateAndShowDialog method with the following code:
+1.  在 Xamarin Studio 中，打开你在完成[数据处理入门][]教程后创建的项目。
 
-    	var exDetail = ex.InnerException.InnerException as 	
-			MobileServiceInvalidOperationException;
-    	CreateAndShowDialog(exDetail.Message, "Error");
+2.  在 TodoActivity.cs 文件中，找到 "AddItem" 方法，并将对 CreateAndShowDialog 方法的调用替换为以下代码：
 
-	This displays the error message returned by the mobile service. 
+        var exDetail = ex.InnerException.InnerException as  
+        MobileServiceInvalidOperationException;
+        CreateAndShowDialog(exDetail.Message, "Error");
 
-3. Click **Run** to start the app, then type text longer than 10 characters in the textbox and click the **Add** button.
+    此时将显示移动服务返回的错误消息。
 
-  	Notice that error is handled and the error messaged is displayed to the user.
+3.  单击“运行” 以启动应用程序，然后在文本框中键入超过 10 个字符的文本，然后单击“添加” 按钮。
 
-## <a name="add-timestamp"></a>Add a timestamp
+    可以看到，错误已被处理，并且已向用户显示了错误消息。
 
-The previous tasks validated an insert and either accepted or rejected it. Now, you will update inserted data by using a server script that adds a timestamp property to the object before it gets inserted.
+<a name="add-timestamp"></a>
+## 添加时间戳
 
-1. In the **Scripts** tab in the [Management Portal], replace the current **Insert** script with the following function, and then click **Save**.
+前面的任务验证了某个插入操作，并已接受或拒绝该操作。现在，你要使用一个服务器脚本来更新已插入的数据，该脚本将在插入对象之前向其添加一个时间戳属性。
+
+1.  在[管理门户][Azure 管理门户]中的“脚本”选项卡上，将当前的 "Insert" 脚本替换为以下函数，然后单击“保存” 。
 
         function insert(item, user, request) {
-            if (item.text.length > 10) {
-                request.respond(statusCodes.BAD_REQUEST, 'Text length must be under 10');
-            } else {
-                item.createdAt = new Date();
-                request.execute();
+        if (item.text.length > 10) {
+        request.respond(statusCodes.BAD_REQUEST, 'Text length must be under 10');
+        } else {
+        item.createdAt = new Date();
+        request.execute();
             }
         }
 
-    This function augments the previous insert script by adding a new **createdAt** timestamp property to the object before it gets inserted by the call to **request**.**execute**. 
+    在通过调用 "request"."execute" 插入对象之前，此函数会将一个新的 "createdAt" 时间戳属性添加到该对象，从而扩展前面的 insert 脚本。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>Dynamic schema must be enabled the first time that this insert script runs. With dynamic schema enabled, Mobile Services automatically adds the <strong>createdAt</strong> column to the <strong>TodoItem</strong> table on the first execution. Dynamic schema is enabled by default for a new mobile service, and it should be disabled before the app is published.</p>
-    </div>
+    <div class="dev-callout"><b>说明</b>
 
-2. From the **Run** menu, then click **Run** to start the app, then type text (shorter than 10 characters) in the textbox and click **Add**.
+    <p>首次运行此 insert 脚本时，必须启用动态架构。启用动态架构后，移动服务在首次执行时会自动将 <b>createdAt</b> 列添加到 <b>TodoItem</b> 表。默认情况下，将为新的移动服务启用动态架构，发布应用程序之前应该禁用动态架构。</p>
+	</div>
 
-   	Notice that the new timestamp does not appear in the app UI.
+2.  在“运行”菜单中单击“运行”以启动应用程序，在文本框中键入文本（长度小于 10 个字符），然后单击“添加” 。
 
-3. Back in the Management Portal, click the **Browse** tab in the **todoitem** table.
-   
-   	Notice that there is now a **createdAt** column, and the new inserted item has a timestamp value.
-  
-Next, you need to update the Android app to display this new column.
+    你会发现，新的时间戳并未显示在应用程序 UI 中。
 
-## <a name="update-client-timestamp"></a>Update the client again
+3.  返回管理门户，在“todoitem”表中单击“浏览”选项卡 。
 
-The Mobile Service client will ignore any data in a response that it cannot serialize into properties on the defined type. The final step is to update the client to display this new data.
+    可以看到，现在出现了一个“createdAt” 列，并且插入的新项带有一个时间戳值。
 
-1. Add the following code to the private field definitions in the **TodoItem** class:
+接下来，需要更新 Android 应用程序以显示这个新列。
+
+<a name="update-client-timestamp"></a>
+## 再次更新客户端
+
+移动服务客户端将忽略响应中的、无法序列化成已定义类型上的属性的所有数据。最后一步是更新客户端以显示这些新数据。
+
+1.  将以下代码添加到 "TodoItem" 类中的 private 字段定义：
 
         [DataMember(Name = "createdAt")]
-        public DateTime? CreatedAt { get; set; }
-  
-    <div class="dev-callout"><b>Note</b>
-	<p>The <code>DataMember's Name</code> annotation tells the client to map the new <code>CreatedAt</code> property in the app to the <code>createdAt</code> column defined in the TodoItem table, which has a different name. By using this annotation, your app can have property names on objects that differ from column names in the SQL Database. Without this annotation, an error occurs because of the casing differences.</p>
-    </div>
+        public DateTime?CreatedAt { get; set; }
 
-2. In the GetView method, add the following code just above where the current code that sets <code>checkBox.Text</code> to <code>currentItem.Text</code>:
+    <div class="dev-callout"><b>说明</b>
 
-       	string displayDate = "missing";
-       	if (currentItem.CreatedAt.HasValue)
-       		displayDate = currentItem.CreatedAt.Value.ToShortTimeString();
+    <p><code>DataMember 的 Name</code> 批注告知客户端要将应用程序中的新 <code>CreatedAt</code> 属性映射到 TodoItem 表中定义的具有不同名称的 <code>createdAt</code> 列。如果你使用此批注，应用程序在对象上使用的属性名称可以不同于 SQL Database 中的列名称。如果不使用此批注，则会因大小写不同而发生错误。</p>
+	</div>
 
-   	This creates a formatted date string when a timestamp value exists. 
+2.  在 GetView 方法中，在将 `checkBox.Text` 设置为 `currentItem.Text` 的当前代码的上面添加以下代码：
 
-3. Locate the code `checkBox.Text = currentItem.Text` again and replace this line of code with the following:
+        string displayDate = "missing";
+        if (currentItem.CreatedAt.HasValue)
+        displayDate = currentItem.CreatedAt.Value.ToShortTimeString();
 
-		checkBox.Text = string.Format("{0} - {1}", currentItem.Text, displayDate);
+    这样，当存在时间戳值时，就会创建带格式的日期字符串。
 
-	This appends the timestamp date to the item for display.
-	
-4. From the **Run** menu, then click **Run** to start the app. 
+3.  再次找到代码 `checkBox.Text = currentItem.Text` 并将该代码行替换为以下代码：
 
-	Notice that the timestamp is only displayed for items inserted after you updated the insert script.
+        checkBox.Text = string.Format("{0} - {1}", currentItem.Text, displayDate);
 
-5. In **TodoActivity.cs**, replace the existing query in **RefreshItemsFromTableAsync** with the following query:
+    这会在要显示的项后面追加时间戳日期。
 
-		var list = await todoTable.Where(item => item.Complete == false && 
-										 item.CreatedAt != null)
-								  .ToListAsync();
+4.  在“运行” 菜单中，单击“运行”以启动应用程序 。
 
-	This method updates the query to also filter out items that do not have a timestamp value.
-	
-6. From the **Run** menu, then click **Run** to start the app.
+    可以看到，只显示了你在更新 insert 脚本后插入的项的时间戳。
 
-  	Notice that all items created without timestamp value disappear from the UI.
+5.  在 "TodoActivity.cs" 中，将 "RefreshItemsFromTableAsync" 中的现有查询替换为以下查询：
 
-You have completed this working with data tutorial.
+        var list = await todoTable.Where(item => item.Complete == false && 
+        item.CreatedAt != null)
+        .ToListAsync();
 
-## <a name="next-steps"> </a>Next steps
+    此方法将更新查询，以便同时筛选掉没有时间戳值的项。
 
-Now that you have completed this tutorial, consider continuing on with the final tutorial in the data series: [Refine queries with paging].
+6.  在“运行” 菜单中，单击“运行”以启动应用程序 。
 
-Server scripts are also used when authorizing users and for sending push notifications. For more information see the following tutorials:
+    可以看到，创建的不带时间戳值的所有项已从 UI 中消失。
 
-* [Authorize users with scripts]
-  <br/>Learn how to filter data based on the ID of an authenticated user.
+现在，你已完成了这篇数据处理教程。
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
+<a name="next-steps"> </a>
+## 后续步骤
 
-* [Mobile Services server script reference]
-  <br/>Learn more about registering and using server scripts.
+现在你已完成本教程，建议你继续学习数据系列中的最后一篇教程：[使用分页优化查询][]。
 
-<!-- Anchors. -->
-[Add string length validation]: #string-length-validation
-[Update the client to support validation]: #update-client-validation
-[Add a timestamp on insert]: #add-timestamp
-[Update the client to display the timestamp]: #update-client-timestamp
-[Next Steps]: #next-steps
+在为用户授权以及发送推送通知时，也可以使用服务器脚本。有关详细信息，请参阅以下教程：
 
-<!-- Images. -->
-[0]: ./media/partner-xamarin-mobile-services-android-validate-modify-data-server-scripts/mobile-services-selection.png
-[1]: ./media/partner-xamarin-mobile-services-android-validate-modify-data-server-scripts/mobile-portal-data-tables.png
-[2]: ./media/partner-xamarin-mobile-services-android-validate-modify-data-server-scripts/mobile-insert-script-users.png
+-   [使用脚本为用户授权][]
+    了解如何基于某个已经过身份验证的用户的 ID 筛选数据。
 
+-   [推送通知入门][]
+    了解如何向应用程序发送一条非常简单的推送通知。
 
+-   [移动服务服务器脚本参考][]
+    了解有关注册和使用服务器脚本的详细信息。
 
-<!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-xamarin-android
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
-[Refine queries with paging]: /en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-android
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android
-
-[Management Portal]: https://manage.windowsazure.com/
-[Azure Management Portal]: https://manage.windowsazure.com/
-[GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331330
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-js "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-wp8 "Windows Phone"
+  [iOS]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-ios "iOS"
+  [Android]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-android "Android"
+  [HTML]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-html "HTML"
+  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android "Xamarin.Android"
+  [ValidateModifyData 应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=331330
+  [添加字符串长度验证]: #string-length-validation
+  [更新客户端以支持验证]: #update-client-validation
+  [在插入操作中添加时间戳]: #add-timestamp
+  [更新客户端以显示时间戳]: #update-client-timestamp
+  [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  []: ./media/partner-xamarin-mobile-services-android-validate-modify-data-server-scripts/mobile-services-selection.png
+  [1]: ./media/partner-xamarin-mobile-services-android-validate-modify-data-server-scripts/mobile-portal-data-tables.png
+  [2]: ./media/partner-xamarin-mobile-services-android-validate-modify-data-server-scripts/mobile-insert-script-users.png
+  [使用分页优化查询]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-android
+  [使用脚本为用户授权]: /zh-cn/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
+  [推送通知入门]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android
+  [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/?LinkId=262293

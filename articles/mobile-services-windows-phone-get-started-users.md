@@ -1,101 +1,115 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-users-wp8" urlDisplayName="Get Started with Authentication" pageTitle="Get started with authentication (Windows Phone) | Mobile Dev Center" metaKeywords="" description="Learn how to use Mobile Services to authenticate users of your Windows Phone app through a variety of identity providers, including Google, Facebook, Twitter, and Microsoft." metaCanonical="" services="" documentationCenter="Mobile" title="Get started with authentication in Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
-# Get started with authentication in Mobile Services
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-users" title="Windows Store C#">Windows Store C#</a><a href="/en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-users" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started-users" title="Windows Phone" class="current">Windows Phone</a><a href="/en-us/documentation/articles/mobile-services-ios-get-started-users" title="iOS">iOS</a><a href="/en-us/documentation/articles/mobile-services-android-get-started-users" title="Android">Android</a><a href="/en-us/documentation/articles/mobile-services-html-get-started-users" title="HTML">HTML</a><a href="/en-us/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/documentation/articles/partner-xamarin-mobile-services-android-get-started-users" title="Xamarin.Android">Xamarin.Android</a></div>
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users/" title=".NET backend">.NET backend</a> | <a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started-users/"  title="JavaScript backend" class="current">JavaScript backend</a></div>
+# 移动服务中的身份验证入门
+
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/documentation/articles/mobile-services-windows-phone-get-started-users" title="Windows Phone" class="current">Windows Phone</a><a href="/zh-cn/documentation/articles/mobile-services-ios-get-started-users" title="iOS">iOS</a><a href="/zh-cn/documentation/articles/mobile-services-android-get-started-users" title="Android">Android</a><a href="/zh-cn/documentation/articles/mobile-services-html-get-started-users" title="HTML">HTML</a><a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started-users" title="Xamarin.Android">Xamarin.Android</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users/" title=".NET backend">.NET 后端</a> | <a href="/zh-cn/documentation/articles/mobile-services-windows-phone-get-started-users/"  title="JavaScript backend" class="current">JavaScript 后端</a></div>
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
 
-<p>This topic shows you how to authenticate users in Azure Mobile Services from your app. In this tutorial, you add authentication to the quickstart project using an identity provider that is supported by Mobile Services. After being successfully authenticated and authorized by Mobile Services, the user ID value is displayed.</p>
-</div>
-<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=298631" target="_blank" class="label">watch the tutorial</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-wp8-get-started-authentication-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=298631" target="_blank" class="dev-onpage-video"><span class="icon">Play Video</span></a> <span class="time">10:50</span></div>
+<p>本主题说明如何通过应用程序对 Azure 移动服务中的用户进行身份验证。在本教程中，你将要使用移动服务支持的标识提供者向快速入门项目添加身份验证。在移动服务成功完成身份验证和授权后，将显示用户 ID 值。</p>
+
+<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=298631" target="_blank" class="label">播放视频</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-wp8-get-started-authentication-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=298631" target="_blank" class="dev-onpage-video"><span class="icon">观看教程</span></a> <span class="time">10:50</span></div>
 </div>  
 
-This tutorial walks you through these basic steps to enable authentication in your app:
+本教程将指导你完成在应用程序中启用身份验证的以下基本步骤：
 
-1. [Register your app for authentication and configure Mobile Services]
-2. [Restrict table permissions to authenticated users]
-3. [Add authentication to the app]
+1.  [注册应用程序以进行身份验证并配置移动服务][]
+2.  [将表权限限制给已经过身份验证的用户][]
+3.  [向应用程序添加身份验证][]
 
-This tutorial is based on the Mobile Services quickstart. You must also first complete the tutorial [Get started with Mobile Services]. 
+本教程基于移动服务快速入门。因此，你还必须先完成[移动服务入门][]教程。
 
-<h2><a name="register"></a><span class="short-header">Register your app</span>Register your app for authentication and configure Mobile Services</h2>
+<a name="register"></a>
+## 注册应用程序注册应用程序以进行身份验证并配置移动服务
 
-To be able to authenticate users, you must register your app with an identity provider. You must then register the provider-generated client secret with Mobile Services.
+为了能够对用户进行身份验证，你必须通过标识提供者注册你的应用程序。然后，你需要向移动服务注册标识提供者生成的客户端密钥。
 
-1. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your mobile service.
+1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的移动服务 。
 
-   	![][1]
+    ![][]
 
-2. Click the **Dashboard** tab and make a note of the **Mobile Service URL** value.
+2.  单击“仪表板”选项卡， 并记下“移动服务 URL”值。 
 
-   	![][2]
+    ![][1]
 
-    You may need to provide this value to the identity provider when you register your app.
+    注册你的应用程序时，可能需要向标识提供者提供此值。
 
-3. Choose a supported identity provider from the list below and follow the steps to register your app with that provider:
+3.  从以下列表中选择支持的标识提供者，并按步骤向该标识提供者注册你的应用程序：
 
- - <a href="/en-us/develop/mobile/how-to-guides/register-for-microsoft-authentication/" target="_blank">Microsoft Account</a>
- - <a href="/en-us/develop/mobile/how-to-guides/register-for-facebook-authentication/" target="_blank">Facebook login</a>
- - <a href="/en-us/develop/mobile/how-to-guides/register-for-twitter-authentication/" target="_blank">Twitter login</a>
- - <a href="/en-us/develop/mobile/how-to-guides/register-for-google-authentication/" target="_blank">Google login</a>
- - <a href="/en-us/documentation/articles/mobile-services-how-to-register-active-directory-authentication/" target="_blank">Azure Active Directory</a>
+-   [Microsoft 帐户][]
+-   [Facebook 登录][]
+-   [Twitter 登录][]
+-   [Google 登录][]
+-   [Azure Active Directory][]
 
+    请记住，要记下标识提供者生成的客户端标识和密钥值。
 
-    Remember to make a note of the client identity and secret values generated by the provider.
+    "安全说明"
 
-    <div class="dev-callout"><b>Security Note</b>
-	<p>The provider-generated secret is an important security credential. Do not share this secret with anyone or distribute it with your app.</p>
-    </div>
+    标识提供者生成的密钥是一个重要的安全凭据。请勿与任何人分享此密钥或将密钥随应用程序分发。
 
-4. Back in the Management Portal, click the **Identity** tab, enter the app identifier and shared secret values obtained from your identity provider, and click **Save**.
+1.  回到管理门户中，单击“标识”选项卡， 输入从标识提供者获取的应用程序标识符和共享密钥值，然后单击“保存”。 
 
-   	![][3]
+    ![][2]
 
-Both your mobile service and your app are now configured to work with your chosen authentication provider.
+你的移动服务和应用程序现已配置为使用你选择的身份验证提供者。
 
-##<a name="permissions"></a>Restrict permissions to authenticated users
+<a name="permissions"></a>
+## 将权限限制给已经过身份验证的用户
 
-1. In the Management Portal, click the **Data** tab, and then click the **TodoItem** table. 
+1.  在管理门户中，单击“数据”选项卡，然后单击“TodoItem”表 。
 
-   	![][4]
+    ![][3]
 
-2. Click the **Permissions** tab, set all permissions to **Only authenticated users**, and then click **Save**. This will ensure that all operations against the **TodoItem** table require an authenticated user. This also simplifies the scripts in the next tutorial because they will not have to allow for the possibility of anonymous users.
+2.  单击“权限” 选项卡，将所有权限设置为“仅经过身份验证的用户” ，然后单击“保存” 。这样可以确保对 "TodoItem" 表的所有操作都要求用户经过身份验证。这样还可简化下一个教程中的脚本，因为它们无需再允许匿名用户。
 
-   	![][5]
+    ![][4]
 
-3. In Visual Studio 2012 Express for Windows Phone, open the project that you created when you completed the tutorial [Get started with Mobile Services]. 
+3.  在 Visual Studio 2012 Express for Windows Phone 中，打开你在完成教程[移动服务入门][]后创建的项目。
 
-4. Press the F5 key to run this quickstart-based app; verify that an unhandled exception with a status code of 401 (Unauthorized) is raised after the app starts. 
-   
-   	This happens because the app attempts to access Mobile Services as an unauthenticated user, but the _TodoItem_ table now requires authentication.
+4.  按 F5 键运行这个基于快速入门的应用程序；验证启动该应用程序后，是否会引发状态代码为 401（“未授权”）的未处理异常。
 
-Next, you will update the app to authenticate users before requesting resources from the mobile service.
+    发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 *TodoItem* 表现在要求身份验证。
 
-##<a name="add-authentication"></a>Add authentication to the app
+接下来，你需要更新应用程序，以便在从移动服务请求资源之前对用户进行身份验证。
 
-[WACOM.INCLUDE [mobile-services-windows-phone-authenticate-app](../includes/mobile-services-windows-phone-authenticate-app.md)]
+<a name="add-authentication"></a>
+## 向应用程序添加身份验证
 
-## <a name="next-steps"> </a>Next steps
+[WACOM.INCLUDE [mobile-services-windows-phone-authenticate-app][]]
 
-In the next tutorial, [Service-side authorization of Mobile Services users][Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. 
+<a name="next-steps"> </a>
+## 后续步骤
 
-<!-- Anchors. -->
-[Register your app for authentication and configure Mobile Services]: #register
-[Restrict table permissions to authenticated users]: #permissions
-[Add authentication to the app]: #add-authentication
-[Next Steps]:#next-steps
+在下一教程[移动服务用户的服务端授权][]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。
 
-<!-- Images. -->
-[1]: ./media/mobile-services-wp8-get-started-users/mobile-services-selection.png
-[2]: ./media/mobile-services-wp8-get-started-users/mobile-service-uri.png
-[3]: ./media/mobile-services-wp8-get-started-users/mobile-identity-tab.png
-[4]: ./media/mobile-services-wp8-get-started-users/mobile-portal-data-tables.png
-[5]: ./media/mobile-services-wp8-get-started-users/mobile-portal-change-table-perms.png
-
-<!-- URLs. -->
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-windows-phone-get-started
-[Authorize users with scripts]: /en-us/documentation/articles/mobile-services-windows-phone-authorize-users-in-scripts
-[Azure Management Portal]: https://manage.windowsazure.com/
+  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-users "Windows Phone"
+  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-users "iOS"
+  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started-users "Android"
+  [HTML]: /zh-cn/documentation/articles/mobile-services-html-get-started-users "HTML"
+  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started-users "Xamarin.Android"
+  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users/ ".NET 后端"
+  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-users/ "JavaScript 后端"
+  [观看教程]: http://go.microsoft.com/fwlink/?LinkId=298631
+  [注册应用程序以进行身份验证并配置移动服务]: #register
+  [将表权限限制给已经过身份验证的用户]: #permissions
+  [向应用程序添加身份验证]: #add-authentication
+  [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  []: ./media/mobile-services-wp8-get-started-users/mobile-services-selection.png
+  [1]: ./media/mobile-services-wp8-get-started-users/mobile-service-uri.png
+  [Microsoft 帐户]: /zh-cn/develop/mobile/how-to-guides/register-for-microsoft-authentication/
+  [Facebook 登录]: /zh-cn/develop/mobile/how-to-guides/register-for-facebook-authentication/
+  [Twitter 登录]: /zh-cn/develop/mobile/how-to-guides/register-for-twitter-authentication/
+  [Google 登录]: /zh-cn/develop/mobile/how-to-guides/register-for-google-authentication/
+  [Azure Active Directory]: /zh-cn/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
+  [2]: ./media/mobile-services-wp8-get-started-users/mobile-identity-tab.png
+  [3]: ./media/mobile-services-wp8-get-started-users/mobile-portal-data-tables.png
+  [4]: ./media/mobile-services-wp8-get-started-users/mobile-portal-change-table-perms.png
+  [mobile-services-windows-phone-authenticate-app]: ../includes/mobile-services-windows-phone-authenticate-app.md
+  [移动服务用户的服务端授权]: /zh-cn/documentation/articles/mobile-services-windows-phone-authorize-users-in-scripts

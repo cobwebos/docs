@@ -1,169 +1,172 @@
 <properties pageTitle="Get Started with Azure Mobile Services for HTML 5 apps" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for HTML development. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
-
-# <a name="getting-started"> </a>Get started with Mobile Services
+<a name="getting-started"> </a>
+# 移动服务入门
 
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/en-us/documentation/articles/mobile-services-windows-store-get-started" title="Windows Store">Windows Store</a>
-	<a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started" title="Windows Phone">Windows Phone</a>
-	<a href="/en-us/documentation/articles/mobile-services-ios-get-started" title="iOS">iOS</a>
-	<a href="/en-us/documentation/articles/mobile-services-android-get-started" title="Android">Android</a>
-	<a href="/en-us/documentation/articles/mobile-services-html-get-started" title="HTML" class="current">HTML</a>
-	<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-ios-get-started" title="Xamarin.iOS">Xamarin.iOS</a>
-	<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-android-get-started" title="Xamarin.Android">Xamarin.Android</a>
-	<a href="/en-us/documentation/articles/partner-sencha-mobile-services-get-started/" title="Sencha">Sencha</a>
-	<a href="/en-us/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/" title="PhoneGap">PhoneGap</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-windows-store-get-started" title="Windows Store">Windows Store</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-windows-phone-get-started" title="Windows Phone">Windows Phone</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-ios-get-started" title="iOS">iOS</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-android-get-started" title="Android">Android</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-html-get-started" title="HTML" class="current">HTML</a>
+	<a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started" title="Xamarin.iOS">Xamarin.iOS</a>
+	<a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started" title="Xamarin.Android">Xamarin.Android</a>
+	<a href="/zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/" title="Sencha">Sencha</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/" title="PhoneGap">PhoneGap</a>
 </div>
 
 <!--<div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-html-get-started/" title=".NET backend">.NET backend</a> | 
-	<a href="/en-us/documentation/articles/mobile-services-html-get-started/"  title="JavaScript backend" class="current">JavaScript backend</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-html-get-started/" title=".NET backend">.NET 后端</a> | 
+	<a href="/zh-cn/documentation/articles/mobile-services-html-get-started/"  title="JavaScript backend" class="current">JavaScript 后端</a>
 </div>-->
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
-<p>This tutorial shows you how to add a cloud-based backend service to an HTML app using Azure Mobile Services. In this tutorial, you will create both a new mobile service and a simple <em>To do list</em> app that stores app data in the new mobile service. You can view a video version of this tutorial by clicking the clip to the right.</p>
+<p>本教程说明如何使用 Azure 移动服务向 HTML 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单*待办事项列表*应用程序。单击右侧的剪辑可观看本教程的视频版本。</p>
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=287040" target="_blank" class="label">watch the tutorial</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-html-get-started-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=287040" target="_blank" class="dev-onpage-video"><span class="icon">Play Video</span></a> <span class="time">3:51</span></div>
+
 </div>
- 
-A screenshot from the completed app is below:
+<div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=287040" target="_blank" class="label">观看教程</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-html-get-started-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=287040" target="_blank" class="dev-onpage-video"><span class="icon">播放视频 </span></a> <span class="time">3:51</span></div>
+</div>
 
-![][0]
+以下是完成的应用程序的屏幕快照：
 
-Completing this tutorial is a prerequisite for all other Mobile Services tutorials for HTML apps. 
+![][]
 
-<div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F" target="_blank">Azure Free Trial</a>.</p></div>
+只有在完成本教程后，才可以学习有关 HTML 应用程序的所有其他移动服务教程。
 
-###Additional requirements
+<div class="dev-callout"><b>说明</b>
 
-+ This tutorial requires that you have one of the following web servers running on your local computer:
+<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F" target="_blank">Azure 免费试用</a>。</p>
+</div>
 
-	+  **On Windows**: IIS Express. IIS Express is installed by the [Microsoft Web Platform Installer].   
-	+  **On MacOS X**: Python, which should already be installed.
-	+  **On Linux**: Python. You must install the [latest version of Python]. 
-	
-	You can use any web server to host the app, but these are the web servers that are supported by the downloaded scripts.  
+<a name="create-new-service"> </a>
+### 其他要求
 
-+ A web browser that supports HTML5.
+-   本教程要求你在本地计算机上运行下列 Web 服务器之一：
 
+    -   "在 Windows 上"：IIS Express。可通过 [Microsoft Web 平台安装程序][]安装 IIS Express。
+    -   "在 MacOS X 上"：Python。该服务器事先应已安装。
+    -   "在 Linux 上"：Python。必须安装[最新版本的 Python][]。
 
-## <a name="create-new-service"> </a>Create a new mobile service
+    你可以使用任何 Web 服务器来托管应用程序，但是这些 Web 服务器必须受下载的脚本的支持。
 
-[WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
+-   支持 HTML5 的 Web 浏览器。
 
-## <h2><span class="short-header">Create a new app</span>Create a new HTML app</h2>
+## 创建新的移动服务
 
-Once you have created your mobile service, you can follow an easy quickstart in the Management Portal to either create a new app or modify an existing app to connect to your mobile service. 
+[WACOM.INCLUDE [mobile-services-create-new-service][]]
 
-In this section you will create a new HTML app that is connected to your mobile service.
+## 
 
-1.  In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
+## 创建新应用程序创建新的 HTML 应用程序
 
-   
-2. In the quickstart tab, click **Windows** under **Choose platform** and expand **Create a new HTML app**.
+创建移动服务后，你可以在管理门户中遵照一个简易的快速入门项目来创建新应用程序或修改现有应用程序，以连接到你的移动服务。
 
-   	![][6]
+在本部分中，你将要创建一个连接到移动服务的新 HTML 应用程序。
 
-   	This displays the three easy steps to create and host an HTML app connected to your mobile service.
+1.  在管理门户中单击“移动服务”，然后单击你刚刚创建的移动服务 。
 
-  	![][7]
+2.  在快速入门选项卡中，单击“选择平台”下的“Windows”，然后展开“创建新的 HTML 应用程序” 。
 
-3. Click **Create TodoItems table** to create a table to store app data.
+    ![][1]
 
-4. Under **Download and run your app**, click **Download**. 
+    此时将显示三个简单步骤，描述如何创建和托管与移动服务连接的 HTML 应用程序。
 
-  	This downloads the web site files for the sample _To do list_ application that is connected to your mobile service. Save the compressed file to your local computer, and make a note of where you save it.
+    ![][2]
 
-5. In the **Configure** tab, verify that `localhost` is already listed in the **Allow requests from host names** list under **Cross-Origin Resource Sharing (CORS)**. If it's not, type `localhost` in the **Host name** field and then click **Save**.
+3.  单击“创建 TodoItems 表”以创建用于存储应用程序数据的表 。
 
-  	![][9]
+4.  在“下载并运行应用程序”下面单击“下载” 。
 
-	<div class="dev-callout"><b>Note</b>
-		<p>If you deploy the quickstart app to a web server other than localhost, you must add the host name of the web server to the <strong>Allow requests from host names</strong> list. For more information, see <a href="http://msdn.microsoft.com/en-us/library/windowsazure/dn155871.aspx" target="_blank">Cross-origin resource sharing</a>.</p>
+    随即将会下载已连接到移动服务的示例*待办事项列表*应用程序的网站文件。将压缩文件保存到本地计算机，并记下保存位置。
+
+5.  在“配置”选项卡中，检查 `localhost` 是否已列在“跨域资源共享(CORS)”下的“允许来自主机名的请求”列表中 。如果未列出，请在“主机名”字段中键入 `localhost`，然后单击“保存” 。
+
+    ![][3]
+
+	<div class="dev-callout"><b>说明</b>
+
+    <p>如果将快速入门应用程序部署到除 localhost 以外的 Web 服务器，则必须将该 Web 服务器的主机名添加到“允许来自主机名的请求”列表 。有关详细信息，请参阅<a href="http://msdn.microsoft.com/zh-cn/library/windowsazure/dn155871.aspx" target="_blank">跨域资源共享</a>。</p>
 	</div>
 
-## Host and run your HTML app
+## 托管和运行 HTML 应用程序
 
-The final stage of this tutorial is to host and run your new app on your local computer.
+本教程的最后一个阶段是在本地计算机上托管和运行你的新应用程序。
 
-1. Browse to the location where you saved the compressed project files, expand the files on your computer, and launch one of the following command files from the **server** subfolder.
+1.  浏览到压缩的项目文件所保存到的位置，在计算机上展开这些文件，然后启动 "server" 子文件夹中的下列命令文件之一。
 
-	+ **launch-windows** (Windows computers) 
-	+ **launch-mac.command** (Mac OS X computers)
-	+ **launch-linux.sh** (Linux computers)
+    -   "launch-windows"（Windows 计算机）
+    -   "launch-mac.command"（Mac OS X 计算机）
+    -   "launch-linux.sh"（Linux 计算机）
 
-	<div class="dev-callout"><b>Note</b>
-		<p>On a Windows computer, type `R` when PowerShell asks you to confirm that you want to run the script. Your web browser might warn you to not run the script because it was downloaded from the internet. When this happens, you must request that the browser proceed to load the script.</p>
+	<div class="dev-callout"><b>说明</b>
+
+    <p>在 Windows 计算机上，当 PowerShell 要求你确认是否要运行脚本时，请键入“R”。你的 Web 浏览器可能会警告你不要运行该脚本，因为它是从 Internet 下载的。如果出现此警告，你必须请求浏览器继续加载该脚本。</p>
 	</div>
 
-	This starts a web server on your local computer to host the new app.
+    随后将在本地计算机上启动用于托管新应用程序的 Web 服务器。
 
-2. Open the URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> in a web browser to start the app.
+2.  在 Web 浏览器中打开 URL <http://localhost:8000/> 以启动该应用程序。
 
-3. In the app, type meaningful text, such as _Complete the tutorial_, in **Enter new task**, and then click **Add**.
+3.  在应用程序中的“输入新任务”中键入有意义的文本（例如 *Complete the tutorial*），然后单击“添加” 。
 
-   	![][10]
+    ![][4]
 
-   	This sends a POST request to the new mobile service hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the second column in the app.
+    这样可向在 Azure 中托管的新移动服务发送 POST 请求。来自请求的数据被插入到 TodoItem 表。移动服务返回存储在表中的项，数据显示在应用程序的第二列中。
 
-	<div class="dev-callout"> 
-	<b>Note</b> 
-   	<p>You can review the code that accesses your mobile service to query and insert data, which is found in the app.js file.</p> 
- 	</div>
+	<div class="dev-callout"><b>说明</b>
 
-4. Back in the Management Portal, click the **Data** tab and then click the **TodoItems** table.
+    <p>你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 app.js 文件中。</p>
+	</div>
 
-   	![][11]
+4.  返回管理门户，单击“数据” 选项卡，然后单击“TodoItems” 表。
 
-   	This lets you browse the data inserted by the app into the table.
+    ![][5]
 
-   	![][12]
+    此时，你可以浏览应用程序在表中插入的数据。
 
-## <a name="next-steps"> </a>Next Steps
-Now that you have completed the quickstart, learn how to perform additional important tasks in Mobile Services: 
+    ![][6]
+<a name="next-steps"> </a>
+## 后续步骤
 
-* **[Get started with data]**
-  <br/>Learn more about storing and querying data using Mobile Services.
-  
-* **[Call a custom API from an HTML application]**
-  <br/>Connect your HTML application with a custom API hosted on Mobile Services.
+完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-* **[Get started with authentication]**
-  <br/>Learn how to authenticate users of your app with an identity provider.
+-   "[数据处理入门][]"
+    了解有关使用移动服务存储和查询数据的详细信息。
 
-* **[Mobile Services HTML/JavaScript How-to Conceptual Reference]**
-  <br/>Learn more about how to use Mobile Services with HTML/JavaScript 
+-   "[从 HTML 应用程序调用自定义 API][]"
+    将 HTML 应用程序连接到移动服务上托管的自定义 API。
 
-<!-- Anchors. -->
-[Getting started with Mobile Services]:#getting-started
-[Create a new mobile service]:#create-new-service
-[Define the mobile service instance]:#define-mobile-service-instance
-[Next Steps]:#next-steps
+-   "[身份验证入门][]"
+    了解如何使用标识提供者对应用程序的用户进行身份验证。
 
-<!-- Images. -->
-[0]: ./media/mobile-services-html-get-started/mobile-quickstart-completed-html.png
+-   "[移动服务 HTML/JavaScript 操作方法概念性参考][]"
+    了解有关如何将移动服务与 HTML/JavaScript 一起使用的详细信息
 
-
-
-
-
-[6]: ./media/mobile-services-html-get-started/mobile-portal-quickstart-html.png
-[7]: ./media/mobile-services-html-get-started/mobile-quickstart-steps-html.png
-
-[9]: ./media/mobile-services-html-get-started/mobile-services-set-cors-localhost.png
-[10]: ./media/mobile-services-html-get-started/mobile-quickstart-startup-html.png
-[11]: ./media/mobile-services-html-get-started/mobile-data-tab.png
-[12]: ./media/mobile-services-html-get-started/mobile-data-browse.png
-
-
-<!-- URLs. -->
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-html
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-html
-[Call a custom API from an HTML application]: /en-us/documentation/articles/mobile-services-html-call-custom-api 
-
-[Management Portal]: https://manage.windowsazure.com/
-[Microsoft Web Platform Installer]:  http://go.microsoft.com/fwlink/p/?LinkId=286333
-[latest version of Python]: http://go.microsoft.com/fwlink/p/?LinkId=286342
-[Mobile Services HTML/JavaScript How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-html-js-client
-[Cross-origin resource sharing]: http://msdn.microsoft.com/en-us/library/windowsazure/dn155871.aspx
+  [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started "Windows Phone"
+  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started "iOS"
+  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started "Android"
+  [HTML]: /zh-cn/documentation/articles/mobile-services-html-get-started "HTML"
+  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started "Xamarin.Android"
+  [Sencha]: /zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/ "Sencha"
+  [PhoneGap]: /zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/ "PhoneGap"
+  [观看教程]: http://go.microsoft.com/fwlink/?LinkId=287040
+  []: ./media/mobile-services-html-get-started/mobile-quickstart-completed-html.png
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F
+  [Microsoft Web 平台安装程序]: http://go.microsoft.com/fwlink/p/?LinkId=286333
+  [最新版本的 Python]: http://go.microsoft.com/fwlink/p/?LinkId=286342
+  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
+  [1]: ./media/mobile-services-html-get-started/mobile-portal-quickstart-html.png
+  [2]: ./media/mobile-services-html-get-started/mobile-quickstart-steps-html.png
+  [3]: ./media/mobile-services-html-get-started/mobile-services-set-cors-localhost.png
+  [跨域资源共享]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn155871.aspx
+  [4]: ./media/mobile-services-html-get-started/mobile-quickstart-startup-html.png
+  [5]: ./media/mobile-services-html-get-started/mobile-data-tab.png
+  [6]: ./media/mobile-services-html-get-started/mobile-data-browse.png
+  [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-html
+  [从 HTML 应用程序调用自定义 API]: /zh-cn/documentation/articles/mobile-services-html-call-custom-api
+  [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-html
+  [移动服务 HTML/JavaScript 操作方法概念性参考]: /zh-cn/develop/mobile/how-to-guides/work-with-html-js-client

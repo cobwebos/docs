@@ -1,717 +1,741 @@
 <properties pageTitle="Work with a JavaScript backend mobile service" metaKeywords="server scripts, mobile devices, Azure, scheduler" description="Provides examples on how to define, register, and use server scripts in Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Work with server scripts in Mobile Services" authors="ricksal" solutions="" manager="" editor="" />
 
+# 使用 JavaScript 后端移动服务
 
-# Work with a JavaScript backend mobile service
- 
-This article provides detailed information about and examples of how to work with a JavaScript backend in Azure Mobile Services. This topic is divided into these sections:
+本文提供有关如何在 Azure 移动服务中使用 JavaScript 后端的详细信息和示例。本主题分为以下部分：
 
-+ [Introduction]
-+ [Table operations]
-	+ [How to: Register for table operations]
-	+ [How to: Override the default response]
-	+ [How to: Override execute success]
-	+ [How to: Override default error handling]
-	+ [How to: Add custom parameters]
-	+ [How to: Work with table users][How to: Work with users]
-+ [Custom API][Custom API anchor]
-	+ [How to: Define a custom API]
-	+ [How to: Implement HTTP methods]
-	+ [How to: Send and receive data as XML]
-	+ [How to: Work with users and headers in a custom API]
-	+ [How to: Define multiple routes in a custom API]
-+ [Job Scheduler]
-	+ [How to: Define scheduled job scripts]
-+ [Source control, shared code, and helper functions]
-	+ [How to: Load Node.js modules]
-	+ [How to: Use helper functions]
-	+ [How to: Share code by using source control]
-	+ [How to: Work with app settings] 
-+ [Using the command line tool]
-+ [Working with tables]
-	+ [How to: Access tables from scripts]
-	+ [How to: Perform Bulk Inserts]
-	+ [How to: Map JSON types to database types]
-	+ [Using Transact-SQL to access tables]
-+ [Debugging and troubleshooting]
-	+ [How to: Write output to the mobile service logs]
+-   [介绍][]
+-   [表操作][]
 
-##<a name="intro"></a>Introduction
+    -   [如何：注册表操作][]
+    -   [如何：重写默认响应][]
+    -   [如何：重写 execute success][]
+    -   [如何：重写默认错误处理][]
+    -   [如何：添加自定义参数][]
+    -   [如何：处理表用户][]
+-   [自定义 API][]
 
-In a JavaScript backend mobile service, you can define custom business logic as JavaScript code that's stored and executed on the server. This server script code is assigned to one of the following server functions:
+    -   [如何：定义自定义 API][]
+    -   [如何：实现 HTTP 方法][]
+    -   [如何：发送和接收 XML 格式的数据][]
+    -   [如何：处理用户和自定义 API 中的标头][]
+    -   [如何：在一个自定义 API 中定义多个路由][]
+-   [作业计划程序][]
 
-+ [Insert, read, update, or delete operations on a given table][Table operations].
-+ [Scheduled jobs][Job Scheduler].
-+ [HTTP methods defined in a custom API][Custom API anchor]. 
+    -   [如何：定义计划的作业脚本][作业计划程序]
+-   [源代码管理、共享代码和 Helper 函数][]
 
-The signature of the main function in the server script depends on the context of where the script is used. You can also define common script code as nodes.js modules that are shared across scripts. For more information, see [Source control and shared code][Source control, shared code, and helper functions].
+    -   [如何：加载 Node.js 模块][]
+    -   [如何：使用 Helper 函数][]
+    -   [如何：使用源代码管理来共享代码][]
+    -   [如何：使用应用程序设置][]
+-   [使用命令行工具][]
+-   [使用表][]
 
-For descriptions of individual server script objects and functions, see [Mobile Services server script reference]. 
+    -   [如何：从脚本访问表][]
+    -   [如何：执行批量插入][]
+    -   [如何：将 JSON 类型映射到数据库类型][]
+    -   [使用 Transact-SQL 访问表][]
+-   [调试和故障排除][]
 
+    -   [如何：将输出写入移动服务日志][]
 
-##<a name="table-scripts"></a>Table operations
+<a name="intro"></a>
+## 介绍
 
-A table operation script is a server script that is registered to an operation on a table--insert, read, update, or delete (*del*). The name of the script must match the kind of operation for which it is registered. Only one script can be registered for a given table operation. The script is executed every time that the given operation is invoked by a REST request&mdash;for example, when a POST request is received to insert an item into the table. Mobile Services does not preserve state between script executions. Because a new global context is created every time a script is run, any state variables that are defined in the script are reinitialized. If you want to store state from one request to another, create a table in your mobile service, and then read and write the state to the table. For more information, see [How to: Access tables from scripts].
+在 JavaScript 后端移动服务中，你可以定义 JavaScript 代码形式的自定义业务逻辑，这些代码将在服务器中存储和执行。此服务器脚本代码将分配到下列服务器功能之一：
 
-You write table operation scripts if you need to enforce customized business logic when the operation is executed. For example, the following script rejects insert operations where the string length of the `text` field is greater than ten characters: 
+-   [对给定的表执行的插入、读取、更新或删除操作][表操作]。
+-   [计划的作业][作业计划程序]。
+-   [自定义 API 中定义的 HTTP 方法][自定义 API]。
 
-	function insert(item, user, request) {
-	    if (item.text.length > 10) {
-	        request.respond(statusCodes.BAD_REQUEST, 
-				'Text length must be less than 10 characters');
-	    } else {
-	        request.execute();
-	    }
-	}
+服务器脚本中 main 函数的签名取决于脚本的具体使用位置。你还可以将公用脚本代码定义为可在脚本之间共享的 nodes.js 模块。有关详细信息，请参阅[源代码管理和共享代码][源代码管理、共享代码和 Helper 函数]。
 
-A table script function always takes three arguments.
+有关各个服务器脚本对象和函数的说明，请参阅[移动服务服务器脚本参考][]。
 
-- The first argument varies depending on the table operation. 
+<a name="table-scripts"></a>
+## 表操作
 
-	- For inserts and updates, it is an **item** object, which is a JSON representation of the row being affected by the operation. This allows you to access column values by name, for example, *item.Owner*, where *Owner* is one of the names in the JSON representation.
-	- For a delete, it is the ID of the record to delete. 
-	- And for a read, it is a [query object] that specifies the rowset to return.
+表操作脚本是一种服务器脚本，它将注册到对表执行的操作 - 插入、读取、更新或删除 (*del*)。该脚本的名称必须与注册的操作类型相匹配。对于一个给定的表操作，只能注册一个脚本。每当 REST 请求调用给定的操作时（例如，当收到要在表中插入项的 POST 请求时），就会执行该脚本。移动服务不会保存每次执行脚本后的状态。由于每次运行脚本都会创建一个新的全局上下文，因此脚本中定义的所有状态变量都会重新初始化。如果你想要存储执行不同请求后的状态，请在移动服务中创建一个表，然后将状态读取和写入该表。有关更多信息，请参见[如何：从脚本访问表][]。
 
-- The second argument is always a [user object][User object] that represents the user that submitted the request. 
+如果需要在执行操作时强制实施自定义的业务逻辑，请编写表操作脚本。例如，当 `text` 字段的字符串长度大于 10 个字符时，以下脚本将拒绝插入操作：
 
-- The third argument is always a [request object][Request object], by which you can control execution of the requested operation and the response that's sent to the client.
+    function insert(item, user, request) {
+    if (item.text.length > 10) {
+    request.respond(statusCodes.BAD_REQUEST, 
+    'Text length must be less than 10 characters');
+    } else {
+    request.execute();
+        }
+    }
 
-Here are the canonical main-function signatures for the table operations: 
+表脚本函数始终采用三个参数。
 
-+ [Insert][insert function]: `function insert (item, user, request) { ... }`
-+ [Update][update function]: `function update (item, user, request) { ... }`
-+ [Delete][delete function]: `function del (id, user, request) { ... }`
-+ [Read][read function]: `function read (query, user, request) { ... }`
+-   第一个参数根据表操作的不同而异。
 
->[WACOM.NOTE]A function that's registered to the delete operation must be named _del_ because delete is a reserved keyword in JavaScript. 
+    -   对于插入和更新，它是一个 "item" 对象，即操作所影响的行的 JSON 表示形式。这样，你便可以按名称（例如 *item.Owner*，其中的 *Owner* 是 JSON 表示形式的名称之一）访问列值。
+    -   对于删除，它是要删除的记录的 ID。
+    -   对于读取，它是用于指定要返回的行集的[查询对象][]。
+-   第二个参数始终是[用户对象][]，表示提交了请求的用户。
 
-Every server script has a main function, and may have optional helper functions. Even though a server script may have been been created for a specific table, it can also reference other tables in the same database. You can also define common functions as modules that can be shared across scripts. For more information, see [Source control and shared code][Source control, shared code, and helper functions].
+-   第三个参数始终是[请求对象][]，你可以凭此控制所请求的操作的执行，以及发送到客户端的响应。
 
-###<a name="register-table-scripts"></a>How to: Register table scripts
+以下是表操作的规范 main 函数签名：
 
-You can define server scripts that are registered to a table operation in one of the following ways:
+-   [插入][]：`function insert (item, user, request) { ... }`
+-   [更新][]：`function update (item, user, request) { ... }`
+-   [删除][]：`function del (id, user, request) { ... }`
+-   [读取][]：`function read (query, user, request) { ... }`
 
-+ In the [Azure Management Portal][Management Portal]. Scripts for table operations are accessed in the **Scripts** tab for a given table. The following shows the default code registered to the insert script for the `TodoItem` table. You can override this code with your own custom business logic.
+> [WACOM.NOTE]注册到删除操作的函数必须命名为 *del*，因为 delete 是 JavaScript 中的保留关键字。
 
-	![1][1]
-	
-	To learn how to do this, see [Validate and modify data in Mobile Services by using server scripts].  
+每个服务器脚本都有一个 main 函数，并包含可选的 Helper 函数。即使服务器脚本是为特定的表创建的，它也可以引用同一数据库中的其他表。你还可以将公用函数定义为可在脚本之间共享的模块。有关详细信息，请参阅[源代码管理和共享代码][源代码管理、共享代码和 Helper 函数]。
 
-+ By using source control. When you have source control enabled, simply create a file named <em>`<table>`</em>.<em>`<operation>`</em>.js in the .\service\table subfolder in your git repository, where <em>`<table>`</em> is the name of the table and <em>`<operation>`</em> is the table operation being registered. For more information, see [Source control and shared code][Source control, shared code, and helper functions].
+<a name="register-table-scripts"></a
+### 如何：注册表脚本
 
-+ From the command prompt by using the Azure command line tool. For more information, see [Using the command line tool].
+你可以使用下列方式之一定义可注册到表操作的服务器脚本：
 
+-   在 [Azure 管理门户][]中。可在给定表的“脚本”选项卡中访问表操作的脚本 。下面显示了已注册到 `TodoItem` 表的插入脚本的默认代码。你可以使用自己的自定义业务逻辑重写此代码。
 
-A table operation script must call at least one of the following functions of the [request object] to make sure that the client receives a response. 
- 
-+ **execute function**: The operation is completed as requested and the standard response is returned.
- 
-+ **respond function**: A custom response is returned.
+    ![1][]
 
-<div class="dev-callout"><strong>Important</strong>
-<p>When a script has a code path in which neither <b>execute</b> nor <b>respond</b> is invoked, the operation may become unresponsive.</p></div>
+    若要了解如何执行此操作，请参阅[使用服务器脚本在移动服务中验证和修改数据][]。
 
-The following script calls the **execute** function to complete the data operation requested by the client: 
+-   使用源代码管理。启用源代码管理后，只需在 git 存储库中的 .\\service\\table 子文件夹内创建一个名为 *`<table>`*.*`<operation>`*.js 的文件，其中，*`<table>`* 是表的名称，*`<operation>`* 是要注册的表操作。有关详细信息，请参阅[源代码管理和共享代码][源代码管理、共享代码和 Helper 函数]。
 
-	function insert(item, user, request) { 
-	    request.execute(); 
-	}
+-   使用 Azure 命令行工具中的命令提示符。有关详细信息，请参阅[使用命令行工具][]。
 
-In this example, the item is inserted into the database and the appropriate status code is returned to the user. 
+表操作脚本必须至少调用[请求对象][]的下列其中一个函数，以确保客户端收到响应。
 
-When the **execute** function is called, the `item`, [query][query object], or `id` value that was passed as the first argument into the script function is used to perform the operation. For an insert, update or query operation, you can modify the item or query before you call **execute**: 
+-   "execute 函数"：已按请求完成操作，并已返回标准响应。
 
-	function insert(item, user, request) { 
-	    item.scriptComment =
-			'this was added by a script and will be saved to the database'; 
-	    request.execute(); 
-	} 
- 
-	function update(item, user, request) { 
-	    item.scriptComment = 
-			'this was added by a script and will be saved to the database'; 
-	    request.execute(); 
-	} 
-
-	function read(query, user, request) { 
-		// Only return records for the current user 	    
-		query.where({ userid: user.userId}); 
-	    request.execute(); 
-	}
- 
->[WACOM.NOTE]In a delete script, changing the value of the supplied userId variable does not affect which record gets deleted.
-
-For more examples, see [Read and write data], [Modify the request] and [Validate data].
-
-
-###<a name="override-response"></a>How to: Override the default response
-
-You can also use a script to implement validation logic that can override the default response behavior. If validation fails, just call the **respond** function instead of the **execute** function and write the response to the client: 
-
-	function insert(item, user, request) {
-	    if (item.userId !== user.userId) {
-	        request.respond(statusCodes.FORBIDDEN, 
-	        'You may only insert records with your userId.');
-	    } else {
-	        request.execute();
-	    }
-	}
+-   "respond 函数"：已返回自定义响应。
 
-In this example, the request is rejected when the inserted item does not have a `userId` property that matches the `userId` of the [user object] that's supplied for the authenticated client. In this case, a database operation (*insert*) does not occur, and a response that has a 403 HTTP status code and a custom error message is returned to the client. For more examples, see [Modify the response].
+<div class="dev-callout">重要说明</b>
 
-###<a name="override-success"></a>How to: Override execute success
+<p>如果脚本包含的某个代码路径中的 <b>execute</b> 和 <b>respond</b> 都未被调用，则操作可能不返回响应。</p>
+</div>
 
-By default in a table operation, the **execute** function writes responses automatically. However, you can pass two optional parameters to the execute function that override its behavior on success and/or on error.
+以下脚本将调用 "execute" 函数来完成客户端请求的数据操作：
 
-By passing in a **success** handler when you call execute, you can modify the results of a query before you write them to the response. The following example calls `execute({ success: function(results) { ... })` to perform additional work after data is read from the database but before the response is written:
+    function insert(item, user, request) { 
+    request.execute(); 
+    }
 
-	function read(query, user, request) {
-	    request.execute({
-	        success: function(results) {
-	            results.forEach(function(r) {
-	                r.scriptComment = 
-	                'this was added by a script after querying the database';
-	            });
-	            request.respond();
-	        }
-	    });
-	}
+在此示例中，该项将插入到数据库中，并且相应的状态代码将返回给用户。
 
-When you provide a **success** handler to the **execute** function, you must also call the **respond** function as part of the **success** handler so that the runtime knows that the script has completed and that a response can be written. When you call **respond** without passing any arguments, Mobile Services generates the default response. 
+如果调用了 "execute" 函数，则使用作为第一个参数传入脚本函数的 `item`、[query][查询对象] 或 `id` 值来执行操作。对于插入、更新或查询操作，你可以在调用 "execute" 之前修改项或查询：
 
->[WACOM.NOTE]You can call **respond** without arguments to invoke the default response only after you first call the **execute** function.
- 
-###<a name="override-error"></a>How to: Override default error handling
+    function insert(item, user, request) { 
+    item.scriptComment =
+    'this was added by a script and will be saved to the database'; 
+    request.execute(); 
+    } 
 
-The **execute** function can fail if there is a loss of connectivity to the database, an invalid object, or an incorrect query. By default when an error occurs, server scripts log the error and write an error result to the response. Because Mobile Services provides default error handling, you don't have to handle errors that may occur in the service. 
+    function update(item, user, request) { 
+    item.scriptComment = 
+    'this was added by a script and will be saved to the database'; 
+    request.execute(); 
+    } 
 
-You can override the default error handling by implementing explicit error handling if you want a particular compensating action or when you want to use the global console object to write more detailed information to the log. Do this by supplying an **error** handler to the **execute** function:
+    function read(query, user, request) { 
+    // Only return records for the current user         
+    query.where({ userid:user.userId}); 
+    request.execute(); 
+    }
 
-	function update(item, user, request) { 
-	  request.execute({ 
-	    error: function(err) { 
-	      // Do some custom logging, then call respond. 
-	      request.respond(); 
-	    } 
-	  }); 
-	}
- 
+> [WACOM.NOTE]在删除脚本中，更改提供的 userId 变量值不会影响要删除的记录。
 
-When you provide an error handler, Mobile Services returns an error result to the client when **respond** is called.
+有关更多示例，请参阅[读取和写入数据][]、[修改请求][]和[验证数据][]。
 
-You can also provide both a **success** and an **error** handler if you wish.
+<a name="override-response"></a>
+### 如何：重写默认响应
 
-###<a name="access-headers"></a>How to: Access custom parameters
+你还可以使用脚本来实现能够重写默认响应行为的验证逻辑。如果验证失败，则只需调用 "respond" 函数而不是 "execute" 函数，然后将响应写入客户端：
 
-When you send a request to your mobile service, you can include custom parameters in the URI of the request to instruct your table operation scripts how to process a given request. You then modify your script to inspect the parameter to determine the processing path.
+    function insert(item, user, request) {
+    if (item.userId !== user.userId) {
+    request.respond(statusCodes.FORBIDDEN, 
+    'You may only insert records with your userId.');
+    } else {
+    request.execute();
+        }
+    }
 
-For example, the following URI for a POST request tells the service to not permit the insertion of a new *TodoItem* that has the same text value:
+在此示例中，如果插入的项没有与提供给已验证客户端的[用户对象][]的 `userId` 相匹配的 `userId` 属性，则会拒绝请求。在此情况下，数据库操作 (*insert*) 不会发生，并且会将状态代码为 403 HTTP 的响应和自定义的错误消息返回到客户端。有关更多示例，请参阅[修改响应][]。
+<a name="override-success"></a>
+### 如何：重写 execute success
 
-		https://todolist.azure-mobile.net/tables/TodoItem?duplicateText=false
+默认情况下，在表操作中，"execute" 函数会自动写入响应。但是，你可以向 execute 函数传递两个可选参数，用于在成功和/或出错时重写该函数的行为。
 
-These custom query parameters are accessed as JSON values from the **parameters** property of the [request object]. The **request** object is supplied by Mobile Services to any function registered to a table operation. The following server script for the insert operation checks the value of the `duplicateText` parameter before the insert operation is run:
+通过在调用 execute 时传入 "success" 处理程序，你可以先修改查询的结果，然后再将结果写入到响应中。以下示例调用了 `execute({ success:function(results) { ...})`，以便在从数据库读取数据之后、写入响应之前执行其他操作：
 
-		function insert(item, user, request) {
-		    var todoItemTable = tables.getTable('TodoItem');
-		    // Check the supplied custom parameter to see if
-		    // we should allow duplicate text items to be inserted.		   
-		    if (request.parameters.duplicateText === 'false') {
-		        // Find all existing items with the same text
-		        // and that are not marked 'complete'. 
-		        todoItemTable.where({
-		            text: item.text,
-		            complete: false
-		        }).read({
-		            success: insertItemIfNotComplete
-		        });
-		    } else {
-		        request.execute();
-		    }
+    function read(query, user, request) {
+    request.execute({
+    success:function(results) {
+    results.forEach(function(r) {
+    r.scriptComment = 
+    'this was added by a script after querying the database';
+                });
+    request.respond();
+            }
+        });
+    }
 
-		    function insertItemIfNotComplete(existingItems) {
-		        if (existingItems.length > 0) {
-		            request.respond(statusCodes.CONFLICT, 
-                        "Duplicate items are not allowed.");
-		        } else {
-		            // Insert the item as normal. 
-		            request.execute();
-		        }
-		    }
-		}
+如果为 "execute" 函数提供了 "success" 处理程序，则还必须调用 "respond" 函数以配合 "success" 处理程序，使运行时知道脚本已完成，并且可写入响应。如果调用 "respond" 而不传递任何参数，移动服务将生成默认响应。
 
-Note that in **insertItemIfNotComplete** the **execute** function of the [request object] is invoked to insert the item when there is no duplicate text; otherwise the **respond** function is invoked to notify the client of the duplicate. 
+> [WACOM.NOTE]只有在先调用 "execute" 函数之后，才能调用不带参数的 "respond" 来调用默认响应。
 
-Note the syntax of the call to the **success** function in the above code:
+<a name="override-error"></a>
+### 如何：重写默认错误处理
 
- 		        }).read({
-		            success: insertItemIfNotComplete
-		        });
+如果与数据库的连接断开、对象无效或者查询不正确，"execute" 函数可能会失败。默认情况下，当发生错误时，服务器脚本会记录错误，并将错误结果写入到响应中。由于移动服务提供了默认的错误处理，因此你不需要处理服务中可能会发生的错误。
 
-In JavaScript it is a compact version of the lengthier equivalent: 
+如果你想要采取特定的补救措施，或者想要使用全局控制台对象向日志写入更详细信息，则可以通过实施显式错误处理来重写默认的错误处理。向 "execute" 函数提供一个 "error" 处理程序即可实现此目的：
 
-		success: function(results) 
-		{ 
-			insertItemIfNotComplete(results); 
-		}
+    function update(item, user, request) { 
+    request.execute({ 
+    错误：function(err) { 
+    // Do some custom logging, then call respond. 
+    request.respond(); 
+        } 
+      }); 
+    }
 
+提供 error 处理程序后，调用 "respond" 时，移动服务会向客户端返回错误结果。
 
-###<a name="work-with-users"></a>How to: Work with users
+如果需要，你也可以同时提供 "success" 和 "error" 处理程序。
 
-In Azure Mobile Services, you can use an identity provider to authenticate users. For more information, see [Get started with authentication]. When an authenticated user invokes a table operation, Mobile Services uses the [user object] to supply information about the user to the registered script function. The **userId** property can be used to store and retrieve user-specific information. The following example sets the owner property of an item based on the userId of an authenticated user:
+<a name="access-headers"></a>
+### 如何：访问自定义参数
 
-	function insert(item, user, request) {
-	    item.owner = user.userId;
-	    request.execute();
-	}
+向移动服务发送请求时，你可以在请求 URI 中包含自定义参数，以指示表操作脚本如何处理给定的请求。然后，你可以修改脚本，通过检查参数的方式来确定处理路径。
 
-The next example adds an additional filter to the query based on the **userId** of an authenticated user. This filter restricts the result to only items that belong to the current user:  
+例如，以下 POST 请求 URI 将指示服务不要允许插入具有相同 text 值的新 *TodoItem*：
 
-	function read(query, user, request) {
-	    query.where({
-	        owner: user.userId
-	    });
-	    request.execute();
-	}
+        https://todolist.azure-mobile.net/tables/TodoItem?duplicateText=false
 
-##<a name="custom-api"></a>Custom API
+可从[请求对象][]的 "parameters" 属性访问这些以 JSON 值提供的自定义查询参数。移动服务向已注册到表操作的任何函数提供 "request" 对象。以下用于插入操作的服务器脚本将在运行插入操作之前检查 `duplicateText` 参数的值：
 
-A custom API is an endpoint in your mobile service that is accessed by one or more of the standard HTTP methods: GET, POST, PUT, PATCH, DELETE. A separate function export can be defined for each HTTP method supported by the custom API, all in a single script file. The registered script is invoked when a request to the custom API using the given method is received. For more information, see [Custom API].
+        function insert(item, user, request) {
+    var todoItemTable = tables.getTable('TodoItem');
+    // Check the supplied custom parameter to see if
+    // we should allow duplicate text items to be inserted.        
+    if (request.parameters.duplicateText === 'false') {
+    // Find all existing items with the same text
+    // and that are not marked 'complete'. 
+    todoItemTable.where({
+    text:item.text,
+    complete:false
+    }).read({
+    success:insertItemIfNotComplete
+                });
+    } else {
+    request.execute();
+            }
 
-When custom API functions are called by the Mobile Services runtime, both a [request][request object] and [response][response object] object are supplied. These objects expose the functionality of the [express.js library], which can be leveraged by your scripts. The following custom API named **hello** is a very simple example that returns _Hello, world!_ in response to a POST request:
+    function insertItemIfNotComplete(existingItems) {
+    if (existingItems.length > 0) {
+    request.respond(statusCodes.CONFLICT, 
+    "Duplicate items are not allowed.");
+    } else {
+    // Insert the item as normal. 
+    request.execute();
+                }
+            }
+        }
 
-		exports.post = function(request, response) {
-		    response.send(200, "{ message: 'Hello, world!' }");
-		} 
+请注意，在 "insertItemIfNotComplete" 中，如果不存在重复文本，则会调用[请求对象][]的 "execute" 函数来插入项；否则，会调用 "respond" 函数来通知客户端存在重复文本。
 
-The **send** function on the [response object] returns your desired response to the client. This code is invoked by sending a POST request to the following URL:
+请注意上述代码中 "success" 函数的调用语法：
 
-		https://todolist.azure-mobile.net/api/hello  
+                }).read({
+    success:insertItemIfNotComplete
+                });
 
-The global state is maintained between executions. 
+上述代码较为精简，JavaScript 中更冗长的等效代码为：
 
-###<a name="define-custom-api"></a>How to: Define a custom API
+        success:function(results) 
+        { 
+    insertItemIfNotComplete(results); 
+        }
 
-You can define server scripts that are registered to HTTP methods in a custom API endpoint in one of the following ways:
+<a name="work-with-users"></a>
+### 如何：处理用户
 
-+ In the [Azure Management Portal][Management Portal]. Custom API scripts are created and modified in the **API** tab. The server script code is in the **Scripts** tab of a given custom API. The following shows the script that is invoked by a POST request to the `CompleteAll` custom API endpoint. 
+在 Azure 移动服务中，你可以使用标识提供者对用户进行身份验证。有关详细信息，请参阅[身份验证入门][]。当已经过身份验证的用户调用表操作时，移动服务将使用[用户对象][]向已注册的脚本函数提供有关该用户的信息。可以使用 "userId" 属性来存储和检索用户特定的信息。以下示例将会基于某个已经过身份验证的用户的 userId 来设置项的 owner 属性：
 
-	![2][2]
-	
-	Access permissions to custom API methods are assigned in the Permissions tab. To see how this custom API was created, see [Call a custom API from the client].  
+    function insert(item, user, request) {
+    item.owner = user.userId;
+    request.execute();
+    }
 
-+ By using source control. When you have source control enabled, simply create a file named <em>`<custom_api>`</em>.js in the .\service\api subfolder in your git repository, where <em>`<custom_api>`</em> is the name of the custom API being registered. This script file contains an _exported_ function for each HTTP method exposed by the custom API. Permissions are defined in a companion .json file. For more information, see [Source control and shared code][Source control, shared code, and helper functions].
+以下示例将会基于某个已经过身份验证的用户的 "userId" 向查询添加一个附加的筛选器。此筛选器会将结果限制为属于当前用户的项：
 
-+ From the command prompt by using the Azure command line tool. For more information, see [Using the command line tool].
+    function read(query, user, request) {
+    query.where({
+    owner:user.userId
+        });
+    request.execute();
+    }
 
-###<a name="handle-methods"></a>How to: Implement HTTP methods
+<a name="custom-api"></a>
+## 自定义 API
 
-A custom API can handle one or more of the HTTP methods, GET, POST, PUT, PATCH, and DELETE. An exported function is defined for each HTTP method handled by the custom API. A single custom API code file can export one or all of the following functions:
+自定义 API 是移动服务中可由一个或多个标准 HTTP 方法访问的终结点，这些方法包括：GET、POST、PUT、PATCH 和 DELETE。可以在单个脚本文件中为自定义 API 支持的每个 HTTP 方法单独定义一个函数导出。收到使用给定方法向自定义 API 发出的请求后，将调用注册的脚本。有关详细信息，请参阅[自定义 API][2]。
 
-		exports.get = function(request, response) { ... };
-		exports.post = function(request, response) { ... };
-		exports.patch = function(request, response) { ... };
-		exports.put = function(request, response) { ... };
-		exports.delete = function(request, response) { ... };
+当移动服务运行时调用自定义 API 函数时，将同时提供[请求][请求对象]和[响应][]对象。这些对象将公开 [express.js 库][]的功能，而你的脚本可以利用这些功能。下面是一个极简单的名为 "hello" 的自定义 API 示例，它会返回 *Hello, world!* 以响应 POST 请求：
 
-The custom API endpoint cannot be called using an HTTP method that has not been implemented in the server script, and a 405 (Method Not Allowed) error response is returned. Separate permission levels can be assigned to each support HTTP method.
+        exports.post = function(request, response) {
+    response.send(200, "{ message:'Hello, world!' }");
+        } 
 
-###<a name="api-return-xml"></a>How to: Send and receive data as XML
+[响应对象][响应]中的 "send" 函数向客户端返回所需的响应。可以通过向以下 URL 发送 POST 请求来调用此代码：
 
-When clients store and retrieve data, Mobile Services uses JavaScript Object Notation (JSON) to represent data in the message body. However, there are scenarios where you instead want to use an XML payload. For example, Windows Store apps have a built-in periodic notifications functionality that requires the service to emit XML. For more information, see [Define a custom API that supports periodic notifications].
+        https://todolist.azure-mobile.net/api/hello  
 
-The following **OrderPizza** custom API function returns a simple XML document as the response payload:
+每次执行后都会保留全局状态。
 
-		exports.get = function(request, response) {
-		  response.set('content-type', 'application/xml');
-		  var xml = '<?xml version="1.0"?><PizzaOrderForm><PizzaOrderForm/>';
-		  response.send(200, xml);
-		};
+<a name="define-custom-api"></a>
+### 如何：定义自定义 API
 
-This custom API function is invoked by an HTTP GET request to the following endpoint:
+你可以使用下列方式之一定义可注册到自定义 API 终结点中 HTTP 方法的服务器脚本：
 
-		https://todolist.azure-mobile.net/api/orderpizza
+-   在 [Azure 管理门户][]中。可以在“API”选项卡中创建和修改自定义 API 脚本 。服务器脚本代码位于给定自定义 API 的“脚本”选项卡中 。下面显示了向 `CompleteAll` 自定义 API 终结点发出的 POST 请求调用的脚本。
 
-###<a name="get-api-user"></a>How to: Work with users and headers in a custom API
+    ![2][3]
 
-In Azure Mobile Services, you can use an identity provider to authenticate users. For more information, see [Get started with authentication]. When an authenticated user requests a custom API, Mobile Services uses the [user object] to provide information about the user to custom API code. The [user object] is accessed from the user property of the [request object]. The **userId** property can be used to store and retrieve user-specific information. 
+    对自定义 API 方法的访问权限在“权限”选项卡中分配。若要了解此自定义 API 的创建方式，请参阅[从客户端调用自定义 API][]。
 
-The following **OrderPizza** custom API function sets the owner property of an item based on the userId of an authenticated user:
+-   使用源代码管理。启用源代码管理后，只需在 git 存储库中的 .\\service\\api 子文件夹内创建一个名为 *`<custom_api>`*.js 的文件，其中，*`<custom_api>`* 是要注册的自定义 API 的名称。此脚本文件包含自定义 API 公开的每个 HTTP 方法的 *exported* 函数。权限在随附的 .json 文件中定义。有关详细信息，请参阅[源代码管理和共享代码][源代码管理、共享代码和 Helper 函数]。
 
-		exports.post = function(request, response) {
-			var userTable = request.service.tables.getTable('user');
-			userTable.lookup(request.user.userId, {
-				success: function(userRecord) {
-					callPizzaAPI(userRecord, request.body, function(orderResult) {
-						response.send(201, orderResult);
-					});
-				}
-			});
-		
-		};
+-   使用 Azure 命令行工具中的命令提示符。有关详细信息，请参阅[使用命令行工具][]。
 
-This custom API function is invoked by an HTTP POST request to the following endpoint:
+<a name="handle-methods"></a>
+### 如何：实现 HTTP 方法
 
-		https://<service>.azure-mobile.net/api/orderpizza
+一个自定义 API 可以处理一个或多个 HTTP 方法：GET、POST、PUT、PATCH 和 DELETE。将为自定义 API 处理的每个 HTTP 方法定义一个导出函数。单个自定义 API 代码文件可以导出下列其中一个或所有函数：
 
-You can also access a specific HTTP header from the [request object], as shown in the following code:
+        exports.get = function(request, response) { ... };
+    exports.post = function(request, response) { ... };
+    exports.patch = function(request, response) { ... };
+    exports.put = function(request, response) { ... };
+    exports.delete = function(request, response) { ... };
 
-		exports.get = function(request, response) {    
-    		var header = request.header('my-custom-header');
-    		response.send(200, "You sent: " + header);
-		};
+不能使用服务器脚本中尚未实现的 HTTP 方法调用自定义 API 终结点，并且会返回 405（“不允许的方法”）错误响应。可向每个支持 HTTP 方法单独分配权限级别。
 
-This simple example reads a custom header named `my-custom-header`, then returns the value in the response.
+<a name="api-return-xml"></a>
+### 如何：发送和接收 XML 格式的数据
 
-###<a name="api-routes"></a>How to: Define multiple routes in a custom API
+当客户端存储和检索数据时，移动服务将使用 JavaScript 对象表示法 (JSON) 来表示消息正文中的数据。但是，在某些情况下，你可能希望使用 XML 负载。例如，Windows 应用商店应用程序具有内置的定期通知功能，这就需要服务发出 XML 数据。有关详细信息，请参阅[定义支持定期通知的自定义 API][]。
 
-Mobile Services enables you to define multiple paths, or routes, in a custom API. For example, HTTP GET requests to the following URLs in a **calculator** custom API will invoke an **add** or **subtract** function, respectively: 
+以下 "OrderPizza" 自定义 API 函数将返回一个简单的 XML 文档作为响应负载：
 
-+ `https://<service>.azure-mobile.net/api/calculator/add`
-+ `https://<service>.azure-mobile.net/api/calculator/sub`
+        exports.get = function(request, response) {
+    response.set('content-type', 'application/xml');
+    var xml = '<?xml version="1.0"?><PizzaOrderForm><PizzaOrderForm/>';
+    response.send(200, xml);
+        };
 
-Multiple routes are defined by exporting a **register** function, which is passed an **api** object (similar to the [express object in express.js]) that is used to register routes under the custom API endpoint. The following example implements the **add** and **sub** methods in the **calculator** custom API: 
+可以通过向以下终结点发出 HTTP GET 请求来调用此自定义 API 函数：
 
-		exports.register = function (api) {
-		    api.get('add', add);
-		    api.get('sub', subtract);
-		}
-		
-		function add(req, res) {
-		    var result = parseInt(req.query.a) + parseInt(req.query.b);
-		    res.send(200, { result: result });
-		}
-		
-		function subtract(req, res) {
-		    var result = parseInt(req.query.a) - parseInt(req.query.b);
-		    res.send(200, { result: result });
-		}
+        https://todolist.azure-mobile.net/api/orderpizza
 
-The **api** object passed to the **register** function exposes a function for each HTTP method (**get**, **post**, **put**, **patch**, **delete**). These functions register a route to a defined function for a specific HTTP method. Each function takes two parameters, the first is the route name and the second is the function registered to the route. 
+<a name="get-api-user"></a>
+### 如何：处理用户和自定义 API 中的标头
 
-The two routes in the above custom API example can be invoked by HTTP GET requests as follows (shown with the response):
+在 Azure 移动服务中，你可以使用标识提供者对用户进行身份验证。有关详细信息，请参阅[身份验证入门][]。当已经过身份验证的用户请求自定义 API时，移动服务将使用[用户对象][]向自定义 API 代码提供有关该用户的信息。可从[请求对象][]的 user 属性访问[用户对象][]。可以使用 "userId" 属性来存储和检索用户特定的信息。
 
-+ `https://<service>.azure-mobile.net/api/calculator/add?a=1&b=2`
+以下 "OrderPizza" 自定义 API 函数将会基于某个已经过身份验证的用户的 userId 来设置项的 owner 属性：
 
-		{"result":3}
+        exports.post = function(request, response) {
+    var userTable = request.service.tables.getTable('user');
+    userTable.lookup(request.user.userId, {
+    success:function(userRecord) {
+    callPizzaAPI(userRecord, request.body, function(orderResult) {
+    response.send(201, orderResult);
+                    });
+                }
+            });
+        
+        };
 
-+ `https://<service>.azure-mobile.net/api/calculator/sub?a=3&b=5`
+可以通过向以下终结点发出 HTTP POST 请求来调用此自定义 API 函数：
 
-		{"result":-2}
+        https://<service>.azure-mobile.net/api/orderpizza
 
-##<a name="scheduler-scripts"></a>Job Scheduler
+你还可以从[请求对象][]访问特定的 HTTP 标头，如以下代码中所示：
 
-Mobile Services enables you to define server scripts that are executed either as jobs on a fixed schedule or on-demand from the Management Portal. Scheduled jobs are useful for performing periodic tasks such as cleaning-up table data and batch processing. For more information, see [Schedule jobs].
+        exports.get = function(request, response) {    
+    var header = request.header('my-custom-header');
+    response.send(200, "You sent:" + header);
+        };
 
-Scripts that are registered to scheduled jobs have a main function with the same name as the scheduled job. Because a scheduled script is not invoked by an HTTP request, there is no context that can be passed by the server runtime and the function takes no parameters. Like other kinds of scripts, you can have subroutine functions and require shared modules. For more information, see [Source control, shared code, and helper functions].
+这个简单示例将读取名为 `my-custom-header` 的自定义标头，然后在响应中返回值。
 
-###<a name="scheduler-scripts"></a>How to: Define scheduled job scripts
+<a name="api-routes"></a>
+### 如何：在一个自定义 API 中定义多个路由
 
-A server script can be assigned to a job that's defined in the Mobile Services Scheduler. These scripts belong to the job and are executed according to the job schedule. (You can also use the [Management Portal] to run jobs on demand.) A script that defines a scheduled job has no parameters because Mobile Services doesn't pass it any data; it's executed as a regular JavaScript function and doesn't interact with Mobile Services directly. 
+移动服务允许你在一个自定义 API 中定义多个路径或路由。例如，向 "calculator" 自定义 API 中的以下 URL 发出的 HTTP GET 请求将分别调用 "add" 或 "subtract" 函数：
 
-You define scheduled jobs in one of the following ways: 
+-   `https://<service>.azure-mobile.net/api/calculator/add`
+-   `https://<service>.azure-mobile.net/api/calculator/sub`
 
-+ In the [Azure Management Portal][Management Portal] in the **Script** tab in the scheduler:
+可以通过导出一个传递了 "api" 对象（类似于 [express.js 中的 express 对象][]）的 "register" 函数来定义多个路由，该对象用于在自定义 API 终结点下注册路由。以下示例将在 "calculator" 自定义 API 中实现 "add" 和 "sub" 方法：
 
-	![3][3]
+        exports.register = function (api) {
+    api.get('add', add);
+    api.get('sub', subtract);
+        }
+        
+    function add(req, res) {
+    var result = parseInt(req.query.a) + parseInt(req.query.b);
+    res.send(200, { result:result });
+        }
+        
+    function subtract(req, res) {
+    var result = parseInt(req.query.a) - parseInt(req.query.b);
+    res.send(200, { result:result });
+        }
 
-	For more information about how to do this, see [Schedule backend jobs in Mobile Services]. 
+传递给 "register" 函数的 "api" 对象将为每个 HTTP 方法（"get"、"post"、"put"、"patch" 和 "delete"）公开一个函数。这些函数会将一个路由注册到特定 HTTP 方法的已定义函数。每个函数采用两个参数，第一个参数是路由名称，第二个参数是注册到路由的函数。
 
-+ From the command prompt by using the Azure command line tool. For more information, see [Using the command line tool].
+HTTP GET 请求可按如下所示调用上述自定义 API 示例中的两个路由（随响应一起显示）：
 
->[WACOM.NOTE]When you have source control enabled, you can edit scheduled job script files directly in the .\service\scheduler subfolder in your git repository. For more information, see [How to: Share code by using source control].
+-   `https://<service>.azure-mobile.net/api/calculator/add?a=1&b=2`
 
-##<a name="shared-code"></a>Source control, shared code, and helper functions
+        {"result":3}
 
-Because Mobile Services uses Node.js on the server, your scripts already have access to the built-in Node.js modules. You can also use source control to define your own modules or add other Node.js modules to your service.
+-   `https://<service>.azure-mobile.net/api/calculator/sub?a=3&b=5`
 
-The following are just some of the more useful modules that can be leveraged in your scripts by using the global **require** function:
+        {"result":-2}
 
-+ **azure**: Exposes the functionality of the Azure SDK for Node.js. For more information, see the [Azure SDK for Node.js]. 
-+ **crypto**: Provides crypto functionality of OpenSSL. For more information, see the [Node.js documentation][crypto API].
-+ **path**: Contains utilities for working with file paths. For more information, see the [Node.js documentation][path API].
-+ **querystring**: Contains utilities for working with query strings. For more information, see the [Node.js documentation][querystring API].
-+ **request**: Sends HTTP requests to external REST services, such as Twitter and Facebook. For more information, see [Send HTTP request].
-+ **sendgrid**: Sends email by using the Sendgrid email service in Azure. For more information, see [Send email from Mobile Services with SendGrid].
-+ **url**: Contains utilities to parse and resolve URLs. For more information, see the [Node.js documentation][url API].
-+ **util**: Contains various utilities, such as string formatting and object type checking. For more information, see the [Node.js documentation][util API]. 
-+ **zlib**: Exposes compression functionality, such as gzip and deflate. For more information, see the [Node.js documentation][zlib API]. 
+<a name="scheduler-scripts"></a>
+## 作业计划程序
 
-###<a name="modules-helper-functions"></a>How to: Leverage modules
+移动服务允许你定义按固定计划以作业形式执行或通过管理门户按需执行的服务器脚本。计划的作业可用于执行周期性任务，例如，清理表数据和批处理。有关详细信息，请参阅[计划作业][]。
 
-Mobile Services exposes a set of modules that scripts can load by using the global **require** function. For example, a script can require **request** to make HTTP requests: 
+注册到已计划作业的脚本具有一个 main 函数，该函数的名称与已计划作业的名称相同。由于 HTTP 请求不调用计划的脚本，因此服务器运行时无法传递任何上下文，并且函数不采用任何参数。与其他类型的脚本一样，你可以使用子例程函数并要求使用共享模块。有关详细信息，请参阅[源代码管理、共享代码和 Helper 函数][]。
 
-	function update(item, user, request) { 
-	    var httpRequest = require('request'); 
-	    httpRequest('http://www.google.com', function(err, response, body) { 
-	    	... 
-	    }); 
-	} 
+<a name="scheduler-scripts"></a>
+### 如何：定义计划的作业脚本
 
+可将一个服务器脚本分配到移动服务计划程序中定义的作业。这些脚本属于该作业，并根据作业计划执行。（你也可以使用[管理门户][Azure 管理门户]按需运行作业。）定义计划作业的脚本不带参数，因为移动服务不会向它传递任何数据；该脚本以普通的 JavaScript 函数执行，不直接与移动服务交互。
 
-###<a name="shared-code-source-control"></a>How to: Share code by using source control
+可通过下列方式之一定义计划的作业：
 
-You can use source control with the Node.js package manager (npm) to control which modules are available to your mobile service. There are two ways to do this:
+-   通过 [Azure 管理门户][]中的计划程序的“脚本”选项卡 ：
 
-+ For modules that are published to and installed by npm, use the package.json file to declare which packages you want to be installed by your mobile service. In this way, your service always has access to the latest version of the required packages. The package.json file lives in the `.\service` directory. For more information, see [Support for package.json in Azure Mobile Services].
+    ![3][4]
 
-+ For private or custom modules, you can use npm to manually install the module into the `.\service\node_modules` directory of your source control. For an example of how to manually upload a module, see [Leverage shared code and Node.js modules in your server scripts].
+    有关如何执行此操作的详细信息，请参阅[在移动服务中计划后端作业][]。
 
-	>[WACOM.NOTE]When `node_modules` already exists in the directory hierarchy, NPM will create the `\node-uuid` subdirectory there instead of creating a new `node_modules` in the repository. In this case, just delete the existing `node_modules` directory.
+-   使用 Azure 命令行工具中的命令提示符。有关详细信息，请参阅[使用命令行工具][]。
 
-After you commit the package.json file or custom modules to the repository for your mobile service, use **require** to reference the modules by name.   
+> [WACOM.NOTE]启用源代码管理后，你可以直接在 git 存储库中的 .\\service\\scheduler 子文件夹内编辑计划的作业脚本文件。有关更多信息，请参见[如何：使用源代码管理来共享代码][]。
 
->[WACOM.NOTE] Modules that you specify in package.json or upload to your mobile service are only used in your server script code. These modules are not used by the Mobile Services runtime.
+<a name="shared-code"></a>
+## 源代码管理、共享代码和 Helper 函数
 
-###<a name="helper-functions"></a>How to: Use helper functions
+由于移动服务使用服务器上的 Node.js，因此你的脚本已经获取了对内置 Node.js 模块的访问权限。你也可以使用源代码管理定义自己的模块，或者将其他 Node.js 模块添加到你的服务。
 
-In addition to requiring modules, individual server scripts can include helper functions. These are functions that are separate from the main function, which can be used to factor code in the script. 
+下面列出了你可以通过全局 "require" 函数在脚本中利用的一些较为有用的模块：
 
-In the following example, a table script is registered to the insert operation, which includes the helper function **handleUnapprovedItem**:
+-   "azure"：公开适用于 Node.js 的 Azure SDK 的功能。有关详细信息，请参阅[适用于 Node.js 的 Azure SDK][]。
+-   "crypto"：提供 OpenSSL 的加密功能。有关详细信息，请参阅 [Node.js 文档][]。
+-   "path"：包含用于处理文件路径的实用工具。有关详细信息，请参阅 [Node.js 文档][5]。
+-   "querystring"：包含用于处理查询字符串的实用工具。有关详细信息，请参阅 [Node.js 文档][6]。
+-   "request"：向 Twitter 和 Facebook 等外部 REST 服务发送 HTTP 请求。有关详细信息，请参阅[发送 HTTP 请求][]。
+-   "sendgrid"：使用 Azure 中的 Sendgrid 电子邮件服务发送电子邮件。有关详细信息，请参阅[使用 SendGrid 从移动服务发送电子邮件][]。
+-   "url"：包含用于分析和解析 URL 的实用工具。有关详细信息，请参阅 [Node.js 文档][7]。
+-   "util":包含各种实用工具，例如字符串格式设置和对象类型检查。有关详细信息，请参阅 [Node.js 文档][8]。
+-   "zlib"：公开压缩功能，例如 gzip 和 deflate。有关详细信息，请参阅 [Node.js 文档][9]。
 
+<a name="modules-helper-functions"></a>
+### 如何：利用模块
 
-	function insert(item, user, request) {
-	    if (!item.approved) {
-	        handleUnapprovedItem(item, user, request);
-	    } else {
-	        request.execute();
-	    }
-	}
-	
-	function handleUnapprovedItem(item, user, request) {
-	    // Do something with the supplied item, user, or request objects.
-	}
- 
-In a script, helper functions must be declared after the main function. You must declare all variables in your script. Undeclared variables cause an error.
+移动服务公开了脚本可以使用全局 "require" 函数加载的一组模块。例如，脚本可以要求使用 "request" 发出 HTTP 请求：
 
-Helper functions can also be defined once and shared between server scripts. To share a function between scripts, functions must be exported and the script file must exist in the `.\service\shared\` directory. The following is a template for how to export a shared function in a file `.\services\shared\helpers.js`:
+    function update(item, user, request) { 
+    var httpRequest = require('request'); 
+    httpRequest('http://www.google.com', function(err, response, body) { 
+            ... 
+        }); 
+    } 
 
-		exports.handleUnapprovedItem = function (tables, user, callback) {
-		    
-		    // Do something with the supplied tables or user objects and 
-			// return a value to the callback function.
-		};
- 
-You can then use a function like this in a table operation script:
+<a name="shared-code-source-control"></a>
+### 如何：使用源代码管理来共享代码
 
-		function insert(item, user, request) {
-		    var helper = require('../shared/helper');
-		    helper.handleUnapprovedItem(tables, user, function(result) {
-		        	
-					// Do something based on the result.
-		            request.execute();
-		        }
-		    }
-		}
+你可以将源代码管理与 Node.js 程序包管理器 (npm) 结合使用，以控制可供移动服务使用的模块。可通过两种方式实现此目的：
 
-In this example, you must pass both a [tables object] and a [user object] to the shared function. This is because shared scripts cannot access the global [tables object], and the [user object] only exists in the context of a request.
+-   对于已发布到 npm 的模块以及 npm 安装的模块，可以使用 package.json 文件来声明你希望通过移动服务进行安装的程序包。这样，你的服务始终都能访问所需程序包的最新版本。package.json 文件驻留在 `.\service` 目录中。有关详细信息，请参阅 [Azure 移动服务中对 package.json 的支持][]。
 
-Script files are uploaded to the shared directory either by using [source control][How to: Share code by using source control] or by using the [command line tool][Using the command line tool].
+-   对于专用或自定义模块，你可以使用 npm 手动将模块安装到源代码管理的 `.\service\node_modules` 目录中。有关如何手动上载模块的示例，请参阅[在服务器脚本中利用共享代码和 Node.js 模块][]。
 
-###<a name="app-settings"></a>How to: Work with app settings
+    > [WACOM.NOTE]如果 `node_modules` 已在目录层次结构中存在，NPM 将在该目录中创建 `\node-uuid` 子目录，而不是在存储库中创建新的 `node_modules`。在此情况下，你只需删除现有的 `node_modules` 目录。
 
-Mobile Services enables you to securely store values as app settings, which can be accessed by your server scripts at runtime.  When you add data to the app settings of your mobile service, the name/value pairs are stored encrypted and you can access them in your server scripts without hard-coding them in the script file. For more information, see [App settings].
+将 package.json 文件或自定义模块提交到移动服务的存储库后，请使用 "require" 来按名称引用这些模块。
 
-The following custom API example uses the supplied [service object] to retrieve an app setting value.  
+> [WACOM.NOTE] 在 package.json 中指定的模块或者上载到移动服务的模块只会在服务器脚本代码中使用。移动服务运行时不使用这些模块。
 
-		exports.get = function(request, response) {
-		
-			// Get the MY_CUSTOM_SETTING value from app settings.
-		    var customSetting = 
-		        request.service.config.appSettings.my_custom_setting;
-				
-			// Do something and then send a response.
+<a name="helper-functions"></a>
+### 如何：使用 Helper 函数
 
-		}
+除了要求使用模块外，单个服务器脚本还可以包含 Helper 函数。这些函数与 main 函数不同，后者可用于分离脚本中的代码。
 
-The following code uses the configuration module to retrieve Twitter access token values, stored in app settings, that are used in a scheduled job script:
+在以下示例中，表脚本已注册到包含 Helper 函数 "handleUnapprovedItem" 的插入操作：
 
-		// Get the service configuration module.
-		var config = require('mobileservice-config');
+    function insert(item, user, request) {
+    if (!item.approved) {
+    handleUnapprovedItem(item, user, request);
+    } else {
+    request.execute();
+        }
+    }
 
-		// Get the stored Twitter consumer key and secret. 
-		var consumerKey = config.twitterConsumerKey,
-		    consumerSecret = config.twitterConsumerSecret
-		// Get the Twitter access token from app settings.    
-		var accessToken= config.appSettings.TWITTER_ACCESS_TOKEN,
-		    accessTokenSecret = config.appSettings.TWITTER_ACCESS_TOKEN_SECRET;
+    function handleUnapprovedItem(item, user, request) {
+    // Do something with the supplied item, user, or request objects.
+    }
 
-Note that this code also retrieves Twitter consumer key values stored in the **Identity** tab in the portal. Because a **config object** is not available in table operation and scheduled job scripts, you must require the configuration module to access app settings. For a complete example, see [Schedule backend jobs in Mobile Services].
+在脚本中，Helper 函数必须在 main 函数之后声明。必须声明脚本中的所有变量。未声明的变量会导致出错。
 
-<h2><a name="command-prompt"></a>Using the command line tool</h2>
+Helper 函数也可以只定义一次，然后在服务器脚本之间共享。若要在脚本之间共享某个函数，必须导出该函数，并且脚本文件必须在 `.\service\shared\` 目录中存在。以下模板演示了如何在文件 `.\services\shared\helpers.js` 中导出共享函数：
 
-In Mobile Services, you can create, modify, and delete server scripts by using the Azure command line tool. Before uploading your scripts, make sure that you are using the following directory structure:
+        exports.handleUnapprovedItem = function (tables, user, callback) {
+            
+    // Do something with the supplied tables or user objects and 
+    // return a value to the callback function.
+        };
 
-![4][4]
+然后，你可以在表操作脚本中使用类似于下面的函数：
 
-Note that this directory structure is the same as the git repository when using source control. 
+        function insert(item, user, request) {
+    var helper = require('../shared/helper');
+    helper.handleUnapprovedItem(tables, user, function(result) {
+                    
+    // Do something based on the result.
+    request.execute();
+                }
+            }
+        }
 
-When uploading script files from the command line tool, you must first navigate to the `.\services\` directory. The following command uploads a script named `todoitem.insert.js` from the `table` subdirectory:
+在此示例中，必须将一个[表对象][]和一个[用户对象][]传递给共享函数。这是因为共享脚本不能访问全局[表对象][]，并且[用户对象][]只在请求的上下文中存在。
 
-		~$azure mobile script upload todolist table/todoitem.insert.js
-		info:    Executing command mobile script upload
-		info:    mobile script upload command OK
+可以使用[源代码管理][如何：使用源代码管理来共享代码]或[命令行工具][使用命令行工具]将脚本文件上载到共享目录。
 
-The following command returns information about every script file maintained in your mobile service:
+<a name="app-settings"></a>
+### 如何：使用应用程序设置
 
-		~$ azure mobile script list todolist
-		info:    Executing command mobile script list
-		+ Retrieving script information
-		info:    Table scripts
-		data:    Name                       Size
-		data:    -------------------------  ----
-		data:    table/channels.insert      1980
-		data:    table/TodoItem.insert      5504
-		data:    table/TodoItem.read        64
-		info:    Shared scripts
-		data:    Name              Size
-		data:    ----------------  ----
-		data:    shared/helper.js  62
-		data:    shared/uuid.js    7452
-		info:    Scheduled job scripts
-		data:    Job name    Script name           Status    Interval     Last run  Next run
-		data:    ----------  --------------------  --------  -----------  --------  --------
-		data:    getUpdates  scheduler/getUpdates  disabled  15 [minute]  N/A       N/A
-		info:    Custom API scripts
-		data:    Name                    Get          Put          Post         Patch        Delete
-		data:    ----------------------  -----------  -----------  -----------  -----------  -----------
-		data:    completeall             application  application  application  application  application
-		data:    register_notifications  application  application  user         application  application
-		info:    mobile script list command OK
+移动服务允许你将值安全存储为应用程序设置，服务器脚本在运行时可以访问这些设置。将数据添加到移动服务的应用程序设置时，名称/值对将以加密的形式存储，你可以在服务器脚本中访问这些数据，而无需在脚本文件中对其进行硬编码。有关详细信息，请参阅[应用程序设置][]。
 
-For more information, see [Commands to manage Azure Mobile Services]. 
+以下自定义 API 示例使用提供的[服务对象][]来检索某个应用程序设置值。
 
-##<a name="working-with-tables"></a>Working with tables
+        exports.get = function(request, response) {
+        
+    // Get the MY_CUSTOM_SETTING value from app settings.
+    var customSetting = 
+    request.service.config.appSettings.my_custom_setting;
+                
+    // Do something and then send a response.
 
-Many scenarios in Mobile Services require server scripts to access tables in the database. For example. because Mobile Services does not preserve state between script executions, any data that needs to be persisted between script executions must be stored in tables. You might also want to examine entries in a permissions table or store audit data instead of just writing to the log, where data has a limited duration and cannot be accessed programmatically. 
+        }
 
-Mobile Services has two ways of accessing tables, either by using a [table object] proxy or by composing Transact-SQL queries using the [mssql object]. The [table object] makes it easy to access table data from your sever script code, but the [mssql object] supports more complex data operations and provides the most flexibility. 
+以下代码使用配置模块来检索已计划作业脚本使用的应用程序设置中存储的 Twitter 访问令牌值：
 
-###<a name="access-tables"></a>How to: Access tables from scripts
+        // Get the service configuration module.
+    var config = require('mobileservice-config');
 
-The easiest way to access tables from your script is by using the [tables object]. The **getTable** function returns a [table object] instance that's a proxy for accessing the requested table. You can then call functions on the proxy to access and change data. 
+    // Get the stored Twitter consumer key and secret. 
+    var consumerKey = config.twitterConsumerKey,
+    consumerSecret = config.twitterConsumerSecret
+    // Get the Twitter access token from app settings.    
+    var accessToken= config.appSettings.TWITTER_ACCESS_TOKEN,
+    accessTokenSecret = config.appSettings.TWITTER_ACCESS_TOKEN_SECRET;
 
-Scripts registered to both table operations and scheduled jobs can access the [tables object] as a global object. This line of code gets a proxy for the *TodoItems* table from the global [tables object]: 
+请注意，此代码还会检索门户中“标识”选项卡存储的 Twitter 使用者密钥值 。由于"配置对象"在表操作和计划的作业脚本中不可用，因此你必须要求配置模块访问应用程序设置。有关完整示例，请参阅[在移动服务中计划后端作业][]。
 
-		var todoItemsTable = tables.getTable('TodoItems');
+<a name="command-prompt"></a>
+## 使用命令行工具
 
-Custom API scripts can access the [tables object] from the <strong>service</strong> property of the supplied [request object]. This line of code gets [tables object] from the request:
+在移动服务中，你可以使用 Azure 命令行工具创建、修改和删除服务器脚本。上载脚本之前，请确保使用的是以下目录结构：
 
-		var todoItemsTable = request.service.tables.getTable('TodoItem');
+![4][10]
 
-<div class="dev-callout"><strong>Note</strong>
-<p>Shared functions cannot access the <strong>tables</strong> object directly. In a shared function, you must pass the tables object to the function.</p></div>
+请注意，此目录结构与使用源代码管理时的 git 存储库相同。
 
-Once you have a [table object], you can call one or more table operation functions: insert, update, delete or read. This example reads user permissions from a permissions table:
+从命令行工具上载脚本文件时，必须先导航到 `.\services\` 目录。以下命令从 `table` 子目录上载名为 `todoitem.insert.js` 的脚本：
 
-	function insert(item, user, request) {
-		var permissionsTable = tables.getTable('permissions');
-	
-		permissionsTable
-			.where({ userId: user.userId, permission: 'submit order'})
-			.read({ success: checkPermissions });
-			
-		function checkPermissions(results) {
-			if(results.length > 0) {
-				// Permission record was found. Continue normal execution.
-				request.execute();
-			} else {
-				console.log('User %s attempted to submit an order without permissions.', user.userId);
-				request.respond(statusCodes.FORBIDDEN, 'You do not have permission to submit orders.');
-			}
-		}
-	}
+        ~$azure mobile script upload todolist table/todoitem.insert.js
+    info:Executing command mobile script upload
+    info:mobile script upload command OK
 
-The next example writes auditing information to an **audit** table:
+以下命令返回移动服务中维护的每个脚本文件的相关信息：
 
-	function update(item, user, request) {
-		request.execute({ success: insertAuditEntry });
-		
-		function insertAuditEntry() {
-			var auditTable = tables.getTable('audit');
-			var audit = {
-				record: 'checkins',
-				recordId: item.id,
-				timestamp: new Date(),
-				values: JSON.stringify(item)
-			};
-			auditTable.insert(audit, {
-				success: function() {
-					// Write to the response now that all data operations are complete
-					request.respond();
-				}
-			});
-		}
-	}
+        ~$ azure mobile script list todolist
+    info:Executing command mobile script list
+    + Retrieving script information
+    info:Table scripts
+    data:Name                       Size
+    data:    -------------------------  ----
+    data:table/channels.insert      1980
+    data:table/TodoItem.insert      5504
+    data:table/TodoItem.read        64
+    info:Shared scripts
+    data:Name                       Size
+    data:    ----------------  ----
+    data:shared/helper.js  62
+    data:shared/uuid.js    7452
+    info:Scheduled job scripts
+    data:Job name    Script name           Status    Interval     Last run  Next run
+    data:    ----------  --------------------  --------  -----------  --------  --------
+    data:getUpdates  scheduler/getUpdates  disabled  15 [minute]  N/A       N/A
+    info:Custom API scripts
+    data:Name                    Get          Put          Post         Patch        Delete
+    data:    ----------------------  -----------  -----------  -----------  -----------  -----------
+    data:completeall             application  application  application  application  application
+    data:register_notifications  application  application  user         application  application
+    info:mobile script list command OK
 
-A final example is in the code sample here: [How to: Access custom parameters][How to: Add custom parameters].
+有关详细信息，请参阅[用于管理 Azure 移动服务的命令][]。
 
-###<a name="bulk-inserts"></a>How to: Perform Bulk Inserts
+<a name="working-with-tables"></a>
+## 使用表
 
-If you use a **for** or **while** loop to directly insert a large number of items (1000, for example) into a  table , you may encounter a SQL connection limit that causes some of the inserts to fail. Your request may never complete or it may return a HTTP 500 Internal Server Error.  To avoid this problem, you can insert the items in batches of 10 or so. After the first batch is inserted, submit the next batch, and so on.
+移动服务中的许多情况都要求服务器脚本访问数据库中的表。例如，由于每次执行脚本后移动服务不保存状态，因此，必须在表中存储每次执行脚本后需要持久保留的数据。你还可能想要检查权限表中的条目，或者要存储审核数据而不仅仅是写入日志，因为日志中的数据保留期有限，并且无法以编程方式访问。
 
-By using the following script, you can set the size of a batch of records to insert in parallel. We recomend that you keep the number of records small. The function **insertItems** calls itself recursively when an async insert batch has completed. The for loop at the end inserts one record at a time, and calls **insertComplete** on success and **errorHandler** on error. **insertComplete**  controls whether **insertItems** will be called recursively for the next batch, or whether the job is done and the script should exit.
+移动服务提供两种用于访问表的方法：使用[表对象][11]代理，或者通过使用 [mssql 对象][]撰写 Transact-SQL 查询。使用[表对象][11]可以轻松访问服务器脚本代码中的表数据，不过，[mssql 对象][]支持更复杂的数据操作，并提供最大的灵活性。
 
-		var todoTable = tables.getTable('TodoItem');
-		var recordsToInsert = 1000;
-		var batchSize = 10; 
-		var totalCount = 0;
-		var errorCount = 0; 
-		
-		function insertItems() {        
-		    var batchCompletedCount = 0;  
-		
-		    var insertComplete = function() { 
-		        batchCompletedCount++; 
-		        totalCount++; 
-		        if(batchCompletedCount === batchSize || totalCount === recordsToInsert) {                        
-		            if(totalCount < recordsToInsert) {
-		                // kick off the next batch 
-		                insertItems(); 
-		            } else { 
-		                // or we are done, report the status of the job 
-		                // to the log and don't do any more processing 
-		                console.log("Insert complete. %d Records processed. There were %d errors.", totalCount, errorCount); 
-		            } 
-		        } 
-		    }; 
-		
-		    var errorHandler = function(err) { 
-		        errorCount++; 
-		        console.warn("Ignoring insert failure as part of batch.", err); 
-		        insertComplete(); 
-		    };
-		
-		    for(var i = 0; i < batchSize; i++) { 
-		        var item = { text: "This is item number: " + totalCount + i }; 
-		        todoTable.insert(item, { 
-		            success: insertComplete, 
-		            error: errorHandler 
-		        }); 
-		    } 
-		} 
-		
-		insertItems(); 
+<a name="access-tables"></a>
+### 如何：从脚本访问表
 
+从脚本访问表的最简单方法就是使用[表对象][]。"getTable" 函数将返回一个[表对象][11]实例，即用于访问所请求表的代理。然后，你可以在该代理上调用函数以访问和更改数据。
 
-The entire code sample, and accompanying discussion, can be found in this [blog posting](http://blogs.msdn.com/b/jpsanders/archive/2013/03/20/server-script-to-insert-table-items-in-windows-azure-mobile-services.aspx). If you use this code, you can adapt it to your specific situation, and thoroughly test it.
+已同时注册到表操作和计划作业的脚本可以访问全局对象形式的[表对象][]。以下代码行将从全局[表对象][]中获取 *TodoItems* 表的代理：
 
-###<a name="JSON-types"></a>How to: Map JSON types to database types
+        var todoItemsTable = tables.getTable('TodoItems');
 
-The collections of data types on the client and in a Mobile Services database table are different. Sometimes they map easily to one another, and other times they don't. Mobile Services performs a number of type transformations in the mapping:
+自定义 API 脚本可从提供的[请求对象][]的 "service" 属性访问[表对象][]。以下代码行将从请求中获取[表对象][]：
 
-- The client language-specific types are serialized into JSON.
-- The JSON representation is translated into JavaScript before it appears in server scripts.
-- The JavaScript data types are converted to SQL database types when saved using the [tables object].
+        var todoItemsTable = request.service.tables.getTable('TodoItem');
 
-The transformation from client schema into JSON varies across platforms.  JSON.NET is used in Windows Store and Windows Phone clients. The Android client uses the gson library.  The iOS client uses the NSJSONSerialization class. The default serialization behavior of each of these libraries is used, except that date objects are converted to JSON strings that contain the date that's encoded by using ISO 8601.
+"说明"
 
-When you are writing server scripts that use [insert], [update], [read] or [delete] functions, you can access the JavaScript representation of your data. Mobile Services uses the Node.js's deserialization function ([JSON.parse](http://es5.github.io/#x15.12)) to transform JSON on the wire into JavaScript objects. However Mobile Services does  a transformation to extract **Date** objects from ISO 8601 strings.
+共享的函数不能直接访问"表"对象。在共享的函数中，必须将表对象传递给该函数。
 
-When you use the [tables object] or the [mssql object], or just let your table scripts execute, the deserialized JavaScript objects are inserted into your SQL database. In that process, object properties are mapped to T-SQL types:
+创建一个[表对象][11]后，可以调用一个或多个表操作函数：insert、update、delete 或 read。以下示例将从权限表中读取用户权限：
+
+    function insert(item, user, request) {
+    var permissionsTable = tables.getTable('permissions');
+
+    permissionsTable
+    .where({ userId:user.userId, permission:'submit order'})
+    .read({ success:checkPermissions });
+            
+    function checkPermissions(results) {
+    if(results.length > 0) {
+    // Permission record was found.Continue normal execution.
+    request.execute();
+    } else {
+    console.log('User %s attempted to submit an order without permissions.', user.userId);
+    request.respond(statusCodes.FORBIDDEN, 'You do not have permission to submit orders.');
+            }
+        }
+    }
+
+以下示例将审核信息写入 "audit" 表：
+
+    function update(item, user, request) {
+    request.execute({ success:insertAuditEntry });
+        
+    function insertAuditEntry() {
+    var auditTable = tables.getTable('audit');
+    var audit = {
+    record:'checkins',
+    recordId:item.id,
+    timestamp:new Date(),
+    values:JSON.stringify(item)
+            };
+    auditTable.insert(audit, {
+    success:function() {
+    // Write to the response now that all data operations are complete
+    request.respond();
+                }
+            });
+        }
+    }
+
+以下部分的代码示例中提供了最后一个示例：[如何：访问自定义参数][如何：添加自定义参数]。
+
+<a name="bulk-inserts"></a>
+### 如何：执行批量插入
+
+如果你使用 "for" 或 "while" 循环直接在表中插入大量的项（例如 1000 个），可能会遇到 SQL 连接限制，导致某些插入操作失败。你的请求可能永远无法完成，或者返回 HTTP 500 内部服务器错误。若要避免此问题，可以按照大约每 10 个一批的形式插入项。插入第一批后，再提交下一批，直至完成。
+
+使用以下脚本可以设置要同时插入的记录批的大小。建议保持使用较小的记录数。完成异步插入批时，"insertItems" 函数将以递归方式调用自身。末尾的 for 循环一次插入一条记录，并在成功时调用 "insertComplete"，在出错时调用 "errorHandler"。"insertComplete" 控制是以递归方式为下一批调用 "insertItems"，还是在作业已完成的情况下退出脚本。
+
+        var todoTable = tables.getTable('TodoItem');
+    var recordsToInsert = 1000;
+    var batchSize = 10; 
+    var totalCount = 0;
+    var errorCount = 0; 
+        
+    function insertItems() {        
+    var batchCompletedCount = 0;  
+        
+    var insertComplete = function() { 
+    batchCompletedCount++; 
+    totalCount++; 
+    if(batchCompletedCount === batchSize || totalCount === recordsToInsert) {                        
+    if(totalCount < recordsToInsert) {
+    // kick off the next batch 
+    insertItems(); 
+    } else { 
+    // or we are done, report the status of the job 
+    // to the log and don't do any more processing 
+    console.log("Insert complete.%d Records processed.There were %d errors.", totalCount, errorCount); 
+                    } 
+                } 
+            }; 
+        
+    var errorHandler = function(err) { 
+    errorCount++; 
+    console.warn("Ignoring insert failure as part of batch.", err); 
+    insertComplete(); 
+            };
+        
+    for(var i = 0; i < batchSize; i++) { 
+    var item = { text:"This is item number:" + totalCount + i }; 
+    todoTable.insert(item, { 
+    success:insertComplete, 
+    错误：errorHandler 
+                }); 
+            } 
+        } 
+        
+    insertItems(); 
+
+可以在此[博客文章][]中找到整个代码示例和相关的讨论。如果使用此代码，你可以根据你的具体情况对它进行改写，并全面进行测试。
+
+<a name="JSON-types"></a>
+### 如何：将 JSON 类型映射到数据库类型
+
+客户端上的数据类型集合不同于移动服务数据库表中的数据类型集合。有时它们可以轻松地相互映射，但有时又不能相互映射。移动服务在映射中执行多种类型转换：
+
+-   客户端语言特定的类型将序列化为 JSON。
+-   JSON 表示形式在出现于服务器脚本中之前转换成 JavaScript。
+-   使用[表对象][]保存 JavaScript 数据类型时，这些类型将转换成 SQL 数据库类型。
+
+从客户端架构到 JSON 的转换根据平台的不同而异。Windows 应用商店和 Windows Phone 客户端使用 JSON.NET。Android 客户端使用 gson 库。iOS 客户端使用 NSJSONSerialization 类。将使用其中每个库的默认序列化行为，不过，日期对象将转换成 JSON 字符串，这些字符串包含使用 ISO 8601 编码的日期。
+
+当你编写使用 [insert][插入]、[update][更新]、[read][读取] 或 [delete][删除] 函数的服务器脚本时，可以访问数据的 JavaScript 表示形式。移动服务使用 Node.js 的反序列化函数 ([JSON.parse][]) 将 JSON 在线转换为 JavaScript 对象。但是，移动服务将执行转换以提取 ISO 8601 字符串中的 "Date" 对象。
+
+当你使用[表对象][]或 [mssql 对象][]时，或只是执行表脚本时，将在 SQL 数据库中插入反序列化的 JavaScript 对象。在此过程中，对象属性将映射到 T-SQL 类型：
 
 <table border="1">
 <tr>
-<td>JavaScript property</td>
-<td>T-SQL type</td>
+<td>JavaScript 属性</td>
+<td>T-SQL 类型</td>
 </tr><tr>
 <td>Number</td>
 <td>Float(53)</td>
@@ -728,274 +752,259 @@ When you use the [tables object] or the [mssql object], or just let your table s
 </tr>
 <tr>
 <td>Buffer</td>
-<td>Not supported</td>
+<td>不支持</td>
 </tr><tr>
 <td>Object</td>
-<td>Not supported</td>
+<td>不支持</td>
 </tr><tr>
 <td>Array</td>
-<td>Not supported</td>
+<td>不支持</td>
 </tr><tr>
 <td>Stream</td>
-<td>Not supported</td>
+<td>不支持</td>
 </tr>
 </table> 
 
-###<a name="TSQL"></a>Using Transact-SQL to access tables
+<a name="TSQL"></a>
+### 使用 Transact-SQL 访问表
 
-The easiest way to work table data from server scripts is by using a [table object] proxy. However, there are more advanced scenarios that are not supported by the [table object], such as as join queries and other complex queries and invoking stored procedures. In these cases, you must execute Transact-SQL statements directly against the relational table by using the [mssql object]. This object provides the following functions:
+从服务器脚本处理表数据的最简单方法就是使用[表对象][11]代理。但是，[表对象][11]并不支持一些较为高级的方案，例如，join 查询和其他一些复杂查询，以及存储过程的调用。在这种情况下，你必须使用 [mssql 对象][]针对关系表直接执行 Transact-SQL 语句。此对象提供以下函数：
 
-- **query**: executes a query, specified by a TSQL string; the results are returned to the **success** callback on the **options** object. The query can include parameters if the *params* parameter is present.
-- **queryRaw**: like *query* except that the result set returned from the query is in a "raw" format (see example below).
-- **open**: used to get a connection to your Mobile Services database, and you can then use the connection object to invoke database operations such as transactions.
+-   "query"：执行 TSQL 字符串指定的查询；结果将返回到 "options" 对象中的 "success" 回调。如果存在 *params* 参数，则该查询可以包含参数。
+-   "queryRaw"：与 *query* 类似，不过，从查询返回的结果集采用“原始”格式（参阅下面的示例）。
+-   "open"：用于获取与移动服务数据库建立的连接，获取该连接后，你可以使用连接对象来调用 transactions 等数据库操作。
 
-These methods give you increasingly more low-level control over the query processing.
+这些方法可以进一步让你对查询处理进行低级别的控制。
 
-+ [How to: Run a static query]
-+ [How to: Run a dynamic query]
-+ [How to: Join relational tables]
-+ [How to: Run a query that returns *raw* results]
-+ [How to: Get access to a database connection]	
+-   [如何：运行静态查询][]
+-   [如何：运行动态查询][]
+-   [如何：联接关系表][]
+-   [如何：运行返回 *raw* 结果的查询][]
+-   [如何：获取对数据库连接的访问权限][]
 
-####<a name="static-query"></a>How to: Run a static query
+<a name="static-query"></a>
+#### 如何：运行静态查询
 
-The following query has no parameters and returns three records from the `statusupdate` table. The rowset is in standard JSON format.
+以下查询不带参数，将返回 `statusupdate` 表中的三条记录。行集采用标准的 JSON 格式。
 
-		mssql.query('select top 3 * from statusupdates', {
-		    success: function(results) {
-		        console.log(results);
-		    },
-            error: function(err) {
-                console.log("error is: " + err);
-			}
-		});
+        mssql.query('select top 3 * from statusupdates', {
+    success:function(results) {
+    console.log(results);
+            },
+    错误：function(err) {
+    console.log("error is:" + err);
+            }
+        });
 
+<a name="dynamic-query"></a>
+#### 如何：运行动态参数化查询
 
-####<a name="dynamic-query"></a>How to: Run a dynamic parameterized query
+以下示例通过从权限表中读取每个用户的权限来实现自定义授权。执行该查询时，占位符 (?) 将被替换为提供的参数。
 
-The following example implements custom authorization by reading permissions for each user from the permissions table. The placeholder (?) is replaced with the supplied parameter when the query is executed.
+            var sql = "SELECT _id FROM permissions WHERE userId = ?AND permission = 'submit order'";
+    mssql.query(sql, [user.userId], {
+    success:function(results) {
+    if(results.length > 0) {
+    // Permission record was found.Continue normal execution. 
+    request.execute();
+    } else {
+    console.log('User %s attempted to submit an order without permissions.', user.userId);
+    request.respond(statusCodes.FORBIDDEN, 'You do not have permission to submit orders.');
+                    }
+                },
+    错误：function(err) {
+    console.log("error is:" + err);
+                }   
+            });
 
-		    var sql = "SELECT _id FROM permissions WHERE userId = ? AND permission = 'submit order'";
-		    mssql.query(sql, [user.userId], {
-		        success: function(results) {
-		            if (results.length > 0) {
-		                // Permission record was found. Continue normal execution. 
-		                request.execute();
-		            } else {
-		                console.log('User %s attempted to submit an order without permissions.', user.userId);
-		                request.respond(statusCodes.FORBIDDEN, 'You do not have permission to submit orders.');
-		            }
-		        },
-            	error: function(err) {
-                	console.log("error is: " + err);
-				}	
-		    });
+<a name="joins"></a>
+#### 如何：联接关系表
 
+你可以使用 [mssql 对象][]的 "query" 方法联接两个表，以传入实现联接的 TSQL 代码。假设 "ToDoItem" 表中有一些项，其中每个项都有一个对应于表中的列的 "priority" 属性。其中一个项类似于：
 
-####<a name="joins"></a>How to: Join relational tables
+        { text:'Take out the trash', complete:false, priority: 1}
 
-You can join two tables by using the **query** method of the [mssql object] to pass in the TSQL code that implements the join. Let's assume we have some items in our **ToDoItem** table and each item in the table has a **priority** property, which corresponds to a column in the table. An item may look like this:
+另外，我们假设还有一个名为 "Priority" 的表，它的行包含优先级 "number" 和文本 "description"。如果优先级编号 (number) 1 的描述 (description) 为“Critical”，则相应的对象类似于：
 
-		{ text: 'Take out the trash', complete: false, priority: 1}
+        { number:1, description:'Critical'}
 
-Let's also assume we have an additional table called **Priority** with rows that contain a priority **number** and a text **description**. For example, the priority number 1 might have the description of "Critical", with the object looking as follows:
+现在，我们可以将项中的 "priority" 编号替换为优先级编号的文本描述。将两个表进行关系联接即可实现此目的。
 
-		{ number: 1, description: 'Critical'}
+        mssql.query('SELECT t.text, t.complete, p.description FROM ToDoItem as t INNER JOIN Priority as p ON t.priority = p.number', {
+    success:function(results) {
+    console.log(results);
+            },
+    错误：function(err) {
+    console.log("error is:" + err);
+        });
 
-We can now replace the **priority** number in our item with the text description of the priority number. We do this with a relational join of the two tables.
+该脚本将联接两个表，并将结果写入日志。最终的对象可能类似于：
 
-		mssql.query('SELECT t.text, t.complete, p.description FROM ToDoItem as t INNER JOIN Priority as p ON t.priority = p.number', {
-			success: function(results) {
-				console.log(results);
-			},
-            error: function(err) {
-                console.log("error is: " + err);
-		});
-	
-The script joins the two tables and writes the results to the log. The resulting objects could look like this:
+        { text:'Take out the trash', complete:false, description:'Critical'}
 
-		{ text: 'Take out the trash', complete: false, description: 'Critical'}
+<a name="raw"></a>
+#### 如何：运行返回 *raw* 结果的查询
 
+此示例将像前面一样执行查询，不过，这次会逐行逐列地返回需要你予以分析的“原始”格式结果集。用到此查询的可能情况是你需要访问移动服务不支持的数据类型。此代码会直接将输出写入控制台日志，使你能够检查原始格式。
 
-####<a name="raw"></a>How to: Run a query that returns *raw* results
+        mssql.queryRaw('SELECT * FROM ToDoItem', {
+    success:function(results) {
+    console.log(results);
+            },
+    错误：function(err) {
+    console.log("error is:" + err);
+            }
+        });
 
-This example executes the query, as before, but returns the resultset in "raw" format which requires you to parse it, row by row, and column by column. A possible scenario for this is if you need access to data types that Mobile Services does not support. This code simply writes the output to the console log so you can inspect the raw format.
+下面显示了运行此查询后的输出。其中包含有关表中每个列的元数据，后接行和列的表示形式。
 
-		mssql.queryRaw('SELECT * FROM ToDoItem', {
-		    success: function(results) {
-		        console.log(results);
-		    },
-            error: function(err) {
-                console.log("error is: " + err);
-			}
-		});
+        { meta: 
+    [ { name:'id',
+    size: 19,
+    nullable:false,
+    type:'number',
+    sqlType:'bigint identity' },
+    { name:'text',
+    size: 0,
+    nullable:true,
+    type:'text',
+    sqlType:'nvarchar' },
+    { name:'complete',
+    size: 1,
+    nullable:true,
+    type:'boolean',
+    sqlType:'bit' },
+    { name:'priority',
+    size: 53,
+    nullable:true,
+    type:'number',
+    sqlType:'float' } ],
+    rows: 
+    [ [ 1, 'good idea for the future', null, 3 ],
+    [ 2, 'this is important but not so much', null, 2 ],
+    [ 3, 'fix this bug now', null, 0 ],
+    [ 4, 'we need to fix this one real soon now', null, 1 ],
+           ] }
 
-Here is the output from running this query. It contains metadata about each column in the table, followed by a representation of the rows and columns.
+<a name="connection"></a>
+#### 如何：获取对数据库连接的访问权限
 
-		{ meta: 
-		   [ { name: 'id',
-		       size: 19,
-		       nullable: false,
-		       type: 'number',
-		       sqlType: 'bigint identity' },
-		     { name: 'text',
-		       size: 0,
-		       nullable: true,
-		       type: 'text',
-		       sqlType: 'nvarchar' },
-		     { name: 'complete',
-		       size: 1,
-		       nullable: true,
-		       type: 'boolean',
-		       sqlType: 'bit' },
-		     { name: 'priority',
-		       size: 53,
-		       nullable: true,
-		       type: 'number',
-		       sqlType: 'float' } ],
-		  rows: 
-		   [ [ 1, 'good idea for the future', null, 3 ],
-		     [ 2, 'this is important but not so much', null, 2 ],
-		     [ 3, 'fix this bug now', null, 0 ],
-		     [ 4, 'we need to fix this one real soon now', null, 1 ],
-		   ] }
+可以使用 "open" 方法获取对数据库连接的访问权限。执行此操作的原因之一是你需要使用数据库事务。
 
-####<a name="connection"></a>How to: Get access to a database connection
+成功执行 "open" 后，将在 "success" 函数中以参数形式传入数据库连接。你可以对 "connection" 对象调用下列任一函数：*close*、*queryRaw*、*query*、*beginTransaction*、*commit* 和 *rollback*。
 
-You can use the **open** method to get access to the database connection. One reason to do this might be if you need to use database transactions.
+            mssql.open({
+    success:function(connection) {
+    connection.query(//query to execute);
+                },
+    错误：function(err) {
+    console.log("error is:" + err);
+                }
+            });
 
-Successful execution of the **open** causes the database connection to be passed into the **success** function as a parameter. You can invoke any of the following functions on the **connection** object: *close*, *queryRaw*, *query*, *beginTransaction*, *commit*, and *rollback*.
+<a name="debugging"></a>
+## 调试和故障排除
 
-		    mssql.open({
-		        success: function(connection) {
-		            connection.query(//query to execute);
-		        },
-	            error: function(err) {
-	                console.log("error is: " + err);
-				}
-		    });
+调试服务器脚本及排查其错误的主要方法是写入服务日志。默认情况下，移动服务会将执行服务脚本期间发生的错误写入服务日志。你的脚本也可以对日志执行写入操作。写入日志是调试脚本及验证其行为是否符合预期的良好方法。
 
-##<a name="debugging"></a>Debugging and troubleshooting
+<a name="write-to-logs"></a>
+### 如何：将输出写入移动服务日志
 
-The primary way to debug and troubleshoot your server scripts is by writing to the service log. By default, Mobile Services writes errors that occur during service script execution to the service logs. Your scripts can also write to the logs. Writing to logs is great way to debug your scripts and validate that they are behaving as desired.
+若要写入日志，请使用全局[控制台对象][]。使用 "log" 或 "info" 函数记录信息级警告。"warning" 和 "error" 函数将记录其对应级别，这些级别已在日志中予以标注。
 
-###<a name="write-to-logs"></a>How to: Write output to the mobile service logs
+<div class="dev-callout">说明</b>
 
-To write to the logs, use the global [console object]. Use the **log** or **info** function to log information-level warnings. The **warning** and **error** functions log their respective levels, which are called-out in the logs. 
+<p>若要查看移动服务的日志，请登录到<a href="https://manage.windowsazure.cn/">管理门户</a>，选择你的移动服务，然后选择“日志”选项卡 。</p>
+</div>
 
-<div class="dev-callout"><strong>Note</strong>
-<p>To view the logs for your mobile service, log on to the <a href="https://manage.windowsazure.com/">Management Portal</a>, select your mobile service, and then choose the <strong>Logs</strong> tab.</p></div>
+你还可以使用[控制台对象][]的日志记录功能通过参数来设置消息格式。以下示例向消息字符串提供了一个参数形式的 JSON 对象：
 
-You can also use the logging functions of the [console object] to format your messages using parameters. The following example supplies a JSON object as a parameter to the message string:
+    function insert(item, user, request) {
+    console.log("Inserting item '%j' for user '%j'.", item, user);  
+    request.execute();
+    }
 
-	function insert(item, user, request) {
-	    console.log("Inserting item '%j' for user '%j'.", item, user);  
-	    request.execute();
-	}
+请注意，字符串 `%j` 用作 JSON 对象的占位符，并且参数是按顺序提供的。
 
-Notice that the string `%j` is used as the placeholder for a JSON object and that parameters are supplied in sequential order. 
+为了避免在日志中记录过多的信息，你应该删除或禁用生产环境不需要使用的 console.log() 调用。
 
-To avoid overloading your log, you should remove or disable calls to console.log() that aren't needed for production use.
-
-<!-- Anchors. -->
-[Introduction]: #intro
-[Table operations]: #table-scripts
-[How to: Register for table operations]: #register-table-scripts
-[How to: Define table scripts]: #execute-operation
-[How to: override the default response]: #override-response
-[How to: Modify an operation]: #modify-operation
-[How to: Override success and error]: #override-success-error
-[How to: Override execute success]: #override-success
-[How to: Override default error handling]: #override-error
-[How to: Access tables from scripts]: #access-tables
-[How to: Add custom parameters]: #access-headers
-[How to: Work with users]: #work-with-users
-[How to: Define scheduled job scripts]: #scheduler-scripts
-[How to: Refine access to tables]: #authorize-tables
-[Using Transact-SQL to access tables]: #TSQL
-[How to: Run a static query]: #static-query
-[How to: Run a dynamic query]: #dynamic-query
-[How to: Run a query that returns *raw* results]: #raw
-[How to: Get access to a database connection]: #connection
-[How to: Join relational tables]: #joins
-[How to: Perform Bulk Inserts]: #bulk-inserts
-[How to: Map JSON types to database types]: #JSON-types
-[How to: Load Node.js modules]: #modules-helper-functions
-[How to: Write output to the mobile service logs]: #write-to-logs
-[Source control, shared code, and helper functions]: #shared-code
-[Using the command line tool]: #command-prompt
-[Working with tables]: #working-with-tables
-[Custom API anchor]: #custom-api
-[How to: Define a custom API]: #define-custom-api
-[How to: Share code by using source control]: #shared-code-source-control
-[How to: Use helper functions]: #helper-functions
-[Debugging and troubleshooting]: #debugging
-[How to: Implement HTTP methods]: #handle-methods
-[How to: Work with users and headers in a custom API]: #get-api-user
-[How to: Access custom API request headers]: #get-api-headers
-[Job Scheduler]: #scheduler-scripts
-[How to: Define multiple routes in a custom API]: #api-routes
-[How to: Send and receive data as XML]: #api-return-xml
-[How to: Work with app settings]: #app-settings
-
-[1]: ./media/mobile-services-how-to-use-server-scripts/1-mobile-insert-script-users.png
-[2]: ./media/mobile-services-how-to-use-server-scripts/2-mobile-custom-api-script.png
-[3]: ./media/mobile-services-how-to-use-server-scripts/3-mobile-schedule-job-script.png
-[4]: ./media/mobile-services-how-to-use-server-scripts/4-mobile-source-local-cli.png
-
-<!-- URLs. -->
-[Mobile Services server script reference]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554226.aspx
-[Schedule backend jobs in Mobile Services]: /en-us/develop/mobile/tutorials/schedule-backend-tasks/
-[request object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554218.aspx
-[response object]: http://msdn.microsoft.com/en-us/library/windowsazure/dn303373.aspx
-[User object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554220.aspx
-[push object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554217.aspx
-[insert function]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554229.aspx
-[insert]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554229.aspx
-[update function]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554214.aspx
-[delete function]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554215.aspx
-[read function]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554224.aspx
-[update]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554214.aspx
-[delete]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554215.aspx
-[read]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554224.aspx
-[query object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj613353.aspx
-[apns object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj839711.aspx
-[mpns object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj871025.aspx
-[wns object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj860484.aspx
-[table object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554210.aspx
-[tables object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj614364.aspx
-[mssql object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554212.aspx
-[console object]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554209.aspx
-[Read and write data]: http://msdn.microsoft.com/en-us/library/windowsazure/jj631640.aspx
-[Validate data]: http://msdn.microsoft.com/en-us/library/windowsazure/jj631638.aspx
-[Modify the request]: http://msdn.microsoft.com/en-us/library/windowsazure/jj631635.aspx
-[Modify the response]: http://msdn.microsoft.com/en-us/library/windowsazure/jj631631.aspx
-[Management Portal]: https://manage.windowsazure.com/
-[Schedule jobs]: http://msdn.microsoft.com/en-us/library/windowsazure/jj860528.aspx
-[Validate and modify data in Mobile Services by using server scripts]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet/
-[Commands to manage Azure Mobile Services]: /en-us/manage/linux/other-resources/command-line-tools/#Commands_to_manage_mobile_services/#Mobile_Scripts
-[Windows Store Push]: /en-us/develop/mobile/tutorials/get-started-with-push-dotnet/
-[Windows Phone Push]: /en-us/develop/mobile/tutorials/get-started-with-push-wp8/
-[iOS Push]: /en-us/develop/mobile/tutorials/get-started-with-push-ios/
-[Android Push]: /en-us/develop/mobile/tutorials/get-started-with-push-android/
-[Azure SDK for Node.js]: http://go.microsoft.com/fwlink/p/?LinkId=275539
-[Send HTTP request]: http://msdn.microsoft.com/en-us/library/windowsazure/jj631641.aspx
-[Send email from Mobile Services with SendGrid]: /en-us/develop/mobile/tutorials/send-email-with-sendgrid/
-[Get started with authentication]: http://go.microsoft.com/fwlink/p/?LinkId=287177
-[crypto API]: http://go.microsoft.com/fwlink/p/?LinkId=288802
-[path API]: http://go.microsoft.com/fwlink/p/?LinkId=288803
-[querystring API]: http://go.microsoft.com/fwlink/p/?LinkId=288804
-[url API]: http://go.microsoft.com/fwlink/p/?LinkId=288805
-[util API]: http://go.microsoft.com/fwlink/p/?LinkId=288806
-[zlib API]: http://go.microsoft.com/fwlink/p/?LinkId=288807
-[Custom API]: http://msdn.microsoft.com/en-us/library/windowsazure/dn280974.aspx
-[Call a custom API from the client]: /en-us/develop/mobile/tutorials/call-custom-api-dotnet/#define-custom-api
-[express.js library]: http://go.microsoft.com/fwlink/p/?LinkId=309046
-[Define a custom API that supports periodic notifications]: /en-us/develop/mobile/tutorials/create-pull-notifications-dotnet/
-[express object in express.js]: http://expressjs.com/api.html#express
-[Store server scripts in source control]: /en-us/develop/mobile/tutorials/store-scripts-in-source-control/
-[Leverage shared code and Node.js modules in your server scripts]: /en-us/develop/mobile/tutorials/store-scripts-in-source-control/#use-npm
-[service object]: http://msdn.microsoft.com/en-us/library/windowsazure/dn303371.aspx
-[App settings]: http://msdn.microsoft.com/en-us/library/dn529070.aspx
-[config module]: http://msdn.microsoft.com/en-us/library/dn508125.aspx
-[Support for package.json in Azure Mobile Services]: http://go.microsoft.com/fwlink/p/?LinkId=391036
+  [介绍]: #intro
+  [表操作]: #table-scripts
+  [如何：注册表操作]: #register-table-scripts
+  [如何：重写默认响应]: #override-response
+  [如何：重写 execute success]: #override-success
+  [如何：重写默认错误处理]: #override-error
+  [如何：添加自定义参数]: #access-headers
+  [如何：处理表用户]: #work-with-users
+  [自定义 API]: #custom-api
+  [如何：定义自定义 API]: #define-custom-api
+  [如何：实现 HTTP 方法]: #handle-methods
+  [如何：发送和接收 XML 格式的数据]: #api-return-xml
+  [如何：处理用户和自定义 API 中的标头]: #get-api-user
+  [如何：在一个自定义 API 中定义多个路由]: #api-routes
+  [作业计划程序]: #scheduler-scripts
+  [源代码管理、共享代码和 Helper 函数]: #shared-code
+  [如何：加载 Node.js 模块]: #modules-helper-functions
+  [如何：使用 Helper 函数]: #helper-functions
+  [如何：使用源代码管理来共享代码]: #shared-code-source-control
+  [如何：使用应用程序设置]: #app-settings
+  [使用命令行工具]: #command-prompt
+  [使用表]: #working-with-tables
+  [如何：从脚本访问表]: #access-tables
+  [如何：执行批量插入]: #bulk-inserts
+  [如何：将 JSON 类型映射到数据库类型]: #JSON-types
+  [使用 Transact-SQL 访问表]: #TSQL
+  [调试和故障排除]: #debugging
+  [如何：将输出写入移动服务日志]: #write-to-logs
+  [移动服务服务器脚本参考]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554226.aspx
+  [查询对象]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj613353.aspx
+  [用户对象]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554220.aspx
+  [请求对象]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554218.aspx
+  [插入]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554229.aspx
+  [更新]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554214.aspx
+  [删除]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554215.aspx
+  [读取]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554224.aspx
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  [1]: ./media/mobile-services-how-to-use-server-scripts/1-mobile-insert-script-users.png
+  [使用服务器脚本在移动服务中验证和修改数据]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet/
+  [读取和写入数据]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj631640.aspx
+  [修改请求]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj631635.aspx
+  [验证数据]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj631638.aspx
+  [修改响应]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj631631.aspx
+  [身份验证入门]: http://go.microsoft.com/fwlink/p/?LinkId=287177
+  [2]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn280974.aspx
+  [响应]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn303373.aspx
+  [express.js 库]: http://go.microsoft.com/fwlink/p/?LinkId=309046
+  [3]: ./media/mobile-services-how-to-use-server-scripts/2-mobile-custom-api-script.png
+  [从客户端调用自定义 API]: /zh-cn/develop/mobile/tutorials/call-custom-api-dotnet/#define-custom-api
+  [定义支持定期通知的自定义 API]: /zh-cn/develop/mobile/tutorials/create-pull-notifications-dotnet/
+  [express.js 中的 express 对象]: http://expressjs.com/api.html#express
+  [计划作业]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj860528.aspx
+  [4]: ./media/mobile-services-how-to-use-server-scripts/3-mobile-schedule-job-script.png
+  [在移动服务中计划后端作业]: /zh-cn/develop/mobile/tutorials/schedule-backend-tasks/
+  [适用于 Node.js 的 Azure SDK]: http://go.microsoft.com/fwlink/p/?LinkId=275539
+  [Node.js 文档]: http://go.microsoft.com/fwlink/p/?LinkId=288802
+  [5]: http://go.microsoft.com/fwlink/p/?LinkId=288803
+  [6]: http://go.microsoft.com/fwlink/p/?LinkId=288804
+  [发送 HTTP 请求]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj631641.aspx
+  [使用 SendGrid 从移动服务发送电子邮件]: /zh-cn/develop/mobile/tutorials/send-email-with-sendgrid/
+  [7]: http://go.microsoft.com/fwlink/p/?LinkId=288805
+  [8]: http://go.microsoft.com/fwlink/p/?LinkId=288806
+  [9]: http://go.microsoft.com/fwlink/p/?LinkId=288807
+  [Azure 移动服务中对 package.json 的支持]: http://go.microsoft.com/fwlink/p/?LinkId=391036
+  [在服务器脚本中利用共享代码和 Node.js 模块]: /zh-cn/develop/mobile/tutorials/store-scripts-in-source-control/#use-npm
+  [表对象]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj614364.aspx
+  [应用程序设置]: http://msdn.microsoft.com/zh-cn/library/dn529070.aspx
+  [服务对象]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn303371.aspx
+  [10]: ./media/mobile-services-how-to-use-server-scripts/4-mobile-source-local-cli.png
+  [用于管理 Azure 移动服务的命令]: /zh-cn/manage/linux/other-resources/command-line-tools/#Commands_to_manage_mobile_services/#Mobile_Scripts
+  [11]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554210.aspx
+  [mssql 对象]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554212.aspx
+  [博客文章]: http://blogs.msdn.com/b/jpsanders/archive/2013/03/20/server-script-to-insert-table-items-in-windows-azure-mobile-services.aspx
+  [JSON.parse]: http://es5.github.io/#x15.12
+  [如何：运行静态查询]: #static-query
+  [如何：运行动态查询]: #dynamic-query
+  [如何：联接关系表]: #joins
+  [如何：运行返回 *raw* 结果的查询]: #raw
+  [如何：获取对数据库连接的访问权限]: #connection
+  [控制台对象]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554209.aspx

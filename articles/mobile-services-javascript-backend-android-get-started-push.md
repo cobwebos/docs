@@ -1,237 +1,242 @@
-<properties linkid="develop-mobile-tutorials-get-started-with-push-js-vs2013" urlDisplayName="Get Started with Push (JS)" pageTitle="Get started with push notifications (Android JavaScript) | Mobile Dev Center" metaKeywords="" description="Learn how to use Windows Azure Mobile Services to send push notifications to your Android JavaScript app." metaCanonical="http://www.windowsazure.com/en-us/develop/mobile/tutorials/get-started-with-push-dotnet/" services="" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="ricksal"  solutions="" writer="ricksal" manager="" editor=""  />
+<properties linkid="develop-mobile-tutorials-get-started-with-push-js-vs2013" urlDisplayName="Get Started with Push (JS)" pageTitle="Get started with push notifications (Android JavaScript) | Mobile Dev Center" metaKeywords="" description="Learn how to use Windows Azure Mobile Services to send push notifications to your Android JavaScript app." metaCanonical="http://www.windowsazure.com/zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet/" services="" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="ricksal"  solutions="" writer="ricksal" manager="" editor=""  />
 
-
-# <a name="getting-started-with-push"> </a>Get started with push notifications in Mobile Services
-
+<a name="getting-started-with-push"> </a>
+# 移动服务中的推送通知入门
 
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/en-us/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push" title="Windows Store C#">Windows Store C#</a>
-	<a href="/en-us/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push" title="Windows Store JavaScript">Windows Store JavaScript</a>
-	<a href="/en-us/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push" title="Windows Phone">Windows Phone</a>
-	<a href="/en-us/documentation/articles/mobile-services-ios-get-started-push" title="iOS">iOS</a>
-	<a href="/en-us/documentation/articles/mobile-services-javascript-backend-android-get-started-push" title="Android" class="current">Android</a>
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a>
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push" title="Windows Store C#">Windows 应用商店 C\#</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push" title="Windows Phone">Windows Phone</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-ios-get-started-push" title="iOS">iOS</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-javascript-backend-android-get-started-push" title="Android" class="current">Android</a>
+	<a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a>
+	<a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
 </div>
 
 
 <div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/" title=".NET backend" >.NET backend</a> | 
-	<a href="/en-us/documentation/articles/mobile-services-javascript-backend-android-get-started-push/" title="JavaScript backend" class="current">JavaScript backend</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/" title=".NET backend" >.NET 后端</a> | 
+	<a href="/zh-cn/documentation/articles/mobile-services-javascript-backend-android-get-started-push/" title="JavaScript backend" class="current">JavaScript 后端</a>
 </div>
 
+本主题说明如何使用 Azure 移动服务向 Android 应用程序发送推送通知。在本教程中，你将要使用 Google Cloud Messaging (GCM) 向快速入门项目添加推送通知。完成本教程后，每次插入一条记录时，你的移动服务就会发送一条推送通知。
 
-This topic shows how to use Azure Mobile Services to send push notifications to your Android app. In this tutorial you add push notifications using Google Cloud Messaging (GCM) to the quickstart project. When complete, your mobile service will send a push notification each time a record is inserted.
+[WACOM.NOTE] 本教程演示了移动服务与通知中心的集成功能，该功能当前以预览版提供。默认情况下，未在 JavaScript 后端中启用通过通知中心发送推送通知的功能。创建新的通知中心后，集成过程将不可逆。
 
-[WACOM.NOTE]This tutorial demonstrates Mobile Services integration with Notification Hubs, which is currently in preview. By default, sending push notifications using Notification Hubs is not enabled from a JavaScript backend.  Once the new notification hub has been created, the integration process cannot be reverted. 
+本教程将指导你完成启用推送通知的以下基本步骤：
 
-This tutorial walks you through these basic steps to enable push notifications:
+1.  [启用 Google Cloud Messaging][]
+2.  [配置移动服务][]
+3.  [向应用程序添加推送通知][]
+4.  [更新脚本以发送推送通知][]
+5.  [插入数据以接收通知][]
 
-1. [Enable Google Cloud Messaging](#register)
-2. [Configure Mobile Services](#configure)
-3. [Add push notifications to your app](#add-push)
-4. [Update scripts to send push notifications](#update-scripts)
-5. [Insert data to receive notifications](#test)
+本教程基于移动服务快速入门。在开始学习本教程之前，必须先完成[移动服务入门][]或[数据处理入门][]，以将项目连接到移动服务。
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete either [Get started with Mobile Services] or [Get started with data] to connect your project to the mobile service.  
+<a id="register"></a>
+## 启用 Google Cloud Messaging
 
-##<a id="register"></a>Enable Google Cloud Messaging
+[WACOM.INCLUDE [启用 GCM][]]
 
+接下来，你将使用此 API 密钥值，让移动服务向 GCM 进行身份验证并代表你的应用程序发送推送通知。
 
-[WACOM.INCLUDE [Enable GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
+<a id="configure"></a>
+## 配置移动服务以发送推送请求
 
-Next, you will use this API key value to enable Mobile Services to authenticate with GCM and send push notifications on behalf of you app.
+1.  登录到 [Windows Azure 管理门户][]，单击“移动服务”，然后单击你的应用程序 。
 
-##<a id="configure"></a>Configure Mobile Services to send push requests
+    ![][]
 
-1. Log on to the [Windows Azure Management Portal], click **Mobile Services**, and then click your app.
+2.  单击“推送”选项卡，再 单击“启用增强的推送” ，然后单击“是” 以接受配置更改。
 
-   	![](./media/mobile-services-android-get-started-push/mobile-services-selection.png)
+    ![][1]
 
-2. Click the **Push** tab, click **Enable enhanced push**, and click **Yes** to accept the configuration change.
+    这样可以更新你的移动服务的配置，以使用通知中心提供的增强的推送功能。对于你的付费移动服务，有些通知中心使用是免费的。有关详细信息，请参阅[移动服务定价详细信息][]。
 
+    <div class="dev-callout"><b>重要说明</b>
 
-	![](./media/mobile-services-android-get-started-push/mobile-enable-enhanced-push.png)
+    <p>此操作可重置你的推送凭据，并更改脚本中的推送方法行为。这些更改无法恢复。不要使用此方法向生产移动服务添加通知中心。有关如何在生产移动服务中启用增强的推送通知的指导，请参阅<a href="http://go.microsoft.com/fwlink/p/?LinkId=391951">本指南</a>。</p>
+	</div>
 
+3.  输入执行前一过程时从 GCM 获取的“API 密钥”值，然后单击“保存” 。
 
-	This updates the configuration of your mobile service to use the enhanced push notification functionality provided by Notification Hubs. Some Notification Hubs usage is free with your paid mobile service. For more information, see [Mobile Services Pricing Details](http://go.microsoft.com/fwlink/p/?LinkID=311786).
+    ![][2]
 
-    <div class="dev-callout"><b>Important</b>
-	<p>This operation resets your push credentials and changes the behavior of the push methods in your scripts. These changes cannot be reverted. Do not use this method to add a notification hub to a production mobile service. For guidance on how to enable enhanced push notifications in a production mobile service, see <a href="http://go.microsoft.com/fwlink/p/?LinkId=391951">this guidance</a>.</p>
-    </div>
+    <div class="dev-callout"><b>重要说明</b>
 
-3. Enter the **API Key** value obtained from GCM in the previous procedure, and then click **Save**.
+    <p>在门户的“推送”选项卡中为增强型推送通知设置 GCM 凭据后，这些凭据将与通知中心共享，以使用你的应用程序配置通知中心。</p>
+	</div>
 
+现在，你的移动服务和应用程序都已配置为使用 GCM 和通知中心。
 
+<a id="add-push"></a>
+## 向应用程序添加推送通知
 
-   	![](./media/mobile-services-android-get-started-push/mobile-push-tab-android.png)
+### 验证 Android SDK 版本
 
-    <div class="dev-callout"><b>Important</b>
-	<p>When you set your GCM credentials for enhanced push notifications in the Push tab in the portal, they are shared with Notification Hubs to configure the notification hub with your app.</p>
-    </div>
+[WACOM.INCLUDE [验证 SDK][]]
 
+下一步就是安装 Google Play Services。Google Cloud Messaging 对开发和测试提出了一些最低的 API 级别要求，清单中的 "minSdkVersion" 属性必须符合这些要求。
 
-Both your mobile service and your app are now configured to work with GCM and Notification Hubs.
+如果你要对某台较旧的设备进行测试，请查阅[设置 Google Play Services SDK][]，以确定此值可设置到的最小值，并相应地进行设置。
 
-##<a id="add-push"></a>Add push notifications to your app
+### 将 Google Play Services 添加到项目
 
-###Verify Android SDK Version
+[WACOM.INCLUDE [添加 Play Services][]]
 
-[WACOM.INCLUDE [Verify SDK](../includes/mobile-services-verify-android-sdk-version.md)]
+### 添加代码
 
-Your next step is to install Google Play services. Google Cloud Messaging has some minimum API level requirements for development and testing, which the **minSdkVersion** property in the Manifest must conform to. 
+[WACOM.INCLUDE [mobile-services-android-getting-started-with-push][]]
 
-If you will be testing with an older device, then consult [Set Up Google Play Services SDK] to determine how low you can set this value, and set it appropriately.
+<a id="update-scripts"></a>
+## 在管理门户中更新已注册的插入脚本
 
-###Add Google Play Services to the project
+1.  在管理门户中，单击“数据”选项卡，然后单击“TodoItem”表 。
 
-[WACOM.INCLUDE [Add Play Services](../includes/mobile-services-add-Google-play-services.md)]
+    ![][3]
 
-###Add code
+2.  在“todoitem” 中，单击“脚本” 选项卡，然后选择“插入” 。
 
-[WACOM.INCLUDE [mobile-services-android-getting-started-with-push](../includes/mobile-services-android-getting-started-with-push.md)]
+    ![][4]
 
+    将显示当 "TodoItem" 表中发生插入时所调用的函数。
 
-##<a id="update-scripts"></a>Update the registered insert script in the Management Portal
+3.  将 insert 函数替换为以下代码，然后单击“保存”： 
 
-1. In the Management Portal, click the **Data** tab and then click the **TodoItem** table. 
+        function insert(item, user, request) {
+        // Define a payload for the Google Cloud Messaging toast notification.
+        var payload = 
+        '{"data":{"message" :"Hello from Mobile Services!"}}';
 
-   	![](./media/mobile-services-android-get-started-push/mobile-portal-data-tables.png)
+        request.execute({
+        success:function() {
+        // If the insert succeeds, send a notification.
+        push.gcm.send(null, payload, {
+        success:function(pushResponse) {
+        console.log("Sent push:", pushResponse, payload);
+        request.respond();
+                        },              
+        错误：function (pushResponse) {
+        console.log("Error Sending push:", pushResponse);
+        request.respond(500, { error:pushResponse });
+                        }
+                    });
+                },
+        错误：function(err) {
+        console.log("request.execute error", err)
+        request.respond();
+            }
+          });
+        }
 
-2. In **todoitem**, click the **Script** tab and select **Insert**.
-   
-  	![](./media/mobile-services-android-get-started-push/mobile-insert-script-push2.png)
+    这将会注册一个新的插入脚本，插入成功后，该脚本将使用 [gcm 对象][]向所有已注册的设备发送推送通知。
 
-   	This displays the function that is invoked when an insert occurs in the **TodoItem** table.
+<a id="test"></a>
+## 在应用程序中测试推送通知
 
-3. Replace the insert function with the following code, and then click **Save**:
+你可以通过以下方式测试应用程序：使用 USB 电缆直接连接 Android 手机，或者在模拟器中使用虚拟设备。
 
-		function insert(item, user, request) {
-		// Define a payload for the Google Cloud Messaging toast notification.
-		var payload = 
-		    '{"data":{"message" : "Hello from Mobile Services!"}}';
-		
-		request.execute({
-		    success: function() {
-		        // If the insert succeeds, send a notification.
-		        push.gcm.send(null, payload, {
-		            success: function(pushResponse) {
-		                console.log("Sent push:", pushResponse, payload);
-		                request.respond();
-		                },              
-		            error: function (pushResponse) {
-		                console.log("Error Sending push:", pushResponse);
-		                request.respond(500, { error: pushResponse });
-		                }
-		            });
-		        },
-		    error: function(err) {
-		        console.log("request.execute error", err)
-		        request.respond();
-		    }
-		  });
-		}
+### 设置模拟器以进行测试
 
-   	This registers a new insert script, which uses the [gcm object] to send a push notification to all registered devices after the insert succeeds. 
+当你在模拟器中运行此应用程序时，请确保使用支持 Google API 的 Android 虚拟设备 (AVD)。
 
-##<a id="test"></a>Test push notifications in your app
+1.  重新启动 Eclipse，在包资源管理器中，右键单击项目，单击“属性”，单击“Android”，选中“Google API”，然后单击“确定” 。
 
-You can test the app by directly attaching an Android phone with a USB cable, or by using a virtual device in the emulator.
+    ![][5]
 
-###Setting up the emulator for testing
+    这样便指定了项目要使用 Google API。
 
-When you run this app in the emulator, make sure that you use an Android Virtual Device (AVD) that supports Google APIs.
+2.  从“窗口”中选择“Android 虚拟设备管理器”，选择你的设备，然后单击“编辑” 。
 
-1. Restart Eclipse, then in Package Explorer, right-click the project, click **Properties**, click **Android**, check **Google APIs**, then click **OK**.
+    ![][6]
 
-	![](./media/mobile-services-android-get-started-push/mobile-services-import-android-properties.png)
+3.  在“目标” 中选择“Google API” ，然后单击“确定”。
 
-  	This targets the project for the Google APIs.
+    ![][7]
 
-2. From **Window**, select **Android Virtual Device Manager**, select your device, click **Edit**.
+    这样便指定了 AVD 要使用 Google API。
 
-	![](./media/mobile-services-android-get-started-push/mobile-services-android-virtual-device-manager.png)
+### 运行测试
 
-3. Select **Google APIs** in **Target**, then click OK.
+1.  在 Eclipse 中打开“运行” 菜单，然后单击“运行”以启动应用程序 。
 
-   	![](./media/mobile-services-android-get-started-push/mobile-services-android-virtual-device-manager-edit.png)
+2.  在应用程序中键入有意义的文本（例如 *A new Mobile Services task*），然后单击“添加” 按钮。
 
-	This targets the AVD to use Google APIs.
+    ![][8]
 
-###Running the test
+3.  从屏幕顶部向下轻扫，打开设备的通知中心以查看通知。
 
-1. From the **Run** menu in Eclipse, then click **Run** to start the app.
+你已成功完成本教程。
 
-2. In the app, type meaningful text, such as _A new Mobile Services task_ and then click the **Add** button.
+<a name="next-steps"> </a>
+## 后续步骤
 
-  	![](./media/mobile-services-android-get-started-push/mobile-quickstart-push1-android.png)
+本教程演示了移动服务提供的基本推送通知功能。如果你的应用程序需要更高级功能，例如发送跨平台通知、基于订阅的路由或极大量的通知，请考虑为移动服务使用 Windows Azure 通知中心。有关详细信息，请参阅下列通知中心主题之一：
 
-3. Swipe down from the top of the screen to open the device's Notification Center to see the notification.
+-   [通知中心入门][]
+    了解如何在 Android 应用程序中利用通知中心。
 
+-   [向订户发送通知][]
+    了解用户如何注册和接收他们感兴趣的类别的推送通知。
 
-You have successfully completed this tutorial.
+-   [向用户发送通知][]
+    了解如何从移动服务向任一设备上的特定用户发送推送通知。
 
+-   [向用户发送跨平台通知][]
+    了解如何使用模板从移动服务发送推送通知，且不会在后端中产生平台特定的负载。
 
-## <a name="next-steps"> </a>Next steps
+建议你了解有关以下移动服务主题的详细信息：
 
-This tutorial demonstrates the basic push notification functionality provided by Mobile Services. If your app requires more advanced functionalities, such as sending cross-platform notifications, subscription-based routing, or very large volumes, consider using Windows Azure Notification Hubs with your mobile service. For more information, see one of the following Notification Hubs topics:
+-   [数据处理入门][]
+    了解有关使用移动服务存储和查询数据的详细信息。
 
-+ [Get started with Notification Hubs]
-  <br/>Learn how to leverage Notification Hubs in your Android app.
+-   [身份验证入门][]
+    了解如何使用 Windows 帐户对应用程序用户进行身份验证。
 
-+ [Send notifications to subscribers]
-	<br/>Learn how users can register and receive push notifications for categories they're interested in.
+-   [移动服务服务器脚本参考][]
+    了解有关注册和使用服务器脚本的详细信息。
 
-+ [Send notifications to users]
-	<br/>Learn how to send push notifications from a Mobile Service to specific users on any device.
+-   [如何使用适用于移动服务的 Android 客户端库][]
+    了解有关如何将移动服务与 Android 一起使用的详细信息。
 
-+ [Send cross-platform notifications to users]
-	<br/>Learn how to use templates to send push notifications from a Mobile Service, without having to craft platform-specific payloads in your back-end.
-
-Consider finding out more about the following Mobile Services topics:
-
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
-
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with Windows Account.
-
-* [Mobile Services server script reference]
-  <br/>Learn more about registering and using server scripts.
-
-* [How to use the Android client library for Mobile Services]
-  <br/>Learn more about how to use Mobile Services with Android.  
-
-
-<!-- Anchors. -->
-[Register your app for push notifications and configure Mobile Services]: #register
-[Update the generated push notification code]: #update-scripts
-[Insert data to receive notifications]: #test
-[Next Steps]:#next-steps
-
-<!-- Images. -->
-[13]: ./media/mobile-services-windows-store-javascript-get-started-push/mobile-quickstart-push1.png
-[14]: ./media/mobile-services-windows-store-javascript-get-started-push/mobile-quickstart-push2.png
-
-
-<!-- URLs. -->
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-android-get-started/
-[Get started with data]: /en-us/documentation/articles/mobile-services-android-get-started-data/
-[Get started with authentication]: /en-us/documentation/articles/mobile-services-android-get-started-users
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-js
-[Push notifications to app users]: /en-us/develop/mobile/tutorials/push-notifications-to-users-js
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-js
-[JavaScript and HTML]: /en-us/develop/mobile/tutorials/get-started-with-push-js
-[Set Up Google Play Services SDK]: http://go.microsoft.com/fwlink/?LinkId=389801
-[Windows Azure Management Portal]: https://manage.windowsazure.com/
-[How to use the Android client library for Mobile Services]: /en-us/documentation/articles/mobile-services-android-how-to-use-client-library
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Get started with Notification Hubs]: /en-us/manage/services/notification-hubs/getting-started-windows-dotnet/
-[What are Notification Hubs?]: /en-us/develop/net/how-to-guides/service-bus-notification-hubs/
-[Send notifications to subscribers]: /en-us/manage/services/notification-hubs/breaking-news-dotnet/
-[Send notifications to users]: /en-us/manage/services/notification-hubs/notify-users/
-[Send cross-platform notifications to users]: /en-us/manage/services/notification-hubs/notify-users-xplat-mobile-services/
-[gcm object]: http://go.microsoft.com/fwlink/p/?LinkId=282645
+  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push "Windows Phone"
+  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-push "iOS"
+  [Android]: /zh-cn/documentation/articles/mobile-services-javascript-backend-android-get-started-push "Android"
+  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android "Xamarin.Android"
+  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/ ".NET 后端"
+  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-javascript-backend-android-get-started-push/ "JavaScript 后端"
+  [启用 Google Cloud Messaging]: #register
+  [配置移动服务]: #configure
+  [向应用程序添加推送通知]: #add-push
+  [更新脚本以发送推送通知]: #update-scripts
+  [插入数据以接收通知]: #test
+  [移动服务入门]: /zh-cn/documentation/articles/mobile-services-android-get-started/
+  [数据处理入门]: /zh-cn/documentation/articles/mobile-services-android-get-started-data/
+  [启用 GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
+  [Windows Azure 管理门户]: https://manage.windowsazure.cn/
+  []: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
+  [1]: ./media/mobile-services-android-get-started-push/mobile-enable-enhanced-push.png
+  [移动服务定价详细信息]: http://go.microsoft.com/fwlink/p/?LinkID=311786
+  [本指南]: http://go.microsoft.com/fwlink/p/?LinkId=391951
+  [2]: ./media/mobile-services-android-get-started-push/mobile-push-tab-android.png
+  [验证 SDK]: ../includes/mobile-services-verify-android-sdk-version.md
+  [设置 Google Play Services SDK]: http://go.microsoft.com/fwlink/?LinkId=389801
+  [添加 Play Services]: ../includes/mobile-services-add-Google-play-services.md
+  [mobile-services-android-getting-started-with-push]: ../includes/mobile-services-android-getting-started-with-push.md
+  [3]: ./media/mobile-services-android-get-started-push/mobile-portal-data-tables.png
+  [4]: ./media/mobile-services-android-get-started-push/mobile-insert-script-push2.png
+  [gcm 对象]: http://go.microsoft.com/fwlink/p/?LinkId=282645
+  [5]: ./media/mobile-services-android-get-started-push/mobile-services-import-android-properties.png
+  [6]: ./media/mobile-services-android-get-started-push/mobile-services-android-virtual-device-manager.png
+  [7]: ./media/mobile-services-android-get-started-push/mobile-services-android-virtual-device-manager-edit.png
+  [8]: ./media/mobile-services-android-get-started-push/mobile-quickstart-push1-android.png
+  [通知中心入门]: /zh-cn/manage/services/notification-hubs/getting-started-windows-dotnet/
+  [向订户发送通知]: /zh-cn/manage/services/notification-hubs/breaking-news-dotnet/
+  [向用户发送通知]: /zh-cn/manage/services/notification-hubs/notify-users/
+  [向用户发送跨平台通知]: /zh-cn/manage/services/notification-hubs/notify-users-xplat-mobile-services/
+  [身份验证入门]: /zh-cn/documentation/articles/mobile-services-android-get-started-users
+  [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/?LinkId=262293
+  [如何使用适用于移动服务的 Android 客户端库]: /zh-cn/documentation/articles/mobile-services-android-how-to-use-client-library

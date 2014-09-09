@@ -1,125 +1,102 @@
 <properties pageTitle="Get Started with Azure Mobile Services for iOS apps" metaKeywords="Azure iOS application, mobile service iOS, getting started Azure iOS" description="Follow this tutorial to get started using Azure Mobile Services for iOS development. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
-# <a name="getting-started"> </a>Get started with Mobile Services
+<a name="getting-started"> </a>
+# 移动服务入门
 
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started" title="Windows Store C#">Windows Store C#</a>
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started" title="Windows Store JavaScript">Windows Store JavaScript</a>
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started" title="Windows Phone">Windows Phone</a>
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started" title="iOS" class="current">iOS</a>
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started" title="Android">Android</a>
-	<!--<a href="/en-us/documentation/articles/get-started-html" title="HTML">HTML</a>
-	<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-ios-get-started" title="Xamarin.iOS">Xamarin.iOS</a>
-	<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-android-get-started" title="Xamarin.Android">Xamarin.Android</a>
-	<a href="/en-us/documentation/articles/partner-sencha-mobile-services-get-started/" title="Sencha">Sencha</a>
-	<a href="/en-us/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/" title="PhoneGap">PhoneGap</a>-->
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started" title="Windows Store C#">Windows 应用商店 C\#</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started" title="Windows Phone">Windows Phone</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started" title="iOS" class="current">iOS</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started" title="Android">Android</a>
+	<!--<a href="/zh-cn/documentation/articles/get-started-html" title="HTML">HTML</a>
+	<a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started" title="Xamarin.iOS">Xamarin.iOS</a>
+	<a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started" title="Xamarin.Android">Xamarin.Android</a>
+	<a href="/zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/" title="Sencha">Sencha</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/" title="PhoneGap">PhoneGap</a>-->
 </div>
 
 <div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started/" title=".NET backend" class="current">.NET backend</a> | 
-	<a href="/en-us/documentation/articles/mobile-services-ios-get-started/"  title="JavaScript backend" >JavaScript backend</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started/" title=".NET backend" class="current">.NET 后端</a> | 
+	<a href="/zh-cn/documentation/articles/mobile-services-ios-get-started/"  title="JavaScript backend" >JavaScript 后端</a>
 </div>
 
-This tutorial shows you how to add a cloud-based backend service to an iOS app using Azure Mobile Services. In this tutorial, you will create both a new mobile service and a simple _To do list_ app that stores app data in the new mobile service. The mobile service that you will create uses the supported .NET languages using Visual Studio for server-side business logic and to manage the mobile service. To create a mobile service that lets you write your server-side business logic in JavaScript, see the [JavaScript backend version] of this topic.
+本教程说明如何使用 Azure 移动服务向 iOS 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单*待办事项列表*应用程序。要创建的移动服务将使用支持的 .NET 语言，你可以使用 Visual Studio 来提供服务器端业务逻辑和管理移动服务。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题中的 [JavaScript 后端版本][]。
 
-A screenshot from the completed app is below:
+以下是完成的应用程序的屏幕快照：
 
-![][0]
+![][]
 
-Completing this tutorial requires XCode 4.5 and iOS 5.0 or later versions. 
+完成本教程需要安装 XCode 4.5 和 iOS 5.0 或更高版本。
 
-<div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F" target="_blank">Azure Free Trial</a>.</p></div>
+<div class="dev-callout"><b>说明</b>
 
-## <a name="create-new-service"> </a>Create a new mobile service
+<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F" target="_blank">Azure 免费试用</a>。</p>
+</div>
 
-[WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
+<a name="create-new-service"> </a>
+## 创建新的移动服务
 
-## Download the mobile service to your local computer
+[WACOM.INCLUDE [mobile-services-create-new-service][]]
 
-Now that you have created the mobile service, download your personalized mobile service project that you can run on your local computer or virtual machine.
+## 将移动服务下载到本地计算机
 
-1. Click the mobile service that you just created, then in the quickstart tab, click **iOS** under **Choose platform** and expand **Create a new iOS app**.
+在创建移动服务后，请下载可在本地计算机或虚拟机上运行的个性化移动服务项目。
 
-	![][1]
+1.  单击刚刚创建的移动服务，在快速入门选项卡中单击“选择平台”下的“iOS”，然后展开“创建新的 iOS 应用程序” 。
 
-2. If you haven't already done so, download and install Visual Studio Professional 2013, or a later version.
+    ![][1]
 
-3. Click **Download** under **Download and publish your service to the cloud**.
+2.  如果你尚未安装 Visual Studio，请下载和安装 Visual Studio Professional 2013 或更高版本。
 
-	This downloads the Visual Studio project that implements your mobile service. Save the compressed project file to your local computer, and make a note of where you saved it.
+3.  在“下载你的服务并将其发布到云”下面单击“下载” 。
 
-4. Also, download your publish profile, save the downloaded file to your local computer, and make a note of where you save it.
+    这样可以下载实现你的移动服务的 Visual Studio 项目。将压缩的项目文件保存到本地计算机上，并记下你保存它的位置。
 
-## Test the mobile service
+4.  另外，请下载发布配置文件，将下载的文件保存到本地计算机，然后记下保存位置。
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
+## 测试移动服务
 
-## Publish your mobile service
+[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service][]]
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
+## 发布移动服务
 
-## Create a new iOS app
+[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service][]]
 
-In this section you will create a new iOS app that is connected to your mobile service.
+## 创建新的 iOS 应用程序
 
-1. In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
+在本部分中，你将要创建一个连接到移动服务的新的 iOS 应用程序。
 
-2. In the quickstart tab, click **iOS** under **Choose platform** and expand **Create a new iOS app**.   
+1.  在管理门户中单击“移动服务”，然后单击你刚刚创建的移动服务 。
 
-3. If you haven't already done so, download and install [Xcode] v4.4 or a later version.	
+2.  在快速入门选项卡中，单击“选择平台”下的“iOS”，然后展开“创建新的 iOS 应用程序” 。
 
-4. Under **Download and run your app**, click **Download**. 
+3.  下载并安装 [Xcode][] v4.4 或更高版本（如果尚未这么做）。
 
-  	This downloads the project for the sample _To do list_ application that is connected to your mobile service, along with the Mobile Services iOS SDK. Save the compressed project file to your local computer, and make a note of where you saved it.
+4.  在“下载并运行应用程序”下面单击“下载” 。
 
-## Run your new iOS app
+    随即将会下载已连接到移动服务的示例*待办事项列表*应用程序的项目，以及移动服务 iOS SDK。将压缩的项目文件保存到本地计算机上，并记下你保存它的位置。
 
-[WACOM.INCLUDE [mobile-services-ios-run-app](../includes/mobile-services-ios-run-app.md)]
+## 运行新的 iOS 应用程序
 
-This shows how to run your new client app against the mobile service running in Azure. Before you can test the iOS app with the mobile service running on a local computer, you must configure the Web server and firewall to allow access from your iOS development computer. For more information, see [Configure the local web server to allow connections to a local mobile service](/en-us/documentation/articles/mobile-services-dotnet-backend-how-to-configure-iis-express).
+[WACOM.INCLUDE [mobile-services-ios-run-app][]]
 
-<!--
+本主题说明了如何针对 Azure 中运行的移动服务运行新的客户端应用程序。在对本地计算机上运行的移动服务测试 iOS 应用程序之前，必须配置 Web 服务器和防火墙，以允许从 iOS 开发计算机进行访问。有关详细信息，请参阅[配置本地 Web 服务器以允许连接到本地移动服务][]。
 
-## <a name="next-steps"> </a>Next Steps
-Now that you have completed the quickstart, learn how to perform additional important tasks in Mobile Services: 
-
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
-
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with an identity provider.
-
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
-
--->
-
-<!-- Anchors. -->
-[Getting started with Mobile Services]:#getting-started
-[Create a new mobile service]:#create-new-service
-[Define the mobile service instance]:#define-mobile-service-instance
-[Next Steps]:#next-steps
-
-<!-- Images. -->
-[0]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-completed-ios.png
-[1]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-steps-vs.png
-
-[6]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-portal-quickstart-ios.png
-[7]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-steps-ios.png
-[8]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-xcode-project.png
-
-[10]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-startup-ios.png
-[11]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-data-tab.png
-[12]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-data-browse.png
-
-
-<!-- URLs. -->
-[Get started with data]: /en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data
-[Get started with authentication]: /en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users
-[Get started with push notifications]: /en-us/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push
-
-[Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-
-[Management Portal]: https://manage.windowsazure.com/
-[XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[JavaScript backend version]: /en-us/documentation/articles/mobile-services-ios-get-started 
+  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started "Windows Phone"
+  [iOS]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started "iOS"
+  [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started "Android"
+  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started/ ".NET 后端"
+  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-ios-get-started/ "JavaScript 后端"
+  [JavaScript 后端版本]: /zh-cn/documentation/articles/mobile-services-ios-get-started
+  []: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-completed-ios.png
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F
+  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
+  [1]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-steps-vs.png
+  [mobile-services-dotnet-backend-test-local-service]: ../includes/mobile-services-dotnet-backend-test-local-service.md
+  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
+  [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
+  [mobile-services-ios-run-app]: ../includes/mobile-services-ios-run-app.md
+  [配置本地 Web 服务器以允许连接到本地移动服务]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-how-to-configure-iis-express

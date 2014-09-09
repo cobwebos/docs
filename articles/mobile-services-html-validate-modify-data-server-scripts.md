@@ -1,217 +1,218 @@
 <properties linkid="develop-mobile-tutorials-validate-modify-and-augment-data-html" urlDisplayName="Validate Data - HTML5" pageTitle="User server scripts to validate and modify data (HTML 5) | Mobile Dev Center" metaKeywords="" description="Learn how to validate and modify data sent using server scripts from your HTML app." metaCanonical="" services="" documentationCenter="Mobile" title="Validate and modify data in Mobile Services by using server scripts" authors="glenga" solutions="" manager="" editor="" />
 
+# 使用服务器脚本在移动服务中验证和修改数据
 
-
-
-# Validate and modify data in Mobile Services by using server scripts 
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-html" title="HTML" class="current">HTML</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
+	<a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-android" title="Android">Android</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-html" title="HTML" class="current">HTML</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
 </div>
 
-This topic shows you how to leverage server scripts in Azure Mobile Services. Server scripts are registered in a mobile service and can be used to perform a wide range of operations on data being inserted and updated, including validation and data modification. In this tutorial, you will define and register server scripts that validate and modify data. Because the behavior of server side scripts often affects the client, you will also update your HTML app to take advantage of these new behaviors.
+本主题说明如何在 Azure 移动服务中利用服务器脚本。你可以在移动服务中注册服务器脚本，然后使用这些脚本对所要插入和更新的数据执行各种操作，包括验证和数据修改。在本教程中，你将要定义并注册用于验证和修改数据的服务器脚本。由于服务器端脚本的行为往往会影响到客户端，因此你还要更新 HTML 应用程序以利用这些新行为。
 
-This tutorial walks you through these basic steps:
+本教程将指导你完成以下基本步骤：
 
-1. [Add string length validation]
-2. [Update the client to support validation]
-3. [Add a timestamp on insert]
-4. [Update the client to display the timestamp]
+1.  [添加字符串长度验证][]
+2.  [更新客户端以支持验证][]
+3.  [在插入操作中添加时间戳][]
+4.  [更新客户端以显示时间戳][]
 
-This tutorial builds on the steps and the sample app from the previous tutorial [Get started with data]. Before you begin this tutorial, you must first complete [Get started with data].  
+本教程以前一教程[数据处理入门][]中的步骤和示例应用程序为基础。在开始本教程之前，必须先完成[数据处理入门][]。
 
-## <a name="string-length-validation"></a>Add validation
+<a name="string-length-validation"></a>
+## 添加验证
 
-It is always a good practice to validate the length of data that is submitted by users. First, you register a script that validates the length of string data sent to the mobile service and rejects strings that are too long, in this case longer than 10 characters.
+验证用户提交的数据的长度总不失为一种良好做法。首先，你要注册一个脚本，用于验证发送到移动服务的字符串数据长度，并拒绝过长（在本例中为 10 个字符以上）的字符串。
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app. 
+1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
 
-   	![][0]
+    ![][]
 
-2. Click the **Data** tab, then click the **TodoItem** table.
+2.  单击“数据” 选项卡，然后单击 TodoItem  表。
 
-   	![][1]
+    ![][1]
 
-3. Click **Script**, then select the **Insert** operation.
+3.  单击“脚本”，然后选择“插入”操作 。
 
-   	![][2]
+    ![][2]
 
-4. Replace the existing script with the following function, and then click **Save**.
+4.  将现有脚本替换为以下函数，然后单击“保存” 。
 
         function insert(item, user, request) {
-            if (item.text.length > 10) {
-                request.respond(statusCodes.BAD_REQUEST, {
-                    error: "Text cannot exceed 10 characters"
+        if (item.text.length > 10) {
+        request.respond(statusCodes.BAD_REQUEST, {
+        错误："Text cannot exceed 10 characters"
                 });
-            } else {
-                request.execute();
+        } else {
+        request.execute();
             }
         }
 
-    This script checks the length of the **TodoItem.text** property and sends an error response when the length exceeds 10 characters. Otherwise, the **execute** function is called to complete the insert.
+    此脚本将检查 "TodoItem.text" 属性的长度，如果该长度超过 10 个字符，则发送错误响应。如果未超过 10 个字符，将调用 "execute" 函数以完成插入。
 
-    <div class="dev-callout"> 
-	<b>Note</b> 
-	<p>You can remove a registered script on the <strong>Script</strong> tab by clicking <strong>Clear</strong> and then <strong>Save</strong>.</p></div>	
+    <div class="dev-callout"><b>说明</b>
 
-## <a name="update-client-validation"></a>Update the client
-
-Now that the mobile service is validating data and sending error responses, you need to update your app to be able to handle error responses from validation.
-
-1. Run one of the following command files from the **server** subfolder of the project that you modified when you completed the tutorial [Get started with data].
-
-	+ **launch-windows** (Windows computers) 
-	+ **launch-mac.command** (Mac OS X computers)
-	+ **launch-linux.sh** (Linux computers)
-
-	<div class="dev-callout"><b>Note</b>
-		<p>On a Windows computer, type `R` when PowerShell asks you to confirm that you want to run the script. Your web browser might warn you to not run the script because it was downloaded from the internet. When this happens, you must request that the browser proceed to load the script.</p>
+    <p>在“脚本”选项卡中，依次单击“清除”和“保存”可以删除某个已注册的脚本 。</p>
 	</div>
 
-	This starts a web server on your local computer to host the app.
+<a name="update-client-validation"></a>
+## 更新客户端
 
-1. 	Open the file app.js, then replace the **$('#add-item').submit()** event handler with the following code:
+移动服务会验证数据和发送错误响应，而你则需要更新你的应用程序，使之能够处理验证后生成的错误响应。
 
-		$('#add-item').submit(function(evt) {
-			var textbox = $('#new-item-text'),
-				itemText = textbox.val();
-			if (itemText !== '') {
-				todoItemTable.insert({ text: itemText, complete: false })
-					.then(refreshTodoItems, function(error){
-					alert(JSON.parse(error.request.responseText).error);
-				});
-			}
-			textbox.val('').focus();
-			evt.preventDefault();
-		});
+1.  从你在完成教程[数据处理入门][]后修改的项目的 "server" 子文件夹中运行下列命令文件之一。
 
-2. In a web browser, navigate to <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a>, then type text in **Add new task** and click **Add**.
+    -   "launch-windows"（Windows 计算机）
+    -   "launch-mac.command"（Mac OS X 计算机）
+    -   "launch-linux.sh"（Linux 计算机）
 
-   	Notice that the operation fails and error handling displays the error response in a dialog.
+	<div class="dev-callout"><b>说明</b>
 
-## <a name="add-timestamp"></a>Add a timestamp
+    <p>在 Windows 计算机上，当 PowerShell 要求你确认是否要运行脚本时，请键入“R”。你的 Web 浏览器可能会警告你不要运行该脚本，因为它是从 Internet 下载的。如果出现此警告，你必须请求浏览器继续加载该脚本。</p>
+	</div>
 
-The previous tasks validated an insert and either accepted or rejected it. Now, you will update inserted data by using a server script that adds a timestamp property to the object before it gets inserted.
+    随后将在本地计算机上启动用于托管应用程序的 Web 服务器。
 
-<div class="dev-callout"><b>Note</b>
-<p>The <b>createdAt</b> timestamp property demonstrated here is now redundant. Mobile Services automatically creates a <b>__createdAt</b> system property for each table.</p>
-</div>
+2.  打开 app.js 文件，将 "\$('\#add-item').submit()" 事件处理程序替换为以下代码：
 
-1. In the **Scripts** tab in the [Management Portal], replace the current **Insert** script with the following function, and then click **Save**.
+        $('#add-item').submit(function(evt) {
+        var textbox = $('#new-item-text'),
+        itemText = textbox.val();
+        if (itemText !== '') {
+        todoItemTable.insert({ text:itemText, complete:false })
+        .then(refreshTodoItems, function(error){
+        alert(JSON.parse(error.request.responseText).error);
+                });
+            }
+        textbox.val('').focus();
+        evt.preventDefault();
+        });
+
+3.  在 Web 浏览器中，导航到 <http://localhost:8000/>，在“添加新任务”中键入文本，然后单击“添加” 。
+
+    可以看到，操作已失败，并且错误处理功能在对话框中显示了错误响应。
+
+<a name="add-timestamp"></a>
+## 添加时间戳
+
+前面的任务验证了某个插入操作，并已接受或拒绝该操作。现在，你要使用一个服务器脚本来更新已插入的数据，该脚本将在插入对象之前向其添加一个时间戳属性。
+
+"说明"
+
+此处演示的 "createdAt" 时间戳属性目前是多余的。移动服务会自动为每个表创建一个 "\_\_createdAt" 系统属性。
+
+1.  在[管理门户][Azure 管理门户]中的“脚本”选项卡上，将当前的 "Insert" 脚本替换为以下函数，然后单击“保存” 。
 
         function insert(item, user, request) {
-            if (item.text.length > 10) {
-                request.respond(statusCodes.BAD_REQUEST, {
-                    error: 'Text length must be under 10'
+        if (item.text.length > 10) {
+        request.respond(statusCodes.BAD_REQUEST, {
+        错误：'Text length must be under 10'
                 });
-            } else {
-                item.createdAt = new Date();
-                request.execute();
+        } else {
+        item.createdAt = new Date();
+        request.execute();
             }
         }
 
-    This function augments the previous insert script by adding a new **createdAt** timestamp property to the object before it gets inserted by the call to **request**.**execute**. 
+    在通过调用 "request"."execute" 插入对象之前，此函数会将一个新的 "createdAt" 时间戳属性添加到该对象，从而扩展前面的 insert 脚本。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>Dynamic schema must be enabled the first time that this insert script runs. With dynamic schema enabled, Mobile Services automatically adds the <strong>createdAt</strong> column to the <strong>TodoItem</strong> table on the first execution. Dynamic schema is enabled by default for a new mobile service, and it should be disabled before the app is published.</p>
-    </div>
+    <div class="dev-callout"><b>说明</b>
 
-2. In the web browser, reload the page, then type text (shorter than 10 characters) in **Add new task** and click **Add**.
+    <p>首次运行此 insert 脚本时，必须启用动态架构。启用动态架构后，移动服务在首次执行时会自动将 <b>createdAt</b> 列添加到 <b>TodoItem</b> 表。默认情况下，将为新的移动服务启用动态架构，发布应用程序之前应该禁用动态架构。</p>
+	</div>
 
-   	Notice that the new timestamp does not appear in the app UI.
+2.  在 Web 浏览器中重新加载页，在“添加新任务”中键入文本（少于 10 个字符），然后单击“添加” 。
 
-3. Back in the Management Portal, click the **Browse** tab in the **todoitem** table.
-   
-   	Notice that there is now a **createdAt** column, and the new inserted item has a timestamp value.
-  
-Next, you need to update the app to display this new column.
+    你会发现，新的时间戳并未显示在应用程序 UI 中。
 
-## <a name="update-client-timestamp"></a>Update the client again
+3.  返回管理门户，在“todoitem”表中单击“浏览”选项卡 。
 
-The Mobile Service client will ignore any data in a response that it cannot serialize into properties on the defined type. The final step is to update the client to display this new data.
+    可以看到，现在出现了一个“createdAt” 列，并且插入的新项带有一个时间戳值。
 
-1. In your editor, open the file app.js, then replace the **refreshTodoItems** function with the following code:
+接下来，需要更新应用程序以显示这个新列。
 
-		function refreshTodoItems() {
-			var query = todoItemTable.where(function () {
-                return (this.complete === false && this.createdAt !== null);
+<a name="update-client-timestamp"></a>
+## 再次更新客户端
+
+移动服务客户端将忽略响应中的、无法序列化成已定义类型上的属性的所有数据。最后一步是更新客户端以显示这些新数据。
+
+1.  在编辑器中打开 app.js 文件，将 "refreshTodoItems" 函数替换为以下代码：
+
+        function refreshTodoItems() {
+        var query = todoItemTable.where(function () {
+        return (this.complete === false && this.createdAt !== null);
             });
 
-			query.read().then(function(todoItems) {
-				var listItems = $.map(todoItems, function(item) {
-					return $('<li>')
-						.attr('data-todoitem-id', item.id)
-						.append($('<button class="item-delete">Delete</button>'))
-						.append($('<input type="checkbox" class="item-complete">')
-							.prop('checked', item.complete))
-						.append($('<div>').append($('<input class="item-text">').val(item.text))
-						.append($('<span class="timestamp">' 
-							+ (item.createdAt && item.createdAt.toDateString() + ' '
-							+ item.createdAt.toLocaleTimeString() || '') 
-							+ '</span>')));
+        query.read().then(function(todoItems) {
+        var listItems = $.map(todoItems, function(item) {
+        return $('<li>')
+        .attr('data-todoitem-id', item.id)
+        .append($('<button class="item-delete">Delete</button>'))
+        .append($('<input type="checkbox" class="item-complete">')
+        .prop('checked', item.complete))
+        .append($('<div>').append($('<input class="item-text">').val(item.text))
+        .append($('<span class="timestamp">' 
+        + (item.createdAt && item.createdAt.toDateString() + ' '
+        + item.createdAt.toLocaleTimeString() || '') 
+        + '</span>')));
 
-				});
+                });
 
-				$('#todo-items').empty().append(listItems).toggle(listItems.length > 0);
-				$('#summary').html('<strong>' + todoItems.length + '</strong> item(s)');
-			});
-		}
+        $('#todo-items').empty().append(listItems).toggle(listItems.length > 0);
+        $('#summary').html('<strong>' + todoItems.length + '</strong> item(s)');
+            });
+        }
 
-   	This displays the date part of the new **createdAt** property. 
+    这将显示新 "createdAt" 属性的日期部分。
 
-2. In your editor, open the style.css file, and replace the styles on the `item-text` class with the following:
+2.  在编辑器中打开 style.css 文件，将 `item-text` 类中的样式替换为以下代码：
 
-		.item-text { width: 70%; height: 26px; line-height: 24px; 
-			border: 1px solid transparent; background-color: transparent; }
-		.timestamp { width: 30%; height: 40px; font-size: .75em; }
+        .item-text { width:70%; height:26px; line-height:24px; 
+        border:1px solid transparent; background-color:transparent; }
+        .timestamp { width:30%; height:40px; font-size:.75em; }
 
-	This resizes the textbox and styles the new timestamp text.
-	
-6. Reload the page. 	
+    这将会调整文本框的大小，并设置新时间戳文本的样式。
 
-   	Notice that the timestamp is only displayed for items inserted after you updated the insert script.
+3.  重新加载页。
 
-7. Again in the **refreshTodoItems** function, replace the line of code that defines the query with the following:
+    可以看到，只显示了你在更新 insert 脚本后插入的项的时间戳。
+
+4.  同样在 "refreshTodoItems" 函数中，将定义查询的代码行替换为以下代码：
 
          var query = todoItemTable.where(function () {
-                return (this.complete === false && this.createdAt !== null);
+        return (this.complete === false && this.createdAt !== null);
             });
 
-   	This function updates the query to also filter out items that do not have a timestamp value.
-	
-8. Reload the page.
+    此函数将更新查询，以便同时筛选掉没有时间戳值的项。
 
-   	Notice that all items created without timestamp value disappear from the UI.
+5.  重新加载页。
 
-You have completed this working with data tutorial.
+    可以看到，创建的不带时间戳值的所有项已从 UI 中消失。
 
-## <a name="next-steps"> </a>Next steps
+现在，你已完成了这篇数据处理教程。
 
-Now that you have completed this tutorial, consider continuing on with the final tutorial in the data series: [Refine queries with paging].
+<a name="next-steps"> </a>
+## 后续步骤
 
-For more information, see [Work with server scripts] and [Mobile Services HTML/JavaScript How-to Conceptual Reference]
+现在你已完成本教程，建议你继续学习数据系列中的最后一篇教程：[使用分页优化查询][]。
 
+有关详细信息，请参阅[使用服务器脚本][]和[移动服务 HTML/JavaScript 操作方法概念性参考][]
 
-<!-- Anchors. -->
-[Add string length validation]: #string-length-validation
-[Update the client to support validation]: #update-client-validation
-[Add a timestamp on insert]: #add-timestamp
-[Update the client to display the timestamp]: #update-client-timestamp
-[Next Steps]: #next-steps
-
-<!-- Images. -->
-[0]: ./media/mobile-services-html-validate-modify-data-server-scripts/mobile-services-selection.png
-[1]: ./media/mobile-services-html-validate-modify-data-server-scripts/mobile-portal-data-tables.png
-[2]: ./media/mobile-services-html-validate-modify-data-server-scripts/mobile-insert-script-users.png
-
-
-<!-- URLs. -->
-[Work with server scripts]: /en-us/develop/mobile/how-to-guides/work-with-server-scripts
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-html
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-html
-[Refine queries with paging]: /en-us/develop/mobile/tutorials/add-paging-to-data-html
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-html
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-html
-
-[Management Portal]: https://manage.windowsazure.com/
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Mobile Services HTML/JavaScript How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-html-js-client
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-js "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-wp8 "Windows Phone"
+  [iOS]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-ios "iOS"
+  [Android]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-android "Android"
+  [HTML]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-html "HTML"
+  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android "Xamarin.Android"
+  [添加字符串长度验证]: #string-length-validation
+  [更新客户端以支持验证]: #update-client-validation
+  [在插入操作中添加时间戳]: #add-timestamp
+  [更新客户端以显示时间戳]: #update-client-timestamp
+  [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-html
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  []: ./media/mobile-services-html-validate-modify-data-server-scripts/mobile-services-selection.png
+  [1]: ./media/mobile-services-html-validate-modify-data-server-scripts/mobile-portal-data-tables.png
+  [2]: ./media/mobile-services-html-validate-modify-data-server-scripts/mobile-insert-script-users.png
+  [使用分页优化查询]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-html
+  [使用服务器脚本]: /zh-cn/develop/mobile/how-to-guides/work-with-server-scripts
+  [移动服务 HTML/JavaScript 操作方法概念性参考]: /zh-cn/develop/mobile/how-to-guides/work-with-html-js-client

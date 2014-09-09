@@ -1,224 +1,218 @@
 <properties linkid="develop-net-tutorials-push-notifications-to-users-wp8" urlDisplayName="Push Notifications to Users (WP8)" pageTitle="Push notifications to users (Windows Phone) | Mobile Dev Center" metaKeywords="" description="Learn how to use Mobile Services to push notifications to users of your Windows Phone app." metaCanonical="" services="" documentationCenter="" title="Push notifications to users by using Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
+# 使用移动服务向用户推送通知
 
-
-
-# Push notifications to users by using Mobile Services
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/push-notifications-to-users-wp8" title="Windows Phone" class="current">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/push-notifications-to-users-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/push-notifications-to-users-android" title="Android">Android</a>
+	<a href="/zh-cn/develop/mobile/tutorials/push-notifications-to-users-wp8" title="Windows Phone" class="current">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/push-notifications-to-users-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/push-notifications-to-users-android" title="Android">Android</a>
 </div>
 
+本主题是[前面的推送通知教程][]的引伸，其中添加了一个用于存储 Microsoft 推送通知服务 (MPNS) 通道 URI 的新表。然后，可以使用这些通道向 Windows Phone 8 应用程序的用户发送推送通知。
 
-This topic extends the [previous push notification tutorial][Get started with push notifications] by adding a new table to store Microsoft Push Notification Service (MPNS) channel URIs. These channels can then be used to send push notifications to users of the Windows Phone 8 app.  
+本教程将指导你完成在应用程序中更新推送通知的以下步骤：
 
-This tutorial walks you through these steps to update push notifications in your app:
+1.  [创建 Channel 表][]
+2.  [更新应用程序][]
+3.  [更新服务器脚本][]
+4.  [验证推送通知行为][]
 
-1. [Create the Channel table]
-2. [Update the app]
-3. [Update server scripts]
-4. [Verify the push notification behavior] 
+本教程是在移动服务快速入门和前面的[推送通知入门][前面的推送通知教程]教程的基础上制作的。在开始本教程之前，必须先完成[推送通知入门][前面的推送通知教程]。
 
-This tutorial is based on the Mobile Services quickstart and builds on the previous tutorial [Get started with push notifications]. Before you start this tutorial, you must first complete [Get started with push notifications].  
+<a name="create-table"></a>
+## 创建新表
 
-## <a name="create-table"></a>Create a new table
+1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app.
+    ![][]
 
-   	![][0]
+2.  单击“数据”选项卡 ，然后单击“创建” 。
 
-2. Click the **Data** tab, and then click **Create**.
+    ![][1]
 
-   	![][1]
+    此时将显示“创建新表” 对话框。
 
-   	This displays the **Create new table** dialog.
+3.  为所有权限保留默认的“具有应用程序密钥的任何人” 设置，在“表名” 中键入 *Channel*，然后单击勾选按钮。
 
-3. Keeping the default **Anybody with the application key** setting for all permissions, type _Channel_ in **Table name**, and then click the check button.
+    ![][2]
 
-   	![][2]
+    此时将会创建用于存储通道 URI 的 "Channel" 表，你可以使用这些 URI 发送不同于项数据的推送通知。
 
-  	This creates the **Channel** table, which stores the channel URIs used to send push notifications separate from item data.
+接下来，你需要修改推送通知应用程序，以便将数据存储在此新表而不是 "TodoItem" 表中。
 
-Next, you will modify the push notifications app to store data in this new table instead of in the **TodoItem** table.
+<a name="update-app"></a>
+## 更新应用程序
 
-## <a name="update-app"></a>Update your app
-
-1. In Visual Studio 2012 Express for Windows Phone, open the project from the tutorial [Get started with push notifications], open up file MainPage.xaml.cs, and remove the **Channel** property from the **TodoItem** class. It should now look like this:
+1.  在 Visual Studio 2012 Express for Windows Phone 中，打开[推送通知入门][前面的推送通知教程]教程中的项目，打开文件 MainPage.xaml.cs，并从 "TodoItem" 类中删除 "Channel" 属性。该类现在应如下所示：
 
         public class TodoItem
         {
-        	public int Id { get; set; }
+        public int Id { get; set; }
 
-	       	[JsonProperty(PropertyName = "text")]
-	        public string Text { get; set; }
-	
-	        [JsonProperty(PropertyName = "complete")]
-	        public bool Complete { get; set; }
+        [JsonProperty(PropertyName = "text")]
+        public string Text { get; set; }
+
+        [JsonProperty(PropertyName = "complete")]
+        public bool Complete { get; set; }
         }
 
-2. Replace the **ButtonSave_Click** event handler method with the original version of this method, as follows:
+2.  将 "ButtonSave\_Click" 事件处理程序方法替换为此方法的原始版本，如下所示：
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
-            var todoItem = new TodoItem { Text = TextInput.Text };
-            InsertTodoItem(todoItem);
+        var todoItem = new TodoItem { Text = TextInput.Text };
+        InsertTodoItem(todoItem);
         }
 
-3. Add the following code that creates a new **Channel** class:
+3.  添加以下用于创建新的 "Channel" 类的代码：
 
-	    public class Channel
-	    {
-	        public int Id { get; set; }
-	
-	        [JsonProperty(PropertyName = "uri")]
-	        public string Uri { get; set; }
-	    }
+        public class Channel
+        {
+        public int Id { get; set; }
 
-4. Open the file App.xaml.cs and replace **AcquirePushChannel** method with the following code:
+        [JsonProperty(PropertyName = "uri")]
+        public string Uri { get; set; }
+        }
+
+4.  打开文件 App.xaml.cs，并将 "AcquirePushChannel" 方法替换为以下代码：
 
         private void AcquirePushChannel()
         {
-            CurrentChannel = HttpNotificationChannel.Find("MyPushChannel");
+        CurrentChannel = HttpNotificationChannel.Find("MyPushChannel");
 
-            if (CurrentChannel == null)
+        if (CurrentChannel == null)
             {
-                CurrentChannel = new HttpNotificationChannel("MyPushChannel");
-                CurrentChannel.Open();
-                CurrentChannel.BindToShellTile();
+        CurrentChannel = new HttpNotificationChannel("MyPushChannel");
+        CurrentChannel.Open();
+        CurrentChannel.BindToShellTile();
             }
-                  
-           IMobileServiceTable<Channel> channelTable = App.MobileService.GetTable<Channel>();
-           var channel = new Channel { Uri = CurrentChannel.ChannelUri.ToString() };
-           channelTable.InsertAsync(channel);
+
+        IMobileServiceTable<Channel> channelTable = App.MobileService.GetTable<Channel>();
+        var channel = new Channel { Uri = CurrentChannel.ChannelUri.ToString() };
+        channelTable.InsertAsync(channel);
         }
 
-     This code inserts a channel into the Channel table.
+    此代码向 Channel 表中插入一个通道。
 
-## <a name="update-scripts"></a>Update server scripts
+<a name="update-scripts"></a>
+## 更新服务器脚本
 
-1. In the Management Portal, click the **Data** tab and then click the **Channel** table. 
+1.  在管理门户中，单击“数据” 选项卡，然后单击 "Channel" 表。
 
-   	![][3]
+    ![][3]
 
-2. In **channel**, click the **Script** tab and select **Insert**.
-   
-   	![][4]
+2.  在“通道” 中，单击“脚本” 选项卡，然后选择“插入” 。
 
-   	This displays the function that is invoked when an insert occurs in the **Channel** table.
+    ![][4]
 
-3. Replace the insert function with the following code, and then click **Save**:
+    将显示当 "Channel" 表中发生插入时所调用的函数。
 
-			function insert(item, user, request) {
-				var channelTable = tables.getTable('Channel');
-				channelTable
-					.where({ uri: item.uri })
-					.read({ success: insertChannelIfNotFound });
-		        function insertChannelIfNotFound(existingChannels) {
-	        	    if (existingChannels.length > 0) {
-	            	    request.respond(200, existingChannels[0]);
-	        	    } else {
-	            	    request.execute();
-	        	    }
-	    	    }
-		    }
+3.  将 insert 函数替换为以下代码，然后单击“保存”： 
 
-   	This script checks the **Channel** table for an existing channel with the same URI. The insert only proceeds if no matching channel was found. This prevents duplicate channel records.
+        function insert(item, user, request) {
+        var channelTable = tables.getTable('Channel');
+        channelTable
+        .where({ uri:item.uri })
+        .read({ success:insertChannelIfNotFound });
+        function insertChannelIfNotFound(existingChannels) {
+        if (existingChannels.length > 0) {
+        request.respond(200, existingChannels[0]);
+        } else {
+        request.execute();
+                    }
+                }
+            }
 
-4. Click **TodoItem**, click **Script** and select **Insert**. 
+    此脚本将检查 "Channel" 表中是否存在具有相同 URI 的现有通道。仅当未找到匹配的通道时，插入操作才会继续。这可以防止出现重复的通道记录。
 
-   	![][5]
+4.  单击“TodoItem” ，再单击“脚本”并选择“插入”。 
 
-5. Replace the insert function with the following code, and then click **Save**:
+    ![][5]
 
-	    function insert(item, user, request) {
-    	    request.execute({
-        	    success: function() {
-            	    request.respond();
-            	    sendNotifications();
-        	    }
-    	    });
+5.  将 insert 函数替换为以下代码，然后单击“保存”： 
 
-	        function sendNotifications() {
-        	    var channelTable = tables.getTable('Channel');
-        	    channelTable.read({
-            	    success: function(channels) {
-                	    channels.forEach(function(channel) {
-                    	    push.mpns.sendFlipTile(channel.uri, {
-                        	    title: item.text
-                    	    }, {
-                        	    success: function(pushResponse) {
-                            	    console.log("Sent push:", pushResponse);
-                        	    }
-                    	    });
-                	    });
-            	    }
-        	    });
-    	    }
-	    }
+        function insert(item, user, request) {
+        request.execute({
+        success:function() {
+        request.respond();
+        sendNotifications();
+                }
+            });
 
-    This insert script sends a push notification (with the text of the inserted item) to all channels stored in the **Channel** table.
+        function sendNotifications() {
+        var channelTable = tables.getTable('Channel');
+        channelTable.read({
+        success:function(channels) {
+        channels.forEach(function(channel) {
+        push.mpns.sendFlipTile(channel.uri, {
+        title:item.text
+                            }, {
+        success:function(pushResponse) {
+        console.log("Sent push:", pushResponse);
+                                }
+                            });
+                        });
+                    }
+                });
+            }
+        }
 
-## <a name="test-app"></a>Test the app
+    此插入脚本会向 "Channel" 表中存储的所有通道发送推送通知（包括已插入项的文本）。
 
-1. In Visual Studio, select **Deploy Solution** on the **Build**  menu.
+<a name="test-app"></a>
+## 测试应用程序
 
-3. Tap the tile named either **TodoList** or **hello push** to launch the app. 
+1.  在 Visual Studio 中，选择“生成” 菜单上的“部署解决方案” 。
 
-  	![][23]
+2.  点击名为 "TodoList" 或 "hello push" 的磁贴以启动应用程序。
 
-5. In the app, enter the text "hello push again" in the textbox, and then click **Save**.
+    ![][6]
 
-   	![][24]
+3.  在应用程序的文本框内输入文本“hello push again”，然后单击“保存” 。
 
-  	This sends an insert request to the mobile service to store the added item.
+    ![][7]
 
-6. Press the **Start** button to return to the start menu. 
+    此时会将一个插入请求发送到移动服务，以存储添加的项。
 
-  	![][25]
+4.  按“开始”按钮 以返回到“开始”菜单。
 
-  	Notice that the application received the push notification and that the title of the tile is now **hello push**.
+    ![][8]
 
-9. (Optional) Run the app on two devices at the same time, and repeat the previous step. 
+    请注意，应用程序已收到该推送通知，并且磁贴的标题现在是 "hello push"。
 
-    The notification is sent to all running app instances.  
+5.  （可选）同时在两个设备上运行应用程序，并重复前一步骤。
 
-## Next steps
+    通知将发送到所有正在运行的应用程序实例。
 
-This concludes the tutorials that demonstrate the basics of working with push notifications. Consider finding out more about the following Mobile Services topics:
+## 后续步骤
 
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
+演示推送通知操作基础知识的教程到此结束。建议你了解有关以下移动服务主题的详细信息：
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with Windows Account.
+-   [数据处理入门][]
+    了解有关使用移动服务存储和查询数据的详细信息。
 
-* [Mobile Services server script reference]
-  <br/>Learn more about registering and using server scripts.
+-   [身份验证入门][]
+    了解如何使用 Windows 帐户对应用程序用户进行身份验证。
 
-<!-- anchors -->
-[Create the Channel table]: #create-table
-[Update the app]: #update-app
-[Update server scripts]: #update-scripts
-[Verify the push notification behavior]: #test-app
-[Next Steps]: #next-steps
+-   [移动服务服务器脚本参考][]
+    了解有关注册和使用服务器脚本的详细信息。
 
-<!-- Images. -->
-[0]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-services-selection.png
-[1]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-create-table.png
-[2]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-create-channel-table.png
-[3]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-portal-data-tables-channel.png
-[4]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-insert-script-channel.png
-[5]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-insert-script-push2.png
-
-
-[23]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-quickstart-push4-wp8.png
-[24]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-quickstart-push5-wp8.png
-[25]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-quickstart-push6-wp8.png
-
-<!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/p/?LinkId=262293
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-wp8
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-wp8
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-wp8
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-wp8
-
-[Azure Management Portal]: https://manage.windowsazure.com/
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/push-notifications-to-users-wp8 "Windows Phone"
+  [iOS]: /zh-cn/develop/mobile/tutorials/push-notifications-to-users-ios "iOS"
+  [Android]: /zh-cn/develop/mobile/tutorials/push-notifications-to-users-android "Android"
+  [前面的推送通知教程]: /zh-cn/develop/mobile/tutorials/get-started-with-push-wp8
+  [创建 Channel 表]: #create-table
+  [更新应用程序]: #update-app
+  [更新服务器脚本]: #update-scripts
+  [验证推送通知行为]: #test-app
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  []: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-services-selection.png
+  [1]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-create-table.png
+  [2]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-create-channel-table.png
+  [3]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-portal-data-tables-channel.png
+  [4]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-insert-script-channel.png
+  [5]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-insert-script-push2.png
+  [6]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-quickstart-push4-wp8.png
+  [7]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-quickstart-push5-wp8.png
+  [8]: ./media/mobile-services-windows-phone-push-notifications-app-users/mobile-quickstart-push6-wp8.png
+  [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8
+  [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-wp8
+  [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/p/?LinkId=262293

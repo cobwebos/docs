@@ -1,54 +1,53 @@
 <properties writer="ricksal" pageTitle="Call a custom API from an Android client | Mobile Dev Center" metaKeywords="" description="Learn how to define a custom API and then call it from an Android app that uses Windows Azure Mobile Services." metaCanonical="" disqusComments="1" umbracoNaviHide="1" services="mobile-services" documentationCenter="Mobile" title="Call a custom API from the client" />
 
-# Call a custom API from the client
+# 从客户端调用自定义 API
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api" title="Windows Store C#">Windows Store C#</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-call-custom-api" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-call-custom-api" title="Windows Phone">Windows Phone</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-ios-call-custom-api" title="iOS">iOS</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-android-call-custom-api" title="Android" class="current">Android</a>
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api" title="Windows Store C#">Windows Store C#</a><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-call-custom-api" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-call-custom-api" title="Windows Phone">Windows Phone</a><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-call-custom-api" title="iOS">iOS</a><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-android-call-custom-api" title="Android" class="current">Android</a>
 </div>
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-android-call-custom-api" title=".NET backend" class="current">.NET backend</a> | <a href="/en-us/documentation/articles/mobile-services-android-call-custom-api"  title="JavaScript backend">JavaScript backend</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-android-call-custom-api" title=".NET backend" class="current">.NET backend</a> | <a href="/zh-cn/documentation/articles/mobile-services-android-call-custom-api"  title="JavaScript backend">JavaScript backend</a></div>
 
-This topic shows you how to call a custom API from an Android app. A custom API enables you to define custom endpoints that expose server functionality that does not map to an insert, update, delete, or read operation. By using a custom API, you can have more control over messaging, including reading and setting HTTP message headers and defining a message body format other than JSON.
+本主题说明如何从 Android 应用程序调用自定义 API。自定义 API 可让你定义自定义终结点，这些终结点将会公开不映射到插入、更新、删除或读取操作的服务器功能。使用自定义 API 能够以更大的力度控制消息传递，包括读取和设置 HTTP 消息标头，以及定义除 JSON 以外的消息正文格式。
 
-The custom API created in this topic enables you to send a single POST request that sets the *completed* flag to `true` for all the todo items in your mobile service's table. Without this custom API, the client would have to send individual requests to update the flag for each todo item in the table.
+使用本主题中创建的自定义 API，你可以发送单个 POST 请求，用于将移动服务表中所有 todo 项的 *completed* 标志设置为 `true`。如果没有此自定义 API，客户端必须逐个地发送请求，以更新表中每个 todo 项的该标志。
 
-You will add this functionality to the app that you created when you completed either the [Get started with Mobile Services] or the [Get started with data] tutorial. To do this, you will complete the following steps:
+需要将此功能添加到你在完成[移动服务入门][]或[数据处理入门][]教程后创建的应用程序。为此，你需要完成以下步骤：
 
-1. [Define the custom API]
-2. [Update the app to call the custom API]
-3. [Test the app] 
+1.  [定义自定义 API][]
+2.  [更新应用程序以调用自定义 API][]
+3.  [测试应用程序][]
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services]. 
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]。
 
-## <a name="define-custom-api"></a>Define the custom API
+<a name="define-custom-api"></a>
+## 定义自定义 API
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-custom-api](../includes/mobile-services-dotnet-backend-create-custom-api.md)]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-create-custom-api][]]
 
-[WACOM.INCLUDE [mobile-services-android-call-custom-api](../includes/mobile-services-android-call-custom-api.md)]
+[WACOM.INCLUDE [mobile-services-android-call-custom-api][]]
 
-## Next steps
+## 后续步骤
 
-Now that you have created a custom API and called it from your Android app, consider finding out more about the following Mobile Services topics:
+创建自定义 API 并从 Android 应用程序调用该 API 后，建议你了解有关以下移动服务主题的详细信息：
 
-* [Mobile Services server script reference]
-  <br/>Learn more about creating custom APIs.
+-   [移动服务服务器脚本参考][]
+    了解有关创建自定义 API 的详细信息。
 
-* [Store server scripts in source control]
-  <br/> Learn how to use the source control feature to more easily and securely develop and publish custom API script code.
+-   [在源代码管理中存储服务器脚本][]
+    了解如何使用源代码管理功能来更方便、更安全地开发和发布自定义 API 脚本代码。
 
-<!-- Anchors. -->
-[Define the custom API]: #define-custom-api
-[Update the app to call the custom API]: #update-app
-[Test the app]: #test-app
-[Next Steps]: #next-steps
-
-<!-- Images. -->
-
-<!-- URLs. -->
-[Mobile Services Android SDK]: http://go.microsoft.com/fwlink/p/?LinkID=280126
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[My Apps dashboard]: http://go.microsoft.com/fwlink/?LinkId=262039
-[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started/
-[Get started with data]: /en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/
-[Get started with authentication]: /en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-users/
-[Get started with push notifications]: /en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/
-
-[Store server scripts in source control]: /en-us/documentation/articles/mobile-services-store-scripts-source-control
+  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-call-custom-api "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-call-custom-api "Windows Phone"
+  [iOS]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-call-custom-api "iOS"
+  [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-call-custom-api "Android"
+  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-call-custom-api ".NET 后端"
+  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-android-call-custom-api "JavaScript 后端"
+  [移动服务入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started/
+  [数据处理入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/
+  [定义自定义 API]: #define-custom-api
+  [更新应用程序以调用自定义 API]: #update-app
+  [测试应用程序]: #test-app
+  [mobile-services-dotnet-backend-create-custom-api]: ../includes/mobile-services-dotnet-backend-create-custom-api.md
+  [mobile-services-android-call-custom-api]: ../includes/mobile-services-android-call-custom-api.md
+  [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/?LinkId=262293
+  [在源代码管理中存储服务器脚本]: /zh-cn/documentation/articles/mobile-services-store-scripts-source-control

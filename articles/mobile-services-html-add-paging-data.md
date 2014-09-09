@@ -1,85 +1,81 @@
 <properties linkid="develop-mobile-tutorials-add-paging-to-data-html" urlDisplayName="Add paging to data (HTML5)" pageTitle="Add paging to data (HTML 5) | Mobile Dev Center" metaKeywords="" description="Learn how to use paging to manage the amount of data returned to your HTML app from Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="Refine Mobile Services queries with paging" authors="glenga" solutions="" manager="" editor="" />
 
+# 使用分页优化移动服务查询
 
-
-
-# Refine Mobile Services queries with paging
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/add-paging-to-data-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-html" title="HTML" class="current">HTML</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
+	<a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-dotnet" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-android" title="Android">Android</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-html" title="HTML" class="current">HTML</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
 </div>
 
-This topic shows you how to use paging to manage the amount of data returned to your HTML app from Azure Mobile Services. In this tutorial, you will use the **Take** and **Skip** query methods on the client to request specific "pages" of data.
+本主题说明如何使用分页来管理从 Azure 移动服务返回给 HTML 应用程序的数据量。在本教程中，你将在客户端上使用 "Take" 和 "Skip" 查询方法来请求特定的数据“页”。
 
-<div class="dev-callout"><b>Note</b>
-<p>To prevent data overflow in mobile device clients, Mobile Services implements an automatic page limit, which defaults to a maximum of 50 items in a response. By specifying the page size, you can explicitly request up to 1,000 items in the response.</p>
+<div class="dev-callout"><b>说明</b>
+
+<p>为了防止移动设备客户端上发生数据溢出，移动服务实施了自动页限制，该限制默认为每个响应中最多 50 个项。通过指定页大小，你最多可以在响应中显式请求 1,000 个项。</p>
 </div>
 
-This tutorial builds on the steps and the sample app from the previous tutorial [Get started with data]. Before you begin this tutorial, you must complete at least the first tutorial in the working with data series, [Get started with data]. 
+本教程以前一教程[数据处理入门][]中的步骤和示例应用程序为基础。在开始学习本教程之前，最起码需要先完成数据处理系列中的第一篇教程，即[数据处理入门][]。
 
-1. Run one of the following command files from the **server** subfolder of the project that you modified when you completed the tutorial [Get started with data].
+1.  从你在完成教程[数据处理入门][]后修改的项目的 "server" 子文件夹中运行下列命令文件之一。
 
-	+ **launch-windows** (Windows computers) 
-	+ **launch-mac.command** (Mac OS X computers)
-	+ **launch-linux.sh** (Linux computers)
+    -   "launch-windows"（Windows 计算机）
+    -   "launch-mac.command"（Mac OS X 计算机）
+    -   "launch-linux.sh"（Linux 计算机）
 
-	<div class="dev-callout"><b>Note</b>
-		<p>On a Windows computer, type `R` when PowerShell asks you to confirm that you want to run the script. Your web browser might warn you to not run the script because it was downloaded from the internet. When this happens, you must request that the browser proceed to load the script.</p>
+	<div class="dev-callout"><b>说明</b>
+
+    <p>在 Windows 计算机上，当 PowerShell 要求你确认是否要运行脚本时，请键入“R”。你的 Web 浏览器可能会警告你不要运行该脚本，因为它是从 Internet 下载的。如果出现此警告，你必须请求浏览器继续加载该脚本。</p>
 	</div>
 
-	This starts a web server on your local computer to host the app.
+    随后将在本地计算机上启动用于托管应用程序的 Web 服务器。
 
-1. In a web browser, navigate to <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a>, then type text in **Add new task** and click **Add**.
+2.  在 Web 浏览器中，导航到 <http://localhost:8000/>，在“添加新任务”中键入文本，然后单击“添加” 。
 
-3. Repeat the previous step at least three times, so that you have more than three items stored in the TodoItem table. 
+3.  重复以上步骤至少三次，因此你将在 TodoItem 表中存储三个以上的项。
 
-2. In the app.js file, replace the definitoin of the `query` variable in the **refreshTodoItems** method with the following line code:
+4.  在 app.js 文件中，将 "refreshTodoItems" 方法中 `query` 变量的定义替换为以下代码行：
 
-       
-        var query = todoItemTable.where({ complete: false }).take(3);
+        var query = todoItemTable.where({ complete:false }).take(3);
 
-  	This query, when executed, returns the top three items that are not marked as completed.
+    执行此查询会返回未标记为已完成的前面三个项。
 
-3. Go back to the web browser and reload the page.
+5.  返回到 Web 浏览器并重新加载页。
 
-  	Notice that only the first three results from the TodoItem table are displayed. 
+    请注意，仅显示 TodoItem 表的前三个结果。
 
-4. (Optional) View the URI of the request sent to the mobile service by using message inspection software, such as browser developer tools or [Fiddler]. 
+6.  （可选）使用消息检查软件（例如浏览器开发人员工具或 [Fiddler]）来查看发送到移动服务的请求的 URI。
 
-   	Notice that the **take(3)** method was translated into the query option **$top=3** in the query URI.
+    请注意，"take(3)" 方法已转换成查询 URI 中的查询选项 "\$top=3"。
 
-5. Update the query once more with the following code:
-            
-        var query = todoItemTable.where({ complete: false }).skip(3).take(3);
+7.  使用以下代码再次更新查询：
 
-3. Go back to the web browser and reload the page.
+        var query = todoItemTable.where({ complete:false }).skip(3).take(3);
 
-   	This query skips the first three results and returns the next three after that. This is effectively the second "page" of data, where the page size is three items.
+8.  返回到 Web 浏览器并重新加载页。
 
-    <div class="dev-callout"><b>Note</b>
-    <p>This tutorial uses a simplified scenario by passing hard-coded paging values to the <strong>Take</strong> and <strong>Skip</strong> methods. In a real-world app, you can use queries similar to the above with a pager control or comparable UI to let users navigate to previous and next pages.  You can also call the  <strong>includeTotalCount</strong> method to get the total count of items available on the server, along with the paged data.</p>
-    </div>
+    此查询将跳过前三个结果，返回其后的三个结果。实际上这是数据的第二“页”，其页大小为三个项。
 
-6. (Optional) Again view the URI of the request sent to the mobile service. 
+    <div class="dev-callout"><b>*说明</b>
 
-   	Notice that the **skip(3)** method was translated into the query option **$skip=3** in the query URI.
+    <p>本教程将硬编码分页值传递给 <b>Take</b> 和 <b>Skip</b> 方法，因此使用的是简化的方案。在实际应用程序中，你可以对页导航控件或类似的 UI 使用类似于上面的查询，让用户导航到上一页和下一页。你还可以调用 <b>includeTotalCount</b> 方法，以获取服务器上的可用项总数，以及分页的数据。</p>
+	</div>
 
-## <a name="next-steps"> </a>Next Steps
+9.  （可选）再次查看发送到移动服务的请求的 URI。
 
-This concludes the set of tutorials that demonstrate the basics of working with data in Mobile Services. Next, Learn how to authenticate users of your app in [Get started with authentication]. Learn more about how to use Mobile Services with HTML/JavaScript in [Mobile Services HTML/JavaScript How-to Conceptual Reference]
+    请注意，"skip(3)" 方法已转换成查询 URI 中的查询选项 "\$skip=3"。
 
-<!-- Anchors. -->
+<a name="next-steps"> </a>
+## 后续步骤
 
-[Next Steps]:#next-steps
+演示移动服务中数据处理基础知识的系列教程到此结束。接下来，请在[身份验证入门][]中了解如何对应用程序的用户进行身份验证。请在[移动服务 HTML/JavaScript 操作方法概念性参考][]中了解有关如何将移动服务与 HTML/JavaScript 一起使用的详细信息
 
-<!-- Images. -->
-
-
-<!-- URLs. -->
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-html
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-html
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-html
-
-
-[Management Portal]: https://manage.windowsazure.com/
-[Mobile Services HTML/JavaScript How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-html-js-client
-
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-js "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-wp8 "Windows Phone"
+  [iOS]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-ios "iOS"
+  [Android]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-android "Android"
+  [HTML]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-html "HTML"
+  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-ios "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-android "Xamarin.Android"
+  [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-html
+  [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-html
+  [移动服务 HTML/JavaScript 操作方法概念性参考]: /zh-cn/develop/mobile/how-to-guides/work-with-html-js-client

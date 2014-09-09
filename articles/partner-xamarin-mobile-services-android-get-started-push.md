@@ -1,126 +1,131 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-push-xamarin-android" urlDisplayName="Get Started with Push Notifications" pageTitle="Get started with push notifications - Mobile Services" metaKeywords="" description="Learn how to use push notifications in Xamarin.Android apps with Azure Mobile Services." metaCanonical="" disqusComments="0" umbracoNaviHide="1" title="Get started with push notifications in Mobile Services" documentationCenter="Mobile" authors="" />
-# Get started with push notifications in Mobile Services
+
+# 移动服务中的推送通知入门
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/develop/mobile/tutorials/get-started-with-push-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a></div>
+<a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-android" title="Android">Android</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a></div>
 
-This topic shows you how to use Azure Mobile Services to send push notifications to a Xamarin.Android app. In this tutorial you add push notifications using the Google Cloud Messaging (GCM) service to the quickstart project. When complete, your mobile service will send a push notification each time a record is inserted.
+本主题说明如何使用 Azure 移动服务向 Xamarin.Android 应用程序发送推送通知。在本教程中，你将要使用 Google Cloud Messaging (GCM) 服务向快速入门项目添加推送通知。完成本教程后，每次插入一条记录时，你的移动服务就会发送一条推送通知。
 
-This tutorial walks you through these basic steps to enable push notifications:
+本教程将指导你完成启用推送通知的以下基本步骤：
 
-1. [Register your app for push notifications]
-2. [Configure Mobile Services]
-2. [Add push notifications to the app]
-3. [Update scripts to send push notifications]
-4. [Insert data to receive notifications]
+1.  [为推送通知注册应用程序][]
+2.  [配置移动服务][]
+3.  [向应用程序添加推送通知][]
+4.  [更新脚本以发送推送通知][]
+5.  [插入数据以接收通知][]
 
-This tutorial requires the following:
+本教程需要的内容如下：
 
-+ An active Google account
+-   有效的 Google 帐户
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services]. 
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]。
 
-<h2><a name="register"></a><span class="short-header">Register your app</span>Register your app for push notifications</h2>
+<a name="register"></a>
+## 注册应用程序为推送通知注册应用程序
 
-<div class="dev-callout"><b>Note</b>
-<p>To complete the procedure in this topic, you must have a Google account that has a verified email address. To create a new Google account, go to <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a>.</p>
-</div> 
+<div class="dev-callout"><b>说明</b>
 
-1. Navigate to the <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> web site, sign-in with your Google account credentials, and then click **Create project...**.
+<p>若要完成本主题中的过程，你必须拥有一个包含已验证电子邮件地址的 Google 帐户。若要新建一个 Google 帐户，请转至 <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a>。</p>
+</div>
 
-	![][1]   
+1.  导航到 [Google API][] 网站，使用你的 Google 帐户凭据登录，然后单击“Create project...”（创建项目...） 。
 
-	> [WACOM.NOTE]
-	> When you already have an existing project, you are directed to the **Dashboard** page after login. To create a new project from the Dashboard, expand **API Project<**, click **Create...** under **Other projects**, then enter a project name and click **Create project**.
+    ![][]
 
-2. Click the Overview button in the left column, and make a note of the Project Number in the Dashboard section. 
+    > [WACOM.NOTE]
+    > 如果你已拥有现成项目，则在登录后你将定向到“仪表板” 页。若要从仪表板新建一个项目，请展开“API 项目” ，单击“其他项目” 下面的“创建...” ，然后输入项目名称并单击“创建项目” 。
 
-	Later in the tutorial you set this value as the **PROJECT_ID** variable in the client.
+2.  单击左栏中的“概述”按钮，记下“仪表板”部分中的项目编号。
 
-3. On the <a href="http://go.microsoft.com/fwlink/p/?LinkId=268303" target="_blank">Google apis</a> page, click **Services**, then click the toogle to turn on **Google Cloud Messaging for Android** and accept the terms of service. 
+    在教程的稍后部分中，你要将此值设置为客户端中的 "PROJECT\_ID" 变量。
 
-4. Click **API Access**, and then click **Create new Server key...** 
+3.  在[Google API][] 页面上，单击“服务” ，然后单击开关以启用 "Google Cloud Messaging for Android" 并接受服务条款。
 
-	![][2]
+4.  单击"“API 访问”"，然后单击“新建服务器密钥...” 
 
-5. In **Configure Server Key for API Project**, click **Create**.
+    ![][1]
 
-	![][3]
+5.  在“为 API 项目配置服务器密钥” 中，单击“创建” 。
 
-6. Make a note of the **API key** value.
+    ![][2]
 
-	![][4] 
+6.  记下“API 密钥” 值。
 
-Next, you will use this API key value to enable Mobile Services to authenticate with GCM and send push notifications on behalf of you app.
+    ![][3]
 
-<a name="configure"></a><h2><span class="short-header">Configure the service</span>Configure Mobile Services to send push requests</h2>
+接下来，你将使用此 API 密钥值，让移动服务向 GCM 进行身份验证并代表你的应用程序发送推送通知。
 
-1. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your app.
+<a name="configure"></a>
+## 配置服务配置移动服务以发送推送请求
 
-	![][18]
+1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
 
-2. Click the **Push** tab, enter the **API Key** value obtained from GCM in the previous procedure, and then click **Save**.
+    ![][4]
 
-	![][19]
+2.  单击“推送” 选项卡，输入你在执行前一过程时从 GCM 获取的“API 密钥” 值，然后单击“保存” 。
 
-	You mobile service is now configured to work with GCM to send push notifications.
+    ![][5]
 
-<a name="add-push"></a><h2><span class="short-header">Add push notifications</span>Add push notifications to your app</h2>
+    你的移动服务现已配置为使用 GCM 发送推送通知。
 
-1. First we will want to add **PushSharp** as a reference in our project. To do this we must compile the latest version of PushSharp and add the compiled DLL as a reference to our Xamarin.Android project.
+<a name="add-push"></a>
+## 添加推送通知向应用程序添加推送通知
 
-2. Visit the [PushSharp Github page], and download the latest release. Once you've extracted the collection of files, navigate to the following sample project folder:
+1.  首先，我们要将 "PushSharp" 添加为项目中的引用。为此，我们必须编译 PushSharp 的最新版本，并且将已编译的 DLL 作为对 Xamarin.Android 项目的引用添加。
 
-	**/Client.Samples/PushSharp.ClientSample.MonoForAndroid/PushSharp.ClientSample.MonoForAndroid.Gcm/**
+2.  访问 [PushSharp Github 页][]，并下载最新版本。在提取了文件集合后，导航到以下示例项目文件夹：
 
-	.. and open the project file:
-	
-	**  PushSharp.ClientSample.MonoForAndroid.Gcm.csproj **
+    "/Client.Samples/PushSharp.ClientSample.MonoForAndroid/PushSharp.ClientSample.MonoForAndroid.Gcm/"
 
-3. Build the MonoForAndroid PushSharp client sample in **Release** mode.
+    .. 然后，打开项目文件：
 
-4. Create an **_external** folder in your Xamarin.Android project folder
+    \*\* PushSharp.ClientSample.MonoForAndroid.Gcm.csproj \*\*
 
-5. Copy the following file from the MonoForAndroid PushSharp client sample to the newly created **_external** folder in your Xamarin.Android project folder:
+3.  在“版本” 模式下生成 MonoForAndroid PushSharp 客户端示例。
 
-	 **\bin\Release\PushSharp.Client.MonoForAndroid.dll**
+4.  在 Xamarin.Android 项目文件夹中创建 \*\*\_external\*\* 文件夹
 
-6. Open your Xamarin.Android project in Xamarin Studio (or Visual Studio). 
+5.  将 MonoForAndroid PushSharp 客户端示例中的以下文件复制到 Xamarin.Android 项目文件夹中新创建的 \*\*\_external\*\* 文件夹：
 
-7. Right click the project **References** folder, and choose **Edit References...**
+    "\\bin\\Release\\PushSharp.Client.MonoForAndroid.dll"
 
-8. Go to the **.Net Assembly** tab, browse to your project's **_external** folder, select the **PushSharp.Client.MonoForAndroid.dll** we built earlier and click **Add**. Click OK to close the dialog. 
+6.  在 Xamarin Studio（或者 Visual Studio）中打开你的 Xamarin.Android 项目。
 
-9. Open **Constants.cs** and add the following line, replacing **PROJECT\_ID** with the Google Project_ID you noted earlier:
+7.  右键单击项目 "References" 文件夹，然后选择“编辑引用…” 
 
-		public const string SenderID = "PROJECT_ID"; // Google API Project Number
+8.  转到“.Net 程序集” 选项卡，浏览到你的项目的 \*\*\_external\*\* 文件夹，选择我们之前生成的 "PushSharp.Client.MonoForAndroid.dll"，然后单击“添加” 。单击“确定”以关闭该对话框。
 
-10. Copy the file **PushService.cs** from the MonoForAndroid PushSharp client sample to your Xamarin.Android project folder and add it to your project.
+9.  打开 "Constants.cs" 并添加以下行，将 "PROJECT\_ID" 替换为你之前记下的 Google Project\_ID：
 
-11. Change the namespace used in **PushService.cs** to match your project's namespace (ex: XamarinTodoQuickStart).
+        public const string SenderID = "PROJECT_ID"; // Google API Project Number
 
-12. Change the **SENDER_IDS** array in **PushService.cs** to reference the **SenderID** Constant we created above:
+10. 从 MonoForAndroid PushSharp 客户端示例将文件 "PushService.cs" 复制到 Xamarin.Android 项目文件夹，并将其添加到你的项目。
 
-		public static string[] SENDER_IDS = new string[] { Constants.SenderID };
-		
-13. Add a new static property to the **PushHandlerService** in **PushService.cs** to keep track of our device registration ID:
+11. 更改 "PushService.cs" 中使用的命名空间，使之匹配你的项目的命名空间（例如：XamarinTodoQuickStart）。
 
-		public static string RegistrationID { get; private set; }
-		
-14. Update the **OnRegistered** method in **PushService.cs** to store the received registration id to our local static variable:
+12. 更改 "PushService.cs" 中的 "SENDER\_IDS" 数组，以引用我们上面创建的 "SenderID" 常量：
 
-		protected override void OnRegistered(Context context, string registrationId)
-		{
-			Log.Verbose(PushHandlerBroadcastReceiver.TAG, "GCM Registered: " + registrationId);
-            RegistrationID = registrationId;
-		}
+        public static string[] SENDER_IDS = new string[] { Constants.SenderID };
 
-15. Update the **OnMessage** method in **PushService.cs** to display the push message received as part of the notification (replace the existing **createNotification** call):
+13. 将一个新的静态属性添加到 "PushService.cs" 中的 "PushHandlerService"，以跟踪设备注册 ID：
+
+        public static string RegistrationID { get; private set; }
+
+14. 更新 "PushService.cs" 中的 "OnRegistered" 方法，以将收到的注册 ID 存储到本地的静态变量：
+
+        protected override void OnRegistered(Context context, string registrationId)
+        {
+        Log.Verbose(PushHandlerBroadcastReceiver.TAG, "GCM Registered:" + registrationId);
+        RegistrationID = registrationId;
+        }
+
+15. 更新 "PushService.cs" 中的 "OnMessage" 方法，以显示作为通知的一部分收到的推送消息（替换现有的 "createNotification" 调用）：
 
         string message = intent.Extras.GetString("message");
-        createNotification("New todo item!", "Todo item: " + message);
-       
-16. Take note that the **OnMessage** method has the following code by default to store off the last push message received:
+        createNotification("New todo item!", "Todo item:" + message);
+
+16. 请注意，"OnMessage" 方法在默认情况下具有以下代码，以保存收到的最后一条推送消息：
 
         //Store the message
         var prefs = GetSharedPreferences(context.PackageName, FileCreationMode.Private);
@@ -128,14 +133,14 @@ Next, you will use this API key value to enable Mobile Services to authenticate 
         edit.PutString("last_msg", msg.ToString());
         edit.Commit();
 
-17. Update the **createNotification** method in **PushService.cs** to reference **TodoActivity** instead of **DefaultActivity**.
+17. 更新 "PushService.cs" 中的 "createNotification" 方法，以引用 "TodoActivity" 而非 "DefaultActivity"。
 
-18. Open **TodoActivity.cs** and add the following using statement:
+18. 打开 "TodoActivity.cs" 并添加以下 using 语句：
 
         using PushSharp.Client;
 
-19. In **TodoActivity.cs** insert the following lines just above where the **MobileServiceClient** is created:
-	
+19. 在 "TodoActivity.cs" 中，在创建 "MobileServiceClient" 的位置上面插入以下行：
+
         // Check to ensure everything's setup right
         PushClient.CheckDevice(this);
         PushClient.CheckManifest(this);
@@ -144,110 +149,100 @@ Next, you will use this API key value to enable Mobile Services to authenticate 
         System.Diagnostics.Debug.WriteLine("Registering...");
         PushClient.Register(this, PushHandlerBroadcastReceiver.SENDER_IDS);
 
-20. Open **TodoItem.cs** and add a new field to keep track of the registered device id for the person who added the TodoItem:
+20. 打开 "TodoItem.cs" 并添加一个新字段以跟踪添加 TodoItem 的人员的已注册设备 ID：
 
         [DataMember(Name = "channel")]
         public string RegistrationId { get; set; }
 
-21. In **TodoActivity.cs** update the **AddItem** method to set the **RegistrationID** of the newly added **TodoItem** to the device's registration ID receieved during registration:
+21. 在 "TodoActivity.cs" 中更新 "AddItem" 方法，以将新添加的 "TodoItem" 的 "RegistrationID" 设为在注册过程中收到的设备注册 ID：
 
-		// Create a new item
-		var item = new TodoItem() {
-			Text = textNewTodo.Text,
-			Complete = false,
-            RegistrationId = PushHandlerService.RegistrationID
-		};
+        // Create a new item
+        var item = new TodoItem() {
+        Text = textNewTodo.Text,
+        Complete = false,
+        RegistrationId = PushHandlerService.RegistrationID
+        };
 
-Your app is now updated to support push notifications.
+你的应用程序现已更新，可支持推送通知。
 
-<h2><a name="update-scripts"></a><span class="short-header">Update the insert script</span>Update the registered insert script in the Management Portal</h2>
+<a name="update-scripts"></a>
+## 更新插入脚本在管理门户中更新注册的插入脚本
 
-1. In the Management Portal, click the **Data** tab and then click the **TodoItem** table. 
+1.  在管理门户中，单击“数据”选项卡，然后单击“TodoItem”表 。
 
-	![][21]
+    ![][6]
 
-2. In **TodoItem**, click the **Script** tab and select **Insert**.
-   
-  	![][22]
+2.  在“TodoItem” 中，单击“脚本” 选项卡，然后选择“插入” 。
 
-	This displays the function that is invoked when an insert occurs in the **TodoItem** table.
+    ![][7]
 
-3. Replace the insert function with the following code, and then click **Save**:
+    将显示当 "TodoItem" 表中发生插入时所调用的函数。
 
-		function insert(item, user, request) {
-			request.execute({
-				success: function() {
-					// Write to the response and then send the notification in the background
-					request.respond();
-					push.gcm.send(item.channel, item.text, {
-						success: function(response) {
-							console.log('Push notification sent: ', response);
-						}, error: function(error) {
-							console.log('Error sending push notification: ', error);
-						}
-					});
-				}
-			});
-		}
+3.  将 insert 函数替换为以下代码，然后单击“保存”： 
 
-   This registers a new insert script, which uses the [gcm object] to send a push notification (the inserted text) to the device provided in the insert request. 
+        function insert(item, user, request) {
+        request.execute({
+        success:function() {
+        // Write to the response and then send the notification in the background
+        request.respond();
+        push.gcm.send(item.channel, item.text, {
+        success:function(response) {
+        console.log('Push notification sent:', response);
+        }, error:function(error) {
+        console.log('Error sending push notification:', error);
+                        }
+                    });
+                }
+            });
+        }
 
-<h2><a name="test"></a><span class="short-header">Test the app</span>Test push notifications in your app</h2>
+这将会注册一个新的插入脚本，该脚本使用 [GCM 对象][]将推送通知（插入的文本）发送到插入请求中提供的设备。
 
-1. Run the app and add a new Todo item. Ensure that you receive a push notification about the new Todo item being added.
+<a name="test"></a>
+## 测试应用程序在应用程序中测试推送通知
 
-2. Review the **Logs** tab of your mobile app in the Azure management portal to see the logging messages we added to the **Insert** method on the **TodoItem** table above.
+1.  运行应用程序并添加一个新的 Todo 项目。确保你收到有关所添加的新 Todo 项目的推送通知。
 
-3. Look at the **TodoItem** table in the Azure management portal to see the new **channel** column that was added and contains unique device registration identifiers.
+2.  在 Azure 管理门户中复查你的移动应用程序的“日志” 选项卡，以查看我们添加到 "Insert" 方法的日志记录消息是否在上面的 "TodoItem" 表中。
 
-You have successfully completed this tutorial.
+3.  查看 Azure 管理门户中的 "TodoItem" 表，以了解新的“通道” 列是否已添加并包含唯一的设备注册标识符。
 
-## Get completed example
-Download the [completed example project]. Be sure to update the **ApplicationURL**, **ApplicationKey**, and **SenderID** variables with your own Azure settings. 
+你已成功完成本教程。
 
-## <a name="next-steps"> </a>Next steps
+## 获取已完成的示例
 
-In this simple example a user receives a push notification with the data that was just inserted. In the next tutorial, [Push notifications to app users], you will create a separate Devices table in which to store device tokens and send a push notification out to all stored channels when an insert occurs. 
+下载[已完成的示例项目][]。请务必使用你自己的 Azure 设置更新 "ApplicationURL"、"ApplicationKey" 和 "SenderID" 变量。
 
-<!-- Anchors. -->
-[Register your app for push notifications]: #register
-[Configure Mobile Services]: #configure
-[Update scripts to send push notifications]: #update-scripts
-[Add push notifications to the app]: #add-push
-[Insert data to receive notifications]: #test
-[Next Steps]:#next-steps
+<a name="next-steps"> </a>
+## 后续步骤
 
-<!-- Images. -->
-[1]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-developers.png
-[2]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-create-server.png
-[3]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-create-server2.png
-[4]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-create-server3.png
-[18]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-selection.png
-[19]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-push-tab-android.png
-[21]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-portal-data-tables.png
-[22]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-insert-script-push2.png
+在这个简单的示例中，用户将会收到包含刚刚插入的数据的推送通知。在下一教程[向应用程序用户推送通知][]中，你将要创建一个单独的 Devices 表，该表用于存储设备标记，以及在发生插入操作时向所有存储的通道发出推送通知。
 
-
-
-
-
-
-
-<!-- URLs. TODO:: update 'Download the Android app project' download link, 'GitHub', completed project, etc. -->
-[Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
-[Android Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
-[Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-xamarin-android
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android
-[Push notifications to app users]: /en-us/develop/mobile/tutorials/push-notifications-to-users-android
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
-
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Mobile Services Xamarin conceptual]: /en-us/develop/mobile/how-to-guides/work-with-xamarin-client-library
-[gcm object]: http://go.microsoft.com/fwlink/p/?LinkId=282645
-[completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331303
-[PushSharp Github page]: https://github.com/Redth/PushSharp
-
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-push-js "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-push-wp8 "Windows Phone"
+  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-ios "iOS"
+  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-android "Android"
+  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android "Xamarin.Android"
+  [为推送通知注册应用程序]: #register
+  [配置移动服务]: #configure
+  [向应用程序添加推送通知]: #add-push
+  [更新脚本以发送推送通知]: #update-scripts
+  [插入数据以接收通知]: #test
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-android
+  [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
+  [Google API]: http://go.microsoft.com/fwlink/p/?LinkId=268303
+  []: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-developers.png
+  [1]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-create-server.png
+  [2]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-create-server2.png
+  [3]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-create-server3.png
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  [4]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-selection.png
+  [5]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-push-tab-android.png
+  [PushSharp Github 页]: https://github.com/Redth/PushSharp
+  [6]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-portal-data-tables.png
+  [7]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-insert-script-push2.png
+  [GCM 对象]: http://go.microsoft.com/fwlink/p/?LinkId=282645
+  [已完成的示例项目]: http://go.microsoft.com/fwlink/p/?LinkId=331303
+  [向应用程序用户推送通知]: /zh-cn/develop/mobile/tutorials/push-notifications-to-users-android

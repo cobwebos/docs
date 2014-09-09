@@ -1,195 +1,188 @@
 <properties linkid="develop-mobile-tutorials-store-scripts-in-source-control" urlDisplayName="Store server scripts in source control" pageTitle="Store server scripts in source control - Azure Mobile Services" metaKeywords="" description="Learn how to store your server script files and modules in a local Git repo on your computer." metaCanonical="" services="" documentationCenter="Mobile" title="Store server scripts in source control" authors="glenga" solutions="" manager="" editor="" />
 
+# 在源代码管理中存储服务器脚本
 
-# Store server scripts in source control
+本主题说明如何在 Azure 移动服务中首次设置源代码管理，以便在 Git 存储库中存储服务器脚本。可将脚本和其他 JavaScript 代码文件从本地存储库提升到生产移动服务。另外，本主题还说明了如何定义可在多个脚本之间使用的共享代码，以及如何上载 Node.js 模块。
 
-This topic shows you how to set up source control for the first time in Azure Mobile Services to store your server scripts in a Git repository. Scripts and other JavaScript code files can be promoted from your local repository to your production mobile service. It also shows how to define shared code that can be reqiured by multiple scripts and how to upload Node.js modules. 
+本教程将指导你完成以下步骤：
 
-The tutorial guides you through the following steps:
+1.  [在移动服务中启用源代码管理][]。
+2.  [安装 Git 并创建本地存储库][]。
+3.  [将更新的脚本文件部署到移动服务][]。
+4.  [在服务器脚本中利用共享代码和 Node.js 模块][]。
 
-1. [Enable source control in your mobile service].
-2. [Install Git and create the local repository].
-3. [Deploy updated script files to your mobile service].
-4. [Leverage shared code and Node.js modules in your server scripts].
+若要完成本教程，你必须事先参考[移动服务入门][]或[数据处理入门][]教程创建一个移动服务。
 
-To complete this tutorial, you must have already created a mobile service by completing either the [Get started with Mobile Services] or the [Get started with data] tutorial.
+## 启用源代码管理在移动服务中启用源代码管理
 
-<h2><a name="enable-source-control"></a><span class="short-header">Enable source control</span>Enable source control in your mobile service</h2>
+1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的移动服务 。
 
-1. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your mobile service.
+    ![][]
 
-	![][0]
+2.  单击“仪表板”选项卡，在“速览”下单击“设置源代码管理”，然后单击“是”进行确认 。
 
-2. Click the **Dashboard** tab, then under **Quick glance**, click **Set up source control**, and click **Yes** to confirm.
+    ![][1]
 
-	![][1]
+    > [WACOM.NOTE]
+    > 源代码管理是一项预览功能。尽管你的脚本文件存储在移动服务中，但我们还是建议你定期备份这些文件。
 
-	> [WACOM.NOTE]
-	> Source control is a preview feature. We recommend that you backup your script files regulary, even though they are stored in Mobile Services.
+3.  输入“用户名”和“新密码”，确认密码，然后单击勾选按钮 。
 
-3. Supply a **User name**, **New password**, confirm the password, then click the check button. 
+    ![][2]
 
-	![][2]
+    随后将在你的移动服务中创建 Git 存储库。记下你刚刚提供的凭据，访问此存储库时需要使用这些凭据。
 
-	The Git repository is created in your mobile service. Make a note of the credentials you just supplied; you will use them to access this repository.
+4.  单击“配置”选项卡并留意新的“源代码管理”字段 。
 
-4. Click the Configure tab and notice the new **Source control** fields.
+    ![][3]
 
-	![][3]
+    其中显示了 Git 存储库的 URL。稍后你要使用此 URL 将该存储库克隆到本地计算机。
 
-	The URL of the Git repository is displayed. You will use this URL to clone the repository to your local computer.
+在移动服务中启用源代码管理后，你便可以使用 Git 将存储库克隆到本地计算机。
 
-Now that you have enabled source control in your mobile service, it's time to use Git to clone the repo to your local computer.
+<a name="clone-repo"></a>
+## 克隆存储库安装 Git 并创建本地存储库
 
-<h2><a name="clone-repo"></a><span class="short-header">Clone the repo</span>Install Git and create the local repository</h2>
+1.  在本地计算机上安装 Git。
 
-1. Install Git on your local computer. 
+    安装 Git 需要执行的步骤根据操作系统的不同而异。有关操作系统特定的分发包和安装指导，请参阅[安装 Git][]。
 
-	The steps required to install Git vary between operating systems. See [Installing Git] for operating system specific distributions and installation guidance.
+    > [WACOM.NOTE]
+    > 在某些操作系统上，同时提供了命令行和 GUI 版本的 Git。本文中提供的说明使用命令行版本。
 
-	> [WACOM.NOTE]
-	> On some operating systems, both a command-line and GUI version of Git are available. The instructions provided in this article use the command-line version.
+2.  打开一个命令行，例如 "GitBash" (Windows) 或 "Bash" (Unix Shell)。在 OS X 系统上，可以通过 "Terminal" 应用程序访问命令行。
 
-2. Open a command-line, such as **GitBash** (Windows) or **Bash** (Unix Shell). On OS X systems you can access the command-line through the **Terminal** application.
+3.  在命令行中，切换到要在其中存储脚本的目录。例如 `cd SourceControl`。
 
-3. From the command line, change to the directory where you will store your scripts. For example, `cd SourceControl`.
+4.  使用以下命令创建新 Git 存储库的本地副本，并将 `<your_git_URL>` 替换为移动服务的 Git 存储库的 URL：
 
-4. Use the following command to create a local copy of your new Git repository, replacing `<your_git_URL>` with the URL of the Git repository for your mobile service:
+        git clone <your_git_URL>
 
-		git clone <your_git_URL>
+5.  出现提示时，请键入你在移动服务中启用源代码管理时设置的用户名和密码。身份验证成功后，你将看到类似于下面的一系列响应：
 
-5. When prompted, type in the user name and password that you set when you enabled source control in your mobile service. After successful authentication, you will see a series of responses like this:
+        remote:Counting objects:8, done.
+        remote:Compressing objects:100% (4/4), done.
+        remote:Total 8 (delta 1), reused 0 (delta 0)
+        Unpacking objects:100% (8/8), done.
 
-		remote: Counting objects: 8, done.
-		remote: Compressing objects: 100% (4/4), done.
-		remote: Total 8 (delta 1), reused 0 (delta 0)
-		Unpacking objects: 100% (8/8), done.
+6.  浏览到你从中运行了 `git clone` 命令的目录，并留意以下目录结构：
 
-6. Browse to the directory from which you ran the `git clone` command, and notice the following directory structure:
+    ![4][]
 
-	![4][4]
+    此时已创建了一个使用移动服务名称的新目录，它也就是数据服务的本地存储库。
 
-	In this case, a new directory is created with the name of the mobile service, which is the local repository for the data service. 
+7.  打开 .\\service\\table 子文件夹，可以看到，它包含一个 TodoItem.json 文件，该文件是对 TodoItem 表的操作权限的 JSON 表示形式。
 
-7. Open the .\service\table subfolder and notice that it contains a TodoItem.json file, which is a JSON representation of the operation permissions on the TodoItem table. 
+    如果在此表中定义了服务器脚本，则还会出现一个或多个名为 `TodoItem.<操作>.js` 的文件，其中包含给定表操作的脚本。计划程序和自定义 API 脚本保留在与其名称相对应的不同文件夹中。有关详细信息，请参阅[源代码管理][]。
 
-	When server scripts have been defined on this table, you will also have one or more files named <code>TodoItem._&lt;operation&gt;_.js</code> that contain the scripts for the given table operation. Scheduler and custom API scripts are maintained in separate folders with those respective names. For more information, see [Source control].
+创建本地存储库后，你可以更改服务器脚本，以及将更改推送回到移动服务。
 
-Now that you have created your local repository, you can make changes to server scripts and push the changes back to the mobile service.
+<a name="deploy-scripts"></a>
+## 部署脚本将更新的脚本文件部署到移动服务
 
-<h2><a name="deploy-scripts"></a><span class="short-header">Deploy scripts</span>Deploy updated script files to your mobile service</h2>
+1.  浏览到 .\\service\\table 子文件夹，如果 todoitem.insert.js 文件不存在，现在请创建该文件。
 
-1. Browse to the .\service\table subfolder, and if a file todoitem.insert.js files doesn't already exist, create it now.
+2.  在文本编辑器中打开新文件 todoitem.insert.js 并在其中粘贴以下代码，然后保存更改：
 
-2. Open the new file todoitem.insert.js in a text editor and paste in the following code and save your changes:
+        function insert(item, user, request) {
+        request.execute();
+        console.log(item);
+        }
 
-		function insert(item, user, request) {
-		    request.execute();
-		    console.log(item);
-		}
-	
-	This code simply writes the inserted item to the log. If this file already contains code, simply add some valid JavaScript code to this file, such as a call to `console.log()`, then save your changes. 
+    此代码只是将插入的项写入日志。如果此文件已包含代码，则你只需在此文件中添加一些有效的 JavaScript 代码（例如，对 `console.log()` 的调用），然后保存更改。
 
-3. In the Git command prompt, type the following command to start tracking the new script file:
+3.  在 Git 命令提示符下，键入以下命令以开始跟踪新脚本文件：
 
-		$ git add .
-	
+        $ git add .
 
-4. Type the following command to commit changes:
+4.  键入以下命令以提交更改：
 
-		$ git commit -m "updated the insert script"
+        $ git commit -m "updated the insert script"
 
-5. Type the following command to upload the changes to the remote repository:
+5.  键入以下命令以将更改上载到远程存储库：
 
-		$ git push origin master
-	
-	You should see a series of commands that indicates that the commit is deployed to the mobile service.
+        $ git push origin master
 
-6. Back in the Management Portal, click the **Data** tab, then click the **TodoItem** table.
+    你应该会看到一系列命令，指出已将提交的内容部署到移动服务。
 
-	![][5]
+6.  返回管理门户，单击“数据” 选项卡，然后单击“TodoItem”表 。
 
-3. Click **Script**, then select the **Insert** operation.
+    ![][5]
 
-	![][6]
+7.  单击“脚本”，然后选择“插入”操作 。
 
-	Notice that the displayed insert operation script is the same as the JavaScript code that you just uploaded to the repository.
+    ![][6]
 
-<h2><a name="use-npm"></a><span class="short-header">Shared code and modules</span>Leverage shared code and Node.js modules in your server scripts</h2>
-Mobile Services provides access to the full set of core Node.js modules, which you can use in your code by using the **require** function. Your mobile service can also use Node.js modules that are not part of the core Node.js package, and you can even define your own shared code as Node.js modules. For more information about creating modules, see [Modules][Node.js API Documentation: Modules] in the Node.js API reference documentation.
+    可以看到，显示的插入操作脚本与你刚刚上载到存储库的 JavaScript 代码相同。
 
-Next, you will add the [node-uuid] Node.js module to your mobile service by using source control and the Node.js package manager (NPM). This module is then used to generate a new GUID value for the **uuid** property on inserted items. 
+<a name="use-npm"></a>
+## 共享代码和模块在服务器脚本中利用共享代码和 Node.js 模块
 
-1. If you haven't already done so, install Node.js on your local computer by following the steps at the <a href="http://nodejs.org/" target="_blank">Node.js web site</a>. 
+移动服务允许你访问整个核心 Node.js 模块集，你可以通过 "require" 函数在代码中使用这些模块。移动服务还可使用不属于核心 Node.js 程序包的 Node.js 模块，你甚至可以定义自己的共享代码作为 Node.js 模块。有关创建模块的详细信息，请参阅 Node.js API 参考文档中的[模块][]。
 
-2. Navigate to the `.\service` folder of your local Git repository, then from the command prompt run the following command:
+接下来，你将要使用源代码管理和 Node.js 程序包管理器 (NPM) 将 [node-uuid][] Node.js 模块添加到移动服务。然后，你可以使用此模块为已插入项的 "uuid" 属性生成新的 GUID 值。
 
-		npm install node-uuid
+1.  遵照 [Node.js 网站][]中的步骤在本地计算机上安装 Node.js（如果尚未这么做）。
 
-	NPM creates the `node_modules` directory in the current location and installs the [node-uuid] module in the `\node-uuid` subdirectory. 
+2.  导航到本地 Git 存储库的 `.\service` 文件夹，然后在命令提示符下运行以下命令：
 
-	<div class="dev-callout">
-	<strong>Note</strong>
-	<p>When <code>node_modules</code> already exists in the directory hierarchy, NPM will create the <code>\node-uuid</code> subdirectory there instead of creating a new <code>node_modules</code> in the repository. In this case, just delete the existing <code>node_modules</code> directory.</p>
+        npm install node-uuid
+
+    NPM 将在当前位置创建 `node_modules` 目录，并在 `\node-uuid` 子目录中安装 [node-uuid][] 模块。
+
+	<div class="dev-callout"><b>说明</b>
+
+    <p>如果 `node_modules` 已在目录层次结构中存在，NPM 将在该目录中创建 `\node-uuid` 子目录，而不是在存储库中创建新的 `node_modules`。在此情况下，你只需删除现有的 `node_modules` 目录。</p>
 	</div>
 
-4. Now browse to the .\service\table subfolder, open the todoitem.insert.js file and modify it as follows:
+3.  现在，请浏览到 .\\service\\table 子文件夹，打开 todoitem.insert.js 文件并按如下所示修改该文件：
 
-		function insert(item, user, request) {
-		    var uuid = require('node-uuid');
-		    item.uuid = uuid.v1();
-		    request.execute();
-		    console.log(item);
-		}
+        function insert(item, user, request) {
+        var uuid = require('node-uuid');
+        item.uuid = uuid.v1();
+        request.execute();
+        console.log(item);
+        }
 
-	This code adds a uuid column to the table, populating it with unique GUID identifiers.
+    此代码将在表中添加一个 uuid 列，并使用唯一的 GUID 标识符填充该列。
 
-5. As in the previous section, type the following command in the Git command prompt: 
+4.  像在前一部分中一样，在 Git 命令提示符下键入以下命令：
 
-		$ git add .
-		$ git commit -m "added node-uuid module"
-		$ git push origin master
-		
-	This adds the new file, commits your changes, and pushes the new node-uuid module and changes to the todoitem.insert.js script to your mobile service.
+        $ git add .
+        $ git commit -m "added node-uuid module"
+        $ git push origin master
 
-## <a name="next-steps"> </a>Next steps
+    这样就会添加新的文件，提交你的更改，并将新的 node-uuid 模块以及对 todoitem.insert.js 脚本所做的更改推送到你的移动服务。
 
-Now that you have completed this tutorial you know how to store your scripts in source control. Consider learning more about working with server scripts and with custom APIs: 
+<a name="next-steps"> </a>
+## 后续步骤
 
-+ [Work with server scripts in Mobile Services]
-	<br/>Shows how to work with server scripts, job scheduler, and custom APIs.
+完成本教程后，你便知道了如何在源代码管理中存储脚本。我们建议你了解有关如何使用服务器脚本和自定义 API 的详细信息：
 
-+ [Define a custom API that supports pull notifications] 
-	<br/> Shows how to use custom APIs to support periodic notifications that update live tiles in a Windows Store app.
+-   [在移动服务中使用服务器脚本][]
+    说明如何使用服务器脚本、作业计划程序和自定义 API。
 
-<!-- Anchors. -->
-[Enable source control in your mobile service]: #enable-source-control
-[Install Git and create the local repository]: #clone-repo
-[Deploy updated script files to your mobile service]: #deploy-scripts
-[Leverage shared code and Node.js modules in your server scripts]: #use-npm
+-   [定义支持拉取式通知的自定义 API][]
+     说明如何使用自定义 API 来支持可在 Windows 应用商店应用程序中更新动态磁贴的定期通知。
 
-<!-- Images. -->
-[0]: ./media/mobile-services-store-scripts-source-control/mobile-services-selection.png
-[1]: ./media/mobile-services-store-scripts-source-control/mobile-setup-source-control.png
-[2]: ./media/mobile-services-store-scripts-source-control/mobile-source-control-credentials.png
-[3]: ./media/mobile-services-store-scripts-source-control/mobile-source-control-configure.png
-[4]: ./media/mobile-services-store-scripts-source-control/mobile-source-local-repo.png
-[5]: ./media/mobile-services-store-scripts-source-control/mobile-portal-data-tables.png
-[6]: ./media/mobile-services-store-scripts-source-control/mobile-insert-script-source-control.png
-
-<!-- URLs. -->
-[Git website]: http://git-scm.com
-[Source control]: http://msdn.microsoft.com/en-us/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
-[Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-dotnet
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-dotnet
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-dotnet
-[Work with server scripts in Mobile Services]: /en-us/develop/mobile/how-to-guides/work-with-server-scripts
-[JavaScript and HTML]: /en-us/develop/mobile/tutorials/get-started-with-users-js
-[WindowsAzure.com]: http://www.windowsazure.com/
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Define a custom API that supports pull notifications]: /en-us/develop/mobile/tutorials/create-pull-notifications-dotnet
-[Node.js API Documentation: Modules]: http://nodejs.org/api/modules.html
-[node-uuid]: https://npmjs.org/package/node-uuid
+  [在移动服务中启用源代码管理]: #enable-source-control
+  [安装 Git 并创建本地存储库]: #clone-repo
+  [将更新的脚本文件部署到移动服务]: #deploy-scripts
+  [在服务器脚本中利用共享代码和 Node.js 模块]: #use-npm
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started
+  [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  []: ./media/mobile-services-store-scripts-source-control/mobile-services-selection.png
+  [1]: ./media/mobile-services-store-scripts-source-control/mobile-setup-source-control.png
+  [2]: ./media/mobile-services-store-scripts-source-control/mobile-source-control-credentials.png
+  [3]: ./media/mobile-services-store-scripts-source-control/mobile-source-control-configure.png
+  [安装 Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+  [4]: ./media/mobile-services-store-scripts-source-control/mobile-source-local-repo.png
+  [源代码管理]: http://msdn.microsoft.com/zh-cn/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
+  [5]: ./media/mobile-services-store-scripts-source-control/mobile-portal-data-tables.png
+  [6]: ./media/mobile-services-store-scripts-source-control/mobile-insert-script-source-control.png
+  [模块]: http://nodejs.org/api/modules.html
+  [node-uuid]: https://npmjs.org/package/node-uuid
+  [Node.js 网站]: http://nodejs.org/
+  [在移动服务中使用服务器脚本]: /zh-cn/develop/mobile/how-to-guides/work-with-server-scripts
+  [定义支持拉取式通知的自定义 API]: /zh-cn/develop/mobile/tutorials/create-pull-notifications-dotnet

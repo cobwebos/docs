@@ -1,490 +1,513 @@
 <properties linkid="mobile-services-how-to-xamarin-client" urlDisplayName="Xamarin" pageTitle="How to use the Xamarin Component client - Azure Mobile Services feature guide" metaKeywords="Azure Mobile Services, Xamarin, iOS, Android, .NET client" description="Learn how to use the Xamarin Component client for Azure Mobile Services." metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="How to use the Xamarin Component client for Azure Mobile Services" authors="" />
 
-# How to use the Xamarin Component client for Azure Mobile Services
+# 如何使用适用于 Azure 移动服务的 Xamarin 组件客户端
 
 <div class="dev-center-tutorial-selector sublanding"> 
-  <a href="/en-us/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework">.NET Framework</a>
-  	<a href="/en-us/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript">HTML/JavaScript</a><a href="/en-us/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS">iOS</a><a href="/en-us/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android">Android</a><a href="/en-us/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin" class="current">Xamarin</a>
+  <a href="/zh-cn/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework">.NET Framework</a>
+  	<a href="/zh-cn/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript">HTML/JavaScript</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android">Android</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin" class="current">Xamarin</a>
 </div>
 
+本指南演示如何在用于 iOS 和 Android 的 Xamarin 应用程序中使用针对 Azure 移动服务的 Xamarin 组件客户端来执行常见任务。所述的任务包括：查询数据，插入、更新和删除数据，对用户进行身份验证和处理错误。如果你是第一次使用移动服务，最好先完成“移动服务快速入门”教程 ([Xamarin.iOS][]/[Xamarin.Android][]) 以及“.NET 中的数据处理入门”教程 ([Xamarin.iOS][1]/[Xamarin.Android][2])。快速入门教程要求安装 [Xamarin][3]（即[移动服务 SDK][]），它可帮助你配置帐户并创建第一个移动服务。
 
-This guide shows you how to perform common scenarios using the Xamarin Component client for Azure Mobile Services, in Xamarin apps for iOS and Android. The scenarios covered include querying for data, inserting, updating, and deleting data, authenticating users, and handling errors. If you are new to Mobile Services, you should consider first completing the "Mobile Services quickstart" tutorial ([Xamarin.iOS][Xamarin.iOS quickstart tutorial]/[Xamarin.Android][Xamarin.Android quickstart tutorial]) and the "Getting Started with Data in .NET" tutorial ([Xamarin.iOS][Xamarin.iOS data tutorial]/[Xamarin.Android][Xamarin.Android data tutorial]). The quickstart tutorial requires [Xamarin][Xamarin download] the [Mobile Services SDK] and helps you configure your account and create your first mobile service.
+## 目录
 
+-   [什么是移动服务][]
+-   [概念][]
+-   [如何：创建移动服务客户端][]
+-   [如何：创建表引用][]
+-   [如何：从移动服务查询数据][]
 
-## Table of Contents
+    -   [筛选返回的数据][]
+    -   [为返回的数据排序][]
+    -   [在页中返回数据][]
+    -   [选择特定的列][]
+    -   [按 ID 查找数据][]
+-   [如何：在移动服务中插入数据][]
+-   [如何：在移动服务中修改数据][]
+-   [如何：在移动服务中删除数据][]
+-   [如何：对用户进行身份验证][]
+-   [如何：处理错误][]
+-   [如何：处理非类型化数据][]
+-   [如何：设计单元测试][]
+-   [后续步骤][]
 
-- [What is Mobile Services]
-- [Concepts]
-- [How to: Create the Mobile Services client]
-- [How to: Create a table reference]
-- [How to: Query data from a mobile service]
-	- [Filter returned data]
-    - [Sort returned data]
-	- [Return data in pages]
-	- [Select specific columns]
-	- [Look up data by ID]
-- [How to: Insert data into a mobile service]
-- [How to: Modify data in a mobile service]
-- [How to: Delete data in a mobile service]
-- [How to: Authenticate users]
-- [How to: Handle errors]
-- [How to: Work with untyped data]
-- [How to: Design unit tests]
-- [Next steps]
-	
-[WACOM.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
+[WACOM.INCLUDE [mobile-services-concepts][]]
 
-<h2><a name="setup"></a><span class="short-header">Setup</span>Setup and Prerequisites</h2>
+<a name="setup"></a>
+## 安装安装与先决条件
 
-We assume that you have created a mobile service and a table. For more information see [Create a table](http://go.microsoft.com/fwlink/?LinkId=298592). In the code used in this topic, the table is named `TodoItem` and it will have the following columns: `id`, `Text`, and `Complete`.
+假设你已创建一个移动服务和一个表。有关详细信息，请参阅[创建表][]。在本主题使用的代码中，表的名称为 `TodoItem`，其中包含以下列：`id`、`Text` 和 `Complete`。
 
-The corresponding typed client-side .NET type is the following:
+相应的类型化客户端 .NET 类型如下：
 
+    public class TodoItem
+    {
+    public string id { get; set; }
 
-	public class TodoItem
-	{
-		public string id { get; set; }
+    [JsonProperty(PropertyName = "text")]
+    public string Text { get; set; }
 
-		[JsonProperty(PropertyName = "text")]
-		public string Text { get; set; }
+    [JsonProperty(PropertyName = "complete")]
+    public bool Complete { get; set; }
+    }
 
-		[JsonProperty(PropertyName = "complete")]
-		public bool Complete { get; set; }
-	}
-	
-When dynamic schema is enabled, Azure Mobile Services automatically generates new columns based on the object in insert or update requests. For more information, see [Dynamic schema](http://go.microsoft.com/fwlink/?LinkId=296271).
+启用动态架构后，Azure 移动服务将基于 insert 或 update 请求中的对象自动生成新列。有关详细信息，请参阅[动态架构][]。
 
-<h2><a name="create-client"></a><span class="short-header">Create the Mobile Services client</span>How to: Create the Mobile Services client</h2>
+<a name="create-client"></a>
+## 创建移动服务客户端如何：创建移动服务客户端
 
-The following code creates the `MobileServiceClient` object that is used to access your mobile service. 
-			
-	MobileServiceClient client = new MobileServiceClient( 
-		"AppUrl", 
-		"AppKey" 
-	); 
+以下代码将创建用于访问移动服务的 `MobileServiceClient` 对象。
 
-In the code above, replace `AppUrl` and `AppKey` with the mobile service URL and application key, in that order. Both of these are available on the Azure Management Portal, by selecting your mobile service and then clicking on "Dashboard".
+    MobileServiceClient client = new MobileServiceClient( 
+    "AppUrl", 
+    "AppKey" 
+    ); 
 
-<h2><a name="instantiating"></a><span class="short-header">Creating a table reference</span>How to: Create a table reference</h2>
+在上面的代码中，请将 `AppUrl` 和 `AppKey` 依次替换为移动服务 URL 和应用程序密钥。在 Azure 管理门户中选择你的移动服务，然后单击“仪表板”即可获取这两个值。
 
-All of the code that accesses or modifies data in the Mobile Services table calls functions on the `MobileServiceTable` object. You get a reference to the table by calling the [GetTable](http://msdn.microsoft.com/en-us/library/windowsazure/jj554275.aspx) function on an instance of the `MobileServiceClient`. 
+<a name="instantiating"></a>
+## 创建表引用如何：创建表引用
+
+访问或修改移动服务表中数据的所有代码都将对 `MobileServiceTable` 对象调用函数。对 `MobileServiceClient` 的实例调用 [GetTable][] 函数可获取对表的引用。
 
     IMobileServiceTable<TodoItem> todoTable = 
-		client.GetTable<TodoItem>();
+    client.GetTable<TodoItem>();
 
-This is the typed serialization model; see discussion of <a href="#untyped">the untyped serialization model</a> below.
-			
-<h2><a name="querying"></a><span class="short-header">Querying data</span>How to: Query data from a mobile service</h2>
+这是类型化的序列化模型；请参阅下面有关[非类型化序列化模型][如何：处理非类型化数据]的介绍。
 
-This section describes how to issue queries to the mobile service. Subsections describe different aspects such as sorting, filtering, and paging. 
-			
-### <a name="filtering"></a>How to: Filter returned data
+<a name="querying"></a>
+## 查询数据如何：从移动服务查询数据
 
-The following code illustrates how to filter data by including a `Where` clause in a query. It returns all items from `todoTable` whose `Complete` property is equal to `false`. The `Where` function applies a row filtering predicate to the query against the table. 
-	
+本部分介绍如何向移动服务发出查询。其中的小节介绍了排序、筛选和分页等不同操作。
 
-	// This query filters out completed TodoItems and 
-	// items without a timestamp. 
-	List<TodoItem> items = await todoTable
-	   .Where(todoItem => todoItem.Complete == false)
-	   .ToListAsync();
+<a name="filtering"></a>
+### 如何：筛选返回的数据
 
-You can view the URI of the request sent to the mobile service by using message inspection software, such as browser developer tools or Fiddler. If you look at the request URI below,  notice that we are modifying the query string  itself:
+以下代码演示了如何通过在查询中包含 `Where` 子句来筛选数据。该代码将返回 `todoTable` 中其 `Complete` 属性等于 `false` 的所有项。`Where` 函数针对该表将一个行筛选谓词应用到查询。
 
-	GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1				   
-This request would normally be translated roughly into the following SQL query on the server side:
-			
-	SELECT * 
-	FROM TodoItem 			
-	WHERE ISNULL(complete, 0) = 0
-			
-The function which is passed to the `Where` method can have an arbitrary number of conditions. For example, the line below:
+    // This query filters out completed TodoItems and 
+    // items without a timestamp. 
+    List<TodoItem> items = await todoTable
+    .Where(todoItem => todoItem.Complete == false)
+    .ToListAsync();
 
-	// This query filters out completed TodoItems where Text isn't null
-	List<TodoItem> items = await todoTable
-	   .Where(todoItem => todoItem.Complete == false
-		   && todoItem.Text != null)
-	   .ToListAsync();
+可以使用消息检查软件（例如浏览器开发人员工具或 Fiddler）来查看发送到移动服务的请求的 URI。从下面的请求 URI 中，可以看出我们正在修改查询字符串本身：
 
-Would be roughly translated (for the same request shown before) as
-			
-	SELECT * 
-	FROM TodoItem 
-	WHERE ISNULL(complete, 0) = 0
-	      AND ISNULL(text, 0) = 0
+    GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1                  
 
-The `where` statement above will find items with `Complete` status set to false with non-null `Text`.
+在服务器端，此请求通常会粗略地转换成以下 SQL 查询：
 
-We also could have written that in multiple lines instead:
+    SELECT * 
+    FROM TodoItem           
+    WHERE ISNULL(complete, 0) = 0
+            
 
-	List<TodoItem> items = await todoTable
-	   .Where(todoItem => todoItem.Complete == false)
-	   .Where(todoItem => todoItem.Text != null)
-	   .ToListAsync();
+传递给 `Where` 方法的函数可以包含任意数目的条件。例如，以下行：
 
-The two methods are equivalent and may be used interchangeably.  The former option -- of concatenating multiple predicates in one query -- is more compact and recommended.
+    // This query filters out completed TodoItems where Text isn't null
+    List<TodoItem> items = await todoTable
+    .Where(todoItem => todoItem.Complete == false
+    && todoItem.Text != null)
+    .ToListAsync();
 
-The `where` clause supports operations that be translated into the Mobile Services OData subset. This includes relational operators (==, !=, <, <=, >, >=), arithmetic operators (+, -, /, *, %), number precision (Math.Floor, Math.Ceiling), string functions (Length, Substring, Replace, IndexOf, StartsWith, EndsWith), date properties (Year, Month, Day, Hour, Minute, Second), access properties of an object, and expressions combining all of these.
+将粗略地转换为（针对前面显示的同一请求）
 
-### <a name="sorting"></a>How to: Sort returned data
+    SELECT * 
+    FROM TodoItem 
+    WHERE ISNULL(complete, 0) = 0
+    AND ISNULL(text, 0) = 0
 
-The following code illustrates how to sort data by including an `OrderBy` or `OrderByDescending` function in the query. It returns items from `todoTable` sorted ascending by the `Text` field. By default, the server returns only the first 50 elements. 
+上述 `where` 语句将查找 `Complete` 状态设置为 false 且 `Text` 不为 null 的项。
 
-<div class="dev-callout"><strong>Note</strong> <p>A server-driven page size is used by default to prevent all elements from being returned. This keeps default requests for large data sets from negatively impacting the service. </p> </div>
+我们也可以使用多个行编写该代码：
 
-You may increase the number of items to be returned by calling `Take` as described in the next section.
+    List<TodoItem> items = await todoTable
+    .Where(todoItem => todoItem.Complete == false)
+    .Where(todoItem => todoItem.Text != null)
+    .ToListAsync();
 
-	// Sort items in ascending order by Text field
-	MobileServiceTableQuery<TodoItem> query = todoTable
-					.OrderBy(todoItem => todoItem.Text)       
- 	List<TodoItem> items = await query.ToListAsync();
+这两种方法是等效的，可以换用。前一个选项（在一个查询中连接多个谓词）更为精简，也是我们推荐的方法。
 
-	// Sort items in descending order by Text field
-	MobileServiceTableQuery<TodoItem> query = todoTable
-					.OrderByDescending(todoItem => todoItem.Text)       
- 	List<TodoItem> items = await query.ToListAsync();			
+`where` 子句支持可转换成移动服务 OData 子集的操作，其中包括关系运算符（==、!=、\<、\<=、\>、\>=）、数学运算符（+、-、/、\*、%）、数字精度（Math.Floor、Math.Ceiling）、字符串函数（Length、Substring、Replace、IndexOf、StartsWith、EndsWith）、日期属性（Year、Month、Day、Hour、Minute、Second）、对象的访问属性，以及组合了上述所有操作的表达式。
 
-### <a name="paging"></a>How to: Return data in pages
+<a name="sorting"></a>
+### 如何：为返回的数据排序
 
-The following code shows how to implement paging in returned data by using the `Take` and `Skip` clauses in the query.  The following query, when executed, returns the top three items in the table. 
+以下代码演示了如何通过在查询中包含 `OrderBy` 或 `OrderByDescending` 函数来为数据排序。该代码将返回 `todoTable` 中的项，这些项已按 `Text` 字段的升序排序。默认情况下，服务器只返回前 50 个元素。
 
-	// Define a filtered query that returns the top 3 items.
-	MobileServiceTableQuery<TodoItem> query = todoTable
-					.Take(3);                              
-	List<TodoItem> items = await query.ToListAsync();
+"说明"
 
-The following revised query skips the first three results and returns the next three after that. This is effectively the second "page" of data, where the page size is three items.
+默认情况下，将使用服务器驱动的页大小来防止返回所有元素。这可以防止对大型数据集发出的默认请求对服务造成负面影响。
 
-	// Define a filtered query that skips the top 3 items and returns the next 3 items.
-	MobileServiceTableQuery<TodoItem> query = todoTable
-					.Skip(3)
-					.Take(3);                              
-	List<TodoItem> items = await query.ToListAsync();
-			
-You can also use the [IncludeTotalCount](http://msdn.microsoft.com/en-us/library/windowsazure/jj730933.aspx) method to ensure that the query will get the total count for <i>all</i> the records that would have been returned, ignoring any take paging/limit clause specified:
+你可以通过调用下一节中介绍的 `Take` 增加要返回的项目数。
 
-	query = query.IncludeTotalCount();
+    // Sort items in ascending order by Text field
+    MobileServiceTableQuery<TodoItem> query = todoTable
+    .OrderBy(todoItem => todoItem.Text)       
+    List<TodoItem> items = await query.ToListAsync();
 
-This is a simplified scenario of passing hard-coded paging values to the `Take` and `Skip` methods. In a real-world app, you can use queries similar to the above with a pager control or comparable UI to let users navigate to previous and next pages. 
+    // Sort items in descending order by Text field
+    MobileServiceTableQuery<TodoItem> query = todoTable
+    .OrderByDescending(todoItem => todoItem.Text)       
+    List<TodoItem> items = await query.ToListAsync();           
 
-### <a name="selecting"></a>How to: Select specific columns
+<a name="paging"></a>
+### 如何：在页中返回数据
 
-You can specify which set of properties to include in the results by adding a `Select` clause to your query. For example, the following code shows how to select just one field and also how to select and format multiple fields:
+以下代码演示了如何通过在查询中使用 `Take` 和 `Skip` 子句来实现返回数据的分页。执行以下查询后，将返回表中的前三个项。
 
-	// Select one field -- just the Text
-	MobileServiceTableQuery<TodoItem> query = todoTable
-					.Select(todoItem => todoItem.Text);
-	List<string> items = await query.ToListAsync();
-	
-	// Select multiple fields -- both Complete and Text info
-	MobileServiceTableQuery<TodoItem> query = todoTable
-					.Select(todoItem => string.Format("{0} -- {1}", todoItem.Text.PadRight(30), todoItem.Complete ? "Now complete!" : "Incomplete!"));
-	List<string> items = await query.ToListAsync();
-			
-All the functions described so far are additive, so we can just keep calling them and we'll each time affect more of the query. One more example:
+    // Define a filtered query that returns the top 3 items.
+    MobileServiceTableQuery<TodoItem> query = todoTable
+    .Take(3);                              
+    List<TodoItem> items = await query.ToListAsync();           
 
-	MobileServiceTableQuery<TodoItem> query = todoTable
-					.Where(todoItem => todoItem.Complete == false)
-					.Select(todoItem => todoItem.Text)
-					.Skip(3).
-					.Take(3);
-	List<string> items = await query.ToListAsync();
-	
-### <a name="lookingup"></a>How to: Look up data by ID
+以下经过修改的查询将跳过前三个结果，返回其后的三个结果。实际上这是数据的第二“页”，其页大小为三个项。
 
-The `LookupAsync` function can be used to look up objects from the database with a particular ID. 
+    // Define a filtered query that skips the top 3 items and returns the next 3 items.
+    MobileServiceTableQuery<TodoItem> query = todoTable
+    .Skip(3)
+    .Take(3);                              
+    List<TodoItem> items = await query.ToListAsync();
+            
 
-	// This query filters out the item with the ID of 25
-	TodoItem item25 = await todoTable.LookupAsync(25);
+你还可以使用 [IncludeTotalCount][] 方法来确保查询获取应该返回的*所有*记录的总计数，并忽略指定的任何 take 分页/限制子句：
 
-<h2><a name="inserting"></a><span class="short-header">Inserting data</span>How to: Insert data into a mobile service</h2>
+    query = query.IncludeTotalCount();
 
-<div class="dev-callout"><strong>Note</strong> <p>If you want to perform insert, lookup, delete, or update operations on a type, then you need to create a member called <strong>Id</strong> (regardless of case). This is why the example class <strong>TodoItem</strong> has a member of name <strong>Id</strong>. An ID value must not be set to anything other than the default value during insert operations; by contrast, the ID value should always be set to a non-default value and present in update and delete operations.</p> </div>
+这是将硬编码分页值传递给 `Take` 和 `Skip` 方法的简化方案。在实际应用程序中，你可以对页导航控件或类似的 UI 使用类似于上面的查询，让用户导航到上一页和下一页。
 
-The following code illustrates how to insert new rows into a table. The parameter contains the data to be inserted as a .NET object.
+<a name="selecting"></a>
+### 如何：选择特定的列
 
-	await todoTable.InsertAsync(todoItem);
+你可以通过在查询中添加 `Select` 子句来指定要包含在结果中的属性集。例如，以下代码演示了如何做到只选择一个字段，以及如何选择并格式化多个字段：
 
-After the await `todoTable.InsertAsync` call returns, the ID of the object in the server is populated to the `todoItem` object in the client. 
+    // Select one field -- just the Text
+    MobileServiceTableQuery<TodoItem> query = todoTable
+    .Select(todoItem => todoItem.Text);
+    List<string> items = await query.ToListAsync();
 
-To insert untyped data, you may take advantage of Json.NET as shown below. Again, note that an ID must not be specified when inserting an object.
+    // Select multiple fields -- both Complete and Text info
+    MobileServiceTableQuery<TodoItem> query = todoTable
+    .Select(todoItem => string.Format("{0} -- {1}", todoItem.Text.PadRight(30), todoItem.Complete ?"Now complete!": "Incomplete!"));
+    List<string> items = await query.ToListAsync();
+            
 
-	JObject jo = new JObject(); 
-	jo.Add("Text", "Hello World"); 
-	jo.Add("Complete", false);
-	var inserted = await table.InsertAsync(jo);
+到目前为止所述的所有函数都是加性函数，我们可以不断地调用它们，每次调用都能进一步影响查询。再提供一个示例：
 
-If you attempt to insert an item with the "Id" field already set, you will get back a `MobileServiceInvalidOperationException` from the service. 
-
-<h2><a name="modifying"></a><span class="short-header">Modifying data</span>How to: Modify data in a mobile service</h2>
-
-The following code illustrates how to update an existing instance with the same ID with new information. The parameter contains the data to be updated as a .NET object.
-
-	await todoTable.UpdateAsync(todoItem);
-
-
-To insert untyped data, you may take advantage of Json.NET like so. Note that when making an update, an ID must be specified, as that is how the mobile service identifies which instance to update. The ID can be obtained from the result of the `InsertAsync` call.
-
-	JObject jo = new JObject(); 
-	jo.Add("Id", 52);
-	jo.Add("Text", "Hello World"); 
-	jo.Add("Complete", false);
-	var inserted = await table.UpdateAsync(jo);
-			
-If you attempt to update an item without the "Id" field already set, there is no way for the service to tell which instance to update, so you will get back a `MobileServiceInvalidOperationException` from the service. Similarly, if you attempt to update an untyped item without the "Id" field already set, you will again get back a `MobileServiceInvalidOperationException` from the service. 
-			
-			
-<h2><a name="deleting"></a><span class="short-header">Deleting data</span>How to: Delete data in a mobile service</h2>
-
-The following code illustrates how to delete an existing instance. The instance is identified by the "Id" field set on the `todoItem`.
-
-	await todoTable.DeleteAsync(todoItem);
-
-To delete untyped data, you may take advantage of Json.NET like so. Note that when making a delete request, an ID must be specified, as that is how the mobile service identifies which instance to delete. A delete request needs only the ID; other properties are not passed to the service, and if any are passed, they are ignored at the service. The result of a `DeleteAsync` call is usually `null` as well. The ID to pass in can be obtained from the result of the `InsertAsync` call.
-
-	JObject jo = new JObject(); 
-	jo.Add("Id", 52);
-	await table.DeleteAsync(jo);
-			
-If you attempt to delete an item without the "Id" field already set, there is no way for the service to tell which instance to delete, so you will get back a `MobileServiceInvalidOperationException` from the service. Similarly, if you attempt to delete an untyped item without the "Id" field already set, you will again get back a `MobileServiceInvalidOperationException` from the service. 
-		
-
-
-<h2><a name="authentication"></a><span class="short-header">Authentication</span>How to: Authenticate users</h2>
-
-Mobile Services supports authenticating and authorizing app users using a variety of external identity providers: Facebook, Google, Microsoft Account, Twitter, and Azure Active Directory. You can set permissions on tables to restrict access for specific operations to only authenticated users. You can also use the identity of authenticated users to implement authorization rules in server scripts. For more information, see the "Get started with authentication" tutorial ([Xamarin.iOS][Xamarin.iOS authentication]/[Xamarin.Android][Xamarin.Android authentication]).
-
-Two authentication flows are supported: a _server flow_ and a _client flow_. The server flow provides the simplest authentication experience, as it relies on the provider's web authentication interface. The client flow allows for deeper integration with device-specific capabilities as it relies on provider-specific device-specific SDKs.
-
-<h3>Server flow</h3>
-To have Mobile Services manage the authentication process in your Windows Store or Windows Phone app, 
-you must register your app with your identity provider. Then in your mobile service, you need to configure the application ID and secret provided by your provider. For more information, see the "Get started with authentication" tutorial ([Xamarin.iOS][Xamarin.iOS authentication]/[Xamarin.Android][Xamarin.Android authentication]).
-
-Once you have registered your identity provider, simply call the [LoginAsync method] with the [MobileServiceAuthenticationProvider] value of your provider. For example, the following code initiates a server flow login by using Facebook. 
-
-	private MobileServiceUser user;
-	private async System.Threading.Tasks.Task Authenticate()
-	{
-		while (user == null)
-		{
-			string message;
-			try
-			{
-				user = await client
-					.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
-				message = 
-					string.Format("You are now logged in - {0}", user.UserId);
-			}
-			catch (InvalidOperationException)
-			{
-				message = "You must log in. Login Required";
-			}
-
-			var dialog = new MessageDialog(message);
-			dialog.Commands.Add(new UICommand("OK"));
-			await dialog.ShowAsync();
-		}
-	}
-
-If you are using an identity provider other than Facebook, change the value of [MobileServiceAuthenticationProvider] above to the value for your provider.
-
-In this case, Mobile Services manages the OAuth 2.0 authentication flow by displaying the login page of the selected provider and generating a Mobile Services authentication token after successful login with the identity provider. The [LoginAsync method] returns a [MobileServiceUser], which provides both the [userId] of the authenticated user and the [MobileServiceAuthenticationToken], as a JSON web token (JWT). This token can be cached and re-used until it expires. For more information, see [Caching the authentication token].
-
-<h3>Client flow</h3>
-
-Your app can also independently contact the identity provider and then provide the returned token to Mobile Services for authentication. This client flow enables you to provide a single sign-in experience for users or to retrieve additional user data from the identity provider. 
-
-In the most simplified form, you can use the client flow as shown in this snippet for Facebook or Google. 
-
-	var token = new JObject();
-	// Replace access_token_value with actual value of your access token obtained 
-	// using the Facebook or Google SDK.
-	token.Add("access_token", "access_token_value");
-			
-	private MobileServiceUser user;
-	private async System.Threading.Tasks.Task Authenticate()
-	{
-		while (user == null)
-		{
-			string message;
-			try
-			{
-				// Change MobileServiceAuthenticationProvider.Facebook 
-				// to MobileServiceAuthenticationProvider.Google if using Google auth.
-				user = await client
-					.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
-				message = 
-					string.Format("You are now logged in - {0}", user.UserId);
-			}
-			catch (InvalidOperationException)
-			{
-				message = "You must log in. Login Required";
-			}
-
-			var dialog = new MessageDialog(message);
-			dialog.Commands.Add(new UICommand("OK"));
-			await dialog.ShowAsync();
-		}
-	}
-
-<h3><a name="caching"></a>Caching the authentication token</h3>
-In some cases, the call to the login method can be avoided after the first time the user authenticates. You can use a local secure store (such as [Xamarin.Auth][Xamarin.Auth component]) to cache the current user identity the first time they log in and every subsequent time you check whether you already have the user identity in our cache. When the cache is empty, you still need to send the user through the login process. 
-
-	using Xamarin.Auth;
-	var accountStore = AccountStore.Create(); // Xamarin.iOS
-	//var accountStore = AccountStore.Create(this); // Xamarin.Android
-
-	// After logging in
-	var account = new Account (user.UserId, new Dictionary<string,string> {{"token",user.MobileServiceAuthenticationToken}});
-	accountStore.Save(account, "Facebook");
-
-	// Log in 
-	var accounts = accountStore.FindAccountsForService ("Facebook").ToArray();
-	if (accounts.Count != 0)
-	{
-		user = new MobileServiceUser (accounts[0].Username);
-		user.MobileServiceAuthenticationToken = accounts[0].Properties["token"];
-	}
-	else
-	{
-		// Regular login flow
-		user = new MobileServiceuser( await client
-			.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
-		var token = new JObject();
-		// Replace access_token_value with actual value of your access token
-		token.Add("access_token", "access_token_value");
-	}
-			
-	 // Log out
-	client.Logout();
-	accountStore.Delete(account, "Facebook");
-
-
-<h2><a name="errors"></a><span class="short-header">Error handling</span>How to: Handle errors</h2>
-
-There are several ways to encounter, validate, and work around errors in Mobile Services. 
-
-As an example, server scripts are registered in a mobile service and can be used to perform a wide range of operations on data being inserted and updated, including validation and data modification. Imagine defining and registering a server script that validate and modify data, like so:
-
-	function insert(item, user, request) 
-	{
-	   if (item.text.length > 10) {
-		  request.respond(statusCodes.BAD_REQUEST, { error: "Text cannot exceed 10 characters" });
-	   } else {
-		  request.execute();
-	   }
-	}
-
-This server-side script validates the length of string data sent to the mobile service and rejects strings that are too long, in this case longer than 10 characters.
-
-Now that the mobile service is validating data and sending error responses on the server-side, you can update your .NET app to be able to handle error responses from validation.
-
-	private async void InsertTodoItem(TodoItem todoItem)
-	{
-		// This code inserts a new TodoItem into the database. When the operation completes
-		// and Mobile Services has assigned an Id, the item is added to the CollectionView
-		try
-		{
-			await todoTable.InsertAsync(todoItem);
-			items.Add(todoItem);
-		}
-		catch (MobileServiceInvalidOperationException e)
-		{
-			// Handle error
-		}
-	}
-
-<h2><a name="untyped"></a><span class="short-header">Working with untyped data</span>How to: Work with untyped data</h2>
-
-The Xamarin Component client is designed for strongly typed scenarios. However, sometimes, a more loosely typed experience is convenient; for example, this could be when dealing with objects with open schema. That scenario is enabled as follows. In queries, you forego LINQ and use the wire format.
-
-	// Get an untyped table reference
-	IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");			
-
-	// Lookup untyped data using OData
-	JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
-
-You get back JSON values that you can use like a property bag. For more information on JToken and Json.NET, see [Json.NET](http://json.codeplex.com/)
-
-<h2><a name="unit-testing"></a><span class="short-header">Designing tests</span>How to: Design unit tests</h2>
-
-The value returned by `MobileServiceClient.GetTable` and the queries are interfaces. That makes them easily "mockable" for testing purposes, so you could create a `MyMockTable : IMobileServiceTable<TodoItem>` that implements your testing logic.
-
-<h2><a name="nextsteps"></a>Next steps</h2>
-
-Now that you have completed this how-to conceptual reference topic, learn how to perform important tasks in Mobile Services in detail:
-
-* Get started with Mobile Services ([Xamarin.iOS][Get started with Mobile Services iOS]/[Xamarin.Android][Get started with Mobile Services Android])
-  <br/>Learn the basics of how to use Mobile Services.
-
-* Get started with data ([Xamarin.iOS][Get started with data iOS]/[Xamarin.Android][Get started with data Android])
-  <br/>Learn more about storing and querying data using Mobile Services.
-
-* Get started with authentication ([Xamarin.iOS][Get started with authentication iOS]/[Xamarin.Android][Get started with authentication Android])
-  <br/>Learn how to authenticate users of your app with an identity provider.
-
-* Validate and modify data with scripts ([Xamarin.iOS][Validate and modify data with scripts iOS]/[Xamarin.Android][Validate and modify data with scripts Android])
-  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
-
-* Refine queries with paging ([Xamarin.iOS][Refine queries with paging iOS]/[Xamarin.Android][Refine queries with paging Android])
-  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
-
-* Authorize users with scripts ([Xamarin.iOS][Authorize users with scripts iOS]/[Xamarin.Android][Authorize users with scripts Android])
-  <br/>Learn how to take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. 
-
-<!-- Anchors. -->
-[What is Mobile Services]: #what-is
-[Concepts]: #concepts
-[How to: Create the Mobile Services client]: #create-client
-[How to: Create a table reference]: #instantiating
-[How to: Query data from a mobile service]: #querying
-[Filter returned data]: #filtering
-[Sort returned data]: #sorting
-[Return data in pages]: #paging
-[Select specific columns]: #selecting
-[Look up data by ID]: #lookingup
-[How to: Bind data to user interface in a mobile service]: #binding
-[How to: Insert data into a mobile service]: #inserting
-[How to: Modify data in a mobile service]: #modifying
-[How to: Delete data in a mobile service]: #deleting
-[How to: Authenticate users]: #authentication
-[How to: Handle errors]: #errors
-[How to: Design unit tests]: #unit-testing 
-[How to: Query data from a mobile service]: #querying
-[How to: Customize the client]: #customizing
-[How to: Work with untyped data]: #untyped
-[Customize request headers]: #headers
-[Customize serialization]: #serialization
-[Next steps]: #nextsteps
-[Caching the authentication token]: #caching
-
-<!-- URLs. -->
-[Get started with Mobile Services iOS]: /en-us/develop/mobile/tutorials/get-started-xamarin-ios
-[Get started with Mobile Services Android]: /en-us/develop/mobile/tutorials/get-started-xamarin-android
-[Xamarin download]: http://xamarin.com/download/
-[Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Xamarin.iOS quickstart tutorial]: /en-us/develop/mobile/tutorials/get-started-xamarin-ios/
-[Xamarin.Android quickstart tutorial]: /en-us/develop/mobile/tutorials/get-started-xamarin-android/
-[Xamarin.iOS data tutorial]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-ios/
-[Xamarin.Android data tutorial]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android/
-[Xamarin.iOS authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-ios/
-[Xamarin.Android authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android/
-[Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Xamarin.Auth component]: https://components.xamarin.com/view/xamarin.auth
-
-[Mobile Services SDK]: http://nuget.org/packages/WindowsAzure.MobileServices/
-[Get started with data iOS]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-ios
-[Get started with data Android]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android
-[Get started with authentication iOS]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-ios
-[Get started with authentication Android]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android
-[Validate and modify data with scripts ios]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios
-[Validate and modify data with scripts android]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android
-[Refine queries with paging iOS]: /en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-ios
-[Refine queries with paging Android]: /en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-android
-[Authorize users with scripts iOS]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
-[Authorize users with scripts Android]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
-[LoginAsync method]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclientextensions.loginasync.aspx
-[MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider.aspx
-[MobileServiceUser]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.aspx
-[UserID]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
-[MobileServiceAuthenticationToken]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
+    MobileServiceTableQuery<TodoItem> query = todoTable
+    .Where(todoItem => todoItem.Complete == false)
+    .Select(todoItem => todoItem.Text)
+    .Skip(3).
+    .Take(3);
+    List<string> items = await query.ToListAsync();
+
+<a name="lookingup"></a>
+### 如何：按 ID 查找数据
+
+使用 `LookupAsync` 函数可以查找数据库中具有特定 ID 的对象。
+
+    // This query filters out the item with the ID of 25
+    TodoItem item25 = await todoTable.LookupAsync(25);
+
+<a name="inserting"></a>
+## 插入数据如何：在移动服务中插入数据
+
+<div class="dev-callout"><b>说明</b>
+
+<p>如果你想要对某个类型执行插入、查找、删除或更新操作，则需要创建一个名为 <b>Id</b> 的成员（不考虑大小写）。正因如此，示例类 <b>TodoItem</b> 包含了一个名为 <b>Id</b> 的成员。在插入操作期间，ID 值不能设置为默认值以外的任何值；相比之下，在更新和删除操作中 ID 值应始终设置为非默认值并且应始终存在。</p>
+</div>
+
+以下代码演示了如何在表中插入新行。参数包含要作为 .NET 对象插入的数据。
+
+    await todoTable.InsertAsync(todoItem);
+
+在 await `todoTable.InsertAsync` 调用返回后，会将服务器中的对象 ID 填充到客户端中的 `todoItem` 对象中。
+
+若要插入非类型化数据，你可以按如下所示利用 Json.NET。再次请注意，在插入对象时，不能指定 ID。
+
+    JObject jo = new JObject(); 
+    jo.Add("Text", "Hello World"); 
+    jo.Add("Complete", false);
+    var inserted = await table.InsertAsync(jo);
+
+如果你尝试插入已设置“Id”字段的项目，你将收到服务发出的 `MobileServiceInvalidOperationException`。
+
+<a name="modifying"></a>
+## 修改数据如何：在移动服务中修改数据
+
+以下代码演示了如何使用新的信息更新具有相同 ID 的现有实例。参数包含要作为 .NET 对象更新的数据。
+
+    await todoTable.UpdateAsync(todoItem);
+
+若要插入非类型化数据，你可以按此方式利用 Json.NET。请注意，在执行更新时，必须指定 ID，移动服务将凭此 ID 来识别要更新的实例。可以从 `InsertAsync` 调用的结果中获取该 ID。
+
+    JObject jo = new JObject(); 
+    jo.Add("Id", 52);
+    jo.Add("Text", "Hello World"); 
+    jo.Add("Complete", false);
+    var inserted = await table.UpdateAsync(jo);
+            
+
+如果你尝试更新某个项但尚未设置“Id”字段，则服务无法识别要更新的实例，因此你会收到服务发出的 `MobileServiceInvalidOperationException`。同样，如果你尝试更新某个非类型化项但尚未设置“Id”字段，则也会收到服务发出的 `MobileServiceInvalidOperationException`。
+
+<a name="deleting"></a>
+## 删除数据如何：在移动服务中删除数据
+
+以下代码演示了如何删除现有实例。该实例由 `todoItem` 中设置的“Id”字段标识。
+
+    await todoTable.DeleteAsync(todoItem);
+
+若要删除非类型化数据，你可以按此方式利用 Json.NET。请注意，在执行删除请求时，必须指定 ID，移动服务将凭此 ID 来识别要删除的实例。删除请求只需要 ID；其他属性将不会传递给服务，如果传递了任何属性，服务会将其忽略。`DeleteAsync` 调用的结果通常也是 `null`。可以从 `InsertAsync` 调用的结果中获取要传入的 ID。
+
+    JObject jo = new JObject(); 
+    jo.Add("Id", 52);
+    await table.DeleteAsync(jo);
+            
+
+如果你尝试删除某个项但尚未设置“Id”字段，则服务无法识别要删除的实例，因此你会收到服务发出的 `MobileServiceInvalidOperationException`。同样，如果你尝试删除某个非类型化项但尚未设置“Id”字段，则也会收到服务发出的 `MobileServiceInvalidOperationException`。
+
+<a name="authentication"></a>
+## 身份验证如何：对用户进行身份验证
+
+移动服务支持使用各种外部标识提供者对应用程序用户进行身份验证和授权，这些提供者包括：Facebook、Google、Microsoft 帐户、Twitter 和 Azure Active Directory。你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。你还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。有关详细信息，请参阅“身份验证入门”教程 ([Xamarin.iOS][4]/[Xamarin.Android][5])。
+
+支持两种身份验证流：*服务器流*和*客户端流*。服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。客户端流依赖于提供者和设备特定的 SDK，因此允许与设备特定的功能进行更深入的集成。
+
+### 服务器流
+
+若要让移动服务管理 Windows 应用商店或 Windows Phone 应用程序中的身份验证过程，
+必须将你的应用程序注册到标识提供者。然后，需要在移动服务中配置提供者提供的应用程序 ID 和机密。有关详细信息，请参阅“身份验证入门”教程 ([Xamarin.iOS][4]/[Xamarin.Android][5])。
+
+注册标识提供者后，只需结合提供者的 [MobileServiceAuthenticationProvider][] 值调用 [LoginAsync 方法][]。例如，以下代码将使用 Facebook 启动服务器流登录。
+
+    private MobileServiceUser user;
+    private async System.Threading.Tasks.Task Authenticate()
+    {
+    while (user == null)
+        {
+    string message;
+    try
+            {
+    user = await client
+    .LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+    message = 
+    string.Format("You are now logged in - {0}", user.UserId);
+            }
+    catch (InvalidOperationException)
+            {
+    message = "You must log in. Login Required";
+            }
+
+    var dialog = new MessageDialog(message);
+    dialog.Commands.Add(new UICommand("OK"));
+    await dialog.ShowAsync();
+        }
+    }
+
+如果使用的标识提供者不是 Facebook，请将上述 [MobileServiceAuthenticationProvider][] 的值更改为提供者的值。
+
+在此情况下，移动服务将通过以下方式管理 OAuth 2.0 身份验证流：显示选定提供者的登录页，并在用户成功使用标识提供者登录后生成移动服务身份验证令牌。[LoginAsync 方法][]将返回 [MobileServiceUser][]，该类将提供已经过身份验证的用户的 [userId][]，以及 JSON Web 令牌 (JWT) 形式的 [MobileServiceAuthenticationToken][]。你可以缓存此令牌，并在它过期之前重复使用。有关详细信息，请参阅[缓存身份验证令牌][]。
+
+### 客户端流
+
+你的应用程序还能够独立联系标识提供者，然后将返回的令牌提供给移动服务以进行身份验证。使用此客户端流可为用户提供单一登录体验，或者从标识提供者中检索其他用户数据。
+
+你可以根据以下代码段中所示，为 Facebook 或 Google 使用这种最简单形式的客户端流。
+
+    var token = new JObject();
+    // Replace access_token_value with actual value of your access token obtained 
+    // using the Facebook or Google SDK.
+    token.Add("access_token", "access_token_value");
+            
+    private MobileServiceUser user;
+    private async System.Threading.Tasks.Task Authenticate()
+    {
+    while (user == null)
+        {
+    string message;
+    try
+            {
+    // Change MobileServiceAuthenticationProvider.Facebook 
+    // to MobileServiceAuthenticationProvider.Google if using Google auth.
+    user = await client
+    .LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
+    message = 
+    string.Format("You are now logged in - {0}", user.UserId);
+            }
+    catch (InvalidOperationException)
+            {
+    message = "You must log in. Login Required";
+            }
+
+    var dialog = new MessageDialog(message);
+    dialog.Commands.Add(new UICommand("OK"));
+    await dialog.ShowAsync();
+        }
+    }
+
+<a name="caching"></a>
+### 缓存身份验证令牌
+
+在某些情况下，完成首次用户身份验证后，可以避免调用 login 方法。你可以使用本地安全存储（如 [Xamarin.Auth][]）缓存当前用户首次登录时使用的标识，以后每次该用户登录时，系统都会检查缓存中是否存在该用户标识。如果缓存为空，则用户仍然需要完成整个登录过程。
+
+    using Xamarin.Auth;
+    var accountStore = AccountStore.Create(); // Xamarin.iOS
+    //var accountStore = AccountStore.Create(this); // Xamarin.Android
+
+    // After logging in
+    var account = new Account (user.UserId, new Dictionary<string,string> {{"token",user.MobileServiceAuthenticationToken}});
+    accountStore.Save(account, "Facebook");
+
+    // Log in 
+    var accounts = accountStore.FindAccountsForService ("Facebook").ToArray();
+    if (accounts.Count != 0)
+    {
+    user = new MobileServiceUser (accounts[0].Username);
+    user.MobileServiceAuthenticationToken = accounts[0].Properties["token"];
+    }
+    else
+    {
+    // Regular login flow
+    user = new MobileServiceuser( await client
+    .LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
+    var token = new JObject();
+    // Replace access_token_value with actual value of your access token
+    token.Add("access_token", "access_token_value");
+    }
+            
+    // Log out
+    client.Logout();
+    accountStore.Delete(account, "Facebook");
+
+<a name="errors"></a>
+## 错误处理如何：处理错误
+
+在移动服务中，你可能会遇到各种形式的错误，并且可以通过多种方式来验证和解决这些错误。
+
+例如，你可以在移动服务中注册服务器脚本，然后使用这些脚本对所要插入和更新的数据执行各种操作，包括验证和数据修改。你可以按如下所示定义并注册一个用于验证和修改数据的服务器脚本：
+
+    function insert(item, user, request) 
+    {
+    if (item.text.length > 10) {
+    request.respond(statusCodes.BAD_REQUEST, { error:"Text cannot exceed 10 characters" });
+    } else {
+    request.execute();
+       }
+    }
+
+此服务器端脚本将验证发送到移动服务的字符串数据长度，并拒绝过长（在本例中为 10 个字符以上）的字符串。
+
+由于移动服务能够在服务器端验证数据和发送错误响应，因此你可以更新你的 .NET 应用程序，使其能够处理验证后生成的错误响应。
+
+    private async void InsertTodoItem(TodoItem todoItem)
+    {
+    // This code inserts a new TodoItem into the database.When the operation completes
+    // and Mobile Services has assigned an Id, the item is added to the CollectionView
+    try
+        {
+    await todoTable.InsertAsync(todoItem);
+    items.Add(todoItem);
+        }
+    catch (MobileServiceInvalidOperationException e)
+        {
+    // Handle error
+        }
+    }
+
+<a name="untyped"></a>
+## 处理非类型化数据如何：处理非类型化数据
+
+Xamarin 组件客户端在设计上支持强类型化方案。但有时，松散类型化的体验可为用户带来方便；例如，在处理采用开放架构的对象时，可能就需要这种体验。可按如下所示启用这种方案。在查询中，先指定 LINQ 语句并使用有线格式。
+
+    // Get an untyped table reference
+    IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");         
+
+    // Lookup untyped data using OData
+    JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
+
+此时，你将获取一些可以像属性包一样使用的 JSON 值。有关 JToken 和 Json.NET 的详细信息，请参阅 [Json.NET][]
+
+<a name="unit-testing"></a>
+## 设计测试如何：设计单元测试
+
+`MobileServiceClient.GetTable` 返回的值和查询是接口。你可以针对测试目的轻松“模拟”这些接口，以便创建一个实现测试逻辑的 `MyMockTable :IMobileServiceTable<TodoItem>`。
+
+<a name="nextsteps"></a>
+## 后续步骤
+
+完成这篇概念性的操作方法参考主题后，请详细了解如何在移动服务中执行重要任务：
+
+-   移动服务入门 ([Xamarin.iOS][6]/[Xamarin.Android][7])
+    了解移动服务使用方面的基础知识。
+
+-   数据处理入门 ([Xamarin.iOS][8]/[Xamarin.Android][9])
+    了解有关使用移动服务存储和查询数据的详细信息。
+
+-   身份验证入门 ([Xamarin.iOS][10]/[Xamarin.Android][11])
+    了解如何使用标识提供者对应用程序的用户进行身份验证。
+
+-   使用脚本验证和修改数据 ([Xamarin.iOS][12]/[Xamarin.Android][13])
+    了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
+
+-   使用分页优化查询 ([Xamarin.iOS][14]/[Xamarin.Android][15])
+    了解如何使用查询中的分页控制单个请求中处理的数据量。
+
+-   使用脚本为用户授权 ([Xamarin.iOS][16]/[Xamarin.Android][17])
+    了解如何采用移动服务基于已进行身份验证的用户提供的用户 ID 值，并使用该值来筛选移动服务返回的数据。
+
+  [.NET Framework]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library/ ".NET Framework"
+  [HTML/JavaScript]: /zh-cn/develop/mobile/how-to-guides/work-with-html-js-client/ "HTML/JavaScript"
+  [iOS]: /zh-cn/develop/mobile/how-to-guides/work-with-ios-client-library/ "iOS"
+  [Android]: /zh-cn/develop/mobile/how-to-guides/work-with-android-client-library/ "Android"
+  [Xamarin]: /zh-cn/develop/mobile/how-to-guides/work-with-xamarin-client-library/ "Xamarin"
+  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-ios/
+  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-android/
+  [1]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios/
+  [2]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android/
+  [3]: http://xamarin.com/download/
+  [移动服务 SDK]: http://nuget.org/packages/WindowsAzure.MobileServices/
+  [什么是移动服务]: #what-is
+  [概念]: #concepts
+  [如何：创建移动服务客户端]: #create-client
+  [如何：创建表引用]: #instantiating
+  [如何：从移动服务查询数据]: #querying
+  [筛选返回的数据]: #filtering
+  [为返回的数据排序]: #sorting
+  [在页中返回数据]: #paging
+  [选择特定的列]: #selecting
+  [按 ID 查找数据]: #lookingup
+  [如何：在移动服务中插入数据]: #inserting
+  [如何：在移动服务中修改数据]: #modifying
+  [如何：在移动服务中删除数据]: #deleting
+  [如何：对用户进行身份验证]: #authentication
+  [如何：处理错误]: #errors
+  [如何：处理非类型化数据]: #untyped
+  [如何：设计单元测试]: #unit-testing
+  [后续步骤]: #nextsteps
+  [mobile-services-concepts]: ../includes/mobile-services-concepts.md
+  [创建表]: http://go.microsoft.com/fwlink/?LinkId=298592
+  [动态架构]: http://go.microsoft.com/fwlink/?LinkId=296271
+  [GetTable]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554275.aspx
+  [IncludeTotalCount]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj730933.aspx
+  [4]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-ios/
+  [5]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android/
+  [MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider.aspx
+  [LoginAsync 方法]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclientextensions.loginasync.aspx
+  [MobileServiceUser]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.aspx
+  [userId]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
+  [MobileServiceAuthenticationToken]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
+  [缓存身份验证令牌]: #caching
+  [Xamarin.Auth]: https://components.xamarin.com/view/xamarin.auth
+  [Json.NET]: http://json.codeplex.com/
+  [6]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-ios
+  [7]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-android
+  [8]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios
+  [9]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android
+  [10]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-ios
+  [11]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android
+  [12]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios
+  [13]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android
+  [14]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-ios
+  [15]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-android
+  [16]: /zh-cn/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
+  [17]: /zh-cn/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android

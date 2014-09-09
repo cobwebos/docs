@@ -1,329 +1,309 @@
 <properties linkid="develop-mobile-tutorials-optimistic-concurrent-data-javascript" urlDisplayName="Optimistic concurrency" pageTitle="Handle database write conflicts with optimistic concurrency (Windows Store) | Mobile Dev Center" metaKeywords="" writer="wesmc" description="Learn how to handle database write conflicts on both the server and in your Windows Store application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Handling database write conflicts" authors="wesmc" />
 
-# Handling database write conflicts
+# 处理数据库写入冲突
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/" title="Windows Store C#">Windows Store C#</a>
-<a href="/en-us/documentation/articles/mobile-services-windows-store-javascript-handle-database-conflicts/" title="Windows Store JavaScript" class="current">Windows Store JavaScript</a>
-<a href="/en-us/develop/mobile/tutorials/handle-database-write-conflicts-wp8/" title="Windows Phone">Windows Phone</a></div>	
+<a href="/zh-cn/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/" title="Windows Store C#">Windows 应用商店 C\#</a>
+<a href="/zh-cn/documentation/articles/mobile-services-windows-store-javascript-handle-database-conflicts/" title="Windows Store JavaScript" class="current">Windows 应用商店 JavaScript</a>
+<a href="/zh-cn/develop/mobile/tutorials/handle-database-write-conflicts-wp8/" title="Windows Phone">Windows Phone</a></div>	
 
-This tutorial is intended to help you better understand how to handle conflicts that occur when two or more clients write to the same database record in a Windows Store app. Two or more clients may write changes to the same item, at the same time, in some scenarios. Without any conflict detection, the last write would overwrite any previous updates even if this was not the desired result. Azure Mobile Services provides support for detecting and resolving these conflicts. This topic walks you through the steps that allow you to handle database write conflicts on both the server and in your application.
+本教程旨在帮助你更好地理解在两个或两个以上客户端写入 Windows 应用商店应用程序中的同一条数据库记录时，如何处理发生的冲突。在某些情况下，两个或两个以上客户端可能会同时将更改写入同一项目。如果没有任何冲突检测，则最后一次写入会覆盖任何以前的更新，即使这并不是所需要的结果。Azure 移动服务为检测和解决这些冲突提供支持。本主题将指导你完成用于处理服务器上和应用程序中数据库写入冲突的步骤。
 
-In this tutorial you will add functionality to the quickstart app to handle contentions that occur when updating the TodoItem database. This tutorial walks you through these basic steps:
+在本教程中，你将向快速入门应用程序添加功能以处理更新 TodoItem 数据库时发生的争用。本教程将指导你完成以下基本步骤：
 
-1. [Update the application to allow updates]
-2. [Enable Conflict Detection in your application]
-3. [Test database write conflicts in the application]
-4. [Automatically handling conflict resolution in server scripts]
+1.  [更新应用程序以允许更新][]
+2.  [在应用程序中启用冲突检测][]
+3.  [测试应用程序中的数据库写入冲突][]
+4.  [使用服务器脚本自动解决冲突][]
 
+本教程需要的内容如下：
 
-This tutorial requires the following
+-   Microsoft Visual Studio 2013 Express for Windows 或更高版本。
+-   本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]，并下载初学者项目的 JavaScript 语言版本。
+-   [Azure 帐户][]
+-   Windows Azure 移动服务 NuGet 包 1.1.5 或更高版本。若要获取最新版本，请执行以下步骤：
 
-+ Microsoft Visual Studio 2013 Express for Windows or later.
-+ This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services] downloading the JavaScript language version of the starter project. 
-+ [Azure Account]
-+ Windows Azure Mobile Services NuGet Package 1.1.5 or later. To get the latest version, follow these steps below:
-	1. In Visual Studio, open the project and right-click the project in Solution Explorer then click **Manage Nuget Packages**. 
+    1.  在 Visual Studio 中，打开项目并右键单击解决方案资源管理器中的项目，然后单击“管理 Nuget 包” 。
 
+    2.  展开“联机” 并单击“Microsoft 和 .NET” 。在搜索文本框中输入“WindowsAzure.MobileServices.WinJS” 。针对 Windows Azure Mobile Services for WinJS  NuGet 包单击“安装” 。
 
-	2. Expand **Online** and click **Microsoft and .NET**. In the search text box enter **WindowsAzure.MobileServices.WinJS**. Click **Install** on the **Windows Azure Mobile Services for WinJS** NuGet Package.
+        ![][]
 
-		![][20]
+<a name="uiupdate"></a>
+## 更新 UI更新应用程序以允许更新
 
+在本节中，你将更新用户界面，以便更新每个项目的文本。绑定模板将针对数据库表中的每个项目提供一个复选框和文本类控件。你将能够更新 TodoItem 的文本字段。应用程序将处理 `keydown` 事件，以便按 "Enter" 键更新项目。
 
- 
-
-<h2><a name="uiupdate"></a><span class="short-header">Update the UI</span>Update the application to allow updates</h2>
-
-In this section you will update the user interface to allow updating the text of each item. The binding template will contain a checkbox and text class control for each item in the database table. You will be able to update the text field of the TodoItem. The application will handle the `keydown` event so that the item is updated by pressing the **Enter** key.
-
-
-1. In Visual Studio, open the JavaScript language version of the TodoList project you downloaded in the [Get started with Mobile Services] tutorial.
-2. In the Visual Studio Solution Explorer, open default.html and replace the `TemplateItem` div tag definition with the div tag shown below and save the change. This adds a textbox control to allow you to edit the text of a TodoItem.
+1.  在 Visual Studio 中，打开你在[移动服务入门][]教程中下载的 TodoList 项目的 JavaScript 语言版本。
+2.  在 Visual Studio 解决方案资源管理器中，打开 default.html，将 `TemplateItem` div 标记定义替换为下面显示的 div 标记并保存更改。这将添加一个文本框控件，以便编辑 TodoItem 的文本。
 
         <div id="TemplateItem" data-win-control="WinJS.Binding.Template">
-          <div style="display: -ms-grid; -ms-grid-columns: auto 1fr">
-            <input class="itemCheckbox" type="checkbox" data-win-bind="checked: complete; dataContext: this" />
-              <div style="-ms-grid-column: 2; -ms-grid-row-align: center; margin-left: 5px">
-                <input id="modifytextbox" class="text win-interactive" data-win-bind="value: text; dataContext: this" />
-              </div>
-          </div>
+        <div style="display:-ms-grid; -ms-grid-columns:auto 1fr">
+        <input class="itemCheckbox" type="checkbox" data-win-bind="checked:complete; dataContext:this" />
+        <div style="-ms-grid-column:2; -ms-grid-row-align:center; margin-left:5px">
+        <input id="modifytextbox" class="text win-interactive" data-win-bind="value:text; dataContext:this" />
+        </div>
+        </div>
         </div>
 
-
-3. In Solution Explorer for Visual Studio, expand the **js** folder. Open the default.js file and replace the `updateTodoItem` function with the following definition which will not remove updated items from the user interface.
+3.  在 Visual Studio 的解决方案资源管理器中，展开“js” 文件夹。打开 default.js 文件，将 `updateTodoItem` 函数替换为下面的定义，该定义将不会从用户界面中删除已更新的项目。
 
         var updateTodoItem = function (todoItem) {
-          // This code takes a freshly completed TodoItem and updates the database. 
-          todoTable.update(todoItem);
+        // This code takes a freshly completed TodoItem and updates the database. 
+        todoTable.update(todoItem);
           };
 
-
-4. In the default.js file, add the following event handler for the `keydown` event so that the item is updated by pressing the **Enter** key.
+4.  在 default.js 文件中，添加 `keydown` 事件的以下事件处理程序，以便按 "Enter" 键更新项目。
 
         listItems.onkeydown = function (eventArgs) {
-          if (eventArgs.key == "Enter") {
-            var todoItem = eventArgs.target.dataContext.backingData;
-            todoItem.text = eventArgs.target.value;
-            updateTodoItem(todoItem);
+        if (eventArgs.key == "Enter") {
+        var todoItem = eventArgs.target.dataContext.backingData;
+        todoItem.text = eventArgs.target.value;
+        updateTodoItem(todoItem);
             }
           };
 
-The application now writes the text changes to each item back to the database when the **Enter** key is pressed.
+现在，当按 "Enter" 键时，应用程序将对每个项目的文本更改写回到数据库。
 
-<h2><a name="enableOC"></a><span class="short-header">Enable Optimistic Concurrency</span>Enable Conflict Detection in your application</h2>
+<a name="enableOC"></a>
+## 启用乐观并发在应用程序中启用冲突检测
 
-Azure Mobile Services supports optimistic concurrency control by tracking changes to each item using the `__version` system property column that is added to each table. In this section, we will enable the application to detect these write conflicts through the `__version` system property. Once this system property is enabled on the todoTable, the application will be notified by a `MobileServicePreconditionFailedException` during an update attempt if the record has changed since the last query. The app will then be able to make a choice of whether to commit its change to the database or leave the last change to the database intact. For more information on the System Properties for Mobile Services, see [System Properties].
+Azure 移动服务通过使用添加到每个表的 `__version` 系统属性列跟踪对每个项目的更改，来支持乐观并发控制。在本节中，我们将允许应用程序通过 `__version` 系统属性检测这些写入冲突。在 todoTable 上启用此系统属性后，如果记录自上次查询以来已更改，则应用程序在更新尝试期间将收到 `MobileServicePreconditionFailedException` 发出的通知。然后，应用程序将能够选择是将其更改提交到数据库，还是保持对数据库的上次更改不变。有关移动服务的系统属性的详细信息，请参阅[系统属性][]。
 
-1. In the default.js file, under the declaration of the `todoTable` variable, add the code to include the **__version** system property enabling support for write conflict detection.
+1.  在 default.js 文件中的 `todoTable` 变量声明下，添加代码以包括 \*\*\_\_version\*\* 系统属性，从而启用对写入冲突检测的支持。
 
         var todoTable = client.getTable('TodoItem');
         todoTable.systemProperties |= WindowsAzure.MobileServiceTable.SystemProperties.Version;
 
-
-2. By adding the `Version` system property to the table's system properties, the application will be notified with a `MobileServicePreconditionFailedException` exception during an update if the record has changed since the last query. This exception will be caught in JavaScript with an error function. The error includes the latest version of the item from the server which is used to resolve conflicts. In default.js, update the `updateTodoItem` function to catch the error and call a `resolveDatabaseConflict` function.
+2.  将 `Version` 系统属性添加到该表的系统属性后，如果记录自上次查询以来已更改，则在更新期间将通过 `MobileServicePreconditionFailedException` 异常通知应用程序。此异常将在 JavaScript 中通过错误函数捕获。此错误包含服务器中用于解决冲突的项目的最新版本。在 default.js 中，更新 `updateTodoItem` 函数以捕获错误并调用 `resolveDatabaseConflict` 函数。
 
         var updateTodoItem = function (todoItem) {
-          // This code takes a freshly completed TodoItem and updates the database. 
-          // If the server version of the record has been updated, we get the updated
-          // record from the Precondition Failed error in order to resolve the conflict.
-          var serverItem = null;
-          todoTable.update(todoItem).then(null, function (error) {
-            if (error.message == "Precondition Failed") {
-              serverItem = error.serverInstance;
+        // This code takes a freshly completed TodoItem and updates the database. 
+        // If the server version of the record has been updated, we get the updated
+        // record from the Precondition Failed error in order to resolve the conflict.
+        var serverItem = null;
+        todoTable.update(todoItem).then(null, function (error) {
+        if (error.message == "Precondition Failed") {
+        serverItem = error.serverInstance;
             }
-            else {
-              var msgDialog =
-                new Windows.UI.Popups.MessageDialog(error.request.responseText,"Update Failed");
-                msgDialog.showAsync();
+        else {
+        var msgDialog =
+        new Windows.UI.Popups.MessageDialog(error.request.responseText,"Update Failed");
+        msgDialog.showAsync();
             }
-          }).done(function () {
-            if (serverItem != null)
-              resolveDatabaseConflict(todoItem, serverItem);
+        }).done(function () {
+        if (serverItem != null)
+        resolveDatabaseConflict(todoItem, serverItem);
           });
         };
 
-
-3. In default.js, add the definition for the `resolveDatabaseConflict()` function that is referenced in `updateTodoItem` function. Notice that in order to resolve the conflict, you set the local item's version to the updated version from the server before updating the item in the database. Otherwise, you will continually encounter a conflict.
-
+3.  在 default.js 中，添加 `updateTodoItem` 函数中引用的 `resolveDatabaseConflict()` 函数的定义。请注意，为了解决冲突，在更新数据库中的项目之前，请将本地项目的版本设置为服务器中的已更新版本。否则，你将不断遇到冲突。
 
         var resolveDatabaseConflict = function (localItem, serverItem) {
-          var content = "This record has been changed as follows on the server already..\n\n" +
-              "id : " + serverItem.id + "\n" +
-              "text : " + serverItem.text + "\n" +
-              "complete : " + serverItem.complete + "\n\n" +
-              "Do you want to overwrite the server instance with your data?";
-          var msgDialog = new Windows.UI.Popups.MessageDialog(content, "Resolve Database Conflict");
-          msgDialog.commands.append(new Windows.UI.Popups.UICommand("Yes"));
-          msgDialog.commands.append(new Windows.UI.Popups.UICommand("No"));
-          msgDialog.showAsync().done(function (command) {
-              if (command.label == "Yes") {
-                  localItem.__version = serverItem.__version;
-                  updateTodoItem(localItem);
+        var content = "This record has been changed as follows on the server already..\n\n" +
+        "id :" + serverItem.id + "\n" +
+        "text :" + serverItem.text + "\n" +
+        "complete :" + serverItem.complete + "\n\n" +
+        "Do you want to overwrite the server instance with your data?";
+        var msgDialog = new Windows.UI.Popups.MessageDialog(content, "Resolve Database Conflict");
+        msgDialog.commands.append(new Windows.UI.Popups.UICommand("Yes"));
+        msgDialog.commands.append(new Windows.UI.Popups.UICommand("No"));
+        msgDialog.showAsync().done(function (command) {
+        if (command.label == "Yes") {
+        localItem.__version = serverItem.__version;
+        updateTodoItem(localItem);
               }
           });
         }
 
+<a name="test-app"></a>
+## 测试应用程序测试应用程序中的数据库写入冲突
 
-<h2><a name="test-app"></a><span class="short-header">Test the app</span>Test database write conflicts in the application</h2>
+在本节中，你将生成 Windows 应用商店应用程序包，以便在第二台计算机或虚拟机上安装应用程序。然后，你将在这两台计算机上运行应用程序，并生成写入冲突以测试代码。应用程序的两个实例将尝试更新同一项目的 `text` 属性，因此需要用户解决该冲突。
 
-In this section you will build a Windows Store app package to install the app on a second machine or virtual machine. Then you will run the app on both machines generating a write conflict to test the code. Both instances of the app will attempt to update the same item's `text` property requiring the user to resolve the conflict.
+1.  创建 Windows 应用商店应用程序包，以便在第二台计算机或虚拟机上进行安装。为此，请在 Visual Studio 中单击“项目” -\>“存储” -\>“创建应用程序包” 。
 
+    ![][1]
 
-1. Create a Windows Store app package to install on second machine or virtual machine. To do this, click **Project**->**Store**->**Create App Packages** in Visual Studio.
+2.  在“创建包”屏幕上，单击“否” ，因为此包将不会上载到 Windows 应用商店。然后单击"“下一步”"。
 
-	![][0]
+    ![][2]
 
-2. On the Create Your Packages screen, click **No** as this package will not be uploaded to the Windows Store. Then click **Next**.
+3.  在“选择和配置包”屏幕上，接受默认设置，然后单击“创建” 。
 
-	![][1]
+    ![][3]
 
-3. On the Select and Configure Packages screen, accept the defaults and click **Create**.
+4.  在“已创建包”屏幕上，单击“输出位置” 链接以打开包位置。
 
-	![][10]
+    ![][4]
 
-4. On the Package Creation Completed screen, click the **Output location** link to open the package location.
+5.  将包文件夹“todolist\_1.0.0.0\_AnyCPU\_Debug\_Test”复制到第二台计算机。在该计算机上，打开包文件夹并右键单击 "Add-AppDevPackage.ps1" PowerShell 脚本，然后单击“使用 PowerShell 运行” ，如下所示。按照提示操作以安装应用程序。
 
-   	![][11]
+    ![][5]
 
-5. Copy the package folder, "todolist_1.0.0.0_AnyCPU_Debug_Test", to the second machine. On that machine, open the package folder and right click on the **Add-AppDevPackage.ps1** PowerShell script and click **Run with PowerShell** as shown below. Follow the prompts to install the app.
+6.  通过单击“调试” -\>“启动调试” 在 Visual Studio 中运行应用程序的第 1 个实例。在第二台计算机的“开始”屏幕上，单击向下箭头以查看“按名称排列的应用程序”。然后单击“Todolist” 应用程序以运行应用程序的第 2 个实例。
 
-	![][12]
-  
-6. Run instance 1 of the app in Visual Studio by clicking **Debug**->**Start Debugging**. On the Start screen of the second machine, click the down arrow to see "Apps by name". Then click the **todolist** app to run instance 2 of the app. 
+    应用程序实例 1
+    ![][6]
 
-	App Instance 1	
-	![][2]
+    应用程序实例 2
+    ![][6]
 
-	App Instance 2	
-	![][2]
+7.  在应用程序的第 1 个实例中，将最后一个项目的文本更新为“Test Write 1” ，然后按 "Enter" 键以更新数据库。下面的屏幕快照显示了一个示例。
 
+    应用程序实例 1
+    ![][7]
 
-7. In instance 1 of the app, update the text of the last item to **Test Write 1**, then press the **Enter** key to update the database. The screenshot below shows an example.
-	
-	App Instance 1	
-	![][3]
+    应用程序实例 2
+    ![][6]
 
-	App Instance 2	
-	![][2]
+8.  此时，应用程序的第 2 个实例中的最后一个项目具有该项目的旧版本。在该应用程序实例中，针对最后一个项目的 `text` 属性输入“Test Write 2” ，然后按 "Enter" 以使用旧的 `_version` 属性更新数据库。
 
-8. At this point the last item in instance 2 of the app has an old version of the item. In that instance of the app, enter **Test Write 2** for the `text` property of the last item and press **Enter** to update the database with an old `_version` property.
+    应用程序实例 1
+    ![][8]
 
-	App Instance 1	
-	![][4]
+    应用程序实例 2
+    ![][9]
 
-	App Instance 2	
-	![][5]
+9.  由于用于更新尝试的 `__version` 值与服务器 `__version` 值不匹配，因此移动服务 SDK 将引发 `MobileServicePreconditionFailedException` 作为 `updateTodoItem` 函数中的错误，以便让应用程序来解决此冲突。若要解决此冲突，可以单击“是” 以从实例 2 提交值，也可以单击“否” 以放弃实例 2 中的值，让应用程序的实例 1 提交相关值。
 
-9. Since the `__version` value used with the update attempt didn't match the server `__version` value, the Mobile Services SDK throws a `MobileServicePreconditionFailedException` as an error in the `updateTodoItem` function allowing the app to resolve this conflict. To resolve the conflict, you can click **Yes** to commit the values from instance 2. Alternatively, click **No** to discard the values in instance 2, leaving the values from instance 1 of the app committed. 
+    应用程序实例 1
+    ![][8]
 
-	App Instance 1	
-	![][4]
+    应用程序实例 2
+    ![][10]
 
-	App Instance 2	
-	![][6]
+<a name="scriptsexample"></a>
+## 使用脚本处理冲突使用服务器脚本自动解决冲突
 
+可以使用服务器脚本检测和解决写入冲突。当你可以使用脚本逻辑而不是用户交互来解决冲突时，这是可行的。在本节中，你将向应用程序的 TodoItem 表添加服务器端脚本。该脚本将用于解决冲突的逻辑如下所示：
 
+-   如果 TodoItem 的 `complete` 字段设为 true，则可以认为该项已完成并且无法再更改 `text`。
+-   如果 TodoItem 的 `complete` 字段仍为 false，则将提交更新 `text` 的尝试。
 
-<h2><a name="scriptsexample"></a><span class="short-header">Handling conflicts with scripts</span>Automatically handling conflict resolution in server scripts</h2>
+以下步骤将指导你完成添加服务器更新脚本并对其进行测试的过程。
 
-You can detect and resolve write conflicts in server scripts. This is a good idea when you can use scripted logic instead of user interaction to resolve the conflict. In this section, you will add a server side script to the TodoItem table for the application. The logic this script will use to resolve conflicts is as follows:
+1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
 
-+  If the TodoItem's ` complete` field is set to true, then it is considered completed and `text` can no longer be changed.
-+  If the TodoItem's ` complete` field is still false, then attempts to update `text` will be comitted.
+    ![][11]
 
-The following steps walk you through adding the server update script and testing it.
+2.  单击“数据” 选项卡，然后单击 TodoItem  表。
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app. 
+    ![][12]
 
-   	![][7]
+3.  单击“脚本” ，然后选择“更新” 操作。
 
-2. Click the **Data** tab, then click the **TodoItem** table.
+    ![][13]
 
-   	![][8]
+4.  将现有脚本替换为以下函数，然后单击“保存” 。
 
-3. Click **Script**, then select the **Update** operation.
+        function update(item, user, request) { 
+        request.execute({ 
+        conflict:function (serverRecord) {
+        // Only committing changes if the item is not completed.
+        if (serverRecord.complete === false) {
+        //write the updated item to the table
+        request.execute();
+                    }
+        else
+                    {
+        request.respond(statusCodes.FORBIDDEN, 'The item is already completed.');
+                    }
+                }
+            }); 
+        }   
 
-   	![][9]
+5.  在两台计算机上运行 "Todolist" 应用程序。在实例 2 中更改最后一个项目的 TodoItem `text`，按 "Enter" 以使应用程序更新数据库。
 
-4. Replace the existing script with the following function, and then click **Save**.
+    应用程序实例 1
+    ![][8]
 
-		function update(item, user, request) { 
-			request.execute({ 
-				conflict: function (serverRecord) {
-					// Only committing changes if the item is not completed.
-					if (serverRecord.complete === false) {
-						//write the updated item to the table
-						request.execute();
-					}
-					else
-					{
-						request.respond(statusCodes.FORBIDDEN, 'The item is already completed.');
-					}
-				}
-			}); 
-		}   
-5. Run the **todolist** app on both machines. Change the TodoItem `text` for the last item in instance 2 and press **Enter** so the app updates the database.
+    应用程序实例 2
+    ![][9]
 
-	App Instance 1	
-	![][4]
+6.  在应用程序的实例 1 中，针对最后一个 text 属性输入不同的值，然后按 "Enter"。应用程序将尝试使用不正确的 `__version` 属性更新数据库。
 
-	App Instance 2	
-	![][5]
+    应用程序实例 1
+    ![][14]
 
-6. In instance 1 of the app, enter a different value for the last text property then press **Enter**. The app attempts to update the database with an incorrect `__version` property.
+    应用程序实例 2
+    ![][15]
 
-	App Instance 1	
-	![][13]
+7.  请注意，由于该项目未标记为“完成”而允许更新，服务器脚本解决了冲突，因此在应用程序中未遇到异常。若要查看更新是否确实成功，请单击实例 2 中的“刷新” 以重新查询数据库。
 
-	App Instance 2	
-	![][14]
+    应用程序实例 1
+    ![][16]
 
-7. Notice that no exception was encountered in the app since the server script resolved the conflict allowing the update since the item is not marked complete. To see that the update was truly successful, click **Refresh** in instance 2 to re-query the database.
+    应用程序实例 2
+    ![][16]
 
-	App Instance 1	
-	![][15]
+8.  在实例 1 中，单击复选框以完成最后一个 Todo 项目。
 
-	App Instance 2	
-	![][15]
+    应用程序实例 1
+    ![][17]
 
-8. In instance 1, click the check box to complete the last Todo item.
+    应用程序实例 2
+    ![][16]
 
-	App Instance 1	
-	![][16]
+9.  在实例 2 中，尝试更新最后一个 TodoItem 的文本并按 "Enter"，这将导致冲突，因为已更新该项目并将“完成”字段设为 true。在对冲突进行响应时，由于该项目已完成，此脚本通过拒绝更新解决了冲突。此脚本在响应中提供了一条消息。
 
-	App Instance 2	
-	![][15]
+    应用程序实例 1
+    ![][18]
 
-9. In instance 2, try to update the last TodoItem's text and press **Enter** this causes a conflict because it has been updated setting the complete field to true. In response to the conflict, the script resolved it by refusing the update because the item was already completed. The script provided a message in the response.  
+    应用程序实例 2
+    ![][19]
 
-	App Instance 1	
-	![][17]
+<a name="next-steps"> </a>
+## 后续步骤
 
-	App Instance 2	
-	![][18]
+本教程演示了在处理移动服务中的数据时，如何让 Windows 应用商店应用程序处理写入冲突。接下来，请考虑完成数据系列中的以下教程之一：
 
-## <a name="next-steps"> </a>Next steps
+-   [使用脚本验证和修改数据][]
+    了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
-This tutorial demonstrated how to enable a Windows Store app to handle write conflicts when working with data in Mobile Services. Next, consider completing one of the following tutorials in our data series:
+-   [使用分页优化查询][]
+    了解如何使用查询中的分页控制单个请求中处理的数据量。
 
-* [Validate and modify data with scripts]
-  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
+完成了数据系列后，你还可以尝试以下 Windows 应用商店教程之一：
 
-* [Refine queries with paging]
-  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
+-   [身份验证入门][]
+    了解如何对应用程序用户进行身份验证。
 
-Once you have completed the data series, you can also try one of the following Windows Store tutorials:
+-   [推送通知入门][]
+    了解如何使用移动服务将非常基本的推送通知发送到应用程序。
 
-* [Get started with authentication] 
-  <br/>Learn how to authenticate users of your app.
-
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app with Mobile Services.
- 
-<!-- Anchors. -->
-[Update the application to allow updates]: #uiupdate
-[Enable Conflict Detection in your application]: #enableOC
-[Test database write conflicts in the application]: #test-app
-[Automatically handling conflict resolution in server scripts]: #scriptsexample
-[Next Steps]:#next-steps
-
-<!-- Images. -->
-[0]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-create-app-package1.png
-[1]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-create-app-package2.png
-[2]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app1.png 
-[3]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app1-write1.png
-[4]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app1-write2.png
-[5]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app2-write2.png
-[6]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app2-write2-conflict.png
-[7]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/mobile-services-selection.png
-[8]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/mobile-portal-data-tables.png
-[9]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/mobile-insert-script-users.png
-[10]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-create-app-package3.png
-[11]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-create-app-package4.png
-[12]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-install-app-package.png
-[13]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app1-write3.png
-[14]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app2-write3.png
-[15]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-write3.png
-[16]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-checkbox.png
-[17]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-2-items.png
-[18]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-already-complete.png
-[19]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/mobile-manage-nuget-packages-VS.png
-[20]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/mobile-manage-nuget-packages-dialog.png
-
-<!-- URLs. -->
-[Optimistic Concurrency Control]: http://go.microsoft.com/fwlink/?LinkId=330935
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
-[Azure Account]: http://www.windowsazure.com/en-us/pricing/free-trial/
-[Validate and modify data with scripts]: /en-us/documentation/articles/mobile-services-windows-store-javascript-validate-modify-data-server-scripts/
-[Refine queries with paging]: /en-us/documentation/articles/mobile-services-windows-store-javascript-add-paging-data/
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started
-[Get started with authentication]: /en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-users/
-[Get started with push notifications]: /en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-push/
-
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Management Portal]: https://manage.windowsazure.com/
-[Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
-[Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
-[Developer Code Samples site]:  http://go.microsoft.com/fwlink/p/?LinkId=271146
-[System Properties]: http://go.microsoft.com/fwlink/?LinkId=331143
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/ "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-handle-database-conflicts/ "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/handle-database-write-conflicts-wp8/ "Windows Phone"
+  [更新应用程序以允许更新]: #uiupdate
+  [在应用程序中启用冲突检测]: #enableOC
+  [测试应用程序中的数据库写入冲突]: #test-app
+  [使用服务器脚本自动解决冲突]: #scriptsexample
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started
+  [Azure 帐户]: http://www.windowsazure.com/zh-cn/pricing/free-trial/
+  []: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/mobile-manage-nuget-packages-dialog.png
+  [系统属性]: http://go.microsoft.com/fwlink/?LinkId=331143
+  [1]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-create-app-package1.png
+  [2]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-create-app-package2.png
+  [3]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-create-app-package3.png
+  [4]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-create-app-package4.png
+  [5]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-install-app-package.png
+  [6]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app1.png
+  [7]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app1-write1.png
+  [8]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app1-write2.png
+  [9]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app2-write2.png
+  [10]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app2-write2-conflict.png
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  [11]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/mobile-services-selection.png
+  [12]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/mobile-portal-data-tables.png
+  [13]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/mobile-insert-script-users.png
+  [14]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app1-write3.png
+  [15]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-app2-write3.png
+  [16]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-write3.png
+  [17]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-checkbox.png
+  [18]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-2-items.png
+  [19]: ./media/mobile-services-windows-store-javascript-handle-database-conflicts/Mobile-oc-store-already-complete.png
+  [使用脚本验证和修改数据]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-validate-modify-data-server-scripts/
+  [使用分页优化查询]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-add-paging-data/
+  [身份验证入门]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users/
+  [推送通知入门]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-push/

@@ -1,23 +1,18 @@
 <properties linkid="develop-mobile-how-to-guides-register-windows-store-app-server-auth" urlDisplayName="Shared Access Signature Part 1" pageTitle="Register your Windows Store app package for Microsoft authentication" metaKeywords="" description="Learn how to register your Windows Store app for Microsoft authentication in your Azure Mobile Services application" metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Register your Windows Store app package for Microsoft authentication" authors="glenga" solutions="" manager="" editor="" />
 
-# Register your Windows Store app package for Microsoft authentication
+# 注册 Windows 应用商店应用程序包以进行 Microsoft 身份验证
 
-Azure Mobile Services supports both client-driven and server-driven authentication methods. Server-driven authentication uses identity providers, including Microsoft Account. When you use a Microsoft Account with server-driven authentication without registering your app with Mobile Services, users are prompted to supply credentials every time that the authentication is requested. When you register your app, the Microsoft Account login credentials are cached and can be used for authentication without the user being prompted to supply them again. This topic shows you how to register your Windows Store app package for an improved Microsoft Account login experience when using Azure Mobile Services for authentication. 
+Azure 移动服务支持客户端驱动的和服务器驱动的身份验证方法。服务器驱动的身份验证使用标识提供者（包括 Microsoft 帐户）。如果你将 Microsoft 帐户用于服务器驱动的身份验证但未将应用程序注册到移动服务，则每次请求身份验证时，系统将提示用户提供凭据。如果你注册了应用程序，则 Microsoft 帐户登录凭据将被缓存并可用于身份验证，并且系统不会再次提示用户提供凭据。本主题说明如何注册你的 Windows 应用商店应用程序包，以便在使用 Azure 移动服务进行身份验证时获得更好的 Microsoft 帐户登录体验。
 
-Client-driven authentication can be used to provide a single sign-on experience on a Windows device by using Live Connect. If you use Live Connect APIs, you do not need to complete the steps in this topic. For more information, see [Authenticate your Windows Store app with Live Connect single sign-on].   
+使用客户端驱动的身份验证可以通过 Live Connect 在 Windows 设备上提供单一登录体验。如果你使用了 Live Connect API，则不需要完成本主题中的步骤。有关详细信息，请参阅[使用 Live Connect 单一登录对 Windows 应用商店应用程序进行身份验证][]。
 
->[WACOM.NOTE]Visual Studio 2013 makes it easy to register your Windows Store app package with Mobile Services. For more information, see <a href="http://go.microsoft.com/fwlink/p/?LinkId=309101">Quickstart: Adding push notifications for a mobile service</a> in the Windows Dev Center.
+> [WACOM.NOTE] 使用 Visual Studio 2013 可以轻松地将 Windows 应用商店应用程序包注册到移动服务。有关详细信息，请参阅[快速入门：为移动服务添加推送通知][]（位于 Windows 开发中心）。
 
-[WACOM.INCLUDE [mobile-services-register-windows-store-app](../includes/mobile-services-register-windows-store-app.md)]
+[WACOM.INCLUDE [mobile-services-register-windows-store-app][]]
 
-After you have registered your app package, remember to supply a value of <strong>true</strong> for the <em>useSingleSignOn</em> when you call the <a href="http://go.microsoft.com/fwlink/p/?LinkId=311594" target="_blank">LoginAsync</a> method. This provides your users with the improved login experience when using a Microsoft Account.
+注册应用程序包后，在调用 [LoginAsync][] 方法时，请记得为 *useSingleSignOn* 提供 "true" 值。这样，你的用户在使用 Microsoft 帐户时可以获得更好的登录体验。
 
-<!-- Anchors. -->
-<!-- Images. -->
-
-
-<!-- URLs. -->
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-dotnet/
-[Authenticate your Windows Store app with Live Connect single sign-on]: /en-us/develop/mobile/tutorials/single-sign-on-windows-8-dotnet
-[Get started with users C#]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Get started with users JavaScript]: /en-us/develop/mobile/tutorials/get-started-with-users-js/
+  [使用 Live Connect 单一登录对 Windows 应用商店应用程序进行身份验证]: /zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-dotnet
+  [快速入门：为移动服务添加推送通知]: http://go.microsoft.com/fwlink/p/?LinkId=309101
+  [mobile-services-register-windows-store-app]: ../includes/mobile-services-register-windows-store-app.md
+  [LoginAsync]: http://go.microsoft.com/fwlink/p/?LinkId=311594

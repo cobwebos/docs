@@ -1,60 +1,57 @@
 <properties pageTitle="Service-side authorization (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to authorize users in the .NET backend of Azure Mobile Services." metaCanonical="" services="" documentationCenter="Mobile" title="Service-side authorization of Mobile Services users" authors="glenga" solutions="" manager="" editor="" />
 
-# Service-side authorization of Mobile Services users
+# 移动服务用户的服务端授权
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-authorize-users-in-scripts" title="Windows Store C#">Windows Store C#</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts" title="Windows Store JavaScript" class="current">Windows Store JavaScript</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-authorize-users-in-scripts" title="Windows Phone">Windows Phone</a><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-ios-authorize-users-in-scripts" title="iOS">iOS</a></div>
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts/" title=".NET backend" class="current">.NET backend</a> | <a href="/en-us/documentation/articles/mobile-services-windows-store-javascript-authorize-users-in-scripts/"  title="JavaScript backend">JavaScript backend</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-authorize-users-in-scripts" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts" title="Windows Store JavaScript" class="current">Windows 应用商店 JavaScript</a><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-authorize-users-in-scripts" title="Windows Phone">Windows Phone</a><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-authorize-users-in-scripts" title="iOS">iOS</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts/" title=".NET backend" class="current">.NET 后端</a> | <a href="/zh-cn/documentation/articles/mobile-services-windows-store-javascript-authorize-users-in-scripts/"  title="JavaScript backend">JavaScript 后端</a></div>
 
-This topic shows you how to authorize authenticated users for accessing data in Azure Mobile Services from a Windows Store app. In this tutorial you add code to the data access methods in your your controller that filter queries based on the userId of an authenticated user, ensuring that each user can see only their own data.
+本主题说明如何为已经过身份验证的用户授权，使其能够从 Windows 应用商店应用程序访问 Azure 移动服务中的数据。在本教程中，你将要在控制器中添加数据访问方法的代码，用于根据已经过身份验证的用户的 userId 筛选查询，确保每个用户只会看到自己的数据。
 
-This tutorial is based on the Mobile Services quickstart and builds on the previous tutorial [Get started with authentication]. Before you start this tutorial, you must first complete [Get started with authentication].  
+本教程是在移动服务快速入门和前面的[身份验证入门][]教程的基础上制作的。在开始本教程之前，必须先完成[身份验证入门][]。
 
-## <a name="register-scripts"></a>Modify the data access methods
+<a name="register-scripts"></a>
+## 修改数据访问方法
 
-[WACOM.INCLUDE [mobile-services-filter-user-results-dotnet-backend](../includes/mobile-services-filter-user-results-dotnet-backend.md)] 
+[WACOM.INCLUDE [mobile-services-filter-user-results-dotnet-backend][]]
 
+## 测试应用程序
 
-## Test the app
+1.  在 Visual Studio 中，打开你在完成[身份验证入门][]教程后修改的项目。
 
-1. In Visual Studio, open the project that you modified when you completed the tutorial [Get started with authentication].
+2.  按 F5 键运行应用程序，然后使用所选的标识提供者登录。
 
-2. Press the F5 key to run the app, then log-on with your chosen identity provider. 
+    你会发现，尽管 TodoItem 表中已存在完成前面的教程后创建的项，但并没有返回任何项。发生此情况的原因是，以前插入项时并未使用 userId 列，而现在这些列的值为 null。
 
-   	Notice that this time, although there are items already in the TodoItem table from previous tutorials, no items are returned. This happens because previous items were inserted without the userId column and now have null values.
+3.  在应用程序中的“插入 TodoItem”内输入文本，然后单击“保存” 。
 
-3. In the app, enter text in **Insert a TodoItem** and then click **Save**.
+    ![][]
 
-   	![][3]
+    这将会在移动服务的 TodoItem 表中插入文本和 userId。由于新项包含了正确的 userId 值，因此移动服务会返回该项，并在第二列显示它。
 
-   	This inserts both the text and the userId in the TodoItem table in the mobile service. Because the new item has the correct userId value, it is returned by the mobile service and displayed in the second column.
+4.  （可选）如果你有其他登录帐户，可以通过关闭 (Alt+F4) 然后重新运行应用程序，来验证用户是否只能看到他们自己的数据。显示登录凭据对话框时，请输入一个不同的登录名，然后检查在前一帐户下输入的项是否未显示。
 
-6. (Optional) If you have additional login accounts, you can verify that users can only see their own data by closing the app (Alt+F4) and then running it again. When the login credentials dialog is displayed, enter a different login, and then verify that the items entered under the previous account are not displayed. 
+## 后续步骤
 
-## Next steps
+演示身份验证操作基础知识的教程到此结束。建议你了解有关以下移动服务主题的详细信息：
 
-This concludes the tutorials that demonstrate the basics of working with authentication. Consider finding out more about the following Mobile Services topics:
+-   [数据处理入门][]
+    了解有关使用移动服务存储和查询数据的详细信息。
 
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
+-   [推送通知入门][]
+    了解如何向应用程序发送一条非常简单的推送通知。
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
-  
-* [How to use an HTML/JavaScript client for Azure Mobile Services]
-  <br/>Learn more about how to use Mobile Services with JavaScript and HTML.
+-   [如何使用适用于 Azure 移动服务的 HTML/JavaScript 客户端][]
+    了解有关如何将移动服务与 JavaScript 和 HTML 一起使用的详细信息。
 
-<!-- Anchors. -->
-[Register server scripts]: #register-scripts
-[Next Steps]:#next-steps
-
-<!-- Images. -->
-
-[3]: ./media/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts/mobile-quickstart-startup.png
-
-<!-- URLs. -->
-[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-get-started
-[Get started with data]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data
-[Get started with authentication]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users
-[Get started with push notifications]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push
-
-[How to use an HTML/JavaScript client for Azure Mobile Services]: /en-us/documentation/articles/mobile-services-html-how-to-use-client-library
+  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-authorize-users-in-scripts "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-authorize-users-in-scripts "Windows Phone"
+  [iOS]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-authorize-users-in-scripts "iOS"
+  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts/ ".NET 后端"
+  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-authorize-users-in-scripts/ "JavaScript 后端"
+  [身份验证入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users
+  [mobile-services-filter-user-results-dotnet-backend]: ../includes/mobile-services-filter-user-results-dotnet-backend.md
+  []: ./media/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts/mobile-quickstart-startup.png
+  [数据处理入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data
+  [推送通知入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push
+  [如何使用适用于 Azure 移动服务的 HTML/JavaScript 客户端]: /zh-cn/documentation/articles/mobile-services-html-how-to-use-client-library

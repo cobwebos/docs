@@ -1,287 +1,269 @@
 <properties linkid="develop-mobile-tutorials-get-started-offline-data-dotnet" urlDisplayName="Getting Started with Offline Data" pageTitle="Get started with offline data in Mobile Services (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to use offline data in your Windows Store application." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Get started with offline data in Mobile Services" authors="wesmc" />
 
-# Get started with Offline Data in Mobile Services
+# 移动服务中的脱机数据入门
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data" title="Windows Store C#" class="current">Windows Store C#</a>
-<a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started-offline-data" title="Windows Phone">Windows Phone</a>
+<a href="/zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data" title="Windows Store C#" class="current">Windows 应用商店 C\#</a>
+<a href="/zh-cn/documentation/articles/mobile-services-windows-phone-get-started-offline-data" title="Windows Phone">Windows Phone</a>
 </div>
 
-This topic shows you how to use use the offline capabilities of Azure Mobile Services. Azure Mobile Services offline features allow you to interact with a local database when you are in an offline scenario with your Mobile Service. The offline features allow you to sync your local changes with the mobile service when you are online again. 
+本主题演示如何使用 Azure 移动服务的脱机功能。当你的移动服务处于脱机情况时，可使用 Azure 移动服务脱机功能与本地数据库交互。当你重新联机时，脱机功能允许你通过移动服务同步本地更改。
 
-In this tutorial, you will update the app from the [Get started with Mobile Services] or [Get Started with Data] tutorial to support the offline features of Azure Mobile Services. Then you will add data in a disconnected offline scenario, sync those items to the online database, and then log in to the Azure Management Portal to view changes to data made when running the app.
+在本教程中，你将更新[移动服务入门][]或[数据入门][]教程中的应用程序，以支持 Azure 移动服务的脱机功能。随后，你将在断开连接的脱机情况下添加数据，将这些项目同步到联机数据库，然后登录到 Azure 管理门户，查看在运行应用程序时对数据所做的更改。
 
+> [WACOM.NOTE] 本教程旨在帮助你更好地了解如何使用移动服务通过 Azure 在 Windows 应用商店应用程序中存储和检索数据。因此，本主题指导你完成的许多步骤已在移动服务快速入门中代你完成。如果这是你第一次体验移动服务，请考虑首先完成[移动服务入门][]教程。
 
->[WACOM.NOTE] This tutorial is intended to help you better understand how Mobile Services enables you to use Azure to store and retrieve data in a Windows Store app. As such, this topic walks you through many of the steps that are completed for you in the Mobile Services quickstart. If this is your first experience with Mobile Services, consider first completing the tutorial [Get started with Mobile Services].
+本教程将指导你完成以下基本步骤：
 
-This tutorial walks you through these basic steps:
+1.  [更新应用程序以支持脱机功能][]
+2.  [在脱机情况下测试应用程序][]
+3.  [更新应用程序以重新连接移动服务][]
+4.  [测试已连接到移动服务的应用程序][]
 
-1. [Update the app to support offline features]
-2. [Test the app in an offline Scenario] 
-3. [Update the app to reconnect your mobile service]
-4. [Test the app connected to the Mobile Service]
+本教程需要的内容如下：
 
-This tutorial requires the following:
+-   运行在 Windows 8.1 上的 Visual Studio 2013。
+-   完成[移动服务入门][]或[数据入门][]教程。
+-   Windows Azure 移动服务 SDK NuGet 包版本 1.3.0-alpha2
+-   Windows Azure 移动服务 SQLite Store NuGet 包 1.0.0-alpha
+-   SQLite for Windows 8.1
 
-* Visual Studio 2013 running on Windows 8.1.
-* Completion of the [Get started with Mobile Services] or [Get Started with Data] tutorial.
-* Windows Azure Mobile Services SDK NuGet package version 1.3.0-alpha2
-* Windows Azure Mobile Services SQLite Store NuGet package 1.0.0-alpha 
-* SQLite for Windows 8.1
+> [WACOM.NOTE] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][]。
 
->[WACOM.NOTE] To complete this tutorial, you need a Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure Free Trial</a>. 
+<a name="enable-offline-app"></a>
+## 更新应用程序以支持脱机功能
 
-## <a name="enable-offline-app"></a>Update the app to support offline features
+当你的移动服务处于脱机情况时，可使用 Azure 移动服务脱机功能与本地数据库交互。若要在你的应用程序中使用这些功能，请将 `MobileServiceClient.SyncContext` 初始化到本地存储。然后，通过 `IMobileServiceSyncTable` 接口引用表。
 
-Azure Mobile Services offline features allow you to interact with a local database when you are in an offline scenario with your Mobile Service. To use these features in your app, you initialize `MobileServiceClient.SyncContext` to a local store. Then reference your table through the `IMobileServiceSyncTable` interface.
+本节使用 SQLite 作为脱机功能的本地存储。
 
-This section uses SQLite as the local store for the offline features.
+> [WACOM.NOTE] 可以跳过本节，而只下载具有脱机支持的“入门”项目版本。若要下载启用了脱机支持的项目，请参阅[脱机示例入门][]。
 
->[WACOM.NOTE] You can skip this section and just download a version of the Getting Started project that already has offline support.  To download a project with offline support enabled, see [Getting Started Offline Sample].
+1.  安装 SQLite。可以从此链接 ([SQLite for Windows 8.1][]) 安装它。
 
+    > [WACOM.NOTE] 如果你使用的是 Internet Explorer，则单击用于安装 SQLite 的链接可能会提示你下载 .zip 文件形式的 .vsix。使用 .vsix 扩展名而不是 .zip 将文件保存到硬盘上的某一位置。在 Windows 资源管理器中双击 .vsix 文件以运行安装程序。
 
-1. Install SQLite. You can install it from this link, [SQLite for Windows 8.1].
+2.  在 Visual Studio 中，打开你在[移动服务入门][]或[数据入门][]教程中完成的项目。在解决方案资源管理器中，右键单击项目下的“引用” ，并在“Windows” \>“扩展” 下添加对“SQLite for Windows Runtime” 的引用。
 
-    >[WACOM.NOTE] If you are using Internet Explorer, clicking the link to install SQLite may prompt you to download the .vsix as a .zip file. Save the file to a location on your hard drive with the .vsix extension instead of .zip. The double click the .vsix file in Windows Explorer to run the installation.
+    ![][]
 
-2. In Visual Studio open the project that you completed in the [Get started with Mobile Services] or [Get Started with Data] tutorial. In Solution Explorer, right click **References** under the project and add a reference to **SQLite for Windows Runtime** under **Windows** > **Extensions**. 
+3.  SQLite 运行时要求你将所生成的项目的处理器体系结构更改为“x86” 、“x64” 或“ARM” 。不支持“任何 CPU” 。请将处理器体系结构更改为要测试的受支持设置之一。
+
+4.  在 Visual Studio 的解决方案资源管理器中，右键单击客户端应用程序项目，然后单击“管理 Nuget 包” 以运行 NuGet 包管理器。搜索“SQLiteStore” 以安装 WindowsAzure.MobileServices.SQLiteStore 包 。
 
     ![][1]
 
-3. The SQLite Runtime requires you to change the processor architecture of the project being built to **x86**, **x64**, or **ARM**. **Any CPU** is not supported. Change the processor architecture to one of the supported settings that you want to test.
-
-4. In Solution Explorer for Visual Studio, right click your client app project and click **Manage Nuget Packages** to run NuGet Package Manager. Search for **SQLiteStore** to install the **WindowsAzure.MobileServices.SQLiteStore** package.
-
-    ![][2]
-
-5. In Solution Explorer for Visual Studio, open the MainPage.xaml.cs file. Add the following using statements to the top of the file.
+5.  在 Visual Studio 的解决方案资源管理器中，打开 MainPage.xaml.cs 文件。将下列 using 语句添加到文件顶部。
 
         using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
         using Microsoft.WindowsAzure.MobileServices.Sync;
         using Newtonsoft.Json.Linq;
 
-6. In Mainpage.xaml.cs replace the declaration of `todoTable` with a declaration of type `IMobileServicesSyncTable` that is initialized by calling `MobileServicesClient.GetSyncTable()`.
+6.  在 Mainpage.xaml.cs 中，将 `todoTable` 的声明替换为通过调用 `MobileServicesClient.GetSyncTable()` 来初始化的类型为 `IMobileServicesSyncTable` 的声明。
 
         //private IMobileServiceTable<TodoItem> todoTable = App.MobileService.GetTable<TodoItem>();
         private IMobileServiceSyncTable<TodoItem> todoTable = App.MobileService.GetSyncTable<TodoItem>();
 
-7. In MainPage.xaml.cs, update the `TodoItem` class so that the class includes the **Version** system property as follows.
+7.  在 MainPage.xaml.cs 中，更新 `TodoItem` 类，使该类包括 "Version" 系统属性，如下所示。
 
         public class TodoItem
         {
-          public string Id { get; set; }
-          [JsonProperty(PropertyName = "text")]
-          public string Text { get; set; }
-          [JsonProperty(PropertyName = "complete")]
-          public bool Complete { get; set; }
-          [Version]
-          public string Version { get; set; }
+        public string Id { get; set; }
+        [JsonProperty(PropertyName = "text")]
+        public string Text { get; set; }
+        [JsonProperty(PropertyName = "complete")]
+        public bool Complete { get; set; }
+        [Version]
+        public string Version { get; set; }
         }
 
-
-8. In MainPage.xaml.cs, update the `OnNavigatedTo` event handler so that it is an `async` method and initializes the client sync context with a SQLite store. The SQLite store is created with a table that matches the schema of the mobile service table but it must contain the **Version** system property added in the previous step.
+8.  在 MainPage.xaml.cs 中，更新 `OnNavigatedTo` 事件处理程序，使之成为 `async` 方法，并使用 SQLite 存储初始化客户端同步上下文。SQLite 存储是使用与移动服务表的架构匹配的表创建的，但它必须包含上一步添加的 "Version" 系统属性。
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (!App.MobileService.SyncContext.IsInitialized)
+        if (!App.MobileService.SyncContext.IsInitialized)
             {
-                var store = new MobileServiceSQLiteStore("localsync12.db");
-                store.DefineTable<TodoItem>();
-                await App.MobileService.SyncContext.InitializeAsync(store, new MobileServiceSyncHandler());
+        var store = new MobileServiceSQLiteStore("localsync12.db");
+        store.DefineTable<TodoItem>();
+        await App.MobileService.SyncContext.InitializeAsync(store, new MobileServiceSyncHandler());
             }
-            RefreshTodoItems();
+        RefreshTodoItems();
         }
 
-9. In Solution Explorer for Visual Studio, open the MainPage.xaml file. Find the Grid element that contains the StackPanel titled **Query and Update Data**. Add the following UI code that replaces the elements from the row definitions down to the start tag of the ListView. 
+9.  在 Visual Studio 的解决方案资源管理器中，打开 MainPage.xaml 文件。找到包含标题为 "Query and Update Data" 的 StackPanel 的 Grid 元素。添加以下 UI 代码以替换从行定义向下到 ListView 的开始标记之间的元素。
 
-    This code adds row and column definitions to the grid to layout the elements. It also adds two button controls with click event handlers for **Push** and **Pull** operations. The buttons are positioned just above the `ListView` named ListItems. Save the file.
+    此代码添加用于元素布局网格的行定义和列定义。它还添加两个按钮控件，其中包含“推送” 和“拉取” 操作的单击事件处理程序。这些按钮就在名为 ListItems 的 `ListView` 的上面。保存文件。
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
-            <local:QuickStartTask Number="2" Title="Query, Update, and Synchronize Data" 
-              Description="Use the Pull and Push buttons to synchronize the local store with the server" />
+        <local:QuickStartTask Number="2" Title="Query, Update, and Synchronize Data" 
+        Description="Use the Pull and Push buttons to synchronize the local store with the server" />
         </StackPanel>
         <Button Grid.Row="1" Grid.Column="0" Margin="5,5,0,0" Name="ButtonPush"
-            Click="ButtonPush_Click" Width="80" Height="34">⬆ Push</Button>
+        Click="ButtonPush_Click" Width="80" Height="34">?Push</Button>
         <Button Grid.Row="1" Grid.Column="1" Margin="5,5,0,0"  Name="ButtonPull" 
-            Click="ButtonPull_Click" Width="80" Height="34">⬇ Pull</Button>
+        Click="ButtonPull_Click" Width="80" Height="34">?Pull</Button>
         <ListView Name="ListItems" SelectionMode="None" Margin="0,10,0,0" Grid.ColumnSpan="2" Grid.Row="2">
-        
 
-
-10. In MainPage.xaml.cs, add the button click event handlers for the **Push** and **Pull** buttons and save the file.
+10. 在 MainPage.xaml.cs 中，添加“推送” 和“拉取” 按钮的按钮单击事件处理程序，并保存该文件。
 
         private async void ButtonPull_Click(object sender, RoutedEventArgs e)
         {
-            Exception pullException = null;
-            try
+        Exception pullException = null;
+        try
             {
-                await todoTable.PullAsync();
-                RefreshTodoItems();
+        await todoTable.PullAsync();
+        RefreshTodoItems();
             }
-            catch (Exception ex)
+        catch (Exception ex)
             {
-                pullException = ex;
+        pullException = ex;
             }
-            if (pullException != null) {
-                MessageDialog d = new MessageDialog("Pull failed: " + pullException.Message +
-                  "\n\nIf you are in an offline scenario, " + 
-                  "try your Pull again when connected with your Mobile Serice.");
-                await d.ShowAsync();
+        if (pullException != null) {
+        MessageDialog d = new MessageDialog("Pull failed:" + pullException.Message +
+        "\n\nIf you are in an offline scenario, " + 
+        "try your Pull again when connected with your Mobile Serice.");
+        await d.ShowAsync();
             }
         }
         private async void ButtonPush_Click(object sender, RoutedEventArgs e)
         {
-            string errorString = null;
-            try
+        string errorString = null;
+        try
             {
-                await App.MobileService.SyncContext.PushAsync();
-                RefreshTodoItems();
+        await App.MobileService.SyncContext.PushAsync();
+        RefreshTodoItems();
             }
-            catch (MobileServicePushFailedException ex)
+        catch (MobileServicePushFailedException ex)
             {
-                errorString = "Push failed because of sync errors: " + 
-                  ex.PushResult.Errors.Count() + ", message: " + ex.Message;
+        errorString = "Push failed because of sync errors: " + 
+        ex.PushResult.Errors.Count() + ", message:" + ex.Message;
             }
-            catch (Exception ex)
+        catch (Exception ex)
             {
-                errorString = "Push failed: " + ex.Message;
+        errorString = "Push failed:" + ex.Message;
             }
-            if (errorString != null) {
-                MessageDialog d = new MessageDialog(errorString + 
-                  "\n\nIf you are in an offline scenario, " + 
-                  "try your Push again when connected with your Mobile Serice.");
-                await d.ShowAsync();
+        if (errorString != null) {
+        MessageDialog d = new MessageDialog(errorString + 
+        "\n\nIf you are in an offline scenario, " + 
+        "try your Push again when connected with your Mobile Serice.");
+        await d.ShowAsync();
             }
         }
 
-11. Don't run the app yet. Press the **F7** key to rebuild the project. Verify no build errors occurred.
+11. 此时请不要运行该应用程序。按 F7  键以重新生成项目。确保没有生成错误发生。
 
+<a name="test-offline-app"></a>
+## 在脱机情况下测试应用程序
 
-## <a name="test-offline-app"></a>Test the app in an offline scenario
+在本节中，你将断开应用程序与移动服务的连接以模拟脱机情况。然后，你将添加一些数据项，这些项将保存到本地存储中。
 
-In this section, you break the app connection with the mobile service to simulate an offline scenario. Then you will add some data items which will be held in the local store.
+请注意，在本节中，应用程序不应连接到任何移动服务。因此，如果你测试“推送” 和“拉取” 按钮，它们将引发异常。在下一节中，你会将此客户端应用程序重新连接到移动服务来测试“推送” 和“拉取” 操作，以便将存储与移动服务数据库进行同步。
 
-Notice that in this section the app should not be connected to any mobile service. So the **Push** and **Pull** buttons will throw exceptions if you test them. In the next section, you will connect this client app to the mobile service again to test the **Push** and **Pull** operations to sync the store with the mobile service database.
-
-
-1. In Solution Explorer for Visual Studio, open App.xaml.cs. Change the initialization of the **MobileServiceClient** to a invalid address by replacing "**azure-mobile.net**" with "**azure-mobile.xxx**" for your URL. Then save the file.
+1.  在 Visual Studio 的解决方案资源管理器中，打开 App.xaml.cs。通过将你的 URL 的“azure-mobile.net” 替换为“azure-mobile.xxx” ，将 MobileServiceClient  的初始化更改为一个无效的地址。然后，保存文件。
 
          public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://your-mobile-service.azure-mobile.xxx/",
-            "AppKey"
+        "https://your-mobile-service.azure-mobile.xxx/",
+        "AppKey"
         );
 
-2. In Visual Studio, press **F5** to build and run the app. Enter a new todo item and click **Save**. The new todo items exist only in the local store until they can be pushed to the mobile service. The client app behaves as if its connected to the mobile service supporting all create, read, update, delete (CRUD) operations.
+2.  在 Visual Studio 中，按 F5  生成并运行应用程序。输入新的 Todo 项目，然后单击“保存” 。新的 Todo 项目在推送到移动服务之前，只存在于本地存储中。客户端应用程序的行为就像它已连接到支持所有创建、读取、更新、删除 (CRUD) 操作的移动服务一样。
+
+    ![][2]
+
+3.  关闭应用程序并重新启动它，以验证你创建的新项目是否已永久保存到本地存储中。
+
+<a name="update-online-app"></a>
+## 更新应用程序以重新连接移动服务
+
+在本节中，你会将应用程序重新连接到移动服务。这模拟的是通过移动服务从脱机状态转为联机状态的应用程序。
+
+1.  在 Visual Studio 的解决方案资源管理器中，打开 App.xaml.cs。通过将你的 URL 的“azure-mobile.xxx” 替换为“azure-mobile.net” ，将 MobileServiceClient  的初始化更改回正确的地址。然后，保存文件。
+
+         public static MobileServiceClient MobileService = new MobileServiceClient(
+        "https://your-mobile-service.azure-mobile.net/",
+        "Your AppKey"
+        );
+
+<a name="test-online-app"></a>
+## 测试已连接到移动服务的应用程序
+
+在本节中，你将测试推送和拉取操作，以便将本地存储与移动服务数据库同步。
+
+1.  在 Visual Studio 中，按 F5  键重新生成并运行应用程序。请注意，数据看上去与脱机情况下相同，即使应用程序现已连接到移动服务。这是因为此应用程序始终使用 `IMobileServiceSyncTable`，后者指向本地存储。
+
+    ![][3]
+
+2.  登录到 Microsoft Azure 管理门户，查看你的移动服务数据库。如果你的服务使用移动服务的 JavaScript 后端，则可以浏览移动服务的“数据” 选项卡中的数据。如果你使用的是移动服务的 .NET 后端，则可以单击 SQL Azure 扩展中数据库的“管理” 按钮，以便对表执行查询。
+
+    请注意，数据尚未在数据库和本地存储之间进行同步。
 
     ![][4]
 
-3. Close the app and restart it to verify that the new items you created are persisted to the local store.
+3.  在应用程序中，按“推送” 按钮。这会导致应用程序依次调用 `MobileServiceClient.SyncContext.PushAsync` 和 `RefreshTodoItems`，以使用本地存储中的项目刷新应用程序。此推送操作将导致移动服务数据库从存储接收数据。但是，本地存储不会从移动服务数据库接收项目。
 
-## <a name="update-online-app"></a>Update the app to reconnect your mobile service
-
-In this section you reconnect the app to the mobile service. This simulates the app moving from an offline state to an online state with the mobile service.
-
-
-1. In Solution Explorer for Visual Studio, open App.xaml.cs. Change the initialization of the **MobileServiceClient** back to the correct address by replacing "**azure-mobile.xxx**" with "**azure-mobile.net**" for your URL. Then save the file.
-
-         public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://your-mobile-service.azure-mobile.net/",
-            "Your AppKey"
-        );
-
-
-## <a name="test-online-app"></a>Test the app connected to the mobile service
-
-
-In this section you will test push and pull operations to sync the local store with the mobile service database.
-
-1. In Visual Studio, press the **F5** key to rebuild and run the app. Notice that the data looks the same as the offline scenario even though the app is now connected to the mobile service. This is because this app always works with the `IMobileServiceSyncTable` that is pointed to the local store.
+    推送操作从 `MobileServiceClient.SyncContext` 而非 `IMobileServicesSyncTable` 执行，并将更改推送到与该同步上下文关联的所有表中。这是为了应对表之间存在关系的情况。
 
     ![][5]
 
-2. Log into the Microsoft Azure Management portal and look at the database for your mobile service. If your service uses the JavaScript backend for mobile services, you can browse the data from the **Data** tab of the mobile service. If you are using the .NET backend for your mobile service, you can click on the **Manage** button for your database in the SQL Azure Extension to execute a query against your table.
-
-    Notice the data has not been synchronized between the database and the local store.
+4.  在应用程序中将几个新项目添加到本地存储中。
 
     ![][6]
 
-3. In the app, press the **Push** button. This causes the app to call `MobileServiceClient.SyncContext.PushAsync` and then `RefreshTodoItems` to refresh the app with the items from the local store. This push operation results in the mobile service database receiving the data from the store. However, the local store does not receive the items from the mobile service database.
-
-    A push operation is executed off the `MobileServiceClient.SyncContext` instead of the `IMobileServicesSyncTable` and pushes changes on all tables associated with that sync context. This is to cover scenarios where there are relationships between tables.
+5.  这次在应用程序中按“拉取” 按钮。应用程序只调用 `IMobileServiceSyncTable.PullAsync()` 和 `RefreshTodoItems`。请注意，移动服务数据库中的所有数据均已拉入本地存储，并显示在应用程序中。但另请注意，本地存储中的所有数据仍推送到了移动服务数据库中。这是因为"拉取时始终先执行推送操作"。
 
     ![][7]
 
-4. In the app a few new items to the local store.
-
     ![][8]
 
-5. This time press the **Pull** button in the app. The app only calls `IMobileServiceSyncTable.PullAsync()` and `RefreshTodoItems`.  Notice that all the data from the mobile service database was pulled into the local store and shown in the app. However, also notice that all the data in the local store was still pushed to the mobile service database. This is because a **pull always does a push first**.    
- 
-    ![][9]
+## 摘要
 
-    ![][10] 
-  
+为了支持移动服务的脱机功能，我们使用了 `IMobileServiceSyncTable` 接口，并使用本地存储初始化了 `MobileServiceClient.SyncContext`。在这种情况下，本地存储是一个 SQLite 数据库。
 
-##Summary
+移动服务的正常 CRUD 操作执行起来就像应用程序仍处于连接状态一样，但所有操作都针对本地存储进行。
 
-In order to support the offline features of mobile services, we used the `IMobileServiceSyncTable` interface and initialized `MobileServiceClient.SyncContext` with a local store. In this case the local store was a SQLite database.
+当我们想要将本地存储与服务器同步时，我们使用了 `IMobileServiceSyncTable.PullAsync` 和 `MobileServiceClient.SyncContext.PushAsync` 方法。
 
-The normal CRUD operations for mobile services work as if the app is still connected but, all the operations occur against the local store.
+-   为了将更改推送到服务器中，我们调用了 `IMobileServiceSyncContext.PushAsync()`。此方法属于 `IMobileServicesSyncContext` 而不是同步表，因为它会将更改推送到所有表中：
 
-When we wanted to synchronize the local store with the server, we used the `IMobileServiceSyncTable.PullAsync` and `MobileServiceClient.SyncContext.PushAsync` methods.
+    只有已在本地以某种方式修改（通过 CRUD 操作来完成）的记录才会发送到服务器。
 
-*  To push changes to the server, we called `IMobileServiceSyncContext.PushAsync()`. This method is a member of `IMobileServicesSyncContext` instead of the sync table because it will push changes across all tables:
+-   为了从服务器上的表中将数据拉取到应用程序，我们调用了 `IMobileServiceSyncTable.PullAsync`。
 
-    Only records that have been modified in some way locally (through CRUD operations) will be sent to the server.
-   
-* To pull data from a table on the server to the app, we called `IMobileServiceSyncTable.PullAsync`.
+    拉取时始终先发出推送操作。
 
-    A pull always issues a push first.  
+    此外还有 "PullAsync()" 的重载，它允许指定查询。请注意，在移动服务的脱机支持的预览版中，"PullAsync" 将读取相应表（或查询）中的所有行 - 例如，它并不会只读取比上次同步更新的行。如果行已存在于本地同步表中，则这些行会保持不变。
 
-    There are also overloads of **PullAsync()** that allow a query to be specified. Note that in the preview release of offline support for Mobile Services, **PullAsync** will read all rows in the corresponding table (or query)--it does not attempt to read only rows newer than the last sync, for instance. If the rows already exist in the local sync table, they will remain unchanged.
+## 后续步骤
 
+-   [使用移动服务脱机支持处理冲突][]
 
-## Next steps
-
-* [Handling conflicts with offline support for Mobile Services]
-
-<!-- Anchors. -->
-[Update the app to support offline features]: #enable-offline-app
-[Test the app in an offline Scenario]: #test-offline-app
-[Update the app to reconnect your mobile service]: #update-online-app
-[Test the app connected to the Mobile Service]: #test-online-app
-[Next Steps]:#next-steps
-
-<!-- Images -->
-[0]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-todoitem-data-browse.png
-[1]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-add-reference-sqlite-dialog.png
-[2]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-sqlitestore-nuget.png
-[3]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-sqlitepcl-nuget.png
-[4]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-offline-app-run1.png
-[5]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-online-app-run1.png
-[6]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-data-browse.png
-[7]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-data-browse2.png
-[8]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-online-app-run2.png
-[9]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-online-app-run3.png
-[10]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-data-browse3.png
-
-
-<!-- URLs. -->
-[Handling conflicts with offline support for Mobile Services]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data/ 
-[Getting Started Offline Sample]: http://go.microsoft.com/fwlink/?LinkId=394777
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
-[Getting Started]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started/
-[Get started with data]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
-[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-windows-store-get-started/
-[SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkId=394776
-
-
+  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data "Windows 应用商店 C#"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-offline-data "Windows Phone"
+  [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started/
+  [数据入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
+  [更新应用程序以支持脱机功能]: #enable-offline-app
+  [在脱机情况下测试应用程序]: #test-offline-app
+  [更新应用程序以重新连接移动服务]: #update-online-app
+  [测试已连接到移动服务的应用程序]: #test-online-app
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28
+  [脱机示例入门]: http://go.microsoft.com/fwlink/?LinkId=394777
+  [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkId=394776
+  []: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-add-reference-sqlite-dialog.png
+  [1]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-sqlitestore-nuget.png
+  [2]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-offline-app-run1.png
+  [3]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-online-app-run1.png
+  [4]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-data-browse.png
+  [5]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-data-browse2.png
+  [6]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-online-app-run2.png
+  [7]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-online-app-run3.png
+  [8]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-data-browse3.png
+  [使用移动服务脱机支持处理冲突]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data/

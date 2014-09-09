@@ -1,79 +1,79 @@
 <properties linkid="develop-mobile-tutorials-add-paging-to-data-xamarin-android" urlDisplayName="Add paging to data" pageTitle="Add paging to data (Xamarin Android) | Mobile Dev Center" metaKeywords="" description="Learn how to use paging to manage the amount of data returned to your Xamarin Android app from Mobile Services." metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Refine Mobile Services queries with paging" authors="" />
 
-# Refine Mobile Services queries with paging
+# 使用分页优化移动服务查询
+
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/add-paging-to-data-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-html" title="HTML">HTML</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-ios" title="Xamarin.iOS">iOS C#</a><a href="/en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-android" title="Xamarin.Android" class="current">Android C#</a>
+	<a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-dotnet" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-android" title="Android">Android</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-html" title="HTML">HTML</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-ios" title="Xamarin.iOS">iOS C#</a><a href="/zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-android" title="Xamarin.Android" class="current">Android C#</a>
 </div>
 
-This topic shows you how to use paging to manage the amount of data returned to your Xamarin.Android app from Azure Mobile Services. In this tutorial, you will use the **Take** and **Skip** query methods on the client to request specific "pages" of data.
+本主题说明如何使用分页来管理从 Azure 移动服务返回给 Xamarin.Android 应用程序的数据量。在本教程中，你将在客户端上使用 "Take" 和 "Skip" 查询方法来请求特定的数据“页”。
 
-<div class="dev-callout"><b>Note</b>
-<p>To prevent data overflow in mobile device clients, Mobile Services implements an automatic page limit, which defaults to a maximum of 50 items in a response. By specifying the page size, you can explicitly request up to 1,000 items in the response.</p>
+<div class="dev-callout"><b>说明</b>
+
+<p>为了防止移动设备客户端上发生数据溢出，移动服务实施了自动页限制，该限制默认为每个响应中最多 50 个项。通过指定页大小，你最多可以在响应中显式请求 1,000 个项。</p>
 </div>
 
-This tutorial builds on the steps and the sample app from the previous tutorial [Get started with data]. Before you begin this tutorial, you must complete at least the first tutorial in the working with data series, [Get started with data]. 
+本教程以前一教程[数据处理入门][]中的步骤和示例应用程序为基础。在开始学习本教程之前，最起码需要先完成数据处理系列中的第一篇教程，即[数据处理入门][]。
 
-1. In Xamarin Studio, open the project that you created when you completed the tutorial [Get started with data].
+1.  在 Xamarin Studio 中，打开你在完成[数据处理入门][]教程后创建的项目。
 
-2. Click **Run** to start the app, then enter text into the textbox and click the **Add** button.
+2.  单击“运行” 以启动应用程序，然后在文本框中输入文本，然后单击“添加” 按钮。
 
-3. Repeat the previous step at least three times, so that you have more than three items stored in the TodoItem table. 
+3.  重复以上步骤至少三次，因此你将在 TodoItem 表中存储三个以上的项。
 
-4. In the **TodoActivity.cs** file, replace the LINQ query in the **RefreshItemsFromTableAsync** method with the following query:
+4.  在 "TodoActivity.cs" 文件中，将 "RefreshItemsFromTableAsync" 方法中的 LINQ 查询替换为以下查询：
 
-		var list = await todoTable.Where(item => item.Complete == false)
-						          .Take(3)
-			                      .ToListAsync();
+        var list = await todoTable.Where(item => item.Complete == false)
+        .Take(3)
+        .ToListAsync();
 
-	  This query returns the top three items that are not marked as completed.
+    此查询将返回未标记为已完成的前面三个项。
 
-5. Rebuild and start the app. 
-   
-    Notice that only the first three results from the TodoItem table are displayed. 
+5.  重新生成并启动应用程序。
 
-6. (Optional) View the URI of the request sent to the mobile service by using message inspection software, such as browser developer tools or [Fiddler]. 
+    请注意，仅显示 TodoItem 表的前三个结果。
 
-   	Notice that the `Take(3)` method was translated into the query option `$top=3` in the query URI.
+6.  （可选）使用消息检查软件（例如浏览器开发人员工具或 [Fiddler]）来查看发送到移动服务的请求的 URI。
 
-7. Update the LINQ query in **RefreshItemsFromTableAsync** method once more with the following query:
-            
-			var list = await todoTable.Where(item => item.Complete == false)
-							          .Skip(3)
-				                      .Take(3)
-                 				      .ToListAsync();
+    请注意，`Take(3)` 方法已转换成查询 URI 中的查询选项 `$top=3`。
 
-   	This query skips the first three results and returns the next three after that. This is effectively the second "page" of data, where the page size is three items.
+7.  使用以下查询再次更新 "RefreshItemsFromTableAsync" 方法中的 LINQ 查询：
 
-    <div class="dev-callout"><b>Note</b>
-    <p>This tutorial uses a simplified scenario by passing hard-coded paging values to the <strong>Take</strong> and <strong>Skip</strong> methods. In a real-world app, you can use queries similar to the above with a pager control or comparable UI to let users navigate to previous and next pages. You can also call the  <strong>IncludeTotalCount</strong> method to get the total count of items available on the server, along with the paged data.</p>
-    </div>
+            var list = await todoTable.Where(item => item.Complete == false)
+        .Skip(3)
+        .Take(3)
+        .ToListAsync();
 
-8. (Optional) Again view the URI of the request sent to the mobile service. 
+    此查询将跳过前三个结果，返回其后的三个结果。实际上这是数据的第二“页”，其页大小为三个项。
 
-   	Notice that the `Skip(3)` method was translated into the query option `$skip=3` in the query URI.
+    <div class="dev-callout"><b>说明</b>
 
-## <a name="next-steps"> </a>Next Steps
+    <p>本教程将硬编码分页值传递给 <b>Take</b> 和 <b>Skip</b> 方法，因此使用的是简化的方案。在实际应用程序中，你可以对页导航控件或类似的 UI 使用类似于上面的查询，让用户导航到上一页和下一页。你还可以调用 <b>IncludeTotalCount</b> 方法，以获取服务器上的可用项总数，以及分页的数据。</p>
+	</div>
 
-This concludes the set of tutorials that demonstrate the basics of working with data in Mobile Services. Consider finding out more about the following Mobile Services topics:
+8.  （可选）再次查看发送到移动服务的请求的 URI。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with Windows Account.
- 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
+    请注意，`Skip(3)` 方法已转换成查询 URI 中的查询选项 `$skip=3`。
 
-<!-- Anchors. -->
+<a name="next-steps"> </a>
+## 后续步骤
 
-[Next Steps]:#next-steps
+演示移动服务中数据处理基础知识的系列教程到此结束。建议你了解有关以下移动服务主题的详细信息：
 
-<!-- Images. -->
+-   [身份验证入门][]
+    了解如何使用 Windows 帐户对应用程序用户进行身份验证。
 
+-   [推送通知入门][]
+    了解如何向应用程序发送一条非常简单的推送通知。
 
-<!-- URLs. -->
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-xamarin-android
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android
-
-[Management Portal]: https://manage.windowsazure.com/
-
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-js "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-wp8 "Windows Phone"
+  [iOS]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-ios "iOS"
+  [Android]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-android "Android"
+  [HTML]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-html "HTML"
+  [iOS C\#]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-ios "Xamarin.iOS"
+  [Android C\#]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-android "Xamarin.Android"
+  [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android
+  [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android
+  [推送通知入门]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android

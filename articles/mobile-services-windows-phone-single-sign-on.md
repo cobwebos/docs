@@ -1,198 +1,192 @@
 <properties linkid="develop-mobile-tutorials-single-sign-on-windows-8-wp8" urlDisplayName="Authenticate with single sign-on" pageTitle="Authenticate your app with Live Connect (Windows Phone) | Mobile Dev Center" metaKeywords="" description="Learn how to use Live Connect single sign-on in Azure Mobile Services from a Windows Phone application." metaCanonical="" services="" documentationCenter="Mobile" title="Authenticate your Windows Phone 8 app with Live Connect single sign-on" authors="glenga" solutions="" manager="" editor="" />
 
-
-
-
-# Authenticate your Windows Phone 8 app with Live Connect single sign-on
+# 使用 Live Connect 单一登录对 Windows Phone 8 应用程序进行身份验证
 
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/single-sign-on-windows-8-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/single-sign-on-windows-8-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/single-sign-on-wp8/" title="Windows Phone" class="current">Windows Phone</a>
+	<a href="/zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-dotnet" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/single-sign-on-wp8/" title="Windows Phone" class="current">Windows Phone</a>
 </div>	
 
-This topic shows you how to use Live Connect single sign-on to authenticate users in Azure Mobile Services from a Windows Phone 8 app.  In this tutorial, you add authentication to the quickstart project using Live Connect. When successfully authenticated by Live Connect, a logged-in user is welcomed by name and the user ID value is displayed.  
+本主题说明如何使用 Live Connect 单一登录从 Windows Phone 8 应用程序对 Azure 移动服务的用户进行身份验证。在本教程中，你将使用 Live Connect 向快速入门项目添加身份验证功能。成功通过 Live Connect 进行身份验证后，将使用名称欢迎已登录的用户并显示用户 ID 值。
 
-<div class="dev-callout"><b>Note</b>
-	<p>This tutorial demonstrates the benefits of using the single sign-on experience provided by Live Connect for Windows Phone apps. This enables you to more easily authenticate an already logged-on user with you mobile service. For a more generalized authentication experience that supports multiple authentication providers, see the topic <a href="/en-us/develop/mobile/tutorials/get-started-with-users-wp8/">Get started with authentication</a>. </p>
+<div class="dev-callout"><b>说明</b>
+
+<p>本教程演示通过 Live Connect 为 Windows Phone 应用程序提供单一登录体验的使用好处。这使你可以更轻松地使用移动服务对已登录的用户进行身份验证。有关支持多个身份验证提供程序的更通用的身份验证体验，请参阅<a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-wp8/">身份验证入门</a>主题。</p>
 </div>
 
-This tutorial walks you through these basic steps to enable Live Connect authentication:
+本教程将指导你完成以下启用 Live Connect 身份验证的基本步骤：
 
-1. [Register your app for authentication and configure Mobile Services]
-2. [Restrict table permissions to authenticated users]
-3. [Add authentication to the app]
+1.  [注册应用程序以进行身份验证并配置移动服务][]
+2.  [将表权限限制给已经过身份验证的用户][]
+3.  [向应用程序添加身份验证][]
 
-This tutorial requires the following:
+本教程需要的内容如下：
 
-+ [Live SDK for Windows and Windows Phone]
-+ Microsoft Visual Studio 2012 Express for Windows Phone
+-   [用于 Windows 和 Windows Phone 的 Live SDK][]
+-   Microsoft Visual Studio 2012 Express for Windows Phone
 
-This tutorial is based on the Mobile Services quickstart. You must also first complete the tutorial [Get started with Mobile Services].
+本教程基于移动服务快速入门。因此，你还必须先完成[移动服务入门][]教程。
 
-<h2><a name="register"></a><span class="short-header">Register your app</span>Register your app with Live Connect</h2>
+<a name="register"></a>
+## 注册应用程序使用 Live Connect 注册应用程序
 
-To be able to authenticate users, you must register your app at the Live Connect Developer Center. You must then register the client secret to integrate Live Connect with Mobile Services.
+若要对用户进行身份验证，必须在 Live Connect 开发人员中心注册你的应用程序。然后，你必须注册用于将 Live Connect 与移动服务集成的客户端密钥。
 
-1. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your mobile service.
+1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的移动服务 。
 
-   	![][4]
+    ![][]
 
-2. Click the **Dashboard** tab and make a note of the **Site URL** value.
+2.  单击“仪表板” 选项卡，记下"站点 URL" 值。
 
-   	![][5]
+    ![][1]
 
-    You will use this value to define the redirect domain.
+    你将使用此值来定义重定向域。
 
-3. Navigate to the <a href="http://go.microsoft.com/fwlink/p/?LinkId=262039" target="_blank">My Applications</a> page in the Live Connect Developer Center, and log on with your Microsoft account, if required. 
+3.  在 Live Connect 开发人员中心内导航到[我的应用程序][]页，然后根据需要使用你的 Microsoft 帐户登录。
 
-4. Click **Create application**, then type an **Application name** and click **I accept**.
+4.  单击“创建应用程序”，然后键入“应用程序名称”并单击“我接受” 。
 
-   	![][1] 
+    ![][2]
 
-   	This registers the application with Live Connect.
+    随即会将应用程序注册到 Live Connect。
 
-5. Click **Application settings page**, then **API Settings** and make a note of the values of the **Client ID** and **Client secret**. 
+5.  依次单击“应用程序设置页” 、“API 设置” ，然后记下"客户端 ID" 和"客户端密钥"的值。
 
-   	![][2]
+    ![][3]
 
-    <div class="dev-callout"><b>Security Note</b>
-	<p>The client secret is an important security credential. Do not share the client secret with anyone or distribute it with your app.</p>
-    </div>
+    "安全说明"
 
-6. In **Redirect domain**, enter the URL of your mobile service from Step 2, click **Yes** under **Mobile client app**, and then click **Save**.
+    客户端密钥是一个非常重要的安全凭据。请勿与任何人分享客户端密钥或将密钥随应用程序分发。
 
-7. Back in the Management Portal, click the **Identity** tab, enter the **Client secret** obtained from Live Connect, and then click **Save**.
+6.  在“重定向域” 中，输入在步骤 2 中提供的移动服务 URL，在“移动客户端应用程序” 下单击“是” ，然后单击“保存” 。
 
-   	![][13]
+7.  返回管理门户，单击“标识” 选项卡，输入从 Live Connect 获得的"客户端密钥"，然后单击“保存” 。
 
-Both your mobile service and your app are now configured to work with Live Connect.
+    ![][4]
 
-<h2><a name="permissions"></a><span class="short-header">Restrict permissions</span>Restrict permissions to authenticated users</h2>
+现在，你的移动服务和应用程序都已配置为使用 Live Connect。
 
-1. In the Management Portal, click the **Data** tab, and then click the **TodoItem** table. 
+<a name="permissions"></a>
+## 限制权限将权限限制给已经过身份验证的用户
 
-   	![][14]
+1.  在管理门户中，单击“数据”选项卡，然后单击“TodoItem”表 。
 
-2. Click the **Permissions** tab, set all permissions to **Only authenticated users**, and then click **Save**. This will ensure that all operations against the **TodoItem** table require an authenticated user. This also simplifies the scripts in the next tutorial because they will not have to allow for the possibility of anonymous users.
+    ![][5]
 
-   	![][15]
+2.  单击“权限” 选项卡，将所有权限设置为“仅经过身份验证的用户” ，然后单击“保存” 。这样可以确保对 "TodoItem" 表的所有操作都要求用户经过身份验证。这样还可简化下一个教程中的脚本，因为它们无需再允许匿名用户。
 
-3. In Visual Studio 2012 Express for Windows Phone, open the project that you created when you completed the tutorial [Get started with Mobile Services]. 
+    ![][6]
 
-4. Press the F5 key to run this quickstart-based app; verify that an exception with a status code of 401 (Unauthorized) is raised. 
-   
-   	This happens because the app is accessing Mobile Services as an unauthenticated user, but the _TodoItem_ table now requires authentication.
+3.  在 Visual Studio 2012 Express for Windows Phone 中，打开你在完成教程[移动服务入门][]后创建的项目。
 
-Next, you will update the app to authenticate users with Live Connect before requesting resources from the mobile service.
+4.  按 F5 键以运行这个基于快速入门的应用程序；验证是否会引发状态代码为 401（“未授权”）的异常。
 
-<h2><a name="add-authentication"></a><span class="short-header">Add authentication</span>Add authentication to the app</h2>
+    发生此异常的原因是应用程序以未经身份验证的用户身份访问移动服务，但 *TodoItem* 表现在要求身份验证。
 
-1. Download and install the [Live SDK for Windows and Windows Phone].
+接下来，你需要更新应用程序，以便在从移动服务请求资源之前通过 Live Connect 对用户进行身份验证。
 
-2. In the **Project** menu in Visual Studio, click **Add Reference**, then expand **Assemblies**, click **Extensions**, check **Microsoft.Live**, and then click **OK**. 
+<a name="add-authentication"></a>
+## 添加身份验证向应用程序添加身份验证
 
-   	![][16]
+1.  下载并安装[用于 Windows 和 Windows Phone 的 Live SDK][]。
 
-  	This adds a reference to the Live SDK to the project.
+2.  在 Visual Studio 的“项目” 菜单上，单击“添加引用” ，然后展开“程序集” ，单击“扩展” ，选中 "Microsoft.Live"，然后单击“确定” 。
 
-5. Open the project file mainpage.xaml.cs and add the following using statements:
+    ![][7]
+
+    这将向项目添加 Live SDK 的引用。
+
+3.  打开项目文件 mainpage.xaml.cs 并添加以下 using 语句：
 
         using Microsoft.Live;      
 
-6. Add the following code snippet to the MainPage class:
-	
+4.  将以下代码段添加到 MainPage 类：
+
         private LiveConnectSession session;
         private async System.Threading.Tasks.Task Authenticate()
         {
-            LiveAuthClient liveIdClient = new LiveAuthClient("<< INSERT CLIENT ID HERE >>");
+        LiveAuthClient liveIdClient = new LiveAuthClient("<< INSERT CLIENT ID HERE >>");
 
-            while (session == null)
+        while (session == null)
             {
-                LiveLoginResult result = await liveIdClient.LoginAsync(new[] { "wl.basic" });
-                if (result.Status == LiveConnectSessionStatus.Connected)
+        LiveLoginResult result = await liveIdClient.LoginAsync(new[] { "wl.basic" });
+        if (result.Status == LiveConnectSessionStatus.Connected)
                 {
-                    session = result.Session;
-                    LiveConnectClient client = new LiveConnectClient(result.Session);
-                    LiveOperationResult meResult = await client.GetAsync("me");
-                    MobileServiceUser loginResult = await App.MobileService
-                        .LoginWithMicrosoftAccountAsync(result.Session.AuthenticationToken);
+        session = result.Session;
+        LiveConnectClient client = new LiveConnectClient(result.Session);
+        LiveOperationResult meResult = await client.GetAsync("me");
+        MobileServiceUser loginResult = await App.MobileService
+        .LoginWithMicrosoftAccountAsync(result.Session.AuthenticationToken);
 
-                    string title = string.Format("Welcome {0}!", meResult.Result["first_name"]);
-                    var message = string.Format("You are now logged in - {0}", loginResult.UserId);
-                    MessageBox.Show(message, title, MessageBoxButton.OK);                    
+        string title = string.Format("Welcome {0}!", meResult.Result["first_name"]);
+        var message = string.Format("You are now logged in - {0}", loginResult.UserId);
+        MessageBox.Show(message, title, MessageBoxButton.OK);                    
                 }
-                else
+        else
                 {
-                    session = null;
-                    MessageBox.Show("You must log in.", "Login Required", MessageBoxButton.OK);                    
+        session = null;
+        MessageBox.Show("You must log in.", "Login Required", MessageBoxButton.OK);                    
                 }
             }
          }
 
-    This creates a member variable for storing the current Live Connect session and a method to handle the authentication process.
+    这样可以创建用于存储当前 Live Connect 会话的成员变量，以及用于处理身份验证过程的方法。
 
-7. Update string _<< INSERT CLIENT ID HERE >>_ from the previous step with the client ID value that was generated when you registered your app with Live Connect.
+5.  使用向 Live Connect 注册应用程序时生成的客户端 ID 值更新上一步中的 *\<\< INSERT CLIENT ID HERE \>\>* 字符串。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>In a Windows Phone 8 app, an instance of the <strong>LiveAuthClient</strong> class is created by passing the client ID value to the class constructor. In a <a href="/en-us/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/">Windows Store app</a>, the same class is instantiated by passing the redirect domain URI.</p>
-    </div>
+    <div class="dev-callout"><b>说明</b>
 
-8. Delete or comment-out the existing **OnNavigatedTo** method override and replace it with the following method that handles the **Loaded** event for the page. 
+    <p>在 Windows Phone 8 应用程序中，通过将客户端 ID 值传递给类构造函数创建 <b>LiveAuthClient</b> 类的一个实例。在 [Windows 应用商店应用程序][]中，通过传递重定向域 URI 实例化同一个类。</p>
+	</div>
+
+6.  删除或注释掉现有的 "OnNavigatedTo" 方法覆盖，并将其替换为以下方法，用于处理页的 "Loaded" 事件。
 
         async void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            await Authenticate();
-            RefreshTodoItems();
+        await Authenticate();
+        RefreshTodoItems();
         }
 
-   	This method calls the new **Authenticate** method. 
+    此方法调用新的 "Authenticate" 方法。
 
-9. Replace the MainPage constructor with the following code:
+7.  将 MainPage 构造函数替换为以下代码：
 
         // Constructor
         public MainPage()
         {
-            InitializeComponent();
-            this.Loaded += MainPage_Loaded;
+        InitializeComponent();
+        this.Loaded += MainPage_Loaded;
         }
 
-   	This constructor also registers the handler for the Loaded event.
-		
-9. Press the F5 key to run the app and sign into Live Connect with your Microsoft Account. 
+    此构造函数还注册 Loaded 事件的处理程序。
 
-   	After you are successfully logged-in, the app runs without errors, and you are able to query Mobile Services and make updates to data.
+8.  按 F5 键运行应用程序，并使用 Microsoft 帐户登录 Live Connect。
 
-## <a name="next-steps"> </a>Next steps
+    成功登录后，该应用程序运行时将不会出错，并且你将能够查询移动服务，并对数据进行更新。
 
-In the next tutorial, [Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. For information about how to use other identity providers for authentication, see [Get started with authentication]. 
+<a name="next-steps"> </a>
+## 后续步骤
 
-<!-- Anchors. -->
-[Register your app for authentication and configure Mobile Services]: #register
-[Restrict table permissions to authenticated users]: #permissions
-[Add authentication to the app]: #add-authentication
-[Next Steps]:#next-steps
+在下一教程[使用脚本为用户授权][]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。有关如何使用其他标识提供者进行身份验证的信息，请参阅[身份验证入门][8]。
 
-<!-- Images. -->
-[1]: ./media/mobile-services-windows-phone-single-sign-on/mobile-services-live-connect-add-app.png
-[2]: ./media/mobile-services-windows-phone-single-sign-on/mobile-live-connect-app-api-settings-mobile.png
-[4]: ./media/mobile-services-windows-phone-single-sign-on/mobile-services-selection.png
-[5]: ./media/mobile-services-windows-phone-single-sign-on/mobile-service-uri.png
-
-
-
-
-
-[13]: ./media/mobile-services-windows-phone-single-sign-on/mobile-identity-tab-ma-only.png
-[14]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-data-tables.png
-[15]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-change-table-perms.png
-[16]: ./media/mobile-services-windows-phone-single-sign-on/mobile-add-reference-live-wp8.png
-
-<!-- URLs. -->
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows and Windows Phone]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-wp8
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-wp8
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-wp8
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-wp8
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-wp8
-
-[Azure Management Portal]: https://manage.windowsazure.com/
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-js "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/single-sign-on-wp8/ "Windows Phone"
+  [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-wp8/
+  [注册应用程序以进行身份验证并配置移动服务]: #register
+  [将表权限限制给已经过身份验证的用户]: #permissions
+  [向应用程序添加身份验证]: #add-authentication
+  [用于 Windows 和 Windows Phone 的 Live SDK]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-wp8
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  []: ./media/mobile-services-windows-phone-single-sign-on/mobile-services-selection.png
+  [1]: ./media/mobile-services-windows-phone-single-sign-on/mobile-service-uri.png
+  [我的应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+  [2]: ./media/mobile-services-windows-phone-single-sign-on/mobile-services-live-connect-add-app.png
+  [3]: ./media/mobile-services-windows-phone-single-sign-on/mobile-live-connect-app-api-settings-mobile.png
+  [4]: ./media/mobile-services-windows-phone-single-sign-on/mobile-identity-tab-ma-only.png
+  [5]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-data-tables.png
+  [6]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-change-table-perms.png
+  [7]: ./media/mobile-services-windows-phone-single-sign-on/mobile-add-reference-live-wp8.png
+  [Windows 应用商店应用程序]: /zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
+  [使用脚本为用户授权]: /zh-cn/develop/mobile/tutorials/authorize-users-in-scripts-wp8
+  [8]: /zh-cn/develop/mobile/tutorials/get-started-with-users-wp8

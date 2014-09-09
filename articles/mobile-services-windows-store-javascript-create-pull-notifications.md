@@ -1,101 +1,101 @@
 <properties linkid="develop-mobile-tutorials-create-pull-notifications-js" urlDisplayName="Define a custom API that supports pull notifications" pageTitle="Define a custom API that supports pull notifications - Azure Mobile Services" metaKeywords="" description="Learn how to Define a custom API that supports periodic notifications in Windows Store apps that use Azure Mobile Services." metaCanonical="" services="" documentationCenter="" title="Define a custom API that supports periodic notifications" authors="glenga" solutions="" manager="" editor="" />
 
-
-
-
-# Define a custom API that supports periodic notifications
+# 定义支持定期通知的自定义 API
 
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/en-us/develop/mobile/tutorials/create-pull-notifications-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/create-pull-notifications-js" title="Windows Store JavaScript" class="current">Windows Store JavaScript</a>
+	<a href="/zh-cn/develop/mobile/tutorials/create-pull-notifications-dotnet" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/create-pull-notifications-js" title="Windows Store JavaScript" class="current">Windows 应用商店 JavaScript</a>
 </div>
 
-This topic shows you how to use a custom API to support periodic notifications in a Windows Store app. With period notifications enabled, Windows will periodically access your custom API endpoint and use the returned XML, in a tile-specific format, to update the app tile on start menu. For more information, see [Periodic notifications]. 
+本主题说明如何使用自定义 API 在 Windows 应用商店应用程序中支持定期通知。启用定期通知后，Windows 将定期访问你的自定义 API 终结点，并使用返回的、采用磁贴特定格式的 XML 来更新开始菜单中的应用程序磁贴。有关详细信息，请参阅[定期通知][]。
 
-You will add this functionality to the app that you created when you completed either the [Get started with Mobile Services] or the [Get started with data] tutorial. To do this, you will complete the following steps:
+需要将此功能添加到你在完成[移动服务入门][]或[数据处理入门][]教程后创建的应用程序。为此，你需要完成以下步骤：
 
-1. [Define the custom API]
-2. [Update the app to turn on period notifications]
-3. [Test the app] 
+1.  [定义自定义 API][]
+2.  [更新应用程序以启用定期通知][]
+3.  [测试应用程序][]
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services] or the [Get started with data].  
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]或[数据处理入门][]。
 
-## <a name="define-custom-api"></a>Define the custom API
+<a name="define-custom-api"></a>
+## 定义自定义 API
 
-1. Log into the [Azure Management Portal], click **Mobile Services**, and then click your app.
+1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
 
-   	![][0]
+    ![][]
 
-2. Click the **API** tab, and then click **Create a custom API**.
+2.  单击“API” 选项卡，然后单击“创建自定义 API” 。
 
-   	![][1]
+    ![][1]
 
-   	This displays the **Create a new custom API** dialog.
+    这将显示“创建新的自定义 API” 对话框。
 
-3. Change **Get permission** to **Everyone**, type _tiles_ in **API name**, and then click the check button.
+3.  将“获取权限” 更改为“任何人” ，在“API 名称” 中键入 *tiles*，然后单击勾选按钮。
 
-   	![][2]
+    ![][2]
 
-	This creates the new API with public GET access.
+    这将创建具有公共 GET 访问权限的新 API。
 
-4. Click the new tiles entry in the API table.
+4.  单击 API 表中新的磁贴条目。
 
-	![][3]
+    ![][3]
 
-5. Click the **Script** tab and replace the existing code with the following:
+5.  单击“脚本” 选项卡，将现有代码替换为以下代码：
 
-		exports.get = function(request, response) {
-		    var wns = require('wns');
-		    var todoItems = request.service.tables.getTable('TodoItem');
-		    todoItems.where({
-		        complete: false
-		    }).read({
-		        success: sendResponse
-		    });
-		
-		    function sendResponse(results) {
-		        var tileText = {
-		            text1: "My todo list"
-		        };
-		        var i = 0;
-		        console.log(results)
-		        results.forEach(function(item) {
-		            tileText["text" + (i + 2)] = item.text;
-		            i++;
-		        });
-		        var xml = wns.createTileSquareText01(tileText);
-		        response.set('content-type', 'application/xml');
-		        response.send(200, xml);
-		    }
-		};
+        exports.get = function(request, response) {
+        var wns = require('wns');
+        var todoItems = request.service.tables.getTable('TodoItem');
+        todoItems.where({
+        complete:false
+        }).read({
+        success:sendResponse
+            });
 
-	This code returns the top 3 uncompleted items from the TodoItem table, then loads them into a JSON object passed to the **wns**.**createTileSquareText01** function. This function returns the following tile template XML:
+        function sendResponse(results) {
+        var tileText = {
+        text1:"My todo list"
+                };
+        var i = 0;
+        console.log(results)
+        results.forEach(function(item) {
+        tileText["text" + (i + 2)] = item.text;
+        i++;
+                });
+        var xml = wns.createTileSquareText01(tileText);
+        response.set('content-type', 'application/xml');
+        response.send(200, xml);
+            }
+        };
 
-		<tile>
-			<visual>
-				<binding template="TileSquareText01">
-					<text id="1">My todo list</text>
-					<text id="2">Task 1</text>
-					<text id="3">Task 2</text>
-					<text id="4">Task 3</text>
-				</binding>
-			</visual>
-		</tile>
+    此代码将返回 TodoItem 表中前 3 个未完成的项目，然后将它们加载到传递给 "wns"."createTileSquareText01" 函数的 JSON 对象中。此函数返回以下磁贴模板 XML：
 
-	The **exports.get** function is used because the client will send a GET request to access the tile template.
+        <tile>
+        <visual>
+        <binding template="TileSquareText01">
+        <text id="1">My todo list</text>
+        <text id="2">Task 1</text>
+        <text id="3">Task 2</text>
+        <text id="4">Task 3</text>
+        </binding>
+        </visual>
+        </tile>
 
-   	<div class="dev-callout"><b>Note</b>
-   		<p>This custom API script uses the Node.js <a href="http://go.microsoft.com/fwlink/p/?LinkId=306750">wns module</a>, which is referenced by using the <strong>require</strong> function. This module is different from the <a href="http://go.microsoft.com/fwlink/p/?LinkId=260591">wns object</a> returned by the <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj554217.aspx">push object</a>, which is used to send push notifications from server scripts.</p>
-   	</div>
+    使用 "exports.get" 函数是因为客户端将发送 GET 请求以访问磁贴模板。
 
-Next, you will modify the quickstart app to start periodic notifications that update the live tile by requesting the new custom API.
+   	<div class="dev-callout"><b>说明</b>
 
-<h2><a name="update-app"></a><span class="short-header">Update the app </span>Update the app to turn on period notifications</h2>
+    <p>此自定义 API 脚本使用 Node.js  <a href="http://go.microsoft.com/fwlink/p/?LinkId=306750">wns 模块</a>，后者通过 <b>require</b> 函数进行引用。此模块不同于用于从服务器脚本发送推送通知的<a href="http://go.microsoft.com/fwlink/p/?LinkId=260591">推送对象</a>返回的 <a href="http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554217.aspx">wns 对象</a>。</p>
+	</div>
 
-1. In Visual Studio, press the F5 key to run the quickstart app from the previous tutorial.
+接下来，你将修改快速入门应用程序以启动定期通知，这些通知通过请求新的自定义 API 来更新动态磁贴。
 
-2. Make sure at least one item is displayed. If there are no items, type text in **Insert a TodoItem**, and then click **Save**.
+<a name="update-app"></a>
+## 更新应用程序更新应用程序以启用定期通知
 
-3. In Visual Studio, expand the `\js` folder in Solution Explorer, open the default.js project, then add the following lines of code after that code that defines the **client** variable:
+1.  在 Visual Studio 中，按 F5 键运行前一教程中的快速入门应用程序。
+
+2.  确保至少显示一个项目。如果没有任何项目，请在“插入 TodoItem” 中键入文本，然后单击“保存” 。
+
+3.  在 Visual Studio 中，展开解决方案资源管理器中的 `\js` 文件夹，打开 default.js 项目，然后在定义 "client" 变量的代码之后添加以下代码行：
 
         var notifications = Windows.UI.Notifications;
         var recurrence = notifications.PeriodicUpdateRecurrence.hour;
@@ -103,51 +103,45 @@ Next, you will modify the quickstart app to start periodic notifications that up
 
         notifications.TileUpdateManager.createTileUpdaterForApplication().startPeriodicUpdate(url, recurrence);
 
-	This code turns on period notifications to request tile template data from the new **tiles** custom API. Select a [PeriodicUpdateRecurrance] value that best matches the update frequency of your data.
+    此代码启用定期通知，以通过新的"磁贴"自定义 API 请求磁贴模板数据。选择与你的数据更新频率最匹配的 [PeriodicUpdateRecurrance] 值。
 
-## <a name="test-app"></a>Test the app
+<a name="test-app"></a>
+## 测试应用程序
 
-1. In Visual Studio, press the F5 key to run the app again.
+1.  在 Visual Studio 中，按 F5 键再次运行应用程序。
 
-	This will turn on periodic notifications.
+    这将启用定期通知。
 
-2. Navigate to the Start screen, locate the live tile for the app, and notice that item data is now displayed in the tile.
+2.  导航到“开始”屏幕，找到应用程序的动态磁贴，并注意现在项目数据已显示在磁贴中。
 
- 	![][4]
+    ![][4]
 
-## Next steps
+## 后续步骤
 
-Now that you have created a periodic notification, consider finding out more about the following Mobile Services topics:
+现在，你已创建定期通知，建议你了解有关以下移动服务主题的详细信息：
 
-* [Get started with push notifications]
-	<br/>Periodic notifications are managed by Windows and occur only on a predefined schedule. Push notifications can be sent by the mobile service on demand and can be toast, tile, and raw notifications.
+-   [推送通知入门][]
+    定期通知由 Windows 管理，并且仅按预定义的时间表发生。推送通知可以由移动服务按需发送，并且可以是 toast 通知、磁贴通知和原始通知。
 
-* [Mobile Services server script reference]
-  <br/>Learn more about creating custom APIs.
+-   [移动服务服务器脚本参考][]
+    了解有关创建自定义 API 的详细信息。
 
-<!-- Anchors. -->
-[Define the custom API]: #define-custom-api
-[Update the app to turn on period notifications]: #update-app
-[Test the app]: #test-app
-[Next Steps]: #next-steps
-
-<!-- Images. -->
-[0]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-services-selection.png
-[1]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-create.png
-[2]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-create-dialog.png
-[3]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-select.png
-[4]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-live-tile.png
-
-<!-- URLs. -->
-[Windows Push Notifications & Live Connect]: http://go.microsoft.com/fwlink/?LinkID=257677
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[My Apps dashboard]: http://go.microsoft.com/fwlink/?LinkId=262039
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
-[Get started with data]: /en-us/develop/mobile/tutorials/started-with-data-js
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-js
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-js
-[JavaScript and HTML]: mobile-services-win8-javascript/
-
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Periodic notifications]: http://msdn.microsoft.com/en-us/library/windows/apps/jj150587.aspx
-
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/create-pull-notifications-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/create-pull-notifications-js "Windows 应用商店 JavaScript"
+  [定期通知]: http://msdn.microsoft.com/zh-cn/library/windows/apps/jj150587.aspx
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started/#create-new-service
+  [数据处理入门]: /zh-cn/develop/mobile/tutorials/started-with-data-js
+  [定义自定义 API]: #define-custom-api
+  [更新应用程序以启用定期通知]: #update-app
+  [测试应用程序]: #test-app
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  []: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-services-selection.png
+  [1]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-create.png
+  [2]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-create-dialog.png
+  [3]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-select.png
+  [wns 模块]: http://go.microsoft.com/fwlink/p/?LinkId=306750
+  [推送对象]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554217.aspx
+  [wns 对象]: http://go.microsoft.com/fwlink/p/?LinkId=260591
+  [4]: ./media/mobile-services-windows-store-javascript-create-pull-notifications/mobile-custom-api-live-tile.png
+  [推送通知入门]: /zh-cn/develop/mobile/tutorials/get-started-with-push-js
+  [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/?LinkId=262293

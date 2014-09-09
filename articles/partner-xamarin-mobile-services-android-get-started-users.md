@@ -1,162 +1,166 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-users-xamarin-android" urlDisplayName="Get Started with Authentication (Xamarin.Android)" pageTitle="Get started with authentication (Xamarin.Android) - Mobile Services" metaKeywords="Azure registering application, Azure authentication, application authenticate, authenticate mobile services, Mobile Services Xamarin.Android" description="Learn how to use authentication in your Azure Mobile Services app for Xamarin.Android." metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Get started with authentication in Mobile Services" documentationCenter="Mobile" authors="" />
-# Get started with authentication in Mobile Services
+
+# 移动服务中的身份验证入门
+
 <div class="dev-center-tutorial-selector sublanding">   
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-users-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-html" title="HTML">HTML</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
+	<a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-android" title="Android">Android</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-html" title="HTML">HTML</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
 </div>
 
-<p>This topic shows you how to authenticate users in Azure Mobile Services from your Xamarin.Android app. In this tutorial, you add authentication to the quickstart project using an identity provider that is supported by Mobile Services. After being successfully authenticated and authorized by Mobile Services, the user ID value is displayed.</p>
+本主题说明如何通过 Xamarin.Android 应用程序对 Azure 移动服务中的用户进行身份验证。在本教程中，你将要使用移动服务支持的标识提供者向快速入门项目添加身份验证。在移动服务成功完成身份验证和授权后，将显示用户 ID 值。
 
-This tutorial walks you through these basic steps to enable authentication in your app:
+本教程将指导你完成在应用程序中启用身份验证的以下基本步骤：
 
-1. [Register your app for authentication and configure Mobile Services]
-2. [Restrict table permissions to authenticated users]
-3. [Add authentication to the app]
+1.  [注册应用程序以进行身份验证并配置移动服务][]
+2.  [将表权限限制给已经过身份验证的用户][]
+3.  [向应用程序添加身份验证][]
 
-This tutorial is based on the Mobile Services quickstart. You must also first complete the tutorial [Get started with Mobile Services]. 
+本教程基于移动服务快速入门。因此，你还必须先完成[移动服务入门][]教程。
 
-Completing this tutorial requires [Xamarin.Android] and Android SDK 4.2 or a later version. 
+完成本教程需要 [Xamarin.Android] 和 Android SDK 4.2 或更高版本。
 
-<h2><a name="register"></a><span class="short-header">Register your app</span>Register your app for authentication and configure Mobile Services</h2>
+<a name="register"></a>
+## 注册应用程序注册应用程序以进行身份验证并配置移动服务
 
-To be able to authenticate users, you must register your app with an identity provider. You must then register the provider-generated client secret with Mobile Services.
+为了能够对用户进行身份验证，你必须通过标识提供者注册你的应用程序。然后，你需要向移动服务注册标识提供者生成的客户端密钥。
 
-1. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your mobile service.
+1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的移动服务 。
 
-   	![][4]
+    ![][]
 
-2. Click the **Dashboard** tab and make a note of the **Site URL** value.
+2.  单击“仪表板” 选项卡，记下"站点 URL" 值。
 
-   	![][5]
+    ![][1]
 
-    You may need to provide this value to the identity provider when you register your app.
+    注册你的应用程序时，可能需要向标识提供者提供此值。
 
-3. Choose a supported identity provider from the list below and follow the steps to register your app with that provider:
+3.  从以下列表中选择支持的标识提供者，并按步骤向该标识提供者注册你的应用程序：
 
- - <a href="/en-us/develop/mobile/how-to-guides/register-for-microsoft-authentication/" target="_blank">Microsoft Account</a>
- - <a href="/en-us/develop/mobile/how-to-guides/register-for-facebook-authentication/" target="_blank">Facebook login</a>
- - <a href="/en-us/develop/mobile/how-to-guides/register-for-twitter-authentication/" target="_blank">Twitter login</a>
- - <a href="/en-us/develop/mobile/how-to-guides/register-for-google-authentication/" target="_blank">Google login</a>
- - <a href="/en-us/documentation/articles/mobile-services-how-to-register-active-directory-authentication/" target="_blank">Azure Active Directory</a>
+-   [Microsoft 帐户][]
+-   [Facebook 登录][]
+-   [Twitter 登录][]
+-   [Google 登录][]
+-   [Azure Active Directory][]
 
+    请记住，要记下标识提供者生成的客户端标识和密钥值。
 
-    Remember to make a note of the client identity and secret values generated by the provider.
+    <div class="dev-callout"><b>安全说明</b>
 
-    <div class="dev-callout"><b>Security Note</b>
-	<p>The provider-generated secret is an important security credential. Do not share this secret with anyone or distribute it with your app.</p>
-    </div>
+    <p>标识提供者生成的密钥是一个重要的安全凭据。请勿与任何人分享此密钥或将密钥随应用程序分发。</p>
+	</div>
 
-4. Back in the Management Portal, click the **Identity** tab, enter the app identifier and shared secret values obtained from your identity provider, and click **Save**.
+1.  回到管理门户中，单击“标识”选项卡， 输入从标识提供者获取的应用程序标识符和共享密钥值，然后单击“保存”。 
 
-   	![][13]
+    ![][2]
 
-Both your mobile service and your app are now configured to work with your chosen authentication provider.
+你的移动服务和应用程序现已配置为使用你选择的身份验证提供者。
 
-<h2><a name="permissions"></a><span class="short-header">Restrict permissions</span>Restrict permissions to authenticated users</h2>
+<a name="permissions"></a>
+## 限制权限将权限限制给已经过身份验证的用户
 
-1. In the Management Portal, click the **Data** tab, and then click the **TodoItem** table. 
+1.  在管理门户中，单击“数据”选项卡，然后单击“TodoItem”表 。
 
-   	![][14]
+    ![][3]
 
-2. Click the **Permissions** tab, set all permissions to **Only authenticated users**, and then click **Save**. This will ensure that all operations against the **TodoItem** table require an authenticated user. This also simplifies the scripts in the next tutorial because they will not have to allow for the possibility of anonymous users.
+2.  单击“权限” 选项卡，将所有权限设置为“仅经过身份验证的用户” ，然后单击“保存” 。这样可以确保对 "TodoItem" 表的所有操作都要求用户经过身份验证。这样还可简化下一个教程中的脚本，因为它们无需再允许匿名用户。
 
-   	![][15]
+    ![][4]
 
-3. In Eclipse, open the project that you created when you completed the tutorial [Get started with Mobile Services]. 
+3.  在 Eclipse 中，打开你在完成[移动服务入门][]教程后创建的项目。
 
-4. From the **Run** menu, then click **Run** to start the app; verify that an unhandled exception with a status code of 401 (Unauthorized) is raised after the app starts. 
+4.  然后，从“运行” 菜单中单击“运行” 以启动应用程序；验证启动该应用程序后，是否会引发状态代码为 401（“未授权”）的未处理异常。
 
-	 This happens because the app attempts to access Mobile Services as an unauthenticated user, but the _TodoItem_ table now requires authentication.
+    发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 *TodoItem* 表现在要求身份验证。
 
-Next, you will update the app to authenticate users before requesting resources from the mobile service.
+接下来，你需要更新应用程序，以便在从移动服务请求资源之前对用户进行身份验证。
 
-<h2><a name="add-authentication"></a><span class="short-header">Add authentication</span>Add authentication to the app</h2>
+<a name="add-authentication"></a>
+## 添加身份验证向应用程序添加身份验证
 
-1. Add the following method to the **TodoActivity** class: 
+1.  将以下方法添加到 "TodoActivity" 类：
 
-	        private async Task Authenticate()
-	        {
-	            try
-	            {
-	                user = await client.LoginAsync(this, MobileServiceAuthenticationProvider.MicrosoftAccount);
-	                CreateAndShowDialog(string.Format("you are now logged in - {0}", user.UserId), "Logged in!");
-	            }
-	            catch (Exception ex)
-	            {
-	                CreateAndShowDialog(ex, "Authentication failed");
-	            }
-	        }
+            private async Task Authenticate()
+            {
+        try
+                {
+        user = await client.LoginAsync(this, MobileServiceAuthenticationProvider.MicrosoftAccount);
+        CreateAndShowDialog(string.Format("you are now logged in - {0}", user.UserId), "Logged in!");
+                }
+        catch (Exception ex)
+                {
+        CreateAndShowDialog(ex, "Authentication failed");
+                }
+            }
 
-    This creates a new method to handle the authentication process. The user is authenticated by using a Microsoft Account login. A dialog is displayed which displays the ID of the authenticated user. You cannot proceed without a positive authentication.
+    这将会创建一个用于处理身份验证过程的新方法。将使用 Microsoft 帐户登录对用户进行身份验证。此时将出现一个对话框，其中显示了已经过身份验证的用户的 ID。如果未正常完成身份验证，你将无法继续操作。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>If you are using an identity provider other than Microsoft, change the value passed to the <strong>login</strong> method above to one of the following: <i>Facebook</i>, <i>Google</i>, <i>Twitter</i>, or <i>WindowsAzureActiveDirectory</i>.</p>
-    </div>
+    <div class="dev-callout"><b>说明</b>
 
-2. In the **OnCreate** method, add the following line of code after the code that instantiates the `MobileServiceClient` object.
+    <p>如果使用的标识提供者不是 Microsoft，请将传递给上述 <b>login</b> 方法的值更改为下列其中一项：<em>Facebook</em>、<em>Google</em>、<em>Twitter</em> 或 <em>WindowsAzureActiveDirectory</em>。</p>
+	</div>
 
-		await Authenticate();
+2.  在 "OnCreate" 方法中，在实例化 `MobileServiceClient` 对象的代码后面添加以下代码行。
 
-	This call starts the authentication process and awaits it asynchronously.
+        await Authenticate();
 
-3. Move the remaining code after `await Authenticate();` in the **OnCreate** method to a new **CreateTable** method, which looks like this:
+    此调用启动身份验证过程，并以异步方式等待它。
 
-	        private async Task CreateTable()
-	        {
-	            // Get the Mobile Service Table instance to use
-	            todoTable = client.GetTable<TodoItem>();
+3.  将 "OnCreate" 方法中 `await Authenticate();` 之后剩余的代码移到新的 "CreateTable" 方法中，该方法如下所示：
 
-	            textNewTodo = FindViewById<EditText>(Resource.Id.textNewTodo);
+            private async Task CreateTable()
+            {
+        // Get the Mobile Service Table instance to use
+        todoTable = client.GetTable<TodoItem>();
 
-	            // Create an adapter to bind the items with the view
-	            adapter = new TodoItemAdapter(this, Resource.Layout.Row_List_To_Do);
-	            var listViewTodo = FindViewById<ListView>(Resource.Id.listViewTodo);
-	            listViewTodo.Adapter = adapter;
+        textNewTodo = FindViewById<EditText>(Resource.Id.textNewTodo);
 
-	            // Load the items from the Mobile Service
-	            await RefreshItemsFromTableAsync();
-	        }
+        // Create an adapter to bind the items with the view
+        adapter = new TodoItemAdapter(this, Resource.Layout.Row_List_To_Do);
+        var listViewTodo = FindViewById<ListView>(Resource.Id.listViewTodo);
+        listViewTodo.Adapter = adapter;
 
-4. Then call the new **CreateTable** method in **OnCreate** after the **Authenticate** call added in step 2:
+        // Load the items from the Mobile Service
+        await RefreshItemsFromTableAsync();
+            }
 
-		await CreateTable();
+4.  然后，在 "OnCreate" 中，在完成步骤 2 中添加的 "Authenticate" 调用之后，将调用新的 "CreateTable" 方法：
 
+        await CreateTable();
 
-5. From the **Run** menu, then click **Run** to start the app and sign in with your chosen identity provider. 
+5.  然后，从“运行” 菜单中单击“运行” 以启动应用程序，并使用所选的标识提供者登录。
 
-   	When you are successfully logged-in, the app should run without errors, and you should be able to query Mobile Services and make updates to data.
+    当你成功登录时，应用程序应该运行而不出现错误，你应该能够查询移动服务，并对数据进行更新。
 
-## Get completed example
-Download the [completed example project]. Be sure to update the **applicationURL** and **applicationKey** variables with your own Azure settings.
+## 获取已完成的示例
 
-## <a name="next-steps"></a>Next steps
+下载[已完成的示例项目][]。请务必使用你自己的 Azure 设置更新 "applicationURL" 和 "applicationKey" 变量。
 
-In the next tutorial, [Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. 
+<a name="next-steps"></a>
+## 后续步骤
 
-<!-- Anchors. -->
-[Register your app for authentication and configure Mobile Services]: #register
-[Restrict table permissions to authenticated users]: #permissions
-[Add authentication to the app]: #add-authentication
-[Next Steps]:#next-steps
+在下一教程[使用脚本为用户授权][]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。
 
-<!-- Images. -->
-[4]: ./media/partner-xamarin-mobile-services-android-get-started-users/mobile-services-selection.png
-[5]: ./media/partner-xamarin-mobile-services-android-get-started-users/mobile-service-uri.png
-
-[13]: ./media/partner-xamarin-mobile-services-android-get-started-users/mobile-identity-tab.png
-[14]: ./media/partner-xamarin-mobile-services-android-get-started-users/mobile-portal-data-tables.png
-[15]: ./media/partner-xamarin-mobile-services-android-get-started-users/mobile-portal-change-table-perms.png
-
-<!-- URLs. -->
-
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-xamarin-android
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android
-
-[Azure Management Portal]: https://manage.windowsazure.com/
-
-[completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331328
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-users-js "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-users-wp8 "Windows Phone"
+  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-users-ios "iOS"
+  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-users-android "Android"
+  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-users-html "HTML"
+  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-ios "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android "Xamarin.Android"
+  [注册应用程序以进行身份验证并配置移动服务]: #register
+  [将表权限限制给已经过身份验证的用户]: #permissions
+  [向应用程序添加身份验证]: #add-authentication
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-android
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  []: ./media/partner-xamarin-mobile-services-android-get-started-users/mobile-services-selection.png
+  [1]: ./media/partner-xamarin-mobile-services-android-get-started-users/mobile-service-uri.png
+  [Microsoft 帐户]: /zh-cn/develop/mobile/how-to-guides/register-for-microsoft-authentication/
+  [Facebook 登录]: /zh-cn/develop/mobile/how-to-guides/register-for-facebook-authentication/
+  [Twitter 登录]: /zh-cn/develop/mobile/how-to-guides/register-for-twitter-authentication/
+  [Google 登录]: /zh-cn/develop/mobile/how-to-guides/register-for-google-authentication/
+  [Azure Active Directory]: /zh-cn/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
+  [2]: ./media/partner-xamarin-mobile-services-android-get-started-users/mobile-identity-tab.png
+  [3]: ./media/partner-xamarin-mobile-services-android-get-started-users/mobile-portal-data-tables.png
+  [4]: ./media/partner-xamarin-mobile-services-android-get-started-users/mobile-portal-change-table-perms.png
+  [已完成的示例项目]: http://go.microsoft.com/fwlink/p/?LinkId=331328
+  [使用脚本为用户授权]: /zh-cn/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-android

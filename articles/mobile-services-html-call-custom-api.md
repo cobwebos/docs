@@ -1,80 +1,76 @@
 <properties linkid="mobile-services-html-call-custom-api" urlDisplayName="Call a custom API from the client" pageTitle="Call a custom API from an HTML client - Mobile Services" metaKeywords="" description="Learn how to define a custom API and then call it from an HTML app that uses Windows Azure Mobile Services." metaCanonical="" services="" documentationCenter="" title="Call a custom API from the client" authors=""  solutions="" writer="jparrel" manager="" editor=""  />
 
+# 从 HTML 应用程序调用自定义 API
 
+本主题说明如何从 HTML 应用程序调用自定义 API。自定义 API 可让你定义自定义终结点，这些终结点将会公开不映射到插入、更新、删除或读取操作的服务器功能。使用自定义 API 能够以更大的力度控制消息传递，包括读取和设置 HTTP 消息标头，以及定义除 JSON 以外的消息正文格式。
 
+使用本主题中创建的自定义 API，你可以发送单个 POST 请求，用于将表中所有 todo 项的 completed 标志设置为 `true`。如果没有此自定义 API，客户端必须逐个地发送请求，以更新表中每个 todo 项的该标志。
 
-# Call a custom API from an HTML application
+需要将此功能添加到你在完成[移动服务入门][]或 [数据处理入门] 教程后创建的应用程序。为此，你需要完成以下步骤：
 
-This topic shows you how to call a custom API from an HTML application. A custom API enables you to define custom endpoints that expose server functionality that does not map to an insert, update, delete, or read operation. By using a custom API, you can have more control over messaging, including reading and setting HTTP message headers and defining a message body format other than JSON.
+1.  [定义自定义 API][]
+2.  [更新应用程序以调用自定义 API][]
+3.  [测试应用程序][]
 
-The custom API created in this topic gives you the ability to send a single POST request that sets the completed flag to `true` for all the todo items in the table. Without this custom API, the client would have to send individual requests to update the flag for each todo item in the table.
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]或 [数据处理入门]。
 
-You will add this functionality to the app that you created when you completed either the [Get started with Mobile Services] or the [Get started with data] tutorial. To do this, you will complete the following steps:
+<a name="define-custom-api"></a>
+## 定义自定义 API
 
-1. [Define the custom API]
-2. [Update the app to call the custom API]
-3. [Test the app] 
+[WACOM.INCLUDE [mobile-services-create-custom-api][]]
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services] or [Get started with data].
+<a name="update-app"></a>
+## 更新应用程序更新应用程序以调用自定义 API
 
-## <a name="define-custom-api"></a>Define the custom API
+1.  使用文本编辑器打开 index.html 文件，找到名为 `buttonRefresh` 的 "button" 元素，并紧接在该元素的后面添加以下新元素：
 
-[WACOM.INCLUDE [mobile-services-create-custom-api](../includes/mobile-services-create-custom-api.md)]
+        <button id="buttonCompleteAll">Complete All</button> 
 
-<h2><a name="update-app"></a><span class="short-header">Update the app </span>Update the app to call the custom API</h2>
+    这样可将新按钮添加到页。
 
-1. Using your text editor, open the index.html file, locate the **button** element named `buttonRefresh`, and add the following new element right after it: 
+2.  在 page.js 中 "refreshTodoItems" 函数的后面添加以下代码：
 
-		<button id="buttonCompleteAll">Complete All</button> 
+        var completeAllTodoItems = function () {
+        // Asynchronously call the custom API using the POST method.
+        client.invokeApi("completeall", {
+        body:null,
+        method:"post"
+        }).done(function (results) {
+        var message = results.result.count + " item(s) marked as complete.";
+        alert(message);
+        refreshTodoItems();
+        }, function (error) {
+        alert(error.message);
+            });
+        };
 
-	This adds a new button to the page. 
+        $('#buttonCompleteAll').click(function () {
+        completeAllTodoItems();
+        });
 
-2. In page.js, and after the **refreshTodoItems** function, add the following code:
+    此方法可处理新按钮的 "Click" 事件。"invokeApi" 方法在客户端上调用，该客户端向新的自定义 API 发送 POST 请求。与任何错误相同，自定义 API 返回的结果也显示在消息对话框中。
 
-		var completeAllTodoItems = function () {
-			// Asynchronously call the custom API using the POST method.
-			client.invokeApi("completeall", {
-				body: null,
-				method: "post"
-			}).done(function (results) {
-				var message = results.result.count + " item(s) marked as complete.";
-				alert(message);
-				refreshTodoItems();
-			}, function(error) {
-				alert(error.message);
-			});
-		};
+<a name="test-app"></a>
+## 测试应用程序
 
-		$('#buttonCompleteAll').click(function () {
-			completeAllTodoItems();
-		});
+1.  刷新你的浏览器。
 
-	This method handles the **Click** event for the new button. The **invokeApi** method is called on the client, which sends a POST request to the new custom API. The result returned by the custom API is displayed in a message dialog, as are any errors.
+2.  在应用程序的“插入 TodoItem”中键入一些文本 ，然后单击“保存” 。
 
-## <a name="test-app"></a>Test the app
+3.  重复上述步骤，直至你将多个 ToDo 项添加到列表。
 
-1. Refresh your browser.
+4.  单击“Complete All”（完成全部） 按钮。此时会显示一个消息框，指示标记为完成的多个项，并再次执行筛选查询，将所有项从列表中清除。
 
-2. In the app, type some text in **Insert a TodoItem**, then click **Save**.
+## 后续步骤
 
-3. Repeat the previous step until you have added several todo items to the list.
+创建自定义 API 并从 HTML 应用程序调用该 API 后，建议你了解有关以下移动服务主题的详细信息：
 
-4. Click the **Complete All** button. A message dialog is displayed that indicates the number of items marked complete and the filtered query is executed again, which clears all items from the list.
+-   [移动服务服务器脚本参考][]
+    了解有关创建自定义 API 的详细信息。
 
-## Next steps
-
-Now that you have created a custom API and called it from your HTML app, consider finding out more about the following Mobile Services topics:
-
-* [Mobile Services server script reference]
-  <br/>Learn more about creating custom APIs.
-
-<!-- Anchors. -->
-[Define the custom API]: #define-custom-api
-[Update the app to call the custom API]: #update-app
-[Test the app]: #test-app
-[Next Steps]: #next-steps
-
-<!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[My Apps dashboard]: http://go.microsoft.com/fwlink/?LinkId=262039
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/mobile-services-html-get-started
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/mobile-services-html-get-started
+  [定义自定义 API]: #define-custom-api
+  [更新应用程序以调用自定义 API]: #update-app
+  [测试应用程序]: #test-app
+  [mobile-services-create-custom-api]: ../includes/mobile-services-create-custom-api.md
+  [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/?LinkId=262293

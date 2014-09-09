@@ -1,56 +1,57 @@
 <properties linkid="mobile-services-call-custom-api-js" urlDisplayName="Call a custom API from the client" pageTitle="Call a custom API from a Windows Store JS client - Mobile Services" metaKeywords="" description="Learn how to define a custom API and then call it from a Windows Store app that use Azure Mobile Services." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Call a custom API from the client" authors="glenga" solutions="" manager="" editor="" />
 
-# Call a custom API from the client
+# 从客户端调用自定义 API
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api" title="Windows Store C#">Windows Store C#</a><a href="/en-us/documentation/articles/mobile-services-windows-store-javascript-call-custom-api" title="Windows Store JavaScript" class="current">Windows Store JavaScript</a><a href="/en-us/documentation/articles/mobile-services-windows-phone-call-custom-api" title="Windows Phone">Windows Phone</a><a href="/en-us/documentation/articles/mobile-services-ios-call-custom-api" title="iOS">iOS</a><a href="/en-us/documentation/articles/mobile-services-android-call-custom-api" title="Android">Android</a>
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/documentation/articles/mobile-services-windows-store-javascript-call-custom-api" title="Windows Store JavaScript" class="current">Windows 应用商店 JavaScript</a><a href="/zh-cn/documentation/articles/mobile-services-windows-phone-call-custom-api" title="Windows Phone">Windows Phone</a><a href="/zh-cn/documentation/articles/mobile-services-ios-call-custom-api" title="iOS">iOS</a><a href="/zh-cn/documentation/articles/mobile-services-android-call-custom-api" title="Android">Android</a>
 </div>
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-call-custom-api" title=".NET backend">.NET backend</a> | <a href="/en-us/documentation/articles/mobile-services-windows-store-javascript-call-custom-api"  title="JavaScript backend" class="current">JavaScript backend</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-call-custom-api" title=".NET backend">.NET 后端</a> | <a href="/zh-cn/documentation/articles/mobile-services-windows-store-javascript-call-custom-api"  title="JavaScript backend" class="current">JavaScript 后端</a></div>
 
-This topic shows you how to call a custom API from a Windows Store app. A custom API enables you to define custom endpoints that expose server functionality that does not map to an insert, update, delete, or read operation. By using a custom API, you can have more control over messaging, including reading and setting HTTP message headers and defining a message body format other than JSON.
+本主题说明如何从 Windows 应用商店应用程序调用自定义 API。自定义 API 可让你定义自定义终结点，这些终结点将会公开不映射到插入、更新、删除或读取操作的服务器功能。使用自定义 API 能够以更大的力度控制消息传递，包括读取和设置 HTTP 消息标头，以及定义除 JSON 以外的消息正文格式。
 
-The custom API created in this topic gives you the ability to send a single POST request that sets the completed flag to `true` for all the todo items in the table. Without this custom API, the client would have to send individual requests to update the flag for each todo item in the table.
+使用本主题中创建的自定义 API，你可以发送单个 POST 请求，用于将表中所有 todo 项的 completed 标志设置为 `true`。如果没有此自定义 API，客户端必须逐个地发送请求，以更新表中每个 todo 项的该标志。
 
-You will add this functionality to the app that you created when you completed either the [Get started with Mobile Services] or the [Get started with data] tutorial. To do this, you will complete the following steps:
+需要将此功能添加到你在完成[移动服务入门][]或[数据处理入门][]教程后创建的应用程序。为此，你需要完成以下步骤：
 
-1. [Define the custom API]
-2. [Update the app to call the custom API]
-3. [Test the app] 
+1.  [定义自定义 API][]
+2.  [更新应用程序以调用自定义 API][]
+3.  [测试应用程序][]
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services] or [Get started with data]. This tutorial uses Visual Studio 2012 Express for Windows 8.
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]或[数据处理入门][]。本教程使用 Visual Studio 2012 Express for Windows 8。
 
-## <a name="define-custom-api"></a>Define the custom API
+<a name="define-custom-api"></a>
+## 定义自定义 API
 
-[WACOM.INCLUDE [mobile-services-create-custom-api](../includes/mobile-services-create-custom-api.md)]
+[WACOM.INCLUDE [mobile-services-create-custom-api][]]
 
+[WACOM.INCLUDE [mobile-services-windows-store-javascript-call-custom-api][]]
 
-[WACOM.INCLUDE [mobile-services-windows-store-javascript-call-custom-api](../includes/mobile-services-windows-store-javascript-call-custom-api.md)]
+## 后续步骤
 
-## Next steps
+创建自定义 API 并从 Windows 应用商店应用程序调用该 API 后，建议你了解有关以下移动服务主题的详细信息：
 
-Now that you have created a custom API and called it from your Windows Store app, consider finding out more about the following Mobile Services topics:
+-   [定义支持定期通知的自定义 API][]
+    说明如何使用自定义 API 来支持 Windows 应用商店应用程序中的定期通知。启用定期通知后，Windows 将定期访问你的自定义 API 终结点，并使用返回的、采用磁贴特定格式的 XML 来更新开始菜单中的应用程序磁贴。
 
-* [Define a custom API that supports periodic notifications]
-	<br/>Learn how to use a custom API to support periodic notifications in a Windows Store app. With period notifications enabled, Windows will periodically access your custom API endpoint and use the returned XML, in a tile-specific format, to update the app tile on start menu.
+-   [移动服务服务器脚本参考][]
+    了解有关创建自定义 API 的详细信息。
 
-* [Mobile Services server script reference]
-  <br/>Learn more about creating custom APIs.
+-   [在源代码管理中存储服务器脚本][]
+    了解如何使用源代码管理功能来更方便、更安全地开发和发布自定义 API 脚本代码。
 
-* [Store server scripts in source control]
-  <br/> Learn how to use the source control feature to more easily and securely develop and publish custom API script code.
-
-<!-- Anchors. -->
-[Define the custom API]: #define-custom-api
-[Update the app to call the custom API]: #update-app
-[Test the app]: #test-app
-[Next Steps]: #next-steps
-
-<!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[My Apps dashboard]: http://go.microsoft.com/fwlink/?LinkId=262039
-[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-windows-store-get-started/
-[Get started with data]: /en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-data/
-[Get started with authentication]: /en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-users/
-[Get started with push notifications]: /en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-push/
-
-[Define a custom API that supports periodic notifications]: /en-us/documentation/articles/mobile-services-windows-store-javascript-create-pull-notifications
-[Store server scripts in source control]: /en-us/documentation/articles/mobile-services-store-scripts-source-control
+  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-call-custom-api "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-call-custom-api "Windows Phone"
+  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-call-custom-api "iOS"
+  [Android]: /zh-cn/documentation/articles/mobile-services-android-call-custom-api "Android"
+  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-call-custom-api ".NET 后端"
+  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-call-custom-api "JavaScript 后端"
+  [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started/
+  [数据处理入门]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-data/
+  [定义自定义 API]: #define-custom-api
+  [更新应用程序以调用自定义 API]: #update-app
+  [测试应用程序]: #test-app
+  [mobile-services-create-custom-api]: ../includes/mobile-services-create-custom-api.md
+  [mobile-services-windows-store-javascript-call-custom-api]: ../includes/mobile-services-windows-store-javascript-call-custom-api.md
+  [定义支持定期通知的自定义 API]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-create-pull-notifications
+  [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/?LinkId=262293
+  [在源代码管理中存储服务器脚本]: /zh-cn/documentation/articles/mobile-services-store-scripts-source-control

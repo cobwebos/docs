@@ -1,338 +1,324 @@
 <properties linkid="develop-mobile-tutorials-dotnet-backend-get-started-with-data-javascript-vs2013" urlDisplayName="Get Started with Data" pageTitle="Get started with data (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to get started using Mobile Services to leverage data in your Windows Store app." metaCanonical="" services="" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="wesmc" solutions="" manager="" editor="" />
 
-
-
-# Get started with data in Mobile Services
-
+# 移动服务中的数据处理入门
 
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/" title="Windows Store C#">Windows Store C#</a>
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/" title="Windows Store JavaScript" class="current">Windows Store JavaScript</a>
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/" title="Windows Phone">Windows Phone</a>
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/" title="Android">Android</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/" title="Windows Store C#">Windows 应用商店 C\#</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/" title="Windows Store JavaScript" class="current">Windows 应用商店 JavaScript</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/" title="Windows Phone">Windows Phone</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/" title="Android">Android</a>
 </div>
 
 <div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/" title=".NET backend" class="current">.NET backend</a> | 
-	<a href="/en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-data/"  title="JavaScript backend">JavaScript backend</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/" title=".NET backend" class="current">.NET 后端</a> | 
+	<a href="/zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-data/"  title="JavaScript backend">JavaScript 后端</a>
 </div>
 
-This topic shows you how to use Azure Mobile Services as a backend datasource for a Windows Store app. In this tutorial, you will download a Visual Studio 2013 project for an app that stores data in memory, create a new mobile service, integrate the mobile service with the app, and view the changes to data made when running the app.
+本主题说明如何使用 Azure 移动服务作为 Windows 应用商店应用程序的后端数据源。在本教程中，你将要为某个应用程序（该应用程序在内存中存储数据）下载一个 Visual Studio 2013 项目，创建一个新的移动服务，将该移动服务与该应用程序相集成，并查看运行该应用程序时对数据所做的更改。
 
-The mobile service that you will create in this tutorial will support the .NET runtime in the Mobile Service. This will allow you to use .NET languages and Visual Studio for server-side business logic in the mobile service. To create a mobile service that lets you write your server-side business logic in JavaScript, see the [JavaScript backend version] of this topic.
+在本教程中创建的移动服务支持移动服务中的 .NET 运行时。这样，你便可以将 .NET 语言和 Visual Studio 用于移动服务中的服务器端业务逻辑。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题中的 [JavaScript 后端版本][]。
 
-<div class="dev-callout"><b>Note</b>
-<p>This tutorial requires Visual Studio 2013.</p>
+<div class="dev-callout"><b>说明"</b>
+
+<p>本教程需要安装 Visual Studio 2013。</p>
 </div>
 
-This tutorial walks you through these basic steps:
+本教程将指导你完成以下基本步骤：
 
-1. [Download the Windows Store app project]
-2. [Create a new mobile service]
-3. [Download the mobile service locally]
-4. [Update the Windows Store app to use the mobile service]
-5. [Test the Windows Store App against the service hosted locally]
-6. [Publish the mobile service to Azure]
-7. [Test the Windows Store App against the service hosted in Azure]
+1.  [下载 Windows 应用商店应用程序项目][]
+2.  [创建新的移动服务][]
+3.  [在本地下载移动服务][]
+4.  [更新 Windows 应用商店应用程序以使用移动服务][]
+5.  [针对本地托管的服务测试 Windows 应用商店应用程序][]
+6.  [将移动服务发布到 Azure][]
+7.  [针对 Azure 中托管的服务测试 Windows 应用商店应用程序][]
 
+<div class="dev-callout"><b>说明</b>
 
-<div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-javascript-get-started-data%2F" target="_blank">Azure Free Trial</a>.</p></div> 
+<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-javascript-get-started-data%2F" target="_blank">Azure 免费试用</a>。</p>
+</div>
 
-<h2><a name="download-app"></a><span class="short-header">Download the project</span>Download the GetStartedWithData project</h2>
+<a name="download-app"></a>
+## 下载项目下载 GetStartedWithData 项目
 
-This tutorial is built on the [GetStartedWithMobileServices app][Developer Code Samples site], which is a Windows Store app project in Visual Studio 2013. The UI for this app is similar to the app generated by the Mobile Services quickstart, except that added items are stored locally in memory. 
+本教程是在 [GetStartedWithMobileServices 应用程序][]（Visual Studio 2013 中的一个 Windows 应用商店应用程序项目）的基础上制作的。此应用程序的 UI 与移动服务快速入门中生成的应用程序类似，不过，前者的一些新增项本地存储在内存中。
 
-1. Download the JavaScript version of the GetStartedWithMobileServices sample app from the [Developer Code Samples site]. 
+1.  从[开发人员代码示例站点][GetStartedWithMobileServices 应用程序]下载 GetStartedWithMobileServices 示例应用程序的 JavaScript 版本。
 
-   	![][1]
+    ![][]
 
-2. Run Visual Studio 2013 with administrative privileges by right clicking Visual Studio and clicking **Run as administrator**.
+2.  右键单击 Visual Studio，然后单击“以管理员身份运行”，以使用管理特权运行 Visual Studio 2013 。
 
-3. In Visual Studio 2013, open the downloaded project. Expand the js folder in Solution Explorer and examine the default.js file.
+3.  在 Visual Studio 2013 中，打开已下载的项目。在解决方案资源管理器中展开 js 文件夹，并检查 default.js 文件。
 
-   	Notice that added **TodoItem** objects are stored in an in-memory in a `WinJS.Binding.List`.
+    请注意添加的 "TodoItem" 对象存储在内存中的 `WinJS.Binding.List` 内。
 
-4. Press the **F5** key to rebuild the project and start the app.
+4.  按 "F5" 键重新生成项目并启动应用程序。
 
-5. In the app, type some text in the box below **Insert a TodoItem**, then click **Save**.
+5.  在应用程序中“插入 TodoItem”下面的框内键入一些文本，然后单击“保存” 。
 
-   	![][0]  
+    ![][1]
 
-   	Notice that the saved text is displayed in the second column under **Query and update data**.
+    可以看到，保存的文本已显示在“查询和更新数据”下的第二列中 。
 
-<h2><a name="create-service"></a><span class="short-header">Create a new mobile service</span>Create a new mobile service</h2>
+<a name="create-service"></a>
+## 创建新的移动服务创建新的移动服务
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service][]]
 
+<a name="download-the-service-locally"></a>
+## 在本地下载服务下载移动服务项目并将其添加到解决方案
 
-
-<h2><a name="download-the-service-locally"></a><span class="short-header">Download the service locally</span>Download the mobile service project and add it to the solution</h2>
-
-1. In the [Azure Management Portal], click your new Mobile Service or its cloud icon tab to go to the overview page.
+1.  在 [Azure 管理门户][]中，单击新建的移动服务或者其云图标选项卡，以转到概述页。
 
     ![][2]
 
-2. Click the **Windows Store** platform. Under the **Get Started** section, expand **Connect an existing Windows Store app** and, click the **Download** button to download a personalized starter project for the mobile service. 
+2.  单击“Windows 应用商店” 平台。在“入门”部分下，展开“连接现有 Windows 应用商店应用程序”，然后单击“下载”按钮以下载移动服务的个性化初学者项目 。
 
     ![][3]
 
-3. Scroll down to the bottom of that **Get Started** section to the step titled **Publish your service to the cloud**. Click the link shown in the screenshot below to download a publish profile file for the mobile service you just downloaded.
+3.  向下滚动到“入门”部分底部的标题为“将服务发布到云”的步骤 。单击以下屏幕快照中所示的链接，下载你刚刚下载的移动服务的发布配置文件。
 
-    > [WACOM.NOTE] Save the file in a safe place because it does contain sensitive information pertaining to your Azure account. You will delete this file after publishing the mobile service later in this tutorial. 
-
-    ![][5]
-
-
-4. Unzip the personalized service starter project you downloaded. Copy the folders that were in the zip file into the same **JavaScript** directory where the Get Started with Data solution file (.sln) is located. This makes it easier for NuGet Package Manager to keep all the packages in sync. 
-
-    ![][26]
-
-5. In Visual Studio's Solution Explorer, right click your solution for the Getting Started with Data Windows Store application. Click **Add** and then click **Existing Project**.
+    > [WACOM.NOTE] 请将该文件保存在安全位置，因为它包含与你的 Azure 帐户相关的敏感信息。在根据本教程后面的内容发布移动服务后，你将要删除此文件。
 
     ![][4]
 
-6. In the Add Existing Project dialog, navigate to the mobile service project folder that you moved into the **JavaScript** directory. Select the C# project file (.csproj) in the service subdirectory. Click **Open** to add the project to your solution.
+4.  解压缩你下载的个性化服务初学者项目。将 zip 文件中的文件夹复制到“数据处理入门”解决方案文件 (.sln) 所在的同一个 "JavaScript" 目录。这样可以方便 NuGet 包管理器将所有程序包保持同步。
+
+    ![][5]
+
+5.  在 Visual Studio 的解决方案资源管理器中，右键单击“数据处理入门”Windows 应用商店应用程序对应的解决方案。单击“添加” ，然后单击“现有项目” 。
 
     ![][6]
 
-7. In Visual Studio in Solution Explorer, right click the service project you just added and click **Build** to verify that it builds with no errors. During the build, NuGet package manager may need to restore some NuGet packages that are referenced in the project.
-
-    ![][20]
-
-8. Right click the service project again. This time click **Start new instance** under the **Debug** context menu.
-
-    ![][21]
-
-    Visual Studio opens the default web page for your service. You can click **try it now** to test methods in your mobile service from the default web page.
-
-    ![][22]
-
-    Visual Studio hosted your mobile service locally in IIS Express by default. You can see this by right clicking the tray icon for IIS Express on your taskbar.
-
-    ![][23]
-
-
-<h2><a name="update-app"></a><span class="short-header">Update the Windows Store app</span>Update the Windows Store app to use the mobile service</h2>
-
-In this section you will update the Windows Store app to use the mobile service as a backend service for the application.
-
-
-1. In Solution Explorer in Visual Studio, right click the Windows Store app project and click **Manage NuGet Packages**.
+6.  在“添加现有项目”对话框中，导航到你已移到 "JavaScript" 目录中的移动服务项目文件夹。在服务子目录中选择 C\# 项目文件 (.csproj)。单击“打开” 将该项目添加到你的解决方案。
 
     ![][7]
 
-2. In the Manage NuGet Packages dialog, search for **WindowsAzure.MobileServices.WinJS** in the online packages collection and click to install the Azure Mobile Services Nuget Package. Then close the dialog.
+7.  在 Visual Studio 的解决方案资源管理器中，右键单击你刚添加的服务项目，然后单击“生成”以验证该项目是否能够生成且不出错 。在生成期间，NuGet 包管理器可能需要还原项目中引用的某些 NuGet 包。
 
     ![][8]
 
-3. Back in the Azure Management Portal on the overview page for your mobile service, find the step labeled **Connect your app and store data in your service**. Click **JavaScript** as your language and copy the code snippet for creating the `MobileServiceClient`.
+8.  再次右键单击该服务项目。这一次请单击“调试”上下文菜单下的“启动新实例” 。
 
     ![][9]
 
-4. In Visual Studio in Solution Explorer, expand the **js** folder and open default.js. Paste the code snippet you copied into the `app.onactivated` event handler just before the definition for the `todoItems` varible. Notice the snippet includes a commented out constructor for connecting to the mobile service in Azure using the application key. You will uncomment this in later step.
+    Visual Studio 将打开服务的默认网页。你可以单击“立即尝试”以从默认网页测试移动服务中的方法 。
 
     ![][10]
 
-
-5. In the default.js, replace the rest of the code for the `app.onactiviated` event handler with the following code that defines the `todoItems` and the operations that we will test with the mobile service. Then save the file.
-
-    This code uses the Mobile Services SDK for JavaScript to enable the app to store it's data in a table provided by the service instead of locally in-memory. The main three methods are `insertTodoItem`, `refreshTodoItems`, and `updateCheckedTodoItem`. These three methods allow you to asynchronously insert, query, and update your data collection with a table in Azure.
-
-            var todoTable = client.getTable('TodoItem');
-            var todoItems = new WinJS.Binding.List();
-            var insertTodoItem = function (todoItem) {
-                // This code inserts a new TodoItem into the database. 
-                // Mobile Services assigns each item an id and the 
-                // item is added to the Binding List
-                todoTable.insert(todoItem).done(function (item) {
-                    todoItems.push(item);
-                });
-            };
-            var refreshTodoItems = function () {
-                // This code refreshes the entries in the list view 
-                // by querying the TodoItems table.
-                todoTable.where()
-                    .read()
-                    .done(function (results) {
-                        todoItems = new WinJS.Binding.List(results);
-                        listItems.winControl.itemDataSource = todoItems.dataSource;
-                    });
-            };
-            var updateCheckedTodoItem = function (todoItem) {
-                // This code updates the database. 
-                // When the MobileService responds, 
-                // the item is removed from the list 
-                todoTable.update(todoItem).done(function (item) {
-                    todoItems.splice(todoItems.indexOf(item), 1);
-                });
-            };
-            buttonSave.addEventListener("click", function () {
-                insertTodoItem({
-                    text: textInput.value,
-                    complete: false
-                });
-            });
-            buttonRefresh.addEventListener("click", function () {
-                refreshTodoItems();
-            });
-            listItems.addEventListener("change", function (eventArgs) {
-                var todoItem = eventArgs.target.dataContext.backingData;
-                todoItem.complete = eventArgs.target.checked;
-                updateCheckedTodoItem(todoItem);
-            });
-            refreshTodoItems();
-
-6. In Visual Studio in Solution Explorer, open the default.html file. At the top of the file add a new WinJS script reference for MobileServices.js. Then save the file.
-
-        <script type="text/javascript" src="/js/MobileServices.js"></script>
-
-    ![][19]
-
-
-
-<h2><a name="test-locally-hosted"></a><span class="short-header">Test the Windows Store app locally</span>Test the Windows Store app with the service hosted locally</h2>
-
-In this section you will use Visual Studio to host the mobile service locally on your development workstation in IIS Express. Then you will test the app and the backend service.
-
-
-1. In Visual Studio, press the F7 key or click **Build Solution** from the Build menu to build both the Windows Store app and the mobile service. Verify both projects build with no errors in the output window of Visual Studio
+    默认情况下，Visual Studio 在 IIS Express 本地托管你的移动服务。在任务栏中右键单击 IIS Express 的任务栏图标即可看到此信息。
 
     ![][11]
 
-2. In Visual Studio, press the F5 key or click **Start Debugging** from the Debug menu to run the app and host the mobile service locally in IIS Express. 
+<a name="update-app"></a>
+## 更新 Windows 应用商店应用程序更新 Windows 应用商店应用程序以使用移动服务
+
+在本部分中，你将要更新 Windows 应用商店应用程序，以将移动服务用作应用程序的后端服务。
+
+1.  在 Visual Studio 的解决方案资源管理器中，右键单击 Windows 应用商店应用程序项目，然后单击“管理 NuGet 包” 。
 
     ![][12]
 
-
-3. Enter a new todoitem's text. Then click **Save**. This inserts a new todoItem in the database created by the mobile service hosted locally in IIS Express. 
+2.  在“管理 NuGet 包”对话框中，搜索联机程序包集合中的 "WindowsAzure.MobileServices.WinJS"，并单击它以安装 Azure 移动服务 Nuget 包。然后关闭该对话框。
 
     ![][13]
 
-4. Click the checkbox for one of the items to mark it as completed.
-
-    ![][15]
-
-5. In Visual Studio you can view the changes in the database created for the backend service by opening Server Explorer and expanding the Data Connections. Right click the TodoItems table under **MS_TableConnectionString** and click **Show Table Data**
+3.  返回到 Azure 管理门户中的移动服务概述页，找到标签为“连接你的应用程序并存储服务中的数据”的步骤 。单击“JavaScript”以将它选作你的语言，然后复制用于创建 `MobileServiceClient` 的代码段 。
 
     ![][14]
 
+4.  在 Visual Studio 的解决方案资源管理器中，展开 "js" 文件夹并打开 default.js。将复制的代码段粘贴到紧靠在 `todoItems` 变量定义前面的 `app.onactivated` 事件处理程序中。请注意，该代码段包含一个已注释掉的构造函数，该构造函数用于通过应用程序密钥连接到 Azure 中的移动服务。在后面的步骤中，你将要取消注释此构造函数。
 
+    ![][15]
 
-<h2><a name="publish-mobile-service"></a><span class="short-header">Publish the mobile service to Azure</span>Publish the mobile service to Azure</h2>
+5.  在 default.js 中，将 `app.onactiviated` 事件处理程序的余下代码替换为以下代码，以便定义 `todoItems` 以及要通过移动服务进行测试的操作。然后，保存文件。
 
+    此代码借助适用于 JavaScript 的移动服务 SDK 使应用程序将其数据存储在服务提供的表中，而不是本地存储在内存中。三个主要方法为 `insertTodoItem`、`refreshTodoItems` 和 `updateCheckedTodoItem`。通过这三个方法，你可以使用 Azure 中的表异步插入、查询和更新数据集合。
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
+            var todoTable = client.getTable('TodoItem');
+        var todoItems = new WinJS.Binding.List();
+        var insertTodoItem = function (todoItem) {
+        // This code inserts a new TodoItem into the database. 
+        // Mobile Services assigns each item an id and the 
+        // item is added to the Binding List
+        todoTable.insert(todoItem).done(function (item) {
+        todoItems.push(item);
+                });
+            };
+        var refreshTodoItems = function () {
+        // This code refreshes the entries in the list view 
+        // by querying the TodoItems table.
+        todoTable.where()
+        .read()
+        .done(function (results) {
+        todoItems = new WinJS.Binding.List(results);
+        listItems.winControl.itemDataSource = todoItems.dataSource;
+                    });
+            };
+        var updateCheckedTodoItem = function (todoItem) {
+        // This code updates the database. 
+        // When the MobileService responds, 
+        // the item is removed from the list 
+        todoTable.update(todoItem).done(function (item) {
+        todoItems.splice(todoItems.indexOf(item), 1);
+                });
+            };
+        buttonSave.addEventListener("click", function () {
+        insertTodoItem({
+        text:textInput.value,
+        complete:false
+                });
+            });
+        buttonRefresh.addEventListener("click", function () {
+        refreshTodoItems();
+            });
+        listItems.addEventListener("change", function (eventArgs) {
+        var todoItem = eventArgs.target.dataContext.backingData;
+        todoItem.complete = eventArgs.target.checked;
+        updateCheckedTodoItem(todoItem);
+            });
+        refreshTodoItems();
 
+6.  在 Visual Studio 的解决方案资源管理器中打开 default.html 文件。在文件的顶部为 MobileServices.js 添加新的 WinJS 脚本引用，然后保存文件。
 
-<h2><a name="test-azure-hosted"></a><span class="short-header">Test the mobile service on Azure</span>Test the mobile service published to Azure</h2>
+        <script type="text/javascript" src="/js/MobileServices.js"></script>
 
-1. In Visual Studio in Solution Explorer, expand the **js** folder and open default.js.  Comment out the code that creates the `MobileServiceClient` that connects to the locally hosted mobile service. Uncomment the code that creates the `MobileServiceClient` that connects to your service in Azure. Save your changes to the file.
+    ![][16]
+
+<a name="test-locally-hosted"></a>
+## 在本地测试 Windows 应用商店应用程序针对本地托管的服务测试 Windows 应用商店应用程序
+
+在本部分中，你将要使用 Visual Studio 在 IIS Express 中的开发工作站上本地托管移动服务。然后，你将要测试应用程序和后端服务。
+
+1.  在 Visual Studio 中，按 F7 键或者在“生成”菜单中单击“生成解决方案”，以同时生成 Windows 应用商店应用程序和移动服务 。在 Visual Studio 的输出窗口中确认是否已生成这两个项目且未出错
+
+    ![][17]
+
+2.  在 Visual Studio 中，按 F5 键或者在“调试”菜单中单击“启动调试”，以运行应用程序并将移动服务托管在 IIS Express 本地 。
+
+    ![][18]
+
+3.  输入新 todoitem 的文本。然后单击“保存” 。这样便会在 IIS Express 本地托管的移动服务所创建的数据库中插入一个新的 todoItem。
+
+    ![][19]
+
+4.  单击某个项对应的复选框可将它标记为已完成。
+
+    ![][20]
+
+5.  在 Visual Studio 中，打开服务器资源管理器并展开“数据连接”即可查看针对后端服务创建的数据库中的更改。右键单击“MS\_TableConnectionString”下的 TodoItems 表，然后单击“显示表数据” 
+
+    ![][21]
+
+<a name="publish-mobile-service"></a>
+## 将移动服务发布到 Azure将移动服务发布到 Azure
+
+[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service][]]
+
+<a name="test-azure-hosted"></a>
+## 测试 Azure 上的移动服务测试已发布到 Azure 的移动服务
+
+1.  在 Visual Studio 的解决方案资源管理器中，展开 "js" 文件夹并打开 default.js。注释掉功能如下的代码：创建与本地托管移动服务建立连接的 `MobileServiceClient`。取消注释功能如下的代码：创建与 Azure 中的服务建立连接的 `MobileServiceClient`。保存对该文件所做的更改。
 
         //var client = new WindowsAzure.MobileServiceClient(
         //          "http://localhost:59226"
         //);
         // Use this constructor instead after publishing to the cloud
         var client = new WindowsAzure.MobileServiceClient(
-            "https://todolist.preview.azure-mobile-preview.net/",
-            "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        "https://todolist.preview.azure-mobile-preview.net/",
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 
-
-2. In Visual Studio, press the F5 key or click **Start Debugging** from the Debug menu. This will cause the Windows Store app to be rebuilt with the previous change before running the app to connect to the mobile service hosted remotely in Azure. 
-
-    ![][12]
-
-
-3. Enter some new todoitems and click **Save** for each one. Click the checkbox to complete some of the new items. Each new todoItem will be stored and updated in the SQL database you previously configured for your mobile service in the Azure Management Portal. 
-
-    ![][16]
-
-    You can restart the app to see that the changes were persisted to the database in Azure. You can also examine the database using the Azure Management portal or Visual Studio's SQL Server Object Explorer. The next two steps will use the Azure Management portal to view the changes in your database.
-
-4. In the Azure Management Portal, click manage for the database associated with your mobile service.
-
-    ![][17]
-
-5. In the Management portal execute a query to view the changes made by the Windows Store app. Your query will be similar to the following query but use your database name instead of `todolist`.
-
-        SELECT * FROM [todolist].[todoitems]
+2.  在 Visual Studio 中，按 F5 键或者在“调试”菜单中单击“启动调试” 。这样，便会使用运行应用程序之前发生的更改重新生成 Windows 应用商店应用程序，以连接到 Azure 中远程托管的移动服务。
 
     ![][18]
 
-This concludes the **Get started with data** tutorial.
+3.  输入一些新的 todoitem，然后单击“保存”以保存每个 todoitem 。单击复选框以完成其中的某些新项。每个新的 todoItem 将在你前面通过 Azure 管理门户为移动服务配置的 SQL 数据库中存储并更新。
 
-## <a name="next-steps"> </a>Next steps
+    ![][22]
 
-This tutorial demonstrated the basics of enabling a Windows Store app to work with data in Mobile Services. Next, consider completing one of the following tutorials that is based on the GetStartedWithData app that you created in this tutorial:
+    你可以重新启动应用程序，以查看更改是否已持久保存在 Azure 中的数据库内。你还可以使用 Azure 管理门户或者 Visual Studio 的 SQL Server 对象资源管理器来检查数据库。后面两个步骤将使用 Azure 管理门户来查看数据库中的更改。
 
-* [Validate and modify data with scripts]
-  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
+4.  在 Azure 管理门户中，单击与你的移动服务关联的数据库对应的“管理”。
 
-* [Refine queries with paging]
-  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
+    ![][23]
 
-Once you have completed the data series, try one of these other tutorials:
+5.  在管理门户中，执行一个查询以查看 Windows 应用商店应用程序所做的更改。你的查询应类似于以下查询，不过，请使用你的数据库名称而不是 `todolist`。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app.
+        SELECT * FROM [todolist].[todoitems]
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
+    ![][24]
 
-* [Mobile Services .NET How-to Conceptual Reference]
-  <br/>Learn more about how to use Mobile Services with HTML and JavaScript.
-  
-<!-- Anchors. -->
+"数据处理入门"教程到此结束。
 
-[Download the Windows Store app project]: #download-app
-[Create a new mobile service]: #create-service
-[Download the mobile service locally]: #download-the-service-locally
-[Update the Windows Store app to use the Mobile Service]: #update-app
-[Test the Windows Store App against the service hosted locally]: #test-locally-hosted
-[Publish the mobile service to Azure]: #publish-mobile-service
-[Test the Windows Store App against the service hosted in Azure]: #test-azure-hosted
-[Next Steps]:#next-steps
+<a name="next-steps"> </a>
+## 后续步骤
 
-<!-- Images. -->
-[0]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/app-view.png
-[1]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/mobile-data-sample-download-javascript-vs13.png
-[2]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/mobile-service-overview-page.png
-[3]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/download-service-project.png
-[4]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/add-service-project-to-solution.png
-[5]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/download-publishing-profile.png
-[6]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/add-existing-project-dialog.png
-[7]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-manage-nuget-packages.png
-[8]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/manage-nuget-packages.png
-[9]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/copy-mobileserviceclient-snippet.png
-[10]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-pasted-mobileserviceclient.png
-[11]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-build-solution.png
-[12]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-run-solution.png
-[13]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/new-local-todoitem.png
-[14]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-show-local-table-data.png
-[15]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/local-item-checked.png
-[16]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/azure-items.png
-[17]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/manage-sql-azure-database.png
-[18]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/sql-azure-query.png
-[19]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-mobileservices-script-reference.png
-[20]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-build-service-project.png
-[21]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-start-debug-service-project.png
-[22]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/service-welcome-page.png
-[23]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/iis-express-tray.png
+本教程演示了有关如何使 Windows 应用商店应用程序处理移动服务中的数据的基础知识。接下来，建议你完成下列教程之一，这些教程是基于本教程中创建的 GetStartedWithData 应用程序制作的：
 
-[26]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/copy-service-and-packages-folder.png
+-   [使用脚本验证和修改数据][]
+    了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
-<!-- URLs. -->
-[Validate and modify data with scripts]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-js
-[Refine queries with paging]: /en-us/develop/mobile/tutorials/add-paging-to-data-js
-[Get started with Mobile Services]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started/
-[Get started with data]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/
-[Get started with authentication]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/
-[Get started with push notifications]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/
-[JavaScript and HTML]: /en-us/develop/mobile/tutorials/get-started-with-data-js
-[JavaScript backend version]: /en-us/develop/mobile/tutorials/get-started-with-data-js
+-   [使用分页优化查询][]
+    了解如何使用查询中的分页控制单个请求中处理的数据量。
 
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Management Portal]: https://manage.windowsazure.com/
-[Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
-[Developer Code Samples site]:  http://go.microsoft.com/fwlink/p/?LinkId=328660
-[Mobile Services .NET How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-html-js-client/
-[MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
+完成数据系列教程后，请试着学习下列教程之一：
+
+-   [身份验证入门][]
+    了解如何对应用程序用户进行身份验证。
+
+-   [推送通知入门][]
+    了解如何向应用程序发送一条非常简单的推送通知。
+
+-   [移动服务 .NET 操作方法概念性参考][]
+    了解有关如何将移动服务与 HTML 和 JavaScript 一起使用的详细信息。
+
+  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/ "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ "Windows Phone"
+  [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/ "Android"
+  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/ ".NET 后端"
+  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-data/ "JavaScript 后端"
+  [JavaScript 后端版本]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js
+  [下载 Windows 应用商店应用程序项目]: #download-app
+  [创建新的移动服务]: #create-service
+  [在本地下载移动服务]: #download-the-service-locally
+  [更新 Windows 应用商店应用程序以使用移动服务]: #update-app
+  [针对本地托管的服务测试 Windows 应用商店应用程序]: #test-locally-hosted
+  [将移动服务发布到 Azure]: #publish-mobile-service
+  [针对 Azure 中托管的服务测试 Windows 应用商店应用程序]: #test-azure-hosted
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-javascript-get-started-data%2F
+  [GetStartedWithMobileServices 应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=328660
+  []: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/mobile-data-sample-download-javascript-vs13.png
+  [1]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/app-view.png
+  [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  [2]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/mobile-service-overview-page.png
+  [3]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/download-service-project.png
+  [4]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/download-publishing-profile.png
+  [5]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/copy-service-and-packages-folder.png
+  [6]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/add-service-project-to-solution.png
+  [7]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/add-existing-project-dialog.png
+  [8]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-build-service-project.png
+  [9]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-start-debug-service-project.png
+  [10]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/service-welcome-page.png
+  [11]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/iis-express-tray.png
+  [12]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-manage-nuget-packages.png
+  [13]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/manage-nuget-packages.png
+  [14]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/copy-mobileserviceclient-snippet.png
+  [15]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-pasted-mobileserviceclient.png
+  [16]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-mobileservices-script-reference.png
+  [17]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-build-solution.png
+  [18]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-run-solution.png
+  [19]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/new-local-todoitem.png
+  [20]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/local-item-checked.png
+  [21]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/vs-show-local-table-data.png
+  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
+  [22]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/azure-items.png
+  [23]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/manage-sql-azure-database.png
+  [24]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/sql-azure-query.png
+  [使用脚本验证和修改数据]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-js
+  [使用分页优化查询]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-js
+  [身份验证入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/
+  [推送通知入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/
+  [移动服务 .NET 操作方法概念性参考]: /zh-cn/develop/mobile/how-to-guides/work-with-html-js-client/

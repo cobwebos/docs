@@ -1,80 +1,69 @@
 <properties pageTitle="Register for single sign-on - Azure Mobile Services" metaKeywords="" description="Learn how to register for single sign-on authentication in your Azure Mobile Services application." metaCanonical="" services="mobile-services" documentationCenter="Mobile" title="Register your Windows Store apps to use Windows Live Connect single sign-on" authors="" solutions="" manager="" editor="" />
 
-# Register your Windows Store apps to use Windows Live Connect single sign-on
+# 注册 Windows 应用商店应用程序以使用 Windows Live Connect 单一登录
 
-This topic shows you how to register your app with the Windows Store to be able to use Live Connect for single sign-on as the identity provider for Azure Mobile Services. This step is also required to use push notifications.
+本主题说明如何将应用程序注册到 Windows 应用商店，以便将单一登录所用的 Live Connect 用作 Azure 移动服务的标识提供者。若要使用推送通知，也需要完成此步骤。
 
-<div class="dev-callout"><b>Note</b>
-<p>You do not need to register your app with the Windows Store to be able to use Microsoft Account for authentication before you publish your app. When your Windows Store app does not require single sign-on or push notifications, you can just register your app with Live Connect to use a Microsoft Account login.  For more information, see <a href="/en-us/develop/mobile/how-to-guides/register-for-microsoft-authentication">Register your Windows Store apps to use a Microsoft Account login</a>.</p>
+<div class="dev-callout"><b>说明</b>
+
+<p>你无需将应用程序注册到 Windows 应用商店，便可以在发布应用程序之前使用 Microsoft 帐户进行身份验证。如果你的 Windows 应用商店应用程序不需要单一登录或推送通知，则只需将应用程序注册到 Live Connect 即可使用 Microsoft 帐户登录。有关详细信息，请参阅<a href="/zh-cn/develop/mobile/how-to-guides/register-for-microsoft-authentication">Register your Windows Store apps to use a Microsoft Account login</a>。</p>
 </div>
 
-1. If you have not already registered your app, navigate to the [Submit an app page] at the Dev Center for Windows Store apps, log on with your Microsoft Account, and then click **App name**.
+1.  如果尚未注册应用程序，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用程序”页][]，用 Microsoft 帐户登录，然后单击“应用程序名称” 。
 
-   	![][0]
+    ![][]
 
-2. Type a name for your app in **App name**, click **Reserve app name**, and then click **Save**.
+2.  在“应用程序名称” 中为应用程序键入一个名称，单击“保留应用程序名称” ，然后单击“保存”。 
 
-   	![][1]
+    ![][1]
 
-   	This creates a new Windows Store registration for your app.
+    此操作为应用程序创建一个新的 Windows 应用商店注册。
 
-3. In Visual Studio 2012 Express for Windows 8, open the project that you created when you completed the tutorial [Get started with Mobile Services].
+3.  在 Visual Studio 2012 Express for Windows 8 中，打开你在完成教程[移动服务入门][]时创建的项目。
 
-4. In solution explorer, right-click the project, click **Store**, and then click **Associate App with the Store...**. 
+4.  在解决方案资源管理器中，右键单击项目，单击“应用商店” ，然后单击“将应用程序与应用商店关联...” 。
 
-  	![][2]
+    ![][2]
 
-   	This displays the **Associate Your App with the Windows Store** Wizard.
+    此时将显示“将应用程序与 Windows 应用商店关联” 向导。
 
-5. In the wizard, click **Sign in** and then login with your Microsoft account.
+5.  在该向导中，单击“登录” ，然后用你的 Microsoft 帐户登录。
 
-6. Select the app that you registered in step 2, click **Next**, and then click **Associate**.
+6.  选择在第 2 步中注册的应用程序，单击“下一步” ，然后单击“关联” 。
 
-   	![][3]
+    ![][3]
 
-   	This adds the required Windows Store registration information to the application manifest.    
+    这会将所需的 Windows 应用商店注册信息添加到应用程序清单中。
 
-9. Navigate to the [My Applications] page in the Live Connect Developer Center and click on your app in the **My applications** list.
+7.  在 Live Connect 开发人员中心内导航到[我的应用程序][]页，然后在“我的应用程序”列表中单击你的应用程序 。
 
-   	![][6] 
+    ![][4]
 
-10. Click **Edit settings**, then **API Settings** and make a note of the value of **Client secret**. 
+8.  依次单击“编辑设置”和“API 设置”，并记下“客户端密钥”的值 。
 
-   	![][7]
+    ![][5]
 
-    <div class="dev-callout"><b>Security Note</b>
-	<p>The client secret is an important security credential. Do not share the client secret with anyone or distribute it with your app.</p>
-    </div>
+    "安全说明"
 
-11. In **Redirect domain**, enter the URL of your mobile service from Step 8, and then click **Save**.
+    客户端密钥是一个非常重要的安全凭据。请勿与任何人分享客户端密钥或将密钥随应用程序分发。
 
-You are now ready to integrate authentication by using Live Connect into your app. Mobile Services provides the following two methods for authenticating users by using Live Connect:
+9.  在“重定向域”中，输入你在执行步骤 8 时获取的移动服务 URL，然后单击“保存” 。
 
-   - Single sign-on for Windows Store apps. In this method, users only need to authorize authentication in your application one time by using Live Connect, and then credentials are managed by Windows, based on user preferences. For more information see, [Single sign-on for Windows Store apps by using Live Connect].
+现在，你可以使用 Live Connect 将身份验证集成到应用程序中。移动服务提供以下两种方法，让你使用 Live Connect 对用户进行身份验证：
 
-   - Basic authentication. This method, which supports a variety of authentication providers, requires users to log-in every time your app starts. For more information, see [Get started with authentication].
+-   针对 Windows 应用商店应用程序的单一登录。使用此方法时，用户只需使用 Live Connect 在你的应用程序中为身份验证授权一次，然后，Windows 将会根据用户首选项管理凭据。有关详细信息，请参阅[使用 Live Connect 实现对 Windows 应用商店应用程序的单一登录][]。
 
-<!-- Anchors. -->
+-   基本身份验证。此方法支持各种身份验证提供程序，不过要求用户在每次启动你的应用程序时登录。有关详细信息，请参阅[身份验证入门][]。
 
-<!-- Images. -->
-[0]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-submit-win8-app.png
-[1]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-win8-app-name.png
-[2]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-store-association.png
-[3]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-select-app-name.png
-
-
-[6]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-live-connect-apps-list.png
-[7]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-live-connect-app-api-settings.png
-
-
-
-<!-- URLs. -->
-[Single sign-on for Windows Store apps by using Live Connect]: /en-us/develop/mobile/tutorials/single-sign-on-windows-8-dotnet
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-dotnet/
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-dotnet/
-[JavaScript and HTML]: /en-us/develop/mobile/tutorials/get-started-with-users-js/
-[Azure Management Portal]: https://manage.windowsazure.com/
+  [注册 Windows 应用商店应用程序以使用 Microsoft 帐户登录]: /zh-cn/develop/mobile/how-to-guides/register-for-microsoft-authentication
+  [“提交应用程序”页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+  []: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-submit-win8-app.png
+  [1]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-win8-app-name.png
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started
+  [2]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-store-association.png
+  [3]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-services-select-app-name.png
+  [我的应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+  [4]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-live-connect-apps-list.png
+  [5]: ./media/mobile-services-how-to-register-windows-live-connect-single-sign-on/mobile-live-connect-app-api-settings.png
+  [使用 Live Connect 实现对 Windows 应用商店应用程序的单一登录]: /zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-dotnet
+  [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet

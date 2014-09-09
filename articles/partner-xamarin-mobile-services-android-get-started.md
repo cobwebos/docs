@@ -1,139 +1,145 @@
-<properties pageTitle="Get Started with Mobile Services for Xamarin.Android" metaKeywords="Azure Xamarin.Android application, mobile service XamarinAndroid, getting started Azure Xamarin.Android" writer="craigd" description="Learn how to use Azure Mobile Services with your Xamarin.Android app." metaCanonical="" 
-	documentationCenter="Mobile" title="Get started with Mobile Services" />
+<properties pageTitle="Get Started with Mobile Services for Xamarin.Android" metaKeywords="Azure Xamarin.Android application, mobile service XamarinAndroid, getting started Azure Xamarin.Android" writer="craigd" description="Learn how to use Azure Mobile Services with your Xamarin.Android app." metaCanonical=""      documentationCenter="Mobile" title="Get started with Mobile Services" />
 
-# <a name="getting-started"></a>Get started with Mobile Services
+<a name="getting-started"></a>
+# 移动服务入门
 
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/en-us/documentation/articles/mobile-services-windows-store-get-started" title="Windows Store">Windows Store</a>
-	<a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started" title="Windows Phone">Windows Phone</a>
-	<a href="/en-us/documentation/articles/mobile-services-ios-get-started" title="iOS">iOS</a>
-	<a href="/en-us/documentation/articles/mobile-services-android-get-started" title="Android">Android</a>
-	<a href="/en-us/documentation/articles/mobile-services-html-get-started" title="HTML">HTML</a>
-	<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-ios-get-started" title="Xamarin.iOS">Xamarin.iOS</a>
-	<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-android-get-started" title="Xamarin.Android" class="current">Xamarin.Android</a>
-	<a href="/en-us/documentation/articles/partner-sencha-mobile-services-get-started/" title="Sencha">Sencha</a>
-	<a href="/en-us/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/" title="PhoneGap">PhoneGap</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-windows-store-get-started" title="Windows Store">Windows Store</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-windows-phone-get-started" title="Windows Phone">Windows Phone</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-ios-get-started" title="iOS">iOS</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-android-get-started" title="Android">Android</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-html-get-started" title="HTML">HTML</a>
+	<a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started" title="Xamarin.iOS">Xamarin.iOS</a>
+	<a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started" title="Xamarin.Android" class="current">Xamarin.Android</a>
+	<a href="/zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/" title="Sencha">Sencha</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/" title="PhoneGap">PhoneGap</a>
 </div>
 
 <!--<div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started/" title=".NET backend">.NET backend</a> | 
-	<a href="/en-us/documentation/articles/partner-xamarin-mobile-services-android-get-started/"  title="JavaScript backend" class="current">JavaScript backend</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started/" title=".NET backend">.NET 后端</a> | 
+	<a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started/"  title="JavaScript backend" class="current">JavaScript 后端</a>
 </div>-->
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
-<p>This tutorial shows you how to add a cloud-based backend service to a Xamarin.Android app using Azure Mobile Services. In this tutorial, you will create both a new mobile service and a simple <em>To do list</em> app that stores app data in the new mobile service.</p>
-<p>A screenshot from the completed app is below:</p>
+<p>本教程说明如何使用 Azure 移动服务向 Xamarin.Android 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单*待办事项列表*应用程序。</p>
+
+<p>以下是完成的应用程序的屏幕快照：</p>
 </div>
-<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Getting-Started-with-Xamarin-and-Windows-Azure-Mobile-Services" target="_blank" class="label">watch the tutorial</a> <a style="background-image: url('/media/devcenter/mobile/videos/get-started-xamarin-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Getting-Started-with-Xamarin-and-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">Play Video</span></a> <span class="time">10:05</span></div>
+
+<div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Getting-Started-with-Xamarin-and-Windows-Azure-Mobile-Services" target="_blank" class="label">观看教程</a> <a style="background-image: url('/media/devcenter/mobile/videos/get-started-xamarin-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Getting-Started-with-Xamarin-and-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">播放视频</span></a> <span class="time">10:05</span></div>
 </div>
 
-![][0]
+![][]
 
-Completing this tutorial requires [Xamarin.Android], which installs Xamarin Studio and a Visual Studio plug-in (on Windows) as well as the latest Android platform. Android 4.2 SDK or a later version is required. 
+完成本教程需要 [Xamarin.Android][1]，该工具将安装 Xamarin Studio 和 Visual Studio 插件（在 Windows 上）以及最新的 Android 平台。需要使用 Android 4.2 SDK 或更高版本。
 
-The downloaded quickstart project contains the Azure Mobile services component for Xamarin.Android. While this project targets Android 4.2 or a later version, the Mobile Services SDK requires only Android 2.2 or a later version.
+下载的快速入门项目包含用于 Xamarin.Android 的 Azure 移动服务组件。虽然本项目针对 Android 4.2 或更高版本，但是移动服务 SDK 只需要 Android 2.2 或更高版本。
 
-<div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A9C9624B5" target="_blank">Azure Free Trial</a>.</p></div>
+<div class="dev-callout"><b>说明</b>
 
-## <a name="create-new-service"> </a>Create a new mobile service
+<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A9C9624B5" target="_blank">Azure 免费试用</a>。</p>
+</div>
 
-[WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
+<a name="create-new-service"> </a>
+## 创建新的移动服务
 
-## <h2><span class="short-header">Create a new app</span>Create a new Xamarin.Android app</h2>
+[WACOM.INCLUDE [mobile-services-create-new-service][]]
 
-Once you have created your mobile service, you can follow an easy quickstart in the Management Portal to either create a new app or modify an existing app to connect to your mobile service. 
+## 
 
-In this section you will create a new Xamarin.Android app that is connected to your mobile service.
+## 创建新应用程序创建新的 Xamarin.Android 应用程序
 
-1.  In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
+创建移动服务后，你可以在管理门户中遵照一个简易的快速入门项目来创建新应用程序或修改现有应用程序，以连接到你的移动服务。
 
-2. In the quickstart tab, click **Xamarin.Android** under **Choose platform** and expand **Create a new Android app**.
+在本部分中，你将要创建一个连接到移动服务的新的 Xamarin.Android 应用程序。
 
-	![][6]
+1.  在管理门户中单击“移动服务”，然后单击你刚刚创建的移动服务 。
 
-	This displays the three easy steps to create a Xamarin.Android app connected to your mobile service.
+2.  在快速入门选项卡中，单击“选择平台”下的“Xamarin.Android”，然后展开“创建新的 Android 应用程序” 。
 
-	![][7]
+    ![][2]
 
-3. Click **Create TodoItem table** to create a table to store app data.
+    此时将显示三个简单步骤，描述如何创建与移动服务连接的 Xamarin.Android 应用程序。
 
-4. Under **Download and run app**, click **Download**. 
+    ![][3]
 
-	This downloads the project for the sample _To do list_ application that is connected to your mobile service. Save the compressed project file to your local computer, and make a note of where you save it.
+3.  单击“创建 TodoItem 表” 以创建用于存储应用程序数据的表。
 
-## Run your Android app
+4.  在“下载并运行应用程序” 下面单击“下载” 。
 
-The final stage of this tutorial is to build and run your new app.
+    随即将会下载已连接到移动服务的示例*待办事项列表*应用程序的项目。将压缩的项目文件保存到本地计算机，并记下保存位置。
 
-1. Browse to the location where you saved the compressed project files and expand the files on your computer.
+## 运行 Android 应用程序
 
-2. In Xamarin Studio or Visual Studio, click **File** then **Open**, navigate to the uncompressed sample files, and select **XamarinTodoQuickStart.Android.sln** to open it.
+本教程的最后一个阶段是生成和运行你的新应用程序。
 
- 	![][8]
+1.  浏览到压缩的项目文件所保存到的位置，然后在计算机上展开这些文件。
 
-	![][9]
+2.  在 Xamarin Studio 或 Visual Studio 中，依次单击“文件” 、“打开” ，导航到解压缩的示例文件，然后选择“XamarinTodoQuickStart.Android.sln” 以将其打开。
 
-3. Press the **Run** button to build the project and start the app. You will be asked to select an emulator or a connected USB device. 
+    ![][4]
 
-	<div class="dev-callout"><strong>Note</strong> <p>To be able to run the project in the Android emulator, you must define a least one Android Virtual Device (AVD). Use the AVD Manager to create and manage these devices.</p></div>
+    ![][5]
 
-4. In the app, type meaningful text, such as _Complete the tutorial_, and then click **Add**.
+3.  按“运行” 按钮生成项目并启动应用程序。系统将要求你选择模拟器或已连接的 USB 设备。
 
-	![][10]
+    "说明"
 
-	This sends a POST request to the new mobile service hosted in Azure. Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile service, and the data is displayed in the list.
+    若要在 Android 模拟器中运行项目，必须至少定义一个 Android 虚拟设备 (AVD)。使用 AVD 管理器创建和管理这些设备。
 
-	> [WACOM.NOTE] 
-   	> You can review the code that accesses your mobile service to query and insert data, which is found in the ToDoActivity.cs C# file.
+4.  在应用程序中键入有意义的文本（例如 *Complete the tutorial*），然后单击“添加” 。
 
-6. Back in the Management Portal, click the **Data** tab and then click the **TodoItems** table.
+    ![][6]
 
-	![][11]
+    这样可向在 Azure 中托管的新移动服务发送 POST 请求。来自请求的数据被插入到 TodoItem 表。移动服务返回存储在表中的项，数据显示在列表中。
 
-	This lets you browse the data inserted by the app into the table.
+    > [WACOM.NOTE]
+    > 你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 ToDoActivity.cs C\# 文件中。
 
-	![][12]
+5.  返回管理门户，单击“数据” 选项卡，然后单击“TodoItems” 表。
 
-## <a name="next-steps"> </a>Next Steps
-Now that you have completed the quickstart, learn how to perform additional important tasks in Mobile Services: 
+    ![][7]
 
-* [Get started with data]
-  <br/>Learn more about storing and querying data using Mobile Services.
+    此时，你可以浏览应用程序在表中插入的数据。
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app with an identity provider.
+    ![][8]
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
+<a name="next-steps"> </a>
+## 后续步骤
 
-<!-- Anchors. -->
-[Getting started with Mobile Services]:#getting-started
-[Create a new mobile service]:#create-new-service
-[Define the mobile service instance]:#define-mobile-service-instance
-[Next Steps]:#next-steps
+完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-<!-- Images. -->
-[0]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-quickstart-completed-android.png
-[2]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-create.png
-[3]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-create-page1.png
-[4]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-create-page2.png
-[5]: ./media/partner-xamarin-mobile-services-android-get-started/obile-services-selection.png
-[6]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-portal-quickstart-xamarin-android.png
-[7]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-quickstart-steps-xamarin-android.png
-[8]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-xamarin-project-android-xs.png
-[9]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-xamarin-project-android-vs.png
-[10]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-quickstart-startup-android.png
-[11]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-data-tab.png
-[12]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-data-browse.png
-[13]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-services-diagram.png
+-   [数据处理入门][]
+    了解有关使用移动服务存储和查询数据的详细信息。
 
+-   [身份验证入门][]
+    了解如何使用标识提供者对应用程序的用户进行身份验证。
 
-<!-- URLs. -->
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android
-[Xamarin.Android]: http://xamarin.com/download
-[Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-[WindowsAzure.com]: http://www.windowsazure.com/
-[Management Portal]: https://manage.windowsazure.com/
+-   [推送通知入门][]
+    了解如何向应用程序发送一条非常简单的推送通知。
+
+  [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started "Windows Phone"
+  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started "iOS"
+  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started "Android"
+  [HTML]: /zh-cn/documentation/articles/mobile-services-html-get-started "HTML"
+  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started "Xamarin.Android"
+  [Sencha]: /zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/ "Sencha"
+  [PhoneGap]: /zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/ "PhoneGap"
+  [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Getting-Started-with-Xamarin-and-Windows-Azure-Mobile-Services
+  []: ./media/partner-xamarin-mobile-services-android-get-started/mobile-quickstart-completed-android.png
+  [1]: http://xamarin.com/download
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A9C9624B5
+  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
+  [2]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-portal-quickstart-xamarin-android.png
+  [3]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-quickstart-steps-xamarin-android.png
+  [4]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-xamarin-project-android-xs.png
+  [5]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-xamarin-project-android-vs.png
+  [6]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-quickstart-startup-android.png
+  [7]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-data-tab.png
+  [8]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-data-browse.png
+  [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android
+  [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android
+  [推送通知入门]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android

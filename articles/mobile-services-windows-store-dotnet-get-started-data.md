@@ -1,217 +1,218 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-data-dotnet-vs2013" urlDisplayName="Get Started with Data" pageTitle="Get started with data (Windows Store) | Mobile Dev Center" metaKeywords="" description="Learn how to get started using Mobile Services to leverage data in your Windows Store app." metaCanonical="" services="" documentationCenter="Mobile" title="Get started with data in Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
+# 移动服务中的数据处理入门
 
-
-# Get started with data in Mobile Services
-
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/develop/mobile/tutorials/get-started-with-data-dotnet" title="Windows Store C#" class="current">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-html" title="HTML">HTML</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet" title="Windows Store C#" class="current">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-android" title="Android">Android</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-html" title="HTML">HTML</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a></div>
 
 <div class="dev-center-tutorial-subselector">
-	<a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/" title=".NET backend">.NET backend</a> | 
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-data-dotnet/"  title="JavaScript backend" class="current">JavaScript backend</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/" title=".NET backend">.NET 后端</a> | 
+	<a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet/"  title="JavaScript backend" class="current">JavaScript 后端</a>
 </div>
 
+<p>此主题说明如何通过 Azure 移动服务来利用 Windows 应用商店应用程序中的数据。在本教程中，你将要下载一个可在内存中存储数据的 Visual Studio 2013 应用程序项目，创建一个新的移动服务，将该移动服务与该应用程序相集成，然后登录到 Azure 管理门户以查看运行该应用程序时对数据所做的更改。</p>
 
-<p>This topic shows you how to use Azure Mobile Services to leverage data in a Windows Store app. In this tutorial, you will download a Visual Studio 2013 project for an app that stores data in memory, create a new mobile service, integrate the mobile service with the app, and then login to the Azure Management Portal to view changes to data made when running the app.</p>
+<div class="dev-callout"><b>说明</p>
 
-<div class="dev-callout"><b>Note</b>
-<p>This tutorial requires Visual Studio 2013, which makes it easier to connect your Windows Store app to Mobile Services. To complete the same basic procedure using Visual Studio 2012, follow the steps in the topic <a href="/en-us/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012/">Get started with data in Mobile Services using Visual Studio 2012</a>.</p>
+<p>本教程需要 Visual Studio 2013，使用它可以轻松地将 Windows 应用商店应用程序连接到移动服务。若要使用 Visual Studio 2012 完成同一基本过程，请按照<a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012/">使用 Visual Studio 2012 的移动服务中的数据处理入门</a>主题中的步骤进行操作。</p>
 </div>
 
-This tutorial walks you through these basic steps:
+本教程将指导你完成以下基本步骤：
 
-1. [Download the Windows Store app project][Get the Windows Store app] 
-2. [Create the mobile service from Visual Studio]
-3. [Add a data table for storage and update the app]
-5. [Test the app against Mobile Services]
+1.  [下载 Windows 应用商店应用程序项目][]
+2.  [从 Visual Studio 创建移动服务][]
+3.  [添加用于存储的数据表并更新应用程序][]
+4.  [针对移动服务测试应用程序][]
 
-<div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure Free Trial</a>.</p></div> 
+<div class="dev-callout"><b>说明</b>
 
-<h2><a name="download-app"></a><span class="short-header">Download the project</span>Download the GetStartedWithData project</h2>
+<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28" target="_blank">Azure 免费试用</a>。</p>
+</div>
 
-This tutorial is built on the [GetStartedWithMobileServices app][Developer Code Samples site], which is a Windows Store app project in Visual Studio 2013. The UI for this app is identical to the app generated by the Mobile Services quickstart, except that added items are stored locally in memory. 
+<a name="download-app"></a>
+## 下载项目下载 GetStartedWithData 项目
 
-1. Download the C# version of the GetStartedWithMobileServices sample app from the [Developer Code Samples site]. 
+本教程是在 [GetStartedWithMobileServices 应用程序][]（Visual Studio 2013 中的一个 Windows 应用商店应用程序项目）的基础上制作的。此应用程序的 UI 与移动服务快速入门中生成的应用程序相同，不过，前者的一些新增项本地存储在内存中。
 
-   	![][10]
+1.  从[开发人员代码示例站点][GetStartedWithMobileServices 应用程序]下载 GetStartedWithMobileServices 示例应用程序的 C\# 版本。
 
-2. In Visual Studio 2013, open the downloaded project and examine the MainPage.xaml.cs file.
+    ![][]
 
-   	Notice that added **TodoItem** objects are stored in an in-memory **ObservableCollection&lt;TodoItem&gt;**.
+2.  在 Visual Studio 2013 中打开下载的项目，然后检查 MainPage.xaml.cs 文件。
 
-3. Press the **F5** key to rebuild the project and start the app.
+    请注意添加的 "TodoItem" 对象存储在内存中的 "ObservableCollection\<TodoItem\>" 内。
 
-4. In the app, type some text in **Insert a TodoItem**, then click **Save**.
+3.  按 "F5" 键重新生成项目并启动应用程序。
 
-   	![][0]  
+4.  在应用程序的“插入 TodoItem”中键入一些文本 ，然后单击“保存” 。
 
-   	Notice that the saved text is displayed in the second column under **Query and update data**.
+    ![][1]
 
-<h2><a name="create-service"></a><span class="short-header">Create the mobile service</span>Create a new mobile service from Visual Studio</h2>
+    可以看到，保存的文本已显示在“查询和更新数据”下的第二列中 。
 
-[WACOM.INCLUDE [mobile-services-create-new-service-vs2013](../includes/mobile-services-create-new-service-vs2013.md)]
+<a name="create-service"></a>
+## 创建移动服务从 Visual Studio 新建移动服务
 
-<ol start="7"><li><p>In Solution Explorer, open the App.xaml.cs code file, and notice the new static field that was added to the **App** class, which looks like the following example:</p> 
+[WACOM.INCLUDE [mobile-services-create-new-service-vs2013][]]
+
+<ol start="7"><li><p>在解决方案资源管理器中，打开 App.xaml.cs 代码文件，请注意已添加到 \*\*App\*\* 类的新静态字段，它如以下示例所示：
 
 		<pre><code>public static Microsoft.WindowsAzure.MobileServices.MobileServiceClient 
 		    todolistClient = new Microsoft.WindowsAzure.MobileServices.MobileServiceClient(
 		        "https://todolist.azure-mobile.net/",
 		        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 		</code></pre>
+                
 
-	<p>This code provides access to your new mobile service in your app by using an instance of the <a href="http://go.microsoft.com/fwlink/p/?LinkId=302030">MobileServiceClient class</a>. The client is created by supplying the URI and the application key of the new mobile service. This static field is available to all pages in your app.</p>
+    <p>此代码通过使用 <a href="http://go.microsoft.com/fwlink/p/?LinkId=302030">MobileServiceClient 类]</a>的一个实例提供对应用程序中新移动服务的访问权限。客户端是通过提供新移动服务的 URI 和应用程序密钥来创建的。此静态字段可用于你的应用程序中的所有页面。</p>
 </li>
 </ol>
 
-<h2><a name="add-table"></a><span class="short-header">Add a new table</span>Add a new table to the mobile service and update the app</h2>
+<a name="add-table"></a>
+## 添加新表将新表添加到移动服务并更新应用程序
 
-[WACOM.INCLUDE [mobile-services-create-new-table-vs2013](../includes/mobile-services-create-new-table-vs2013.md)]
+[WACOM.INCLUDE [mobile-services-create-new-table-vs2013][]]
 
-3. In the file MainPage.xaml.cs, add or uncomment the following using statements: 
+1.  在 MainPage.xaml.cs 文件中，添加或取消注释以下 using 语句：
 
-		using Microsoft.WindowsAzure.MobileServices;
-		using Newtonsoft.Json;
+        using Microsoft.WindowsAzure.MobileServices;
+        using Newtonsoft.Json;
 
-4. In this same file, replace the TodoItem class definition with the following code: 
+2.  在这同一文件中，将 TodoItem 类定义替换为下面的代码：
 
-		public class TodoItem
-		{
-		    public string Id { get; set; }
-		
-		    [JsonProperty(PropertyName = "text")]
-		    public string Text { get; set; }
-		
-		    [JsonProperty(PropertyName = "complete")] 
-		    public bool Complete { get; set; }
-		}
+        public class TodoItem
+        {
+        public string Id { get; set; }
 
-	The **JsonPropertyAttribute** is used to define the mapping between property names in the client type to column names in the underlying data table.
+        [JsonProperty(PropertyName = "text")]
+        public string Text { get; set; }
 
-5. Comment the line that defines the existing items collection, then uncomment or add the following lines and replace _&lt;yourClient&gt;_ with the `MobileServiceClient` field added to the App.xaml.cs file when you connected your project to the mobile service: 
+        [JsonProperty(PropertyName = "complete")] 
+        public bool Complete { get; set; }
+        }
 
-		private MobileServiceCollection<TodoItem, TodoItem> items;
-		private IMobileServiceTable<TodoItem> todoTable = 
-		    App.<yourClient>.GetTable<TodoItem>();
-		  
-	This code creates a mobile services-aware binding collection (items) and a proxy class for the database table (todoTable). 
+    "JsonPropertyAttribute" 用于定义客户端类型中的属性名称与基础数据表中的列名之间的映射。
 
-6. In the **InsertTodoItem** method, remove the line of code that sets the **TodoItem.Id** property, add the **async** modifier to the method, and uncomment the following line of code: 
+3.  注释用于定义现有项目集合的行，然后取消注释或添加以下行，并将 *\<yourClient\>* 替换为你将项目连接到移动服务时添加到 App.xaml.cs 文件中的 `MobileServiceClient` 字段：
 
-		await todoTable.InsertAsync(todoItem);
+        private MobileServiceCollection<TodoItem, TodoItem> items;
+        private IMobileServiceTable<TodoItem> todoTable = 
+        App.<yourClient>.GetTable<TodoItem>();
 
+    此代码将创建一个移动服务感知型绑定集合 (items) 和数据库表 (todoTable) 的代理类。
 
-	This code inserts a new item into the table. 
+4.  在 "InsertTodoItem" 方法中，删除设置 "TodoItem.Id" 属性的代码行，为该方法添加 "async" 修饰符，并取消注释下面的代码行：
 
-	<div class="dev-callout"><strong>Note</strong><p>New tables are created with the Id, __createdAt, __updatedAt, and __version columns. When dynamic schema is enabled, Mobile Services automatically generates new columns based on the JSON object in the insert or update request. For more information, see <a href="http://msdn.microsoft.com/en-us/library/windowsazure/jj193175.aspx">Dynamic schema</a>.</p></div>
+        await todoTable.InsertAsync(todoItem);
 
-7. In the **RefreshTodoItems** method, add the **async** modifier to the method, then uncomment the following line of code: 
+    此代码将在表中插入一个新项。
 
-		items = await todoTable.ToCollectionAsync();
+	<div class="dev-callout"><b>说明</b>
 
-	This sets the binding to the collection of items in `todoTable`, which contains all of the **TodoItem** objects returned from the mobile service. 
+    <p>将使用 Id、__createdAt、__updatedAt 和 __version 列创建新表。启用动态架构后，移动服务将基于插入或更新请求中的 JSON 对象自动生成新列。有关详细信息，请参阅<a href="http://msdn.microsoft.com/zh-cn/library/windowsazure/jj193175.aspx">动态架构</a>。</p>
+	</div>
 
-8. In the **UpdateCheckedTodoItem** method, add the **async** modifier to the method, and uncomment the following line of code: 
+5.  在 "RefreshTodoItems" 方法中，为该方法添加 "async" 修饰符，然后取消注释下面的代码行：
 
-		await todoTable.UpdateAsync(item);
+        items = await todoTable.ToCollectionAsync();
 
-	This sends an item update to the mobile service. 
+    这将设置 `todoTable` 中的项目集合的绑定，其中包含从移动服务返回的所有 "TodoItem" 对象。
 
-Now that the app has been updated to use Mobile Services for backend storage, it's time to test the app against Mobile Services.
+6.  在 "UpdateCheckedTodoItem" 方法中，为该方法添加 "async" 修饰符，然后取消注释下面的代码行：
 
-<h2><a name="test-app"></a><span class="short-header">Test the app</span>Test the app against your new mobile service</h2>
+        await todoTable.UpdateAsync(item);
 
-1. In Visual Studio, press the F5 key to run the app.
+    这会将项目更新发送给移动服务。
 
-2. As before, type text in **Insert a TodoItem**, and then click **Save**.
+更新应用程序以使用移动服务作为后端存储后，便可以针对移动服务测试该应用程序。
 
-   	This sends a new item as an insert to the mobile service.
+<a name="test-app"></a>
+## 测试应用程序针对新的移动服务测试应用程序
 
-3. In the [Management Portal], click **Mobile Services**, and then click your mobile service.
+1.  在 Visual Studio 中，按 F5 键运行应用程序。
 
-4. Click the **Data** tab, then click **Browse**.
+2.  如前所述，在“插入 TodoItem” 中键入文本，然后单击“保存” 。
 
-   	![][9]
-  
-   	Notice that the **TodoItem** table now contains data, with id values generated by Mobile Services, and that columns have been automatically added to the table to match the TodoItem class in the app.
+    此时会将一个新项作为 insert 发送到移动服务。
 
-5. In the app, check one of the items in the list, then go back to the Browse tab in the portal and click **Refresh**. 
+3.  在[管理门户][]中单击“移动服务”，然后单击你的移动服务 。
 
-  	Notice that the complete value has changed from **false** to **true**.
+4.  单击“数据”选项卡，然后单击“浏览” 。
 
-6. In the MainPage.xaml.cs project file, replace the existing **RefreshTodoItems** method with the following code that filters out completed items:
+    ![][2]
+
+    可以看到，"TodoItem" 表现在包含了数据以及移动服务生成的 ID 值，并且已在该表中自动添加了列，以匹配应用程序中的 TodoItem 类。
+
+5.  在应用程序中，选中列表中的某个项，然后返回到门户中的“浏览”选项卡并单击“刷新” 。
+
+    可以看到，整个值已从 "false" 更改为 "true"。
+
+6.  在 MainPage.xaml.cs 项目文件中，将现有 "RefreshTodoItems" 方法替换为用于筛选出已完成项目的以下代码：
 
         private async void RefreshTodoItems()
         {                       
-            // This query filters out completed TodoItems. 
-            items = await todoTable
-               .Where(todoItem => todoItem.Complete == false)
-               .ToCollectionAsync();
+        // This query filters out completed TodoItems. 
+        items = await todoTable
+        .Where(todoItem => todoItem.Complete == false)
+        .ToCollectionAsync();
 
-            ListItems.ItemsSource = items;            
+        ListItems.ItemsSource = items;            
         }
 
-7. In the app, check another one of the items in the list and then click the **Refresh** button.
+7.  在应用程序中，选中列表中的另一个项目，然后单击“刷新” 按钮。
 
-   	Notice that the checked item now disappears from the list. Each refresh results in a round-trip to the mobile service, which now returns filtered data.
+    可以看到，选中的项现已从列表中消失。每次刷新都会导致往返访问移动服务，随后返回筛选的数据。
 
-This concludes the **Get started with data** tutorial.
+"数据处理入门"教程到此结束。
 
-## <a name="next-steps"> </a>Next steps
+<a name="next-steps"> </a>
+## 后续步骤
 
-This tutorial demonstrated the basics of enabling a Windows Store app to work with data in Mobile Services. Next, consider completing one of the following tutorials that is based on the GetStartedWithData app that you created in this tutorial:
+本教程演示了有关如何使 Windows 应用商店应用程序处理移动服务中的数据的基础知识。接下来，建议你完成下列教程之一，这些教程是基于本教程中创建的 GetStartedWithData 应用程序制作的：
 
-* [Validate and modify data with scripts]
-  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
+-   [使用脚本验证和修改数据][]
+    了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
-* [Refine queries with paging]
-  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
+-   [使用分页优化查询][]
+    了解如何使用查询中的分页控制单个请求中处理的数据量。
 
-Once you have completed the data series, try one of these other tutorials:
+完成数据系列教程后，请试着学习下列教程之一：
 
-* [Get started with authentication]
-  <br/>Learn how to authenticate users of your app.
+-   [身份验证入门][]
+    了解如何对应用程序用户进行身份验证。
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app.
+-   [推送通知入门][]
+    了解如何向应用程序发送一条非常简单的推送通知。
 
-* [Mobile Services .NET How-to Conceptual Reference]
-  <br/>Learn more about how to use Mobile Services with .NET.
-  
-<!-- Anchors. -->
+-   [移动服务 .NET 操作方法概念性参考][]
+    了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-[Get the Windows Store app]: #download-app
-[Create the mobile service from Visual Studio]: #create-service
-[Add a data table for storage and update the app]: #add-table
-[Update the app to use Mobile Services]: #update-app
-[Test the app against Mobile Services]: #test-app
-[Next Steps]:#next-steps
-
-<!-- Images. -->
-[0]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-quickstart-startup.png
-
-
-
-
-
-
-
-
-[9]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-todoitem-data-browse.png
-[10]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-data-sample-download-dotnet-vs12.png
-
-
-<!-- URLs. -->
-[Validate and modify data with scripts]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
-[Refine queries with paging]: /en-us/develop/mobile/tutorials/add-paging-to-data-dotnet
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-dotnet
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet
-[Get started with push notifications]: ../mobile-services-windows-store-dotnet-get-started-push/
-[JavaScript and HTML]: /en-us/develop/mobile/tutorials/get-started-with-data-js
-
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Management Portal]: https://manage.windowsazure.com/
-[Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
-[Developer Code Samples site]:  http://go.microsoft.com/fwlink/p/?LinkId=328660
-[Mobile Services .NET How-to Conceptual Reference]: /en-us/develop/mobile/how-to-guides/work-with-net-client-library
-[MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
+  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios "iOS"
+  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-android "Android"
+  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-data-html "HTML"
+  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android "Xamarin.Android"
+  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ ".NET 后端"
+  [JavaScript 后端]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet/ "JavaScript 后端"
+  [使用 Visual Studio 2012 的移动服务中的数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012/
+  [下载 Windows 应用商店应用程序项目]: #download-app
+  [从 Visual Studio 创建移动服务]: #create-service
+  [添加用于存储的数据表并更新应用程序]: #add-table
+  [针对移动服务测试应用程序]: #test-app
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28
+  [GetStartedWithMobileServices 应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=328660
+  []: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-data-sample-download-dotnet-vs12.png
+  [1]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-quickstart-startup.png
+  [mobile-services-create-new-service-vs2013]: ../includes/mobile-services-create-new-service-vs2013.md
+  [MobileServiceClient 类]: http://go.microsoft.com/fwlink/p/?LinkId=302030
+  [mobile-services-create-new-table-vs2013]: ../includes/mobile-services-create-new-table-vs2013.md
+  [动态架构]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj193175.aspx
+  [管理门户]: https://manage.windowsazure.cn/
+  [2]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-todoitem-data-browse.png
+  [使用脚本验证和修改数据]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet
+  [使用分页优化查询]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-dotnet
+  [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet
+  [推送通知入门]: ../mobile-services-windows-store-dotnet-get-started-push/
+  [移动服务 .NET 操作方法概念性参考]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library

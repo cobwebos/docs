@@ -1,403 +1,400 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-push-xamarin-ios" urlDisplayName="Get Started with Push Notifications" pageTitle="Get started with push notifications (Xamarin.iOS) - Mobile Services" metaKeywords="" description="Learn how to use push notifications in Xamarin.iOS apps with Azure Mobile Services." metaCanonical="" disqusComments="0" umbracoNaviHide="1" editor="mollybos" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="" />
 
-# Get started with push notifications in Mobile Services
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/develop/mobile/tutorials/get-started-with-push-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS" class="current">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android">Xamarin.Android</a></div>
+# 移动服务中的推送通知入门
 
-<p>This topic shows you how to use Azure Mobile Services to send push notifications to a Xamarin.iOS app. In this tutorial you add push notifications using the Apple Push Notification service (APNS) to the quickstart project. When complete, your mobile service will send a push notification each time a record is inserted.</p>
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-android" title="Android">Android</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS" class="current">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android">Xamarin.Android</a></div>
 
-   <div class="dev-callout"><b>Note</b>
-   <p>This tutorial demonstrates a simplified way of sending push notifications by attaching a push notification device token to the inserted record. Be sure to follow along with the next tutorial to get a better idea of how to incorporate push notifications into your real-world apps.</p>
-   </div>
+<p>本主题说明如何使用 Azure 移动服务向 Xamarin.iOS 应用程序发送推送通知。在本教程中，你将要使用 Apple 推送通知服务 (APNS) 向快速入门项目添加推送通知。完成本教程后，每次插入一条记录时，你的移动服务就会发送一条推送通知。</p>
 
-This tutorial walks you through these basic steps to enable push notifications:
+<div class="dev-callout"><b>说明</b>
 
-1. [Generate the certificate signing request] 
-2. [Register your app and enable push notifications]
-3. [Create a provisioning profile for the app]
-3. [Configure Mobile Services]
-4. [Add push notifications to the app]
-5. [Update scripts to send push notifications]
-6. [Insert data to receive notifications]
+<p>本教程演示通过将推送通知设备标记附加到插入的记录发送推送通知的简化方法。请务必紧跟着学习下一教程，以更好地了解如何将推送通知纳入实际应用程序。</p>
+</div>
 
-This tutorial requires the following:
+本教程将指导你完成启用推送通知的以下基本步骤：
 
-+ [XCode 5.0][Install Xcode] 
-+ An iOS 5.0 (or later version) capable device
-+ iOS Developer Program membership
-+ [Xamarin.iOS]
-+ [Azure Mobile Services Component]
+1.  [生成证书签名请求][]
+2.  [注册应用程序和启用推送通知][]
+3.  [为应用程序创建配置文件][]
+4.  [配置移动服务][]
+5.  [向应用程序添加推送通知][]
+6.  [更新脚本以发送推送通知][]
+7.  [插入数据以接收通知][]
 
-   <div class="dev-callout"><b>Note</b>
-   <p>Because of push notification configuration requirements, you must deploy and test push notifications on an iOS capable device (iPhone or iPad) instead of in the emulator.</p>
-   </div>
+本教程需要的内容如下：
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services]. 
+-   [XCode 5.0][]
+-   支持 iOS 5.0（或更高版本）的设备
+-   iOS 开发人员计划成员身份
+-   [Xamarin.iOS]
+-   [Azure 移动服务组件][]
 
-The Apple Push Notification Service (APNS) uses certificates to authenticate your mobile service. Follow these instructions to create the necessary certificates and upload it to your Mobile Service. For the official APNS feature documentation, see [Apple Push Notification Service].
+<div class="dev-callout"><b>说明</b>
 
-<h2><a name="certificates"></a><span class="short-header">Generate CSR file</span>Generate the Certificate Signing Request file</h2>
+<p>由于推送通知配置要求，你必须在支持 iOS 的设备（iPhone 或 iPad），而不是在模拟器上部署和测试推送通知。</p>
+</div>
 
-First you must generate the Certificate Signing Request (CSR) file, which is used by Apple to generate a signed certificate.
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]。
 
-1. From the Utilities folder, run the Keychain Access tool.
+Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照以下说明创建必要的证书并将其上载到你的移动服务。有关正式的 APNS 功能文档，请参阅 [Apple 推送通知服务][]。
 
-2. Click **Keychain Access**, expand **Certificate Assistant**, then click **Request a Certificate from a Certificate Authority...**.
+<a name="certificates"></a>
+## 生成 CSR 文件生成证书签名请求文件
 
-  	![][5]
+首先，你必须生成证书签名请求 (CSR) 文件，Apple 将使用该文件生成签名证书。
 
-3. Select your **User Email Address**, type **Common Name** and **CA Email Address** values, make sure that **Saved to disk** is selected, and then click **Continue**.
+1.  从 Utilities 文件夹中，运行 Keychain Access 工具。
 
-  	![][6]
+2.  单击“Keychain Access” ，展开“Certificate Assistant”（证书助理） ，然后单击“Request a Certificate from a Certificate Authority...”（从证书颁发机构请求证书...） 。
 
-4. Type a name for the Certificate Signing Request (CSR) file in **Save As**, select the location in **Where**, then click **Save**.
+    ![][]
 
-  	![][7]
-  
-  	This saves the CSR file in the selected location; the default location is in the Desktop. Remember the location chosen for this file.
+3.  选择你的“User Email Address”（用户电子邮件地址） ，键入“Common Name”（公用名） 和“CA Email Address”（CA 电子邮件地址） 值，确保选中“Saved to disk”（保存到磁盘） ，然后单击“Continue”（继续） 。
 
-Next, you will register your app with Apple, enable push notifications, and upload this exported CSR to create a push certificate.
+    ![][1]
 
-<h2><a name="register"></a><span class="short-header">Register your app</span>Register your app for push notifications</h2>
+4.  在“Save As”（另存为）中为证书签名请求 (CSR) 文件键入一个名称 ，在“Where”（位置） 中选择一个位置，然后单击“Save”（保存） 。
 
-To be able to send push notifications to an iOS app from mobile services, you must register your application with Apple and also register for push notifications.  
+    ![][2]
 
-1. If you have not already registered your app, navigate to the <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a> at the Apple Developer Center, log on with your Apple ID, click **Identifiers**, then click **App IDs**, and finally click on the **+** sign to .
+    此操作会将 CSR 文件保存到选定位置；默认位置是桌面。请记住为此文件选择的位置。
 
-   	![][102] 
+接下来，你将要向 Apple 注册你的应用程序、启用推送通知并上载这个导出的 CSR 以创建一个推送证书。
 
-2. Type a name for your app in **Description**, enter the value _MobileServices.Quickstart_ in **Bundle Identifier**, check the "Push Notifications" option in the "App Services" section, and then click **Continue**. This example uses the ID **MobileServices.Quickstart** but you may not reuse this same ID, as app IDs must be unique across all users. As such, it is recommended that you append your full name or initials after the app name. 
+<a name="register"></a>
+## 注册应用程序为推送通知注册应用程序
 
-   	![][103]
-   
-   	This generates your app ID and requests you to **Submit** the information. Click **Submit**
-   
-   	![][104] 
-   
-   	Once you click **Submit**, you will see the **Registration complete** screen, as shown below. Click **Done**.
-   
-   	![][105]
+若要将推送通知从移动服务发送到 iOS 应用程序，你必须向 Apple 注册应用程序，还要注册推送通知。
 
-	Note: If you choose to supply a **Bundle Identifier** value other than *MobileServices.Quickstart*, you must also update the bundle identifier value in your Xcode project.
-    
+1.  如果你尚未注册应用程序，请导航到 Apple 开发人员中心的 [iOS 设置门户][]，使用 Apple ID 登录，单击“Identifiers”（标识符） ，然后单击“App IDs”（应用程序 ID） ，最后单击 "+" 符号。
 
-3. Locate the app ID that you just created, and click on its row. 
+    ![][3]
 
-   	![][106]
-   
-   	Clicking on the app ID will display details on the app and app ID. Click the **Settings** button.
-   
-   	![][107] 
-   
-4. Scroll to the bottom of the screen, and click the **Create Certificate...** button under the section **Development Push SSL Certificate**.
+2.  在“Description”（说明） 中为应用程序键入一个名称，在“Bundle Identifier”（捆绑标识符） 中输入值 *MobileServices.Quickstart*，在“App Services”（应用程序服务）部分中选中“Push Notifications”（推送通知）选项，然后单击“Continue”（继续） 。此示例将使用 ID "MobileServices.Quickstart"，但你不可以重用这个 ID，因为应用程序 ID 在所有用户之间必须唯一。因此，建议在应用程序名称的后面附加完整名称或首字母。
 
-   	![][108] 
+    ![][4]
 
-   	This displays the "Add iOS Certificate" assistant.
-   
-   	![][108] 
+    此时将会生成你的应用程序 ID 并请求你"提交"该信息。单击“Submit”（提交） 。
 
-    Note: This tutorial uses a development certificate. The same process is used when registering a production certificate. Just make sure that you set the same certificate type when you upload the certificate to Mobile Services.
+    ![][5]
 
-5. Click **Choose File**, browse to the location where you saved the CSR file that you created in the first task, then click **Generate**. 
+    单击“Submit”（提交） 后，你将会看到如下所示的“Registration complete”（注册已完成） 屏幕。单击“Done”（完成） 。
 
-  	![][110]
-  
-6. After the certificate is created by the portal, click the **Download** button, and click **Done**.
- 
-  	![][111]  
+    ![][6]
 
-   	This downloads the signing certificate and saves it to your computer in your Downloads folder. 
+    注意：如果你选择提供“Bundle Identifier”（捆绑标识符） 值，而不是 *MobileServices.Quickstart*，则还必须更新 Xcode 项目中的捆绑标识符值。
 
-  	![][9] 
+3.  找到你刚刚创建的应用程序 ID，然后单击其行。
 
-    Note: By default, the downloaded file a development certificate is named <strong>aps_development.cer</strong>.
+    ![][7]
 
-7. Double-click the downloaded push certificate **aps_development.cer**.
+    单击应用程序 ID 将显示有关应用程序和应用程序 ID 的详细信息。单击“Settings”（设置）按钮 。
 
-   	This installs the new certificate in the Keychain, as shown below:
+    ![][8]
 
-   	![][10]
+4.  滚动到屏幕底部并单击“Development Push SSL Certificate”（开发推送 SSL 证书 ） 部分下的“Create Certificate...”（创建证书...）按钮 。
 
-    Note: The name in your certificate might be different, but it will be prefixed with <strong>Apple Development iOS Push Notification Services:</strong>.
+    ![][9]
 
-Later, you will use this certificate to generate a .p12 file and upload it to Mobile Services to enable authentication with APNS.
+    将显示“Add iOS Certificate”（添加 iOS 证书）助手。
 
-<h2><a name="profile"></a><span class="short-header">Provision the app</span>Create a provisioning profile for the app</h2>
- 
-1. Back in the <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS Provisioning Portal</a>, select **Provisioning Profiles**, select **All**, and then click the **+** button to create a new profile. This launches the **Add iOS Provisiong Profile** Wizard
+    ![][9]
 
-   	![][112]
+    注意：本教程使用开发证书。注册生产证书时使用相同的过程。将证书上载至移动服务时，只需确保设置了相同的证书类型即可。
 
-2. Select **iOS App Development** under **Development** as the provisiong profile type, and click **Continue**
+5.  单击“Choose File”（选择文件） ，浏览到你在第一个任务中创建的 CSR 文件保存到的位置，然后单击“Generate”（生成） 。
 
-   	![][113]
+    ![][10]
 
-3. Next, select the app ID for the Mobile Services Quickstart app from the **App ID** drop-down list, and click **Continue**
+6.  门户创建证书之后，请单击“Download”（下载）按钮 ，然后单击“Done”（完成） 。
 
-   	![][114]
+    ![][11]
 
-4. In the **Select certificates** screen, select the certificate created earlier, and click **Continue**
-  
-   	![][115]
+    随后将会下载签名证书并将其保存到计算机上的 Downloads 文件夹。
 
-5. Next, select the **Devices** to use for testing, and click **Continue**
+    ![][12]
 
-   	![][116]
+    注意：默认情况下，下载的文件（开发证书）名为 "aps\_development.cer"。
 
-6. Finally, pick a name for the profile in **Profile Name**, click **Generate**, and click **Done**
+7.  双击下载的推送证书 "aps\_development.cer"。
 
-   	![][117]
-  
-  	This creates a new provisioning profile.
+    将在 Keychain 中安装新证书，如下所示：
 
-7. In Xcode, open the Organizer select the Devices view, select **Provisioning Profiles** in the **Library** section in the left pane, and then click the **Refresh** button at the bottom of the middle pane. 
+    ![][13]
 
-   	![][101]
+    注意：证书中的名称可能不同，但将以 "Apple Development iOS Push Notification Services:" 作为前缀。
 
-8. Under **Targets**, click **Quickstart**, expand **Code Signing Identity**, then under **Debug** select the new profile.
+稍后，你将要使用此证书生成一个 .p12 文件，并将其上载到移动服务以使用 APNS 启用身份验证。
 
-   	![][17]
+<a name="profile"></a><
+## 设置应用程序为应用程序创建设置配置文件
 
-This ensures that the Xcode project uses the new profile for code signing. Next, you must upload the certificate to Mobile Services.
+1.  返回 [iOS 设置门户][]，选择“Provisioning Profiles”（设置配置文件） ，选择“All”（全部） ，然后单击“+” 按钮创建一个新的配置文件。此时会启动“Add iOS Provisiong Profile”（添加 iOS 设置配置文件） 向导
 
-<a name="configure"></a><h2><span class="short-header">Configure the service</span>Configure Mobile Services to send push requests</h2>
+    ![][14]
 
-After you have registered your app with APNS and configured your project, you must next configure your mobile service to integrate with APNS.
+2.  选择“Development”（开发） 下的“iOS App Development”（iOS 应用程序开发） 作为设置配置文件类型，然后单击“Continue”（继续） 。
 
-1. In Keychain Access, right-click the new certificate, click **Export**, name your file QuickstartPusher, select the **.p12** format, then click **Save**.
+    ![][15]
 
-   	![][28]
+3.  接下来，从“App ID”（应用程序 ID） 下拉列表中选择移动服务快速入门应用程序的应用程序 ID，然后单击“Continue”（继续） 。
 
-  	Make a note of the file name and location of the exported certificate.
+    ![][16]
 
-    <div class="dev-callout"><b>Note</b>
-	<p>This tutorial creates a QuickstartPusher.p12 file. Your file name and location might be different.</p>
-    </div>
+4.  在“Select certificates”（选择证书） 屏幕中，选择前面创建的证书，然后单击“Continue”（继续） 。
 
-2. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your app.
+    ![][17]
 
-   	![][18]
+5.  接下来，选择要用于测试的“Devices”（设备） ，然后单击“Continue”（继续） 。
 
-3. Click the **Push** tab and click **Upload**.
+    ![][18]
 
-   	![][19]
+6.  最后，在“Profile Name”（配置文件名称） 中为配置文件选取一个名称，单击“Generate”（生成） ，然后单击“Done”（完成） 。
 
-   	This displays the Upload Certificate dialog.
+    ![][19]
 
-4. Click **File**, select the exported certificate QuickstartPusher.p12 file, enter the **Password**, make sure that the correct **Mode** is selected, click the check icon, then click **Save**.
+    此操作可创建新的配置文件。
 
-   	![][20] 
+7.  在 Xcode 中，打开“Organizer”（组织程序）并选择“Devices”（设备）视图，在左窗格的“Library”（库） 部分选择“Provisioning Profiles”（配置文件） ，然后单击中间窗格底部的“刷新” 按钮。
 
-    <div class="dev-callout"><b>Note</b>
-	<p>This tutorial uses developement certificates.</p>
-    </div>
+    ![][20]
 
-Both your mobile service is now configured to work with APNS.
+8.  在“Targets”（目标） 下单击“Quickstart”（快速入门） ，展开“Code Signing Identity”（代码签名标识） ，然后在“Debug”（调试） 下选择新的配置文件。
 
-<a name="add-push"></a><h2><span class="short-header">Add push notifications</span>Add push notifications to your app</h2>
+    ![][21]
 
-1. In Xamarin.Studio, open the AppDelegate.cs file and add the following property:
+这可以确保 Xcode 项目使用新配置文件进行代码签名。接下来，必须将该证书上载到移动服务。
+
+<a name="configure"></a>
+## 配置服务配置移动服务以发送推送请求
+
+将应用程序注册到 APNS 并配置项目后，接下来必须配置移动服务以便与 APNS 集成。
+
+1.  在 Keychain Access 中，右键单击新证书，单击“Export”（导出） ，为 QuickstartPusher 文件命名，选择 ".p12" 格式，然后单击“Save”（保存） 。
+
+    ![][22]
+
+    记下文件名和导出证书的位置。
+
+    <div class="dev-callout"><b>说明</b>
+
+    <p>本教程将创建一个 QuickstartPusher.p12 文件。你的文件名和位置可以不同。</p>
+	</div>
+
+2.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
+
+    ![][23]
+
+3.  单击“推送”选项卡，然后单击“上载” 。
+
+    ![][24]
+
+    此时将显示“上载证书”对话框。
+
+4.  单击“文件”，选择导出的 QuickstartPusher.p12 证书文件，输入密码，确保已选择正确的“模式”，单击勾选图标，然后单击“保存” 。
+
+    ![][25]
+
+    <div class="dev-callout"><b>说明</b>
+
+    <p>本教程使用开发证书。</p>
+	</div>
+
+现在，你的移动服务已配置为使用 APNS。
+
+<a name="add-push"></a>
+## 添加推送通知向应用程序添加推送通知
+
+1.  在 Xamarin.Studio 中，打开 AppDelegate.cs 文件，并添加以下属性：
 
         public string DeviceToken { get; set; }
 
-2. Open the **TodoItem** class and add the following property:
+2.  打开 "TodoItem" 类，并添加以下属性：
 
         [DataMember(Name = "deviceToken")]
         public string DeviceToken { get; set; }
 
-    <div class="dev-callout"><b>Note</b>
-	<p>When dynamic schema is enabled on your mobile service, a new 'deviceToken' column is automatically added to the <strong>TodoItem</strong> table when a new item that contains this property is inserted.</p>
-    </div>
+    <div class="dev-callout"><b>说明</b>
 
-3. In **AppDelegate**, override the **FinishedLaunching** event: 
+    <p>如果在移动服务中启用了动态架构，则插入包含此属性的新项时，将在 "TodoItem" 表中自动添加新的“deviceToken”列。</p>
+	</div>
+
+3.  在 "AppDelegate" 中，重写 "FinishedLaunching" 事件：
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | 
-                UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
-            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes); 
+        UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | 
+        UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
+        UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes); 
 
-            return true;
+        return true;
         }
 
-4. In **AppDelegate**, override the **RegisteredForRemoteNotifications** event:
+4.  在 "AppDelegate" 中，重写 "RegisteredForRemoteNotifications" 事件：
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
-            string trimmedDeviceToken = deviceToken.Description;
-            if (!string.IsNullOrWhiteSpace(trimmedDeviceToken))
+        string trimmedDeviceToken = deviceToken.Description;
+        if (!string.IsNullOrWhiteSpace(trimmedDeviceToken))
             {
-                trimmedDeviceToken = trimmedDeviceToken.Trim('<');
-                trimmedDeviceToken = trimmedDeviceToken.Trim('>');
+        trimmedDeviceToken = trimmedDeviceToken.Trim('<');
+        trimmedDeviceToken = trimmedDeviceToken.Trim('>');
             }
-            DeviceToken = trimmedDeviceToken;
+        DeviceToken = trimmedDeviceToken;
         }
 
-5. In **AppDelegate**, override the **ReceivedRemoteNotification** event:
+5.  在 "AppDelegate" 中，重写 "ReceivedRemoteNotification" 事件：
 
         public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
         {
-            Debug.WriteLine(userInfo.ToString());
-            NSObject inAppMessage;
+        Debug.WriteLine(userInfo.ToString());
+        NSObject inAppMessage;
 
-            bool success = userInfo.TryGetValue(new NSString("inAppMessage"), out inAppMessage);
+        bool success = userInfo.TryGetValue(new NSString("inAppMessage"), out inAppMessage);
 
-            if (success)
+        if (success)
             {
-                var alert = new UIAlertView("Got push notification", inAppMessage.ToString(), null, "OK", null);
-                alert.Show();
+        var alert = new UIAlertView("Got push notification", inAppMessage.ToString(), null, "OK", null);
+        alert.Show();
             }
         }
 
-6. In **TodoListViewController**, modify the **OnAdd** action to get the device token stored in **AppDelegeate**, and store it into the **TodoItem** being added.
+6.  在 "TodoListViewController" 中，修改 "OnAdd" 操作以获取存储在 "AppDelegeate" 中的设备标记，并将它存储到所添加的 "TodoItem" 中。
 
-      string deviceToken = ((AppDelegate)UIApplication.SharedApplication.Delegate).DeviceToken;
+    string deviceToken = ((AppDelegate)UIApplication.SharedApplication.Delegate).DeviceToken;
 
-			var newItem = new TodoItem() 
-			{
-				Text = itemText.Text, 
-				Complete = false,
-                DeviceToken = deviceToken
-			};
+            var newItem = new TodoItem() 
+            {
+        Text = itemText.Text, 
+        Complete = false,
+        DeviceToken = deviceToken
+            };
 
-Your app is now updated to support push notifications.
+你的应用程序现已更新，可支持推送通知。
 
-<h2><a name="update-scripts"></a><span class="short-header">Update the insert script</span>Update the registered insert script in the Management Portal</h2>
+<a name="update-scripts"></a>
+## 更新插入脚本在管理门户中更新注册的插入脚本
 
-1. In the Management Portal, click the **Data** tab and then click the **TodoItem** table. 
+1.  在管理门户中，单击“数据”选项卡，然后单击“TodoItem”表 。
 
-   	![][21]
+    ![][26]
 
-2. In **todoitem**, click the **Script** tab and select **Insert**.
-   
-  	![][22]
+2.  在“todoitem” 中，单击“脚本” 选项卡，然后选择“插入” 。
 
-   	This displays the function that is invoked when an insert occurs in the **TodoItem** table.
+    ![][27]
 
-3. Replace the insert function with the following code, and then click **Save**:
+    将显示当 "TodoItem" 表中发生插入时所调用的函数。
+
+3.  将 insert 函数替换为以下代码，然后单击“保存”： 
 
         function insert(item, user, request) {
-            request.execute();
-            // Set timeout to delay the notification, to provide time for the 
-            // app to be closed on the device to demonstrate toast notifications
-            setTimeout(function() {
-                push.apns.send(item.deviceToken, {
-                    alert: "Toast: " + item.text,
-                    payload: {
-                        inAppMessage: "Hey, a new item arrived: '" + item.text + "'"
+        request.execute();
+        // Set timeout to delay the notification, to provide time for the 
+        // app to be closed on the device to demonstrate toast notifications
+        setTimeout(function() {
+        push.apns.send(item.deviceToken, {
+        alert:"Toast:" + item.text,
+        payload: {
+        inAppMessage:"Hey, a new item arrived:'" + item.text + "'"
                     }
                 });
             }, 2500);
         }
 
-   	This registers a new insert script, which uses the [apns object] to send a push notification (the inserted text) to the device provided in the insert request. 
+    这将会注册一个新的插入脚本，该脚本使用 [apns 对象][]将推送通知（插入的文本）发送到插入请求中提供的设备。
 
+   	<div class="dev-callout"><b>说明</b>
 
-   	<div class="dev-callout"><b>Note</b>
-   <p>This script delays sending the notification to give you time to close the app to receive a toast notification.</p>
-   </div> 
+    <p>此脚本将延迟发送通知，使你有足够的时间关闭应用程序以接收 toast 通知。</p>
+	</div>
 
-<h2><a name="test"></a><span class="short-header">Test the app</span>Test push notifications in your app</h2>
+<a name="test"></a>
+## 测试应用程序在应用程序中测试推送通知
 
-1. Press the **Run** button to build the project and start the app in an iOS capable device, then click **OK** to accept push notifications
+1.  在支持 iOS 的设备中按“运行”按钮以生成项目并启动应用程序，然后单击“确定”接受推送通知 
 
-  	![][23]
+    ![][28]
 
-    <div class="dev-callout"><b>Note</b>
-    <p>You must explicitly accept push notifications from your app. This request only occurs the first time that the app runs.</p>
-    </div>
+    <div class="dev-callout"><b>说明</b>
 
-2. In the app, type meaningful text, such as _A new Mobile Services task_ and then click the plus (**+**) icon.
+    <p>你必须显式接受来自应用程序的推送通知。此请求只会在首次运行应用程序时出现。</p>
+	</div>
 
-  	![][24]
+2.  在应用程序中键入有意义的文本（例如 *A new Mobile Services task*），然后单击加号 ("+") 图标。
 
-3. Verify that a notification is received, then click **OK** to dismiss the notification.
+    ![][29]
 
-  	![][25]
+3.  检查是否已收到通知，然后单击“确定”以取消通知 。
 
-4. Repeat step 2 and immediately close the app, then verify that the following toast is shown.
+    ![][30]
 
-  	![][26]
+4.  重复步骤 2 并立即关闭应用程序，然后检查是否已显示以下 toast。
 
-You have successfully completed this tutorial.
+    ![][31]
 
-## Get completed example
-Download the [completed example project]. Be sure to update the **applicationURL** and **applicationKey** variables with your own Azure settings. 
+你已成功完成本教程。
 
-## <a name="next-steps"> </a>Next steps
+## 获取已完成的示例
 
-In this simple example a user receives a push notification with the data that was just inserted. The device token used by APNS is supplied to the mobile service by the client in the request. In the next tutorial, [Push notifications to app users], you will create a separate Devices table in which to store device tokens and send a push notification out to all stored channels when an insert occurs. 
+下载[已完成的示例项目][]。请务必使用你自己的 Azure 设置更新 "applicationURL" 和 "applicationKey" 变量。
 
-<!-- Anchors. -->
-[Generate the certificate signing request]: #certificates
-[Register your app and enable push notifications]: #register
-[Create a provisioning profile for the app]: #profile
-[Configure Mobile Services]: #configure
-[Update scripts to send push notifications]: #update-scripts
-[Add push notifications to the app]: #add-push
-[Insert data to receive notifications]: #test
-[Next Steps]:#next-steps
+<a name="next-steps"> </a>
+## 后续步骤
 
-<!-- Images. -->
+在这个简单的示例中，用户将会收到包含刚刚插入的数据的推送通知。请求中的客户端会将 APNS 使用的设备标记提供给移动服务。在下一教程[向应用程序用户推送通知][]中，你将要创建一个单独的 Devices 表，该表用于存储设备标记，以及在发生插入操作时向所有存储的通道发出推送通知。
 
-
-
-
-[5]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step5.png
-[6]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step6.png
-[7]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step7.png
-
-[9]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step9.png
-[10]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step10.png
-
-
-
-
-
-
-[17]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step17.png
-[18]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-selection.png
-[19]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-push-tab-ios.png
-[20]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-push-tab-ios-upload.png
-[21]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-portal-data-tables.png
-[22]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-insert-script-push2.png
-[23]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-quickstart-push1-ios.png
-[24]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-quickstart-push2-ios.png
-[25]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-quickstart-push3-ios.png
-[26]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-quickstart-push4-ios.png
-[28]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step18.png
-
-[101]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-01.png
-[102]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-02.png
-[103]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-03.png
-[104]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-04.png
-[105]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-05.png
-[106]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-06.png
-[107]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-07.png
-[108]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-08.png
-
-[110]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-10.png
-[111]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-11.png
-[112]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-12.png
-[113]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-13.png
-[114]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-14.png
-[115]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-15.png
-[116]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-16.png
-[117]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-17.png
-
-[Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-[iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
-[Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-[Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-xamarin-ios
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-ios
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-ios
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-ios
-[Push notifications to app users]: /en-us/develop/mobile/tutorials/push-notifications-to-users-ios
-[Authorize users with scripts]: /en-us/develop/mobile/tutorials/authorize-users-in-scripts-xamarin-ios
-
-
-[Azure Management Portal]: https://manage.windowsazure.com/
-[apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
-[Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
-[completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331303
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-push-js "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-push-wp8 "Windows Phone"
+  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-ios "iOS"
+  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-android "Android"
+  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android "Xamarin.Android"
+  [生成证书签名请求]: #certificates
+  [注册应用程序和启用推送通知]: #register
+  [为应用程序创建配置文件]: #profile
+  [配置移动服务]: #configure
+  [向应用程序添加推送通知]: #add-push
+  [更新脚本以发送推送通知]: #update-scripts
+  [插入数据以接收通知]: #test
+  [XCode 5.0]: https://go.microsoft.com/fwLink/p/?LinkID=266532
+  [Azure 移动服务组件]: http://components.xamarin.com/view/azure-mobile-services/
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-ios
+  [Apple 推送通知服务]: http://go.microsoft.com/fwlink/p/?LinkId=272584
+  []: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step5.png
+  [1]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step6.png
+  [2]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step7.png
+  [iOS 设置门户]: http://go.microsoft.com/fwlink/p/?LinkId=272456
+  [3]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-02.png
+  [4]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-03.png
+  [5]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-04.png
+  [6]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-05.png
+  [7]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-06.png
+  [8]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-07.png
+  [9]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-08.png
+  [10]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-10.png
+  [11]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-11.png
+  [12]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step9.png
+  [13]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step10.png
+  [14]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-12.png
+  [15]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-13.png
+  [16]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-14.png
+  [17]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-15.png
+  [18]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-16.png
+  [19]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-17.png
+  [20]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-01.png
+  [21]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step17.png
+  [22]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-step18.png
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  [23]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-selection.png
+  [24]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-push-tab-ios.png
+  [25]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-push-tab-ios-upload.png
+  [26]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-portal-data-tables.png
+  [27]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-insert-script-push2.png
+  [apns 对象]: http://go.microsoft.com/fwlink/p/?LinkId=272333
+  [28]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-quickstart-push1-ios.png
+  [29]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-quickstart-push2-ios.png
+  [30]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-quickstart-push3-ios.png
+  [31]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-quickstart-push4-ios.png
+  [已完成的示例项目]: http://go.microsoft.com/fwlink/p/?LinkId=331303
+  [向应用程序用户推送通知]: /zh-cn/develop/mobile/tutorials/push-notifications-to-users-ios

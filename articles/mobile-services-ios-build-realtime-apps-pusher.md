@@ -1,428 +1,404 @@
 <properties linkid="develop-mobile-tutorials-build-realtime-apps-with-pusher-ios" urlDisplayName="Build Realtime Apps with Pusher" pageTitle="Build Realtime Apps with Pusher (iOS) - Mobile Services" metaKeywords="" description="Learn how to use Pusher to send notifications to your Azure Media Services app on iOS." metaCanonical="" services="" documentationCenter="Mobile" title="Build Real-time Apps with Mobile Services and Pusher" authors="" solutions="" manager="" editor="" />
 
+# 使用移动服务和 Pusher 生成实时应用程序
 
-# Build Real-time Apps with Mobile Services and Pusher
 <div class="dev-center-tutorial-selector sublanding"> 
 	<a href="" title="iOS" class="current">iOS</a> 
 </div>
 
-This topic shows you how can add real-time functionality to your Azure Mobile Services-based app. When completed, your TodoList data is synchronized, in real-time, across all running instances of your app.
- 
-The [Push Notifications to Users][] tutorial shows you how to use push notifications to inform users of new items in the Todo list. Push notifications are a great way to show occasional changes. However, sometimes an app needs frequent real-time notifications. Real-time notifications can be added to your mobile service using the Pusher API. In this tutorial, we use Pusher with Mobile Services to keep a Todo list synchronized when changes are made in any running instance of the app. 
+本主题说明如何将实时功能添加到基于 Azure 移动服务的应用程序。完成本主题后，你的 TodoList 数据将在所有运行的应用程序实例之间实时同步。
 
-Pusher is a cloud-based service that, like Mobile Services, makes building real-time apps incredibly easy. You can use Pusher to quickly build live polls, chat rooms, multi-player games, collaborative apps, to broadcast live data and content, and that's just the start! For more information, see [http://pusher.com](http://pusher.com).
+[向用户推送通知][]教程说明了如何使用推送通知来让用户知道 Todo 列表中已添加了新项。推送通知是显示偶发性更改的极佳方式。但是，应用程序有时需要频繁发送实时通知。在此情况下，你可以使用 Pusher API 将实时通知添加到你的移动服务。在本教程中，我们将结合使用 Pusher 和移动服务，使 Todo 列表在运行的应用程序实例发生更改时保持同步。
 
-This tutorial walks you through these basic steps to add realtime collaboration to the Todo list application:
+Pusher 是一个基于云的服务，与移动服务一样，它可以让你无比轻松地生成实时应用程序。你可以使用 Pusher 快速生成实时投票、聊天室、多玩家游戏和协作应用程序，广播实时数据和内容，但这只是它的一些最基本功能！有关详细信息，请参阅 [][]<http://pusher.com>。
 
-1. [Create a Pusher account][]
-2. [Update your app][]
-3. [Install server scripts][]
-4. [Test your app][]
+本教程将指导你完成在 Todo 列表应用程序中添加实时协作功能的以下基本步骤：
 
-This tutorial is based on the Mobile Services quickstart. Before you start this tutorial, you must first complete [Get started with Mobile Services][].
+1.  [创建 Pusher 帐户][]
+2.  [更新应用程序][]
+3.  [安装服务器脚本][]
+4.  [测试应用程序][]
 
-## <a name="sign-up"></a>Create a new Pusher account
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]。
 
-[WACOM.INCLUDE [pusher-sign-up](../includes/pusher-sign-up.md)]
+<a name="sign-up"></a>
+## 创建新的 Pusher 帐户
 
-## <a name="update-app"></a>Update your app
+[WACOM.INCLUDE [pusher-sign-up][]]
 
-Now that you have your Pusher account set up, the next step is to modify the iOS app code for the new functionality.
+<a name="update-app"></a>
+## 更新应用程序
 
-###Install the libPusher library
+设置 Pusher 帐户后，下一步就是修改 iOS 应用程序代码以使用新功能。
 
-The [libPusher][] library lets you access Pusher from iOS. 
+### 安装 libPusher 库
 
-1. Download the libPusher library [from here][libPusherDownload].
+[libPusher][] 库可让你从 iOS 访问 Pusher。
 
-2. Create a group called _libPusher_ in your project.
+1.  从[此处][]下载 libPusher 库。
 
-3. In Finder, unzip the downloaded zip file, select the **libPusher-combined.a** and **/headers** folders, and drag these items into the **libPusher** group in your project.
+2.  在项目中创建一个名为 *libPusher* 的组。
 
-4. Check **Copy items into destination group's folder**, then click **Finish**
-	
-	![][add-files-to-group]
+3.  在查找工具中，解压缩下载的 zip 文件，选择 "libPusher-combined.a" 和 "/headers" 文件夹，然后将这些项拖放到项目中的 "libPusher" 组内。
 
-   This copies the libPusher files into your project.
+4.  选中“将项复制到目标组的文件夹中” ，然后单击“完成” 。
 
-5. On the project root in the project explorer, click **Build Phases**, then click **Add Build Phase** and **Add Copy Files**.
+    ![][]
 
-6. Drag the **libPusher-combined.a** file from the project explorer into the new build phase.
+这就会将 libPusher 文件复制到你的项目中。
 
-7. Change the **Destination** to **Frameworks** and click **Copy only when installing**.
+1.  在项目资源管理器中的项目根目录位置，单击“生成阶段”，然后单击“添加生成阶段”和“添加复制文件” 。
 
-	![][add-build-phase]
-	
-8. Within the **Link Binary With Libraries** area, add the following libraries:
-	
-	- libicucore.dylib
-	- CFNetwork.framework
-	- Security.framework
-	- SystemConfiguration.framework
-	
-9. Finally within **Build Settings**, locate the target build setting **Other Linker Flags** and add the **-all_load** flag.
+2.  将 "libPusher-combined.a" 文件从项目资源管理器拖放到新的生成阶段。
 
-	![][add-linker-flag]
+3.  将“目标”更改为“框架”，然后单击“仅在安装时复制” 。
 
-	This shows the **-all_load** flag set for the Debug build target.
+    ![][1]
 
-The library is now installed ready for use.
+4.  在“将二进制文件链接到库”区域中添加以下库 ：
 
-### Add code to the application
+    -   libicucore.dylib
+    -   CFNetwork.framework
+    -   Security.framework
+    -   SystemConfiguration.framework
 
-1. In Xcode, open the **QSTodoService.h** file and add the following method declarations:
+5.  最后，在“生成设置”中，找到目标生成设置“其他链接器标志”，并添加 "-all\_load" 标志 。
+
+    ![][2]
+
+    此时将显示针对“调试”生成目标设置的 "-all\_load" 标志。
+
+该库现已安装并可供使用。
+
+### 向应用程序添加代码
+
+1.  在 Xcode 中，打开 "QSTodoService.h" 文件并添加以下方法声明：
 
         // Allows retrieval of items by id
         - (NSUInteger) getItemIndex:(NSDictionary *)item;
 
         // To be called when items are added by other users
         - (NSUInteger) itemAdded:(NSDictionary *)item;
-        
+
         // To be called when items are completed by other users
         - (NSUInteger) itemCompleted:(NSDictionary *)item;
-        
-2. Replace the existing declarations of **addItem** and **completeItem** with the following:
 
-		- (void) addItem:(NSDictionary *) item;
-		- (void) completeItem: (NSDictionary *) item;
+2.  将 "addItem" 和 "completeItem" 的现有声明替换为以下代码：
 
-3. In **QSTodoService.m**, add the following code to implement the new methods:
+        - (void) addItem:(NSDictionary *) item;
+        - (void) completeItem:(NSDictionary *) item;
+
+3.  在 "QSTodoService.m" 中，添加以下代码以实现新方法：
 
         // Allows retrieval of items by id
-		- (NSUInteger) getItemIndex:(NSDictionary *)item
-		{
-		    NSInteger itemId = [[item objectForKey: @"id"] integerValue];
-    
-		    return [items indexOfObjectPassingTest:^BOOL(id currItem, NSUInteger idx, BOOL *stop)
+        - (NSUInteger) getItemIndex:(NSDictionary *)item
+        {
+        NSInteger itemId = [[item objectForKey:@"id"] integerValue];
+
+        return [items indexOfObjectPassingTest:^BOOL(id currItem, NSUInteger idx, BOOL *stop)
                  {
-                     return ([[currItem objectForKey: @"id"] integerValue] == itemId);
+        return ([[currItem objectForKey:@"id"] integerValue] == itemId);
                  }];
-		}
+        }
 
         // To be called when items are added by other users
         -(NSUInteger) itemAdded:(NSDictionary *)item
-		{
-		    NSUInteger index = [self getItemIndex:item];
-    
-		    // Only complete action if item not already in list
-		    if(index == NSNotFound)
-		    {
-        		NSUInteger newIndex = [items count];
-		        [(NSMutableArray *)items insertObject:item atIndex:newIndex];
-		        return newIndex;
-		    }
-		    else
-        		return -1;
-		}
+        {
+        NSUInteger index = [self getItemIndex:item];
+
+        // Only complete action if item not already in list
+        if(index == NSNotFound)
+            {
+        NSUInteger newIndex = [items count];
+        [(NSMutableArray *)items insertObject:item atIndex:newIndex];
+        return newIndex;
+            }
+        else
+        return -1;
+        }
 
         // To be called when items are completed by other users
-		- (NSUInteger) itemCompleted:(NSDictionary *)item
-		{
-		    NSUInteger index = [self getItemIndex:item];
-    
-		    // Only complete action if item exists in items list
-		    if(index != NSNotFound)
-		    {
-		        NSMutableArray *mutableItems = (NSMutableArray *) items;
-		        [mutableItems removeObjectAtIndex:index];
-		    }  		
-		    return index;
-		}
-
-	The QSTodoService now allows you to find items by **id** and add and complete items locally without sending explicit requests to the remote service.
-	
-4. Replace the existing **addItem** and **completeItem** methods with the following code:
-
-		-(void) addItem:(NSDictionary *)item
-		{
-		    // Insert the item into the TodoItem table and add to the items array on completion
-		    [self.table insert:item completion:^(NSDictionary *result, NSError *error) {
-        		[self logErrorIfNotNil:error];
-		    }];
-		}
-
-		-(void) completeItem:(NSDictionary *)item
-		{
-		    // Set the item to be complete (we need a mutable copy)
-		    NSMutableDictionary *mutable = [item mutableCopy];
-		    [mutable setObject:@(YES) forKey:@"complete"];
-    
-		    // Update the item in the TodoItem table and remove from the items array on completion
-		    [self.table update:mutable completion:^(NSDictionary *item, NSError *error) {
-		        [self logErrorIfNotNil:error];
-		    }];
-		}
-
-
-	Note that items are now added and completed, along with updates to the UI, when events are received from Pusher instead of when the data table is updated.
-
-5. In the **QSTodoListViewController.h** file, add the following import statements:
-
-		#import "PTPusherDelegate.h"
-		#import "PTPusher.h"
-		#import "PTPusherEvent.h"
-		#import "PTPusherChannel.h"
-		
-6. Modify the interface declaration to add **PTPusherDelegate** to look like the following:
-
-		@interface QSTodoListViewController : UITableViewController<UITextFieldDelegate, PTPusherDelegate>
-		
-7. Add the following new property:
-
-		@property (nonatomic, strong) PTPusher *pusher;
-
-8. Add the following code that declares a new method:
-
-		// Sets up the Pusher client
-		- (void) setupPusher;
-		
-9. In **QSTodoListViewController.m**, add the following line under the other **@synthesise** lines to implement the new property:
-
-		@synthesize pusher = _pusher;
-
-10. Now add the following code to implement the new method:
-
-		// Sets up the Pusher client
-		- (void) setupPusher {
-		
-			// Create a Pusher client, using your Pusher app key as the credential
-		    // TODO: Move Pusher app key to configuration file
-		    self.pusher = [PTPusher pusherWithKey:@"**your_app_key**" delegate:self encrypted:NO];
-		    self.pusher.reconnectAutomatically = YES;
-    		
-    		// Subscribe to the 'todo-updates' channel
-		    PTPusherChannel *todoChannel = [self.pusher subscribeToChannelNamed:@"todo-updates"];
-    		
-    		// Bind to the 'todo-added' event
-		    [todoChannel bindToEventNamed:@"todo-added" handleWithBlock:^(PTPusherEvent *channelEvent) {
-		    
-		    	// Add item to the todo list
-        		NSUInteger index = [self.todoService itemAdded:channelEvent.data];
-        
-        		// If the item was not already in the list, add the item to the UI
-		        if(index != -1)
-        		{
-		            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-        		    [self.tableView insertRowsAtIndexPaths:@[ indexPath ]
-                                  withRowAnimation:UITableViewRowAnimationTop];
-		        }
-		    }];
-
-    		// Bind to the 'todo-completed' event
-		    [todoChannel bindToEventNamed:@"todo-completed" handleWithBlock:^(PTPusherEvent *channelEvent) {
-		    
-		    	// Update the item to be completed
-		        NSUInteger index = [self.todoService itemCompleted:channelEvent.data];
-        		
-        		// As long as the item did exit in the list, update the UI
-		        if(index != NSNotFound)
-		        {
-		            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-        		    [self.tableView deleteRowsAtIndexPaths:@[ indexPath ]
-                                  withRowAnimation:UITableViewRowAnimationTop];
-		        }		        
-		    }];
-		}
+        - (NSUInteger) itemCompleted:(NSDictionary *)item
+        {
+        NSUInteger index = [self getItemIndex:item];
 
-11. Replace the `**your_app_key**` placeholder with the app_key value you copied from the Connection Info dialog earlier.
+        // Only complete action if item exists in items list
+        if(index != NSNotFound)
+            {
+        NSMutableArray *mutableItems = (NSMutableArray *) items;
+        [mutableItems removeObjectAtIndex:index];
+            }       
+        return index;
+        }
 
-12. Replace the **onAdd** method with the following code:
+    现在，QSTodoService 允许你按 "id" 查找项以及在本地添加和完成项，而无需向远程服务发送显式请求。
 
-		- (IBAction)onAdd:(id)sender
-		{
-		    if (itemText.text.length  == 0) {
-        		return;
-		    }
-    
-		    NSDictionary *item = @{ @"text" : itemText.text, @"complete" : @(NO) };
-		    [self.todoService addItem:item];
-    
-		    itemText.text = @"";
-		}
+4.  将现有的 "addItem" 和 "completeItem" 方法替换为以下代码：
 
-13. In the **QSTodoListViewController.m** file, locate the (void)viewDidLoad method and add a call to the **setupPusher** method so the first few lines are:
+        -(void) addItem:(NSDictionary *)item
+        {
+        // Insert the item into the TodoItem table and add to the items array on completion
+        [self.table insert:item completion:^(NSDictionary *result, NSError *error) {
+        [self logErrorIfNotNil:error];
+            }];
+        }
 
-		- (void)viewDidLoad
-		{
-		    [super viewDidLoad];
-		    [self setupPusher];
-		    
-14. At the end of the **tableView:commitEditingStyle:forRowAtIndexPath** method, replace the call to **completeItem** with the following code:
+        -(void) completeItem:(NSDictionary *)item
+        {
+        // Set the item to be complete (we need a mutable copy)
+        NSMutableDictionary *mutable = [item mutableCopy];
+        [mutable setObject:@(YES) forKey:@"complete"];
 
-		// Ask the todoService to set the item's complete value to YES
-	    [self.todoService completeItem:item];
+        // Update the item in the TodoItem table and remove from the items array on completion
+        [self.table update:mutable completion:^(NSDictionary *item, NSError *error) {
+        [self logErrorIfNotNil:error];
+            }];
+        }
 
-The app is now able to receive events from Pusher, and to update the local Todo list accordingly.
+    请注意，项现已添加并已完成，同时，在收到来自 Pusher 的事件（而不是更新表数据）时，UI 将会更新。
 
+5.  在 "QSTodoListViewController.h" 文件中添加以下 import 语句：
 
+        #import "PTPusherDelegate.h"
+        #import "PTPusher.h"
+        #import "PTPusherEvent.h"
+        #import "PTPusherChannel.h"
 
-<h2><a name="install-scripts"></a>Install server scripts</h2>
+6.  修改接口声明以添加类似于下面的 "PTPusherDelegate"：
 
+        @interface QSTodoListViewController :UITableViewController<UITextFieldDelegate, PTPusherDelegate>
 
+7.  添加以下新属性：
 
-All that remains is setting up your server scripts. We'll insert a script for when an item is inserted or updated into the TodoList table.
+        @property (nonatomic, strong) PTPusher *pusher;
 
+8.  添加以下用于声明新方法的代码：
 
+        // Sets up the Pusher client
+        - (void) setupPusher;
 
-1. Log on to the [Azure Management Portal], click **Mobile Services**, and then click your mobile service.
+9.  在 "QSTodoListViewController.m" 中，在其他
 
+    \*\* at synthesise\*
 
-2. In the Management Portal, click the **Data** tab and then click the **TodoItem** table.
+    \* 行下面添加以下行，以实现新属性：
 
-	![][1]
+        @synthesize pusher = _pusher;
 
+10. 现在，请添加以下代码以实现新方法：
 
+        // Sets up the Pusher client
+        - (void) setupPusher {
 
-3. In **TodoItem**, click the **Script** tab and select **Insert**.
+        // Create a Pusher client, using your Pusher app key as the credential
+        // TODO:Move Pusher app key to configuration file
+        self.pusher = [PTPusher pusherWithKey:@""your_app_key"" delegate:self encrypted:NO];
+        self.pusher.reconnectAutomatically = YES;
 
+        // Subscribe to the 'todo-updates' channel
+        PTPusherChannel *todoChannel = [self.pusher subscribeToChannelNamed:@"todo-updates"];
 
-	![][2]
+        // Bind to the 'todo-added' event
+        [todoChannel bindToEventNamed:@"todo-added" handleWithBlock:^(PTPusherEvent *channelEvent) {
 
-   
+        // Add item to the todo list
+        NSUInteger index = [self.todoService itemAdded:channelEvent.data];
 
-	This displays the function that is invoked when an insert occurs in the **TodoItem** table.
+        // If the item was not already in the list, add the item to the UI
+        if(index != -1)
+                {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [self.tableView insertRowsAtIndexPaths:@[ indexPath ]
+        withRowAnimation:UITableViewRowAnimationTop];
+                }
+            }];
 
+        // Bind to the 'todo-completed' event
+        [todoChannel bindToEventNamed:@"todo-completed" handleWithBlock:^(PTPusherEvent *channelEvent) {
 
-4. Replace the insert function with the following code:
+        // Update the item to be completed
+        NSUInteger index = [self.todoService itemCompleted:channelEvent.data];
 
+        // As long as the item did exit in the list, update the UI
+        if(index != NSNotFound)
+                {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [self.tableView deleteRowsAtIndexPaths:@[ indexPath ]
+        withRowAnimation:UITableViewRowAnimationTop];
+                }               
+            }];
+        }
 
-		var Pusher = require('pusher');
-		
-		function insert(item, user, request) {   
+11. 将 `"your_app_key"` 占位符替换为你前面从“连接信息”对话框中复制的 app\_key 值。
 
-			request.execute({
-	    		success: function() {
-			        // After the record has been inserted, trigger immediately to the client
-	    		    request.respond();
+12. 将 "onAdd" 方法替换为以下代码：
 
-			        // Publish event for all other active clients
-			        publishItemCreatedEvent(item);
-			    }
-			});
-		
-			function publishItemCreatedEvent(item) {
-		
-				// Ideally these settings would be taken from config
-			    var pusher = new Pusher({
-				  appId: '**your_app_id**',
-				  key: '**your_app_key**',
-				  secret: '**your_app_secret**'
-				});     
-		
-				// Publish event on Pusher channel
-			    pusher.trigger( 'todo-updates', 'todo-added', item );	
-			}
-		}
+        - (IBAction)onAdd:(id)sender
+        {
+        if (itemText.text.length  == 0) {
+        return;
+            }
 
+        NSDictionary *item = @{ @"text" :itemText.text, @"complete" :@(NO) };
+        [self.todoService addItem:item];
 
+        itemText.text = @"";
+        }
 
-5. Replace the placeholders in the above script with the values you copied from the Connection Info dialog earlier:
+13. 在 "QSTodoListViewController.m" 文件中，找到 (void)viewDidLoad 方法并添加对 "setupPusher" 方法的调用，使最前面的新行是：
 
-	- **`**your_app_id**`**: the app&#95;id value
-	- **`**your_app_key**`**: the app&#95;key value
-	- **`**your_app_key_secret**`**: the app&#95;key&#95;secret
+        - (void)viewDidLoad
+        {
+        [super viewDidLoad];
+        [self setupPusher];
 
+14. 在 "tableView:commitEditingStyle:forRowAtIndexPath" 方法的末尾，将对 "completeItem" 的调用替换为以下代码：
 
-6. Click the **Save** button. You have now configured a script to publish an event to Pusher every time a new item is inserted into the **TodoItem** table.
+        // Ask the todoService to set the item's complete value to YES
+        [self.todoService completeItem:item];
 
+现在，该应用程序可以从 Pusher 接收事件，并可相应地更新本地 Todo 列表。
 
-7. Select **Update** from the **Operation** dropdown.
+<a name="install-scripts"></a>
+## 安装服务器脚本
 
+剩下的最后一个任务就是设置你的服务器脚本。我们将要插入一个脚本，该脚本将在 TodoList 表中插入或更新项时执行。
 
-8. Replace the update function with the following code:
+1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的移动服务 。
 
-		var Pusher = require('pusher');
-		
-		function update(item, user, request) {   
+2.  在管理门户中，单击“数据”选项卡，然后单击“TodoItem”表 。
 
-			request.execute({
-	    		success: function() {
-			        // After the record has been updated, trigger immediately to the client
-	    		    request.respond();
+    ![][3]
 
-			        // Publish event for all other active clients
-			        publishItemUpdatedEvent(item);
-			    }
-			});
-		
-			function publishItemUpdatedEvent(item) {
-		
-				// Ideally these settings would be taken from config
-			    var pusher = new Pusher({
-				  appId: '**your_app_id**',
-				  key: '**your_app_key**',
-				  secret: '**your_app_secret**'
-				});     
-		
-				// Publish event on Pusher channel
-			    pusher.trigger( 'todo-updates', 'todo-completed', item );
-		
-			}
-		}
+3.  在“TodoItem” 中，单击“脚本” 选项卡，然后选择“插入” 。
 
+    ![][4]
 
+    将显示当 "TodoItem" 表中发生插入时所调用的函数。
 
-9. Repeat step 5 for this script to replace the placeholders.
+4.  将插入函数替换为以下代码：
 
+        var Pusher = require('pusher');
 
-10. Click the **Save** button. You have now configured a script to publish an event to Pusher every time a new item is updated.
+        function insert(item, user, request) {   
 
+        request.execute({
+        success:function() {
+        // After the record has been inserted, trigger immediately to the client
+        request.respond();
 
+        // Publish event for all other active clients
+        publishItemCreatedEvent(item);
+                }
+            });
 
-<h2><a name="test-app"></a>Test your app</h2>
+        function publishItemCreatedEvent(item) {
 
+        // Ideally these settings would be taken from config
+        var pusher = new Pusher({
+        appId:'"your_app_id"',
+        key:'"your_app_key"',
+        secret:'"your_app_secret"'
+                });     
 
+        // Publish event on Pusher channel
+        pusher.trigger( 'todo-updates', 'todo-added', item );   
+            }
+        }
 
-To test the app you'll need to run two instances. You can run one instance on an iOS device and another in the iOS simulator.
+5.  将上述脚本中的占位符替换为你前面从“连接信息”对话框中复制的值。
 
-1. Connect your iOS device, press the **Run** button (or the Command+R key) to start the app on the device, then stop debugging. 
+    -   "`"your_app_id"`"：app\_id 值
+    -   "`"your_app_key"`"：app\_key 值
+    -   "`"your_app_key_secret"`"：app\_key\_secret
 
-	You now have your app installed on your device.
+6.  单击“保存” 按钮。现在你已配置了一个脚本，每当在 "TodoItem" 表中插入一个新项时，该脚本都会向 Pusher 发布事件。
 
-2. Run the app on the iOS simulator, and at the same time start the app on your iOS device.
+7.  从“操作”下拉列表中选择“更新” 。
 
-	Now you have two instances of the app running.
+8.  将 update 函数替换为以下代码：
 
-3. Add a new Todo item in one of the app instances. 
+        var Pusher = require('pusher');
 
-	Verify that the added item appears in the other instance.
+        function update(item, user, request) {   
 
-4. Check a Todo item to mark it complete in one app instance. 
+        request.execute({
+        success:function() {
+        // After the record has been updated, trigger immediately to the client
+        request.respond();
 
-	Verify that the item disappears from the other instance. 
+        // Publish event for all other active clients
+        publishItemUpdatedEvent(item);
+                }
+            });
 
-Congratulations, you have successfully configured your mobile service app to synchronise across all clients in realtime.
+        function publishItemUpdatedEvent(item) {
 
-## <a name="nextsteps"> </a>Next Steps
+        // Ideally these settings would be taken from config
+        var pusher = new Pusher({
+        appId:'"your_app_id"',
+        key:'"your_app_key"',
+        secret:'"your_app_secret"'
+                });     
 
-Now that you've seen how easy it is to use the Pusher service with Mobile Services, follow these links to learn more about Pusher.
+        // Publish event on Pusher channel
+        pusher.trigger( 'todo-updates', 'todo-completed', item );
 
--   Pusher API documentation: <http://pusher.com/docs>
--   Pusher tutorials: <http://pusher.com/tutorials>
+            }
+        }
 
-To learn more about registering and using server scripts, see [Mobile Services server script reference].
+9.  针对此脚本重复步骤 5 以替换占位符。
 
-<!-- Anchors. -->
-[Create a Pusher account]: #sign-up
-[Update your app]: #update-app
-[Install server scripts]: #install-scripts
-[Test your app]: #test-app
+10. 单击“保存” 按钮。现在你已配置了一个脚本，每当更新某个新项时，该脚本都会向 Pusher 发布事件。
 
-<!-- Images. -->
-[1]: ./media/mobile-services-ios-build-realtime-apps-pusher/mobile-portal-data-tables.png
-[2]: ./media/mobile-services-ios-build-realtime-apps-pusher/mobile-insert-script-push2.png
+<a name="test-app"></a>
+## 测试应用程序
 
-[add-files-to-group]: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-files-to-group.png
-[add-build-phase]: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-build-phase.png
-[add-linker-flag]: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-linker-flag.png
+若要测试应用程序，你需要运行两个实例。可以在 iOS 设备上运行一个实例，在 iOS 模拟器上运行另一个实例。
 
-<!-- URLs. -->
-[Push Notifications to Users]: /en-us/develop/mobile/tutorials/push-notifications-to-users-ios
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started
-[libPusher]: http://go.microsoft.com/fwlink/p?LinkId=276999
-[libPusherDownload]: http://go.microsoft.com/fwlink/p/?LinkId=276998
+1.  连接你的 iOS 设备，按“运行”按钮（或者按 Command+R 键）在设备上启动该应用程序，然后停止调试 。
 
+    你的应用程序现已安装到设备上。
 
-[Azure Management Portal]: https://manage.windowsazure.com/
+2.  在 iOS 模拟器上运行该应用程序，同时在 iOS 设备上启动该应用程序。
 
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/p/?LinkId=262293
+    现在，你已运行了该应用程序的两个实例。
+
+3.  在其中一个应用程序实例中添加一个新的 Todo 项。
+
+    检查添加的项是否出现在另一个实例中。
+
+4.  在一个应用程序实例中选中某个 Todo 项可将它标记为已完成。
+
+    检查该项是否已从另一个实例中消失。
+
+祝贺你！你已成功配置了你的移动服务应用程序，现在它可以在所有客户端之间实时同步。
+
+<a name="nextsteps"> </a>
+## 后续步骤
+
+现在你已知道，将 Pusher 服务与移动服务结合使用是多么的容易。请通过以下链接了解有关 Pusher 的详细信息。
+
+-   Pusher API 文档：<http://pusher.com/docs>
+-   Pusher 教程：<http://pusher.com/tutorials>
+
+若要了解有关注册和使用服务器脚本的详细信息，请参阅[移动服务服务器脚本参考][]。
+
+  [iOS]:  "iOS"
+  [向用户推送通知]: /zh-cn/develop/mobile/tutorials/push-notifications-to-users-ios
+  []: http://pusher.com
+  [创建 Pusher 帐户]: #sign-up
+  [更新应用程序]: #update-app
+  [安装服务器脚本]: #install-scripts
+  [测试应用程序]: #test-app
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started
+  [pusher-sign-up]: ../includes/pusher-sign-up.md
+  [libPusher]: http://go.microsoft.com/fwlink/p?LinkId=276999
+  [此处]: http://go.microsoft.com/fwlink/p/?LinkId=276998
+  []: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-files-to-group.png
+  [1]: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-build-phase.png
+  [2]: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-linker-flag.png
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  [3]: ./media/mobile-services-ios-build-realtime-apps-pusher/mobile-portal-data-tables.png
+  [4]: ./media/mobile-services-ios-build-realtime-apps-pusher/mobile-insert-script-push2.png
+  [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/p/?LinkId=262293

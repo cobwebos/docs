@@ -1,197 +1,173 @@
 <properties linkid="develop-mobile-tutorials-command-line-administration" urlDisplayName="Command Line Administration" pageTitle="Administering a Mobile Service at the command line - Azure tutorial" metaKeywords="" description="Learn how to create, deploy, and manage your Azure Mobile Service using command-line tools." metaCanonical="" services="" documentationCenter="Mobile" title="Automate mobile services with command-line tools" authors="glenga" solutions="" manager="" editor="" />
 
+# 使用命令行工具自动操作移动服务
 
+本主题说明如何使用 Azure 命令行工具来自动创建和管理 Azure 移动服务。另外，还说明了如何安装和开始使用这些命令行工具，以及如何使用它们执行以下移动服务任务：
 
+-   [创建新的移动服务][]
+-   [创建新表][]
+-   [将脚本注册到表操作][]
+-   [列出表][]
+-   [删除现有表][]
+-   [列出移动服务][]
+-   [删除现有移动服务][]
 
-# Automate mobile services with command-line tools 
+将其中的每个命令合并到单个脚本或批处理文件后，这些命令可以自动完成移动服务的创建、验证和删除过程。
 
-This topic shows you how to use the Azure command-line tools to automate the creation and management of Azure Mobile Services. This topic shows you how to install and get started using the command-line tools and use them to perform the following Mobile Services tasks:
+若要使用 Azure 命令行工具来管理移动服务，你需要有一个启用了 Azure 移动服务功能的 Azure 帐户。
 
--	[Create a new mobile service] 
--	[Create a new table]
--   [Register a script to a table operation][Register a new table script]
--   [List tables]
-- 	[Delete an existing table]
--	[List mobile services]
--   [Delete an existing mobile service]
- 
-When combined into a single script or batch file, these individual commands automate the creation, verification, and deletion process of a mobile service. 
+-   如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][]。
 
-To use the Azure command-line tools to manage Mobile Services, you need an Azure account that has the Azure Mobile Services feature enabled.
+-   如果你已有一个帐户但需要启用 Azure 移动服务预览，请参阅[启用 Azure 预览功能][]。
 
-+ If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/" target="_blank">Azure Free Trial</a>.
+本主题有选择地介绍了 Azure 命令行工具支持的多个常见管理任务。有关详细信息，请参阅 [Azure 命令行工具文档][]。
 
-+ If you have an existing account but need to enable the Azure Mobile Services preview, see <a href="http://azure.microsoft.com/en-us/documentation/articles/php-create-account/#enable" target="_blank">Enable Azure preview features</a>.
+<a name="install"></a>
+## 安装工具安装 Azure 命令行工具
 
-This topic covers a selection of common administration tasks supported by the Azure command-line tools. For more information, see [Azure command-line tools documentation][reference-docs].
+以下列表包含有关安装命令行工具的信息（具体取决于你的操作系统）：
 
-<!--+  You must download and install the Azure command-line tools to your local machine. To do this, follow the instructions in the first section of this topic. 
+-   "Windows"：下载 [Azure 命令行工具安装程序][]。打开下载的 .msi 文件并根据提示完成安装步骤。
 
-+ (Optional) To be able to execute HTTP requests directly from the command-line, you must use cURL or an equivalent tool. cURL runs on a variety of platforms. Locate and install cURL for your specific platform from the <a href=http://go.microsoft.com/fwlink/p/?LinkId=275676 target="_blank">cURL download  page</a>.-->
+-   "Mac"：下载 [Azure SDK 安装程序][]。打开下载的 .pkg 文件并根据提示完成安装步骤。
 
-<h2><a name="install"></a><span class="short-header">Install the tools</span>Install the Azure Command-Line Tools</h2>
+-   "Linux"：安装最新版本的 [Node.js][]（请参阅[通过程序包管理器安装 Node.js][]），然后运行以下命令：
 
-The following list contains information for installing the command-line tools, depending on your operating system:
+        npm install azure-cli -g
 
-* **Windows**: Download the [Azure Command-Line Tools Installer][windows-installer]. Open the downloaded .msi file and complete the installation steps as you are prompted.
+若要测试安装，请在命令提示符下键入 `azure`。如果安装成功，则会显示所有可用 `azure` 命令的列表。
 
-* **Mac**: Download the [Azure SDK Installer][mac-installer]. Open the downloaded .pkg file and complete the installation steps as you are prompted.
+<a name="import-account"></a>
+## 导入设置如何下载和导入发布设置
 
-* **Linux**: Install the latest version of [Node.js][nodejs-org] (see [Install Node.js via Package Manager][install-node-linux]), then run the following command:
+若要开始操作，必须先下载并导入你的发布设置。然后，你便可以使用这些工具来创建和管理 Azure 服务。若要下载发布设置，请使用 `account download` 命令：
 
-		npm install azure-cli -g
+        azure account download
 
-To test the installation, type `azure` at the command prompt. When the installation is successful, you will see a list of all the available `azure` commands.
-<h2><a name="import-account"></a><span class="short-header">Import settings</span>How to download and import publish settings</h2>
+这将会打开默认浏览器，并提示你登录到管理门户。登录后，将下载你的 `.publishsettings` 文件。请记下此文件的保存位置。
 
-To get started, you must first download and import your publish settings. Then you can use the tools to create and manage Azure Services. To download your publish settings, use the `account download` command:
+接下来，通过运行以下命令并将 `<path-to-settings-file>` 替换为 `.publishsettings` 文件的路径来导入 `.publishsettings` 文件：
 
-		azure account download
+        azure account import <path-to-settings-file>
 
-This opens your default browser and prompts you to sign in to the Management Portal. After signing in, your `.publishsettings` file is downloaded. Note the location of this saved file.
+可以使用 `account clear` 命令来删除通过 `import` 命令存储的所有信息：
 
-Next, import the `.publishsettings` file by running the following command, replacing `<path-to-settings-file>` with the path to your `.publishsettings` file:
+        azure account clear
 
-		azure account import <path-to-settings-file>
+若要查看 `account` 命令的选项列表，请使用 `-help` 选项：
 
-You can remove all of the information stored by the <code>import</code> command by using the <code>account clear</code> command:
+        azure account -help
 
-		azure account clear
+导入发布设置后，为安全起见，应删除 `.publishsettings` 文件。有关详细信息，请参阅[如何安装适用于 Mac 和 Linux 的 Azure 命令行工具][]。现在，你便可以通过命令行或者批处理文件开始创建和管理 Azure 移动服务了。
 
-To see a list of options for `account` commands, use the `-help` option:
+<a name="create-service"></a>
+## 创建服务如何创建移动服务
 
-		azure account -help
+可以使用命令行工具创建新的移动服务实例。在创建移动服务的同时，还会在新服务器中创建一个 SQL Database 实例。
 
-After importing your publish settings, you should delete the `.publishsettings` file for security reasons. For more information, see [How to install the Azure Command-Line Tools for Mac and Linux]. You are now ready to begin creating and managing Azure Mobile Services from the command line or in batch files.  
+以下命令将在订阅中创建一个新的移动服务实例，其中，`<service-name>` 是新移动服务的名称，`<server-admin>` 是新服务器的登录名，`<server-password>` 是新登录名的密码：
 
-<h2><a name="create-service"></a><span class="short-header">Create service</span>How to create a mobile service</h2>
+        azure mobile create <service-name> <server-admin> <server-password>
 
-You can use the command-line tools to create a new mobile service instance. While creating the mobile service, you also create a SQL Database instance in a new server. 
+如果指定的移动服务已存在，则 `mobile create` 命令将会失败。在尝试重新创建某个移动服务之前，你应该在自动化脚本中尝试删除该移动服务。
 
-The following command creates a new mobile service instance in your subscription, where `<service-name>` is the name of the new mobile service, `<server-admin>` is the login name of the new server, and `<server-password>` is the password for the new login:
+<a name="list-services"></a>
+## 列出服务如何列出订阅中的现有移动服务
 
-		azure mobile create <service-name> <server-admin> <server-password>
+以下命令将返回 Azure 订阅中所有移动服务的列表：
 
-The `mobile create` command fails when the specified mobile service exists. In your automation scripts, you should attempt to delete a mobile service before attempting to recreate it.
+        azure mobile list
 
-<h2><a name="list-services"></a><span class="short-header">List services</span>How to list existing mobile services in a subscription</h2>
+此命令还会显示每个移动服务的当前状态和 URL。
 
-The following command returns a list of all the mobile services in an Azure subscription:
+<a name="delete-service"></a>
+## 删除服务如何删除现有的移动服务
 
-		azure mobile list
+可以使用命令行工具将现有的某个移动服务连同相关的 SQL Database 和服务器一起删除。以下命令将删除移动服务，其中，`<service-name>` 是要删除的移动服务的名称：
 
-This command also shows the current state and URL of each mobile service.
+        azure mobile delete <service-name> -a -q
 
-<h2><a name="delete-service"></a><span class="short-header">Delete service</span>How to delete an existing mobile service</h2>
+如果包含 `-a` 和 `-q` 参数的话，此命令还会删除该移动服务使用的 SQL Database 和服务器且不显示任何提示。
 
-You can use the command-line tools to delete an existing mobile service, along with the related SQL Database and server. The following command deletes the mobile service, where `<service-name>` is the name of the mobile service to delete:
+<div class="dev-callout"><b>说明</b>
 
-		azure mobile delete <service-name> -a -q
-
-By including `-a` and `-q` parameters, this command also deletes the SQL Database and server used by the mobile service without displaying a prompt.
-
-<div class="dev-callout"><strong>Note</strong> 
-   <p>If you do not specify the <code>-q</code> parameter along with <code>-a</code> or <code>-d</code>, execution is paused and you are prompted to select delete options for your SQL Database. Only use the <code>-a</code> parameter when no other service uses the database or server; otherwise use the <code>-d</code> parameter to only delete data that belongs to the mobile service being deleted.</p>
+<p>如果不随 <code>-a</code> 或 <code>-d</code> 一起指定 <code>-q</code> 参数，则执行将会暂停，并且系统会提示你针对 SQL Database 选择删除选项。仅当没有其他任何服务使用该数据库或服务器时，才能使用 <code>-a</code> 参数；否则，请使用 <code>-d</code> 参数，以便只删除属于要删除的移动服务的数据。</p>
 </div>
 
-<h2><a name="create-table"></a><span class="short-header">Create table</span>How to create a table in the mobile service</h2>
+<a name="create-table"></a>
+## 创建表如何在移动服务中创建表
 
-The following command creates a table in the specified mobile service, where `<service-name>` is the name of the mobile service and `<table-name>` is the name of the table to create:
+以下命令将在指定的移动服务中创建一个表，其中，`<service-name>` 是移动服务的名称，`<table-name>` 是要创建的表的名称：
 
-		azure mobile table create <service-name> <table-name>
+        azure mobile table create <service-name> <table-name>
 
-This creates a new table with the default permissions, `application`, for the table operations: `insert`, `read`, `update`, and `delete`. 
+这将会创建一个提供默认权限的新表 `application`，用于以下表操作：`insert`、`read`、`update` 和 `delete`。
 
-The following command creates a new table with public `read` permission but with `delete` permission granted only to administrators:
+以下命令将创建一个向公众提供 `read` 权限、但只向管理员授予 `delete` 权限的新表：
 
-		azure mobile table create <service-name> <table-name> -p read=public,delete=admin
+        azure mobile table create <service-name> <table-name> -p read=public,delete=admin
 
-The following table shows the script permission value compared to the permission value in the [Azure Management Portal].
+下面显示了脚本权限值与 [Azure 管理门户][]中的权限值的对照表。
 
-<table border="1" width="100%"><tr><th>Script value</th><th>Management Portal value</th></tr>
-<tr><td><code>public</code></td><td>Everyone</td></tr>
-<tr><td><code>application</code> (default)</td><td>Anybody with the application key</td></tr>
-<tr><td><code>user</code></td><td>Only authenticated users</td></tr>
-<tr><td><code>admin	</code></td><td>Only scripts and admins</td></tr></table>
+<table border="1" width="100%"><tr><th>脚本中的值</th><th>管理门户中的值</th></tr>
+<tr><td><code>public</code></td><td>所有人</td></tr>
+<tr><td><code>application</code>（默认值）</td><td>具有应用程序密钥的任何人</td></tr>
+<tr><td><code>user</code></td><td>仅经过身份验证的用户</td></tr>
+<tr><td><code>admin</code></td><td>仅脚本和管理员</td></tr></table>
 
-The `mobile table create` command fails when the specified table already exists. In your automation scripts, you should attempt to delete a table before attempting to recreate it.
+如果指定的表已存在，则 `mobile table create` 命令将会失败。在尝试重新创建某个表之前，你应该在自动化脚本中尝试删除该表。
 
-<h2><a name="list-tables"></a><span class="short-header">List tables</span>How to list existing tables in a mobile service</h2>
+<a name="list-tables"></a>
+## 列出表如何列出移动服务中的现有表
 
-The following command returns a list of all of the tables in a mobile service, where `<service-name>` is the name of the mobile service:
+以下命令将返回移动服务中所有表的列表，其中，`<service-name>` 是移动服务的名称：
 
-		azure mobile table list <service-name>
+        azure mobile table list <service-name>
 
-This command also shows the number of indexes on each table and the number of data rows currently in the table.
+此命令还会显示每个表中的索引数，以及表中当前的数据行数。
 
-<h2><a name="delete-table"></a><span class="short-header">Delete table</span>How to delete an existing table from the mobile service</h2>
+<a name="delete-table"></a>
+## 删除表如何删除移动服务中的现有表
 
-The following command deletes a table from the mobile service, where `<service-name>` is the name of the mobile service and `<table-name>` is the name of the table to delete:
+以下命令将删除移动服务中的某个表，其中，`<service-name>` 是移动服务的名称，`<table-name>` 是要删除的表的名称：
 
-		azure mobile table delete <service-name> <table-name> -q
+        azure mobile table delete <service-name> <table-name> -q
 
-In automation scripts, use the `-q` parameter to delete the table without displaying a confirmation prompt that blocks execution.
+在自动化脚本中，使用 `-q` 参数可以删除该表且不显示会阻碍执行的确认提示。
 
-<h2><a name="register-script"></a><span class="short-header">Register a script</span>How to register a script to a table operation</h2>
+<a name="register-script"></a>
+## 注册脚本如何将脚本注册到表操作
 
-The following command uploads and registers a function to an operation on a table, where `<service-name>` is the name of the mobile service, `<table-name>` is the name of the table, and `<operation>` is the table operation, which can be `read`, `insert`, `update`, or `delete`:
+以下命令将一个函数上载并注册到表中的某个操作，其中，`<service-name>` 是移动服务的名称，`<table-name>` 是表的名称，`<operation>` 是表操作（可以是 `read`、`insert`、`update` 或 `delete`）：
 
-		azure mobile script upload <service-name> table/<table-name>.<operation>.js
+        azure mobile script upload <service-name> table/<table-name>.<operation>.js
 
-Note that this operation uploads a JavaScript (.js) file from the local computer. The name of the file must be composed  from the table and operation names, and it must be located in the `table` subfolder relative to the location where the command is executed. For example, the following operation uploads and registers a new `insert` script that belongs to the `TodoItems` table:
+请注意，此操作将从本地计算机上载 JavaScript (.js) 文件。该文件的名称必须由表和操作名称组成，并且该文件必须在相对于命令执行位置的 `table` 子文件夹中。例如，以下操作将上载并注册属于 `TodoItems` 表的新 `insert` 脚本：
 
-		azure mobile script upload todolist table/todoitems.insert.js
+        azure mobile script upload todolist table/todoitems.insert.js
 
-The function declaration in the script file must also match the registered table operation. This means that for an `insert` script, the uploaded script contains a function with the following signature:
+脚本文件中的函数声明也必须与注册的表操作相匹配。也就是说，对于 `insert` 脚本，上载的脚本应包含带有以下签名的函数：
 
-		function insert(item, user, request) {
-		    ...
-		} 
+        function insert(item, user, request) {
+            ...
+        } 
 
-For more information about registering scripts, see [Mobile Services server script reference].
+有关注册脚本的详细信息，请参阅[移动服务服务器脚本参考][]。
 
-<!--<h2><a name="test-service"></a><span class="short-header">Test the service</span>Test the new mobile service</h2>
-
-When you are automating the creation of your mobile service, you can optionally use cURL or another command-line request generator to 
-
-## <a name="nextsteps"> </a>Next Steps
-Next steps here....
--->
-<!-- Anchors. -->
-[Download and install the command-line tools]: #install
-[Download and import publish settings]: #import
-[Create a new mobile service]: #create-service
-[Get the master key]: #get-master-key
-[Create a new table]: #create-table
-[Register a new table script]: #register-script
-[Delete an existing table]: #delete-table
-[Delete an existing mobile service]: #delete-service
-[Test the mobile service]: #test-service
-[List mobile services]: #list-services
-[List tables]: #list-tables
-[Next steps]: #next-steps
-
-<!-- Images. -->
-
-
-
-
-
-
-
-
-
-
-
-<!-- URLs. -->
-[Mobile Services server script reference]: http://go.microsoft.com/fwlink/p?LinkId=262293
-
-[Azure Management Portal]: https://manage.windowsazure.com/
-[nodejs-org]: http://nodejs.org/
-[install-node-linux]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
-
-[mac-installer]: http://go.microsoft.com/fwlink/p?LinkId=252249
-[windows-installer]: http://go.microsoft.com/fwlink/p?LinkID=275464
-[reference-docs]: /en-us/manage/linux/other-resources/command-line-tools/#Commands_to_manage_mobile_services
-[How to install the Azure Command-Line Tools for Mac and Linux]: http://go.microsoft.com/fwlink/p/?LinkId=275795
-
+  [创建新的移动服务]: #create-service
+  [创建新表]: #create-table
+  [将脚本注册到表操作]: #register-script
+  [列出表]: #list-tables
+  [删除现有表]: #delete-table
+  [列出移动服务]: #list-services
+  [删除现有移动服务]: #delete-service
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/
+  [启用 Azure 预览功能]: http://azure.microsoft.com/zh-cn/documentation/articles/php-create-account/#enable
+  [Azure 命令行工具文档]: /zh-cn/manage/linux/other-resources/command-line-tools/#Commands_to_manage_mobile_services
+  [Azure 命令行工具安装程序]: http://go.microsoft.com/fwlink/p?LinkID=275464
+  [Azure SDK 安装程序]: http://go.microsoft.com/fwlink/p?LinkId=252249
+  [Node.js]: http://nodejs.org/
+  [通过程序包管理器安装 Node.js]: https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
+  [如何安装适用于 Mac 和 Linux 的 Azure 命令行工具]: http://go.microsoft.com/fwlink/p/?LinkId=275795
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/p?LinkId=262293

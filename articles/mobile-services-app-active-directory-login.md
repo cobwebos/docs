@@ -1,38 +1,31 @@
 <properties linkid="develop-mobile-how-to-guides-register-for-microsoft-waad-authentication" urlDisplayName="Register for Azure Active Directory Authentication" pageTitle="Register for Azure Active Directory authentication - Mobile Services" metaKeywords="Azure registering application, Azure Active Directory authentication, application authenticate, authenticate mobile services" description="Learn how to register for Azure Active Directory authentication in your Azure Mobile Services application." metaCanonical="" disqusComments="0" umbracoNaviHide="1" title="Register your apps to use an Azure Active Directory Account login" authors="" />
 
+# 注册应用程序以使用 Azure Active Directory 帐户登录
 
-# Register your apps to use an Azure Active Directory Account login
+本主题说明如何注册你的应用程序，以便能够使用 Azure Active Directory 作为 Azure 移动服务的身份验证提供程序。
 
-This topic shows you how to register your apps to be able to use Azure Active Directory as an authentication provider for Azure Mobile Services. 
+<div class="dev-callout"><b>说明</b>
 
-<div class="dev-callout"><b>Note</b>
-<p>When you intend to also provide client-driven authentication for single sign-on (SSO) or push notifications from a Windows Store app, consider also registering your app with the Windows Store. For more information, see <a href="/en-us/develop/mobile/how-to-guides/register-for-single-sign-on">Register your Windows Store apps for Windows Live Connect authentication</a>.</p>
+<p>如果你还希望从 Windows 应用商店应用程序提供用于单一登录 (SSO) 或推送通知的客户端驱动的身份验证，请考虑同时将你的应用程序注册到 Windows 应用商店。有关详细信息，请参阅<a href="/zh-cn/develop/mobile/how-to-guides/register-for-single-sign-on">注册 Windows 应用商店应用程序以进行 Windows Live Connect 身份验证</a>。</p>
 </div>
 
-1. Log into the [Azure Management Portal]. 
+1.  登录到 [Azure 管理门户][]。
 
-2. Navigate to **Active Directory** in the management portal, then click your directory.
+2.  导航到管理门户中的“Active Directory”，然后单击你的目录 。
 
-   ![][1] 
+	![][]
 
-3. Click on the **Applications** tab, then click **Add an App**. 
+1.  单击“应用程序” 选项卡，然后单击“添加应用程序” 。
 
-   ![][2]
+	![][1]
 
+1.  遵照新建应用程序向导中的说明，为 XXX 选择“Web 应用程序和/或 Web API” 。启用“单一登录”。当系统提示你输入“应用程序 URL”时，请粘贴移动服务应用程序 URL 。
 
-4. Follow the directions in the new application wizard choosing **Web Application And/Or Web API** for the XXX. Enable Single Sign On. When prompted for the **App URL**, paste the mobile services application URL.
+2.  \*\*\* 即将补充更多内容 \*\*\*
 
+现在，你可以通过向移动服务提供客户端 ID 和客户端密钥值，使用 Azure Active Directory 在应用程序中进行身份验证。
 
-5. *** MORE TO COME ***
-
-
-You are now ready to use an Azure Active Directory for authentication in your app by providing the client ID and client secret values to Mobile Services.
-
-<!-- Anchors. -->
-
-<!-- Images. -->
-[1]: ./media/mobile-services-app-active-directory-login/mobile-services-live-connect-add-app.png
-[2]: ./media/mobile-services-app-active-directory-login/mobile-live-connect-app-api-settings.png
-
-<!-- URLs. -->
-[Azure Management Portal]: https://manage.windowsazure.com/
+  [注册 Windows 应用商店应用程序以进行 Windows Live Connect 身份验证]: /zh-cn/develop/mobile/how-to-guides/register-for-single-sign-on
+  [Azure 管理门户]: https://manage.windowsazure.cn/
+  []: ./media/mobile-services-app-active-directory-login/mobile-services-live-connect-add-app.png
+  [1]: ./media/mobile-services-app-active-directory-login/mobile-live-connect-app-api-settings.png

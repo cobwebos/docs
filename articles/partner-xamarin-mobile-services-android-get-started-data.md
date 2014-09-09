@@ -1,279 +1,287 @@
 <properties linkid="develop-mobile-tutorials-get-started-with-data-xamarin-android" urlDisplayName="Get Started with Data" pageTitle="Get started with data (Xamarin.Android) - Azure Mobile Services" metaKeywords="Azure Xamarin.Android data, Azure mobile services data" description="Learn how to store and access data from your Azure Mobile Services Xamarin.Android app." metaCanonical="" disqusComments="1" umbracoNaviHide="1" title="Get started with data in Mobile Services" documentationCenter="Mobile" authors="" />
 
-# Get started with data in Mobile Services
+# 移动服务中的数据处理入门
+
 <div class="dev-center-tutorial-selector sublanding">    
-	<a href="/en-us/develop/mobile/tutorials/get-started-with-data-dotnet" title="Windows Store C#">Windows Store C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-js" title="Windows Store JavaScript">Windows Store JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-android" title="Android">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-html" title="HTML">HTML</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
+	<a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-android" title="Android">Android</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-html" title="HTML">HTML</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
 </div>	
 
-<p>This topic shows you how to use Azure Mobile Services to leverage data in a Xamarin.Android app. In this tutorial, you will download an app that stores data in memory, create a new mobile service, integrate the mobile service with the app, and then login to the Azure Management Portal to view changes to data made when running the app.</p>
+<p>此主题说明如何通过 Azure 移动服务来利用 Xamarin.Android 应用程序中的数据。在本教程中，你将要下载一个可在内存中存储数据的应用程序，创建一个新的移动服务，将该移动服务与该应用程序相集成，然后登录到 Azure 管理门户以查看运行该应用程序时对数据所做的更改。</p>
 
-<div class="dev-callout"><b>Note</b>
-<p>This tutorial is intended to help you better understand how Mobile Services enables you to use Azure to store and retrieve data from a Xamarin.Android app. As such, this topic walks you through many of the steps that are completed for you in the Mobile Services quickstart. If this is your first experience with Mobile Services, consider first completing the tutorial <a href="/en-us/develop/mobile/tutorials/get-started-xamarin-android">Get started with Mobile Services</a>.</p>
+<div class="dev-callout"><b>说明</b>
+
+<p>本教程旨在帮助你更好地了解如何使用移动服务通过 Azure 来存储数据以及从 Xamarin.Android 应用程序检索数据。因此，本主题指导你完成的许多步骤已在移动服务快速入门中代你完成。如果这是你第一次体验移动服务，请考虑首先完成<a href="/zh-cn/develop/mobile/tutorials/get-started-xamarin-android">移动服务入门</a>教程。</p>
 </div>
 
-This tutorial walks you through these basic steps:
+本教程将指导你完成以下基本步骤：
 
-1. [Download the Xamarin.Android app project][GitHub] 
-2. [Create the mobile service]
-3. [Add a data table for storage]
-4. [Update the app to use Mobile Services]
-5. [Test the app against Mobile Services]
+1.  [下载 Xamarin.Android 应用程序项目][]
+2.  [创建移动服务][]
+3.  [添加用于存储的数据表][]
+4.  [更新应用程序以使用移动服务][]
+5.  [针对移动服务测试应用程序][]
 
-<div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A9C9624B5" target="_blank">Azure Free Trial</a>.</p></div> 
+<div class="dev-callout"><b>说明</b>
 
-This tutorial requires the [Azure Mobile Services Component], [Xamarin.Android], and Android SDK 4.2 or a later version. 
-
-<div class="dev-callout"><b>Note</b>
-<p>The downloaded GetStartedWithData project requires targetting Android 4.2 or a later version. However, the Mobile Services SDK requires only Android 2.2 or a later version.</p>
+<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A9C9624B5" target="_blank">Azure 免费试用</a>。</p>
 </div>
 
-<h2><a name="download-app"></a><span class="short-header">Download the project</span>Download the GetStartedWithData project</h2>
+本教程需要 [Azure 移动服务组件][]、[Xamarin.Android] 和 Android SDK 4.2 或更高版本。
 
-This tutorial is built on the [GetStartedWithData app][GitHub], which is a Xamarin.Android app. The UI for this app is identical to the app generated by the Mobile Services Android quickstart, except that added items are stored locally in memory. 
+<div class="dev-callout"><b>说明</b>
 
-1. Download the `GetStartedWithData` sample app and extract the files on your computer. 
+<p>下载的 GetStartedWithData 项目需要针对 Android 4.2 或更高版本。但是，移动服务 SDK 只需要 Android 2.2 或更高版本。</p>
+</div>
 
-2. In Xamarin Studio, click **File** then **Open**, browse to where you extracted the GetStartedWithData sample project, and select **XamarinTodoQuickStart.Android.sln** and open it.
+<a name="download-app"></a>
+## 下载项目下载 GetStartedWithData 项目
 
-3. Locate and open the **TodoActivity** class
+本教程是在 [GetStartedWithData 应用程序][下载 Xamarin.Android 应用程序项目]（一个 Xamarin.Android 应用程序）的基础上制作的。此应用程序的 UI 与移动服务 Android 快速入门中生成的应用程序相同，不过，前者的一些新增项本地存储在内存中。
 
-   	Notice that there are `// TODO::` comments that specify the steps you must take to make this app work with your mobile service.
+1.  下载 `GetStartedWithData` 示例应用程序，然后将文件解压缩到计算机上。
 
-5. From the **Run** menu, click **Start Without Debugging**, you will then be asked to pick an emulator or attached USB Android device.
+2.  在 Xamarin Studio 中，依次单击“文件” 、“打开” ，浏览到将 GetStartedWithData 示例项目解压缩到的位置，然后选择“XamarinTodoQuickStart.Android.sln” 并将其打开。
 
-	<div class="dev-callout"><strong>Note</strong> <p>You can run this project using an Android phone, or using the Android emulator. Running with an Android phone  requires you to download a phone-specific USB driver.</p> <p>To run the project in the Android emulator, you must define a least one Android Virtual Device (AVD). Use the AVD Manager to create and manage these devices.</p></div>
+3.  找到并打开 "TodoActivity" 类
 
-6. In the app, type meaningful text, such as _Complete the tutorial_, and then click **Add**.
+    请注意，存在 `// TODO::`注释，这些注释指定了将此应用程序用于你的移动服务时必须执行的步骤。
 
-   	![][13]
+4.  从“运行” 菜单中，单击“开始执行(不调试)” ，然后系统会要求你选取模拟器或已连接的 USB Android 设备。
 
-   	Notice that the saved text is stored in an in-memory collection and displayed in the list below.
+	<div class="dev-callout">说明</b>
 
-<h2><a name="create-service"></a><span class="short-header">Create mobile service</span>Create a new mobile service in the Management Portal</h2>
-
-[WACOM.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
-
-<h2><a name="add-table"></a><span class="short-header">Add a new table</span>Add a new table to the mobile service</h2>
-
-To be able to store app data in the new mobile service, you must first create a new table.  
-
-1. In the Management Portal, click **Mobile Services**, and then click the mobile service that you just created.
-
-2. Click the **Data** tab, then click **+Create**.
-
-   	![][5]
-
-   	This displays the **Create new table** dialog.
-
-3. In **Table name** type _TodoItem_, then click the check button.
-
-  	![][6]
-
-  	This creates a new storage table **TodoItem** with the default permissions set, which means that any user of the app can access and change data in the table. 
-
-    <div class="dev-callout"> 
-	<b>Note</b> 
-	<p>The same table name is used in Mobile Services quickstart. However, each table is created in a schema that is specific to a given mobile service. This is to prevent data collisions when multiple mobile services use the same database.</p> 
+    <p>你可以使用 Android 手机或 Android 模拟器运行此项目。使用 Android 手机运行会要求你下载手机特定的 USB 驱动程序。</p>
 	</div>
 
-4. Click the new **TodoItem** table and verify that there are no data rows.
+    若要在 Android 模拟器中运行该项目，必须至少定义一个 Android 虚拟设备 (AVD)。使用 AVD 管理器创建和管理这些设备。
 
-5. Click the **Columns** tab and verify that there is only a single **id** column, which is automatically created for you.
+5.  在应用程序中键入有意义的文本（例如 *Complete the tutorial*），然后单击“添加” 。
 
-  	This is the minimum requirement for a table in Mobile Services. 
+    ![][]
 
-    <div class="dev-callout"><b>Note</b>
-	<p>When dynamic schema is enabled on your mobile service, new columns are created automatically when JSON objects are sent to the mobile service by an insert or update operation.</p>
-    </div>
+    请注意，保存的文本将存储在内存中的集合中，并显示在下面的列表中。
 
-You are now ready to use the new mobile service as data storage for the app.
+<a name="create-service"></a>
+## 创建移动服务在管理门户中创建新的移动服务
 
-<h2><a name="update-app"></a><span class="short-header">Update the app</span>Update the app to use the mobile service for data access</h2>
+[WACOM.INCLUDE [mobile-services-create-new-service-data][]]
 
-Now that your mobile service is ready, you can update the app to store items in Mobile Services instead of the local collection. 
+<a name="add-table"></a>
+## 添加新表将新表添加到移动服务
 
-1. If you don't already have **Azure Mobile Services** listed in the Components folder, you can get it by right-clicking **Components**, choosing **Get More Components** and then searching for **Azure Mobile Services**.
+为了能够在新移动服务中存储应用程序数据，必须先创建一个新表。
 
-  	This adds the Mobile Services SDK component to the project.
+1.  在管理门户中单击“移动服务”，然后单击你刚刚创建的移动服务 。
 
-2. Open the **AndroidManifest.xml** file and ensure the following permission line exists:
+2.  单击“数据”选项卡，然后单击“+创建” 。
 
-		<uses-permission android:name="android.permission.INTERNET" />
+    ![][1]
 
-  	This enables the app to access Mobile Services in Azure.
+    此时将显示“创建新表” 对话框。
 
-3. From the **Solution** window, open the **TodoActivity** class, and uncomment the following line of code: 
+3.  在“表名”中键入  *TodoItem*，然后单击勾选按钮。
 
-		using Microsoft.WindowsAzure.MobileServices;
- 
-4. We will remove the in-memory list currently used by the app, so we can replace it with a mobile service. In the **TodoActivity** class, comment out the following line of code, which defines the existing **todoItemList** list.
+    ![][2]
 
-		public List<TodoItem> todoItemList = new ArrayList<TodoItem>();
+    这将创建一个新的设置了默认权限的存储表 "TodoItem"，这意味着任何应用程序用户均可访问和更改该表中的数据。
 
-5. Once the previous step is done, the project will indicate build errors. Search for the three remaining locations where the `todoItemList` variable is used and comment out the sections indicated. 
+    <div class="dev-callout"><b>说明</b>
 
-6. We now add our mobile service. Uncomment the following lines of code:
+    <p>移动服务快速入门中使用了相同的表名。但是，每个表是在特定于给定移动服务的架构中创建的。这是为了防止当多个移动服务使用同一数据库时发生数据冲突。</p>
+	</div>
+
+4.  单击新的 "TodoItem" 表，然后验证是否不存在任何数据行。
+
+5.  单击“列” 选项卡，并验证是否只有一个“ID” 列，该列是自动为你创建的。
+
+    这是对移动服务中的表的最低要求。
+
+    <div class="dev-callout"><b>说明</b>
+
+    <p>如果在移动服务中启用了动态架构，则通过插入或更新操作向移动服务发送 JSON 对象时，将自动创建新列。</p>
+	</div>
+
+现在，你可以将新移动服务用作应用程序的数据存储。
+
+<a name="update-app"></a>
+## 更新应用程序更新应用程序以使用移动服务进行数据访问
+
+将移动服务准备就绪后，你可以更新应用程序，以便在移动服务而不是本地集合中存储项。
+
+1.  如果“Components”文件夹中尚未列出“Azure 移动服务” ，则可以通过右键单击“组件” ，选择“获取更多组件” ，然后搜索“Azure 移动服务” 来获取该服务。
+
+    这会将移动服务 SDK 组件添加到项目。
+
+2.  打开 "AndroidManifest.xml" 文件，并确保存在以下权限行：
+
+        <uses-permission android:name="android.permission.INTERNET" />
+
+    这将使应用程序能够在 Azure 中访问移动服务。
+
+3.  从“解决方案” 窗口打开 "TodoActivity" 类，并取消注释下面的代码行：
+
+        using Microsoft.WindowsAzure.MobileServices;
+
+4.  我们将删除应用程序当前使用的内存中列表，因此可将其替换为移动服务。在 "TodoActivity" 类中，注释掉以下定义现有 "todoItemList" 列表的代码行。
+
+        public List<TodoItem> todoItemList = new ArrayList<TodoItem>();
+
+5.  上一步操作完成后，此项目将指示生成错误。搜索剩余三个使用 `todoItemList` 变量的位置，并注释掉所指示的部分。
+
+6.  现在，我们将添加移动服务。取消注释以下代码行：
 
         private MobileServiceClient client; // Mobile Service Client references
         private IMobileServiceTable<TodoItem> todoTable; // Mobile Service Table used to access data   
 
-7. In the Management Portal, click **Mobile Services**, and then click the mobile service you just created.
+7.  在管理门户中单击“移动服务”，然后单击你刚刚创建的移动服务 。
 
-8. Click the **Dashboard** tab and make a note of the **Site URL**, then click **Manage keys** and make a note of the **Application key**.
+8.  单击“仪表板”选项卡并记下“站点 URL”中的值，然后单击“管理密钥”并记下“应用程序密钥”中的值 。
 
-   	![][8]
+    ![][3]
 
-  	You will need these values when accessing the mobile service from your app code.
+    从应用程序代码访问移动服务时，你需要使用这些值。
 
-9. In the **Constants** class, uncomment the following member variables:
+9.  在 "Constants" 类中，取消注释下面的成员变量：
 
         public const string ApplicationURL = @"AppUrl";
         public const string ApplicationKey = @"AppKey";
-        
-10. Replace **AppUrl** and **AppKey** in the above variables with the values retrieved from the Management Portal above.
 
-11. In the **OnCreate** method, uncomment the following lines of code that define the **MobileServiceClient** variable:
+10. 将上述变量中的 "AppUrl" 和 "AppKey" 替换为上面从管理门户检索到的值。
 
-		// Create the Mobile Service Client instance, using the provided
-		// Mobile Service URL and key
-		client = new MobileServiceClient(
-			Constants.ApplicationURL,
-			Constants.ApplicationKey).WithFilter(filter);
+11. 在 "OnCreate" 方法中，取消注释以下定义 "MobileServiceClient" 变量的代码行：
 
-		// Get the Mobile Service Table instance to use
-		todoTable = client.GetTable<TodoItem>();    
+        // Create the Mobile Service Client instance, using the provided
+        // Mobile Service URL and key
+        client = new MobileServiceClient(
+        Constants.ApplicationURL,
+        Constants.ApplicationKey).WithFilter(filter);
 
-  	This creates a new instance of MobileServiceClient that is used to access your mobile service. It also creates the MobileServiceTable instance that is used to proxy data storage in the mobile service.
+        // Get the Mobile Service Table instance to use
+        todoTable = client.GetTable<TodoItem>();    
 
-12. Find the ProgressFilter class at the bottom of the file and uncomment it. This class displays a 'loading' indicator while MobileServiceClient is running network operations.
+    这将创建用于访问移动服务的 MobileServiceClient 的新实例。它还将创建用于代理移动服务中的数据存储的 MobileServiceTable 实例。
 
-13. Uncommment these lines of the **CheckItem** method:
+12. 找到文件底部的 ProgressFilter 类，并取消其注释。当 MobileServiceClient 运行网络操作时，此类显示“正在加载”指示器。
 
-		try {
-			await todoTable.UpdateAsync(item);
-			if (item.Complete)
-				adapter.Remove(item);
-		} catch (Exception e) {
-			CreateAndShowDialog(e, "Error");
-		}
+13. 取消注释 "CheckItem" 方法的以下行：
 
-   	This sends an item update to the mobile service and removes checked items from the adapter.
-    
-14. Uncommment these lines of the **AddItem** method:
-	
-		try 
-		{
-			// Insert the new item
-			await todoTable.InsertAsync(item);
+        try {
+        await todoTable.UpdateAsync(item);
+        if (item.Complete)
+        adapter.Remove(item);
+        } catch (Exception e) {
+        CreateAndShowDialog(e, "Error");
+        }
 
-			if (!item.Complete) 
-				adapter.Add(item);			
-		} 
-		catch (Exception e) 
-		{
-			CreateAndShowDialog(e, "Error");
-		}   		
+    这会将项目更新发送到移动服务，并从适配器中删除已选中的项目。
 
-  	This code creates a new item and inserts it into the table in the remote mobile service.
+14. 取消注释 "AddItem" 方法的以下行：
 
-15. Uncommment these lines of the **RefreshItemsFromTableAsync** method:
+        try 
+        {
+        // Insert the new item
+        await todoTable.InsertAsync(item);
 
-		try {
-			// Get the items that weren't marked as completed and add them in the adapter
-			var list = await todoTable.Where(item => item.Complete == false).ToListAsync ();
-
-			adapter.Clear();
-
-			foreach (TodoItem current in list)
-				adapter.Add(current);
-		} 
+        if (!item.Complete) 
+        adapter.Add(item);          
+        } 
         catch (Exception e) 
         {
-			CreateAndShowDialog(e, "Error");
-		}
+        CreateAndShowDialog(e, "Error");
+        }           
 
-	This queries the mobile service and returns all items that are not marked as complete. Items are added to the adapter for binding.
-		
+    此代码将创建一个新项目并将其插入到远程移动服务的表中。
 
-Now that the app has been updated to use Mobile Services for backend storage, it's time to test the app against Mobile Services.
+15. 取消注释 "RefreshItemsFromTableAsync" 方法的以下行：
 
-<h2><a name="test-app"></a><span class="short-header">Test the app</span>Test the app against your new mobile service</h2>
+        try {
+        // Get the items that weren't marked as completed and add them in the adapter
+        var list = await todoTable.Where(item => item.Complete == false).ToListAsync ();
 
-1. From the **Run** menu, click **Start Without Debugging** to start the project. You will be asked to pick an existing emulator image or an attached USB Android device.
+        adapter.Clear();
 
-	This executes your app, built with Xamarin.Android, that uses the client library to send a query that returns items from your mobile service.
+        foreach (TodoItem current in list)
+        adapter.Add(current);
+        } 
+        catch (Exception e) 
+        {
+        CreateAndShowDialog(e, "Error");
+        }
 
-5. As before, type meaningful text, then click **Add**.
+    这将查询移动服务，并返回未标记为“完成”的所有项目。这些项目将添加到用于绑定的适配器。
 
-   	This sends a new item as an insert to the mobile service.
+更新应用程序以使用移动服务作为后端存储后，便可以针对移动服务测试该应用程序。
 
-3. In the [Management Portal], click **Mobile Services**, and then click your mobile service.
+<a name="test-app"></a>
+## 测试应用程序针对新的移动服务测试应用程序
 
-4. Click the **Data** tab, then click **Browse**.
+1.  在“运行” 菜单中，单击“开始执行(不调试)” 以启动项目。系统将要求你选择现有模拟器映像或已连接的 USB Android 设备。
 
-   	![][9]
-  
-   	Notice that the **TodoItem** table now contains data, with id values generated by Mobile Services, and that columns have been automatically added to the table to match the TodoItem class in the app.
+    这将执行使用 Xamarin.Android 构建的应用程序，该应用程序使用客户端库发送一个查询，该查询从你的移动服务返回项目。
 
-This concludes the **Get started with data** tutorial for Xamarin.Android.
+2.  和前面一样，输入有意义的文本，然后单击“添加” 。
 
-## Get completed example
-Download the [completed example project]. Be sure to update the **applicationURL** and **applicationKey** variables with your own Azure settings. 
+    此时会将一个新项作为 insert 发送到移动服务。
 
-## <a name="next-steps"> </a>Next steps
+3.  在[管理门户][]中单击“移动服务”，然后单击你的移动服务 。
 
-This tutorial demonstrated the basics of enabling a Xamarin.Android app to work with data in Mobile Services. 
+4.  单击“数据”选项卡，然后单击“浏览” 。
 
-Next, consider completing one of the following tutorials that is based on the GetStartedWithData app that you created in this tutorial:
+    ![][4]
 
-* [Validate and modify data with scripts]
-  <br/>Learn more about using server scripts in Mobile Services to validate and change data sent from your app.
+    可以看到，"TodoItem" 表现在包含了数据以及移动服务生成的 ID 值，并且已在该表中自动添加了列，以匹配应用程序中的 TodoItem 类。
 
-* [Refine queries with paging]
-  <br/>Learn how to use paging in queries to control the amount of data handled in a single request.
+针对 Xamarin.Android 的"数据处理入门"教程到此结束。
 
-Once you have completed the data series, try these other Xamarin.Android tutorials:
+## 获取已完成的示例
 
-* [Get started with authentication] 
-	<br/>Learn how to authenticate users of your app.
+下载[已完成的示例项目][下载 Xamarin.Android 应用程序项目]。请务必使用你自己的 Azure 设置更新 "applicationURL" 和 "applicationKey" 变量。
 
-* [Get started with push notifications] 
-  <br/>Learn how to send a very basic push notification to your app with Mobile Services.
+<a name="next-steps"> </a>
+## 后续步骤
 
-<!-- Anchors. -->
+本教程演示了有关如何使 Xamarin.Android 应用程序处理移动服务中的数据的基础知识。
 
-[Get the Windows Store app]: #download-app
-[Create the mobile service]: #create-service
-[Add a data table for storage]: #add-table
-[Update the app to use Mobile Services]: #update-app
-[Test the app against Mobile Services]: #test-app
-[Next Steps]:#next-steps
+接下来，建议你完成下列教程之一，这些教程是基于本教程中创建的 GetStartedWithData 应用程序制作的：
 
-<!-- Images. -->
+-   [使用脚本验证和修改数据][]
+    了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
+-   [使用分页优化查询][]
+    了解如何使用查询中的分页控制单个请求中处理的数据量。
 
+完成了数据系列教程后，请试着学习以下其他 Xamarin.Android 教程：
 
+-   [身份验证入门][]
+    了解如何对应用程序用户进行身份验证。
 
+-   [推送通知入门][]
+    了解如何使用移动服务将非常基本的推送通知发送到应用程序。
 
-[5]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-data-tab-empty.png
-[6]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-create-todoitem-table.png
-[8]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-dashboard-tab.png
-[9]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-todoitem-data-browse.png
-[13]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-quickstart-startup-android.png
-
-<!-- URLs. TODO:: update 'Download the Android app project' download link, 'GitHub', completed project, etc. -->
-[Validate and modify data with scripts]: /en-us/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android
-[Refine queries with paging]: /en-us/develop/mobile/tutorials/add-paging-to-data-xamarin-android
-[Get started with Mobile Services]: /en-us/develop/mobile/tutorials/get-started-xamarin-android
-[Get started with data]: /en-us/develop/mobile/tutorials/get-started-with-data-xamarin-android
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android
-[Get started with push notifications]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android
-
-[Azure Management Portal]: https://manage.windowsazure.com/
-[Management Portal]: https://manage.windowsazure.com/
-[Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
-[Download the Android app project]: http://www.google.com/
-[GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331302
-[Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
-
-[completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331302
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
+  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios "iOS"
+  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-android "Android"
+  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-data-html "HTML"
+  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android "Xamarin.Android"
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-android
+  [下载 Xamarin.Android 应用程序项目]: http://go.microsoft.com/fwlink/p/?LinkId=331302
+  [创建移动服务]: #create-service
+  [添加用于存储的数据表]: #add-table
+  [更新应用程序以使用移动服务]: #update-app
+  [针对移动服务测试应用程序]: #test-app
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A9C9624B5
+  [Azure 移动服务组件]: http://components.xamarin.com/view/azure-mobile-services/
+  []: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-quickstart-startup-android.png
+  [mobile-services-create-new-service-data]: ../includes/mobile-services-create-new-service-data.md
+  [1]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-data-tab-empty.png
+  [2]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-create-todoitem-table.png
+  [3]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-dashboard-tab.png
+  [管理门户]: https://manage.windowsazure.cn/
+  [4]: ./media/partner-xamarin-mobile-services-android-get-started-data/mobile-todoitem-data-browse.png
+  [使用脚本验证和修改数据]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android
+  [使用分页优化查询]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-android
+  [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android
+  [推送通知入门]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android
