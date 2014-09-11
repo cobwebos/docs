@@ -1,66 +1,81 @@
 <properties linkid="manage-services-how-to-create-a-storage-account" urlDisplayName="How to create" pageTitle="How to create a storage account | Azure" metaKeywords="" description="Learn how to create a storage account in the Azure management portal." metaCanonical="" services="storage" documentationCenter="" title="How To Create a Storage Account" solutions="" authors="tamram" manager="mbaldwin" editor="cgronlun" />
 
+<a id="createstorageaccount"></a>
+# 如何创建存储帐户
 
+若要将 Blob、表和队列服务中的文件和数据存储在 Azure 中，你必须在要存储数据的地理区域中创建存储帐户。一个存储帐户最多可以包含 200 TB 的数据，你最多可以为每个 Azure 订阅创建二十个存储帐户。有关详细信息，请参阅 [Azure 存储的可伸缩性和性能目标][]。
 
-
-<h1><a id="createstorageaccount"></a>How To Create a Storage Account</h1>
-
-To store files and data in the Blob, Table, and Queue services in Azure, you must create a storage account in the geographic region where you want to store the data. A storage account can contain up to 200 TB of data, and you can create up to twenty storage accounts for each Azure subscription. See [Azure Storage Scalability and Performance Targets](http://msdn.microsoft.com/zh-cn/library/dn249410.aspx) for more information.
-
-This topic describes how to create a storage account in the Azure Management Portal.
+本主题介绍了如何在 Azure 管理门户中创建存储帐户。
 
 <div class="dev-callout"> 
-<b>Note</b> 
-<p>For an Azure virtual machine, a storage account is created automatically in the deployment location if you do not already have a storage account in that location. The storage account name will be based on the virtual machine name.</p> 
+<b>说明</b>
+
+<p>对于 Azure 虚拟机，如果你在部署位置中还没有存储帐户，则会在该位置自动创建一个存储帐户。存储帐户名称将基于虚拟机名称。</p>
 </div>
 
-##Table of Contents##
+## 目录
 
-* [How to: Create a storage account](#create)
-* [Next steps](#next)
+-   [如何：创建存储帐户][]
+-   [后续步骤][]
 
-<h2><a id="create"></a>How to: Create a storage account</h2>
+<a id="create"></a>
+## 如何：创建存储帐户
 
-1. Sign in to the [Management Portal](https://manage.windowsazure.cn).
+1.  登录到[管理门户][]。
 
-2. Click **Create New**, click **Storage**, and then click **Quick Create**.
+2.  依次单击**“新建”**、**“存储”**和**“快速创建”**。
 
-	![NewStorageAccount](./media/storage-create-storage-account/storage_NewStorageAccount.png)
+    ![新建存储帐户][]
 
-3. In **URL**, enter a subdomain name to use in the storage account URL. To access an object in storage, you will append the object's location to the endpoint. For example, the URL for accessing a blob might be http://*myaccount*.blob.core.chinacloudapi.cn/*mycontainer*/*myblob*.
+3.  在**“URL”**中，输入要在存储帐户 URL 中使用的子域名称。若要访问存储中的对象，请将该对象的位置附加到终结点。例如，用于访问 Blob 的 URL 可以是 <http://*myaccount>*.blob.core.chinacloudapi.cn/*mycontainer*/*myblob\*。
 
-4. In **Region/Affinity Group**, select a region or affinity group for the storage.  Select an affinity group instead of a region if you want your storage services to be in the same data center with other Azure services that you are using. This can improve performance, and no charges are incurred for egress.
+4.  在**“区域/地缘组”**中，为存储选择区域或地缘组。如果你希望存储服务与你所使用的其他 Azure 服务位于同一数据中心，请选择一个地缘组而不是区域。这可以提高性能，且不会对传出收费。
 
-	> [WACN.NOTE]
-        > To create an affinity group, open the <b>Networks</b> area of the Management Portal, click <b>Affinity Groups</b>, and then click either <b>Create a new affinity group</b> or <b>Create</b>. You can use affinity groups that you create in the previous Management Portal. To open the other portal, click <b>Preview</b> on the title bar, and then click <b>Take me to the previous portal</b>. (To return to this portal, click <b>View the Preview Portal</b> at the bottom of the portal.) You can also create and manage affinity groups using the Azure Service Management API. See <a href="http://msdn.microsoft.com/zh-cn/library/azure/ee460798.aspx">Operations on Affinity Groups</a> for more information.
+    > [WACN.NOTE]
+    >  \> 若要创建地缘组，请打开管理门户的**“网络”**区域，单击**“地缘组”**，然后单击**“创建新的地缘组”**或**“创建”**。可以使用你在以前的管理门户中创建的地缘组。若要打开其他门户，请单击标题栏上的**“预览”**，然后单击**“转到以前的门户”**。（若要返回此门户，请单击门户底部的**“查看预览门户”**。）你也可以使用 Azure 服务管理 API 创建和管理地缘组。有关详细信息，请参阅[对地缘组的操作][]。
 
-5. If you have more than one Azure subscription, then the **Subscription** field is displayed. In **Subscription**, enter the Azure subscription that you want to use the storage account with. You can create up to five storage accounts for a subscription.
+5.  如果你有多个 Azure 订阅，则会显示**“订阅”**字段。在**“订阅”**中，输入要使用存储帐户的 Azure 订阅。你最多可以为一个订阅创建五个存储帐户。
 
-6. In **Replication**, select the level of replication that you desire for your storage account.
+6.  在**“复制”**中，选择要用于存储帐户的复制级别。
 
-	By default, replication is set to **Geo-Redundant**. With geo-redundant replication, your storage account and all data in it fails over to a secondary location in the event of a major disaster in the primary location. Azure assigns a secondary location in the same region, which cannot be changed. After a failover, the secondary location becomes the primary location for the storage account, and your data is replicated to a new secondary location.
+    默认情况下，复制设置为**“地域冗余”**。使用地域冗余复制，你的存储帐户及其中的所有数据在主位置发生重大灾难时就能够故障转移到辅助位置。Azure 将分配同一区域中的辅助位置，并且无法对其进行更改。在进行故障转移后，辅助位置将成为存储帐户的主位置，并且会将你的数据复制到新的辅助位置。
 
-	If you want to be able to read data from the secondary location, you can select **Read-Access Geo-Redundant** replication. This option provides geo-redundant replication and enables read-only access to the replicated data in the secondary location. Read-access geo-redundant replication allows you to access your data from either the primary or the secondary location, in the event that one location becomes unavailable.
+    如果希望能够从辅助位置读取数据，可以选择**“读取访问地域冗余”**复制。此选项提供了地域冗余复制并启用了对辅助位置中复制数据的只读访问。当主位置或辅助位置中的某个位置变得不可用时，读取访问地域冗余复制允许你从另一个位置访问你的数据。
 
-	A third replication option, **Read Access Geo-Redundant**, is currently in preview. This option enables read-only access to the replicated data in the secondary location. Read-access geo-redundant replication allows you to access your data from either the primary or the secondary location, in the event that one location becomes unavailable.
+    第三个复制选项**“读取访问地域冗余”**当前处于预览状态。此选项启用了对辅助位置中复制数据的只读访问。当主位置或辅助位置中的某个位置变得不可用时，读取访问地域冗余复制允许你从另一个位置访问你的数据。
 
-	> [WACN.NOTE]
-        > In order to use read-access geo-redundant replication while it is in preview, you must manually request that the feature be enabled for your subscription. Visit the <a href="https://account.windowsazure.com/PreviewFeatures">Azure Preview Features</a> page to request read-access geo-redundant replication for your subscription. For more details about read-access geo-redundant replication, see the <a href="http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/04/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx">Azure Storage Team Blog</a>.
-	> If read-access geo-redundant replication is not enabled as a preview feature on your subscription, the option to select it for your storage account will be disabled.
+    > [WACN.NOTE]
+    >  \> 若要在读取访问地域冗余复制处于预览状态时使用它，必须手动请求为你的订阅启用该功能。可以访问 [Azure 预览功能][]页面来为你的订阅请求读取访问地域冗余复制。有关读取访问地域冗余复制的更多详细信息，请参阅 [Azure 存储空间团队博客][]。
+    > 如果在你的订阅上没有将读取访问地域冗余复制启用为预览功能，则用于为你的存储帐户选择该功能的选项将处于禁用状态。
 
-	For pricing information for storage account replication, see [Storage Pricing Details](http://www.windowsazure.cn/zh-cn/pricing/overview/#storage).
+    有关存储帐户复制的定价信息，请参阅[存储定价详细信息][]。
 
-6. Click **Create Storage Account**.
+7.  单击**“创建存储帐户”**。
 
-	It may take a few minutes to create your storage account. To check the status, you can monitor the notifications at the bottom of the portal. After the storage account has been created, your new storage account has **Online** status and is ready for use. 
+    创建存储帐户可能需要花费几分钟的时间。若要检查状态，你可以监视门户底部的通知。创建存储帐户后，你的新存储帐户将处于**“联机”**状态并且随时可供使用。
 
-	![StoragePage](./media/storage-create-storage-account/Storage_StoragePage.png)
+    ![存储页面][]
 
-<h2><a id="next"></a>Next steps</h2>
+<a id="next"></a>
+## 后续步骤
 
-- To learn more about Azure storage services, see [Understanding Cloud Storage](http://azure.microsoft.com/zh-cn/documentation/articles/storage-introduction/) and [Blobs, Queues, and Tables](http://msdn.microsoft.com/zh-cn/library/gg433040.aspx).
+-   若要更详细地了解 Azure 存储服务，请参阅[了解云存储][]和 [Blob、队列和表][]。
 
-- Visit the [Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/).
+-   访问 [Azure 存储空间团队博客][1]。
 
-- Configure your apps to use Azure Blob, Table, and Queue services. The [Azure Developer Center](http://azure.microsoft.com/zh-cn/documentation/) provides How To Guides for using the Blob, Table, and Queue storage services with your .NET, Node.js, Java, and PHP applications. For instructions specific to a programming language, see the How To Guides for that language.
+-   对你的应用程序进行配置以使用 Azure Blob、表和队列服务。[Azure 开发人员中心][]提供了将 Blob、表和队列存储服务与 .NET、Node.js、Java 和 PHP 应用程序结合使用的操作方法指南。有关特定于某种编程语言的说明，请参阅该语言对应的操作方法指南。
 
+  [Azure 存储的可伸缩性和性能目标]: http://msdn.microsoft.com/zh-cn/library/dn249410.aspx
+  [如何：创建存储帐户]: #create
+  [后续步骤]: #next
+  [管理门户]: https://manage.windowsazure.cn
+  [新建存储帐户]: ./media/storage-create-storage-account/storage_NewStorageAccount.png
+  [对地缘组的操作]: http://msdn.microsoft.com/zh-cn/library/azure/ee460798.aspx
+  [Azure 预览功能]: https://account.windowsazure.com/PreviewFeatures
+  [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/04/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx
+  [存储定价详细信息]: http://www.windowsazure.cn/zh-cn/pricing/overview/#storage
+  [存储页面]: ./media/storage-create-storage-account/Storage_StoragePage.png
+  [了解云存储]: http://azure.microsoft.com/zh-cn/documentation/articles/storage-introduction/
+  [Blob、队列和表]: http://msdn.microsoft.com/zh-cn/library/gg433040.aspx
+  [1]: http://blogs.msdn.com/b/windowsazurestorage/
+  [Azure 开发人员中心]: http://azure.microsoft.com/zh-cn/documentation/
