@@ -2,18 +2,18 @@
 
 # 将基于时间的 Oozie 协调器与 HDInsight 配合使用
 
-学习如何定义工作流和协调器，以及如何基于时间触发协调器作业。在学习本文之前先浏览 [将 Oozie 与 HDInsight 配合使用][]一文会很有用。
+学习如何定义工作流和协调器，以及如何基于时间触发协调器作业。在学习本文之前先浏览 [将 Oozie 与 HDInsight 配合使用][hdinsight-oozie]一文会很有用。
 
 **估计完成时间：** 40 分钟
 
 ## 本文内容
 
-1.  [什么是 Oozie][]
-2.  [先决条件][]
-3.  [定义 Oozie 工作流文件][]
-4.  [部署 Oozie 项目并准备教程][]
-5.  [运行工作流][]
-6.  [后续步骤][]
+1.  [什么是 Oozie](#whatisoozie)
+2.  [先决条件](#prerequisites)
+3.  [定义 Oozie 工作流文件](#defineworkflow)
+4.  [部署 Oozie 项目并准备教程](#deploy)
+5.  [运行工作流](#run)
+6.  [后续步骤](#nextsteps)
 
 <a id="whatisoozie"></a>
 ## 什么是 Oozie
@@ -22,7 +22,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 
 你要实现的工作流包含两个操作：
 
-![工作流关系图][]
+![工作流关系图][img-workflow-diagram]
 
 1.  Hive 操作运行 HiveQL 脚本以统计 log4j 日志文件中每个日志级类型的次数。每个 log4j 日志都包含一行字段，其中包含 [LOG LEVEL] 字段，可显示类型和严重性。例如：
 
@@ -42,9 +42,9 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 
     有关 Hive 的详细信息，请参阅[将 Hive 与 HDInsight 配合使用][]。
 
-2.  Sqoop 操作将 HiveQL 操作输出结果导出到 Azure SQL 数据库中的表。有关 Sqoop 的详细信息，请参阅[将 Sqoop 与 HDInsight 配合使用][]。
+2.  Sqoop 操作将 HiveQL 操作输出结果导出到 Azure SQL 数据库中的表。有关 Sqoop 的详细信息，请参阅[将 Sqoop 与 HDInsight 配合使用][hdinsight-sqoop]。
 
-> [WACN.NOTE] 有关 HDInsight 群集上支持的 Oozie 版本，请参阅 [HDInsight 提供的群集版本有哪些新功能？][]。
+> [WACN.NOTE] 有关 HDInsight 群集上支持的 Oozie 版本，请参阅 [HDInsight 提供的群集版本有哪些新功能？][hdinsight-versions]。
 
 > [WACN.NOTE] 本教程适用于 HDInsight 群集版本 2.1 和 3.0。本文尚未在 HDInsight Emulator 上测试过。
 
@@ -53,8 +53,8 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 
 在开始阅读本教程前，你必须具有：
 
--   已安装并已配置 Azure PowerShell 的**工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为“RemoteSigned”**。请参阅[运行 Windows PowerShell 脚本][]。
--   **HDInsight 群集**。有关创建 HDInsight 群集的信息，请参阅[设置 HDInsight 群集][]或 [HDInsight 入门][]。你将需要以下数据才能完成本教程：
+-   已安装并已配置 Azure PowerShell 的**工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][powershell-install-configure]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为“RemoteSigned”**。请参阅[运行 Windows PowerShell 脚本][powershell-script]。
+-   **HDInsight 群集**。有关创建 HDInsight 群集的信息，请参阅[设置 HDInsight 群集][hdinsight-provision]或 [HDInsight 入门][hdinsight-get-started]。你将需要以下数据才能完成本教程：
 
 	<table border = "1">
 	<tr><th>群集属性</th><th>PowerShell 变量名</th><th>值</th><th>说明</th></tr>
@@ -65,7 +65,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 	<tr><td>Azure Blob 容器名称</td><td>$containerName</td><td></td><td>在此示例中，使用用于默认 HDInsight 群集文件系统的 Azure Blob 存储容器。默认情况下，该容器与 HDInsight 群集同名。</td></tr>
 	</table>
 
--   **Azure SQL Database**。你必须为 SQL Database 服务器配置防火墙规则以允许从你的工作站进行访问。有关创建 SQL 数据库和配置防火墙的说明，请参阅[使用 Azure SQL 数据库入门][]。本文提供了用于创建本教程所需的 SQL 数据库表的 PowerShell 脚本。
+-   **Azure SQL Database**。你必须为 SQL Database 服务器配置防火墙规则以允许从你的工作站进行访问。有关创建 SQL 数据库和配置防火墙的说明，请参阅[使用 Azure SQL 数据库入门][sqldatabase-get-started]。本文提供了用于创建本教程所需的 SQL 数据库表的 PowerShell 脚本。
 
 	<table border = "1">
 	<tr><th>SQL 数据库属性</th><th>PowerShell 变量名</th><th>值</th><th>说明</th></tr>
@@ -91,7 +91,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 3.  的 log4j Hive 外部表。字段分隔符为“,”。默认分行符为“\\n”。Hive 外部表用于在你想多次运行 Oozie 工作流的情况下避免数据文件从原始位置被删除。
 4.  **INSERT OVERWRITE 语句**从 log4j Hive 表统计每个日志级类型的次数，并将输出结果保存到 Azure 储存空间 - Blob (WASB) 位置。
 
-有一个已知的 Hive 路径问题。你在提交 Oozie 作业时将会遇到这个问题。可在 [TechNet Wiki][] 上找到用于解决此问题的说明。
+有一个已知的 Hive 路径问题。你在提交 Oozie 作业时将会遇到这个问题。可在 [TechNet Wiki][technetwiki-hive-error] 上找到用于解决此问题的说明。
 
 **将 HiveQL 脚本文件定义为由工作流调用：**
 
@@ -261,16 +261,16 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 
 **了解 HDInsight 存储**
 
-HDInsight 将 Azure Blob 存储用于数据存储。它称为 *WASB* 或 *Windows Azure 存储空间 - Blob*。WASB 是 Microsoft 在 Azure Blob 存储上的 HDFS 实现。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
+HDInsight 将 Azure Blob 存储用于数据存储。它称为 *WASB* 或 *Windows Azure 存储空间 - Blob*。WASB 是 Microsoft 在 Azure Blob 存储上的 HDFS 实现。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]。
 
-设置 HDInsight 群集时，请将 Azure 存储帐户和该帐户上的特定 Blob 存储容器指定为默认文件系统，就像在 HDFS 中一样。除了此存储帐户外，在设置过程中，你还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。有关添加其他存储帐户的说明，请参阅[设置 HDInsight 群集][]。为了简化本教程中使用的 PowerShell 脚本，所有文件都存储在默认文件系统容器（位于 */tutorials/useoozie*）中。默认情况下，此容器与 HDInsight 群集同名。
+设置 HDInsight 群集时，请将 Azure 存储帐户和该帐户上的特定 Blob 存储容器指定为默认文件系统，就像在 HDFS 中一样。除了此存储帐户外，在设置过程中，你还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。有关添加其他存储帐户的说明，请参阅[设置 HDInsight 群集][hdinsight-provision]。为了简化本教程中使用的 PowerShell 脚本，所有文件都存储在默认文件系统容器（位于 */tutorials/useoozie*）中。默认情况下，此容器与 HDInsight 群集同名。
 WASB 语法是：
 
     wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/<路径>/<文件名>
 
 > [WACN.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
 
-> [WACN.NOTE] WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
+> [WACN.NOTE] WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]。
 
 存储在默认文件系统容器中的文件可以使用以下任一 URI 从 HDInsight 进行访问（以 workflow.xml 为例）：
 
@@ -292,11 +292,11 @@ WASB 语法是：
 -   CREATE EXTERNAL TABLE 命令不移动数据文件。
 -   CREATE EXTERNAL TABLE 命令不允许 LOCATION 子句中指定的文件夹下有任何子文件夹。这是本教程生成 sample.log 文件的副本的原因。
 
-有关详细信息，请参阅 [HDInsight：Hive 内部表和外部表简介][]。
+有关详细信息，请参阅 [HDInsight：Hive 内部表和外部表简介][cindygross-hive-tables]。
 
 **准备教程**
 
-1.  打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell\_ISE**，然后单击 **Windows PowerShell ISE**。请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][]）。
+1.  打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell\_ISE**，然后单击 **Windows PowerShell ISE**。请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][powershell-start]）。
 2.  在底部窗格中，运行以下命令以连接到 Azure 订阅：
 
         Add-AzureAccount
@@ -384,17 +384,17 @@ WASB 语法是：
 
 5.  单击“运行脚本” 或按 **F5** 键以运行该脚本。输出应如下所示：
 
-    ![教程准备的输出结果][]
+    ![教程准备的输出结果][img-preparation-output]
 
 <a id="run"></a>
 ## 运行 Oozie 项目
 
 Azure PowerShell 目前不提供任何用于定义 Oozie 作业的 cmdlet。你可以使用
-Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服务 API 是 HTTP REST JSON API。有关 Oozie Web 服务 API 的详细信息，请参阅 [Apache Oozie 4.0 文档][]（用于 HDInsight 群集版本 3.0）或 [Apache Oozie 3.3.2 文档][]（用于 HDInsight 群集版本 2.1）。
+Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服务 API 是 HTTP REST JSON API。有关 Oozie Web 服务 API 的详细信息，请参阅 [Apache Oozie 4.0 文档][apache-oozie-400]（用于 HDInsight 群集版本 3.0）或 [Apache Oozie 3.3.2 文档][apache-oozie-332]（用于 HDInsight 群集版本 2.1）。
 
 **提交 Oozie 作业**
 
-1.  打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell\_ISE**，然后单击 **Windows PowerShell ISE**。请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][]）。
+1.  打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell\_ISE**，然后单击 **Windows PowerShell ISE**。请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][powershell-start]）。
 
 2.  将以下脚本复制到脚本窗格，然后设置前 14 个变量（跳过第 6 个：\$storageUri）。
 
@@ -652,13 +652,13 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 
 10. 单击“运行脚本” 或按 **F5** 键以运行该脚本。输出结果将会类似于：
 
-    ![教程运行工作流输出][]
+    ![教程运行工作流输出][img-runworkflow-output]
 
 11. 连接到 SQL Database 以查看导出的数据。
 
 **检查作业错误日志**
 
-若要解决工作流的疑难问题，可从群集头节点中的 C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log 位置找到 Oozie 日志文件。有关 RDP 的信息，请参阅[使用管理门户管理 HDInsight 群集][]。
+若要解决工作流的疑难问题，可从群集头节点中的 C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log 位置找到 Oozie 日志文件。有关 RDP 的信息，请参阅[使用管理门户管理 HDInsight 群集][hdinsight-admin-portal]。
 
 **重新运行教程**
 
@@ -700,46 +700,64 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 
 在本教程中，你已经学习了如何定义 Oozie 工作流、Oozie 协调器，以及如何使用 Azure PowerShell 运行 Oozie 协调器作业。若要了解更多信息，请参阅下列文章：
 
--   [HDInsight 入门][]
--   [HDInsight Emulator 入门][]
--   [将 Azure Blob 存储与 HDInsight 配合使用][]
--   [使用 PowerShell 管理 HDInsight][]
--   [将数据上传到 HDInsight][]
--   [将 Sqoop 与 HDInsight 配合使用][]
+-   [HDInsight 入门][hdinsight-get-started]
+-   [HDInsight Emulator 入门][hdinsight-emulator]
+-   [将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]
+-   [使用 PowerShell 管理 HDInsight][hdinsight-admin-powershell]
+-   [将数据上传到 HDInsight][hdinsight-upload-data]
+-   [将 Sqoop 与 HDInsight 配合使用][hdinsight-sqoop]
 -   [Hive 与 HDInsight 配合使用][将 Hive 与 HDInsight 配合使用]
--   [Pig 与 HDInsight 配合使用][]
--   [为 HDInsight 开发 C\# Hadoop 流作业][]
--   [为 HDInsight 开发 Java MapReduce 程序][]
+-   [Pig 与 HDInsight 配合使用][hdinsight-hive]
+-   [为 HDInsight 开发 C# Hadoop 流作业][hdinsight-develop-streaming]
+-   [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
 
-  [将 Oozie 与 HDInsight 配合使用]: ../hdinsight-use-oozie/
-  [什么是 Oozie]: #whatisoozie
-  [先决条件]: #prerequisites
-  [定义 Oozie 工作流文件]: #defineworkflow
-  [部署 Oozie 项目并准备教程]: #deploy
-  [运行工作流]: #run
-  [后续步骤]: #nextsteps
-  [工作流关系图]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Workflow.Diagram.png
-  [将 Hive 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-hive/
-  [将 Sqoop 与 HDInsight 配合使用]: ../hdinsight-use-sqoop/
-  [HDInsight 提供的群集版本有哪些新功能？]: /en-us/documentation/articles/hdinsight-component-versioning/
-  [安装和配置 Azure PowerShell]: /en-us/manage/install-and-configure-windows-powershell/
-  [运行 Windows PowerShell 脚本]: http://technet.microsoft.com/zh-cn/library/ee176949.aspx
-  [设置 HDInsight 群集]: /en-us/documentation/articles/hdinsight-provision-clusters/
-  [HDInsight 入门]: /en-us/documentation/articles/hdinsight-get-started/
-  [使用 Azure SQL 数据库入门]: ../sql-database-get-started/
-  [创建和配置 SQL Database]: ../sql-database-create-configure/
-  [TechNet Wiki]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
-  [Apache Oozie 4.0 文档]: http://oozie.apache.org/docs/4.0.0/
-  [Apache Oozie 3.3.2 文档]: http://oozie.apache.org/docs/3.3.2/
-  [将 Azure Blob 存储与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-blob-storage/
-  [HDInsight：Hive 内部表和外部表简介]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
-  [在 Windows 8 和 Windows 上启动 Windows PowerShell]: http://technet.microsoft.com/zh-cn/library/hh847889.aspx
-  [教程准备的输出结果]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Preparation.Output1.png
-  [教程运行工作流输出]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.RunCoord.Output.png
-  [使用管理门户管理 HDInsight 群集]: /en-us/documentation/articles/hdinsight-administer-use-management-portal/
-  [HDInsight Emulator 入门]: /en-us/documentation/articles/hdinsight-get-started-emulator/
-  [使用 PowerShell 管理 HDInsight]: /en-us/documentation/articles/hdinsight-administer-use-powershell/
-  [将数据上传到 HDInsight]: /en-us/documentation/articles/hdinsight-upload-data/
-  [Pig 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-pig/
-  [为 HDInsight 开发 C\# Hadoop 流作业]: /en-us/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
-  [为 HDInsight 开发 Java MapReduce 程序]: /en-us/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
+[hdinsight-versions]:  /en-us/documentation/articles/hdinsight-component-versioning/
+[hdinsight-storage]: /en-us/documentation/articles/hdinsight-use-blob-storage/
+[hdinsight-get-started]: /en-us/documentation/articles/hdinsight-get-started/
+[hdinsight-admin-portal]: /en-us/documentation/articles/hdinsight-administer-use-management-portal/
+
+
+[hdinsight-sqoop]: ../hdinsight-use-sqoop/
+[hdinsight-provision]: /en-us/documentation/articles/hdinsight-provision-clusters/
+
+[hdinsight-admin-powershell]: /en-us/documentation/articles/hdinsight-administer-use-powershell/
+
+[hdinsight-upload-data]: /en-us/documentation/articles/hdinsight-upload-data/
+
+[hdinsight-mapreduce]: /en-us/documentation/articles/hdinsight-use-mapreduce/
+[hdinsight-hive]: /en-us/documentation/articles/hdinsight-use-hive/
+
+[hdinsight-pig]: /en-us/documentation/articles/hdinsight-use-pig/
+
+[hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
+[hdinsight-storage]: /en-us/documentation/articles/hdinsight-use-blob-storage/
+
+[hdinsight-emulator]: /en-us/documentation/articles/hdinsight-get-started-emulator/
+
+[hdinsight-develop-streaming]: /en-us/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
+[hdinsight-develop-mapreduce]: /en-us/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
+[hdinsight-oozie]: ../hdinsight-use-oozie/
+
+[sqldatabase-create-configue]: ../sql-database-create-configure/
+[sqldatabase-get-started]: ../sql-database-get-started/
+
+[azure-management-portal]: https://manage.windowsazure.cn/
+[azure-create-storageaccount]: /en-us/manage/services/storage/how-to-create-a-storage-account/ 
+
+[apache-hadoop]: http://hadoop.apache.org/
+[apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/
+[apache-oozie-332]: http://oozie.apache.org/docs/3.3.2/
+
+[powershell-download]: http://www.windowsazure.cn/zh-cn/downloads/#cmd-line-tools
+[powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
+[powershell-install-configure]: /en-us/manage/install-and-configure-windows-powershell/
+[powershell-start]: http://technet.microsoft.com/zh-cn/library/hh847889.aspx
+[powershell-script]: http://technet.microsoft.com/zh-cn/library/ee176949.aspx
+
+[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+
+[img-workflow-diagram]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Workflow.Diagram.png
+[img-preparation-output]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Preparation.Output1.png  
+[img-runworkflow-output]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.RunCoord.Output.png  
+
+[technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx

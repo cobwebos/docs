@@ -2,10 +2,9 @@
 
 # 为 Azure 存储帐户中的 Blob 数据配置自定义域名
 
-你可以配置自定义域以便访问 Azure 存储帐户中的 Blob 数据。Blob 服务的默认终结点为 <https://>\<*mystorageaccount*\>.blob.core.chinacloudapi.cn。如果你将自定义域和子域（例如 **www.contoso.com**）映射到你的存储帐户的 Blob 终结点，则你的用户也可以使用该域访问你的存储帐户中的 Blob 数据。
+你可以配置自定义域以便访问 Azure 存储帐户中的 Blob 数据。Blob 服务的默认终结点为 https://<*mystorageaccount*>.blob.core.chinacloudapi.cn。如果你将自定义域和子域（例如 **www.contoso.com**）映射到你的存储帐户的 Blob 终结点，则你的用户也可以使用该域访问你的存储帐户中的 Blob 数据。
 
 <div class="dev-callout"><b>说明</b>
-
 <p>此任务中的过程适用于 Azure 存储帐户。对于云服务，请参阅<a href = "/en-us/develop/net/common-tasks/custom-dns/">为 Azure 云服务配置自定义域名]</a>；对于网站，请参阅<a href="/en-us/develop/net/common-tasks/custom-dns-web-site/">为 Azure 网站配置自定义域名</a>。</p>
 </div>
 
@@ -38,46 +37,46 @@
 
 本任务将向你演示如何：
 
--   [为你的存储帐户注册自定义域][]
--   [使用中间 asverify 子域为你的存储帐户注册自定义域][]
--   验证该自定义域引用你的 Blob 服务终结点
+-   <a href="#register-domain">为你的存储帐户注册自定义域</a>
+-   <a href="#register-asverify">使用中间 asverify 子域为你的存储帐户注册自定义域</a>
+-   <a name="#verify-subdomain">验证该自定义域引用你的 Blob 服务终结点</a>
 
 <a name="register-domain"></a>
 ## 为你的存储帐户注册自定义域
 
 如果你不担心域暂时对用户不可用，或者你的自定义域当前未托管应用程序，则使用本过程可注册你的自定义域。
 
-如果你的自定义域目前在支持不能有任何停机时间的应用程序，则使用在[使用中间 asverify 子域为你的存储帐户注册自定义域][]中介绍的过程。
+如果你的自定义域目前在支持不能有任何停机时间的应用程序，则使用在<a href="#register-asverify">使用中间 asverify 子域为你的存储帐户注册自定义域</a>中介绍的过程。
 
 若要配置自定义域名，必须通过你的域注册机构创建一个新的 CNAME 记录。该 CNAME 记录为域名指定别名；在本例中，它将你的自定义域的地址映射到你的存储帐户的 Blob 服务终结点。
 
 每个注册机构指定 CNAME 记录的方法类似但略有不同，但概念是相同的。
 请注意，许多基本域注册程序包未提供 DNS 配置，因此，你可能需要首先升级你的域注册程序包，然后才能创建 CNAME 记录。
 
-1.  在 Azure 管理门户中，导航到**“存储”**选项卡。
+1.  在 Azure 管理门户中，导航到“存储”选项卡。
 
-2.  在**“存储”**选项卡中，单击你要为其映射自定义域的存储帐户的名称。
+2.  在“存储”选项卡中，单击你要为其映射自定义域的存储帐户的名称。
 
-3.  单击**“配置”**选项卡。
+3.  单击“配置”选项卡。
 
-4.  在屏幕的底部，单击**“管理域”**以显示**“管理自定义域”**对话框。在该对话框顶部的文本中，你将看到有关如何创建 CNAME 记录的信息。对于此过程，请忽略引用 **asverify** 子域的文本。
+4.  在屏幕的底部，单击“管理域”以显示“管理自定义域”对话框。在该对话框顶部的文本中，你将看到有关如何创建 CNAME 记录的信息。对于此过程，请忽略引用 **asverify** 子域的文本。
 
 5.  登录到你的 DNS 注册机构的网站，然后转至用于管理 DNS 的
-    页面。你可以在诸如**“域名”**、**“DNS”**
-    或**“名称服务器管理”**之类的部分中找到此页面。
+    页面。你可以在诸如“域名”、“DNS”
+    或“名称服务器管理”之类的部分中找到此页面。
 
 6.  找到用于管理 CNAME 的部分。你可能需要转至高级设置
-    页面，并查找**“CNAME”**、**“别名”**、
-    或**“子域”**字样。
+    页面，并查找“CNAME”、“别名”、
+    或“子域”字样。
 
 7.  创建一个新的 CNAME 记录，并且提供子域别名，例如 **www** 或 **photos**。然后
-    以 **mystorageaccount.blob.core.chinacloudapi.cn** 格式（其中，**mystorageaccount** 是你的存储帐户的名称）提供主机名，这是你的 Blob 服务终结点。在**“管理自定义域”**对话框的文本中为你提供了要使用的主机名。
+    以 **mystorageaccount.blob.core.chinacloudapi.cn** 格式（其中，**mystorageaccount** 是你的存储帐户的名称）提供主机名，这是你的 Blob 服务终结点。在“管理自定义域”对话框的文本中为你提供了要使用的主机名。
 
-8.  在创建该 CNAME 记录后，返回到**“管理自定义域”**对话框，并且在**“自定义域名”**字段中输入你的自定义域（包括子域）的名称。例如，如果你的域是 **contoso.com** 并且你的子域是 **www**，则输入 **www.contoso.com**；如果你的子域是 **photos**，则输入 **photos.contoso.com**。请注意，子域是必需的。
+8.  在创建该 CNAME 记录后，返回到“管理自定义域”对话框，并且在“自定义域名”字段中输入你的自定义域（包括子域）的名称。例如，如果你的域是 **contoso.com** 并且你的子域是 **www**，则输入 **www.contoso.com**；如果你的子域是 **photos**，则输入 **photos.contoso.com**。请注意，子域是必需的。
 
-9.  单击**“注册”**按钮以注册你的自定义域。
+9.  单击“注册”按钮以注册你的自定义域。
 
-    如果注册成功，你将会看到一条消息**“你的自定义域处于活动状态”**。用户现在可以查看你的自定义域上的 Blob 数据，只要用户具有适当的权限。
+    如果注册成功，你将会看到一条消息“你的自定义域处于活动状态”。用户现在可以查看你的自定义域上的 Blob 数据，只要用户具有适当的权限。
 
 <a name="register-asverify"></a>
 ## 使用中间 asverify 子域为你的存储帐户注册自定义域
@@ -86,32 +85,32 @@
 
 该 asverify 子域是 Azure 能够识别的一个特殊子域。通过将 **asverify** 追加到你自己的子域，可以使 Azure 能够识别你的自定义域且不需要修改针对该域的 DNS 记录。一旦你修改该域的 DNS 记录，它将映射到 Blob 终结点且没有停机时间。
 
-1.  在 Azure 管理门户中，导航到**“存储”**选项卡。
+1.  在 Azure 管理门户中，导航到“存储”选项卡。
 
-2.  在**“存储”**选项卡中，单击你要为其映射自定义域的存储帐户的名称。
+2.  在“存储”选项卡中，单击你要为其映射自定义域的存储帐户的名称。
 
-3.  单击**“配置”**选项卡。
+3.  单击“配置”选项卡。
 
-4.  在屏幕的底部，单击**“管理域”**以显示**“管理自定义域”**对话框。在该对话框顶部的文本中，你将看到有关如何使用 **asverify** 子域创建 CNAME 记录的信息。
+4.  在屏幕的底部，单击“管理域”以显示“管理自定义域”对话框。在该对话框顶部的文本中，你将看到有关如何使用 **asverify** 子域创建 CNAME 记录的信息。
 
 5.  登录到你的 DNS 注册机构的网站，然后转至用于管理 DNS 的
-    页面。你可以在诸如**“域名”**、**“DNS”**
-    或**“名称服务器管理”**之类的部分中找到此页面。
+    页面。你可以在诸如“域名”、“DNS”
+    或“名称服务器管理”之类的部分中找到此页面。
 
 6.  找到用于管理 CNAME 的部分。你可能需要转至高级设置
-    页面，并查找**“CNAME”**、**“别名”**、
-    或**“子域”**字样。
+    页面，并查找“CNAME”、“别名”、
+    或“子域”字样。
 
 7.  创建一个新的 CNAME 记录，并且提供包括 asverify 子域的子域别名。例如，你指定的子域将采用 **asverify.www** 或 **asverify.photos** 格式。然后
-    以 **asverify.mystorageaccount.blob.core.chinacloudapi.cn** 格式（其中，**mystorageaccount** 是你的存储帐户的名称）提供主机名，这是你的 Blob 服务终结点。在**“管理自定义域”**对话框的文本中为你提供了要使用的主机名。
+    以 **asverify.mystorageaccount.blob.core.chinacloudapi.cn** 格式（其中，**mystorageaccount** 是你的存储帐户的名称）提供主机名，这是你的 Blob 服务终结点。在“管理自定义域”对话框的文本中为你提供了要使用的主机名。
 
-8.  在创建该 CNAME 记录后，返回到**“管理自定义域”**对话框，并且在**“自定义域名”**字段中输入你的自定义域的名称。例如，如果你的域是 **contoso.com** 并且你的子域是 **www**，则输入 **www.contoso.com**；如果你的子域是 **photos**，则输入 **photos.contoso.com**。请注意，子域是必需的。
+8.  在创建该 CNAME 记录后，返回到“管理自定义域”对话框，并且在“自定义域名”字段中输入你的自定义域的名称。例如，如果你的域是 **contoso.com** 并且你的子域是 **www**，则输入 **www.contoso.com**；如果你的子域是 **photos**，则输入 **photos.contoso.com**。请注意，子域是必需的。
 
-9.  单击指示**“高级:使用‘asverify’子域预先注册自定义域”**的复选框。
+9.  单击指示“高级:使用‘asverify’子域预先注册自定义域”的复选框。
 
-10. 单击**“注册”**按钮以预先注册你的自定义域。
+10. 单击“注册”按钮以预先注册你的自定义域。
 
-    如果预先注册成功，你将会看到一条消息**“你的自定义域处于活动状态”**。
+    如果预先注册成功，你将会看到一条消息“你的自定义域处于活动状态”。
 
 11. 此时，你的自定义域已由 Azure 进行了验证，但传输到你的域的流量尚未路由到你的存储帐户。若要完成此过程，请返回到你的 DNS 注册机构的网站，创建将你的子域映射到你的 Blob 终结点的另一条 CNAME 记录。例如，将该子域指定为 **www** 或 **photos**，将主机名指定为 **mystorageaccount.blob.core.chinacloudapi.cn**（其中，**mystorageaccount** 是你的存储帐户的名称）。完成此步骤后，也就完成了你的自定义域的注册。
 
@@ -124,7 +123,7 @@
 
 若要验证你的自定义域是否确实已映射到你的 Blob 服务终结点，请在你的存储帐户内的公共容器中创建一个 Blob。然后在 Web 浏览器中，使用以下格式的 URI 来访问该 Blob：
 
--   <http://>\<*subdomain.customdomain*\>/\<*mycontainer*\>/\<*myblob*\>
+-   http://<*subdomain.customdomain*>/<*mycontainer*>/<*myblob*>
 
 例如，你可以使用以下 URI 通过映射到 **myforms** 容
 器中的 Blob 的自定义子域 **photos.contoso.com** 来访
@@ -132,13 +131,6 @@
 
 -   <http://photos.contoso.com/myforms/applicationform.htm>
 
-<!--
 ## 其他資源
 
 -   <a href="http://msdn.microsoft.com/zh-cn/library/azure/gg680307.aspx">How to Map CDN Content to a Custom Domain</a>
--->
-
-  [为 Azure 云服务配置自定义域名]: /en-us/develop/net/common-tasks/custom-dns/
-  [为 Azure 网站配置自定义域名]: /en-us/develop/net/common-tasks/custom-dns-web-site/
-  [为你的存储帐户注册自定义域]: #register-domain
-  [使用中间 asverify 子域为你的存储帐户注册自定义域]: #register-asverify
