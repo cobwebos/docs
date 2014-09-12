@@ -1,22 +1,24 @@
 <properties linkid="hdinsight-use-oozie-with-hdinsight" urlDisplayName="Use Oozie with HDInsight" pageTitle="Use Oozie with HDInsight | Azure" metaKeywords="" description="Use Oozie with HDInsight, a big data solution. Learn how to define an Oozie workflow, and submit an Oozie job." metaCanonical="" services="hdinsight" documentationCenter="" title="Use Oozie with HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
+
 # 将 Oozie 与 HDInsight 配合使用
 
 学习如何在 HDInsight 上定义工作流以及如何运行该工作流。若要了解 Oozie 协调器，请参阅[将基于时间的 Oozie 协调器与 HDInsight 配合使用][hdinsight-oozie-coordinator-time]。
 
+
+
 **估计完成时间：** 40 分钟
 
-## 本文内容
+##本文内容
+0.  [什么是 Oozie](#whatisoozie)
+1.  [先决条件](#prerequisites)
+2.  [定义 Oozie 工作流文件](#defineworkflow)
+3.  [部署 Oozie 项目并准备教程](#deploy)
+4.  [运行工作流](#run)
+5.  [后续步骤](#nextsteps)
 
-1.  [什么是 Oozie](#whatisoozie)
-2.  [先决条件](#prerequisites)
-3.  [定义 Oozie 工作流文件](#defineworkflow)
-4.  [部署 Oozie 项目并准备教程](#deploy)
-5.  [运行工作流](#run)
-6.  [后续步骤](#nextsteps)
+##<a id="whatisoozie"></a>什么是 Oozie
 
-<a id="whatisoozie"></a>
-## 什么是 Oozie
 
 Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Hadoop 堆栈集成，支持 Apache MapReduce、Apache Pig、Apache Hive 和 Apache Sqoop 的 Hadoop 作业。它也能用于安排特定于某系统的作业，例如 Java 程序或 shell 脚本。
 
@@ -41,15 +43,16 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
         [WARN]  4
 
     有关 Hive 的详细信息，请参阅[将 Hive 与 HDInsight 配合使用][]。
-
 2.  Sqoop 操作将 HiveQL 操作输出结果导出到 Azure SQL 数据库中的表。有关 Sqoop 的详细信息，请参阅[将 Sqoop 与 HDInsight 配合使用][hdinsight-sqoop]。
 
 > [WACN.NOTE] 有关 HDInsight 群集上支持的 Oozie 版本，请参阅 [HDInsight 提供的群集版本有哪些新功能？][hdinsight-versions]。
 
 > [WACN.NOTE] 本教程适用于 HDInsight 群集版本 2.1 和 3.0。本文尚未在 HDInsight Emulator 上测试过。
 
-<a id="prerequisites"></a>
-## 先决条件
+
+
+##<a id="prerequisites"></a>先决条件
+
 
 在开始阅读本教程前，你必须具有：
 
@@ -77,6 +80,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 
     > [WACN.NOTE] 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。如果禁用了此防火墙设置，则必须从 Azure 管理门户启用它。有关创建 SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL Database][]。
 
+
 > [WACN.NOTE] 将值填入表。这将有助于学习本教程。
 
 <a id="defineworkflow"></a>
@@ -103,9 +107,9 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 
     该脚本中使用了三个变量：
 
-    -   \${hiveTableName}
-    -   \${hiveDataFolder}
-    -   \${hiveOutputFolder}
+	- ${hiveTableName}
+	- ${hiveDataFolder}
+	- ${hiveOutputFolder}
 
     工作流定义文件（本教程中的 workflow.xml）在运行时会将三个值传递到这个 HiveQL 脚本。
 
@@ -386,95 +390,95 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 3.  将以下内容追加到脚本。这部分定义 Oozie 负载：
 
         #OoziePayload 用于 Oozie Web 服务提交
-        $OoziePayload =  @"
-        <?xml version="1.0" encoding="UTF-8"?>
-        <configuration>
-
-        <property>
-        <name>nameNode</name>
-        <value>$storageUrI</value>
-        </property>
-
-        <property>
-        <name>jobTracker</name>
-        <value>jobtrackerhost:9010</value>
-        </property>
-
-        <property>
-        <name>queueName</name>
-        <value>default</value>
-        </property>
-
-        <property>
-        <name>oozie.use.system.libpath</name>
-        <value>true</value>
-        </property>
-
-        <property>
-        <name>hiveScript</name>
-        <value>$hiveScript</value>
-        </property>
-
-        <property>
-        <name>hiveTableName</name>
-        <value>$hiveTableName</value>
-        </property>
-
-        <property>
-        <name>hiveDataFolder</name>
-        <value>$hiveDataFolder</value>
-        </property>
-
-        <property>
-        <name>hiveOutputFolder</name>
-        <value>$hiveOutputFolder</value>
-        </property>
-
-        <property>
-        <name>sqlDatabaseConnectionString</name>
-        <value>"$sqlDatabaseConnectionString"</value>
-        </property>
-
-        <property>
-        <name>sqlDatabaseTableName</name>
-        <value>$SQLDatabaseTableName</value>
-        </property>
-
-        <property>
-        <name>user.name</name>
-        <value>admin</value>
-        </property>
-
-        <property>
-        <name>oozie.wf.application.path</name>
-        <value>$oozieWFPath</value>
-        </property>
-
-        </configuration>
-        "@
+		$OoziePayload =  @"
+		<?xml version="1.0" encoding="UTF-8"?>
+		<configuration>
+		
+		   <property>
+		       <name>nameNode</name>
+		       <value>$storageUrI</value>
+		   </property>
+		
+		   <property>
+		       <name>jobTracker</name>
+		       <value>jobtrackerhost:9010</value>
+		   </property>
+		
+		   <property>
+		       <name>queueName</name>
+		       <value>default</value>
+		   </property>
+		
+		   <property>
+		       <name>oozie.use.system.libpath</name>
+		       <value>true</value>
+		   </property>
+		
+		   <property>
+		       <name>hiveScript</name>
+		       <value>$hiveScript</value>
+		   </property>
+		
+		   <property>
+		       <name>hiveTableName</name>
+		       <value>$hiveTableName</value>
+		   </property>
+		
+		   <property>
+		       <name>hiveDataFolder</name>
+		       <value>$hiveDataFolder</value>
+		   </property>
+		
+		   <property>
+		       <name>hiveOutputFolder</name>
+		       <value>$hiveOutputFolder</value>
+		   </property>
+		
+		   <property>
+		       <name>sqlDatabaseConnectionString</name>
+		       <value>&quot;$sqlDatabaseConnectionString&quot;</value>
+		   </property>
+		
+		   <property>
+		       <name>sqlDatabaseTableName</name>
+		       <value>$SQLDatabaseTableName</value>
+		   </property>
+		
+		   <property>
+		       <name>user.name</name>
+		       <value>admin</value>
+		   </property>
+		
+		   <property>
+		       <name>oozie.wf.application.path</name>
+		       <value>$oozieWFPath</value>
+		   </property>
+		
+		</configuration>
+		"@
 
 4.  将以下内容追加到脚本。这部分检查 Oozie Web 服务状态：
 
-        Write-Host "Checking Oozie server status..."-ForegroundColor Green
-        $clusterUriStatus = "https://$clusterName.hdinsightservice.cn:443/oozie/v2/admin/status"
-        $response = Invoke-RestMethod -Method Get -Uri $clusterUriStatus -Credential $creds -OutVariable $OozieServerStatus 
-
-        $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-        $oozieServerSatus = $jsonResponse[0].("systemMode")
-        Write-Host "Oozie server status is $oozieServerSatus..."
+	    Write-Host "Checking Oozie server status..." -ForegroundColor Green
+	    $clusterUriStatus = "https://$clusterName.hdinsightservices.cn:443/oozie/v2/admin/status"
+	    $response = Invoke-RestMethod -Method Get -Uri $clusterUriStatus -Credential $creds -OutVariable $OozieServerStatus 
+	    
+	    $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
+	    $oozieServerSatus = $jsonResponse[0].("systemMode")
+	    Write-Host "Oozie server status is $oozieServerSatus..."
 
 5.  将以下内容追加到脚本。这部分创建并启动一项 Oozie 作业：
 
         # 创建 Oozie 作业
-        Write-Host "Sending the following Payload to the cluster:"-ForegroundColor Green
-        Write-Host "`n--------`n$OoziePayload`n--------"
-        $clusterUriCreateJob = "https://$clusterName.hdinsightservice.cn:443/oozie/v2/jobs"
-        $response = Invoke-RestMethod -Method Post -Uri $clusterUriCreateJob -Credential $creds -Body $OoziePayload -ContentType "application/xml" -OutVariable $OozieJobName #-debug
-
-        $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-        $oozieJobId = $jsonResponse[0].("id")
-        Write-Host "Oozie job id is $oozieJobId..."
-
+	    Write-Host "Sending the following Payload to the cluster:" -ForegroundColor Green
+	    Write-Host "`n--------`n$OoziePayload`n--------"
+	    $clusterUriCreateJob = "https://$clusterName.hdinsightservices.cn:443/oozie/v2/jobs"
+	    $response = Invoke-RestMethod -Method Post -Uri $clusterUriCreateJob -Credential $creds -Body $OoziePayload -ContentType "application/xml" -OutVariable $OozieJobName #-debug
+	
+	    $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
+	    $oozieJobId = $jsonResponse[0].("id")
+	    Write-Host "Oozie job id is $oozieJobId..."
+	
         # 启动 Oozie 作业
         Write-Host "Starting the Oozie job $oozieJobId..."-ForegroundColor Green
         $clusterUriStartJob = "https://$clusterName.hdinsightservice.cn:443/oozie/v2/job/" + $oozieJobId + "?action=start"
@@ -483,25 +487,25 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 6.  将以下内容追加到脚本。这部分检查 Oozie 作业状态：
 
         # 获取作业状态
-        Write-Host "Sleeping for $waitTimeBetweenOozieJobStatusCheck seconds until the job metadata is populated in the Oozie metastore..."-ForegroundColor Green
-        Start-Sleep -Seconds $waitTimeBetweenOozieJobStatusCheck
-
-        Write-Host "Getting job status and waiting for the job to complete..."-ForegroundColor Green
-        $clusterUriGetJobStatus = "https://$clusterName.hdinsightservice.cn:443/oozie/v2/job/" + $oozieJobId + "?show=info"
-        $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $creds 
-        $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-        $JobStatus = $jsonResponse[0].("status")
-
-        while($JobStatus -notmatch "SUCCEEDED|KILLED")
-        {
-        Write-Host "$(Get-Date -format 'G'):$oozieJobId is in $JobStatus state...waiting $waitTimeBetweenOozieJobStatusCheck seconds for the job to complete..."
-        Start-Sleep -Seconds $waitTimeBetweenOozieJobStatusCheck
-        $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $creds 
-        $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-        $JobStatus = $jsonResponse[0].("status")
-        }
-
-        Write-Host "$(Get-Date -format 'G'):$oozieJobId is in $JobStatus state!"-ForegroundColor Green
+	    Write-Host "Sleeping for $waitTimeBetweenOozieJobStatusCheck seconds until the job metadata is populated in the Oozie metastore..." -ForegroundColor Green
+	    Start-Sleep -Seconds $waitTimeBetweenOozieJobStatusCheck
+	
+	    Write-Host "Getting job status and waiting for the job to complete..." -ForegroundColor Green
+	    $clusterUriGetJobStatus = "https://$clusterName.hdinsightservices.cn:443/oozie/v2/job/" + $oozieJobId + "?show=info"
+	    $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $creds 
+	    $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
+	    $JobStatus = $jsonResponse[0].("status")
+	
+	    while($JobStatus -notmatch "SUCCEEDED|KILLED")
+	    {
+	        Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state...waiting $waitTimeBetweenOozieJobStatusCheck seconds for the job to complete..."
+	        Start-Sleep -Seconds $waitTimeBetweenOozieJobStatusCheck
+	        $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $creds 
+	        $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
+	        $JobStatus = $jsonResponse[0].("status")
+	    }
+	
+	    Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state!" -ForegroundColor Green
 
 7.  如果你的 HDinsight 群集是 2.1 版的，请将“<https://$clusterName.hdinsightservice.cn:443/oozie/v2/>”替换为“<https://$clusterName.hdinsightservice.cn:443/oozie/v1/>”。HDInsight 群集版本 2.1 不支持 Web 服务的版本 2。
 
