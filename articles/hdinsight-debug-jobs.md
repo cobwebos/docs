@@ -3,7 +3,6 @@
 # 调试 HDInsight：错误消息
 
 ##介绍
-
 本主题中列举的错误消息旨在帮助 Azure HDInsight 用户了解在使用 Azure PowerShell 管理服务时可能会遇到的错误情况，并向他们建议从错误中恢复时可以执行哪些步骤。
 
 其中某些错误消息也可以在使用 Azure 门户管理 HDinsight 群集时在该门户中看到。但是，由于在此上下文中针对可能的补救措施的约束，你可能会遇到的其他一些错误消息可能不是很精细。将在问题得到明显缓解的上下文中提供其他错误消息。例如，如果违反了针对参数的约束，将在输入了值的框的右侧弹出消息。这里是请求了过多的数据节点的情形。补救措施是将该数值减少到 22 或更小的允许值。
@@ -63,6 +62,8 @@
 [VersionNotSupportedInRegion](#VersionNotSupportedInRegion)	
 [WasbAccountConfigNotFound](#WasbAccountConfigNotFound)
 
+
+
 <h2><a id="discription-mitigation-errors"></a>错误的诊断和缓解</h2>
 
 
@@ -75,19 +76,17 @@
 - **缓解**：用户应该创建当前支持它们的群集区域：中国东部、中国北部。
 
 <h3><a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound</h3>
-
 - **描述**：服务器无法找到请求的群集记录。
 - **缓解**：重试操作。
 
 <h3><a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord</h3>
-
 - **描述**：群集 DNS 名称 *yourDnsName* 无效。请确保名称以字母数字开头和结尾，并且只能包含“-”特殊符号
 - **缓解**：确保你已将有效的 DNS 名称用于群集，该名称以字母数字开头和结尾，并且不包含除了短划线“-”之外的任何特殊字符，然后重试操作。
 
 <h3><a id="ClusterNameUnavailable"></a>ClusterNameUnavailable</h3>
-
 - **描述**：群集名称 *yourClusterName* 不可用。请选取另一个名称。
 - **缓解**：用户应该指定唯一且不存在的群集名称，然后重试。如果用户正在使用门户，则 UI 将通知他们该群集名称是否已在创建步骤期间使用。
+ 
 
 <h3><a id="ClusterPasswordInvalid"></a>ClusterPasswordInvalid</h3>
 - **描述**：群集密码无效。密码的长度必须至少为 10 个字符，并且必须包含至少一个数字、大写字母、小写字母和特殊字符且没有空格，不应包含用户名作为密码的一部分。
@@ -102,10 +101,9 @@
 - **缓解**：提供有效的 DNS 群集用户名，然后重试操作。
 
 <h3><a id="ContainerNameMisMatchWithDnsName"></a>ContainerNameMisMatchWithDnsName</h3>
-
 - **描述**：URI *yourcontainerURI* 中的容器名称和请求正文中的 DNS 名称 *yourDnsName* 必须相同。
 - **缓解**：确保容器名称和 DNS 名称相同，然后重试操作。
--   
+
 <h3><a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound</h3>
 - **描述**：无效的群集配置。在节点大小中找不到任何数据节点定义。
 - **缓解**：重试操作。
@@ -163,15 +161,13 @@
 - **缓解**：释放你的订阅中的资源或者增加可用于订阅的资源，然后尝试再次创建群集。
 
 <h3><a id="InternalErrorRetryRequest"></a>InternalErrorRetryRequest</h3>
-
 - **描述**：服务器遇到内部错误。请重试请求。
 - **缓解**：重试请求。
 
 <h3><a id="InvalidAzureStorageLocation"></a>InvalidAzureStorageLocation</h3>
-
 - **描述**：Azure 存储位置 *dataRegionName* 不是有效位置。请确保区域正确并重试请求。
 - **缓解**：选择支持 HDInsight 的存储位置，检查你的群集是否是共置的，然后重试操作。
--   
+
 <h3><a id="InvalidNodeSizeForDataNode"></a>InvalidNodeSizeForDataNode</h3>
 - **描述**：数据节点的 VM 大小无效。所有数据节点仅支持“大型 VM”大小。
 - **缓解**：指定数据节点支持的节点大小，然后重试操作。
@@ -230,11 +226,11 @@
 
 <h3><a id="UnableToResolveDNS"></a>UnableToResolveDNS</h3>
 - **描述**：无法解析 DNS *yourDnsUrl*。请确保提供针对 Blob 终结点的完全限定 URL。
-- **缓解**：提供有效的 Blob URL。该 URL 必须完全有效，包括以 *<http://>* 开头和以 *.cn* 结尾。通常可以在 manage.windowsazure.cn 门户的“存储”选项卡中找到该完全限定 URL。
+- **缓解**：提供有效的 Blob URL。该 URL 必须完全有效，包括以 *http://* 开头和以 *.cn* 结尾。通常可以在 manage.windowsazure.cn 门户的“存储”选项卡中找到该完全限定 URL。
 
 <h3><a id="UnableToVerifyLocationOfResource"></a>UnableToVerifyLocationOfResource</h3>
 - **描述**：无法验证资源 *yourDnsUrl* 的位置。请确保提供针对 Blob 终结点的完全限定 URL。
-- **缓解**：提供有效的 Blob URL。该 URL 必须完全有效，包括以 *<http://>* 开头和以 *.cn* 结尾。通常可以在 manage.windowsazure.cn 门户的“存储”选项卡中找到该完全限定 URL。
+- **缓解**：提供有效的 Blob URL。该 URL 必须完全有效，包括以 *http://* 开头和以 *.cn* 结尾。通常可以在 manage.windowsazure.cn 门户的“存储”选项卡中找到该完全限定 URL。
 
 <h3><a id="VersionCapabilityNotAvailable"></a>VersionCapabilityNotAvailable</h3>
 - **描述**：版本功能不可用于版本 *specifiedVersion* 和订阅 ID *yourSubscriptionId*。
@@ -259,3 +255,9 @@
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/en-us/library/dn479185.aspx
 
 [image-hdi-debugging-error-messages-portal]: ./media/hdinsight-debug-jobs/hdi-debug-errormessages-portal.png
+
+
+
+
+
+
