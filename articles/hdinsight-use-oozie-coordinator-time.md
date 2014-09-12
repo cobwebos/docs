@@ -40,7 +40,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
         [TRACE] 816
         [WARN]  4
 
-    有关 Hive 的详细信息，请参阅[将 Hive 与 HDInsight 配合使用][]。
+    有关 Hive 的详细信息，请参阅[将 Hive 与 HDInsight 配合使用][hdinsight-hive]。
 
 2.  Sqoop 操作将 HiveQL 操作输出结果导出到 Azure SQL 数据库中的表。有关 Sqoop 的详细信息，请参阅[将 Sqoop 与 HDInsight 配合使用][hdinsight-sqoop]。
 
@@ -75,7 +75,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 	<tr><td>SQL 数据库名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop 要将数据导出到其中的 Azure SQL Database。 </td></tr>
 	</table>
 
-    > [WACN.NOTE] 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。如果禁用了此防火墙设置，则必须从 Azure 管理门户启用它。有关创建 SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL Database][]。
+    > [WACN.NOTE] 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。如果禁用了此防火墙设置，则必须从 Azure 管理门户启用它。有关创建 SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL Database][sqldatabase-create-configue]。
 
 > [WACN.NOTE] 将值填入表。这将有助于学习本教程。
 
@@ -103,9 +103,9 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 
     该脚本中使用了三个变量：
 
-    -   \${hiveTableName}
-    -   \${hiveDataFolder}
-    -   \${hiveOutputFolder}
+    -   ${hiveTableName}
+    -   ${hiveDataFolder}
+    -   ${hiveOutputFolder}
 
     工作流定义文件（本教程中的 workflow.xml）在运行时会将三个值传递到这个 HiveQL 脚本。
 
@@ -197,7 +197,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 	<tr><td>${hiveOutputFolder}</td><td>Hive INSERT OVERWRITE 语句的输出文件夹。这是用于 Sqoop Export export-dir 的同一个文件夹。</td></tr>
 	</table>
 
-    有关 Oozie 工作流以及使用工作流操作的详细信息，请参阅 [Apache Oozie 4.0 文档][]（用于 HDInsight 群集版本 3.0）或 [Apache Oozie 3.3.2 文档][]（用于 HDInsight 群集版本 2.1）。
+    有关 Oozie 工作流以及使用工作流操作的详细信息，请参阅 [Apache Oozie 4.0 文档][apache-oozie-400]（用于 HDInsight 群集版本 3.0）或 [Apache Oozie 3.3.2 文档][apache-oozie-332]（用于 HDInsight 群集版本 2.1）。
 
 2.  将该文件另存为 **C:\\Tutorials\\UseOozie\\workflow.xml**，采用 ANSI(ASCII) 编码（如果你的文本编辑器不提供该选项，请使用记事本）。
 
@@ -326,7 +326,7 @@ WASB 语法是：
         # 用于存储 Oozie 教程文件的 WASB 文件夹。
         $destFolder = "tutorials/useoozie"  # 此处请勿使用长路径
 
-    有关这些变量的详细说明，请参阅本教程中的[先决条件][]一节。
+    有关这些变量的详细说明，请参阅本教程中的[先决条件](#prerequisites)一节。
 
 4.  在脚本窗格中将以下内容追加到脚本：
 
@@ -396,7 +396,7 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 
 1.  打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell\_ISE**，然后单击 **Windows PowerShell ISE**。请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][powershell-start]）。
 
-2.  将以下脚本复制到脚本窗格，然后设置前 14 个变量（跳过第 6 个：\$storageUri）。
+2.  将以下脚本复制到脚本窗格，然后设置前 14 个变量（跳过第 6 个：$storageUri）。
 
         #HDInsight 群集变量
         $clusterName = "<HDInsightClusterName>"
@@ -436,9 +436,9 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
         $passwd = ConvertTo-SecureString $clusterPassword -AsPlainText -Force
         $creds = New-Object System.Management.Automation.PSCredential ($clusterUsername, $passwd)
 
-    有关这些变量的详细说明，请参阅本教程中的[先决条件][]一节。
+    有关这些变量的详细说明，请参阅本教程中的[先决条件](#prerequisites)一节。
 
-    \$coordstart 和 \$coordend 是工作流的开始和结束时间。若要了解 UTC/GMT 时间，请在 bing.com 上搜索“utc 时间”。\$coordFrequency 是所需要的该工作流运行的频率（以分钟计）。
+    $coordstart 和 $coordend 是工作流的开始和结束时间。若要了解 UTC/GMT 时间，请在 bing.com 上搜索“utc 时间”。$coordFrequency 是所需要的该工作流运行的频率（以分钟计）。
 
 3.  将以下内容追加到脚本。这部分定义 Oozie 负载：
 
