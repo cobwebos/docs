@@ -20,7 +20,6 @@
 
 ##<a id="whatisoozie"></a>什么是 Oozie
 
-
 Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Hadoop 堆栈集成，支持 Apache MapReduce、Apache Pig、Apache Hive 和 Apache Sqoop 的 Hadoop 作业。它也能用于安排特定于某系统的作业，例如 Java 程序或 shell 脚本。
 
 你要实现的工作流包含两个操作：
@@ -219,36 +218,13 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 
 	该定义文件中使用了五个变量：
 
-	<table>
-	<thead>
-	<tr class="header">
-	<th align="left">变量</th>
-	<th align="left">说明</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr class="odd">
-	<td align="left">${coordFrequency}</td>
-	<td align="left">作业暂停时间。频率总是用分钟来表示的。</td>
-	</tr>
-	<tr class="even">
-	<td align="left">${coordStart}</td>
-	<td align="left">作业开始时间。</td>
-	</tr>
-	<tr class="odd">
-	<td align="left">${coordEnd}</td>
-	<td align="left">作业结束时间。</td>
-	</tr>
-	<tr class="even">
-	<td align="left">${coordTimezone}</td>
-	<td align="left">Oozie 在一个没有 DST（通常为 UTC）的固定时区中处理协调器作业，此时区被称为&ldquo;Oozie 处理时区&rdquo;。</td>
-	</tr>
-	<tr class="odd">
-	<td align="left">${wfPath}</td>
-	<td align="left">workflow.xml 的路径。如果该工作流文件名不是默认文件名 (workflow.xml)，则必须指定该名称。</td>
-	</tr>
-	</tbody>
-	</table>
+	| Variable          | Description |
+	| ------------------|------------ |
+	| ${coordFrequency} | Job pause time. Frequency is always expressed in minutes. |
+	| ${coordStart}     | Job start time. |
+	| ${coordEnd}       | Job end time. |
+    | ${coordTimezone}  | Oozie processes coordinator jobs in a fixed timezone with no DST (typically UTC ), this timezone is referred as 'Oozie processing timezone'. |
+	| ${wfPath}         | The path for the workflow.xml.  If the workflow file name is not the default file name (workflow.xml), you must specify it. |
 
 2. 将该文件另存为 **C:\Tutorials\UseOozie\coordinator.xml**，采用 ANSI(ASCII) 编码（如果你的文本编辑器不提供该选项，请使用记事本）。
 

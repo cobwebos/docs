@@ -265,7 +265,7 @@ WASB 语法是：
 		$storageAccountName = "<StorageAccountName>"
 		$containerName = "<BlobStorageContainerName>"
 		
-        # SQL 数据库变量
+		# SQL 数据库变量
 		$sqlDatabaseServer = "<SQLDatabaseServerName>"  
 		$sqlDatabaseLogin = "<SQLDatabaseLoginName>"
 		$sqlDatabaseLoginPassword = "SQLDatabaseLoginPassword>"
@@ -330,7 +330,7 @@ WASB 语法是：
 		uploadOozieFiles;
 				
 		# 将 example/data/sample.log 复制一份到 example/data/log4j/sample.log
-        prepareHiveDataFile;
+		prepareHiveDataFile;
 
 		# 在 SQL 数据库上创建 log4jlogsCount 表
 		prepareSQLDatabase;
