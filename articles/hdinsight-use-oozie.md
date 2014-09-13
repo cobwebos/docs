@@ -51,7 +51,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 > [WACOM.NOTE] 本教程适用于 HDInsight 群集版本 2.1 和 3.0。本文尚未在 HDInsight Emulator 上测试过。
 
 
-## <a id="prerequisites"></a>先决条件
+##<a id="prerequisites"></a>先决条件
 
 在开始阅读本教程前，你必须具有：
 
@@ -210,7 +210,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 
 - 将 HiveQL 脚本 (useoozie.hql) 复制到 Azure Blob 存储 wasb:///tutorials/useoozie/useoozie.hql。
 - 将 workflow.xml 复制到 wasb:///tutorials/useoozie/workflow.xml。
--   将数据文件 (/example/data/sample.log) 复制到 wasb:///tutorials/useoozie/data/sample.log。
+- 将数据文件 (/example/data/sample.log) 复制到 wasb:///tutorials/useoozie/data/sample.log。
 - 创建用于存储 Sqoop 导出数据的 SQL Database 表。表的名称为 *log4jLogCount*。
 
 **了解 HDInsight 存储**
@@ -255,9 +255,9 @@ WASB 语法是：
 
 		Add-AzureAccount
 
-    系统将提示你输入 Azure 帐户凭据。这种添加订阅连接的方法会超时，12 个小时之后，你将需要再次运行该 cmdlet。
+	系统将提示你输入 Azure 帐户凭据。这种添加订阅连接的方法会超时，12 个小时之后，你将需要再次运行该 cmdlet。
 
-	> [WACOM.NOTE] 如果你有多个 Azure 订阅，而默认订阅不是你想使用的，则请使用 **Select-AzureSubscription** cmdlet 来选择正确的订阅。
+	> [WACOM.NOTE] 如果你有多个 Azure 订阅，而默认订阅不是你想使用的，则请使用 <strong>Select-AzureSubscription</strong> cmdlet 来选择正确的订阅。
 
 3. 将以下脚本复制到脚本窗格，然后设置前六个变量
 
@@ -335,7 +335,7 @@ WASB 语法是：
 		# 在 SQL 数据库上创建 log4jlogsCount 表
 		prepareSQLDatabase;
 
-5. 单击“运行脚本” 或按 **F5** 键以运行该脚本。输出应如下所示：
+5. 单击**运行脚本** 或按 **F5** 键以运行该脚本。输出应如下所示：
 
 	![教程准备的输出结果][img-preparation-output]
 
@@ -480,7 +480,7 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 	
 	    # 启动 Oozie 作业
 	    Write-Host "Starting the Oozie job $oozieJobId..."-ForegroundColor Green
-	    $clusterUriStartJob = "https://$clusterName.hdinsightservice.cn:443/oozie/v2/job/" + $oozieJobId + "?action=start"
+	    $clusterUriStartJob = "https://$clusterName.hdinsightservices.cn:443/oozie/v2/job/" + $oozieJobId + "?action=start"
 	    $response = Invoke-RestMethod -Method Put -Uri $clusterUriStartJob -Credential $creds | Format-Table -HideTableHeaders #-debug
 
 6. 将以下内容追加到脚本。这部分检查 Oozie 作业状态：
@@ -490,7 +490,7 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 	    Start-Sleep -Seconds $waitTimeBetweenOozieJobStatusCheck
 	
 	    Write-Host "Getting job status and waiting for the job to complete..." -ForegroundColor Green
-	    $clusterUriGetJobStatus = "https://$clusterName.hdinsightservice.cn:443/oozie/v2/job/" + $oozieJobId + "?show=info"
+	    $clusterUriGetJobStatus = "https://$clusterName.hdinsightservices.cn:443/oozie/v2/job/" + $oozieJobId + "?show=info"
 	    $response = Invoke-RestMethod -Method Get -Uri $clusterUriGetJobStatus -Credential $creds 
 	    $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
 	    $JobStatus = $jsonResponse[0].("status")
@@ -506,9 +506,9 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 	
 	    Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state!" -ForegroundColor Green
 
-7. 如果你的 HDinsight 群集是 2.1 版的，请将“<https://$clusterName.hdinsightservice.cn:443/oozie/v2/>”替换为“<https://$clusterName.hdinsightservice.cn:443/oozie/v1/>”。HDInsight 群集版本 2.1 不支持 Web 服务的版本 2。
+7. 如果你的 HDinsight 群集是 2.1 版的，请将“https://$clusterName.hdinsightservices.cn:443/oozie/v2/”替换为“https://$clusterName.hdinsightservices.cn:443/oozie/v1/”。HDInsight 群集版本 2.1 不支持 Web 服务的版本 2。
 
-8. 单击“运行脚本” 或按 **F5** 键以运行该脚本。输出结果将会类似于：
+8. 单击**运行脚本** 或按 **F5** 键以运行该脚本。输出结果将会类似于：
 
 	![教程运行工作流输出][img-runworkflow-output]
 
