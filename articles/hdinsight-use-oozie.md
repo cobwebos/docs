@@ -91,7 +91,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 
 1. **DROP TABLE 语句**删除 log4j Hive 表（如果存在）。
 2. **CREATE TABLE 语句**创建指向 log4j 日志文件位置
-3. 的 log4j Hive 外部表。字段分隔符为“,”。默认分行符为“\\n”。Hive 外部表用于在你想多次运行 Oozie 工作流的情况下避免数据文件从原始位置被删除。
+3. 的 log4j Hive 外部表。字段分隔符为“,”。默认分行符为“\n”。Hive 外部表用于在你想多次运行 Oozie 工作流的情况下避免数据文件从原始位置被删除。
 4. **INSERT OVERWRITE 语句**从 log4j Hive 表统计每个日志级类型的次数，并将输出结果保存到 Azure 储存空间 - Blob (WASB) 位置。
 
 有一个已知的 Hive 路径问题。你在提交 Oozie 作业时将会遇到这个问题。可在 [TechNet Wiki][technetwiki-hive-error] 上找到用于解决此问题的说明。
@@ -112,7 +112,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 			
 	工作流定义文件（本教程中的 workflow.xml）在运行时会将三个值传递到这个 HiveQL 脚本。
 		
-2. 将该文件另存为 **C:\\Tutorials\\UseOozie\\useooziewf.hql**，采用 **ANSI(ASCII)** 编码（如果你的文本编辑器不提供该选项，请使用记事本）。在本教程的后面，此脚本文件将被部署到 HDInsight 群集。
+2. 将该文件另存为 **C:\Tutorials\UseOozie\useooziewf.hql**，采用 **ANSI(ASCII)** 编码（如果你的文本编辑器不提供该选项，请使用记事本）。在本教程的后面，此脚本文件将被部署到 HDInsight 群集。
 
 
 
@@ -202,7 +202,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 
 	有关 Oozie 工作流以及使用工作流操作的详细信息，请参阅 [Apache Oozie 4.0 文档][apache-oozie-400]（用于 HDInsight 群集版本 3.0）或 [Apache Oozie 3.3.2 文档][apache-oozie-332]（用于 HDInsight 群集版本 2.1）。
 
-2. 将该文件另存为 **C:\\Tutorials\\UseOozie\\workflow.xml**，采用 ANSI(ASCII) 编码（如果你的文本编辑器不提供该选项，请使用记事本）。
+2. 将该文件另存为 **C:\Tutorials\UseOozie\workflow.xml**，采用 ANSI(ASCII) 编码（如果你的文本编辑器不提供该选项，请使用记事本）。
 	
 ## <a id="deploy"></a>部署 Oozie 项目并准备教程
 
@@ -517,7 +517,7 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 **检查作业错误日志**
 
 若要对工作流进行故障排除，可从群集头节点找到 Oozie 日志文件，位置是
-*C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log* 或 *C:\\apps\\dist\\oozie-4.0.0.2.0.7.0-1528\\oozie-win-distro\\logs\\Oozie.log*。有关 RDP 的信息，请参阅[使用管理门户管理 HDInsight 群集][hdinsight-admin-portal]。
+*C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log* 或 *C:\apps\dist\oozie-4.0.0.2.0.7.0-1528\oozie-win-distro\logs\Oozie.log*。有关 RDP 的信息，请参阅[使用管理门户管理 HDInsight 群集][hdinsight-admin-portal]。
 
 **重新运行教程**
 

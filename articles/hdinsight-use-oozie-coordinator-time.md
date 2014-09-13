@@ -78,7 +78,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 	<tr><td>SQL 数据库名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop 要将数据导出到其中的 Azure SQL Database。 </td></tr>
 	</table>
 
-	> [WACN.NOTE] 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。如果禁用了此防火墙设置，则必须从 Azure 管理门户启用它。有关创建 SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL Database][sqldatabase-create-configue]。
+	> [WACOM.NOTE] 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。如果禁用了此防火墙设置，则必须从 Azure 管理门户启用它。有关创建 SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL Database][sqldatabase-create-configue]。
 
 
 > [WACOM.NOTE] 将值填入表。这将有助于学习本教程。
@@ -92,7 +92,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 
 1. **DROP TABLE 语句**删除 log4j Hive 表（如果存在）。
 2. **CREATE TABLE 语句**创建指向 log4j 日志文件位置
-3. 的 log4j Hive 外部表。字段分隔符为“,”。默认分行符为“\\n”。Hive 外部表用于在你想多次运行 Oozie 工作流的情况下避免数据文件从原始位置被删除。
+3. 的 log4j Hive 外部表。字段分隔符为“,”。默认分行符为“\n”。Hive 外部表用于在你想多次运行 Oozie 工作流的情况下避免数据文件从原始位置被删除。
 4. **INSERT OVERWRITE 语句**从 log4j Hive 表统计每个日志级类型的次数，并将输出结果保存到 Azure 储存空间 - Blob (WASB) 位置。
 
 有一个已知的 Hive 路径问题。你在提交 Oozie 作业时将会遇到这个问题。可在 [TechNet Wiki][technetwiki-hive-error] 上找到用于解决此问题的说明。
@@ -113,7 +113,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 			
 	工作流定义文件（本教程中的 workflow.xml）在运行时会将三个值传递到这个 HiveQL 脚本。
 		
-2. 将该文件另存为 **C:\\Tutorials\\UseOozie\\useooziewf.hql**，采用 **ANSI(ASCII)** 编码（如果你的文本编辑器不提供该选项，请使用记事本）。在本教程的后面，此脚本文件将被部署到 HDInsight 群集。
+2. 将该文件另存为 **C:\Tutorials\UseOozie\useooziewf.hql**，采用 **ANSI(ASCII)** 编码（如果你的文本编辑器不提供该选项，请使用记事本）。在本教程的后面，此脚本文件将被部署到 HDInsight 群集。
 
 
 
@@ -203,7 +203,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 
 	有关 Oozie 工作流以及使用工作流操作的详细信息，请参阅 [Apache Oozie 4.0 文档][apache-oozie-400]（用于 HDInsight 群集版本 3.0）或 [Apache Oozie 3.3.2 文档][apache-oozie-332]（用于 HDInsight 群集版本 2.1）。
 
-2. 将该文件另存为 **C:\\Tutorials\\UseOozie\\workflow.xml**，采用 ANSI(ASCII) 编码（如果你的文本编辑器不提供该选项，请使用记事本）。
+2. 将该文件另存为 **C:\Tutorials\UseOozie\workflow.xml**，采用 ANSI(ASCII) 编码（如果你的文本编辑器不提供该选项，请使用记事本）。
 
 **定义协调器**
 
@@ -250,7 +250,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 	</tbody>
 	</table>
 
-2. 将该文件另存为 **C:\\Tutorials\\UseOozie\\coordinator.xml**，采用 ANSI(ASCII) 编码（如果你的文本编辑器不提供该选项，请使用记事本）。
+2. 将该文件另存为 **C:\Tutorials\UseOozie\coordinator.xml**，采用 ANSI(ASCII) 编码（如果你的文本编辑器不提供该选项，请使用记事本）。
 
 ##<a id="deploy"></a>部署 Oozie 项目并准备教程
 
@@ -271,9 +271,9 @@ WASB 语法是：
 
 	wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/<路径>/<文件名>
 
-> [WACN.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
+> [WACOM.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
 
-> [WACN.NOTE] WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]。
+> [WACOM.NOTE] WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]。
 
 存储在默认文件系统容器中的文件可以使用以下任一 URI 从 HDInsight 进行访问（以 workflow.xml 为例）：
 
@@ -306,7 +306,7 @@ WASB 语法是：
 
 	系统将提示你输入 Azure 帐户凭据。这种添加订阅连接的方法会超时，12 个小时之后，你将需要再次运行该 cmdlet。
 
-	> [WACN.NOTE] 如果你有多个 Azure 订阅，而默认订阅不是你想使用的，则请使用 **Select-AzureSubscription** cmdlet 来选择正确的订阅。
+	> [WACOM.NOTE] 如果你有多个 Azure 订阅，而默认订阅不是你想使用的，则请使用 **Select-AzureSubscription** cmdlet 来选择正确的订阅。
 
 3.  将以下脚本复制到脚本窗格，然后设置前六个变量
 
@@ -661,7 +661,7 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 
 **检查作业错误日志**
 
-若要解决工作流的疑难问题，可从群集头节点中的 C:\\apps\\dist\\oozie-3.3.2.1.3.2.0-05\\oozie-win-distro\\logs\\Oozie.log 位置找到 Oozie 日志文件。有关 RDP 的信息，请参阅[使用管理门户管理 HDInsight 群集][hdinsight-admin-portal]。
+若要解决工作流的疑难问题，可从群集头节点中的 C:\apps\dist\oozie-3.3.2.1.3.2.0-05\oozie-win-distro\logs\Oozie.log 位置找到 Oozie 日志文件。有关 RDP 的信息，请参阅[使用管理门户管理 HDInsight 群集][hdinsight-admin-portal]。
 
 **重新运行教程**
 
