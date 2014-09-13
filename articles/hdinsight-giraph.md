@@ -1,204 +1,225 @@
 <properties title="How to use Giraph with HDInsight" pageTitle="How to use Apache Giraph with Azure HDInsight" description="Learn how to use Apache Giraph to perform graph processing with Azure HDInsight" metaKeywords="Azure HDInsight Apache Giraph, hdinsight giraph, hdinsight graph, hadoop giraph, azure hadoop, hadoop graph" services="hdinsight" solutions="big-data" documentationCenter="" authors="larryfr" videoId="" scriptId="" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/14/2014" ms.author="larryfr" />
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/14/2014" ms.author="larryfr"></tags>
 
-##Learn how to use Apache Giraph with Azure HDInsight (Hadoop)
+## 了解如何将 Apache Giraph 与 Azure HDInsight (Hadoop) 配合使用
 
-[Apache Giraph][giraph] allows you to perform graph processing using Hadoop, and can be used with Azure HDInsight. 
+[Apache Giraph][giraph] 可让你使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。
 
-Graphs model relationships between objects, such as the connections between routers on a large network like the Internet, or relationships between people on social networks (sometimes referred to as a social graph.) Graph processing allows you to reason about the relationships between objects in a graph, such as:
+图形可为对象之间的关系建模，例如，为大型网络（例如 Internet）上的路由器之间的连接建模，或者为社交网络上的人物之间的关系建模（有时称为社交图形）。通过图形处理，你可以推导出图形中对象之间的关系，例如：
 
-* Identifying potential friends based on your current relationships
+-   根据当前的关系识别潜在的朋友
 
-* Identifying the shortest route between two computers in a network
+-   识别网络中两台计算机之间的最短路由
 
-* Calculating the page rank of web pages
+-   计算网页的排名
 
-##You will learn how to
+## 本文内容
 
-* [Build and deploy Apache Giraph to an HDInsight cluster](#build)
+-   [生成 Apache Giraph 并将其部署到 HDInsight 群集](#build)
 
-* [Run the SimpleShortestPathsComputation example](#run)
+-   [运行 SimpleShortestPathsComputation 示例](#run)
 
-	For a list of other examples provided with Giraph, see [Package org.apache.giraph.examples](https://giraph.apache.org/apidocs/org/apache/giraph/examples/package-summary.html).
+    有关 Giraph 随附的其他示例的列表，请参阅 [Package org.apache.giraph.examples](https://giraph.apache.org/apidocs/org/apache/giraph/examples/package-summary.html)。
 
-* [Troubleshoot problems you may encounter](#tshoot)
+-   [排查你可能会遇到的问题](#tshoot)
 
-##Requirements
+## 要求
 
-* An Azure HDInsight cluster, version 3.0 or 3.1
+-   Azure HDInsight 群集版本 3.0 或 3.1
 
-* [Git](http://git-scm.com/)
+-   [Git](http://git-scm.com/)
 
-* Java 1.6
+-   Java 1.6
 
-* [Maven](http://maven.apache.org/) 3 or higher
+-   [Maven](http://maven.apache.org/) 3 或更高版本
 
-##<a id="build"></a>Build and deploy Giraph
+## <span id="build"></span></a>生成并部署 Giraph
 
-Giraph is not provided as part of the HDInsight cluster, so must be built from source.  You can find more information on building Giraph on the [Giraph repository](https://github.com/apache/giraph).
+Giraph 未作为 HDInsight 群集的一部分提供，因此必须从源生成。可以在 [Giraph 存储库](https://github.com/apache/giraph)中找到有关如何生成 Giraph 的详细信息。
 
-1. Currently (7-14-2014,) Giraph requires a patch to work with WASB file storage used by HDInsight. The patch has been submitted to the Apache Giraph project, but has not been accepted yet. Download the patch from the __attachments__ section of [GIRAPH-930](https://issues.apache.org/jira/browse/GIRAPH-930) and save it to the local drive as __giraph-930.diff__.
+1.  目前 (7-14-2014)，Giraph 需要安装一个修补程序才能与 HDInsight 使用的 WASB 文件存储配合工作。该修补程序已提交到 Apache Giraph 项目，但尚未获得批准。请从 [GIRAPH-930](https://issues.apache.org/jira/browse/GIRAPH-930) 的“附件”部分下载该修补程序，并将它作为 **giraph-930.diff** 保存到本地驱动器。
 
-1. From a command-line, use the following Git command to create a clone of the Giraph repository.
+2.  在命令行中，使用以下 Git 命令创建 Giraph 存储库的克隆。
 
-		git clone https://github.com/apache/giraph.git
+        git clone https://github.com/apache/giraph.git
 
-2. Change directories into the __giraph__ directory created in by the clone operation in step 2.
+3.  将目录切换到步骤 2 的克隆操作所创建的 **giraph** 目录。
 
-		cd giraph
+        cd giraph
 
-3. Merge the patch into the local repository using the following command.
+4.  使用以下命令将修补程序合并到本地存储库中。
 
-		git apply giraph-930.diff
+        git apply giraph-930.diff
 
-	Replace __giraph-930.diff__ with the path to the file you created in step 1.
+    将 **giraph-930.diff** 替换为你在步骤 1 中创建的文件的路径。
 
-3. Build Giraph for your HDInsight cluster version, using one of the following commands.
+5.  使用下列命令之一为你的 HDInsight 群集版本生成 Giraph。
 
-	* For __HDInsight 3.0__ (Hadoop 2.2)
+    -   对于 **HDInsight 3.0** (Hadoop 2.2)
 
-			mvn package -Phadoop_0.20.203 - DskipTests
+            mvn package -Phadoop_0.20.203 - DskipTests
 
-	* For __HDInsight 3.1__ (Hadoop 2.4)
+    -   对于 **HDInsight 3.1** (Hadoop 2.4)
 
-			mvn package -Phadoop_0.23 -DskipTests
+            mvn package -Phadoop_0.23 -DskipTests
 
-	Once the build is complete, you will find the examples JAR file at __\\giraph\\giraph-examples\\target__.
+    完成生成操作后，**\\giraph\\giraph-examples\\target** 中会出现示例 JAR 文件。
 
-4. Upload the example JAR file to primary storage for your HDInsight cluster using [Azure PowerShell][aps] and the [HDInsight-Tools][tools].
+6.  使用 [Azure PowerShell][aps] 和 [HDInsight-Tools][tools] 将该示例 JAR 文件上载到 HDInsight 群集的主存储。
 
-		Add-HDInsightFile giraph-examples-1.1.0-SNAPSHOT-for-hadoop-0.23.1-jar-with-dependencies.jar example/jars/giraph.jar clustername
+        Add-HDInsightFile giraph-examples-1.1.0-SNAPSHOT-for-hadoop-0.23.1-jar-with-dependencies.jar example/jars/giraph.jar clustername
 
-	Replace __giraph-examples-1.1.0-SNAPSHOT-for-hadoop-0.23.1-jar-with-dependencies.jar__ with the path and name of the JAR file produced in the previous step, and __clustername__ with the name of your HDInsight cluster. For example, if you build the package with the `-Phadoop_0.20.203` parameter, the file name of the JAR will include __hadoop-0.20.203__.
+    将 **giraph-examples-1.1.0-SNAPSHOT-for-hadoop-0.23.1-jar-with-dependencies.jar** 替换为你在前一步骤生成的 JAR 文件的路径和名称，并将 **clustername** 替换为 HDInsight 群集的名称。例如，如果你使用 `-Phadoop_0.20.203` 参数生成了包，则 JAR 的文件名将包含 **hadoop-0.20.203**。
 
-	Once the command completes, the JAR file will have been uploaded to wasb:///example/jars/giraph.jar.
+    完成该命令后，JAR 文件即已上载到 wasb:///example/jars/giraph.jar。
 
-	> [WACOM.NOTE] for a list of utilities that can be used to upload files to HDInsight, see [Upload data for Hadoop jobs in HDInsight](http://azure.microsoft.com/en-us/documentation/articles/hdinsight-upload-data/).
+    > [WACOM.NOTE] 有关可用于将文件上载到 HDInsight 的实用工具列表，请参阅[在 HDInsight 中上载 Hadoop 作业的数据](http://azure.microsoft.com/en-us/documentation/articles/hdinsight-upload-data/)。
 
-##<a id="run"></a>Run the example
+## <span id="run"></span></a>运行示例
 
-The SimpleShortestPathsComputation demonstrates the basic [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf) implementation for finding the shortest path between objects in a graph. Use the following steps to upload the sample data, run a job using the SimpleShortestPathsComputation example, and then view the results.
+SimpleShortestPathsComputation 演示了有关查找图形中对象之间最短路径的基本 [Pregel](http://people.apache.org/~edwardyoon/documents/pregel.pdf) 实现。请执行以下步骤，以上载示例数据，使用 SimpleShortestPathsComputation 示例运行作业，然后查看结果。
 
-> [WACOM.NOTE] The source for this, and other examples, is available in the [release-1.1 branch](https://github.com/apache/giraph/tree/release-1.1) of the [GitHub repository](https://github.com/apache/giraph).
+> [WACOM.NOTE] [GitHub 存储库](https://github.com/apache/giraph/tree/release-1.1)的 [release-1.1 分库](https://github.com/apache/giraph)中提供了此示例和其他示例的源代码。
 
-1. Create a new file named __tiny\_graph.txt__. It should contain the following lines.
+1.  创建名为 **tiny\_graph.txt** 的新文件。该文件应包含以下行。
 
-		[0,0,[[1,1],[3,3]]]
-		[1,0,[[0,1],[2,2],[3,1]]]
-		[2,0,[[1,2],[4,4]]]
-		[3,0,[[0,3],[1,1],[4,4]]]
-		[4,0,[[3,4],[2,4]]]
+        [0,0,[[1,1],[3,3]]]
+        [1,0,[[0,1],[2,2],[3,1]]]
+        [2,0,[[1,2],[4,4]]]
+        [3,0,[[0,3],[1,1],[4,4]]]
+        [4,0,[[3,4],[2,4]]]
 
-	This data describes a relationship between objects in a [directed graph](http://en.wikipedia.org/wiki/Directed_graph), using the format `[source_id,source_value,[[dest_id], [edge_value],...]]`. Each line represents a relationship between a __source\_id__ and one or more __dest\_id__ objects. The __edge\_value__ (or weight,) can be thought of as the strength or distance of the connection between the __source\_id__ and the __dest\_id__. 
+    此数据使用以下格式描述[定向图形][]中对象之间的关系：`[source_id,source_value,[[dest_id], [edge_value],...]]`. 每行代表一个 **source\_id** 对象与一个或多个 **dest\_id** 对象之间的关系。**edge\_value**（或权重）可被视为 **source\_id** 与 **dest\_id** 之间的连接的强度或距离。
 
-	Drawn out, and using the value (or weight,) as the distance between objects, the above data might look like this.
+    使用表示对象间距离的值（或权重）绘制图形后，上述数据可能与下面类似。
 
-	![tiny_graph.txt drawn as circles with lines of varying distance between](.\media\hdinsight-giraph\giraph-graph.png)
+    ![tiny\_graph.txt 中的对象绘制为圆圈，线条表示对象之间的不同距离](.\media\hdinsight-giraph\giraph-graph.png)
 
+2.  使用 [Azure PowerShell][aps] 和 [HDInsight-Tools][tools] 将 **tiny\_graph.txt** 文件上载到 HDInsight 群集的主存储。
 
-2. Upload the __tiny\_graph.txt__ file to the primary storage for your HDInsight cluster using [Azure PowerShell][aps] and the [HDInsight-Tools][tools].
+        Add-HDInsightFile tiny_graph.txt example/data/tiny_graph.txt clustername
 
-		Add-HDInsightFile tiny_graph.txt example/data/tiny_graph.txt clustername
+    将群集名称替换为你的 HDInsight 群集的名称。
 
-	Replace cluster name with the name of your HDInsight cluster.
+3.  将 **tiny\_graph.txt** 文件用作输入，使用以下 PowerShell 运行 **SimpleShortstPathsComputation** 示例。这要求你事先安装并配置 [Azure PowerShell][aps]。
 
-3. Use the following PowerShell to run the __SimpleShortstPathsComputation__ example, using the __tiny\_graph.txt__ file as input. This requires that you have installed and configured [Azure PowerShell][aps].
+        $clusterName = "clustername"
+        # Giraph examples JAR
+        $jarFile = "wasb:///example/jars/giraph.jar"
+        # Arguments for this job
+        $jobArguments = "org.apache.giraph.examples.SimpleShortestPathsComputation", `
+                        "-ca", "mapred.job.tracker=headnodehost:9010", `
+                        "-vif", "org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat", `
+                        "-vip", "wasb:///example/data/tinygraph.txt", `
+                        "-vof", "org.apache.giraph.io.formats.IdWithValueTextOutputFormat", `
+                        "-op",  "wasb:///example/output/shortestpaths", `
+                        "-w", "2"
+        # Create the definition
+        $jobDefinition = New-AzureHDInsightMapReduceJobDefinition `
+          -JarFile $jarFile `
+          -ClassName "org.apache.giraph.GiraphRunner" `
+          -Arguments $jobArguments
 
-		$clusterName = "clustername"
-		# Giraph examples JAR
-		$jarFile = "wasb:///example/jars/giraph.jar"
-		# Arguments for this job
-		$jobArguments = "org.apache.giraph.examples.SimpleShortestPathsComputation", `
-		                "-ca", "mapred.job.tracker=headnodehost:9010", `
-		                "-vif", "org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat", `
-		                "-vip", "wasb:///example/data/tinygraph.txt", `
-		                "-vof", "org.apache.giraph.io.formats.IdWithValueTextOutputFormat", `
-		                "-op",  "wasb:///example/output/shortestpaths", `
-		                "-w", "2"
-		# Create the definition
-		$jobDefinition = New-AzureHDInsightMapReduceJobDefinition `
-		  -JarFile $jarFile `
-		  -ClassName "org.apache.giraph.GiraphRunner" `
-		  -Arguments $jobArguments
-		
-		# Run the job, write output to the PowerShell window
-		$job = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $jobDefinition
-		Write-Host "Wait for the job to complete ..." -ForegroundColor Green
-		Wait-AzureHDInsightJob -Job $job
-		Write-Host "STDERR"
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $job.JobId -StandardError
-		Write-Host "Display the standard output ..." -ForegroundColor Green
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $job.JobId -StandardOutput
+        # Run the job, write output to the PowerShell window
+        $job = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $jobDefinition
+        Write-Host "Wait for the job to complete ..." -ForegroundColor Green
+        Wait-AzureHDInsightJob -Job $job
+        Write-Host "STDERR"
+        Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $job.JobId -StandardError
+        Write-Host "Display the standard output ..." -ForegroundColor Green
+        Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $job.JobId -StandardOutput
 
-	In the above example, replace __clustername__ with the name of your HDInsight cluster.
+    在上面的示例中，请将 **clustername** 替换为 HDInsight 群集的名称。
 
-###View the results
+### 查看结果
 
-Once the job has completed, the results will be stored in the __wasb:///example/out/shotestpaths__ folder as __part-m-#####__ files. Use [Azure PowerShell][aps] and the [HDInsight-Tools][tools] to download the output files.
+完成该作业后，结果将以 **part-m-\#\#\#\#\#** 文件形式存储在 **wasb:///example/out/shotestpaths** 文件夹中。使用 [Azure PowerShell][aps] 和 [HDInsight-Tools][tools] 下载输出文件。
 
-	Find-HDInsightFile example/output/shortestpaths/part* clustername | foreach-object { Get-HDInsightFile $_.name .  itsfullofstorage }
-	Cat example/output/shortestpaths/part*
+    Find-HDInsightFile example/output/shortestpaths/part* clustername | foreach-object { Get-HDInsightFile $_.name .  itsfullofstorage }
+    Cat example/output/shortestpaths/part*
 
-This will create the __example/output/shortestpaths__ directory structure in the current directory, and download the files beginning with __part__. The __Cat__ cmdlet will then display the contents of the files, which should appear similar to the following.
+这将在当前目录中创建 **example/output/shortestpaths** 目录结构，并下载以 **part** 开头的文件。然后，**Cat** cmdlet 将显示文件的内容，看上去应该与下面类似。
 
-	0	1.0
-	4	5.0
-	2	2.0
-	1	0.0
-	3	1.0
+    0   1.0
+    4   5.0
+    2   2.0
+    1   0.0
+    3   1.0
 
-The SimpleShortestPathComputation example is hard coded to start with the object ID 1 and find the shortest path to other objects. So the output should be read as `destination_id distance`, where distance is the value (or weight) of the edges traveled between object ID 1 and the target ID.
+SimpleShortestPathComputation 示例硬编码为从对象 ID 1 开始查找与其他对象间的最短路径。因此，输出应显示为 `destination_id distance`，其中，distance 为对象 ID 1 与目标 ID 的边缘之间的行程值（或权重）。
 
-Visualizing this, you can verify the results by traveling the shortest paths between ID 1 and all other objects. Note that the shortest path between ID 1 and ID 4 is 5. This is the total distance between <span style="color:orange">ID 1 and 3</span>, and then <span style="color:red">ID 3 and 4</span>.
+在可视化此数据的情况下，你可以通过体验 ID 1 与所有其他对象之间的最短路径来验证结果。请注意，ID 1 与 ID 4 之间的最短路径为 5。这是从 <span style="color:orange">ID 1 到 ID 3</span>，然后再从 <span style="color:red">ID 3 到 ID 4</span> 的总距离。
 
-![Drawing of objects as circles with shortest paths drawn between](.\media\hdinsight-giraph\giraph-graph-out.png)
+![将对象绘制为圆圈，并绘制对象之间的最短路径](.\media\hdinsight-giraph\giraph-graph-out.png)
 
-##<a id="tshoot"></a>Troubleshooting
+## <span id="tshoot"></span></a>故障排除
 
-###Output directory already exists
+### 输出目录已存在
 
-Giraph jobs create the specified output directory at run time. If the directory already exists, an error will occur stating that the output directory already exists.
+Giraph 作业在运行时将创建指定的输出目录。如果该目录已存在，则会出现错误，指示输出目录已存在。
 
-If you wish to run a job multiple times, you must either remove the output directory between jobs or specify a different output directory for each job.
+如果你想要多次运行某个作业，则必须删除作业之间的输出目录，或者为每个作业指定一个不同的输出目录。
 
-###<a id="cmd"></a>Using the Hadoop command line
+### <span id="cmd"></span></a>使用 Hadoop 命令行
 
-While this article demonstrates how to run a Giraph job via PowerShell, you can also run the job using the Hadoop command line.
+尽管本文演示了如何通过 PowerShell 运行 Giraph 作业，但你也可以使用 Hadoop 命令行运行该作业。
 
-> [WACOM.NOTE] The Hadoop command line is only available when connecting to the HDInsight cluster using Remote Desktop.
-> 
-> Remote desktop sessions to Azure compute resources such as the HDInsight cluster may only work from Windows-based remote desktop clients.
+> [WACOM.NOTE] 仅当使用远程桌面连接到 HDInsight 群集时，才可以使用 Hadoop 命令行。
+>
+> 与 HDInsight 群集等 Azure 计算资源建立的远程桌面会话只能从基于 Windows 的远程桌面客户端运行。
 
-To connect to the HDInsight cluster, perform the following steps:
+若要连接到 HDInsight 群集，请执行以下步骤：
 
-1. Using the [Azure management portal](https://manage.windowsazure.com), select your HDInsight cluster and then select __Configuration__.
+1.  使用 [Azure 管理门户](https://manage.windowsazure.com)选择你的 HDInsight 群集，然后选择“配置”。
 
-2. At the bottom of the page, select __Enable Remote__ and provide the user name, password, and expiration date for the remote desktop connection.
+2.  在页的底部，选择“启用远程”并提供用户名、密码和远程桌面连接的过期日期。
 
-3. After the request to enable remote desktop has been processed, a new entry to __Connect__ will appear at the bottom of the page. Select this to download the .RDP file for the remote desktop session.
+3.  处理启用远程桌面的请求后，页的底部将显示一个新的“连接”条目。选择此条目可以下载远程桌面会话的 .RDP 文件。
 
-4. The .RDP file can be saved, or opened immediately to launch the remote desktop client. During the connection process, you will be asked to provide the user name and password you used when enabling the remote desktop connection.
+4.  可以保存该 .RDP 文件，或者将它立即打开以启动远程桌面客户端。在连接过程中，系统将要求你提供你在启用远程桌面连接时使用的用户名和密码。
 
-5. Once connected, use the __Hadoop command line__ icon on the desktop to start the Hadoop command line.
+5.  建立连接后，请使用桌面上的“Hadoop 命令行”图标来启动 Hadoop 命令行。
 
-6. The following example demonstrates how to copy the __giraph.jar__ file to the cluster head node, and then run the job using the Hadoop command line.
+6.  以下示例演示了如何将 **giraph.jar** 文件复制到群集头节点，然后使用 Hadoop 命令行运行作业。
 
-		hadoop fs -copyToLocal wasb:///example/jar/giraph.jar
-		hadoop jar giraph.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca "mapred.job.tracker=headnodehost:9010" -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip wasb:///example/data/tinygraph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op wasb:///example/output/shortestpaths -w 2
+        hadoop fs -copyToLocal wasb:///example/jar/giraph.jar
+        hadoop jar giraph.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca "mapred.job.tracker=headnodehost:9010" -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip wasb:///example/data/tinygraph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op wasb:///example/output/shortestpaths -w 2
 
+### 旧版 HDInsight
 
-###Older versions of HDInsight
+如果要在旧版 HDInsight 上使用 Giraph，则必须针对该版本支持的特定 Hadoop 版本编译 Giraph。请参阅 [HDInsight 群集版本中的新增功能](http://azure.microsoft.com/en-us/documentation/articles/hdinsight-component-versioning/)，以确定与你的 HDInsight 版本对应的 Hadoop 版本。
 
-If you wish to use Giraph with older versions of HDInsight, you must compile it for the specific Hadoop version supported by that version. See [What's new in HDInsight cluster versions](http://azure.microsoft.com/en-us/documentation/articles/hdinsight-component-versioning/) to determine the version of Hadoop corresponds with your HDInsight version.
+此外，旧版 HDInsight 可能要求你从 Hadoop 命令行运行 Giraph 作业。如果在从 PowerShell 运行作业时收到错误，请尝试从 [Hadoop 命令行](#cmd)运行该作业。
 
-Additionally, older versions of HDInsight may require you to run the Giraph job from the Hadoop command line. If you receive errors when running the job from PowerShell, try running the job from the [Hadoop command line](#cmd).
+## 后续步骤
 
-##Next steps
+了解如何将 Giraph 与 HDInsight 配合使用后，请尝试将 [Pig][] 和 [Hive][] 与 HDInsight 配合使用。
 
-Now that you have learned how to use Giraph with HDInsight, try [Pig][] and [Hive][] with HDInsight.
+  [Apache Giraph]: http://giraph.apache.org
+  [生成 Apache Giraph 并将其部署到 HDInsight 群集]: #build
+  [运行 SimpleShortestPathsComputation 示例]: #run
+  [Package org.apache.giraph.examples]: https://giraph.apache.org/apidocs/org/apache/giraph/examples/package-summary.html
+  [排查你可能会遇到的问题]: #tshoot
+  [Git]: http://git-scm.com/
+  [Maven]: http://maven.apache.org/
+  [Giraph 存储库]: https://github.com/apache/giraph
+  [GIRAPH-930]: https://issues.apache.org/jira/browse/GIRAPH-930
+  [Azure PowerShell]: http://azure.microsoft.com/zh-cn/documentation/articles/install-configure-powershell/
+  [HDInsight-Tools]: https://github.com/Blackmist/hdinsight-tools
+  [在 HDInsight 中上载 Hadoop 作业的数据]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-upload-data/
+  [Pregel]: http://people.apache.org/~edwardyoon/documents/pregel.pdf
+  [release-1.1 分库]: https://github.com/apache/giraph/tree/release-1.1
+  [定向图形]: http://en.wikipedia.org/wiki/Directed_graph
+  [tiny\_graph.txt 中的对象绘制为圆圈，线条表示对象之间的不同距离]: .\media\hdinsight-giraph\giraph-graph.png
+  [将对象绘制为圆圈，并绘制对象之间的最短路径]: .\media\hdinsight-giraph\giraph-graph-out.png
+  [Azure 管理门户]: https://manage.windowsazure.com
+  [HDInsight 群集版本中的新增功能]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-component-versioning/
+  [Hadoop 命令行]: #cmd
+  [Pig]: http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-use-pig/
+  [Hive]: http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-use-hive/
 
-[giraph]: http://giraph.apache.org
+  [giraph]: http://giraph.apache.org
 [tools]: https://github.com/Blackmist/hdinsight-tools
 [aps]: http://azure.microsoft.com/zh-cn/documentation/articles/install-configure-powershell/
 [pig]: http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-use-pig/
