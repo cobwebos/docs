@@ -55,7 +55,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 
 在开始阅读本教程前，你必须具有：
 
-- 已安装并已配置 Azure PowerShell 的**工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][powershell-install-configure]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为“RemoteSigned”。请参阅[运行 Windows PowerShell 脚本][powershell-script]。
+- 已安装并已配置 Azure PowerShell 的**工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][powershell-install-configure]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为*RemoteSigned*。请参阅[运行 Windows PowerShell 脚本][powershell-script]。
 - **HDInsight 群集**。有关创建 HDInsight 群集的信息，请参阅[设置 HDInsight 群集][hdinsight-provision]或 [HDInsight 入门][hdinsight-get-started]。你将需要以下数据才能完成本教程：
 
 	<table border = "1">
