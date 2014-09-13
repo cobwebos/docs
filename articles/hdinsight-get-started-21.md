@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-get-started-hdinsight-hadoop" urlDisplayName="Get Started" pageTitle="Get started using Hadoop in HDInsight | Azure" metaKeywords="" description="Get started using Hadoop in HDInsight, a big data solution. Learn how to provision clusters, run hive jobs, and output data to Excel for analysis." metaCanonical="" services="hdinsight" documentationCenter="" title="Get started using Hadoop in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao"/>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
 
 
@@ -33,7 +33,6 @@ Before you begin this tutorial, you must have the following:
 
 
 - An Azure subscription. For more information about obtaining a subscription, see [Purchase Options][azure-purchase-options], or [Free Trial][azure-free-trial]. 
-
 
 <!--
 [Member Offers][azure-member-offers]
@@ -156,7 +155,7 @@ Now you have an HDInsight cluster provisioned. The next step is to run an Hive j
 	![hdi.dashboard.query.select][img-hdi-dashboard-query-select]
 
 4. Click **Submit**. It takes a few moments to get the results back. The screen refreshes every 30 seconds. You can also click **Refresh** to refresh the screen.
-
+ 
 	Once completed, the screen looks like:
 
 	![hdi.dashboard.query.select.result][img-hdi-dashboard-query-select-result]
@@ -173,7 +172,7 @@ Now you have an HDInsight cluster provisioned. The next step is to run an Hive j
 2. Click **Templeton-Job-Status**.
 3. Click the GUID number which has the last Modified time a little after the Job Start Time you wrote down earlier. Make a note of this GUID.  You will need it in the next section.
 4. The **stdout** file has the data you need in the next section. You can click **stdout** to download a copy of the data file if you want.
-
+	
 ##<a name="powerquery"></a>Connect to Microsoft business intelligence tools 
 
 The Power Query add-in for Excel can be used to export output from HDInsight into Excel where Microsoft Business Intelligence (BI) tools can be used to further process or display the results. 
@@ -201,9 +200,9 @@ You must have Excel 2010 or 2013 installed to complete this part of the tutorial
 
 9. Click **Apply & Close** in the upper left corner. The query then imports the Hive job output into Excel.
 
+
 ##<a name="nextsteps"></a>Next steps
 In this tutorial, you have learned how to provision a cluster with HDInsight, run a MapReduce job on it, and import the results into Excel where they can be further processed and graphically displayed using BI tools. To learn more, see the following articles:
-
 
 - [Get started with the HDInsight Emulator][hdinsight-emulator]
 - [Use Azure Blob storage with HDInsight][hdinsight-storage]
