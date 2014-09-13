@@ -194,7 +194,7 @@ HDInsight 将 Azure Blob 存储用于存储数据。它称为 *WASB* 或 *Azure 
 4. 输入 Azure Blob 存储帐户的**帐户密钥**，然后单击**保存**。
 5. 在右侧的**导航器**窗格中，双击 Blob 存储容器名称。默认情况下，该容器名称与群集名称相同。
 
-6. 在"名称"列中找到"stdout"（路径为 *.../Templeton-Job-Status/<guid>*），然后单击"stdout"侧的"二进制"。<guid> 必须与你在上一部分中记下的 GUID 匹配。
+6. 在**名称**列中找到**stdout**（路径为 *.../Templeton-Job-Status/<guid>*），然后单击**stdout**侧的**二进制**。<guid> 必须与你在上一部分中记下的 GUID 匹配。
 
 	![HDI.GettingStarted.PowerQuery.ImportData2][image-hdi-gettingstarted-powerquery-importdata2]
 
@@ -212,7 +212,7 @@ HDInsight 将 Azure Blob 存储用于存储数据。它称为 *WASB* 或 *Azure 
 - [将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]
 - [将 Pig 与 HDInsight 配合使用][hdinsight-use-pig]
 - [将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]
-- [为 HDInsight 开发 C\# Hadoop 流程序][hdinsight-develop-streaming]
+- [为 HDInsight 开发 C# Hadoop 流程序][hdinsight-develop-streaming]
 - [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
 
 [hdinsight-versions]: ../hdinsight-component-versioning/
