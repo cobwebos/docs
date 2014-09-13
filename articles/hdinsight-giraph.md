@@ -200,6 +200,6 @@ Now that you have learned how to use Giraph with HDInsight, try [Pig][] and [Hiv
 
 [giraph]: http://giraph.apache.org
 [tools]: https://github.com/Blackmist/hdinsight-tools
-[aps]: http://azure.microsoft.com/zh-cn/documentation/articles/install-configure-powershell/
-[pig]: http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-use-pig/
-[hive]: http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-use-hive/
+[aps]: http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/
+[pig]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-use-pig/
+[hive]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-use-hive/

@@ -20,11 +20,10 @@ In this tutorial, you will provision an Hadoop cluster in HDInsight using the Az
 
 > [WACOM.NOTE] This tutorial covers using Hadoop 1.2 clusters on HDInsight. For other supported version, click the selector on the top of the page. For version information, see [What's new in the cluster versions provided by HDInsight?][hdinsight-versions]
 
-<!--
 The live demo of this article:
 
 <center><a href="https://www.youtube.com/watch?v=Y4aNjnoeaHA&list=PLDrz-Fkcb9WWdY-Yp6D4fTC1ll_3lU-QS" target = "_blank">![HDI.getstarted.video][img-hdi-getstarted-video]</a></center>
--->
+
 In conjunction with the general availability of Azure HDInsight, Microsoft has also released HDInsight Emulator for Azure, formerly known as *Microsoft HDInsight Developer Preview*. This product targets developer scenarios and as such only supports single-node deployments. For using HDInsight Emulator, see [Get Started with the HDInsight Emulator][hdinsight-emulator].
 
 **Prerequisites:**
@@ -32,12 +31,7 @@ In conjunction with the general availability of Azure HDInsight, Microsoft has a
 Before you begin this tutorial, you must have the following:
 
 
-- An Azure subscription. For more information about obtaining a subscription, see [Purchase Options][azure-purchase-options], or [Free Trial][azure-free-trial]. 
-
-<!--
-[Member Offers][azure-member-offers]
--->
-
+- An Azure subscription. For more information about obtaining a subscription, see [Purchase Options][azure-purchase-options], [Member Offers][azure-member-offers], or [Free Trial][azure-free-trial].
 - A computer with Office 2013 Professional Plus, Office 365 Pro Plus, Excel 2013 Standalone, or Office 2010 Professional Plus.
 
 **Estimated time to complete:** 30 minutes
@@ -61,8 +55,6 @@ When provision an HDInsight cluster, an Azure Storage account and a specific Blo
 - West Europe
 - East US
 - West US
-- China East
-- China North
 
 In addition to this storage account, you can add additional storage accounts from either the same Azure subscription or different Azure subscriptions. For instructions on adding additional storage accounts, see [Provision HDInsight clusters][hdinsight-provision]. 
 
@@ -85,6 +77,25 @@ To simply this tutorial, only the default blob container and the default storage
 
 For more information, see
 [How to Create a Storage Account][azure-create-storageaccount] and [Use Azure Blob Storage with HDInsight][hdinsight-storage].
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 **To provision an HDInsight cluster** 
 
@@ -124,6 +135,19 @@ For more information, see
 
 5. Click the check icon in the bottom right corner to create the cluster. When the provision process completes, the  status column will show **Running**.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##<a name="sample"></a>Run an Hive job
 
 Now you have an HDInsight cluster provisioned. The next step is to run an Hive job to query a sample Hive table that comes with HDInsight clusters.  The table name is *hivesampletable*.
@@ -140,7 +164,7 @@ Now you have an HDInsight cluster provisioned. The next step is to run an Hive j
 
 	There are several tabs on the top.  The default tab is *Hive Editor*, other tabs include Jobs and Files.  Using the dashboard, you can submit Hive queryes, check Hadoop job logs, and browse WASB files. 
 
-> [WACOM.NOTE] Notice is the URL is *&lt;ClusterName&gt;.hdinsightservices.cn*. Instead of opening the dashboard from the Management portal, you can also open the dashboard from a Web browser using the URL.
+> [wacom.note] Notice is the URL is *&lt;ClusterName&gt;.azurehdinsight.net*. Instead of opening the dashboard from the Management portal, you can also open the dashboard from a Web browser using the URL.
 
 **To run an Hive query**
 
@@ -230,12 +254,10 @@ In this tutorial, you have learned how to provision a cluster with HDInsight, ru
 [hdinsight-develop-streaming]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
 [hdinsight-develop-mapreduce]: ../hdinsight-develop-deploy-java-mapreduce/
 
-[azure-purchase-options]: http://www.windowsazure.cn/pricing/overview/
-<!--
+[azure-purchase-options]: http://azure.microsoft.com/en-us/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/en-us/pricing/member-offers/
--->
-[azure-free-trial]: http://www.windowsazure.cn/pricing/1rmb-trial/
-[azure-management-portal]: https://manage.windowsazure.cn/
+[azure-free-trial]: http://azure.microsoft.com/en-us/pricing/free-trial/
+[azure-management-portal]: https://manage.windowsazure.com/
 [azure-create-storageaccount]: ../storage-create-storage-account/ 
 
 [apache-hadoop]: http://hadoop.apache.org/
