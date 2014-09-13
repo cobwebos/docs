@@ -7,16 +7,16 @@
 
 
 
-**估计完成时间：** 40 分钟
+**估计完成时间:** 40 分钟
 
 ## 本文内容
 
-0.  [什么是 Oozie](#whatisoozie)
-1.  [先决条件](#prerequisites)
-2.  [定义 Oozie 工作流文件](#defineworkflow)
-2.  [部署 Oozie 项目并准备教程](#deploy)
-3.  [运行工作流](#run)
-4.  [后续步骤](#nextsteps)
+0. [什么是 Oozie](#whatisoozie)
+1. [先决条件](#prerequisites)
+2. [定义 Oozie 工作流文件](#defineworkflow)
+2. [部署 Oozie 项目并准备教程](#deploy)
+3. [运行工作流](#run)
+4. [后续步骤](#nextsteps)
 
 ##<a id="whatisoozie"></a>什么是 Oozie
 
@@ -26,7 +26,7 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 
 ![工作流关系图][img-workflow-diagram]
 
-1.  Hive 操作运行 HiveQL 脚本以统计 log4j 日志文件中每个日志级类型的次数。每个 log4j 日志都包含一行字段，其中包含 [LOG LEVEL] 字段，可显示类型和严重性。例如：
+1. Hive 操作运行 HiveQL 脚本以统计 log4j 日志文件中每个日志级类型的次数。每个 log4j 日志都包含一行字段，其中包含 [LOG LEVEL] 字段，可显示类型和严重性。例如：
 
 		2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
 		2012-02-03 18:35:34 SampleClass4 [FATAL] system problem at id 1991281254
@@ -46,16 +46,16 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 	
 2.  Sqoop 操作将 HiveQL 操作输出结果导出到 Azure SQL 数据库中的表。有关 Sqoop 的详细信息，请参阅[将 Sqoop 与 HDInsight 配合使用][hdinsight-sqoop]。
 
-> [WACOM.NOTE] 有关 HDInsight 群集上支持的 Oozie 版本，请参阅 [HDInsight 提供的群集版本有哪些新功能？][hdinsight-versions]。
+> [WACOM.NOTE] 有关 HDInsight 群集上支持的 Oozie 版本，请参阅 [HDInsight 提供的群集版本有哪些新功能?][hdinsight-versions]。
 
-> [WACOM.NOTE] 本教程适用于 HDInsight 群集版本 2.1 和 3.0。本文尚未在 HDInsight Emulator 上测试过。
+R
 
 
 ##<a id="prerequisites"></a>先决条件
 
 在开始阅读本教程前，你必须具有：
 
-- 已安装并已配置 Azure PowerShell 的**工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][powershell-install-configure]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为“RemoteSigned”**。请参阅[运行 Windows PowerShell 脚本][powershell-script]。
+- 已安装并已配置 Azure PowerShell 的**工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][powershell-install-configure]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为**RemoteSigned**。请参阅[运行 Windows PowerShell 脚本][powershell-script]。
 - **HDInsight 群集**。有关创建 HDInsight 群集的信息，请参阅[设置 HDInsight 群集][hdinsight-provision]或 [HDInsight 入门][hdinsight-get-started]。你将需要以下数据才能完成本教程：
 
 	<table border = "1">
@@ -353,7 +353,7 @@ WASB 语法是：
 				
 		function prepareSQLDatabase()
 		{
-		# 用于创建 log4jLogsCount 表的 SQL 查询字符串
+			# 用于创建 log4jLogsCount 表的 SQL 查询字符串
 			$cmdCreateLog4jCountTable = " CREATE TABLE [dbo].[$sqlDatabaseTableName](
 				    [Level] [nvarchar](10) NOT NULL,
 				    [Total] float,
@@ -537,9 +537,9 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 		</configuration>
 		"@
 
-	> [WACOM.NOTE] 与工作流提交负载文件相比，主要区别是变量 **oozie.coord.application.path**。在提交工作流作业时，你使用的是 **oozie.wf.application.path**。
+	>[WACOM.NOTE] 与工作流提交负载文件相比，主要区别是变量 **oozie.coord.application.path**。在提交工作流作业时，你使用的是 **oozie.wf.application.path**。
 
-4.  将以下内容追加到脚本。这部分检查 Oozie Web 服务状态：
+4. 将以下内容追加到脚本。这部分检查 Oozie Web 服务状态：
 			
 		function checkOozieServerStatus()
 		{
@@ -558,7 +558,7 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 		    }
 		}
 	
-5.  将以下内容追加到脚本。这部分创建一项 Oozie 作业：
+5. 将以下内容追加到脚本。这部分创建一项 Oozie 作业：
 
 		function createOozieJob()
 		{
@@ -577,7 +577,7 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 
 	> [WACCOM.NOTE] 在提交工作流作业时，你必须在创建作业后进行另一次 Web 服务调用以启动该作业。在这种情况下，该协调器作业会按时间触发。该作业将自动启动。
 
-6.  将以下内容追加到脚本。这部分检查 Oozie 作业状态：
+6. 将以下内容追加到脚本。这部分检查 Oozie 作业状态：
 
 		function checkOozieJobStatus($oozieJobId)
 		{
@@ -648,9 +648,9 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 		# ShowOozieJobLog($oozieJobId)
 		# killOozieJob($oozieJobId)
 
-	如果要运行这些附加的功能，请删除这些 \# 号。
+	如果要运行这些附加的功能，请删除这些 # 号。
 
-7. 如果你的 HDinsight 群集是 2.1 版的，请将“<https://$clusterName.hdinsightservice.cn:443/oozie/v2/>”替换为“<https://$clusterName.hdinsightservice.cn:443/oozie/v1/>”。HDInsight 群集版本 2.1 不支持 Web 服务的版本 2。
+7. 如果你的 HDinsight 群集是 2.1 版的，请将“https://$clusterName.hdinsightservice.cn:443/oozie/v2/”替换为“https://$clusterName.hdinsightservice.cn:443/oozie/v1/”。HDInsight 群集版本 2.1 不支持 Web 服务的版本 2。
 
 7. 单击“运行脚本” 或按 **F5** 键以运行该脚本。输出结果将会类似于：
 
