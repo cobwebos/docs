@@ -14,11 +14,11 @@
 </div>
 
 
-HDInsight 使 [Apache Hadoop][] 可在云中作为服务使用，并使 MapReduce 软件框架可用于更简单、缩放性更高且经济实用的 Azure 环境。HDInsight 还提供了使用 Azure Blob 存储管理和存储数据的经济实用方法。
+HDInsight 使 [Apache Hadoop][apache-hadoop] 可在云中作为服务使用，并使 MapReduce 软件框架可用于更简单、缩放性更高且经济实用的 Azure 环境。HDInsight 还提供了使用 Azure Blob 存储管理和存储数据的经济实用方法。
 
 在本教程中，你将使用 Azure 管理门户在 HDInsight 中设置一个 Hadoop 群集，使用群集仪表板提交一个针对示例 Hive 表执行查询的 Hive 作业，然后将该 Hive 作业的输出数据导入到 Excel 中进行检查。
 
-> [WACOM.NOTE] 本教程介绍如何在 HDInsight 上使用 Hadoop 1.2 群集。有关其他受支持的版本，请单击页顶部的选择器。有关版本信息，请参阅 [HDInsight 提供的群集版本有哪些新功能？][hdinsight-versions]
+> [WACOM.NOTE] 本教程介绍如何在 HDInsight 上使用 Hadoop 1.2 群集。有关其他受支持的版本，请单击页顶部的选择器。有关版本信息，请参阅 [HDInsight 提供的群集版本有哪些新功能?][hdinsight-versions]
 
 <!--
 The live demo of this article:
@@ -108,7 +108,7 @@ HDInsight 将 Azure Blob 存储用于存储数据。它称为 *WASB* 或 *Azure 
 	<tr><td><strong>HDInsight 版本</strong></td><td>选择 <strong>2.1</strong> 以在 HDInsight 上创建 Hadoop 1.2 群集。</td></tr>
 	<tr><td><strong>区域</strong></td><td>选择与上一个过程中创建的存储帐户相同的区域。HDInsight 要求存储帐户位于同一区域。在以后的配置中，你只能选择你在此处指定的区域中的存储帐户。
 	</td></tr>
-	</table></li>
+	</table>
 
 5. 单击右下角的右箭头以配置群集用户。
 6. 在**配置群集用户**选项卡中，输入 HDInsight 群集用户帐户的**用户名**和**密码**。除了此帐户外，你还可以在设置群集后创建一个 RDP 用户帐户，以便通过远程桌面访问群集。有关说明，请参阅 [使用管理门户管理 HDInsight][hdinsight-admin-portal]
@@ -138,9 +138,9 @@ HDInsight 将 Azure Blob 存储用于存储数据。它称为 *WASB* 或 *Azure 
 
 	![hdi.dashboard][img-hdi-dashboard]
 
-	顶部有多个选项卡。默认选项卡为**Hive 编辑器**，其他选项卡包括**作业**和**文件**。使用仪表板可以提交 Hive 查询、检查 Hadoop 作业日志，以及浏览 WASB 文件。
+	顶部有多个选项卡。默认选项卡为*Hive 编辑器*，其他选项卡包括**作业**和**文件**。使用仪表板可以提交 Hive 查询、检查 Hadoop 作业日志，以及浏览 WASB 文件。
 
-> [WACOM.NOTE] 请注意，URL 为 *\<群集名称\>.hdinsightservices.cn*。如果不从管理门户打开仪表板，也可以在 Web 浏览器中使用 URL 打开仪表板。
+> [WACOM.NOTE] 请注意，URL 为 *&lt;群集名称&gt;.hdinsightservices.cn*。如果不从管理门户打开仪表板，也可以在 Web 浏览器中使用 URL 打开仪表板。
 
 **运行 Hive 查询**
 
@@ -201,8 +201,8 @@ HDInsight 将 Azure Blob 存储用于存储数据。它称为 *WASB* 或 *Azure 
 7.  单击左上角的**应用并关闭**。该查询随后会将 Hive 作业输出导入到 Excel 中。
 
 ## <a name="nextsteps"></a>后续步骤
-
 在本教程中，你已了解了如何使用 HDInsight 设置群集、如何对其运行 MapReduce 作业，以及如何将结果导入到 Excel 中，在 Excel 中，可以使用 BI 工具进一步处理结果以及以图形方式显示结果。若要了解更多信息，请参阅下列文章：
+
 
 - [HDInsight Emulator 入门][hdinsight-emulator]
 - [将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]
