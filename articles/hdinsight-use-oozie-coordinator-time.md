@@ -11,12 +11,12 @@
 
 ## 本文内容
 
-1.  [什么是 Oozie](#whatisoozie)
-2.  [先决条件](#prerequisites)
-3.  [定义 Oozie 工作流文件](#defineworkflow)
-4.  [部署 Oozie 项目并准备教程](#deploy)
-5.  [运行工作流](#run)
-6.  [后续步骤](#nextsteps)
+0.  [什么是 Oozie](#whatisoozie)
+1.  [先决条件](#prerequisites)
+2.  [定义 Oozie 工作流文件](#defineworkflow)
+2.  [部署 Oozie 项目并准备教程](#deploy)
+3.  [运行工作流](#run)
+4.  [后续步骤](#nextsteps)
 
 ##<a id="whatisoozie"></a>什么是 Oozie
 
@@ -92,7 +92,7 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 1. **DROP TABLE 语句**删除 log4j Hive 表（如果存在）。
 2. **CREATE TABLE 语句**创建指向 log4j 日志文件位置
 3. 的 log4j Hive 外部表。字段分隔符为“,”。默认分行符为“\n”。Hive 外部表用于在你想多次运行 Oozie 工作流的情况下避免数据文件从原始位置被删除。
-4. **INSERT OVERWRITE 语句**从 log4j Hive 表统计每个日志级类型的次数，并将输出结果保存到 Azure 储存空间 - Blob (WASB) 位置。
+3. **INSERT OVERWRITE 语句**从 log4j Hive 表统计每个日志级类型的次数，并将输出结果保存到 Azure 储存空间 - Blob (WASB) 位置。
 
 有一个已知的 Hive 路径问题。你在提交 Oozie 作业时将会遇到这个问题。可在 [TechNet Wiki][technetwiki-hive-error] 上找到用于解决此问题的说明。
 
@@ -218,13 +218,36 @@ Oozie 工作流定义是用 hPDL（一种 XML 过程定义语言）编写的。�
 
 	该定义文件中使用了五个变量：
 
-	| Variable          | Description |
-	| ------------------|------------ |
-	| ${coordFrequency} | Job pause time. Frequency is always expressed in minutes. |
-	| ${coordStart}     | Job start time. |
-	| ${coordEnd}       | Job end time. |
-    | ${coordTimezone}  | Oozie processes coordinator jobs in a fixed timezone with no DST (typically UTC ), this timezone is referred as 'Oozie processing timezone'. |
-	| ${wfPath}         | The path for the workflow.xml.  If the workflow file name is not the default file name (workflow.xml), you must specify it. |
+	<table>
+	<thead>
+	<tr class="header">
+	<th align="left">变量</th>
+	<th align="left">说明</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr class="odd">
+	<td align="left">${coordFrequency}</td>
+	<td align="left">作业暂停时间。频率总是用分钟来表示的。</td>
+	</tr>
+	<tr class="even">
+	<td align="left">${coordStart}</td>
+	<td align="left">作业开始时间。</td>
+	</tr>
+	<tr class="odd">
+	<td align="left">${coordEnd}</td>
+	<td align="left">作业结束时间。</td>
+	</tr>
+	<tr class="even">
+	<td align="left">${coordTimezone}</td>
+	<td align="left">Oozie 在一个没有 DST（通常为 UTC）的固定时区中处理协调器作业，此时区被称为&ldquo;Oozie 处理时区&rdquo;。</td>
+	</tr>
+	<tr class="odd">
+	<td align="left">${wfPath}</td>
+	<td align="left">workflow.xml 的路径。如果该工作流文件名不是默认文件名 (workflow.xml)，则必须指定该名称。</td>
+	</tr>
+	</tbody>
+	</table>
 
 2. 将该文件另存为 **C:\Tutorials\UseOozie\coordinator.xml**，采用 ANSI(ASCII) 编码（如果你的文本编辑器不提供该选项，请使用记事本）。
 
@@ -308,7 +331,7 @@ WASB 语法是：
 
 	有关这些变量的详细说明，请参阅本教程中的[先决条件](#prerequisites)一节。
 
-4. 在脚本窗格中将以下内容追加到脚本：
+3. 在脚本窗格中将以下内容追加到脚本：
 		
 		# 创建存储上下文对象
 		$storageaccountkey = get-azurestoragekey $storageAccountName | %{$_.Primary}
@@ -362,7 +385,7 @@ WASB 语法是：
 		# 在 SQL 数据库上创建 log4jlogsCount 表
 		prepareSQLDatabase;
 
-5.  单击“运行脚本” 或按 **F5** 键以运行该脚本。输出应如下所示：
+4.  单击“运行脚本” 或按 **F5** 键以运行该脚本。输出应如下所示：
 
 	![教程准备的输出结果][img-preparation-output]
 
@@ -375,7 +398,7 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 
 1.  打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell_ISE**，然后单击 **Windows PowerShell ISE**。请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][powershell-start]）。
 
-2.  将以下脚本复制到脚本窗格，然后设置前 14 个变量（跳过第 6 个：$storageUri）。
+3.  将以下脚本复制到脚本窗格，然后设置前 14 个变量（跳过第 6 个：$storageUri）。
 
 		#HDInsight 群集变量
 		$clusterName = "<HDInsightClusterName>"
@@ -616,7 +639,7 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 		    $response = Invoke-RestMethod -Method Put -Uri $clusterUriStartJob -Credential $creds | Format-Table -HideTableHeaders -debug
 		}
   
-8. 将以下内容追加到脚本：
+7. 将以下内容追加到脚本：
 
 		checkOozieServerStatus
 		# listOozieJobs
@@ -627,13 +650,13 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 
 	如果要运行这些附加的功能，请删除这些 \# 号。
 
-9. 如果你的 HDinsight 群集是 2.1 版的，请将“<https://$clusterName.hdinsightservice.cn:443/oozie/v2/>”替换为“<https://$clusterName.hdinsightservice.cn:443/oozie/v1/>”。HDInsight 群集版本 2.1 不支持 Web 服务的版本 2。
+7. 如果你的 HDinsight 群集是 2.1 版的，请将“<https://$clusterName.hdinsightservice.cn:443/oozie/v2/>”替换为“<https://$clusterName.hdinsightservice.cn:443/oozie/v1/>”。HDInsight 群集版本 2.1 不支持 Web 服务的版本 2。
 
-10. 单击“运行脚本” 或按 **F5** 键以运行该脚本。输出结果将会类似于：
+7. 单击“运行脚本” 或按 **F5** 键以运行该脚本。输出结果将会类似于：
 
 	![教程运行工作流输出][img-runworkflow-output]
 
-11. 连接到 SQL Database 以查看导出的数据。
+8. 连接到 SQL Database 以查看导出的数据。
 
 **检查作业错误日志**
 
