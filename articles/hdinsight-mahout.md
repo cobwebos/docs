@@ -347,9 +347,9 @@ Mahout 已安装在 HDInsight 3.1 群集上，你可以使用以下步骤手动�
 
             mvn -Dhadoop2.version=2.2.0 -DskipTests clean package
 
-        Once the build completes, the jar file will be created at __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__.
+	Once the build completes, the jar file will be created at __mahout\mrlegacy\target\mahout-mrlegacy-1.0-SNAPSHOT-job.jar__.
 
-        > [WACOM.NOTE] Once Mahout 1.0 is released, you should be able to use the pre-built packages with HDInsight 3.0.
+	> [WACOM.NOTE] Once Mahout 1.0 is released, you should be able to use the pre-built packages with HDInsight 3.0.
 
 1. 将该 jar 文件上载到群集默认存储的 **example/jars** 中。以下示例使用 [send-hdinsight][sendhdinsight] 脚本上载该文件。
 

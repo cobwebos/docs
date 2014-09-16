@@ -8,15 +8,15 @@
 
 图形可为对象之间的关系建模，例如，为大型网络（例如 Internet）上的路由器之间的连接建模，或者为社交网络上的人物之间的关系建模（有时称为社交图形）。通过图形处理，你可以推导出图形中对象之间的关系，例如：
 
--   根据当前的关系识别潜在的朋友
+- 根据当前的关系识别潜在的朋友
 
--   识别网络中两台计算机之间的最短路由
+- 识别网络中两台计算机之间的最短路由
 
--   计算网页的排名
+- 计算网页的排名
 
 ## 本文内容
 
--   [生成 Apache Giraph 并将其部署到 HDInsight 群集](#build)
+- [生成 Apache Giraph 并将其部署到 HDInsight 群集](#build)
 
 -   [运行 SimpleShortestPathsComputation 示例](#run)
 
@@ -84,23 +84,23 @@ SimpleShortestPathsComputation 演示了有关查找图形中对象之间最短�
 
 1.  创建名为 **tiny\_graph.txt** 的新文件。该文件应包含以下行。
 
-        [0,0,[[1,1],[3,3]]]
-        [1,0,[[0,1],[2,2],[3,1]]]
-        [2,0,[[1,2],[4,4]]]
-        [3,0,[[0,3],[1,1],[4,4]]]
-        [4,0,[[3,4],[2,4]]]
+		[0,0,[[1,1],[3,3]]]
+		[1,0,[[0,1],[2,2],[3,1]]]
+		[2,0,[[1,2],[4,4]]]
+		[3,0,[[0,3],[1,1],[4,4]]]
+		[4,0,[[3,4],[2,4]]]
 
-    此数据使用以下格式描述[定向图形][]中对象之间的关系：`[source_id,source_value,[[dest_id], [edge_value],...]]`. 每行代表一个 **source\_id** 对象与一个或多个 **dest\_id** 对象之间的关系。**edge\_value**（或权重）可被视为 **source\_id** 与 **dest\_id** 之间的连接的强度或距离。
+	此数据使用以下格式描述[定向图形](http://en.wikipedia.org/wiki/Directed_graph)中对象之间的关系：`[source_id,source_value,[[dest_id], [edge_value],...]]`. 每行代表一个 **source\_id** 对象与一个或多个 **dest\_id** 对象之间的关系。**edge\_value**（或权重）可被视为 **source\_id** 与 **dest\_id** 之间的连接的强度或距离。
 
-    使用表示对象间距离的值（或权重）绘制图形后，上述数据可能与下面类似。
+	使用表示对象间距离的值（或权重）绘制图形后，上述数据可能与下面类似。
 
-    ![tiny\_graph.txt 中的对象绘制为圆圈，线条表示对象之间的不同距离](.\media\hdinsight-giraph\giraph-graph.png)
+	![tiny\_graph.txt 中的对象绘制为圆圈，线条表示对象之间的不同距离](.\media\hdinsight-giraph\giraph-graph.png)
 
-2.  使用 [Azure PowerShell][aps] 和 [HDInsight-Tools][tools] 将 **tiny\_graph.txt** 文件上载到 HDInsight 群集的主存储。
+2. 使用 [Azure PowerShell][aps] 和 [HDInsight-Tools][tools] 将 **tiny\_graph.txt** 文件上载到 HDInsight 群集的主存储。
 
-        Add-HDInsightFile tiny_graph.txt example/data/tiny_graph.txt clustername
+		Add-HDInsightFile tiny_graph.txt example/data/tiny_graph.txt clustername
 
-    将群集名称替换为你的 HDInsight 群集的名称。
+	将群集名称替换为你的 HDInsight 群集的名称。
 
 3.  将 **tiny\_graph.txt** 文件用作输入，使用以下 PowerShell 运行 **SimpleShortstPathsComputation** 示例。这要求你事先安装并配置 [Azure PowerShell][aps]。
 
@@ -171,17 +171,17 @@ Giraph 作业在运行时将创建指定的输出目录。如果该目录已存�
 
 若要连接到 HDInsight 群集，请执行以下步骤：
 
-1.  使用 [Azure 管理门户](https://manage.windowsazure.com)选择你的 HDInsight 群集，然后选择“配置”。
+1. 使用 [Azure 管理门户](https://manage.windowsazure.com)选择你的 HDInsight 群集，然后选择“配置”。
 
-2.  在页的底部，选择“启用远程”并提供用户名、密码和远程桌面连接的过期日期。
+2. 在页的底部，选择“启用远程”并提供用户名、密码和远程桌面连接的过期日期。
 
-3.  处理启用远程桌面的请求后，页的底部将显示一个新的“连接”条目。选择此条目可以下载远程桌面会话的 .RDP 文件。
+3. 处理启用远程桌面的请求后，页的底部将显示一个新的“连接”条目。选择此条目可以下载远程桌面会话的 .RDP 文件。
 
-4.  可以保存该 .RDP 文件，或者将它立即打开以启动远程桌面客户端。在连接过程中，系统将要求你提供你在启用远程桌面连接时使用的用户名和密码。
+4. 可以保存该 .RDP 文件，或者将它立即打开以启动远程桌面客户端。在连接过程中，系统将要求你提供你在启用远程桌面连接时使用的用户名和密码。
 
-5.  建立连接后，请使用桌面上的“Hadoop 命令行”图标来启动 Hadoop 命令行。
+5. 建立连接后，请使用桌面上的“Hadoop 命令行”图标来启动 Hadoop 命令行。
 
-6.  以下示例演示了如何将 **giraph.jar** 文件复制到群集头节点，然后使用 Hadoop 命令行运行作业。
+6. 以下示例演示了如何将 **giraph.jar** 文件复制到群集头节点，然后使用 Hadoop 命令行运行作业。
 
         hadoop fs -copyToLocal wasb:///example/jar/giraph.jar
         hadoop jar giraph.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca "mapred.job.tracker=headnodehost:9010" -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip wasb:///example/data/tinygraph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op wasb:///example/output/shortestpaths -w 2
@@ -196,30 +196,7 @@ Giraph 作业在运行时将创建指定的输出目录。如果该目录已存�
 
 了解如何将 Giraph 与 HDInsight 配合使用后，请尝试将 [Pig][] 和 [Hive][] 与 HDInsight 配合使用。
 
-  [Apache Giraph]: http://giraph.apache.org
-  [生成 Apache Giraph 并将其部署到 HDInsight 群集]: #build
-  [运行 SimpleShortestPathsComputation 示例]: #run
-  [Package org.apache.giraph.examples]: https://giraph.apache.org/apidocs/org/apache/giraph/examples/package-summary.html
-  [排查你可能会遇到的问题]: #tshoot
-  [Git]: http://git-scm.com/
-  [Maven]: http://maven.apache.org/
-  [Giraph 存储库]: https://github.com/apache/giraph
-  [GIRAPH-930]: https://issues.apache.org/jira/browse/GIRAPH-930
-  [Azure PowerShell]: http://azure.microsoft.com/zh-cn/documentation/articles/install-configure-powershell/
-  [HDInsight-Tools]: https://github.com/Blackmist/hdinsight-tools
-  [在 HDInsight 中上载 Hadoop 作业的数据]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-upload-data/
-  [Pregel]: http://people.apache.org/~edwardyoon/documents/pregel.pdf
-  [release-1.1 分库]: https://github.com/apache/giraph/tree/release-1.1
-  [定向图形]: http://en.wikipedia.org/wiki/Directed_graph
-  [tiny\_graph.txt 中的对象绘制为圆圈，线条表示对象之间的不同距离]: .\media\hdinsight-giraph\giraph-graph.png
-  [将对象绘制为圆圈，并绘制对象之间的最短路径]: .\media\hdinsight-giraph\giraph-graph-out.png
-  [Azure 管理门户]: https://manage.windowsazure.com
-  [HDInsight 群集版本中的新增功能]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-component-versioning/
-  [Hadoop 命令行]: #cmd
-  [Pig]: http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-use-pig/
-  [Hive]: http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-use-hive/
-
-  [giraph]: http://giraph.apache.org
+[giraph]: http://giraph.apache.org
 [tools]: https://github.com/Blackmist/hdinsight-tools
 [aps]: http://azure.microsoft.com/zh-cn/documentation/articles/install-configure-powershell/
 [pig]: http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-use-pig/

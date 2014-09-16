@@ -10,7 +10,7 @@
 <a href="../hdinsight-get-started-21" title="开始在 HDInsight 中使用 Hadoop 1.2" class="current">Hadoop 1.2</a>
 </div>
 
-HDInsight 使 [Apache Hadoop][] 可在云中作为服务使用，并使 MapReduce 软件框架可用于更简单、缩放性更高且经济实用的 Azure 环境。HDInsight 还提供了使用 Azure Blob 存储管理和存储数据的经济实用方法。
+HDInsight 使 [Apache Hadoop][apache-hadoop] 可在云中作为服务使用，并使 MapReduce 软件框架可用于更简单、缩放性更高且经济实用的 Azure 环境。HDInsight 还提供了使用 Azure Blob 存储管理和存储数据的经济实用方法。
 
 在本教程中，你将使用 Azure 管理门户在 HDInsight 中设置一个 Hadoop 群集，使用群集仪表板提交一个针对示例 Hive 表执行查询的 Hive 作业，然后将该 Hive 作业的输出数据导入到 Excel 中进行检查。
 
@@ -26,18 +26,18 @@ Microsoft 还发布了 HDInsight Emulator for Azure（以前称作 *Microsoft HD
 
 -   Azure 订阅。有关获取订阅的详细信息，请参阅[购买选项][azure-purchase-options]或[免费试用][azure-free-trial]。
 
-<!-- [Member Offers][azure-member-offers] -->
+<!--[Member Offers][azure-member-offers]-->
 
 -   装有 Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone 或 Office 2010 Professional Plus 的计算机。
 
-**估计完成时间：**30 分钟
+**估计完成时间：** 30 分钟
 
 ## 本教程的内容
 
--   [设置 HDInsight 群集](#provision)
--   [运行 Hive 作业](#sample)
--   [连接到 Microsoft 商业智能工具](#powerquery)
--   [后续步骤](#nextsteps)
+- [设置 HDInsight 群集](#provision)
+- [运行 Hive 作业](#sample)
+- [连接到 Microsoft 商业智能工具](#powerquery)
+- [后续步骤](#nextsteps)
 
 ## <a name="provision"></a>设置 HDInsight 群集
 
@@ -45,13 +45,13 @@ HDInsight 将 Azure Blob 存储用于存储数据。它称为 *WASB* 或 *Azure 
 
 设置 HDInsight 群集时，请将 Azure 存储帐户和该帐户上的特定 Blob 存储容器指定为默认文件系统，就像在 HDFS 中一样。该存储帐户必须与 HDInsight 计算资源位于同一数据中心。目前，只能在以下数据中心内设置 HDInsight 群集：
 
--   亚洲东南部
--   欧洲北部
--   欧洲西部
--   美国东部
--   美国西部
--   中国东部
--   中国北部
+- 亚洲东南部
+- 欧洲北部
+- 欧洲西部
+- 美国东部
+- 美国西部
+- 中国东部
+- 中国北部
 
 除了此存储帐户外，你还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。有关添加其他存储帐户的说明，请参阅[设置 HDInsight 群集][hdinsight-provision]。
 
@@ -59,33 +59,33 @@ HDInsight 将 Azure Blob 存储用于存储数据。它称为 *WASB* 或 *Azure 
 
 **创建 Azure 存储帐户**
 
-1.  登录到 [Azure 管理门户][azure-management-portal]。
-2.  单击左下角的“新建”，指向“数据服务”，指向“存储”，然后单击“快速创建”。
+1. 登录到 [Azure 管理门户][azure-management-portal]。
+2. 单击左下角的“新建”，指向“数据服务”，指向“存储”，然后单击“快速创建”。
 
-    ![HDI.StorageAccount.QuickCreate][image-hdi-storageaccount-quickcreate]
+	![HDI.StorageAccount.QuickCreate][image-hdi-storageaccount-quickcreate]
 
-3.  输入“URL”、“位置”和“复制”，然后单击“创建存储帐户”。不支持地缘组。你将在存储列表中看到新的存储帐户。
-4.  等到新存储帐户的“状态”更改为“联机”。
-5.  从列表中单击该新存储帐户以便选择它。
-6.  单击页底部的“管理访问密钥”。
-7.  记下**存储帐户名称**和**主访问密钥**（或**辅助访问密钥**，这两个密钥中的任一个均有效）。本教程后面的步骤中将会用到它们。
+3. 输入“URL”、“位置”和“复制”，然后单击“创建存储帐户”。不支持地缘组。你将在存储列表中看到新的存储帐户。
+4. 等到新存储帐户的“状态”更改为“联机”。
+5. 从列表中单击该新存储帐户以便选择它。
+6. 单击页底部的“管理访问密钥”。
+7. 记下**存储帐户名称**和**主访问密钥**（或**辅助访问密钥**，这两个密钥中的任一个均有效）。本教程后面的步骤中将会用到它们。
 
 有关详细信息，请参阅
 [如何创建存储帐户][azure-create-storageaccount]和[将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]。
 
 **设置 HDInsight 群集**
 
-1.  登录到 [Azure 管理门户][azure-management-portal]。
+1. 登录到 [Azure 管理门户][azure-management-portal]。
 
-2.  单击左侧的“HDINSIGHT”以便列出你的帐户下的 HDInsight 群集。在下面的屏幕截图中，没有现有的 HDInsight 群集。
+2. 单击左侧的“HDINSIGHT”以便列出你的帐户下的 HDInsight 群集。在下面的屏幕截图中，没有现有的 HDInsight 群集。
 
-    ![HDI.ClusterStatus][image-hdi-clusterstatus]
+	![HDI.ClusterStatus][image-hdi-clusterstatus]
 
-3.  单击左下角的“新建”，然后依次单击“数据服务”、“HDINSIGHT”和“自定义创建”。
+3. 单击左下角的“新建”，然后依次单击“数据服务”、“HDINSIGHT”和“自定义创建”。
 
-    ![HDI.CustomCreateCluster][image-hdi-customcreatecluster]
+	![HDI.CustomCreateCluster][image-hdi-customcreatecluster]
 
-4.  在“群集详细信息”选项卡上，输入或选择以下值：
+4. 在“群集详细信息”选项卡上，输入或选择以下值：
 
 	<table border="1">
 	<tr><th>名称</th><th>值</th></tr>
@@ -96,10 +96,10 @@ HDInsight 将 Azure Blob 存储用于存储数据。它称为 *WASB* 或 *Azure 
 	</td></tr>
 	</table></li>
 
-5.  单击右下角的右箭头以配置群集用户。
-6.  在“配置群集用户”选项卡中，输入 HDInsight 群集用户帐户的**用户名**和**密码**。除了此帐户外，你还可以在设置群集后创建一个 RDP 用户帐户，以便通过远程桌面访问群集。有关说明，请参阅 [使用管理门户管理 HDInsight][hdinsight-admin-portal]
-7.  单击右下角的右箭头以配置存储帐户。
-8.  在“存储帐户”标签上，输入或选择以下值：
+5. 单击右下角的右箭头以配置群集用户。
+6. 在“配置群集用户”选项卡中，输入 HDInsight 群集用户帐户的**用户名**和**密码**。除了此帐户外，你还可以在设置群集后创建一个 RDP 用户帐户，以便通过远程桌面访问群集。有关说明，请参阅 [使用管理门户管理 HDInsight][hdinsight-admin-portal]
+7. 单击右下角的右箭头以配置存储帐户。
+8. 在“存储帐户”标签上，输入或选择以下值：
 
     | 名称         | 值                                                                                             |
     |--------------|------------------------------------------------------------------------------------------------|
@@ -122,42 +122,42 @@ HDInsight 将 Azure Blob 存储用于存储数据。它称为 *WASB* 或 *Azure 
 4.  单击页底部的“管理群集”以打开群集仪表板。这会在另一个浏览器选项卡中打开一个网页。
 5.  输入 Hadoop 用户帐户的用户名和密码。默认的用户名为 **admin**，密码是你在设置过程中输入的密码。仪表板类似于：
 
-    ![hdi.dashboard][img-hdi-dashboard]
+	![hdi.dashboard][img-hdi-dashboard]
 
-    顶部有多个选项卡。默认选项卡为“Hive 编辑器”，其他选项卡包括“作业”和“文件”。使用仪表板可以提交 Hive 查询、检查 Hadoop 作业日志，以及浏览 WASB 文件。
+	顶部有多个选项卡。默认选项卡为“Hive 编辑器”，其他选项卡包括“作业”和“文件”。使用仪表板可以提交 Hive 查询、检查 Hadoop 作业日志，以及浏览 WASB 文件。
 
-> [WACOM.NOTE] 请注意，URL 为 *\<群集名称\>.hdinsightservices.cn*。如果不从管理门户打开仪表板，也可以在 Web 浏览器中使用 URL 打开仪表板。
+> [WACOM.NOTE] 请注意，URL 为 *&lt;群集名称&gt;.hdinsightservices.cn*。如果不从管理门户打开仪表板，也可以在 Web 浏览器中使用 URL 打开仪表板。
 
 **运行 Hive 查询**
 
-1.  在群集仪表板中，单击顶部的“Hive 编辑器”。
-2.  在“查询名称”中输入 **HTC20**。查询名称为作业标题。
-3.  在查询窗格中输入以下查询：
+1. 在群集仪表板中，单击顶部的“Hive 编辑器”。
+2. 在“查询名称”中输入 **HTC20**。查询名称为作业标题。
+3. 在查询窗格中输入以下查询：
 
-        SELECT * FROM hivesampletable
-            WHERE devicemake LIKE "HTC%"
-            LIMIT 20;
+		SELECT * FROM hivesampletable
+			WHERE devicemake LIKE "HTC%"
+			LIMIT 20;
 
-    ![hdi.dashboard.query.select][img-hdi-dashboard-query-select]
+	![hdi.dashboard.query.select][img-hdi-dashboard-query-select]
 
-4.  单击“提交”。片刻之后即可返回结果。屏幕将每隔 30 秒刷新一次。你也可以单击“刷新”来刷新屏幕。
+4. 单击“提交”。片刻之后即可返回结果。屏幕将每隔 30 秒刷新一次。你也可以单击“刷新”来刷新屏幕。
 
-    完成后，屏幕将如下所示：
+	完成后，屏幕将如下所示：
 
-    ![hdi.dashboard.query.select.result][img-hdi-dashboard-query-select-result]
+	![hdi.dashboard.query.select.result][img-hdi-dashboard-query-select-result]
 
-    记下“作业开始时间(UTC)”。稍后需要用到此值。
+	记下“作业开始时间(UTC)”。稍后需要用到此值。
 
-    稍微向下滚动，你将会看到“作业日志”。作业输出为 stdout，作业日志为 stderr。
+	稍微向下滚动，你将会看到“作业日志”。作业输出为 stdout，作业日志为 stderr。
 
-5.  如果你将来想要重新打开日志文件，可以单击屏幕顶部的“作业”，然后单击作业标题（查询名称），在本例中为 **HTC20**。
+5. 如果你将来想要重新打开日志文件，可以单击屏幕顶部的“作业”，然后单击作业标题（查询名称），在本例中为 **HTC20**。
 
 **浏览输出文件**
 
-1.  在群集仪表板中，单击顶部的“文件”。
-2.  单击“Templeton-Job-Status”。
-3.  单击其上次修改时间比你前面记下的作业开始时间稍晚的 GUID 编号。记下此 GUID。在后一个部分将要用到它。
-4.  **stdout** 文件包含后一个部分需要的数据。如果需要，你可以单击“stdout”来下载该数据文件的副本。
+1. 在群集仪表板中，单击顶部的“文件”。
+2. 单击“Templeton-Job-Status”。
+3. 单击其上次修改时间比你前面记下的作业开始时间稍晚的 GUID 编号。记下此 GUID。在后一个部分将要用到它。
+4. **stdout** 文件包含后一个部分需要的数据。如果需要，你可以单击“stdout”来下载该数据文件的副本。
 
 ## <a name="powerquery"></a>连接到 Microsoft 商业智能工具
 
@@ -167,41 +167,39 @@ HDInsight 将 Azure Blob 存储用于存储数据。它称为 *WASB* 或 *Azure 
 
 **下载 Microsoft Power Query for Excel**
 
--   从 [Microsoft 下载中心](http://www.microsoft.com/en-us/download/details.aspx?id=39379)下载 Microsoft Power Query for Excel 并安装它。
+- 从 [Microsoft 下载中心](http://www.microsoft.com/en-us/download/details.aspx?id=39379)下载 Microsoft Power Query for Excel 并安装它。
 
 **导入 HDInsight 数据**
 
-1.  打开 Excel，然后创建一个新的空白工作簿。
-2.  依次单击“Power Query”菜单、“从其他源”和“从 Azure HDInsight”。
+1. 打开 Excel，然后创建一个新的空白工作簿。
+2. 依次单击“Power Query”菜单、“从其他源”和“从 Azure HDInsight”。
 
-    ![HDI.GettingStarted.PowerQuery.ImportData][image-hdi-gettingstarted-powerquery-importdata]
+	![HDI.GettingStarted.PowerQuery.ImportData][image-hdi-gettingstarted-powerquery-importdata]
 
-3.  输入与你的群集关联的 Azure Blob 存储帐户的**帐户名称**，然后单击“确定”。这是先前在教程中创建的存储帐户。
-4.  输入 Azure Blob 存储帐户的**帐户密钥**，然后单击“保存”。
-5.  在右侧的“导航器”窗格中，双击 Blob 存储容器名称。默认情况下，该容器名称与群集名称相同。
+3. 输入与你的群集关联的 Azure Blob 存储帐户的**帐户名称**，然后单击“确定”。这是先前在教程中创建的存储帐户。
+4. 输入 Azure Blob 存储帐户的**帐户密钥**，然后单击“保存”。
+5. 在右侧的“导航器”窗格中，双击 Blob 存储容器名称。默认情况下，该容器名称与群集名称相同。
 
-6.  在“名称”列中找到“stdout”（路径为 *.../Templeton-Job-Status/<guid>*），然后单击“stdout”左侧的“二进制”。<guid> 必须与你在上一部分中记下的 GUID 匹配。
+6. 在“名称”列中找到“stdout”（路径为 *.../Templeton-Job-Status/<guid>*），然后单击“stdout”左侧的“二进制”。<guid> 必须与你在上一部分中记下的 GUID 匹配。
 
-    ![HDI.GettingStarted.PowerQuery.ImportData2][image-hdi-gettingstarted-powerquery-importdata2]
+	![HDI.GettingStarted.PowerQuery.ImportData2][image-hdi-gettingstarted-powerquery-importdata2]
 
-7.  单击左上角的“应用并关闭”。该查询随后会将 Hive 作业输出导入到 Excel 中。
+7. 单击左上角的“应用并关闭”。该查询随后会将 Hive 作业输出导入到 Excel 中。
 
 ## <a name="nextsteps"></a>后续步骤
 
 在本教程中，你已了解了如何使用 HDInsight 设置群集、如何对其运行 MapReduce 作业，以及如何将结果导入到 Excel 中，在 Excel 中，可以使用 BI 工具进一步处理结果以及以图形方式显示结果。若要了解更多信息，请参阅下列文章：
 
--   [HDInsight Emulator 入门][hdinsight-emulator]
--   [将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]
--   [使用 PowerShell 管理 HDInsight][hdinsight-admin-powershell]
--   [将数据上载到 HDInsight][hdinsight-upload-data]
--   [将 MapReduce 与 HDInsight 配合使用][hdinsight-use-mapreduce]
--   [将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]
--   [将 Pig 与 HDInsight 配合使用][hdinsight-use-pig]
--   [将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]
--   [为 HDInsight 开发 C\# Hadoop 流程序][hdinsight-develop-streaming]
--   [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
-
-<!-- [azure-member-offers]: http://azure.microsoft.com/en-us/pricing/member-offers/ -->
+- [HDInsight Emulator 入门][hdinsight-emulator]
+- [将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]
+- [使用 PowerShell 管理 HDInsight][hdinsight-admin-powershell]
+- [将数据上载到 HDInsight][hdinsight-upload-data]
+- [将 MapReduce 与 HDInsight 配合使用][hdinsight-use-mapreduce]
+- [将 Hive 与 HDInsight 配合使用][hdinsight-use-hive]
+- [将 Pig 与 HDInsight 配合使用][hdinsight-use-pig]
+- [将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]
+- [为 HDInsight 开发 C# Hadoop 流程序][hdinsight-develop-streaming]
+- [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
 
 [hdinsight-versions]: ../hdinsight-component-versioning/
 
