@@ -14,13 +14,13 @@
 
 SAS 通常适用于用户需要在你的存储帐户中读取和写入其数据的服务情形。在存储帐户存储着用户数据的情形中，有两种典型的设计模式：
 
-1. 客户端通过执行身份验证的前端代理服务上载和下载数据。此前端代理服务的优势在于允许验证业务规则，但对于大量数据或大量事务，创建按需扩展的服务可能成本高昂或十分困难。
+1\. 客户端通过执行身份验证的前端代理服务上载和下载数据。此前端代理服务的优势在于允许验证业务规则，但对于大量数据或大量事务，创建按需扩展的服务可能成本高昂或十分困难。
 
-[sas-storage-fe-proxy-service][sas-storage-fe-proxy-service]
+![sas-storage-fe-proxy-service][sas-storage-fe-proxy-service]
 
-2. 轻型服务按需对客户端进行身份验证，然后生成 SAS。在客户端接收 SAS 后，它们可以直接使用 SAS 定义的权限并且针对 SAS 允许的间隔访问存储帐户资源。SAS 减少了通过前端代理服务路由所有数据的需要。
+2\. 轻型服务按需对客户端进行身份验证，然后生成 SAS。在客户端接收 SAS 后，它们可以直接使用 SAS 定义的权限并且针对 SAS 允许的间隔访问存储帐户资源。SAS 减少了通过前端代理服务路由所有数据的需要。
 
-[sas-storage-provider-service][sas-storage-provider-service]
+![sas-storage-provider-service][sas-storage-provider-service]
 
 许多实际服务可能会根据涉及的情形混合使用这两种方法，也就是说，通过前端代理对某些数据进行处理和验证，同时使用 SAS 直接保存和/或读取其他数据。
 
