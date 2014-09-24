@@ -47,7 +47,7 @@ HDInsight 群集使用 Azure Blob 存储容器作为默认文件系统。有关 
 
 3.  提供“群集名称” 、“群集大小” 、“群集管理员密码” 和 Azure“存储帐户” ，然后单击“创建 HDInsight 群集” 。创建并运行群集后，状态将显示“正在运行”**。
 
-    ![HDI.QuickCreate][]
+	![HDI.QuickCreate][]
 
     当使用“快速创建”选项创建群集时，管理员帐户的默认用户名为“admin”**。若要为该帐户提供其他用户名，可以使用“自定义创建”选项，而不是“快速创建”选项。也可以在设置之后更改帐户名称。
 
@@ -162,7 +162,7 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 8.  单击“是” 。
 9.  从桌面上双击“Hadoop 命令行” 。
 
-    ![HDI.HadoopCommandLine][]
+	![HDI.HadoopCommandLine][image-hadoopcommandline]
 
     有关 Hadoop 命令的详细信息，请参阅 [Hadoop 命令参考（可能为英文页面）][]。
 

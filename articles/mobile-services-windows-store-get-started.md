@@ -98,13 +98,13 @@
 
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
--   "数据处理入门" ([C\#][]/[JavaScript][])
+-   "数据处理入门" ([C#][]/[JavaScript][])
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   "身份验证入门" ([C\#][6]/[JavaScript][7])
+-   "身份验证入门" ([C#][6]/[JavaScript][7])
     了解如何使用标识提供者对应用程序用户进行身份验证。
 
--   "推送通知入门" ([C\#][8]/[JavaScript][9])
+-   "推送通知入门" ([C#][8]/[JavaScript][9])
     了解如何向应用程序发送一条非常简单的推送通知。
 
   [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"
@@ -129,7 +129,7 @@
   [3]: ./media/mobile-services-windows-store-get-started/mobile-quickstart-startup.png
   [4]: ./media/mobile-services-windows-store-get-started/mobile-data-tab.png
   [5]: ./media/mobile-services-windows-store-get-started/mobile-data-browse.png
-  [C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet
+  [C#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet
   [JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js
   [6]: /zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet
   [7]: /zh-cn/develop/mobile/tutorials/get-started-with-users-js

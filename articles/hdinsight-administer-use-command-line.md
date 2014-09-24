@@ -68,7 +68,7 @@
 
         azure account download
 
-    ![HDI.CLIAccountDownloadImport][]
+	![HDI.CLIAccountDownloadImport][]
 
     该命令显示下载文件的说明，包括 URL。
 
