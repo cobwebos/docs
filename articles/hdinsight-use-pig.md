@@ -357,7 +357,7 @@ WASB 语法是：
   [Pig Latin 参考手册 2]: http://pig.apache.org/docs/r0.7.0/piglatin_ref2.html
   [Azure HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/
   [设置 HDInsight 群集]: /en-us/manage/services/hdinsight/provision-hdinsight-clusters/
-  [安装和配置 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/
+  [安装和配置 Azure PowerShell]: /zh-cn/documentation/articles/install-configure-powershell/
   [将 Azure Blob 存储与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/howto-blob-store/
   [将数据上载到 HDInsight]: /en-us/manage/services/hdinsight/howto-upload-data-to-hdinsight/
   [使用 PowerShell 管理 HDInsight]: /en-use/manage/services/hdinsight/administer-hdinsight-using-powershell/

@@ -660,8 +660,8 @@
 
 ## 其他资源
 
-[适用于 Mac 和 Linux 的 Azure 命令行工具] [创建 Node.js 应用程序并将其部署到 Azure 网站]：/en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-[使用 Git 发布到 Azure 网站][]：/en-us/documentation/articles/web-sites-publish-source-control/
+[适用于 Mac 和 Linux 的 Azure 命令行工具] [创建 Node.js 应用程序并将其部署到 Azure 网站]：/zh-cn/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+[使用 Git 发布到 Azure 网站][]：/zh-cn/documentation/articles/web-sites-publish-source-control/
 [Azure 开发人员中心]：/en-us/develop/nodejs/
 
   [Node]: http://nodejs.org
@@ -678,7 +678,7 @@
   [Twitter Bootstrap]: https://github.com/twbs/bootstrap
   [1]: http://getbootstrap.com/
   [任务列表中新项的图像]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_list.png
-  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /zh-cn/documentation/articles/web-sites-nodejs-develop-deploy-mac/
   [antares-iaas-signup]: ../includes/antares-iaas-signup.md
   [Azure 开发人员中心]: /en-us/develop/nodejs/
   [适用于 Mac 和 Linux 的 Azure 命令行工具]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
@@ -688,5 +688,5 @@
   [配置链接]: ./media/storage-nodejs-use-table-storage-web-site/sql-task-configure.png
   [应用程序设置]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
   [保存应用程序设置]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
-  [使用 MongoDB 的 Node.js Web 应用程序]: /en-us/documentation/articles/web-sites-nodejs-store-data-mongodb/
-  [使用 Git 发布到 Azure 网站]: /en-us/documentation/articles/web-sites-publish-source-control/
+  [使用 MongoDB 的 Node.js Web 应用程序]: /zh-cn/documentation/articles/web-sites-nodejs-store-data-mongodb/
+  [使用 Git 发布到 Azure 网站]: /zh-cn/documentation/articles/web-sites-publish-source-control/

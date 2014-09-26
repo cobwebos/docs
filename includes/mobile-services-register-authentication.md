@@ -34,9 +34,9 @@
   [Azure 管理门户]: https://manage.windowsazure.cn/
   []: ./media/mobile-services-register-authentication/mobile-services-selection.png
   [1]: ./media/mobile-services-register-authentication/mobile-service-uri.png
-  [Microsoft 帐户]: /en-us/documentation/articles/mobile-services-how-to-register-microsoft-authentication/
-  [Facebook 登录]: /en-us/documentation/articles/mobile-services-how-to-register-facebook-authentication/
-  [Twitter 登录]: /en-us/documentation/articles/mobile-services-how-to-register-twitter-authentication/
-  [Google 登录]: /en-us/documentation/articles/mobile-services-how-to-register-google-authentication/
-  [Azure Active Directory]: /en-us/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
+  [Microsoft 帐户]: /zh-cn/documentation/articles/mobile-services-how-to-register-microsoft-authentication/
+  [Facebook 登录]: /zh-cn/documentation/articles/mobile-services-how-to-register-facebook-authentication/
+  [Twitter 登录]: /zh-cn/documentation/articles/mobile-services-how-to-register-twitter-authentication/
+  [Google 登录]: /zh-cn/documentation/articles/mobile-services-how-to-register-google-authentication/
+  [Azure Active Directory]: /zh-cn/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
   [2]: ./media/mobile-services-register-authentication/mobile-identity-tab.png

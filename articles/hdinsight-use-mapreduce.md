@@ -207,14 +207,14 @@ MapReduce 作业的输出结果是一组键值对。键是一个用于指定单�
 -   [Pig 与 HDInsight 配合使用][hdinsight-pig]
 -   [运行 HDInsight 示例][hdinsight-samples]
 
-[hdinsight-upload-data]: /en-us/documentation/articles/hdinsight-upload-data/
+[hdinsight-upload-data]: /zh-cn/documentation/articles/hdinsight-upload-data/
 
 [hdinsight-getting-started]: /en-us/manage/services/hdinsight/get-started-hdinsight/
-[hdinsight-develop-mapreduce]: /en-us/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
-[hdinsight-develop-streaming]: /en-us/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
-[hdinsight-hive]: /en-us/documentation/articles/hdinsight-use-hive/
-[hdinsight-pig]: /en-us/documentation/articles/hdinsight-use-pig/
-[hdinsight-samples]: /en-us/documentation/articles/hdinsight-run-samples/
+[hdinsight-develop-mapreduce]: /zh-cn/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
+[hdinsight-develop-streaming]: /zh-cn/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
+[hdinsight-hive]: /zh-cn/documentation/articles/hdinsight-use-hive/
+[hdinsight-pig]: /zh-cn/documentation/articles/hdinsight-use-pig/
+[hdinsight-samples]: /zh-cn/documentation/articles/hdinsight-run-samples/
 
 [powershell-install-configure]: /en-us/manage/install-and-configure-windows-powershell/
 

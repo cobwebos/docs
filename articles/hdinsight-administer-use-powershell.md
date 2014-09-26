@@ -216,7 +216,7 @@ HDInsight 群集分发附带称作 *hivesampletable* 的示例 Hive 表。你可
   [HDInsight cmdlet 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dn479228.aspx
   [购买选项]: http://www.windowsazure.cn/zh-cn/pricing/overview/
   [免费试用]: https://www.windowsazure.cn/zh-cn/pricing/free-trial/
-  [安装和配置 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/
+  [安装和配置 Azure PowerShell]: /zh-cn/documentation/articles/install-configure-powershell/
   [设置群集]: #provision
   [列出并显示群集]: #listshow
   [删除群集]: #delete
@@ -228,11 +228,11 @@ HDInsight 群集分发附带称作 *hivesampletable* 的示例 Hive 表。你可
   [如何创建存储帐户]: /en-us/manage/services/storage/how-to-create-a-storage-account/
   [如何管理存储帐户]: /en-us/manage/services/storage/how-to-manage-a-storage-account/
   [HDI.PS.Provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
-  [使用管理门户管理 HDInsight]: /en-us/documentation/articles/hdinsight-administer-use-management-portal/
-  [将 MapReduce 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-mapreduce/
-  [将 Hive 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-hive/
-  [将数据上载到 HDInsight]: /en-us/documentation/articles/hdinsight-upload-data/
-  [使用命令行接口管理 HDInsight]: /en-us/documentation/articles/hdinsight-administer-use-command-line/
-  [配置 HDInsight 群集]: /en-us/documentation/articles/hdinsight-provision-clusters/
-  [以编程方式提交 Hadoop 作业]: /en-us/documentation/articles/hdinsight-submit-hadoop-jobs-programmatically/
-  [Azure HDInsight 入门]: /en-us/documentation/articles/hdinsight-get-started/
+  [使用管理门户管理 HDInsight]: /zh-cn/documentation/articles/hdinsight-administer-use-management-portal/
+  [将 MapReduce 与 HDInsight 配合使用]: /zh-cn/documentation/articles/hdinsight-use-mapreduce/
+  [将 Hive 与 HDInsight 配合使用]: /zh-cn/documentation/articles/hdinsight-use-hive/
+  [将数据上载到 HDInsight]: /zh-cn/documentation/articles/hdinsight-upload-data/
+  [使用命令行接口管理 HDInsight]: /zh-cn/documentation/articles/hdinsight-administer-use-command-line/
+  [配置 HDInsight 群集]: /zh-cn/documentation/articles/hdinsight-provision-clusters/
+  [以编程方式提交 Hadoop 作业]: /zh-cn/documentation/articles/hdinsight-submit-hadoop-jobs-programmatically/
+  [Azure HDInsight 入门]: /zh-cn/documentation/articles/hdinsight-get-started/

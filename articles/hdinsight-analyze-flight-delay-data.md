@@ -81,20 +81,20 @@ WASB 语法为：
 
 **下载航班数据**
 
-1.  浏览到[美国研究与技术创新管理部门 - 运输统计局][] (RITA)。
-2.  在该页面上，选择以下值：
+1. 浏览到[美国研究与技术创新管理部门 - 运输统计局][] (RITA)。
+2. 在该页面上，选择以下值：
 
-<table border="1">
-<tr><th>名称</th><th>值</th></tr>
-<tr><td>筛选年份</td><td>2012</td></tr>
-<tr><td>筛选期间</td><td>1 月</td></tr>
-<tr><td>字段：</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay*（清除其他所有字段）</td></tr>
-</table>
+	<table border="1">
+	<tr><th>名称</th><th>值</th></tr>
+	<tr><td>筛选年份</td><td>2012</td></tr>
+	<tr><td>筛选期间</td><td>1 月</td></tr>
+	<tr><td>字段：</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay*（清除其他所有字段）</td></tr>
+	</table>
 
-3.  单击“下载” 。下载每个文件最多需要花费 15 分钟。
-4.  将文件解压缩到 **C:\\Tutorials\\FlightDelays\\Data** 文件夹。每个文件均为 CSV 文件且大小约为 60 GB。
-5.  将文件重命名为其包含的数据所对应的月份的名称。例如，将包含 1 月份数据的文件命名为 *January.csv*。
-6.  重复步骤 2 和步骤 5，为 2012 年中的 12 个月分别下载一个对应的文件。你至少需要一个文件才能运行本教程。
+3. 单击“下载” 。下载每个文件最多需要花费 15 分钟。
+4. 将文件解压缩到 **C:\\Tutorials\\FlightDelays\\Data** 文件夹。每个文件均为 CSV 文件且大小约为 60 GB。
+5. 将文件重命名为其包含的数据所对应的月份的名称。例如，将包含 1 月份数据的文件命名为 *January.csv*。
+6. 重复步骤 2 和步骤 5，为 2012 年中的 12 个月分别下载一个对应的文件。你至少需要一个文件才能运行本教程。
 
 **将航班延迟数据上载到 Azure Blob 存储**
 

@@ -497,7 +497,7 @@ HDInsight .NET SDK 提供了一组 .NET 客户端库，使你能够在 .NET 中�
   [HDI.CustomProvision.Page2]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page2.png
   [HDI.CustomProvision.Page3]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page3.png
   [HDI.CustomProvision.Page4]: ./media/hdinsight-provision-clusters/HDI.CustomProvision.Page4.png
-  [安装和配置 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/
+  [安装和配置 Azure PowerShell]: /zh-cn/documentation/articles/install-configure-powershell/
   [使用 PowerShell 管理 HDInsight]: /en-us/manage/services/hdinsight/administer-hdinsight-using-powershell/
   [HDInsight cmdlet 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dn479228.aspx
   [HDI.CLI.Provision]: ./media/hdinsight-provision-clusters/HDI.ps.provision.png

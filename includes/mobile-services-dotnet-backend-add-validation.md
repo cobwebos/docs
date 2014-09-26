@@ -31,8 +31,8 @@
 
     ![][2]
 
-  [入门]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
-  [数据处理入门]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-
+  [入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
+  [数据处理入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-
   []: ./media/mobile-services-dotnet-backend-add-validation/mobile-services-open-todoitemcontroller.png
   [1]: ./media/mobile-services-dotnet-backend-add-validation/mobile-services-build-dotnet-service.png
   [2]: ./media/mobile-services-dotnet-backend-add-validation/mobile-services-publish-dotnet-service.png

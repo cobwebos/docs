@@ -180,7 +180,7 @@ Azure 存储空间通过一个 [REST API][] 来公开存储资源，任何可以
   [Ruby]: ../storage/#ruby
   [Python]: ../storage/#python
   [PowerShell]: http://msdn.microsoft.com/zh-cn/library/dn495240.aspx
-  [Azure 存储文档]: /en-us/documentation/services/storage/
+  [Azure 存储文档]: /zh-cn/documentation/services/storage/
   [Azure 存储空间可伸缩性和性能目标]: http://msdn.microsoft.com/zh-cn/library/azure/dn249410.aspx
   [如何通过 .NET 使用 Blob 存储]: ../storage-dotnet-how-to-use-blobs/
   [如何通过 .NET 使用表存储]: ../storage-dotnet-how-to-use-tables/

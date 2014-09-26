@@ -285,7 +285,7 @@ A 记录将域（例如 **contoso.com** 或 **www.contoso.com**）或*通配符�
 -   [为网站配置 SSL 证书][]
 
   [http://\<mysite]: http://<mysite
-  [使用 Azure Traffic Manager 控制 Azure 网站流量]: /en-us/documentation/articles/web-sites-traffic-manager/
+  [使用 Azure Traffic Manager 控制 Azure 网站流量]: /zh-cn/documentation/articles/web-sites-traffic-manager/
   [在 Azure 中配置自定义域名]: http://www.windowsazure.com/en-us/develop/net/common-tasks/custom-dns/
   [网站定价详细信息]: http://www.windowsazure.com/en-us/pricing/details/web-sites/
   [了解 CNAME 和 A 记录]: #understanding-records
@@ -323,7 +323,7 @@ A 记录将域（例如 **contoso.com** 或 **www.contoso.com**）或*通配符�
 [portal]: http://manage.windowsazure.cn
 [digweb]: http://www.digwebinterface.com/
 [cloudservicedns]: ../custom-dns/
-[trafficmanager]: /en-us/documentation/articles/web-sites-traffic-manager/
+[trafficmanager]: /zh-cn/documentation/articles/web-sites-traffic-manager/
 [addendpoint]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh744839.aspx
 [createprofile]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn339012.aspx
 

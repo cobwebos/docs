@@ -65,7 +65,7 @@
   [“提交应用程序”页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
   []: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-services-submit-win8-app.png
   [1]: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-services-win8-app-name.png
-  [移动服务入门]: /en-us/documentation/articles/mobile-services-windows-store-get-started/
+  [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started/
   [2]: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-services-store-association.png
   [3]: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-services-select-app-name.png
   [4]: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-services-win8-edit-app.png

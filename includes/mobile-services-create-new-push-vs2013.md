@@ -29,7 +29,7 @@
     <p>当你的应用程序尚未配置为连接到移动服务时，向导也会完成在"数据处理入门"中演示的相同配置任务。</p>
 	</div>
 
-  [在 Visual Studio 2013 中导入 publishsettings 文件]: /en-us/documentation/articles/mobile-services-windows-how-to-import-publishsettings/
+  [在 Visual Studio 2013 中导入 publishsettings 文件]: /zh-cn/documentation/articles/mobile-services-windows-how-to-import-publishsettings/
   [mobile-add-push-notifications-vs2013]: ../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013.png
   [mobile-add-push-notifications-vs2013-2]: ../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013-2.png
   [mobile-add-push-notifications-vs2013-3]: ../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013-3.png

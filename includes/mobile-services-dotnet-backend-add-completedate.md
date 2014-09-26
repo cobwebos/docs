@@ -40,4 +40,4 @@
 接下来，你将更新客户端应用程序，以显示新的 "CompleteDate" 数据。
 
   [DropCreateDatabaseIfModelChanges]: http://go.microsoft.com/fwlink/?LinkId=394621
-  [如何使用代码优先迁移更新数据模型]: /en-us/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations
+  [如何使用代码优先迁移更新数据模型]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations

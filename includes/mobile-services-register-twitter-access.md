@@ -32,7 +32,7 @@
 
     这样可将 Twitter 访问令牌存储在应用程序设置中。与“标识”选项卡上的使用者凭据相同， 访问凭据也加密存储在应用程序设置中，你可在服务器脚本中访问这些凭据，而无需在脚本文件中对其进行硬编码。有关详细信息，请参阅[应用程序设置][]。
 
-  [注册应用程序以便在移动服务中进行 Twitter 登录]: /en-us/documentation/articles/mobile-services-how-to-register-twitter-authentication/
+  [注册应用程序以便在移动服务中进行 Twitter 登录]: /zh-cn/documentation/articles/mobile-services-how-to-register-twitter-authentication/
   [Twitter 开发人员]: http://go.microsoft.com/fwlink/p/?LinkId=268300
   []: ./media/mobile-services-register-twitter-access/mobile-twitter-my-apps.png
   [1]: ./media/mobile-services-register-twitter-access/mobile-twitter-app-secrets.png

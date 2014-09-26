@@ -48,7 +48,7 @@ HDInsight 随附了以下示例。
   [Azure HDInsight 简介]: /en-us/manage/services/hdinsight/introduction-hdinsight/
   [免费试用 Azure]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
   [设置 HDInsight 群集]: /en-us/manage/services/hdinsight/provision-hdinsight-clusters/
-  [安装和配置 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/
+  [安装和配置 Azure PowerShell]: /zh-cn/documentation/articles/install-configure-powershell/
   [**Pi Estimator 示例**]: /en-us/manage/services/hdinsight/howto-run-samples/sample-pi-estimator/
   [**WordCount 示例**]: /en-us/manage/services/hdinsight/howto-run-samples/sample-wordcount/
   [**10-GB Graysort 示例**]: /en-us/manage/services/hdinsight/howto-run-samples/sample-10gb-graysort/

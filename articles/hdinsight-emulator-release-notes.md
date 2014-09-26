@@ -247,4 +247,4 @@
 
 -   [HDInsight Emulator 入门][]
 
-  [HDInsight Emulator 入门]: /en-us/documentation/articles/hdinsight-get-started-emulator/
+  [HDInsight Emulator 入门]: /zh-cn/documentation/articles/hdinsight-get-started-emulator/

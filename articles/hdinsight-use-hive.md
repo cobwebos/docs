@@ -184,7 +184,7 @@ Hive 可以简化使用类似 SQL 的查询语言进行数据查询的步骤，�
   [Apache Hive]: http://hive.apache.org/
   [HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/
   [设置 HDInsight 群集]: /en-us/manage/services/hdinsight/provision-hdinsight-clusters/
-  [安装和配置 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/
+  [安装和配置 Azure PowerShell]: /zh-cn/documentation/articles/install-configure-powershell/
   [Hive 用例]: #usage
   [将数据文件上载到 Azure Blob 存储]: #uploaddata
   [使用 PowerShell 运行 Hive 查询]: #runhivequeries
@@ -195,8 +195,8 @@ Hive 可以简化使用类似 SQL 的查询语言进行数据查询的步骤，�
   [HDI.HIVE.PowerShell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
   [PowerShell Invoke-Hive 输出结果]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
   [使用 Windows PowerShell Here-Strings]: http://technet.microsoft.com/en-us/library/ee692792.aspx
-  [使用 HDInsight 分析航班延误数据]: /en-us/documentation/articles/hdinsight-analyze-flight-delay-data/
-  [将 Oozie 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-oozie/
+  [使用 HDInsight 分析航班延误数据]: /zh-cn/documentation/articles/hdinsight-analyze-flight-delay-data/
+  [将 Oozie 与 HDInsight 配合使用]: /zh-cn/documentation/articles/hdinsight-use-oozie/
   [以编程方式提交 Hadoop 作业]: /en-us/manage/services/hdinsight/submit-hadoop-jobs-programmatically/
   [Pig 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
   [Azure HDInsight SDK 文档]: http://msdn.microsoft.com/zh-cn/library/dn469975.aspx

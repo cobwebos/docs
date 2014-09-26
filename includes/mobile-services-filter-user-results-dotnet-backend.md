@@ -39,4 +39,4 @@
 
 6.  将移动服务项目重新发布到 Azure。
 
-  [如何使用代码优先迁移更新数据模型]: /en-us/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations
+  [如何使用代码优先迁移更新数据模型]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations

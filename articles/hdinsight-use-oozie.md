@@ -564,31 +564,31 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 - [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
 
 [hdinsight-oozie-coordinator-time]: ../hdinsight-use-oozie-coordinator-time/
-[hdinsight-versions]:  /en-us/documentation/articles/hdinsight-component-versioning/
-[hdinsight-storage]: /en-us/documentation/articles/hdinsight-use-blob-storage/
-[hdinsight-get-started]: /en-us/documentation/articles/hdinsight-get-started/
-[hdinsight-admin-portal]: /en-us/documentation/articles/hdinsight-administer-use-management-portal/
+[hdinsight-versions]:  /zh-cn/documentation/articles/hdinsight-component-versioning/
+[hdinsight-storage]: /zh-cn/documentation/articles/hdinsight-use-blob-storage/
+[hdinsight-get-started]: /zh-cn/documentation/articles/hdinsight-get-started/
+[hdinsight-admin-portal]: /zh-cn/documentation/articles/hdinsight-administer-use-management-portal/
 
 
 [hdinsight-sqoop]: ../hdinsight-use-sqoop/
-[hdinsight-provision]: /en-us/documentation/articles/hdinsight-provision-clusters/
+[hdinsight-provision]: /zh-cn/documentation/articles/hdinsight-provision-clusters/
 
-[hdinsight-admin-powershell]: /en-us/documentation/articles/hdinsight-administer-use-powershell/
+[hdinsight-admin-powershell]: /zh-cn/documentation/articles/hdinsight-administer-use-powershell/
 
-[hdinsight-upload-data]: /en-us/documentation/articles/hdinsight-upload-data/
+[hdinsight-upload-data]: /zh-cn/documentation/articles/hdinsight-upload-data/
 
-[hdinsight-mapreduce]: /en-us/documentation/articles/hdinsight-use-mapreduce/
-[hdinsight-hive]: /en-us/documentation/articles/hdinsight-use-hive/
+[hdinsight-mapreduce]: /zh-cn/documentation/articles/hdinsight-use-mapreduce/
+[hdinsight-hive]: /zh-cn/documentation/articles/hdinsight-use-hive/
 
-[hdinsight-pig]: /en-us/documentation/articles/hdinsight-use-pig/
+[hdinsight-pig]: /zh-cn/documentation/articles/hdinsight-use-pig/
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
-[hdinsight-storage]: /en-us/documentation/articles/hdinsight-use-blob-storage/
+[hdinsight-storage]: /zh-cn/documentation/articles/hdinsight-use-blob-storage/
 
-[hdinsight-emulator]: /en-us/documentation/articles/hdinsight-get-started-emulator/
+[hdinsight-emulator]: /zh-cn/documentation/articles/hdinsight-get-started-emulator/
 
-[hdinsight-develop-streaming]: /en-us/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
-[hdinsight-develop-mapreduce]: /en-us/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
+[hdinsight-develop-streaming]: /zh-cn/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
+[hdinsight-develop-mapreduce]: /zh-cn/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
 
 [sqldatabase-create-configue]: ../sql-database-create-configure/
 [sqldatabase-get-started]: ../sql-database-get-started/

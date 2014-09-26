@@ -74,7 +74,7 @@ Giraph 未作为 HDInsight 群集的一部分提供，因此必须从源生成�
 
     完成该命令后，JAR 文件即已上载到 wasb:///example/jars/giraph.jar。
 
-    > [WACOM.NOTE] 有关可用于将文件上载到 HDInsight 的实用工具列表，请参阅[在 HDInsight 中上载 Hadoop 作业的数据](http://azure.microsoft.com/en-us/documentation/articles/hdinsight-upload-data/)。
+    > [WACOM.NOTE] 有关可用于将文件上载到 HDInsight 的实用工具列表，请参阅[在 HDInsight 中上载 Hadoop 作业的数据](http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-upload-data/)。
 
 ## <span id="run"></span></a>运行示例
 
@@ -188,7 +188,7 @@ Giraph 作业在运行时将创建指定的输出目录。如果该目录已存�
 
 ### 旧版 HDInsight
 
-如果要在旧版 HDInsight 上使用 Giraph，则必须针对该版本支持的特定 Hadoop 版本编译 Giraph。请参阅 [HDInsight 群集版本中的新增功能](http://azure.microsoft.com/en-us/documentation/articles/hdinsight-component-versioning/)，以确定与你的 HDInsight 版本对应的 Hadoop 版本。
+如果要在旧版 HDInsight 上使用 Giraph，则必须针对该版本支持的特定 Hadoop 版本编译 Giraph。请参阅 [HDInsight 群集版本中的新增功能](http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-component-versioning/)，以确定与你的 HDInsight 版本对应的 Hadoop 版本。
 
 此外，旧版 HDInsight 可能要求你从 Hadoop 命令行运行 Giraph 作业。如果在从 PowerShell 运行作业时收到错误，请尝试从 [Hadoop 命令行](#cmd)运行该作业。
 

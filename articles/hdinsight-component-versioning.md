@@ -93,7 +93,7 @@ SLA 用“支持窗口”来定义。“支持窗口”是指 HDInsight 群集�
   [Azure HDInsight]: http://go.microsoft.com/fwlink/?LinkID=285601
   [HDI.Versioning.VersionScreen]: ./media/hdinsight-component-versioning/hdi-versioning-version-screen.png
   [系列 4]: http://msdn.microsoft.com/zh-cn/library/azure/ee924680.aspx#explanation
-  [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight]: /en-us/documentation/articles/hdinsight-connect-excel-hive-ODBC-driver
+  [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight]: /zh-cn/documentation/articles/hdinsight-connect-excel-hive-ODBC-driver
   [Hortonworks 数据平台 2.0]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
   [Hortonworks 数据平台 1.3]: http://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html
   [Hortonworks 数据平台 1.1]: http://docs.hortonworks.com/HDPDocuments/HDP1/HDP-Win-1.1/bk_releasenotes_HDP-Win/content/ch_relnotes-hdp-win-1.1.0_1.html

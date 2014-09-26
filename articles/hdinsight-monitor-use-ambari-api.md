@@ -142,4 +142,4 @@ HDInsight 目前只支持 Ambari 监视功能。HDInsight 群集版本 2.1 和 3
   [使用管理门户管理 HDInsight 群集]: ../hdinsight-administer-use-management-portal/
   [使用 Azure PowerShell 管理 HDInsight 群集]: ../hdinsight-administer-use-powershell/
   [使用命令行接口管理 HDInsight 群集]: ../hdinsight-administer-use-command-line/
-  [HDInsight 文档]: /en-us/documentation/services/hdinsight/
+  [HDInsight 文档]: /zh-cn/documentation/services/hdinsight/

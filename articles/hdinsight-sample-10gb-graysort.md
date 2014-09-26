@@ -406,7 +406,7 @@
   [Sortbenchmark]: http://sortbenchmark.org/
   [免费试用 Azure]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
   [设置 HDInsight 群集]: /en-us/manage/services/hdinsight/provision-hdinsight-clusters/
-  [安装和配置 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/
+  [安装和配置 Azure PowerShell]: /zh-cn/documentation/articles/install-configure-powershell/
   [使用 Azure PowerShell 运行示例]: #run-sample
   [TeraSort MapReduce 程序的 Java 代码]: #java-code
   [摘要]: #summary

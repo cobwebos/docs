@@ -341,9 +341,9 @@ Mahout 已安装在 HDInsight 3.1 群集上，你可以使用以下步骤手动�
 
         PS C:\> Get-AzureHDInsightCluster -Name YourClusterName | Select version
 
-- **对于 HDInsight 2.1**，可以下载包含 [Mahout 0.9](http://repo2.maven.org/maven2/org/apache/mahout/mahout-core/0.9/mahout-core-0.9-job.jar) 的 jar 文件。
+  * __对于 HDInsight 2.1__，可以下载包含 [Mahout 0.9](http://repo2.maven.org/maven2/org/apache/mahout/mahout-core/0.9/mahout-core-0.9-job.jar) 的 jar 文件。
 
-- **对于 HDInsight 3.0**，必须[从源生成 Mahout][build] 并指定 HDInsight 提供的 Hadoop 版本。安装生成页上列出的必备组件，下载源，然后使用以下命令创建 Mahout jar 文件。
+  * __对于 HDInsight 3.0__，必须[从源生成 Mahout][build] 并指定 HDInsight 提供的 Hadoop 版本。安装生成页上列出的必备组件，下载源，然后使用以下命令创建 Mahout jar 文件。
 
             mvn -Dhadoop2.version=2.2.0 -DskipTests clean package
 
@@ -351,7 +351,7 @@ Mahout 已安装在 HDInsight 3.1 群集上，你可以使用以下步骤手动�
 
 	> [WACOM.NOTE] Once Mahout 1.0 is released, you should be able to use the pre-built packages with HDInsight 3.0.
 
-1. 将该 jar 文件上载到群集默认存储的 **example/jars** 中。以下示例使用 [send-hdinsight][sendhdinsight] 脚本上载该文件。
+2. 将该 jar 文件上载到群集默认存储的 **example/jars** 中。以下示例使用 [send-hdinsight][sendhdinsight] 脚本上载该文件。
 
         PS C:\> .\Send-HDInsight -LocalPath "path\to\mahout-core-0.9-job.jar" -DestinationPath "example/jars/mahout-core-0.9-job.jar" -ClusterName "your cluster name"
 

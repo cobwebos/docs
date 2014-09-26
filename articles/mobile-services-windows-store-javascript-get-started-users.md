@@ -2,8 +2,8 @@
 
 # 移动服务中的身份验证入门
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-users" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-users" title="Windows Store JavaScript" class="current">Windows 应用商店 JavaScript</a><a href="/en-us/documentation/articles/mobile-services-windows-phone-get-started-users" title="Windows Phone">Windows Phone</a><a href="/en-us/documentation/articles/mobile-services-ios-get-started-users" title="iOS">iOS</a><a href="/en-us/documentation/articles/mobile-services-android-get-started-users" title="Android">Android</a><a href="/en-us/documentation/articles/mobile-services-html-get-started-users" title="HTML">HTML</a><a href="/en-us/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/documentation/articles/partner-xamarin-mobile-services-android-get-started-users" title="Xamarin.Android">Xamarin.Android</a></div>
-<div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/" title=".NET backend">.NET 后端</a> | <a href="/en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-users/"  title="JavaScript backend" class="current">JavaScript 后端</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users" title="Windows Store JavaScript" class="current">Windows 应用商店 JavaScript</a><a href="/zh-cn/documentation/articles/mobile-services-windows-phone-get-started-users" title="Windows Phone">Windows Phone</a><a href="/zh-cn/documentation/articles/mobile-services-ios-get-started-users" title="iOS">iOS</a><a href="/zh-cn/documentation/articles/mobile-services-android-get-started-users" title="Android">Android</a><a href="/zh-cn/documentation/articles/mobile-services-html-get-started-users" title="HTML">HTML</a><a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started-users" title="Xamarin.Android">Xamarin.Android</a></div>
+<div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/" title=".NET backend">.NET 后端</a> | <a href="/zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users/"  title="JavaScript backend" class="current">JavaScript 后端</a></div>
 
 本主题说明如何通过应用程序对 Azure 移动服务中的用户进行身份验证。在本教程中，你将要使用移动服务支持的标识提供者向快速入门项目添加身份验证。在移动服务成功完成身份验证和授权后，将显示用户 ID 值。
 
@@ -63,24 +63,24 @@
 
 在下一教程[移动服务用户的服务端授权][]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。
 
-  [Windows 应用商店 C\#]: /en-us/documentation/articles/mobile-services-windows-store-dotnet-get-started-users "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-users "Windows 应用商店 JavaScript"
-  [Windows Phone]: /en-us/documentation/articles/mobile-services-windows-phone-get-started-users "Windows Phone"
-  [iOS]: /en-us/documentation/articles/mobile-services-ios-get-started-users "iOS"
-  [Android]: /en-us/documentation/articles/mobile-services-android-get-started-users "Android"
-  [HTML]: /en-us/documentation/articles/mobile-services-html-get-started-users "HTML"
-  [Xamarin.iOS]: /en-us/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users "Xamarin.iOS"
-  [Xamarin.Android]: /en-us/documentation/articles/partner-xamarin-mobile-services-android-get-started-users "Xamarin.Android"
-  [.NET 后端]: /en-us/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/ ".NET 后端"
-  [JavaScript 后端]: /en-us/documentation/articles/mobile-services-windows-store-javascript-get-started-users/ "JavaScript 后端"
+  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-users "Windows Phone"
+  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-users "iOS"
+  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started-users "Android"
+  [HTML]: /zh-cn/documentation/articles/mobile-services-html-get-started-users "HTML"
+  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started-users "Xamarin.Android"
+  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/ ".NET 后端"
+  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users/ "JavaScript 后端"
   [注册应用程序以进行身份验证并配置移动服务]: #register
   [将表权限限制给已经过身份验证的用户]: #permissions
   [向应用程序添加身份验证]: #add-authentication
-  [移动服务入门]: /en-us/documentation/articles/mobile-services-windows-store-get-started/
+  [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started/
   [使用 Live Connect 实现对 Windows 应用商店应用程序的单一登录]: /en-us/develop/mobile/tutorials/single-sign-on-windows-8-js
   [mobile-services-register-authentication]: ../includes/mobile-services-register-authentication.md
-  [注册 Windows 应用商店应用程序包以进行 Microsoft 身份验证]: /en-us/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication/
+  [注册 Windows 应用商店应用程序包以进行 Microsoft 身份验证]: /zh-cn/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication/
   [mobile-services-restrict-permissions-javascript-backend]: ../includes/mobile-services-restrict-permissions-javascript-backend.md
   [1]: /en-us/develop/mobile/tutorials/get-started/
   [mobile-services-windows-store-javascript-authenticate-app]: ../includes/mobile-services-windows-store-javascript-authenticate-app.md
-  [移动服务用户的服务端授权]: /en-us/documentation/articles/mobile-services-windows-store-javascript-authorize-users-in-scripts
+  [移动服务用户的服务端授权]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-authorize-users-in-scripts
