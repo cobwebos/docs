@@ -203,6 +203,7 @@ sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 
 ## 后续步骤
 
+<!--
 [共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 服务][第 2 部分]
 
 [管理对 Azure 存储资源的访问][]
@@ -210,13 +211,17 @@ sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 [使用共享访问签名委托访问 (REST API)][]
 
 [表和队列 SAS 介绍][]
+-->
 
+[共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 服务](../storage-dotnet-shared-access-signature-part-2/)
 
-  [第 2 部分]: ../storage-dotnet-shared-access-signature-part-2/
-  [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx
-  [管理对 Azure 存储资源的访问]: http://msdn.microsoft.com/zh-cn/library/azure/ee393343.aspx
-  [使用共享访问签名委托访问 (REST API)]: http://msdn.microsoft.com/zh-cn/library/azure/ee395415.aspx
-  [表和队列 SAS 介绍]: http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx
+[Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx)
+
+[管理对 Azure 存储资源的访问](http://msdn.microsoft.com/zh-cn/library/azure/ee393343.aspx)
+
+[使用共享访问签名委托访问 (REST API)](http://msdn.microsoft.com/zh-cn/library/azure/ee395415.aspx)
+
+[表和队列 SAS 介绍](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
 
 
 
