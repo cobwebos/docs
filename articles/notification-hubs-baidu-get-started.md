@@ -8,22 +8,22 @@
 
 本教程需要的内容如下：
 
--   Android SDK（假定你将使用 Eclipse），你可以从<a href="http://go.microsoft.com/fwlink/?LinkId=389797">此处</a>下载该 SDK
--   [移动服务 Android SDK][Mobile Services Android SDK]
--   [百度推送 Android SDK][Baidu Push Android SDK]
++ Android SDK（假定你将使用 Eclipse），你可以从<a href="http://go.microsoft.com/fwlink/?LinkId=389797">此处</a>下载该 SDK
++ [移动服务 Android SDK][Mobile Services Android SDK]
++ [百度推送 Android SDK][Baidu Push Android SDK]
 
 > [WACOM.NOTE] 若要完成本教程，你必须具有有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure 免费试用</a>。
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
--   [创建百度帐户](#createBaiduAccount)
--   [注册为百度开发者](#registerBaiduDeveloper)
--   [创建百度云推送项目](#createBaiduPushProject)
--   [配置通知中心](#configure-hub)
--   [将你的应用程序连接到通知中心](#connecting-app)
--   [向应用程序发送通知](#send)
+* [创建百度帐户](#createBaiduAccount)
+* [注册为百度开发者](#registerBaiduDeveloper)
+* [创建百度云推送项目](#createBaiduPushProject)
+* [配置通知中心](#configure-hub)
+* [将你的应用程序连接到通知中心](#connecting-app)
+*  [向应用程序发送通知](#send)
 
-## <span id="createBaiduAccount"></span></a>创建百度帐户
+## <a id="createBaiduAccount"></a>创建百度帐户
 
 若要使用百度，必须创建帐户。如果你已有帐户，请使用百度帐户登录到[百度门户][Baidu portal]，并跳到下一个步骤；否则，请参阅下面有关如何创建新百度帐号的说明。
 
@@ -77,7 +77,7 @@
 
   	![][11] 
 
-## <span id="createBaiduPushProject"></span></a>创建百度云推送项目
+## <a id="createBaiduPushProject"></a>创建百度云推送项目
 
 在创建百度云推送项目时，你将收到应用程序 ID、API 密钥和密钥。
 
@@ -113,7 +113,7 @@
 
   	![][16]
 
-## <span id="configure-hub"></span></a>配置通知中心
+## <a id="configure-hub"></a>配置通知中心
 
 1.  登录到 [Azure 管理门户][Azure Management Portal]，然后单击屏幕底部的“+新建”。
 
@@ -143,7 +143,7 @@
 
     ![][22]
 
-## <span id="connecting-app"></span></a>将你的应用程序连接到通知中心
+## <a id="connecting-app"></a>将你的应用程序连接到通知中心
 
 1.  在 Eclipse ADT 中，创建新的 Android 项目（“文件”-\>“新建”-\>“Android 应用程序”）。
 
@@ -352,11 +352,12 @@
 import com.baidu.android.pushservice.PushConstants;
  import com.baidu.android.pushservice.PushManager;
 
-## <span id="send"></span></a>向应用程序发送通知
+##<a id="send"></a>向应用程序发送通知
+
 
 你可以使用通知中心从任何使用 <a href="http://msdn.microsoft.com/en-us/library/windowsazure/dn223264.aspx">REST 接口</a>的后端发送通知。在本教程中，我们使用 .NET 控制台应用程序来对其进行说明。
 
-1.  创建新的 Visual C\# 控制台应用程序：
+1.  创建新的 Visual C# 控制台应用程序：
 
 	![][30]
 
