@@ -2,7 +2,7 @@
 
 # 通知中心入门
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/en-us/documentation/articles/notification-hubs-windows-store-dotnet-get-started/" title="Windows 应用商店 C#">Windows 应用商店 C#</a><a href="/en-us/documentation/articles/notification-hubs-windows-phone-get-started/" title="Windows Phone">Windows Phone</a><a href="/en-us/documentation/articles/notification-hubs-ios-get-started/" title="iOS">iOS</a><a href="/en-us/documentation/articles/notification-hubs-android-get-started/" title="Android">Android</a><a href="/en-us/documentation/articles/notification-hubs-kindle-get-started/" title="Kindle">Kindle</a><a href="/en-us/documentation/articles/notification-hubs-baidu-get-started/" title="百度" class="current">百度</a><a href="/en-us/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/documentation/articles/partner-xamarin-notification-hubs-android-get-started/" title="Xamarin.Android">Xamarin.Android</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/" title="Windows 应用商店 C#">Windows 应用商店 C#</a><a href="/zh-cn/documentation/articles/notification-hubs-windows-phone-get-started/" title="Windows Phone">Windows Phone</a><a href="/zh-cn/documentation/articles/notification-hubs-ios-get-started/" title="iOS">iOS</a><a href="/zh-cn/documentation/articles/notification-hubs-android-get-started/" title="Android">Android</a><a href="/zh-cn/documentation/articles/notification-hubs-kindle-get-started/" title="Kindle">Kindle</a><a href="/zh-cn/documentation/articles/notification-hubs-baidu-get-started/" title="百度" class="current">百度</a><a href="/zn-cn/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zn-cn/documentation/articles/partner-xamarin-notification-hubs-android-get-started/" title="Xamarin.Android">Xamarin.Android</a></div>
 
 百度云推送是一种中国云服务，可用于将推送通知发送到移动设备。在中国，将推送通知传递到 Android 的过程很复杂，因为存在不同的应用程序商店和推送服务，还有通常未连接到 GCM（Google 云消息传送）的 Android 设备，所以，此服务在该国特别有用。
 
@@ -169,14 +169,18 @@
 
 7.  打开 Android 项目的 **AndroidManifest.xml**，并添加百度 SDK 所需的权限。
 
-        <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-        <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-        <uses-permission android:name="android.permission.BROADCAST_STICKY" />
-        <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-        <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
-        <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+	    <uses-permission android:name="android.permission.INTERNET" />
+	    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+	    <uses-permission android:name="android.permission.VIBRATE" />
+	    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+	    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+	    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 
 8.  向 **AndroidManifest.xml** 中的 *application* 元素添加 *android:name* 属性，并替换 *yourprojectname*（例如 **com.example.BaiduTest**）：
 
@@ -251,73 +255,88 @@
 
 13. 添加另一个名为 **MyPushMessageReceiver.java** 的新类，并向此类中添加以下代码。此类用于处理从百度推送服务器收到的推送通知：
 
-        import android.content.Context;
-        import android.util.Log;
-        import com.baidu.frontia.api.FrontiaPushMessageReceiver;
-        import com.microsoft.windowsazure.messaging.NotificationHub;
-
-        public class MyPushMessageReceiver extends FrontiaPushMessageReceiver {
-            /** TAG to Log */
-            public static NotificationHub hub = null;
-            public static final String TAG = MyPushMessageReceiver.class
-                    .getSimpleName();
-
-            @Override
-            public void onBind(Context context, int errorCode, String appid,
-                    String userId, String channelId, String requestId) {
-                String responseString = "onBind errorCode=" + errorCode + " appid="
-                        + appid + " userId=" + userId + " channelId=" + channelId
-                        + " requestId=" + requestId;
-                Log.d(TAG, responseString);
-            RegisterWithNotificationHub(context, channelId, userId);
-            }
-
-            public static void RegisterWithNotificationHub(Context context, 
-                    String channelId, String userId) {
-                if (hub == null) {
-                    hub = new NotificationHub(
-                            ConfigurationSettings.NotificationHubName, 
-                            ConfigurationSettings.NotificationHubConnectionString, 
-                            context);
-                    Log.i(TAG, "Notification hub initialized");
-                }
-                try {
-                    hub.registerBaidu(userId, channelId);
-                    Log.i(TAG, "Registered with Notification Hub - '" 
-                            + ConfigurationSettings.NotificationHubName + "'" 
-                            + " with UserId - '"
-                            + userId + "' and Channel Id"
-                            + channelId + "'");
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onSetTags(Context context, int errorCode,
-                    List<String> sucessTags, List<String> failTags, String requestId) {
-                String responseString = "onSetTags errorCode=" + errorCode
-                        + " sucessTags=" + sucessTags + " failTags=" + failTags
-                        + " requestId=" + requestId;
-                Log.d(TAG, responseString);
-            }
-
-            @Override
-            public void onDelTags(Context context, int errorCode,
-                    List<String> sucessTags, List<String> failTags, String requestId) {
-                String responseString = "onDelTags errorCode=" + errorCode
-                        + " sucessTags=" + sucessTags + " failTags=" + failTags
-                        + " requestId=" + requestId;
-                Log.d(TAG, responseString);
-            }
-
-            @Override
-            public void onListTags(Context context, int errorCode, List<String> tags,
-                    String requestId) {
-                String responseString = "onListTags errorCode=" + errorCode + " tags="
-                        + tags;
-                Log.d(TAG, responseString);
+		import java.util.List;
+		import android.content.Context;
+		import android.os.AsyncTask;
+		import android.util.Log;
+		import com.baidu.frontia.api.FrontiaPushMessageReceiver;
+		import com.microsoft.windowsazure.messaging.NotificationHub;
+		
+		public class MyPushMessageReceiver extends FrontiaPushMessageReceiver {
+		    /** TAG to Log */
+			public static NotificationHub hub = null;
+			public static String mChannelId, mUserId;
+		    public static final String TAG = MyPushMessageReceiver.class
+		            .getSimpleName();
+		    
+			@Override
+		    public void onBind(Context context, int errorCode, String appid,
+		            String userId, String channelId, String requestId) {
+		        String responseString = "onBind errorCode=" + errorCode + " appid="
+		                + appid + " userId=" + userId + " channelId=" + channelId
+		                + " requestId=" + requestId;
+		        Log.d(TAG, responseString);
+		        mChannelId = channelId;
+		        mUserId = userId;
+		        
+		        try {
+		       	 if (hub == null) {
+		                hub = new NotificationHub(
+		                		ConfigurationSettings.NotificationHubName, 
+		                		ConfigurationSettings.NotificationHubConnectionString, 
+		                		context);
+		                Log.i(TAG, "Notification hub initialized");
+		            }
+		        } catch (Exception e) {
+		           Log.e(TAG, e.getMessage());
+		        }
+		        
+		        registerWithNotificationHubs();
+			}
+		    
+		    private void registerWithNotificationHubs() {
+		       new AsyncTask<Void, Void, Void>() {
+		          @Override
+		          protected Void doInBackground(Void... params) {
+		             try {
+		            	 hub.registerBaidu(mUserId, mChannelId);
+		            	 Log.i(TAG, "Registered with Notification Hub - '" 
+		     	    			+ ConfigurationSettings.NotificationHubName + "'" 
+		     	    			+ " with UserId - '"
+		     	    			+ mUserId + "' and Channel Id - '"
+		     	    			+ mChannelId + "'");
+		             } catch (Exception e) {
+		            	 Log.e(TAG, e.getMessage());
+		             }
+		             return null;
+		         }
+		       }.execute(null, null, null);
+		    }
+		    
+		    @Override
+		    public void onSetTags(Context context, int errorCode,
+		            List<String> sucessTags, List<String> failTags, String requestId) {
+		        String responseString = "onSetTags errorCode=" + errorCode
+		                + " sucessTags=" + sucessTags + " failTags=" + failTags
+		                + " requestId=" + requestId;
+		        Log.d(TAG, responseString);
+		    }
+		
+		    @Override
+		    public void onDelTags(Context context, int errorCode,
+		            List<String> sucessTags, List<String> failTags, String requestId) {
+		        String responseString = "onDelTags errorCode=" + errorCode
+		                + " sucessTags=" + sucessTags + " failTags=" + failTags
+		                + " requestId=" + requestId;
+		        Log.d(TAG, responseString);
+		    }
+		
+		    @Override
+		    public void onListTags(Context context, int errorCode, List<String> tags,
+		            String requestId) {
+		        String responseString = "onListTags errorCode=" + errorCode + " tags="
+		                + tags;
+		        Log.d(TAG, responseString);
             }
 
             @Override
@@ -355,7 +374,7 @@ import com.baidu.android.pushservice.PushConstants;
 ##<a id="send"></a>向应用程序发送通知
 
 
-你可以使用通知中心从任何使用 <a href="http://msdn.microsoft.com/en-us/library/windowsazure/dn223264.aspx">REST 接口</a>的后端发送通知。在本教程中，我们使用 .NET 控制台应用程序来对其进行说明。
+你可以使用通知中心从任何使用 <a href="http://msdn.microsoft.com/zh-cn/library/windowsazure/dn223264.aspx">REST 接口</a>的后端发送通知。在本教程中，我们使用 .NET 控制台应用程序来对其进行说明。
 
 1.  创建新的 Visual C# 控制台应用程序：
 
