@@ -4,21 +4,21 @@
 
 ## 借助 Maven 生成可将 HBase 与 HDInsight (Hadoop) 配合使用的 Java 应用程序
 
-了解如何使用 Apache Maven 创建并生成一个 [Apache HBase](http://hbase.apache.org/) Java 应用程序。然后，在 Azure HDInsight (Hadoop) 上使用该应用程序。
+了解如何使用 Apache Maven 创建并生成一个 [Apache HBase][] Java 应用程序。然后，在 Azure HDInsight (Hadoop) 上使用该应用程序。
 
 [Maven][] 是一个软件项目管理和分析工具，可让你生成 Java 项目的软件、文档和报告。在本文中，你将要了解如何使用 Maven 创建一个基本的 Java 应用程序，该应用程序可在 Azure HDInsight 群集中创建、查询和删除 HBase 表。
 
 ## 要求
 
--   [Java 平台 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 或更高版本
+-   [Java 平台 JDK][] 7 或更高版本
 
--   [Maven](http://maven.apache.org/)
+-   [Maven][]
 
--   [一个包含 HBase 的 Azure HDInsight 群集](/zh-cn/documentation/articles/hdinsight-hbase-get-started/#create-hbase-cluster)
+-   [一个包含 HBase 的 Azure HDInsight 群集][]
 
 ## 创建项目
 
-1.  在开发环境中的命令行下，将目录切换到要在其中创建项目的位置。例如，`cd code\hdinsight`
+1.  在开发环境中的命令行下，将目录切换到要在其中创建项目的位置。例如 `cd code\hdinsight`
 
 2.  使用随 Maven 一起安装的 **mvn** 命令来生成项目的基架。
 
@@ -26,7 +26,7 @@
 
     这将在当前目录中创建一个新目录，该目录使用 **artifactID** 参数指定的名称（在本示例中为 **hbaseapp**）。此目录将包含以下项。
 
-    -   **pom.xml** - 项目对象模型 ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) 包含用于生成项目的信息和配置详细信息
+    -   **pom.xml** - 项目对象模型 ([POM][]) 包含用于生成项目的信息和配置详细信息
 
     -   **src** - 包含 **main\\java\\com\\microsoft\\examples** 目录的目录，你将在其中创作应用程序。
 
@@ -34,7 +34,7 @@
 
 ## 更新项目对象模型
 
-1.  编辑 **pom.xml** 文件，并在`<dependencies>` 节中添加以下代码。
+1.  编辑 **pom.xml** 文件，并在 `<dependencies>` 部分添加以下代码。
 
         <dependency>
           <groupId>org.apache.hbase</groupId>
@@ -42,9 +42,9 @@
           <version>0.98.4-hadoop2</version>
         </dependency>
 
-    这将会告知 Maven，项目需要 **hbase-client** 版本 **0.98.4-hadoop2**。在编译时，将从默认的 Maven 存储库下载该版本。你可以使用 [Maven 存储库搜索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar)来查看有关此依赖项的详细信息。
+    这将会告知 Maven，项目需要 **hbase-client** 版本 **0.98.4-hadoop2**。在编译时，将从默认的 Maven 存储库下载该版本。你可以使用 [Maven 存储库搜索][]来查看有关此依赖项的详细信息。
 
-2.  将以下代码添加到 **pom.xml** 文件。必须将这些内容放置在文件中的`<project>...</project>` 标记内部；例如，介于 `</dependencies>` 与 `</project>`.
+2.  将以下代码添加到 **pom.xml** 文件。该代码必须位于文件中的 `<project>...</project>` 标记内部；例如，介于`</dependencies>` 与 `</project>` 之间。
 
         <build>
           <sourceDirectory>src</sourceDirectory>
@@ -84,7 +84,7 @@
 
     > [WACOM.NOTE] 你也可以通过代码设置配置值。请参阅以下 **CreateTable** 示例中的注释，以了解如何操作。
 
-    这还会配置 [maven-shade-plugin](http://maven.apache.org/plugins/maven-shade-plugin/)，用于防止 Maven 生成的 JAR 中发生许可证重复。使用此插件的原因在于，重复的许可证文件会导致 HDInsight 群集在运行时出错。将 maven-shade-plugin 与 `ApacheLicenseResourceTransformer` 实现一起使用可防止此错误。
+    这还会配置 [maven-shade-plugin][]，用于防止 Maven 生成的 JAR 中发生许可证重复。使用此插件的原因在于，重复的许可证文件会导致 HDInsight 群集在运行时出错。将 maven-shade-plugin 与 `ApacheLicenseResourceTransformer` 实现一起使用可防止此错误。
 
     maven-shade-plugin 还将生成 uberjar（或 fatjar），其中包含应用程序所需的所有依赖项。
 
@@ -116,19 +116,23 @@
          */
         -->
         <configuration>
+          <property>
             <name>hbase.cluster.distributed</name>
             <value>true</value>
           </property>
           <property>
             <name>hbase.zookeeper.quorum</name>
-            <value>zookeepernode0:2181 zookeepernode1:2181 zookeepernode2:2181</value>
+            <value>zookeeper0,zookeeper1,zookeeper2</value>
           </property>
-
+          <property>
+            <name>hbase.zookeeper.property.clientPort</name>
+            <value>2181</value>
+          </property>
         </configuration>
 
     此文件将用于加载 HDInsight 群集的 HBase 配置。
 
-    > [WACOM.NOTE] 这是一个非常精简的 hbase-site.xml 文件，它只包含 HDInsight 群集的最少量设置。有关 HDInsight 使用的 hbase-site.xml 配置文件的完整版本，请参阅[使用远程桌面连接到 HDInsight 群集](http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-administer-use-management-portal/#rdp)。hbase-site.xml 文件位于 C:\\apps\\dist\\hbase-\<版本号\>-hadoop2\\conf 目录中。在群集上更新 HBase 后，文件路径的版本号部分将发生变化。
+    > [WACOM.NOTE] 这是一个非常精简的 hbase-site.xml 文件，它只包含 HDInsight 群集的最少量设置。有关 HDInsight 使用的 hbase-site.xml 配置文件的完整版本，请参阅[使用远程桌面连接到 HDInsight 群集][]。hbase-site.xml 文件位于 C:\\apps\\dist\\hbase-\<版本号\>-hadoop2\\conf 目录中。在群集上更新 HBase 后，文件路径的版本号部分将发生变化。
 
 5.  保存 **hbase-site.xml** 文件。
 
@@ -323,9 +327,9 @@
 
 ## 上载 JAR 并启动作业
 
-> [WACOM.NOTE] 可以根据[在 HDInsight 中上载 Hadoop 作业的数据](/zh-cn/documentation/articles/hdinsight-upload-data/)中所述，通过许多方式将文件上载到 HDInsight 群集。下面的步骤使用了 [Azure PowerShell](/zh-cn/documentation/articles/install-configure-powershell/)。
+> [WACOM.NOTE] 可以根据[在 HDInsight 中上载 Hadoop 作业的数据][]中所述，通过许多方式将文件上载到 HDInsight 群集。下面的步骤使用了 [Azure PowerShell][]。
 
-1.  安装并配置 [Azure PowerShell](/zh-cn/documentation/articles/install-configure-powershell/) 后，请创建名为 **hbase-runner.psm1** 的新文件。在此文件中使用以下内容。
+1.  安装并配置 [Azure PowerShell][] 后，请创建名为 **hbase-runner.psm1** 的新文件。在此文件中使用以下内容。
 
         <#
         .SYNOPSIS
@@ -545,7 +549,7 @@
         Franklin Holtz - franklin@contoso.com - ID: 229772110
         Gabriela Ingram - gabriela@contoso.com - ID: 655336201
 
-    将 **fabrikam.com** 用于`-emailRegex` 值会返回电子邮件字段中包含 **fabrikam.com** 的用户。由于此搜索是使用基于正则表达式的筛选器执行的，因此你也可以输入正则表达式，例如 **^r**，这样就会返回电子邮件以字母“r”开头的条目。
+    将 **fabrikam.com** 用于 `-emailRegex` 值会返回电子邮件字段中包含 **fabrikam.com** 的用户。由于此搜索是使用基于正则表达式的筛选器执行的，因此你也可以输入正则表达式，例如 **^r**，这样就会返回电子邮件以字母“r”开头的条目。
 
 ## 删除表
 
@@ -568,6 +572,6 @@
   [POM]: http://maven.apache.org/guides/introduction/introduction-to-the-pom.html
   [Maven 存储库搜索]: http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar
   [maven-shade-plugin]: http://maven.apache.org/plugins/maven-shade-plugin/
-  [使用远程桌面连接到 HDInsight 群集]: http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-administer-use-management-portal/#rdp
+  [使用远程桌面连接到 HDInsight 群集]: http://www.windowsazure.cn/zh-cn/documentation/articles/hdinsight-administer-use-management-portal/#rdp
   [在 HDInsight 中上载 Hadoop 作业的数据]: /zh-cn/documentation/articles/hdinsight-upload-data/
   [Azure PowerShell]: /zh-cn/documentation/articles/install-configure-powershell/
