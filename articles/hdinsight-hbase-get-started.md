@@ -13,34 +13,32 @@ HBase 是一种低延迟的 NoSQL 数据库，可用于对大数据进行联机�
 -   如何创建要映射到现有 HBase 表的 Hive 表，并使用 HiveQL 来查询 HBase 表中的数据。
 -   如何使用 .NET SDK 创建新的 HBase 表、列出帐户中的 HBase 表，以及在表中添加和检索行。
 
-> [WACOM.NOTE] HBase（版本 0.98.0）只能与 HDInsight 上的 HDInsight 3.1 群集（基于 Apache Hadoop 和 YARN 2.4.0）配合使用。有关版本信息，请参阅 [HDInsight 提供的 Hadoop 群集版本有哪些新功能？][]
-
-**先决条件：**
-
-在开始阅读本教程前，你必须具有：
-
--   Azure 订阅。有关获取订阅的详细信息，请参阅[购买选项][]、[成员优惠][azure-member-offers] 或[免费试用][]。
-
--   一个 Azure 存储帐户。有关说明，请参阅[如何创建存储帐户][]。
--   Visual Studio 的副本。
-
-**估计完成时间：** 30 分钟
 
 ## 本教程的内容
-
 -   [在 Azure 门户中设置 HBase 群集][]
 -   [从 HBase shell 创建 HBase 示例表][]
 -   [使用 Hive 查询 HBase 表][]
 -   [使用 HBase C# API 创建一个 HBase 表并从该表中检索数据][]
 -   [摘要][]
 -   [后续步骤][]
-
 ## <a name="create-hbase-cluster"></a>在 Azure 门户中设置 HBase 群集
-
 本部分介绍如何使用 Azure 门户设置 HBase 群集。
+注意:
 
+
+The steps in this article create an HDInsight cluster using basic configuration settings. For information on other cluster configuration settings, such as using Azure Virtual Network or a metastore for Hive and Oozie, see Provision an HDInsight cluster.
 [WACOM.INCLUDE [provisioningnote][]]
+
+
+
+
+
 **在 Azure 门户中配置 HDInsight 群集**
+
+
+
+
+
 
 1.  登录到 [Azure 管理门户][]。
 
@@ -146,7 +144,7 @@ Marlin 是位于 REST API 顶部的一个精简层，它可以使用 ProtoBuf（
 
 5.  使用群集凭据创建 Marlin 的新实例并检索群集版本：
 
-        var credentials = ClusterCredentials.Create("https://yourclustername.azurehdinsight.net/", "user", "password");
+        var credentials = ClusterCredentials.Create("https://yourclustername.azurehdinsight.cn/", "user", "password");
             var marlin = new Marlin(credentials);
         // retrieve the version as a test
         var version = marlin.GetVersion();
@@ -200,12 +198,12 @@ HBase 是构建于 Hadoop 上的 Apache 开源 NoSQL 数据库，用于为大量
 [在 Azure 虚拟网络上设置 HBase 群集][]：
 通过虚拟网络集成，可以将 HBase 群集部署到应用程序所在的虚拟网络，以便应用程序直接与 HBase 进行通信。
 
-<!-- [azure-member-offers]: http://azure.microsoft.com/en-us/pricing/member-offers/ -->
+<!--- [azure-member-offers]: http://azure.microsoft.com/en-us/pricing/member-offers/ --->
 
   [HDInsight 提供的 Hadoop 群集版本有哪些新功能？]: ../hdinsight-component-versioning/
   [购买选项]: http://www.windowsazure.cn/pricing/overview/
   [免费试用]: http://www.windowsazure.cn/pricing/1rmb-trial/
-  [如何创建存储帐户]: http://www.windowsazure.cn/manage/services/storage/how-to-create-a-storage-account/
+  [如何创建存储帐户]: http://www.windowsazure.cn/zh-cn/manage/services/storage/how-to-create-a-storage-account/ 
   [在 Azure 门户中设置 HBase 群集]: #create-hbase-cluster
   [从 HBase shell 创建 HBase 示例表]: #create-sample-table
   [使用 Hive 查询 HBase 表]: #hive-query
