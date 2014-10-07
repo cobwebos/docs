@@ -26,17 +26,17 @@
 -   [如何：删除队列][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-queue-storage][]]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
-## 创建帐户创建 Azure 存储帐户
+## <a name="create-account"></a>创建帐户创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 创建 Node.js 应用程序
+## <a name="create-app"> </a>创建 Node.js 应用程序
 
 创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][]、[Node.js 云服务][]（使用 Windows PowerShell）或[使用 WebMatrix 构建网站][]。
 
-## 配置应用程序以访问存储
+## <a name="configure-access"> </a>配置应用程序以访问存储
 
 若要使用 Azure 存储空间，你需要下载并使用 Node.js azure 包，
 其中包括一组便于与存储 REST 服务
@@ -73,7 +73,7 @@
 
     var azure = require('azure');
 
-## 设置 Azure 存储连接
+## <a name="setup-connection-string"> </a>设置 Azure 存储连接
 
 azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY 以获取连接到你的 Azure 存储帐户所需的信息。如果未设置这些环境变量，则在调用 **createQueueService** 时必须指定帐户信息。
 
@@ -81,7 +81,7 @@ azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_AC
 
 有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序][]。
 
-## 如何：创建队列
+## <a name="create-queue"> </a>如何：创建队列
 
 以下代码将创建一个 **QueueService** 对象，你可通过该对象来
 操作队列。
@@ -115,7 +115,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
     var retryOperations = new azure.ExponentialRetryPolicyFilter();
     var queueService = azure.createQueueService().withFilter(retryOperations);
 
-## 如何：在队列中插入消息
+## <a name="insert-message"> </a>如何：在队列中插入消息
 
 若要在队列中插入消息，可使用 **createMessage** 方法创建一条
 新消息并将其添加到队列中。
@@ -126,7 +126,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-## 如何：扫视下一条消息
+## <a name="peek-message"> </a>如何：扫视下一条消息
 
 通过调用 **peekMessages** 方法，你可以扫视队列前面的
 消息，而不会从队列中删除它。默认情况下，
@@ -139,10 +139,10 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-> [WACOM.NOTE]
+> [WACN.NOTE]
 > 当队列中没有消息时使用 **peekMessage** 不会返回错误，但也不会返回消息。
 
-## 如何：取消对下一条消息的排队
+## <a name="get-message"> </a>如何：取消对下一条消息的排队
 
 你的代码分两步从队列中删除消息。在调用
 **getMessages** 时，默认情况下你会获得队列中的下一条消息。对于
@@ -171,10 +171,10 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-> [WACOM.NOTE]
+> [WACN.NOTE]
 > 当队列中没有消息时使用 **getMessages** 不会返回错误，但也不会返回消息。
 
-## 如何：更改已排队消息的内容
+## <a name="change-contents"> </a>如何：更改已排队消息的内容
 
 你可以更改队列中现有消息的内容。如果消息
 表示工作任务，则可以使用此功能来更新该工作任务的状态。
@@ -198,7 +198,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-## 如何：用于对消息取消排队的其他方法
+## <a name="advanced-get"> </a>如何：用于对消息取消排队的其他方法
 
 你可以通过两种方式自定义队列的消息检索。
 首先，你可以获取一批消息（最多 32 条）。其次，你可以
@@ -228,7 +228,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-## 如何：获取队列长度
+## <a name="get-queue-length"> </a>如何：获取队列长度
 
 你可以获取队列中消息的估计数。
 **getQueueMetadata** 方法可要求队列服务返回有关队列的元数据，
@@ -243,7 +243,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-## 如何：删除队列
+## <a name="delete-queue"> </a>如何：删除队列
 
 若要删除队列及其包含的所有消息，请对队列对象
 调用 **deleteQueue** 方法。
@@ -254,7 +254,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-## 后续步骤
+## <a name="next-steps"> </a>后续步骤
 
 现在，你已了解有关队列存储的基础知识，可单击下面的链接来了解如何
 执行更复杂的存储任务。
@@ -280,11 +280,11 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
   [如何：删除队列]: #delete-queue
   [howto-queue-storage]: ../includes/howto-queue-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
-  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /zh-cn/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-  [Node.js 云服务]: /zh-cn/documentation/articles/cloud-services-nodejs-develop-deploy-app/
-  [使用 WebMatrix 构建网站]: /zh-cn/documentation/articles/web-sites-nodejs-use-webmatrix/
-  [使用存储构建 Node.js 云服务]: /zh-cn/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
-  [使用存储构建 Node.js Web 应用程序]: /zh-cn/documentation/articles/storage-nodejs-use-table-storage-web-site/
+  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+  [Node.js 云服务]: /en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/
+  [使用 WebMatrix 构建网站]: /en-us/documentation/articles/web-sites-nodejs-use-webmatrix/
+  [使用存储构建 Node.js 云服务]: /en-us/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
+  [使用存储构建 Node.js Web 应用程序]: /en-us/documentation/articles/storage-nodejs-use-table-storage-web-site/
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
   [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node

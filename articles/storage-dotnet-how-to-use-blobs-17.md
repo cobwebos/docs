@@ -24,13 +24,13 @@
 -   [如何：删除 Blob][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-blob-storage][]]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-## 创建帐户创建 Azure 存储帐户
+## <a name="create-account"></a>创建帐户创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 设置连接字符串设置存储连接字符串
+## <a name="setup-connection-string"></a>设置连接字符串设置存储连接字符串
 
 Azure .NET 存储 API 支持
 使用存储连接字符串来配置用于访问存储

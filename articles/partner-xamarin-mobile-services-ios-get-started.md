@@ -1,6 +1,6 @@
 <properties pageTitle="Get Started with Mobile Services for Xamarin iOS apps" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for Xamarin iOS development." metaCanonical="" services="mobile" documentationCenter="Mobile" title="Get started with Mobile Services" authors="craigd" solutions="" manager="" editor="" />
 
-# 移动服务入门
+# <a name="getting-started"> </a>移动服务入门
 
 <div class="dev-center-tutorial-selector sublanding">
 	<a href="/zh-cn/documentation/articles/mobile-services-windows-store-get-started" title="Windows Store">Windows Store</a>
@@ -22,30 +22,25 @@
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
 <p>本教程说明如何使用 Azure 移动服务向 Xamarin.iOS 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单*待办事项列表*应用程序。</p>
-
 <p>如果你更愿意观看视频，右侧的视频片段提供了与本教程相同的步骤。</p>
 </div>
-
 <div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Getting-Started-with-Xamarin-and-Windows-Azure-Mobile-Services" target="_blank" class="label">观看教程</a> <a style="background-image: url('/media/devcenter/mobile/videos/get-started-xamarin-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Getting-Started-with-Xamarin-and-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">播放视频</span></a> <span class="time">10:05</span></div>
 </div>
 
 以下是完成的应用程序的屏幕快照：
 
-![][]
+![][0]
 
 完成本教程需要 XCode 4.5 和 iOS 5.0 或更高版本，以及 [Xamarin Studio][] for OS X 或用于 Windows 上的 Visual Studio 的 Xamarin Visual Studio 插件。
 
-<div class="dev-callout">说明</b>
+<div class="dev-callout"><strong>说明</strong> 
+<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-xamarin-ios%2F" target="_blank">Azure 免费试用</a>。</p></div>
 
-<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-xamarin-ios%2F" target="_blank">Azure 免费试用</a>。</p>
-</div>
+## <a name="create-new-service"> </a>创建新的移动服务
 
-<a name="create-new-service"> </a>
-## 创建新的移动服务
+[WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
-[WACOM.INCLUDE [mobile-services-create-new-service][]]
-
-## 创建新应用程序创建新的 Xamarin.iOS 应用程序
+<h2><span class="short-header">创建新应用程序创建新的 Xamarin.iOS 应用程序</span></h2>
 
 创建移动服务后，你可以在管理门户中遵照一个简易的快速入门项目来创建新应用程序或修改现有应用程序，以连接到你的移动服务。
 
@@ -100,8 +95,7 @@
 
     ![][7]
 
-<a name="next-steps"> </a>
-## 后续步骤
+## <a name="next-steps"> </a>后续步骤
 
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
@@ -124,7 +118,7 @@
   [Sencha]: /zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/ "Sencha"
   [PhoneGap]: /zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/ "PhoneGap"
   [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Getting-Started-with-Xamarin-and-Windows-Azure-Mobile-Services
-  []: ./media/partner-xamarin-mobile-services-ios-get-started/mobile-quickstart-completed-ios.png
+  [0]: ./media/partner-xamarin-mobile-services-ios-get-started/mobile-quickstart-completed-ios.png
   [Xamarin Studio]: http://xamarin.com/download
   [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A643EE910&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-xamarin-ios%2F
   [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md

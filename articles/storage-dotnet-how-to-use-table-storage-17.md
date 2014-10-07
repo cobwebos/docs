@@ -30,13 +30,13 @@
 -   [如何：删除表][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-table-storage][]]
+[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
 ## 创建帐户创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 设置连接字符串设置存储连接字符串
+## <a name="setup-connection-string"></a>设置连接字符串设置存储连接字符串
 
 Azure .NET 存储 API 支持
 使用存储连接字符串来配置用于访问存储
@@ -101,7 +101,7 @@ Azure .NET 存储 API 支持
 
 你现在即可准备执行本指南中的操作任务。
 
-## 以编程方式访问如何：以编程方式访问表存储
+## <a name="configure-access"> </a>以编程方式访问如何：以编程方式访问表存储
 
 在你希望在其中以编程方式访问 Azure 存储空间的任何 C\# 文件中，
 将以下代码命名空间声明添加到文件的顶部：
@@ -116,7 +116,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-## 创建表如何：创建表
+## <a name="create-table"></a>创建表如何：创建表
 
 利用 **CloudTableClient** 对象，你可以获得表和实体的引用对象。
 以下代码将创建 **CloudTableClient** 对象
@@ -136,7 +136,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     string tableName = "people";
     tableClient.CreateTableIfNotExist(tableName);
 
-## 将实体添加到表如何：将实体添加到表
+## <a name="add-entity"></a>将实体添加到表如何：将实体添加到表
 
 实体将映射到使用派生自 **TableServiceEntity** 的
 自定义类的 C\# 对象。若要将实体添加到表，请先创建用于
@@ -198,7 +198,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     // 将操作提交到表服务
     serviceContext.SaveChangesWithRetries();
 
-## 插入一批实体如何：插入一批实体
+## <a name="insert-batch"></a>插入一批实体如何：插入一批实体
 
 你可以通过一个写入操作将一批实体插入到表服务。
 以下代码使用 **AddObject** 方法创建三个实体
@@ -247,7 +247,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     // 将操作提交到表服务
     serviceContext.SaveChangesWithRetries(SaveChangesOptions.Batch);
 
-## 检索所有实体如何：检索分区中的所有实体
+## <a name="retrieve-all-entities"></a>检索所有实体如何：检索分区中的所有实体
 
 若要查询表以获取分区中的实体，可以使用 LINQ 查询。
 可以调用 **serviceContext.CreateQuery** 从你的数据源
@@ -281,7 +281,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     entity.Email, entity.PhoneNumber);
     }
 
-## 检索一部分实体如何：检索分区中的一部分实体
+## <a name="retrieve-range-entities"></a>检索一部分实体如何：检索分区中的一部分实体
 
 如果不想查询分区中的所有实体，则可以使
 用 **CompareTo** 方法，而不是使用常见的
@@ -317,7 +317,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     entity.Email, entity.PhoneNumber);
     }
 
-## 检索单个实体如何：检索单个实体
+## <a name="retrieve-single-entity"></a>检索单个实体如何：检索单个实体
 
 你可以编写查询以检索单个特定实体。以下代码
 使用两个筛选器来指定客户“Jeff Smith”。
@@ -344,7 +344,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     where e.PartitionKey == "Smith" && e.RowKey == "Jeff"
     select e).FirstOrDefault();
 
-## 更新实体如何：更新实体
+## <a name="update-entity"></a>更新实体如何：更新实体
 
 若要更新实体，请从表服务中检索它，修改实体对象，
 然后将更改保存回表服务。以下代码
@@ -381,7 +381,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     // 将操作提交到表服务
     serviceContext.SaveChangesWithRetries();
 
-## 查询一部分属性如何：查询一部分实体属性
+## <a name="query-entity-properties"></a>查询一部分属性如何：查询一部分实体属性
 
 对表的查询可以只检索实体中的少数几个属性。此方法称为投影，
 可减少带宽并提高查询性能，尤其适用于大型实体。
@@ -416,7 +416,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     Console.WriteLine(person.Email);
     }
 
-## 插入或替换实体如何：插入或替换实体
+## <a name="insert-entity"></a>插入或替换实体如何：插入或替换实体
 
 很多时候，你需要将某个实体添加到表中，但又不知道该实体是否
 已存在于表中。利用“插入或替换”操作，你可以提出一个以下形式的
@@ -457,7 +457,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     // 将操作提交到表服务，使用 ReplaceOnUpdate 选项
     serviceContext.SaveChangesWithRetries(SaveChangesOptions.ReplaceOnUpdate);
 
-## 删除实体如何：删除实体
+## <a name="delete-entity"></a>删除实体如何：删除实体
 
 你可以在检索到实体后轻松将其删除。还可以
 使用 **AttachTo** 方法开始跟踪它，而无需从服务器中检索它
@@ -487,7 +487,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     // 将操作提交到表服务
     serviceContext.SaveChangesWithRetries();
 
-## 删除表如何：删除表
+## <a name="delete-table"></a>删除表如何：删除表
 
 最后，以下代码将从存储帐户中删除一个表。
 在删除表之后的一段时间
@@ -503,7 +503,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     // 如果表存在，则将其删除
     tableClient.DeleteTableIfExist("people");
 
-## 后续步骤后续步骤
+## <a name="next-steps"></a>后续步骤后续步骤
 
 现在，你已了解有关表存储的基础知识，可单击下面的链接来了解如何
 执行更复杂的存储任务。

@@ -30,13 +30,13 @@ Azure .NET 存储客户端库。涉及的方案包括**创建和删除表**
 -   [如何：删除表][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-table-storage][]]
+[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
-## 创建帐户创建 Azure 存储帐户
+## <a name="create-account"></a>创建帐户创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 设置连接字符串设置存储连接字符串
+## <a name="setup-connection-string"></a>设置连接字符串设置存储连接字符串
 
 Azure .NET 存储客户端库支持使用存储连接字符
 串来配置终结点和用于访问存
@@ -143,7 +143,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
 
 .NET 存储客户端库中的 ODataLib 依赖项可通过在 NuGet （而非 WCF 数据服务）上获得的 ODataLib（5.0.2 版）包来解析。ODataLib 库可直接下载或者通过 NuGet 由代码项目引用。特定的 ODataLib 包为 [OData][]、[Edm][] 和 [Spatial][]。
 
-## 创建表如何：创建表
+## <a name="create-table"></a>创建表如何：创建表
 
 利用 **CloudTableClient** 对象，你可以获得表和实体的引用对象。
 以下代码将创建 **CloudTableClient** 对象
@@ -162,7 +162,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
     CloudTable table = tableClient.GetTableReference("people");
     table.CreateIfNotExists();
 
-## 将实体添加到表如何：将实体添加到表
+## <a name="add-entity"></a>将实体添加到表如何：将实体添加到表
 
 实体将映射到使用派生自 **TableEntity** 的
 自定义类的 C\# 对象。若要将实体添加到表，请创建用于定义
@@ -216,7 +216,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
     // 执行插入操作。
     table.Execute(insertOperation);
 
-## 插入一批实体如何：插入一批实体
+## <a name="insert-batch"></a>插入一批实体如何：插入一批实体
 
 你可以通过一个写入操作将一批实体插入表中。
 有关批处理操作的一些其他
@@ -261,7 +261,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
     // 执行批处理操作。
     table.ExecuteBatch(batchOperation);
 
-## 检索所有实体如何：检索分区中的所有实体
+## <a name="retrieve-all-entities"></a>检索所有实体如何：检索分区中的所有实体
 
 若要查询表以获取分区中的所有实体，请使用 **TableQuery** 对象。
 以下代码示例指定了一个筛选器，以筛选分区键
@@ -288,7 +288,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
     entity.Email, entity.PhoneNumber);
     }
 
-## 检索一部分实体如何：检索分区中的一部分实体
+## <a name="retrieve-range-entities"></a>检索一部分实体如何：检索分区中的一部分实体
 
 如果不想查询分区中的所有实体，则可以通过结合使用分区键筛选器
 与行键筛选器来指定一个范围。以下代码示例使用
@@ -320,7 +320,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
     entity.Email, entity.PhoneNumber);
     }
 
-## 检索单个实体如何：检索单个实体
+## <a name="retrieve-single-entity">检索单个实体如何：检索单个实体
 
 你可以编写查询以检索单个特定实体。
 以下代码使用 **TableOperation** 来指定客户“Ben Smith”。
@@ -351,7 +351,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
     else
     Console.WriteLine("The phone number could not be retrieved.");
 
-## 替换实体如何：替换实体
+## <a name="replace-entity">替换实体如何：替换实体
 
 若要更新实体，请从表服务中检索它，修改实体对象，然后
 将更改保存回表服务。以下代码
@@ -402,7 +402,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
     else
     Console.WriteLine("Entity could not be retrieved.");
 
-## 插入或替换实体如何：插入或替换实体
+## <a name="insert-or-replace-entity"></a>插入或替换实体如何：插入或替换实体
 
 如果实体在从服务器中检索到它以后发生更改，则 **Replace** 操作
 将失败。此外，要使 **Replace** 成功，必须
@@ -451,7 +451,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
     else
     Console.WriteLine("Entity could not be retrieved.");
 
-## 查询一部分属性如何：查询一部分实体属性
+## <a name="query-entity-properties"></a>查询一部分属性如何：查询一部分实体属性
 
 表查询可以只检索实体中的少数几个属性而不是所有实体属性。此方法称为投影，可减小带宽并提高查询性能，尤其是对于大型实体。以下代码
 中的查询只返回表中实体的电子邮件
@@ -479,7 +479,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
     Console.WriteLine(projectedEmail);
     }
 
-## 删除实体如何：删除实体
+## <a name="delete-entity"></a>删除实体如何：删除实体
 
 在检索实体之后，可使用所示的用于更新实体的同一模式轻松删除该实体。
 以下代码
@@ -518,7 +518,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
     else
     Console.WriteLine("Could not retrieve the entity.");
 
-## 删除表如何：删除表
+## <a name="delete-table"></a>删除表如何：删除表
 
 最后，以下代码示例将从存储帐户中删除表。
 在删除表之后的一段时间
@@ -537,7 +537,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
     // 如果表存在，则删除它。
     table.DeleteIfExists();
 
-## 后续步骤后续步骤
+## <a name="next-steps"></a>后续步骤后续步骤
 
 现在，你已了解有关表存储的基础知识，可单击下面的链接来了解如何
 执行更复杂的存储任务。
@@ -584,6 +584,6 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
   [.NET 存储客户端库参考]: http://msdn.microsoft.com/zh-cn/library/azure/wa_storage_30_reference_home.aspx
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [Blob 存储]: /zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/
-  [队列存储]: /zh-cn/documentation/articles/storage-dotnet-how-to-use-queues/
-  [SQL Database]: /zh-cn/documentation/articles/sql-database-dotnet-how-to-use/
+  [Blob 存储]: /en-us/documentation/articles/storage-dotnet-how-to-use-blobs/
+  [队列存储]: /en-us/documentation/articles/storage-dotnet-how-to-use-queues/
+  [SQL Database]: /en-us/documentation/articles/sql-database-dotnet-how-to-use/

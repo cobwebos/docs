@@ -22,13 +22,13 @@
 -   [如何：删除 Blob][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-blob-storage][]]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-## 创建帐户创建 Azure 存储帐户
+## <a name="create-account"></a>创建帐户创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 设置连接字符串设置存储连接字符串
+## <a name="setup-connection-string"></a>设置连接字符串设置存储连接字符串
 
 Azure .NET 存储客户端库支持使用存储连接字符
 串来配置终结点和用于访问存
@@ -92,7 +92,7 @@ Azure .NET 存储客户端库支持使用存储连接字符
 
 你现在即可准备执行本指南中的操作任务。
 
-## 以编程方式访问如何：以编程方式访问 Blob 存储
+## <a name="configure-access"> </a>以编程方式访问如何：以编程方式访问 Blob 存储
 
 ### 获得程序集
 
@@ -202,7 +202,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
     blockBlob.UploadFromStream(fileStream);
     } 
 
-## 列出容器中的 Blob如何：列出容器中的 Blob
+##<a name="list-blob"> </a>列出容器中的 Blob如何：列出容器中的 Blob
 
 若要列出容器中的 Blob，首先需要获取容器引用。然后，
 你可以使用容器的 **ListBlobs** 方法来检索其中的 Blob 和/或目录。
@@ -293,7 +293,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 
 有关详细信息，请参阅 [CloudBlobContainer.ListBlobs][]。
 
-## 下载 Blob如何：下载 Blob
+## <a name="download-blobs"> </a>下载 Blob如何：下载 Blob
 
 若要下载 Blob，请首先检索 Blob 引用，然后调用 **DownloadToStream** 方法。以下示例
 使用 **DownloadToStream** 方法将 Blob 内容传输到一个流对象，然后
@@ -340,7 +340,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
     text = System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
     }
 
-## 删除 Blob如何：删除 Blob
+## <a name="delete-blobs"> </a>删除 Blob如何：删除 Blob
 
 若要删除 Blob，请首先获取 Blob 引用，然后对其
 调用 **Delete** 方法。
@@ -361,7 +361,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
     // 删除 Blob。
     blockBlob.Delete(); 
 
-## 后续步骤后续步骤
+## <a name="next-steps"></a>后续步骤后续步骤
 
 现在，你已了解有关 Blob 存储的基础知识，可单击下面的链接来了解
 如何执行更复杂的存储任务。

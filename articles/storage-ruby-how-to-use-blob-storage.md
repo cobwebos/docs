@@ -22,18 +22,18 @@
 -   [如何：删除 Blob][]
 -   [后续步骤][1]
 
-[WACOM.INCLUDE [howto-blob-storage][]]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-## 创建 Azure 存储帐户
+## <a id="CreateAccount"></a>创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 创建 Ruby 应用程序
+## <a id="CreateRubyApp"></a>创建 Ruby 应用程序
 
 创建 Ruby 应用程序。有关说明，请参阅
 [在 Azure 上创建 Ruby 应用程序][]。
 
-## 配置应用程序以访问存储
+## <a id="ConfigAccessStorage"></a>配置应用程序以访问存储
 
 若要使用 Azure 存储空间，你需要下载并使用 Ruby azure 包，其中包括一组便于与存储 REST 服务进行通信的库。
 
@@ -49,7 +49,7 @@
 
     require "azure"
 
-## 设置 Azure 存储连接
+## <a id="SetupStorageConnection"></a>设置 Azure 存储连接
 
 azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORAGE\_ACCESS\_KEY** 以获取
 连接到你的 Azure 存储帐户所需的信息。如果未设置这些环境变量，则在使用 **Azure::BlobService** 之前必须通过以下代码指定帐户信息：
@@ -64,7 +64,7 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 3.  单击导航窗格底部的**“管理密钥”**。
 4.  在弹出对话框中，你将会看到存储帐户名称、主访问密钥和辅助访问密钥。对于访问密钥，你可以使用主访问密钥，也可以使用辅助访问密钥。
 
-## 如何：创建容器
+## <a id="CreateContainer"></a>如何：创建容器
 
 使用 **Azure::BlobService** 对象可以对容器和 Blob 进行操作。若要创建容器，请使用 **create\_container()** 方法。
 
@@ -96,7 +96,7 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
     azure_blob_service.set_container_acl('test-container', "container")
 
-## 如何：将 Blob 上载到容器
+## <a id="UploadBlob"></a>如何：将 Blob 上载到容器
 
 若要将内容上载到 Blob，请使用 **create\_block\_blob()** 方法创建 Blob，将文件或字符串用作 Blob 的内容。
 
@@ -107,7 +107,7 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
     "image-blob", content)
     puts blob.name
 
-## 如何：列出容器中的 Blob
+## <a id="ListBlobs"></a>如何：列出容器中的 Blob
 
 若要列出容器，请使用 **list\_containers()** 方法。
 若要列出容器中的 Blob，请使用 **list\_blobs()** 方法。
@@ -122,7 +122,7 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
     end
     end
 
-## 如何：下载 Blob
+## <a id="DownloadBlobs"></a>如何：下载 Blob
 
 若要下载 Blob，请使用 **get\_blob()** 方法来检索内容。
 
@@ -131,13 +131,13 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
     blob, content = azure_blob_service.get_blob(container.name,"image-blob")
     File.open("download.png","wb") {|f| f.write(content)}
 
-## 如何：删除 Blob
+## <a id="DeleteBlob"></a>如何：删除 Blob
 
 最后，若要删除 Blob，请使用 **delete\_blob()** 方法。下面的示例演示了如何删除 Blob。
 
     azure_blob_service.delete_blob(container.name, "image-blob")
 
-## 后续步骤
+## <a id="NextSteps"></a>后续步骤
 
 现在，你已了解有关 Blob 存储的基础知识，可单击下面的链接来了解如何执行更复杂的存储任务。
 

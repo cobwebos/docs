@@ -29,13 +29,13 @@
 -   [如何：删除表][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-table-storage][]]
+[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
-## 创建 Azure 存储帐户
+##<a name="CreateAccount"></a>创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 创建 Java 应用程序
+## <a name="CreateApplication"></a>创建 Java 应用程序
 
 在本指南中，你将使用存储功能，这些功能可在本地 Java 应用
 程序中运行，或在 Azure 的 Web 角色或辅助角色中通过运行的代码
@@ -48,7 +48,7 @@ Azure Libraries for Java 和 Azure SDK，并已在你的 Azure 订阅中
 你只要能够编译 Java 项目并引用 Azure Libraries
 for Java 即可。
 
-## 配置应用程序以访问表存储
+## <a name="ConfigureStorage"> </a>配置应用程序以访问表存储
 
 将下列 import 语句添加到需要在其中使用 Azure 存储 API 来
 访问表的 Java 文件的顶部：
@@ -58,7 +58,7 @@ for Java 即可。
     import com.microsoft.windowsazure.services.table.client.*;
     import com.microsoft.windowsazure.services.table.client.TableQuery.*;
 
-## 设置 Azure 存储连接字符串
+## <a name="ConnectionString"> </a>设置 Azure 存储连接字符串
 
 Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务
 的终结点和凭据。在客户端应用程序中运行时，
@@ -87,7 +87,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 
 下面的示例假定你使用了这两个定义之一来获取存储连接字符串。
 
-## 如何：创建表
+## <a name="CreateTable"> </a>如何：创建表
 
 利用 **CloudTableClient** 对象，你可以获得表和实体的引用对象。
 以下代码将创建 **CloudTableClient** 对象
@@ -107,7 +107,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     String tableName = "people";
     tableClient.createTableIfNotExists(tableName);
 
-## 如何：将实体添加到表
+## <a name="AddEntity"> </a>如何：将实体添加到表
 
 实体将映射到使用实现了 **TableEntity** 的
 自定义类的 Java 对象。为方便起见，**TableServiceEntity** 类实现了
@@ -178,7 +178,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     // 将操作提交到表服务。
     tableClient.execute("people", insertCustomer1);
 
-## 如何：插入一批实体
+## <a name="InsertBatch"> </a>如何：插入一批实体
 
 你可以通过一个写入操作将一批实体插入到表服务。
 以下代码创建一个 **TableBatchOperation** 对象，
@@ -232,7 +232,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     // 对“people”表执行批处理操作。
     tableClient.execute("people", batchOperation);
 
-## 如何：检索分区中的所有实体
+## <a name="RetrieveEntities"> </a>如何：检索分区中的所有实体
 
 若要从表中查询分区中的实体，可以使用 **TableQuery**。
 调用 **TableQuery.from** 可创建一个针对特定表
@@ -271,7 +271,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     "\t" + entity.getEmail() + "\t" + entity.getPhoneNumber());
     }
 
-## 如何：检索分区中的一部分实体
+## <a name="RetrieveRange"> </a>如何：检索分区中的一部分实体
 
 如果不想查询分区中的所有实体，则可以在筛选器中使用比较
 运算符来指定一个范围。以下代码
@@ -316,7 +316,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     "\t" + entity.getEmail() + "\t" + entity.getPhoneNumber());
     }
 
-## 如何：检索单个实体
+## <a name="RetriveSingle"> </a>如何：检索单个实体
 
 你可以编写查询以检索单个特定实体。以下代码
 使用分区键和行键参数调用 **TableOperation.retrieve** 来
@@ -345,7 +345,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     CustomerEntity specificEntity =
     tableClient.execute("people", retrieveSmithJeff).getResultAsType();
 
-## 如何：修改实体
+## <a name="ModifyEntity"> </a>如何：修改实体
 
 若要修改实体，请从表服务中检索它，对实体对象进行更改，
 然后通过替换或合并操作将更改
@@ -384,7 +384,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     // 将操作提交到表服务。
     tableClient.execute("people", replaceEntity);
 
-## 如何：查询一部分实体属性
+## <a name="QueryProperties"> </a>如何：查询一部分实体属性
 
 对表的查询可以只检索实体中的少数几个属性。此方法称为投影，
 可减少带宽并提高查询性能，尤其适用于大型实体。
@@ -424,7 +424,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     System.out.println(projectedString);
     }
 
-## 如何：插入或替换实体
+## <a name="InsertOrReplace"> </a>如何：插入或替换实体
 
 很多时候，你需要将某个实体添加到表中，但又不知道该实体是否
 已存在于表中。利用“插入或替换”操作，你可以提出一个以下形式的
@@ -459,7 +459,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     // 将操作提交到表服务。
     tableClient.execute("people", insertCustomer5);
 
-## 如何：删除实体
+## <a name="DeleteEntity"> </a>如何：删除实体
 
 你可以在检索到实体后轻松将其删除。检索到实体后，
 对要删除的实体调用 **TableOperation.delete**。
@@ -486,7 +486,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     // 将删除操作提交到表服务。
     tableClient.execute("people", deleteSmithJeff);
 
-## 如何：删除表
+## <a name="DeleteTable"> </a>如何：删除表
 
 最后，以下代码将从存储帐户中删除一个表。
 表在删除之后的一段时间内（通常小于四十秒）
@@ -502,7 +502,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     // 如果表存在，则删除它及其所有数据。
     tableClient.deleteTableIfExists("people");
 
-## 后续步骤
+## <a name="NextSteps"> </a>后续步骤
 
 现在，你已了解有关表存储的基础知识，可单击下面的链接来了解如何
 执行更复杂的存储任务。

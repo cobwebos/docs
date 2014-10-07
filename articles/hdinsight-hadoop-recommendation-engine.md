@@ -14,20 +14,20 @@ Apache Mahout 提供基于项目的协作筛选的内置实现。此方法广泛
 
 本教程包含以下部分：
 
-1.  [安装和配置][]
-2.  [检查数据并设置数据的格式][]
-3.  [安装 Mahout][]
-4.  [运行 Mahout 作业][]
+1.  [安装和配置](#setup)
+2.  [检查数据并设置数据的格式](#segment1)
+3.  [安装 Mahout](#segment2)
+4.  [运行 Mahout 作业](#segment3)
 
-## 安装和配置
+## <a name="setup"></a>安装和配置
 
 本教程假定你已安装了 Azure 和 HDinsight 预览版，并且你已创建了一个可在其上运行示例的 HDInsight 群集。如果你尚未执行这些操作，请查阅 [Azure HDInsight 入门][]教程，找到有关如何满足这些先决条件的说明。
 
-## 检查数据并设置数据的格式
+## <a name="segment1"></a>检查数据并设置数据的格式
 
 此示例处理用户表达对特定歌曲的喜好的方式。假设用户听一首歌的次数提供了用户对那首歌的喜好的度量。在喜好数据中检测到的模式可用于根据用户表达的某些音乐喜好预测未来的用户首选项。你可以在 [Echo Nest 偏好配置文件子集][Million Song Dataset]网页的“描述” 部分中，查看此数据集的示例：
 
-![Echo Nest 偏好配置文件子集][]
+![Echo Nest 偏好配置文件子集][echo-nest]
 
 ### 来自 Million Song Dataset 的示例数据
 
@@ -40,7 +40,7 @@ Apache Mahout 提供基于项目的协作筛选的内置实现。此方法广泛
 
 首先启动 Visual Studio 2010。在 Visual Studio 中，选择“文件”-\>“新建”-\>“项目” 。在“已安装的模板” 窗格中的 **Visual C\#** 节点内，选择“窗口” 类别，然后从列表中选择“控制台应用程序” 。将项目命名为“ConvertToMahoutInput”，然后单击“确定” 按钮。
 
-![创建控制台应用程序][]
+![创建控制台应用程序][create-console-app]
 
 ### 创建控制台应用程序
 
@@ -130,17 +130,17 @@ Apache Mahout 提供基于项目的协作筛选的内置实现。此方法广泛
 
     运行此实用程序时，在 **train\_triplets.txt** 的位置附带一个命令行参数。为此，请右键单击**解决方案资源管理器**中的 **ConvertToMahoutInput** 项目节点，然后选择“属性” 。在项目属性页上，选择左侧的“调试” 选项卡，并将 \<localpath\>train\_triplets.txt 的路径添加到“命令行参数” 文本框中：
 
-    ![设置命令行参数][]
+    ![设置命令行参数][set-cmd-line-args]
 
 ### 设置命令行参数
 
 -   按 **F5** 运行程序。完成后，从此项目的保存位置打开 **bin\\Debug** 文件夹并查看该实用程序的输出。你会找到 users.txt 和 mInput.txt
 
-## 安装 Mahout
+## <a name="segment2"></a>安装 Mahout
 
 -   打开 HDInsight 群集门户，然后单击“远程桌面” 图标。
 
-    ![“管理群集”图标][]
+    ![“管理群集”图标][mng-cluster-icon]
 
 ### “远程桌面”图标
 
@@ -150,7 +150,7 @@ Apache Mahout 提供基于项目的协作筛选的内置实现。此方法广泛
 
 2.  然后，将它复制到群集上，方法是：选择本地 zip 文件，按 control-v 进行复制，然后将它粘贴到你的 Hadoop 群集。
 
-    ![上载 Mahout][]
+    ![上载 Mahout][uploading-mahout]
 
 ### 将 Mahout 复制到头节点
 
@@ -158,7 +158,7 @@ Apache Mahout 提供基于项目的协作筛选的内置实现。此方法广泛
 
 2.  为简单起见，将该文件夹重命名为 c:\\apps\\dist\\mahout-0.7。
 
-### 运行 Mahout 作业
+### <a name="segment3"></a>运行 Mahout 作业
 
 1.  将 **bin\\Debug** 文件夹中的 **mInput.txt** 文件复制到远程群集上的 **c:\\**。复制该文件后，将其解压缩。按上一节所述，将文件复制到远程 RDP 会话，方法是：在本地计算机上选择文件后按 control-C，然后在“RDP 会话”窗口上按 control-v。
 
@@ -170,7 +170,7 @@ Apache Mahout 提供基于项目的协作筛选的内置实现。此方法广泛
 
 此时，你应打开 Hadoop 终端窗口，并导航到包含 users.txt 和 mInput.txt 的文件夹。
 
-![Mahout 命令窗口][]
+![Mahout 命令窗口][mahout-cmd-window]
 
 ### Hadoop 命令窗口
 
@@ -220,13 +220,13 @@ Apache Mahout 提供基于项目的协作筛选的内置实现。此方法广泛
   [安装 Mahout]: #Segment2
   [运行 Mahout 作业]: #segment2
   [Azure HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/
-  [Echo Nest 偏好配置文件子集]: ./media/hdinsight-hadoop-recommendation-engine/the-echo-nest-taste-profile-subset.png
-  [创建控制台应用程序]: ./media/hdinsight-hadoop-recommendation-engine/creating-a-console-application.png
-  [设置命令行参数]: ./media/hdinsight-hadoop-recommendation-engine/setting-command-line-arguments.png
-  [“管理群集”图标]: ./media/hdinsight-hadoop-recommendation-engine/the-manage-cluster-icon.png
+  [echo-nest]: ./media/hdinsight-hadoop-recommendation-engine/the-echo-nest-taste-profile-subset.png
+  [create-console-app]: ./media/hdinsight-hadoop-recommendation-engine/creating-a-console-application.png
+  [set-cmd-line-args]: ./media/hdinsight-hadoop-recommendation-engine/setting-command-line-arguments.png
+  [mng-cluster-icon]: ./media/hdinsight-hadoop-recommendation-engine/the-manage-cluster-icon.png
   [Mahout]: http://mahout.apache.org/
   [Mahout 0.7 版]: http://www.apache.org/dyn/closer.cgi/mahout/
-  [上载 Mahout]: ./media/hdinsight-hadoop-recommendation-engine/uploading-mahout.PNG
+  [uploading-mahout]: ./media/hdinsight-hadoop-recommendation-engine/uploading-mahout.PNG
   [存储库]: https://github.com/wenming/BigDataSamples/tree/master/mahout
   [zip 文件]: https://github.com/wenming/BigDataSamples/archive/master.zip
-  [Mahout 命令窗口]: ./media/hdinsight-hadoop-recommendation-engine/mahout-commandwindow.PNG
+  [mahout-cmd-window]: ./media/hdinsight-hadoop-recommendation-engine/mahout-commandwindow.PNG

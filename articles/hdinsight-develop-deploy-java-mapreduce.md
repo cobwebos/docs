@@ -14,14 +14,14 @@
 
 ## 本文内容
 
--   [使用 Java 开发单词计数 MapReduce 程序][]
--   [在模拟器中测试该程序][]
--   [将数据文件及应用程序上载到 Azure Blob 存储][]
--   [在 Azure HDInsight 中运行 MapReduce 程序][]
--   [检索 MapReduce 结果][]
--   [后续步骤][]
+-   [使用 Java 开发单词计数 MapReduce 程序](#develop)
+-   [在模拟器中测试该程序](#test)
+-   [将数据文件及应用程序上载到 Azure Blob 存储](#upload)
+-   [在 Azure HDInsight 中运行 MapReduce 程序](#run)
+-   [检索 MapReduce 结果](#retrieve)
+-   [后续步骤](#nextsteps)
 
-## 使用 Java 开发单词计数 MapReduce 程序
+##<a name="develop"></a>使用 Java 开发单词计数 MapReduce 程序
 
 单词计数是一个简单的应用程序，它计算每个单词在给定输入集中出现的次数。
 
@@ -126,9 +126,9 @@ HDInsight Emulator 附带了 *javac* 编译器。
 
     该命令在当前文件夹中创建一个 WordCount.jar 文件。
 
-    ![HDI.EMulator.WordCount.Compile][]
+    ![HDI.EMulator.WordCount.Compile][image-emulator-wordcount-compile]
 
-## 在模拟器中测试该程序
+##<a name="test"></a>在模拟器中测试该程序
 
 在模拟器中测试 MapReduce 作业包括以下过程：
 
@@ -154,7 +154,7 @@ HDInsight Emulator 附带了 *javac* 编译器。
 
 本教程使用位于 %hadoop\_home% 目录中的 .txt 文件作为数据文件。
 
-> [WACOM.NOTE] Hadoop HDFS 命令区分大小写。
+> [WACN.NOTE] Hadoop HDFS 命令区分大小写。
 
 **将数据文件复制到模拟器 HDFS**
 
@@ -192,7 +192,7 @@ HDInsight Emulator 附带了 *javac* 编译器。
 
     如果作业成功完成，你会获得类似于以下屏幕截图的输出：
 
-    ![HDI.EMulator.WordCount.Run][]
+    ![HDI.EMulator.WordCount.Run][image-emulator-wordcount-run]
 
     从屏幕截图中，你可以看到映射和化简操作已完成 100%。它还列出作业 ID job\_201312092021\_0002。同一报告可通过从桌面打开“Hadoop MapReduce 状态” 快捷方式，然后查找作业 ID 来检索到。
 
@@ -212,7 +212,7 @@ HDInsight Emulator 附带了 *javac* 编译器。
 
 至此，你已开发一个单词计数 MapReduce 作业，并在模拟器上测试成功。下一步是在 Azure HDInsight 上部署并运行该作业。
 
-## 将数据上载到 Azure Blob 存储
+##<a id="upload"></a>将数据上载到 Azure Blob 存储
 
 Azure HDInsight 将 Azure Blob 存储用于数据存储。设置 HDInsight 群集时，将使用 Azure Blob 存储容器来存储系统文件。可以使用此默认容器或其他容器（可以在同一 Azure 存储帐户上，也可以在群集所在的数据中心内的其他存储帐户上）来存储数据文件。
 
@@ -333,7 +333,7 @@ Azure HDInsight 将 Azure Blob 存储用于数据存储。设置 HDInsight 群�
 
     你会看到列出的 jar 文件。
 
-## 在 Azure HDInsight 中运行 MapReduce 作业
+##<a name="run"></a>在 Azure HDInsight 中运行 MapReduce 作业
 
 下面的 PowerShell 脚本执行以下任务：
 
@@ -445,7 +445,7 @@ Azure HDInsight 将 Azure Blob 存储用于数据存储。设置 HDInsight 群�
 
 8.  出现提示时，输入 HDInsight 群集的用户名和密码。由于你将在脚本末尾删除群集，并且将不再需要用户名和密码，因此用户名和密码可以是任何字符串。如果你不想让系统提示你输入凭据，请参阅[在 Windows PowerShell 中使用密码、安全字符串和凭据][]
 
-## 检索 MapReduce 作业输出
+##<a name="retrieve"></a>检索 MapReduce 作业输出
 
 本节演示如何下载和显示输出。有关在 Excel 中显示结果的信息，请参阅[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight][] 和[利用 Power Query 将 Excel 连接到 HDInsight][]。
 
@@ -473,7 +473,7 @@ Azure HDInsight 将 Azure Blob 存储用于数据存储。设置 HDInsight 群�
 
 作业完成后，你可以选择使用 [Sqoop][] 将数据导出到 SQL Server 或 Azure SQL Database，或者将数据导出到 Excel。
 
-## 后续步骤
+##<a id="nextsteps"></a>后续步骤
 
 在本教程中，你已学习如何执行以下操作：开发 Java MapReduce 作业、在 HDInsight Emulator 中测试应用程序、编写 PowerShell 脚本以设置 HDInsight 群集以及在群集上运行 MapReduce。若要了解更多信息，请参阅下列文章：
 
@@ -498,10 +498,10 @@ Azure HDInsight 将 Azure Blob 存储用于数据存储。设置 HDInsight 群�
   [在 Azure HDInsight 中运行 MapReduce 程序]: #run
   [检索 MapReduce 结果]: #retrieve
   [后续步骤]: #nextsteps
-  [HDI.EMulator.WordCount.Compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
+  [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
   [HDInsight Emulator 入门]: ../hdinsight-get-started-emulator/#blobstorage
   [将数据上载到 HDInsight]: ../hdinsight-upload-data/
-  [HDI.EMulator.WordCount.Run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
+  [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
   [命名和引用容器、Blob 和元数据]: http://msdn.microsoft.com/zh-cn/library/azure/dd135715.aspx
   [在 Windows PowerShell 中使用密码、安全字符串和凭据]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
   [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight]: ../hdinsight-connect-excel-hive-ODBC-driver/

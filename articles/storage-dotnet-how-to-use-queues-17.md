@@ -30,13 +30,13 @@
 -   [如何：删除队列][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-queue-storage][]]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
-## 创建帐户创建 Azure 存储帐户
+## <a name="setup-connection-string"></a>创建帐户创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 设置连接字符串设置 Azure 存储连接字符串
+## <a name="setup-connection-string"></a>设置连接字符串设置 Azure 存储连接字符串
 
 Azure .NET 存储 API 支持
 使用存储连接字符串来配置用于访问存储
@@ -92,7 +92,7 @@ Azure .NET 存储 API 支持
 
 你现在即可准备执行本指南中的操作任务。
 
-## 以编程方式访问如何：使用 .NET 以编程方式访问队列
+## <a name="access"></a>以编程方式访问如何：使用 .NET 以编程方式访问队列
 
 在你希望在其中以编程方式访问 Azure 存储空间的任何 C\# 文件中，
 将以下代码命名空间声明添加到文件的顶部：
@@ -107,7 +107,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-## 创建队列如何：创建队列
+## <a name="create-queue"></a>创建队列如何：创建队列
 
 利用 **CloudQueueClient** 对象，可以获取队列的引用对象。
 下面的代码将创建一个 **CloudQueueClient** 对象。本指南中
@@ -132,7 +132,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     // 如果该队列不存在，则创建它
     queue.CreateIfNotExist();
 
-## 插入消息如何：在队列中插入消息
+## <a name="insert-message"> </a>插入消息如何：在队列中插入消息
 
 若要将消息插入现有队列，请先创建一个新的
 **CloudQueueMessage**。然后调用 **AddMessage** 方法。
@@ -157,7 +157,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
     queue.AddMessage(message);
 
-## 扫视下一条消息如何：扫视下一条消息
+## <a name="peek-message"></a>扫视下一条消息如何：扫视下一条消息
 
 通过调用 **PeekMessage** 方法，你可以扫视队列前面的
 消息，而不会从队列中删除它。
@@ -175,7 +175,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     // 扫视下一条消息
     CloudQueueMessage peekedMessage = queue.PeekMessage();
 
-## 更改消息内容如何：更改已排队消息的内容
+## <a name="change-contents"></a>更改消息内容如何：更改已排队消息的内容
 
 你可以更改队列中现有消息的内容。如果消息
 表示工作任务，则可以使用此功能来更新该工作任务的状态。
@@ -206,7 +206,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     TimeSpan.FromSeconds(0.0),  // 立即可见
     MessageUpdateFields.Content | MessageUpdateFields.Visibility);
 
-## 取消对下一条消息的排队如何：取消对下一条消息的排队
+## <a name="get-message"></a>取消对下一条消息的排队如何：取消对下一条消息的排队
 
 你的代码通过两个步骤来取消对队列中某条消息的排队。在调用
 **GetMessage** 时，你将获得队列中的下一条消息。对于从该队列读取消息的
@@ -234,7 +234,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     //在不到 30 秒的时间内处理消息，然后删除消息
     queue.DeleteMessage(retrievedMessage);
 
-## 更多取消排队方法如何：使用其他方法取消对消息的排队
+## <a name="advanced-get"></a>更多取消排队方法如何：使用其他方法取消对消息的排队
 
 你可以通过两种方式自定义队列的消息检索。
 首先，你可以获取一批消息（最多 32 条）。其次，你可以
@@ -263,7 +263,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     queue.DeleteMessage(message);
     }
 
-## 获取队列长度如何：获取队列长度
+## <a name="get-queue-length"></a>获取队列长度如何：获取队列长度
 
 你可以获取队列中消息的估计数。使用
 **RetrieveApproximateMessageCount** 方法可要求队列服务对队列中
@@ -289,7 +289,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     // 检索所缓存的近似消息计数
     int? cachedMessageCount = queue.ApproximateMessageCount;
 
-## 删除队列如何：删除队列
+## <a name="delete-queue"></a>删除队列如何：删除队列
 
 若要删除队列及其包含的所有消息，请对队列对象
 调用 **Delete** 方法。
@@ -307,7 +307,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     // 删除队列
     queue.Delete();
 
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 
 现在，你已了解有关队列存储的基础知识，可单击下面的链接来了解如何
 执行更复杂的存储任务。

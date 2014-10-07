@@ -41,7 +41,7 @@ Pig 和 Hive 提供编译成 MapReduce 程序的更高级别的语言，这些�
 5.  输入你的凭据，然后单击“登录” 。
 6.  从 HDInsight 门户中，单击“示例” 。
 
-    ![HDI.Tiles.Samples][]
+    ![HDI.Tiles.Samples][hdi-tiles-samples]
 
 7.  从“Hadoop 示例库” 页中，单击“WordCount” 磁贴。
 8.  从右上位置单击 **WordCount.js**，将文件保存到本地目录中，例如 ../downloads 文件夹。
@@ -51,7 +51,7 @@ Pig 和 Hive 提供编译成 MapReduce 程序的更高级别的语言，这些�
 9.  单击左上角的 **Azure HDInsight**，以返回到群集仪表板页面。
 10. 单击“交互式群集” 以显示 JavaScript 控制台。
 
-    ![HDI.Tiles.InteractiveConsole][]
+    ![HDI.Tiles.InteractiveConsole][hdi-tiles-interactive-console]
 
 11. 单击右上角的 **JavaScript**。
 12. 运行以下命令：
@@ -63,7 +63,7 @@ Pig 和 Hive 提供编译成 MapReduce 程序的更高级别的语言，这些�
     -   **源：** \_..\\downloads\\Wordcount.js
     -   **目标：** ./WordCount.js/
 
-    ![HDI.JsConsole.UploadJs][]
+    ![HDI.JsConsole.UploadJs][hdi-jsconsole-upload]
 
     浏览 WordCount.js 文件的位置。这将需要完整的本地路径。作为 HDFS 中相对地址的一部分，目标路径的开头需要有一个点。
 
@@ -74,7 +74,7 @@ Pig 和 Hive 提供编译成 MapReduce 程序的更高级别的语言，这些�
         #ls
         #cat WordCount.js
 
-    ![HDI.JsConsole.JsCode][]
+    ![HDI.JsConsole.JsCode][hdi-jsconsole-jscode]
 
     请注意，在化简函数中计算某个词的出现次数之前，JavaScript 映射函数会使用“toLowerCase()”方法从文本中删除大写字母。
 
@@ -135,7 +135,7 @@ Pig 和 Hive 提供编译成 MapReduce 程序的更高级别的语言，这些�
 
         graph.bar(data)
 
-    ![HDI.JsConsole.BarGraphTop10Words][]
+    ![HDI.JsConsole.BarGraphTop10Words][hdi-jsconsole-bargraph-top10words]
 
 ## 使用 Hive 控制台将结果导出到 Hive 表
 
@@ -166,7 +166,7 @@ Pig 和 Hive 提供编译成 MapReduce 程序的更高级别的语言，这些�
 
 5.  单击“计算” 。
 
-    [HDI.Hive.ShowDescribeTable][hdi-hive-showdescribetable]
+	![HDI.Hive.ShowDescribeTable][hdi-hive-showdescribetable]
 
 ## 使用 Hive 控制台查询 Hive 表中的数据
 
@@ -205,12 +205,12 @@ Pig 和 Hive 提供编译成 MapReduce 程序的更高级别的语言，这些�
   [使用 Hive 控制台将结果导出到 Hive 表]: #createhivetable
   [使用 Hive 控制台查询 Hive 表中的数据]: #queryhivetable
   [管理门户]: https://manage.windowsazure.cn
-  [HDI.Tiles.Samples]: ./media/hdinsight-interactive-console/HDI.TileSamples.PNG
+  [hdi-tiles-samples]: ./media/hdinsight-interactive-console/HDI.TileSamples.PNG
   [HDI.JsConsole.WordCountDownloads]: ./media/hdinsight-interactive-console/HDI.JsConsole.WordCountDownloads.PNG
-  [HDI.Tiles.InteractiveConsole]: ./media/hdinsight-interactive-console/HDI.TileInteractiveConsole.PNG
-  [HDI.JsConsole.UploadJs]: ./media/hdinsight-interactive-console/HDI.JsConsole.UploadJs.PNG
-  [HDI.JsConsole.JsCode]: ./media/hdinsight-interactive-console/HDI.JsConsole.JsCode.PNG
-  [HDI.JsConsole.BarGraphTop10Words]: ./media/hdinsight-interactive-console/HDI.JsConsole.BarGraphTop10Words.PNG
+  [hdi-tiles-interactive-console]: ./media/hdinsight-interactive-console/HDI.TileInteractiveConsole.PNG
+  [hdi-jsconsole-upload]: ./media/hdinsight-interactive-console/HDI.JsConsole.UploadJs.PNG
+  [hdi-jsconsole-jscode]: ./media/hdinsight-interactive-console/HDI.JsConsole.JsCode.PNG
+  [hdi-jsconsole-bargraph-top10words]: ./media/hdinsight-interactive-console/HDI.JsConsole.BarGraphTop10Words.PNG
   [将 Pig 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
   [将 Hive 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
   [将 MapReduce 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-mapreduce-with-hdinsight/

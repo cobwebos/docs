@@ -15,13 +15,13 @@ Hive 提供了通过类似 SQL 的脚本语言（称作 *[HiveQL][]*）运行 Ma
 
 ## 在本教程中
 
--   [准备教程][]
--   [创建并上载 HiveQL 脚本][]
--   [执行 HiveQL 脚本][]
--   [将输出导出到 Azure SQL Database][]
--   [后续步骤][]
+-   [准备教程](#prepare)
+-   [创建并上载 HiveQL 脚本](#createscript)
+-   [执行 HiveQL 脚本](#executehqlscript)
+-   [将输出导出到 Azure SQL Database](#exportdata)
+-   [后续步骤](#nextsteps)
 
-## 准备教程
+##<a id="prepare"></a>准备教程
 
 本教程将对你的工作站使用来自[美国研究与技术创新管理部门 - 运输统计局][] (RITA) 的航班准时表现数据。你将执行以下操作：
 
@@ -41,7 +41,7 @@ WASB 语法为：
 
     wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/<路径>/<文件名>
 
-> [WACOM.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
+> [WACN.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
 
 > WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
 
@@ -77,24 +77,24 @@ WASB 语法为：
 
 有关详细信息，请参阅 [HDInsight：Hive 内部表和外部表简介][cindygross-hive-tables]。
 
-> [WACOM.NOTE] HiveQL 语句之一可创建 Hive 外部表。Hive 外部表将数据文件保留在原始位置。Hive 内部表将数据文件移到 hive\\warehouse。Hive 外部表要求数据文件位于默认文件系统 WASB 容器中。如果你选择将航班数据文件存储在默认 Blob 容器以外的容器中，则必须使用 Hive 内部表。
+> [WACN.NOTE] HiveQL 语句之一可创建 Hive 外部表。Hive 外部表将数据文件保留在原始位置。Hive 内部表将数据文件移到 hive\\warehouse。Hive 外部表要求数据文件位于默认文件系统 WASB 容器中。如果你选择将航班数据文件存储在默认 Blob 容器以外的容器中，则必须使用 Hive 内部表。
 
 **下载航班数据**
 
-1. 浏览到[美国研究与技术创新管理部门 - 运输统计局][] (RITA)。
-2. 在该页面上，选择以下值：
+1.  浏览到[美国研究与技术创新管理部门 - 运输统计局][] (RITA)。
+2.  在该页面上，选择以下值：
 
-	<table border="1">
-	<tr><th>名称</th><th>值</th></tr>
-	<tr><td>筛选年份</td><td>2012</td></tr>
-	<tr><td>筛选期间</td><td>1 月</td></tr>
-	<tr><td>字段：</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay*（清除其他所有字段）</td></tr>
-	</table>
+<table border="1">
+<tr><th>名称</th><th>值</th></tr>
+<tr><td>筛选年份</td><td>2012</td></tr>
+<tr><td>筛选期间</td><td>1 月</td></tr>
+<tr><td>字段：</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay*（清除其他所有字段）</td></tr>
+</table>
 
-3. 单击“下载” 。下载每个文件最多需要花费 15 分钟。
-4. 将文件解压缩到 **C:\\Tutorials\\FlightDelays\\Data** 文件夹。每个文件均为 CSV 文件且大小约为 60 GB。
-5. 将文件重命名为其包含的数据所对应的月份的名称。例如，将包含 1 月份数据的文件命名为 *January.csv*。
-6. 重复步骤 2 和步骤 5，为 2012 年中的 12 个月分别下载一个对应的文件。你至少需要一个文件才能运行本教程。
+3.  单击“下载” 。下载每个文件最多需要花费 15 分钟。
+4.  将文件解压缩到 **C:\\Tutorials\\FlightDelays\\Data** 文件夹。每个文件均为 CSV 文件且大小约为 60 GB。
+5.  将文件重命名为其包含的数据所对应的月份的名称。例如，将包含 1 月份数据的文件命名为 *January.csv*。
+6.  重复步骤 2 和步骤 5，为 2012 年中的 12 个月分别下载一个对应的文件。你至少需要一个文件才能运行本教程。
 
 **将航班延迟数据上载到 Azure Blob 存储**
 
@@ -118,33 +118,15 @@ WASB 语法为：
 
     以下是变量及其说明：
 
-    **变量名**
-
-    **说明**
-
-    \$subscriptionName
-
-    你的 Azure 订阅名称。
-
-    \$storageAccountName
-
-    用于存储航班数据文件的 Azure 存储帐户。建议使用默认的存储帐户。
-
-    \$containerName
-
-    用于存储航班数据文件的 Azure Blob 存储容器。建议使用默认的 HDInsight 群集文件系统 Blob 容器。默认情况下，该容器与 HDInsight 群集同名。
-
-    \$localFolder
-
-    这是工作站上存储航班延误文件的文件夹。
-
-    \$destFolder
-
-    这是航班延误数据将上载到的 WASB 路径。Hadoop (HDInsight) 路径区分大小写。
-
-    \$month
-
-    如果你未下载全部 12 个文件，则需要更新此变量
+<table border="1">
+	<tr><td><strong>变量名</strong></td><td><strong>说明</strong></td></tr>
+	<tr><td>$subscriptionName</td><td>你的 Azure 订阅名称。</td></tr>
+	<tr><td>$storageAccountName</td><td>用于存储航班数据文件的 Azure 存储帐户。建议使用默认的存储帐户。</td></tr>
+	<tr><td>$containerName</td><td>用于存储航班数据文件的 Azure Blob 存储容器。建议使用默认的 HDInsight 群集文件系统 Blob 容器。默认情况下，该容器与 HDInsight 群集同名。</td></tr>
+	<tr><td>$localFolder</td><td>这是工作站上存储航班延误文件的文件夹。</td></tr>
+	<tr><td>$destFolder</td><td>这是航班延误数据将上载到的 WASB 路径。Hadoop (HDInsight) 路径区分大小写。</td></tr>
+	<tr><td>$month</td><td>如果你未下载全部 12 个文件，则需要更新此变量</td></tr>
+	</table>
 
 4.  运行以下命令以上载并列出文件：
 
@@ -209,37 +191,16 @@ WASB 语法为：
 
     以下是变量及其说明：
 
-    **变量名**
-
-    **说明**
-
-    \$subscriptionName
-
-    你的 Azure 订阅名称。
-
-    \$sqlDatabaseServer
-
-    Sqoop 用于将数据导出到的 SQL Database 服务器名称。如果你将此项按原样保留，则此脚本将为你创建一个。否则，指定现有 SQL Database 或 SQL Server。
-
-    \$sqlDatabaseUsername
-
-    SQL Database/SQL Server 用户名。
-
-    \$sqlDatabasePassword
-
-    SQL Database/SQL Server 用户密码。
-
-    \$sqlDatabaseLocation
-
-    仅当你想让脚本为你创建 SQL Database 服务器时，才使用此变量。
-
-    \$sqlDatabaseName
-
-    Sqoop 用于将数据导出到的 SQL Database 名称。如果你将此项按原样保留，则此脚本将为你创建一个。否则，指定现有 SQL Database 或 SQL Server。
-
-    \$sqlDatabaseMaxSizeGB
-
-    仅当你想让脚本为你创建 SQL Database 时，才使用此变量。
+<table border="1">
+	<tr><td><strong>变量名</strong></td><td><strong>说明</strong></td></tr>
+	<tr><td>$subscriptionName</td><td>你的 Azure 订阅名称。</td></tr>
+	<tr><td>$sqlDatabaseServer</td><td>Sqoop 用于将数据导出到的 SQL Database 服务器名称。如果你将此项按原样保留，则此脚本将为你创建一个。否则，指定现有 SQL Database 或 SQL Server。</td></tr>
+	<tr><td>$sqlDatabaseUsername</td><td>SQL Database/SQL Server 用户名。</td></tr>
+	<tr><td>$sqlDatabasePassword</td><td>SQL Database/SQL Server 用户密码。</td></tr>
+	<tr><td>$sqlDatabaseLocation</td><td>仅当你想让脚本为你创建 SQL Database 服务器时，才使用此变量。</td></tr>
+	<tr><td>$sqlDatabaseName</td><td>Sqoop 用于将数据导出到的 SQL Database 名称。如果你将此项按原样保留，则此脚本将为你创建一个。否则，指定现有 SQL Database 或 SQL Server。</td></tr>
+	<tr><td>$sqlDatabaseMaxSizeGB</td><td>仅当你想让脚本为你创建 SQL Database 时，才使用此变量。</td></tr>
+	</table>
 
 4.  运行以下命令以创建 SQL Database 服务器/数据库/表。
 
@@ -286,7 +247,7 @@ WASB 语法为：
 
         $conn.close()
 
-## 创建并上载 HiveQL 脚本
+##<a id="createscript"></a>创建并上载 HiveQL 脚本
 
 使用 Azure PowerShell，你可以一次运行多个 HiveQL 语句，或者将 HiveQL 语句打包到一个脚本文件中。在本教程中，你将创建 HiveQL 脚本。必须将脚本文件上载到 WASB。在下一节中，你将使用 Azure PowerShell 运行脚本文件。
 
@@ -320,33 +281,15 @@ HiveQL 脚本将执行以下操作：
 
     以下是变量及其说明：
 
-    **变量名**
-
-    **说明**
-
-    \$storageAccountName
-
-    用于存储 HiveQL 脚本文件的 Azure 存储帐户。本教程中提供的 PowerShell 脚本需要航班数据文件和脚本文件都位于同一 Azure 存储帐户和 Blob 存储容器中。
-
-    \$containerName
-
-    用于存储 HiveQL 脚本文件的 Azure Blob 存储容器。本教程中提供的 PowerShell 脚本需要航班数据文件和脚本文件都位于同一 Azure 存储帐户和 Blob 存储容器中。
-
-    \$hqlLocalFileName
-
-    HiveQL 脚本在上载到 WASB 之前的本地文件名。为了简化 PowerShell 脚本，你将在本地编写文件，然后使用 Set-AzureStorageBlobContent cmdlet 将脚本文件上载到 HDInsight。
-
-    \$hqlBlobName
-
-    这是带有 WASB 上的路径的脚本文件名
-
-    \$srcDataFolder
-
-    这是 HiveQL 脚本从中拉取数据的 WASB 上的文件夹。
-
-    \$dstDataFolder
-
-    这是 HiveQL 脚本将输出发送到的 WASB 上的文件夹。稍后在本教程中，你将使用 Sqoop 将此文件夹中的数据导出到 Azure SQL Database。
+	<table border="1">
+	<tr><td><strong>变量名</strong></td><td><strong>说明</strong></td></tr>
+	<tr><td>$storageAccountName</td><td>用于存储 HiveQL 脚本文件的 Azure 存储帐户。本教程中提供的 PowerShell 脚本需要航班数据文件和脚本文件都位于同一 Azure 存储帐户和 Blob 存储容器中。</td></tr>
+	<tr><td>$containerName</td><td>用于存储 HiveQL 脚本文件的 Azure Blob 存储容器。本教程中提供的 PowerShell 脚本需要航班数据文件和脚本文件都位于同一 Azure 存储帐户和 Blob 存储容器中。</td></tr>
+	<tr><td>$hqlLocalFileName</td><td>HiveQL 脚本在上载到 WASB 之前的本地文件名。为了简化 PowerShell 脚本，你将在本地编写文件，然后使用 Set-AzureStorageBlobContent cmdlet 将脚本文件上载到 HDInsight。</td></tr>
+	<tr><td>$hqlBlobName</td><td>这是带有 WASB 上的路径的脚本文件名</td></tr>
+	<tr><td>$srcDataFolder</td><td>这是 HiveQL 脚本从中拉取数据的 WASB 上的文件夹。</td></tr>
+	<tr><td>$dstDataFolder </td><td>这是 HiveQL 脚本将输出发送到的 WASB 上的文件夹。稍后在本教程中，你将使用 Sqoop 将此文件夹中的数据导出到 Azure SQL Database。</td></tr>
+	</table>
 
 4.  运行以下命令以定义 HiveQL 语句：
 
@@ -437,7 +380,7 @@ HiveQL 脚本将执行以下操作：
         ----                              --------   ------                            -----------                       ------------                      ------------
         tutorials/flightdelays/flightd...BlockBlob  1938                              application/octet-stream          2/12/2014 9:57:28 PM +00:00
 
-## 执行 HiveQL 脚本
+##<a id="executehqlscript"></a>执行 HiveQL 脚本
 
 有几个 Azure PowerShell cmdlet 可用于运行 Hive。本教程使用的是 Invoke-Hive。有关其他方法，请参阅[将 Hive 与 HDInsight 配合使用][]。使用 Invoke-Hive，可以运行 HiveQL 语句或 HiveQL 脚本。你将使用已创建并已上载到 Azure Blob 存储的 HiveQL 脚本。
 
@@ -466,29 +409,14 @@ HiveQL 脚本将执行以下操作：
 
     以下是变量及其说明：
 
-    **变量名**
-
-    **说明**
-
-    \$clusterName
-
-    将运行 Hive 脚本和 Sqoop 导出的 HDInsight 群集。
-
-    \$storageAccountName
-
-    用于存储 HiveQL 脚本的 Azure 存储帐户。请参阅[创建并上载 HiveQL 脚本][1]。
-
-    \$containerName
-
-    用于存储 HiveQL 脚本的 Azure Blob 存储容器。请参阅[创建并上载 HiveQL 脚本][1]。
-
-    \$hqlScriptFile
-
-    这是 HiveQL 脚本文件的 URI。
-
-    \$outputBlobName
-
-    这是 HiveQL 脚本输出文件。默认名称是 *000000\_0*。
+    <table border="1">
+	<tr><td><strong>变量名</strong></td><td><strong>说明</strong></td></tr>
+	<tr><td>$clusterName</td><td>将运行 Hive 脚本和 Sqoop 导出的 HDInsight 群集。</td></tr>
+	<tr><td>$storageAccountName</td><td>用于存储 HiveQL 脚本的 Azure 存储帐户。请参阅[创建并上载 HiveQL 脚本][1]。</td></tr>
+	<tr><td>$containerName</td><td>用于存储 HiveQL 脚本的 Azure Blob 存储容器。请参阅[创建并上载 HiveQL 脚本][1]。</td></tr>
+	<tr><td>$hqlScriptFile</td><td>这是 HiveQL 脚本文件的 URI。</td></tr>
+	<tr><td>$outputBlobName</td><td>这是 HiveQL 脚本输出文件。默认名称是 *000000\_0*。</td></tr>
+	</table>
 
 5.  运行以下命令以调用 Hive
 
@@ -521,7 +449,7 @@ HiveQL 脚本将执行以下操作：
 
     在每个城市和延迟时间之间有一个分隔符，该分隔符在 PowerShell 输出窗口中不可见。该分隔符是“\\001”。当你运行 Sqoop 导出时，将使用此分隔符。
 
-## 将 Hive 作业输出导出到 Azure SQL Database
+####<a id="exportdata"></a>将 Hive 作业输出导出到 Azure SQL Database
 
 最后的步骤是运行 Sqoop 导出，将数据导出到 SQL Database。在本教程的前面部分，你已创建 SQL Database 和 AvgDelays 表。
 
@@ -549,37 +477,16 @@ HiveQL 脚本将执行以下操作：
 
     以下是变量及其说明：
 
-    **变量名**
-
-    **说明**
-
-    \$clusterName
-
-    HDInsight 群集名称。
-
-    \$sqlDatabaseServer
-
-    Sqoop 将数据导出到的 SQL Database 服务器。
-
-    \$sqlDatabaseUsername
-
-    SQL Database 用户名。
-
-    \$sqlDatabasePassword
-
-    SQL Database 用户密码。
-
-    \$sqlDatabaseName
-
-    Sqoop 将数据导出到的 SQL Database。默认名称是“HDISqoop”。
-
-    \$sqlDatabaseTableName
-
-    Sqoop 将数据导出到的 SQL Database。默认名称是 AvgDelays。这是先前在教程中创建的表。
-
-    \$exportDir
-
-    这是 Hive 输出文件位置。Sqoop 会将此位置中的文件导出到 SQL Database。
+<table border="1">
+	<tr><td><strong>变量名</strong></td><td><strong>说明</strong></td></tr>
+	<tr><td>$clusterName</td><td>HDInsight 群集名称。</td></tr>
+	<tr><td>$sqlDatabaseServer</td><td>Sqoop 将数据导出到的 SQL Database 服务器。</td></tr>
+	<tr><td>$sqlDatabaseUsername</td><td>SQL Database 用户名。</td></tr>
+	<tr><td>$sqlDatabasePassword</td><td>SQL Database 用户密码。</td></tr>
+	<tr><td>$sqlDatabaseName</td><td>Sqoop 将数据导出到的 SQL Database。默认名称是“HDISqoop”。 </td></tr>
+	<tr><td>$sqlDatabaseTableName</td><td>Sqoop 将数据导出到的 SQL Database。默认名称是 AvgDelays。这是先前在教程中创建的表。</td></tr>
+	<tr><td>$exportDir</td><td>这是 Hive 输出文件位置。Sqoop 会将此位置中的文件导出到 SQL Database。</td></tr>
+	</table>
 
 4.  运行以下命令以导出数据：
 
@@ -597,7 +504,7 @@ HiveQL 脚本将执行以下操作：
 
     ![HDI.FlightDelays.AvgDelays.Dataset][]
 
-## 后续步骤
+##<a id="nextsteps"></a> 后续步骤
 
 现在你已了解如何执行以下操作：将文件上载到 Blob 存储、使用 Blob 存储中的数据填充 Hive 表、运行 Hive 查询以及使用 Sqoop 将数据从 HDFS 导出到 Azure SQL Database。若要了解更多信息，请参阅下列文章：
 

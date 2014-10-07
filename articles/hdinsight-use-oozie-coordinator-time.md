@@ -43,9 +43,9 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 
 2. Sqoop 操作将 HiveQL 操作输出结果导出到 Azure SQL 数据库中的表。有关 Sqoop 的详细信息，请参阅[将 Sqoop 与 HDInsight 配合使用][hdinsight-sqoop]。
 
-> [WACN.NOTE] 有关 HDInsight 群集上支持的 Oozie 版本，请参阅 [HDInsight 提供的群集版本有哪些新功能？][hdinsight-versions]。
+> [WACOM.NOTE] 有关 HDInsight 群集上支持的 Oozie 版本，请参阅 [HDInsight 提供的群集版本有哪些新功能？][hdinsight-versions]。
 
-> [WACN.NOTE] 本教程适用于 HDInsight 群集版本 2.1 和 3.0。本文尚未在 HDInsight Emulator 上测试过。
+> [WACOM.NOTE] 本教程适用于 HDInsight 群集版本 2.1 和 3.0。本文尚未在 HDInsight Emulator 上测试过。
 
 ## <a id="prerequisites"></a>先决条件
 
@@ -73,9 +73,9 @@ Apache Oozie 是一个管理 Hadoop 作业的工作流/协调系统。它与 Had
 	<tr><td>SQL 数据库名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop 要将数据导出到其中的 Azure SQL Database。 </td></tr>
 	</table>
 
-    > [WACN.NOTE] 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。如果禁用了此防火墙设置，则必须从 Azure 管理门户启用它。有关创建 SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL Database][sqldatabase-create-configue]。
+> [WACOM.NOTE] 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。如果禁用了此防火墙设置，则必须从 Azure 管理门户启用它。有关创建 SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL Database][sqldatabase-create-configue]。
 
-> [WACN.NOTE] 将值填入表。这将有助于学习本教程。
+> [WACOM.NOTE] 将值填入表。这将有助于学习本教程。
 
 
 ## <a id="defineworkflow"></a>定义 Oozie 工作流及相关 HiveQL 脚本
@@ -265,9 +265,9 @@ WASB 语法是：
 
     wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/<路径>/<文件名>
 
-> [WACN.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
+> [WACOM.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
 
-> [WACN.NOTE] WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]。
+> [WACOM.NOTE] WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]。
 
 存储在默认文件系统容器中的文件可以使用以下任一 URI 从 HDInsight 进行访问（以 workflow.xml 为例）：
 
@@ -300,7 +300,7 @@ WASB 语法是：
 
     系统将提示你输入 Azure 帐户凭据。这种添加订阅连接的方法会超时，12 个小时之后，你将需要再次运行该 cmdlet。
 
-    > [WACN.NOTE] 如果你有多个 Azure 订阅，而默认订阅不是你想使用的，则请使用 **Select-AzureSubscription** cmdlet 来选择正确的订阅。
+    > [WACOM.NOTE] 如果你有多个 Azure 订阅，而默认订阅不是你想使用的，则请使用 **Select-AzureSubscription** cmdlet 来选择正确的订阅。
 
 3. 将以下脚本复制到脚本窗格，然后设置前六个变量
 
@@ -531,7 +531,7 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
         </configuration>
         "@
 
-    > [WACN.NOTE] 与工作流提交负载文件相比，主要区别是变量 **oozie.coord.application.path**。在提交工作流作业时，你使用的是 **oozie.wf.application.path**。
+    > [WACOM.NOTE] 与工作流提交负载文件相比，主要区别是变量 **oozie.coord.application.path**。在提交工作流作业时，你使用的是 **oozie.wf.application.path**。
 
 4. 将以下内容追加到脚本。这部分检查 Oozie Web 服务状态：
 
@@ -569,7 +569,118 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
         return $oozieJobId
         }
 
-    > [WACN.NOTE] 在提交工作流作业时，你必须在创建作业后进行另一次 Web 服务调用以启动该作业。在这种情况下，该协调器作业会按时间触发。该作业将自动启动。
+    > [WACOM
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > 
+    > .NOTE] 在提交工作流作业时，你必须在创建作业后进行另一次 Web 服务调用以启动该作业。在这种情况下，该协调器作业会按时间触发。该作业将自动启动。
 
 6. 将以下内容追加到脚本。这部分检查 Oozie 作业状态：
 
@@ -706,31 +817,31 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 - [为 HDInsight 开发 C# Hadoop 流作业][hdinsight-develop-streaming]
 - [为 HDInsight 开发 Java MapReduce 程序][hdinsight-develop-mapreduce]
 
-[hdinsight-versions]:  /zh-cn/documentation/articles/hdinsight-component-versioning/
-[hdinsight-storage]: /zh-cn/documentation/articles/hdinsight-use-blob-storage/
-[hdinsight-get-started]: /zh-cn/documentation/articles/hdinsight-get-started/
-[hdinsight-admin-portal]: /zh-cn/documentation/articles/hdinsight-administer-use-management-portal/
+[hdinsight-versions]:  /en-us/documentation/articles/hdinsight-component-versioning/
+[hdinsight-storage]: /en-us/documentation/articles/hdinsight-use-blob-storage/
+[hdinsight-get-started]: /en-us/documentation/articles/hdinsight-get-started/
+[hdinsight-admin-portal]: /en-us/documentation/articles/hdinsight-administer-use-management-portal/
 
 
 [hdinsight-sqoop]: ../hdinsight-use-sqoop/
-[hdinsight-provision]: /zh-cn/documentation/articles/hdinsight-provision-clusters/
+[hdinsight-provision]: /en-us/documentation/articles/hdinsight-provision-clusters/
 
-[hdinsight-admin-powershell]: /zh-cn/documentation/articles/hdinsight-administer-use-powershell/
+[hdinsight-admin-powershell]: /en-us/documentation/articles/hdinsight-administer-use-powershell/
 
-[hdinsight-upload-data]: /zh-cn/documentation/articles/hdinsight-upload-data/
+[hdinsight-upload-data]: /en-us/documentation/articles/hdinsight-upload-data/
 
-[hdinsight-mapreduce]: /zh-cn/documentation/articles/hdinsight-use-mapreduce/
-[hdinsight-hive]: /zh-cn/documentation/articles/hdinsight-use-hive/
+[hdinsight-mapreduce]: /en-us/documentation/articles/hdinsight-use-mapreduce/
+[hdinsight-hive]: /en-us/documentation/articles/hdinsight-use-hive/
 
-[hdinsight-pig]: /zh-cn/documentation/articles/hdinsight-use-pig/
+[hdinsight-pig]: /en-us/documentation/articles/hdinsight-use-pig/
 
 [hdinsight-cmdlets-download]: http://go.microsoft.com/fwlink/?LinkID=325563
-[hdinsight-storage]: /zh-cn/documentation/articles/hdinsight-use-blob-storage/
+[hdinsight-storage]: /en-us/documentation/articles/hdinsight-use-blob-storage/
 
-[hdinsight-emulator]: /zh-cn/documentation/articles/hdinsight-get-started-emulator/
+[hdinsight-emulator]: /en-us/documentation/articles/hdinsight-get-started-emulator/
 
-[hdinsight-develop-streaming]: /zh-cn/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
-[hdinsight-develop-mapreduce]: /zh-cn/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
+[hdinsight-develop-streaming]: /en-us/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
+[hdinsight-develop-mapreduce]: /en-us/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
 [hdinsight-oozie]: ../hdinsight-use-oozie/
 
 [sqldatabase-create-configue]: ../sql-database-create-configure/

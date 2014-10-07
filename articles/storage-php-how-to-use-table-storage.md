@@ -23,23 +23,23 @@
 -   [如何：删除表][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-table-storage][]]
+[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
-## 创建 Azure 存储帐户
+## ##<a id="CreateAccount"></a>创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 创建 PHP 应用程序
+## <a id="CreateApplication"></a>创建 PHP 应用程序
 
 创建访问 Azure 表服务的 PHP 应用程序的唯一要求是从代码中引用 Azure SDK for PHP 中的类。你可以使用任何开发工具（包括“记事本”）创建应用程序。
 
 在本指南中，你将使用表服务功能，这些功能可在 PHP 应用程序中本地调用，或通过在 Azure 的 Web 角色、辅助角色或网站中运行的代码调用。
 
-## 获取 Azure 客户端库
+##<a id="GetClientLibrary"></a>获取 Azure 客户端库
 
-[WACOM.INCLUDE [get-client-libraries][]]
+[WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
-## 配置你的应用程序以访问表服务
+##<a id="ConfigureStorage"></a>配置你的应用程序以访问表服务
 
 若要使用 Azure 表服务 API，你需要：
 
@@ -56,7 +56,7 @@
 
 在下面的示例中，`require_once` 语句将始终显示，但只会引用执行该示例所需的类。
 
-## 设置 Azure 存储连接
+##<a id="ConnectionString"></a>设置 Azure 存储连接
 
 若要实例化 Azure 表服务客户端，你必须首先具有有效的连接字符串。表服务连接字符串的格式为：
 
@@ -84,7 +84,7 @@
 
     $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
 
-## 如何：创建表
+##<a id="CreateTable"></a>如何：创建表
 
 利用 **TableRestProxy** 对象，可以使用 **createTable** 方法创建表。创建表时，可以设置表服务超时。（有关表服务超时的详细信息，请参阅[为表服务操作设置超时][]。）
 
@@ -110,7 +110,7 @@
 
 有关表名称的限制的信息，请参阅[了解表服务数据模型][]。
 
-## 如何：将实体添加到表
+##<a id="AddEntity"></a>如何：将实体添加到表
 
 若要将实体添加到表，请创建一个新的 **Entity** 对象并将其传递到 **TableRestProxy-\>insertEntity**。请注意，在创建实体时，你必须指定 `PartitionKey` 和 `RowKey`。这些值是实体的唯一标识符，并且其查询速度比其他实体属性的查询速度快得多。系统使用 `PartitionKey` 自动将表的实体分发到多个存储节点上。具有相同的 `PartitionKey` 的实体存储在同一个节点上。（对存储在同一节点上的多个实体执行操作要将比对存储在不同节点上的实体执行的操作的效果更佳。）`RowKey` 是实体在分区中的唯一 ID。
 
@@ -187,7 +187,7 @@
     }
        
 
-## 如何：检索单个实体
+##<a id="RetrieveEntity"></a>如何：检索单个实体
 
 利用 **TableRestProxy-\>getEntity** 方法，可以通过查询实体的 `PartitionKey` 和 `RowKey` 来检索单个实体。在下面的示例中，分区键 `tasksSeattle` 和行键 `1` 将传递到 **getEntity** 方法。
 
@@ -215,7 +215,7 @@
 
     echo $entity->getPartitionKey().":".$entity->getRowKey();
 
-## 如何：检索分区中的所有实体
+##<a id="RetEntitiesInPartition"></a>如何：检索分区中的所有实体
 
 实体查询是使用筛选器构造的（有关详细信息，请参阅[查询表和实体][]）。若要检索分区中的所有实体，请使用筛选器“PartitionKey eq *partition\_name*”。下面的示例演示了如何通过将筛选器传递到 **queryEntities** 方法来检索 `tasksSeattle` 分区中的所有实体。
 
@@ -247,7 +247,7 @@
     echo $entity->getPartitionKey().":".$entity->getRowKey()."<br />";
     }
 
-## 如何：检索分区中的一部分实体
+## <a id="RetrieveSubset"></a>如何：检索分区中的一部分实体
 
 可以使用上一示例中使用的同一模式来检索分区中的部分实体。你检索的部分实体将由你使用的筛选器确定（有关详细信息，请参阅[查询表和实体][]）。下面的示例演示了如何使用筛选器检索具有特定的 `Location` 且 `DueDate` 早于指定日期的所有实体。
 
@@ -279,7 +279,7 @@
     echo $entity->getPartitionKey().":".$entity->getRowKey()."<br />";
     }
 
-## 如何：检索一部分实体属性
+##<a id="RetPropertiesSubset"></a>如何：检索一部分实体属性
 
 查询可检索一部分实体属性。此方法称为*投影*，可减少带宽并提高查询性能，尤其适用于大型实体。若要指定要检索的属性，请将该属性的名称传递到 **Query-\>addSelectField** 方法。可以多次调用此方法来添加更多属性。执行 **TableRestProxy-\>queryEntities** 后，返回的实体将仅具有选定的属性。（若要返回一部分表实体，请使用上述查询中所示的筛选器。）
 
@@ -317,7 +317,7 @@
     echo $description."<br />";
     }
 
-## 如何：更新实体
+##<a id="UpdateEntity"></a>如何：更新实体
 
 可通过对现有实体使用 **Entity-\>setProperty** 和 **Entity-\>addProperty** 方法并调用 **TableRestProxy-\>updateEntity** 来更新该实体。下面的示例将检索一个实体、修改一个属性、删除另一个属性并添加一个新属性。请注意，通过将属性的值设为 **null** 可删除该属性。
 
@@ -353,7 +353,7 @@
     echo $code.":".$error_message."<br />";
     }
 
-## 如何：删除实体
+##<a id="DeleteEntity"></a>如何：删除实体
 
 若要删除实体，请将表名以及实体的 `PartitionKey` 和 `RowKey` 传递到 **TableRestProxy-\>deleteEntity** 方法。
 
@@ -380,7 +380,7 @@
 
 请注意，为了进行并发检查，可以使用 **DeleteEntityOptions-\>setEtag** 方法并将 **DeleteEntityOptions** 对象作为第四个参数传递到 **deleteEntity**，来为要删除的实体设置 Etag。
 
-## 如何：对表操作进行批处理
+##<a id="BatchOperations"></a>如何：对表操作进行批处理
 
 利用 **TableRestProxy-\>batch** 方法，你可以通过一个请求执行多个操作。此处的模式涉及将操作添加到 **BatchRequest** 对象，然后将 **BatchRequest** 对象传递到 **TableRestProxy-\>batch** 方法。若要将操作添加到 **BatchRequest** 对象，可以多次调用以下任一方法：
 
@@ -436,7 +436,7 @@
 
 有关对表操作进行批处理的详细信息，请参阅[执行实体组事务][]。
 
-## 如何：删除表
+##<a id="DeleteTable"></a>如何：删除表
 
 最后，若要删除表，请将表名传递到 **TableRestProxy-\>deleteTable** 方法。
 
@@ -461,7 +461,7 @@
     echo $code.":".$error_message."<br />";
     }
 
-## 后续步骤
+##<a id="NextSteps"></a>后续步骤
 
 现在，你已了解了 Azure 表服务的基础知识，单击下面的链接可了解如何执行更复杂的存储任务。
 

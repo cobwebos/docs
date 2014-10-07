@@ -1,4 +1,5 @@
-<properties pageTitle="Get Started with Mobile Services for Xamarin.Android" metaKeywords="Azure Xamarin.Android application, mobile service XamarinAndroid, getting started Azure Xamarin.Android" writer="craigd" description="Learn how to use Azure Mobile Services with your Xamarin.Android app." metaCanonical=""      documentationCenter="Mobile" title="Get started with Mobile Services" />
+<properties pageTitle="Get Started with Mobile Services for Xamarin.Android" metaKeywords="Azure Xamarin.Android application, mobile service XamarinAndroid, getting started Azure Xamarin.Android" writer="craigd" description="Learn how to use Azure Mobile Services with your Xamarin.Android app." metaCanonical="" 
+	documentationCenter="Mobile" title="Get started with Mobile Services" />
 
 <a name="getting-started"></a>
 # 移动服务入门
@@ -30,7 +31,7 @@
 <div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Getting-Started-with-Xamarin-and-Windows-Azure-Mobile-Services" target="_blank" class="label">观看教程</a> <a style="background-image: url('/media/devcenter/mobile/videos/get-started-xamarin-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Getting-Started-with-Xamarin-and-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">播放视频</span></a> <span class="time">10:05</span></div>
 </div>
 
-![][]
+![][0]
 
 完成本教程需要 [Xamarin.Android][1]，该工具将安装 Xamarin Studio 和 Visual Studio 插件（在 Windows 上）以及最新的 Android 平台。需要使用 Android 4.2 SDK 或更高版本。
 
@@ -44,7 +45,7 @@
 <a name="create-new-service"> </a>
 ## 创建新的移动服务
 
-[WACOM.INCLUDE [mobile-services-create-new-service][]]
+[WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
 ## 
 
@@ -129,7 +130,7 @@
   [Sencha]: /zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/ "Sencha"
   [PhoneGap]: /zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/ "PhoneGap"
   [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Getting-Started-with-Xamarin-and-Windows-Azure-Mobile-Services
-  []: ./media/partner-xamarin-mobile-services-android-get-started/mobile-quickstart-completed-android.png
+  [0]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-quickstart-completed-android.png
   [1]: http://xamarin.com/download
   [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A9C9624B5
   [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md

@@ -133,4 +133,4 @@
 
 ## 其他資源
 
--   <a href="http://msdn.microsoft.com/zh-cn/library/azure/gg680307.aspx">How to Map CDN Content to a Custom Domain</a>
+-   <a href="http://msdn.microsoft.com/zh-cn/library/azure/gg680307.aspx">如何将 CDN 内容映射到自定义域</a>

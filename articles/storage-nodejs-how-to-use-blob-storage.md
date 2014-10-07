@@ -23,17 +23,17 @@
 -   [如何：删除 Blob][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-blob-storage][]]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-## 创建帐户创建 Azure 存储帐户
+## <a name="create-account"></a>创建帐户创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 创建 Node.js 应用程序
+## <a name="create-app"> </a>创建 Node.js 应用程序
 
 创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][]、[Node.js 云服务][]（使用 Windows PowerShell）或[使用 WebMatrix 构建网站][]。
 
-## 配置应用程序以访问存储
+## <a name="configure-access"> </a>配置应用程序以访问存储
 
 若要使用 Azure 存储空间，你需要下载并使用 Node.js azure 包，
 其中包括一组便于与存储 REST 服务
@@ -70,7 +70,7 @@
 
     var azure = require('azure');
 
-## 设置 Azure 存储连接
+## <a name="setup-connection-string"> </a>设置 Azure 存储连接
 
 azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY 以获取连接到你的 Azure 存储帐户所需的信息。如果未设置这些环境变量，则在调用 **createBlobService** 时必须指定帐户信息。
 
@@ -78,7 +78,7 @@ azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_AC
 
 有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序][]。
 
-## 如何：创建容器
+## <a name="create-container"> </a>如何：创建容器
 
 使用 **BlobService** 对象可以对容器和 Blob 进行操作。以下代码
 将创建一个 **BlobService** 对象。将以下内容添加
@@ -136,7 +136,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
     var retryOperations = new azure.ExponentialRetryPolicyFilter();
     var blobService = azure.createBlobService().withFilter(retryOperations);
 
-## 如何：将 Blob 上载到容器
+## <a name="upload-blob"> </a>如何：将 Blob 上载到容器
 
 若要将数据上载到 Blob，请使用 **createBlockBlobFromFile**、**createBlockBlobFromStream** 或 **createBlockBlobFromText** 方法。**createBlockBlobFromFile** 上载文件的内容，而 **createBlockBlobFromStream** 上载流的内容。**createBlockBlobFromText** 上载指定文本值。
 
@@ -151,7 +151,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
             }
         });
 
-## 如何：列出容器中的 Blob
+## <a name="list-blob"> </a>如何：列出容器中的 Blob
 
 若要列出容器中的 Blob，可使用带 **for** 循环的
 **listBlobs** 方法来显示容器中每个 Blob 的名称。以下
@@ -166,7 +166,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-## 如何：下载 Blob
+## <a name="download-blobs"> </a>如何：下载 Blob
 
 若要从 Blob 下载数据，可使用 **getBlobToFile**、**getBlobToStream** 或 **getBlobToText**。以下示例演示了如何使用 **getBlobToStream** 下载 **test1** Blob 的内容，并使用一个流将其存储到 **output.txt** 文件：
 
@@ -180,7 +180,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
             }
         });
 
-## 如何：删除 Blob
+## <a name="delete-blobs"> </a>如何：删除 Blob
 
 最后，若要删除 Blob，请调用 **deleteBlob**。下面的示例将删除名为“blob1”的 Blob。
 
@@ -192,7 +192,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
             }
         });
 
-## 后续步骤
+## <a name="next-steps"> </a>后续步骤
 
 现在，你已了解有关 Blob 存储的基础知识，可单击下面的链接来了解
 如何执行更复杂的存储任务。
@@ -216,10 +216,10 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
   [howto-blob-storage]: ../includes/howto-blob-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
   [创建 Node.js 应用程序并将其部署到 Azure 网站]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
-  [Node.js 云服务]: /zh-cn/documentation/articles/cloud-services-nodejs-develop-deploy-app/
-  [使用 WebMatrix 构建网站]: /zh-cn/documentation/articles/web-sites-nodejs-use-webmatrix/
-  [使用存储构建 Node.js 云服务]: /zh-cn/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
-  [使用存储构建 Node.js Web 应用程序]: /zh-cn/documentation/articles/storage-nodejs-use-table-storage-web-site/
+  [Node.js 云服务]: /en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/
+  [使用 WebMatrix 构建网站]: /en-us/documentation/articles/web-sites-nodejs-use-webmatrix/
+  [使用存储构建 Node.js 云服务]: /en-us/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
+  [使用存储构建 Node.js Web 应用程序]: /en-us/documentation/articles/storage-nodejs-use-table-storage-web-site/
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
   [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node

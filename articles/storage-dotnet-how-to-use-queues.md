@@ -30,13 +30,13 @@
 -   [如何：删除队列][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-queue-storage][]]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
-## 创建帐户创建 Azure 存储帐户
+## <a name="create-account"></a>创建帐户创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)
 
-## 设置连接字符串设置 Azure 存储连接字符串
+## <a name="setup-connection-string"></a>设置连接字符串设置 Azure 存储连接字符串
 
 Azure .NET 存储客户端库支持使用存储连接字符
 串来配置终结点和用于访问存
@@ -94,7 +94,7 @@ Azure .NET 存储客户端库支持使用存储连接字符
 
 你现在即可准备执行本指南中的操作任务。
 
-## 以编程方式访问如何：以编程方式访问队列存储
+## <a name="access"> </a>以编程方式访问如何：以编程方式访问队列存储
 
 ### 获得程序集
 
@@ -137,7 +137,7 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
 
 .NET 存储客户端库中的 ODataLib 依赖项可通过在 NuGet （而非 WCF 数据服务）上获得的 ODataLib（5.0.2 版）包来解析。ODataLib 库可直接下载或者通过 NuGet 由代码项目引用。特定的 ODataLib 包为 [OData][]、[Edm][] 和 [Spatial][]。
 
-## 创建队列如何：创建队列
+## <a name="create-queue"></a>创建队列如何：创建队列
 
 利用 **CloudQueueClient** 对象，可以获取队列的引用对象。
 下面的代码将创建一个 **CloudQueueClient** 对象。本指南中
@@ -162,7 +162,7 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
     // 如果该队列不存在，则创建它
     queue.CreateIfNotExists();
 
-## 插入消息如何：在队列中插入消息
+## <a name="insert-message"> </a>插入消息如何：在队列中插入消息
 
 若要将消息插入现有队列，请先创建一个新的
 **CloudQueueMessage**。然后调用 **AddMessage** 方法。
@@ -187,7 +187,7 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
     queue.AddMessage(message);
 
-## 扫视下一条消息如何：扫视下一条消息
+## <a name="peek-message"></a>扫视下一条消息如何：扫视下一条消息
 
 通过调用 **PeekMessage** 方法，你可以扫视队列前面的
 消息，而不会从队列中删除它。
@@ -208,7 +208,7 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
     // 显示消息。
     Console.WriteLine(peekedMessage.AsString);
 
-## 更改消息内容如何：更改已排队消息的内容
+## <a name="change-contents"></a>更改消息内容如何：更改已排队消息的内容
 
 你可以更改队列中现有消息的内容。如果消息
 表示工作任务，则可以使用此功能来更新该工作任务的状态。
@@ -240,7 +240,7 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
     TimeSpan.FromSeconds(0.0),  // 使其立即可见。
     MessageUpdateFields.Content | MessageUpdateFields.Visibility);
 
-## 取消对下一条消息的排队如何：取消对下一条消息的排队
+## <a name="get-message"></a>取消对下一条消息的排队如何：取消对下一条消息的排队
 
 你的代码通过两个步骤来取消对队列中某条消息的排队。在调用
 **GetMessage** 时，你将获得队列中的下一条消息。对于从该队列读取消息的
@@ -268,7 +268,7 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
     //在不到 30 秒的时间内处理消息，然后删除消息
     queue.DeleteMessage(retrievedMessage);
 
-## 更多取消排队方法如何：使用其他方法取消对消息的排队
+## <a name="advanced-get"></a>更多取消排队方法如何：使用其他方法取消对消息的排队
 
 你可以通过两种方式自定义队列的消息检索。
 首先，你可以获取一批消息（最多 32 条）。其次，你可以
@@ -297,7 +297,7 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
     queue.DeleteMessage(message);
     }
 
-## 获取队列长度如何：获取队列长度
+## <a name="get-queue-length"></a>获取队列长度如何：获取队列长度
 
 你可以获取队列中消息的估计数。使用 **FetchAttributes**
 方法可要求队列服务检索队列属性，
@@ -324,7 +324,7 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
     // 显示消息的数目。
     Console.WriteLine("Number of messages in queue:" + cachedMessageCount);
 
-## 删除队列如何：删除队列
+## <a name="delete-queue"></a>删除队列如何：删除队列
 
 若要删除队列及其包含的所有消息，请对队列对象
 调用 **Delete** 方法。
@@ -342,7 +342,7 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
     // 删除队列。
     queue.Delete();
 
-## 后续步骤
+## <a name="next-steps"></a>后续步骤
 
 现在，你已了解有关队列存储的基础知识，可单击下面的链接来了解如何
 执行更复杂的存储任务。
@@ -385,6 +385,6 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
   [.NET 存储客户端库参考]: http://msdn.microsoft.com/zh-cn/library/azure/wa_storage_30_reference_home.aspx
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [表存储]: /zh-cn/documentation/articles/storage-dotnet-how-to-use-tables/
-  [Blob 存储]: /zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/
-  [SQL Database]: /zh-cn/documentation/articles/sql-database-dotnet-how-to-use/
+  [表存储]: /en-us/documentation/articles/storage-dotnet-how-to-use-tables/
+  [Blob 存储]: /en-us/documentation/articles/storage-dotnet-how-to-use-blobs/
+  [SQL Database]: /en-us/documentation/articles/sql-database-dotnet-how-to-use/

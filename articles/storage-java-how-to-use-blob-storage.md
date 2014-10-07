@@ -1,5 +1,8 @@
 <properties linkid="dev-net-how-to-use-blog-storage-service-java" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Java) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Java" description="Learn how to use the Azure blob service to upload, download, list, and delete blob content. Samples written in Java." metaCanonical="" services="storage" documentationCenter="Java" title="How to use Blob Storage from Java" authors="" solutions="" manager="" editor="" />
 
+
+
+
 # 如何通过 Java 使用 Blob 存储
 
 本指南将演示如何使用 Azure Blob 存储服务执行常见方案。
@@ -8,7 +11,7 @@
 **上载**、**列出**、**下载**和**删除** Blob。有关 Blob 的
 详细信息，请参阅[后续步骤][]部分。
 
-## 目录
+## <a name="Contents"> </a>目录
 
 -   [什么是 Blob 存储][]
 -   [概念][]
@@ -24,13 +27,13 @@
 -   [如何：删除 Blob 容器][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-blob-storage][]]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-## 创建 Azure 存储帐户
+<h2><a id="CreateAccount"></a>创建 Azure 存储帐户</h2>
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 创建 Java 应用程序
+## <a name="CreateApplication"> </a>创建 Java 应用程序
 
 在本指南中，你将使用存储功能，这些功能可在本地 Java 应用
 程序中运行，或在 Azure 的 Web 角色或辅助角色中通过运行的代码
@@ -45,7 +48,7 @@ Azure 存储帐户。
 你只要能够编译 Java 项目并引用 Azure Libraries
 for Java 即可。
 
-## 配置你的应用程序以访问 Blob 存储
+## <a name="ConfigureStorage"> </a>配置你的应用程序以访问 Blob 存储
 
 将下列 import 语句添加到需要在其中使用 Azure 存储 API 来
 访问 Blob 的 Java 文件的顶部：
@@ -54,7 +57,7 @@ for Java 即可。
     import com.microsoft.windowsazure.services.core.storage.*;
     import com.microsoft.windowsazure.services.blob.client.*;
 
-## 设置 Azure 存储连接字符串
+## <a name="ConnectionString"> </a>设置 Azure 存储连接字符串
 
 Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务
 的终结点和凭据。在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 *AccountName* 和 *AccountKey* 值使用管理门户中列出的存储帐户的名称和存储帐户的主访问密钥。此示例演示了如何声明一个静态字段来保存连接字符串：
@@ -76,7 +79,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     String storageConnectionString = 
     RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 
-## 如何：创建容器
+## <a name="CreateContainer"> </a>如何：创建容器
 
 利用 CloudBlobClient 对象，可以获取容器和 Blob 的引用对象。
 以下代码将创建 **CloudBlobClient** 对象。
@@ -116,7 +119,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 Internet 上的所有人都能查看公共容器中的 Blob，但公共访问权限
 仅限于读取。
 
-## 如何：将 Blob 上载到容器中
+## <a name="UploadBlob"> </a>如何：将 Blob 上载到容器中
 
 若要将文件上载到 Blob，请获取容器引用，并使用它获取 Blob 引用。
 获取 Blob 引用后，可以通过对该 Blob 引用
@@ -139,7 +142,7 @@ Internet 上的所有人都能查看公共容器中的 Blob，但公共访问权
     File source = new File("c:\\myimages\\myimage.jpg");
     blob.upload(new FileInputStream(source), source.length());
 
-## 如何：列出容器中的 Blob
+## <a name="ListBlobs"> </a>如何：列出容器中的 Blob
 
 若要列出容器中的 Blob，请先获取容器引用，就像上载 Blob 时
 执行的操作一样。可将容器的 **listBlobs**
@@ -179,7 +182,7 @@ Internet 上的所有人都能查看公共容器中的 Blob，但公共访问权
 而无论目录如何。有关详细信息，
 请参阅 Javadocs 文档中的 CloudBlobContainer.listBlobs。
 
-## 如何：下载 Blob
+## <a name="DownloadBlob"> </a>如何：下载 Blob
 
 若要下载 Blob，请执行之前用于上载 Blob 的相同步骤以
 获取 Blob 引用。在上载示例中，你对 Blob 对象
@@ -207,7 +210,7 @@ Internet 上的所有人都能查看公共容器中的 Blob，但公共访问权
         }
     }
 
-## 如何：删除 Blob
+## <a name="DeleteBlob"> </a>如何：删除 Blob
 
 若要删除 Blob，请获取 Blob 引用，然后调用 **delete**。
 
@@ -227,7 +230,7 @@ Internet 上的所有人都能查看公共容器中的 Blob，但公共访问权
     // 删除 Blob
     blob.delete();
 
-## 如何：删除 Blob 容器
+## <a name="DeleteContainer"> </a>如何：删除 Blob 容器
 
 最后，若要删除 Blob 容器，请获取 Blob 容器引用，然后
 调用 delete。
@@ -245,7 +248,7 @@ Internet 上的所有人都能查看公共容器中的 Blob，但公共访问权
     // 删除 Blob 容器
     container.delete();
 
-## 后续步骤
+## <a name="NextSteps"> </a>后续步骤
 
 现在，你已了解有关 Blob 存储的基础知识，可单击下面的链接来了解
 如何执行更复杂的存储任务。
@@ -253,6 +256,7 @@ Internet 上的所有人都能查看公共容器中的 Blob，但公共访问权
 -   查看 MSDN 参考：[在 Windows Azure 中存储和访问
     数据]
 -   访问 Azure 存储空间团队博客：<http://blogs.msdn.com/b/windowsazurestorage/>
+
 
   [Azure SDK for Java]: http://azure.microsoft.com/zh-cn/develop/java/
   [后续步骤]: #NextSteps

@@ -27,17 +27,17 @@
 -   [如何：删除表][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-table-storage][]]
+[WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
-## 创建帐户创建 Azure 存储帐户
+## <a name="create-account"></a>创建帐户创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 创建 Node.js 应用程序
+## <a name="create-app"> </a>创建 Node.js 应用程序
 
 创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][]、[Node.js 云服务][]（使用 Windows PowerShell）或[使用 WebMatrix 构建网站][]。
 
-## 配置应用程序以访问存储
+## <a name="configure-access"> </a>配置应用程序以访问存储
 
 若要使用 Azure 存储空间，你需要下载并使用 Node.js azure 包，
 其中包括一组便于与存储 REST 服务
@@ -74,7 +74,7 @@
 
     var azure = require('azure');
 
-## 设置 Azure 存储连接
+## <a name="setup-connection-string"> </a>设置 Azure 存储连接
 
 azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY 以获取连接到你的 Azure 存储帐户所需的信息。如果未设置这些环境变量，则在调用 **TableService** 时必须指定帐户信息。
 
@@ -82,7 +82,7 @@ azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_AC
 
 有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序][]。
 
-## 如何创建表
+## <a name="create-table"> </a>如何创建表
 
 以下代码将创建一个 **TableService** 对象并使用它
 创建新表。将以下内容添加到 **server.js** 顶部附近。
@@ -116,7 +116,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
     var retryOperations = new azure.ExponentialRetryPolicyFilter();
     var tableService = azure.createTableService().withFilter(retryOperations);
 
-## 如何向表中添加实体
+## <a name="add-entity"> </a>如何向表中添加实体
 
 若要添加实体，应先创建一个定义你的实体属性及其数据类型的
 对象。请注意，对于每个实体，你必须指定
@@ -141,7 +141,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-## 如何更新实体
+## <a name="update-entity"> </a>如何更新实体
 
 可使用多种方法来更新现有实体：
 
@@ -168,7 +168,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 对于 **updateEntity** 和 **mergeEntity**，如果待更新的实体不存在，则更新操作将失败。因此，如果你希望存储某个实体而不考虑它是否已存在，则应改用 **insertOrReplaceEntity** 或 **insertOrMergeEntity**。
 
-## 如何操作实体组
+## <a name="change-entities"> </a>如何操作实体组
 
 有时，有必要成批地同时提交多项操作以确保通过服务器进行原子处理。
 若要完成此操作，可以对 **TableService** 使用 **beginBatch** 方法，
@@ -218,11 +218,12 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
             }
         });
 
-**说明**
+<div class="dev-callout">
+<strong>说明</strong>
+<p>上面的示例使用“异步”模块以确保实体全都在调用\*\*commitBatch\*\*之前成功提交。</p>
+</div>
 
-上面的示例使用“异步”模块以确保实体全都在调用\*\*commitBatch\*\*之前成功提交。
-
-## 如何查询实体
+## <a name="query-for-entity"> </a>如何查询实体
 
 若要查询表中的实体，请使用 **queryEntity** 方法并
 传递 **PartitionKey** 和 **RowKey**。
@@ -236,7 +237,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
             }
         });
 
-## 如何查询实体集
+## <a name="query-set-entities"> </a>如何查询实体集
 
 若要查询表，请使用 **TableQuery** 对象通过一些子句构建查询表达式，
 这些子句有 **select**、**from**、**where**（包括
@@ -258,7 +259,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-## 如何查询实体属性子集
+## <a name="query-entity-properties"> </a>如何查询实体属性子集
 
 对表的查询可以只检索实体中的少数几个属性。此方法称为**“投影”，
 可减少带宽并提高查询性能，尤其适用于
@@ -283,7 +284,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-## 如何删除实体
+## <a name="delete-entity"> </a>如何删除实体
 
 可以使用实体的分区键和行键删除实体。在本例中，
 **task1** 对象包含要删除的实体的 **RowKey** 和
@@ -301,7 +302,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
             }
         });
 
-## 如何删除表
+## <a name="delete-table"> </a>如何删除表
 
 以下代码从存储帐户中删除一个表。
 
@@ -311,7 +312,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-## 后续步骤
+## <a name="next-steps"> </a>后续步骤
 
 现在，你已了解有关表存储的基础知识，可单击下面的链接来了解如何
 执行更复杂的存储任务。
@@ -338,11 +339,11 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
   [如何：删除表]: #delete-table
   [howto-table-storage]: ../includes/howto-table-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
-  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /zh-cn/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-  [Node.js 云服务]: /zh-cn/documentation/articles/cloud-services-nodejs-develop-deploy-app/
-  [使用 WebMatrix 构建网站]: /zh-cn/documentation/articles/web-sites-nodejs-use-webmatrix/
-  [使用存储构建 Node.js 云服务]: /zh-cn/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
-  [使用存储构建 Node.js Web 应用程序]: /zh-cn/documentation/articles/storage-nodejs-use-table-storage-web-site/
+  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+  [Node.js 云服务]: /en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/
+  [使用 WebMatrix 构建网站]: /en-us/documentation/articles/web-sites-nodejs-use-webmatrix/
+  [使用存储构建 Node.js 云服务]: /en-us/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
+  [使用存储构建 Node.js Web 应用程序]: /en-us/documentation/articles/storage-nodejs-use-table-storage-web-site/
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [访问 Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
   [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node

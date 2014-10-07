@@ -1,7 +1,6 @@
 <properties linkid="develop-python-blob-service" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Python) | Microsoft Azure" metaKeywords="Azure blob service Python, Azure blobs Python" description="Learn how to use the Azure Blob service to upload, list, download, and delete blobs." metaCanonical="" disqusComments="1" umbracoNaviHide="0" services="storage" documentationCenter="Python" title="How to use the Blob service from Python" authors="" videoId="" scriptId="" />
 
 # 如何从 Python 使用 Blob 存储服务
-
 本指南将演示如何使用 Azure Blob 存储服务执行常见方案。
 示例是用 Python API 编写的。
 涉及的任务包括**上载**、**列出**、
@@ -21,15 +20,16 @@
  [如何：上载和下载大型 Blob][]
  [后续步骤][]
 
-[WACOM.INCLUDE [howto-blob-storage][]]
+[WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-## 创建 Azure 存储帐户
+## a name="create-account"> </a>创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 如何：创建容器
+## <a name="create-container"> </a>如何：创建容器
 
 **注意：**如果你需要安装 Python 或客户端库，请参阅 [Python 安装指南][]。
+
 
 使用 **BlobService** 对象可以对容器和 Blob 进行操作。以下代码
 将创建一个 **BlobService** 对象。在你希望在其中以
@@ -56,7 +56,7 @@
 在执行此更改后，Internet 上的任何人都可以看到公共容器中的 Blob，
 但只有你可以修改或删除它们。
 
-## 如何：将 Blob 上载到容器
+## <a name="upload-blob"> </a>如何：将 Blob 上载到容器
 
 若要将文件上载到 Blob，请使用 **put\_blob** 方法
 来创建 Blob，将文件流用作 Blob 的内容。首先，
@@ -66,7 +66,7 @@
     myblob = open(r'task1.txt', 'r').read()
     blob_service.put_blob('mycontainer', 'myblob', myblob, x_ms_blob_type='BlockBlob')
 
-## 如何：列出容器中的 Blob
+## <a name="list-blob"> </a>如何：列出容器中的 Blob
 
 若要列出容器中的 Blob，可使用带 **for** 循环的
 **list\_blobs** 方法来显示容器中每个 Blob 的名称。以下
@@ -78,7 +78,7 @@
     print(blob.name)
     print(blob.url)
 
-## 如何：下载 Blob
+## <a name="download-blobs"> </a>如何：下载 Blob
 
 若要下载 Blob，请使用 **get\_blob** 方法将 Blob 内容
 传输到一个流对象，稍后可以将该对象永久保存到一个
@@ -88,13 +88,13 @@
     with open(r'out-task1.txt', 'w') as f:
     f.write(blob)
 
-## 如何：删除 Blob
+## <a name="delete-blobs"> </a>如何：删除 Blob
 
 最后，若要删除 Blob，请调用 **delete\_blob**。
 
     blob_service.delete_blob('mycontainer', 'myblob') 
 
-## 如何：上载和下载大型 Blob
+## <a name="large-blobs"> </a>如何：上载和下载大型 Blob
 
 块 Blob 的最大大小为 200 GB。对于小于 64 MB 的 Blob，可以通过调用一次 **put\_blob** 或 **get\_blob** 来上载或下载 Blob，如前所述。对于大于 64 MB 的 Blob，需要以 4 MB 或更小的块为单位上载或下载 Blob。
 
@@ -144,7 +144,7 @@
 
 如果你需要大于 200 GB 的 Blob，则可以使用页 Blob 而非块 Blob。页 Blob 的最大大小为 1 TB，其中的页与 512 字节页边界对齐。使用 **put\_blob** 可创建页 Blob，使用 **put\_page** 可向其中写入内容，而使用 **get\_blob** 可从中读取内容。
 
-## 后续步骤
+## <a name="next-steps"> </a>后续步骤
 
 现在，你已了解了有关 Blob 存储的基础知识，可单击下面的链接来了解
 如何执行更复杂的存储任务。

@@ -9,31 +9,31 @@
 有关队列的详细信息，请参阅
 [后续步骤][]部分。
 
-## 目录
+## <a name="Contents"> </a>目录
 
--   [什么是队列存储][]
--   [概念][]
--   [创建 Azure 存储帐户][]
--   [创建 Java 应用程序][]
--   [配置你的应用程序以访问队列存储][]
--   [设置 Azure 存储连接字符串][]
--   [如何：创建队列][]
--   [如何：向队列添加消息][]
--   [如何：查看下一条消息][]
--   [如何：取消对下一条消息的排队][]
--   [如何：更改已排队消息的内容][]
--   [用于对消息取消排队的其他方法][]
--   [如何：获取队列长度][]
--   [如何：删除队列][]
--   [后续步骤][]
+-   [什么是队列存储](#what-is)
+-   [概念](#Concepts)
+-   [创建 Azure 存储帐户](#CreateAccount)
+-   [创建 Java 应用程序](#CreateApplication)
+-   [配置你的应用程序以访问队列存储](#ConfigureStorage)
+-   [设置 Azure 存储连接字符串](#ConnectionString)
+-   [如何：创建队列](#create-queue)
+-   [如何：向队列添加消息](#add-message)
+-   [如何：查看下一条消息](#peek-message)
+-   [如何：取消对下一条消息的排队](#dequeue-message)
+-   [如何：更改已排队消息的内容](#change-message)
+-   [用于对消息取消排队的其他方法](#additional-options)
+-   [如何：获取队列长度](#get-queue-length)
+-   [如何：删除队列](#delete-queue)
+-   [后续步骤](#NextSteps)
 
-[WACOM.INCLUDE [howto-queue-storage][]]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
-## 创建 Azure 存储帐户
+<h2><a id="CreateAccount"></a>创建 Azure 存储帐户</h2>
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 创建 Java 应用程序
+## <a name="CreateApplication"> </a>创建 Java 应用程序
 
 在本指南中，你将使用存储功能，这些功能可在本地 Java 应用
 程序中运行，或在 Azure 的 Web 角色或辅助角色中通过运行的代码
@@ -46,7 +46,7 @@ Azure 存储帐户。你可以使用任何开发工具（包括“记事本”�
 创建应用程序。你只要能够编译 Java 项目并引用
 Azure Libraries for Java 即可。
 
-## 配置应用程序以访问队列存储
+## <a name="ConfigureStorage"> </a>配置应用程序以访问队列存储
 
 将下列 import 语句添加到需要在其中使用 Azure 存储 API 来
 访问队列的 Java 文件的顶部：
@@ -55,7 +55,7 @@ Azure Libraries for Java 即可。
     import com.microsoft.windowsazure.services.core.storage.*;
     import com.microsoft.windowsazure.services.queue.client.*;
 
-## 设置 Azure 存储连接字符串
+## <a name="ConnectionString"> </a>设置 Azure 存储连接字符串
 
 Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务
 的终结点和凭据。在客户端应用程序中运行时，
@@ -82,7 +82,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     String storageConnectionString = 
     RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 
-## 如何：创建队列
+## <a name="create-queue"> </a>如何：创建队列
 
 利用 CloudQueueClient 对象，可以获取队列的引用对象。
 以下代码将创建一个 CloudQueueClient 对象。
@@ -108,7 +108,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
     // 如果该队列不存在，则创建它
     queue.createIfNotExist();
 
-## 如何：向队列添加消息
+## <a name="add-message"> </a>如何：向队列添加消息
 
 若要将消息插入现有队列，请先创建一个新的
 CloudQueueMessage。紧接着，调用 addMessage 方法。可基于字符串（UTF-8 格式）
@@ -133,7 +133,7 @@ CloudQueueMessage。紧接着，调用 addMessage 方法。可基于字符串（
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
     queue.addMessage(message);
 
-## 如何：扫视下一条消息
+## <a name="peek-message"> </a>如何：扫视下一条消息
 
 通过调用 peekMessage，你可以扫视队列前面的消息，而不会从队列中
 删除它。
@@ -151,7 +151,7 @@ CloudQueueMessage。紧接着，调用 addMessage 方法。可基于字符串（
     // 扫视下一条消息
     CloudQueueMessage peekedMessage = queue.peekMessage();
 
-## 如何：取消对下一条消息的排队
+## <a name="dequeue-message"> </a>如何：取消对下一条消息的排队
 
 你的代码通过两个步骤来取消对队列中某条消息的排队。在调用
 retrieveMessage 时，你将获得队列中的下一条消息。对于
@@ -179,7 +179,7 @@ retrieveMessage 时，你将获得队列中的下一条消息。对于
     // 在不到 30 秒的时间内处理消息，然后删除消息。
     queue.deleteMessage(retrievedMessage);
 
-## 如何：更改已排队消息的内容
+## <a name="change-message"> </a>如何：更改已排队消息的内容
 
 你可以更改队列中现有消息的内容。如果消息
 表示工作任务，则可以使用此功能来更新该工作任务的状态。
@@ -213,7 +213,7 @@ retrieveMessage 时，你将获得队列中的下一条消息。对于
     EnumSet.of(MessageUpdateFields.CONTENT, MessageUpdateFields.VISIBILITY);
     queue.updateMessage(message, 60, updateFields, null, null);
 
-## 用于取消对消息进行排队的其他选项
+## <a name="additional-options"> </a>用于取消对消息进行排队的其他选项
 
 你可以通过两种方式自定义队列的消息检索。
 首先，你可以获取一批消息（最多 32 条）。其次，你可以
@@ -245,7 +245,7 @@ retrieveMessage 时，你将获得队列中的下一条消息。对于
     queue.deleteMessage(message);
     }
 
-## 如何：获取队列长度
+## <a name="get-queue-length"> </a>如何：获取队列长度
 
 你可以获取队列中消息的估计数。
 downloadAttributes 方法会询问队列服务
@@ -271,7 +271,7 @@ downloadAttributes 方法会询问队列服务
     // 检索新近缓存的近似消息计数
     long cachedMessageCount = queue.getApproximateMessageCount();
 
-## 如何：删除队列
+## <a name="delete-queue"> </a>如何：删除队列
 
 若要删除队列及其包含的所有消息，请对队列对象
 调用 delete 方法。
@@ -289,7 +289,7 @@ downloadAttributes 方法会询问队列服务
     // 删除队列
     queue.delete();
 
-## 后续步骤
+## <a name="NextSteps"> </a>后续步骤
 
 现在，你已了解有关队列存储的基础知识，可单击下面的链接来了解如何
 执行更复杂的存储任务。

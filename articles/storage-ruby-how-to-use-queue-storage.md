@@ -27,18 +27,18 @@
 -   [如何：删除队列][]
 -   [后续步骤][]
 
-[WACOM.INCLUDE [howto-queue-storage][]]
+[WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
-## 创建 Azure 存储帐户
+## <a id="CreateAccount"></a>创建 Azure 存储帐户
 
-[WACOM.INCLUDE [create-storage-account][]]
+[WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## 创建 Ruby 应用程序
+## <a id="create-a-ruby-application"></a>创建 Ruby 应用程序
 
 创建 Ruby 应用程序。有关说明，请参阅
 [在 Azure 上创建 Ruby 应用程序][]。
 
-## 配置应用程序以访问存储
+## <a id="configure-your-application-to-access-storage"></a>配置应用程序以访问存储
 
 要使用 Azure 存储空间，你需要下载和使用 Ruby azure 包，其中包括一组便于与存储 REST 服务进行通信的库。
 
@@ -70,7 +70,7 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 3.  单击导航窗格底部的**“管理密钥”**。
 4.  在弹出对话框中，你将会看到存储帐户名称、主访问密钥和辅助访问密钥。对于访问密钥，你可以选择主访问密钥，也可以选择辅助访问密钥。
 
-## 如何：创建队列
+## <a id="how-to-create-a-queue"></a>如何：创建队列
 
 以下代码将创建一个 **Azure::QueueService** 对象，你可以通过该对象来操作队列。
 
@@ -84,20 +84,20 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
     puts $!
     end
 
-## 如何：在队列中插入消息
+## <a id="how-to-insert-a-message-into-a-queue"></a>如何：在队列中插入消息
 
 若要在队列中插入消息，可使用 **create\_message()** 方法创建一条新消息并将其添加到队列中。
 
     azure_queue_service.create_message("test-queue", "test message")
 
-## 如何：扫视下一条消息
+## <a id="how-to-peek-at-the-next-message"></a>如何：扫视下一条消息
 
 通过调用 **peek\_messages()** 方法，你可以扫视队列前面的消息，而不会从队列中删除它。默认情况下，**peek\_messages()** 扫视单个消息。也可以指定要扫视的消息数。
 
     result = azure_queue_service.peek_messages("test-queue",
     {:number_of_messages => 10})
 
-## 如何：取消对下一条消息的排队
+## <a id="how-to-dequeue-the-next-message"></a>如何：取消对下一条消息的排队
 
 可通过两个步骤从队列中删除消息。
 
@@ -111,7 +111,7 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
     azure_queue_service.delete_message("test-queue", 
     messages[0].id, messages[0].pop_receipt)
 
-## 如何：更改已排队消息的内容
+## <a id="how-to-change-the-contents-of-a-queued-message"></a>如何：更改已排队消息的内容
 
 你可以更改队列中现有消息的内容。以下代码使用 **update\_message()** 方法来更新消息。该方法将返回一个元组，其中包含队列消息的 pop 接收方，以及一个 UTC 日期时间值，表示消息将在队列中可见的时间。
 
@@ -120,7 +120,7 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
     "test-queue", message.id, message.pop_receipt, "updated test message", 
       30)
 
-## 如何：用于对消息取消排队的其他方法
+## <a id="how-to-additional-options-for-dequeuing-messages"></a>如何：用于对消息取消排队的其他方法
 
 你可以通过两种方式自定义队列中的消息检索。
 
@@ -136,20 +136,20 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
     azure_queue_service.delete_message("test-queue", m.id, m.pop_receipt)
     end
 
-## 如何：获取队列长度
+## <a id="how-to-get-the-queue-length"></a>如何：获取队列长度
 
 你可以获取队列中消息数的估计值。**get\_queue\_metadata()** 方法要求队列服务返回有关队列的大概消息数和元数据。
 
     message_count, metadata = azure_queue_service.get_queue_metadata(
     "test-queue")
 
-## 如何：删除队列
+## <a id="how-to-delete-a-queue"></a>如何：删除队列
 
 若要删除队列及其包含的所有消息，请对队列对象调用 **delete\_queue()** 方法。
 
     azure_queue_service.delete_queue("test-queue")
 
-## 后续步骤
+## <a id="next-steps"></a>后续步骤
 
 现在，你已了解有关队列存储的基础知识，单击下面的链接可了解如何执行更复杂的存储任务。
 
