@@ -1,229 +1,225 @@
 <properties linkid="dev-nodejs-how-to-blob-storage" urlDisplayName="Blob Service" pageTitle="How to use blob storage (Node.js) | Microsoft Azure" metaKeywords="Get started Azure blob, Azure unstructured data, Azure unstructured storage, Azure blob, Azure blob storage, Azure blob Node.js" description="Learn how to use the Azure blob service to upload, download, list, and delete blob content. Samples written in Node.js." metaCanonical="" services="storage" documentationCenter="Node.js" title="How to Use the Blob Service from Node.js" authors="larryfr" solutions="" manager="" editor="" />
 
+# 如何从 Node.js 使用 Blob 服务
 
+本指南将演示如何使用 Azure Blob 服务执行常见方案。
+示例是用 Node.js API 编写的。
+涉及的任务包括**上载**、**列出**、
+**下载**和**删除** Blob。有关 Blob 的
+详细信息，请参阅[后续步骤][]部分。
 
+## 目录
 
-
-# How to Use the Blob Service from Node.js
-
-This guide will show you how to perform common scenarios using the
-Azure Blob service. The samples are written using the
-Node.js API. The scenarios covered include **uploading**, **listing**,
-**downloading**, and **deleting** blobs. For more information on blobs,
-see the [Next Steps][] section.
-
-## Table of Contents
-
-* [What is the Blob Service?][]    
-* [Concepts][]    
-* [Create an Azure Storage Account][]   
-* [Create a Node.js Application][]   
-* [Configure your Application to Access Storage][]   
-* [Setup an Azure Storage Connection String][]   
-* [How To: Create a Container][]   
-* [How To: Upload a Blob into a Container][]   
-* [How To: List the Blobs in a Container][]   
-* [How To: Download Blobs][]   
-* [How To: Delete a Blob][]   
-* [Next Steps][]
+-   [什么是 Blob 服务？][]
+-   [概念][]
+-   [创建 Azure 存储帐户][]
+-   [创建 Node.js 应用程序][]
+-   [配置应用程序以访问存储][]
+-   [设置 Azure 存储连接字符串][]
+-   [如何：创建容器][]
+-   [如何：将 Blob 上载到容器][]
+-   [如何：列出容器中的 Blob][]
+-   [如何：下载 Blob][]
+-   [如何：删除 Blob][]
+-   [后续步骤][]
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-##<a name="create-account"></a><span  class="short-header">Create an account</span>Create an Azure Storage account
+## <a name="create-account"></a>创建帐户创建 Azure 存储帐户
+
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-## <a name="create-app"> </a>Create a Node.js Application
+## <a name="create-app"> </a>创建 Node.js 应用程序
 
-Create a blank Node.js application. For instructions creating a Node.js application, see [Create and deploy a Node.js application to an Azure Web Site], [Node.js Cloud Service][Node.js Cloud Service] (using Windows PowerShell), or [Web Site with WebMatrix].
+创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][]、[Node.js 云服务][]（使用 Windows PowerShell）或[使用 WebMatrix 构建网站][]。
 
-## <a name="configure-access"> </a>Configure Your Application to Access Storage
+## <a name="configure-access"> </a>配置应用程序以访问存储
 
-To use Azure storage, you need to download and use the Node.js
-azure package, which includes a set of convenience libraries that
-communicate with the storage REST services.
+若要使用 Azure 存储空间，你需要下载并使用 Node.js azure 包，
+其中包括一组便于与存储 REST 服务
+进行通信的库。
 
-### Use Node Package Manager (NPM) to obtain the package
+### 使用 Node 包管理器 (NPM) 可获取该程序包
 
-1.  Use a command-line interface such as **PowerShell** (Windows,) **Terminal** (Mac,) or **Bash** (Unix), navigate to the folder where you created your sample application.
+1.  使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix) 等命令行界面导航到你在其中创建了示例应用程序的文件夹。
 
-2.  Type **npm install azure** in the command window, which should
-    result in the following output:
+2.  在命令窗口中键入 **npm install azure**，这应该产生
+    以下输出：
 
         azure@0.7.5 node_modules\azure
-		├── dateformat@1.0.2-1.2.3
-		├── xmlbuilder@0.4.2
-		├── node-uuid@1.2.0
-		├── mime@1.2.9
-		├── underscore@1.4.4
-		├── validator@1.1.1
-		├── tunnel@0.0.2
-		├── wns@0.5.3
-		├── xml2js@0.2.7 (sax@0.5.2)
-		└── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
+        ├── dateformat@1.0.2-1.2.3
+        ├── xmlbuilder@0.4.2
+        ├── node-uuid@1.2.0
+        ├── mime@1.2.9
+        ├── underscore@1.4.4
+        ├── validator@1.1.1
+        ├── tunnel@0.0.2
+        ├── wns@0.5.3
+        ├── xml2js@0.2.7 (sax@0.5.2)
+        └── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
 
-3.  You can manually run the **ls** command to verify that a
-    **node\_modules** folder was created. Inside that folder find the
-    **azure** package, which contains the libraries you need to access
-    storage.
+3.  可以手动运行 **ls** 命令来验证是否创建了
+    **node\_modules** 文件夹。在该文件夹中，你将找到
+    **azure** 包，其中包含你访问存储所需
+    的库。
 
-### Import the package
+### 导入包
 
-Using Notepad or another text editor, add the following to the top the
-**server.js** file of the application where you intend to use storage:
+使用记事本或其他文本编辑器将以下内容添加到你要在其中使用存储的
+应用程序的 **server.js** 文件的顶部：
 
     var azure = require('azure');
 
-## <a name="setup-connection-string"> </a>Setup an Azure Storage Connection
+## <a name="setup-connection-string"> </a>设置 Azure 存储连接
 
-The azure module will read the environment variables AZURE\_STORAGE\_ACCOUNT and AZURE\_STORAGE\_ACCESS\_KEY for information required to connect to your Azure storage account. If these environment variables are not set, you must specify the account information when calling **createBlobService**.
+azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY 以获取连接到你的 Azure 存储帐户所需的信息。如果未设置这些环境变量，则在调用 **createBlobService** 时必须指定帐户信息。
 
-For an example of setting the environment variables in a configuration file for an Azure Cloud Service, see [Node.js Cloud Service with Storage].
+有关在 Azure 云服务的配置文件中设置环境变量的示例，请参阅[使用存储构建 Node.js 云服务][]。
 
-For an example of setting the environment variables in the management portal for an Azure Web Site, see [Node.js Web Application with Storage]
+有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序][]。
 
-## <a name="create-container"> </a>How to: Create a Container
+## <a name="create-container"> </a>如何：创建容器
 
-The **BlobService** object lets you work with containers and blobs. The
-following code creates a **BlobService** object. Add the following near
-the top of **server.js**:
+使用 **BlobService** 对象可以对容器和 Blob 进行操作。以下代码
+将创建一个 **BlobService** 对象。将以下内容添加
+到 **server.js** 顶部附近：
 
     var blobService = azure.createBlobService();
 
-All blobs reside in a container. The call to
-**createContainerIfNotExists** on the **BlobService** object will return
-the specified container if it exists or create a new container with the
-specified name if it does not already exist. By default, the new
-container is private and requires the use of the access key to download blobs from this container.
+所有 Blob 都驻留在一个容器中。在
+**BlobService** 对象上调用 **createContainerIfNotExists** 将返回
+指定的容器（如果它存在），或创建具有指定名称的新容器
+（如果它尚不存在）。默认情况下，新容器是专用容器，
+需要使用访问密钥才能从该容器下载 Blob。
 
-	blobService.createContainerIfNotExists(containerName, function(error){
-    	if(!error){
-        	// Container exists and is private
-    	}
-	});
+    blobService.createContainerIfNotExists(containerName, function(error){
+    if(!error){
+    // 容器存在并且是专用的
+        }
+    });
 
-
-If you want to make the files in the container public so that they can be accessed without requiring the access key, you can set the
-container's access level to **blob** or **container**. Setting the access level to **blob** allows anonymous read access to blob content and metadata within this container, but not to container metadata such as listing all blobs within a container. Setting the access level to **container** allows anonymous read access to blob content and metadata as well as container metadata. The following example demonstrates setting the access level to **blob**: 
+如果你要让容器中的文件成为公共文件（这样用户不需要具有访问密钥便可访问这些文件），则可以将容器的访问级别设置为
+**“Blob”**或**“容器”**。将访问级别设置为“Blob” 后，可匿名读取此容器中的 Blob 内容和元数据，但无法匿名读取容器元数据（如列出容器中的所有 Blob）。将访问级别设置为“容器” 后，可匿名读取 Blob 内容和元数据，以及容器元数据。下面的示例演示了如何将访问级别设置为**“Blob”**：
 
     blobService.createContainerIfNotExists(containerName
-		, {publicAccessLevel : 'blob'}
-		, function(error){
-			if(!error){
-				// Container exists and is public
-			}
-		});
+    , {publicAccessLevel :'blob'}
+    , function(error){
+    if(!error){
+    // 容器存在并且是公共的
+            }
+        });
 
-Alternatively, you can modify the access level of a container by using **setContainerAcl** to specify the access level. The following example changes the access level to container:
+另外，你可以通过使用 **setContainerAcl** 指定访问级别来修改容器的访问级别。下面的示例将访问级别更改为“容器”：
 
     blobService.setContainerAcl(containerName
-		, 'container'
-		, function(error){
-			if(!error){
-				// Container access level set to 'container'
-			}
-		});
+    , 'container'
+    , function(error){
+    if(!error){
+    // 容器访问级别设置为“容器”
+            }
+        });
 
-###Filters
+### 筛选器
 
-Optional filtering operations can be applied to operations performed using **BlobService**. Filtering operations can include logging, automatically retrying, etc. Filters are objects that implement a method with the signature:
+可以向使用 **BlobService** 执行的操作应用可选的筛选操作。筛选操作可以包括日志记录、自动重试等。筛选器是实现了具有签名的方法的对象：
 
-		function handle (requestOptions, next)
+        function handle (requestOptions, next)
 
-After doing its preprocessing on the request options, the method needs to call "next" passing a callback with the following signature:
+在对请求选项执行预处理后，该方法需要调用“next”并且传递具有以下签名的回调：
 
-		function (returnObject, finalCallback, next)
+        function (returnObject, finalCallback, next)
 
-In this callback, and after processing the returnObject (the response from the request to the server), the callback needs to either invoke next if it exists to continue processing other filters or simply invoke finalCallback otherwise to end up the service invocation.
+在此回调中并且在处理 returnObject（来自对服务器请求的响应）后，回调需要调用 next（如果它存在以便继续处理其他筛选器）或只调用 finalCallback 以便结束服务调用。
 
-Two filters that implement retry logic are included with the Azure SDK for Node.js, **ExponentialRetryPolicyFilter** and **LinearRetryPolicyFilter**. The following creates a **BlobService** object that uses the **ExponentialRetryPolicyFilter**:
+Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。下面的代码将创建一个 **BlobService** 对象，该对象使用 **ExponentialRetryPolicyFilter**：
 
-	var retryOperations = new azure.ExponentialRetryPolicyFilter();
-	var blobService = azure.createBlobService().withFilter(retryOperations);
+    var retryOperations = new azure.ExponentialRetryPolicyFilter();
+    var blobService = azure.createBlobService().withFilter(retryOperations);
 
-## <a name="upload-blob"> </a>How to: Upload a Blob into a Container
+## <a name="upload-blob"> </a>如何：将 Blob 上载到容器
 
-To upload data to a blob, use the **createBlockBlobFromFile**, **createBlockBlobFromStream** or **createBlockBlobFromText** methods. **createBlockBlobFromFile** uploads the contents of a file, while **createBlockBlobFromStream** uploads the contents of a stream.  **createBlockBlobFromText** uploads the specified text value.
+若要将数据上载到 Blob，请使用 **createBlockBlobFromFile**、**createBlockBlobFromStream** 或 **createBlockBlobFromText** 方法。**createBlockBlobFromFile** 上载文件的内容，而 **createBlockBlobFromStream** 上载流的内容。**createBlockBlobFromText** 上载指定文本值。
 
-The following example uploads the contents of the **test1.txt** file into the 'test1' blob.
+下面的示例将 **test1.txt** 文件的内容上载到“test1”Blob。
 
-	blobService.createBlockBlobFromFile(containerName
-		, 'test1'
-		, 'test1.txt'
-		, function(error){
-			if(!error){
-				// File has been uploaded
-			}
-		});
+    blobService.createBlockBlobFromFile(containerName
+    , 'test1'
+    , 'test1.txt'
+    , function(error){
+    if(!error){
+    // 文件已上载
+            }
+        });
 
-## <a name="list-blob"> </a>How to: List the Blobs in a Container
+## <a name="list-blob"> </a>如何：列出容器中的 Blob
 
-To list the blobs in a container, use the **listBlobs** method with a
-**for** loop to display the name of each blob in the container. The
-following code outputs the **name** of each blob in a container to the
-console.
+若要列出容器中的 Blob，可使用带 **for** 循环的
+**listBlobs** 方法来显示容器中每个 Blob 的名称。以下
+代码将容器中每个 Blob 的**名称**输出到
+控制台。
 
     blobService.listBlobs(containerName, function(error, blobs){
-		if(!error){
-			for(var index in blobs){
-				console.log(blobs[index].name);
-			}
-		}
-	});
+    if(!error){
+    for(var index in blobs){
+    console.log(blobs[index].name);
+            }
+        }
+    });
 
-## <a name="download-blobs"> </a>How to: Download Blobs
+## <a name="download-blobs"> </a>如何：下载 Blob
 
-To download data from a blob, use **getBlobToFile**, **getBlobToStream**, or **getBlobToText**. The following example demonstrates using **getBlobToStream** to download the contents of the **test1** blob and store it to the **output.txt** file using a stream:
+若要从 Blob 下载数据，可使用 **getBlobToFile**、**getBlobToStream** 或 **getBlobToText**。以下示例演示了如何使用 **getBlobToStream** 下载 **test1** Blob 的内容，并使用一个流将其存储到 **output.txt** 文件：
 
     var fs=require('fs');
-	blobService.getBlobToStream(containerName
-		, 'test1'
-		, fs.createWriteStream('output.txt')
-		, function(error){
-			if(!error){
-				// Wrote blob to stream
-			}
-		});
+    blobService.getBlobToStream(containerName
+    , 'test1'
+    , fs.createWriteStream('output.txt')
+    , function(error){
+    if(!error){
+    // 已将 Blob 写入到流
+            }
+        });
 
-## <a name="delete-blobs"> </a>How to: Delete a Blob
+## <a name="delete-blobs"> </a>如何：删除 Blob
 
-Finally, to delete a blob, call **deleteBlob**. The following example deletes the blob named 'blob1'.
+最后，若要删除 Blob，请调用 **deleteBlob**。下面的示例将删除名为“blob1”的 Blob。
 
     blobService.deleteBlob(containerName
-		, 'blob1'
-		, function(error){
-			if(!error){
-				// Blob has been deleted
-			}
-		});
+    , 'blob1'
+    , function(error){
+    if(!error){
+    // Blob 已删除
+            }
+        });
 
-## <a name="next-steps"> </a>Next Steps
+## <a name="next-steps"> </a>后续步骤
 
-Now that you've learned the basics of blob storage, follow these links
-to learn how to do more complex storage tasks.
+现在，你已了解有关 Blob 存储的基础知识，可单击下面的链接来了解
+如何执行更复杂的存储任务。
 
--   See the MSDN Reference: [Storing and Accessing Data in Azure][].
--   Visit the [Azure Storage Team Blog][].
--   Visit the [Azure SDK for Node] repository on GitHub.
+-   查看 MSDN 参考：[在 Azure 中存储和访问数据][]。
+-   访问 [Azure 存储空间团队博客][]。
+-   访问 GitHub 上的 [Azure SDK for Node][] 存储库。
 
+  [后续步骤]: #next-steps
+  [什么是 Blob 服务？]: #what-is
+  [概念]: #concepts
+  [创建 Azure 存储帐户]: #create-account
+  [创建 Node.js 应用程序]: #create-app
+  [配置应用程序以访问存储]: #configure-access
+  [设置 Azure 存储连接字符串]: #setup-connection-string
+  [如何：创建容器]: #create-container
+  [如何：将 Blob 上载到容器]: #upload-blob
+  [如何：列出容器中的 Blob]: #list-blob
+  [如何：下载 Blob]: #download-blobs
+  [如何：删除 Blob]: #delete-blobs
+  [howto-blob-storage]: ../includes/howto-blob-storage.md
+  [create-storage-account]: ../includes/create-storage-account.md
+  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
+  [Node.js 云服务]: /en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/
+  [使用 WebMatrix 构建网站]: /en-us/documentation/articles/web-sites-nodejs-use-webmatrix/
+  [使用存储构建 Node.js 云服务]: /en-us/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
+  [使用存储构建 Node.js Web 应用程序]: /en-us/documentation/articles/storage-nodejs-use-table-storage-web-site/
+  [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
+  [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
   [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
-  [Next Steps]: #next-steps
-  [What is the Blob Service?]: #what-is
-  [Concepts]: #concepts
-  [Create an Azure Storage Account]: #create-account
-  [Create a Node.js Application]: #create-app
-  [Configure your Application to Access Storage]: #configure-access
-  [Setup an Azure Storage Connection String]: #setup-connection-string
-  [How To: Create a Container]: #create-container
-  [How To: Upload a Blob into a Container]: #upload-blob
-  [How To: List the Blobs in a Container]: #list-blob
-  [How To: Download Blobs]: #download-blobs
-  [How To: Delete a Blob]: #delete-blobs
-[Create and deploy a Node.js application to an Azure Web Site]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
-  [Node.js Cloud Service with Storage]: /en-us/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
-  [Node.js Web Application with Storage]: /en-us/documentation/articles/storage-nodejs-use-table-storage-web-site/
- [Web Site with WebMatrix]: /en-us/documentation/articles/web-sites-nodejs-use-webmatrix/
-  [using the REST API]: http://msdn.microsoft.com/zh-cn/library/azure/hh264518.aspx
-  [Azure Management Portal]: http://manage.windowsazure.cn
-  [Node.js Cloud Service]: /en-us/documentation/articles/cloud-services-nodejs-develop-deploy-app/
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/

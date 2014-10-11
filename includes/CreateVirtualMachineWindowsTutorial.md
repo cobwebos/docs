@@ -34,7 +34,7 @@ This section will show you how to use the **From Gallery** method in the Managem
 
 	![Configure the properties of the virtual machine](./media/CreateVirtualMachineWindowsTutorial/vmconfiguration.png)
 
-	>[WACN.NOTE]**New User Name** refers to the administrative account that will be used to manage the server. You will need to create your own unique password for this account.
+	>[WACOM.NOTE]**New User Name** refers to the administrative account that will be used to manage the server. You will need to create your own unique password for this account.
 
 6. The third configuration screen lets you specify attributes for **resources connected to the virtual machine** such as the cloud service and the storage account. For this tutorial, fill in the fields as shown in the image below. Once this screen is complete, click the arrow to continue. 
 
@@ -44,14 +44,14 @@ This section will show you how to use the **From Gallery** method in the Managem
  
 	For **Region/Affinity Group/Virtual Network**, we will use East US, but you can use a region that is more appropriate to your location. You can also choose to specify a virtual network instead.
  
-	>[WACN.NOTE]If you want a virtual machine to use a virtual network, you must specify the virtual network when you create the virtual machine. For more information, see [Azure Virtual Network Overview](http://go.microsoft.com/fwlink/p/?LinkID=294063).
+	>[WACOM.NOTE]If you want a virtual machine to use a virtual network, you must specify the virtual network when you create the virtual machine. For more information, see [Azure Virtual Network Overview](http://go.microsoft.com/fwlink/p/?LinkID=294063).
 
 7. The fourth configuration screen lets you configure the **VM Agent and endpoints**. For this tutorial, do not make any changes to this screen. Click the check mark to create the virtual machine.
 
 
 	![Configure VM Agent and the endpoints of the virtual machine](./media/CreateVirtualMachineWindowsTutorial/endpointconfiguration.png)
 
-	>[WACN.NOTE] The VM agent provides the environment for you to install extensions that can help you interact with the virtual machine. For details, see [Using Extensions](http://msdn.microsoft.com/zh-cn/library/dn606311.aspx). For details about configuring endpoints, see [How to Set Up Endpoints to a Virtual Machine](http://azure.microsoft.com/zh-cn/documentation/articles/virtual-machines-set-up-endpoints/).
+	>[WACOM.NOTE] The VM agent provides the environment for you to install extensions that can help you interact with the virtual machine. For details, see [Using Extensions](http://msdn.microsoft.com/zh-cn/library/dn606311.aspx). For details about configuring endpoints, see [How to Set Up Endpoints to a Virtual Machine](http://azure.microsoft.com/zh-cn/documentation/articles/virtual-machines-set-up-endpoints/).
     
 8. After the virtual machine is created, the Management Portal lists the new virtual machine under **Virtual Machines**. The corresponding cloud service and storage account are also created under their respective sections. Both the virtual machine and cloud service are started automatically and will show **Running** as their status once the creation is complete. 
 
@@ -109,7 +109,7 @@ This section will show you how to attach an empty data disk to the virtual machi
 
 	![Specify the size of the empty disk](./media/CreateVirtualMachineWindowsTutorial/emptydisksize.png)	
 	
-	>[WACN.NOTE] All disks are created from a VHD file in Windows Azure storage. Under **File Name**, you can provide the name for the VHD file that is added to storage, but Azure generates the name of the disk automatically.
+	>[WACOM.NOTE] All disks are created from a VHD file in Windows Azure storage. Under **File Name**, you can provide the name for the VHD file that is added to storage, but Azure generates the name of the disk automatically.
 
 6. Return to the dashboard to verify that the empty data disk was successfully attached to the virtual machine. It will be listed as a second disk in the **Disks** list along with the OS Disk.
 

@@ -41,7 +41,7 @@ WASB 语法为：
 
     wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/<路径>/<文件名>
 
-> [WACN.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
+> [WACOM.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
 
 > WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
 
@@ -77,7 +77,7 @@ WASB 语法为：
 
 有关详细信息，请参阅 [HDInsight：Hive 内部表和外部表简介][cindygross-hive-tables]。
 
-> [WACN.NOTE] HiveQL 语句之一可创建 Hive 外部表。Hive 外部表将数据文件保留在原始位置。Hive 内部表将数据文件移到 hive\\warehouse。Hive 外部表要求数据文件位于默认文件系统 WASB 容器中。如果你选择将航班数据文件存储在默认 Blob 容器以外的容器中，则必须使用 Hive 内部表。
+> [WACOM.NOTE] HiveQL 语句之一可创建 Hive 外部表。Hive 外部表将数据文件保留在原始位置。Hive 内部表将数据文件移到 hive\\warehouse。Hive 外部表要求数据文件位于默认文件系统 WASB 容器中。如果你选择将航班数据文件存储在默认 Blob 容器以外的容器中，则必须使用 Hive 内部表。
 
 **下载航班数据**
 

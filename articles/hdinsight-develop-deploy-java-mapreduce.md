@@ -154,7 +154,7 @@ HDInsight Emulator 附带了 *javac* 编译器。
 
 本教程使用位于 %hadoop\_home% 目录中的 .txt 文件作为数据文件。
 
-> [WACN.NOTE] Hadoop HDFS 命令区分大小写。
+> [WACOM.NOTE] Hadoop HDFS 命令区分大小写。
 
 **将数据文件复制到模拟器 HDFS**
 

@@ -37,7 +37,7 @@
 
         npm install -g azure-cli
 
-    > [WACN.NOTE] 如果收到“未找到 NPM 命令”的错误消息，请验证以下路径是否在 PATH 环境变量中：*C:\\Program Files (x86)\\nodejs;C:\\Users[username]\\AppData\\Roaming\\npm* 或 *C:\\Program Files\\nodejs;C:\\Users[username]\\AppData\\Roaming\\npm*
+    > [WACOM.NOTE] 如果收到“未找到 NPM 命令”的错误消息，请验证以下路径是否在 PATH 环境变量中：*C:\\Program Files (x86)\\nodejs;C:\\Users[username]\\AppData\\Roaming\\npm* 或 *C:\\Program Files\\nodejs;C:\\Users[username]\\AppData\\Roaming\\npm*
 
 5.  运行以下命令以验证安装：
 
@@ -59,7 +59,7 @@
 
 在使用命令行界面前，你必须配置工作站和 Azure 之间的连接。命令行界面使用你的 Azure 订阅信息连接到你的帐户。可从 Azure 的 publishsettings 文件中获取此信息。然后，可以导入 publishsettings 文件作为永久性本地配置设置，命令行界面会将此设置用于后续操作。你只需导入你的 publishsettings 一次。
 
-> [WACN.NOTE] publishsettings 文件包含敏感信息。建议你删除该文件或采取其他措施来加密包含该文件的用户文件夹。在 Windows 上，修改文件夹属性或使用 BitLocker。
+> [WACOM.NOTE] publishsettings 文件包含敏感信息。建议你删除该文件或采取其他措施来加密包含该文件的用户文件夹。在 Windows 上，修改文件夹属性或使用 BitLocker。
 
 **下载和导入 publishsettings**
 
@@ -88,7 +88,7 @@ HDInsight 使用 Azure Blob 存储容器作为默认文件系统。你需要先�
 
     azure account storage create [options] <StorageAccountName>
 
-> [WACN.NOTE] 存储帐户必须共置于同一数据中心。目前，只能在以下数据中心内设置 HDInsight 群集：
+> [WACOM.NOTE] 存储帐户必须共置于同一数据中心。目前，只能在以下数据中心内设置 HDInsight 群集：
 
 > -   亚洲东南部
 > -   欧洲北部
