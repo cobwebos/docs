@@ -13,32 +13,24 @@ HBase 是一种低延迟的 NoSQL 数据库，可用于对大数据进行联机�
 -   如何创建要映射到现有 HBase 表的 Hive 表，并使用 HiveQL 来查询 HBase 表中的数据。
 -   如何使用 .NET SDK 创建新的 HBase 表、列出帐户中的 HBase 表，以及在表中添加和检索行。
 
-
 ## 本教程的内容
+
 -   [在 Azure 门户中设置 HBase 群集][]
 -   [从 HBase shell 创建 HBase 示例表][]
 -   [使用 Hive 查询 HBase 表][]
 -   [使用 HBase C# API 创建一个 HBase 表并从该表中检索数据][]
 -   [摘要][]
 -   [后续步骤][]
+
 ## <a name="create-hbase-cluster"></a>在 Azure 门户中设置 HBase 群集
+
 本部分介绍如何使用 Azure 门户设置 HBase 群集。
-注意:
 
-
-The steps in this article create an HDInsight cluster using basic configuration settings. For information on other cluster configuration settings, such as using Azure Virtual Network or a metastore for Hive and Oozie, see Provision an HDInsight cluster.
+注意：
+本文中的步骤是使用基本配置设置来创建 HDInsight 群集。有关其他群集配置设置的信息（例如，使用 Azure 虚拟网络或者 Hive 和 Oozie 的元存储），请参阅“设置 HDInsight 群集”。
 [WACOM.INCLUDE [provisioningnote][]]
 
-
-
-
-
-**在 Azure 门户中配置 HDInsight 群集**
-
-
-
-
-
+**在 Azure 门户中设置 HDInsight 群集**
 
 1.  登录到 [Azure 管理门户][]。
 
@@ -200,10 +192,6 @@ HBase 是构建于 Hadoop 上的 Apache 开源 NoSQL 数据库，用于为大量
 
 <!--- [azure-member-offers]: http://azure.microsoft.com/en-us/pricing/member-offers/ --->
 
-  [HDInsight 提供的 Hadoop 群集版本有哪些新功能？]: ../hdinsight-component-versioning/
-  [购买选项]: http://www.windowsazure.cn/pricing/overview/
-  [免费试用]: http://www.windowsazure.cn/pricing/1rmb-trial/
-  [如何创建存储帐户]: http://www.windowsazure.cn/zh-cn/manage/services/storage/how-to-create-a-storage-account/ 
   [在 Azure 门户中设置 HBase 群集]: #create-hbase-cluster
   [从 HBase shell 创建 HBase 示例表]: #create-sample-table
   [使用 Hive 查询 HBase 表]: #hive-query
