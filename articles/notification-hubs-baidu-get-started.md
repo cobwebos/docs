@@ -31,7 +31,7 @@
 
 1.  转到[百度门户][]并单击“登录”链接。单击“立即注册”以启动新帐户注册过程。
 
-    ![][]
+    ![][0]
 
 2.  输入所需的详细信息（电话/电子邮件地址、密码和验证码），然后单击“注册”。
 
@@ -453,7 +453,7 @@ import com.baidu.android.pushservice.PushConstants;
   [将你的应用程序连接到通知中心]: #connecting-app
   [向应用程序发送通知]: #send
   [百度门户]: http://www.baidu.com/
-  []: ./media/notification-hubs-baidu-get-started/BaiduRegistration.png
+  [0]: ./media/notification-hubs-baidu-get-started/BaiduRegistration.png
   [1]: ./media/notification-hubs-baidu-get-started/BaiduRegistrationInput.png
   [2]: ./media/notification-hubs-baidu-get-started/BaiduConfirmation.png
   [3]: ./media/notification-hubs-baidu-get-started/BaiduActivationEmail.png
