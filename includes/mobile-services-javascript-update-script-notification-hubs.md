@@ -2,7 +2,7 @@
 
 1.  单击“TodoItem” ，再单击“脚本”并选择“插入”。 
 
-    ![][]
+    ![][0]
 
 2.  将 insert 函数替换为以下代码，然后单击“保存”： 
 
@@ -31,4 +31,4 @@
 
     插入成功后，此插入脚本会向所有 Windows 应用商店应用程序注册发送推送通知（包含插入项的文本）。
 
-  []: ./media/mobile-services-javascript-update-script-notification-hubs/mobile-insert-script-push2.png
+  [0]: ./media/mobile-services-javascript-update-script-notification-hubs/mobile-insert-script-push2.png

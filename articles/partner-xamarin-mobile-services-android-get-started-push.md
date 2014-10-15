@@ -233,7 +233,7 @@
   [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-android
   [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
   [Google API]: http://go.microsoft.com/fwlink/p/?LinkId=268303
-  []: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-developers.png
+  [0]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-developers.png
   [1]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-create-server.png
   [2]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-create-server2.png
   [3]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-create-server3.png

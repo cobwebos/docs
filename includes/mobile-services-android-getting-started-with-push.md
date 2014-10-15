@@ -44,7 +44,7 @@
 
 9.  在“名称”中， 键入 `MyHandler`，在“超类”中 ，键入 `com.microsoft.windowsazure.notifications.NotificationsHandler`，然后单击“完成” 
 
-    ![][]
+    ![][0]
 
     这样可创建新的 MyHandler 类。
 
@@ -110,4 +110,4 @@
 
 你的应用程序现已更新，可支持推送通知。
 
-  []: ./media/mobile-services-android-get-started-push/mobile-services-android-create-class.png
+  [0]: ./media/mobile-services-android-get-started-push/mobile-services-android-create-class.png

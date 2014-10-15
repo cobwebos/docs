@@ -181,7 +181,7 @@
   [使用通知中心发送突发新闻]: /en-us/manage/services/notification-hubs/breaking-news-ios
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
   [操作指南：Service Bus 通知中心（iOS 应用程序）]: http://msdn.microsoft.com/zh-cn/library/jj927168.aspx
-  []: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized1.png
+  [0]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized1.png
   [1]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized2.png
   [notification-hubs-localized-back-end]: ../includes/notification-hubs-localized-back-end.md
   [使用通知中心通知用户：ASP.NET]: /en-us/manage/services/notification-hubs/notify-users-aspnet

@@ -1,6 +1,6 @@
 1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
 
-    ![][]
+    ![][0]
 
 2.  单击“API” 选项卡，然后单击“创建自定义 API” 。
 
@@ -42,7 +42,7 @@
 接下来，你将修改快速启动应用程序，以添加新按钮和用于异步调用新的自定义 API 的代码。
 
   [Azure 管理门户]: https://manage.windowsazure.cn/
-  []: ./media/mobile-services-create-custom-api/mobile-services-selection.png
+  [0]: ./media/mobile-services-create-custom-api/mobile-services-selection.png
   [1]: ./media/mobile-services-create-custom-api/mobile-custom-api-create.png
   [2]: ./media/mobile-services-create-custom-api/mobile-custom-api-create-dialog2.png
   [3]: ./media/mobile-services-create-custom-api/mobile-custom-api-select2.png

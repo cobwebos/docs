@@ -6,7 +6,7 @@
 
 2.  按 "F5" 键可重新生成项目，并在本地启动移动服务。
 
-    ![][]
+    ![][0]
 
     移动服务成功启动之后，将显示一个网页。
 
@@ -18,4 +18,4 @@
 
     这样可向本地移动服务发送 POST 请求。来自请求的数据被插入到 TodoItem 表。移动服务返回存储在表中的项，数据显示在应用程序的第二列中。
 
-  []: ./media/mobile-services-dotnet-backend-test-local-service-dotnet/mobile-service-startup.png
+  [0]: ./media/mobile-services-dotnet-backend-test-local-service-dotnet/mobile-service-startup.png

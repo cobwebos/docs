@@ -170,7 +170,7 @@ Visual Studio 2010 探查器不支持在模拟器中检测 Azure 二进制文件
   [步骤 4：进行更改并比较性能]: #step4
   [故障排除]: #troubleshooting
   [后续步骤]: #nextSteps
-  []: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
+  [0]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
   [1]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
   [2]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
   [3]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

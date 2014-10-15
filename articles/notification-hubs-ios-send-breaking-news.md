@@ -245,7 +245,7 @@
   [通知中心入门]: /en-us/manage/services/notification-hubs/get-started-notification-hubs-ios/
 
 <!-- Images. -->
-  []: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
+  [0]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
   [1]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios3.png
   [notification-hubs-back-end]: ../includes/notification-hubs-back-end.md
   [2]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios1.png

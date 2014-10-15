@@ -59,6 +59,6 @@ Azure 预览版门户提供了对你的网站环境的控制台访问。你可�
 <!-- Images. -->
 
   [门户]: https://portal.azure.com
-  []: ./media/web-sites-streaming-logs-and-console/browse-sites.png
+  [0]: ./media/web-sites-streaming-logs-and-console/browse-sites.png
   [1]: ./media/web-sites-streaming-logs-and-console/streaming-logs.png
   [2]: ./media/web-sites-streaming-logs-and-console/console.png

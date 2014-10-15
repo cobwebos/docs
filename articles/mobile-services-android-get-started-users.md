@@ -173,7 +173,7 @@
   [Azure Active Directory]: /zh-cn/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
 
 <!-- Images. -->
-  []: ./media/mobile-services-android-get-started-users/mobile-services-selection.png
+  [0]: ./media/mobile-services-android-get-started-users/mobile-services-selection.png
   [1]: ./media/mobile-services-android-get-started-users/mobile-service-uri.png
 
   [2]: ./media/mobile-services-android-get-started-users/mobile-identity-tab.png

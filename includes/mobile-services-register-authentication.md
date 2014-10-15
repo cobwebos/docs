@@ -2,7 +2,7 @@
 
 1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的移动服务 。
 
-    ![][]
+    ![][0]
 
 2.  单击“仪表板”选项卡， 并记下“移动服务 URL”值。 
 
@@ -32,7 +32,7 @@
     你的移动服务和应用程序现已配置为使用你选择的身份验证提供者。
 
   [Azure 管理门户]: https://manage.windowsazure.cn/
-  []: ./media/mobile-services-register-authentication/mobile-services-selection.png
+  [0]: ./media/mobile-services-register-authentication/mobile-services-selection.png
   [1]: ./media/mobile-services-register-authentication/mobile-service-uri.png
   [Microsoft 帐户]: /zh-cn/documentation/articles/mobile-services-how-to-register-microsoft-authentication/
   [Facebook 登录]: /zh-cn/documentation/articles/mobile-services-how-to-register-facebook-authentication/

@@ -5,7 +5,7 @@
 
 1.  在 Visual Studio 的解决方案资源管理器中，在项目下展开“属性”。 然后打开 WMAppManifest.xml 文件，并通过在“功能” 选项卡上单击“ID\_CAP\_ISV\_CAMERA”来启用相机。 关闭文件以保存你的更改。
 
-    ![][]
+    ![][0]
 
     这样可以确保你的应用程序能够使用连接到计算机的相机。应用程序第一次运行时，将请求用户允许对相机进行访问。
 
@@ -179,7 +179,7 @@
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started
   [CameraCaptureTask]: http://msdn.microsoft.com/en-us/library/windowsphone/develop/microsoft.phone.tasks.cameracapturetask(v=vs.105).aspx
   [PhotoCamera]: http://msdn.microsoft.com/en-us/library/windowsphone/develop/microsoft.devices.photocamera(v=vs.105).aspx
-  []: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-WMAppmanifest-wp8.png
+  [0]: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-WMAppmanifest-wp8.png
   [1]: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-wp8.png
   [2]: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-camera-wp8.png
   [3]: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-camera-accept-wp8.png

@@ -125,7 +125,7 @@
   [管理门户]: https://manage.windowsazure.cn/
 
 <!-- Images. -->
-  []: ./media/store-new-relic-mobile-services-monitor/mobile-configure-tab.png
+  [0]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-tab.png
   [1]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-new-relic-monitoring.png
   [2]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-new-relic-monitoring-custom.png
   [3]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-new-relic-monitoring-complete.png

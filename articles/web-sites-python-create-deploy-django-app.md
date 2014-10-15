@@ -131,7 +131,7 @@
   [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   []: http://azure.microsoft.com/zh-cn/develop/python/
   [msysgit]: http://code.google.com/p/msysgit/
-  []: ./media/web-sites-python-create-deploy-django-app/django-ws-003.png
+  [0]: ./media/web-sites-python-create-deploy-django-app/django-ws-003.png
   [1]: ./media/web-sites-python-create-deploy-django-app/django-ws-004.png
   [2]: ./media/web-sites-python-create-deploy-django-app/django-ws-005.png
   [3]: ./media/web-sites-python-create-deploy-django-app/django-ws-006.png

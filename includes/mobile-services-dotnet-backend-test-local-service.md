@@ -4,8 +4,8 @@
 
 2.  按 "F5" 键可重新生成项目，并在本地启动移动服务。
 
-    ![][]
+    ![][0]
 
     移动服务成功启动之后，将显示一个网页。
 
-  []: ./media/mobile-services-dotnet-backend-test-local-service/mobile-service-startup.png
+  [0]: ./media/mobile-services-dotnet-backend-test-local-service/mobile-service-startup.png

@@ -5,7 +5,7 @@
 
 1.  导航到 [Google Cloud Console][] 网站，使用你的 Google 帐户凭据登录，然后单击“创建项目” 。
 
-    ![][]
+    ![][0]
 
 	<div class="dev-callout"><b>说明</b>
 
@@ -38,7 +38,7 @@
 
   [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
   [Google Cloud Console]: http://cloud.google.com/console
-  []: ./media/notification-hubs-android-get-started/mobile-services-google-new-project.png
+  [0]: ./media/notification-hubs-android-get-started/mobile-services-google-new-project.png
   [1]: ./media/notification-hubs-android-get-started/mobile-services-google-enable-GCM.png
   [2]: ./media/notification-hubs-android-get-started/mobile-services-google-create-server-key.png
   [3]: ./media/notification-hubs-android-get-started/mobile-services-google-create-server-key2.png

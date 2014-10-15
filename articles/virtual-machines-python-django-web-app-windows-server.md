@@ -123,7 +123,7 @@
   [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [此处]: /en-us/manage/windows/tutorials/virtual-machine-from-gallery/
   [添加终结点]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-addendpoint.png
-  []: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-port80.png
+  [0]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-port80.png
   [安装指南]: ../python-how-to-install/
   [IIS config1]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-iis1.png
   [codeplex]: http://go.microsoft.com/fwlink/?LinkID=316392&clcid=0x409

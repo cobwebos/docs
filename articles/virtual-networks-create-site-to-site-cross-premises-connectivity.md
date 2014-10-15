@@ -257,7 +257,7 @@
   [启动网关并为网络管理员收集信息]: #StartGateway
   [配置 VPN 设备]: #ConfigVPN
   [Azure 管理门户]: http://manage.windowsazure.com/
-  []: ./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_01_OpenVirtualNetworkWizard.png
+  [0]: ./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_01_OpenVirtualNetworkWizard.png
   [使用管理门户配置虚拟网络]: http://go.microsoft.com/fwlink/?LinkID=248092
   [1]: ./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_02_VirtualNetworkDetails.png
   [2]: ./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVNet_03_DNSServersandVPNConnectivity.png

@@ -175,7 +175,7 @@
 
   [Django Hello World Web 应用程序]: http://www.windowsazure.cn/zh-cn/develop/python/tutorials/web-app-with-django/
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  []: ./media/storage-python-use-table-storage-web-app/web-app-with-storage-Finaloutput-mac.png
+  [0]: ./media/storage-python-use-table-storage-web-app/web-app-with-storage-Finaloutput-mac.png
   [create-account-note]: ../includes/create-account-note.md
   [Python 安装指南]: http://windowsazure.com/en-us/documentation/articles/python-how-to-install
   [create-storage-account]: ../includes/create-storage-account.md

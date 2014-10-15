@@ -97,8 +97,8 @@
 
 4.  单击“Complete All”（完成全部）按钮。
 
-    ![][]
+    ![][0]
 
     此时会显示一个消息框，指示标记为完成的多个项，并再次执行筛选查询，将所有项从列表中清除。
 
-  []: ./media/mobile-services-android-call-custom-api/mobile-custom-api-android-completed.png
+  [0]: ./media/mobile-services-android-call-custom-api/mobile-custom-api-android-completed.png

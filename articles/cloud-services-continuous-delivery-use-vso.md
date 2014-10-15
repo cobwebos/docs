@@ -282,7 +282,7 @@ Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的�
   [步骤 4：做出更改并触发重新生成和重新部署。]: #step4
   [步骤 5：重新部署以前的生成（可选）]: #step5
   [步骤 6：更改生产部署（仅限云服务）]: #step6
-  []: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
+  [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
   [1]: ./media/cloud-services-continuous-delivery-use-vso/tfs36.PNG
   [https://\<accountname\>.visualstudio.com]: https://<accountname>.visualstudio.com
   [2]: ./media/cloud-services-continuous-delivery-use-vso/tfs37.PNG

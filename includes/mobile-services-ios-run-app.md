@@ -2,7 +2,7 @@
 
 1.  浏览到你保存压缩项目文件的位置，在计算机上展开文件，并使用 Xcode 打开项目文件。
 
-    ![][]
+    ![][0]
 
 2.  按“运行” 按钮以生成项目，并在 iPhone 模拟器中启动应用程序，这是此项目的默认设置。
 
@@ -14,5 +14,5 @@
 
     > [WACOM.NOTE] 你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 TodoService.m 文件中。
     >
-  []: ./media/mobile-services-ios-run-app/mobile-xcode-project.png
+  [0]: ./media/mobile-services-ios-run-app/mobile-xcode-project.png
   [1]: ./media/mobile-services-ios-run-app/mobile-quickstart-startup-ios.png

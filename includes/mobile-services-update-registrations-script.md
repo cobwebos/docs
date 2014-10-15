@@ -1,6 +1,6 @@
 1.  在管理门户中，单击“数据”选项卡， 然后单击 "Registrations" 表。
 
-    ![][]
+    ![][0]
 
 2.  在 "Registrations" 中，单击“脚本” 选项卡，然后选择“插入” 。
 
@@ -26,5 +26,5 @@
 
 这样可以注册一个新的插入脚本，该脚本将注册信息存储在新表中。
 
-  []: ./media/mobile-services-update-registrations-script/mobile-portal-data-tables-registrations.png
+  [0]: ./media/mobile-services-update-registrations-script/mobile-portal-data-tables-registrations.png
   [1]: ./media/mobile-services-update-registrations-script/mobile-insert-script-registrations.png

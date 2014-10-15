@@ -150,7 +150,7 @@
   [从模板创建网站]: ./media/web-sites-dotnet-using-webmatrix/webmatrix-site-from-template-details.png
   [在 Azure 中创建网站]: ./media/web-sites-dotnet-using-webmatrix/webmatrix-site-from-template-azure.png
   [WebMatrix IDE]: ./media/web-sites-dotnet-using-webmatrix/howtowebmatrixide.png
-  []: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-1.png
+  [0]: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-1.png
   [1]: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-2.png
   [2]: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-3.png
   [3]: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-4.png

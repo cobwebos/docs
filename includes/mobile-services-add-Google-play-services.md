@@ -2,7 +2,7 @@
 
 2.  向下滚动到“附加程序” ，将其展开，然后选择“Google Play 服务”， 如下所示。单击“安装包” 。记下 SDK 路径，以备在下面的步骤中使用。重新启动 Eclipse。
 
-    ![][]
+    ![][0]
 
 3.  在你的项目中安装 Google Play 服务 SDK。在 Eclipse 中，单击“文件” ，然后单击“导入” 。选择“Android” ，然后选择“现有 Android 代码到工作区” ，然后单击“下一步” 。单击“浏览” ，导航到 Android SDK 路径（通常在名为 `adt-bundle-windows-x86_64` 的文件夹中），然后转至 `\extras\google\google_play_services\libproject` 子文件夹，选择 google-play-services-lib 文件夹，再单击“确定” 。选中“将项目复制到工作区” 复选框，然后单击“完成” 。
 
@@ -22,6 +22,6 @@
 
 9.  单击“应用” ，然后单击“确定”。 
 
-  []: ./media/notification-hubs-android-get-started/notification-hub-create-android-app4.png
+  [0]: ./media/notification-hubs-android-get-started/notification-hub-create-android-app4.png
   [1]: ./media/mobile-services-android-get-started-push/mobile-eclipse-import-Play-library.png
   [2]: ./media/mobile-services-android-get-started-push/mobile-google-set-project-properties.png

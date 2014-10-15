@@ -29,7 +29,7 @@
 
 </div>
 
-![][]
+![][0]
 
 完成本教程需要你安装 [Android 开发人员工具][]，其中包含 Eclipse 集成开发环境 (IDE)、Android 开发人员工具 (ADT) 插件和最新的 Android 平台。需要使用 Android 4.2 或更高版本。
 
@@ -140,7 +140,7 @@
   [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Support-in-Windows-Azure-Mobile-Services
 
 <!-- Images. -->
-  []: ./media/mobile-services-android-get-started/mobile-quickstart-completed-android.png
+  [0]: ./media/mobile-services-android-get-started/mobile-quickstart-completed-android.png
   [Android 开发人员工具]: https://go.microsoft.com/fwLink/p/?LinkID=280125
   [Azure 免费试用]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28
   [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md

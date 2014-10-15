@@ -95,7 +95,7 @@
   [JavaScript 后端]: /en-us/documentation/articles/mobile-services-android-authorize-users-in-scripts/ "JavaScript 后端"
   [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-android
   [Azure 管理门户]: https://manage.windowsazure.cn/
-  []: ./media/mobile-services-android-authorize-users-in-scripts/mobile-services-selection.png
+  [0]: ./media/mobile-services-android-authorize-users-in-scripts/mobile-services-selection.png
   [1]: ./media/mobile-services-android-authorize-users-in-scripts/mobile-portal-data-tables.png
   [2]: ./media/mobile-services-android-authorize-users-in-scripts/mobile-insert-script-users.png
   [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-android

@@ -331,7 +331,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
   [Azure 免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
 
 <!-- Images. -->
-  []: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step5.png
+  [0]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step5.png
   [1]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step6.png
   [2]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step7.png
   [iOS 设置门户]: http://go.microsoft.com/fwlink/p/?LinkId=272456

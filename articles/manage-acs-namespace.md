@@ -452,7 +452,7 @@ WS 联合身份验证标识提供程序证书可通过其元数据获得。在�
   [IdentityProviderKey]: http://msdn.microsoft.com/zh-cn/library/hh124084.aspx
   [ACS 错误代码]: http://msdn.microsoft.com/zh-cn/library/gg185949.aspx
   [代码示例：管理服务]: http://msdn.microsoft.com/zh-cn/library/gg185970.aspx
-  []: ./media/manage-acs-namespace/ACS1.png
+  [0]: ./media/manage-acs-namespace/ACS1.png
   [1]: ./media/manage-acs-namespace/ACS2.png
   [2]: ./media/manage-acs-namespace/ACS3.png
   [3]: ./media/manage-acs-namespace/ACS4.png

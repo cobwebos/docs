@@ -115,7 +115,7 @@ SendGrid 是一项[基于云的电子邮件服务][]，该服务提供了可靠�
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
 <!-- Images. -->
-  []: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-portal-data-tables.png
+  [0]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-portal-data-tables.png
   [1]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-insert-script-push2.png
   [2]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-quickstart-push1.png
   [3]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-receive-email.png

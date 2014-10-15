@@ -211,6 +211,6 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [后续步骤]: #next-steps
   [create-account-note]: ../includes/create-account-note.md
   [howto-service-bus-queues]: ../includes/howto-service-bus-queues.md
-  []: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
+  [0]: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
   [队列、主题和订阅。]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh367516.aspx
   [Service Bus 中转消息传送 .NET教程]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh367512.aspx

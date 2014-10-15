@@ -4,7 +4,7 @@
 
 2.  在管理门户中，依次单击“存储” 、存储帐户和“管理密钥” 。
 
-    ![][]
+    ![][0]
 
 3.  记下"存储帐户名称"和"访问密钥"。
 
@@ -89,7 +89,7 @@
 接下来，你将更新快速启动应用程序，通过使用在发生插入时生成的 SAS，添加图像上载功能。
 
   [如何创建存储帐户]: /en-us/manage/services/storage/how-to-create-a-storage-account
-  []: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account.png
+  [0]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account.png
   [1]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account-keys.png
   [2]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-app-settings.png
   [应用程序设置]: http://msdn.microsoft.com/en-us/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7

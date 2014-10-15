@@ -48,7 +48,7 @@ Web 宿主计划表示一组可在你的网站间共享的功能和容量。Web 
 <!-- Images. -->
 
   [转到此处]: http://azure.microsoft.com/zh-cn/pricing/details/web-sites/
-  []: ./media/web-sites-web-hosting-plan-overview/browse-everything.png
+  [0]: ./media/web-sites-web-hosting-plan-overview/browse-everything.png
   [1]: ./media/web-sites-web-hosting-plan-overview/browse-web-hosting-plans.png
   [2]: ./media/web-sites-web-hosting-plan-overview/web-hosting-plan-resource-map.png
   [详细了解如何管理 Web 宿主计划]: http://azure.microsoft.com/zh-cn/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/

@@ -256,7 +256,7 @@
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
 <!-- Images. --> 
-  []: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
+  [0]: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
   [1]: ./media/mobile-services-android-get-started-push/mobile-push-tab-android.png
   [添加 Play Services]: ../includes/mobile-services-add-Google-play-services.md
   [设置 Google Play Services SDK]: http://go.microsoft.com/fwlink/?LinkId=389801

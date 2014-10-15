@@ -261,7 +261,7 @@
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
 
 <!-- Images. -->
-  []: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-submit-win8-app.png
+  [0]: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-submit-win8-app.png
   [1]: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-win8-app-name.png
   [2]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-win8-app.png
   [3]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-win8-app.png

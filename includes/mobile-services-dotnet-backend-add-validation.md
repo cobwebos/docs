@@ -4,7 +4,7 @@
 
 2.  在“解决方案资源管理器”窗口中，展开 Todo 列表服务项目并展开“控制器”。 打开 TodoItemController.cs 文件，它是移动服务项目的一部分。
 
-    ![][]
+    ![][0]
 
 3.  使用以下方法替换 `PostTodoItem` 方法，该方法将确认文本字符串不大于 10 个字符。对于文本长度大于 10 个字符的项，该方法将返回 HTTP 状态码“400 - 错误请求”，其内容包括描述性消息。
 
@@ -33,6 +33,6 @@
 
   [入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/
   [数据处理入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-
-  []: ./media/mobile-services-dotnet-backend-add-validation/mobile-services-open-todoitemcontroller.png
+  [0]: ./media/mobile-services-dotnet-backend-add-validation/mobile-services-open-todoitemcontroller.png
   [1]: ./media/mobile-services-dotnet-backend-add-validation/mobile-services-build-dotnet-service.png
   [2]: ./media/mobile-services-dotnet-backend-add-validation/mobile-services-publish-dotnet-service.png

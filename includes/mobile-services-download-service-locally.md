@@ -1,6 +1,6 @@
 1.  在 [Azure 管理门户][]中，单击新建的移动服务或者其云图标选项卡，以转到概述页。
 
-    ![][]
+    ![][0]
 
 2.  单击“Android” 平台。在“入门”部分下， ，展开“创建新的 Android 应用程序” 。
 
@@ -19,7 +19,7 @@
     ![][2]
 
   [Azure 管理门户]: https://manage.windowsazure.cn/
-  []: ./media/mobile-services-dotnet-backend-android-get-started-data/mobile-portal-quickstart-android.png
+  [0]: ./media/mobile-services-dotnet-backend-android-get-started-data/mobile-portal-quickstart-android.png
   [1]: ./media/mobile-services-dotnet-backend-android-get-started-data/download-service-project.png
   [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=391934
   [2]: ./media/mobile-services-dotnet-backend-android-get-started-data/download-publish-profile.png

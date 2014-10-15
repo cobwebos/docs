@@ -89,6 +89,6 @@
 
 4.  点击“全部”按钮。 此时会显示一个警报框，指示标记为完成的项的数量，并再次执行筛选查询，将所有项从列表中清除。
 
-    ![][]
+    ![][0]
 
-  []: ./media/mobile-services-ios-call-custom-api/mobile-custom-api-ios-completed.png
+  [0]: ./media/mobile-services-ios-call-custom-api/mobile-custom-api-ios-completed.png

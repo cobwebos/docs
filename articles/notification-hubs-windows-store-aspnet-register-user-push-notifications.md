@@ -178,5 +178,5 @@
   [使用通知中心通知用户]: /en-us/manage/services/notification-hubs/notify-users-aspnet
 
 <!-- Images. --> 
-  []: ./media/notification-hubs-windows-store-aspnet-register-user-push-notifications/notification-hub-add-nuget-package-json.png
+  [0]: ./media/notification-hubs-windows-store-aspnet-register-user-push-notifications/notification-hub-add-nuget-package-json.png
   [1]: ./media/notification-hubs-windows-store-aspnet-register-user-push-notifications/notification-hub-create-aspnet-class.png

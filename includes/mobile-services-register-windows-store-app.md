@@ -1,6 +1,6 @@
 1.  如果尚未注册应用程序，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用程序”页][]，用 Microsoft 帐户登录，然后单击“应用程序名称” 。
 
-    ![][]
+    ![][0]
 
 2.  在“应用程序名称” 中为应用程序键入一个名称，单击“保留应用程序名称” ，然后单击“保存”。 
 
@@ -55,7 +55,7 @@
 你现在可以使用 Microsoft 帐户，通过向移动服务提供“标识”选项卡中的客户端 ID 和客户端密钥值，在你的应用程序中进行身份验证。 
 
   [“提交应用程序”页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-  []: ./media/mobile-services-register-windows-store-app/mobile-services-submit-win8-app.png
+  [0]: ./media/mobile-services-register-windows-store-app/mobile-services-submit-win8-app.png
   [1]: ./media/mobile-services-register-windows-store-app/mobile-services-win8-app-name.png
   [移动服务入门]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
   [2]: ./media/mobile-services-register-windows-store-app/mobile-services-store-association.png

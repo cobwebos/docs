@@ -6,7 +6,7 @@
 
 2.  导航到 [Twitter 开发人员][]网站，使用你的 Twitter 帐户凭据登录，导航到“我的应用程序” ，并选择你的 Twitter 应用程序。
 
-    ![][]
+    ![][0]
 
 3.  在应用程序的“详细信息”选项卡中 ，记下以下值：
 
@@ -34,7 +34,7 @@
 
   [注册应用程序以便在移动服务中进行 Twitter 登录]: /zh-cn/documentation/articles/mobile-services-how-to-register-twitter-authentication/
   [Twitter 开发人员]: http://go.microsoft.com/fwlink/p/?LinkId=268300
-  []: ./media/mobile-services-register-twitter-access/mobile-twitter-my-apps.png
+  [0]: ./media/mobile-services-register-twitter-access/mobile-twitter-my-apps.png
   [1]: ./media/mobile-services-register-twitter-access/mobile-twitter-app-secrets.png
   [Windows Azure 管理门户]: https://manage.windowsazure.com/
   [2]: ./media/mobile-services-register-twitter-access/mobile-identity-tab-twitter-only.png

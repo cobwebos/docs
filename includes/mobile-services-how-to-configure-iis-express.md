@@ -1,6 +1,6 @@
 1.  如果移动服务当前在 IS Express 中运行，请务必停止移动服务。右键单击 IIS Express 托盘图标，然后单击移动服务的“停止”。 
 
-    ![][]
+    ![][0]
 
 2.  在命令提示符窗口中，运行 "ipconfig" 命令，以查找你的工作站的有效本地 IP 地址。
 
@@ -32,6 +32,6 @@
 
     > [WACOM.NOTE] 在本地完成服务测试之后，应该删除你创建的 Windows 防火墙规则。
 
-  []: ./media/mobile-services-how-to-configure-iis-express/iis-express-tray-stop-site.png
+  [0]: ./media/mobile-services-how-to-configure-iis-express/iis-express-tray-stop-site.png
   [1]: ./media/mobile-services-how-to-configure-iis-express/ipconfig.png
   [如何添加新的 Windows 防火墙端口规则]: http://go.microsoft.com/fwlink/?LinkId=392240

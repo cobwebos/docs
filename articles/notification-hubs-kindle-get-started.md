@@ -411,7 +411,7 @@
   [此处]: http://go.microsoft.com/fwlink/?LinkId=389797
   [1]: https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment
   [开发人员门户]: https://developer.amazon.com/home.html
-  []: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal1.png
+  [0]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal1.png
   [2]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal2.png
   [3]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal3.png
   [4]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal4.png

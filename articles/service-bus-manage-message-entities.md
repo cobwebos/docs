@@ -108,7 +108,7 @@ Azure 网站上的 [.NET 开发人员中心][]。
   [如何：删除 Service Bus 实体]: #delete
   [如何：禁用或启用 Service Bus 实体]: #disableenable
   [其他资源]: #seealso
-  []: ./media/service-bus-manage-message-entities/QueueQuickCreate.png
+  [0]: ./media/service-bus-manage-message-entities/QueueQuickCreate.png
   [Service Bus 文档]: http://www.windowsazure.cn/zh-cn/develop/net/how-to-guides/service-bus-relay/
   [1]: ./media/service-bus-manage-message-entities/AddQueue1.png
   [2]: ./media/service-bus-manage-message-entities/ConfigureQueue.png

@@ -4,7 +4,7 @@
 
 2.  在导航窗格的底部，单击“+新建” 。
 
-    ![][]
+    ![][0]
 
 3.  展开“计算”和“移动服务” ，然后单击“创建”。 
 
@@ -36,7 +36,7 @@
 你现在已经创建了你的移动应用程序可以使用的新移动服务。
 
   [管理门户]: https://manage.windowsazure.cn/
-  []: ./media/mobile-services-create-new-service/plus-new.png
+  [0]: ./media/mobile-services-create-new-service/plus-new.png
   [1]: ./media/mobile-services-create-new-service/mobile-create.png
   [2]: ./media/mobile-services-create-new-service/mobile-create-page1.png
   [3]: ./media/mobile-services-create-new-service/mobile-create-page2.png

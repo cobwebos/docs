@@ -4,7 +4,7 @@
 
 2.  展开“Azure 移动服务” 并单击“Azure 移动服务自定义控制器” ，然后单击“添加”， 提供 `CompleteAllController` 的“控制器名称” ，然后再次单击“添加”。 
 
-    ![][]
+    ![][0]
 
     这样将创建新的名为 "CompleteAllController" 的空控制器类。
 
@@ -47,5 +47,5 @@
 
 接下来，你将修改快速启动应用程序，以添加新按钮和用于异步调用新的自定义 API 的代码。
 
-  []: ./media/mobile-services-dotnet-backend-create-custom-api/add-custom-api-controller.png
+  [0]: ./media/mobile-services-dotnet-backend-create-custom-api/add-custom-api-controller.png
   [数据库类]: http://msdn.microsoft.com/en-us/library/system.data.entity.database.aspx

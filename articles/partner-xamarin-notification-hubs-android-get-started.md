@@ -429,7 +429,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
   [针对 Android 的通知中心操作指南]: http://msdn.microsoft.com/zh-cn/library/dn282661.aspx
 
 <!-- Images. -->
-  []: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-developers.png
+  [0]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-developers.png
   [2]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server.png
   [3]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server2.png
   [4]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server3.png

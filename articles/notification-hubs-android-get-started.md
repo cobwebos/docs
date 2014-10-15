@@ -334,7 +334,7 @@
 
 <!-- Images. --> 
 
-  []: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal.png
+  [0]: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal.png
   [1]: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal2.png
   [2]: ./media/notification-hubs-android-get-started/notification-hub-select-from-portal.png
   [3]: ./media/notification-hubs-android-get-started/notification-hub-select-from-portal2.png

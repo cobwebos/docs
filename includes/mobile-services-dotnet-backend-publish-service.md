@@ -2,7 +2,7 @@
 
 1.  在“解决方案资源管理器”中，右键单击移动服务项目并单击“发布” 
 
-    ![][]
+    ![][0]
 
     这样可以显示“发布 Web”对话框。
 
@@ -23,6 +23,6 @@
 
     发布成功之后，你将在 Azure 中再次看到确认页，它可以确认移动服务正常运行。
 
-  []: ./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish.png
+  [0]: ./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish.png
   [1]: ./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish-import-profile.png
   [2]: ./media/mobile-services-dotnet-backend-publish-service/mobile-quickstart-publish-2.png

@@ -117,7 +117,7 @@
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
 <!-- Images. -->
-  []: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-services-selection.png
+  [0]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-services-selection.png
   [1]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-custom-api-select.png
   [2]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-portal-data-tables.png
   [3]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-insert-script-push2.png

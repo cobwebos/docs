@@ -43,7 +43,7 @@
 
 11. 单击“仪表板”选项卡并记下“站点 URL”中的值，然后单击“管理密钥”并记下“应用程序密钥”中的值 。
 
-    ![][]
+    ![][0]
 
     从应用程序代码访问移动服务时，你需要使用这些值。
 
@@ -125,4 +125,4 @@
     这将查询移动服务，并返回未标记为“完成”的所有项目。这些项目将添加到用于绑定的适配器。
 
   [移动服务 Android SDK]: http://go.microsoft.com/fwlink/p/?LinkID=280126
-  []: ./media/download-android-sample-code/mobile-dashboard-tab.png
+  [0]: ./media/download-android-sample-code/mobile-dashboard-tab.png

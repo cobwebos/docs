@@ -43,5 +43,5 @@
 ![][1]
 
   [Azure 管理门户]: http://manage.windowsazure.cn
-  []: ./media/service-bus-monitor-message-entities/QueueDashboard.png
+  [0]: ./media/service-bus-monitor-message-entities/QueueDashboard.png
   [1]: ./media/service-bus-monitor-message-entities/AddMetrics.png

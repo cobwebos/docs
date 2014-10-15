@@ -234,6 +234,6 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
   [notification-hubs-back-end]: ../includes/notification-hubs-back-end.md
 
 <!-- Images. -->
-  []: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-breakingnews.png
+  [0]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-breakingnews.png
   [1]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-registration.png
   [2]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-toast.png

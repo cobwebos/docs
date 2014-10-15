@@ -167,7 +167,7 @@
   [步骤 5：使用 HTTPS 连接到角色实例]: #step5
   [Azure PowerShell 图标]: ./media/cloud-services-nodejs-configure-ssl-certificate/azure-powershell-start.png
   [install-dev-tools]: ../includes/install-dev-tools.md
-  []: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-01.png
+  [0]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-01.png
   [1]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-02.png
   [2]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-03.png
   [如何对 Node.js 使用 Azure PowerShell]: https://www.windowsazure.com/zh-cn/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings

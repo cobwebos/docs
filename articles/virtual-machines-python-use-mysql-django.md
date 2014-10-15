@@ -235,7 +235,7 @@
   [Django Hello World]: http://windowsazure.com/en-us/documentation/articles/virtual-machines-python-django-web-app-windows-server
   [MySQL 网站]: http://dev.mysql.com/doc/
   [MySQL 驱动程序]: http://pypi.python.org/pypi/MySQL-python/1.2.3
-  []: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01.png
+  [0]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01.png
   [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [此处]: /en-us/manage/windows/tutorials/virtual-machine-from-gallery/
   [MySQL Community Server]: http://dev.mysql.com/downloads/mysql/

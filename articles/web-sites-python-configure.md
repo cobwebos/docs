@@ -130,7 +130,7 @@ WSGI 是 [PEP 3333][] 描述的 Python 标准，用于定义 Web 服务器和 Py
   []: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-python-create-deploy-django-app/
   [PEP 3333]: http://www.python.org/dev/peps/pep-3333/
   [1]: http://www.windowsazure.cn/zh-cn/manage/services/web-sites/how-to-create-websites/
-  []: ./media/web-sites-python-configure/configure-python-create-website.png
+  [0]: ./media/web-sites-python-configure/configure-python-create-website.png
   [2]: ./media/web-sites-python-configure/configure-python-git.png
   [3]: ./media/web-sites-python-configure/configure-python-handler-mapping.png
   [4]: ./media/web-sites-python-configure/configure-python-app-settings.png

@@ -1,6 +1,6 @@
 1.  如果尚未注册应用程序，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用程序”页][]，用 Microsoft 帐户登录，然后单击“应用程序名称” 。
 
-    ![][]
+    ![][0]
 
 2.  在“应用程序名称” 中为应用程序键入一个名称，单击“保留应用程序名称” ，然后单击“保存”。 
 
@@ -63,7 +63,7 @@
     > [WACOM.NOTE] 如果你在门户中的“推送”选项卡上 为增强的推送通知设置了 WNS 凭据，则这些凭据与通知中心共享，用于配置应用程序的通知中心。
 
   [“提交应用程序”页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-  []: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-services-submit-win8-app.png
+  [0]: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-services-submit-win8-app.png
   [1]: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-services-win8-app-name.png
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started/
   [2]: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-services-store-association.png

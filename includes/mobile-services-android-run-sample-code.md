@@ -1,6 +1,6 @@
 1.  在“包资源管理器”中，展开 "GetStartedWithData"、"src" 和 ".com.example.GetStartedWithData"，然后检查 ToDoActivity.java 文件。
 
-    ![][]
+    ![][0]
 
     注意，有一些 `//TODO` 注释指定了将此应用程序用于你的移动服务时必须执行的步骤。
 
@@ -19,5 +19,5 @@
 
     请注意，保存的文本将存储在内存中的集合中，并显示在下面的列表中。
 
-  []: ./media/download-android-sample-code/mobile-eclipse-project.png
+  [0]: ./media/download-android-sample-code/mobile-eclipse-project.png
   [1]: ./media/download-android-sample-code/mobile-quickstart-startup-android.png

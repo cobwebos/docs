@@ -3,7 +3,7 @@
 
 1.  在 Visual Studio 2012 中，打开 Package.appxmanifest 文件，并在“功能”选项卡中启用 “网络摄像机” 和“麦克风” 功能。
 
-    ![][]
+    ![][0]
 
     这样可以确保你的应用程序能够使用连接到计算机的相机。应用程序第一次运行时，将请求用户允许对相机进行访问。
 
@@ -144,7 +144,7 @@
 
     > [WACOM.NOTE] 当新项的 `imageUri` 属性绑定到 "Image" 控件时，图像将从 Blob 存储服务自动下载。
 
-  []: ./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-app-manifest-camera.png
+  [0]: ./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-app-manifest-camera.png
   [1]: ./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-quickstart-blob-appbar.png
   [2]: ./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-quickstart-blob-camera.png
   [3]: ./media/mobile-services-windows-store-dotnet-upload-to-blob-storage/mobile-quickstart-blob-appbar2.png
