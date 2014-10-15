@@ -39,7 +39,7 @@
 
 ## <a name="create-new-service"> </a>创建新的移动服务
 
-[WACOM.INCLUDE [mobile-services-create-new-service][]]
+[WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
 ## 
 
@@ -143,7 +143,6 @@
   [0]: ./media/mobile-services-android-get-started/mobile-quickstart-completed-android.png
   [Android 开发人员工具]: https://go.microsoft.com/fwLink/p/?LinkID=280125
   [Azure 免费试用]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28
-  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
   [1]: ./media/mobile-services-android-get-started/mobile-portal-quickstart-android.png
   [2]: ./media/mobile-services-android-get-started/mobile-quickstart-steps-android.png
   [3]: ./media/mobile-services-android-get-started/mobile-services-import-android-workspace.png
