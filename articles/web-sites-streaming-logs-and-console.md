@@ -30,7 +30,7 @@ Trace 类驻留在 System.Diagnostics 命名空间中。
 
 ### 如何启用和查看流式传输日志
 
-诊断是基于每个网站来启用的。从[门户][]中，单击左菜单栏上的“浏览”按钮，然后单击“网站”以获取你所有网站的列表。
+诊断是基于每个网站来启用的。从[门户][门户]中，单击左菜单栏上的“浏览”按钮，然后单击“网站”以获取你所有网站的列表。
 
 ![][]
 
@@ -59,6 +59,6 @@ Azure 预览版门户提供了对你的网站环境的控制台访问。你可�
 <!-- Images. -->
 
   [门户]: https://portal.azure.com
-  [0]: ./media/web-sites-streaming-logs-and-console/browse-sites.png
+  []: ./media/web-sites-streaming-logs-and-console/browse-sites.png
   [1]: ./media/web-sites-streaming-logs-and-console/streaming-logs.png
   [2]: ./media/web-sites-streaming-logs-and-console/console.png

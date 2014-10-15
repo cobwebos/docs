@@ -16,33 +16,33 @@
 
 下面是已完成应用程序的屏幕快照：
 
-![显示 Listing Posts 的浏览器窗口][]
+![显示 Listing Posts 的浏览器窗口][显示 Listing Posts 的浏览器窗口]
 
 ## 本文内容
 
--   [设置开发环境][]
+-   [设置开发环境][设置开发环境]
 
--   [创建 Rails 应用程序][]
+-   [创建 Rails 应用程序][创建 Rails 应用程序]
 
--   [测试应用程序][]
+-   [测试应用程序][测试应用程序]
 
--   [创建 Azure 虚拟机][]
+-   [创建 Azure 虚拟机][创建 Azure 虚拟机]
 
--   [将应用程序复制到虚拟机][]
+-   [将应用程序复制到虚拟机][将应用程序复制到虚拟机]
 
--   [安装 gem 并启动应用程序][]
+-   [安装 gem 并启动应用程序][安装 gem 并启动应用程序]
 
--   [后续步骤][]
+-   [后续步骤][后续步骤]
 
 ## <span id="setup"></span></a>设置开发环境
 
 1.  在开发环境中安装 Ruby。具体步骤因操作系统而异。
 
-    -   **Apple OS X** - 有多个适用于 OS X 的 Ruby 版本。本教程通过使用 [Homebrew][] 安装 **rbenv** 和 **ruby-build** 在 OS X 上进行了验证。可在 [][]<https://github.com/sstephenson/rbenv/></a> 中找到安装信息。
+    -   **Apple OS X** - 有多个适用于 OS X 的 Ruby 版本。本教程通过使用 [Homebrew][Homebrew] 安装 **rbenv** 和 **ruby-build** 在 OS X 上进行了验证。可在 [][]<https://github.com/sstephenson/rbenv/></a> 中找到安装信息。
 
     -   **Linux** - 使用版本程序包管理系统。本教程使用 ruby1.9.1 和 ruby1.9.1-dev 程序包在 Ubuntu 12.10 上进行了验证。
 
-    -   **Windows** - 有多个适用于 Windows 的 Ruby 版本。本教程使用 [RailsInstaller][] 1.9.3-p392 进行了验证。
+    -   **Windows** - 有多个适用于 Windows 的 Ruby 版本。本教程使用 [RailsInstaller][RailsInstaller] 1.9.3-p392 进行了验证。
 
 2.  打开一个新命令行或终端会话并输入以下命令以安装 Ruby on Rails：
 
@@ -62,7 +62,7 @@
 
 3.  你还必须安装 JavaScript 解释程序，Rails 将使用它来编译你的 Rails 应用程序使用的 CoffeeScript 资产。[][1]<https://github.com/sstephenson/execjs#readme></a> 中提供了支持的解释程序列表。
 
-    在验证本教程时，使用了 [Node.js][]，因为它适用于 OS X、Linux 和 Windows 操作系统。
+    在验证本教程时，使用了 [Node.js][Node.js]，因为它适用于 OS X、Linux 和 Windows 操作系统。
 
 ## <span id="create"></span></a>创建 Rails 应用程序
 
@@ -87,7 +87,7 @@
 
         rake db:migrate
 
-    这将对 Rails 使用默认数据库提供程序，即 [SQLite3 数据库][]。虽然你可能希望对生产应用程序使用不同的数据库，但 SQLite 对于本教程而言已足够。
+    这将对 Rails 使用默认数据库提供程序，即 [SQLite3 数据库][SQLite3 数据库]。虽然你可能希望对生产应用程序使用不同的数据库，但 SQLite 对于本教程而言已足够。
 
 ## <span id="test"></span></a>测试应用程序
 
@@ -109,17 +109,17 @@
 
 2.  打开浏览器并导航到 <http://localhost:3000/>。你应看到与下图类似的页面：
 
-    ![默认 rails 页面][]
+    ![默认 rails 页面][默认 rails 页面]
 
     该页面是一个静态欢迎页面。若要查看基架命令生成的表单，请导航到 <http://localhost:3000/posts>。你应看到与下图类似的页面：
 
-    ![列出文章的页面][]
+    ![列出文章的页面][列出文章的页面]
 
     若要结束服务器进程，请在命令行按 Ctrl+C
 
 ## <span id="createvm"></span></a>创建 Azure 虚拟机
 
-按照[此处][]提供的说明可创建托管 Linux 的 Azure 虚拟机。
+按照[此处][此处]提供的说明可创建托管 Linux 的 Azure 虚拟机。
 
 <div class="dev-callout">
 <strong>说明</strong>
@@ -222,13 +222,13 @@
         [2013-03-12 19:11:31] INFO  ruby 1.9.3 (2012-04-20) [x86_64-linux]
         [2013-03-12 19:11:31] INFO  WEBrick::HTTPServer#start: pid=9789 port=3000
 
-4.  在浏览器中，导航到 [Azure 管理门户][]并选择你的虚拟机。
+4.  在浏览器中，导航到 [Azure 管理门户][Azure 管理门户]并选择你的虚拟机。
 
-    ![虚拟机列表][]
+    ![虚拟机列表][虚拟机列表]
 
 5.  选择页面顶部的“终结点”，然后单击页面底部的“+添加终结点”。
 
-    ![终结点页面][]
+    ![终结点页面][终结点页面]
 
 6.  在“添加终结点”对话框中，单击左下角的箭头以继续进行第二页，然后在表单中输入以下信息：
 
@@ -242,7 +242,7 @@
 
     这将创建一个公用端口 80，以便将流量路由到专用端口 3000，即 Rails 服务器侦听的端口。
 
-    ![新建终结点对话框][]
+    ![新建终结点对话框][新建终结点对话框]
 
 7.  单击复选标记保存该终结点。
 
@@ -258,17 +258,17 @@
 
 在本文中，你学习了如何创建基于表单的基本 Rails 应用程序并将其发布到 Azure 虚拟机。我们执行的大部分操作都是手动的，在生产环境中，可以自动完成这些操作。此外，大多数生产环境都结合其他服务器进程（如 Apache 或 NginX）来托管 Rails 应用程序，这些进程会处理路由到多个 Rails 应用程序实例的请求并提供静态资源。
 
-有关自动部署 Rails 应用程序以及使用 Unicorn Web 服务器和 NginX 的信息，请参阅[在 Azure 虚拟机中使用 Unicorn+NginX+Capistrano][]。
+有关自动部署 Rails 应用程序以及使用 Unicorn Web 服务器和 NginX 的信息，请参阅[在 Azure 虚拟机中使用 Unicorn+NginX+Capistrano][在 Azure 虚拟机中使用 Unicorn+NginX+Capistrano]。
 
-如果想要详细了解 Ruby on Rails，请访问 [Ruby on Rails 指南][]。
+如果想要详细了解 Ruby on Rails，请访问 [Ruby on Rails 指南][Ruby on Rails 指南]。
 
 若要了解如何使用 Azure SDK for Ruby 从 Ruby 应用程序访问 Azure 服务，请参阅：
 
--   [使用 Blob 存储非结构化数据][]
+-   [使用 Blob 存储非结构化数据][使用 Blob 存储非结构化数据]
 
--   [使用表存储键/值对][]
+-   [使用表存储键/值对][使用表存储键/值对]
 
--   [使用内容交付网络提供高带宽内容][]
+-   [使用内容交付网络提供高带宽内容][使用内容交付网络提供高带宽内容]
 
 <!-- WA.com links --> 
 <!-- External Links --> 

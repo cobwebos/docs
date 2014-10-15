@@ -4,9 +4,9 @@
 
 本教程演示如何使用 Java 在 Microsoft Azure 上（使用 Azure 应用程序库或 Azure 网站配置 UI）创建网站。
 
-如果你不想使用这些技术中的任何一种，例如，如果你想自定义应用程序容器，请参阅[将自定义 Java 网站上载到 Azure][]。
+如果你不想使用这些技术中的任何一种，例如，如果你想自定义应用程序容器，请参阅[将自定义 Java 网站上载到 Azure][将自定义 Java 网站上载到 Azure]。
 
-> [WACOM.NOTE] 若要完成本教程，你需要一个 Microsoft Azure 帐户。如果你没有帐户，则可以[激活 MSDN 订户权益][]或[注册免费试用][]。
+> [WACOM.NOTE] 若要完成本教程，你需要一个 Microsoft Azure 帐户。如果你没有帐户，则可以[激活 MSDN 订户权益][激活 MSDN 订户权益]或[注册免费试用][注册免费试用]。
 
 # 使用 Azure 应用程序库创建 Java 网站
 
@@ -14,11 +14,11 @@
 
 下面演示从应用程序库中使用 Tomcat 生成的网站的外观会是怎样的：
 
-![使用 Apache Tomcat 的网站][]
+![使用 Apache Tomcat 的网站][使用 Apache Tomcat 的网站]
 
 下面演示从应用程序库中使用 Jetty 生成的网站的外观会是怎样的：
 
-![使用 Jetty 的网站][]
+![使用 Jetty 的网站][使用 Jetty 的网站]
 
 1.  登录到 Microsoft Azure 管理门户。
 2.  依次单击“新建”、“计算”、“网站”和“从库中”。
@@ -54,7 +54,7 @@
 
 # 后续步骤
 
-现在，你有了一台在 Azure 上作为 Java 网站运行的 Java 应用程序服务器。若要添加你自己的应用程序或网页，请参阅[将应用程序或网页添加到 Java 网站][]。
+现在，你有了一台在 Azure 上作为 Java 网站运行的 Java 应用程序服务器。若要添加你自己的应用程序或网页，请参阅[将应用程序或网页添加到 Java 网站][将应用程序或网页添加到 Java 网站]。
 
   [将自定义 Java 网站上载到 Azure]: ../web-sites-java-custom-upload
   [激活 MSDN 订户权益]: /en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F

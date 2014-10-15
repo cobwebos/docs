@@ -89,19 +89,19 @@ RoleInstanceA 正在进行限制。RoleInstanceB 未进行限制。在这种情�
 
 ## 其他 Azure BizTalk 服务主题
 
--   [安装 Azure BizTalk 服务 SDK][]
--   [教程：Azure BizTalk 服务][]
--   [如何开始使用 Azure BizTalk 服务 SDK][]
--   [Azure BizTalk 服务][]
+-   [安装 Azure BizTalk 服务 SDK][安装 Azure BizTalk 服务 SDK]
+-   [教程：Azure BizTalk 服务][教程：Azure BizTalk 服务]
+-   [如何开始使用 Azure BizTalk 服务 SDK][如何开始使用 Azure BizTalk 服务 SDK]
+-   [Azure BizTalk 服务][Azure BizTalk 服务]
 
 ## 另请参阅
 
--   [BizTalk 服务：开发人员版、基本版、标准版和高级版图表][]
--   [BizTalk 服务：使用 Azure 管理门户进行设置][]
--   [BizTalk 服务：设置状态图表][]
--   [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡][]
--   [BizTalk 服务：备份和还原][]
--   [BizTalk 服务：颁发者名称和颁发者密钥][]
+-   [BizTalk 服务：开发人员版、基本版、标准版和高级版图表][BizTalk 服务：开发人员版、基本版、标准版和高级版图表]
+-   [BizTalk 服务：使用 Azure 管理门户进行设置][BizTalk 服务：使用 Azure 管理门户进行设置]
+-   [BizTalk 服务：设置状态图表][BizTalk 服务：设置状态图表]
+-   [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡][BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡]
+-   [BizTalk 服务：备份和还原][BizTalk 服务：备份和还原]
+-   [BizTalk 服务：颁发者名称和颁发者密钥][BizTalk 服务：颁发者名称和颁发者密钥]
 
   [安装 Azure BizTalk 服务 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=241589
   [教程：Azure BizTalk 服务]: http://go.microsoft.com/fwlink/p/?LinkID=236944

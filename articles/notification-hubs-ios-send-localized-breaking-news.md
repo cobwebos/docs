@@ -6,14 +6,14 @@
 <a href="/en-us/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/" title="Windows 应用商店 C#">Windows 应用商店 C#</a><a href="/en-us/documentation/articles/notification-hubs-ios-send-localized-breaking-news/" title="iOS" class="current">iOS</a>
 </div>
 
-本主题演示如何使用 Azure 通知中心的**模板**功能广播已按语言和设备本地化的突发新闻通知。在本教程中，你从在[使用通知中心发送突发新闻][]中创建的 Windows 应用商店应用程序开始操作。完成时，你将可以注册感兴趣的突发新闻类别，指定要接收通知的语言并仅接收采用该语言的这些类别的推送通知。
+本主题演示如何使用 Azure 通知中心的**模板**功能广播已按语言和设备本地化的突发新闻通知。在本教程中，你从在[使用通知中心发送突发新闻][使用通知中心发送突发新闻]中创建的 Windows 应用商店应用程序开始操作。完成时，你将可以注册感兴趣的突发新闻类别，指定要接收通知的语言并仅接收采用该语言的这些类别的推送通知。
 
 本教程将指导你完成启用此方案的以下基本步骤：
 
-1.  [模板概念][]
-2.  [应用程序用户界面][]
-3.  [构建 iOS 应用程序][]
-4.  [从后端发送通知][]
+1.  [模板概念][模板概念]
+2.  [应用程序用户界面][应用程序用户界面]
+3.  [构建 iOS 应用程序][构建 iOS 应用程序]
+4.  [从后端发送通知][从后端发送通知]
 
 此方案包含两个部分：
 
@@ -23,13 +23,13 @@
 
 ## 先决条件
 
-你必须已完成学习[使用通知中心发送突发新闻][]教程并具有可用的代码，因为本教程直接围绕该代码展开论述。
+你必须已完成学习[使用通知中心发送突发新闻][使用通知中心发送突发新闻]教程并具有可用的代码，因为本教程直接围绕该代码展开论述。
 
 你还需要 Visual Studio 2012。
 
 ## <a name="concepts"></a><span class="short-header">概念</span>模板概念
 
-在[使用通知中心发送突发新闻][]中，你生成了一个使用**标记**订阅不同新闻类别通知的应用程序。但是，很多应用程序针对多个市场，需要本地化。这意味着通知内容本身必须本地化且传递到正确的设备组。在本主题中，我们将演示如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
+在[使用通知中心发送突发新闻][使用通知中心发送突发新闻]中，你生成了一个使用**标记**订阅不同新闻类别通知的应用程序。但是，很多应用程序针对多个市场，需要本地化。这意味着通知内容本身必须本地化且传递到正确的设备组。在本主题中，我们将演示如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
 
 注意：发送本地化的通知的一种方式是创建每个标签的多个版本。例如，要支持英语、法语和汉语，我们需要三种不同的标签用于世界新闻：“world\_en”、“world\_fr”和“world\_ch”。我们然后必须将世界新闻的本地化版本分别发送到这些标签。在本主题中，我们使用模板来避免增生标签和发送多个消息的要求。
 
@@ -49,11 +49,11 @@
         }
     }
 
-模板是很强大的功能，你可以在[通知中心指南][]一文中了解其更多信息。一个模板表达语言的参考是 [操作指南：Service Bus 通知中心（iOS 应用程序）][]。
+模板是很强大的功能，你可以在[通知中心指南][通知中心指南]一文中了解其更多信息。一个模板表达语言的参考是 [操作指南：Service Bus 通知中心（iOS 应用程序）][操作指南：Service Bus 通知中心（iOS 应用程序）]。
 
 ## <a name="ui"></a><span class="short-header">应用程序 UI</span>应用程序用户界面
 
-我们现在将修改你在[使用通知中心发送突发新闻][]主题中创建的“突发新闻”应用程序，以使用模板发送本地化的突发新闻。
+我们现在将修改你在[使用通知中心发送突发新闻][使用通知中心发送突发新闻]主题中创建的“突发新闻”应用程序，以使用模板发送本地化的突发新闻。
 
 在 MainStoryboard\_iPhone.storyboard 中，添加具有我们支持的三种语言的分段控件：英语、法语和汉语。
 
@@ -152,15 +152,15 @@
 
 ## <a name="send"></a><span class="short-header">发送本地化的通知</span>从后端发送本地化的通知
 
-[WACOM.INCLUDE [notification-hubs-localized-back-end][]]
+[WACOM.INCLUDE [notification-hubs-localized-back-end][notification-hubs-localized-back-end]]
 
 ## 后续步骤
 
 有关使用模板的详细信息，请参阅：
 
--   [使用通知中心通知用户：ASP.NET][]
--   [使用通知中心通知用户：移动服务][]
--   [通知中心指南][]
+-   [使用通知中心通知用户：ASP.NET][使用通知中心通知用户：ASP.NET]
+-   [使用通知中心通知用户：移动服务][使用通知中心通知用户：移动服务]
+-   [通知中心指南][通知中心指南]
 
 [适用于 iOS 的通知中心操作方法][操作指南：Service Bus 通知中心（iOS 应用程序）]中提供了模板表达式语言的参考信息。
 
@@ -181,7 +181,7 @@
   [使用通知中心发送突发新闻]: /en-us/manage/services/notification-hubs/breaking-news-ios
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
   [操作指南：Service Bus 通知中心（iOS 应用程序）]: http://msdn.microsoft.com/zh-cn/library/jj927168.aspx
-  [0]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized1.png
+  []: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized1.png
   [1]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized2.png
   [notification-hubs-localized-back-end]: ../includes/notification-hubs-localized-back-end.md
   [使用通知中心通知用户：ASP.NET]: /en-us/manage/services/notification-hubs/notify-users-aspnet

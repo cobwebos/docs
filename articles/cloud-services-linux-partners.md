@@ -6,7 +6,7 @@
 
 ## Bitnami
 
-![Bitnami][][]
+![Bitnami][Bitnami][]
 
 <http://bitnami.org/azure/get-started>
 
@@ -14,7 +14,7 @@ BitNami 提供了常用 Web 应用程序的完全配置的映像，只需一次�
 
 ## Opscode Chef
 
-![Opscode][][]
+![Opscode][Opscode][]
 
 www.opscode.com/partners/microsoft
 
@@ -30,7 +30,7 @@ RightScale® Inc. 云管理使组织能够轻松部署和管理跨公有云、�
 
 ## ScaleXtreme
 
-![ScaleXtreme][][]
+![ScaleXtreme][ScaleXtreme][]
 
 [www.scalextreme.com/partners-windows-azure](http://www.scalextreme.com/partners-windows-azure)
 
@@ -40,7 +40,7 @@ ScaleXtreme 使客户能够在 Microsoft Azure 上生成、启动、监视、修
 
 ## SUSE Studio
 
-![SUSE][][]
+![SUSE][SUSE][]
 
 [www.susestudio.com](http://www.susestudio.com)
 
@@ -48,7 +48,7 @@ ScaleXtreme 使客户能够在 Microsoft Azure 上生成、启动、监视、修
 
 ## Ubuntu Juju
 
-![Juju][][]
+![Juju][Juju][]
 
 [http://www.ubuntu.com/cloud/azure](http://www.ubuntu.com/cloud/azure)
 

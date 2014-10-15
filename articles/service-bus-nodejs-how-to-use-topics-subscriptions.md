@@ -2,28 +2,28 @@
 
 # 如何使用 Service Bus 主题/订阅
 
-本指南演示如何从 Node.js 应用程序使用 Service Bus 主题和订阅。涉及的应用场景包括**创建主题和订阅、创建订阅筛选器、将消息发送到主题**、**从订阅接收消息**以及**删除主题和订阅**。有关主题和订阅的详细信息，请参阅[后续步骤][]一节。
+本指南演示如何从 Node.js 应用程序使用 Service Bus 主题和订阅。涉及的应用场景包括**创建主题和订阅、创建订阅筛选器、将消息发送到主题**、**从订阅接收消息**以及**删除主题和订阅**。有关主题和订阅的详细信息，请参阅[后续步骤][后续步骤]一节。
 
 ## 目录
 
--   [什么是 Service Bus 主题和订阅？][]
--   [创建服务命名空间][]
--   [获得命名空间的默认管理凭据][]
--   [创建 Node.js 应用程序][]
--   [配置应用程序以使用 Service Bus][]
--   [如何：创建主题][]
--   [如何：创建订阅][]
--   [如何：将消息发送到主题][]
--   [如何：从订阅接收消息][]
--   [如何：处理应用程序崩溃和不可读消息][]
--   [如何：删除主题和订阅][]
+-   [什么是 Service Bus 主题和订阅？][什么是 Service Bus 主题和订阅？]
+-   [创建服务命名空间][创建服务命名空间]
+-   [获得命名空间的默认管理凭据][获得命名空间的默认管理凭据]
+-   [创建 Node.js 应用程序][创建 Node.js 应用程序]
+-   [配置应用程序以使用 Service Bus][配置应用程序以使用 Service Bus]
+-   [如何：创建主题][如何：创建主题]
+-   [如何：创建订阅][如何：创建订阅]
+-   [如何：将消息发送到主题][如何：将消息发送到主题]
+-   [如何：从订阅接收消息][如何：从订阅接收消息]
+-   [如何：处理应用程序崩溃和不可读消息][如何：处理应用程序崩溃和不可读消息]
+-   [如何：删除主题和订阅][如何：删除主题和订阅]
 -   [后续步骤][1]
 
-[WACOM.INCLUDE [howto-service-bus-topics][]]
+[WACOM.INCLUDE [howto-service-bus-topics][howto-service-bus-topics]]
 
 ## <a name="create-app"></a>创建 Node.js 应用程序
 
-创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][]、[Node.js 云服务][]（使用 Windows PowerShell）或[使用 WebMatrix 构建网站][]。
+创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][创建 Node.js 应用程序并将其部署到 Azure 网站]、[Node.js 云服务][Node.js 云服务]（使用 Windows PowerShell）或[使用 WebMatrix 构建网站][使用 WebMatrix 构建网站]。
 
 ## <a name="configure-app"></a>配置应用程序以使用 Service Bus
 
@@ -60,9 +60,9 @@
 
 azure 模块将读取环境变量 AZURE\_SERVICEBUS\_NAMESPACE 和 AZURE\_SERVICEBUS\_ACCESS\_KEY 以获取连接 Azure Service Bus 所需的信息。如果未设置这些环境变量，则必须在调用 **createServiceBusService** 时指定帐户信息。
 
-有关在 Azure 云服务的配置文件中设置环境变量的示例，请参阅[使用存储构建 Node.js 云服务][]。
+有关在 Azure 云服务的配置文件中设置环境变量的示例，请参阅[使用存储构建 Node.js 云服务][使用存储构建 Node.js 云服务]。
 
-有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序][]。
+有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序][使用存储构建 Node.js Web 应用程序]。
 
 ## <a name="create-topic"></a>如何创建主题
 
@@ -136,7 +136,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 还可以设置筛选器，以确定发送到主题的哪些消息应该在特定主题订阅中显示。
 
-订阅支持的最灵活的一种筛选器是 **SqlFilter**，它实现了一部分 SQL92 功能。SQL 筛选器将对发布到主题的消息的属性进行操作。有关可用于 SQL 筛选器的表达式的更多详细信息，请参阅 [SqlFilter.SqlExpression][] 语法。
+订阅支持的最灵活的一种筛选器是 **SqlFilter**，它实现了一部分 SQL92 功能。SQL 筛选器将对发布到主题的消息的属性进行操作。有关可用于 SQL 筛选器的表达式的更多详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
 
 可以使用 **ServiceBusService** 对象的 **createRule** 方法向订阅中添加筛选器。此方法允许你向现有订阅中添加新筛选器。
 
@@ -297,9 +297,9 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 现在，你已了解有关 Service Bus 主题的基础知识，单击下面的链接可了解更多信息。
 
--   查看 MSDN 参考：[队列、主题和订阅][]。
--   [SqlFilter][] 的 API 参考。
--   访问 GitHub 上的 [Azure SDK for Node][] 存储库。
+-   查看 MSDN 参考：[队列、主题和订阅][队列、主题和订阅]。
+-   [SqlFilter][SqlFilter] 的 API 参考。
+-   访问 GitHub 上的 [Azure SDK for Node][Azure SDK for Node] 存储库。
 
   [后续步骤]: #nextsteps
   [什么是 Service Bus 主题和订阅？]: #what-are-service-bus-topics

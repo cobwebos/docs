@@ -9,13 +9,13 @@
 
 本教程将指导你完成启用推送通知的以下步骤：
 
-1.  [创建通知中心][]
-2.  [将你的应用程序连接到通知中心][]
-3.  [从后端发送通知][]
+1.  [创建通知中心][创建通知中心]
+2.  [将你的应用程序连接到通知中心][将你的应用程序连接到通知中心]
+3.  [从后端发送通知][从后端发送通知]
 
 本教程演示使用通知中心的简单广播方案。请确保随后学习下一教程以了解如何使用通知中心来发送到特定用户和设备组。本教程需要的内容如下：
 
--   [Visual Studio 2012 Express for Windows Phone][] 或更高版本。
+-   [Visual Studio 2012 Express for Windows Phone][Visual Studio 2012 Express for Windows Phone] 或更高版本。
 
 完成本教程是学习有关 Windows Phone 8 应用程序的所有其他通知中心教程的先决条件。
 
@@ -23,7 +23,7 @@
 
 ## <a name="configure-hub"></a><span class="short-header">创建通知中心</span>创建通知中心
 
-1.  登录到 [Azure 管理门户][]，然后单击屏幕底部的“+新建”。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，然后单击屏幕底部的“+新建”。
 
 2.  依次单击“应用程序服务”、“Service Bus”、“通知中心”和“快速创建”。
 
@@ -61,7 +61,7 @@
 
     ![][6]
 
-2.  使用 [WindowsAzure.Messaging.Managed NuGet 包][]添加对 Windows 应用商店的 Azure 消息传送库的引用。在 Visual Studio 菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
+2.  使用 [WindowsAzure.Messaging.Managed NuGet 包][WindowsAzure.Messaging.Managed NuGet 包]添加对 Windows 应用商店的 Azure 消息传送库的引用。在 Visual Studio 菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
 
         Install-Package WindowsAzure.Messaging.Managed
 
@@ -105,7 +105,7 @@
 
 ## <a name="send"></a><span class="short-header">发送通知</span>从后端发送通知
 
-你可以使用通知中心通过 [REST 接口][]从任意后端发送通知。在本教程中，我们将使用 .NET 控制台应用程序和移动服务来发送通知，通过节点脚本来执行这些操作。
+你可以使用通知中心通过 [REST 接口][REST 接口]从任意后端发送通知。在本教程中，我们将使用 .NET 控制台应用程序和移动服务来发送通知，通过节点脚本来执行这些操作。
 
 使用 .NET 应用程序发送通知：
 
@@ -113,7 +113,7 @@
 
     ![][8]
 
-2.  通过使用 [WindowsAzure.ServiceBus NuGet 包][]添加对 Azure Service Bus SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
+2.  通过使用 [WindowsAzure.ServiceBus NuGet 包][WindowsAzure.ServiceBus NuGet 包]添加对 Azure Service Bus SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
 
         Install-Package WindowsAzure.ServiceBus
 
@@ -146,11 +146,11 @@
 
 6.  按 F5 键以运行应用程序。你应接收 toast 通知。确保 Windows Phone 模拟器正在运行，并且你的应用程序已关闭。
 
-可以在 MSDN 上的 [toast 目录][]和[磁贴目录][]中找到所有可能的负载。
+可以在 MSDN 上的 [toast 目录][toast 目录]和[磁贴目录][磁贴目录]中找到所有可能的负载。
 
 ## <a name="next-steps"> </a>后续步骤
 
-在这个简单的示例中，你已将通知广播到所有 Windows Phone 8 设备。为了针对特定客户，请参考教程[使用通知中心将通知推送到用户][]。如果要按兴趣细分用户组，可以阅读[使用通知中心发送突发新闻][]。在[通知中心指南][]中了解通知中心的详细使用信息。
+在这个简单的示例中，你已将通知广播到所有 Windows Phone 8 设备。为了针对特定客户，请参考教程[使用通知中心将通知推送到用户][使用通知中心将通知推送到用户]。如果要按兴趣细分用户组，可以阅读[使用通知中心发送突发新闻][使用通知中心发送突发新闻]。在[通知中心指南][通知中心指南]中了解通知中心的详细使用信息。
 
 <!-- Anchors. -->  
 
@@ -177,7 +177,7 @@
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
 
 <!-- Images. -->
-  [0]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-from-portal.png
+  []: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-from-portal.png
   [1]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-from-portal2.png
   [2]: ./media/notification-hubs-windows-phone-get-started/notification-hub-select-from-portal.png
   [3]: ./media/notification-hubs-windows-phone-get-started/notification-hub-select-from-portal2.png

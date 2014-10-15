@@ -8,7 +8,7 @@
 
 ## 概述
 
-性能可定义为[“完成的有用工作量与使用的时间和资源的比较”][]。
+性能可定义为[“完成的有用工作量与使用的时间和资源的比较”][“完成的有用工作量与使用的时间和资源的比较”]。
 
 该定义从两个方面阐释了性能的含义：指标和资源。性能指标是为满足业务需求而必须实现的数量，其中包括响应时间、吞吐量、可用性等。性能还包括达到给定级别的性能指标所需的资源使用级别。由于成本几乎总是一项业务要求，而资源耗费金钱，因此，性能意味着尽可能高效地使用资源。
 
@@ -29,7 +29,7 @@
 
 完整的端到端性能测试是设计和部署应用程序期间的一个关键步骤。Azure 应用程序由许多部分组成，其中可能包括定制的组件以及 Microsoft 提供的组件。Microsoft 无法对这些组件的每种可能组合执行性能测试。因此，对你的应用程序执行完整而恰当的性能测试是任何部署的一个关键步骤。
 
-根据你生成的应用程序模型，为确保你的应用程序满足可伸缩性和延迟方面的性能要求，接下来你应尽快对你的应用程序执行概念证明测试，并对其执行负载测试以验证应用程序体系结构。验证你的初始体系结构和假设极其重要。你不希望发现你的应用程序在运行后无法承受预期负载！Visual Studio 提供了用于执行负载测试的工具，如 [Azure 中的 Visual Studio 负载测试概述][]中所述。
+根据你生成的应用程序模型，为确保你的应用程序满足可伸缩性和延迟方面的性能要求，接下来你应尽快对你的应用程序执行概念证明测试，并对其执行负载测试以验证应用程序体系结构。验证你的初始体系结构和假设极其重要。你不希望发现你的应用程序在运行后无法承受预期负载！Visual Studio 提供了用于执行负载测试的工具，如 [Azure 中的 Visual Studio 负载测试概述][Azure 中的 Visual Studio 负载测试概述]中所述。
 
 ### Azure 性能的不同之处
 
@@ -80,9 +80,9 @@ Azure 可提供以下数据存储选择，因此，能否做出正确的选择�
 
 优秀数据库设计的大多数原则仍适用于 Azure SQL Database。有大量介绍如何设计有效的 SQL Server 或 Azure SQL Database 架构的材料。有关 SQL Database 架构设计的若干参考包括：
 
--   [数据库设计和建模基础][]
--   [数据库设计方法][]
--   [数据库设计][]
+-   [数据库设计和建模基础][数据库设计和建模基础]
+-   [数据库设计方法][数据库设计方法]
+-   [数据库设计][数据库设计]
 
 有两项关键设计活动与 Azure 不同：
 
@@ -105,17 +105,17 @@ Azure 可提供以下数据存储选择，因此，能否做出正确的选择�
 
 有关表存储的更多讨论，请参阅：
 
--   [Azure 表存储和 Azure SQL Database - 比较与对照][]
--   [Azure 表存储性能注意事项][]
--   [SQL Database 和 Azure 表存储][]
--   [通过批处理 Azure 表存储插入操作来改进性能（可能为英文页面）][]，其中讨论了一些性能结果。
--   [SQL Database 性能和弹性指南][]
+-   [Azure 表存储和 Azure SQL Database - 比较与对照][Azure 表存储和 Azure SQL Database - 比较与对照]
+-   [Azure 表存储性能注意事项][Azure 表存储性能注意事项]
+-   [SQL Database 和 Azure 表存储][SQL Database 和 Azure 表存储]
+-   [通过批处理 Azure 表存储插入操作来改进性能（可能为英文页面）][通过批处理 Azure 表存储插入操作来改进性能（可能为英文页面）]，其中讨论了一些性能结果。
+-   [SQL Database 性能和弹性指南][SQL Database 性能和弹性指南]
 
 #### 数据分区
 
 最常用的分区资源之一是数据。如果你要创建 Azure 云服务，则应考虑使用 SQL Database 中通过联合提供的内置分片。
 
-有关 SQL Database 联合的概述，请参阅 [SQL Database 中的联合][]。
+有关 SQL Database 联合的概述，请参阅 [SQL Database 中的联合][SQL Database 中的联合]。
 
 ##### 有关 SQL 联合的设计任务
 
@@ -131,18 +131,18 @@ Azure 可提供以下数据存储选择，因此，能否做出正确的选择�
 
 每个聚合是联合的候选项。你必须评估希望增加哪个位置的大小，并且还必须查看你的应用程序的工作负载：“非常符合”联合方案的查询（即，该查询不需要来自多个联合成员的数据）将运行良好。不太符合的查询将需要应用层中的逻辑，因为 SQL Database 当前不支持跨数据库联接。
 
-若要查看检查用于联合的 AdventureWorks 数据库，以及分步演示设计中相关注意事项的设计分析示例，请参阅[使用联合完成数据库设计的优先扩展方法：第 1 部分 – 选择联合和联合键][]。
+若要查看检查用于联合的 AdventureWorks 数据库，以及分步演示设计中相关注意事项的设计分析示例，请参阅[使用联合完成数据库设计的优先扩展方法：第 1 部分 – 选择联合和联合键][使用联合完成数据库设计的优先扩展方法：第 1 部分 – 选择联合和联合键]。
 
 在你决定要联合哪些表后，你必须将聚合根表的主键作为列添加到每个相关表中。
 
-在决定对哪些表进行联合后，另一个问题是引用表以及其他数据库对象的位置。在[使用联合完成数据库设计的优先扩展方法：第 2 部分 – 为联合添加批注并部署架构][]中，详细讨论了此主题。在[第 2 部分][]中对执行更高级的查询进行了介绍。
+在决定对哪些表进行联合后，另一个问题是引用表以及其他数据库对象的位置。在[使用联合完成数据库设计的优先扩展方法：第 2 部分 – 为联合添加批注并部署架构][使用联合完成数据库设计的优先扩展方法：第 2 部分 – 为联合添加批注并部署架构]中，详细讨论了此主题。在[第 2 部分][第 2 部分]中对执行更高级的查询进行了介绍。
 
 ##### 自己动手分区
 
 有许多演示数据分区方法的示例。如果你决定不使用联合对你的 SQL Database 实例进行分区，则必须选择适合你的应用程序的分区方法。下面是一些示例：
 
--   在发布联合技术之前，[如何使用 SQL Database 进行分片][]一文包含此方面的详细信息。
--   [SQL Server 和 SQL Database 分片库][]
+-   在发布联合技术之前，[如何使用 SQL Database 进行分片][如何使用 SQL Database 进行分片]一文包含此方面的详细信息。
+-   [SQL Server 和 SQL Database 分片库][SQL Server 和 SQL Database 分片库]
 
 ##### 对其他资源进行分区
 
@@ -162,9 +162,9 @@ Azure 具有两种备选队列技术：Azure 存储队列和 Service Bus。
 
 Azure 存储队列提供了大队列大小、进度跟踪等功能。Service Bus 提供了发布/订阅、与 Windows Communication Foundation (WCF) 的完全集成、自动重复检测、有保证的先入先出 (FIFO) 传送等功能。
 
-有关这两种技术的更完整的详细比较，请参阅 [Azure 队列和 Azure Service Bus 队列 - 比较与对照][]。
+有关这两种技术的更完整的详细比较，请参阅 [Azure 队列和 Azure Service Bus 队列 - 比较与对照][Azure 队列和 Azure Service Bus 队列 - 比较与对照]。
 
-有关 Service Bus 性能的讨论，请参阅[使用 Service Bus 中转消息传送改善性能的最佳实践][]。
+有关 Service Bus 性能的讨论，请参阅[使用 Service Bus 中转消息传送改善性能的最佳实践][使用 Service Bus 中转消息传送改善性能的最佳实践]。
 <!-- #### Scenario: "Big Data" Applications ####  "Big Data" is often found as a by-product of another system or application. Examples include:   * Web logs   * Other diagnostic, audit, and monitoring files   * Oil company seismic logs   * Click-data and other information left by people traversing the Internet   "Big Data" can be identified by the following criteria:   * Size (typically, hundreds of terabytes or larger)   * Type: non-relational, variable schema, files in a file system   The data is generally not suited for processing in a relational database.   There are four major kinds of non-SQL data storage:   * Key-value   * Document   * Graph   * Column-Family   Azure provides direct support for Hadoop, and also enables use of other technologies. For information about Azure HDInsight Service, see:   * [Big Data](/en-us/solutions/big-data/)  * [Azure HDInsight Service](/en-us/documentation/services/hdinsight/) * [Getting Started with Azure HDInsight Service](/en-us/documentation/articles/hdinsight-get-started/)  For some discussion of issues involved with various noSQL storage methods, see:   * [Getting Acquainted with NoSQL on Azure](http://go.microsoft.com/fwlink/?LinkId=252729)  * [AggregateOrientedDatabase](http://go.microsoft.com/fwlink/?LinkID=252731) * [PolyglotPersistence](http://go.microsoft.com/fwlink/?LinkId=252732)  -->
 
 #### 其他 Azure 单个服务性能优化
@@ -182,7 +182,7 @@ Azure 存储队列提供了大队列大小、进度跟踪等功能。Service Bus
 
 ##### 序列化
 
-序列化在性能优化过程中的作用不明显，但在一些应用场景中，它可显著减少网络流量。有关序列化大小如何因协议而异的示例，请参阅 [Azure Web 应用程序和序列化][]中演示的减少情形。
+序列化在性能优化过程中的作用不明显，但在一些应用场景中，它可显著减少网络流量。有关序列化大小如何因协议而异的示例，请参阅 [Azure Web 应用程序和序列化][Azure Web 应用程序和序列化]中演示的减少情形。
 
 如果要移动的数据量是性能问题，可使用最小的可用序列化。在序列化性能不理想时，可考虑使用自定义或非 Microsoft 第三方序列化格式。通常，概念证明测试是关键。
 
@@ -205,7 +205,7 @@ Azure 旨在运行多个并发应用程序，复制它们以在多台计算机�
 
 -   服务的物理位置
 
-这些注意事项适用于所有应用程序体系结构，因为它们由 Azure 数据中心的物理基础结构决定。有关详细讨论，请参阅 [SQL Database 性能和弹性指南（可能为英文页面）][]。
+这些注意事项适用于所有应用程序体系结构，因为它们由 Azure 数据中心的物理基础结构决定。有关详细讨论，请参阅 [SQL Database 性能和弹性指南（可能为英文页面）][SQL Database 性能和弹性指南（可能为英文页面）]。
 
 ### 网络延迟
 
@@ -221,7 +221,7 @@ Azure 是共享资源的基于服务的平台，这意味着会定期发生两�
 
 ### 暂时性连接
 
-你的应用程序必须能够处理放弃的连接。放弃的连接对云体系结构来说是不可避免的且是固有的（例如，替换死节点、拆分 SQL Database 中的联合成员等操作）。立即处理此问题的最佳框架是[瞬时故障处理应用程序块（可能为英文页面）][]。
+你的应用程序必须能够处理放弃的连接。放弃的连接对云体系结构来说是不可避免的且是固有的（例如，替换死节点、拆分 SQL Database 中的联合成员等操作）。立即处理此问题的最佳框架是[瞬时故障处理应用程序块（可能为英文页面）][瞬时故障处理应用程序块（可能为英文页面）]。
 
 ### 限制
 
@@ -240,7 +240,7 @@ Azure 明显减少了容量规划所涉及的工作，因为许多旧活动（�
 
 并且由于 Azure 具有可伸缩性，初始容量决策不是一成不变的：增加（或减少）Azure 资源比较容易。虽然如此，但进行准确的容量规划依然很重要，因为这将确保在应用程序投入生产时，没有试用期和与容量相关的错误。
 
-对于其资源需求随时间显著波动的应用程序，请考虑使用[自动缩放应用程序块][]。此应用程序块允许你为角色实例的增加和减少设置规则。定义了两种规则：
+对于其资源需求随时间显著波动的应用程序，请考虑使用[自动缩放应用程序块][自动缩放应用程序块]。此应用程序块允许你为角色实例的增加和减少设置规则。定义了两种规则：
 
 -   约束规则，即，按一天的时间设置实例的最大/最小数
 
@@ -248,13 +248,13 @@ Azure 明显减少了容量规划所涉及的工作，因为许多旧活动（�
 
 你还可以定义自定义规则。有关详细信息，请参阅[自动缩放应用程序块（可能为英文页面）][自动缩放应用程序块]。
 
-容量规划本身是一门完整的学科知识，本白皮书假设你已掌握它。有关 Azure 中容量规划的详细讨论，请参阅[针对 Service Bus 队列和主题的容量规划][]。
+容量规划本身是一门完整的学科知识，本白皮书假设你已掌握它。有关 Azure 中容量规划的详细讨论，请参阅[针对 Service Bus 队列和主题的容量规划][针对 Service Bus 队列和主题的容量规划]。
 
 ## 运行时的性能监视和调整
 
 即使是最精心的设计也无法保证在运行时不出现性能问题，因此需要持续监视应用程序性能，以验证是否已达到所需的性能指标，并处理没有达到这些指标的情况。即使是设计良好的应用程序也可能遇到意外事件，例如使用率指数增长或运行时环境可能发生变化，这些情况会导致性能问题，需要对其进行调整。通常，识别并消除瓶颈是此过程的重要部分。
 
-能够在运行时解决性能问题需要完成一些内置日志记录和正确处理异常的前期工作，以便在可能出现问题时排查这些问题。有关此方面的完善解决方法，请参阅[有关开发 Azure 应用程序的问题排查最佳实践][]。
+能够在运行时解决性能问题需要完成一些内置日志记录和正确处理异常的前期工作，以便在可能出现问题时排查这些问题。有关此方面的完善解决方法，请参阅[有关开发 Azure 应用程序的问题排查最佳实践][有关开发 Azure 应用程序的问题排查最佳实践]。
 
 可借助适当工具监视每项 Azure 服务的持续性能。另外，应将日志记录工具内置到应用程序中，以提供排查并解决性能问题所需的详细信息。
 
@@ -262,27 +262,27 @@ Azure 明显减少了容量规划所涉及的工作，因为许多旧活动（�
 
 请注意，SQL 事件探查器目前在 Azure 中不可用。可使用多种解决方法来获取所需的性能信息。开发期间的一个替代方法是在本地版本的数据库中执行初始测试，此时可使用 SQL 事件探查器。
 
-你还可以使用 SET STATISTICS Transact-SQL 命令，并使用 SQL Server Management Studio 查看查询生成的执行计划，因为对高效查询进行编码是提升性能的关键。有关详细讨论以及如何执行此操作的分步说明，请参阅[了解 SQL Database 的性能][]。另一种有趣的方法是分析 [SQL Database 和本地 SQL Server][] 之间的性能。
+你还可以使用 SET STATISTICS Transact-SQL 命令，并使用 SQL Server Management Studio 查看查询生成的执行计划，因为对高效查询进行编码是提升性能的关键。有关详细讨论以及如何执行此操作的分步说明，请参阅[了解 SQL Database 的性能][了解 SQL Database 的性能]。另一种有趣的方法是分析 [SQL Database 和本地 SQL Server][SQL Database 和本地 SQL Server] 之间的性能。
 
 有关动态管理视图的两个主题为：
 
--   [使用动态管理视图监视 SQL Database][]
--   [SQL Database 可使用 DMV 分析你是否缺少 SQL 事件探查器][]
+-   [使用动态管理视图监视 SQL Database][使用动态管理视图监视 SQL Database]
+-   [SQL Database 可使用 DMV 分析你是否缺少 SQL 事件探查器][SQL Database 可使用 DMV 分析你是否缺少 SQL 事件探查器]
 
 ### 分析资源和工具
 
 许多第三方非 Microsoft 工具可用于分析 Azure 性能：
 
--   [Cerebrata][]
--   [SQL Server 和 SQL Database 性能测试：Enzo SQL 基线（可能为英文页面）][]
+-   [Cerebrata][Cerebrata]
+-   [SQL Server 和 SQL Database 性能测试：Enzo SQL 基线（可能为英文页面）][SQL Server 和 SQL Database 性能测试：Enzo SQL 基线（可能为英文页面）]
 
 其他资源
 
 -   [SQL Database 性能和弹性指南][SQL Database 性能和弹性指南（可能为英文页面）]
--   [SQL Database][]
--   [存储][]
--   [联网][]
--   [Service Bus][]
+-   [SQL Database][SQL Database]
+-   [存储][存储]
+-   [联网][联网]
+-   [Service Bus][Service Bus]
 
 <!-- * [Azure Planning - A Post-decision Guide to Integrate Azure in Your Environment](http://go.microsoft.com/fwlink/?LinkId=252884)  -->
 

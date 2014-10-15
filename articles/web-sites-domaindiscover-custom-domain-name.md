@@ -6,26 +6,26 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/web-sites-domaindiscover-custom-domain-name/" title="网站" class="current">网站</a> | <a href="/en-us/documentation/articles/web-sites-domaindiscover-traffic-manager-custom-domain-name/" title="使用流量管理器的网站">使用流量管理器的网站</a></div>
 
-[WACOM.INCLUDE [介绍][]]
+[WACOM.INCLUDE [介绍][介绍]]
 
-本文提供了如何将从 [DomainDiscover.com][] 购买的自定义域名用于 Azure 网站的说明。DomainDiscover.com 是 TierraNet 的组成部分。
+本文提供了如何将从 [DomainDiscover.com][DomainDiscover.com] 购买的自定义域名用于 Azure 网站的说明。DomainDiscover.com 是 TierraNet 的组成部分。
 
-[WACOM.INCLUDE [introfooter][]]
+[WACOM.INCLUDE [introfooter][introfooter]]
 
 本文内容：
 
--   [了解 DNS 记录][]
--   [为基本、共享或标准模式配置网站][]
--   [为自定义域添加 DNS 记录][]
--   [在网站上启用域][]
+-   [了解 DNS 记录][了解 DNS 记录]
+-   [为基本、共享或标准模式配置网站][为基本、共享或标准模式配置网站]
+-   [为自定义域添加 DNS 记录][为自定义域添加 DNS 记录]
+-   [在网站上启用域][在网站上启用域]
 
 ## <a name="understanding-records"></a>了解 DNS 记录
 
-[WACOM.INCLUDE [understandingdns][]]
+[WACOM.INCLUDE [understandingdns][understandingdns]]
 
 ## <a name="bkmk_configsharedmode"></a>为基本、共享或标准模式配置网站
 
-[WACOM.INCLUDE [modes][]]
+[WACOM.INCLUDE [modes][modes]]
 
 <a name="bkmk_configurecname"></a>
 
@@ -36,15 +36,15 @@
 
 1.  从“登录”菜单中选择“控制面板”，通过 DomainDiscover.com (TierraNet) 登录到你的帐户。
 
-    ![DomainDiscover 登录菜单][]
+    ![DomainDiscover 登录菜单][DomainDiscover 登录菜单]
 
 2.  在“域服务”页面上，选择要用于你的 Azure 网站的域。
 
-    ![域管理页面][]
+    ![域管理页面][域管理页面]
 
 3.  在域设置中，单击“DNS 服务”的“编辑”按钮。
 
-    ![DNS 编辑按钮][]
+    ![DNS 编辑按钮][DNS 编辑按钮]
 
 4.  在“管理 DNS”窗口中，选择要添加到“添加记录”列表中的 DNS 记录的类型。然后单击“添加”按钮。
 

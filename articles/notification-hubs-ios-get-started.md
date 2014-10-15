@@ -9,17 +9,17 @@
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
-1.  [生成证书签名请求][]
-2.  [注册应用程序和启用推送通知][]
-3.  [为应用程序创建配置文件][]
-4.  [配置通知中心][]
-5.  [将你的应用程序连接到通知中心][]
-6.  [从后端发送通知][]
+1.  [生成证书签名请求][生成证书签名请求]
+2.  [注册应用程序和启用推送通知][注册应用程序和启用推送通知]
+3.  [为应用程序创建配置文件][为应用程序创建配置文件]
+4.  [配置通知中心][配置通知中心]
+5.  [将你的应用程序连接到通知中心][将你的应用程序连接到通知中心]
+6.  [从后端发送通知][从后端发送通知]
 
 本教程演示使用通知中心的简单广播方案。请确保随后学习下一教程以了解如何使用通知中心来发送到特定用户和设备组。本教程需要满足以下前提条件：
 
--   [移动服务 iOS SDK][]
--   [XCode 4.5][]
+-   [移动服务 iOS SDK][移动服务 iOS SDK]
+-   [XCode 4.5][XCode 4.5]
 -   支持 iOS 5.0（或更高版本）的设备
 -   iOS 开发人员计划成员身份
 
@@ -55,7 +55,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 若要将推送通知从移动服务发送到 iOS 应用程序，你必须向 Apple 注册应用程序，还要注册推送通知。
 
-1.  如果你尚未注册应用程序，请导航到 Apple 开发人员中心的 [iOS 设置门户][]，使用 Apple ID 登录，单击“Identifiers”（标识符），然后单击“App IDs”（应用程序 ID），最后单击“+”符号以注册新的应用程序。
+1.  如果你尚未注册应用程序，请导航到 Apple 开发人员中心的 [iOS 设置门户][iOS 设置门户]，使用 Apple ID 登录，单击“Identifiers”（标识符），然后单击“App IDs”（应用程序 ID），最后单击“+”符号以注册新的应用程序。
 
     ![][3]
 
@@ -117,7 +117,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 ## <a name="profile"></a><span class="short-header">设置应用程序</span>为应用程序创建设置配置文件
 
-1.  返回 [iOS 设置门户][]，选择“Provisioning Profiles”（设置配置文件），选择“All”（全部），然后单击“+”按钮创建一个新的配置文件。这将显示“Add iOS Provisiong Profile”（添加 iOS 设置配置文件）向导。
+1.  返回 [iOS 设置门户][iOS 设置门户]，选择“Provisioning Profiles”（设置配置文件），选择“All”（全部），然后单击“+”按钮创建一个新的配置文件。这将显示“Add iOS Provisiong Profile”（添加 iOS 设置配置文件）向导。
 
     ![][14]
 
@@ -157,7 +157,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 ## <a name="configure-hub"></a><span class="short-header">配置通知中心</span>配置通知中心
 
-1.  登录到 [Azure 管理门户][]，然后单击屏幕底部的“+新建”。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，然后单击屏幕底部的“+新建”。
 
 2.  依次单击“应用程序服务”、“Service Bus”、“通知中心”和“快速创建”。
 
@@ -234,7 +234,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 ## <a name="send"></a><span class="short-header">发送通知</span>从后端发送通知
 
-你可以使用通知中心通过 [REST 接口][]从任意后端发送通知。在本教程中，我们将使用 .NET 控制台应用程序和移动服务来发送通知，通过节点脚本来执行这些操作。
+你可以使用通知中心通过 [REST 接口][REST 接口]从任意后端发送通知。在本教程中，我们将使用 .NET 控制台应用程序和移动服务来发送通知，通过节点脚本来执行这些操作。
 
 使用 .NET 应用程序发送通知：
 
@@ -242,7 +242,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
     ![][31]
 
-2.  通过使用 [WindowsAzure.ServiceBus NuGet 包][]添加对 Azure Service Bus SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
+2.  通过使用 [WindowsAzure.ServiceBus NuGet 包][WindowsAzure.ServiceBus NuGet 包]添加对 Azure Service Bus SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
 
         Install-Package WindowsAzure.ServiceBus
 
@@ -268,11 +268,11 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 6.  按 F5 键以运行应用程序。你应在设备上收到警报。如果正在使用 Wi-fi，请确保你的连接有效。
 
-可以在 Apple [本地和推送通知编程指南][]中查看所有可能的负载。
+可以在 Apple [本地和推送通知编程指南][本地和推送通知编程指南]中查看所有可能的负载。
 
-若要使用移动服务发送通知，请按[移动服务入门][]中的说明操作，然后：
+若要使用移动服务发送通知，请按[移动服务入门][移动服务入门]中的说明操作，然后：
 
-1.  登录到 [Azure 管理门户][]并选择你的移动服务。
+1.  登录到 [Azure 管理门户][Azure 管理门户]并选择你的移动服务。
 
 2.  选择顶部的“计划程序”选项卡。
 
@@ -307,7 +307,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 ## <a name="next-steps"> </a>后续步骤
 
-在这个简单的示例中，你已将通知广播到所有 iOS 设备。为了针对特定用户广播，请参考教程[使用通知中心将通知推送到用户][]，如果你要按兴趣细分用户组，请参考[使用通知中心发送突发新闻][]。在[通知中心指南][]中了解通知中心的详细使用信息。
+在这个简单的示例中，你已将通知广播到所有 iOS 设备。为了针对特定用户广播，请参考教程[使用通知中心将通知推送到用户][使用通知中心将通知推送到用户]，如果你要按兴趣细分用户组，请参考[使用通知中心发送突发新闻][使用通知中心发送突发新闻]。在[通知中心指南][通知中心指南]中了解通知中心的详细使用信息。
 
 <!-- Anchors. -->  
 
@@ -331,7 +331,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
   [Azure 免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
 
 <!-- Images. -->
-  [0]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step5.png
+  []: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step5.png
   [1]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step6.png
   [2]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step7.png
   [iOS 设置门户]: http://go.microsoft.com/fwlink/p/?LinkId=272456

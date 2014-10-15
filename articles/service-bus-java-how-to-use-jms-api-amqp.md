@@ -12,7 +12,7 @@
 
 ## Service Bus 入门
 
-此指南假定你已具有包含名为“queue1”的队列的 Service Bus 命名空间。如果没有，则可以使用 [Azure 管理门户][]创建命名空间和队列。有关如何创建 Service Bus 命名空间和队列的详细信息，请参阅名为“[如何使用 Service Bus 队列（可能为英文页面）][]”的操作方法指南。
+此指南假定你已具有包含名为“queue1”的队列的 Service Bus 命名空间。如果没有，则可以使用 [Azure 管理门户][Azure 管理门户]创建命名空间和队列。有关如何创建 Service Bus 命名空间和队列的详细信息，请参阅名为“[如何使用 Service Bus 队列（可能为英文页面）][如何使用 Service Bus 队列（可能为英文页面）]”的操作方法指南。
 
 ## 下载 AMQP 1.0 JMS 客户端库
 
@@ -128,7 +128,7 @@ JMS 使用 Java 命名和目录接口 (JNDI) 创建逻辑名称和物理名称�
   </tr>
 </table>
 
-**注意**：在从 Service Bus 主题订阅中接收时，在 JNDI 中指定的物理名称应该是该主题的名称。在 JMS 应用程序代码中创建可持久订阅时提供该订阅名称。[Service Bus AMQP 1.0 开发人员指南][]提供有关从 JMS 使用 Service Bus 主题订阅的更详细信息。
+**注意**：在从 Service Bus 主题订阅中接收时，在 JNDI 中指定的物理名称应该是该主题的名称。在 JMS 应用程序代码中创建可持久订阅时提供该订阅名称。[Service Bus AMQP 1.0 开发人员指南][Service Bus AMQP 1.0 开发人员指南]提供有关从 JMS 使用 Service Bus 主题订阅的更详细信息。
 
 ### 编写 JMS 应用程序
 
@@ -263,9 +263,9 @@ JNDI 环境是通过将配置信息的哈希表传入到 javax.naming.InitialCon
 
 本指南说明了如何使用 JMS 向 Service Bus 发送消息以及从 Service Bus 接收消息。但是，AMQP 1.0 的关键优势之一是它支持通过以不同语言编写的组件生成应用程序，从而能够可靠和完全无损地交换消息。
 
-通过使用前面所述的示例 JMS 应用程序和从随附的指南[如何将 AMQP 1.0 用于 .NET Service Bus .NET API][] 中选取的类似 .NET 应用程序，你可以在 .NET 和 Java 之间交换消息。
+通过使用前面所述的示例 JMS 应用程序和从随附的指南[如何将 AMQP 1.0 用于 .NET Service Bus .NET API][如何将 AMQP 1.0 用于 .NET Service Bus .NET API] 中选取的类似 .NET 应用程序，你可以在 .NET 和 Java 之间交换消息。
 
-有关使用 Service Bus 和 AMQP 1.0 跨平台消息传送的详情的详细信息，请参阅 [Service Bus AMQP 1.0 开发人员指南][]。
+有关使用 Service Bus 和 AMQP 1.0 跨平台消息传送的详情的详细信息，请参阅 [Service Bus AMQP 1.0 开发人员指南][Service Bus AMQP 1.0 开发人员指南]。
 
 ### JMS 到 .NET
 
@@ -335,14 +335,14 @@ JNDI 环境是通过将配置信息的哈希表传入到 javax.naming.InitialCon
 
 本操作方法指南演示了如何通过使用常用 JMS API 和 AMQP 1.0 通过 Java 使用 Service Bus 中转消息传送功能（队列和发布/订阅主题）。
 
-也可以通过其他语言（包括 .NET、C、Python 和 PHP）使用 Service Bus AMQP 1.0。使用这些不同语言构建的组件可以使用 Service Bus 中的 AMQP 1.0 支持可靠且完全无损地交换消息。有关详细信息，请参阅 [Service Bus AMQP 1.0 开发人员指南][]。
+也可以通过其他语言（包括 .NET、C、Python 和 PHP）使用 Service Bus AMQP 1.0。使用这些不同语言构建的组件可以使用 Service Bus 中的 AMQP 1.0 支持可靠且完全无损地交换消息。有关详细信息，请参阅 [Service Bus AMQP 1.0 开发人员指南][Service Bus AMQP 1.0 开发人员指南]。
 
 ## 更多信息
 
--   [Azure Service Bus 中的 AMQP 1.0 支持][]
+-   [Azure Service Bus 中的 AMQP 1.0 支持][Azure Service Bus 中的 AMQP 1.0 支持]
 -   [如何将 AMQP 1.0 与 Service Bus .NET API 一起使用][如何将 AMQP 1.0 用于 .NET Service Bus .NET API]
--   [Service Bus AMQP 1.0 开发人员指南][]
--   [如何使用 Service Bus 队列][]
+-   [Service Bus AMQP 1.0 开发人员指南][Service Bus AMQP 1.0 开发人员指南]
+-   [如何使用 Service Bus 队列][如何使用 Service Bus 队列]
 
   [Azure 管理门户]: http://manage.windowsazure.cn
   [如何使用 Service Bus 队列（可能为英文页面）]: https://www.windowsazure.com/zh-cn/develop/net/how-to-guides/service-bus-queues/

@@ -11,11 +11,11 @@
 多因素身份验证的安全性在于它的分层方法。破坏多因素身份验证系统对于攻击者来说是巨大的挑战。即使攻击者设法得到用户的密码，如果没有同时占有可信设备也没有用处。相反，如果用户不巧丢失了设备，捡到该设备的人也无法使用它，除非他或她知道用户的密码。
 Azure 多因素身份验证是多因素身份验证服务，它要求用户使用移动应用程序、手机或短信验证登录。它可用于 Azure Active Directory 以通过 Azure 多因素身份验证服务器来保护本地资源安全，它还用于使用 SDK 的自定义应用程序和目录。
 
-![Azure 多因素身份验证][]
+![Azure 多因素身份验证][Azure 多因素身份验证]
 
 ### 保护云 Azure Active Directory
 
-为 Azure AD 标识启用多因素身份验证，系统将提示用户设置其下次登录时的额外验证。使用多因素身份验证可保护对 Azure、Microsoft Online Services（如 Office 365 和 Dynamics CRM Online）以及集成了 Azure AD 的第三方云服务的访问而无需进行其他设置。可以快速地为大量全球用户和应用程序启用多因素身份验证。[了解详细信息][]
+为 Azure AD 标识启用多因素身份验证，系统将提示用户设置其下次登录时的额外验证。使用多因素身份验证可保护对 Azure、Microsoft Online Services（如 Office 365 和 Dynamics CRM Online）以及集成了 Azure AD 的第三方云服务的访问而无需进行其他设置。可以快速地为大量全球用户和应用程序启用多因素身份验证。[了解详细信息][了解详细信息]
 
 ### 保护本地资源和 Active Directory
 
@@ -38,13 +38,13 @@ SDK 支持与你的云服务的直接集成。将 Active Authentication 电话�
 
 下面显示了可用的多因素身份验证版本，以及各版本所提供的功能的摘要。你可以参考这些信息来确定适合你自己的多因素身份验证版本。[了解详细信息][4]
 
-![Azure 多因素身份验证功能比较][]
+![Azure 多因素身份验证功能比较][Azure 多因素身份验证功能比较]
 
 **其他资源**
 
--   [作为组织注册 Azure][]
--   [Azure 标识][]
--   [Azure 多因素身份验证库][]
+-   [作为组织注册 Azure][作为组织注册 Azure]
+-   [Azure 标识][Azure 标识]
+-   [Azure 多因素身份验证库][Azure 多因素身份验证库]
 
   [Azure 多因素身份验证]: ./media/multi-factor-authentication/WAMFA1.png
   [了解详细信息]: http://msdn.microsoft.com/en-us/library/dn249466.aspx

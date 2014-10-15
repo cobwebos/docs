@@ -2,11 +2,11 @@
 
 # 使用 Express 在 Azure 云服务中生成 Node.js Web 应用程序
 
-Node.js 包含核心运行时中最小的一个功能集。开发人员在开发 Node.js 应用程序时经常会使用第三方模块来提供额外功能。在本教程中，你将使用 [Express][] 模块新建一个应用程序，该模块可提供用于创建 Node.js Web 应用程序的 MVC 框架。
+Node.js 包含核心运行时中最小的一个功能集。开发人员在开发 Node.js 应用程序时经常会使用第三方模块来提供额外功能。在本教程中，你将使用 [Express][Express] 模块新建一个应用程序，该模块可提供用于创建 Node.js Web 应用程序的 MVC 框架。
 
 以下是已完成应用程序的屏幕快照：
 
-![显示“Welcome to Express in Azure”的 Web 浏览器][]
+![显示“Welcome to Express in Azure”的 Web 浏览器][显示“Welcome to Express in Azure”的 Web 浏览器]
 
 ## 创建云服务项目
 
@@ -14,9 +14,9 @@ Node.js 包含核心运行时中最小的一个功能集。开发人员在开发
 
 1.  在“开始”菜单或“开始”屏幕中，搜索 **Azure PowerShell**。最后，右键单击“Azure PowerShell”并选择“以管理员身份运行”。
 
-    ![Azure PowerShell 图标][]
+    ![Azure PowerShell 图标][Azure PowerShell 图标]
 
-    [WACOM.INCLUDE [install-dev-tools][]]
+    [WACOM.INCLUDE [install-dev-tools][install-dev-tools]]
 
 2.  将目录切换到 **c:\\node** 目录，然后输入下列命令以新建一个名为 **expressapp** 的解决方案和名为 **WebRole1** 的 Web 角色：
 
@@ -31,7 +31,7 @@ Node.js 包含核心运行时中最小的一个功能集。开发人员在开发
 
     npm 命令的输出应与以下结果类似。
 
-    ![Windows PowerShell 显示 npm install express 命令的输出。][]
+    ![Windows PowerShell 显示 npm install express 命令的输出。][Windows PowerShell 显示 npm install express 命令的输出。]
 
 2.  将目录切换到 **WebRole1** 目录，然后使用 express 命令生成一个新的应用程序：
 
@@ -39,13 +39,13 @@ Node.js 包含核心运行时中最小的一个功能集。开发人员在开发
 
     系统将提示你是否覆盖之前创建的应用程序。输入 **y** 或 **yes** 以继续操作。Express 将生成用于生成应用程序的 app.js 文件和一个文件夹结构。
 
-    ![express 命令的输出][]
+    ![express 命令的输出][express 命令的输出]
 
 3.  若要安装在 package.json 文件中定义的其他依赖项，请输入以下命令：
 
         PS C:\node\expressapp\WebRole1> npm install
 
-    ![npm install 命令的输出][]
+    ![npm install 命令的输出][npm install 命令的输出]
 
 4.  使用以下命令将 **bin/www** 文件复制到 **server.js**，这样，云服务便可以找到此应用程序的入口点。
 
@@ -67,7 +67,7 @@ Node.js 包含核心运行时中最小的一个功能集。开发人员在开发
 
         PS C:\node\expressapp\WebRole1> Start-AzureEmulator -launch
 
-    ![包含 Welcome to Express 的网页。][]
+    ![包含 Welcome to Express 的网页。][包含 Welcome to Express 的网页。]
 
 ## 修改视图
 
@@ -77,19 +77,19 @@ Node.js 包含核心运行时中最小的一个功能集。开发人员在开发
 
         PS C:\node\expressapp\WebRole1> notepad views/index.jade
 
-    ![index.jade 文件的内容。][]
+    ![index.jade 文件的内容。][index.jade 文件的内容。]
 
     Jade 是 Express 应用程序使用的默认视图引擎。有关 Jade 视图引擎的详细信息，请参阅 [][]<http://jade-lang.com></a>。
 
 2.  通过追加 **in Azure** 来修改最后一行文本。
 
-    ![index.jade 文件，最后一行的内容为：p Welcome to \#{title} in Azure][]
+    ![index.jade 文件，最后一行的内容为：p Welcome to \#{title} in Azure][index.jade 文件，最后一行的内容为：p Welcome to \#{title} in Azure]
 
 3.  保存文件并退出记事本。
 
 4.  刷新浏览器，你将看到所做的更改。
 
-    ![浏览器窗口，其中的页面包含 Welcome to Express in Azure][]
+    ![浏览器窗口，其中的页面包含 Welcome to Express in Azure][浏览器窗口，其中的页面包含 Welcome to Express in Azure]
 
 测试应用程序后，请使用 **Stop-AzureEmulator** cmdlet 停止模拟器。
 

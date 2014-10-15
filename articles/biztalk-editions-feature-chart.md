@@ -212,25 +212,25 @@ BizTalk 适配器服务由 Azure BizTalk 服务使用。BizTalk 适配器服务�
 
 #### 如何从 BizTalk 服务的一个等级迁移到另一个等级？
 
-使用备份和还原流程从一个等级迁移到另一个等级。仅支持某些迁移途径。请参考 [BizTalk 服务：备份和还原][]，了解有关支持的迁移途径的更多详细信息。
+使用备份和还原流程从一个等级迁移到另一个等级。仅支持某些迁移途径。请参考 [BizTalk 服务：备份和还原][BizTalk 服务：备份和还原]，了解有关支持的迁移途径的更多详细信息。
 
 #### BizTalk 适配器服务是否包含在 BizTalk 服务内？我如何接收该软件？
 
-包含在内，BizTalk 适配器服务以及 BizTalk 适配器包已包含在 Azure BizTalk 服务 SDK [下载][]中。
+包含在内，BizTalk 适配器服务以及 BizTalk 适配器包已包含在 Azure BizTalk 服务 SDK [下载][下载]中。
 
 ## 下一步
 
-若要在 Azure 管理门户中设置 Azure BizTalk 服务，请转到 [BizTalk 服务：使用 Azure 管理门户进行设置][]。若要开始创建应用程序，请转到 [Azure BizTalk 服务][]。
+若要在 Azure 管理门户中设置 Azure BizTalk 服务，请转到 [BizTalk 服务：使用 Azure 管理门户进行设置][BizTalk 服务：使用 Azure 管理门户进行设置]。若要开始创建应用程序，请转到 [Azure BizTalk 服务][Azure BizTalk 服务]。
 
 ## 另请参阅
 
--   [BizTalk 服务：使用 Azure 管理门户进行设置][]
--   [BizTalk 服务：设置状态图表][]
--   [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡][]
--   [BizTalk 服务：备份和还原][]
--   [BizTalk 服务：限制][]
--   [BizTalk 服务：颁发者名称和颁发者密钥][]
--   [如何开始使用 Azure BizTalk 服务 SDK][]
+-   [BizTalk 服务：使用 Azure 管理门户进行设置][BizTalk 服务：使用 Azure 管理门户进行设置]
+-   [BizTalk 服务：设置状态图表][BizTalk 服务：设置状态图表]
+-   [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡][BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡]
+-   [BizTalk 服务：备份和还原][BizTalk 服务：备份和还原]
+-   [BizTalk 服务：限制][BizTalk 服务：限制]
+-   [BizTalk 服务：颁发者名称和颁发者密钥][BizTalk 服务：颁发者名称和颁发者密钥]
+-   [如何开始使用 Azure BizTalk 服务 SDK][如何开始使用 Azure BizTalk 服务 SDK]
 
   [Azure BizTalk 服务定价]: http://go.microsoft.com/fwlink/p/?LinkID=304011
   [BizTalk 服务：备份和还原]: http://go.microsoft.com/fwlink/p/?LinkID=329873

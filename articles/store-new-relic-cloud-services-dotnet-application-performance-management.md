@@ -2,7 +2,7 @@
 
 # Azure 中的 New Relic 应用程序性能管理
 
-本指南介绍如何向 Azure 托管应用程序中添加 New Relic 的一流性能监视。我们将介绍向你的应用程序中添加 New Relic 的快速且简单的过程，并向你介绍 New Relic 的一些功能。有关使用 New Relic 的更多信息，请参阅[使用 New Relic][]。
+本指南介绍如何向 Azure 托管应用程序中添加 New Relic 的一流性能监视。我们将介绍向你的应用程序中添加 New Relic 的快速且简单的过程，并向你介绍 New Relic 的一些功能。有关使用 New Relic 的更多信息，请参阅[使用 New Relic][使用 New Relic]。
 
 ## 什么是 New Relic？
 
@@ -14,7 +14,7 @@ New Relic 可从服务器和你的用户的浏览器跟踪你的 Web 事务的�
 
 New Relic Standard 可供 Azure 用户免费使用，New Relic Pro 基于 Azure 云服务的实例大小提供
 
-有关定价信息，请参阅 [Azure 应用商店中的 New Relic 页][]。
+有关定价信息，请参阅 [Azure 应用商店中的 New Relic 页][Azure 应用商店中的 New Relic 页]。
 
 <div class="dev-callout"> 
 <strong>注意：</strong>
@@ -31,7 +31,7 @@ New Relic 可与 Azure Web 角色和辅助角色无缝集成。
 
 ### 步骤 1. 通过 Azure 应用商店进行注册
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  在该管理门户的下方窗格中，单击“新建”。
 3.  单击“应用商店”。
 4.  在“选择外接程序”对话框中，选择“New Relic”，然后单击“下一步”。
@@ -52,36 +52,36 @@ New Relic 可与 Azure Web 角色和辅助角色无缝集成。
 
 1.  打开你的 Visual Studio 解决方案，或者通过选择“文件”\>“新建”\>“项目”创建一个新的解决方案。
 
-    ![Visual Studio][]
+    ![Visual Studio][Visual Studio]
 
 2.  如果你的解决方案中尚不具有 Azure 云服务项目，则通过在解决方案资源管理器中右键单击你的应用程序并选择“添加 Azure 云服务项目”来添加一个。
 
-    ![创建云服务][]
+    ![创建云服务][创建云服务]
 
 3.  通过选择“工具”\>“库程序包管理器”\>“程序包管理器控制台”****打开程序包管理器控制台。在“程序包管理器控制台”窗口顶部，将你的项目
     设置为默认项目。
 
-    ![程序包管理器控制台][]
+    ![程序包管理器控制台][程序包管理器控制台]
 
 4.  在程序包管理器命令提示符处，键入`Install-Package    NewRelicWindowsAzure` 然后按 **Enter** 键。
 
-    ![在程序包管理器中安装][]
+    ![在程序包管理器中安装][在程序包管理器中安装]
 
 5.  在许可证密钥提示符处，输入你从 Azure 应用商店获取的许可证密钥。
 
-    ![输入许可证密钥][]
+    ![输入许可证密钥][输入许可证密钥]
 
 6.  可选：在应用程序名称提示符处，输入将显示在 New Relic 仪表板中的你的应用程序的名称。或者，将你的解决方案名称用作默认值。
 
-    ![输入应用程序名称][]
+    ![输入应用程序名称][输入应用程序名称]
 
 7.  从“解决方案资源管理器”中，右键单击你的 Azure 云服务项目，并选择“发布”。
 
-    ![发布云项目][]
+    ![发布云项目][发布云项目]
 
-**注意：**如果这是你第一次将此应用程序部署到 Azure，系统将提示你输入你的 Azure 凭据。有关更多信息，请参阅[将 ASP.NET Web 应用程序部署到 Azure 网站][]。
+**注意：**如果这是你第一次将此应用程序部署到 Azure，系统将提示你输入你的 Azure 凭据。有关更多信息，请参阅[将 ASP.NET Web 应用程序部署到 Azure 网站][将 ASP.NET Web 应用程序部署到 Azure 网站]。
 
-![发布设置][]
+![发布设置][发布设置]
 
 ### 步骤 3. 在 New Relic 中查看你的应用程序的性能。
 
@@ -93,7 +93,7 @@ New Relic 可与 Azure Web 角色和辅助角色无缝集成。
 
     将自动显示“Monitoring”（监视）\>“Overview”（概览）仪表板。
 
-    ![New Relic Monitorin 仪表板][]
+    ![New Relic Monitorin 仪表板][New Relic Monitorin 仪表板]
 
     从你的“Applications”（应用程序）菜单上的列表中选择应用程序后，“Overview”（概览）仪表板将显示当前的应用程序服务器和浏览器信息。
 
@@ -101,7 +101,7 @@ New Relic 可与 Azure Web 角色和辅助角色无缝集成。
 
 从“Overview”（概览）菜单上的列表中选择你的应用程序后，“Overview”（概览）仪表板将显示当前的应用程序服务器和浏览器信息。若要在两个视图之间切换，请单击“App server”（应用程序服务器）或“Browser”（浏览器）按钮。
 
-除了 [standard New Relic UI][] 和 [dashboard drill-down][] 功能之外，Applications Overview（应用程序概览）仪表板还具有其他一些功能。
+除了 [standard New Relic UI][standard New Relic UI] 和 [dashboard drill-down][dashboard drill-down] 功能之外，Applications Overview（应用程序概览）仪表板还具有其他一些功能。
 
 <table>
 <colgroup>
@@ -159,14 +159,14 @@ New Relic 可与 Azure Web 角色和辅助角色无缝集成。
 
 有关更多信息，请查看以下其他资源：
 
--   [在 Azure 上安装 .NET 代理（可能为英文页面）][]：New Relic .NET 代理安装过程
--   [New Relic 用户界面][]：
+-   [在 Azure 上安装 .NET 代理（可能为英文页面）][在 Azure 上安装 .NET 代理（可能为英文页面）]：New Relic .NET 代理安装过程
+-   [New Relic 用户界面][New Relic 用户界面]：
     大致介绍 New Relic UI、设置用户权限和配置文件、使用标准功能和仪表板向下钻取详细信息
--   [应用程序概览（可能为英文页面）][]：使用 New Relic 的“Applications Overview”仪表板时的特性和功能
--   [Apdex][]：大致介绍 Apdex 如何衡量最终用户对你的应用程序的满意度
--   [实际用户监视（可能为英文页面）][]：大致介绍 RUM 如何详细记录你的用户的浏览器加载你的
+-   [应用程序概览（可能为英文页面）][应用程序概览（可能为英文页面）]：使用 New Relic 的“Applications Overview”仪表板时的特性和功能
+-   [Apdex][Apdex]：大致介绍 Apdex 如何衡量最终用户对你的应用程序的满意度
+-   [实际用户监视（可能为英文页面）][实际用户监视（可能为英文页面）]：大致介绍 RUM 如何详细记录你的用户的浏览器加载你的
     网页所需的时间、这些用户所在的位置以及他们使用的浏览器
--   [寻求帮助（可能为英文页面）][]：通过 New Relic 的联机帮助中心提供的资源
+-   [寻求帮助（可能为英文页面）][寻求帮助（可能为英文页面）]：通过 New Relic 的联机帮助中心提供的资源
 
   [使用 New Relic]: #using-new-relic
   [Azure 应用商店中的 New Relic 页]: http://www.windowsazure.com/zh-cn/gallery/store/new-relic/new-relic/

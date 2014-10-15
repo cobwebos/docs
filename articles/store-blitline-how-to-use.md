@@ -6,12 +6,12 @@
 
 ## 目录
 
-[什么是 Blitline？][]
-[Blitline 无法实现的操作][]
-[创建 Blitline 帐户][]
-[如何创建 Blitline 作业][]
-[如何将图像保存到 Azure 存储][]
-[后续步骤][]
+[什么是 Blitline？][什么是 Blitline？]
+[Blitline 无法实现的操作][Blitline 无法实现的操作]
+[创建 Blitline 帐户][创建 Blitline 帐户]
+[如何创建 Blitline 作业][如何创建 Blitline 作业]
+[如何将图像保存到 Azure 存储][如何将图像保存到 Azure 存储]
+[后续步骤][后续步骤]
 
 ## <span id="whatis"></span></a>什么是 Blitline？
 
@@ -35,7 +35,7 @@ Blitline 是一项基于云的图像处理服务，此服务提供了企业级�
 
 ## <span id="createaccount"></span></a>创建 Blitline 帐户
 
-[WACOM.INCLUDE [blitline-signup][]]
+[WACOM.INCLUDE [blitline-signup][blitline-signup]]
 
 ## <span id="createjob"></span></a>如何创建 Blitline 作业
 
@@ -79,7 +79,7 @@ Blitline 使用 JSON 定义要对图像执行的操作。此 JSON 由几个简�
     }
 
 这说明 Blitline 已收到你的请求并已将其置于处理队列中，完成时，将可从以下位置获得图像：
-**[https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\\\_APP\\\_ID/CK3f0xBF\_2bV6wf7gEZE8w.jpg][]**
+**[https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\\_APP\\_ID/CK3f0xBF\_2bV6wf7gEZE8w.jpg][https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\\_APP\\_ID/CK3f0xBF\_2bV6wf7gEZE8w.jpg]**
 
 ## <span id="saveazure"></span></a>如何将图像保存到 Azure 存储帐户
 
@@ -112,7 +112,7 @@ SAS 必须包含完整 SAS URL，包括目标文件的文件名。
 
     http://blitline.blob.core.windows.net/sample/image.jpg?sr=b&sv=2012-02-12&st=2013-04-12T03%3A18%3A30Z&se=2013-04-12T04%3A18%3A30Z&sp=w&sig=Bte2hkkbwTT2sqlkkKLop2asByrE0sIfeesOwj7jNA5o%3D
 
-你还可以在[此处][]参阅 Blitline 的最新版本的 Azure 存储文档。
+你还可以在[此处][此处]参阅 Blitline 的最新版本的 Azure 存储文档。
 
 ## <span id="nextsteps"></span></a> 后续步骤
 

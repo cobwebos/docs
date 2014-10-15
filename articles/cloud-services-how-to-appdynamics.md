@@ -6,13 +6,13 @@
 
 ## 目录
 
--   [什么是 AppDynamics？][]
--   [先决条件][]
--   [注册 AppDynamics 帐户][]
--   [从 AppDynamics 下载 .NET 代理][]
--   [将 .NET 代理添加到 Azure 角色并修改启动设置][]
--   [将 AppDynamics 检测的应用程序发布到 Azure][]
--   [监视应用程序][]
+-   [什么是 AppDynamics？][什么是 AppDynamics？]
+-   [先决条件][先决条件]
+-   [注册 AppDynamics 帐户][注册 AppDynamics 帐户]
+-   [从 AppDynamics 下载 .NET 代理][从 AppDynamics 下载 .NET 代理]
+-   [将 .NET 代理添加到 Azure 角色并修改启动设置][将 .NET 代理添加到 Azure 角色并修改启动设置]
+-   [将 AppDynamics 检测的应用程序发布到 Azure][将 AppDynamics 检测的应用程序发布到 Azure]
+-   [监视应用程序][监视应用程序]
 
 ## <span id="what"></span></a>什么是 AppDynamics？
 
@@ -28,7 +28,7 @@ AppDynamics 包含两个组件：
 
 -   AppDynamics 控制器：该代理会将其信息发送到 Azure 上的 AppDynamics 控制器托管的服务。通过使用基于 Web 浏览器的控制台，可以登录控制器以监视、分析应用程序并对其进行故障排除。
 
-    ![AppDynamics 图][]
+    ![AppDynamics 图][AppDynamics 图]
 
 ## <span id="prereq"></span></a> 先决条件
 
@@ -107,7 +107,7 @@ AppDynamics 包含两个组件：
 
 5.  对于要监视的每个 Web 角色和辅助角色，为 AppDynamics 代理 .msi 文件设置“复制到输出目录”属性，并为 startup.cmd 文件设置“始终复制”。
 
-    ![始终复制][]
+    ![始终复制][始终复制]
 
 6.  在 Azure 项目的 ServiceDefinition.csdef 文件中，添加一个“Startup Task”元素，该元素将为每个 WorkerRole 和 WebRole 元素调用带参数的 startup.cmd。
 
@@ -119,13 +119,13 @@ AppDynamics 包含两个组件：
 
     其中：
 
-    -   *your controller host* 和 *your controller port* 是分配给你的帐户的控制器主机和端口，*your account name* 和 *your access key* 是 AppDynamics 分配给你的凭据。此信息位于你注册 AppDynamics 时收到的电子邮件中和你的 AppDynamic 主页上。请参阅[注册 AppDynamics 帐户][]。
+    -   *your controller host* 和 *your controller port* 是分配给你的帐户的控制器主机和端口，*your account name* 和 *your access key* 是 AppDynamics 分配给你的凭据。此信息位于你注册 AppDynamics 时收到的电子邮件中和你的 AppDynamic 主页上。请参阅[注册 AppDynamics 帐户][注册 AppDynamics 帐户]。
 
     -   *your application name* 是你为应用程序选择的名称。此名称用于在 AppDynamics 控制器界面中标识应用程序。
 
     你的 ServiceDefinition.csdef 文件将与下面类似：
 
-    ![服务定义][]
+    ![服务定义][服务定义]
 
 ## <a name="publish"></a>将 AppDynamics 检测的应用程序发布到 Azure
 

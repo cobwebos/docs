@@ -6,41 +6,41 @@
 
 各位冒险家，大家好！欢迎使用 MongoDB 即服务。在本教程中你将：
 
-1.  [设置数据库][] - Azure 应用商店 [MongoLab][] 外接程序将为你提供一个托管在 Azure 云中并由 MongoLab 的云数据库平台管理的 MongoDB 数据库。
-2.  [创建应用程序][] - 它将是一个用于维护任务列表的简单 Node.js 应用程序。
-3.  [部署应用程序][] - 通过将一些配置联系在一起，我们将使推送代码易如反掌。
-4.  [管理数据库][] - 最后，我们将向你演示 MongoLab 基于 Web 的数据库管理门户，在此你可轻松搜索、显示和修改数据。
+1.  [设置数据库][设置数据库] - Azure 应用商店 [MongoLab][MongoLab] 外接程序将为你提供一个托管在 Azure 云中并由 MongoLab 的云数据库平台管理的 MongoDB 数据库。
+2.  [创建应用程序][创建应用程序] - 它将是一个用于维护任务列表的简单 Node.js 应用程序。
+3.  [部署应用程序][部署应用程序] - 通过将一些配置联系在一起，我们将使推送代码易如反掌。
+4.  [管理数据库][管理数据库] - 最后，我们将向你演示 MongoLab 基于 Web 的数据库管理门户，在此你可轻松搜索、显示和修改数据。
 
 在本教程的任意时间，如有任何问题，请随时发送电子邮件至 [support@mongolab.com](mailto:support@mongolab.com)。
 
 在继续之前，请确保你已安装下列项：
 
--   [Node.js][] 版本 0.8.14+
+-   [Node.js][Node.js] 版本 0.8.14+
 
--   [Git][]
+-   [Git][Git]
 
-[WACOM.INCLUDE [create-account-and-websites-note][]]
+[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
 
 ## 快速入门
 
-如果你比较熟悉 Azure 应用商店，请使用本节快速入门。否则，请继续执行下面的[设置数据库][]。
+如果你比较熟悉 Azure 应用商店，请使用本节快速入门。否则，请继续执行下面的[设置数据库][设置数据库]。
 
 1.  打开 Azure 应用商店。
     
-    ![应用商店][]
+    ![应用商店][应用商店]
 2.  单击 MongoLab 外接程序。
     
     ![MongoLab][1]
 3.  单击“外接程序”列表中你的 MongoLab 外接程序，然后单击“连接信息”。
     
-    ![连接信息按钮][]
+    ![连接信息按钮][连接信息按钮]
 4.  将 MONGOLAB\_URI 复制到剪贴板。
-    ![连接信息屏幕][]
+    ![连接信息屏幕][连接信息屏幕]
 
     **此 URI 包含你的数据库用户名和密码。将其视为敏感信息而不要共享它。**
 5.  将该值添加到你的 Azure Web 应用程序的“配置”菜单中的“连接字符串”列表：
     
-    ![网站连接字符串][]
+    ![网站连接字符串][网站连接字符串]
 6.  对于“名称”，请输入 MONGOLAB\_URI。
 7.  对于“值”，请粘贴我们在上一节中获得的连接字符串。
 8.  在“类型”下拉列表中选择“自定义”（而不是默认的“SQLAzure”）。
@@ -59,11 +59,11 @@
 
 ## <a name="provision"></a>设置数据库
 
-[WACOM.INCLUDE [howto-provision-mongolab][]]
+[WACOM.INCLUDE [howto-provision-mongolab][howto-provision-mongolab]]
 
 ## <a name="create"></a>创建应用程序
 
-在本节中，你将使用 Node.js、Express 和 MongoDB 设置你的开发环境以及为基本任务列表 Web 应用程序布置代码。[Express][] 为 Node 提供视图控制器框架，而 [Mongoose][] 是用于在 Node 中与 MongoDB 通信的驱动程序。
+在本节中，你将使用 Node.js、Express 和 MongoDB 设置你的开发环境以及为基本任务列表 Web 应用程序布置代码。[Express][Express] 为 Node 提供视图控制器框架，而 [Mongoose][Mongoose] 是用于在 Node 中与 MongoDB 通信的驱动程序。
 
 ### 设置
 
@@ -317,7 +317,7 @@
 
     npm install azure-cli -g
 
-如果你已从 [Azure 开发人员中心][]安装 **Azure SDK for Node.js**，则应该已安装命令行工具。有关详细信息，请参阅[适用于 Mac 和 Linux 的 Azure 命令行工具][]。
+如果你已从 [Azure 开发人员中心][Azure 开发人员中心]安装 **Azure SDK for Node.js**，则应该已安装命令行工具。有关详细信息，请参阅[适用于 Mac 和 Linux 的 Azure 命令行工具][适用于 Mac 和 Linux 的 Azure 命令行工具]。
 
 虽然 Azure 命令行工具主要针对 Mac 和 Linux 用户而创建，但它们基于 Node.js，应该可在能够运行 Node 的任何系统上使用。
 
@@ -329,7 +329,7 @@
 
         azure account download
 
-    ![下载页面][]
+    ![下载页面][下载页面]
 
     文件下载应该会自动开始；如果没有自动开始，你可以单击该页面开头的链接手动下载文件。
 
@@ -355,15 +355,15 @@
 
 1.  在 Azure 门户中，单击“新建”。
      
-    ![新建][]
+    ![新建][新建]
 2.  选择“计算”\>“网站”\>“快速创建”。
       
-    ![创建网站][]
+    ![创建网站][创建网站]
 3.  输入 URL 前缀。选择你喜欢的名称，但要注意这必须是唯一的（可能无法使用“mymongoapp”）。
 4.  单击“创建网站”。
 5.  网站创建完成时，单击网站列表中的网站名称。将显示网站仪表板。
     
-    ![网站仪表板][]
+    ![网站仪表板][网站仪表板]
 6.  单击“速览”下的“设置 Git 发布”，然后输入你选择的 Git 用户名和密码。在推送到你的网站时，将会用到此密码（在步骤 9 中）。
 7.  如果你使用上述步骤创建了网站，以下命令将完成该过程。但是，如果你已拥有多个 Azure 网站，则可以跳过上述步骤并使用这一相同命令创建新的网站。从你的 **tasklist** 项目目录中：
 
@@ -373,8 +373,8 @@
 
     该`--git` 参数将创建：
     A. **tasklist** 文件夹中的一个本地 Git 存储库（如果尚不存在）。
-    A. 一个名为“azure”的 [Git remote][]，用于将应用程序发布到 Azure。
-    A. 一个 [iisnode.yml][] 文件，其中包含 Azure 用于托管 Node 应用程序的设置。
+    A. 一个名为“azure”的 [Git remote][Git remote]，用于将应用程序发布到 Azure。
+    A. 一个 [iisnode.yml][iisnode.yml] 文件，其中包含 Azure 用于托管 Node 应用程序的设置。
     A. 一个阻止将 node-modules 文件夹发布到 .git 的 .gitignore 文件。
 
     此命令完成后，你将看到与下面类似的输出。请注意，以 **Created web site at** 开头的行包含网站的 URL。
@@ -427,21 +427,21 @@
 
 #### 获取 MongoLab 连接字符串
 
-[WACOM.INCLUDE [howto-get-connectioninfo-mongolab][]]
+[WACOM.INCLUDE [howto-get-connectioninfo-mongolab][howto-get-connectioninfo-mongolab]]
 
 #### 将该连接字符串添加到网站的环境变量中
 
-[WACOM.INCLUDE [howto-save-connectioninfo-mongolab][]]
+[WACOM.INCLUDE [howto-save-connectioninfo-mongolab][howto-save-connectioninfo-mongolab]]
 
 ## 成功！
 
 从你的项目目录运行`azure site browse` 以便自动打开浏览器，或者打开浏览器并手动导航到你的网站 URL (myuniquesite.azurewebsites.net)：
 
-![显示空白 tasklist 的网页][]
+![显示空白 tasklist 的网页][显示空白 tasklist 的网页]
 
 ## <a name="manage"></a>管理数据库
 
-[WACOM.INCLUDE [howto-access-mongolab-ui][]]
+[WACOM.INCLUDE [howto-access-mongolab-ui][howto-access-mongolab-ui]]
 
 祝贺你！你刚刚启动了由 MongoLab 托管的 MongoDB 数据库提供支持的 Node.js 应用程序！现在，你拥有了一个 MongoLab 数据库，如有任何关于你的数据库的问题或疑虑，或者要获得有关 MongoDB 或 Node 驱动程序本身的帮助，请联系 [support@mongolab.com](mailto:support@mongolab.com)。祝你好运！
 

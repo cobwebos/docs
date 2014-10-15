@@ -6,26 +6,26 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/web-sites-godaddy-custom-domain-name/" title="网站" class="current">网站</a> | <a href="/en-us/documentation/articles/web-sites-godaddy-traffic-manager-custom-domain-name/" title="使用流量管理器的网站">使用流量管理器的网站</a></div>
 
-[WACOM.INCLUDE [介绍][]]
+[WACOM.INCLUDE [介绍][介绍]]
 
-本文提供了如何将从 [Go Daddy][] 购买的自定义域名用于 Azure 网站的说明。
+本文提供了如何将从 [Go Daddy][Go Daddy] 购买的自定义域名用于 Azure 网站的说明。
 
-[WACOM.INCLUDE [introfooter][]]
+[WACOM.INCLUDE [introfooter][introfooter]]
 
 本文内容：
 
--   [了解 DNS 记录][]
--   [为基本、共享或标准模式配置网站][]
--   [为自定义域添加 DNS 记录][]
--   [在网站上启用域][]
+-   [了解 DNS 记录][了解 DNS 记录]
+-   [为基本、共享或标准模式配置网站][为基本、共享或标准模式配置网站]
+-   [为自定义域添加 DNS 记录][为自定义域添加 DNS 记录]
+-   [在网站上启用域][在网站上启用域]
 
 ## <a name="understanding-records"></a>了解 DNS 记录
 
-[WACOM.INCLUDE [understandingdns][]]
+[WACOM.INCLUDE [understandingdns][understandingdns]]
 
 ## <a name="bkmk_configsharedmode"></a>为基本、共享或标准模式配置网站
 
-[WACOM.INCLUDE [modes][]]
+[WACOM.INCLUDE [modes][modes]]
 
 ## <a name="bkmk_configurecname"></a>为自定义域添加 DNS 记录
 
@@ -33,11 +33,11 @@
 
 1.  通过 GoDaddy.com 登录你的帐户，选择“我的帐户”，然后选择“管理你的域”。最后，选择要用于你的 Azure 网站的域名。
 
-    ![GoDaddy 的自定义域页面][]
+    ![GoDaddy 的自定义域页面][GoDaddy 的自定义域页面]
 
 2.  从“域详细信息”页面上，选择“DNS 区域文件”选项卡。此部分用于添加和修改用于你的域名的 DNS 记录。选择“编辑”按钮以显示“区域文件编辑器”。
 
-    ![“DNS 区域文件”选项卡][]
+    ![“DNS 区域文件”选项卡][“DNS 区域文件”选项卡]
 
 3.  “区域文件编辑器”为各个记录类型划分为不同部分，从 A 记录开始（作为第一部分列为“A (主机)”，后面是 CNAME 记录（列为“CNAME (别名)”）。若要添加新条目，请使用对应部分下面的“快速添加”按钮。若要编辑现有条目，请选择该条目并修改现有信息。
 
@@ -45,7 +45,7 @@
 
     -   添加 CNAME 记录时，必须将“主机”字段设置为你要使用的子域。例如，**www**。必须将“指向”字段设置为 Azure 网站的 **.azurewebsites.net** 域名。例如 **contoso.chinacloudsites.cn**。
 
-        ![区域文件编辑器][]
+        ![区域文件编辑器][区域文件编辑器]
 
         > [WACOM.NOTE] 如果你要使用 A 记录，则还必须使用以下配置之一添加 CNAME 记录：
         >
@@ -59,7 +59,7 @@
 
     -   在添加 A 记录时，必须将“主机”字段设置为 <**@*>\*（代表根域名，如 **contoso.com**）、\*（用于匹配多个子域的通配符），或者是你要使用的子域（例如 **www**）。必须将“指向”字段设置为你的 Azure 网站的 IP 地址。
 
-        ![记录的区域文件编辑器][]
+        ![记录的区域文件编辑器][记录的区域文件编辑器]
 
 4.  完成添加或修改记录之后，请单击“保存区域文件”，以保存这些更改。
 

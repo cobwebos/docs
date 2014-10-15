@@ -9,7 +9,7 @@
 
 ## WSGI 支持
 
-WSGI 是 [PEP 3333][] 描述的 Python 标准，用于定义 Web 服务器和 Python 之间的接口。它提供了用于使用 Python 编写各种 Web 应用程序和框架的标准化接口。当今常用的 Python Web 框架都使用 WSGI。Azure 网站支持任何此类框架；另外，高级用户甚至可以创作自己的框架，只要自定义处理程序遵循 WSGI 规范指南即可。
+WSGI 是 [PEP 3333][PEP 3333] 描述的 Python 标准，用于定义 Web 服务器和 Python 之间的接口。它提供了用于使用 Python 编写各种 Web 应用程序和框架的标准化接口。当今常用的 Python Web 框架都使用 WSGI。Azure 网站支持任何此类框架；另外，高级用户甚至可以创作自己的框架，只要自定义处理程序遵循 WSGI 规范指南即可。
 
 ## 网站创建
 
@@ -31,7 +31,7 @@ WSGI 是 [PEP 3333][] 描述的 Python 标准，用于定义 Web 服务器和 Py
 
 例如，我们使用基本 Python 应用程序，其中的基本 WSGI 处理程序指明利用 Azure 网站中的 Python 支持所需的最少工作量。此框架性 Python 应用程序稍后可用于开始创作各种解决方案，其复杂性范围从以下示例一直到完备的 Web 框架。
 
-下面是基本 WSGI 处理程序的代码。它类似于 [PEP 3333][] 规范建议作为符合 WSGI 的应用程序的起点的代码。我们将此内容保存到了在网站根下的 ConfigurePython 文件夹中创建的名为 ConfigurePython.py 的文件中：
+下面是基本 WSGI 处理程序的代码。它类似于 [PEP 3333][PEP 3333] 规范建议作为符合 WSGI 的应用程序的起点的代码。我们将此内容保存到了在网站根下的 ConfigurePython 文件夹中创建的名为 ConfigurePython.py 的文件中：
 
     def application(environ, start_response):
         status = '200 OK'
@@ -130,7 +130,7 @@ WSGI 是 [PEP 3333][] 描述的 Python 标准，用于定义 Web 服务器和 Py
   []: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-python-create-deploy-django-app/
   [PEP 3333]: http://www.python.org/dev/peps/pep-3333/
   [1]: http://www.windowsazure.cn/zh-cn/manage/services/web-sites/how-to-create-websites/
-  [0]: ./media/web-sites-python-configure/configure-python-create-website.png
+  []: ./media/web-sites-python-configure/configure-python-create-website.png
   [2]: ./media/web-sites-python-configure/configure-python-git.png
   [3]: ./media/web-sites-python-configure/configure-python-handler-mapping.png
   [4]: ./media/web-sites-python-configure/configure-python-app-settings.png

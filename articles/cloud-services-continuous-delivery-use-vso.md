@@ -2,23 +2,23 @@
 
 # 使用 Visual Studio Online 向 Azure 持续传送项目
 
-Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的常用 Team Foundation Server (TFS) 软件的云托管服务版本，该软件提供了可高度自定义的源代码和生成管理、敏捷开发和团队过程工作流、问题和工作项跟踪等功能。你可以将 Visual Studio Online 团队项目配置为自动生成并部署到 Azure 网站或云服务。有关如何使用本地 Team Foundation Server 设置持续生成和部署系统的信息，请参阅[在 Azure 中持续传送云服务][]。
+Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的常用 Team Foundation Server (TFS) 软件的云托管服务版本，该软件提供了可高度自定义的源代码和生成管理、敏捷开发和团队过程工作流、问题和工作项跟踪等功能。你可以将 Visual Studio Online 团队项目配置为自动生成并部署到 Azure 网站或云服务。有关如何使用本地 Team Foundation Server 设置持续生成和部署系统的信息，请参阅[在 Azure 中持续传送云服务][在 Azure 中持续传送云服务]。
 
-本教程假设你已安装 Visual Studio 2013 和 Azure SDK。如果你尚未安装 Visual Studio 2013，请在 [www.visualstudio.com][] 上选择“免费试用”链接以下载该软件。从[此处][]安装 Azure SDK。
+本教程假设你已安装 Visual Studio 2013 和 Azure SDK。如果你尚未安装 Visual Studio 2013，请在 [www.visualstudio.com][www.visualstudio.com] 上选择“免费试用”链接以下载该软件。从[此处][此处]安装 Azure SDK。
 
 若要使用 Visual Studio Online 将云服务设置为自动生成并部署到 Azure，请执行下列步骤：
 
--   [步骤 1：注册 Visual Studio Online。][]
+-   [步骤 1：注册 Visual Studio Online。][步骤 1：注册 Visual Studio Online。]
 
--   [步骤 2：将项目签入到源代码管理。][]
+-   [步骤 2：将项目签入到源代码管理。][步骤 2：将项目签入到源代码管理。]
 
--   [步骤 3：将项目连接到 Azure。][]
+-   [步骤 3：将项目连接到 Azure。][步骤 3：将项目连接到 Azure。]
 
--   [步骤 4：做出更改并触发重新生成和重新部署。][]
+-   [步骤 4：做出更改并触发重新生成和重新部署。][步骤 4：做出更改并触发重新生成和重新部署。]
 
--   [步骤 5：重新部署以前的生成（可选）][]
+-   [步骤 5：重新部署以前的生成（可选）][步骤 5：重新部署以前的生成（可选）]
 
--   [步骤 6：更改生产部署（仅限云服务）][]
+-   [步骤 6：更改生产部署（仅限云服务）][步骤 6：更改生产部署（仅限云服务）]
 
 ## <a name="step1"></a><span class="short-header">注册 Visual Studio Online</span>步骤 1：注册 Visual Studio Online
 
@@ -34,7 +34,7 @@ Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的�
 
     ![][2]
 
-4.  现在，你可以创建自己的第一个项目。输入项目名称和说明。选择要使用的版本控制系统。支持 Team Foundation 版本控制 (TFVC) 和 Git。可以在[使用版本控制][]中找到有关这些选项的详细信息。本演练假设你使用的是 TFVC。如果使用的是 Git，请参阅[使用 Visual Studio Online 和 Git 向 Azure 持续传送项目][]。然后，请选择你的组织使用的过程模板，并选择“创建项目”按钮。有关过程模板的详细信息，请参阅[处理团队项目组件，选择过程模板][]。
+4.  现在，你可以创建自己的第一个项目。输入项目名称和说明。选择要使用的版本控制系统。支持 Team Foundation 版本控制 (TFVC) 和 Git。可以在[使用版本控制][使用版本控制]中找到有关这些选项的详细信息。本演练假设你使用的是 TFVC。如果使用的是 Git，请参阅[使用 Visual Studio Online 和 Git 向 Azure 持续传送项目][使用 Visual Studio Online 和 Git 向 Azure 持续传送项目]。然后，请选择你的组织使用的过程模板，并选择“创建项目”按钮。有关过程模板的详细信息，请参阅[处理团队项目组件，选择过程模板][处理团队项目组件，选择过程模板]。
 
     ![][3]
 
@@ -44,7 +44,7 @@ Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的�
 
 ## <a name="step2"> </a><span class="short-header">将项目签入到源代码管理。</span>步骤 2：将项目签入到源代码管理
 
-1.  在 Visual Studio 中，打开你要部署的解决方案或者创建新的解决方案。你可以通过执行本演练中的步骤来部署网站或云服务（Azure 应用程序）。如果你想要创建新解决方案，请创建新的 Azure 云服务项目或新的 ASP.NET MVC 项目。确保项目以 .NET Framework 4 或 4.5 为目标。如果你要创建云服务项目，请添加 ASP.NET MVC Web 角色和辅助角色，并为 Web 角色选择 Internet 应用程序。出现提示时，请选择“Internet 应用程序”。如果你想要创建网站，请选择 ASP.NET Web 应用程序项目模板，然后选择 MVC。请参阅 [Azure 和 ASP.NET 入门][]。
+1.  在 Visual Studio 中，打开你要部署的解决方案或者创建新的解决方案。你可以通过执行本演练中的步骤来部署网站或云服务（Azure 应用程序）。如果你想要创建新解决方案，请创建新的 Azure 云服务项目或新的 ASP.NET MVC 项目。确保项目以 .NET Framework 4 或 4.5 为目标。如果你要创建云服务项目，请添加 ASP.NET MVC Web 角色和辅助角色，并为 Web 角色选择 Internet 应用程序。出现提示时，请选择“Internet 应用程序”。如果你想要创建网站，请选择 ASP.NET Web 应用程序项目模板，然后选择 MVC。请参阅 [Azure 和 ASP.NET 入门][Azure 和 ASP.NET 入门]。
 
 2.  打开解决方案的上下文菜单，然后选择“将解决方案添加到源代码管理”。
 
@@ -68,7 +68,7 @@ Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的�
 
 ## <a name="step3"> </a><span class="short-header">将项目连接到 Azure</span>步骤 3：将项目连接到 Azure
 
-1.  此时你已拥有一个包含某些源代码的 VSO 团队项目，可以将该团队项目连接到 Azure。在 [Azure 门户][]中，选择云服务或网站，或通过选择左下角的 + 图标并依次选择“云服务”或“网站”和“快速创建”来创建新的云服务或网站。选择“使用 Visual Studio Online 设置发布”链接。
+1.  此时你已拥有一个包含某些源代码的 VSO 团队项目，可以将该团队项目连接到 Azure。在 [Azure 门户][Azure 门户]中，选择云服务或网站，或通过选择左下角的 + 图标并依次选择“云服务”或“网站”和“快速创建”来创建新的云服务或网站。选择“使用 Visual Studio Online 设置发布”链接。
 
     ![][10]
 
@@ -229,7 +229,7 @@ Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的�
      </td>
     > </tr>
     > </table>
-     如果存储帐户属性保留为空，Azure 将搜索该属性。如果存在与云服务同名的存储帐户，则将使用该帐户。否则，Azure 将使用其他存储帐户；或者如果没有存储帐户，Azure 将创建一个存储帐户。存储帐户在 Azure 中为存储文件和其他数据提供了一个位置。有关详细信息，请参阅[什么是存储帐户？][]。
+     如果存储帐户属性保留为空，Azure 将搜索该属性。如果存在与云服务同名的存储帐户，则将使用该帐户。否则，Azure 将使用其他存储帐户；或者如果没有存储帐户，Azure 将创建一个存储帐户。存储帐户在 Azure 中为存储文件和其他数据提供了一个位置。有关详细信息，请参阅[什么是存储帐户？][什么是存储帐户？]。
 
 如果你在使用多个服务配置（.cscfg 文件），可以在“生成”，“高级”，“MSBuild 参数”设置中指定所需的服务配置。例如，若要使用 ServiceConfiguration.Test.cscfg，请设置 MSBuild 参数行选项 /p:TargetProfile=Test。
 
@@ -243,7 +243,7 @@ Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的�
 
     ![][29]
 
-3.  在 [Azure 门户][]中，可以在选定过渡环境后在“部署”选项卡上查看关联的部署。
+3.  在 [Azure 门户][Azure 门户]中，可以在选定过渡环境后在“部署”选项卡上查看关联的部署。
 
     ![][30]
 
@@ -271,7 +271,7 @@ Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的�
 
 ![][35]
 
-有关详细信息，请参阅 [Visual Studio Online][]。如果使用的是 Git，请参阅[在 Git 中共享代码][]和[从源代码管理发布到 Azure 网站][]。
+有关详细信息，请参阅 [Visual Studio Online][Visual Studio Online]。如果使用的是 Git，请参阅[在 Git 中共享代码][在 Git 中共享代码]和[从源代码管理发布到 Azure 网站][从源代码管理发布到 Azure 网站]。
 
   [在 Azure 中持续传送云服务]: ../cloud-services-dotnet-continuous-delivery
   [www.visualstudio.com]: http://www.visualstudio.com
@@ -282,7 +282,7 @@ Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的�
   [步骤 4：做出更改并触发重新生成和重新部署。]: #step4
   [步骤 5：重新部署以前的生成（可选）]: #step5
   [步骤 6：更改生产部署（仅限云服务）]: #step6
-  [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
+  []: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
   [1]: ./media/cloud-services-continuous-delivery-use-vso/tfs36.PNG
   [https://\<accountname\>.visualstudio.com]: https://<accountname>.visualstudio.com
   [2]: ./media/cloud-services-continuous-delivery-use-vso/tfs37.PNG

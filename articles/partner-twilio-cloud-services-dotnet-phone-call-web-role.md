@@ -4,15 +4,15 @@
 
 本指南演示如何使用 Twilio 从 Azure 中托管的网页发起呼叫。生成的应用程序将提示用户输入电话呼叫值，如以下屏幕截图中所示。
 
-![使用 Twilio 和 ASP.NET 的 Azure 呼叫窗体][]
+![使用 Twilio 和 ASP.NET 的 Azure 呼叫窗体][使用 Twilio 和 ASP.NET 的 Azure 呼叫窗体]
 
 ## 目录
 
--   [先决条件][]
--   [如何：创建用于发起呼叫的 Web 窗体][]
--   [如何：创建用于发起呼叫的代码][]
--   [后续步骤][]
--   [另请参阅][]
+-   [先决条件][先决条件]
+-   [如何：创建用于发起呼叫的 Web 窗体][如何：创建用于发起呼叫的 Web 窗体]
+-   [如何：创建用于发起呼叫的代码][如何：创建用于发起呼叫的代码]
+-   [后续步骤][后续步骤]
+-   [另请参阅][另请参阅]
 
 ## <a name="twilio-prereqs"></a> 先决条件
 
@@ -145,7 +145,7 @@
 
 将发起呼叫，并显示 Twilio 终结点、API 版本和呼叫状态。以下屏幕截图显示了示例运行的输出。
 
-![使用 Twilio 和 ASP.NET 的 Azure 呼叫响应][]
+![使用 Twilio 和 ASP.NET 的 Azure 呼叫响应][使用 Twilio 和 ASP.NET 的 Azure 呼叫响应]
 
 有关 TwiML 的详细信息可在 [][4]<http://www.twilio.com/docs/api/twiml></a> 中找到。有关 \<Say\> 和其他 Twilio 谓词的详细信息可在 [][5]<http://www.twilio.com/docs/api/twiml/say></a> 中找到。
 
@@ -153,14 +153,14 @@
 
 提供此代码是为了演示在 Azure 上的 ASP.NET Web 角色中使用 Twilio 的基本功能。在生产中部署到 Azure 之前，你可能希望添加更多错误处理功能或其他功能。例如：
 
--   你可以使用 Azure Blob 存储或 Azure SQL Database 实例存储电话号码和呼叫文本，而不使用 Web 窗体。有关在 Azure 中使用 Blob 的信息，请参阅[如何在 .NET 中使用 Azure Blob 存储服务][]。有关使用 SQL Database 的信息，请参阅[如何在 .NET 应用程序中使用 Azure SQL Database][]。
--   你可以使用 RoleEnvironment.getConfigurationSettings 从部署的配置设置中检索 Twilio 帐户 ID 和身份验证令牌，而不是在窗体中对这些值进行硬编码。有关 RoleEnvironment 类的信息，请参阅 [Microsoft.WindowsAzure.ServiceRuntime 命名空间][]。
+-   你可以使用 Azure Blob 存储或 Azure SQL Database 实例存储电话号码和呼叫文本，而不使用 Web 窗体。有关在 Azure 中使用 Blob 的信息，请参阅[如何在 .NET 中使用 Azure Blob 存储服务][如何在 .NET 中使用 Azure Blob 存储服务]。有关使用 SQL Database 的信息，请参阅[如何在 .NET 应用程序中使用 Azure SQL Database][如何在 .NET 应用程序中使用 Azure SQL Database]。
+-   你可以使用 RoleEnvironment.getConfigurationSettings 从部署的配置设置中检索 Twilio 帐户 ID 和身份验证令牌，而不是在窗体中对这些值进行硬编码。有关 RoleEnvironment 类的信息，请参阅 [Microsoft.WindowsAzure.ServiceRuntime 命名空间][Microsoft.WindowsAzure.ServiceRuntime 命名空间]。
 -   阅读 [][6]<https://www.twilio.com/docs/security></a> 上的 Twilio 安全准则。
 -   在 [][7]<https://www.twilio.com/docs></a> 上了解有关 Twilio 的详细信息。
 
 ## <span id="seealso"></span></a>另请参阅
 
--   [如何使用 Twilio 在 Web 角色中实现语音和短信功能（可能为英文页面）][]
+-   [如何使用 Twilio 在 Web 角色中实现语音和短信功能（可能为英文页面）][如何使用 Twilio 在 Web 角色中实现语音和短信功能（可能为英文页面）]
 
   [使用 Twilio 和 ASP.NET 的 Azure 呼叫窗体]: ./media/partner-twilio-cloud-services-dotnet-phone-call-web-role/WA_twilio_dotnet_basic_form.png
   [先决条件]: #twilio-prereqs

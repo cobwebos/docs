@@ -4,24 +4,24 @@
 
 你可以在 Azure 应用程序中使用性能计数器来收集可帮助确定系统瓶颈以及微调系统和应用程序性能的数据。可收集适用于 Windows Server 2008、Windows Server 2012、IIS 和 ASP.NET 的性能计数器，并且可将其用于确定 Azure 应用程序的运行状况。
 
-本主题介绍如何使用 diagnostics.wadcfg 配置文件启用应用程序中的性能计数器。有关在 [Azure 管理门户][]中监视应用程序性能的信息，请参阅[如何监视云服务][]。有关创建日志记录和跟踪策略以及使用诊断和其他技术排查问题及优化 Azure 应用程序的其他深入指南，请参阅[有关开发 Azure 应用程序的问题排查最佳实践][]。
+本主题介绍如何使用 diagnostics.wadcfg 配置文件启用应用程序中的性能计数器。有关在 [Azure 管理门户][Azure 管理门户]中监视应用程序性能的信息，请参阅[如何监视云服务][如何监视云服务]。有关创建日志记录和跟踪策略以及使用诊断和其他技术排查问题及优化 Azure 应用程序的其他深入指南，请参阅[有关开发 Azure 应用程序的问题排查最佳实践][有关开发 Azure 应用程序的问题排查最佳实践]。
 
 此任务包括下列步骤：
 
--   [先决条件][]
--   [步骤 1：通过性能计数器收集和存储数据][]
--   [步骤 2：（可选）创建自定义性能计数器][]
--   [步骤 3：查询性能计数器数据][]
--   [后续步骤][]
--   [其他资源][]
+-   [先决条件][先决条件]
+-   [步骤 1：通过性能计数器收集和存储数据][步骤 1：通过性能计数器收集和存储数据]
+-   [步骤 2：（可选）创建自定义性能计数器][步骤 2：（可选）创建自定义性能计数器]
+-   [步骤 3：查询性能计数器数据][步骤 3：查询性能计数器数据]
+-   [后续步骤][后续步骤]
+-   [其他资源][其他资源]
 
 ## <a name="prereqs"> </a> 先决条件
 
-本文假定你已将诊断监视器导入应用程序中，并且已将 diagnostics.wadcfg 配置文件添加到 Visual Studio 解决方案中。有关详细信息，请参阅[在 Azure 中启用诊断][]中的步骤 1 和步骤 2。
+本文假定你已将诊断监视器导入应用程序中，并且已将 diagnostics.wadcfg 配置文件添加到 Visual Studio 解决方案中。有关详细信息，请参阅[在 Azure 中启用诊断][在 Azure 中启用诊断]中的步骤 1 和步骤 2。
 
 ## <a name="step1"> </a>步骤 1：通过性能计数器收集和存储数据
 
-在将 diagnostics.wadcfg 文件添加到 Visual Studio 解决方案中后，你可以在 Azure 应用程序中配置性能计数器数据的收集和存储。通过将性能计数器添加到 diagnostics.wadcfg 文件可做到这一点。首先在实例中收集诊断数据（包括性能计数器）。随后该数据将保留到 Azure 表服务中的 **WADPerformanceCountersTable** 表中，因此你还需要指定应用程序中的存储帐户。如果在计算模拟器中本地测试应用程序，则也可在存储模拟器中本地存储诊断数据。你必须先转到 [Azure 管理门户][]并创建存储帐户，然后才能存储诊断数据。最佳做法是将存储帐户置于与 Azure 应用程序相同的地理位置，从而消除外部宽带成本并减少延迟。
+在将 diagnostics.wadcfg 文件添加到 Visual Studio 解决方案中后，你可以在 Azure 应用程序中配置性能计数器数据的收集和存储。通过将性能计数器添加到 diagnostics.wadcfg 文件可做到这一点。首先在实例中收集诊断数据（包括性能计数器）。随后该数据将保留到 Azure 表服务中的 **WADPerformanceCountersTable** 表中，因此你还需要指定应用程序中的存储帐户。如果在计算模拟器中本地测试应用程序，则也可在存储模拟器中本地存储诊断数据。你必须先转到 [Azure 管理门户][Azure 管理门户]并创建存储帐户，然后才能存储诊断数据。最佳做法是将存储帐户置于与 Azure 应用程序相同的地理位置，从而消除外部宽带成本并减少延迟。
 
 ### 将性能计数器添加到 diagnostics.wadcfg 文件
 
@@ -50,7 +50,7 @@
         <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Jit(_Global_)\% Time in Jit" sampleRate="PT30S" />
         </PerformanceCounters>    
 
-**bufferQuotaInMB** 特性，指定可用于数据收集类型（Azure 日志、IIS 日志等）的文件系统存储的最大量。默认值为 0。在达到配额时，将删除最旧的数据，因为将添加新数据。所有 **bufferQuotaInMB** 属性的值的和必须大于 **OverallQuotaInMB** 特性的值。有关确定收集诊断数据需要多少存储的更多详细讨论，请参阅[有关开发 Azure 应用程序的问题排查最佳实践][]中的“设置 WAD”部分。
+**bufferQuotaInMB** 特性，指定可用于数据收集类型（Azure 日志、IIS 日志等）的文件系统存储的最大量。默认值为 0。在达到配额时，将删除最旧的数据，因为将添加新数据。所有 **bufferQuotaInMB** 属性的值的和必须大于 **OverallQuotaInMB** 特性的值。有关确定收集诊断数据需要多少存储的更多详细讨论，请参阅[有关开发 Azure 应用程序的问题排查最佳实践][有关开发 Azure 应用程序的问题排查最佳实践]中的“设置 WAD”部分。
 
 **scheduledTransferPeriod** 特性，指定计划的数据传输之间的时间间隔，取整为最接近的分钟数。在下面的示例中，将其设置为 PT30M（30 分钟）。通过将传输时间段设置为一个较小的值（例如 1 分钟），将对应用程序在生产中的性能产生负面影响，但这可能对使诊断在测试时快速运行很有用。计划的传输时间段应足够小以确保不在实例上覆盖诊断数据，但也应足够大以确保不会影响应用程序的性能。
 
@@ -154,7 +154,7 @@
 
 ## <a name="step3"> </a>步骤 3：查询性能计数器数据
 
-在应用程序部署完成并运行后，诊断监视器将开始收集性能计数器并将该数据保存到 Azure 存储空间。你使用 Cerebrata 提供的工具（例如 **Visual Studio 中的服务器资源管理器**、[Azure 存储资源管理器][]或 [Azure 诊断管理器][]）查看 **WADPerformanceCountersTable** 表中的性能计数器数据。你还可以使用 [C\#][]、[Java][]、[Node.js][]、[Python][] 或 [PHP][] 以编程方式查询表服务。
+在应用程序部署完成并运行后，诊断监视器将开始收集性能计数器并将该数据保存到 Azure 存储空间。你使用 Cerebrata 提供的工具（例如 **Visual Studio 中的服务器资源管理器**、[Azure 存储资源管理器][Azure 存储资源管理器]或 [Azure 诊断管理器][Azure 诊断管理器]）查看 **WADPerformanceCountersTable** 表中的性能计数器数据。你还可以使用 [C\#][C\#]、[Java][Java]、[Node.js][Node.js]、[Python][Python] 或 [PHP][PHP] 以编程方式查询表服务。
 
 以下 C# 示例显示针对 **WADPerformanceCountersTable** 表的简单查询并将诊断数据保存到 CSV 文件中。将性能计数器保存到 CSV 文件后，你可以使用 Microsoft Excel 中的图形功能或使用其他一些工具来使数据可视化。请务必添加对 Microsoft.WindowsAzure.Storage.dll（它包含在 2012 年 10 月版的 Azure SDK for .NET 和更高版本中）的引用。程序集安装在 %Program Files%\\Microsoft SDKs\\Azure.NET SDK\\version-num\\ref\\ 目录中。
 
@@ -231,16 +231,16 @@
 
 现在，你已了解收集性能计数器的基础知识，单击下面的链接可了解如何实现更复杂的故障排除方案。
 
--   [有关开发 Azure 应用程序的问题排查最佳实践][]
--   [如何监视云服务][]
--   [如何使用自动缩放应用程序块][]
--   [构建灵活的、可复原的云应用程序][]
+-   [有关开发 Azure 应用程序的问题排查最佳实践][有关开发 Azure 应用程序的问题排查最佳实践]
+-   [如何监视云服务][如何监视云服务]
+-   [如何使用自动缩放应用程序块][如何使用自动缩放应用程序块]
+-   [构建灵活的、可复原的云应用程序][构建灵活的、可复原的云应用程序]
 
 ## <a name="additional"> </a>其他资源
 
--   [在 Azure 中启用诊断][]
--   [使用 Azure 诊断收集日志记录数据][]
--   [调试 Azure 应用程序][]
+-   [在 Azure 中启用诊断][在 Azure 中启用诊断]
+-   [使用 Azure 诊断收集日志记录数据][使用 Azure 诊断收集日志记录数据]
+-   [调试 Azure 应用程序][调试 Azure 应用程序]
 
   [Azure 管理门户]: http://manage.windowsazure.cn
   [如何监视云服务]: https://www.windowsazure.com/zh-cn/manage/services/cloud-services/how-to-monitor-a-cloud-service/

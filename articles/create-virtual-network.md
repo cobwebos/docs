@@ -2,9 +2,9 @@
 
 # 在 Azure 中创建虚拟网络
 
-本教程将指导你完成使用 Azure 管理门户创建基本 Azure 虚拟网络的步骤。有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述][]。
+本教程将指导你完成使用 Azure 管理门户创建基本 Azure 虚拟网络的步骤。有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述][Azure 虚拟网络概述]。
 
-本教程假定你之前未使用过 Azure。其目的是帮助你熟悉创建虚拟网络所需的步骤。如果你要查找有关虚拟网络的设计方案和高级信息，请参见 [Azure 虚拟网络概述][]。
+本教程假定你之前未使用过 Azure。其目的是帮助你熟悉创建虚拟网络所需的步骤。如果你要查找有关虚拟网络的设计方案和高级信息，请参见 [Azure 虚拟网络概述][Azure 虚拟网络概述]。
 
 完成本教程后，你将拥有一个虚拟网络，你可将 Azure 服务和虚拟机部署到该网络。
 
@@ -13,9 +13,9 @@
 <p>本教程不演练创建跨界配置的过程。有关演练创建虚拟网络进行站点到站点跨界连接（即连接到位于你公司内的 Active Directory 或 SharePoint）的教程，请参阅<a href="/zh-cn/manage/services/networking/cross-premises-connectivity/">创建虚拟网络进行跨界连接</a>。</p> 
 </div>
 
-有关其他虚拟网络配置过程和设置，请参阅 [Azure 虚拟网络配置任务][]。
+有关其他虚拟网络配置过程和设置，请参阅 [Azure 虚拟网络配置任务][Azure 虚拟网络配置任务]。
 
-有关在 Azure 虚拟机上部署 AD DS 的指南，请参阅[在 Azure 虚拟机中部署 Windows Server Active Directory 的准则][]。
+有关在 Azure 虚拟机上部署 AD DS 的指南，请参阅[在 Azure 虚拟机中部署 Windows Server Active Directory 的准则][在 Azure 虚拟机中部署 Windows Server Active Directory 的准则]。
 
 ## 目标
 
@@ -31,13 +31,13 @@
 
 **创建仅包含云的虚拟网络：**
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 
 2.  在屏幕左下角，单击“新建”。在导航窗格中，单击“网络”，然后单击“虚拟网络”。单击“自定义创建”以启动配置向导。
 
     ![][]
 
-3.  在“虚拟网络详细信息”页上，输入以下信息，然后单击右下角的“下一步”箭头。有关详细信息页上各项设置的详细信息，请参阅[关于使用管理门户配置虚拟网络][]中的“虚拟网络详细信息页”部分。
+3.  在“虚拟网络详细信息”页上，输入以下信息，然后单击右下角的“下一步”箭头。有关详细信息页上各项设置的详细信息，请参阅[关于使用管理门户配置虚拟网络][关于使用管理门户配置虚拟网络]中的“虚拟网络详细信息页”部分。
 
 -   **名称 -** 为虚拟网络命名。键入 *YourVirtualNetwork*。
 
@@ -49,7 +49,7 @@
 
     ![][1]
 
-1.  在“DNS 服务器和 VPN 连接”页上，输入以下信息，然后单击右下角的“下一步”箭头。有关此页上各项设置的详细信息，请参阅[关于使用管理门户配置虚拟网络][]中的“DNS 服务器和 VPN 连接”页。
+1.  在“DNS 服务器和 VPN 连接”页上，输入以下信息，然后单击右下角的“下一步”箭头。有关此页上各项设置的详细信息，请参阅[关于使用管理门户配置虚拟网络][关于使用管理门户配置虚拟网络]中的“DNS 服务器和 VPN 连接”页。
 
     -   **DNS 服务器-可选 -** 输入要使用的 DNS 服务器名称和 IP 地址。此设置不创建 DNS 服务器，而是引用已存在的 DNS 服务器。
 
@@ -62,7 +62,7 @@
 
     ![][2]
 
-2.  在“虚拟网络地址空间”页上，输入以下信息，然后单击右下角的复选框以配置网络。地址空间必须为用 CIDR 表示法指定的专用地址范围：10.0.0.0/8、172.16.0.0/12 或 192.168.0.0/16（由 RFC 1918 指定）。有关此页面上各项设置的详细信息，请参阅[关于使用管理门户配置虚拟网络][]中的“虚拟网络地址空间”页。
+2.  在“虚拟网络地址空间”页上，输入以下信息，然后单击右下角的复选框以配置网络。地址空间必须为用 CIDR 表示法指定的专用地址范围：10.0.0.0/8、172.16.0.0/12 或 192.168.0.0/16（由 RFC 1918 指定）。有关此页面上各项设置的详细信息，请参阅[关于使用管理门户配置虚拟网络][关于使用管理门户配置虚拟网络]中的“虚拟网络地址空间”页。
 
     -   **地址空间：**单击右上角的“CIDR”，然后输入以下信息：
 
@@ -86,30 +86,30 @@
 
 4.  创建虚拟网络后，你可以继续学习以下教程：
 
-    -   [将虚拟机添加到虚拟网络][] – 使用此基本教程可将虚拟机安装到虚拟网络。
+    -   [将虚拟机添加到虚拟网络][将虚拟机添加到虚拟网络] – 使用此基本教程可将虚拟机安装到虚拟网络。
 
-    -   有关虚拟机和安装选项的详细信息，请参阅[如何创建自定义虚拟机][]和 [Azure 虚拟机][]。
+    -   有关虚拟机和安装选项的详细信息，请参阅[如何创建自定义虚拟机][如何创建自定义虚拟机]和 [Azure 虚拟机][Azure 虚拟机]。
 
-    -   [在 Azure 中安装新的 Active Directory 林][] - 使用本教程可在不连接任何其他网络的情况下安装新的 Active Directory 林。本教程将介绍创建虚拟机 (VM) 以安装新林所需的特定步骤。如果你计划使用本教程，请不要通过管理门户创建任何虚拟机。
+    -   [在 Azure 中安装新的 Active Directory 林][在 Azure 中安装新的 Active Directory 林] - 使用本教程可在不连接任何其他网络的情况下安装新的 Active Directory 林。本教程将介绍创建虚拟机 (VM) 以安装新林所需的特定步骤。如果你计划使用本教程，请不要通过管理门户创建任何虚拟机。
 
 ## 另请参阅
 
--   [Azure 虚拟网络概述][]
+-   [Azure 虚拟网络概述][Azure 虚拟网络概述]
 
--   [Azure 虚拟网络常见问题解答][]
+-   [Azure 虚拟网络常见问题解答][Azure 虚拟网络常见问题解答]
 
--   [Azure 虚拟网络配置任务][]
+-   [Azure 虚拟网络配置任务][Azure 虚拟网络配置任务]
 
--   [使用网络配置文件配置虚拟网络（可能为英文页面）][]
+-   [使用网络配置文件配置虚拟网络（可能为英文页面）][使用网络配置文件配置虚拟网络（可能为英文页面）]
 
--   [Azure 名称解析概述][]
+-   [Azure 名称解析概述][Azure 名称解析概述]
 
   [Azure 虚拟网络概述]: http://msdn.microsoft.com/zh-cn/library/azure/jj156007.aspx
   [创建虚拟网络进行跨界连接]: /zh-cn/manage/services/networking/cross-premises-connectivity/
   [Azure 虚拟网络配置任务]: http://msdn.microsoft.com/zh-cn/library/azure/jj156206.aspx
   [在 Azure 虚拟机中部署 Windows Server Active Directory 的准则]: http://msdn.microsoft.com/zh-cn/library/azure/jj156090.aspx
   [Azure 管理门户]: http://manage.windowsazure.cn/
-  [0]: ./media/create-virtual-network/createVNet_01_OpenVirtualNetworkWizard.png
+  []: ./media/create-virtual-network/createVNet_01_OpenVirtualNetworkWizard.png
   [关于使用管理门户配置虚拟网络]: http://msdn.microsoft.com/zh-cn/library/azure/jj156074.aspx
   [1]: ./media/create-virtual-network/createVNet_02_VirtualNetworkDetails.png
   [Azure 名称解析概述]: http://msdn.microsoft.com/zh-cn/library/azure/jj156088.aspx

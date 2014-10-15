@@ -4,45 +4,45 @@
 
 # 使用自定义选项在 HDInsight 中设置 Hadoop 群集
 
-在本文中，你将了解如何通过下述不同方法，使用自定义选项在 Azure HDInsight 上设置 Hadoop 群集 - 使用 Azure 管理门户、PowerShell、命令行工具或 HDInsight .NET SDK。本文将会介绍 Hadoop 群集的设置。有关如何设置 HBase 群集的说明，请参阅[在 HDInsight 中设置 HBase 群集][]。请参阅 [Hadoop 与 HBase 之间的差别][]，以了解为何要选择其中的某一种群集。
+在本文中，你将了解如何通过下述不同方法，使用自定义选项在 Azure HDInsight 上设置 Hadoop 群集 - 使用 Azure 管理门户、PowerShell、命令行工具或 HDInsight .NET SDK。本文将会介绍 Hadoop 群集的设置。有关如何设置 HBase 群集的说明，请参阅[在 HDInsight 中设置 HBase 群集][在 HDInsight 中设置 HBase 群集]。请参阅 [Hadoop 与 HBase 之间的差别][Hadoop 与 HBase 之间的差别]，以了解为何要选择其中的某一种群集。
 
 ## 什么是 HDInsight 群集？
 
-你是否曾经疑惑过，为何我们每次谈论 Hadoop 或 BigData 时都会提到群集？这是因为，Hadoop 能够针对分散在不同群集节点上的大型数据实现分布式处理。群集采用主/从体系结构，其中包括一个主节点（又称头节点或命名节点）和若干个从节点（又称数据节点）。有关详细信息，请参阅 [Apache Hadoop][]。
+你是否曾经疑惑过，为何我们每次谈论 Hadoop 或 BigData 时都会提到群集？这是因为，Hadoop 能够针对分散在不同群集节点上的大型数据实现分布式处理。群集采用主/从体系结构，其中包括一个主节点（又称头节点或命名节点）和若干个从节点（又称数据节点）。有关详细信息，请参阅 [Apache Hadoop][Apache Hadoop]。
 
-HDInsight 群集会抽象化 Hadoop 实现详细信息，因此你不必担心如何与不同的群集节点通信。当你设置 HDInsight 群集时，便设置了包含 Hadoop 和相关应用程序的 Azure 计算资源。有关详细信息，请参阅 [HDInsight 中的 Hadoop 简介][]。
+HDInsight 群集会抽象化 Hadoop 实现详细信息，因此你不必担心如何与不同的群集节点通信。当你设置 HDInsight 群集时，便设置了包含 Hadoop 和相关应用程序的 Azure 计算资源。有关详细信息，请参阅 [HDInsight 中的 Hadoop 简介][HDInsight 中的 Hadoop 简介]。
 
-本文提供有关群集的不同设置方法的说明。如果你正在寻求通过一种快捷的方法设置群集，请参阅 [Azure HDInsight 入门][]。
+本文提供有关群集的不同设置方法的说明。如果你正在寻求通过一种快捷的方法设置群集，请参阅 [Azure HDInsight 入门][Azure HDInsight 入门]。
 
 **先决条件：**
 
 在开始阅读本文前，你必须具有：
 
--   Azure 订阅。Azure 是基于订阅的平台。HDInsight PowerShell cmdlet 通过订阅执行任务。有关获取订阅的详细信息，请参阅[购买选项][]或[免费试用][]。
+-   Azure 订阅。Azure 是基于订阅的平台。HDInsight PowerShell cmdlet 通过订阅执行任务。有关获取订阅的详细信息，请参阅[购买选项][购买选项]或[免费试用][免费试用]。
 
 <!-- [Member Offers][azure-member-offers],-->
 
 ## 本文内容
 
--   [使用 Azure 管理门户][]
--   [使用 Azure PowerShell][]
--   [使用跨平台命令行][]
--   [使用 HDInsight .NET SDK][]
--   [后续步骤][]
+-   [使用 Azure 管理门户][使用 Azure 管理门户]
+-   [使用 Azure PowerShell][使用 Azure PowerShell]
+-   [使用跨平台命令行][使用跨平台命令行]
+-   [使用 HDInsight .NET SDK][使用 HDInsight .NET SDK]
+-   [后续步骤][后续步骤]
 
 ## <span id="portal"></span></a>使用 Azure 管理门户
 
-HDInsight 群集使用 Azure Blob 存储容器作为默认文件系统。创建 HDInsight 群集前，要先具有位于同一数据中心的 Azure 存储帐户。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。有关创建 Azure 存储帐户的详细信息，请参阅[如何创建存储帐户][]。
+HDInsight 群集使用 Azure Blob 存储容器作为默认文件系统。创建 HDInsight 群集前，要先具有位于同一数据中心的 Azure 存储帐户。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][将 Azure Blob 存储与 HDInsight 配合使用]。有关创建 Azure 存储帐户的详细信息，请参阅[如何创建存储帐户][如何创建存储帐户]。
 
 > [WACOM.NOTE] 目前，只有**亚洲东部**、**亚洲东南部**、**欧洲北部**、**欧洲西部**、**美国东部**、**美国西部**、**美国中北部**、**中国东部**、**中国北部**和**美国中南部**区域可以托管 HDInsight 群集。
 
 **使用“自定义创建”选项创建 HDInsight 群集**
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  单击页面底部的“+ 新建'，然后依次单击“数据服务”、“HDINSIGHT”和“自定义创建”。
 3.  从“群集详细信息”页上，键入或选择以下值：
 
-    ![HDI.CustomCreateCluster][]
+    ![HDI.CustomCreateCluster][HDI.CustomCreateCluster]
 
     <table>
     <colgroup>
@@ -88,7 +88,7 @@ HDInsight 群集使用 Azure Blob 存储容器作为默认文件系统。创建 
 
 5.  在“配置群集用户”页上提供以下值：
 
-    ![HDI.CustomCreateCluster.ClusterUser][]
+    ![HDI.CustomCreateCluster.ClusterUser][HDI.CustomCreateCluster.ClusterUser]
 
     | 属性                      | 值                                                                                                                                                                   |
     |---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -105,7 +105,7 @@ HDInsight 群集使用 Azure Blob 存储容器作为默认文件系统。创建 
 
 6.  在“存储帐户”页上提供以下值：
 
-    ![HDI.CustomCreateCluster.StorageAccount][]
+    ![HDI.CustomCreateCluster.StorageAccount][HDI.CustomCreateCluster.StorageAccount]
 
     <table>
     <colgroup>
@@ -155,7 +155,7 @@ HDInsight 群集使用 Azure Blob 存储容器作为默认文件系统。创建 
 
 7.  在“存储帐户”页上，输入其他存储帐户的帐户信息：
 
-    ![HDI.CustomCreateCluster.AddOnStorage][]
+    ![HDI.CustomCreateCluster.AddOnStorage][HDI.CustomCreateCluster.AddOnStorage]
 
     同样，你可以使用相应的选项从现有帐户中做出选择，创建新存储，或者使用其他 Azure 订阅中的存储。提供值的过程类似于前面的步骤。
 
@@ -165,7 +165,7 @@ HDInsight 群集使用 Azure Blob 存储容器作为默认文件系统。创建 
 
 ## <span id="powershell"></span></a>使用 Azure PowerShell
 
-Azure PowerShell 是一个功能强大的脚本编写环境，可用于在 Azure 中控制和自动执行工作负荷的部署和管理。本部分提供有关如何设置 HDInsight 群集的说明。有关配置工作站运行 HDInsight Powershell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell][]。有关将 PowerShell 用于 HDInsight 的更多信息，请参见[使用 PowerShell 管理 HDInsight][]。有关 HDInsight PowerShell cmdlet 的列表，请参阅 [HDInsight cmdlet 参考][]。
+Azure PowerShell 是一个功能强大的脚本编写环境，可用于在 Azure 中控制和自动执行工作负荷的部署和管理。本部分提供有关如何设置 HDInsight 群集的说明。有关配置工作站运行 HDInsight Powershell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。有关将 PowerShell 用于 HDInsight 的更多信息，请参见[使用 PowerShell 管理 HDInsight][使用 PowerShell 管理 HDInsight]。有关 HDInsight PowerShell cmdlet 的列表，请参阅 [HDInsight cmdlet 参考][HDInsight cmdlet 参考]。
 
 使用 PowerShell 设置 HDInsight 群集的步骤如下：
 
@@ -231,7 +231,7 @@ HDInsight 使用 Azure Blob 存储容器作为默认文件系统。你需要先�
 
     出现提示时，请输入群集的凭据。设置群集可能需要几分钟时间。
 
-    ![HDI.CLI.Provision][]
+    ![HDI.CLI.Provision][HDI.CLI.Provision]
 
 **使用自定义配置选项设置 HDInsight 群集**
 
@@ -284,7 +284,7 @@ HDInsight 使用 Azure Blob 存储容器作为默认文件系统。你需要先�
 
 ## <span id="cli"></span></a> 使用跨平台命令行
 
-设置 HDInsight 群集的另一方法是使用跨平台命令行界面。该命令行工具是在 Node.js 中实现的。可以在支持 Node.js 的任意平台（包括 Windows、Mac 和 Linux）上使用它。该命令行工具是开源的。在 GitHub 中管理源代码（网址为 <https://github.com/Azure/azure-sdk-tools-xplat>）。有关如何使用命令行界面的一般指南，请参阅[如何使用针对 Mac 和 Linux 的 Azure 命令行工具][]。有关完整的参考文档，请参阅[针对 Mac 和 Linux 的 Azure 命令行工具][]。本文只涉及从 Windows 使用命令行界面。
+设置 HDInsight 群集的另一方法是使用跨平台命令行界面。该命令行工具是在 Node.js 中实现的。可以在支持 Node.js 的任意平台（包括 Windows、Mac 和 Linux）上使用它。该命令行工具是开源的。在 GitHub 中管理源代码（网址为 <https://github.com/Azure/azure-sdk-tools-xplat>）。有关如何使用命令行界面的一般指南，请参阅[如何使用针对 Mac 和 Linux 的 Azure 命令行工具][如何使用针对 Mac 和 Linux 的 Azure 命令行工具]。有关完整的参考文档，请参阅[针对 Mac 和 Linux 的 Azure 命令行工具][针对 Mac 和 Linux 的 Azure 命令行工具]。本文只涉及从 Windows 使用命令行界面。
 
 使用跨平台命令行设置 HDInsight 群集的步骤如下：
 
@@ -333,7 +333,7 @@ HDInsight 使用 Azure Blob 存储容器作为默认文件系统。你需要先�
 
         azure account download
 
-    ![HDI.CLIAccountDownloadImport][]
+    ![HDI.CLIAccountDownloadImport][HDI.CLIAccountDownloadImport]
 
     该命令将启动要从中下载发布设置文件的网页。
 
@@ -354,7 +354,7 @@ HDInsight 使用 Azure Blob 存储容器作为默认文件系统。你需要先�
 
     出现指定位置的提示时，请选择 HDINsight 群集可以设置到的位置。该存储位置必须与 HDInsight 群集所在的位置相同。目前，只有**中国东部**、**中国北部**、**亚洲东部**、**亚洲东南部**、**欧洲北部**、**欧洲西部**、**美国东部**、**美国西部**、**美国中北部**和**美国中南部**区域可以托管 HDInsight 群集。
 
-有关使用 Azure 管理门户创建 Azure 存储帐户的信息，请参阅[如何创建存储帐户][]。
+有关使用 Azure 管理门户创建 Azure 存储帐户的信息，请参阅[如何创建存储帐户][如何创建存储帐户]。
 
 如果你已有存储帐户但是不知道帐户名称和帐户密钥，可以使用以下命令来检索该信息：
 
@@ -367,7 +367,7 @@ HDInsight 使用 Azure Blob 存储容器作为默认文件系统。你需要先�
     -- Lists the keys for a storage account
     azure storage account keys list <StorageAccountName>
 
-有关使用管理门户获取信息的详细信息，请参阅[如何管理存储帐户][]中的*如何：查看、复制和重新生成存储访问密钥*部分。
+有关使用管理门户获取信息的详细信息，请参阅[如何管理存储帐户][如何管理存储帐户]中的*如何：查看、复制和重新生成存储访问密钥*部分。
 
 HDInsight 群集还需要在存储帐户中提供一个容器。如果你提供的存储帐户尚不包含容器，*azure hdinsight cluster create* 将提示你输入容器名称，然后会创建该容器。但是，如果你想要预先创建容器，可以使用以下命令：
 
@@ -382,7 +382,7 @@ HDInsight 群集还需要在存储帐户中提供一个容器。如果你提供�
 
         azure hdinsight cluster create --clusterName <ClusterName> --storageAccountName "<StorageAccountName>.blob.core.chinacloudapi.cn" --storageAccountKey <storageAccountKey> --storageContainer <SorageContainerName> --nodes <NumberOfNodes> --location <DataCenterLocation> --username <HDInsightClusterUsername> --clusterPassword <HDInsightClusterPassword>
 
-    ![HDI.CLIClusterCreation][]
+    ![HDI.CLIClusterCreation][HDI.CLIClusterCreation]
 
 **使用配置文件设置 HDInsight 群集**
 
@@ -413,7 +413,7 @@ HDInsight 群集还需要在存储帐户中提供一个容器。如果你提供�
 
     > [WACOM.NOTE] 用于元存储的 Azure SQL 数据库必须允许连接到其他 Azure 服务，包括 Azure HDInsight。在 Azure SQL 数据库仪表板的右侧单击服务器名称。这是运行 SQL 数据库实例的服务器。进入服务器视图后，请单击“配置”，单击“Windows Azure 服务”对应的“是”，然后单击“保存”。
 
-    ![HDI.CLIClusterCreationConfig][]
+    ![HDI.CLIClusterCreationConfig][HDI.CLIClusterCreationConfig]
 
 **列出和显示群集详细信息**
 
@@ -422,7 +422,7 @@ HDInsight 群集还需要在存储帐户中提供一个容器。如果你提供�
         azure hdinsight cluster list
         azure hdinsight cluster show <ClusterName>
 
-    ![HDI.CLIListCluster][]
+    ![HDI.CLIListCluster][HDI.CLIListCluster]
 
 **删除群集**
 
@@ -443,17 +443,17 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序中�
 
 **安装 HDInsight .NET SDK**
 
-可以从 [NuGet][] 安装该 SDK 的最新发行版。下一过程中将显示说明。
+可以从 [NuGet][NuGet] 安装该 SDK 的最新发行版。下一过程中将显示说明。
 
 **创建自签名证书**
 
-1.  创建用来对请求进行身份验证的自签名证书。可以使用 IIS 或 [makecert][] 创建该证书。
+1.  创建用来对请求进行身份验证的自签名证书。可以使用 IIS 或 [makecert][makecert] 创建该证书。
 
 2.  浏览到证书所在的位置，右键单击该证书，单击“安装证书”，然后将证书安装到计算机的个人存储。编辑证书属性，以便为证书指定一个友好名称。
 
 3.  将证书导入 Azure 管理门户。在门户中，单击页面左下角的“设置”，然后单击“管理证书”。在页面底部，单击“上载”，然后根据说明上载你在前一步骤中创建的 .cer 文件。
 
-    ![HDI.ClusterCreate.UploadCert][]
+    ![HDI.ClusterCreate.UploadCert][HDI.ClusterCreate.UploadCert]
 
 **创建 Visual Studio 控制台应用程序**
 
@@ -545,10 +545,10 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序中�
 
 在本文中，你已经学习了几种设置 HDInsight 群集的方法。若要了解更多信息，请参阅下列文章：
 
--   [Azure HDInsight 入门][]
--   [使用 PowerShell 管理 HDInsight][]
--   [以编程方式提交 Hadoop 作业][]
--   [Azure HDInsight SDK 文档][]
+-   [Azure HDInsight 入门][Azure HDInsight 入门]
+-   [使用 PowerShell 管理 HDInsight][使用 PowerShell 管理 HDInsight]
+-   [以编程方式提交 Hadoop 作业][以编程方式提交 Hadoop 作业]
+-   [Azure HDInsight SDK 文档][Azure HDInsight SDK 文档]
 
 <!-- [azure-member-offers]: http://azure.microsoft.com/en-us/pricing/member-offers/ -->
 

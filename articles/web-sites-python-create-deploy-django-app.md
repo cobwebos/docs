@@ -6,13 +6,13 @@
 
 本教程将演示如何部署使用 Django Web 框架构建的应用程序。本教程将指导你完成部署你的应用程序和任何所需库（包括 Django）的步骤。你会将所有这些内容放入 Git 存储库中，从而可以快速简单地将更新推送到你的网站。最后，你将通过 Azure 配置新创建的网站，以便它能够运行你的 Python 应用程序。
 
-[WACOM.INCLUDE [create-account-and-websites-note][]]
+[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
 
 本教程使用 Python 2.7 和 Django 1.4。你可以自行获取这些软件，也可以通过使用 [][]<http://azure.microsoft.com/zh-cn/develop/python/></a> 上的 Windows Installer 链接来快速轻松地安装这些软件。
 
 **注意**：Azure 网站现在预安装了 Python 2.7 和 wfastcgi 处理程序。不过，未包括 Web 框架，例如 Django。如果愿意，你仍可以使用其他 Python 解释程序。你只需将它包括在 Git 存储库中，并将网站配置为使用该解释程序而非已安装的 Python 2.7 解释程序。
 
-你还将需要安装一个部署选项，以便将网站推送到 Azure。还可以使用各种不同的部署工具，但本教程使用 Git。我们推荐 [msysgit][]。
+你还将需要安装一个部署选项，以便将网站推送到 Azure。还可以使用各种不同的部署工具，但本教程使用 Git。我们推荐 [msysgit][msysgit]。
 
 **注意**：Python 项目目前不支持 TFS 发布。
 
@@ -57,7 +57,7 @@
 
 ![][5]
 
-接下来，创建初始 Django 应用程序。你可以像从命令行创建任何其他 Django 应用程序一样执行此操作，也可以使用 [Python Tools for Visual Studio][] 创建项目。两个选项都会在此演示。
+接下来，创建初始 Django 应用程序。你可以像从命令行创建任何其他 Django 应用程序一样执行此操作，也可以使用 [Python Tools for Visual Studio][Python Tools for Visual Studio] 创建项目。两个选项都会在此演示。
 
 **选项 1：**
 若要从命令行创建新项目，请运行以下命令。该命令将在 DjangoApplication 文件夹中创建 Django 应用程序：
@@ -116,7 +116,7 @@
 
 ## 后续步骤
 
-从这里，你可以通过使用已使用的工具继续开发 Django 应用程序。如果你使用 [Python Tools for Visual Studio][] 进行开发，则你将很可能需要安装 [VisualGit][] 来获取 Visual Studio 中的源代码管理集成。
+从这里，你可以通过使用已使用的工具继续开发 Django 应用程序。如果你使用 [Python Tools for Visual Studio][Python Tools for Visual Studio] 进行开发，则你将很可能需要安装 [VisualGit][VisualGit] 来获取 Visual Studio 中的源代码管理集成。
 
 你的应用程序可能具有除 Python 和 Django 以外的其他依赖项。如果你通过使用 [][]<http://azure.microsoft.com/zh-cn/develop/python/></a> 中的安装程序安装了 Python，表明你已安装 PIP，并可以使用它来快速添加新依赖项。例如，若要安装自然语言工具包及其所有依赖项，请键入：
 
@@ -131,7 +131,7 @@
   [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   []: http://azure.microsoft.com/zh-cn/develop/python/
   [msysgit]: http://code.google.com/p/msysgit/
-  [0]: ./media/web-sites-python-create-deploy-django-app/django-ws-003.png
+  []: ./media/web-sites-python-create-deploy-django-app/django-ws-003.png
   [1]: ./media/web-sites-python-create-deploy-django-app/django-ws-004.png
   [2]: ./media/web-sites-python-create-deploy-django-app/django-ws-005.png
   [3]: ./media/web-sites-python-create-deploy-django-app/django-ws-006.png

@@ -2,7 +2,7 @@
 
 # 如何从 PHP 访问 Azure SQL Database
 
-本指南将介绍通过 PHP 使用 Azure SQL Database 的基础知识。通过 PHP 编写示例。所涉及的任务包括**创建 SQL Database** 和**连接 SQL Database**。本指南介绍从[管理门户][]创建 SQL Database 的步骤。有关从生产门户执行这些任务的信息，请参阅 [PHP 和 SQL Database 入门][]。有关详细信息，请参阅[后续步骤][]一节。
+本指南将介绍通过 PHP 使用 Azure SQL Database 的基础知识。通过 PHP 编写示例。所涉及的任务包括**创建 SQL Database** 和**连接 SQL Database**。本指南介绍从[管理门户][管理门户]创建 SQL Database 的步骤。有关从生产门户执行这些任务的信息，请参阅 [PHP 和 SQL Database 入门][PHP 和 SQL Database 入门]。有关详细信息，请参阅[后续步骤][后续步骤]一节。
 
 ## 什么是 Azure SQL Database
 
@@ -10,22 +10,22 @@ Azure SQL Database 为 Azure 提供关系数据库管理系统并且基于 SQL S
 
 ## 目录
 
--   [概念][]
--   [如何：设置环境][]
--   [如何：创建 SQL Database][]
--   [如何：获取 SQL Database 连接信息][]
--   [如何：连接到 SQL Database 实例][]
--   [后续步骤][]
+-   [概念][概念]
+-   [如何：设置环境][如何：设置环境]
+-   [如何：创建 SQL Database][如何：创建 SQL Database]
+-   [如何：获取 SQL Database 连接信息][如何：获取 SQL Database 连接信息]
+-   [如何：连接到 SQL Database 实例][如何：连接到 SQL Database 实例]
+-   [后续步骤][后续步骤]
 
 ## <span id="Concepts"></span></a>概念
 
-由于 Azure SQL Database 是基于 SQL Server 技术构建的，因此通过 PHP 访问 SQL Database 与通过 PHP 访问 SQL Server 非常相似。你可以本地部署应用程序（使用 SQL Server），然后通过仅更改连接字符串连接到 SQL Database。但是，SQL Database 和 SQL Server 之间有一些可能影响你的应用程序的差别。有关详细信息，请参阅[指导原则和限制 (SQL Database)][]。
+由于 Azure SQL Database 是基于 SQL Server 技术构建的，因此通过 PHP 访问 SQL Database 与通过 PHP 访问 SQL Server 非常相似。你可以本地部署应用程序（使用 SQL Server），然后通过仅更改连接字符串连接到 SQL Database。但是，SQL Database 和 SQL Server 之间有一些可能影响你的应用程序的差别。有关详细信息，请参阅[指导原则和限制 (SQL Database)][指导原则和限制 (SQL Database)]。
 
-通过 PHP 访问 SQL Database 的推荐方法是使用 [Microsoft Drivers for PHP for SQL Server][]。（本文中的示例将使用这些驱动程序。）Microsoft Drivers for PHP for SQL Server 只在 Windows 上运行。
+通过 PHP 访问 SQL Database 的推荐方法是使用 [Microsoft Drivers for PHP for SQL Server][Microsoft Drivers for PHP for SQL Server]。（本文中的示例将使用这些驱动程序。）Microsoft Drivers for PHP for SQL Server 只在 Windows 上运行。
 
 ## <span id="Setup"></span></a>如何：设置环境
 
-设置部署环境的推荐方法是使用 [Microsoft Web 平台安装程序][]。Web 平台安装程序将允许你选择 Web 开发平台的元素，并自动安装和配置这些元素。通过下载 Web 平台安装程序和选择安装 WebMatrix、PHP for WebMatrix 和 SQL Server Express，将为你设置完整的开发环境。
+设置部署环境的推荐方法是使用 [Microsoft Web 平台安装程序][Microsoft Web 平台安装程序]。Web 平台安装程序将允许你选择 Web 开发平台的元素，并自动安装和配置这些元素。通过下载 Web 平台安装程序和选择安装 WebMatrix、PHP for WebMatrix 和 SQL Server Express，将为你设置完整的开发环境。
 
 此外，还可以手动设置你的环境：
 
@@ -37,36 +37,36 @@ Azure SQL Database 为 Azure 提供关系数据库管理系统并且基于 SQL S
 
 按照以下步骤创建 Azure SQL Database：
 
-1.  登录到[管理门户][]。
+1.  登录到[管理门户][管理门户]。
 2.  单击该门户左下角的**“+ 新建”**图标。
 
-    ![创建新的 Azure 网站][]
+    ![创建新的 Azure 网站][创建新的 Azure 网站]
 
 3.  依次单击“数据服务”、“SQL DATABASE”和“自定义创建”。
 
-    ![自定义创建新的 SQL Database][]
+    ![自定义创建新的 SQL Database][自定义创建新的 SQL Database]
 
 4.  输入数据库的“名称”的值，选择“版本”（Web 版或企业版），再依次选择数据库的“最大大小”、“排序规则”和“新建 SQL Database 服务器”。单击对话框底部的箭头。（请注意，如果你之前已经创建了 SQL Database，则可以从“选择服务器”下拉菜单中选择一个现有服务器。）
 
-    ![填写 SQL Database 设置][]
+    ![填写 SQL Database 设置][填写 SQL Database 设置]
 
 5.  输入管理员名称和密码（并确认密码），选择你将在其中创建新的 SQL Database 的区域，并选中`Allow Azure Services to access the server` 框。
 
-    ![新建 SQL Database 服务器][]
+    ![新建 SQL Database 服务器][新建 SQL Database 服务器]
 
 若要查看服务器和数据库信息，请在管理门户中单击“SQL Database”。随后可以单击“数据库”或“服务器”来查看相关信息。
 
-![查看服务器和数据库信息][]
+![查看服务器和数据库信息][查看服务器和数据库信息]
 
 ## <span id="ConnectionInfo"></span></a>如何：获取 SQL Database 连接信息
 
 若要获取 SQL Database 连接信息，请在门户中单击“SQL Database”，然后单击该数据库的名称。
 
-![查看数据库信息][]
+![查看数据库信息][查看数据库信息]
 
 然后，单击“查看 ADO.NET、ODBC、PHP 和 JDBC 的 SQL Database 连接字符串”。
 
-![显示连接字符串][]
+![显示连接字符串][显示连接字符串]
 
 在生成的窗口的 PHP 部分，记下 **SERVER**、**DATABASE** 和 **USERNAME** 的值。你的密码将是你创建 SQL Database 时所用的密码。
 
@@ -104,7 +104,7 @@ Azure SQL Database 为 Azure 提供关系数据库管理系统并且基于 SQL S
 
 ## <span id="NextSteps"></span></a>后续步骤
 
-如前所述，使用 SQL Database 与使用 SQL Server 非常相似。建立与 SQL Database 的连接之后（如上所述），你可以使用 **SQLSRV** 或 **PDO\_SQLSRV** API 来插入、检索、更新和删除数据。有关 **SQLSRV** 和 **PDO\_SQLSRV** API 的信息，请参阅 [Microsoft Drivers for PHP for SQL Server][3] 文档。但是，SQL Database 和 SQL Server 之间存在一些可能影响你的应用程序的差异。有关详细信息，请参阅[指导原则和限制 (SQL Database)][]。
+如前所述，使用 SQL Database 与使用 SQL Server 非常相似。建立与 SQL Database 的连接之后（如上所述），你可以使用 **SQLSRV** 或 **PDO\_SQLSRV** API 来插入、检索、更新和删除数据。有关 **SQLSRV** 和 **PDO\_SQLSRV** API 的信息，请参阅 [Microsoft Drivers for PHP for SQL Server][3] 文档。但是，SQL Database 和 SQL Server 之间存在一些可能影响你的应用程序的差异。有关详细信息，请参阅[指导原则和限制 (SQL Database)][指导原则和限制 (SQL Database)]。
 
 以下位置提供了演示如何在 Azure 上通过 PHP 使用 SQL Database 的示例：<https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-sqlazure>。
 

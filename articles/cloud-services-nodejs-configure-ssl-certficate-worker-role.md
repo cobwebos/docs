@@ -111,7 +111,7 @@
 
 2.  向下滚动并单击显示为“站点 URL”的链接：
 
-    ![站点 url][]
+    ![站点 url][站点 url]
 
     <div class="dev-callout">
 <strong>说明</strong>
@@ -126,11 +126,11 @@
 
 ## 其他资源
 
-[如何将证书与服务关联][]
+[如何将证书与服务关联][如何将证书与服务关联]
 
-[在 Azure Web 角色中为 Node.js 应用程序配置 SSL][]
+[在 Azure Web 角色中为 Node.js 应用程序配置 SSL][在 Azure Web 角色中为 Node.js 应用程序配置 SSL]
 
-[如何在 HTTPS 终结点上配置 SSL 证书][]
+[如何在 HTTPS 终结点上配置 SSL 证书][如何在 HTTPS 终结点上配置 SSL 证书]
 
   [步骤 1：创建 Node.js 服务并将该服务发布到云]: #step1
   [步骤 2：获取 SSL 证书]: #step2
@@ -139,7 +139,7 @@
   [步骤 5：使用 HTTPS 连接到角色实例]: #step5
 
   [Azure PowerShell 图标]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/azure-powershell-start.png
-  [0]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-01.png
+  []: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-01.png
   [1]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-02-worker.png
   [2]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-03-worker.png
   [如何对 Node.js 使用 Azure PowerShell]: https://www.windowsazure.com/zh-cn/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings

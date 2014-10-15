@@ -2,10 +2,10 @@
 
 # 创建带 SQL Database 的 PHP 网站并使用 Git 进行部署
 
-本教程演示如何创建带 Azure SQL Database 的 PHP Azure 网站以及如何使用 Git 部署该网站。本教程假定你已在计算机上安装 [PHP][]、[SQL Server Express][]、[Microsoft Drivers for SQL Server for PHP][]、Web 服务器和 [Git][]。完成本指南之后，你将拥有一个在 Azure 中运行的 PHP-SQL Database 网站。
+本教程演示如何创建带 Azure SQL Database 的 PHP Azure 网站以及如何使用 Git 部署该网站。本教程假定你已在计算机上安装 [PHP][PHP]、[SQL Server Express][SQL Server Express]、[Microsoft Drivers for SQL Server for PHP][Microsoft Drivers for SQL Server for PHP]、Web 服务器和 [Git][Git]。完成本指南之后，你将拥有一个在 Azure 中运行的 PHP-SQL Database 网站。
 
 > [WACOM.NOTE]
-> 你可以使用 [Microsoft Web 平台安装程序][]安装和配置 PHP、SQL Server Express、Microsoft Drivers for SQL Server for PHP 和 Internet Information Services (IIS)。
+> 你可以使用 [Microsoft Web 平台安装程序][Microsoft Web 平台安装程序]安装和配置 PHP、SQL Server Express、Microsoft Drivers for SQL Server for PHP 和 Internet Information Services (IIS)。
 
 你将了解到以下内容：
 
@@ -14,57 +14,57 @@
 
 通过按照本教程中的说明进行操作，你将在 PHP 中构建简单的注册 Web 应用程序。应用程序将托管于 Azure 网站中。以下是已完成应用程序的屏幕快照：
 
-![Azure PHP 网站][]
+![Azure PHP 网站][Azure PHP 网站]
 
-[WACOM.INCLUDE [create-account-and-websites-note][]]
+[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
 
 ## 创建 Azure 网站并设置 Git 发布
 
 按照以下步骤创建 Azure 网站和 SQL Database：
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  单击门户左下角的“新建”图标。
-    ![新建 Azure 网站][]
+    ![新建 Azure 网站][新建 Azure 网站]
 
 3.  单击“网站”，然后单击“自定义创建”。
 
-    ![自定义创建新的网站][]
+    ![自定义创建新的网站][自定义创建新的网站]
 
     输入“URL”的值，从“数据库”下拉列表中选择“新建 SQL Database”，并在“区域”下拉列表中选择网站的数据中心。单击对话框底部的箭头。
 
-    ![填写网站详细信息][]
+    ![填写网站详细信息][填写网站详细信息]
 
-4.  输入数据库的“名称”的值，选择“版本”[（Web 版或企业版）][]，再依次选择数据库的“最大大小”、“排序规则”和“新建 SQL Database 服务器”。单击对话框底部的箭头。
+4.  输入数据库的“名称”的值，选择“版本”[（Web 版或企业版）][（Web 版或企业版）]，再依次选择数据库的“最大大小”、“排序规则”和“新建 SQL Database 服务器”。单击对话框底部的箭头。
 
-    ![填写 SQL Database 设置][]
+    ![填写 SQL Database 设置][填写 SQL Database 设置]
 
 5.  输入管理员名称和密码（并确认密码），选择你将在其中创建新的 SQL Database 服务器的区域，并选中“`Allow Azure Services to access the server` 框。
 
-    ![新建 SQL Database 服务器][]
+    ![新建 SQL Database 服务器][新建 SQL Database 服务器]
 
     创建网站后，你会看到文本“网站‘[SITENAME]’创建已成功完成”。现在，你可以启用 Git 发布。
 
 6.  单击网站列表中显示的网站的名称以打开该网站的“快速启动”仪表板。
 
-    ![打开网站仪表板][]
+    ![打开网站仪表板][打开网站仪表板]
 
 7.  在“快速启动”页的底部，单击“从源代码管理设置部署”。
 
-    ![设置 Git 发布][]
+    ![设置 Git 发布][设置 Git 发布]
 
 8.  在系统询问“你的源代码在哪里?”时，选择“本地 Git 存储库”，然后单击箭头。
 
-    ![你的源代码在哪里][]
+    ![你的源代码在哪里][你的源代码在哪里]
 
 9.  若要启用 Git 发布，你必须提供用户名和密码。记下你创建的用户名和密码。（如果你之前已设置 Git 存储库，则将跳过此步骤。）
 
-    ![创建发布凭据][]
+    ![创建发布凭据][创建发布凭据]
 
     设置存储库需要花费几秒钟的时间。
 
 10. 在你的存储库已就绪后，将显示有关将应用程序文件推送到存储库的说明。记下这些说明 - 稍后你将使用它们。
 
-    ![Git 说明][]
+    ![Git 说明][Git 说明]
 
 ## 获取 SQL Database 连接信息
 
@@ -72,11 +72,11 @@
 
 1.  从 Azure 管理门户中，单击“链接的资源”，然后单击数据库名称。
 
-    ![链接的资源][]
+    ![链接的资源][链接的资源]
 
 2.  单击“查看连接字符串”。
 
-    ![连接字符串][]
+    ![连接字符串][连接字符串]
 
 3.  从结果对话框的 **PHP** 部分，记下`SERVER`, `DATABASE` 和 `USERNAME`.
 
@@ -87,7 +87,7 @@
 -   **index.php**：将显示注册形式及包含注册者信息的表。
 -   **createtable.php**：为应用程序创建 SQL Database 表。该文件只能被使用一次。
 
-若要本地运行应用程序，请执行下列步骤。请注意，这些步骤假定你已在本地计算机上设置 PHP、SQL Server Express 和 Web 服务器，并且你已启用 [SQL Server 的 PDO 扩展][]。
+若要本地运行应用程序，请执行下列步骤。请注意，这些步骤假定你已在本地计算机上设置 PHP、SQL Server Express 和 Web 服务器，并且你已启用 [SQL Server 的 PDO 扩展][SQL Server 的 PDO 扩展]。
 
 1.  创建一个 SQL Server 数据库，名为`registration`。你可以从`sqlcmd` 命令提示符使用以下命令执行此操作：
 

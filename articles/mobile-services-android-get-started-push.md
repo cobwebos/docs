@@ -8,32 +8,32 @@
 
 本主题说明如何使用 Azure 移动服务向 Android 应用程序发送推送通知。在本教程中，你将要使用 Google Cloud Messaging (GCM) 服务向快速入门项目添加推送通知。完成本教程后，每次插入一条记录时，你的移动服务就会发送一条推送通知。
 
-> [WACOM.NOTE] 移动服务现在将与 Azure 通知中心集成，以支持附加的推送通知功能，如模板、多个平台和规模。此集成的功能目前处于预览状态。有关详细信息，请参阅此版本的[推送通知入门][]。
+> [WACOM.NOTE] 移动服务现在将与 Azure 通知中心集成，以支持附加的推送通知功能，如模板、多个平台和规模。此集成的功能目前处于预览状态。有关详细信息，请参阅此版本的[推送通知入门][推送通知入门]。
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
--   [启用 Google Cloud Messaging][]
--   [配置移动服务][]
--   [向应用程序添加推送通知][]
--   [更新脚本以发送推送通知][]
--   [插入数据以接收通知][]
+-   [启用 Google Cloud Messaging][启用 Google Cloud Messaging]
+-   [配置移动服务][配置移动服务]
+-   [向应用程序添加推送通知][向应用程序添加推送通知]
+-   [更新脚本以发送推送通知][更新脚本以发送推送通知]
+-   [插入数据以接收通知][插入数据以接收通知]
 
 本教程需要的内容如下：
 
--   [移动服务 Android SDK][]
+-   [移动服务 Android SDK][移动服务 Android SDK]
 -   有效的 Google 帐户
 
-本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]。
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][移动服务入门]。
 
 ## <span id="register"></span></a>启用 Google Cloud Messaging
 
-[WACOM.INCLUDE [启用 GCM][]]
+[WACOM.INCLUDE [启用 GCM][启用 GCM]]
 
 接下来，你将使用此 API 密钥值，让移动服务向 GCM 进行身份验证并代表你的应用程序发送推送通知。
 
 ## <span id="configure"></span></a>配置移动服务以发送推送请求
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的应用程序。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务”，然后单击你的应用程序。
 
     ![][]
 
@@ -47,11 +47,11 @@
 
 ### 将 Google Play Services 添加到项目
 
-[WACOM.INCLUDE [添加 Play Services][]]
+[WACOM.INCLUDE [添加 Play Services][添加 Play Services]]
 
 ### 添加代码
 
-1.  打开项目文件 **AndroidManifest.xml**。Google Cloud Messaging 对开发和测试提出了一些最低的 API 级别要求，清单中的 **minSdkVersion** 属性必须符合这些要求。如果由于使用的设备较旧而需要将此属性设置为小于 16，请参阅[设置 Google Play Services SDK][] 以确定它可以设置到的最小值，并相应地进行设置。
+1.  打开项目文件 **AndroidManifest.xml**。Google Cloud Messaging 对开发和测试提出了一些最低的 API 级别要求，清单中的 **minSdkVersion** 属性必须符合这些要求。如果由于使用的设备较旧而需要将此属性设置为小于 16，请参阅[设置 Google Play Services SDK][设置 Google Play Services SDK] 以确定它可以设置到的最小值，并相应地进行设置。
 
 2.  确保在 `uses-sdk` 元素中，**targetSdkVersion** 已设置为安装的 SDK 平台的版本号（与步骤 1 中所述的版本相同）。最好是将它设置为可用的最新版本。
 
@@ -101,7 +101,7 @@
 <p>如果在移动服务中启用了动态架构，则插入包含此属性的新项时，将在 <strong>TodoItem</strong> 表中自动添加新的 <strong>handle</strong> 列。</p>
 </div>
 
-8.  下载和解压缩[移动服务 Android SDK][]，打开 **notifications** 文件夹，将 **notifications-1.0.1.jar** 文件复制到 Eclipse 项目的 *libs* 文件夹，并刷新 *libs* 文件夹。
+8.  下载和解压缩[移动服务 Android SDK][移动服务 Android SDK]，打开 **notifications** 文件夹，将 **notifications-1.0.1.jar** 文件复制到 Eclipse 项目的 *libs* 文件夹，并刷新 *libs* 文件夹。
 
     <div class="dev-callout"><b>说明</b>
 <p>在后续的 SDK 版本中，文件名末尾的数字可能更改。</p>
@@ -193,7 +193,7 @@
             });
         }
 
-    这将会注册一个新的插入脚本，该脚本使用 [GCM 对象][]将推送通知（插入的文本）发送到插入请求中提供的设备。
+    这将会注册一个新的插入脚本，该脚本使用 [GCM 对象][GCM 对象]将推送通知（插入的文本）发送到插入请求中提供的设备。
 
 ## <span id="test"></span></a>在应用程序中测试推送通知
 
@@ -233,7 +233,7 @@
 
 ## <a name="next-steps"></a>后续步骤
 
-在这个简单的示例中，用户将会收到包含刚刚插入的数据的推送通知。请求中的客户端会将 GCM 使用的设备标记提供给移动服务。在下一教程[向应用程序用户推送通知][]中，你将要创建一个单独的 Devices 表，该表用于存储设备标记，以及在发生插入操作时向所有存储的通道发出推送通知。
+在这个简单的示例中，用户将会收到包含刚刚插入的数据的推送通知。请求中的客户端会将 GCM 使用的设备标记提供给移动服务。在下一教程[向应用程序用户推送通知][向应用程序用户推送通知]中，你将要创建一个单独的 Devices 表，该表用于存储设备标记，以及在发生插入操作时向所有存储的通道发出推送通知。
 
 <!-- URLs. -->
 
@@ -256,7 +256,7 @@
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
 <!-- Images. --> 
-  [0]: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
+  []: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
   [1]: ./media/mobile-services-android-get-started-push/mobile-push-tab-android.png
   [添加 Play Services]: ../includes/mobile-services-add-Google-play-services.md
   [设置 Google Play Services SDK]: http://go.microsoft.com/fwlink/?LinkId=389801

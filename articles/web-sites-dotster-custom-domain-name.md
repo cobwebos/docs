@@ -6,26 +6,26 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/web-sites-dotster-custom-domain-name/" title="网站" class="current">网站</a> | <a href="/en-us/documentation/articles/web-sites-dotster-traffic-manager-custom-domain-name/" title="使用流量管理器的网站">使用流量管理器的网站</a></div>
 
-[WACOM.INCLUDE [介绍][]]
+[WACOM.INCLUDE [介绍][介绍]]
 
-本文提供了如何将从 [Dotster.com][] 购买的自定义域名用于 Azure 网站的说明。
+本文提供了如何将从 [Dotster.com][Dotster.com] 购买的自定义域名用于 Azure 网站的说明。
 
-[WACOM.INCLUDE [introfooter][]]
+[WACOM.INCLUDE [introfooter][introfooter]]
 
 本文内容：
 
--   [了解 DNS 记录][]
--   [为基本、共享或标准模式配置网站][]
--   [为自定义域添加 DNS 记录][]
--   [在网站上启用域][]
+-   [了解 DNS 记录][了解 DNS 记录]
+-   [为基本、共享或标准模式配置网站][为基本、共享或标准模式配置网站]
+-   [为自定义域添加 DNS 记录][为自定义域添加 DNS 记录]
+-   [在网站上启用域][在网站上启用域]
 
 ## <a name="understanding-records"></a>了解 DNS 记录
 
-[WACOM.INCLUDE [understandingdns][]]
+[WACOM.INCLUDE [understandingdns][understandingdns]]
 
 ## <a name="bkmk_configsharedmode"></a>为基本、共享或标准模式配置网站
 
-[WACOM.INCLUDE [modes][]]
+[WACOM.INCLUDE [modes][modes]]
 
 <a name="bkmk_configurecname"></a>
 
@@ -36,11 +36,11 @@
 
 1.  通过 Dotster.com 登录到你的帐户。在“域”菜单上，选择 **DomainCentral**。
 
-    ![域中心 Dotster 菜单][]
+    ![域中心 Dotster 菜单][域中心 Dotster 菜单]
 
 2.  选择你的域，以显示设置列表。然后选择 **Nameservers** 链接。
 
-    ![Dotster 域配置选项][]
+    ![Dotster 域配置选项][Dotster 域配置选项]
 
 3.  选择“使用不同的名称服务器”。为了利用 Dotster 上的 DNS 服务，你必须指定以下名称服务器：ns1.nameresolve.com、ns2.nameresolve.com、ns3.nameresolve.com 和 ns4.nameresolve.com。
 

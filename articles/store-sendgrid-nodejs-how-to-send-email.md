@@ -2,24 +2,24 @@
 
 # 如何使用 SendGrid 从 Node.js 发送电子邮件
 
-本指南演示如何在 Azure 中使用 SendGrid 电子邮件服务执行常见编程任务。相关示例是使用 Node.js API 编写的。涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。有关 SendGrid 和发送电子邮件的详细信息，请参[后续步骤][]部分。
+本指南演示如何在 Azure 中使用 SendGrid 电子邮件服务执行常见编程任务。相关示例是使用 Node.js API 编写的。涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。有关 SendGrid 和发送电子邮件的详细信息，请参[后续步骤][后续步骤]部分。
 
 ## 目录
 
--   [什么是 SendGrid 电子邮件服务？][]
--   [创建 SendGrid 帐户][]
--   [引用 SendGrid Node.js 模块][]
--   [如何：创建电子邮件][]
--   [如何：发送电子邮件][]
--   [如何：添加附件][]
--   [如何：使用筛选器启用页脚、跟踪和分析][]
--   [如何：更新电子邮件属性][]
--   [如何：使用其他 SendGrid 服务][]
+-   [什么是 SendGrid 电子邮件服务？][什么是 SendGrid 电子邮件服务？]
+-   [创建 SendGrid 帐户][创建 SendGrid 帐户]
+-   [引用 SendGrid Node.js 模块][引用 SendGrid Node.js 模块]
+-   [如何：创建电子邮件][如何：创建电子邮件]
+-   [如何：发送电子邮件][如何：发送电子邮件]
+-   [如何：添加附件][如何：添加附件]
+-   [如何：使用筛选器启用页脚、跟踪和分析][如何：使用筛选器启用页脚、跟踪和分析]
+-   [如何：更新电子邮件属性][如何：更新电子邮件属性]
+-   [如何：使用其他 SendGrid 服务][如何：使用其他 SendGrid 服务]
 -   [后续步骤][1]
 
 ## <a name="whatis"> </a>什么是 SendGrid 电子邮件服务？
 
-SendGrid 是一项[基于云的电子邮件服务][]，该服务提供了可靠的[事务性电子邮件传递][]、可缩放性、实时分析以及可用于简化自定义集成的灵活的 API。常见 SendGrid 使用方案包括：
+SendGrid 是一项[基于云的电子邮件服务][基于云的电子邮件服务]，该服务提供了可靠的[事务性电子邮件传递][事务性电子邮件传递]、可缩放性、实时分析以及可用于简化自定义集成的灵活的 API。常见 SendGrid 使用方案包括：
 
 -   自动向客户发送收据
 -   管理用于每月向客户发送电子传单和特惠
@@ -34,7 +34,7 @@ SendGrid 是一项[基于云的电子邮件服务][]，该服务提供了可靠�
 
 ## <a name="createaccount"> </a>创建 SendGrid 帐户
 
-[WACOM.INCLUDE [sendgrid-sign-up][]]
+[WACOM.INCLUDE [sendgrid-sign-up][sendgrid-sign-up]]
 
 ## <a name="reference"> </a>引用 SendGrid Node.js 模块
 
@@ -65,11 +65,11 @@ SendGrid 模块可导出 **SendGrid** 和 **Email** 函数。**SendGrid** 负责
 
 同时设置文本和 html 属性可以为无法支持 HTML 邮件的客户端提供文本内容的正常反馈。
 
-有关 Email 函数支持的所有属性的详细信息，请参阅 [sendgrid-nodejs][]。
+有关 Email 函数支持的所有属性的详细信息，请参阅 [sendgrid-nodejs][sendgrid-nodejs]。
 
 ## <a name="sendemail"> </a>如何：发送电子邮件
 
-使用 Email 函数创建电子邮件后，可使用 SendGrid 提供的 SMTP 或 Web API 发送该邮件。有关每个 API 的优点和差异的详细信息，请参阅 SendGrid 文档中的 SMTP 与 Web API[。][]
+使用 Email 函数创建电子邮件后，可使用 SendGrid 提供的 SMTP 或 Web API 发送该邮件。有关每个 API 的优点和差异的详细信息，请参阅 SendGrid 文档中的 SMTP 与 Web API[。][。]
 
 使用 SMTP API 或 Web API 需要你先使用 SendGrid 帐户的用户和密钥初始化 SendGrid 函数，如下所示：
 
@@ -128,7 +128,7 @@ text:'This is a sample email message.'
 ## <a name="usefilters"> </a>如何：使用筛选器启用脚注、跟踪和 Twitter
 
 SendGrid 可通过使用筛选器来提供其他电子邮件功能。这些功能是一些可添加到电子邮件中以启用特定功能（如启用单击跟踪、Google 分
-析、订阅跟踪等）的设置。有关筛选器的完整列表，请参阅[筛选器设置][]。
+析、订阅跟踪等）的设置。有关筛选器的完整列表，请参阅[筛选器设置][筛选器设置]。
 
 可使用 **filters** 属性将筛选器应用于邮件。每个筛选器均由一个包含特定于筛选器的设置的哈希指定。以下示例演示页脚、点击跟踪和Twitter 筛选器：
 
@@ -200,17 +200,17 @@ SendGrid 可通过使用筛选器来提供其他电子邮件功能。这些功�
       }
     });
 
-有关详细信息，请参阅 [sendgrid-nodejs][]。
+有关详细信息，请参阅 [sendgrid-nodejs][sendgrid-nodejs]。
 
 ## <a name="useservices"> </a>如何：使用其他 SendGrid 服务
 
-SendGrid 提供了基于 Web 的 API，可通过这些 API从 Azure 应用程序中使用其他 SendGrid 功能。有关完整详细信息，请参阅 [SendGrid API 文档][]。
+SendGrid 提供了基于 Web 的 API，可通过这些 API从 Azure 应用程序中使用其他 SendGrid 功能。有关完整详细信息，请参阅 [SendGrid API 文档][SendGrid API 文档]。
 
 ## <a name="nextsteps"> </a> 后续步骤
 
 在了解 SendGrid 电子邮件服务的基础知识后，请访问以下链接以了解更多信息。
 
--   SendGrid Node.js 模块存储库：[sendgrid-nodejs][]
+-   SendGrid Node.js 模块存储库：[sendgrid-nodejs][sendgrid-nodejs]
 -   SendGrid API 文档：
     <http://docs.sendgrid.com/documentation/api/>
 -   面向 Azure 客户的 SendGrid 特惠产品/服务：

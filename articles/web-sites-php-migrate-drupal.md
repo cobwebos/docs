@@ -5,25 +5,25 @@
 因为 Azure 网站支持 PHP 和 MySQL，所以，将 Drupal 网站迁移到 Azure 网站相对比较简单。此外，因为 Drupal 和 PHP 可在任何平台上运行，所以，该过程应该不论你的当前平台如何，都适用于将 Drupal 迁移到 Azure 网站。此外，Drupal 安装可能会变化很大，因此，在以下材料中可能未涵盖一些独有的迁移步骤。请注意不要使用 Drush 工具，因为在 Azure 网站上不支持该工具。
 
 > [WACOM.NOTE]
-> 如果你在迁移复杂的大型 Drupal 应用程序，还可以考虑使用 Azure 云服务。有关网站和云服务之间的差异的详细信息，请参阅 [Azure 网站、云服务和虚拟机：何时使用何种产品？][]。有关将 Drupal 迁移到云服务的帮助，请参阅[将 Drupal 网站从 LAMP 迁移到 Azure][]。
+> 如果你在迁移复杂的大型 Drupal 应用程序，还可以考虑使用 Azure 云服务。有关网站和云服务之间的差异的详细信息，请参阅 [Azure 网站、云服务和虚拟机：何时使用何种产品？][Azure 网站、云服务和虚拟机：何时使用何种产品？]。有关将 Drupal 迁移到云服务的帮助，请参阅[将 Drupal 网站从 LAMP 迁移到 Azure][将 Drupal 网站从 LAMP 迁移到 Azure]。
 
 ## 目录
 
--   [创建 Azure 网站][]
--   [复制数据库][]
--   [修改 Settings.php][]
--   [部署 Drupal 代码][]
--   [相关信息][]
+-   [创建 Azure 网站][创建 Azure 网站]
+-   [复制数据库][复制数据库]
+-   [修改 Settings.php][修改 Settings.php]
+-   [部署 Drupal 代码][部署 Drupal 代码]
+-   [相关信息][相关信息]
 
 ## <a name="create-siteanddb"></a><span class="short-header">创建 Azure 网站和 MySQL 数据库</span>1. 创建 Azure 网站和 MySQL 数据库
 
-首先，完成以下分步教程以便了解如何使用 MySQL 创建新网站：[创建 PHP-MySQL Azure 网站并使用 Git 进行部署][]。如果想要使用 Git 发布你的 Drupal 网站，则按照该教程中的步骤执行，这些部署说明了如何配置 Git 存储库。请确保按照**获取远程 MySQL 连接信息**部分中的说明执行，因为你在后面将需要这些信息。出于部署你的 Drupal 网站的目的，你可以忽略该教程的其余部分，但如果你还不熟悉 Azure 网站（以及 Git），继续阅读该教程可能会对你有所裨益。
+首先，完成以下分步教程以便了解如何使用 MySQL 创建新网站：[创建 PHP-MySQL Azure 网站并使用 Git 进行部署][创建 PHP-MySQL Azure 网站并使用 Git 进行部署]。如果想要使用 Git 发布你的 Drupal 网站，则按照该教程中的步骤执行，这些部署说明了如何配置 Git 存储库。请确保按照**获取远程 MySQL 连接信息**部分中的说明执行，因为你在后面将需要这些信息。出于部署你的 Drupal 网站的目的，你可以忽略该教程的其余部分，但如果你还不熟悉 Azure 网站（以及 Git），继续阅读该教程可能会对你有所裨益。
 
 在你设置了具有 MySQL 数据库的新网站后，现在将具有你的 MySQL 数据库连接信息和（可选）的 Git 存储库。下一步是将你的数据库复制到 Azure 网站中的 MySQL。
 
 ## <a name="copy-database"></a><span class="short-header">将数据库复制到 Azure 网站中的 MySQL</span>2. 将数据库复制到 Azure 网站中的 MySQL
 
-有许多方法可以将数据库迁移到 Azure。适合于 MySQL 数据库的一个方法是使用 [MySqlDump][] 工具。下面的命令提供一个示例，演示如何从本地计算机复制到 Azure 网站：
+有许多方法可以将数据库迁移到 Azure。适合于 MySQL 数据库的一个方法是使用 [MySqlDump][MySqlDump] 工具。下面的命令提供一个示例，演示如何从本地计算机复制到 Azure 网站：
 
     mysqldump -u local_username --password=local_password  drupal | mysql -h remote_host -u remote_username --password=remote_password remote_db_name
 
@@ -74,11 +74,11 @@
 
 有关详细信息，请参阅下列博客文章和主题：
 
--   [Azure 网站，PHP 视角][]
--   [Azure 网站、云服务和虚拟机：何时使用何种产品？][]
--   [使用 .user.ini 文件在 Azure 网站中配置 PHP][]
--   [Azure 集成模块][]
--   [Azure Blob 存储模块][]
+-   [Azure 网站，PHP 视角][Azure 网站，PHP 视角]
+-   [Azure 网站、云服务和虚拟机：何时使用何种产品？][Azure 网站、云服务和虚拟机：何时使用何种产品？]
+-   [使用 .user.ini 文件在 Azure 网站中配置 PHP][使用 .user.ini 文件在 Azure 网站中配置 PHP]
+-   [Azure 集成模块][Azure 集成模块]
+-   [Azure Blob 存储模块][Azure Blob 存储模块]
 
   [Azure 网站、云服务和虚拟机：何时使用何种产品？]: http://azure.microsoft.com/zh-cn/documentation/articles/choose-web-site-cloud-service-vm/
   [将 Drupal 网站从 LAMP 迁移到 Azure]: http://blogs.msdn.com/b/brian_swan/archive/2012/03/19/azure-real-world-migrating-drupal-from-lamp-to-windows-azure.aspx

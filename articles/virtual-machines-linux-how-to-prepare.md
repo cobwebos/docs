@@ -2,27 +2,27 @@
 
 # 为 Azure 准备 Linux 虚拟机
 
-Azure 中的虚拟机运行你在创建虚拟机时选择的操作系统。Azure 采用 VHD 格式（.vhd 文件）将虚拟机的操作系统存储在虚拟硬盘中。已为复制准备的操作系统的 VHD 称作映像。本文说明如何利用已安装且经过一般化的操作系统上载 .vhd 文件来创建你自己的映像。有关 Azure 中的磁盘和映像的详细信息，请参阅[管理磁盘和映像（可能为英文页面）][]。
+Azure 中的虚拟机运行你在创建虚拟机时选择的操作系统。Azure 采用 VHD 格式（.vhd 文件）将虚拟机的操作系统存储在虚拟硬盘中。已为复制准备的操作系统的 VHD 称作映像。本文说明如何利用已安装且经过一般化的操作系统上载 .vhd 文件来创建你自己的映像。有关 Azure 中的磁盘和映像的详细信息，请参阅[管理磁盘和映像（可能为英文页面）][管理磁盘和映像（可能为英文页面）]。
 
-**注意**：创建虚拟机时，你可以自定义操作系统设置以快速运行你的应用程序。你设置的配置存储在该虚拟机的磁盘上。有关说明，请参阅[如何创建自定义虚拟机][]。
+**注意**：创建虚拟机时，你可以自定义操作系统设置以快速运行你的应用程序。你设置的配置存储在该虚拟机的磁盘上。有关说明，请参阅[如何创建自定义虚拟机][如何创建自定义虚拟机]。
 
-**重要说明**：只有在使用某个认可的分发的时候也使用[本文][]中指定的配置详细信息时，Azure 平台 SLA 才适用于运行 Linux 操作系统的虚拟机。在 Azure 平台映像库中提供的所有 Linux 分发都是具有所需配置的认可的分发。
+**重要说明**：只有在使用某个认可的分发的时候也使用[本文][本文]中指定的配置详细信息时，Azure 平台 SLA 才适用于运行 Linux 操作系统的虚拟机。在 Azure 平台映像库中提供的所有 Linux 分发都是具有所需配置的认可的分发。
 
 ## 先决条件
 
 本文假定你拥有以下项目：
 
--   **管理证书** - 你已为要为其上载 VHD 的订阅创建一个管理证书，并且已将该证书导出到 .cer 文件。有关创建证书的详细信息，请参阅[为 Azure 创建管理证书（可能为英文页面）][]。
+-   **管理证书** - 你已为要为其上载 VHD 的订阅创建一个管理证书，并且已将该证书导出到 .cer 文件。有关创建证书的详细信息，请参阅[为 Azure 创建管理证书（可能为英文页面）][为 Azure 创建管理证书（可能为英文页面）]。
 
--   **安装在 .vhd 文件中的 Linux 操作系统。** - 你已将支持的 Linux 操作系统安装到某一虚拟硬盘。可使用多个工具创建 .vhd 文件。可使用虚拟化解决方案（例如 Hyper-V）创建 .vhd 文件并安装操作系统。有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机][]。
+-   **安装在 .vhd 文件中的 Linux 操作系统。** - 你已将支持的 Linux 操作系统安装到某一虚拟硬盘。可使用多个工具创建 .vhd 文件。可使用虚拟化解决方案（例如 Hyper-V）创建 .vhd 文件并安装操作系统。有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机][安装 Hyper-V 角色和配置虚拟机]。
 
     **重要说明**：Azure 不支持更新的 VHDX 格式。可使用 Hyper-V 管理器或 convert-vhd cmdlet 将磁盘转换为 VHD 格式。
 
-    有关认可分发的列表，请参阅 [Azure 认可的分发中的 Linux][]。或者，请参阅本文最后一节中的[非认可分发的信息][]。
+    有关认可分发的列表，请参阅 [Azure 认可的分发中的 Linux][Azure 认可的分发中的 Linux]。或者，请参阅本文最后一节中的[非认可分发的信息][非认可分发的信息]。
 
--   **Linux Azure 命令行工具。**如果你正在使用 Linux 操作系统创建映像，请使用此工具上载 VHD 文件。若要下载此工具，请参阅[针对 Mac 和 Linux 的 Azure 命令行工具][]。
+-   **Linux Azure 命令行工具。**如果你正在使用 Linux 操作系统创建映像，请使用此工具上载 VHD 文件。若要下载此工具，请参阅[针对 Mac 和 Linux 的 Azure 命令行工具][针对 Mac 和 Linux 的 Azure 命令行工具]。
 
--   **Add-AzureVhd cmdlet**，它是 Azure PowerShell 模块的一部分。若要下载该模块，请参阅 [Azure 下载（可能为英文页面）][]。有关详细信息，请参阅 [Add-AzureVhd（可能为英文页面）][]。
+-   **Add-AzureVhd cmdlet**，它是 Azure PowerShell 模块的一部分。若要下载该模块，请参阅 [Azure 下载（可能为英文页面）][Azure 下载（可能为英文页面）]。有关详细信息，请参阅 [Add-AzureVhd（可能为英文页面）][Add-AzureVhd（可能为英文页面）]。
 
 对于所有分发，请注意以下几点：
 
@@ -32,16 +32,16 @@ NUMA 不受支持，因为 2.6.37 版之前的 Linux 内核版本有 Bug。Waage
 
 Azure Linux 代理需要安装 python-pyasn1 包。
 
-建议你在安装时不要创建 SWAP 分区。可以通过使用 Azure Linux 代理配置 SWAP 空间。此外，建议不要将主流 Linux 内核用于不带 [Microsoft 网站（可能为英文页面）][]上提供的修补程序（许多当前分发/内核可能已包含此修补程序）的 Azure 虚拟机。
+建议你在安装时不要创建 SWAP 分区。可以通过使用 Azure Linux 代理配置 SWAP 空间。此外，建议不要将主流 Linux 内核用于不带 [Microsoft 网站（可能为英文页面）][Microsoft 网站（可能为英文页面）]上提供的修补程序（许多当前分发/内核可能已包含此修补程序）的 Azure 虚拟机。
 
 所有 VHD 的大小必须是 1 MB 的倍数。
 
 此任务包括下列步骤：
 
--   [步骤 1：准备要上载的映像][]
--   [步骤 2：在 Azure 中创建存储帐户][]
--   [步骤 3：准备连接到 Azure][]
--   [步骤 4：向 Azure 上载映像][]
+-   [步骤 1：准备要上载的映像][步骤 1：准备要上载的映像]
+-   [步骤 2：在 Azure 中创建存储帐户][步骤 2：在 Azure 中创建存储帐户]
+-   [步骤 3：准备连接到 Azure][步骤 3：准备连接到 Azure]
+-   [步骤 4：向 Azure 上载映像][步骤 4：向 Azure 上载映像]
 
 ## <span id="prepimage"></span> </a>步骤 1：准备要上载的映像
 
@@ -83,15 +83,15 @@ Azure Linux 代理需要安装 python-pyasn1 包。
 
     **注意：**该步骤仅适用于 CentOS 6.2 和 6.3。在 CentOS 6.4+ 中，Linux Integration Services 已在内核中提供。
 
-    a) 从[下载中心][]获取包含适用于 Linux Integration Services 的驱动程序的 .iso 文件。
+    a) 从[下载中心][下载中心]获取包含适用于 Linux Integration Services 的驱动程序的 .iso 文件。
 
     b) 在 Hyper-V 管理器中的“操作”窗格中，单击“设置”。
 
-    ![打开 Hyper-V 设置][]
+    ![打开 Hyper-V 设置][打开 Hyper-V 设置]
 
     c) 在“硬件”窗格中，单击“IDE 控制器 1”。
 
-    ![添加 DVD 驱动器与安装介质][]
+    ![添加 DVD 驱动器与安装介质][添加 DVD 驱动器与安装介质]
 
     d) 在“IDE 控制器”框中，单击“DVD 驱动器”，然后单击“添加”。
 
@@ -309,10 +309,10 @@ Azure Linux 代理需要安装 python-pyasn1 包。
 
 ### 准备 SUSE Linux Enterprise Server 11 SP2 操作系统
 
-**注意：** [SUSE Studio][] 可轻松地为 Azure 和 Hyper-V 创建和管理你的 SLES/opeSUSE 映像。此外，SUSE Studio 库中的以下正式映像可下载或克隆到你自己的 SUSE Studio 帐户中以便轻松地进行自定义：
+**注意：** [SUSE Studio][SUSE Studio] 可轻松地为 Azure 和 Hyper-V 创建和管理你的 SLES/opeSUSE 映像。此外，SUSE Studio 库中的以下正式映像可下载或克隆到你自己的 SUSE Studio 帐户中以便轻松地进行自定义：
 
-> -   [SUSE Studio 库上的 SLES 11 SP2 for Azure][]
-> -   [SUSE Studio 库上的 SLES 11 SP3 for Azure][]
+> -   [SUSE Studio 库上的 SLES 11 SP2 for Azure][SUSE Studio 库上的 SLES 11 SP2 for Azure]
+> -   [SUSE Studio 库上的 SLES 11 SP3 for Azure][SUSE Studio 库上的 SLES 11 SP3 for Azure]
 
 1.  在 Hyper-V 管理器的中间窗格中，选择虚拟机。
 
@@ -333,7 +333,7 @@ Azure Linux 代理需要安装 python-pyasn1 包。
 
         "No repositories defined. Use the 'zypper addrepo' command to add one or more repositories."
 
-    可能需要重新启用存储库或注册系统。这可以通过 suse\_register 实用工具完成。有关更多信息，请参见 [SLES 文档（可能为英文页面）][]。
+    可能需要重新启用存储库或注册系统。这可以通过 suse\_register 实用工具完成。有关更多信息，请参见 [SLES 文档（可能为英文页面）][SLES 文档（可能为英文页面）]。
 
 如果未启用某个相关的更新存储库，请使用以下命令启用该存储库：
 
@@ -392,9 +392,9 @@ Azure Linux 代理需要安装 python-pyasn1 包。
 
 ### 准备 openSUSE 12.3 操作系统
 
-**注意：** [SUSE Studio][] 可轻松地为 Azure 和 Hyper-V 创建和管理你的 SLES/opeSUSE 映像。此外，SUSE Studio 库中的以下正式映像可下载或克隆到你自己的 SUSE Studio 帐户中以便轻松地进行自定义：
+**注意：** [SUSE Studio][SUSE Studio] 可轻松地为 Azure 和 Hyper-V 创建和管理你的 SLES/opeSUSE 映像。此外，SUSE Studio 库中的以下正式映像可下载或克隆到你自己的 SUSE Studio 帐户中以便轻松地进行自定义：
 
-> -   [SUSE Studio 库上的 openSUSE 12.3 for Azure][]
+> -   [SUSE Studio 库上的 openSUSE 12.3 for Azure][SUSE Studio 库上的 openSUSE 12.3 for Azure]
 
 1.  在 Hyper-V 管理器的中间窗格中，选择虚拟机。
 
@@ -489,15 +489,15 @@ Azure Linux 代理需要安装 python-pyasn1 包。
 
 2.  在命令栏上，单击“新建”。
 
-    ![创建存储帐户][]
+    ![创建存储帐户][创建存储帐户]
 
 3.  单击“存储帐户”，然后单击“快速创建”。
 
-    ![快速创建存储帐户][]
+    ![快速创建存储帐户][快速创建存储帐户]
 
 4.  如下所示填写字段：
 
-    ![输入存储帐户详细信息][]
+    ![输入存储帐户详细信息][输入存储帐户详细信息]
 
 -   在 **URL** 下，键入要在存储帐户的 URL 中使用的子域名称。输入的名称可包含 3-24 个小写字母和数字。此名称将成为用于对订阅的 Blob、队列或表资源进行寻址的 URL 中的主机名。
 
@@ -509,7 +509,7 @@ Azure Linux 代理需要安装 python-pyasn1 包。
 
     帐户现在列在“存储帐户”下。
 
-    ![已成功创建存储帐户][]
+    ![已成功创建存储帐户][已成功创建存储帐户]
 
 ## <span id="#connect"></span> </a>步骤 3：准备连接到 Azure
 
@@ -531,7 +531,7 @@ Azure Linux 代理需要安装 python-pyasn1 包。
 
     其中`<PathToFile>` 是 .publishsettings 文件的完整路径。
 
-    有关详细信息，请参阅 [Azure Cmdlet 入门][]
+    有关详细信息，请参阅 [Azure Cmdlet 入门][Azure Cmdlet 入门]
 
 ## <span id="upload"></span> </a>步骤 4：向 Azure 上载映像
 
@@ -555,11 +555,11 @@ Azure Linux 代理需要安装 python-pyasn1 包。
 
 此列表并未涵盖所有信息，因为每个分发都是不同的；即使你满足以下所有条件，你也可能仍需显著调整你的映像以确保其在平台上正常运行。
 
-正是出于这个原因，建议你从某个我们的[合作伙伴认可的映像][]开始操作。
+正是出于这个原因，建议你从某个我们的[合作伙伴认可的映像][合作伙伴认可的映像]开始操作。
 
 下面列出的内容将替换该过程的步骤 1 来创建你自己的 VHD：
 
-1.  你将需要确保所运行的是包含最新的适用于 Hyper V 的 LIS 驱动程序的内核，或者确保已成功编译这些驱动程序（它们已进行开源）。可在[此处][]找到这些驱动程序
+1.  你将需要确保所运行的是包含最新的适用于 Hyper V 的 LIS 驱动程序的内核，或者确保已成功编译这些驱动程序（它们已进行开源）。可在[此处][此处]找到这些驱动程序
 
 2.  内核还应包括最新版本的 ATA PiiX 驱动程序，该驱动程序用于配置映像并向内核提交修补程序，其中提交为 cd006086fa5d91414d8ff9ff2b78fbb593878e3c，日期为:Fri May 4 22:15:11 2012 +0100 ata\_piix:默认情况下，将磁盘交由 Hyper-V 驱动程序处理
 
@@ -573,7 +573,7 @@ Azure Linux 代理需要安装 python-pyasn1 包。
 
 6.  你应确保你内核中安装的所有 SCSI 设备都包含 300 秒或更长时间的 I/O 超时。
 
-7.  你将需要按照 [Linux 代理指南][]中的步骤操作来安装 Azure Linux 代理。已根据 Apache 2 许可发布代理，你可以在[代理 GitHub 位置][]获取最新的位数
+7.  你将需要按照 [Linux 代理指南][Linux 代理指南]中的步骤操作来安装 Azure Linux 代理。已根据 Apache 2 许可发布代理，你可以在[代理 GitHub 位置][代理 GitHub 位置]获取最新的位数
 
 8.  在 /etc/sudoers 中，如果以下行存在，则注释掉以下行：
 

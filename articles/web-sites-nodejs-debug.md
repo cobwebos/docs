@@ -4,7 +4,7 @@
 
 Azure 提供内置的诊断以帮助调试在 Azure 网站中托管的 Node.js 应用程序。在本文中，你将学习如何启用 stdout 和 stderr 的日志记录、在浏览器中显示错误信息以及如何下载和查看日志文件。
 
-[IISNode][] 提供对在 Azure 上托管的 Node.js 应用程序的诊断。尽管本文讨论的是用于收集诊断信息的最常见设置，但并没有完整介绍如何使用 IISNode。有关使用 IISNode 的详细信息，请参阅 GitHub 上的 [IISNode 自述文件（可能为英文页面）][]。
+[IISNode][IISNode] 提供对在 Azure 上托管的 Node.js 应用程序的诊断。尽管本文讨论的是用于收集诊断信息的最常见设置，但并没有完整介绍如何使用 IISNode。有关使用 IISNode 的详细信息，请参阅 GitHub 上的 [IISNode 自述文件（可能为英文页面）][IISNode 自述文件（可能为英文页面）]。
 
 ## <span id="enablelogging"></span></a>启用日志记录
 
@@ -34,9 +34,9 @@ Azure 提供内置的诊断以帮助调试在 Azure 网站中托管的 Node.js �
 <p>如果你的网站是使用 Azure 命令行工具或 Azure PowerShell Cmdlet 创建的，将自动创建一个默认的 <strong>IISNode.yml</strong> 文件。</p>
 </div>
 
-你可以通过从 [Azure 管理门户][]选择该网站，然后选择“重新启动”按钮，重新启动该网站。
+你可以通过从 [Azure 管理门户][Azure 管理门户]选择该网站，然后选择“重新启动”按钮，重新启动该网站。
 
-![重新启动按钮][]
+![重新启动按钮][重新启动按钮]
 
 如果 Azure 命令行工具安装在你的开发环境中，你可以使用以下命令重新启动该网站：
 
@@ -53,7 +53,7 @@ Azure 提供内置的诊断以帮助调试在 Azure 网站中托管的 Node.js �
 
     npm install azure-cli -g
 
-安装后，可以使用“azure”命令访问这些工具。必须首先将这些命令行工具配置为使用你的 Azure 订阅。有关如何实现此任务的信息，请参阅[如何使用 Azure 命令行工具][]一文的“如何下载和导入发布设置”部分。
+安装后，可以使用“azure”命令访问这些工具。必须首先将这些命令行工具配置为使用你的 Azure 订阅。有关如何实现此任务的信息，请参阅[如何使用 Azure 命令行工具][如何使用 Azure 命令行工具]一文的“如何下载和导入发布设置”部分。
 
 ### FTP
 
@@ -98,9 +98,9 @@ Azure 提供内置的诊断以帮助调试在 Azure 网站中托管的 Node.js �
 
 在本文中，你学习了如何启用和访问 Azure 的诊断信息。尽管此信息对于理解你的应用程序发生的问题很有用，但它可能会指出与你正使用的模块有关的问题或者 Azure 网站所使用的 Node.js 版本不同于在你的部署环境中使用的版本。
 
-有关使用 Azure 上的模块的信息，请参阅[将 Node.js 模块与 Azure 应用程序一起使用][]。
+有关使用 Azure 上的模块的信息，请参阅[将 Node.js 模块与 Azure 应用程序一起使用][将 Node.js 模块与 Azure 应用程序一起使用]。
 
-有关为你的应用程序指定 Node.js 版本的信息，请参阅[在 Azure 应用程序中指定 Node.js 版本][]。
+有关为你的应用程序指定 Node.js 版本的信息，请参阅[在 Azure 应用程序中指定 Node.js 版本][在 Azure 应用程序中指定 Node.js 版本]。
 
   [IISNode]: https://github.com/tjanczuk/iisnode
   [IISNode 自述文件（可能为英文页面）]: https://github.com/tjanczuk/iisnode#readme

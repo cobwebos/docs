@@ -2,15 +2,15 @@
 
 # 如何使用 Service Bus 中继服务
 
-本指南演示如何使用 Service Bus 中继服务。示例是用 C# 编写的，并且使用 Service Bus 程序集中包含的扩展型 Windows Communication Foundation API，该程序集是用于 Azure 的 .NET 库的组成部分。有关 Service Bus 中继的详细信息，请参阅[后续步骤][]一节。
+本指南演示如何使用 Service Bus 中继服务。示例是用 C# 编写的，并且使用 Service Bus 程序集中包含的扩展型 Windows Communication Foundation API，该程序集是用于 Azure 的 .NET 库的组成部分。有关 Service Bus 中继的详细信息，请参阅[后续步骤][后续步骤]一节。
 
-[WACOM.INCLUDE [create-account-note][]]
+[WACOM.INCLUDE [create-account-note][create-account-note]]
 
 ## <span class="short-header">什么是 Service Bus 中继</span>什么是 Service Bus 中继
 
 Service Bus **中继**服务使你能构建可在 Azure 数据中心和你自己的本地企业环境中运行的**混合应用程序**。Service Bus 中继可简化这一过程，它允许你安全地向公有云公开位于企业网络内的 Windows Communication Foundation (WCF) 服务，而无需打开防火墙连接，也无需对企业网络基础结构进行彻底的更改。
 
-![中继概念][]
+![中继概念][中继概念]
 
 Service Bus 中继使你能够在现有企业环境中托管 WCF 服务。然后，你可以将侦听传入会话和请求这些 WCF 服务的任务委托给在 Azure 内运行的 Service Bus。这使你能够向 Azure 中运行的应用程序代码或者向移动工作者或 Extranet 合作伙伴环境公开这些服务。Service Bus 允许你精确、安全地控制谁可以访问这些服务。它提供了一种强大且安全的方式，从你的现有企业解决方案公开应用程序功能和数据并从云中利用这些功能和数据。
 
@@ -22,7 +22,7 @@ Service Bus 中继使你能够在现有企业环境中托管 WCF 服务。然后
 
 创建服务命名空间：
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 
 2.  在该管理门户的左侧导航窗格中，单击
     **Service Bus**。
@@ -246,15 +246,15 @@ Service Bus **NuGet** 包是获取 Service Bus API 并为应用程序配置所�
 
 此时，你已了解 Service Bus **中继**服务的基础知识，请访问以下链接以了解更多信息。
 
--   构建服务：[为 Service Bus 构建服务][]。
--   构建客户端：[构建 Service Bus 客户端应用程序][]。
--   Service Bus 示例：从 [Azure 示例][]下载。
+-   构建服务：[为 Service Bus 构建服务][为 Service Bus 构建服务]。
+-   构建客户端：[构建 Service Bus 客户端应用程序][构建 Service Bus 客户端应用程序]。
+-   Service Bus 示例：从 [Azure 示例][Azure 示例]下载。
 
   [后续步骤]: #next_steps
   [create-account-note]: ../includes/create-account-note.md
   [中继概念]: ./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png
   [Azure 管理门户]: http://manage.windowsazure.cn
-  [0]: ./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png
+  []: ./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png
   [1]: ./media/service-bus-dotnet-how-to-use-relay/sb-queues-04.png
   [2]: ./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-27.png
   [3]: ./media/service-bus-dotnet-how-to-use-relay/sb-queues-09.png

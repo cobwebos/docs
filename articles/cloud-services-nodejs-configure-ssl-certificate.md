@@ -10,11 +10,11 @@
 
 此任务包括下列步骤：
 
--   [步骤 1：创建 Node.js 服务并将该服务发布到云][]
--   [步骤 2：获取 SSL 证书][]
--   [步骤 3：导入 SSL 证书][]
--   [步骤 4：修改服务定义和配置文件][]
--   [步骤 5：使用 HTTPS 连接到角色实例][]
+-   [步骤 1：创建 Node.js 服务并将该服务发布到云][步骤 1：创建 Node.js 服务并将该服务发布到云]
+-   [步骤 2：获取 SSL 证书][步骤 2：获取 SSL 证书]
+-   [步骤 3：导入 SSL 证书][步骤 3：导入 SSL 证书]
+-   [步骤 4：修改服务定义和配置文件][步骤 4：修改服务定义和配置文件]
+-   [步骤 5：使用 HTTPS 连接到角色实例][步骤 5：使用 HTTPS 连接到角色实例]
 
 ## <a name="step1"> </a>步骤 1：创建 Node.js 服务并将该服务发布到云
 
@@ -22,9 +22,9 @@
 
 1.  在“开始”菜单或“开始”屏幕中，搜索 **Azure PowerShell**。最后，右键单击“Azure PowerShell”并选择“以管理员身份运行”。
 
-    ![Azure PowerShell 图标][]
+    ![Azure PowerShell 图标][Azure PowerShell 图标]
 
-[WACOM.INCLUDE [install-dev-tools][]]
+[WACOM.INCLUDE [install-dev-tools][install-dev-tools]]
 
 1.  使用 **New-AzureServiceProject** cmdlet 创建新服务项目。
 
@@ -72,13 +72,13 @@
 
 1.  使用 Windows 资源管理器导航到包含证书的 **.pfx** 文件所在的目录，然后双击证书。这将显示“证书导入向导”。
 
-    ![证书向导][]
+    ![证书向导][证书向导]
 
 2.  在“存储位置”部分，选择“当前用户”，然后单击“下一步”。这会将证书安装在你的用户帐户的证书存储中。
 
 3.  继续向导中的操作，接受默认值，直至转到“私钥保护”屏幕。你必须在这里输入证书的密码（如果有）。还必须选择“标志此密钥为可导出的”。最后，单击“下一步”(Next)。
 
-    ![私钥保护][]
+    ![私钥保护][私钥保护]
 
 4.  继续向导中的操作，接受默认值，直至证书已成功安装。
 
@@ -99,7 +99,7 @@
         ...
         </WebRole>
 
-    **Certificates** 节定义了我们的证书的名称、其位置及其所在存储的名称。由于我们将证书安装到了用户证书存储中，因此会使用值“My”。还可使用其他证书存储位置。有关详细信息，请参阅[如何将证书与服务关联][]。
+    **Certificates** 节定义了我们的证书的名称、其位置及其所在存储的名称。由于我们将证书安装到了用户证书存储中，因此会使用值“My”。还可使用其他证书存储位置。有关详细信息，请参阅[如何将证书与服务关联][如何将证书与服务关联]。
 
 2.  在你的服务定义文件中，更新 **Endpoints** 节中的 http **InputEndpoint** 元素以启用 HTTPS：
 
@@ -138,7 +138,7 @@
 
 2.  向下滚动并单击显示为“站点 URL”的链接：
 
-    ![站点 url][]
+    ![站点 url][站点 url]
 
     <div class="dev-callout">
 <strong>说明</strong>
@@ -153,11 +153,11 @@
 
 ## 其他资源
 
-[如何将证书与服务关联][]
+[如何将证书与服务关联][如何将证书与服务关联]
 
-[在 Azure 辅助角色中为 Node.js 应用程序配置 SSL][]
+[在 Azure 辅助角色中为 Node.js 应用程序配置 SSL][在 Azure 辅助角色中为 Node.js 应用程序配置 SSL]
 
-[如何在 HTTPS 终结点上配置 SSL 证书][]
+[如何在 HTTPS 终结点上配置 SSL 证书][如何在 HTTPS 终结点上配置 SSL 证书]
 
   [为 Azure 网站配置 SSL 证书]: ../web-sites-configure-ssl-certificate/
   [步骤 1：创建 Node.js 服务并将该服务发布到云]: #step1
@@ -167,7 +167,7 @@
   [步骤 5：使用 HTTPS 连接到角色实例]: #step5
   [Azure PowerShell 图标]: ./media/cloud-services-nodejs-configure-ssl-certificate/azure-powershell-start.png
   [install-dev-tools]: ../includes/install-dev-tools.md
-  [0]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-01.png
+  []: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-01.png
   [1]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-02.png
   [2]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-03.png
   [如何对 Node.js 使用 Azure PowerShell]: https://www.windowsazure.com/zh-cn/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings

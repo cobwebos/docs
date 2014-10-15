@@ -2,7 +2,7 @@
 
 # 使用 Azure SQL Database 创建 Node.js Web 应用程序
 
-本教程向你演示如何使用 Azure 数据管理提供的 SQL Database，在 Azure 上托管的 [Node][] 应用程序中存储和访问数据。本教程假定你之前有使用 Node 和 [Git][] 的经验。
+本教程向你演示如何使用 Azure 数据管理提供的 SQL Database，在 Azure 上托管的 [Node][Node] 应用程序中存储和访问数据。本教程假定你之前有使用 Node 和 [Git][Git] 的经验。
 
 你将了解到以下内容：
 
@@ -18,7 +18,7 @@
 
 本教程中的项目文件将存储在名为 **tasklist** 的目录中，已完成的应用程序将与下图类似：
 
-![显示空白 tasklist 的网页][]
+![显示空白 tasklist 的网页][显示空白 tasklist 的网页]
 
 <div class="dev-callout">
 <b>说明</b>
@@ -39,11 +39,11 @@
 
 在按照本文中的说明操作之前，你应确保已安装下列项：
 
--   [Node][] 0.6.14 或更高版本
+-   [Node][Node] 0.6.14 或更高版本
 
--   [Git][]
+-   [Git][Git]
 
--   Microsoft SQL Server 本机客户端库 - 作为 [Microsoft SQL Server 2012 功能包][]的一部分提供
+-   Microsoft SQL Server 本机客户端库 - 作为 [Microsoft SQL Server 2012 功能包][Microsoft SQL Server 2012 功能包]的一部分提供
 
 -   文本编辑器
 
@@ -55,46 +55,46 @@
 
 按照以下步骤创建 Azure 网站和 SQL Database：
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  单击该门户左下角的“+ 新建”图标。
 
-    ![创建新的 Azure 网站][]
+    ![创建新的 Azure 网站][创建新的 Azure 网站]
 
 3.  单击“网站”，然后单击“自定义创建”。
 
-    ![自定义创建新的网站][]
+    ![自定义创建新的网站][自定义创建新的网站]
 
     输入“URL”的值，从“数据库”下拉列表中选择“新建 SQL Database”，并在“区域”下拉列表中选择网站的数据中心。单击对话框底部的箭头。
 
-    ![填写网站详细信息][]
+    ![填写网站详细信息][填写网站详细信息]
 
-4.  输入数据库的“名称”的值，选择“版本”[（Web 版或企业版）][]，再依次选择数据库的“最大大小”、“排序规则”和“新建 SQL Database 服务器”。单击对话框底部的箭头。
+4.  输入数据库的“名称”的值，选择“版本”[（Web 版或企业版）][（Web 版或企业版）]，再依次选择数据库的“最大大小”、“排序规则”和“新建 SQL Database 服务器”。单击对话框底部的箭头。
 
-    ![填写 SQL Database 设置][]
+    ![填写 SQL Database 设置][填写 SQL Database 设置]
 
 5.  输入管理员名称和密码（并确认密码），选择你将在其中创建新的 SQL Database 服务器的区域，选中“允许 Azure 服务访问服务器”框。
 
-    ![新建 SQL Database 服务器][]
+    ![新建 SQL Database 服务器][新建 SQL Database 服务器]
 
     创建网站后，你会看到文本“网站‘[SITENAME]’创建已成功完成”。现在，你可以启用 Git 发布。
 
 6.  单击网站列表中显示的网站的名称以打开该网站的“快速启动”仪表板。
 
-    ![打开网站仪表板][]
+    ![打开网站仪表板][打开网站仪表板]
 
 7.  在“快速启动”页的底部，单击“设置 Git 发布”。
 
-    ![设置 Git 发布][]
+    ![设置 Git 发布][设置 Git 发布]
 
 8.  若要启用 Git 发布，你必须提供用户名和密码。记下你创建的用户名和密码。（如果你之前已设置 Git 存储库，则将跳过此步骤。）
 
-    ![创建发布凭据][]
+    ![创建发布凭据][创建发布凭据]
 
     设置存储库需要花费几秒钟的时间。
 
 9.  在你的存储库已就绪后，将显示有关将应用程序文件推送到存储库的说明。记下这些说明 - 稍后你将使用它们。
 
-    ![Git 说明][]
+    ![Git 说明][Git 说明]
 
 ## 获取 SQL Database 连接信息
 
@@ -102,11 +102,11 @@
 
 1.  从 Azure 管理门户中，单击“链接的资源”，然后单击数据库名称。
 
-    ![链接的资源][]
+    ![链接的资源][链接的资源]
 
 2.  单击“查看连接字符串”。
 
-    ![连接字符串][]
+    ![连接字符串][连接字符串]
 
 3.  从结果对话框的“ODBC”部分，记下稍后将要使用到的连接字符串。
 
@@ -116,29 +116,29 @@
 
 1.  从 Azure 管理门户中，选择你的 SQL Database，然后单击该页面底部的“管理”。如果你收到一条内容为当前 IP 不属于防火墙规则的消息，请选择“确定”以添加该 IP 地址。
 
-    ![“管理”按钮][]
+    ![“管理”按钮][“管理”按钮]
 
 2.  使用你前面在创建数据库服务器时选择的登录名和密码进行登录。
 
-    ![数据库管理登录][]
+    ![数据库管理登录][数据库管理登录]
 
 3.  从页面左下角，选择“设计”，然后选择“新建表”。
 
-    ![新建表][]
+    ![新建表][新建表]
 
 4.  输入“tasks”作为“表名”，选中“ID”列的“是否标识?”。
 
-    ![表名设置为 tasks 且已选中“是否标识”][]
+    ![表名设置为 tasks 且已选中“是否标识”][表名设置为 tasks 且已选中“是否标识”]
 
 5.  将“Column1”更改为“名称”，将“Column2”更改为“类别”。通过单击“添加列”按钮来添加两个新列。将第一个新列命名为“已创建”且类型为“date”。将第二个新列命名为“已完成”且类型为“bit”。这两个新列都应标记“是否必需?”。
 
-    ![表设计已完成][]
+    ![表设计已完成][表设计已完成]
 
 6.  单击“保存”按钮保存对表所做的更改。现在，你可以关闭 SQL Database 管理页面。
 
 ## 安装模块并生成基架
 
-在本节中，你将创建一个新的 Node 应用程序并使用 npm 添加模块包。对于任务列表应用程序，你将使用 [express][] 和 [node-sqlserver][] 模块。Express 模块为 Node 提供“模型视图控制器”框架，而 node-sqlserver 模块提供与 Azure SQL Database 的连接。
+在本节中，你将创建一个新的 Node 应用程序并使用 npm 添加模块包。对于任务列表应用程序，你将使用 [express][express] 和 [node-sqlserver][node-sqlserver] 模块。Express 模块为 Node 提供“模型视图控制器”框架，而 node-sqlserver 模块提供与 Azure SQL Database 的连接。
 
 ### 安装 Express 并生成基架
 
@@ -214,7 +214,7 @@
 
     npm install nconf -save
 
-3.  接下来，从[下载中心][]下载 Microsoft Driver for Node.JS for SQL Server 的二进制版本。
+3.  接下来，从[下载中心][下载中心]下载 Microsoft Driver for Node.JS for SQL Server 的二进制版本。
 
 4.  将存档解压缩到 **tasklist\\node\_modules** 目录。
 
@@ -333,7 +333,7 @@
 
 ### 修改全局布局
 
-**views** 目录中的 **layout.jade** 文件用作其他 **.jade** 文件的全局模板。在此步骤中，你将对其进行修改以使用 [Twitter Bootstrap][]（一个可以轻松设计美观网站的工具包）。
+**views** 目录中的 **layout.jade** 文件用作其他 **.jade** 文件的全局模板。在此步骤中，你将对其进行修改以使用 [Twitter Bootstrap][Twitter Bootstrap]（一个可以轻松设计美观网站的工具包）。
 
 1.  下载并提取 [Twitter Bootstrap][1] 的文件。将 **bootstrap.min.css** 文件从 **bootstrap\\css** 文件夹复制到你的 tasklist 应用程序的 **public\\stylesheets** 目录中。
 
@@ -389,7 +389,7 @@
 
 5.  页面应更新为在 ToDo List 中显示该项。
 
-    ![任务列表中新项的图像][]
+    ![任务列表中新项的图像][任务列表中新项的图像]
 
 6.  若要完成任务，只需选中“Complete”（完成）列中的复选框，然后单击 **Update tasks**（更新任务）。
 
@@ -416,7 +416,7 @@
         To https://username@tabletasklist.chinacloudsites.cn/TableTasklist.git
          * [new branch]      master -> master
 
-3.  在完成推送操作后，请浏览到 **[http://[site][] name].chinacloudsites.cn/** 查看你的应用程序。
+3.  在完成推送操作后，请浏览到 **[http://[site][http://[site] name].chinacloudsites.cn/** 查看你的应用程序。
 
 ### 切换到环境变量
 
@@ -424,19 +424,19 @@
 
 1.  从管理门户中，单击“网站”，然后选择你的网站。
 
-    ![打开网站仪表板][]
+    ![打开网站仪表板][打开网站仪表板]
 
 2.  单击**“配置”**，然后找到页面的**“应用程序设置”**部分。
 
-    ![配置链接][]
+    ![配置链接][配置链接]
 
 3.  在“应用程序设置”部分，在“键”字段中输入 **SQL\_CONN**，在“值”字段中输入 ODBC 连接字符串。最后，单击复选标记。
 
-    ![应用程序设置][]
+    ![应用程序设置][应用程序设置]
 
 4.  最后，单击页面底部的**“保存”**图标，将此更改提交到运行时环境。
 
-    ![保存应用程序设置][]
+    ![保存应用程序设置][保存应用程序设置]
 
 5.  从命令行中，将目录更改为 **tasklist** 目录，然后输入以下命令以删除 **config.json** 文件：
 
@@ -451,14 +451,14 @@
 
 ## 后续步骤
 
--   [使用 MongoDB 构建 Node.js Web 应用程序][]
+-   [使用 MongoDB 构建 Node.js Web 应用程序][使用 MongoDB 构建 Node.js Web 应用程序]
 
 -   [使用表存储构建 Node.js Web 应用程序]
 
 ## 其他资源
 
 
-   [适用于 Mac 和 Linux 的 Azure 命令行工具][] 
+   [适用于 Mac 和 Linux 的 Azure 命令行工具][适用于 Mac 和 Linux 的 Azure 命令行工具] 
    [创建 Node.js 应用程序并将其部署到 Azure 网站](/en-us/develop/nodejs/tutorials/create-a-website-(mac))
    [使用 Git 发布到 Azure 网站](/en-us/develop/nodejs/common-tasks/publishing-with-git/)
    [Azure 开发人员中心](/en-us/develop/nodejs/)

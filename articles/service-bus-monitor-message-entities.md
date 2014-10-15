@@ -2,7 +2,7 @@
 
 # 如何监视 Service Bus 消息传送实体
 
-本主题介绍如何使用 [Azure 管理门户][]管理和监视 Service Bus 实体。利用此门户，你可以全面了解队列和主题的状态。也可以监视其使用情况。
+本主题介绍如何使用 [Azure 管理门户][Azure 管理门户]管理和监视 Service Bus 实体。利用此门户，你可以全面了解队列和主题的状态。也可以监视其使用情况。
 
 ## 如何监视有关 Service Bus 队列的活动
 
@@ -43,5 +43,5 @@
 ![][1]
 
   [Azure 管理门户]: http://manage.windowsazure.cn
-  [0]: ./media/service-bus-monitor-message-entities/QueueDashboard.png
+  []: ./media/service-bus-monitor-message-entities/QueueDashboard.png
   [1]: ./media/service-bus-monitor-message-entities/AddMetrics.png

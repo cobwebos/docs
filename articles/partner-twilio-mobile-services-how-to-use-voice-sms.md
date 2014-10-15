@@ -12,13 +12,13 @@ Twilio 为将来的商业沟通提供强大支持，并使开发人员能够将�
 
 ## <span id="Pricing"></span></a>Twilio 定价和特别优惠
 
-Azure 客户可享受[特别优惠][]：升级 Twilio 帐户即可免费获得 10 美元的 Twilio 信用。此 Twilio 信用可应用于任何 Twilio 使用（10 美元信用等价于发送多达 1,000 条 SMS 消息或接收长达 1000 分钟的入站语音，具体取决电话号码和消息或呼叫目标的位置）。兑换此 Twilio 信用额度并从 [ahoy.twilio.com/azure][特别优惠] 开始。
+Azure 客户可享受[特别优惠][特别优惠]：升级 Twilio 帐户即可免费获得 10 美元的 Twilio 信用。此 Twilio 信用可应用于任何 Twilio 使用（10 美元信用等价于发送多达 1,000 条 SMS 消息或接收长达 1000 分钟的入站语音，具体取决电话号码和消息或呼叫目标的位置）。兑换此 Twilio 信用额度并从 [ahoy.twilio.com/azure][特别优惠] 开始。
 
-Twilio 是一种现用现付服务。没有设置费用，并且你可以随时关闭你的帐户。你可以在 [Twilio 定价][]上找到更多详细信息。
+Twilio 是一种现用现付服务。没有设置费用，并且你可以随时关闭你的帐户。你可以在 [Twilio 定价][Twilio 定价]上找到更多详细信息。
 
 ## <span id="Concepts"></span></a>概念
 
-Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。提供了多种语言版本的客户端库；有关列表，请参阅 [Twilio API 库][]。其他教程介绍了如何使用 Twilio 和以 [.NET][]、[node.js][]、[Java][]、[PHP][]、[Python][] 或 [Ruby][] 编写的任何 Azure 应用程序。
+Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。提供了多种语言版本的客户端库；有关列表，请参阅 [Twilio API 库][Twilio API 库]。其他教程介绍了如何使用 Twilio 和以 [.NET][.NET]、[node.js][node.js]、[Java][Java]、[PHP][PHP]、[Python][Python] 或 [Ruby][Ruby] 编写的任何 Azure 应用程序。
 
 Twilio API 的关键方面是 Twilio 谓词和 Twilio 标记语言 (TwiML)。
 
@@ -26,7 +26,7 @@ Twilio API 的关键方面是 Twilio 谓词和 Twilio 标记语言 (TwiML)。
 
 API 利用了 Twilio 谓词；例如，**\<Say\>** 谓词指示 Twilio 在呼叫时传递语音消息。
 
-下面是 Twilio 谓词的列表。通过 [Twilio 标记语言文档][]了解其他谓词和功能。
+下面是 Twilio 谓词的列表。通过 [Twilio 标记语言文档][Twilio 标记语言文档]了解其他谓词和功能。
 
 -   **\<Dial\>**：将呼叫方连接到其他电话。
 -   **\<Gather\>**：收集通过电话按键输入的数字。
@@ -52,29 +52,29 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
 当应用程序调用 Twilio API 时，某个 API 参数将为返回 TwiML 响应的 URL。在开发过程中，可以使用 Twilio 提供的 URL 来提供应用程序所使用的 TwiML 响应。还可以托管你自己的 URL 来生成 TwiML 响应，也可以选择使用 **TwiMLResponse** 对象。
 
-有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][Twilio 标记语言文档]。有关 Twilio API 的其他信息，请参阅 [Twilio API][]。
+有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][Twilio 标记语言文档]。有关 Twilio API 的其他信息，请参阅 [Twilio API][Twilio API]。
 
 ## <span id="CreateAccount"></span></a>创建 Twilio 帐户
 
-准备好获取 Twilio 帐户后，请在[试用 Twilio][] 上注册。可以先使用免费帐户，以后再升级你的帐户。
+准备好获取 Twilio 帐户后，请在[试用 Twilio][试用 Twilio] 上注册。可以先使用免费帐户，以后再升级你的帐户。
 
-注册 Twilio 帐户时，你将收到帐户 ID 和身份验证令牌。需要二者才能发起 Twilio API 呼叫。为了防止对你的帐户进行未经授权的访问，请保护身份验证令牌。你的帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][]上标记为“帐户 SID”和“身份验证令牌”的字段中。
+注册 Twilio 帐户时，你将收到帐户 ID 和身份验证令牌。需要二者才能发起 Twilio API 呼叫。为了防止对你的帐户进行未经授权的访问，请保护身份验证令牌。你的帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][Twilio 帐户页]上标记为“帐户 SID”和“身份验证令牌”的字段中。
 
 ## <span id="VerifyPhoneNumbers"></span></a>验证电话号码
 
-需要使用 Twilio 为你的帐户验证各个电话号码。例如，若要发起出站电话呼叫，必须使用 Twilio 验证电话号码是否为出站呼叫方 ID。同样，若要使电话号码接收 SMS 消息，则必须使用 Twilio 验证接收电话号码。有关如何验证电话号码的信息，请参阅[管理号码（可能为英文页面）][]。下面的一些代码依赖于需要使用 Twilio 进行验证的电话号码。
+需要使用 Twilio 为你的帐户验证各个电话号码。例如，若要发起出站电话呼叫，必须使用 Twilio 验证电话号码是否为出站呼叫方 ID。同样，若要使电话号码接收 SMS 消息，则必须使用 Twilio 验证接收电话号码。有关如何验证电话号码的信息，请参阅[管理号码（可能为英文页面）][管理号码（可能为英文页面）]。下面的一些代码依赖于需要使用 Twilio 进行验证的电话号码。
 
-作为对应用程序使用现有号码的替代方法，你可以购买 Twilio 电话号码。有关购买 Twilio 电话号码的信息，请参阅 [Twilio 电话号码帮助][]。
+作为对应用程序使用现有号码的替代方法，你可以购买 Twilio 电话号码。有关购买 Twilio 电话号码的信息，请参阅 [Twilio 电话号码帮助][Twilio 电话号码帮助]。
 
 ## <span id="create_app"></span></a>创建移动服务
 
-托管启用 Twilio 的应用程序的移动服务与其他任何移动服务没有区别。只需添加 Twilio node.js 库，就能从移动服务自定义 API 脚本引用该库。有关创建初始移动服务的信息，请参阅[移动服务入门][]。
+托管启用 Twilio 的应用程序的移动服务与其他任何移动服务没有区别。只需添加 Twilio node.js 库，就能从移动服务自定义 API 脚本引用该库。有关创建初始移动服务的信息，请参阅[移动服务入门][移动服务入门]。
 
 ## <span id="VerifyPhoneNumbers"></span></a>配置移动服务以使用 Twilio Node.js 库
 
 Twilio 提供了可包装 Twilio 各个方面的 Node.js 库，使你能够以简单且轻松的方式与 Twilio REST API 和 Twilio 客户端进行交互，从而生成 TwiML 响应。
 
-若要在移动服务中使用 Twilio node.js 库，你必须利用移动服务 npm 模块支持（将脚本存储在源代码管理中即可）。教程[在源代码管理中存储脚本][]将指导你完成在移动服务中首次设置源代码管理，以及在 Git 存储库中存储服务器脚本的整个过程。
+若要在移动服务中使用 Twilio node.js 库，你必须利用移动服务 npm 模块支持（将脚本存储在源代码管理中即可）。教程[在源代码管理中存储脚本][在源代码管理中存储脚本]将指导你完成在移动服务中首次设置源代码管理，以及在 Git 存储库中存储服务器脚本的整个过程。
 
 设置移动服务的源代码管理后，请在“移动服务”仪表板上打开“配置”选项卡，然后找到并复制 Git URL
 
@@ -90,7 +90,7 @@ Twilio 提供了可包装 Twilio 各个方面的 Node.js 库，使你能够以�
 
 出现提示时，请输入你为服务设置源代码管理时使用的凭据。登录后，你将会看到 Azure 移动服务控制台。
 
-![移动服务控制台][]
+![移动服务控制台][移动服务控制台]
 
 在控制台中，将目录切换到 scripts 文件夹：
 
@@ -125,7 +125,7 @@ Twilio 提供了可包装 Twilio 各个方面的 Node.js 库，使你能够以�
 
 有关传入到 **client.makeCall** 函数中的参数的详细信息，请参阅 [][]<http://www.twilio.com/docs/api/rest/making-calls></a>。
 
-如前所述，此代码使用 Twilio 提供的网站返回 TwiML 响应。可以改用你自己的站点来提供 TwiML 响应。有关更多信息，请参见[如何：从你自己的网站提供 TwiML 响应][]。
+如前所述，此代码使用 Twilio 提供的网站返回 TwiML 响应。可以改用你自己的站点来提供 TwiML 响应。有关更多信息，请参见[如何：从你自己的网站提供 TwiML 响应][如何：从你自己的网站提供 TwiML 响应]。
 
 ## <span id="howto_send_sms"></span></a>如何：发送 SMS 消息
 
@@ -200,7 +200,7 @@ Twilio 提供了可包装 Twilio 各个方面的 Node.js 库，使你能够以�
         });
     };
 
-[WACOM.INCLUDE [twilio\_的更多服务和后续步骤][]]
+[WACOM.INCLUDE [twilio\_的更多服务和后续步骤][twilio\_的更多服务和后续步骤]]
 
   [特别优惠]: http://ahoy.twilio.com/azure
   [Twilio 定价]: http://www.twilio.com/pricing

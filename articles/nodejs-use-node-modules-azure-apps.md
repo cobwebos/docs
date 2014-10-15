@@ -39,7 +39,7 @@ Azure 网站不支持本机模块。一些模块（如 JSDOM 和 MongoDB）具�
 
 可使用 **package.json** 文件来指定你的应用程序所需的顶级依赖项，以便托管平台能够安装这些依赖项，而不是要求你在部署中包含 **node\_packages** 文件夹。部署应用程序后，可使用 **npm install** 命令解析 **package.json** 文件并安装列出的所有依赖项。
 
-在开发期间，你可以在安装模块时使用 **--save**、**--save-dev** 或 **--save-optional** 参数，以便自动将模块条目添加到 **package.json** 文件中。有关详细信息，请参阅 [npm-install][]。
+在开发期间，你可以在安装模块时使用 **--save**、**--save-dev** 或 **--save-optional** 参数，以便自动将模块条目添加到 **package.json** 文件中。有关详细信息，请参阅 [npm-install][npm-install]。
 
 **package.json** 文件的一个潜在问题是它仅指定顶级依赖项的版本。安装的每个模块不一定会指定它所依赖的模块的版本，所以你最终使用的依赖项链可能与开发过程中使用的不同。
 
@@ -54,7 +54,7 @@ Azure 网站不支持本机模块。一些模块（如 JSDOM 和 MongoDB）具�
 
 **npm-shrinkwrap.json** 文件用于尝试消除 **package.json** 文件的模块版本控制限制。虽然 **package.json** 文件仅包含顶级模块的版本，但 **npm-shrinkwrap.json** 文件包含所有模块依赖项链的版本要求。
 
-你的应用程序准备好生产后，便可锁定版本要求，并使用 **npm shrinkwrap** 命令创建 **npm-shrinkwrap.json** 文件。这将使用当前安装在 **node\_modules** 文件夹中的版本，并将这些信息记录到 **npm-shrinkwrap.json** 文件。将应用程序部署到托管环境后，可使用 **npm install** 命令来解析 **npm-shrinkwrap.json** 文件并安装列出的所有依赖项。有关详细信息，请参阅 [npm-install][]。
+你的应用程序准备好生产后，便可锁定版本要求，并使用 **npm shrinkwrap** 命令创建 **npm-shrinkwrap.json** 文件。这将使用当前安装在 **node\_modules** 文件夹中的版本，并将这些信息记录到 **npm-shrinkwrap.json** 文件。将应用程序部署到托管环境后，可使用 **npm install** 命令来解析 **npm-shrinkwrap.json** 文件并安装列出的所有依赖项。有关详细信息，请参阅 [npm-install][npm-install]。
 
 > [WACOM.NOTE]
 > 部署到 Azure 网站时，如果 **npm-shrinkwrap.json** 文件引用本机模块，那么在使用 Git 发布应用程序时你会看到如下错误：
@@ -65,7 +65,7 @@ Azure 网站不支持本机模块。一些模块（如 JSDOM 和 MongoDB）具�
 
 ## 后续步骤
 
-了解如何将 Node.js 模块与 Azure 一起使用后，请了解如何[指定 Node.js 版本][]、[生成和部署 Node.js 网站][]以及[如何使用适用于 Mac 和 Linux 的 Azure 命令行工具][]。
+了解如何将 Node.js 模块与 Azure 一起使用后，请了解如何[指定 Node.js 版本][指定 Node.js 版本]、[生成和部署 Node.js 网站][生成和部署 Node.js 网站]以及[如何使用适用于 Mac 和 Linux 的 Azure 命令行工具][如何使用适用于 Mac 和 Linux 的 Azure 命令行工具]。
 
   [运行 npm 安装以避免部署 Node 模块的 Azure 启动任务]: http://nodeblog.azurewebsites.net/startup-task-to-run-npm-in-azure
   [npm-install]: https://npmjs.org/doc/install.html

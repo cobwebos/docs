@@ -13,20 +13,20 @@
 
 本演练具有以下开发环境先决条件：
 
--   [针对 Azure Active Directory 的 PHP 示例代码][]
--   [Eclipse PDT 3.0.x 一体式][]
+-   [针对 Azure Active Directory 的 PHP 示例代码][针对 Azure Active Directory 的 PHP 示例代码]
+-   [Eclipse PDT 3.0.x 一体式][Eclipse PDT 3.0.x 一体式]
 -   PHP 5.3.1（通过 Web 平台安装程序）
 -   启用了 SSL 的 Internet Information Services (IIS) 7.5
 -   Windows PowerShell
--   [Office 365 PowerShell Commandlets][]
+-   [Office 365 PowerShell Commandlets][Office 365 PowerShell Commandlets]
 
 ### 目录
 
--   [介绍][]
--   [步骤 1：创建 PHP 应用程序][]
--   [步骤 2：在公司的目录租户中设置应用程序][]
--   [步骤 3：通过对员工登录使用 WS 联合身份验证来保护应用程序][]
--   [摘要][]
+-   [介绍][介绍]
+-   [步骤 1：创建 PHP 应用程序][步骤 1：创建 PHP 应用程序]
+-   [步骤 2：在公司的目录租户中设置应用程序][步骤 2：在公司的目录租户中设置应用程序]
+-   [步骤 3：通过对员工登录使用 WS 联合身份验证来保护应用程序][步骤 3：通过对员工登录使用 WS 联合身份验证来保护应用程序]
+-   [摘要][摘要]
 
 ## <a name="createapp"></a>步骤 1：创建 PHP 应用程序
 

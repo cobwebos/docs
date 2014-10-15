@@ -10,13 +10,13 @@ SQL Database 为 Azure 提供关系数据库管理系统并且基于 SQL Server 
 
 ## 目录
 
--   [登录 Azure][]
--   [创建和配置 SQL Database][]
--   [连接到 SQL Database][]
--   [使用 ADO.NET 进行连接][]
--   [使用 ODBC 进行连接][]
--   [使用 EntityClient Provider 进行连接][]
--   [后续步骤][]
+-   [登录 Azure][登录 Azure]
+-   [创建和配置 SQL Database][创建和配置 SQL Database]
+-   [连接到 SQL Database][连接到 SQL Database]
+-   [使用 ADO.NET 进行连接][使用 ADO.NET 进行连接]
+-   [使用 ODBC 进行连接][使用 ODBC 进行连接]
+-   [使用 EntityClient Provider 进行连接][使用 EntityClient Provider 进行连接]
+-   [后续步骤][后续步骤]
 
 ## <a name="PreReq1"></a>登录 Azure
 
@@ -32,7 +32,7 @@ SQL Database 在 Azure 上提供关系数据存储、访问和管理服务。若
 
 ### 创建数据库实例和逻辑服务器
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 
 2.  单击页面底部的“+新建”。
 
@@ -48,7 +48,7 @@ SQL Database 在 Azure 上提供关系数据存储、访问和管理服务。若
 
     SQL Database 提供两个数据库版本。Web 版数据库的大小最大可达 5 GB。企业版数据库的大小最大可达 50 GB。最大大小是在首次创建数据库时指定的，稍后可以使用“更改数据库”对其进行更改。最大大小可限制数据库的大小。
 
-    在 Azure 上创建的每个 SQL Database 实际上都具有三个副本。这样做是为了确保实现高可用性。故障转移是透明的并且是该服务的一部分。[服务级别协议][]为 SQL Database 提供 99.9% 的运行时间。
+    在 Azure 上创建的每个 SQL Database 实际上都具有三个副本。这样做是为了确保实现高可用性。故障转移是透明的并且是该服务的一部分。[服务级别协议][服务级别协议]为 SQL Database 提供 99.9% 的运行时间。
 
 8.  在“服务器”中，选择“新建 SQL Database 服务器”。
 
@@ -70,7 +70,7 @@ SQL Database 在 Azure 上提供关系数据存储、访问和管理服务。若
 
 创建数据库后，单击它以打开其仪表板。仪表板提供可在应用程序代码中复制和使用的连接字符串。仪表板还显示了你在从 Management Studio 或其他管理工具中连接到数据库时所需要指定的管理 URL。
 
-![图像][]
+![图像][图像]
 
 在下一步中，你将配置防火墙以便允许你网络上运行的应用程序通过建立连接来访问相关数据。
 
@@ -78,7 +78,7 @@ SQL Database 在 Azure 上提供关系数据存储、访问和管理服务。若
 
 1.  单击“SQL Database”，单击页面顶部的“服务器”，然后单击你刚才创建的服务器。
 
-    ![图像 2][]
+    ![图像 2][图像 2]
 
 2.  单击**“配置”**。
 
@@ -92,7 +92,7 @@ SQL Database 在 Azure 上提供关系数据存储、访问和管理服务。若
 
 6.  单击该规则旁边的复选标记进行保存。
 
-    ![图像 3][]
+    ![图像 3][图像 3]
 
 7.  单击页面底部的“保存”以完成该步骤。如果没有看到“保存”，请刷新浏览器页面。
 
@@ -183,14 +183,14 @@ SQL Database 在 Azure 上提供关系数据存储、访问和管理服务。若
 
     metadata=res://*/SchoolModel.csdl|res://*/SchoolModel.ssdl|res://*/SchoolModel.msl;provider=System.Data.SqlClient;provider connection string="Data Source=xxxxxxxxxx.database.chinacloudapi.cn;Initial Catalog=School;Persist Security Info=True;User ID=MyAdmin;Password=***********"
 
-有关详细信息，请参阅[针对 Entity Framework 的 EntityClient Provider][]。
+有关详细信息，请参阅[针对 Entity Framework 的 EntityClient Provider][针对 Entity Framework 的 EntityClient Provider]。
 
 ## <a name="next-steps"></a> 后续步骤
 
 现在，你已经了解连接到 SQL Database 的相关基础知识，查看下面的资源可了解有关 SQL Database 的更多信息。
 
--   [开发：操作方法主题 (SQL Database)][]
--   [SQL Database][]
+-   [开发：操作方法主题 (SQL Database)][开发：操作方法主题 (SQL Database)]
+-   [SQL Database][SQL Database]
 
   [登录 Azure]: #PreReq1
   [创建和配置 SQL Database]: #PreReq2

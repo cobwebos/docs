@@ -2,7 +2,7 @@
 
 # 在 Azure 中运行 OpenSUSE Linux 的虚拟机上安装 MySQL
 
-[MySQL][] 是一种受欢迎的 SQL 开源数据库。使用 [Azure 管理门户][]，你可从映像库创建运行 OpenSUSE Linux 的虚拟机。然后，你可以在虚拟机上安装和配置 MySQL 数据库。
+[MySQL][MySQL] 是一种受欢迎的 SQL 开源数据库。使用 [Azure 管理门户][Azure 管理门户]，你可从映像库创建运行 OpenSUSE Linux 的虚拟机。然后，你可以在虚拟机上安装和配置 MySQL 数据库。
 
 在本教程中，你将学习：
 
@@ -14,15 +14,15 @@
 
 ## 创建运行 OpenSUSE Linux 的虚拟机
 
-[WACOM.INCLUDE [create-and-configure-opensuse-vm-in-portal][]]
+[WACOM.INCLUDE [create-and-configure-opensuse-vm-in-portal][create-and-configure-opensuse-vm-in-portal]]
 
 ## 在虚拟机上安装和运行 MySQL
 
-[WACOM.INCLUDE [install-and-run-mysql-on-opensuse-vm][]]
+[WACOM.INCLUDE [install-and-run-mysql-on-opensuse-vm][install-and-run-mysql-on-opensuse-vm]]
 
 ## 摘要
 
-在本教程中，你已了解如何创建 OpenSUSE Linux 虚拟机以及使用 SSH 或 PuTTY 远程连接到该虚拟机。你还了解了如何在 Linux 虚拟机上安装和配置 MySQL。有关 MySQL 的详细信息，请参阅 [MySQL 文档][]。
+在本教程中，你已了解如何创建 OpenSUSE Linux 虚拟机以及使用 SSH 或 PuTTY 远程连接到该虚拟机。你还了解了如何在 Linux 虚拟机上安装和配置 MySQL。有关 MySQL 的详细信息，请参阅 [MySQL 文档][MySQL 文档]。
 
   [MySQL]: http://www.mysql.com
   [Azure 管理门户]: http://manage.windowsazure.cn

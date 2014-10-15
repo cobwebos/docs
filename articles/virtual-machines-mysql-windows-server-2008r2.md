@@ -2,7 +2,7 @@
 
 # 在 Azure 中运行 Windows Server 2008 R2 的虚拟机上安装 MySQL
 
-[MySQL][] 是一种受欢迎的 SQL 开源数据库。使用 [Azure 管理门户][]，你可从映像库创建运行 Windows Server 2008 R2 的虚拟机。然后，你可以在虚拟机上安装和配置 MySQL 数据库。
+[MySQL][MySQL] 是一种受欢迎的 SQL 开源数据库。使用 [Azure 管理门户][Azure 管理门户]，你可从映像库创建运行 Windows Server 2008 R2 的虚拟机。然后，你可以在虚拟机上安装和配置 MySQL 数据库。
 
 在本教程中，你将了解如何：
 
@@ -12,11 +12,11 @@
 
 ## 创建运行 Windows Server 2008 R2 的虚拟机
 
-[WACOM.INCLUDE [create-and-configure-windows-server-2008-vm-in-portal][]]
+[WACOM.INCLUDE [create-and-configure-windows-server-2008-vm-in-portal][create-and-configure-windows-server-2008-vm-in-portal]]
 
 ## 附加数据磁盘
 
-[WACOM.INCLUDE [attach-data-disk-windows-server-2008-vm-in-portal][]]
+[WACOM.INCLUDE [attach-data-disk-windows-server-2008-vm-in-portal][attach-data-disk-windows-server-2008-vm-in-portal]]
 
 ## 在虚拟机上安装和运行 MySQL Community Server
 
@@ -26,7 +26,7 @@
 
 2.  选择右上角的“工具”按钮。在“Internet 选项”中，选择“安全”选项卡，然后选择“可信站点”图标，最后单击“站点”按钮。将 *<http://>\*.mysql.com* 添加到受信任站点列表中。
 
-3.  转到[下载 MySQL 社区服务器][]。
+3.  转到[下载 MySQL 社区服务器][下载 MySQL 社区服务器]。
 
 4.  在“平台”下拉列表中选择 **Microsoft Windows**并单击“选择”。。
 
@@ -38,7 +38,7 @@
 
 8.  单击“下一步”。
 
-    ![MySQL 设置][]
+    ![MySQL 设置][MySQL 设置]
 
 9.  接受许可协议，然后单击**“下一步”**。
 
@@ -54,7 +54,7 @@
 
 12. 启动 MySQL 配置向导并单击“下一步”。
 
-    ![配置 MySQL][]
+    ![配置 MySQL][配置 MySQL]
 
 13. 选择“详细配置”，然后单击“下一步”。
 
@@ -127,9 +127,9 @@
 
         quit
 
-30. 在安装 MySQL 后，你必须配置终结点才能远程访问 MySQL。登录到 [Azure 管理门户][]。在 Azure 门户中，依次单击“虚拟机”、你的新虚拟机的名称、“终结点”和“添加终结点”。
+30. 在安装 MySQL 后，你必须配置终结点才能远程访问 MySQL。登录到 [Azure 管理门户][Azure 管理门户]。在 Azure 门户中，依次单击“虚拟机”、你的新虚拟机的名称、“终结点”和“添加终结点”。
 
-    ![终结点][]
+    ![终结点][终结点]
 
 31. 选择“添加终结点”，然后单击箭头以继续。
 
@@ -149,7 +149,7 @@
 
 ## 摘要
 
-在本教程中，你学习了如何创建 Windows 2008 R2 虚拟机并远程连接到该虚拟机。你还了解了如何在虚拟机上安装和配置 MySQL 以及创建数据库和新的 MySQL 用户。有关 MySQL 的详细信息，请参阅 [MySQL 文档][]。
+在本教程中，你学习了如何创建 Windows 2008 R2 虚拟机并远程连接到该虚拟机。你还了解了如何在虚拟机上安装和配置 MySQL 以及创建数据库和新的 MySQL 用户。有关 MySQL 的详细信息，请参阅 [MySQL 文档][MySQL 文档]。
 
   [MySQL]: http://www.mysql.com
   [Azure 管理门户]: http://manage.windowsazure.cn

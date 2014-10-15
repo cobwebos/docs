@@ -6,28 +6,28 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/web-sites-enom-custom-domain-name/" title="网站">网站</a> | <a href="/en-us/documentation/articles/web-sites-enom-traffic-manager-custom-domain-name/" title="使用流量管理器的网站" class="current">使用流量管理器的网站</a></div>
 
-[WACOM.INCLUDE [介绍][]]
+[WACOM.INCLUDE [介绍][介绍]]
 
-本文提供了如何将从 [eNom][] 购买的自定义域名用于 Azure 网站的说明。
+本文提供了如何将从 [eNom][eNom] 购买的自定义域名用于 Azure 网站的说明。
 
-[WACOM.INCLUDE [tmwebsitefooter][]]
+[WACOM.INCLUDE [tmwebsitefooter][tmwebsitefooter]]
 
-[WACOM.INCLUDE [introfooter][]]
+[WACOM.INCLUDE [introfooter][introfooter]]
 
 本文内容：
 
--   [了解 DNS 记录][]
--   [将网站配置为标准模式][]
--   [为自定义域添加 DNS 记录][]
--   [为网站启用流量管理器][]
+-   [了解 DNS 记录][了解 DNS 记录]
+-   [将网站配置为标准模式][将网站配置为标准模式]
+-   [为自定义域添加 DNS 记录][为自定义域添加 DNS 记录]
+-   [为网站启用流量管理器][为网站启用流量管理器]
 
 ## <a name="understanding-records"></a>了解 DNS 记录
 
-[WACOM.INCLUDE [understandingdns][]]
+[WACOM.INCLUDE [understandingdns][understandingdns]]
 
 ## <a name="bkmk_configsharedmode"></a>将网站配置为标准模式
 
-[WACOM.INCLUDE [modes][]]
+[WACOM.INCLUDE [modes][modes]]
 
 <a name="bkmk_configurecname"></a>
 
@@ -40,11 +40,11 @@
 
 2.  从“我的域”页面上，使用“管理域”字段来选择“主机记录”。这样就会显示主机记录字段。
 
-    ![“DNS 区域文件”选项卡][]
+    ![“DNS 区域文件”选项卡][“DNS 区域文件”选项卡]
 
 3.  利用“主机记录”编辑器，你可以使用“记录类型”字段选择特定的记录类型。对于使用流量管理器的 Azure 网站，只应选择使用“CNAME (别名)”，因为流量管理器只能用于 CNAME 记录。
 
-    ![区域文件编辑器][]
+    ![区域文件编辑器][区域文件编辑器]
 
     -   添加 CNAME 记录时，必须将“主机名称”字段设置为你要使用的子域。例如，**www**。必须将“地址”字段设置为用于 Azure 网站的流量管理器配置文件的“.trafficmanager.cn”域名。例如，**contoso.trafficmanager.cn**。
 

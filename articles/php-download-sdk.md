@@ -11,7 +11,7 @@ Azure SDK for PHP 包括允许你针对 Azure 开发、部署和管理 PHP 应�
 
 以下各节将介绍如何下载和安装上述组件。
 
-本主题中的说明假定你已安装 [PHP][]。
+本主题中的说明假定你已安装 [PHP][PHP]。
 
 > [WACOM.NOTE]
 > 若要使用 Azure 的 PHP 客户端库，你必须安装 PHP 5.3 或更高版本。
@@ -20,11 +20,11 @@ Azure SDK for PHP 包括允许你针对 Azure 开发、部署和管理 PHP 应�
 
 Azure 的 PHP 客户端库提供了一个用于从任何操作系统访问 Azure 功能（例如，数据管理服务和云服务）的接口。可通过 Composer 或 PEAR 包管理器安装或手动安装这些库。
 
-有关如何使用 Azure 的 PHP 客户端库的信息，请参阅[如何使用 Blob 服务][]、[如何使用表服务][]以及[如何使用队列服务][]。
+有关如何使用 Azure 的 PHP 客户端库的信息，请参阅[如何使用 Blob 服务][如何使用 Blob 服务]、[如何使用表服务][如何使用表服务]以及[如何使用队列服务][如何使用队列服务]。
 
 ### 通过 Composer 安装
 
-1.  [安装 Git][]。
+1.  [安装 Git][安装 Git]。
 
     > [WACOM.NOTE]
     > 在 Windows 上，你还需要向你的 PATH 环境变量中添加 Git 可执行文件。
@@ -44,7 +44,7 @@ Azure 的 PHP 客户端库提供了一个用于从任何操作系统访问 Azure
             "minimum-stability": "dev"
         }
 
-3.  将 **[composer.phar][]** 下载到项目根目录中。
+3.  将 **[composer.phar][composer.phar]** 下载到项目根目录中。
 
 4.  打开命令提示符并在项目根目录中执行该文件
 
@@ -54,7 +54,7 @@ Azure 的 PHP 客户端库提供了一个用于从任何操作系统访问 Azure
 
 若要将 Azure 的 PHP 客户端库作为 PEAR 包安装，请执行下列步骤：
 
-1.  [安装 PEAR][]。
+1.  [安装 PEAR][安装 PEAR]。
 2.  设置 Azure PEAR 通道：
 
         pear channel-discover pear.windowsazure.com
@@ -69,10 +69,10 @@ Azure 的 PHP 客户端库提供了一个用于从任何操作系统访问 Azure
 
 若要手动下载并安装用于 Azure 的 PHP 客户端库，请执行以下步骤：
 
-1.  下载包含 [GitHub][] 中的库的 .zip 存档。或者，复制现有存储库并将其克隆到你的本地计算机。（后一种选择需要一个 GitHub 帐户并要求已在本地安装 Git。）
+1.  下载包含 [GitHub][GitHub] 中的库的 .zip 存档。或者，复制现有存储库并将其克隆到你的本地计算机。（后一种选择需要一个 GitHub 帐户并要求已在本地安装 Git。）
 
     > [WACOM.NOTE]
-    > Azure 的 PHP 客户端库依赖于 [HTTP\_Request2][]、[Mail\_mime][] 和 [Mail\_mimeDecode][] PEAR 包。若要处理这些依赖关系，建议使用 [PEAR 包管理器][]安装这些包
+    > Azure 的 PHP 客户端库依赖于 [HTTP\_Request2][HTTP\_Request2]、[Mail\_mime][Mail\_mime] 和 [Mail\_mimeDecode][Mail\_mimeDecode] PEAR 包。若要处理这些依赖关系，建议使用 [PEAR 包管理器][PEAR 包管理器]安装这些包
 
 2.  将已下载的存档的 `WindowsAzure` 目录复制到应用程序目录结构中并从应用程序引用类。
 
@@ -80,9 +80,9 @@ Azure 的 PHP 客户端库提供了一个用于从任何操作系统访问 Azure
 
 Azure PowerShell 是一组用于部署和管理 Azure 服务（例如，云服务和虚拟机）的 PowerShell cmdlet。Azure 模拟器是一系列云服务和数据管理服务的模拟器，允许你在本地测试应用程序。这些组件仅受 Windows 支持。
 
-安装 Azure PowerShell 和 Azure 模拟器的建议方法是使用 [Microsoft Web 平台安装程序][]。请注意，你也可以选择安装其他开发组件，如 PHP、SQL Server、Microsoft Drivers for SQL Server for PHP 和 WebMatrix。
+安装 Azure PowerShell 和 Azure 模拟器的建议方法是使用 [Microsoft Web 平台安装程序][Microsoft Web 平台安装程序]。请注意，你也可以选择安装其他开发组件，如 PHP、SQL Server、Microsoft Drivers for SQL Server for PHP 和 WebMatrix。
 
-有关如何使用 Azure PowerShell 的信息，请参阅[如何使用 Azure PowerShell][]。
+有关如何使用 Azure PowerShell 的信息，请参阅[如何使用 Azure PowerShell][如何使用 Azure PowerShell]。
 
 ## 适用于 Mac 和 Linux 的 Azure 命令行工具
 
@@ -90,14 +90,14 @@ Azure PowerShell 是一组用于部署和管理 Azure 服务（例如，云服�
 
 -   **Mac**：在此处下载 Azure SDK 安装程序：[][]<http://go.microsoft.com/fwlink/?LinkId=252249></a>。打开已下载的 .pkg 文件并按照系统提示完成安装步骤。
 
--   **Linux**：安装最新版本的 [Node.js][]（请参阅[通过程序包管理器安装 Node.js][]），然后运行以下命令：
+-   **Linux**：安装最新版本的 [Node.js][Node.js]（请参阅[通过程序包管理器安装 Node.js][通过程序包管理器安装 Node.js]），然后运行以下命令：
 
         npm install azure-cli -g
 
     > [WACOM.NOTE]
     > 你可能需要使用提升的权限才能运行此命令： `sudo npm install azure-cli -g`
 
-有关如何使用适用于 Mac 和 Linux 的 Azure 命令行工具的信息，请参阅[如何使用适用于 Mac 和 Linux 的命令行工具][]。
+有关如何使用适用于 Mac 和 Linux 的 Azure 命令行工具的信息，请参阅[如何使用适用于 Mac 和 Linux 的命令行工具][如何使用适用于 Mac 和 Linux 的命令行工具]。
 
   [PHP]: http://www.php.net/manual/en/install.php
   [如何使用 Blob 服务]: http://go.microsoft.com/fwlink/?LinkId=252714

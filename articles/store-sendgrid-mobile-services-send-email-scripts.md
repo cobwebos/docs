@@ -4,23 +4,23 @@
 
 此主题演示如何将电子邮件功能添加到你的移动服务中。在本教程中，你将添加服务器端脚本以使用 SendGrid 发送电子邮件。完成后，每次插入记录时，你的移动服务即会发送一封电子邮件。
 
-SendGrid 是一项[基于云的电子邮件服务][]，该服务提供了可靠的[事务性电子邮件传递][]、可缩放性、实时分析以及可用于简化自定义集成的灵活的 API。有关详细信息，请参阅 <http://sendgrid.com>。
+SendGrid 是一项[基于云的电子邮件服务][基于云的电子邮件服务]，该服务提供了可靠的[事务性电子邮件传递][事务性电子邮件传递]、可缩放性、实时分析以及可用于简化自定义集成的灵活的 API。有关详细信息，请参阅 <http://sendgrid.com>。
 
 本教程将指导你完成以下启用电子邮件功能的基本步骤：
 
-1.  [创建 SendGrid 帐户][]
-2.  [添加脚本以发送电子邮件][]
-3.  [插入数据以接收电子邮件][]
+1.  [创建 SendGrid 帐户][创建 SendGrid 帐户]
+2.  [添加脚本以发送电子邮件][添加脚本以发送电子邮件]
+3.  [插入数据以接收电子邮件][插入数据以接收电子邮件]
 
-本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]。
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][移动服务入门]。
 
 ## <a name="sign-up"></a><span class="short-header">新建帐户</span>新建 SendGrid 帐户
 
-[WACOM.INCLUDE [sendgrid-sign-up][]]
+[WACOM.INCLUDE [sendgrid-sign-up][sendgrid-sign-up]]
 
 ## <a name="add-script"></a><span class="short-header">注册脚本</span>注册发送电子邮件的新脚本
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的移动服务。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务”，然后单击你的移动服务。
 
 2.  在管理门户中，单击“数据”选项卡，然后单击“TodoItem”表。
 
@@ -65,7 +65,7 @@ SendGrid 是一项[基于云的电子邮件服务][]，该服务提供了可靠�
 
 5.  将上面脚本中的占位符替换为适当的值：
 
-    -   ***username* 和 *password***：你在[创建 SendGrid 帐户][]中确定的 SendGrid 凭据。
+    -   ***username* 和 *password***：你在[创建 SendGrid 帐户][创建 SendGrid 帐户]中确定的 SendGrid 凭据。
 
     -   ***email-address***：用于接收电子邮件的地址。在实际应用程序中，你可以使用表来存储和检索电子邮件地址。在测试应用程序时，请仅使用你自己的电子邮件地址。
 
@@ -115,7 +115,7 @@ SendGrid 是一项[基于云的电子邮件服务][]，该服务提供了可靠�
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
 <!-- Images. -->
-  [0]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-portal-data-tables.png
+  []: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-portal-data-tables.png
   [1]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-insert-script-push2.png
   [2]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-quickstart-push1.png
   [3]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-receive-email.png

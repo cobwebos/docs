@@ -6,29 +6,29 @@
 
 ## <a name="TableOfContents"></a>目录
 
--   [什么是 PHP Web 角色和辅助角色？][]
--   [下载 Azure SDK for PHP][]
--   [如何：创建云服务项目][]
--   [如何：添加 PHP Web 角色和辅助角色][]
--   [如何：指定内置 PHP 版本][]
--   [如何：自定义内置 PHP 运行时][]
--   [如何：使用你自己的 PHP 运行时][]
--   [如何：在计算和存储模拟器中运行你的应用程序][]
--   [如何：发布应用程序][]
+-   [什么是 PHP Web 角色和辅助角色？][什么是 PHP Web 角色和辅助角色？]
+-   [下载 Azure SDK for PHP][下载 Azure SDK for PHP]
+-   [如何：创建云服务项目][如何：创建云服务项目]
+-   [如何：添加 PHP Web 角色和辅助角色][如何：添加 PHP Web 角色和辅助角色]
+-   [如何：指定内置 PHP 版本][如何：指定内置 PHP 版本]
+-   [如何：自定义内置 PHP 运行时][如何：自定义内置 PHP 运行时]
+-   [如何：使用你自己的 PHP 运行时][如何：使用你自己的 PHP 运行时]
+-   [如何：在计算和存储模拟器中运行你的应用程序][如何：在计算和存储模拟器中运行你的应用程序]
+-   [如何：发布应用程序][如何：发布应用程序]
 
 ## <a name="WhatIs"></a>什么是 PHP Web 角色和辅助角色？
 
-Azure 提供了三种用于运行应用程序的计算模型：[Azure 网站][]、[Azure 虚拟机][]和 [Azure 云服务][]。这三种模型都支持 PHP。云服务（包括 Web 角色和辅助角色）提供了*平台即服务 (PaaS)*。在云服务中，Web 角色提供专用的 Internet Information Services (IIS) Web 服务器来托管前端 Web 应用程序，而辅助角色可独立于用户交互或输入运行异步任务、运行时间较长的任务或永久性任务。
+Azure 提供了三种用于运行应用程序的计算模型：[Azure 网站][Azure 网站]、[Azure 虚拟机][Azure 虚拟机]和 [Azure 云服务][Azure 云服务]。这三种模型都支持 PHP。云服务（包括 Web 角色和辅助角色）提供了*平台即服务 (PaaS)*。在云服务中，Web 角色提供专用的 Internet Information Services (IIS) Web 服务器来托管前端 Web 应用程序，而辅助角色可独立于用户交互或输入运行异步任务、运行时间较长的任务或永久性任务。
 
-有关详细信息，请参阅[什么是云服务？][]。
+有关详细信息，请参阅[什么是云服务？][什么是云服务？]。
 
 ## <a name="DownloadSdk"></a>下载 Azure SDK for PHP
 
-[Azure SDK for PHP][] 由多个组件构成。本文将使用其中两个组件：Azure PowerShell 和 Azure 模拟器。可在此处通过 Microsoft Web 平台安装程序安装这两个组件：[安装 Azure PowerShell 和 Azure 模拟器][]。
+[Azure SDK for PHP][Azure SDK for PHP] 由多个组件构成。本文将使用其中两个组件：Azure PowerShell 和 Azure 模拟器。可在此处通过 Microsoft Web 平台安装程序安装这两个组件：[安装 Azure PowerShell 和 Azure 模拟器][安装 Azure PowerShell 和 Azure 模拟器]。
 
 ## <a name="CreateProject"></a>如何：创建云服务项目
 
-创建 PHP Web 角色或辅助角色的第一步是创建 Azure 服务项目。Azure 服务项目用作 Web 角色和辅助角色的逻辑容器，并包含项目的[服务定义 (.csdef)][] 和[服务配置 (.cscfg)][] 文件。
+创建 PHP Web 角色或辅助角色的第一步是创建 Azure 服务项目。Azure 服务项目用作 Web 角色和辅助角色的逻辑容器，并包含项目的[服务定义 (.csdef)][服务定义 (.csdef)] 和[服务配置 (.cscfg)][服务配置 (.cscfg)] 文件。
 
 若要创建新的 Azure 服务项目，请执行以下命令：
 
@@ -104,13 +104,13 @@ Azure 提供了三种用于运行应用程序的计算模型：[Azure 网站][]�
 
 若要将 Web 角色配置为使用提供的 PHP 运行时，请执行下列步骤。
 
-1.  创建 Azure 服务项目并添加 PHP Web 角色，如前面的[如何：创建云服务项目][]和[如何：添加 PHP Web 角色或辅助角色][如何：添加 PHP Web 角色和辅助角色]部分中所述。
+1.  创建 Azure 服务项目并添加 PHP Web 角色，如前面的[如何：创建云服务项目][如何：创建云服务项目]和[如何：添加 PHP Web 角色或辅助角色][如何：添加 PHP Web 角色和辅助角色]部分中所述。
 2.  创建一个 `php` 文件夹（在位于 Web 角色的根目录中的 `bin` 文件夹中），然后将 PHP 运行时（所有二进制文件、配置文件、子文件夹等）添加到该 `php` 文件夹。
-3.  （可选）如果 PHP 运行时使用 [Microsoft Drivers for PHP for SQL Server][]，则需要将 Web 角色配置为在 [SQL Server Native Client 2012][] 可用时安装它。为此，请将 `sqlncli.msi` 安装程序添加到位于 Web 角色的根目录中的 `bin` 文件夹。你可在此处下载该安装程序：[sqlncli.msi x64 安装程序][]。下一步中所述的启动脚本将在设置角色时以静默方式运行安装程序。如果你的 PHP 运行时不使用 Microsoft Drivers for PHP for SQL Server，则可从下一步所示的脚本中删除以下行：
+3.  （可选）如果 PHP 运行时使用 [Microsoft Drivers for PHP for SQL Server][Microsoft Drivers for PHP for SQL Server]，则需要将 Web 角色配置为在 [SQL Server Native Client 2012][SQL Server Native Client 2012] 可用时安装它。为此，请将 `sqlncli.msi` 安装程序添加到位于 Web 角色的根目录中的 `bin` 文件夹。你可在此处下载该安装程序：[sqlncli.msi x64 安装程序][sqlncli.msi x64 安装程序]。下一步中所述的启动脚本将在设置角色时以静默方式运行安装程序。如果你的 PHP 运行时不使用 Microsoft Drivers for PHP for SQL Server，则可从下一步所示的脚本中删除以下行：
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
 
-4.  下一步是定义将 [Internet Information Services (IIS)][] 配置为使用 PHP 运行时来处理`.php` 页的请求的启动任务。为此，请在文本编辑器中打开 `setup_web.cmd` 文件（在位于 Web 角色的根目录中的 `bin` 文件中），并将其内容替换为以下脚本：
+4.  下一步是定义将 [Internet Information Services (IIS)][Internet Information Services (IIS)] 配置为使用 PHP 运行时来处理`.php` 页的请求的启动任务。为此，请在文本编辑器中打开 `setup_web.cmd` 文件（在位于 Web 角色的根目录中的 `bin` 文件中），并将其内容替换为以下脚本：
 
         @ECHO ON
         cd "%~dp0"
@@ -130,7 +130,7 @@ Azure 提供了三种用于运行应用程序的计算模型：[Azure 网站][]�
 
 5.  将应用程序文件添加到 Web 角色的根目录。这将是 Web 服务器的根目录。
 
-6.  按照下面的[如何：发布应用程序][]部分中所述发布你的应用程序。
+6.  按照下面的[如何：发布应用程序][如何：发布应用程序]部分中所述发布你的应用程序。
 
 <div class="dev-callout"> 
 <b>说明</b> 
@@ -141,9 +141,9 @@ Azure 提供了三种用于运行应用程序的计算模型：[Azure 网站][]�
 
 若要将辅助角色配置为使用提供的 PHP 运行时，请执行下列步骤。
 
-1.  创建 Azure 服务项目并添加 PHP 辅助角色，如前面的[如何：创建云服务项目][]和[如何：添加 PHP Web 角色或辅助角色][如何：添加 PHP Web 角色和辅助角色]部分中所述。
+1.  创建 Azure 服务项目并添加 PHP 辅助角色，如前面的[如何：创建云服务项目][如何：创建云服务项目]和[如何：添加 PHP Web 角色或辅助角色][如何：添加 PHP Web 角色和辅助角色]部分中所述。
 2.  在辅助角色的根目录中创建一个 `php` 文件夹，然后将 PHP 运行时（所有二进制文件、配置文件、子文件夹等）添加到该 `php` 文件夹。
-3.  （可选）如果 PHP 运行时使用 [Microsoft Drivers for PHP for SQL Server][]，则需要将辅助角色配置为在 [SQL Server Native Client 2012][] 可用时安装它。为此，请将 `sqlncli.msi` 安装程序添加到辅助角色的根目录。你可在此处下载该安装程序：[sqlncli.msi x64 安装程序][]。下一步中所述的启动脚本将在设置角色时以静默方式运行安装程序。如果你的 PHP 运行时不使用 Microsoft Drivers for PHP for SQL Server，则可从下一步所示的脚本中删除以下行：
+3.  （可选）如果 PHP 运行时使用 [Microsoft Drivers for PHP for SQL Server][Microsoft Drivers for PHP for SQL Server]，则需要将辅助角色配置为在 [SQL Server Native Client 2012][SQL Server Native Client 2012] 可用时安装它。为此，请将 `sqlncli.msi` 安装程序添加到辅助角色的根目录。你可在此处下载该安装程序：[sqlncli.msi x64 安装程序][sqlncli.msi x64 安装程序]。下一步中所述的启动脚本将在设置角色时以静默方式运行安装程序。如果你的 PHP 运行时不使用 Microsoft Drivers for PHP for SQL Server，则可从下一步所示的脚本中删除以下行：
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
 
@@ -176,11 +176,11 @@ Azure 提供了三种用于运行应用程序的计算模型：[Azure 网站][]�
 
 5.  将应用程序文件添加到辅助角色的根目录。
 
-6.  按照下面的[如何：发布应用程序][]部分中所述发布你的应用程序。
+6.  按照下面的[如何：发布应用程序][如何：发布应用程序]部分中所述发布你的应用程序。
 
 ## <a name="Emulators"></a>如何：在计算和存储模拟器中运行你的应用程序
 
-Azure 计算和存储模拟器提供了一个本地环境，可在将 Azure 应用程序部署到云之前在该环境中测试此应用程序。模拟器与 Azure 环境之间存在一些差异。若要更好地理解这一点，请参阅[计算模拟器与 Azure 之间的差异][]和[存储模拟器与 Azure 存储服务之间的差异][]。
+Azure 计算和存储模拟器提供了一个本地环境，可在将 Azure 应用程序部署到云之前在该环境中测试此应用程序。模拟器与 Azure 环境之间存在一些差异。若要更好地理解这一点，请参阅[计算模拟器与 Azure 之间的差异][计算模拟器与 Azure 之间的差异]和[存储模拟器与 Azure 存储服务之间的差异][存储模拟器与 Azure 存储服务之间的差异]。
 
 请注意，你必须本地安装 PHP 才能使用计算模拟器。计算模拟器将使用本地 PHP 安装来运行应用程序。
 
@@ -203,7 +203,7 @@ Azure 计算和存储模拟器提供了一个本地环境，可在将 Azure 应�
 
 ## <a name="Publish"></a>如何：发布应用程序
 
-若要发布应用程序，你需要先使用 **Import-PublishSettingsFile** cmdlet 导入发布设置，然后使用 **Publish-AzureServiceProject** cmdlet 发布应用程序。有关使用这些 cmdlet 的详细信息，请分别参阅[如何：导入发布设置][]和[如何：将云服务部署到 Azure][]。
+若要发布应用程序，你需要先使用 **Import-PublishSettingsFile** cmdlet 导入发布设置，然后使用 **Publish-AzureServiceProject** cmdlet 发布应用程序。有关使用这些 cmdlet 的详细信息，请分别参阅[如何：导入发布设置][如何：导入发布设置]和[如何：将云服务部署到 Azure][如何：将云服务部署到 Azure]。
 
   [什么是 PHP Web 角色和辅助角色？]: #WhatIs
   [下载 Azure SDK for PHP]: #DownloadSdk

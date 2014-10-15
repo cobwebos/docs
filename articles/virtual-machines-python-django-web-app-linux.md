@@ -15,13 +15,13 @@
 
 以下是已完成应用程序的屏幕快照：
 
-![显示 Azure 上的 hello world 页面的浏览器窗口][]
+![显示 Azure 上的 hello world 页面的浏览器窗口][显示 Azure 上的 hello world 页面的浏览器窗口]
 
-[WACOM.INCLUDE [create-account-and-vms-note][]]
+[WACOM.INCLUDE [create-account-and-vms-note][create-account-and-vms-note]]
 
 ## 创建并配置 Azure 虚拟机以托管 Django
 
-1.  按照[此处][]提供的说明可创建 *Ubuntu Server 12.04* 分发的 Azure 虚拟机。
+1.  按照[此处][此处]提供的说明可创建 *Ubuntu Server 12.04* 分发的 Azure 虚拟机。
 
 	**注意：**你*只* 需创建虚拟机。停在标题为*创建虚拟机后如何登录该虚拟机* 的一节。
 
@@ -29,13 +29,13 @@
 
     -   导航到 Azure 门户中你新创建的虚拟机，然后单击“终结点”选项卡。
     -   单击屏幕底部的“添加终结点”按钮。
-        ![添加终结点][]
+        ![添加终结点][添加终结点]
     -   打开 *TCP* 协议的*公用端口 80* 作为*专用端口 80*。
-        ![port80][]
+        ![port80][port80]
 
 ## <span id="setup"></span> </a>设置开发环境
 
-**注意：**如果你需要安装 Python 或希望使用客户端库，请参阅 [Python 安装指南][]。
+**注意：**如果你需要安装 Python 或希望使用客户端库，请参阅 [Python 安装指南][Python 安装指南]。
 
 Ubuntu Linux VM 已预安装了 Python 2.7，但它没有安装 Apache 或 Django。按照以下步骤可连接到你的 VM 并安装 Apache 和 Django。
 
@@ -60,7 +60,7 @@ Ubuntu Linux VM 已预安装了 Python 2.7，但它没有安装 Apache 或 Djang
 
 2.  输入以下命令来创建新的 Django 项目：
 
-    ![django-admin 命令的结果][]
+    ![django-admin 命令的结果][django-admin 命令的结果]
 
     **django-admin.py** 脚本生成基于 Django 的网站的基本结构：
 
@@ -103,7 +103,7 @@ Ubuntu Linux VM 已预安装了 Python 2.7，但它没有安装 Apache 或 Djang
 
 3.  最后，在你的浏览器中加载网页：
 
-    ![显示 Azure 上的 hello world 页面的浏览器窗口][]
+    ![显示 Azure 上的 hello world 页面的浏览器窗口][显示 Azure 上的 hello world 页面的浏览器窗口]
 
 ## 关闭你的 Azure 虚拟机
 

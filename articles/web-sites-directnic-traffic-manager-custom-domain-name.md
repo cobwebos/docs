@@ -6,28 +6,28 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/web-sites-directnic-custom-domain-name/" title="网站">网站</a> | <a href="/en-us/documentation/articles/web-sites-directnic-traffic-manager-custom-domain-name/" title="使用流量管理器的网站" class="current">使用流量管理器的网站</a></div>
 
-[WACOM.INCLUDE [介绍][]]
+[WACOM.INCLUDE [介绍][介绍]]
 
-本文提供了如何将从 [DirectNic.com][] 购买的自定义域名用于 Azure 网站的说明。
+本文提供了如何将从 [DirectNic.com][DirectNic.com] 购买的自定义域名用于 Azure 网站的说明。
 
-[WACOM.INCLUDE [tmwebsitefooter][]]
+[WACOM.INCLUDE [tmwebsitefooter][tmwebsitefooter]]
 
-[WACOM.INCLUDE [introfooter][]]
+[WACOM.INCLUDE [introfooter][introfooter]]
 
 本文内容：
 
--   [了解 DNS 记录][]
--   [将网站配置为标准模式][]
--   [为自定义域添加 DNS 记录][]
--   [为网站启用流量管理器][]
+-   [了解 DNS 记录][了解 DNS 记录]
+-   [将网站配置为标准模式][将网站配置为标准模式]
+-   [为自定义域添加 DNS 记录][为自定义域添加 DNS 记录]
+-   [为网站启用流量管理器][为网站启用流量管理器]
 
 ## <a name="understanding-records"></a>了解 DNS 记录
 
-[WACOM.INCLUDE [understandingdns][]]
+[WACOM.INCLUDE [understandingdns][understandingdns]]
 
 ## <a name="bkmk_configsharedmode"></a>将网站配置为标准模式
 
-[WACOM.INCLUDE [modes][]]
+[WACOM.INCLUDE [modes][modes]]
 
 <a name="bkmk_configurecname"></a>
 
@@ -38,13 +38,13 @@
 
 1.  通过 Directnic.com 登录你的帐户，选择“我的服务”，然后选择“域”。
 
-    ![Directnic 服务菜单][]
+    ![Directnic 服务菜单][Directnic 服务菜单]
 
 2.  单击要用于你的 Azure 网站的域名。
 
 3.  在域管理页面的“服务”窗格中单击 **DNS** 的“管理”按钮。
 
-    ![服务面板][]
+    ![服务面板][服务面板]
 
 4.  通过填写“类型”、“名称”和“数据”字段，添加 DNS 记录。完成时，单击“添加记录”按钮。
 

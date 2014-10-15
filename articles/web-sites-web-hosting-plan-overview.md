@@ -6,7 +6,7 @@ Web 宿主计划表示一组可在你的网站间共享的功能和容量。Web 
 
 ## Web 宿主计划中的功能
 
-每个定价级别（例如，免费、共享、基本和标准）都有其自己的配套功能。[转到此处][]以了解最新功能和定价信息。
+每个定价级别（例如，免费、共享、基本和标准）都有其自己的配套功能。[转到此处][转到此处]以了解最新功能和定价信息。
 
 下面是一些有关 Web 宿主计划和功能的有用提示：
 
@@ -37,18 +37,18 @@ Web 宿主计划表示一组可在你的网站间共享的功能和容量。Web 
 
 ![][2]
 
-单击计划将启动一个叶片，让你管理你的 Web 宿主计划。[详细了解如何管理 Web 宿主计划][]。
+单击计划将启动一个叶片，让你管理你的 Web 宿主计划。[详细了解如何管理 Web 宿主计划][详细了解如何管理 Web 宿主计划]。
 
 ![][3]
 
 ### 后续步骤
 
-若要开始使用 Azure，请参阅 [Microsoft Azure 免费试用版][]。
+若要开始使用 Azure，请参阅 [Microsoft Azure 免费试用版][Microsoft Azure 免费试用版]。
 
 <!-- Images. -->
 
   [转到此处]: http://azure.microsoft.com/zh-cn/pricing/details/web-sites/
-  [0]: ./media/web-sites-web-hosting-plan-overview/browse-everything.png
+  []: ./media/web-sites-web-hosting-plan-overview/browse-everything.png
   [1]: ./media/web-sites-web-hosting-plan-overview/browse-web-hosting-plans.png
   [2]: ./media/web-sites-web-hosting-plan-overview/web-hosting-plan-resource-map.png
   [详细了解如何管理 Web 宿主计划]: http://azure.microsoft.com/zh-cn/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/

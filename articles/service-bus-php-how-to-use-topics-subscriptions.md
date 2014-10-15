@@ -2,44 +2,44 @@
 
 # 如何使用 Service Bus 主题/订阅
 
-本指南演示如何使用 Service Bus 主题和订阅。示例是用 PHP 编写的并使用了 [Azure SDK for PHP][]。涉及的应用场景包括**创建主题和订阅**、**创建订阅筛选器**、**将消息发送到主题**、**从订阅接收消息**以及**删除主题和订阅**。
+本指南演示如何使用 Service Bus 主题和订阅。示例是用 PHP 编写的并使用了 [Azure SDK for PHP][Azure SDK for PHP]。涉及的应用场景包括**创建主题和订阅**、**创建订阅筛选器**、**将消息发送到主题**、**从订阅接收消息**以及**删除主题和订阅**。
 
 ## 目录
 
--   [什么是 Service Bus 主题和订阅？][]
--   [创建服务命名空间][]
--   [获得命名空间的默认管理凭据][]
--   [创建 PHP 应用程序][]
--   [获取 Azure 客户端库][]
--   [配置应用程序以使用 Service Bus][]
--   [如何：创建主题][]
--   [如何：创建订阅][]
--   [如何：将消息发送到主题][]
--   [如何：从订阅接收消息][]
--   [如何：处理应用程序崩溃和不可读消息][]
--   [如何：删除主题和订阅][]
--   [后续步骤][]
+-   [什么是 Service Bus 主题和订阅？][什么是 Service Bus 主题和订阅？]
+-   [创建服务命名空间][创建服务命名空间]
+-   [获得命名空间的默认管理凭据][获得命名空间的默认管理凭据]
+-   [创建 PHP 应用程序][创建 PHP 应用程序]
+-   [获取 Azure 客户端库][获取 Azure 客户端库]
+-   [配置应用程序以使用 Service Bus][配置应用程序以使用 Service Bus]
+-   [如何：创建主题][如何：创建主题]
+-   [如何：创建订阅][如何：创建订阅]
+-   [如何：将消息发送到主题][如何：将消息发送到主题]
+-   [如何：从订阅接收消息][如何：从订阅接收消息]
+-   [如何：处理应用程序崩溃和不可读消息][如何：处理应用程序崩溃和不可读消息]
+-   [如何：删除主题和订阅][如何：删除主题和订阅]
+-   [后续步骤][后续步骤]
 
-[WACOM.INCLUDE [howto-service-bus-topics][]]
+[WACOM.INCLUDE [howto-service-bus-topics][howto-service-bus-topics]]
 
 ## <span id="CreateApplication"></span></a>创建 PHP 应用程序
 
-创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码中引用 [Azure SDK for PHP][] 中的类。你可以使用任何开发工具（包括“记事本”）创建应用程序。
+创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码中引用 [Azure SDK for PHP][Azure SDK for PHP] 中的类。你可以使用任何开发工具（包括“记事本”）创建应用程序。
 
 > [WACOM.NOTE]
-> 你的 PHP 安装还必须已安装并启用 [OpenSSL 扩展][]。
+> 你的 PHP 安装还必须已安装并启用 [OpenSSL 扩展][OpenSSL 扩展]。
 
 在本指南中，你将使用服务功能，这些功能可在 PHP 应用程序中本地调用，或通过在 Azure 的 Web 角色、辅助角色或网站中运行的代码调用。
 
 ## <span id="GetClientLibrary"></span></a>获取 Azure 客户端库
 
-[WACOM.INCLUDE [get-client-libraries][]]
+[WACOM.INCLUDE [get-client-libraries][get-client-libraries]]
 
 ## <span id="ConfigureApp"></span></a>配置应用程序以使用 Service Bus
 
 若要使用 Azure Service Bus 主题 API，你需要：
 
-1.  使用 [require\_once][] 语句引用 autoloader 文件，并
+1.  使用 [require\_once][require\_once] 语句引用 autoloader 文件，并
 2.  引用可使用的所有类。
 
 下面的示例演示如何包含 autoloader 文件并引用 **ServiceBusService** 类。
@@ -143,12 +143,12 @@ Service Bus 队列的管理操作可通过**ServiceBusRestProxy** 类执行。**
 
 ### 创建具有筛选器的订阅
 
-还可以设置筛选器，以确定发送到主题的哪些消息应该在特定主题订阅中显示。订阅支持的最灵活的一种筛选器是 **SqlFilter**，它实现了一部分 SQL92 功能。SQL 筛选器将对发布到主题的消息的属性进行操作。有关 SqlFilters 的详细信息，请参阅 [SqlFilter.SqlExpression Property][]。
+还可以设置筛选器，以确定发送到主题的哪些消息应该在特定主题订阅中显示。订阅支持的最灵活的一种筛选器是 **SqlFilter**，它实现了一部分 SQL92 功能。SQL 筛选器将对发布到主题的消息的属性进行操作。有关 SqlFilters 的详细信息，请参阅 [SqlFilter.SqlExpression Property][SqlFilter.SqlExpression Property]。
 
    > [WACOM.NOTE]
    > Each rule on a subscription processes incoming messages independently, adding their result messages to the subscription. In addition, each new subscription has a default <b>Rule</b> with a filter that adds all messages from the topic to the subscription. To receive only messages matching your filter, you must remove the default rule. You can remove the default rule by using the <b>ServiceBusRestProxy->deleteRule</b> method.
 
-下面的示例将创建一个名为“HighMessages”的订阅，该订阅包含 **SqlFilter** 仅选择具有大于 3 的自定义 **MessageNumber** 属性的消息（有关将自定义属性添加到消息的信息，请参阅[如何：将消息发送到主题][]）：
+下面的示例将创建一个名为“HighMessages”的订阅，该订阅包含 **SqlFilter** 仅选择具有大于 3 的自定义 **MessageNumber** 属性的消息（有关将自定义属性添加到消息的信息，请参阅[如何：将消息发送到主题][如何：将消息发送到主题]）：
 
     $subscriptionInfo = new SubscriptionInfo("HighMessages");
     $serviceBusRestProxy->createSubscription("mytopic", $subscriptionInfo);
@@ -205,7 +205,7 @@ Service Bus 队列的管理操作可通过**ServiceBusRestProxy** 类执行。**
         echo $code.": ".$error_message."<br />";
     }
 
-发送到 Service Bus 主题的消息是 **BrokeredMessage** 类的实例。**BrokeredMessage** 对象包含一组标准属性和方法（如 **getLabel**、**getTimeToLive**、**setLabel** 和 **setTimeToLive**）以及用来保存自定义应用程序特定属性的属性。下面的示例演示如何向我们之前创建的`mytopic` 主题发送五条测试消息。**setProperty** 方法用于将自定义属性（`MessageNumber`）添加到每条消息。请注意`MessageNumber` 属性值在每条消息中都不同（这可用于确定接收到消息的订阅，如上面的[如何：创建订阅][]一节所示）：
+发送到 Service Bus 主题的消息是 **BrokeredMessage** 类的实例。**BrokeredMessage** 对象包含一组标准属性和方法（如 **getLabel**、**getTimeToLive**、**setLabel** 和 **setTimeToLive**）以及用来保存自定义应用程序特定属性的属性。下面的示例演示如何向我们之前创建的`mytopic` 主题发送五条测试消息。**setProperty** 方法用于将自定义属性（`MessageNumber`）添加到每条消息。请注意`MessageNumber` 属性值在每条消息中都不同（这可用于确定接收到消息的订阅，如上面的[如何：创建订阅][如何：创建订阅]一节所示）：
 
     for($i = 0; $i < 5; $i++){
         // Create message.
@@ -312,7 +312,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 ## <span id="NextSteps"></span></a>后续步骤
 
-现在，你已了解 Service Bus 队列的基础知识，请参阅 MSDN 主题[队列、主题和订阅][]以获取更多信息。
+现在，你已了解 Service Bus 队列的基础知识，请参阅 MSDN 主题[队列、主题和订阅][队列、主题和订阅]以获取更多信息。
 
   [Azure SDK for PHP]: http://go.microsoft.com/fwlink/?LinkId=252473
   [什么是 Service Bus 主题和订阅？]: #what-are-service-bus-topics

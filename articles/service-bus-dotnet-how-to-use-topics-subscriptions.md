@@ -2,11 +2,11 @@
 
 # 如何使用 Service Bus 主题/订阅
 
-<span>本指南演示如何使用 Service Bus 主题和订阅。相关示例用 C# 编写且使用 .NET API。涉及的应用场景包括创建主题和订阅、创建订阅筛选器、将消息发送到主题、从订阅接收消息以及删除主题和订阅。有关主题和订阅的详细信息，请参阅[后续步骤][]一节。 </span>
+<span>本指南演示如何使用 Service Bus 主题和订阅。相关示例用 C# 编写且使用 .NET API。涉及的应用场景包括创建主题和订阅、创建订阅筛选器、将消息发送到主题、从订阅接收消息以及删除主题和订阅。有关主题和订阅的详细信息，请参阅[后续步骤][后续步骤]一节。 </span>
 
-[WACOM.INCLUDE [create-account-note][]]
+[WACOM.INCLUDE [create-account-note][create-account-note]]
 
-[WACOM.INCLUDE [howto-service-bus-topics][]]
+[WACOM.INCLUDE [howto-service-bus-topics][howto-service-bus-topics]]
 
 ## <span class="short-header">配置应用程序</span>配置应用程序以使用 Service Bus
 
@@ -271,15 +271,15 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 现在，你已了解有关 Service Bus 主题和订阅的基础知识，单击下面的链接可了解更多信息。
 
--   查看 MSDN 参考：[队列、主题和订阅][]。
--   [SqlFilter][] 的 API 参考。
+-   查看 MSDN 参考：[队列、主题和订阅][队列、主题和订阅]。
+-   [SqlFilter][SqlFilter] 的 API 参考。
 -   构建向 Service Bus 队列发送消息以及从中接收
-    消息的工作应用程序：[Service Bus 中转消息传送 .NET教程][]。
+    消息的工作应用程序：[Service Bus 中转消息传送 .NET教程][Service Bus 中转消息传送 .NET教程]。
 
   [后续步骤]: #nextsteps
   [create-account-note]: ../includes/create-account-note.md
   [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
-  [0]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
+  []: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
   [队列、主题和订阅]: http://msdn.microsoft.com/zh-cn/library/hh367516.aspx
   [SqlFilter]: http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.sqlfilter.aspx
   [Service Bus 中转消息传送 .NET教程]: http://msdn.microsoft.com/zh-cn/library/hh367512.aspx

@@ -6,28 +6,28 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/web-sites-custom-domain-name/" title="网站">网站</a> | <a href="/en-us/documentation/articles/web-sites-traffic-manager-custom-domain-name/" title="使用流量管理器的网站" class="current">使用流量管理器的网站</a></div>
 
-[WACOM.INCLUDE [介绍][]]
+[WACOM.INCLUDE [介绍][介绍]]
 
 本文提供了将自定义域名与通过流量管理器进行负载平衡的 Azure 网站配合使用的一般说明。请查看本文顶端的选项卡上是否列出了你的域注册机构。如果有，请选择该选项卡以了解特定于注册机构的步骤。
 
-[WACOM.INCLUDE [tmwebsitefooter][]]
+[WACOM.INCLUDE [tmwebsitefooter][tmwebsitefooter]]
 
-[WACOM.INCLUDE [introfooter][]]
+[WACOM.INCLUDE [introfooter][introfooter]]
 
 本文内容：
 
--   [了解 DNS 记录][]
--   [将网站配置为标准模式][]
--   [为自定义域添加 DNS 记录][]
--   [为网站启用流量管理器][]
+-   [了解 DNS 记录][了解 DNS 记录]
+-   [将网站配置为标准模式][将网站配置为标准模式]
+-   [为自定义域添加 DNS 记录][为自定义域添加 DNS 记录]
+-   [为网站启用流量管理器][为网站启用流量管理器]
 
 ## <a name="understanding-records"></a>了解 DNS 记录
 
-[WACOM.INCLUDE [understandingdns][]]
+[WACOM.INCLUDE [understandingdns][understandingdns]]
 
 ## <a name="bkmk_configsharedmode"></a>将网站配置为标准模式
 
-[WACOM.INCLUDE [modes][]]
+[WACOM.INCLUDE [modes][modes]]
 
 <a name="bkmk_configurecname"></a>
 

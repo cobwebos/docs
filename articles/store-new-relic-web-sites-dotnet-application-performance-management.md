@@ -2,7 +2,7 @@
 
 # Azure 网站中的 New Relic 应用程序性能管理
 
-本指南介绍如何向 Azure 网站添加 New Relic 的一流性能监视。我们将介绍向你的应用程序中添加 New Relic 的快速且简单的过程，并向你介绍 New Relic 的一些功能。有关使用 New Relic 的更多信息，请参阅[使用 New Relic][]。
+本指南介绍如何向 Azure 网站添加 New Relic 的一流性能监视。我们将介绍向你的应用程序中添加 New Relic 的快速且简单的过程，并向你介绍 New Relic 的一些功能。有关使用 New Relic 的更多信息，请参阅[使用 New Relic][使用 New Relic]。
 
 ## 什么是 New Relic？
 
@@ -15,7 +15,7 @@ New Relic 可从服务器和你的用户的浏览器跟踪你的 Web 事务的�
 New Relic Standard 免费供 Azure 用户使用。
 New Relic Pro 基于你所使用的网站模式和实例大小（如果你使用的是专属模式）在多个包中提供。
 
-有关定价信息，请参阅 [Azure 应用商店中的 New Relic 页][]。
+有关定价信息，请参阅 [Azure 应用商店中的 New Relic 页][Azure 应用商店中的 New Relic 页]。
 
 <div class="dev-callout"> 
 <strong>注意：</strong>
@@ -32,7 +32,7 @@ New Relic 可与 Azure Web 角色、辅助角色和网站无缝集成。
 
 ### 步骤 1. 通过 Azure 应用商店进行注册
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  在该管理门户的下方窗格中，单击“新建”。
 3.  单击“应用商店”。
 4.  在“选择外接程序”对话框中，选择“New Relic”，然后单击“下一步”。
@@ -50,7 +50,7 @@ New Relic 可与 Azure Web 角色、辅助角色和网站无缝集成。
 
 ### 步骤 2. 安装 New Relic 程序包
 
-New Relic 网站代理作为 NuGet 程序包分发，可使用 Visual Studio 或 WebMatrix 将其添加到你的网站。如果你不熟悉如何将 Visual Studio 或 WebMatrix 用于 Azure 网站，请参阅[使用 Visual Studio 将 ASP.NET Web 应用程序部署到 Azure 网站（可能为英文页面）][]或[使用 Microsoft WebMatrix 开发和部署网站（可能为英文页面）][]。
+New Relic 网站代理作为 NuGet 程序包分发，可使用 Visual Studio 或 WebMatrix 将其添加到你的网站。如果你不熟悉如何将 Visual Studio 或 WebMatrix 用于 Azure 网站，请参阅[使用 Visual Studio 将 ASP.NET Web 应用程序部署到 Azure 网站（可能为英文页面）][使用 Visual Studio 将 ASP.NET Web 应用程序部署到 Azure 网站（可能为英文页面）]或[使用 Microsoft WebMatrix 开发和部署网站（可能为英文页面）][使用 Microsoft WebMatrix 开发和部署网站（可能为英文页面）]。
 
 为你正在使用的特定开发环境执行下列步骤：
 
@@ -61,7 +61,7 @@ New Relic 网站代理作为 NuGet 程序包分发，可使用 Visual Studio 或
 2.  通过选择“工具”\>“库程序包管理器”\>“程序包管理器控制台” 打开程序包管理器控制台。在“程序包管理器控制台”窗口顶部，将你的项目
     设置为默认项目。
 
-    ![程序包管理器控制台][]
+    ![程序包管理器控制台][程序包管理器控制台]
 
 3.  在程序包管理器命令提示符处，使用以下命令安装程序包：
 
@@ -69,7 +69,7 @@ New Relic 网站代理作为 NuGet 程序包分发，可使用 Visual Studio 或
 
 4.  在许可证密钥提示符处，输入你从 Azure 应用商店获取的许可证密钥。
 
-    ![输入许可证密钥][]
+    ![输入许可证密钥][输入许可证密钥]
 
 <!--5. Optional: At the application name prompt, enter your app's name as it will    appear in New Relic's dashboard. Or, use your solution name as the default.      ![enter application name](./media/store-new-relic-web-sites-dotnet-application-performce-management/NewRelicAzureNuget08.png)-->
 
@@ -79,17 +79,17 @@ New Relic 网站代理作为 NuGet 程序包分发，可使用 Visual Studio 或
 
 2.  在功能区的“主页”选项卡上，选择“NuGet”。
 
-    ![“主页”选项卡上的“NuGet”按钮][]
+    ![“主页”选项卡上的“NuGet”按钮][“主页”选项卡上的“NuGet”按钮]
 
 3.  在 NuGet 库中，将源设置为“NuGet 正式程序包来源”，然后搜索 NewRelic.Azure.WebSites。
 
-    ![搜索 NewRelic.Azure.WebSites 的 nuget 库][]
+    ![搜索 NewRelic.Azure.WebSites 的 nuget 库][搜索 NewRelic.Azure.WebSites 的 nuget 库]
 
 4.  选择“用于 Azure 网站的 New Relic”条目，然后单击“安装”。
 
 5.  在安装程序包后，该网站此时将包含名为“newrelic”的文件夹。展开此文件夹，并打开“newrelic.config”文件。在此文件中，将值 **REPLACE\_WITH\_LICENSE\_KEY** 替换为你从 Azure 应用商店获取的许可证密钥。
 
-    ![包含所选 newrelic.conf 的已展开的 newrelic 文件夹][]
+    ![包含所选 newrelic.conf 的已展开的 newrelic 文件夹][包含所选 newrelic.conf 的已展开的 newrelic 文件夹]
 
     添加许可证密钥信息后，将更改保存到 **newrelic.config** 文件。
 
@@ -97,17 +97,17 @@ New Relic 网站代理作为 NuGet 程序包分发，可使用 Visual Studio 或
 
 在上一步中添加到你的应用程序的 New Relic 程序包将由添加到 Azure 网站的“应用程序设置”配置。执行以下步骤来添加这些设置。
 
-1.  登录到 [Azure 管理门户][]并导航到你的网站。
+1.  登录到 [Azure 管理门户][Azure 管理门户]并导航到你的网站。
 
 2.  从网站中，选择“配置”。在“开发人员分析”部分，选择“外接程序”或“自定义”。上述任一方法都将生成相同的输出，但需要输入的内容稍有差别。“外接程序”将列出当前 New-Relic 许可证并允许你选择一个，而“自定义”要求你手动指定许可证密钥。
 
     如果你选择了“外接程序”，请使用“选择外接程序”字段来选择 New-Relic 许可证。
 
-    ![外接程序字段的图像][]
+    ![外接程序字段的图像][外接程序字段的图像]
 
     如果你选择了“自定义”，请在“提供程序”中选择“New-Relic”，然后在“提供程序密钥”字段中输入许可证。
 
-    ![自定义字段的图像][]
+    ![自定义字段的图像][自定义字段的图像]
 
 3.  在“开发人员分析”中指定许可证后，单击“保存”。保存操作完成后，以下值将会添加到页面的“应用程序设置”部分来支持 New-Relic：
 
@@ -195,7 +195,7 @@ New Relic 网站代理作为 NuGet 程序包分发，可使用 Visual Studio 或
 
     将自动显示“Monitoring”（监视）\>“Overview”（概览）仪表板。
 
-    ![New Relic Monitorin 仪表板][]
+    ![New Relic Monitorin 仪表板][New Relic Monitorin 仪表板]
 
     从你的“Applications”（应用程序）菜单上的列表中选择应用程序后，“Overview”（概览）仪表板将显示当前的应用程序服务器和浏览器信息。
 
@@ -203,7 +203,7 @@ New Relic 网站代理作为 NuGet 程序包分发，可使用 Visual Studio 或
 
 从“Overview”（概览）菜单上的列表中选择你的应用程序后，“Overview”（概览）仪表板将显示当前的应用程序服务器和浏览器信息。若要在两个视图之间切换，请单击“App server”（应用程序服务器）或“Browser”（浏览器）按钮。
 
-除了 [standard New Relic UI][] 和 [dashboard drill-down][] 功能之外，Applications Overview（应用程序概览）仪表板还具有其他一些功能。
+除了 [standard New Relic UI][standard New Relic UI] 和 [dashboard drill-down][dashboard drill-down] 功能之外，Applications Overview（应用程序概览）仪表板还具有其他一些功能。
 
 <table>
 <colgroup>
@@ -261,14 +261,14 @@ New Relic 网站代理作为 NuGet 程序包分发，可使用 Visual Studio 或
 
 有关更多信息，请查看以下其他资源：
 
--   [安装 Azure 网站的 .NET 代理][]：New Relic .NET 代理安装过程
--   [New Relic 用户界面][]：
+-   [安装 Azure 网站的 .NET 代理][安装 Azure 网站的 .NET 代理]：New Relic .NET 代理安装过程
+-   [New Relic 用户界面][New Relic 用户界面]：
     大致介绍 New Relic UI、设置用户权限和配置文件、使用标准功能和仪表板向下钻取详细信息
--   [应用程序概览（可能为英文页面）][]：使用 New Relic 的“Applications Overview”仪表板时的特性和功能
--   [Apdex][]：大致介绍 Apdex 如何衡量最终用户对你的应用程序的满意度
--   [实际用户监视（可能为英文页面）][]：大致介绍 RUM 如何详细记录你的用户的浏览器加载你的
+-   [应用程序概览（可能为英文页面）][应用程序概览（可能为英文页面）]：使用 New Relic 的“Applications Overview”仪表板时的特性和功能
+-   [Apdex][Apdex]：大致介绍 Apdex 如何衡量最终用户对你的应用程序的满意度
+-   [实际用户监视（可能为英文页面）][实际用户监视（可能为英文页面）]：大致介绍 RUM 如何详细记录你的用户的浏览器加载你的
     网页所需的时间、这些用户所在的位置以及他们使用的浏览器
--   [寻求帮助（可能为英文页面）][]：通过 New Relic 的联机帮助中心提供的资源
+-   [寻求帮助（可能为英文页面）][寻求帮助（可能为英文页面）]：通过 New Relic 的联机帮助中心提供的资源
 
   [使用 New Relic]: #using-new-relic
   [Azure 应用商店中的 New Relic 页]: http://www.windowsazure.com/zh-cn/gallery/store/new-relic/new-relic/

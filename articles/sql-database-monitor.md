@@ -4,6 +4,6 @@
 
 你在本地服务器上通常使用的监视工具和方法（例如审核登录名、运行跟踪和使用性能计数器）并不适用于 SQL Database。在 Azure 上，你可以使用数据管理视图 (DMV) 来监视数据容量、查询问题和当前连接。
 
-有关详细信息，请参阅[使用动态管理视图监视 SQL Database][]。
+有关详细信息，请参阅[使用动态管理视图监视 SQL Database][使用动态管理视图监视 SQL Database]。
 
   [使用动态管理视图监视 SQL Database]: http://msdn.microsoft.com/zh-cn/library/azure/ff394114.aspx

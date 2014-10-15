@@ -2,23 +2,23 @@
 
 # 如何在 Azure 中使用 SendGrid 发送电子邮件
 
-本指南演示如何在 Azure 中使用SendGrid 电子邮件服务执行常见编程任务。相关示例用 C# 编写且使用 .NET API。涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**和**使用筛选器**。有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤][]部分。
+本指南演示如何在 Azure 中使用SendGrid 电子邮件服务执行常见编程任务。相关示例用 C# 编写且使用 .NET API。涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**和**使用筛选器**。有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤][后续步骤]部分。
 
 ## <a name="toc"></a>目录
 
-[什么是 SendGrid 电子邮件服务？][]
-[创建 SendGrid 帐户][]
-[引用 SendGrid .NET 类库][]
-[如何：创建电子邮件][]
-[如何：发送电子邮件][]
-[如何：添加附件][]
-[如何：使用筛选器启用页脚、跟踪和分析][]
-[如何：使用其他 SendGrid 服务][]
-[后续步骤][]
+[什么是 SendGrid 电子邮件服务？][什么是 SendGrid 电子邮件服务？]
+[创建 SendGrid 帐户][创建 SendGrid 帐户]
+[引用 SendGrid .NET 类库][引用 SendGrid .NET 类库]
+[如何：创建电子邮件][如何：创建电子邮件]
+[如何：发送电子邮件][如何：发送电子邮件]
+[如何：添加附件][如何：添加附件]
+[如何：使用筛选器启用页脚、跟踪和分析][如何：使用筛选器启用页脚、跟踪和分析]
+[如何：使用其他 SendGrid 服务][如何：使用其他 SendGrid 服务]
+[后续步骤][后续步骤]
 
 ## <a name="whatis"></a><span class="short-header">什么是 SendGrid 电子邮件服务？</span>什么是 SendGrid 电子邮件服务？
 
-SendGrid 是一项[基于云的电子邮件服务][]，该服务提供了可靠的[事务性电子邮件传递][]、可缩放性、实时分析以及可用于简化自定义集成的灵活的 API。常见 SendGrid 使用方案包括：
+SendGrid 是一项[基于云的电子邮件服务][基于云的电子邮件服务]，该服务提供了可靠的[事务性电子邮件传递][事务性电子邮件传递]、可缩放性、实时分析以及可用于简化自定义集成的灵活的 API。常见 SendGrid 使用方案包括：
 
 -   自动向客户发送收据。
 -   管理用于每月向客户发送电子传单和特惠产品/服务的
@@ -32,7 +32,7 @@ SendGrid 是一项[基于云的电子邮件服务][]，该服务提供了可靠�
 
 ## <a name="createaccount"></a><span class="short-header">创建 SendGrid 帐户</span>创建 SendGrid 帐户
 
-[WACOM.INCLUDE [sendgrid-sign-up][]]
+[WACOM.INCLUDE [sendgrid-sign-up][sendgrid-sign-up]]
 
 ## <a name="reference"></a><span class="short-header">引用 SendGrid .NET 类库</span>引用 SendGrid .NET 类库
 
@@ -53,7 +53,7 @@ SendGrid NuGet 包是获取 SendGrid API 和使用所有依赖项配置应用程
 
 3.  搜索 **SendGrid**，然后在结果列表中选择“SendGrid”项。
 
-    ![SendGrid NuGet 包][]
+    ![SendGrid NuGet 包][SendGrid NuGet 包]
 
 4.  单击“安装”以完成安装，然后关闭此对话框。
 
@@ -118,11 +118,11 @@ SendGrid 的 .NET 类库名为 **SendGridMail**。它包含以下命名空间：
     // Add the subject.
     myMessage.Subject = "Testing the SendGrid Library";
 
-有关 **SendGrid** 类型支持的所有属性和方法的详细信息，请参阅 GitHub 上的 [sendgrid-csharp][]。
+有关 **SendGrid** 类型支持的所有属性和方法的详细信息，请参阅 GitHub 上的 [sendgrid-csharp][sendgrid-csharp]。
 
 ## <a name="sendemail"></a><span class="short-header">如何：发送电子邮件</span>如何：发送电子邮件
 
-创建电子邮件后，可以使用 SendGrid 提供的 SMTP 或Web API 发送该邮件。有关每个 API 的优点和缺点的详细信息，请参阅 SendGrid 文档中的 [SMTP 与 Web API][]。
+创建电子邮件后，可以使用 SendGrid 提供的 SMTP 或Web API 发送该邮件。有关每个 API 的优点和缺点的详细信息，请参阅 SendGrid 文档中的 [SMTP 与 Web API][SMTP 与 Web API]。
 
 使用任一协议发送电子邮件都需要你提供SendGrid 帐户凭据（用户名和密码）。以下代码演示了如何在 **NetworkCredential**对象中包装凭据：
 
@@ -186,7 +186,7 @@ SendGrid 的 .NET 类库名为 **SendGridMail**。它包含以下命名空间：
 ## <a name="usefilters"></a><span class="short-header">如何：使用筛选器启用页脚、跟踪和分析</span>如何：使用筛选器启用页脚、跟踪和分析
 
 SendGrid 可通过使用筛选器来提供其他电子邮件功能。可将这些设置添加到电子邮件以启用特定功能（例如单击跟踪、Google 分析、
-订阅跟踪等）。有关筛选器的完整列表，请参阅[筛选器设置][]。
+订阅跟踪等）。有关筛选器的完整列表，请参阅[筛选器设置][筛选器设置]。
 
 可以使用作为 **SendGrid** 类的一部分实现的方法将筛选器应用到 **SendGrid** 电子邮件。必须先调用 **InitalizeFilters** 方法初始化可用筛选器的列表，然后才能对电子邮件启用筛选器。
 
@@ -222,13 +222,13 @@ SendGrid 可通过使用筛选器来提供其他电子邮件功能。可将这�
 
 ## <a name="useservices"></a><span class="short-header">如何：使用其他 SendGrid 服务</span>如何：使用其他 SendGrid 服务
 
-SendGrid 提供了基于 Web 的 API，可通过这些 API从 Azure 应用程序中使用其他 SendGrid 功能。有关完整详细信息，请参阅 [SendGrid API 文档][]。
+SendGrid 提供了基于 Web 的 API，可通过这些 API从 Azure 应用程序中使用其他 SendGrid 功能。有关完整详细信息，请参阅 [SendGrid API 文档][SendGrid API 文档]。
 
 ## <a name="nextsteps"></a><span class="short-header">后续步骤</span>后续步骤
 
 在了解 SendGrid 电子邮件服务的基础知识后，请访问以下链接以了解更多信息。
 
--   SendGrid C# 库存储库：[sendgrid-csharp][]
+-   SendGrid C# 库存储库：[sendgrid-csharp][sendgrid-csharp]
 -   SendGrid API 文档：<http://docs.sendgrid.com/documentation/api/>
 -   面向 Azure 客户的 SendGrid 特惠产品/服务：[][]<http://sendgrid.com></a>
 

@@ -2,13 +2,13 @@
 
 # 将 WordPress 网站转换为 Multisite
 
-*作者：[Ben Lobaugh][]，[Microsoft Open Technologies Inc.][]*
+*作者：[Ben Lobaugh][Ben Lobaugh]，[Microsoft Open Technologies Inc.][Microsoft Open Technologies Inc.]*
 
 在本教程中，你将了解如何采用通过 Azure 中的库创建的现有 WordPress 网站并将其转换为 WordPress Multisite 安装。此外，你还将了解如何将自定义域分配给安装中的每个子网站。
 
-假定你现在具有 WordPress 安装。如果你没有，请按照[在 Azure 中从库中创建 WordPress 网站][]中提供的指南进行操作。
+假定你现在具有 WordPress 安装。如果你没有，请按照[在 Azure 中从库中创建 WordPress 网站][在 Azure 中从库中创建 WordPress 网站]中提供的指南进行操作。
 
-通常，将现有 WordPress 单站点安装转换为 Multisite 非常简单，此处的许多初始步骤直接来自 [WordPress Codex][] 上的[创建网络][]页。
+通常，将现有 WordPress 单站点安装转换为 Multisite 非常简单，此处的许多初始步骤直接来自 [WordPress Codex][WordPress Codex] 上的[创建网络][创建网络]页。
 
 下面我们来开始操作。
 
@@ -16,9 +16,9 @@
 
 你首先需要通过带 **WP\_ALLOW\_MULTISITE** 常量的`wp-config.php` 文件启用 Multisite。可通过两种方法编辑网站文件：第一种是通过 FTP，第二种是通过 Git。如果你不熟悉如何设置这两种方法，请参考以下教程：
 
--   [带 MySQL 和 FTP 的 PHP 网站][]
+-   [带 MySQL 和 FTP 的 PHP 网站][带 MySQL 和 FTP 的 PHP 网站]
 
--   [带 MySQL 和 Git 的 PHP 网站][]
+-   [带 MySQL 和 Git 的 PHP 网站][带 MySQL 和 Git 的 PHP 网站]
 
 在你选择的编辑器中打开`wp-config.php` 文件，并在`/* That's all, stop editing! Happy blogging. */` 行上添加以下内容。
 
@@ -32,11 +32,11 @@
 
 登录到你网站的 *wp-admin* 区域，你应在“工具”菜单的下方看到一个名为“网络设置”的新项目。单击“网络设置”并填写你网络的详细信息。
 
-![“网络设置”屏幕][]
+![“网络设置”屏幕][“网络设置”屏幕]
 
 本教程使用*子目录* 站点架构，因为它应始终运行，我们在本教程的后面将为每个子站点设置自定义域。但是，如果你通过门户映射域并正确设置通配符 DNS，则应能够设置子域安装。
 
-有关子域和子目录设置的详细信息，请参阅 WordPress Codex 上的 [Multisite 网络的类型][]一文。
+有关子域和子目录设置的详细信息，请参阅 WordPress Codex 上的 [Multisite 网络的类型][Multisite 网络的类型]一文。
 
 ## 启用网络
 
@@ -50,7 +50,7 @@
 
 # 添加自定义域
 
-利用 [WordPress MU 域映射][]插件，可以轻松向网络中的任何站点添加自定义域。若要使该插件正常运行，你需要额外对门户和域注册机构进行一些设置。
+利用 [WordPress MU 域映射][WordPress MU 域映射]插件，可以轻松向网络中的任何站点添加自定义域。若要使该插件正常运行，你需要额外对门户和域注册机构进行一些设置。
 
 ## 启用针对网站的域映射
 
@@ -81,7 +81,7 @@
 
 这将显示“管理自定义域”对话框。可在其中输入要分配给网站的所有域。如果某个域未在此处列出，则无法在 WordPress 中将该域用于映射，无论设置域 DNS 的方式如何。
 
-![“管理自定义域”对话框][]
+![“管理自定义域”对话框][“管理自定义域”对话框]
 
 将域键入文本框后，Azure 将验证你之前创建的 *awverify* CNAME 记录。如果 DNS 尚未完全传播，则会显示一个红色指示器。如果已成功传播，你将看到一个绿色复选标记。
 
@@ -97,7 +97,7 @@
 
 ## 安装和设置插件
 
-WordPress Multisite 当前没有用于映射自定义域的内置方法。但是，你可以利用一个名为 [WordPress MU 域映射][]的插件来为你添加该功能。登录到你网站的“网络管理员”部分，并安装“WordPress MU 域映射”插件。
+WordPress Multisite 当前没有用于映射自定义域的内置方法。但是，你可以利用一个名为 [WordPress MU 域映射][WordPress MU 域映射]的插件来为你添加该功能。登录到你网站的“网络管理员”部分，并安装“WordPress MU 域映射”插件。
 
 安装并激活该插件后，请访问“设置”\>“域映射”来配置插件。在第一个文本框“服务器 IP 地址”中，输入用于设置域的 A 记录的 IP 地址。设置所需的任何“域选项”（通常使用默认值即可）并单击“保存”。
 

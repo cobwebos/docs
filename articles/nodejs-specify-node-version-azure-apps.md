@@ -47,7 +47,7 @@
 
     这将显示在你浏览网站时使用的 Node.js 版本。
 
-2.  创建一个新网站并记录该网站的名称。例如，以下命令使用 [Azure 命令行工具][]创建一个名为 **mywebsite** 的新 Azure 网站，然后为该网站启用 Git 存储库。
+2.  创建一个新网站并记录该网站的名称。例如，以下命令使用 [Azure 命令行工具][Azure 命令行工具]创建一个名为 **mywebsite** 的新 Azure 网站，然后为该网站启用 Git 存储库。
 
         azure site create mywebsite --git
 
@@ -75,7 +75,7 @@
 
 ## 后续步骤
 
-了解如何指定应用程序使用的 Node.js 版本后，请了解如何[使用模块][]、[生成和部署 Node.js 网站][]以及[如何使用适用于 Mac 和 Linux 的 Azure 命令行工具][Azure 命令行工具]。
+了解如何指定应用程序使用的 Node.js 版本后，请了解如何[使用模块][使用模块]、[生成和部署 Node.js 网站][生成和部署 Node.js 网站]以及[如何使用适用于 Mac 和 Linux 的 Azure 命令行工具][Azure 命令行工具]。
 
   [Azure 命令行工具]: /en-us/documentation/articles/xplat-cli/
   [使用模块]: /en-us/documentation/articles/nodejs-use-node-modules-azure-apps/

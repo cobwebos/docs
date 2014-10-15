@@ -34,7 +34,7 @@ Access Control 颁发者名称和颁发者密钥由以下各项使用：
 
 ### 检索 Access Control 颁发者名称和颁发者密钥
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  在左侧导航窗格中，选择**“BizTalk 服务”**。
 3.  选择你的 BizTalk 服务。
 4.  在任务栏中，选择**“连接信息”**。Access Control 命名空间、默认颁发者（颁发者名称）和默认密钥（颁发者密钥）将列出并且可被复制和粘贴。<br/><br/>
@@ -44,7 +44,7 @@ Access Control 颁发者名称和颁发者密钥由以下各项使用：
 
 你还可以单击**“打开 ACS 管理门户”**检索 Access Control 值：
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  在左侧导航窗格中，选择**“BizTalk 服务”**。
 3.  选择你的 BizTalk 服务。
 4.  选择“连接信息”按钮，然后选择**“打开 ACS 管理门户”**。
@@ -68,7 +68,7 @@ Service Bus 颁发者名称和颁发者密钥由 BizTalk 适配器服务使用�
 
 ### 检索 Service Bus 颁发者名称和颁发者密钥
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  在左侧导航窗格中，单击**“Service Bus”**。
 3.  单击你的命名空间。在任务栏中，单击**“连接信息”**。这会显示**“默认颁发者”**（颁发者名称）和**“默认密钥”**（颁发者密钥）。可以复制其值。<br/><br/>
     总结：<br/>
@@ -79,20 +79,20 @@ Service Bus 颁发者名称和颁发者密钥由 BizTalk 适配器服务使用�
 
 其他 Azure BizTalk 服务主题：
 
--   [安装 Azure BizTalk 服务 SDK][]
--   [教程：Azure BizTalk 服务][]
--   [如何开始使用 Azure BizTalk 服务 SDK][]
--   [Azure BizTalk 服务][]
+-   [安装 Azure BizTalk 服务 SDK][安装 Azure BizTalk 服务 SDK]
+-   [教程：Azure BizTalk 服务][教程：Azure BizTalk 服务]
+-   [如何开始使用 Azure BizTalk 服务 SDK][如何开始使用 Azure BizTalk 服务 SDK]
+-   [Azure BizTalk 服务][Azure BizTalk 服务]
 
 ## 另请参阅
 
--   [如何：使用 ACS 管理服务配置服务标识][]
--   [BizTalk 服务：开发人员版、基本版、标准版和高级版图表][]
--   [BizTalk 服务：使用 Azure 管理门户进行设置][]
--   [BizTalk 服务：设置状态图表][]
--   [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡][]
--   [BizTalk 服务：备份和还原][]
--   [BizTalk 服务：限制][]
+-   [如何：使用 ACS 管理服务配置服务标识][如何：使用 ACS 管理服务配置服务标识]
+-   [BizTalk 服务：开发人员版、基本版、标准版和高级版图表][BizTalk 服务：开发人员版、基本版、标准版和高级版图表]
+-   [BizTalk 服务：使用 Azure 管理门户进行设置][BizTalk 服务：使用 Azure 管理门户进行设置]
+-   [BizTalk 服务：设置状态图表][BizTalk 服务：设置状态图表]
+-   [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡][BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡]
+-   [BizTalk 服务：备份和还原][BizTalk 服务：备份和还原]
+-   [BizTalk 服务：限制][BizTalk 服务：限制]
 
   [Azure 管理门户]: http://go.microsoft.com/fwlink/p/?LinkID=213885
   [如何：使用 ACS 管理服务配置服务标识]: http://go.microsoft.com/fwlink/p/?LinkID=303942

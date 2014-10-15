@@ -2,23 +2,23 @@
 
 # 如何使用 Service Bus 通知中心
 
-本指南演示如何从 Node.js 应用程序使用 Service Bus 通知中心。涉及的任务包括**将通知发送到 Android、iOS、Windows Phone 和 Windows 应用商店应用程序**。有关通知中心的详细信息，请参阅[后续步骤][]部分。
+本指南演示如何从 Node.js 应用程序使用 Service Bus 通知中心。涉及的任务包括**将通知发送到 Android、iOS、Windows Phone 和 Windows 应用商店应用程序**。有关通知中心的详细信息，请参阅[后续步骤][后续步骤]部分。
 
 ## 目录
 
--   [什么是 Service Bus 通知中心？][]
--   [创建 Node.js 应用程序][]
--   [配置应用程序以使用 Service Bus][]
--   [如何：发送通知][]
--   [后续步骤][]
+-   [什么是 Service Bus 通知中心？][什么是 Service Bus 通知中心？]
+-   [创建 Node.js 应用程序][创建 Node.js 应用程序]
+-   [配置应用程序以使用 Service Bus][配置应用程序以使用 Service Bus]
+-   [如何：发送通知][如何：发送通知]
+-   [后续步骤][后续步骤]
 
 ## <span id="hub"></span></a>什么是 Service Bus 通知中心？
 
-Azure Service Bus 通知中心可提供用于向移动设备发送推送通知的易于使用、多平台且可扩展的基础结构。有关详细信息，请参阅 [Azure Service Bus 通知中心][]。
+Azure Service Bus 通知中心可提供用于向移动设备发送推送通知的易于使用、多平台且可扩展的基础结构。有关详细信息，请参阅 [Azure Service Bus 通知中心][Azure Service Bus 通知中心]。
 
 ## <span id="create"></span></a>创建 Node.js 应用程序
 
-创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][]、[Node.js 云服务][]（使用 Windows PowerShell）或[使用 WebMatrix 生成网站][]。
+创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][创建 Node.js 应用程序并将其部署到 Azure 网站]、[Node.js 云服务][Node.js 云服务]（使用 Windows PowerShell）或[使用 WebMatrix 生成网站][使用 WebMatrix 生成网站]。
 
 ## <span id="config"></span></a>配置应用程序以使用 Service Bus
 
@@ -87,7 +87,7 @@ Azure Service Bus 通知中心可提供用于向移动设备发送推送通知�
 -   Payload - 消息的 JSON 或字符串负载
 -   Callback - 回调函数
 
-有关负载格式的详细信息，请参阅[实施 GCM 服务器][]中的“负载”部分。
+有关负载格式的详细信息，请参阅[实施 GCM 服务器][实施 GCM 服务器]中的“负载”部分。
 
 以下代码使用 **NotificationHubService** 公开的 **GcmService** 实例将一条消息发送到所有客户端。
 
@@ -110,7 +110,7 @@ Azure Service Bus 通知中心可提供用于向移动设备发送推送通知�
 -   Payload - 消息的 JSON 或字符串负载
 -   Callback - 回调函数
 
-有关负载格式的详细信息，请参阅[本地和推送通知编程指南][]中的“通知负载”部分。
+有关负载格式的详细信息，请参阅[本地和推送通知编程指南][本地和推送通知编程指南]中的“通知负载”部分。
 
 以下代码使用 **NotificationHubService** 公开的 **ApnsService** 实例将一条警报消息发送给所有客户端：
 
@@ -130,11 +130,11 @@ Azure Service Bus 通知中心可提供用于向移动设备发送推送通知�
 -   Tags - 标记标识符。如果没有提供任何标记，通知将发送给所有客户端。
 -   Payload - 消息的 XML 负载
 -   TargetName -“toast”表示 toast 通知。“token”表示磁贴通知。
--   NotificationClass - 通知的优先级。有关有效值，请参阅[从服务器推送通知][]中的“HTTP 标头元素”部分。
+-   NotificationClass - 通知的优先级。有关有效值，请参阅[从服务器推送通知][从服务器推送通知]中的“HTTP 标头元素”部分。
 -   Options - 可选的请求标头
 -   Callback - 回调函数
 
-有关有效的 TargetName、NotificationClass 和标头选项的列表，请参阅[从服务器推送通知][]。
+有关有效的 TargetName、NotificationClass 和标头选项的列表，请参阅[从服务器推送通知][从服务器推送通知]。
 
 以下代码使用 **NotificationHubService** 公开的 **MpnsService** 实例发送 toast 警报：
 
@@ -155,7 +155,7 @@ Azure Service Bus 通知中心可提供用于向移动设备发送推送通知�
 -   Options - 可选的请求标头
 -   Callback - 回调函数
 
-有关有效类型和请求标头的列表，请参阅[推送通知服务请求和响应标头][]。
+有关有效类型和请求标头的列表，请参阅[推送通知服务请求和响应标头][推送通知服务请求和响应标头]。
 
 以下代码使用 **NotificationHubService** 公开的 **WnsService** 实例发送 toast 警报：
 
@@ -171,8 +171,8 @@ Azure Service Bus 通知中心可提供用于向移动设备发送推送通知�
 现在，你已了解有关 Service Bus 主题的基础知识，单击
 下面的链接可了解更多信息。
 
--   查看 MSDN 参考：[Azure Service Bus 通知中心][]。
--   访问 GitHub 上的 [Azure SDK for Node][] 存储库。
+-   查看 MSDN 参考：[Azure Service Bus 通知中心][Azure Service Bus 通知中心]。
+-   访问 GitHub 上的 [Azure SDK for Node][Azure SDK for Node] 存储库。
 
   [后续步骤]: #next
   [什么是 Service Bus 通知中心？]: #hub

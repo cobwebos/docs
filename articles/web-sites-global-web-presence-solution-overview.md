@@ -2,15 +2,15 @@
 
 # 在 Azure 网站上打造全球网络影响力
 
-本指南提供了如何在 Azure 上托管你的组织的 (.COM) 网站的技术概述。此方案也称作全球网络影响力。本指南重点介绍使用 [Azure 网站][]，因为网站是在 Azure 上创建、迁移、缩放和管理 Web 应用程序的最快和最简单方法。但是，某些应用程序要求适合于运行 IIS 的 [Azure 云服务][]或 [Azure 虚拟机][]。它们还是托管 Web 应用程序的极佳选择。如果你处于初始计划阶段，请查看文档 [Azure 网站、云服务和虚拟机：何时使用何种产品？][]。如果没有针对使用云服务或虚拟机的要求，我们建议使用网站来发挥你的全球网络影响力。本文的剩余部分将提供将网站用于此情形的指南。
+本指南提供了如何在 Azure 上托管你的组织的 (.COM) 网站的技术概述。此方案也称作全球网络影响力。本指南重点介绍使用 [Azure 网站][Azure 网站]，因为网站是在 Azure 上创建、迁移、缩放和管理 Web 应用程序的最快和最简单方法。但是，某些应用程序要求适合于运行 IIS 的 [Azure 云服务][Azure 云服务]或 [Azure 虚拟机][Azure 虚拟机]。它们还是托管 Web 应用程序的极佳选择。如果你处于初始计划阶段，请查看文档 [Azure 网站、云服务和虚拟机：何时使用何种产品？][Azure 网站、云服务和虚拟机：何时使用何种产品？]。如果没有针对使用云服务或虚拟机的要求，我们建议使用网站来发挥你的全球网络影响力。本文的剩余部分将提供将网站用于此情形的指南。
 
 在本指南中将针对以下方面：
 
--   [创建 Azure 网站][]
--   [部署网站][]
--   [添加自定义域][]
--   [使用 SSL 保护网站][]
--   [监视网站][]
+-   [创建 Azure 网站][创建 Azure 网站]
+-   [部署网站][部署网站]
+-   [添加自定义域][添加自定义域]
+-   [使用 SSL 保护网站][使用 SSL 保护网站]
+-   [监视网站][监视网站]
 
 <div class="dev-callout">
 <strong>说明</strong>
@@ -21,7 +21,7 @@
 
 使用 Azure 管理门户，你可以通过几种方式创建新的 Azure 网站。当你在门户的底部单击“新建”按钮时，将向你提供以下对话框：
 
-![GlobalWebCreate][]
+![GlobalWebCreate][GlobalWebCreate]
 
 有两个用于创建新网站的选项：“快速创建”和“自定义创建”。对于上述每个选项，你都应选择适合于你的主要用户群的 Azure 区域。
 
@@ -31,7 +31,7 @@
 
 与 Azure 中的大多数服务相似，你必须为新网站选择 Azure 区域。Azure 在世界各地有多个区域。一旦你将你的网站部署到任何一个区域，就能够在 Internet 上从全球访问该网站。但是，多个区域提供更高的灵活性。一个明显的好处是在最接近用户的区域中部署网站。
 
-有关创建新网站的步骤的详细信息，请参见 [Azure 网站和 ASP.NET 入门][]。
+有关创建新网站的步骤的详细信息，请参见 [Azure 网站和 ASP.NET 入门][Azure 网站和 ASP.NET 入门]。
 
 ## <a name="deploywebsite"></a>部署网站
 
@@ -40,21 +40,21 @@
 -   使用 FTP 客户端。
 -   从源代码管理部署。
 -   从 Visual Studio 发布。
--   从 [WebMatrix][] 发布。
+-   从 [WebMatrix][WebMatrix] 发布。
 
 上述每个选项都具有不同的能力。能够从 FTP 客户端进行发布是将新文件推送到你的网站的简单、直接的解决方案。它还意味着依赖于 FTP 的任何现有发布工具或进程都可以继续使用 Azure 网站。源代码管理提供对网站内容发布的最佳控制，因为可以跟踪和发布更改，以及根据需要将更改回滚到之前的版本。直接从 Visual Studio 或 Web Matrix 进行发布的选项为使用这两个工具之一的开发人员带来方便。针对该功能的一个有用的情形是在项目的早期阶段中或用于原型制作。在这两种情形下，频繁的发布和测试可能从开发环境内更方便。
 
 这里的许多部署任务都涉及使用 Azure 管理门户中的信息。转到你的网站，选择“仪表板”选项卡，然后查看“速览”部分。下面的屏幕快照显示若干选项。
 
-![GlobalWebQuickGlance][]
+![GlobalWebQuickGlance][GlobalWebQuickGlance]
 
 某些源代码管理工具和 FTP 客户端要求用户名/密码访问。对于新网站，不自动创建凭据。不过，你可以通过单击“重置部署凭据”轻松地创建凭据。在完成后，你可以通过在同一个“仪表板”页将这些凭据与“FTP 主机名”一起使用，使用任何 FTP 客户端部署你的网站。
 
-![GlobalWebFTPSettings][]
+![GlobalWebFTPSettings][GlobalWebFTPSettings]
 
 请注意，部署/FTP 用户名是你提供的网站名称和用户名的组合。因此，如果你的网站是“<http://contoso.chinacloudsites.cn>”并且你的用户名是“myuser”，则部署和 FTP 的用户名将是“contoso\\myuser”。
 
-还可以选择通过源代码管理服务（例如 GitHub 或 TFS Online）进行部署。单击针对“从源代码管理设置部署”的选项。然后，按照针对你选择的源代码管理系统或服务的说明执行。有关从本地 Git 存储库进行发布的分步说明，请参见[从源代码管理发布到 Azure 网站][]。
+还可以选择通过源代码管理服务（例如 GitHub 或 TFS Online）进行部署。单击针对“从源代码管理设置部署”的选项。然后，按照针对你选择的源代码管理系统或服务的说明执行。有关从本地 Git 存储库进行发布的分步说明，请参见[从源代码管理发布到 Azure 网站][从源代码管理发布到 Azure 网站]。
 
 如果你计划使用 Visual Studio 创建和管理你的网站，则可以选择直接从 Visual Studio 发布。一个方法是单击“下载发布配置文件”选项。这允许你保存可导入到 Visual Studio 中以便进行 Web 发布的 publishsettings 文件。
 
@@ -65,15 +65,15 @@
 
 也可以将订阅信息直接导入到 Visual Studio 中。有关示例，请考虑 Visual Studio 中的本地 ASP.NET 项目。右键单击 Web 项目，然后选择“发布”。通过“发布 Web”对话框中的“导入”按钮，你可以导入包含你的 Azure 订阅设置的文件或者导入从网站仪表板下载的 publishsettings 文件。下面的屏幕快照显示这些选项。
 
-![GlobalWebVSPublish][]
+![GlobalWebVSPublish][GlobalWebVSPublish]
 
 有关从 Visual Studio 发布到 Azure 的更多信息，请参见“将 ASP.NET Web 应用程序部署到 Azure 网站”。
 
 用于开发和部署的另一个选项是 Azure 管理门户中的 WebMatrix。
 
-![GlobalWebWebMatrix][]
+![GlobalWebWebMatrix][GlobalWebWebMatrix]
 
-有关此选项的详细信息，请参阅[使用 Microsoft WebMatrix 开发和部署网站][]。
+有关此选项的详细信息，请参阅[使用 Microsoft WebMatrix 开发和部署网站][使用 Microsoft WebMatrix 开发和部署网站]。
 
 尽管这些步骤提供了你部署 .COM 网站所需项目，但还应为管理后续内容发布周期创建计划。这些选项可以涵盖从开始执行自定义解决方案到不频繁更改的网站的定期重新部署再到功能完备的内容管理系统 (CMS) 的方方面面。
 
@@ -106,7 +106,7 @@
 
 在 Azure 管理门户的“缩放”选项卡上确认你在“共享”或“标准”模式下运行（“免费”网站不支持自定义域）。然后转到“配置”选项卡，单击“管理域”按钮。这使你能够将网站域自定义域名相关联。
 
-![GlobalWebWebMatrix][]
+![GlobalWebWebMatrix][GlobalWebWebMatrix]
 
 在列表中放置你的自定义域之前，必须首先转到你的 DNS 提供程序并且创建你的自定义域 (www.contoso.com) 的 CNAME 记录，该记录指向你的 Azure 网站的 URL (contoso.chinacloudsites.cn)。在此传播后，你可以在前面屏幕快照中显示的对话框中输入自定义域。对于指向此网站的 www.contoso.com 提供 CNAME 记录确保你有权将该域名用于此网站。此时，你可以在对话框的底部创建具有 IP 地址的 A 记录。
 
@@ -125,7 +125,7 @@
 </tr>
 </table>
 
-有关更多信息，请参见[为 Azure 网站配置自定义域名][]。
+有关更多信息，请参见[为 Azure 网站配置自定义域名][为 Azure 网站配置自定义域名]。
 
 ## <a name="ssl"></a>使用 SSL 保护网站
 
@@ -133,23 +133,23 @@
 
 Azure 网站自动提供与实际网站 URL 的安全连接。例如，如果你的网站是 <http://contoso.chinacloudsites.cn>，则只需通过将“http”更改为“https”，例如 **https**://contoso.chinacloudsites.cn，就可以通过 SSL 进行连接。
 
-但是，如果你在使用自定义域名，则必须采取措施通过网站的 Azure 管理门户上载证书和启用 SSL。下面的步骤提供此过程的摘要，但你可以在主题[为 Azure 网站配置 SSL 证书][]中找到详细说明。
+但是，如果你在使用自定义域名，则必须采取措施通过网站的 Azure 管理门户上载证书和启用 SSL。下面的步骤提供此过程的摘要，但你可以在主题[为 Azure 网站配置 SSL 证书][为 Azure 网站配置 SSL 证书]中找到详细说明。
 
 首先，从证书颁发机构获取一个 SSL 证书。如果你要确保具有多个子域（例如 www.contoso.com 和 staging.contoso.com）的域的安全，你将需要获取通配符证书 (\*.contoso.com)。它们可能会导致更高成本，因此，你必须确定此类型证书的灵活性是否值得付出该成本。
 
-一旦从证书颁发机构获取证书后，就不能简单地以相同方式将其上载到 Azure。你必须使用 openssl 命令生成 .pfx 文件。该 openssl 命令是 OpenSSL 项目的一部分。这些源在 [OpenSSL 网站][]上分发，但你通常也可以在 Internet 上找到该工具的预先编译的版本。在下面的示例中，使用证书 myserver.crt 和私钥文件 myserver.key 创建了一个 .pfx 文件。
+一旦从证书颁发机构获取证书后，就不能简单地以相同方式将其上载到 Azure。你必须使用 openssl 命令生成 .pfx 文件。该 openssl 命令是 OpenSSL 项目的一部分。这些源在 [OpenSSL 网站][OpenSSL 网站]上分发，但你通常也可以在 Internet 上找到该工具的预先编译的版本。在下面的示例中，使用证书 myserver.crt 和私钥文件 myserver.key 创建了一个 .pfx 文件。
 
     openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
 若要将该证书上载到 Azure，请首先转到“缩放”选项卡，确认你正在“标准”模式下运行。“免费”或“共享”模式不支持针对自定义域的 SSL。在“配置”选项卡上，选择“上载证书”按钮。
 
-![GlobalWebUplodateCert][]
+![GlobalWebUplodateCert][GlobalWebUplodateCert]
 
 然后在“ssl 绑定”部分中，将证书映射到它保护的域名。有两个用于此映射的选项：SNI SSL 和基于 IP 的 SSL。
 
-![GlobalWebSSLBindings][]
+![GlobalWebSSLBindings][GlobalWebSSLBindings]
 
-“基于 IP 的 SSL”选项是用于将公共的专用 IP 地址映射到域名的传统方法。它适用于所有浏览器。“SNI SSL”选项允许多个域共享相同 IP 地址，但对每个域具有不同的关联 SSL 证书。SNI SSL 不适用于某些较旧的浏览器（有关兼容性的更多信息，请参见[针对 SNI SSL 的 Wikipedia 条目][]）。存在与每个 SSL 证书相关联的每月费用（每小时按比例分摊），并且定价因选择的是基于 IP 的 SSL 还是 SNI SSL 而异。有关定价信息，请参见[网站定价详细信息][]。有关此过程的详细信息，请参阅[为 Azure 网站配置 SSL 证书][]。
+“基于 IP 的 SSL”选项是用于将公共的专用 IP 地址映射到域名的传统方法。它适用于所有浏览器。“SNI SSL”选项允许多个域共享相同 IP 地址，但对每个域具有不同的关联 SSL 证书。SNI SSL 不适用于某些较旧的浏览器（有关兼容性的更多信息，请参见[针对 SNI SSL 的 Wikipedia 条目][针对 SNI SSL 的 Wikipedia 条目]）。存在与每个 SSL 证书相关联的每月费用（每小时按比例分摊），并且定价因选择的是基于 IP 的 SSL 还是 SNI SSL 而异。有关定价信息，请参见[网站定价详细信息][网站定价详细信息]。有关此过程的详细信息，请参阅[为 Azure 网站配置 SSL 证书][为 Azure 网站配置 SSL 证书]。
 
 ## <a name="monitor"></a>监视网站
 
@@ -157,23 +157,23 @@ Azure 网站自动提供与实际网站 URL 的安全连接。例如，如果你
 
 “监视器”选项卡以图形格式包含针对你的网站的某些关键度量值。
 
-![GlobalWebMonitor1][]
+![GlobalWebMonitor1][GlobalWebMonitor1]
 
 你可以使用“添加度量值”按钮自定义此图形中的度量值。
 
-![GlobalWebMonitor2][]
+![GlobalWebMonitor2][GlobalWebMonitor2]
 
 对于在“标准”模式下运行的网站，你还可以启用终结点监视和警报。在“配置”选项卡上，转到“监视”部分，并且配置终结点。此终结点从你指定的一个或多个位置运行，并且定期尝试访问你的网站。时间和错误信息都会收集。
 
 在“监视器”选项卡中，此终结点在出现时会显示响应时间。如果你选择终结点度量值，则可以通过单击“添加规则”图标，添加警报规则。
 
-![GlobalWebMonitor3][]
+![GlobalWebMonitor3][GlobalWebMonitor3]
 
 在响应时间超出了指定的阈值时，该规则可通过电子邮件通知管理员或其他个体。
 
-![GlobalWebMonitor4][]
+![GlobalWebMonitor4][GlobalWebMonitor4]
 
-如果你发现网站要求缩放，则可以在“缩放”选项卡上手动执行缩放，或者通过自动缩放预览执行缩放。该“缩放”选项卡提供向上扩展（更大的专用计算机）或向外扩展（相同大小的附加共享实例或专用实例）的选择。但是，自动缩放预览仅支持向外扩展。有关此选项的更详细信息，请参见有关网站监视的更多信息，以及参见[数字市场营销活动][1]方案的“根据用户要求进行缩放”部分。另请参见[如何监视网站][]。
+如果你发现网站要求缩放，则可以在“缩放”选项卡上手动执行缩放，或者通过自动缩放预览执行缩放。该“缩放”选项卡提供向上扩展（更大的专用计算机）或向外扩展（相同大小的附加共享实例或专用实例）的选择。但是，自动缩放预览仅支持向外扩展。有关此选项的更详细信息，请参见有关网站监视的更多信息，以及参见[数字市场营销活动][1]方案的“根据用户要求进行缩放”部分。另请参见[如何监视网站][如何监视网站]。
 
 ## <a name="summary"></a>摘要
 

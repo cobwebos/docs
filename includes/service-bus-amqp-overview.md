@@ -45,7 +45,7 @@ AMQP 1.0 是一个高效、可靠的线级消息传送协议，可用于构建�
 
 下图显示了一个部署示例，其中 Java 客户端运行在 Linux 上，并使用标准 Java 消息服务 (JMS) API 写入数据；而 .NET 客户端运行在 Windows 上，并通过 Service Bus 使用 AMQP 1.0 交换消息。
 
-![][0]
+![][]
 
 **图 1：演示使用 Service Bus 和 AMQP 1.0 进行跨平台消息传送的部署方案示例**
 
@@ -87,12 +87,12 @@ AMQP 1.0 是一个高效、可靠的线级消息传送协议，可用于构建�
 
 ## 参考
 
--   [如何将 AMQP 1.0 与 Service Bus .NET API 一起使用][]
--   [如何将 Java 消息服务 (JMS) API 用于 Service Bus 和 AMQP 1.0][]
--   [Service Bus AMQP 1.0 开发人员指南][]
--   [OASIS 高级消息队列协议 (AMQP) 1.0 版规范][]
+-   [如何将 AMQP 1.0 与 Service Bus .NET API 一起使用][如何将 AMQP 1.0 与 Service Bus .NET API 一起使用]
+-   [如何将 Java 消息服务 (JMS) API 用于 Service Bus 和 AMQP 1.0][如何将 Java 消息服务 (JMS) API 用于 Service Bus 和 AMQP 1.0]
+-   [Service Bus AMQP 1.0 开发人员指南][Service Bus AMQP 1.0 开发人员指南]
+-   [OASIS 高级消息队列协议 (AMQP) 1.0 版规范][OASIS 高级消息队列协议 (AMQP) 1.0 版规范]
 
-  [0]: ./media/service-bus-amqp-overview/Example1.png
+  []: ./media/service-bus-amqp-overview/Example1.png
   [如何将 AMQP 1.0 与 Service Bus .NET API 一起使用]: http://aka.ms/lym3vk
   [如何将 Java 消息服务 (JMS) API 用于 Service Bus 和 AMQP 1.0]: http://aka.ms/ll1fm3
   [Service Bus AMQP 1.0 开发人员指南]: http://msdn.microsoft.com/en-us/library/windowsazure/jj841071.aspx

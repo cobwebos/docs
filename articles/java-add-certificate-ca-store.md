@@ -14,7 +14,7 @@
 
     系统将提示你输入存储密码。默认密码为 **changeit**。（若要更改该密码，请参阅 <http://docs.oracle.com/javase/7/docs/technotes/tools/windows/keytool.html> 上的 keytool 文档。）此示例假定 MD5 指纹为 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4 的证书未列出，并且你想要导入该证书（这是 Twilio API 服务所需的特定证书）。
 
-2.  获取 [GeoTrust 根证书][]上列出的证书列表中的证书。右键单击序列号为 35:DE:F4:CF 的证书的链接，并将该证书保存到 **jdk\\jre\\lib\\security** 文件夹。在此示例中，该证书已保存到名为 **Equifax\_Secure\_Certificate\_Authority.cer** 的文件。
+2.  获取 [GeoTrust 根证书][GeoTrust 根证书]上列出的证书列表中的证书。右键单击序列号为 35:DE:F4:CF 的证书的链接，并将该证书保存到 **jdk\\jre\\lib\\security** 文件夹。在此示例中，该证书已保存到名为 **Equifax\_Secure\_Certificate\_Authority.cer** 的文件。
 3.  通过以下命令导入证书：
 
     `keytool -keystore cacerts -importcert -alias equifaxsecureca -file Equifax_Secure_Certificate_Authority.cer`
@@ -37,7 +37,7 @@ Baltimore 证书可能已安装到你的 cacerts 存储中，因此请务必先�
 
 如果你需要添加 Baltimore CyberTrust 根，请注意其序列号为 02:00:00:b9，SHA1 指纹为 d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74。可从 <https://cacert.omniroot.com/bc2025.crt> 下载它，将其保存到扩展名为 **.cer** 的本地文件中，然后使用 **keytool** 将其导入，如上所述。
 
-有关 Azure 使用的根证书的详细信息，请参阅 [Windows Azure 根证书迁移][]。
+有关 Azure 使用的根证书的详细信息，请参阅 [Windows Azure 根证书迁移][Windows Azure 根证书迁移]。
 
   [GeoTrust 根证书]: http://www.geotrust.com/resources/root-certificates/
   [Windows Azure 根证书迁移]: http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx

@@ -2,21 +2,21 @@
 
 Azure 网站支持从源代码管理和存储库工具（例如，BitBucket、CodePlex、Dropbox、Git、GitHub、Mercurial 和 TFS）进行连续部署。可以使用这些工具维护你网站的内容和代码，然后在需要时快速轻松地将更改推送到你的网站。
 
-在本文中，你将了解如何使用 Git 从本地计算机直接发布到 Azure 网站（在 Azure 中，此发布方法称作“本地 Git”）。你还将了解如何启用从存储库网站（例如，BitBucket、CodePlex、DropBox、GitHub 或 Mercurial）进行的连续部署。有关使用 TFS 进行连续部署的信息，请参阅[使用 Visual Studio Online 向 Azure 持续传送项目][]。
+在本文中，你将了解如何使用 Git 从本地计算机直接发布到 Azure 网站（在 Azure 中，此发布方法称作“本地 Git”）。你还将了解如何启用从存储库网站（例如，BitBucket、CodePlex、DropBox、GitHub 或 Mercurial）进行的连续部署。有关使用 TFS 进行连续部署的信息，请参阅[使用 Visual Studio Online 向 Azure 持续传送项目][使用 Visual Studio Online 向 Azure 持续传送项目]。
 
-> [chinacloudsites.cn] 在使用[针对 Mac 和 Linux 的 Azure 命令行工具][]创建网站时，将自动执行本文中所述的许多 Git 命令。
+> [chinacloudsites.cn] 在使用[针对 Mac 和 Linux 的 Azure 命令行工具][针对 Mac 和 Linux 的 Azure 命令行工具]创建网站时，将自动执行本文中所述的许多 Git 命令。
 
 此任务包括下列步骤：
 
--   [安装 Git][]
--   [创建本地存储库][]
--   [添加网页][]
--   [启用网站存储库][]
--   [部署项目][]
+-   [安装 Git][安装 Git]
+-   [创建本地存储库][创建本地存储库]
+-   [添加网页][添加网页]
+-   [启用网站存储库][启用网站存储库]
+-   [部署项目][部署项目]
 
-    -   [将本地文件推送到 Azure（本地 Git）][]
-    -   [从存储库网站（例如，BitBucket、CodePlex、Dropbox、GitHub 或 Mercurial）部署文件][]
--   [故障排除][]
+    -   [将本地文件推送到 Azure（本地 Git）][将本地文件推送到 Azure（本地 Git）]
+    -   [从存储库网站（例如，BitBucket、CodePlex、Dropbox、GitHub 或 Mercurial）部署文件][从存储库网站（例如，BitBucket、CodePlex、Dropbox、GitHub 或 Mercurial）部署文件]
+-   [故障排除][故障排除]
 
 ## <span id="Step2"></span></a>安装 Git
 
@@ -44,7 +44,7 @@ Azure 网站支持从源代码管理和存储库工具（例如，BitBucket、Co
 
 ## <span id="Step3"></span></a>添加网页
 
-Azure 网站支持用各种编程语言创建的应用程序。对于此示例，你将使用静态 .html 文件。有关将用其他编程语言创建的网站发布到 Azure 的信息，请参阅 [Azure 开发人员中心][]。
+Azure 网站支持用各种编程语言创建的应用程序。对于此示例，你将使用静态 .html 文件。有关将用其他编程语言创建的网站发布到 Azure 的信息，请参阅 [Azure 开发人员中心][Azure 开发人员中心]。
 
 1.  通过使用文本编辑器，在 Git 存储库的根目录下（你先前创建的 MyGitRepository 目录）创建一个名为 **index.html** 的新文件。
 
@@ -72,23 +72,23 @@ Azure 网站支持用各种编程语言创建的应用程序。对于此示例�
 
 执行以下步骤可使用 Azure 门户为你的网站启用 Git 存储库：
 
-1.  登录到 [Azure 门户][]。
+1.  登录到 [Azure 门户][Azure 门户]。
 
 2.  在页面的左侧，选择“网站”，然后选择要为其启用存储库的网站。
 
-    ![显示选定网站的图像][]
+    ![显示选定网站的图像][显示选定网站的图像]
 
 3.  选择“仪表板”选项卡。
 
 4.  在“速览”部分中，选择“从源代码管理设置部署”。此时将显示以下“设置部署”对话框。
 
-    ![git-WhereIsYourSourceCode][]
+    ![git-WhereIsYourSourceCode][git-WhereIsYourSourceCode]
 
 5.  选择“本地 Git”，然后单击“下一页”箭头。
 
 6.  一小段延迟后，将显示一条指明存储库已就绪的消息。
 
-    ![git 说明][]
+    ![git 说明][git 说明]
 
 ## <span id="Step5"></span></a>部署项目
 
@@ -128,7 +128,7 @@ Azure 网站支持用各种编程语言创建的应用程序。对于此示例�
 
 4.  在门户中，单击底部的“浏览”链接以验证是否已部署 **index.html**。这将显示一个包含“Hello Git!”的页面。
 
-    ![包含“Hello Git!”的网页][]
+    ![包含“Hello Git!”的网页][包含“Hello Git!”的网页]
 
 5.  通过使用文本编辑器，更改 **index.html** 文件以使其包含“Yay!”，然后保存该文件。
 
@@ -140,7 +140,7 @@ Azure 网站支持用各种编程语言创建的应用程序。对于此示例�
 
     完成 **push** 命令后，请刷新浏览器（你可能必须按 Ctrl+F5 才能正确刷新浏览器），你会发现该页面的内容此时将反映最新提交的更改。
 
-    ![包含“Yay!”的网页][]
+    ![包含“Yay!”的网页][包含“Yay!”的网页]
 
 ### <span id="Step7"></span></a>从存储库网站（例如，BitBucket、CodePlex、Dropbox、GitHub 或 Mercurial）部署文件
 
@@ -148,7 +148,7 @@ Azure 网站支持用各种编程语言创建的应用程序。对于此示例�
 
 这两种方法都会将项目部署到 Azure 网站，如果你有多个人员在处理同一个项目并希望确保始终发布最新版本（不管是谁执行了最新更新），则连续部署会很有用。此外，如果你将上述工具之一用作应用程序的中央存储库，则连续部署也很有用。
 
-从 GitHub、CodePlex 或 BitBucket 部署文件需要你已将本地项目发布到这些服务之一。有关将项目发布到这些服务的更多信息，请参阅[创建存储库 (GitHub)][]、[使用 Git 和 CodePlex][]、[创建存储库 (BitBucket)][]、[使用 Dropbox 共享 Git 存储库][]或[快速入门 - Mercurial][]。
+从 GitHub、CodePlex 或 BitBucket 部署文件需要你已将本地项目发布到这些服务之一。有关将项目发布到这些服务的更多信息，请参阅[创建存储库 (GitHub)][创建存储库 (GitHub)]、[使用 Git 和 CodePlex][使用 Git 和 CodePlex]、[创建存储库 (BitBucket)][创建存储库 (BitBucket)]、[使用 Dropbox 共享 Git 存储库][使用 Dropbox 共享 Git 存储库]或[快速入门 - Mercurial][快速入门 - Mercurial]。
 
 1.  首先，将你的网站文件放到将用于连续部署的选定存储库中。
 
@@ -160,7 +160,7 @@ Azure 网站支持用各种编程语言创建的应用程序。对于此示例�
 
 5.  在授权 Azure 访问你的帐户后，系统将提示你提供存储库列表。
 
-    ![git-ChooseARepositoryToDeploy][]
+    ![git-ChooseARepositoryToDeploy][git-ChooseARepositoryToDeploy]
 
 6.  选择要与 Azure 网站关联的存储库。单击复选标记以继续。
 
@@ -168,19 +168,19 @@ Azure 网站支持用各种编程语言创建的应用程序。对于此示例�
 
 7.  Azure 创建与所选存储库的关联，并从 master 分支拉入文件。在此过程完成后，“部署”页面上的“部署历史记录”将显示与下面类似的“活动部署”消息：
 
-    ![git-githubdeployed][]
+    ![git-githubdeployed][git-githubdeployed]
 
 8.  此时，已将你的项目从所选存储库部署到 Azure 网站。若要验证该网站是否处于活动状态，请单击门户底部的“浏览”链接。浏览器将导航到该网站。
 
 9.  若要验证连续部署是否正在进行，请更改你的项目，然后将所做的更新推送到已与此网站关联的存储库。推送到存储库后，你的网站很快将更新以反映更改。可以在网站的“部署”页面上验证是否已拉入更新。
 
-    ![git-GitHubDeployed-Updated][]
+    ![git-GitHubDeployed-Updated][git-GitHubDeployed-Updated]
 
 #### 连续部署的工作方式
 
 连续部署通过提供在网站的“配置”选项卡的“部署”部分中找到的“部署触发器 URL”来工作。
 
-![git-DeploymentTrigger][]
+![git-DeploymentTrigger][git-DeploymentTrigger]
 
 在对存储库进行更新时，会将 POST 请求发送到此 URL，这将告知你的 Azure 网站已更新存储库。此时，将检索更新并将其部署到你的网站。
 
@@ -198,7 +198,7 @@ Azure 网站支持用各种编程语言创建的应用程序。对于此示例�
 
 可从 Azure“仪表板”禁用连续部署。在“速览”一节下，选择用于断开与所使用存储库的连接的选项：
 
-![git-DisconnectFromGitHub][]
+![git-DisconnectFromGitHub][git-DisconnectFromGitHub]
 
 在显示确认消息时回答“是”后，若要从其他源设置发布，你可以返回到“速览”并单击“从源代码管理设置部署”。
 
@@ -262,9 +262,9 @@ Azure 网站支持用各种编程语言创建的应用程序。对于此示例�
 
 ## 其他资源
 
--   [如何使用 PowerShell for Azure][]
+-   [如何使用 PowerShell for Azure][如何使用 PowerShell for Azure]
 -   [如何使用针对 Mac 和 Linux 的 Azure 命令行工具][针对 Mac 和 Linux 的 Azure 命令行工具]
--   [Git 文档][]
+-   [Git 文档][Git 文档]
 
   [使用 Visual Studio Online 向 Azure 持续传送项目]: http://azure.microsoft.com/zh-cn/documentation/articles/cloud-services-continuous-delivery-use-vso/
   [针对 Mac 和 Linux 的 Azure 命令行工具]: /en-us/develop/nodejs/how-to-guides/command-line-tools/

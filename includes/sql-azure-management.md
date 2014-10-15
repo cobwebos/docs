@@ -12,17 +12,17 @@
 
 此主题包括下列步骤：
 
--   [步骤 1：获取 SQL Server Management Studio][]
--   [步骤 2：连接到 SQL Database][]
--   [步骤 3：创建并管理数据库][]
--   [步骤 4：创建并管理登录][]
--   [步骤 5：使用动态管理视图监视 SQL Database][]
+-   [步骤 1：获取 SQL Server Management Studio][步骤 1：获取 SQL Server Management Studio]
+-   [步骤 2：连接到 SQL Database][步骤 2：连接到 SQL Database]
+-   [步骤 3：创建并管理数据库][步骤 3：创建并管理数据库]
+-   [步骤 4：创建并管理登录][步骤 4：创建并管理登录]
+-   [步骤 5：使用动态管理视图监视 SQL Database][步骤 5：使用动态管理视图监视 SQL Database]
 
 ## <span id="Step1"></span> </a>步骤 1：获取 Management Studio
 
 Management Studio 是用于管理 SQL Database 的集成环境。在管理 Azure 上的数据库时，你可以使用随 SQL Server 一起安装的 Management Studio 应用程序或下载免费的 SQL Server 2012 Management Studio Express (SSMSE) 版本。下面的步骤介绍如何安装 SSMSE。
 
-1.  在 [Microsoft SQL Server 2012 Express][] 页上，选择 x86 版本的 Management Studio（如果你运行的是 32 位操作系统）或 x64（如果你运行的是 64 位操作系统）。单击“下载”，然后在出现提示时，运行安装程序。
+1.  在 [Microsoft SQL Server 2012 Express][Microsoft SQL Server 2012 Express] 页上，选择 x86 版本的 Management Studio（如果你运行的是 32 位操作系统）或 x64（如果你运行的是 64 位操作系统）。单击“下载”，然后在出现提示时，运行安装程序。
 
 2.  单击“全新 SQL Server 独立安装或向现有安装添加功能”，然后单击“确定”。
 
@@ -40,7 +40,7 @@ Management Studio 是用于管理 SQL Database 的集成环境。在管理 Azure
 
 连接到 SQL Database 需要你知道 Azure 上的服务器名称。你可能需要登录到门户来获取此信息。
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 
 2.  在左窗格中，单击“SQL Database”。
 
@@ -70,7 +70,7 @@ Management Studio 是用于管理 SQL Database 的集成环境。在管理 Azure
 
 11. 选择“SQL Server 身份验证”。
 
-12. 在“登录”框中，输入你在创建服务器时在门户中指定的 SQL Server 管理员登录名，格式为[*登录名*@*服务器名称*][]。
+12. 在“登录”框中，输入你在创建服务器时在门户中指定的 SQL Server 管理员登录名，格式为[*登录名*@*服务器名称*][*登录名*@*服务器名称*]。
 
 13. 在“密码”框中，输入你在创建服务器时在门户中指定的密码。
 
@@ -80,7 +80,7 @@ Management Studio 是用于管理 SQL Database 的集成环境。在管理 Azure
 
 在以前版本的 Management Studio 中设置连接时，你必须直接连接到 **master**。此步骤不再是必需的。现在，有了服务器名称、身份验证类型和管理员凭据，连接就会成功。
 
-你可用于任务（例如在 SQL Server 数据库上创建和修改登录和数据库）的许多 SSMS 向导不可用于 Azure 上的 SQL Database，因此你将需要利用 Transact-SQL 语句来完成这些任务。下面的步骤提供了这些语句的示例。有关将 Transact-SQL 与 SQL Database 结合使用的详细信息（包括有关受支持命令的详细信息），请参阅 [Transact-SQL 参考 (SQL Database)][]。
+你可用于任务（例如在 SQL Server 数据库上创建和修改登录和数据库）的许多 SSMS 向导不可用于 Azure 上的 SQL Database，因此你将需要利用 Transact-SQL 语句来完成这些任务。下面的步骤提供了这些语句的示例。有关将 Transact-SQL 与 SQL Database 结合使用的详细信息（包括有关受支持命令的详细信息），请参阅 [Transact-SQL 参考 (SQL Database)][Transact-SQL 参考 (SQL Database)]。
 
 ## <span id="Step3"></span> </a>步骤 3：创建并管理数据库
 
@@ -88,7 +88,7 @@ Management Studio 是用于管理 SQL Database 的集成环境。在管理 Azure
 
 若要在 Management Studio 中打开查询窗口，请打开 Databases 文件夹，展开“系统数据库”，右键单击“master”，然后单击“新建查询”。
 
--   使用 **CREATE DATABASE** 语句来创建新数据库。有关详细信息，请参阅 [CREATE DATABASE (SQL Database)][]。下面的语句创建名为**myTestDB** 的新数据库并指定它是 Web 版数据库且最大大小为 1 GB.
+-   使用 **CREATE DATABASE** 语句来创建新数据库。有关详细信息，请参阅 [CREATE DATABASE (SQL Database)][CREATE DATABASE (SQL Database)]。下面的语句创建名为**myTestDB** 的新数据库并指定它是 Web 版数据库且最大大小为 1 GB.
 
         CREATE DATABASE myTestDB
         (MAXSIZE=1GB,
@@ -96,14 +96,14 @@ Management Studio 是用于管理 SQL Database 的集成环境。在管理 Azure
 
 单击“执行”来运行查询。
 
--   例如，如果你要更改数据库的名称、最大大小或版本（企业或 Web），请使用 **ALTER DATABASE** 语句来修改现有数据库。有关详细信息，请参阅 [ALTER DATABASE (SQL Database)][]。下面的语句修改你在上一步中创建的数据库，将最大大小更改为 5 GB。
+-   例如，如果你要更改数据库的名称、最大大小或版本（企业或 Web），请使用 **ALTER DATABASE** 语句来修改现有数据库。有关详细信息，请参阅 [ALTER DATABASE (SQL Database)][ALTER DATABASE (SQL Database)]。下面的语句修改你在上一步中创建的数据库，将最大大小更改为 5 GB。
 
         ALTER DATABASE myTestDB
         MODIFY
         (MAXSIZE=5GB,
          EDITION='web');
 
--   使用 **DROP DATABASE** 语句可删除现有数据库。有关详细信息，请参阅 [DROP DATABASE (SQL Database)][]。下面的语句删除 **myTestDB**数据库，但现在没有删除它，因为你将在下一步中使用它创建登录。
+-   使用 **DROP DATABASE** 语句可删除现有数据库。有关详细信息，请参阅 [DROP DATABASE (SQL Database)][DROP DATABASE (SQL Database)]。下面的语句删除 **myTestDB**数据库，但现在没有删除它，因为你将在下一步中使用它创建登录。
 
         DROP DATABASE myTestBase;
 
@@ -126,19 +126,19 @@ Management Studio 是用于管理 SQL Database 的集成环境。在管理 Azure
 
 ## <span id="Step4"></span> </a>步骤 4：创建并管理登录
 
-**master** 数据库跟踪登录名以及哪些登录名有权创建数据库或其他登录名。通过使用你在设置服务器时创建的服务器级别主体登录连接到 **master** 数据库来管理登录名。你可以使用**CREATE LOGIN**、**ALTER LOGIN** 或 **DROP LOGIN** 语句对将管理整个服务器上的登录的 master 数据库执行查询。有关详细信息，请参阅[在 SQL Database 中管理数据库和登录名][]。
+**master** 数据库跟踪登录名以及哪些登录名有权创建数据库或其他登录名。通过使用你在设置服务器时创建的服务器级别主体登录连接到 **master** 数据库来管理登录名。你可以使用**CREATE LOGIN**、**ALTER LOGIN** 或 **DROP LOGIN** 语句对将管理整个服务器上的登录的 master 数据库执行查询。有关详细信息，请参阅[在 SQL Database 中管理数据库和登录名][在 SQL Database 中管理数据库和登录名]。
 
--   使用 **CREATE LOGIN** 语句可创建新的服务器级别登录名。有关详细信息，请参阅 [CREATE LOGIN (SQL Database)][]。下面的语句创建一个名为 **login1** 的新登录名。使用你选择的密码替换 **password1**。
+-   使用 **CREATE LOGIN** 语句可创建新的服务器级别登录名。有关详细信息，请参阅 [CREATE LOGIN (SQL Database)][CREATE LOGIN (SQL Database)]。下面的语句创建一个名为 **login1** 的新登录名。使用你选择的密码替换 **password1**。
 
         CREATE LOGIN login1 WITH password='password1';
 
--   使用 **CREATE USER** 语句来授予数据库级别权限。必须在 **master** 数据库中创建所有登录，但若要使登录连接到不同的数据库，你必须使用 **CREATE USER**语句授予它对该数据库的数据库级别权限。有关详细信息，请参阅 [CREATE USER (SQL Database)][]。
+-   使用 **CREATE USER** 语句来授予数据库级别权限。必须在 **master** 数据库中创建所有登录，但若要使登录连接到不同的数据库，你必须使用 **CREATE USER**语句授予它对该数据库的数据库级别权限。有关详细信息，请参阅 [CREATE USER (SQL Database)][CREATE USER (SQL Database)]。
 
 -   若要为 login1 提供对名为 **myTestDB** 的数据库的权限，请完成以下步骤：
 
 1.  若要刷新对象资源管理器以查看你刚才创建的 **myTestDB** 数据库，请在对象资源管理器中右键单击服务器名称，然后单击“刷新”。
 
-    如果你关闭了连接，可以通过选择“文件”菜单上的“连接对象资源管理器”来重新连接。重复[步骤 2：连接到 SQL Database][] 中的说明来连接到数据库。
+    如果你关闭了连接，可以通过选择“文件”菜单上的“连接对象资源管理器”来重新连接。重复[步骤 2：连接到 SQL Database][步骤 2：连接到 SQL Database] 中的说明来连接到数据库。
 
 2.  右键单击 **myTestDB** 数据库并选择“新建查询”。
 
@@ -147,11 +147,11 @@ Management Studio 是用于管理 SQL Database 的集成环境。在管理 Azure
 
             CREATE USER login1User FROM LOGIN login1;
 
--   使用 **sp\_addrolemember** 存储过程为用户帐户提供对数据库的适当级别的权限。有关详细信息，请参阅 [sp\_addrolemember (Transact-SQL)][]。下面的语句通过将 **login1User**添加到 **db\_datareader** 角色，为 **login1User** 提供对数据库的只读权限。
+-   使用 **sp\_addrolemember** 存储过程为用户帐户提供对数据库的适当级别的权限。有关详细信息，请参阅 [sp\_addrolemember (Transact-SQL)][sp\_addrolemember (Transact-SQL)]。下面的语句通过将 **login1User**添加到 **db\_datareader** 角色，为 **login1User** 提供对数据库的只读权限。
 
         exec sp_addrolemember 'db_datareader', 'login1User';    
 
--   例如，如果你要更改登录的密码，请使用 **ALTER LOGIN** 语句来修改现有登录。有关详细信息，请参阅 [ALTER LOGIN (SQL Database)][]。应对 **master** 数据库运行 **ALTER LOGIN** 语句。切换回连接到该数据库的查询窗口。
+-   例如，如果你要更改登录的密码，请使用 **ALTER LOGIN** 语句来修改现有登录。有关详细信息，请参阅 [ALTER LOGIN (SQL Database)][ALTER LOGIN (SQL Database)]。应对 **master** 数据库运行 **ALTER LOGIN** 语句。切换回连接到该数据库的查询窗口。
 
     下面的语句修改 **login1** 登录来重置密码。请使用你选择的密码替换 **newPassword**，并使用目前用于登录的密码替换**oldPassword**。
 
@@ -159,7 +159,7 @@ Management Studio 是用于管理 SQL Database 的集成环境。在管理 Azure
         WITH PASSWORD = 'newPassword'
         OLD_PASSWORD = 'oldPassword';
 
--   使用 **DROP LOGIN** 语句来删除现有登录。删除服务器级别的登录还会删除任何关联的数据库用户帐户。有关详细信息，请参阅 [DROP DATABASE (SQL Database)][]。应对 **master**数据库运行 **DROP LOGIN**语句。下面的语句删除 **login1** 登录。
+-   使用 **DROP LOGIN** 语句来删除现有登录。删除服务器级别的登录还会删除任何关联的数据库用户帐户。有关详细信息，请参阅 [DROP DATABASE (SQL Database)][DROP DATABASE (SQL Database)]。应对 **master**数据库运行 **DROP LOGIN**语句。下面的语句删除 **login1** 登录。
 
         DROP LOGIN login1;
 
@@ -169,7 +169,7 @@ Management Studio 是用于管理 SQL Database 的集成环境。在管理 Azure
 
 ## <span id="Step5"></span> </a>步骤 5：使用动态管理视图监视 SQL Database
 
-SQL Database 支持多个你可用于监视单个数据库的动态管理视图。下面是你可通过这些视图检索的监视器数据类型的一些示例。有关完整的详细信息和更多用法示例，请参阅[使用动态管理视图监视 SQL Database][]。
+SQL Database 支持多个你可用于监视单个数据库的动态管理视图。下面是你可通过这些视图检索的监视器数据类型的一些示例。有关完整的详细信息和更多用法示例，请参阅[使用动态管理视图监视 SQL Database][使用动态管理视图监视 SQL Database]。
 
 -   查询动态管理视图需要 **VIEW DATABASE STATE**权限。若要向特定数据库用户授予 **VIEW DATABASE STATE** 权限，请连接到要使用你的服务器级别主体登录管理的数据库并对该数据库执行以下语句：
 
@@ -212,12 +212,12 @@ SQL Database 支持多个你可用于监视单个数据库的动态管理视图�
 
 ## 其他资源
 
--   [SQL Database 简介][]
+-   [SQL Database 简介][SQL Database 简介]
 -   [在 SQL Database 中管理数据库和登录][在 SQL Database 中管理数据库和登录名]
--   [使用动态管理视图监视 SQL Database][]
--   [SQL Database 设置模型][]
--   [将用户添加到你的 SQL Database 中][]
--   [Transact-SQL 参考 (SQL Database)][]
+-   [使用动态管理视图监视 SQL Database][使用动态管理视图监视 SQL Database]
+-   [SQL Database 设置模型][SQL Database 设置模型]
+-   [将用户添加到你的 SQL Database 中][将用户添加到你的 SQL Database 中]
+-   [Transact-SQL 参考 (SQL Database)][Transact-SQL 参考 (SQL Database)]
 
   [步骤 1：获取 SQL Server Management Studio]: #Step1
   [步骤 2：连接到 SQL Database]: #Step2

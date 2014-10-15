@@ -2,29 +2,29 @@
 
 # 如何使用 Service Bus 主题/订阅
 
-本指南将演示如何从 Ruby 应用程序使用 Service Bus 主题和订阅。涉及的应用场景包括**创建主题和订阅、创建订阅筛选器、将消息发送到主题**、**从订阅接收消息**以及**删除主题和订阅**。有关主题和订阅的详细信息，请参阅[后续步骤][]一节。
+本指南将演示如何从 Ruby 应用程序使用 Service Bus 主题和订阅。涉及的应用场景包括**创建主题和订阅、创建订阅筛选器、将消息发送到主题**、**从订阅接收消息**以及**删除主题和订阅**。有关主题和订阅的详细信息，请参阅[后续步骤][后续步骤]一节。
 
 ## 目录
 
--   [什么是 Service Bus 主题和订阅][]
--   [创建服务命名空间][]
--   [获得命名空间的默认管理凭据][]
--   [创建 Ruby 应用程序][]
--   [配置应用程序以使用 Service Bus][]
--   [设置 Azure Service Bus 连接][]
--   [如何创建主题][]
--   [如何创建订阅][]
--   [如何将消息发送到主题][]
--   [如何从订阅接收消息][]
--   [如何处理应用程序崩溃和不可读消息][]
--   [如何删除主题和订阅][]
--   [后续步骤][]
+-   [什么是 Service Bus 主题和订阅][什么是 Service Bus 主题和订阅]
+-   [创建服务命名空间][创建服务命名空间]
+-   [获得命名空间的默认管理凭据][获得命名空间的默认管理凭据]
+-   [创建 Ruby 应用程序][创建 Ruby 应用程序]
+-   [配置应用程序以使用 Service Bus][配置应用程序以使用 Service Bus]
+-   [设置 Azure Service Bus 连接][设置 Azure Service Bus 连接]
+-   [如何创建主题][如何创建主题]
+-   [如何创建订阅][如何创建订阅]
+-   [如何将消息发送到主题][如何将消息发送到主题]
+-   [如何从订阅接收消息][如何从订阅接收消息]
+-   [如何处理应用程序崩溃和不可读消息][如何处理应用程序崩溃和不可读消息]
+-   [如何删除主题和订阅][如何删除主题和订阅]
+-   [后续步骤][后续步骤]
 
-[WACOM.INCLUDE [howto-service-bus-topics][]]
+[WACOM.INCLUDE [howto-service-bus-topics][howto-service-bus-topics]]
 
 ## <span id="create-a-ruby-application"></span></a>创建 Ruby 应用程序
 
-创建 Ruby 应用程序。有关说明，请参阅[在 Azure 上创建 Ruby 应用程序][]。
+创建 Ruby 应用程序。有关说明，请参阅[在 Azure 上创建 Ruby 应用程序][在 Azure 上创建 Ruby 应用程序]。
 
 ## <span id="configure-your-application-to-use-service-bus"></span></a>配置应用程序以使用 Service Bus
 
@@ -87,7 +87,7 @@ azure 模块将读取环境变量 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_
 
 还可以设置筛选器，以确定发送到主题的哪些消息应该在特定主题订阅中显示。
 
-订阅支持的最灵活的筛选器类型是 **Azure::ServiceBus::SqlFilter**，它实现了部分 SQL92 功能。SQL 筛选器将对发布到主题的消息的属性进行操作。有关可用于 SQL 筛选器的表达式的更多详细信息，请参阅 [SqlFilter.SqlExpression][] 语法。
+订阅支持的最灵活的筛选器类型是 **Azure::ServiceBus::SqlFilter**，它实现了部分 SQL92 功能。SQL 筛选器将对发布到主题的消息的属性进行操作。有关可用于 SQL 筛选器的表达式的更多详细信息，请参阅 [SqlFilter.SqlExpression][SqlFilter.SqlExpression] 语法。
 
 可以使用 **Azure::ServiceBusService** 对象的 **create\_rule()** 方法向订阅中添加筛选器。此方法允许你向现有订阅中添加新筛选器。
 
@@ -165,7 +165,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 ## <span id="how-to-delete-topics-and-subscriptions"></span></a>如何删除主题和订阅
 
-主题和订阅具有持久性，必须通过 [Azure 管理门户][]或以编程方式显式删除。下面的示例演示如何删除名为“test-topic”的主题：
+主题和订阅具有持久性，必须通过 [Azure 管理门户][Azure 管理门户]或以编程方式显式删除。下面的示例演示如何删除名为“test-topic”的主题：
 
     azure_service_bus_service.delete_topic("test-topic")
 
@@ -177,9 +177,9 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 现在，你已了解有关 Service Bus 主题的基础知识，单击下面的链接可了解更多信息。
 
--   查看 MSDN 参考：[队列、主题和订阅][]
--   [SqlFilter][] 的 API 参考。
--   访问 GitHub 上的 [Azure SDK for Ruby][] 存储库
+-   查看 MSDN 参考：[队列、主题和订阅][队列、主题和订阅]
+-   [SqlFilter][SqlFilter] 的 API 参考。
+-   访问 GitHub 上的 [Azure SDK for Ruby][Azure SDK for Ruby] 存储库
 
   [后续步骤]: #NextSteps
   [什么是 Service Bus 主题和订阅]: #what-are-service-bus-topics

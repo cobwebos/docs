@@ -2,7 +2,7 @@
 
 # 在 Azure 计算模拟器中使用 Visual Studio 探查器来本地测试云服务的性能
 
-可通过各种工具和技术来测试云服务的性能。在将云服务发布到 Azure 后，可以让 Visual Studio 收集分析数据，然后在本地进行分析，如[分析 Azure 应用程序][]中所述。还可以使用诊断来跟踪各种性能计数器，如[在 Azure 中使用性能计数器][]中所述。此外，在将应用程序部署到云之前，你可能需要在计算模拟器中本地分析应用程序。
+可通过各种工具和技术来测试云服务的性能。在将云服务发布到 Azure 后，可以让 Visual Studio 收集分析数据，然后在本地进行分析，如[分析 Azure 应用程序][分析 Azure 应用程序]中所述。还可以使用诊断来跟踪各种性能计数器，如[在 Azure 中使用性能计数器][在 Azure 中使用性能计数器]中所述。此外，在将应用程序部署到云之前，你可能需要在计算模拟器中本地分析应用程序。
 
 本文包含了 CPU 采样分析方法，可在模拟器中本地执行该方法。CPU 采样是一种干预性不是很强的分析方法。探查器将按照指定的采样时间间隔拍摄调用堆栈的快照。将收集一段时间内的数据并将其显示在报告中。此分析方法倾向于指示在具有大量计算的应用程序中执行大多数 CPU 工作的位置。这使你能够侧重于应用程序在其上花费最多时间的“热路径”。
 
@@ -12,17 +12,17 @@
 
 ## 本文内容：
 
--   [步骤 1：配置 Visual Studio 以进行分析][]
+-   [步骤 1：配置 Visual Studio 以进行分析][步骤 1：配置 Visual Studio 以进行分析]
 
--   [步骤 2：附加到进程][]
+-   [步骤 2：附加到进程][步骤 2：附加到进程]
 
--   [步骤 3：查看分析报告][]
+-   [步骤 3：查看分析报告][步骤 3：查看分析报告]
 
--   [步骤 4：进行更改并比较性能][]
+-   [步骤 4：进行更改并比较性能][步骤 4：进行更改并比较性能]
 
--   [故障排除][]
+-   [故障排除][故障排除]
 
--   [后续步骤][]
+-   [后续步骤][后续步骤]
 
 ## <a name="step1"> </a>步骤 1：配置 Visual Studio 以进行分析
 
@@ -160,7 +160,7 @@
 
 ## <a name="nextSteps"> </a> 后续步骤
 
-Visual Studio 2010 探查器不支持在模拟器中检测 Azure 二进制文件，但若要测试内存分配，你可以在分析时选择该选项。此外，你可以选择并发分析，这将帮助你确定线程是否正在浪费时间竞争锁；也可以选择层交互分析，这将帮助你跟踪在应用程序的各个层之间（最常见的是数据层和辅助角色之间）进行交互时的性能问题。你可以查看应用程序生成的数据库查询并使用分析数据来改进对数据库的使用。有关层交互分析的信息，请参阅[演练：在 Visual Studio Team System 2010 中使用层交互探查器][]。
+Visual Studio 2010 探查器不支持在模拟器中检测 Azure 二进制文件，但若要测试内存分配，你可以在分析时选择该选项。此外，你可以选择并发分析，这将帮助你确定线程是否正在浪费时间竞争锁；也可以选择层交互分析，这将帮助你跟踪在应用程序的各个层之间（最常见的是数据层和辅助角色之间）进行交互时的性能问题。你可以查看应用程序生成的数据库查询并使用分析数据来改进对数据库的使用。有关层交互分析的信息，请参阅[演练：在 Visual Studio Team System 2010 中使用层交互探查器][演练：在 Visual Studio Team System 2010 中使用层交互探查器]。
 
   [分析 Azure 应用程序]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh369930.aspx
   [在 Azure 中使用性能计数器]: http://www.windowsazure.com/zh-cn/develop/net/common-tasks/performance-profiling
@@ -170,7 +170,7 @@ Visual Studio 2010 探查器不支持在模拟器中检测 Azure 二进制文件
   [步骤 4：进行更改并比较性能]: #step4
   [故障排除]: #troubleshooting
   [后续步骤]: #nextSteps
-  [0]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
+  []: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
   [1]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
   [2]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
   [3]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

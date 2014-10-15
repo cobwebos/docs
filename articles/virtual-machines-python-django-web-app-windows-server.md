@@ -15,19 +15,19 @@
 
 以下是已完成应用程序的屏幕快照：
 
-![显示 Azure 上的 hello world 页面的浏览器窗口][]
+![显示 Azure 上的 hello world 页面的浏览器窗口][显示 Azure 上的 hello world 页面的浏览器窗口]
 
-[WACOM.INCLUDE [create-account-and-vms-note][]]
+[WACOM.INCLUDE [create-account-and-vms-note][create-account-and-vms-note]]
 
 ## 创建并配置 Azure 虚拟机以托管 Django
 
-1.  按照[此处][]提供的说明可创建 *Windows Server 2012 Datacenter* 分发的 Azure 虚拟机。
+1.  按照[此处][此处]提供的说明可创建 *Windows Server 2012 Datacenter* 分发的 Azure 虚拟机。
 
 1.  指示 Azure 将来自 Web 的端口 **80** 通信定向到虚拟机上的端口 **80**：
 
  - 导航到 Azure 门户中你新创建的虚拟机，然后单击“终结点”选项卡。
  - 单击屏幕底部的“添加终结点”按钮。
-    ![添加终结点][]
+    ![添加终结点][添加终结点]
 
  - 打开 *TCP* 协议的*公用端口 80* 作为*专用端口 80*。
     ![][]
@@ -38,7 +38,7 @@
 
 ## <span id="setup"></span> </a>设置开发环境
 
-若要设置你的 Python 和 Django 环境，请参阅[安装指南][]以获取更多信息。
+若要设置你的 Python 和 Django 环境，请参阅[安装指南][安装指南]以获取更多信息。
 
 **注意 1：**你*只* 需在 Azure 虚拟机上从 Windows WebPI 安装程序安装 **Django** 产品即可使用*本* 特定教程。
 
@@ -68,13 +68,13 @@
 
     你应该看到以下内容：
 
-    ![IIS config1][]
+    ![IIS config1][IIS config1]
 
 6.  将 FastCGI 告诉给 WSGI 处理程序要使用的 WSGI 网关：
 
         %windir%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /+"[fullPath='C:\Python27\python.exe', arguments='C:\Python27\Scripts\wfastcgi.py'].environmentVariables.[name='WSGI_HANDLER',value='django.core.handlers.wsgi.WSGIHandler()']" /commit:apphost
 
-7.  从 [codeplex][] 下载 wfastcgi.py 并且将其保存到 C:\\Python27\\Scripts。这是前面的命令用于注册 FastCGI 处理程序的位置。或者，你可以使用 Web 平台安装程序安装它。搜索“WFastCGI”。
+7.  从 [codeplex][codeplex] 下载 wfastcgi.py 并且将其保存到 C:\\Python27\\Scripts。这是前面的命令用于注册 FastCGI 处理程序的位置。或者，你可以使用 Web 平台安装程序安装它。搜索“WFastCGI”。
 
 ## 创建新的 Django 应用程序
 
@@ -86,7 +86,7 @@
 
     C:\\Python27\\python.exe -m django.bin.django-admin startproject DjangoApplication
 
-    ![New-AzureService 命令的结果][]
+    ![New-AzureService 命令的结果][New-AzureService 命令的结果]
 
     **django-admin.py** 脚本生成基于 Django 的网站的基本结构：
 
@@ -111,7 +111,7 @@
 
 3.  最后，在你的浏览器中加载网页。
 
-![显示 Azure 上的 hello world 页面的浏览器窗口][]
+![显示 Azure 上的 hello world 页面的浏览器窗口][显示 Azure 上的 hello world 页面的浏览器窗口]
 
 ## 关闭你的 Azure 虚拟机
 
@@ -123,7 +123,7 @@
   [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [此处]: /en-us/manage/windows/tutorials/virtual-machine-from-gallery/
   [添加终结点]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-addendpoint.png
-  [0]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-port80.png
+  []: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-port80.png
   [安装指南]: ../python-how-to-install/
   [IIS config1]: ./media/virtual-machines-python-django-web-app-windows-server/django-helloworld-iis1.png
   [codeplex]: http://go.microsoft.com/fwlink/?LinkID=316392&clcid=0x409

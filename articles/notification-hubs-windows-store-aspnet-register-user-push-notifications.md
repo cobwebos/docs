@@ -6,9 +6,9 @@
 <a href="/en-us/documentation/articles/notification-hubs-windows-store-aspnet-register-user-push-notifications/" title="Windows 应用商店 C#" class="current">Windows 应用商店 C#</a><a href="/en-us/documentation/articles/notification-hubs-ios-aspnet-register-user-push-notifications/" title="iOS">iOS</a>
 </div>
 
-本主题演示在 ASP.NET Web API 执行注册时如何请求向 Azure 通知中心注册推送通知。它是对教程[使用通知中心通知用户][]的扩展。你必须在该教程中已完成创建经过身份验证的移动服务所需的步骤。有关通知用户方案的详细信息，请参阅[使用通知中心通知用户][]。
+本主题演示在 ASP.NET Web API 执行注册时如何请求向 Azure 通知中心注册推送通知。它是对教程[使用通知中心通知用户][使用通知中心通知用户]的扩展。你必须在该教程中已完成创建经过身份验证的移动服务所需的步骤。有关通知用户方案的详细信息，请参阅[使用通知中心通知用户][使用通知中心通知用户]。
 
-1.  在 Visual Studio 2012 中，在你完成基础教程[使用通知中心通知用户][]时创建的项目中打开 app.xaml.cs 文件。
+1.  在 Visual Studio 2012 中，在你完成基础教程[使用通知中心通知用户][使用通知中心通知用户]时创建的项目中打开 app.xaml.cs 文件。
 
 2.  找到 **InitNotificationsAsync** 方法并在方法中注释掉该代码。
 
@@ -165,9 +165,9 @@
             await dialog.ShowAsync();
         }
 
-    此方法获取一个安装 ID 和用于推送通知的通道并将它与设备类型一起发送到在通知中心创建注册的已经身份验证的 Web API 方法。此 Web API 已在[使用通知中心通知用户][]中定义。
+    此方法获取一个安装 ID 和用于推送通知的通道并将它与设备类型一起发送到在通知中心创建注册的已经身份验证的 Web API 方法。此 Web API 已在[使用通知中心通知用户][使用通知中心通知用户]中定义。
 
-现在客户端应用程序已更新，请返回到[使用通知中心通知用户][]并更新移动服务以使用通知中心发送通知。
+现在客户端应用程序已更新，请返回到[使用通知中心通知用户][使用通知中心通知用户]并更新移动服务以使用通知中心发送通知。
 
 <!-- Anchors. --> 
 
@@ -178,5 +178,5 @@
   [使用通知中心通知用户]: /en-us/manage/services/notification-hubs/notify-users-aspnet
 
 <!-- Images. --> 
-  [0]: ./media/notification-hubs-windows-store-aspnet-register-user-push-notifications/notification-hub-add-nuget-package-json.png
+  []: ./media/notification-hubs-windows-store-aspnet-register-user-push-notifications/notification-hub-add-nuget-package-json.png
   [1]: ./media/notification-hubs-windows-store-aspnet-register-user-push-notifications/notification-hub-create-aspnet-class.png

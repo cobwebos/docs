@@ -2,22 +2,22 @@
 
 # 如何通过 Java 使用 Twilio 实现语音和短信功能
 
-本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。有关 Twilio 以及在应用程序中使用语音和 SMS 的详细信息，请参阅[后续步骤][]部分。
+本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。有关 Twilio 以及在应用程序中使用语音和 SMS 的详细信息，请参阅[后续步骤][后续步骤]部分。
 
 ## 目录
 
--   [什么是 Twilio？][]
--   [Twilio 定价][]
--   [概念][]
--   [创建 Twilio 帐户][]
--   [验证电话号码][]
--   [创建 Java 应用程序][]
--   [将应用程序配置为使用 Twilio 库][]
--   [如何：发起传出呼叫][]
--   [如何：发送 SMS 消息][]
--   [如何：从你自己的网站提供 TwiML 响应][]
--   [如何：使用其他 Twilio 服务][]
--   [后续步骤][]
+-   [什么是 Twilio？][什么是 Twilio？]
+-   [Twilio 定价][Twilio 定价]
+-   [概念][概念]
+-   [创建 Twilio 帐户][创建 Twilio 帐户]
+-   [验证电话号码][验证电话号码]
+-   [创建 Java 应用程序][创建 Java 应用程序]
+-   [将应用程序配置为使用 Twilio 库][将应用程序配置为使用 Twilio 库]
+-   [如何：发起传出呼叫][如何：发起传出呼叫]
+-   [如何：发送 SMS 消息][如何：发送 SMS 消息]
+-   [如何：从你自己的网站提供 TwiML 响应][如何：从你自己的网站提供 TwiML 响应]
+-   [如何：使用其他 Twilio 服务][如何：使用其他 Twilio 服务]
+-   [后续步骤][后续步骤]
 
 ## <span id="WhatIs"></span></a>什么是 Twilio？
 
@@ -27,11 +27,11 @@ Twilio 是一种电话 Web 服务 API，它使你能够使用现有 Web 语言�
 
 ## <span id="Pricing"></span></a>Twilio 定价和特别优惠
 
-[Twilio 定价][1]中提供了有关 Twilio 定价的信息。Azure 客户可享受[特别优惠][]：免费获得 1000 条信息和 1000 分钟拨入通话时间。若要注册此优惠或了解更多信息，请访问 [][特别优惠]<http://ahoy.twilio.com/azure></a>。
+[Twilio 定价][1]中提供了有关 Twilio 定价的信息。Azure 客户可享受[特别优惠][特别优惠]：免费获得 1000 条信息和 1000 分钟拨入通话时间。若要注册此优惠或了解更多信息，请访问 [][特别优惠]<http://ahoy.twilio.com/azure></a>。
 
 ## <span id="Concepts"></span></a>概念
 
-Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。提供了多种语言版本的客户端库；有关列表，请参阅 [Twilio API 库][]。
+Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。提供了多种语言版本的客户端库；有关列表，请参阅 [Twilio API 库][Twilio API 库]。
 
 Twilio API 的关键方面是 Twilio 谓词和 Twilio 标记语言 (TwiML)。
 
@@ -65,26 +65,26 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
 当应用程序调用 Twilio API 时，某个 API 参数将为返回 TwiML 响应的 URL。在开发过程中，可以使用 Twilio 提供的 URL 来提供应用程序所使用的 TwiML 响应。还可以托管你自己的 URL 来生成 TwiML 响应，也可以选择使用 **TwiMLResponse** 对象。
 
-有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][]。有关 Twilio API 的其他信息，请参阅 [Twilio API][]。
+有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][TwiML]。有关 Twilio API 的其他信息，请参阅 [Twilio API][Twilio API]。
 
 ## <span id="CreateAccount"></span></a>创建 Twilio 帐户
 
-准备好获取 Twilio 帐户后，请在[试用 Twilio][] 上注册。可以先使用免费帐户，以后再升级你的帐户。
+准备好获取 Twilio 帐户后，请在[试用 Twilio][试用 Twilio] 上注册。可以先使用免费帐户，以后再升级你的帐户。
 
-注册 Twilio 帐户时，你将收到帐户 ID 和身份验证令牌。需要二者才能发起 Twilio API 呼叫。为了防止对你的帐户进行未经授权的访问，请保护身份验证令牌。你的帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][]上标记为“帐户 SID”和“身份验证令牌”的字段中。
+注册 Twilio 帐户时，你将收到帐户 ID 和身份验证令牌。需要二者才能发起 Twilio API 呼叫。为了防止对你的帐户进行未经授权的访问，请保护身份验证令牌。你的帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][Twilio 帐户页]上标记为“帐户 SID”和“身份验证令牌”的字段中。
 
 ## <span id="VerifyPhoneNumbers"></span></a>验证电话号码
 
-需要使用 Twilio 为你的帐户验证各个电话号码。例如，若要发起出站电话呼叫，必须使用 Twilio 验证电话号码是否为出站呼叫方 ID。同样，若要使电话号码接收 SMS 消息，则必须使用 Twilio 验证接收电话号码。有关如何验证电话号码的信息，请参阅[管理号码（可能为英文页面）][]。下面的一些代码依赖于需要使用 Twilio 进行验证的电话号码。
+需要使用 Twilio 为你的帐户验证各个电话号码。例如，若要发起出站电话呼叫，必须使用 Twilio 验证电话号码是否为出站呼叫方 ID。同样，若要使电话号码接收 SMS 消息，则必须使用 Twilio 验证接收电话号码。有关如何验证电话号码的信息，请参阅[管理号码（可能为英文页面）][管理号码（可能为英文页面）]。下面的一些代码依赖于需要使用 Twilio 进行验证的电话号码。
 
-作为对应用程序使用现有号码的替代方法，你可以购买 Twilio 电话号码。有关购买 Twilio 电话号码的信息，请参阅 [Twilio 电话号码帮助][]。
+作为对应用程序使用现有号码的替代方法，你可以购买 Twilio 电话号码。有关购买 Twilio 电话号码的信息，请参阅 [Twilio 电话号码帮助][Twilio 电话号码帮助]。
 
 ## <span id="create_app"></span></a>创建 Java 应用程序
 
 1.  获取 Twilio JAR 并将其添加到 Java 生成路径和 WAR 部署程序集。在 [][]<https://github.com/twilio/twilio-java></a> 上，你可以下载 GitHub 源并创建自己的 JAR，或者下载预建的 JAR（带有或不带依赖项）。
-2.  确保 JDK 的 **cacerts** 密钥库包含带有 MD5 指纹 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4（序列号为 35:DE:F4:CF，SHA1 指纹为 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A）的 Equifax 安全证书颁发机构证书。这是 [][2]<https://api.twilio.com></a> 服务的证书颁发机构 (CA) 证书，在使用 Twilio API 时调用。有关如何确保 JDK 的 **cacerts** 密钥库包含正确 CA 证书的信息，请参阅[将证书添加到 Java CA 证书存储][]。
+2.  确保 JDK 的 **cacerts** 密钥库包含带有 MD5 指纹 67:CB:9D:C0:13:24:8A:82:9B:B2:17:1E:D1:1B:EC:D4（序列号为 35:DE:F4:CF，SHA1 指纹为 D2:32:09:AD:23:D3:14:23:21:74:E4:0D:7F:9D:62:13:97:86:63:3A）的 Equifax 安全证书颁发机构证书。这是 [][2]<https://api.twilio.com></a> 服务的证书颁发机构 (CA) 证书，在使用 Twilio API 时调用。有关如何确保 JDK 的 **cacerts** 密钥库包含正确 CA 证书的信息，请参阅[将证书添加到 Java CA 证书存储][将证书添加到 Java CA 证书存储]。
 
-[如何在 Azure 上的 Java 应用程序中使用 Twilio 发起呼叫][]中提供了有关使用适用于 Java 的 Twilio 客户端库的详细说明。
+[如何在 Azure 上的 Java 应用程序中使用 Twilio 发起呼叫][如何在 Azure 上的 Java 应用程序中使用 Twilio 发起呼叫]中提供了有关使用适用于 Java 的 Twilio 客户端库的详细说明。
 
 ## <span id="configure_app"></span></a>将应用程序配置为使用 Twilio 库
 
@@ -199,7 +199,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
         <Say>Good bye.</Say>
     </Response>
 
-**ApiVersion** 参数以 Twilio 语音请求（非 SMS 请求）的形式提供。若要查看 Twilio 语音和 SMS 请求的可用请求参数，请分别参阅 <https://www.twilio.com/docs/api/twiml/twilio_request> 和 <https://www.twilio.com/docs/api/twiml/sms/twilio_request>。**RoleName** 环境变量作为 Azure 部署的一部分提供。（如果要添加自定义环境变量以便能够从 **System.getenv** 中选取它们，请参阅[其他角色配置设置][]中的环境变量部分。）
+**ApiVersion** 参数以 Twilio 语音请求（非 SMS 请求）的形式提供。若要查看 Twilio 语音和 SMS 请求的可用请求参数，请分别参阅 <https://www.twilio.com/docs/api/twiml/twilio_request> 和 <https://www.twilio.com/docs/api/twiml/sms/twilio_request>。**RoleName** 环境变量作为 Azure 部署的一部分提供。（如果要添加自定义环境变量以便能够从 **System.getenv** 中选取它们，请参阅[其他角色配置设置][其他角色配置设置]中的环境变量部分。）
 
 将 JSP 页面设置为提供 TwiML 响应后，请使用 JSP 页面的 URL 作为传入到 **CallFactory.create** 方法中的 URL。例如，如果将名为 MyTwiML 的 Web 应用程序部署到 Azure 托管服务，则 JSP 页面的名称将为 mytwiml.jsp，并且可将 URL 传递到 **CallFactory.create**，如下所示：
 
@@ -214,7 +214,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
 使用 TwiML 进行响应的另一个选项是通过 **TwiMLResponse** 类，可在 **com.twilio.sdk.verbs** 包中找到它。
 
-有关将 Azure 中的 Twilio 与 Java 一起使用的更多信息，请参阅[如何在 Azure 上的 Java 应用程序中使用 Twilio 发起呼叫][]。
+有关将 Azure 中的 Twilio 与 Java 一起使用的更多信息，请参阅[如何在 Azure 上的 Java 应用程序中使用 Twilio 发起呼叫][如何在 Azure 上的 Java 应用程序中使用 Twilio 发起呼叫]。
 
 ## <span id="AdditionalServices"></span></a>如何：使用其他 Twilio 服务
 
@@ -224,11 +224,11 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
 现在，你已了解 Twilio 服务的基础知识，单击下面的链接可以了解更多信息：
 
--   [Twilio 安全准则][]
--   [Twilio 操作方法和示例代码][]
--   [Twilio 快速入门教程][]
--   [GitHub 上的 Twilio][]
--   [与 Twilio 技术支持人员交流][]
+-   [Twilio 安全准则][Twilio 安全准则]
+-   [Twilio 操作方法和示例代码][Twilio 操作方法和示例代码]
+-   [Twilio 快速入门教程][Twilio 快速入门教程]
+-   [GitHub 上的 Twilio][GitHub 上的 Twilio]
+-   [与 Twilio 技术支持人员交流][与 Twilio 技术支持人员交流]
 
   [后续步骤]: #NextSteps
   [什么是 Twilio？]: #WhatIs

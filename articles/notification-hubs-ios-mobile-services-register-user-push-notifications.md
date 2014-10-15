@@ -6,9 +6,9 @@
 <a href="/en-us/documentation/articles/notification-hubs-windows-store-mobile-services-register-user-push-notifications/" title="Windows 应用商店 C#">Windows 应用商店 C#</a><a href="/en-us/documentation/articles/notification-hubs-ios-mobile-services-register-user-push-notifications/" title="iOS" class="current">iOS</a>
 </div>
 
-本主题说明在 Azure 移动服务执行注册时如何请求向 Azure 通知中心注册推送通知。它是对教程[使用通知中心通知用户][]的扩展。你必须在该教程中已完成创建经过身份验证的移动服务所需的步骤。有关通知用户方案的详细信息，请参阅[使用通知中心通知用户][]。
+本主题说明在 Azure 移动服务执行注册时如何请求向 Azure 通知中心注册推送通知。它是对教程[使用通知中心通知用户][使用通知中心通知用户]的扩展。你必须在该教程中已完成创建经过身份验证的移动服务所需的步骤。有关通知用户方案的详细信息，请参阅[使用通知中心通知用户][使用通知中心通知用户]。
 
-1.  在 Xcode 的项目中打开 QSTodoService.h 文件（该项目是你在完成基础教程[身份验证入门][]时创建的）并添加以下 **deviceToken** 属性：
+1.  在 Xcode 的项目中打开 QSTodoService.h 文件（该项目是你在完成基础教程[身份验证入门][身份验证入门]时创建的）并添加以下 **deviceToken** 属性：
 
         @property (nonatomic) NSData* deviceToken;
 
@@ -73,7 +73,7 @@
                 }];
             }
 
-    此方法构造包含设备标记的 json 负载。它然后在你的移动服务中调用自定义 API 以注册通知。此方法为推送通知创建一个设备标记并将它与设备类型一起发送到在通知中心创建注册的自定义 API 方法。此自定义 API 已在[使用通知中心通知用户][]中定义。
+    此方法构造包含设备标记的 json 负载。它然后在你的移动服务中调用自定义 API 以注册通知。此方法为推送通知创建一个设备标记并将它与设备类型一起发送到在通知中心创建注册的自定义 API 方法。此自定义 API 已在[使用通知中心通知用户][使用通知中心通知用户]中定义。
 
 7.  最后，在 **viewDidAppear** 方法中，在用户成功进行身份验证后添加对这个新 **registerForNotificationsWithBackEnd** 方法的调用，如下例中所示：
 
@@ -95,7 +95,7 @@
 <p>这可以确保每次加载页时都会请求注册。在应用程序中，你可能只需要定期执行此注册以确保注册是最新的。</p>
 </div>
 
-现在客户端应用程序已更新，请返回到[使用通知中心通知用户][]并更新移动服务以使用通知中心发送通知。
+现在客户端应用程序已更新，请返回到[使用通知中心通知用户][使用通知中心通知用户]并更新移动服务以使用通知中心发送通知。
 
 <!-- Anchors. --> 
 

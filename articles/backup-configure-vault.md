@@ -21,19 +21,19 @@
 
 ## <span id="create"></span></a>创建备份保管库
 
-1.  登录到[管理门户][]。
+1.  登录到[管理门户][管理门户]。
 
 2.  单击**“新建”**，依次指向**“数据服务”**和**“恢复服务”**，单击**“备份保管库”**，然后单击**“快速创建”**。
 
 3.  在**“名称”**中，输入一个友好名称以标识此备份保管库。
 
 4.  在**“区域”**中，为备份保管库选择地理区域。
-    ![新备份保管库][]
+    ![新备份保管库][新备份保管库]
 
 5.  单击**“创建保管库”**。
 
     创建备份保管库可能需要一段时间。若要检查状态，你可以监视门户底部的通知。创建备份保管库后，将显示一条消息，告知你已成功创建保管库，并且该保管库将在恢复服务的资源中以**“活动”**状态列出。
-    ![创建备份保管库][]
+    ![创建备份保管库][创建备份保管库]
 
 6.  如果有多个订阅与你的组织帐户相关联，请选择要与备份保管库关联的正确帐户。
 
@@ -41,7 +41,7 @@
 
 你可以不使用证书，而是使用保管库凭据向服务器注册 Azure 服务。你仍可以使用证书，不过，保管库凭据更易于使用，因为你可以使用 Azure 门户来生成和下载保管库凭据。
 
-1.  登录到[管理门户][]。
+1.  登录到[管理门户][管理门户]。
 
 2.  单击**“恢复服务”**，然后选择你要向其注册服务器的备份保管库。随后将显示该备份保管库的“快速启动”页。
 
@@ -51,20 +51,20 @@
 
 ## <span id="download"></span></a>下载和安装备份代理
 
-1.  在[管理门户][]中操作。
+1.  在[管理门户][管理门户]中操作。
 
 2.  单击**“恢复服务”**，然后选择一个备份保管库以查看其“快速启动”页。
 
 3.  在“快速启动”页上，选择你要下载的代理类型。可以选择**“下载 Azure Backup Agent”**、**“Windows Server and System Center Data Protection Manager”**或**“Windows Server Essentials”**。有关详细信息，请参阅：
 
-    -   [安装 Azure Backup Agent for Windows Server 2012 and System Center 2012 SP1 - Data Protection Manager][]
-    -   [安装 Azure Backup Agent for Windows Server 2012 Essentials][]
+    -   [安装 Azure Backup Agent for Windows Server 2012 and System Center 2012 SP1 - Data Protection Manager][安装 Azure Backup Agent for Windows Server 2012 and System Center 2012 SP1 - Data Protection Manager]
+    -   [安装 Azure Backup Agent for Windows Server 2012 Essentials][安装 Azure Backup Agent for Windows Server 2012 Essentials]
 
 安装代理后，你可使用适当的本地管理接口（如 Microsoft 管理控制台管理单元、System Center Data Protection Manager 控制台或 Windows Server Essentials 仪表板）配置服务器的备份策略。
 
 ## <span id="manage"></span></a>管理备份保管库和服务器
 
-1.  登录到[管理门户][]。
+1.  登录到[管理门户][管理门户]。
 
 2.  单击**“恢复服务”**，然后单击备份保管库的名称以查看“快速启动”页。
 
@@ -76,20 +76,20 @@
 
 4.  单击**“受保护的项”**可查看已从服务器备份的项。此列表仅供参考。
 
-    ![受保护的项][]
+    ![受保护的项][受保护的项]
 
 5.  单击**“服务器”**可查看注册到此保管库的服务器的名称。可从该处执行以下任务：
 
     -   **允许重新注册**。在为服务器选择该选项时，可使用代理中的注册向导再一次将服务器注册到备份保管库。由于证书中存在错误或者如果必须重新构建服务器，你可能需要重新注册。每个服务器名称只能重新注册一次。
     -   **删除**。从备份保管库中删除服务器。将立即删除与服务器关联的所有已存储数据。
 
-        ![删除的服务器][]
+        ![删除的服务器][删除的服务器]
 
 ## <span id="next"></span></a>后续步骤
 
--   若要了解有关 Azure 备份的详细信息，请参阅 [Azure 备份概述][]。
+-   若要了解有关 Azure 备份的详细信息，请参阅 [Azure 备份概述][Azure 备份概述]。
 
--   访问 [Azure 备份论坛][]。
+-   访问 [Azure 备份论坛][Azure 备份论坛]。
 
   [Azure 免费试用]: /en-us/pricing/free-trial/
   [管理门户]: https://manage.windowsazure.com

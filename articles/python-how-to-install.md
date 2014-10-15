@@ -45,29 +45,29 @@ Azure SDK for Python 包括允许你针对 Azure 开发、部署和管理 Python
 
 ## 在 Windows 上安装
 
-对于 Windows，你可以使用主 Python 开发人员中心提供的 [WebPI 安装程序][]来简化安装（它将从 www.python.org 获取 CPython）。
+对于 Windows，你可以使用主 Python 开发人员中心提供的 [WebPI 安装程序][WebPI 安装程序]来简化安装（它将从 www.python.org 获取 CPython）。
 
 **注意：**在 Windows Server 上，若要下载 WebPI 安装程序，你可能必须配置 IE ESC 设置（“开始”/“管理工具”/“服务器管理器”，然后单击“配置 IE ESC”，将其设置为“关闭”）
 
-![how-to-install-python-webpi-1][]
+![how-to-install-python-webpi-1][how-to-install-python-webpi-1]
 
 WebPI 安装程序提供安装 Python Azure 应用程序所需的一切内容，并为 Django 应用程序提供特定支持：
 
-![how-to-install-Python-webpi-2][]
+![how-to-install-Python-webpi-2][how-to-install-Python-webpi-2]
 
 完成后，你应该看到确认你的安装选择的以下屏幕：
 
-![how-to-install-python-webpi-3][]
+![how-to-install-python-webpi-3][how-to-install-python-webpi-3]
 
 安装完成后，在提示符处键入 python 以确保一切正常。根据你的安装方式，你可能需要设置“path”变量以找到（正确版本的）Python：
 
-![how-to-install-python-win-run][]
+![how-to-install-python-win-run][how-to-install-python-win-run]
 
-虽然本次发布侧重于“使用 Django 生成 Web 应用程序”，但也可以浏览 [Python 包索引 (PyPI)][] 以选择其他更多软件。如果你选择安装发行版本，表明你重点关注的是从 Web 开发到技术计算的各种方案。
+虽然本次发布侧重于“使用 Django 生成 Web 应用程序”，但也可以浏览 [Python 包索引 (PyPI)][Python 包索引 (PyPI)] 以选择其他更多软件。如果你选择安装发行版本，表明你重点关注的是从 Web 开发到技术计算的各种方案。
 
 若要查看在 **site-packages** 中安装了哪些 Python 包，请输入以下内容来查找其位置：
 
-![how-to-install-python-win-site][]
+![how-to-install-python-win-site][how-to-install-python-win-site]
 
 这将列出已在你的系统上安装的内容。
 
@@ -80,9 +80,9 @@ WebPI 安装程序提供安装 Python Azure 应用程序所需的一切内容，
 
 Python Tools for Visual Studio 是 Microsoft 提供的免费/OSS 插件，可将 VS 转换为完备的 Python IDE：
 
-![how-to-install-python-ptvs][]
+![how-to-install-python-ptvs][how-to-install-python-ptvs]
 
-使用 Python Tools for Visual Studio 是可选的，但建议使用，因为它提供 Python 和 Django 项目/解决方案支持、调试、分析、模板编辑和智能感知、到云的部署等等。此加载项使用你的现有 VS2010 安装。如果你没有 VS2010，则 WebPI 将安装免费的集成外壳 + PTVS，这实际上为你提供了**完全免费的**“VS Python Express”IDE。有关详细信息，请参阅 [CodePlex 上的 Python Tools for Visual Studio][]。
+使用 Python Tools for Visual Studio 是可选的，但建议使用，因为它提供 Python 和 Django 项目/解决方案支持、调试、分析、模板编辑和智能感知、到云的部署等等。此加载项使用你的现有 VS2010 安装。如果你没有 VS2010，则 WebPI 将安装免费的集成外壳 + PTVS，这实际上为你提供了**完全免费的**“VS Python Express”IDE。有关详细信息，请参阅 [CodePlex 上的 Python Tools for Visual Studio][CodePlex 上的 Python Tools for Visual Studio]。
 
 注意：虽然 PTVS 插件很小，但集成外壳将增加你的下载时间。集成外壳版本当前还不支持“添加 Azure 部署项目”功能。
 
@@ -100,9 +100,9 @@ Python Tools for Visual Studio 是 Microsoft 提供的免费/OSS 插件，可将
 
 Python 很可能已安装在你的开发计算机上。你可以通过输入以下内容来进行检查：
 
-![how-to-install-python-linux-run][]
+![how-to-install-python-linux-run][how-to-install-python-linux-run]
 
-在这里，我们看到此 Azure Suse VM 安装了 CPython 2.7.2，它适合运行 Azure 教程和 Django 示例。如果你需要升级，请按照操作系统建议的包升级说明操作。不过请注意，一般来说，最好不要影响系统 Python（其他软件可能依赖该版本），因此最好是通过 [Virtualenv][] 安装更新版本。
+在这里，我们看到此 Azure Suse VM 安装了 CPython 2.7.2，它适合运行 Azure 教程和 Django 示例。如果你需要升级，请按照操作系统建议的包升级说明操作。不过请注意，一般来说，最好不要影响系统 Python（其他软件可能依赖该版本），因此最好是通过 [Virtualenv][Virtualenv] 安装更新版本。
 
 若要安装 Python Azure 客户端库，请使用 **pip** 从 **PyPI** 获取它：
 
@@ -114,7 +114,7 @@ Python 很可能已安装在你的开发计算机上。你可以通过输入以�
 
 你现在应该看到已在 **site-packages** 下安装了这些客户端库。在 MacOS 上：
 
-![MacOS site-packages][]
+![MacOS site-packages][MacOS site-packages]
 
 在从 mac/linux 进行开发时，本次发布支持两个主要方案：
 
@@ -124,21 +124,21 @@ Python 很可能已安装在你的开发计算机上。你可以通过输入以�
 
 第一个方案使你能够通过 Azure REST API 的 Pythonic 包装来创作利用 Azure PaaS 功能（例如 Blob 存储、队列等）的丰富 Web 应用程序。这些应用程序的工作方式与在 Windows、Mac 和 Linux 上相同。请参阅教程和操作方法指南来获取示例。你还可以从 Linux VM 中使用这些客户端库。
 
-对于 VM 方案，你只需启动所选的 Linux VM（Ubuntu、CentOS、Suse）并运行/管理所需内容。例如，你可以在 Windows/Mac/Linux 计算机上运行 [IPython][] REPL/notebook，并使你的浏览器指向在 Azure 上运行 IPython 引擎的 Linux 或 Windows 多处理器 VM。有关 IPython 安装的详细信息，请参阅其教程。
+对于 VM 方案，你只需启动所选的 Linux VM（Ubuntu、CentOS、Suse）并运行/管理所需内容。例如，你可以在 Windows/Mac/Linux 计算机上运行 [IPython][IPython] REPL/notebook，并使你的浏览器指向在 Azure 上运行 IPython 引擎的 Linux 或 Windows 多处理器 VM。有关 IPython 安装的详细信息，请参阅其教程。
 
-有关如何设置 Linux VM 的信息，请参阅 [Linux 管理][]部分。
+有关如何设置 Linux VM 的信息，请参阅 [Linux 管理][Linux 管理]部分。
 
 ## 其他软件和资源：
 
--   [Enthought Python 分发][]
--   [ActiveState Python 分发][]
--   [SciPy - Scientific Python 库套件][]
--   [NumPy - Python 的数字库][]
--   [Django 项目 - 成熟的 Web 框架/CMS][]
+-   [Enthought Python 分发][Enthought Python 分发]
+-   [ActiveState Python 分发][ActiveState Python 分发]
+-   [SciPy - Scientific Python 库套件][SciPy - Scientific Python 库套件]
+-   [NumPy - Python 的数字库][NumPy - Python 的数字库]
+-   [Django 项目 - 成熟的 Web 框架/CMS][Django 项目 - 成熟的 Web 框架/CMS]
 -   [IPython - Python 的高级 REPL/Notebook][IPython]
--   [Azure 上的 IPython Notebook][]
--   [CodePlex 上的 Python Tools for Visual Studio][]
--   [Virtualenv][]
+-   [Azure 上的 IPython Notebook][Azure 上的 IPython Notebook]
+-   [CodePlex 上的 Python Tools for Visual Studio][CodePlex 上的 Python Tools for Visual Studio]
+-   [Virtualenv][Virtualenv]
 
   [WebPI 安装程序]: http://go.microsoft.com/fwlink/?LinkId=254281&clcid=0x409
   [how-to-install-python-webpi-1]: ./media/python-how-to-install/how-to-install-python-webpi-1.png

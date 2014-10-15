@@ -2,30 +2,30 @@
 
 # <span id="configurecloudservice"></span></a>如何配置云服务
 
-[WACOM.INCLUDE [免责声明][]]
+[WACOM.INCLUDE [免责声明][免责声明]]
 
 你可以在 Azure 管理门户中配置最常使用的云服务设置。或者，如果你希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上载更新文件并使用配置更改更新云服务。无论使用哪种方法，配置更新都将应用于所有角色实例。
 
 你还可以针对在云服务中运行的一个或所有角色启用“远程桌面”连接。通过远程桌面，你可以在应用程序正在运行时访问其桌面，并排查和诊断问题。即使你在应用程序开发过程中没有配置远程桌面服务定义文件 (.csdef)，你也可以对角色启用远程桌面连接。你无需重新部署应用程序，即可启用远程桌面连接。
 
-如果每个角色至少具有两个角色实例（虚拟机），那么 Azure 在配置更新期间只能确保 99.95% 的服务可用性。这使得一台虚拟机可以在另一台虚拟机正更新时处理客户端请求。有关详细信息，请参阅[服务级别协议][]。
+如果每个角色至少具有两个角色实例（虚拟机），那么 Azure 在配置更新期间只能确保 99.95% 的服务可用性。这使得一台虚拟机可以在另一台虚拟机正更新时处理客户端请求。有关详细信息，请参阅[服务级别协议][服务级别协议]。
 
 ## 目录
 
--   [如何：更新云服务配置][]
--   [如何：配置对角色实例的远程访问][]
+-   [如何：更新云服务配置][如何：更新云服务配置]
+-   [如何：配置对角色实例的远程访问][如何：配置对角色实例的远程访问]
 
 ## <span id="update"></span></a>如何：更新云服务配置
 
-1.  在 [Azure 管理门户][]中单击“云服务”。然后单击云服务的名称以打开仪表板。
+1.  在 [Azure 管理门户][Azure 管理门户]中单击“云服务”。然后单击云服务的名称以打开仪表板。
 
 2.  单击**“配置”**。
 
     在“配置”页上，你可以配置监视、更新角色设置，并选择角色实例（虚拟机）的来宾操作系统和系列。
 
-    ![配置页][]
+    ![配置页][配置页]
 
-3.  在监视设置中，将监视级别设置为“详细”或“最少”，并配置详细监视所需的诊断连接字符串。有关说明，请参阅[如何监视云服务][]。
+3.  在监视设置中，将监视级别设置为“详细”或“最少”，并配置详细监视所需的诊断连接字符串。有关说明，请参阅[如何监视云服务][如何监视云服务]。
 
 4.  对于服务角色（按角色分组），你可以更新下列设置：
 
@@ -41,7 +41,7 @@
 
     如果你使用最新版本的操作系统解决了应用程序中的所有兼容性问题，则可通过将操作系统版本设置成“自动”来恢复自动操作系统更新。
 
-    ![操作系统设置][]
+    ![操作系统设置][操作系统设置]
 
 6.  若要保存你的配置设置，并将其推送至角色实例，请单击“保存”。（单击“丢弃”可取消更改。）更改设置后，命令栏中会出现“保存”和“丢弃”。
 
@@ -55,7 +55,7 @@
 
     将打开“上载新配置文件”。
 
-    ![上载配置][]
+    ![上载配置][上载配置]
 
     b. 在“配置文件”中，使用“浏览”选择已更新的 .cscfg 文件。
 
@@ -78,7 +78,7 @@
 
 ### 在服务定义文件中配置远程访问
 
-向服务定义文件 (.csdef) 中添加 **Import** 元素，以便将 RemoteAccess 和 RemoteForwarder 模块导入到服务模型中。当这些模块存在时，Azure 会将远程桌面的配置设置添加到服务配置文件中。若要完成远程桌面配置，你需要将证书导入到 Azure 中，并在服务配置文件中指定该证书。有关详细信息，请参阅[在 Azure 中为角色设置远程桌面连接][]。
+向服务定义文件 (.csdef) 中添加 **Import** 元素，以便将 RemoteAccess 和 RemoteForwarder 模块导入到服务模型中。当这些模块存在时，Azure 会将远程桌面的配置设置添加到服务配置文件中。若要完成远程桌面配置，你需要将证书导入到 Azure 中，并在服务配置文件中指定该证书。有关详细信息，请参阅[在 Azure 中为角色设置远程桌面连接][在 Azure 中为角色设置远程桌面连接]。
 
 ### 在管理门户中为角色实例启用或修改远程访问
 
@@ -88,13 +88,13 @@
 
     “配置远程桌面”将显示在部署云服务时已添加到服务配置文件的设置（如果有），如下所示。
 
-    ![云服务远程][]
+    ![云服务远程][云服务远程]
 
 > [WACOM.NOTE]
 > **警告：**当首次启用远程桌面并单击“确定”（复选标记）时，所有角色实例会重新启动。为避免重新启动，必须对于此角色安装用于对密码进行加密的证书。如果未安装证书，你将看到此选项：
-> ![CloudServices\_CreateNewCertDropDown][]
+> ![CloudServices\_CreateNewCertDropDown][CloudServices\_CreateNewCertDropDown]
 
-    To prevent a restart, install a certificate and then return to this dialog (see [Using Remote Desktop with Azure Roles][] for more information). If you choose an existing certificate, then a configuration update will be sent to all the instances in the role.
+    To prevent a restart, install a certificate and then return to this dialog (see [Using Remote Desktop with Azure Roles][Using Remote Desktop with Azure Roles] for more information). If you choose an existing certificate, then a configuration update will be sent to all the instances in the role.
 
 1.  在“角色”中，选择要更新的服务角色，或选择“全部”以选择所有角色。
 

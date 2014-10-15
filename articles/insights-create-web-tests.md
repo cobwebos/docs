@@ -4,7 +4,7 @@
 
 你的 Azure 网站是否仍在运行？它是否可正常响应，速度是否够快？请配置 Web 测试，以定期测试你的网站。如果站点关闭，或者响应速度缓慢或不正常，你将会收到电子邮件警报。此外，你还会收到显示网站在一段时间内的可用性和响应速度的图形。
 
-![浏览中心][]
+![浏览中心][浏览中心]
 
 你可以为任何使用基本或标准计划的 Azure 网站设置可用性监视。最多可以创建 3 个 Web 测试，并且最多可以从 3 个地理位置运行其中的每项测试。你无需对网站做出任何形式的更改。
 
@@ -15,11 +15,11 @@
 1.  若要配置 Web 测试，请先确保你的网站使用“基本”或“标准”计划。
 2.  然后，在“网站”分页上选择“Web 测试”部件：
 
-   ![配置 Web 测试][]
+   ![配置 Web 测试][配置 Web 测试]
 
 3.  在“创建 Web 测试”分页中为 Web 测试命名，然后指定要针对其运行测试的 URL。
 
-   ![创建 Web 测试][]
+   ![创建 Web 测试][创建 Web 测试]
 
 1.  接下来，请从 8 个位置中选择最多 3 个位置
 
@@ -27,7 +27,7 @@
 
 3.  然后选择警报设置，包括敏感度和电子邮件的收件人。
 
-   ![警报][]
+   ![警报][警报]
 
     - High sensitivity will create an alert whenever a test failure is detected in just 1 location.
     - Medium sensitivity requires at least half of the locations have seen a failure in 10 minutes.
@@ -49,11 +49,11 @@
 
 如果你的 Web 测试达不到成功标准，则会被标记为失败的测试，因而会降低网站的整体可用性。失败的测试（以及成功的测试）显示在特定 Web 测试分页上的散点图中。
 
-![失败的测试][]
+![失败的测试][失败的测试]
 
 你可以分析失败的测试以确定失败的原因。请钻取到失败的 Web 测试，然后打开 Visual Studio 的 Web 测试结果文件，以分析并了解测试失败的原因。
 
-![在 VS 中打开][]
+![在 VS 中打开][在 VS 中打开]
 
   [浏览中心]: ./media/insights-create-web-tests/Inisghts_WebTestBlade.png
   [配置 Web 测试]: ./media/insights-create-web-tests/Insights_ConfigurePart.png

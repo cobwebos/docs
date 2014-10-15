@@ -4,29 +4,29 @@
 
 对于运行 Windows Server 操作系统的虚拟机，你可以使用管理门户中的“连接”按钮建立远程桌面连接。
 
-1.  登录到 [Azure 管理门户][]（如果你尚未这么做）。
+1.  登录到 [Azure 管理门户][Azure 管理门户]（如果你尚未这么做）。
 
 2.  单击**“虚拟机”**，然后选择相应的虚拟机。
 
 3.  在命令栏中，单击“连接”。
 
-    ![登录到虚拟机][]
+    ![登录到虚拟机][登录到虚拟机]
 
 4.  单击“打开”以使用为虚拟机自动创建的远程桌面协议文件。
 
 5.  单击“连接”继续连接过程。
 
-    ![继续连接][]
+    ![继续连接][继续连接]
 
 6.  输入虚拟机上 Administrator 帐户的用户名和密码，然后单击“确定”。
 
 7.  单击“是”以验证虚拟机的标识。
 
-    ![验证计算机的标识][]
+    ![验证计算机的标识][验证计算机的标识]
 
     你现在可以像使用任何其他服务器一样使用该虚拟机。
 
-[WACOM.NOTE] 有关要求和疑难解答提示，请参阅[使用 RDP 或 SSH 连接到 Windows Azure 虚拟机][]。
+[WACOM.NOTE] 有关要求和疑难解答提示，请参阅[使用 RDP 或 SSH 连接到 Windows Azure 虚拟机][使用 RDP 或 SSH 连接到 Windows Azure 虚拟机]。
 
   [Azure 管理门户]: http://manage.windowsazure.cn
   [登录到虚拟机]: ./media/virtual-machines-log-on-windows-server/connectwindows.png

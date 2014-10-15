@@ -9,12 +9,12 @@
 
 本教程需要的内容如下：
 
--   Android SDK（假设你要使用 Eclipse），你可以从[此处][]下载该 SDK。
+-   Android SDK（假设你要使用 Eclipse），你可以从[此处][此处]下载该 SDK。
 -   遵照[此处][1]所述的步骤设置 Kindle 的开发环境。
 
 ## 向开发人员门户添加新应用程序
 
-1.  首先，请在[开发人员门户][]中创建一个应用程序。
+1.  首先，请在[开发人员门户][开发人员门户]中创建一个应用程序。
 
     ![][]
 
@@ -61,7 +61,7 @@
 
  将 ADM 库添加到你的 Eclipse 项目。
 
-1.  若要获取 ADM 库，请[下载 SDK][]。解压缩 SDK zip 文件。
+1.  若要获取 ADM 库，请[下载 SDK][下载 SDK]。解压缩 SDK zip 文件。
 2.  在 Eclipse 中右键单击你的项目，然后单击“属性”。在左侧选择“Java 生成路径”，然后选择顶部的“库”选项卡。单击“添加外部 Jar”，然后从 Amazon SDK 解压缩到的目录中选择`\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` 文件。
 3.  下载 NotificationHubs Android SDK（链接）。
 4.  解压缩该包，然后在 Eclipse 中将文件 `notification-hubs-sdk.jar` 拖放到 `libs`文件夹中。
@@ -224,7 +224,7 @@
 
 将 ADM 库添加到你的 Eclipse 项目。
 
-1.  若要获取 ADM 库，请[下载 SDK][]。解压缩 SDK zip 文件。
+1.  若要获取 ADM 库，请[下载 SDK][下载 SDK]。解压缩 SDK zip 文件。
 2.  在 Eclipse 中右键单击你的项目，然后单击“属性”。在左侧选择“Java 生成路径”，然后选择顶部的“库”选项卡。单击“添加外部 Jar”，然后从 Amazon SDK 解压缩到的目录中选择`\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` 文件。
 3.  下载 NotificationHubs Android SDK（链接）。
 4.  解压缩该包，然后在 Eclipse 中将文件 `notification-hubs-sdk.jar` 拖放到 `libs`文件夹中。
@@ -411,7 +411,7 @@
   [此处]: http://go.microsoft.com/fwlink/?LinkId=389797
   [1]: https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment
   [开发人员门户]: https://developer.amazon.com/home.html
-  [0]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal1.png
+  []: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal1.png
   [2]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal2.png
   [3]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal3.png
   [4]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal4.png

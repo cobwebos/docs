@@ -29,9 +29,9 @@
 
 </div>
 
-![][0]
+![][]
 
-完成本教程需要你安装 [Android 开发人员工具][]，其中包含 Eclipse 集成开发环境 (IDE)、Android 开发人员工具 (ADT) 插件和最新的 Android 平台。需要使用 Android 4.2 或更高版本。
+完成本教程需要你安装 [Android 开发人员工具][Android 开发人员工具]，其中包含 Eclipse 集成开发环境 (IDE)、Android 开发人员工具 (ADT) 插件和最新的 Android 平台。需要使用 Android 4.2 或更高版本。
 
 下载的快速入门项目包含适用于 Android 的移动服务 SDK。尽管此项目需要 Android 4.2 或更高版本，但移动服务 SDK 只需要 Android 2.2 或更高版本。
 
@@ -39,7 +39,7 @@
 
 ## <a name="create-new-service"> </a>创建新的移动服务
 
-[WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
+[WACOM.INCLUDE [mobile-services-create-new-service][mobile-services-create-new-service]]
 
 ## 
 
@@ -60,7 +60,7 @@
 
     ![][2]
 
-3.  在本地计算机或虚拟机上下载并安装 [Android 开发人员工具][]（如果尚未这么做）。
+3.  在本地计算机或虚拟机上下载并安装 [Android 开发人员工具][Android 开发人员工具]（如果尚未这么做）。
 
 4.  单击“创建 TodoItem 表”以创建用于存储应用程序数据的表。
 
@@ -112,13 +112,13 @@
 
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用标识提供程序对应用程序的用户进行身份验证。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
 <!-- Anchors. --> 
@@ -140,9 +140,10 @@
   [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Support-in-Windows-Azure-Mobile-Services
 
 <!-- Images. -->
-  [0]: ./media/mobile-services-android-get-started/mobile-quickstart-completed-android.png
+  []: ./media/mobile-services-android-get-started/mobile-quickstart-completed-android.png
   [Android 开发人员工具]: https://go.microsoft.com/fwLink/p/?LinkID=280125
   [Azure 免费试用]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=AE564AB28
+  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
   [1]: ./media/mobile-services-android-get-started/mobile-portal-quickstart-android.png
   [2]: ./media/mobile-services-android-get-started/mobile-quickstart-steps-android.png
   [3]: ./media/mobile-services-android-get-started/mobile-services-import-android-workspace.png

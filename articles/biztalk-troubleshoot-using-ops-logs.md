@@ -15,7 +15,7 @@
 2.  你可以基于订阅、日期范围、服务类型（例如 BizTalk 服务）、服务名称或状态（操作的状态，例如“成功”、“失败”）等不同的参数来筛选日志。
 3.  单击复选标记可以查看筛选后的列表。下图显示了与 testbiztalkservice 相关的活动。
 
-	![查看操作日志][] 
+	![查看操作日志][查看操作日志] 
 4.  若要查看有关特定操作的详细信息，请选择相应的行，然后在页面底部单击**“详细资料”**。
 
 ## <a name="bizops"></a>使用 Azure 管理服务跟踪的操作
@@ -89,15 +89,15 @@
 
 ## 另请参阅
 
--   [备份 BizTalk 服务][]
--   [从备份还原 BizTalk 服务][]
--   [BizTalk 服务：开发人员版、基本版、标准版和高级版图表][]
--   [BizTalk 服务：使用 Azure 管理门户进行设置][]
--   [BizTalk 服务：设置状态图表][]
--   [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡][]
--   [BizTalk 服务：限制][]
--   [BizTalk 服务：颁发者名称和颁发者密钥][]
--   [如何开始使用 Azure BizTalk 服务 SDK][]
+-   [备份 BizTalk 服务][备份 BizTalk 服务]
+-   [从备份还原 BizTalk 服务][从备份还原 BizTalk 服务]
+-   [BizTalk 服务：开发人员版、基本版、标准版和高级版图表][BizTalk 服务：开发人员版、基本版、标准版和高级版图表]
+-   [BizTalk 服务：使用 Azure 管理门户进行设置][BizTalk 服务：使用 Azure 管理门户进行设置]
+-   [BizTalk 服务：设置状态图表][BizTalk 服务：设置状态图表]
+-   [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡][BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡]
+-   [BizTalk 服务：限制][BizTalk 服务：限制]
+-   [BizTalk 服务：颁发者名称和颁发者密钥][BizTalk 服务：颁发者名称和颁发者密钥]
+-   [如何开始使用 Azure BizTalk 服务 SDK][如何开始使用 Azure BizTalk 服务 SDK]
 
   [BizTalk 服务 REST API]: http://msdn.microsoft.com/en-us/library/windowsazure/dn232347.aspx
   [使用 Azure 管理服务跟踪的操作]: #bizops

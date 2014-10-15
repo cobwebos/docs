@@ -8,7 +8,7 @@
 
 **操作不允许**
 
-若要设置 BizTalk 服务，请参阅 [BizTalk 服务：使用 Azure 管理门户进行设置][]。
+若要设置 BizTalk 服务，请参阅 [BizTalk 服务：使用 Azure 管理门户进行设置][BizTalk 服务：使用 Azure 管理门户进行设置]。
 
 下表列出了在 BizTalk 服务处于某一特定状态时可执行的操作。复选标记意味着在处于该状态时可执行的操作。空白条目表示处于该状态时不能执行的操作。
 
@@ -589,13 +589,13 @@ x
 </table>
 ## 另请参阅
 
--   [BizTalk 服务：使用 Azure 管理门户进行设置][]
--   [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡][]
--   [BizTalk 服务：开发人员版、基本版、标准版和高级版图表][]
--   [BizTalk 服务：备份和还原][]
--   [BizTalk 服务：限制][]
--   [BizTalk 服务：颁发者名称和颁发者密钥][]
--   [如何开始使用 Azure BizTalk 服务 SDK][]
+-   [BizTalk 服务：使用 Azure 管理门户进行设置][BizTalk 服务：使用 Azure 管理门户进行设置]
+-   [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡][BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡]
+-   [BizTalk 服务：开发人员版、基本版、标准版和高级版图表][BizTalk 服务：开发人员版、基本版、标准版和高级版图表]
+-   [BizTalk 服务：备份和还原][BizTalk 服务：备份和还原]
+-   [BizTalk 服务：限制][BizTalk 服务：限制]
+-   [BizTalk 服务：颁发者名称和颁发者密钥][BizTalk 服务：颁发者名称和颁发者密钥]
+-   [如何开始使用 Azure BizTalk 服务 SDK][如何开始使用 Azure BizTalk 服务 SDK]
 
   [BizTalk 服务：使用 Azure 管理门户进行设置]: http://go.microsoft.com/fwlink/p/?LinkID=302280
   [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡]: http://go.microsoft.com/fwlink/p/?LinkID=302281

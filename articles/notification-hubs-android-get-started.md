@@ -9,18 +9,18 @@
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
--   [启用 Google Cloud Messaging][]
--   [配置通知中心][]
--   [将你的应用程序连接到通知中心][]
--   [如何向应用程序发送通知][]
--   [测试应用程序][]
+-   [启用 Google Cloud Messaging][启用 Google Cloud Messaging]
+-   [配置通知中心][配置通知中心]
+-   [将你的应用程序连接到通知中心][将你的应用程序连接到通知中心]
+-   [如何向应用程序发送通知][如何向应用程序发送通知]
+-   [测试应用程序][测试应用程序]
 
 本教程演示使用通知中心的简单广播方案。请确保随后学习下一教程以了解如何使用通知中心来发送到特定用户和设备组。
 
 本教程需要的内容如下：
 
--   Android SDK（假设你要使用 Eclipse），你可以从[此处][]下载该 SDK。
--   [移动服务 Android SDK][]
+-   Android SDK（假设你要使用 Eclipse），你可以从[此处][此处]下载该 SDK。
+-   [移动服务 Android SDK][移动服务 Android SDK]
 
 完成本教程是学习有关 Android 应用程序的所有其他通知中心教程的先决条件。
 
@@ -28,13 +28,13 @@
 
 ## <span id="register"></span></a>启用 Google Cloud Messaging
 
-[WACOM.INCLUDE [启用 GCM][]]
+[WACOM.INCLUDE [启用 GCM][启用 GCM]]
 
 接下来，你将使用此 API 密钥值让通知中心向 GCM 进行身份验证并代表你的应用程序发送推送通知。
 
 ## <span id="configure-hub"></span></a>配置通知中心
 
-1.  登录到 [Azure 管理门户][]，然后单击屏幕底部的“+新建”。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，然后单击屏幕底部的“+新建”。
 
 2.  依次单击“应用程序服务”、“Service Bus”、“通知中心”和“快速创建”。
 
@@ -74,13 +74,13 @@
 
 ### 将 Google Play Services 添加到项目
 
-[WACOM.INCLUDE [添加 Play Services][]]
+[WACOM.INCLUDE [添加 Play Services][添加 Play Services]]
 
 ### 添加代码
 
 1.  从[此处][移动服务 Android SDK]下载通知中心 Android SDK。解压缩 .zip 文件并在包资源管理器中将 notificationhubs\\notification-hubs-0.1.jar 文件复制到你项目的 \\libs 目录。
 
-2.  下载和解压缩[移动服务 Android SDK][]，打开 **notifications** 文件夹，将 **notifications-1.0.1.jar** 文件复制到 Eclipse 项目的 *libs* 文件夹，并刷新 *libs* 文件夹。
+2.  下载和解压缩[移动服务 Android SDK][移动服务 Android SDK]，打开 **notifications** 文件夹，将 **notifications-1.0.1.jar** 文件复制到 Eclipse 项目的 *libs* 文件夹，并刷新 *libs* 文件夹。
 
     <div class="dev-callout"><b>说明</b>
 <p>在后续的 SDK 版本中，文件名末尾的数字可能更改。</p>
@@ -212,7 +212,7 @@
 
 ## <a name="send"></a>如何向应用程序发送通知
 
-你可以使用通知中心通过 [REST 接口][]从任意后端发送通知。本教程演示了发送通知的两种方法：使用 .NET 控制台应用程序，以及结合使用移动服务和节点脚本。
+你可以使用通知中心通过 [REST 接口][REST 接口]从任意后端发送通知。本教程演示了发送通知的两种方法：使用 .NET 控制台应用程序，以及结合使用移动服务和节点脚本。
 
 ### 使用 .NET 控制台应用程序发送通知：
 
@@ -220,7 +220,7 @@
 
     ![][8]
 
-2.  通过使用 [WindowsAzure.ServiceBus NuGet 包][]添加对 Azure Service Bus SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
+2.  通过使用 [WindowsAzure.ServiceBus NuGet 包][WindowsAzure.ServiceBus NuGet 包]添加对 Azure Service Bus SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
 
         Install-Package WindowsAzure.ServiceBus
 
@@ -245,7 +245,7 @@
 
 ### 使用移动服务发送通知
 
-1.  登录到 [Azure 管理门户][]并选择你的移动服务。如果你还没有移动服务，请按[移动服务入门][]中的说明操作。
+1.  登录到 [Azure 管理门户][Azure 管理门户]并选择你的移动服务。如果你还没有移动服务，请按[移动服务入门][移动服务入门]中的说明操作。
 
 2.  选择顶部的“计划程序”选项卡。
 
@@ -309,7 +309,7 @@
 
 ## <a name="next-steps"> </a>后续步骤
 
-在这个简单的示例中，你将通知广播到所有 Android 设备。为了针对特定用户广播，请参考教程[使用通知中心将通知推送到用户][]，如果你要按兴趣细分用户组，请参考[使用通知中心发送突发新闻][]。在[通知中心指南][]中了解通知中心的详细使用信息。
+在这个简单的示例中，你将通知广播到所有 Android 设备。为了针对特定用户广播，请参考教程[使用通知中心将通知推送到用户][使用通知中心将通知推送到用户]，如果你要按兴趣细分用户组，请参考[使用通知中心发送突发新闻][使用通知中心发送突发新闻]。在[通知中心指南][通知中心指南]中了解通知中心的详细使用信息。
 
 
 <!-- URLs. -->
@@ -334,7 +334,7 @@
 
 <!-- Images. --> 
 
-  [0]: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal.png
+  []: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal.png
   [1]: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal2.png
   [2]: ./media/notification-hubs-android-get-started/notification-hub-select-from-portal.png
   [3]: ./media/notification-hubs-android-get-started/notification-hub-select-from-portal2.png

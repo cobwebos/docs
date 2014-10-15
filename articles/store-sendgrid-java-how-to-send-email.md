@@ -2,24 +2,24 @@
 
 # 如何通过 Java 使用 SendGrid 发送电子邮件
 
-本指南演示如何在 Azure 中使用SendGrid 电子邮件服务执行常见编程任务。这些示例以 Java 编写而成。涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤][]部分。
+本指南演示如何在 Azure 中使用SendGrid 电子邮件服务执行常见编程任务。这些示例以 Java 编写而成。涉及的任务包括**创建电子邮件**、**发送电子邮件**、**添加附件**、**使用筛选器**和**更新属性**。有关 SendGrid 和发送电子邮件的详细信息，请参阅[后续步骤][后续步骤]部分。
 
 ## 目录
 
--   [什么是 SendGrid 电子邮件服务？][]
--   [创建 SendGrid 帐户][]
--   [如何：使用 javax.mail 库][]
--   [如何：创建电子邮件][]
--   [如何：发送电子邮件][]
--   [如何：添加附件][]
--   [如何：使用筛选器启用页脚、跟踪和分析][]
--   [如何：更新电子邮件属性][]
--   [如何：使用其他 SendGrid 服务][]
--   [后续步骤][]
+-   [什么是 SendGrid 电子邮件服务？][什么是 SendGrid 电子邮件服务？]
+-   [创建 SendGrid 帐户][创建 SendGrid 帐户]
+-   [如何：使用 javax.mail 库][如何：使用 javax.mail 库]
+-   [如何：创建电子邮件][如何：创建电子邮件]
+-   [如何：发送电子邮件][如何：发送电子邮件]
+-   [如何：添加附件][如何：添加附件]
+-   [如何：使用筛选器启用页脚、跟踪和分析][如何：使用筛选器启用页脚、跟踪和分析]
+-   [如何：更新电子邮件属性][如何：更新电子邮件属性]
+-   [如何：使用其他 SendGrid 服务][如何：使用其他 SendGrid 服务]
+-   [后续步骤][后续步骤]
 
 ## <a name="bkmk_WhatIsSendGrid"> </a>什么是 SendGrid 电子邮件服务？
 
-SendGrid 是一项[基于云的电子邮件服务][]，该服务提供了可靠的[事务性电子邮件传递][]、可缩放性、实时分析以及可用于简化自定义集成的灵活的 API。常见 SendGrid 使用方案包括：
+SendGrid 是一项[基于云的电子邮件服务][基于云的电子邮件服务]，该服务提供了可靠的[事务性电子邮件传递][事务性电子邮件传递]、可缩放性、实时分析以及可用于简化自定义集成的灵活的 API。常见 SendGrid 使用方案包括：
 
 -   自动向客户发送收据
 -   管理用于每月向客户发送电子传单和特惠
@@ -34,7 +34,7 @@ SendGrid 是一项[基于云的电子邮件服务][]，该服务提供了可靠�
 
 ## <a name="bkmk_CreateSendGridAcct"> </a>创建 SendGrid 帐户
 
-[WACOM.INCLUDE [sendgrid-sign-up][]]
+[WACOM.INCLUDE [sendgrid-sign-up][sendgrid-sign-up]]
 
 ## <a name="bkmk_HowToUseJavax"> </a>如何：使用 javax.mail 库
 
@@ -74,10 +74,10 @@ SendGrid 是一项[基于云的电子邮件服务][]，该服务提供了可靠�
         Authenticator auth = new SMTPAuthenticator();
         Session mailSession = Session.getDefaultInstance(properties, auth);
 
-4.  创建你的邮件并分配“收件人”、“发件人”、“主题”和内容值。这一点在[如何：创建电子邮件][]一节有述。
+4.  创建你的邮件并分配“收件人”、“发件人”、“主题”和内容值。这一点在[如何：创建电子邮件][如何：创建电子邮件]一节有述。
 5.  通过
     <span class="auto-style1">javax.mail.Transport</span> 对象发送邮件。这
-    一点在[如何：发送电子邮件][]
+    一点在[如何：发送电子邮件][如何：发送电子邮件]
     一节中有述。
 
 ## <a name="bkmk_HowToCreateEmail"> </a>如何：创建电子邮件
@@ -132,7 +132,7 @@ SendGrid 是一项[基于云的电子邮件服务][]，该服务提供了可靠�
 
 ## <a name="bkmk_HowToUseFilters"> </a>如何：使用筛选器启用页脚、跟踪和分析
 
-SendGrid 可通过使用*筛选器*来提供其他电子邮件功能。这些功能是一些可添加到电子邮件中以启用特定功能（如启用单击跟踪、Google 分析、订阅跟踪等）的设置。有关筛选器的完整列表，请参阅[筛选器设置][]。
+SendGrid 可通过使用*筛选器*来提供其他电子邮件功能。这些功能是一些可添加到电子邮件中以启用特定功能（如启用单击跟踪、Google 分析、订阅跟踪等）的设置。有关筛选器的完整列表，请参阅[筛选器设置][筛选器设置]。
 
 -   以下代码演示如何插入使所发送的电子邮件底部显示 HTML 文本的页脚筛选器。
 
@@ -179,13 +179,13 @@ SendGrid 可通过使用*筛选器*来提供其他电子邮件功能。这些功
 
 ## <a name="bkmk_HowToUseAdditionalSvcs"> </a>如何：使用其他 SendGrid 服务
 
-SendGrid 提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程序中使用其他 SendGrid 功能。有关完整详细信息，请参阅 [SendGrid API 文档][]。
+SendGrid 提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程序中使用其他 SendGrid 功能。有关完整详细信息，请参阅 [SendGrid API 文档][SendGrid API 文档]。
 
 ## <a name="bkmk_NextSteps"> </a>后续步骤
 
 在了解 SendGrid 电子邮件服务的基础知识后，请访问以下链接以了解更多信息。
 
--   演示在 Azure 部署中使用 SendGrid 的示例：[如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件][]
+-   演示在 Azure 部署中使用 SendGrid 的示例：[如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件][如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件]
 -   SendGrid Java 信息：<http://sendgrid.com/docs/Code_Examples/java.html>
 -   SendGrid API 文档：<http://sendgrid.com/docs/API_Reference/index.html>
 -   面向 Azure 客户的 SendGrid 特惠产品/服务：<http://sendgrid.com/azure.html>

@@ -2,20 +2,20 @@
 
 # 如何通过 Ruby 使用 Twilio 实现语音和 SMS 功能
 
-本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。有关 Twilio 以及在应用程序中使用语音和 SMS 的详细信息，请参阅[后续步骤][]部分。
+本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。有关 Twilio 以及在应用程序中使用语音和 SMS 的详细信息，请参阅[后续步骤][后续步骤]部分。
 
 ## 目录
 
--   [什么是 Twilio？][]
--   [Twilio 定价][]
--   [概念][]
--   [创建 Twilio 帐户][]
--   [创建 Ruby Sinatra 应用程序][]
--   [将应用程序配置为使用 Twilio 库][]
--   [如何：发起传出呼叫][]
--   [如何：接收短信][]
--   [如何：使用其他 Twilio 服务][]
--   [后续步骤][]
+-   [什么是 Twilio？][什么是 Twilio？]
+-   [Twilio 定价][Twilio 定价]
+-   [概念][概念]
+-   [创建 Twilio 帐户][创建 Twilio 帐户]
+-   [创建 Ruby Sinatra 应用程序][创建 Ruby Sinatra 应用程序]
+-   [将应用程序配置为使用 Twilio 库][将应用程序配置为使用 Twilio 库]
+-   [如何：发起传出呼叫][如何：发起传出呼叫]
+-   [如何：接收短信][如何：接收短信]
+-   [如何：使用其他 Twilio 服务][如何：使用其他 Twilio 服务]
+-   [后续步骤][后续步骤]
 
 ## <span id="WhatIs"></span></a>什么是 Twilio？
 
@@ -25,11 +25,11 @@ Twilio 是一种电话 Web 服务 API，它使你能够使用现有 Web 语言�
 
 ## <span id="Pricing"></span></a>Twilio 定价和特别优惠
 
-[Twilio 定价][1]中提供了有关 Twilio 定价的信息。Azure 客户可享受[特别优惠][]：免费获得 1000 条信息和 1000 分钟拨入通话时间。若要注册此优惠或了解更多信息，请访问 [][特别优惠]<http://ahoy.twilio.com/azure></a>。
+[Twilio 定价][1]中提供了有关 Twilio 定价的信息。Azure 客户可享受[特别优惠][特别优惠]：免费获得 1000 条信息和 1000 分钟拨入通话时间。若要注册此优惠或了解更多信息，请访问 [][特别优惠]<http://ahoy.twilio.com/azure></a>。
 
 ## <span id="Concepts"></span></a>概念
 
-Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。提供了多种语言版本的客户端库；有关列表，请参阅 [Twilio API 库][]。
+Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。提供了多种语言版本的客户端库；有关列表，请参阅 [Twilio API 库][Twilio API 库]。
 
 ### <span id="TwiML"></span></a>TwiML
 
@@ -61,27 +61,27 @@ Twilio 谓词是指示 Twilio 执行哪些**操作**的 XML 标记。例如，**
 -   **\<Say\>**：将文本转换为呼叫中生成的语音。
 -   **\<Sms\>**：发送 SMS 消息。
 
-有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][]。有关 Twilio API 的其他信息，请参阅 [Twilio API][]。
+有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][TwiML]。有关 Twilio API 的其他信息，请参阅 [Twilio API][Twilio API]。
 
 ## <span id="CreateAccount"></span></a>创建 Twilio 帐户
 
-准备好获取 Twilio 帐户后，请在[试用 Twilio][] 上注册。可以先使用免费帐户，以后再升级你的帐户。
+准备好获取 Twilio 帐户后，请在[试用 Twilio][试用 Twilio] 上注册。可以先使用免费帐户，以后再升级你的帐户。
 
-注册 Twilio 帐户时，你将收到适用于你的应用程序的一个免费电话号码。还会收到帐户 SID 和身份验证令牌。需要二者才能发起 Twilio API 呼叫。为了防止对你的帐户进行未经授权的访问，请保护身份验证令牌。你的帐户 SID 和身份验证令牌分别显示在 [Twilio 帐户页][]上标记为“ACCOUNT SID”（帐户 SID）和“AUTH TOKEN”（身份验证令牌）的字段中。
+注册 Twilio 帐户时，你将收到适用于你的应用程序的一个免费电话号码。还会收到帐户 SID 和身份验证令牌。需要二者才能发起 Twilio API 呼叫。为了防止对你的帐户进行未经授权的访问，请保护身份验证令牌。你的帐户 SID 和身份验证令牌分别显示在 [Twilio 帐户页][Twilio 帐户页]上标记为“ACCOUNT SID”（帐户 SID）和“AUTH TOKEN”（身份验证令牌）的字段中。
 
 ### <span id="VerifyPhoneNumbers"></span></a>验证电话号码
 
 除了 Twilio 提供的号码外，还可验证你控制为在应用程序中使用的号码（例如，手机号码或家庭电话号码）。
 
-有关如何验证电话号码的信息，请参阅[管理号码（可能为英文页面）][]。
+有关如何验证电话号码的信息，请参阅[管理号码（可能为英文页面）][管理号码（可能为英文页面）]。
 
 ## <span id="create_app"></span></a>创建 Ruby 应用程序
 
-使用 Twilio 服务且在 Azure 中运行的 Ruby 应用程序与任何其他使用 Twilio 服务的 Ruby 应用程序之间没有任何差别。Twilio 服务基于 REST 并且可通过多种方法从 Ruby 中调用，本文将重点介绍如何将 Twilio 服务与[用于 Ruby 的 Twilio 帮助程序库][]一起使用。
+使用 Twilio 服务且在 Azure 中运行的 Ruby 应用程序与任何其他使用 Twilio 服务的 Ruby 应用程序之间没有任何差别。Twilio 服务基于 REST 并且可通过多种方法从 Ruby 中调用，本文将重点介绍如何将 Twilio 服务与[用于 Ruby 的 Twilio 帮助程序库][用于 Ruby 的 Twilio 帮助程序库]一起使用。
 
-首先，[设置一台新的 Azure Linux 虚拟机][]充当新 Ruby Web 应用程序的主机。忽略创建 Rails 应用程序所涉及的步骤，只设置虚拟机。确保创建的终结点的外部端口为 80，内部端口为 5000。
+首先，[设置一台新的 Azure Linux 虚拟机][设置一台新的 Azure Linux 虚拟机]充当新 Ruby Web 应用程序的主机。忽略创建 Rails 应用程序所涉及的步骤，只设置虚拟机。确保创建的终结点的外部端口为 80，内部端口为 5000。
 
-在以下示例中，我们将使用 [Sinatra][]，一个非常简单的用于 Ruby 的 Web 框架。不过，你当然可以将用于 Ruby 的 Twilio 帮助程序库与任何其他 Web 框架（包括 Ruby on Rails）一起使用。
+在以下示例中，我们将使用 [Sinatra][Sinatra]，一个非常简单的用于 Ruby 的 Web 框架。不过，你当然可以将用于 Ruby 的 Twilio 帮助程序库与任何其他 Web 框架（包括 Ruby on Rails）一起使用。
 
 通过 SSH 登录到你的新虚拟机并为新应用程序创建一个目录。在该目录内创建一个名为 Gemfile 的文件并将以下代码复制到该文件中：
 
@@ -173,11 +173,11 @@ Twilio 谓词是指示 Twilio 执行哪些**操作**的 XML 标记。例如，**
 
 现在，你已了解 Twilio 服务的基础知识，单击下面的链接可以了解更多信息：
 
--   [Twilio 安全准则][]
--   [Twilio 操作方法和示例代码][]
--   [Twilio 快速入门教程][]
--   [GitHub 上的 Twilio][]
--   [与 Twilio 技术支持人员交流][]
+-   [Twilio 安全准则][Twilio 安全准则]
+-   [Twilio 操作方法和示例代码][Twilio 操作方法和示例代码]
+-   [Twilio 快速入门教程][Twilio 快速入门教程]
+-   [GitHub 上的 Twilio][GitHub 上的 Twilio]
+-   [与 Twilio 技术支持人员交流][与 Twilio 技术支持人员交流]
 
   [后续步骤]: #NextSteps
   [什么是 Twilio？]: #WhatIs

@@ -6,30 +6,30 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 在本教程中，你将：
 
--   [从库连接到 Azure 管理门户并设置虚拟机][]
--   [使用远程桌面和完整安装打开虚拟机][]
--   [完成配置步骤以便在另一台计算机上使用 SQL Server Management Studio 连接到虚拟机][]
--   [后续步骤][]
+-   [从库连接到 Azure 管理门户并设置虚拟机][从库连接到 Azure 管理门户并设置虚拟机]
+-   [使用远程桌面和完整安装打开虚拟机][使用远程桌面和完整安装打开虚拟机]
+-   [完成配置步骤以便在另一台计算机上使用 SQL Server Management Studio 连接到虚拟机][完成配置步骤以便在另一台计算机上使用 SQL Server Management Studio 连接到虚拟机]
+-   [后续步骤][后续步骤]
 
 ## <span id="Provision"></span>从库连接到 Azure 管理门户并设置虚拟机</a>
 
-1.  使用你的帐户登录到 [Azure 管理门户][]。
+1.  使用你的帐户登录到 [Azure 管理门户][Azure 管理门户]。
 
 2.  在 Azure 管理门户中网页的左下角，依次单击“+新建”、“计算”、“虚拟机”、“从库中”。
 
-3.  在“创建虚拟机”页面上，选择包含 SQL Server 的虚拟机映像，然后单击该页右下角的“下一步”箭头。有关在 Azure 上受支持的 SQL Server 映像的最新信息，请参阅 [Azure 虚拟机中的 SQL Server][] 文档集中的 [Azure 中的 SQL Server 虚拟机入门][]主题。
+3.  在“创建虚拟机”页面上，选择包含 SQL Server 的虚拟机映像，然后单击该页右下角的“下一步”箭头。有关在 Azure 上受支持的 SQL Server 映像的最新信息，请参阅 [Azure 虚拟机中的 SQL Server][Azure 虚拟机中的 SQL Server] 文档集中的 [Azure 中的 SQL Server 虚拟机入门][Azure 中的 SQL Server 虚拟机入门]主题。
 
     > [WACOM.NOTE] 如果虚拟机是通过使用平台映像 SQL Server 评估版创建的，则无法将其升级到库中的按分钟付费版本的映像。可以选择以下两个选项之一：
 
-    > -   你可以通过从库中使用按分钟付费 SQL Server 版本创建一台新虚拟机，并按[如何使用数据磁盘在 Azure 中的虚拟机之间迁移 SQL Server 数据库文件和架构][]中所述步骤将数据库文件迁移到这台新虚拟机。**或者**，
+    > -   你可以通过从库中使用按分钟付费 SQL Server 版本创建一台新虚拟机，并按[如何使用数据磁盘在 Azure 中的虚拟机之间迁移 SQL Server 数据库文件和架构][如何使用数据磁盘在 Azure 中的虚拟机之间迁移 SQL Server 数据库文件和架构]中所述步骤将数据库文件迁移到这台新虚拟机。**或者**，
 
-    > -   根据[在 Azure 上通过软件保证实现许可迁移][]协议，通过[升级到 SQL Server 2014 的不同版本][]中所述的步骤，将 SQL Server 评估版的现有实例升级到 SQL Server 的另一版本。有关如何购买 SQL Server 的许可副本的信息，请参阅[如何购买 SQL Server][]。
+    > -   根据[在 Azure 上通过软件保证实现许可迁移][在 Azure 上通过软件保证实现许可迁移]协议，通过[升级到 SQL Server 2014 的不同版本][升级到 SQL Server 2014 的不同版本]中所述的步骤，将 SQL Server 评估版的现有实例升级到 SQL Server 的另一版本。有关如何购买 SQL Server 的许可副本的信息，请参阅[如何购买 SQL Server][如何购买 SQL Server]。
 
 4.  在“虚拟机配置”页上，提供以下信息：
 
     -   提供一个“虚拟机名称”。
     -   在“新用户名”框中，键入用于虚拟机本地管理员帐户的唯一用户名。
-    -   在**“新密码”**框中，键入一个强密码。有关详细信息，请参阅[强密码][]。
+    -   在**“新密码”**框中，键入一个强密码。有关详细信息，请参阅[强密码][强密码]。
     -   在**“确认密码”**框中，重新键入该密码。
     -   从下拉列表中选择合适的**“大小”**。
 
@@ -39,11 +39,11 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
     > 在使用 SQL Server Enterprise Edition 时请选择 A3 或更高的值。
     > 在使用 SQL Server 2012 Enterprise for Data Warehousing 映像时请选择 A6。
     > 在使用 SQL Server 2014 for Data Warehousing 映像时请选择 A7。
-    > 所选的大小会限制你可以配置的数据磁盘的数量。有关可用虚拟机大小和可附加到虚拟机的数据磁盘数目的最新信息，请参阅[用于 Azure 的虚拟机大小][]。
+    > 所选的大小会限制你可以配置的数据磁盘的数量。有关可用虚拟机大小和可附加到虚拟机的数据磁盘数目的最新信息，请参阅[用于 Azure 的虚拟机大小][用于 Azure 的虚拟机大小]。
 
     单击右下角的“下一步”箭头以继续。
 
-    ![VM 配置][]
+    ![VM 配置][VM 配置]
 
 5.  在**“虚拟机模式”**页上，提供以下信息：
 
@@ -53,14 +53,14 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
     单击下一步箭头以继续。
 
-    ![VM 模式][]
+    ![VM 模式][VM 模式]
 
 6.  在**“虚拟机选项”**页上：
 
     -   在“可用性集”框中，选择“(无)”。
     -   阅读并接受法律条款。
 
-    ![VM 选项][]
+    ![VM 选项][VM 选项]
 
 7.  单击右下角的对号标记以继续。
 
@@ -76,7 +76,7 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 1.  当设置完成时，单击你的虚拟机的名称，以转到“仪表板”页面。在页面底部，单击“连接”。
 
-    ![选择“仪表板”页][]
+    ![选择“仪表板”页][选择“仪表板”页]
 
 2.  选择使用 Windows 远程桌面程序 (`%windir%\system32\mstsc.exe`) 打开 .rpd 文件。
 
@@ -90,18 +90,18 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 你必须先完成下列各节中描述的下列任务，然后才能通过 Internet 连接到 SQL Server 的实例：
 
--   [为虚拟机创建 TCP 终结点][]
--   [在 Windows 防火墙中打开 TCP 端口][]
--   [将 SQL Server 配置为侦听 TCP 协议][]
--   [配置混合模式的 SQL Server 身份验证][]
--   [创建 SQL Server 身份验证登录名][]
--   [确定虚拟机的 DNS 名称][]
--   [从其他计算机连接到数据库引擎][]
+-   [为虚拟机创建 TCP 终结点][为虚拟机创建 TCP 终结点]
+-   [在 Windows 防火墙中打开 TCP 端口][在 Windows 防火墙中打开 TCP 端口]
+-   [将 SQL Server 配置为侦听 TCP 协议][将 SQL Server 配置为侦听 TCP 协议]
+-   [配置混合模式的 SQL Server 身份验证][配置混合模式的 SQL Server 身份验证]
+-   [创建 SQL Server 身份验证登录名][创建 SQL Server 身份验证登录名]
+-   [确定虚拟机的 DNS 名称][确定虚拟机的 DNS 名称]
+-   [从其他计算机连接到数据库引擎][从其他计算机连接到数据库引擎]
 -   [从应用程序连接到数据库引擎] (\#cdea)
 
 下图中概述了此连接路径：
 
-![连接到 SQL Server 虚拟机][]
+![连接到 SQL Server 虚拟机][连接到 SQL Server 虚拟机]
 
 ### <span id="Endpoint"></span>为虚拟机创建 TCP 终结点</a>
 
@@ -113,7 +113,7 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 3.  在靠近页面顶端的位置，选择“终结点”页面，然后在页面底部单击“添加终结点”。
 
-    ![单击“添加终结点”][]
+    ![单击“添加终结点”][单击“添加终结点”]
 
 4.  在“给虚拟机添加终结点”页上，单击“添加终结点”，然后单击“下一步”箭头以继续。
 
@@ -124,27 +124,27 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
     -   在“名称”框中，为终结点提供名称。
     -   在**“协议”**框中，选择**“TCP”**。可在“专用端口”框中键入 SQL Server 的默认侦听端口 **1433**。同样，你可以在“公用端口”框中键入 **57500**。注意，许多组织选择其他端口号以避免恶意的安全攻击。
 
-    ![“终结点”屏幕][]
+    ![“终结点”屏幕][“终结点”屏幕]
 
 6.  单击复选标记以继续。终结点创建完成。
 
-    ![带有终结点的 VM][]
+    ![带有终结点的 VM][带有终结点的 VM]
 
 ### <span id="FW"></span>在 Windows 防火墙中为数据库引擎的默认实例打开 TCP 端口</a>
 
 1.  通过 Windows 远程桌面连接到虚拟机。登录后，在“开始”菜单上单击“运行”，键入 **WF.msc**，然后单击“确定”。
 
-    ![启动防火墙程序][]
+    ![启动防火墙程序][启动防火墙程序]
 
 2.  在**“高级安全 Windows 防火墙”**的左窗格中，右键单击**“入站规则”**，然后在操作窗格中单击**“新建规则”**。
 
-    ![新建规则][]
+    ![新建规则][新建规则]
 
 3.  在**“规则类型”**对话框中，选择**“端口”**，然后单击**“下一步”**。
 
 4.  在**“协议和端口”**对话框中，选择 **TCP**。选择“特定本地端口”，然后键入数据库引擎实例的端口号（即默认实例对应的端口号 **1433**，或你在终结点步骤中为专用端口选择的端口号）。
 
-    ![TCP 端口 1433][]
+    ![TCP 端口 1433][TCP 端口 1433]
 
 5.  单击“下一步”。
 
@@ -152,25 +152,25 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
     **安全说明：** 选择“只允许安全连接”可增加安全性。如果你想在你的环境中配置其他安全性选项，请选择此选项。
 
-    ![允许连接][]
+    ![允许连接][允许连接]
 
 7.  在“配置文件”对话框中，选择“公用”，然后单击**“下一步”**。
 
     **安全说明：** 选择“公用”允许通过 Internet 进行访问。只要有可能，就请选择更具限制性的配置文件。
 
-    ![公用配置文件][]
+    ![公用配置文件][公用配置文件]
 
 8.  在“名称”对话框中，键入此规则的名称和说明，然后单击“完成”。
 
-    ![规则名称][]
+    ![规则名称][规则名称]
 
-根据需要为其他组件打开附加端口。有关详细信息，请参阅[配置 Windows 防火墙以允许 SQL Server 访问][]。
+根据需要为其他组件打开附加端口。有关详细信息，请参阅[配置 Windows 防火墙以允许 SQL Server 访问][配置 Windows 防火墙以允许 SQL Server 访问]。
 
 ### <span id="TCP"></span>将 SQL Server 配置为侦听 TCP 协议</a>
 
 1.  使用远程桌面连接到虚拟机后，在“开始”菜单上，依次单击“所有程序”、Microsoft SQL Server *版本*、“配置工具”、“SQL Server 配置管理器”。
 
-    ![打开 SSCM][]
+    ![打开 SSCM][打开 SSCM]
 
 2.  在“SQL Server 配置管理器”的控制台窗格中，展开“SQL Server 网络配置”。
 
@@ -178,45 +178,45 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 4.  在详细信息窗格中，右键单击“TCP”，默认情况下该协议对于库映像应为“已启用”状态。对于你的自定义映像，单击**“启用”**（如果其状态为“已禁用”）。
 
-    ![启用 TCP][]
+    ![启用 TCP][启用 TCP]
 
 5.  在控制台窗格中，单击**“SQL Server 服务”**。（数据库引擎的重新启动可能会延迟到下一步完成之后。）
 
 6.  在详细信息窗格中，右键单击“SQL Server (*实例名*)”（默认实例为“SQL Server (MSSQLSERVER)”），然后单击“重新启动”以停止并重新启动该 SQL Server 实例。
 
-    ![重新启动数据库引擎][]
+    ![重新启动数据库引擎][重新启动数据库引擎]
 
 7.  关闭 SQL Server 配置管理器。
 
-有关启用 SQL Server 数据库引擎的协议的详细信息，请参阅[启用或禁用服务器网络协议][]。
+有关启用 SQL Server 数据库引擎的协议的详细信息，请参阅[启用或禁用服务器网络协议][启用或禁用服务器网络协议]。
 
 ### <span id="Mixed"></span>配置混合模式的 SQL Server 身份验证</a>
 
-在没有域环境的情况下，SQL Server 数据库引擎无法使用 Windows 身份验证。若要从其他计算机连接到数据库引擎，请将 SQL Server 的身份验证模式配置为混合。混合模式身份验证同时允许 SQL Server 身份验证和 Windows 身份验证。（如果你已经配置了 Azure 虚拟网络，可能没有必要配置混合模式身份验证。有关详细信息，请参阅 [Azure 虚拟机中的 SQL Server][] 文档集中的 [Azure 虚拟机中 SQL Server 的连接性注意事项][]主题。
+在没有域环境的情况下，SQL Server 数据库引擎无法使用 Windows 身份验证。若要从其他计算机连接到数据库引擎，请将 SQL Server 的身份验证模式配置为混合。混合模式身份验证同时允许 SQL Server 身份验证和 Windows 身份验证。（如果你已经配置了 Azure 虚拟网络，可能没有必要配置混合模式身份验证。有关详细信息，请参阅 [Azure 虚拟机中的 SQL Server][Azure 虚拟机中的 SQL Server] 文档集中的 [Azure 虚拟机中 SQL Server 的连接性注意事项][Azure 虚拟机中 SQL Server 的连接性注意事项]主题。
 
 1.  使用远程桌面连接到虚拟机后，在“开始”菜单上，依次单击“所有程序”、Microsoft SQL Server *版本*、SQL Server Management Studio。
 
-    ![启动 SSMS][]
+    ![启动 SSMS][启动 SSMS]
 
     Management Studio 在首次打开时，一定会创建用户 Management Studio 环境。这可能需要一小段时间。
 
 2.  打开时，Management Studio 会显示“连接到服务器”对话框。在“服务器名称”框中，键入要连接到对象资源管理器中的数据库引擎的虚拟机的名称。（你还可使用“(local)”或一个句点代替虚拟机名称作为“服务器名称”。选择“Windows 身份验证”，在“用户名”框中保留 ***your\_VM\_name*\\your\_local\_administrator**。单击“连接”。
 
-    ![连接到服务器][]
+    ![连接到服务器][连接到服务器]
 
 3.  在 SQL Server Management Studio 的“对象资源管理器”中，右键单击 SQL Server 实例的名称（虚拟机名称），然后单击**“属性”**。
 
-    ![服务器属性][]
+    ![服务器属性][服务器属性]
 
 4.  在“安全性”页上的“服务器身份验证”下，选择“SQL Server 和 Windows 身份验证模式”，然后单击“确定”。
 
-    ![选择身份验证模式][]
+    ![选择身份验证模式][选择身份验证模式]
 
 5.  在 SQL Server Management Studio 对话框中，单击“确定”,以接受重新启动 SQL Server 的要求。
 
 6.  在“对象资源管理器”中，右键单击你的服务器，然后单击“重新启动”。（如果 SQL Server 代理正在运行，它也必须重新启动。）
 
-    ![重新启动][]
+    ![重新启动][重新启动]
 
 7.  在 SQL Server Management Studio 对话框中，单击“是”以同意重新启动 SQL Server。
 
@@ -228,7 +228,7 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 2.  右键单击“安全性”文件夹，指向“新建”，然后选择“登录名…”。
 
-    ![新建登录名][]
+    ![新建登录名][新建登录名]
 
 3.  在“登录名 - 新建”对话框中的“常规”页上，在“登录名”框中输入新用户的名称。
 
@@ -246,17 +246,17 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 10. 在“默认语言”列表中，保留“默认”值。
 
-    ![登录名属性][]
+    ![登录名属性][登录名属性]
 
 11. 如果这是你创建的第一个登录名，可能会需要将此登录名指派为 SQL Server 管理员。这样的话，请在“服务器角色”页面上选中 **sysadmin**。
 
     **安全说明：** sysadmin 固定服务器角色的成员对数据库引擎具有完全控制权限。应谨慎限制此角色中的成员资格。
 
-    ![sysadmin][]
+    ![sysadmin][sysadmin]
 
 12. 单击“确定”。
 
-有关 SQL Server 登录名的详细信息，请参阅[创建登录名][]。
+有关 SQL Server 登录名的详细信息，请参阅[创建登录名][创建登录名]。
 
 ### <span id="DNS"></span>确定虚拟机的 DNS 名称</a>
 
@@ -266,7 +266,7 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 2.  在“虚拟机实例”页面上的“DNS 名称”列中，找到并复制带有前缀 **<http://>** 的虚拟机 DNS 名称。（在用户界面上可能显示不出整个名称，不过没关系，你可以右键单击它，并选择“复制”。）
 
-    ![DNS 名称][]
+    ![DNS 名称][DNS 名称]
 
 ### <span id="cde"></span>从其他计算机连接到数据库引擎</a>
 
@@ -282,7 +282,7 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 6.  单击“连接”。
 
-    ![使用 SSMS 进行连接][]
+    ![使用 SSMS 进行连接][使用 SSMS 进行连接]
 
 ### <span id="cdea"></span> 从应用程序连接到数据库引擎</a>
 
@@ -290,21 +290,21 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
     connectionString="Server=<DNS_Name>;Integrated Security=false;User ID=<login_name>;Password=<your_password>;"providerName="System.Data.SqlClient"
 
-有关详细信息，请参阅[如何解决 SQL Server 数据库引擎的连接问题][]。
+有关详细信息，请参阅[如何解决 SQL Server 数据库引擎的连接问题][如何解决 SQL Server 数据库引擎的连接问题]。
 
 ## <span id="Optional"></span>后续步骤</a>
 
-你已经看到了如何使用平台映像在 Azure 虚拟机上创建和配置 SQL Server。在使用 Azure 虚拟机中的 SQL Server 时，建议遵循库中 [Azure 虚拟机中的 SQL Server][] 文档中提供的详细指导。该文档集包含一系列提供详细指导的文章和教程。该系列包括以下各部分：
+你已经看到了如何使用平台映像在 Azure 虚拟机上创建和配置 SQL Server。在使用 Azure 虚拟机中的 SQL Server 时，建议遵循库中 [Azure 虚拟机中的 SQL Server][Azure 虚拟机中的 SQL Server] 文档中提供的详细指导。该文档集包含一系列提供详细指导的文章和教程。该系列包括以下各部分：
 
-[Azure 虚拟机中的 SQL Server][]
+[Azure 虚拟机中的 SQL Server][Azure 虚拟机中的 SQL Server]
 
 [Azure 虚拟机中的 SQL Server 入门][Azure 中的 SQL Server 虚拟机入门]
 
-[准备迁移到 Azure 虚拟机中的 SQL Server][]
+[准备迁移到 Azure 虚拟机中的 SQL Server][准备迁移到 Azure 虚拟机中的 SQL Server]
 
 -   如何使用数据磁盘在 Azure 中的虚拟机之间迁移 SQL Server 数据库文件和架构
 
-[Azure 虚拟机中的 SQL Server 部署][]
+[Azure 虚拟机中的 SQL Server 部署][Azure 虚拟机中的 SQL Server 部署]
 
 -   如何使用 CSUpload 将数据磁盘中的 SQL Server 数据和安装文件从本地复制到 Azure
 -   如何使用 Hyper-V 在本地创建基础虚拟机
@@ -319,13 +319,13 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 -   教程：连接到不同云服务中的 SQL Server
 -   教程：通过虚拟网络将 ASP.NET 应用程序连接到 Azure 中的 SQL Server
 
-[Azure 虚拟机中的 SQL Server 的性能注意事项][]
+[Azure 虚拟机中的 SQL Server 的性能注意事项][Azure 虚拟机中的 SQL Server 的性能注意事项]
 
-[Azure 虚拟机中的 SQL Server 的安全注意事项][]
+[Azure 虚拟机中的 SQL Server 的安全注意事项][Azure 虚拟机中的 SQL Server 的安全注意事项]
 
-[Azure 虚拟机中 SQL Server 的故障排除和监视][]
+[Azure 虚拟机中 SQL Server 的故障排除和监视][Azure 虚拟机中 SQL Server 的故障排除和监视]
 
-[Azure 虚拟机中 SQL Server 的高可用性和灾难恢复][]
+[Azure 虚拟机中 SQL Server 的高可用性和灾难恢复][Azure 虚拟机中 SQL Server 的高可用性和灾难恢复]
 
 -   教程：Azure 中的 AlwaysOn 可用性组 (GUI)
 -   教程：Azure 中的 AlwaysOn 可用性组 (PowerShell)
@@ -338,23 +338,23 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 -   教程：在混合 IT 环境中进行日志传送以实现灾难恢复
 -   Azure 中可用性组侦听器的故障排除
 
-[Azure 虚拟机中 SQL Server 的备份和还原][]
+[Azure 虚拟机中 SQL Server 的备份和还原][Azure 虚拟机中 SQL Server 的备份和还原]
 
-[Azure 虚拟机中的 SQL Server Business Intelligence][]
+[Azure 虚拟机中的 SQL Server Business Intelligence][Azure 虚拟机中的 SQL Server Business Intelligence]
 
 -   使用 PowerShell 创建运行 SQL Server BI 和 SharePoint 2010 的 Azure VM
 -   使用 PowerShell 创建运行 SQL Server BI 和 SharePoint 2013 的 Azure VM
 -   使用 PowerShell 创建运行本机模式报表服务器的 Azure VM
 
-[Azure 虚拟机中的 SQL Server 数据仓库][]
+[Azure 虚拟机中的 SQL Server 数据仓库][Azure 虚拟机中的 SQL Server 数据仓库]
 
-[Azure 虚拟机中的 SQL Server 技术文章][]
+[Azure 虚拟机中的 SQL Server 技术文章][Azure 虚拟机中的 SQL Server 技术文章]
 
--   [白皮书：Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略][]
+-   [白皮书：Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略][白皮书：Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略]
 
--   [白皮书：在 Azure 虚拟机中部署 SQL Server Business Intelligence][]
+-   [白皮书：在 Azure 虚拟机中部署 SQL Server Business Intelligence][白皮书：在 Azure 虚拟机中部署 SQL Server Business Intelligence]
 
--   [白皮书：Azure 虚拟机中 SQL Server 的性能指南][]
+-   [白皮书：Azure 虚拟机中 SQL Server 的性能指南][白皮书：Azure 虚拟机中 SQL Server 的性能指南]
 
   [从库连接到 Azure 管理门户并设置虚拟机]: #Provision
   [使用远程桌面和完整安装打开虚拟机]: #RemoteDesktop

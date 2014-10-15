@@ -2,22 +2,22 @@
 
 # 在 Azure 虚拟网络中安装新的 Active Directory 林
 
-本主题说明如何在 [Azure 虚拟网络][]上的虚拟机 (VM) 中创建新的 Windows Server Active Directory 环境。在此情况下，Azure 虚拟网络未连接到本地网络。
+本主题说明如何在 [Azure 虚拟网络][Azure 虚拟网络]上的虚拟机 (VM) 中创建新的 Windows Server Active Directory 环境。在此情况下，Azure 虚拟网络未连接到本地网络。
 
 你也有可能对下列相关主题感兴趣：
 
--   你可以有选择性地[使用管理门户向导配置站点到站点 VPN][]，然后安装新林，或者将本地林扩展到 Azure 虚拟网络。有关这些步骤的说明，请参阅[在 Azure 虚拟网络中安装副本 Active Directory 域控制器][]。
--   有关在 Azure 虚拟网络上安装 Active Directory 域服务 (AD DS) 的概念性指南，请参阅[在 Azure 虚拟机中部署 Windows Server Active Directory 的准则][]。
--   有关在使用 AD DS 的 Azure 上创建测试实验室环境的分步指南，请参阅[测试实验室指南：Azure 中的 Windows Server 2012 R2 基本配置][]。
+-   你可以有选择性地[使用管理门户向导配置站点到站点 VPN][使用管理门户向导配置站点到站点 VPN]，然后安装新林，或者将本地林扩展到 Azure 虚拟网络。有关这些步骤的说明，请参阅[在 Azure 虚拟网络中安装副本 Active Directory 域控制器][在 Azure 虚拟网络中安装副本 Active Directory 域控制器]。
+-   有关在 Azure 虚拟网络上安装 Active Directory 域服务 (AD DS) 的概念性指南，请参阅[在 Azure 虚拟机中部署 Windows Server Active Directory 的准则][在 Azure 虚拟机中部署 Windows Server Active Directory 的准则]。
+-   有关在使用 AD DS 的 Azure 上创建测试实验室环境的分步指南，请参阅[测试实验室指南：Azure 中的 Windows Server 2012 R2 基本配置][测试实验室指南：Azure 中的 Windows Server 2012 R2 基本配置]。
 
 ## 目录
 
--   [在 Azure 上安装与在本地安装有什么不同？][]
--   [步骤 1. 创建 Azure 虚拟网络][]
--   [步骤 2：创建 VM 以运行域控制器和 DNS 服务器角色][]
--   [步骤 3：安装 Windows Server Active Directory][]
--   [步骤 4：为 Azure 虚拟网络设置 DNS 服务器][]
--   [步骤 5：为域成员创建 VM 并加入到域中][]
+-   [在 Azure 上安装与在本地安装有什么不同？][在 Azure 上安装与在本地安装有什么不同？]
+-   [步骤 1. 创建 Azure 虚拟网络][步骤 1. 创建 Azure 虚拟网络]
+-   [步骤 2：创建 VM 以运行域控制器和 DNS 服务器角色][步骤 2：创建 VM 以运行域控制器和 DNS 服务器角色]
+-   [步骤 3：安装 Windows Server Active Directory][步骤 3：安装 Windows Server Active Directory]
+-   [步骤 4：为 Azure 虚拟网络设置 DNS 服务器][步骤 4：为 Azure 虚拟网络设置 DNS 服务器]
+-   [步骤 5：为域成员创建 VM 并加入到域中][步骤 5：为域成员创建 VM 并加入到域中]
 
 ## <span id="differ"></span></a>在 Azure 上安装与在本地安装有什么不同？
 
@@ -31,7 +31,7 @@
 
 ## <span id="createvnet"></span></a>步骤 1：创建 Azure 虚拟网络
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  创建虚拟网络。单击**“网络”**\>**“创建虚拟网络”**。使用下表中的值来完成向导操作。
 
     <table>
@@ -120,7 +120,7 @@
     </tbody>
     </table>
 
-3.  按默认分配给 VM 的动态 IP 地址在云服务的工作持续时间内有效。但是，如果关闭 VM，该地址将发生更改。你可以通过[运行 Set-AzureStaticVNetIP Azure PowerShell cmdlet][] 来分配静态 IP 地址，这样，即使你关闭了 VM，该 IP 地址也会保留。
+3.  按默认分配给 VM 的动态 IP 地址在云服务的工作持续时间内有效。但是，如果关闭 VM，该地址将发生更改。你可以通过[运行 Set-AzureStaticVNetIP Azure PowerShell cmdlet][运行 Set-AzureStaticVNetIP Azure PowerShell cmdlet] 来分配静态 IP 地址，这样，即使你关闭了 VM，该 IP 地址也会保留。
 4.  将额外的磁盘附加到 VM，以便存储 Active Directory 数据库、日志和 SYSVOL。
   5.  单击**“VM”**\>**“附加”**\>**“附加空磁盘”**。
   6.  指定大小（例如 10 GB）并接受所有其他默认值。
@@ -133,7 +133,7 @@
 
 ## <span id="installad"></span></a>步骤 3：安装 Windows Server Active Directory
 
-使用你在本地使用的相同例程[安装 AD DS][]（也就是说，你可以使用 UI、应答文件或 Windows PowerShell）。需要提供管理员凭据来安装新林。若要指定 Active Directory 数据库、日志和 SYSVOL 的位置，请将默认存储位置从操作系统驱动器更改为你已附加到 VM 的额外数据磁盘。
+使用你在本地使用的相同例程[安装 AD DS][安装 AD DS]（也就是说，你可以使用 UI、应答文件或 Windows PowerShell）。需要提供管理员凭据来安装新林。若要指定 Active Directory 数据库、日志和 SYSVOL 的位置，请将默认存储位置从操作系统驱动器更改为你已附加到 VM 的额外数据磁盘。
 
 完成 DC 安装后，请再次连接到 VM 并登录到 DC。请记得指定域凭据。
 
@@ -179,35 +179,35 @@
 
 ## 另请参阅
 
--   [在 Azure 虚拟机中部署 Windows Server Active Directory 的准则][]
+-   [在 Azure 虚拟机中部署 Windows Server Active Directory 的准则][在 Azure 虚拟机中部署 Windows Server Active Directory 的准则]
 
--   [在管理门户中配置只使用云的虚拟机][]
+-   [在管理门户中配置只使用云的虚拟机][在管理门户中配置只使用云的虚拟机]
 
--   [在管理门户中配置站点到站点 VPN][]
+-   [在管理门户中配置站点到站点 VPN][在管理门户中配置站点到站点 VPN]
 
--   [在 Azure 虚拟网络中安装副本 Active Directory 域控制器][]
+-   [在 Azure 虚拟网络中安装副本 Active Directory 域控制器][在 Azure 虚拟网络中安装副本 Active Directory 域控制器]
 
--   [Windows Azure IT Pro IaaS：(01) 虚拟机基础知识][]
+-   [Windows Azure IT Pro IaaS：(01) 虚拟机基础知识][Windows Azure IT Pro IaaS：(01) 虚拟机基础知识]
 
--   [Windows Azure IT Pro IaaS：(05) 创建虚拟网络和跨界连接][]
+-   [Windows Azure IT Pro IaaS：(05) 创建虚拟网络和跨界连接][Windows Azure IT Pro IaaS：(05) 创建虚拟网络和跨界连接]
 
 -   [Azure 虚拟网络][1]
 
--   [如何安装和配置 Azure PowerShell][]
+-   [如何安装和配置 Azure PowerShell][如何安装和配置 Azure PowerShell]
 
--   [Azure PowerShell][]
+-   [Azure PowerShell][Azure PowerShell]
 
--   [Azure 管理 Cmdlet][]
+-   [Azure 管理 Cmdlet][Azure 管理 Cmdlet]
 
--   [设置 Azure VM 静态 IP 地址][]
+-   [设置 Azure VM 静态 IP 地址][设置 Azure VM 静态 IP 地址]
 
--   [如何向 Azure VM 分配静态 IP][]
+-   [如何向 Azure VM 分配静态 IP][如何向 Azure VM 分配静态 IP]
 
 -   [安装新的 Active Directory 林][安装 AD DS]
 
--   [介绍 Active Directory 域服务 (AD DS) 虚拟化（级别 100）][]
+-   [介绍 Active Directory 域服务 (AD DS) 虚拟化（级别 100）][介绍 Active Directory 域服务 (AD DS) 虚拟化（级别 100）]
 
--   [测试实验室指南：Azure 中的 Windows Server 2012 R2 基本配置][]
+-   [测试实验室指南：Azure 中的 Windows Server 2012 R2 基本配置][测试实验室指南：Azure 中的 Windows Server 2012 R2 基本配置]
 
   [Azure 虚拟网络]: http://msdn.microsoft.com/library/azure/jj156007.aspx
   [使用管理门户向导配置站点到站点 VPN]: http://msdn.microsoft.com/library/azure/dn133795.aspx

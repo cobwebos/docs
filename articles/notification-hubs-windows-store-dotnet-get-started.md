@@ -9,10 +9,10 @@
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
-1.  [为推送通知注册应用程序][]
-2.  [配置通知中心][]
-3.  [将你的应用程序连接到通知中心][]
-4.  [从后端发送通知][]
+1.  [为推送通知注册应用程序][为推送通知注册应用程序]
+2.  [配置通知中心][配置通知中心]
+3.  [将你的应用程序连接到通知中心][将你的应用程序连接到通知中心]
+4.  [从后端发送通知][从后端发送通知]
 
 本教程演示使用通知中心的简单广播方案。请确保随后学习下一教程以了解如何使用通知中心来发送到特定用户和设备组。本教程需要的内容如下：
 
@@ -27,7 +27,7 @@
 
 要从移动服务将推送通知发送到 Windows 应用商店应用程序，你必须将你的应用程序提交到 Windows 应用商店。然后必须将通知中心配置为与 WNS 集成。
 
-1.  如果尚未注册应用程序，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用程序”页][]，用 Microsoft 帐户登录，然后单击“应用程序名称”。
+1.  如果尚未注册应用程序，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用程序”页][“提交应用程序”页]，用 Microsoft 帐户登录，然后单击“应用程序名称”。
 
     ![][]
 
@@ -73,7 +73,7 @@
 
 ## <a name="configure-hub"></a><span class="short-header">配置通知中心</span>配置通知中心
 
-1.  登录到 [Azure 管理门户][]，然后单击屏幕底部的“新建”。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，然后单击屏幕底部的“新建”。
 
 2.  依次单击“应用程序服务”、“Service Bus”、“通知中心”和“快速创建”。
 
@@ -103,7 +103,7 @@
 
 ## <a name="connecting-app"></a><span class="short-header">连接应用程序</span>将应用程序连接到通知中心
 
-1.  使用 [WindowsAzure.Messaging.Managed NuGet 包][]添加对 Windows 应用商店的 Azure 消息传送库的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
+1.  使用 [WindowsAzure.Messaging.Managed NuGet 包][WindowsAzure.Messaging.Managed NuGet 包]添加对 Windows 应用商店的 Azure 消息传送库的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
 
         Install-Package WindowsAzure.Messaging.Managed
 
@@ -149,7 +149,7 @@
 
 ## <a name="send"></a><span class="short-header">发送通知</span>从后端发送通知
 
-你可以使用通知中心通过 [REST 接口][]从任意后端发送通知。在本教程中，你使用 .NET 控制台应用程序和移动服务来发送通知，通过节点脚本来执行这些操作。
+你可以使用通知中心通过 [REST 接口][REST 接口]从任意后端发送通知。在本教程中，你使用 .NET 控制台应用程序和移动服务来发送通知，通过节点脚本来执行这些操作。
 
 使用 .NET 应用程序发送通知：
 
@@ -165,7 +165,7 @@
 
     ![][16]
 
-4.  通过使用 [WindowsAzure.ServiceBus NuGet 包][]添加对 Azure Service Bus SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
+4.  通过使用 [WindowsAzure.ServiceBus NuGet 包][WindowsAzure.ServiceBus NuGet 包]添加对 Azure Service Bus SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
 
         Install-Package WindowsAzure.ServiceBus
 
@@ -195,11 +195,11 @@
 
     ![][17]
 
-你可以在 MSDN 上的 [toast 目录][]、[磁贴目录][]和[徽章概述][]中查看所有可能的负载。
+你可以在 MSDN 上的 [toast 目录][toast 目录]、[磁贴目录][磁贴目录]和[徽章概述][徽章概述]中查看所有可能的负载。
 
-要使用移动服务发送通知，请按[移动服务入门][]中的说明操作，然后执行以下操作：
+要使用移动服务发送通知，请按[移动服务入门][移动服务入门]中的说明操作，然后执行以下操作：
 
-1.  登录到 [Azure 管理门户][]并单击你的移动服务。
+1.  登录到 [Azure 管理门户][Azure 管理门户]并单击你的移动服务。
 
 2.  选择顶部的“计划程序”选项卡。
 
@@ -230,7 +230,7 @@
 
 ## <a name="next-steps"> </a>后续步骤
 
-在这个简单的示例中，你将通知广播到所有 Windows 设备。为了针对特定客户，请参考教程[使用通知中心将通知推送到用户][]。如果要按兴趣细分用户组，可以阅读[使用通知中心发送突发新闻][]。若要了解有关如何使用通知中心的详细信息，请参阅[通知中心指南][]。
+在这个简单的示例中，你将通知广播到所有 Windows 设备。为了针对特定客户，请参考教程[使用通知中心将通知推送到用户][使用通知中心将通知推送到用户]。如果要按兴趣细分用户组，可以阅读[使用通知中心发送突发新闻][使用通知中心发送突发新闻]。若要了解有关如何使用通知中心的详细信息，请参阅[通知中心指南][通知中心指南]。
 
 <!-- Anchors. -->  
 
@@ -261,7 +261,7 @@
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
 
 <!-- Images. -->
-  [0]: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-submit-win8-app.png
+  []: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-submit-win8-app.png
   [1]: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-win8-app-name.png
   [2]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-win8-app.png
   [3]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-win8-app.png

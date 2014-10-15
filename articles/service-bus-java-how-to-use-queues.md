@@ -2,22 +2,22 @@
 
 # 如何使用 Service Bus 队列
 
-本指南演示如何使用 Service Bus 队列。这些示例用 Java 编写并使用 [Azure SDK for Java][]。所涉及的任务包括**创建队列**、**发送和接收消息**和**删除队列**。
+本指南演示如何使用 Service Bus 队列。这些示例用 Java 编写并使用 [Azure SDK for Java][Azure SDK for Java]。所涉及的任务包括**创建队列**、**发送和接收消息**和**删除队列**。
 
 ## 目录
 
--   [什么是 Service Bus 队列？][]
--   [创建服务命名空间][]
--   [获得命名空间的默认管理凭据][]
--   [配置应用程序以使用 Service Bus][]
--   [如何：创建安全令牌提供程序][]
+-   [什么是 Service Bus 队列？][什么是 Service Bus 队列？]
+-   [创建服务命名空间][创建服务命名空间]
+-   [获得命名空间的默认管理凭据][获得命名空间的默认管理凭据]
+-   [配置应用程序以使用 Service Bus][配置应用程序以使用 Service Bus]
+-   [如何：创建安全令牌提供程序][如何：创建安全令牌提供程序]
 -   [如何：创建队列][如何：创建安全令牌提供程序]
--   [如何：向队列发送消息][]
--   [如何：从队列接收消息][]
--   [如何：处理应用程序崩溃和不可读消息][]
--   [后续步骤][]
+-   [如何：向队列发送消息][如何：向队列发送消息]
+-   [如何：从队列接收消息][如何：从队列接收消息]
+-   [如何：处理应用程序崩溃和不可读消息][如何：处理应用程序崩溃和不可读消息]
+-   [后续步骤][后续步骤]
 
-[WACOM.INCLUDE [howto-service-bus-queues][]]
+[WACOM.INCLUDE [howto-service-bus-queues][howto-service-bus-queues]]
 
 ## <a name="bkmk_ConfigApp"> </a>配置应用程序以使用 Service Bus
 
@@ -172,7 +172,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 ## <a name="bkmk_NextSteps"> </a> 后续步骤
 
-现在，你已了解 Service Bus 队列的基础知识，请参阅 MSDN主题[队列、主题和订阅][]以获取更多信息。
+现在，你已了解 Service Bus 队列的基础知识，请参阅 MSDN主题[队列、主题和订阅][队列、主题和订阅]以获取更多信息。
 
   [Azure SDK for Java]: http://azure.microsoft.com/zh-cn/develop/java/
   [什么是 Service Bus 队列？]: #what-are-service-bus-queues

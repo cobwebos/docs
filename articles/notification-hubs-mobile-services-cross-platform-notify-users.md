@@ -7,7 +7,7 @@
 <a href="/en-us/documentation/articles/notification-hubs-aspnet-cross-platform-notify-users/" title="ASP.NET">ASP.NET</a>
 </div>
 
-在上一教程[使用通知中心通知用户][]中，你了解了如何将通知推送到经过身份验证的特定用户所注册的所有设备。在该教程中，需要使用多个请求将通知发送到每个支持的客户端平台。通知中心支持模板，这允许你指定特定设备要如何接收通知。这简化了发送跨平台通知。本主题演示如何利用模板在单个请求中发送针对所有平台的平台未知通知。有关模板的更多详细信息，请参见 [Azure 通知中心概述][]。
+在上一教程[使用通知中心通知用户][使用通知中心通知用户]中，你了解了如何将通知推送到经过身份验证的特定用户所注册的所有设备。在该教程中，需要使用多个请求将通知发送到每个支持的客户端平台。通知中心支持模板，这允许你指定特定设备要如何接收通知。这简化了发送跨平台通知。本主题演示如何利用模板在单个请求中发送针对所有平台的平台未知通知。有关模板的更多详细信息，请参见 [Azure 通知中心概述][Azure 通知中心概述]。
 
 <div class="dev-callout"><b>说明</b>
 <p>通知中心允许设备使用同一标记注册多个模板。在这种情况下，针对该标签的传入消息将导致多个通知发送到设备（每个通知对应一个模板）。这允许你在多个可视通知中显示同一消息，如作为 Windows 应用商店应用程序中的徽章和 toast 通知。</p>
@@ -15,7 +15,7 @@
 
 完成以下步骤来使用模板发送跨平台通知：
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的应用程序。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务”，然后单击你的应用程序。
 
     ![][]
 
@@ -99,13 +99,13 @@
 
 现在，你已完成本教程，可以查看以下主题了解有关通知中心和模板的更多信息：
 
--   **使用通知中心发送突发新闻（[Windows 应用商店 C\#][] / [iOS][]）**
+-   **使用通知中心发送突发新闻（[Windows 应用商店 C\#][Windows 应用商店 C\#] / [iOS][iOS]）**
     演示使用模板的另一方案
 
--   **[Azure 通知中心概述][]**
+-   **[Azure 通知中心概述][Azure 通知中心概述]**
     “概述”主题提供有关模板的更多详细信息。
 
--   **[针对 Windows 应用商店的通知中心操作指南][]**
+-   **[针对 Windows 应用商店的通知中心操作指南][针对 Windows 应用商店的通知中心操作指南]**
     包含模板表示语言参考。
 
 <!-- Anchors. -->  
@@ -117,7 +117,7 @@
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
 <!-- Images. -->
-  [0]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-services-selection.png
+  []: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-services-selection.png
   [1]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-custom-api-select.png
   [2]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-portal-data-tables.png
   [3]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-insert-script-push2.png

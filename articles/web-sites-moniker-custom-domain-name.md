@@ -6,26 +6,26 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/en-us/documentation/articles/web-sites-moniker-custom-domain-name/" title="网站" class="current">网站</a> | <a href="/en-us/documentation/articles/web-sites-moniker-traffic-manager-custom-domain-name/" title="使用流量管理器的网站">使用流量管理器的网站</a></div>
 
-[WACOM.INCLUDE [介绍][]]
+[WACOM.INCLUDE [介绍][介绍]]
 
-本文提供了如何将从 [Moniker.com][] 购买的自定义域名用于 Azure 网站的说明。
+本文提供了如何将从 [Moniker.com][Moniker.com] 购买的自定义域名用于 Azure 网站的说明。
 
-[WACOM.INCLUDE [introfooter][]]
+[WACOM.INCLUDE [introfooter][introfooter]]
 
 本文内容：
 
--   [了解 DNS 记录][]
--   [为基本、共享或标准模式配置网站][]
--   [为自定义域添加 DNS 记录][]
--   [在网站上启用域][]
+-   [了解 DNS 记录][了解 DNS 记录]
+-   [为基本、共享或标准模式配置网站][为基本、共享或标准模式配置网站]
+-   [为自定义域添加 DNS 记录][为自定义域添加 DNS 记录]
+-   [在网站上启用域][在网站上启用域]
 
 ## <a name="understanding-records"></a>了解 DNS 记录
 
-[WACOM.INCLUDE [understandingdns][]]
+[WACOM.INCLUDE [understandingdns][understandingdns]]
 
 ## <a name="bkmk_configsharedmode"></a>为基本、共享或标准模式配置网站
 
-[WACOM.INCLUDE [modes][]]
+[WACOM.INCLUDE [modes][modes]]
 
 <a name="bkmk_configurecname"></a>
 
@@ -36,17 +36,17 @@
 
 1.  使用你的帐户登录 Moniker.com，选择“我的域”，然后选择“管理模板”。
 
-    ![Moniker 的“我的域”页面][]
+    ![Moniker 的“我的域”页面][Moniker 的“我的域”页面]
 
 2.  在“区域模板管理”页面上，选择“创建新模板”。
 
-    ![Moniker 区域模板管理][]
+    ![Moniker 区域模板管理][Moniker 区域模板管理]
 
 3.  填写“模板名称”。
 
 4.  然后通过先选择“记录类型”来创建一个 DNS 记录。。然后填写“主机名称”和“地址”。
 
-    ![Moniker 创建区域模板][]
+    ![Moniker 创建区域模板][Moniker 创建区域模板]
 
     -   添加 CNAME 记录时，必须将“主机名称”字段设置为你要使用的子域。例如，**www**。必须将“地址”字段设置为你的 Azure 网站的 **.chinacloudsites.cn** 域名。例如 **contoso.chinacloudsites.cn**。
 

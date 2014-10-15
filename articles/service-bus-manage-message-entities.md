@@ -2,16 +2,16 @@
 
 # 如何管理 Service Bus 消息传送实体
 
-本主题介绍如何使用 [Azure 管理门户][]创建和管理 Service Bus 实体。你可以使用该门户创建新的服务命名空间或消息传送实体（队列、主题或订阅）。也可删除实体或更改实体的状态。
+本主题介绍如何使用 [Azure 管理门户][Azure 管理门户]创建和管理 Service Bus 实体。你可以使用该门户创建新的服务命名空间或消息传送实体（队列、主题或订阅）。也可删除实体或更改实体的状态。
 
-若要使用此功能和其他新的 Azure 功能，请注册以获取[免费预览版][]。
+若要使用此功能和其他新的 Azure 功能，请注册以获取[免费预览版][免费预览版]。
 
 ## 目录
 
--   [如何：创建 Service Bus 实体][]
--   [如何：删除 Service Bus 实体][]
--   [如何：禁用或启用 Service Bus 实体][]
--   [其他资源][]
+-   [如何：创建 Service Bus 实体][如何：创建 Service Bus 实体]
+-   [如何：删除 Service Bus 实体][如何：删除 Service Bus 实体]
+-   [如何：禁用或启用 Service Bus 实体][如何：禁用或启用 Service Bus 实体]
+-   [其他资源][其他资源]
 
 ## <span id="create"></span></a>如何：创建 Service Bus 实体
 
@@ -40,7 +40,7 @@ Azure 管理门户支持两种创建 Service Bus 实体的方法：“快速创�
 
 **注意** 你无法立即查看列出的命名空间。创建服务命名空间和更新门户界面需要几秒钟的时间。
 
-**注意** 对中继使用“快速创建”不会创建新的中继终结点。而只会创建一个命名空间，可在其下方以编程方式创建中继终结点。有关详细信息，请参阅 [Service Bus 文档][]。
+**注意** 对中继使用“快速创建”不会创建新的中继终结点。而只会创建一个命名空间，可在其下方以编程方式创建中继终结点。有关详细信息，请参阅 [Service Bus 文档][Service Bus 文档]。
 
 ### 自定义创建
 
@@ -94,13 +94,13 @@ Azure 管理门户支持两种创建 Service Bus 实体的方法：“快速创�
 
 ## <span id="seealso"></span></a>其他资源
 
-[Azure Service Bus][]
+[Azure Service Bus][Azure Service Bus]
 
-Azure 网站上的 [.NET 开发人员中心][]。
+Azure 网站上的 [.NET 开发人员中心][.NET 开发人员中心]。
 
-[创建使用 Service Bus 主题和订阅的应用程序][]
+[创建使用 Service Bus 主题和订阅的应用程序][创建使用 Service Bus 主题和订阅的应用程序]
 
-[队列、主题和订阅][]
+[队列、主题和订阅][队列、主题和订阅]
 
   [Azure 管理门户]: http://manage.windowsazure.cn
   [免费预览版]: https://account.windowsazure.cn/PreviewFeatures
@@ -108,7 +108,7 @@ Azure 网站上的 [.NET 开发人员中心][]。
   [如何：删除 Service Bus 实体]: #delete
   [如何：禁用或启用 Service Bus 实体]: #disableenable
   [其他资源]: #seealso
-  [0]: ./media/service-bus-manage-message-entities/QueueQuickCreate.png
+  []: ./media/service-bus-manage-message-entities/QueueQuickCreate.png
   [Service Bus 文档]: http://www.windowsazure.cn/zh-cn/develop/net/how-to-guides/service-bus-relay/
   [1]: ./media/service-bus-manage-message-entities/AddQueue1.png
   [2]: ./media/service-bus-manage-message-entities/ConfigureQueue.png

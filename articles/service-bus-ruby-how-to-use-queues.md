@@ -2,27 +2,27 @@
 
 # 如何使用 Service Bus 队列
 
-本指南演示如何使用 Service Bus 队列。相关示例通过 Ruby 编写并使用 Azure gem。所涉及的任务包括**创建队列、发送和接收消息**和**删除队列**。有关队列的详细信息，请参阅[后续步骤][]一节。
+本指南演示如何使用 Service Bus 队列。相关示例通过 Ruby 编写并使用 Azure gem。所涉及的任务包括**创建队列、发送和接收消息**和**删除队列**。有关队列的详细信息，请参阅[后续步骤][后续步骤]一节。
 
 ## 目录
 
--   [什么是 Service Bus 队列？][]
--   [创建服务命名空间][]
--   [获得命名空间的默认管理凭据][]
--   [创建 Ruby 应用程序][]
--   [配置应用程序以使用 Service Bus][]
--   [设置 Azure Service Bus 连接][]
--   [如何创建队列][]
--   [如何向队列发送消息][]
--   [如何从队列接收消息][]
--   [如何处理应用程序崩溃和不可读消息][]
--   [后续步骤][]
+-   [什么是 Service Bus 队列？][什么是 Service Bus 队列？]
+-   [创建服务命名空间][创建服务命名空间]
+-   [获得命名空间的默认管理凭据][获得命名空间的默认管理凭据]
+-   [创建 Ruby 应用程序][创建 Ruby 应用程序]
+-   [配置应用程序以使用 Service Bus][配置应用程序以使用 Service Bus]
+-   [设置 Azure Service Bus 连接][设置 Azure Service Bus 连接]
+-   [如何创建队列][如何创建队列]
+-   [如何向队列发送消息][如何向队列发送消息]
+-   [如何从队列接收消息][如何从队列接收消息]
+-   [如何处理应用程序崩溃和不可读消息][如何处理应用程序崩溃和不可读消息]
+-   [后续步骤][后续步骤]
 
-[WACOM.INCLUDE [howto-service-bus-queues][]]
+[WACOM.INCLUDE [howto-service-bus-queues][howto-service-bus-queues]]
 
 ## <span id="create-a-ruby-application"></span></a>创建 Ruby 应用程序
 
-创建 Ruby 应用程序。有关说明，请参阅[在 Azure 上创建 Ruby 应用程序][]。
+创建 Ruby 应用程序。有关说明，请参阅[在 Azure 上创建 Ruby 应用程序][在 Azure 上创建 Ruby 应用程序]。
 
 ## <span id="configure-your-application-to-use-service-bus"></span></a>配置应用程序以使用 Service Bus
 
@@ -106,10 +106,10 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 现在，你已了解有关 Service Bus 队列的基础知识，单击下面的链接可了解更多信息。
 
--   查看 MSDN 参考：[队列、主题和订阅][]
--   访问 GitHub 上的 [Azure SDK for Ruby][] 存储库
+-   查看 MSDN 参考：[队列、主题和订阅][队列、主题和订阅]
+-   访问 GitHub 上的 [Azure SDK for Ruby][Azure SDK for Ruby] 存储库
 
-有关本文中讨论的 Azure Service Bus 队列与[如何使用 Azure 队列服务][]一文中讨论的 Azure 队列的比较，请参阅 [Azure 队列和 Azure Service Bus 队列 - 比较与对照][]
+有关本文中讨论的 Azure Service Bus 队列与[如何使用 Azure 队列服务][如何使用 Azure 队列服务]一文中讨论的 Azure 队列的比较，请参阅 [Azure 队列和 Azure Service Bus 队列 - 比较与对照][Azure 队列和 Azure Service Bus 队列 - 比较与对照]
 
   [后续步骤]: #next-steps
   [什么是 Service Bus 队列？]: #what-are-service-bus-queues

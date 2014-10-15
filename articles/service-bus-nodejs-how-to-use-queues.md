@@ -2,26 +2,26 @@
 
 # 如何使用 Service Bus 队列
 
-本指南演示如何使用 Service Bus 队列。示例用 JavaScript 编写并使用 Node.js Azure 模块。所涉及的任务包括**创建队列、发送和接收消息**和**删除队列**。有关队列的详细信息，请参阅[后续步骤][]一节。
+本指南演示如何使用 Service Bus 队列。示例用 JavaScript 编写并使用 Node.js Azure 模块。所涉及的任务包括**创建队列、发送和接收消息**和**删除队列**。有关队列的详细信息，请参阅[后续步骤][后续步骤]一节。
 
 ## 目录
 
--   [什么是 Service Bus 队列？][]
--   [创建服务命名空间][]
--   [获得命名空间的默认管理凭据][]
--   [创建 Node.js 应用程序][]
--   [配置应用程序以使用 Service Bus][]
--   [如何：创建队列][]
--   [如何：向队列发送消息][]
--   [如何：从队列接收消息][]
--   [如何：处理应用程序崩溃和不可读消息][]
--   [后续步骤][]
+-   [什么是 Service Bus 队列？][什么是 Service Bus 队列？]
+-   [创建服务命名空间][创建服务命名空间]
+-   [获得命名空间的默认管理凭据][获得命名空间的默认管理凭据]
+-   [创建 Node.js 应用程序][创建 Node.js 应用程序]
+-   [配置应用程序以使用 Service Bus][配置应用程序以使用 Service Bus]
+-   [如何：创建队列][如何：创建队列]
+-   [如何：向队列发送消息][如何：向队列发送消息]
+-   [如何：从队列接收消息][如何：从队列接收消息]
+-   [如何：处理应用程序崩溃和不可读消息][如何：处理应用程序崩溃和不可读消息]
+-   [后续步骤][后续步骤]
 
-[WACOM.INCLUDE [howto-service-bus-queues][]]
+[WACOM.INCLUDE [howto-service-bus-queues][howto-service-bus-queues]]
 
 ## <a name="create-app"> </a>创建 Node.js 应用程序
 
-创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][]、[Node.js 云服务][]（使用 Windows PowerShell）或[使用 WebMatrix 构建网站][]。
+创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][创建 Node.js 应用程序并将其部署到 Azure 网站]、[Node.js 云服务][Node.js 云服务]（使用 Windows PowerShell）或[使用 WebMatrix 构建网站][使用 WebMatrix 构建网站]。
 
 ## <a name="configure-app"> </a>配置应用程序以使用 Service Bus
 
@@ -58,9 +58,9 @@
 
 azure 模块将读取环境变量 AZURE\_SERVICEBUS\_NAMESPACE 和 AZURE\_SERVICEBUS\_ACCESS\_KEY 以获取连接 Azure Service Bus 所需的信息。如果未设置这些环境变量，则必须在调用 **createServiceBusService** 时指定帐户信息。
 
-有关在 Azure 云服务的配置文件中设置环境变量的示例，请参阅[使用存储构建 Node.js 云服务][]。
+有关在 Azure 云服务的配置文件中设置环境变量的示例，请参阅[使用存储构建 Node.js 云服务][使用存储构建 Node.js 云服务]。
 
-有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序][]。
+有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序][使用存储构建 Node.js Web 应用程序]。
 
 ## <a name="create-queue"> </a>如何创建队列
 
@@ -169,8 +169,8 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 现在，你已了解有关 Service Bus 队列的基础知识，单击下面的链接可了解更多信息。
 
--   查看 MSDN 参考：[队列、主题和订阅。][]
--   访问 GitHub 上的 [Azure SDK for Node][] 存储库。
+-   查看 MSDN 参考：[队列、主题和订阅。][队列、主题和订阅。]
+-   访问 GitHub 上的 [Azure SDK for Node][Azure SDK for Node] 存储库。
 
   [后续步骤]: #next-steps
   [什么是 Service Bus 队列？]: #what-are-service-bus-queues

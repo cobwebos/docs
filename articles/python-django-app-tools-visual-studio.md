@@ -2,9 +2,9 @@
 
 # 使用 Python Tools for Visual Studio 1.5 创建 Django 应用程序
 
-**注意：**本教程还制作成了 [Youtube 视频][]。
+**注意：**本教程还制作成了 [Youtube 视频][Youtube 视频]。
 
-**注意：**我们目前已发布了针对 PTVS 2.0 Beta 的[更新且更全面的教程][]。
+**注意：**我们目前已发布了针对 PTVS 2.0 Beta 的[更新且更全面的教程][更新且更全面的教程]。
 
 使用现成的工具可以让 Azure 开发变得很轻松。
 本教程假定你之前未使用过 Azure。
@@ -23,11 +23,11 @@
 
 ![][]
 
-[WACOM.INCLUDE [create-account-note][]]
+[WACOM.INCLUDE [create-account-note][create-account-note]]
 
 ## <span id="setup"></span> </a>设置开发环境
 
-在你可以开始开发 Azure 应用程序之前，你需要获取一些工具并设置开发环境。有关获取并安装 Azure SDK for Python 的详细信息，请参阅[如何安装 Python][]。
+在你可以开始开发 Azure 应用程序之前，你需要获取一些工具并设置开发环境。有关获取并安装 Azure SDK for Python 的详细信息，请参阅[如何安装 Python][如何安装 Python]。
 
 **注意：**本教程需要 Python 2.7 和 Django 1.4。这些版本已包含在最新的 Azure SDK for Python 中。
 
@@ -37,29 +37,29 @@
 
 若要创建新的 Django 应用程序，请首先启动 Visual Studio，然后使用“文件”-\>“新建项目”来创建新项目。找到“Python”选项卡（位于顶级或“其他语言”区域中），然后选择“Django 应用程序”模板：
 
-![新 Python 项目模板][]
+![新 Python 项目模板][新 Python 项目模板]
 
 单击“确定”，你将创建你的第一个 Django 应用程序。
 
-![显示你的第一个 Django 项目的已打开的 Visual Studio][]
+![显示你的第一个 Django 项目的已打开的 Visual Studio][显示你的第一个 Django 项目的已打开的 Visual Studio]
 
 接下来，你将要开始开发第一个 Django 应用程序。你可以右键单击模块节点并选择“添加新的 Django 应用程序...”来在你的项目中设置新应用程序：
 
-![添加新应用程序菜单项][]
+![添加新应用程序菜单项][添加新应用程序菜单项]
 
 之后，你可以为你的应用程序输入新名称：
 
-![添加新应用程序名称提示][]
+![添加新应用程序名称提示][添加新应用程序名称提示]
 
 在为应用程序输入名称并单击“确定”后，将向你的项目中添加一个新应用程序：
 
-![添加了新应用程序的解决方案资源管理器][]
+![添加了新应用程序的解决方案资源管理器][添加了新应用程序的解决方案资源管理器]
 
 现在，请更新 **settings.py**，以注册你的应用程序。这会导致 Django 自动发现添加到你的应用程序 Templates 目录中的模板文件。将应用程序名称添加到 INSTALLED\_APPS 节：
 
     'DjangoApplication.MyFirstApp',
 
-![将应用程序添加到 INSTALLED\_APPS 中的 settings.py][]
+![将应用程序添加到 INSTALLED\_APPS 中的 settings.py][将应用程序添加到 INSTALLED\_APPS 中的 settings.py]
 
 接下来，让我们向应用程序的 **views.py** 中添加一些代码，以便可以返回一个简单的模板文件：
 
@@ -75,7 +75,7 @@
 
 然后，让我们添加将在你访问此视图时呈现的简单模板文件。为此，我们可以右键单击 Templates 文件夹并选择“添加新项”：
 
-![向 Templates 文件夹中添加新项][]
+![向 Templates 文件夹中添加新项][向 Templates 文件夹中添加新项]
 
 你现在可以从模板列表中选择“Django HTML 模板”并输入 **index.html** 作为文件名：
 
@@ -83,27 +83,27 @@
 
 之后，该模板将添加到项目中并打开。在这里，你可以看到为模板标记突出显示的一些语法的起始内容：
 
-![添加到解决方案资源管理器的模板][]
+![添加到解决方案资源管理器的模板][添加到解决方案资源管理器的模板]
 
 此时，你可以开始更新模板以更改呈现的 HTML，并且在执行该操作时，你将获得较好的智能感知体验：
 
-![Django 筛选器的模板智能感知功能][]
+![Django 筛选器的模板智能感知功能][Django 筛选器的模板智能感知功能]
 
 你可以保留或取消大写格式，因为它基本上不会改变本教程的结果。最后，你只需在 **urls.py** 中使用 url 模式注册你的视图。将以下代码添加到 **urlpatterns** 中：
 
     url(r'^$', 'DjangoApplication.MyFirstApp.views.home', name='home'),
 
-![注册 URL][]
+![注册 URL][注册 URL]
 
 ## 在测试服务器中本地运行你的应用程序
 
 此时，你已创建你的第一个 Django 应用程序。现在，你只需**按 F5** 即可在本地运行它。
 
-![浏览器和测试服务器中的 Django Hello World][]
+![浏览器和测试服务器中的 Django Hello World][浏览器和测试服务器中的 Django Hello World]
 
 这会启动运行 Django 的 **manage.py** 的 Python 解释程序以运行测试服务器。在测试服务器成功启动后，它还会启动 Web 浏览器以查看网站。因为你是使用 F5 启动应用程序的，而这会在调试器中启动该应用程序，所以我们还可以在任何 Python 代码（例如视图代码）或模板文件本身中设置断点：
 
-![停在模板断点处的调试器][]
+![停在模板断点处的调试器][停在模板断点处的调试器]
 
 你现在可以**单击停止按钮**并转为在 Azure 计算模拟器中运行。
 
@@ -115,11 +115,11 @@
 
 这可通过右键单击解决方案资源管理器中的 Django 项目节点并选择“添加 Azure 云服务项目”来实现：
 
-![添加部署项目][]
+![添加部署项目][添加部署项目]
 
 在执行此命令后，你将在解决方案资源管理器中看到新添加的项目：
 
-![添加部署项目之后][]
+![添加部署项目之后][添加部署项目之后]
 
 此新项目现在还在解决方案中标记为启动项目。此时，你将需要**以管理员身份重新启动 Visual Studio** 以使应用程序能够在计算模拟器中运行。执行该操作后，我们只需**按 F5**，应用程序即可运行并部署在计算模拟器中：
 
@@ -133,19 +133,19 @@
 
 现在，你已准备好将项目部署到 Azure。为此，你只需在解决方案资源管理器中右键单击 Azure 部署项目并选择“发布”：
 
-![打包应用程序菜单][]
+![打包应用程序菜单][打包应用程序菜单]
 
 在选择“发布”后，将提示你登录 Azure。你可以在此处导入你的现有凭据或设置新凭据：
 
-![打包订阅][]
+![打包订阅][打包订阅]
 
 在选择凭据后，你将看到“Azure 发布设置”屏幕。你可以选择各种有关你的部署将如何进行的选项，也可以直接按“发布”：
 
-![打包设置][]
+![打包设置][打包设置]
 
 你现在将需要等待来设置和部署应用程序。
 
-![打包部署][]
+![打包部署][打包部署]
 
 在完成所有设置后，你可以单击 DNS 名称下面的链接来查看运行在云中的网站：
 
@@ -153,7 +153,7 @@
 
   [Youtube 视频]: http://www.youtube.com/watch?v=UsLti4KlgAY
   [更新且更全面的教程]: ../web-sites-python-create-deploy-django-app/
-  [0]: ./media/python-django-app-tools-visual-studio/ptvs-dj-FirstAppInCloud.png
+  []: ./media/python-django-app-tools-visual-studio/ptvs-dj-FirstAppInCloud.png
   [create-account-note]: ../includes/create-account-note.md
   [如何安装 Python]: ../python-how-to-install/
 

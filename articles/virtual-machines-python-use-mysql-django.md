@@ -2,27 +2,27 @@
 
 # Django Hello World - MySQL Windows 版本
 
-本教程介绍如何在单个 Azure 虚拟机上结合使用 MySQL 与 Django。本指南假定你以前使用过 Azure 和 Django。有关 Azure 和 Django 的简介，请参阅 [Django Hello World][]。本指南还假定你对 MySQL 有一些了解。有关 MySQL 的概述，请参阅 [MySQL 网站][]。
+本教程介绍如何在单个 Azure 虚拟机上结合使用 MySQL 与 Django。本指南假定你以前使用过 Azure 和 Django。有关 Azure 和 Django 的简介，请参阅 [Django Hello World][Django Hello World]。本指南还假定你对 MySQL 有一些了解。有关 MySQL 的概述，请参阅 [MySQL 网站][MySQL 网站]。
 
 在本教程中，你将了解如何：
 
 -   设置 Azure 虚拟机以托管 MySQL 和 Django。虽然本教程介绍如何在 Windows Server 2008 R2 下实现此目的，但也可以使用托管在 Azure 中的 Linux VM 实现相同目的。
--   为 Python 安装 [MySQL 驱动程序][]。
+-   为 Python 安装 [MySQL 驱动程序][MySQL 驱动程序]。
 -   配置现有 Django 应用程序以使用 MySQL 数据库。
 -   直接从 Python 使用 MySQL。
 -   托管并运行你的 MySQL Django 应用程序。
 
-通过利用托管在 Azure VM 中的 MySQL 数据库，你将扩展 [Django Hello World][] 示例以查找所需的 *World* 替换项。将通过支持 MySQL 的 Django *counter* 应用程序来决定此替换项。如同 Hello World 示例一样，此 Django 应用程序仍将托管在 Azure 虚拟机中。
+通过利用托管在 Azure VM 中的 MySQL 数据库，你将扩展 [Django Hello World][Django Hello World] 示例以查找所需的 *World* 替换项。将通过支持 MySQL 的 Django *counter* 应用程序来决定此替换项。如同 Hello World 示例一样，此 Django 应用程序仍将托管在 Azure 虚拟机中。
 
 本教程中的项目文件将存储在 **C:\\django\\helloworld** 中，并且已完成的应用程序将类似于下图：
 
 ![][]
 
-[WACOM.INCLUDE [create-account-and-vms-note][]]
+[WACOM.INCLUDE [create-account-and-vms-note][create-account-and-vms-note]]
 
 ## 设置虚拟机以托管 MySQL 和 Django
 
-1.  按照[此处][]提供的说明可创建 *Windows Server 2008 R2* 分发的 Azure 虚拟机。
+1.  按照[此处][此处]提供的说明可创建 *Windows Server 2008 R2* 分发的 Azure 虚拟机。
 
 2.  在该虚拟机上为 MySQL 事务打开 TCP 端口：
 
@@ -44,7 +44,7 @@
  * 再次单击“下一步”。
  * 为规则指定名称（例如“DjangoPort”），然后单击“完成”。
 
-6.  在虚拟机上安装适用于 Windows 的最新版本的 [MySQL Community Server][]：
+6.  在虚拟机上安装适用于 Windows 的最新版本的 [MySQL Community Server][MySQL Community Server]：
 
     **注意**：建议将你的数据库安装在与 OS 不同的数据分区中。
 
@@ -54,9 +54,9 @@
     -   选择配置向导中的“详细配置”。
     -   **确保你在端口号 3306 上启用了 TCP/IP 网络并为该端口添加了防火墙例外。**
     -   设置根密码并从远程计算机进行根目录访问。
- * 安装[“world”数据库][]示例（MyISAM 版本）：
+ * 安装[“world”数据库][“world”数据库]示例（MyISAM 版本）：
 
-    -   将[此][] zip 文件下载到 Azure 虚拟机上。
+    -   将[此][此] zip 文件下载到 Azure 虚拟机上。
     -   **将它解压缩到 *C:\\Users\\Administrator\\Desktop\\world.sql*。**
 
 1.  安装 MySQL 之后，单击 Windows“开始”菜单，然后运行刚才安装的“MySQL 5.5 Command Line Client”。发出以下命令：
@@ -74,17 +74,17 @@
 
   ![][1]
 
-8.  在你开始开发你的 Django 应用程序之前，我们当然需要在虚拟机上安装 Python+Django。通过 [Web 平台安装程序][]可以完成这一步。在安装 Web PI 后，使用它搜索“Django”并且安装 Django (Python) 产品。
+8.  在你开始开发你的 Django 应用程序之前，我们当然需要在虚拟机上安装 Python+Django。通过 [Web 平台安装程序][Web 平台安装程序]可以完成这一步。在安装 Web PI 后，使用它搜索“Django”并且安装 Django (Python) 产品。
 
   **注意：**你只需从 WebPI 安装 *Django* 产品即可使用本教程。你**无**需安装 *Python Tools for Visual Studio* 或 Azure Python SDK 即可实现所需目的。
 
-1.  安装 MySQL Python 客户端包。你可以直接[从此链接][]安装它。完成后，运行以下命令来验证你的安装：
+1.  安装 MySQL Python 客户端包。你可以直接[从此链接][从此链接]安装它。完成后，运行以下命令来验证你的安装：
 
   ![][2]
 
 ## 扩展 Django Hello World 应用程序
 
-1.  按照 [Django Hello World][] 教程中提供的说明在 Django 中创建一个简单的“Hello World”Web 应用程序。
+1.  按照 [Django Hello World][Django Hello World] 教程中提供的说明在 Django 中创建一个简单的“Hello World”Web 应用程序。
 
 2.  在你喜欢的文本编辑器中打开 **C:\\django\\helloworld\\helloworld\\settings.py**。修改 **DATABASES** 全局字典以读取以下内容：
 
@@ -235,7 +235,7 @@
   [Django Hello World]: http://windowsazure.com/en-us/documentation/articles/virtual-machines-python-django-web-app-windows-server
   [MySQL 网站]: http://dev.mysql.com/doc/
   [MySQL 驱动程序]: http://pypi.python.org/pypi/MySQL-python/1.2.3
-  [0]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01.png
+  []: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01.png
   [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [此处]: /en-us/manage/windows/tutorials/virtual-machine-from-gallery/
   [MySQL Community Server]: http://dev.mysql.com/downloads/mysql/

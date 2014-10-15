@@ -6,18 +6,18 @@
 
 本教程将指导你完成以下步骤：
 
-1.  [使用 Azure 应用商店注册 New Relic][]。
-2.  [安装 New Relic 模块][]。
-3.  [启用针对移动服务的 New Relic 开发人员分析][]。
-4.  [在 New Relic 仪表板中监视移动服务][]。
+1.  [使用 Azure 应用商店注册 New Relic][使用 Azure 应用商店注册 New Relic]。
+2.  [安装 New Relic 模块][安装 New Relic 模块]。
+3.  [启用针对移动服务的 New Relic 开发人员分析][启用针对移动服务的 New Relic 开发人员分析]。
+4.  [在 New Relic 仪表板中监视移动服务][在 New Relic 仪表板中监视移动服务]。
 
-若要完成本教程，你必须事先参考[移动服务入门][]或[数据处理入门][]教程创建一个移动服务。
+若要完成本教程，你必须事先参考[移动服务入门][移动服务入门]或[数据处理入门][数据处理入门]教程创建一个移动服务。
 
 ## <a name="sign-up"></a>使用 Azure 应用商店注册 New Relic
 
 第一步是购买 New Relic 服务。本教程演示如何从 Azure 应用商店购买该服务。移动服务支持在 Azure 应用商店外购买的 New Relic 订阅。
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 
 2.  在该管理门户的下方窗格中，单击“新建”。
 
@@ -43,13 +43,13 @@
 
 在你注册 New Relic 服务后，需要在你的移动服务中安装 New Relic Node.js 模块。你必须针对你的移动服务启用了源代码管理，才能上载此模块。
 
-1.  如果你尚未这样做，请按照教程[在源代码管理中存储服务器脚本][]中的步骤针对你的移动服务启用源代码管理，克隆存储库，并且安装 [Node 包管理器 (NPM)][]。
+1.  如果你尚未这样做，请按照教程[在源代码管理中存储服务器脚本][在源代码管理中存储服务器脚本]中的步骤针对你的移动服务启用源代码管理，克隆存储库，并且安装 [Node 包管理器 (NPM)][Node 包管理器 (NPM)]。
 
 2.  导航到你的本地 Git 存储库的`.\service` 文件夹，然后从命令提示符处运行以下命令：
 
         npm install newrelic
 
-    NPM 将 [New Relic 模块][]安装在`\newrelic` 子目录中。
+    NPM 将 [New Relic 模块][New Relic 模块]安装在`\newrelic` 子目录中。
 
 3.  打开一个 Git 命令行工具，例如 **GitBash** (Windows) 或 **Bash** (Unix Shell)，然后在 Git 命令提示符处键入以下命令：
 
@@ -59,11 +59,11 @@
 
     这会将新的`newrelic` 模块上载到你的移动服务。
 
-接下来，你将在[管理门户][]中启用针对你的移动服务的 New Relic 监视。
+接下来，你将在[管理门户][管理门户]中启用针对你的移动服务的 New Relic 监视。
 
 ## <a name="enable-service"></a>启用针对移动服务的 New Relic 开发人员分析
 
-1.  在[管理门户][]中，选择你的移动服务，然后单击“配置”选项卡。
+1.  在[管理门户][管理门户]中，选择你的移动服务，然后单击“配置”选项卡。
 
     ![][]
 
@@ -93,7 +93,7 @@
 
 2.  等待几分钟以便处理数据，然后导航到 New Relic 仪表板。
 
-    如果你的 New Relic 订阅是作为外接程序购买的，则在[管理门户][]中选择它，然后单击“管理”。
+    如果你的 New Relic 订阅是作为外接程序购买的，则在[管理门户][管理门户]中选择它，然后单击“管理”。
 
 3.  在 New Relic 中，单击“应用程序”，然后单击你的移动服务。
 
@@ -105,8 +105,8 @@
 
 ## <a name="next-steps"> </a>后续步骤
 
--   有关定价信息，请参阅 [Azure 应用商店中的 New Relic 页][]。
--   有关使用 New Relic 的更多信息，请参阅 New Relic 文档中的[应用程序概述][]。
+-   有关定价信息，请参阅 [Azure 应用商店中的 New Relic 页][Azure 应用商店中的 New Relic 页]。
+-   有关使用 New Relic 的更多信息，请参阅 New Relic 文档中的[应用程序概述][应用程序概述]。
 
 <!-- Anchors. -->  
 
@@ -125,7 +125,7 @@
   [管理门户]: https://manage.windowsazure.cn/
 
 <!-- Images. -->
-  [0]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-tab.png
+  []: ./media/store-new-relic-mobile-services-monitor/mobile-configure-tab.png
   [1]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-new-relic-monitoring.png
   [2]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-new-relic-monitoring-custom.png
   [3]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-new-relic-monitoring-complete.png

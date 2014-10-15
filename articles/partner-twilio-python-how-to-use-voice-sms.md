@@ -2,20 +2,20 @@
 
 # 如何通过 PHP 使用 Twilio 实现语音和 SMS 功能
 
-本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。有关 Twilio 以及在应用程序中使用语音和 SMS 的详细信息，请参阅[后续步骤][]部分。
+本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。有关 Twilio 以及在应用程序中使用语音和 SMS 的详细信息，请参阅[后续步骤][后续步骤]部分。
 
 ## 目录
 
--   [什么是 Twilio？][]
--   [Twilio 定价][]
--   [概念][]
--   [创建 Twilio 帐户][]
--   [验证电话号码][]
--   [创建 PHP 应用程序][]
--   [将应用程序配置为使用 Twilio 库][]
--   [如何：发起传出呼叫][]
--   [如何：发送 SMS 消息][]
--   [如何：从你自己的网站提供 TwiML 响应][]
+-   [什么是 Twilio？][什么是 Twilio？]
+-   [Twilio 定价][Twilio 定价]
+-   [概念][概念]
+-   [创建 Twilio 帐户][创建 Twilio 帐户]
+-   [验证电话号码][验证电话号码]
+-   [创建 PHP 应用程序][创建 PHP 应用程序]
+-   [将应用程序配置为使用 Twilio 库][将应用程序配置为使用 Twilio 库]
+-   [如何：发起传出呼叫][如何：发起传出呼叫]
+-   [如何：发送 SMS 消息][如何：发送 SMS 消息]
+-   [如何：从你自己的网站提供 TwiML 响应][如何：从你自己的网站提供 TwiML 响应]
 
 ## <span id="WhatIs"></span></a>什么是 Twilio？
 
@@ -31,7 +31,7 @@ Twilio 是一种现用现付服务。没有设置费用，并且你可以随时�
 
 ## <span id="Concepts"></span></a>概念
 
-Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。提供了多种语言版本的客户端库；有关列表，请参阅 [Twilio API 库][]。
+Twilio API 是一个为应用程序提供语音和 SMS 功能的 RESTful API。提供了多种语言版本的客户端库；有关列表，请参阅 [Twilio API 库][Twilio API 库]。
 
 Twilio API 的关键方面是 Twilio 谓词和 Twilio 标记语言 (TwiML)。
 
@@ -65,25 +65,25 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
 当应用程序调用 Twilio API 时，某个 API 参数将为返回 TwiML 响应的 URL。在开发过程中，可以使用 Twilio 提供的 URL 来提供应用程序所使用的 TwiML 响应。还可以托管你自己的 URL 来生成 TwiML 响应，也可以选择使用 **TwiMLResponse** 对象。
 
-有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][]。有关 Twilio API 的其他信息，请参阅 [Twilio API][]。
+有关 Twilio 谓词、其属性和 TwiML 的详细信息，请参阅 [TwiML][TwiML]。有关 Twilio API 的其他信息，请参阅 [Twilio API][Twilio API]。
 
 ## <span id="CreateAccount"></span></a>创建 Twilio 帐户
 
-准备好获取 Twilio 帐户后，请单击[试用 Twilio][] 注册。可以先使用免费帐户，以后再升级你的帐户。
+准备好获取 Twilio 帐户后，请单击[试用 Twilio][试用 Twilio] 注册。可以先使用免费帐户，以后再升级你的帐户。
 
-注册 Twilio 帐户时，你将收到帐户 ID 和身份验证令牌。需要二者才能发起 Twilio API 呼叫。为了防止对你的帐户进行未经授权的访问，请保护身份验证令牌。你的帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][]上标记为**“帐户 SID”**和**“身份验证令牌”**的字段中。
+注册 Twilio 帐户时，你将收到帐户 ID 和身份验证令牌。需要二者才能发起 Twilio API 呼叫。为了防止对你的帐户进行未经授权的访问，请保护身份验证令牌。你的帐户 ID 和身份验证令牌会分别显示在 [Twilio 帐户页][Twilio 帐户页]上标记为**“帐户 SID”**和**“身份验证令牌”**的字段中。
 
 ## <span id="VerifyPhoneNumbers"></span></a>验证电话号码
 
-需要使用 Twilio 为你的帐户验证各个电话号码。例如，若要使用你的针对呼叫方 ID 的现有的电话号码发起出站电话呼叫，必须使用 Twilio 验证该电话号码。同样，在升级前若要将 SMS 消息发送到某一电话号码，必须使用 Twilio 验证该电话号码。升级后，你可以将 SMS 消息发送给任何号码而不必对其进行验证。有关如何验证电话号码的信息，请参阅[管理号码（可能为英文页面）][]。下面的一些代码依赖于需要使用 Twilio 进行验证的电话号码。
+需要使用 Twilio 为你的帐户验证各个电话号码。例如，若要使用你的针对呼叫方 ID 的现有的电话号码发起出站电话呼叫，必须使用 Twilio 验证该电话号码。同样，在升级前若要将 SMS 消息发送到某一电话号码，必须使用 Twilio 验证该电话号码。升级后，你可以将 SMS 消息发送给任何号码而不必对其进行验证。有关如何验证电话号码的信息，请参阅[管理号码（可能为英文页面）][管理号码（可能为英文页面）]。下面的一些代码依赖于需要使用 Twilio 进行验证的电话号码。
 
-作为对应用程序使用现有号码的替代方法，你可以购买 Twilio 电话号码。有关购买 Twilio 电话号码的信息，请参阅 [Twilio 电话号码帮助][]。
+作为对应用程序使用现有号码的替代方法，你可以购买 Twilio 电话号码。有关购买 Twilio 电话号码的信息，请参阅 [Twilio 电话号码帮助][Twilio 电话号码帮助]。
 
 ## <span id="create_app"></span></a>创建 PHP 应用程序
 
-使用 Twilio 服务且在 Azure 中运行的 PHP 应用程序与任何其他使用 Twilio 服务的 PHP 应用程序之间没有任何差别。Twilio 服务是基于 REST 的且可通过几种方法从 PHP 中调用，本文将重点介绍如何将 Twilio 服务与 [Github 提供的用于 PHP 的 Twilio 库][]一起使用。有关使用用于 PHP 的 Twilio 库的详细信息，请参阅 [][]<http://readthedocs.org/docs/twilio-php/en/latest/index.html></a>。
+使用 Twilio 服务且在 Azure 中运行的 PHP 应用程序与任何其他使用 Twilio 服务的 PHP 应用程序之间没有任何差别。Twilio 服务是基于 REST 的且可通过几种方法从 PHP 中调用，本文将重点介绍如何将 Twilio 服务与 [Github 提供的用于 PHP 的 Twilio 库][Github 提供的用于 PHP 的 Twilio 库]一起使用。有关使用用于 PHP 的 Twilio 库的详细信息，请参阅 [][]<http://readthedocs.org/docs/twilio-php/en/latest/index.html></a>。
 
-有关如何生成 Twilio/PHP 应用程序并将其部署到 Azure 的详细说明，请参阅[如何在 Azure 中通过 PHP 应用程序使用 Twilio 发起电话呼叫][]。
+有关如何生成 Twilio/PHP 应用程序并将其部署到 Azure 的详细说明，请参阅[如何在 Azure 中通过 PHP 应用程序使用 Twilio 发起电话呼叫][如何在 Azure 中通过 PHP 应用程序使用 Twilio 发起电话呼叫]。
 
 ## <span id="configure_app"></span></a>将应用程序配置为使用 Twilio 库
 
@@ -248,11 +248,11 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
 
 了解 Twilio 服务的基础知识后，请单击以下链接了解更多信息：
 
--   [Twilio 安全准则][]
--   [Twilio 操作方法指南和示例代码][]
--   [Twilio 快速入门教程][]
--   [GitHub 上的 Twilio][]
--   [与 Twilio 技术支持人员交流][]
+-   [Twilio 安全准则][Twilio 安全准则]
+-   [Twilio 操作方法指南和示例代码][Twilio 操作方法指南和示例代码]
+-   [Twilio 快速入门教程][Twilio 快速入门教程]
+-   [GitHub 上的 Twilio][GitHub 上的 Twilio]
+-   [与 Twilio 技术支持人员交流][与 Twilio 技术支持人员交流]
 
   [后续步骤]: #NextSteps
   [什么是 Twilio？]: #WhatIs

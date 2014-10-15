@@ -13,11 +13,11 @@
 
 无论你是第一次使用 Python 并希望在有趣的交互式环境中了解它，还是执行一些严格的并行/技术计算，IPython Notebook 都是一个很好的选择。为说明其各项功能，下面的屏幕快照显示了与 SciPy 和 matplotlib 包结合使用来分析录音结构的 IPython Notebook：
 
-![屏幕快照][]
+![屏幕快照][屏幕快照]
 
 本文档将演示如何使用 Linux 或 Windows 虚拟机 (VM) 在 Windows Azure 上部署 IPython Notebook。通过在 Azure 上使用 IPython Notebook，你可以轻松地为具有 Python 的所有功能及其许多库的可缩放计算资源提供可通过 Web 访问的接口。由于所有安装都是在云中进行的，因此用户可以访问这些资源，而无需进行除最新 Web 浏览器以外的任何其他本地配置。
 
-[WACOM.INCLUDE [create-account-and-vms-note][]]
+[WACOM.INCLUDE [create-account-and-vms-note][create-account-and-vms-note]]
 
 ## 在 Azure 上创建并配置 VM
 
@@ -25,7 +25,7 @@
 
 ### Linux VM
 
-按照[此处][]提供的说明可创建 *OpenSUSE* 或 *Ubuntu* 分发的虚拟机。本教程使用 OpenSUSE 12.3 和 Ubuntu Server 13.04。我们将假定默认用户名为 *azureuser*。
+按照[此处][此处]提供的说明可创建 *OpenSUSE* 或 *Ubuntu* 分发的虚拟机。本教程使用 OpenSUSE 12.3 和 Ubuntu Server 13.04。我们将假定默认用户名为 *azureuser*。
 
 ### Windows VM
 
@@ -51,7 +51,7 @@
 
 若要安装 IPython 及其依赖项，请通过 SSH 进入 Linux VM 并执行以下步骤。
 
-安装 [NumPy][]、[Matplotlib][]、[Tornado][] 和其他 IPython 依赖项，方法是：
+安装 [NumPy][NumPy]、[Matplotlib][Matplotlib]、[Tornado][Tornado] 和其他 IPython 依赖项，方法是：
 
     sudo zypper install python-matplotlib
     sudo zypper install python-tornado
@@ -61,7 +61,7 @@
 
 若要安装 IPython 及其依赖项，请通过 SSH 进入 Linux VM 并执行以下步骤。
 
-安装 [NumPy][]、[Matplotlib][]、[Tornado][] 和其他 IPython 依赖项，方法是：
+安装 [NumPy][NumPy]、[Matplotlib][Matplotlib]、[Tornado][Tornado] 和其他 IPython 依赖项，方法是：
 
     sudo apt-get install python-matplotlib
     sudo apt-get install python-tornado
@@ -75,21 +75,21 @@
 
 **注意**：为了使用 Internet Explorer 下载任何内容，你将需要更改某些安全设置。从“服务器管理器”中，单击“本地服务器”，然后在“IE 增强的安全配置”上，对于管理员关闭它。一旦你完成了 IPython 的安装，就可以再次启用它。
 
-1.  从 [python.org][] 安装 Python 2.7.5（32 位）。
+1.  从 [python.org][python.org] 安装 Python 2.7.5（32 位）。
     你还需将`C:\Python27` 和 `C:\Python27\Scripts` 添加到你的`PATH`环境变量。
 
-2.  通过从 [python-distribute.org][] 下载文件 **distribute\_setup.py** 然后运行以下命令来安装分发包：
+2.  通过从 [python-distribute.org][python-distribute.org] 下载文件 **distribute\_setup.py** 然后运行以下命令来安装分发包：
 
         python distribute_setup.py
 
-3.  通过运行以下命令来安装 [Tornado][] 和 [PyZMQ][]：
+3.  通过运行以下命令来安装 [Tornado][Tornado] 和 [PyZMQ][PyZMQ]：
 
         easy_install tornado
         easy_install pyzmq
 
-4.  下载并安装 [NumPy][]，只需使用其网站上提供的`.exe` 二进制安装程序即可。截至撰写本文之际，最新版本为 **numpy-1.7.1-win32-superpack-python2.7.exe**。
+4.  下载并安装 [NumPy][NumPy]，只需使用其网站上提供的`.exe` 二进制安装程序即可。截至撰写本文之际，最新版本为 **numpy-1.7.1-win32-superpack-python2.7.exe**。
 
-5.  下载并安装 [Matplotlib][]，只需使用其网站上提供的`.exe` 二进制安装程序即可。截至撰写本文之际，最新版本为 **matplotlib-1.2.1.win32-py2.7.exe**。
+5.  下载并安装 [Matplotlib][Matplotlib]，只需使用其网站上提供的`.exe` 二进制安装程序即可。截至撰写本文之际，最新版本为 **matplotlib-1.2.1.win32-py2.7.exe**。
 
 6.  下载并安装 OpenSSL。你可以在 [][]<http://slproweb.com/products/Win32OpenSSL.html></a> 上找到 OpenSSL 的 Windows 版本。
 
@@ -240,13 +240,13 @@ Notebook 本身对使用过 Python 和字处理器的任何人来说应感觉非
 
 -   等等...
 
-如果你转到 IPython 源代码存储库，你将找到具有 [notebook示例][]的整个目录。你可以下载示例，然后在自己的 Azure IPython VM 上试用。只需从该网站下载`.ipynb` 文件并将它们上载到你的 notebook Azure VM 的仪表板上（或将它们直接下载到 VM 中）。
+如果你转到 IPython 源代码存储库，你将找到具有 [notebook示例][notebook示例]的整个目录。你可以下载示例，然后在自己的 Azure IPython VM 上试用。只需从该网站下载`.ipynb` 文件并将它们上载到你的 notebook Azure VM 的仪表板上（或将它们直接下载到 VM 中）。
 
 ## 结束语
 
 IPython Notebook 为交互访问 Azure 上的 Python 生态系统的功能提供了强大接口。它涵盖范围广泛的用例，包括简单的探索和学习 Python、数据分析和可视化、模拟和并行计算。生成的 Notebook 文档包含所执行的可与其他 IPython 用户共享的计算的完整记录。IPython Notebook 可用作本地应用程序，但它非常适合 Azure 上的云部署
 
-还可通过[Python Tools for Visual Studio][] (PTVS) 在 Visual Studio 中使用 IPython 的核心功能。PTVS 是 Microsoft 提供的免费开放源代码插件，它可将 Visual Studio 转变为高级 Python 开发环境，其中包括具有 IntelliSense、调试、分析和并行计算集成功能的高级编辑器。
+还可通过[Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS) 在 Visual Studio 中使用 IPython 的核心功能。PTVS 是 Microsoft 提供的免费开放源代码插件，它可将 Visual Studio 转变为高级 Python 开发环境，其中包括具有 IntelliSense、调试、分析和并行计算集成功能的高级编辑器。
 
   [IPython 项目]: http://ipython.org
   [观看教程]: http://go.microsoft.com/fwlink/?LinkID=254535&clcid=0x409

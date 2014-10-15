@@ -8,16 +8,16 @@
 
 本主题演示如何使用 Azure 通知中心将突发新闻通知广播到 Windows Phone 应用程序。完成时，你可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。
 
-在通知中心创建注册时通过包括一个或多个*标签*来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标签的更多信息，请参见[通知中心指南][]。
+在通知中心创建注册时通过包括一个或多个*标签*来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标签的更多信息，请参见[通知中心指南][通知中心指南]。
 
 本教程将指导你完成启用此方案的以下基本步骤：
 
-1.  [向应用程序中添加类别选择][]
-2.  [注册通知][]
-3.  [从后端发送通知][]
-4.  [运行应用程序并生成通知][]
+1.  [向应用程序中添加类别选择][向应用程序中添加类别选择]
+2.  [注册通知][注册通知]
+3.  [从后端发送通知][从后端发送通知]
+4.  [运行应用程序并生成通知][运行应用程序并生成通知]
 
-本主题以你在[通知中心入门][]中创建的应用程序为基础。在开始本教程之前，必须先阅读[通知中心入门][]。
+本主题以你在[通知中心入门][通知中心入门]中创建的应用程序为基础。在开始本教程之前，必须先阅读[通知中心入门][通知中心入门]。
 
 ## <a name="adding-categories"></a>向应用程序中添加类别选择
 
@@ -155,7 +155,7 @@
 
 2.  打开 App.xaml.cs 文件并将 **async** 修饰符添加到 **Application\_Launching** 方法。
 
-3.  在 **Application\_Launching** 方法中，找到在[通知中心入门][]中添加的通知中心注册代码并使用以下代码行替换它们：
+3.  在 **Application\_Launching** 方法中，找到在[通知中心入门][通知中心入门]中添加的通知中心注册代码并使用以下代码行替换它们：
 
         await notifications.SubscribeToCategories(notifications.RetrieveCategories());
 
@@ -181,7 +181,7 @@
 
 ## <a name="send"></a><span class="short-header">发送通知</span>从后端发送通知
 
-[WACOM.INCLUDE [notification-hubs-back-end][]]
+[WACOM.INCLUDE [notification-hubs-back-end][notification-hubs-back-end]]
 
 ## <a name="test-app"></a>运行应用程序并生成通知
 
@@ -234,6 +234,6 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
   [notification-hubs-back-end]: ../includes/notification-hubs-back-end.md
 
 <!-- Images. -->
-  [0]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-breakingnews.png
+  []: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-breakingnews.png
   [1]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-registration.png
   [2]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-toast.png
