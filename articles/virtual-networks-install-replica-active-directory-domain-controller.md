@@ -294,7 +294,7 @@
   [步骤 7：备份域控制器]: #backup
   [步骤 8：测试身份验证和授权]: #test
   [在管理门户中配置站点到站点的 VPN]: http://msdn.microsoft.com/en-us/library/dn133795.aspx
-  [将虚拟机添加到虚拟网络（可能为英文页面）]: http://azure.microsoft.com/en-us/documentation/articles/virtual-networks-add-virtual-machine/
+  [将虚拟机添加到虚拟网络（可能为英文页面）]: http://windowsazure.cn/zh-cn/documentation/articles/virtual-networks-add-virtual-machine/
   [创建区域委派]: http://technet.microsoft.com/library/cc753500.aspx
   [在 Azure 中安装新的 Active Directory 林]: /en-us/manage/services/networking/active-directory-forest/
   [从域中删除域控制器]: http://technet.microsoft.com/en-us/library/cc771844(v=WS.10).aspx

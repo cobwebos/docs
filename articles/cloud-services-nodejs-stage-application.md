@@ -7,35 +7,40 @@
 <div class="dev-callout">
 <b>说明</b>
 <p>本文中的步骤仅适用于托管为 Azure 云服务的 Node 应用程序。</p>
-    </div>
+</div>
 
 
 <p>此任务包括下列步骤：</p>
-<ul>
-<li><a href="#step1">步骤 1：暂存应用程序</a></li>
-<li><a href="#step2">步骤 2：通过交换 VIP 将应用程序部署到生产环境</a></li>
-</ul>
+-   <a href="#step1">步骤 1：暂存应用程序</a>
+-   <a href="#step2">步骤 2：通过交换 VIP 将应用程序部署到生产环境</a>
+
 <h2><a id="step1"></a>步骤 1：暂存应用程序</h2>
-<p>此任务包括如何使用 <strong>Windows Azure PowerShell</strong> 暂存应用程序。</p>
-<ol>
-<li><p>在发布服务时，只需将 <strong>-Slot</strong> 参数传递给<strong>Publish-AzureServiceProject</strong> cmdlet。</p>
-<p><strong>Publish-AzureServiceProject -Slot 过渡</strong></p></li>
-<li><p>登录到 <a href="http://manage.windowsazure.cn">Azure 管理门户</a>并选择&ldquo;云服务&rdquo;<strong></strong>。创建云服务并且&ldquo;过渡&rdquo;<strong></strong>列状态已更新为&ldquo;正在运行&rdquo;<strong></strong>后，单击该服务名称。</p>
-<p><img src="./media/cloud-services-nodejs-stage-application/staging-cloud-service-running.png" alt="显示正运行服务的门户" /></p></li>
-<li><p>选择&ldquo;仪表板&rdquo;<strong></strong>，然后选择&ldquo;过渡&rdquo;<strong></strong>。</p>
-<p><img src="./media/cloud-services-nodejs-stage-application/cloud-service-dashboard-staging.png" alt="云服务仪表板" /></p></li>
-<li><p>注意右侧&ldquo;网站 URL&rdquo;<strong></strong>条目中的值。DNS 名称是由 Azure 生成的经过模糊处理的内部 ID。</p>
-<p><img src="./media/cloud-services-nodejs-stage-application/cloud-service-staging-url.png" alt="网站 url" /></p></li>
-</ol>
-<p>现在，你可以使用此过渡网站 URL 验证应用程序能否在过渡环境中正常运行。</p>
-<p>对于升级方案（在该方案中，暂存应用程序是已部署到生产环境的应用程序的升级版本），你可以<a href="#step2">通过交换 VIP 在生产环境中升级应用程序。</a></p>
+此任务包括如何使用 >Windows Azure PowerShell 暂存应用程序。
+
+1.  在发布服务时，只需将 **-Slot** 参数传递给**Publish-AzureServiceProject** cmdlet。
+
+  **Publish-AzureServiceProject -Slot 过渡**
+
+2.  登录到 <a href="http://manage.windowsazure.cn">Azure 管理门户</a>并选择&ldquo;云服务&rdquo;。创建云服务并且&ldquo;过渡&rdquo;列状态已更新为&ldquo;正在运行&rdquo;后，单击该服务名称。
+
+	![portal displaying a running service][cloud-service]
+
+3.  选择&ldquo;仪表板&rdquo;，然后选择&ldquo;过渡&rdquo;。
+
+	![cloud service dashboard][cloud-service-dashboard]
+
+4.  注意右侧&ldquo;网站 URL&rdquo;条目中的值。DNS 名称是由 Azure 生成的经过模糊处理的内部 ID。
+
+    ![site url][cloud-service-staging-url]
+
+现在，你可以使用此过渡网站 URL 验证应用程序能否在过渡环境中正常运行。
+
+对于升级方案（在该方案中，暂存应用程序是已部署到生产环境的应用程序的升级版本），你可以<a href="#step2">通过交换 VIP 在生产环境中升级应用程序。</a>
 
 
 <h2><a id="step2"></a>步骤 2：通过交换 VIP 升级生产环境中的应用程序</h2>
-<p>在过渡环境中验证应用程序的升级版本后，你可以通过交换过渡和生产环境的虚拟 PI (VIP) 来快速使应用程序可用于生产环境。</p>
-<div class="dev-callout">
 
-
+在过渡环境中验证应用程序的升级版本后，你可以通过交换过渡和生产环境的虚拟 PI (VIP) 来快速使应用程序可用于生产环境。
 
 <div class="dev-callout">
 <b>说明</b>
@@ -48,7 +53,7 @@
 
 2.  从“仪表板”中选择“过渡”，然后单击页面底部的“交换”。将打开“VIP 交换”对话框。
 
-    ![“VIP 交换”对话框][“VIP 交换”对话框]
+    ![vip swap dialog][vip-swap-dialog]
 
 3.  检查信息，然后单击“确定”。当过渡部署切换到生产部署，而生产部署切换到过渡部署时，两个部署将开始更新。
 
@@ -62,9 +67,18 @@
   [步骤 1：暂存应用程序]: #step1
   [步骤 2：通过交换 VIP 将应用程序部署到生产环境]: #step2
   [Azure 管理门户]: http://manage.windowsazure.cn
-  [显示正运行服务的门户]: ./media/cloud-services-nodejs-stage-application/staging-cloud-service-running.png
-  [云服务仪表板]: ./media/cloud-services-nodejs-stage-application/cloud-service-dashboard-staging.png
-  [网站 url]: ./media/cloud-services-nodejs-stage-application/cloud-service-staging-url.png
-  [“VIP 交换”对话框]: ./media/cloud-services-nodejs-stage-application/vip-swap-dialog.png
   [如何在 Azure 中通过交换 VIP 来将服务升级部署到生产]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ee517253.aspx
   [在 Azure 中管理部署概述]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh386336.aspx
+- [How to Deploy a Service Upgrade to Production by Swapping VIPs in Azure]
+- [Overview of Managing Deployments in Azure]
+
+  [Step 1: Stage an Application]: #step1
+  [Step 2: Deploy an Application to Production by Swapping VIPs]: #step2
+  [Azure Management Portal]: http://manage.windowsazure.cn
+  [cloud-service]: ./media/cloud-services-nodejs-stage-application/staging-cloud-service-running.png
+  [cloud-service-dashboard]: ./media/cloud-services-nodejs-stage-application/cloud-service-dashboard-staging.png
+  [cloud-service-staging-url]: ./media/cloud-services-nodejs-stage-application/cloud-service-staging-url.png
+  [vip-swap-dialog]: ./media/cloud-services-nodejs-stage-application/vip-swap-dialog.png
+  [How to Deploy a Service Upgrade to Production by Swapping VIPs in Azure]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ee517253.aspx
+  [Overview of Managing Deployments in Azure]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh386336.aspx
+

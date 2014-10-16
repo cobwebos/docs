@@ -97,7 +97,7 @@ Azure 网站可以使用提供的 PHP 运行时（而非默认 PHP 运行时）�
 
   [免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
   [PHP 开发中心教程]: http://azure.microsoft.com/zh-cn/develop/php/
-  [如何配置网站]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-configure/
+  [如何配置网站]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-configure/
   [什么是 Azure 网站？]: #WhatIs
   [如何：更改默认 PHP 配置]: #ChangeBuiltInPHP
   [如何：启用内置 PHP 运行时中的扩展]: #EnableExtDefaultPHP

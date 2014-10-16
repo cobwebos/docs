@@ -59,8 +59,8 @@
 <a id="next"></a>
 ## 后续步骤
 
--   若要更详细地了解 Azure 存储服务，请参阅[了解云存储](http://azure.microsoft.com/zh-cn/documentation/articles/storage-introduction/)和 [Blob、队列和表](http://msdn.microsoft.com/zh-cn/library/gg433040.aspx)。
+-   若要更详细地了解 Azure 存储服务，请参阅[了解云存储](http://windowsazure.cn/zh-cn/documentation/articles/storage-introduction/)和 [Blob、队列和表](http://msdn.microsoft.com/zh-cn/library/gg433040.aspx)。
 
 -   访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)。
 
--   对你的应用程序进行配置以使用 Azure Blob、表和队列服务。[Azure 开发人员中心](http://azure.microsoft.com/zh-cn/documentation/)提供了将 Blob、表和队列存储服务与 .NET、Node.js、Java 和 PHP 应用程序结合使用的操作方法指南。有关特定于某种编程语言的说明，请参阅该语言对应的操作方法指南。
+-   对你的应用程序进行配置以使用 Azure Blob、表和队列服务。[Azure 开发人员中心](http://windowsazure.cn/zh-cn/documentation/)提供了将 Blob、表和队列存储服务与 .NET、Node.js、Java 和 PHP 应用程序结合使用的操作方法指南。有关特定于某种编程语言的说明，请参阅该语言对应的操作方法指南。

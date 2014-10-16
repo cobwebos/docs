@@ -2,7 +2,7 @@
 
 # 使用 Azure SQL Database 创建 Node.js Web 应用程序
 
-本教程向你演示如何使用 Azure 数据管理提供的 SQL Database，在 Azure 上托管的 [Node][Node] 应用程序中存储和访问数据。本教程假定你之前有使用 Node 和 [Git][Git] 的经验。
+本教程向你演示如何使用 Azure 数据管理提供的 SQL Database，在 Azure 上托管的 [Node] 应用程序中存储和访问数据。本教程假定你之前有使用 Node 和 [Git] 的经验。
 
 你将了解到以下内容：
 
@@ -39,11 +39,11 @@
 
 在按照本文中的说明操作之前，你应确保已安装下列项：
 
--   [Node][Node] 0.6.14 或更高版本
+-   [Node] 0.6.14 或更高版本
 
--   [Git][Git]
+-   [Git]]
 
--   Microsoft SQL Server 本机客户端库 - 作为 [Microsoft SQL Server 2012 功能包][Microsoft SQL Server 2012 功能包]的一部分提供
+-   Microsoft SQL Server 本机客户端库 - 作为 [Microsoft SQL Server 2012 功能包]的一部分提供
 
 -   文本编辑器
 
@@ -162,9 +162,9 @@
         └── connect@1.8.7
 
     <div class="dev-callout">
-<strong>说明</strong>
-<p>在安装 Express 模块时使用&ldquo;-g&rdquo;参数将全局安装该模块。这样我们就可以访问 <strong>express</strong> 命令以生成网站基架，而无需键入其他路径信息。</p>
-</div>
+	<strong>说明</strong>
+	<p>在安装 Express 模块时使用&ldquo;-g&rdquo;参数将全局安装该模块。这样我们就可以访问 <strong>express</strong> 命令以生成网站基架，而无需键入其他路径信息。</p>
+	</div>
 
 3.  若要创建将用于此应用程序的基架，请使用 **express** 命令：
 
@@ -214,7 +214,7 @@
 
     npm install nconf -save
 
-3.  接下来，从[下载中心][下载中心]下载 Microsoft Driver for Node.JS for SQL Server 的二进制版本。
+3.  接下来，从[下载中心]下载 Microsoft Driver for Node.JS for SQL Server 的二进制版本。
 
 4.  将存档解压缩到 **tasklist\\node\_modules** 目录。
 
@@ -333,9 +333,9 @@
 
 ### 修改全局布局
 
-**views** 目录中的 **layout.jade** 文件用作其他 **.jade** 文件的全局模板。在此步骤中，你将对其进行修改以使用 [Twitter Bootstrap][Twitter Bootstrap]（一个可以轻松设计美观网站的工具包）。
+**views** 目录中的 **layout.jade** 文件用作其他 **.jade** 文件的全局模板。在此步骤中，你将对其进行修改以使用 [Twitter Bootstrap](https://github.com/twbs/bootstrap)（一个可以轻松设计美观网站的工具包）。
 
-1.  下载并提取 [Twitter Bootstrap][1] 的文件。将 **bootstrap.min.css** 文件从 **bootstrap\\css** 文件夹复制到你的 tasklist 应用程序的 **public\\stylesheets** 目录中。
+1.  下载并提取 [Twitter Bootstrap](http://getbootstrap.com/) 的文件。将 **bootstrap.min.css** 文件从 **bootstrap\\css** 文件夹复制到你的 tasklist 应用程序的 **public\\stylesheets** 目录中。
 
 2.  从 **views** 文件夹中，用文本编辑器打开 **layout.jade** 并将其内容替换为以下代码：
 
@@ -451,21 +451,21 @@
 
 ## 后续步骤
 
--   [使用 MongoDB 构建 Node.js Web 应用程序][使用 MongoDB 构建 Node.js Web 应用程序]
+-   [使用 MongoDB 构建 Node.js Web 应用程序]
 
 -   [使用表存储构建 Node.js Web 应用程序]
 
 ## 其他资源
 
-
-   [适用于 Mac 和 Linux 的 Azure 命令行工具][适用于 Mac 和 Linux 的 Azure 命令行工具] 
-   [创建 Node.js 应用程序并将其部署到 Azure 网站](/en-us/develop/nodejs/tutorials/create-a-website-(mac))
-   [使用 Git 发布到 Azure 网站](/en-us/develop/nodejs/common-tasks/publishing-with-git/)
-   [Azure 开发人员中心](/en-us/develop/nodejs/)
-   [使用表存储构建 Node.js Web 应用程序](/en-us/develop/nodejs/tutorials/web-site-with-storage/)
+   [适用于 Mac 和 Linux 的 Azure 命令行工具] 
 
 
-<!-- URLs. -->
+
+
+  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)
+  [使用 Git 发布到 Azure 网站]: /en-us/develop/nodejs/common-tasks/publishing-with-git/
+   [Azure 开发人员中心]: /en-us/develop/nodejs/
+   [使用表存储构建 Node.js Web 应用程序]: /en-us/develop/nodejs/tutorials/web-site-with-storage/
 
   [Node]: http://nodejs.org
   [Git]: http://git-scm.com

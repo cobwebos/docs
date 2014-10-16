@@ -61,7 +61,7 @@
 
 -   可连接到多个群集，包括本地安装，以及使用 Azure HDInsight 服务远程运行的群集。
 
--   有关 HDInsight 服务的详细信息，请参阅 <http://azure.microsoft.com/zh-cn/documentation/services/hdinsight/>。
+-   有关 HDInsight 服务的详细信息，请参阅 <http://windowsazure.cn/zh-cn/documentation/services/hdinsight/>。
 
 -   在本地群集上配置 ASV
 

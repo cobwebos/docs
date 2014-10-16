@@ -18,7 +18,7 @@
 
 <div class="dev-callout">
 <strong>说明</strong>
-<p>本指南展示为面向公众的 .COM 站点开发而进行调整的一些最常见领域和任务。但是，还有可在特定实施中使用的其他一些 Azure 网站功能。若要查看这些功能，另请参阅<a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-global-web-presence-solution-overview/">全球网络影响力</a>和<a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-business-application-solution-overview/">业务应用程序</a>中的其他指南。</p>
+<p>本指南展示为面向公众的 .COM 站点开发而进行调整的一些最常见领域和任务。但是，还有可在特定实施中使用的其他一些 Azure 网站功能。若要查看这些功能，另请参阅<a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-global-web-presence-solution-overview/">全球网络影响力</a>和<a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-business-application-solution-overview/">业务应用程序</a>中的其他指南。</p>
 </div>
 
 ## <a name="deployexisting"></a>部署现有网站
@@ -113,7 +113,7 @@ Azure 网站十分适合于为单独市场营销活动定制的可重复使用�
 </tr>
 <tr>
 <td valign="middle"><strong>计划</strong></td>
-<td valign="top">- <a href="http://azure.microsoft.com/zh-cn/documentation/articles/choose-web-site-cloud-service-vm/">Azure 网站、云服务和虚拟机：何时使用何种产品？</a></td>
+<td valign="top">- <a href="http://windowsazure.cn/zh-cn/documentation/articles/choose-web-site-cloud-service-vm/">Azure 网站、云服务和虚拟机：何时使用何种产品？</a></td>
 </tr>
 <tr>
 <td valign="middle"><strong>创建</strong></td>
@@ -121,11 +121,11 @@ Azure 网站十分适合于为单独市场营销活动定制的可重复使用�
 </tr>
 <tr>
 <td valign="middle"><strong>部署</strong></td>
-<td valign="top">- <a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-deploy/">如何部署 Azure 网站</a><br/>- <a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-publish-source-control/">从源代码管理发布到 Azure 网站</a></td>
+<td valign="top">- <a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-deploy/">如何部署 Azure 网站</a><br/>- <a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-publish-source-control/">从源代码管理发布到 Azure 网站</a></td>
 </tr>
 <tr>
 <td valign="middle"><strong>社交媒体</strong></td>
-<td valign="top">- <a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/">使用成员资格、OAuth 和 SQL Database 部署安全的 ASP.NET MVC 应用程序</a><br/></td>
+<td valign="top">- <a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/">使用成员资格、OAuth 和 SQL Database 部署安全的 ASP.NET MVC 应用程序</a><br/></td>
 </tr>
 <tr>
 <td valign="middle"><strong>缩放</strong></td>
@@ -145,17 +145,17 @@ Azure 网站十分适合于为单独市场营销活动定制的可重复使用�
 
 <!--[DigitalMarketingFacebook]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_Facebook.png -->
 
-  [Azure 网站]: /en-us/documentation/services/web-sites/
-  [Azure 云服务]: /en-us/documentation/services/cloud-services/
-  [Azure 虚拟机]: /en-us/documentation/services/virtual-machines/
+  [Azure 网站]: /zh-cn/documentation/services/web-sites/
+  [Azure 云服务]: /zh-cn/documentation/services/cloud-services/
+  [Azure 虚拟机]: /zh-cn/documentation/services/virtual-machines/
   [Azure 网站、云服务和虚拟机：何时使用何种产品？]: /en-us/manage/services/web-sites/choose-web-app-service
   [部署现有网站]: #deployexisting
   [与社交媒体相集成]: #socialmedia
   [根据用户要求进行缩放]: #scale
   [与其他服务集成]: #integrate
   [监视活动]: #monitor
-  [全球网络影响力]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-global-web-presence-solution-overview/
-  [业务应用程序]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-business-application-solution-overview/
+  [全球网络影响力]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-global-web-presence-solution-overview/
+  [业务应用程序]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-business-application-solution-overview/
   [查看该信息]: /en-us/manage/services/web-sites/global-web-presence-solution-overview/
   [DigitalMarketingDeploy1]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_Deploy1.png
   [DigitalMarketingDeploy2]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_Deploy2.png
@@ -175,11 +175,11 @@ Azure 网站十分适合于为单独市场营销活动定制的可重复使用�
   [如何监视网站]: /en-us/manage/services/web-sites/how-to-monitor-websites/
   [DigitalMarketingUsageOverview]: ./media/web-sites-digital-marketing-application-solution-overview/DigitalMarketing_UsageOverview.png
   [如何：在 Azure 中接收警报通知和管理警报规则]: http://msdn.microsoft.com/zh-cn/library/azure/dn306638.aspx
-  [1]: http://azure.microsoft.com/zh-cn/documentation/articles/choose-web-site-cloud-service-vm/
+  [1]: http://windowsazure.cn/zh-cn/documentation/articles/choose-web-site-cloud-service-vm/
   [如何创建和部署网站]: http://www.windowsazure.cn/zh-cn/manage/services/web-sites/how-to-create-websites/
-  [如何部署 Azure 网站]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-deploy/
-  [2]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-publish-source-control/
-  [使用成员资格、OAuth 和 SQL Database 部署安全的 ASP.NET MVC 应用程序]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
+  [如何部署 Azure 网站]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-deploy/
+  [2]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-publish-source-control/
+  [使用成员资格、OAuth 和 SQL Database 部署安全的 ASP.NET MVC 应用程序]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
   [如何缩放网站]: http://www.windowsazure.cn/zh-cn/manage/services/web-sites/how-to-scale-websites/
   [3]: http://www.windowsazure.cn/zh-cn/manage/services/web-sites/how-to-monitor-websites/
   [4]: http://msdn.microsoft.com/library/windowsazure/dn306638.aspx

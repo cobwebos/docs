@@ -113,7 +113,7 @@
 
 <!-- IMAGES -->
 
-  [Microsoft Azure 网站备份]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-backup/
+  [Microsoft Azure 网站备份]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-backup/
   [从以前制作的备份中还原 Azure 网站]: #PreviousBackup
   [从存储帐户直接还原 Azure 网站]: #StorageAccount
   [选择网站还原设置并开始还原操作]: #RestoreSettings

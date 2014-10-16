@@ -133,7 +133,7 @@ HDInsight 还包含 Jython，它是使用 Java 编写的 Python 实现。Pig 无
 
 ## <a name="running"></a>运行示例
 
-下面的步骤使用了 Windows Azure PowerShell。如果尚未在开发计算机上安装并配置 Azure PowerShell，请在使用以下步骤之前参阅[如何安装和配置 Azure PowerShell](http://azure.microsoft.com/zh-cn/documentation/articles/install-configure-powershell/)。
+下面的步骤使用了 Windows Azure PowerShell。如果尚未在开发计算机上安装并配置 Azure PowerShell，请在使用以下步骤之前参阅[如何安装和配置 Azure PowerShell](http://windowsazure.cn/zh-cn/documentation/articles/install-configure-powershell/)。
 
 1. 使用 Python 示例 [streaming.py](#streamingpy) 和 [jython.py](#jythonpy) 创建开发计算机上的文件的本地副本。
 

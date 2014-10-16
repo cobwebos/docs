@@ -533,7 +533,7 @@ HDInsight 群集提供了一个名为 *hivesampletable* 的示例 Hive 表。在
 
   [HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/
   [设置 HDInsight 群集]: /en-us/manage/services/hdinsight/provision-hdinsight-clusters/
-  [安装和配置 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/
+  [安装和配置 Azure PowerShell]: /zh-cn/documentation/articles/install-configure-powershell/
   [使用 PowerShell 提交 MapReduce 作业]: #mapreduce-powershell
   [使用 PowerShell 提交 Hive 作业]: #hive-powershell
   [使用 PowerShell 提交 Sqoop 作业]: #sqoop-powershell

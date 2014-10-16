@@ -552,7 +552,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序中�
 
 <!-- [azure-member-offers]: http://azure.microsoft.com/en-us/pricing/member-offers/ -->
 
-  [在 HDInsight 中设置 HBase 群集]: http://azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-get-started/
+  [在 HDInsight 中设置 HBase 群集]: http://windowsazure.cn/zh-cn/documentation/articles/hdinsight-hbase-get-started/
   [Hadoop 与 HBase 之间的差别]: http://go.microsoft.com/fwlink/?LinkId=510237
   [Apache Hadoop]: http://go.microsoft.com/fwlink/?LinkId=510084
   [HDInsight 中的 Hadoop 简介]: ../hdinsight-introduction/

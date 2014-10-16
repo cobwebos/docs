@@ -211,7 +211,7 @@
 
   [Azure 虚拟网络]: http://msdn.microsoft.com/library/azure/jj156007.aspx
   [使用管理门户向导配置站点到站点 VPN]: http://msdn.microsoft.com/library/azure/dn133795.aspx
-  [在 Azure 虚拟网络中安装副本 Active Directory 域控制器]: http://azure.microsoft.com/zh-cn/documentation/articles/virtual-networks-install-replica-active-directory-domain-controller/?fb=zh-cn
+  [在 Azure 虚拟网络中安装副本 Active Directory 域控制器]: http://windowsazure.cn/zh-cn/documentation/articles/virtual-networks-install-replica-active-directory-domain-controller/?fb=zh-cn
   [在 Azure 虚拟机中部署 Windows Server Active Directory 的准则]: http://msdn.microsoft.com/library/azure/jj156090.aspx
   [测试实验室指南：Azure 中的 Windows Server 2012 R2 基本配置]: http://www.microsoft.com/en-us/download/details.aspx?id=41684
   [在 Azure 上安装与在本地安装有什么不同？]: #differ
@@ -228,7 +228,7 @@
   [Windows Azure IT Pro IaaS：(01) 虚拟机基础知识]: http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01
   [Windows Azure IT Pro IaaS：(05) 创建虚拟网络和跨界连接]: http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05
   [1]: http://msdn.microsoft.com/library/windowsazure/jj156007.aspx
-  [如何安装和配置 Azure PowerShell]: http://azure.microsoft.com/zh-cn/documentation/articles/install-configure-powershell/?fb=zh-cn
+  [如何安装和配置 Azure PowerShell]: http://windowsazure.cn/zh-cn/documentation/articles/install-configure-powershell/?fb=zh-cn
   [Azure PowerShell]: http://msdn.microsoft.com/library/azure/jj156055.aspx
   [Azure 管理 Cmdlet]: http://msdn.microsoft.com/library/azure/jj152841
   [设置 Azure VM 静态 IP 地址]: http://windowsitpro.com/windows-azure/set-azure-vm-static-ip-address

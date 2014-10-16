@@ -566,7 +566,7 @@ HDInsight Emulator 支持某些 HDInsight PowerShell cmdlet。这些 cmdlet 包�
 -   [HDInsight Emulator 发行说明][]
 -   [用于讨论 HDInsight 的 MSDN 论坛][]
 
-  [Azure HDInsight 包含哪个版本的 Hadoop？]: http://azure.microsoft.com/zh-cn/documentation/articles/hdinsight-component-versioning/ "HDInsight 组件和版本"
+  [Azure HDInsight 包含哪个版本的 Hadoop？]: http://windowsazure.cn/zh-cn/documentation/articles/hdinsight-component-versioning/ "HDInsight 组件和版本"
   [开始使用 Azure HDInsight]: ../hdinsight-get-started/
   [安装和配置 Azure PowerShell]: ../install-configure-powershell/
   [安装 HDInsight Emulator]: #install

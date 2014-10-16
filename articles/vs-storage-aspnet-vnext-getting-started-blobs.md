@@ -38,5 +38,5 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
   [Blobs]: /zh-cn/documentation/articles/vs-storage-aspnet-vnext-getting-started-blobs "Blobs"
   [Queues]: /zh-cn/documentation/articles/vs-storage-aspnet-vnext-getting-started-queues "Queues"
   [Tables]: /zh-cn/documentation/articles/vs-storage-aspnet-vnext-getting-started-tables "Tables"
-  [如何通过 .NET 使用 Blob 存储]: http://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/ "如何通过 .NET 使用 Blob 存储"
+  [如何通过 .NET 使用 Blob 存储]: http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/ "如何通过 .NET 使用 Blob 存储"
   [vs-storage-getting-started-blobs-include]: ../includes/vs-storage-getting-started-blobs-include.md

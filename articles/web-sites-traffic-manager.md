@@ -49,6 +49,6 @@ Azure 流量管理器使用三种不同的负载平衡方法。下面的列表�
 有关 Azure 流量管理器中负载平衡的详细信息，请参阅[关于流量管理器负载平衡方法][关于流量管理器负载平衡方法]。
 
   [关于流量管理器负载平衡方法]: http://msdn.microsoft.com/zh-cn/library/azure/dn339010.aspx
-  [为 Azure 网站配置自定义域名]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-custom-domain-name/
+  [为 Azure 网站配置自定义域名]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-custom-domain-name/
   [流量管理器概述]: http://msdn.microsoft.com/zh-cn/library/azure/hh744833.aspx
   [流量管理器配置任务]: http://msdn.microsoft.com/zh-cn/library/azure/hh744830.aspx

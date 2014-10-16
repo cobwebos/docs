@@ -18,7 +18,7 @@
 
 ![Azure PHP 网站][Azure PHP 网站]
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## 先决条件
 
@@ -141,9 +141,9 @@
 
     ![WebMatrix - 发布][WebMatrix - 发布]
 
-3.  导航到 [http://[你的][http://[你的]网站名].chinacloudsites.cn/createtable.php 以创建`items` 表。
+3.  导航到 http://[你的网站名].chinacloudsites.cn/createtable.php 以创建`items` 表。
 
-4.  最后，导航到 [http://[你的][http://[你的]网站名].chinacloudsites.cn/index.php 以便启动该应用程序。
+4.  最后，导航到 http://[你的网站名].chinacloudsites.cn/index.php 以便启动该应用程序。
 
 ## 修改并重新发布应用程序
 
@@ -164,9 +164,9 @@
 
 你已了解如何创建网站并将网站从 WebMatrix 部署到 Azure。若要了解有关 WebMatrix 的详细信息，请参阅下列资源：
 
--   [WebMatrix for Azure][WebMatrix for Azure]
+-   [WebMatrix for Azure](http://go.microsoft.com/fwlink/?LinkID=253622&clcid=0x409)
 
--   [WebMatrix 网站][WebMatrix 网站]
+-   [WebMatrix 网站](http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200106398)
 
   [SQL Server Express]: http://www.microsoft.com/zh-cn/download/details.aspx?id=29062
   [Azure PHP 网站]: ./media/web-sites-php-sql-database-use-webmatrix/tasklist_app_windows.png
@@ -193,3 +193,25 @@
   [WebMatrix - 远程启动网站]: ./media/web-sites-php-sql-database-use-webmatrix/Remote_run.png
   [WebMatrix for Azure]: http://go.microsoft.com/fwlink/?LinkID=253622&clcid=0x409
   [WebMatrix 网站]: http://www.microsoft.com/click/services/Redirect2.ashx?CR_CC=200106398
+
+  [install-SQLExpress]: http://www.microsoft.com/zh-cn/download/details.aspx?id=29062
+  [running-app]: ./media/web-sites-php-sql-database-use-webmatrix/tasklist_app_windows.png
+  [tasklist-sqlazure-download]: http://go.microsoft.com/fwlink/?LinkId=252504
+  [NewWebSite1]: ./media/web-sites-php-sql-database-use-webmatrix/NewWebSite1.jpg
+  [NewWebSite2]: ./media/web-sites-php-sql-database-use-webmatrix/NewWebSite2.png
+  [NewWebSite3_SQL]: ./media/web-sites-php-sql-database-use-webmatrix/NewWebSite3_SQL.png
+  [NewWebSite4_SQL]: ./media/web-sites-php-sql-database-use-webmatrix/NewWebSite4_SQL.png
+
+  [NewWebSite6_SQL]: ./media/web-sites-php-sql-database-use-webmatrix/NewWebSite6_SQL.png
+  [NewWebSite7]: ./media/web-sites-php-sql-database-use-webmatrix/NewWebSite7.png
+
+  [InstallWebMatrix]: ./media/web-sites-php-sql-database-use-webmatrix/InstallWebMatrix.png
+  [download-site]: ./media/web-sites-php-sql-database-use-webmatrix/download-site-1.png
+  [site-from-template]: ./media/web-sites-php-sql-database-use-webmatrix/site-from-template.png
+  [site-from-template-2]: ./media/web-sites-php-sql-database-use-webmatrix/site-from-template-2.png
+  [edit_addexisting]: ./media/web-sites-php-sql-database-use-webmatrix/edit_addexisting.png
+  [edit_run]: ./media/web-sites-php-sql-database-use-webmatrix/edit_run.png
+  [edit_publish]: ./media/web-sites-php-sql-database-use-webmatrix/edit_publish.png
+  [OpenRemoteView]: ./media/web-sites-php-sql-database-use-webmatrix/OpenRemoteView.png
+  [Remote_editIndex]: ./media/web-sites-php-sql-database-use-webmatrix/Remote_editIndex.png
+  [Remote_run]: ./media/web-sites-php-sql-database-use-webmatrix/Remote_run.png

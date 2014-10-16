@@ -16,9 +16,9 @@
 
 本教程中的项目文件将存储在 **C:\\django\\helloworld** 中，并且已完成的应用程序将类似于下图：
 
-![][]
+![][0]
 
-[WACOM.INCLUDE [create-account-and-vms-note][create-account-and-vms-note]]
+[WACOM.INCLUDE [create-account-and-vms-note](../includes/create-account-and-vms-note.md)]
 
 ## 设置虚拟机以托管 MySQL 和 Django
 
@@ -72,7 +72,7 @@
 
   你现在应该看到与下图类似的响应：
 
-  ![][1]
+  ![][2]
 
 8.  在你开始开发你的 Django 应用程序之前，我们当然需要在虚拟机上安装 Python+Django。通过 [Web 平台安装程序][Web 平台安装程序]可以完成这一步。在安装 Web PI 后，使用它搜索“Django”并且安装 Django (Python) 产品。
 
@@ -80,7 +80,7 @@
 
 1.  安装 MySQL Python 客户端包。你可以直接[从此链接][从此链接]安装它。完成后，运行以下命令来验证你的安装：
 
-  ![][2]
+  ![][1]
 
 ## 扩展 Django Hello World 应用程序
 
@@ -222,7 +222,7 @@
 
 2.  从你的本地 Web 浏览器中，打开 <http://*yourVmName>\*.cloudapp.net\*\*（其中，*yourVmName* 是你在虚拟机创建步骤中使用的任何名称）。你应看到显示了“Hello ...!" 如下面的屏幕快照所示。这表明 Django 正运行在虚拟机中并能够正常运行。
 
-    ![][]
+    ![][5]
 
   刷新 Web 浏览器几次，你应该看到消息从*“Hello **\<country abc\>**”*更改为*“Hello **\<some other country\>**”*。
 
@@ -232,16 +232,20 @@
 
 在你完成本教程后，关闭并/或删除你新创建的 Azure 虚拟机以为其他教程释放资源并避免产生 Azure 使用费。
 
-  [Django Hello World]: http://windowsazure.com/en-us/documentation/articles/virtual-machines-python-django-web-app-windows-server
+  [Django Hello World]: http://windowsazure.com/zh-cn/documentation/articles/virtual-machines-python-django-web-app-windows-server
   [MySQL 网站]: http://dev.mysql.com/doc/
   [MySQL 驱动程序]: http://pypi.python.org/pypi/MySQL-python/1.2.3
-  []: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01.png
+
   [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [此处]: /en-us/manage/windows/tutorials/virtual-machine-from-gallery/
   [MySQL Community Server]: http://dev.mysql.com/downloads/mysql/
   [“world”数据库]: http://dev.mysql.com/doc/index-other.html
   [此]: http://downloads.mysql.com/docs/world.sql.zip
-  [1]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01-2.png
   [Web 平台安装程序]: http://www.microsoft.com/web/downloads/platform.aspx
   [从此链接]: http://code.google.com/p/soemin/downloads/detail?name=MySQL-python-1.2.3.win32-py2.7.exe&can=2&q=
-  [2]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01-1.png
+  0]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01.png
+  [1]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01-1.png
+  [2]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01-2.png
+  [5]: ./media/virtual-machines-python-use-mysql-django/mysql_tutorial01.png
+  [The status of the Stop-AzureService command]: ../Media/django-helloworld-ps-stop.png
+  [The status of the Remove-AzureService command]: ../Media/django-helloworld-ps-remove.png

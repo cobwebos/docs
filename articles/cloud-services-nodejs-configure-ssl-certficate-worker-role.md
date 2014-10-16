@@ -7,35 +7,43 @@
 <div class="dev-callout">
 <b>说明</b>
 <p>本文中的步骤仅适用于辅助角色中以 Azure 云服务形式托管的 Node 应用程序。</p>
-    </div>
+</div>
 
 
-<p>此任务包括下列步骤：</p>
-<ul>
-<li><a href="#step1">步骤 1：创建 Node.js 服务并将该服务发布到云</a></li>
-<li><a href="#step2">步骤 2：获取 SSL 证书</a></li>
-<li><a href="#step3">步骤 3：将应用程序修改为使用 SSL 证书</a></li>
-<li><a href="#step4">步骤 4：修改服务定义文件</a></li>
-<li><a href="#step5">步骤 5：使用 HTTPS 连接到角色实例</a></li>
+此任务包括下列步骤：
+
+-   <a href="#step1">步骤 1：创建 Node.js 服务并将该服务发布到云</a>
+-   <a href="#step2">步骤 2：获取 SSL 证书</a>
+-   <a href="#step3">步骤 3：将应用程序修改为使用 SSL 证书</a>
+-   <a href="#step4">步骤 4：修改服务定义文件</a>
+-   <a href="#step5">步骤 5：使用 HTTPS 连接到角色实例</a>
 </ul>
 
 <h2 id="step-1-create-a-node.js-service-and-publish-the-service-to-the-cloud"><a name="step1"> </a>步骤 1：创建 Node.js 服务并将该服务发布到云</h2>
-<p>你可以采用以下步骤通过 Azure PowerShell 创建一个简单的 Node.js&ldquo;hello world&rdquo;服务：</p>
-<ol>
-<li><p>在&ldquo;开始&rdquo;<strong></strong>菜单或&ldquo;开始&rdquo;<strong></strong>屏幕中，搜索 <strong>Azure PowerShell</strong>。最后，右键单击&ldquo;Azure PowerShell&rdquo;<strong></strong>并选择&ldquo;以管理员身份运行&rdquo;<strong></strong>。</p>
-<p><img src="./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/azure-powershell-start.png" alt="Azure PowerShell 图标" /></p></li>
-<li><p>使用 <strong>New-AzureServiceProject</strong> cmdlet 创建新服务。</p>
-<p><img src="./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-01.png" /></p></li>
-<li><p>使用 <strong>Add-AzureNodeWorkerRole</strong> cmdlet 向你的服务中添加辅助角色。</p>
-<p><img src="./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-02-worker.png" /></p></li>
-<li><p>使用 <strong>Publish-AzureServiceProject</strong> cmdlet 将你的服务发布到云。</p>
-<p><img src="./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-03-worker.png" /></p>
-<div class="dev-callout">
 
-<strong>说明</strong>
-<p>如果你以前未导入 Azure 订阅的发布设置，则在尝试发布时会收到错误。有关下载和导入订阅的发布设置的信息，请参阅<a href="https://www.windowsazure.com/zh-cn/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings">如何对 Node.js 使用 Azure PowerShell</a></p>
-</div>
-</ol>
+你可以采用以下步骤通过 Azure PowerShell 创建一个简单的 Node.js&ldquo;hello world&rdquo;服务：
+
+1.  在&ldquo;开始&rdquo;菜单或&ldquo;开始&rdquo;屏幕中，搜索 **Azure PowerShell**。最后，右键单击&ldquo;Azure PowerShell&rdquo;并选择&ldquo;以管理员身份运行&rdquo;。
+	
+	![Azure PowerShell icon][powershell-menu]
+
+2.  使用 **New-AzureServiceProject** cmdlet 创建新服务。
+
+	![][1]
+
+3.  使用 **Add-AzureNodeWorkerRole** cmdlet 向你的服务中添加辅助角色。
+
+    ![][2]
+
+4.  使用 **Publish-AzureServiceProject** cmdlet 将你的服务发布到云。
+
+    ![][3]
+
+	<div class="dev-callout">
+	<strong>说明</strong>
+	<p>如果你以前未导入 Azure 订阅的发布设置，则在尝试发布时会收到错误。有关下载和导入订阅的发布设置的信息，请参阅<a href="https://www.windowsazure.com/zh-cn/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings">如何对 Node.js 使用 Azure PowerShell</a></p>
+	</div>
+
 **Publish-AzureServiceProject** cmdlet 返回的“创建的网站 URL”值包含你的托管应用程序的完全限定域名。你将需要为此特定的完全限定域名获取一个 SSL 证书，并将其部署到 Azure。
 
 ## <a name="step2"> </a>步骤 2：获取 SSL 证书
@@ -76,9 +84,9 @@
         }).listen(port);
 
     <div class="dev-callout">
-<strong>说明</strong>
-<p>必须将&ldquo;certificate.pfx&rdquo;替换为证书的名称，并将&ldquo;password&rdquo;替换为证书文件的密码（如果有）。</p>
-</div>
+	<strong>说明</strong>
+	<p>必须将&ldquo;certificate.pfx&rdquo;替换为证书的名称，并将&ldquo;password&rdquo;替换为证书文件的密码（如果有）。</p>
+	</div>
 
 3.  保存 **server.js** 文件。
 
@@ -114,15 +122,15 @@
     ![站点 url][站点 url]
 
     <div class="dev-callout">
-<strong>说明</strong>
-<p>如果门户中显示的站点 URL 未指定 HTTPS，则必须使用 HTTPS（而不是 HTTP）在浏览器中手动输入 URL。</p>
-</div>
+	<strong>说明</strong>
+	<p>如果门户中显示的站点 URL 未指定 HTTPS，则必须使用 HTTPS（而不是 HTTP）在浏览器中手动输入 URL。</p>
+	</div>
 
 3.  此时将打开新浏览器并显示你的网站。
 
     该浏览器会显示一个锁状图标，指示它使用的是 HTTPS 连接。它还指示已为你的应用程序正确配置 SSL。
 
-    ![][3]
+    ![][8]
 
 ## 其他资源
 
@@ -148,3 +156,12 @@
   [如何将证书与服务关联]: http://msdn.microsoft.com/zh-cn/library/windowsazure/gg465718.aspx
   [在 Azure Web 角色中为 Node.js 应用程序配置 SSL]: /zh-cn/develop/nodejs/common-tasks/enable-ssl/
   [如何在 HTTPS 终结点上配置 SSL 证书]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ff795779.aspx
+
+  [1]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-01.png
+  [2]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-02-worker.png
+  [3]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-03-worker.png
+  [site-url]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/site-url.png
+  [8]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-08.png
+  [How to Configure an SSL Certificate on an HTTPS Endpoint]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ff795779.aspx
+  [powershell-menu]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/azure-powershell-start.png
+  

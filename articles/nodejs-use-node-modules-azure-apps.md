@@ -69,6 +69,6 @@ Azure 网站不支持本机模块。一些模块（如 JSDOM 和 MongoDB）具�
 
   [运行 npm 安装以避免部署 Node 模块的 Azure 启动任务]: http://nodeblog.azurewebsites.net/startup-task-to-run-npm-in-azure
   [npm-install]: https://npmjs.org/doc/install.html
-  [指定 Node.js 版本]: /en-us/documentation/articles/nodejs-specify-node-version-azure-apps/
-  [生成和部署 Node.js 网站]: /en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-  [如何使用适用于 Mac 和 Linux 的 Azure 命令行工具]: /en-us/documentation/articles/xplat-cli/
+  [指定 Node.js 版本]: /zh-cn/documentation/articles/nodejs-specify-node-version-azure-apps/
+  [生成和部署 Node.js 网站]: /zh-cn/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+  [如何使用适用于 Mac 和 Linux 的 Azure 命令行工具]: /zh-cn/documentation/articles/xplat-cli/

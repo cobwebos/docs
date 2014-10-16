@@ -145,7 +145,7 @@ Azure 使你能够在云中托管安全的 Intranet 应用程序。Azure Active 
 </tr>
 <tr>
 <td valign="middle"><strong>身份验证</strong></td>
-<td valign="top">- <a href ="http://www.windowsazure.com/en-us/manage/windows/fundamentals/identity/">了解 Azure 标识选项</a><br/>- <a href="http://www.windowsazure.com/en-us/documentation/services/active-directory/">Azure Active Directory 服务</a><br/>- <a href="http://technet.microsoft.com/en-us/library/jj573650.aspx">什么是 Azure AD 租户？</a><br/>- <a href="http://msdn.microsoft.com/library/windowsazure/dn151790.aspx">使用 Azure AD 将登录名添加到 Web 应用程序中</a><br/>- <a href="http://www.asp.net/aspnet/overview/aspnet-and-visual-studio-2012/windows-azure-authentication">Azure 身份验证教程</a></td>
+<td valign="top">- <a href ="http://www.windowsazure.com/en-us/manage/windows/fundamentals/identity/">了解 Azure 标识选项</a><br/>- <a href="http://www.windowsazure.com/zh-cn/documentation/services/active-directory/">Azure Active Directory 服务</a><br/>- <a href="http://technet.microsoft.com/en-us/library/jj573650.aspx">什么是 Azure AD 租户？</a><br/>- <a href="http://msdn.microsoft.com/library/windowsazure/dn151790.aspx">使用 Azure AD 将登录名添加到 Web 应用程序中</a><br/>- <a href="http://www.asp.net/aspnet/overview/aspnet-and-visual-studio-2012/windows-azure-authentication">Azure 身份验证教程</a></td>
 </tr>
 <tr>
 <td valign="middle"><strong>Service Bus 中继</strong></td>
@@ -209,7 +209,7 @@ Azure 使你能够在云中托管安全的 Intranet 应用程序。Azure Active 
   [将 ASP.NET Web 应用程序部署到 Azure 网站]: http://www.windowsazure.com/en-us/develop/net/tutorials/get-started/
   [将安全的 ASP.NET MVC 应用程序部署到 Azure]: http://www.windowsazure.com/en-us/develop/net/tutorials/web-site-with-sql-database/
   [了解 Azure 标识选项]: http://www.windowsazure.com/en-us/manage/windows/fundamentals/identity/
-  [4]: http://www.windowsazure.com/en-us/documentation/services/active-directory/
+  [4]: http://www.windowsazure.com/zh-cn/documentation/services/active-directory/
   [什么是 Azure AD 租户？]: http://technet.microsoft.com/en-us/library/jj573650.aspx
   [5]: http://www.windowsazure.com/en-us/develop/net/how-to-guides/service-bus-relay/
   [6]: http://msdn.microsoft.com/en-us/library/windowsazure/ee706736.aspx

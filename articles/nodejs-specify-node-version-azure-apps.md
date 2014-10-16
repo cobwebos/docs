@@ -77,6 +77,6 @@
 
 了解如何指定应用程序使用的 Node.js 版本后，请了解如何[使用模块][使用模块]、[生成和部署 Node.js 网站][生成和部署 Node.js 网站]以及[如何使用适用于 Mac 和 Linux 的 Azure 命令行工具][Azure 命令行工具]。
 
-  [Azure 命令行工具]: /en-us/documentation/articles/xplat-cli/
-  [使用模块]: /en-us/documentation/articles/nodejs-use-node-modules-azure-apps/
-  [生成和部署 Node.js 网站]: /en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/
+  [Azure 命令行工具]: /zh-cn/documentation/articles/xplat-cli/
+  [使用模块]: /zh-cn/documentation/articles/nodejs-use-node-modules-azure-apps/
+  [生成和部署 Node.js 网站]: /zh-cn/documentation/articles/web-sites-nodejs-develop-deploy-mac/

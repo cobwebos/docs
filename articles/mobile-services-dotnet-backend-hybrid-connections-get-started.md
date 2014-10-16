@@ -188,4 +188,4 @@
   [SQL Management Studio]: ./media/mobile-services-dotnet-backend-hybrid-connections-get-started/12.png
   [混合连接网站]: http://azure.microsoft.com/zh-cn/services/biztalk-services/
   [混合连接概述]: http://go.microsoft.com/fwlink/p/?LinkID=397274
-  [BizTalk 服务：“仪表板”、“监视”、“缩放”、“配置”和“混合连接”选项卡]: http://azure.microsoft.com/zh-cn/documentation/articles/biztalk-dashboard-monitor-scale-tabs/
+  [BizTalk 服务：“仪表板”、“监视”、“缩放”、“配置”和“混合连接”选项卡]: http://windowsazure.cn/zh-cn/documentation/articles/biztalk-dashboard-monitor-scale-tabs/
