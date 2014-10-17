@@ -6,10 +6,10 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 在本教程中，你将：
 
--   [从库连接到 Azure 管理门户并设置虚拟机][从库连接到 Azure 管理门户并设置虚拟机]
--   [使用远程桌面和完整安装打开虚拟机][使用远程桌面和完整安装打开虚拟机]
--   [完成配置步骤以便在另一台计算机上使用 SQL Server Management Studio 连接到虚拟机][完成配置步骤以便在另一台计算机上使用 SQL Server Management Studio 连接到虚拟机]
--   [后续步骤][后续步骤]
+-   [从库连接到 Azure 管理门户并设置虚拟机](#Provision)
+-   [使用远程桌面和完整安装打开虚拟机](#RemoteDesktop)
+-   [完成配置步骤以便在另一台计算机上使用 SQL Server Management Studio 连接到虚拟机](#SSMS)
+-   [后续步骤](#Optional)
 
 ## <span id="Provision"></span>从库连接到 Azure 管理门户并设置虚拟机</a>
 
@@ -76,7 +76,7 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 1.  当设置完成时，单击你的虚拟机的名称，以转到“仪表板”页面。在页面底部，单击“连接”。
 
-    ![选择“仪表板”页]Image5b]
+    ![选择“仪表板”页][Image5b]
 
 2.  选择使用 Windows 远程桌面程序 (`%windir%\system32\mstsc.exe`) 打开 .rpd 文件。
 
@@ -90,14 +90,14 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 你必须先完成下列各节中描述的下列任务，然后才能通过 Internet 连接到 SQL Server 的实例：
 
--   [为虚拟机创建 TCP 终结点][为虚拟机创建 TCP 终结点]
--   [在 Windows 防火墙中打开 TCP 端口][在 Windows 防火墙中打开 TCP 端口]
--   [将 SQL Server 配置为侦听 TCP 协议][将 SQL Server 配置为侦听 TCP 协议]
--   [配置混合模式的 SQL Server 身份验证][配置混合模式的 SQL Server 身份验证]
--   [创建 SQL Server 身份验证登录名][创建 SQL Server 身份验证登录名]
--   [确定虚拟机的 DNS 名称][确定虚拟机的 DNS 名称]
--   [从其他计算机连接到数据库引擎][从其他计算机连接到数据库引擎]
--   [从应用程序连接到数据库引擎] (\#cdea)
+-   [为虚拟机创建 TCP 终结点](#Endpoint)
+-   [在 Windows 防火墙中打开 TCP 端口](#FW)
+-   [将 SQL Server 配置为侦听 TCP 协议](#TCP)
+-   [配置混合模式的 SQL Server 身份验证](#Mixed)
+-   [创建 SQL Server 身份验证登录名](#Logins)
+-   [确定虚拟机的 DNS 名称](#DNS)
+-   [从其他计算机连接到数据库引擎](#cde)
+-   [从应用程序连接到数据库引擎](#cdea)
 
 下图中概述了此连接路径：
 
@@ -164,7 +164,7 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
     ![规则名称][Image17]
 
-根据需要为其他组件打开附加端口。有关详细信息，请参阅[配置 Windows 防火墙以允许 SQL Server 访问][配置 Windows 防火墙以允许 SQL Server 访问]。
+根据需要为其他组件打开附加端口。有关详细信息，请参阅[配置 Windows 防火墙以允许 SQL Server 访问](http://msdn.microsoft.com/zh-cn/library/cc646023.aspx)。
 
 ### <span id="TCP"></span>将 SQL Server 配置为侦听 TCP 协议</a>
 
@@ -256,7 +256,7 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 12. 单击“确定”。
 
-有关 SQL Server 登录名的详细信息，请参阅[创建登录名][创建登录名]。
+有关 SQL Server 登录名的详细信息，请参阅[创建登录名](http://msdn.microsoft.com/zh-cn/library/aa337562.aspx)。
 
 ### <span id="DNS"></span>确定虚拟机的 DNS 名称</a>
 
@@ -296,15 +296,15 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 
 你已经看到了如何使用平台映像在 Azure 虚拟机上创建和配置 SQL Server。在使用 Azure 虚拟机中的 SQL Server 时，建议遵循库中 [Azure 虚拟机中的 SQL Server](http://msdn.microsoft.com/zh-cn/library/azure/jj823132.aspx) 文档中提供的详细指导。该文档集包含一系列提供详细指导的文章和教程。该系列包括以下各部分：
 
-[Azure 虚拟机中的 SQL Server][Azure 虚拟机中的 SQL Server]
+[Azure 虚拟机中的 SQL Server](http://msdn.microsoft.com/zh-cn/library/azure/jj823132.aspx)
 
-[Azure 虚拟机中的 SQL Server 入门][Azure 中的 SQL Server 虚拟机入门]
+[Azure 虚拟机中的 SQL Server 入门](http://msdn.microsoft.com/zh-cn/library/azure/dn133151.aspx)
 
-[准备迁移到 Azure 虚拟机中的 SQL Server][准备迁移到 Azure 虚拟机中的 SQL Server]
+[准备迁移到 Azure 虚拟机中的 SQL Server](http://msdn.microsoft.com/zh-cn/library/azure/dn133142.aspx)
 
 -   如何使用数据磁盘在 Azure 中的虚拟机之间迁移 SQL Server 数据库文件和架构
 
-[Azure 虚拟机中的 SQL Server 部署][Azure 虚拟机中的 SQL Server 部署]
+[Azure 虚拟机中的 SQL Server 部署](http://msdn.microsoft.com/zh-cn/library/azure/dn133141.aspx)
 
 -   如何使用 CSUpload 将数据磁盘中的 SQL Server 数据和安装文件从本地复制到 Azure
 -   如何使用 Hyper-V 在本地创建基础虚拟机
@@ -313,19 +313,19 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 -   如何使用 PowerShell 在 Azure 中设置 SQL Server 虚拟机
 -   如何使用附加的数据磁盘存储数据库文件
 
-[Azure 虚拟机中的 SQL Server 的连接注意事项][Azure 虚拟机中 SQL Server 的连接性注意事项]
+[Azure 虚拟机中的 SQL Server 的连接注意事项](http://msdn.microsoft.com/zh-cn/library/azure/dn133152.aspx)
 
 -   教程：连接到同一云服务中的 SQL Server
 -   教程：连接到不同云服务中的 SQL Server
 -   教程：通过虚拟网络将 ASP.NET 应用程序连接到 Azure 中的 SQL Server
 
-[Azure 虚拟机中的 SQL Server 的性能注意事项][Azure 虚拟机中的 SQL Server 的性能注意事项]
+[Azure 虚拟机中的 SQL Server 的性能注意事项](http://msdn.microsoft.com/zh-cn/library/azure/dn133149.aspx)
 
-[Azure 虚拟机中的 SQL Server 的安全注意事项][Azure 虚拟机中的 SQL Server 的安全注意事项]
+[Azure 虚拟机中的 SQL Server 的安全注意事项](http://msdn.microsoft.com/zh-cn/library/azure/dn133147.aspx)
 
-[Azure 虚拟机中 SQL Server 的故障排除和监视][Azure 虚拟机中 SQL Server 的故障排除和监视]
+[Azure 虚拟机中 SQL Server 的故障排除和监视](http://msdn.microsoft.com/zh-cn/library/azure/dn195883.aspx)
 
-[Azure 虚拟机中 SQL Server 的高可用性和灾难恢复][Azure 虚拟机中 SQL Server 的高可用性和灾难恢复]
+[Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](http://msdn.microsoft.com/zh-cn/library/azure/jj870962.aspx)
 
 -   教程：Azure 中的 AlwaysOn 可用性组 (GUI)
 -   教程：Azure 中的 AlwaysOn 可用性组 (PowerShell)
@@ -338,88 +338,48 @@ Azure 虚拟机库包括几种内含 Microsoft SQL Server 的映像。你可以�
 -   教程：在混合 IT 环境中进行日志传送以实现灾难恢复
 -   Azure 中可用性组侦听器的故障排除
 
-[Azure 虚拟机中 SQL Server 的备份和还原][Azure 虚拟机中 SQL Server 的备份和还原]
+[Azure 虚拟机中 SQL Server 的备份和还原](http://msdn.microsoft.com/zh-cn/library/azure/dn133143.aspx)
 
-[Azure 虚拟机中的 SQL Server Business Intelligence][Azure 虚拟机中的 SQL Server Business Intelligence]
+[Azure 虚拟机中的 SQL Server Business Intelligence](http://msdn.microsoft.com/zh-cn/library/azure/jj992719.aspx)
 
 -   使用 PowerShell 创建运行 SQL Server BI 和 SharePoint 2010 的 Azure VM
 -   使用 PowerShell 创建运行 SQL Server BI 和 SharePoint 2013 的 Azure VM
 -   使用 PowerShell 创建运行本机模式报表服务器的 Azure VM
 
-[Azure 虚拟机中的 SQL Server 数据仓库][Azure 虚拟机中的 SQL Server 数据仓库]
+[Azure 虚拟机中的 SQL Server 数据仓库](http://msdn.microsoft.com/zh-cn/library/azure/dn387396.aspx)
 
-[Azure 虚拟机中的 SQL Server 技术文章][Azure 虚拟机中的 SQL Server 技术文章]
+[Azure 虚拟机中的 SQL Server 技术文章](http://msdn.microsoft.com/zh-cn/library/azure/dn248435.aspx)
 
--   [白皮书：Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略][白皮书：Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略]
+-   [白皮书：Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略](http://msdn.microsoft.com/zh-cn/library/azure/dn574746.aspx)
 
--   [白皮书：在 Azure 虚拟机中部署 SQL Server Business Intelligence][白皮书：在 Azure 虚拟机中部署 SQL Server Business Intelligence]
+-   [白皮书：在 Azure 虚拟机中部署 SQL Server Business Intelligence](http://msdn.microsoft.com/zh-cn/library/windowsazure/dn321998.aspx)
 
--   [白皮书：Azure 虚拟机中 SQL Server 的性能指南][白皮书：Azure 虚拟机中 SQL Server 的性能指南]
+-   [白皮书：Azure 虚拟机中 SQL Server 的性能指南](http://msdn.microsoft.com/zh-cn/library/windowsazure/dn248436.aspx)
 
-  [从库连接到 Azure 管理门户并设置虚拟机]: #Provision
-  [使用远程桌面和完整安装打开虚拟机]: #RemoteDesktop
-  [完成配置步骤以便在另一台计算机上使用 SQL Server Management Studio 连接到虚拟机]: #SSMS
-  [后续步骤]: #Optional
-  [Azure 管理门户]: http://manage.windowsazure.cn
-  [Azure 虚拟机中的 SQL Server]: http://msdn.microsoft.com/zh-cn/library/azure/jj823132.aspx
-  [Azure 中的 SQL Server 虚拟机入门]: http://msdn.microsoft.com/zh-cn/library/azure/dn133151.aspx
-  [如何使用数据磁盘在 Azure 中的虚拟机之间迁移 SQL Server 数据库文件和架构]: http://msdn.microsoft.com/zh-cn/library/azure/jj898505.aspx
-  [在 Azure 上通过软件保证实现许可迁移]: http://azure.microsoft.com/zh-cn/pricing/license-mobility/
-  [升级到 SQL Server 2014 的不同版本]: http://msdn.microsoft.com/zh-cn/library/cc707783(v=sql.120).aspx
-  [如何购买 SQL Server]: http://www.microsoft.com/zh-cn/server-cloud/products/sql-server/buy.aspx#fbid=t8CT8yhDl9X
-  [强密码]: http://msdn.microsoft.com/zh-cn/library/ms161962.aspx
-  [用于 Azure 的虚拟机大小]: http://msdn.microsoft.com/zh-cn/library/azure/dn197896.aspx
-    [为虚拟机创建 TCP 终结点]: #Endpoint
-  [在 Windows 防火墙中打开 TCP 端口]: #FW
-  [将 SQL Server 配置为侦听 TCP 协议]: #TCP
-  [配置混合模式的 SQL Server 身份验证]: #Mixed
-  [创建 SQL Server 身份验证登录名]: #Logins
-  [确定虚拟机的 DNS 名称]: #DNS
-  [从其他计算机连接到数据库引擎]: #cde
-  [连接到 SQL Server 虚拟机]: ./media/virtual-machines-provision-sql-server/SQLVMConnectionsOnAzure.GIF
-  [配置 Windows 防火墙以允许 SQL Server 访问]: http://msdn.microsoft.com/zh-cn/library/cc646023.aspx
-  [启用或禁用服务器网络协议]: http://msdn.microsoft.com/zh-cn/library/ms191294.aspx
-  [Azure 虚拟机中 SQL Server 的连接性注意事项]: http://msdn.microsoft.com/zh-cn/library/azure/dn133152.aspx
-  [创建登录名]: http://msdn.microsoft.com/zh-cn/library/aa337562.aspx
-  [如何解决 SQL Server 数据库引擎的连接问题]: http://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx
-  [准备迁移到 Azure 虚拟机中的 SQL Server]: http://msdn.microsoft.com/zh-cn/library/azure/dn133142.aspx
-  [Azure 虚拟机中的 SQL Server 部署]: http://msdn.microsoft.com/zh-cn/library/azure/dn133141.aspx
-  [Azure 虚拟机中的 SQL Server 的性能注意事项]: http://msdn.microsoft.com/zh-cn/library/azure/dn133149.aspx
-  [Azure 虚拟机中的 SQL Server 的安全注意事项]: http://msdn.microsoft.com/zh-cn/library/azure/dn133147.aspx
-  [Azure 虚拟机中 SQL Server 的故障排除和监视]: http://msdn.microsoft.com/zh-cn/library/azure/dn195883.aspx
-  [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复]: http://msdn.microsoft.com/zh-cn/library/azure/jj870962.aspx
-  [Azure 虚拟机中 SQL Server 的备份和还原]: http://msdn.microsoft.com/zh-cn/library/azure/dn133143.aspx
-  [Azure 虚拟机中的 SQL Server Business Intelligence]: http://msdn.microsoft.com/zh-cn/library/azure/jj992719.aspx
-  [Azure 虚拟机中的 SQL Server 数据仓库]: http://msdn.microsoft.com/zh-cn/library/azure/dn387396.aspx
-  [Azure 虚拟机中的 SQL Server 技术文章]: http://msdn.microsoft.com/zh-cn/library/azure/dn248435.aspx
-  [白皮书：Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略]: http://msdn.microsoft.com/zh-cn/library/azure/dn574746.aspx
-  [白皮书：在 Azure 虚拟机中部署 SQL Server Business Intelligence]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn321998.aspx
-  [白皮书：Azure 虚拟机中 SQL Server 的性能指南]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn248436.aspx
-
-  [Image5]: ./media/virtual-machines-provision-sql-server/5VM-Mode.png
-  [Image5b]: ./media/virtual-machines-provision-sql-server/5VM-Connect.png
-  [Image6]: ./media/virtual-machines-provision-sql-server/6VM-Options.png
-  [Image8b]: ./media/virtual-machines-provision-sql-server/SQLVMConnectionsOnAzure.GIF
-  [Image9]: ./media/virtual-machines-provision-sql-server/9Click-SSCM.png
-  [Image10]: ./media/virtual-machines-provision-sql-server/10Enable-TCP.png
-  [Image11]: ./media/virtual-machines-provision-sql-server/11Restart.png
-  [Image12]: ./media/virtual-machines-provision-sql-server/12Open-WF.png
-  [Image13]: ./media/virtual-machines-provision-sql-server/13New-FW-Rule.png
-  [Image14]: ./media/virtual-machines-provision-sql-server/14Port-1433.png
-  [Image15]: ./media/virtual-machines-provision-sql-server/15Allow-Connection.png
-  [Image16]: ./media/virtual-machines-provision-sql-server/16Public-Profile.png
-  [Image17]: ./media/virtual-machines-provision-sql-server/17Rule-Name.png
-  [Image18]: ./media/virtual-machines-provision-sql-server/18Start-SSMS.png
-  [Image19]: ./media/virtual-machines-provision-sql-server/19Connect-to-Server.png
-  [Image20]: ./media/virtual-machines-provision-sql-server/20Server-Properties.png
-  [Image21]: ./media/virtual-machines-provision-sql-server/21Mixed-Mode.png
-  [Image22]: ./media/virtual-machines-provision-sql-server/22Restart2.png
-  [Image23]: ./media/virtual-machines-provision-sql-server/23New-Login.png
-  [Image24]: ./media/virtual-machines-provision-sql-server/24Test-Login.png
-  [Image25]: ./media/virtual-machines-provision-sql-server/25sysadmin.png
-  [Image28]: ./media/virtual-machines-provision-sql-server/28Add-Endpoint.png
-  [Image29]: ./media/virtual-machines-provision-sql-server/29Add-Endpoint-to-VM.png
-  [Image30]: ./media/virtual-machines-provision-sql-server/30Endpoint-Details.png
-  [Image31]: ./media/virtual-machines-provision-sql-server/31VM-Connect.png
-  [Image32]: ./media/virtual-machines-provision-sql-server/32DNS-Name.png
-  [Image33]: ./media/virtual-machines-provision-sql-server/33Connect-SSMS.png
+[Image5]: ./media/virtual-machines-provision-sql-server/5VM-Mode.png
+[Image5b]: ./media/virtual-machines-provision-sql-server/5VM-Connect.png
+[Image6]: ./media/virtual-machines-provision-sql-server/6VM-Options.png
+[Image8b]: ./media/virtual-machines-provision-sql-server/SQLVMConnectionsOnAzure.GIF
+[Image9]: ./media/virtual-machines-provision-sql-server/9Click-SSCM.png
+[Image10]: ./media/virtual-machines-provision-sql-server/10Enable-TCP.png
+[Image11]: ./media/virtual-machines-provision-sql-server/11Restart.png
+[Image12]: ./media/virtual-machines-provision-sql-server/12Open-WF.png
+[Image13]: ./media/virtual-machines-provision-sql-server/13New-FW-Rule.png
+[Image14]: ./media/virtual-machines-provision-sql-server/14Port-1433.png
+[Image15]: ./media/virtual-machines-provision-sql-server/15Allow-Connection.png
+[Image16]: ./media/virtual-machines-provision-sql-server/16Public-Profile.png
+[Image17]: ./media/virtual-machines-provision-sql-server/17Rule-Name.png
+[Image18]: ./media/virtual-machines-provision-sql-server/18Start-SSMS.png
+[Image19]: ./media/virtual-machines-provision-sql-server/19Connect-to-Server.png
+[Image20]: ./media/virtual-machines-provision-sql-server/20Server-Properties.png
+[Image21]: ./media/virtual-machines-provision-sql-server/21Mixed-Mode.png
+[Image22]: ./media/virtual-machines-provision-sql-server/22Restart2.png
+[Image23]: ./media/virtual-machines-provision-sql-server/23New-Login.png
+[Image24]: ./media/virtual-machines-provision-sql-server/24Test-Login.png
+[Image25]: ./media/virtual-machines-provision-sql-server/25sysadmin.png
+[Image28]: ./media/virtual-machines-provision-sql-server/28Add-Endpoint.png
+[Image29]: ./media/virtual-machines-provision-sql-server/29Add-Endpoint-to-VM.png
+[Image30]: ./media/virtual-machines-provision-sql-server/30Endpoint-Details.png
+[Image31]: ./media/virtual-machines-provision-sql-server/31VM-Connect.png
+[Image32]: ./media/virtual-machines-provision-sql-server/32DNS-Name.png
+[Image33]: ./media/virtual-machines-provision-sql-server/33Connect-SSMS.png

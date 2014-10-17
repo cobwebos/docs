@@ -2,15 +2,15 @@
 
 # 在 Azure 网站上打造全球网络影响力
 
-本指南提供了如何在 Azure 上托管你的组织的 (.COM) 网站的技术概述。此方案也称作全球网络影响力。本指南重点介绍使用 [Azure 网站][Azure 网站]，因为网站是在 Azure 上创建、迁移、缩放和管理 Web 应用程序的最快和最简单方法。但是，某些应用程序要求适合于运行 IIS 的 [Azure 云服务][Azure 云服务]或 [Azure 虚拟机][Azure 虚拟机]。它们还是托管 Web 应用程序的极佳选择。如果你处于初始计划阶段，请查看文档 [Azure 网站、云服务和虚拟机：何时使用何种产品？][Azure 网站、云服务和虚拟机：何时使用何种产品？]。如果没有针对使用云服务或虚拟机的要求，我们建议使用网站来发挥你的全球网络影响力。本文的剩余部分将提供将网站用于此情形的指南。
+本指南提供了如何在 Azure 上托管你的组织的 (.COM) 网站的技术概述。此方案也称作全球网络影响力。本指南重点介绍使用 [Azure 网站][websitesoverview]，因为网站是在 Azure 上创建、迁移、缩放和管理 Web 应用程序的最快和最简单方法。但是，某些应用程序要求适合于运行 IIS 的 [Azure 云服务][csoverview]或 [Azure 虚拟机][vmoverview]。它们还是托管 Web 应用程序的极佳选择。如果你处于初始计划阶段，请查看文档 [Azure 网站、云服务和虚拟机：何时使用何种产品？][chooseservice]。如果没有针对使用云服务或虚拟机的要求，我们建议使用网站来发挥你的全球网络影响力。本文的剩余部分将提供将网站用于此情形的指南。
 
 在本指南中将针对以下方面：
 
--   [创建 Azure 网站][创建 Azure 网站]
--   [部署网站][部署网站]
--   [添加自定义域][添加自定义域]
--   [使用 SSL 保护网站][使用 SSL 保护网站]
--   [监视网站][监视网站]
+-   [创建 Azure 网站](#createwebsite)
+-   [部署网站](#deploywebsite)
+-   [添加自定义域](#customdomain)
+-   [使用 SSL 保护网站](#ssl)
+-   [监视网站](#monitor)
 
 <div class="dev-callout">
 <strong>说明</strong>
@@ -31,7 +31,7 @@
 
 与 Azure 中的大多数服务相似，你必须为新网站选择 Azure 区域。Azure 在世界各地有多个区域。一旦你将你的网站部署到任何一个区域，就能够在 Internet 上从全球访问该网站。但是，多个区域提供更高的灵活性。一个明显的好处是在最接近用户的区域中部署网站。
 
-有关创建新网站的步骤的详细信息，请参见 [Azure 网站和 ASP.NET 入门][Azure 网站和 ASP.NET 入门]。
+有关创建新网站的步骤的详细信息，请参见 [Azure 网站和 ASP.NET 入门][howtocreatewebsites]。
 
 ## <a name="deploywebsite"></a>部署网站
 
@@ -54,7 +54,7 @@
 
 请注意，部署/FTP 用户名是你提供的网站名称和用户名的组合。因此，如果你的网站是“<http://contoso.chinacloudsites.cn>”并且你的用户名是“myuser”，则部署和 FTP 的用户名将是“contoso\\myuser”。
 
-还可以选择通过源代码管理服务（例如 GitHub 或 TFS Online）进行部署。单击针对“从源代码管理设置部署”的选项。然后，按照针对你选择的源代码管理系统或服务的说明执行。有关从本地 Git 存储库进行发布的分步说明，请参见[从源代码管理发布到 Azure 网站][从源代码管理发布到 Azure 网站]。
+还可以选择通过源代码管理服务（例如 GitHub 或 TFS Online）进行部署。单击针对“从源代码管理设置部署”的选项。然后，按照针对你选择的源代码管理系统或服务的说明执行。有关从本地 Git 存储库进行发布的分步说明，请参见[从源代码管理发布到 Azure 网站][publishingwithgit]。
 
 如果你计划使用 Visual Studio 创建和管理你的网站，则可以选择直接从 Visual Studio 发布。一个方法是单击“下载发布配置文件”选项。这允许你保存可导入到 Visual Studio 中以便进行 Web 发布的 publishsettings 文件。
 
@@ -73,7 +73,7 @@
 
 ![GlobalWebWebMatrix][GlobalWebWebMatrix]
 
-有关此选项的详细信息，请参阅[使用 Microsoft WebMatrix 开发和部署网站][使用 Microsoft WebMatrix 开发和部署网站]。
+有关此选项的详细信息，请参阅[使用 Microsoft WebMatrix 开发和部署网站][aspnetgetstarted]。
 
 尽管这些步骤提供了你部署 .COM 网站所需项目，但还应为管理后续内容发布周期创建计划。这些选项可以涵盖从开始执行自定义解决方案到不频繁更改的网站的定期重新部署再到功能完备的内容管理系统 (CMS) 的方方面面。
 
@@ -125,7 +125,7 @@
 </tr>
 </table>
 
-有关更多信息，请参见[为 Azure 网站配置自定义域名][为 Azure 网站配置自定义域名]。
+有关更多信息，请参见[为 Azure 网站配置自定义域名][customdns]。
 
 ## <a name="ssl"></a>使用 SSL 保护网站
 
@@ -133,11 +133,11 @@
 
 Azure 网站自动提供与实际网站 URL 的安全连接。例如，如果你的网站是 <http://contoso.chinacloudsites.cn>，则只需通过将“http”更改为“https”，例如 **https**://contoso.chinacloudsites.cn，就可以通过 SSL 进行连接。
 
-但是，如果你在使用自定义域名，则必须采取措施通过网站的 Azure 管理门户上载证书和启用 SSL。下面的步骤提供此过程的摘要，但你可以在主题[为 Azure 网站配置 SSL 证书][为 Azure 网站配置 SSL 证书]中找到详细说明。
+但是，如果你在使用自定义域名，则必须采取措施通过网站的 Azure 管理门户上载证书和启用 SSL。下面的步骤提供此过程的摘要，但你可以在主题[为 Azure 网站配置 SSL 证书][ssl]中找到详细说明。
 
 首先，从证书颁发机构获取一个 SSL 证书。如果你要确保具有多个子域（例如 www.contoso.com 和 staging.contoso.com）的域的安全，你将需要获取通配符证书 (\*.contoso.com)。它们可能会导致更高成本，因此，你必须确定此类型证书的灵活性是否值得付出该成本。
 
-一旦从证书颁发机构获取证书后，就不能简单地以相同方式将其上载到 Azure。你必须使用 openssl 命令生成 .pfx 文件。该 openssl 命令是 OpenSSL 项目的一部分。这些源在 [OpenSSL 网站][OpenSSL 网站]上分发，但你通常也可以在 Internet 上找到该工具的预先编译的版本。在下面的示例中，使用证书 myserver.crt 和私钥文件 myserver.key 创建了一个 .pfx 文件。
+一旦从证书颁发机构获取证书后，就不能简单地以相同方式将其上载到 Azure。你必须使用 openssl 命令生成 .pfx 文件。该 openssl 命令是 OpenSSL 项目的一部分。这些源在 [OpenSSL 网站][openssl]上分发，但你通常也可以在 Internet 上找到该工具的预先编译的版本。在下面的示例中，使用证书 myserver.crt 和私钥文件 myserver.key 创建了一个 .pfx 文件。
 
     openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
@@ -149,7 +149,7 @@ Azure 网站自动提供与实际网站 URL 的安全连接。例如，如果你
 
 ![GlobalWebSSLBindings][GlobalWebSSLBindings]
 
-“基于 IP 的 SSL”选项是用于将公共的专用 IP 地址映射到域名的传统方法。它适用于所有浏览器。“SNI SSL”选项允许多个域共享相同 IP 地址，但对每个域具有不同的关联 SSL 证书。SNI SSL 不适用于某些较旧的浏览器（有关兼容性的更多信息，请参见[针对 SNI SSL 的 Wikipedia 条目][针对 SNI SSL 的 Wikipedia 条目]）。存在与每个 SSL 证书相关联的每月费用（每小时按比例分摊），并且定价因选择的是基于 IP 的 SSL 还是 SNI SSL 而异。有关定价信息，请参见[网站定价详细信息][网站定价详细信息]。有关此过程的详细信息，请参阅[为 Azure 网站配置 SSL 证书][为 Azure 网站配置 SSL 证书]。
+“基于 IP 的 SSL”选项是用于将公共的专用 IP 地址映射到域名的传统方法。它适用于所有浏览器。“SNI SSL”选项允许多个域共享相同 IP 地址，但对每个域具有不同的关联 SSL 证书。SNI SSL 不适用于某些较旧的浏览器（有关兼容性的更多信息，请参见[针对 SNI SSL 的 Wikipedia 条目][sni]）。存在与每个 SSL 证书相关联的每月费用（每小时按比例分摊），并且定价因选择的是基于 IP 的 SSL 还是 SNI SSL 而异。有关定价信息，请参见[网站定价详细信息][sslpricing]。有关此过程的详细信息，请参阅[为 Azure 网站配置 SSL 证书][ssl]。
 
 ## <a name="monitor"></a>监视网站
 
@@ -173,7 +173,7 @@ Azure 网站自动提供与实际网站 URL 的安全连接。例如，如果你
 
 ![GlobalWebMonitor4][GlobalWebMonitor4]
 
-如果你发现网站要求缩放，则可以在“缩放”选项卡上手动执行缩放，或者通过自动缩放预览执行缩放。该“缩放”选项卡提供向上扩展（更大的专用计算机）或向外扩展（相同大小的附加共享实例或专用实例）的选择。但是，自动缩放预览仅支持向外扩展。有关此选项的更详细信息，请参见有关网站监视的更多信息，以及参见[数字市场营销活动][数字市场营销活动]方案的“根据用户要求进行缩放”部分。另请参见[如何监视网站][如何监视网站]。
+如果你发现网站要求缩放，则可以在“缩放”选项卡上手动执行缩放，或者通过自动缩放预览执行缩放。该“缩放”选项卡提供向上扩展（更大的专用计算机）或向外扩展（相同大小的附加共享实例或专用实例）的选择。但是，自动缩放预览仅支持向外扩展。有关此选项的更详细信息，请参见有关网站监视的更多信息，以及参见[数字市场营销活动][scenariodigitalmarketing]方案的“根据用户要求进行缩放”部分。另请参见[如何监视网站][howtomonitor]。
 
 ## <a name="summary"></a>摘要
 
@@ -210,45 +210,40 @@ Azure 网站自动提供与实际网站 URL 的安全连接。例如，如果你
 </tr>
 </table>
 
-<!--   [drupal]:https://drupal.org/   [umbraco]:http://umbraco.com/  -->
+  [websitesoverview]:/zh-cn/documentation/services/web-sites/
+  [csoverview]:/zh-cn/documentation/services/cloud-services/
+  [vmoverview]:/zh-cn/documentation/services/virtual-machines/
+  [chooseservice]:/en-us/manage/services/web-sites/choose-web-app-service
+  
+  
+  [scenariodigitalmarketing]:/en-us/manage/services/web-sites/digital-marketing-campaign-solution-overview
+  [howtocreatewebsites]:/zh-cn/documentation/articles/web-sites-dotnet-get-started
+  [webmatrix]:http://www.microsoft.com/web/webmatrix/
+  [publishingwithgit]:/en-us/develop/net/common-tasks/publishing-with-git/
+  [aspnetgetstarted]:/en-us/develop/net/tutorials/get-started/
 
-  [Azure 网站]: /zh-cn/documentation/services/web-sites/
-  [Azure 云服务]: /zh-cn/documentation/services/cloud-services/
-  [Azure 虚拟机]: /zh-cn/documentation/services/virtual-machines/
-  [Azure 网站、云服务和虚拟机：何时使用何种产品？]: /en-us/manage/services/web-sites/choose-web-app-service
-  [创建 Azure 网站]: #createwebsite
-  [部署网站]: #deploywebsite
-  [添加自定义域]: #customdomain
-  [使用 SSL 保护网站]: #ssl
-  [监视网站]: #monitor
-  [数字市场营销活动]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-digital-marketing-application-solution-overview/
-  [业务应用程序]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-business-application-solution-overview/
-  [GlobalWebCreate]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Create.png
-  [Azure 网站和 ASP.NET 入门]: /zh-cn/documentation/articles/web-sites-dotnet-get-started
-  [WebMatrix]: http://www.microsoft.com/web/webmatrix/
+<!--
+  [drupal]:https://drupal.org/
+  [umbraco]:http://umbraco.com/
+ -->
+
+  [customdns]:/en-us/develop/net/common-tasks/custom-dns-web-site/
+  [ssl]:/en-us/develop/net/common-tasks/enable-ssl-web-site/
+  [openssl]:http://www.openssl.org/
+  [sni]:http://en.wikipedia.org/wiki/Server_Name_Indication
+  [sslpricing]:/en-us/pricing/details/web-sites/#service-ssl
+  [howtomonitor]:/en-us/manage/services/web-sites/how-to-monitor-websites/
+  
+ [GlobalWebCreate]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Create.png
   [GlobalWebQuickGlance]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_QuickGlance.png
-  [GlobalWebFTPSettings]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_FTPSettings.png
-  [从源代码管理发布到 Azure 网站]: /en-us/develop/net/common-tasks/publishing-with-git/
-  [GlobalWebVSPublish]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_VS_Publish.png
-  [GlobalWebWebMatrix]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_WebMatrix.png
-  [使用 Microsoft WebMatrix 开发和部署网站]: /en-us/develop/net/tutorials/get-started/
-  [为 Azure 网站配置自定义域名]: /en-us/develop/net/common-tasks/custom-dns-web-site/
-  [为 Azure 网站配置 SSL 证书]: /en-us/develop/net/common-tasks/enable-ssl-web-site/
-  [OpenSSL 网站]: http://www.openssl.org/
-  [GlobalWebUplodateCert]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Uplodate_Cert.png
-  [GlobalWebSSLBindings]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_SSL_Bindings.png
-  [针对 SNI SSL 的 Wikipedia 条目]: http://en.wikipedia.org/wiki/Server_Name_Indication
-  [网站定价详细信息]: /en-us/pricing/details/web-sites/#service-ssl
   [GlobalWebMonitor1]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Monitor1.png
   [GlobalWebMonitor2]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Monitor2.png
   [GlobalWebMonitor3]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Monitor3.png
   [GlobalWebMonitor4]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Monitor4.png
-  [1]: /en-us/manage/services/web-sites/digital-marketing-campaign-solution-overview
-  [如何监视网站]: /en-us/manage/services/web-sites/how-to-monitor-websites/
-  [2]: http://windowsazure.cn/zh-cn/documentation/articles/choose-web-site-cloud-service-vm/
-  [3]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-dotnet-get-started/
-  [4]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-publish-source-control/
-  [5]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-dotnet-using-webmatrix/
-  [6]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-custom-domain-name/
-  [7]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-configure-ssl-certificate/
-  [8]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-monitor/
+  [GlobalWebVSPublish]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_VS_Publish.png
+  [GlobalWebSSLBindings]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_SSL_Bindings.png
+  [GlobalWebUplodateCert]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Uplodate_Cert.png
+  [GlobalWebCustomDomain]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_CustomDomain.png
+  [GlobalWebWebMatrix]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_WebMatrix.png
+  [GlobalWebFTPSettings]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_FTPSettings.png
+  

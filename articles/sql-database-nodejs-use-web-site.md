@@ -18,7 +18,7 @@
 
 本教程中的项目文件将存储在名为 **tasklist** 的目录中，已完成的应用程序将与下图类似：
 
-![显示空白 tasklist 的网页][显示空白 tasklist 的网页]
+![显示空白 tasklist 的网页][node-sql-finished]
 
 <div class="dev-callout">
 <b>说明</b>
@@ -41,7 +41,7 @@
 
 -   [Node] 0.6.14 或更高版本
 
--   [Git]]
+-   [Git]
 
 -   Microsoft SQL Server 本机客户端库 - 作为 [Microsoft SQL Server 2012 功能包]的一部分提供
 
@@ -55,46 +55,46 @@
 
 按照以下步骤创建 Azure 网站和 SQL Database：
 
-1.  登录到 [Azure 管理门户][Azure 管理门户]。
+1.  登录到 [Azure 管理门户][management-portal]。
 2.  单击该门户左下角的“+ 新建”图标。
 
-    ![创建新的 Azure 网站][创建新的 Azure 网站]
+    ![创建新的 Azure 网站][new-website]
 
 3.  单击“网站”，然后单击“自定义创建”。
 
-    ![自定义创建新的网站][自定义创建新的网站]
+    ![自定义创建新的网站][custom-create]
 
     输入“URL”的值，从“数据库”下拉列表中选择“新建 SQL Database”，并在“区域”下拉列表中选择网站的数据中心。单击对话框底部的箭头。
 
-    ![填写网站详细信息][填写网站详细信息]
+    ![填写网站详细信息][website-details-sqlazure]
 
-4.  输入数据库的“名称”的值，选择“版本”[（Web 版或企业版）][（Web 版或企业版）]，再依次选择数据库的“最大大小”、“排序规则”和“新建 SQL Database 服务器”。单击对话框底部的箭头。
+4.  输入数据库的“名称”的值，选择“版本”[（Web 版或企业版）][sql-database-editions]，再依次选择数据库的“最大大小”、“排序规则”和“新建 SQL Database 服务器”。单击对话框底部的箭头。
 
-    ![填写 SQL Database 设置][填写 SQL Database 设置]
+    ![填写 SQL Database 设置][database-settings]
 
 5.  输入管理员名称和密码（并确认密码），选择你将在其中创建新的 SQL Database 服务器的区域，选中“允许 Azure 服务访问服务器”框。
 
-    ![新建 SQL Database 服务器][新建 SQL Database 服务器]
+    ![新建 SQL Database 服务器][create-server]
 
     创建网站后，你会看到文本“网站‘[SITENAME]’创建已成功完成”。现在，你可以启用 Git 发布。
 
 6.  单击网站列表中显示的网站的名称以打开该网站的“快速启动”仪表板。
 
-    ![打开网站仪表板][打开网站仪表板]
+    ![打开网站仪表板][go-to-dashboard]
 
 7.  在“快速启动”页的底部，单击“设置 Git 发布”。
 
-    ![设置 Git 发布][设置 Git 发布]
+    ![设置 Git 发布][setup-git-publishing]
 
 8.  若要启用 Git 发布，你必须提供用户名和密码。记下你创建的用户名和密码。（如果你之前已设置 Git 存储库，则将跳过此步骤。）
 
-    ![创建发布凭据][创建发布凭据]
+    ![创建发布凭据][portal-git-username-password]
 
     设置存储库需要花费几秒钟的时间。
 
 9.  在你的存储库已就绪后，将显示有关将应用程序文件推送到存储库的说明。记下这些说明 - 稍后你将使用它们。
 
-    ![Git 说明][Git 说明]
+    ![Git 说明][git-instructions]
 
 ## 获取 SQL Database 连接信息
 
@@ -102,11 +102,11 @@
 
 1.  从 Azure 管理门户中，单击“链接的资源”，然后单击数据库名称。
 
-    ![链接的资源][链接的资源]
+    ![链接的资源][linked-resources]
 
 2.  单击“查看连接字符串”。
 
-    ![连接字符串][连接字符串]
+    ![连接字符串][connection-string]
 
 3.  从结果对话框的“ODBC”部分，记下稍后将要使用到的连接字符串。
 
@@ -116,29 +116,29 @@
 
 1.  从 Azure 管理门户中，选择你的 SQL Database，然后单击该页面底部的“管理”。如果你收到一条内容为当前 IP 不属于防火墙规则的消息，请选择“确定”以添加该 IP 地址。
 
-    ![“管理”按钮][“管理”按钮]
+    ![“管理”按钮][sql-azure-manage]
 
 2.  使用你前面在创建数据库服务器时选择的登录名和密码进行登录。
 
-    ![数据库管理登录][数据库管理登录]
+    ![数据库管理登录][sql-azure-login]
 
 3.  从页面左下角，选择“设计”，然后选择“新建表”。
 
-    ![新建表][新建表]
+    ![新建表][sql-new-table]
 
 4.  输入“tasks”作为“表名”，选中“ID”列的“是否标识?”。
 
-    ![表名设置为 tasks 且已选中“是否标识”][表名设置为 tasks 且已选中“是否标识”]
+    ![表名设置为 tasks 且已选中“是否标识”][table-name-identity]
 
 5.  将“Column1”更改为“名称”，将“Column2”更改为“类别”。通过单击“添加列”按钮来添加两个新列。将第一个新列命名为“已创建”且类型为“date”。将第二个新列命名为“已完成”且类型为“bit”。这两个新列都应标记“是否必需?”。
 
-    ![表设计已完成][表设计已完成]
+    ![表设计已完成][completed-table]
 
 6.  单击“保存”按钮保存对表所做的更改。现在，你可以关闭 SQL Database 管理页面。
 
 ## 安装模块并生成基架
 
-在本节中，你将创建一个新的 Node 应用程序并使用 npm 添加模块包。对于任务列表应用程序，你将使用 [express][express] 和 [node-sqlserver][node-sqlserver] 模块。Express 模块为 Node 提供“模型视图控制器”框架，而 node-sqlserver 模块提供与 Azure SQL Database 的连接。
+在本节中，你将创建一个新的 Node 应用程序并使用 npm 添加模块包。对于任务列表应用程序，你将使用 [express] 和 [node-sqlserver] 模块。Express 模块为 Node 提供“模型视图控制器”框架，而 node-sqlserver 模块提供与 Azure SQL Database 的连接。
 
 ### 安装 Express 并生成基架
 
@@ -149,9 +149,9 @@
         npm install express -g
 
     <div class="dev-callout">
-<strong>说明</strong>
-<p>在某些操作系统上使用&ldquo;-g&rdquo;参数时，你可能会收到一条错误 <strong>Error:EPERM, chmod '/usr/local/bin/express'</strong> 和一个尝试以管理员身份运行帐户的请求。如果发生这种情况，请使用 <strong>sudo</strong> 命令以更高的权限级别运行 npm。</p>
-</div>
+	<strong>说明</strong>
+	<p>在某些操作系统上使用&ldquo;-g&rdquo;参数时，你可能会收到一条错误 <strong>Error:EPERM, chmod '/usr/local/bin/express'</strong> 和一个尝试以管理员身份运行帐户的请求。如果发生这种情况，请使用 <strong>sudo</strong> 命令以更高的权限级别运行 npm。</p>
+	</div>
 
     此命令的输出看上去应如下所示：
 
@@ -383,13 +383,13 @@
 
 3.  打开 Web 浏览器并导航到 <http://127.0.0.1:3000>。此时会显示与下图类似的网页：
 
-    ![显示空白 tasklist 的网页][2]
+    ![显示空白 tasklist 的网页][node-sql-empty]
 
 4.  使用提供的 **Item Name**（项名称）和 **Item Category**（项类别）字段输入信息，然后单击 **Add item**（添加项）。
 
 5.  页面应更新为在 ToDo List 中显示该项。
 
-    ![任务列表中新项的图像][任务列表中新项的图像]
+    ![任务列表中新项的图像][node-sql-list-items]
 
 6.  若要完成任务，只需选中“Complete”（完成）列中的复选框，然后单击 **Update tasks**（更新任务）。
 
@@ -424,19 +424,19 @@
 
 1.  从管理门户中，单击“网站”，然后选择你的网站。
 
-    ![打开网站仪表板][打开网站仪表板]
+    ![打开网站仪表板][go-to-dashboard]
 
 2.  单击**“配置”**，然后找到页面的**“应用程序设置”**部分。
 
-    ![配置链接][配置链接]
+    ![配置链接][web-configure]
 
 3.  在“应用程序设置”部分，在“键”字段中输入 **SQL\_CONN**，在“值”字段中输入 ODBC 连接字符串。最后，单击复选标记。
 
-    ![应用程序设置][应用程序设置]
+    ![应用程序设置][app-settings]
 
 4.  最后，单击页面底部的**“保存”**图标，将此更改提交到运行时环境。
 
-    ![保存应用程序设置][保存应用程序设置]
+    ![保存应用程序设置][app-settings-save]
 
 5.  从命令行中，将目录更改为 **tasklist** 目录，然后输入以下命令以删除 **config.json** 文件：
 
@@ -460,46 +460,72 @@
    [适用于 Mac 和 Linux 的 Azure 命令行工具] 
 
 
-
-
-  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)
-  [使用 Git 发布到 Azure 网站]: /en-us/develop/nodejs/common-tasks/publishing-with-git/
-   [Azure 开发人员中心]: /en-us/develop/nodejs/
-   [使用表存储构建 Node.js Web 应用程序]: /en-us/develop/nodejs/tutorials/web-site-with-storage/
+  [使用表存储构建 Node.js Web 应用程序]: /en-us/develop/nodejs/tutorials/web-site-with-storage/
+  [使用 MongoDB 构建 Node.js Web 应用程序]: ../store-mongolab-web-sites-nodejs-store-data-mongodb/
+  [适用于 Mac 和 Linux 的 Azure 命令行工具]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
 
   [Node]: http://nodejs.org
   [Git]: http://git-scm.com
-  [显示空白 tasklist 的网页]: ./media/sql-database-nodejs-use-web-site/sql_todo_final.png
   [Microsoft SQL Server 2012 功能包]: http://www.microsoft.com/zh-cn/download/details.aspx?id=29065
-  [Azure 管理门户]: https://manage.windowsazure.cn/
-  [创建新的 Azure 网站]: ./media/sql-database-nodejs-use-web-site/new_website.jpg
-  [自定义创建新的网站]: ./media/sql-database-nodejs-use-web-site/custom_create.png
-  [填写网站详细信息]: ./media/sql-database-nodejs-use-web-site/website_details_sqlazure.jpg
-  [（Web 版或企业版）]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ee621788.aspx
-  [填写 SQL Database 设置]: ./media/sql-database-nodejs-use-web-site/database_settings.jpg
-  [新建 SQL Database 服务器]: ./media/sql-database-nodejs-use-web-site/create_server.jpg
-  [打开网站仪表板]: ./media/sql-database-nodejs-use-web-site/go_to_dashboard.png
-  [设置 Git 发布]: ./media/sql-database-nodejs-use-web-site/setup_git_publishing.png
-  [创建发布凭据]: ./media/sql-database-nodejs-use-web-site/git-deployment-credentials.png
-  [Git 说明]: ./media/sql-database-nodejs-use-web-site/git-instructions.png
-  [链接的资源]: ./media/sql-database-nodejs-use-web-site/linked_resources.jpg
-  [连接字符串]: ./media/sql-database-nodejs-use-web-site/connection_string.jpg
-  [“管理”按钮]: ./media/sql-database-nodejs-use-web-site/sql-manage.png
-  [数据库管理登录]: ./media/sql-database-nodejs-use-web-site/sqlazurelogin.png
-  [新建表]: ./media/sql-database-nodejs-use-web-site/new-table.png
-  [表名设置为 tasks 且已选中“是否标识”]: ./media/sql-database-nodejs-use-web-site/table-name-identity.png
-  [表设计已完成]: ./media/sql-database-nodejs-use-web-site/table-columns.png
+
   [express]: http://expressjs.com
   [node-sqlserver]: https://github.com/WindowsAzure/node-sqlserver
   [下载中心]: http://www.microsoft.com/en-us/download/details.aspx?id=29995
   [Twitter Bootstrap]: https://github.com/twbs/bootstrap
-  [1]: http://getbootstrap.com/
-  [2]: ./media/sql-database-nodejs-use-web-site/sql_todo_empty.png
-  [任务列表中新项的图像]: ./media/sql-database-nodejs-use-web-site/sql_todo_list.png
-  [http://[site]: http://[site
-  [配置链接]: ./media/sql-database-nodejs-use-web-site/sql-task-configure.png
-  [应用程序设置]: ./media/sql-database-nodejs-use-web-site/appsettings.png
-  [保存应用程序设置]: ./media/sql-database-nodejs-use-web-site/savebutton.png
-  [使用 MongoDB 构建 Node.js Web 应用程序]: ../store-mongolab-web-sites-nodejs-store-data-mongodb/
-  [使用 Git 发布到 Azure 网站]: ../CommonTasks/publishing-with-git
-  [适用于 Mac 和 Linux 的 Azure 命令行工具]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
+
+
+
+[Create and deploy a Node.js application to Azure Web Sites]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
+[Publishing to Azure Web Sites with Git]: /en-us/develop/nodejs/common-tasks/publishing-with-git/
+[Azure Developer Center]: /en-us/develop/nodejs/
+[Node.js Web Application with Table Storage]: /en-us/develop/nodejs/tutorials/web-site-with-storage/
+
+[node]: http://nodejs.org
+[Git]: http://git-scm.com
+[express]: http://expressjs.com
+[for free]: http://www.windowsazure.cn
+[Git remote]: http://git-scm.com/docs/git-remote
+
+[Node.js Web Application with MongoDB]: ../store-mongolab-web-sites-nodejs-store-data-mongodb/
+[Azure command-line tool for Mac and Linux]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
+[Create and deploy a Node.js application to an Azure Web Site]: ./web-site-with-mongodb-Mac
+[Publishing to Azure Web Sites with Git]: ../CommonTasks/publishing-with-git
+[Azure Portal]: http://www.windowsazure.cn
+[management-portal]: https://manage.windowsazure.cn/
+[node-sqlserver]: https://github.com/WindowsAzure/node-sqlserver
+[Microsoft SQL Server 2012 Feature Pack]: http://www.microsoft.com/zh-cn/download/details.aspx?id=29065
+[sql-database-editions]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ee621788.aspx
+[download center]: http://www.microsoft.com/en-us/download/details.aspx?id=29995
+[Twitter Bootstrap]: http://twitter.github.com/bootstrap/
+
+[app-settings-save]: ./media/sql-database-nodejs-use-web-site/savebutton.png
+[web-configure]: ./media/sql-database-nodejs-use-web-site/sql-task-configure.png
+[app-settings]: ./media/sql-database-nodejs-use-web-site/appsettings.png
+[connection-string]: ./media/sql-database-nodejs-use-web-site/connection_string.jpg
+[website-details-sqlazure]: ./media/sql-database-nodejs-use-web-site/website_details_sqlazure.jpg
+[database-settings]: ./media/sql-database-nodejs-use-web-site/database_settings.jpg
+[create-server]: ./media/sql-database-nodejs-use-web-site/create_server.jpg
+[go-to-dashboard]: ./media/sql-database-nodejs-use-web-site/go_to_dashboard.png
+[setup-git-publishing]: ./media/sql-database-nodejs-use-web-site/setup_git_publishing.png
+[portal-git-username-password]: ./media/sql-database-nodejs-use-web-site/git-deployment-credentials.png
+
+
+[git-instructions]: ./media/sql-database-nodejs-use-web-site/git-instructions.png
+[linked-resources]: ./media/sql-database-nodejs-use-web-site/linked_resources.jpg
+[new-website]: ./media/sql-database-nodejs-use-web-site/new_website.jpg
+[custom-create]: ./media/sql-database-nodejs-use-web-site/custom_create.png
+
+[node-sql-finished]: ./media/sql-database-nodejs-use-web-site/sql_todo_final.png
+[node-sql-empty]: ./media/sql-database-nodejs-use-web-site/sql_todo_empty.png
+[node-sql-list-items]: ./media/sql-database-nodejs-use-web-site/sql_todo_list.png
+
+
+
+
+
+
+[sql-azure-manage]: ./media/sql-database-nodejs-use-web-site/sql-manage.png
+[sql-azure-login]: ./media/sql-database-nodejs-use-web-site/sqlazurelogin.png
+[sql-new-table]: ./media/sql-database-nodejs-use-web-site/new-table.png
+[table-name-identity]: ./media/sql-database-nodejs-use-web-site/table-name-identity.png
+[completed-table]: ./media/sql-database-nodejs-use-web-site/table-columns.png
