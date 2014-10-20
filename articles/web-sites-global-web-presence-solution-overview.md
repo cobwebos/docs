@@ -14,7 +14,7 @@
 
 <div class="dev-callout">
 <strong>说明</strong>
-<p>本指南展示为面向公众的 .COM 站点开发而进行调整的一些最常见领域和任务。但是，还有可在特定实施中使用的其他一些 Azure 网站功能。若要查看这些功能，另请参阅<a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-digital-marketing-application-solution-overview/">数字市场营销活动</a>和<a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-business-application-solution-overview/">业务应用程序</a>中的其他指南。</p>
+<p>本指南展示为面向公众的 .COM 站点开发而进行调整的一些最常见领域和任务。但是，还有可在特定实施中使用的其他一些 Azure 网站功能。若要查看这些功能，另请参阅<a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-digital-marketing-application-solution-overview/">数字市场营销活动</a>和<a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-business-application-solution-overview/">业务应用程序</a>中的其他指南。</p>
 </div>
 
 ## <a name="createwebsite"></a>创建 Azure 网站
@@ -52,7 +52,7 @@
 
 ![GlobalWebFTPSettings][GlobalWebFTPSettings]
 
-请注意，部署/FTP 用户名是你提供的网站名称和用户名的组合。因此，如果你的网站是“<http://contoso.chinacloudsites.cn>”并且你的用户名是“myuser”，则部署和 FTP 的用户名将是“contoso\\myuser”。
+请注意，部署/FTP 用户名是你提供的网站名称和用户名的组合。因此，如果你的网站是“http://contoso.chinacloudsites.cn”并且你的用户名是“myuser”，则部署和 FTP 的用户名将是“contoso\\myuser”。
 
 还可以选择通过源代码管理服务（例如 GitHub 或 TFS Online）进行部署。单击针对“从源代码管理设置部署”的选项。然后，按照针对你选择的源代码管理系统或服务的说明执行。有关从本地 Git 存储库进行发布的分步说明，请参见[从源代码管理发布到 Azure 网站][publishingwithgit]。
 
@@ -87,6 +87,7 @@
 </div>
 
 对于 Azure 网站，你必须首先对 Azure 网站创建一个 CNAME 记录。该设置通过第三方注册机构的网站实现。以下是一个示例 CNAME 记录。
+
 <table cellspacing="0" border="1">
 <tr>
 <th align="left" valign="top">类型</th>
@@ -102,7 +103,7 @@
 </tr>
 </table>
 
-如果你的域是新注册的，该域可能会用一天或更长时间完成所有 DNS 服务器上的解析，对缓存的 DNS 条目进行操作。但是，如果你的域已存在，则 CNAME 更改应该会在一分钟内发生。请注意，该 CNAME 记录在你的域（必须用子域别名进行限定，例如“www”）和 Azure 网站 URL 之间提供映射。CNAME 记录的任何一侧都不包含“<http://>”前缀。
+如果你的域是新注册的，该域可能会用一天或更长时间完成所有 DNS 服务器上的解析，对缓存的 DNS 条目进行操作。但是，如果你的域已存在，则 CNAME 更改应该会在一分钟内发生。请注意，该 CNAME 记录在你的域（必须用子域别名进行限定，例如“www”）和 Azure 网站 URL 之间提供映射。CNAME 记录的任何一侧都不包含“http://”前缀。
 
 在 Azure 管理门户的“缩放”选项卡上确认你在“共享”或“标准”模式下运行（“免费”网站不支持自定义域）。然后转到“配置”选项卡，单击“管理域”按钮。这使你能够将网站域自定义域名相关联。
 
@@ -131,7 +132,7 @@
 
 如果你的网站包含只读信息，则无需提供对该网站的安全访问。但是，如果你收集任何用户信息、执行电子商务或管理任何其他敏感数据，则应确保网站的安全。安全性是一个很大的主题，本文无法涵盖所有最佳实践和技术。但是，着重说明为你的网站实现安全套接字层 (SSL) 的过程是很重要的。SSL 允许用户以加密的方式使用 HTTPS 地址而非 HTTP 连接到你的网站。有一些将 SSL 用于 Azure 网站所需的特定步骤。
 
-Azure 网站自动提供与实际网站 URL 的安全连接。例如，如果你的网站是 <http://contoso.chinacloudsites.cn>，则只需通过将“http”更改为“https”，例如 **https**://contoso.chinacloudsites.cn，就可以通过 SSL 进行连接。
+Azure 网站自动提供与实际网站 URL 的安全连接。例如，如果你的网站是 http://contoso.chinacloudsites.cn，则只需通过将“http”更改为“https”，例如 **https**://contoso.chinacloudsites.cn，就可以通过 SSL 进行连接。
 
 但是，如果你在使用自定义域名，则必须采取措施通过网站的 Azure 管理门户上载证书和启用 SSL。下面的步骤提供此过程的摘要，但你可以在主题[为 Azure 网站配置 SSL 证书][ssl]中找到详细说明。
 
@@ -186,27 +187,27 @@ Azure 网站自动提供与实际网站 URL 的安全连接。例如，如果你
 </tr>
 <tr>
 <td valign="middle"><strong>计划</strong></td>
-<td valign="top">- <a href="http://windowsazure.cn/zh-cn/documentation/articles/choose-web-site-cloud-service-vm/">Azure 网站、云服务和虚拟机：何时使用何种产品？</a></td>
+<td valign="top">- <a href="http://azure.microsoft.com/zh-cn/documentation/articles/choose-web-site-cloud-service-vm/">Azure 网站、云服务和虚拟机：何时使用何种产品？</a></td>
 </tr>
 <tr>
 <td valign="middle"><strong>创建</strong></td>
-<td valign="top">- <a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-dotnet-get-started/">Azure 网站和 ASP.NET 入门</a></td>
+<td valign="top">- <a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-dotnet-get-started/">Azure 网站和 ASP.NET 入门</a></td>
 </tr>
 <tr>
 <td valign="middle"><strong>部署</strong></td>
-<td valign="top">- <a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-publish-source-control/">从源代码管理发布到 Azure 网站</a><br/>- <a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-dotnet-get-started/">将 ASP.NET Web 应用程序部署到 Azure 网站</a><br/>- <a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-dotnet-using-webmatrix/">使用 Microsoft WebMatrix 开发和部署网站</a></td>
+<td valign="top">- <a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-publish-source-control/">从源代码管理发布到 Azure 网站</a><br/>- <a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-dotnet-get-started/">将 ASP.NET Web 应用程序部署到 Azure 网站</a><br/>- <a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-dotnet-using-webmatrix/">使用 Microsoft WebMatrix 开发和部署网站</a></td>
 </tr>
 <tr>
 <td valign="middle"><strong>自定义域</strong></td>
-<td valign="top">- <a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-custom-domain-name/">为 Azure 网站配置自定义域名</a></td>
+<td valign="top">- <a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-custom-domain-name/">为 Azure 网站配置自定义域名</a></td>
 </tr>
 <tr>
 <td valign="middle"><strong>SSL</strong></td>
-<td valign="top">- <a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-configure-ssl-certificate/">为 Azure 网站配置 SSL 证书</a></td>
+<td valign="top">- <a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-configure-ssl-certificate/">为 Azure 网站配置 SSL 证书</a></td>
 </tr>
 <tr>
 <td valign="middle"><strong>监视</strong></td>
-<td valign="top">- <a href="http://windowsazure.cn/zh-cn/documentation/articles/web-sites-monitor/">如何监视网站</a></td>
+<td valign="top">- <a href="http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-monitor/">如何监视网站</a></td>
 </tr>
 </table>
 
