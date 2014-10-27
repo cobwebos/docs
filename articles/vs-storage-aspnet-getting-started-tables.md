@@ -32,5 +32,5 @@ Azure 表存储服务使用户可以存储大量结构化数据。该服务是�
   [Blobs]: /zh-cn/documentation/articles/vs-storage-aspnet-getting-started-blobs "Blobs"
   [Queues]: /zh-cn/documentation/articles/vs-storage-aspnet-getting-started-queues "Queues"
   [Tables]: /zh-cn/documentation/articles/vs-storage-aspnet-getting-started-tables "Tables"
-  [如何通过 .NET 使用表存储]: http://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "如何通过 .NET 使用表存储"
+  [如何通过 .NET 使用表存储]: http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "如何通过 .NET 使用表存储"
   [vs-storage-getting-started-tables-include]: ../includes/vs-storage-getting-started-tables-include.md
