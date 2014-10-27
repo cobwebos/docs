@@ -4,11 +4,11 @@
 
 本主题说明如何注册你的应用程序，以便能够使用 Azure Active Directory 作为 Azure 移动服务的身份验证提供程序。
 
-> [WACOM.NOTE] 如果你要使用 Azure Active Directory 为单一登录 (SSO) 提供客户端驱动的身份验证，请参阅[使用 Active Directory 身份验证库单一登录对应用程序进行身份验证][]教程。
+> [WACOM.NOTE] 如果你要使用 Azure Active Directory 为单一登录 (SSO) 提供客户端驱动的身份验证，请参阅[使用 Active Directory 身份验证库单一登录对应用程序进行身份验证][使用 Active Directory 身份验证库单一登录对应用程序进行身份验证]教程。
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的移动服务 。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务”，然后单击你的移动服务 。
 
-    ![][]
+    ![][0]
 
 2.  单击移动服务的“标识”选项卡 。
 

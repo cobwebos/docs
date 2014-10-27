@@ -2,7 +2,7 @@
 
 <tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb"></tags>
 
-[WACOM.INCLUDE [vs-storage-aspnet-getting-started-intro][vs-storage-aspnet-getting-started-intro]]
+[WACOM.INCLUDE [vs-storage-aspnet-getting-started-intro](../includes/vs-storage-aspnet-getting-started-intro.md)]
 
 ### Azure 存储入门
 
@@ -28,11 +28,11 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
       ConfigurationManager.GetSetting("<storageAccountName>_AzureStorageConnectionString"));
 
-[WACOM.INCLUDE [vs-storage-getting-started-blobs-include][vs-storage-getting-started-blobs-include]]
+[WACOM.INCLUDE [vs-storage-getting-started-blobs-include](../includes/vs-storage-getting-started-blobs-include.md)]
 
   [vs-storage-aspnet-getting-started-intro]: ../includes/vs-storage-aspnet-getting-started-intro.md
   [Blobs]: /zh-cn/documentation/articles/vs-storage-aspnet-getting-started-blobs "Blobs"
   [Queues]: /zh-cn/documentation/articles/vs-storage-aspnet-getting-started-queues "Queues"
   [Tables]: /zh-cn/documentation/articles/vs-storage-aspnet-getting-started-tables "Tables"
-  [如何通过 .NET 使用 Blob 存储]: http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/ "如何通过 .NET 使用 Blob 存储"
+  [如何通过 .NET 使用 Blob 存储]: http://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/ "如何通过 .NET 使用 Blob 存储"
   [vs-storage-getting-started-blobs-include]: ../includes/vs-storage-getting-started-blobs-include.md

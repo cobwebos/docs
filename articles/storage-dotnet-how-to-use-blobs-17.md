@@ -2,27 +2,27 @@
 
 # 如何在 .NET 中使用 Azure Blob 存储服务
 
-[1.7 版][] [2.0 版][]
+[1.7 版][1.7 版] [2.0 版][2.0 版]
 
 本指南将演示如何使用 Azure Blob 存储服务执行常见方案。
 示例是用 C\# 编写的且使用
 了 .NET API。涉及的任务包括
 **上载**、**列出**、**下载**和**删除** Blob。有关 Blob 的
-详细信息，请参阅[后续步骤][]部分。
+详细信息，请参阅[后续步骤][后续步骤]部分。
 
 ## 目录
 
--   [什么是 Blob 存储][]
--   [概念][]
--   [创建 Azure 存储帐户][]
--   [设置存储连接字符串][]
--   [如何：以编程方式访问 Blob 存储][]
--   [如何：创建容器][]
--   [如何：将 Blob 上载到容器中][]
--   [如何：列出容器中的 Blob][]
--   [如何：下载 Blob][]
--   [如何：删除 Blob][]
--   [后续步骤][]
+-   [什么是 Blob 存储][什么是 Blob 存储]
+-   [概念][概念]
+-   [创建 Azure 存储帐户][创建 Azure 存储帐户]
+-   [设置存储连接字符串][设置存储连接字符串]
+-   [如何：以编程方式访问 Blob 存储][如何：以编程方式访问 Blob 存储]
+-   [如何：创建容器][如何：创建容器]
+-   [如何：将 Blob 上载到容器中][如何：将 Blob 上载到容器中]
+-   [如何：列出容器中的 Blob][如何：列出容器中的 Blob]
+-   [如何：下载 Blob][如何：下载 Blob]
+-   [如何：删除 Blob][如何：删除 Blob]
+-   [后续步骤][后续步骤]
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
@@ -53,16 +53,16 @@ Azure .NET 存储 API 支持
 1.  在 Visual Studio 解决方案资源管理器内 Azure 部署项目的
     **“角色”**文件夹中，右键单击你的 Web 角色或
     辅助角色，然后单击**“属性”**。
-    ![在 Visual Studio 中选择云服务角色的属性][]
+    ![在 Visual Studio 中选择云服务角色的属性][在 Visual Studio 中选择云服务角色的属性]
 
 2.  单击**“设置”**选项卡并按**“添加设置”**按钮。
-    ![在 Visual Studio 中添加云服务设置][]
+    ![在 Visual Studio 中添加云服务设置][在 Visual Studio 中添加云服务设置]
 
     新的 **Setting1** 条目稍后将显示在设置网格中。
 
 3.  在新的 **Setting1** 条目的**“类型”**下拉列表中，选择
     **“连接字符串”**。
-    ![Blob7][]
+    ![Blob7][Blob7]
 
 4.  单击 **Setting1** 条目最右侧的 **...** 按钮。
     此时将打开**“存储帐户连接字符串”**对话框。
@@ -73,25 +73,25 @@ Azure .NET 存储 API 支持
     如果你希望使用我们之前在 Azure 中创建的存储帐户
     来存储 Blob 数据，请输入从本教程前面的步骤中
     复制的**“主访问密钥”**值。
-    ![Blob8][]
+    ![Blob8][Blob8]
 
 6.  将条目**“名称”**从 **Setting1** 更改为更友好的名称，
     例如 **StorageConnectionString**。在本指南后面的
     代码中你将引用此连接字符串。
-    ![Blob9][]
+    ![Blob9][Blob9]
 
 ### 在使用网站或虚拟机时配置连接字符串
 
 在使用网站或虚拟机时，建议你使用 .NET 配置系统（如 `web.config`）。你可以使用 `<appSettings>` 元素存储连接字符串：
 
-    <configuration>
-    <appSettings>
-    <add key="StorageConnectionString"
-    value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
-    </appSettings>
-    </configuration>
+	<configuration>
+	    <appSettings>
+	    <add key="StorageConnectionString"
+			    value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
+		</appSettings>
+	</configuration>
 
-阅读[配置连接字符串][]，了解有关存储连接字符串的详细信息。
+阅读[配置连接字符串][配置连接字符串]，了解有关存储连接字符串的详细信息。
 
 你现在即可准备执行本指南中的操作任务。
 
@@ -108,7 +108,7 @@ Azure .NET 存储 API 支持
 Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
 
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-    CloudConfigurationManager.GetSetting("StorageConnectionString"));
+        CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
 你可以使用 **CloudBlobClient** 类型来检索表示存储在 Blob 存储服务
 中的容器和 Blob 的对象。以下代码
@@ -143,7 +143,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
 将容器设置为公共容器：
 
     container.SetPermissions(
-    new BlobContainerPermissions { PublicAccess = 
+        new BlobContainerPermissions { PublicAccess = 
     BlobContainerPublicAccessType.Blob }); 
 
 Internet 上的所有人都可以查看公共容器中的 Blob，但必须
@@ -173,7 +173,7 @@ Internet 上的所有人都可以查看公共容器中的 Blob，但必须
     // 使用来自本地文件的内容创建或覆盖“myblob”Blob
     using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
     {
-    blob.UploadFromStream(fileStream);
+        blob.UploadFromStream(fileStream);
     } 
 
 ## 列出容器中的 Blob如何：列出容器中的 Blob
@@ -213,7 +213,7 @@ Internet 上的所有人都可以查看公共容器中的 Blob，但必须
 **UseFlatBlobListing** 设置为
 **true**，传入新的
 **BlobRequestOptions** 类。这将导致返回每个 Blob，而无论目录如何。
-有关详细信息，请参阅 [CloudBlobContainer.ListBlobs][]。
+有关详细信息，请参阅 [CloudBlobContainer.ListBlobs][CloudBlobContainer.ListBlobs]。
 
 ## 下载 Blob如何：下载 Blob
 
@@ -269,16 +269,16 @@ Blob 的 **DownloadToFile**、**DownloadByteArray** 或
 如何执行更复杂的存储任务。
 
 -   查看 Blob 服务参考文档，了解有关可用 API 的完整详细信息：
-    -   [.NET 客户端库引用][]
-    -   [REST API 参考][]
+    -   [.NET 客户端库引用][.NET 客户端库引用]
+    -   [REST API 参考][REST API 参考]
 
--   在以下位置了解使用 Azure 存储空间能够执行的更高级任务：[在 Azure 中存储和访问数据][]。
+-   在以下位置了解使用 Azure 存储空间能够执行的更高级任务：[在 Azure 中存储和访问数据][在 Azure 中存储和访问数据]。
 -   查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
-    -   使用[表存储][]来存储结构化数据。
-    -   使用 [SQL Database][] 来存储关系数据。
+    -   使用[表存储][表存储]来存储结构化数据。
+    -   使用 [SQL Database][SQL Database] 来存储关系数据。
 
-  [1.7 版]: /en-us/develop/net/how-to-guides/blob-storage-v17/ "1.7 版"
-  [2.0 版]: /en-us/develop/net/how-to-guides/blob-storage/ "2.0 版"
+  [1.7 版]: /zh-cn/develop/net/how-to-guides/blob-storage-v17/ "1.7 版"
+  [2.0 版]: /zh-cn/develop/net/how-to-guides/blob-storage/ "2.0 版"
   [后续步骤]: #next-steps
   [什么是 Blob 存储]: #what-is
   [概念]: #concepts
@@ -301,5 +301,5 @@ Blob 的 **DownloadToFile**、**DownloadByteArray** 或
   [.NET 客户端库引用]: http://msdn.microsoft.com/zh-cn/library/azure/wl_svchosting_mref_reference_home
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [表存储]: /en-us/develop/net/how-to-guides/table-services/
-  [SQL Database]: /en-us/develop/net/how-to-guides/sql-database/
+  [表存储]: /zh-cn/develop/net/how-to-guides/table-services/
+  [SQL Database]: /zh-cn/develop/net/how-to-guides/sql-database/

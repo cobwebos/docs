@@ -1,7 +1,6 @@
 <properties pageTitle="Get Started with Mobile Services for Windows Store apps | Mobile Dev Center" metaKeywords="" description="Follow this tutorial to get started using Azure Mobile Services for Windows Store development in C# or JavaScript. " metaCanonical="" services="" documentationCenter="Mobile" title="Get started with Mobile Services" authors="glenga" solutions="" manager="" editor="" />
 
-<a name="getting-started"> </a>
-# 移动服务入门
+# <a name="getting-started"> </a>移动服务入门
 
 <div class="dev-center-tutorial-selector sublanding">
 	<a href="/zh-cn/documentation/articles/mobile-services-windows-store-get-started" title="Windows Store" class="current">Windows Store</a>
@@ -23,10 +22,8 @@
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
 <p>本教程说明如何使用 Azure 移动服务向 Windows 应用商店应用程序添加基于云的后端服务。</p>
-
 <p>如果你更愿意观看视频，右侧的视频片段提供了与本教程相同的步骤。在视频中，Scott Guthrie 简要介绍了移动服务，并指导你完成创建第一个移动服务并从 Windows 应用商店应用程序连接到该服务的过程。</p>
 </div>
-
 <div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Introduction-to-Windows-Azure-Mobile-Services" target="_blank" class="label">观看教程</a> <a style="background-image: url('/media/devcenter/mobile/videos/get-started-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Introduction-to-Windows-Azure-Mobile-Services" target="_blank" class="dev-onpage-video"><span class="icon">播放视频</span></a> <span class="time">10:08</span></div>
 </div>
 
@@ -34,17 +31,17 @@
 
 以下是完成的应用程序的屏幕快照：
 
-![][]
+![][0]
 
 只有在完成本教程后，才可以学习有关 Windows 应用商店应用程序的所有其他移动服务教程。
 
-> [WACOM.NOTE] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][]。
+> [WACOM.NOTE] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][Azure 免费试用]。
 
-> 本教程需要 Visual Studio 2013。若要使用 Visual Studio 2012 连接 Windows 应用商店应用程序，请按照[使用 Visual Studio 2012 的移动服务中的数据处理入门][]主题中的步骤进行操作。
+> 本教程需要 Visual Studio 2013。若要使用 Visual Studio 2012 连接 Windows 应用商店应用程序，请按照[使用 Visual Studio 2012 的移动服务中的数据处理入门][使用 Visual Studio 2012 的移动服务中的数据处理入门]主题中的步骤进行操作。
 
 ## 创建新的移动服务
 
-[WACOM.INCLUDE [mobile-services-create-new-service][]]
+[WACOM.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
 ## 创建新的 Windows 应用商店应用程序
 
@@ -54,21 +51,22 @@
 
 1.  在管理门户中单击“移动服务”，然后单击你刚刚创建的移动服务 。
 
+   
 2.  在快速入门选项卡中，单击“选择平台”下的“Windows”，然后展开“创建新的 Windows 应用商店应用程序” 。
 
-    ![][1]
+   	![][1]
 
-    此时将显示三个简单步骤，描述如何创建与移动服务连接的 Windows 应用商店应用程序。
+   	此时将显示三个简单步骤，描述如何创建与移动服务连接的 Windows 应用商店应用程序。
 
-    ![][2]
+  	![][2]
 
-3.  在本地计算机或虚拟机上下载并安装 [Visual Studio 2013 Express for Windows][]（如果尚未这么做）。
+3.  在本地计算机或虚拟机上下载并安装 [Visual Studio 2013 Express for Windows][Visual Studio 2013 Express for Windows]（如果尚未这么做）。
 
 4.  单击“创建 TodoItem 表” 以创建用于存储应用程序数据的表。
 
 5.  在“下载并运行应用程序” 下面，选择应用程序的语言，然后单击“下载” 。
 
-    随即将会下载已连接到移动服务的示例*待办事项列表*应用程序的项目。将压缩的项目文件保存到本地计算机，并记下保存位置。
+  	随即将会下载已连接到移动服务的示例*待办事项列表*应用程序的项目。将压缩的项目文件保存到本地计算机，并记下保存位置。
 
 ## 运行 Windows 应用程序
 
@@ -80,32 +78,32 @@
 
 3.  在应用程序中的“插入 TodoItem”中键入有意义的文本（例如 *Complete the tutorial*），然后 单击“保存” 。
 
-    ![][3]
+   	![][3]
 
-    这样可向在 Azure 中托管的新移动服务发送 POST 请求。来自请求的数据被插入到 TodoItem 表。移动服务返回存储在表中的项，数据显示在应用程序的第二列中。
+   	这样可向在 Azure 中托管的新移动服务发送 POST 请求。来自请求的数据被插入到 TodoItem 表。移动服务返回存储在表中的项，数据显示在应用程序的第二列中。
 
-    > [WACOM.NOTE] 你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 MainPage.xaml.cs 文件（C\#/XAML 项目）或 default.js（JavaScript/HTML 项目）文件中。
+	> [WACOM.NOTE] 你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 MainPage.xaml.cs 文件（C#/XAML 项目）或 default.js（JavaScript/HTML 项目）文件中。
 
 4.  返回管理门户，单击“数据” 选项卡，然后单击“TodoItems” 表。
 
-    ![][4]
+   	![][4]
 
-    此时，你可以浏览应用程序在表中插入的数据。
+   	此时，你可以浏览应用程序在表中插入的数据。
 
-    ![][5]
+   	![][5]
 
 ## 后续步骤
 
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
--   "数据处理入门" ([C#][]/[JavaScript][])
-    了解有关使用移动服务存储和查询数据的详细信息。
+-   "数据处理入门" ([C#][C#]/[JavaScript][JavaScript])
+  <br/>了解有关使用移动服务存储和查询数据的详细信息。
 
 -   "身份验证入门" ([C#][6]/[JavaScript][7])
-    了解如何使用标识提供者对应用程序用户进行身份验证。
+  <br/>了解如何使用标识提供者对应用程序用户进行身份验证。
 
 -   "推送通知入门" ([C#][8]/[JavaScript][9])
-    了解如何向应用程序发送一条非常简单的推送通知。
+  <br/>了解如何向应用程序发送一条非常简单的推送通知。
 
   [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started "Windows Phone"
@@ -120,7 +118,7 @@
   [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started/ "JavaScript 后端"
   [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Introduction-to-Windows-Azure-Mobile-Services
   [0]: ./media/mobile-services-windows-store-get-started/mobile-quickstart-completed.png
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F
   [使用 Visual Studio 2012 的移动服务中的数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012/
   [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
   [1]: ./media/mobile-services-windows-store-get-started/mobile-portal-quickstart.png

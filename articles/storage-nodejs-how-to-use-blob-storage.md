@@ -6,22 +6,22 @@
 示例是用 Node.js API 编写的。
 涉及的任务包括**上载**、**列出**、
 **下载**和**删除** Blob。有关 Blob 的
-详细信息，请参阅[后续步骤][]部分。
+详细信息，请参阅[后续步骤][后续步骤]部分。
 
 ## 目录
 
--   [什么是 Blob 服务？][]
--   [概念][]
--   [创建 Azure 存储帐户][]
--   [创建 Node.js 应用程序][]
--   [配置应用程序以访问存储][]
--   [设置 Azure 存储连接字符串][]
--   [如何：创建容器][]
--   [如何：将 Blob 上载到容器][]
--   [如何：列出容器中的 Blob][]
--   [如何：下载 Blob][]
--   [如何：删除 Blob][]
--   [后续步骤][]
+-   [什么是 Blob 服务？][什么是 Blob 服务？]
+-   [概念][概念]
+-   [创建 Azure 存储帐户][创建 Azure 存储帐户]
+-   [创建 Node.js 应用程序][创建 Node.js 应用程序]
+-   [配置应用程序以访问存储][配置应用程序以访问存储]
+-   [设置 Azure 存储连接字符串][设置 Azure 存储连接字符串]
+-   [如何：创建容器][如何：创建容器]
+-   [如何：将 Blob 上载到容器][如何：将 Blob 上载到容器]
+-   [如何：列出容器中的 Blob][如何：列出容器中的 Blob]
+-   [如何：下载 Blob][如何：下载 Blob]
+-   [如何：删除 Blob][如何：删除 Blob]
+-   [后续步骤][后续步骤]
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
@@ -31,7 +31,7 @@
 
 ## <a name="create-app"> </a>创建 Node.js 应用程序
 
-创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][]、[Node.js 云服务][]（使用 Windows PowerShell）或[使用 WebMatrix 构建网站][]。
+创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][创建 Node.js 应用程序并将其部署到 Azure 网站]、[Node.js 云服务][Node.js 云服务]（使用 Windows PowerShell）或[使用 WebMatrix 构建网站][使用 WebMatrix 构建网站]。
 
 ## <a name="configure-access"> </a>配置应用程序以访问存储
 
@@ -74,9 +74,9 @@
 
 azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY 以获取连接到你的 Azure 存储帐户所需的信息。如果未设置这些环境变量，则在调用 **createBlobService** 时必须指定帐户信息。
 
-有关在 Azure 云服务的配置文件中设置环境变量的示例，请参阅[使用存储构建 Node.js 云服务][]。
+有关在 Azure 云服务的配置文件中设置环境变量的示例，请参阅[使用存储构建 Node.js 云服务][使用存储构建 Node.js 云服务]。
 
-有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序][]。
+有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序][使用存储构建 Node.js Web 应用程序]。
 
 ## <a name="create-container"> </a>如何：创建容器
 
@@ -197,9 +197,9 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 现在，你已了解有关 Blob 存储的基础知识，可单击下面的链接来了解
 如何执行更复杂的存储任务。
 
--   查看 MSDN 参考：[在 Azure 中存储和访问数据][]。
--   访问 [Azure 存储空间团队博客][]。
--   访问 GitHub 上的 [Azure SDK for Node][] 存储库。
+-   查看 MSDN 参考：[在 Azure 中存储和访问数据][在 Azure 中存储和访问数据]。
+-   访问 [Azure 存储空间团队博客][Azure 存储空间团队博客]。
+-   访问 GitHub 上的 [Azure SDK for Node][Azure SDK for Node] 存储库。
 
   [后续步骤]: #next-steps
   [什么是 Blob 服务？]: #what-is
@@ -215,7 +215,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
   [如何：删除 Blob]: #delete-blobs
   [howto-blob-storage]: ../includes/howto-blob-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
-  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
+  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /zh-cn/develop/nodejs/tutorials/create-a-website-(mac)/
   [Node.js 云服务]: /zh-cn/documentation/articles/cloud-services-nodejs-develop-deploy-app/
   [使用 WebMatrix 构建网站]: /zh-cn/documentation/articles/web-sites-nodejs-use-webmatrix/
   [使用存储构建 Node.js 云服务]: /zh-cn/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/

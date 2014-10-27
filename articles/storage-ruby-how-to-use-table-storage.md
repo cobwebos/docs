@@ -6,7 +6,7 @@
 示例是用 Ruby API 编写的。
 涉及的方案包括**创建和删除表、在表中插入和查询实体**。
 有关表的详细信息，请参阅
-[后续步骤][]部分。
+[后续步骤][后续步骤]部分。
 
 ## 目录
 
@@ -36,7 +36,7 @@
 ## <a id="create-a-ruby-application"></a>创建 Ruby 应用程序
 
 创建 Ruby 应用程序。有关说明，请参阅
-[在 Azure 上创建 Ruby 应用程序][]。
+[在 Azure 上创建 Ruby 应用程序][在 Azure 上创建 Ruby 应用程序]。
 
 ## <a id="configure-your-application-to-access-storage"></a>配置应用程序以访问存储
 
@@ -65,7 +65,7 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 获取这些值：
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 
 2.  导航到要使用的存储帐户。
 
@@ -161,9 +161,9 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 现在，你已了解有关表存储的基本知识，单击下面的链接可了解如何执行更复杂的存储任务。
 
--   查看 MSDN 参考：[在 Azure 中存储和访问数据][]
--   访问 [Azure 存储空间团队博客][]
--   访问 GitHub 上的 [Azure SDK for Ruby][] 存储库
+-   查看 MSDN 参考：[在 Azure 中存储和访问数据][在 Azure 中存储和访问数据]
+-   访问 [Azure 存储空间团队博客][Azure 存储空间团队博客]
+-   访问 GitHub 上的 [Azure SDK for Ruby][Azure SDK for Ruby] 存储库
 
   [后续步骤]: #next-steps
   [什么是表服务？]: #what-is
@@ -183,7 +183,7 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
   [如何：删除表]: #how-to-delete-a-table
   [howto-table-storage]: ../includes/howto-table-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
-  [在 Azure 上创建 Ruby 应用程序]: /en-us/develop/ruby/tutorials/web-app-with-linux-vm/
+  [在 Azure 上创建 Ruby 应用程序]: /zh-cn/develop/ruby/tutorials/web-app-with-linux-vm/
   [Azure 管理门户]: https://manage.windowsazure.cn/
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/

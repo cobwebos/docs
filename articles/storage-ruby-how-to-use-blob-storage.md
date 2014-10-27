@@ -5,21 +5,21 @@
 本指南将演示如何使用 Azure Blob 服务执行常见方案。
 示例是用 Ruby API 编写的。涉及的方案包括
 **上载、列出、下载**和**删除** Blob。
-有关 Blob 的详细信息，请参阅[后续步骤][]部分。
+有关 Blob 的详细信息，请参阅[后续步骤][后续步骤]部分。
 
 ## 目录
 
--   [什么是 Blob 服务？][]
--   [概念][]
--   [创建 Azure 存储帐户][]
--   [创建 Ruby 应用程序][]
--   [配置应用程序以访问存储][]
--   [设置 Azure 存储连接][]
--   [如何：创建容器][]
--   [如何：将 Blob 上载到容器][]
--   [如何：列出容器中的 Blob][]
--   [如何：下载 Blob][]
--   [如何：删除 Blob][]
+-   [什么是 Blob 服务？][什么是 Blob 服务？]
+-   [概念][概念]
+-   [创建 Azure 存储帐户][创建 Azure 存储帐户]
+-   [创建 Ruby 应用程序][创建 Ruby 应用程序]
+-   [配置应用程序以访问存储][配置应用程序以访问存储]
+-   [设置 Azure 存储连接][设置 Azure 存储连接]
+-   [如何：创建容器][如何：创建容器]
+-   [如何：将 Blob 上载到容器][如何：将 Blob 上载到容器]
+-   [如何：列出容器中的 Blob][如何：列出容器中的 Blob]
+-   [如何：下载 Blob][如何：下载 Blob]
+-   [如何：删除 Blob][如何：删除 Blob]
 -   [后续步骤][1]
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
@@ -31,7 +31,7 @@
 ## <a id="CreateRubyApp"></a>创建 Ruby 应用程序
 
 创建 Ruby 应用程序。有关说明，请参阅
-[在 Azure 上创建 Ruby 应用程序][]。
+[在 Azure 上创建 Ruby 应用程序][在 Azure 上创建 Ruby 应用程序]。
 
 ## <a id="ConfigAccessStorage"></a>配置应用程序以访问存储
 
@@ -59,7 +59,7 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 获取这些值：
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  导航到要使用的存储帐户
 3.  单击导航窗格底部的**“管理密钥”**。
 4.  在弹出对话框中，你将会看到存储帐户名称、主访问密钥和辅助访问密钥。对于访问密钥，你可以使用主访问密钥，也可以使用辅助访问密钥。
@@ -141,9 +141,9 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 现在，你已了解有关 Blob 存储的基础知识，可单击下面的链接来了解如何执行更复杂的存储任务。
 
--   查看 MSDN 参考：[在 Azure 中存储和访问数据][]
--   访问 [Azure 存储空间团队博客][]
--   访问 GitHub 上的 [Azure SDK for Ruby][] 存储库
+-   查看 MSDN 参考：[在 Azure 中存储和访问数据][在 Azure 中存储和访问数据]
+-   访问 [Azure 存储空间团队博客][Azure 存储空间团队博客]
+-   访问 GitHub 上的 [Azure SDK for Ruby][Azure SDK for Ruby] 存储库
 
   [后续步骤]: #next-steps
   [什么是 Blob 服务？]: #what-is
@@ -160,7 +160,7 @@ azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
   [1]: #NextSteps
   [howto-blob-storage]: ../includes/howto-blob-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
-  [在 Azure 上创建 Ruby 应用程序]: /en-us/develop/ruby/tutorials/web-app-with-linux-vm/
+  [在 Azure 上创建 Ruby 应用程序]: /zh-cn/develop/ruby/tutorials/web-app-with-linux-vm/
   [Azure 管理门户]: https://manage.windowsazure.cn/
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/

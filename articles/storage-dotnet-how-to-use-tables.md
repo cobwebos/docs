@@ -6,29 +6,29 @@
 示例是用 C\# 代码编写的并使用了
 Azure .NET 存储客户端库。涉及的方案包括**创建和删除表**
 ，以及**使用表实体**。有关表的详细信息，请参阅
-[后续步骤][]部分。
+[后续步骤][后续步骤]部分。
 
-> [WACOM.NOTE] 本指南适用于 Azure .NET 存储客户端库 2.x 及更高版本。建议使用的版本是存储客户端库 3.x，可通过 NuGet 或 Azure SDK for .NET 2.3 获得。有关如何获取存储客户端库的详细信息，请参阅[如何：以编程方式访问表存储][]。
+> [WACOM.NOTE] 本指南适用于 Azure .NET 存储客户端库 2.x 及更高版本。建议使用的版本是存储客户端库 3.x，可通过 NuGet 或 Azure SDK for .NET 2.3 获得。有关如何获取存储客户端库的详细信息，请参阅[如何：以编程方式访问表存储][如何：以编程方式访问表存储]。
 
 ## 目录
 
--   [什么是表服务？][]
--   [概念][]
--   [创建 Azure 存储帐户][]
--   [设置存储连接字符串][]
--   [如何：以编程方式访问表存储][]
--   [如何：创建表][]
--   [如何：将实体添加到表][]
--   [如何：插入一批实体][]
--   [如何：检索分区中的所有实体][]
--   [如何：检索分区中的一部分实体][]
--   [如何：检索单个实体][]
--   [如何：替换实体][]
--   [如何：插入或替换实体][]
--   [如何：查询一部分实体属性][]
--   [如何：删除实体][]
--   [如何：删除表][]
--   [后续步骤][]
+-   [什么是表服务？][什么是表服务？]
+-   [概念][概念]
+-   [创建 Azure 存储帐户][创建 Azure 存储帐户]
+-   [设置存储连接字符串][设置存储连接字符串]
+-   [如何：以编程方式访问表存储][如何：以编程方式访问表存储]
+-   [如何：创建表][如何：创建表]
+-   [如何：将实体添加到表][如何：将实体添加到表]
+-   [如何：插入一批实体][如何：插入一批实体]
+-   [如何：检索分区中的所有实体][如何：检索分区中的所有实体]
+-   [如何：检索分区中的一部分实体][如何：检索分区中的一部分实体]
+-   [如何：检索单个实体][如何：检索单个实体]
+-   [如何：替换实体][如何：替换实体]
+-   [如何：插入或替换实体][如何：插入或替换实体]
+-   [如何：查询一部分实体属性][如何：查询一部分实体属性]
+-   [如何：删除实体][如何：删除实体]
+-   [如何：删除表][如何：删除表]
+-   [后续步骤][后续步骤]
 
 [WACOM.INCLUDE [howto-table-storage](../includes/howto-table-storage.md)]
 
@@ -59,16 +59,16 @@ Azure .NET 存储客户端库支持使用存储连接字符
 1.  在 Visual Studio 解决方案资源管理器内 Azure 部署
     项目的**“角色”**文件夹中，右键单击你的 Web 角色或辅助角色，
     然后单击**“属性”**。
-    ![Blob5][]
+    ![Blob5][Blob5]
 
 2.  单击**“设置”**选项卡并按**“添加设置”**按钮。
-    ![Blob6][]
+    ![Blob6][Blob6]
 
     新的 **Setting1** 条目稍后将显示在设置网格中。
 
 3.  在新的 **Setting1** 条目的**“类型”**下拉列表中，选择
     **“连接字符串”**。
-    ![Blob7][]
+    ![Blob7][Blob7]
 
 4.  单击 **Setting1** 条目最右侧的 **...** 按钮。
     此时将打开**“存储帐户连接字符串”**对话框。
@@ -79,24 +79,24 @@ Azure .NET 存储客户端库支持使用存储连接字符
     如果你希望使用我们之前在 Azure 中创建的存储帐户
     来存储 Blob 数据，请输入从本教程前面的步骤中
     复制的**“主访问密钥”**值。
-    ![Blob8][]
+    ![Blob8][Blob8]
 
 6.  将条目**“名称”**从 **Setting1** 更改为更友好的名称，
     例如 **StorageConnectionString**。在本指南后面的
     代码中你将引用此连接字符串。
-    ![Blob9][]
+    ![Blob9][Blob9]
 
 ### 使用 .NET 配置来配置连接字符串
 
 如果你正在编写不是 Azure 云服务的应用程序（参见上一部分），则建议你使用 .NET 配置系统（如 `web.config` 或 `app.config`）。这包括 Azure 网站或 Azure 虚拟机，以及设计为在 Azure 外部运行的应用程序。你可以使用 `<appSettings>` 元素存储连接字符串，如下所示：
 
-    <configuration>
-    <appSettings>
-    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
-    </appSettings>
-    </configuration>
+	<configuration>
+  		<appSettings>
+    		<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
+  		</appSettings>
+	</configuration>
 
-阅读[配置连接字符串][]，了解有关存储连接字符串的详细信息。
+阅读[配置连接字符串][配置连接字符串]，了解有关存储连接字符串的详细信息。
 
 你现在即可准备执行本指南中的操作任务。
 
@@ -106,7 +106,7 @@ Azure .NET 存储客户端库支持使用存储连接字符
 
 你可以使用 NuGet 来获得 `Microsoft.WindowsAzure.Storage.dll` 程序集。在**“解决方案资源管理器”**中，右键单击你的项目并选择**“管理 NuGet 包”**。在线搜索“WindowsAzure.Storage”，然后单击**“安装”**以安装 Azure 存储包和依赖项。
 
-Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从 [.NET 开发人员中心][]下载该版本。该程序集将安装到 `%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\<sdk-version>\ref\` 目录中。
+Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从 [.NET 开发人员中心][.NET 开发人员中心]下载该版本。该程序集将安装到 `%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\<sdk-version>\ref\` 目录中。
 
 ### 命名空间声明
 
@@ -141,7 +141,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
 
 ### ODataLib 依赖项
 
-.NET 存储客户端库中的 ODataLib 依赖项可通过在 NuGet （而非 WCF 数据服务）上获得的 ODataLib（5.0.2 版）包来解析。ODataLib 库可直接下载或者通过 NuGet 由代码项目引用。特定的 ODataLib 包为 [OData][]、[Edm][] 和 [Spatial][]。
+.NET 存储客户端库中的 ODataLib 依赖项可通过在 NuGet （而非 WCF 数据服务）上获得的 ODataLib（5.0.2 版）包来解析。ODataLib 库可直接下载或者通过 NuGet 由代码项目引用。特定的 ODataLib 包为 [OData][OData]、[Edm][Edm] 和 [Spatial][Spatial]。
 
 ## <a name="create-table"></a>创建表如何：创建表
 
@@ -456,7 +456,7 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
 表查询可以只检索实体中的少数几个属性而不是所有实体属性。此方法称为投影，可减小带宽并提高查询性能，尤其是对于大型实体。以下代码
 中的查询只返回表中实体的电子邮件
 地址。这可通过使用 **DynamicTableEntity** 和 **EntityResolver** 的
-查询来实现。你可以在此[博客文章][]中了解有关投影的详细信息。请注意，本地存储模拟器不支持投影，因此，此代码仅在使用表服务中的帐户时才能运行。
+查询来实现。你可以在此[博客文章][博客文章]中了解有关投影的详细信息。请注意，本地存储模拟器不支持投影，因此，此代码仅在使用表服务中的帐户时才能运行。
 
     // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -543,13 +543,13 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
 执行更复杂的存储任务。
 
 -   查看 Blob 服务参考文档，了解有关可用 API 的完整详情：
-    -   [.NET 存储客户端库参考][]
-    -   [REST API 参考][]
--   在以下位置了解使用 Azure 存储空间能够执行的更高级任务：[在 Azure 中存储和访问数据][]。
+    -   [.NET 存储客户端库参考][.NET 存储客户端库参考]
+    -   [REST API 参考][REST API 参考]
+-   在以下位置了解使用 Azure 存储空间能够执行的更高级任务：[在 Azure 中存储和访问数据][在 Azure 中存储和访问数据]。
 -   查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
-    -   使用 [Blob 存储][]来存储非结构化数据。
-    -   使用[队列存储][]来存储结构化数据。
-    -   使用 [SQL Database][] 来存储关系数据。
+    -   使用 [Blob 存储][Blob 存储]来存储非结构化数据。
+    -   使用[队列存储][队列存储]来存储结构化数据。
+    -   使用 [SQL Database][SQL Database] 来存储关系数据。
 
   [后续步骤]: #next-steps
   [如何：以编程方式访问表存储]: #configure-access

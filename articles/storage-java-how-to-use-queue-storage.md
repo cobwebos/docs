@@ -4,10 +4,10 @@
 
 本指南将演示如何使用 Azure 队列存储服务执行常见方案。
 示例是用 Java 编写的并且使用了
-[Azure SDK for Java][]。涉及的方案包括插入、扫视、
+[Azure SDK for Java][Azure SDK for Java]。涉及的方案包括插入、扫视、
 获取和删除队列消息以及创建和删除队列。
 有关队列的详细信息，请参阅
-[后续步骤][]部分。
+[后续步骤][后续步骤]部分。
 
 ## <a name="Contents"> </a>目录
 
@@ -294,8 +294,7 @@ downloadAttributes 方法会询问队列服务
 现在，你已了解有关队列存储的基础知识，可单击下面的链接来了解如何
 执行更复杂的存储任务。
 
--   查看 MSDN 参考：[在 Windows Azure 中存储和访问
-    数据]
+-   查看 MSDN 参考：[在 Windows Azure 中存储和访问数据][在 Windows Azure 中存储和访问数据]
 -   访问 Azure 存储空间团队博客：<http://blogs.msdn.com/b/windowsazurestorage/>
 
   [Azure SDK for Java]: http://azure.microsoft.com/zh-cn/develop/java/
@@ -316,3 +315,4 @@ downloadAttributes 方法会询问队列服务
   [如何：删除队列]: #delete-queue
   [howto-queue-storage]: ../includes/howto-queue-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
+  [在 Windows Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx

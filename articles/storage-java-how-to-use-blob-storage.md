@@ -7,25 +7,25 @@
 
 本指南将演示如何使用 Azure Blob 存储服务执行常见方案。
 示例是用 Java 编写的并且使用了
-[Azure SDK for Java][]。涉及的任务包括
+[Azure SDK for Java][Azure SDK for Java]。涉及的任务包括
 **上载**、**列出**、**下载**和**删除** Blob。有关 Blob 的
-详细信息，请参阅[后续步骤][]部分。
+详细信息，请参阅[后续步骤][后续步骤]部分。
 
 ## <a name="Contents"> </a>目录
 
--   [什么是 Blob 存储][]
--   [概念][]
--   [创建 Azure 存储帐户][]
--   [创建 Java 应用程序][]
--   [配置你的应用程序以访问 Blob 存储][]
--   [设置 Azure 存储连接字符串][]
--   [如何：创建容器][]
--   [如何：将 Blob 上载到容器中][]
--   [如何：列出容器中的 Blob][]
--   [如何：下载 Blob][]
--   [如何：删除 Blob][]
--   [如何：删除 Blob 容器][]
--   [后续步骤][]
+-   [什么是 Blob 存储][什么是 Blob 存储]
+-   [概念][概念]
+-   [创建 Azure 存储帐户][创建 Azure 存储帐户]
+-   [创建 Java 应用程序][创建 Java 应用程序]
+-   [配置你的应用程序以访问 Blob 存储][配置你的应用程序以访问 Blob 存储]
+-   [设置 Azure 存储连接字符串][设置 Azure 存储连接字符串]
+-   [如何：创建容器][如何：创建容器]
+-   [如何：将 Blob 上载到容器中][如何：将 Blob 上载到容器中]
+-   [如何：列出容器中的 Blob][如何：列出容器中的 Blob]
+-   [如何：下载 Blob][如何：下载 Blob]
+-   [如何：删除 Blob][如何：删除 Blob]
+-   [如何：删除 Blob 容器][如何：删除 Blob 容器]
+-   [后续步骤][后续步骤]
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
@@ -253,8 +253,7 @@ Internet 上的所有人都能查看公共容器中的 Blob，但公共访问权
 现在，你已了解有关 Blob 存储的基础知识，可单击下面的链接来了解
 如何执行更复杂的存储任务。
 
--   查看 MSDN 参考：[在 Windows Azure 中存储和访问
-    数据]
+-   查看 MSDN 参考：[在 Windows Azure 中存储和访问数据][在 Windows Azure 中存储和访问数据]
 -   访问 Azure 存储空间团队博客：<http://blogs.msdn.com/b/windowsazurestorage/>
 
 
@@ -274,3 +273,4 @@ Internet 上的所有人都能查看公共容器中的 Blob，但公共访问权
   [如何：删除 Blob 容器]: #DeleteContainer
   [howto-blob-storage]: ../includes/howto-blob-storage.md
   [create-storage-account]: ../includes/create-storage-account.md
+  [在 Windows Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx

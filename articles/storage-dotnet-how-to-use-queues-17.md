@@ -2,7 +2,7 @@
 
 # 如何使用队列存储服务
 
-[1.7 版][] [2.0 版][]
+[1.7 版][1.7 版] [2.0 版][2.0 版]
 
 本指南将演示如何使用 Azure 队列存储服务执行常见方案。
 示例是用 C\# 代码编写的且使用了 .NET API。
@@ -11,24 +11,24 @@
 **获取**和
 **删除**队列消息以及
 **创建和删除队列**。有关队列的详细信息，请参阅
-[后续步骤][]部分。
+[后续步骤][后续步骤]部分。
 
 ## 目录
 
--   [什么是队列存储][]
--   [概念][]
--   [创建 Azure 存储帐户][]
--   [设置 Azure 存储连接字符串][]
--   [如何：使用 .NET 以编程方式访问队列][]
--   [如何：创建队列][]
--   [如何：在队列中插入消息][]
--   [如何：查看下一条消息][]
--   [如何：更改已排队消息的内容][]
--   [如何：取消对下一条消息的排队][]
--   [如何：使用其他方法取消对消息的排队][]
--   [如何：获取队列长度][]
--   [如何：删除队列][]
--   [后续步骤][]
+-   [什么是队列存储][什么是队列存储]
+-   [概念][概念]
+-   [创建 Azure 存储帐户][创建 Azure 存储帐户]
+-   [设置 Azure 存储连接字符串][设置 Azure 存储连接字符串]
+-   [如何：使用 .NET 以编程方式访问队列][如何：使用 .NET 以编程方式访问队列]
+-   [如何：创建队列][如何：创建队列]
+-   [如何：在队列中插入消息][如何：在队列中插入消息]
+-   [如何：查看下一条消息][如何：查看下一条消息]
+-   [如何：更改已排队消息的内容][如何：更改已排队消息的内容]
+-   [如何：取消对下一条消息的排队][如何：取消对下一条消息的排队]
+-   [如何：使用其他方法取消对消息的排队][如何：使用其他方法取消对消息的排队]
+-   [如何：获取队列长度][如何：获取队列长度]
+-   [如何：删除队列][如何：删除队列]
+-   [后续步骤][后续步骤]
 
 [WACOM.INCLUDE [howto-queue-storage](../includes/howto-queue-storage.md)]
 
@@ -57,38 +57,38 @@ Azure .NET 存储 API 支持
 在 Azure 服务配置中配置连接字符串：
 
 1.  在 Visual Studio 解决方案资源管理器内 Azure 部署项目的**“角色”**文件夹中，右键单击你的 Web 角色或辅助角色，然后单击**“属性”**。
-    ![Blob5][]
+    ![Blob5][Blob5]
 
 2.  单击**“设置”**选项卡并按**“添加设置”**按钮。
-    ![Blob6][]
+    ![Blob6][Blob6]
 
     新的 **Setting1** 条目稍后将显示在设置网格中。
 
 3.  在新的 **Setting1** 条目的**“类型”**下拉列表中，选择**“连接字符串”**。
-    ![Blob7][]
+    ![Blob7][Blob7]
 
 4.  单击 **Setting1** 条目最右侧的 **...** 按钮。此时将打开**“存储帐户连接字符串”**对话框。
 
 5.  选择是要定位到存储模拟器（在本地计算机上模拟的 Azure 存储空间），还是要定位到云中的实际存储帐户。本指南中的代码使用其中任一方式。如果你希望使用我们之前在 Azure 中创建的存储帐户来存储 Blob 数据，请输入从本教程前面的步骤中复制的**“主访问密钥”**值。
 
-    ![Blob8][]
+    ![Blob8][Blob8]
 
 6.  将条目**“名称”**从 **Setting1** 更改为更友好的名称，例如 **StorageConnectionString**。稍后将在本指南的代码中引用此连接字符串。
 
-    ![Blob9][]
+    ![Blob9][Blob9]
 
 ### 在使用网站或虚拟机时配置连接字符串
 
 在使用网站或虚拟机时，建议你使用 .NET 配置系统（如 `web.config`）。你可以使用 `<appSettings>` 元素存储连接字符串：
 
-    <configuration>
-    <appSettings>
-    <add key="StorageConnectionString"
-    value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
+	<configuration>
+	    <appSettings>
+		    <add key="StorageConnectionString"
+			    value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
     </appSettings>
     </configuration>
 
-阅读[配置连接字符串][]，了解有关存储连接字符串的详细信息。
+阅读[配置连接字符串][配置连接字符串]，了解有关存储连接字符串的详细信息。
 
 你现在即可准备执行本指南中的操作任务。
 
@@ -114,7 +114,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
 的所有代码都使用存储在 Azure 应用程序的服务配置中的
 存储连接字符串。还有其他方法可用来创建
 **CloudStorageAccount** 对象。有关详细信息，
-请参阅[CloudStorageAccount][] 文档。
+请参阅[CloudStorageAccount][CloudStorageAccount] 文档。
 
     // 通过连接字符串检索存储帐户
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -313,16 +313,16 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
 执行更复杂的存储任务。
 
 -   查看队列服务参考文档，了解有关可用 API 的完整详细信息：
-    -   [.NET 客户端库引用][]
-    -   [REST API 参考][]
--   在以下位置了解使用 Azure 存储空间能够执行的更高级任务：[在 Azure 中存储和访问数据][]。
+    -   [.NET 客户端库引用][.NET 客户端库引用]
+    -   [REST API 参考][REST API 参考]
+-   在以下位置了解使用 Azure 存储空间能够执行的更高级任务：[在 Azure 中存储和访问数据][在 Azure 中存储和访问数据]。
 -   查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
-    -   使用[表存储][]来存储结构化数据。
-    -   使用 [Blob 存储][]来存储非结构化数据。
-    -   使用 [SQL Database][] 来存储关系数据。
+    -   使用[表存储][表存储]来存储结构化数据。
+    -   使用 [Blob 存储][Blob 存储]来存储非结构化数据。
+    -   使用 [SQL Database][SQL Database] 来存储关系数据。
 
-  [1.7 版]: /en-us/develop/net/how-to-guides/queue-service-v17/ "1.7 版"
-  [2.0 版]: /en-us/develop/net/how-to-guides/queue-service/ "2.0 版"
+  [1.7 版]: /zh-cn/develop/net/how-to-guides/queue-service-v17/ "1.7 版"
+  [2.0 版]: /zh-cn/develop/net/how-to-guides/queue-service/ "2.0 版"
   [后续步骤]: #next-steps
   [什么是队列存储]: #what-is
   [概念]: #concepts
@@ -349,6 +349,6 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
   [.NET 客户端库引用]: http://msdn.microsoft.com/zh-cn/library/azure/wl_svchosting_mref_reference_home
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [表存储]: /en-us/develop/net/how-to-guides/table-services/
-  [Blob 存储]: /en-us/develop/net/how-to-guides/blob-storage/
-  [SQL Database]: /en-us/develop/net/how-to-guides/sql-database/
+  [表存储]: /zh-cn/develop/net/how-to-guides/table-services/
+  [Blob 存储]: /zh-cn/develop/net/how-to-guides/blob-storage/
+  [SQL Database]: /zh-cn/develop/net/how-to-guides/sql-database/
