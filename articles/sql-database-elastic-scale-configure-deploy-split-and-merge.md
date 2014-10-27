@@ -1,6 +1,6 @@
 <properties title="拆分和合并服务教程" pageTitle="Azure SQL 拆分和合并服务教程" description="使用灵活扩展拆分和合并" metaKeywords="sharding scaling, Azure SQL Database sharding, elastic scale, splitting and merging elastic scale" services="sql-database" documentationCenter=""  manager="jhubbard" authors="sidneyh@microsoft.com"/>
 
-<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh"></tags>
+<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh" />
 
 # 灵活扩展拆分和合并服务教程
 
@@ -126,18 +126,18 @@
 
 如果您的辅助角色无法联机，但是您的 Web 角色已成功，很可能是在连接到您之前创建的状态数据库时出现了问题。
 
--   确保您的 .cscfg 中的连接字符串正确。
--   检查服务器和数据库是否存在，以及用户 ID 和密码是否正确。
--   对于 Azure SQL DB，连接字符串应采用以下形式：
+* 确保您的 .cscfg 中的连接字符串正确。
+* 检查服务器和数据库是否存在，以及用户 ID 和密码是否正确。
+* 对于 Azure SQL DB，连接字符串应采用以下形式：
 
         "Server=myservername.database.windows.net; Database=mydatabasename;User ID=myuserID; Password=mypassword; Encrypt=True; Connection Timeout=30" .
 
--   确保服务器名称不以 **<https://>** 开头。
--   确保您的 Azure SQL DB 服务器允许 Windows Azure 服务与其连接。若要执行此操作，请打开 <https://manage.windowsazure.com>、依次单击左侧的“SQL Databases”和顶部的“服务器”，然后选择您的服务器。在顶部单击“配置”并确保将“Windows Azure 服务”设置为“是”。（请参阅此文章顶部的“先决条件”部分）。
+* 确保服务器名称不以 **https://** 开头。
+* 确保您的 Azure SQL DB 服务器允许 Windows Azure 服务与其连接。若要执行此操作，请打开 <https://manage.windowsazure.com>、依次单击左侧的“SQL Databases”和顶部的“服务器”，然后选择您的服务器。在顶部单击“配置”并确保将“Windows Azure 服务”设置为“是”。（请参阅此文章顶部的“先决条件”部分）。
 
 -   查看您的拆分/合并服务实例的诊断日志。打开 Visual Studio 实例，然后在菜单栏中，依次单击“视图”和“服务器资源管理器”。单击“Windows Azure”图标以连接到您的 Azure 订阅。然后，导航到“Windows Azure”-\>“存储”-\>“<your storage account>”-\>“表”-\>“WADLogsTable”。有关详细信息，请参阅[使用服务器资源管理器浏览存储资源][使用服务器资源管理器浏览存储资源]
 
-    ![][]
+    ![][0]
 
     ![][1]
 
@@ -246,8 +246,8 @@ ExecuteSampleSplitMerge.ps1
 </table>
 ## 使用 PowerShell 验证您的部署
 
-1.  打开新的 PowerShell 窗口并导航到您下载拆分/合并包的目录，然后导航到“powershell”目录中。
-2.  创建将在其中创建分片映射管理器和分片的 Azure SQL Database 服务器（或选择现有服务器）。
+1.    打开新的 PowerShell 窗口并导航到您下载拆分/合并包的目录，然后导航到“powershell”目录中。
+2.    创建将在其中创建分片映射管理器和分片的 Azure SQL Database 服务器（或选择现有服务器）。
 
     注意：在默认情况下，SetupSampleSplitMergeEnvironment.ps1 脚本将在相同的服务器上创建所有这些数据库以简化脚本。这并不表示拆分/合并服务本身存在限制。
 
@@ -266,14 +266,14 @@ ExecuteSampleSplitMerge.ps1
             -Password 'MySqlPassw0rd' `
             -ShardMapManagerServerName 'abcdefghij.database.windows.net'
 
-4.  执行 Getmappings.ps1 脚本以查看示例环境中当前存在的映射。
+4.    执行 Getmappings.ps1 脚本以查看示例环境中当前存在的映射。
 
         .\GetMappings.ps1 `
             -UserName 'mysqluser' `
             -Password 'MySqlPassw0rd' `
             -ShardMapManagerServerName 'abcdefghij.database.windows.net'
 
-5.  执行 ExecuteSampleSplitMerge.ps1 脚本以执行拆分操作（将第一个分片上一半的数据移至第二个分片），然后执行合并操作（将数据移回第一个分片）。如果您已配置 SSL 并且已将 http 终结点保留为禁用，请确保改为使用 <https://> 终结点。
+5.    执行 ExecuteSampleSplitMerge.ps1 脚本以执行拆分操作（将第一个分片上一半的数据移至第二个分片），然后执行合并操作（将数据移回第一个分片）。如果您已配置 SSL 并且已将 http 终结点保留为禁用，请确保改为使用 <https://> 终结点。
 
     示例命令行：
 
@@ -322,7 +322,7 @@ ExecuteSampleSplitMerge.ps1
         Progress: 90% | Status: Completing | Details: [Informational] Deleting any temp tables that were created     while processing the request.
         Progress: 100% | Status: Succeeded | Details: [Informational] Successfully processed request.
 
-6.  试用其他数据类型！所有这些脚本均采取可选的 -ShardKeyType 参数，该参数允许您指定密钥类型。默认值为 Int32，但您也可以指定 Int64、Guid 或 Binary。
+6.    试用其他数据类型！所有这些脚本均采取可选的 -ShardKeyType 参数，该参数允许您指定密钥类型。默认值为 Int32，但您也可以指定 Int64、Guid 或 Binary。
 
 ## 创建您自己的请求
 
@@ -332,11 +332,11 @@ ExecuteSampleSplitMerge.ps1
 
 为了执行拆分/合并操作，您必须声明要移动的分片表和引用表。将使用 **SchemaInfo** API 完成此操作。此 API 位于 **Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema** 命名空间中。
 
-1.  对于每个分片表，请创建一个 **ShardedTableInfo** 对象，该对象在包含分片密钥的表中描述了此表的父架构名称（可选，默认为“dbo”）、表名称以及列名称。
-2.  对于每个引用表，请创建一个 **ShardedTableInfo** 对象，该对象描述了此表的父架构名称（可选，默认为“dbo”）和表名称。
-3.  将上面的 TableInfo 对象添加到新的 **SchemaInfo** 对象。
-4.  获取对 **ShardMapManager** 对象的引用，然后调用 **GetSchemaInfoCollection**。
-5.  将 **SchemaInfo** 添加到 **SchemaInfoCollection**，从而提供分片映射名称。
+1.    对于每个分片表，请创建一个 **ShardedTableInfo** 对象，该对象在包含分片密钥的表中描述了此表的父架构名称（可选，默认为“dbo”）、表名称以及列名称。
+2.    对于每个引用表，请创建一个 **ShardedTableInfo** 对象，该对象描述了此表的父架构名称（可选，默认为“dbo”）和表名称。
+3.    将上面的 TableInfo 对象添加到新的 **SchemaInfo** 对象。
+4.    获取对 **ShardMapManager** 对象的引用，然后调用 **GetSchemaInfoCollection**。
+5.    将 **SchemaInfo** 添加到 **SchemaInfoCollection**，从而提供分片映射名称。
 
 可在 SetupSampleSplitMergeEnvironment.ps1 脚本中看到此操作的示例。
 
@@ -363,6 +363,6 @@ ExecuteSampleSplitMerge.ps1
   [过渡]: ./media/sql-database-elastic-scale-split-and-merge-tutorial/staging.png
   [上载]: ./media/sql-database-elastic-scale-split-and-merge-tutorial/upload.png
   [使用服务器资源管理器浏览存储资源]: http://msdn.microsoft.com/en-us/library/azure/ff683677.aspx
-  []: ./media/sql-database-elastic-scale-split-and-merge-tutorial/storage.png
+  [0]: ./media/sql-database-elastic-scale-split-and-merge-tutorial/storage.png
   [1]: ./media/sql-database-elastic-scale-split-and-merge-tutorial/logs.png
   [elastic-scale-include]: ../includes/elastic-scale-include.md
