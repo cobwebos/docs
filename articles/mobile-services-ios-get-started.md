@@ -26,7 +26,7 @@
 <div class="dev-onpage-video-wrapper"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/iOS-Creating-your-first-app-using-the-Windows-Azure-Mobile-Services-Quickstart" target="_blank" class="label">观看教程</a> <a style="background-image: url('/media/devcenter/mobile/videos/get-started-ios-180x120.png') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/iOS-Creating-your-first-app-using-the-Windows-Azure-Mobile-Services-Quickstart" target="_blank" class="dev-onpage-video"><span class="icon">播放视频</span></a> <span class="time">9:38</span></div>
 </div>
 
-在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单*待办事项列表*应用程序。要创建的移动服务将为服务器端业务逻辑使用 JavaScript。若要创建允许你使用 Visual Studio 以受支持 .NET 语言编写服务器端业务逻辑的移动服务，请参阅本主题中的 [.NET 后端版本][]。
+在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单*待办事项列表*应用程序。要创建的移动服务将为服务器端业务逻辑使用 JavaScript。若要创建允许你使用 Visual Studio 以受支持 .NET 语言编写服务器端业务逻辑的移动服务，请参阅本主题中的 [.NET 后端版本][.NET 后端版本]。
 
 以下是完成的应用程序的屏幕快照：
 
@@ -56,7 +56,7 @@
 
     ![][2]
 
-3.  下载并安装 [Xcode][] v4.4 或更高版本（如果尚未这么做）。
+3.  下载并安装 [Xcode][Xcode] v4.4 或更高版本（如果尚未这么做）。
 
 4.  单击“创建 TodoItems 表”以创建用于存储应用程序数据的表 。
 
@@ -82,13 +82,13 @@
 
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用标识提供者对应用程序的用户进行身份验证。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
   [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"

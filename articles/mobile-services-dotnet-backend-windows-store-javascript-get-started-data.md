@@ -3,7 +3,7 @@
 # 移动服务中的数据处理入门
 
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/" title="Windows Store C#">Windows 应用商店 C\#</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/" title="Windows Store C#">Windows 应用商店 c#</a>
 	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/" title="Windows Store JavaScript" class="current">Windows 应用商店 JavaScript</a>
 	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/" title="Windows Phone">Windows Phone</a>
 	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/" title="Android">Android</a>
@@ -16,7 +16,7 @@
 
 本主题说明如何使用 Azure 移动服务作为 Windows 应用商店应用程序的后端数据源。在本教程中，你将要为某个应用程序（该应用程序在内存中存储数据）下载一个 Visual Studio 2013 项目，创建一个新的移动服务，将该移动服务与该应用程序相集成，并查看运行该应用程序时对数据所做的更改。
 
-在本教程中创建的移动服务支持移动服务中的 .NET 运行时。这样，你便可以将 .NET 语言和 Visual Studio 用于移动服务中的服务器端业务逻辑。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题中的 [JavaScript 后端版本][]。
+在本教程中创建的移动服务支持移动服务中的 .NET 运行时。这样，你便可以将 .NET 语言和 Visual Studio 用于移动服务中的服务器端业务逻辑。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题中的 [JavaScript 后端版本][JavaScript 后端版本]。
 
 <div class="dev-callout"><b>说明"</b>
 
@@ -25,13 +25,13 @@
 
 本教程将指导你完成以下基本步骤：
 
-1.  [下载 Windows 应用商店应用程序项目][]
-2.  [创建新的移动服务][]
-3.  [在本地下载移动服务][]
-4.  [更新 Windows 应用商店应用程序以使用移动服务][]
-5.  [针对本地托管的服务测试 Windows 应用商店应用程序][]
-6.  [将移动服务发布到 Azure][]
-7.  [针对 Azure 中托管的服务测试 Windows 应用商店应用程序][]
+1.  [下载 Windows 应用商店应用程序项目][下载 Windows 应用商店应用程序项目]
+2.  [创建新的移动服务][创建新的移动服务]
+3.  [在本地下载移动服务][在本地下载移动服务]
+4.  [更新 Windows 应用商店应用程序以使用移动服务][更新 Windows 应用商店应用程序以使用移动服务]
+5.  [针对本地托管的服务测试 Windows 应用商店应用程序][针对本地托管的服务测试 Windows 应用商店应用程序]
+6.  [将移动服务发布到 Azure][将移动服务发布到 Azure]
+7.  [针对 Azure 中托管的服务测试 Windows 应用商店应用程序][针对 Azure 中托管的服务测试 Windows 应用商店应用程序]
 
 <div class="dev-callout"><b>说明</b>
 
@@ -41,11 +41,11 @@
 <a name="download-app"></a>
 ## 下载项目下载 GetStartedWithData 项目
 
-本教程是在 [GetStartedWithMobileServices 应用程序][]（Visual Studio 2013 中的一个 Windows 应用商店应用程序项目）的基础上制作的。此应用程序的 UI 与移动服务快速入门中生成的应用程序类似，不过，前者的一些新增项本地存储在内存中。
+本教程是在 [GetStartedWithMobileServices 应用程序][GetStartedWithMobileServices 应用程序]（Visual Studio 2013 中的一个 Windows 应用商店应用程序项目）的基础上制作的。此应用程序的 UI 与移动服务快速入门中生成的应用程序类似，不过，前者的一些新增项本地存储在内存中。
 
 1.  从[开发人员代码示例站点][GetStartedWithMobileServices 应用程序]下载 GetStartedWithMobileServices 示例应用程序的 JavaScript 版本。
 
-    ![][]
+    ![][0]
 
 2.  右键单击 Visual Studio，然后单击“以管理员身份运行”，以使用管理特权运行 Visual Studio 2013 。
 
@@ -64,12 +64,12 @@
 <a name="create-service"></a>
 ## 创建新的移动服务创建新的移动服务
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
 
 <a name="download-the-service-locally"></a>
 ## 在本地下载服务下载移动服务项目并将其添加到解决方案
 
-1.  在 [Azure 管理门户][]中，单击新建的移动服务或者其云图标选项卡，以转到概述页。
+1.  在 [Azure 管理门户][Azure 管理门户]中，单击新建的移动服务或者其云图标选项卡，以转到概述页。
 
     ![][2]
 
@@ -91,7 +91,7 @@
 
     ![][6]
 
-6.  在“添加现有项目”对话框中，导航到你已移到 "JavaScript" 目录中的移动服务项目文件夹。在服务子目录中选择 C\# 项目文件 (.csproj)。单击“打开” 将该项目添加到你的解决方案。
+6.  在“添加现有项目”对话框中，导航到你已移到 "JavaScript" 目录中的移动服务项目文件夹。在服务子目录中选择 C# 项目文件 (.csproj)。单击“打开” 将该项目添加到你的解决方案。
 
     ![][7]
 
@@ -214,7 +214,7 @@
 <a name="publish-mobile-service"></a>
 ## 将移动服务发布到 Azure将移动服务发布到 Azure
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 <a name="test-azure-hosted"></a>
 ## 测试 Azure 上的移动服务测试已发布到 Azure 的移动服务
@@ -256,24 +256,24 @@
 
 本教程演示了有关如何使 Windows 应用商店应用程序处理移动服务中的数据的基础知识。接下来，建议你完成下列教程之一，这些教程是基于本教程中创建的 GetStartedWithData 应用程序制作的：
 
--   [使用脚本验证和修改数据][]
+-   [使用脚本验证和修改数据][使用脚本验证和修改数据]
     了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
--   [使用分页优化查询][]
+-   [使用分页优化查询][使用分页优化查询]
     了解如何使用查询中的分页控制单个请求中处理的数据量。
 
 完成数据系列教程后，请试着学习下列教程之一：
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何对应用程序用户进行身份验证。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
--   [移动服务 .NET 操作方法概念性参考][]
+-   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 HTML 和 JavaScript 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/ "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ "Windows Phone"
   [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/ "Android"

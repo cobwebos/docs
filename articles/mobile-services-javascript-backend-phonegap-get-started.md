@@ -32,9 +32,9 @@
 
 PhoneGap 支持针对多个平台进行开发。除了 PhoneGap 工具本身以外，还必须为你所要针对的每个平台安装工具：
 
--   Windows Phone：安装 [Visual Studio 2012 Express for Windows Phone][]
--   iOS：安装 [Xcode][]（需要 4.4 及更高版本）
--   Android：安装 [Android 开发人员工具][]
+-   Windows Phone：安装 [Visual Studio 2012 Express for Windows Phone][Visual Studio 2012 Express for Windows Phone]
+-   iOS：安装 [Xcode][Xcode]（需要 4.4 及更高版本）
+-   Android：安装 [Android 开发人员工具][Android 开发人员工具]
     （适用于 Android 的移动服务 SDK 支持用于 Android 2.2 或更高版本的应用程序。运行快速入门应用程序需要安装 Android 4.2 或更高版本。）
 
 <a name="create-new-service"> </a>
@@ -88,7 +88,7 @@ PhoneGap 支持针对多个平台进行开发。除了 PhoneGap 工具本身以�
 
     2.  按“运行” 按钮以生成项目，并在 iPhone 模拟器中启动应用程序，这是此项目的默认设置。
 
-        ![][]
+        ![][0]
 
     -   "Android"
 
@@ -155,10 +155,10 @@ PhoneGap 支持针对多个平台进行开发。除了 PhoneGap 工具本身以�
 
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用标识提供者对应用程序的用户进行身份验证。
 
   [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"

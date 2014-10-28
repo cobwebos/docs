@@ -10,20 +10,20 @@
 
 在本教程中，你将要向移动服务快速入门应用程序添加功能，使用户能够拍摄照片，并使用移动服务生成的 SAS 将图像上载到 Azure。本教程将指导你完成以下基本步骤，让你更新移动服务快速入门项目，以将图像上载到 Blob 存储服务：
 
-1.  [安装存储客户端库][]
-2.  [更新客户端应用程序以捕获图像][]
-3.  [在移动服务项目中安装存储客户端][]
-4.  [更新数据模型中的 TodoItem 定义][]
-5.  [更新表控制器以生成 SAS][]
-6.  [上载图像以测试应用程序][]
+1.  [安装存储客户端库][安装存储客户端库]
+2.  [更新客户端应用程序以捕获图像][更新客户端应用程序以捕获图像]
+3.  [在移动服务项目中安装存储客户端][在移动服务项目中安装存储客户端]
+4.  [更新数据模型中的 TodoItem 定义][更新数据模型中的 TodoItem 定义]
+5.  [更新表控制器以生成 SAS][更新表控制器以生成 SAS]
+6.  [上载图像以测试应用程序][上载图像以测试应用程序]
 
 本教程需要的内容如下：
 
 -   Microsoft Visual Studio 2013 或更高版本。
 -   为 Microsoft Visual Studio 安装 Nuget 包管理器。
--   [Azure 存储帐户][]
+-   [Azure 存储帐户][Azure 存储帐户]
 
-本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]。
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][移动服务入门]。
 
 [WACOM.INCLUDE [mobile-services-dotnet-backend-configure-blob-storage](../includes/mobile-services-configure-blob-storage.md)]
 
@@ -44,7 +44,7 @@
 
 [WACOM.INCLUDE [mobile-services-windows-store-dotnet-upload-to-blob-storage](../includes/mobile-services-windows-store-dotnet-upload-to-blob-storage.md)]
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage "Windows 应用商店 C#"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-upload-data-blob-storage "Windows Phone"
   [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage ".NET 后端"
   [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-upload-data-blob-storage "JavaScript 后端"

@@ -25,13 +25,13 @@
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
-1.  [启用 Google Cloud Messaging][]
-2.  [配置移动服务][]
-3.  [向应用程序添加推送通知][]
-4.  [更新脚本以发送推送通知][]
-5.  [插入数据以接收通知][]
+1.  [启用 Google Cloud Messaging][启用 Google Cloud Messaging]
+2.  [配置移动服务][配置移动服务]
+3.  [向应用程序添加推送通知][向应用程序添加推送通知]
+4.  [更新脚本以发送推送通知][更新脚本以发送推送通知]
+5.  [插入数据以接收通知][插入数据以接收通知]
 
-本教程基于移动服务快速入门。在开始学习本教程之前，必须先完成[移动服务入门][]或[数据处理入门][]，以将项目连接到移动服务。
+本教程基于移动服务快速入门。在开始学习本教程之前，必须先完成[移动服务入门][移动服务入门]或[数据处理入门][数据处理入门]，以将项目连接到移动服务。
 
 <a id="register"></a>
 ## 启用 Google Cloud Messaging
@@ -43,7 +43,7 @@
 <a id="configure"></a>
 ## 配置移动服务以发送推送请求
 
-1.  登录到 [Windows Azure 管理门户][]，单击“移动服务”，然后单击你的应用程序 。
+1.  登录到 [Windows Azure 管理门户][Windows Azure 管理门户]，单击“移动服务”，然后单击你的应用程序 。
 
     ![][0]
 
@@ -51,7 +51,7 @@
 
     ![][1]
 
-    这样可以更新你的移动服务的配置，以使用通知中心提供的增强的推送功能。对于你的付费移动服务，有些通知中心使用是免费的。有关详细信息，请参阅[移动服务定价详细信息][]。
+    这样可以更新你的移动服务的配置，以使用通知中心提供的增强的推送功能。对于你的付费移动服务，有些通知中心使用是免费的。有关详细信息，请参阅[移动服务定价详细信息][移动服务定价详细信息]。
 
     <div class="dev-callout"><b>重要说明</b>
 
@@ -78,7 +78,7 @@
 
 下一步就是安装 Google Play Services。Google Cloud Messaging 对开发和测试提出了一些最低的 API 级别要求，清单中的 "minSdkVersion" 属性必须符合这些要求。
 
-如果你要对某台较旧的设备进行测试，请查阅[设置 Google Play Services SDK][]，以确定此值可设置到的最小值，并相应地进行设置。
+如果你要对某台较旧的设备进行测试，请查阅[设置 Google Play Services SDK][设置 Google Play Services SDK]，以确定此值可设置到的最小值，并相应地进行设置。
 
 ### 将 Google Play Services 添加到项目
 
@@ -129,7 +129,7 @@
           });
         }
 
-    这将会注册一个新的插入脚本，插入成功后，该脚本将使用 [gcm 对象][]向所有已注册的设备发送推送通知。
+    这将会注册一个新的插入脚本，插入成功后，该脚本将使用 [gcm 对象][gcm 对象]向所有已注册的设备发送推送通知。
 
 <a id="test"></a>
 ## 在应用程序中测试推送通知
@@ -173,33 +173,33 @@
 
 本教程演示了移动服务提供的基本推送通知功能。如果你的应用程序需要更高级功能，例如发送跨平台通知、基于订阅的路由或极大量的通知，请考虑为移动服务使用 Windows Azure 通知中心。有关详细信息，请参阅下列通知中心主题之一：
 
--   [通知中心入门][]
+-   [通知中心入门][通知中心入门]
     了解如何在 Android 应用程序中利用通知中心。
 
--   [向订户发送通知][]
+-   [向订户发送通知][向订户发送通知]
     了解用户如何注册和接收他们感兴趣的类别的推送通知。
 
--   [向用户发送通知][]
+-   [向用户发送通知][向用户发送通知]
     了解如何从移动服务向任一设备上的特定用户发送推送通知。
 
--   [向用户发送跨平台通知][]
+-   [向用户发送跨平台通知][向用户发送跨平台通知]
     了解如何使用模板从移动服务发送推送通知，且不会在后端中产生平台特定的负载。
 
 建议你了解有关以下移动服务主题的详细信息：
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用 Windows 帐户对应用程序用户进行身份验证。
 
--   [移动服务服务器脚本参考][]
+-   [移动服务服务器脚本参考][移动服务服务器脚本参考]
     了解有关注册和使用服务器脚本的详细信息。
 
--   [如何使用适用于移动服务的 Android 客户端库][]
+-   [如何使用适用于移动服务的 Android 客户端库][如何使用适用于移动服务的 Android 客户端库]
     了解有关如何将移动服务与 Android 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push "Windows Phone"
   [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-push "iOS"

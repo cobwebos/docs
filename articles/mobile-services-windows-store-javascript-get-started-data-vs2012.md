@@ -13,17 +13,17 @@
 
 本教程将指导你完成以下基本步骤：
 
-1.  [下载 Windows 应用商店应用程序项目][]
-2.  [创建移动服务][]
-3.  [添加用于存储的数据表][]
-4.  [更新应用程序以使用移动服务][]
-5.  [针对移动服务测试应用程序][]
+1.  [下载 Windows 应用商店应用程序项目][下载 Windows 应用商店应用程序项目]
+2.  [创建移动服务][创建移动服务]
+3.  [添加用于存储的数据表][添加用于存储的数据表]
+4.  [更新应用程序以使用移动服务][更新应用程序以使用移动服务]
+5.  [针对移动服务测试应用程序][针对移动服务测试应用程序]
 
 <div class="dev-callout"><strong>说明</strong><p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-js%2F" target="_blank">Azure 免费试用</a。</p></div>
 
 ## <a name="download-app"> </a>下载项目下载 GetStartedWithData 项目
 
-本教程是在 [GetStartedWithData 应用程序][]（一个 Windows 应用商店应用程序）的基础上制作的。此应用程序的 UI 与移动服务快速入门中生成的应用程序相同，不过，前者的一些新增项本地存储在内存中。
+本教程是在 [GetStartedWithData 应用程序][GetStartedWithData 应用程序]（一个 Windows 应用商店应用程序）的基础上制作的。此应用程序的 UI 与移动服务快速入门中生成的应用程序相同，不过，前者的一些新增项本地存储在内存中。
 
 1.  从[开发人员代码示例站点][GetStartedWithData 应用程序]下载 GetStartedWithData 示例应用程序的 JavaScript 版本。
 
@@ -131,7 +131,7 @@
 
     此时会将一个新项作为 insert 发送到移动服务。
 
-3.  在[管理门户][]中单击“移动服务”，然后单击你的移动服务 。
+3.  在[管理门户][管理门户]中单击“移动服务”，然后单击你的移动服务 。
 
 4.  单击“数据”选项卡，然后单击“浏览” 。
 
@@ -165,21 +165,21 @@
 
 本教程演示了有关如何使 Windows 应用商店应用程序处理移动服务中的数据的基础知识。接下来，建议你完成下列教程之一，这些教程是基于本教程中创建的 GetStartedWithData 应用程序制作的：
 
--   [使用脚本验证和修改数据][]
+-   [使用脚本验证和修改数据][使用脚本验证和修改数据]
     了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
--   [使用分页优化查询][]
+-   [使用分页优化查询][使用分页优化查询]
     了解如何使用查询中的分页控制单个请求中处理的数据量。
 
 完成数据系列教程后，请试着学习下列教程之一：
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何对应用程序用户进行身份验证。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012 "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012 "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js-vs2012 "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
   [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios "iOS"

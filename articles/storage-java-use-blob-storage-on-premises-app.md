@@ -9,9 +9,9 @@
 
 ## 目录
 
--   [先决条件][]
--   [使用 Azure Blob 存储上载文件][]
--   [删除容器][]
+-   [先决条件][先决条件]
+-   [使用 Azure Blob 存储上载文件][使用 Azure Blob 存储上载文件]
+-   [删除容器][删除容器]
 
 ## 先决条件
 
@@ -20,12 +20,12 @@
 3.  适用于 Azure Libraries for Java 的 JAR 以及任何
     适用的依赖项 JAR 已安装并且位于 Java 编译器使用
     的生成路径中。有关安装 Azure Libraries for Java 的信息，
-    请参阅[下载 Azure SDK for Java][]。
+    请参阅[下载 Azure SDK for Java][下载 Azure SDK for Java]。
 4.  已设置了一个 Azure 存储帐户。以下代码
     将使用存储帐户的帐户名称和帐户密钥。
-    有关创建存储帐户的信息，请参阅[如何创建存储帐户][]；
+    有关创建存储帐户的信息，请参阅[如何创建存储帐户][如何创建存储帐户]；
     有关检索帐户密钥的信息，请参阅
-    [如何管理存储帐户][]。
+    [如何管理存储帐户][如何管理存储帐户]。
 5.  你已创建了存储在路径 c:\\myimages\\image1.jpg 处的
     已命名本地图像文件。或者，在示例中修改
     **FileInputStream** 构造函数以使用其他图像路径和文件名。
@@ -412,13 +412,13 @@
     }
 
 有关其他 Blob 存储类和方法的概述，请参阅
-[如何通过 Java 使用 Blob 存储服务][]。
+[如何通过 Java 使用 Blob 存储服务][如何通过 Java 使用 Blob 存储服务]。
 
   [先决条件]: #bkmk_prerequisites
   [使用 Azure Blob 存储上载文件]: #bkmk_uploadfile
   [删除容器]: #bkmk_deletecontainer
   [下载 Azure SDK for Java]: http://azure.microsoft.com/zh-cn/develop/java/
-  [如何创建存储帐户]: http://windowsazure.cn/zh-cn/documentation/articles/storage-create-storage-account/
-  [如何管理存储帐户]: http://windowsazure.cn/zh-cn/documentation/articles/storage-manage-storage-account/
+  [如何创建存储帐户]: http://azure.microsoft.com/zh-cn/documentation/articles/storage-create-storage-account/
+  [如何管理存储帐户]: http://azure.microsoft.com/zh-cn/documentation/articles/storage-manage-storage-account/
   [create-account-note]: ../includes/create-account-note.md
-  [如何通过 Java 使用 Blob 存储服务]: http://windowsazure.cn/zh-cn/documentation/articles/storage-java-how-to-use-blob-storage/
+  [如何通过 Java 使用 Blob 存储服务]: http://azure.microsoft.com/zh-cn/documentation/articles/storage-java-how-to-use-blob-storage/

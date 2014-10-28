@@ -7,32 +7,32 @@
 
 本主题说明如何使用 Azure 移动服务作为 Windows Phone 8 应用程序的后端数据源。在本教程中，你将要为某个应用程序（该应用程序在内存中存储数据）下载一个 Visual Studio 2012 项目，创建一个新的移动服务，将该移动服务与该应用程序相集成，并查看运行该应用程序时对数据所做的更改。
 
-在本教程中创建的移动服务支持移动服务中的 .NET 运行时。这样，你便可以将 .NET 语言和 Visual Studio 用于移动服务中的服务器端业务逻辑。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题中的 [JavaScript 后端版本][]。
+在本教程中创建的移动服务支持移动服务中的 .NET 运行时。这样，你便可以将 .NET 语言和 Visual Studio 用于移动服务中的服务器端业务逻辑。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题中的 [JavaScript 后端版本][JavaScript 后端版本]。
 
 本教程将指导你完成以下基本步骤：
 
-1.  [下载 Windows Phone 8 应用程序项目][]
-2.  [创建新的移动服务][]
-3.  [在本地下载移动服务][]
-4.  [更新 Windows Phone 应用程序以使用移动服务][]
-5.  [针对本地托管的服务测试 Windows Phone 应用程序][]
-6.  [将移动服务发布到 Azure][]
-7.  [针对 Azure 中托管的服务测试 Windows Phone 应用程序][]
+1.  [下载 Windows Phone 8 应用程序项目][下载 Windows Phone 8 应用程序项目]
+2.  [创建新的移动服务][创建新的移动服务]
+3.  [在本地下载移动服务][在本地下载移动服务]
+4.  [更新 Windows Phone 应用程序以使用移动服务][更新 Windows Phone 应用程序以使用移动服务]
+5.  [针对本地托管的服务测试 Windows Phone 应用程序][针对本地托管的服务测试 Windows Phone 应用程序]
+6.  [将移动服务发布到 Azure][将移动服务发布到 Azure]
+7.  [针对 Azure 中托管的服务测试 Windows Phone 应用程序][针对 Azure 中托管的服务测试 Windows Phone 应用程序]
 
-本教程要求在 Windows 8 上运行 Visual Studio 2012 和 [Windows Phone 8 SDK][]。若要完成本教程以创建 Windows Phone 8.1 应用程序，必须使用 Visual Studio 2013 Update 2 或更高版本。
+本教程要求在 Windows 8 上运行 Visual Studio 2012 和 [Windows Phone 8 SDK][Windows Phone 8 SDK]。若要完成本教程以创建 Windows Phone 8.1 应用程序，必须使用 Visual Studio 2013 Update 2 或更高版本。
 
-> [WACOM.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][]。
+> [WACOM.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][Azure 免费试用]。
 
 <a name="download-app"></a>
 ## 下载 GetStartedWithData 项目
 
-本教程是在 [GetStartedWithMobileServices 应用程序][]的基础上制作的，该应用程序是一个 Windows Phone Silverlight 8 应用程序项目。此应用程序的 UI 与移动服务快速入门中生成的应用程序类似，不过，前者的一些新增项本地存储在内存中。
+本教程是在 [GetStartedWithMobileServices 应用程序][GetStartedWithMobileServices 应用程序]的基础上制作的，该应用程序是一个 Windows Phone Silverlight 8 应用程序项目。此应用程序的 UI 与移动服务快速入门中生成的应用程序类似，不过，前者的一些新增项本地存储在内存中。
 
-1.  从[开发人员代码示例站点][GetStartedWithMobileServices 应用程序]下载 GetStartedWithMobileServices 示例应用程序的 C\# 版本。
+1.  从[开发人员代码示例站点][GetStartedWithMobileServices 应用程序]下载 GetStartedWithMobileServices 示例应用程序的 C# 版本。
 
     ![][0]
 
-    > [WACOM.NOTE]若要创建 Windows Phone Silverlght 8.1 应用程序，只需在下载的 Windows Phone Silverlight 8 应用程序项目中将目标操作系统更改为 Windows Phone 8.1。若要创建 Windows Phone 应用商店应用程序，请下载 GetStartedWithData 示例应用程序项目的 [Windows Phone 应用商店应用程序版本][]。
+    > [WACOM.NOTE]若要创建 Windows Phone Silverlght 8.1 应用程序，只需在下载的 Windows Phone Silverlight 8 应用程序项目中将目标操作系统更改为 Windows Phone 8.1。若要创建 Windows Phone 应用商店应用程序，请下载 GetStartedWithData 示例应用程序项目的 [Windows Phone 应用商店应用程序版本][Windows Phone 应用商店应用程序版本]。
 
 2.  右键单击 Visual Studio，然后单击“以管理员身份运行”，以使用管理特权运行 Visual Studio 。
 
@@ -60,7 +60,7 @@
 <a name="download-the-service-locally"></a>
 ## 在本地下载服务下载移动服务项目并将其添加到解决方案
 
-1.  在 [Azure 管理门户][]中，单击新建的移动服务或者其云图标选项卡，以转到概述页。
+1.  在 [Azure 管理门户][Azure 管理门户]中，单击新建的移动服务或者其云图标选项卡，以转到概述页。
 
     ![][3]
 
@@ -74,7 +74,7 @@
 
     ![][5]
 
-4.  解压缩你下载的个性化服务初学者项目。将 zip 文件中的文件夹复制到“数据处理入门”解决方案文件 (.sln) 所在的同一个 "C\#" 目录。这样可以方便 NuGet 包管理器将所有程序包保持同步。
+4.  解压缩你下载的个性化服务初学者项目。将 zip 文件中的文件夹复制到“数据处理入门”解决方案文件 (.sln) 所在的同一个 "c#" 目录。这样可以方便 NuGet 包管理器将所有程序包保持同步。
 
     ![][6]
 
@@ -82,7 +82,7 @@
 
     ![][7]
 
-6.  在“添加现有项目”对话框中，导航到你已移到 "C\#" 目录中的移动服务项目文件夹。在服务子目录中选择 C\# 项目文件 (.csproj)。单击“打开” 将该项目添加到你的解决方案。
+6.  在“添加现有项目”对话框中，导航到你已移到 "c#" 目录中的移动服务项目文件夹。在服务子目录中选择 C# 项目文件 (.csproj)。单击“打开” 将该项目添加到你的解决方案。
 
     ![][8]
 
@@ -269,21 +269,21 @@
 
 本教程所述的基础知识演示了如何使 Windows Phone 8 应用程序处理使用 .Net 运行时生成的移动服务中的数据。接下来，建议你完成下列教程之一，这些教程是基于本教程中创建的 GetStartedWithData 应用程序制作的：
 
--   [使用脚本验证和修改数据][]
+-   [使用脚本验证和修改数据][使用脚本验证和修改数据]
     了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
--   [使用分页优化查询][]
+-   [使用分页优化查询][使用分页优化查询]
     了解如何使用查询中的分页控制单个请求中处理的数据量。
 
 完成数据系列教程后，请试着学习下列教程之一：
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何对应用程序用户进行身份验证。
 
--   [移动服务 .NET 操作方法概念性参考][]
+-   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/ "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ "Windows Phone"
   [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ ".NET 后端"

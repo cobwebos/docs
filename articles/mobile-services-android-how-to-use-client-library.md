@@ -6,52 +6,52 @@
   <a href="/zh-cn/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework">.NET Framework</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript">HTML/JavaScript</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android" class="current">Android</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin">Xamarin</a>
 </div>
 
-本指南说明如何使用适用于 Azure 移动服务的 Android 客户端执行常见任务。所述的任务包括：查询数据；插入、更新和删除数据；对用户进行身份验证；处理错误；自定义客户端。如果你是第一次使用移动服务，最好先完成[移动服务快速入门][]。快速入门教程可帮助你配置帐户并创建第一个移动服务。
+本指南说明如何使用适用于 Azure 移动服务的 Android 客户端执行常见任务。所述的任务包括：查询数据；插入、更新和删除数据；对用户进行身份验证；处理错误；自定义客户端。如果你是第一次使用移动服务，最好先完成[移动服务快速入门][移动服务快速入门]。快速入门教程可帮助你配置帐户并创建第一个移动服务。
 
-这些示例用 Java 编写，需要安装[移动服务 SDK][]。本教程还要求安装 [Android SDK][]，其中包含 Eclipse 集成开发环境 (IDE) 和 Android 开发人员工具 (ADT) 插件。移动服务 SDK 支持 Android 2.2 或更高版本，但我们建议针对 Android 4.2 或更高版本生成应用程序。
+这些示例用 Java 编写，需要安装[移动服务 SDK][移动服务 SDK]。本教程还要求安装 [Android SDK][Android SDK]，其中包含 Eclipse 集成开发环境 (IDE) 和 Android 开发人员工具 (ADT) 插件。移动服务 SDK 支持 Android 2.2 或更高版本，但我们建议针对 Android 4.2 或更高版本生成应用程序。
 
 ## 目录
 
--   [什么是移动服务][]
--   [概念][]
--   [安装与先决条件][]
--   [如何：创建移动服务客户端][]
--   [如何：创建表引用][]
+-   [什么是移动服务][什么是移动服务]
+-   [概念][概念]
+-   [安装与先决条件][安装与先决条件]
+-   [如何：创建移动服务客户端][如何：创建移动服务客户端]
+-   [如何：创建表引用][如何：创建表引用]
 
-    -   [API 结构][]
--   [如何：从移动服务查询数据][]
+    -   [API 结构][API 结构]
+-   [如何：从移动服务查询数据][如何：从移动服务查询数据]
 
-    -   [筛选返回的数据][]
-    -   [为返回的数据排序][]
-    -   [在页中返回数据][]
-    -   [选择特定的列][]
-    -   [如何：连接查询方法][]
--   [如何：在移动服务中插入数据][]
--   [如何：在移动服务中更新数据][]
--   [如何：在移动服务中删除数据][]
--   [如何：查找特定的项][]
--   [如何：处理非类型化数据][]
--   [如何：将数据绑定到用户界面][]
+    -   [筛选返回的数据][筛选返回的数据]
+    -   [为返回的数据排序][为返回的数据排序]
+    -   [在页中返回数据][在页中返回数据]
+    -   [选择特定的列][选择特定的列]
+    -   [如何：连接查询方法][如何：连接查询方法]
+-   [如何：在移动服务中插入数据][如何：在移动服务中插入数据]
+-   [如何：在移动服务中更新数据][如何：在移动服务中更新数据]
+-   [如何：在移动服务中删除数据][如何：在移动服务中删除数据]
+-   [如何：查找特定的项][如何：查找特定的项]
+-   [如何：处理非类型化数据][如何：处理非类型化数据]
+-   [如何：将数据绑定到用户界面][如何：将数据绑定到用户界面]
 
-    -   [如何：定义布局][]
-    -   [如何：定义适配器][]
-    -   [如何：使用适配器][]
--   [如何：对用户进行身份验证][]
+    -   [如何：定义布局][如何：定义布局]
+    -   [如何：定义适配器][如何：定义适配器]
+    -   [如何：使用适配器][如何：使用适配器]
+-   [如何：对用户进行身份验证][如何：对用户进行身份验证]
 
-    -   [缓存身份验证令牌][]
--   [如何：处理错误][]
--   [如何：自定义客户端][]
+    -   [缓存身份验证令牌][缓存身份验证令牌]
+-   [如何：处理错误][如何：处理错误]
+-   [如何：自定义客户端][如何：自定义客户端]
 
-    -   [自定义请求标头][]
-    -   [自定义序列化][]
--   [后续步骤][]
+    -   [自定义请求标头][自定义请求标头]
+    -   [自定义序列化][自定义序列化]
+-   [后续步骤][后续步骤]
 
 [WACOM.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
 <a name="setup"></a>
 ## 安装安装与先决条件
 
-假设你已创建一个移动服务和一个表。有关详细信息，请参阅[创建表][]。在本主题使用的代码中，我们假设表的名称为 *ToDoItem*，其中包含以下列：
+假设你已创建一个移动服务和一个表。有关详细信息，请参阅[创建表][创建表]。在本主题使用的代码中，我们假设表的名称为 *ToDoItem*，其中包含以下列：
 
 <ul>
 <li>id</li>
@@ -71,12 +71,12 @@
     private Integer duration;
     }
 
-启用动态架构后，Azure 移动服务将基于 insert 或 update 请求中的对象自动生成新列。有关详细信息，请参阅[动态架构][]。
+启用动态架构后，Azure 移动服务将基于 insert 或 update 请求中的对象自动生成新列。有关详细信息，请参阅[动态架构][动态架构]。
 
 <a name="create-client"></a>
 ## 创建移动服务客户端如何：创建移动服务客户端
 
-以下代码将创建用于访问移动服务的 [MobileServiceClient][] 对象。
+以下代码将创建用于访问移动服务的 [MobileServiceClient][MobileServiceClient] 对象。
 
             MobileServiceClient mClient = new MobileServiceClient(
     "MobileServiceUrl", // Replace with the above Site URL
@@ -88,9 +88,9 @@
 <a name="instantiating"></a>
 ## 创建表引用如何：创建表引用
 
-在移动服务中查询或修改数据的最简单方法就是使用*类型化编程模型*，因为 Java 是强类型化语言（稍后我们将会介绍*类型化*模型）。在客户端与移动服务之间发送数据时，此模型将使用 [gson][] 库向 JSON 提供无缝序列化和反序列化：开发人员无需执行任何操作，框架能够处理一切。
+在移动服务中查询或修改数据的最简单方法就是使用*类型化编程模型*，因为 Java 是强类型化语言（稍后我们将会介绍*类型化*模型）。在客户端与移动服务之间发送数据时，此模型将使用 [gson][gson] 库向 JSON 提供无缝序列化和反序列化：开发人员无需执行任何操作，框架能够处理一切。
 
-查询或修改数据所要执行的第一项操作就是通过对 ["MobileServiceClient"][MobileServiceClient] 调用 "getTable" 方法来创建一个 [MobileServiceTable][] 对象。下面是此方法的两个重载：
+查询或修改数据所要执行的第一项操作就是通过对 ["MobileServiceClient"][MobileServiceClient] 调用 "getTable" 方法来创建一个 [MobileServiceTable][MobileServiceTable] 对象。下面是此方法的两个重载：
 
     public class MobileServiceClient {
     public <E> MobileServiceTable<E> getTable(Class<E> clazz);
@@ -99,11 +99,11 @@
 
 在以下代码中，*mClient* 是对移动服务客户端的引用。
 
-如果类名称与表名称相同，则使用[第一个重载][]：
+如果类名称与表名称相同，则使用[第一个重载][第一个重载]：
 
         MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable(ToDoItem.class);
 
-如果表名称与类型名称不同，则使用[第二个重载][]：
+如果表名称与类型名称不同，则使用[第二个重载][第二个重载]：
 
         MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
 
@@ -132,7 +132,7 @@
                 }
             });
 
-类似于这样的查询将使用 ["TableQueryCallback\<E\>"][] 回调对象。
+类似于这样的查询将使用 ["TableQueryCallback\<E\>"]["TableQueryCallback\<E\>"] 回调对象。
 
 *result* 参数返回查询后生成的结果集，*exception* 测试的成功分支中的代码显示了如何分析各个行。
 
@@ -155,23 +155,23 @@
             }
         });
 
-通过对表引用执行 ["where"][] 方法调用来启动筛选器。然后，依次执行 ["field"][] 方法调用和用于指定逻辑谓词的方法调用。可能的谓词方法包括 ["eq"][]、["ne"][]、["gt"][]、["ge"][]、["lt"][]、["le"][]，等等。
+通过对表引用执行 ["where"]["where"] 方法调用来启动筛选器。然后，依次执行 ["field"]["field"] 方法调用和用于指定逻辑谓词的方法调用。可能的谓词方法包括 ["eq"]["eq"]、["ne"]["ne"]、["gt"]["gt"]、["ge"]["ge"]、["lt"]["lt"]、["le"]["le"]，等等。
 
 执行这些操作便足以将数字和字符串字段与特定值进行比较。不过，你还可以执行其他许多操作。
 
-例如，你可以按日期筛选。你可以比较整个日期字段，或者使用 ["year"][]、["month"][]、["day"][]、["hour"][]、["minute"][] 和 ["second"][] 等方法比较日期的一部分。以下代码片段将会针对“截止日期”等于 2013 的项添加一个筛选器"。
+例如，你可以按日期筛选。你可以比较整个日期字段，或者使用 ["year"]["year"]、["month"]["month"]、["day"]["day"]、["hour"]["hour"]、["minute"]["minute"] 和 ["second"]["second"] 等方法比较日期的一部分。以下代码片段将会针对“截止日期”等于 2013 的项添加一个筛选器"。
 
         mToDoTable.where().year("due").eq(2013)
 
-你可以使用 ["startsWith"][]、["endsWith"][]、["concat"][]、["subString"][]、["indexOf"][]、["replace"][]、["toLower"][]、["toUpper"][]、["trim"][] 和 ["length"][] 等方法对字符串字段运行各种复杂筛选器。以下代码片段将会筛选 *text* 列以“PRI0”开头的表行。
+你可以使用 ["startsWith"]["startsWith"]、["endsWith"]["endsWith"]、["concat"]["concat"]、["subString"]["subString"]、["indexOf"]["indexOf"]、["replace"]["replace"]、["toLower"]["toLower"]、["toUpper"]["toUpper"]、["trim"]["trim"] 和 ["length"]["length"] 等方法对字符串字段运行各种复杂筛选器。以下代码片段将会筛选 *text* 列以“PRI0”开头的表行。
 
         mToDoTable.where().startsWith("text", "PRI0")
 
-还允许使用 ["add"][]、["sub"][]、["mul"][]、["div"][]、["mod"][]、["floor"][]、["ceiling"][] 和 ["round"][] 等方法对数字字段运行各种更复杂的筛选器。以下代码片段将会筛选其中的 *duration* 为偶数的表行。
+还允许使用 ["add"]["add"]、["sub"]["sub"]、["mul"]["mul"]、["div"]["div"]、["mod"]["mod"]、["floor"]["floor"]、["ceiling"]["ceiling"] 和 ["round"]["round"] 等方法对数字字段运行各种更复杂的筛选器。以下代码片段将会筛选其中的 *duration* 为偶数的表行。
 
         mToDoTable.where().field("duration").mod(2).eq(0)
 
-你可以使用 ["and"][]、["or"][] 和 ["not"][] 等方法来组合谓词。以下代码片段将组合上面的两个示例。
+你可以使用 ["and"]["and"]、["or"]["or"] 和 ["not"]["not"] 等方法来组合谓词。以下代码片段将组合上面的两个示例。
 
         mToDoTable.where().year("due").eq(2013).and().startsWith("text", "PRI0")
 
@@ -182,7 +182,7 @@
     .and
     (startsWith("text", "PRI0").or().field("duration").gt(10))
 
-有关筛选操作的更详细介绍和示例，请参阅[了解移动服务 Android 客户端查询模型的丰富功能][]。
+有关筛选操作的更详细介绍和示例，请参阅[了解移动服务 Android 客户端查询模型的丰富功能][了解移动服务 Android 客户端查询模型的丰富功能]。
 
 
 <a name="sorting"></a>
@@ -195,9 +195,9 @@
     /* same implementation as above */ 
             }); 
 
-["orderBy"][] 方法的第一个参数是与要排序的字段名称相同的字符串。
+["orderBy"]["orderBy"] 方法的第一个参数是与要排序的字段名称相同的字符串。
 
-第二个参数使用 ["QueryOrder"][] 枚举来指定是按升序还是按降序排序。
+第二个参数使用 ["QueryOrder"]["QueryOrder"] 枚举来指定是按升序还是按降序排序。
 
 请注意，如果你使用 "*where"* 方法筛选，则必须在调用 "*orderBy"* 方法之前调用 "*where"* 方法。
 
@@ -239,14 +239,14 @@
 
 在这里，select 函数的参数是要返回的表列的字符串名称。
 
-["select"][] 方法需接在 ["where"][1] 和 ["orderBy"][2] 等方法（如果存在）的后面。它可以后接 ["top"][] 等方法。
+["select"]["select"] 方法需接在 ["where"][1] 和 ["orderBy"][2] 等方法（如果存在）的后面。它可以后接 ["top"]["top"] 等方法。
 
 <a name="chaining"></a>
 ### 如何：连接查询方法
 
 可以连接用于查询移动服务表的方法。这样，你便可以执行多种操作，例如，选择已排序并分页的筛选行的特定列。你可以创建相当复杂的逻辑筛选器。
 
-这种操作的工作原理是通过使用的查询方法返回 ["MobileServiceQuery\<T\>"][] 对象，随之又对这些对象调用更多的方法。若要结束方法序列并真正运行查询，你可以调用 ["execute"][] 方法。
+这种操作的工作原理是通过使用的查询方法返回 ["MobileServiceQuery\<T\>"]["MobileServiceQuery\<T\>"] 对象，随之又对这些对象调用更多的方法。若要结束方法序列并真正运行查询，你可以调用 ["execute"]["execute"] 方法。
 
 在以下代码示例中，*mToDoTable* 是对移动服务 *ToDoItem* 表的引用。
 
@@ -274,7 +274,7 @@
     mToDoItem.duration = 5; 
         
 
-接下来，调用 ["insert"][] 方法。
+接下来，调用 ["insert"]["insert"] 方法。
 
         mToDoTable.insert(mToDoItem, new TableOperationCallback<ToDoItem>() {
     public void onCompleted(ToDoItem entity, 
@@ -286,7 +286,7 @@
             }
         });
 
-对于 "insert" 操作，回调对象为 ["TableOperationCallback\<ToDoItem\>"][]。
+对于 "insert" 操作，回调对象为 ["TableOperationCallback\<ToDoItem\>"]["TableOperationCallback\<ToDoItem\>"]。
 
 "onCompleted" 方法的 entity 参数包含新插入的对象。成功代码显示了如何访问所插入行的 *id*。
 
@@ -323,11 +323,11 @@
 
 `id` 的值必须唯一，并且不能包含以下集中的字符：
 
--   控制字符：[0x0000-0x001F] 和 [0x007F-0x009F]。有关详细信息，请参阅 [ASCII 控制代码 C0 和 C1][]。
+-   控制字符：[0x0000-0x001F] 和 [0x007F-0x009F]。有关详细信息，请参阅 [ASCII 控制代码 C0 和 C1][ASCII 控制代码 C0 和 C1]。
 -   可打印字符："""(0x0022)、"+" (0x002B)、"/" (0x002F)、"?"(0x003F)、"\\" (0x005C)、"\`" (0x0060)
 -   ID“.”和“..”
 
-也可以为表使用整数 ID。若要使用整数 ID，必须使用 `mobile table create` 命令并结合 `--integerId` 选项创建表。应在适用于 Azure 的命令行界面 (CLI) 中使用此命令。有关使用 CLI 的详细信息，请参阅[用于管理移动服务表的 CLI][]。
+也可以为表使用整数 ID。若要使用整数 ID，必须使用 `mobile table create` 命令并结合 `--integerId` 选项创建表。应在适用于 Azure 的命令行界面 (CLI) 中使用此命令。有关使用 CLI 的详细信息，请参阅[用于管理移动服务表的 CLI][用于管理移动服务表的 CLI]。
 
 <a name="updating"></a>
 ## 更新数据如何：在移动服务中更新数据
@@ -361,7 +361,7 @@
             }
         });
 
-请注意，在执行 *delete* 时，回调对象为 ["TableDeleteCallback"][]，"onCompleted" 方法略有不同，因为它不返回表行。
+请注意，在执行 *delete* 时，回调对象为 ["TableDeleteCallback"]["TableDeleteCallback"]，"onCompleted" 方法略有不同，因为它不返回表行。
 
 以下代码演示了执行删除操作的另一种方法。该代码通过指定要删除的行的 ID 字段值（假设等于 "37BBF396-11F0-4B39-85C8-B319C729AF6D"）来删除 ToDoItem 表中的现有项。
 
@@ -393,7 +393,7 @@
 
 使用非类型化编程模型可以全面控制 JSON 序列化，在某些情况下，你可能想要使用该模型。例如，你的移动服务表包含大量的列，而你只需要引用其中的某些列。使用类型化模型需要在数据类中定义移动服务表的所有列。但如果使用非类型化模型，只需定义你要使用的列。
 
-与使用类型化模型相似，首先需要获取表引用，不过，此时该引用的是一个 [MobileServicesJsonTable][] 对象。对移动服务客户端的实例调用 [getTable()][] 方法可获取该引用。
+与使用类型化模型相似，首先需要获取表引用，不过，此时该引用的是一个 [MobileServicesJsonTable][MobileServicesJsonTable] 对象。对移动服务客户端的实例调用 [getTable()][getTable()] 方法可获取该引用。
 
 你可以使用此方法的以下重载，该重载用于处理基于 JSON 的非类型化编程模型：
 
@@ -415,14 +415,14 @@
 <a name="json_insert"></a>
 ### 如何：插入到非类型化表中
 
-以下代码演示了如何执行插入。第一步是创建属于 [gson][] 库的一部分的 ["JsonObject"][]。
+以下代码演示了如何执行插入。第一步是创建属于 [gson][gson] 库的一部分的 ["JsonObject"]["JsonObject"]。
 
         JsonObject task = new JsonObject();
     task.addProperty("text", "Wake up");
     task.addProperty("complete", false);
     task.addProperty("duration", 5);
 
-下一步是插入对象。传递给 ["insert"][3] 方法的回调函数是 ["TableJsonOperationCallback"][] 类的实例。请注意，*onCompleted* 方法的第一个参数是 JsonObject。
+下一步是插入对象。传递给 ["insert"][3] 方法的回调函数是 ["TableJsonOperationCallback"]["TableJsonOperationCallback"] 类的实例。请注意，*onCompleted* 方法的第一个参数是 JsonObject。
 
         mTable.insert(task, new TableJsonOperationCallback() {
     public void onCompleted(JsonObject jsonObject, 
@@ -460,7 +460,7 @@
 <a name="json_get"></a>
 ### 如何：返回非类型化表中的所有行
 
-以下代码演示了如何检索整个表。请注意，非类型化编程模型使用不同的回调对象：["TableJsonQueryCallback"][]。
+以下代码演示了如何检索整个表。请注意，非类型化编程模型使用不同的回调对象：["TableJsonQueryCallback"]["TableJsonQueryCallback"]。
 
         mTable.execute(new TableJsonQueryCallback() {
     public void onCompleted(JsonElement result, 
@@ -582,7 +582,7 @@
 <a name="authentication"></a>
 ## 身份验证如何：对用户进行身份验证
 
-移动服务支持使用各种外部标识提供者对应用程序用户进行身份验证和授权，这些提供者包括：Facebook、Google、Microsoft 帐户、Twitter 和 Azure Active Directory。你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。你还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。有关详细信息，请参阅[身份验证入门][]。
+移动服务支持使用各种外部标识提供者对应用程序用户进行身份验证和授权，这些提供者包括：Facebook、Google、Microsoft 帐户、Twitter 和 Azure Active Directory。你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。你还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。有关详细信息，请参阅[身份验证入门][身份验证入门]。
 
 支持两种身份验证流：*服务器*流和*客户端*流。服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。客户端流依赖于提供者和设备特定的 SDK，因此允许与设备特定的功能（例如单一登录）进行更深入的集成。
 
@@ -602,7 +602,7 @@
 
 你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。还可以使用已经过身份验证的用户的 ID 来修改请求。
 
-前两个任务可使用 [Azure 管理门户][]来完成。有关详细信息，请参阅[身份验证入门][]。
+前两个任务可使用 [Azure 管理门户][Azure 管理门户]来完成。有关详细信息，请参阅[身份验证入门][身份验证入门]。
 
 <a name="caching"></a>
 ### 如何：向应用程序添加身份验证代码
@@ -702,7 +702,7 @@
 <a name="errors"></a>
 ## 错误处理如何：处理错误
 
-[此处][]提供了一个执行验证并处理各种错误的示例，该示例通过出错时返回异常的服务器脚本以及用于处理异常的客户端代码来实施验证。
+[此处][此处]提供了一个执行验证并处理各种错误的示例，该示例通过出错时返回异常的服务器脚本以及用于处理异常的客户端代码来实施验证。
 
 处理错误的另一种方法是提供*全局*错误处理程序。该示例中访问移动服务表的代码涉及到三个不同的回调对象：
 
@@ -763,7 +763,7 @@
 
 </ul>
 
-则你必须将客户端名称序列化为与服务器上 *ToDoItem* 表的列名称匹配的 JSON 名称。以下代码利用 [gson][] 库来执行此操作。
+则你必须将客户端名称序列化为与服务器上 *ToDoItem* 表的列名称匹配的 JSON 名称。以下代码利用 [gson][gson] 库来执行此操作。
 
     @com.google.gson.annotations.SerializedName("text")
     private String mText;
@@ -788,9 +788,9 @@
 <a name="conversions"></a>
 ### 如何：自动执行列名称映射
 
-如前一部分中所示，映射只包含几个列的简短表的列名称并不复杂。但是，如果表包含大量的列（例如 20 或 30 个列），则我们可以调用 [gson][] API 并指定要应用到每个列的转换策略，这样就无需批注每一个列名称。
+如前一部分中所示，映射只包含几个列的简短表的列名称并不复杂。但是，如果表包含大量的列（例如 20 或 30 个列），则我们可以调用 [gson][gson] API 并指定要应用到每个列的转换策略，这样就无需批注每一个列名称。
 
-为此，我们需要使用 [gson][] 库，Android 客户端库在幕后使用该库将 Java 对象序列化为要发送到 Azure 移动服务的 JSON 数据。
+为此，我们需要使用 [gson][gson] 库，Android 客户端库在幕后使用该库将 Java 对象序列化为要发送到 Azure 移动服务的 JSON 数据。
 
 以下代码使用 *setFieldNamingStrategy()* 方法，我们在其中定义了 *FieldNamingStrategy()* 方法。此方法指定删除初始字符（“m”），然后将每个字段名称的下一个字符小写。此代码还启用了输出 JSON 的整齐打印。
 
@@ -813,7 +813,7 @@
 
 到目前为止，我们的所有序列化示例都使用了可轻松序列化成 JSON 和移动服务表的基元类型（例如整数和字符串）。假设我们要将一个不能自动序列化成 JSON 和表的复杂对象添加到客户端类型。例如，我们要将一个字符串数组添加到客户端对象。此时，我们需要指定如何执行序列化，以及如何将数组存储到移动服务表中。
 
-若要查看有关如何执行此操作的示例，请阅读博客文章[在移动服务 Android 客户端中使用][][gson][] 库自定义序列化。
+若要查看有关如何执行此操作的示例，请阅读博客文章[在移动服务 Android 客户端中使用][在移动服务 Android 客户端中使用][gson][gson] 库自定义序列化。
 
 每当我们要使用一个不能自动序列化成 JSON 和移动服务表的复杂对象时，就可以使用此常规方法。
 

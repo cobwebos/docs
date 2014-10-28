@@ -6,30 +6,30 @@
   <a href="/zh-cn/develop/mobile/how-to-guides/work-with-net-client-library/" title=".NET Framework">.NET Framework</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript" class="current">HTML/JavaScript</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android">Android</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin">Xamarin</a>
 </div>
 
-本指南说明如何使用适用于 Azure 移动服务的 HTML/JavaScript 客户端执行常见任务。所述的任务包括：查询数据，插入、更新和删除数据，对用户进行身份验证和处理错误。如果你是第一次使用移动服务，最好先完成移动服务 [Windows 应用商店 JavaScript 快速入门][]或 [HTML 快速入门][]。快速入门教程可帮助你配置帐户并创建第一个移动服务。
+本指南说明如何使用适用于 Azure 移动服务的 HTML/JavaScript 客户端执行常见任务。所述的任务包括：查询数据，插入、更新和删除数据，对用户进行身份验证和处理错误。如果你是第一次使用移动服务，最好先完成移动服务 [Windows 应用商店 JavaScript 快速入门][Windows 应用商店 JavaScript 快速入门]或 [HTML 快速入门][HTML 快速入门]。快速入门教程可帮助你配置帐户并创建第一个移动服务。
 
 ## 目录
 
--   [什么是移动服务][]
--   [概念][]
--   [如何：创建移动服务客户端][]
--   [如何：从移动服务查询数据][]
+-   [什么是移动服务][什么是移动服务]
+-   [概念][概念]
+-   [如何：创建移动服务客户端][如何：创建移动服务客户端]
+-   [如何：从移动服务查询数据][如何：从移动服务查询数据]
 
-    -   [筛选返回的数据][]
-    -   [为返回的数据排序][]
-    -   [在页中返回数据][]
-    -   [选择特定的列][]
-    -   [按 ID 查找数据][]
--   [如何：在移动服务中插入数据][]
--   [如何：在移动服务中修改数据][]
--   [如何：在移动服务中删除数据][]
--   [如何：在用户界面中显示数据][]
--   [如何：对用户进行身份验证][]
--   [如何：处理错误][]
--   [如何：使用约定][]
--   [如何：自定义请求标头][]
--   [如何：使用跨域资源共享][]
--   [后续步骤][]
+    -   [筛选返回的数据][筛选返回的数据]
+    -   [为返回的数据排序][为返回的数据排序]
+    -   [在页中返回数据][在页中返回数据]
+    -   [选择特定的列][选择特定的列]
+    -   [按 ID 查找数据][按 ID 查找数据]
+-   [如何：在移动服务中插入数据][如何：在移动服务中插入数据]
+-   [如何：在移动服务中修改数据][如何：在移动服务中修改数据]
+-   [如何：在移动服务中删除数据][如何：在移动服务中删除数据]
+-   [如何：在用户界面中显示数据][如何：在用户界面中显示数据]
+-   [如何：对用户进行身份验证][如何：对用户进行身份验证]
+-   [如何：处理错误][如何：处理错误]
+-   [如何：使用约定][如何：使用约定]
+-   [如何：自定义请求标头][如何：自定义请求标头]
+-   [如何：使用跨域资源共享][如何：使用跨域资源共享]
+-   [后续步骤][后续步骤]
 
 [WACOM.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
@@ -42,7 +42,7 @@
 
             <script src='http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.1.2.min.js'></script>
 
-在编辑器中，先打开或创建一个 JavaScript 文件，再添加以下代码以定义 `MobileServiceClient` 变量，然后在 `MobileServiceClient` 构造函数中提供来自移动服务的应用程序 URL 和应用程序密钥。必须将占位符 `AppUrl` 替换为移动服务的应用程序 URL，将 `AppKey` 替换为应用程序密钥。若要了解如何获取移动服务的应用程序 URL 和应用程序密钥，请查阅教程 [Windows 应用商店 JavaScript 中的数据处理入门][]或 [HTML/JavaScript 中的数据处理入门][]。
+在编辑器中，先打开或创建一个 JavaScript 文件，再添加以下代码以定义 `MobileServiceClient` 变量，然后在 `MobileServiceClient` 构造函数中提供来自移动服务的应用程序 URL 和应用程序密钥。必须将占位符 `AppUrl` 替换为移动服务的应用程序 URL，将 `AppKey` 替换为应用程序密钥。若要了解如何获取移动服务的应用程序 URL 和应用程序密钥，请查阅教程 [Windows 应用商店 JavaScript 中的数据处理入门][Windows 应用商店 JavaScript 中的数据处理入门]或 [HTML/JavaScript 中的数据处理入门][HTML/JavaScript 中的数据处理入门]。
 
             var MobileServiceClient = WindowsAzure.MobileServiceClient;
     var client = new MobileServiceClient('AppUrl', 'AppKey');
@@ -307,11 +307,11 @@
 
 `id` 的值必须唯一，并且不能包含以下集中的字符：
 
--   控制字符：[0x0000-0x001F] 和 [0x007F-0x009F]。有关详细信息，请参阅 [ASCII 控制代码 C0 和 C1][]。
+-   控制字符：[0x0000-0x001F] 和 [0x007F-0x009F]。有关详细信息，请参阅 [ASCII 控制代码 C0 和 C1][ASCII 控制代码 C0 和 C1]。
 -   可打印字符："""(0x0022)、"+" (0x002B)、"/" (0x002F)、"?"(0x003F)、"\\" (0x005C)、"\`" (0x0060)
 -   ID“.”和“..”
 
-也可以为表使用整数 ID。若要使用整数 ID，必须使用 `mobile table create` 命令并结合 `--integerId` 选项创建表。应在适用于 Azure 的命令行界面 (CLI) 中使用此命令。有关使用 CLI 的详细信息，请参阅[用于管理移动服务表的 CLI][]。
+也可以为表使用整数 ID。若要使用整数 ID，必须使用 `mobile table create` 命令并结合 `--integerId` 选项创建表。应在适用于 Azure 的命令行界面 (CLI) 中使用此命令。有关使用 CLI 的详细信息，请参阅[用于管理移动服务表的 CLI][用于管理移动服务表的 CLI]。
 
 <a name="modifying"></a>
 ## 修改数据如何：在移动服务中修改数据
@@ -380,19 +380,19 @@
     alert("Error:" + err);
             });
 
-在 Windows 应用商店应用程序中，可以使用查询的结果来创建 [WinJS.Binding.List] 对象，该对象可绑定为 [ListView][] 对象的数据源。有关详细信息，请参阅[数据绑定（使用 JavaScript 和 HTML 的 Windows 应用商店应用程序）][]。
+在 Windows 应用商店应用程序中，可以使用查询的结果来创建 [WinJS.Binding.List] 对象，该对象可绑定为 [ListView][ListView] 对象的数据源。有关详细信息，请参阅[数据绑定（使用 JavaScript 和 HTML 的 Windows 应用商店应用程序）][数据绑定（使用 JavaScript 和 HTML 的 Windows 应用商店应用程序）]。
 
 <a name="caching"></a>
 ## 身份验证如何：对用户进行身份验证
 
-移动服务支持使用各种外部标识提供者对应用程序用户进行身份验证和授权，这些提供者包括：Facebook、Google、Microsoft 帐户和 Twitter。你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。你还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。有关详细信息，请参阅[身份验证入门][]教程。
+移动服务支持使用各种外部标识提供者对应用程序用户进行身份验证和授权，这些提供者包括：Facebook、Google、Microsoft 帐户和 Twitter。你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。你还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。有关详细信息，请参阅[身份验证入门][身份验证入门]教程。
 
 支持两种身份验证流：*服务器流*和*客户端流*。服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。客户端流依赖于提供者和设备特定的 SDK，因此允许与设备特定的功能（例如单一登录）进行更深入的集成。
 
 ### 服务器流
 
 若要让移动服务管理 Windows 应用商店或 HTML5 应用程序中的身份验证过程，
-必须将你的应用程序注册到标识提供者。然后，需要在移动服务中配置提供者提供的应用程序 ID 和机密。有关详细信息，请参阅“身份验证入门”教程（[Windows 应用商店][]/[HTML][身份验证入门]）。
+必须将你的应用程序注册到标识提供者。然后，需要在移动服务中配置提供者提供的应用程序 ID 和机密。有关详细信息，请参阅“身份验证入门”教程（[Windows 应用商店][Windows 应用商店]/[HTML][身份验证入门]）。
 
 注册标识提供者后，只需结合提供者的 [MobileServiceAuthenticationProvider] 值调用 [LoginAsync 方法]。例如，若要使用 Facebook 登录，请使用以下代码。
 
@@ -404,7 +404,7 @@
 
 如果使用的标识提供者不是 Facebook，请将传递给上述 `login` 方法的值更改为下列其中一项：`microsoftaccount`、`facebook`、`twitter`、`google` 或 `windowsazureactivedirectory`。
 
-在此情况下，移动服务将通过以下方式管理 OAuth 2.0 身份验证流：显示选定提供者的登录页，并在用户成功使用标识提供者登录后生成移动服务身份验证令牌。[login][] 函数在完成后将返回一个 JSON 对象 ("user")，该对象分别在 "userId" 和 "authenticationToken" 字段中公开用户 ID 和移动服务身份验证令牌。你可以缓存此令牌，并在它过期之前重复使用。有关详细信息，请参阅“缓存身份验证令牌”。
+在此情况下，移动服务将通过以下方式管理 OAuth 2.0 身份验证流：显示选定提供者的登录页，并在用户成功使用标识提供者登录后生成移动服务身份验证令牌。[login][login] 函数在完成后将返回一个 JSON 对象 ("user")，该对象分别在 "userId" 和 "authenticationToken" 字段中公开用户 ID 和移动服务身份验证令牌。你可以缓存此令牌，并在它过期之前重复使用。有关详细信息，请参阅“缓存身份验证令牌”。
 
 <div class="dev-callout"><b>Windows 应用商店应用程序</b>
 
@@ -429,7 +429,7 @@
               });
         });
 
-这个简化的示例将从 Live Connect 获取一个令牌，并通过调用 [login][] 函数将该令牌提供给移动服务。有关如何使用 Microsoft 帐户提供单一登录体验的更完整示例，请参阅[使用单一登录对应用程序进行身份验证][]。
+这个简化的示例将从 Live Connect 获取一个令牌，并通过调用 [login][login] 函数将该令牌提供给移动服务。有关如何使用 Microsoft 帐户提供单一登录体验的更完整示例，请参阅[使用单一登录对应用程序进行身份验证][使用单一登录对应用程序进行身份验证]。
 
 如果使用 Facebook 或 Google API 进行客户端身份验证，则需要对该示例略做更改。
 
@@ -448,7 +448,7 @@
 <a name="errors"></a>
 ### 缓存身份验证令牌
 
-在某些情况下，完成首次用户身份验证后，可以避免调用 login 方法。我们可以使用 [sessionStorage][] 或 [localStorage][sessionStorage] 来缓存当前用户首次登录时使用的标识，以后每次该用户登录时，系统都会检查缓存中是否存在该用户标识。如果缓存为空或者调用失败（意味着当前登录会话已过期），则用户仍然需要完成整个登录过程。
+在某些情况下，完成首次用户身份验证后，可以避免调用 login 方法。我们可以使用 [sessionStorage][sessionStorage] 或 [localStorage][sessionStorage] 来缓存当前用户首次登录时使用的标识，以后每次该用户登录时，系统都会检查缓存中是否存在该用户标识。如果缓存为空或者调用失败（意味着当前登录会话已过期），则用户仍然需要完成整个登录过程。
 
         // After logging in
     sessionStorage.loggedInUser = JSON.stringify(client.currentUser);
@@ -508,7 +508,7 @@
 
 约定提供了一种机制，让你基于尚未计算的值安排有待完成的工作。它是用于管理与异步 API 的交互的抽象。
 
-每当提供给 `done` 约定的函数已成功完成或者收到错误时，就会立即执行该约定。与 `then` 约定不同，它肯定会引发无法在函数内部处理的错误；当处理程序完成执行后，此函数将引发当某个约定处于错误状态时返回的错误。有关详细信息，请参阅 [done][]。
+每当提供给 `done` 约定的函数已成功完成或者收到错误时，就会立即执行该约定。与 `then` 约定不同，它肯定会引发无法在函数内部处理的错误；当处理程序完成执行后，此函数将引发当某个约定处于错误状态时返回的错误。有关详细信息，请参阅 [done][done]。
 
             promise.done(onComplete, onError);
 
@@ -521,7 +521,7 @@
     alert("Error:" + err);
             });
 
-`then` 约定与 `done` 约定类似，而与 `then` 约定的不同之处在于，`done` 肯定会引发无法在函数内部处理的错误。如果你不向 `then` 提供错误处理程序，当操作出错时，then 不会引发异常，而是返回一个处于错误状态的约定。有关详细信息，请参阅 [then][]。
+`then` 约定与 `done` 约定类似，而与 `then` 约定的不同之处在于，`done` 肯定会引发无法在函数内部处理的错误。如果你不向 `then` 提供错误处理程序，当操作出错时，then 不会引发异常，而是返回一个处于错误状态的约定。有关详细信息，请参阅 [then][then]。
 
             promise.then(onComplete, onError).done( /* Your success and error handlers */ );
 
@@ -534,7 +534,7 @@
     alert("Error:" + err);
             });
 
-你可以通过许多不同的方式使用约定。你可以通过对前一个 `then` 函数返回的约定调用 `then` 或 `done` 来链接约定操作。对操作的中间阶段使用 `then`（例如 `.then().then()`），对操作的最终阶段使用 `done`（例如 `.then().then().done()`）。你可以链接多个 `then` 函数，因为 `then` 返回约定。无法链接多个 `done` 方法，因为该方法返回 undefined。[详细了解 then 和 done 之间的差别][]。
+你可以通过许多不同的方式使用约定。你可以通过对前一个 `then` 函数返回的约定调用 `then` 或 `done` 来链接约定操作。对操作的中间阶段使用 `then`（例如 `.then().then()`），对操作的最终阶段使用 `done`（例如 `.then().then().done()`）。你可以链接多个 `then` 函数，因为 `then` 返回约定。无法链接多个 `done` 方法，因为该方法返回 undefined。[详细了解 then 和 done 之间的差别][详细了解 then 和 done 之间的差别]。
 
             todoItemTable.insert({
     text:"foo"
@@ -568,22 +568,22 @@
 
 完成这篇概念性的操作方法参考主题后，请详细了解如何在移动服务中执行重要任务：
 
--   [移动服务入门][]
+-   [移动服务入门][移动服务入门]
     了解有关移动服务用法的基本知识。
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用标识提供者对应用程序的用户进行身份验证。
 
--   [使用脚本验证和修改数据][]
+-   [使用脚本验证和修改数据][使用脚本验证和修改数据]
     了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
--   [使用分页优化查询][]
+-   [使用分页优化查询][使用分页优化查询]
     了解如何使用查询中的分页控制单个请求中处理的数据量。
 
--   [使用脚本为用户授权][]
+-   [使用脚本为用户授权][使用脚本为用户授权]
     了解如何采用移动服务基于已进行身份验证的用户提供的用户 ID 值，并使用该值来筛选移动服务返回的数据。
 
   [.NET Framework]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library/ ".NET Framework"

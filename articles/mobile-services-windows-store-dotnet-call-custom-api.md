@@ -10,13 +10,13 @@
 
 使用本主题中创建的自定义 API，你可以发送单个 POST 请求，用于将表中所有 todo 项的 completed 标志设置为 `true`。如果没有此自定义 API，客户端必须逐个地发送请求，以更新表中每个 todo 项的该标志。
 
-需要将此功能添加到你在完成[移动服务入门][]或[数据处理入门][]教程后创建的应用程序。为此，你需要完成以下步骤：
+需要将此功能添加到你在完成[移动服务入门][移动服务入门]或[数据处理入门][数据处理入门]教程后创建的应用程序。为此，你需要完成以下步骤：
 
-1.  [定义自定义 API][]
-2.  [更新应用程序以调用自定义 API][]
-3.  [测试应用程序][]
+1.  [定义自定义 API][定义自定义 API]
+2.  [更新应用程序以调用自定义 API][更新应用程序以调用自定义 API]
+3.  [测试应用程序][测试应用程序]
 
-本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]或[数据处理入门][]。本教程使用 Visual Studio 2012 Express for Windows 8。
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][移动服务入门]或[数据处理入门][数据处理入门]。本教程使用 Visual Studio 2012 Express for Windows 8。
 
 ## <a name="define-custom-api"></a>定义自定义 API
 
@@ -29,16 +29,16 @@
 
 创建自定义 API 并从 Windows 应用商店应用程序调用该 API 后，建议你了解有关以下移动服务主题的详细信息：
 
--   [定义支持定期通知的自定义 API][]
+-   [定义支持定期通知的自定义 API][定义支持定期通知的自定义 API]
     说明如何使用自定义 API 来支持 Windows 应用商店应用程序中的定期通知。启用定期通知后，Windows 将定期访问你的自定义 API 终结点，并使用返回的、采用磁贴特定格式的 XML 来更新开始菜单中的应用程序磁贴。
 
--   [移动服务服务器脚本参考][]
+-   [移动服务服务器脚本参考][移动服务服务器脚本参考]
     了解有关创建自定义 API 的详细信息。
 
--   [在源代码管理中存储服务器脚本][]
+-   [在源代码管理中存储服务器脚本][在源代码管理中存储服务器脚本]
     了解如何使用源代码管理功能来更方便、更安全地开发和发布自定义 API 脚本代码。
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-call-custom-api "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-call-custom-api "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-call-custom-api "Windows Phone"
   [iOS]: /zh-cn/documentation/articles/mobile-services-ios-call-custom-api "iOS"

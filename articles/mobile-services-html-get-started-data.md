@@ -3,7 +3,7 @@
 # 移动服务中的数据处理入门
 
 <div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-android" title="Android">Android</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-html" title="HTML" class="current">HTML</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a> 
+	<a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet" title="Windows Store C#">Windows 应用商店 c#</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-android" title="Android">Android</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-html" title="HTML" class="current">HTML</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android" title="Xamarin.Android">Xamarin.Android</a> 
 </div>
 
 <p>本主题说明如何通过 Azure 移动服务来利用 HTML 应用程序中的数据。在本教程中，你将要下载一个可在内存中存储数据的应用程序，创建一个新的移动服务，将该移动服务与该应用程序相集成，然后登录到 Azure 管理门户以查看运行该应用程序时对数据所做的更改。</p>
@@ -15,11 +15,11 @@
 
 本教程将指导你完成以下基本步骤：
 
-1.  [下载 HTML 应用程序项目][]
-2.  [创建移动服务][]
-3.  [添加用于存储的数据表][]
-4.  [更新应用程序以使用移动服务][]
-5.  [针对移动服务测试应用程序][]
+1.  [下载 HTML 应用程序项目][下载 HTML 应用程序项目]
+2.  [创建移动服务][创建移动服务]
+3.  [添加用于存储的数据表][添加用于存储的数据表]
+4.  [更新应用程序以使用移动服务][更新应用程序以使用移动服务]
+5.  [针对移动服务测试应用程序][针对移动服务测试应用程序]
 
 <div class="dev-callout"><b>说明</b>
 
@@ -43,7 +43,7 @@
 <a name="download-app"></a>
 ## 下载项目下载 GetStartedWithData 项目
 
-本教程是在 [GetStartedWithData 应用程序][]（一个 HTML5 应用程序）的基础上制作的。此应用程序的 UI 与移动服务快速入门中生成的应用程序相同，不过，前者的一些新增项本地存储在内存中。
+本教程是在 [GetStartedWithData 应用程序][GetStartedWithData 应用程序]（一个 HTML5 应用程序）的基础上制作的。此应用程序的 UI 与移动服务快速入门中生成的应用程序相同，不过，前者的一些新增项本地存储在内存中。
 
 1.  [下载 HTML 应用程序项目文件][GetStartedWithData 应用程序]。
 
@@ -68,14 +68,14 @@
 
 5.  在应用程序中的“输入新任务”中键入有意义的文本（例如 *Complete the tutorial*），然后单击“添加” 。
 
-    ![][]
+    ![][0]
 
     可以看到，保存的文本已添加到 "staticItems" 数组，并且页面会刷新以显示新项。
 
 <a name="create-service"></a>
 ## 创建移动服务在管理门户中创建新的移动服务
 
-[WACOM.INCLUDE [mobile-services-create-new-service-data][]]
+[WACOM.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
 
 <a name="add-table"></a>
 ## 添加新表将新表添加到移动服务
@@ -264,7 +264,7 @@
 
     此时会将一个新项作为 insert 发送到移动服务。
 
-3.  在[管理门户][]中单击“移动服务”，然后单击你的移动服务 。
+3.  在[管理门户][管理门户]中单击“移动服务”，然后单击你的移动服务 。
 
 4.  单击“数据”选项卡，然后单击“浏览” 。
 
@@ -291,15 +291,15 @@
 
 本教程演示了有关如何使 HTML 应用程序处理移动服务中的数据的基础知识。接下来，建议你完成下列教程之一，这些教程是基于本教程中创建的 GetStartedWithData 应用程序制作的：
 
--   [使用脚本验证和修改数据][]
+-   [使用脚本验证和修改数据][使用脚本验证和修改数据]
     了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
--   [使用分页优化查询][]
+-   [使用分页优化查询][使用分页优化查询]
     了解如何使用查询中的分页控制单个请求中处理的数据量。
 
-完成数据系列教程后，请尝试完成[身份验证入门][]中的其他某篇相关教程，以了解如何对应用程序的用户进行身份验证。
+完成数据系列教程后，请尝试完成[身份验证入门][身份验证入门]中的其他某篇相关教程，以了解如何对应用程序的用户进行身份验证。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
   [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios "iOS"

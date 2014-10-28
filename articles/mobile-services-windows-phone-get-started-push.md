@@ -10,20 +10,20 @@
 本主题说明如何使用 Azure 移动服务向 Windows Phone 8 应用程序发送推送通知。
 在本教程中，你将向快速入门项目添加使用 Microsoft 推送通知服务 (MPNS) 的推送通知功能。完成本教程后，每次插入一条记录时，你的移动服务就会发送一条推送通知。
 
-> [WACOM.NOTE] 移动服务现在将与 Azure 通知中心集成，以支持附加的推送通知功能，如模板、多个平台和规模。此集成的功能目前处于预览状态。有关详细信息，请参阅此版本的[推送通知入门][]。
+> [WACOM.NOTE] 移动服务现在将与 Azure 通知中心集成，以支持附加的推送通知功能，如模板、多个平台和规模。此集成的功能目前处于预览状态。有关详细信息，请参阅此版本的[推送通知入门][推送通知入门]。
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
-1.  [创建 Registrations 表][]
-2.  [向应用程序添加推送通知][]
-3.  [更新脚本以发送推送通知][]
-4.  [插入数据以接收通知][]
+1.  [创建 Registrations 表][创建 Registrations 表]
+2.  [向应用程序添加推送通知][向应用程序添加推送通知]
+3.  [更新脚本以发送推送通知][更新脚本以发送推送通知]
+4.  [插入数据以接收通知][插入数据以接收通知]
 
-本教程需要安装 [Visual Studio 2012 Express for Windows Phone][] 或更高版本。
+本教程需要安装 [Visual Studio 2012 Express for Windows Phone][Visual Studio 2012 Express for Windows Phone] 或更高版本。
 
-本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]。
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][移动服务入门]。
 
-> [WACOM.NOTE] 如果你每天向每个用户发送超过 500 条的消息，则必须改用通知中心。有关详细信息，请参阅[通知中心入门][]。
+> [WACOM.NOTE] 如果你每天向每个用户发送超过 500 条的消息，则必须改用通知中心。有关详细信息，请参阅[通知中心入门][通知中心入门]。
 
 <a name="create-table"></a>
 ## 创建新表
@@ -164,27 +164,27 @@
 -   [通知中心入门][6]
     了解如何在 Windows 应用商店应用程序中利用通知中心。
 
--   [什么是通知中心？][]
+-   [什么是通知中心？][什么是通知中心？]
     了解如何创建通知并将通知推送到多个平台上的用户。
 
--   [向订户发送通知][]
+-   [向订户发送通知][向订户发送通知]
     了解用户如何注册和接收他们感兴趣的类别的推送通知。
 
 建议你了解有关以下移动服务主题的详细信息：
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用 Windows 帐户对应用程序用户进行身份验证。
 
--   [移动服务服务器脚本参考][]
+-   [移动服务服务器脚本参考][移动服务服务器脚本参考]
     了解有关注册和使用服务器脚本的详细信息。
 
--   [移动服务 .NET 操作方法概念性参考][]
+-   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-push "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-push "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-push "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-push "Windows Phone"
   [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-push "iOS"

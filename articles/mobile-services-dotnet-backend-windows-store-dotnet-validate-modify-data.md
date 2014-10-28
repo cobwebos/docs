@@ -21,13 +21,13 @@
 
 本教程将指导你完成以下基本步骤：
 
-1.  [添加字符串长度验证][]
-2.  [更新客户端以支持验证][]
-3.  [测试长度验证][]
-4.  [为 CompleteDate 添加时间戳字段][]
-5.  [更新客户端以显示 CompleteDate][]
+1.  [添加字符串长度验证][添加字符串长度验证]
+2.  [更新客户端以支持验证][更新客户端以支持验证]
+3.  [测试长度验证][测试长度验证]
+4.  [为 CompleteDate 添加时间戳字段][为 CompleteDate 添加时间戳字段]
+5.  [更新客户端以显示 CompleteDate][更新客户端以显示 CompleteDate]
 
-本教程建立在前面的[入门][]或[数据处理入门][]教程中的步骤和示例代码的基础之上。在开始学习本教程之前，必须先完成[入门][]或[数据处理入门][]教程。
+本教程建立在前面的[入门][入门]或[数据处理入门][数据处理入门]教程中的步骤和示例代码的基础之上。在开始学习本教程之前，必须先完成[入门][入门]或[数据处理入门][数据处理入门]教程。
 
 <a name="string-length-validation"></a>
 ## 添加验证
@@ -159,20 +159,20 @@
 <a name="next-steps"> </a>
 ## 后续步骤
 
-现在你已完成本教程，建议你继续学习数据系列中的最后一篇教程：[使用分页优化查询][]。
+现在你已完成本教程，建议你继续学习数据系列中的最后一篇教程：[使用分页优化查询][使用分页优化查询]。
 
 在为用户授权以及发送推送通知时，也可以使用服务器脚本。有关详细信息，请参阅以下教程：
 
--   [用户的服务端授权][]
+-   [用户的服务端授权][用户的服务端授权]
     了解如何基于某个已经过身份验证的用户的 ID 筛选数据。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
--   [移动服务 .NET 操作方法概念性参考][]
+-   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-validate-modify-data/ "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-validate-modify-data/ "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-validate-modify-data/ "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-validate-modify-data/ "Windows Phone"
   [iOS]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-ios "iOS"

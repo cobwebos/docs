@@ -2,7 +2,7 @@
 
 # 移动服务中的身份验证入门
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users" title="Windows Store C#" class="current">Windows 应用商店 C\#</a><a href="/zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/documentation/articles/mobile-services-windows-phone-get-started-users" title="Windows Phone">Windows Phone</a><a href="/zh-cn/documentation/articles/mobile-services-ios-get-started-users" title="iOS">iOS</a><a href="/zh-cn/documentation/articles/mobile-services-android-get-started-users" title="Android">Android</a><a href="/zh-cn/documentation/articles/mobile-services-html-get-started-users" title="HTML">HTML</a><a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started-users" title="Xamarin.Android">Xamarin.Android</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users" title="Windows Store C#" class="current">Windows 应用商店 c#</a><a href="/zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/documentation/articles/mobile-services-windows-phone-get-started-users" title="Windows Phone">Windows Phone</a><a href="/zh-cn/documentation/articles/mobile-services-ios-get-started-users" title="iOS">iOS</a><a href="/zh-cn/documentation/articles/mobile-services-android-get-started-users" title="Android">Android</a><a href="/zh-cn/documentation/articles/mobile-services-html-get-started-users" title="HTML">HTML</a><a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started-users" title="Xamarin.Android">Xamarin.Android</a></div>
 <div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users/" title=".NET backend">.NET 后端</a> | <a href="/zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users/"  title="JavaScript backend" class="current">JavaScript 后端</a></div>	
 
 <div class="dev-onpage-video-clear clearfix">
@@ -19,18 +19,18 @@
 
 本教程将指导你完成在应用程序中启用身份验证的以下基本步骤：
 
-1.  [注册应用程序以进行身份验证并配置移动服务][]
-2.  [将表权限限制给已经过身份验证的用户][]
-3.  [向应用程序添加身份验证][]
+1.  [注册应用程序以进行身份验证并配置移动服务][注册应用程序以进行身份验证并配置移动服务]
+2.  [将表权限限制给已经过身份验证的用户][将表权限限制给已经过身份验证的用户]
+3.  [向应用程序添加身份验证][向应用程序添加身份验证]
 
-本教程基于移动服务快速入门。因此，你还必须先完成[移动服务入门][]教程。
+本教程基于移动服务快速入门。因此，你还必须先完成[移动服务入门][移动服务入门]教程。
 
-> [WACOM.NOTE] 本教程演示了移动服务为了让你使用各种标识提供者对用户进行身份验证而提供的基本方法。此方法易于配置，并支持多个提供者。但是，此方法还要求用户在每次启动你的应用程序时登录。若要改用 Live Connect 在 Windows 应用商店应用程序中提供单一登录体验，请参阅主题[使用 Live Connect 实现对 Windows 应用商店应用程序的单一登录][]。
+> [WACOM.NOTE] 本教程演示了移动服务为了让你使用各种标识提供者对用户进行身份验证而提供的基本方法。此方法易于配置，并支持多个提供者。但是，此方法还要求用户在每次启动你的应用程序时登录。若要改用 Live Connect 在 Windows 应用商店应用程序中提供单一登录体验，请参阅主题[使用 Live Connect 实现对 Windows 应用商店应用程序的单一登录][使用 Live Connect 实现对 Windows 应用商店应用程序的单一登录]。
 
 <a name="register"></a>
 ## 注册应用程序以进行身份验证并配置移动服务
 
-[WACOM.INCLUDE [mobile-services-register-authentication][]]
+[WACOM.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)]
 
 <ol start="5">
 <li><p>（可选）完成<a href="/zh-cn/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication/">注册 Windows 应用商店应用程序包以进行 Microsoft 身份验证</a>中的步骤。</p>
@@ -45,7 +45,7 @@
 <a name="permissions"></a>
 ## 将权限限制给已经过身份验证的用户
 
-[WACOM.INCLUDE [mobile-services-restrict-permissions-javascript-backend][]]
+[WACOM.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
 <ol start="3">
 <li><p>在 Visual Studio 2012 Express for Windows 8 中，打开你在完成教程a href="/zh-cn/documentation/articles/mobile-services-windows-store-get-started">移动服务入门</a>时创建的项目。</p></li>
@@ -60,14 +60,14 @@
 <a name="add-authentication"></a>
 ## 向应用程序添加身份验证
 
-[WACOM.INCLUDE [mobile-services-windows-dotnet-authenticate-app][]]
+[WACOM.INCLUDE [mobile-services-windows-dotnet-authenticate-app](../includes/mobile-services-windows-dotnet-authenticate-app.md)]
 
 <a name="next-steps"> </a>
 ## 后续步骤
 
-在下一教程[移动服务用户的服务端授权][]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。请在[移动服务 .NET 操作方法概念性参考][]中了解有关如何将移动服务与 .NET 一起使用的详细信息。
+在下一教程[移动服务用户的服务端授权][移动服务用户的服务端授权]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。请在[移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]中了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-users "Windows Phone"
   [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-users "iOS"

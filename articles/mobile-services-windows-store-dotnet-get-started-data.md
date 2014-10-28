@@ -18,10 +18,10 @@
 
 本教程将指导你完成以下基本步骤：
 
-1.  [下载 Windows 应用商店应用程序项目][]
-2.  [从 Visual Studio 创建移动服务][]
-3.  [添加用于存储的数据表并更新应用程序][]
-4.  [针对移动服务测试应用程序][]
+1.  [下载 Windows 应用商店应用程序项目][下载 Windows 应用商店应用程序项目]
+2.  [从 Visual Studio 创建移动服务][从 Visual Studio 创建移动服务]
+3.  [添加用于存储的数据表并更新应用程序][添加用于存储的数据表并更新应用程序]
+4.  [针对移动服务测试应用程序][针对移动服务测试应用程序]
 
 <div class="dev-callout"><b>说明</b>
 
@@ -31,9 +31,9 @@
 <a name="download-app"></a>
 ## 下载项目下载 GetStartedWithData 项目
 
-本教程是在 [GetStartedWithMobileServices 应用程序][]（Visual Studio 2013 中的一个 Windows 应用商店应用程序项目）的基础上制作的。此应用程序的 UI 与移动服务快速入门中生成的应用程序相同，不过，前者的一些新增项本地存储在内存中。
+本教程是在 [GetStartedWithMobileServices 应用程序][GetStartedWithMobileServices 应用程序]（Visual Studio 2013 中的一个 Windows 应用商店应用程序项目）的基础上制作的。此应用程序的 UI 与移动服务快速入门中生成的应用程序相同，不过，前者的一些新增项本地存储在内存中。
 
-1.  从[开发人员代码示例站点][GetStartedWithMobileServices 应用程序]下载 GetStartedWithMobileServices 示例应用程序的 C\# 版本。
+1.  从[开发人员代码示例站点][GetStartedWithMobileServices 应用程序]下载 GetStartedWithMobileServices 示例应用程序的 C# 版本。
 
     ![][0]
 
@@ -134,7 +134,7 @@
 
     此时会将一个新项作为 insert 发送到移动服务。
 
-3.  在[管理门户][]中单击“移动服务”，然后单击你的移动服务 。
+3.  在[管理门户][管理门户]中单击“移动服务”，然后单击你的移动服务 。
 
 4.  单击“数据”选项卡，然后单击“浏览” 。
 
@@ -169,24 +169,24 @@
 
 本教程演示了有关如何使 Windows 应用商店应用程序处理移动服务中的数据的基础知识。接下来，建议你完成下列教程之一，这些教程是基于本教程中创建的 GetStartedWithData 应用程序制作的：
 
--   [使用脚本验证和修改数据][]
+-   [使用脚本验证和修改数据][使用脚本验证和修改数据]
     了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
--   [使用分页优化查询][]
+-   [使用分页优化查询][使用分页优化查询]
     了解如何使用查询中的分页控制单个请求中处理的数据量。
 
 完成数据系列教程后，请试着学习下列教程之一：
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何对应用程序用户进行身份验证。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
--   [移动服务 .NET 操作方法概念性参考][]
+-   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
   [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios "iOS"

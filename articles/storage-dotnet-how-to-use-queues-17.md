@@ -81,10 +81,10 @@ Azure .NET 存储 API 支持
 
 在使用网站或虚拟机时，建议你使用 .NET 配置系统（如 `web.config`）。你可以使用 `<appSettings>` 元素存储连接字符串：
 
-	<configuration>
-	    <appSettings>
-		    <add key="StorageConnectionString"
-			    value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
+    <configuration>
+    <appSettings>
+    <add key="StorageConnectionString"
+    value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
     </appSettings>
     </configuration>
 
@@ -321,8 +321,8 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     -   使用 [Blob 存储][Blob 存储]来存储非结构化数据。
     -   使用 [SQL Database][SQL Database] 来存储关系数据。
 
-  [1.7 版]: /zh-cn/develop/net/how-to-guides/queue-service-v17/ "1.7 版"
-  [2.0 版]: /zh-cn/develop/net/how-to-guides/queue-service/ "2.0 版"
+  [1.7 版]: /en-us/develop/net/how-to-guides/queue-service-v17/ "1.7 版"
+  [2.0 版]: /en-us/develop/net/how-to-guides/queue-service/ "2.0 版"
   [后续步骤]: #next-steps
   [什么是队列存储]: #what-is
   [概念]: #concepts
@@ -349,6 +349,6 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
   [.NET 客户端库引用]: http://msdn.microsoft.com/zh-cn/library/azure/wl_svchosting_mref_reference_home
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [表存储]: /zh-cn/develop/net/how-to-guides/table-services/
-  [Blob 存储]: /zh-cn/develop/net/how-to-guides/blob-storage/
-  [SQL Database]: /zh-cn/develop/net/how-to-guides/sql-database/
+  [表存储]: /en-us/develop/net/how-to-guides/table-services/
+  [Blob 存储]: /en-us/develop/net/how-to-guides/blob-storage/
+  [SQL Database]: /en-us/develop/net/how-to-guides/sql-database/

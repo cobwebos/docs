@@ -83,12 +83,16 @@ Azure .NET 存储客户端库支持使用存储连接字符
 如果你正在编写不是 Azure 云服务的应用程序（参见上一部分），则建议你使用 .NET 配置系统（如 `web.config` 或 `app.config`）。这包括 Azure 网站或 Azure 虚拟机，以及设计为在 Azure 外部运行的应用程序。你可以使用 `<appSettings>` 元素存储连接字符串，如下所示：
 
     <configuration>
-  		<appSettings>
-    		<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey" />
-  		</appSettings>
-	</configuration>
+    <appSettings>
+    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey" />
+    </appSettings>
+    </configuration>
 
-阅读[配置连接字符串][配置连接字符串]，了解有关存储连接字符串的详细信息。
+阅读[配置连接字符串][AccountKey" />
+    </appSettings>
+    </configuration>
+
+阅读[配置连接字符串]，了解有关存储连接字符串的详细信息。
 
 你现在即可准备执行本指南中的操作任务。
 
@@ -384,6 +388,6 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
   [.NET 存储客户端库参考]: http://msdn.microsoft.com/zh-cn/library/azure/wa_storage_30_reference_home.aspx
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [表存储]: /zh-cn/develop/net/how-to-guides/table-services/
-  [Blob 存储]: /zh-cn/develop/net/how-to-guides/blob-storage/
-  [SQL Database]: /zh-cn/develop/net/how-to-guides/sql-database/
+  [表存储]: /en-us/develop/net/how-to-guides/table-services/
+  [Blob 存储]: /en-us/develop/net/how-to-guides/blob-storage/
+  [SQL Database]: /en-us/develop/net/how-to-guides/sql-database/

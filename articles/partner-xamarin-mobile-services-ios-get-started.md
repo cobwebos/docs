@@ -31,7 +31,7 @@
 
 ![][0]
 
-完成本教程需要 XCode 4.5 和 iOS 5.0 或更高版本，以及 [Xamarin Studio][] for OS X 或用于 Windows 上的 Visual Studio 的 Xamarin Visual Studio 插件。
+完成本教程需要 XCode 4.5 和 iOS 5.0 或更高版本，以及 [Xamarin Studio][Xamarin Studio] for OS X 或用于 Windows 上的 Visual Studio 的 Xamarin Visual Studio 插件。
 
 <div class="dev-callout"><strong>说明</strong> 
 <p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-xamarin-ios%2F" target="_blank">Azure 免费试用</a>。</p></div>
@@ -56,7 +56,7 @@
 
     ![][2]
 
-3.  下载并安装 [Xcode] v4.4 或更高版本和 [Xamarin Studio][]（如果尚未这么做）。
+3.  下载并安装 [Xcode] v4.4 或更高版本和 [Xamarin Studio][Xamarin Studio]（如果尚未这么做）。
 
 4.  单击“创建 TodoItems 表”以创建用于存储应用程序数据的表 。
 
@@ -84,7 +84,7 @@
 
 	<div class="dev-callout"><b>说明</b>
 
-    <p>你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 TodoService.cs C\# 文件中。</p>
+    <p>你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 TodoService.cs C# 文件中。</p>
 	</div>
 
 4.  返回管理门户，单击“数据” 选项卡，然后单击“TodoItems” 表。
@@ -99,13 +99,13 @@
 
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用标识提供者对应用程序的用户进行身份验证。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
   [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"

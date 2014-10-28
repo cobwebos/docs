@@ -3,7 +3,7 @@
 # 移动服务中的推送通知入门
 
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push" title="Windows Store C#" class="current">Windows 应用商店 C\#</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push" title="Windows Store C#" class="current">Windows 应用商店 c#</a>
 	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a>
 	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push" title="Windows Phone">Windows Phone</a>
 	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/" title="Android">Android</a>
@@ -18,17 +18,17 @@
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
-1.  [将应用程序注册到 WNS 并配置移动服务][]
-2.  [更新应用程序以注册通知][]
-3.  [更新服务器以发送推送通知][]
-4.  [插入数据以接收推送通知][]
+1.  [将应用程序注册到 WNS 并配置移动服务][将应用程序注册到 WNS 并配置移动服务]
+2.  [更新应用程序以注册通知][更新应用程序以注册通知]
+3.  [更新服务器以发送推送通知][更新服务器以发送推送通知]
+4.  [插入数据以接收推送通知][插入数据以接收推送通知]
 
-本教程基于移动服务快速入门。在开始学习本教程之前，必须先完成[移动服务入门][]或[数据处理入门][]，以将项目连接到移动服务。未连接移动服务时，“添加推送通知”向导将为你创建此连接。
+本教程基于移动服务快速入门。在开始学习本教程之前，必须先完成[移动服务入门][移动服务入门]或[数据处理入门][数据处理入门]，以将项目连接到移动服务。未连接移动服务时，“添加推送通知”向导将为你创建此连接。
 
 <a id="register"></a>
 ## 将应用程序注册到 WNS 并配置移动服务
 
-[WACOM.INCLUDE [mobile-services-javascript-backend-register-windows-store-app][]]
+[WACOM.INCLUDE [mobile-services-javascript-backend-register-windows-store-app](../includes/mobile-services-javascript-backend-register-windows-store-app.md)]
 
 现在，你的移动服务和应用程序都已配置为使用 WNS 和通知中心。接下来，你要更新 Windows 应用商店应用程序，以注册通知。
 
@@ -78,13 +78,13 @@
 
 4.  在 Visual Studio 中，打开 Package.appxmanifest 文件，并确保“应用程序 UI”选项卡上的“支持 Toast 通知”已设置为“是” 。保存文件。
 
-    ![][]
+    ![][0]
 
     这可以确保你的应用程序能够引发 toast 通知。
 <a id="update-server"></a> 
 ## 更新服务器以发送推送通知
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-update-server-push][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-update-server-push](../includes/mobile-services-dotnet-backend-update-server-push.md)]
 
 <a id="test"></a>
 ## 在应用程序中测试推送通知
@@ -104,33 +104,33 @@
 
 本教程演示了有关如何使 Windows 应用商店应用程序处理移动服务中的数据的基础知识。接下来，建议你完成下列教程之一，这些教程是基于本教程中创建的 GetStartedWithData 应用程序制作的：
 
--   [通知中心入门][]
+-   [通知中心入门][通知中心入门]
     了解如何在 Windows 应用商店应用程序中利用通知中心。
 
--   [向订户发送通知][]
+-   [向订户发送通知][向订户发送通知]
     了解用户如何注册和接收他们感兴趣的类别的推送通知。
 
--   [向用户发送通知][]
+-   [向用户发送通知][向用户发送通知]
     了解如何从移动服务向任一设备上的特定用户发送推送通知。
 
--   [向用户发送跨平台通知][]
+-   [向用户发送跨平台通知][向用户发送跨平台通知]
     了解如何使用模板从移动服务发送推送通知，且不会在后端中产生平台特定的负载。
 
 建议你了解有关以下移动服务主题的详细信息：
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用 .Net 运行时移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何通过 .Net 运行时移动服务对使用不同帐户类型的应用程序用户进行身份验证。
 
--   [移动服务服务器脚本参考][]
+-   [移动服务服务器脚本参考][移动服务服务器脚本参考]
     了解有关注册和使用服务器脚本的详细信息。
 
--   [移动服务 .NET 操作方法概念性参考][]
+-   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push "Windows Phone"
   [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/ "Android"

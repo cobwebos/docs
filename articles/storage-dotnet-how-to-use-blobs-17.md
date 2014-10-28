@@ -84,12 +84,12 @@ Azure .NET 存储 API 支持
 
 在使用网站或虚拟机时，建议你使用 .NET 配置系统（如 `web.config`）。你可以使用 `<appSettings>` 元素存储连接字符串：
 
-	<configuration>
-	    <appSettings>
-	    <add key="StorageConnectionString"
-			    value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
-		</appSettings>
-	</configuration>
+    <configuration>
+    <appSettings>
+    <add key="StorageConnectionString"
+    value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
+    </appSettings>
+    </configuration>
 
 阅读[配置连接字符串][配置连接字符串]，了解有关存储连接字符串的详细信息。
 
@@ -108,7 +108,7 @@ Azure .NET 存储 API 支持
 Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
 
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        CloudConfigurationManager.GetSetting("StorageConnectionString"));
+    CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
 你可以使用 **CloudBlobClient** 类型来检索表示存储在 Blob 存储服务
 中的容器和 Blob 的对象。以下代码
@@ -143,7 +143,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
 将容器设置为公共容器：
 
     container.SetPermissions(
-        new BlobContainerPermissions { PublicAccess = 
+    new BlobContainerPermissions { PublicAccess = 
     BlobContainerPublicAccessType.Blob }); 
 
 Internet 上的所有人都可以查看公共容器中的 Blob，但必须
@@ -173,7 +173,7 @@ Internet 上的所有人都可以查看公共容器中的 Blob，但必须
     // 使用来自本地文件的内容创建或覆盖“myblob”Blob
     using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
     {
-        blob.UploadFromStream(fileStream);
+    blob.UploadFromStream(fileStream);
     } 
 
 ## 列出容器中的 Blob如何：列出容器中的 Blob
@@ -277,8 +277,8 @@ Blob 的 **DownloadToFile**、**DownloadByteArray** 或
     -   使用[表存储][表存储]来存储结构化数据。
     -   使用 [SQL Database][SQL Database] 来存储关系数据。
 
-  [1.7 版]: /zh-cn/develop/net/how-to-guides/blob-storage-v17/ "1.7 版"
-  [2.0 版]: /zh-cn/develop/net/how-to-guides/blob-storage/ "2.0 版"
+  [1.7 版]: /en-us/develop/net/how-to-guides/blob-storage-v17/ "1.7 版"
+  [2.0 版]: /en-us/develop/net/how-to-guides/blob-storage/ "2.0 版"
   [后续步骤]: #next-steps
   [什么是 Blob 存储]: #what-is
   [概念]: #concepts
@@ -301,5 +301,5 @@ Blob 的 **DownloadToFile**、**DownloadByteArray** 或
   [.NET 客户端库引用]: http://msdn.microsoft.com/zh-cn/library/azure/wl_svchosting_mref_reference_home
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [表存储]: /zh-cn/develop/net/how-to-guides/table-services/
-  [SQL Database]: /zh-cn/develop/net/how-to-guides/sql-database/
+  [表存储]: /en-us/develop/net/how-to-guides/table-services/
+  [SQL Database]: /en-us/develop/net/how-to-guides/sql-database/

@@ -90,12 +90,12 @@ Azure .NET 存储 API 支持
 
 在使用网站或虚拟机时，建议你使用 .NET 配置系统（如 `web.config`）。你可以使用 `<appSettings>` 元素存储连接字符串：
 
-	<configuration>
-	    <appSettings>
-		    <add key="StorageConnectionString"
-			    value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
-		</appSettings>
-	</configuration>
+    <configuration>
+    <appSettings>
+    <add key="StorageConnectionString"
+    value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
+    </appSettings>
+    </configuration>
 
 阅读[配置连接字符串][配置连接字符串]，了解有关存储连接字符串的详细信息。
 
@@ -139,7 +139,7 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
 ## <a name="add-entity"></a>将实体添加到表如何：将实体添加到表
 
 实体将映射到使用派生自 **TableServiceEntity** 的
-自定义类的 C\# 对象。若要将实体添加到表，请先创建用于
+自定义类的 C# 对象。若要将实体添加到表，请先创建用于
 定义实体的属性的类。以下代码定义了
 将客户的名字和姓氏分别用作行键和分区键的
 实体类。实体的分区键和行键共同唯一地标识
@@ -516,8 +516,8 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
     -   使用 [Blob 存储][Blob 存储]来存储非结构化数据。
     -   使用 [SQL Database][SQL Database] 来存储关系数据。
 
-  [1.7 版]: /zh-cn/develop/net/how-to-guides/table-services-v17/ "1.7 版"
-  [2.0 版]: /zh-cn/develop/net/how-to-guides/table-services/ "2.0 版"
+  [1.7 版]: /en-us/develop/net/how-to-guides/table-services-v17/ "1.7 版"
+  [2.0 版]: /en-us/develop/net/how-to-guides/table-services/ "2.0 版"
   [后续步骤]: #next-steps
   [什么是表服务？]: #what-is
   [概念]: #concepts
@@ -547,5 +547,5 @@ Azure 服务配置中检索你的存储连接字符串和存储帐户信息：
   [.NET 客户端库引用]: http://msdn.microsoft.com/zh-cn/library/azure/wa_storage_30_reference_home.aspx
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [Blob 存储]: /zh-cn/develop/net/how-to-guides/blob-storage/
-  [SQL Database]: /zh-cn/develop/net/how-to-guides/sql-database/
+  [Blob 存储]: /en-us/develop/net/how-to-guides/blob-storage/
+  [SQL Database]: /en-us/develop/net/how-to-guides/sql-database/

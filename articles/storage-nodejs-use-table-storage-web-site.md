@@ -2,7 +2,7 @@
 
 # 使用 Azure 表服务的 Node.js Web 应用程序
 
-本教程向你演示如何使用 Azure 数据管理提供的表服务在 Azure 上托管的 [Node][] 应用程序中存储和访问数据。本教程假定你之前有使用 Node 和 [Git][] 的经验。
+本教程向你演示如何使用 Azure 数据管理提供的表服务在 Azure 上托管的 [Node][Node] 应用程序中存储和访问数据。本教程假定你之前有使用 Node 和 [Git][Git] 的经验。
 
 你将了解到以下内容：
 
@@ -32,9 +32,9 @@
 
 在按照本文中的说明操作之前，你应确保已安装下列项：
 
--   [Node][] 0.6.14 或更高版本
+-   [Node][Node] 0.6.14 或更高版本
 
--   [Git][]
+-   [Git][Git]
 
 -   文本编辑器
 
@@ -46,7 +46,7 @@
 
 执行下列步骤来创建一个存储帐户。本教程中的后续说明将使用此帐户。
 
-1.  打开你的 Web 浏览器并转到 [Azure 门户][]。如果出现提示，请使用你的 Azure 订阅信息进行登录。
+1.  打开你的 Web 浏览器并转到 [Azure 门户][Azure 门户]。如果出现提示，请使用你的 Azure 订阅信息进行登录。
 
 2.  在门户底部，单击**“+新建”**，然后选择**“存储帐户”**。
 
@@ -66,7 +66,7 @@
 
 ## 安装模块并生成基架
 
-在本节中，你将创建一个新的 Node 应用程序并使用 npm 添加模块包。对于任务列表应用程序，你将使用 [Express][] 和 [Azure][] 模块。Express 模块为 Node 提供了一个模型视图控制器框架，而 Azure 模块提供了与表服务的连接。
+在本节中，你将创建一个新的 Node 应用程序并使用 npm 添加模块包。对于任务列表应用程序，你将使用 [Express][Express] 和 [Azure][Azure] 模块。Express 模块为 Node 提供了一个模型视图控制器框架，而 Azure 模块提供了与表服务的连接。
 
 ### 安装 Express 并生成基架
 
@@ -443,7 +443,7 @@
 
 ### 修改全局布局
 
-**views** 目录中的 **layout.jade** 文件用作其他 **.jade** 文件的全局模板。在此步骤中，你将对其进行修改以使用 [Twitter Bootstrap][]（一个可以轻松设计美观网站的工具包）。
+**views** 目录中的 **layout.jade** 文件用作其他 **.jade** 文件的全局模板。在此步骤中，你将对其进行修改以使用 [Twitter Bootstrap][Twitter Bootstrap]（一个可以轻松设计美观网站的工具包）。
 
 1.  下载并提取 [Twitter Bootstrap][1] 的文件。将 **bootstrap.min.css** 文件从 **bootstrap\\dist\\css** 文件夹复制到你的 tasklist 应用程序的 **public\\stylesheets** 目录中。
 
@@ -510,7 +510,7 @@
 
 本节中的步骤使用 Azure 命令行工具创建一个新的 Azure 网站，然后使用 Git 部署你的应用程序。若要执行这些步骤，你必须具有 Azure 订阅。
 
-> [WACOM.NOTE] 还可以使用 Azure 门户执行这些步骤。有关使用 Azure 门户部署 Node.js 应用程序的步骤，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][]。
+> [WACOM.NOTE] 还可以使用 Azure 门户执行这些步骤。有关使用 Azure 门户部署 Node.js 应用程序的步骤，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][创建 Node.js 应用程序并将其部署到 Azure 网站]。
 
 > [WACOM.NOTE] 如果这是你创建的第一个 Azure 网站，则必须使用 Azure 门户部署此应用程序。
 
@@ -528,7 +528,7 @@
 
 <div class="dev-callout">
 <strong>说明</strong>
-<p>如果你已从 [Azure 开发人员中心][]安装了 \*\*Azure SDK for Node.js\*\*，则应该已安装了命令行工具。有关详细信息，请参阅[适用于 Mac 和 Linux 的 Azure 命令行工具][]。</p>
+<p>如果你已从 [Azure 开发人员中心][Azure 开发人员中心]安装了 \*\*Azure SDK for Node.js\*\*，则应该已安装了命令行工具。有关详细信息，请参阅[适用于 Mac 和 Linux 的 Azure 命令行工具][适用于 Mac 和 Linux 的 Azure 命令行工具]。</p>
 </div>
 
 <div class="dev-callout">
@@ -578,7 +578,7 @@
 		
 	系统将提示你输入网站名称以及该网站将位于的数据中心。提供一个唯一名称并选择在地理上接近你的位置的数据中心。
 	
-	`--git` 参数将在 Azure 中为此网站创建一个 Git 存储库。它还将在当前目录中初始化一个 Git 存储库（如果不存在任何 Git 存储库）。它还将创建一个名为“azure”的 [Git remote][]，用于将应用程序发布到 Azure。最后，它将创建一个 **web.config** 文件，其中包含 Azure 用于托管 Node 应用程序的设置。
+	`--git` 参数将在 Azure 中为此网站创建一个 Git 存储库。它还将在当前目录中初始化一个 Git 存储库（如果不存在任何 Git 存储库）。它还将创建一个名为“azure”的 [Git remote][Git remote]，用于将应用程序发布到 Azure。最后，它将创建一个 **web.config** 文件，其中包含 Azure 用于托管 Node 应用程序的设置。
 	
 	<div class="dev-callout">
 	<strong>说明</strong>
@@ -605,7 +605,7 @@
 		info:   Executing `git remote add azure https://username@tabletasklist.chinacloudsites.cn/TableTasklist.git`
 		info:   site create command OK
 
-	> [WACOM.NOTE] 如果这是你的订阅的第一个 Azure 网站，系统会指示你使用门户创建该网站。有关详细信息，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][]。
+	> [WACOM.NOTE] 如果这是你的订阅的第一个 Azure 网站，系统会指示你使用门户创建该网站。有关详细信息，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][创建 Node.js 应用程序并将其部署到 Azure 网站]。
 
 ### 发布应用程序
 
@@ -666,12 +666,12 @@
 
 ## 后续步骤
 
-虽然本文中的步骤介绍了使用表服务来存储信息，但你也可以使用 MongoDB。有关详细信息，请参阅[使用 MongoDB 的 Node.js Web 应用程序][]。
+虽然本文中的步骤介绍了使用表服务来存储信息，但你也可以使用 MongoDB。有关详细信息，请参阅[使用 MongoDB 的 Node.js Web 应用程序][使用 MongoDB 的 Node.js Web 应用程序]。
 
 ## 其他资源
 
 [适用于 Mac 和 Linux 的 Azure 命令行工具] [创建 Node.js 应用程序并将其部署到 Azure 网站]：/zh-cn/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-[使用 Git 发布到 Azure 网站][]：/zh-cn/documentation/articles/web-sites-publish-source-control/
+[使用 Git 发布到 Azure 网站][使用 Git 发布到 Azure 网站]：/zh-cn/documentation/articles/web-sites-publish-source-control/
 [Azure 开发人员中心]：/en-us/develop/nodejs/
 
   [Node]: http://nodejs.org

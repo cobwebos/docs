@@ -2,12 +2,12 @@
 
 # 使用表存储创建 Python Web 应用程序
 
-在本教程中，你将了解如何创建结合使用表存储和 Python 的 Azure 客户端库的应用程序。如果这是你的第一个 Python Azure 应用程序，则你可能希望首先查看 [Django Hello World Web 应用程序][]。
+在本教程中，你将了解如何创建结合使用表存储和 Python 的 Azure 客户端库的应用程序。如果这是你的第一个 Python Azure 应用程序，则你可能希望首先查看 [Django Hello World Web 应用程序][Django Hello World Web 应用程序]。
 
 对于本指南，你将创建一个可部署到 Azure 的基于 Web 的任务列表应用程序。用户可以通过任务列表来检索任务、添加新任务以及将任务标记为已完成。我们将使用 Django 作为 Web 框架。
 
 任务项存储在 Azure 存储空间中。Azure 存储空间提供了具有容错能力且可用性非常好的非结构化数据存储。Azure 存储空间包含一些可用来存储和访问数据的数据结构，你可以通过 Azure SDK for Python 中包含的 API 或通过 REST API 利用
-存储服务。有关详细信息，请参阅[在 Azure 中存储和访问数据][]。
+存储服务。有关详细信息，请参阅[在 Azure 中存储和访问数据][在 Azure 中存储和访问数据]。
 
 你将了解到以下内容：
 
@@ -21,7 +21,7 @@
 
 ## 设置开发环境
 
-**注意：**如果你需要安装 Python 或客户端库，请参阅 [Python 安装指南][]。
+**注意：**如果你需要安装 Python 或客户端库，请参阅 [Python 安装指南][Python 安装指南]。
 
 *有关 Windows 的说明*：如果你使用的是 Windows WebPI 安装程序，那么你已安装了 Django 和客户端库。
 
@@ -164,18 +164,18 @@
 
 ## 在计算模拟器中运行应用程序，发布和停止/删除你的应用程序
 
-现在，你已在内置的 Django 服务器上成功运行了你的应用程序，你可以通过将它部署到 Azure 模拟器（仅限 Windows），然后发布到 Azure 来进一步对它进行测试。有关如何执行此操作的一般说明，请参阅 [Django Hello World Web 应用程序][]一文，其中详细讨论了这些步骤。
+现在，你已在内置的 Django 服务器上成功运行了你的应用程序，你可以通过将它部署到 Azure 模拟器（仅限 Windows），然后发布到 Azure 来进一步对它进行测试。有关如何执行此操作的一般说明，请参阅 [Django Hello World Web 应用程序][Django Hello World Web 应用程序]一文，其中详细讨论了这些步骤。
 
 ## 后续步骤
 
 现在，你已了解了 Azure 表存储服务的基础知识，单击下面的链接可了解如何执行更复杂的存储任务。
 
--   查看 MSDN 参考：[在 Azure 中存储和访问数据][]
+-   查看 MSDN 参考：[在 Azure 中存储和访问数据][在 Azure 中存储和访问数据]
 -   访问 Azure 存储空间团队博客：<http://blogs.msdn.com/b/windowsazurestorage/>
 
   [Django Hello World Web 应用程序]: http://www.windowsazure.cn/zh-cn/develop/python/tutorials/web-app-with-django/
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [0]: ./media/storage-python-use-table-storage-web-app/web-app-with-storage-Finaloutput-mac.png
+  []: ./media/storage-python-use-table-storage-web-app/web-app-with-storage-Finaloutput-mac.png
   [create-account-note]: ../includes/create-account-note.md
   [Python 安装指南]: http://windowsazure.com/zh-cn/documentation/articles/python-how-to-install
   [create-storage-account]: ../includes/create-storage-account.md

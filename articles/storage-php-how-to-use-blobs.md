@@ -48,8 +48,8 @@
 > [WACOM.NOTE]
 > 本示例（以及本文中的其他示例）假定你已通过 Composer 安装了用于 Azure 的 PHP 客户端库。如果你已手动安装这些库或将其作为 PEAR 包安装，则需要引用 `WindowsAzure.php` autoloader 文件。
 
-	require_once 'vendor\autoload.php';
-	use WindowsAzure\Common\ServicesBuilder;
+    require_once 'vendor\autoload.php';
+    use WindowsAzure\Common\ServicesBuilder;
 
 在下面的示例中，`require_once` 语句将始终显示，但只会引用执行该示例所需的类。
 
@@ -59,11 +59,11 @@
 
 对于访问实时服务：
 
-	DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
+    DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
 
 对于访问模拟器存储：
 
-	UseDevelopmentStorage=true
+    UseDevelopmentStorage=true
 
 若要创建任何 Azure 服务客户端，你将需要使用 **ServicesBuilder** 类。你可以：
 
@@ -75,63 +75,63 @@
 
 在此处列出的示例中，将直接传递连接字符串。
 
-	require_once 'vendor\autoload.php';
+    require_once 'vendor\autoload.php';
 
-	use WindowsAzure\Common\ServicesBuilder;
+    use WindowsAzure\Common\ServicesBuilder;
 
-	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+    $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 
 ## <a id="CreateContainer"></a>如何：创建容器
 
 利用 **BlobRestProxy** 对象，你可以使用 **createContainer** 方法创建 Blob 容器。创建容器时，可以在该容器上设置选项，但此操作不是必需的。（下面的示例演示了如何设置容器 ACL 和容器元数据。）
 
-	require_once 'vendor\autoload.php';
+    require_once 'vendor\autoload.php';
 
-	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Blob\Models\CreateContainerOptions;
-	use WindowsAzure\Blob\Models\PublicAccessType;
-	use WindowsAzure\Common\ServiceException;
+    use WindowsAzure\Common\ServicesBuilder;
+    use WindowsAzure\Blob\Models\CreateContainerOptions;
+    use WindowsAzure\Blob\Models\PublicAccessType;
+    use WindowsAzure\Common\ServiceException;
 
     // 创建 Blob REST 代理。
     $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 
 
-	// 可选：设置公共访问策略和元数据。
-	// 创建容器选项对象。
-	$createContainerOptions = new CreateContainerOptions(); 
+    // 可选：设置公共访问策略和元数据。
+    // 创建容器选项对象。
+    $createContainerOptions = new CreateContainerOptions(); 
 
-	// 设置公共访问策略。可能的值为 
-	// PublicAccessType::CONTAINER_AND_BLOBS 和 PublicAccessType::BLOBS_ONLY。
-	// CONTAINER_AND_BLOBS：     
-	// 指定对容器和 Blob 数据的完整公共读取权限。
+    // 设置公共访问策略。可能的值为 
+    // PublicAccessType::CONTAINER_AND_BLOBS 和 PublicAccessType::BLOBS_ONLY。
+    // CONTAINER_AND_BLOBS：     
+    // 指定对容器和 Blob 数据的完整公共读取权限。
     // 代理可以通过匿名请求枚举容器中的 Blob， 
     // 但无法枚举存储帐户内的容器。
-	//
-	// BLOBS_ONLY：
-	// 指定对 Blob 的公共读取权限。可以通过匿名请求 
+    //
+    // BLOBS_ONLY：
+    // 指定对 Blob 的公共读取权限。可以通过匿名请求 
     // 读取此容器中的 Blob 数据，但容器数据 
     // 不可用。代理无法通过匿名请求枚举容器 
-	// 中的 Blob。
-	// 如果未在请求中指定此值，则容器数据是 
-	// 帐户所有者私有的。
-	$createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
-	
-	// 设置容器元数据
-	$createContainerOptions->addMetaData("key1", "value1");
-	$createContainerOptions->addMetaData("key2", "value2");
+    // 中的 Blob。
+    // 如果未在请求中指定此值，则容器数据是 
+    // 帐户所有者私有的。
+    $createContainerOptions->setPublicAccess(PublicAccessType::CONTAINER_AND_BLOBS);
 
-	try {
-	// 创建容器。
-	$blobRestProxy->createContainer("mycontainer", $createContainerOptions);
-	}
-	catch(ServiceException $e){
-		// 基于错误代码和消息处理异常。
-		// 错误代码和消息位于以下位置： 
-		// http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
-		$code = $e->getCode();
-		$error_message = $e->getMessage();
-		echo $code.":".$error_message."<br />";
-	}
+    // 设置容器元数据
+    $createContainerOptions->addMetaData("key1", "value1");
+    $createContainerOptions->addMetaData("key2", "value2");
+
+    try {
+    // 创建容器。
+    $blobRestProxy->createContainer("mycontainer", $createContainerOptions);
+    }
+    catch(ServiceException $e){
+    // 基于错误代码和消息处理异常。
+    // 错误代码和消息位于以下位置： 
+    // http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
+    $code = $e->getCode();
+    $error_message = $e->getMessage();
+    echo $code.":".$error_message."<br />";
+    }
 
 调用 **setPublicAccess(PublicAccessType::CONTAINER\_AND\_BLOBS)** 将使容器和 Blob 数据可通过匿名请求访问。通过调用 **setPublicAccess(PublicAccessType::BLOBS\_ONLY)**，仅使 Blob 数据可通过匿名请求访问。有关容器 ACL 的详细信息，请参阅[设置容器 ACL (REST API)][设置容器 ACL (REST API)]。
 
@@ -141,30 +141,30 @@
 
 若要将文件作为 Blob 上载，请使用 **BlobRestProxy-\>createBlockBlob** 方法。此操作将创建 Blob（如果该 Blob 不存在），或者覆盖它（如果该 Blob 存在）。下面的代码示例假定已创建了容器，并使用 [fopen][fopen] 将文件作为流打开。
 
-	require_once 'vendor\autoload.php';
+    require_once 'vendor\autoload.php';
 
-	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+    use WindowsAzure\Common\ServicesBuilder;
+    use WindowsAzure\Common\ServiceException;
 
-	// 创建 Blob REST 代理。
-	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+    // 创建 Blob REST 代理。
+    $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 
-	
-	$content = fopen("c:\myfile.txt", "r");
-	$blob_name = "myblob";
 
-	try	{
-		//上载 Blob
-		$blobRestProxy->createBlockBlob("mycontainer", $blob_name, $content);
-	}
-	catch(ServiceException $e){
-		// 基于错误代码和消息处理异常。
-		// 错误代码和消息位于以下位置： 
-		// http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
-		$code = $e->getCode();
-		$error_message = $e->getMessage();
-		echo $code.":".$error_message."<br />";
-	}
+    $content = fopen("c:\myfile.txt", "r");
+    $blob_name = "myblob";
+
+    try {
+    //上载 Blob
+    $blobRestProxy->createBlockBlob("mycontainer", $blob_name, $content);
+    }
+    catch(ServiceException $e){
+    // 基于错误代码和消息处理异常。
+    // 错误代码和消息位于以下位置： 
+    // http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
+    $code = $e->getCode();
+    $error_message = $e->getMessage();
+    echo $code.":".$error_message."<br />";
+    }
 
 请注意，上面的示例将 Blob 作为流上载。但是，也可使用 [file\_get\_contents][file\_get\_contents] 函数将 Blob 作为字符串上载。为此，请将上面的示例中的 `$content = fopen("c:\myfile.txt", "r");` 更改为 `$content = file_get_contents("c:\myfile.txt");`。
 
@@ -172,61 +172,60 @@
 
 若要列出容器中的 Blob，请将 **BlobRestProxy-\>listBlobs** 方法与 **foreach** 循环一起使用来循环访问结果。以下代码将容器中的每个 Blob 的名称及其 URI 输出到浏览器。
 
-	require_once 'vendor\autoload.php';
+    require_once 'vendor\autoload.php';
 
-	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+    use WindowsAzure\Common\ServicesBuilder;
+    use WindowsAzure\Common\ServiceException;
 
-	// 创建 Blob REST 代理。
-	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+    // 创建 Blob REST 代理。
+    $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 
-	
-	try	{
-		// 列出 Blob。
-		$blob_list = $blobRestProxy->listBlobs("mycontainer");
-		$blobs = $blob_list->getBlobs();
-		
-	foreach($blobs as $blob)
-		{
-			echo $blob->getName().":".$blob->getUrl()."<br />";
-		}
-	}
-	catch(ServiceException $e){
-		// 基于错误代码和消息处理异常。
-		// 错误代码和消息位于以下位置： 
-		// http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
-		$code = $e->getCode();
-		$error_message = $e->getMessage();
-		echo $code.":".$error_message."<br />";
-	}
 
+    try {
+    // 列出 Blob。
+    $blob_list = $blobRestProxy->listBlobs("mycontainer");
+    $blobs = $blob_list->getBlobs();
+        
+    foreach($blobs as $blob)
+        {
+    echo $blob->getName().":".$blob->getUrl()."<br />";
+        }
+    }
+    catch(ServiceException $e){
+    // 基于错误代码和消息处理异常。
+    // 错误代码和消息位于以下位置： 
+    // http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
+    $code = $e->getCode();
+    $error_message = $e->getMessage();
+    echo $code.":".$error_message."<br />";
+    }
 
 ## <a id="DownloadBlob"></a>如何：下载 Blob
 
 若要下载 Blob，请调用 **BlobRestProxy-\>getBlob** 方法，然后对生成的 **GetBlobResult** 对象调用 **getContentStream** 方法。
 
-	require_once 'vendor\autoload.php';
+    require_once 'vendor\autoload.php';
 
-	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+    use WindowsAzure\Common\ServicesBuilder;
+    use WindowsAzure\Common\ServiceException;
 
-	// 创建 Blob REST 代理。
-	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+    // 创建 Blob REST 代理。
+    $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 
-	
-	try	{
-		// 获取 Blob。
-		$blob = $blobRestProxy->getBlob("mycontainer", "myblob");
-		fpassthru($blob->getContentStream());
-	}
-	catch(ServiceException $e){
-		// 基于错误代码和消息处理异常。
-		// 错误代码和消息位于以下位置： 
-		// http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
-		$code = $e->getCode();
-		$error_message = $e->getMessage();
-		echo $code.":".$error_message."<br />";
-	}
+
+    try {
+    // 获取 Blob。
+    $blob = $blobRestProxy->getBlob("mycontainer", "myblob");
+    fpassthru($blob->getContentStream());
+    }
+    catch(ServiceException $e){
+    // 基于错误代码和消息处理异常。
+    // 错误代码和消息位于以下位置： 
+    // http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
+    $code = $e->getCode();
+    $error_message = $e->getMessage();
+    echo $code.":".$error_message."<br />";
+    }
 
 请注意，上面的示例将 Blob 作为流资源获取（默认行为）。但是，你可以使用 [stream\_get\_contents][stream\_get\_contents] 函数将返回的流转换为字符串。
 
@@ -234,53 +233,53 @@
 
 若要删除 Blob，请将容器名称和 Blob 名称传递到 **BlobRestProxy-\>deleteBlob**。
 
-	require_once 'vendor\autoload.php';
+    require_once 'vendor\autoload.php';
 
-	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+    use WindowsAzure\Common\ServicesBuilder;
+    use WindowsAzure\Common\ServiceException;
 
-	// 创建 Blob REST 代理。
-	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+    // 创建 Blob REST 代理。
+    $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 
-	
-	try	{
-		// 删除容器。
-		$blobRestProxy->deleteBlob("mycontainer", "myblob");
-	}
-	catch(ServiceException $e){
-		// 基于错误代码和消息处理异常。
-		// 错误代码和消息位于以下位置： 
-		// http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
-		$code = $e->getCode();
-		$error_message = $e->getMessage();
-		echo $code.":".$error_message."<br />";
-	}
+
+    try {
+    // 删除容器。
+    $blobRestProxy->deleteBlob("mycontainer", "myblob");
+    }
+    catch(ServiceException $e){
+    // 基于错误代码和消息处理异常。
+    // 错误代码和消息位于以下位置： 
+    // http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
+    $code = $e->getCode();
+    $error_message = $e->getMessage();
+    echo $code.":".$error_message."<br />";
+    }
 
 ## <a id="DeleteContainer"></a>如何：删除 Blob 容器
 
 最后，若要删除 Blob 容器，请将容器名称传递到 **BlobRestProxy-\>deleteContainer**。
 
-	require_once 'vendor\autoload.php';
+    require_once 'vendor\autoload.php';
 
-	use WindowsAzure\Common\ServicesBuilder;
-	use WindowsAzure\Common\ServiceException;
+    use WindowsAzure\Common\ServicesBuilder;
+    use WindowsAzure\Common\ServiceException;
 
-	// 创建 Blob REST 代理。
-	$blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
+    // 创建 Blob REST 代理。
+    $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 
-	
-	try	{
-		// 删除容器。
-		$blobRestProxy->deleteContainer("mycontainer");
-	}
-	catch(ServiceException $e){
-		// 基于错误代码和消息处理异常。
-		// 错误代码和消息位于以下位置： 
-		// http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
-		$code = $e->getCode();
-		$error_message = $e->getMessage();
-		echo $code.":".$error_message."<br />";
-	}
+
+    try {
+    // 删除容器。
+    $blobRestProxy->deleteContainer("mycontainer");
+    }
+    catch(ServiceException $e){
+    // 基于错误代码和消息处理异常。
+    // 错误代码和消息位于以下位置： 
+    // http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
+    $code = $e->getCode();
+    $error_message = $e->getMessage();
+    echo $code.":".$error_message."<br />";
+    }
 
 ## <a id="NextSteps"></a>后续步骤
 

@@ -16,18 +16,18 @@
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
-1.  [注册用于推送通知的应用程序并配置移动服务][]
-2.  [创建 Registrations 表][]
-3.  [向应用程序添加推送通知][]
-4.  [更新脚本以发送推送通知][]
-5.  [插入数据以接收通知][]
+1.  [注册用于推送通知的应用程序并配置移动服务][注册用于推送通知的应用程序并配置移动服务]
+2.  [创建 Registrations 表][创建 Registrations 表]
+3.  [向应用程序添加推送通知][向应用程序添加推送通知]
+4.  [更新脚本以发送推送通知][更新脚本以发送推送通知]
+5.  [插入数据以接收通知][插入数据以接收通知]
 
 本教程需要的内容如下：
 
 -   Microsoft Visual Studio 2012 Express for Windows 8
 -   有效的 Windows 应用商店帐户
 
-本教程基于[数据处理入门][]教程。在开始本教程之前，必须先完成[此教程][数据处理入门]。
+本教程基于[数据处理入门][数据处理入门]教程。在开始本教程之前，必须先完成[此教程][数据处理入门]。
 
 <a name="register"></a>
 ## 注册应用程序向 Windows 应用商店注册应用程序
@@ -130,33 +130,33 @@
 
 本教程演示了移动服务提供的基本推送通知功能。如果你的应用程序需要更高级功能，例如发送跨平台通知、基于订阅的路由或极大量的通知，请考虑为移动服务使用 Azure 通知中心。有关详细信息，请参阅下列通知中心主题之一：
 
--   [通知中心入门][]
+-   [通知中心入门][通知中心入门]
     了解如何在 Windows 应用商店应用程序中利用通知中心。
 
--   [向订户发送通知][]
+-   [向订户发送通知][向订户发送通知]
     了解用户如何注册和接收他们感兴趣的类别的推送通知。
 
--   [向用户发送通知][]
+-   [向用户发送通知][向用户发送通知]
     了解如何从移动服务向任一设备上的特定用户发送推送通知。
 
--   [向用户发送跨平台通知][]
+-   [向用户发送跨平台通知][向用户发送跨平台通知]
     了解如何使用模板从移动服务发送推送通知，且不会在后端中产生平台特定的负载。
 
 建议你了解有关以下移动服务主题的详细信息：
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用 Windows 帐户对应用程序用户进行身份验证。
 
--   [移动服务服务器脚本参考][]
+-   [移动服务服务器脚本参考][移动服务服务器脚本参考]
     了解有关注册和使用服务器脚本的详细信息。
 
--   [移动服务 HTML/JavaScript 操作方法概念性参考][]
+-   [移动服务 HTML/JavaScript 操作方法概念性参考][移动服务 HTML/JavaScript 操作方法概念性参考]
     了解有关如何将移动服务与 HTML 和 JavaScript 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet-vs2012 "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet-vs2012 "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-push-js-vs2012 "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-push-wp8 "Windows Phone"
   [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-ios "iOS"

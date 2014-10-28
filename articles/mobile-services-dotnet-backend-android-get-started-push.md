@@ -3,7 +3,7 @@
 # 移动服务中的推送通知入门
 
 <div class="dev-center-tutorial-selector sublanding">
-	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/" title="Windows Store C#">Windows 应用商店 C\#</a>
+	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/" title="Windows Store C#">Windows 应用商店 c#</a>
 	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a>
 	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/" title="Windows Phone">Windows Phone</a>
 	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/" title="Android" class="current">Android</a>
@@ -17,7 +17,7 @@
 
 本主题说明如何使用 Azure 移动服务向 Android 应用程序发送推送通知。在本教程中，你将要使用 Google Cloud Messaging (GCM) 向快速入门项目添加推送通知。完成本教程后，每次插入一条记录时，你的移动服务就会发送一条推送通知。
 
-在本教程中创建的移动服务支持移动服务中的 .NET 运行时。这样，你便可以将 .NET 语言和 Visual Studio 用于移动服务中的服务器端业务逻辑。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题中的 [JavaScript 后端版本][]。
+在本教程中创建的移动服务支持移动服务中的 .NET 运行时。这样，你便可以将 .NET 语言和 Visual Studio 用于移动服务中的服务器端业务逻辑。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题中的 [JavaScript 后端版本][JavaScript 后端版本]。
 
 [WACOM.NOTE] 本教程演示了移动服务与通知中心的集成功能，该功能当前以预览版提供。
 
@@ -28,16 +28,16 @@
 
 本教程将指导你完成以下基本步骤：
 
-1.  [启用 Google Cloud Messaging][]
-2.  [配置移动服务以发送推送请求][]
-3.  [在本地下载服务][]
-4.  [测试移动服务][]
-5.  [更新服务器以发送推送通知][]
-6.  [将移动服务发布到 Azure][]
-7.  [向应用程序添加推送通知][]
-8.  [针对发布的移动服务测试应用程序][]
+1.  [启用 Google Cloud Messaging][启用 Google Cloud Messaging]
+2.  [配置移动服务以发送推送请求][配置移动服务以发送推送请求]
+3.  [在本地下载服务][在本地下载服务]
+4.  [测试移动服务][测试移动服务]
+5.  [更新服务器以发送推送通知][更新服务器以发送推送通知]
+6.  [将移动服务发布到 Azure][将移动服务发布到 Azure]
+7.  [向应用程序添加推送通知][向应用程序添加推送通知]
+8.  [针对发布的移动服务测试应用程序][针对发布的移动服务测试应用程序]
 
-本教程基于移动服务快速入门。在开始学习本教程之前，必须先完成[移动服务入门][]或[数据处理入门][]，以将项目连接到移动服务。
+本教程基于移动服务快速入门。在开始学习本教程之前，必须先完成[移动服务入门][移动服务入门]或[数据处理入门][数据处理入门]，以将项目连接到移动服务。
 
 <div class="dev-callout"><b>说明</b>
 
@@ -47,14 +47,14 @@
 <a id="register"></a>
 ## 启用 Google Cloud Messaging
 
-[WACOM.INCLUDE [启用 GCM][]]
+[WACOM.INCLUDE [启用 GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
 <a id="configure"></a>
 ## 配置移动服务以发送推送请求
 
 1.  登录到 [Windows Azure 管理门户]，单击“移动服务”，然后单击你的应用程序 。
 
-    ![][]
+    ![][0]
 
 2.  单击“推送” 选项卡，输入你在执行前一过程时从 GCM 获取的“API 密钥” 值，然后单击“保存” 。
 
@@ -70,28 +70,28 @@
 <a name="download-the-service"></a>
 ## 下载服务将服务下载到本地计算机
 
-[WACOM.INCLUDE [mobile-services-download-service-locally][]]
+[WACOM.INCLUDE [mobile-services-download-service-locally](../includes/mobile-services-download-service-locally.md)]
 
 <a name="test-the-service"></a>
 ## 测试服务测试移动服务
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service](../includes/mobile-services-dotnet-backend-test-local-service.md)]
 
 <a name="publish-the-service"></a>
 ## 更新服务器以发送推送通知
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-update-server-GCM][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-update-server-GCM](../includes/mobile-services-dotnet-backend-update-server-GCM.md)]
 
 <a name="update-app"></a>
 ## 发布服务将移动服务发布到 Azure
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 ## 向应用程序添加推送通知
 
 ### 验证 Android SDK 版本
 
-[WACOM.INCLUDE [mobile-services-verify-android-sdk-version][]]
+[WACOM.INCLUDE [mobile-services-verify-android-sdk-version](../includes/mobile-services-verify-android-sdk-version.md)]
 
 下一步就是安装 Google Play Services。Google Cloud Messaging 对开发和测试提出了一些最低的 API 级别要求，清单中的 "minSdkVersion" 属性必须符合这些要求。
 
@@ -99,11 +99,11 @@
 
 ### 将 Google Play Services 添加到项目
 
-[WACOM.INCLUDE [添加 Play Services][]]
+[WACOM.INCLUDE [添加 Play Services](../includes/mobile-services-add-Google-play-services.md)]
 
 ### 添加代码
 
-[WACOM.INCLUDE [mobile-services-android-getting-started-with-push][]]
+[WACOM.INCLUDE [mobile-services-android-getting-started-with-push](../includes/mobile-services-android-getting-started-with-push.md)]
 
 ## 测试应用程序针对发布的移动服务测试应用程序
 
@@ -140,33 +140,33 @@
 
 本教程演示了移动服务提供的基本推送通知功能。如果你的应用程序需要更高级功能，例如发送跨平台通知、基于订阅的路由或极大量的通知，请考虑为移动服务使用 Windows Azure 通知中心。有关详细信息，请参阅下列通知中心主题之一：
 
--   [通知中心入门][]
+-   [通知中心入门][通知中心入门]
     了解如何在 Android 应用程序中利用通知中心。
 
--   [向订户发送通知][]
+-   [向订户发送通知][向订户发送通知]
     了解用户如何注册和接收他们感兴趣的类别的推送通知。
 
--   [向用户发送通知][]
+-   [向用户发送通知][向用户发送通知]
     了解如何从移动服务向任一设备上的特定用户发送推送通知。
 
--   [向用户发送跨平台通知][]
+-   [向用户发送跨平台通知][向用户发送跨平台通知]
     了解如何使用模板从移动服务发送推送通知，且不会在后端中产生平台特定的负载。
 
 建议你了解有关以下移动服务主题的详细信息：
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用 Windows 帐户对应用程序用户进行身份验证。
 
--   [移动服务 .NET 操作方法概念性参考][]
+-   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
--   [如何使用适用于移动服务的 Android 客户端库][]
+-   [如何使用适用于移动服务的 Android 客户端库][如何使用适用于移动服务的 Android 客户端库]
     了解有关如何将移动服务与 Android 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/ "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/ "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/ "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/ "Windows Phone"
   [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/ "Android"

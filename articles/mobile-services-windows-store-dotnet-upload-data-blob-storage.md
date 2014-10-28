@@ -11,18 +11,18 @@
 
 在本教程中，你将要向移动服务快速入门应用程序添加功能，使用户能够拍摄照片，并使用移动服务生成的 SAS 将图像上载到 Azure。本教程将指导你完成以下基本步骤，让你更新移动服务快速入门项目，以将图像上载到 Blob 存储服务：
 
-1.  [安装存储客户端库][]
-2.  [更新插入脚本以生成 SAS][]
-3.  [更新客户端应用程序以捕获图像][]
-4.  [上载图像以测试应用程序][]
+1.  [安装存储客户端库][安装存储客户端库]
+2.  [更新插入脚本以生成 SAS][更新插入脚本以生成 SAS]
+3.  [更新客户端应用程序以捕获图像][更新客户端应用程序以捕获图像]
+4.  [上载图像以测试应用程序][上载图像以测试应用程序]
 
 本教程需要的内容如下：
 
 -   Microsoft Visual Studio 2012 Express for Windows 8 或更高版本
--   [Azure 存储帐户][]
+-   [Azure 存储帐户][Azure 存储帐户]
 -   连接到你的计算机的照相机或其他图像捕获设备。
 
-本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]。
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][移动服务入门]。
 
 <a name="install-storage-client"></a>
 ## 安装 Windows 应用商店应用程序的存储客户端
@@ -51,23 +51,23 @@
 
 现在，你已能够通过将移动服务与 Blob 服务集成安全地上载图片，请查看一些其他的后端服务和集成主题：
 
--   [使用 SendGrid 从移动服务发送电子邮件][]
+-   [使用 SendGrid 从移动服务发送电子邮件][使用 SendGrid 从移动服务发送电子邮件]
 
 了解如何使用 SendGrid 电子邮件服务为你的移动服务添加电子邮件功能。本主题演示如何添加服务器端脚本，以使用 SendGrid 发送电子邮件。
 
--   [在移动服务中计划后端作业][]
+-   [在移动服务中计划后端作业][在移动服务中计划后端作业]
 
 了解如何使用移动服务作业计划程序功能，定义按你定义的计划执行的服务器脚本代码。
 
--   [移动服务服务器脚本参考][]
+-   [移动服务服务器脚本参考][移动服务服务器脚本参考]
 
 参考使用服务器脚本执行服务器端任务，并与其他 Azure 组件和外部资源集成的主题。
 
--   [移动服务 .NET 操作方法概念性参考][]
+-   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
 
 了解有关如何将移动服务与 .NET 一起使用的详细信息
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-upload-data-blob-storage "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-upload-data-blob-storage "Windows 应用商店 C#"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-upload-data-blob-storage "Windows Phone"
   [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage ".NET 后端"
   [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-upload-data-blob-storage "JavaScript 后端"

@@ -15,13 +15,13 @@
 
 本教程将指导你完成以下基本步骤：
 
-1.  [下载 iOS 应用程序项目][]
-2.  [创建移动服务][]
-3.  [添加用于存储的数据表][]
-4.  [更新应用程序以使用移动服务][]
-5.  [针对移动服务测试应用程序][]
+1.  [下载 iOS 应用程序项目][下载 iOS 应用程序项目]
+2.  [创建移动服务][创建移动服务]
+3.  [添加用于存储的数据表][添加用于存储的数据表]
+4.  [更新应用程序以使用移动服务][更新应用程序以使用移动服务]
+5.  [针对移动服务测试应用程序][针对移动服务测试应用程序]
 
-本教程需要安装[移动服务 iOS SDK][]、[XCode 4.5][] 和 iOS 5.0 或更高版本。
+本教程需要安装[移动服务 iOS SDK][移动服务 iOS SDK]、[XCode 4.5][XCode 4.5] 和 iOS 5.0 或更高版本。
 
 <div class="dev-callout"><b>说明</b>
 
@@ -31,7 +31,7 @@
 <a name="download-app"></a>
 ## 下载项目下载 GetStartedWithData 项目
 
-本教程是在 [GetStartedWithData 应用程序][]（一个 iOS 应用程序）的基础上制作的。此应用程序的 UI 与移动服务 iOS 快速入门中生成的应用程序相同，不过，前者的一些新增项本地存储在内存中。
+本教程是在 [GetStartedWithData 应用程序][GetStartedWithData 应用程序]（一个 iOS 应用程序）的基础上制作的。此应用程序的 UI 与移动服务 iOS 快速入门中生成的应用程序相同，不过，前者的一些新增项本地存储在内存中。
 
 1.  下载 GetStartedWithData [示例应用程序][GetStartedWithData 应用程序]。
 
@@ -62,7 +62,7 @@
 
 将移动服务准备就绪后，你可以更新应用程序，以便在移动服务而不是本地集合中存储项。
 
-1.  如果你尚未安装[移动服务 iOS SDK][]，现在请安装它。
+1.  如果你尚未安装[移动服务 iOS SDK][移动服务 iOS SDK]，现在请安装它。
 
 2.  在 Xcode 中的项目导航器中，打开 Quickstart 文件夹中的 TodoService.m 和 TodoService.h 文件，然后添加以下 import 语句：
 
@@ -184,7 +184,7 @@
 
     此时会将一个新项作为 insert 发送到移动服务。
 
-3.  在[管理门户][]中单击“移动服务”，然后单击你的移动服务 。
+3.  在[管理门户][管理门户]中单击“移动服务”，然后单击你的移动服务 。
 
 4.  单击“数据”选项卡，然后单击“浏览” 。
 
@@ -201,21 +201,21 @@
 
 接下来，建议你完成下列教程之一，这些教程是基于本教程中创建的 GetStartedWithData 应用程序制作的：
 
--   [使用脚本验证和修改数据][]
+-   [使用脚本验证和修改数据][使用脚本验证和修改数据]
     了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
--   [使用分页优化查询][]
+-   [使用分页优化查询][使用分页优化查询]
     了解如何使用查询中的分页控制单个请求中处理的数据量。
 
 完成了数据系列教程后，请试着学习以下其他 iOS 教程：
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何对应用程序用户进行身份验证。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何使用移动服务将非常基本的推送通知发送到应用程序。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
   [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios "iOS"

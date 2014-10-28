@@ -17,7 +17,7 @@
 
 本主题说明如何使用 Azure 移动服务作为 Android 应用程序的后端数据源。在本教程中，你将要创建一个新移动服务，为某个应用程序（该应用程序在内存中存储数据）下载一个 Eclipse Android 项目，将该移动服务与该应用程序相集成，并查看运行该应用程序时对数据所做的更改。
 
-在本教程中创建的移动服务支持移动服务中的 .NET 运行时。这样，你便可以将 .NET 语言和 Visual Studio 用于移动服务中的服务器端业务逻辑。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题中的 [JavaScript 后端版本][]。
+在本教程中创建的移动服务支持移动服务中的 .NET 运行时。这样，你便可以将 .NET 语言和 Visual Studio 用于移动服务中的服务器端业务逻辑。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题中的 [JavaScript 后端版本][JavaScript 后端版本]。
 
 <div class="dev-callout"><b>说明</b>
 
@@ -26,13 +26,13 @@
 
 本教程将指导你完成以下基本步骤：
 
-1.  [创建新的移动服务][]
-2.  [在本地下载服务][]
-3.  [测试移动服务][]
-4.  [将移动服务发布到 Azure][]
-5.  [下载 GetStartedWithData 项目][]
-6.  [更新应用程序以使用移动服务进行数据访问][]
-7.  [针对发布的移动服务测试应用程序][]
+1.  [创建新的移动服务][创建新的移动服务]
+2.  [在本地下载服务][在本地下载服务]
+3.  [测试移动服务][测试移动服务]
+4.  [将移动服务发布到 Azure][将移动服务发布到 Azure]
+5.  [下载 GetStartedWithData 项目][下载 GetStartedWithData 项目]
+6.  [更新应用程序以使用移动服务进行数据访问][更新应用程序以使用移动服务进行数据访问]
+7.  [针对发布的移动服务测试应用程序][针对发布的移动服务测试应用程序]
 
 <div class="dev-callout"><b>说明</b>
 
@@ -113,16 +113,16 @@
 
 请试着学习下列教程之一：
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何对应用程序用户进行身份验证。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
--   [移动服务 .NET 操作方法概念性参考][]
+-   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/ "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ "Windows Phone"
   [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/ "Android"

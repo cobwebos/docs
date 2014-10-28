@@ -507,7 +507,8 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 现在，你已了解有关表存储的基础知识，可单击下面的链接来了解如何
 执行更复杂的存储任务。
 
--   查看 MSDN 参考：[在 Windows Azure 中存储和访问数据][在 Windows Azure 中存储和访问数据]
+-   查看 MSDN 参考：[在 Windows Azure 中存储和访问
+    数据]
 -   访问 [Azure 存储空间团队博客][Azure 存储空间团队博客]
 
   [后续步骤]: #NextSteps
@@ -533,4 +534,3 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
   [Azure SDK for Java]: http://azure.microsoft.com/zh-cn/develop/java/
   [博客文章]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
-  [在 Windows Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx

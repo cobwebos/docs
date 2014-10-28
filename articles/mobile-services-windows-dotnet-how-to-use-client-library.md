@@ -7,42 +7,42 @@
   	<a href="/zh-cn/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript">HTML/JavaScript</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android">Android</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin">Xamarin</a>
 </div>
 
-本指南说明如何在 Windows 应用商店应用程序和 Windows Phone 应用程序中使用适用于 Azure 移动服务的 .NET 客户端执行常见任务。所述的任务包括：查询数据，插入、更新和删除数据，对用户进行身份验证和处理错误。如果你是第一次使用移动服务，最好先完成“移动服务快速入门”教程（[Windows 应用商店快速入门教程][]/[Windows Phone 快速入门教程][]）和“.NET 中的数据处理入门”教程（[Windows 应用商店数据教程][]/[Windows Phone 数据教程][]）。快速入门教程要求安装[移动服务 SDK][]，它可帮助你配置帐户并创建第一个移动服务。
+本指南说明如何在 Windows 应用商店应用程序和 Windows Phone 应用程序中使用适用于 Azure 移动服务的 .NET 客户端执行常见任务。所述的任务包括：查询数据，插入、更新和删除数据，对用户进行身份验证和处理错误。如果你是第一次使用移动服务，最好先完成“移动服务快速入门”教程（[Windows 应用商店快速入门教程][Windows 应用商店快速入门教程]/[Windows Phone 快速入门教程][Windows Phone 快速入门教程]）和“.NET 中的数据处理入门”教程（[Windows 应用商店数据教程][Windows 应用商店数据教程]/[Windows Phone 数据教程][Windows Phone 数据教程]）。快速入门教程要求安装[移动服务 SDK][移动服务 SDK]，它可帮助你配置帐户并创建第一个移动服务。
 
 ## 目录
 
--   [什么是移动服务][]
--   [概念][]
--   [如何：创建移动服务客户端][]
--   [如何：创建表引用][]
--   [如何：从移动服务查询数据][]
+-   [什么是移动服务][什么是移动服务]
+-   [概念][概念]
+-   [如何：创建移动服务客户端][如何：创建移动服务客户端]
+-   [如何：创建表引用][如何：创建表引用]
+-   [如何：从移动服务查询数据][如何：从移动服务查询数据]
 
-    -   [筛选返回的数据][]
-    -   [为返回的数据排序][]
-    -   [在页中返回数据][]
-    -   [选择特定的列][]
-    -   [按 ID 查找数据][]
--   [如何：在移动服务中插入数据][]
--   [如何：在移动服务中修改数据][]
--   [如何：在移动服务中删除数据][]
--   [如何：使用乐观并发][]
--   [如何：在移动服务中将数据绑定到用户界面][]
--   [如何：对用户进行身份验证][]
--   [如何：处理错误][]
--   [如何：处理非类型化数据][]
--   [如何：设计单元测试][]
--   [如何：自定义客户端][]
+    -   [筛选返回的数据][筛选返回的数据]
+    -   [为返回的数据排序][为返回的数据排序]
+    -   [在页中返回数据][在页中返回数据]
+    -   [选择特定的列][选择特定的列]
+    -   [按 ID 查找数据][按 ID 查找数据]
+-   [如何：在移动服务中插入数据][如何：在移动服务中插入数据]
+-   [如何：在移动服务中修改数据][如何：在移动服务中修改数据]
+-   [如何：在移动服务中删除数据][如何：在移动服务中删除数据]
+-   [如何：使用乐观并发][如何：使用乐观并发]
+-   [如何：在移动服务中将数据绑定到用户界面][如何：在移动服务中将数据绑定到用户界面]
+-   [如何：对用户进行身份验证][如何：对用户进行身份验证]
+-   [如何：处理错误][如何：处理错误]
+-   [如何：处理非类型化数据][如何：处理非类型化数据]
+-   [如何：设计单元测试][如何：设计单元测试]
+-   [如何：自定义客户端][如何：自定义客户端]
 
-    -   [自定义请求标头][]
-    -   [自定义序列化][]
--   [后续步骤][]
+    -   [自定义请求标头][自定义请求标头]
+    -   [自定义序列化][自定义序列化]
+-   [后续步骤][后续步骤]
 
 [WACOM.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
 <a name="setup"></a>
 ## 安装安装与先决条件
 
-假设你已创建一个移动服务和一个表。有关详细信息，请参阅[创建表][]。在本主题使用的代码中，表的名称为 `TodoItem`，其中包含以下列：`Id`、`Text` 和 `Complete`。
+假设你已创建一个移动服务和一个表。有关详细信息，请参阅[创建表][创建表]。在本主题使用的代码中，表的名称为 `TodoItem`，其中包含以下列：`Id`、`Text` 和 `Complete`。
 
 相应的类型化客户端 .NET 类型如下：
 
@@ -57,7 +57,7 @@
     public bool Complete { get; set; }
     }
 
-启用动态架构后，Azure 移动服务将基于 insert 或 update 请求中的对象自动生成新列。有关详细信息，请参阅[动态架构][]。
+启用动态架构后，Azure 移动服务将基于 insert 或 update 请求中的对象自动生成新列。有关详细信息，请参阅[动态架构][动态架构]。
 
 <a name="create-client"></a>
 ## 创建移动服务客户端如何：创建移动服务客户端
@@ -74,7 +74,7 @@
 <a name="instantiating"></a>
 ## 创建表引用如何：创建表引用
 
-访问或修改移动服务表中数据的所有代码都将对 `MobileServiceTable` 对象调用函数。对 `MobileServiceClient` 的实例调用 [GetTable][] 函数可获取对表的引用。
+访问或修改移动服务表中数据的所有代码都将对 `MobileServiceTable` 对象调用函数。对 `MobileServiceClient` 的实例调用 [GetTable][GetTable] 函数可获取对表的引用。
 
     IMobileServiceTable<TodoItem> todoTable = 
     client.GetTable<TodoItem>();
@@ -86,7 +86,7 @@
 
 本部分介绍如何向移动服务发出查询。其中的小节介绍了排序、筛选和分页等不同操作。
 
-> [WACOM.NOTE] 默认情况下，将使用服务器驱动的页大小来防止返回所有行。这可以防止对大型数据集发出的默认请求对服务造成负面影响。若要返回 50 个以上的行，请根据[在页中返回数据][]中所述使用 `Take` 方法。
+> [WACOM.NOTE] 默认情况下，将使用服务器驱动的页大小来防止返回所有行。这可以防止对大型数据集发出的默认请求对服务造成负面影响。若要返回 50 个以上的行，请根据[在页中返回数据][在页中返回数据]中所述使用 `Take` 方法。
 
 <a name="filtering"></a>
 ### 如何：筛选返回的数据
@@ -156,7 +156,7 @@
 <a name="paging"></a>
 ### 如何：在页中返回数据
 
-默认情况下，服务器只返回前 50 行。你可以通过调用 [Take][] 方法来增加返回的行数。将 `Take` 与 [Skip][] 方法一起使用可以请求查询返回的总数据集的特定“页”。执行以下查询后，将返回表中的前三个项。
+默认情况下，服务器只返回前 50 行。你可以通过调用 [Take][Take] 方法来增加返回的行数。将 `Take` 与 [Skip][Skip] 方法一起使用可以请求查询返回的总数据集的特定“页”。执行以下查询后，将返回表中的前三个项。
 
     // Define a filtered query that returns the top 3 items.
     MobileServiceTableQuery<TodoItem> query = todoTable
@@ -172,7 +172,7 @@
     List<TodoItem> items = await query.ToListAsync();
             
 
-你还可以使用 [IncludeTotalCount][] 方法来确保查询获取应该返回的*所有*记录的总计数，并忽略指定的任何 take 分页/限制子句：
+你还可以使用 [IncludeTotalCount][IncludeTotalCount] 方法来确保查询获取应该返回的*所有*记录的总计数，并忽略指定的任何 take 分页/限制子句：
 
     query = query.IncludeTotalCount();
 
@@ -250,11 +250,11 @@
 
 `id` 的值必须唯一，并且不能包含以下集中的字符：
 
--   控制字符：[0x0000-0x001F] 和 [0x007F-0x009F]。有关详细信息，请参阅 [ASCII 控制代码 C0 和 C1][]。
+-   控制字符：[0x0000-0x001F] 和 [0x007F-0x009F]。有关详细信息，请参阅 [ASCII 控制代码 C0 和 C1][ASCII 控制代码 C0 和 C1]。
 -   可打印字符："""(0x0022)、"+" (0x002B)、"/" (0x002F)、"?"(0x003F)、"\\" (0x005C)、"\`" (0x0060)
 -   ID“.”和“..”
 
-也可以为表使用整数 ID。若要使用整数 ID，必须使用 `mobile table create` 命令并结合 `--integerId` 选项创建表。应在适用于 Azure 的命令行界面 (CLI) 中使用此命令。有关使用 CLI 的详细信息，请参阅[用于管理移动服务表的 CLI][]。
+也可以为表使用整数 ID。若要使用整数 ID，必须使用 `mobile table create` 命令并结合 `--integerId` 选项创建表。应在适用于 Azure 的命令行界面 (CLI) 中使用此命令。有关使用 CLI 的详细信息，请参阅[用于管理移动服务表的 CLI][用于管理移动服务表的 CLI]。
 
 若要插入非类型化数据，你可以按如下所示利用 Json.NET。
 
@@ -391,7 +391,7 @@
     await msgDialog.ShowAsync();
     }
 
-有关使用移动服务乐观并发的更完整示例，请参阅[乐观并发教程][]。
+有关使用移动服务乐观并发的更完整示例，请参阅[乐观并发教程][乐观并发教程]。
 
 <a name="binding"></a>
 ## 显示数据如何：在移动服务中将数据绑定到用户界面
@@ -410,7 +410,7 @@
     ListBox lb = new ListBox();
     lb.ItemsSource = items;
 
-Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][] 的接口。当用户滚动浏览时，此接口允许控件请求更多的数据。系统通过 `MobileServiceIncrementalLoadingCollection`（可自动处理来自控件的调用）为这个适用于 Windows 应用商店应用程序的接口提供内置支持。若要在 Windows 应用商店应用程序中使用 `MobileServiceIncrementalLoadingCollection`，请执行以下代码：
+Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][ISupportIncrementalLoading] 的接口。当用户滚动浏览时，此接口允许控件请求更多的数据。系统通过 `MobileServiceIncrementalLoadingCollection`（可自动处理来自控件的调用）为这个适用于 Windows 应用商店应用程序的接口提供内置支持。若要在 Windows 应用商店应用程序中使用 `MobileServiceIncrementalLoadingCollection`，请执行以下代码：
 
             MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
     items =  todoTable.Where(todoItem => todoItem.Complete == false)
@@ -426,21 +426,21 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][] �
 
 当你使用通过调用 `ToCollectionAsync` 或 `ToCollection` 创建的集合时，将获取一个可以绑定到 UI 控件的集合。此集合支持分页，也就是说，控件可以要求该集合“加载更多项”，而该集合也确实会这样做。这样看来，无需执行任何用户代码，控件就能启动工作流。但是，由于集合要从网络加载数据，因此可以预料到这种加载有时会失败。若要处理这种失败，你可以重写 `MobileServiceIncrementalLoadingCollection` 中的 `OnException` 方法，以处理调用控件执行的 `LoadMoreItemsAsync` 后发生的异常。
 
-最后，假设你的表包含许多字段，但你只想在控件中显示其中的某些字段。在这种情况下，你可以参考上面[选择特定的列][]部分中的指导，选择要在 UI 中显示的特定列。
+最后，假设你的表包含许多字段，但你只想在控件中显示其中的某些字段。在这种情况下，你可以参考上面[选择特定的列][选择特定的列]部分中的指导，选择要在 UI 中显示的特定列。
 
 <a name="authentication"></a>
 ## 身份验证如何：对用户进行身份验证
 
-移动服务支持使用各种外部标识提供者对应用程序用户进行身份验证和授权，这些提供者包括：Facebook、Google、Microsoft 帐户、Twitter 和 Azure Active Directory。你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。你还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。有关详细信息，请参阅“身份验证入门”教程（[Windows 应用商店][]/[Windows Phone][]）
+移动服务支持使用各种外部标识提供者对应用程序用户进行身份验证和授权，这些提供者包括：Facebook、Google、Microsoft 帐户、Twitter 和 Azure Active Directory。你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。你还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。有关详细信息，请参阅“身份验证入门”教程（[Windows 应用商店][Windows 应用商店]/[Windows Phone][Windows Phone]）
 
 支持两种身份验证流：*服务器流*和*客户端流*。服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。客户端流依赖于提供者和设备特定的 SDK，因此允许与设备特定的功能进行更深入的集成。
 
 ### 服务器流
 
 若要让移动服务管理 Windows 应用商店或 Windows Phone 应用程序中的身份验证过程，
-必须将你的应用程序注册到标识提供者。然后，需要在移动服务中配置提供者提供的应用程序 ID 和机密。有关详细信息，请参阅“身份验证入门”教程（[Windows 应用商店][]/[Windows Phone][]）。
+必须将你的应用程序注册到标识提供者。然后，需要在移动服务中配置提供者提供的应用程序 ID 和机密。有关详细信息，请参阅“身份验证入门”教程（[Windows 应用商店][Windows 应用商店]/[Windows Phone][Windows Phone]）。
 
-注册标识提供者后，只需结合提供者的 [MobileServiceAuthenticationProvider][] 值调用 [LoginAsync 方法][]。例如，以下代码将使用 Facebook 启动服务器流登录。
+注册标识提供者后，只需结合提供者的 [MobileServiceAuthenticationProvider][MobileServiceAuthenticationProvider] 值调用 [LoginAsync 方法][LoginAsync 方法]。例如，以下代码将使用 Facebook 启动服务器流登录。
 
     private MobileServiceUser user;
     private async System.Threading.Tasks.Task Authenticate()
@@ -466,9 +466,9 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][] �
         }
     }
 
-如果使用的标识提供者不是 Facebook，请将上述 [MobileServiceAuthenticationProvider][] 的值更改为提供者的值。
+如果使用的标识提供者不是 Facebook，请将上述 [MobileServiceAuthenticationProvider][MobileServiceAuthenticationProvider] 的值更改为提供者的值。
 
-在此情况下，移动服务将通过以下方式管理 OAuth 2.0 身份验证流：显示选定提供者的登录页，并在用户成功使用标识提供者登录后生成移动服务身份验证令牌。[LoginAsync 方法][]将返回 [MobileServiceUser][]，该类将提供已经过身份验证的用户的 [userId][]，以及 JSON Web 令牌 (JWT) 形式的 [MobileServiceAuthenticationToken][]。你可以缓存此令牌，并在它过期之前重复使用。有关详细信息，请参阅[缓存身份验证令牌][]。
+在此情况下，移动服务将通过以下方式管理 OAuth 2.0 身份验证流：显示选定提供者的登录页，并在用户成功使用标识提供者登录后生成移动服务身份验证令牌。[LoginAsync 方法][LoginAsync 方法]将返回 [MobileServiceUser][MobileServiceUser]，该类将提供已经过身份验证的用户的 [userId][userId]，以及 JSON Web 令牌 (JWT) 形式的 [MobileServiceAuthenticationToken][MobileServiceAuthenticationToken]。你可以缓存此令牌，并在它过期之前重复使用。有关详细信息，请参阅[缓存身份验证令牌][缓存身份验证令牌]。
 
 <div class="dev-callout"><b>Windows 应用商店应用程序</b>
 
@@ -523,7 +523,7 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][] �
 <a name="caching"></a>
 ### 缓存身份验证令牌
 
-在某些情况下，完成首次用户身份验证后，可以避免调用 login 方法。你可以使用适用于 Windows 应用商店应用程序的 [PasswordVault][] 来缓存当前用户首次登录时使用的标识，以后每次该用户登录时，系统都会检查缓存中是否存在该用户标识。如果缓存为空，则用户仍然需要完成整个登录过程。
+在某些情况下，完成首次用户身份验证后，可以避免调用 login 方法。你可以使用适用于 Windows 应用商店应用程序的 [PasswordVault][PasswordVault] 来缓存当前用户首次登录时使用的标识，以后每次该用户登录时，系统都会检查缓存中是否存在该用户标识。如果缓存为空，则用户仍然需要完成整个登录过程。
 
         // After logging in
     PasswordVault vault = new PasswordVault();
@@ -550,7 +550,7 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][] �
     client.Logout();
     vault.Remove(vault.Retrieve("Facebook", user.UserId));
 
-对于 Windows Phone 应用程序，可以使用 [ProtectedData][] 类加密和缓存数据，并在隔离的存储中存储敏感信息。
+对于 Windows Phone 应用程序，可以使用 [ProtectedData][ProtectedData] 类加密和缓存数据，并在隔离的存储中存储敏感信息。
 
 <a name="errors"></a>
 ## 错误处理如何：处理错误
@@ -598,7 +598,7 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][] �
     // Lookup untyped data using OData
     JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
 
-此时，你将获取一些可以像属性包一样使用的 JSON 值。有关 JToken 和 Json.NET 的详细信息，请参阅 [Json.NET][]
+此时，你将获取一些可以像属性包一样使用的 JSON 值。有关 JToken 和 Json.NET 的详细信息，请参阅 [Json.NET][Json.NET]
 
 <a name="unit-testing"></a>
 ## 设计测试如何：设计单元测试
@@ -640,7 +640,7 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][] �
 <a name="serialization"></a>
 ### 如何：自定义序列化
 
-[MobileServiceClient][] 类公开类型 [JsonSerializerSettings][] 的 `SerializerSettings` 属性
+[MobileServiceClient][MobileServiceClient] 类公开类型 [JsonSerializerSettings][JsonSerializerSettings] 的 `SerializerSettings` 属性
 
 使用此属性可以设置 Json.NET 属性（这样的属性有很多），其中包括一个用于将所有属性转换为小写的属性，例如：
 
@@ -653,22 +653,22 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][] �
 
 完成这篇概念性的操作方法参考主题后，请详细了解如何在移动服务中执行重要任务：
 
--   [移动服务入门][]
+-   [移动服务入门][移动服务入门]
     了解有关移动服务用法的基本知识。
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用标识提供者对应用程序的用户进行身份验证。
 
--   [使用脚本验证和修改数据][]
+-   [使用脚本验证和修改数据][使用脚本验证和修改数据]
     了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
--   [使用分页优化查询][]
+-   [使用分页优化查询][使用分页优化查询]
     了解如何使用查询中的分页控制单个请求中处理的数据量。
 
--   [使用脚本为用户授权][]
+-   [使用脚本为用户授权][使用脚本为用户授权]
     了解如何采用移动服务基于已进行身份验证的用户提供的用户 ID 值，并使用该值来筛选移动服务返回的数据。
 
   [.NET Framework]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library/ ".NET Framework"

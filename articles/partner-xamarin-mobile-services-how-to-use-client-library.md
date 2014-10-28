@@ -7,36 +7,36 @@
   	<a href="/zh-cn/develop/mobile/how-to-guides/work-with-html-js-client/" title="HTML/JavaScript">HTML/JavaScript</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-ios-client-library/" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-android-client-library/" title="Android">Android</a><a href="/zh-cn/develop/mobile/how-to-guides/work-with-xamarin-client-library/" title="Xamarin" class="current">Xamarin</a>
 </div>
 
-本指南演示如何在用于 iOS 和 Android 的 Xamarin 应用程序中使用针对 Azure 移动服务的 Xamarin 组件客户端来执行常见任务。所述的任务包括：查询数据，插入、更新和删除数据，对用户进行身份验证和处理错误。如果你是第一次使用移动服务，最好先完成“移动服务快速入门”教程 ([Xamarin.iOS][]/[Xamarin.Android][]) 以及“.NET 中的数据处理入门”教程 ([Xamarin.iOS][1]/[Xamarin.Android][2])。快速入门教程要求安装 [Xamarin][3]（即[移动服务 SDK][]），它可帮助你配置帐户并创建第一个移动服务。
+本指南演示如何在用于 iOS 和 Android 的 Xamarin 应用程序中使用针对 Azure 移动服务的 Xamarin 组件客户端来执行常见任务。所述的任务包括：查询数据，插入、更新和删除数据，对用户进行身份验证和处理错误。如果你是第一次使用移动服务，最好先完成“移动服务快速入门”教程 ([Xamarin.iOS][Xamarin.iOS]/[Xamarin.Android][Xamarin.Android]) 以及“.NET 中的数据处理入门”教程 ([Xamarin.iOS][1]/[Xamarin.Android][2])。快速入门教程要求安装 [Xamarin][3]（即[移动服务 SDK][移动服务 SDK]），它可帮助你配置帐户并创建第一个移动服务。
 
 ## 目录
 
--   [什么是移动服务][]
--   [概念][]
--   [如何：创建移动服务客户端][]
--   [如何：创建表引用][]
--   [如何：从移动服务查询数据][]
+-   [什么是移动服务][什么是移动服务]
+-   [概念][概念]
+-   [如何：创建移动服务客户端][如何：创建移动服务客户端]
+-   [如何：创建表引用][如何：创建表引用]
+-   [如何：从移动服务查询数据][如何：从移动服务查询数据]
 
-    -   [筛选返回的数据][]
-    -   [为返回的数据排序][]
-    -   [在页中返回数据][]
-    -   [选择特定的列][]
-    -   [按 ID 查找数据][]
--   [如何：在移动服务中插入数据][]
--   [如何：在移动服务中修改数据][]
--   [如何：在移动服务中删除数据][]
--   [如何：对用户进行身份验证][]
--   [如何：处理错误][]
--   [如何：处理非类型化数据][]
--   [如何：设计单元测试][]
--   [后续步骤][]
+    -   [筛选返回的数据][筛选返回的数据]
+    -   [为返回的数据排序][为返回的数据排序]
+    -   [在页中返回数据][在页中返回数据]
+    -   [选择特定的列][选择特定的列]
+    -   [按 ID 查找数据][按 ID 查找数据]
+-   [如何：在移动服务中插入数据][如何：在移动服务中插入数据]
+-   [如何：在移动服务中修改数据][如何：在移动服务中修改数据]
+-   [如何：在移动服务中删除数据][如何：在移动服务中删除数据]
+-   [如何：对用户进行身份验证][如何：对用户进行身份验证]
+-   [如何：处理错误][如何：处理错误]
+-   [如何：处理非类型化数据][如何：处理非类型化数据]
+-   [如何：设计单元测试][如何：设计单元测试]
+-   [后续步骤][后续步骤]
 
 [WACOM.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
 <a name="setup"></a>
 ## 安装安装与先决条件
 
-假设你已创建一个移动服务和一个表。有关详细信息，请参阅[创建表][]。在本主题使用的代码中，表的名称为 `TodoItem`，其中包含以下列：`id`、`Text` 和 `Complete`。
+假设你已创建一个移动服务和一个表。有关详细信息，请参阅[创建表][创建表]。在本主题使用的代码中，表的名称为 `TodoItem`，其中包含以下列：`id`、`Text` 和 `Complete`。
 
 相应的类型化客户端 .NET 类型如下：
 
@@ -51,7 +51,7 @@
     public bool Complete { get; set; }
     }
 
-启用动态架构后，Azure 移动服务将基于 insert 或 update 请求中的对象自动生成新列。有关详细信息，请参阅[动态架构][]。
+启用动态架构后，Azure 移动服务将基于 insert 或 update 请求中的对象自动生成新列。有关详细信息，请参阅[动态架构][动态架构]。
 
 <a name="create-client"></a>
 ## 创建移动服务客户端如何：创建移动服务客户端
@@ -68,7 +68,7 @@
 <a name="instantiating"></a>
 ## 创建表引用如何：创建表引用
 
-访问或修改移动服务表中数据的所有代码都将对 `MobileServiceTable` 对象调用函数。对 `MobileServiceClient` 的实例调用 [GetTable][] 函数可获取对表的引用。
+访问或修改移动服务表中数据的所有代码都将对 `MobileServiceTable` 对象调用函数。对 `MobileServiceClient` 的实例调用 [GetTable][GetTable] 函数可获取对表的引用。
 
     IMobileServiceTable<TodoItem> todoTable = 
     client.GetTable<TodoItem>();
@@ -170,7 +170,7 @@
     List<TodoItem> items = await query.ToListAsync();
             
 
-你还可以使用 [IncludeTotalCount][] 方法来确保查询获取应该返回的*所有*记录的总计数，并忽略指定的任何 take 分页/限制子句：
+你还可以使用 [IncludeTotalCount][IncludeTotalCount] 方法来确保查询获取应该返回的*所有*记录的总计数，并忽略指定的任何 take 分页/限制子句：
 
     query = query.IncludeTotalCount();
 
@@ -278,7 +278,7 @@
 若要让移动服务管理 Windows 应用商店或 Windows Phone 应用程序中的身份验证过程，
 必须将你的应用程序注册到标识提供者。然后，需要在移动服务中配置提供者提供的应用程序 ID 和机密。有关详细信息，请参阅“身份验证入门”教程 ([Xamarin.iOS][4]/[Xamarin.Android][5])。
 
-注册标识提供者后，只需结合提供者的 [MobileServiceAuthenticationProvider][] 值调用 [LoginAsync 方法][]。例如，以下代码将使用 Facebook 启动服务器流登录。
+注册标识提供者后，只需结合提供者的 [MobileServiceAuthenticationProvider][MobileServiceAuthenticationProvider] 值调用 [LoginAsync 方法][LoginAsync 方法]。例如，以下代码将使用 Facebook 启动服务器流登录。
 
     private MobileServiceUser user;
     private async System.Threading.Tasks.Task Authenticate()
@@ -304,9 +304,9 @@
         }
     }
 
-如果使用的标识提供者不是 Facebook，请将上述 [MobileServiceAuthenticationProvider][] 的值更改为提供者的值。
+如果使用的标识提供者不是 Facebook，请将上述 [MobileServiceAuthenticationProvider][MobileServiceAuthenticationProvider] 的值更改为提供者的值。
 
-在此情况下，移动服务将通过以下方式管理 OAuth 2.0 身份验证流：显示选定提供者的登录页，并在用户成功使用标识提供者登录后生成移动服务身份验证令牌。[LoginAsync 方法][]将返回 [MobileServiceUser][]，该类将提供已经过身份验证的用户的 [userId][]，以及 JSON Web 令牌 (JWT) 形式的 [MobileServiceAuthenticationToken][]。你可以缓存此令牌，并在它过期之前重复使用。有关详细信息，请参阅[缓存身份验证令牌][]。
+在此情况下，移动服务将通过以下方式管理 OAuth 2.0 身份验证流：显示选定提供者的登录页，并在用户成功使用标识提供者登录后生成移动服务身份验证令牌。[LoginAsync 方法][LoginAsync 方法]将返回 [MobileServiceUser][MobileServiceUser]，该类将提供已经过身份验证的用户的 [userId][userId]，以及 JSON Web 令牌 (JWT) 形式的 [MobileServiceAuthenticationToken][MobileServiceAuthenticationToken]。你可以缓存此令牌，并在它过期之前重复使用。有关详细信息，请参阅[缓存身份验证令牌][缓存身份验证令牌]。
 
 ### 客户端流
 
@@ -348,7 +348,7 @@
 <a name="caching"></a>
 ### 缓存身份验证令牌
 
-在某些情况下，完成首次用户身份验证后，可以避免调用 login 方法。你可以使用本地安全存储（如 [Xamarin.Auth][]）缓存当前用户首次登录时使用的标识，以后每次该用户登录时，系统都会检查缓存中是否存在该用户标识。如果缓存为空，则用户仍然需要完成整个登录过程。
+在某些情况下，完成首次用户身份验证后，可以避免调用 login 方法。你可以使用本地安全存储（如 [Xamarin.Auth][Xamarin.Auth]）缓存当前用户首次登录时使用的标识，以后每次该用户登录时，系统都会检查缓存中是否存在该用户标识。如果缓存为空，则用户仍然需要完成整个登录过程。
 
     using Xamarin.Auth;
     var accountStore = AccountStore.Create(); // Xamarin.iOS
@@ -425,7 +425,7 @@ Xamarin 组件客户端在设计上支持强类型化方案。但有时，松散
     // Lookup untyped data using OData
     JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
 
-此时，你将获取一些可以像属性包一样使用的 JSON 值。有关 JToken 和 Json.NET 的详细信息，请参阅 [Json.NET][]
+此时，你将获取一些可以像属性包一样使用的 JSON 值。有关 JToken 和 Json.NET 的详细信息，请参阅 [Json.NET][Json.NET]
 
 <a name="unit-testing"></a>
 ## 设计测试如何：设计单元测试

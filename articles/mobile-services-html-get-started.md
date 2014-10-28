@@ -45,9 +45,9 @@
 
 -   本教程要求你在本地计算机上运行下列 Web 服务器之一：
 
-    -   "在 Windows 上"：IIS Express。可通过 [Microsoft Web 平台安装程序][]安装 IIS Express。
+    -   "在 Windows 上"：IIS Express。可通过 [Microsoft Web 平台安装程序][Microsoft Web 平台安装程序]安装 IIS Express。
     -   "在 MacOS X 上"：Python。该服务器事先应已安装。
-    -   "在 Linux 上"：Python。必须安装[最新版本的 Python][]。
+    -   "在 Linux 上"：Python。必须安装[最新版本的 Python][最新版本的 Python]。
 
     你可以使用任何 Web 服务器来托管应用程序，但是这些 Web 服务器必须受下载的脚本的支持。
 
@@ -132,16 +132,16 @@
 
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
--   "[数据处理入门][]"
+-   "[数据处理入门][数据处理入门]"
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   "[从 HTML 应用程序调用自定义 API][]"
+-   "[从 HTML 应用程序调用自定义 API][从 HTML 应用程序调用自定义 API]"
     将 HTML 应用程序连接到移动服务上托管的自定义 API。
 
--   "[身份验证入门][]"
+-   "[身份验证入门][身份验证入门]"
     了解如何使用标识提供者对应用程序的用户进行身份验证。
 
--   "[移动服务 HTML/JavaScript 操作方法概念性参考][]"
+-   "[移动服务 HTML/JavaScript 操作方法概念性参考][移动服务 HTML/JavaScript 操作方法概念性参考]"
     了解有关如何将移动服务与 HTML/JavaScript 一起使用的详细信息
 
   [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"

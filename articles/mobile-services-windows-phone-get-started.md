@@ -15,13 +15,13 @@
 <div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkId=290816" target="_blank" class="label">观看教程</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-wp8-get-started-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkId=290816" target="_blank" class="dev-onpage-video"><span class="icon">播放视频</span></a> <span class="time">13:18</span></div>
 </div>
 
-在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单*待办事项列表*应用程序。要创建的移动服务将为服务器端业务逻辑使用 JavaScript。若要创建允许你使用 Visual Studio 以受支持 .NET 语言编写服务器端业务逻辑的移动服务，请参阅本主题中的 [.NET 后端版本][]。
+在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单*待办事项列表*应用程序。要创建的移动服务将为服务器端业务逻辑使用 JavaScript。若要创建允许你使用 Visual Studio 以受支持 .NET 语言编写服务器端业务逻辑的移动服务，请参阅本主题中的 [.NET 后端版本][.NET 后端版本]。
 
 以下是完成的应用程序的屏幕快照：
 
 ![][0]
 
->[WACOM.NOTE] 若要完成本教程，你需要一个启用了 Azure 移动服务功能的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][]。若要创建新的 Windows Phone 8.1 应用程序，必须安装 Visual Studio 2013 Update 2 或更高版本。
+>[WACOM.NOTE] 若要完成本教程，你需要一个启用了 Azure 移动服务功能的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][Azure 免费试用]。若要创建新的 Windows Phone 8.1 应用程序，必须安装 Visual Studio 2013 Update 2 或更高版本。
 
 ## <a name="create-new-service"> </a>创建新的移动服务
 
@@ -43,7 +43,7 @@
 
     ![][2]
 
-3.  在本地计算机上下载并安装 [Visual Studio 2012 Express for Windows Phone][]（如果尚未这么做）。
+3.  在本地计算机上下载并安装 [Visual Studio 2012 Express for Windows Phone][Visual Studio 2012 Express for Windows Phone]（如果尚未这么做）。
 
 	>[WACOM.NOTE] 若要创建 Windows Phone 8.1 应用程序，必须已安装 Visual Studio 2013 Update 2。
 
@@ -83,13 +83,13 @@
 
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用标识提供者对应用程序的用户进行身份验证。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
   [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"

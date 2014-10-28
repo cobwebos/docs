@@ -82,35 +82,41 @@ Azure .NET 存储客户端库支持使用存储连接字符
 
 如果你正在编写不是 Azure 云服务的应用程序（参见上一部分），则建议你使用 .NET 配置系统（如 `web.config` 或 `app.config`）。这包括 Azure 网站或 Azure 虚拟机，以及设计为在 Azure 外部运行的应用程序。你可以使用 `<appSettings>` 元素存储连接字符串，如下所示：
 
-	<configuration>
-  		<appSettings>
-    		<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey" />
-  		</appSettings>
-	</configuration>
+    <configuration>
+    <appSettings>
+    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey" />
+    </appSettings>
+    </configuration>
 
+阅读[配置连接字符串][AccountKey" />
+    </appSettings>
+    </configuration>
 
-阅读[配置连接字符串][配置连接字符串]，了解有关存储连接字符串的详细信息。
+阅读[配置连接字符串]，了解有关存储连接字符串的详细信息。
 
 你现在即可准备执行本指南中的操作任务。
 
 ## <a name="configure-access"> </a>以编程方式访问如何：以编程方式访问 Blob 存储
 
 ### 获得程序集
+
 你可以使用 NuGet 来获得 `Microsoft.WindowsAzure.Storage.dll` 程序集。在**“解决方案资源管理器”**中，右键单击你的项目并选择**“管理 NuGet 包”**。在线搜索“WindowsAzure.Storage”，然后单击**“安装”**以安装 Azure 存储包和依赖项。
 
 Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从 [.NET 开发人员中心][.NET 开发人员中心]下载该版本。该程序集将安装到 `%Program Files%\Microsoft SDKs\Windows Azure\.NET SDK\<sdk-version>\ref\` 目录中。
 
 ### 命名空间声明
+
 在你希望在其中以编程方式访问 Azure 存储空间的任何 C\# 文件中，
 将以下命名空间声明添加到文件的顶部：
 
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;
-	using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.Blob;
 
 确保你引用了 `Microsoft.WindowsAzure.Storage.dll` 程序集。
 
 ### 检索连接字符串
+
 可以使用 **CloudStorageAccount** 类型来表示你的存储
 帐户信息。如果你使用的
 是 Windows Azure 项目模板并且/或者引用了
@@ -226,12 +232,12 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
     {
     if (item.GetType() == typeof(CloudBlockBlob))
         {
-			CloudBlockBlob blob = (CloudBlockBlob)item;
+    CloudBlockBlob blob = (CloudBlockBlob)item;
 
-			Console.WriteLine("Block blob of length {0}:{1}", blob.Properties.Length, blob.Uri);
+    Console.WriteLine("Block blob of length {0}:{1}", blob.Properties.Length, blob.Uri);
                                         
-		}
-		else if (item.GetType() == typeof(CloudPageBlob))
+        }
+    else if (item.GetType() == typeof(CloudPageBlob))
         {
     CloudPageBlob pageBlob = (CloudPageBlob)item;
 
@@ -251,14 +257,14 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 例如，请考虑名为 `photos` 的容器中包含的下面一组
 块 Blob：
 
-	photo1.jpg
-	2010/architecture/description.txt
-	2010/architecture/photo3.jpg
-	2010/architecture/photo4.jpg
-	2011/architecture/photo5.jpg
-	2011/architecture/photo6.jpg
-	2011/architecture/description.txt
-	2011/photo7.jpg
+    photo1.jpg
+    2010/architecture/description.txt
+    2010/architecture/photo3.jpg
+    2010/architecture/photo4.jpg
+    2011/architecture/photo5.jpg
+    2011/architecture/photo6.jpg
+    2011/architecture/description.txt
+    2011/photo7.jpg
 
 当你对“photos”容器调用 **ListBlobs** 时（如上面的示例所示），返回的集合将
 包含 **CloudBlobDirectory** 和 **CloudBlockBlob** 对象，分别表示最高层中
@@ -399,5 +405,5 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
   [.NET 存储客户端库参考]: http://msdn.microsoft.com/zh-cn/library/azure/dn495001(v=azure.10).aspx
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [表存储]: /zh-cn/develop/net/how-to-guides/table-services/
-  [SQL Database]: /zh-cn/develop/net/how-to-guides/sql-database/
+  [表存储]: /en-us/develop/net/how-to-guides/table-services/
+  [SQL Database]: /en-us/develop/net/how-to-guides/sql-database/

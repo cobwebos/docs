@@ -38,17 +38,17 @@
 
 2.  在快速入门选项卡中，单击“选择平台”下的“Windows Phone 8”，然后展开“创建新的 Windows Phone 8 应用程序” 。
 
-   	![][1]
+    ![][1]
 
-   	此时将显示三个简单步骤，描述如何创建与移动服务连接的 Windows Phone 应用程序。
+    此时将显示三个简单步骤，描述如何创建与移动服务连接的 Windows Phone 应用程序。
 
-  	![][2]
+    ![][2]
 
 3.  在本地计算机或虚拟机上下载并安装 [Visual Studio Professional 2013][Visual Studio Professional 2013]（如果尚未这么做）。
 
 4.  在“下载你的服务并将其发布到云”下面单击“下载” 。
 
-  	随即将会下载一个解决方案，其中包含移动服务的项目，以及已连接到移动服务的示例*待办事项列表*应用程序的项目。将压缩的项目文件保存到本地计算机，并记下保存位置。
+    随即将会下载一个解决方案，其中包含移动服务的项目，以及已连接到移动服务的示例*待办事项列表*应用程序的项目。将压缩的项目文件保存到本地计算机，并记下保存位置。
 
 5.  在“将服务发布到云”下面，下载发布配置文件，将下载的文件保存到本地计算机，然后记下保存位置 。
 
@@ -70,7 +70,9 @@
             "XXXXXXX-APPLICATION-KEY-XXXXXXXX");</code></pre>
 
 	<p>现在，客户端将会访问已发布到 Azure 的移动服务。</p></li>
+
 <li><p>（可选）如果要创建 Windows Phone 8.1 应用程序，请在解决方案资源管理器中右键单击项目，单击“属性”，将“目标 Windows Phone 操作系统版本”设置为“Windows Phone 8.1”，然后单击“是”以升级项目 。</p></li>
+
 <li><p>按 <b>F5</b> 键重新生成项目并启动应用程序。</p></li>
 
 <li><p>在应用程序中键入有意义的文本（例如 *Complete the tutorial*），然后单击“保存” 。</p>
@@ -90,16 +92,16 @@
 ## <a name="next-steps"> </a>后续步骤
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-* [数据处理入门][数据处理入门]
-  <br/>了解有关使用移动服务存储和查询数据的详细信息。
+-   [数据处理入门][数据处理入门]
+    了解有关使用移动服务存储和查询数据的详细信息。
 
-* [身份验证入门][身份验证入门]
-  <br/>了解如何使用标识提供者对应用程序的用户进行身份验证。
+-   [身份验证入门][身份验证入门]
+    了解如何使用标识提供者对应用程序的用户进行身份验证。
 
-* [推送通知入门][推送通知入门]
-  <br/>了解如何向应用程序发送一条非常简单的推送通知。
+-   [推送通知入门][推送通知入门]
+    了解如何向应用程序发送一条非常简单的推送通知。
 
-  [Windows 应用商店 C#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started "Windows 应用商店 C#"
+  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started "Windows 应用商店 C#"
   [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started "Windows 应用商店 JavaScript"
   [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started "Windows Phone"
   [iOS]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started "iOS"
@@ -108,7 +110,7 @@
   [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started/ "JavaScript 后端"
   [JavaScript 后端版本]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started
   [0]: ./media/mobile-services-windows-phone-get-started/mobile-quickstart-completed-wp8.png
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A30A4DDE2&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-phone-get-started%2F
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A30A4DDE2&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-phone-get-started%2F
   [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
   [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
   [1]: ./media/mobile-services-dotnet-backend-windows-phone-get-started/mobile-portal-quickstart-wp8.png

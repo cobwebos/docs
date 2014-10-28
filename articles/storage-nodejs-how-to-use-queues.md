@@ -139,7 +139,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-> [WACOM.NOTE]
+> [WACN.NOTE]
 > 当队列中没有消息时使用 **peekMessage** 不会返回错误，但也不会返回消息。
 
 ## <a name="get-message"> </a>如何：取消对下一条消息的排队
@@ -171,7 +171,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
         }
     });
 
-> [WACOM.NOTE]
+> [WACN.NOTE]
 > 当队列中没有消息时使用 **getMessages** 不会返回错误，但也不会返回消息。
 
 ## <a name="change-contents"> </a>如何：更改已排队消息的内容
