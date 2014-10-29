@@ -350,7 +350,7 @@ ExecuteSampleSplitMerge.ps1
 
 此错误表示您的 SSL 证书未正确配置。请按照“与 Web 浏览器连接”部分中的说明进行操作。
 
-[AZURE.INCLUDE [elastic-scale-include][elastic-scale-include]]
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 
 <!--Image references-->
 
@@ -365,4 +365,3 @@ ExecuteSampleSplitMerge.ps1
   [使用服务器资源管理器浏览存储资源]: http://msdn.microsoft.com/en-us/library/azure/ff683677.aspx
   []: ./media/sql-database-elastic-scale-split-and-merge-tutorial/storage.png
   [1]: ./media/sql-database-elastic-scale-split-and-merge-tutorial/logs.png
-  [elastic-scale-include]: ../includes/elastic-scale-include.md

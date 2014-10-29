@@ -18,7 +18,6 @@
 
 Azure SQL Database 灵活扩展引用现已添加到您的项目。
 
-[AZURE.INCLUDE [elastic-scale-include][elastic-scale-include]]
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 
   [NuGet Visual Studio 扩展库]: http://docs.nuget.org/docs/start-here/installing-nuget
-  [elastic-scale-include]: ../includes/elastic-scale-include.md

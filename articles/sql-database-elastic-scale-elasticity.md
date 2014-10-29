@@ -132,7 +132,7 @@
 
 为了促进水平和垂直方案的实际实现，已在脚本中心上创建并发布了许多[分片灵活性示例脚本][分片灵活性示例脚本]。编写这些 PowerShell Runbook 旨在使其在 Azure Automation 服务中运行，它们提供了许多与灵活扩展客户端库和 Azure SQL Database 交互的方法。通过基于这些代码示例进行构建，或从其中提取部分代码，开发人员可以生成必要的脚本，以使其应用程序的水平缩放、垂直缩放或这两种方案实现自动化。
 
-[AZURE.INCLUDE [elastic-scale-include][elastic-scale-include]]
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 
 <!--Image references--> 
 <!--anchors-->
@@ -142,4 +142,3 @@
   [更改服务层和性能级别]: http://msdn.microsoft.com/library/azure/dn369872.aspx
   [操作数据引入]: ./media/sql-database-elastic-scale-elasticity/data-ingestion.png
   [分片灵活性示例脚本]: http://go.microsoft.com/?linkid=9862617
-  [elastic-scale-include]: ../includes/elastic-scale-include.md

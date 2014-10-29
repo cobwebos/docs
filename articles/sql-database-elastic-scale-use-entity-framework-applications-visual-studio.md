@@ -255,7 +255,7 @@ Microsoft 模式和实践团队已发布[暂时性故障处理应用程序块][�
 
 实体框架应用程序可以从 Azure SQL Database 灵活扩展中轻松受益。通过本文档中概述的步骤，EF 应用程序可以通过重构 EF 应用程序中使用的 **DbContext** 子类的构造函数来使用灵活扩展的数据依赖路由功能。这将所需的更改限制到 **DbContext** 类已经存在的位置。此外，EF 应用程序可以通过将调用必要的 EF 迁移的步骤与新分片的注册和灵活扩展分片映射中的映射进行结合，来继续从自动架构部署中受益。
 
-[AZURE.INCLUDE [elastic-scale-include][elastic-scale-include]]
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 
 <!--Image references-->
 
@@ -266,4 +266,3 @@ Microsoft 模式和实践团队已发布[暂时性故障处理应用程序块][�
   [灵活扩展术语库]: ./sql-database-elastic-scale-glossary.md
   [暂时性故障处理应用程序块]: http://msdn.microsoft.com/en-us/library/dn440719(v=pandp.60).aspx
   [重试执行策略的限制（从 EF6 开始）]: http://msdn.microsoft.com/en-us/data/dn307226
-  [elastic-scale-include]: ../includes/elastic-scale-include.md

@@ -111,7 +111,7 @@ Azure SQL Database 联合功能将随 Web/企业版一起于 2015 年 9 月停�
 
 -   对联合成员执行 SWITCH OUT 语句将使生成的数据库能够利用所有 Azure SQL Database 功能（即新版本、备份、PITR、审核等）。
 
-[AZURE.INCLUDE [elastic-scale-include][elastic-scale-include]]
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 
 <!--Anchors--> 
 <!--Image references-->
@@ -133,4 +133,3 @@ Azure SQL Database 联合功能将随 Web/企业版一起于 2015 年 9 月停�
   [拆分和合并分片]: ./sql-database-elastic-scale-overview-split-and-merge.md
   [分片灵活性]: ./sql-database-elastic-scale-elasticity.md
   [客户端缓存]: ./sql-database-elastic-scale-shard-map-management.md
-  [elastic-scale-include]: ../includes/elastic-scale-include.md

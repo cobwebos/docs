@@ -393,9 +393,8 @@ Database\_C
 
 但是，在需要移动数据的情况下，需要拆分/合并服务并结合使用必要的分片映射更新，才能安排在分片之间移动数据。有关使用拆分/合并服务的详细信息，请参阅[拆分/合并概述][拆分/合并概述]
 
-[AZURE.INCLUDE [elastic-scale-include][elastic-scale-include]]
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 
   [数据依赖路由]: ./sql-database-elastic-scale-data-dependent-routing.md
   [添加新分片]: ./sql-database-elasic-scale-add-a-shard.md
   [拆分/合并概述]: ./sql-database-elastic-scale-overview-split-and-merge.md
-  [elastic-scale-include]: ../includes/elastic-scale-include.md

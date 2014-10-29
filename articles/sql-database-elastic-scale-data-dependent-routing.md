@@ -96,10 +96,9 @@
 
 确保分片的所有局部操作的事务属性。例如，通过数据依赖路由提交的事务将在目标分片范围内执行以供连接。此时，没有提供用于将多个连接包含在一个事务中的功能，因此对于在分片上执行的操作，没有事务保证。
 
-[AZURE.INCLUDE [elastic-scale-include][elastic-scale-include]]
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 
   [分片映射管理器]: ./sql-database-elastic-scale-shard-map-management.md
   [管理灵活扩展凭据]: sql-database-elastic-scale-manage-credentials.md
   [暂时性故障处理]: http://msdn.microsoft.com/en-us/library/dn440719(v=pandp.60).aspx
   [Enterprise Library - 暂时性故障处理应用程序块]: http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/
-  [elastic-scale-include]: ../includes/elastic-scale-include.md

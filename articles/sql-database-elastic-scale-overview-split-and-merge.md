@@ -163,7 +163,7 @@ WAD 中的日志和计数器通常需要对 Microsoft 团队可见，以免您�
 -   请确保分片键在您的主键或唯一索引定义中是起始列。这将确保拆分/合并验证查询和实际的数据移动和删除操作（始终在分片键范围上执行）的最佳性能。
 -   出于性能和成本原因，将拆分/合并服务共置于该区域和数据库所驻留的数据中心中通常是最佳选择。
 
-[AZURE.INCLUDE[elastic-scale-include][elastic-scale-include]]
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 
 ## 参考
 
@@ -184,4 +184,3 @@ WAD 中的日志和计数器通常需要对 Microsoft 团队可见，以免您�
   [Azure 诊断]: ./media/sql-database-elastic-scale-split-and-merge/diagnostics.png
   [配置]: ./media/sql-database-elastic-scale-split-and-merge/diagnostics-config.png
   [Azure 存储资源管理器]: http://azurestorageexplorer.codeplex.com/
-  [elastic-scale-include]: ../includes/elastic-scale-include.md

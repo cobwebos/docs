@@ -54,9 +54,8 @@
 
 **垂直扩展**：向上（或向下）扩展单个分片的性能水平的行为。例如，将分片从标准版更改为高级版（出于性能原因需要此更改）。
 
-[AZURE.INCLUDE [elastic-scale-include][elastic-scale-include]]
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]  
 
 <!--Image references-->
 
   [灵活扩展术语]: ./media/sql-database-elastic-scale-glossary/glossary.png
-  [elastic-scale-include]: ../includes/elastic-scale-include.md

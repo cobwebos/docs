@@ -450,7 +450,7 @@ Microsoft Azure SQL Database 灵活扩展包括自托管服务。此分发包括
 
 <p>不会对存储在此数据库中的数据进行加密。若要避免从服务请求中公开凭据或其他敏感信息，请保护此数据库并总是以安全方式访问它。此外，由于服务部署的 Web 角色和辅助角色都可以访问元数据库，因此请同样确保这两个角色是最新且安全的。</p>
 
-<p>[AZURE.INCLUDE <a href="../includes/elastic-scale-include.md">elastic-scale-include</a>]</p>
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 
   [配置证书]: #configuring-certificates
   [允许的 IP 地址]: #allowed-ip-addresses

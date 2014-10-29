@@ -17,7 +17,7 @@
 
 某些应用程序使用最简单的方法为每个租户创建一个单独的数据库。这就是**单租户分片模式**，它提供了隔离、备份/还原功能以及根据租户粒度进行的资源缩放。借助单租户分片，每个数据库都将与特定租户 ID 值（或客户键值）关联，而该键无需始终出现在数据本身中。应用程序负责将每个请求路由到相应的数据库。
 
-![][]
+![][1]
 
 其他方案是将多个租户一同打包到数据库中，而非将其隔离到单独的数据库中。这是典型的**多租户分片模式**，该模式的使用可能取决于对成本、效率或应用程序可管理大量极小型租户这一情况的考虑。在多租户分片中，数据库表中的行全都被设计为带有可标识租户 ID 的键或分片键。同样，应用程序层负责将租户的请求路由到相应的数据库。
 
@@ -25,12 +25,11 @@
 
 无论使用何种分片模型，一个特殊的数据结构（称为**分片映射**）都可以用作查找表，该表将分片键值与数据库相关联；这使应用程序可以为数据库请求执行路由。这称为**数据依赖路由**，它是应用程序使用分片数据层时所需的核心功能。[灵活扩展客户端 API][灵活扩展客户端 API] 提供了[管理分片映射][管理分片映射]和启用应用程序中有效且易于使用的[数据依赖路由功能][数据依赖路由功能]时所需的一组丰富功能。
 
-[AZURE.INCLUDE [elastic-scale-include][elastic-scale-include]]
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 
 <!--Image references-->
 
-  []: ./media/sql-database-elastic-scale-sharding-overview/tenancy.png
+[1]: ./media/sql-database-elastic-scale-sharding-overview/tenancy.png
   [灵活扩展客户端 API]: http://go.microsoft.com/?linkid=9862592
   [管理分片映射]: http://go.microsoft.com/?linkid=9862595
   [数据依赖路由功能]: http://go.microsoft.com/?linkid=9862596
-  [elastic-scale-include]: ../includes/elastic-scale-include.md

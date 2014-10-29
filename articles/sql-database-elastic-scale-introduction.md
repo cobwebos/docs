@@ -28,7 +28,7 @@ Azure SQL Database 灵活扩展将交付云计算约定，并在 Azure SQL DB �
 
 ### 通过分片灵活扩展
 
-![][]
+![][0]
 
 该图在左侧和右侧显示开发人员和管理员。当提交局部分片操作，而非具有其自己的语义的跨分片操作时，客户期望获取完全的 T-SQL 功能。
 通过以下特定功能，Azure SQL Database 灵活扩展的公共预览版可更加轻松地开发标准 Azure SQL DB 应用程序：
@@ -62,17 +62,16 @@ Azure SQL Database 灵活扩展将交付云计算约定，并在 Azure SQL DB �
 
 其他方案是将多个租户一同打包到数据库中，而非将其隔离到单独的数据库中。这是典型的**多租户分片模式**，该模式的使用可能取决于对成本、效率或应用程序可管理大量极小型租户这一情况的考虑。在多租户分片中，数据库表中的行全都被设计为带有可标识租户 ID 的键或分片键。同样，应用程序层负责将租户的请求路由到相应的数据库。
 
-[AZURE.INCLUDE [elastic-scale-include][elastic-scale-include]]
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 
 <!--Anchors--> 
 <!--Image references-->
 
   [灵活扩展词汇表]: ./sql-database-elastic-scale-glossary.md
-  []: ./media/sql-database-elastic-scale-intro/overview.png
+  [0]: ./media/sql-database-elastic-scale-intro/overview.png
   [分片映射管理]: ./sql-database-elastic-scale-shard-map-management.md
   [数据依赖路由]: ./sql-database-elastic-scale-data-dependent-routing.md
   [多分片查询]: ./sql-database-elastic-scale-multishard-querying.md
   [分片灵活性]: ./sql-database-elastic-scale-elasticity.md
   [通过灵活扩展拆分和合并]: ./sql-database-elastic-scale-overview-split-and-merge.md
   [1]: ./media/sql-database-elastic-scale-intro/tenancy.png
-  [elastic-scale-include]: ../includes/elastic-scale-include.md

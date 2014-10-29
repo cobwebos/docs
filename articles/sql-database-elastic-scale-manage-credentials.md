@@ -39,9 +39,8 @@
 
     请注意，连接字符串不包含服务器名称和数据库名称。这是因为，**OpenConnectionForKey** 调用基于键自动将连接指向正确的分片。因此，请勿提供数据库名称和服务器名称。
 
-[AZURE.INCLUDE [elastic-scale-include][elastic-scale-include]]
+[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
 
   [灵活扩展客户端 API]: http://go.microsoft.com/?linkid=9862605
   [分片映射管理器]: http://go.microsoft.com/?linkid=9862595
   [数据依赖路由]: ./sql-database-elastic-scale-data-dependent-routing.md
-  [elastic-scale-include]: ../includes/elastic-scale-include.md
