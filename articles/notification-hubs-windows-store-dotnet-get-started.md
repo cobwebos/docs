@@ -29,7 +29,7 @@
 
 1.  如果尚未注册应用程序，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用程序”页][“提交应用程序”页]，用 Microsoft 帐户登录，然后单击“应用程序名称”。
 
-    ![][]
+    ![][0]
 
 2.  在“应用程序名称”中为应用程序键入一个名称，单击“保留应用程序名称”，然后单击“保存”。
 
@@ -236,13 +236,6 @@
 
 <!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /zh-cn/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /zh-cn/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
   [为推送通知注册应用程序]: #register
   [配置通知中心]: #configure-hub
   [将你的应用程序连接到通知中心]: #connecting-app
@@ -253,15 +246,15 @@
   [toast 目录]: http://msdn.microsoft.com/zh-cn/library/windows/apps/hh761494.aspx
   [磁贴目录]: http://msdn.microsoft.com/zh-cn/library/windows/apps/hh761491.aspx
   [徽章概述]: http://msdn.microsoft.com/zh-cn/library/windows/apps/hh779719.aspx
-  [移动服务入门]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started/#create-new-service
   [18]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-scheduler1.png
   [19]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-scheduler2.png
-  [使用通知中心将通知推送到用户]: /en-us/manage/services/notification-hubs/notify-users-aspnet
-  [使用通知中心发送突发新闻]: /en-us/manage/services/notification-hubs/breaking-news-dotnet
+  [使用通知中心将通知推送到用户]: /zh-cn/manage/services/notification-hubs/notify-users-aspnet
+  [使用通知中心发送突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-dotnet
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
 
 <!-- Images. -->
-  []: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-submit-win8-app.png
+  [0]: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-submit-win8-app.png
   [1]: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-win8-app-name.png
   [2]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-win8-app.png
   [3]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-win8-app.png

@@ -3,7 +3,7 @@
 # 移动服务中的身份验证入门
 
 <div class="dev-center-tutorial-selector sublanding">   
-<a href="/en-us/develop/mobile/tutorials/get-started-with-users-dotnet" title="Windows 应用商店 C#">Windows 应用商店 C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-js" title="Windows 应用商店 JavaScript">Windows 应用商店 JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-android" title="Android" class="current">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-html" title="HTML" class="current">HTML</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a></div>
+<a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet" title="Windows 应用商店 C#">Windows 应用商店 C#</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-js" title="Windows 应用商店 JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-android" title="Android" class="current">Android</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-html" title="HTML" class="current">HTML</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a></div>
 
 <div class="dev-onpage-video-clear clearfix">
 <div class="dev-onpage-left-content">
@@ -31,7 +31,7 @@
 
 1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务”，然后单击你的移动服务。
 
-    ![][]
+    ![][0]
 
 2.  单击“仪表板”选项卡，记下**站点 URL** 值。
 
@@ -151,14 +151,14 @@
 
 <!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /en-us/develop/mobile/tutorials/get-started-with-users-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /en-us/develop/mobile/tutorials/get-started-with-users-wp8 "Windows Phone"
-  [iOS]: /en-us/develop/mobile/tutorials/get-started-with-users-ios "iOS"
-  [Android]: /en-us/develop/mobile/tutorials/get-started-with-users-android "Android"
-  [HTML]: /en-us/develop/mobile/tutorials/get-started-with-users-html "HTML"
-  [Xamarin.iOS]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /en-us/develop/mobile/tutorials/get-started-with-users-xamarin-android "Xamarin.Android"
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-users-js "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-users-wp8 "Windows Phone"
+  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-users-ios "iOS"
+  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-users-android "Android"
+  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-users-html "HTML"
+  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-ios "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android "Xamarin.Android"
   [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-with-Authentication-in-Windows-Azure-Mobile-Services
   [注册应用程序以进行身份验证并配置移动服务]: #register
   [将表权限限制给已经过身份验证的用户]: #permissions
@@ -173,7 +173,7 @@
   [Azure Active Directory]: /zh-cn/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
 
 <!-- Images. -->
-  []: ./media/mobile-services-android-get-started-users/mobile-services-selection.png
+  [0]: ./media/mobile-services-android-get-started-users/mobile-services-selection.png
   [1]: ./media/mobile-services-android-get-started-users/mobile-service-uri.png
 
   [2]: ./media/mobile-services-android-get-started-users/mobile-identity-tab.png

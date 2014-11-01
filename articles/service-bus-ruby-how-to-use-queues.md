@@ -18,7 +18,7 @@
 -   [如何处理应用程序崩溃和不可读消息][如何处理应用程序崩溃和不可读消息]
 -   [后续步骤][后续步骤]
 
-[WACOM.INCLUDE [howto-service-bus-queues][howto-service-bus-queues]]
+[WACOM.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
 ## <span id="create-a-ruby-application"></span></a>创建 Ruby 应用程序
 
@@ -126,5 +126,5 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [在 Azure 上创建 Ruby 应用程序]: /zh-cn/develop/ruby/tutorials/web-app-with-linux-vm/
   [队列、主题和订阅]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh367516.aspx
   [Azure SDK for Ruby]: https://github.com/WindowsAzure/azure-sdk-for-ruby
-  [如何使用 Azure 队列服务]: /en-us/develop/ruby/how-to-guides/queue-service/
+  [如何使用 Azure 队列服务]: /zh-cn/develop/ruby/how-to-guides/queue-service/
   [Azure 队列和 Azure Service Bus 队列 - 比较与对照]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh767287.aspx

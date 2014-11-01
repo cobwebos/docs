@@ -16,7 +16,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
 
     ![Azure PowerShell 图标][Azure PowerShell 图标]
 
-    [WACOM.INCLUDE [install-dev-tools][install-dev-tools]]
+    [WACOM.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
 
 2.  将目录更改为 **c:\\node** 目录，然后输入以下命令创建一个名为 **chatapp** 的新解决方案和一个名为 **WorkerRole1** 的辅助角色：
 
@@ -123,7 +123,6 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
 
   [显示托管在 Azure 上的服务的浏览器窗口]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-10.png
   [Azure PowerShell 图标]: ./media/cloud-services-nodejs-chat-app-socketio/azure-powershell-start.png
-  [install-dev-tools]: ../includes/install-dev-tools.md
   [new-azureservice 和 add-azurenodeworkerrole cmdlet 的输出]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-1.png
   [Socket.IO GitHub 存储库]: https://github.com/LearnBoost/socket.io/tree/0.9.14
   [显示 https://github.com/LearnBoost/socket.io/tree/master/examples/chat 的浏览器窗口，其中 ZIP 下载图标突出显示]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png

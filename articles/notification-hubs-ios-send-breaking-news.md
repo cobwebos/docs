@@ -32,7 +32,7 @@
 
     Storyboard 应类似于：
 
-    ![][]
+    ![][0]
 
 2.  在助手编辑器中，为所有开关创建插座并称它们为“WorldSwitch”、“PoliticsSwitch”、“BusinessSwitch”、“TechnologySwitch”、“ScienceSwitch”、“SportsSwitch”
 
@@ -196,7 +196,7 @@
 
 ## <a name="send"></a><span class="short-header">发送通知</span>从后端发送通知
 
-[WACOM.INCLUDE [notification-hubs-back-end][notification-hubs-back-end]]
+[WACOM.INCLUDE [notification-hubs-back-end](../includes/notification-hubs-back-end.md)]
 
 ## <a name="test-app"></a>运行应用程序并生成通知
 
@@ -234,20 +234,17 @@
 
 <!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/ "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/notification-hubs-windows-phone-send-breaking-news/ "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-send-breaking-news/ "iOS"
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
   [向应用程序中添加类别选择]: #adding-categories
   [注册通知]: #register
   [从后端发送通知]: #send
   [运行应用程序并生成通知]: #test-app
-  [通知中心入门]: /en-us/manage/services/notification-hubs/get-started-notification-hubs-ios/
+  [通知中心入门]: /zh-cn/manage/services/notification-hubs/get-started-notification-hubs-ios/
 
 <!-- Images. -->
-  []: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
+  [0]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
   [1]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios3.png
   [notification-hubs-back-end]: ../includes/notification-hubs-back-end.md
   [2]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios1.png
-  [使用通知中心广播本地化的突发新闻]: /en-us/manage/services/notification-hubs/breaking-news-localized-dotnet/
-  [使用通知中心通知用户]: /en-us/manage/services/notification-hubs/notify-users/
+  [使用通知中心广播本地化的突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-localized-dotnet/
+  [使用通知中心通知用户]: /zh-cn/manage/services/notification-hubs/notify-users/

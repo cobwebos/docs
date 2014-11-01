@@ -4,9 +4,9 @@
 
 <span>本指南演示如何使用 Service Bus 队列。相关示例用 C# 编写且使用 .NET API。所涉及的任务包括**创建队列、发送和接收消息**和**删除队列**。有关队列的详细信息，请参阅[后续步骤][后续步骤]一节。 </span>
 
-[WACOM.INCLUDE [create-account-note][create-account-note]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
-[WACOM.INCLUDE [howto-service-bus-queues][howto-service-bus-queues]]
+[WACOM.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
 ## <span class="short-header">配置应用程序</span>配置应用程序以使用 Service Bus
 
@@ -23,7 +23,7 @@ Service Bus **NuGet** 包是获取 Service Bus API 并为应用程序配置所�
 1.  在“解决方案资源管理器”中，右键单击**“引用”**，然后单击**“管理 NuGet 包”**。
 2.  搜索“WindowsAzure”，然后选择“AzureService Bus”项。单击“安装”以完成安装，然后关闭此对话框。
 
-    ![][]
+    ![][0]
 
 你现在可以为 Service Bus 编写代码。
 
@@ -209,8 +209,6 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 -   构建向 Service Bus 队列发送消息以及从中接收消息的工作应用程序：[Service Bus 中转消息传送 .NET教程][Service Bus 中转消息传送 .NET教程]。
 
   [后续步骤]: #next-steps
-  [create-account-note]: ../includes/create-account-note.md
-  [howto-service-bus-queues]: ../includes/howto-service-bus-queues.md
-  []: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
+  [0]: ./media/service-bus-dotnet-how-to-use-queues/getting-started-multi-tier-13.png
   [队列、主题和订阅。]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh367516.aspx
   [Service Bus 中转消息传送 .NET教程]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh367512.aspx

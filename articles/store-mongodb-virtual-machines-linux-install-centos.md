@@ -13,15 +13,15 @@
 
 ## 创建运行 CentOS Linux 的虚拟机
 
-[WACOM.INCLUDE [create-and-configure-centos-vm-in-portal][create-and-configure-centos-vm-in-portal]]
+[WACOM.INCLUDE [create-and-configure-centos-vm-in-portal](../includes/create-and-configure-centos-vm-in-portal.md)]
 
 ## 附加数据磁盘
 
-[WACOM.INCLUDE [attach-data-disk-centos-vm-in-portal][attach-data-disk-centos-vm-in-portal]]
+[WACOM.INCLUDE [attach-data-disk-centos-vm-in-portal](../includes/attach-data-disk-centos-vm-in-portal.md)]
 
 ## 在该虚拟机上安装和运行 MongoDB
 
-[WACOM.INCLUDE [install-and-run-mongo-on-centos-vm][install-and-run-mongo-on-centos-vm]]
+[WACOM.INCLUDE [install-and-run-mongo-on-centos-vm](../includes/install-and-run-mongo-on-centos-vm.md)]
 
 ## 摘要
 

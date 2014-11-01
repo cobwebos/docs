@@ -24,11 +24,11 @@
 
     ![Azure PowerShell 图标][Azure PowerShell 图标]
 
-[WACOM.INCLUDE [install-dev-tools][install-dev-tools]]
+[WACOM.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
 
 1.  使用 **New-AzureServiceProject** cmdlet 创建新服务项目。
 
-    ![][]
+    ![][0]
 
 2.  使用 **Add-AzureNodeWebRole** cmdlet 向你的服务中添加 Web 角色：
 
@@ -166,8 +166,7 @@
   [步骤 4：修改服务定义和配置文件]: #step4
   [步骤 5：使用 HTTPS 连接到角色实例]: #step5
   [Azure PowerShell 图标]: ./media/cloud-services-nodejs-configure-ssl-certificate/azure-powershell-start.png
-  [install-dev-tools]: ../includes/install-dev-tools.md
-  []: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-01.png
+  [0]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-01.png
   [1]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-02.png
   [2]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-03.png
   [如何对 Node.js 使用 Azure PowerShell]: https://www.windowsazure.com/zh-cn/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings

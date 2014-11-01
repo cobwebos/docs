@@ -21,9 +21,9 @@
 
 ## <a name="define-custom-api"></a>定义自定义 API
 
-[WACOM.INCLUDE [mobile-services-create-custom-api][mobile-services-create-custom-api]]
+[WACOM.INCLUDE [mobile-services-create-custom-api](../includes/mobile-services-create-custom-api.md)]
 
-[WACOM.INCLUDE [mobile-services-android-call-custom-api][mobile-services-android-call-custom-api]]
+[WACOM.INCLUDE [mobile-services-android-call-custom-api](../includes/mobile-services-android-call-custom-api.md)]
 
 ## 后续步骤
 

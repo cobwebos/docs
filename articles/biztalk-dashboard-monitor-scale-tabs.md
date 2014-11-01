@@ -31,20 +31,21 @@
 
 </td>
 </p>
-        <td>Download the BizTalk Services SDK to install the Visual Studio project templates on your on-premise development computer. These templates create the <strong>BizTalk Services</strong> (bridge) and the <strong>BizTalk Service Artifacts</strong> (Transform) Visual Studio projects that are deployed to your BizTalk Service.
-        <br/><br/>
-        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335"> How do I Start Using the Azure BizTalk Services SDK </a> and <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">Installing the Azure BizTalk Services SDK</a> lists the steps to get started.
-        </td>
-    </tr>
+       <td>下载 BizTalk 服务 SDK 以在你的本地开发计算机上安装 Visual Studio 项目模板。这些模板创建将部署到你的 BizTalk 服务的 <strong>BizTalk 服务</strong>（桥接）和 <strong>BizTalk Service 项目</strong>（转换）Visual Studio 项目。
+       <br/><br/>
+     <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">我如何开始使用 Azure BizTalk 服务 SDK </a> 和<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">安装 Azure BizTalk 服务 SDK</a> 列出了要开始的步骤。
+        </td>
+    </tr>
 
-    <tr>
-        <td><strong>Create partner agreements</strong></td>
+    <tr>
+        <td><strong>创建合作伙伴协议</strong></td>
 
-        <td>Opens the Azure BizTalk Services Portal hosted on Azure where you add partners and create X12 and AS2 EDI agreements.
-        <br/><br/>
-        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">Configuring Components for EDI Messaging on BizTalk Services Portal</a> lists the steps to get started.
-        </td>
-    </tr>
+        <td>打开在添加合作伙伴和创建 X12 和 AS2 EDI 协议的 Azure 上托管的 Azure BizTalk 服务门户。
+        <br/><br/>
+      <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置适用于 EDI 消息传递的组件</a>列出了要开始的步骤。
+        </td>
+    </tr>
+
 
 <tr>
 <td>
@@ -358,7 +359,7 @@
   [BizTalk 服务：版本图表]: http://go.microsoft.com/fwlink/p/?LinkID=302279
   [BizTalk 服务：备份和还原]: http://go.microsoft.com/fwlink/p/?LinkID=329873
   [混合连接：将 Azure 网站连接到本地资源]: http://go.microsoft.com/fwlink/p/?LinkId=397538
-  [Azure 移动服务和混合连接]: http://windowsazure.cn/zh-cn/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started
+  [Azure 移动服务和混合连接]: http://azure.microsoft.com/zh-cn/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started
   [1]: http://go.microsoft.com/fwlink/p/?LinkID=397274
   [BizTalk 服务：限制]: http://go.microsoft.com/fwlink/p/?LinkID=302282
   [BizTalk 服务：颁发者名称和颁发者密钥]: http://go.microsoft.com/fwlink/p/?LinkID=303941

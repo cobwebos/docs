@@ -28,7 +28,7 @@
 
 首先，提供了几个 Visual Studio 配置选项，这些选项在分析时可能会有用。若要使分析报告变得有意义，你将需要应用程序的符号（.pdb 文件）与系统库的符号。你将需要确保引用可用的符号服务器。为此，请在 Visual Studio 中的“工具”菜单上，依次选择“选项”、“调试”和“符号”。确保**符号文件 (.pdb) 位置**下方列出了 Microsoft 符号服务器。你也可参考 <http://referencesource.microsoft.com/symbols>，其上可能提供了其他符号文件。
 
-![][]
+![][0]
 
 如果需要，可通过设置“仅我的代码”来简化探查器生成的报告。通过启用“仅我的代码”，可简化函数调用堆栈，以便从报告中隐藏对库和 .NET Framework 的完全内部调用。在“工具”菜单上，选择“选项”。然后展开“性能工具”节点，并选择“常规”。选中“为探查器报告启用‘仅我的代码’”的复选框。
 
@@ -170,7 +170,7 @@ Visual Studio 2010 探查器不支持在模拟器中检测 Azure 二进制文件
   [步骤 4：进行更改并比较性能]: #step4
   [故障排除]: #troubleshooting
   [后续步骤]: #nextSteps
-  []: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
+  [0]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
   [1]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
   [2]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
   [3]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

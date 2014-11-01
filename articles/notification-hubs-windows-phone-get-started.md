@@ -27,7 +27,7 @@
 
 2.  依次单击“应用程序服务”、“Service Bus”、“通知中心”和“快速创建”。
 
-    ![][]
+    ![][0]
 
 3.  键入通知中心的名称，选择所需的区域，然后单击“创建新的通知中心”。
 
@@ -172,12 +172,12 @@
   [WindowsAzure.ServiceBus NuGet 包]: http://nuget.org/packages/WindowsAzure.ServiceBus/
   [toast 目录]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/jj662938(v=vs.105).aspx
   [磁贴目录]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/hh202948(v=vs.105).aspx
-  [使用通知中心将通知推送到用户]: /en-us/manage/services/notification-hubs/notify-users-aspnet
-  [使用通知中心发送突发新闻]: /en-us/manage/services/notification-hubs/breaking-news-dotnet
+  [使用通知中心将通知推送到用户]: /zh-cn/manage/services/notification-hubs/notify-users-aspnet
+  [使用通知中心发送突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-dotnet
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
 
 <!-- Images. -->
-  []: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-from-portal.png
+  [0]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-from-portal.png
   [1]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-from-portal2.png
   [2]: ./media/notification-hubs-windows-phone-get-started/notification-hub-select-from-portal.png
   [3]: ./media/notification-hubs-windows-phone-get-started/notification-hub-select-from-portal2.png

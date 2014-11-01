@@ -2,7 +2,7 @@
 
 # <span id="configurecloudservice"></span></a>如何配置云服务
 
-[WACOM.INCLUDE [免责声明][免责声明]]
+[WACOM.INCLUDE [免责声明](../includes/disclaimer.md)]
 
 你可以在 Azure 管理门户中配置最常使用的云服务设置。或者，如果你希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上载更新文件并使用配置更改更新云服务。无论使用哪种方法，配置更新都将应用于所有角色实例。
 

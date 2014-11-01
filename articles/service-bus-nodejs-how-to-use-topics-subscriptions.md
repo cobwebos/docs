@@ -19,7 +19,7 @@
 -   [如何：删除主题和订阅][如何：删除主题和订阅]
 -   [后续步骤][1]
 
-[WACOM.INCLUDE [howto-service-bus-topics][howto-service-bus-topics]]
+[WACOM.INCLUDE [howto-service-bus-topics](../includes/howto-service-bus-topics.md)]
 
 ## <a name="create-app"></a>创建 Node.js 应用程序
 

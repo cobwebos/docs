@@ -6,11 +6,11 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/web-sites-enom-custom-domain-name/" title="网站" class="current">网站</a> | <a href="/zh-cn/documentation/articles/web-sites-enom-traffic-manager-custom-domain-name/" title="使用流量管理器的网站">使用流量管理器的网站</a></div>
 
-[WACOM.INCLUDE [介绍][介绍]]
+[WACOM.INCLUDE [介绍](../includes/custom-dns-web-site-intro.md)]
 
 本文提供了如何将从 [eNom][eNom] 购买的自定义域名用于 Azure 网站的说明。
 
-[WACOM.INCLUDE [introfooter][introfooter]]
+[WACOM.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
 本文内容：
 
@@ -21,11 +21,11 @@
 
 ## <a name="understanding-records"></a>了解 DNS 记录
 
-[WACOM.INCLUDE [understandingdns][understandingdns]]
+[WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-raw.md)]
 
 ## <a name="bkmk_configsharedmode"></a>为基本、共享或标准模式配置网站
 
-[WACOM.INCLUDE [modes][modes]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes.md)]
 
 <a name="bkmk_configurecname"></a>
 
@@ -66,7 +66,7 @@
 
 ## <a name="enabledomain"></a>在网站上启用域名
 
-[WACOM.INCLUDE [modes][1]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-web-site.md)]
 
   [自定义域]: /zh-cn/documentation/articles/web-sites-custom-domain-name "自定义域"
   [GoDaddy]: /zh-cn/documentation/articles/web-sites-godaddy-custom-domain-name "GoDaddy"
@@ -79,9 +79,7 @@
   [Directnic]: /zh-cn/documentation/articles/web-sites-directnic-custom-domain-name "Directnic"
   [网站]: /zh-cn/documentation/articles/web-sites-enom-custom-domain-name/ "网站"
   [使用流量管理器的网站]: /zh-cn/documentation/articles/web-sites-enom-traffic-manager-custom-domain-name/ "使用流量管理器的网站"
-  [介绍]: ../includes/custom-dns-web-site-intro.md
   [eNom]: https://enom.com
-  [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
   [了解 DNS 记录]: #understanding-records
   [为基本、共享或标准模式配置网站]: #bkmk_configsharedmode
   [为自定义域添加 DNS 记录]: #bkmk_configurecname
@@ -90,4 +88,3 @@
   [modes]: ../includes/custom-dns-web-site-modes.md
   [“DNS 区域文件”选项卡]: ./media/web-sites-custom-domain-name/e-hostrecords.png
   [区域文件编辑器]: ./media/web-sites-custom-domain-name/e-editrecords.png
-  [1]: ../includes/custom-dns-web-site-enable-on-web-site.md

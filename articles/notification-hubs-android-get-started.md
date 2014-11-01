@@ -28,7 +28,7 @@
 
 ## <span id="register"></span></a>启用 Google Cloud Messaging
 
-[WACOM.INCLUDE [启用 GCM][启用 GCM]]
+[WACOM.INCLUDE [启用 GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
 接下来，你将使用此 API 密钥值让通知中心向 GCM 进行身份验证并代表你的应用程序发送推送通知。
 
@@ -38,7 +38,7 @@
 
 2.  依次单击“应用程序服务”、“Service Bus”、“通知中心”和“快速创建”。
 
-    ![][]
+    ![][0]
 
 3.  键入通知中心的名称，选择所需的区域，然后单击“创建新的通知中心”。
 
@@ -74,7 +74,7 @@
 
 ### 将 Google Play Services 添加到项目
 
-[WACOM.INCLUDE [添加 Play Services][添加 Play Services]]
+[WACOM.INCLUDE [添加 Play Services](../includes/mobile-services-add-Google-play-services.md)]
 
 ### 添加代码
 
@@ -329,29 +329,27 @@
   [此处]: http://go.microsoft.com/fwlink/?LinkId=389797
   [移动服务 Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
   [Azure 免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
-  [启用 GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
 <!-- Images. --> 
 
-  []: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal.png
+  [0]: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal.png
   [1]: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal2.png
   [2]: ./media/notification-hubs-android-get-started/notification-hub-select-from-portal.png
   [3]: ./media/notification-hubs-android-get-started/notification-hub-select-from-portal2.png
   [4]: ./media/notification-hubs-android-get-started/notification-hub-configure-android.png
   [5]: ./media/notification-hubs-android-get-started/notification-hub-create-android-app.png
   [6]: ./media/notification-hubs-android-get-started/notification-hub-create-android-app2.png
-  [添加 Play Services]: ../includes/mobile-services-add-Google-play-services.md
   [7]: ./media/notification-hubs-android-get-started/notification-hub-android-new-class.png
   [REST 接口]: http://msdn.microsoft.com/zh-cn/library/azure/dn223264.aspx
   [8]: ./media/notification-hubs-android-get-started/notification-hub-create-console-app.png
   [WindowsAzure.ServiceBus NuGet 包]: http://nuget.org/packages/WindowsAzure.ServiceBus/
-  [移动服务入门]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started/#create-new-service
   [9]: ./media/notification-hubs-android-get-started/notification-hub-scheduler1.png
   [10]: ./media/notification-hubs-android-get-started/notification-hub-scheduler2.png
   [11]: ./media/notification-hubs-android-get-started/notification-hub-create-android-app7.png
   [12]: ./media/notification-hubs-android-get-started/notification-hub-create-android-app8.png
   [13]: ./media/notification-hubs-android-get-started/notification-hub-android-toast.png
-  [使用通知中心将通知推送到用户]: /en-us/manage/services/notification-hubs/notify-users-aspnet
-  [使用通知中心发送突发新闻]: /en-us/manage/services/notification-hubs/breaking-news-dotnet
+  [使用通知中心将通知推送到用户]: /zh-cn/manage/services/notification-hubs/notify-users-aspnet
+  [使用通知中心发送突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-dotnet
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx

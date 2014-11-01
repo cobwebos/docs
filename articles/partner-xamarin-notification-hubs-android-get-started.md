@@ -34,7 +34,7 @@
 
 1.  导航到 [Google API][Google API] 网站，使用你的 Google 帐户凭据登录，然后单击“Create project...”（创建项目...）。
 
-    ![][]
+    ![][0]
 
     <div class="dev-callout"><b>说明</b>
 <p>如果你已拥有现成项目，则在登录后你将定向到&ldquo;仪表板&rdquo;页。若要从仪表板新建一个项目，请展开&ldquo;API 项目&rdquo;，单击&ldquo;其他项目&rdquo;下面的&ldquo;创建...&rdquo;，然后输入项目名称并单击&ldquo;创建项目&rdquo;。</p>
@@ -403,13 +403,6 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 <!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /zh-cn/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /zh-cn/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
   [NotificationHubs 应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=331329
   [启用 Google Cloud Messaging]: #register
   [配置通知中心]: #configure-hub
@@ -429,7 +422,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
   [针对 Android 的通知中心操作指南]: http://msdn.microsoft.com/zh-cn/library/dn282661.aspx
 
 <!-- Images. -->
-  []: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-developers.png
+  [0]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-developers.png
   [2]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server.png
   [3]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server2.png
   [4]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server3.png
@@ -453,6 +446,3 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
   [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
   [18]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-scheduler1.png
   [19]: ./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-scheduler2.png
-
-
-

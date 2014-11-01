@@ -4,7 +4,7 @@
 
 本指南演示如何使用 Service Bus 中继服务。示例是用 C# 编写的，并且使用 Service Bus 程序集中包含的扩展型 Windows Communication Foundation API，该程序集是用于 Azure 的 .NET 库的组成部分。有关 Service Bus 中继的详细信息，请参阅[后续步骤][后续步骤]一节。
 
-[WACOM.INCLUDE [create-account-note][create-account-note]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
 ## <span class="short-header">什么是 Service Bus 中继</span>什么是 Service Bus 中继
 
@@ -29,7 +29,7 @@ Service Bus 中继使你能够在现有企业环境中托管 WCF 服务。然后
 
 3.  在该管理门户的下方窗格中，单击“创建”。
 
-    ![][]
+    ![][0]
 
 4.  在“添加新命名空间”对话框中，输入命名空间名称。
     系统会立即检查该名称是否可用。
@@ -52,7 +52,7 @@ Service Bus 中继使你能够在现有企业环境中托管 WCF 服务。然后
 
 1.  在左侧导航窗格中，单击“Service Bus”节点以
     显示可用命名空间的列表：
-    ![][]
+    ![][0]
 
 2.  从显示的列表中选择刚刚创建的命名空间：
     ![][3]
@@ -254,7 +254,7 @@ Service Bus **NuGet** 包是获取 Service Bus API 并为应用程序配置所�
   [create-account-note]: ../includes/create-account-note.md
   [中继概念]: ./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png
   [Azure 管理门户]: http://manage.windowsazure.cn
-  []: ./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png
+  [0]: ./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png
   [1]: ./media/service-bus-dotnet-how-to-use-relay/sb-queues-04.png
   [2]: ./media/service-bus-dotnet-how-to-use-relay/getting-started-multi-tier-27.png
   [3]: ./media/service-bus-dotnet-how-to-use-relay/sb-queues-09.png

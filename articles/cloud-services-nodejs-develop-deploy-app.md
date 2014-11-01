@@ -24,7 +24,7 @@
 
     ![Azure PowerShell 图标][Azure PowerShell 图标]
 
-    [WACOM.INCLUDE [install-dev-tools][install-dev-tools]]
+    [WACOM.INCLUDE [install-dev-tools](../includes/install-dev-tools.md)]
 
 2.  在 C 盘新建一个 **node** 目录，然后更改到 c:\\node 目录：
 

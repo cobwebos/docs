@@ -27,7 +27,7 @@
 3.  为发送推送通知，应用程序后端使用句柄与 PNS 联系以定位到特定客户端应用程序实例。
 4.  PNS 将通知转发到句柄所指定的设备。
 
-![][]
+![][0]
 
 ## <span class="short-header">推送通知问题</span>推送通知问题
 
@@ -56,5 +56,5 @@
 
 ![][1]
 
-  []: ./media/notification-hubs-overview/SBPushNotifications1.gif
+  [0]: ./media/notification-hubs-overview/SBPushNotifications1.gif
   [1]: ./media/notification-hubs-overview/SBPushNotifications2.gif

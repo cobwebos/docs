@@ -20,7 +20,7 @@
 -   [如何：删除主题和订阅][如何：删除主题和订阅]
 -   [后续步骤][后续步骤]
 
-[WACOM.INCLUDE [howto-service-bus-topics][howto-service-bus-topics]]
+[WACOM.INCLUDE [howto-service-bus-topics](../includes/howto-service-bus-topics.md)]
 
 ## <span id="CreateApplication"></span></a>创建 PHP 应用程序
 
@@ -33,7 +33,7 @@
 
 ## <span id="GetClientLibrary"></span></a>获取 Azure 客户端库
 
-[WACOM.INCLUDE [get-client-libraries][get-client-libraries]]
+[WACOM.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
 
 ## <span id="ConfigureApp"></span></a>配置应用程序以使用 Service Bus
 
@@ -45,7 +45,7 @@
 下面的示例演示如何包含 autoloader 文件并引用 **ServiceBusService** 类。
 
    > [WACOM.NOTE]
-   > This example (and other examples in this article) assume you have installed the PHP Client Libraries for Azure via Composer. If you installed the libraries manually or as a PEAR package, you will need to reference the <code>WindowsAzure.php</code> autoloader file.
+   > 有关订阅的每条规则都独立处理传入消息，并将其结果消息添加到订阅。此外，每个新订阅都有默认的<b>规则</b>，并具有可将所有消息从主题添加到订阅的筛选器。要只接收匹配你的筛选器的消息，你必须删除默认规则。你可以通过使用 <b>ServiceBusRestProxy->deleteRule</b> 方法删除默认规则。
 
     require_once 'vendor\autoload.php';
     use WindowsAzure\Common\ServicesBuilder;
@@ -101,7 +101,7 @@ Service Bus 队列的管理操作可通过**ServiceBusRestProxy** 类执行。**
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179357
+        // http://msdn.microsoft.com/zh-cn/library/windowsazure/dd179357
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -135,7 +135,7 @@ Service Bus 队列的管理操作可通过**ServiceBusRestProxy** 类执行。**
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179357
+        // http://msdn.microsoft.com/zh-cn/library/windowsazure/dd179357
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -146,7 +146,7 @@ Service Bus 队列的管理操作可通过**ServiceBusRestProxy** 类执行。**
 还可以设置筛选器，以确定发送到主题的哪些消息应该在特定主题订阅中显示。订阅支持的最灵活的一种筛选器是 **SqlFilter**，它实现了一部分 SQL92 功能。SQL 筛选器将对发布到主题的消息的属性进行操作。有关 SqlFilters 的详细信息，请参阅 [SqlFilter.SqlExpression Property][SqlFilter.SqlExpression Property]。
 
    > [WACOM.NOTE]
-   > Each rule on a subscription processes incoming messages independently, adding their result messages to the subscription. In addition, each new subscription has a default <b>Rule</b> with a filter that adds all messages from the topic to the subscription. To receive only messages matching your filter, you must remove the default rule. You can remove the default rule by using the <b>ServiceBusRestProxy->deleteRule</b> method.
+   > 有关订阅的每条规则都独立处理传入消息，并将其结果消息添加到订阅。此外，每个新订阅都有默认的<b>规则</b>，并具有可将所有消息从主题添加到订阅的筛选器。要只接收匹配你的筛选器的消息，你必须删除默认规则。你可以通过使用 <b>ServiceBusRestProxy->deleteRule</b> 方法删除默认规则。
 
 下面的示例将创建一个名为“HighMessages”的订阅，该订阅包含 **SqlFilter** 仅选择具有大于 3 的自定义 **MessageNumber** 属性的消息（有关将自定义属性添加到消息的信息，请参阅[如何：将消息发送到主题][如何：将消息发送到主题]）：
 
@@ -199,7 +199,7 @@ Service Bus 队列的管理操作可通过**ServiceBusRestProxy** 类执行。**
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/hh780775
+        // http://msdn.microsoft.com/zh-cn/library/windowsazure/hh780775
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -264,7 +264,7 @@ Service Bus 队列支持最大为 256 KB 的消息（标头最大为 64 KB，其
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here:
-        // http://msdn.microsoft.com/en-us/library/windowsazure/hh780735
+        // http://msdn.microsoft.com/zh-cn/library/windowsazure/hh780735
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -300,7 +300,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
     catch(ServiceException $e){
         // Handle exception based on error codes and messages.
         // Error codes and messages are here: 
-        // http://msdn.microsoft.com/en-us/library/windowsazure/dd179357
+        // http://msdn.microsoft.com/zh-cn/library/windowsazure/dd179357
         $code = $e->getCode();
         $error_message = $e->getMessage();
         echo $code.": ".$error_message."<br />";
@@ -332,5 +332,5 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [OpenSSL 扩展]: http://php.net/openssl
   [get-client-libraries]: ../includes/get-client-libraries.md
   [require\_once]: http://php.net/require_once
-  [SqlFilter.SqlExpression Property]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+  [SqlFilter.SqlExpression Property]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [队列、主题和订阅]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh367516.aspx

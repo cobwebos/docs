@@ -17,7 +17,7 @@
 -   [如何：删除主题和订阅][如何：删除主题和订阅]
 -   [后续步骤][后续步骤]
 
-[WACOM.INCLUDE [howto-service-bus-topics][howto-service-bus-topics]]
+[WACOM.INCLUDE [howto-service-bus-topics](../includes/howto-service-bus-topics.md)]
 
 **注意：**如果你需要安装 Python 或客户端库，请参阅 [Python 安装指南][Python 安装指南]。
 

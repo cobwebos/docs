@@ -34,7 +34,7 @@ SendGrid 是一项[基于云的电子邮件服务][基于云的电子邮件服�
 
 ## <a name="createaccount"> </a>创建 SendGrid 帐户
 
-[WACOM.INCLUDE [sendgrid-sign-up][sendgrid-sign-up]]
+[WACOM.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="reference"> </a>引用 SendGrid Node.js 模块
 

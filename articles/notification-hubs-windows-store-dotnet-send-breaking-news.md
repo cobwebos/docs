@@ -158,13 +158,13 @@
 
 ## <a name="send"></a><span class="short-header">发送通知</span>从后端发送通知
 
-[WACOM.INCLUDE [notification-hubs-back-end][notification-hubs-back-end]]
+[WACOM.INCLUDE [notification-hubs-back-end](../includes/notification-hubs-back-end.md)]
 
 ## <a name="test-app"></a>运行应用程序并生成通知
 
 1.  在 Visual Studio 中，按 F5 编译并启动应用程序。
 
-    ![][]
+    ![][0]
 
     请注意，应用程序 UI 提供了一组开关，你可以使用它们选择要订阅的类别。
 
@@ -200,22 +200,18 @@
 
 <!-- URLs.-->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/ "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/notification-hubs-windows-phone-send-breaking-news/ "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-send-breaking-news/ "iOS"
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
   [向应用程序中添加类别选择]: #adding-categories
   [注册通知]: #register
   [从后端发送通知]: #send
   [运行应用程序并生成通知]: #test-app
-  [通知中心入门]: /en-us/manage/services/notification-hubs/getting-started-windows-dotnet/
-  [notification-hubs-back-end]: ../includes/notification-hubs-back-end.md
+  [通知中心入门]: /zh-cn/manage/services/notification-hubs/getting-started-windows-dotnet/
 
-  [使用通知中心广播本地化的突发新闻]: /en-us/manage/services/notification-hubs/breaking-news-localized-dotnet/
-  [使用通知中心通知用户]: /en-us/manage/services/notification-hubs/notify-users
+  [使用通知中心广播本地化的突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-localized-dotnet/
+  [使用通知中心通知用户]: /zh-cn/manage/services/notification-hubs/notify-users
 
 <!-- Images. -->
-  []: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png
+  [0]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png
   [1]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png
   [2]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png
 

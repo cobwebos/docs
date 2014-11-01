@@ -60,7 +60,7 @@
 
 2.  在屏幕左下角，单击“新建”。在导航窗格中，单击“网络”，然后单击“虚拟网络”。单击“自定义创建”以启动配置向导。
 
-    ![][]
+    ![][0]
 
 3.  在“虚拟网络详细信息”页上，输入以下信息，然后单击右下角的“下一步”箭头。有关此页面上各项设置的详细信息，请参阅[使用管理门户配置虚拟网络][使用管理门户配置虚拟网络]中的“虚拟网络详细信息”一节。
 
@@ -76,10 +76,10 @@
 
 1.  在“DNS 服务器和 VPN 连接”页面上，输入以下信息，然后单击右下方的向前箭头。
 
-    <div class="dev-callout"> 
-<b>说明</b> 
-<p>可以在此页面上同时选择 **点到站点** 和 **站点到站点** 两种配置。在本教程中，我们选择只配置&ldquo;站点到站点&rdquo;。有关此页上各设置的更多信息，请参阅<a href="http://go.microsoft.com/fwlink/?LinkID=248092">关于使用管理门户配置虚拟网络</a>中的&ldquo;DNS 服务器和 VPN 连接&rdquo;页面。</p> 
-</div>
+	<div class="dev-callout"> 
+	<b>说明</b> 
+	<p>可以在此页面上同时选择 **点到站点** 和 **站点到站点** 两种配置。在本教程中，我们选择只配置&ldquo;站点到站点&rdquo;。有关此页上各设置的更多信息，请参阅<a href="http://go.microsoft.com/fwlink/?LinkID=248092">关于使用管理门户配置虚拟网络</a>中的&ldquo;DNS 服务器和 VPN 连接&rdquo;页面。</p> 
+	</div>
 
 -   **DNS 服务器：**输入要用于名称解析的 DNS 服务器名称和 IP 地址。通常，这是你将用于内部部署的名称解析的 DNS 服务器。此设置不创建 DNS 服务器。为名称键入 *YourDNS*，为 IP 地址键入 *10.1.0.4*。
 -   **配置点到站点 VPN：**此字段保留为空白。
@@ -246,10 +246,10 @@
 -   [Azure 名称解析概述][Azure 名称解析概述]
 
   [在管理门户中配置点到站点 VPN]: http://go.microsoft.com/fwlink/?LinkId=296653
-  [Azure 虚拟网络概述]: http://msdn.microsoft.com/en-us/library/windowsazure/jj156007.aspx
+  [Azure 虚拟网络概述]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj156007.aspx
   [如何创建自定义虚拟机]: http://go.microsoft.com/fwlink/?LinkID=294356
   [在 Azure 虚拟网络中安装 Active Directory 域控制器副本]: http://go.microsoft.com/fwlink/?LinkId=299877
-  [在 Azure 虚拟机中部署 Windows Server Active Directory 的准则]: http://msdn.microsoft.com/en-us/library/windowsazure/jj156090.aspx
+  [在 Azure 虚拟机中部署 Windows Server Active Directory 的准则]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj156090.aspx
   [Azure 虚拟网络配置任务]: http://go.microsoft.com/fwlink/?LinkId=296652
   [关于用于虚拟网络的 VPN 设备]: http://go.microsoft.com/fwlink/?LinkID=248098
   [路由和远程访问服务模板]: http://msdn.microsoft.com/library/windowsazure/dn133801.aspx
@@ -257,11 +257,11 @@
   [启动网关并为网络管理员收集信息]: #StartGateway
   [配置 VPN 设备]: #ConfigVPN
   [Azure 管理门户]: http://manage.windowsazure.com/
-  []: ./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_01_OpenVirtualNetworkWizard.png
+  [0]: ./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_01_OpenVirtualNetworkWizard.png
   [使用管理门户配置虚拟网络]: http://go.microsoft.com/fwlink/?LinkID=248092
   [1]: ./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_02_VirtualNetworkDetails.png
   [2]: ./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVNet_03_DNSServersandVPNConnectivity.png
-  [有关虚拟网络的 VPN 设备]: http://msdn.microsoft.com/en-us/library/windowsazure/jj156075.aspx
+  [有关虚拟网络的 VPN 设备]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj156075.aspx
   [3]: ./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_04_SitetoSite.png
   [4]: ./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVnet_05_VirtualNetworkAddressSpaces.png
   [5]: ./media/virtual-networks-create-site-to-site-cross-premises-connectivity/CreateCrossVNet_06_VirtualNetworkCreatedStatus.png
@@ -274,6 +274,6 @@
   [在管理门户中配置虚拟网络网关]: http://go.microsoft.com/fwlink/?LinkId=299878
   [将虚拟网络设置导出到网络配置文件]: http://go.microsoft.com/fwlink/?LinkID=299880
   [虚拟网络常见问题解答]: http://msdn.microsoft.com/library/windowsazure/dn133803.aspx
-  [使用网络配置文件配置虚拟网络（可能为英文页面）]: http://msdn.microsoft.com/en-us/library/windowsazure/jj156097.aspx
-  [将虚拟机添加到虚拟网络]: http://www.windowsazure.com/en-us/manage/services/networking/add-a-vm-to-a-virtual-network/
+  [使用网络配置文件配置虚拟网络（可能为英文页面）]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj156097.aspx
+  [将虚拟机添加到虚拟网络]: http://www.windowsazure.com/zh-cn/manage/services/networking/add-a-vm-to-a-virtual-network/
   [Azure 名称解析概述]: http://go.microsoft.com/fwlink/?LinkId=248097

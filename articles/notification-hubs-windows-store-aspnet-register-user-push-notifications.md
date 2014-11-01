@@ -18,7 +18,7 @@
 
 4.  在左窗格中，选择“联机”类别，搜索`json.net`，单击 **Json.NET** 包对应的“安装”，然后接受许可协议。
 
-    ![][]
+    ![][0]
 
     这会向你的项目添加第三方 Newtonsoft.Json.dll 程序集。
 
@@ -173,10 +173,8 @@
 
 <!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-aspnet-register-user-push-notifications/ "Windows 应用商店 C#"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-aspnet-register-user-push-notifications/ "iOS"
-  [使用通知中心通知用户]: /en-us/manage/services/notification-hubs/notify-users-aspnet
+  [使用通知中心通知用户]: /zh-cn/manage/services/notification-hubs/notify-users-aspnet
 
 <!-- Images. --> 
-  []: ./media/notification-hubs-windows-store-aspnet-register-user-push-notifications/notification-hub-add-nuget-package-json.png
+  [0]: ./media/notification-hubs-windows-store-aspnet-register-user-push-notifications/notification-hub-add-nuget-package-json.png
   [1]: ./media/notification-hubs-windows-store-aspnet-register-user-push-notifications/notification-hub-create-aspnet-class.png

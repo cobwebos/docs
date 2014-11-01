@@ -17,7 +17,7 @@
 -   [如何：处理应用程序崩溃和不可读消息][如何：处理应用程序崩溃和不可读消息]
 -   [后续步骤][后续步骤]
 
-[WACOM.INCLUDE [howto-service-bus-queues][howto-service-bus-queues]]
+[WACOM.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
 ## <a name="create-app"> </a>创建 Node.js 应用程序
 

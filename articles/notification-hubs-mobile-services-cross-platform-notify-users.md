@@ -17,7 +17,7 @@
 
 1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务”，然后单击你的应用程序。
 
-    ![][]
+    ![][0]
 
 2.  单击“API”选项卡，然后单击 API 表中的 **register\_notifications** 条目。
 
@@ -110,19 +110,18 @@
 
 <!-- Anchors. -->  
 
-  [移动服务]: /zh-cn/documentation/articles/notification-hubs-mobile-services-cross-platform-notify-users/ "移动服务"
-  [ASP.NET]: /zh-cn/documentation/articles/notification-hubs-aspnet-cross-platform-notify-users/ "ASP.NET"
-  [使用通知中心通知用户]: /en-us/manage/services/notification-hubs/notify-users
+
+  [使用通知中心通知用户]: /zh-cn/manage/services/notification-hubs/notify-users
   [Azure 通知中心概述]: http://go.microsoft.com/fwlink/p/?LinkId=317339
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
 <!-- Images. -->
-  []: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-services-selection.png
+  [0]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-services-selection.png
   [1]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-custom-api-select.png
   [2]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-portal-data-tables.png
   [3]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-insert-script-push2.png
 
 <!-- URLs. --> 
-  [Windows 应用商店 C\#]: /en-us/manage/services/notification-hubs/breaking-news-dotnet
-  [iOS]: /en-us/manage/services/notification-hubs/breaking-news-ios
+  [Windows 应用商店 C\#]: /zh-cn/manage/services/notification-hubs/breaking-news-dotnet
+  [iOS]: /zh-cn/manage/services/notification-hubs/breaking-news-ios
   [针对 Windows 应用商店的通知中心操作指南]: http://msdn.microsoft.com/zh-cn/library/azure/jj927172.aspx

@@ -37,7 +37,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 2.  单击“Keychain Access”，展开“Certificate Assistant”（证书助理），然后单击“Request a Certificate from a Certificate Authority...”（从证书颁发机构请求证书...）。
 
-    ![][]
+    ![][0]
 
 3.  选择你的“User Email Address”（用户电子邮件地址）和“Common Name”（公用名），确保已选择“Saved to disk”（保存到磁盘），然后单击“Continue”（继续）。将“CA Email Address”（CA 电子邮件地址）字段保留空白，因为它不是必填字段。
 
@@ -313,13 +313,6 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 <!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /zh-cn/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /zh-cn/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
   [生成证书签名请求]: #certificates
   [注册应用程序和启用推送通知]: #register
   [为应用程序创建配置文件]: #profile
@@ -331,7 +324,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
   [Azure 免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
 
 <!-- Images. -->
-  []: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step5.png
+  [0]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step5.png
   [1]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step6.png
   [2]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step7.png
   [iOS 设置门户]: http://go.microsoft.com/fwlink/p/?LinkId=272456
@@ -364,13 +357,13 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
   [28]: ./media/notification-hubs-ios-get-started/notification-hub-create-ios-app.png
   [29]: ./media/notification-hubs-ios-get-started/notification-hub-create-ios-app2.png
   [30]: ./media/notification-hubs-ios-get-started/notification-hub-create-ios-app3.png
-  [REST 接口]: http://msdn.microsoft.com/en-us/library/windowsazure/dn223264.aspx
+  [REST 接口]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn223264.aspx
   [31]: ./media/notification-hubs-ios-get-started/notification-hub-create-console-app.png
   [WindowsAzure.ServiceBus NuGet 包]: http://nuget.org/packages/WindowsAzure.ServiceBus/
   [本地和推送通知编程指南]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
-  [移动服务入门]: /en-us/develop/mobile/tutorials/get-started-ios
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-ios
   [32]: ./media/notification-hubs-ios-get-started/notification-hub-scheduler1.png
   [33]: ./media/notification-hubs-ios-get-started/notification-hub-scheduler2.png
-  [使用通知中心将通知推送到用户]: /en-us/manage/services/notification-hubs/notify-users-aspnet
-  [使用通知中心发送突发新闻]: /en-us/manage/services/notification-hubs/breaking-news-dotnet
+  [使用通知中心将通知推送到用户]: /zh-cn/manage/services/notification-hubs/notify-users-aspnet
+  [使用通知中心发送突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-dotnet
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx

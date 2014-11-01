@@ -19,7 +19,7 @@
 
 -   [Git][Git]
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## 快速入门
 
@@ -59,7 +59,7 @@
 
 ## <a name="provision"></a>设置数据库
 
-[WACOM.INCLUDE [howto-provision-mongolab][howto-provision-mongolab]]
+[WACOM.INCLUDE [howto-provision-mongolab](../includes/howto-provision-mongolab.md)]
 
 ## <a name="create"></a>创建应用程序
 
@@ -427,11 +427,11 @@
 
 #### 获取 MongoLab 连接字符串
 
-[WACOM.INCLUDE [howto-get-connectioninfo-mongolab][howto-get-connectioninfo-mongolab]]
+[WACOM.INCLUDE [howto-get-connectioninfo-mongolab](../includes/howto-get-connectioninfo-mongolab.md)]
 
 #### 将该连接字符串添加到网站的环境变量中
 
-[WACOM.INCLUDE [howto-save-connectioninfo-mongolab][howto-save-connectioninfo-mongolab]]
+[WACOM.INCLUDE [howto-save-connectioninfo-mongolab](../includes/howto-save-connectioninfo-mongolab.md)]
 
 ## 成功！
 
@@ -441,7 +441,7 @@
 
 ## <a name="manage"></a>管理数据库
 
-[WACOM.INCLUDE [howto-access-mongolab-ui][howto-access-mongolab-ui]]
+[WACOM.INCLUDE [howto-access-mongolab-ui](../includes/howto-access-mongolab-ui.md)]
 
 祝贺你！你刚刚启动了由 MongoLab 托管的 MongoDB 数据库提供支持的 Node.js 应用程序！现在，你拥有了一个 MongoLab 数据库，如有任何关于你的数据库的问题或疑虑，或者要获得有关 MongoDB 或 Node 驱动程序本身的帮助，请联系 [support@mongolab.com](mailto:support@mongolab.com)。祝你好运！
 

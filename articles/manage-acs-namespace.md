@@ -72,7 +72,7 @@ ACS 会对自己颁发的所有安全令牌进行签名。在你生成使用 ACS
 
 3.  使用你的 Windows Live ID 登录后，你将重定向到管理门户页。在该页的左下方，单击“Service Bus 和 Access Control”。
 
-    ![][]
+    ![][0]
 
 4.  若要启动 ACS 管理门户，请单击左侧树中的“Access Control”，选择要配置的 ACS 服务命名空间，然后从该页顶部的工具栏中单击“Access Control 服务”按钮。
 
@@ -129,7 +129,7 @@ ACS 会对自己颁发的所有安全令牌进行签名。在你生成使用 ACS
 
 3.  使用你的 Windows Live ID 登录后，你将重定向到管理门户页。在该页的左下方，单击“Service Bus 和 Access Control”。
 
-    ![][]
+    ![][0]
 
 4.  若要启动 ACS 管理门户，请单击左侧树中的“Access Control”，选择要配置的 ACS 服务命名空间，然后从该页顶部的工具栏中单击“Access Control 服务”按钮。
 
@@ -185,7 +185,7 @@ ACS 会对自己颁发的所有安全令牌进行签名。在你生成使用 ACS
 
 3.  使用你的 Windows Live ID 登录后，你将重定向到管理门户页。在该页的左下方，单击“Service Bus 和 Access Control”。
 
-    ![][]
+    ![][0]
 
 4.  若要启动 ACS 管理门户，请单击左侧树中的“Access Control”，选择要配置的 ACS 服务命名空间，然后从该页顶部的工具栏中单击“Access Control 服务”按钮。
 
@@ -236,7 +236,7 @@ ACS 可以接受来自 WS 联合身份验证标识提供程序（例如，AD FS 
 
 3.  使用你的 Windows Live ID 登录后，你将重定向到管理门户页。在该页的左下方，单击“Service Bus 和 Access Control”。
 
-    ![][]
+    ![][0]
 
 4.  若要启动 ACS 管理门户，请单击左侧树中的“Access Control”，选择要配置的 ACS 服务命名空间，然后从该页顶部的工具栏中单击“Access Control 服务”按钮。
 
@@ -294,7 +294,7 @@ ACS 可以接受来自 WS 联合身份验证标识提供程序（例如，AD FS 
 
 3.  使用你的 Windows Live ID 登录后，你将重定向到管理门户页。在该页的左下方，单击“Service Bus 和 Access Control”。
 
-    ![][]
+    ![][0]
 
 4.  若要启动 ACS 管理门户，请单击左侧树中的“Access Control”，选择要配置的 ACS 服务命名空间，然后从该页顶部的工具栏中单击“Access Control 服务”按钮。
 
@@ -367,7 +367,7 @@ ACS 管理服务是 ACS 的一个关键组件，它允许你以编程方式在 A
 
 3.  使用你的 Windows Live ID 登录后，你将重定向到管理门户页。在该页的左下方，单击“Service Bus 和 Access Control”。
 
-    ![][]
+    ![][0]
 
 4.  若要启动 ACS 管理门户，请单击左侧树中的“Access Control”，选择要配置的 ACS 服务命名空间，然后从该页顶部的工具栏中单击“Access Control 服务”按钮。
 
@@ -452,7 +452,7 @@ WS 联合身份验证标识提供程序证书可通过其元数据获得。在�
   [IdentityProviderKey]: http://msdn.microsoft.com/zh-cn/library/hh124084.aspx
   [ACS 错误代码]: http://msdn.microsoft.com/zh-cn/library/gg185949.aspx
   [代码示例：管理服务]: http://msdn.microsoft.com/zh-cn/library/gg185970.aspx
-  []: ./media/manage-acs-namespace/ACS1.png
+  [0]: ./media/manage-acs-namespace/ACS1.png
   [1]: ./media/manage-acs-namespace/ACS2.png
   [2]: ./media/manage-acs-namespace/ACS3.png
   [3]: ./media/manage-acs-namespace/ACS4.png

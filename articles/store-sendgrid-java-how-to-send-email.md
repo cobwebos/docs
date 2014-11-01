@@ -34,7 +34,7 @@ SendGrid 是一项[基于云的电子邮件服务][基于云的电子邮件服�
 
 ## <a name="bkmk_CreateSendGridAcct"> </a>创建 SendGrid 帐户
 
-[WACOM.INCLUDE [sendgrid-sign-up][sendgrid-sign-up]]
+[WACOM.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="bkmk_HowToUseJavax"> </a>如何：使用 javax.mail 库
 

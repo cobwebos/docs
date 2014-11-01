@@ -34,7 +34,7 @@ Azure 管理门户支持两种创建 Service Bus 实体的方法：“快速创�
 
     a. 如果你在此区域或此 Azure 订阅中没有任何命名空间，则会自动为你创建一个新的命名空间。在上述情况下，你将收到两条成功消息：一条针对命名空间的创建，另一条针对实体的创建。
 
-    ![][]
+    ![][0]
 
 在左侧导航栏上单击 **Service Bus** 图标可获取命名空间的列表。你将找到刚创建的新命名空间。在列表中单击此命名空间。你将在该命名空间的下方看到刚创建的实体。
 
@@ -108,7 +108,7 @@ Azure 网站上的 [.NET 开发人员中心][.NET 开发人员中心]。
   [如何：删除 Service Bus 实体]: #delete
   [如何：禁用或启用 Service Bus 实体]: #disableenable
   [其他资源]: #seealso
-  []: ./media/service-bus-manage-message-entities/QueueQuickCreate.png
+  [0]: ./media/service-bus-manage-message-entities/QueueQuickCreate.png
   [Service Bus 文档]: http://www.windowsazure.cn/zh-cn/develop/net/how-to-guides/service-bus-relay/
   [1]: ./media/service-bus-manage-message-entities/AddQueue1.png
   [2]: ./media/service-bus-manage-message-entities/ConfigureQueue.png

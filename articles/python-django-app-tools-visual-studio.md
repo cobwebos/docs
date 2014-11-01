@@ -21,9 +21,9 @@
 
 以下是已完成应用程序的屏幕快照：
 
-![][]
+![][0]
 
-[WACOM.INCLUDE [create-account-note][create-account-note]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
 ## <span id="setup"></span> </a>设置开发环境
 
@@ -153,7 +153,7 @@
 
   [Youtube 视频]: http://www.youtube.com/watch?v=UsLti4KlgAY
   [更新且更全面的教程]: ../web-sites-python-create-deploy-django-app/
-  []: ./media/python-django-app-tools-visual-studio/ptvs-dj-FirstAppInCloud.png
+  [0]: ./media/python-django-app-tools-visual-studio/ptvs-dj-FirstAppInCloud.png
   [create-account-note]: ../includes/create-account-note.md
   [如何安装 Python]: ../python-how-to-install/
 

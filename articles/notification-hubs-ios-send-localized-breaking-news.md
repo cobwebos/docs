@@ -57,7 +57,7 @@
 
 在 MainStoryboard\_iPhone.storyboard 中，添加具有我们支持的三种语言的分段控件：英语、法语和汉语。
 
-![][]
+![][0]
 
 然后确保在 ViewController.h 中添加 IBOutlet，如下所示：
 
@@ -152,7 +152,7 @@
 
 ## <a name="send"></a><span class="short-header">发送本地化的通知</span>从后端发送本地化的通知
 
-[WACOM.INCLUDE [notification-hubs-localized-back-end][notification-hubs-localized-back-end]]
+[WACOM.INCLUDE [notification-hubs-localized-back-end](../includes/notification-hubs-localized-back-end.md)]
 
 ## 后续步骤
 
@@ -178,11 +178,10 @@
 
   [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/ "Windows 应用商店 C#"
   [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-send-localized-breaking-news/ "iOS"
-  [使用通知中心发送突发新闻]: /en-us/manage/services/notification-hubs/breaking-news-ios
+  [使用通知中心发送突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-ios
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
   [操作指南：Service Bus 通知中心（iOS 应用程序）]: http://msdn.microsoft.com/zh-cn/library/jj927168.aspx
-  []: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized1.png
+  [0]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized1.png
   [1]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized2.png
-  [notification-hubs-localized-back-end]: ../includes/notification-hubs-localized-back-end.md
-  [使用通知中心通知用户：ASP.NET]: /en-us/manage/services/notification-hubs/notify-users-aspnet
-  [使用通知中心通知用户：移动服务]: /en-us/manage/services/notification-hubs/notify-users
+  [使用通知中心通知用户：ASP.NET]: /zh-cn/manage/services/notification-hubs/notify-users-aspnet
+  [使用通知中心通知用户：移动服务]: /zh-cn/manage/services/notification-hubs/notify-users

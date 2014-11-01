@@ -20,7 +20,7 @@
 -   [如何删除主题和订阅][如何删除主题和订阅]
 -   [后续步骤][后续步骤]
 
-[WACOM.INCLUDE [howto-service-bus-topics][howto-service-bus-topics]]
+[WACOM.INCLUDE [howto-service-bus-topics](../includes/howto-service-bus-topics.md)]
 
 ## <span id="create-a-ruby-application"></span></a>创建 Ruby 应用程序
 

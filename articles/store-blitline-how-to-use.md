@@ -35,7 +35,7 @@ Blitline 是一项基于云的图像处理服务，此服务提供了企业级�
 
 ## <span id="createaccount"></span></a>创建 Blitline 帐户
 
-[WACOM.INCLUDE [blitline-signup][blitline-signup]]
+[WACOM.INCLUDE [blitline-signup](../includes/blitline-signup.md)]
 
 ## <span id="createjob"></span></a>如何创建 Blitline 作业
 

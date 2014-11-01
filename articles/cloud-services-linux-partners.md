@@ -6,17 +6,17 @@
 
 ## Bitnami
 
-![Bitnami][Bitnami][]
+[![Bitnami](./media/cloud-services-linux-partners/bitnami.png) ](http://bitnami.org/azure/get-started)
 
-<http://bitnami.org/azure/get-started>
+[http://bitnami.org/azure/get-started](http://bitnami.org/azure/get-started)
 
 BitNami 提供了常用 Web 应用程序的完全配置的映像，只需一次单击即可将这些映像部署到 Azure。适用于 Azure 的 BitNami WebPack 和 DevPack 映像免费为 Web 开发人员和应用程序开发人员提供了完全配置的且做好运行准备的环境。BitNami WebPack 将 Wordpress、Drupal 和 Joomla! 捆绑在一起，使开发人员能够选择用于开发网站和博客的最佳平台。BitNami DevPack 提供了一个开发环境，此环境包含 Ruby on Rails、PHP、Django 和 Java 语言运行时及其所有依赖项，以及开发人员在云中生成 Web 应用程序所需的一切。
 
 ## Opscode Chef
 
-![Opscode][Opscode][]
+[![Opscode](./media/cloud-services-linux-partners/opscode.png)](http://www.opscode.com/partners/microsoft) 
 
-www.opscode.com/partners/microsoft
+[www.opscode.com/partners/microsoft](http://www.opscode.com/partners/microsoft)
 
 Opscode 是开发 Chef 的公司，Chef 是由数以千计的组织（从小型创业公司到财富 100 强企业）使用的快速发展的云基础结构自动化框架。利用 Chef 的灵活且可重用的模板（“cookbooks”），你可以轻松管理、缩放和重新生成 Azure 环境。
 
@@ -30,7 +30,7 @@ RightScale® Inc. 云管理使组织能够轻松部署和管理跨公有云、�
 
 ## ScaleXtreme
 
-![ScaleXtreme][ScaleXtreme][]
+[![ScaleXtreme](./media/cloud-services-linux-partners/scaleXtreme.png) ](http://www.scalextreme.com/partners-windows-azure)
 
 [www.scalextreme.com/partners-windows-azure](http://www.scalextreme.com/partners-windows-azure)
 
@@ -40,7 +40,7 @@ ScaleXtreme 使客户能够在 Microsoft Azure 上生成、启动、监视、修
 
 ## SUSE Studio
 
-![SUSE][SUSE][]
+[![SUSE](./media/cloud-services-linux-partners/suse.png) ](http://www.susestudio.com)
 
 [www.susestudio.com](http://www.susestudio.com)
 
@@ -48,7 +48,7 @@ ScaleXtreme 使客户能够在 Microsoft Azure 上生成、启动、监视、修
 
 ## Ubuntu Juju
 
-![Juju][Juju][]
+[![Juju](./media/cloud-services-linux-partners/juju.png)](https://juju.ubuntu.com/)
 
 [http://www.ubuntu.com/cloud/azure](http://www.ubuntu.com/cloud/azure)
 
@@ -58,15 +58,3 @@ Juju 超级按钮是用于部署云服务的预编写指令的集合。已提供
 
 Juju 与设置紧密结合，但独立于基础结构层。可在公有云、私有云或硬件上安装基础平台，并为服务做好准备以便使用 Juju 进行部署、控制和缩放。
 
-  [Bitnami]: ./media/cloud-services-linux-partners/bitnami.png
-  []: http://bitnami.org/azure/get-started
-  [Opscode]: ./media/cloud-services-linux-partners/opscode.png
-  [Opscode]: http://www.opscode.com/partners/microsoft
-  [Rightscale]: ./media/cloud-services-linux-partners/rightscale-tagline-white-bg.png
-  [ScaleXtreme]: ./media/cloud-services-linux-partners/scaleXtreme.png
-  []: http://www.scalextreme.com/partners-windows-azure
-  [SUSE]: ./media/cloud-services-linux-partners/suse.png
-  []: http://www.susestudio.com
-  [Juju]: ./media/cloud-services-linux-partners/juju.png
-  []: https://juju.ubuntu.com/
-  []: http://www.ubuntu.com/cloud/azure

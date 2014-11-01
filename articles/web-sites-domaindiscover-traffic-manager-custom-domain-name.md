@@ -6,13 +6,13 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/web-sites-domaindiscover-custom-domain-name/" title="网站">网站</a> | <a href="/zh-cn/documentation/articles/web-sites-domaindiscover-traffic-manager-custom-domain-name/" title="使用流量管理器的网站" class="current">使用流量管理器的网站</a></div>
 
-[WACOM.INCLUDE [介绍][介绍]]
+[WACOM.INCLUDE [介绍](../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
 本文提供了如何将从 [DomainDiscover.com][DomainDiscover.com] 购买的自定义域名用于 Azure 网站的说明。DomainDiscover.com 是 [TierraNet][TierraNet] 的组成部分。
 
-[WACOM.INCLUDE [tmwebsitefooter][tmwebsitefooter]]
+[WACOM.INCLUDE [tmwebsitefooter](../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
-[WACOM.INCLUDE [introfooter][introfooter]]
+[WACOM.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
 本文内容：
 
@@ -23,11 +23,11 @@
 
 ## <a name="understanding-records"></a>了解 DNS 记录
 
-[WACOM.INCLUDE [understandingdns][understandingdns]]
+[WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-traffic-manager.md)]
 
 ## <a name="bkmk_configsharedmode"></a>将网站配置为标准模式
 
-[WACOM.INCLUDE [modes][modes]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
 <a name="bkmk_configurecname"></a>
 
@@ -62,7 +62,7 @@
 
 ## <a name="enabledomain"></a>启用流量管理器网站
 
-[WACOM.INCLUDE [modes][3]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
   [自定义域]: /zh-cn/documentation/articles/web-sites-custom-domain-name "自定义域"
   [GoDaddy]: /zh-cn/documentation/articles/web-sites-godaddy-custom-domain-name "GoDaddy"
@@ -75,20 +75,16 @@
   [Directnic]: /zh-cn/documentation/articles/web-sites-directnic-custom-domain-name "Directnic"
   [网站]: /zh-cn/documentation/articles/web-sites-domaindiscover-custom-domain-name/ "网站"
   [使用流量管理器的网站]: /zh-cn/documentation/articles/web-sites-domaindiscover-traffic-manager-custom-domain-name/ "使用流量管理器的网站"
-  [介绍]: ../includes/custom-dns-web-site-intro-traffic-manager.md
   [DomainDiscover.com]: https://domaindiscover.com
   [TierraNet]: https://www.tierra.net/
-  [tmwebsitefooter]: ../includes/custom-dns-web-site-traffic-manager-notes.md
-  [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
   [了解 DNS 记录]: #understanding-records
   [将网站配置为标准模式]: #bkmk_configsharedmode
   [为自定义域添加 DNS 记录]: #bkmk_configurecname
   [为网站启用流量管理器]: #enabledomain
   [understandingdns]: ../includes/custom-dns-web-site-understanding-dns-traffic-manager.md
-  [modes]: ../includes/custom-dns-web-site-modes-traffic-manager.md
   [DomainDiscover 登录菜单]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_LoginMenu.png
   [域管理页面]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DomainManagement.png
   [DNS 编辑按钮]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSEditButton.png
   [1]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSAddRecords.png
   [2]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSRecords_TM.png
-  [3]: ../includes/custom-dns-web-site-enable-on-traffic-manager.md
+

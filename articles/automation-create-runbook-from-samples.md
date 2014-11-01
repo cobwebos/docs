@@ -6,7 +6,7 @@
 
 本教程将逐步引导你完成将一个示例“Hello World”Runbook 导入 Azure 自动化、执行该 Runbook 并查看其输出的步骤。
 
-> [WACOM.NOTE] 如需有关自动化入门的更多帮助，请了解如何使用[此处][此处]提供的 PowerShell cmdlet 自动执行 Azure 操作。
+> [WACOM.NOTE] 若要了解如何使用 [Azure PowerShell cmdlets](http://msdn.microsoft.com/zh-cn/library/jj156055.aspx) 实现 Azure 操作的自动化，请参阅 <a href="http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/">Azure 自动化：使用 Azure Active Directory 对Azure 进行身份验证</a>。
 
 ## 示例和实用 Runbook
 
@@ -24,7 +24,7 @@ Azure 自动化团队创建了许多 Runbook 示例以帮助你开始使用自�
 
 **欢迎提供反馈！**如果你正在寻求自动化 Runbook 解决方案或集成模块，请在脚本中心发布脚本请求。如果你对自动化的新功能有任何看法，请在[用户之声][用户之声]上发表你的看法。
 
-[WACOM.INCLUDE [create-account-note][create-account-note]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
 ## 本教程的高级步骤
 
@@ -122,7 +122,6 @@ Azure 自动化团队创建了许多 Runbook 示例以帮助你开始使用自�
   [脚本中心]: http://go.microsoft.com/fwlink/p/?LinkId=393029
   [1]: http://go.microsoft.com/fwlink/?LinkID=391681
   [用户之声]: http://feedback.windowsazure.com/forums/34192--general-feedback
-  [create-account-note]: ../includes/create-account-note.md
   [注册自动化预览版]: #preview
   [下载示例 Runbook]: #download-sample
   [导入、运行示例 Runbook 并查看其输出]: #import-sample

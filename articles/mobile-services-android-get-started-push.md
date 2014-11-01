@@ -3,7 +3,7 @@
 # 移动服务中的推送通知入门
 
 <div class="dev-center-tutorial-selector sublanding">
-<a href="/en-us/develop/mobile/tutorials/get-started-with-push-dotnet" title="Windows 应用商店 C#">Windows 应用商店 C#</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-js" title="Windows 应用商店 JavaScript">Windows 应用商店 JavaScript</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-wp8" title="Windows Phone">Windows Phone</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-ios" title="iOS">iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-android" title="Android" class="current">Android</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
+<a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet" title="Windows 应用商店 C#">Windows 应用商店 C#</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-js" title="Windows 应用商店 JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-android" title="Android" class="current">Android</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
 </div>
 
 本主题说明如何使用 Azure 移动服务向 Android 应用程序发送推送通知。在本教程中，你将要使用 Google Cloud Messaging (GCM) 服务向快速入门项目添加推送通知。完成本教程后，每次插入一条记录时，你的移动服务就会发送一条推送通知。
@@ -27,7 +27,7 @@
 
 ## <span id="register"></span></a>启用 Google Cloud Messaging
 
-[WACOM.INCLUDE [启用 GCM][启用 GCM]]
+[WACOM.INCLUDE [启用 GCM](../includes/mobile-services-enable-Google-cloud-messaging.md)]
 
 接下来，你将使用此 API 密钥值，让移动服务向 GCM 进行身份验证并代表你的应用程序发送推送通知。
 
@@ -35,7 +35,7 @@
 
 1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务”，然后单击你的应用程序。
 
-    ![][]
+    ![][0]
 
 2.  单击“推送”选项卡，输入你在执行前一过程时从 GCM 获取的“API 密钥”值，然后单击“保存”。
 
@@ -47,7 +47,7 @@
 
 ### 将 Google Play Services 添加到项目
 
-[WACOM.INCLUDE [添加 Play Services][添加 Play Services]]
+[WACOM.INCLUDE [添加 Play Services](../includes/mobile-services-add-Google-play-services.md)]
 
 ### 添加代码
 
@@ -237,13 +237,13 @@
 
 <!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /en-us/develop/mobile/tutorials/get-started-with-push-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /en-us/develop/mobile/tutorials/get-started-with-push-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /en-us/develop/mobile/tutorials/get-started-with-push-wp8 "Windows Phone"
-  [iOS]: /en-us/develop/mobile/tutorials/get-started-with-push-ios "iOS"
-  [Android]: /en-us/develop/mobile/tutorials/get-started-with-push-android "Android"
-  [Xamarin.iOS]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /en-us/develop/mobile/tutorials/get-started-with-push-xamarin-android "Xamarin.Android"
+  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet "Windows 应用商店 C#"
+  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-push-js "Windows 应用商店 JavaScript"
+  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-push-wp8 "Windows Phone"
+  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-ios "iOS"
+  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-android "Android"
+  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios "Xamarin.iOS"
+  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android "Xamarin.Android"
   [推送通知入门]: /zh-cn/documentation/articles/mobile-services-javascript-backend-android-get-started-push/
   [启用 Google Cloud Messaging]: #register
   [配置移动服务]: #configure
@@ -252,13 +252,11 @@
   [插入数据以接收通知]: #test
   [移动服务 Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
   [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-android
-  [启用 GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
 <!-- Images. --> 
-  []: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
+  [0]: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
   [1]: ./media/mobile-services-android-get-started-push/mobile-push-tab-android.png
-  [添加 Play Services]: ../includes/mobile-services-add-Google-play-services.md
   [设置 Google Play Services SDK]: http://go.microsoft.com/fwlink/?LinkId=389801
   [2]: ./media/mobile-services-android-get-started-push/mobile-services-android-create-class.png
   [3]: ./media/mobile-services-android-get-started-push/mobile-portal-data-tables.png

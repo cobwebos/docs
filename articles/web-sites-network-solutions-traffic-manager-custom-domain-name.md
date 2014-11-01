@@ -6,13 +6,13 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/web-sites-network-solutions-custom-domain-name/" title="网站">网站</a> | <a href="/zh-cn/documentation/articles/web-sites-network-solutions-traffic-manager-custom-domain-name/" title="使用流量管理器的网站" class="current">使用流量管理器的网站</a></div>
 
-[WACOM.INCLUDE [介绍][介绍]]
+[WACOM.INCLUDE [介绍](../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
 本文提供了如何将从 [Network Solutions][1] 购买的自定义域名用于 Azure 网站的说明。
 
-[WACOM.INCLUDE [tmwebsitefooter][tmwebsitefooter]]
+[WACOM.INCLUDE [tmwebsitefooter](../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
-[WACOM.INCLUDE [introfooter][introfooter]]
+[WACOM.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
 本文内容：
 
@@ -23,11 +23,11 @@
 
 ## <a name="understanding-records"></a>了解 DNS 记录
 
-[WACOM.INCLUDE [understandingdns][understandingdns]]
+[WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-traffic-manager.md)]
 
 ## <a name="bkmk_configsharedmode"></a>将网站配置为标准模式
 
-[WACOM.INCLUDE [modes][modes]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
 <a name="bkmk_configurecname"></a>
 
@@ -60,7 +60,7 @@
 
 ## <a name="enabledomain"></a>启用流量管理器网站
 
-[WACOM.INCLUDE [modes][2]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
   [自定义域]: /zh-cn/documentation/articles/web-sites-custom-domain-name "自定义域"
   [GoDaddy]: /zh-cn/documentation/articles/web-sites-godaddy-custom-domain-name "GoDaddy"
@@ -73,18 +73,13 @@
   [Directnic]: /zh-cn/documentation/articles/web-sites-directnic-custom-domain-name "Directnic"
   [网站]: /zh-cn/documentation/articles/web-sites-network-solutions-custom-domain-name/ "网站"
   [使用流量管理器的网站]: /zh-cn/documentation/articles/web-sites-network-solutions-traffic-manager-custom-domain-name/ "使用流量管理器的网站"
-  [介绍]: ../includes/custom-dns-web-site-intro-traffic-manager.md
   [1]: https://networksolutions.com
-  [tmwebsitefooter]: ../includes/custom-dns-web-site-traffic-manager-notes.md
-  [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
   [了解 DNS 记录]: #understanding-records
   [将网站配置为标准模式]: #bkmk_configsharedmode
   [为自定义域添加 DNS 记录]: #bkmk_configurecname
   [为网站启用流量管理器]: #enabledomain
   [understandingdns]: ../includes/custom-dns-web-site-understanding-dns-traffic-manager.md
-  [modes]: ../includes/custom-dns-web-site-modes-traffic-manager.md
   [编辑 DNS 页面]: ./media/web-sites-custom-domain-name/ns-editdns.png
   [突出显示了编辑高级 DNS 记录的域名页]: ./media/web-sites-custom-domain-name/ns-editadvanced.png
   [更新高级 DNS 页面]: ./media/web-sites-custom-domain-name/ns-updatecnameadvanced.png
   [cname 窗体]: ./media/web-sites-custom-domain-name/ns-cnametm.png
-  [2]: ../includes/custom-dns-web-site-enable-on-traffic-manager.md

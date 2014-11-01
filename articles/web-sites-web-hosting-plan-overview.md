@@ -14,6 +14,8 @@ Web 宿主计划表示一组可在你的网站间共享的功能和容量。Web 
 -   同一订阅、位置和资源组中的网站可以一起共享一个 Web 宿主计划。
 -   通过确定 Web 宿主计划目标，可以实现自动伸缩这样的功能。如果你想自动伸缩单个网站，则应将一个 Web 宿主计划专用于该网站。
 
+[详细了解如何管理 Web 宿主计划][详细了解如何管理 Web 宿主计划]
+
 ## Web 宿主计划和容量
 
 免费和共享级别的 Web 宿主计划为网站提供共享的基础结构，这意味着你的网站可与其他客户的网站共享资源。
@@ -30,7 +32,7 @@ Web 宿主计划表示一组可在你的网站间共享的功能和容量。Web 
 
 通过使用左边菜单栏上的“浏览”按钮，然后单击屏幕上出现的活动窗格右上角的“所有”，你可以看到你所有订阅的所有 Web 宿主计划。
 
-![][]
+![][0]
 ![][1]
 
 你也可以通过查看网站叶片顶部出现的资源组的图形表现方式，了解到每一个网站关联了哪个 Web 宿主计划。
@@ -48,9 +50,9 @@ Web 宿主计划表示一组可在你的网站间共享的功能和容量。Web 
 <!-- Images. -->
 
   [转到此处]: http://azure.microsoft.com/zh-cn/pricing/details/web-sites/
-  []: ./media/web-sites-web-hosting-plan-overview/browse-everything.png
+  [0]: ./media/web-sites-web-hosting-plan-overview/browse-everything.png
   [1]: ./media/web-sites-web-hosting-plan-overview/browse-web-hosting-plans.png
   [2]: ./media/web-sites-web-hosting-plan-overview/web-hosting-plan-resource-map.png
-  [详细了解如何管理 Web 宿主计划]: http://windowsazure.cn/zh-cn/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/
+  [详细了解如何管理 Web 宿主计划]: http://azure.microsoft.com/zh-cn/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/
   [3]: ./media/web-sites-web-hosting-plan-overview/web-hosting-plan-blade.png
   [Microsoft Azure 免费试用版]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/

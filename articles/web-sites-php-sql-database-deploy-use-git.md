@@ -16,7 +16,7 @@
 
 ![Azure PHP 网站][Azure PHP 网站]
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## 创建 Azure 网站并设置 Git 发布
 
@@ -272,7 +272,7 @@
 
   [PHP]: http://www.php.net/manual/en/install.php
   [SQL Server Express]: http://www.microsoft.com/zh-cn/download/details.aspx?id=29062
-  [Microsoft Drivers for SQL Server for PHP]: http://www.microsoft.com/en-us/download/details.aspx?id=20098
+  [Microsoft Drivers for SQL Server for PHP]: http://www.microsoft.com/zh-cn/download/details.aspx?id=20098
   [Git]: http://git-scm.com/
   [Microsoft Web 平台安装程序]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure PHP 网站]: ./media/web-sites-php-sql-database-deploy-use-git/running_app_3.png

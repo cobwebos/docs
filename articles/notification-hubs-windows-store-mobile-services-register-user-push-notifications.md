@@ -12,7 +12,7 @@
 
 2.  在解决方案资源管理器中，右键单击项目，单击“应用商店”，然后单击“将应用程序与应用商店关联...”。
 
-    ![][]
+    ![][0]
 
     此时将显示“将应用程序与 Windows 应用商店关联”向导。
 
@@ -109,13 +109,11 @@
 
 <!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-mobile-services-register-user-push-notifications/ "Windows 应用商店 C#"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-mobile-services-register-user-push-notifications/ "iOS"
-  [使用通知中心通知用户]: /en-us/manage/services/notification-hubs/notify-users
-  [身份验证入门]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
+  [使用通知中心通知用户]: /zh-cn/manage/services/notification-hubs/notify-users
+  [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet/
 
 <!-- Images. --> 
 
-  []: ./media/notification-hubs-windows-store-mobile-services-register-user-push-notifications/mobile-services-select-app-name.png
+  [0]: ./media/notification-hubs-windows-store-mobile-services-register-user-push-notifications/mobile-services-select-app-name.png
   [1]: ./media/notification-hubs-windows-store-mobile-services-register-user-push-notifications/notification-hub-associate-win8-app.png
   [2]: ./media/notification-hubs-windows-store-mobile-services-register-user-push-notifications/notification-hub-win8-app-toast.png

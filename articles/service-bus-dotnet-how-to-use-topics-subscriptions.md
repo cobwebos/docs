@@ -4,9 +4,9 @@
 
 <span>本指南演示如何使用 Service Bus 主题和订阅。相关示例用 C# 编写且使用 .NET API。涉及的应用场景包括创建主题和订阅、创建订阅筛选器、将消息发送到主题、从订阅接收消息以及删除主题和订阅。有关主题和订阅的详细信息，请参阅[后续步骤][后续步骤]一节。 </span>
 
-[WACOM.INCLUDE [create-account-note][create-account-note]]
+[WACOM.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
-[WACOM.INCLUDE [howto-service-bus-topics][howto-service-bus-topics]]
+[WACOM.INCLUDE [howto-service-bus-topics](../includes/howto-service-bus-topics.md)]
 
 ## <span class="short-header">配置应用程序</span>配置应用程序以使用 Service Bus
 
@@ -22,7 +22,7 @@ Service Bus **NuGet** 包是获取 Service Bus API 并为应用程序配置所�
     **“管理 NuGet 包”**。
 2.  搜索“WindowsAzure”，然后选择“AzureService Bus”项。单击“安装”以完成安装，然后关闭此对话框。
 
-    ![][]
+    ![][0]
 
 你现在可以为 Service Bus 编写代码。
 
@@ -277,9 +277,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
     消息的工作应用程序：[Service Bus 中转消息传送 .NET教程][Service Bus 中转消息传送 .NET教程]。
 
   [后续步骤]: #nextsteps
-  [create-account-note]: ../includes/create-account-note.md
-  [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
-  []: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
+  [0]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
   [队列、主题和订阅]: http://msdn.microsoft.com/zh-cn/library/hh367516.aspx
   [SqlFilter]: http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.sqlfilter.aspx
   [Service Bus 中转消息传送 .NET教程]: http://msdn.microsoft.com/zh-cn/library/hh367512.aspx

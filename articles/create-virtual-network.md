@@ -35,7 +35,7 @@
 
 2.  在屏幕左下角，单击“新建”。在导航窗格中，单击“网络”，然后单击“虚拟网络”。单击“自定义创建”以启动配置向导。
 
-    ![][]
+    ![][0]
 
 3.  在“虚拟网络详细信息”页上，输入以下信息，然后单击右下角的“下一步”箭头。有关详细信息页上各项设置的详细信息，请参阅[关于使用管理门户配置虚拟网络][关于使用管理门户配置虚拟网络]中的“虚拟网络详细信息页”部分。
 
@@ -109,7 +109,7 @@
   [Azure 虚拟网络配置任务]: http://msdn.microsoft.com/zh-cn/library/azure/jj156206.aspx
   [在 Azure 虚拟机中部署 Windows Server Active Directory 的准则]: http://msdn.microsoft.com/zh-cn/library/azure/jj156090.aspx
   [Azure 管理门户]: http://manage.windowsazure.cn/
-  []: ./media/create-virtual-network/createVNet_01_OpenVirtualNetworkWizard.png
+  [0]: ./media/create-virtual-network/createVNet_01_OpenVirtualNetworkWizard.png
   [关于使用管理门户配置虚拟网络]: http://msdn.microsoft.com/zh-cn/library/azure/jj156074.aspx
   [1]: ./media/create-virtual-network/createVNet_02_VirtualNetworkDetails.png
   [Azure 名称解析概述]: http://msdn.microsoft.com/zh-cn/library/azure/jj156088.aspx

@@ -1,31 +1,33 @@
 <properties linkid="manage-services-hdinsight-develop-hadoop-streaming-programs-for-hdinsight" urlDisplayName="" pageTitle="Develop C# Hadoop streaming programs for HDInsight | Azure" metaKeywords="hdinsight hdinsight development, hadoop development, dhinsight deployment, development, deployment, tutorial, MapReduce" description="Learn how to develop Hadoop streaming MapReduce programs in C#, and how to deploy them to Azure HDInsight." metaCanonical="" services="hdinsight" documentationCenter="" title="Develop C# Hadoop streaming programs for HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
-# 为 HDInsight 开发 C\# Hadoop 流程序
 
-Hadoop 向 MapReduce 提供了一个流式 API，利用它，你可以采用 Java 之外的其他语言来编写映射函数和化简函数。本教程指导你完成端到端方案：从在 HDInsight Emulator 上使用 C\# 开发/测试 Hadoop 流 MapReduce 程序，到在 Azure HDInsight 上运行 MapReduce 作业并检索结果。
+
+# 为 HDInsight 开发 C# Hadoop 流程序
+
+Hadoop 向 MapReduce 提供了一个流式 API，利用它，你可以采用 Java 之外的其他语言来编写映射函数和化简函数。本教程指导你完成端到端方案：从在 HDInsight Emulator 上使用 C# 开发/测试 Hadoop 流 MapReduce 程序，到在 Azure HDInsight 上运行 MapReduce 作业并检索结果。
 
 **先决条件：**
 
 在开始阅读本教程前，你必须具有：
 
--   安装 Azure HDInsight Emulator。有关说明，请参阅[开始使用 HDInsight Emulator][]。
--   在模拟器计算机上安装 Azure PowerShell。有关说明，请参阅[安装和配置 Azure PowerShell][]
--   获取 Azure 订阅。有关说明，请参阅[购买选项][]、[免费试用][]。
+-   安装 Azure HDInsight Emulator。有关说明，请参阅[开始使用 HDInsight Emulator][开始使用 HDInsight Emulator]。
+-   在模拟器计算机上安装 Azure PowerShell。有关说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]
+-   获取 Azure 订阅。有关说明，请参阅[购买选项][购买选项]、[免费试用][免费试用]。
 
 ## 本文内容
 
--   [使用 C\# 开发单词计数 Hadoop 流程序][]
--   [在模拟器中测试该程序][]
--   [将数据和应用程序上载到 Azure Blob 存储][]
--   [在 Azure HDInsight 中运行 MapReduce 程序][]
--   [检索 MapReduce 结果][]
--   [后续步骤][]
+-   [使用 C# 开发单词计数 Hadoop 流程序][使用 C# 开发单词计数 Hadoop 流程序]
+-   [在模拟器中测试该程序][在模拟器中测试该程序]
+-   [将数据和应用程序上载到 Azure Blob 存储][将数据和应用程序上载到 Azure Blob 存储]
+-   [在 Azure HDInsight 中运行 MapReduce 程序][在 Azure HDInsight 中运行 MapReduce 程序]
+-   [检索 MapReduce 结果][检索 MapReduce 结果]
+-   [后续步骤][后续步骤]
 
-## 使用 C\# 开发单词计数 Hadoop 流程序
+## 使用 C# 开发单词计数 Hadoop 流程序
 
 单词计数解决方案包含两个控制台应用程序项目：映射器和化简器。映射器应用程序将每个单词流式传输到控制台，化简器应用程序对从文档流式传输的单词进行计数。映射器和化简器都从标准输入流 (stdin) 逐行读取字符，并写入到标准输出流 (stdout)。
 
-**创建 C\# 控制台应用程序**
+**创建 C# 控制台应用程序**
 
 1.  打开 Visual Studio 2013。
 2.  依次单击“文件” 、“新建” 和“项目” 。
@@ -49,9 +51,9 @@ Hadoop 向 MapReduce 提供了一个流式 API，利用它，你可以采用 Jav
 4.  双击 **WordCountMapper.cs** 以打开它。
 5.  添加以下 using 语句：
 
-        using System.IO;
+		using System.IO;
 
-6.  将 Main() 函数替换为以下内容：
+6. 将 Main() 函数替换为以下内容：
 
         static void Main(string[] args)
         {
@@ -142,22 +144,22 @@ Hadoop 向 MapReduce 提供了一个流式 API，利用它，你可以采用 Jav
 4.  检查作业状态
 5.  检索作业结果
 
-默认情况下，HDInsight Emulator 使用 HDFS 作为默认文件系统。（可选）你可以将HDInsight Emulator 配置为使用 Azure Blob 存储。有关详细信息，请参阅 [HDInsight Emulator 入门][]。在本节中，你将使用 HDFS copyFromLocal 命令上载文件。下一节说明如何使用 Azure PowerShell 上载文件。有关其他方法，请参阅[将数据上载到 HDInsight][]。
+默认情况下，HDInsight Emulator 使用 HDFS 作为默认文件系统。（可选）你可以将HDInsight Emulator 配置为使用 Azure Blob 存储。有关详细信息，请参阅 [HDInsight Emulator 入门][HDInsight Emulator 入门]。在本节中，你将使用 HDFS copyFromLocal 命令上载文件。下一节说明如何使用 Azure PowerShell 上载文件。有关其他方法，请参阅[将数据上载到 HDInsight][将数据上载到 HDInsight]。
 
 本教程使用以下文件夹结构：
 
-	<table border="1">
-	<tr><td>文件夹</td><td>说明</td></tr>
-	<tr><td>\WordCount</td><td>单词计数项目的根文件夹。 </td></tr>
-	<tr><td>\WordCount\Apps</td><td>映射器和化简器可执行文件所在的文件夹。</td></tr>
-	<tr><td>\WordCount\Input</td><td>MapReduce 源文件文件夹。</td></tr>
-	<tr><td>\WordCount\Output</td><td>MapReduce 输出文件文件夹。</td></tr>
-	<tr><td>\WordCount\MRStatusOutput</td><td>作业输出文件夹。</td></tr>
-	</table>
+<table border="1">
+<tr><td>文件夹</td><td>说明</td></tr>
+<tr><td>\WordCount</td><td>单词计数项目的根文件夹。 </td></tr>
+<tr><td>\WordCount\Apps</td><td>映射器和化简器可执行文件所在的文件夹。</td></tr>
+<tr><td>\WordCount\Input</td><td>MapReduce 源文件文件夹。</td></tr>
+<tr><td>\WordCount\Output</td><td>MapReduce 输出文件文件夹。</td></tr>
+<tr><td>\WordCount\MRStatusOutput</td><td>作业输出文件夹。</td></tr>
+</table></br>
 
 本教程使用位于 %hadoop\_home% 目录中的 .txt 文件。
 
-> [WACOM.NOTE] Hadoop HDFS 命令区分大小写。
+> [WACN.NOTE] Hadoop HDFS 命令区分大小写。
 
 **将文本文件复制到模拟器 HDFS**
 
@@ -195,7 +197,7 @@ Hadoop 向 MapReduce 提供了一个流式 API，利用它，你可以采用 Jav
 
 **使用 HDInsight PowerShell 运行 MapReduce 作业**
 
-1.  打开 Azure PowerShell。有关说明，请参阅[安装和配置 Azure PowerShell][]。
+1.  打开 Azure PowerShell。有关说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。
 2.  运行以下命令以设置变量：
 
         $clusterName = "http://localhost:50111"
@@ -476,15 +478,14 @@ Azure HDInsight 将 Azure Blob 存储用作默认文件系统。你可以将 HDI
 6.  打开 Azure PowerShell。
 7.  运行以下命令，将执行策略设为 RemoteSigned：
 
-        PowerShell -File <FileName> -ExecutionPolicy RemoteSigned
+		PowerShell -File <FileName> -ExecutionPolicy RemoteSigned
 
-8.  出现提示时，输入 HDInsight 群集的用户名和密码。由于你将在脚本末尾删除群集，并且将不再需要用户名和密码，因此用户名和密码可以是任何字符串。如果你不想让系统提示你输入凭据，请参阅[在 Windows PowerShell 中使用密码、安全字符串和凭据][]
+8.  出现提示时，输入 HDInsight 群集的用户名和密码。由于你将在脚本末尾删除群集，并且将不再需要用户名和密码，因此用户名和密码可以是任何字符串。如果你不想让系统提示你输入凭据，请参阅[在 Windows PowerShell 中使用密码、安全字符串和凭据][在 Windows PowerShell 中使用密码、安全字符串和凭据]
 
-有关提交 Hadoop 流式处理作业的 HDInsight .NET SDK 示例，请参阅[以编程方式提交 Hadoop 作业][]。
+有关提交 Hadoop 流式处理作业的 HDInsight .NET SDK 示例，请参阅[以编程方式提交 Hadoop 作业][以编程方式提交 Hadoop 作业]。
 
 ## 检索 MapReduce 作业输出
-
-本节演示如何下载和显示输出。有关在 Excel 中显示结果的信息，请参阅[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight][] 和[利用 Power Query 将 Excel 连接到 HDInsight][]。
+本节演示如何下载和显示输出。有关在 Excel 中显示结果的信息，请参阅[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight][使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight] 和[利用 Power Query 将 Excel 连接到 HDInsight][利用 Power Query 将 Excel 连接到 HDInsight]。
 
 **检索输出**
 
@@ -511,34 +512,34 @@ Azure HDInsight 将 Azure Blob 存储用作默认文件系统。你可以将 HDI
 
 在本教程中，你已学习如何执行以下操作：开发 Hadoop 流式处理 MapReduce 作业、在 HDInsight Emulator 中测试应用程序、编写 PowerShell 脚本以设置 HDInsight 群集以及在群集上运行 MapReduce。若要了解更多信息，请参阅下列文章：
 
--   [Azure HDInsight 入门][]
+-   [Azure HDInsight 入门][Azure HDInsight 入门]
 -   [HDInsight Emulator 入门][开始使用 HDInsight Emulator]
--   [为 HDInsight 开发 Java MapReduce 程序][]
--   [将 Azure Blob 存储与 HDInsight 配合使用][]
--   [使用 PowerShell 管理 HDInsight][]
--   [将数据上载到 HDInsight][]
--   [将 Hive 与 HDInsight 配合使用][]
--   [将 Pig 与 HDInsight 配合使用][]
+-   [为 HDInsight 开发 Java MapReduce 程序][为 HDInsight 开发 Java MapReduce 程序]
+-   [将 Azure Blob 存储与 HDInsight 配合使用][将 Azure Blob 存储与 HDInsight 配合使用]
+-   [使用 PowerShell 管理 HDInsight][使用 PowerShell 管理 HDInsight]
+-   [将数据上载到 HDInsight][将数据上载到 HDInsight]
+-   [将 Hive 与 HDInsight 配合使用][将 Hive 与 HDInsight 配合使用]
+-   [将 Pig 与 HDInsight 配合使用][将 Pig 与 HDInsight 配合使用]
 
-  [开始使用 HDInsight Emulator]: /en-us/manage/services/hdinsight/get-started-with-windows-azure-hdinsight-emulator/
+  [开始使用 HDInsight Emulator]: /zh-cn/manage/services/hdinsight/get-started-with-windows-azure-hdinsight-emulator/
   [安装和配置 Azure PowerShell]: ../install-configure-powershell/
   [购买选项]: http://www.windowsazure.cn/zh-cn/pricing/overview/
   [免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
-  [使用 C\# 开发单词计数 Hadoop 流程序]: #develop
+  [使用 C# 开发单词计数 Hadoop 流程序]: #develop
   [在模拟器中测试该程序]: #test
   [将数据和应用程序上载到 Azure Blob 存储]: #upload
   [在 Azure HDInsight 中运行 MapReduce 程序]: #run
   [检索 MapReduce 结果]: #retrieve
   [后续步骤]: #nextsteps
-  [HDInsight Emulator 入门]: /en-us/manage/services/hdinsight/get-started-with-windows-azure-hdinsight-emulator/#blobstorage
-  [将数据上载到 HDInsight]: /en-us/manage/services/hdinsight/howto-upload-data-to-hdinsight/
+  [HDInsight Emulator 入门]: /zh-cn/manage/services/hdinsight/get-started-with-windows-azure-hdinsight-emulator/#blobstorage
+  [将数据上载到 HDInsight]: /zh-cn/manage/services/hdinsight/howto-upload-data-to-hdinsight/
   [在 Windows PowerShell 中使用密码、安全字符串和凭据]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
   [以编程方式提交 Hadoop 作业]: ../hdinsight-submit-hadoop-jobs-programmatically/
-  [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight]: /en-us/manage/services/hdinsight/connect-excel-with-hive-ODBC/
-  [利用 Power Query 将 Excel 连接到 HDInsight]: /en-us/manage/services/hdinsight/connect-excel-with-power-query/
-  [Azure HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/
+  [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight]: /zh-cn/manage/services/hdinsight/connect-excel-with-hive-ODBC/
+  [利用 Power Query 将 Excel 连接到 HDInsight]: /zh-cn/manage/services/hdinsight/connect-excel-with-power-query/
+  [Azure HDInsight 入门]: /zh-cn/manage/services/hdinsight/get-started-hdinsight/
   [为 HDInsight 开发 Java MapReduce 程序]: ../hdinsight-develop-deploy-java-mapreduce/
-  [将 Azure Blob 存储与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/howto-blob-store/
-  [使用 PowerShell 管理 HDInsight]: /en-us/manage/services/hdinsight/administer-hdinsight-using-powershell/
-  [将 Hive 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
-  [将 Pig 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
+  [将 Azure Blob 存储与 HDInsight 配合使用]: /zh-cn/manage/services/hdinsight/howto-blob-store/
+  [使用 PowerShell 管理 HDInsight]: /zh-cn/manage/services/hdinsight/administer-hdinsight-using-powershell/
+  [将 Hive 与 HDInsight 配合使用]: /zh-cn/manage/services/hdinsight/using-hive-with-hdinsight/
+  [将 Pig 与 HDInsight 配合使用]: /zh-cn/manage/services/hdinsight/using-pig-with-hdinsight/

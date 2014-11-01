@@ -10,7 +10,7 @@
 -   如何将内置模板和 WebMatrix 配合使用来创建网站
 -   如何将自定义的网站直接从 WebMatrix 中部署到 Azure。
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## 登录 Azure
 
@@ -47,7 +47,7 @@
 
 1.  在 WebMatrix 的左侧导航窗格中，展开“面包店示例”文件夹。
 
-    ![][]
+    ![][0]
 
 2.  通过双击文件名打开 *Order.cshtml* 页。
 
@@ -150,7 +150,7 @@
   [从模板创建网站]: ./media/web-sites-dotnet-using-webmatrix/webmatrix-site-from-template-details.png
   [在 Azure 中创建网站]: ./media/web-sites-dotnet-using-webmatrix/webmatrix-site-from-template-azure.png
   [WebMatrix IDE]: ./media/web-sites-dotnet-using-webmatrix/howtowebmatrixide.png
-  []: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-1.png
+  [0]: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-1.png
   [1]: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-2.png
   [2]: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-3.png
   [3]: ./media/web-sites-dotnet-using-webmatrix/website-with-webmatrix-sample-mod-1-4.png

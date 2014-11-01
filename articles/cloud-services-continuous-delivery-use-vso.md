@@ -24,7 +24,7 @@ Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的�
 
 1.  导航到 [][www.visualstudio.com]<http://www.visualstudio.com></a> 并创建一个 Visual Studio Online 帐户。单击“登录”链接。
     你将需要使用 Microsoft 帐户进行登录。如果这是你首次登录，系统会要求你提供有关你本人的一些信息，例如你的姓名和电子邮件地址。
-    ![][]
+    ![][0]
 
 2.  如果不是首次登录，在登录时你会看到此屏幕。请单击“立即创建免费帐户”链接。
 
@@ -282,7 +282,7 @@ Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的�
   [步骤 4：做出更改并触发重新生成和重新部署。]: #step4
   [步骤 5：重新部署以前的生成（可选）]: #step5
   [步骤 6：更改生产部署（仅限云服务）]: #step6
-  []: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
+  [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
   [1]: ./media/cloud-services-continuous-delivery-use-vso/tfs36.PNG
   [https://\<accountname\>.visualstudio.com]: https://<accountname>.visualstudio.com
   [2]: ./media/cloud-services-continuous-delivery-use-vso/tfs37.PNG

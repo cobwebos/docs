@@ -2,7 +2,7 @@
 
 # 作为组织注册 Azure
 
-[WACOM.INCLUDE [免责声明][免责声明]]
+[WACOM.INCLUDE [免责声明](../includes/disclaimer.md)]
 
 在不久之前，你只能使用 Microsoft 帐户 (Windows Live ID) 注册一个新的 Azure 订阅。Azure 现在支持使用下列两种帐户方法之一进行注册：
 
@@ -24,7 +24,6 @@ Active Directory 是通过 Windows Server 操作系统提供给客户的一项�
 
 如果组织已使用本地 Active Directory，则可使用 Azure AD 的目录集成功能（如目录同步和单一登录），以便进一步将你的现有本地标识扩展到云中以改进管理员和最终用户的体验。[了解详细信息][3]
 
-  [免责声明]: ../includes/disclaimer.md
   [了解详细信息]: http://windows.microsoft.com/zh-cn/windows-live/sign-in-what-is-microsoft-account
   [1]: http://technet.microsoft.com/zh-cn/library/jj573650
   [2]: http://technet.microsoft.com/zh-cn/library/hh967619

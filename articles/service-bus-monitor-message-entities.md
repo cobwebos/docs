@@ -26,7 +26,7 @@
 
 仪表板上的“速览”将当前队列大小反映为“队列长度”。它还将显示队列或主题的其他属性。此信息每 10 秒刷新一次。
 
-![][]
+![][0]
 
 ## 如何监视有关 Service Bus 主题的活动
 
@@ -43,5 +43,5 @@
 ![][1]
 
   [Azure 管理门户]: http://manage.windowsazure.cn
-  []: ./media/service-bus-monitor-message-entities/QueueDashboard.png
+  [0]: ./media/service-bus-monitor-message-entities/QueueDashboard.png
   [1]: ./media/service-bus-monitor-message-entities/AddMetrics.png

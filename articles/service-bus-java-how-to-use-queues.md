@@ -17,7 +17,7 @@
 -   [如何：处理应用程序崩溃和不可读消息][如何：处理应用程序崩溃和不可读消息]
 -   [后续步骤][后续步骤]
 
-[WACOM.INCLUDE [howto-service-bus-queues][howto-service-bus-queues]]
+[WACOM.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
 ## <a name="bkmk_ConfigApp"> </a>配置应用程序以使用 Service Bus
 

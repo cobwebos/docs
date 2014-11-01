@@ -2,7 +2,7 @@
 
 # 如何管理云服务
 
-[WACOM.INCLUDE [免责声明][免责声明]]
+[WACOM.INCLUDE [免责声明](../includes/disclaimer.md)]
 
 在 Azure 管理门户的“云服务”区域，你可以更新服务角色或部署、将过渡部署升级到生产环境、将资源链接到云服务以便你可以查看资源依赖关系并对资源进行整体缩放，以及删除云服务或部署。
 
@@ -152,4 +152,4 @@
   [链接页 1]: ./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkPage1.png
   [链接进度]: ./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkProgress.png
   [“删除”菜单]: ./media/cloud-services-how-to-manage/CloudServices_DeleteMenu.png
-  [如何监视云服务]: http://windowsazure.cn/zh-cn/documentation/articles/cloud-services-how-to-monitor/
+  [如何监视云服务]: http://azure.microsoft.com/zh-cn/documentation/articles/cloud-services-how-to-monitor/
