@@ -38,6 +38,6 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
   [发生了什么情况]: /documentation/articles/vs-storage-aspnet-what-happened/
   [Blob]: /documentation/articles/vs-storage-aspnet-getting-started-blobs/
   [表]: /documentation/articles/vs-storage-aspnet-getting-started-tables/
-  [如何通过 .NET 使用队列存储]: http://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-how-to-use-queues/
+  [如何通过 .NET 使用队列存储]: http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-queues/
   [vs-storage-getting-started-queues-include]: ../includes/vs-storage-getting-started-queues-include.md
   [ASP.NET]: http://www.asp.net
