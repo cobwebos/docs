@@ -67,28 +67,28 @@
 
 3.  在此新类中添加以下 "using" 语句：
 
-        using Microsoft.WindowsAzure.Mobile.Service;
-        using System.ComponentModel.DataAnnotations;
+		using Microsoft.WindowsAzure.Mobile.Service;
+		using System.ComponentModel.DataAnnotations;
 
 4.  将 "Updates" 类定义替换为以下代码：
 
-        public class Updates 
-        {
-        [Key]
-        public int UpdateId { get; set; }
-        public long TweetId { get; set; }
-        public string Text { get; set; }
-        public string Author { get; set; }
-        public DateTime Date { get; set; }
-        }
+		public class Updates 
+	    {
+	        [Key]
+	        public int UpdateId { get; set; }
+	        public long TweetId { get; set; }
+	        public string Text { get; set; }
+	        public string Author { get; set; }
+	        public DateTime Date { get; set; }
+    	}
 
 5.  展开 Models 文件夹，打开数据模型上下文文件（名为 *service\_name*Context.cs），并添加以下将返回类型化 "DbSet" 的属性：
 
-        public DbSet<Updates> Updates { get; set; }
+		public DbSet<Updates> Updates { get; set; }
 
-    服务使用首次访问 DbSet 时在数据库中创建的 Updates 表来存储推文数据。
+	服务使用首次访问 DbSet 时在数据库中创建的 Updates 表来存储推文数据。
 
-    > [WACOM.NOTE] 使用默认数据库初始值设定项时，只要实体框架在代码优先模型定义中检测到数据模型更改，它就会删除并重新创建数据库。若要进行此数据模型更改并维护数据库中的现有数据，必须使用代码优先迁移。不能为 Azure 中的 SQL Database 使用默认的初始值设定项。有关详细信息，请参阅[如何使用代码优先迁移更新数据模型][如何使用代码优先迁移更新数据模型]。
+	> [WACOM.NOTE] 使用默认数据库初始值设定项时，只要实体框架在代码优先模型定义中检测到数据模型更改，它就会删除并重新创建数据库。若要进行此数据模型更改并维护数据库中的现有数据，必须使用代码优先迁移。不能为 Azure 中的 SQL Database 使用默认的初始值设定项。有关详细信息，请参阅[如何使用代码优先迁移更新数据模型][如何使用代码优先迁移更新数据模型]。
 
 接下来，请创建计划的作业，用于访问 Twitter 并在新的 Updates 表中存储推文数据。
 
@@ -97,117 +97,117 @@
 
 1.  展开 ScheduledJobs 文件夹并打开 SampleJob.cs 项目文件。
 
-    此类继承自 "ScheduledJob"，表示可在 Azure 管理门户中计划的、按固定计划或按需运行的作业。
+	此类继承自 "ScheduledJob"，表示可在 Azure 管理门户中计划的、按固定计划或按需运行的作业。
 
 2.  将 SampleJob.cs 的内容替换为以下代码：
-
-         using System;
-        using System.Linq;
-        using System.Threading;
-        using System.Threading.Tasks;
-        using System.Web.Http;
-        using Microsoft.WindowsAzure.Mobile.Service;
-        using Microsoft.WindowsAzure.Mobile.Service.ScheduledJobs;
-        using LinqToTwitter;
-        using todolistService.Models;
-        using todolistService.DataObjects;
-
-        namespace todolistService
-        {
-        // A simple scheduled job which can be invoked manually by submitting an HTTP
-        // POST request to the path "/jobs/sample".
-        public class SampleJob :ScheduledJob
-            {
-        private todolistContext context;
-        private string accessToken;
-        private string accessTokenSecret;
-
-        protected override void Initialize(ScheduledJobDescriptor scheduledJobDescriptor, CancellationToken cancellationToken)
-                {
-        base.Initialize(scheduledJobDescriptor, cancellationToken);
-
-        // Create a new context with the supplied schema name.
-        context = new todolistContext(Services.Settings.Name);
-                }
-
-        public async override Task ExecuteAsync()
-                {            
-        // Try to get the stored Twitter access token from app settings.  
-        if (!(Services.Settings.TryGetValue("TWITTER_ACCESS_TOKEN", out accessToken) |
-        Services.Settings.TryGetValue("TWITTER_ACCESS_TOKEN_SECRET", out accessTokenSecret)))
-                    {
-        Services.Log.Error("Could not retrieve Twitter access credentials.");
-                    }
-
-        // Create a new authorizer to access Twitter v1.1 APIs
-        // using single-user OAUth 2.0 credentials.
-        MvcAuthorizer auth = new MvcAuthorizer();
-        SingleUserInMemoryCredentialStore store = 
-        new SingleUserInMemoryCredentialStore()
-                    {
-        ConsumerKey = Services.Settings.TwitterConsumerKey,
-        ConsumerSecret = Services.Settings.TwitterConsumerSecret,
-        OAuthToken = accessToken,
-        OAuthTokenSecret = accessTokenSecret
-                    };
-
-        // Set the credentials for the authorizer.
-        auth.CredentialStore = store;
-
-        // Create a new LINQ to Twitter context.
-        TwitterContext twitter = new TwitterContext(auth);
-
-        // Get the ID of the most recent stored tweet.
-        long lastTweetId = 0;
-        if (context.Updates.Count() > 0)
-                    {
-        lastTweetId = (from u in context.Updates
-        orderby u.TweetId descending
-        select u).Take(1).SingleOrDefault()
-        .TweetId;
-                    }
-
-        // Execute a search that returns a filtered result.
-        var response = await (from s in twitter.Search
-        where s.Type == SearchType.Search
-        && s.Query == "%23mobileservices"
-        && s.SinceID == Convert.ToUInt64(lastTweetId + 1)
-        && s.ResultType == ResultType.Recent
-        select s).SingleOrDefaultAsync();
-
-        // Remove retweets and replies and log the number of tweets.
-        var filteredTweets = response.Statuses
-        .Where(t => !t.Text.StartsWith("RT") && t.InReplyToUserID == 0);
-        Services.Log.Info("Fetched " + filteredTweets.Count()
-        + " new tweets from Twitter.");
-
-        // Store new tweets in the Updates table.
-        foreach (Status tweet in filteredTweets)
-                    {
-        Updates newTweet =
-        new Updates
-                            {
-        TweetId = Convert.ToInt64(tweet.StatusID),
-        Text = tweet.Text,
-        Author = tweet.User.Name,
-        Date = tweet.CreatedAt
-                            };
-
-        context.Updates.Add(newTweet);
-                    }
-
-        await context.SaveChangesAsync();
-                }
-        protected override void Dispose(bool disposing)
-                {
-        base.Dispose(disposing);
-        if (disposing)
-                    {
-        context.Dispose();
-                    }
-                }
-            }
-        }
+ 
+		using System;
+		using System.Linq;
+		using System.Threading;
+		using System.Threading.Tasks;
+		using System.Web.Http;
+		using Microsoft.WindowsAzure.Mobile.Service;
+		using Microsoft.WindowsAzure.Mobile.Service.ScheduledJobs;
+		using LinqToTwitter;
+		using todolistService.Models;
+		using todolistService.DataObjects;
+		
+		namespace todolistService
+		{
+		    // A simple scheduled job which can be invoked manually by submitting an HTTP
+		    // POST request to the path "/jobs/sample".
+		    public class SampleJob : ScheduledJob
+		    {
+		        private todolistContext context;
+		        private string accessToken;
+		        private string accessTokenSecret;
+		
+		        protected override void Initialize(ScheduledJobDescriptor scheduledJobDescriptor, CancellationToken cancellationToken)
+		        {
+		            base.Initialize(scheduledJobDescriptor, cancellationToken);
+		
+		            // Create a new context with the supplied schema name.
+		            context = new todolistContext(Services.Settings.Name);
+		        }
+		
+		        public async override Task ExecuteAsync()
+		        {            
+		            // Try to get the stored Twitter access token from app settings.  
+		            if (!(Services.Settings.TryGetValue("TWITTER_ACCESS_TOKEN", out accessToken) |
+		            Services.Settings.TryGetValue("TWITTER_ACCESS_TOKEN_SECRET", out accessTokenSecret)))
+		            {
+		                Services.Log.Error("Could not retrieve Twitter access credentials.");
+		            }
+		
+		            // Create a new authorizer to access Twitter v1.1 APIs
+		            // using single-user OAUth 2.0 credentials.
+		            MvcAuthorizer auth = new MvcAuthorizer();
+		            SingleUserInMemoryCredentialStore store = 
+		                new SingleUserInMemoryCredentialStore()
+		            {
+		                ConsumerKey = Services.Settings.TwitterConsumerKey,
+		                ConsumerSecret = Services.Settings.TwitterConsumerSecret,
+		                OAuthToken = accessToken,
+		                OAuthTokenSecret = accessTokenSecret
+		            };
+		
+		            // Set the credentials for the authorizer.
+		            auth.CredentialStore = store;
+		
+		            // Create a new LINQ to Twitter context.
+		            TwitterContext twitter = new TwitterContext(auth);
+		
+		            // Get the ID of the most recent stored tweet.
+		            long lastTweetId = 0;
+		            if (context.Updates.Count() > 0)
+		            {
+		                lastTweetId = (from u in context.Updates
+		                               orderby u.TweetId descending
+		                               select u).Take(1).SingleOrDefault()
+		                                            .TweetId;
+		            }
+		
+		            // Execute a search that returns a filtered result.
+		            var response = await (from s in twitter.Search
+		                                  where s.Type == SearchType.Search
+		                                  && s.Query == "%23mobileservices"
+		                                  && s.SinceID == Convert.ToUInt64(lastTweetId + 1)
+		                                  && s.ResultType == ResultType.Recent
+		                                  select s).SingleOrDefaultAsync();
+		
+		            // Remove retweets and replies and log the number of tweets.
+		            var filteredTweets = response.Statuses
+		                .Where(t => !t.Text.StartsWith("RT") && t.InReplyToUserID == 0);
+		            Services.Log.Info("Fetched " + filteredTweets.Count()
+		                + " new tweets from Twitter.");
+		
+		            // Store new tweets in the Updates table.
+		            foreach (Status tweet in filteredTweets)
+		            {
+		                Updates newTweet =
+		                    new Updates
+		                    {
+		                        TweetId = Convert.ToInt64(tweet.StatusID),
+		                        Text = tweet.Text,
+		                        Author = tweet.User.Name,
+		                        Date = tweet.CreatedAt
+		                    };
+		
+		                context.Updates.Add(newTweet);
+		            }
+		
+		            await context.SaveChangesAsync();
+		        }
+		        protected override void Dispose(bool disposing)
+		        {
+		            base.Dispose(disposing);
+		            if (disposing)
+		            {
+		                context.Dispose();
+		            }
+		        }
+		    }
+		}
 
     在上述代码中，必须将字符串 *todolistService* 和 *todolistContext* 替换为已下载项目的命名空间和 DbContext（分别为 *mobile\_service\_name*Service 和 *mobile\_service\_name*Context）。
 
@@ -265,7 +265,7 @@
 
     此时将会执行该作业，不过它在计划程序中保持为禁用状态。你随时可以通过此页启用该作业及更改其计划。
 
-    > [WACOM.NOTE]仍可使用 POST 请求来启动计划的作业。但是，系统默认向用户授权，也就是说，该请求的标头中必须包含应用程序密钥。
+	> [WACOM.NOTE]仍可使用 POST 请求来启动计划的作业。但是，系统默认向用户授权，也就是说，该请求的标头中必须包含应用程序密钥。
 
 6.  （可选）在 [Azure 管理门户][Azure 管理门户]中，单击与你的移动服务关联的数据库对应的“管理”。
 

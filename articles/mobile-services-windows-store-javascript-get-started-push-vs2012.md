@@ -34,7 +34,7 @@
 
 若要从移动服务将推送通知发送到 Windows 应用商店应用程序，必须将你的应用程序提交到 Windows 应用商店。然后必须将移动服务配置为与 WNS 集成。
 
-[WACOM.INCLUDE [mobile-services-register-windows-store-app](../includes/mobile-services-register-windows-store-app.md]
+[WACOM.INCLUDE [mobile-services-register-windows-store-app](../includes/mobile-services-register-windows-store-app.md)]
 
 现在，你的移动服务和应用程序都已配置为使用 WNS。接下来，你将创建一个新表来存储注册信息。
 

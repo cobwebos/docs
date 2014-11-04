@@ -46,17 +46,18 @@
 
 相应的类型化客户端 .NET 类型如下：
 
-    public class TodoItem
-    {
-    public string Id { get; set; }
 
-    [JsonProperty(PropertyName = "text")]
-    public string Text { get; set; }
+	public class TodoItem
+	{
+		public string Id { get; set; }
 
-    [JsonProperty(PropertyName = "complete")]
-    public bool Complete { get; set; }
-    }
+		[JsonProperty(PropertyName = "text")]
+		public string Text { get; set; }
 
+		[JsonProperty(PropertyName = "complete")]
+		public bool Complete { get; set; }
+	}
+	
 启用动态架构后，Azure 移动服务将基于 insert 或 update 请求中的对象自动生成新列。有关详细信息，请参阅[动态架构][动态架构]。
 
 <a name="create-client"></a>
@@ -64,10 +65,11 @@
 
 以下代码将创建用于访问移动服务的 `MobileServiceClient` 对象。
 
-    MobileServiceClient client = new MobileServiceClient( 
-    "AppUrl", 
-    "AppKey" 
-    ); 
+			
+	MobileServiceClient client = new MobileServiceClient( 
+		"AppUrl", 
+		"AppKey" 
+	); 
 
 在上面的代码中，请将 `AppUrl` 和 `AppKey` 依次替换为移动服务 URL 和应用程序密钥。在 Azure 管理门户中选择你的移动服务，然后单击“仪表板”即可获取这两个值。
 
@@ -77,7 +79,7 @@
 访问或修改移动服务表中数据的所有代码都将对 `MobileServiceTable` 对象调用函数。对 `MobileServiceClient` 的实例调用 [GetTable][GetTable] 函数可获取对表的引用。
 
     IMobileServiceTable<TodoItem> todoTable = 
-    client.GetTable<TodoItem>();
+		client.GetTable<TodoItem>();
 
 这是类型化的序列化模型；请参阅下面有关[非类型化序列化模型][如何：处理非类型化数据]的介绍。
 
@@ -93,46 +95,45 @@
 
 以下代码演示了如何通过在查询中包含 `Where` 子句来筛选数据。该代码将返回 `todoTable` 中其 `Complete` 属性等于 `false` 的所有项。`Where` 函数针对该表将一个行筛选谓词应用到查询。
 
-    // This query filters out completed TodoItems and 
-    // items without a timestamp. 
-    List<TodoItem> items = await todoTable
-    .Where(todoItem => todoItem.Complete == false)
-    .ToListAsync();
+	// This query filters out completed TodoItems and 
+	// items without a timestamp. 
+	List<TodoItem> items = await todoTable
+	   .Where(todoItem => todoItem.Complete == false)
+	   .ToListAsync();
 
 可以使用消息检查软件（例如浏览器开发人员工具或 Fiddler）来查看发送到移动服务的请求的 URI。从下面的请求 URI 中，可以看出我们正在修改查询字符串本身：
 
-    GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1                  
+	GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1				   
 
 在服务器端，此请求通常会粗略地转换成以下 SQL 查询：
-
-            SELECT * 
-    FROM TodoItem           
-    WHERE ISNULL(complete, 0) = 0
-            
-
+			
+	SELECT * 
+	FROM TodoItem 			
+	WHERE ISNULL(complete, 0) = 0
+			
 传递给 `Where` 方法的函数可以包含任意数目的条件。例如，以下行：
 
-    // This query filters out completed TodoItems where Text isn't null
-    List<TodoItem> items = await todoTable
-    .Where(todoItem => todoItem.Complete == false
-    && todoItem.Text != null)
-    .ToListAsync();
+	// This query filters out completed TodoItems where Text isn't null
+	List<TodoItem> items = await todoTable
+	   .Where(todoItem => todoItem.Complete == false
+		   && todoItem.Text != null)
+	   .ToListAsync();
 
 将粗略地转换为（针对前面显示的同一请求）
-
-            SELECT * 
-    FROM TodoItem 
-    WHERE ISNULL(complete, 0) = 0
-    AND ISNULL(text, 0) = 0
+			
+	SELECT * 
+	FROM TodoItem 
+	WHERE ISNULL(complete, 0) = 0
+	      AND ISNULL(text, 0) = 0
 
 上述 `where` 语句将查找 `Complete` 状态设置为 false 且 `Text` 不为 null 的项。
 
 我们也可以使用多个行编写该代码：
 
-    List<TodoItem> items = await todoTable
-    .Where(todoItem => todoItem.Complete == false)
-    .Where(todoItem => todoItem.Text != null)
-    .ToListAsync();
+	List<TodoItem> items = await todoTable
+	   .Where(todoItem => todoItem.Complete == false)
+	   .Where(todoItem => todoItem.Text != null)
+	   .ToListAsync();
 
 这两种方法是等效的，可以换用。前一个选项（在一个查询中连接多个谓词）更为精简，也是我们推荐的方法。
 
@@ -143,35 +144,34 @@
 
 以下代码演示了如何通过在查询中包含 `OrderBy` 或 `OrderByDescending` 函数来为数据排序。该代码将返回 `todoTable` 中的项，这些项已按 `Text` 字段的升序排序。
 
-    // Sort items in ascending order by Text field
-    MobileServiceTableQuery<TodoItem> query = todoTable
-    .OrderBy(todoItem => todoItem.Text)       
-    List<TodoItem> items = await query.ToListAsync();
+	// Sort items in ascending order by Text field
+	MobileServiceTableQuery<TodoItem> query = todoTable
+					.OrderBy(todoItem => todoItem.Text)       
+ 	List<TodoItem> items = await query.ToListAsync();
 
-    // Sort items in descending order by Text field
-    MobileServiceTableQuery<TodoItem> query = todoTable
-    .OrderByDescending(todoItem => todoItem.Text)       
-    List<TodoItem> items = await query.ToListAsync();           
+	// Sort items in descending order by Text field
+	MobileServiceTableQuery<TodoItem> query = todoTable
+					.OrderByDescending(todoItem => todoItem.Text)       
+ 	List<TodoItem> items = await query.ToListAsync();			
 
 <a name="paging"></a>
 ### 如何：在页中返回数据
 
 默认情况下，服务器只返回前 50 行。你可以通过调用 [Take][Take] 方法来增加返回的行数。将 `Take` 与 [Skip][Skip] 方法一起使用可以请求查询返回的总数据集的特定“页”。执行以下查询后，将返回表中的前三个项。
 
-    // Define a filtered query that returns the top 3 items.
-    MobileServiceTableQuery<TodoItem> query = todoTable
-    .Take(3);                              
-    List<TodoItem> items = await query.ToListAsync();           
+	// Define a filtered query that returns the top 3 items.
+	MobileServiceTableQuery<TodoItem> query = todoTable
+					.Take(3);                              
+	List<TodoItem> items = await query.ToListAsync();
 
 以下经过修改的查询将跳过前三个结果，返回其后的三个结果。实际上这是数据的第二“页”，其页大小为三个项。
 
-    // Define a filtered query that skips the top 3 items and returns the next 3 items.
-    MobileServiceTableQuery<TodoItem> query = todoTable
-    .Skip(3)
-    .Take(3);                              
-    List<TodoItem> items = await query.ToListAsync();
-            
-
+	// Define a filtered query that skips the top 3 items and returns the next 3 items.
+	MobileServiceTableQuery<TodoItem> query = todoTable
+					.Skip(3)
+					.Take(3);                              
+	List<TodoItem> items = await query.ToListAsync();
+			
 你还可以使用 [IncludeTotalCount][IncludeTotalCount] 方法来确保查询获取应该返回的*所有*记录的总计数，并忽略指定的任何 take 分页/限制子句：
 
     query = query.IncludeTotalCount();
@@ -183,33 +183,32 @@
 
 你可以通过在查询中添加 `Select` 子句来指定要包含在结果中的属性集。例如，以下代码演示了如何做到只选择一个字段，以及如何选择并格式化多个字段：
 
-    // Select one field -- just the Text
-    MobileServiceTableQuery<TodoItem> query = todoTable
-    .Select(todoItem => todoItem.Text);
-    List<string> items = await query.ToListAsync();
-
-    // Select multiple fields -- both Complete and Text info
-    MobileServiceTableQuery<TodoItem> query = todoTable
-    .Select(todoItem => string.Format("{0} -- {1}", todoItem.Text.PadRight(30), todoItem.Complete ?"Now complete!": "Incomplete!"));
-    List<string> items = await query.ToListAsync();
-            
-
+	// Select one field -- just the Text
+	MobileServiceTableQuery<TodoItem> query = todoTable
+					.Select(todoItem => todoItem.Text);
+	List<string> items = await query.ToListAsync();
+	
+	// Select multiple fields -- both Complete and Text info
+	MobileServiceTableQuery<TodoItem> query = todoTable
+					.Select(todoItem => string.Format("{0} -- {1}", todoItem.Text.PadRight(30), todoItem.Complete ? "Now complete!" : "Incomplete!"));
+	List<string> items = await query.ToListAsync();
+			
 到目前为止所述的所有函数都是加性函数，我们可以不断地调用它们，每次调用都能进一步影响查询。再提供一个示例：
 
-    MobileServiceTableQuery<TodoItem> query = todoTable
-    .Where(todoItem => todoItem.Complete == false)
-    .Select(todoItem => todoItem.Text)
-    .Skip(3).
-    .Take(3);
-    List<string> items = await query.ToListAsync();
-
+	MobileServiceTableQuery<TodoItem> query = todoTable
+					.Where(todoItem => todoItem.Complete == false)
+					.Select(todoItem => todoItem.Text)
+					.Skip(3).
+					.Take(3);
+	List<string> items = await query.ToListAsync();
+	
 <a name="lookingup"></a>
 ### 如何：按 ID 查找数据
 
 使用 `LookupAsync` 函数可以查找数据库中具有特定 ID 的对象。
 
-    // This query filters out the item with the ID of 37BBF396-11F0-4B39-85C8-B319C729AF6D
-    TodoItem item = await todoTable.LookupAsync("37BBF396-11F0-4B39-85C8-B319C729AF6D");
+	// This query filters out the item with the ID of 37BBF396-11F0-4B39-85C8-B319C729AF6D
+	TodoItem item = await todoTable.LookupAsync("37BBF396-11F0-4B39-85C8-B319C729AF6D");
 
 <a name="inserting"></a>
 ## 插入数据如何：在移动服务中插入数据
@@ -235,16 +234,17 @@
 
 你也可以使用服务器脚本来设置 ID 值。下面的脚本示例将生成一个自定义 GUID 并将其分配给新记录的 ID。此 ID 类似于你未传入记录的 ID 值时，移动服务生成的 ID 值。
 
-    //Example of generating an id. This is not required since Mobile Services
-    //will generate an id if one is not passed in.
-    item.id = item.id || newGuid();
-    request.execute();
+	//Example of generating an id. This is not required since Mobile Services
+	//will generate an id if one is not passed in.
+	item.id = item.id || newGuid();
+	request.execute();
 
-    function newGuid() {
-    var pad4 = function(str) { return "0000".substring(str.length) + str; };
-    var hex4 = function () { return pad4(Math.floor(Math.random() * 0x10000 /* 65536 */ ).toString(16)); };
-    return (hex4() + hex4() + "-" + hex4() + "-" + hex4() + "-" + hex4() + "-" + hex4() + hex4() + hex4());
-    }
+	function newGuid() {
+		var pad4 = function(str) { return "0000".substring(str.length) + str; };
+		var hex4 = function () { return pad4(Math.floor(Math.random() * 0x10000 /* 65536 */ ).toString(16)); };
+		return (hex4() + hex4() + "-" + hex4() + "-" + hex4() + "-" + hex4() + "-" + hex4() + hex4() + hex4());
+	}
+
 
 如果应用程序提供了某个 ID 的值，移动服务将按原样存储该值，包括前导和尾随空格。不会从值中裁剪掉空格。
 
@@ -258,18 +258,19 @@
 
 若要插入非类型化数据，你可以按如下所示利用 Json.NET。
 
-    JObject jo = new JObject(); 
-    jo.Add("Text", "Hello World"); 
-    jo.Add("Complete", false);
-    var inserted = await table.InsertAsync(jo);
+	JObject jo = new JObject(); 
+	jo.Add("Text", "Hello World"); 
+	jo.Add("Complete", false);
+	var inserted = await table.InsertAsync(jo);
 
 以下示例使用电子邮件地址作为唯一的字符串 ID。
 
-    JObject jo = new JObject(); 
-    jo.Add("id", "myemail@emaildomain.com"); 
-    jo.Add("Text", "Hello World"); 
-    jo.Add("Complete", false);
-    var inserted = await table.InsertAsync(jo);
+	JObject jo = new JObject(); 
+	jo.Add("id", "myemail@emaildomain.com"); 
+	jo.Add("Text", "Hello World"); 
+	jo.Add("Complete", false);
+	var inserted = await table.InsertAsync(jo);
+
 
 <a name="modifying"></a>
 ## 修改数据如何：在移动服务中修改数据
@@ -280,12 +281,12 @@
 
 若要插入非类型化数据，你可以按此方式利用 Json.NET。请注意，在执行更新时，必须指定 ID，移动服务将凭此 ID 来识别要更新的实例。可以从 `InsertAsync` 调用的结果中获取该 ID。
 
-    JObject jo = new JObject(); 
-    jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
-    jo.Add("Text", "Hello World"); 
-    jo.Add("Complete", false);
-    var inserted = await table.UpdateAsync(jo);
-            
+	JObject jo = new JObject(); 
+	jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
+	jo.Add("Text", "Hello World"); 
+	jo.Add("Complete", false);
+	var inserted = await table.UpdateAsync(jo);
+			
 
 如果你尝试更新某个项但未提供“ID”值，则服务无法识别要更新的实例，从而导致移动服务 SDK 引发 `ArgumentException`。
 
@@ -298,11 +299,10 @@
 
 若要删除非类型化数据，你可以按此方式利用 Json.NET。请注意，在执行删除请求时，必须指定 ID，移动服务将凭此 ID 来识别要删除的实例。删除请求只需要 ID；其他属性将不会传递给服务，如果传递了任何属性，服务会将其忽略。`DeleteAsync` 调用的结果通常也是 `null`。可以从 `InsertAsync` 调用的结果中获取要传入的 ID。
 
-    JObject jo = new JObject(); 
-    jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
-    await table.DeleteAsync(jo);
-            
-
+	JObject jo = new JObject(); 
+	jo.Add("Id", "37BBF396-11F0-4B39-85C8-B319C729AF6D");
+	await table.DeleteAsync(jo);
+			
 如果你尝试删除某个项但尚未设置“Id”字段，则服务无法识别要删除的实例，因此你会收到服务发出的 `MobileServiceInvalidOperationException`。同样，如果你尝试删除某个非类型化项但尚未设置“Id”字段，则也会收到服务发出的 `MobileServiceInvalidOperationException`。
 
 <a name="optimisticconcurrency"></a>
@@ -316,80 +316,86 @@
 
     public class TodoItem
     {
-    public string Id { get; set; }
+        public string Id { get; set; }
 
-    [JsonProperty(PropertyName = "text")]
-    public string Text { get; set; }
+        [JsonProperty(PropertyName = "text")]
+        public string Text { get; set; }
 
-    [JsonProperty(PropertyName = "complete")]
-    public bool Complete { get; set; }
+        [JsonProperty(PropertyName = "complete")]
+        public bool Complete { get; set; }
 
-    // "* Enable Optimistic Concurrency "* //
-    [JsonProperty(PropertyName = "__version")]
-    public byte[] Version { set; get; }
+		// *** Enable Optimistic Concurrency *** //
+        [JsonProperty(PropertyName = "__version")]
+        public byte[] Version { set; get; }
     }
+
 
 使用非类型化表的应用程序通过在表的 `SystemProperties` 中设置 `Version` 标志来启用乐观并发，如下所示。
 
-    //Enable optimistic concurrency by retrieving __version 
-    todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
+	//Enable optimistic concurrency by retrieving __version 
+	todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
+
 
 以下代码演示了如何解决检测到的写入冲突。若要提交解决方法，必须在 `UpdateAsync()` 调用中包含正确的 `__version` 值。
 
-    private async void UpdateToDoItem(TodoItem item)
-    {
-    MobileServicePreconditionFailedException<TodoItem> exception = null;         
-        
-    try
-        {
-    //update at the remote table
-    await todoTable.UpdateAsync(item);
-        }
-    catch (MobileServicePreconditionFailedException<TodoItem> writeException)
-        {
-    exception = writeException;
-        }
-        
-    if (exception != null)
-        {
-    // Conflict detected, the item has changed since the last query
-    // Resolve the conflict between the local and server item
-    await ResolveConflict(item, exception.Item);
-        }
-    }
+	private async void UpdateToDoItem(TodoItem item)
+	{
+    	MobileServicePreconditionFailedException<TodoItem> exception = null;         
+		
+	    try
+    	{
+	        //update at the remote table
+    	    await todoTable.UpdateAsync(item);
+    	}
+    	catch (MobileServicePreconditionFailedException<TodoItem> writeException)
+	    {
+        	exception = writeException;
+	    }
+		
+    	if (exception != null)
+    	{
+			// Conflict detected, the item has changed since the last query
+        	// Resolve the conflict between the local and server item
+	        await ResolveConflict(item, exception.Item);
+    	}
+	}
 
 
-    private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
-    {
-    //Ask user to choose the resoltion between versions
-    MessageDialog msgDialog = new MessageDialog(String.Format("Server Text:\"{0}\" \nLocal Text:\"{1}\"\n", 
-    serverItem.Text, localItem.Text), 
-    "CONFLICT DETECTED - Select a resolution:");
+	private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
+	{
+    	//Ask user to choose the resoltion between versions
+	    MessageDialog msgDialog = new MessageDialog(String.Format("Server Text: \"{0}\" \nLocal Text: \"{1}\"\n", 
+        	                                        serverItem.Text, localItem.Text), 
+                                                	"CONFLICT DETECTED - Select a resolution:");
 
-    UICommand localBtn = new UICommand("Commit Local Text");
-    UICommand ServerBtn = new UICommand("Leave Server Text");
-    msgDialog.Commands.Add(localBtn);
-    msgDialog.Commands.Add(ServerBtn);          
+	    UICommand localBtn = new UICommand("Commit Local Text");
+    	UICommand ServerBtn = new UICommand("Leave Server Text");
+    	msgDialog.Commands.Add(localBtn);
+	    msgDialog.Commands.Add(ServerBtn);          
 
-    localBtn.Invoked = async (IUICommand command) =>
-        {
-    // To resolve the conflict, update the version of the 
-    // item being committed.Otherwise, you will keep
-    // catching a MobileServicePreConditionFailedException.
-    localItem.Version = serverItem.Version;             
+    	localBtn.Invoked = async (IUICommand command) =>
+	    {
+        	// To resolve the conflict, update the version of the 
+	        // item being committed. Otherwise, you will keep
+        	// catching a MobileServicePreConditionFailedException.
+	        localItem.Version = serverItem.Version;             
 
-    // Updating recursively here just in case another 
-    // change happened while the user was making a decision
-    UpdateToDoItem(localItem);
-        };          
-        
-    ServerBtn.Invoked = async (IUICommand command) =>
-        {
-    RefreshTodoItems();
-        };          
-        
-    await msgDialog.ShowAsync();
-    }
+    	    // Updating recursively here just in case another 
+        	// change happened while the user was making a decision
+	        UpdateToDoItem(localItem);
+    	};          
+		
+	    ServerBtn.Invoked = async (IUICommand command) =>
+    	{
+	        RefreshTodoItems();
+    	};          
+		
+	    await msgDialog.ShowAsync();
+	}
+
+
+
+
 
 有关使用移动服务乐观并发的更完整示例，请参阅[乐观并发教程][乐观并发教程]。
 
@@ -397,32 +403,33 @@
 ## 显示数据如何：在移动服务中将数据绑定到用户界面
 
 本部分说明如何使用 UI 元素显示返回的数据对象。若要查询 `todoTable` 中的不完整项并在极简单的列表中显示这些项，可以运行以下示例代码，以使用查询绑定列表源。使用 `MobileServiceCollection` 可以创建移动服务感知型绑定集合。
+			 
+	// This query filters out completed TodoItems. 
+	MobileServiceCollection<TodoItem, TodoItem> items = await todoTable
+		.Where(todoItem => todoItem.Complete == false)
+		.ToCollectionAsync();
 
-    // This query filters out completed TodoItems. 
-    MobileServiceCollection<TodoItem, TodoItem> items = await todoTable
-    .Where(todoItem => todoItem.Complete == false)
-    .ToCollectionAsync();
-
-    // itemsControl is an IEnumerable that could be bound to a UI list control
-    IEnumerable itemsControl  = items;            
-            
-    // Bind this to a ListBox
-    ListBox lb = new ListBox();
-    lb.ItemsSource = items;
+	// itemsControl is an IEnumerable that could be bound to a UI list control
+	IEnumerable itemsControl  = items;            
+			
+	// Bind this to a ListBox
+	ListBox lb = new ListBox();
+	lb.ItemsSource = items;
 
 Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][ISupportIncrementalLoading] 的接口。当用户滚动浏览时，此接口允许控件请求更多的数据。系统通过 `MobileServiceIncrementalLoadingCollection`（可自动处理来自控件的调用）为这个适用于 Windows 应用商店应用程序的接口提供内置支持。若要在 Windows 应用商店应用程序中使用 `MobileServiceIncrementalLoadingCollection`，请执行以下代码：
 
-            MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
-    items =  todoTable.Where(todoItem => todoItem.Complete == false)
-    .ToIncrementalLoadingCollection();
+			MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;
+		items =  todoTable.Where(todoItem => todoItem.Complete == false)
+					.ToIncrementalLoadingCollection();
 
-    ListBox lb = new ListBox();
-    lb.ItemsSource = items;
+		ListBox lb = new ListBox();
+		lb.ItemsSource = items;
+
 
 若要在 Windows Phone 上使用新集合，请在 `IMobileServiceTableQuery<T>` 和 `IMobileServiceTable<T>` 中使用 `ToCollection` 扩展方法。若要实际加载数据，请调用 `LoadMoreItemsAsync()`。
 
-    MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection(); 
-    await items.LoadMoreItemsAsync();         
+	MobileServiceCollection<TodoItem, TodoItem> items = todoTable.Where(todoItem => todoItem.Complete==false).ToCollection(); 
+	await items.LoadMoreItemsAsync();         
 
 当你使用通过调用 `ToCollectionAsync` 或 `ToCollection` 创建的集合时，将获取一个可以绑定到 UI 控件的集合。此集合支持分页，也就是说，控件可以要求该集合“加载更多项”，而该集合也确实会这样做。这样看来，无需执行任何用户代码，控件就能启动工作流。但是，由于集合要从网络加载数据，因此可以预料到这种加载有时会失败。若要处理这种失败，你可以重写 `MobileServiceIncrementalLoadingCollection` 中的 `OnException` 方法，以处理调用控件执行的 `LoadMoreItemsAsync` 后发生的异常。
 
@@ -442,29 +449,29 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][ISu
 
 注册标识提供者后，只需结合提供者的 [MobileServiceAuthenticationProvider][MobileServiceAuthenticationProvider] 值调用 [LoginAsync 方法][LoginAsync 方法]。例如，以下代码将使用 Facebook 启动服务器流登录。
 
-    private MobileServiceUser user;
-    private async System.Threading.Tasks.Task Authenticate()
-    {
-    while (user == null)
-        {
-    string message;
-    try
-            {
-    user = await client
-    .LoginAsync(MobileServiceAuthenticationProvider.Facebook);
-    message = 
-    string.Format("You are now logged in - {0}", user.UserId);
-            }
-    catch (InvalidOperationException)
-            {
-    message = "You must log in. Login Required";
-            }
+	private MobileServiceUser user;
+	private async System.Threading.Tasks.Task Authenticate()
+	{
+		while (user == null)
+		{
+			string message;
+			try
+			{
+				user = await client
+					.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+				message = 
+					string.Format("You are now logged in - {0}", user.UserId);
+			}
+			catch (InvalidOperationException)
+			{
+				message = "You must log in. Login Required";
+			}
 
-    var dialog = new MessageDialog(message);
-    dialog.Commands.Add(new UICommand("OK"));
-    await dialog.ShowAsync();
-        }
-    }
+			var dialog = new MessageDialog(message);
+			dialog.Commands.Add(new UICommand("OK"));
+			await dialog.ShowAsync();
+		}
+	}
 
 如果使用的标识提供者不是 Facebook，请将上述 [MobileServiceAuthenticationProvider][MobileServiceAuthenticationProvider] 的值更改为提供者的值。
 
@@ -481,42 +488,42 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][ISu
 
 你可以根据以下代码段中所示，为 Facebook 或 Google 使用这种最简单形式的客户端流。
 
-    var token = new JObject();
-    // Replace access_token_value with actual value of your access token obtained 
-    // using the Facebook or Google SDK.
-    token.Add("access_token", "access_token_value");
-            
-    private MobileServiceUser user;
-    private async System.Threading.Tasks.Task Authenticate()
-    {
-    while (user == null)
-        {
-    string message;
-    try
-            {
-    // Change MobileServiceAuthenticationProvider.Facebook 
-    // to MobileServiceAuthenticationProvider.Google if using Google auth.
-    user = await client
-    .LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
-    message = 
-    string.Format("You are now logged in - {0}", user.UserId);
-            }
-    catch (InvalidOperationException)
-            {
-    message = "You must log in. Login Required";
-            }
+	var token = new JObject();
+	// Replace access_token_value with actual value of your access token obtained 
+	// using the Facebook or Google SDK.
+	token.Add("access_token", "access_token_value");
+			
+	private MobileServiceUser user;
+	private async System.Threading.Tasks.Task Authenticate()
+	{
+		while (user == null)
+		{
+			string message;
+			try
+			{
+				// Change MobileServiceAuthenticationProvider.Facebook 
+				// to MobileServiceAuthenticationProvider.Google if using Google auth.
+				user = await client
+					.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
+				message = 
+					string.Format("You are now logged in - {0}", user.UserId);
+			}
+			catch (InvalidOperationException)
+			{
+				message = "You must log in. Login Required";
+			}
 
-    var dialog = new MessageDialog(message);
-    dialog.Commands.Add(new UICommand("OK"));
-    await dialog.ShowAsync();
-        }
-    }
+			var dialog = new MessageDialog(message);
+			dialog.Commands.Add(new UICommand("OK"));
+			await dialog.ShowAsync();
+		}
+	}
 
 如果使用 Microsoft 帐户，可按如下所示登录：
 
-    // Replace authentication_token_value with actual value of your Microsoft authentication token obtained through the Live SDK
-    user = await client
-    .LoginWithMicrosoftAccountAsync(authentication_token_value);
+	// Replace authentication_token_value with actual value of your Microsoft authentication token obtained through the Live SDK
+	user = await client
+		.LoginWithMicrosoftAccountAsync(authentication_token_value);
 
 有关如何使用 Microsoft 帐户提供单一登录体验的示例，请参阅“使用单一登录对应用程序进行身份验证”教程（[Windows 应用商店][1]/[Windows Phone][2]）。
 
@@ -525,30 +532,31 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][ISu
 
 在某些情况下，完成首次用户身份验证后，可以避免调用 login 方法。你可以使用适用于 Windows 应用商店应用程序的 [PasswordVault][PasswordVault] 来缓存当前用户首次登录时使用的标识，以后每次该用户登录时，系统都会检查缓存中是否存在该用户标识。如果缓存为空，则用户仍然需要完成整个登录过程。
 
-        // After logging in
-    PasswordVault vault = new PasswordVault();
-    vault.Add(new PasswordCredential("Facebook", user.UserId, user.MobileServiceAuthenticationToken));
+	// After logging in
+	PasswordVault vault = new PasswordVault();
+	vault.Add(new PasswordCredential("Facebook", user.UserId, user.MobileServiceAuthenticationToken));
 
-    // Log in 
-    var creds = vault.FindAllByResource("Facebook").FirstOrDefault();
-    if (creds != null)
-    {
-    user = new MobileServiceUser(creds.UserName);
-    user.MobileServiceAuthenticationToken = vault.Retrieve("Facebook", creds.UserName).Password;
-    }
-    else
-    {
-    // Regular login flow
-    user = new MobileServiceuser( await client
-    .LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
-    var token = new JObject();
-    // Replace access_token_value with actual value of your access token
-    token.Add("access_token", "access_token_value");
-    }
-            
-    // Log out
-    client.Logout();
-    vault.Remove(vault.Retrieve("Facebook", user.UserId));
+	// Log in 
+	var creds = vault.FindAllByResource("Facebook").FirstOrDefault();
+	if (creds != null)
+	{
+		user = new MobileServiceUser(creds.UserName);
+		user.MobileServiceAuthenticationToken = vault.Retrieve("Facebook", creds.UserName).Password;
+	}
+	else
+	{
+		// Regular login flow
+		user = new MobileServiceuser( await client
+			.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
+		var token = new JObject();
+		// Replace access_token_value with actual value of your access token
+		token.Add("access_token", "access_token_value");
+	}
+			
+	 // Log out
+	client.Logout();
+	vault.Remove(vault.Retrieve("Facebook", user.UserId));
+
 
 对于 Windows Phone 应用程序，可以使用 [ProtectedData][ProtectedData] 类加密和缓存数据，并在隔离的存储中存储敏感信息。
 
@@ -559,44 +567,44 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][ISu
 
 例如，你可以在移动服务中注册服务器脚本，然后使用这些脚本对所要插入和更新的数据执行各种操作，包括验证和数据修改。你可以按如下所示定义并注册一个用于验证和修改数据的服务器脚本：
 
-    function insert(item, user, request) 
-    {
-    if (item.text.length > 10) {
-    request.respond(statusCodes.BAD_REQUEST, { error:"Text cannot exceed 10 characters" });
-    } else {
-    request.execute();
-       }
-    }
+	function insert(item, user, request) 
+	{
+	   if (item.text.length > 10) {
+		  request.respond(statusCodes.BAD_REQUEST, { error: "Text cannot exceed 10 characters" });
+	   } else {
+		  request.execute();
+	   }
+	}
 
 此服务器端脚本将验证发送到移动服务的字符串数据长度，并拒绝过长（在本例中为 10 个字符以上）的字符串。
 
 由于移动服务能够在服务器端验证数据和发送错误响应，因此你可以更新你的 .NET 应用程序，使其能够处理验证后生成的错误响应。
 
-    private async void InsertTodoItem(TodoItem todoItem)
-    {
-    // This code inserts a new TodoItem into the database.When the operation completes
-    // and Mobile Services has assigned an Id, the item is added to the CollectionView
-    try
-        {
-    await todoTable.InsertAsync(todoItem);
-    items.Add(todoItem);
-        }
-    catch (MobileServiceInvalidOperationException e)
-        {
-    // Handle error
-        }
-    }
+	private async void InsertTodoItem(TodoItem todoItem)
+	{
+		// This code inserts a new TodoItem into the database. When the operation completes
+		// and Mobile Services has assigned an Id, the item is added to the CollectionView
+		try
+		{
+			await todoTable.InsertAsync(todoItem);
+			items.Add(todoItem);
+		}
+		catch (MobileServiceInvalidOperationException e)
+		{
+			// Handle error
+		}
+	}
 
 <a name="untyped"></a>
 ## 处理非类型化数据如何：处理非类型化数据
 
 .NET 客户端在设计上支持强类型化方案。但有时，松散类型化的体验可为用户带来方便；例如，在处理采用开放架构的对象时，可能就需要这种体验。可按如下所示启用这种方案。在查询中，先指定 LINQ 语句并使用有线格式。
 
-    // Get an untyped table reference
-    IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");         
+	// Get an untyped table reference
+	IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");			
 
-    // Lookup untyped data using OData
-    JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
+	// Lookup untyped data using OData
+	JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
 
 此时，你将获取一些可以像属性包一样使用的 JSON 值。有关 JToken 和 Json.NET 的详细信息，请参阅 [Json.NET][Json.NET]
 
@@ -613,30 +621,30 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][ISu
 
 你可能需要将一个自定义标头附加到每个传出请求，或者更改响应状态代码。按如下所示配置 DelegatingHandler 便可实现此目的：
 
-    public async Task CallClientWithHandler()
-    {
-    MobileServiceClient client = new MobileServiceClient( 
-    "AppUrl", 
-    "AppKey" ,
-    new MyHandler()
-            ); 
-    IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
-    var newItem = new TodoItem { Text = "Hello world", Complete = false };
-    await table.InsertAsync(newItem);
-    }
-             
-    public class MyHandler :DelegatingHandler
-    {
-    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-    request.Headers.Add("x-my-header", "my value");
-    var response = awaitbase.SendAsync(request, cancellationToken);
-    response.StatusCode = HttpStatusCode.ServiceUnavailable;
-    return response;
-        }
-    }
-            
-            
+	public async Task CallClientWithHandler()
+	{
+		MobileServiceClient client = new MobileServiceClient( 
+			"AppUrl", 
+			"AppKey" ,
+			new MyHandler()
+			); 
+		IMobileServiceTable<TodoItem> todoTable = client.GetTable<TodoItem>();
+		var newItem = new TodoItem { Text = "Hello world", Complete = false };
+		await table.InsertAsync(newItem);
+	}
+			 
+	public class MyHandler : DelegatingHandler
+	{
+		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+		{
+			request.Headers.Add("x-my-header", "my value");
+			var response = awaitbase.SendAsync(request, cancellationToken);
+			response.StatusCode = HttpStatusCode.ServiceUnavailable;
+			return response;
+		}
+	}
+			
+			
 <a name="serialization"></a>
 ### 如何：自定义序列化
 
@@ -644,9 +652,9 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][ISu
 
 使用此属性可以设置 Json.NET 属性（这样的属性有很多），其中包括一个用于将所有属性转换为小写的属性，例如：
 
-    var settings = new JsonSerializerSettings();
-    settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-    client.SerializerSettings = settings;
+	var settings = new JsonSerializerSettings();
+	settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+	client.SerializerSettings = settings;
 
 <a name="nextsteps"></a>
 ## 后续步骤
