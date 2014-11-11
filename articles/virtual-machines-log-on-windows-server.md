@@ -26,7 +26,7 @@
 
     你现在可以像使用任何其他服务器一样使用该虚拟机。
 
-[WACOM.NOTE] 有关要求和疑难解答提示，请参阅[使用 RDP 或 SSH 连接到 Windows Azure 虚拟机][使用 RDP 或 SSH 连接到 Windows Azure 虚拟机]。
+[WACOM.NOTE] 有关要求和疑难解答提示，请参阅[使用 RDP 或 SSH 连接到 Windows Azure 虚拟机](http://msdn.microsoft.com/zh-cn/library/azure/dn535788.aspx)。
 
   [Azure 管理门户]: http://manage.windowsazure.cn
   [登录到虚拟机]: ./media/virtual-machines-log-on-windows-server/connectwindows.png
