@@ -4,7 +4,7 @@
 
 # 使用 HDInsight (Hadoop) 中的 Storm 和 HBase 分析传感器数据
 
-了解如何构建一个解决方案，使用 HDInsight Storm 群集处理 Azure 事件中心中的传感器数据。处理期间，Storm 拓扑将输入数据存储到 HBase 群集中。该拓扑还将使用 SignalR 通过 Azure 网站上托管的基于 Web 的仪表板提供近乎实时的信息。
+了解如何构建一个解决方案，使用 HDInsight Storm 群集处理 Azure 事件中心中的传感器数据。 处理期间，Storm 拓扑将输入数据存储到 HBase 群集中。 该拓扑还将使用 SignalR 通过 Azure 网站上托管的基于 Web 的仪表板提供近乎实时的信息。
 
 > [AZURE.NOTE] 此项目的完整版本可从 [https://github.com/Blackmist/hdinsight-eventhub-example](https://github.com/Blackmist/hdinsight-eventhub-example) 上得到。
 
@@ -24,29 +24,29 @@
 
 ## 创建仪表板
 
-仪表板用于显示近乎实时的传感器信息。在本示例中，仪表板是托管在 Azure 网站上的 ASP.NET 应用程序。应用程序的主要用途是作为 [SignalR](http://www.asp.net/signalr/overview/getting-started/introduction-to-signalr) Hub 在其处理消息时从 Storm 拓扑接收信息。
+仪表板用于显示近乎实时的传感器信息。 在本示例中，仪表板是托管在 Azure 网站上的 ASP.NET 应用程序。 应用程序的主要用途是作为 [SignalR](http://www.asp.net/signalr/overview/getting-started/introduction-to-signalr) Hub 在其处理消息时从 Storm 拓扑接收信息。
 
 网站还包含一个静态 index.html 文件，其也与 SignalR 连接并使用 D3.js 对通过 Storm 拓扑传输的数据进行图形处理。
 
-> [WACOM.NOTE] 尽管您还可以使用原 WebSocket 代替 SignalR，但是如果您需要向外扩展网站，WebSocket 不提供内置扩展机制。SignalR 可使用 Azure Service Bus 进行扩展 ([http://www.asp.net/signalr/overview/performance/scaleout-with-windows-azure-service-bus](http://www.asp.net/signalr/overview/performance/scaleout-with-windows-azure-service-bus))。
+> [WACOM.NOTE] 尽管您还可以使用原 WebSocket 代替 SignalR，但是如果您需要向外扩展网站，WebSocket 不提供内置扩展机制。 SignalR 可使用 Azure Service Bus 进行扩展 ([http://www.asp.net/signalr/overview/performance/scaleout-with-windows-azure-service-bus](http://www.asp.net/signalr/overview/performance/scaleout-with-windows-azure-service-bus))。
 >
 > 有关使用 Storm 拓扑结构与使用原 WebSocket 的 Python 网站进行通信的示例，请参见 [Storm Tweet 观点数据 D3 可视化](https://github.com/P7h/StormTweetsSentimentD3Viz) 项目。
 
-1. 在 Visual Studio 中，使用 **ASP.NET Web 应用程序**项目模板创建一个新 C# 应用程序。将新应用程序命名为**仪表板**。
+1.  在 Visual Studio 中，使用 **ASP.NET Web 应用程序**项目模板创建一个新 C# 应用程序。 将新应用程序命名为**仪表板**。
 
-2. 在 **New ASP.NET 项目**窗口中，选择**空**应用程序模板。在 **Windows Azure** 部分中，在**云**和**网站**中选择主机。最后，单击**确定**。
+2.  在 **New ASP.NET 项目**窗口中，选择**空**应用程序模板。 在 **Windows Azure** 部分中，在**云**和**网站**中选择主机。 最后，单击**确定**。
 
 	> [AZURE.NOTE] 如果出现提示，请登录到您的 Azure 订阅。
 
-3. 在**配置 Windows Azure 站点**对话框中，为您的网站输入一个**站点名称**和**区域**，然后单击**确定**。这将创建托管仪表板的 Azure 网站。
+3.  在**配置 Windows Azure 站点**对话框中，为您的网站输入一个**站点名称**和**区域**，然后单击**确定**。 这将创建托管仪表板的 Azure 网站。
 
-3. 在**解决方案资源管理器**中，右键单击项目，然后选择**添加 | SignalR Hub 类 (v2)**。将类命名为 **DashHub.cs**，并将其添加到项目中。这将包含 SignalR Hub，其用于在 HDInsight 与仪表板网页之间传输数据。
+3.  在**解决方案资源管理器**中，右键单击项目，然后选择**添加 | SignalR Hub 类 (v2)**。 将类命名为 **DashHub.cs**，并将其添加到项目中。 这将包含 SignalR Hub，其用于在 HDInsight 与仪表板网页之间传输数据。
 
-	> [AZURE.NOTE] 如果您使用的是 Visual Studio 2012，**SignalR Hub Class (v2)** 模板将不可用。您可以添加一个称为 DashHub 的普通**类**作为代替。您还需要通过打开**工具 | 库软件包管理器 | 程序包管理器控制台**并运行以下命令手动安装 SignalR 包：
+	> [AZURE.NOTE] 如果您使用的是 Visual Studio 2012，**SignalR Hub Class (v2)** 模板将不可用。 您可以添加一个称为 DashHub 的普通**类**作为代替。 您还需要通过打开**工具 | 库软件包管理器 | 程序包管理器控制台**并运行以下命令手动安装 SignalR 包：
 	>
 	> `install-package Microsoft.AspNet.SignalR`
 
-4. 将 **DashHub.cs** 中的代码更换为以下内容。
+4.  将 **DashHub.cs** 中的代码更换为以下内容。
 
 		using System;
 		using System.Collections.Generic;
@@ -66,11 +66,11 @@
 		    }
 		}
 
-5. 在**解决方案资源管理器**中，右键单击项目，然后选择**添加 | OWIN Startup 类**。将新类命名为 **Startup.cs**。
+5.  在**解决方案资源管理器**中，右键单击项目，然后选择**添加 | OWIN Startup 类**。 将新类命名为 **Startup.cs**。
 
-	> [AZURE.NOTE] 如果您使用的是 Visual Studio 2012，**OWIN Startup 类**模板将不可用。您可以创建一个称为"Startup"的**类**作为代替。
+	> [AZURE.NOTE] 如果您使用的是 Visual Studio 2012，**OWIN Startup 类**模板将不可用。 您可以创建一个称为"Startup"的**类**作为代替。
 
-6. 将 **Startup.cs** 的内容更换为以下内容。
+6.  将 **Startup.cs** 的内容更换为以下内容。
 
 		using System;
 		using System.Threading.Tasks;
@@ -91,11 +91,11 @@
 		    }
 		}
 
-7. 在**解决方案资源管理器**中，右键单击项目，然后单击**添加 | HTML 页**。将新页面命名为 **index.html**。此页面将包含此项目的实时仪表板。它将从 DashHub 中接收信息，并使用 D3.js 显示图形。
+7.  在**解决方案资源管理器**中，右键单击项目，然后单击**添加 | HTML 页**。 将新页面命名为 **index.html**。 此页面将包含此项目的实时仪表板。 它将从 DashHub 中接收信息，并使用 D3.js 显示图形。
 
-8. 在**解决方案资源管理器**中，右键单击 **index.html** 并选择**设置为起始页**。
+8.  在**解决方案资源管理器**中，右键单击 **index.html** 并选择**设置为起始页**。
 
-10. 将 **index.html** 文件中的代码更换为以下内容。
+10.  将 **index.html** 文件中的代码更换为以下内容。
 
 		<!DOCTYPE html>
 		<html xmlns="http://www.w3.org/1999/xhtml">
@@ -288,11 +288,11 @@
 		    </body>
 		</html>
 
-	> [AZURE.NOTE] SignalR 脚本的更新版本可通过程序包管理器安装。确认以下脚本参考对应项目中的脚本文件版本（如果您使用 NuGet 添加了 SignalR 而不是添加 Hub，它们将有所不同。）
+	> [AZURE.NOTE] SignalR 脚本的更新版本可通过程序包管理器安装。 确认以下脚本参考对应项目中的脚本文件版本（如果您使用 NuGet 添加了 SignalR 而不是添加 Hub，它们将有所不同。）
 
-11. 在**解决方案资源管理器**中，右键单击项目，然后单击**添加 | HTML 页**。将新页面命名为 **test.html**。此页面可用于通过发送和接收消息测试 DashHub 和仪表板。
+11.  在**解决方案资源管理器**中，右键单击项目，然后单击**添加 | HTML 页**。 将新页面命名为 **test.html**。 此页面可用于通过发送和接收消息测试 DashHub 和仪表板。
 
-11. 将 **test.html** 文件中的代码更换为以下内容。
+11.  将 **test.html** 文件中的代码更换为以下内容。
 
 		<!DOCTYPE html>
 		<html>
@@ -349,31 +349,31 @@
 		</body>
 		</html>
 
-11. **为该项目保存全部**。
+11.  **为该项目保存全部**。
 
-12. 在**解决方案资源管理器**中，右键单击**仪表板**项目并选择**发布**。选择您为此项目创建的网站，然后单击**发布**。
+12.  在**解决方案资源管理器**中，右键单击**仪表板**项目并选择**发布**。 选择您为此项目创建的网站，然后单击**发布**。
 
-13. 一旦网站发布完成，应打开一个网页显示一个移动的时间线。
+13.  一旦网站发布完成，应打开一个网页显示一个移动的时间线。
 
 ### 测试仪表板
 
-14. 若要确认 SignalR 是否在运行中且仪表板将为发送至 SignalR 的数据显示图形行，请在该网站中打开一个新浏览器窗口访问 **test.html**。例如，**http://mydashboard.chinacloudsites.cn/test.html**。
+14.  若要确认 SignalR 是否在运行中且仪表板将为发送至 SignalR 的数据显示图形行，请在该网站中打开一个新浏览器窗口访问 **test.html**。 例如，**http://mydashboard.chinacloudsites.cn/test.html**。
 
-15. 仪表板应出现 JSON 格式化数据，其中含有**设备 ID** 和**温度**值。例如，**{"device":0, "temperature":80}**。使用设备 ID 0 到 9 在 **test.html** 页面上输入一些测试值，同时仪表板在另一个页面中打开。请注意，每个设备 ID 的行都采用不同的颜色描绘。
+15.  仪表板应出现 JSON 格式化数据，其中含有**设备 ID** 和**温度**值。 例如，**{"device":0, "temperature":80}**。 使用设备 ID 0 到 9 在 **test.html** 页面上输入一些测试值，同时仪表板在另一个页面中打开。 请注意，每个设备 ID 的行都采用不同的颜色描绘。
 
 ## 配置 Event Hub
 
-Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创建一个新的 Event Hub。
+Event Hub 用于从传感器中接收消息（事件）。 按照下列步骤创建一个新的 Event Hub。
 
-1. 从 [Azure 门户](https://manage.windowsazure.cn)中，选择**新建 | Service Bus | Event Hub | 自定义创建**。
+1.  从 [Azure 门户](https://manage.windowsazure.cn)中，选择**新建 | Service Bus | Event Hub | 自定义创建**。
 
-2. 在**添加新 Event Hub** 对话框中，输入 **Event Hub 名称**，选择要创建 Hub 的**区域**，然后创建一个新的命名空间或选择一个现有的命名空间。最后，单击**箭头**。
+2.  在**添加新 Event Hub** 对话框中，输入 **Event Hub 名称**，选择要创建 Hub 的**区域**，然后创建一个新的命名空间或选择一个现有的命名空间。 最后，单击**箭头**。
 
-2. 在**配置 Event Hub** 对话框中，输入**分区计数**和**消息保留期**值。在此示例中，分区计数值是 10，消息保留期值是 1。
+2.  在**配置 Event Hub** 对话框中，输入**分区计数**和**消息保留期**值。 在此示例中，分区计数值是 10，消息保留期值是 1。
 
-3. 一旦 Event Hub 创建完成，请选择命名空间，然后选择 **Event Hub**。最后，选择您此前创建的 Event Hub。
+3.  一旦 Event Hub 创建完成，请选择命名空间，然后选择 **Event Hub**。 最后，选择您此前创建的 Event Hub。
 
-4. 选择**配置**，然后使用下列信息创建两个新的访问策略。
+4.  选择**配置**，然后使用下列信息创建两个新的访问策略。
 
 	<table>
 	<tr><th>名称</th><th>权限</th></tr>
@@ -381,26 +381,26 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 	<tr><td>Storm</td><td>侦听</td></tr>
 	</table>
 
-	创建权限后，请选择页面底部的**保存**图标。这将创建共享的访问策略，该策略将用于向此 Hub 中发送消息以及从中读取消息。
+	创建权限后，请选择页面底部的**保存**图标。 这将创建共享的访问策略，该策略将用于向此 Hub 中发送消息以及从中读取消息。
 
-5. 保存这些策略后，请使用页面底部的**共享访问密钥生成器**检索**设备**和 **Storm** 策略的密钥。保存这些策略供以后使用。
+5.  保存这些策略后，请使用页面底部的**共享访问密钥生成器**检索**设备**和 **Storm** 策略的密钥。 保存这些策略供以后使用。
 
 ### 将消息发送到 Event Hub
 
-由于没有一组简单、标准的传感器适用于每个人，将使用 .NET 应用程序生成随机数。使用以下步骤创建的 .NET 应用程序将每秒钟生成 10 个设备的事件，直到您按下某个键停止应用程序为止。
+由于没有一组简单、标准的传感器适用于每个人，将使用 .NET 应用程序生成随机数。 使用以下步骤创建的 .NET 应用程序将每秒钟生成 10 个设备的事件，直到您按下某个键停止应用程序为止。
 
-1. 在 Visual Studio，中，创建一个新的 **Windows 桌面**项目并选择**控制台应用程序**项目模板。将项目命名为 **SendEvents**，然后单击**确定**。
+1.  在 Visual Studio，中，创建一个新的 **Windows 桌面**项目并选择**控制台应用程序**项目模板。 将项目命名为 **SendEvents**，然后单击**确定**。
 
-2. 在**解决方案资源管理器**中，右键单击 **SendEvents**，然后选择**管理 NuGet 包**。
+2.  在**解决方案资源管理器**中，右键单击 **SendEvents**，然后选择**管理 NuGet 包**。
 
-3. 在**管理 NuGet 包**中，搜索并安装下列程序包。
+3.  在**管理 NuGet 包**中，搜索并安装下列程序包。
 
 	* **Microsoft Azure Service Bus**
 	* **JSON.Net**
 
 	当程序包安装完成后，**关闭**程序包管理器。
 
-4. 将 **Program.cs** 的内容更换为以下内容。
+4.  将 **Program.cs** 的内容更换为以下内容。
 
 		using System;
 		using System.Collections.Generic;
@@ -480,21 +480,21 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 		    }
 		}
 
-	现在，您将收到一个警告提示引用"Event"类的行。目前忽略这些行。
+	现在，您将收到一个警告提示引用"Event"类的行。 目前忽略这些行。
 
-4.在 **Program.cs** 文件中，将文件开头的以下变量值设置为从 Azure 管理门户的 Event Hub 中检索到的对应值。
+4. 在 **Program.cs** 文件中，将文件开头的以下变量值设置为从 Azure 管理门户的 Event Hub 中检索到的对应值。
 
 	<table>
 	<tr><th>将此值...</th><th>设置为此值...</th></tr>
-	<tr><td>eventHubName</td><td>您的 Event Hub 的名称。例如，<strong>温度</strong>。</td></tr>
-	<tr><td>eventHubNamespace</td><td>您的 Event Hub 的命名空间。例如，<strong>sensors-ns</strong>。</td></tr>
-	<tr><td>sharedAccessPolicyName</td><td>您使用发送访问权限创建的策略。例如，<strong>设备</strong>。</td></tr>
+	<tr><td>eventHubName</td><td>您的 Event Hub 的名称。 例如，<strong>温度</strong>。</td></tr>
+	<tr><td>eventHubNamespace</td><td>您的 Event Hub 的命名空间。 例如，<strong>sensors-ns</strong>。</td></tr>
+	<tr><td>sharedAccessPolicyName</td><td>您使用发送访问权限创建的策略。 例如，<strong>设备</strong>。</td></tr>
 	<tr><td>sharedAccessPolicyKey</td><td>具有发送访问权限的策略的密钥。</td></tr>
 	</table>
 
-4. 在**解决方案资源管理器**中，右键单击 **SendEvents** 和**添加 | 类**。将新类命名为 **Event.cs**。这将描述发送至 Event Hub 的消息。
+4.  在**解决方案资源管理器**中，右键单击 **SendEvents** 和**添加 | 类**。 将新类命名为 **Event.cs**。 这将描述发送至 Event Hub 的消息。
 
-5. 将 **Event.cs** 的内容更换为以下内容。
+5.  将 **Event.cs** 的内容更换为以下内容。
 
 		using System;
 		using System.Collections.Generic;
@@ -519,99 +519,99 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 
 	此类描述我们正在发送的数据，包括 TimeStamp、DeviceID 和 Temperature 值。
 
-6. **全部保存**，然后运行应用程序，为 Event Hub 填充消息。
+6.  **全部保存**，然后运行应用程序，为 Event Hub 填充消息。
 
 ## 创建 Azure 虚拟网络
 
 为了使拓扑在 Storm 群集上运行以便与 HBase 直接通信，您必须将两个服务器都设置到 Azure 虚拟网络中。
 
-1. 登录到 [Azure 管理门户][azure-portal]。
+1.  登录到 [Azure 管理门户][azure-portal]。
 
-2. 单击页面底部的**+新建**，然后依次单击**网络服务**、**虚拟网络**和**快速创建**。
+2.  单击页面底部的**+新建**，然后依次单击**网络服务**、**虚拟网络**和**快速创建**。
 
-3. 键入或选择以下值：
+3.  键入或选择以下值：
 
-	- **名称**：虚拟网络的名称。
-	- **地址空间**：为虚拟网络选择一个地址空间，该空间必须足够大以便为群集中的所有节点提供地址。否则，设置将失败。
-	- **最大虚拟机数**：选择以下最大虚拟机数。
-	- **位置**：该位置必须与要创建的 HBase 群集相同。
-	- **DNS 服务器**：本文使用 Azure 提供的内部 DNS 服务器，因此，您可以选择**无**。此外，也支持使用自定义 DNS 服务器的高级网络配置。有关详细指南，请参见 [http://msdn.microsoft.com/library/azure/jj156088.aspx](http://msdn.microsoft.com/library/azure/jj156088.aspx)。
+	- **名称**： 虚拟网络的名称。
+	- **地址空间**：为虚拟网络选择一个地址空间，该空间必须足够大以便为群集中的所有节点提供地址。 否则，设置将失败。
+	- **最大虚拟机数**： 选择以下最大虚拟机数。
+	- **位置**： 该位置必须与要创建的 HBase 群集相同。
+	- **DNS 服务器**： 本文使用 Azure 提供的内部 DNS 服务器，因此，您可以选择**无**。此外，也支持使用自定义 DNS 服务器的高级网络配置。 有关详细指南，请参见 [http://msdn.microsoft.com/library/azure/jj156088.aspx](http://msdn.microsoft.com/library/azure/jj156088.aspx)。
 
-4. 单击**创建虚拟网络**。新虚拟网络名称将显示在列表中。等到"状态"列显示**已创建**。
+4.  单击**创建虚拟网络**。新虚拟网络名称将显示在列表中。 等到"状态"列显示**已创建**。
 
-5. 在主窗格中，单击刚创建的虚拟网络。
+5.  在主窗格中，单击刚创建的虚拟网络。
 
-6. 在页面顶部，单击**仪表板**。
+6.  在页面顶部，单击**仪表板**。
 
-7. 在**速览**下，请记住**虚拟网络 ID**。在设置 Storm 和 HBase 群集时将要用到它。
+7.  在**速览**下，请记住**虚拟网络 ID**。 在设置 Storm 和 HBase 群集时将要用到它。
 
-8. 在页面顶部，单击**配置**。
+8.  在页面顶部，单击**配置**。
 
-9. 在页面底部，默认子网名称为 **Subnet-1**。使用**添加子网**按钮添加 **Subnet-2**。Storm 和 HBase 群集将位于这些子网中。
+9.  在页面底部，默认子网名称为 **Subnet-1**。 使用**添加子网**按钮添加 **Subnet-2**。 Storm 和 HBase 群集将位于这些子网中。
 
-	> [WACOM.NOTE] 在本文中，我们将使用只有一个节点的群集。如果您创建的是多节点群集，您必须为用于群集的子网验证其 **CIDR（地址数）**。地址数必须大于工作节点数加上七（网关：2，头节点：2，ZooKeeper：3).例如，如果需要一个 10 节点 HBase 群集，子网的地址数必须大于 17 (10+7)。否则，部署将失败。
+	> [WACOM.NOTE] 在本文中，我们将使用只有一个节点的群集。 如果您创建的是多节点群集，您必须为用于群集的子网验证其 **CIDR（地址数）**。地址数必须大于工作节点数加上七（网关：2，头节点：2，ZooKeeper：3). 例如，如果需要一个 10 节点 HBase 群集，子网的地址数必须大于 17 (10+7)。 否则，部署将失败。
 	>
 	> 强烈建议为一个群集指定一个子网。 
 
-11. 单击页面底部的**保存**。
+11.  单击页面底部的**保存**。
 
 ## 创建 HDInsight Storm 群集
 
-1. 登录到 [Azure 管理门户][azureportal]
+1.  登录到 [Azure 管理门户][azureportal]
 
-2. 单击左侧的 **HDInsight**，然后单击页面左下角的 **+新建**。
+2.  单击左侧的 **HDInsight**，然后单击页面左下角的 **+新建**。
 
-3. 单击第二列中的 HDInsight 图标，然后选择**自定义**。
+3.  单击第二列中的 HDInsight 图标，然后选择**自定义**。
 
-4. 在**群集详情**页面上，输入新群集名称，并选择 **Storm** 作为**群集类型**。选择箭头以继续。
+4.  在**群集详情**页面上，输入新群集名称，并选择 **Storm** 作为**群集类型**。 选择箭头以继续。
 
-5. 输入 1 作为用于此群集的**数据节点**数量。对于**区域/虚拟网络**，请选择先前创建的 Azure 虚拟网络。对于**虚拟网络子网**，请选择 **Subnet-2**。
+5.  输入 1 作为用于此群集的**数据节点**数量。 对于**区域/虚拟网络**，请选择先前创建的 Azure 虚拟网络。 对于**虚拟网络子网**，请选择 **Subnet-2**。
 
 	> [WACOM.NOTE] 为了最大程度减少本文所用群集的成本，请将**群集大小**减至 1，并在群集使用完后删除群集。
 
-6. 输入管理员**用户名**和**密码**，然后选择箭头以继续。
+6.  输入管理员**用户名**和**密码**，然后选择箭头以继续。
 
-4. 对于**存储帐户**，请选择**创建新存储**或选择已有的存储帐户。选择或输入要使用的**帐户名称**和**默认容器**。单击左下角的勾选图标以创建 Storm 群集。
+4.  对于**存储帐户**，请选择**创建新存储**或选择已有的存储帐户。 选择或输入要使用的**帐户名称**和**默认容器**。 单击左下角的勾选图标以创建 Storm 群集。
 
 ## 创建 HDInsight HBase 群集
 
-1. 登录到 [Azure 管理门户][azureportal]
+1.  登录到 [Azure 管理门户][azureportal]
 
-2. 单击左侧的 **HDInsight**，然后单击页面左下角的 **+新建**。
+2.  单击左侧的 **HDInsight**，然后单击页面左下角的 **+新建**。
 
-3. 单击第二列中的 HDInsight 图标，然后选择**自定义**。
+3.  单击第二列中的 HDInsight 图标，然后选择**自定义**。
 
-4. 在**群集详情**页面上，输入新群集名称，并选择 **HBase** 作为**群集类型**。选择箭头以继续。
+4.  在**群集详情**页面上，输入新群集名称，并选择 **HBase** 作为**群集类型**。 选择箭头以继续。
 
-5. 输入 1 作为用于此群集的**数据节点**数量。对于**区域/虚拟网络**，请选择先前创建的 Azure 虚拟网络。对于**虚拟网络子网**，请选择 **Subnet-1**。
+5.  输入 1 作为用于此群集的**数据节点**数量。 对于**区域/虚拟网络**，请选择先前创建的 Azure 虚拟网络。 对于**虚拟网络子网**，请选择 **Subnet-1**。
 
 	> [WACOM.NOTE] 为了最大程度减少本文所用群集的成本，请将**群集大小**减至 1，并在群集使用完后删除群集。
 
-6. 输入管理员**用户名**和**密码**，然后选择箭头以继续。
+6.  输入管理员**用户名**和**密码**，然后选择箭头以继续。
 
-4. 对于**存储帐户**，请选择**创建新存储**或选择已有的存储帐户。选择或输入要使用的**帐户名称**和**默认容器**。单击左下角的勾选图标以创建 Storm 群集。
+4.  对于**存储帐户**，请选择**创建新存储**或选择已有的存储帐户。 选择或输入要使用的**帐户名称**和**默认容器**。 单击左下角的勾选图标以创建 Storm 群集。
 
 	> [WACOM.NOTE] 您应使用一个不同于 Storm 群集所用的容器。
 
 ### 启用远程桌面
 
-对于本教程，我们必须使用远程桌面访问 Storm 和 HBase 群集。按照以下步骤对两个群集启用"远程桌面"。
+对于本教程，我们必须使用远程桌面访问 Storm 和 HBase 群集。 按照以下步骤对两个群集启用"远程桌面"。
 
-1. 登录到 [Azure 管理门户][azureportal]。
+1.  登录到 [Azure 管理门户][azureportal]。
 
-2. 在左侧，选择 **HDInsight**，然后从列表中选择您的 Storm 群集。最后，选择页面顶部的**配置**。
+2.  在左侧，选择 **HDInsight**，然后从列表中选择您的 Storm 群集。 最后，选择页面顶部的**配置**。
 
-3. 在页面底部，选择**启用远程**。出现提示时，输入用户名、密码和"远程桌面"访问的到期日期。单击复选标记以启用"远程桌面"。
+3.  在页面底部，选择**启用远程**。 出现提示时，输入用户名、密码和"远程桌面"访问的到期日期。 单击复选标记以启用"远程桌面"。
 
-"远程桌面"启用后，您便可以选择页面底部的**连接**。按照提示连接到群集。
+"远程桌面"启用后，您便可以选择页面底部的**连接**。 按照提示连接到群集。
 
 ### 发现 HBase DNS 后缀
 
-为了从 Storm 群集写入 HBase，您必须为 HBase 群集使用完全限定域名 (FQDN)。按照下列步骤以发现此信息。
+为了从 Storm 群集写入 HBase，您必须为 HBase 群集使用完全限定域名 (FQDN)。 按照下列步骤以发现此信息。
 
-1. 使用"远程桌面"连接到 HBase 群集。
+1.  使用"远程桌面"连接到 HBase 群集。
 
-2. 连接到群集后，打开 Hadoop 命令行并运行 **ipconfig** 命令以获取 DNS 后缀。**连接特定 DNS 后缀**将包含后缀值。例如，**mycluster.b4.internal.cloudapp.net**。请保存此信息。
+2.  连接到群集后，打开 Hadoop 命令行并运行 **ipconfig** 命令以获取 DNS 后缀。 **连接特定 DNS 后缀**将包含后缀值。 例如，**mycluster.b4.internal.cloudapp.net**。请保存此信息。
 
 ## 开发 Storm 拓扑
 
@@ -619,7 +619,7 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 
 ### 下载并构建外部依赖项
 
-本项目中使用的几个依赖项必须单独下载和构建，然后安装到您的开发环境中的本地 Maven 存储库中。在本部分中，您将下载并安装如下。
+本项目中使用的几个依赖项必须单独下载和构建，然后安装到您的开发环境中的本地 Maven 存储库中。 在本部分中，您将下载并安装如下。
 
 * 从 Event Hub 中读取消息的 Event Hub spout。
 
@@ -629,9 +629,9 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 
 为了从 Event Hub 接收数据，我们将使用 **eventhubs-storm-spout**。
 
-1. 使用"远程桌面"连接到您的 Storm 群集，然后将 **%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** 文件复制到您的本地开发环境中。其中包含 **events-storm-spout**。
+1.  使用"远程桌面"连接到您的 Storm 群集，然后将 **%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** 文件复制到您的本地开发环境中。 其中包含 **events-storm-spout**。
 
-6. 使用以下命令将程序包安装到您的本地 Maven 存储中。以此，我们能够在稍后的步骤中轻松地将其作为一个引用添加到 Storm 项目中。
+6.  使用以下命令将程序包安装到您的本地 Maven 存储中。 以此，我们能够在稍后的步骤中轻松地将其作为一个引用添加到 Storm 项目中。
 
 		mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
 
@@ -639,15 +639,15 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 
 若要发送消息到 ASP.NET 仪表板中，请使用 [SignalR 客户端 SDK for Java](https://github.com/SignalR/java-client)。
 
-1. 打开命令提示符。
+1.  打开命令提示符。
 
-2. 将目录更改为您要下载并存储 SignalR 客户端 SDK 项目的位置。
+2.  将目录更改为您要下载并存储 SignalR 客户端 SDK 项目的位置。
 
-3. 使用以下命令从 GitHub 中下载项目。
+3.  使用以下命令从 GitHub 中下载项目。
 
 	git clone https://github.com/SignalR/java-client
 
-4. 将目录更改为 **java-client\signalr-client-sdk** 目录，并使用以下命令将项目编译成 JAR 文件。
+4.  将目录更改为 **java-client\signalr-client-sdk** 目录，并使用以下命令将项目编译成 JAR 文件。
 
 		cd java-client\signalr-client-sdk
 		mvn package
@@ -661,9 +661,9 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 </repository>
 </repositories>
 ```
-	> 删除以上行会使 Maven 将该文件从中央存储库中提取出（默认行为。）若要强制 Maven 重试存储库，请使用"-U"命令。例如，"mvn package -U"
+	> 删除以上行会使 Maven 将该文件从中央存储库中提取出（默认行为。） 若要强制 Maven 重试存储库，请使用"-U"命令。 例如，"mvn package -U"
 
-6. 使用以下命令将程序包安装到您的本地 Maven 存储中。以此，我们能够在稍后的步骤中轻松地将其作为一个引用添加到 Storm 项目中。
+6.  使用以下命令将程序包安装到您的本地 Maven 存储中。 以此，我们能够在稍后的步骤中轻松地将其作为一个引用添加到 Storm 项目中。
 
 		mvn install:install-file -Dfile=target\signalr-client-sdk-1.0.jar -DgroupId=microsoft.aspnet.signalr -DartifactId=signalr-client-sdk -Dversion=1.0 -Dpackaging=jar
 
@@ -671,17 +671,17 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 
 现在，我们已将 Event Hub spout 和 SignalR 客户端安装到本地存储库中，请使用 Maven 为 Storm 拓扑项目创建基架。
 
-1. 打开命令提示符、Bash 会话、终端会话或您在系统上输入命令所用的任何方法。
+1.  打开命令提示符、Bash 会话、终端会话或您在系统上输入命令所用的任何方法。
 
-2. 将目录更改为您想创建此项目的位置。例如，如果您有一个目录，您存储所有的代码项目。
+2.  将目录更改为您想创建此项目的位置。 例如，如果您有一个目录，您存储所有的代码项目。
 
-3. 使用以下 Maven 命令为您的应用程序创建基本基架。
+3.  使用以下 Maven 命令为您的应用程序创建基本基架。
 
 		mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.examples -DartifactId=TemperatureMonitor -DinteractiveMode=false
 
 	此命令将...
 
-	* 使用指定的 *artifactId* 创建新目录。在本示例中为 **Temperature**。
+	* 使用指定的 *artifactId* 创建新目录。 在本示例中为 **Temperature**。
 	* 创建一个 **pom.xml** 文件，其中包含用于此项目的 Maven 信息。
 	* 创建一个 **src** 目录结构，其中包含一些基本代码和测试。
 
@@ -689,7 +689,7 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 
 接下来，修改 **pom.xml** 以引用用于此项目的依赖项以及在构建和打包时要使用的 Maven 插件。
 
-1. 使用文本编辑器打开 **pom.xml** 文件，并将以下内容添加到 **&lt;dependency>** 部分。您可以将其添加到该部分结尾 JUnit 的依赖项后面。
+1.  使用文本编辑器打开 **pom.xml** 文件，并将以下内容添加到 **&lt;dependency>** 部分。 您可以将其添加到该部分结尾 JUnit 的依赖项后面。
 
 		<dependency>
 	      <groupId>org.apache.storm</groupId>
@@ -748,7 +748,7 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 
 	> [WACOM.NOTE] 请注意，有些依赖项标记有**已提供**范围，指示这些依赖项应从 Maven 存储库下载，并用于在本地构建并测试应用程序，但其也可从运行时环境中获得，且不需要进行编译和纳入此项目创建的 JAR 中。
 
-2. 在 **pom.xml** 文件的结尾，就在 **&lt;/project>** 条目的前面，添加以下内容。
+2.  在 **pom.xml** 文件的结尾，就在 **&lt;/project>** 条目的前面，添加以下内容。
 
 		  <build>
 		    <plugins>
@@ -814,24 +814,24 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 
 	这会通知 Maven 在构建项目时执行以下操作：
 
-	* 包含 **/conf/Config.properties** 资源文件。该文件将稍后创建，但其中包含连接 Azure Event Hub 的配置信息。
-	* 纳入 **/conf/hbase-site.xml** 资源文件。该文件将稍后创建，但其包含有关如何连接到 HBase 的信息。
+	* 包含 **/conf/Config.properties** 资源文件。 该文件将稍后创建，但其中包含连接 Azure Event Hub 的配置信息。
+	* 纳入 **/conf/hbase-site.xml** 资源文件。 该文件将稍后创建，但其包含有关如何连接到 HBase 的信息。
 	* 使用 **maven-compiler-plugin** 编译应用程序。
 	* 使用 **maven-shade-plugin** 构建 uberjar 或 fat jar，其包含此项目和任何必需依赖项。
 	* 使用 **exec-maven-plugin**，让您可以在本地运行应用程序，而无需 Hadoop 群集。
 
 ### 添加配置文件
 
-**eventhubs-storm-spout** 从 **Config.properties** 文件读取配置信息。这会向其通知 Event Hub 连接要连接到哪些项目。虽然您可以在启动群集上的拓扑时指定一个配置文件，但是在项目中包含一个配置文件也会为您提供一个已知默认配置。
+**eventhubs-storm-spout** 从 **Config.properties** 文件读取配置信息。 这会向其通知 Event Hub 连接要连接到哪些项目。 虽然您可以在启动群集上的拓扑时指定一个配置文件，但是在项目中包含一个配置文件也会为您提供一个已知默认配置。
 
-1. 在 **Temperature** 目录下，创建一个名为 **conf** 的新目录。
+1.  在 **Temperature** 目录下，创建一个名为 **conf** 的新目录。
 
-2. 在 **conf** 目录下，创建两个新文件：
+2.  在 **conf** 目录下，创建两个新文件：
 
 	* **Config.properties** - 包含用于 Event Hub 的设置
 	* **hbase-site.xml** - 包含用于连接到 Hbase 的设置
 
-3. 将以下内容用作 **Config.properties** 文件的内容。
+3.  将以下内容用作 **Config.properties** 文件的内容。
 
 		eventhubspout.username = storm
 
@@ -850,9 +850,9 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 
 		eventhub.receiver.credits = 1024
 
-	将**密码**更换为此前在 Event Hub 上创建的 **Storm** 策略的密钥。将 **Namespace** 更换为您的 Event Hub 的命名空间。
+	将**密码**更换为此前在 Event Hub 上创建的 **Storm** 策略的密钥。 将 **Namespace** 更换为您的 Event Hub 的命名空间。
 
-3. 将以下内容用作 **hbase-site.xml** 文件的内容。
+3.  将以下内容用作 **hbase-site.xml** 文件的内容。
 
 		<?xml version="1.0"?>
 		<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
@@ -892,23 +892,23 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 		  </property>
 		</configuration>
 
-3. 在 **hbase-site.xml** 文件中，将 zooKeeper 条目的**后缀**值更换为您此前为 HBase 检索的 DNS 后缀。例如，**zookeeper0.mycluster.b4.internal.cloudapp.net、zookeeper1.mycluster.b4.internal.cloudapp.net、zookeeper2.mycluster.b4.internal.cloudapp.net**。
+3.  在 **hbase-site.xml** 文件中，将 zooKeeper 条目的**后缀**值更换为您此前为 HBase 检索的 DNS 后缀。 例如，**zookeeper0.mycluster.b4.internal.cloudapp.net、zookeeper1.mycluster.b4.internal.cloudapp.net、zookeeper2.mycluster.b4.internal.cloudapp.net**。
 
-3.保存文件。
+3. 保存文件。
 
 ### 添加帮助器
 
 若要支持往返于 JSON 的序列化，我们需要一些定义对象结构的帮助器类。
 
-1. 在 **\temperaturemonitor\src\main\java\com\microsoft\examples** 目录下，创建一个名为 **helpers** 的新目录。
+1.  在 **\temperaturemonitor\src\main\java\com\microsoft\examples** 目录下，创建一个名为 **helpers** 的新目录。
 
-2. 在 **helpers** 目录中，创建两个新文件：
+2.  在 **helpers** 目录中，创建两个新文件：
 
 	* **EventHubMessage.java** - 定义 Event Hub 消息格式
 
 	* **SignalRMessage.java** - 定义发送至 SignalR 的消息格式
 
-3. 将以下内容用作 **EventHubMessage.java** 文件的内容。
+3.  将以下内容用作 **EventHubMessage.java** 文件的内容。
 
 		package com.microsoft.examples;
 
@@ -918,7 +918,7 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 		  int Temperature;
 		}
 
-4. 将以下内容用作 **SignalRMessage.java** 文件的内容。
+4.  将以下内容用作 **SignalRMessage.java** 文件的内容。
 
 		package com.microsoft.examples;
 
@@ -927,20 +927,20 @@ Event Hub 用于从传感器中接收消息（事件）。按照下列步骤创�
 		  int temperature;
 		}
 
-5. 保存并关闭这些文件。
+5.  保存并关闭这些文件。
 
 ### 添加 bolt
 
-Bolt 执行拓扑中的主处理操作。此拓扑有三个 Bolt，但其中一个为 hbase-bolt，其将在构建项目时自动下载。
+Bolt 执行拓扑中的主处理操作。 此拓扑有三个 Bolt，但其中一个为 hbase-bolt，其将在构建项目时自动下载。
 
-1. 在 **\temperaturemonitor\src\main\java\com\microsoft\examples** 目录下，创建一个名为 **bolts** 的新目录。
+1.  在 **\temperaturemonitor\src\main\java\com\microsoft\examples** 目录下，创建一个名为 **bolts** 的新目录。
 
-2. 在 **bolts** 目录中，创建两个新文件：
+2.  在 **bolts** 目录中，创建两个新文件：
 
 	* **ParserBolt.java** - 将从 Event Hub 中传入的消息解析为单个字段，然后发出两个数据流
 	* **DashboardBolt.java** - 通过 SignalR 将信息记录到 Web 仪表板中
 
-2. 将以下内容用作 **ParserBolt.java** 文件的内容。
+2.  将以下内容用作 **ParserBolt.java** 文件的内容。
 
 		package com.microsoft.examples;
 		
@@ -984,7 +984,7 @@ Bolt 执行拓扑中的主处理操作。此拓扑有三个 Bolt，但其中一�
 		  }
 		}
 
-3. 将以下内容用作 **DashboardBolt.java** 文件的内容。
+3.  将以下内容用作 **DashboardBolt.java** 文件的内容。
 
 		package com.microsoft.examples;
 		
@@ -1079,17 +1079,17 @@ Bolt 执行拓扑中的主处理操作。此拓扑有三个 Bolt，但其中一�
 		  }
 		}
 
-	将"http://yourwebsiteaddress"更换为您此前向其发布仪表板的 Azure 网站地址。例如，http://mydashboard.chinacloudsites.cn。
+	将"http://yourwebsiteaddress"更换为您此前向其发布仪表板的 Azure 网站地址。 例如，http://mydashboard.chinacloudsites.cn。
 
-2. 保存并关闭文件。
+2.  保存并关闭文件。
 
 ### 定义拓扑
 
 拓扑描述了数据在拓扑中的 spout 与 bolt 之间的流动方式，以及拓扑并行度及其内部组件。
 
-1. 在 **\temperaturemonitor\src\main\java\com\microsoft\examples** 目录中，创建一个名为 **Temperature.java** 的新文件。
+1.  在 **\temperaturemonitor\src\main\java\com\microsoft\examples** 目录中，创建一个名为 **Temperature.java** 的新文件。
 
-2. 打开 **Temperature.java** 文件并将以下内容用作内容。
+2.  打开 **Temperature.java** 文件并将以下内容用作内容。
 
 		package com.microsoft.examples;
 		
@@ -1233,47 +1233,47 @@ Bolt 执行拓扑中的主处理操作。此拓扑有三个 Bolt，但其中一�
 		  }
 		}
 
-	> [AZURE.NOTE] 请注意，用于 **HBaseBolt** 的行已添加注释。这是因为下一步是在本地运行拓扑。由于 HBaseBolt 与 HBase 直接通信，这将在其启用时返回错误。除非您使用 DNS 服务器配置了一个虚拟网络并将您的本地计算机也加入了虚拟网络。
+	> [AZURE.NOTE] 请注意，用于 **HBaseBolt** 的行已添加注释。 这是因为下一步是在本地运行拓扑。 由于 HBaseBolt 与 HBase 直接通信，这将在其启用时返回错误。 除非您使用 DNS 服务器配置了一个虚拟网络并将您的本地计算机也加入了虚拟网络。
 
 ### 在本地测试拓扑
 
 若要在您的开发计算机中编译和测试文件，请执行以下步骤。
 
-1. 启动 **SendEvent** .NET 应用程序以开始发送事件，以便我们从 Event Hub 中读取一些内容。
+1.  启动 **SendEvent** .NET 应用程序以开始发送事件，以便我们从 Event Hub 中读取一些内容。
 
-2. 用浏览器打开您此前已部署到 Azure 网站中的 Web 仪表板。从而，您可以查看图表绘制流经拓扑时的值。
+2.  用浏览器打开您此前已部署到 Azure 网站中的 Web 仪表板。 从而，您可以查看图表绘制流经拓扑时的值。
 
-2. 使用下列命令从本地启动拓扑
+2.  使用下列命令从本地启动拓扑
 
 	mvn compile exec:java -Dstorm.topology=com.microsoft.examples.Temperature
 
-	此操作将启动拓扑、从 Event Hub 中读取文件并将其发送到 Azure 网站中运行的仪表板中。您应看到各行显示在 Web 仪表板中。
+	此操作将启动拓扑、从 Event Hub 中读取文件并将其发送到 Azure 网站中运行的仪表板中。 您应看到各行显示在 Web 仪表板中。
 
-3. 验证其运行情况后，输入 Ctrl-C 停止拓扑。若要停止 SendEvent 应用，请选中窗口并按下任何键。
+3.  验证其运行情况后，输入 Ctrl-C 停止拓扑。若要停止 SendEvent 应用，请选中窗口并按下任何键。
 
 ### 启用 HBaseBolt 并准备 HBase
 
-1. 打开 **Temperature.java** 文件并从以下行中删除注释 (//)：
+1.  打开 **Temperature.java** 文件并从以下行中删除注释 (//)：
 
 		//topologyBuilder.setBolt("HBase", new HBaseBolt("SensorData", mapper).withConfigKey("hbase.conf"), spoutConfig.getPartitionCount())
     	//  .fieldsGrouping("Parser", "hbasestream", new Fields("deviceid")).setNumTasks(spoutConfig.getPartitionCount());
 
 	这将启用 HBase Bolt。
 
-2. 保存 **Temperature.java**。
+2.  保存 **Temperature.java**。
 
-3. 使用"远程桌面"连接到 HBase 群集。
+3.  使用"远程桌面"连接到 HBase 群集。
 
-4. 从桌面中启动 HDInsight 命令行并输入以下命令。
+4.  从桌面中启动 HDInsight 命令行并输入以下命令。
 
 		cd %hbase_home%
 		bin\hbase shell
 
-5. 从 HBase Shell 中，输入以下命令以创建存储传感器数据的表。
+5.  从 HBase Shell 中，输入以下命令以创建存储传感器数据的表。
 
 		create 'SensorData', 'cf'
 
-6. 通过输入以下命令验证表中不包含数据。
+6.  通过输入以下命令验证表中不包含数据。
 
 		scan 'SensorData'
 
@@ -1283,32 +1283,32 @@ Bolt 执行拓扑中的主处理操作。此拓扑有三个 Bolt，但其中一�
 
 在您的开发环境中，按照以下步骤在您的 HDInsight Storm 群集中执行"Temperature"拓扑。
 	
-1. 使用以下命令从您的项目中创建一个 JAR 程序包。
+1.  使用以下命令从您的项目中创建一个 JAR 程序包。
 
 		mvn package
 
 	此操作将在项目的 **target** 目录中创建一个名为 **TemperatureMonitor-1.0-SNAPSHOT.jar** 的文件。
 
-2. 在您的本地开发计算机中，启动 **SendEvents** .NET 应用程序，以便我们将一些事件读取。
+2.  在您的本地开发计算机中，启动 **SendEvents** .NET 应用程序，以便我们将一些事件读取。
 
-1. 使用"远程桌面"连接到您的 HDInsight Storm 群集，并将 **TemperatureMonitor-1.0-SNAPSHOT.jar** 文件复制到 **c:\apps\dist\storm&lt;version number>** 目录。
+1.  使用"远程桌面"连接到您的 HDInsight Storm 群集，并将 **TemperatureMonitor-1.0-SNAPSHOT.jar** 文件复制到 **c:\apps\dist\storm&lt;version number>** 目录。
 
-2. 使用群集桌面上的 **HDInsight 命令行**图标打开一个新命令提示符，并使用以下命令执行拓扑。
+2.  使用群集桌面上的 **HDInsight 命令行**图标打开一个新命令提示符，并使用以下命令执行拓扑。
 
 		cd %storm_home%
 		bin\storm jar TemperatureMonitor-1.0-SNAPSHOT.jar com.microsoft.examples.Temperature Temperature
 
-3. 拓扑启动后，项目可能需要几秒钟才会显示在 Web 仪表板上。
+3.  拓扑启动后，项目可能需要几秒钟才会显示在 Web 仪表板上。
 
-3. 项目出现在仪表板后，请切换到 HBase 群集上的"远程桌面"会话。
+3.  项目出现在仪表板后，请切换到 HBase 群集上的"远程桌面"会话。
 
-4. 从 HBase Shell 中，输入以下命令。
+4.  从 HBase Shell 中，输入以下命令。
 
 		scan 'SensorData'
 
 	请注意，现在这将返回几行由 Storm 拓扑编写的数据。
 
-5. 若要停止拓扑，请通过 Storm 群集进入"远程桌面"会话，并在 HDInsight 命令行中输入以下内容。
+5.  若要停止拓扑，请通过 Storm 群集进入"远程桌面"会话，并在 HDInsight 命令行中输入以下内容。
 
 		bin\storm kill Temperature
 
