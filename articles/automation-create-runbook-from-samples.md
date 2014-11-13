@@ -6,7 +6,7 @@
 
 本教程将逐步引导你完成将一个示例“Hello World”Runbook 导入 Azure 自动化、执行该 Runbook 并查看其输出的步骤。
 
-> [WACOM.NOTE] 若要了解如何使用 [Azure PowerShell cmdlets](http://msdn.microsoft.com/zh-cn/library/jj156055.aspx) 实现 Azure 操作的自动化，请参阅 <a href="http://azure.microsoft.com/blog/2014/08/27/azure-automation-authenticating-to-azure-using-azure-active-directory/">Azure 自动化：使用 Azure Active Directory 对Azure 进行身份验证</a>。
+> [WACOM.NOTE] 如需有关自动化入门的更多帮助，请了解如何使用[此处][此处]提供的 PowerShell cmdlet 自动执行 Azure 操作。
 
 ## 示例和实用 Runbook
 

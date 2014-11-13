@@ -41,11 +41,11 @@
 
 3.  从以下列表中选择支持的标识提供程序，并按步骤向该标识提供程序注册你的应用程序：
 
--   [Microsoft 帐户][Microsoft 帐户]
--   [Facebook 登录][Facebook 登录]
--   [Twitter 登录][Twitter 登录]
--   [Google 登录][Google 登录]
--   [Azure Active Directory][Azure Active Directory]
+ - <a href="/zh-cn/develop/mobile/how-to-guides/register-for-microsoft-authentication/" target="_blank">Microsoft Account</a>
+ - <a href="/zh-cn/develop/mobile/how-to-guides/register-for-facebook-authentication/" target="_blank">Facebook login</a>
+ - <a href="/zh-cn/develop/mobile/how-to-guides/register-for-twitter-authentication/" target="_blank">Twitter login</a>
+ - <a href="/zh-cn/develop/mobile/how-to-guides/register-for-google-authentication/" target="_blank">Google login</a>
+ - <a href="/zh-cn/documentation/articles/mobile-services-how-to-register-active-directory-authentication/" target="_blank">Azure Active Directory</a>
 
     请记住，要记下标识提供程序生成的客户端标识和密钥值。
 

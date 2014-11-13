@@ -37,7 +37,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
 
 2.  浏览本地存储库的目录结构，找到 **examples\\chat** 目录。将此目录的内容复制到前面创建的 **C:\\node\\chatapp\\WorkerRole1** 目录。
 
-    ![资源管理器，显示从存档中解压缩的 examples\chat 目录的内容][资源管理器，显示从存档中解压缩的 examples\chat 目录的内容]
+    ![资源管理器，显示从存档中解压缩的 examples\\chat 目录的内容][资源管理器，显示从存档中解压缩的 examples\\chat 目录的内容]
 
     上面的屏幕截图中突出显示的项目是从 **examples\\chat** 目录复制的文件
 
