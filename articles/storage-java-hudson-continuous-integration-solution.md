@@ -2,7 +2,7 @@
 
 # 将 Azure 存储空间用于 Hudson 持续集成解决方案
 
-*作者：[Microsoft Open Technologies Inc.][]*
+*作者：[Microsoft Open Technologies Inc.][Microsoft Open Technologies Inc.]*
 
 下列信息演示了如何将 Azure Blob 服务用作 Hudson 持续集成 (CI) 解决方案创建的生成项目的存储库，或者用作要在生成过程中使用的可下载文件的源。在以下情况中你将会发现这一做法很有用：你在敏捷开发环境进行编码（使用 Java 或其他语言），生成是基于持续集成运行的并且你需要一个适用于生成项目的存储库，以便（举例来说）你能与其他组织成员、你的客户共享生成项目或维护存档。另一种情况是，当你的生成作业本身需要其他文件时，例如需要下载依赖项作为生成输入的一部分时。
 
@@ -10,21 +10,21 @@
 
 ## 目录
 
--   [Hudson 概述][]
--   [使用 Blob 服务的好处][]
--   [先决条件][]
--   [如何将 Blob 服务用于 Hudson CI][]
--   [如何安装 Azure 存储插件][]
--   [如何配置 Azure 存储插件以使用你的存储帐户][]
--   [如何创建将你的生成项目上载到存储帐户的后期生成操作][]
--   [如何创建从 Azure Blob 存储进行下载的生成步骤][]
--   [Blob 服务使用的组件][]
+-   [Hudson 概述][Hudson 概述]
+-   [使用 Blob 服务的好处][使用 Blob 服务的好处]
+-   [先决条件][先决条件]
+-   [如何将 Blob 服务用于 Hudson CI][如何将 Blob 服务用于 Hudson CI]
+-   [如何安装 Azure 存储插件][如何安装 Azure 存储插件]
+-   [如何配置 Azure 存储插件以使用你的存储帐户][如何配置 Azure 存储插件以使用你的存储帐户]
+-   [如何创建将你的生成项目上载到存储帐户的后期生成操作][如何创建将你的生成项目上载到存储帐户的后期生成操作]
+-   [如何创建从 Azure Blob 存储进行下载的生成步骤][如何创建从 Azure Blob 存储进行下载的生成步骤]
+-   [Blob 服务使用的组件][Blob 服务使用的组件]
 
 ## 概述Hudson 概述
 
 Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频繁地生成版本，实现了软件项目的持续集成，因此提高了开发人员的工作效率。生成是版本控制的，并且可将生成项目上载到不同存储库中。本主题将演示如何将 Azure Blob 存储用作生成项目的存储库。它还将演示如何从 Azure Blob 存储下载依赖项。
 
-有关 Hudson 的更多信息，请访问 [Hudson 概览][]。
+有关 Hudson 的更多信息，请访问 [Hudson 概览][Hudson 概览]。
 
 ## 好处使用 Blob 服务的好处
 
@@ -58,7 +58,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 
 -   一个 Azure 帐户。你可以在 <http://www.windowsazure.cn> 中注册 Azure 帐户。
 
--   一个 Azure 存储帐户。如果你还没有存储帐户，可以使用[如何创建存储帐户][]中的步骤创建一个。
+-   一个 Azure 存储帐户。如果你还没有存储帐户，可以使用[如何创建存储帐户][如何创建存储帐户]中的步骤创建一个。
 
 -   建议熟悉 Hudson CI 解决方案（但不是必需的），因为以下内容将使用一个基本示例向你演示使用 Blob 服务作为 Hudson CI 生成项目的存储库时所需的步骤。
 
@@ -112,7 +112,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 
     在你为**“执行 Windows 批处理命令”**输入脚本的**“命令”**部分下方，有一个指向 Hudson 识别的环境变量的链接。单击此链接可了解环境变量名称和说明。请注意，不允许将包含特殊字符的环境变量（如 **BUILD\_URL** 环境变量）用作容器名称或通用虚拟路径。
 
-8.  对于此示例，请单击**“默认将新容器设为公开的”**。（如果要使用私有容器，你将需要创建共享访问签名以允许访问。这超出了本主题的范围。你可在[创建共享访问签名][]中了解有关共享访问签名的详细信息。）
+8.  对于此示例，请单击**“默认将新容器设为公开的”**。（如果要使用私有容器，你将需要创建共享访问签名以允许访问。这超出了本主题的范围。你可在[创建共享访问签名][创建共享访问签名]中了解有关共享访问签名的详细信息。）
 9.  [可选] 如果你希望在上载生成项目之前清除容器的内容，请单击**“在上载前清除容器”**（如果你不希望清除容器的内容，则使该复选框保持未选中状态）。
 10. 对于**“要上载的项目列表”**，请输入 \*\*text/\*.txt\*\*。
 11. 对于**“已上载项目的通用虚拟路径”**，请输入 **\${BUILD\_ID}/\${BUILD\_NUMBER}**。
@@ -148,7 +148,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 
 -   **存储帐户**：对 Azure 存储空间进行的所有访问都要通过存储帐户完成。存储帐户是访问 blob 的最高级别的命名空间。一个帐户可以包含无限个容器，只要这些容器的总大小不超过 100 TB 即可。
 -   **容器**： 一个容器包含一组 Blob 集。所有 blob 必须位于相应的容器中。一个帐户可以包含无限个容器。一个容器可以存储无限个 Blob。
--   **Blob**：任何类型和大小的文件。Azure 存储空间中可存储两种类型的 Blob：块 Blob 和页 Blob。大部分文件都是块 blob。一个块 Blob 的大小可以达到 200 GB。本教程使用的是块 Blob。另一种 Blob 类型为页 Blob，其大小可以达 1 TB，在对文件中的一系列字节进行频繁修改时，这种 Blob 类型更加高效。有关 Blob 的详细信息，请参阅[了解块 Blob 和页 Blob][]。
+-   **Blob**：任何类型和大小的文件。Azure 存储空间中可存储两种类型的 Blob：块 Blob 和页 Blob。大部分文件都是块 blob。一个块 Blob 的大小可以达到 200 GB。本教程使用的是块 Blob。另一种 Blob 类型为页 Blob，其大小可以达 1 TB，在对文件中的一系列字节进行频繁修改时，这种 Blob 类型更加高效。有关 Blob 的详细信息，请参阅[了解块 Blob 和页 Blob][了解块 Blob 和页 Blob]。
 -   **URL 格式**：使用以下 URL 格式可访问 Blob：
 
     `http://storageaccount.blob.core.chinacloudapi.cn/container_name/blob_name`
@@ -170,6 +170,6 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
   [如何创建从 Azure Blob 存储进行下载的生成步骤]: #howtocreatebuildstep
   [Blob 服务使用的组件]: #components
   [Hudson 概览]: http://wiki.eclipse.org/Hudson-ci/Meet_Hudson
-  [如何创建存储帐户]: http://windowsazure.cn/zh-cn/documentation/articles/storage-create-storage-account/
+  [如何创建存储帐户]: http://azure.microsoft.com/zh-cn/documentation/articles/storage-create-storage-account/
   [创建共享访问签名]: http://go.microsoft.com/fwlink/?LinkId=279889
   [了解块 Blob 和页 Blob]: http://msdn.microsoft.com/en-us/library/windowsazure/ee691964.aspx

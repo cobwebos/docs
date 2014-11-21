@@ -10,20 +10,20 @@
 
 本教程将指导你完成在应用程序中启用身份验证的以下基本步骤：
 
-1.  [注册应用程序以进行身份验证并配置移动服务][]
-2.  [将表权限限制给已经过身份验证的用户][]
-3.  [向应用程序添加身份验证][]
+1.  [注册应用程序以进行身份验证并配置移动服务][注册应用程序以进行身份验证并配置移动服务]
+2.  [将表权限限制给已经过身份验证的用户][将表权限限制给已经过身份验证的用户]
+3.  [向应用程序添加身份验证][向应用程序添加身份验证]
 
-本教程基于移动服务快速入门。因此，你还必须先完成[移动服务入门][]教程。
+本教程基于移动服务快速入门。因此，你还必须先完成[移动服务入门][移动服务入门]教程。
 
 <a name="register"></a>
 ## 注册应用程序注册应用程序以进行身份验证并配置移动服务
 
 为了能够对用户进行身份验证，你必须通过标识提供者注册你的应用程序。然后，你需要向移动服务注册标识提供者生成的客户端密钥。
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的移动服务 。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务”，然后单击你的移动服务 。
 
-    ![][]
+    ![][0]
 
 2.  单击“仪表板”选项卡， 并记下“移动服务 URL”值。 
 
@@ -33,11 +33,11 @@
 
 3.  从以下列表中选择支持的标识提供者，并按步骤向该标识提供者注册你的应用程序：
 
-- [Microsoft 帐户][]
-- [Facebook 登录][]
-- [Twitter 登录][]
-- [Google 登录][]
-- [Azure Active Directory][]
+    - [Microsoft 帐户][Microsoft 帐户]
+    - [Facebook 登录][Facebook 登录]
+    - [Twitter 登录][Twitter 登录]
+    - [Google 登录][Google 登录]
+    - [Azure Active Directory][Azure Active Directory]
 
     请记住，要记下标识提供者生成的客户端标识和密钥值。
 
@@ -76,11 +76,11 @@
 
     随后将在本地计算机上启动用于托管新应用程序的 Web 服务器。
 
-2.  在 Web 浏览器中打开 URL <http://localhost:8000/> 以启动该应用程序。
+4.  在 Web 浏览器中打开 URL <http://localhost:8000/> 以启动该应用程序。
 
     无法加载数据。发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 *TodoItem* 表现在要求身份验证。
 
-3.  （可选）打开 Web 浏览器的脚本调试程序，并重新加载页。检查是否发生了访问被拒绝错误。
+5.  （可选）打开 Web 浏览器的脚本调试程序，并重新加载页。检查是否发生了访问被拒绝错误。
 
 接下来，你需要更新应用程序，以允许在从移动服务请求资源之前进行身份验证。
 
@@ -156,16 +156,8 @@
 <a name="next-steps"> </a>
 ## 后续步骤
 
-在下一教程[使用脚本为用户授权][]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。请在[移动服务 HTML/JavaScript 操作方法概念性参考][]中了解有关如何将移动服务与 HTML/JavaScript 一起使用的详细信息
+在下一教程[使用脚本为用户授权][使用脚本为用户授权]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。请在[移动服务 HTML/JavaScript 操作方法概念性参考][移动服务 HTML/JavaScript 操作方法概念性参考]中了解有关如何将移动服务与 HTML/JavaScript 一起使用的详细信息
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-users-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-users-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-users-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-users-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-users-html "HTML"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android "Xamarin.Android"
   [注册应用程序以进行身份验证并配置移动服务]: #register
   [将表权限限制给已经过身份验证的用户]: #permissions
   [向应用程序添加身份验证]: #add-authentication

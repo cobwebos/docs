@@ -1,5 +1,8 @@
 <properties linkid="manage-services-biztalk-services-dashboard-monitor-scale-tabs" urlDisplayName="Dashboard, Monitor and Scale tabs" pageTitle="Dashboard, Monitor, and Scale in BizTalk Services | Azure" metaKeywords="BizTalk Services, Azure, dashboard, monitor, scale" description="Learn about the controls on the Management Portal tabs for BizTalk Services: Dashboard, Monitor, and Scale." metaCanonical="" services="biztalk-services" documentationCenter="" title=" Monitor and Scale tabs" authors="mandia" solutions="" manager="paulettm" editor="cgronlun" />
 
+
+
+
 # BizTalk 服务：“仪表板”、“监视”、“缩放”、“配置”和“混合连接”选项卡
 
 首次打开 Azure 管理门户时，系统会自动为你打开**“所有项目”**选项卡。可以对**“所有项目”**选项卡上的列进行排序。若要查看 BizTalk 服务，请在**“所有项目”**选项卡上选择你的 BizTalk 服务，或者选择**“BIZTALK 服务”**选项卡，然后选择你的 BizTalk 服务名称。
@@ -21,75 +24,62 @@
 ## <a name="QuickStart"></a>快速启动
 
 你不一定能够使用列出的所有选项，这取决于所用的 BizTalk 服务版本。
+<table border="1">
+
+    <tr>
+        <td><strong>获取工具</strong></td>
+
+        <td>下载 BizTalk 服务 SDK 以在你的本地开发计算机上安装 Visual Studio 项目模板。这些模板创建将部署到你的 BizTalk 服务的 <strong>BizTalk 服务</strong>（桥接）和 <strong>BizTalk Service 项目</strong>（转换）Visual Studio 项目。
+        <br/><br/>
+		<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">我如何开始使用 Azure BizTalk 服务 SDK </a> 和<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">安装 Azure BizTalk 服务 SDK</a> 列出了要开始的步骤。
+        </td>
+    </tr>
+
+    <tr>
+		<td><strong>创建合作伙伴协议</strong></td>
+
+        <td>打开在添加合作伙伴和创建 X12 和 AS2 EDI 协议的 Azure 上托管的 Azure BizTalk 服务门户。
+        <br/><br/>
+        <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置适用于 EDI 消息传递的组件</a>列出了要开始的步骤。
+        </td>
+    </tr>
+
+<tr>
+       <td><strong>详细了解 BizTalk 服务</strong>
+       <td>转到学习中心以了解有关 Azure BizTalk 服务的更多信息。</td>
+</tr>
+</table>
+
+
+在底部的任务栏中，你可以：
+
 
 <table border="1">
 
 <tr>
-
-<td>
-<strong>获取工具</strong>
-
-</td>
-</p>
-       <td>下载 BizTalk 服务 SDK 以在你的本地开发计算机上安装 Visual Studio 项目模板。这些模板创建将部署到你的 BizTalk 服务的 <strong>BizTalk 服务</strong>（桥接）和 <strong>BizTalk Service 项目</strong>（转换）Visual Studio 项目。
-       <br/><br/>
-     <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=302335">我如何开始使用 Azure BizTalk 服务 SDK </a> 和<a HREF="http://go.microsoft.com/fwlink/p/?LinkID=241589">安装 Azure BizTalk 服务 SDK</a> 列出了要开始的步骤。
-        </td>
-    </tr>
-
-    <tr>
-        <td><strong>创建合作伙伴协议</strong></td>
-
-        <td>打开在添加合作伙伴和创建 X12 和 AS2 EDI 协议的 Azure 上托管的 Azure BizTalk 服务门户。
-        <br/><br/>
-      <a HREF="http://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置适用于 EDI 消息传递的组件</a>列出了要开始的步骤。
-        </td>
-    </tr>
-
-
-<tr>
-<td>
-<strong>详细了解 BizTalk 服务</strong>
-
-</td>
-<td>
-转到学习中心以了解有关 Azure BizTalk 服务的更多信息。
-
-</td>
-</tr>
-</table>
-在底部的任务栏中，你可以：
-
-<table>
-<colgroup>
-<col width="50%" />
-<col width="50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td align="left"><strong>管理</strong></td>
-<td align="left">打开 Azure BizTalk 服务门户。BizTalk 服务门户是进行 EDI 配置的入口，包括添加合作伙伴和创建 X12 和 AS2 协议。<br /><br /> 这与<strong>“快速启动”</strong>选项卡上的<strong>“创建合作伙伴协议”</strong>相同。<br /><br /> <a href="http://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置 EDI 消息传送的组件</a>提供了有关 BizTalk 服务门户的详细信息。</td>
+<td><strong>管理</strong></td>
+<td>打开 Azure BizTalk 服务门户。BizTalk 服务门户是进行 EDI 配置的入口，包括添加合作伙伴和创建 X12 和 AS2 协议。<br /><br /> 这与<strong>“快速启动”</strong>选项卡上的<strong>“创建合作伙伴协议”</strong>相同。<br /><br /> <a href="http://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置 EDI 消息传送的组件</a>提供了有关 BizTalk 服务门户的详细信息。</td>
 </tr>
 <tr class="even">
-<td align="left"><strong>连接信息</strong></td>
-<td align="left">在你选择“连接信息”时，将显示“访问控制命名空间”、“默认颁发者”和“默认密钥”。你可以复制这些值。<br /><br /> 你还可以打开访问控制管理门户。此访问控制管理门户与在左导航窗格中打开使用<strong>“Active Directory”</strong>选项相同。<br /><br /> <a href="http://go.microsoft.com/fwlink/p/?LinkID=285670">管理 ACS 命名空间</a>提供与访问控制管理门户有关的详细信息。</td>
+<td><strong>连接信息</strong></td>
+<td>在你选择“连接信息”时，将显示“访问控制命名空间”、“默认颁发者”和“默认密钥”。你可以复制这些值。<br /><br /> 你还可以打开访问控制管理门户。此访问控制管理门户与在左导航窗格中打开使用<strong>“Active Directory”</strong>选项相同。<br /><br /> <a href="http://go.microsoft.com/fwlink/p/?LinkID=285670">管理 ACS 命名空间</a>提供与访问控制管理门户有关的详细信息。</td>
 </tr>
-<tr class="odd">
-<td align="left"><strong>同步密钥</strong></td>
-<td align="left">当你创建存储帐户时，将自动创建主密钥和辅助密钥。这些密钥控制对存储帐户的访问。BizTalk 服务自动使用主密钥。<strong>“同步密钥”</strong>使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。<br /><br /> 例如，你希望 BizTalk 服务为存储帐户使用新的主密钥。为此，请按以下步骤操作：<br /><br />
+
+<td><strong>同步密钥</strong></td>
+<td>当你创建存储帐户时，将自动创建主密钥和辅助密钥。这些密钥控制对存储帐户的访问。BizTalk 服务自动使用主密钥。<strong>“同步密钥”</strong>使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。<br/><br/> 例如，你希望 BizTalk 服务为存储帐户使用新的主密钥。为此，请按以下步骤操作：<br/><br/>
 <ol>
 <li>依次选择你的 BizTalk 服务和<strong>“同步密钥”</strong>。选择“辅助密钥”。当你执行此操作时，BizTalk 服务开始使用辅助密钥。</li>
 <li>在 Azure 管理门户中，选择“存储帐户”和“重新生成主密钥”。请记住，你的 BizTalk 服务正在使用辅助密钥。</li>
 <li>依次选择你的 BizTalk 服务和<strong>“同步密钥”</strong>。现在，选择“主密钥”。这是你重新生成的新主密钥。</li>
 <li>在 Azure 管理门户中，选择“存储帐户”和“重新生成辅助密钥”。</li>
 </ol>
-<br /> 此过程称为“变换密钥”。其目的是让用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。</td>
+<br/> 此过程称为“变换密钥”。其目的是让用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。</td>
 </tr>
-<tr class="even">
-<td align="left"><strong>删除</strong></td>
-<td align="left">当你选择“删除”时，将删除你的 BizTalk 服务和部署到此服务的所有项目。</td>
+
+<tr>
+<td><strong>删除</strong></td>
+<td>当你选择“删除”时，将删除你的 BizTalk 服务和部署到此服务的所有项目。</td>
 </tr>
-</tbody>
 </table>
 
 ## <a name="Dashboard"></a>仪表板
@@ -359,7 +349,7 @@
   [BizTalk 服务：版本图表]: http://go.microsoft.com/fwlink/p/?LinkID=302279
   [BizTalk 服务：备份和还原]: http://go.microsoft.com/fwlink/p/?LinkID=329873
   [混合连接：将 Azure 网站连接到本地资源]: http://go.microsoft.com/fwlink/p/?LinkId=397538
-  [Azure 移动服务和混合连接]: http://azure.microsoft.com/zh-cn/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started
+  [Azure 移动服务和混合连接]: http://azure.microsoft.com/en-us/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started
   [1]: http://go.microsoft.com/fwlink/p/?LinkID=397274
   [BizTalk 服务：限制]: http://go.microsoft.com/fwlink/p/?LinkID=302282
   [BizTalk 服务：颁发者名称和颁发者密钥]: http://go.microsoft.com/fwlink/p/?LinkID=303941

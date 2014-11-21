@@ -2,14 +2,14 @@
 
 # 使用 HDInsight 分析航班延误数据
 
-Hive 提供了通过类似 SQL 的脚本语言（称作 *[HiveQL][]*）运行 MapReduce 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。本教程演示如何使用 Hive 计算机场之间的平均延迟，以及如何使用 Sqoop 将结果导出到 SQL Database。
+Hive 提供了通过类似 SQL 的脚本语言（称作 *[HiveQL][HiveQL]*）运行 MapReduce 作业的方法，此方法可用于对大量数据进行汇总、查询和分析。本教程演示如何使用 Hive 计算机场之间的平均延迟，以及如何使用 Sqoop 将结果导出到 SQL Database。
 
 **先决条件：**
 
 在开始阅读本教程前，你必须具有：
 
--   一个 Azure HDInsight 群集。有关设置 HDInsight 群集的信息，请参阅 [HDInsight 入门][]或[设置 HDInsight 群集][]。
--   已安装并已配置 Azure PowerShell 的工作站。有关说明，请参阅[安装和配置 Azure PowerShell][]。
+-   一个 Azure HDInsight 群集。有关设置 HDInsight 群集的信息，请参阅 [HDInsight 入门][HDInsight 入门]或[设置 HDInsight 群集][设置 HDInsight 群集]。
+-   已安装并已配置 Azure PowerShell 的工作站。有关说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。
 
 估计完成时间：30 分钟
 
@@ -23,7 +23,7 @@ Hive 提供了通过类似 SQL 的脚本语言（称作 *[HiveQL][]*）运行 Ma
 
 ##<a id="prepare"></a>准备教程
 
-本教程将对你的工作站使用来自[美国研究与技术创新管理部门 - 运输统计局][] (RITA) 的航班准时表现数据。你将执行以下操作：
+本教程将对你的工作站使用来自[美国研究与技术创新管理部门 - 运输统计局][美国研究与技术创新管理部门 - 运输统计局] (RITA) 的航班准时表现数据。你将执行以下操作：
 
 1.  使用 Web 浏览器从 RITA 将准时表现数据下载到你的工作站
 2.  使用 Azure PowerShell 将数据上载到 HDInsight
@@ -31,9 +31,9 @@ Hive 提供了通过类似 SQL 的脚本语言（称作 *[HiveQL][]*）运行 Ma
 
 **了解 HDInsight 存储**
 
-HDInsight 将 Azure Blob 存储用于数据存储。它称为 *WASB* 或 *Azure 存储空间 - Blob*。WASB 是 Microsoft 在 Azure Blob 存储上的 HDFS 实现。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
+HDInsight 将 Azure Blob 存储用于数据存储。它称为 *WASB* 或 *Azure 存储空间 - Blob*。WASB 是 Microsoft 在 Azure Blob 存储上的 HDFS 实现。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][将 Azure Blob 存储与 HDInsight 配合使用]。
 
-设置 HDInsight 群集时，请将 Blob 存储容器指定为默认文件系统，就像在 HDFS 中一样。除了此容器外，你还可以在设置过程中从同一 Azure 存储帐户或不同 Azure 存储帐户添加其他容器。有关添加其他存储帐户的说明，请参阅[设置 HDInsight 群集][]。
+设置 HDInsight 群集时，请将 Blob 存储容器指定为默认文件系统，就像在 HDFS 中一样。除了此容器外，你还可以在设置过程中从同一 Azure 存储帐户或不同 Azure 存储帐户添加其他容器。有关添加其他存储帐户的说明，请参阅[设置 HDInsight 群集][设置 HDInsight 群集]。
 
 为了简化本教程中使用的 PowerShell 脚本，所有文件都存储在默认文件系统容器（位于 */tutorials/flightdelays*）中。默认情况下，此容器与 HDInsight 群集同名。
 
@@ -41,9 +41,9 @@ WASB 语法为：
 
     wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/<路径>/<文件名>
 
-> [WACOM.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
+> [WACN.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
 
-> WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
+> WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][将 Azure Blob 存储与 HDInsight 配合使用]。
 
 对于存储在默认文件系统容器中的文件，可以使用以下任一 URI 从 HDInsight 进行访问（以 flightdelays.hql 为例）：
 
@@ -77,19 +77,19 @@ WASB 语法为：
 
 有关详细信息，请参阅 [HDInsight：Hive 内部表和外部表简介][cindygross-hive-tables]。
 
-> [WACOM.NOTE] HiveQL 语句之一可创建 Hive 外部表。Hive 外部表将数据文件保留在原始位置。Hive 内部表将数据文件移到 hive\\warehouse。Hive 外部表要求数据文件位于默认文件系统 WASB 容器中。如果你选择将航班数据文件存储在默认 Blob 容器以外的容器中，则必须使用 Hive 内部表。
+> [WACN.NOTE] HiveQL 语句之一可创建 Hive 外部表。Hive 外部表将数据文件保留在原始位置。Hive 内部表将数据文件移到 hive\\warehouse。Hive 外部表要求数据文件位于默认文件系统 WASB 容器中。如果你选择将航班数据文件存储在默认 Blob 容器以外的容器中，则必须使用 Hive 内部表。
 
 **下载航班数据**
 
-1.  浏览到[美国研究与技术创新管理部门 - 运输统计局][] (RITA)。
+1.  浏览到[美国研究与技术创新管理部门 - 运输统计局][美国研究与技术创新管理部门 - 运输统计局] (RITA)。
 2.  在该页面上，选择以下值：
 
-<table border="1">
-<tr><th>名称</th><th>值</th></tr>
-<tr><td>筛选年份</td><td>2012</td></tr>
-<tr><td>筛选期间</td><td>1 月</td></tr>
-<tr><td>字段：</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay*（清除其他所有字段）</td></tr>
-</table>
+    <table border="1">
+    <tr><th>名称</th><th>值</th></tr>
+    <tr><td>筛选年份</td><td>2012</td></tr>
+    <tr><td>筛选期间</td><td>1 月</td></tr>
+    <tr><td>字段：</td><td>*Year*、*FlightDate*、*UniqueCarrier*、*Carrier*、*FlightNum*、*OriginAirportID*、*Origin*、*OriginCityName*、*OriginState*、*DestAirportID*、*Dest*、*DestCityName*、*DestState*、*DepDelayMinutes*、*ArrDelay*、*ArrDelayMinutes*、*CarrierDelay*、*WeatherDelay*、*NASDelay*、*SecurityDelay*、*LateAircraftDelay*（清除其他所有字段）</td></tr>
+    </table>
 
 3.  单击“下载” 。下载每个文件最多需要花费 15 分钟。
 4.  将文件解压缩到 **C:\\Tutorials\\FlightDelays\\Data** 文件夹。每个文件均为 CSV 文件且大小约为 60 GB。
@@ -98,7 +98,7 @@ WASB 语法为：
 
 **将航班延迟数据上载到 Azure Blob 存储**
 
-1.  打开 Azure PowerShell。有关说明，请参阅[安装和配置 Azure PowerShell][]。
+1.  打开 Azure PowerShell。有关说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。
 2.  运行以下命令以连接到 Azure 订阅：
 
         Add-AzureAccount
@@ -118,7 +118,7 @@ WASB 语法为：
 
     以下是变量及其说明：
 
-<table border="1">
+	<table border="1">
 	<tr><td><strong>变量名</strong></td><td><strong>说明</strong></td></tr>
 	<tr><td>$subscriptionName</td><td>你的 Azure 订阅名称。</td></tr>
 	<tr><td>$storageAccountName</td><td>用于存储航班数据文件的 Azure 存储帐户。建议使用默认的存储帐户。</td></tr>
@@ -191,7 +191,7 @@ WASB 语法为：
 
     以下是变量及其说明：
 
-<table border="1">
+	<table border="1">
 	<tr><td><strong>变量名</strong></td><td><strong>说明</strong></td></tr>
 	<tr><td>$subscriptionName</td><td>你的 Azure 订阅名称。</td></tr>
 	<tr><td>$sqlDatabaseServer</td><td>Sqoop 用于将数据导出到的 SQL Database 服务器名称。如果你将此项按原样保留，则此脚本将为你创建一个。否则，指定现有 SQL Database 或 SQL Server。</td></tr>
@@ -382,9 +382,9 @@ HiveQL 脚本将执行以下操作：
 
 ##<a id="executehqlscript"></a>执行 HiveQL 脚本
 
-有几个 Azure PowerShell cmdlet 可用于运行 Hive。本教程使用的是 Invoke-Hive。有关其他方法，请参阅[将 Hive 与 HDInsight 配合使用][]。使用 Invoke-Hive，可以运行 HiveQL 语句或 HiveQL 脚本。你将使用已创建并已上载到 Azure Blob 存储的 HiveQL 脚本。
+有几个 Azure PowerShell cmdlet 可用于运行 Hive。本教程使用的是 Invoke-Hive。有关其他方法，请参阅[将 Hive 与 HDInsight 配合使用][将 Hive 与 HDInsight 配合使用]。使用 Invoke-Hive，可以运行 HiveQL 语句或 HiveQL 脚本。你将使用已创建并已上载到 Azure Blob 存储的 HiveQL 脚本。
 
-有一个已知的 Hive 路径问题。可在 [TechNet Wiki][] 上找到用于解决此问题的说明。
+有一个已知的 Hive 路径问题。可在 [TechNet Wiki][TechNet Wiki] 上找到用于解决此问题的说明。
 
 **使用 PowerShell 运行 Hive 查询**
 
@@ -477,7 +477,7 @@ HiveQL 脚本将执行以下操作：
 
     以下是变量及其说明：
 
-<table border="1">
+	<table border="1">
 	<tr><td><strong>变量名</strong></td><td><strong>说明</strong></td></tr>
 	<tr><td>$clusterName</td><td>HDInsight 群集名称。</td></tr>
 	<tr><td>$sqlDatabaseServer</td><td>Sqoop 将数据导出到的 SQL Database 服务器。</td></tr>
@@ -502,19 +502,19 @@ HiveQL 脚本将执行以下操作：
 
 5.  连接到 SQL Database，并在“AvgDelays”**表中按城市查看平均航班延迟：
 
-    ![HDI.FlightDelays.AvgDelays.Dataset][]
+    ![HDI.FlightDelays.AvgDelays.Dataset][HDI.FlightDelays.AvgDelays.Dataset]
 
 ##<a id="nextsteps"></a> 后续步骤
 
 现在你已了解如何执行以下操作：将文件上载到 Blob 存储、使用 Blob 存储中的数据填充 Hive 表、运行 Hive 查询以及使用 Sqoop 将数据从 HDFS 导出到 Azure SQL Database。若要了解更多信息，请参阅下列文章：
 
--   [HDInsight 入门][]
--   [将 Hive 与 HDInsight 配合使用][]
--   [将 Oozie 与 HDInsight 配合使用][]
--   [将 Sqoop 与 HDInsight 配合使用][]
--   [将 Pig 与 HDInsight 配合使用][]
--   [为 HDInsight 开发 Java MapReduce 程序][]
--   [为 HDInsight 开发 C\# Hadoop 流程序][]
+-   [HDInsight 入门][HDInsight 入门]
+-   [将 Hive 与 HDInsight 配合使用][将 Hive 与 HDInsight 配合使用]
+-   [将 Oozie 与 HDInsight 配合使用][将 Oozie 与 HDInsight 配合使用]
+-   [将 Sqoop 与 HDInsight 配合使用][将 Sqoop 与 HDInsight 配合使用]
+-   [将 Pig 与 HDInsight 配合使用][将 Pig 与 HDInsight 配合使用]
+-   [为 HDInsight 开发 Java MapReduce 程序][为 HDInsight 开发 Java MapReduce 程序]
+-   [为 HDInsight 开发 C# Hadoop 流程序][为 HDInsight 开发 C# Hadoop 流程序]
 
   [HiveQL]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL
   [HDInsight 入门]: ../hdinsight-get-started/
@@ -535,4 +535,4 @@ HiveQL 脚本将执行以下操作：
   [将 Sqoop 与 HDInsight 配合使用]: ../hdinsight-use-sqoop/
   [将 Pig 与 HDInsight 配合使用]: ../hdinsight-use-pig/
   [为 HDInsight 开发 Java MapReduce 程序]: ../hdinsight-develop-deploy-java-mapreduce/
-  [为 HDInsight 开发 C\# Hadoop 流程序]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/
+  [为 HDInsight 开发 C# Hadoop 流程序]: ../hdinsight-hadoop-develop-deploy-streaming-jobs/

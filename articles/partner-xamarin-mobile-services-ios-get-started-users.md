@@ -10,11 +10,11 @@
 
 本教程将指导你完成在应用程序中启用身份验证的以下基本步骤：
 
-1.  [注册应用程序以进行身份验证并配置移动服务][]
-2.  [将表权限限制给已经过身份验证的用户][]
-3.  [向应用程序添加身份验证][]
+1.  [注册应用程序以进行身份验证并配置移动服务][注册应用程序以进行身份验证并配置移动服务]
+2.  [将表权限限制给已经过身份验证的用户][将表权限限制给已经过身份验证的用户]
+3.  [向应用程序添加身份验证][向应用程序添加身份验证]
 
-本教程基于移动服务快速入门。因此，你还必须先完成[移动服务入门][]教程。
+本教程基于移动服务快速入门。因此，你还必须先完成[移动服务入门][移动服务入门]教程。
 
 完成本教程需要安装 [Xamarin.iOS]、XCode 5.0 和 iOS 5.0 或更高版本。
 
@@ -23,9 +23,9 @@
 
 为了能够对用户进行身份验证，你必须通过标识提供者注册你的应用程序。然后，你需要向移动服务注册标识提供者生成的客户端密钥。
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的移动服务 。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务”，然后单击你的移动服务 。
 
-    ![][]
+    ![][0]
 
 2.  单击“仪表板” 选项卡，记下"站点 URL" 值。
 
@@ -35,11 +35,11 @@
 
 3.  从以下列表中选择支持的标识提供者，并按步骤向该标识提供者注册你的应用程序：
 
--   [Microsoft 帐户][]
--   [Facebook 登录][]
--   [Twitter 登录][]
--   [Google 登录][]
--   [Azure Active Directory][]
+    - [Microsoft 帐户][Microsoft 帐户]
+    - [Facebook 登录][Facebook 登录]
+    - [Twitter 登录][Twitter 登录]
+    - [Google 登录][Google 登录]
+    - [Azure Active Directory][Azure Active Directory]
 
     请记住，要记下标识提供者生成的客户端标识和密钥值。
 
@@ -48,7 +48,7 @@
     <p>标识提供者生成的密钥是一个重要的安全凭据。请勿与任何人分享此密钥或将密钥随应用程序分发。</p>
 	</div>
 
-1.  回到管理门户中，单击“标识”选项卡， 输入从标识提供者获取的应用程序标识符和共享密钥值，然后单击“保存”。 
+4.  回到管理门户中，单击“标识”选项卡， 输入从标识提供者获取的应用程序标识符和共享密钥值，然后单击“保存”。 
 
     ![][2]
 
@@ -65,7 +65,7 @@
 
     ![][4]
 
-3.  在 Xcode 中，打开你在完成[移动服务入门][]教程后创建的项目。
+3.  在 Xcode 中，打开你在完成[移动服务入门][移动服务入门]教程后创建的项目。
 
 4.  在 iPhone 模拟器中按“运行”按钮以生成项目并启动应用程序；验证启动该应用程序后，是否会引发状态代码为 401（“未授权”）的未处理异常 。
 
@@ -145,21 +145,14 @@
 
 ## 获取已完成的示例
 
-下载[已完成的示例项目][]。请务必使用你自己的 Azure 设置更新 "applicationURL" 和 "applicationKey" 变量。
+下载[已完成的示例项目][已完成的示例项目]。请务必使用你自己的 Azure 设置更新 "applicationURL" 和 "applicationKey" 变量。
 
 <a name="next-steps"></a>
 ## 后续步骤
 
-在下一教程[使用脚本为用户授权][]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。
+在下一教程[使用脚本为用户授权][使用脚本为用户授权]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-users-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-users-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-users-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-users-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-users-html "HTML"
   [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android "Xamarin.Android"
   [注册应用程序以进行身份验证并配置移动服务]: #register
   [将表权限限制给已经过身份验证的用户]: #permissions
   [向应用程序添加身份验证]: #add-authentication

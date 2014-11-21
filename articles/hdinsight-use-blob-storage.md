@@ -11,7 +11,7 @@ Azure HDInsight 支持使用 Hadoop 分布式文件系统 (HDFS) 和 Azure Blob 
 > [WACOM.NOTE]
 > 大多数 HDFS 命令仍按预期效果工作，比如 **ls**、**copyFromLocal**、**mkdir**，等等。只有特定于本机 HDFS 实现（称作 DFS）的命令在 Azure Blob 存储上会显示不同的行为，比如 **fschk** 和 **dfsadmin**。
 
-有关设置 HDInsight 群集的信息，请参阅 [HDInsight 入门][]或[设置 HDInsight 群集][]。
+有关设置 HDInsight 群集的信息，请参阅 [HDInsight 入门][HDInsight 入门]或[设置 HDInsight 群集][设置 HDInsight 群集]。
 
 ## 本文内容
 
@@ -38,19 +38,19 @@ HDInsight 提供对在本地附加到计算节点的分布式文件系统的访�
 
 Hadoop 支持默认文件系统的概念。默认文件系统意指默认方案和授权；它还可用于解析相对路径。在 HDInsight 设置过程中，请将 Azure 存储帐户和该帐户上的特定 Blob 存储容器指定为默认文件系统。
 
-除了此存储帐户外，在设置过程中，你还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。有关添加其他存储帐户的说明，请参阅[设置 HDInsight 群集][]。
+除了此存储帐户外，在设置过程中，你还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。有关添加其他存储帐户的说明，请参阅[设置 HDInsight 群集][设置 HDInsight 群集]。
 
 -   **连接到群集的存储帐户中的容器：**由于帐户名称和密钥存储在 *core-site.xml* 中，所以你具有那些窗口中的 Blob 的完全访问权限。
 -   **没有连接到群集的存储帐户中的公共容器或公共 Blob：**你对容器中的 Blob 具有只读权限。
 
     > [WACOM.NOTE]
-    >  \> 利用公共容器，你可以获得该容器中所有可用 Blob 的列表以及容器元数据。利用公共 Blob，你仅在知道正确 URL 时才可访问 Blob。有关详细信息，请参阅[限制对容器和 Blob 的访问][]。
+    >  \> 利用公共容器，你可以获得该容器中所有可用 Blob 的列表以及容器元数据。利用公共 Blob，你仅在知道正确 URL 时才可访问 Blob。有关详细信息，请参阅[限制对容器和 Blob 的访问][限制对容器和 Blob 的访问]。
 
 -   **没有连接到群集的存储帐户中的私有容器：**你不能访问容器中的这些 Blob，除非在提交 WebHCat 作业时定义存储帐户。本文后面对此进行了解释。
 
 设置过程中定义的存储帐户及其密钥存储在 %HADOOP\_HOME%/conf/core-site.xml 中。HDInsight 的默认行为是使用 core-site.xml 文件中定义的存储帐户。不推荐编辑 core-site.xml 文件，因为群集头节点 (master) 可能会随时重新映像或迁移，对那些文件所做的任何更改都将会丢失。
 
-多个 WebHCat 作业，包括 Hive、MapReduce、Hadoop 流和 Pig，都可以带有存储帐户和元数据的说明（它目前对带有存储帐户的 Pig 有效，但对元数据无效）。在本文的[使用 PowerShell 访问 Blob][] 一节中，提供了此功能的示例。有关详细信息，请参阅[将 HDInsight 群集与备用存储帐户和元存储配合使用][]。
+多个 WebHCat 作业，包括 Hive、MapReduce、Hadoop 流和 Pig，都可以带有存储帐户和元数据的说明（它目前对带有存储帐户的 Pig 有效，但对元数据无效）。在本文的[使用 PowerShell 访问 Blob][使用 PowerShell 访问 Blob] 一节中，提供了此功能的示例。有关详细信息，请参阅[将 HDInsight 群集与备用存储帐户和元存储配合使用][将 HDInsight 群集与备用存储帐户和元存储配合使用]。
 
 Blob 存储容器将数据存储为键值对，没有目录层次结构。不过，可在键名称中使用“/”字符，使其看起来像存储在目录结构中的文件。例如，Blob 的键可以是 *input/log1.txt*。不存在实际的 *input* 目录，但由于键名称中包含“/”字符，因此使其看起来像一个文件路径。
 
@@ -60,7 +60,7 @@ Blob 存储容器将数据存储为键值对，没有目录层次结构。不过
 
 在 Blob 存储而非 HDFS 中存储数据有几个好处：
 
--   **数据重用和共享：**HDFS 中的数据位于计算群集内。仅有权访问计算群集的应用程序才能通过 HDFS API 使用数据。Blob 存储中的数据可通过 HDFS API 或 [Blob 存储 REST API][] 访问。因此，可使用大量应用程序（包括其他 HDInsight 群集）和工具来生成和使用此类数据。
+-   **数据重用和共享：**HDFS 中的数据位于计算群集内。仅有权访问计算群集的应用程序才能通过 HDFS API 使用数据。Blob 存储中的数据可通过 HDFS API 或 [Blob 存储 REST API][Blob 存储 REST API] 访问。因此，可使用大量应用程序（包括其他 HDInsight 群集）和工具来生成和使用此类数据。
 -   **数据存档：** 通过在 Blob 存储中存储数据，可以安全地删除用于计算的 HDInsight 群集而不会丢失用户数据。
 -   **数据存储成本：**与在 Blob 存储中存储数据相比，在 DFS 中长期存储数据的成本更高，因为计算群集的成本高于 Blob 存储容器的成本。此外，由于数据无需在每次生成计算群集时重新加载，也为你节省了数据加载成本。
 -   **灵活向外扩展：**尽管 HDFS 为你提供了向外扩展文件系统，但缩放将由你为群集设置的节点的数量决定。与依靠你自动获得的 Blob 存储的弹性缩放功能相比，更改缩放的过程可能会更复杂。
@@ -70,7 +70,7 @@ Blob 存储容器将数据存储为键值对，没有目录层次结构。不过
 
 ##<a id="preparingblobstorage"></a>为 Blob 存储准备容器
 
-若要使用 blob，必须先创建 [Azure 存储帐户][]。创建过程中，你要指定 Azure 数据中心，它将存储你使用此帐户创建的对象。群集和存储帐户都必须承载于同一数据中心（Hive 元存储 SQL 数据库和 Oozie 元存储 SQL 数据库也必须位于同一数据中心）。无论所创建的每个 blob 位于何处，它都属于存储帐户中的某个容器。此容器可以是在 HDInsight 外部创建的现有的 Blob 存储容器，也可以是为 HDInsight 群集创建的容器。
+若要使用 blob，必须先创建 [Azure 存储帐户][Azure 存储帐户]。创建过程中，你要指定 Azure 数据中心，它将存储你使用此帐户创建的对象。群集和存储帐户都必须承载于同一数据中心（Hive 元存储 SQL 数据库和 Oozie 元存储 SQL 数据库也必须位于同一数据中心）。无论所创建的每个 blob 位于何处，它都属于存储帐户中的某个容器。此容器可以是在 HDInsight 外部创建的现有的 Blob 存储容器，也可以是为 HDInsight 群集创建的容器。
 
 ### 使用管理门户为 HDInsight 创建 Blob 容器
 
@@ -92,7 +92,7 @@ Blob 存储容器将数据存储为键值对，没有目录层次结构。不过
 
 ### 使用 Azure PowerShell 创建容器。
 
-[Azure PowerShell][] 可用于创建 Blob 容器。下面是 PowerShell 脚本示例：
+[Azure PowerShell][Azure PowerShell] 可用于创建 Blob 容器。下面是 PowerShell 脚本示例：
 
     $subscriptionName = "<SubscriptionName>"   # Azure 订阅名称
     $storageAccountName = "<AzureStorageAccountName>" # 你将要创建的存储帐户
@@ -148,7 +148,7 @@ URI 方案提供了使用 *wasb:*前缀的未加密访问和使用 *wasbs* 的 S
 
 **用于上载文件的 PowerShell 示例**
 
-请参阅[将数据上载到 HDInsight][]。
+请参阅[将数据上载到 HDInsight][将数据上载到 HDInsight]。
 
 **用于下载文件的 PowerShell 示例**
 
@@ -243,8 +243,8 @@ URI 方案提供了使用 *wasb:*前缀的未加密访问和使用 *wasbs* 的 S
 
 -   [Azure HDInsight 入门][HDInsight 入门]
 -   [将数据上传到 HDInsight][将数据上载到 HDInsight]
--   [Hive 与 HDInsight 配合使用][]
--   [Pig 与 HDInsight 配合使用][]
+-   [Hive 与 HDInsight 配合使用][Hive 与 HDInsight 配合使用]
+-   [Pig 与 HDInsight 配合使用][Pig 与 HDInsight 配合使用]
 
   [HDInsight 入门]: ../hdinsight-get-started/
   [设置 HDInsight 群集]: ../hdinsight-provision-clusters/

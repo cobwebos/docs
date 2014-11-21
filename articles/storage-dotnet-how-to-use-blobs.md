@@ -26,16 +26,13 @@
 
 [WACOM.INCLUDE [howto-blob-storage](../includes/howto-blob-storage.md)]
 
-##<a name="create-account"></a>创建帐户创建 Azure 存储帐户
+## <a name="create-account"></a>创建帐户创建 Azure 存储帐户
 
 [WACOM.INCLUDE [create-storage-account](../includes/create-storage-account.md)]
 
-##<a name="setup-connection-string"></a>设置连接字符串设置存储连接字符串
+## <a name="setup-connection-string"></a>设置连接字符串设置存储连接字符串
 
-Azure .NET 存储客户端库支持使用存储连接字符
-串来配置终结点和用于访问存
-储服务的凭据。你可以将存储连接字符串放置在一个配置文件中，而不是
-在代码中对其进行硬编码：
+Azure .NET 存储客户端库支持使用存储连接字符串来配置终结点和用于访问存储服务的凭据。你可以将存储连接字符串放置在一个配置文件中，而不是在代码中对其进行硬编码：
 
 -   当使用 Azure 云服务时，建议你使用 Azure 服务配置系统（`*.csdef` 和 `*.cscfg` 文件）来存储连接字符串。
 -   在使用 Azure 网站、Azure 虚拟机时或者构建准备在 Azure 外部运行的 .NET 应用程序时，建议你使用 .NET 配置系统（如 `web.config` 或 `app.config` 文件）来存储连接字符串。
@@ -208,7 +205,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
     blockBlob.UploadFromStream(fileStream);
     } 
 
-##<a name="list-blob"> </a>列出容器中的 Blob如何：列出容器中的 Blob
+## <a name="list-blob"> </a>列出容器中的 Blob如何：列出容器中的 Blob
 
 若要列出容器中的 Blob，首先需要获取容器引用。然后，
 你可以使用容器的 **ListBlobs** 方法来检索其中的 Blob 和/或目录。
@@ -346,7 +343,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
     text = System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
     }
 
-##<a name="delete-blobs"> </a>删除 Blob如何：删除 Blob
+## <a name="delete-blobs"> </a>删除 Blob如何：删除 Blob
 
 若要删除 Blob，请首先获取 Blob 引用，然后对其
 调用 **Delete** 方法。
@@ -408,6 +405,6 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
   [.NET 存储客户端库参考]: http://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [表存储]: /zh-cn/documentation/articles/storage-dotnet-how-to-use-tables/
-  [队列存储]: /zh-cn/documentation/articles/storage-dotnet-how-to-use-queues/
-  [SQL Database]: /zh-cn/documentation/articles/sql-database-dotnet-how-to-use/
+  [表存储]: /en-us/documentation/articles/storage-dotnet-how-to-use-tables/
+  [队列存储]: /en-us/documentation/articles/storage-dotnet-how-to-use-queues/
+  [SQL Database]: /en-us/documentation/articles/sql-database-dotnet-how-to-use/

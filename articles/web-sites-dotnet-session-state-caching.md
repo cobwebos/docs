@@ -55,7 +55,7 @@
 
 3.  然后对 Azure Caching NuGet 包添加的 **sessionState** 元素取消注释。最终结果应类似于以下屏幕快照。
 
-    [SessionStateConfig][SessionStateConfig]
+    ![SessionStateConfig][SessionStateConfig]
 
 4.  接下来，找到 **dataCacheClients** 节。对 **securityProperties** 子元素取消注释。
 

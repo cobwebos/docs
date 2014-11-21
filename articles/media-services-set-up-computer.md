@@ -16,7 +16,7 @@
 针对 Media Services 设置 Azure 帐户
 -----------------------------------
 
-若要设置你的 Media Services 帐户，请使用 Azure 管理门户（建议）。请参阅主题 [如何创建 Media Services 帐户][]。在管理门户中创建帐户后，便可以设置你的计算机以进行 Media Services 开发。
+若要设置你的 Media Services 帐户，请使用 Azure 管理门户（建议）。请参阅主题 [如何创建 Media Services 帐户][如何创建 Media Services 帐户]。在管理门户中创建帐户后，便可以设置你的计算机以进行 Media Services 开发。
 
 ### 在 Visual Studio 中创建应用程序
 
@@ -26,15 +26,15 @@
 2.  添加对 **System.Configuration** 程序集的引用。若要添加对 **System.Configuration** 的引用，请在**解决方案资源管理器**中，右键单击**“引用”**节点，然后选择**“添加引用...”**。在“管理引用”对话框中，**选择** **“System.Configuration”**，然后单击**“确定”**。
 3.  添加对 **Azure SDK for .NET**(Microsoft.WindowsAzure.StorageClient.dll)、**Azure Media Services SDK for .NET** (Microsoft.WindowsAzure.MediaServices.Client.dll) 和 **WCF Data Services 5.0 for OData V3** (Microsoft.Data.OData.dll) 库的引用，只需通过 [windowsazure.mediaservices Nuget](http://nuget.org/packages/windowsazure.mediaservices) 程序包进行操作即可。
 
-<!-- -->
 
-    To add references using Nuget, do the following.In Visual Studio **Main Menu**, select **TOOLS** -> **Library Package Manager** -> **Package Manager Console**.In the console window type **Install-Package windowsazure.mediaservices** and press **Enter**.
 
-1.  使用以下代码覆盖位于 Program.cs 文件开头的现有 using 语句。
+    若要使用 Nuget 添加引用，请执行以下操作。在 Visual Studio 主菜单中，选择**工具**->**库程序包管理器**->**程序包管理器控制台**。在控制台窗口中，键入 **Install-Package windowsazure.mediaservices**，然后按 **Enter**。
 
-using System;
+4.  使用以下代码覆盖位于 Program.cs 文件开头的现有 using 语句。
 
-     using System.Linq;
+
+        using System;
+        using System.Linq;
         using System.Configuration;
         using System.IO;
         using System.Text;
@@ -64,5 +64,7 @@ using System;
 后续步骤
 --------
 
-你已经完成计算机设置并创建了进行 Media Services 编程所需的 Visual Studio 解决方案，现在可转到 [如何创建加密的资产并上载到存储中][] 主题。[如何创建 Media Services 帐户]：http://go.microsoft.com/fwlink/?linkid=256662 [如何创建加密的资产并上载到存储中]：http://go.microsoft.com/fwlink/?LinkID=301733&clcid=0x409
+你已经完成计算机设置并创建了进行 Media Services 编程所需的 Visual Studio 解决方案，现在可转到 [如何创建加密的资产并上载到存储中][如何创建加密的资产并上载到存储中] 主题。
+[如何创建 Media Services 帐户]: http://go.microsoft.com/fwlink/?linkid=256662
+[如何创建加密的资产并上载到存储中]:http://go.microsoft.com/fwlink/?LinkID=301733&clcid=0x409
 
