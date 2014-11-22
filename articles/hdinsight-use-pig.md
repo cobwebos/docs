@@ -15,7 +15,7 @@
 -   [使用 HDInsight .NET SDK 提交 Pig 作业][使用 HDInsight .NET SDK 提交 Pig 作业]
 -   [后续步骤][后续步骤]
 
-## Pig 用例
+##<a id="usage"></a>Pig 用例
 
 数据库对于小数据集和低延迟查询非常有用。但对于大型数据和大型数据集（以 TB 为单位）而言，传统的 SQL 数据库并不是理想的解决方案。随着数据库负载增加和性能下降，数据库管理员以前往往需要采购更大的硬件。
 
@@ -41,7 +41,7 @@
 
 有关 Pig Latin 的详细信息，请参阅 [Pig Latin 参考手册 1][Pig Latin 参考手册 1] 和 [Pig Latin 参考手册 2][Pig Latin 参考手册 2]。
 
-## 先决条件
+##<a id="prerequisites"></a>先决条件
 
 在开始阅读本文前，请注意以下要求：
 
@@ -63,9 +63,9 @@ WASB 语法是：
 
     wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/<路径>/<文件名>
 
-> [WACN.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
+> [WACOM.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
 
-> [WACN.NOTE] WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][将 Azure Blob 存储与 HDInsight 配合使用]。
+> [WACOM.NOTE] WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
 
 存储在默认文件系统容器中的文件可以使用以下任一 URI 从 HDInsight 进行访问（以 sample.log 为例。此文件是本教程中使用的数据文件）：
 
@@ -79,7 +79,7 @@ WASB 语法是：
 
 在本文中，你将使用一个 log4j 示例文件，它是 *\\example\\data\\sample.log* 中存储的 HDInsight 群集附带的。有关上载自己的数据文件的信息，请参阅[将数据上载到 HDInsight][将数据上载到 HDInsight]。
 
-## 了解 Pig Latin
+##<a id="understand"></a>了解 Pig Latin
 
 在本课中，你将检查一些 Pig Latin 语句以及运行这些语句后的结果。在下一课中，你将运行 PowerShell 来执行 Pig 语句。
 
@@ -174,7 +174,7 @@ WASB 语法是：
         (ERROR,181)
         (FATAL,37)
 
-## 使用 PowerShell 提交 Pig 作业
+##<a id="powershell"></a>使用 PowerShell 提交 Pig 作业
 
 本节提供有关使用 PowerShell cmdlet 的说明。在学习本节之前，必须先设置本地环境并配置到 Azure 的连接。有关详细信息，请参阅 [Azure HDInsight 入门][Azure HDInsight 入门]和[使用 PowerShell 管理 HDInsight][使用 PowerShell 管理 HDInsight]。
 
@@ -187,7 +187,7 @@ WASB 语法是：
 
     系统将提示你输入 Azure 帐户凭据。这种添加订阅连接的方法会超时，12 个小时之后，你将需要再次运行该 cmdlet。
 
-    > [WACN.NOTE] 如果你有多个 Azure 订阅，而默认订阅不是你想使用的，则请使用 **Select-AzureSubscription** cmdlet 来选择正确的订阅。
+    > [WACOM.NOTE] 如果你有多个 Azure 订阅，而默认订阅不是你想使用的，则请使用 **Select-AzureSubscription** cmdlet 来选择正确的订阅。
 
 3.  在脚本窗格中，复制并粘贴以下行：
 
@@ -233,14 +233,14 @@ WASB 语法是：
         Write-Host "Display the standard output ..."-ForegroundColor Green
         Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $pigJob.JobId -StandardOutput
 
-    > [WACN.NOTE] Get-AzureHDInsightJobOut cmdlet 中有一个为缩短下面屏幕中的输出结果而加了批注。
+    > [WACOM.NOTE] Get-AzureHDInsightJobOut cmdlet 中有一个为缩短下面屏幕中的输出结果而加了批注。
 
 9.  按 **F5** 键以运行脚本：
     ![HDI.Pig.PowerShell][HDI.Pig.PowerShell]
 
     Pig 作业计算不同日志类型的频率。
 
-## 使用 HDInsight .NET SDK 提交 Pig 作业
+##<a id="sdk"></a>使用 HDInsight .NET SDK 提交 Pig 作业
 
 下面是使用 HDInsight .NET SDK 提交 Pig 作业的示例。有关创建 C\# 应用程序以提交 Hadoop 作业的说明，请参阅[以编程方式提交 Hadoop 作业][以编程方式提交 Hadoop 作业]。
 
@@ -335,7 +335,7 @@ WASB 语法是：
         }
     }
 
-## 后续步骤
+##<a id="nextsteps"></a>后续步骤
 
 虽然利用 Pig 可以执行数据分析，但你也可能会想试试随 HDInsight 提供的其他语言。Hive 提供了一种类似 SQL 的查询语言，你可使用该语言轻松对存储在 HDInsight 中的数据执行查询，而用 Java 编写的 MapReduce 作业允许你执行复杂数据分析。有关详细信息，请参阅以下内容：
 
@@ -355,13 +355,13 @@ WASB 语法是：
   [HDI.PIG.Data.Transformation]: ./media/hdinsight-use-pig/HDI.DataTransformation.gif
   [Pig Latin 参考手册 1]: http://pig.apache.org/docs/r0.7.0/piglatin_ref1.html
   [Pig Latin 参考手册 2]: http://pig.apache.org/docs/r0.7.0/piglatin_ref2.html
-  [Azure HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/
-  [设置 HDInsight 群集]: /en-us/manage/services/hdinsight/provision-hdinsight-clusters/
-  [安装和配置 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/
-  [将 Azure Blob 存储与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/howto-blob-store/
-  [将数据上载到 HDInsight]: /en-us/manage/services/hdinsight/howto-upload-data-to-hdinsight/
-  [使用 PowerShell 管理 HDInsight]: /en-use/manage/services/hdinsight/administer-hdinsight-using-powershell/
+  [Azure HDInsight 入门]: ../hdinsight-get-started/
+  [设置 HDInsight 群集]: ../hdinsight-provision-clusters/
+  [安装和配置 Azure PowerShell]: ../install-configure-powershell/
+  [将 Azure Blob 存储与 HDInsight 配合使用]: ../hdinsight-use-blob-storage/
+  [将数据上载到 HDInsight]: ../hdinsight-upload-data/
+  [使用 PowerShell 管理 HDInsight]: ../hdinsight-administer-use-powershell/
   [在 Windows 8 和 Windows 上启动 Windows PowerShell]: http://technet.microsoft.com/en-us/library/hh847889.aspx
   [HDI.Pig.PowerShell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png
   [以编程方式提交 Hadoop 作业]: ../hdinsight-submit-hadoop-jobs-programmatically/#mapreduce-sdk
-  [Hive 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
+  [Hive 与 HDInsight 配合使用]: ../hdinsight-use-hive/

@@ -2,21 +2,52 @@
 
 <tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="bradsev" />
 
+
 # Microsoft HDInsight 发行说明
 
-## 8/21/2014 版本发行说明
+## 2014/10/7 版本发行说明 ##
 
-- 我们正在添加以下新的 WebHCat 配置 (HIVE-7155)，该配置可将 Templeton 控制器作业的默认内存限制设置为 1GB（以前的默认值为 512MB）：
+* 使用 Ambari 终结点时，"https://{clusterDns}.azurehdinsight.cn/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.cn/services/{servicename}/components/{componentname}"，现在 *host_name* 字段会返回节点的完全限定域名 (FQDN)，而不只是主机名。例如，你会看到 FQDN"**headnode0.{ClusterDNS}.azurehdinsight.cn**"，而不是返回"**headnode0**"。需要这种改变促进实现可以在一个虚拟网络 (VNET) 中部署多个群集类型（如 HBase 和 Hadoop）的方案。例如，使用 HBase 作为 Hadoop 的后端平台时，会发生这种情况。
 
+* 我们已为 HDInsight 群集的默认部署提供新内存设置。以前的默认内存设置没有充分考虑部署 CPU 内核数指南。下表中逐项列出了默认 4 CPU 内核（8 容器）HDInsight 群集使用的新内存设置。（附带还提供了在本次发布之前使用的值）。 
+ 
+<table border="1">
+<tr><th>组件</th><th>内存分配</th></tr>
+<tr><td> yarn.scheduler.minimum-allocation</td><td>768MB（以前为 512MB）</td></tr>
+<tr><td> yarn.scheduler.maximum-allocation</td><td>6144MB（保持不变）</td></tr>
+<tr><td>yarn.nodemanager.resource.memory</td><td>6144MB（保持不变）</td></tr>
+<tr><td>mapreduce.map.memory</td><td>768MB（以前为 512MB）</td></tr>
+<tr><td>mapreduce.map.java.opts</td><td>opts=-Xmx512m（以前为 -Xmx410m）</td></tr>
+<tr><td>mapreduce.reduce.memory</td><td>1536MB（以前为 1024MB）</td></tr>
+<tr><td>mapreduce.reduce.java.opts</td><td>opts=-Xmx1024m（以前为 -Xmx819m）</td></tr>
+<tr><td>yarn.app.mapreduce.am.resource</td><td>768MB（以前为 1024MB）</td></tr>
+<tr><td>yarn.app.mapreduce.am.command</td><td>opts=-Xmx512m（以前为 -Xmx819m）</td></tr>
+<tr><td>mapreduce.task.io.sort</td><td>256MB（以前为 200MB）</td></tr>
+<tr><td>tez.am.resource.memory</td><td>1536MB（保持不变）</td></tr>
+
+</table><br>
+
+有关 HDInsight 的 Hortonworks 数据平台上 YARN 和 MapReduce 使用的内存配置设置的更多信息，请参阅[确定 HDP 内存配置设置](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1-latest/bk_installing_manually_book/content/rpm-chap1-11.html)。Hortonworks 还提供一款工具，用于计算合适的内存设置。
+
+
+## HDinsight 3.1## 的 2014/9/12 版本发行说明
+
+* 本版本基于 Hortonworks 数据平台 (HDP) 2.1.5。有关本版本中修复的 Bug 列表，请参阅 Hortonworks 网站的[本版本中修复的 Bug](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.5/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.5-fixed.html) 页面。
+* 在 Pig 库文件夹中，文件"avro-mapred-1.7.4.jar"已改为 avro-mapred-1.7.4-hadoop2.jar。这些文件的内容包含一个小 Bug 的不间断修复。建议客户不要直接依赖 JAR 文件名称本身，以避免文件重命名时出现中断。
+
+
+## 2014/8/21 版本发行说明 ##
+
+* 我们正在添加以下新的 WebHCat 配置 (HIVE-7155)，该配置可将 Templeton 控制器作业的默认内存限制设置为 1GB（以前的默认值为 512MB）：
+	
 	* templeton.mapper.memory.mb (=1024)
-	* 这项更改解决了某些 Hive 查询由于内存限制较低而遇到的以下错误：“容器即将超出物理内存限制”。
+	* 这项更改解决了某些 Hive 查询由于内存限制较低而遇到的以下错误："容器即将超出物理内存限制"。
 	* 若要恢复到旧默认值，你可以在创建群集时使用以下命令通过 PowerShell SDK 将此配置值设置为 512：
 	
 		Add-AzureHDInsightConfigValues -Core @{"templeton.mapper.memory.mb"="512";}
 
 
 * zookeeper 角色的主机名已更改为 zookeeper。这会影响群集内部的名称解析，但不会影响外部 REST API。如果你的组件使用了 zookeepernode 主机名，则需更新这些组件，使其改用新名称。三个 zookeeper 节点的新名称为：
-
 	* zookeeper0
 	* zookeeper1
 	* zookeeper2
@@ -130,6 +161,14 @@
 
 	仅在可执行文件名称中使用 ASCII 字符。
 
+## 2014/8/15 ## 之前创建的群集的注意事项
+
+由于 SDK/PowerShell 和群集之间的版本不同，可能遇到 HDInsight PowerShell/SDK 错误，附带消息"群集 <clustername> 没有配置 HTTP 服务访问权限"（或者根据操作，遇到其他错误消息，如："无法连接群集"）。8 月 15 日或之后创建的群集支持虚拟网络的新配置功能。旧版本 SDK/PowerShell 无法正确解释此功能，导致提交作业操作失败。如果使用 SDK API 或 PowerShell cmdlet 提交作业（如 Use-AzureHDInsightCluster 或 Invoke-AzureHDInsightHiveJob），则那些操作可能失败，并附加一条上述错误消息。
+
+在最新版 SDK 和 Azure PowerShell 中，这些兼容性问题均已解决。我们建议将 HDInsight SDK 更新至 1.3.1.6 版本或更高版本，将 Azure PowerShell 工具更新至 0.8.8 版本或更高版本。你可以从 [nuget](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.HDInsight/) 访问最新版 HDInsight SDK，还可以使用 [Microsoft Web PI](http://go.microsoft.com/?linkid=9811175&clcid=0x409) 访问 Azure PowerShell 工具。
+
+你可以期待，只要群集版本保持不变，SDK 和 PowerShell 就将可以继续与群集新更新配合使用。例如，群集版本 3.1 将始终与 SDK/PowerShell 当前版本 1.3.1.6 和 0.8.8 兼容。
+
 ## 7/28/2014 版本发行说明
 
 * **HDInsight 已在新区域推出**：随着此版本的发行，我们已将 HDInsight 的地理覆盖范围扩大到了三个新区域。现在，HDInsight 客户可以在这些区域创建群集。
@@ -137,20 +176,22 @@
 	* 美国中北部
 	* 美国中南部
 * 随着此版本的发行，HDInsight v1.6（HDP1.1、Hadoop 1.0.3）和 HDInsight v2.1（HDP1.3、Hadoop 1.2）即将从 Azure 管理门户中删除。你可以继续使用 HDInsight PowerShell cmdlet ([New-AzureHDInsightCluster](http://msdn.microsoft.com/en-us/library/dn593744.aspx)) 或 [HDInsight SDK](http://msdn.microsoft.com/en-us/library/azure/dn469975.aspx) 为这些版本创建 Hadoop 群集。有关详细信息，请参阅 [HDInsight 组件版本](http://azure.microsoft.com/en-us/documentation/articles/hdinsight-component-versioning/)页。
-* 此版本中发生的 Hortonworks 数据平台 (HDP) 更改：
+* 此版本中发生的 Hortonworks 数据平台 (HDP) 更改： 
 
-| HDP             | 更改                                                          |
-|-----------------|---------------------------------------------------------------|
-| HDP 1.3/HDI 2.1 | 无更改                                                        |
-| HDP 2.0/HDI 3.0 | 无更改                                                        |
-| HDP 2.1/HDI 3.1 | zookeeper： ['3.4.5.2.1.3.0-1948'] -\> ['3.4.5.2.1.3.2-0002'] |
+<table border="1">
+<tr><th>HDP</th><th>更改</th></tr>
+<tr><td>HDP 2.0 / HDI 3.0</td><td>无更改</td></tr>
+<tr><td>HDP 2.1 / HDI 3.1</td><td>zookeeper： ['3.4.5.2.1.3.0-1948'] -> ['3.4.5.2.1.3.2-0002']</td></tr>
 
-## 6/24/2014 版本发行说明
 
-此版本为 HDInsight 服务提供了多项新的增强：
+</table><br>
 
--   **HDP 2.1 可用性**：包含 HDP 2.1 的 HDInsight 3.1 现已正式发布，并成为新群集的默认版本。
--   **HBase – Azure 管理门户改进**：我们将在预览版中提供 HBase 群集。现在，你只需单击三下鼠标，就能从门户创建 HBase 群集。
+## 2014/6/24 版本发行说明 ##
+
+此版本为 HDInsight 服务提供了多项新的增强功能： 
+
+* **HDP 2.1 可用性**：包含 HDP 2.1 的 HDInsight 3.1 现已正式发布，并成为新群集的默认版本。
+* **HBase - Azure 管理门户改进**：我们将在预览版中提供 HBase 群集。现在，你只需单击三下鼠标，就能从门户创建 HBase 群集。
 
 ![](http://i.imgur.com/cmOl5fM.png)
 
@@ -166,9 +207,10 @@
 
 有关此过程的更完整说明，请参阅 Apache Mahout 网站上的 [Breiman 示例](https://mahout.apache.org/users/classification/breiman-example.html)文档。
 
-### Hive 查询可以在 HDinsight 3.1 中使用 Tez
 
-Hive 0.13 现已在 HDInsight 3.1 中提供，并且能够使用 Tez 运行查询，这带来了极大的性能改善。
+### Hive 查询可以在 HDinsight 3.1 ### 中使用 Tez
+
+Hive 0.13 现已在 HDInsight 3.1 中提供，并且能够使用 Tez 运行查询，这带来了极大的性能改善。 
 默认情况下，没有为 Hive 查询启用 Tez。若要使用 Tez，你必须选择启用它。可以通过运行以下代码段来启用 Tez：
 
         set hive.execution.engine=tez;
@@ -176,138 +218,35 @@ Hive 0.13 现已在 HDInsight 3.1 中提供，并且能够使用 Tez 运行查�
 
 Hortonworks 发布了使用以标准基准版提供的 Tez 后，Hive 查询性能得到增强的每条明细。有关详细信息，请参阅[适用于 Enterprise Hadoop 的 Apache Hive 13 基准](http://hortonworks.com/blog/benchmarking-apache-hive-13-enterprise-hadoop/)。
 
-有关将 Hive 与 Tez 结合使用的更多详细信息，请参阅[“Tez 上的 Hive”Wiki 页](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)。
+有关将 Hive 与 Tez 结合使用的更多详细信息，请参阅 ["Tez 上的 Hive"Wiki 页](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)。
 
 ### 全球推出
-
-随着 Azure HDInsight on Hadoop 2.2 的发行，Microsoft 已在所有主要 Azure 地理覆盖区域推出了 HDInsight。具体来说，欧洲西部和东南亚数据中心已联机。这使客户能够在距离近且可能位于具有类似合规要求的区域的数据中心内找到群集。
+随着 Azure HDInsight on Hadoop 2.2 的发行，Microsoft 已在所有主要 Azure 地理覆盖区域推出了 HDInsight。具体来说，欧洲西部和东南亚数据中心已联机。这使客户能够在距离近且可能位于具有类似合规要求的区域的数据中心内找到群集。 
 
 ### 重大变化
-
 **前缀语法**：
-HDInsight 3.0 和 3.1 群集仅支持“wasb://”语法。较早的“asv://”语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 或更高版本的群集中不受支持。这意味着提交到 HDInsight 3.0 或 3.1 群集的任何显式使用“asv://”语法的作业都将会失败。应改用 wasb:// 语法。而且，提交到任何 HDInsight 3.0 或 3.1 群集的作业，如果是使用现有元存储创建的，而该元存储包含对使用 asv:// 语法的资源的显式引用，则这些作业也会失败。这些元存储将需要使用 wasb:// 重新创建以确定资源地址。
+HDInsight 3.0 和 3.1 群集仅支持"wasb://"语法。较早的"asv://"语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 或更高版本的群集中不受支持。这意味着提交到 HDInsight 3.0 或 3.1 群集的任何显式使用"asv://"语法的作业都将会失败。应改用 wasb:// 语法。而且，提交到任何 HDInsight 3.0 或 3.1 群集的作业，如果是使用现有元存储创建的，而该元存储包含对使用 asv:// 语法的资源的显式引用，则这些作业也会失败。这些元存储将需要使用 wasb:// 重新创建以确定资源地址。 
+
 
 **端口**：HDInsight 服务使用的端口已更改。以前所用的端口号在 Windows OS 临时端口范围内。端口是从预定义的临时范围自动分配的，该范围适用于基于 Internet 协议的短期通信。新的一组允许的 Hortonworks 数据平台 (HDP) 服务端口号现已在此范围外，目的是避免遇到头节点上运行的服务所使用的端口时出现冲突。新端口号不会导致任何重大更改。现在使用的端口号如下所示：
 
-**HDInsight 1.6 (HDP 1.1)**
-
+<!--
+ **HDInsight 1.6 (HDP 1.1)**
 <table border="1">
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>dfs.http.address</td><td>namenodehost:30070</td></tr>
+<tr><td>dfs.datanode.address</td><td>0.0.0.0:30010</td></tr>
+<tr><td>dfs.datanode.http.address</td><td>0.0.0.0:30075</td></tr>
+<tr><td>dfs.datanode.ipc.address</td><td>0.0.0.0:30020</td></tr>
+<tr><td>dfs.secondary.http.address</td><td>0.0.0.0:30090</td></tr>
+<tr><td>mapred.job.tracker.http.address</td><td>jobtrackerhost:30030</td></tr>
+<tr><td>mapred.task.tracker.http.address</td><td>0.0.0.0:30060</td></tr>
+<tr><td>mapreduce.history.server.http.address</td><td>0.0.0.0:31111</td></tr>
+<tr><td>templeton.port</td><td>30111</td></tr>
+</table><br>
+-->
 
-<tr>
-<th>
-名称
-
-</th>
-<th>
-值
-
-</th>
-</tr>
-
-<tr>
-<td>
-dfs.http.address
-
-</td>
-<td>
-namenodehost:30070
-
-</td>
-</tr>
-
-<tr>
-<td>
-dfs.datanode.address
-
-</td>
-<td>
-0.0.0.0:30010
-
-</td>
-</tr>
-
-<tr>
-<td>
-dfs.datanode.http.address
-
-</td>
-<td>
-0.0.0.0:30075
-
-</td>
-</tr>
-
-<tr>
-<td>
-dfs.datanode.ipc.address
-
-</td>
-<td>
-0.0.0.0:30020
-
-</td>
-</tr>
-
-<tr>
-<td>
-dfs.secondary.http.address
-
-</td>
-<td>
-0.0.0.0:30090
-
-</td>
-</tr>
-
-<tr>
-<td>
-mapred.job.tracker.http.address
-
-</td>
-<td>
-jobtrackerhost:30030
-
-</td>
-</tr>
-
-<tr>
-<td>
-mapred.task.tracker.http.address
-
-</td>
-<td>
-0.0.0.0:30060
-
-</td>
-</tr>
-
-<tr>
-<td>
-mapreduce.history.server.http.address
-
-</td>
-<td>
-0.0.0.0:31111
-
-</td>
-</tr>
-
-<tr>
-<td>
-templeton.port
-
-</td>
-<td>
-30111
-
-</td>
-</tr>
-
-</table>
-
-</p>
-**HDInsight 3.0 和 3.1（HDP 2.0 和 2.1）**
-
+ **HDInsight 3.0 and 3.1 (HDP 2.0 and 2.1)**
 <table border="1">
 
 <tr>
@@ -517,7 +456,6 @@ SQL Server JDBC 驱动程序由 HDInsight 在内部使用，不用于外部操�
 
 随着此版本的发行，我们已完成了多项 Bug 修复，并刷新了以下 HDInsight（Hortonworks 数据平台 - HDP）版本：
 
--   HDInsight 2.1 (HDP 1.3)
 -   HDInsight 3.0 (HDP 2.0)
 -   HDInsight 3.1 (HDP 2.1)
 
@@ -528,10 +466,6 @@ SQL Server JDBC 驱动程序由 HDInsight 在内部使用，不用于外部操�
 -   HDInsight 群集版本 3.1 使用基于 [Hortonworks 数据平台 2.1][hdp-2-1-1] 的 Hadoop 分发版。（这是使用 Azure HDInsight 门户时创建的默认 Hadoop 群集。）
 
 -   HDInsight 群集版本 3.0 使用基于 [Hortonworks 数据平台 2.0][hdp-2-0-8] 的 Hadoop 分发。
-
--   HDInsight 群集版本 2.1 使用基于 [Hortonworks 数据平台 1.3][hdp-1-3-0] 的 Hadoop 分发。
-
--   HDInsight 群集版本 1.6 使用基于 [Hortonworks 数据平台 1.1][hdp-1-1-0] 的 Hadoop 分发。
 
 [hdp-2-1-1]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html
 
