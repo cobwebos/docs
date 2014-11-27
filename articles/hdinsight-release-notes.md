@@ -5,7 +5,7 @@
 
 # Microsoft HDInsight 发行说明
 
-## 2014/10/7 版本发行说明 ##
+## 2014/10/7 版本发行说明 
 
 * 使用 Ambari 终结点时，"https://{clusterDns}.azurehdinsight.cn/ambari/api/v1/clusters/{clusterDns}.azurehdinsight.cn/services/{servicename}/components/{componentname}"，现在 *host_name* 字段会返回节点的完全限定域名 (FQDN)，而不只是主机名。例如，你会看到 FQDN"**headnode0.{ClusterDNS}.azurehdinsight.cn**"，而不是返回"**headnode0**"。需要这种改变促进实现可以在一个虚拟网络 (VNET) 中部署多个群集类型（如 HBase 和 Hadoop）的方案。例如，使用 HBase 作为 Hadoop 的后端平台时，会发生这种情况。
 
@@ -30,13 +30,13 @@
 有关 HDInsight 的 Hortonworks 数据平台上 YARN 和 MapReduce 使用的内存配置设置的更多信息，请参阅[确定 HDP 内存配置设置](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1-latest/bk_installing_manually_book/content/rpm-chap1-11.html)。Hortonworks 还提供一款工具，用于计算合适的内存设置。
 
 
-## HDinsight 3.1## 的 2014/9/12 版本发行说明
+## HDinsight 3.1的 2014/9/12 版本发行说明
 
 * 本版本基于 Hortonworks 数据平台 (HDP) 2.1.5。有关本版本中修复的 Bug 列表，请参阅 Hortonworks 网站的[本版本中修复的 Bug](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.5/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.5-fixed.html) 页面。
 * 在 Pig 库文件夹中，文件"avro-mapred-1.7.4.jar"已改为 avro-mapred-1.7.4-hadoop2.jar。这些文件的内容包含一个小 Bug 的不间断修复。建议客户不要直接依赖 JAR 文件名称本身，以避免文件重命名时出现中断。
 
 
-## 2014/8/21 版本发行说明 ##
+## 2014/8/21 版本发行说明 
 
 * 我们正在添加以下新的 WebHCat 配置 (HIVE-7155)，该配置可将 Templeton 控制器作业的默认内存限制设置为 1GB（以前的默认值为 512MB）：
 	
