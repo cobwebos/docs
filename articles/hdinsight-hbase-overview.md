@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-hbase-overview" urlDisplayName="HDInsight HBase overview" pageTitle="An overview of HBase in HDInsight | Azure" metaKeywords="" description="An introduction to HBase in HDInsight, use-cases and a comparison with other database solutions ." metaCanonical="" services="hdinsight" documentationCenter="" title="HDInsight HBase overview" authors="bradsev" solutions="big-data" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="bradsev"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="bradsev" />
 
 # HDInsight HBase 概述
 
@@ -16,7 +16,7 @@ HDInsight 实施利用 HBase 的横向扩展架构来提供表自动分片、使
 
 ## 如何管理 HDInsight HBase 中的数据？
 
-HBase 中的数据可以使用 HBase shell 中的 `create` `get`、`put` 和 `scan` 命令进行管理。数据使用 `put` 命令写入数据库，而使用 `get` 命令进行读取。`scan` 命令用于从表中的多个行获取数据。Data 也可以使用 HBase C# API 进行管理，该 API 在 HBase REST API 顶部提供客户端库。HBase 数据库也可以使用 Hive 进行查询。有关这些编程模型的简介，请参阅[开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][]。另外，也可以使用协同处理器来处理托管数据库的节点中的数据。
+HBase 中的数据可以使用 HBase shell 中的 `create` `get`、`put` 和 `scan` 命令进行管理。数据使用 `put` 命令写入数据库，而使用 `get` 命令进行读取。`scan` 命令用于从表中的多个行获取数据。Data 也可以使用 HBase C# API 进行管理，该 API 在 HBase REST API 顶部提供客户端库。HBase 数据库也可以使用 Hive 进行查询。有关这些编程模型的简介，请参阅[开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][开始在 HDInsight 中将 HBase 与 Hadoop 配合使用]。另外，也可以使用协同处理器来处理托管数据库的节点中的数据。
 
 ## 方案：HBase 有哪些使用案例？
 
@@ -33,7 +33,7 @@ Hase 可用于捕获从各个来源中逐步收集的数据。这包括社交分
 
 ### 第 3 种使用案例：实时查询
 
-[Phoenix][] 是 Apache HBase 的 SQL 查询引擎。该引擎以 JDBC 驱动程序的形式供用户访问，并且支持使用 SQL 来查询和管理 HBase 表。
+[Phoenix][Phoenix] 是 Apache HBase 的 SQL 查询引擎。该引擎以 JDBC 驱动程序的形式供用户访问，并且支持使用 SQL 来查询和管理 HBase 表。
 
 ### 第 4 种使用案例：HBase 即平台
 
@@ -41,22 +41,22 @@ Hase 可用于捕获从各个来源中逐步收集的数据。这包括社交分
 
 ## <a name="next-steps"></a>后续步骤
 
-[开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][]
+[开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][开始在 HDInsight 中将 HBase 与 Hadoop 配合使用]
 
-[在 Azure 虚拟网络上设置 HDInsight 群集][]
+[在 Azure 虚拟网络上设置 HDInsight 群集][在 Azure 虚拟网络上设置 HDInsight 群集]
 <!--
-[在 HDInsight 中使用 HBase 分析 Twitter 传感器数据][]
+[在 HDInsight 中使用 HBase 分析 Twitter 传感器数据][在 HDInsight 中使用 HBase 分析 Twitter 传感器数据]
 -->
-[借助 Maven 生成可将 HBase 与 HDInsight (Hadoop) 配合使用的 Java 应用程序][]
+[借助 Maven 生成可将 HBase 与 HDInsight (Hadoop) 配合使用的 Java 应用程序][借助 Maven 生成可将 HBase 与 HDInsight (Hadoop) 配合使用的 Java 应用程序]
 
-[C# HBase SDK][]
+[C# HBase SDK][C# HBase SDK]
 
 ## <a name="see-also"></a>另请参阅
 
-[Apache HBase][]
+[Apache HBase][Apache HBase]
 
 <!---
-[Bigtable：针对结构化数据的分布式存储系统][]
+[Bigtable：针对结构化数据的分布式存储系统][Bigtable：针对结构化数据的分布式存储系统]
 --->
   [开始在 HDInsight 中将 HBase 与 Hadoop 配合使用]: ../hdinsight-hbase-get-started/
   [Phoenix]: http://phoenix.apache.org/

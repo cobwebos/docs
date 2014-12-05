@@ -57,8 +57,8 @@
 现在，你有了一台在 Azure 上作为 Java 网站运行的 Java 应用程序服务器。若要添加你自己的应用程序或网页，请参阅[将应用程序或网页添加到 Java 网站][将应用程序或网页添加到 Java 网站]。
 
   [将自定义 Java 网站上载到 Azure]: ../web-sites-java-custom-upload
-  [激活 MSDN 订户权益]: /en-us/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
-  [注册免费试用]: /en-us/pricing/free-trial/?WT.mc_id=A261C142F
+  [激活 MSDN 订户权益]: /zh-cn/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F
+  [注册免费试用]: /zh-cn/pricing/free-trial/?WT.mc_id=A261C142F
   [使用 Apache Tomcat 的网站]: ./media/web-sites-java-get-started/tomcat.png
   [使用 Jetty 的网站]: ./media/web-sites-java-get-started/jetty.png
   [将应用程序或网页添加到 Java 网站]: ../web-sites-java-add-app

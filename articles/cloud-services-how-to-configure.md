@@ -134,7 +134,6 @@
 
 5.  单击“确定”（复选标记）。
 
-  [免责声明]: ../includes/disclaimer.md
   [服务级别协议]: https://www.windowsazure.com/zh-cn/support/legal/sla/
   [如何：更新云服务配置]: #update
   [如何：配置对角色实例的远程访问]: #remoteaccess

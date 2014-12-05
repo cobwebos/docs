@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [custom-dns](../includes/custom-dns.md)]
 
-  [custom-dns]: ../includes/custom-dns.md

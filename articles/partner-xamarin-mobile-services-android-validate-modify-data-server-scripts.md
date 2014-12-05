@@ -5,25 +5,25 @@
 <div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet" title="Windows Store C#">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-ios" title="iOS">iOS</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-android" title="Android">Android</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-html" title="HTML">HTML</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android" title="Xamarin.Android" class="current">Xamarin.Android</a>
 </div>
 
-本主题说明如何在 Azure 移动服务中利用服务器脚本。你可以在移动服务中注册服务器脚本，然后使用这些脚本对所要插入和更新的数据执行各种操作，包括验证和数据修改。在本教程中，你将要定义并注册用于验证和修改数据的服务器脚本。由于服务器端脚本的行为往往会影响到客户端，因此你还要更新 Android 应用程序以利用这些新行为。在 [ValidateModifyData 应用程序][]示例中提供完成的代码。
+本主题说明如何在 Azure 移动服务中利用服务器脚本。你可以在移动服务中注册服务器脚本，然后使用这些脚本对所要插入和更新的数据执行各种操作，包括验证和数据修改。在本教程中，你将要定义并注册用于验证和修改数据的服务器脚本。由于服务器端脚本的行为往往会影响到客户端，因此你还要更新 Android 应用程序以利用这些新行为。在 [ValidateModifyData 应用程序][ValidateModifyData 应用程序]示例中提供完成的代码。
 
 本教程将指导你完成以下基本步骤：
 
-1.  [添加字符串长度验证][]
-2.  [更新客户端以支持验证][]
-3.  [在插入操作中添加时间戳][]
-4.  [更新客户端以显示时间戳][]
+1.  [添加字符串长度验证][添加字符串长度验证]
+2.  [更新客户端以支持验证][更新客户端以支持验证]
+3.  [在插入操作中添加时间戳][在插入操作中添加时间戳]
+4.  [更新客户端以显示时间戳][更新客户端以显示时间戳]
 
-本教程以前一教程[数据处理入门][]中的步骤和示例应用程序为基础。在开始本教程之前，必须先完成[数据处理入门][]。
+本教程以前一教程[数据处理入门][数据处理入门]中的步骤和示例应用程序为基础。在开始本教程之前，必须先完成[数据处理入门][数据处理入门]。
 
 <a name="string-length-validation"></a>
 ## 添加验证
 
 验证用户提交的数据的长度总不失为一种良好做法。首先，你要注册一个脚本，用于验证发送到移动服务的字符串数据长度，并拒绝过长（在本例中为 10 个字符以上）的字符串。
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务” ，然后单击你的应用程序。
 
-    ![][]
+    ![][0]
 
 2.  单击“数据” 选项卡，然后单击 TodoItem  表。
 
@@ -55,7 +55,7 @@
 
 移动服务会验证数据和发送错误响应，而你则需要验证你的应用程序是否能够正确处理验证后生成的错误响应。
 
-1.  在 Xamarin Studio 中，打开你在完成[数据处理入门][]教程后创建的项目。
+1.  在 Xamarin Studio 中，打开你在完成[数据处理入门][数据处理入门]教程后创建的项目。
 
 2.  在 TodoActivity.cs 文件中，找到 "AddItem" 方法，并将对 CreateAndShowDialog 方法的调用替换为以下代码：
 
@@ -152,27 +152,19 @@
 <a name="next-steps"> </a>
 ## 后续步骤
 
-现在你已完成本教程，建议你继续学习数据系列中的最后一篇教程：[使用分页优化查询][]。
+现在你已完成本教程，建议你继续学习数据系列中的最后一篇教程：[使用分页优化查询][使用分页优化查询]。
 
 在为用户授权以及发送推送通知时，也可以使用服务器脚本。有关详细信息，请参阅以下教程：
 
--   [使用脚本为用户授权][]
+-   [使用脚本为用户授权][使用脚本为用户授权]
     了解如何基于某个已经过身份验证的用户的 ID 筛选数据。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
--   [移动服务服务器脚本参考][]
+-   [移动服务服务器脚本参考][移动服务服务器脚本参考]
     了解有关注册和使用服务器脚本的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-html "HTML"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android "Xamarin.Android"
   [ValidateModifyData 应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=331330
   [添加字符串长度验证]: #string-length-validation
   [更新客户端以支持验证]: #update-client-validation

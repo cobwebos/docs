@@ -529,8 +529,6 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
   [如何：插入或替换实体]: #InsertOrReplace
   [如何：删除实体]: #DeleteEntity
   [如何：删除表]: #DeleteTable
-  [howto-table-storage]: ../includes/howto-table-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
   [Azure SDK for Java]: http://azure.microsoft.com/zh-cn/develop/java/
   [博客文章]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/

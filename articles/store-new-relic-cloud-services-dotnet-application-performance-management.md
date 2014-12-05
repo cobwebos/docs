@@ -184,10 +184,6 @@ New Relic 可与 Azure Web 角色和辅助角色无缝集成。
   [standard New Relic UI]: https://newrelic.com/docs/site/the-new-relic-ui#functions
   [dashboard drill-down]: https://newrelic.com/docs/site/the-new-relic-ui#drilldown
   [Apdex]: https://newrelic.com/docs/site/apdex
-  [Geography]: https://docs.newrelic.com/docs/new-relic-browser/geography-dashboard
-  [Web Transactions]: https://newrelic.com/docs/applications-dashboards/web-transactions
-  [Key Transactions]: https://newrelic.com/docs/site/key-transactions
-  [Errors]: https://newrelic.com/docs/site/errors
   [1]: ./media/store-new-relic-cloud-services-dotnet-application-performce-management/NewRelic_app_browser.png
   [在 Azure 上安装 .NET 代理（可能为英文页面）]: https://newrelic.com/docs/dotnet/installing-the-net-agent-on-azure
   [New Relic 用户界面]: https://newrelic.com/docs/site/the-new-relic-ui

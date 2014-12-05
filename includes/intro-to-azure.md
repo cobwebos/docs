@@ -269,7 +269,7 @@ This component can work with HPC applications built to use the industry-standard
 
 <h2><a id="commerce"></a>Commerce</h2>
 
-The rise of Software as a Service is transforming how we create applications. It's also transforming how we sell applications. Since a SaaS application lives in the cloud, it makes sense that its potential customers should look for solutions online. And this change applies to data as well as to applications. Why shouldn't people look to the cloud for commercially available datasets? Microsoft addresses both of these concerns with [Azure Marketplace](http://datamarket.azure.com/) and [Azure Store](/en-us/store/overview/), illustrated in Figure 8.
+The rise of Software as a Service is transforming how we create applications. It's also transforming how we sell applications. Since a SaaS application lives in the cloud, it makes sense that its potential customers should look for solutions online. And this change applies to data as well as to applications. Why shouldn't people look to the cloud for commercially available datasets? Microsoft addresses both of these concerns with [Azure Marketplace](http://datamarket.azure.com/) and [Azure Store](/zh-cn/store/overview/), illustrated in Figure 8.
 
 ![Azure Commerce](./media/intro-to-azure/IntroAzure9.png)   
  **Figure 8: Azure Marketplace and Azure Store let you find and buy Azure applications and commercial datasets.**
@@ -288,9 +288,9 @@ Along with helping you build Azure applications, these SDKs also provide client 
 
 <h2><a id="start"></a>Getting Started</h2>
 
-Now that you have the big-picture, the next step is to write your first Azure application. Choose your language, [get the appropriate SDK](/en-us/downloads/), and go for it. Cloud computing is the new default--get started now.
+Now that you have the big-picture, the next step is to write your first Azure application. Choose your language, [get the appropriate SDK](/zh-cn/downloads/), and go for it. Cloud computing is the new default--get started now.
 
 
 <!--
-[Azure Media Services Poster]: http://www.microsoft.com/en-us/download/details.aspx?id=38195
+[Azure Media Services Poster]: http://www.microsoft.com/zh-cn/download/details.aspx?id=38195
 -->

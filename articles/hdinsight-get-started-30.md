@@ -276,8 +276,8 @@ URI 方案提供了使用 *wasb:*前缀的未加密访问和使用 wasbs 的 SSL
 -   [为 HDInsight 开发 Java MapReduce 程序][为 HDInsight 开发 Java MapReduce 程序]
 
   [Apache Hadoop]: http://hadoop.apache.org/
-  [开始使用 Azure HDInsight]: /en-us/documentation/articles/hdinsight-get-started/
-  [HDInsight Emulator 入门]: /en-us/documentation/articles/hdinsight-get-started-emulator/
+  [开始使用 Azure HDInsight]: /zh-cn/documentation/articles/hdinsight-get-started/
+  [HDInsight Emulator 入门]: /zh-cn/documentation/articles/hdinsight-get-started-emulator/
   [购买选项]: http://www.windowsazure.cn/zh-cn/pricing/overview/
   [免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
   [为运行的 PowerShell 设置本地环境]: #setup
@@ -286,24 +286,24 @@ URI 方案提供了使用 *wasb:*前缀的未加密访问和使用 wasbs 的 SSL
   [连接到 Microsoft 商业智能工具]: #powerquery
   [后续步骤]: #nextsteps
   [Microsoft Web 平台安装程序]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-  [安装和配置 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/
-  [如何：安装 Azure PowerShell]: /en-us/documentation/articles/install-configure-powershell/#install
+  [安装和配置 Azure PowerShell]: /zh-cn/documentation/articles/install-configure-powershell/
+  [如何：安装 Azure PowerShell]: /zh-cn/documentation/articles/install-configure-powershell/#install
   [Azure 管理门户]: https://manage.windowsazure.cn/
   [HDI.StorageAccount.QuickCreate]: ./media/hdinsight-get-started-3.0/HDI.StorageAccount.QuickCreate.png
-  [如何创建存储帐户]: /en-us/documentation/articles/storage-create-storage-account/
-  [将 Azure Blob 存储与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-blob-storage/
+  [如何创建存储帐户]: /zh-cn/documentation/articles/storage-create-storage-account/
+  [将 Azure Blob 存储与 HDInsight 配合使用]: /zh-cn/documentation/articles/hdinsight-use-blob-storage/
   [HDI.ClusterStatus]: ./media/hdinsight-get-started-3.0/HDI.ClusterStatus.png
   [HDI.CustomCreateCluster]: ./media/hdinsight-get-started-3.0/HDI.CustomCreateCluster.png
-  [使用管理门户管理 HDInsight]: /en-us/documentation/articles/hdinsight-administer-use-management-portal/
-  [为 HDInsight 开发 Java MapReduce 程序]: /en-us/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
-  [将数据上载到 HDInsight]: /en-us/documentation/articles/hdinsight-upload-data/
+  [使用管理门户管理 HDInsight]: /zh-cn/documentation/articles/hdinsight-administer-use-management-portal/
+  [为 HDInsight 开发 Java MapReduce 程序]: /zh-cn/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
+  [将数据上载到 HDInsight]: /zh-cn/documentation/articles/hdinsight-upload-data/
   [HDI.GettingStarted.RunMRJob]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.RunMRJob.png
   [HDI.GettingStarted.MRJobOutput]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.MRJobOutput.png
   [Microsoft 下载中心]: http://www.microsoft.com/zh-cn/download/details.aspx?id=39379
   [HDI.GettingStarted.PowerQuery.ImportData]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.PowerQuery.ImportData.png
   [HDI.GettingStarted.PowerQuery.ImportData2]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.PowerQuery.ImportData2.png
   [HDI.GettingStarted.PowerQuery.ImportData3]: ./media/hdinsight-get-started-3.0/HDI.GettingStarted.PowerQuery.ImportData3.png
-  [使用 PowerShell 管理 HDInsight]: /en-us/documentation/articles/hdinsight-administer-use-powershell/
-  [将 Hive 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-hive/
-  [将 Pig 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-pig/
-  [将 Oozie 与 HDInsight 配合使用]: /en-us/documentation/articles/hdinsight-use-oozie/
+  [使用 PowerShell 管理 HDInsight]: /zh-cn/documentation/articles/hdinsight-administer-use-powershell/
+  [将 Hive 与 HDInsight 配合使用]: /zh-cn/documentation/articles/hdinsight-use-hive/
+  [将 Pig 与 HDInsight 配合使用]: /zh-cn/documentation/articles/hdinsight-use-pig/
+  [将 Oozie 与 HDInsight 配合使用]: /zh-cn/documentation/articles/hdinsight-use-oozie/

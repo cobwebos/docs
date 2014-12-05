@@ -2,7 +2,7 @@
 
 # 如何对 .NET 后端移动服务进行数据模型更改
 
-在 .NET 后端移动服务项目中，默认的 Entity Framework Code First 数据库初始值设定项从 [DropCreateDatabaseIfModelChanges][] 类派生。每当此初始值设定项检测到 [DbContext][] 公开的数据模型更改时，都会通知 Entity Framework 删除然后重新创建数据库。在本地开发移动服务项目期间，你应该持续使用此初始值设定项，而 .NET 后端教程也假设你使用的是此初始值设定项。但是，如果你要做出数据模型更改并在数据库中维护现有数据，则必须使用 Code First 迁移。若要将数据模型更改发布到 Azure，使用 Code First 迁移也是一个不错的解决方案，因为 SQL Database 不可删除。
+在 .NET 后端移动服务项目中，默认的 Entity Framework Code First 数据库初始值设定项从 [DropCreateDatabaseIfModelChanges][DropCreateDatabaseIfModelChanges] 类派生。每当此初始值设定项检测到 [DbContext][DbContext] 公开的数据模型更改时，都会通知 Entity Framework 删除然后重新创建数据库。在本地开发移动服务项目期间，你应该持续使用此初始值设定项，而 .NET 后端教程也假设你使用的是此初始值设定项。但是，如果你要做出数据模型更改并在数据库中维护现有数据，则必须使用 Code First 迁移。若要将数据模型更改发布到 Azure，使用 Code First 迁移也是一个不错的解决方案，因为 SQL Database 不可删除。
 
 本主题说明如何使用 Code First 迁移对现有的 SQL Database 进行数据模型更改且不丢失现有数据。此过程假设你已将移动服务项目发布到 Azure，数据库中已有数据，并且远程和本地数据模型仍然保持同步。
 
@@ -14,11 +14,11 @@
 
 ## 删除 SQL Database 中的表
 
-在 Azure 中针对 SQL Database 执行迁移之前，应该先手动删除数据库架构中由移动服务使用的所有现有表。执行以下步骤可以从 SQL Database 中删除现有的表。如果数据库架构已经与当前数据模型同步，则你可以跳过此过程，直接开始[迁移][]。
+在 Azure 中针对 SQL Database 执行迁移之前，应该先手动删除数据库架构中由移动服务使用的所有现有表。执行以下步骤可以从 SQL Database 中删除现有的表。如果数据库架构已经与当前数据模型同步，则你可以跳过此过程，直接开始[迁移][迁移]。
 
-1.  登录到 [Azure 管理门户][]，选择你的移动服务，单击“配置”选项卡，然后单击“SQL Database”链接 。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，选择你的移动服务，单击“配置”选项卡，然后单击“SQL Database”链接 。
 
-    ![][]
+    ![][0]
 
     随后你将转到移动服务使用的数据库的门户页。
 
@@ -73,7 +73,7 @@ Code First 迁移使用快照方法来生成代码，执行这些代码会对数
 
 7.  按 F5 在本地计算机上启动移动服务项目。
 
-    此时，数据库已与数据模型同步。如果你提供了种子数据，可以通过依次单击“试用”、“GET 表/todoitem”、“试用此项”和“发送”来验证该数据 。有关详细信息，请参阅[在迁移中设定数据种子][]。
+    此时，数据库已与数据模型同步。如果你提供了种子数据，可以通过依次单击“试用”、“GET 表/todoitem”、“试用此项”和“发送”来验证该数据 。有关详细信息，请参阅[在迁移中设定数据种子][在迁移中设定数据种子]。
 
 8.  现在，对数据模型进行更改（例如，向 TodoItem 类型添加一个新的 UserId 属性），重新生成项目，然后在程序包管理器中运行以下命令：
 
@@ -83,13 +83,13 @@ Code First 迁移使用快照方法来生成代码，执行这些代码会对数
 
 9.  再次按 F5 以在本地计算机上重新启动移动服务项目。
 
-    迁移已应用到数据库，并且数据库已重新与数据模型同步。如果你提供了种子数据，可以通过依次单击“试用”、“GET 表/todoitem”、“试用此项”和“发送”来验证该数据 。有关详细信息，请参阅[在迁移中设定数据种子][]。
+    迁移已应用到数据库，并且数据库已重新与数据模型同步。如果你提供了种子数据，可以通过依次单击“试用”、“GET 表/todoitem”、“试用此项”和“发送”来验证该数据 。有关详细信息，请参阅[在迁移中设定数据种子][在迁移中设定数据种子]。
 
 10. 将移动服务重新发布到 Azure，然后运行客户端应用程序以访问数据，并验证是否可以加载数据且不出错。
 
-11. （可选）在 [Azure 管理门户][]中选择你的移动服务，单击“配置”选项卡，然后单击“SQL Database”链接 。
+11. （可选）在 [Azure 管理门户][Azure 管理门户]中选择你的移动服务，单击“配置”选项卡，然后单击“SQL Database”链接 。
 
-    ![][]
+    ![][0]
 
     随后你将导航到移动服务数据库的 SQL Database 页。
 
@@ -100,7 +100,7 @@ Code First 迁移使用快照方法来生成代码，执行这些代码会对数
 <a name="seeding"></a>
 ## 在迁移中设定数据种子
 
-你可以让迁移在执行迁移时向数据库添加种子数据。Configuration 类提供了 Seed 方法，重写该方法可以插入或更新数据。启用迁移后，Configuration.cs 代码文件将添加到迁移文件夹。以下示例演示了如何重写 [Seed][] 方法，以在 "TodoItems" 表中设定数据种子。应在迁移到最新版本后调用 [Seed][] 方法。
+你可以让迁移在执行迁移时向数据库添加种子数据。Configuration 类提供了 Seed 方法，重写该方法可以插入或更新数据。启用迁移后，Configuration.cs 代码文件将添加到迁移文件夹。以下示例演示了如何重写 [Seed][Seed] 方法，以在 "TodoItems" 表中设定数据种子。应在迁移到最新版本后调用 [Seed][Seed] 方法。
 
 ### 设定新表的种子
 
@@ -130,7 +130,7 @@ Code First 迁移使用快照方法来生成代码，执行这些代码会对数
             );
     base.Seed(context);
 
-此代码将调用 [AddOrUpdate][] Helper 扩展方法，以向新的 UserId 列添加种子数据。使用 [AddOrUpdate][] 时不会创建重复行。
+此代码将调用 [AddOrUpdate][AddOrUpdate] Helper 扩展方法，以向新的 UserId 列添加种子数据。使用 [AddOrUpdate][AddOrUpdate] 时不会创建重复行。
 
   [DropCreateDatabaseIfModelChanges]: http://msdn.microsoft.com/zh-cn/library/gg679604(v=vs.113).aspx
   [DbContext]: http://msdn.microsoft.com/zh-cn/library/system.data.entity.dbcontext(v=vs.113).aspx

@@ -1,20 +1,20 @@
 <properties title="Build an HBase application using Maven" pageTitle="Build an HBase application using Maven" description="Learn how to use Apache Maven to build a Java-based Apache HBase application, then deploy it to Azure HDInsight" metaKeywords="Maven hbase hadoop, hbase hadoop, maven java hbase, maven java hbase hadoop, maven java hadoop, hbase hdinsight, hbase java hdinsight, maven hdinsight, maven java hdinsight, hadoop database, hdinsight database" services="hdinsight" solutions="big-data" documentationCenter="" authors="larryfr" videoId="" scriptId="" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="larryfr"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="larryfr" />
 
 ## 借助 Maven 生成可将 HBase 与 HDInsight (Hadoop) 配合使用的 Java 应用程序
 
-了解如何使用 Apache Maven 创建并生成一个 [Apache HBase][] Java 应用程序。然后，在 Azure HDInsight (Hadoop) 上使用该应用程序。
+了解如何使用 Apache Maven 创建并生成一个 [Apache HBase][Apache HBase] Java 应用程序。然后，在 Azure HDInsight (Hadoop) 上使用该应用程序。
 
-[Maven][] 是一个软件项目管理和分析工具，可让你生成 Java 项目的软件、文档和报告。在本文中，你将要了解如何使用 Maven 创建一个基本的 Java 应用程序，该应用程序可在 Azure HDInsight 群集中创建、查询和删除 HBase 表。
+[Maven][Maven] 是一个软件项目管理和分析工具，可让你生成 Java 项目的软件、文档和报告。在本文中，你将要了解如何使用 Maven 创建一个基本的 Java 应用程序，该应用程序可在 Azure HDInsight 群集中创建、查询和删除 HBase 表。
 
 ## 要求
 
--   [Java 平台 JDK][] 7 或更高版本
+-   [Java 平台 JDK][Java 平台 JDK] 7 或更高版本
 
--   [Maven][]
+-   [Maven][Maven]
 
--   [一个包含 HBase 的 Azure HDInsight 群集][]
+-   [一个包含 HBase 的 Azure HDInsight 群集][一个包含 HBase 的 Azure HDInsight 群集]
 
 ## 创建项目
 
@@ -26,7 +26,7 @@
 
     这将在当前目录中创建一个新目录，该目录使用 **artifactID** 参数指定的名称（在本示例中为 **hbaseapp**）。此目录将包含以下项。
 
-    -   **pom.xml** - 项目对象模型 ([POM][]) 包含用于生成项目的信息和配置详细信息
+    -   **pom.xml** - 项目对象模型 ([POM][POM]) 包含用于生成项目的信息和配置详细信息
 
     -   **src** - 包含 **main\\java\\com\\microsoft\\examples** 目录的目录，你将在其中创作应用程序。
 
@@ -42,7 +42,7 @@
           <version>0.98.4-hadoop2</version>
         </dependency>
 
-    这将会告知 Maven，项目需要 **hbase-client** 版本 **0.98.4-hadoop2**。在编译时，将从默认的 Maven 存储库下载该版本。你可以使用 [Maven 存储库搜索][]来查看有关此依赖项的详细信息。
+    这将会告知 Maven，项目需要 **hbase-client** 版本 **0.98.4-hadoop2**。在编译时，将从默认的 Maven 存储库下载该版本。你可以使用 [Maven 存储库搜索][Maven 存储库搜索]来查看有关此依赖项的详细信息。
 
 2.  将以下代码添加到 **pom.xml** 文件。该代码必须位于文件中的 `<project>...</project>` 标记内部；例如，介于`</dependencies>` 与 `</project>` 之间。
 
@@ -84,7 +84,7 @@
 
     > [WACOM.NOTE] 你也可以通过代码设置配置值。请参阅以下 **CreateTable** 示例中的注释，以了解如何操作。
 
-    这还会配置 [maven-shade-plugin][]，用于防止 Maven 生成的 JAR 中发生许可证重复。使用此插件的原因在于，重复的许可证文件会导致 HDInsight 群集在运行时出错。将 maven-shade-plugin 与 `ApacheLicenseResourceTransformer` 实现一起使用可防止此错误。
+    这还会配置 [maven-shade-plugin][maven-shade-plugin]，用于防止 Maven 生成的 JAR 中发生许可证重复。使用此插件的原因在于，重复的许可证文件会导致 HDInsight 群集在运行时出错。将 maven-shade-plugin 与 `ApacheLicenseResourceTransformer` 实现一起使用可防止此错误。
 
     maven-shade-plugin 还将生成 uberjar（或 fatjar），其中包含应用程序所需的所有依赖项。
 
@@ -132,7 +132,7 @@
 
     此文件将用于加载 HDInsight 群集的 HBase 配置。
 
-    > [WACOM.NOTE] 这是一个非常精简的 hbase-site.xml 文件，它只包含 HDInsight 群集的最少量设置。有关 HDInsight 使用的 hbase-site.xml 配置文件的完整版本，请参阅[使用远程桌面连接到 HDInsight 群集][]。hbase-site.xml 文件位于 C:\\apps\\dist\\hbase-\<版本号\>-hadoop2\\conf 目录中。在群集上更新 HBase 后，文件路径的版本号部分将发生变化。
+    > [WACOM.NOTE] 这是一个非常精简的 hbase-site.xml 文件，它只包含 HDInsight 群集的最少量设置。有关 HDInsight 使用的 hbase-site.xml 配置文件的完整版本，请参阅[使用远程桌面连接到 HDInsight 群集][使用远程桌面连接到 HDInsight 群集]。hbase-site.xml 文件位于 C:\\apps\\dist\\hbase-\<版本号\>-hadoop2\\conf 目录中。在群集上更新 HBase 后，文件路径的版本号部分将发生变化。
 
 5.  保存 **hbase-site.xml** 文件。
 
@@ -327,9 +327,9 @@
 
 ## 上载 JAR 并启动作业
 
-> [WACOM.NOTE] 可以根据[在 HDInsight 中上载 Hadoop 作业的数据][]中所述，通过许多方式将文件上载到 HDInsight 群集。下面的步骤使用了 [Azure PowerShell][]。
+> [WACOM.NOTE] 可以根据[在 HDInsight 中上载 Hadoop 作业的数据][在 HDInsight 中上载 Hadoop 作业的数据]中所述，通过许多方式将文件上载到 HDInsight 群集。下面的步骤使用了 [Azure PowerShell][Azure PowerShell]。
 
-1.  安装并配置 [Azure PowerShell][] 后，请创建名为 **hbase-runner.psm1** 的新文件。在此文件中使用以下内容。
+1.  安装并配置 [Azure PowerShell][Azure PowerShell] 后，请创建名为 **hbase-runner.psm1** 的新文件。在此文件中使用以下内容。
 
         <#
         .SYNOPSIS

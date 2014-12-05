@@ -6,13 +6,13 @@
 
 <div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/web-sites-custom-domain-name/" title="网站">网站</a> | <a href="/zh-cn/documentation/articles/web-sites-traffic-manager-custom-domain-name/" title="使用流量管理器的网站" class="current">使用流量管理器的网站</a></div>
 
-[WACOM.INCLUDE [介绍][介绍]]
+[WACOM.INCLUDE [介绍](../includes/custom-dns-web-site-intro-traffic-manager.md)]
 
 本文提供了将自定义域名与通过流量管理器进行负载平衡的 Azure 网站配合使用的一般说明。请查看本文顶端的选项卡上是否列出了你的域注册机构。如果有，请选择该选项卡以了解特定于注册机构的步骤。
 
-[WACOM.INCLUDE [tmwebsitefooter][tmwebsitefooter]]
+[WACOM.INCLUDE [tmwebsitefooter](../includes/custom-dns-web-site-traffic-manager-notes.md)]
 
-[WACOM.INCLUDE [introfooter][introfooter]]
+[WACOM.INCLUDE [introfooter](../includes/custom-dns-web-site-intro-notes.md)]
 
 本文内容：
 
@@ -23,11 +23,11 @@
 
 ## <a name="understanding-records"></a>了解 DNS 记录
 
-[WACOM.INCLUDE [understandingdns][understandingdns]]
+[WACOM.INCLUDE [understandingdns](../includes/custom-dns-web-site-understanding-dns-traffic-manager.md)]
 
 ## <a name="bkmk_configsharedmode"></a>将网站配置为标准模式
 
-[WACOM.INCLUDE [modes][modes]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
 <a name="bkmk_configurecname"></a>
 
@@ -50,26 +50,9 @@
 
 ## <a name="enabledomain"></a>启用流量管理器网站
 
-[WACOM.INCLUDE [modes][1]]
+[WACOM.INCLUDE [modes](../includes/custom-dns-web-site-modes-traffic-manager.md)]
 
-  [自定义域]: /zh-cn/documentation/articles/web-sites-custom-domain-name "自定义域"
-  [GoDaddy]: /zh-cn/documentation/articles/web-sites-godaddy-custom-domain-name "GoDaddy"
-  [Network Solutions]: /zh-cn/documentation/articles/web-sites-network-solutions-custom-domain-name "Network Solutions"
-  [Register.com]: /zh-cn/documentation/articles/web-sites-registerdotcom-custom-domain-name "Register.com"
-  [Enom]: /zh-cn/documentation/articles/web-sites-enom-custom-domain-name "Enom"
-  [Moniker]: /zh-cn/documentation/articles/web-sites-moniker-custom-domain-name "Moniker"
-  [Dotster]: /zh-cn/documentation/articles/web-sites-dotster-custom-domain-name "Dotster"
-  [DomainDiscover]: /zh-cn/documentation/articles/web-sites-domaindiscover-custom-domain-name "DomainDiscover"
-  [Directnic]: /zh-cn/documentation/articles/web-sites-directnic-custom-domain-name "Directnic"
-  [网站]: /zh-cn/documentation/articles/web-sites-custom-domain-name/ "网站"
-  [使用流量管理器的网站]: /zh-cn/documentation/articles/web-sites-traffic-manager-custom-domain-name/ "使用流量管理器的网站"
-  [介绍]: ../includes/custom-dns-web-site-intro-traffic-manager.md
-  [tmwebsitefooter]: ../includes/custom-dns-web-site-traffic-manager-notes.md
-  [introfooter]: ../includes/custom-dns-web-site-intro-notes.md
   [了解 DNS 记录]: #understanding-records
   [将网站配置为标准模式]: #bkmk_configsharedmode
   [为自定义域添加 DNS 记录]: #bkmk_configurecname
   [为网站启用流量管理器]: #enabledomain
-  [understandingdns]: ../includes/custom-dns-web-site-understanding-dns-traffic-manager.md
-  [modes]: ../includes/custom-dns-web-site-modes-traffic-manager.md
-  [1]: ../includes/custom-dns-web-site-enable-on-traffic-manager.md

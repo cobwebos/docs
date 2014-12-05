@@ -69,10 +69,6 @@
 
 了解有关如何将移动服务与 .NET 一起使用的详细信息
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-upload-data-blob-storage "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-upload-data-blob-storage "Windows Phone"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-upload-data-blob-storage ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-phone-upload-data-blob-storage "JavaScript 后端"
   [安装存储客户端库]: #install-storage-client
   [更新插入脚本以生成 SAS]: #update-scripts
   [更新客户端应用程序以捕获图像]: #add-select-images
@@ -81,8 +77,6 @@
   [Azure 存储帐户]: /zh-cn/manage/services/storage/how-to-create-a-storage-account
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started
   [2]: ./media/mobile-services-windows-phone-upload-data-blob-storage/mobile-add-storage-nuget-package-dotnet.png
-  [mobile-services-configure-blob-storage]: ../includes/mobile-services-configure-blob-storage.md
-  [mobile-services-windows-phone-upload-to-blob-storage]: ../includes/mobile-services-windows-phone-upload-to-blob-storage.md
   [使用 SendGrid 从移动服务发送电子邮件]: /zh-cn/develop/mobile/tutorials/send-email-with-sendgrid/
   [在移动服务中计划后端作业]: /zh-cn/develop/mobile/tutorials/schedule-backend-tasks/
   [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/p/?LinkId=262293

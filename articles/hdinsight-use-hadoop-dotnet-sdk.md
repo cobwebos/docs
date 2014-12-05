@@ -4,19 +4,19 @@
 
 Hadoop .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 Hadoop 的操作。在本教程中，你将学习如何获取 Hadoop .NET SDK 并使用它来生成一个简单的基于 .NET 的应用程序，该程序使用 Azure HDInsight 服务运行 Hive 查询。给定一个 actors.txt 文件，你将编写应用程序来查找获奖最多的男女演员。
 
-若要启用 HDInsight，请单击[此处][]。
+若要启用 HDInsight，请单击[此处][此处]。
 
 ## 本文内容
 
--   [下载和安装 Hadoop .NET SDK][]
--   [为教程做准备][]
--   [创建应用程序][]
--   [运行应用程序][]
--   [后续步骤][]
+-   [下载和安装 Hadoop .NET SDK][下载和安装 Hadoop .NET SDK]
+-   [为教程做准备][为教程做准备]
+-   [创建应用程序][创建应用程序]
+-   [运行应用程序][运行应用程序]
+-   [后续步骤][后续步骤]
 
 ## 下载和安装 Hadoop .NET SDK
 
-可以从 [NuGet][] 安装该 SDK 的最新发行版。该 SDK 包括以下组件：
+可以从 [NuGet][NuGet] 安装该 SDK 的最新发行版。该 SDK 包括以下组件：
 
 -   **MapReduce 库** - 使用 Hadoop 流接口简化用 .NET 语言编写 MapReduce 作业的过程。
 
@@ -39,13 +39,13 @@ Hadoop .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 Hadoop �
 
 ## 为教程做准备
 
-继续操作之前，你必须先有 [Azure 订阅][]和 [Azure 存储帐户][]。你还必须知道你的 Azure 存储帐户名称和帐户密钥。有关如何获取此信息的说明，请参阅[如何管理存储空间帐户][]中的*如何：查看、复制和重新生成存储访问密钥*一节。
+继续操作之前，你必须先有 [Azure 订阅][Azure 订阅]和 [Azure 存储帐户][Azure 存储帐户]。你还必须知道你的 Azure 存储帐户名称和帐户密钥。有关如何获取此信息的说明，请参阅[如何管理存储空间帐户][如何管理存储空间帐户]中的*如何：查看、复制和重新生成存储访问密钥*一节。
 
 你还必须下载本教程中使用的 Actors.txt 文件。执行以下步骤将此文件下载到你的开发环境中：
 
 1.  在本地计算机上创建 C:\\Tutorials 文件夹。
 
-2.  下载 [Actors.txt][]，并将该文件保存到 C:\\Tutorials 文件夹。
+2.  下载 [Actors.txt][Actors.txt]，并将该文件保存到 C:\\Tutorials 文件夹。
 
 ## 创建应用程序
 
@@ -150,7 +150,7 @@ Hadoop .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 Hadoop �
         Console.WriteLine("\nPress any key to continue.");
         Console.ReadKey();
 
-10. 更新应用程序中的常量。Azure HDInsight 服务使用 Azure Blob 存储作为默认文件系统。在 HDInsight 设置过程中，必须将一个 Blob 指定为默认文件系统。你可以选择使用默认文件系统容器，也可以选择使用其他 Blob 存储中的容器。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
+10. 更新应用程序中的常量。Azure HDInsight 服务使用 Azure Blob 存储作为默认文件系统。在 HDInsight 设置过程中，必须将一个 Blob 指定为默认文件系统。你可以选择使用默认文件系统容器，也可以选择使用其他 Blob 存储中的容器。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][将 Azure Blob 存储与 HDInsight 配合使用]。
 
     如果你选择使用默认文件系统容器，可通过远程连接到该群集从 *c:\\apps\\dist\\hadoop-1.1.0-SNAPSHOT\\conf\>core-site.xml* 配置文件中找到存储帐户名、存储密钥和容器名。通过搜索 *fs.default.name* 可找到用作默认文件系统的容器；通过搜索 *fs.azure.account.key* 可找到存储帐户名和帐户密钥。
 
@@ -158,7 +158,7 @@ Hadoop .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 Hadoop �
 
 该应用程序在 Visual Studio 中打开时，按 **F5** 键以运行该应用程序。此时将打开一个控制台窗口，其中显示在上载数据、将数据存储到 Hive 表中以及最终查询时，应用程序执行的步骤。该应用程序一运行完，查询结果就已经返回，按任意键可终止该应用程序。
 
-![HDI.HadoopSDKOutput][]
+![HDI.HadoopSDKOutput][HDI.HadoopSDKOutput]
 
 **说明**
 
@@ -168,16 +168,16 @@ Hadoop .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 Hadoop �
 
 LOAD DATA INPATH 操作是一个移动操作，它将 Actors.txt 数据移入由 Hive 控制的文件系统命名空间。这可以高效地从上载位置移除 Actors.txt 文件。因此，每次运行此应用程序时都必须上载 Actors.txt 文件。
 
-有关将数据载入 Hive 的详细信息，请参阅 [Hive 入门][]。
+有关将数据载入 Hive 的详细信息，请参阅 [Hive 入门][Hive 入门]。
 
 ## 后续步骤
 
 现在你了解了如何使用 Hadoop .NET SDK 创建 .NET 应用程序。若要了解更多信息，请参阅下列文章：
 
--   [Azure HDInsight 入门][]
--   [Pig 与 HDInsight 配合使用][]
--   [MapReduce 与 HDInsight 配合使用][]
--   [Hive 与 HDInsight 配合使用][]
+-   [Azure HDInsight 入门][Azure HDInsight 入门]
+-   [Pig 与 HDInsight 配合使用][Pig 与 HDInsight 配合使用]
+-   [MapReduce 与 HDInsight 配合使用][MapReduce 与 HDInsight 配合使用]
+-   [Hive 与 HDInsight 配合使用][Hive 与 HDInsight 配合使用]
 
   [此处]: https://account.windowsazure.com/PreviewFeatures
   [下载和安装 Hadoop .NET SDK]: #install
@@ -188,12 +188,12 @@ LOAD DATA INPATH 操作是一个移动操作，它将 Actors.txt 数据移入由
   [NuGet]: http://nuget.codeplex.com/wikipage?title=Getting%20Started
   [Azure 订阅]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
   [Azure 存储帐户]: http://www.windowsazure.cn/zh-cn/manage/services/storage/how-to-create-a-storage-account/
-  [如何管理存储空间帐户]: /en-us/manage/services/storage/how-to-manage-a-storage-account/
-  [Actors.txt]: http://www.microsoft.com/en-us/download/details.aspx?id=37003
-  [将 Azure Blob 存储与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/howto-blob-store/
+  [如何管理存储空间帐户]: /zh-cn/manage/services/storage/how-to-manage-a-storage-account/
+  [Actors.txt]: http://www.microsoft.com/zh-cn/download/details.aspx?id=37003
+  [将 Azure Blob 存储与 HDInsight 配合使用]: /zh-cn/manage/services/hdinsight/howto-blob-store/
   [HDI.HadoopSDKOutput]: ./media/hdinsight-use-hadoop-dotnet-sdk/HDI.HadoopSDKOutput.PNG "控制台应用程序"
   [Hive 入门]: https://cwiki.apache.org/confluence/display/Hive/GettingStarted#GettingStarted-DMLOperations
-  [Azure HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/
-  [Pig 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
-  [MapReduce 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-mapreduce-with-hdinsight/
-  [Hive 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
+  [Azure HDInsight 入门]: /zh-cn/manage/services/hdinsight/get-started-hdinsight/
+  [Pig 与 HDInsight 配合使用]: /zh-cn/manage/services/hdinsight/using-pig-with-hdinsight/
+  [MapReduce 与 HDInsight 配合使用]: /zh-cn/manage/services/hdinsight/using-mapreduce-with-hdinsight/
+  [Hive 与 HDInsight 配合使用]: /zh-cn/manage/services/hdinsight/using-hive-with-hdinsight/

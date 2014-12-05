@@ -41,7 +41,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 2.  单击“Keychain Access”，展开“Certificate Assistant”（证书助理），然后单击“Request a Certificate from a Certificate Authority...”（从证书颁发机构请求证书...）。
 
-    ![][]
+    ![][0]
 
 3.  选择你的“User Email Address”（用户电子邮件地址），键入“Common Name”（公用名）和“CA Email Address”（CA 电子邮件地址）值，确保选中“Saved to disk”（保存到磁盘），然后单击“Continue”（继续）。
 
@@ -398,7 +398,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 在这个简单的示例中，你已将通知广播到所有 iOS 设备。为了针对特定用户广播，请参考教程[使用通知中心将通知推送到用户][使用通知中心将通知推送到用户]，如果你要按兴趣细分用户组，请参考[使用通知中心发送突发新闻][使用通知中心发送突发新闻]。请在[通知中心指南][通知中心指南]和[适用于 iOS 的通知中心操作方法指南][适用于 iOS 的通知中心操作方法指南]中了解有关如何使用通知中心的详细信息。
 
-<!-- Anchors. -->  
+  
   [生成证书签名请求]: #certificates
   [注册应用程序和启用推送通知]: #register
   [为应用程序创建配置文件]: #profile
@@ -406,25 +406,18 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
   [将你的应用程序连接到通知中心]: #connecting-app
   [从后端发送通知]: #send
 
-<!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /zh-cn/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /zh-cn/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
+
   [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
   [NotificationHubs 应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 
   [XCode 5.0]: https://go.microsoft.com/fwLink/p/?LinkID=266532
   [1]: http://xamarin.com/download
   [Azure 移动服务组件]: http://components.xamarin.com/view/azure-mobile-services/
-  [Azure 免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
   [Apple 推送通知服务]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 
-<!-- Images. -->
-  []: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step5.png
+
+  [0]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step5.png
   [2]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step6.png
   [3]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step7.png
   [iOS 设置门户]: http://go.microsoft.com/fwlink/p/?LinkId=272456

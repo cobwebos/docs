@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [create-an-azure-account](../includes/create-an-azure-account.md)]
 
-  [create-an-azure-account]: ../includes/create-an-azure-account.md

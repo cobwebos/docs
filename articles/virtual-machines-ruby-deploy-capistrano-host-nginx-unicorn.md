@@ -68,7 +68,7 @@
 
 3.  您还必须安装 JavaScript 解释程序，Rails 将使用它来编译您的 Rails 应用程序使用的 CoffeeScript 资产。<https://github.com/sstephenson/execjs#readme> 中提供了支持的解释程序列表。
 
-    > [WACOM.NOTE] 本教程使用了 [Node.js]](http://nodejs.org/)，这是因为它可用于 OS X、Linux 和 Windows 操作系统。
+    > [WACOM.NOTE] 本教程使用了 [Node.js](http://nodejs.org/)，这是因为它可用于 OS X、Linux 和 Windows 操作系统。
 
 ## <span id="create"></span></a>创建 Rails 应用程序
 

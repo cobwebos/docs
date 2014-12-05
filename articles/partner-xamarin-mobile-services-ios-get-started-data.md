@@ -212,15 +212,7 @@
 -   [推送通知入门][推送通知入门]
     了解如何使用移动服务将非常基本的推送通知发送到应用程序。
 
-  [Windows 应用商店 C#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-data-html "HTML"
   [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android "Xamarin.Android"
-  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-ios
   [下载 Xamarin.iOS 应用程序项目]: http://go.microsoft.com/fwlink/p/?LinkId=331302
   [创建移动服务]: #create-service
   [添加用于存储的数据表]: #add-table
@@ -228,9 +220,7 @@
   [针对移动服务测试应用程序]: #test-app
   [Azure 移动服务组件]: http://components.xamarin.com/view/azure-mobile-services/
   [XCode 5.0]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A643EE910&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-xamarin-ios%2F
   [0]: ./media/partner-xamarin-mobile-services-ios-get-started-data/mobile-quickstart-startup-ios.png
-  [mobile-services-create-new-service-data]: ../includes/mobile-services-create-new-service-data.md
   [1]: ./media/partner-xamarin-mobile-services-ios-get-started-data/mobile-data-tab-empty.png
   [2]: ./media/partner-xamarin-mobile-services-ios-get-started-data/mobile-create-todoitem-table.png
   [3]: ./media/partner-xamarin-mobile-services-ios-get-started-data/mobile-dashboard-tab.png

@@ -4,13 +4,13 @@
 
 本主题说明如何注册你的应用程序，以便能够使用 Live Connect 作为 Azure 移动服务的身份验证提供程序。
 
-> [WACOM.NOTE] 若要为 Windows 8.1 或 Windows Phone 8.1 应用程序配置 Microsoft 帐户身份验证，请参阅[注册 Windows 应用商店应用程序包以进行 Microsoft 身份验证][]。
+> [WACOM.NOTE] 若要为 Windows 8.1 或 Windows Phone 8.1 应用程序配置 Microsoft 帐户身份验证，请参阅[注册 Windows 应用商店应用程序包以进行 Microsoft 身份验证][注册 Windows 应用商店应用程序包以进行 Microsoft 身份验证]。
 
-1.  在 Live Connect 开发人员中心内导航到[我的应用程序][]页，然后根据需要使用你的 Microsoft 帐户登录。
+1.  在 Live Connect 开发人员中心内导航到[我的应用程序][我的应用程序]页，然后根据需要使用你的 Microsoft 帐户登录。
 
 2.  单击“创建应用程序”，然后键入“应用程序名称”并单击“我接受” 。
 
-    ![][]
+    ![][0]
 
     随即会将应用程序注册到 Live Connect。
 

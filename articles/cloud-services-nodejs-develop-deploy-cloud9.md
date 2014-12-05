@@ -270,7 +270,6 @@ Cloud9 侧重提供 IDE，而不提供在应用程序部署到 Azure 后直接�
   [在调试器中运行]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug.png
   [输出窗口]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_output.png
   [在浏览器中运行的应用程序]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_debug_browser.png
-  [create-azure-account]: ../includes/create-azure-account.md
   [下载发布设置]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_choosetypeandcert.png
   [创建 Azure 托管服务概述]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj155995.aspx
   [新建部署]: ./media/cloud-services-nodejs-develop-deploy-cloud9/cloud9_createdeployment.png

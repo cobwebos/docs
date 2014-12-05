@@ -25,16 +25,16 @@ Pig 和 Hive 提供编译成 MapReduce 程序的更高级别的语言，这些�
 
 ## 在本教程中
 
--   [使用 JavaScript 控制台运行 MapReduce 作业][]
--   [使用 JavaScript 控制台以图形形式显示结果][]
--   [使用 Hive 控制台将结果导出到 Hive 表][]
--   [使用 Hive 控制台查询 Hive 表中的数据][]
+-   [使用 JavaScript 控制台运行 MapReduce 作业][使用 JavaScript 控制台运行 MapReduce 作业]
+-   [使用 JavaScript 控制台以图形形式显示结果][使用 JavaScript 控制台以图形形式显示结果]
+-   [使用 Hive 控制台将结果导出到 Hive 表][使用 Hive 控制台将结果导出到 Hive 表]
+-   [使用 Hive 控制台查询 Hive 表中的数据][使用 Hive 控制台查询 Hive 表中的数据]
 
 ## 使用 JavaScript 控制台运行 MapReduce 作业
 
 在本节中，你使用 JavaScript 控制台运行 HDInsight 服务附带的 WordCount 示例。此处运行的 JavaScript 查询使用在由交互式控制台提供的 Pig 上分层的流畅 API。此处分析的文本文件是 Project Gutenberg 电子书版本的《莱奥纳多.达.芬奇笔记》(The Notebooks of Leonardo Da Vinci)**。指定一个筛选器，以使 MapReduce 作业的结果仅包含 10 个最常出现的词。
 
-1.  登录到[管理门户][]。
+1.  登录到[管理门户][管理门户]。
 2.  单击“HDInsight” 。这将显示已部署的 Hadoop 群集的列表。
 3.  单击你要连接到的 HDInsight 群集的名称。
 4.  单击“管理群集” 。
@@ -46,7 +46,7 @@ Pig 和 Hive 提供编译成 MapReduce 程序的更高级别的语言，这些�
 7.  从“Hadoop 示例库” 页中，单击“WordCount” 磁贴。
 8.  从右上位置单击 **WordCount.js**，将文件保存到本地目录中，例如 ../downloads 文件夹。
 
-    ![HDI.JsConsole.WordCountDownloads][]
+    ![HDI.JsConsole.WordCountDownloads][HDI.JsConsole.WordCountDownloads]
 
 9.  单击左上角的 **Azure HDInsight**，以返回到群集仪表板页面。
 10. 单击“交互式群集” 以显示 JavaScript 控制台。
@@ -194,9 +194,9 @@ Pig 和 Hive 提供编译成 MapReduce 程序的更高级别的语言，这些�
 
 你已了解如何从交互式 JavaScript 控制台运行 Hadoop 作业，以及如何使用该控制台从作业中检查结果。此外，你已了解如何使用交互式 Hive 控制台创建并查询包含 MapReduce 程序中的输出的表，来检查和处理 Hadoop 作业的结果。你已查看控制台中使用的 Pig Latin 和 Hive QL 语句的示例。最后，你已了解如何使用 Hadoop 群集简化 JavaScript 和 Hive 控制台的 REPL 交互式特性。若要了解更多信息，请参阅下列文章：
 
--   [将 Pig 与 HDInsight 配合使用][]
--   [将 Hive 与 HDInsight 配合使用][]
--   [将 MapReduce 与 HDInsight 配合使用][]
+-   [将 Pig 与 HDInsight 配合使用][将 Pig 与 HDInsight 配合使用]
+-   [将 Hive 与 HDInsight 配合使用][将 Hive 与 HDInsight 配合使用]
+-   [将 MapReduce 与 HDInsight 配合使用][将 MapReduce 与 HDInsight 配合使用]
 
 [hdi-hive-showdescribetable]:./media/hdinsight-interactive-console/HDI.Hive.ShowDescribeTable.PNG "Hive Table Confirmation")
 
@@ -211,6 +211,6 @@ Pig 和 Hive 提供编译成 MapReduce 程序的更高级别的语言，这些�
   [hdi-jsconsole-upload]: ./media/hdinsight-interactive-console/HDI.JsConsole.UploadJs.PNG
   [hdi-jsconsole-jscode]: ./media/hdinsight-interactive-console/HDI.JsConsole.JsCode.PNG
   [hdi-jsconsole-bargraph-top10words]: ./media/hdinsight-interactive-console/HDI.JsConsole.BarGraphTop10Words.PNG
-  [将 Pig 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
-  [将 Hive 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
-  [将 MapReduce 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-mapreduce-with-hdinsight/
+  [将 Pig 与 HDInsight 配合使用]: /zh-cn/manage/services/hdinsight/using-pig-with-hdinsight/
+  [将 Hive 与 HDInsight 配合使用]: /zh-cn/manage/services/hdinsight/using-hive-with-hdinsight/
+  [将 MapReduce 与 HDInsight 配合使用]: /zh-cn/manage/services/hdinsight/using-mapreduce-with-hdinsight/

@@ -58,22 +58,33 @@
 
 <tr>
 <td><strong>管理</strong></td>
-<td>打开 Azure BizTalk 服务门户。BizTalk 服务门户是进行 EDI 配置的入口，包括添加合作伙伴和创建 X12 和 AS2 协议。<br /><br /> 这与<strong>“快速启动”</strong>选项卡上的<strong>“创建合作伙伴协议”</strong>相同。<br /><br /> <a href="http://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置 EDI 消息传送的组件</a>提供了有关 BizTalk 服务门户的详细信息。</td>
-</tr>
-<tr class="even">
-<td><strong>连接信息</strong></td>
-<td>在你选择“连接信息”时，将显示“访问控制命名空间”、“默认颁发者”和“默认密钥”。你可以复制这些值。<br /><br /> 你还可以打开访问控制管理门户。此访问控制管理门户与在左导航窗格中打开使用<strong>“Active Directory”</strong>选项相同。<br /><br /> <a href="http://go.microsoft.com/fwlink/p/?LinkID=285670">管理 ACS 命名空间</a>提供与访问控制管理门户有关的详细信息。</td>
+<td>打开 Azure BizTalk 服务门户。BizTalk 服务门户是进行 EDI 配置的入口，包括添加合作伙伴和创建 X12 和 AS2 协议。<br /><br/>
+这与<strong>“快速启动”</strong>选项卡上的<strong>“创建合作伙伴协议”</strong>相同。
+<br/><br/>
+<a href="http://go.microsoft.com/fwlink/p/?LinkID=303653">在 BizTalk 服务门户上配置 EDI 消息传送的组件</a>提供了有关 BizTalk 服务门户的详细信息。</td>
 </tr>
 
+<tr>
+<td><strong>连接信息</strong></td>
+<td>在你选择“连接信息”时，将显示“访问控制命名空间”、“默认颁发者”和“默认密钥”。你可以复制这些值。<br/><br/>
+你还可以打开访问控制管理门户。此访问控制管理门户与在左导航窗格中打开使用<strong>“Active Directory”</strong>选项相同。<br/><br/>
+<a href="http://go.microsoft.com/fwlink/p/?LinkID=285670">管理 ACS 命名空间</a>提供与访问控制管理门户有关的详细信息。</td>
+</tr>
+
+<tr>
 <td><strong>同步密钥</strong></td>
-<td>当你创建存储帐户时，将自动创建主密钥和辅助密钥。这些密钥控制对存储帐户的访问。BizTalk 服务自动使用主密钥。<strong>“同步密钥”</strong>使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。<br/><br/> 例如，你希望 BizTalk 服务为存储帐户使用新的主密钥。为此，请按以下步骤操作：<br/><br/>
+<td>当你创建存储帐户时，将自动创建主密钥和辅助密钥。这些密钥控制对存储帐户的访问。BizTalk 服务自动使用主密钥。<strong>“同步密钥”</strong>使用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。
+<br/><br/>
+例如，你希望 BizTalk 服务为存储帐户使用新的主密钥。为此，请按以下步骤操作：
+<br/><br/>
 <ol>
 <li>依次选择你的 BizTalk 服务和<strong>“同步密钥”</strong>。选择“辅助密钥”。当你执行此操作时，BizTalk 服务开始使用辅助密钥。</li>
 <li>在 Azure 管理门户中，选择“存储帐户”和“重新生成主密钥”。请记住，你的 BizTalk 服务正在使用辅助密钥。</li>
 <li>依次选择你的 BizTalk 服务和<strong>“同步密钥”</strong>。现在，选择“主密钥”。这是你重新生成的新主密钥。</li>
 <li>在 Azure 管理门户中，选择“存储帐户”和“重新生成辅助密钥”。</li>
 </ol>
-<br/> 此过程称为“变换密钥”。其目的是让用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。</td>
+<br/>
+此过程称为“变换密钥”。其目的是让用户可以在主密钥与辅助密钥之间切换，而不会中断 BizTalk 服务。</td>
 </tr>
 
 <tr>
@@ -81,6 +92,7 @@
 <td>当你选择“删除”时，将删除你的 BizTalk 服务和部署到此服务的所有项目。</td>
 </tr>
 </table>
+
 
 ## <a name="Dashboard"></a>仪表板
 
@@ -125,7 +137,7 @@
 </tr>
 <tr>
 <td><strong>公用虚拟 IP (VIP) 地址</strong></td>
-<td>分配给 BizTalk 服务的 IP 地址。它用于所有输入终结点，并且是出站流量的源地址。只要设置了 BizTalk 服务，则此 IP 地址就属于你的 BizTalk 服务。如果你删除 BizTalk 服务，则会将该 IP 地址分配给其他 BizTalk 服务。 </td>
+<td>分配给 BizTalk 服务的 IP 地址。它用于所有输入终结点，并且是出站流量的源地址。只要设置了 BizTalk 服务，则此 IP 地址就属于你的 BizTalk 服务。如果你删除 BizTalk 服务，则会将该 IP 地址分配给其他 BizTalk 服务。</td>
 </tr>
 <tr>
 <td><strong>ACS 命名空间</strong></td>
@@ -338,8 +350,6 @@
   [缩放]: #Scale
   [配置]: #Configure
   [混合连接]: #HybridConnections
-  [在 BizTalk 服务门户上配置 EDI 消息传送的组件]: http://go.microsoft.com/fwlink/p/?LinkID=303653
-  [管理 ACS 命名空间]: http://go.microsoft.com/fwlink/p/?LinkID=285670
   [可用度量值]: #Metrics
   [创建 BizTalk 服务]: http://go.microsoft.com/fwlink/p/?LinkID=302280
   [BizTalk 服务：服务状态图表]: http://go.microsoft.com/fwlink/p/?LinkID=329870
@@ -349,7 +359,7 @@
   [BizTalk 服务：版本图表]: http://go.microsoft.com/fwlink/p/?LinkID=302279
   [BizTalk 服务：备份和还原]: http://go.microsoft.com/fwlink/p/?LinkID=329873
   [混合连接：将 Azure 网站连接到本地资源]: http://go.microsoft.com/fwlink/p/?LinkId=397538
-  [Azure 移动服务和混合连接]: http://azure.microsoft.com/en-us/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started
+  [Azure 移动服务和混合连接]: http://azure.microsoft.com/zh-cn/documentation/articles/mobile-services-dotnet-backend-hybrid-connections-get-started
   [1]: http://go.microsoft.com/fwlink/p/?LinkID=397274
   [BizTalk 服务：限制]: http://go.microsoft.com/fwlink/p/?LinkID=302282
   [BizTalk 服务：颁发者名称和颁发者密钥]: http://go.microsoft.com/fwlink/p/?LinkID=303941

@@ -9,9 +9,9 @@
 <p>若要完成本主题中的过程，你必须拥有一个包含已验证电子邮件地址的 Google 帐户。若要新建一个 Google 帐户，请转至 <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a>。</p>
 </div>
 
-1.  导航到 [Google API][] 网站，使用你的 Google 帐户凭据登录，然后单击“Create project...”（创建项目...） 。
+1.  导航到 [Google API][Google API] 网站，使用你的 Google 帐户凭据登录，然后单击“Create project...”（创建项目...） 。
 
-    ![][]
+    ![][0]
 
 2.  单击“API Access”（API 访问） ，然后单击“Create an OAuth 2.0 client ID...”（创建 OAuth 2.0 客户端 ID...） 。
 
@@ -38,7 +38,6 @@
 
 你现在可以通过向移动服务提供客户端 ID 和客户端密钥值，使用 Google 登录在应用程序中进行身份验证。
 
-  [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
   [Google API]: http://go.microsoft.com/fwlink/p/?LinkId=268303
   [0]: ./media/mobile-services-how-to-register-google-authentication/mobile-services-google-developers.png
   [1]: ./media/mobile-services-how-to-register-google-authentication/mobile-services-google-create-client.png

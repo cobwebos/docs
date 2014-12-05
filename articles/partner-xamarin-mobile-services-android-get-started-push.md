@@ -9,17 +9,17 @@
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
-1.  [为推送通知注册应用程序][]
-2.  [配置移动服务][]
-3.  [向应用程序添加推送通知][]
-4.  [更新脚本以发送推送通知][]
-5.  [插入数据以接收通知][]
+1.  [为推送通知注册应用程序][为推送通知注册应用程序]
+2.  [配置移动服务][配置移动服务]
+3.  [向应用程序添加推送通知][向应用程序添加推送通知]
+4.  [更新脚本以发送推送通知][更新脚本以发送推送通知]
+5.  [插入数据以接收通知][插入数据以接收通知]
 
 本教程需要的内容如下：
 
 -   有效的 Google 帐户
 
-本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]。
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][移动服务入门]。
 
 <a name="register"></a>
 ## 注册应用程序为推送通知注册应用程序
@@ -29,9 +29,9 @@
 <p>若要完成本主题中的过程，你必须拥有一个包含已验证电子邮件地址的 Google 帐户。若要新建一个 Google 帐户，请转至 <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a>。</p>
 </div>
 
-1.  导航到 [Google API][] 网站，使用你的 Google 帐户凭据登录，然后单击“Create project...”（创建项目...） 。
+1.  导航到 [Google API][Google API] 网站，使用你的 Google 帐户凭据登录，然后单击“Create project...”（创建项目...） 。
 
-    ![][]
+    ![][0]
 
     > [WACOM.NOTE]
     > 如果你已拥有现成项目，则在登录后你将定向到“仪表板” 页。若要从仪表板新建一个项目，请展开“API 项目” ，单击“其他项目” 下面的“创建...” ，然后输入项目名称并单击“创建项目” 。
@@ -40,7 +40,7 @@
 
     在教程的稍后部分中，你要将此值设置为客户端中的 "PROJECT\_ID" 变量。
 
-3.  在[Google API][] 页面上，单击“服务” ，然后单击开关以启用 "Google Cloud Messaging for Android" 并接受服务条款。
+3.  在[Google API][Google API] 页面上，单击“服务” ，然后单击开关以启用 "Google Cloud Messaging for Android" 并接受服务条款。
 
 4.  单击"“API 访问”"，然后单击“新建服务器密钥...” 
 
@@ -59,7 +59,7 @@
 <a name="configure"></a>
 ## 配置服务配置移动服务以发送推送请求
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务” ，然后单击你的应用程序。
 
     ![][4]
 
@@ -74,7 +74,7 @@
 
 1.  首先，我们要将 "PushSharp" 添加为项目中的引用。为此，我们必须编译 PushSharp 的最新版本，并且将已编译的 DLL 作为对 Xamarin.Android 项目的引用添加。
 
-2.  访问 [PushSharp Github 页][]，并下载最新版本。在提取了文件集合后，导航到以下示例项目文件夹：
+2.  访问 [PushSharp Github 页][PushSharp Github 页]，并下载最新版本。在提取了文件集合后，导航到以下示例项目文件夹：
 
     "/Client.Samples/PushSharp.ClientSample.MonoForAndroid/PushSharp.ClientSample.MonoForAndroid.Gcm/"
 
@@ -196,7 +196,7 @@
             });
         }
 
-这将会注册一个新的插入脚本，该脚本使用 [GCM 对象][]将推送通知（插入的文本）发送到插入请求中提供的设备。
+这将会注册一个新的插入脚本，该脚本使用 [GCM 对象][GCM 对象]将推送通知（插入的文本）发送到插入请求中提供的设备。
 
 <a name="test"></a>
 ## 测试应用程序在应用程序中测试推送通知
@@ -211,27 +211,19 @@
 
 ## 获取已完成的示例
 
-下载[已完成的示例项目][]。请务必使用你自己的 Azure 设置更新 "ApplicationURL"、"ApplicationKey" 和 "SenderID" 变量。
+下载[已完成的示例项目][已完成的示例项目]。请务必使用你自己的 Azure 设置更新 "ApplicationURL"、"ApplicationKey" 和 "SenderID" 变量。
 
 <a name="next-steps"> </a>
 ## 后续步骤
 
-在这个简单的示例中，用户将会收到包含刚刚插入的数据的推送通知。在下一教程[向应用程序用户推送通知][]中，你将要创建一个单独的 Devices 表，该表用于存储设备标记，以及在发生插入操作时向所有存储的通道发出推送通知。
+在这个简单的示例中，用户将会收到包含刚刚插入的数据的推送通知。在下一教程[向应用程序用户推送通知][向应用程序用户推送通知]中，你将要创建一个单独的 Devices 表，该表用于存储设备标记，以及在发生插入操作时向所有存储的通道发出推送通知。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-push-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-push-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-android "Android"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android "Xamarin.Android"
   [为推送通知注册应用程序]: #register
   [配置移动服务]: #configure
   [向应用程序添加推送通知]: #add-push
   [更新脚本以发送推送通知]: #update-scripts
   [插入数据以接收通知]: #test
   [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-android
-  [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
   [Google API]: http://go.microsoft.com/fwlink/p/?LinkId=268303
   [0]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-developers.png
   [1]: ./media/partner-xamarin-mobile-services-android-get-started-push/mobile-services-google-create-server.png

@@ -1,6 +1,6 @@
 <properties title="Azure 存储入门" pageTitle="Azure 存储入门" metaKeywords="Azure, Getting Started, Storage" description="" services="storage" documentationCenter="" authors="ghogen, kempb" />
 
-<tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb"></tags>
+<tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb" />
 
 > [AZURE.SELECTOR]
 >
@@ -44,5 +44,4 @@ Azure 表存储服务使用户可以存储大量结构化数据。该服务是�
   [Blob]: /documentation/articles/vs-storage-aspnet-vnext-getting-started-blobs/
   [队列]: /documentation/articles/vs-storage-aspnet-vnext-getting-started-queues/
   [如何通过 .NET 使用表存储]: http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "如何通过 .NET 使用表存储"
-  [vs-storage-getting-started-tables-include]: ../includes/vs-storage-getting-started-tables-include.md
   [ASP.NET vNext]: http://www.asp.net/vnext

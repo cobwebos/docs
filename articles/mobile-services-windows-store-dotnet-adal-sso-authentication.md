@@ -10,20 +10,20 @@
 
 若要能够对用户进行身份验证，必须向 Azure Active Directory (AAD) 注册你的应用程序。此过程分为两个步骤。首先，你必须注册你的移动服务，并公开其上的权限。其次，你必须注册你的 Windows 应用商店应用程序，并授予它对这些权限的访问权限
 
-> [WACOM.NOTE] 本教程旨在帮助你更好地了解如何使用移动服务对 Windows 应用商店应用程序进行单一登录 Azure Active Directory 身份验证。如果这是你第一次体验移动服务，请先完成[移动服务入门][]教程。
+> [WACOM.NOTE] 本教程旨在帮助你更好地了解如何使用移动服务对 Windows 应用商店应用程序进行单一登录 Azure Active Directory 身份验证。如果这是你第一次体验移动服务，请先完成[移动服务入门][移动服务入门]教程。
 
 本教程将指导你完成以下基本步骤：
 
-1.  [向 Azure Active Directory 注册你的移动服务][]
-2.  [向 Azure Active Directory 注册你的应用程序][]
-3.  [将移动服务配置为要求身份验证][]
-4.  [向客户端应用程序添加身份验证代码][]
-5.  [测试使用身份验证的客户端][]
+1.  [向 Azure Active Directory 注册你的移动服务][向 Azure Active Directory 注册你的移动服务]
+2.  [向 Azure Active Directory 注册你的应用程序][向 Azure Active Directory 注册你的应用程序]
+3.  [将移动服务配置为要求身份验证][将移动服务配置为要求身份验证]
+4.  [向客户端应用程序添加身份验证代码][向客户端应用程序添加身份验证代码]
+5.  [测试使用身份验证的客户端][测试使用身份验证的客户端]
 
 本教程需要的内容如下：
 
 -   运行在 Windows 8.1 上的 Visual Studio 2013。
--   完成[移动服务入门][]或[数据入门][]教程。
+-   完成[移动服务入门][移动服务入门]或[数据入门][数据入门]教程。
 -   Windows Azure 移动服务 SDK NuGet 包
 -   Active Directory 身份验证库 NuGet 包
 
@@ -32,15 +32,15 @@
 
 在本节中，你将向 Azure Active Directory 注册你的移动服务，并配置权限以允许单一登录模拟。
 
-1.  按照[如何向 Azure Active Directory 注册][]主题所述，向 Azure Active Directory 注册你的应用程序。
+1.  按照[如何向 Azure Active Directory 注册][如何向 Azure Active Directory 注册]主题所述，向 Azure Active Directory 注册你的应用程序。
 
-2.  在 [Azure 管理门户][]中，返回到 Azure Active Directory 扩展，并单击你的活动目录
+2.  在 [Azure 管理门户][Azure 管理门户]中，返回到 Azure Active Directory 扩展，并单击你的活动目录
 
 3.  单击“应用程序” 选项卡，然后单击你的应用程序。
 
 4.  单击“管理清单” 。然后单击“下载清单” ，并将应用程序清单保存到本地目录中。
 
-    ![][]
+    ![][0]
 
 5.  使用 Visual Studio 打开应用程序清单文件。在文件顶部找到应用程序权限行，该行如下所示：
 
@@ -96,7 +96,7 @@
 
 现在，你需要检索使用本机应用程序设置配置的程序包 SID。
 
-1.  登录到 [Windows 开发人员中心仪表板][]，并在该应用程序上单击“编辑” 。
+1.  登录到 [Windows 开发人员中心仪表板][Windows 开发人员中心仪表板]，并在该应用程序上单击“编辑” 。
 
     ![][3]
 
@@ -114,7 +114,7 @@
 
 ### 创建本机应用程序注册
 
-1.  导航到 [Azure 管理门户][]中的“Active Directory” ，然后单击你的目录。
+1.  导航到 [Azure 管理门户][Azure 管理门户]中的“Active Directory” ，然后单击你的目录。
 
     ![][7]
 
@@ -221,9 +221,9 @@
             } 
         }
 
-6.  在上面的 `AuthenticateAsync` 方法的代码中，将 "INSERT-AUTHORITY-HERE" 替换为在其中进行应用程序设置的租户的名称，格式应为 <https://login.windows.net/tenant-name.onmicrosoft.com>。可以在 [Azure 管理门户][]中从 Azure Active Directory 的“域”选项卡复制出此值。
+6.  在上面的 `AuthenticateAsync` 方法的代码中，将 "INSERT-AUTHORITY-HERE" 替换为在其中进行应用程序设置的租户的名称，格式应为 <https://login.windows.net/tenant-name.onmicrosoft.com>。可以在 [Azure 管理门户][Azure 管理门户]中从 Azure Active Directory 的“域”选项卡复制出此值。
 
-7.  在上面的 `AuthenticateAsync` 方法的代码中，将 "INSERT-RESOURCE-URI-HERE" 替换为你的移动服务的“应用程序 ID URI” 。如果你按照[如何向 Azure Active Directory 注册][]主题进行操作，你的应用程序 ID URI 应该类似于 <https://todolist.azure-mobile.net/login/aad>。
+7.  在上面的 `AuthenticateAsync` 方法的代码中，将 "INSERT-RESOURCE-URI-HERE" 替换为你的移动服务的“应用程序 ID URI” 。如果你按照[如何向 Azure Active Directory 注册][如何向 Azure Active Directory 注册]主题进行操作，你的应用程序 ID URI 应该类似于 <https://todolist.azure-mobile.net/login/aad>。
 
 8.  在上面的 `AuthenticateAsync` 方法的代码中，将 "INSERT-CLIENT-ID-HERE" 替换为你从本机客户端应用程序复制的客户端 ID。
 
@@ -250,7 +250,6 @@
 
     ![][15]
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication "Windows 应用商店 C#"
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started/
   [向 Azure Active Directory 注册你的移动服务]: #register-mobile-service-aad
   [向 Azure Active Directory 注册你的应用程序]: #register-app-aad

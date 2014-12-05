@@ -213,7 +213,7 @@
   [使用管理门户向导配置站点到站点 VPN]: http://msdn.microsoft.com/library/azure/dn133795.aspx
   [在 Azure 虚拟网络中安装副本 Active Directory 域控制器]: http://windowsazure.cn/zh-cn/documentation/articles/virtual-networks-install-replica-active-directory-domain-controller/?fb=zh-cn
   [在 Azure 虚拟机中部署 Windows Server Active Directory 的准则]: http://msdn.microsoft.com/library/azure/jj156090.aspx
-  [测试实验室指南：Azure 中的 Windows Server 2012 R2 基本配置]: http://www.microsoft.com/en-us/download/details.aspx?id=41684
+  [测试实验室指南：Azure 中的 Windows Server 2012 R2 基本配置]: http://www.microsoft.com/zh-cn/download/details.aspx?id=41684
   [在 Azure 上安装与在本地安装有什么不同？]: #differ
   [步骤 1. 创建 Azure 虚拟网络]: #createvnet
   [步骤 2：创建 VM 以运行域控制器和 DNS 服务器角色]: #createvm

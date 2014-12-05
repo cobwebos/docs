@@ -1,6 +1,6 @@
 <properties title="将实体框架与灵活扩展一起使用" pageTitle="将实体框架与灵活扩展一起使用" description="灵活扩展简化了扩展；实体框架易于在编码数据库中使用 " metaKeywords="Using Elastic Scale with Entity Framework, Azure SQL Database sharding, elastic scale, Entity Framework and Elastic Scale" services="sql-database" documentationCenter="" manager="jhubbard" authors="sidneyh@microsoft.com"/>
 
-<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh"></tags>
+<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh" />
 
 # 将实体框架与灵活扩展一起使用
 
@@ -261,8 +261,8 @@ Microsoft 模式和实践团队已发布[暂时性故障处理应用程序块][�
 
   [灵活扩展分片管理]: http://go.microsoft.com/?linkid=9862595
   [数据依赖路由]: ./sql-database-elastic-scale-data-dependent-routing.md
-  [此处]: http://msdn.microsoft.com/en-us/data/jj193542.aspx
+  [此处]: http://msdn.microsoft.com/zh-cn/data/jj193542.aspx
   [实体框架和灵活扩展示例应用]: ./media/sql-database-elastic-scale-using-entity-framework/sample.png
   [灵活扩展术语库]: ./sql-database-elastic-scale-glossary.md
-  [暂时性故障处理应用程序块]: http://msdn.microsoft.com/en-us/library/dn440719(v=pandp.60).aspx
-  [重试执行策略的限制（从 EF6 开始）]: http://msdn.microsoft.com/en-us/data/dn307226
+  [暂时性故障处理应用程序块]: http://msdn.microsoft.com/zh-cn/library/dn440719(v=pandp.60).aspx
+  [重试执行策略的限制（从 EF6 开始）]: http://msdn.microsoft.com/zh-cn/data/dn307226

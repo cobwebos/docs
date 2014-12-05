@@ -136,7 +136,6 @@
 -   通过查看 <http://www.windowsazure.com/zh-cn/develop/java/> 上提供的信息，了解要与 Java 应用程序一起包含的 Azure 存储、Service Bus、SQL Database 等其他服务。
 
   [运行 Apache Tomcat 的虚拟机]: ./media/virtual-machines-java-run-tomcat-application-server/WA_VirtualMachineRunningApacheTomcat.png
-  [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [Azure 管理门户]: https://manage.windowsazure.cn
   [新建入站规则]: ./media/virtual-machines-java-run-tomcat-application-server/NewInboundRule.png
   [新建入站规则端口]: ./media/virtual-machines-java-run-tomcat-application-server/NewRulePort.png
@@ -144,5 +143,4 @@
   [新建入站规则操作]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleAction.png
   [新建入站规则配置文件]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleProfile.png
   [新建入站规则名称]: ./media/virtual-machines-java-run-tomcat-application-server/NewRuleName.png
-  [http://\*your\\\_DNS\\\_name]: http://*your\_DNS\_name
   [将服务设置为自动启动]: ./media/virtual-machines-java-run-tomcat-application-server/WA_TomcatServiceAutomaticStart.png

@@ -8,15 +8,15 @@
 
 ## 本文内容
 
--   [什么是 Ambari？][]
--   [必备条件][]
--   [启动][]
--   [Ambari 监视 API][]
--   [后续步骤][]
+-   [什么是 Ambari？][什么是 Ambari？]
+-   [必备条件][必备条件]
+-   [启动][启动]
+-   [Ambari 监视 API][Ambari 监视 API]
+-   [后续步骤][后续步骤]
 
 ## 什么是 Ambari？
 
-[Apache Ambari][] 用于设置、管理和监视 Apache Hadoop 群集。它包括一系列直观的操作员工具和一组隐藏 Hadoop 复杂性的可靠 API，可简化群集操作。有关这些 API 的详细信息，请参阅 [Ambari API 参考][]。
+[Apache Ambari][Apache Ambari] 用于设置、管理和监视 Apache Hadoop 群集。它包括一系列直观的操作员工具和一组隐藏 Hadoop 复杂性的可靠 API，可简化群集操作。有关这些 API 的详细信息，请参阅 [Ambari API 参考][Ambari API 参考]。
 
 HDInsight 目前只支持 Ambari 监视功能。HDInsight 群集版本 2.1 和 3.0 支持 Ambari API 1.0 版。本文只涉及在 HDInsight 群集版本 2.1 上运行 Ambari API。
 
@@ -24,13 +24,13 @@ HDInsight 目前只支持 Ambari 监视功能。HDInsight 群集版本 2.1 和 3
 
 在开始阅读本教程前，你必须具有：
 
--   已安装并已配置 Azure PowerShell 的**工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为“RemoteSigned”**。请参阅[运行 Windows PowerShell 脚本][]。
+-   已安装并已配置 Azure PowerShell 的**工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为“RemoteSigned”**。请参阅[运行 Windows PowerShell 脚本][运行 Windows PowerShell 脚本]。
 
-    [Curl][] 是可选的。可从[此处][]进行安装。
+    [Curl][Curl] 是可选的。可从[此处][此处]进行安装。
 
     > [WACOM.NOTE] 在 Windows 上使用 curl 命令时，请使用双引号（而不是单引号）括起选项值。
 
--   **一个 Azure HDInsight 群集**。有关群集设置的说明，请参阅[开始使用 HDInsight][] 或[设置 HDInsight 群集][]。你将需要以下数据才能完成本教程：
+-   **一个 Azure HDInsight 群集**。有关群集设置的说明，请参阅[开始使用 HDInsight][开始使用 HDInsight] 或[设置 HDInsight 群集][设置 HDInsight 群集]。你将需要以下数据才能完成本教程：
 
 	<table border="1">
 	<tr><th>群集属性</th><th>PowerShell 变量名</th><th>值</th><th>说明</th></tr>
@@ -65,7 +65,7 @@ HDInsight 目前只支持 Ambari 监视功能。HDInsight 群集版本 2.1 和 3
 
 输出为：
 
-![作业跟踪器输出][]
+![作业跟踪器输出][作业跟踪器输出]
 
 **使用 curl**
 
@@ -92,7 +92,7 @@ HDInsight 目前只支持 Ambari 监视功能。HDInsight 群集版本 2.1 和 3
 
 ## Ambari 监视 API
 
-下表列出了一些最常用的 Ambari 监视 API 调用。有关该 API 的详细信息，请参阅 [Ambari API 参考][]。
+下表列出了一些最常用的 Ambari 监视 API 调用。有关该 API 的详细信息，请参阅 [Ambari API 参考][Ambari API 参考]。
 
 <table border="1">
 <tr><th>监视 API 调用</th><th>URI</th><th>说明</th></tr>
@@ -119,10 +119,10 @@ HDInsight 目前只支持 Ambari 监视功能。HDInsight 群集版本 2.1 和 3
 
 现在你已经学习了如何使用 Ambari 监视 API 调用。若要了解更多信息，请参阅以下文章：
 
--   [使用管理门户管理 HDInsight 群集][]
--   [使用 Azure PowerShell 管理 HDInsight 群集][]
--   [使用命令行接口管理 HDInsight 群集][]
--   [HDInsight 文档][]
+-   [使用管理门户管理 HDInsight 群集][使用管理门户管理 HDInsight 群集]
+-   [使用 Azure PowerShell 管理 HDInsight 群集][使用 Azure PowerShell 管理 HDInsight 群集]
+-   [使用命令行接口管理 HDInsight 群集][使用命令行接口管理 HDInsight 群集]
+-   [HDInsight 文档][HDInsight 文档]
 -   [HDInsight 入门][开始使用 HDInsight]
 
   [什么是 Ambari？]: #whatisambari

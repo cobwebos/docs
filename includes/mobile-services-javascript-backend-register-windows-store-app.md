@@ -1,4 +1,4 @@
-1.  如果尚未注册应用程序，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用程序”页][]，用 Microsoft 帐户登录，然后单击“应用程序名称” 。
+1.  如果尚未注册应用程序，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用程序”页][“提交应用程序”页]，用 Microsoft 帐户登录，然后单击“应用程序名称” 。
 
     ![][0]
 
@@ -8,7 +8,7 @@
 
     此操作为应用程序创建一个新的 Windows 应用商店注册。
 
-3.  在 Visual Studio 2012 Express for Windows 8 中，打开你在完成教程[移动服务入门][]时创建的项目。
+3.  在 Visual Studio 2012 Express for Windows 8 中，打开你在完成教程[移动服务入门][移动服务入门]时创建的项目。
 
 4.  在解决方案资源管理器中，右键单击项目，单击“应用商店” ，然后单击“将应用程序与应用商店关联...” 。
 
@@ -41,7 +41,7 @@
     <p>客户端密钥和程序包 SID 是重要的安全凭据。请勿与任何人分享这些密钥或将密钥随应用程序分发。</p>
 	</div>
 
-10. 登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
+10. 登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务” ，然后单击你的应用程序。
 
     ![][7]
 
@@ -49,7 +49,7 @@
 
     ![][8]
 
-    这样可以更新你的移动服务的配置，以使用通知中心提供的增强的推送功能。对于你的付费移动服务，有些通知中心使用是免费的。有关详细信息，请参阅[移动服务定价详细信息][]。
+    这样可以更新你的移动服务的配置，以使用通知中心提供的增强的推送功能。对于你的付费移动服务，有些通知中心使用是免费的。有关详细信息，请参阅[移动服务定价详细信息][移动服务定价详细信息]。
 
     <div class="dev-callout"><b>重要说明</b>
 
@@ -75,5 +75,4 @@
   [7]: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-services-selection.png
   [8]: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-enable-enhanced-push.png
   [移动服务定价详细信息]: http://go.microsoft.com/fwlink/p/?LinkID=311786
-  [本指南]: http://go.microsoft.com/fwlink/p/?LinkId=391951
   [9]: ./media/mobile-services-javascript-backend-register-windows-store-app/mobile-push-tab.png

@@ -9,20 +9,20 @@
 	<a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started/" title=".NET backend" class="current">.NET 后端</a> | <a href="/zh-cn/documentation/articles/mobile-services-windows-store-get-started/"  title="JavaScript backend" >JavaScript 后端</a>
 </div>
 
-本教程说明如何使用 Azure 移动服务向 Windows 应用商店应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的、以 HTML 和 JavaSript 语言编写的简单*待办事项列表*应用程序。要创建的移动服务将使用支持的 .NET 语言，你可以使用 Visual Studio 来提供服务器端业务逻辑和管理移动服务。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题中的 [JavaScript 版本][]。
+本教程说明如何使用 Azure 移动服务向 Windows 应用商店应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的、以 HTML 和 JavaSript 语言编写的简单*待办事项列表*应用程序。要创建的移动服务将使用支持的 .NET 语言，你可以使用 Visual Studio 来提供服务器端业务逻辑和管理移动服务。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题中的 [JavaScript 版本][JavaScript 版本]。
 
 以下是完成的应用程序的屏幕快照：
 
-![][]
+![][0]
 
 只有在完成本教程后，才可以学习有关 Windows 应用商店应用程序的所有其他移动服务教程。
 
-> [WACOM.NOTE] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][]。
-> 本教程需要安装 [Visual Studio Professional 2013][]。可以使用免费试用版。
+> [WACOM.NOTE] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][Azure 免费试用]。
+> 本教程需要安装 [Visual Studio Professional 2013][Visual Studio Professional 2013]。可以使用免费试用版。
 
 ## 创建新的移动服务
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-create-new-service](../includes/mobile-services-dotnet-backend-create-new-service.md)]
 
 ## 创建新的 Windows 应用商店应用程序
 
@@ -40,7 +40,7 @@
 
     ![][2]
 
-3.  在本地计算机或虚拟机上下载并安装 [Visual Studio Professional 2013][]（如果尚未这么做）。
+3.  在本地计算机或虚拟机上下载并安装 [Visual Studio Professional 2013][Visual Studio Professional 2013]（如果尚未这么做）。
 
 4.  在“下载并在本地运行应用程序和服务”下面，选择 Windows 应用商店应用程序的语言，然后单击“下载” 。
 
@@ -54,13 +54,13 @@
 
 ## 针对本地移动服务测试应用程序
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service-dotnet][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-test-local-service-dotnet](../includes/mobile-services-dotnet-backend-test-local-service-dotnet.md)]
 
 > [WACOM.NOTE] 你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 default.js 文件中。
 
 ## 发布移动服务
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service][]]
+[WACOM.INCLUDE [mobile-services-dotnet-backend-publish-service](../includes/mobile-services-dotnet-backend-publish-service.md)]
 
 <ol start="4">
 <li><p>在 Windows 应用商店应用程序项目中，打开 App.xaml.cs 文件，找到创建 <a href="http://msdn.microsoft.com/zh-cn/library/Windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx" target="_blank">MobileServiceClient</a> 实例的代码，注释掉使用 *localhost* 创建此客户端的代码，然后取消注释使用如下所示远程移动服务 URL 创建客户端的代码：</p>
@@ -86,32 +86,21 @@
 
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用标识提供者对应用程序的用户进行身份验证。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started "Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started/ "JavaScript 后端"
   [JavaScript 版本]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started
   [0]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started/mobile-quickstart-completed.png
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-javascript-get-started%2F
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-javascript-get-started%2F
   [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=257546
-  [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
   [1]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started/mobile-portal-quickstart.png
   [2]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started/mobile-quickstart-steps.png
-  [mobile-services-dotnet-backend-test-local-service-dotnet]: ../includes/mobile-services-dotnet-backend-test-local-service-dotnet.md
-  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
-  [MobileServiceClient]: http://msdn.microsoft.com/zh-cn/library/Windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
   [3]: ./media/mobile-services-dotnet-backend-windows-store-javascript-get-started/mobile-quickstart-startup.png
   [数据处理入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data
   [身份验证入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users

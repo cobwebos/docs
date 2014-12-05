@@ -3,7 +3,7 @@
 若要开始，请通过安装 Windows Azure SDK for .NET 来设置开发环境。
 
 1. 若要安装 SDK，请单击以下链接。本教程需要 Visual Studio 2013。如果您尚未安装 Visual Studio，则将与 SDK 一起安装 Visual Studio Express for Web。<br/>
-	- [Windows Azure SDK for Visual Studio 2013][]
+	- [Windows Azure SDK for Visual Studio 2013][Windows Azure SDK for Visual Studio 2013]
 
 	**注意**：根据计算机上已有 SDK 依赖项数量的不同，安装 SDK 可能耗时较长，从几分钟到半小时或更长时间不等。
 

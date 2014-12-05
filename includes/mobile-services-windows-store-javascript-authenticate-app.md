@@ -34,7 +34,7 @@
 
     这样可以创建用于存储当前用户的成员变量，以及用于处理身份验证过程的方法。将使用 Facebook 登录对用户进行身份验证。如果使用的标识提供者不是 Facebook，请将传递给上述 "login" 方法的值更改为下列其中一项：*microsoftaccount*、*twitter*、*google* 或 *windowsazureactivedirectory*。
 
-    > [WACOM.NOTE] 如果你向移动服务注册了 Windows 应用商店应用程序包信息，则应通过为 *useSingleSignOn* 参数提供值 "true" 来调用 [login][] 方法。如果你不执行此操作，则每次调用 login 方法时，系统仍会向你的用户提供登录提示。
+    > [WACOM.NOTE] 如果你向移动服务注册了 Windows 应用商店应用程序包信息，则应通过为 *useSingleSignOn* 参数提供值 "true" 来调用 [login][login] 方法。如果你不执行此操作，则每次调用 login 方法时，系统仍会向你的用户提供登录提示。
 
 2.  按 F5 键运行应用程序，并使用你选择的标识提供者登录应用程序。
 

@@ -175,8 +175,6 @@
   [如何：查询实体属性子集]: #query-entity-properties
   [如何：删除实体]: #delete-entity
   [如何：删除表]: #delete-table
-  [howto-table-storage]: ../includes/howto-table-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
   [Python 安装指南]: ../python-how-to-install/
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [访问 Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/

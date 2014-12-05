@@ -166,12 +166,6 @@
 -   [如何使用适用于移动服务的 Android 客户端库][如何使用适用于移动服务的 Android 客户端库]
     了解有关如何将移动服务与 Android 一起使用的详细信息。
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/ "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-push/ "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/ "Windows Phone"
-  [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/ "Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-javascript-backend-android-get-started-push/ "JavaScript 后端"
   [JavaScript 后端版本]: /zh-cn/develop/mobile/tutorials/get-started-with-data-android
   [启用 Google Cloud Messaging]: #register
   [配置移动服务以发送推送请求]: #configure
@@ -183,17 +177,8 @@
   [针对发布的移动服务测试应用程序]: #test-app
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-android-get-started/
   [数据处理入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F
-  [启用 GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
   [0]: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
   [1]: ./media/mobile-services-android-get-started-push/mobile-push-tab-android.png
-  [mobile-services-download-service-locally]: ../includes/mobile-services-download-service-locally.md
-  [mobile-services-dotnet-backend-test-local-service]: ../includes/mobile-services-dotnet-backend-test-local-service.md
-  [mobile-services-dotnet-backend-update-server-GCM]: ../includes/mobile-services-dotnet-backend-update-server-GCM.md
-  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
-  [mobile-services-verify-android-sdk-version]: ../includes/mobile-services-verify-android-sdk-version.md
-  [添加 Play Services]: ../includes/mobile-services-add-Google-play-services.md
-  [mobile-services-android-getting-started-with-push]: ../includes/mobile-services-android-getting-started-with-push.md
   [2]: ./media/mobile-services-android-get-started-push/mobile-services-android-virtual-device-manager.png
   [3]: ./media/mobile-services-android-get-started-push/mobile-services-android-virtual-device-manager-edit.png
   [4]: ./media/mobile-services-android-get-started-push/mobile-quickstart-push1-android.png

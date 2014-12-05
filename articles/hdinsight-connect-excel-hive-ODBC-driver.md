@@ -4,13 +4,13 @@
 
 Microsoft 的大型数据解决方案的一大功能是，将 Microsoft 商业智能 (BI) 组件与已由 Azure HDInsight 部署的 Apache Hadoop 群集相集成。此集成的一个例子是，能够使用 Microsoft Hive 开放式数据库连接 (ODBC) 驱动程序将 Excel 连接到 HDInsight Hadoop 群集的 Hive 数据仓库。
 
-还可以使用用于 Excel 的 Microsoft Power Query 外接程序从 Excel 连接与 HDInsight 群集和其他数据源（包括其他非 HDInsight Hadoop 群集）关联的数据。有关安装和使用 Power Query 的信息，请参阅[利用 Power Query 将 Excel 连接到 HDInsight][]。
+还可以使用用于 Excel 的 Microsoft Power Query 外接程序从 Excel 连接与 HDInsight 群集和其他数据源（包括其他非 HDInsight Hadoop 群集）关联的数据。有关安装和使用 Power Query 的信息，请参阅[利用 Power Query 将 Excel 连接到 HDInsight][利用 Power Query 将 Excel 连接到 HDInsight]。
 
 **先决条件**：
 
 在开始阅读本文前，你必须具有：
 
--   HDInsight 群集。若要配置一个 HDInsight 群集，请参阅 [Azure HDInsight 入门][]。
+-   HDInsight 群集。若要配置一个 HDInsight 群集，请参阅 [Azure HDInsight 入门][Azure HDInsight 入门]。
 -   运行 Windows 8、Windows 7、Windows Server 2012 或 Windows Server 2008 R2 的计算机。
 -   Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone 或 Office 2010 Professional Plus。
 
@@ -23,7 +23,7 @@ Microsoft 的大型数据解决方案的一大功能是，将 Microsoft 商业�
 
 ##<a id="InstallHiveODBCDriver"></a>安装 Microsoft Hive ODBC 驱动程序
 
-从[下载中心][]下载并安装 Microsoft Hive ODBC 驱动程序。
+从[下载中心][下载中心]下载并安装 Microsoft Hive ODBC 驱动程序。
 
 此驱动程序可以安装在 32 位或 64 位版本的 Windows 7、Windows 8、Windows Server 2008 R2 和 Windows Server 2012 上，并将允许连接到 Azure HDInsight（1.6 及更高版本）和 Azure HDInsight Emulator（1.0.0.0 及更高版本）。你应安装与你将在其中使用 ODBC 驱动程序的应用程序版本匹配的版本。在本教程中，将通过 Office Excel 使用此驱动程序。
 
@@ -82,7 +82,7 @@ Microsoft 的大型数据解决方案的一大功能是，将 Microsoft 商业�
 5.  在向导中重新输入群集的密码，然后单击“测试” 以验证配置
 6.  单击“确定” 以关闭“测试”对话框。
 7.  单击“确定” 。等待“选择数据库和表” 对话框打开。这可能需要几秒钟时间。
-8.  选择要导入的表，然后单击“下一步” 。*hivesampletable* 是 HDInsight 群集随附的示例 Hive 表。如果你还没有创建表，则可以选择它。有关运行 Hive 查询和创建 Hive 表的详细信息，请参阅[将 Hive 与 HDInsight 配合使用][]。
+8.  选择要导入的表，然后单击“下一步” 。*hivesampletable* 是 HDInsight 群集随附的示例 Hive 表。如果你还没有创建表，则可以选择它。有关运行 Hive 查询和创建 Hive 表的详细信息，请参阅[将 Hive 与 HDInsight 配合使用][将 Hive 与 HDInsight 配合使用]。
 9.  单击“完成” 。
 10. 在“导入数据” 对话框中，你可以更改或指定查询。为此，请单击“属性” 。这可能需要几秒钟时间。
 11. 单击“定义” 选项卡，然后在“命令文本” 文本框中的 Hive select 语句后面追加“LIMIT 200” 。此修改将返回的记录集限制为 200。
@@ -97,9 +97,9 @@ Microsoft 的大型数据解决方案的一大功能是，将 Microsoft 商业�
 
 在本文中，你已了解如何使用 Microsoft Hive ODBC 驱动程序将来自 HDInsight 服务的数据检索到 Excel 中。同样地，你也可以将来自 HDInsight 服务的数据检索到 SQL Database 中。也可以将数据上载到 HDInsight 服务中。若要了解更多信息，请参阅以下文章：
 
--   [使用 HDInsight 分析航班延误数据][]
--   [将数据上载到 HDInsight][]
--   [将 Sqoop 与 HDInsight 配合使用][]
+-   [使用 HDInsight 分析航班延误数据][使用 HDInsight 分析航班延误数据]
+-   [将数据上载到 HDInsight][将数据上载到 HDInsight]
+-   [将 Sqoop 与 HDInsight 配合使用][将 Sqoop 与 HDInsight 配合使用]
 
   [利用 Power Query 将 Excel 连接到 HDInsight]: /zh-cn/documentation/articles/hdinsight-connect-excel-power-query/
   [Azure HDInsight 入门]: /zh-cn/documentation/articles/hdinsight-get-started/

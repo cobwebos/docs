@@ -130,6 +130,4 @@ SAS 必须包含完整 SAS URL，包括目标文件的文件名。
   [如何将图像保存到 Azure 存储]: #saveazure
   [后续步骤]: #nextsteps
   []: http://www.blitline.com
-  [blitline-signup]: ../includes/blitline-signup.md
-  [https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\\\_APP\\\_ID/CK3f0xBF\_2bV6wf7gEZE8w.jpg]: https://s3.amazonaws.com/dev.blitline/2011110722/YOUR\_APP\_ID/CK3f0xBF_2bV6wf7gEZE8w.jpg
   [此处]: http://www.blitline.com/docs/azure_storage

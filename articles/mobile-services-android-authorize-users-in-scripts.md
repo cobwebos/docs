@@ -80,19 +80,10 @@
 
     了解有关注册和使用服务器脚本的详细信息。
 
-<!-- Anchors. -->
-<!-- Images. --> 
-<!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-authorize-users-in-scripts "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-authorize-users-in-scripts "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-authorize-users-in-scripts "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-authorize-users-in-scripts "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-android-authorize-users-in-scripts "Android"
-  [HTML]: /zh-cn/documentation/articles/mobile-services-html-authorize-users-in-scripts "HTML"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-authorize-users-in-scripts "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-authorize-users-in-scripts "Xamarin.Android"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-android-authorize-users-in-scripts/ "JavaScript 后端"
+ 
+
+
   [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-android
   [Azure 管理门户]: https://manage.windowsazure.cn/
   [0]: ./media/mobile-services-android-authorize-users-in-scripts/mobile-services-selection.png

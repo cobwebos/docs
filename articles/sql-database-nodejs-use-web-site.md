@@ -416,7 +416,7 @@
         To https://username@tabletasklist.chinacloudsites.cn/TableTasklist.git
          * [new branch]      master -> master
 
-3.  在完成推送操作后，请浏览到 **[http://[site][http://[site] name].chinacloudsites.cn/** 查看你的应用程序。
+3.  在完成推送操作后，请浏览到 **http://[site name].chinacloudsites.cn/** 查看你的应用程序。
 
 ### 切换到环境变量
 
@@ -460,9 +460,9 @@
    [适用于 Mac 和 Linux 的 Azure 命令行工具] 
 
 
-  [使用表存储构建 Node.js Web 应用程序]: /en-us/develop/nodejs/tutorials/web-site-with-storage/
+  [使用表存储构建 Node.js Web 应用程序]: /zh-cn/develop/nodejs/tutorials/web-site-with-storage/
   [使用 MongoDB 构建 Node.js Web 应用程序]: ../store-mongolab-web-sites-nodejs-store-data-mongodb/
-  [适用于 Mac 和 Linux 的 Azure 命令行工具]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
+  [适用于 Mac 和 Linux 的 Azure 命令行工具]: /zh-cn/develop/nodejs/how-to-guides/command-line-tools/
 
   [Node]: http://nodejs.org
   [Git]: http://git-scm.com
@@ -470,15 +470,15 @@
 
   [express]: http://expressjs.com
   [node-sqlserver]: https://github.com/WindowsAzure/node-sqlserver
-  [下载中心]: http://www.microsoft.com/en-us/download/details.aspx?id=29995
+  [下载中心]: http://www.microsoft.com/zh-cn/download/details.aspx?id=29995
   [Twitter Bootstrap]: https://github.com/twbs/bootstrap
 
 
 
-[Create and deploy a Node.js application to Azure Web Sites]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
-[Publishing to Azure Web Sites with Git]: /en-us/develop/nodejs/common-tasks/publishing-with-git/
-[Azure Developer Center]: /en-us/develop/nodejs/
-[Node.js Web Application with Table Storage]: /en-us/develop/nodejs/tutorials/web-site-with-storage/
+[Create and deploy a Node.js application to Azure Web Sites]: /zh-cn/develop/nodejs/tutorials/create-a-website-(mac)/
+[Publishing to Azure Web Sites with Git]: /zh-cn/develop/nodejs/common-tasks/publishing-with-git/
+[Azure Developer Center]: /zh-cn/develop/nodejs/
+[Node.js Web Application with Table Storage]: /zh-cn/develop/nodejs/tutorials/web-site-with-storage/
 
 [node]: http://nodejs.org
 [Git]: http://git-scm.com
@@ -487,7 +487,7 @@
 [Git remote]: http://git-scm.com/docs/git-remote
 
 [Node.js Web Application with MongoDB]: ../store-mongolab-web-sites-nodejs-store-data-mongodb/
-[Azure command-line tool for Mac and Linux]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
+[Azure command-line tool for Mac and Linux]: /zh-cn/develop/nodejs/how-to-guides/command-line-tools/
 [Create and deploy a Node.js application to an Azure Web Site]: ./web-site-with-mongodb-Mac
 [Publishing to Azure Web Sites with Git]: ../CommonTasks/publishing-with-git
 [Azure Portal]: http://www.windowsazure.cn
@@ -495,7 +495,7 @@
 [node-sqlserver]: https://github.com/WindowsAzure/node-sqlserver
 [Microsoft SQL Server 2012 Feature Pack]: http://www.microsoft.com/zh-cn/download/details.aspx?id=29065
 [sql-database-editions]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ee621788.aspx
-[download center]: http://www.microsoft.com/en-us/download/details.aspx?id=29995
+[download center]: http://www.microsoft.com/zh-cn/download/details.aspx?id=29995
 [Twitter Bootstrap]: http://twitter.github.com/bootstrap/
 
 [app-settings-save]: ./media/sql-database-nodejs-use-web-site/savebutton.png

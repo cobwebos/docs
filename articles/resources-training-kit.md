@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [training-kit](../includes/training-kit.md)]
 
-  [training-kit]: ../includes/training-kit.md

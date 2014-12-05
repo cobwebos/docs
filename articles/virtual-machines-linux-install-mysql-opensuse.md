@@ -26,6 +26,4 @@
 
   [MySQL]: http://www.mysql.com
   [Azure 管理门户]: http://manage.windowsazure.cn
-  [create-and-configure-opensuse-vm-in-portal]: ../includes/create-and-configure-opensuse-vm-in-portal.md
-  [install-and-run-mysql-on-opensuse-vm]: ../includes/install-and-run-mysql-on-opensuse-vm.md
   [MySQL 文档]: http://dev.mysql.com/doc/

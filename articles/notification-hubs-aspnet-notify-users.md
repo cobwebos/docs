@@ -331,7 +331,7 @@
 
 有关通知中心的更多信息，请参见 [Azure 通知中心][Azure 通知中心]。
 
-<!-- Anchors. --> <!-- Images. --> <!-- URLs. -->
+  
 
   [移动服务]: /zh-cn/documentation/articles/notification-hubs-mobile-services-cross-platform-notify-users/ "移动服务"
   [ASP.NET]: /zh-cn/documentation/articles/notification-hubs-aspnet-cross-platform-notify-users/ "ASP.NET"

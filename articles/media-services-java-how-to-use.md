@@ -31,7 +31,7 @@ Azure Media Services 构成了一个可扩展的媒体平台，它在 Azure 中�
 -   **编码**。编码操作包括编码、变换和转换媒体资产。你可以使用 Media Services 随附的媒体编码器在云中运行编码任务。编码选项包括：
     -   使用 Azure 媒体编码器并操作一系列标准编解码器和格式，包括行业领先的 IIS 平滑流式处理和 MP4，以及将相关格式转换为 Apple HTTP 实时流。
     -   转换整个库或单个文件，并获取对输入和输出的全面控制权。
-    -   受支持的文件类型、格式和编解码器众多（请参阅 [Media Services 支持的文件类型][]）。
+    -   受支持的文件类型、格式和编解码器众多（请参阅 [Media Services 支持的文件类型][Media Services 支持的文件类型]）。
     -   支持的格式转换。Media Services 允许你将 ISO MP4 (.mp4) 转换为平滑流式处理文件格式 (PIFF 1.3)（.ismv；.isma）。还可以将平滑流式处理文件格式 (PIFF) 转换为 Apple HTTP 实时流（.msu8、.ts）。
 -   **保护**。保护内容意味着对实时流内容或点播内容进行加密，以安全地进行传输、存储和交付。Media Services 提供 DRM 技术感知的解决方案来保护内容。当前支持的 DRM 技术包括 Microsoft PlayReady 保护和 MPEG 通用加密。将来会提供对其他 DRM 技术的支持。
 -   **流式处理**。流式处理内容涉及到将实时内容或点播内容发送到客户端，或者让你从云中检索或下载特定的媒体文件。Media Services 提供格式感知的解决方案来流式处理内容。Media Services 针对平滑流式处理、Apple HTTP 实时流和 MP4 格式提供流式来源支持。将来会提供对其他格式的支持。你也可以使用 Azure CDN 或第三方 CDN（启用相应的选项即可扩展为支持数百万个用户）无缝交付流式处理内容。
@@ -293,7 +293,7 @@ Microsoft 提供可用于生成 Windows Phone 版高级视频应用程序的 SDK
 
     // Create a task with the specified media processor, in this case to transform the original asset to the H264 Broadband 720p preset.
     // Information on the various configurations can be found at
-    // http://msdn.microsoft.com/en-us/library/windowsazure/jj129582.aspx.
+    // http://msdn.microsoft.com/zh-cn/library/windowsazure/jj129582.aspx.
     // This example uses only one task, but others could be added.
     Task.CreateBatchOperation task = Task.create(
     mediaProcessor.getId(),

@@ -1,6 +1,6 @@
 <properties title="灵活扩展安全配置" pageTitle="灵活扩展安全配置" description="使用 Azure SQL Database 灵活扩展的拆分/合并服务安全" metaKeywords="Elastic Scale Security Configurations, Azure SQL Database sharding, elastic scale " services="sql-database" documentationCenter="" manager="jhubbard" authors="sidneyh@microsoft.com"/>
 
-<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh"></tags>
+<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh" />
 
 # 灵活扩展安全配置
 
@@ -458,11 +458,11 @@ Microsoft Azure SQL Database 灵活扩展包括自托管服务。此分发包括
   [其他安全注意事项]: #other-security
   [配置 SSL 证书]: #to-configure-ssl-cert
   [配置客户端证书]: #configuring-client-certs
-  [Windows 证书服务]: http://msdn.microsoft.com/en-us/library/windows/desktop/aa376539.aspx
-  [makecert.exe]: http://msdn.microsoft.com/en-us/library/bfsktky3.aspx
-  [pvk2pfx.exe]: http://msdn.microsoft.com/en-us/library/windows/hardware/ff550672.aspx
-  [Visual Studio 命令提示符]: http://msdn.microsoft.com/en-us/library/ms229859.aspx
-  [Windows 8.1：下载工具包和工具]: http://msdn.microsoft.com/en-US/windows/hardware/gg454513#drivers
+  [Windows 证书服务]: http://msdn.microsoft.com/zh-cn/library/windows/desktop/aa376539.aspx
+  [makecert.exe]: http://msdn.microsoft.com/zh-cn/library/bfsktky3.aspx
+  [pvk2pfx.exe]: http://msdn.microsoft.com/zh-cn/library/windows/hardware/ff550672.aspx
+  [Visual Studio 命令提示符]: http://msdn.microsoft.com/zh-cn/library/ms229859.aspx
+  [Windows 8.1：下载工具包和工具]: http://msdn.microsoft.com/zh-cn/windows/hardware/gg454513#drivers
   [创建自签名证书]: #create-self-signed-cert
   [为自签名 SSL 证书创建 PFX 文件]: #create-pfx-for-self-signed-cert
   [将 SSL 证书上载到云服务]: #upload-ssl

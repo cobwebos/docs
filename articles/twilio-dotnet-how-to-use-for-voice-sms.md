@@ -266,7 +266,7 @@ Twilio.Client.Capability
 
 <div class="dev-callout">
 <b>说明</b>
-<p>虽然 TwiML 专供 Web 服务使用，但您可以在浏览器中查看 TwiML。例如，单击 [http://twimlets.com/message](twimlet_message_url) 可查看空 &lt;Response&gt; 元素；又如，单击 [http://twimlets.com/message?Message%5B0%5D=Hello%20World](twimlet_message_url_hello_world) 可查看包含 &lt;Say&gt; 元素的 &lt;Response&gt; 元素。</p>
+<p>虽然 TwiML 专供 Web 服务使用，但您可以在浏览器中查看 TwiML。例如，单击 [http://twimlets.com/message](http://twimlets.com/message) 可查看空 &lt;Response&gt; 元素；又如，单击 [http://twimlets.com/message?Message%5B0%5D=Hello%20World](http://twimlets.com/message?Message%5B0%5D=Hello%20World) 可查看包含 &lt;Say&gt; 元素的 &lt;Response&gt; 元素。</p>
 </div>
 
 您可以创建自己的返回 HTTP 响应的 URL 网站，而不用依赖 Twilio 提供的 URL。您可以使用任何语言创建返回 HTTP 响应的站点。本主题假设您将从 ASP.NET 泛型处理程序托管该 URL。

@@ -106,16 +106,4 @@ Azure 提供了许多方法来为应用程序配置新租户。对于具有大�
 
 <!--links-->
 
-  [计算]: /zh-cn/develop/net/compute/
-  [数据服务]: /zh-cn/develop/net/data/
-  [应用程序服务]: /zh-cn/develop/net/app-services/
-  [引用]: /zh-cn/develop/net/reference/
-  [指南]: /zh-cn/develop/net/guidance/
-  [体系结构]: /zh-cn/develop/net/architecture/
-  [示例]: /zh-cn/develop/net/samples/
-  [基于场景的教程]: /zh-cn/develop/net/end-to-end-Apps/
-  [论坛]: /zh-cn/support/forums/
-  [应用程序体系结构概述]: /zh-cn/develop/net/architecture/#overviews
-  [应用程序模式：负载测试]: /zh-cn/develop/net/architecture/load-testing-pattern/
-  [设计模式]: /zh-cn/develop/net/architecture/#designpatterns
   [在 Azure 中托管多租户应用程序]: http://msdn.microsoft.com/zh-cn/library/hh534480.aspx

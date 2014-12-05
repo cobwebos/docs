@@ -248,10 +248,7 @@ IPython Notebook 为交互访问 Azure 上的 Python 生态系统的功能提供
 
 还可通过[Python Tools for Visual Studio][Python Tools for Visual Studio] (PTVS) 在 Visual Studio 中使用 IPython 的核心功能。PTVS 是 Microsoft 提供的免费开放源代码插件，它可将 Visual Studio 转变为高级 Python 开发环境，其中包括具有 IntelliSense、调试、分析和并行计算集成功能的高级编辑器。
 
-  [IPython 项目]: http://ipython.org
-  [观看教程]: http://go.microsoft.com/fwlink/?LinkID=254535&clcid=0x409
   [屏幕快照]: ./media/virtual-machines-python-ipython-notebook/ipy-notebook-spectral.png
-  [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [此处]: /zh-cn/manage/linux/tutorials/virtual-machine-from-gallery/
   [1]: /zh-cn/manage/windows/tutorials/virtual-machine-from-gallery/
   [2]: ./media/virtual-machines-python-ipython-notebook/ipy-azure-linux-005.png

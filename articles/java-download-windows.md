@@ -4,5 +4,3 @@
 
 [WACOM.INCLUDE [下载 eclipse](../includes/download_eclipse.md)]
 
-  [下载库]: ../includes/download_libraries.md
-  [下载 eclipse]: ../includes/download_eclipse.md

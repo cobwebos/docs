@@ -169,12 +169,12 @@
 
 现在客户端应用程序已更新，请返回到[使用通知中心通知用户][使用通知中心通知用户]并更新移动服务以使用通知中心发送通知。
 
-<!-- Anchors. --> 
+ 
 
-<!-- URLs. -->
+
 
   [使用通知中心通知用户]: /zh-cn/manage/services/notification-hubs/notify-users-aspnet
 
-<!-- Images. --> 
+ 
   [0]: ./media/notification-hubs-windows-store-aspnet-register-user-push-notifications/notification-hub-add-nuget-package-json.png
   [1]: ./media/notification-hubs-windows-store-aspnet-register-user-push-notifications/notification-hub-create-aspnet-class.png

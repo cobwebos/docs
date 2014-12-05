@@ -128,9 +128,9 @@ The existing **TodoItemController** is updated so that the **PostTodoItem** meth
 
 Next, you will update the quickstart app to add image upload functionality by using the SAS generated on insert.
  
-<!-- Anchors. -->
 
-<!-- Images. -->
+
+
 [0]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account.png
 [1]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-account-keys.png
 
@@ -143,6 +143,6 @@ Next, you will update the quickstart app to add image upload functionality by us
 
 [10]: ./media/mobile-services-configure-blob-storage/mobile-blob-storage-app-settings.png
 
-<!-- URLs. -->
-[How To Create a Storage Account]: /en-us/manage/services/storage/how-to-create-a-storage-account
-[App settings]: http://msdn.microsoft.com/en-us/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
+
+[How To Create a Storage Account]: /zh-cn/manage/services/storage/how-to-create-a-storage-account
+[App settings]: http://msdn.microsoft.com/zh-cn/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7

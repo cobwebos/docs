@@ -36,10 +36,10 @@
 - [创建 ASP.NET MVC 5 应用程序][createapplication]
 - [将应用程序部署到 Windows Azure][deployapp1]
 - [向应用程序添加数据库][adddb]
-- [添加 OAuth 提供程序][]
-- [使用成员资格 API][]
+- [添加 OAuth 提供程序][添加 OAuth 提供程序]
+- [使用成员资格 API][使用成员资格 API]
 - [将应用程序部署到 Windows Azure][deployapp11]
-- [后续步骤][]
+- [后续步骤][后续步骤]
 
 
 [WACOM.INCLUDE [install-sdk-2013-only](../includes/install-sdk-2013-only.md)]

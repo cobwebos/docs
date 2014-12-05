@@ -196,7 +196,7 @@
 
     了解如何将通知推送到经过身份验证的特定用户。这是仅将通知发送到特定用户的好的解决方案。
 
-<!-- Anchors. -->  
+  
 
 <!-- URLs.-->
 
@@ -210,7 +210,7 @@
   [使用通知中心广播本地化的突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-localized-dotnet/
   [使用通知中心通知用户]: /zh-cn/manage/services/notification-hubs/notify-users
 
-<!-- Images. -->
+
   [0]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png
   [1]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png
   [2]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png

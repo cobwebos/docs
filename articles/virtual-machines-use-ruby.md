@@ -138,7 +138,7 @@ Azure 虚拟机是作为云服务内的“角色”实现的。每个云服务�
       :vm_name => 'mygreatvm',
       :vm_user => 'myuser',
       :password => 'mypassword',
-      :image => 'b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_04-amd64-server-20130824-en-us-30GB',
+      :image => 'b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_04-amd64-server-20130824-zh-cn-30GB',
       :location = 'East China'
     }
 
@@ -182,7 +182,7 @@ Azure 虚拟机是作为云服务内的“角色”实现的。每个云服务�
       :vm_name => 'myvm',
       :vm_user => 'myuser',
       :password => 'mypassword',
-      :image => 'b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_04-amd64-server-20130824-en-us-30GB',
+      :image => 'b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-13_04-amd64-server-20130824-zh-cn-30GB',
       :location = 'East China'
     }
 

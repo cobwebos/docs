@@ -222,7 +222,4 @@ Twilio 提供了可包装 Twilio 各个方面的 Node.js 库，使你能够以�
   [移动服务控制台]: ./media/partner-twilio-mobile-services-how-to-use-voice-sms/twilio-kuduconsole.png
   []: http://www.twilio.com/docs/api/rest/making-calls
   [如何：从你自己的网站提供 TwiML 响应]: #howto_provide_twiml_responses
-  [twimlet\_message\_url]: http://twimlets.com/message
-  [twimlet\_message\_url\_hello\_world]: http://twimlets.com/message?Message%5B0%5D=Hello%20World
   [1]: https://www.twilio.com/docs/api/twiml
-  [twilio\_的更多服务和后续步骤]: ../includes/twilio_additional_services_and_next_steps.md

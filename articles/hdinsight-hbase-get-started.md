@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-hbase-get-started-hdinsight-hadoop" urlDisplayName="Get Started" pageTitle="Get started using HBase with Hadoop in HDInsight | Azure" metaKeywords="" description="Get started using HBase with Hadoop in HDInsight. learn how to created HBase tables and query them with Hive." metaCanonical="" services="hdinsight" documentationCenter="" title="Get started using HBase with Hadoop in HDInsight" authors="bradsev" solutions="big-data" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="bradsev"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="bradsev" />
 
 # 开始在 HDInsight 中将 HBase 与 Hadoop 配合使用
 
@@ -15,12 +15,12 @@ HBase 是一种低延迟的 NoSQL 数据库，可用于对大数据进行联机�
 
 ## 本教程的内容
 
--   [在 Azure 门户中设置 HBase 群集][]
--   [从 HBase shell 创建 HBase 示例表][]
--   [使用 Hive 查询 HBase 表][]
--   [使用 HBase C# API 创建一个 HBase 表并从该表中检索数据][]
--   [摘要][]
--   [后续步骤][]
+-   [在 Azure 门户中设置 HBase 群集][在 Azure 门户中设置 HBase 群集]
+-   [从 HBase shell 创建 HBase 示例表][从 HBase shell 创建 HBase 示例表]
+-   [使用 Hive 查询 HBase 表][使用 Hive 查询 HBase 表]
+-   [使用 HBase C# API 创建一个 HBase 表并从该表中检索数据][使用 HBase C# API 创建一个 HBase 表并从该表中检索数据]
+-   [摘要][摘要]
+-   [后续步骤][后续步骤]
 
 ## <a name="create-hbase-cluster"></a>在 Azure 门户中设置 HBase 群集
 
@@ -28,15 +28,15 @@ HBase 是一种低延迟的 NoSQL 数据库，可用于对大数据进行联机�
 
 注意：
 本文中的步骤是使用基本配置设置来创建 HDInsight 群集。有关其他群集配置设置的信息（例如，使用 Azure 虚拟网络或者 Hive 和 Oozie 的元存储），请参阅“设置 HDInsight 群集”。
-[WACOM.INCLUDE [provisioningnote][]]
+[WACOM.INCLUDE [provisioningnote](../includes/hdinsight-provisioning.md)]
 
 **在 Azure 门户中设置 HDInsight 群集**
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 
 2.  单击左侧的“HDInsight”以列出你的帐户中群集的状态，然后单击左下角的“+新建”图标。
 
-    ![][]
+    ![][0]
 
 3.  在左侧单击第二列中的“HDInsight”图标，然后单击下一列中的“HBase”选项。指定“群集名称”和“群集大小”的值、存储帐户的名称以及新 HBase 群集的密码。
 
@@ -88,7 +88,7 @@ HBase 是一种低延迟的 NoSQL 数据库，可用于对大数据进行联机�
 
 **打开群集仪表板**
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  单击左窗格中的“HDINSIGHT”。你将会看到所创建的群集的列表，包括你刚刚在上一部分中创建的群集。
 3.  单击你要在其中运行该 Hive 作业的群集名称。
 4.  单击页底部的“管理群集”以打开群集仪表板。这会在另一个浏览器选项卡中打开一个网页。
@@ -124,7 +124,7 @@ HBase 是一种低延迟的 NoSQL 数据库，可用于对大数据进行联机�
 
 Marlin 是位于 REST API 顶部的一个精简层，它可以使用 ProtoBuf（以 C# 编写）来处理与 HBase 的交互。必须从 github 下载 Marlin 项目，该项目必须已构建为使用 HBase .NET SDK。
 
-1.  遵照所述的生成步骤。从 [Marlin 的项目页][]下载 Marlin 项目。将它解压缩到本地目录。
+1.  遵照所述的生成步骤。从 [Marlin 的项目页][Marlin 的项目页]下载 Marlin 项目。将它解压缩到本地目录。
 
 2.  在 Visual Studio 中打开该项目。转到“工具”菜单 -\>“库程序包管理器”，然后选择“管理解决方案的 NuGet 包...”，以打开“管理 NuGet 包”管理器向导
 
@@ -184,13 +184,13 @@ Marlin 是位于 REST API 顶部的一个精简层，它可以使用 ProtoBuf（
 
 ## <a name="next"></a>后续步骤
 
-[HDInsight HBase 概述][]：
+[HDInsight HBase 概述][HDInsight HBase 概述]：
 HBase 是构建于 Hadoop 上的 Apache 开源 NoSQL 数据库，用于为大量非结构化和半结构化数据提供随机访问和高度一致性。
 
-[在 Azure 虚拟网络上设置 HBase 群集][]：
+[在 Azure 虚拟网络上设置 HBase 群集][在 Azure 虚拟网络上设置 HBase 群集]：
 通过虚拟网络集成，可以将 HBase 群集部署到应用程序所在的虚拟网络，以便应用程序直接与 HBase 进行通信。
 
-<!--- [azure-member-offers]: http://azure.microsoft.com/en-us/pricing/member-offers/ --->
+<!--- [azure-member-offers]: http://azure.microsoft.com/zh-cn/pricing/member-offers/ --->
 
   [在 Azure 门户中设置 HBase 群集]: #create-hbase-cluster
   [从 HBase shell 创建 HBase 示例表]: #create-sample-table
@@ -198,9 +198,8 @@ HBase 是构建于 Hadoop 上的 Apache 开源 NoSQL 数据库，用于为大量
   [使用 HBase C# API 创建一个 HBase 表并从该表中检索数据]: #hbase-powershell
   [摘要]: #summary
   [后续步骤]: #next
-  [provisioningnote]: ../includes/hdinsight-provisioning.md
   [Azure 管理门户]: https://manage.windowsazure.cn/
-  []: http://i.imgur.com/PmGynKZ.jpg
+  [0]: http://i.imgur.com/PmGynKZ.jpg
   [1]: http://i.imgur.com/ecxbB9K.jpg
   [2]: http://i.imgur.com/tMwXlj9.jpg
   [Marlin 的项目页]: https://github.com/thomasjungblut/marlin

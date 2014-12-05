@@ -13,26 +13,26 @@ Hadoop MapReduce 程序读取该文本文件并统计每个单词出现的频率
 
 **先决条件**：
 
--   你必须具有 Azure 帐户。有关注册帐户的选项，请参阅[免费试用 Azure][] 页。
+-   你必须具有 Azure 帐户。有关注册帐户的选项，请参阅[免费试用 Azure][免费试用 Azure] 页。
 
--   你必须已经设置了 HDInsight 群集。有关可用于创建这种群集的各种不同方法的说明，请参阅 [Azure HDInsight 入门][]或[设置 HDInsight 群集][]。
+-   你必须已经设置了 HDInsight 群集。有关可用于创建这种群集的各种不同方法的说明，请参阅 [Azure HDInsight 入门][Azure HDInsight 入门]或[设置 HDInsight 群集][设置 HDInsight 群集]。
 
--   你必须已经安装了 Azure PowerShell，并且已将其配置为可用于你的帐户。有关如何进行此安装的说明，请参阅[安装和配置 Azure PowerShell][]
+-   你必须已经安装了 Azure PowerShell，并且已将其配置为可用于你的帐户。有关如何进行此安装的说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]
 
 ## 本文内容
 
 本主题说明了如何运行该示例，展示了 MapReduce 程序的 Java 代码，总结了你已经学习到的内容，并概括了一些后续步骤。本文包括以下各节。
 
-1.  [使用 Azure PowerShell 运行示例][]
-2.  [WordCount MapReduce 程序的 Java 代码][]
-3.  [摘要][]
-4.  [后续步骤][]
+1.  [使用 Azure PowerShell 运行示例][使用 Azure PowerShell 运行示例]
+2.  [WordCount MapReduce 程序的 Java 代码][WordCount MapReduce 程序的 Java 代码]
+3.  [摘要][摘要]
+4.  [后续步骤][后续步骤]
 
 ## 使用 Azure PowerShell 运行示例
 
 **提交 MapReduce 作业**
 
-1.  打开 **Azure PowerShell**。有关打开 Azure PowerShell 控制台窗口的说明，请参阅[安装和配置 Azure PowerShell][]。
+1.  打开 **Azure PowerShell**。有关打开 Azure PowerShell 控制台窗口的说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。
 
 2.  在以下命令中设置两个变量，然后运行它们：
 
@@ -99,7 +99,7 @@ Hadoop MapReduce 程序读取该文本文件并统计每个单词出现的频率
 
 WordCount 脚本的输出应出现在 cmd 窗口中：
 
-![HDI.Sample.WordCount.Output][]
+![HDI.Sample.WordCount.Output][HDI.Sample.WordCount.Output]
 
 请注意，MapReduce 作业的输出文件是不可变的。所以，如果你重新运行此示例，将需要更改输出文件的名称。
 
@@ -181,26 +181,26 @@ WordCount 脚本的输出应出现在 cmd 窗口中：
 
 有关运行其他示例的教程，以及提供在 Azure HDInsight 上通过 Azure PowerShell 使用 Pig、Hive 和 MapReduce 作业的说明的教程，请参阅以下主题：
 
--   [Azure HDInsight 入门][]
--   [示例：10GB GraySort][]
--   [示例：Pi Estimator][]
--   [示例：C\# Steaming][]
--   [Pig 与 HDInsight 配合使用][]
--   [Hive 与 HDInsight 配合使用][]
--   [Azure HDInsight SDK 文档][]
+-   [Azure HDInsight 入门][Azure HDInsight 入门]
+-   [示例：10GB GraySort][示例：10GB GraySort]
+-   [示例：Pi Estimator][示例：Pi Estimator]
+-   [示例：C\# Steaming][示例：C\# Steaming]
+-   [Pig 与 HDInsight 配合使用][Pig 与 HDInsight 配合使用]
+-   [Hive 与 HDInsight 配合使用][Hive 与 HDInsight 配合使用]
+-   [Azure HDInsight SDK 文档][Azure HDInsight SDK 文档]
 
   [免费试用 Azure]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
-  [Azure HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/
-  [设置 HDInsight 群集]: /en-us/manage/services/hdinsight/provision-hdinsight-clusters/
+  [Azure HDInsight 入门]: /zh-cn/manage/services/hdinsight/get-started-hdinsight/
+  [设置 HDInsight 群集]: /zh-cn/manage/services/hdinsight/provision-hdinsight-clusters/
   [安装和配置 Azure PowerShell]: /zh-cn/documentation/articles/install-configure-powershell/
   [使用 Azure PowerShell 运行示例]: #run-sample
   [WordCount MapReduce 程序的 Java 代码]: #java-code
   [摘要]: #summary
   [后续步骤]: #next-steps
   [HDI.Sample.WordCount.Output]: ./media/hdinsight-sample-wordcount/HDI.Sample.WordCount.Output.png
-  [示例：10GB GraySort]: /en-us/manage/services/hdinsight/howto-run-samples/sample-10gb-graysort/
-  [示例：Pi Estimator]: /en-us/manage/services/hdinsight/howto-run-samples/sample-pi-estimator/
-  [示例：C\# Steaming]: /en-us/manage/services/hdinsight/howto-run-samples/sample-csharp-streaming/
-  [Pig 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-pig-with-hdinsight/
-  [Hive 与 HDInsight 配合使用]: /en-us/manage/services/hdinsight/using-hive-with-hdinsight/
+  [示例：10GB GraySort]: /zh-cn/manage/services/hdinsight/howto-run-samples/sample-10gb-graysort/
+  [示例：Pi Estimator]: /zh-cn/manage/services/hdinsight/howto-run-samples/sample-pi-estimator/
+  [示例：C\# Steaming]: /zh-cn/manage/services/hdinsight/howto-run-samples/sample-csharp-streaming/
+  [Pig 与 HDInsight 配合使用]: /zh-cn/manage/services/hdinsight/using-pig-with-hdinsight/
+  [Hive 与 HDInsight 配合使用]: /zh-cn/manage/services/hdinsight/using-hive-with-hdinsight/
   [Azure HDInsight SDK 文档]: http://msdn.microsoft.com/zh-cn/library/dn469975.aspx

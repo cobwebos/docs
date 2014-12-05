@@ -15,25 +15,25 @@
 
 本教程将指导你完成以下启用 Live Connect 身份验证的基本步骤：
 
-1.  [注册应用程序以进行身份验证并配置移动服务][]
-2.  [将表权限限制给已经过身份验证的用户][]
-3.  [向应用程序添加身份验证][]
+1.  [注册应用程序以进行身份验证并配置移动服务][注册应用程序以进行身份验证并配置移动服务]
+2.  [将表权限限制给已经过身份验证的用户][将表权限限制给已经过身份验证的用户]
+3.  [向应用程序添加身份验证][向应用程序添加身份验证]
 
 本教程需要的内容如下：
 
--   [Live SDK for Windows][]
+-   [Live SDK for Windows][Live SDK for Windows]
 -   Microsoft Visual Studio 2012 Express for Windows 8 RC 或更高版本
 
-本教程基于移动服务快速入门。因此，你还必须先完成[移动服务入门][]教程。
+本教程基于移动服务快速入门。因此，你还必须先完成[移动服务入门][移动服务入门]教程。
 
 <a name="register"></a>
 ## 注册应用程序向 Windows 应用商店注册应用程序
 
 为了能够对用户进行身份验证，你必须将应用程序提交到 Windows 应用商店。然后，你必须注册用于将 Live Connect 与移动服务集成的客户端密钥。
 
-1.  如果尚未注册应用程序，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用程序”页][]，用 Microsoft 帐户登录，然后单击“应用程序名称” 。
+1.  如果尚未注册应用程序，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用程序”页][“提交应用程序”页]，用 Microsoft 帐户登录，然后单击“应用程序名称” 。
 
-    ![][]
+    ![][0]
 
 2.  在“应用程序名称” 中为应用程序键入一个名称，单击“保留应用程序名称” ，然后单击“保存”。 
 
@@ -41,7 +41,7 @@
 
     此操作为应用程序创建一个新的 Windows 应用商店注册。
 
-3.  在 Visual Studio 2012 Express for Windows 8 中，打开你在完成教程[移动服务入门][]时创建的项目。
+3.  在 Visual Studio 2012 Express for Windows 8 中，打开你在完成教程[移动服务入门][移动服务入门]时创建的项目。
 
 4.  在解决方案资源管理器中，右键单击项目，单击“应用商店” ，然后单击“将应用程序与应用商店关联...” 。
 
@@ -57,7 +57,7 @@
 
     这会将所需的 Windows 应用商店注册信息添加到应用程序清单中。
 
-7.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的移动服务 。
+7.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务”，然后单击你的移动服务 。
 
     ![][4]
 
@@ -67,7 +67,7 @@
 
     你将使用此值来定义重定向域。
 
-9.  在 Live Connect 开发人员中心内导航到[我的应用程序][]页，然后在“我的应用程序”列表中单击你的应用程序 。
+9.  在 Live Connect 开发人员中心内导航到[我的应用程序][我的应用程序]页，然后在“我的应用程序”列表中单击你的应用程序 。
 
     ![][6]
 
@@ -98,7 +98,7 @@
 
     ![][10]
 
-3.  在 Visual Studio 2012 Express for Windows 8 中，打开你在完成教程[移动服务入门][]时创建的项目。
+3.  在 Visual Studio 2012 Express for Windows 8 中，打开你在完成教程[移动服务入门][移动服务入门]时创建的项目。
 
 4.  按 F5 键以运行这个基于快速入门的应用程序；验证是否会引发状态代码为 401（“未授权”）的异常。
 
@@ -188,11 +188,8 @@
 <a name="next-steps"> </a>
 ## 后续步骤
 
-在下一教程[使用脚本为用户授权][]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。有关如何使用其他标识提供者进行身份验证的信息，请参阅[身份验证入门][12]。请在[移动服务 .NET 操作方法概念性参考][]中了解有关如何将移动服务与 .NET 一起使用的详细信息。
+在下一教程[使用脚本为用户授权][使用脚本为用户授权]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。有关如何使用其他标识提供者进行身份验证的信息，请参阅[身份验证入门][12]。请在[移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]中了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/single-sign-on-wp8 "Windows Phone"
   [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet/
   [注册应用程序以进行身份验证并配置移动服务]: #register
   [将表权限限制给已经过身份验证的用户]: #permissions
@@ -214,7 +211,6 @@
   [9]: ./media/mobile-services-windows-store-dotnet-single-sign-on/mobile-portal-data-tables.png
   [10]: ./media/mobile-services-windows-store-dotnet-single-sign-on/mobile-portal-change-table-perms.png
   [11]: ./media/mobile-services-windows-store-dotnet-single-sign-on/mobile-add-reference-live-dotnet.png
-  [Windows Phone 8 应用程序]: /zh-cn/develop/mobile/tutorials/single-sign-on-wp8/
   [使用脚本为用户授权]: /zh-cn/develop/mobile/tutorials/authorize-users-in-scripts-dotnet
   [12]: /zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet
   [移动服务 .NET 操作方法概念性参考]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library

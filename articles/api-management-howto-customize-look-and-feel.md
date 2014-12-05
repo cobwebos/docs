@@ -18,7 +18,7 @@
 
 每个规则表示所选元素的样式属性。例如，对于上面选择的标头文本，文本的大小是 @font-size-h1，同时带替代项的字体名称在 @headings-font-family 中。
 
-> 如果您熟悉 [bootstrap][http://getbootstrap.com/]，这些规则实际上是开发人员门户中使用的 bootstrap 主题中的 [LESS variables][http://getbootstrap.com/css/]。
+> 如果您熟悉 [bootstrap](http://getbootstrap.com/)，这些规则实际上是开发人员门户中使用的 bootstrap 主题中的 [LESS variables](http://getbootstrap.com/css/)。
 
 让我们来更改标题文本的颜色。选择 **@headings-color** 字段中中的条目，键入 \#000000。这是黑色的十六进制代码。执行此操作，您将看到一个正方形颜色指示符出现在文本框中的末尾。如单击该指示符，颜色选取器将允许您选择一种颜色。
 

@@ -1,6 +1,6 @@
 为了能够对用户进行身份验证，你必须通过标识提供者注册你的应用程序。然后，你需要向移动服务注册标识提供者生成的客户端密钥。
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务”，然后单击你的移动服务 。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务”，然后单击你的移动服务 。
 
     ![][0]
 
@@ -12,11 +12,11 @@
 
 3.  从以下列表中选择支持的标识提供者，并按步骤向该标识提供者注册你的应用程序：
 
--   [Microsoft 帐户][]
--   [Facebook 登录][]
--   [Twitter 登录][]
--   [Google 登录][]
--   [Azure Active Directory][]
+-   [Microsoft 帐户][Microsoft 帐户]
+-   [Facebook 登录][Facebook 登录]
+-   [Twitter 登录][Twitter 登录]
+-   [Google 登录][Google 登录]
+-   [Azure Active Directory][Azure Active Directory]
 
     请记住，要记下标识提供者生成的客户端标识和密钥值。
 

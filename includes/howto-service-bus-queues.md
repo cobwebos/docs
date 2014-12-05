@@ -36,7 +36,7 @@ Service Bus 队列是一种可用于各种应用场景
 
 创建服务命名空间：
 
-1. 登录到 [Windows Azure 管理门户][]。
+1. 登录到 [Windows Azure 管理门户][Windows Azure 管理门户]。
 
 2. 在该管理门户的左侧导航窗格中，单击 Service Bus。
 

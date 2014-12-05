@@ -278,12 +278,6 @@
 -   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 C#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/ "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ "Windows Phone"
-  [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/ "Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet/ "JavaScript 后端"
   [JavaScript 后端版本]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet
   [下载 Windows 应用商店应用程序项目]: #download-app
   [创建新的移动服务]: #create-service
@@ -292,11 +286,9 @@
   [针对本地托管的服务测试 Windows 应用商店应用程序]: #test-locally-hosted
   [将移动服务发布到 Azure]: #publish-mobile-service
   [针对 Azure 中托管的服务测试 Windows 应用商店应用程序]: #test-azure-hosted
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F
   [GetStartedWithMobileServices 应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=328660
   [0]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/app-view.png
   [1]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/mobile-data-sample-download-dotnet-vs13.png
-  [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
   [Azure 管理门户]: https://manage.windowsazure.cn/
   [2]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/mobile-service-overview-page.png
   [3]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/download-service-project.png
@@ -308,7 +300,6 @@
   [9]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/copy-mobileserviceclient-snippet.png
   [10]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-pasted-mobileserviceclient.png
   [11]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-build-solution.png
-  [12]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-run-solution.png
   [13]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/new-local-todoitem.png
   [14]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/vs-show-local-table-data.png
   [15]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/local-item-checked.png

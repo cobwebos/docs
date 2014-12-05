@@ -450,16 +450,13 @@
   [创建应用程序]: #create
   [部署应用程序]: #deploy
   [管理数据库]: #manage
-  [\<a href="mailto:support@mongolab.com"\>support@mongolab.com\</a\>]: mailto:support@mongolab.com
   [Node.js]: http://nodejs.org
   [Git]: http://git-scm.com
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [应用商店]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/button-store.png
   [1]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/entry-mongolab.png
   [连接信息按钮]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/button-connectioninfo.png
   [连接信息屏幕]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/dialog-mongolab_connectioninfo.png
   [网站连接字符串]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/focus-mongolab-websiteconnectionstring.png
-  [howto-provision-mongolab]: ../includes/howto-provision-mongolab.md
   [Express]: http://expressjs.com
   [Mongoose]: http://mongoosejs.com
   [Azure 开发人员中心]: /zh-cn/develop/nodejs/
@@ -470,7 +467,4 @@
   [网站仪表板]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/screen-mongolab-websitedashboard.png
   [Git remote]: http://git-scm.com/docs/git-remote
   [iisnode.yml]: https://github.com/WindowsAzure/iisnode/blob/master/src/samples/configuration/iisnode.yml
-  [howto-get-connectioninfo-mongolab]: ../includes/howto-get-connectioninfo-mongolab.md
-  [howto-save-connectioninfo-mongolab]: ../includes/howto-save-connectioninfo-mongolab.md
   [显示空白 tasklist 的网页]: ./media/store-mongolab-web-sites-nodejs-store-data-mongodb/todo_list_noframe.png
-  [howto-access-mongolab-ui]: ../includes/howto-access-mongolab-ui.md

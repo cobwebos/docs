@@ -7,7 +7,7 @@ In order to deploy applications to Azure, you need an account. This article desc
 1.  Open a web browser and browse to <a href="http://www.windowsazure.cn">http://www.windowsazure.cn</a>
 
 <!--
-2.  If you have an MSDN subscription, navigate to the <a href="/en-us/pricing/member-offers/msdn-benefits-details/" target="_blank">Azure Benefit for MSDN Subscribers</a> page and follow the steps to create an account by activating your MSDN subscriber benefits.
+2.  If you have an MSDN subscription, navigate to the <a href="/zh-cn/pricing/member-offers/msdn-benefits-details/" target="_blank">Azure Benefit for MSDN Subscribers</a> page and follow the steps to create an account by activating your MSDN subscriber benefits.
  -->
 
 2.  navigate to the <a href="http://www.windowsazure.cn/zh-cn/pricing/free-trial/" target="_blank">create a free trial account</a> page and follow the steps to create a trial account. You'll need a credit card number and a mobile phone number for proof of identity, but you will not be billed.

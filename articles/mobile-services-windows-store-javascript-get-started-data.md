@@ -29,7 +29,7 @@
 
 <div class="dev-callout"><b>说明</b>
 
-<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-js%2F" target="_blank">Azure 免费试用</a>。</p>
+<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-js%2F" target="_blank">Azure 免费试用</a>。</p>
 </div>
 
 <a name="download-app"></a>
@@ -181,29 +181,14 @@
 -   [移动服务 HTML/JavaScript 操作方法概念性参考][移动服务 HTML/JavaScript 操作方法概念性参考]
     了解有关如何将移动服务与 HTML 和 JavaScript 一起使用的详细信息。
 
-  [Windows 应用商店 c#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-data-html "HTML"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android "Xamarin.Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-data/ "JavaScript 后端"
-  [使用 Visual Studio 2012 的移动服务中的数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js-vs2012/
   [下载 Windows 应用商店应用程序项目]: #download-app
   [创建移动服务]: #create-service
   [添加用于存储的数据表]: #add-table
   [更新应用程序以使用移动服务]: #update-app
   [针对移动服务测试应用程序]: #test-app
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A756A2826&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-js%2F
   [GetStartedWithMobileServices 应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=328660
   []: ./media/mobile-services-windows-store-javascript-get-started-data-vs2013/mobile-data-sample-download-js-vs12.png
   [1]: ./media/mobile-services-windows-store-javascript-get-started-data-vs2013/mobile-quickstart-startup.png
-  [mobile-services-create-new-service-vs2013]: ../includes/mobile-services-create-new-service-vs2013.md
-  [mobile-services-create-new-table-vs2013]: ../includes/mobile-services-create-new-table-vs2013.md
-  [动态架构]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj193175.aspx
   [管理门户]: https://manage.windowsazure.cn/
   [2]: ./media/mobile-services-windows-store-javascript-get-started-data-vs2013/mobile-todoitem-data-browse.png
   [使用脚本验证和修改数据]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-js

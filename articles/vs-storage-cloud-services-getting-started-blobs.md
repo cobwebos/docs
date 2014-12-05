@@ -1,6 +1,6 @@
 <properties title="Azure 存储入门" pageTitle="Azure 存储入门" metaKeywords="Azure, Getting Started, Storage" description="" services="storage" documentationCenter="" authors="ghogen, kempb" />
 
-<tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb"></tags>
+<tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb" />
 
 > [AZURE.SELECTOR]
 >
@@ -39,4 +39,3 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
   [队列]: /documentation/articles/vs-storage-cloud-services-getting-started-queues/
   [表]: /documentation/articles/vs-storage-cloud-services-getting-started-tables/
   [如何通过 .NET 使用 Blob 存储]: http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/ "如何通过 .NET 使用 Blob 存储"
-  [vs-storage-getting-started-blobs-include]: ../includes/vs-storage-getting-started-blobs-include.md

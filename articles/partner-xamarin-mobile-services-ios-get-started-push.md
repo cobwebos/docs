@@ -13,30 +13,30 @@
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
-1.  [生成证书签名请求][]
-2.  [注册应用程序和启用推送通知][]
-3.  [为应用程序创建配置文件][]
-4.  [配置移动服务][]
-5.  [向应用程序添加推送通知][]
-6.  [更新脚本以发送推送通知][]
-7.  [插入数据以接收通知][]
+1.  [生成证书签名请求][生成证书签名请求]
+2.  [注册应用程序和启用推送通知][注册应用程序和启用推送通知]
+3.  [为应用程序创建配置文件][为应用程序创建配置文件]
+4.  [配置移动服务][配置移动服务]
+5.  [向应用程序添加推送通知][向应用程序添加推送通知]
+6.  [更新脚本以发送推送通知][更新脚本以发送推送通知]
+7.  [插入数据以接收通知][插入数据以接收通知]
 
 本教程需要的内容如下：
 
--   [XCode 5.0][]
+-   [XCode 5.0][XCode 5.0]
 -   支持 iOS 5.0（或更高版本）的设备
 -   iOS 开发人员计划成员身份
 -   [Xamarin.iOS]
--   [Azure 移动服务组件][]
+-   [Azure 移动服务组件][Azure 移动服务组件]
 
 <div class="dev-callout"><b>说明</b>
 
 <p>由于推送通知配置要求，你必须在支持 iOS 的设备（iPhone 或 iPad），而不是在模拟器上部署和测试推送通知。</p>
 </div>
 
-本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]。
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][移动服务入门]。
 
-Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照以下说明创建必要的证书并将其上载到你的移动服务。有关正式的 APNS 功能文档，请参阅 [Apple 推送通知服务][]。
+Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照以下说明创建必要的证书并将其上载到你的移动服务。有关正式的 APNS 功能文档，请参阅 [Apple 推送通知服务][Apple 推送通知服务]。
 
 <a name="certificates"></a>
 ## 生成 CSR 文件生成证书签名请求文件
@@ -47,7 +47,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 2.  单击“Keychain Access” ，展开“Certificate Assistant”（证书助理） ，然后单击“Request a Certificate from a Certificate Authority...”（从证书颁发机构请求证书...） 。
 
-    ![][]
+    ![][0]
 
 3.  选择你的“User Email Address”（用户电子邮件地址） ，键入“Common Name”（公用名） 和“CA Email Address”（CA 电子邮件地址） 值，确保选中“Saved to disk”（保存到磁盘） ，然后单击“Continue”（继续） 。
 
@@ -66,7 +66,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 若要将推送通知从移动服务发送到 iOS 应用程序，你必须向 Apple 注册应用程序，还要注册推送通知。
 
-1.  如果你尚未注册应用程序，请导航到 Apple 开发人员中心的 [iOS 设置门户][]，使用 Apple ID 登录，单击“Identifiers”（标识符） ，然后单击“App IDs”（应用程序 ID） ，最后单击 "+" 符号。
+1.  如果你尚未注册应用程序，请导航到 Apple 开发人员中心的 [iOS 设置门户][iOS 设置门户]，使用 Apple ID 登录，单击“Identifiers”（标识符） ，然后单击“App IDs”（应用程序 ID） ，最后单击 "+" 符号。
 
     ![][3]
 
@@ -129,7 +129,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 <a name="profile"></a><
 ## 设置应用程序为应用程序创建设置配置文件
 
-1.  返回 [iOS 设置门户][]，选择“Provisioning Profiles”（设置配置文件） ，选择“All”（全部） ，然后单击“+” 按钮创建一个新的配置文件。此时会启动“Add iOS Provisiong Profile”（添加 iOS 设置配置文件） 向导
+1.  返回 [iOS 设置门户][iOS 设置门户]，选择“Provisioning Profiles”（设置配置文件） ，选择“All”（全部） ，然后单击“+” 按钮创建一个新的配置文件。此时会启动“Add iOS Provisiong Profile”（添加 iOS 设置配置文件） 向导
 
     ![][14]
 
@@ -181,7 +181,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
     <p>本教程将创建一个 QuickstartPusher.p12 文件。你的文件名和位置可以不同。</p>
 	</div>
 
-2.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
+2.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务” ，然后单击你的应用程序。
 
     ![][23]
 
@@ -301,7 +301,7 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
             }, 2500);
         }
 
-    这将会注册一个新的插入脚本，该脚本使用 [apns 对象][]将推送通知（插入的文本）发送到插入请求中提供的设备。
+    这将会注册一个新的插入脚本，该脚本使用 [apns 对象][apns 对象]将推送通知（插入的文本）发送到插入请求中提供的设备。
 
    	<div class="dev-callout"><b>说明</b>
 
@@ -336,20 +336,14 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 ## 获取已完成的示例
 
-下载[已完成的示例项目][]。请务必使用你自己的 Azure 设置更新 "applicationURL" 和 "applicationKey" 变量。
+下载[已完成的示例项目][已完成的示例项目]。请务必使用你自己的 Azure 设置更新 "applicationURL" 和 "applicationKey" 变量。
 
 <a name="next-steps"> </a>
 ## 后续步骤
 
-在这个简单的示例中，用户将会收到包含刚刚插入的数据的推送通知。请求中的客户端会将 APNS 使用的设备标记提供给移动服务。在下一教程[向应用程序用户推送通知][]中，你将要创建一个单独的 Devices 表，该表用于存储设备标记，以及在发生插入操作时向所有存储的通道发出推送通知。
+在这个简单的示例中，用户将会收到包含刚刚插入的数据的推送通知。请求中的客户端会将 APNS 使用的设备标记提供给移动服务。在下一教程[向应用程序用户推送通知][向应用程序用户推送通知]中，你将要创建一个单独的 Devices 表，该表用于存储设备标记，以及在发生插入操作时向所有存储的通道发出推送通知。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-push-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-push-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-android "Android"
   [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android "Xamarin.Android"
   [生成证书签名请求]: #certificates
   [注册应用程序和启用推送通知]: #register
   [为应用程序创建配置文件]: #profile

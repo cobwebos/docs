@@ -9,27 +9,27 @@
 
 本主题演示如何使用 Azure 移动服务的脱机功能。当你的移动服务处于脱机情况时，可使用 Azure 移动服务脱机功能与本地数据库交互。当你重新联机时，脱机功能允许你通过移动服务同步本地更改。
 
-在本教程中，你将更新[移动服务入门][]或[数据入门][]教程中的应用程序，以支持 Azure 移动服务的脱机功能。随后，你将在断开连接的脱机情况下添加数据，将这些项目同步到联机数据库，然后登录到 Azure 管理门户，查看在运行应用程序时对数据所做的更改。
+在本教程中，你将更新[移动服务入门][移动服务入门]或[数据入门][数据入门]教程中的应用程序，以支持 Azure 移动服务的脱机功能。随后，你将在断开连接的脱机情况下添加数据，将这些项目同步到联机数据库，然后登录到 Azure 管理门户，查看在运行应用程序时对数据所做的更改。
 
-> [WACOM.NOTE] 本教程旨在帮助你更好地了解如何使用移动服务通过 Azure 在 Windows Phone 应用程序中存储和检索数据。如果这是你第一次体验移动服务，请考虑首先完成[移动服务入门][]教程。
+> [WACOM.NOTE] 本教程旨在帮助你更好地了解如何使用移动服务通过 Azure 在 Windows Phone 应用程序中存储和检索数据。如果这是你第一次体验移动服务，请考虑首先完成[移动服务入门][移动服务入门]教程。
 
 本教程将指导你完成以下基本步骤：
 
-1.  [更新应用程序以支持脱机功能][]
-2.  [在脱机情况下测试应用程序][]
-3.  [更新应用程序以重新连接移动服务][]
-4.  [测试已连接到移动服务的应用程序][]
+1.  [更新应用程序以支持脱机功能][更新应用程序以支持脱机功能]
+2.  [在脱机情况下测试应用程序][在脱机情况下测试应用程序]
+3.  [更新应用程序以重新连接移动服务][更新应用程序以重新连接移动服务]
+4.  [测试已连接到移动服务的应用程序][测试已连接到移动服务的应用程序]
 
 本教程需要的内容如下：
 
 -   Visual Studio 2012
--   [Windows Phone 8 SDK][]
--   完成[移动服务入门][]或[数据入门][]教程。
+-   [Windows Phone 8 SDK][Windows Phone 8 SDK]
+-   完成[移动服务入门][移动服务入门]或[数据入门][数据入门]教程。
 -   Windows Azure 移动服务 SDK NuGet 包 1.3.0-alpha2 或更高版本
 -   Windows Azure 移动服务 SQLite Store NuGet 包 1.0.0-alpha 或更高版本
--   [SQLite for Windows Phone 8][]
+-   [SQLite for Windows Phone 8][SQLite for Windows Phone 8]
 
-> [WACOM.NOTE] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][]。
+> [WACOM.NOTE] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][Azure 免费试用]。
 
 <a name="enable-offline-app"></a>
 ## 更新应用程序以支持脱机功能
@@ -38,15 +38,15 @@
 
 本节使用 SQLite 作为脱机功能的本地存储。
 
-> [WACOM.NOTE] 可以跳过本节，而只下载具有脱机支持的“入门”项目版本。若要下载启用脱机支持的项目，请参阅[用于 Windows Phone 的入门脱机示例][]。
+> [WACOM.NOTE] 可以跳过本节，而只下载具有脱机支持的“入门”项目版本。若要下载启用脱机支持的项目，请参阅[用于 Windows Phone 的入门脱机示例][用于 Windows Phone 的入门脱机示例]。
 
-1.  安装 SQLite for Windows Phone 8 项目。可以从此链接 ([SQLite for Windows Phone 8][]) 安装它。
+1.  安装 SQLite for Windows Phone 8 项目。可以从此链接 ([SQLite for Windows Phone 8][SQLite for Windows Phone 8]) 安装它。
 
     > [WACOM.NOTE] 如果你使用的是 Internet Explorer，则单击用于安装 SQLite 的链接可能会提示你下载 .zip 文件形式的 .vsix。使用 .vsix 扩展名而不是 .zip 将文件保存到硬盘上的某一位置。在 Windows 资源管理器中双击 .vsix 文件以运行安装程序。
 
-2.  在 Visual Studio 中，打开你在[移动服务入门][]或[数据入门][]教程中完成的项目。在解决方案资源管理器中，右键单击项目下的“引用” ，并在“Windows Phone” \>“扩展” 下添加对“SQLite for Windows Phone” 的引用。
+2.  在 Visual Studio 中，打开你在[移动服务入门][移动服务入门]或[数据入门][数据入门]教程中完成的项目。在解决方案资源管理器中，右键单击项目下的“引用” ，并在“Windows Phone” \>“扩展” 下添加对“SQLite for Windows Phone” 的引用。
 
-    ![][]
+    ![][0]
 
 3.  SQLite 运行时要求你将所生成的项目的处理器体系结构更改为“x86” 、“x64” 或“ARM” 。不支持“任何 CPU” 。请将处理器体系结构更改为要测试的受支持设置之一。
 
@@ -236,10 +236,8 @@
 
 ## 后续步骤
 
--   [使用移动服务脱机支持处理冲突][]
+-   [使用移动服务脱机支持处理冲突][使用移动服务脱机支持处理冲突]
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-offline-data "Windows Phone"
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started/
   [数据入门]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-data/
   [更新应用程序以支持脱机功能]: #enable-offline-app

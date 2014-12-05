@@ -13,25 +13,25 @@ SQL Server 2012 SP1 CU2 中发布了可将 SQL Server 备份写入 Azure Blob �
 -   无硬件管理开销：使用 Azure 服务没有硬件管理开销。Azure 服务可管理硬件并提供地域冗余复制和硬件故障防护。
 -   当前，对于在 Azure 虚拟机中运行的 SQL Server 实例，可以通过创建附加的磁盘来备份到 Azure Blob 存储服务。不过，你只能将有限数量的磁盘附加到 Azure 虚拟机。对特大实例的限制为 16 个磁盘；对较小实例的磁盘限制数更少。通过直接备份到 Azure Blob 存储，你可以绕过 16 个磁盘这一限制。
 -   此外，目前存储在 Azure Blob 存储服务中的备份文件可供本地 SQL Server 或运行在 Azure 虚拟机中的其他 SQL Server 直接访问，而无需进行数据库附加/分离或者下载和附加 VHD。
--   成本优势：只需为所使用的服务付费。作为场外和备份存档方式可能更加划算。有关详细信息，请参阅 [Azure 定价条款][]。
+-   成本优势：只需为所使用的服务付费。作为场外和备份存档方式可能更加划算。有关详细信息，请参阅 [Azure 定价条款][Azure 定价条款]。
 
-有关更多详细信息，请参阅[使用 Azure Blob 存储服务执行 SQL Server 备份和还原][]。
+有关更多详细信息，请参阅[使用 Azure Blob 存储服务执行 SQL Server 备份和还原][使用 Azure Blob 存储服务执行 SQL Server 备份和还原]。
 
 以下两部分介绍了 Azure Blob 存储服务，以及备份到 Azure Blob 存储服务或从中进行还原时使用的 SQL Server 组件。了解这些组件以及它们之间的交互对备份到 Azure Blob 存储服务或从中进行还原来说至关重要。
 
 创建 Azure 帐户是这个过程的第一步。SQL Server 使用 Azure 存储帐户名及其访问密钥值来对存储服务进行身份验证，然后读取 Blob 并将其写入存储服务。SQL Server 凭据存储着此身份验证信息，在备份或还原操作过程中将使用该凭据。
 
-有关创建存储帐户和执行简单还原操作的完整演练，请参阅[开始使用 Azure 存储服务执行 SQL Server 备份和还原][]
+有关创建存储帐户和执行简单还原操作的完整演练，请参阅[开始使用 Azure 存储服务执行 SQL Server 备份和还原][开始使用 Azure 存储服务执行 SQL Server 备份和还原]
 
 ## Azure Blob 存储服务组件
 
 -   存储帐户：存储帐户是所有存储服务的起点。若要访问 Azure Blob 存储服务，请先创建一个 Azure 存储帐户。存储帐户名称及其访问密钥属性是通过 Azure Blob 存储服务及其组件进行身份验证所必需的。
-    有关 Azure Blob 存储服务的详细信息，请参阅[如何使用 Azure Blob 存储服务][]
+    有关 Azure Blob 存储服务的详细信息，请参阅[如何使用 Azure Blob 存储服务][如何使用 Azure Blob 存储服务]
 
 -   容器：容器提供一组 Blob 集，并且可存储无限数量的 Blob。若要将 SQL Server 备份写入到 Azure Blob 服务，你必须至少创建一个根容器。
 
 -   Blob：任何类型和大小的文件。Azure Blob 存储服务中可以存储两种 Blob：块 Blob 和页 Blob。SQL Server 备份使用页 Blob 作为 Blob 类型。使用以下 URL 格式可访问 Blob：`https://<storage account>.blob.core.chinacloudapi.cn/<container>/<blob>`
-    有关页 Blob 的详细信息，请参阅[了解块 Blob 和页 Blob][]
+    有关页 Blob 的详细信息，请参阅[了解块 Blob 和页 Blob][了解块 Blob 和页 Blob]
 
 ## SQL Server 组件
 
@@ -43,22 +43,22 @@ SQL Server 2012 SP1 CU2 中发布了可将 SQL Server 备份写入 Azure Blob �
 **重要说明**
 如果你选择将备份文件复制并上载到 Azure Blob 存储服务中，并且打算使用此文件执行还原操作，则必须使用页 Blob 类型作为存储选项。从块 Blob 类型执行 RESTORE 命令将失败并报错。
 
--   凭据：连接到 Azure Blob 存储服务并通过其进行身份验证所需的信息将存储为凭据。为了使 SQL Server 将备份写入 Azure Blob 或从中进行还原，必须创建 SQL Server 凭据。凭据存储存储帐户的名称和存储帐户访问密钥。创建凭据后，必须在发布 BACKUP/RESTORE 语句时在 WITH CREDENTIAL 选项中指定该凭据。有关如何查看、复制或重新生成存储帐户访问密钥的详细信息，请参阅[存储帐户访问密钥][]。
-    有关如何创建 SQL Server 凭据的分步说明，请参阅[开始使用 Azure 存储服务执行 SQL Server 备份和还原][]。
+-   凭据：连接到 Azure Blob 存储服务并通过其进行身份验证所需的信息将存储为凭据。为了使 SQL Server 将备份写入 Azure Blob 或从中进行还原，必须创建 SQL Server 凭据。凭据存储存储帐户的名称和存储帐户访问密钥。创建凭据后，必须在发布 BACKUP/RESTORE 语句时在 WITH CREDENTIAL 选项中指定该凭据。有关如何查看、复制或重新生成存储帐户访问密钥的详细信息，请参阅[存储帐户访问密钥][存储帐户访问密钥]。
+    有关如何创建 SQL Server 凭据的分步说明，请参阅[开始使用 Azure 存储服务执行 SQL Server 备份和还原][开始使用 Azure 存储服务执行 SQL Server 备份和还原]。
 
 ## 使用 Azure Blob 执行 SQL Server 数据库备份和还原 - 概念和任务：
 
 **概念、注意事项和代码示例：**
 
-[使用 Azure Blob 存储服务执行 SQL Server 备份和还原][]
+[使用 Azure Blob 存储服务执行 SQL Server 备份和还原][使用 Azure Blob 存储服务执行 SQL Server 备份和还原]
 
 **教程入门：**
 
-[开始使用 Azure Blob 存储服务执行 SQL Server 备份和还原][]
+[开始使用 Azure Blob 存储服务执行 SQL Server 备份和还原][开始使用 Azure Blob 存储服务执行 SQL Server 备份和还原]
 
 **最佳实践、疑难解答：**
 
-[备份和还原最佳实践（Azure Blob 存储服务）][]
+[备份和还原最佳实践（Azure Blob 存储服务）][备份和还原最佳实践（Azure Blob 存储服务）]
 
   [Azure 定价条款]: http://www.windowsazure.cn/zh-cn/pricing/overview/ "定价条款"
   [使用 Azure Blob 存储服务执行 SQL Server 备份和还原]: http://msdn.microsoft.com/zh-cn/library/jj919148.aspx

@@ -14,5 +14,4 @@ Azure 移动服务支持客户端驱动的和服务器驱动的身份验证方�
 
   [使用 Live Connect 单一登录对 Windows 应用商店应用程序进行身份验证]: /zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-dotnet
   [快速入门：为移动服务添加推送通知]: http://go.microsoft.com/fwlink/p/?LinkId=309101
-  [mobile-services-register-windows-store-app]: ../includes/mobile-services-register-windows-store-app.md
   [LoginAsync]: http://go.microsoft.com/fwlink/p/?LinkId=311594

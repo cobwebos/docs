@@ -284,7 +284,6 @@ Visual Studio Online（前称 Team Foundation Service）是 Microsoft 提供的�
   [步骤 6：更改生产部署（仅限云服务）]: #step6
   [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
   [1]: ./media/cloud-services-continuous-delivery-use-vso/tfs36.PNG
-  [https://\<accountname\>.visualstudio.com]: https://<accountname>.visualstudio.com
   [2]: ./media/cloud-services-continuous-delivery-use-vso/tfs37.PNG
   [使用版本控制]: http://go.microsoft.com/fwlink/?LinkId=324037
   [使用 Visual Studio Online 和 Git 向 Azure 持续传送项目]: http://go.microsoft.com/fwlink/?LinkId=397358

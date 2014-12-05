@@ -205,12 +205,12 @@
 
 现在客户端应用程序已更新，请返回到[使用通知中心通知用户][使用通知中心通知用户]并更新移动服务以使用通知中心发送通知。
 
-<!-- Anchors. -->  
-
-<!-- URLs. -->
+  
 
 
-<!-- Images. -->
+
+
+
 
   [0]: ./media/notification-hubs-ios-aspnet-register-user-push-notifications/notification-hub-user-aspnet-ios1.png
   [1]: ./media/notification-hubs-ios-aspnet-register-user-push-notifications/notification-hub-user-aspnet-ios2.png

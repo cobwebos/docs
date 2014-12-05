@@ -251,7 +251,6 @@ Service Bus **NuGet** 包是获取 Service Bus API 并为应用程序配置所�
 -   Service Bus 示例：从 [Azure 示例][Azure 示例]下载。
 
   [后续步骤]: #next_steps
-  [create-account-note]: ../includes/create-account-note.md
   [中继概念]: ./media/service-bus-dotnet-how-to-use-relay/sb-relay-01.png
   [Azure 管理门户]: http://manage.windowsazure.cn
   [0]: ./media/service-bus-dotnet-how-to-use-relay/sb-queues-13.png

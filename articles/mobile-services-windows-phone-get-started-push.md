@@ -184,15 +184,6 @@
 -   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-push "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-push "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-push "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-push "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started-push "Android"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started-push "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started-push "Xamarin.Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-push/ "JavaScript 后端"
   [推送通知入门]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/
   [创建 Registrations 表]: #create-table
   [向应用程序添加推送通知]: #add-push
@@ -201,9 +192,7 @@
   [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
   [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-wp8
   [通知中心入门]: /zh-cn/manage/services/notification-hubs/getting-started-windows-dotnet/
-  [mobile-services-create-new-push-table]: ../includes/mobile-services-create-new-push-table.md
   [0]: ./media/mobile-services-windows-phone-get-started-push/mobile-app-enable-push-wp8.png
-  [mobile-services-update-registrations-script]: ../includes/mobile-services-update-registrations-script.md
   [1]: ./media/mobile-services-windows-phone-get-started-push/mobile-insert-script-push2.png
   [2]: ./media/mobile-services-windows-phone-get-started-push/mobile-quickstart-push1-wp8.png
   [3]: ./media/mobile-services-windows-phone-get-started-push/mobile-quickstart-push2-wp8.png

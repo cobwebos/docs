@@ -217,7 +217,7 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 + [Use Notification Hubs to broadcast localized breaking news]      
   Learn how to expand the breaking news app to enable sending localized notifications.   + [Notify users with Notification Hubs]      Learn how to push notifications to specific authenticated users. This is a good solution for sending notifications only to specific users. --> 
 
-<!-- Anchors. -->  
+  
 
 <!-- URLs.-->
 
@@ -229,7 +229,7 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
   [运行应用程序并生成通知]: #test-app
   [通知中心入门]: /zh-cn/manage/services/notification-hubs/get-started-notification-hubs-wp8/
 
-<!-- Images. -->
+
   [0]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-breakingnews.png
   [1]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-registration.png
   [2]: ./media/notification-hubs-windows-phone-send-breaking-news/notification-hub-toast.png

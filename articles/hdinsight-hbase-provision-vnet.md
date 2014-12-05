@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-hbase-provision-on-vnet" urlDisplayName="Provision HBase clusters on Azure Virtual Network" pageTitle="Provision HBase clusters on Azure Virtual Network | Azure" metaKeywords="" description="Learn how to create HDInsight clusters on Azure Virtual Network." metaCanonical="" services="hdinsight" documentationCenter="" title="Provision HBase clusters on Azure Virtual Network" authors="jgao" solutions="big-data" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="jgao" />
 
 # 在 Azure 虚拟网络上设置 HBase 群集
 
@@ -14,19 +14,19 @@
 
 ## 本文内容
 
--   [先决条件][]
--   [在虚拟网络中设置 HBase 群集][]
--   [使用 HBase Java RPC API 连接到虚拟网络中设置的 HBase 群集][]
--   [使用 PowerShell 设置 HBase 群集][]
--   [后续步骤][]
+-   [先决条件][先决条件]
+-   [在虚拟网络中设置 HBase 群集][在虚拟网络中设置 HBase 群集]
+-   [使用 HBase Java RPC API 连接到虚拟网络中设置的 HBase 群集][使用 HBase Java RPC API 连接到虚拟网络中设置的 HBase 群集]
+-   [使用 PowerShell 设置 HBase 群集][使用 PowerShell 设置 HBase 群集]
+-   [后续步骤][后续步骤]
 
 ## <span id="prerequisites"></span></a> 先决条件
 
 在开始阅读本教程前，你必须具有：
 
--   **Azure 订阅**。Azure 是基于订阅的平台。有关获取订阅的详细信息，请参阅[购买选项][]、[成员优惠][]或[免费试用][]。
+-   **Azure 订阅**。Azure 是基于订阅的平台。有关获取订阅的详细信息，请参阅[购买选项][购买选项]、[成员优惠][成员优惠]或[免费试用][免费试用]。
 
--   **已安装并已配置 Azure PowerShell 的工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为“RemoteSigned”。请参阅[运行 Windows PowerShell 脚本][]。
+-   **已安装并已配置 Azure PowerShell 的工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为“RemoteSigned”。请参阅[运行 Windows PowerShell 脚本][运行 Windows PowerShell 脚本]。
 
     在运行 PowerShell 脚本之前，请确保你已使用以下 cmdlet 连接到 Azure 订阅：
 
@@ -40,7 +40,7 @@
 
 **要使用管理门户创建虚拟网络：**
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  单击页面底部的“新建”，然后依次单击“网络服务”、“虚拟网络”和“快速创建”。
 3.  键入或选择以下值：
 
@@ -62,11 +62,11 @@
 
 11. 如果更新了子网值，请单击页面底部的“保存”。
 
-> [WACOM.NOTE] HDInsight 群集使用 Azure Blob 存储来存储数据。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用][]。你需要存储帐户和 Blob 存储容器。存储帐户位置必须与虚拟网络位置和群集位置匹配。
+> [WACOM.NOTE] HDInsight 群集使用 Azure Blob 存储来存储数据。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用][将 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用]。你需要存储帐户和 Blob 存储容器。存储帐户位置必须与虚拟网络位置和群集位置匹配。
 
 **要创建 Azure 存储帐户和 Blob 存储容器：**
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  单击左下角的“新建”，指向“数据服务”，指向“存储”，然后单击“快速创建”。
 
 3.  键入或选择以下值：
@@ -87,35 +87,35 @@
 
 **要使用 Azure 门户设置 HBase 群集：**
 
-> [WACOM.NOTE] 有关使用 PowerShell 设置新 HBase 群集的信息，请参阅[使用 PowerShell 设置 HBase 群集][]。
+> [WACOM.NOTE] 有关使用 PowerShell 设置新 HBase 群集的信息，请参阅[使用 PowerShell 设置 HBase 群集][使用 PowerShell 设置 HBase 群集]。
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 2.  单击左下角的“新建”，指向“数据服务”，指向“HDINSIGHT”，然后单击“自定义创建”。
 3.  输入“群集名称”，并选择用于该群集的“HDINSIGHT 版本”。
 
-    ![群集名称和版本字段][]
+    ![群集名称和版本字段][群集名称和版本字段]
 
 4.  选择要为群集创建的“数据节点”数，以及用于该群集的区域或 Azure 虚拟网络（“区域/虚拟网络”）。
 
-    ![节点数和区域字段][]
+    ![节点数和区域字段][节点数和区域字段]
 
 5.  输入用于该群集的管理员“用户名”和“密码”。
 
-    ![管理员名称和密码字段][]
+    ![管理员名称和密码字段][管理员名称和密码字段]
 
 6.  选择是使用新存储帐户还是现有存储帐户。如果使用新帐户，输入要创建的“帐户名称”和“默认容器”。最后，选中复选标记以创建群集。
 
-    ![存储帐户选择][]
+    ![存储帐户选择][存储帐户选择]
 
-要开始处理新 HBase 群集，可以按照[开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][]中的步骤操作。
+要开始处理新 HBase 群集，可以按照[开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][开始在 HDInsight 中将 HBase 与 Hadoop 配合使用]中的步骤操作。
 
 ## <span id="connect"></span></a>使用 HBase Java RPC API 连接到虚拟网络中设置的 HBase 群集
 
-1.  在相同的 Azure 虚拟网络和子网中设置 IaaS 虚拟机。因此，虚拟机和 HBase 群集使用相同的内部 DNS 服务器来解析主机名。为此，你必须选择“从库中”选项，然后选择虚拟网络而不是数据中心。有关说明，请参阅[创建运行 Windows Server 的虚拟机][]。具有小型虚拟机的标准 Windows Server 2012 映像已足够。
+1.  在相同的 Azure 虚拟网络和子网中设置 IaaS 虚拟机。因此，虚拟机和 HBase 群集使用相同的内部 DNS 服务器来解析主机名。为此，你必须选择“从库中”选项，然后选择虚拟网络而不是数据中心。有关说明，请参阅[创建运行 Windows Server 的虚拟机][创建运行 Windows Server 的虚拟机]。具有小型虚拟机的标准 Windows Server 2012 映像已足够。
 
-2.  获取 HBase 群集的连接特定 DNS 后缀。若要执行此操作，请将 RDP 连接到 HBase 群集（将连接到头节点），然后使用命令提示符运行 **ipconfig**。有关启用 RDP 并使用 RDP 连接到群集的说明，请参阅[使用 Azure 管理门户管理 HDInsight 中的 Hadoop 群集][]。
+2.  获取 HBase 群集的连接特定 DNS 后缀。若要执行此操作，请将 RDP 连接到 HBase 群集（将连接到头节点），然后使用命令提示符运行 **ipconfig**。有关启用 RDP 并使用 RDP 连接到群集的说明，请参阅[使用 Azure 管理门户管理 HDInsight 中的 Hadoop 群集][使用 Azure 管理门户管理 HDInsight 中的 Hadoop 群集]。
 
-    ![hdinsight.hbase.dns.surffix][]
+    ![hdinsight.hbase.dns.surffix][hdinsight.hbase.dns.surffix]
 
 3.  更改虚拟机的主要 DNS 后缀配置。这样，虚拟机便可自动解析 HBase 群集的主机名，而不必显式指定后缀。例如，*workernode0* 主机名将被正确解析为 HBase 群集的工作节点 0。
     要进行配置更改：
@@ -125,7 +125,7 @@
     3.  依次展开“计算机配置”、“管理模板”和“网络”，然后单击“DNS 客户端”。。
     -   将“主 DNS 后缀”设置为在步骤 2 中获取的值：
 
-        ![hdinsight.hbase.primary.dns.suffix][]
+        ![hdinsight.hbase.primary.dns.suffix][hdinsight.hbase.primary.dns.suffix]
     1.  单击“确定”。
     2.  重新启动虚拟机。
 
@@ -171,20 +171,20 @@
 
 在本教程中，我们已经学习了如何设置 HBase 群集。若要了解更多信息，请参阅以下文章：
 
--   [HDInsight 入门][]
--   [在 HDInsight 中设置 Hadoop 群集][]
--   [开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][]
--   [在 HDInsight 中使用 HBase 分析 Twitter 传感器数据][]
--   [虚拟网络概述][]。
+-   [HDInsight 入门][HDInsight 入门]
+-   [在 HDInsight 中设置 Hadoop 群集][在 HDInsight 中设置 Hadoop 群集]
+-   [开始在 HDInsight 中将 HBase 与 Hadoop 配合使用][开始在 HDInsight 中将 HBase 与 Hadoop 配合使用]
+-   [在 HDInsight 中使用 HBase 分析 Twitter 传感器数据][在 HDInsight 中使用 HBase 分析 Twitter 传感器数据]
+-   [虚拟网络概述][虚拟网络概述]。
 
   [先决条件]: #prerequisites
   [在虚拟网络中设置 HBase 群集]: #hbaseprovision
   [使用 HBase Java RPC API 连接到虚拟网络中设置的 HBase 群集]: #connect
   [使用 PowerShell 设置 HBase 群集]: #powershell
   [后续步骤]: #nextsteps
-  [购买选项]: http://azure.microsoft.com/en-us/pricing/purchase-options/
-  [成员优惠]: http://azure.microsoft.com/en-us/pricing/member-offers/
-  [免费试用]: http://azure.microsoft.com/en-us/pricing/free-trial/
+  [购买选项]: http://azure.microsoft.com/zh-cn/pricing/purchase-options/
+  [成员优惠]: http://azure.microsoft.com/zh-cn/pricing/member-offers/
+  [免费试用]: http://azure.microsoft.com/zh-cn/pricing/free-trial/
   [安装和配置 Azure PowerShell]: ../install-configure-powershell
   [运行 Windows PowerShell 脚本]: http://technet.microsoft.com/zh-cn/library/ee176949.aspx
   [Azure 管理门户]: https://manage.windowsazure.com

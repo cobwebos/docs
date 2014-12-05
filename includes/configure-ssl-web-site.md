@@ -12,7 +12,7 @@ The rest of this document provides details on enabling HTTPS for custom domain n
 
 <a href="bkmk_domainname"></a><h2>Custom domain names</h2>
 
-To enable HTTPS for a custom domain name, such as **contoso.com**, you must register a custom domain name with a domain name registrar. For more information on how to configure the domain name of an Azure Web Site, see [Configuring a custom domain name for an Azure Web Site](/en-us/develop/net/common-tasks/custom-dns-web-site/). Once you have registered a custom domain name and configured your web site to respond to the custom name, you must request an SSL certificate for the domain. 
+To enable HTTPS for a custom domain name, such as **contoso.com**, you must register a custom domain name with a domain name registrar. For more information on how to configure the domain name of an Azure Web Site, see [Configuring a custom domain name for an Azure Web Site](/zh-cn/develop/net/common-tasks/custom-dns-web-site/). Once you have registered a custom domain name and configured your web site to respond to the custom name, you must request an SSL certificate for the domain. 
 
 Registering a domain name also enables you to create subdomains such as **www.contoso.com** or **mail.contoso.com**. Before requesting an SSL certificate you must first determine which domain names will be secured by the certificate. This will determine what type of certificate you must obtain. If you just need to secure a single domain name such as **contoso.com** or **www.contoso.com** a basic certificate will probably be sufficient. If you need to secure multiple domain names, such as **contoso.com**, **www.contoso.com**, and **mail.contoso.com**, then a wildcard certificate, or a certificate with Subject Alternate Name (subjectAltName, SAN) will be required.
 
@@ -56,7 +56,7 @@ You may also need to obtain **intermediate certificates** (also known as chain c
 >
 > If you need to support both a wildcard name like \*.contoso.com and a root domain name like contoso.com, you can use a wildcard Subject Alternative Name (SAN) certificate. For an example of creating a certificate request that uses the SubjectAltName extensions, see [SubjectAltName certificate](#bkmk_subjectaltname).
 > 
-> For more information on how to configure the domain name of an Azure Web Site, see <a href="/en-us/develop/net/common-tasks/custom-dns-web-site/">Configuring a custom domain name for an Azure Web Site</a>.
+> For more information on how to configure the domain name of an Azure Web Site, see <a href="/zh-cn/develop/net/common-tasks/custom-dns-web-site/">Configuring a custom domain name for an Azure Web Site</a>.
 
 ###Get a certificate using Certreq.exe (Windows only)
 
@@ -217,7 +217,7 @@ Enabling HTTPS for a custom domain is only available for the standard mode of Az
 
 5. Click **Save**. When prompted, click **Yes**.
 
-	> [WACOM.NOTE] If you receive a "Configuring scale for web site '&lt;site name&gt;' failed" error you can use the details button to get more information. You may receive a "Not enough available standard instance servers to satisfy this request." error. If you receive this error, please contact [Azure support](http://www.windowsazure.com/en-us/support/options/).
+	> [WACOM.NOTE] If you receive a "Configuring scale for web site '&lt;site name&gt;' failed" error you can use the details button to get more information. You may receive a "Not enough available standard instance servers to satisfy this request." error. If you receive this error, please contact [Azure support](http://www.windowsazure.com/zh-cn/support/options/).
 
 <a href="bkmk_configuressl"></a><h2>Configure SSL</h2>
 
@@ -465,11 +465,11 @@ You can create a test certificate from a Windows system that has Visual Studio i
 
 	The **myserver.pfx** produced by this command can be used to secure your Azure Web Site for testing purposes.
 
-[customdomain]: /en-us/develop/net/common-tasks/custom-dns-web-site/
-[iiscsr]: http://technet.microsoft.com/en-us/library/cc732906(WS.10).aspx
+[customdomain]: /zh-cn/develop/net/common-tasks/custom-dns-web-site/
+[iiscsr]: http://technet.microsoft.com/zh-cn/library/cc732906(WS.10).aspx
 [cas]: http://go.microsoft.com/fwlink/?LinkID=269988
-[installcertiis]: http://technet.microsoft.com/en-us/library/cc771816(WS.10).aspx
-[exportcertiis]: http://technet.microsoft.com/en-us/library/cc731386(WS.10).aspx
+[installcertiis]: http://technet.microsoft.com/zh-cn/library/cc771816(WS.10).aspx
+[exportcertiis]: http://technet.microsoft.com/zh-cn/library/cc731386(WS.10).aspx
 [openssl]: http://www.openssl.org/
 [portal]: https://manage.windowsazure.com/
 [tls]: http://en.wikipedia.org/wiki/Transport_Layer_Security
@@ -477,7 +477,7 @@ You can create a test certificate from a Windows system that has Visual Studio i
 [website]: ./media/configure-ssl-web-site/sslwebsite.png
 [scale]: ./media/configure-ssl-web-site/sslscale.png
 [standard]: ./media/configure-ssl-web-site/sslreserved.png
-[pricing]: https://www.windowsazure.com/en-us/pricing/details/
+[pricing]: https://www.windowsazure.com/zh-cn/pricing/details/
 [configure]: ./media/configure-ssl-web-site/sslconfig.png
 [uploadcert]: ./media/configure-ssl-web-site/ssluploadcert.png
 [uploadcertdlg]: ./media/configure-ssl-web-site/ssluploaddlg.png

@@ -1,4 +1,4 @@
-<properties linkid="develop-mobile-tutorials-get-started-with-users-js" urlDisplayName="Get Started with Authentication" pageTitle="Get started with authentication (JavaScript) | Mobile Dev Center" metaKeywords="" description="Learn how to use Mobile Services to authenticate users of your Windows Store JavaScript app through a variety of identity providers, including Google, Facebook, Twitter, and Microsoft." metaCanonical="http://www.windowsazure.com/en-us/develop/mobile/tutorials/get-started-with-users-dotnet/" services="" documentationCenter="Mobile" title="Get started with authentication in Mobile Services" authors="" solutions="" manager="" editor="" />
+<properties linkid="develop-mobile-tutorials-get-started-with-users-js" urlDisplayName="Get Started with Authentication" pageTitle="Get started with authentication (JavaScript) | Mobile Dev Center" metaKeywords="" description="Learn how to use Mobile Services to authenticate users of your Windows Store JavaScript app through a variety of identity providers, including Google, Facebook, Twitter, and Microsoft." metaCanonical="http://www.windowsazure.com/zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet/" services="" documentationCenter="Mobile" title="Get started with authentication in Mobile Services" authors="" solutions="" manager="" editor="" />
 
 # 移动服务中的身份验证入门
 
@@ -17,7 +17,7 @@
 
 <div class="dev-callout"><b>说明</b>
 
-<p>本教程演示了移动服务为了让你使用各种标识提供者对用户进行身份验证而提供的基本方法。此方法易于配置，并支持多个提供者。但是，此方法还要求用户在每次启动你的应用程序时登录。若要改用 Live Connect 在 Windows 应用商店应用程序中提供单一登录体验，请参阅主题<a href="/en-us/develop/mobile/tutorials/single-sign-on-windows-8-js">使用 Live Connect 实现对 Windows 应用商店应用程序的单一登录</a>。</p>
+<p>本教程演示了移动服务为了让你使用各种标识提供者对用户进行身份验证而提供的基本方法。此方法易于配置，并支持多个提供者。但是，此方法还要求用户在每次启动你的应用程序时登录。若要改用 Live Connect 在 Windows 应用商店应用程序中提供单一登录体验，请参阅主题<a href="/zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-js">使用 Live Connect 实现对 Windows 应用商店应用程序的单一登录</a>。</p>
 </div>
 
 <a name="register"></a>
@@ -63,24 +63,10 @@
 
 在下一教程[移动服务用户的服务端授权][移动服务用户的服务端授权]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-users "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-users "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started-users "Android"
-  [HTML]: /zh-cn/documentation/articles/mobile-services-html-get-started-users "HTML"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started-users "Xamarin.Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users/ "JavaScript 后端"
   [注册应用程序以进行身份验证并配置移动服务]: #register
   [将表权限限制给已经过身份验证的用户]: #permissions
   [向应用程序添加身份验证]: #add-authentication
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started/
-  [使用 Live Connect 实现对 Windows 应用商店应用程序的单一登录]: /en-us/develop/mobile/tutorials/single-sign-on-windows-8-js
-  [mobile-services-register-authentication]: ../includes/mobile-services-register-authentication.md
   [注册 Windows 应用商店应用程序包以进行 Microsoft 身份验证]: /zh-cn/documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication/
-  [mobile-services-restrict-permissions-javascript-backend]: ../includes/mobile-services-restrict-permissions-javascript-backend.md
-  [1]: /en-us/develop/mobile/tutorials/get-started/
-  [mobile-services-windows-store-javascript-authenticate-app]: ../includes/mobile-services-windows-store-javascript-authenticate-app.md
+  [1]: /zh-cn/develop/mobile/tutorials/get-started/
   [移动服务用户的服务端授权]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-authorize-users-in-scripts

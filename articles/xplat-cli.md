@@ -401,5 +401,5 @@ xplat-cli 默认使用 Azure 服务管理模式。要切换到 Resource Manager 
   [jsawk]: https://github.com/micha/jsawk
   [jq]: http://stedolan.github.io/jq/
   [适用于 Azure 跨平台命令行接口的 GitHub 存储库]: https://github.com/WindowsAzure/azure-sdk-tools-xplat
-  [Azure 论坛]: http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home
+  [Azure 论坛]: http://social.msdn.microsoft.com/Forums/windowsazure/zh-cn/home
   [http://www.windowsazure.cn/]: http://www.windowsazure.cn

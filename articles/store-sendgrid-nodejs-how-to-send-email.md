@@ -230,10 +230,8 @@ SendGrid 提供了基于 Web 的 API，可通过这些 API从 Azure 应用程序
   [基于云的电子邮件服务]: http://sendgrid.com/solutions
   [事务性电子邮件传递]: http://sendgrid.com/transactional-email
   []: http://sendgrid.com
-  [sendgrid-sign-up]: ../includes/sendgrid-sign-up.md
   [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs
   [。]: http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/
-  [fs.readFile]: http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile
   [筛选器设置]: http://docs.sendgrid.com/documentation/api/smtp-api/filter-settings/
   [SendGrid API 文档]: http://docs.sendgrid.com/documentation/api/
   [2]: http://sendgrid.com/azure.html

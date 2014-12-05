@@ -1,6 +1,6 @@
 <properties linkid="manage-services-hdinsight-get-started-hdinsight-hadoop-3.0" urlDisplayName="Get Started" pageTitle="Get started using Hadoop in HDInsight | Azure" metaKeywords="" description="Get started using Hadoop in HDInsight, a big data solution. Learn how to provision clusters, run hive jobs, and output data to Excel for analysis." metaCanonical="" services="hdinsight" documentationCenter="" title="Get started using Hadoop in HDInsight" authors="jgao" solutions="" manager="paulettm" editor="cgronlun" />
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao"></tags>
+<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="jgao" />
 
 # 开始在 HDInsight（预览版）中使用 Hadoop 2.4
 
@@ -168,7 +168,7 @@ HDInsight 将 Azure Blob 存储用于存储数据。它称为 *WASB* 或 *Azure 
 
 **下载 Microsoft Power Query for Excel**
 
-- 从 [Microsoft 下载中心](http://www.microsoft.com/en-us/download/details.aspx?id=39379)下载 Microsoft Power Query for Excel 并安装它。
+- 从 [Microsoft 下载中心](http://www.microsoft.com/zh-cn/download/details.aspx?id=39379)下载 Microsoft Power Query for Excel 并安装它。
 
 **导入 HDInsight 数据**
 
@@ -220,7 +220,7 @@ HDInsight 将 Azure Blob 存储用于存储数据。它称为 *WASB* 或 *Azure 
 [azure-purchase-options]: http://www.windowsazure.cn/pricing/overview/
 
 <!--
-[azure-member-offers]: http://azure.microsoft.com/en-us/pricing/member-offers/
+[azure-member-offers]: http://azure.microsoft.com/zh-cn/pricing/member-offers/
 -->
 
 [azure-free-trial]: http://www.windowsazure.cn/pricing/1rmb-trial/

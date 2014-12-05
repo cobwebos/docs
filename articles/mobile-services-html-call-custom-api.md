@@ -72,5 +72,4 @@
   [定义自定义 API]: #define-custom-api
   [更新应用程序以调用自定义 API]: #update-app
   [测试应用程序]: #test-app
-  [mobile-services-create-custom-api]: ../includes/mobile-services-create-custom-api.md
   [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/?LinkId=262293

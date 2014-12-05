@@ -568,8 +568,6 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
   [如何：查询一部分实体属性]: #query-entity-properties
   [如何：删除实体]: #delete-entity
   [如何：删除表]: #delete-table
-  [howto-table-storage]: ../includes/howto-table-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
   [Blob5]: ./media/storage-dotnet-how-to-use-table-storage/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-table-storage/blob6.png
   [Blob7]: ./media/storage-dotnet-how-to-use-table-storage/blob7.png
@@ -584,6 +582,6 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，
   [.NET 存储客户端库参考]: http://msdn.microsoft.com/zh-cn/library/azure/wa_storage_30_reference_home.aspx
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [Blob 存储]: /en-us/documentation/articles/storage-dotnet-how-to-use-blobs/
-  [队列存储]: /en-us/documentation/articles/storage-dotnet-how-to-use-queues/
-  [SQL Database]: /en-us/documentation/articles/sql-database-dotnet-how-to-use/
+  [Blob 存储]: /zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/
+  [队列存储]: /zh-cn/documentation/articles/storage-dotnet-how-to-use-queues/
+  [SQL Database]: /zh-cn/documentation/articles/sql-database-dotnet-how-to-use/

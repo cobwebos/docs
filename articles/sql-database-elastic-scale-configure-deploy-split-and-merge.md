@@ -1,6 +1,6 @@
 <properties title="拆分和合并服务教程" pageTitle="Azure SQL 拆分和合并服务教程" description="使用灵活扩展拆分和合并" metaKeywords="sharding scaling, Azure SQL Database sharding, elastic scale, splitting and merging elastic scale" services="sql-database" documentationCenter=""  manager="jhubbard" authors="sidneyh@microsoft.com"/>
 
-<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh"></tags>
+<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh" />
 
 # 灵活扩展拆分和合并服务教程
 
@@ -132,12 +132,12 @@
 
         "Server=myservername.database.windows.net; Database=mydatabasename;User ID=myuserID; Password=mypassword; Encrypt=True; Connection Timeout=30" .
 
--   确保服务器名称不以 **<https://>** 开头。
+-   确保服务器名称不以 **https://** 开头。
 -   确保您的 Azure SQL DB 服务器允许 Windows Azure 服务与其连接。若要执行此操作，请打开 <https://manage.windowsazure.com>、依次单击左侧的“SQL Databases”和顶部的“服务器”，然后选择您的服务器。在顶部单击“配置”并确保将“Windows Azure 服务”设置为“是”。（请参阅此文章顶部的“先决条件”部分）。
 
 -   查看您的拆分/合并服务实例的诊断日志。打开 Visual Studio 实例，然后在菜单栏中，依次单击“视图”和“服务器资源管理器”。单击“Windows Azure”图标以连接到您的 Azure 订阅。然后，导航到“Windows Azure”-\>“存储”-\>“<your storage account>”-\>“表”-\>“WADLogsTable”。有关详细信息，请参阅[使用服务器资源管理器浏览存储资源][使用服务器资源管理器浏览存储资源]
 
-    ![][]
+    ![][0]
 
     ![][1]
 
@@ -145,7 +145,7 @@
 
 ### 与 Web 浏览器连接
 
-确定您的拆分/合并服务的 Web 终结点。通过转到云服务的“仪表板”并在右侧的“站点 URL”下查找，您可以在 Azure 管理门户中找到此内容。由于默认的安全设置将禁用 HTTP 终结点，因此请将“<http://>”替换为“<https://>”。将此 URL 的页面加载到您的浏览器中。
+确定您的拆分/合并服务的 Web 终结点。通过转到云服务的“仪表板”并在右侧的“站点 URL”下查找，您可以在 Azure 管理门户中找到此内容。由于默认的安全设置将禁用 HTTP 终结点，因此请将“http://”替换为“https://”。将此 URL 的页面加载到您的浏览器中。
 
 ### 使用 PowerShell 脚本进行测试
 
@@ -359,9 +359,9 @@ ExecuteSampleSplitMerge.ps1
   [允许的服务]: ./media/sql-database-elastic-scale-split-and-merge-tutorial/allowed-services.png
   [管理访问密钥]: ./media/sql-database-elastic-scale-split-and-merge-tutorial/manage.png
   [灵活扩展安全配置]: ./sql-database-elastic-scale-configure-security.md
-  [Visual Studio 的开发人员命令提示符]: http://msdn.microsoft.com/en-us/library/ms229859.aspx
+  [Visual Studio 的开发人员命令提示符]: http://msdn.microsoft.com/zh-cn/library/ms229859.aspx
   [过渡]: ./media/sql-database-elastic-scale-split-and-merge-tutorial/staging.png
   [上载]: ./media/sql-database-elastic-scale-split-and-merge-tutorial/upload.png
-  [使用服务器资源管理器浏览存储资源]: http://msdn.microsoft.com/en-us/library/azure/ff683677.aspx
-  []: ./media/sql-database-elastic-scale-split-and-merge-tutorial/storage.png
+  [使用服务器资源管理器浏览存储资源]: http://msdn.microsoft.com/zh-cn/library/azure/ff683677.aspx
+  [0]: ./media/sql-database-elastic-scale-split-and-merge-tutorial/storage.png
   [1]: ./media/sql-database-elastic-scale-split-and-merge-tutorial/logs.png

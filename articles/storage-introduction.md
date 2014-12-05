@@ -162,25 +162,25 @@ Azure 存储空间通过一个 [REST API][REST API] 来公开存储资源，任�
 -   [如何通过 Python 使用队列存储][如何通过 Python 使用队列存储]
 
   [Azure 存储资源]: ./media/storage-introduction/storage-concepts.png
-  [免费试用版]: /en-us/pricing/free-trial/
-  [购买选项]: /en-us/pricing/purchase-options/
-  [MSDN 订户]: /en-us/pricing/member-offers/msdn-benefits-details/
+  [免费试用版]: /zh-cn/pricing/free-trial/
+  [购买选项]: /zh-cn/pricing/purchase-options/
+  [MSDN 订户]: /zh-cn/pricing/member-offers/msdn-benefits-details/
   [Azure 导入/导出服务]: http://azure.microsoft.com/zh-cn/documentation/articles/storage-import-export-service/
   [共享访问签名]: ../storage-dotnet-shared-access-signature-part-1/
-  [Azure 存储 SLA]: /en-us/support/legal/sla/
-  [存储定价详细信息]: /en-us/pricing/details/storage/
-  [数据传输定价详细信息]: /en-us/pricing/details/data-transfers/
-  [Azure 存储空间定价计算器]: /en-us/pricing/calculator/?scenario=data-management
+  [Azure 存储 SLA]: /zh-cn/support/legal/sla/
+  [存储定价详细信息]: /zh-cn/pricing/details/storage/
+  [数据传输定价详细信息]: /zh-cn/pricing/details/data-transfers/
+  [Azure 存储空间定价计算器]: /zh-cn/pricing/calculator/?scenario=data-management
   [REST API]: http://msdn.microsoft.com/library/windowsazure/dd179355.aspx
   [.NET]: http://msdn.microsoft.com/zh-cn/library/dn495001.aspx
   [本机代码]: http://msdn.microsoft.com/zh-cn/library/dn495438.aspx
-  [Java]: /en-us/develop/java/
+  [Java]: /zh-cn/develop/java/
   [Node.js]: ../storage/#node
   [PHP]: ../storage/#php
   [Ruby]: ../storage/#ruby
   [Python]: ../storage/#python
   [PowerShell]: http://msdn.microsoft.com/zh-cn/library/dn495240.aspx
-  [Azure 存储文档]: /en-us/documentation/services/storage/
+  [Azure 存储文档]: /zh-cn/documentation/services/storage/
   [Azure 存储空间可伸缩性和性能目标]: http://msdn.microsoft.com/zh-cn/library/azure/dn249410.aspx
   [如何通过 .NET 使用 Blob 存储]: ../storage-dotnet-how-to-use-blobs/
   [如何通过 .NET 使用表存储]: ../storage-dotnet-how-to-use-tables/

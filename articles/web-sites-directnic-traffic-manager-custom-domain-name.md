@@ -58,17 +58,6 @@
 
 [WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
-  [自定义域]: /zh-cn/documentation/articles/web-sites-custom-domain-name "自定义域"
-  [GoDaddy]: /zh-cn/documentation/articles/web-sites-godaddy-custom-domain-name "GoDaddy"
-  [Network Solutions]: /zh-cn/documentation/articles/web-sites-network-solutions-custom-domain-name "Network Solutions"
-  [Register.com]: /zh-cn/documentation/articles/web-sites-registerdotcom-custom-domain-name "Register.com"
-  [Enom]: /zh-cn/documentation/articles/web-sites-enom-custom-domain-name "Enom"
-  [Moniker]: /zh-cn/documentation/articles/web-sites-moniker-custom-domain-name "Moniker"
-  [Dotster]: /zh-cn/documentation/articles/web-sites-dotster-custom-domain-name "Dotster"
-  [DomainDiscover]: /zh-cn/documentation/articles/web-sites-domaindiscover-custom-domain-name "DomainDiscover"
-  [Directnic]: /zh-cn/documentation/articles/web-sites-directnic-custom-domain-name "Directnic"
-  [网站]: /zh-cn/documentation/articles/web-sites-directnic-custom-domain-name/ "网站"
-  [使用流量管理器的网站]: /zh-cn/documentation/articles/web-sites-directnic-traffic-manager-custom-domain-name/ "使用流量管理器的网站"
   [DirectNic.com]: https://directnic.com
   [了解 DNS 记录]: #understanding-records
   [将网站配置为标准模式]: #bkmk_configsharedmode

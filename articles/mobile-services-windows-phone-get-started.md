@@ -92,22 +92,9 @@
 -   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
-  [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started "Android"
-  [HTML]: /zh-cn/documentation/articles/mobile-services-html-get-started "HTML"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started "Xamarin.Android"
-  [Sencha]: /zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/ "Sencha"
-  [PhoneGap]: /zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/ "PhoneGap"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started/ "JavaScript 后端"
-  [观看教程]: http://go.microsoft.com/fwlink/?LinkId=290816
   [.NET 后端版本]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started
   [0]: ./media/mobile-services-windows-phone-get-started/mobile-quickstart-completed-wp8.png
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A30A4DDE2&returnurl=http%3A%2F%2FFen-us%2Fdocumentation%2Farticles%2Fmobile-services-windows-phone-get-started%2F
-  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A30A4DDE2&returnurl=http%3A%2F%2FFzh-cn%2Fdocumentation%2Farticles%2Fmobile-services-windows-phone-get-started%2F
   [1]: ./media/mobile-services-windows-phone-get-started/mobile-portal-quickstart-wp8.png
   [2]: ./media/mobile-services-windows-phone-get-started/mobile-quickstart-steps-wp8.png
   [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374

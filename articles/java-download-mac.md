@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [下载库](../includes/download_libraries.md)]
 
-  [下载库]: ../includes/download_libraries.md

@@ -277,8 +277,6 @@
 
 祝贺你！你已成功地在移动服务中创建了一个新的计划作业。在你禁用或修改此作业之前，它将会按计划执行。
 
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-schedule-recurring-tasks/ "JavaScript 后端"
   [注册以获取 Twitter 访问权限并存储凭据]: #get-oauth-credentials
   [下载并安装 LINQ to Twitter 库]: #install-linq2twitter
   [创建新的 Updates 表]: #create-table
@@ -286,7 +284,6 @@
   [在本地测试计划的作业]: #run-job-locally
   [发布服务并注册作业]: #register-job
   [LINQ to Twitter CodePlex 项目]: http://linqtotwitter.codeplex.com/
-  [mobile-services-register-twitter-access]: ../includes/mobile-services-register-twitter-access.md
   [0]: ./media/mobile-services-dotnet-backend-schedule-recurring-tasks/add-linq2twitter-nuget-package.png
   [1]: ./media/mobile-services-dotnet-backend-schedule-recurring-tasks/add-component-model-reference.png
   [如何使用代码优先迁移更新数据模型]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-use-code-first-migrations

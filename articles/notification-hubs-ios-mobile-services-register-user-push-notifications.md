@@ -42,7 +42,7 @@
     这会更新 **deviceToken** 属性。
 
     <div class="dev-callout"><b>说明</b>
-<p>此时，此方法中不应有任何其他代码。如果你已调用在完成<a href="/en-us/manage/services/notification-hubs/get-started-notification-hubs-ios/" target="_blank">通知中心入门</a>教程的学习时添加的 **registerNativeWithDeviceToken** 方法，必须注释掉或删除该调用。</p>
+<p>此时，此方法中不应有任何其他代码。如果你已调用在完成<a href="/zh-cn/manage/services/notification-hubs/get-started-notification-hubs-ios/" target="_blank">通知中心入门</a>教程的学习时添加的 **registerNativeWithDeviceToken** 方法，必须注释掉或删除该调用。</p>
 </div>
 
 5.  （可选）在 QSAppDelegate.m 文件中，添加以下处理程序方法：
@@ -97,14 +97,11 @@
 
 现在客户端应用程序已更新，请返回到[使用通知中心通知用户][使用通知中心通知用户]并更新移动服务以使用通知中心发送通知。
 
-<!-- Anchors. --> 
+ 
 
-<!-- Images. --> 
+ 
 
-<!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-mobile-services-register-user-push-notifications/ "Windows 应用商店 C#"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-mobile-services-register-user-push-notifications/ "iOS"
-  [使用通知中心通知用户]: /en-us/manage/services/notification-hubs/notify-users
-  [身份验证入门]: /en-us/develop/mobile/tutorials/get-started-with-users-ios/
-  [通知中心入门]: /en-us/manage/services/notification-hubs/get-started-notification-hubs-ios/
+
+  [使用通知中心通知用户]: /zh-cn/manage/services/notification-hubs/notify-users
+  [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-ios/

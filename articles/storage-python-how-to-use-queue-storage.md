@@ -147,8 +147,6 @@
   [如何：用于对消息取消排队的其他方法]: #advanced-get
   [如何：获取队列长度]: #get-queue-length
   [如何：删除队列]: #delete-queue
-  [howto-queue-storage]: ../includes/howto-queue-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
   [Python 安装指南]: ../python-how-to-install/
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/

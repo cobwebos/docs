@@ -822,11 +822,6 @@
 
 [][]<http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/package-summary.html>提供了 Android 客户端 API 的 Javadocs 参考
 
-  [.NET Framework]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library/ ".NET Framework"
-  [HTML/JavaScript]: /zh-cn/develop/mobile/how-to-guides/work-with-html-js-client/ "HTML/JavaScript"
-  [iOS]: /zh-cn/develop/mobile/how-to-guides/work-with-ios-client-library/ "iOS"
-  [Android]: /zh-cn/develop/mobile/how-to-guides/work-with-android-client-library/ "Android"
-  [Xamarin]: /zh-cn/develop/mobile/how-to-guides/work-with-xamarin-client-library/ "Xamarin"
   [移动服务快速入门]: /zh-cn/develop/mobile/tutorials/get-started-android/
   [移动服务 SDK]: http://go.microsoft.com/fwlink/p/?linkid=280126
   [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125&clcid=0x409
@@ -858,7 +853,6 @@
   [自定义请求标头]: #headers
   [自定义序列化]: #serialization
   [后续步骤]: #next-steps
-  [mobile-services-concepts]: ../includes/mobile-services-concepts.md
   [创建表]: http://go.microsoft.com/fwlink/p/?LinkId=298592
   [动态架构]: http://go.microsoft.com/fwlink/p/?LinkId=296271
   [MobileServiceClient]: http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html

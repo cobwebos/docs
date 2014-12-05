@@ -9,9 +9,9 @@
 若要完成本主题中的过程，你必须拥有一个包含已验证电子邮件地址的 Twitter 帐户。若要创建新的 Twitter 帐户，请转至 <a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a></p>。
 </div>
 
-1.  导航到 [Twitter 开发人员][]网站，使用你的 Twitter 帐户凭据登录，然后单击“Create a new application”（创建新应用程序） 。
+1.  导航到 [Twitter 开发人员][Twitter 开发人员]网站，使用你的 Twitter 帐户凭据登录，然后单击“Create a new application”（创建新应用程序） 。
 
-    ![][]
+    ![][0]
 
 2.  键入应用程序的“Name”（名称）、“Description”（说明）和“Web Site”（网站）值，然后在“Callback URL”（回调 URL）中键入移动服务的 URL 。
 
@@ -40,7 +40,6 @@
 
 现在，你可以通过向移动服务提供使用者密钥和使用者机密值，使用 Twitter 登录在应用程序中进行身份验证。
 
-  [twitter.com]: http://go.microsoft.com/fwlink/p/?LinkID=268287
   [Twitter 开发人员]: http://go.microsoft.com/fwlink/p/?LinkId=268300
   [0]: ./media/mobile-services-how-to-register-twitter-authentication/mobile-services-twitter-developers.png
   [1]: ./media/mobile-services-how-to-register-twitter-authentication/mobile-services-twitter-register-app1.png

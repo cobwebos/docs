@@ -13,7 +13,7 @@
 
 ![Azure PHP 网站][Azure PHP 网站]
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## 创建 Azure 网站并设置 FTP 发布
 
@@ -243,7 +243,6 @@
   [PHP]: http://www.php.net/manual/en/install.php
   [MySQL]: http://dev.mysql.com/doc/refman/5.6/en/installing.html
   [Azure PHP 网站]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/running_app_2.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [Azure 管理门户]: https://manage.windowsazure.cn
   [创建新的 Azure 网站]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/new_website.jpg
   [自定义创建新的网站]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/custom_create.png
@@ -257,4 +256,3 @@
   [1]: http://localhost/tasklist/index.php
   [获取数据库连接信息]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/connection_string_info.png
   [下载发布配置文件]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/download_publish_profile_2.png
-  [http://[网站]: http://[site

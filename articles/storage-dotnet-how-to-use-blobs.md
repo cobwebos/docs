@@ -390,8 +390,6 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
   [如何：列出容器中的 Blob]: #list-blob
   [如何：下载 Blob]: #download-blobs
   [如何：删除 Blob]: #delete-blobs
-  [howto-blob-storage]: ../includes/howto-blob-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
   [在 Visual Studio 中选择云服务角色的属性]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
   [在 Visual Studio 中添加云服务设置]: ./media/storage-dotnet-how-to-use-blobs/blob6.png
   [Blob7]: ./media/storage-dotnet-how-to-use-blobs/blob7.png
@@ -405,6 +403,6 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
   [.NET 存储客户端库参考]: http://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [表存储]: /en-us/documentation/articles/storage-dotnet-how-to-use-tables/
-  [队列存储]: /en-us/documentation/articles/storage-dotnet-how-to-use-queues/
-  [SQL Database]: /en-us/documentation/articles/sql-database-dotnet-how-to-use/
+  [表存储]: /zh-cn/documentation/articles/storage-dotnet-how-to-use-tables/
+  [队列存储]: /zh-cn/documentation/articles/storage-dotnet-how-to-use-queues/
+  [SQL Database]: /zh-cn/documentation/articles/sql-database-dotnet-how-to-use/

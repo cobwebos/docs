@@ -8,9 +8,9 @@
 
 在开始阅读本教程前，你必须具有：
 
--   安装 Azure HDInsight Emulator。有关说明，请参阅[开始使用 HDInsight Emulator][]。
--   在模拟器计算机上安装 Azure PowerShell。有关说明，请参阅[安装和配置 Azure PowerShell][]。
--   获取 Azure 订阅。有关说明，请参阅[购买选项][]、[免费试用][]。
+-   安装 Azure HDInsight Emulator。有关说明，请参阅[开始使用 HDInsight Emulator][开始使用 HDInsight Emulator]。
+-   在模拟器计算机上安装 Azure PowerShell。有关说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。
+-   获取 Azure 订阅。有关说明，请参阅[购买选项][购买选项]、[免费试用][免费试用]。
 
 ## 本文内容
 
@@ -137,9 +137,9 @@ HDInsight Emulator 附带了 *javac* 编译器。
 3.  检查作业状态
 4.  检索作业结果
 
-默认情况下，HDInsight Emulator 使用 HDFS 作为默认文件系统。（可选）你可以将HDInsight Emulator 配置为使用 Azure Blob 存储。有关详细信息，请参阅 [HDInsight Emulator 入门][]。
+默认情况下，HDInsight Emulator 使用 HDFS 作为默认文件系统。（可选）你可以将HDInsight Emulator 配置为使用 Azure Blob 存储。有关详细信息，请参阅 [HDInsight Emulator 入门][HDInsight Emulator 入门]。
 
-在本教程中，你将使用 HDFS 的 *copyFromLocal* 命令将数据文件上载到 HDFS。下一节说明如何使用 Azure PowerShell 将文件上载到 Azure Blob 存储。有关将文件上载到 Azure Blob 存储的其他方法，请参阅[将数据上载到 HDInsight][]。
+在本教程中，你将使用 HDFS 的 *copyFromLocal* 命令将数据文件上载到 HDFS。下一节说明如何使用 Azure PowerShell 将文件上载到 Azure Blob 存储。有关将文件上载到 Azure Blob 存储的其他方法，请参阅[将数据上载到 HDInsight][将数据上载到 HDInsight]。
 
 本教程使用以下 HDFS 文件夹结构：
 
@@ -228,7 +228,7 @@ Azure HDInsight 将 Azure Blob 存储用于数据存储。设置 HDInsight 群�
         $containerName_Data = "<ContainerName>"
         $location = "<MicrosoftDataCenter>"  # 例如，“China East”
 
-    **\$subscripionName** 与你的 Azure 订阅相关联。必须命名 **\$storageAccountName\_Data** 和 **\$containerName\_Data**。有关命名限制，请参阅[命名和引用容器、Blob 和元数据][]。
+    **\$subscripionName** 与你的 Azure 订阅相关联。必须命名 **\$storageAccountName\_Data** 和 **\$containerName\_Data**。有关命名限制，请参阅[命名和引用容器、Blob 和元数据][命名和引用容器、Blob 和元数据]。
 
 3.  运行以下命令以创建存储帐户，并在该帐户上创建 Blob 存储容器
 
@@ -443,11 +443,11 @@ Azure HDInsight 将 Azure Blob 存储用于数据存储。设置 HDInsight 群�
 
         PowerShell -File <FileName> -ExecutionPolicy RemoteSigned
 
-8.  出现提示时，输入 HDInsight 群集的用户名和密码。由于你将在脚本末尾删除群集，并且将不再需要用户名和密码，因此用户名和密码可以是任何字符串。如果你不想让系统提示你输入凭据，请参阅[在 Windows PowerShell 中使用密码、安全字符串和凭据][]
+8.  出现提示时，输入 HDInsight 群集的用户名和密码。由于你将在脚本末尾删除群集，并且将不再需要用户名和密码，因此用户名和密码可以是任何字符串。如果你不想让系统提示你输入凭据，请参阅[在 Windows PowerShell 中使用密码、安全字符串和凭据][在 Windows PowerShell 中使用密码、安全字符串和凭据]
 
 ##<a name="retrieve"></a>检索 MapReduce 作业输出
 
-本节演示如何下载和显示输出。有关在 Excel 中显示结果的信息，请参阅[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight][] 和[利用 Power Query 将 Excel 连接到 HDInsight][]。
+本节演示如何下载和显示输出。有关在 Excel 中显示结果的信息，请参阅[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight][使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight] 和[利用 Power Query 将 Excel 连接到 HDInsight][利用 Power Query 将 Excel 连接到 HDInsight]。
 
 **检索输出**
 
@@ -471,21 +471,21 @@ Azure HDInsight 将 Azure Blob 存储用于数据存储。设置 HDInsight 群�
         Get-AzureStorageBlobContent -Container $containerName_Data -Blob $blobName -Context $storageContext -Force
         cat "./$blobName" | findstr "there"
 
-作业完成后，你可以选择使用 [Sqoop][] 将数据导出到 SQL Server 或 Azure SQL Database，或者将数据导出到 Excel。
+作业完成后，你可以选择使用 [Sqoop][Sqoop] 将数据导出到 SQL Server 或 Azure SQL Database，或者将数据导出到 Excel。
 
 ##<a id="nextsteps"></a>后续步骤
 
 在本教程中，你已学习如何执行以下操作：开发 Java MapReduce 作业、在 HDInsight Emulator 中测试应用程序、编写 PowerShell 脚本以设置 HDInsight 群集以及在群集上运行 MapReduce。若要了解更多信息，请参阅下列文章：
 
--   [为 HDInsight 开发 C\# Hadoop 流 MapReduce 程序][]
--   [Azure HDInsight 入门][]
+-   [为 HDInsight 开发 C\# Hadoop 流 MapReduce 程序][为 HDInsight 开发 C\# Hadoop 流 MapReduce 程序]
+-   [Azure HDInsight 入门][Azure HDInsight 入门]
 -   [HDInsight Emulator 入门][开始使用 HDInsight Emulator]
--   [将 Azure Blob 存储与 HDInsight 配合使用][]
--   [使用 PowerShell 管理 HDInsight][]
--   [将数据上载到 HDInsight][]
--   [将 Hive 与 HDInsight 配合使用][]
--   [将 Pig 与 HDInsight 配合使用][]
--   [利用 Power Query 将 Excel 连接到 HDInsight][]
+-   [将 Azure Blob 存储与 HDInsight 配合使用][将 Azure Blob 存储与 HDInsight 配合使用]
+-   [使用 PowerShell 管理 HDInsight][使用 PowerShell 管理 HDInsight]
+-   [将数据上载到 HDInsight][将数据上载到 HDInsight]
+-   [将 Hive 与 HDInsight 配合使用][将 Hive 与 HDInsight 配合使用]
+-   [将 Pig 与 HDInsight 配合使用][将 Pig 与 HDInsight 配合使用]
+-   [利用 Power Query 将 Excel 连接到 HDInsight][利用 Power Query 将 Excel 连接到 HDInsight]
 -   [使用 Microsoft Hive ODBC Driver 将 Excel 连接到 HDInsight][使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight]
 
   [开始使用 HDInsight Emulator]: ../hdinsight-get-started-emulator/

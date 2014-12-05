@@ -2,13 +2,13 @@
 
 # HDInsight Emulator 入门
 
-本指南指导你开始使用 Microsoft HDInsight Emulator for Azure（以前称作 HDInsight Server 开发者预览版）。HDInsight Emulator 附带来自 Hadoop 生态系统的与 Azure HDInsight 相同的组件。有关详细信息（包括与部署的版本有关的信息），请参阅 [Azure HDInsight 包含哪个版本的 Hadoop？][]。
+本指南指导你开始使用 Microsoft HDInsight Emulator for Azure（以前称作 HDInsight Server 开发者预览版）。HDInsight Emulator 附带来自 Hadoop 生态系统的与 Azure HDInsight 相同的组件。有关详细信息（包括与部署的版本有关的信息），请参阅 [Azure HDInsight 包含哪个版本的 Hadoop？][Azure HDInsight 包含哪个版本的 Hadoop？]。
 
 HDInsight Emulator 提供了针对 Azure HDInsight 的本地开发环境。如果你对 Hadoop 比较熟悉，则可以开始通过 HDFS 使用 HDInsight Emulator。但在 HDInsight 中，默认文件系统是 Azure Blob 存储（WASB，即 Azure 存储空间 - Blob），因此，最终你将需要使用 WASB 开发你的作业。你可以通过使用 Azure 存储模拟器针对 WASB 开始开发 – 可能只需要使用你的少量数据（在 HDInsight Emulator 中无需更改配置，只是存储帐户名称不同）。然后，再次针对 Windows Azure 存储空间在本地测试你的作业 – 还是只使用你的少量数据（要求在 HDInsight Emulator 中进行配置更改）。最后，你准备好将你的作业的计算部分移到 HDInsight 并且针对生产数据运行作业。
 
 > [WACOM.NOTE] HDInsight Emulator 只能使用单节点部署。
 
-有关使用 HDInsight 的教程，请参阅[开始使用 Azure HDInsight][]。
+有关使用 HDInsight 的教程，请参阅[开始使用 Azure HDInsight][开始使用 Azure HDInsight]。
 
 **先决条件**
 在开始本教程之前，你必须具备以下先决条件：
@@ -19,16 +19,16 @@ HDInsight Emulator 提供了针对 Azure HDInsight 的本地开发环境。如�
     -   Windows Server 2008 R2 Service Pack1
     -   Windows 8
     -   Windows Server 2012。
--   安装和配置 Azure PowerShell。有关说明，请参阅[安装和配置 Azure PowerShell][]。
+-   安装和配置 Azure PowerShell。有关说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。
 
 ## 在本教程中
 
--   [安装 HDInsight Emulator][]
--   [运行单词计数示例][]
--   [运行入门示例][]
--   [连接到 Azure Blob 存储][]
--   [运行 HDInsight PowerShell][]
--   [后续步骤][]
+-   [安装 HDInsight Emulator][安装 HDInsight Emulator]
+-   [运行单词计数示例][运行单词计数示例]
+-   [运行入门示例][运行入门示例]
+-   [连接到 Azure Blob 存储][连接到 Azure Blob 存储]
+-   [运行 HDInsight PowerShell][运行 HDInsight PowerShell]
+-   [后续步骤][后续步骤]
 
 ## 安装 HDInsight Emulator
 
@@ -43,7 +43,7 @@ Microsoft HDInsight Emulator 可通过 Microsoft Web 平台安装程序进行安
 
 **安装 HDInsight Emulator**
 
-1.  打开 Internet Explorer，然后浏览到 [Microsoft HDInsight Emulator for Azure 安装页][]。
+1.  打开 Internet Explorer，然后浏览到 [Microsoft HDInsight Emulator for Azure 安装页][Microsoft HDInsight Emulator for Azure 安装页]。
 2.  单击“立即安装” 。
 3.  在页面底部提示安装 HDINSIGHT.exe 时单击“运行” 。
 4.  在弹出的“用户帐户控制” 窗口中单击“是” 按钮，以便完成安装。你应该看到 Web 平台安装程序 4.6 窗口。
@@ -62,9 +62,9 @@ Microsoft HDInsight Emulator 可通过 Microsoft Web 平台安装程序进行安
 
     该安装应该还安装了若干本地服务。下面是“服务”窗口的屏幕快照：
 
-    ![HDI.Emulator.Services][]
+    ![HDI.Emulator.Services][HDI.Emulator.Services]
 
-    有关安装和运行 HDInsight Server 的已知问题，请参阅 [HDInsight Emulator 发行说明][]。安装日志位于 **C:\\HadoopFeaturePackSetup\\HadoopFeaturePackSetupTools\\gettingStarted.winpkg.install.log**。
+    有关安装和运行 HDInsight Server 的已知问题，请参阅 [HDInsight Emulator 发行说明][HDInsight Emulator 发行说明]。安装日志位于 **C:\\HadoopFeaturePackSetup\\HadoopFeaturePackSetupTools\\gettingStarted.winpkg.install.log**。
 
 ## 运行单词计数 MapReduce 作业
 
@@ -76,7 +76,7 @@ jar 命令的语法是：
 
     hadoop jar <jar> [mainClass] args...
 
-你还将使用一些 fs 命令。有关 Hadoop 命令的详细信息，请参阅 [Hadoop 命令参考（可能为英文页面）][]。
+你还将使用一些 fs 命令。有关 Hadoop 命令的详细信息，请参阅 [Hadoop 命令参考（可能为英文页面）][Hadoop 命令参考（可能为英文页面）]。
 
 单词计数 MapReduce 作业采用两个参数：输入文件夹和输出文件夹。你将使用 *hdfs://localhost/user/HDIUser* 作为输入文件夹，使用 *hdfs://localhost/user/HDIUser/WordCount\_Output* 作为输出目录。输出文件夹不能是现有文件夹，否则 MapReduce 作业将失败。如果要第二次运行 MapReduce 作业，则必须指定一个不同的输出文件夹，或删除现有的输出文件夹。
 
@@ -135,16 +135,16 @@ jar 命令的语法是：
 
 HDInsight Emulator 安装提供了一些示例，以便新用户能够快速地在 Windows 上开始学习基于 Apache Hadoop 的服务。这些示例涉及在处理大型数据集时通常需要的一些任务。通过执行这些示例，你可以熟悉与 MapReduce 编程模型及其生态系统相关联的概念。
 
-这些示例是围绕处理 IIS W3C 日志数据方案进行组织的。提供数据生成工具以便创建不同大小的数据集并将这些数据集导入到 HDFS 或 WASB（Azure Blob 存储）中。有关详细信息，请参阅[将 Azure Blob 存储用于 HDInsight][]。然后，可以在 PowerShell 脚本生成的数据页上运行 MapReduce、Pig 或 Hive 作业。请注意，使用的 Pig 和 Hive 脚本都编译到 MapReduce 程序。用户可以运行一系列作业，以便亲自观察使用这些不同技术的影响以及数据大小对执行这些处理任务的影响。
+这些示例是围绕处理 IIS W3C 日志数据方案进行组织的。提供数据生成工具以便创建不同大小的数据集并将这些数据集导入到 HDFS 或 WASB（Azure Blob 存储）中。有关详细信息，请参阅[将 Azure Blob 存储用于 HDInsight][将 Azure Blob 存储用于 HDInsight]。然后，可以在 PowerShell 脚本生成的数据页上运行 MapReduce、Pig 或 Hive 作业。请注意，使用的 Pig 和 Hive 脚本都编译到 MapReduce 程序。用户可以运行一系列作业，以便亲自观察使用这些不同技术的影响以及数据大小对执行这些处理任务的影响。
 
 ### 本节内容
 
--   [IIS w3c 日志数据方案][]
--   [加载示例 w3c 日志数据][]
--   [运行 Java MapReduce 作业][]
--   [运行 Hive 作业][]
--   [运行 Pig 作业][]
--   [重新生成示例][]
+-   [IIS w3c 日志数据方案][IIS w3c 日志数据方案]
+-   [加载示例 w3c 日志数据][加载示例 w3c 日志数据]
+-   [运行 Java MapReduce 作业][运行 Java MapReduce 作业]
+-   [运行 Hive 作业][运行 Hive 作业]
+-   [运行 Pig 作业][运行 Pig 作业]
+-   [重新生成示例][重新生成示例]
 
 ### IIS w3c 日志数据方案
 
@@ -171,7 +171,7 @@ w3c 方案生成以下三种大小的 IIS W3C 日志数据并且将这些数据�
 
         powershell -File importdata.ps1 w3c -ExecutionPolicy unrestricted 
 
-    如果要改为将数据导入到 WASB，请参阅[连接到 Azure Blob 存储][]。
+    如果要改为将数据导入到 WASB，请参阅[连接到 Azure Blob 存储][连接到 Azure Blob 存储]。
 
 4.  从 Hadoop 命令行运行以下命令以便列出 HDFS 上导入的文件：
 
@@ -410,7 +410,7 @@ Azure HDInsight 将 Azure Blob 存储用作默认文件系统。有关详细信�
 
 ### 连接到存储模拟器
 
-[Azure SDK for .NET][] 随附 Azure 存储模拟器。存储模拟器不会自动启动。你必须手动启动它。应用程序名称为“Azure 存储模拟器”**。若要启动/停止模拟器，请在 Windows 系统任务栏中右键单击蓝色的 Azure 图标，然后单击“显示存储模拟器 UI”。
+[Azure SDK for .NET][Azure SDK for .NET] 随附 Azure 存储模拟器。存储模拟器不会自动启动。你必须手动启动它。应用程序名称为“Azure 存储模拟器”**。若要启动/停止模拟器，请在 Windows 系统任务栏中右键单击蓝色的 Azure 图标，然后单击“显示存储模拟器 UI”。
 
 > [WACOM.NOTE] 在启动存储模拟器时，你可能会看到以下错误消息：
 
@@ -438,11 +438,11 @@ Azure HDInsight 将 Azure Blob 存储用作默认文件系统。有关详细信�
 
 ### 连接到 Azure Blob 存储
 
-有关创建存储帐户的说明，请参阅[如何创建存储帐户][]。
+有关创建存储帐户的说明，请参阅[如何创建存储帐户][如何创建存储帐户]。
 
 **创建容器**
 
-1.  登录到[管理门户][]。
+1.  登录到[管理门户][管理门户]。
 2.  单击左侧的“存储” 。你应该在你的订阅下看到存储帐户的列表。
 3.  单击要从该列表创建容器的存储帐户。
 4.  单击页面顶部的“容器” 。
@@ -554,17 +554,17 @@ HDInsight Emulator 支持某些 HDInsight PowerShell cmdlet。这些 cmdlet 包�
 
 在调用 Get-Credential 时系统将会向你显示一个提示。你必须将 **hadoop** 用作用户名。密码可以是任意字符串。群集名称始终是 **<http://localhost:50111>**。
 
-有关提交 Hadoop 作业的详细信息，请参阅[以编程方式提交 Hadoop 作业][]。有关 HDInsight PowerShell cmdlet 的详细信息，请参阅 [HDInsight cmdlet 参考][]。
+有关提交 Hadoop 作业的详细信息，请参阅[以编程方式提交 Hadoop 作业][以编程方式提交 Hadoop 作业]。有关 HDInsight PowerShell cmdlet 的详细信息，请参阅 [HDInsight cmdlet 参考][HDInsight cmdlet 参考]。
 
 ## 后续步骤
 
 在本教程中，你安装了 HDInsight Emulator，并且运行了一些 Hadoop 作业。若要了解更多信息，请参阅下列文章：
 
--   [开始使用 Azure HDInsight][]
--   [为 HDInsight 开发 Java MapReduce 程序][]
--   [为 HDInsight 开发 C\# Hadoop 流 MapReduce 程序][]
--   [HDInsight Emulator 发行说明][]
--   [用于讨论 HDInsight 的 MSDN 论坛][]
+-   [开始使用 Azure HDInsight][开始使用 Azure HDInsight]
+-   [为 HDInsight 开发 Java MapReduce 程序][为 HDInsight 开发 Java MapReduce 程序]
+-   [为 HDInsight 开发 C\# Hadoop 流 MapReduce 程序][为 HDInsight 开发 C\# Hadoop 流 MapReduce 程序]
+-   [HDInsight Emulator 发行说明][HDInsight Emulator 发行说明]
+-   [用于讨论 HDInsight 的 MSDN 论坛][用于讨论 HDInsight 的 MSDN 论坛]
 
   [Azure HDInsight 包含哪个版本的 Hadoop？]: http://windowsazure.cn/zh-cn/documentation/articles/hdinsight-component-versioning/ "HDInsight 组件和版本"
   [开始使用 Azure HDInsight]: ../hdinsight-get-started/

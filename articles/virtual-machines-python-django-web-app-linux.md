@@ -109,10 +109,7 @@ Ubuntu Linux VM 已预安装了 Python 2.7，但它没有安装 Apache 或 Djang
 
 在你完成本教程后，关闭并/或删除你新创建的 Azure 虚拟机以为其他教程释放资源并避免产生 Azure 使用费。
 
-  [Windows]: /zh-cn/develop/python/tutorials/web-app-with-django/ "Windows"
-  [Mac/Linux]: /zh-cn/develop/python/tutorials/django-hello-world-(maclinux)/ "Mac/Linux"
   [显示 Azure 上的 hello world 页面的浏览器窗口]: ./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-browser.png
-  [create-account-and-vms-note]: ../includes/create-account-and-vms-note.md
   [此处]: /zh-cn/manage/linux/tutorials/virtual-machine-from-gallery/
   [添加终结点]: ./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-add-endpoint.png
   [port80]: ./media/virtual-machines-python-django-web-app-linux/mac-linux-django-helloworld-port80.png

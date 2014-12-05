@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [service-bus-amqp-overview](../includes/service-bus-amqp-overview.md)]
 
-  [service-bus-amqp-overview]: ../includes/service-bus-amqp-overview.md

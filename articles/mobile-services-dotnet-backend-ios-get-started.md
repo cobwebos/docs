@@ -29,7 +29,7 @@
 完成本教程需要安装 XCode 4.5 和 iOS 5.0 或更高版本。
 
 <div class="dev-callout"><strong>说明</strong>
-<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F" target="_blank">Azure 免费试用</a>。</p>
+<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F" target="_blank">Azure 免费试用</a>。</p>
 </div>
 
 ## <a name="create-new-service"> </a>创建新的移动服务
@@ -80,20 +80,8 @@
 
 本主题说明了如何针对 Azure 中运行的移动服务运行新的客户端应用程序。在对本地计算机上运行的移动服务测试 iOS 应用程序之前，必须配置 Web 服务器和防火墙，以允许从 iOS 开发计算机进行访问。有关详细信息，请参阅[配置本地 Web 服务器以允许连接到本地移动服务][配置本地 Web 服务器以允许连接到本地移动服务]。
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started "Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-ios-get-started/ "JavaScript 后端"
   [JavaScript 后端版本]: /zh-cn/documentation/articles/mobile-services-ios-get-started
   [0]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-completed-ios.png
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F
-  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
   [1]: ./media/mobile-services-dotnet-backend-ios-get-started/mobile-quickstart-steps-vs.png
-  [mobile-services-dotnet-backend-test-local-service]: ../includes/mobile-services-dotnet-backend-test-local-service.md
-  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
   [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-  [mobile-services-ios-run-app]: ../includes/mobile-services-ios-run-app.md
   [配置本地 Web 服务器以允许连接到本地移动服务]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-how-to-configure-iis-express

@@ -696,7 +696,7 @@ Azure 网站包含有效的安全证书，因此在部署到 Azure 时，将不�
 -   [使用 MVC 的 Entity Framework 入门][使用 MVC 的 Entity Framework 入门]
 -   [代码优先迁移][13]
 
-<!-- bookmarks --> <!-- links --> <!-- links from Tom's hopefully no collisions --> <!-- images-->
+<!-- bookmarks -->\r\n<!-- links -->\r\n<!-- links from Tom's hopefully no collisions -->\r\n<!-- images-->
 
   [Rick Anderson]: https://twitter.com/RickAndMSFT
   [登录页面]: ./media/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database-vs2012/rxb.png

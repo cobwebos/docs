@@ -121,28 +121,15 @@
 -   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
-<!-- Anchors. --> 
+ 
  
 
-<!-- URLs. -->
 
-  [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started "Android"
-  [HTML]: /zh-cn/documentation/articles/mobile-services-html-get-started "HTML"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started "Xamarin.Android"
-  [Sencha]: /zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/ "Sencha"
-  [PhoneGap]: /zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/ "PhoneGap"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-android-get-started/ "JavaScript 后端"
-  [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Support-in-Windows-Azure-Mobile-Services
 
-<!-- Images. -->
+
+
   [0]: ./media/mobile-services-android-get-started/mobile-quickstart-completed-android.png
   [Android 开发人员工具]: https://go.microsoft.com/fwLink/p/?LinkID=280125
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28
   [1]: ./media/mobile-services-android-get-started/mobile-portal-quickstart-android.png
   [2]: ./media/mobile-services-android-get-started/mobile-quickstart-steps-android.png
   [3]: ./media/mobile-services-android-get-started/mobile-services-import-android-workspace.png

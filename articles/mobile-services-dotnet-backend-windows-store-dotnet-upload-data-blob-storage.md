@@ -44,10 +44,6 @@
 
 [WACOM.INCLUDE [mobile-services-windows-store-dotnet-upload-to-blob-storage](../includes/mobile-services-windows-store-dotnet-upload-to-blob-storage.md)]
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-upload-data-blob-storage "Windows Phone"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-upload-data-blob-storage "JavaScript 后端"
   [安装存储客户端库]: #install-storage-client
   [更新客户端应用程序以捕获图像]: #add-select-images
   [在移动服务项目中安装存储客户端]: #storage-client-server
@@ -56,6 +52,4 @@
   [上载图像以测试应用程序]: #test
   [Azure 存储帐户]: /zh-cn/documentation/articles/storage-create-storage-account/
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started
-  [mobile-services-dotnet-backend-configure-blob-storage]: ../includes/mobile-services-configure-blob-storage.md
   [2]: ./media/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage/mobile-add-storage-nuget-package-dotnet.png
-  [mobile-services-windows-store-dotnet-upload-to-blob-storage]: ../includes/mobile-services-windows-store-dotnet-upload-to-blob-storage.md

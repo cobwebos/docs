@@ -63,7 +63,7 @@
 -   [从源代码管理发布到 Azure 网站][从源代码管理发布到 Azure 网站]。尽管本教程演示的是如何发布 Git 存储库，但 CodePlex 或 BitBucket 中托管的 Mercurial 存储库的发布过程与此类似。
 -   [Git、Mercurial 的 Azure 论坛][Git、Mercurial 的 Azure 论坛]。
 
-<!-- ###<a name="dropbox"></a>DropBox  [DropBox](https://www.dropbox.com/) is not a source control system, but if you store your source code in DropBox you can automate deployment from your DropBox account.  * [Deploy To Windows Azure Using Dropbox](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx). How to use the Azure Management Portal to set up DropBox deployment. * [DropBox and Azure Web Sites](http://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Dropbox-Deployment-to-Windows-Azure-Web-Sites). This video walks through the process of connecting a DropBox folder to an Azure Web Site, and shows how quickly you can get a web site up and running or maintain it using simple drag-and-drop deployment. * [Azure Forum for Git, Mercurial, and DropBox](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azuregit). -->
+<!-- ###<a name="dropbox"></a>DropBox  [DropBox](https://www.dropbox.com/) is not a source control system, but if you store your source code in DropBox you can automate deployment from your DropBox account.  * [Deploy To Windows Azure Using Dropbox](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx). How to use the Azure Management Portal to set up DropBox deployment. * [DropBox and Azure Web Sites](http://channel9.msdn.com/Series/Windows-Azure-Web-Sites-Tutorials/Dropbox-Deployment-to-Windows-Azure-Web-Sites). This video walks through the process of connecting a DropBox folder to an Azure Web Site, and shows how quickly you can get a web site up and running or maintain it using simple drag-and-drop deployment. * [Azure Forum for Git, Mercurial, and DropBox](http://social.msdn.microsoft.com/Forums/windowsazure/zh-cn/home?forum=azuregit). -->
 
 ## <a name="ide"></a>从 IDE 进行部署
 
@@ -205,7 +205,7 @@ Azure 通过提供 REST 管理 API 和几个可使该 API 更易使用的框架�
   [使用 VSO 与 TFVC 向 Azure 持续交付]: /zh-cn/documentation/articles/cloud-services-continuous-delivery-use-vso/
   [GitHub]: http://www.github.com
   [从源代码管理发布到 Azure 网站]: /zh-cn/documentation/articles/web-sites-publish-source-control/
-  [Git、Mercurial 的 Azure 论坛]: http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azuregit
+  [Git、Mercurial 的 Azure 论坛]: http://social.msdn.microsoft.com/Forums/windowsazure/zh-cn/home?forum=azuregit
   [Mercurial]: http://mercurial.selenic.com/
   [CodePlex]: http://www.codeplex.com/
   [BitBucket]: https://bitbucket.org/

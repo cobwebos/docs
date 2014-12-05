@@ -227,7 +227,6 @@ Windows Azure PowerShell 模块包括可帮助您下载和导入证书的 cmdlet
 
   
   
-  [Microsoft Online Services 客户门户]: https://mocp.microsoftonline.com/site/default.aspx
  
   
 

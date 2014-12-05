@@ -568,7 +568,7 @@ else
 
 您可以使用手机模拟器，通过在移动浏览器中浏览到网站 URL 来测试您的实时网站。
 
-<!-- Internal Links --> <!-- Images --> <!-- External Links -->
+<!-- Internal Links -->\r\n<!-- Images -->\r\n<!-- External Links -->
 
   [Rick Anderson]: https://twitter.com/RickAndMSFT
   [Visual Studio Express 2012]: http://www.visualstudio.com/zh-cn/downloads/download-visual-studio-vs.aspx
@@ -581,7 +581,7 @@ else
   [Apple Safari]: http://www.apple.com/cn/safari/
   [如何让 Safari 模拟 IE]: http://www.davidalison.com/2008/05/how-to-let-safari-pretend-its-ie.html
   [FireFox]: http://www.bing.com/search?q=firefox+download
-  [FireFox 用户代理切换器]: https://addons.mozilla.org/en-US/firefox/addon/user-agent-switcher/
+  [FireFox 用户代理切换器]: https://addons.mozilla.org/zh-cn/firefox/addon/user-agent-switcher/
   [初学者项目下载]: http://go.microsoft.com/fwlink/?LinkId=228307
   [已完成项目下载]: http://go.microsoft.com/fwlink/?LinkId=228306
   [创建 Azure 网站]: #bkmk_CreateWebSite

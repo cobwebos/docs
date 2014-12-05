@@ -1,4 +1,4 @@
-1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务” ，然后单击你的应用程序。
 
     ![][0]
 
@@ -34,10 +34,10 @@
             })
         };
 
-    这段代码使用 [mssql 对象][]来直接访问 "todoitem" 表，在所有项上设置 completed 标志。由于使用了 "exports.post" 函数，客户端发送 POST 请求以执行操作。已更改行的数量将以整数值形式返回至客户端。
+    这段代码使用 [mssql 对象][mssql 对象]来直接访问 "todoitem" 表，在所有项上设置 completed 标志。由于使用了 "exports.post" 函数，客户端发送 POST 请求以执行操作。已更改行的数量将以整数值形式返回至客户端。
 
 > [WACOM.NOTE]
-> 提供给自定义 API 函数的 [request][] 和 [response][] 对象由 [Express.js 库][]实现。有关详细信息，请参阅[自定义 API][]。
+> 提供给自定义 API 函数的 [request][request] 和 [response][response] 对象由 [Express.js 库][Express.js 库]实现。有关详细信息，请参阅[自定义 API][自定义 API]。
 
 接下来，你将修改快速启动应用程序，以添加新按钮和用于异步调用新的自定义 API 的代码。
 
@@ -46,8 +46,8 @@
   [1]: ./media/mobile-services-create-custom-api/mobile-custom-api-create.png
   [2]: ./media/mobile-services-create-custom-api/mobile-custom-api-create-dialog2.png
   [3]: ./media/mobile-services-create-custom-api/mobile-custom-api-select2.png
-  [mssql 对象]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554212.aspx
-  [request]: http://msdn.microsoft.com/en-us/library/windowsazure/jj554218.aspx
-  [response]: http://msdn.microsoft.com/en-us/library/windowsazure/dn303373.aspx
+  [mssql 对象]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554212.aspx
+  [request]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554218.aspx
+  [response]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn303373.aspx
   [Express.js 库]: http://go.microsoft.com/fwlink/p/?LinkId=309046
-  [自定义 API]: http://msdn.microsoft.com/en-us/library/windowsazure/dn280974.aspx
+  [自定义 API]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn280974.aspx

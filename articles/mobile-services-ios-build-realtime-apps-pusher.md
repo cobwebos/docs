@@ -384,7 +384,6 @@ Pusher 是一个基于云的服务，与移动服务一样，它可以让你无�
 
 若要了解有关注册和使用服务器脚本的详细信息，请参阅[移动服务服务器脚本参考][移动服务服务器脚本参考]。
 
-  [iOS]:  "iOS"
   [向用户推送通知]: /zh-cn/develop/mobile/tutorials/push-notifications-to-users-ios
   []: http://pusher.com
   [创建 Pusher 帐户]: #sign-up
@@ -392,7 +391,6 @@ Pusher 是一个基于云的服务，与移动服务一样，它可以让你无�
   [安装服务器脚本]: #install-scripts
   [测试应用程序]: #test-app
   [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started
-  [pusher-sign-up]: ../includes/pusher-sign-up.md
   [libPusher]: http://go.microsoft.com/fwlink/p?LinkId=276999
   [此处]: http://go.microsoft.com/fwlink/p/?LinkId=276998
   [0]: ./media/mobile-services-ios-build-realtime-apps-pusher/pusher-ios-add-files-to-group.png

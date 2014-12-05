@@ -3,7 +3,7 @@
 # 使用存储构建 Node.js Web 应用程序
 
 在本教程中，你将通过使用针对 Node.js 的 Windows Azure
-客户端库来扩展在[使用 Express 构建 Node.js Web 应用程序][]
+客户端库来扩展在[使用 Express 构建 Node.js Web 应用程序][使用 Express 构建 Node.js Web 应用程序]
 教程中创建的应用程序以操作数据管理服务。你将
 扩展你的应用程序以创建可部署到 Azure 的基于 Web 的任务列表
 应用程序。用户可以通过任务列表来检索任务、
@@ -14,9 +14,9 @@
 Azure 存储空间包含一些可用来存储和访问数据的
 数据结构，你可以通过 Azure SDK for Node.js 中
 包含的 API 或通过 REST API 利用存储
-服务。有关详细信息，请参阅[在 Azure 中存储和访问数据][]。
+服务。有关详细信息，请参阅[在 Azure 中存储和访问数据][在 Azure 中存储和访问数据]。
 
-本教程假定你已完成 [Node.js Web 应用程序][]
+本教程假定你已完成 [Node.js Web 应用程序][Node.js Web 应用程序]
 和[使用 Express 构建 Node.js][使用 Express 构建 Node.js Web 应用程序] 教程。
 
 你将了解到以下内容：
@@ -26,7 +26,7 @@ Azure 存储空间包含一些可用来存储和访问数据的
 
 以下是已完成应用程序的屏幕快照：
 
-![Internet Explorer 中已完成的网页][]
+![Internet Explorer 中已完成的网页][Internet Explorer 中已完成的网页]
 
 ## 在 Web.Config 中设置存储凭据
 
@@ -67,7 +67,7 @@ Azure 存储空间包含一些可用来存储和访问数据的
         <add key="AZURE_STORAGE_ACCESS_KEY" value="{STORAGE ACCESS KEY}"/>
         </appSettings>
 
-    ![web.cloud.config 文件内容][]
+    ![web.cloud.config 文件内容][web.cloud.config 文件内容]
 
 6.  保存该文件并关闭记事本。
 
@@ -248,7 +248,7 @@ Jade 模板引擎使用的标记语法不及 HTML 的详细，它是用于
 
     你的浏览器将显示以下页面，其中显示了从 Azure 存储空间中检索到的任务项：
 
-    ![显示了“My Tasklist”页的 Internet Explorer，该页的表中有一项内容。][]
+    ![显示了“My Tasklist”页的 Internet Explorer，该页的表中有一项内容。][显示了“My Tasklist”页的 Internet Explorer，该页的表中有一项内容。]
 
 ## 添加新任务功能
 
@@ -271,7 +271,7 @@ Jade 模板引擎使用的标记语法不及 HTML 的详细，它是用于
 顶部在导入该模块的第一行后面
 添加以下行。
 
-![突出显示 module.exports = Home 行的 home.js 文件。][]
+![突出显示 module.exports = Home 行的 home.js 文件。][突出显示 module.exports = Home 行的 home.js 文件。]
 
        var uuid = require('node-uuid');
 
@@ -281,7 +281,7 @@ Jade 模板引擎使用的标记语法不及 HTML 的详细，它是用于
 在 home.js 文件中，将以下代码粘贴到最后一个函数后，
 然后保存该文件。
 
-![突出显示了 showresults 函数][]
+![突出显示了 showresults 函数][突出显示了 showresults 函数]
 
        newItem:function (req, res) {
     var self = this;
@@ -353,13 +353,13 @@ Jade 模板引擎使用的标记语法不及 HTML 的详细，它是用于
 
     浏览器将打开并显示以下页面：
 
-    ![标题为 My Task List 的网页，其中所含的表包含任务和用于添加新任务的字段。][]
+    ![标题为 My Task List 的网页，其中所含的表包含任务和用于添加新任务的字段。][标题为 My Task List 的网页，其中所含的表包含任务和用于添加新任务的字段。]
 
 2.  为**“项目名称”**输入：“New task functionality”、为“项目类别” 输入：“Site work”，为“项目日期”**Item Date**输入："12/02/2011". 然后单击**“添加项目”**。
 
     该项将添加到 Azure 存储空间中的任务表，并显示为以下屏幕快照中所示的内容。
 
-    ![将任务添加到该列表后，标题为 My Task List 的网页，其中所含表包含相关任务。][]
+    ![将任务添加到该列表后，标题为 My Task List 的网页，其中所含表包含相关任务。][将任务添加到该列表后，标题为 My Task List 的网页，其中所含表包含相关任务。]
 
 ## 将应用程序重新发布到 Azure
 
@@ -374,11 +374,11 @@ Jade 模板引擎使用的标记语法不及 HTML 的详细，它是用于
 
     部署完成后，你将看到如下响应：
 
-    ![部署期间显示的状态消息。][]
+    ![部署期间显示的状态消息。][部署期间显示的状态消息。]
 
     与先前一样，由于你指定了 **-launch** 选项，因此在发布完成后，浏览器将打开并显示正在 Azure 中运行的应用程序。
 
-    ![浏览器窗口中显示 My Task List 页面。URL 表明该页面现在托管在 Azure 上。][]
+    ![浏览器窗口中显示 My Task List 页面。URL 表明该页面现在托管在 Azure 上。][浏览器窗口中显示 My Task List 页面。URL 表明该页面现在托管在 Azure 上。]
 
 ## 停止并删除应用程序
 
@@ -398,7 +398,7 @@ Azure 按使用服务器的小时数对 Web 角色实例进行收费。
 
     停止服务可能需要花费几分钟时间。在服务停止时，你会收到一条指示服务已停止的消息。
 
-    ![指示服务已停止的状态消息。][]
+    ![指示服务已停止的状态消息。][指示服务已停止的状态消息。]
 
 2.  若要删除服务，请调用以下 cmdlet：
 
@@ -408,7 +408,7 @@ Azure 按使用服务器的小时数对 Web 角色实例进行收费。
 
     删除服务可能需要花费几分钟时间。在服务被删除后，你将收到一条指示服务已被删除的消息。
 
-    ![指示服务已被删除的状态消息。][]
+    ![指示服务已被删除的状态消息。][指示服务已被删除的状态消息。]
 
   [使用 Express 构建 Node.js Web 应用程序]: http://windowsazure.cn/zh-cn/documentation/articles/cloud-services-nodejs-develop-deploy-express-app/
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx

@@ -132,8 +132,8 @@
 <b>说明</b> 
 <p>应用程序日志记录依赖于你的应用程序生成的日志信息。用于生成日志信息的方法以及这些信息的格式均特定于应用程序所采用的编写语言。有关使用应用程序日志记录的特定于语言的信息，请参阅以下文章：</p>
 <ul>
-<li><b>.NET</b> - <a href="/en-us/develop/net/common-tasks/diagnostics-logging-and-instrumentation/">为 Azure 网站启用诊断日志记录</a></li>
-<li><b>Node.js</b> - <a href="/en-us/develop/nodejs/how-to-guides/Debug-Website/">如何在 Azure 网站中调试 Node.js 应用程序</a></li>
+<li><b>.NET</b> - <a href="/zh-cn/develop/net/common-tasks/diagnostics-logging-and-instrumentation/">为 Azure 网站启用诊断日志记录</a></li>
+<li><b>Node.js</b> - <a href="/zh-cn/develop/nodejs/how-to-guides/Debug-Website/">如何在 Azure 网站中调试 Node.js 应用程序</a></li>
 </ul>
 <p>只有 .NET 应用程序支持到表或 Blob 存储中的应用程序日志记录。</p>
 </div>
@@ -310,12 +310,7 @@
   [如何：在 Azure 中接收警报通知和管理警报规则]: http://go.microsoft.com/fwlink/?LinkId=309356
   [Azure 的虚拟机和云服务大小]: http://go.microsoft.com/fwlink/?LinkID=309169
   [如何管理存储帐户]: http://www.windowsazure.cn/zh-cn/manage/services/storage/how-to-manage-a-storage-account/
-  [如何使用 Azure PowerShell]: http://windowsazure.cn/zh-cn/documentation/articles/install-configure-powershell/
-  [为 Azure 网站启用诊断日志记录]: /en-us/develop/net/common-tasks/diagnostics-logging-and-instrumentation/
-  [如何在 Azure 网站中调试 Node.js 应用程序]: /en-us/develop/nodejs/how-to-guides/Debug-Website/
   [FileZilla]: http://go.microsoft.com/fwlink/?LinkId=247914
-  [Azure PowerShell Cmdlet 入门]: http://msdn.microsoft.com/zh-cn/library/azure/jj554332.aspx
-  [如何使用 Azure 命令行工具]: http://windowsazure.cn/zh-cn/documentation/articles/xplat-cli/
   [W3C 扩展日志格式]: http://go.microsoft.com/fwlink/?LinkID=90561
   []: http://contoso.chinacloudapp.cn
   [Scott Guthrie 介绍 Azure 网站并设置终结点监视]: http://windowsazure.cn/zh-cn/documentation/videos/websites-and-endpoint-monitoring-scottgu/

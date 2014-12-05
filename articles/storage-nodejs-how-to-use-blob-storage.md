@@ -213,9 +213,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
   [如何：列出容器中的 Blob]: #list-blob
   [如何：下载 Blob]: #download-blobs
   [如何：删除 Blob]: #delete-blobs
-  [howto-blob-storage]: ../includes/howto-blob-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
-  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /en-us/develop/nodejs/tutorials/create-a-website-(mac)/
+  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /zh-cn/develop/nodejs/tutorials/create-a-website-(mac)/
   [Node.js 云服务]: /zh-cn/documentation/articles/cloud-services-nodejs-develop-deploy-app/
   [使用 WebMatrix 构建网站]: /zh-cn/documentation/articles/web-sites-nodejs-use-webmatrix/
   [使用存储构建 Node.js 云服务]: /zh-cn/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/

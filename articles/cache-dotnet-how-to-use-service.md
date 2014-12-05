@@ -413,7 +413,7 @@ NuGet 包还添加对以下程序集的引用：
   [如何：在缓存中指定对象的有效期]: #specify-expiration
   [如何：在缓存中存储 ASP.NET 会话状态]: #store-session
   [如何：在缓存中存储 ASP.NET 页面输出缓存]: #store-page
-  [缓存定价详细信息]: http://www.windowsazure.com/en-us/pricing/details/cache/
+  [缓存定价详细信息]: http://www.windowsazure.com/zh-cn/pricing/details/cache/
   [Azure Cache Service（预览版）概述]: http://go.microsoft.com/fwlink/?LinkId=320830
   [管理门户]: https://manage.windowsazure.com/
   [“新建缓存”菜单]: ./media/cache-dotnet-how-to-use-service/CacheServiceNewCacheMenu.png

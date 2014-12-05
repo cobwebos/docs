@@ -21,21 +21,21 @@
 
 本教程将指导你完成以下基本步骤：
 
-1.  [添加字符串长度验证][]
-2.  [更新客户端以支持验证][]
-3.  [在插入操作中添加时间戳][]
-4.  [更新客户端以显示时间戳][]
+1.  [添加字符串长度验证][添加字符串长度验证]
+2.  [更新客户端以支持验证][更新客户端以支持验证]
+3.  [在插入操作中添加时间戳][在插入操作中添加时间戳]
+4.  [更新客户端以显示时间戳][更新客户端以显示时间戳]
 
-本教程以前一教程[数据处理入门][]中的步骤和示例应用程序为基础。在开始本教程之前，必须先完成[数据处理入门][]。
+本教程以前一教程[数据处理入门][数据处理入门]中的步骤和示例应用程序为基础。在开始本教程之前，必须先完成[数据处理入门][数据处理入门]。
 
 <a name="string-length-validation"></a>
 ## 添加验证
 
 验证用户提交的数据的长度总不失为一种良好做法。首先，你要注册一个脚本，用于验证发送到移动服务的字符串数据长度，并拒绝过长（在本例中为 10 个字符以上）的字符串。
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务” ，然后单击你的应用程序。
 
-    ![][]
+    ![][0]
 
 2.  单击“数据” 选项卡，然后单击 TodoItem  表。
 
@@ -67,7 +67,7 @@
 
 移动服务会验证数据和发送错误响应，而你则需要更新你的应用程序，使之能够处理验证后生成的错误响应。
 
-1.  在 Visual Studio 2012 Express for Windows 8 中，打开你在完成教程[数据处理入门][]后修改的项目。
+1.  在 Visual Studio 2012 Express for Windows 8 中，打开你在完成教程[数据处理入门][数据处理入门]后修改的项目。
 
 2.  按 "F5" 键运行应用程序，然后在“插入 TodoItem” 中键入超过 10 个字符的文本，然后单击“保存” 。
 
@@ -207,33 +207,22 @@ public DateTime createdAt { set; get; }
 <a name="next-steps"> </a>
 ## 后续步骤
 
-现在你已完成本教程，建议你继续学习数据系列中的最后一篇教程：[使用分页优化查询][]。
+现在你已完成本教程，建议你继续学习数据系列中的最后一篇教程：[使用分页优化查询][使用分页优化查询]。
 
 在为用户授权以及发送推送通知时，也可以使用服务器脚本。有关详细信息，请参阅以下教程：
 
--   [使用脚本为用户授权][]
+-   [使用脚本为用户授权][使用脚本为用户授权]
     了解如何基于某个已经过身份验证的用户的 ID 筛选数据。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
--   [移动服务服务器脚本参考][]
+-   [移动服务服务器脚本参考][移动服务服务器脚本参考]
     了解有关注册和使用服务器脚本的详细信息。
 
--   [移动服务 .NET 操作方法概念性参考][]
+-   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-html "HTML"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android "Xamarin.Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-validate-modify-data/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-validate-modify-data-server-scripts/ "JavaScript 后端"
-  [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Windows-Store-app-Validate-and-Modify-Data-with-Server-Scripts-in-Windows-Azure-Mobile-Services
   [添加字符串长度验证]: #string-length-validation
   [更新客户端以支持验证]: #update-client-validation
   [在插入操作中添加时间戳]: #add-timestamp

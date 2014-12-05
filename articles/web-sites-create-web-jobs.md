@@ -219,7 +219,6 @@ Microsoft Azure WebJobs SDK 简化了将后台处理添加到 Microsoft Azure �
 
 若要开始使用 Azure，请参阅 [Microsoft Azure 免费试用版][Microsoft Azure 免费试用版]。
 
-<!-- LINKS --> <!-- IMAGES -->
 
   [可接受的脚本文件类型]: #acceptablefiles
   [创建按需运行任务]: #CreateOnDemand

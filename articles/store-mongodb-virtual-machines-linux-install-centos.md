@@ -28,7 +28,4 @@
 在本教程中，你已了解如何创建 Linux 虚拟机以及使用 SSH 或 PuTTY 远程连接到该虚拟机。你还了解了如何在 Linux 虚拟机上安装和配置 MongoDB。有关 MongoDB 的详细信息，请参阅 [MongoDB 文档][MongoDB 文档]。
 
   [MongoDB]: http://www.mongodb.org/
-  [create-and-configure-centos-vm-in-portal]: ../includes/create-and-configure-centos-vm-in-portal.md
-  [attach-data-disk-centos-vm-in-portal]: ../includes/attach-data-disk-centos-vm-in-portal.md
-  [install-and-run-mongo-on-centos-vm]: ../includes/install-and-run-mongo-on-centos-vm.md
   [MongoDB 文档]: http://www.mongodb.org/display/DOCS/Home

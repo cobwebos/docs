@@ -220,7 +220,7 @@
             echo "<h3>No one is currently registered.</h3>";
         }
 
-你现在可以浏览到 **<http://localhost/registration/index.php>** 来测试此应用程序。
+你现在可以浏览到 **http://localhost/registration/index.php** 来测试此应用程序。
 
 ## 发布应用程序
 
@@ -276,7 +276,6 @@
   [Git]: http://git-scm.com/
   [Microsoft Web 平台安装程序]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure PHP 网站]: ./media/web-sites-php-sql-database-deploy-use-git/running_app_3.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [Azure 管理门户]: https://manage.windowsazure.cn/
   [新建 Azure 网站]: ./media/web-sites-php-sql-database-deploy-use-git/new_website.jpg
   [自定义创建新的网站]: ./media/web-sites-php-sql-database-deploy-use-git/custom_create.png
@@ -292,4 +291,3 @@
   [链接的资源]: ./media/web-sites-php-sql-database-deploy-use-git/linked_resources.jpg
   [连接字符串]: ./media/web-sites-php-sql-database-deploy-use-git/connection_string.jpg
   [SQL Server 的 PDO 扩展]: http://php.net/pdo_sqlsrv
-  [http://[网站]: http://[site

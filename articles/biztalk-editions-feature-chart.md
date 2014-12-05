@@ -232,7 +232,6 @@ BizTalk 适配器服务由 Azure BizTalk 服务使用。BizTalk 适配器服务�
 -   [BizTalk 服务：颁发者名称和颁发者密钥][BizTalk 服务：颁发者名称和颁发者密钥]
 -   [如何开始使用 Azure BizTalk 服务 SDK][如何开始使用 Azure BizTalk 服务 SDK]
 
-  [Azure BizTalk 服务定价]: http://go.microsoft.com/fwlink/p/?LinkID=304011
   [BizTalk 服务：备份和还原]: http://go.microsoft.com/fwlink/p/?LinkID=329873
   [下载]: http://www.microsoft.com/download/details.aspx?id=39087
   [BizTalk 服务：使用 Azure 管理门户进行设置]: http://go.microsoft.com/fwlink/p/?LinkID=302280

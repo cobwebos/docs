@@ -485,9 +485,6 @@
   [如何：更新实体]: #UpdateEntity
   [如何：对表操作进行批处理]: #BatchOperations
   [如何：删除表]: #DeleteTable
-  [howto-table-storage]: ../includes/howto-table-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
-  [get-client-libraries]: ../includes/get-client-libraries.md
   [require\_once]: http://php.net/require_once
   [为表服务操作设置超时]: http://msdn.microsoft.com/zh-cn/library/azure/dd894042.aspx
   [了解表服务数据模型]: http://msdn.microsoft.com/zh-cn/library/azure/dd179338.aspx

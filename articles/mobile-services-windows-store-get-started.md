@@ -105,22 +105,9 @@
 -   "推送通知入门" ([C#][8]/[JavaScript][9])
   <br/>了解如何向应用程序发送一条非常简单的推送通知。
 
-  [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started "Android"
-  [HTML]: /zh-cn/documentation/articles/mobile-services-html-get-started "HTML"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started "Xamarin.Android"
-  [Sencha]: /zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/ "Sencha"
-  [PhoneGap]: /zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/ "PhoneGap"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started/ "JavaScript 后端"
-  [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Introduction-to-Windows-Azure-Mobile-Services
   [0]: ./media/mobile-services-windows-store-get-started/mobile-quickstart-completed.png
   [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F
   [使用 Visual Studio 2012 的移动服务中的数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012/
-  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
   [1]: ./media/mobile-services-windows-store-get-started/mobile-portal-quickstart.png
   [2]: ./media/mobile-services-windows-store-get-started/mobile-quickstart-steps.png
   [Visual Studio 2013 Express for Windows]: http://go.microsoft.com/fwlink/?LinkId=257546

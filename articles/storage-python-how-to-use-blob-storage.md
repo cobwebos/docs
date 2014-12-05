@@ -162,8 +162,6 @@
   [如何：下载 Blob]: #download-blobs
   [如何：删除 Blob]: #delete-blobs
   [如何：上载和下载大型 Blob]: #large-blobs
-  [howto-blob-storage]: ../includes/howto-blob-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
   [Python 安装指南]: ../python-how-to-install/
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/

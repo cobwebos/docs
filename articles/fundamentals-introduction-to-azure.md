@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [intro-to-azure](../includes/intro-to-azure.md)]
 
-  [intro-to-azure]: ../includes/intro-to-azure.md

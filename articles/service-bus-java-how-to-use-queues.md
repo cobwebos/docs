@@ -184,5 +184,4 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [如何：从队列接收消息]: #bkmk_HowToReceiveMsgs
   [如何：处理应用程序崩溃和不可读消息]: #bkmk_HowToHandleAppCrashes
   [后续步骤]: #bkmk_NextSteps
-  [howto-service-bus-queues]: ../includes/howto-service-bus-queues.md
   [队列、主题和订阅]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh367516.aspx

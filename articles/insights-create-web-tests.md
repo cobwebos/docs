@@ -15,11 +15,11 @@
 1.  若要配置 Web 测试，请先确保你的网站使用“基本”或“标准”计划。
 2.  然后，在“网站”分页上选择“Web 测试”部件：
 
-   ![配置 Web 测试][配置 Web 测试]
+     ![配置 Web 测试][配置 Web 测试]
 
 3.  在“创建 Web 测试”分页中为 Web 测试命名，然后指定要针对其运行测试的 URL。
 
-   ![创建 Web 测试][创建 Web 测试]
+     ![创建 Web 测试][创建 Web 测试]
 
 1.  接下来，请从 8 个位置中选择最多 3 个位置
 
@@ -27,11 +27,10 @@
 
 3.  然后选择警报设置，包括敏感度和电子邮件的收件人。
 
-   ![警报][警报]
-
-    - High sensitivity will create an alert whenever a test failure is detected in just 1 location.
-    - Medium sensitivity requires at least half of the locations have seen a failure in 10 minutes.
-    - Low sensitivity requires that the test at all locations have failed within 15 minutes.
+     ![警报][警报]
+    - 高敏感度时，只需在 1 个位置检测到测试失败，就会产生一个警报。
+    - 中敏感度要求 10 分 钟内至少半数的位置出现失败。
+    - 低 敏感度要求 15 分钟内所有位置的测试全失败。
 
 完成设置后，请单击“创建”按钮。创建 Web 测试后，它每隔 5 分钟就会从指定的位置执行，因此可能需要经过一段时间才会显示数据。
 

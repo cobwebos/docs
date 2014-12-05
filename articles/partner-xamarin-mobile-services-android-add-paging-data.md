@@ -13,9 +13,9 @@
 <p>为了防止移动设备客户端上发生数据溢出，移动服务实施了自动页限制，该限制默认为每个响应中最多 50 个项。通过指定页大小，你最多可以在响应中显式请求 1,000 个项。</p>
 </div>
 
-本教程以前一教程[数据处理入门][]中的步骤和示例应用程序为基础。在开始学习本教程之前，最起码需要先完成数据处理系列中的第一篇教程，即[数据处理入门][]。
+本教程以前一教程[数据处理入门][数据处理入门]中的步骤和示例应用程序为基础。在开始学习本教程之前，最起码需要先完成数据处理系列中的第一篇教程，即[数据处理入门][数据处理入门]。
 
-1.  在 Xamarin Studio 中，打开你在完成[数据处理入门][]教程后创建的项目。
+1.  在 Xamarin Studio 中，打开你在完成[数据处理入门][数据处理入门]教程后创建的项目。
 
 2.  单击“运行” 以启动应用程序，然后在文本框中输入文本，然后单击“添加” 按钮。
 
@@ -60,20 +60,12 @@
 
 演示移动服务中数据处理基础知识的系列教程到此结束。建议你了解有关以下移动服务主题的详细信息：
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用 Windows 帐户对应用程序用户进行身份验证。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-html "HTML"
-  [iOS C\#]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-ios "Xamarin.iOS"
-  [Android C\#]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-android "Xamarin.Android"
   [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android
   [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android
   [推送通知入门]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android

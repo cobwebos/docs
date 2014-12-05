@@ -672,12 +672,11 @@
 
 [适用于 Mac 和 Linux 的 Azure 命令行工具] [创建 Node.js 应用程序并将其部署到 Azure 网站]：/zh-cn/documentation/articles/web-sites-nodejs-develop-deploy-mac/
 [使用 Git 发布到 Azure 网站][使用 Git 发布到 Azure 网站]：/zh-cn/documentation/articles/web-sites-publish-source-control/
-[Azure 开发人员中心]：/en-us/develop/nodejs/
+[Azure 开发人员中心]：/zh-cn/develop/nodejs/
 
   [Node]: http://nodejs.org
   [Git]: http://git-scm.com
   [node-table-finished]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_empty.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [Azure 门户]: http://www.windowsazure.cn
   [portal-new]: ./media/storage-nodejs-use-table-storage-web-site/plus-new.png
   [portal-storage-account]: ./media/storage-nodejs-use-table-storage-web-site/new-storage.png
@@ -689,9 +688,8 @@
   [1]: http://getbootstrap.com/
   [node-table-list-items]: ./media/storage-nodejs-use-table-storage-web-site/table_todo_list.png
   [创建 Node.js 应用程序并将其部署到 Azure 网站]: /zh-cn/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-  [antares-iaas-signup]: ../includes/antares-iaas-signup.md
-  [Azure 开发人员中心]: /en-us/develop/nodejs/
-  [适用于 Mac 和 Linux 的 Azure 命令行工具]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
+  [Azure 开发人员中心]: /zh-cn/develop/nodejs/
+  [适用于 Mac 和 Linux 的 Azure 命令行工具]: /zh-cn/develop/nodejs/how-to-guides/command-line-tools/
   [download-publishing-settings]: ./media/storage-nodejs-use-table-storage-web-site/azure-account-download-cli.png
   [Git remote]: http://git-scm.com/docs/git-remote
   [go-to-dashboard]: ./media/storage-nodejs-use-table-storage-web-site/go_to_dashboard.png

@@ -167,7 +167,6 @@
   [注册以获取 Twitter 访问权限并存储凭据]: #get-oauth-credentials
   [创建新的 Updates 表]: #create-table
   [创建新的计划作业]: #add-job
-  [mobile-services-register-twitter-access]: ../includes/mobile-services-register-twitter-access.md
   [0]: ./media/mobile-services-schedule-recurring-tasks/mobile-data-tab-empty-cli.png
   [1]: ./media/mobile-services-schedule-recurring-tasks/mobile-create-updates-table.png
   [2]: ./media/mobile-services-schedule-recurring-tasks/mobile-schedule-new-job-cli.png

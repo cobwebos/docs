@@ -159,7 +159,6 @@
 
 [如何在 HTTPS 终结点上配置 SSL 证书][如何在 HTTPS 终结点上配置 SSL 证书]
 
-  [为 Azure 网站配置 SSL 证书]: ../web-sites-configure-ssl-certificate/
   [步骤 1：创建 Node.js 服务并将该服务发布到云]: #step1
   [步骤 2：获取 SSL 证书]: #step2
   [步骤 3：导入 SSL 证书]: #step3
@@ -169,7 +168,6 @@
   [0]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-01.png
   [1]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-02.png
   [2]: ./media/cloud-services-nodejs-configure-ssl-certificate/enable-ssl-03.png
-  [如何对 Node.js 使用 Azure PowerShell]: https://www.windowsazure.com/zh-cn/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings
   [证书向导]: ./media/cloud-services-nodejs-configure-ssl-certificate/certificateimport.png
   [私钥保护]: ./media/cloud-services-nodejs-configure-ssl-certificate/exportable.png
   [如何将证书与服务关联]: http://msdn.microsoft.com/zh-cn/library/windowsazure/gg465718.aspx

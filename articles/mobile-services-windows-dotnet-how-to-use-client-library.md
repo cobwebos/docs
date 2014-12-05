@@ -679,11 +679,6 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][ISu
 -   [使用脚本为用户授权][使用脚本为用户授权]
     了解如何采用移动服务基于已进行身份验证的用户提供的用户 ID 值，并使用该值来筛选移动服务返回的数据。
 
-  [.NET Framework]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library/ ".NET Framework"
-  [HTML/JavaScript]: /zh-cn/develop/mobile/how-to-guides/work-with-html-js-client/ "HTML/JavaScript"
-  [iOS]: /zh-cn/develop/mobile/how-to-guides/work-with-ios-client-library/ "iOS"
-  [Android]: /zh-cn/develop/mobile/how-to-guides/work-with-android-client-library/ "Android"
-  [Xamarin]: /zh-cn/develop/mobile/how-to-guides/work-with-xamarin-client-library/ "Xamarin"
   [Windows 应用商店快速入门教程]: http://www.windowsazure.com/zh-cn/develop/mobile/tutorials/get-started/
   [Windows Phone 快速入门教程]: http://www.windowsazure.com/zh-cn/develop/mobile/tutorials/get-started-wp8/
   [Windows 应用商店数据教程]: http://www.windowsazure.com/zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet/
@@ -712,7 +707,6 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][ISu
   [自定义请求标头]: #headers
   [自定义序列化]: #serialization
   [后续步骤]: #nextsteps
-  [mobile-services-concepts]: ../includes/mobile-services-concepts.md
   [创建表]: http://go.microsoft.com/fwlink/?LinkId=298592
   [动态架构]: http://go.microsoft.com/fwlink/?LinkId=296271
   [GetTable]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554275.aspx
@@ -731,8 +725,6 @@ Windows 运行时中的某些控件支持名为 [ISupportIncrementalLoading][ISu
   [userId]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
   [MobileServiceAuthenticationToken]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
   [缓存身份验证令牌]: #caching
-  [注册 Windows 应用商店应用程序包以进行 Microsoft 身份验证]: /zh-cn/develop/mobile/how-to-guides/register-windows-store-app-package/
-  [LoginAsync]: http://go.microsoft.com/fwlink/p/?LinkId=311594
   [1]: /zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
   [2]: /zh-cn/develop/mobile/tutorials/single-sign-on-wp8/
   [PasswordVault]: http://msdn.microsoft.com/zh-cn/library/windows/apps/windows.security.credentials.passwordvault.aspx

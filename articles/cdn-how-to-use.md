@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [cdn](../includes/cdn.md)]
 
-  [cdn]: ../includes/cdn.md

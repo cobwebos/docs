@@ -101,9 +101,9 @@ SendGrid 是一项[基于云的电子邮件服务][基于云的电子邮件服�
 -   面向 Azure 客户的 SendGrid 特惠产品/服务：
     <http://sendgrid.com/azure.html>
 
-<!-- Anchors. -->  
+  
 
-<!-- URLs. -->
+
 
   [基于云的电子邮件服务]: http://sendgrid.com/solutions
   [事务性电子邮件传递]: http://sendgrid.com/transactional-email
@@ -111,10 +111,9 @@ SendGrid 是一项[基于云的电子邮件服务][基于云的电子邮件服�
   [添加脚本以发送电子邮件]: #add-script
   [插入数据以接收电子邮件]: #insert-data
   [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started
-  [sendgrid-sign-up]: ../includes/sendgrid-sign-up.md
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
-<!-- Images. -->
+
   [0]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-portal-data-tables.png
   [1]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-insert-script-push2.png
   [2]: ./media/store-sendgird-mobile-services-send-email-scripts/mobile-quickstart-push1.png

@@ -272,5 +272,3 @@ Internet 上的所有人都能查看公共容器中的 Blob，但公共访问权
   [如何：下载 Blob]: #DownloadBlob
   [如何：删除 Blob]: #DeleteBlob
   [如何：删除 Blob 容器]: #DeleteContainer
-  [howto-blob-storage]: ../includes/howto-blob-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md

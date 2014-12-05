@@ -127,7 +127,7 @@ Azure CDN 当前没有可用的显式“清除”工具。
   [步骤 3：访问你的 CDN 内容]: #Step3
   [步骤 4：删除你的 CDN 内容]: #Step4
   [Azure 管理门户]: https://manage.windowsazure.cn/
-  [计费计划]: /en-us/pricing/calculator/?scenario=full
+  [计费计划]: /zh-cn/pricing/calculator/?scenario=full
   [创建存储帐户]: http://msdn.microsoft.com/zh-cn/library/azure/hh264518.aspx
   [1]: ./media/cdn/CDN_CreateNewStorageAcct.png
   [如何在 Azure 中创建地缘组]: http://msdn.microsoft.com/zh-cn/library/azure/hh531560.aspx

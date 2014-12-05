@@ -6,22 +6,22 @@
 	<a href="/zh-cn/develop/mobile/tutorials/create-pull-notifications-dotnet" title="Windows Store C#" class="current">Windows 应用商店 C\#</a><a href="/zh-cn/develop/mobile/tutorials/create-pull-notifications-js" title="Windows Store JavaScript">Windows 应用商店 JavaScript</a>
 </div>
 
-本主题说明如何使用自定义 API 在 Windows 应用商店应用程序中支持定期通知。启用定期通知后，Windows 将定期访问你的自定义 API 终结点，并使用返回的、采用磁贴特定格式的 XML 来更新开始菜单中的应用程序磁贴。有关详细信息，请参阅[定期通知][]。
+本主题说明如何使用自定义 API 在 Windows 应用商店应用程序中支持定期通知。启用定期通知后，Windows 将定期访问你的自定义 API 终结点，并使用返回的、采用磁贴特定格式的 XML 来更新开始菜单中的应用程序磁贴。有关详细信息，请参阅[定期通知][定期通知]。
 
-需要将此功能添加到你在完成[移动服务入门][]或[数据处理入门][]教程后创建的应用程序。为此，你需要完成以下步骤：
+需要将此功能添加到你在完成[移动服务入门][移动服务入门]或[数据处理入门][数据处理入门]教程后创建的应用程序。为此，你需要完成以下步骤：
 
-1.  [定义自定义 API][]
-2.  [更新应用程序以启用定期通知][]
-3.  [测试应用程序][]
+1.  [定义自定义 API][定义自定义 API]
+2.  [更新应用程序以启用定期通知][更新应用程序以启用定期通知]
+3.  [测试应用程序][测试应用程序]
 
-本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]或[数据处理入门][]。
+本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][移动服务入门]或[数据处理入门][数据处理入门]。
 
 <a name="define-custom-api"></a>
 ## 定义自定义 API
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务” ，然后单击你的应用程序。
 
-    ![][]
+    ![][0]
 
 2.  单击“API” 选项卡，然后单击“创建自定义 API” 。
 
@@ -123,17 +123,15 @@
 
 现在，你已创建定期通知，建议你了解有关以下移动服务主题的详细信息：
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     定期通知由 Windows 管理，并且仅按预定义的时间表发生。推送通知可以由移动服务按需发送，并且可以是 toast 通知、磁贴通知和原始通知。
 
--   [移动服务服务器脚本参考][]
+-   [移动服务服务器脚本参考][移动服务服务器脚本参考]
     了解有关创建自定义 API 的详细信息。
 
--   [移动服务 .NET 操作方法概念性参考][]
+-   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/create-pull-notifications-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/create-pull-notifications-js "Windows 应用商店 JavaScript"
   [定期通知]: http://msdn.microsoft.com/zh-cn/library/windows/apps/jj150587.aspx
   [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started/#create-new-service
   [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet
@@ -145,9 +143,6 @@
   [1]: ./media/mobile-services-windows-store-dotnet-create-pull-notifications/mobile-custom-api-create.png
   [2]: ./media/mobile-services-windows-store-dotnet-create-pull-notifications/mobile-custom-api-create-dialog.png
   [3]: ./media/mobile-services-windows-store-dotnet-create-pull-notifications/mobile-custom-api-select.png
-  [wns 模块]: http://go.microsoft.com/fwlink/p/?LinkId=306750
-  [推送对象]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554217.aspx
-  [wns 对象]: http://go.microsoft.com/fwlink/p/?LinkId=260591
   [4]: ./media/mobile-services-windows-store-dotnet-create-pull-notifications/mobile-custom-api-live-tile.png
   [推送通知入门]: /zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet
   [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/?LinkId=262293

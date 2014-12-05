@@ -108,9 +108,9 @@
 -   有关定价信息，请参阅 [Azure 应用商店中的 New Relic 页][Azure 应用商店中的 New Relic 页]。
 -   有关使用 New Relic 的更多信息，请参阅 New Relic 文档中的[应用程序概述][应用程序概述]。
 
-<!-- Anchors. -->  
+  
 
-<!-- URLs. -->
+
 
   [使用 Azure 应用商店注册 New Relic]: #sign-up
   [安装 New Relic 模块]: #install-module
@@ -124,7 +124,7 @@
   [New Relic 模块]: https://npmjs.org/package/newrelic
   [管理门户]: https://manage.windowsazure.cn/
 
-<!-- Images. -->
+
   [0]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-tab.png
   [1]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-new-relic-monitoring.png
   [2]: ./media/store-new-relic-mobile-services-monitor/mobile-configure-new-relic-monitoring-custom.png

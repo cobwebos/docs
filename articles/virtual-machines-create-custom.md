@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [howto-custom-create-vm](../includes/howto-custom-create-vm.md)]
 
-  [howto-custom-create-vm]: ../includes/howto-custom-create-vm.md

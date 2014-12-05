@@ -173,7 +173,6 @@
 
     WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRITable (hourly aggregations for role instances)
 
-  [免责声明]: ../includes/disclaimer.md
   [概念]: #concepts
   [如何：为云服务配置监视]: #verbose
   [如何：接收云服务度量值的警报]: #receivealerts

@@ -23,7 +23,7 @@
 
 <div class="dev-callout"><b>说明</b>
 
-<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-html%2F" target="_blank">Azure 免费试用</a>。</p>
+<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A756A2826&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-html%2F" target="_blank">Azure 免费试用</a>。</p>
 </div>
 
 ### 其他要求
@@ -299,28 +299,16 @@
 
 完成数据系列教程后，请尝试完成[身份验证入门][身份验证入门]中的其他某篇相关教程，以了解如何对应用程序的用户进行身份验证。
 
-  [Windows 应用商店 c#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-data-html "HTML"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android "Xamarin.Android"
-  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-html
   [下载 HTML 应用程序项目]: #download-app
   [创建移动服务]: #create-service
   [添加用于存储的数据表]: #add-table
   [更新应用程序以使用移动服务]: #update-app
   [针对移动服务测试应用程序]: #test-app
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A756A2826&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-html%2F
   [GetStartedWithData 应用程序]: http://go.microsoft.com/fwlink/?LinkID=286345
   [0]: ./media/mobile-services-html-get-started-data/mobile-quickstart-startup-html.png
-  [mobile-services-create-new-service-data]: ../includes/mobile-services-create-new-service-data.md
   [1]: ./media/mobile-services-html-get-started-data/mobile-data-tab-empty.png
   [2]: ./media/mobile-services-html-get-started-data/mobile-create-todoitem-table.png
   [3]: ./media/mobile-services-html-get-started-data/mobile-services-set-cors-localhost.png
-  [跨域资源共享]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn155871.aspx
   [4]: ./media/mobile-services-html-get-started-data/mobile-dashboard-tab.png
   [管理门户]: https://manage.windowsazure.cn/
   [5]: ./media/mobile-services-html-get-started-data/mobile-todoitem-data-browse.png

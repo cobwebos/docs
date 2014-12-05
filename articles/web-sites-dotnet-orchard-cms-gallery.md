@@ -71,7 +71,6 @@ Azure 将发起构建和部署操作。在构建和部署网站的同时，网�
   [Orchard]: http://www.orchardproject.net/
   [下载附加模块和主题]: http://gallery.orchardproject.net/
   [Orchard 博客]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-08.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [新建]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-01.png
   [从库创建]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-02.png
   [列表中的 Orchard]: ./media/web-sites-dotnet-orchard-cms-gallery/orchardgallery-03.png

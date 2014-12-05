@@ -57,7 +57,7 @@
 
     openssl.exe pkcs12 -in publicAndprivate.pfx -nocerts -out privateKey.pem 
 
-在 Windows 中，您可以使用 powershell 或免费的 Windows base 64 解码器（例如 [http://www.fourmilab.ch/webtools/base64/base64.zip][http://www.fourmilab.ch/webtools/base64/base64.zip]）解码和提取 PFX 文件，方法是运行命令
+在 Windows 中，您可以使用 powershell 或免费的 Windows base 64 解码器（例如 [http://www.fourmilab.ch/webtools/base64/base64.zip](http://www.fourmilab.ch/webtools/base64/base64.zip)）解码和提取 PFX 文件，方法是运行命令
 
     base64 -d key.txt ->key.pfx
 

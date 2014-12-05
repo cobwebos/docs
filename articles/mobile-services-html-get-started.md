@@ -37,7 +37,7 @@
 
 <div class="dev-callout"><b>说明</b>
 
-<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F" target="_blank">Azure 免费试用</a>。</p>
+<p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <div class="dev-callout"><strong>Note</strong> <p>To complete this tutorial, you need an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F" target="_blank">Azure 免费试用</a>。</p>
 </div>
 
 <a name="create-new-service"> </a>
@@ -144,25 +144,12 @@
 -   "[移动服务 HTML/JavaScript 操作方法概念性参考][移动服务 HTML/JavaScript 操作方法概念性参考]"
     了解有关如何将移动服务与 HTML/JavaScript 一起使用的详细信息
 
-  [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started "Android"
-  [HTML]: /zh-cn/documentation/articles/mobile-services-html-get-started "HTML"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started "Xamarin.Android"
-  [Sencha]: /zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/ "Sencha"
-  [PhoneGap]: /zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/ "PhoneGap"
-  [观看教程]: http://go.microsoft.com/fwlink/?LinkId=287040
   [0]: ./media/mobile-services-html-get-started/mobile-quickstart-completed-html.png
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F
   [Microsoft Web 平台安装程序]: http://go.microsoft.com/fwlink/p/?LinkId=286333
   [最新版本的 Python]: http://go.microsoft.com/fwlink/p/?LinkId=286342
-  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
   [1]: ./media/mobile-services-html-get-started/mobile-portal-quickstart-html.png
   [2]: ./media/mobile-services-html-get-started/mobile-quickstart-steps-html.png
   [3]: ./media/mobile-services-html-get-started/mobile-services-set-cors-localhost.png
-  [跨域资源共享]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn155871.aspx
   [4]: ./media/mobile-services-html-get-started/mobile-quickstart-startup-html.png
   [5]: ./media/mobile-services-html-get-started/mobile-data-tab.png
   [6]: ./media/mobile-services-html-get-started/mobile-data-browse.png

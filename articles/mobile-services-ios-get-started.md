@@ -34,7 +34,7 @@
 
 完成本教程需要安装 XCode 4.5 和 iOS 5.0 或更高版本。
 
-<div class="dev-callout"><strong>说明</strong> <p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户 有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F" target="_blank">Azure 免费试用</a>.</p></div>
+<div class="dev-callout"><strong>说明</strong> <p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户 有关详细信息，请参阅 <a href="http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F" target="_blank">Azure 免费试用</a>.</p></div>
 
 ## <a name="create-new-service"> </a>创建新的移动服务
 
@@ -91,26 +91,11 @@
 -   [推送通知入门][推送通知入门]
     了解如何向应用程序发送一条非常简单的推送通知。
 
-  [Windows 应用商店]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started "Windows 应用商店"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started "Android"
-  [HTML]: /zh-cn/documentation/articles/mobile-services-html-get-started "HTML"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started "Xamarin.Android"
-  [Sencha]: /zh-cn/documentation/articles/partner-sencha-mobile-services-get-started/ "Sencha"
-  [PhoneGap]: /zh-cn/documentation/articles/mobile-services-javascript-backend-phonegap-get-started/ "PhoneGap"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-ios-get-started/ "JavaScript 后端"
-  [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/iOS-Creating-your-first-app-using-the-Windows-Azure-Mobile-Services-Quickstart
   [.NET 后端版本]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started
   [0]: ./media/mobile-services-ios-get-started/mobile-quickstart-completed-ios.png
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-ios%2F
-  [mobile-services-create-new-service]: ../includes/mobile-services-create-new-service.md
   [1]: ./media/mobile-services-ios-get-started/mobile-portal-quickstart-ios.png
   [2]: ./media/mobile-services-ios-get-started/mobile-quickstart-steps-ios.png
   [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-  [mobile-services-ios-run-app]: ../includes/mobile-services-ios-run-app.md
   [3]: ./media/mobile-services-ios-get-started/mobile-data-tab.png
   [4]: ./media/mobile-services-ios-get-started/mobile-data-browse.png
   [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios

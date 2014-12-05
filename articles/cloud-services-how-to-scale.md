@@ -190,7 +190,6 @@
 
 7.  在保存计划后，它们将出现在列表中。你可以选择要使用的时间表，然后修改你的缩放设置。缩放设置仅在你选择的计划过程中适用。你可以通过单击“设置计划时间”编辑计划。
 
-  [免责声明]: ../includes/disclaimer.md
   [管理虚拟机的可用性]: http://www.windowsazure.com/zh-cn/manage/windows/common-tasks/manage-vm-availability/
   [Azure 的虚拟机和云服务大小]: http://msdn.microsoft.com/zh-cn/library/dn197896.aspx
   [如何使用队列存储服务]: http://www.windowsazure.com/zh-cn/develop/net/how-to-guides/queue-service

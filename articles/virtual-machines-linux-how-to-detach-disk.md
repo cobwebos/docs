@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [howto-detach-disk-windows-linux](../includes/howto-detach-disk-windows-linux.md)]
 
-  [howto-detach-disk-windows-linux]: ../includes/howto-detach-disk-windows-linux.md

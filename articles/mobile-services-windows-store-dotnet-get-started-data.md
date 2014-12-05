@@ -186,29 +186,13 @@
 -   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 c#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-data-html "HTML"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android "Xamarin.Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet/ "JavaScript 后端"
-  [使用 Visual Studio 2012 的移动服务中的数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012/
   [下载 Windows 应用商店应用程序项目]: #download-app
   [从 Visual Studio 创建移动服务]: #create-service
   [添加用于存储的数据表并更新应用程序]: #add-table
   [针对移动服务测试应用程序]: #test-app
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28
   [GetStartedWithMobileServices 应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=328660
   [0]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-data-sample-download-dotnet-vs12.png
   [1]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-quickstart-startup.png
-  [mobile-services-create-new-service-vs2013]: ../includes/mobile-services-create-new-service-vs2013.md
-  [MobileServiceClient 类]: http://go.microsoft.com/fwlink/p/?LinkId=302030
-  [mobile-services-create-new-table-vs2013]: ../includes/mobile-services-create-new-table-vs2013.md
-  [动态架构]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj193175.aspx
   [管理门户]: https://manage.windowsazure.cn/
   [2]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2013/mobile-todoitem-data-browse.png
   [使用脚本验证和修改数据]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet

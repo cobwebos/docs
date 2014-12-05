@@ -455,10 +455,6 @@ Xamarin 组件客户端在设计上支持强类型化方案。但有时，松散
 -   使用脚本为用户授权 ([Xamarin.iOS][16]/[Xamarin.Android][17])
     了解如何采用移动服务基于已进行身份验证的用户提供的用户 ID 值，并使用该值来筛选移动服务返回的数据。
 
-  [.NET Framework]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library/ ".NET Framework"
-  [HTML/JavaScript]: /zh-cn/develop/mobile/how-to-guides/work-with-html-js-client/ "HTML/JavaScript"
-  [iOS]: /zh-cn/develop/mobile/how-to-guides/work-with-ios-client-library/ "iOS"
-  [Android]: /zh-cn/develop/mobile/how-to-guides/work-with-android-client-library/ "Android"
   [Xamarin]: /zh-cn/develop/mobile/how-to-guides/work-with-xamarin-client-library/ "Xamarin"
   [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-ios/
   [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-xamarin-android/
@@ -484,7 +480,6 @@ Xamarin 组件客户端在设计上支持强类型化方案。但有时，松散
   [如何：处理非类型化数据]: #untyped
   [如何：设计单元测试]: #unit-testing
   [后续步骤]: #nextsteps
-  [mobile-services-concepts]: ../includes/mobile-services-concepts.md
   [创建表]: http://go.microsoft.com/fwlink/?LinkId=298592
   [动态架构]: http://go.microsoft.com/fwlink/?LinkId=296271
   [GetTable]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554275.aspx

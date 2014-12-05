@@ -194,7 +194,6 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [如何从订阅接收消息]: #how-to-receive-messages-from-a-subscription
   [如何处理应用程序崩溃和不可读消息]: #how-to-handle-application-crashes-and-unreadable-messages
   [如何删除主题和订阅]: #how-to-delete-topics-and-subscriptions
-  [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
   [在 Azure 上创建 Ruby 应用程序]: /zh-cn/develop/ruby/tutorials/web-app-with-linux-vm/
   [SqlFilter.SqlExpression]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [Azure 管理门户]: https://manage.windowsazure.cn

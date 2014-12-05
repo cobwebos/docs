@@ -137,9 +137,9 @@ resources provide in-depth information about WIF:
 -   [Windows Identity Foundation 4.5 Samples](http://code.msdn.microsoft.com/site/search?f%5B0%5D.Type=SearchText&f%5B0%5D.Value=wif&f%5B1%5D.Type=Topic&f%5B1%5D.Value=claims-based%20authentication) on MSDN Code Gallery.
 -   [Windows Identity Foundation 4.5 tools for Visual Studio 11 Beta](http://visualstudiogallery.msdn.microsoft.com/e21bf653-dfe1-4d81-b3d3-795cb104066e) on
     MSDN Code Gallery.
--   [Windows Identity Foundation runtime (.Net 3.5/4.0)](http://www.microsoft.com/en-us/download/details.aspx?id=17331) on MSDN.
+-   [Windows Identity Foundation runtime (.Net 3.5/4.0)](http://www.microsoft.com/zh-cn/download/details.aspx?id=17331) on MSDN.
 -   [Windows Identity Foundation 3.5/4.0 samples and Visual Studio
-    2008/2010 templates](http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&id=4451) on MSDN.
+    2008/2010 templates](http://www.microsoft.com/zh-cn/download/details.aspx?displaylang=en&id=4451) on MSDN.
 
 <!--
 **Azure AD Access Control (previously known as ACS)**. 
@@ -151,11 +151,11 @@ ID 2.0 identity providers. The following resources provide in-depth
 information about Azure AD Access Control:
 
 -   [Access Control Service 2.0](http://msdn.microsoft.com/library/gg429786.aspx) 
--   [Scenarios and Solutions Using ACS](http://msdn.microsoft.com/en-us/library/gg185920.aspx)
--   [ACS How To's](http://msdn.microsoft.com/en-us/library/windowsazure/gg185939.aspx)
--   [A Guide to Claims-Based Identity and Access Control](http://msdn.microsoft.com/en-us/library/ff423674.aspx)
--   [Identity Developer Training Kit](http://www.microsoft.com/en-us/download/details.aspx?id=14347)
--   [MSDN-hosted Identity Developer Training Course](http://msdn.microsoft.com/en-us/IdentityTrainingCourse)
+-   [Scenarios and Solutions Using ACS](http://msdn.microsoft.com/zh-cn/library/gg185920.aspx)
+-   [ACS How To's](http://msdn.microsoft.com/zh-cn/library/windowsazure/gg185939.aspx)
+-   [A Guide to Claims-Based Identity and Access Control](http://msdn.microsoft.com/zh-cn/library/ff423674.aspx)
+-   [Identity Developer Training Kit](http://www.microsoft.com/zh-cn/download/details.aspx?id=14347)
+-   [MSDN-hosted Identity Developer Training Course](http://msdn.microsoft.com/zh-cn/IdentityTrainingCourse)
 -->
 
 **Active Directory Federation Services (AD FS).**Active Directory
@@ -247,7 +247,7 @@ Identity Foundation.
 
 Refer to the following resources to implement this scenario:
 <!--
--   [How To: Create My First Claims-Aware ASP.NET Application Using ACS](http://msdn.microsoft.com/en-us/library/gg429779.aspx)-->
+-   [How To: Create My First Claims-Aware ASP.NET Application Using ACS](http://msdn.microsoft.com/zh-cn/library/gg429779.aspx)-->
 -   [How To: Host Login Pages in Your ASP.NET Web Application](http://msdn.microsoft.com/zh-cn/library/gg185926.aspx)
 -   [How To: Implement Claims Authorization in a Claims-Aware ASP.NET Application Using WIF](http://msdn.microsoft.com/zh-cn/library/gg185907.aspx)    
 -   [How To: Implement Role Based Access Control (RBAC) in a Claims-Aware
@@ -587,7 +587,7 @@ Refer to the following resources to solve this scenario:
 -   [How to: Configure a Cache Client Programmatically for Azure
     Caching](http://msdn.microsoft.com/zh-cn/library/windowsazure/gg618003.aspx)
 -   [How to: Configure a Cache Client using the Application Configuration
-    File for Azure Caching](http://msdn.microsoft.com/en-us/library/windowsazure/gg278346.aspx)
+    File for Azure Caching](http://msdn.microsoft.com/zh-cn/library/windowsazure/gg278346.aspx)
 -   [Azure Service Bus and Caching Samples](http://msdn.microsoft.com/zh-cn/library/ee706741.aspx) (Caching Samples
     section)
 
@@ -683,7 +683,7 @@ digest from [WIF Design Considerations](http://msdn.microsoft.com/zh-cn/library/
 
 Consider the following security knobs in Azure AD Access Control
 deployment. The information below is a digest from [ACS Security
-Guidelines](http://msdn.microsoft.com/en-us/library/gg185962.aspx) and [Certificates and Keys Management Guidelines](http://msdn.microsoft.com/en-us/library/hh204521.aspx).
+Guidelines](http://msdn.microsoft.com/zh-cn/library/gg185962.aspx) and [Certificates and Keys Management Guidelines](http://msdn.microsoft.com/zh-cn/library/hh204521.aspx).
 
 -   **STS tokens expiration**. Use Azure AD Access Control
     management portal to set aggressive token expiration.
@@ -772,8 +772,8 @@ application is hosted on Azure Virtual Machines.
 -   [A Guide to Claims-based Identity and Access Control](http://go.microsoft.com/fwlink/?LinkId=214562)
 
 <!--
--   [Access Control Service](http://msdn.microsoft.com/en-us/library/windowsazure/gg429786.aspx)
--   [ACS How To's](http://msdn.microsoft.com/en-us/library/windowsazure/gg185939.aspx)
+-   [Access Control Service](http://msdn.microsoft.com/zh-cn/library/windowsazure/gg429786.aspx)
+-   [ACS How To's](http://msdn.microsoft.com/zh-cn/library/windowsazure/gg185939.aspx)
 -   [Secure Azure Web Role ASP.NET Web Application Using Access Control Service v2.0](http://social.technet.microsoft.com/wiki/contents/articles/2590.aspx)
 -   [Azure AD Access Control Service (ACS) Academy Videos](http://social.technet.microsoft.com/wiki/contents/articles/2777.aspx)
 -->

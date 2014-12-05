@@ -6,18 +6,18 @@
 
 ## 目录
 
--   [如何：监视 HDInsight 群集][]
--   [如何：查看 Hadoop 作业历史记录][]
+-   [如何：监视 HDInsight 群集][如何：监视 HDInsight 群集]
+-   [如何：查看 Hadoop 作业历史记录][如何：查看 Hadoop 作业历史记录]
 
 ## 如何：监视 HDInsight 群集
 
 若要监视 HDInsight 群集以及其上运行的 Hadoop 作业的运行状况，你可以连接到 HDInsight 仪表板，然后单击“监视群集”磁贴。
 
-![HDI.TileMonitorCluster][]
+![HDI.TileMonitorCluster][HDI.TileMonitorCluster]
 
 “监视”页与下面类似：
 
-![HDI.MonitorPage][]
+![HDI.MonitorPage][HDI.MonitorPage]
 
 该页面的右侧指明了 Namenode 和作业跟踪器正在运行，并且有 4 个数据节点正在正常运行。
 
@@ -27,18 +27,18 @@
 
 若要查看 Hadoop 作业历史记录，请连接到 HDInsight 仪表板，然后单击“作业历史记录”磁贴。
 
-![HDI.TileJobHistory][]
+![HDI.TileJobHistory][HDI.TileJobHistory]
 
 该磁贴显示已经运行过的作业的数量；例如，前一张图指明 6 个作业有作业历史记录。“作业历史记录”页与下面类似：
 
-![HDI.JobHistoryPage][]
+![HDI.JobHistoryPage][HDI.JobHistoryPage]
 
 ## 另请参阅
 
--   [如何：管理 HDInsight][]
--   [如何：以编程方式部署 HDInsight 群集][]
--   [如何：定期在你的 HDInsight 群集上执行远程作业][]
--   [教程：Azure HDInsight 入门][]
+-   [如何：管理 HDInsight][如何：管理 HDInsight]
+-   [如何：以编程方式部署 HDInsight 群集][如何：以编程方式部署 HDInsight 群集]
+-   [如何：定期在你的 HDInsight 群集上执行远程作业][如何：定期在你的 HDInsight 群集上执行远程作业]
+-   [教程：Azure HDInsight 入门][教程：Azure HDInsight 入门]
 
   [如何：监视 HDInsight 群集]: #monitorcluster
   [如何：查看 Hadoop 作业历史记录]: #jobhistory
@@ -46,7 +46,7 @@
   [HDI.MonitorPage]: ./media/hdinsight-monitor/HDI.MonitorPage.PNG
   [HDI.TileJobHistory]: ./media/hdinsight-monitor/HDI.TileJobHistory.PNG
   [HDI.JobHistoryPage]: ./media/hdinsight-monitor/HDI.JobHistoryPage.PNG
-  [如何：管理 HDInsight]: /en-us/manage/services/hdinsight/howto-administer-hdinsight/
-  [如何：以编程方式部署 HDInsight 群集]: /en-us/manage/services/hdinsight/howto-deploy-cluster/
-  [如何：定期在你的 HDInsight 群集上执行远程作业]: /en-us/manage/services/hdinsight/howto-execute-jobs-programmatically/
-  [教程：Azure HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/
+  [如何：管理 HDInsight]: /zh-cn/manage/services/hdinsight/howto-administer-hdinsight/
+  [如何：以编程方式部署 HDInsight 群集]: /zh-cn/manage/services/hdinsight/howto-deploy-cluster/
+  [如何：定期在你的 HDInsight 群集上执行远程作业]: /zh-cn/manage/services/hdinsight/howto-execute-jobs-programmatically/
+  [教程：Azure HDInsight 入门]: /zh-cn/manage/services/hdinsight/get-started-hdinsight/

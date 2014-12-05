@@ -291,7 +291,6 @@
   [默认 rails 页面]: ./media/virtual-machines-ruby-rails-web-app-linux/basicrailslocal.png
   [列出文章的页面]: ./media/virtual-machines-ruby-rails-web-app-linux/blograilslocal.png
   [此处]: /zh-cn/documentation/articles/virtual-machines-linux-tutorial
-  [PuTTY 下载页]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
   [Azure 管理门户]: https://manage.windowsazure.cn/
   [虚拟机列表]: ./media/virtual-machines-ruby-rails-web-app-linux/vmlist.png
   [终结点页面]: ./media/virtual-machines-ruby-rails-web-app-linux/endpoints.png
@@ -300,5 +299,5 @@
   [在 Azure 虚拟机中使用 Unicorn+NginX+Capistrano]: /zh-cn/documentation/articles/virtual-machines-ruby-deploy-capistrano-host-nginx-unicorn/
   [Ruby on Rails 指南]: http://guides.rubyonrails.org/
   [使用 Blob 存储非结构化数据]: /zh-cn/documentation/articles/storage-ruby-how-to-use-blob-storage
-  [使用表存储键/值对]: /en-us/develop/ruby/how-to-guides/table-service/
-  [使用内容交付网络提供高带宽内容]: /en-us/develop/ruby/app-services/
+  [使用表存储键/值对]: /zh-cn/develop/ruby/how-to-guides/table-service/
+  [使用内容交付网络提供高带宽内容]: /zh-cn/develop/ruby/app-services/

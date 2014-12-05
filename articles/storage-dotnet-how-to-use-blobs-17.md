@@ -277,8 +277,8 @@ Blob 的 **DownloadToFile**、**DownloadByteArray** 或
     -   使用[表存储][表存储]来存储结构化数据。
     -   使用 [SQL Database][SQL Database] 来存储关系数据。
 
-  [1.7 版]: /en-us/develop/net/how-to-guides/blob-storage-v17/ "1.7 版"
-  [2.0 版]: /en-us/develop/net/how-to-guides/blob-storage/ "2.0 版"
+  [1.7 版]: /zh-cn/develop/net/how-to-guides/blob-storage-v17/ "1.7 版"
+  [2.0 版]: /zh-cn/develop/net/how-to-guides/blob-storage/ "2.0 版"
   [后续步骤]: #next-steps
   [什么是 Blob 存储]: #what-is
   [概念]: #concepts
@@ -290,8 +290,6 @@ Blob 的 **DownloadToFile**、**DownloadByteArray** 或
   [如何：列出容器中的 Blob]: #list-blob
   [如何：下载 Blob]: #download-blobs
   [如何：删除 Blob]: #delete-blobs
-  [howto-blob-storage]: ../includes/howto-blob-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
   [在 Visual Studio 中选择云服务角色的属性]: ./media/storage-dotnet-how-to-use-blobs-17/blob5.png
   [在 Visual Studio 中添加云服务设置]: ./media/storage-dotnet-how-to-use-blobs-17/blob6.png
   [Blob7]: ./media/storage-dotnet-how-to-use-blobs-20/blob7.png
@@ -301,5 +299,5 @@ Blob 的 **DownloadToFile**、**DownloadByteArray** 或
   [.NET 客户端库引用]: http://msdn.microsoft.com/zh-cn/library/azure/wl_svchosting_mref_reference_home
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [表存储]: /en-us/develop/net/how-to-guides/table-services/
-  [SQL Database]: /en-us/develop/net/how-to-guides/sql-database/
+  [表存储]: /zh-cn/develop/net/how-to-guides/table-services/
+  [SQL Database]: /zh-cn/develop/net/how-to-guides/sql-database/

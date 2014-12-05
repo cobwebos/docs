@@ -594,7 +594,7 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 [sqldatabase-get-started]: ../sql-database-get-started/
 
 [azure-management-portal]: https://manage.windowsazure.cn/
-[azure-create-storageaccount]: /en-us/manage/services/storage/how-to-create-a-storage-account/ 
+[azure-create-storageaccount]: /zh-cn/manage/services/storage/how-to-create-a-storage-account/ 
 
 [apache-hadoop]: http://hadoop.apache.org/
 [apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/
@@ -602,7 +602,7 @@ Invoke-RestMethod PowerShell cmdlet 来调用 Oozie Web 服务。Oozie Web 服�
 
 [powershell-download]: http://www.windowsazure.cn/zh-cn/downloads/#cmd-line-tools
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
-[powershell-install-configure]: /en-us/manage/install-and-configure-windows-powershell/
+[powershell-install-configure]: /zh-cn/manage/install-and-configure-windows-powershell/
 [powershell-start]: http://technet.microsoft.com/zh-cn/library/hh847889.aspx
 [powershell-script]: http://technet.microsoft.com/zh-cn/library/ee176949.aspx
 

@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [load-balancing-vms](../includes/load-balancing-vms.md)]
 
-  [load-balancing-vms]: ../includes/load-balancing-vms.md

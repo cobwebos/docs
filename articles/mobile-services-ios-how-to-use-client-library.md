@@ -433,11 +433,6 @@
 
 有关执行验证和处理任何错误的示例，请参阅[使用服务器脚本在移动服务中验证和修改数据][使用服务器脚本在移动服务中验证和修改数据]。在本主题中，服务器端验证是使用服务器脚本实现的。如果提交了无效的数据，则会返回错误响应，而此响应将由客户端处理。
 
-  [.NET Framework]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library/ ".NET Framework"
-  [HTML/JavaScript]: /zh-cn/develop/mobile/how-to-guides/work-with-html-js-client/ "HTML/JavaScript"
-  [iOS]: /zh-cn/develop/mobile/how-to-guides/work-with-ios-client-library/ "iOS"
-  [Android]: /zh-cn/develop/mobile/how-to-guides/work-with-android-client-library/ "Android"
-  [Xamarin]: /zh-cn/develop/mobile/how-to-guides/work-with-xamarin-client-library/ "Xamarin"
   [移动服务 SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
   [iOS SDK]: https://developer.apple.com/xcode
   [移动服务快速入门]: /zh-cn/develop/mobile/tutorials/get-started-ios
@@ -455,7 +450,6 @@
   [如何：将数据绑定到用户界面]: #binding
   [如何：对用户进行身份验证]: #authentication
   [如何：处理错误]: #errors
-  [mobile-services-concepts]: ../includes/mobile-services-concepts.md
   [创建表]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj193162.aspx
   [在页中返回数据]: #paging
   [如何：访问自定义参数]: /zh-cn/develop/mobile/how-to-guides/work-with-server-scripts#access-headers

@@ -204,27 +204,14 @@
 -   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 C#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet-vs2012 "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js-vs2012 "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-data-html "HTML"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android "Xamarin.Android"
-  [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Windows-Store-app-Getting-Started-with-Data-Connecting-your-app-to-Windows-Azure-Mobile-Services
-  [移动服务中的数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet/
   [下载 Windows 应用商店应用程序项目]: #download-app
   [创建移动服务]: #create-service
   [添加用于存储的数据表]: #add-table
   [更新应用程序以使用移动服务]: #update-app
   [针对移动服务测试应用程序]: #test-app
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28
   [GetStartedWithData 应用程序]: http://go.microsoft.com/fwlink/?LinkId=262308
   [0]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2012/mobile-data-sample-download-dotnet.png
   [1]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2012/mobile-quickstart-startup.png
-  [mobile-services-create-new-service-data]: ../includes/mobile-services-create-new-service-data.md
-  [mobile-services-create-new-service-data-2]: ../includes/mobile-services-create-new-service-data-2.md
   [2]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2012/mobile-add-nuget-package-dotnet.png
   [3]: ./media/mobile-services-windows-store-dotnet-get-started-data-vs2012/mobile-dashboard-tab.png
   [管理门户]: https://manage.windowsazure.cn/

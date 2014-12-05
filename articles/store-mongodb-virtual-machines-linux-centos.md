@@ -30,7 +30,4 @@
 
   [MongoDB]: http://www.mongodb.org/
   [Azure 管理门户]: http://manage.windowsazure.cn
-  [antares-iaas-signup-iaas]: ../includes/antares-iaas-signup-iaas.md
-  [create-and-configure-centos-vm-in-portal]: ../includes/create-and-configure-centos-vm-in-portal.md
-  [install-and-run-mongo-on-centos-vm]: ../includes/install-and-run-mongo-on-centos-vm.md
   [MongoDB 文档]: http://www.mongodb.org/display/DOCS/Home

@@ -399,7 +399,7 @@
 
 ![][8]
 
-<!-- URLs. -->
+
 
   [此处]: http://go.microsoft.com/fwlink/?LinkId=389797
   [1]: https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment

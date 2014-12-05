@@ -1,6 +1,6 @@
 <properties title="Azure 存储入门" pageTitle="Azure 存储入门" metaKeywords="Azure, Getting Started, Storage" description="" services="storage" documentationCenter="" authors="ghogen, kempb" />
 
-<tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb"></tags>
+<tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb" />
 
 > [AZURE.SELECTOR]
 >
@@ -44,5 +44,4 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
   [Blob]: /documentation/articles/vs-storage-aspnet-vnext-getting-started-blobs/
   [表]: /documentation/articles/vs-storage-aspnet-vnext-getting-started-tables/
   [如何通过 .NET 使用队列存储]: http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-queues/ "如何通过 .NET 使用队列存储"
-  [vs-storage-getting-started-queues-include]: ../includes/vs-storage-getting-started-queues-include.md
   [ASP.NET vNext]: http://www.asp.net/vnext

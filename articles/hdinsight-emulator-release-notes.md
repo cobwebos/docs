@@ -245,6 +245,6 @@
 
 ## 后续步骤
 
--   [HDInsight Emulator 入门][]
+-   [HDInsight Emulator 入门][HDInsight Emulator 入门]
 
   [HDInsight Emulator 入门]: /zh-cn/documentation/articles/hdinsight-get-started-emulator/

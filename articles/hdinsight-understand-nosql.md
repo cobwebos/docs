@@ -27,6 +27,6 @@
 
 版本： 1.0
 
-下载： [“了解 Azure 上的 NoSQL 技术”PDF 文件][]
+下载： [“了解 Azure 上的 NoSQL 技术”PDF 文件][“了解 Azure 上的 NoSQL 技术”PDF 文件]
 
   [“了解 Azure 上的 NoSQL 技术”PDF 文件]: http://go.microsoft.com/fwlink/p/?LinkId=330292

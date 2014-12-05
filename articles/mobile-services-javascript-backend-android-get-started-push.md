@@ -199,15 +199,6 @@
 -   [如何使用适用于移动服务的 Android 客户端库][如何使用适用于移动服务的 Android 客户端库]
     了解有关如何将移动服务与 Android 一起使用的详细信息。
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-push "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-javascript-backend-android-get-started-push "Android"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android "Xamarin.Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-push/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-javascript-backend-android-get-started-push/ "JavaScript 后端"
   [启用 Google Cloud Messaging]: #register
   [配置移动服务]: #configure
   [向应用程序添加推送通知]: #add-push
@@ -215,17 +206,12 @@
   [插入数据以接收通知]: #test
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-android-get-started/
   [数据处理入门]: /zh-cn/documentation/articles/mobile-services-android-get-started-data/
-  [启用 GCM]: ../includes/mobile-services-enable-Google-cloud-messaging.md
   [Windows Azure 管理门户]: https://manage.windowsazure.cn/
   [0]: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
   [1]: ./media/mobile-services-android-get-started-push/mobile-enable-enhanced-push.png
   [移动服务定价详细信息]: http://go.microsoft.com/fwlink/p/?LinkID=311786
-  [本指南]: http://go.microsoft.com/fwlink/p/?LinkId=391951
   [2]: ./media/mobile-services-android-get-started-push/mobile-push-tab-android.png
-  [验证 SDK]: ../includes/mobile-services-verify-android-sdk-version.md
   [设置 Google Play Services SDK]: http://go.microsoft.com/fwlink/?LinkId=389801
-  [添加 Play Services]: ../includes/mobile-services-add-Google-play-services.md
-  [mobile-services-android-getting-started-with-push]: ../includes/mobile-services-android-getting-started-with-push.md
   [3]: ./media/mobile-services-android-get-started-push/mobile-portal-data-tables.png
   [4]: ./media/mobile-services-android-get-started-push/mobile-insert-script-push2.png
   [gcm 对象]: http://go.microsoft.com/fwlink/p/?LinkId=282645

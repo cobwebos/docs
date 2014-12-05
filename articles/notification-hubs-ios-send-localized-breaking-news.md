@@ -166,18 +166,16 @@
 
 
 
-<!-- Anchors. -->
+
   [模板概念]: #concepts
   [应用程序用户界面]: #ui
   [构建 iOS 应用程序]: #building-client
   [从后端发送通知]: #send 
 
-<!-- Images. --> 
+ 
 
-<!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/ "Windows 应用商店 C#"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-send-localized-breaking-news/ "iOS"
+
   [使用通知中心发送突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-ios
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
   [操作指南：Service Bus 通知中心（iOS 应用程序）]: http://msdn.microsoft.com/zh-cn/library/jj927168.aspx

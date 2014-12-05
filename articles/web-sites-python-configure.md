@@ -17,7 +17,7 @@ WSGI 是 [PEP 3333][PEP 3333] 描述的 Python 标准，用于定义 Web 服务�
 
 简言之，如果你没有现成的网站，则可以从 Azure 管理门户创建一个。选择“网站”功能并使用“快速创建”选项，然后为你的网站指定 URL。
 
-![][]
+![][0]
 
 ## Git 发布
 
@@ -127,10 +127,10 @@ WSGI 是 [PEP 3333][PEP 3333] 描述的 Python 标准，用于定义 Web 服务�
 
 ![][5]
 
-  []: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-python-create-deploy-django-app/
+  [0]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-python-create-deploy-django-app/
   [PEP 3333]: http://www.python.org/dev/peps/pep-3333/
   [1]: http://www.windowsazure.cn/zh-cn/manage/services/web-sites/how-to-create-websites/
-  []: ./media/web-sites-python-configure/configure-python-create-website.png
+  [0]: ./media/web-sites-python-configure/configure-python-create-website.png
   [2]: ./media/web-sites-python-configure/configure-python-git.png
   [3]: ./media/web-sites-python-configure/configure-python-handler-mapping.png
   [4]: ./media/web-sites-python-configure/configure-python-app-settings.png

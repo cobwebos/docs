@@ -6,13 +6,13 @@
 
 该命令行工具是开源的。在 GitHub 中管理源代码（网址为 <https://github.com/WindowsAzure/azure-sdk-tools-xplat>）。
 
-本文只涉及从 Windows 使用命令行界面。有关如何使用命令行界面的一般指南，请参阅[如何使用针对 Mac 和 Linux 的 Azure 命令行工具][]。有关完整的参考文档，请参阅[针对 Mac 和 Linux 的 Azure 命令行工具][]。
+本文只涉及从 Windows 使用命令行界面。有关如何使用命令行界面的一般指南，请参阅[如何使用针对 Mac 和 Linux 的 Azure 命令行工具][如何使用针对 Mac 和 Linux 的 Azure 命令行工具]。有关完整的参考文档，请参阅[针对 Mac 和 Linux 的 Azure 命令行工具][针对 Mac 和 Linux 的 Azure 命令行工具]。
 
 **先决条件：**
 
 在开始阅读本文前，你必须具有：
 
--   **Azure 订阅**。Azure 是基于订阅的平台。有关获取订阅的详细信息，请参阅[购买选项][]、[成员优惠][购买选项]或[免费试用][]。
+-   **Azure 订阅**。Azure 是基于订阅的平台。有关获取订阅的详细信息，请参阅[购买选项][购买选项]、[成员优惠][购买选项]或[免费试用][免费试用]。
 
 ## 本文内容
 
@@ -96,7 +96,7 @@ HDInsight 使用 Azure Blob 存储容器作为默认文件系统。你需要先�
 > -   美国东部
 > -   美国西部
 
-有关使用 Azure 管理门户创建 Azure 存储帐户的信息，请参阅[如何创建存储帐户][]。
+有关使用 Azure 管理门户创建 Azure 存储帐户的信息，请参阅[如何创建存储帐户][如何创建存储帐户]。
 
 如果你已有存储帐户但是不知道帐户名称和帐户密钥，可以使用以下命令来检索该信息：
 
@@ -107,7 +107,7 @@ HDInsight 使用 Azure Blob 存储容器作为默认文件系统。你需要先�
     -- 列出存储帐户的密钥
     azure account storage keys list <StorageAccountName>
 
-有关使用管理门户获取信息的详细信息，请参阅[如何管理存储帐户][]中的*如何：查看、复制和重新生成存储访问密钥*一节。
+有关使用管理门户获取信息的详细信息，请参阅[如何管理存储帐户][如何管理存储帐户]中的*如何：查看、复制和重新生成存储访问密钥*一节。
 
 如果容器不存在，可使用 *azure hdinsight cluster create* 命令创建它。如果选择预先创建容器，可以使用以下命令：
 
@@ -161,14 +161,14 @@ HDInsight 使用 Azure Blob 存储容器作为默认文件系统。你需要先�
 
 在本文中，你已了解如何执行不同的 HDInsight 群集管理任务。若要了解更多信息，请参阅下列文章：
 
--   [使用管理门户管理 HDInsight][]
--   [使用 PowerShell 管理 HDInsight][]
--   [Azure HDInsight 入门][]
--   [如何使用针对 Mac 和 Linux 的 Azure 命令行工具][]
--   [针对 Mac 和 Linux 的 Azure 命令行工具][]
+-   [使用管理门户管理 HDInsight][使用管理门户管理 HDInsight]
+-   [使用 PowerShell 管理 HDInsight][使用 PowerShell 管理 HDInsight]
+-   [Azure HDInsight 入门][Azure HDInsight 入门]
+-   [如何使用针对 Mac 和 Linux 的 Azure 命令行工具][如何使用针对 Mac 和 Linux 的 Azure 命令行工具]
+-   [针对 Mac 和 Linux 的 Azure 命令行工具][针对 Mac 和 Linux 的 Azure 命令行工具]
 
-  [如何使用针对 Mac 和 Linux 的 Azure 命令行工具]: /en-us/develop/nodejs/how-to-guides/command-line-tools/
-  [针对 Mac 和 Linux 的 Azure 命令行工具]: /en-us/manage/linux/other-resources/command-line-tools/
+  [如何使用针对 Mac 和 Linux 的 Azure 命令行工具]: /zh-cn/develop/nodejs/how-to-guides/command-line-tools/
+  [针对 Mac 和 Linux 的 Azure 命令行工具]: /zh-cn/manage/linux/other-resources/command-line-tools/
   [购买选项]: http://www.windowsazure.cn/zh-cn/pricing/overview/
   [免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
   [安装]: #installation
@@ -179,11 +179,11 @@ HDInsight 使用 Azure Blob 存储容器作为默认文件系统。你需要先�
   [删除群集]: #delete
   [后续步骤]: #nextsteps
   [image-cli-account-download-import]: ./media/hdinsight-administer-use-command-line/HDI.CLIAccountDownloadImport.png
-  [如何创建存储帐户]: /en-us/manage/services/storage/how-to-create-a-storage-account/
-  [如何管理存储帐户]: /en-us/manage/services/storage/how-to-manage-a-storage-account/
+  [如何创建存储帐户]: /zh-cn/manage/services/storage/how-to-create-a-storage-account/
+  [如何管理存储帐户]: /zh-cn/manage/services/storage/how-to-manage-a-storage-account/
   [image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
   [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
   [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "列出并显示群集"
-  [使用管理门户管理 HDInsight]: /en-us/manage/services/hdinsight/howto-administer-hdinsight/
-  [使用 PowerShell 管理 HDInsight]: /en-us/manage/services/hdinsight/administer-hdinsight-using-powershell/
-  [Azure HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/
+  [使用管理门户管理 HDInsight]: /zh-cn/manage/services/hdinsight/howto-administer-hdinsight/
+  [使用 PowerShell 管理 HDInsight]: /zh-cn/manage/services/hdinsight/administer-hdinsight-using-powershell/
+  [Azure HDInsight 入门]: /zh-cn/manage/services/hdinsight/get-started-hdinsight/

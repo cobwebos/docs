@@ -122,12 +122,6 @@
 -   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/ "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ "Windows Phone"
-  [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/ "Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started-data/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/develop/mobile/tutorials/get-started-with-data-android/ "JavaScript 后端"
   [JavaScript 后端版本]: /zh-cn/develop/mobile/tutorials/get-started-with-data-android
   [创建新的移动服务]: #create-service
   [在本地下载服务]: #download-the-service-locally
@@ -136,15 +130,6 @@
   [下载 GetStartedWithData 项目]: #download-app
   [更新应用程序以使用移动服务进行数据访问]: #update-app
   [针对发布的移动服务测试应用程序]: #test-app
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F
-  [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
-  [mobile-services-download-service-locally]: ../includes/mobile-services-download-service-locally.md
-  [mobile-services-dotnet-backend-test-local-service]: ../includes/mobile-services-dotnet-backend-test-local-service.md
-  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
-  [1]: ../includes/download-android-sample-code.md
-  [mobile-services-verify-android-sdk-version]: ../includes/mobile-services-verify-android-sdk-version.md
-  [mobile-services-android-run-sample-code]: ../includes/mobile-services-android-run-sample-code.md
-  [mobile-services-android-getting-started-with-data]: ../includes/mobile-services-android-getting-started-with-data.md
   [0]: ./media/mobile-services-dotnet-backend-android-get-started-data/manage-sql-azure-database.png
   [2]: ./media/mobile-services-dotnet-backend-android-get-started-data/sql-azure-query.png
   [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-android

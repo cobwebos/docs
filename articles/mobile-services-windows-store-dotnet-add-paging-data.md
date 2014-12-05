@@ -30,18 +30,7 @@
 -   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-add-paging-data "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-add-paging-data "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-add-paging-data "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-add-paging-data "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-android-add-paging-data "Android"
-  [HTML]: /zh-cn/documentation/articles/mobile-services-html-add-paging-data "HTML"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-add-paging-data "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-add-paging-data "Xamarin.Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-add-paging-data ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-add-paging-data "JavaScript 后端"
   [数据处理入门]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-data/
-  [mobile-services-windows-dotnet-paging]: ../includes/mobile-services-windows-dotnet-paging.md
   [身份验证入门]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users/
   [推送通知入门]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-push/
   [移动服务 .NET 操作方法概念性参考]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library

@@ -2,7 +2,7 @@
 
 # 创建 Visual Studio Online 项目并设置对 Windows Azure 的连续部署
 
-[WACOM.INCLUDE [免责声明][免责声明]]
+[WACOM.INCLUDE [免责声明](../includes/disclaimer.md)]
 
 利用 Windows Azure 管理门户，你可以在 Visual Studio Online 上创建团队项目，并将你的 Web 应用程序配置为可连续部署到网站。
 
@@ -55,7 +55,6 @@
 3.  在该生成叶片中，单击“部署”部分中的第一项，以打开关联的网站。
 4.  在该网站叶片上，单击“浏览”叶片级命令以浏览该网站并验证你的 Web 应用程序的部署。
 
-  [免责声明]: ../includes/disclaimer.md
   [如何创建团队项目]: #create_team_project
   [如何新建 Web 应用程序并将其添加至 Git 版本控制]: #create_web_app
   [如何设置连续部署]: #continuous_deployment

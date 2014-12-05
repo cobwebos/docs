@@ -1,6 +1,6 @@
 将移动服务准备就绪后，你可以更新应用程序，以便在移动服务而不是本地集合中存储项。
 
-1.  如果你还没有[移动服务 Android SDK][]，请立即下载并展开压缩的文件。
+1.  如果你还没有[移动服务 Android SDK][移动服务 Android SDK]，请立即下载并展开压缩的文件。
 
 2.  将 `.jar` 文件从 SDK 的 `mobileservices` 文件夹复制到 GetStartedWithData 项目的 `libs` 文件夹中。
 

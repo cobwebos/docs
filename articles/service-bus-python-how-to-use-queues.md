@@ -90,6 +90,5 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [如何：向队列发送消息]: #send-messages
   [如何：从队列接收消息]: #receive-messages
   [如何：处理应用程序崩溃和不可读消息]: #handle-crashes
-  [howto-service-bus-queues]: ../includes/howto-service-bus-queues.md
   [Python 安装指南]: ../python-how-to-install/
   [队列、主题和订阅。]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh367516.aspx

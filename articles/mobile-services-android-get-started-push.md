@@ -235,15 +235,8 @@
 
 在这个简单的示例中，用户将会收到包含刚刚插入的数据的推送通知。请求中的客户端会将 GCM 使用的设备标记提供给移动服务。在下一教程[向应用程序用户推送通知][向应用程序用户推送通知]中，你将要创建一个单独的 Devices 表，该表用于存储设备标记，以及在发生插入操作时向所有存储的通道发出推送通知。
 
-<!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-push-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-push-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-android "Android"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android "Xamarin.Android"
+
   [推送通知入门]: /zh-cn/documentation/articles/mobile-services-javascript-backend-android-get-started-push/
   [启用 Google Cloud Messaging]: #register
   [配置移动服务]: #configure
@@ -254,7 +247,7 @@
   [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-android
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
-<!-- Images. --> 
+ 
   [0]: ./media/mobile-services-android-get-started-push/mobile-services-selection.png
   [1]: ./media/mobile-services-android-get-started-push/mobile-push-tab-android.png
   [设置 Google Play Services SDK]: http://go.microsoft.com/fwlink/?LinkId=389801

@@ -242,8 +242,6 @@
 
 -   [使用移动服务脱机支持处理冲突][使用移动服务脱机支持处理冲突]
 
-  [Windows 应用商店 C#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-offline-data "Windows Phone"
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started/
   [数据入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
   [更新应用程序以支持脱机功能]: #enable-offline-app

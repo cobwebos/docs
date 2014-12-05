@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [CreateVirtualMachineLinuxTutorial](../includes/CreateVirtualMachineLinuxTutorial.md)]
 
-  [CreateVirtualMachineLinuxTutorial]: ../includes/CreateVirtualMachineLinuxTutorial.md

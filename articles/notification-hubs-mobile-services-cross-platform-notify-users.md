@@ -108,20 +108,20 @@
 -   **[针对 Windows 应用商店的通知中心操作指南][针对 Windows 应用商店的通知中心操作指南]**
     包含模板表示语言参考。
 
-<!-- Anchors. -->  
+  
 
 
   [使用通知中心通知用户]: /zh-cn/manage/services/notification-hubs/notify-users
   [Azure 通知中心概述]: http://go.microsoft.com/fwlink/p/?LinkId=317339
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
-<!-- Images. -->
+
   [0]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-services-selection.png
   [1]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-custom-api-select.png
   [2]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-portal-data-tables.png
   [3]: ./media/notification-hubs-mobile-services-cross-platform-notify-users/mobile-insert-script-push2.png
 
-<!-- URLs. --> 
+ 
   [Windows 应用商店 C\#]: /zh-cn/manage/services/notification-hubs/breaking-news-dotnet
   [iOS]: /zh-cn/manage/services/notification-hubs/breaking-news-ios
   [针对 Windows 应用商店的通知中心操作指南]: http://msdn.microsoft.com/zh-cn/library/azure/jj927172.aspx

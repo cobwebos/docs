@@ -9,11 +9,11 @@
 若要完成本主题中的过程，你必须拥有一个包含已验证电子邮件地址的 Facebook 帐户和一个手机号码。若要创建新的 Facebook 帐户，请转至 <a href="http://go.microsoft.com/fwlink/p/?LinkId=268285" target="_blank">facebook.com</a>.</p>。
 </div>
 
-1.  导航到 [Facebook 开发人员][]网站，然后使用你的 Facebook 帐户凭据登录。
+1.  导航到 [Facebook 开发人员][Facebook 开发人员]网站，然后使用你的 Facebook 帐户凭据登录。
 
 2.  （可选）如果你尚未注册，请单击“Apps”（应用程序），单击“Register as a Developer”（以开发人员身份注册），接受用户政策，然后遵照注册步骤操作 。
 
-    ![][]
+    ![][0]
 
 3.  单击“Apps”（应用程序），然后单击“Create a New App”（创建新应用程序） 。
 
@@ -44,7 +44,6 @@
 
 现在，你可以通过向移动服务提供应用程序 ID 和应用程序密钥值，使用 Facebook 登录在应用程序中进行身份验证。
 
-  [facebook.com]: http://go.microsoft.com/fwlink/p/?LinkId=268285
   [Facebook 开发人员]: http://go.microsoft.com/fwlink/p/?LinkId=268286
   [0]: ./media/mobile-services-how-to-register-facebook-authentication/mobile-services-facebook-developer-register.png
   [1]: ./media/mobile-services-how-to-register-facebook-authentication/mobile-services-facebook-add-app.png

@@ -312,15 +312,8 @@
 在这个简单的示例中，你将通知广播到所有 Android 设备。为了针对特定用户广播，请参考教程[使用通知中心将通知推送到用户][使用通知中心将通知推送到用户]，如果你要按兴趣细分用户组，请参考[使用通知中心发送突发新闻][使用通知中心发送突发新闻]。在[通知中心指南][通知中心指南]中了解通知中心的详细使用信息。
 
 
-<!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /zh-cn/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /zh-cn/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
+
   [启用 Google Cloud Messaging]: #register
   [配置通知中心]: #configure-hub
   [将你的应用程序连接到通知中心]: #connecting-app
@@ -328,10 +321,9 @@
   [测试应用程序]: #run-app
   [此处]: http://go.microsoft.com/fwlink/?LinkId=389797
   [移动服务 Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-  [Azure 免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
-<!-- Images. --> 
+ 
 
   [0]: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal.png
   [1]: ./media/notification-hubs-android-get-started/notification-hub-create-from-portal2.png

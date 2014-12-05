@@ -8,7 +8,7 @@ Hadoop MapReduce 是一个软件框架，用于编写处理海量数据的应用
 
 在开始阅读本教程前，你必须具有：
 
--   HDInsight 群集。有关可用于创建这种群集的各种不同方法的说明，请参阅[设置 HDInsight 群集](/en-us/manage/services/hdinsight/provision-hdinsight-clusters/)。
+-   HDInsight 群集。有关可用于创建这种群集的各种不同方法的说明，请参阅[设置 HDInsight 群集](/zh-cn/manage/services/hdinsight/provision-hdinsight-clusters/)。
 
 -   已安装并已配置 Azure PowerShell 的工作站。有关说明，请参阅[安装和配置 Azure PowerShell][powershell-install-configure]。
 
@@ -209,13 +209,13 @@ MapReduce 作业的输出结果是一组键值对。键是一个用于指定单�
 
 [hdinsight-upload-data]: /zh-cn/documentation/articles/hdinsight-upload-data/
 
-[hdinsight-getting-started]: /en-us/manage/services/hdinsight/get-started-hdinsight/
+[hdinsight-getting-started]: /zh-cn/manage/services/hdinsight/get-started-hdinsight/
 [hdinsight-develop-mapreduce]: /zh-cn/documentation/articles/hdinsight-develop-deploy-java-mapreduce/
 [hdinsight-develop-streaming]: /zh-cn/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
 [hdinsight-hive]: /zh-cn/documentation/articles/hdinsight-use-hive/
 [hdinsight-pig]: /zh-cn/documentation/articles/hdinsight-use-pig/
 [hdinsight-samples]: /zh-cn/documentation/articles/hdinsight-run-samples/
 
-[powershell-install-configure]: /en-us/manage/install-and-configure-windows-powershell/
+[powershell-install-configure]: /zh-cn/manage/install-and-configure-windows-powershell/
 
 [image-hdi-wordcountdiagram]: ./media/hdinsight-get-started/HDI.WordCountDiagram.gif

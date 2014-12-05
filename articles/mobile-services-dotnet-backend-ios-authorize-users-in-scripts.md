@@ -32,12 +32,5 @@
 
 5.  （可选）如果你有其他登录帐户，可以通过关闭然后重新运行应用程序，来验证用户是否只能看到他们自己的数据。显示登录凭据对话框时，请输入一个不同的登录名，然后检查在前一帐户下输入的项是否未显示。
 
-  [Windows 应用商店 C#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-authorize-users-in-scripts "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-authorize-users-in-scripts "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-authorize-users-in-scripts "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-authorize-users-in-scripts "iOS"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-authorize-users-in-scripts/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-ios-authorize-users-in-scripts/ "JavaScript 后端"
   [身份验证入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users
-  [mobile-services-filter-user-results-dotnet-backend]: ../includes/mobile-services-filter-user-results-dotnet-backend.md
   [3]: ./media/mobile-services-dotnet-backend-ios-authorize-users-in-scripts/mobile-quickstart-startup-ios.png

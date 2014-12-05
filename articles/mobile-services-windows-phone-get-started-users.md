@@ -80,17 +80,6 @@
 
 在下一教程[移动服务用户的服务端授权][移动服务用户的服务端授权]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。
 
-  [Windows 应用商店 C#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-users "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-users "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-users "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started-users "Android"
-  [HTML]: /zh-cn/documentation/articles/mobile-services-html-get-started-users "HTML"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started-users "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started-users "Xamarin.Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-users/ "JavaScript 后端"
-  [观看教程]: http://go.microsoft.com/fwlink/?LinkId=298631
   [注册应用程序以进行身份验证并配置移动服务]: #register
   [将表权限限制给已经过身份验证的用户]: #permissions
   [向应用程序添加身份验证]: #add-authentication
@@ -106,5 +95,4 @@
   [2]: ./media/mobile-services-wp8-get-started-users/mobile-identity-tab.png
   [3]: ./media/mobile-services-wp8-get-started-users/mobile-portal-data-tables.png
   [4]: ./media/mobile-services-wp8-get-started-users/mobile-portal-change-table-perms.png
-  [mobile-services-windows-phone-authenticate-app]: ../includes/mobile-services-windows-phone-authenticate-app.md
   [移动服务用户的服务端授权]: /zh-cn/documentation/articles/mobile-services-windows-phone-authorize-users-in-scripts

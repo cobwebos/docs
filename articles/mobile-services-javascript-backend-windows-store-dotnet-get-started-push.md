@@ -115,22 +115,13 @@
 -   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-javascript-get-started-push "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-push "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-javascript-backend-android-get-started-push "Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push/ "JavaScript 后端"
   [将应用程序注册到 WNS 并配置移动服务]: #register
   [更新应用程序以注册通知]: #update-app
   [更新服务器脚本以发送推送通知]: #update-scripts
   [插入数据以接收推送通知]: #test
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started
   [数据处理入门]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-data
-  [mobile-services-javascript-backend-register-windows-store-app]: ../includes/mobile-services-javascript-backend-register-windows-store-app.md
   [0]: ./media/mobile-services-windows-store-dotnet-get-started-push-vs2012/mobile-app-enable-toast-win8.png
-  [mobile-services-javascript-update-script-notification-hubs]: ../includes/mobile-services-javascript-update-script-notification-hubs.md
   [1]: ./media/mobile-services-windows-store-dotnet-get-started-push/mobile-quickstart-push1.png
   [2]: ./media/mobile-services-windows-store-dotnet-get-started-push/mobile-quickstart-push2.png
   [通知中心入门]: /zh-cn/manage/services/notification-hubs/getting-started-windows-dotnet/

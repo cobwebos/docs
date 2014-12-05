@@ -314,5 +314,3 @@ downloadAttributes 方法会询问队列服务
   [用于对消息取消排队的其他方法]: #additional-options
   [如何：获取队列长度]: #get-queue-length
   [如何：删除队列]: #delete-queue
-  [howto-queue-storage]: ../includes/howto-queue-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md

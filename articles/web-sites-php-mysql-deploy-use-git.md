@@ -183,7 +183,7 @@
         </body>
         </html>
 
-你现在可以浏览到 **<http://localhost/registration/index.php>** 来测试此应用程序。
+你现在可以浏览到 **http://localhost/registration/index.php** 来测试此应用程序。
 
 ## 发布应用程序
 
@@ -240,7 +240,6 @@
   [PHP]: http://www.php.net/manual/en/install.php
   [Git]: http://git-scm.com/
   [Azure PHP 网站]: ./media/web-sites-php-mysql-deploy-use-git/running_app_2.png
-  [Azure 免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
   [Azure SDK for PHP]: http://www.windowsazure.cn/zh-cn/downloads/?sdk=php
   [Azure 管理门户]: https://manage.windowsazure.cn
   [创建新的 Azure 网站]: ./media/web-sites-php-mysql-deploy-use-git/new_website.jpg
@@ -254,6 +253,5 @@
   [获取数据库连接信息]: ./media/web-sites-php-mysql-deploy-use-git/connection_string_info.png
   [MySQL 的 PDO 扩展]: http://www.php.net/manual/en/ref.pdo-mysql.php
   [通过 Git 初始推送到 Azure]: ./media/web-sites-php-mysql-deploy-use-git/php-git-initial-push.png
-  [http://[网站]: http://[site
   [通过 Git 将网站更改推送到 Azure]: ./media/web-sites-php-mysql-deploy-use-git/php-git-change-push.png
   [网站部署列表]: ./media/web-sites-php-mysql-deploy-use-git/php-deployments-list.png

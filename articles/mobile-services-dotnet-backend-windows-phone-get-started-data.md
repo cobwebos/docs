@@ -283,11 +283,6 @@
 -   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/ "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-data/ "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ "Windows Phone"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-data/ "JavaScript 后端"
   [JavaScript 后端版本]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8
   [下载 Windows Phone 8 应用程序项目]: #download-app
   [创建新的移动服务]: #create-service
@@ -297,13 +292,12 @@
   [将移动服务发布到 Azure]: #publish-mobile-service
   [针对 Azure 中托管的服务测试 Windows Phone 应用程序]: #test-azure-hosted
   [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?linkid=268374
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdocumentation%2Farticles%2Fmobile-services-dotnet-backend-windows-store-dotnet-get-started-data%2F
   [GetStartedWithMobileServices 应用程序]: http://go.microsoft.com/fwlink/p/?linkid=271146
   [0]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/mobile-data-sample-download-wp8-vs12.png
   [Windows Phone 应用商店应用程序版本]: http://go.microsoft.com/fwlink/p/?LinkId=397372
   [1]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/vs-deployment-target.png
   [2]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/app-view.png
-  [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
   [Azure 管理门户]: https://manage.windowsazure.cn/
   [3]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/mobile-service-overview-page.png
   [4]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/download-service-project.png
@@ -319,12 +313,10 @@
   [14]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/manage-nuget-packages.png
   [15]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/copy-mobileserviceclient-snippet.png
   [16]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/vs-pasted-mobileserviceclient.png
-  [mobile-services-how-to-configure-iis-express]: ../includes/mobile-services-how-to-configure-iis-express.md
   [17]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/vs-build-solution.png
   [18]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/vs-run-solution.png
   [19]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/local-item-checked.png
   [20]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/vs-show-local-table-data.png
-  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
   [21]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/azure-items.png
   [22]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/manage-sql-azure-database.png
   [23]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-data/sql-azure-query.png

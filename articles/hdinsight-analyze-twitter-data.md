@@ -10,18 +10,18 @@
 
 ## 本文内容
 
--   [先决条件][]
--   [获取 Twitter 源][]
--   [创建 HiveQL 脚本][]
--   [使用 Hive 处理数据][]
--   [教程结束][]
--   [后续步骤][]
+-   [先决条件][先决条件]
+-   [获取 Twitter 源][获取 Twitter 源]
+-   [创建 HiveQL 脚本][创建 HiveQL 脚本]
+-   [使用 Hive 处理数据][使用 Hive 处理数据]
+-   [教程结束][教程结束]
+-   [后续步骤][后续步骤]
 
 ## 先决条件
 
 在开始阅读本教程前，你必须具有：
 
--   已安装并已配置 Azure PowerShell 的**工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为“RemoteSigned”**。请参阅[运行 Windows PowerShell 脚本][]。
+-   已安装并已配置 Azure PowerShell 的**工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为“RemoteSigned”**。请参阅[运行 Windows PowerShell 脚本][运行 Windows PowerShell 脚本]。
 
     在运行 PowerShell 脚本之前，请确保你已使用以下 cmdlet 连接到 Azure 订阅：
 
@@ -31,7 +31,7 @@
 
         Select-AzureSubscription <AzureSubscriptionName>
 
--   **一个 Azure HDInsight 群集**。有关群集设置的说明，请参阅[开始使用 HDInsight][] 或[设置 HDInsight 群集][]。你将需要以下数据才能完成本教程：
+-   **一个 Azure HDInsight 群集**。有关群集设置的说明，请参阅[开始使用 HDInsight][开始使用 HDInsight] 或[设置 HDInsight 群集][设置 HDInsight 群集]。你将需要以下数据才能完成本教程：
 
 <table border="1">
 <tr><th>群集属性</th><th>PowerShell 变量名</th><th>值</th><th>说明</th></tr>
@@ -42,9 +42,9 @@
 
 **了解 HDInsight 存储**
 
-HDInsight 将 Azure Blob 存储用于数据存储。它称为 *WASB* 或 *Azure 存储空间 - Blob*。WASB 是 Microsoft 在 Azure Blob 存储上的 HDFS 实现。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
+HDInsight 将 Azure Blob 存储用于数据存储。它称为 *WASB* 或 *Azure 存储空间 - Blob*。WASB 是 Microsoft 在 Azure Blob 存储上的 HDFS 实现。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][将 Azure Blob 存储与 HDInsight 配合使用]。
 
-设置 HDInsight 群集时，请将 Blob 存储容器指定为默认文件系统，就像在 HDFS 中一样。除了此容器外，你还可以在设置过程中从同一 Azure 存储帐户或不同 Azure 存储帐户添加其他容器。有关添加其他存储帐户的说明，请参阅[设置 HDInsight 群集][]。
+设置 HDInsight 群集时，请将 Blob 存储容器指定为默认文件系统，就像在 HDFS 中一样。除了此容器外，你还可以在设置过程中从同一 Azure 存储帐户或不同 Azure 存储帐户添加其他容器。有关添加其他存储帐户的说明，请参阅[设置 HDInsight 群集][设置 HDInsight 群集]。
 
 为了简化本教程中使用的 PowerShell 脚本，所有文件都存储在默认文件系统容器（位于 */tutorials/twitter*）中。默认情况下，此容器与 HDInsight 群集同名。
 
@@ -54,7 +54,7 @@ WASB 语法为：
 
 > [WACOM.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
 
-> WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
+> WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][将 Azure Blob 存储与 HDInsight 配合使用]。
 
 对于存储在默认文件系统容器中的文件，可以使用以下任一 URI 从 HDInsight 进行访问（以 tweets.txt 为例）：
 
@@ -78,11 +78,11 @@ WASB 语法为：
 
 ## 获取 Twitter 源
 
-在本教程中，你将使用 [Twitter 流式传输 API][]。你将使用的特定 Twitter 流式传输 API 是 [statuses/filter][]。
+在本教程中，你将使用 [Twitter 流式传输 API][Twitter 流式传输 API]。你将使用的特定 Twitter 流式传输 API 是 [statuses/filter][statuses/filter]。
 
-[推文数据][]以包含复杂的嵌套结构的 JSon 格式存储。你可以将此嵌套结构转换为 Hive 表（而不是使用传统的编程语言编写多行代码），使其能够通过类似 SQL 的语言（称作 HiveQL）进行查询。
+[推文数据][推文数据]以包含复杂的嵌套结构的 JSon 格式存储。你可以将此嵌套结构转换为 Hive 表（而不是使用传统的编程语言编写多行代码），使其能够通过类似 SQL 的语言（称作 HiveQL）进行查询。
 
-Twitter 使用 OAuth 提供对其 API 的授权访问。OAuth 是一种身份验证协议，允许用户批准应用程序代表其执行操作，而不用共享其密码。更多信息可以在 [oauth.net][] 上或 Hueniverse 提供的出色的 [OAuth 初学者指南][]中找到。
+Twitter 使用 OAuth 提供对其 API 的授权访问。OAuth 是一种身份验证协议，允许用户批准应用程序代表其执行操作，而不用共享其密码。更多信息可以在 [oauth.net][oauth.net] 上或 Hueniverse 提供的出色的 [OAuth 初学者指南][OAuth 初学者指南]中找到。
 
 使用 OAuth 的第一步是在 Twitter 开发人员网站上创建新的应用程序。
 
@@ -106,13 +106,13 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。OAuth 是一种身份验
 8.  在页面右上角单击“测试 OAuth” 。
 9.  记下“使用者密钥” 、“使用者机密” 、“访问令牌” 和“访问令牌机密” 。本教程后面的步骤中将会用到这些值。
 
-在本教程中，你将使用 PowerShell 调用 Web 服务。其他常用于调用 Web 服务的工具是 [*Curl*][]。Curl 可从[此处][]下载。
+在本教程中，你将使用 PowerShell 调用 Web 服务。其他常用于调用 Web 服务的工具是 [*Curl*][*Curl*]。Curl 可从[此处][此处]下载。
 
 > [WACOM.NOTE] 在 Windows 上使用 curl 命令时，请使用双引号（而不是单引号）括起选项值。
 
 **获取推文**
 
-1.  打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell\_ISE**，然后单击 **Windows PowerShell ISE**。请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][]）。
+1.  打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell\_ISE**，然后单击 **Windows PowerShell ISE**。请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][在 Windows 8 和 Windows 上启动 Windows PowerShell]）。
 
 2.  将以下脚本复制到脚本窗格中：
 
@@ -238,7 +238,7 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。OAuth 是一种身份验
 4.  按 **F5** 运行脚本。如果遇到问题，一种解决方法是选择所有行，然后按 **F8**。
 5.  你会在输出的末尾看到“Complete!”。任何错误消息将显示为红色。
 
-在验证过程中，你可以使用 Azure 存储资源管理器或 Azure PowerShell 查看 Azure Blob 存储中的输出文件 **/tutorials/twitter/data/tweets.txt**。有关用于列出文件的示例 PowerShell 脚本，请参阅[将 Blob 存储与 HDInsight 配合使用][]。
+在验证过程中，你可以使用 Azure 存储资源管理器或 Azure PowerShell 查看 Azure Blob 存储中的输出文件 **/tutorials/twitter/data/tweets.txt**。有关用于列出文件的示例 PowerShell 脚本，请参阅[将 Blob 存储与 HDInsight 配合使用][将 Blob 存储与 HDInsight 配合使用]。
 
 ## 创建 HiveQL 脚本
 
@@ -247,7 +247,7 @@ Twitter 使用 OAuth 提供对其 API 的授权访问。OAuth 是一种身份验
 HiveQL 脚本将执行以下操作：
 
 1.  **删除 tweets\_raw 表**（如果该表已存在）。
-2.  **创建 tweets\_raw Hive 表**。此临时 Hive 结构化表保存用于进一步 ETL 处理的数据。有关分区的信息，请参阅 [Hive 教程][]。
+2.  **创建 tweets\_raw Hive 表**。此临时 Hive 结构化表保存用于进一步 ETL 处理的数据。有关分区的信息，请参阅 [Hive 教程][Hive 教程]。
 3.  从源文件夹 (/tutorials/twitter/data) **加载数据**。采用嵌套 JSon 格式的大型 Tweets 数据集现已转换为临时 Hive 表结构。
 4.  **删除 tweets 表**（如果该表已存在）；
 5.  **创建 tweets 表**。你需要先运行其他 ETL 过程，然后才能使用 Hive 对 Tweets 数据集进行查询。此 ETL 过程将为已在“twitter\_raw”表中存储的数据定义更详细的表架构。
@@ -423,7 +423,7 @@ HiveQL 脚本将执行以下操作：
 4.  按 **F5** 运行脚本。如果遇到问题，一种解决方法是选择所有行，然后按 **F8**。
 5.  你会在输出的末尾看到“Complete!”。任何错误消息将显示为红色。
 
-在验证过程中，你可以使用 Azure 存储资源管理器或 Azure PowerShell 查看 Azure Blob 存储中的输出文件 **/tutorials/twitter/twitter.hql**。有关用于列出文件的示例 PowerShell 脚本，请参阅[将 Blob 存储与 HDInsight 配合使用][]。
+在验证过程中，你可以使用 Azure 存储资源管理器或 Azure PowerShell 查看 Azure Blob 存储中的输出文件 **/tutorials/twitter/twitter.hql**。有关用于列出文件的示例 PowerShell 脚本，请参阅[将 Blob 存储与 HDInsight 配合使用][将 Blob 存储与 HDInsight 配合使用]。
 
 ## 使用 Hive 处理 Twitter 数据
 
@@ -468,23 +468,23 @@ HiveQL 脚本将执行以下操作：
 
 > [WACOM.NOTE] Hive 表使用 \\001 作为字段分隔符。该分隔符在输出中不可见。
 
-在将分析结果放到 WASB 上后，可以将数据导出到 Azure SQL Database/SQL Server，使用 Power Query 将数据导出到 Excel，或者使用 Hive ODBC 驱动程序将应用程序连接到数据。有关详细信息，请参阅[将 Sqoop 与 HDInsight 配合使用][]、[使用 HDInsight 分析航班延误数据][]、[利用 Power Query 将 Excel 连接到 HDInsight][]，以及[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight][]。
+在将分析结果放到 WASB 上后，可以将数据导出到 Azure SQL Database/SQL Server，使用 Power Query 将数据导出到 Excel，或者使用 Hive ODBC 驱动程序将应用程序连接到数据。有关详细信息，请参阅[将 Sqoop 与 HDInsight 配合使用][将 Sqoop 与 HDInsight 配合使用]、[使用 HDInsight 分析航班延误数据][使用 HDInsight 分析航班延误数据]、[利用 Power Query 将 Excel 连接到 HDInsight][利用 Power Query 将 Excel 连接到 HDInsight]，以及[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight][使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight]。
 
 ## 教程结束
 
 若要重新运行本教程，你将需要：
 
--   **重新创建推文数据文件**。源推文数据文件已由 Hive 作业删除。你将需要生成新数据文件。文件名是 **tutorials/twitter/data/tweets.txt**。请参阅[获取 Twitter 源][]。
+-   **重新创建推文数据文件**。源推文数据文件已由 Hive 作业删除。你将需要生成新数据文件。文件名是 **tutorials/twitter/data/tweets.txt**。请参阅[获取 Twitter 源][获取 Twitter 源]。
 
 ## 后续步骤
 
 在本教程中，我们已了解如何将非结构化 Json 数据集转换为结构化 Hive 表，以便在 Azure 上使用 HDInsight 查询、探究和分析来自 Twitter 的数据。若要了解更多信息，请参阅以下文章：
 
 -   [HDInsight 入门][开始使用 HDInsight]
--   [使用 HDInsight 分析航班延误数据][]
--   [利用 Power Query 将 Excel 连接到 HDInsight][]
+-   [使用 HDInsight 分析航班延误数据][使用 HDInsight 分析航班延误数据]
+-   [利用 Power Query 将 Excel 连接到 HDInsight][利用 Power Query 将 Excel 连接到 HDInsight]
 -   [使用 Microsoft Hive ODBC Driver 将 Excel 连接到 HDInsight][使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight]
--   [将 Sqoop 与 HDInsight 配合使用][]
+-   [将 Sqoop 与 HDInsight 配合使用][将 Sqoop 与 HDInsight 配合使用]
 
   [先决条件]: #prerequisites
   [获取 Twitter 源]: #feed

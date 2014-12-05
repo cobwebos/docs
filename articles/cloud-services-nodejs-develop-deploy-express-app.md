@@ -106,7 +106,6 @@ Node.js 包含核心运行时中最小的一个功能集。开发人员在开发
   [Express]: http://expressjs.com/
   [显示“Welcome to Express in Azure”的 Web 浏览器]: ./media/cloud-services-nodejs-develop-deploy-express-app/node36.png
   [Azure PowerShell 图标]: ./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png
-  [install-dev-tools]: ../includes/install-dev-tools.md
   [Windows PowerShell 显示 npm install express 命令的输出。]: ./media/cloud-services-nodejs-develop-deploy-express-app/express-g.png
   [express 命令的输出]: ./media/cloud-services-nodejs-develop-deploy-express-app/node23.png
   [npm install 命令的输出]: ./media/cloud-services-nodejs-develop-deploy-express-app/node26.png

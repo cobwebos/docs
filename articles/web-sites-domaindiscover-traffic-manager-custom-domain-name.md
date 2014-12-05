@@ -64,24 +64,12 @@
 
 [WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
-  [自定义域]: /zh-cn/documentation/articles/web-sites-custom-domain-name "自定义域"
-  [GoDaddy]: /zh-cn/documentation/articles/web-sites-godaddy-custom-domain-name "GoDaddy"
-  [Network Solutions]: /zh-cn/documentation/articles/web-sites-network-solutions-custom-domain-name "Network Solutions"
-  [Register.com]: /zh-cn/documentation/articles/web-sites-registerdotcom-custom-domain-name "Register.com"
-  [Enom]: /zh-cn/documentation/articles/web-sites-enom-custom-domain-name "Enom"
-  [Moniker]: /zh-cn/documentation/articles/web-sites-moniker-custom-domain-name "Moniker"
-  [Dotster]: /zh-cn/documentation/articles/web-sites-dotster-custom-domain-name "Dotster"
-  [DomainDiscover]: /zh-cn/documentation/articles/web-sites-domaindiscover-custom-domain-name "DomainDiscover"
-  [Directnic]: /zh-cn/documentation/articles/web-sites-directnic-custom-domain-name "Directnic"
-  [网站]: /zh-cn/documentation/articles/web-sites-domaindiscover-custom-domain-name/ "网站"
-  [使用流量管理器的网站]: /zh-cn/documentation/articles/web-sites-domaindiscover-traffic-manager-custom-domain-name/ "使用流量管理器的网站"
   [DomainDiscover.com]: https://domaindiscover.com
   [TierraNet]: https://www.tierra.net/
   [了解 DNS 记录]: #understanding-records
   [将网站配置为标准模式]: #bkmk_configsharedmode
   [为自定义域添加 DNS 记录]: #bkmk_configurecname
   [为网站启用流量管理器]: #enabledomain
-  [understandingdns]: ../includes/custom-dns-web-site-understanding-dns-traffic-manager.md
   [DomainDiscover 登录菜单]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_LoginMenu.png
   [域管理页面]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DomainManagement.png
   [DNS 编辑按钮]: .\media\web-sites-domaindiscover-custom-domain-name\DomainDiscover_DNSEditButton.png

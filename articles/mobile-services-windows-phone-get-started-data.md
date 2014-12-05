@@ -186,30 +186,16 @@
 -   [推送通知入门][推送通知入门]
     了解如何使用移动服务将非常基本的推送通知发送到应用程序。
 
-  [Windows 应用商店 c#]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-data-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-data-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-data-html "HTML"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-data-xamarin-android "Xamarin.Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-data/ "JavaScript 后端"
-  [观看教程]: http://go.microsoft.com/fwlink/?LinkID=298628
-  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-wp8
   [下载 Windows Phone 8 应用程序项目]: #download-app
   [创建移动服务]: #create-service
   [添加用于存储的数据表]: #add-table
   [更新应用程序以使用移动服务]: #update-app
   [针对移动服务测试应用程序]: #test-app
   [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A756A2826&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-wp8%2F
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A756A2826&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-with-data-wp8%2F
   [GetStartedWithData 应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=271146
   [Windows Phone 应用商店应用程序版本]: http://go.microsoft.com/fwlink/p/?LinkId=397372
   [0]: ./media/mobile-services-windows-phone-get-started-data/mobile-quickstart-startup-wp8.png
-  [mobile-services-create-new-service-data]: ../includes/mobile-services-create-new-service-data.md
-  [mobile-services-create-new-service-data-2]: ../includes/mobile-services-create-new-service-data-2.md
   [1]: ./media/mobile-services-windows-phone-get-started-data/mobile-add-nuget-package-wp.png
   [2]: ./media/mobile-services-windows-phone-get-started-data/mobile-dashboard-tab.png
   [管理门户]: https://manage.windowsazure.cn/

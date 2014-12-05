@@ -95,24 +95,12 @@
 -   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-push "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-get-started-push "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started-push "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-ios-get-started-push "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-android-get-started-push "Android"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-ios-get-started-push "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-mobile-services-android-get-started-push "Xamarin.Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-push/ "JavaScript 后端"
   [推送通知入门]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push/
   [注册用于推送通知的应用程序并配置移动服务]: #register
   [更新生成的推送通知代码]: #update-scripts
   [插入数据以接收通知]: #test
   [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started/
   [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet/
-  [mobile-services-create-new-push-vs2013]: ../includes/mobile-services-create-new-push-vs2013.md
-  [在移动服务中使用服务器脚本]: http://go.microsoft.com/fwlink/p/?LinkID=287178
-  [mobile-services-create-new-push-vs2013-2]: ../includes/mobile-services-create-new-push-vs2013-2.md
   [0]: ./media/mobile-services-windows-store-dotnet-get-started-push/mobile-quickstart-push1.png
   [1]: ./media/mobile-services-windows-store-dotnet-get-started-push/mobile-quickstart-push2.png
   [通知中心入门]: /zh-cn/manage/services/notification-hubs/getting-started-windows-dotnet/

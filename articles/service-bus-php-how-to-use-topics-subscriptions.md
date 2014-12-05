@@ -328,9 +328,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [如何：处理应用程序崩溃和不可读消息]: #HandleCrashes
   [如何：删除主题和订阅]: #DeleteTopicsAndSubscriptions
   [后续步骤]: #NextSteps
-  [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
   [OpenSSL 扩展]: http://php.net/openssl
-  [get-client-libraries]: ../includes/get-client-libraries.md
   [require\_once]: http://php.net/require_once
   [SqlFilter.SqlExpression Property]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [队列、主题和订阅]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh367516.aspx

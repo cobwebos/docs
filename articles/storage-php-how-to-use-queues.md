@@ -392,8 +392,5 @@
   [如何：获取队列长度]: #get-queue-length
   [如何：删除队列]: #delete-queue
   [1]: #next-steps
-  [howto-queue-storage]: ../includes/howto-queue-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
-  [get-client-libraries]: ../includes/get-client-libraries.md
   [require\_once]: http://www.php.net/manual/en/function.require-once.php
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx

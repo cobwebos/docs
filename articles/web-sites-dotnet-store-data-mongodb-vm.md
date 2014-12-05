@@ -479,7 +479,7 @@ MongoDB C# 驱动程序现已安装。对 **MongoDB.Driver.dll** 和 **MongoDB.B
 
 现在，您已将 ASP.NET 应用程序成功部署到 Azure 网站。若要查看站点，请单击“仪表板”页面的“站点 URL”字段中的链接。有关针对 MongoDB 开发 C# 应用程序的更多信息，请参见 [CSharp 语言中心][CSharp 语言中心]。
 
-<!-- HYPERLINKS --> <!-- IMAGES --> <!-- TOC BOOKMARKS -->
+<!-- HYPERLINKS -->\r\n<!-- IMAGES -->\r\n<!-- TOC BOOKMARKS -->
 
   [MongoDB]: http://www.mongodb.org
   [创建虚拟机和安装 MongoDB]: #virtualmachine

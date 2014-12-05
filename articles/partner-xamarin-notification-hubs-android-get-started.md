@@ -399,9 +399,9 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 在这个简单的示例中，你将通知广播到所有 Android 设备。为了针对特定用户广播，请参考教程[使用通知中心将通知推送到用户][使用通知中心将通知推送到用户]，如果你要按兴趣细分用户组，请参考[使用通知中心发送突发新闻][使用通知中心发送突发新闻]。在[通知中心指南][通知中心指南]和[针对 Android 的通知中心操作指南][针对 Android 的通知中心操作指南]中了解有关如何使用通知中心的详细信息。
 
-<!-- Anchors. -->  
+  
 
-<!-- URLs. -->
+
 
   [NotificationHubs 应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=331329
   [启用 Google Cloud Messaging]: #register
@@ -412,8 +412,6 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
   [1]: http://xamarin.com/download/
   [Azure 移动服务组件]: http://components.xamarin.com/view/azure-mobile-services/
   [Google Cloud Messaging 组件]: http://components.xamarin.com/view/GCMClient/
-  [Azure 免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
-  [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
   [Google API]: http://go.microsoft.com/fwlink/p/?LinkId=268303
 
   [使用通知中心将通知推送到用户]: /zh-cn/manage/services/notification-hubs/notify-users-aspnet
@@ -421,7 +419,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
   [针对 Android 的通知中心操作指南]: http://msdn.microsoft.com/zh-cn/library/dn282661.aspx
 
-<!-- Images. -->
+
   [0]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-developers.png
   [2]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server.png
   [3]: ./media/partner-xamarin-notification-hubs-android-get-started/mobile-services-google-create-server2.png

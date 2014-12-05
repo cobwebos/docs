@@ -322,7 +322,7 @@ HPC Pack 将在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
   [跨群集运行命令]: #BKMK_RunCommand
   [运行测试作业]: #BKMK_RunJob
   [停止 Azure 节点]: #BKMK_stop
-  [Azure 免费试用]: http://www.windowsazure.com/en-us/pricing/free-trial/
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/
   [评估版]: http://technet.microsoft.com/evalcenter/dn205286.aspx
   [下载]: http://go.microsoft.com/fwlink/p/?linkid=389557
   [HPC Pack 2012 安装]: ./media/set-up-hybrid-cluster-microsoft-hpc-pack-2012-sp1/install_hpc1.png

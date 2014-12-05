@@ -153,13 +153,13 @@
 [通过移动服务]: #mobile-services
 [运行应用程序和生成通知]: #test-app
 
-<!-- Images. -->
+
 [13]: ./media/notification-hubs-back-end/notification-hub-create-console-app.png
 
 [15]: ./media/notification-hubs-back-end/notification-hub-scheduler1.png
 [16]: ./media/notification-hubs-back-end/notification-hub-scheduler2.png
 
-<!-- URLs. -->
+
 [get-started]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [使用通知中心向用户发送通知]: ../notificationhubs/tutorial-notify-users-mobileservices.md
 [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started/#create-new-service

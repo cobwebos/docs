@@ -2,7 +2,7 @@
 
 # 如何创建和部署云服务
 
-[WACOM.INCLUDE [免责声明][免责声明]]
+[WACOM.INCLUDE [免责声明](../includes/disclaimer.md)]
 
 Azure 管理门户为你提供两种创建和部署云服务的方法：“快速创建”和“自定义创建”。
 
@@ -150,7 +150,6 @@ Azure SDK 提供了用于准备这些必需的部署文件的工具。你可以�
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy/CloudServices_QuickGlance.png)
 
-  [免责声明]: ../includes/disclaimer.md
   [使用 Team Foundation Service 预览版向 Azure 持续传送项目]: http://go.microsoft.com/fwlink/?LinkID=251796&clcid=0x409
   [概念]: #concepts
   [准备应用程序]: #prepare

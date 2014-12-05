@@ -6,7 +6,7 @@ Apache Mahout™ 是一个专用于可缩放的计算机学习应用程序的计
 
 Apache Mahout 提供基于项目的协作筛选的内置实现。此方法广泛用于执行建议数据挖掘。基于项目的协作筛选由 Amazon.com 开发。这里的理念是，用于展示项目喜好之间关联的用户首选项中的数据可用于从类似组推断未来用户的偏好。
 
-在本教程中，你使用 [Million Song Dataset][] 网站，并下载[数据集][]来根据用户过去的听歌习惯为其创建歌曲推荐。
+在本教程中，你使用 [Million Song Dataset][Million Song Dataset] 网站，并下载[数据集][数据集]来根据用户过去的听歌习惯为其创建歌曲推荐。
 
 你将了解到以下内容：
 
@@ -21,7 +21,7 @@ Apache Mahout 提供基于项目的协作筛选的内置实现。此方法广泛
 
 ## <a name="setup"></a>安装和配置
 
-本教程假定你已安装了 Azure 和 HDinsight 预览版，并且你已创建了一个可在其上运行示例的 HDInsight 群集。如果你尚未执行这些操作，请查阅 [Azure HDInsight 入门][]教程，找到有关如何满足这些先决条件的说明。
+本教程假定你已安装了 Azure 和 HDinsight 预览版，并且你已创建了一个可在其上运行示例的 HDInsight 群集。如果你尚未执行这些操作，请查阅 [Azure HDInsight 入门][Azure HDInsight 入门]教程，找到有关如何满足这些先决条件的说明。
 
 ## <a name="segment1"></a>检查数据并设置数据的格式
 
@@ -144,9 +144,9 @@ Apache Mahout 提供基于项目的协作筛选的内置实现。此方法广泛
 
 ### “远程桌面”图标
 
-默认情况下，HDInsight 未提供 Mahout。不过，由于它是 Hadoop 生态系统的一部分，因此可以从 [Mahout][] 网站下载它。最新版本是 0.7，但此指令集兼容版本 0.5 或 0.7。
+默认情况下，HDInsight 未提供 Mahout。不过，由于它是 Hadoop 生态系统的一部分，因此可以从 [Mahout][Mahout] 网站下载它。最新版本是 0.7，但此指令集兼容版本 0.5 或 0.7。
 
-1.  首先，将 [Mahout 0.7 版][]下载到你的本地计算机上。
+1.  首先，将 [Mahout 0.7 版][Mahout 0.7 版]下载到你的本地计算机上。
 
 2.  然后，将它复制到群集上，方法是：选择本地 zip 文件，按 control-v 进行复制，然后将它粘贴到你的 Hadoop 群集。
 
@@ -166,7 +166,7 @@ Apache Mahout 提供基于项目的协作筛选的内置实现。此方法广泛
 
 **说明**
 
-你可以通过将每个用户的 ID 放在单独的行上来为更多的用户生成推荐。如果你在生成 mInput.txt 和 users.txt 时遇到问题，可以在此 github [存储库][]中下载预生成的版本。 将所有内容下载为一个 [zip 文件][]是最方便的。找到 users.txt 和 mInput.txt，并将它们复制到远程群集上的文件夹 c:\\ 中
+你可以通过将每个用户的 ID 放在单独的行上来为更多的用户生成推荐。如果你在生成 mInput.txt 和 users.txt 时遇到问题，可以在此 github [存储库][存储库]中下载预生成的版本。 将所有内容下载为一个 [zip 文件][zip 文件]是最方便的。找到 users.txt 和 mInput.txt，并将它们复制到远程群集上的文件夹 c:\\ 中
 
 此时，你应打开 Hadoop 终端窗口，并导航到包含 users.txt 和 mInput.txt 的文件夹。
 
@@ -219,7 +219,7 @@ Apache Mahout 提供基于项目的协作筛选的内置实现。此方法广泛
   [检查数据并设置数据的格式]: #segment1
   [安装 Mahout]: #Segment2
   [运行 Mahout 作业]: #segment2
-  [Azure HDInsight 入门]: /en-us/manage/services/hdinsight/get-started-hdinsight/
+  [Azure HDInsight 入门]: /zh-cn/manage/services/hdinsight/get-started-hdinsight/
   [echo-nest]: ./media/hdinsight-hadoop-recommendation-engine/the-echo-nest-taste-profile-subset.png
   [create-console-app]: ./media/hdinsight-hadoop-recommendation-engine/creating-a-console-application.png
   [set-cmd-line-args]: ./media/hdinsight-hadoop-recommendation-engine/setting-command-line-arguments.png

@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [标识](../includes/identity.md)]
 
-  [标识]: ../includes/identity.md

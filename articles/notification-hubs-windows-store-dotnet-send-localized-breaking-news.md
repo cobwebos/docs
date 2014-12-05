@@ -155,14 +155,12 @@
 
 有关使用模板的详细信息，请参阅[使用通知中心通知用户：ASP.NET][使用通知中心通知用户：ASP.NET]、[使用通知中心通知用户：移动服务][使用通知中心通知用户：移动服务]和[通知中心指南][通知中心指南]。一个模板表达语言的参考是[针对 Windows 应用商店的通知中心操作指南][针对 Windows 应用商店的通知中心操作指南]。
 
-<!-- Anchors. --> 
+ 
 
-<!-- Images. --> 
+ 
 
-<!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/ "Windows 应用商店 C#"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-send-localized-breaking-news/ "iOS"
+
   [使用通知中心发送突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-dotnet
   [模板概念]: #concepts
   [应用程序用户界面]: #ui

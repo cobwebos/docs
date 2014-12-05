@@ -1,6 +1,6 @@
 <properties title="Azure 灵活扩展词汇表" pageTitle="Azure 灵活扩展词汇表" description="用于 Azure SQL Database 的灵活扩展功能的术语解释" metaKeywords="sharding,elastic scale, Azure SQL DB sharding" services="sql-database" documentationCenter="" manager="jhubbard" authors="sidneyh@microsoft.com"/>
 
-<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh"></tags>
+<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh" />
 
 # 灵活扩展词汇表
 

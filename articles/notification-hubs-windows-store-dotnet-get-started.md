@@ -232,15 +232,14 @@
 
 在这个简单的示例中，你将通知广播到所有 Windows 设备。为了针对特定客户，请参考教程[使用通知中心将通知推送到用户][使用通知中心将通知推送到用户]。如果要按兴趣细分用户组，可以阅读[使用通知中心发送突发新闻][使用通知中心发送突发新闻]。若要了解有关如何使用通知中心的详细信息，请参阅[通知中心指南][通知中心指南]。
 
-<!-- Anchors. -->  
+  
 
-<!-- URLs. -->
+
 
   [为推送通知注册应用程序]: #register
   [配置通知中心]: #configure-hub
   [将你的应用程序连接到通知中心]: #connecting-app
   [从后端发送通知]: #send
-  [Azure 免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
   [“提交应用程序”页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 
   [toast 目录]: http://msdn.microsoft.com/zh-cn/library/windows/apps/hh761494.aspx
@@ -253,7 +252,7 @@
   [使用通知中心发送突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-dotnet
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
 
-<!-- Images. -->
+
   [0]: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-submit-win8-app.png
   [1]: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-win8-app-name.png
   [2]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-win8-app.png

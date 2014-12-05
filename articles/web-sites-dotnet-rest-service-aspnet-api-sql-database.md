@@ -808,7 +808,7 @@ XSRF 攻击不同于网络钓鱼攻击。网络钓鱼攻击需要与受害者进
 
 请提供有关您喜欢的内容或者您希望看到改善的内容的反馈，不仅关于教程本身，也关于它所演示的产品。您的反馈将帮助我们确定优先改进哪些方面。我们特别希望确定大家对于对配置和部署成员资格数据库的流程进行更多自动化的兴趣有多大。
 
-<!-- bookmarks --> <!-- links --> <!-- images-->
+<!-- bookmarks -->\r\n<!-- links -->\r\n<!-- images-->
 
   [Rick Anderson]: https://twitter.com/RickAndMSFT
   [本教程的上一版本]: /zh-cn/develop/net/tutorials/get-started-vs2012/

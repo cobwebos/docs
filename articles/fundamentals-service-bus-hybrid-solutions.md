@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [hybrid-solutions](../includes/hybrid-solutions.md)]
 
-  [hybrid-solutions]: ../includes/hybrid-solutions.md

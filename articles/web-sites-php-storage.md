@@ -15,7 +15,7 @@
 
 ![Azure PHP 网站][Azure PHP 网站]
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 ## 安装 Azure 客户端库
 
@@ -415,7 +415,6 @@ Tasklist 应用程序的主页应列出所有现有任务并允许插入新任�
 
   [PHP]: http://www.php.net/manual/en/install.php
   [Azure PHP 网站]: ./media/web-sites-php-storage/ws-storage-app.png
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [安装 Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
   [composer.phar]: http://getcomposer.org/composer.phar
   []: http://msdn.microsoft.com/zh-cn/library/azure/dd179438.aspx
@@ -433,4 +432,3 @@ Tasklist 应用程序的主页应列出所有现有任务并允许插入新任�
   [你的源代码在哪里]: ./media/web-sites-php-storage/where_is_code.png
   [创建发布凭据]: ./media/web-sites-php-storage/git-deployment-credentials.png
   [为网站创建存储库后返回的 Git 部署说明。]: ./media/web-sites-php-storage/git-instructions.png
-  [http://[你的]: http://[your

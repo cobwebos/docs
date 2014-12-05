@@ -373,8 +373,6 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
   [如何：使用其他方法取消对消息的排队]: #advanced-get
   [如何：获取队列长度]: #get-queue-length
   [如何：删除队列]: #delete-queue
-  [howto-queue-storage]: ../includes/howto-queue-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
   [Blob5]: ./media/storage-dotnet-how-to-use-queues/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-queues/blob6.png
   [Blob7]: ./media/storage-dotnet-how-to-use-queues/blob7.png
@@ -389,6 +387,6 @@ Azure SDK for .NET 中也包括了 `Microsoft.WindowsAzure.Storage.dll`，可从
   [.NET 存储客户端库参考]: http://msdn.microsoft.com/zh-cn/library/azure/wa_storage_30_reference_home.aspx
   [REST API 参考]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [表存储]: /en-us/documentation/articles/storage-dotnet-how-to-use-tables/
-  [Blob 存储]: /en-us/documentation/articles/storage-dotnet-how-to-use-blobs/
-  [SQL Database]: /en-us/documentation/articles/sql-database-dotnet-how-to-use/
+  [表存储]: /zh-cn/documentation/articles/storage-dotnet-how-to-use-tables/
+  [Blob 存储]: /zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/
+  [SQL Database]: /zh-cn/documentation/articles/sql-database-dotnet-how-to-use/

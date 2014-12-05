@@ -3,7 +3,7 @@
 <p>若要完成本主题中的过程，你必须拥有一个包含已验证电子邮件地址的 Google 帐户。若要新建一个 Google 帐户，请转至 <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a>。</p>
 </div>
 
-1.  导航到 [Google Cloud Console][] 网站，使用你的 Google 帐户凭据登录，然后单击“创建项目” 。
+1.  导航到 [Google Cloud Console][Google Cloud Console] 网站，使用你的 Google 帐户凭据登录，然后单击“创建项目” 。
 
     ![][0]
 
@@ -36,7 +36,6 @@
 
     接下来，你将使用此 API 密钥值，让移动服务向 GCM 进行身份验证并代表你的应用程序发送推送通知。
 
-  [accounts.google.com]: http://go.microsoft.com/fwlink/p/?LinkId=268302
   [Google Cloud Console]: http://cloud.google.com/console
   [0]: ./media/notification-hubs-android-get-started/mobile-services-google-new-project.png
   [1]: ./media/notification-hubs-android-get-started/mobile-services-google-enable-GCM.png

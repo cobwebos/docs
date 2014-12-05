@@ -153,7 +153,6 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [如何：从订阅接收消息]: #How_to_Receive_Messages_from_a_Subscription
   [如何：处理应用程序崩溃和不可读消息]: #How_to_Handle_Application_Crashes_and_Unreadable_Messages
   [如何：删除主题和订阅]: #How_to_Delete_Topics_and_Subscriptions
-  [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
   [Python 安装指南]: ../python-how-to-install/
   [队列、主题和订阅]: http://msdn.microsoft.com/zh-cn/library/hh367516.aspx
   [SqlFilter]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx

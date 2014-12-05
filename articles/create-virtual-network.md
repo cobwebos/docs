@@ -105,7 +105,6 @@
 -   [Azure 名称解析概述][Azure 名称解析概述]
 
   [Azure 虚拟网络概述]: http://msdn.microsoft.com/zh-cn/library/azure/jj156007.aspx
-  [创建虚拟网络进行跨界连接]: /zh-cn/manage/services/networking/cross-premises-connectivity/
   [Azure 虚拟网络配置任务]: http://msdn.microsoft.com/zh-cn/library/azure/jj156206.aspx
   [在 Azure 虚拟机中部署 Windows Server Active Directory 的准则]: http://msdn.microsoft.com/zh-cn/library/azure/jj156090.aspx
   [Azure 管理门户]: http://manage.windowsazure.cn/

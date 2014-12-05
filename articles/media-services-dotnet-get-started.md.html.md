@@ -25,7 +25,7 @@ Media Services 入门
 -   Visual Studio 2012 或 Visual Studio 2010 SP1（专业版、高级专业版、旗舰版或学习版）。
 -   安装 **Azure SDK for .NET.**、**Azure Media Services SDK for .NET** 和 **WCF Data Services 5.0 for OData V3 库**，并使用 [windowsazure.mediaservices Nuget](http://nuget.org/packages/windowsazure.mediaservices) 程序包添加对你的项目的引用。以下部分演示了如何安装以及添加这些引用。
 
-<div class="dev-callout"><strong>说明</strong> <p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A8A8397B5)。</p></div>
+<div class="dev-callout"><strong>说明</strong> <p>若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A8A8397B5)。</p></div>
 
 <h2><a id="Step1"></a>设置项目</h2>
 

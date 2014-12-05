@@ -314,7 +314,6 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [如何：处理应用程序崩溃和不可读消息]: #handle-crashes
   [如何：删除主题和订阅]: #delete
   [1]: #next-steps
-  [howto-service-bus-topics]: ../includes/howto-service-bus-topics.md
   [创建 Node.js 应用程序并将其部署到 Azure 网站]: /zh-cn/develop/nodejs/tutorials/create-a-website-(mac)/
   [Node.js 云服务]: /zh-cn/documentation/articles/cloud-services-nodejs-develop-deploy-app/
   [使用 WebMatrix 构建网站]: /zh-cn/develop/nodejs/tutorials/web-site-with-webmatrix/

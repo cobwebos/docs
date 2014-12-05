@@ -58,8 +58,5 @@
   [向应用程序添加身份验证]: #add-authentication
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started/
   [使用 Live Connect 实现对 Windows Phone 应用程序的单一登录]: /zh-cn/documentation/articles/mobile-services-windows-phone-single-sign-on
-  [mobile-services-register-authentication]: ../includes/mobile-services-register-authentication.md
-  [mobile-services-restrict-permissions-dotnet-backend]: ../includes/mobile-services-restrict-permissions-dotnet-backend.md
-  [mobile-services-windows-phone-authenticate-app]: ../includes/mobile-services-windows-phone-authenticate-app.md
   [移动服务用户的服务端授权]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-authorize-users-in-scripts
   [移动服务 .NET 操作方法概念性参考]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library

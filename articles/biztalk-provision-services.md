@@ -1,4 +1,4 @@
-<properties linkid="provisioning-biztalk-service" urlDisplayName="Provision BizTalk Services in management portal" pageTitle="Create BizTalk Services in management portal | Azure" metaKeywords="Get started Azure biztalk services, provision, Azure unstructured data" description="Learn how to provision a BizTalk service in the Azure Management Portal, as well as create an optional SQL database server and Storage account." metaCanonical="http://www.windowsazure.com/en-us/manage/services/biztalk-services/provisioning-biztalk-service" services="biztalk-services" documentationCenter="" title="BizTalk Services: Provisioning Using Azure Management Portal" authors="mandia" solutions="" manager="paulettm" editor="cgronlun" />
+<properties linkid="provisioning-biztalk-service" urlDisplayName="Provision BizTalk Services in management portal" pageTitle="Create BizTalk Services in management portal | Azure" metaKeywords="Get started Azure biztalk services, provision, Azure unstructured data" description="Learn how to provision a BizTalk service in the Azure Management Portal, as well as create an optional SQL database server and Storage account." metaCanonical="http://www.windowsazure.com/zh-cn/manage/services/biztalk-services/provisioning-biztalk-service" services="biztalk-services" documentationCenter="" title="BizTalk Services: Provisioning Using Azure Management Portal" authors="mandia" solutions="" manager="paulettm" editor="cgronlun" />
 
 # 使用 Azure 管理门户创建 BizTalk 服务
 
@@ -325,11 +325,9 @@ SSL 专用证书
   [设置后的步骤]: #PostProv
   [要求说明]: #Requirements
   [混合连接 - 新增功能！]: #HC
-  [Azure 免费试用]: http://go.microsoft.com/fwlink/p/?LinkID=239738
   [Azure 管理门户]: http://go.microsoft.com/fwlink/p/?LinkID=213885
   [选择“新建”按钮]: ./media/biztalk-provision-services/WABS_New.png
   [依次选择“BizTalk 服务”和“自定义创建”]: ./media/biztalk-provision-services/WABS_NewBizTalkService.png
-  []: http://go.microsoft.com/fwlink/p/?LinkID=302279
   [完成时显示进度图标]: ./media/biztalk-provision-services/WABS_ProgressComplete.png
   [“仪表板”、“监视”和“缩放”选项卡]: http://go.microsoft.com/fwlink/p/?LinkID=302281
   [BizTalk 服务状态图表]: http://go.microsoft.com/fwlink/p/?LinkID=329870
@@ -339,10 +337,6 @@ SSL 专用证书
   [选择连接信息]: ./media/biztalk-provision-services/WABS_ACSConnectInformation.png
   [Access Control 管理门户中的 ACS 服务标识]: ./media/biztalk-provision-services/WABS_ACSServiceIdentities.png
   [管理 ACS 命名空间]: http://go.microsoft.com/fwlink/p/?LinkID=285670
-  [Azure 订阅]: https://account.windowsazure.com/Subscriptions
-  [在 Azure 管理门户中管理订阅和存储帐户]: http://go.microsoft.com/fwlink/p/?LinkID=267577
-  [Azure SQL Database 中的帐户和计费]: http://go.microsoft.com/fwlink/p/?LinkID=234930
-  [存储]: http://go.microsoft.com/fwlink/p/?LinkID=285671
   [混合连接选项卡]: ./media/biztalk-provision-services/WABS_HybridConnectionTab.png
   [混合连接]: http://go.microsoft.com/fwlink/p/?LinkID=397274
   [Azure BizTalk 服务]: http://go.microsoft.com/fwlink/p/?LinkID=235197

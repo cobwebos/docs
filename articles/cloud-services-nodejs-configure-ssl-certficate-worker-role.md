@@ -140,17 +140,10 @@
 
 [如何在 HTTPS 终结点上配置 SSL 证书][如何在 HTTPS 终结点上配置 SSL 证书]
 
-  [步骤 1：创建 Node.js 服务并将该服务发布到云]: #step1
-  [步骤 2：获取 SSL 证书]: #step2
-  [步骤 3：将应用程序修改为使用 SSL 证书]: #step3
-  [步骤 4：修改服务定义文件]: #step4
-  [步骤 5：使用 HTTPS 连接到角色实例]: #step5
 
-  [Azure PowerShell 图标]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/azure-powershell-start.png
   []: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-01.png
   [1]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-02-worker.png
   [2]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-03-worker.png
-  [如何对 Node.js 使用 Azure PowerShell]: https://www.windowsazure.com/zh-cn/develop/nodejs/how-to-guides/powershell-cmdlets/#ImportPubSettings
   [站点 url]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/site-url.png
   [3]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-08.png
   [如何将证书与服务关联]: http://msdn.microsoft.com/zh-cn/library/windowsazure/gg465718.aspx
@@ -160,8 +153,6 @@
   [1]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-01.png
   [2]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-02-worker.png
   [3]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-03-worker.png
-  [site-url]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/site-url.png
   [8]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/enable-ssl-08.png
-  [How to Configure an SSL Certificate on an HTTPS Endpoint]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ff795779.aspx
   [powershell-menu]: ./media/cloud-services-nodejs-configure-ssl-certficate-worker-role/azure-powershell-start.png
   

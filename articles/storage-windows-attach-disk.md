@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [howto-attach-disk-windows-linux](../includes/howto-attach-disk-windows-linux.md)]
 
-  [howto-attach-disk-windows-linux]: ../includes/howto-attach-disk-windows-linux.md

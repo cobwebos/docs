@@ -2,4 +2,3 @@
 
 [WACOM.INCLUDE [howto-connect-vm-cloud-service](../includes/howto-connect-vm-cloud-service.md)]
 
-  [howto-connect-vm-cloud-service]: ../includes/howto-connect-vm-cloud-service.md

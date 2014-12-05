@@ -137,7 +137,6 @@
 
 -   [如何在 HTTPS 终结点上配置 SSL 证书][如何在 HTTPS 终结点上配置 SSL 证书]
 
-  [为 Azure 网站配置 SSL 证书]: ../web-sites-configure-ssl-certificate/
   [步骤 1：获取 SSL 证书]: #step1
   [步骤 2：修改服务定义和配置文件]: #step2
   [步骤 3：上载部署包和证书]: #step3

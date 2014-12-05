@@ -214,26 +214,26 @@ Azure 网站自动提供与实际网站 URL 的安全连接。例如，如果你
   [websitesoverview]:/zh-cn/documentation/services/web-sites/
   [csoverview]:/zh-cn/documentation/services/cloud-services/
   [vmoverview]:/zh-cn/documentation/services/virtual-machines/
-  [chooseservice]:/en-us/manage/services/web-sites/choose-web-app-service
+  [chooseservice]:/zh-cn/manage/services/web-sites/choose-web-app-service
   
   
-  [scenariodigitalmarketing]:/en-us/manage/services/web-sites/digital-marketing-campaign-solution-overview
+  [scenariodigitalmarketing]:/zh-cn/manage/services/web-sites/digital-marketing-campaign-solution-overview
   [howtocreatewebsites]:/zh-cn/documentation/articles/web-sites-dotnet-get-started
   [webmatrix]:http://www.microsoft.com/web/webmatrix/
-  [publishingwithgit]:/en-us/develop/net/common-tasks/publishing-with-git/
-  [aspnetgetstarted]:/en-us/develop/net/tutorials/get-started/
+  [publishingwithgit]:/zh-cn/develop/net/common-tasks/publishing-with-git/
+  [aspnetgetstarted]:/zh-cn/develop/net/tutorials/get-started/
 
 <!--
   [drupal]:https://drupal.org/
   [umbraco]:http://umbraco.com/
  -->
 
-  [customdns]:/en-us/develop/net/common-tasks/custom-dns-web-site/
-  [ssl]:/en-us/develop/net/common-tasks/enable-ssl-web-site/
+  [customdns]:/zh-cn/develop/net/common-tasks/custom-dns-web-site/
+  [ssl]:/zh-cn/develop/net/common-tasks/enable-ssl-web-site/
   [openssl]:http://www.openssl.org/
   [sni]:http://en.wikipedia.org/wiki/Server_Name_Indication
-  [sslpricing]:/en-us/pricing/details/web-sites/#service-ssl
-  [howtomonitor]:/en-us/manage/services/web-sites/how-to-monitor-websites/
+  [sslpricing]:/zh-cn/pricing/details/web-sites/#service-ssl
+  [howtomonitor]:/zh-cn/manage/services/web-sites/how-to-monitor-websites/
   
  [GlobalWebCreate]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Create.png
   [GlobalWebQuickGlance]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_QuickGlance.png
@@ -244,7 +244,6 @@ Azure 网站自动提供与实际网站 URL 的安全连接。例如，如果你
   [GlobalWebVSPublish]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_VS_Publish.png
   [GlobalWebSSLBindings]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_SSL_Bindings.png
   [GlobalWebUplodateCert]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_Uplodate_Cert.png
-  [GlobalWebCustomDomain]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_CustomDomain.png
   [GlobalWebWebMatrix]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_WebMatrix.png
   [GlobalWebFTPSettings]: ./media/web-sites-global-web-presence-solution-overview/GlobalWeb_FTPSettings.png
   

@@ -147,32 +147,18 @@
 
 在下一教程[使用脚本为用户授权][使用脚本为用户授权]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。
 
-<!-- Anchors. -->  
+  
 
-<!-- URLs. -->
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-users-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-users-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-users-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-users-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/get-started-with-users-html "HTML"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-users-xamarin-android "Xamarin.Android"
-  [观看教程]: http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Android-Getting-Started-with-Authentication-in-Windows-Azure-Mobile-Services
+
   [注册应用程序以进行身份验证并配置移动服务]: #register
   [将表权限限制给已经过身份验证的用户]: #permissions
   [向应用程序添加身份验证]: #add-authentication
   [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started-android
   [Azure 管理门户]: https://manage.windowsazure.cn/
 
-  [Microsoft 帐户]: /zh-cn/develop/mobile/how-to-guides/register-for-microsoft-authentication/
-  [Facebook 登录]: /zh-cn/develop/mobile/how-to-guides/register-for-facebook-authentication/
-  [Twitter 登录]: /zh-cn/develop/mobile/how-to-guides/register-for-twitter-authentication/
-  [Google 登录]: /zh-cn/develop/mobile/how-to-guides/register-for-google-authentication/
-  [Azure Active Directory]: /zh-cn/documentation/articles/mobile-services-how-to-register-active-directory-authentication/
 
-<!-- Images. -->
+
   [0]: ./media/mobile-services-android-get-started-users/mobile-services-selection.png
   [1]: ./media/mobile-services-android-get-started-users/mobile-service-uri.png
 

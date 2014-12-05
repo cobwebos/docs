@@ -1,6 +1,6 @@
 <properties title="联合迁移" pageTitle="联合迁移" description="概述了将使用&ldquo;联合&rdquo;功能构建的现有应用迁移到灵活扩展模型的步骤。" metaKeywords="sharding scaling, federations, Azure SQL DB sharding, Elastic Scale" services="sql-database" documentationCenter=""  manager="jhubbard" authors="sidneyh@microsoft.com"/>
 
-<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sidneyh"></tags>
+<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="01/01/1900" ms.author="sidneyh" />
 
 # 联合迁移
 
@@ -128,7 +128,7 @@ Azure SQL Database 联合功能将随 Web/企业版一起于 2015 年 9 月停�
   [灵活扩展的概念性概述]: ./sql-database-elastic-scale-introduction.md
   [API 参考]: http://go.microsoft.com/?linkid=9862604
   [断开分片的联合成员]: ./media/sql-database-elastic-scale-federation-migration/migrate-3.png
-  [ALTER FEDERATION (Azure SQL Database)]: http://msdn.microsoft.com/en-us/library/azure/hh597475.aspx
+  [ALTER FEDERATION (Azure SQL Database)]: http://msdn.microsoft.com/zh-cn/library/azure/hh597475.aspx
   [多分片查询]: ./sql-database-elastic-scale-multishard-querying.md
   [拆分和合并分片]: ./sql-database-elastic-scale-overview-split-and-merge.md
   [分片灵活性]: ./sql-database-elastic-scale-elasticity.md

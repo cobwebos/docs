@@ -1,4 +1,4 @@
-1.  如果尚未注册应用程序，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用程序”页][]，用 Microsoft 帐户登录，然后单击“应用程序名称” 。
+1.  如果尚未注册应用程序，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用程序”页][“提交应用程序”页]，用 Microsoft 帐户登录，然后单击“应用程序名称” 。
 
     ![][0]
 
@@ -8,7 +8,7 @@
 
     此操作为应用程序创建一个新的 Windows 应用商店注册。
 
-3.  在 Visual Studio 中，打开你在完成[移动服务入门][]教程后创建的项目。
+3.  在 Visual Studio 中，打开你在完成[移动服务入门][移动服务入门]教程后创建的项目。
 
 4.  在解决方案资源管理器中，右键单击项目，单击“应用商店” ，然后单击“将应用程序与应用商店关联...” 。
 
@@ -44,7 +44,7 @@
 
     这样可为你的应用程序启用 Microsoft 帐户身份验证。
 
-11. 登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
+11. 登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务” ，然后单击你的应用程序。
 
     ![][8]
 
@@ -57,7 +57,7 @@
   [“提交应用程序”页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
   [0]: ./media/mobile-services-register-windows-store-app/mobile-services-submit-win8-app.png
   [1]: ./media/mobile-services-register-windows-store-app/mobile-services-win8-app-name.png
-  [移动服务入门]: /en-us/develop/mobile/tutorials/get-started/#create-new-service
+  [移动服务入门]: /zh-cn/develop/mobile/tutorials/get-started/#create-new-service
   [2]: ./media/mobile-services-register-windows-store-app/mobile-services-store-association.png
   [3]: ./media/mobile-services-register-windows-store-app/mobile-services-select-app-name.png
   [4]: ./media/mobile-services-register-windows-store-app/mobile-services-win8-edit-app.png

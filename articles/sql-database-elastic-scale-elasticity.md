@@ -1,6 +1,6 @@
 <properties title="数据依赖路由" pageTitle="分片灵活性" description="介绍了分片灵活性（可轻松向外扩展 Azure SQL Database 的能力）的概念并提供了相关示例。" metaKeywords="sharding scaling, Azure SQL DB sharding, elastic scale, elasticity" services="sql-database" documentationCenter=""  manager="jhubbard" authors="sidneyh@microsoft.com"/>
 
-<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh"></tags>
+<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh" />
 
 # 分片灵活性
 
@@ -137,7 +137,7 @@
 <!--Image references--> 
 <!--anchors-->
 
-  [基本、标准和高级服务层]: http://msdn.microsoft.com/en-us/library/azure/dn741340.aspx
+  [基本、标准和高级服务层]: http://msdn.microsoft.com/zh-cn/library/azure/dn741340.aspx
   [灵活扩展术语]: sql-database-elastic-scale-glossary.md
   [更改服务层和性能级别]: http://msdn.microsoft.com/library/azure/dn369872.aspx
   [操作数据引入]: ./media/sql-database-elastic-scale-elasticity/data-ingestion.png

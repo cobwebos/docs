@@ -4,5 +4,5 @@
 
   [入门指南]: ./sql-database-elastic-scale-get-started.md
   [文档映射]: ./sql-database-elastic-scale-documentation-map.md
-  [SQL Database 论坛]: http://social.msdn.microsoft.com/forums/azure/en-US/home?forum=ssdsgetstarted
+  [SQL Database 论坛]: http://social.msdn.microsoft.com/forums/azure/zh-cn/home?forum=ssdsgetstarted
   [SQL Database 反馈论坛]: http://feedback.azure.com/forums/217321-sql-database

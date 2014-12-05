@@ -6,13 +6,13 @@ TODO：提供文章的简短描述，以及通过执行本指南中的步骤将�
 
 ## 目录
 
--   [什么是 \<FeatureName\>？][]
--   [概念][]
--   [TODO：插入 Prereq1 名称][]
--   [TODO：插入 Prereq2 名称][]
--   [TODO：插入 HowTo1 名称][]
--   [TODO：插入 HowTo2 名称][]
--   [后续步骤][]
+-   [什么是 \<FeatureName\>？][什么是 \<FeatureName\>？]
+-   [概念][概念]
+-   [TODO：插入 Prereq1 名称][TODO：插入 Prereq1 名称]
+-   [TODO：插入 Prereq2 名称][TODO：插入 Prereq2 名称]
+-   [TODO：插入 HowTo1 名称][TODO：插入 HowTo1 名称]
+-   [TODO：插入 HowTo2 名称][TODO：插入 HowTo2 名称]
+-   [后续步骤][后续步骤]
 
 ## 什么是 \<FeatureName\>？什么是 \<FeatureName\>？
 
@@ -42,8 +42,8 @@ TODO：描述如何完成该功能的常见任务。本节通常包含代码。�
 
 TODO：提供简短摘要，然后列出相关文章，并详述为什么这些文章与用户相关。
 
--   （TODO：链接 1 的短句子）：[（TODO：输入链接 1 文本）][]
--   （TODO：链接 2 的短句子）：[（TODO：输入链接 2 文本）][]
+-   （TODO：链接 1 的短句子）：[（TODO：输入链接 1 文本）][（TODO：输入链接 1 文本）]
+-   （TODO：链接 2 的短句子）：[（TODO：输入链接 2 文本）][（TODO：输入链接 2 文本）]
 
   [什么是 \<FeatureName\>？]: #whatis
   [概念]: #Concepts

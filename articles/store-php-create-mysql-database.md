@@ -4,4 +4,3 @@
 
 <https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql> 提供了示例，演示在 Azure 上 MySQL 如何与 PHP 配合使用。
 
-  [create-mysql-db]: ../includes/create-mysql-db.md

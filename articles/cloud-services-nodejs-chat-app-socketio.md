@@ -2,7 +2,7 @@
 
 # 在 Azure 云服务中使用 Socket.IO 生成 Node.js 聊天应用程序
 
-Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程指导你如何在 Azure 上托管一个基于 socket.IO 的聊天应用程序。有关 Socket.IO 的详细信息，请参阅 <http://socket.io/>。
+Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程指导你如何在 Azure 上托管一个基于 socket.IO 的聊天应用程序。有关 Socket.IO 的详细信息，请参阅 <a href="http://socket.io/">http://socket.io/</a>。
 
 以下是已完成应用程序的屏幕快照：
 
@@ -129,6 +129,4 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
   [资源管理器，显示从存档中解压缩的 examples\\chat 目录的内容]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
   [npm install 命令的输出]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-7.png
   [显示来自用户 1 和用户 2 的聊天消息的两个浏览器窗口]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-8.png
-  [生成 Node.js 应用程序并将其部署到 Azure 云服务]: https://www.windowsazure.com/zh-cn/develop/nodejs/tutorials/getting-started/
-  [Azure SDK for Node.js GitHub 存储库]: https://github.com/WindowsAzure/azure-sdk-for-node
   [在 Azure 网站中使用 Socket.IO 生成 Node.js 聊天应用程序]: /zh-cn/develop/nodejs/tutorials/website-using-socketio/

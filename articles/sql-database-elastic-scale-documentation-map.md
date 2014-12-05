@@ -1,6 +1,6 @@
 <properties title="Azure SQL Database 灵活扩展" pageTitle="Azure SQL Database 灵活扩展" description="文档结构图，是 Azure SQL DB 的灵活扩展功能内容的可视表格" metaKeywords="sharding scaling, Azure SQL DB sharding, elastic scale" services="sql-database" documentationCenter="" manager="jhubbard" authors="sidneyh@microsoft.com"/>
 
-<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh"></tags>
+<tags ms.service="sql-database" ms.workload="sql-database" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="10/02/2014" ms.author="sidneyh" />
 
 # Azure SQL Database 灵活扩展主题
 

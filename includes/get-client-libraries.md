@@ -1,6 +1,6 @@
 ### 通过 Composer 安装
 
-1.  [安装 Git][]。
+1.  [安装 Git][安装 Git]。
 
     **说明**
 
@@ -21,7 +21,7 @@
         "minimum-stability":"dev"
         }
 
-3.  将 **[composer.phar][]** 下载到项目根目录中。
+3.  将 **[composer.phar][composer.phar]** 下载到项目根目录中。
 
 4.  打开命令提示符并在项目根目录中执行该文件
 
@@ -31,15 +31,15 @@
 
 若要手动下载并安装用于 Azure 的 PHP 客户端库，请执行以下步骤：
 
-1.  下载包含 [GitHub][] 中的库的 .zip 存档。或者，复制现有存储库并将其克隆到你的本地计算机。（后一种选择需要一个 GitHub 帐户并要求已在本地安装 Git。）
+1.  下载包含 [GitHub][GitHub] 中的库的 .zip 存档。或者，复制现有存储库并将其克隆到你的本地计算机。（后一种选择需要一个 GitHub 帐户并要求已在本地安装 Git。）
 
     **说明**
 
-    用于 Azure 的 PHP 客户端库依赖于 [HTTP\_Request2][]、[Mail\_mime][] 和 [Mail\_mimeDecode][] PEAR 包。若要解决这些依赖关系，建议使用 [PEAR 包管理器][]安装这些包。
+    用于 Azure 的 PHP 客户端库依赖于 [HTTP\_Request2][HTTP\_Request2]、[Mail\_mime][Mail\_mime] 和 [Mail\_mimeDecode][Mail\_mimeDecode] PEAR 包。若要解决这些依赖关系，建议使用 [PEAR 包管理器][PEAR 包管理器]安装这些包。
 
 2.  将下载的存档的 `WindowsAzure` 目录复制到你的应用程序目录结构中。
 
-有关安装用于 Azure 的 PHP 客户端库的更多信息（包括安装为 PEAR 包的信息），请参阅[下载 Azure SDK for PHP][]。
+有关安装用于 Azure 的 PHP 客户端库的更多信息（包括安装为 PEAR 包的信息），请参阅[下载 Azure SDK for PHP][下载 Azure SDK for PHP]。
 
   [安装 Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
   [composer.phar]: http://getcomposer.org/composer.phar

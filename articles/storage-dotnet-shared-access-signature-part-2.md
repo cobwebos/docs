@@ -2,7 +2,7 @@
 
 # 共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 服务
 
-本教程的[第 1 部分][]介绍了共享访问签名 (SAS) 并且说明了有关使用共享访问签名的最佳实践。第 2 部分将演示如何生成共享访问签名以及如何将共享访问签名用于 Azure Blob 服务。示例是用 C\# 编写的并使用了 Azure .NET 存储客户端库。涉及的方案包括使用共享访问签名的以下方面：
+本教程的[第 1 部分][第 1 部分]介绍了共享访问签名 (SAS) 并且说明了有关使用共享访问签名的最佳实践。第 2 部分将演示如何生成共享访问签名以及如何将共享访问签名用于 Azure Blob 服务。示例是用 C\# 编写的并使用了 Azure .NET 存储客户端库。涉及的方案包括使用共享访问签名的以下方面：
 
 -   在容器上生成共享访问签名
 -   在 Blob 上生成共享访问签名
@@ -15,11 +15,11 @@
 
 # 第 1 部分：创建控制台应用程序以便生成共享访问签名
 
-首先，确保你安装了 Azure .NET 存储客户端库（2.0 版）。你可以安装包含该客户端库的最新程序集的 [NuGet 程序包][]；这是确保你具有最新修补程序的建议方法。你还可以通过下载包含该客户端库的最新 [Azure SDK for .NET][] 版本来下载该客户端库。
+首先，确保你安装了 Azure .NET 存储客户端库（2.0 版）。你可以安装包含该客户端库的最新程序集的 [NuGet 程序包][NuGet 程序包]；这是确保你具有最新修补程序的建议方法。你还可以通过下载包含该客户端库的最新 [Azure SDK for .NET][Azure SDK for .NET] 版本来下载该客户端库。
 
 在 Visual Studio 中，创建一个新的 Windows 控制台应用程序并将其命名为 **GenerateSharedAccessSignatures**。使用以下方法之一添加对 **Microsoft.WindowsAzure.Configuration.dll** 和 **Microsoft.WindowsAzure.Storage.dll** 的引用：
 
--   如果要安装 NuGet 程序包，请首先安装 [NuGet Package Manager Extension for Visual Studio][]。在 Visual Studio 中，选择**“项目”|“管理 NuGet 包”**，在线搜索**“Azure 存储空间”**，然后按照说明进行安装。
+-   如果要安装 NuGet 程序包，请首先安装 [NuGet Package Manager Extension for Visual Studio][NuGet Package Manager Extension for Visual Studio]。在 Visual Studio 中，选择**“项目”|“管理 NuGet 包”**，在线搜索**“Azure 存储空间”**，然后按照说明进行安装。
 -   另外，还可以在你安装的 Azure SDK 中找到这些程序集，然后添加对它们的引用。
 
 在 Program.cs 文件的顶部，添加以下 **using** 语句：
@@ -271,7 +271,7 @@
 
 运行 GenerateSharedAccessSignatures 控制台应用程序时，你将会在控制台窗口中看到如下输出。它们是你在本教程的第 2 部分中将使用的共享访问签名。
 
-![sas-console-output-1][]
+![sas-console-output-1][sas-console-output-1]
 
 # 第 2 部分：创建控制台应用程序来测试共享访问签名
 
@@ -506,17 +506,17 @@
 
 运行该控制台应用程序并观察输出，查看对各个签名允许的操作。控制台窗口中的输出将与下面的输出类似：
 
-![sas-console-output-2][]
+![sas-console-output-2][sas-console-output-2]
 
 # 后续步骤
 
 [共享访问签名，第 1 部分：了解 SAS 模型][第 1 部分]
 
-[管理对 Azure 存储资源的访问][]
+[管理对 Azure 存储资源的访问][管理对 Azure 存储资源的访问]
 
-[使用共享访问签名委托访问 (REST API)][]
+[使用共享访问签名委托访问 (REST API)][使用共享访问签名委托访问 (REST API)]
 
-[介绍表和队列 SAS][]
+[介绍表和队列 SAS][介绍表和队列 SAS]
 
   [第 1 部分]: ../storage-dotnet-shared-access-signature-part-1/
   [NuGet 程序包]: http://nuget.org/packages/WindowsAzure.Storage/ "NuGet 程序包"

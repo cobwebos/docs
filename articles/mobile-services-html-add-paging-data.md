@@ -13,9 +13,9 @@
 <p>为了防止移动设备客户端上发生数据溢出，移动服务实施了自动页限制，该限制默认为每个响应中最多 50 个项。通过指定页大小，你最多可以在响应中显式请求 1,000 个项。</p>
 </div>
 
-本教程以前一教程[数据处理入门][]中的步骤和示例应用程序为基础。在开始学习本教程之前，最起码需要先完成数据处理系列中的第一篇教程，即[数据处理入门][]。
+本教程以前一教程[数据处理入门][数据处理入门]中的步骤和示例应用程序为基础。在开始学习本教程之前，最起码需要先完成数据处理系列中的第一篇教程，即[数据处理入门][数据处理入门]。
 
-1.  从你在完成教程[数据处理入门][]后修改的项目的 "server" 子文件夹中运行下列命令文件之一。
+1.  从你在完成教程[数据处理入门][数据处理入门]后修改的项目的 "server" 子文件夹中运行下列命令文件之一。
 
     -   "launch-windows"（Windows 计算机）
     -   "launch-mac.command"（Mac OS X 计算机）
@@ -66,16 +66,8 @@
 <a name="next-steps"> </a>
 ## 后续步骤
 
-演示移动服务中数据处理基础知识的系列教程到此结束。接下来，请在[身份验证入门][]中了解如何对应用程序的用户进行身份验证。请在[移动服务 HTML/JavaScript 操作方法概念性参考][]中了解有关如何将移动服务与 HTML/JavaScript 一起使用的详细信息
+演示移动服务中数据处理基础知识的系列教程到此结束。接下来，请在[身份验证入门][身份验证入门]中了解如何对应用程序的用户进行身份验证。请在[移动服务 HTML/JavaScript 操作方法概念性参考][移动服务 HTML/JavaScript 操作方法概念性参考]中了解有关如何将移动服务与 HTML/JavaScript 一起使用的详细信息
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-html "HTML"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/add-paging-to-data-xamarin-android "Xamarin.Android"
   [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-html
   [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-html
   [移动服务 HTML/JavaScript 操作方法概念性参考]: /zh-cn/develop/mobile/how-to-guides/work-with-html-js-client

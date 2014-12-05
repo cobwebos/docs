@@ -202,7 +202,6 @@ SendGrid 提供了基于 Web 的 API，可通过这些 API 从 Azure 应用程�
   [如何：使用其他 SendGrid 服务]: #bkmk_HowToUseAdditionalSvcs
   [基于云的电子邮件服务]: http://sendgrid.com/solutions
   [事务性电子邮件传递]: http://sendgrid.com/transactional-email
-  [sendgrid-sign-up]: ../includes/sendgrid-sign-up.md
   [筛选器设置]: http://sendgrid.com/docs/API_Reference/Web_API/filter_settings.html
   [SendGrid API 文档]: http://sendgrid.com/docs/API_Reference/index.html
   [如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件]: ../store-sendgrid-java-how-to-send-email-example/

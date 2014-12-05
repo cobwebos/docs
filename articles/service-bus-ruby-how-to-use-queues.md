@@ -122,7 +122,6 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [如何向队列发送消息]: #how-to-send-messages-to-a-queue
   [如何从队列接收消息]: #how-to-receive-messages-from-a-queue
   [如何处理应用程序崩溃和不可读消息]: #how-to-handle-application-crashes-and-unreadable-messages
-  [howto-service-bus-queues]: ../includes/howto-service-bus-queues.md
   [在 Azure 上创建 Ruby 应用程序]: /zh-cn/develop/ruby/tutorials/web-app-with-linux-vm/
   [队列、主题和订阅]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh367516.aspx
   [Azure SDK for Ruby]: https://github.com/WindowsAzure/azure-sdk-for-ruby

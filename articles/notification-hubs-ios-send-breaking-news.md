@@ -230,9 +230,9 @@
 
     了解如何将通知推送到经过身份验证的特定用户。这是仅将通知发送到特定用户的好的解决方案。
 
-<!-- Anchors. -->  
+  
 
-<!-- URLs. -->
+
 
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
   [向应用程序中添加类别选择]: #adding-categories
@@ -241,10 +241,9 @@
   [运行应用程序并生成通知]: #test-app
   [通知中心入门]: /zh-cn/manage/services/notification-hubs/get-started-notification-hubs-ios/
 
-<!-- Images. -->
+
   [0]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
   [1]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios3.png
-  [notification-hubs-back-end]: ../includes/notification-hubs-back-end.md
   [2]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios1.png
   [使用通知中心广播本地化的突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-localized-dotnet/
   [使用通知中心通知用户]: /zh-cn/manage/services/notification-hubs/notify-users/

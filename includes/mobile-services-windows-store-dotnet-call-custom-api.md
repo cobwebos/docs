@@ -51,7 +51,7 @@
         await dialog.ShowAsync();
         }
 
-    此方法可处理新按钮的 "Click" 事件。[InvokeApiAsync][] 方法在客户端上调用，该客户端向新的自定义 API 发送 POST 请求。与任何错误相同，自定义 API 返回的结果也显示在消息对话框中。
+    此方法可处理新按钮的 "Click" 事件。[InvokeApiAsync][InvokeApiAsync] 方法在客户端上调用，该客户端向新的自定义 API 发送 POST 请求。与任何错误相同，自定义 API 返回的结果也显示在消息对话框中。
 
 <a name="test"></a>
 ## 测试应用程序
@@ -68,5 +68,5 @@
 
     此时会显示一个消息框，指示标记为完成的多个项，并再次执行筛选查询，将所有项从列表中清除。
 
-  [InvokeApiAsync]: http://msdn.microsoft.com/en-us/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
+  [InvokeApiAsync]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
   [0]: ./media/mobile-services-windows-store-dotnet-call-custom-api/mobile-custom-api-windows-store-completed.png

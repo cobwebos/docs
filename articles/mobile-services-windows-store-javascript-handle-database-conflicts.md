@@ -11,30 +11,30 @@
 
 在本教程中，你将向快速入门应用程序添加功能以处理更新 TodoItem 数据库时发生的争用。本教程将指导你完成以下基本步骤：
 
-1.  [更新应用程序以允许更新][]
-2.  [在应用程序中启用冲突检测][]
-3.  [测试应用程序中的数据库写入冲突][]
-4.  [使用服务器脚本自动解决冲突][]
+1.  [更新应用程序以允许更新][更新应用程序以允许更新]
+2.  [在应用程序中启用冲突检测][在应用程序中启用冲突检测]
+3.  [测试应用程序中的数据库写入冲突][测试应用程序中的数据库写入冲突]
+4.  [使用服务器脚本自动解决冲突][使用服务器脚本自动解决冲突]
 
 本教程需要的内容如下：
 
 -   Microsoft Visual Studio 2013 Express for Windows 或更高版本。
--   本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][]，并下载初学者项目的 JavaScript 语言版本。
--   [Azure 帐户][]
+-   本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门][移动服务入门]，并下载初学者项目的 JavaScript 语言版本。
+-   [Azure 帐户][Azure 帐户]
 -   Windows Azure 移动服务 NuGet 包 1.1.5 或更高版本。若要获取最新版本，请执行以下步骤：
 
     1.  在 Visual Studio 中，打开项目并右键单击解决方案资源管理器中的项目，然后单击“管理 Nuget 包” 。
 
     2.  展开“联机” 并单击“Microsoft 和 .NET” 。在搜索文本框中输入“WindowsAzure.MobileServices.WinJS” 。针对 Windows Azure Mobile Services for WinJS  NuGet 包单击“安装” 。
 
-        ![][]
+        ![][0]
 
 <a name="uiupdate"></a>
 ## 更新 UI更新应用程序以允许更新
 
 在本节中，你将更新用户界面，以便更新每个项目的文本。绑定模板将针对数据库表中的每个项目提供一个复选框和文本类控件。你将能够更新 TodoItem 的文本字段。应用程序将处理 `keydown` 事件，以便按 "Enter" 键更新项目。
 
-1.  在 Visual Studio 中，打开你在[移动服务入门][]教程中下载的 TodoList 项目的 JavaScript 语言版本。
+1.  在 Visual Studio 中，打开你在[移动服务入门][移动服务入门]教程中下载的 TodoList 项目的 JavaScript 语言版本。
 2.  在 Visual Studio 解决方案资源管理器中，打开 default.html，将 `TemplateItem` div 标记定义替换为下面显示的 div 标记并保存更改。这将添加一个文本框控件，以便编辑 TodoItem 的文本。
 
         <div id="TemplateItem" data-win-control="WinJS.Binding.Template">
@@ -68,7 +68,7 @@
 <a name="enableOC"></a>
 ## 启用乐观并发在应用程序中启用冲突检测
 
-Azure 移动服务通过使用添加到每个表的 `__version` 系统属性列跟踪对每个项目的更改，来支持乐观并发控制。在本节中，我们将允许应用程序通过 `__version` 系统属性检测这些写入冲突。在 todoTable 上启用此系统属性后，如果记录自上次查询以来已更改，则应用程序在更新尝试期间将收到 `MobileServicePreconditionFailedException` 发出的通知。然后，应用程序将能够选择是将其更改提交到数据库，还是保持对数据库的上次更改不变。有关移动服务的系统属性的详细信息，请参阅[系统属性][]。
+Azure 移动服务通过使用添加到每个表的 `__version` 系统属性列跟踪对每个项目的更改，来支持乐观并发控制。在本节中，我们将允许应用程序通过 `__version` 系统属性检测这些写入冲突。在 todoTable 上启用此系统属性后，如果记录自上次查询以来已更改，则应用程序在更新尝试期间将收到 `MobileServicePreconditionFailedException` 发出的通知。然后，应用程序将能够选择是将其更改提交到数据库，还是保持对数据库的上次更改不变。有关移动服务的系统属性的详细信息，请参阅[系统属性][系统属性]。
 
 1.  在 default.js 文件中的 `todoTable` 变量声明下，添加代码以包括 \*\*\_\_version\*\* 系统属性，从而启用对写入冲突检测的支持。
 
@@ -183,7 +183,7 @@ Azure 移动服务通过使用添加到每个表的 `__version` 系统属性列�
 
 以下步骤将指导你完成添加服务器更新脚本并对其进行测试的过程。
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务” ，然后单击你的应用程序。
 
     ![][11]
 
@@ -258,23 +258,20 @@ Azure 移动服务通过使用添加到每个表的 `__version` 系统属性列�
 
 本教程演示了在处理移动服务中的数据时，如何让 Windows 应用商店应用程序处理写入冲突。接下来，请考虑完成数据系列中的以下教程之一：
 
--   [使用脚本验证和修改数据][]
+-   [使用脚本验证和修改数据][使用脚本验证和修改数据]
     了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
--   [使用分页优化查询][]
+-   [使用分页优化查询][使用分页优化查询]
     了解如何使用查询中的分页控制单个请求中处理的数据量。
 
 完成了数据系列后，你还可以尝试以下 Windows 应用商店教程之一：
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何对应用程序用户进行身份验证。
 
--   [推送通知入门][]
+-   [推送通知入门][推送通知入门]
     了解如何使用移动服务将非常基本的推送通知发送到应用程序。
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/handle-database-write-conflicts-dotnet/ "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-handle-database-conflicts/ "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/handle-database-write-conflicts-wp8/ "Windows Phone"
   [更新应用程序以允许更新]: #uiupdate
   [在应用程序中启用冲突检测]: #enableOC
   [测试应用程序中的数据库写入冲突]: #test-app

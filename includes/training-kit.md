@@ -5,4 +5,3 @@
 <p>你还可在 <a href="http://windowsazure-trainingkit.github.io/">http://windowsazure-trainingkit.github.io/</a> 浏览有关 GitHub 的培训工具包。</p>
 </div>
 
-  [下载]: http://go.microsoft.com/fwlink/p/?LinkId=331133

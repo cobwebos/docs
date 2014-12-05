@@ -304,9 +304,6 @@
   [如何：下载 Blob]: #DownloadBlob
   [如何：删除 Blob]: #DeleteBlob
   [如何：删除 Blob 容器]: #DeleteContainer
-  [howto-blob-storage]: ../includes/howto-blob-storage.md
-  [create-storage-account]: ../includes/create-storage-account.md
-  [get-client-libraries]: ../includes/get-client-libraries.md
   [require\_once]: http://php.net/require_once
   [设置容器 ACL (REST API)]: http://msdn.microsoft.com/zh-cn/library/azure/dd179391.aspx
   [Blob 服务错误代码]: http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx

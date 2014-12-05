@@ -32,7 +32,7 @@ SendGrid 是一项[基于云的电子邮件服务][基于云的电子邮件服�
 
 ## <a name="createaccount"></a><span class="short-header">创建 SendGrid 帐户</span>创建 SendGrid 帐户
 
-[WACOM.INCLUDE [sendgrid-sign-up][sendgrid-sign-up]]
+[WACOM.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="reference"></a><span class="short-header">引用 SendGrid .NET 类库</span>引用 SendGrid .NET 类库
 
@@ -244,7 +244,6 @@ SendGrid 提供了基于 Web 的 API，可通过这些 API从 Azure 应用程序
   [基于云的电子邮件服务]: http://sendgrid.com/solutions
   [事务性电子邮件传递]: http://sendgrid.com/transactional-email
   []: http://sendgrid.com
-  [sendgrid-sign-up]: ../includes/sendgrid-sign-up.md
   [SendGrid NuGet 包]: ./media/sendgrid-dotnet-how-to-send-email/sendgrid01.png
   [sendgrid-csharp]: https://github.com/sendgrid/sendgrid-csharp
   [SMTP 与 Web API]: http://docs.sendgrid.com/documentation/get-started/integrate/examples/smtp-vs-rest/

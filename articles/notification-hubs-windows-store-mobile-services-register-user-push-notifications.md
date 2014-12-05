@@ -105,14 +105,14 @@
 
 现在客户端应用程序已更新，请返回到[使用通知中心通知用户][使用通知中心通知用户]并更新移动服务以使用通知中心发送通知。
 
-<!-- Anchors. --> 
+ 
 
-<!-- URLs. -->
+
 
   [使用通知中心通知用户]: /zh-cn/manage/services/notification-hubs/notify-users
   [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-dotnet/
 
-<!-- Images. --> 
+ 
 
   [0]: ./media/notification-hubs-windows-store-mobile-services-register-user-push-notifications/mobile-services-select-app-name.png
   [1]: ./media/notification-hubs-windows-store-mobile-services-register-user-push-notifications/notification-hub-associate-win8-app.png

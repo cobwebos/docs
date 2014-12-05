@@ -6,7 +6,7 @@
 
 本教程将演示如何部署使用 Django Web 框架构建的应用程序。本教程将指导你完成部署你的应用程序和任何所需库（包括 Django）的步骤。你会将所有这些内容放入 Git 存储库中，从而可以快速简单地将更新推送到你的网站。最后，你将通过 Azure 配置新创建的网站，以便它能够运行你的 Python 应用程序。
 
-[WACOM.INCLUDE [create-account-and-websites-note][create-account-and-websites-note]]
+[WACOM.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 本教程使用 Python 2.7 和 Django 1.4。你可以自行获取这些软件，也可以通过使用 [][]<http://azure.microsoft.com/zh-cn/develop/python/></a> 上的 Windows Installer 链接来快速轻松地安装这些软件。
 
@@ -22,7 +22,7 @@
 
 创建你的应用程序的第一步是通过 Azure 管理门户创建网站。为此，你将需要登录到该门户，然后单击左下角的“新建”按钮。将出现一个窗口。单击“快速创建”，输入 URL，然后选择“创建网站”。
 
-![][]
+![][0]
 
 将快速设置网站。接下来，你要为通过 Git 进行发布提供相应支持。这一点可通过选择“从源代码管理设置部署”来完成。
 
@@ -128,10 +128,9 @@
 
 现在你可以像通常一样转到 DjangoApplication 目录并使用 manage.py 来开始将新应用程序添加到 Django 项目中。
 
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
-  []: http://azure.microsoft.com/zh-cn/develop/python/
+  [0]: http://azure.microsoft.com/zh-cn/develop/python/
   [msysgit]: http://code.google.com/p/msysgit/
-  []: ./media/web-sites-python-create-deploy-django-app/django-ws-003.png
+  [0]: ./media/web-sites-python-create-deploy-django-app/django-ws-003.png
   [1]: ./media/web-sites-python-create-deploy-django-app/django-ws-004.png
   [2]: ./media/web-sites-python-create-deploy-django-app/django-ws-005.png
   [3]: ./media/web-sites-python-create-deploy-django-app/django-ws-006.png

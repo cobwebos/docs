@@ -35,13 +35,6 @@
 -   [在源代码管理中存储服务器脚本][在源代码管理中存储服务器脚本]
     了解如何使用源代码管理功能来更方便、更安全地开发和发布自定义 API 脚本代码。
 
-  [Windows 应用商店 C#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-call-custom-api "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-call-custom-api "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-call-custom-api "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-call-custom-api "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-call-custom-api "Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-call-custom-api ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-ios-call-custom-api "JavaScript 后端"
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started/
   [数据处理入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started-data/
   [定义自定义 API]: #define-custom-api
@@ -49,7 +42,5 @@
   [测试应用程序]: #test-app
   [移动服务 iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
   [XCode 4.5]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-  [mobile-services-dotnet-backend-create-custom-api]: ../includes/mobile-services-dotnet-backend-create-custom-api.md
-  [mobile-services-ios-call-custom-api]: ../includes/mobile-services-ios-call-custom-api.md
   [移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/?LinkId=262293
   [在源代码管理中存储服务器脚本]: /zh-cn/documentation/articles/mobile-services-store-scripts-source-control

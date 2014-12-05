@@ -6,14 +6,14 @@
 	<a href="/zh-cn/develop/mobile/tutorials/push-notifications-to-users-wp8" title="Windows Phone">Windows Phone</a><a href="/zh-cn/develop/mobile/tutorials/push-notifications-to-users-ios" title="iOS" class="current">iOS</a><a href="/zh-cn/develop/mobile/tutorials/push-notifications-to-users-android" title="Android">Android</a>
 </div>
 
-本主题是[前面的推送通知教程][]的引伸，其中添加了一个用于存储 Apple 推送通知服务 (APNS) 标记的新表。然后，可以使用这些标记向 iPhone 或 iPad 应用程序的用户发送推送通知。
+本主题是[前面的推送通知教程][前面的推送通知教程]的引伸，其中添加了一个用于存储 Apple 推送通知服务 (APNS) 标记的新表。然后，可以使用这些标记向 iPhone 或 iPad 应用程序的用户发送推送通知。
 
 本教程将指导你完成在应用程序中更新推送通知的以下步骤：
 
-1.  [创建 Devices 表][]
-2.  [更新应用程序][]
-3.  [更新服务器脚本][]
-4.  [验证推送通知行为][]
+1.  [创建 Devices 表][创建 Devices 表]
+2.  [更新应用程序][更新应用程序]
+3.  [更新服务器脚本][更新服务器脚本]
+4.  [验证推送通知行为][验证推送通知行为]
 
 本教程是在移动服务快速入门和前面的[推送通知入门][前面的推送通知教程]教程的基础上制作的。在开始本教程之前，必须先完成[推送通知入门][前面的推送通知教程]。
 
@@ -21,9 +21,9 @@
 <a name="create-table"></a>
 ## 创建表创建新的 Devices 表
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务” ，然后单击你的应用程序。
 
-    ![][]
+    ![][0]
 
 2.  单击“数据”选项卡 ，然后单击“创建” 。
 
@@ -206,18 +206,15 @@
 
 演示推送通知操作基础知识的教程到此结束。建议你了解有关以下移动服务主题的详细信息：
 
--   [数据处理入门][]
+-   [数据处理入门][数据处理入门]
     了解有关使用移动服务存储和查询数据的详细信息。
 
--   [身份验证入门][]
+-   [身份验证入门][身份验证入门]
     了解如何使用 Windows 帐户对应用程序用户进行身份验证。
 
--   [移动服务服务器脚本参考][]
+-   [移动服务服务器脚本参考][移动服务服务器脚本参考]
     了解有关注册和使用服务器脚本的详细信息。
 
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/push-notifications-to-users-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/push-notifications-to-users-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/push-notifications-to-users-android "Android"
   [前面的推送通知教程]: /zh-cn/develop/mobile/tutorials/get-started-with-push-ios
   [创建 Devices 表]: #create-table
   [更新应用程序]: #update-app

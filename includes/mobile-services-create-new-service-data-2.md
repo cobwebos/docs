@@ -4,13 +4,13 @@
 
 2.  单击“数据”选项卡，然后单击“+创建” 。
 
-    ![mobile-data-tab-empty][]
+    ![mobile-data-tab-empty][mobile-data-tab-empty]
 
     此时将显示“创建新表” 对话框。
 
 3.  在“表名”中键入  *TodoItem*，然后单击勾选按钮。
 
-    ![mobile-create-todoitem-table][]
+    ![mobile-create-todoitem-table][mobile-create-todoitem-table]
 
 此时将创建一个设置了默认权限的新存储表 "TodoItem"。这意味着，具有应用程序密钥（随应用程序一起分发）的任何用户都可以访问和更改表中的数据。
 

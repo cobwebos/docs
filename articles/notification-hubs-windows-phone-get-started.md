@@ -152,22 +152,14 @@
 
 在这个简单的示例中，你已将通知广播到所有 Windows Phone 8 设备。为了针对特定客户，请参考教程[使用通知中心将通知推送到用户][使用通知中心将通知推送到用户]。如果要按兴趣细分用户组，可以阅读[使用通知中心发送突发新闻][使用通知中心发送突发新闻]。在[通知中心指南][通知中心指南]中了解通知中心的详细使用信息。
 
-<!-- Anchors. -->  
+  
 
   [创建通知中心]: #configure-hub
   [将你的应用程序连接到通知中心]: #connecting-app
   [从后端发送通知]: #send
 
-<!-- URLs. -->
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /zh-cn/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /zh-cn/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
+
   [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
-  [Azure 免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
   [Azure 管理门户]: https://manage.windowsazure.cn/
   [WindowsAzure.ServiceBus NuGet 包]: http://nuget.org/packages/WindowsAzure.ServiceBus/
   [toast 目录]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/jj662938(v=vs.105).aspx
@@ -176,14 +168,13 @@
   [使用通知中心发送突发新闻]: /zh-cn/manage/services/notification-hubs/breaking-news-dotnet
   [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
 
-<!-- Images. -->
+
   [0]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-from-portal.png
   [1]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-from-portal2.png
   [2]: ./media/notification-hubs-windows-phone-get-started/notification-hub-select-from-portal.png
   [3]: ./media/notification-hubs-windows-phone-get-started/notification-hub-select-from-portal2.png
   [4]: ./media/notification-hubs-windows-phone-get-started/notification-hub-connection-strings.png
   [5]: ./media/notification-hubs-windows-phone-get-started/notification-hub-pushauth.png
-  [MPNS 已经身份验证的模式]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/ff941099(v=vs.105).aspx
   [6]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-wp-app.png
   [WindowsAzure.Messaging.Managed NuGet 包]: http://nuget.org/packages/WindowsAzure.Messaging.Managed/
   [7]: ./media/notification-hubs-windows-phone-get-started/mobile-app-enable-push-wp8.png

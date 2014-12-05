@@ -10,21 +10,21 @@
 
 本教程将指导你完成以下基本步骤：
 
-1.  [添加字符串长度验证][]
-2.  [更新客户端以支持验证][]
-3.  [在插入操作中添加时间戳][]
-4.  [更新客户端以显示时间戳][]
+1.  [添加字符串长度验证][添加字符串长度验证]
+2.  [更新客户端以支持验证][更新客户端以支持验证]
+3.  [在插入操作中添加时间戳][在插入操作中添加时间戳]
+4.  [更新客户端以显示时间戳][更新客户端以显示时间戳]
 
-本教程以前一教程[数据处理入门][]中的步骤和示例应用程序为基础。在开始本教程之前，必须先完成[数据处理入门][]。
+本教程以前一教程[数据处理入门][数据处理入门]中的步骤和示例应用程序为基础。在开始本教程之前，必须先完成[数据处理入门][数据处理入门]。
 
 <a name="string-length-validation"></a>
 ## 添加验证
 
 验证用户提交的数据的长度总不失为一种良好做法。首先，你要注册一个脚本，用于验证发送到移动服务的字符串数据长度，并拒绝过长（在本例中为 10 个字符以上）的字符串。
 
-1.  登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的应用程序。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务” ，然后单击你的应用程序。
 
-    ![][]
+    ![][0]
 
 2.  单击“数据” 选项卡，然后单击 TodoItem  表。
 
@@ -58,7 +58,7 @@
 
 移动服务会验证数据和发送错误响应，而你则需要更新你的应用程序，使之能够处理验证后生成的错误响应。
 
-1.  从你在完成教程[数据处理入门][]后修改的项目的 "server" 子文件夹中运行下列命令文件之一。
+1.  从你在完成教程[数据处理入门][数据处理入门]后修改的项目的 "server" 子文件夹中运行下列命令文件之一。
 
     -   "launch-windows"（Windows 计算机）
     -   "launch-mac.command"（Mac OS X 计算机）
@@ -192,18 +192,10 @@
 <a name="next-steps"> </a>
 ## 后续步骤
 
-现在你已完成本教程，建议你继续学习数据系列中的最后一篇教程：[使用分页优化查询][]。
+现在你已完成本教程，建议你继续学习数据系列中的最后一篇教程：[使用分页优化查询][使用分页优化查询]。
 
-有关详细信息，请参阅[使用服务器脚本][]和[移动服务 HTML/JavaScript 操作方法概念性参考][]
+有关详细信息，请参阅[使用服务器脚本][使用服务器脚本]和[移动服务 HTML/JavaScript 操作方法概念性参考][移动服务 HTML/JavaScript 操作方法概念性参考]
 
-  [Windows 应用商店 C\#]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-dotnet "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-js "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-android "Android"
-  [HTML]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-html "HTML"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/validate-modify-and-augment-data-xamarin-android "Xamarin.Android"
   [添加字符串长度验证]: #string-length-validation
   [更新客户端以支持验证]: #update-client-validation
   [在插入操作中添加时间戳]: #add-timestamp

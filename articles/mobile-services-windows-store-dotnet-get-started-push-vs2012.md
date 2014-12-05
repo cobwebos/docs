@@ -179,24 +179,13 @@
 -   [移动服务 .NET 操作方法概念性参考][移动服务 .NET 操作方法概念性参考]
     了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-  [Windows 应用商店 c#]: /zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet-vs2012 "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/develop/mobile/tutorials/get-started-with-push-js-vs2012 "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/develop/mobile/tutorials/get-started-with-push-wp8 "Windows Phone"
-  [iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-ios "iOS"
-  [Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-android "Android"
-  [Xamarin.iOS]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-ios "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/develop/mobile/tutorials/get-started-with-push-xamarin-android "Xamarin.Android"
-  [推送通知入门]: /zh-cn/develop/mobile/tutorials/get-started-with-push-dotnet
   [注册用于推送通知的应用程序并配置移动服务]: #register
   [创建 Registrations 表]: #create-table
   [向应用程序添加推送通知]: #add-push
   [更新脚本以发送推送通知]: #update-scripts
   [插入数据以接收通知]: #test
   [数据处理入门]: /zh-cn/develop/mobile/tutorials/get-started-with-data-dotnet
-  [mobile-services-register-windows-store-app]: ../includes/mobile-services-register-windows-store-app.md
-  [mobile-services-create-new-push-table]: ../includes/mobile-services-create-new-push-table.md
   [0]: ./media/mobile-services-windows-store-dotnet-get-started-push-vs2012/mobile-app-enable-toast-win8.png
-  [mobile-services-update-registrations-script]: ../includes/mobile-services-update-registrations-script.md
   [1]: ./media/mobile-services-windows-store-dotnet-get-started-push-vs2012/mobile-insert-script-push2.png
   [2]: ./media/mobile-services-windows-store-dotnet-get-started-push-vs2012/mobile-quickstart-push1.png
   [3]: ./media/mobile-services-windows-store-dotnet-get-started-push-vs2012/mobile-quickstart-push2.png

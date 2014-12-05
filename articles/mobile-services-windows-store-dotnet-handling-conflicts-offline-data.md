@@ -9,31 +9,31 @@
 
 <p>本主题演示在使用 Azure 移动服务的脱机功能时如何同步数据和处理冲突。在本教程中，你将下载一个同时支持脱机和联机数据的应用程序，将移动服务与该应用程序集成，然后在运行该应用程序时登录到 Azure 管理门户以查看和更新数据库。</p>
 
-本教程以前一教程[脱机数据入门][]中的步骤和示例应用程序为基础。在开始本教程之前，必须先完成[脱机数据入门][]。
+本教程以前一教程[脱机数据入门][脱机数据入门]中的步骤和示例应用程序为基础。在开始本教程之前，必须先完成[脱机数据入门][脱机数据入门]。
 
 本教程将指导你完成以下基本步骤：
 
-1.  [下载 Windows 应用商店应用程序项目][]
-2.  [为数据库添加截止日期列][]
+1.  [下载 Windows 应用商店应用程序项目][下载 Windows 应用商店应用程序项目]
+2.  [为数据库添加截止日期列][为数据库添加截止日期列]
 
--   [更新 .NET 后端移动服务的数据库][]
--   [更新 JavaScript 移动服务的数据库][]
+-   [更新 .NET 后端移动服务的数据库][更新 .NET 后端移动服务的数据库]
+-   [更新 JavaScript 移动服务的数据库][更新 JavaScript 移动服务的数据库]
 
-1.  [针对移动服务测试应用程序][]
-2.  [手动更新后端中的数据以制造冲突][]
+1.  [针对移动服务测试应用程序][针对移动服务测试应用程序]
+2.  [手动更新后端中的数据以制造冲突][手动更新后端中的数据以制造冲突]
 
 本教程需要运行在 Windows 8.1 上的 Visual Studio 2013。
 
 <a name="download-app"></a>
 ## 下载示例项目
 
-![][]
+![][0]
 
-本教程基于[处理冲突代码示例][]，后者是用于 Visual Studio 2013 的 Windows 应用商店应用程序项目。此应用程序的 UI 类似于教程[脱机数据入门][]中的应用程序，不同的是，每个 TodoItem 有一个新的日期列。
+本教程基于[处理冲突代码示例][处理冲突代码示例]，后者是用于 Visual Studio 2013 的 Windows 应用商店应用程序项目。此应用程序的 UI 类似于教程[脱机数据入门][脱机数据入门]中的应用程序，不同的是，每个 TodoItem 有一个新的日期列。
 
-1.  下载[处理冲突代码示例][]的 C\# 版本。
+1.  下载[处理冲突代码示例][处理冲突代码示例]的 C\# 版本。
 
-2.  安装 [SQLite for Windows 8.1][]（如果尚未安装）。
+2.  安装 [SQLite for Windows 8.1][SQLite for Windows 8.1]（如果尚未安装）。
 
 3.  在 Visual Studio 2013 中，打开已下载的项目。按 "F5" 键重新生成项目并启动应用程序。
 
@@ -71,7 +71,7 @@
 
     请注意，在 WebApiConfig.cs 文件中，默认数据库初始值设定项类是从 `DropCreateDatabaseIfModelChanges` 类派生的。这意味着，对该模型的任何更改将导致表被删除并重新创建，以适应新模型。因此表中的数据将丢失，并且表将重新植入。修改数据库初始值设定项的 Seed 方法，使下述 `Seed()` 初始化函数可以初始化新的 DueDate 列。保存 WebApiConfig.cs 文件。
 
-    > [WACOM.NOTE] 使用默认数据库初始值设定项时，只要实体框架在代码优先模型定义中检测到数据模型更改，它就会删除并重新创建数据库。若要进行此数据模型更改并维护数据库中的现有数据，必须使用代码优先迁移。有关详细信息，请参阅[如何使用代码优先迁移更新数据模型][]。
+    > [WACOM.NOTE] 使用默认数据库初始值设定项时，只要实体框架在代码优先模型定义中检测到数据模型更改，它就会删除并重新创建数据库。若要进行此数据模型更改并维护数据库中的现有数据，必须使用代码优先迁移。有关详细信息，请参阅[如何使用代码优先迁移更新数据模型][如何使用代码优先迁移更新数据模型]。
 
         new TodoItem { Id = "1", Text = "First item", Complete = false, DueDate = DateTime.Today },
         new TodoItem { Id = "2", Text = "Second item", Complete = false, DueDate = DateTime.Today },
@@ -87,7 +87,7 @@
 
 对于 JavaScript 后端移动服务，你将添加一个名为“TodoWithDate” 的新表。若要为 JavaScript 后端移动服务添加 TodoWithDate  表，请执行以下步骤。
 
-1.  登录到 [Azure 管理门户][]。
+1.  登录到 [Azure 管理门户][Azure 管理门户]。
 
 2.  导航到移动服务的“数据” 选项卡。
 
@@ -111,9 +111,9 @@
 
 4.  如前所述，在文本框中键入文本，然后单击“保存” 。这会将数据保存到本地同步表中，而不是保存到服务器。
 
-    ![][]
+    ![][0]
 
-5.  若要查看数据库的当前状态，请登录到 [Azure 管理门户][]，单击“移动服务” ，然后单击你的移动服务。
+5.  若要查看数据库的当前状态，请登录到 [Azure 管理门户][Azure 管理门户]，单击“移动服务” ，然后单击你的移动服务。
 
 -   如果你使用的是移动服务的 JavaScript 后端，请单击“数据” 选项卡，然后单击“TodoWithDate” 表。单击“浏览” 可看到该表将仍是空的，因为我们尚未将应用程序中的更改推送到服务器。
 
@@ -136,7 +136,7 @@
 
 在实际情况中，当一个应用程序将更新推送到数据库中的一条记录，然后另一个应用程序尝试使用该记录中过时的版本字段将更改推送到同一条记录时，会发生同步冲突。如果应用程序的一个实例在未拉取已更新记录的情况下尝试更新同一条记录，则会发生冲突，并且冲突将在应用程序中作为 `MobileServicePreconditionFailedException` 被捕获。
 
-如果你要将应用程序部署到另一台计算机，以便运行应用程序的两个实例以制造冲突，则可以按照[处理数据库冲突][]教程中的部署说明进行操作。
+如果你要将应用程序部署到另一台计算机，以便运行应用程序的两个实例以制造冲突，则可以按照[处理数据库冲突][处理数据库冲突]教程中的部署说明进行操作。
 
 以下步骤显示如何在 Visual Studio 中更新数据库以制造冲突。
 
@@ -188,8 +188,6 @@
 
 取消推送时，`PushAsync` 将引发 `MobileServicePushFailedException`，而异常属性 `PushResult.Status` 的值将为 `MobileServicePushStatus.CancelledByOperation`。
 
-  [Windows 应用商店 C\#]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-windows-phone-handling-conflicts-offline-data "Windows Phone"
   [脱机数据入门]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data
   [下载 Windows 应用商店应用程序项目]: #download-app
   [为数据库添加截止日期列]: #add-column

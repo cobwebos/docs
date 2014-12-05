@@ -184,6 +184,5 @@
   [5]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-data-tables.png
   [6]: ./media/mobile-services-windows-phone-single-sign-on/mobile-portal-change-table-perms.png
   [7]: ./media/mobile-services-windows-phone-single-sign-on/mobile-add-reference-live-wp8.png
-  [Windows 应用商店应用程序]: /zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
   [使用脚本为用户授权]: /zh-cn/develop/mobile/tutorials/authorize-users-in-scripts-wp8
   [8]: /zh-cn/develop/mobile/tutorials/get-started-with-users-wp8

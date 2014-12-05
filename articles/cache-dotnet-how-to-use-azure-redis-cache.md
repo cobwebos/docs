@@ -267,7 +267,7 @@ NuGet 程序包会下载并添加所需的程序集引用，并将以下部分�
 -   请参阅 [redis][redis] 文档并阅读 [redis 数据类型][redis 数据类型]和 [Redis 数据类型的十五分钟介绍][Redis 数据类型的十五分钟介绍]。
 -   查看 MSDN 参考：[Azure Redis Cache][Azure Redis Cache]
 
-<!-- INTRA-TOPIC LINKS --> <!-- IMAGES --> <!-- LINKS -->
+<!-- INTRA-TOPIC LINKS -->\r\n<!-- IMAGES -->\r\n<!-- LINKS -->
 
   [后续步骤]: #next-steps
   [什么是 Azure Redis Cache？]: #what-is

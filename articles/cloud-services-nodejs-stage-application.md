@@ -64,17 +64,12 @@
 -   [如何在 Azure 中通过交换 VIP 来将服务升级部署到生产][如何在 Azure 中通过交换 VIP 来将服务升级部署到生产]
 -   [在 Azure 中管理部署概述][在 Azure 中管理部署概述]
 
-  [步骤 1：暂存应用程序]: #step1
-  [步骤 2：通过交换 VIP 将应用程序部署到生产环境]: #step2
   [Azure 管理门户]: http://manage.windowsazure.cn
   [如何在 Azure 中通过交换 VIP 来将服务升级部署到生产]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ee517253.aspx
   [在 Azure 中管理部署概述]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh386336.aspx
 - [How to Deploy a Service Upgrade to Production by Swapping VIPs in Azure]
 - [Overview of Managing Deployments in Azure]
 
-  [Step 1: Stage an Application]: #step1
-  [Step 2: Deploy an Application to Production by Swapping VIPs]: #step2
-  [Azure Management Portal]: http://manage.windowsazure.cn
   [cloud-service]: ./media/cloud-services-nodejs-stage-application/staging-cloud-service-running.png
   [cloud-service-dashboard]: ./media/cloud-services-nodejs-stage-application/cloud-service-dashboard-staging.png
   [cloud-service-staging-url]: ./media/cloud-services-nodejs-stage-application/cloud-service-staging-url.png

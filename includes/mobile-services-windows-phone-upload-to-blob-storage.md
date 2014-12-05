@@ -1,7 +1,7 @@
 <a name="add-select-images"></a>
 ## 更新快速启动客户端应用程序以捕获和上载图像
 
-在本节中，你将更新来自[移动服务入门][]教程的项目，以便拍摄照片并将它们上载到 Azure Blob 存储。为了捕获图像，本教程使用来自 `Microsoft.Phone.Tasks` 命名空间的 [CameraCaptureTask][]。此类可在 Windows Phone 设备上启动相机用户界面，以拍摄照片并自动将图像保存到 Windows Phone 设备上的“本机照片”。如果你不希望将图像保存到“本机照片”，请使用 `Microsoft.Devices` 命名空间中的 [PhotoCamera][] 类。
+在本节中，你将更新来自[移动服务入门][移动服务入门]教程的项目，以便拍摄照片并将它们上载到 Azure Blob 存储。为了捕获图像，本教程使用来自 `Microsoft.Phone.Tasks` 命名空间的 [CameraCaptureTask][CameraCaptureTask]。此类可在 Windows Phone 设备上启动相机用户界面，以拍摄照片并自动将图像保存到 Windows Phone 设备上的“本机照片”。如果你不希望将图像保存到“本机照片”，请使用 `Microsoft.Devices` 命名空间中的 [PhotoCamera][PhotoCamera] 类。
 
 1.  在 Visual Studio 的解决方案资源管理器中，在项目下展开“属性”。 然后打开 WMAppManifest.xml 文件，并通过在“功能” 选项卡上单击“ID\_CAP\_ISV\_CAMERA”来启用相机。 关闭文件以保存你的更改。
 
@@ -43,7 +43,7 @@
         </phone:LongListSelector>
         </Grid>
 
-    这样可以添加一个新按钮，以启动 [CameraCaptureTask][] 并将图像添加到 "ItemTemplate"，同时将其绑定源设置为 Blob 存储服务中已上载图像的 URI。
+    这样可以添加一个新按钮，以启动 [CameraCaptureTask][CameraCaptureTask] 并将图像添加到 "ItemTemplate"，同时将其绑定源设置为 Blob 存储服务中已上载图像的 URI。
 
 3.  打开 MainPage.xaml.cs 项目文件并添加以下 "using" 语句：
 
@@ -66,7 +66,7 @@
         [JsonProperty(PropertyName = "imageUri")]
         public string ImageUri { get; set; } 
 
-5.  在 MainPage.xaml.cs 项目文件中，更新 MainPage 类。添加以下代码，以声明 [CameraCaptureTask][] 以及将引用已捕获图像的流对象：
+5.  在 MainPage.xaml.cs 项目文件中，更新 MainPage 类。添加以下代码，以声明 [CameraCaptureTask][CameraCaptureTask] 以及将引用已捕获图像的流对象：
 
         // Using the CameraCaptureTask to allow the user to capture a todo item image //
         CameraCaptureTask cameraCaptureTask;
@@ -177,8 +177,8 @@
 > [WACOM.NOTE] 当新项的 `imageUri` 属性绑定到 "Image" 控件时，图像将从 Blob 存储服务自动下载。
 
   [移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-phone-get-started
-  [CameraCaptureTask]: http://msdn.microsoft.com/en-us/library/windowsphone/develop/microsoft.phone.tasks.cameracapturetask(v=vs.105).aspx
-  [PhotoCamera]: http://msdn.microsoft.com/en-us/library/windowsphone/develop/microsoft.devices.photocamera(v=vs.105).aspx
+  [CameraCaptureTask]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/microsoft.phone.tasks.cameracapturetask(v=vs.105).aspx
+  [PhotoCamera]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/microsoft.devices.photocamera(v=vs.105).aspx
   [0]: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-WMAppmanifest-wp8.png
   [1]: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-wp8.png
   [2]: ./media/mobile-services-windows-phone-upload-to-blob-storage/mobile-upload-blob-app-view-camera-wp8.png

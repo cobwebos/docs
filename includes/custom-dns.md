@@ -123,15 +123,9 @@ This example demonstrates creating an A record for the root domain. If you wish 
 ## Next steps
 
 -   [How to Manage Cloud Services](../cloud-services-how-to-manage/)
--   [How to Map CDN Content to a Custom Domain][]
+-   [How to Map CDN Content to a Custom Domain][How to Map CDN Content to a Custom Domain]
 
-  [Expose Your Application on a Custom Domain]: #access-app
-  [Add a CNAME Record for Your Custom Domain]: #add-cname
-  [Expose Your Data on a Custom Domain]: #access-data
-  [VIP swaps]: http://msdn.microsoft.com/en-us/library/ee517253.aspx
-  [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
   [Azure Management Portal]: https://manage.windowsazure.cn
-  [Validate Custom Domain dialog box]: http://i.msdn.microsoft.com/dynimg/IC544437.jpg
   [How to Map CDN Content to a Custom Domain]: http://msdn.microsoft.com/zh-cn/library/windowsazure/gg680307.aspx
   [vip]: ./media/custom-dns/csvip.png
   [csurl]: ./media/custom-dns/csurl.png

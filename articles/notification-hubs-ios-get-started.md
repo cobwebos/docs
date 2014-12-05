@@ -309,9 +309,9 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 
 在这个简单的示例中，你已将通知广播到所有 iOS 设备。为了针对特定用户广播，请参考教程[使用通知中心将通知推送到用户][使用通知中心将通知推送到用户]，如果你要按兴趣细分用户组，请参考[使用通知中心发送突发新闻][使用通知中心发送突发新闻]。在[通知中心指南][通知中心指南]中了解通知中心的详细使用信息。
 
-<!-- Anchors. -->  
+  
 
-<!-- URLs. -->
+
 
   [生成证书签名请求]: #certificates
   [注册应用程序和启用推送通知]: #register
@@ -321,9 +321,8 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
   [从后端发送通知]: #send
   [移动服务 iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
   [XCode 4.5]: https://go.microsoft.com/fwLink/p/?LinkID=266532
-  [Azure 免费试用]: http://www.windowsazure.cn/zh-cn/pricing/free-trial/
 
-<!-- Images. -->
+
   [0]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step5.png
   [1]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step6.png
   [2]: ./media/notification-hubs-ios-get-started/mobile-services-ios-push-step7.png

@@ -1,4 +1,4 @@
-1.  在 [Azure 管理门户][]中，单击新建的移动服务或者其云图标选项卡，以转到概述页。
+1.  在 [Azure 管理门户][Azure 管理门户]中，单击新建的移动服务或者其云图标选项卡，以转到概述页。
 
     ![][0]
 
@@ -6,7 +6,7 @@
 
     ![][1]
 
-3.  如果你尚未安装 Visual Studio，请下载和安装 [Visual Studio Professional 2013][] 或更高版本。
+3.  如果你尚未安装 Visual Studio，请下载和安装 [Visual Studio Professional 2013][Visual Studio Professional 2013] 或更高版本。
 
 4.  在“下载你的服务并将其发布到云”下面单击“下载” 。
 

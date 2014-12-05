@@ -286,10 +286,6 @@ New Relic 网站代理作为 NuGet 程序包分发，可使用 Visual Studio 或
   [standard New Relic UI]: https://newrelic.com/docs/site/the-new-relic-ui#functions
   [dashboard drill-down]: https://newrelic.com/docs/site/the-new-relic-ui#drilldown
   [Apdex]: https://newrelic.com/docs/site/apdex
-  [Geography]: https://newrelic.com/docs/site/geography
-  [Web Transactions]: https://docs.newrelic.com/docs/applications-menu/transactions-dashboard
-  [Key Transactions]: https://newrelic.com/docs/site/key-transactions
-  [Errors]: https://newrelic.com/docs/site/errors
   [1]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/NewRelic_app_browser.png
   [安装 Azure 网站的 .NET 代理]: https://newrelic.com/docs/dotnet/azure-web-sites-beta#manual_install
   [New Relic 用户界面]: https://newrelic.com/docs/site/the-new-relic-ui

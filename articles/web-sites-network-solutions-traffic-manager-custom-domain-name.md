@@ -62,23 +62,12 @@
 
 [WACOM.INCLUDE [modes](../includes/custom-dns-web-site-enable-on-traffic-manager.md)]
 
-  [自定义域]: /zh-cn/documentation/articles/web-sites-custom-domain-name "自定义域"
-  [GoDaddy]: /zh-cn/documentation/articles/web-sites-godaddy-custom-domain-name "GoDaddy"
   [Network Solutions]: /zh-cn/documentation/articles/web-sites-network-solutions-custom-domain-name "Network Solutions"
-  [Register.com]: /zh-cn/documentation/articles/web-sites-registerdotcom-custom-domain-name "Register.com"
-  [Enom]: /zh-cn/documentation/articles/web-sites-enom-custom-domain-name "Enom"
-  [Moniker]: /zh-cn/documentation/articles/web-sites-moniker-custom-domain-name "Moniker"
-  [Dotster]: /zh-cn/documentation/articles/web-sites-dotster-custom-domain-name "Dotster"
-  [DomainDiscover]: /zh-cn/documentation/articles/web-sites-domaindiscover-custom-domain-name "DomainDiscover"
-  [Directnic]: /zh-cn/documentation/articles/web-sites-directnic-custom-domain-name "Directnic"
-  [网站]: /zh-cn/documentation/articles/web-sites-network-solutions-custom-domain-name/ "网站"
-  [使用流量管理器的网站]: /zh-cn/documentation/articles/web-sites-network-solutions-traffic-manager-custom-domain-name/ "使用流量管理器的网站"
   [1]: https://networksolutions.com
   [了解 DNS 记录]: #understanding-records
   [将网站配置为标准模式]: #bkmk_configsharedmode
   [为自定义域添加 DNS 记录]: #bkmk_configurecname
   [为网站启用流量管理器]: #enabledomain
-  [understandingdns]: ../includes/custom-dns-web-site-understanding-dns-traffic-manager.md
   [编辑 DNS 页面]: ./media/web-sites-custom-domain-name/ns-editdns.png
   [突出显示了编辑高级 DNS 记录的域名页]: ./media/web-sites-custom-domain-name/ns-editadvanced.png
   [更新高级 DNS 页面]: ./media/web-sites-custom-domain-name/ns-updatecnameadvanced.png

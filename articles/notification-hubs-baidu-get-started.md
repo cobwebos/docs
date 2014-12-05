@@ -1,6 +1,6 @@
 <properties urlDisplayName="Get Started" pageTitle="Get Started with Azure Notification Hubs" metaKeywords="" description="Learn how to use Azure Notification Hubs to push notifications." metaCanonical="" services="notification-hubs" documentationCenter="Mobile" title="Get started with Notification Hubs" authors="piyushjo" solutions="" manager="dwrede" editor="" />
 
-<tags ms.service ms.devlang ms.topic="article" ms.tgt_pltfrm ms.workload ms.date="mm/dd/yyyy" ms.author="piyushjo"></tags>
+<tags ms.service="" ms.devlang="" ms.topic="article" ms.tgt_pltfrm="" ms.workload="" ms.date="mm/dd/yyyy" ms.author="piyushjo" />
 
 # 通知中心入门
 
@@ -10,26 +10,26 @@
 
 本教程需要的内容如下：
 
--   Android SDK（假设你要使用 Eclipse），你可以从[此处][]下载该 SDK
--   [移动服务 Android SDK][]
--   [百度推送 Android SDK][]
+-   Android SDK（假设你要使用 Eclipse），你可以从[此处][此处]下载该 SDK
+-   [移动服务 Android SDK][移动服务 Android SDK]
+-   [百度推送 Android SDK][百度推送 Android SDK]
 
-> [WACOM.NOTE] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][]。
+> [WACOM.NOTE] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][Azure 免费试用]。
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
--   [创建百度帐户][]
--   [注册为百度开发者][]
--   [创建百度云推送项目][]
--   [配置通知中心][]
--   [将你的应用程序连接到通知中心][]
--   [向应用程序发送通知][]
+-   [创建百度帐户][创建百度帐户]
+-   [注册为百度开发者][注册为百度开发者]
+-   [创建百度云推送项目][创建百度云推送项目]
+-   [配置通知中心][配置通知中心]
+-   [将你的应用程序连接到通知中心][将你的应用程序连接到通知中心]
+-   [向应用程序发送通知][向应用程序发送通知]
 
 ## <span id="createBaiduAccount"></span></a>创建百度帐户
 
-若要使用百度，你必须创建帐户。如果你已有帐户，请使用百度帐户登录到[百度门户][]，并跳到下一个步骤；否则，请参阅下面有关如何创建新百度帐户的说明。
+若要使用百度，你必须创建帐户。如果你已有帐户，请使用百度帐户登录到[百度门户][百度门户]，并跳到下一个步骤；否则，请参阅下面有关如何创建新百度帐户的说明。
 
-1.  转到[百度门户][]并单击“登录”链接。单击“立即注册”以启动新帐户注册过程。
+1.  转到[百度门户][百度门户]并单击“登录”链接。单击“立即注册”以启动新帐户注册过程。
 
     ![][0]
 
@@ -45,11 +45,11 @@
 
     ![][3]
 
-当你的百度帐户激活后，请使用该帐户登录到[百度门户][]。
+当你的百度帐户激活后，请使用该帐户登录到[百度门户][百度门户]。
 
 ## <span id="registerBaiduDeveloper"></span></a>注册为百度开发者
 
-1.  登录到[百度门户][]后，请单击“更多\>\>”。
+1.  登录到[百度门户][百度门户]后，请单击“更多\>\>”。
 
     ![][4]
 
@@ -83,7 +83,7 @@
 
 在创建百度云推送项目时，你将收到应用程序 ID、API 密钥和密钥。
 
-1.  登录到[百度门户][]后，请单击“更多\>\>”。
+1.  登录到[百度门户][百度门户]后，请单击“更多\>\>”。
 
     ![][4]
 
@@ -131,7 +131,7 @@
 
 ## <span id="configure-hub"></span></a>配置通知中心
 
-1.  登录到 [Azure 管理门户][]，然后单击屏幕底部的“+新建”。
+1.  登录到 [Azure 管理门户][Azure 管理门户]，然后单击屏幕底部的“+新建”。
 
 2.  依次单击“应用程序服务”、“Service Bus”、“通知中心”和“快速创建”。
 
@@ -177,9 +177,9 @@
 
     ![][28]
 
-5.  下载并解压缩[移动服务 Android SDK][]，打开 **notificationhubs** 文件夹，将 **notification-hubs-x.y.jar** 文件复制到 Eclipse 项目的 *libs* 文件夹，并刷新 *libs* 文件夹。
+5.  下载并解压缩[移动服务 Android SDK][移动服务 Android SDK]，打开 **notificationhubs** 文件夹，将 **notification-hubs-x.y.jar** 文件复制到 Eclipse 项目的 *libs* 文件夹，并刷新 *libs* 文件夹。
 
-6.  下载并解压缩[百度推送 Android SDK][]，打开 **libs** 文件夹，将 *pushservice-x.y.z* jar 文件以及 *armeabi* 和 *mips* 文件夹复制到 Android 应用程序的 **libs** 文件夹。
+6.  下载并解压缩[百度推送 Android SDK][百度推送 Android SDK]，打开 **libs** 文件夹，将 *pushservice-x.y.z* jar 文件以及 *armeabi* 和 *mips* 文件夹复制到 Android 应用程序的 **libs** 文件夹。
 
     ![][29]
 
@@ -389,13 +389,13 @@ import com.baidu.android.pushservice.PushConstants;
 
 ## <span id="send"></span></a>向应用程序发送通知
 
-你可以使用通知中心通过 [REST 接口][]从任意后端发送通知。在本教程中，我们使用 .NET 控制台应用程序来对此进行说明。
+你可以使用通知中心通过 [REST 接口][REST 接口]从任意后端发送通知。在本教程中，我们使用 .NET 控制台应用程序来对此进行说明。
 
 1.  创建新的 Visual C# 控制台应用程序：
 
     ![][32]
 
-2.  通过使用 [WindowsAzure.ServiceBus NuGet 包][]添加对 Azure Service Bus SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入以下内容并按 Enter：
+2.  通过使用 [WindowsAzure.ServiceBus NuGet 包][WindowsAzure.ServiceBus NuGet 包]添加对 Azure Service Bus SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入以下内容并按 Enter：
 
         Install-Package WindowsAzure.ServiceBus
 
@@ -431,21 +431,13 @@ import com.baidu.android.pushservice.PushConstants;
 
 4.  若要在使用 .Net 控制台应用程序时发送测试通知，请在 Visual Studio 中直接按 F5 键以运行此应用程序，此应用程序将发送一个通知，该通知将显示在你的设备或模拟器的顶部通知区域中。
 
-<!-- Images. --> 
-<!-- URLs. -->
+ 
 
-  [Windows 应用商店 C#]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/ "Windows 应用商店 C#"
-  [Windows Phone]: /zh-cn/documentation/articles/notification-hubs-windows-phone-get-started/ "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-get-started/ "iOS"
-  [Android]: /zh-cn/documentation/articles/notification-hubs-android-get-started/ "Android"
-  [Kindle]: /zh-cn/documentation/articles/notification-hubs-kindle-get-started/ "Kindle"
-  [百度]: /zh-cn/documentation/articles/notification-hubs-baidu-get-started/ "百度"
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/ "Xamarin.iOS"
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-android-get-started/ "Xamarin.Android"
+
   [此处]: http://go.microsoft.com/fwlink/?LinkId=389797
   [移动服务 Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
   [百度推送 Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
-  [Azure 免费试用]: http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F
+  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=A0E0E5C02&returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F
   [创建百度帐户]: #createBaiduAccount
   [注册为百度开发者]: #registerBaiduDeveloper
   [创建百度云推送项目]: #createBaiduPushProject
@@ -486,6 +478,6 @@ import com.baidu.android.pushservice.PushConstants;
   [29]: ./media/notification-hubs-baidu-get-started/EclipseBaiduReferences.png
   [30]: ./media/notification-hubs-baidu-get-started/EclipseNewClass.png
   [31]: ./media/notification-hubs-baidu-get-started/EclipseConfigSettingsClass.png
-  [REST 接口]: http://msdn.microsoft.com/en-us/library/windowsazure/dn223264.aspx
+  [REST 接口]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn223264.aspx
   [32]: ./media/notification-hubs-baidu-get-started/ConsoleProject.png
   [WindowsAzure.ServiceBus NuGet 包]: http://nuget.org/packages/WindowsAzure.ServiceBus/

@@ -143,7 +143,6 @@
 
 -   [WebMatrix 网站][WebMatrix 网站]
 
-  [create-account-and-websites-note]: ../includes/create-account-and-websites-note.md
   [添加帐户]: ./media/web-sites-dotnet-using-webmatrix/webmatrix-add-account.png
   [登录 Azure]: ./media/web-sites-dotnet-using-webmatrix/webmatrix-sign-in.png
   [从模板库创建新网站]: ./media/web-sites-dotnet-using-webmatrix/webmatrix-site-from-template.png

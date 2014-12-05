@@ -112,22 +112,11 @@
     <p>你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 ToDoActivity.java 文件中。</p>
 	</div>
 
-  [Windows 应用商店 c#]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started "Windows 应用商店 C#"
-  [Windows 应用商店 JavaScript]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started "Windows 应用商店 JavaScript"
-  [Windows Phone]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started "Windows Phone"
-  [iOS]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started "iOS"
-  [Android]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started "Android"
-  [.NET 后端]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-android-get-started/ ".NET 后端"
-  [JavaScript 后端]: /zh-cn/documentation/articles/mobile-services-android-get-started/ "JavaScript 后端"
   [JavaScript 后端版本]: /zh-cn/documentation/articles/mobile-services-android-get-started/
   [0]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-completed-android.png
   [Android 开发人员工具]: https://go.microsoft.com/fwLink/p/?LinkID=280125
-  [Azure 免费试用]: http://www.windowsazure.com/zh-cn/pricing/free-trial/?WT.mc_id=AE564AB28
-  [mobile-services-dotnet-backend-create-new-service]: ../includes/mobile-services-dotnet-backend-create-new-service.md
   [1]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-vs.png
   [Visual Studio Professional 2013]: https://go.microsoft.com/fwLink/p/?LinkID=391934
-  [mobile-services-dotnet-backend-test-local-service]: ../includes/mobile-services-dotnet-backend-test-local-service.md
-  [mobile-services-dotnet-backend-publish-service]: ../includes/mobile-services-dotnet-backend-publish-service.md
   [管理门户]: https://manage.windowsazure.cn/
   [2]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-quickstart-steps-android.png
   [3]: ./media/mobile-services-dotnet-backend-android-get-started/mobile-services-import-android-workspace.png

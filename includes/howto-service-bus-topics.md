@@ -26,7 +26,7 @@ Service Bus 主题和订阅支持发布/订阅消息通信模型。在使用主�
 
 创建服务命名空间：
 
-1. 登录到 [Windows Azure 管理门户][]。
+1. 登录到 [Windows Azure 管理门户][Windows Azure 管理门户]。
 
 2. 在该管理门户的左侧导航窗格中，单击 Service Bus。
 

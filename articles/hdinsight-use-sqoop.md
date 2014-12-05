@@ -8,30 +8,30 @@
 
 ## 本文内容
 
--   [什么是 Sqoop？][]
--   [先决条件][]
--   [了解教程方案][]
--   [准备教程][]
--   [使用 PowerShell 来运行 Sqoop 导出][]
--   [使用 HDInsight SDK 来运行 Sqoop 导出][]
--   [使用 PowerShell 来运行 Sqoop 导入][]
--   [后续步骤][]
+-   [什么是 Sqoop？][什么是 Sqoop？]
+-   [先决条件][先决条件]
+-   [了解教程方案][了解教程方案]
+-   [准备教程][准备教程]
+-   [使用 PowerShell 来运行 Sqoop 导出][使用 PowerShell 来运行 Sqoop 导出]
+-   [使用 HDInsight SDK 来运行 Sqoop 导出][使用 HDInsight SDK 来运行 Sqoop 导出]
+-   [使用 PowerShell 来运行 Sqoop 导入][使用 PowerShell 来运行 Sqoop 导入]
+-   [后续步骤][后续步骤]
 
 ## 什么是 Sqoop？
 
 虽然自然而然地选用 Hadoop 处理如日志和文件等非结构化和半结构化的数据，但可能还需要处理存储在关系数据库中的结构化数据。
 
-[Sqoop][] 是一种为在 Hadoop 群集和关系数据库之间传输数据而设计的工具。可以使用此工具将数据从关系数据库管理系统 (RDBMS)（如 SQL、MySQL 或 Oracle）中导入到 Hadoop 分布式文件系统 (HDFS)，在 Hadoop 中使用 MapReduce 或 Hive 转换数据，然后回过来将数据导出到 RDBMS。在本教程中，你要为你的关系数据库使用 SQL Database。
+[Sqoop][Sqoop] 是一种为在 Hadoop 群集和关系数据库之间传输数据而设计的工具。可以使用此工具将数据从关系数据库管理系统 (RDBMS)（如 SQL、MySQL 或 Oracle）中导入到 Hadoop 分布式文件系统 (HDFS)，在 Hadoop 中使用 MapReduce 或 Hive 转换数据，然后回过来将数据导出到 RDBMS。在本教程中，你要为你的关系数据库使用 SQL Database。
 
-有关 HDInsight 群集上支持的 Sqoop 版本，请参阅 [HDInsight 提供的群集版本有哪些新功能？][]。
+有关 HDInsight 群集上支持的 Sqoop 版本，请参阅 [HDInsight 提供的群集版本有哪些新功能？][HDInsight 提供的群集版本有哪些新功能？]。
 
 ## 先决条件
 
 在开始阅读本教程前，你必须具有：
 
--   已安装并已配置 Azure PowerShell 的**工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为“RemoteSigned”**。请参阅[运行 Windows PowerShell 脚本][]。
+-   已安装并已配置 Azure PowerShell 的**工作站**。有关说明，请参阅[安装和配置 Azure PowerShell][安装和配置 Azure PowerShell]。若要执行 PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为“RemoteSigned”**。请参阅[运行 Windows PowerShell 脚本][运行 Windows PowerShell 脚本]。
 
--   **一个 Azure HDInsight 群集**。有关群集设置的说明，请参阅[开始使用 HDInsight][] 或[设置 HDInsight 群集][]。你将需要以下数据才能完成本教程：
+-   **一个 Azure HDInsight 群集**。有关群集设置的说明，请参阅[开始使用 HDInsight][开始使用 HDInsight] 或[设置 HDInsight 群集][设置 HDInsight 群集]。你将需要以下数据才能完成本教程：
 
 	<table border="1">
 	<tr><th>群集属性</th><th>PowerShell 变量名</th><th>值</th><th>说明</th></tr>
@@ -40,7 +40,7 @@
 	<tr><td>Azure Blob 容器名称</td><td>$containerName</td><td></td><td>在此示例中，使用用于默认 HDInsight 群集文件系统的 Azure Blob 存储容器。默认情况下，该容器与 HDInsight 群集同名。</td></tr>
 	</table>
 
--   **Azure SQL Database**。你必须为 SQL Database 服务器配置防火墙规则以允许从你的工作站进行访问。有关创建 SQL 数据库和配置防火墙的说明，请参阅[使用 Azure SQL 数据库入门][]。本文提供了用于创建本教程所需的 SQL 数据库表的 PowerShell 脚本。
+-   **Azure SQL Database**。你必须为 SQL Database 服务器配置防火墙规则以允许从你的工作站进行访问。有关创建 SQL 数据库和配置防火墙的说明，请参阅[使用 Azure SQL 数据库入门][使用 Azure SQL 数据库入门]。本文提供了用于创建本教程所需的 SQL 数据库表的 PowerShell 脚本。
 
 	<table border="1">
 	<tr><th>SQL 数据库属性</th><th>PowerShell 变量名</th><th>值</th><th>说明</th></tr>
@@ -50,7 +50,7 @@
 	<tr><td>SQL 数据库名</td><td>$sqlDatabaseName</td><td></td><td>Sqoop 要将数据导出到其中或从中导入数据的 Azure SQL Database。 </td></tr>
 	</table>
 
-    > [WACOM.NOTE] 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。如果禁用了此防火墙设置，则必须从 Azure 管理门户启用它。有关创建 SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL Database][]。
+    > [WACOM.NOTE] 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。如果禁用了此防火墙设置，则必须从 Azure 管理门户启用它。有关创建 SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL Database][创建和配置 SQL Database]。
 
 > [WACOM.NOTE] 将值填入表。这将有助于学习本教程。
 
@@ -88,16 +88,16 @@ HDInsight 群集带有某些示例数据。你将会使用以下两个：
 
 ### 了解 HDInsight 存储
 
-HDInsight 将 Azure Blob 存储用于数据存储。它称为 *WASB* 或 *Azure 存储空间 - Blob*。WASB 是 Microsoft 在 Azure Blob 存储上的 HDFS 实现。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
+HDInsight 将 Azure Blob 存储用于数据存储。它称为 *WASB* 或 *Azure 存储空间 - Blob*。WASB 是 Microsoft 在 Azure Blob 存储上的 HDFS 实现。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][将 Azure Blob 存储与 HDInsight 配合使用]。
 
-设置 HDInsight 群集时，请将 Azure 存储帐户和该帐户上的特定 Blob 存储容器指定为默认文件系统，就像在 HDFS 中一样。除了此存储帐户外，在设置过程中，你还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。有关添加其他存储帐户的说明，请参阅[设置 HDInsight 群集][]。为了简化本教程中使用的 PowerShell 脚本，所有文件都存储在默认文件系统容器（位于 */tutorials/usesqoop*）中。默认情况下，此容器与 HDInsight 群集同名。
+设置 HDInsight 群集时，请将 Azure 存储帐户和该帐户上的特定 Blob 存储容器指定为默认文件系统，就像在 HDFS 中一样。除了此存储帐户外，在设置过程中，你还可以从同一 Azure 订阅或不同 Azure 订阅添加其他存储帐户。有关添加其他存储帐户的说明，请参阅[设置 HDInsight 群集][设置 HDInsight 群集]。为了简化本教程中使用的 PowerShell 脚本，所有文件都存储在默认文件系统容器（位于 */tutorials/usesqoop*）中。默认情况下，此容器与 HDInsight 群集同名。
 WASB 语法是：
 
     wasb[s]://<ContainerName>@<StorageAccountName>.blob.core.chinacloudapi.cn/<路径>/<文件名>
 
 > [WACOM.NOTE] HDInsight 群集 3.0 版只支持 *wasb://* 语法。较早的 *asv://* 语法在 HDInsight 2.1 和 1.6 群集中受支持，但在 HDInsight 3.0 群集中不受支持，以后的版本将不会支持该语法。
 
-> [WACOM.NOTE] WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][]。
+> [WACOM.NOTE] WASB 路径是虚拟路径。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][将 Azure Blob 存储与 HDInsight 配合使用]。
 
 存储在默认文件系统容器中的文件可以使用以下任一 URI 从 HDInsight 进行访问（以 sample.log 为例）：
 
@@ -115,7 +115,7 @@ WASB 语法是：
 
 **创建 SQL 数据库表**
 
-1.  打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell\_ISE**，然后单击 **Windows PowerShell ISE**。请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][]）。
+1.  打开 Windows PowerShell ISE（在 Windows 8“开始”屏幕上，键入 **PowerShell\_ISE**，然后单击 **Windows PowerShell ISE**。请参阅[在 Windows 8 和 Windows 上启动 Windows PowerShell][在 Windows 8 和 Windows 上启动 Windows PowerShell]）。
 
 2.  将以下脚本复制到脚本窗格，然后设置前四个变量：
 
@@ -127,7 +127,7 @@ WASB 语法是：
 
         $sqlDatabaseConnectionString = "Data Source=$sqlDatabaseServer.database.chinacloudapi.cn;Initial Catalog=$sqlDatabaseName;User ID=$sqlDatabaseLogin;Password=$sqlDatabasePassword;Encrypt=true;Trusted_Connection=false;"
 
-    有关这些变量的详细说明，请参阅本教程中的[先决条件][]一节。
+    有关这些变量的详细说明，请参阅本教程中的[先决条件][先决条件]一节。
 
 3.  将以下脚本追加到脚本窗格中。这些是定义两个表及其群集索引的 SQL 语句。SQL Database 要求群集索引。
 
@@ -185,7 +185,7 @@ WASB 语法是：
         Write-Host "Done" -ForegroundColor Green
 
 5.  单击“运行脚本” 或按 **F5** 键以运行该脚本。
-6.  使用 [Azure 管理门户][]来检查表和群集索引。
+6.  使用 [Azure 管理门户][Azure 管理门户]来检查表和群集索引。
 
 在本教程中，你要将一个 log4j log 文件（带分隔符的文件）和一个 Hive 表导出到 SQL Database。带分隔符的文件为 */example/data/sample.log*。在本教程前面，你看到了几个 log4j 日志的示例。在日志文件中，有一些空行和一些类似下面这样的其他行：
 
@@ -215,7 +215,7 @@ WASB 语法是：
         $sourceBlobName = "example/data/sample.log"
         $destBlobName = "tutorials/usesqoop/data/sample.log"
 
-    有关这些变量的详细说明，请参阅本教程中的[先决条件][]一节。
+    有关这些变量的详细说明，请参阅本教程中的[先决条件][先决条件]一节。
 
 4.  将以下脚本追加到脚本窗格中：
 
@@ -304,7 +304,7 @@ WASB 语法是：
 
         $exportDir_log4j = "/tutorials/usesqoop/data"
 
-    有关这些变量的详细说明，请参阅本教程中的[先决条件][]一节。
+    有关这些变量的详细说明，请参阅本教程中的[先决条件][先决条件]一节。
 
     请注意，\$exportDir\_log4j 没有指定 sample.log 文件的文件名。Sqoop 将从该文件夹下的所有文件中导出数据。
 
@@ -323,7 +323,7 @@ WASB 语法是：
     请注意，字段分隔符为 **\\0x20**，它是空格。该分隔符在 sample.log 文件预处理 PowerShell 脚本中定义。若要了解有关 **-m 1** 的信息，请参阅 [Sqoop 用户指南][Sqoop]。
 
 5.  单击“运行脚本” 或按 **F5** 键以运行该脚本。
-6.  使用 [Azure 管理门户][]检查导出的数据。
+6.  使用 [Azure 管理门户][Azure 管理门户]检查导出的数据。
 
 **导出 hivesampletable Hive 表**
 
@@ -353,7 +353,7 @@ WASB 语法是：
 
         $exportDir_mobile = "/hive/warehouse/hivesampletable"
 
-    有关这些变量的详细说明，请参阅本教程中的[先决条件][]一节。
+    有关这些变量的详细说明，请参阅本教程中的[先决条件][先决条件]一节。
 
 4.  将以下脚本追加到脚本窗格中：
 
@@ -369,11 +369,11 @@ WASB 语法是：
         Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $sqoopJob.JobId -StandardOutput
 
 5.  单击“运行脚本” 或按 **F5** 键以运行该脚本。
-6.  使用 [Azure 管理门户][]检查导出的数据。
+6.  使用 [Azure 管理门户][Azure 管理门户]检查导出的数据。
 
 ## 使用 HDInsight .NET SDK 来运行 Sqoop 导出
 
-下面是一个使用 HDInsight .NET SDK 运行 Sqoop 导出的 C\# 示例。有关使用 HDInsight .NET SDK 的常规信息，请参阅[以编程方式提交 Hadoop 作业][]。
+下面是一个使用 HDInsight .NET SDK 运行 Sqoop 导出的 C\# 示例。有关使用 HDInsight .NET SDK 的常规信息，请参阅[以编程方式提交 Hadoop 作业][以编程方式提交 Hadoop 作业]。
 
     using System;
     using System.Collections.Generic;
@@ -490,7 +490,7 @@ WASB 语法是：
         $tableName_mobile = "mobiledata"
         $targetDir_mobile = "/tutorials/usesqoop/importeddata/"
 
-    有关这些变量的详细说明，请参阅本教程中的[先决条件][]一节。
+    有关这些变量的详细说明，请参阅本教程中的[先决条件][先决条件]一节。
 
 4.  将以下脚本追加到脚本窗格中：
 
@@ -511,9 +511,9 @@ WASB 语法是：
 
 现在你已经学习了如何使用 Sqoop。若要了解更多信息，请参阅以下文章：
 
--   [将 Oozie 与 HDInsight 配合使用][]：在 Oozie 工作流中使用 Sqoop 操作。
--   [使用 HDInsight 分析航班延误数据][]：使用 Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 SQL 数据库。
--   [将数据上载到 HDInsight][]：了解将数据上载到 HDInsight/Azure Blob 存储的其他方法。
+-   [将 Oozie 与 HDInsight 配合使用][将 Oozie 与 HDInsight 配合使用]：在 Oozie 工作流中使用 Sqoop 操作。
+-   [使用 HDInsight 分析航班延误数据][使用 HDInsight 分析航班延误数据]：使用 Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 SQL 数据库。
+-   [将数据上载到 HDInsight][将数据上载到 HDInsight]：了解将数据上载到 HDInsight/Azure Blob 存储的其他方法。
 
   [什么是 Sqoop？]: #whatissqoop
   [先决条件]: #prerequisites

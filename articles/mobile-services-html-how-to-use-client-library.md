@@ -586,11 +586,6 @@
 -   [使用脚本为用户授权][使用脚本为用户授权]
     了解如何采用移动服务基于已进行身份验证的用户提供的用户 ID 值，并使用该值来筛选移动服务返回的数据。
 
-  [.NET Framework]: /zh-cn/develop/mobile/how-to-guides/work-with-net-client-library/ ".NET Framework"
-  [HTML/JavaScript]: /zh-cn/develop/mobile/how-to-guides/work-with-html-js-client/ "HTML/JavaScript"
-  [iOS]: /zh-cn/develop/mobile/how-to-guides/work-with-ios-client-library/ "iOS"
-  [Android]: /zh-cn/develop/mobile/how-to-guides/work-with-android-client-library/ "Android"
-  [Xamarin]: /zh-cn/develop/mobile/how-to-guides/work-with-xamarin-client-library/ "Xamarin"
   [Windows 应用商店 JavaScript 快速入门]: http://www.windowsazure.com/zh-cn/develop/mobile/tutorials/get-started
   [HTML 快速入门]: http://www.windowsazure.com/zh-cn/develop/mobile/tutorials/get-started-html
   [什么是移动服务]: #what-is
@@ -612,7 +607,6 @@
   [如何：自定义请求标头]: #customizing
   [如何：使用跨域资源共享]: #hostnames
   [后续步骤]: #nextsteps
-  [mobile-services-concepts]: ../includes/mobile-services-concepts.md
   [Windows 应用商店 JavaScript 中的数据处理入门]: http://www.windowsazure.com/zh-cn/develop/mobile/tutorials/get-started-with-data-js
   [HTML/JavaScript 中的数据处理入门]: http://www.windowsazure.com/zh-cn/develop/mobile/tutorials/get-started-with-data-html/
   [ASCII 控制代码 C0 和 C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
@@ -622,8 +616,6 @@
   [身份验证入门]: /zh-cn/develop/mobile/tutorials/get-started-with-users-html
   [Windows 应用商店]: /zh-cn/develop/mobile/tutorials/get-started-with-users-js
   [login]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554236.aspx
-  [注册 Windows 应用商店应用程序包以进行 Microsoft 身份验证]: /zh-cn/develop/mobile/how-to-guides/register-windows-store-app-package/
-  [1]: http://go.microsoft.com/fwlink/p/?LinkId=322050
   [使用单一登录对应用程序进行身份验证]: /zh-cn/develop/mobile/tutorials/single-sign-on-windows-8-dotnet/
   [sessionStorage]: http://msdn.microsoft.com/zh-cn/library/cc197062(v=vs.85).aspx
   [done]: http://msdn.microsoft.com/zh-cn/library/windows/apps/hh701079.aspx
