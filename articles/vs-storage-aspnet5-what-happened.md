@@ -3,8 +3,8 @@
 <tags ms.service="storage" ms.workload="web" ms.tgt_pltfrm="vs-what-happened" ms.devlang="na" ms.topic="article" ms.date="10/10/2014" ms.author="ghogen, kempb" />
 
 > [AZURE.SELECTOR]
-> - [入门](/documentation/articles/vs-storage-aspnet-getting-started-blobs/)
-> - [发生了什么情况](/documentation/articles/vs-storage-aspnet-what-happened/)
+> - [入门](/documentation/articles/vs-storage-aspnet5-getting-started-blobs/)
+> - [发生了什么情况](/documentation/articles/vs-storage-aspnet5-what-happened/)
 
 ###<span id="whathappened">我的项目发生了什么情况？</span>
 
@@ -22,7 +22,9 @@ Azure 存储 NuGet 包已添加到你的 Visual Studio 项目。
 - System.Data
 - System.Spatial
 
-#####已添加 Azure 存储的连接字符串 
-在项目的 web.config 文件中，已使用选定存储帐户的连接字符串和密钥创建了一个元素。
+此外，还添加了 NuGet 包 **Microsoft.Framework.ConfigurationModel.Json**。
 
-有关详细信息，请参阅 [ASP.NET](http://www.asp.net)。
+#####已添加 Azure 存储的连接字符串 
+在项目的 config.json 文件中，已使用选定存储帐户的连接字符串和密钥创建了一个元素。
+
+有关详细信息，请参阅 [ASP.NET 5](http://www.asp.net/vnext)。
