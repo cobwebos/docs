@@ -307,3 +307,4 @@ URI 方案提供了使用 *wasb:*前缀的未加密访问和使用 wasbs 的 SSL
   [将 Hive 与 HDInsight 配合使用]: /zh-cn/documentation/articles/hdinsight-use-hive/
   [将 Pig 与 HDInsight 配合使用]: /zh-cn/documentation/articles/hdinsight-use-pig/
   [将 Oozie 与 HDInsight 配合使用]: /zh-cn/documentation/articles/hdinsight-use-oozie/
+  [为 HDInsight 开发 C\# Hadoop 流 MapReduce 程序]: /zh-cn/documentation/articles/hdinsight-hadoop-develop-deploy-streaming-jobs/
