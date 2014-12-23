@@ -118,7 +118,7 @@ Azure SDK 2.3 包括更新后的存储模拟器，而存储客户端库 3.0 则�
   [使用.NET 的移动开发]: #mobile
   [存储客户端库 3.0 和新的存储模拟器]: #storage
   [资源管理器]: #arm
-  [Azure 和 ASP.NET 入门]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-dotnet-get-started/
+  [Azure 和 ASP.NET 入门]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-dotnet-get-started/
   [Azure Tools for Visual Studio 入门]: http://msdn.microsoft.com/zh-cn/library/azure/ff687127.aspx
   [在 Visual Studio 2013 中创建 ASP.NET Web 项目]: http://asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio
   [版本 2014：Visual Studio 2013 Update 2 及更高版本中针对 ASP.NET 和 Web 的新功能（视频）]: http://channel9.msdn.com/Events/Build/2014/3-602

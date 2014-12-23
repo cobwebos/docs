@@ -826,7 +826,7 @@ SQL Server 身份验证登录名用于建立服务器连接。访问 SQL Databas
   [图像 19]: ./media/sql-database-get-started/19ExcelImport_SQLTut.png
   [图像 18]: ./media/sql-database-get-started/18ExcelTable_SQLTut.PNG
   [Microsoft 网站]: http://www.microsoft.com/zh-cn/server-cloud/solutions/business-intelligence/default.aspx#fbid=9ZH5wGSDgf0
-  [使用 SQL Server Management Studio 管理 SQL Database]: http://azure.microsoft.com/zh-cn/documentation/articles/sql-database-manage-azure-ssms/
+  [使用 SQL Server Management Studio 管理 SQL Database]: http://windowsazure.cn/zh-cn/documentation/articles/sql-database-manage-azure-ssms/
   [教程：编写 Transact-SQL 语句]: http://msdn.microsoft.com/zh-cn/library/ms365303.aspx
   [将数据库迁移到 SQL Database]: http://msdn.microsoft.com/zh-cn/library/azure/ee730904.aspx
   [在 SQL Database 中复制数据库]: http://msdn.microsoft.com/zh-cn/library/azure/ff951624.aspx

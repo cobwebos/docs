@@ -774,8 +774,8 @@ Microsoft TechNet 网站包含的[使用失败请求跟踪][使用失败请求�
   [错误处理程序的完整示例]: http://msdn.microsoft.com/zh-cn/library/bb397417.aspx
   [从 Azure 命令行流式传输诊断跟踪日志记录（加上 Glimpse！）]: http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx
   [Glimpse]: http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx
-  [使用 Azure 网站日志记录和诊断 — 与 David Ebbo 协作完成]: http://azure.microsoft.com/zh-cn/documentation/videos/azure-web-site-logging-and-diagnostics/
-  [从 Azure 网站流式传输日志 — 与 David Ebbo 协作完成]: http://azure.microsoft.com/zh-cn/documentation/videos/log-streaming-with-azure-web-sites/
+  [使用 Azure 网站日志记录和诊断 — 与 David Ebbo 协作完成]: http://windowsazure.cn/zh-cn/documentation/videos/azure-web-site-logging-and-diagnostics/
+  [从 Azure 网站流式传输日志 — 与 David Ebbo 协作完成]: http://windowsazure.cn/zh-cn/documentation/videos/log-streaming-with-azure-web-sites/
   [ELMAH]: http://nuget.org/packages/elmah/
   [Scott Hanselman 有关 ELMAH 的博客文章]: http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx
   [LogParser]: http://www.microsoft.com/zh-cn/download/details.aspx?id=24659

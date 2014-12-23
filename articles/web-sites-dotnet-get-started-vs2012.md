@@ -246,5 +246,5 @@
   [在 Visual Studio 中排除 Windows Azure 网站的故障]: /zh-cn/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/
   [使用成员资格、OAuth 和 SQL Database 将安全的 ASP.NET MVC 应用程序部署到 Azure 网站]: /zh-cn/develop/net/tutorials/web-site-with-sql-database/
   [Azure 执行模型]: /zh-cn/develop/net/fundamentals/compute/
-  [Azure 网站、 云服务和虚拟机比较]: http://azure.microsoft.com/zh-cn/documentation/articles/choose-web-site-cloud-service-vm/
+  [Azure 网站、 云服务和虚拟机比较]: http://windowsazure.cn/zh-cn/documentation/articles/choose-web-site-cloud-service-vm/
   [使用存储表、队列和 Blob 的 .NET 多层应用程序]: /zh-cn/develop/net/tutorials/multi-tier-web-site/1-overview/

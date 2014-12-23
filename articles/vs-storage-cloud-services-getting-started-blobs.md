@@ -15,7 +15,7 @@
 
 Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可在世界任何地方通过 HTTP 或 HTTPS 访问这些数据。单个 Blob 可以是任意大小。Blob 可以是图像、音频和视频文件、原始数据以及文档文件等。
 
-若要开始使用，你需要创建一个 Azure 存储帐户，然后在存储中创建一个或多个容器。例如，您可以将存储命名为"Scrapbook"，然后在该存储中创建名为"图像"的容器以存储图片，然后创建名为"音频"的容器以存储音频文件。创建这些容器后，您可以向它们上载单独的 Blob 文件。有关以编程方式操纵 Blob 的详细信息，请参阅[如何通过 .NET 使用 Blob 存储](http://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/ "How to use Blob Storage from .NET")。
+若要开始使用，你需要创建一个 Azure 存储帐户，然后在存储中创建一个或多个容器。例如，您可以将存储命名为"Scrapbook"，然后在该存储中创建名为"图像"的容器以存储图片，然后创建名为"音频"的容器以存储音频文件。创建这些容器后，您可以向它们上载单独的 Blob 文件。有关以编程方式操纵 Blob 的详细信息，请参阅[如何通过 .NET 使用 Blob 存储](http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/ "How to use Blob Storage from .NET")。
 
 在您希望以编程方式访问 Azure 存储的任何 C# 文件中，将以下代码命名空间声明添加到文件的顶部。
 

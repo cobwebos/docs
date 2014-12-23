@@ -114,6 +114,6 @@ Umbraco CMS 是一种功能齐备的开源内容管理系统，可用于创建�
   [Umbraco 文档]: http://our.umbraco.org/documentation
   [Umbraco 视频教程]: https://umbraco.com/help-and-support/video-tutorials.aspx
   [Microsoft Azure 预览版门户概述]: http://azure.microsoft.com/zh-cn/overview/preview-portal/
-  [Microsoft Azure 预览版门户文档]: http://azure.microsoft.com/zh-cn/documentation/preview-portal/
+  [Microsoft Azure 预览版门户文档]: http://windowsazure.cn/zh-cn/documentation/preview-portal/
   [Azure 预览版门户（频道 9）]: http://channel9.msdn.com/Blogs/Windows-Azure/Azure-Preview-portal
-  [Microsoft Azure 网站文档]: http://azure.microsoft.com/zh-cn/documentation/services/web-sites/
+  [Microsoft Azure 网站文档]: http://windowsazure.cn/zh-cn/documentation/services/web-sites/

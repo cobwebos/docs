@@ -239,7 +239,7 @@ BizTalk 服务设置
   [还原备份]: #restore
   [备份的内容]: #budata
   [BizTalk 服务 REST API]: http://go.microsoft.com/fwlink/p/?LinkID=325584
-  [BizTalk 服务：版本图表]: http://azure.microsoft.com/zh-cn/documentation/articles/biztalk-editions-feature-chart/
+  [BizTalk 服务：版本图表]: http://windowsazure.cn/zh-cn/documentation/articles/biztalk-editions-feature-chart/
   [按需备份]: #backupnow
   [计划备份]: #backupschedule
   [0]: ./media/biztalk-backup-restore/AutomaticBU.png

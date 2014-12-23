@@ -207,8 +207,8 @@
     [Azure 网站如何缩放 - 和 Stefan Schackow 一起][Azure 网站如何缩放 - 和 Stefan Schackow 一起]
 
 
-  [什么是 Web 托管计划？]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-web-hosting-plan-overview/
-  [Azure 网站 Web 托管计划深入概述]: http://www.azure.microsoft.com/zh-cn/Documentation/Articles/azure-web-sites-web-hosting-plans-in-depth-overview/
+  [什么是 Web 托管计划？]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-web-hosting-plan-overview/
+  [Azure 网站 Web 托管计划深入概述]: http://www.windowsazure.cn/zh-cn/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/
   [网站定价详细信息]: http://azure.microsoft.com/zh-cn/pricing/details/web-sites/
   [Microsoft Azure 订阅]: http://go.microsoft.com/fwlink/?LinkID=235288
   [缩放到“共享”或“基本”计划模式]: #scalingsharedorbasic

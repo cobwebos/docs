@@ -472,7 +472,7 @@ AzureResourceManager 模块包括帮助您防止错误的 cmdlet。
 
   [Windows Management Framework 3.0]: http://www.microsoft.com/zh-cn/download/details.aspx?id=34595
   [Windows Management Framework 4.0]: http://www.microsoft.com/zh-cn/download/details.aspx?id=40855
-  [如何安装和配置 Windows Azure PowerShell]: http://azure.microsoft.com/zh-cn/documentation/articles/install-configure-powershell/
+  [如何安装和配置 Windows Azure PowerShell]: http://windowsazure.cn/zh-cn/documentation/articles/install-configure-powershell/
   [Windows PowerShell 入门]: http://technet.microsoft.com/zh-cn/library/hh857337.aspx
   [有关 Azure Powershell 模块]: #about
   [创建资源组]: #create
@@ -484,7 +484,7 @@ AzureResourceManager 模块包括帮助您防止错误的 cmdlet。
   [Azure 配置文件 Cmdlet]: http://go.microsoft.com/fwlink/?LinkID=394766
   [Switch-AzureMode]: http://go.microsoft.com/fwlink/?LinkID=394398
   [1]: http://go.microsoft.com/fwlink/?LinkID=394765&clcid=0x409
-  [使用资源组管理 Azure 资源]: http://azure.microsoft.com/zh-cn/documentation/articles/azure-preview-portal-using-resource-groups
+  [使用资源组管理 Azure 资源]: http://windowsazure.cn/zh-cn/documentation/articles/azure-preview-portal-using-resource-groups
   [将 Azure 跨平台命令行界面与资源管理器一起使用]: http://www.windowsazure.com/zh-cn/documentation/articles/xplat-cli-azure-resource-manager/
   [Azure 博客]: http://blogs.msdn.com/windowsazure
   [Windows PowerShell 博客]: http://blogs.msdn.com/powershell

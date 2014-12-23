@@ -151,4 +151,4 @@
   [链接页 1]: ./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkPage1.png
   [链接进度]: ./media/cloud-services-how-to-manage/CloudServices_LinkedResources_LinkProgress.png
   [“删除”菜单]: ./media/cloud-services-how-to-manage/CloudServices_DeleteMenu.png
-  [如何监视云服务]: http://azure.microsoft.com/zh-cn/documentation/articles/cloud-services-how-to-monitor/
+  [如何监视云服务]: http://windowsazure.cn/zh-cn/documentation/articles/cloud-services-how-to-monitor/

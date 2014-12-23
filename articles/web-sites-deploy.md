@@ -221,7 +221,7 @@ Azure 通过提供 REST 管理 API 和几个可使该 API 更易使用的框架�
   [Visual Studio 和 ASP.NET 的 Web 部署概述]: http://msdn.microsoft.com/zh-cn/library/dd394698.aspx
   [使用 Visual Studio 的 ASP.NET Web 部署]: http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/introduction
   [在 Visual Studio 2012 中直接从 Git 存储库将 ASP.NET 网站部署到 Azure]: http://www.dotnetcurry.com/ShowArticle.aspx?ID=881
-  [使用 Microsoft WebMatrix 开发和部署网站]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-dotnet-using-webmatrix/
+  [使用 Microsoft WebMatrix 开发和部署网站]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-dotnet-using-webmatrix/
   [使用 WebMatrix 构建 Node.js 网站并将其部署到 Azure]: http://www.windowsazure.com/zh-cn/documentation/articles/web-sites-nodejs-use-webmatrix/
   [WebMatrix 3:集成 Git 与到 Azure 的部署]: http://www.codeproject.com/Articles/577581/Webmatrixplus3-3aplusIntegratedplusGitplusandplusD
   [FileZilla]: https://filezilla-project.org/

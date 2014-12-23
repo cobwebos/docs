@@ -165,7 +165,7 @@ Azure 存储空间通过一个 [REST API][REST API] 来公开存储资源，任�
   [免费试用版]: /zh-cn/pricing/free-trial/
   [购买选项]: /zh-cn/pricing/purchase-options/
   [MSDN 订户]: /zh-cn/pricing/member-offers/msdn-benefits-details/
-  [Azure 导入/导出服务]: http://azure.microsoft.com/zh-cn/documentation/articles/storage-import-export-service/
+  [Azure 导入/导出服务]: http://windowsazure.cn/zh-cn/documentation/articles/storage-import-export-service/
   [共享访问签名]: ../storage-dotnet-shared-access-signature-part-1/
   [Azure 存储 SLA]: /zh-cn/support/legal/sla/
   [存储定价详细信息]: /zh-cn/pricing/details/storage/

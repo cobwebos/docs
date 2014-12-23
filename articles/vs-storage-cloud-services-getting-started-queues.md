@@ -13,7 +13,7 @@
 > - [Queues](/documentation/articles/vs-storage-cloud-services-getting-started-queues/)
 > - [表](/documentation/articles/vs-storage-cloud-services-getting-started-tables/)
 
-Azure 队列存储是一项可存储大量消息的服务，用户可以通过经验证的呼叫，使用 HTTP 或 HTTPS 从世界任何地方访问这些消息。一条队列消息的大小可达 64 KB，一个队列中可以包含数百万条消息，直至达到存储帐户的总容量限值。有关详细信息，请参阅[如何通过 .NET 使用队列存储](http://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-how-to-use-queues/ "How to use Queue Storage from .NET")。
+Azure 队列存储是一项可存储大量消息的服务，用户可以通过经验证的呼叫，使用 HTTP 或 HTTPS 从世界任何地方访问这些消息。一条队列消息的大小可达 64 KB，一个队列中可以包含数百万条消息，直至达到存储帐户的总容量限值。有关详细信息，请参阅[如何通过 .NET 使用队列存储](http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-queues/ "How to use Queue Storage from .NET")。
 
 在您希望以编程方式访问 Azure 存储的任何 C# 文件中，将以下代码命名空间声明添加到文件的顶部。
 

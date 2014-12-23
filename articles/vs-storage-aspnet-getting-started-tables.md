@@ -13,7 +13,7 @@
 > - [队列](/documentation/articles/vs-storage-aspnet-getting-started-queues/)
 > - [表](/documentation/articles/vs-storage-aspnet-getting-started-tables/)
 
-Azure 表存储服务使用户可以存储大量结构化数据。该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。Azure 表最适合存储结构化非关系型数据。有关详细信息，请参阅[如何通过 .NET 使用表存储](http://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "How to use Table Storage from .NET")。
+Azure 表存储服务使用户可以存储大量结构化数据。该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。Azure 表最适合存储结构化非关系型数据。有关详细信息，请参阅[如何通过 .NET 使用表存储](http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-tables/#create-table "How to use Table Storage from .NET")。
 
 在您希望以编程方式访问 Azure 存储的任何 C# 文件中，将以下代码命名空间声明添加到文件的顶部。
 

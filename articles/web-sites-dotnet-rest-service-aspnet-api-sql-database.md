@@ -868,10 +868,10 @@ XSRF 攻击不同于网络钓鱼攻击。网络钓鱼攻击需要与受害者进
   [XSRF]: https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)
   [发布]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rxP.png
   [设置]: ./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt5.png
-  [使用 OAuth、成员资格以及 SQL 数据库部署安全的 ASP.NET MVC 应用程序]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
+  [使用 OAuth、成员资格以及 SQL 数据库部署安全的 ASP.NET MVC 应用程序]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/
   [使用 MVC 的 Entity Framework 入门]: http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
   [ASP.NET MVC 5 简介]: http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started
   [您的第一个 ASP.NET Web API]: http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
-  [调试 WAWS]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/
+  [调试 WAWS]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/
   [5]: http://blogs.msdn.com/b/rickandy/
   [@blowdart]: https://twitter.com/blowdart

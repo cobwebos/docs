@@ -161,4 +161,4 @@
 -   有关通过 Windows Azure PowerShell 使用 Resource Manager 的信息，请参阅[结合使用 Windows PowerShell 和 Resource Manager 入门][结合使用 Windows PowerShell 和 Resource Manager 入门]。
 
   [安装和配置 Microsoft Azure 跨平台命令行接口]: /zh-cn/documentation/articles/xplat-cli/
-  [结合使用 Windows PowerShell 和 Resource Manager 入门]: http://azure.microsoft.com/zh-cn/documentation/articles/azure-preview-portal-using-resource-groups/
+  [结合使用 Windows PowerShell 和 Resource Manager 入门]: http://windowsazure.cn/zh-cn/documentation/articles/azure-preview-portal-using-resource-groups/

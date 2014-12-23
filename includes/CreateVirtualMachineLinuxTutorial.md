@@ -58,7 +58,7 @@ On the command bar, click **New**.
 
 14.  Under **VM Agent**, decide whether to install the VM Agent. This agent provides the environment for you to install extensions that can help you interact with the virtual machine. For details, see [Using Extensions](http://msdn.microsoft.com/zh-cn/library/dn606311.aspx).
 
-15. Under **Endpoints**, review the endpoint that's automatically created to allow Secure Shell (SSH) connections to the virtual machine. (Endpoints allow resources on the Internet or other virtual networks to communicate with a virtual machine.) You can add more endpoints now, or create them later. For instructions on creating them later, see [How to Set Up Communication with a Virtual Machine](http://azure.microsoft.com/zh-cn/documentation/articles/virtual-machines-set-up-endpoints/).
+15. Under **Endpoints**, review the endpoint that's automatically created to allow Secure Shell (SSH) connections to the virtual machine. (Endpoints allow resources on the Internet or other virtual networks to communicate with a virtual machine.) You can add more endpoints now, or create them later. For instructions on creating them later, see [How to Set Up Communication with a Virtual Machine](http://windowsazure.cn/zh-cn/documentation/articles/virtual-machines-set-up-endpoints/).
   
 After the virtual machine and cloud service are created, the Management Portal lists the new virtual machine under **Virtual Machines** and lists the cloud service under **Cloud Services**. Both the virtual machine and the cloud service are started automatically.
 
@@ -97,7 +97,7 @@ Data Disks reside on Azure Storage and can be used for persistent storage of fil
 
 Each virtual machine created also has a temporary local *Resource Disk* attached. Because data on a resource disk may not be durable across reboots, it is often used by applications and processes running in the virtual machine for transient and temporary storage of data. It is also used to store page or swap files for the operating system.
 
-On Linux, the Resource Disk is typically managed by the Azure Linux Agent and automatically mounted to **/mnt/resource** (or **/mnt** on Ubuntu images). Please see the [Azure Linux Agent User Guide](http://azure.microsoft.com/zh-cn/documentation/articles/virtual-machines-linux-agent-user-guide/) for more information.
+On Linux, the Resource Disk is typically managed by the Azure Linux Agent and automatically mounted to **/mnt/resource** (or **/mnt** on Ubuntu images). Please see the [Azure Linux Agent User Guide](http://windowsazure.cn/zh-cn/documentation/articles/virtual-machines-linux-agent-user-guide/) for more information.
 
 
 1. If you have not already done so, sign in to the Azure Management Portal.
@@ -226,9 +226,9 @@ The data disk that you just attached to the virtual machine is offline and not i
 
 To learn more about Linux on Azure, see the following articles:
 
-- [Introduction to Linux on Azure](http://azure.microsoft.com/zh-cn/documentation/articles/introduction-linux/)
+- [Introduction to Linux on Azure](http://windowsazure.cn/zh-cn/documentation/articles/introduction-linux/)
 
-- [How to use the Azure Command-Line Tools for Mac and Linux](http://azure.microsoft.com/zh-cn/documentation/articles/xplat-cli/)
+- [How to use the Azure Command-Line Tools for Mac and Linux](http://windowsazure.cn/zh-cn/documentation/articles/xplat-cli/)
 
 
 [Next Steps]: #next

@@ -267,20 +267,20 @@ Azure 网站 (WAWS） 是这种情况不错的解决方案，因为您可以开�
 <sup>4</sup> 在部署到单实例角色时云服务支持 Web 部署。但是，生产角色要求多个实例以便满足 Azure SLA。因此，Web 部署不是在生产中用于云服务的合适的部署机制。
 
   [Azure 网站]: http://azure.microsoft.com/zh-cn/
-  [云服务]: http://azure.microsoft.com/zh-cn/documentation/services/cloud-services/
-  [虚拟机]: http://azure.microsoft.com/zh-cn/documentation/services/virtual-machines/
+  [云服务]: http://windowsazure.cn/zh-cn/documentation/services/cloud-services/
+  [虚拟机]: http://windowsazure.cn/zh-cn/documentation/services/virtual-machines/
   [Azure WebJobs SDK]: http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs
   [ChoicesDiagram]: ./media/choose-web-site-cloud-service-vm/Websites_CloudServices_VMs_2.png
   [方案]: #scenarios
   [服务摘要]: #services
   [功能比较]: #features
-  [自动任务]: http://azure.microsoft.com/zh-cn/documentation/scripts/?services=web-sites
+  [自动任务]: http://windowsazure.cn/zh-cn/documentation/scripts/?services=web-sites
   [.Net]: http://azure.microsoft.com/zh-cn/develop/net/
   [PHP]: http://azure.microsoft.com/zh-cn/develop/php/
   [Node.js]: http://azure.microsoft.com/zh-cn/develop/nodejs/
   [Python]: http://azure.microsoft.com/zh-cn/develop/python/
-  [SQL 数据库]: http://azure.microsoft.com/zh-cn/documentation/services/sql-database/
-  [服务总线]: http://azure.microsoft.com/zh-cn/documentation/services/service-bus/
-  [存储]: http://azure.microsoft.com/zh-cn/documentation/services/storage/
+  [SQL 数据库]: http://windowsazure.cn/zh-cn/documentation/services/sql-database/
+  [服务总线]: http://windowsazure.cn/zh-cn/documentation/services/service-bus/
+  [存储]: http://windowsazure.cn/zh-cn/documentation/services/storage/
   [Azure 应用商店]: http://azure.microsoft.com/zh-cn/gallery/store/
-  [为 Azure 网站配置 SSL 证书]: http://azure.microsoft.com/zh-cn/documentation/articles/web-sites-configure-ssl-certificate/
+  [为 Azure 网站配置 SSL 证书]: http://windowsazure.cn/zh-cn/documentation/articles/web-sites-configure-ssl-certificate/

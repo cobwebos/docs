@@ -15,7 +15,7 @@
 
 Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可在世界任何地方通过 HTTP 或 HTTPS 访问这些数据。单个 Blob 可以是任意大小。Blob 可以是图像、音频和视频文件、原始数据以及文档文件等。
 
-若要开始使用，你需要创建一个 Azure 存储帐户，然后在存储中创建一个或多个容器。例如，您可以将存储命名为"Scrapbook"，然后在该存储中创建名为"图像"的容器以存储图片，然后创建名为"音频"的容器以存储音频文件。创建这些容器后，您可以向它们上载单独的 Blob 文件。有关以编程方式操纵 Blob 的详细信息，请参阅[如何通过 .NET 使用 Blob 存储](http://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/ "How to use Blob Storage from .NET")。
+若要开始使用，你需要创建一个 Azure 存储帐户，然后在存储中创建一个或多个容器。例如，您可以将存储命名为"Scrapbook"，然后在该存储中创建名为"图像"的容器以存储图片，然后创建名为"音频"的容器以存储音频文件。创建这些容器后，您可以向它们上载单独的 Blob 文件。有关以编程方式操纵 Blob 的详细信息，请参阅[如何通过 .NET 使用 Blob 存储](http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/ "How to use Blob Storage from .NET")。
 
 若要以编程方式访问 ASP.NET 5 项目中的 Blob，你需要添加以下项（如果尚未存在）。
 
@@ -109,7 +109,7 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
             }
         } while (token != null);
 
-还有其他方法来列出 Blob 容器内容。有关详细信息，请参阅[如何通过 .NET 使用 Blob 存储](http://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/#list-blob)。
+还有其他方法来列出 Blob 容器内容。有关详细信息，请参阅[如何通过 .NET 使用 Blob 存储](http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/#list-blob)。
 
 #####下载 Blob
 若要下载 Blob，首先请获取对该 Blob 的引用，然后再调用 **DownloadToStreamAsync()** 方法。以下示例使用 **DownloadToStreamAsync()** 方法将 Blob 内容传输到稍后可以另存为本地文件的流对象。
@@ -123,7 +123,7 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
     	await blockBlob.DownloadToStreamAsync(fileStream);
 	}
 
-还有其他方法可将 Blob 另存为文件。有关详细信息，请参阅[如何通过 .NET 使用 Blob 存储](http://azure.microsoft.com/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/#download-blobs)。
+还有其他方法可将 Blob 另存为文件。有关详细信息，请参阅[如何通过 .NET 使用 Blob 存储](http://windowsazure.cn/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/#download-blobs)。
 
 #####删除 Blob
 若要删除 Blob，首先请获取对该 Blob 的引用，然后再对其调用 **DeleteAsync()** 方法。

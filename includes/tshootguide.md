@@ -29,7 +29,7 @@ more intensive information on the practices described.
 or have successfully deployed your Azure application and that
 something unexpected is now occurring. It does not discuss how to deploy
 an application on Azure. For more information about developing
-and deploying your Azure application, see <a href="http://azure.microsoft.com/zh-cn/documentation/">http://azure.microsoft.com/zh-cn/documentation/</a>.
+and deploying your Azure application, see <a href="http://windowsazure.cn/zh-cn/documentation/">http://windowsazure.cn/zh-cn/documentation/</a>.
 
 This topic first describes some best practices that will help you design
 your application so that you can troubleshoot effectively when problems

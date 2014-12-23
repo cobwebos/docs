@@ -804,7 +804,7 @@ GRANT VIEW DATABASE STATE to 'sqlops';
   [缩放 SQL Database 解决方案]: #HowTo4
   [监视逻辑服务器和数据库实例]: #HowTo3
   [后续步骤]: #NextSteps
-  [使用 Management Studio 管理 SQL Database]: http://azure.microsoft.com/zh-cn/documentation/articles/sql-database-manage-azure-ssms/
+  [使用 Management Studio 管理 SQL Database]: http://windowsazure.cn/zh-cn/documentation/articles/sql-database-manage-azure-ssms/
   [SQL Database 管理入门]: http://www.windowsazure.cn/zh-cn/manage/services/sql-databases/how-to-manage-a-sqldb/
   [在 SQL Database 中管理数据库和登录]: http://msdn.microsoft.com/zh-cn/library/azure/ee336235.aspx
   [使用动态管理视图监视 SQL Database]: http://msdn.microsoft.com/zh-cn/library/azure/ff394114.aspx

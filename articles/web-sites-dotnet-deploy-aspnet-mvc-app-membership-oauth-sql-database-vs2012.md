@@ -795,13 +795,13 @@ Azure 网站包含有效的安全证书，因此在部署到 Azure 时，将不�
   [在 ASP.NET MVC 4 中自定义外部登录按钮]: http://www.beabigrockstar.com/customizing-external-login-buttons-in-asp-net-mvc-4/
   [Azure 身份验证]: http://www.asp.net/vnext/overview/fall-2012-update/windows-azure-authentication
   [如何使用 ASP.NET MVC 创建 Intranet 站点]: http://msdn.microsoft.com/zh-cn/library/gg703322(v=vs.98).aspx
-  [使用存储表、队列和 Blob 的 .NET 多层应用程序]: http://azure.microsoft.com/zh-cn/documentation/articles/cloud-services-dotnet-multi-tier-app-storage-1-overview/
+  [使用存储表、队列和 Blob 的 .NET 多层应用程序]: http://windowsazure.cn/zh-cn/documentation/articles/cloud-services-dotnet-multi-tier-app-storage-1-overview/
   [ASP.NET MVC 4 简介]: http://www.asp.net/mvc/tutorials/mvc-4/getting-started-with-aspnet-mvc4/intro-to-aspnet-mvc-4
   [使用 MVC 的 Entity Framework 入门]: http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
   [OAuth 2.0 与登录]: http://blogs.msdn.com/b/vbertocci/archive/2013/01/02/oauth-2-0-and-sign-in.aspx
   [常见任务]: http://www.windowsazure.com/zh-cn/develop/net/common-tasks/
   [在 Visual Studio 中对 Azure 网站进行故障排除]: /zh-cn/develop/net/tutorials/troubleshoot-web-sites-in-visual-studio/
-  [本教程中的云服务版本]: http://azure.microsoft.com/zh-cn/documentation/articles/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/
+  [本教程中的云服务版本]: http://windowsazure.cn/zh-cn/documentation/articles/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/
   [使用 Azure 开发 Web 应用程序]: http://msdn.microsoft.com/zh-cn/library/Hh674484
   [Azure 上的数据存储产品/服务]: http://social.technet.microsoft.com/wiki/contents/articles/data-storage-offerings-on-the-windows-azure-platform.aspx
   [在 ASP.NET 数据访问内容映射中使用 Azure SQL Database]: http://go.microsoft.com/fwlink/p/?LinkId=282414#ssdb
