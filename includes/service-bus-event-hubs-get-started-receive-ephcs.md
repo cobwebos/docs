@@ -1,44 +1,44 @@
 ﻿## 使用 EventProcessorHost 接收消息
 
-[EventProcessorHost] 是一个 .NET 类，它通过从事件中心管理持久检查点和并行接收来简化从那些事件中心接收事件。使用 [EventProcessorHost]，可跨多个接收方（即使承载于不同节点中）拆分事件。此示例演示如何为单一接收方使用 [EventProcessorHost]。[经过扩展的事件处理示例]显示如何将 [EventProcessorHost] 用于多个接收方。
+[EventProcessorHost]是通过管理持久检查点，简化了从事件中心接收事件的.NET 类，它并行接收从这些事件中心。使用[EventProcessorHost]，您可以将事件拆分跨多个接收方，即使在不同节点中托管。此示例演示如何使用[EventProcessorHost]的一位接收方。[扩展的事件处理示例]演示如何使用[EventProcessorHost]与多个接收方。
 
-有关事件中心接收模式的详细信息，请参阅[事件中心概述]。
+接收模式的有关事件中心的详细信息，请参阅[事件中心概述]。
 
-为了使用 [EventProcessorHost]，你必须具有 [Azure 存储帐户]：
+若要使用[EventProcessorHost]，您必须具有[Azure 存储帐户]：
 
-1. 登录到 [Azure 管理门户]，然后单击屏幕底部的**"新建"**。
+1. 登录到[Azure 管理门户]，然后单击**新建**在屏幕的底部。
 
-2. 依次单击**"数据服务"**、**"存储"**、**"快速创建"**，然后为你的存储帐户键入一个名称。选择所需的区域，然后单击**"创建存储帐户"**。
+2. 单击**Data Services**，然后**存储**，然后**快速创建**，然后键入您的存储帐户的名称。选择所需的区域，然后单击**创建存储帐户**。
 
    	![][11]
 
-3. 单击新创建的存储帐户，然后单击**"管理访问密钥"**：
+3. 单击新创建的存储帐户，然后单击**管理访问密钥**：
 
    	![][12]
 
-	请复制该访问密钥，以便将来使用。
+	将复制以供将来使用的访问密钥。
 
-4. 在 Visual Studio 中，使用**控制台应用程序**项目模板创建一个新的 Visual C# 桌面应用项目。将该项目命名为 **Receiver**。
+4. 在 Visual Studio 中创建新的 Visual C# 桌面应用程序项目使用**控制台应用程序**项目模板。将该项目**接收方**。
 
    	![][14]
 
-5. 在"解决方案资源管理器"中，右键单击该解决方案，然后单击**"管理 NuGet 包"**。 
+5. 在解决方案资源管理器中右键单击解决方案，然后依次**管理 NuGet 包**。 
 
-出现**"管理 NuGet 包"**对话框。
+	**管理 NuGet 包**对话框随即出现。
 
-6. 搜索"Microsoft Azure Service Bus 事件中心 - EventProcessorHost"，单击**"安装"**，并接受使用条款。 
+6. Search for `Microsoft Azure Service Bus Event Hub - EventProcessorHost`, click **Install**, and accept the terms of use. 
 
 	![][13]
 
-	这样就会下载、安装 <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost">Azure Service Bus 事件中心 - EventProcessorHost NuGet 程序包</a>并添加对该程序包的引用，包括其所有依赖项。
+	这会下载、 安装，并添加对引用 < href ="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost"> Azure Service Bus 事件中心 EventProcessorHost NuGet 程序包 </a >，提供其依赖关系。
 
-7. 创建一个名为 **SimpleEventProcessor** 的新类，在该文件的顶部添加以下语句：
+7. 创建新的类称为**SimpleEventProcessor**，该文件顶部添加以下语句：
 
 		using Microsoft.ServiceBus.Messaging;
 		using System.Diagnostics;
 		using System.Threading.Tasks;
 
-	然后，插入以下代码作为该类的正文：
+	然后，将插入以下代码作为类的正文：
 
 		class SimpleEventProcessor : IEventProcessor
 	    {
@@ -83,14 +83,14 @@
 	        }
 	    }
 
-	此类将由 **EventProcessorHost** 调用，以处理从事件中心接收的事件。请注意，"SimpleEventProcessor"类使用秒表以定期对 **EventProcessorHost** 上下文调用检查点方法。这样就确保了接收方重新启动时将会丢失的处理工作不会超过五分钟。
+	此类将调用**EventProcessorHost**以处理从事件中心收到的事件。请注意， `SimpleEventProcessor`类使用秒表来定期调用的检查点方法**EventProcessorHost**上下文。这可确保，如果接收方重新启动，则它将丢失不超过五分钟的处理工作。
 
-8. 在 **Program** 类中，在顶部添加以下"using"语句：
+8. 在**程序**类中，在顶部添加以下 using 语句：
 
 		using Microsoft.ServiceBus.Messaging;
 		using System.Threading.Tasks;
 	
-	然后，在 **Main** 方法中添加以下代码，替代事件中心名称和连接字符串，以及存储帐户和你在前面章节中复制的密钥：
+	然后，添加下面的代码**Main**方法中，替换事件中心的名称和连接字符串的存储帐户和前面的章节中复制的密钥：
 
 		string eventHubConnectionString = "{event hub connection string}";
         string eventHubName = "{event hub name}";
@@ -106,11 +106,11 @@
         Console.WriteLine("Receiving. Press enter key to stop worker.");
         Console.ReadLine();
 
-> [AZURE.NOTE] 本教程使用一个 [EventProcessorHost]实例。若要增加吞吐量，建议运行多个 [EventProcessorHost] 实例，如[扩展事件处理示例]中所示。在那些情况下，为了对接收到的事件进行负载平衡，各个不同实例会自动相互协调。如果希望多个接收方都各自处理"全部"事件，则必须使用 **ConsumerGroup** 概念。在从不同计算机中接收事件时，根据部署 [EventProcessorHost] 实例的计算机（或角色）来指定该实例的名称可能会很有用。有关这些主题的详细信息，请参阅[事件中心概述]。
+> [AZURE.NOTE] 本教程使用的单个实例[EventProcessorHost]。若要增加吞吐量，建议您运行的多个实例[EventProcessorHost]，如下所示[扩展的事件处理示例]。在这些情况下，不同的实例自动协调与每个其他以便进行负载平衡接收的事件。如果您希望为每个进程的多个接收方 * 全部 * 事件，则必须使用**ConsumerGroup**概念。从不同的计算机中接收事件，它可能会很有用指定的名称[EventProcessorHost]实例基于机 （或角色） 中部署它们。有关这些主题的详细信息，请参阅[事件中心概述]。
 
 <!-- Links -->
 [事件中心概述]: http://msdn.microsoft.com/zh-cn/library/azure/dn821413.aspx
-[经过扩展的事件处理示例]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
+[扩展的事件处理示例]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [Azure 存储帐户]: http://www.windowsazure.cn/zh-cn/documentation/articles/storage-create-storage-account/
 [EventProcessorHost]: http://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.eventprocessorhost(v=azure.95).aspx 
 

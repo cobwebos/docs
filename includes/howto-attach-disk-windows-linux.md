@@ -1,215 +1,259 @@
-# 如何将数据磁盘附加到虚拟机
+﻿#如何将数据磁盘附加到虚拟机
 
--   [概念][概念]
--   [如何：附加现有磁盘][如何：附加现有磁盘]
--   [如何：附加空磁盘][如何：附加空磁盘]
--   [如何：在 Windows Server 2008 R2 中初始化新的数据磁盘][如何：在 Windows Server 2008 R2 中初始化新的数据磁盘]
--   [如何：在 Linux 中初始化新的数据磁盘][如何：在 Linux 中初始化新的数据磁盘]
 
-## 概念
 
-你可以将数据磁盘附加到虚拟机以存储应用程序数据。数据磁盘是你可以使用自己的计算机在本地创建，或者使用 Azure 在云中创建的虚拟硬盘 (VHD)。你管理虚拟机中数据磁盘的方式与管理办公室中服务器的方式相同。
 
-你可以使用管理门户将包含数据的数据磁盘上载和附加到虚拟机，还可以从虚拟机使用的同一存储帐户添加空磁盘。本文介绍了这些过程。若要附加位于其他存储帐户中的空磁盘，请使用 Azure PowerShell 模块中提供的 [Add-AzureDataDisk][Add-AzureDataDisk] cmdlet。若要下载该模块，请参阅[下载][下载]页。
+- [概念](#concepts)
+- [How to 文章：附加现有磁盘](#attachexisting)
+- [How to 文章：附加空磁盘](#attachempty)
+- [How to 文章：在 Windows Server 2008 R2 中初始化新的数据磁盘](#initializeinWS)
+- [How to 文章：初始化新的数据磁盘在 Linux 中](#initializeinlinux)
 
-添加磁盘时不会停止虚拟机。你可以附加到虚拟机中的磁盘数量是根据虚拟机的大小确定的。有关虚拟机和磁盘大小的信息，请参阅[针对 Azure 的虚拟机大小][针对 Azure 的虚拟机大小]。
+
+
+##<a id="concepts"></a>概念
+
+
+
+你可以将数据磁盘附加到虚拟机以存储应用程序数据。数据磁盘是您可以创建使用您自己的计算机在本地或云中使用 Azure 的虚拟硬盘 (VHD)。你管理虚拟机中数据磁盘的方式与管理办公室中服务器的方式相同。
+
+您可以使用管理门户上载并附加到虚拟机中，数据包含的数据磁盘，以及从虚拟机使用的同一个存储帐户中添加空磁盘。本文介绍了这些过程。若要附加空磁盘位于不同的存储帐户，请使用[Add-azuredatadisk](http://msdn.microsoft.com/library/azure/dn495298.aspx) cmdlet，Azure PowerShell 模块中提供。若要下载该模块，请参阅[下载](http://www.windowsazure.cn/zh-cn/downloads/?sdk=net)页。
+
+添加磁盘时不会停止虚拟机。你可以附加到虚拟机中的磁盘数量是根据虚拟机的大小确定的。有关虚拟机和磁盘大小的信息，请参阅[Azure 的虚拟机大小](http://msdn.microsoft.com/library/azure/dn197896.aspx)。
 
 > [WACOM.NOTE]
-> Azure 存储空间支持最大为 1 TB 的 Blob，其中可容纳最大虚拟大小为 999 GB 的 VHD。不过，如果你使用 Hyper-V 创建新的 VHD，则你指定的大小表示虚拟大小。若要在 Azure 中使用 VHD，请指定不超过 999 GB 的大小。
+> Azure 存储空间支持 blob 最多达到 1TB 的大小，可容纳最大虚拟大小为 999 GB 的 VHD。但是，如果使用 HYPER-V 来创建新的 VHD，你指定的大小表示虚拟大小。若要在 Azure 中使用 VHD，请指定不超过 999 GB 的大小。
 
 **数据磁盘与资源磁盘**
-数据磁盘驻留在 Azure 存储空间中并且可以用于持久存储文件和应用程序数据。
+数据磁盘驻留在 Azure 存储空间，并可用于文件和应用程序数据的持久性存储区。
 
-每个虚拟机还附加有一个临时的本地“资源磁盘”。**因为资源磁盘上的数据可能不能在重新引导后持久存在，因此它通常由在虚拟机中运行的应用程序和进程用于数据的短暂和临时存储。它还用来为操作系统存储页面文件或交换文件。
+每个虚拟机还具有一个临时的本地 * 资源磁盘 * 附加。由于资源磁盘上的数据不一定是持久的重新启动，它是经常使用的应用程序和用作数据的短暂和临时存储的虚拟机中运行的进程。它还用来为操作系统存储页面文件或交换文件。
 
-在 Windows 上，资源磁盘被标记为 **D:**驱动器。在 Linux 上，资源磁盘通常由 Azure Linux 代理管理并且自动装载到 **/mnt/resource**（或 Ubuntu 映像上的 **/mnt**）。有关详细信息，请参阅 [Azure Linux Agent User Guide][Azure Linux Agent User Guide]（Azure Linux 代理用户指南）。
+在 Windows 上，资源磁盘被标记为**d:**驱动器。在 Linux 上，通常由 Azure Linux 代理管理并且自动装载到资源磁盘**/mnt/资源**（或**/mnt** Ubuntu 映像上）。请参阅[Azure Linux 代理用户指南](/zh-cn/documentation/articles/virtual-machines-linux-agent-user-guide/) 有关详细信息。
 
-有关使用数据磁盘的详细信息，请参阅[管理磁盘和映像][管理磁盘和映像]。
+有关使用数据磁盘的详细信息，请参阅[管理磁盘和映像](http://msdn.microsoft.com/zh-cn/library/azure/jj672979.aspx)。
 
-## 如何：附加现有磁盘
+##<a id="attachexisting"></a>如何：附加现有磁盘
 
-1.  登录到 [Azure 管理门户][Azure 管理门户]（如果你尚未这么做）。
 
-2.  单击**“虚拟机”**，然后选择要向其附加磁盘的虚拟机。
+1. 如果尚未这样做，登录到 [Azure 管理门户](http://manage.windowsazure.cn)。
 
-3.  在命令栏中，单击**“附加”**，然后选择**“附加磁盘”**。
+2. 单击**虚拟机**，然后选择您想要将磁盘附加到虚拟机。
 
-    ![附加数据磁盘][附加数据磁盘]
+3. 在命令栏中，单击**附加**，然后选择**附加磁盘**。
 
-    此时将显示**“附加磁盘”**对话框。
 
-    ![输入数据磁盘详细信息][输入数据磁盘详细信息]
+	![Attach data disk](./media/howto-attach-disk-window-linux/AttachExistingDiskWindows.png)
 
-4.  选择你要附加到虚拟机的数据磁盘。
-5.  单击复选标记以将数据磁盘附加到虚拟机。
+	**附加磁盘**对话框随即出现。
 
-    虚拟机的仪表板中将列出该数据磁盘。
 
-    ![已成功附加了数据磁盘][已成功附加了数据磁盘]
 
-## 如何：附加空磁盘
+	![Enter data disk details](./media/howto-attach-disk-window-linux/AttachExistingDisk.png)
 
-在创建并上载要用作空磁盘的 .vhd 文件后，你可以将其附加到虚拟机。可使用 [Add-AzureVhd][Add-AzureVhd] cmdlet 将 .vhd 文件上载到存储帐户。
+3. 选择您想要将附加到虚拟机的数据磁盘。
+4. 单击复选标记以将数据磁盘附加到虚拟机。
+  
+ 
+	虚拟机的仪表板中将列出该数据磁盘。
 
-1.  单击**“虚拟机”**，然后选择要向其附加数据磁盘的虚拟机。
 
-2.  在命令栏中，单击**“附加”**，然后选择**“附加空磁盘”**。
+	![Data disk successfully attached](./media/howto-attach-disk-window-linux/AttachSuccess.png)
 
-    ![附加空磁盘][附加空磁盘]
+##<a id="attachempty"></a>如何：附加空磁盘
 
-    此时将显示**“附加空磁盘”**对话框。
+已创建并上载要用作空磁盘的.vhd 文件后，可以将其附加到虚拟机。使用[Add-azurevhd](http://msdn.microsoft.com/library/azure/dn495173.aspx) cmdlet 将.vhd 文件上载到存储帐户。  
 
-    ![附加新的空磁盘][附加新的空磁盘]
+1. 单击**虚拟机**，然后选择您想要将数据磁盘附加到虚拟机。
 
-3.  在**“文件名”**中，接受自动生成的名称，或者输入要用于所存储的 VHD 文件的名称。从 VHD 文件创建的数据磁盘始终使用自动生成的名称。
 
-4.  在**“大小”**中，输入数据磁盘的大小。
 
-5.  单击复选标记以附加空数据磁盘。
+2. 在命令栏中，单击**附加**，然后选择**附加空磁盘**。
 
-    虚拟机的仪表板中将列出该数据磁盘。
 
-    ![已成功附加了空数据磁盘][已成功附加了空数据磁盘]
+	![Attach an empty disk](./media/howto-attach-disk-window-linux/AttachDiskWindows.png)
 
-> [WACOM.NOTE]
-> 在添加数据磁盘后，你需要登录到虚拟机并初始化磁盘，然后虚拟机才能使用磁盘来存储数据。
 
-## 如何：在 Windows Server 中初始化新的数据磁盘
 
-1.  使用[如何登录到运行 Windows Server 的虚拟机][如何登录到运行 Windows Server 的虚拟机]中列出的步骤连接到虚拟机。
+	**附加空磁盘**对话框随即出现。
 
-2.  在登录之后，打开**“服务器管理器”**，在左侧窗格中展开**“存储”**，然后单击**“磁盘管理”**。
 
-    ![打开服务器管理器][打开服务器管理器]
 
-3.  右键单击**“磁盘 2”**，然后单击**“初始化磁盘”**。
+	![Attach a new empty disk](./media/howto-attach-disk-window-linux/AttachNewDiskWindows.png)
 
-    ![初始化磁盘][初始化磁盘]
+ 
+3. 在**文件名**，可以接受自动生成的名称，或输入想要用于存储的 VHD 文件的名称。从 VHD 文件创建的数据磁盘始终使用自动生成的名称。
 
-4.  单击**“确定”**开始初始化过程。
 
-5.  右键单击磁盘 2 的空间分配区域，单击**“新建简单卷”**，然后使用默认值完成该向导。
 
-    ![初始化卷][初始化卷]
+4. 在**大小**，输入数据磁盘的大小。 
 
-    磁盘现在处于联机状态且可以使用新的驱动器号。
 
-    ![已成功初始化卷][已成功初始化卷]
 
-## 如何：在 Linux 中初始化新的数据磁盘
+5. 单击复选标记以附加空数据磁盘。
 
-1.  使用[如何登录到运行 Linux 的虚拟机][如何登录到运行 Linux 的虚拟机]中列出的步骤连接到虚拟机。
+	虚拟机的仪表板中将列出该数据磁盘。
 
-2.  在 SSH 窗口中，键入下面的命令，然后输入为管理虚拟机而创建的帐户的密码：
 
-    `sudo grep SCSI /var/log/messages`
+	![Empty data disk successfully attached](./media/howto-attach-disk-window-linux/AttachEmptySuccess.png)
 
-    你可以在所示消息中找到最后添加的数据磁盘的标识符。
 
-    ![获取磁盘消息][获取磁盘消息]
+> [WACOM.NOTE] 
+> 添加数据磁盘后，您将需要登录到虚拟机并初始化磁盘，因此虚拟机可以将该磁盘用于存储。
 
-3.  在 SSH 窗口中，键入下面的命令以新建设备，然后输入帐户密码：
 
-    `sudo fdisk /dev/sdc`
 
-    > [WACOM.NOTE] 在此示例中，如果 /sbin 或 /usr/sbin 不在你的 `$PATH` 中，你在某些分发上可能需要使用 `sudo -i`。
+##<a id="initializeinWS"></a>如何：在 Windows Server 中初始化新的数据磁盘
 
-4.  键入 **n** 新建一个分区。
+1. 使用中列出的步骤连接到虚拟机[如何登录到运行 Windows Server 的虚拟机上][登录]。
 
-    ![新建设备][新建设备]
 
-5.  键入 **p** 将该分区设置为主分区，键入 **1** 将其设置为第一分区，然后键入 Enter 以接受柱面的默认值。
 
-    ![创建分区][创建分区]
+2. 在您登录后，打开**服务器管理器**，在左窗格中，展开**存储**，然后单击**磁盘管理**。
 
-6.  键入 **p**以查看有关分区磁盘的详细信息。
 
-    ![列出磁盘信息][列出磁盘信息]
 
-7.  键入 **w** 以写入磁盘的设置。
+	![Open Server Manager](./media/howto-attach-disk-window-linux/ServerManager.png)
 
-    ![写入磁盘更改][写入磁盘更改]
 
-8.  你必须在新分区上创建文件系统。例如，键入下面的命令以创建文件系统，然后输入帐户密码：
 
-    `sudo mkfs -t ext4 /dev/sdc1`
+3. 右键单击**磁盘 2**，然后单击**初始化磁盘**。
 
-    ![创建文件系统][创建文件系统]
 
-    > [WACOM.NOTE] 注意，在 SUSE Linux Enterprise 11 系统上，对于 ext4 文件系统仅提供了只读访问权限。对于这些系统，建议将新文件系统格式化为 ext3 而非 ext4。
 
-9.  接下来，你必须有一个目录可用来装载新文件系统。例如，键入下面的命令来创建一个用于装载驱动器的新目录，然后输入帐户密码：
+	![Initialize the disk](./media/howto-attach-disk-window-linux/InitializeDisk.png)
 
-    `sudo mkdir /datadrive`
+4. 单击**确定**若要开始初始化过程。
 
-10. 键入下面的命令以安装驱动器：
 
-    `sudo mount /dev/sdc1 /datadrive`
 
-    数据磁盘现在可以作为 **/datadrive** 使用。
+5. 右键单击磁盘 2 的空间分配区域，单击**新建简单卷**，然后完成该向导使用默认值。
+ 
 
-11. 将新驱动器添加到 /etc/fstab：
+	![Initialize the volume](./media/howto-attach-disk-window-linux/InitializeDiskVolume.png)
 
-    若要确保在重新引导后自动重新装载驱动器，必须将其添加到 /etc/fstab 文件。此外，强烈建议在 /etc/fstab 中使用 UUID（全局唯一标识符）来引用驱动器而不是只使用设备名称（即 /dev/sdc1）。若要查找新设备的 UUID，可以使用 **blkid** 实用程序：
 
-        `sudo -i blkid`
 
-    输出与以下内容类似：
+	磁盘现在处于联机状态并且准备使用新的驱动器号。
 
-        `/dev/sda1:UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"`
-        `/dev/sdb1:UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"`
-        `/dev/sdc1:UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"`
 
-    > [WACOM.NOTE] blkid 可能不是在所有情况下都需要 sudo 访问权限，不过，如果 /sbin 或 /usr/sbin 不在你的 `$PATH` 中，则在某些分发上使用 `sudo -i` 运行可能更为容易。
 
-    **小心：**错误地编辑 /etc/fstab 文件可能会导致系统无法引导。如果没有把握，请参考分发的文档来获取有关如何正确编辑该文件的信息。另外，建议在编辑之前创建 /etc/fstab 文件的备份。
+	![Volume successfully initialized](./media/howto-attach-disk-window-linux/InitializeSuccess.png)
 
-    使用文本编辑器，在 /etc/fstab 文件的末尾输入关于新文件系统的信息。在此示例中，我们将使用在之前的步骤中创建的新 **/dev/sdc1** 设备的 UUID 值并使用装载点 **/datadrive**：
 
-        `UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2`
 
-    另外，在基于 SUSE Linux 的系统上，你可能需要使用稍微不同的格式：
 
-        `/dev/disk/by-uuid/33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /   ext3   defaults   1   2`
+##<a id="initializeinlinux"></a>如何：在 Linux 中初始化新的数据磁盘
 
-    如果还创建了其他数据驱动器或分区，你同样也需要分别将其输入到 /etc/fstab 中。
 
-    现在，你可以通过简单地卸载并重新装载文件系统（即使用在之前的步骤中创建的示例装载点 `/datadrive`）来测试文件系统是否已正确装载：
 
-        `sudo umount /datadrive`
-        `sudo mount /datadrive`
+1. 使用中列出的步骤连接到虚拟机[如何登录到运行 Linux 的虚拟机上][logonlinux]。
 
-    如果第二个命令产生错误，请检查 /etc/fstab 文件的语法是否正确。
 
-    > [WACOM.NOTE] 之后，在不编辑 fstab 的情况下删除数据磁盘可能会导致 VM 无法引导。如果这是一种常见情况，则请注意，大多数分发都提供了 `nofail` 和/或 `nobootwait` fstab 选项，这些选项使系统在磁盘不存在时也能引导。有关这些参数的详细信息，请查阅你的分发的文档。
 
-  [概念]: #concepts
-  [如何：附加现有磁盘]: #attachexisting
-  [如何：附加空磁盘]: #attachempty
-  [如何：在 Windows Server 2008 R2 中初始化新的数据磁盘]: #initializeinWS
-  [如何：在 Linux 中初始化新的数据磁盘]: #initializeinlinux
-  [Add-AzureDataDisk]: http://go.microsoft.com/fwlink/p/?LinkId=391661
-  [下载]: http://www.windowsazure.cn/zh-cn/downloads/?sdk=net
-  [针对 Azure 的虚拟机大小]: http://go.microsoft.com/FWLink/p/?LinkID=294683
-  [Azure Linux Agent User Guide]: http://windowsazure.cn/zh-cn/documentation/articles/virtual-machines-linux-agent-user-guide/
-  [管理磁盘和映像]: http://msdn.microsoft.com/zh-cn/library/azure/jj672979.aspx
-  [Azure 管理门户]: http://manage.windowsazure.cn
-  [附加数据磁盘]: ./media/howto-attach-disk-window-linux/AttachExistingDiskWindows.png
-  [输入数据磁盘详细信息]: ./media/howto-attach-disk-window-linux/AttachExistingDisk.png
-  [已成功附加了数据磁盘]: ./media/howto-attach-disk-window-linux/AttachSuccess.png
-  [Add-AzureVhd]: http://go.microsoft.com/FWLink/p/?LinkID=391684
-  [附加空磁盘]: ./media/howto-attach-disk-window-linux/AttachDiskWindows.png
-  [附加新的空磁盘]: ./media/howto-attach-disk-window-linux/AttachNewDiskWindows.png
-  [已成功附加了空数据磁盘]: ./media/howto-attach-disk-window-linux/AttachEmptySuccess.png
-  [如何登录到运行 Windows Server 的虚拟机]: ../virtual-machines-log-on-windows-server/
-  [打开服务器管理器]: ./media/howto-attach-disk-window-linux/ServerManager.png
-  [初始化磁盘]: ./media/howto-attach-disk-window-linux/InitializeDisk.png
-  [初始化卷]: ./media/howto-attach-disk-window-linux/InitializeDiskVolume.png
-  [已成功初始化卷]: ./media/howto-attach-disk-window-linux/InitializeSuccess.png
-  [如何登录到运行 Linux 的虚拟机]: ../virtual-machines-linux-how-to-log-on/
-  [获取磁盘消息]: ./media/howto-attach-disk-window-linux/DiskMessages.png
-  [新建设备]: ./media/howto-attach-disk-window-linux/DiskPartition.png
-  [创建分区]: ./media/howto-attach-disk-window-linux/DiskCylinder.png
-  [列出磁盘信息]: ./media/howto-attach-disk-window-linux/DiskInfo.png
-  [写入磁盘更改]: ./media/howto-attach-disk-window-linux/DiskWrite.png
-  [创建文件系统]: ./media/howto-attach-disk-window-linux/DiskFileSystem.png
+2. 在 SSH 窗口中，键入以下命令，然后输入您创建的用于管理虚拟机的帐户的密码：
+
+	`sudo grep SCSI /var/log/messages`
+
+	你可以在所示消息中找到最后添加的数据磁盘的标识符。
+
+
+
+	![Get the disk messages](./media/howto-attach-disk-window-linux/DiskMessages.png)
+
+
+
+3. 在 SSH 窗口中，键入以下命令以创建新的设备，然后输入帐户密码：
+
+	`sudo fdisk /dev/sdc`
+
+	>[WACOM.NOTE] 在此示例中，您可能需要使用 sudo-i 在某些分发，如果 /sbin 或 /usr/sbin 不在您 $PATH 上。
+
+
+4. 类型**n**若要创建一个新的分区。
+
+
+	![Create new device](./media/howto-attach-disk-window-linux/DiskPartition.png)
+
+5. 类型**p**若要将该分区设置为主分区，键入**1**以使其第一个分区，然后键入 enter 以接受柱面的默认值。
+
+
+	![Create partition](./media/howto-attach-disk-window-linux/DiskCylinder.png)
+
+
+
+6. 键入 **p**以查看有关分区磁盘的详细信息。
+
+
+	![List disk information](./media/howto-attach-disk-window-linux/DiskInfo.png)
+
+
+
+7. 键入 **w** 以写入磁盘的设置。
+
+
+	![Write the disk changes](./media/howto-attach-disk-window-linux/DiskWrite.png)
+
+8. 你必须在新分区上创建文件系统。例如，键入以下命令以创建文件系统中，然后输入帐户密码：
+
+	`sudo mkfs -t ext4 /dev/sdc1`
+
+	![Create file system](./media/howto-attach-disk-window-linux/DiskFileSystem.png)
+
+	>[WACOM.NOTE] 请注意在 SUSE Linux Enterprise 11 系统上提供对于 ext4 文件系统的只读访问权限。这些系统的建议新的文件系统的格式设置为 ext3 而非 ext4。
+
+
+9. 接下来，您必须具有一个目录可用来装载新文件系统。例如，键入以下命令以生成驱动器上，安装新目录，然后输入帐户密码：
+
+	`sudo mkdir /datadrive`
+
+
+10. 键入以下命令以安装驱动器：
+
+	`sudo mount /dev/sdc1 /datadrive`
+
+	数据磁盘现在就可以用作**/datadrive**。
+
+
+11. 将新驱动器添加到 /etc/fstab 中：
+
+	若要确保此驱动器处于重新装载自动重新启动后它必须添加到 /etc/fstab 文件。此外，强烈建议的 UUID （通用唯一标识符） 用于在 /etc/fstab 中引用该驱动器，而不只是设备名称 （即 /dev/sdc1)。若要查找的新的驱动器可以使用 UUID **blkid**实用程序：
+	
+		`sudo -i blkid`
+
+	The output will look similar to the following:
+
+		`/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"`
+		`/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"`
+		`/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"`
+
+	>[WACOM.NOTE] blkid 可能不需要在所有情况下的 sudo 访问权限，但是，则可能是更轻松地使用运行 sudo-i 在某些分发，如果 /sbin 或 /usr/sbin 不在您 $PATH 上。
+
+	**注意：**错误地编辑 /etc/fstab 文件可能会导致系统无法启动。如果无法确定，请参阅有关如何正确编辑该文件的信息的分发的文档。此外建议 /etc/fstab 文件的备份在编辑之前创建。
+
+	使用文本编辑器中，输入 /etc/fstab 文件的结尾处的新文件系统有关的信息。在此示例中我们将使用新的 UUID 值**/dev/sdc1**在前面步骤中，并使用装载点中创建的设备**/datadrive**：
+
+		`UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2`
+
+	或者，在基于 SUSE Linux 上的系统上，您可能需要使用稍有不同的格式：
+
+		`/dev/disk/by-uuid/33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /   ext3   defaults   1   2`
+
+	如果创建其他数据驱动器或分区将需要其输入到单独以及 fstab/等 /。
+
+	现在可以测试已装入文件系统正确通过简单地卸载并重新装载文件系统，即使用该示例装入点 / datadrive' 在前面的步骤中创建： 
+
+		`sudo umount /datadrive`
+		`sudo mount /datadrive`
+
+	如果第二个命令产生错误，请检查 /etc/fstab 文件的语法正确。
+
+
+	>[WACOM.NOTE] 随后在不编辑 fstab 的情况下删除数据磁盘可能会导致 VM 无法引导。如果这是一种常见情况，大多数分发都将提供任一 nofail 和/或 nobootwait fstab 选项，将允许系统在启动即使该磁盘不存在。请有关这些参数的详细信息，参阅你的分发的文档。
+
+
+
+[登录]: /zh-cn/documentation/articles/virtual-machines-log-on-windows-server/
+[logonlinux]: /zh-cn/documentation/articles/virtual-machines-linux-how-to-log-on/
+
+

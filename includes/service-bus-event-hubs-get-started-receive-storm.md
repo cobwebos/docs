@@ -1,30 +1,30 @@
 ﻿## 使用 Apache Storm 接收消息
 
-[**Apache Storm**](https://storm.incubator.apache.org) 是一个分布式实时计算系统，它简化了对未绑定的数据流进行可靠处理的过程。本节演示如何使用事件中心 Storm 喷口从事件中心接收事件。使用 Apache Storm，可以在承载于不同节点的多个进程间拆分事件。事件中心与 Storm 集成后，通过使用风暴的 Zookeeper 安装以透明方式对事件使用进度执行检查点操作、管理持久检查点以及从事件中心并行接收，简化了事件使用。
+[**Apache 风暴**](https://storm.incubator.apache.org)是一个分布式的实时计算系统，简化了不受限制的数据流的可靠的处理。本节演示如何使用事件中心 Storm 喷口从事件中心接收事件。使用 Apache 风暴，您可以将事件拆分跨多个进程中的不同节点承载。与风暴的事件中心集成通过简化了事件耗用速度以透明方式执行检查点操作使用风暴的 Zookeeper 安装、 管理持久检查点其进度并并行接收来自事件中心。
 
-有关事件中心接收模式的详细信息，请参阅[事件中心概述]。
+接收模式的有关事件中心的详细信息，请参阅[事件中心概述]。
 
-本教程使用 [HDInsight Storm 安装]，该安装带有已经可用的事件中心喷口。
+本教程使用[HDInsight 风暴]安装，附带了事件中心作为管口已经可用。
 
-1. 请按照 [HDInsight Storm - 入门](http://www.windowsazure.cn/zh-cn/documentation/articles/hdinsight-storm-getting-started/)过程创建新 HDInsight 群集，并通过远程桌面连接该群集。
+1. 请按照[HDInsight 风暴-开始](http://www.windowsazure.cn/zh-cn/documentation/articles/hdinsight-storm-getting-started/)过程说明如何创建一个新的 HDInsight 群集，以及通过远程桌面连接到它。
 
-2. 将"%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar"文件复制到本地开发环境。其中包含 events-storm-spout。
+2. 将 %storm_home%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar 文件复制到您的本地开发环境。此文件包含事件-风暴-管口。
 
-3. 使用以下命令将程序包安装到本地 Maven 存储中。这样，在稍后的步骤中，你就能够在 Storm 项目中将它添加为引用。
+3. 使用以下命令将程序包安装到您的本地 Maven 存储中。这使您以将其添加为稍后的步骤中的风暴项目中的引用。
 
 		mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
 
-4. 在 Eclipse 中，创建一个新的 Maven 项目（依次单击**"文件"**、**"新建"**、**"项目"**）。
+4. 在 Eclipse 中，创建一个新的 Maven 项目 （单击**文件**，然后**新建**，然后**项目**)。
 
    	![][12]
 
-5. 选择**"使用默认工作区的位置"**，然后单击**"下一步"**
+5. 选择**使用默认工作区位置**，然后单击**下一步**
 
-6. 选择 **maven-archetype-quickstart** archetype，然后单击**"下一步"**
+6. 选择**快速入门 archetype maven**原型，然后单击**下一步**
 
-7. 插入 **GroupId** 和 **ArtifactId**，然后单击**"完成"**
+7. 插入**GroupId**和**ArtifactId**，然后单击**完成**
 
-8. 在 **pom.xml** 中，在"<dependency>"节点中添加以下依赖项。
+8. 在**pom.xml**，在 < 依赖项 > 节点中添加以下依赖关系。
 		
 		<dependency>
 			<groupId>org.apache.storm</groupId>
@@ -54,7 +54,7 @@
 			<scope>provided</scope>
 		</dependency>
 
-9. 在 **src** 文件夹中，创建一个名为 **Config.properties** 的文件，并复制以下内容，替代以下值：
+9. 在**src**文件夹中，创建一个名为文件**Config.properties**并复制以下内容，替换以下值：
 
 		eventhubspout.username = ReceiveRule
 		
@@ -73,9 +73,9 @@
 		
 		eventhub.receiver.credits = 10
 
-	**eventhub.receiver.credits** 的值决定着在被发布到 Storm 管道之前先进行批处理的事件的数量。为简单起见，本示例将此值设置为 10。在实际生产中，它通常应设置为较高的值；例如 1024。
+	值为**eventhub.receiver.credits**确定多少个事件在其发布到风暴管道之前） 均为批处理。为简单起见，本示例将此值设置为 10。在生产中，它应通常设置为较高的值 ；例如，1024年。
 
-10. 使用以下代码创建名为 **LoggerBolt** 的新类：
+10. 创建新的类称为**LoggerBolt**替换为以下代码：
 
 		import java.util.Map;
 		import org.slf4j.Logger;
@@ -112,9 +112,9 @@
 		
 		}
 
-	此 Storm 螺栓记录接收到的事件的内容。在存储服务中，它可以轻松扩展为存储元组。[HDInsight 传感器分析教程]同样使用这种方法将数据存储到 HBase 中。
+	此 Storm 螺栓记录接收到的事件的内容。在存储服务中，它可以轻松扩展为存储元组。[HDInsight 传感器 analysis 教程]使用同样的方法来将数据存储到 HBase。
 
-11. 使用以下代码创建一个名为 **LogTopology** 的类：
+11. 创建一个名为类**LogTopology**替换为以下代码：
 
 		import java.io.FileReader;
 		import java.util.Properties;
@@ -217,12 +217,12 @@
 		}
 
 
-	此类创建新事件中心喷管，使用配置文件中的属性对它进行实例化。请务必注意：此示例创建喷管的数量与事件中心中分区的数量相同，其目的是为了使用该事件中心允许的最大并行度。
+	此类创建新的事件中心管口，在配置中使用的属性文件 instatiate 到它。请务必注意此示例创建作为事件集线器中的分区数一样多的 spouts 任务才能使用该事件中心所允许的最大并行度。
 
 <!-- Links -->
 [事件中心概述]: http://msdn.microsoft.com/zh-cn/library/azure/dn821413.aspx
-[HDInsight Storm]: http://www.windowsazure.cn/zh-cn/documentation/articles/hdinsight-storm-overview/
-[HDInsight 传感器分析教程]: http://www.windowsazure.cn/zh-cn/documentation/articles/hdinsight-storm-sensor-data-analysis/
+[HDInsight 风暴]: http://www.windowsazure.cn/zh-cn/documentation/articles/hdinsight-storm-overview/
+[HDInsight 传感器 analysis 教程]: http://www.windowsazure.cn/zh-cn/documentation/articles/hdinsight-storm-sensor-data-analysis/
 
 <!-- Images -->
 
