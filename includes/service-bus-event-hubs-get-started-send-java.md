@@ -1,17 +1,17 @@
-﻿## 将消息发送到事件中心
-在本节中，我们将编写用于将事件发送到事件中心的 Java 控制台应用。我们将使用 JMS AMQP 提供程序从[Apache Qpid 项目](http://qpid.apache.org/)。这是类似于与 AMQP 通过 Java 使用 Service Bus 队列和主题，如所示[此处](http://www.windowsazure.cn/zh-cn/documentation/articles/service-bus-java-how-to-use-jms-api-amqp/)。有关详细信息，请参阅[Qpid JMS 文档](http://qpid.apache.org/releases/qpid-0.30/programming/book/QpidJMS.html)和[Java 消息服务](http://www.oracle.com/technetwork/java/jms/index.html)。
+## 将消息发送到事件中心
+在本节中，我们将编写用于将事件发送到事件中心的 Java 控制台应用。我们将从 [Apache Qpid 项目](http://qpid.apache.org/)中利用 JMS AMQP 提供程序。这类似于通过 Java 将服务总线队列和主题与 AMQP 配合使用，如[此处](http://www.windowsazure.cn/zh-cn/documentation/articles/service-bus-java-how-to-use-jms-api-amqp/)所示。有关详细信息，请参阅 [Qpid JMS 文档](http://qpid.apache.org/releases/qpid-0.30/programming/book/QpidJMS.html)和 [Java 消息服务](http://www.oracle.com/technetwork/java/jms/index.html)。
 
-1. 在 Eclipse 中，创建一个名为新的 Java 项目**发件人**。
+1. 在 Eclipse 中，创建一个名为 **Sender** 的新 Java 项目。
 
-2. 下载最新版本的**Qpid JMS AMQP 1.0**库从[此处](http://qpid.apache.org/components/qpid-jms/index.html)。
+2. 从[此处](http://qpid.apache.org/components/qpid-jms/index.html)下载 **Qpid JMS AMQP 1.0** 库的最新版本。
 
-3. 从存档中解压缩文件并将以下 jar 从存档 qpid-amqp-1-0-client-jms\ < 版本 > \lib 目录复制到您的 Eclipse**发件人**项目。
+3. 从存档中提取文件，并将以下 jar 从存档  `qpid-amqp-1-0-client-jms\<version>\lib` 目录复制到您的 Eclipse **Sender** 项目。
 
-4. 在 Eclipse 包资源管理器中，右键单击**发件人**项目，然后选择**属性**。在该对话框的左窗格中，单击**Java 生成路径**，然后单击**库**选项卡上，然后**添加 Jar**按钮。选择以前已复制的所有 jar，然后单击**确定**。
+4. 在 Eclipse 程序包资源管理器中，右键单击 **Sender** 项目，然后选择"属性"****。在对话框的左侧窗格中，依次单击"Java 生成路径"****、"库"****选项卡和"添加 JAR"****按钮。选择以前已复制的所有 jar，然后单击"确定"****。
 
 	![][8]
 
-5. 创建一个名为文件**servicebus.properties**根目录中的**发件人**项目中的，使用以下内容。请记住要替换的值为您的事件集线器名称和命名空间名称 （通常是后者 `{事件集线器名称}-ns`)。您还必须替换的密钥的 URL 编码版本**SendRule**之前创建。您可以进行 URL 编码它[此处](http://www.w3schools.com/tags/ref_urlencode.asp)。
+5. 在 **Sender** 项目的根目录中，创建一个名为 **servicebus.properties** 的文件，其内容如下。请记得替换事件中心名称和命名空间名称（后者通常为 `{event hub name}-ns`)）的值。还必须为之前创建的 **SendRule** 替换密钥的 URL 编码版本。可以在[此处](http://www.w3schools.com/tags/ref_urlencode.asp)对它进行 URL 编码。.
 
 		# servicebus.properties - sample JNDI configuration
 
@@ -24,7 +24,7 @@
 		# topic.[jndi_name] = [physical_name]
 		queue.EventHub = {event hub name}
 
-5. 创建一个新的类，名为**发件人**。将下面的导入语句添加：
+5. 创建名为 **Sender** 的新类。添加以下  `import` 语句：
 
 		import java.io.BufferedReader;
 		import java.io.IOException;
@@ -93,3 +93,4 @@
 
 <!-- Images -->
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-java1.png
+<!--HONumber=41-->

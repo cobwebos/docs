@@ -1,13 +1,13 @@
-﻿###通过 Composer 安装
+###通过 Composer 安装
 
-1. [安装 Git][安装 git]。
+1. [安装 Git][install-git]。
 
 	<div class="dev-callout"> 
-	<b>说明</b> 
-	<p>在 Windows 上，您还需要将 Git 可执行文件添加到您的 PATH 环境变量。</p>
+	<b>注意</b>
+	<p>在 Windows 上，您还需要向您的 PATH 环境变量添加 Git 可执行文件。</p>
 	</div>
 
-2. 创建一个名为文件**composer.json**根目录中的项目并向其中添加以下代码：
+2. 在您的项目的根目录中创建一个名为 **composer.json** 的文件并向其添加以下代码：
 
 		{
 			"require": {
@@ -22,7 +22,7 @@
 			"minimum-stability": "dev"
 		}
 
-3. 下载**[composer.phar][编辑器 phar]**项目根目录中。
+3. 将 **[composer.phar][composer-phar]** 下载到项目根目录中。
 
 4. 打开命令提示符并在项目根目录中执行该文件
 
@@ -30,22 +30,23 @@
 
 ###手动安装
 
-若要手动下载并安装用于 Azure 的 PHP 客户端库，请按照下列步骤：
+若要手动下载并安装用于 Azure 的 PHP 客户端库，请执行以下步骤：
 
-1. 下载包含从库的.zip 存档[GitHub][php sdk-github]。或者，分叉存储库，并将其克隆到您的本地计算机。（后一种方法需要一个 GitHub 帐户并已在本地安装 git。）
+1. 下载包含 [GitHub][php-sdk-github] 中的库的 .zip 存档。或者，复制现有存储库并将其克隆到您的本地计算机。（后一种选择需要一个 GitHub 帐户并要求已在本地安装 Git。）
 
 	<div class="dev-callout"> 
-	<b>说明</b> 
-	<p>用于 Azure 的 PHP 客户端库有依赖关系<a href="http://pear.php.net/package/HTTP_Request2">HTTP_Request2</a>， <a href="http://pear.php.net/package/Mail_mime">Mail_mime</a>，和<a href="http://pear.php.net/package/Mail_mimeDecode">Mail_mimeDecode</a> PEAR 包。若要解决这些依赖关系的推荐的方法是将使用这些程序包安装<a href="http://pear.php.net/manual/en/installation.php">PEAR 包管理器</a>。</p> 
+	<b>注意</b>
+	<p>用于 Azure 的 PHP 客户端库依赖于 <a href="http://pear.php.net/package/HTTP_Request2">HTTP_Request2</a>、<a href="http://pear.php.net/package/Mail_mime">Mail_mime</a> 和 <a href="http://pear.php.net/package/Mail_mimeDecode">Mail_mimeDecode</a> PEAR 包。若要解决这些依赖关系，建议使用 <a href="http://pear.php.net/manual/en/installation.php">PEAR 包管理器</a>安装这些包。</p> 
 	</div>
 
 
-2. 复制`WindowsAzure`到您的应用程序目录结构已下载存档的目录。
+2. 将已下载存档的  `WindowsAzure` 目录复制到您的应用程序目录结构中。
 
-有关安装用于 Azure （包括信息有关作为 PEAR 包安装） 的 PHP 客户端库的详细信息，请参阅[下载 Azure SDK for PHP][下载 SDK PHP]。
+有关安装用于 Azure 的 PHP 客户端库的更多信息（包括安装为 PEAR 包的信息），请参阅[下载 Azure SDK for PHP][download-SDK-PHP]。
 
 
-[php sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
-[安装 git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[下载 SDK PHP]: ../php-download-sdk/
-[编辑器 phar]: http://getcomposer.org/composer.phar
+[php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
+[install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+[download-SDK-PHP]: ../php-download-sdk/
+[composer-phar]: http://getcomposer.org/composer.phar
+<!--HONumber=41-->

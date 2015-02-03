@@ -1,296 +1,624 @@
-# Introducing Azure
+# 介绍 Microsoft Azure
 
-Azure is Microsoft's application platform for the public cloud. You can use this platform in many different ways. For instance, you can use Azure to build a web application that runs and stores its data in Azure datacenters. You can use Azure just to store data, with the applications that use this data running on-premises (that is, outside the public cloud). You can use Azure to create virtual machines for development and test or to run SharePoint and other applications. You can use Azure to build massively scalable applications with lots and lots of users. Because the platform offers a wide range of services, all of these things-and more-are possible.
+Microsoft Azure 是 Microsoft 为公有云提供的应用程序平台。本文的目的是使您以此为基础来了解 Azure 的基础知识，即使您对云计算毫无了解。
 
-To do any of them, though, you need to understand the basics. Even if you don't know anything about cloud computing, this article will walk you through the fundamentals of Azure. The goal is to give you a foundation for understanding and using this cloud platform.
+**如何阅读本文**
 
+Azure 一直在发展，因此信息很容易过载。基本服务列在文章的前面。仅从这些服务开始入手，然后再了解其他服务。这并不意味着您不能只使用其他服务本身，而是因为基本服务构成了在 Azure 中运行的应用程序的核心。 
 
-## Table of Contents
+**提供反馈**
 
--   [The Components of Azure](#components)
--   [Execution Models/Compute](#models)
--   [Data Management](#data)
--   [Networking](#networking)
--   [Business Analytics](#analytics)
--   [Messaging](#messaging)
-<!--
--   [Caching](#caching)
--->
--   [Identity](#identity)
-<!--
--   [High-Performance Computing (HPC)](#HPC)
--   [Media](#media)
--->
--   [Commerce](#commerce)
--   [SDKs](#sdk)
--   [Getting Started](#start)
+您的反馈非常重要。本文应为您提供有效的 Azure 概览。如果并未如此，请通过页面底部的评论部分告知我们。请提供一些有关您希望阅读的内容以及如何改进本文的详细信息。  
+   
 
+## 目录
 
+**基本服务**
+-   [Azure 的组件](#components)
+-   [管理门户](#portal)
+-   [计算](#compute)
+-   [数据管理](#data)
+-   [联网](#networking)
+-   [开发人员服务](#DevService)
 
+**其他服务**
+-   [标识和访问](#identity)
+-   [移动](#mobile)
+-   [备份](#backup)
+-   [消息传送和集成](#messaging)
+-   [计算协助](#ComputeAssist)
+-   [性能](#Performance)
+-   [大型计算和数据](#BigStuff)
+-   [媒体](#media)
+-   [商务](#commerce)
 
-<h2><a id="components"></a>The Components of Azure</h2>
+[入门](#start)
 
-To understand what Azure offers, it's useful to group its
-services into distinct categories. Figure 1 shows one way to do this.
-
-![Azure components](./media/intro-to-azure/IntroAzure1.png)   
- **Figure 1: Azure provides Internet-accessible application services running in Azure datacenters.**
-
-To get started with Azure, you need to know at least the basics about each of its components.You can also use the [What Is Azure Poster](http://www.microsoft.com/zh-cn/download/details.aspx?id=35473) for a quick, visual way to get an overview. The colors of the boxes in Figure 1 correspond to their grouping on the poster.
-
-The rest of this article walks through the technologies shown in the figure, describing what each one offers and when you might use it.
-
-
-
-<h2><a id="models"></a>Execution Models / Compute</h2>
-
-One of the most basic things a cloud platform does is execute applications. Azure provides four options for doing this: Virtual Machines, Cloud Services, and Web Sites.  Each of the Azure execution models has its own role to play.
-
-Azure Virtual Machines provides a general-purpose on-demand computing environment. Cloud Services is a great choice for creating scalable, reliable applications with low administration costs. Azure Web Sites offers a range of applications, frameworks, and templates for you to build large, scalable web applications and presence web sites quickly, and then efficiently manage development, test, and operations.
-
-You can use these technologies separately or combine them as needed to create the right foundation for your application. The approach you choose depends on what problems you're trying to solve.
-
-
-###Virtual Machines###
-
-The ability to create a virtual machine on demand, whether from a standard image or from one you supply, can be very useful. Add the ability to pay for this VM by the minute and only while it's running, and it's even more useful. This approach, commonly known as Infrastructure as a Service (IaaS), is what Azure Virtual Machines provides. 
-
-To create a VM, you specify which VHD to use and the VM's size. You then pay for the time that the VM is running. Azure Virtual Machines offers a gallery of stock VHDs. These include Microsoft-provided options, such as Windows Server 2008 R2, Windows Server 2012, and Windows Server 2008 R2 with SQL Server, along with Linux images provided by Microsoft partners. You're free to create VMs from your own VHDs and add them to the gallery as well.
  
-Wherever the image comes from, you can persistently store any changes made while a VM is running. The next time you create a VM from that VHD, things pick up where you left off. It's also possible to copy the changed VHD out of Azure, then run it locally.
+<h2><a id="components"></a>Azure 的组件</h2>
 
-Azure VMs can be used in many different ways. You might use them to create an inexpensive development and test platform that you can shut down when you've finished using it. You might also create and run applications that use whatever languages and libraries you like. Those applications can use any of the data management options that Azure provides, and you can also choose to use SQL Server or another DBMS running in one or more virtual machines. Another option is to use Azure VMs as an extension of your on-premises datacenter, running SharePoint or other applications. To support this, it's possible to create Windows domains in the cloud by running Active Directory in Azure VMs. This quite general approach to cloud computing can be used to address many different problems. What you do is up to you.
+在管理门户中，Azure 将服务分组为不同类别和各种视觉帮助（例如，[什么是 Windows Azure 信息图](http://azure.microsoft.com/zh-cn/documentation/infographics/azure/ "What Is Microsoft Azure Poster Infographic")。管理门户可用于管理 Azure 中的大多数（并非所有）服务。 
 
-###Web Sites###
+本文将使用**不同的组织**来讨论基于相似功能的服务，并着重介绍大型服务所包含的重要子服务。  
 
-One of the most common things that people do in the cloud is run web sites and web applications. Azure Virtual Machines allows this, but it still leaves you with the responsibility of administering one or more VMs. What if you just want a web site where somebody else takes care of the administrative work for you?
+![Azure 组件](./media/intro-to-azure/AzureComponentsIntroNew780.png)   
+ **图：Azure 提供在 Azure 数据中心运行的可访问 Internet 的应用程序服务。**
 
-This is exactly what Azure Web Sites provides. This execution model offers a managed web environment using the Azure Management portal as well as APIs. You can move an existing web site into Azure Web Sites unchanged, or you can create a new one directly in the cloud. Once a web site is running, you can add or remove instances dynamically, relying on Azure Web Sites to load balance requests across them. Azure Web Sites offers both a shared option, where your web site runs in a virtual machine with other sites, and a standard option that allows a site to run in its own VM. The standard option also lets you increase the size (computing power) of your instances if needed.
+<h2><a id="portal"></a>管理门户</h2>
+Azure 提供一个 Web 接口（称为[管理门户](http://manage.windowsazure.com) 允许管理员访问和管理大多数（并非所有）Azure 功能。Microsoft 通常会在停用旧版本之前发布新 UI 门户测试版。新版本称为["Azure 预览门户"](https://portal.azure.com/). 
 
-Azure Web Sites is intended to be useful for corporations, developers, and web design agencies. For corporations, it's an easy-to-manage, scalable, highly secure, and highly available solution for running presence web sites. For development, it supports .NET, PHP, Node.js, and Python along with SQL Database and MySQL (from ClearDB, a Microsoft partner) for relational storage. It also provides built-in support for several popular applications, including WordPress, Joomla, and Drupal. The goal is to provide a low-cost, scalable, and broadly useful platform for creating web sites and web applications in the public cloud.
-
-###Cloud Services###
-
-Suppose you want to build a cloud application that can support lots of simultaneous users, doesn't require much administration, and never goes down. You might be an established software vendor, for example, that's decided to embrace Software as a Service (SaaS) by building a version of one of your applications in the cloud. Or you might be a start-up creating a consumer application that you expect will grow fast. If you're building on Azure, which execution model should you use?
-
-Azure Web Sites allows creating this kind of web application, but there are some constraints. You don't have administrative access, for example, which means that you can't install arbitrary software.  Azure Virtual Machines gives you lots of flexibility, including administrative access, and you certainly can use it to build a very scalable application, but you'll have to handle many aspects of reliability and administration yourself. What you'd like is an option that gives you the control you need but also handles most of the work required for reliability and administration.
-
-This is exactly what's provided by Azure Cloud Services. This technology is designed expressly to support scalable, reliable, and low-admin applications, and it's an example of what's commonly called Platform as a Service (PaaS). To use it, you create an application using the technology you choose, such as C#, Java, PHP, Python, Node.js, or something else. Your code then executes in virtual machines (referred to as instances) running a version of Windows Server. 
-
-But these VMs are distinct from the ones you create with Azure Virtual Machines. For one thing, Azure itself manages them, doing things like installing operating system patches and automatically rolling out new patched images. (This implies that your application shouldn't maintain state in web or worker role instances; it should instead be kept in one of the Azure data management options described in the next section.) Azure also monitors the VMs, restarting any that fail. 
-
-You have two roles to choose from when you create an instance, both based on Windows Server. The main difference between the two is that an instance of a web role runs IIS, while an instance of a worker role does not. Both are managed in the same way, however, and it's common for an application to use both. For example, a web role instance might accept requests from users, then pass them to a worker role instance for processing. To scale your application up or down, you can request that Azure create more instances of either role or shut down existing instances. And similar to Azure Virtual Machines, you're charged only for the time that each web or worker role instance is running. 
-
-<!--
-###Mobile Services###
-
-If you are creating an app for a mobile device, Azure Mobile Services accelerates development by providing turnkey way to store data in the cloud, authenticate users, and send push notifications.  
-Native client libraries for Android, iOS, HTML/JavaScript, Windows Phone, and Windows Store make it easy to power apps available on all major mobile platforms.  An open and flexible REST API also enables you to use Mobile Services data and authentication functionality with apps on almost any platform.  A single Mobile Service can back multiple client apps so you can provide a consistent user experience across devices. 
-
-Mobile Services allows you to do simple provisioning and management of data stored in a SQL Database, authenticate users through well-known identity providers like Facebook, Twitter, Microsoft or Google account, and use notification services to deliver push notifications to your app. With server-side code you can easily use additional data storage options like blob storage or MongoDB, consume Add-Ons from the Azure Store like SendGrid or Pusher, use other Azure Services like Service Bus and worker roles, or even connect to on-premises systems.  A service can be scaled as an app becomes more popular, and monitoring and logging are supported.
-
-While you can certainly build the backend for a mobile app using Virtual Machines, Cloud Services or Web Sites, by opting for Mobile Services you can spend much less time writing the underlying service components.
--->
-
-<h2><a id="data"></a>Data Management</h2>
-
-Applications need data, and different kinds of applications need different kinds of data. Because of this, Azure provides several different ways to store and manage data. 
-
-One of these has already been mentioned: the ability to run SQL Server or another DBMS in a VM created with Azure Virtual Machines. (It's important to realize that this option isn't limited to relational systems; you're also free to run NoSQL technologies such as MongoDB and Cassandra.) Running your own database system is straightforward-it replicates what we're used to in our own datacenters-but it also requires handling the administration of that DBMS. To make life easier, Azure provides three data management options that are largely managed for you. Figure 2 shows the choices.
+通常这两个门户将长时间共同处于活动状态。虽然核心服务均会显示在这两个门户中，但这两个门户并非均提供所有功能。新服务可能首先显示在新门户中，而旧的服务和功能可能仅显示在旧门户中。也就是说，如果您在旧门户中找不到某些内容，请在新门户中查找，反之亦然。 
 
 
-![Azure data management](./media/intro-to-azure/IntroAzure3.png)   
- **Figure 2: For data management, Azure provides relational storage, scalable NoSQL tables, and unstructured binary storage.**
+<h2><a id="compute"></a>计算</h2>
 
-Each of the three options addresses a different need: relational storage, fast access to potentially large amounts of simple typed data, and unstructured binary storage. In all three cases, data is automatically replicated across three different computers in an Azure datacenter to provide high availability. It's also worth pointing out that all three options can be accessed either by Azure applications or by applications running elsewhere, such as your on-premises datacenter, your laptop, or your phone. And however you apply them, you pay for all Azure data management services based on usage, including a gigabyte-per-month charge for stored data. 
+云平台所执行的最基本任务之一是执行应用程序。Azure 提供了以下选项： 
 
-###SQL Database###
+1.	"虚拟机"使您能够控制自己的虚拟机（包括操作系统）。 
+2.	"网站"提供了广泛的应用程序、框架和模板，使您能够快速构建可缩放的大型 Web 应用程序和现有网站，然后高效地管理部署、测试和操作。
+3.	"云服务"是经过优化的"平台即服务"(PaaS) 选项，可用于创建高度可缩放和可防止故障的应用程序，并且具有比"网站"更大的灵活性。 
 
-For relational storage, Azure provides SQL Database. Formerly called SQL Azure, SQL Database provides all of the key features of a relational database management system, including atomic transactions, concurrent data access by multiple users with data integrity, ANSI SQL queries, and a familiar programming model. Like SQL Server, SQL Database can be accessed using Entity Framework, ADO.NET, JDBC, and other familiar data access technologies. It also supports most of the T-SQL language, along with SQL Server tools such as SQL Server Management Studio. For anybody familiar with SQL Server (or another relational database), using SQL Database is straightforward.
+每一种 Azure 执行模型都各有各的作用。 
 
-But SQL Database isn't just a DBMS in the cloud-it's a PaaS service. You still control your data and who can access it, but SQL Database takes care of the administrative grunt work, such as managing the hardware infrastructure and automatically keeping the database and operating system software up to date. SQL Database also provides a federation option that distributes data across multiple servers. This is useful for applications that work with large amounts of data or need to spread data access requests across multiple servers for better performance.
-
-If you're creating an Azure application (using any of the three execution models) that needs relational storage, SQL Database can be a good option. Applications running outside the cloud can also use this service, though, so there are plenty of other scenarios. For instance, data stored in SQL Database can be accessed from different client systems, including desktops, laptops, tablets, and phones. And because it provides built-in high availability through replication, using SQL Database can help minimize downtime.
-
-###Tables###
-
-Suppose you want to create an Azure application that needs fast access to typed data, maybe lots of it, but doesn't need to perform complex SQL queries on this data. For example, imagine you're creating a consumer application that needs to store customer profile information for each user. Your app is going to be very popular, so you need to allow for lots of data, but you won't do much with this data beyond storing it, then retrieving it in simple ways. This is exactly the kind of scenario where Azure Tables makes sense.
-
-Don't be confused by the name: this technology doesn't provide relational storage. (In fact, it's an example of a NoSQL approach called a key/value store.) Instead, Azure Tables let an application store properties of various types, such as strings, integers, and dates. An application can then retrieve a group of properties by providing a unique key for that group. While complex operations like joins aren't supported, tables offer fast access to typed data. They're also very scalable, with a single table able to hold as much as a terabyte of data. And matching their simplicity, tables are usually less expensive to use than SQL Database's relational storage. 
-
-###Blobs###
-
-The third option for data management, Azure Blobs, is designed to store unstructured binary data. Like Tables, Blobs provides inexpensive storage, and a single blob can be as large as one terabyte. An application that stores video, for example, or backup data or other binary information can use blobs for simple, cheap storage. Azure applications can also use Azure drives, which let blobs provide persistent storage for a Windows file system mounted in an Azure instance. The application sees ordinary Windows files, but the contents are actually stored in a blob.
+您可以根据需要单独或组合使用这些技术来为您的应用程序打下正确的基础。您选择哪种方法取决于您要解决什么问题。
 
 
-<h2><a id="networking"></a>Networking</h2>
+###Azure 虚拟机###
 
-Azure runs today in several datacenters spread across the United States, Europe, and Asia. When you run an application or store data, you can select one or more of these datacenters to use. You can also connect to these datacenters in various ways:
+![Azure 虚拟机](./media/intro-to-azure/VirtualMachinesIntroNew.png)   
+**图：Azure 虚拟机使您能够完全控制云中的虚拟机实例。** 
 
-- You can use Azure Virtual Network to connect your own on-premises local network to a defined set of Azure VMs.
+可以按需创建一个虚拟机（无论是从标准映像还是从您提供的映像），此功能非常有用。这种方法通常称为"基础结构即服务"(IaaS)，由"Azure 虚拟机"提供。图 2 显示了虚拟机 (VM) 的运行方式以及如何从 VHD 创建虚拟机。  
 
-- If your Azure application is running in multiple datacenters, you can use Azure Traffic Manager to route requests from users intelligently across instances of the application.
+要创建一个 VM，需要指定使用哪一个 VHD 以及 VM 的大小。接下来，为 VM 运行的时间付费。您可以按分钟和仅按其运行时间支付，不过为了保持 VHD 可用，您需要支付最低存储费用。Azure 提供了一个存储 VHD（称为"映像"）库，该库包含一个用于启动的可启动操作系统。其中包括 Microsoft 和合作伙伴选项，例如 Windows Server 和 Linux、SQL Server、Oracle 等等。您可以自由创建 VHD 和映像，然后自行上载。您甚至可以上载仅包含数据的 VHD，然后从正在运行的 VM 访问它们。 
 
-Figure 3 illustrates these options.
+无论 VHD 来自何处，您都可以在 VM 运行的同时永久存储所做的任何更改。下次从该 VHD 创建 VM 时，将从中断的地方开始。备份虚拟机的 VHD 存储在 Azure 存储 Blob 中，我们将在稍后进行介绍。这意味着您完全可以确保您的 VM 不会由于硬件和磁盘故障而丢失。也可以从 Azure 中复制更改的 VHD，然后在本地运行。 
+ 
+您的应用程序可在一个或多个虚拟机中运行，具体取决于您之前创建它的方式或取决于您是否决定现在就从头开始创建。 
 
-![Azure networking](./media/intro-to-azure/IntroAzure4.png)   
- **Figure 3: Azure allows creating a cloud VPN, and intelligently distributing user requests across different datacenters.**
+可以用这种相当通用的云计算方法来处理许多不同问题。 
 
-###Virtual Network###
+**虚拟机方案**
 
-One useful way to use a public cloud is to treat it as an extension of your own datacenter. Because you can create VMs on demand, then remove them (and stop paying) when they're no longer needed, you can have computing power only when you want it. And since Azure Virtual Machines lets you can create VMs running SharePoint, Active Directory, and other familiar on-premises software, this approach can work with the applications you already have.
+1.	**开发/测试** - 可以使用它们创建廉价的开发和测试平台，用完后即可关闭它。也可以创建和运行使用您喜欢的任何语言和库的应用程序。这些应用程序可以使用 Azure 提供的任何数据管理选项，并且您还可以选择使用 SQL Server 或在一个或多个虚拟机中运行的另一个 DBMS。 
+2.	**将应用程序移动到 Azure（提升后转移）** - "提升后转移"指的是移动应用程序与使用铲车移动大型物体十分相似。您从本地数据中心"提升"VHD，然后将它"转移"到 Azure 并在其中运行。您通常需要执行一些操作来删除与其他系统的依赖关系。如果依赖关系过多，您可以改为选择选项 3。  
+3.	**扩展您的数据中心** - 使用 Azure VM 作为您的本地数据中心的扩展，运行 SharePoint 或其他应用程序。为支持此功能，可以通过在 Azure VM 中运行 Active Directory 来在云中创建 Windows 域。您可以使用 Azure 虚拟网络（稍后提及）将您的本地网络和 Azure 中的网络关联在一起。
+ 
 
-To make this really useful, though, your users ought to be able to treat these applications as if they were running in your own datacenter. This is exactly what Azure Virtual Network allows. Using a VPN gateway device, an administrator can set up a virtual private network (VPN) between your local network and a defined group of VMs running in Azure. Because you assign your own IP v4 addresses to the cloud VMs, they appear to be on your own network. Users in your organization can access the applications those VMs contain as if they were running locally.
-<!--
+
+###网站###
+
+![Azure 网站](./media/intro-to-azure/AzureWebsitesIntroNew.png)   
+ **图："Azure 网站"在云中运行网站应用程序而无需管理底层 Web 服务器。**
+
+人们在云中最常做的事情之一是运行网站和 Web 应用程序。虽然 Azure 虚拟机允许此操作，但仍由您负责管理一个或多个 VM 和底层操作系统。"云服务"Web 角色可以完成此操作，但部署和维护它们仍需要进行管理工作。如果您只需要一个由别人代您负责管理工作的网站，该怎么办？
+
+这正是 Azure 网站所提供的内容。此计算模型使用 Azure 管理门户以及 API 提供托管 Web 环境。您可以将现有网站原封不动地移动到 Azure 网站，或者直接在云中创建一个新网站。网站开始运行后，您可以动态添加或删除实例，依靠 Azure 网站在实例间对请求进行负载平衡。Azure 网站既提供一个共享选项，使您的网站与其他站点一起在一个虚拟机中运行，也提供让您的网站在自己的虚拟机中运行的标准选项。通过该标准选项，您还可以在需要时增加实例的大小（计算能力）。
+
+在开发方面，"网站"支持使用 .NET、PHP、Node.js、Java、Python 以及 SQL Database 和 MySQL（来自 Microsoft 合作伙伴 ClearDB）执行关系存储。它还为几个流行的应用程序（包括 WordPress、Joomla 和 Drupal）提供内置支持。其目标是为在公有云中创建网站和 Web 应用程序提供一个低成本、可缩放且广泛适用的平台。
+
+
+**网站方案**
+
+"网站"旨在使公司、开发人员和 Web 设计机构都能利用它。对于公司而言，它是用于运行现有网站的易于管理、可缩放、高度安全且高度可用的解决方案。当您需要设置网站时，最好从 Azure 网站开始，当需要使用"网站"中未提供的功能时再继续进行到"云服务"。请参阅"计算"一节的末尾部分，获取更多可帮助您在选项之间做出选择的链接。 
+
+###云服务###
+![Azure 云服务](./media/intro-to-azure/CloudServicesIntroNew.png)   
+**图：Azure 云服务提供了一个位置，以便在"平台即服务"(PaaS) 环境中运行高度可伸缩的自定义代码**
+
+假设您要构建一个云应用程序，它可以支持大量并发用户、无需太多管理且从不出故障。例如，您可能是一家较成熟的软件供应商，您决定通过在云中构建您应用程序之一的某个版本来包含"软件即服务"(SaaS)。或者，您可能是一家初创公司，您创建了一个预计会快速普及的使用者应用程序。如果在 Azure 上构建，应使用哪个执行模型？
+
+Azure 网站允许创建这种 Web 应用程序，但存在一些限制。例如，您没有管理访问权限，这意味着您不能随意安装软件。Azure 虚拟机模型为您提供了极大的灵活性，包括管理访问权限，您当然可以用它来构建高度可缩放的应用程序，但您必须自己处理可靠性和管理方面的诸多工作。您希望的选项应当是既能赋予您控制能力，又能处理可靠性和管理所需的大部分工作。
+
+这正是 Azure 云服务所提供的内容。此技术明确用于支持可缩放、可靠且管理任务不多的应用程序，它也是通常称为"平台即服务"(PaaS) 的一个示例。要使用该服务，可以使用所选择的技术（如 C#、Java、PHP、Python、Node.js 或其他技术）创建一个应用程序。然后，您的代码在运行某个 Windows Server 版本的虚拟机（称为实例）中执行。 
+
+但这些 VM 有别于您使用 Azure 虚拟机创建的 VM。首先，Azure 本身管理它们，执行如安装操作系统修补程序并自动推出新修补的映像等操作。这意味着您的应用程序不应保持 Web 或辅助角色实例中的状态；而应使用下一节中描述的 Azure 数据管理选项之一。Azure 也监视 VM，重新启动任何出现故障的 VM。您可以将云服务设置为自动创建更多或更少的实例以响应请求。这使您能够处理增长的使用量，然后相应缩减，以便在使用量较少时无需支付同样多的费用。 
+
+在创建实例时您有两个角色可以选择，两者都基于 Windows Server。二者间的主要区别是，Web 角色的实例运行 IIS，而辅助角色的实例则不然。但是，管理两个角色的方式相同，而一个应用程序常常同时使用这两者。例如，一个 Web 角色实例可能会接受来自用户的请求，然后将它们传递给辅助角色实例进行处理。若要向上或向下扩展您的应用程序，可以请求 Azure 创建任一角色的更多实例，或关闭现有的实例。与 Azure 虚拟机相似，只针对运行每个 Web 角色实例或辅助角色实例的时间向您收费。 
+
+**云服务方案**
+
+当您需要除 Azure 网站所提供的控制外，更多的对平台的控制，但无需控制底层操作系统时，云服务是支持大规模向外扩展的理想选择。 
+
+####选择计算模型####
+"Azure 网站、云服务和虚拟机比较"页面 (http://azure.microsoft.com/zh-cn/documentation/articles/choose-web-site-cloud-service-vm/ ) 提供了有关如何选择计算模型的详细信息。
+
+
+
+
+<h2><a id="data"></a>数据管理</h2>
+
+应用程序需要数据，不同类型的应用程序需要不同类型的数据。因此，Azure 提供了几种不同方法来存储和管理数据。Azure 提供了多个存储选项，但所有选项都旨在用于非常持久的存储。在上述任何选项中，有 3 个数据的副本始终在 Azure 数据中心内保持同步 -- 如果您允许 Azure 使用地域冗余，以便将数据备份到至少 300 英里以外的另一个数据中心，则为 6 个副本。     
+
+
+###在虚拟机中###
+已经提到过，可以在使用 Azure 虚拟机创建的 VM 中运行 SQL Server 或另一个 DBMS。请注意，此选项不限于关系系统；您也可以自由地运行 NoSQL 技术，如 MongoDB 和 Cassandra。运行自己的数据库系统最直截了当，就是将我们使用的东西复制到我们自己的数据中心，但仍需要处理该 DBMS 的管理任务。在其他选项中，Azure 将为您处理更多或全部管理工作。 
+
+同样，虚拟机和任何您创建或上载的附加数据磁盘的状态由 Blob 存储（将在稍后进行介绍）备份。  
+
+
+###Azure SQL Database###
+![Azure 存储 SQL Database](./media/intro-to-azure/StorageAzureSQLDatabaseIntroNew.png)   
+**图：Azure SQL Database 提供在云中托管的关系数据库服务。** 
+
+对于关系存储，Azure 提供了 SQL Database 功能。不要让命名欺骗您。这不同于在 Windows 服务器上运行的 SQL Server 所提供的典型 SQL Database。  
+
+Azure SQL Database 以前称为 SQL Azure，它提供关系数据库管理系统的所有关键功能，包括原子事务、具有数据完整性约束的多用户并发数据访问、ANSI SQL 查询和大家所熟知的编程模型。和 SQL Server 相同，也可以使用 Entity Framework、ADO.NET、JDBC 和其他常见数据访问技术访问 SQL Database。SQL Database 还支持大部分的 T-SQL 语言以及 SQL Server 工具（如 SQL Server Management Studio）。对于熟悉 SQL Server（或其他关系数据库）的用户而言，使用 SQL Database 很简单。
+
+但 SQL Database 在云中不只是一个 DBMS，它还是一个 PaaS 服务。虽然您仍然控制着您的数据以及谁可以访问该数据，但 SQL Database 负责管理方面的基础工作，例如管理硬件基础架构，并自动保持数据库和操作系统软件处于最新状态。SQL Database 还提供了高度可用性、自动备份、时间点还原功能，并可以跨地理区域复制副本。  
+
+此外，还有一个"高级"选项，您可以支付稍微多一些的费用，就能够拥有自己的底层专用服务器。使用"标准"选项，数据库将在共享的硬件上运行，如果恰巧是在特别繁忙的服务器上运行，这将会限制您的数据库查询。  
+
+**SQL Database 的方案**
+
+如果您要创建需要关系存储的 Azure 应用程序（使用计算模型中的任何一个），则 SQL Database 可能是一个不错的选择。但是，在云外运行的应用程序也可以使用该服务，所以还有很多其他方案。例如，可以从不同客户端系统（包括台式机、笔记本电脑、平板电脑和手机）访问存储在 SQL Database 中的数据。而且，因为它通过复制提供内置的高可用性，所以使用 SQL Database 有助于减少停机时间。
+
+
+###表###
+![Azure 存储表](./media/intro-to-azure/StorageTablesIntroNew.png)    
+**图：Azure 表提供了以平面 NoSQL 存储数据的方式。** 
+
+当此功能作为名为"Azure 存储"的较大功能的一部分时，它有时称为其他术语。如果您看到"表"、"Azure 表"或"存储表"，这都是指同一功能。  
+
+并且请不要因名称而感到困惑：此技术不提供关系存储。事实上，它是称为键/值存储的 NoSQL 方法的一个示例。Azure 表允许应用程序存储各种类型的属性，如字符串、整数和日期。然后，应用程序可以通过为一个属性组提供唯一键来检索该组。虽然不支持像联接这样的复杂操作，但表提供对类型化数据的快速访问。它们也能高度缩放，一个表即可以容纳多达 TB 量级的数据。使用表通常比使用 SQL Database 关系存储更便宜，这与表的简单性是相配的。 
+
+**表的方案**
+
+假设您要创建一个 Azure 应用程序，该应用程序需要快速访问类型化数据（这样的数据可能很多），但并不需要对此数据执行复杂的 SQL 查询。例如，假设您要创建一个使用者应用程序，该应用程序需要存储每个用户的客户资料信息。您的应用程序将会大受欢迎，所以您需要考虑到大量数据，但除了存储数据，然后以简单方式检索它们外，您不想拿这些数据做更多事情。这种时候恰恰能体现出 Azure 表的意义。
+
+
+###Blob###
+![Azure 存储 Blob](./media/intro-to-azure/StorageBlobsIntroNew.png)    
+**图：Azure Blob 提供非结构化的二进制数据。**  
+
+Azure Blob（同样，"Blob 存储"和仅称为"存储 Blob"都指同一功能）旨在用于存储非结构化的二进制数据。像表一样，Blob 也提供廉价的存储，单个 blob 可以具有 1 TB 大小（一兆兆字节）。Azure 应用程序还可以使用 Azure 驱动器，这使得 Blob 可以为 Azure 实例中装载的 Windows 文件系统提供持久存储。该应用程序看到的是普通 Windows 文件，但内容其实存储在 Blob 中。 
+
+Blob 存储由许多其他 Azure 功能（包括虚拟机）使用，因此它当然也可以处理您的工作负载。
+
+**Blob 的方案**
+
+一个存储视频、大量文件或其他二进制信息的应用程序可以使用 Blob 作为简单、廉价的存储。Blob 还常用于与其他服务（例如内容传送网络）结合使用，我们将在稍后进行讨论。  
+
+###导入/导出###
+![Azure 导入导出服务](./media/intro-to-azure/ImportExportIntroNew.png)  
+ 
+**图：Azure 导入/导出提供了将物理硬盘驱动器发到 Azure 或从其中接收物理硬盘驱动器的功能，以便更快、更廉价地批量导入或导出数据。**  
+
+有时您想要将大量数据移动到 Azure。这将花费很长时间，可能需要几天，并且要使用大量带宽。在这种情况下，您可以使用 Azure 导入/导出，它允许您将 Bitlocker 加密的 3.5" SATA 硬盘驱动器直接发至 Azure 数据中心，Microsoft 将在其中为您将数据传输到 Blob 存储中。上载完成后，Microsoft 会将驱动器发回给您。您还可以请求将 Blob 存储中的大量数据导出到硬盘驱动器，然后通过电子邮件发回给您。 
+
+**导入/导出的方案**
+
+- **大量数据迁移** - 只要您希望将大量数据（兆兆字节）上载到 Azure，导入/导出服务通常都比通过 Internet 进行传输更快且可能更加廉价。当数据位于 Blob 中时，您可以将其处理到其他表中，例如表存储或 SQL Database。
+ 
+- **存档数据恢复** - 您可以使用导入/导出使 Microsoft 将存储在 Azure Blob 存储中的大量数据传输到您发送的存储设备中，然后令其将该设备传送回所需的位置。因为这将花费一些时间，所以这并不是用于灾难恢复的好选择。这最适合用于您不需要快速访问的存档数据。
+
+
+###Azure 文件服务###
+![Azure 文件服务](./media/intro-to-azure/FileServiceIntroNew.png)    
+**图：Azure 文件服务向在云中运行的应用程序提供了 SMB \\\\server\share 路径。** 
+
+在本地的常见用法是使用 \\\\Server\share 格式通过服务器消息块 (SMB) 协议访问大量文件存储。Azure 现在具有一项服务可允许您在云中使用此协议。在 Azure 中运行的应用程序可以使用它在使用熟悉的文件系统 API（例如 ReadFile 和 WriteFile）的虚拟机之间共享文件。此外，还可以通过 REST 接口同时访问这些文件，该接口允许您在也设置了虚拟机的同时从本地访问这些共享资源。Azure 文件基于 Blob 服务构建，因此它继承了内置于 Azure 存储中相同的可用性、持续性、可伸缩性和地域冗余。 
+
+**Azure 文件的方案**
+
+- **将现有应用迁移到云** - 使用文件共享在应用程序的各部分之间共享数据可轻松将本地应用程序迁移到云。每个 VM 都连接到文件共享，然后它可以读取和写入文件，与针对本地文件共享时所做的一样。
+
+- **共享的应用程序设置** - 针对分布式应用程序的常见模式是将配置文件放置于一个中心位置，许多不同的虚拟机可从该位置访问它们。这些配置文件可存储在 Azure 文件共享中，并可由所有应用程序实例读取。还可以通过 REST 接口管理这些设置，该接口允许在全球范围内访问这些配置文件。
+
+- **诊断共享** - 您可以共享、可以保存并共享诊断文件（例如日志、指标和崩溃转储）。通过 SMB 和 REST 这两种接口访问这些文件使应用程序能够使用各种分析工具进行处理并分析诊断数据。 
+
+- **开发/测试/调试** - 当开发人员或管理员在云中的虚拟机上工作时，他们通常需要一套工具或实用程序。在每个虚拟机上安装和分布这些实用程序将花费很长时间。使用 Azure 文件，开发人员或管理员可以将其喜爱的工具存储在文件共享上并可以从任何虚拟机连接到这些工具。
+
+
+
+
+
+
+
+
+
+
+<h2><a id="networking"></a>联网</h2>
+
+Azure 现在运行在遍布全球各地的许多数据中心中。当您运行应用程序或存储数据时，可以选择使用其中一个或多个数据中心。您还可以使用以下服务通过各种方式连接到这些数据中心。
+
+
+###虚拟网络###
+![虚拟网络](./media/intro-to-azure/VirtualNetworkIntroNew.png)   
+
+**图：虚拟网络提供了在云中的专用网络，因此不同的服务可以彼此通信，或者与本地资源通信（如果您设置了跨界连接的 VPN 连接）。**  
+
+
+使用公共云的一种有效方法是把它当作您自己的数据中心的扩展。
+ 
+因为您可以按需创建 VM，然后在不需要时删除它们（同时停止付费），所以只有在您需要计算能力时才具有这种能力。由于 Azure 虚拟机允许您创建运行 SharePoint、Active Directory 以及其他熟悉的本地软件的 VM，因此可以用这种方法处理您的已有应用程序。
+
+不过，要使这种方法真正发挥作用，您的用户应该能够像这些应用程序就在您自己的数据中心运行那样对待它们。这正是 Azure 虚拟网络所允许的。使用 VPN 网关设备，管理员可以在您的本地网络和部署到 Azure 中的虚拟网络的 VM 之间建立一个虚拟专用网络 (VPN)。因为您将自己的 IP v4 地址分配给云 VM，所以它们看上去就好像在您自己的网络上。您组织中的用户可以访问这些 VM 包含的应用程序，就像这些应用程序在本地运行一样。
+
+有关规划和创建适合您的虚拟网络的详细信息，请参阅[虚拟网络](http://msdn.microsoft.com/library/azure/jj156007.aspx).
+
+###Express Route###
+
+![ExpressRoute](./media/intro-to-azure/ExpressRouteIntroNew.png)   
+ **图：ExpressRoute 使用 Azure 虚拟网络，但是通过更快的专用线路而不是公共 Internet 路由连接。**  
+
+相比于 Azure 虚拟网络连接所提供的带宽或安全性，如果您需要更多的带宽或更强的安全性，您可以深入了解 ExpressRoute。在某些情况下，ExpressRoute 还可以节省您的资金。您仍需要在 Azure 中具有一个虚拟机网络，但 Azure 和您的站点之间的链接将使用专用连接，而不会通过公共 Internet。若要使用此服务，您需要与网络服务提供商或 Exchange 提供商达成协议。 
+
+设置 ExpressRoute 连接需要更多时间和规划，因此您可以从点对点 VPN 开始，然后迁移到 ExpressRoute 连接。
+
+有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 技术概述](http://msdn.microsoft.com/zh-cn/library/azure/dn606309.aspx).
+
 ###Traffic Manager###
 
-an Azure application with users in just a single part of the world might run in only one Azure datacenter. An application with users scattered around the world, however, is more likely to run in multiple datacenters, maybe even all of them. In this second situation, you face a problem: How do you intelligently direct users to application instances? Most of the time, you probably want each user to access the datacenter closest to her, since it will likely give her the best response time. But what if that instance of the application is overloaded or unavailable? In this case, it would be nice to direct her request automatically to another datacenter. This is exactly what's done by Azure Traffic Manager. 
-
-The owner of an application defines rules that specify how requests from users should be directed to datacenters, then relies on Traffic Manager to carry out these rules. For example, users might normally be directed to the closest Azure datacenter, but get sent to another one when the response time from their default datacenter exceeds the response time from other datacenters. For globally distributed applications with many users, having a built-in service to handle problems like these is useful.
-
-
-<h2><a id="analytics"></a>Business Analytics</h2>
-
-Analyzing data is a fundamental part of how businesses use information technology. A cloud platform provides a pool of on-demand, pay-per-use resources, which makes it a good foundation for this kind of computing. Accordingly, Azure provides two options for business analytics. Figure 4 illustrates the choices.
-
-![Azure analytics](./media/intro-to-azure/IntroAzure5.png)   
- **Figure 4: For business analytics, Azure provides reporting and support for big data.**
-
-Analyzing data can take many forms, and so these two options are quite different. It's worth looking at each one separately.
-
-###Reporting with SQL Database###
-One of the most common ways to use stored data is to create reports based on that data.
+![TrafficManager](./media/intro-to-azure/TrafficManagerIntroNew.png)   
+ **图：使用 Azure Traffic Manager 可以基于智能规则将全球流量路由到您的服务。**
  
-Running SQL Server Reporting Services (SSRS) on Azure Virtual Machines allows you to build easily accessible reporting capabilities into your Azure application. You can create reports with tables, charts, maps, gauges, and more in various formats, including HTML, XML, PDF, and Excel. 
+如果您的 Azure 应用程序运行在多个数据中心中，则可以使用 Azure Traffic Manager 智能地跨应用程序的实例路由来自用户的请求。还可以将流量路由到未在 Azure 中运行的服务，只要可从 Internet 访问即可。  
 
-You can also perform analytics with SQL Database data using on-premises business intelligence tools, including SSRS. To a client, SQL Database looks like SQL Server, and so the same technologies can work with both.  
+如果某个 Azure 应用程序的用户只来自某个地区，则可能只在一个 Azure 数据中心运行该应用程序。但如果某个应用程序的用户散布在世界各地，则很可能在多个（甚至全部）数据中心运行该应用程序。在第二种情况下，您面临着以下问题：如何智能地将用户定向到应用程序实例？多数情况下，您可能希望每个用户访问离他们最近的数据中心，因为这可能会给他们带来最快的响应时间。但是，如果该应用程序实例已过载或不可用，该怎么办？在这种情况下，最好将用户的请求自动定向到另一个数据中心。这正是 Azure Traffic Manager 要做的。 
+
+应用程序所有者定义指定如何将用户请求定向到数据中心的规则，然后依靠 Traffic Manager 执行这些规则。例如，用户请求通常可能被定向到最近的 Azure 数据中心，但当其默认数据中心的响应时间超过其他数据中心的响应时间时，便转往另一个数据中心。对于拥有众多用户的全球分布应用程序而言，具有内置服务来处理这类问题非常有用。
+
+Traffic Manager 使用 Directory Name Service (DNS) 将用户路由到服务终结点，但连接建立后进一步的流量将不会通过 Traffic Manager。这可以防止 Traffic Manager 遇到瓶颈，可能会降低服务通信。 
+
+
+<h2><a id="DevService"></a>开发人员服务</h2>
+Azure 提供了多种工具可以帮助开发人员和 IT 专业人员创建和维护云中的应用程序。  
+
+###Azure SDK###
+早在 2008 年，Azure 的第一个预发行版本仅支持 .NET 开发。而现今，您几乎可以使用任何语言创建 Azure 应用程序。Microsoft 目前为 .NET、Java、PHP、Node.js、Ruby 和 Python 提供了特定于语言的 SDK。还有一个为任何语言（例如 C++）提供基本支持的常规 Azure SDK。  
+
+这些 SDK 可帮助您构建、部署和管理 Azure 应用程序。可从 [www.microsoftazure.com](http://azure.microsoft.com/zh-cn/downloads/)  或 GitHub 获得它们，并且它们可以与 Visual Studio 和 Eclipse 结合使用。Azure 还提供了开发人员可以将其与任何编辑器或开发环境结合使用的命令行工具，包括用于从 Linux 和 Macintosh 系统将应用程序部署到 Azure 的工具。 
+
+除了帮助您构建 Azure 应用程序以外，这些 SDK 还提供了客户端库，可帮助您创建使用 Azure 服务的软件。例如，您可以构建读取和写入 Azure Blob 的应用程序，或创建通过 Azure 管理界面部署 Azure 应用程序的工具。 
+
+###Visual Studio Online###
+
+Visual Studio Online 是市场营销名称，它涵盖了一系列服务，可帮助开发 Azure 中的应用程序。 
+
+为了避免混淆 - 它不提供托管或基于 Web 版本的 Visual Studio。您仍然需要在本地运行 Visual Studio 的副本。但是，它提供的许多其他工具会非常有帮助。 
+
+它包括名为 Team Foundation Service 的托管源控件系统，该系统可提供版本控制和工作项跟踪。如果您喜欢，您还可以将 Git 用于版本控制。并且您还可以改变项目所使用的源控件系统。您可以创建可从世界各地访问的无限制的私有团队项目。  
+
+Visual Studio Online 提供负载测试服务。您可以在云中的 VM 上执行在 Visual Studio 中创建的负载测试。您可以指定希望对其运行负载测试的用户总数，Visual Studio Online 将自动确定需要多少个代理、启动所需的虚拟机并执行负载测试。如果您是 MSDN 订户，您每个月将获取负载测试的数千免费用户分钟数。 
+
+Visual Studio Online 还提供了名为 Application Insights 的服务，它可向您提供整个应用程序的分析。它提供有关性能和您的应用程序的使用方式的统计信息。如果您已经在使用 System Center Operations Manager，还可以挂接到它并在出现问题时引发警报。 
+
+此外，不支持对持续集成生成、看板和虚拟团队聊天室等功能的敏捷开发。 
+
+**Visual Studio Online 方案**
+
+对于需要在全球范围内进行协作，但还没有到位的基础结构来实现此目的的公司，Visual Studio Online 是一个不错的选择。您可以只需花几分钟时间安装、选择源控件系统，然后就可以立即开始编写代码并进行构建。团队工具提供了一个可用于协调与合作的位置，而其他工具提供了所需的分析以快速测试和优化您的应用程序。
+
+但是，已具有本地系统的组织可以在 Visual Studio Online 上测试新项目以查看该项目是否高效。   
+
+###自动化###
+没有人喜欢将时间浪费在反复手动进行同一过程上。Azure 自动化提供了一种方法，可以创建、监视、管理和部署 Azure 环境中的资源。  
+
+自动化使用了"runbooks"，它在后台使用 Windows PowerShell 工作流（而不是仅为常规的 PowerShell）。Runbooks 旨在无需用户交互的情况下执行。PowerShell 工作流允许在此过程中将脚本的状态保存在检查点。随后如果发生故障，您不必从头启动一个脚本。您可以在最后一个检查点启动它。这为您节省了大量工作，不必尝试使脚本处理每个可能的故障。 
+
+**自动化方案**
+
+Azure 自动化是一个不错的选择，可自动化 Azure 中的手动、长时间运行、易出错且经常重复的任务。
+
+
+###API 管理###
+
+在 Internet 上创建和发布应用程序管理员接口 (API) 是为应用程序提供服务的常用方法。如果这些服务是可转售的（例如，天气数据），组织可以允许其他第三方付费访问这些相同服务。当扩展到更多合作伙伴后，您通常需要优化和控制访问。某些合作伙伴甚至可能需要不同格式的数据。 
+
+Azure API 管理可使组织轻松将 API 安全并大规模地发布给合作伙伴、员工和第三方开发人员。它提供了不同的 API 终结点，并在提供服务（例如缓存、转换、限制、访问控制和分析聚合）的同时作为代理调用实际终结点。
+
+**API 管理方案**
+
+假设您的公司具有一组设备，它们都需要回拨到中央服务以获取数据（例如，运输公司在旅途中的每辆卡车上都具有设备）。当然，该公司需要设置系统以跟踪自己的卡车，以便能够可靠地预测并更新交付时间。该公司可以知道拥有多少辆卡车并进行适当规划。每辆卡车都需要可回拨到中心位置的设备，获取其定位和速度数据及更多信息。 
+
+运输公司的客户还可能因获取此定位数据而受益。客户可以使用它来了解产品还需要运输的距离、遇阻的位置、沿着某些路线需要支付的费用（如果再加上为运输支付的费用）。如果运输公司已聚合此数据，许多客户都可能会为其支付费用。但是，随后运输公司需要提供向客户提供数据的方法。当他们向客户提供访问权限后，他们可能无法控制查询数据的频率。他们必须提供哪些人可以访问哪些数据的规则。所有这些规则都需要内置于其外部的 API。这时 API 管理即可提供帮助。  
+
+
  
 
-###HDInsight (Hadoop)###
-
-For many years, the bulk of data analysis has been done on relational data stored in a data warehouse built with a relational DBMS. This kind of business analytics is still important, and it will be for a long time to come. But what if the data you want to analyze is so big that relational databases just can't handle it? And suppose the data isn't relational? It might be server logs in a datacenter, for example, or historical event data from sensors, or something else. In cases like this, you have what's known as a big data problem. You need another approach.
-
-The dominant technology today for analyzing big data is Hadoop. An Apache open source project, this technology stores data using the Hadoop Distributed File System (HDFS), then lets developers create MapReduce jobs to analyze that data. HDFS spreads data across multiple servers, then runs chunks of the MapReduce job on each one, letting the big data be processed in parallel.
-
-HDInsight is the name of the Azure's Apache Hadoop-based service. As Figure 4 suggests, HDInsight lets HDFS store data on the cluster and distribute it across multiple VMs. It also spreads the logic of a MapReduce job across those VMs. Just as with on-premises Hadoop, data is processed locally-the logic and the data it works on are in the same VM-and in parallel for better performance. HDInsight can also store data in Azure Storage Vault (ASV), which uses blobs.  Using ASV allows you to save money because you can delete your HDInsight cluster when not in use, but still keep your data in the cloud.
+<h2><a id="identity"></a>标识和访问</h2>
  
-HDinsight supports other components of the Hadoop ecosystem as well, including Hive and Pig. Microsoft has also created components that make it easier to work with data produced by HDInsight using traditional BI tools, such as the HiveODBC adapter and Data Explorer that work with Excel.
--->
+大部分应用程序都使用标识。知道用户是谁可以让应用程序决定它应该如何与该用户交互。Azure 提供的服务可帮助跟踪标识，以及将其与您可能已经使用的标识存储集成。 
+
+
+###Active Directory###
+
+与大多数目录服务一样，Azure Active Directory 存储有关用户以及他们所属组织的信息。它允许用户登录，为他们提供令牌，以便他们可以向应用程序证明自己的身份。它还允许与在您的本地网络本地运行的 Windows Server Active Directory 同步用户信息。虽然 Azure Active Directory 使用的机制和数据格式与 Windows Server Active Directory 中使用的并不完全相同，但执行的功能基本相似。 
+ 
+务必要了解 Azure Active Directory 主要供云应用程序使用。例如，在 Azure 或其他云平台上运行的应用程序可以使用它。还可以供 Microsoft 自己的云应用程序（例如 Office 365 中的应用程序）使用。但是，如果您想要使用 Azure 虚拟机和 Azure 虚拟网络将您的数据中心扩展到云中，Azure Active Directory 并不是一个正确的选择。反而需要在虚拟机中运行 Windows Server Active Directory。 
+
+为了让应用程序访问它所包含的信息，Azure Active Directory 提供一个称为 Azure Active Directory Graph 的 RESTful API。该 API 允许运行于任何平台上的应用程序访问目录对象和它们之间的关系。例如，一个授权的应用程序可以使用该 API 了解某个用户、其所属的团体的信息以及其他信息。应用程序还可以看到用户与其社交圈之间的关系，从而帮助他们利用这些人际关系更好地开展工作。
+
+该服务的另一个功能是 Azure Active Directory Access Control，它可以让应用程序更易于接受来自 Facebook、Google、Windows Live ID 和其他热门标识提供程序的标识信息。Access Control 不需要应用程序理解多样的数据格式和每位提供商所使用的协议，它将所有这些都统统转换为一种通用格式。它还允许应用程序接受来自一个或多个 Active Directory 域的登录。例如，一个提供 SaaS 应用程序的供应商可以使用 Azure Active Directory Access Control 功能赋予其客户群中的用户通过单一登录访问该应用程序的权利。
+
+目录服务是本地计算的一个核心基础。因此毋庸置疑，它们在云中也很重要。
+
+###多因素身份验证###
+![Azure 多因素身份验证](./media/intro-to-azure/MFAIntroNew.png)   
+**图：多因素身份验证向您的应用程序提供的功能可用于验证多种形式的标识**
+ 
+安全性始终是重要的。多因素身份验证 (MFA) 可帮助确保只允许用户本人访问其帐户。MFA（也称为双因素身份验证或"2FA"）要求用户提供这三种标识验证方法的其中两种用于用户登录和事务。
+
+- 您知道的某物（通常为密码）
+- 您具有的某物（无法轻易复制的可信设备，如电话）
+- 您自身的特征（生物辨识系统）
+
+因此当用户登录时，您可以要求他们还需要将移动应用、电话呼叫或短信与其密码结合使用来验证其身份。默认情况下，Azure Active Directory 支持使用密码作为用户登录的唯一身份验证方法。通过使用 MFA SDK，您可以将 MFA 与 Azure AD 或与自定义应用程序和目录一起使用。通过使用多因素身份验证服务器，您还可以将它与本地应用程序一起使用。 
+
+**MFA 方案**
+
+敏感帐户（例如银行登录和源代码访问帐户，其中未经授权的条目可能具有很高的财务或知识产权风险）的登录保护。   
 
 
 
 
-<h2><a id="messaging"></a>Messaging</h2>
-
-No matter what it's doing, code frequently needs to interact with other code.  In some situations, all that's needed is basic queued messaging. In other cases, more complex interactions are required. Azure provides a few different ways to solve these problems. Figure 5 illustrates the choices. 
-
-![Azure messaging](./media/intro-to-azure/IntroAzure6.png)   
- **Figure 5: For connecting applications, Azure provides queues, publish/subscribe, and synchronous connections via the cloud.**
-
-###Queues###
-
-Queuing is a simple idea: One application places a message in a queue, and that message is eventually read by another application. If your application needs just this straightforward service, Azure Queues might be the best choice. 
-
-One common use of Queues today is to let a web role instance communicate with a worker role instance within the same Cloud Services application. For example, suppose you create an Azure application for video sharing. The application consists of PHP code running in a web role that lets users upload and watch videos, together with a worker role implemented in C# that translates uploaded video into various formats. When a web role instance gets a new video from a user, it can store the video in a blob, then send a message to a worker role via a queue telling it where to find this new video. A worker role instance-it doesn't matter which one-will then read the message from the queue and carry out the required video translations in the background. Structuring an application in this way allows asynchronous processing, and it also makes the application easier to scale, since the number of web role instances and worker role instances can be varied independently.
-
-###Service Bus###
-
-Whether they run in the cloud, in your data center, on a mobile device, or somewhere else, applications need to interact. The goal of Azure Service Bus is to let applications running pretty much anywhere exchange data.
-
-As Figure 5 shows, Service Bus provides a queuing service. This service isn't identical to the Queues just described, however. Unlike Azure Queues, for example, Service Bus provides a both queues (one-to-one) and publish-and-subscribe mechanisms. With publish-subscribe, an application can send messages to a topic, while other applications can create subscriptions to this topic. This allows one-to-many communication among a set of applications, letting the same message be read by multiple recipients. And queuing isn't the only option: Service Bus also allows direct communication through its relay service, providing a secure way to interact through firewalls. Service Bus relays enable applications to communicate by exchanging messages through an endpoint hosted in the cloud, rather than locally.
-
-Applications that communicate through Service Bus might be Azure applications or software running on some other cloud platform. They can also be applications running outside the cloud, however. For example, think of an airline that implements reservation services in computers inside its own datacenter. The airline needs to expose these services to many clients, including check-in kiosks in airports, reservation agent terminals, and maybe even customers' phones. It might use Service Bus to do this, creating loosely coupled interactions among the various applications.
 
 
-<!--
-<h2><a id="caching"></a>Caching</h2>
 
-Applications tend to access the same data over and over. One way to improve performance is to keep a copy of that data closer to the application, minimizing the time needed to retrieve it. Azure provides two different services for doing this: in-memory caching of data used by Azure applications and a content delivery network (CDN) that caches blob data on disk closer to its users. Figure 6 shows both.
+<h2><a id="Mobile"></a>移动</h2>
 
-![Azure Caching](./media/intro-to-azure/IntroAzure7.png)   
- **Figure 6: an Azure application can cache data in memory, and copies of a blob can be cached at sites around the world.**
+如果您正在创建用于移动设备的应用，Azure 可以帮助您将数据存储在云中、对用户进行身份验证和发送推送通知，而无需您编写大量自定义代码。 
 
-###Caching###
+您当然可以使用虚拟机、云服务或网站构建移动应用的后端，但通过使用 Azure 的服务，您可以花费更少的时间来编写底层服务组件。 
 
-Accessing data stored in any of Azure's data management services-SQL Database, Tables, or Blobs-is quite fast. Yet accessing data stored in memory is even faster. Because of this, keeping an in-memory copy of frequently accessed data can improve application performance. You can use Azure's in-memory Caching to do this. 
 
-A Cloud Services application can store data in this cache, then retrieve it directly without needing to access persistent storage. As Figure 6 shows, the cache can be maintained inside your application's VMs or be provided by VMs dedicated solely to caching. In either case, the cache can be distributed, with the data it contains spread across multiple VMs in an Azure datacenter. 
+###移动服务###
 
-An application that repeatedly reads a product catalog might benefit from using this kind of caching, for example, since the data it needs will be available more quickly. The technology also supports locking, letting it be used with read/write as well as read-only data. And ASP.NET applications can use the service to store session data with just a configuration change. 
+![移动服务](./media/intro-to-azure/MobileServicesIntroNew.png)   
+ **图：移动服务提供与移动设备交互的应用程序通常所需的功能。**
+
+Azure 移动服务提供了许多有用的功能，可帮助您在构建移动应用程序的后端时节省时间。它允许您进行简单的设置和管理 SQL Database 中存储的数据。借助服务器端代码，您可以轻松使用其他数据存储选项（如 Blob 存储或 MongoDB）。移动服务提供对通知的支持，不过在某些情况下您可以改为使用通知中心，如下文所述。该服务还具有一个 REST API，您的移动应用程序可调用它以完成工作。移动服务还支持通过 Microsoft 和 Active Directory 以及其他著名的标识提供程序（如 Facebook、Twitter 和 Google）对用户进行身份验证。   
+
+
+您还可以使用其他 Azure 服务（如服务总线和辅助角色），并连接到本地系统。您甚至可以使用 Azure 应用商店中的第三方加载项（例如用于电子邮件的 SendGrid）来提供其他功能。 
+
+
+通过用于 Android、iOS、HTML/JavaScript、Windows Phone 和 Windows 应用商店的本机客户端库，更便于开发所有主要移动平台上的应用。通过 REST API，您还能够将移动服务数据和身份验证功能用于不同平台上的应用。单个移动服务可以支持多个客户端应用，以便您可以提供跨设备的一致的用户体验。 
+
+由于 Azure 已支持庞大规模，您可以随着您的应用变得更受欢迎来处理流量。支持监视和日志记录以帮助解决问题和管理性能。 
+
+
+###通知中心###
+
+![通知中心](./media/intro-to-azure/NotificationHubsIntroNew.png)  
+ **图：通知中心提供与移动设备交互的应用程序通常所需的功能。**
+
+尽管您可以在 Azure 移动服务中编写代码以执行通知，但通知中心已进行了优化，可在几分钟内广播数以百万计的高度个性化的推送通知。您不必担心细节，例如移动运营商或设备制造商。您可以使用单个 API 调用面向个人或数以百万计的用户。 
+
+通知中心用于处理任何后端。您可以使用 Azure Mobile Services，它是运行在任何提供程序或某个本地后端的云中的自定义后端。 
+
+**通知中心方案**
+如果您正在编写玩家轮流进行的移动游戏，您可能需要通知玩家 2 玩家 1 已完成其轮次。如果您只需完成此操作，您可以只使用移动服务即可。但是，如果您的游戏有 100,000 位用户，并且您想要向每一位用户发送时间敏感的免费优惠，则通知中心将是更好的选择。
+
+您可以向数以百万计的用户发送突发新闻、体育活动和产品公告通知，而且延迟很低。企业可以通知其员工新的时间敏感通信（例如销售线索），因此员工无需通过不断地检查电子邮件或其他应用程序以了解最新信息。您还可以发送多因素身份验证所需的一次性密码。
+   
+
+
+
+<h2><a id="Backup"></a>备份</h2>
+每个企业都需要备份和还原数据。您可以使用 Azure 备份和还原云中或本地的应用程序。基于备份的类型，Azure 提供了不同的选项以提供帮助。
+
+###站点恢复###
+
+ 
+Azure 站点恢复（以前称为 Hyper-V 恢复管理器）可以通过协调站点之间的 Hyper-V 映像的复制和恢复来帮助您保护重要的应用程序。您可以备份到您自己的辅助站点、托管商的网站，或使用 Azure 减少构建和管理您自己的辅助位置的费用和复杂性。Azure 可对数据和通信进行加密，您可以选择也为静态数据启用加密。 
+
+它会持续监视您的服务的运行状况，并在发生站点中断时在主数据中心帮助自动执行服务的有序恢复。可在协调方式下调用虚拟机以帮助快速恢复服务，即使对于复杂的多层工作负载也是如此。
+
+站点恢复使用现有的技术，例如 Hyper-V Replica、System Center 和 SQL Server AlwaysOn。
+
+###Azure 备份###
+![Azure 备份](./media/intro-to-azure/AzureBackupIntroNew.png)  
+**图：Azure 备份将数据从本地 Windows Server 备份到云中。**  
+
+Azure 备份将数据从运行 Windows Server 的本地 Windows 服务器备份到云中。您可以直接通过 Windows Server 2012、Windows Server 2012 Essentials 中的备份工具，或 System Center 2012 (Data Protection Manager) 管理您的备份。或者，您可以使用专用的备份代理。 
+
+数据将更加安全，因为在传输之前将对备份进行加密，并且备份将加密存储在 Azure 中并由您上载的证书保护。服务使用可在 Azure 存储中找到的相同冗余和高度可用的数据保护。您可以按定期计划或立即备份文件和文件夹，可运行完整或增量备份。数据备份到云中后，经过授权的用户可以轻松将备份恢复到任何服务器。它还提供可配置的数据保留策略、数据压缩和数据传输限制以便您可以管理存储和传输数据的成本。
+
+**Azure 备份的方案**
+
+如果您已在使用 Windows Server 或 System Center，则 Azure 备份自然成为用于备份您的服务器文件系统、虚拟机和 SQL Server 数据库的解决方案。它使用加密文件、稀疏文件和压缩文件。将会存在一些限制，因此您应该[查看 Azure 备份先决条件](http://technet.microsoft.com/zh-cn/library/dn296608.aspx)。
+
+
+
+<h2><a id="messaging"></a>消息传送和集成</h2>
+
+无论代码做什么，它都常常需要与其他代码交互。某些情况下，需要的只是基本的已排队消息。在其他情况下，需要更复杂的交互。Azure 提供几个不同方法来解决这些问题。图 5 解释了这些选项。 
+
+###队列###
+![Azure 服务总线中继](./media/intro-to-azure/QueuesIntroNew.png)
+**图：队列允许应用程序各部分之间的松散耦合，并且便于扩展。**  
+
+队列是一个简单的想法：一个应用程序将一条消息放在一个队列中，而该消息最终被另一个应用程序读取。如果您的应用程序只需要这种简单的服务，Azure Queues 可能是最好的选择。 
+
+由于 Azure 随时间推移发展的方式，Azure 存储队列和服务总线队列提供了相似的查询服务。技术性文档 [<LINK>](http://msdn.microsoft.com/library/azure/hh767287.aspx "Azure Queues and Service Bus Queues - Compared and Contrasted") 中介绍了选择哪种方案更符合您的需要。 在许多情况下，两者都可使用。 
+
+**队列方案**
+
+当前队列的一种常见用途是让 Web 角色实例与处于同一个云服务应用程序内的辅助角色实例通信。 
+
+例如，假设您创建了一个 Azure 应用程序用于视频共享。该应用程序包括在 Web 角色中运行的 PHP 代码（供用户上传和观看视频），以及使用 C# 实现的辅助角色（用于将上传的视频转换为各种格式）。
+
+当 Web 角色实例从用户获取新视频时，它可以将视频存储在 blob 中，然后通过队列向辅助角色发送一条消息，告诉它在哪里可以找到此新视频。一个辅助角色实例（不管是哪一个）然后将从队列读取该消息并在后台执行所需的视频转换。 
+
+以这种方式构建应用程序将允许异步处理，还使得应用程序更易于缩放，因为 Web 角色实例和辅助角色实例的数目可以独立变化。您还可以将队列大小作为触发器来按比例增加和减少辅助角色的数量。若过高，便添加更多角色。变低时，可以减少运行角色的数量以节省资金。  
+
+您可以在应用程序的多个不同部分之间使用此相同模式，即使它们不使用 Web 和辅助角色也如此。它允许您按照需求和处理时间要求将队列任意一侧的部分向上和向下扩展。 
+
+
+###服务总线###
+无论是在云中、数据中心、移动设备上还是在其他地方运行，应用程序都需要交互。Azure 服务总线的目标是让在几乎任何地方运行的应用程序交换数据。
+
+除了前面所述的队列（一对一），服务总线还提供其他通信方法。 
+
+
+![Azure 服务总线中继](./media/intro-to-azure/ServiceBusRelayIntroNew.png)
+**图：服务总线中继允许在防火墙不同侧的应用程序之间的通信。**
+
+服务总线允许通过其中继服务直接通信，从而为通过防火墙交互提供一条安全途径。服务总线中继通过使用在云中承载的终结点交换消息，而不是在本地进行交换，使应用程序能够进行通信。
+
+**服务总线中继方案**
+
+通过 Service Bus 通信的应用程序可能是在某个其他云平台上运行的 Azure 应用程序或软件。但是，也可以是在云外部运行的应用程序。例如，假设有家航空公司在其自己的数据中心内的计算机上实现预订服务。该航空公司需要向一些客户端公开这些服务，包括机场自助售票值机亭、预订代理终端机甚至客户手机。它可以使用 Service Bus 来完成此工作，在各种应用程序之间创建松散耦合的交互。
+
+![Azure 服务总线主题](./media/intro-to-azure/ServiceBusTopicsSubsIntroNew.png)   
+ **图：服务总线主题允许多个应用发布消息，并允许其他应用程序订阅以便接收符合特定条件的消息。**
+
+服务总线提供了名为"主题和订阅"的发布和订阅机制。使用发布和订阅机制，应用程序可以将消息发送给主题，而其他应用程序可以创建对此主题的订阅。这允许在一组应用程序间进行一对多通信，让多个收件人阅读同一消息。 
+
+**服务总线中继方案**
+只要您想要进行以下设置：其中有许多很重要的消息，但不同的下游系统只需要侦听这些通信的不同子集，则服务总线主题和订阅是一个不错的选择。 
+  
+
+###BizTalk 服务###
+![BizTalk 服务](./media/intro-to-azure/BizTalkServicesIntroNew.png)   
+ **图：BizTalk 服务提供在云中转换 XML 消息格式的功能。**
+
+有时需要连接使用不同的消息格式进行通信的系统。即使提供了通用标准，企业具有不同的数据库架构和 XML 消息格式也很常见。您可以在本地使用 BizTalk 服务器来集成不同的系统，而不是编写大量的自定义代码。Azure BizTalk 服务提供相同类型的服务，但它位于云中。您可以仅支付您使用的部分，而不必像在本地时那样担心规模。
+ 
+
+**BizTalk 服务方案**
+企业到企业 (B2B) 的交互通常需要这种类型的转换。例如，制造飞机的公司需要从它的各个零件供应商订购零件。公司将拥有很多零件供应商。这些订单应自动从飞机制造商系统直接转入供应商系统。即使公司既不更改其核心系统也不更改其消息格式，这些格式都不太可能是相同的。BizTalk 服务可以在这两方之间传递消息并在新格式之间进行转换。是飞机供应商还是各供应商可以执行转换操作，取决于哪一方需要更多的控制权以及需要转换的数量。     
+
+
+<h2><a id="ComputeAssist"></a>计算协助</h2>
+Azure 为不需要一直运行的服务提供了协助。  
+
+###计划程序###
+
+![Azure 计划程序](./media/intro-to-azure/SchedulerIntroNew.png)   
+**图：Azure 计划程序提供了一种方式，计划作业在特定时间运行并持续运行特定时间。**
+
+有时应用程序只需在某个特定时间运行。在 Azure 上，使用此类型的应用（而不是使应用程序只是保持全天候运行等待处理数据）可以节约资金。Azure 计划程序允许您在应用程序应继续运行时基于时间或日历的间隔进行计划。即使发生网络、计算机和数据中心故障，它也是可靠的并将验证进程是否运行。可使用计划程序 REST API 来管理这些操作。 
+
+当计划的警报出现时，计划程序将 HTTP 或 HTTPS 消息发送到特定终结点，或将消息放置在存储队列中。因此，您需要使您的应用程序具有一个可访问的终结点或令它监视存储队列。然后，当它获取消息后，它可以执行任何计划要完成的操作。 
+
+**计划程序方案**
+
+- 重复性应用程序操作：例如，服务可能会定期从 Twitter 获取数据，并将数据收集到常规数据源。
+- 日常维护：日志处理或删改、执行备份和其他间歇性计划任务。
+- 在夜间运行的任务。 
+- Web 应用程序任务，例如每日删改日志、执行备份和其他维护任务。例如，管理员可以选择在接下来的 9 个月中每天凌晨 1 点备份其数据库。
+
+计划程序 API 允许您以编程方式创建、更新、删除、查看和管理作业集合和计划的作业。
+
+
+
+
+
+<h2><a id="Performance"></a>性能</h2>
+
+对于应用程序来说，性能始终是至关重要的。应用程序往往会反复访问相同的数据。提高性能的一种方法是保留更接近应用程序的数据的副本，尽量减少检索它所需的时间。Azure 提供不同的服务来实现这一点：
+
+
+###Azure 缓存###
+![Azure 缓存](./media/intro-to-azure/AzureCacheIntroNew.png)   
+ **图：Azure 应用程序可以在内存中缓存数据，甚至可以跨多个辅助角色拆分数据**
+
+访问存储在任何 Azure 数据管理服务（SQL Database、表或 Blob）中的数据的速度相当快。而访问存储在内存中的数据的速度更快。因此，保留频繁访问的数据的内存中副本可以提高应用程序的性能。可以使用 Azure 的内存中 Caching 来做到这一点。 
+
+
+云服务应用程序可以将数据存储在此缓存中，然后直接检索它，而无需访问持久性存储。缓存可在您的应用程序的 VM 内进行维护，或由专用于缓存的 VM 提供。在任一情况下，都可以分发缓存，并跨 Azure 数据中心中的多个 VM 分布其包含的数据。 
+
+Azure 有很多不同的缓存技术随着时间的推移已发生改变。按照引入它们的顺序来说，有共享、角色中、托管和 Redis 缓存。共享缓存是较旧的技术，您不应使用它来创建新的实现。托管缓存具有角色中缓存的相同的功能，但它作为在 Azure 管理门户外部的托管服务。Redis 缓存处于预览状态。Redis 实现具有最多的功能，在您编写新的缓存代码时，建议使用它。 
+
+
+**Azure 缓存方案**
+
+例如，一个多次读取产品目录的应用程序可能从使用这种缓存中受益，因为它可以更快地获得其所需的数据。该技术还支持锁定，因此可用于读/写以及只读数据。只需改变一下配置，ASP.NET 应用程序就可以使用该服务存储会话数据。 
 
 ###CDN###
+![Azure CDN](./media/intro-to-azure/CDNIntroNew.png)   
+ **图：可以在世界各地的站点上缓存 Blob 的副本。**
 
-Suppose you need to store blob data that will be accessed by users around the world. Maybe it's a video of the latest World Cup match, for instance, or driver updates, or a popular e-book. Storing a copy of the data in multiple Azure datacenters will help, but if there are lots of users, it's probably not enough. For even better performance, you can use the Azure CDN.
+假设您需要存储将由世界各地用户访问的 Blob 数据。例如，该数据或许是最新世界杯比赛的一个视频、驱动程序更新或受欢迎的电子书。在多个 Azure 数据中心存储数据的副本虽然有用，但如果用户太多，或许会供不应求。为获得更好的性能，可以使用 Azure CDN。
 
-The CDN has dozens of sites around the world, each capable of storing copies of Azure blobs. The first time a user in some part of the world accesses a particular blob, the information it contains is copied from an Azure datacenter into local CDN storage in that geography. After this, accesses from that part of the world will use the blob copy cached in the CDN-they won't need to go all the way to the nearest Azure datacenter. The result is faster access to frequently accessed data by users anywhere in the world.
--->
+CDN 在全球拥有数十个网站，每个网站都可以存储 Azure Blob 的副本。当世界某地的一个用户首次访问特定 Blob 时，该 Blob 包含的信息将从 Azure 数据中心复制到该地区的本地 CDN 存储中。此后，来自该地区的访问将使用缓存在 CDN 中的 blob 副本，而无需全都涌向最近的 Azure 数据中心。因此世界各地的用户能够更快地访问频繁访问的数据。
 
+**CDN 方案**
 
-<h2><a id="identity"></a>Identity</h2>
-
-Working with identity is part of most applications. For example, knowing who a user is lets an application decide how it should interact with that user. To help you do this, Microsoft provides Azure Active Directory.
-
-Like most directory services, Azure Active Directory stores information about users and the organizations they belong to. It lets users log in, then supplies them with tokens they can present to applications to prove their identity. It also allows synchronizing user information with Windows Server Active Directory running on premises in your local network. While the mechanisms and data formats used by Azure Active Directory aren't identical with those used in Windows Server Active Directory, the functions it performs are quite similar. 
-
-It's important to understand that Azure Active Directory is designed primarily for use by cloud applications. It can be used by applications running on Azure, for example, or on other cloud platforms. It's also used by Microsoft's own cloud applications, such as those in Office 365. If you want to extend your datacenter into the cloud using Azure Virtual Machines and Azure Virtual Network, however, Azure Active Directory isn't the right choice. Instead, you'll want to run Windows Server Active Directory in cloud VMs, as described earlier.
-
-To let applications access the information it contains, Azure Active Directory provides a RESTful API called Azure Active Directory Graph. This API lets applications running on any platform access directory objects and the relationships among them.  For example, an authorized application might use this API to learn about a user, the groups he belongs to, and other information. Applications can also see relationships between users-their social graph-letting them work more intelligently with the connections among people.
-<!--
-Another capability of this service, Azure Active Directory Access Control, makes it easier for an application to accept identity information from Facebook, Google, Windows Live ID, and other popular identity providers. Rather than requiring the application to understand the diverse data formats and protocols used by each of these providers, Access Control translates all of them into a single common format. It also lets an application accept logins from one or more Active Directory domains. For example, a vendor providing a SaaS application might use Azure Active Directory Access Control to give users in each of its customers single sign-on to the application.
-
-Directory services are a core underpinning of on-premises computing. It shouldn't be surprising that they're also important in the cloud.
-
-<h2><a id="media"></a>Media</h2>
-
-Video makes up a large part of Internet traffic today, and that percentage will be even larger tomorrow. Yet providing video on the web isn't simple. There are lots of variables, such as the encoding algorithm and the display resolution of the user's screen. Video also tends to have bursts in demand, like a Saturday night spike when lots of people decide they'd like to watch an online movie. 
-
-Given its popularity, it's a safe bet that many new applications will be created that use video. Yet all of them will need to solve some of the same problems, and making each one solve those problems on its own makes no sense. A better approach is to create a platform that provides common solutions for many applications to use. And building this platform in the cloud has some clear advantages. It can be broadly available on a pay-as-you-go basis, and it can also handle the variability in demand that video applications often face.
-
-Azure Media Services addresses this problem. It provides a set of cloud components that make life easier for people creating and running applications using video and other media. Figure 7 illustrates the technology.
-
-![Azure Media Services](./media/intro-to-azure/IntroAzure8.png)   
- **Figure 7: Media Services is a platform for applications that provide video and other media to clients around the world.**
+将 CDN 与媒体服务一起使用来在全世界范围内传送视频是很常见的。视频通常很大并需要大量的带宽。将在本文的其他部分讨论媒体服务。 
 
 
-As the figure shows, Media Services provides a set of components for applications that work with video and other media. For example, it includes a media ingest component to upload video into Media Services (where it's stored in Azure Blobs), an encoding component that supports various video and audio formats, a content protection component that provides digital rights management, a component for inserting ads into a video stream, components for streaming, and more. Microsoft partners can also provide components for the platform, then have Microsoft distribute those components and bill on their behalf. 
-
-Applications that use this platform can run on Azure or elsewhere. For example, a desktop application for a video production house might let its users upload video to Media Services, then process it in various ways. Alternatively, a cloud-based content management service running on Azure might rely on Media Services to process and distribute video. Wherever it runs and whatever it does, each application chooses which components it needs to use, accessing them through RESTful interfaces. 
-
-To distribute what it produces, an application can use the Azure CDN, another CDN, or just send bits directly to users. However it gets there, video created using Media Services can be consumed by various client systems, including Windows, Macintosh, HTML 5, iOS, Android, Windows Phone, Flash, and Silverlight. The goal is to make it easier to create modern media applications. 
-
-For a more visual view of how Media Services works, download the [Azure Media Services Poster][Azure Media Services Poster].
 
 
-<h2><a id="HPC"></a>High-Performance Computing</h2>
-
-One of the most attractive ways to use a cloud platform is for high-performance computing (HPC), The essence of HPC is executing code on many machines at the same time. On Azure, this means running many virtual machines simultaneously, all working in parallel to solve some problem. Doing this requires some way to schedule applications, i.e., to distribute their work across these instances. To allow this, Azure provides the HPC Scheduler. 
-
-This component can work with HPC applications built to use the industry-standard Message Passing Interface (MPI). Software that does finite element analysis, such as car crash simulations, is one example of this type of application, and there are many others. The HPC Scheduler can also be used with so-called embarrassingly parallel applications, such as Monte Carlo simulations. Whatever problem is addressed, the value it provides is the same: The HPC Scheduler handles the complex problem of scheduling parallel computing work across many Azure virtual machines. The goal is to make it easier to build HPC applications running in the cloud. 
-
-<h2><a id="commerce"></a>Commerce</h2>
-
-The rise of Software as a Service is transforming how we create applications. It's also transforming how we sell applications. Since a SaaS application lives in the cloud, it makes sense that its potential customers should look for solutions online. And this change applies to data as well as to applications. Why shouldn't people look to the cloud for commercially available datasets? Microsoft addresses both of these concerns with [Azure Marketplace](http://datamarket.azure.com/) and [Azure Store](/zh-cn/store/overview/), illustrated in Figure 8.
-
-![Azure Commerce](./media/intro-to-azure/IntroAzure9.png)   
- **Figure 8: Azure Marketplace and Azure Store let you find and buy Azure applications and commercial datasets.**
-
-The difference between the two is that Marketplace is outside of the Azure Management Portal, but the Store can be accessed from the portal. Potential customers can search either to find Azure applications that meet their needs, then sign up to use them either through the application's creator or directly through the Marketplace or Store. Customers can search either for commercial datasets as well, including demographic data, financial data, geographic data, and more. When they find something they like, they can access it either from the vendor, directly through the Marketplace or Store web locations or in some cases from the Management Portal. Applications can also use the Bing Search API through the Marketplace, giving them access to the results of web searches.
--->
-
-<h2><a id="sdk"></a>SDKs</h2>
-
-Back in 2008, the very first pre-release version of Azure supported only .NET development. Today, however, you can create Azure applications in pretty much any language. Microsoft currently provides language-specific SDKs for .NET, Java, PHP, Node.js, Ruby, and Python. There's also a general Azure SDK that provides basic support for any language, such as C++. 
-
-These SDKs help you build, deploy, and manage Azure applications. They're available either from http://azure.microsoft.com/zh-cn/ or GitHub, and they can be used with Visual Studio and Eclipse. Azure also offers command line tools that developers can use with any editor or development environment, including tools for deploying applications to Azure from Linux and Macintosh systems.
-
-Along with helping you build Azure applications, these SDKs also provide client libraries that help you create software running outside the cloud that uses Azure services. For example, you might build an application running at a hoster that relies on Azure blobs, or create a tool that deploys Azure applications through the Azure management interface. 
 
 
-<h2><a id="start"></a>Getting Started</h2>
 
-Now that you have the big-picture, the next step is to write your first Azure application. Choose your language, [get the appropriate SDK](/zh-cn/downloads/), and go for it. Cloud computing is the new default--get started now.
+<h2><a id="BigStuff"></a>大数据和大计算</h2>
+
+###HDInsight (Hadoop)###
+![HDInsight](./media/intro-to-azure/HDInsightIntroNew.png)   
+ **图：HDInsight 有助于批量处理庞大的数据**
+
+多年以来，大部分数据分析都是针对使用关系 DBMS 建立的数据仓库中存储的关系数据进行的。这种业务分析仍然很重要，会在将来持续很长一段时间。但如果您要分析的数据大到该关系数据库没办法处理，同时假设该数据不是关系型的，该怎么办？例如，数据中心的服务器日志、传感器的历史事件数据等。在这种情况下，您遇到了所谓的大数据问题。您需要另一种方法。
+
+如今用来分析大数据的主导技术是 Hadoop。该技术是一个 Apache 开放源代码项目，它使用 Hadoop 分布式文件系统 (HDFS) 存储数据，然后让开发人员创建 MapReduce 作业分析这些数据。HDFS 将数据分布在多个服务器上，然后在每个服务器上运行 MapReduce 作业块，从而对大数据进行并行处理。
+
+HDInsight 是 Azure 的基于 Apache Hadoop 的服务名称。通过 HDInsight，HDFS 可以在群集上存储数据以及跨多个虚拟机分发数据。它还跨这些虚拟机分布 MapReduce 作业的逻辑。如同本地 Hadoop 一样，在本地（逻辑和它所处理的数据位于同一 VM 中）并行处理数据以改善性能。HDInsight 还可以在 Azure 存储保管库 (ASV)（使用 blob）中存储数据。使用 ASV 可节约资金，因为您可以在不使用时删除您的 HDInsight 群集，但仍将数据保留在云中。
+ 
+HDinsight 还支持 Hadoop 生态系统的其他组件，包括 Hive 和 Pig。Microsoft 还创建了一些组件，借助于这些组件，您可以更轻松地使用传统 BI 工具（例如 HiveODBC 适配器和使用 Excel 的数据资源管理器）处理 HDInsight 生成的数据。
+
+###高性能计算（大计算）###
+
+使用云平台的最具吸引力的方法之一是运行高性能计算 (HPC) 和其他"大计算"应用程序。示例包括为使用行业标准消息传递接口 (MPI) 构建的专用工程应用程序，以及所谓进退两难的并行应用程序（例如财务风险模型）。
+
+大计算的本质就是在多个计算机上同时执行代码。在 Azure 上，这意味着同时运行多个虚拟机，所有虚拟机并行工作来解决某个问题。此操作需要以某种方式访问资源和调度应用程序，即，跨这些实例分发其工作。Microsoft 的免费 HPC 包和其他计算群集解决方案可以在 Azure 中很好地执行，可利用 Azure 计算和基础结构服务按需将容量添加到本地计算群集或完全在云中运行"大计算"应用程序。
+
+Azure 提供了一系列 VM 实例大小，具有不同配置的 CPU 内核、内存、磁盘容量和其他特征以满足不同应用程序的要求。最近引入的 A8 和 A9 实例非常适用于许多计算密集型工作负载，特别是并行 MPI 应用程序，因为这两个实例具有高速、多核 CPU 和大量的内存。在某些配置中，实例利用云中的低延迟和高吞吐量应用程序网络（包括远程直接内存访问 (RDMA) 技术）用于实现并行 MPI 应用程序的最大效率。
+
+Azure 还为"大计算"应用程序开发人员和合作伙伴提供一整套计算功能、服务、体系结构选项和开发工具。Azure 支持涉及专用数据工作流的自定义"大计算"工作流，以及可扩展到成千上万个计算内核的作业和任务计划模式。
 
 
-<!--
-[Azure Media Services Poster]: http://www.microsoft.com/zh-cn/download/details.aspx?id=38195
--->
+
+<h2><a id="media"></a>媒体</h2>
+
+![Azure 媒体服务](./media/intro-to-azure/MediaServicesIntroNew.png)   
+ **图：媒体服务是向全球客户端提供视频和其他媒体的应用程序的平台。**
+
+视频构成当今 Internet 流量的一大部分，并且该比例以后将更大。然而，在 Web 上提供视频并不简单。有许多可变因素，例如编码算法和用户屏幕的显示分辨率。视频需求往往还会突然爆发，例如在星期六晚上的高峰期，许多人都决定在这个时候观看在线影片。 
+
+考虑到这种需求的增加，可以非常肯定将创建许多使用视频的新应用程序。但是，所有应用程序都需要解决一些相同的问题，而每个人彼此独立解决这些问题并没有任何意义。较好的方法是创建提供供许多应用程序使用的通用解决方案的平台。在云中构建此平台具有一些明显的优势。它可以按现用现付模式广泛提供，并且还可以应对视频应用程序经常面临的需求变化。
+
+Azure 媒体服务解决了此问题。它提供了一组云组件，从而使用户可以轻松地创建和运行使用视频和其他媒体的应用程序。 
+
+如图所示，媒体服务为使用视频和其他媒体的应用程序提供了一组组件。例如，它包括将视频上载到媒体服务中的媒体插入组件（视频存储在 Azure Blob 中）、支持各种视频和音频格式的编码组件、提供数字版权管理的内容保护组件、用于将广告插入视频流的组件、用于流式处理的组件，等等。Microsoft 合作伙伴也可以为该平台提供组件，然后让 Microsoft 代表他们分发这些组件并计费。 
+
+使用此平台的应用程序可以运行在 Azure 上或其他位置。例如，视频制作公司的桌面应用程序可能允许其用户将视频上载到媒体服务，然后以各种方式对其进行处理。或者，运行在 Azure 上的基于云的内容管理服务可能依赖媒体服务来处理和分发视频。无论在哪里运行以及执行何种操作，每个应用程序都会选择需要使用的组件，并通过 RESTful 接口访问这些组件。 
+
+若要分发所生成的内容，应用程序可以使用 Azure CDN、其他 CDN，或只是将比特直接发送给用户。无论实现方式如何，使用媒体服务创建的视频可供各种客户端系统使用，包括 Windows、Macintosh、HTML 5、iOS、Android、Windows Phone、Flash 和 Silverlight。其目标是更轻松地创建现代媒体应用程序。 
+
+**参考**
+
+有关媒体服务工作方式的更直观展示，请下载 [Azure 媒体服务海报][Azure 媒体服务海报]。
+
+
+
+
+
+
+<h2><a id="commerce"></a>商务</h2>
+
+"软件即服务"的出现正在改变我们创建应用程序的方式。它还改变了我们销售应用程序的方式。由于 SaaS 应用程序位于云中，因此其潜在客户应联机查找解决方案。并且此更改适用于数据和应用程序。为什么人们不寻求通过云来寻找市场上销售的数据集？Microsoft 使用 [Azure Marketplace](http://datamarket.azure.com/) 解决了这两个问题 [Azure Store](/zh-cn/store/overview/)。
+
+![Azure 商务](./media/intro-to-azure/CommerceIntroNew.png)   
+ **图：Azure Marketplace 和 Azure 应用商店使您可以查找和购买 Azure 应用程序和商业数据集，并将它们用作您的 Azure 应用程序的一部分。**
+
+这二者之间的差异是：Marketplace 处于 Azure 管理门户之外，而从该门户内部可以访问应用商店。潜在客户可以通过搜索查找满足其需求的 Azure 应用程序。客户还可以搜索商业数据集，包括人口统计数据、财务数据、地理数据等等。当他们找到喜欢的内容后，可以从供应商处访问它，也可以直接通过 Marketplace 或应用商店 Web 位置进行访问，在某些情况下还可以从管理门户进行访问。应用程序还可以通过 Marketplace 来使用必应搜索 API，从而使它们可以访问 Web 搜索结果。
+
+
+**商务方案**
+
+SendGrid 是 Azure 应用商店中的应用程序，支持发送电子邮件。它提供了额外的功能，例如可靠交付和统计信息。您可以购买此应用程序和相关的服务，而不是尝试自行构建此类基础结构。  
+
+
+<h2><a id="start"></a>入门</h2>
+
+现在，您已了解大体情况，下一步是编写您的第一个 Azure 应用程序。选择您的语言，[获取相应的 SDK](/zh-cn/downloads/)并继续下一步。云计算是新的默认计算模式 -- 立即开始。
+
+
+
+[Azure 媒体服务海报]: http://azure.microsoft.com/zh-cn/documentation/infographics/media-services/
+
+<!--HONumber=41-->
