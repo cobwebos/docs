@@ -43,7 +43,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
 
     如果你当前没有 Jenkins CI 解决方案，可以使用以下技术运行一个 Jenkins CI 解决方案：
 
-    1. 在已启用 Java 的计算机上，从以下位置下载 jenkins.war： <http://jenkins-ci.org>.
+    1. 在已启用 Java 的计算机上，从以下位置下载 jenkins.war： <http://jenkins-ci.org>。
     2. 在打开到包含 jenkins.war 的文件夹的命令提示符处，运行：
 
         `java -jar jenkins.war`
@@ -52,7 +52,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
 
         虽然典型 Jenkins CI 解决方案将设置为作为一个服务运行，但在本教程中，通过命令行运行 Jenkins war 就足够了。
 
-- 一个 Azure 帐户。注册 Azure 帐户的位置位于 <http://www.windowsazure.cn>.
+- 一个 Azure 帐户。注册 Azure 帐户的位置位于 <http://www.windowsazure.cn>。
 
 - 一个 Azure 存储帐户。如果你还没有存储帐户，则可使用[如何创建存储帐户][]中的步骤创建一个。
 
@@ -76,7 +76,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
 1. 在 Jenkins 仪表板中，单击"管理 Jenkins"。
 2. 在"管理 Jenkins"页中，单击"配置系统"。
 3. 在"Microsoft Azure 存储帐户配置"部分：
-    1. 输入你的存储帐户名称，获取该帐户名称可以通过 Azure 门户 <https://manage.windowsazure.cn>.
+    1. 输入你的存储帐户名称，获取该帐户名称可以通过 Azure 门户 <https://manage.windowsazure.cn>。
     2. 输入你的存储帐户密钥，同样可以从 Azure 门户获取该密钥。
     3. 如果你在使用公共 Azure 云，对于"Blob 服务终结点 URL"，请使用默认值。如果你在使用其他 Azure 云，则使用在 Azure 管理门户中为你的存储帐户指定的终结点。 
     4. 单击"验证存储凭据"以验证你的存储帐户。 
@@ -113,7 +113,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
 12. 单击"保存"以保存你的设置。
 13. 在 Jenkins 仪表板中，单击"立即生成"以运行"MyJob"。检查控制台输出中的状态。当生成后操作开始上载生成项目时，Azure 存储的状态消息将包括在控制台输出中。
 14. 成功完成此作业后，你可通过打开公共 Blob 检查生成项目。
-    1. 登录到 Azure 管理门户 <https://manage.windowsazure.cn>.
+    1. 登录到 Azure 管理门户 <https://manage.windowsazure.cn>。
     2. 单击"存储"。
     3. 单击用于 Jenkins 的存储帐户名称。
     4. 单击"容器"。

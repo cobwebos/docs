@@ -1,4 +1,4 @@
-﻿<a id="what-are-service-bus-queues"></a>
+<a id="what-are-service-bus-queues"></a>
 ##什么是服务总线队列？
 
 服务总线队列支持**中转消息通信**模型。在使用队列时，分布式应用程序的组件不会直接相互通信，而是通过充当中介的队列交换消息。消息创建方（发送方）将消息传送到队列，然后继续对其进行处理。消息使用方（接收方）以异步方式从队列中提取消息并处理它。创建方不必等待使用方的答复即可继续处理并发送更多消息。队列为一个或多个竞争使用方提供**"先入先出 (FIFO)"**消息传递方式。也就是说，接收方通常会按照消息添加到队列中的顺序来接收并处理消息，并且每条消息仅由一个消息使用方接收并处理。
@@ -62,7 +62,7 @@
 
 ###从服务器资源管理器中获取管理凭据
 
-若要使用 Visual Studio 而不是管理门户获取连接信息，请按照[此处]描述的过程进行操作(http://http://msdn.microsoft.com/zh-cn/library/windowsazure/ff687127.aspx), in the section titled **To connect to Azure from Visual Studio**. When you sign in to Azure, the **Service Bus** node under the **Microsoft Azure** tree in Server Explorer is automatically populated with any namespaces you've already created. Right-click any namespace, and then click **Properties** to see the connection string and other metadata associated with this namespace displayed in the Visual Studio **Properties** pane. 
+若要使用 Visual Studio 而不是管理门户获取连接信息，请按照[此处](http://http://msdn.microsoft.com/zh-cn/library/windowsazure/ff687127.aspx)描述的过程进行操作, 所述过程进行操作，详见 **从 Visual Studio 连接到 Azure**这一节。 当你登录到 Azure 时，服务器资源管理器中 **Microsoft Azure** 树下的 **Service Bus** 节点中会自动填充你所创建的任何命名空间。 右键单击任意命名空间，然后单击“属性”，此时就会看到在 Visual Studio 的“属性”窗格中显示与该命名空间关联的连接字符串和其他元数据。
 
 记下 **SharedAccessKey** 值，或将其复制到剪贴板：
 

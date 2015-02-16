@@ -1,4 +1,4 @@
-﻿## 创建 WebAPI 项目
+## 创建 WebAPI 项目
 
 第一步是创建 ASP.NET WebAPI 项目。这是用于对客户端进行身份验证和生成通知的后端。
 
@@ -51,7 +51,7 @@
 
 		using Microsoft.ServiceBus.Notifications;
 
-11. 在  `Notifications()` 方法中，将以下代码行中的两个占位符分别替换为通知中心的连接字符串（具有完全访问权限）和通知中心名称。可以从 [Azure 管理门户]中获取这些值(http://manage.windowsazure.com):
+11. 在  `Notifications()` 方法中，将以下代码行中的两个占位符分别替换为通知中心的连接字符串（具有完全访问权限）和通知中心名称。可以从 [Azure 管理门户](http://manage.windowsazure.com)中获取这些值:
 
 		Hub = NotificationHubClient.CreateClientFromConnectionString("{conn string with full access}", "{hub name}");
 

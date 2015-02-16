@@ -95,7 +95,7 @@
 
 你可以使用"管理密钥"复制要在连接字符串中使用的存储访问密钥。连接字符串需要在进行身份验证时使用存储帐户名称和密钥。有关配置连接字符串以访问 Azure 存储服务的信息，请参阅[配置连接字符串](http://msdn.microsoft.com/zh-cn/library/ee758697.aspx)。
 
-1. 在[管理门户](http://manage.windowsazure.cn)中操作, click **Storage**, and then click the name of the storage account to open the dashboard.
+1. 在[管理门户](http://manage.windowsazure.cn)中操作, 中，单击“存储”，然后单击存储帐户名称以打开仪表板。
 
 2. 单击"管理密钥"。
 

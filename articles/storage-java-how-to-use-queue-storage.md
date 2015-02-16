@@ -197,7 +197,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
         e.printStackTrace();
     }
 
-Alternatively, the following code sample updates just the first visible message on the queue.
+或者，以下代码示例只更新了队列中第一个可见消息。
 
     try
     {

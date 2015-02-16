@@ -62,7 +62,7 @@
 
 ##<a id="attachempty"></a>如何：附加空磁盘
 
-在创建并上载要用作空磁盘的 .vhd 文件后，您可以将其附加到虚拟机。使用 [Add-AzureVhd](http://msdn.microsoft.com/library/azure/dn495173.aspx) cmdlet to upload the .vhd file to the storage account.  
+在创建并上载要用作空磁盘的 .vhd 文件后，您可以将其附加到虚拟机。使用 [Add-AzureVhd](http://msdn.microsoft.com/library/azure/dn495173.aspx) cmdlet 将 .vhd 文件上载到存储帐户。  
 
 1. 单击"虚拟机"，然后选择要向其附加磁盘的虚拟机。
 

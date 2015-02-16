@@ -1,4 +1,4 @@
-﻿<properties title="Monitor, diagnose, and troubleshoot Windows Azure Storage" pageTitle="监视、诊断和排查存储空间问题 |Azure" description="使用存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储空间相关的问题。" metaKeywords="Azure storage  monitoring  diagnosing  logging  troubleshooting  performance  storage client library  Azure blob   Azure unstructured data   Azure unstructured storage   Azure blob   Azure blob storage  Azure queue   Azure asynchronous processing   Azure queue   Azure queue storage Azure table   Azure nosql   Azure large structured data store   Azure table   Azure table storage  Azure file storage  Azure file  Azure file share  Azure" services="storage" solutions="" documentationCenter="" authors="v-dobett" videoId="" scriptId="" manager="adinah" />
+<properties title="Monitor, diagnose, and troubleshoot Windows Azure Storage" pageTitle="监视、诊断和排查存储空间问题 |Azure" description="使用存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储空间相关的问题。" metaKeywords="Azure storage  monitoring  diagnosing  logging  troubleshooting  performance  storage client library  Azure blob   Azure unstructured data   Azure unstructured storage   Azure blob   Azure blob storage  Azure queue   Azure asynchronous processing   Azure queue   Azure queue storage Azure table   Azure nosql   Azure large structured data store   Azure table   Azure table storage  Azure file storage  Azure file  Azure file share  Azure" services="storage" solutions="" documentationCenter="" authors="v-dobett" videoId="" scriptId="" manager="adinah" />
 
 
 
@@ -1198,7 +1198,7 @@ Microsoft Message Analyzer 中内置的 **Web 代理**跟踪基于 Fiddler；它
 [功能"X"在存储模拟器中无法正常工作]: #feature-X-is-not-working
 [使用存储模拟器时出现错误"其中一个 HTTP 标头的值的格式不正确"]: #error-HTTP-header-not-correct-format
 [运行存储模拟器需要管理权限]: #storage-emulator-requires-administrative-privileges
-[你在安装 Microsoft Azure SDK for.NET 时遇到问题]: #you-are-encountering-problems-installing-the-Windows-Azure-SDK
+[安装 Microsoft Azure SDK for.NET 时遇到问题]: #you-are-encountering-problems-installing-the-Windows-Azure-SDK
 [你遇到了其他存储服务问题]: #you-have-a-different-issue-with-a-storage-service
 
 [附录]: #appendices

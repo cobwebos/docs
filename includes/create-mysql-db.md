@@ -1,4 +1,4 @@
-	#如何在 Azure 中创建 MySQL 数据库
+#如何在 Azure 中创建 MySQL 数据库
 
 本指南将说明如何通过 [ClearDB] 从 [Azure 应用商店]创建 MySQL 数据库，以及如何在您创建 [Azure 网站 ][waws] 时创建作为链接资源的 MySQL 数据库。[ClearDB] 是可容错的数据库即服务提供商，允许您在 Azure 数据中心中运行和管理 MySQL 数据库，并使您能够从任何应用程序连接到这些数据库。  
 

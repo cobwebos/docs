@@ -58,7 +58,7 @@
 
 
 
-For 有关如何命名共享、目录和文件的详细信息，请参阅[命名和引用共享、目录、文件和元数据]。(http://msdn.microsoft.com/zh-cn/library/azure/dn167011.aspx).
+For 有关如何命名共享、目录和文件的详细信息，请参阅[命名和引用共享、目录、文件和元数据](http://msdn.microsoft.com/zh-cn/library/azure/dn167011.aspx)。
 
 ##<a name="create-account"></a>创建 Azure 存储帐户
 <!--

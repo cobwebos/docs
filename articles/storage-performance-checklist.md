@@ -262,7 +262,7 @@ Azure 存储空间支持两种类型的 Blob： *page* Blob 和 *block* Blob。�
 ####<a name="subheading26"></a>关闭 Nagle
 Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网络性能的方法。不过，该方法并非适用于所有情况（例如交互性很强的环境）。就 Azure 存储空间来说，Nagle 的算法会对表请求和队列服务请求的执行造成负面影响，应尽可能禁用。  
 
-有关详细信息，请参阅我们的博客文章：[Nagle 的算法不适用于小型请求](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), which explains why Nagle's algorithm interacts poorly with table and queue requests, and shows how to disable it in your client application.  
+有关详细信息，请参阅我们的博客文章：[Nagle 的算法不适用于小型请求](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), 其中解释了为什么 Nagle 的算法不能很好地与表及队列请求交互，并说明了如何在你的客户端应用程序中禁用该算法。
 
 ###架构
 数据的呈现和查询方式是影响表服务性能的单个最大因素。虽然每个应用程序都不相同，但本部分仍概要列出了一些通用的经过验证的做法，这些做法针对以下方面：  

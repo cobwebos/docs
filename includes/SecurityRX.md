@@ -72,11 +72,11 @@ Active Directory 访问控制（以前称为访问控制
 **Windows Identity Foundation (WIF)。**WIF 是 .NET Framework 4.5 附带的 .NET 运行时库（在 .NET 3.5/4.0 中也可单独下载它）。WIF 在处理协议（例如 WS 联合身份验证和 WS-Trust）和处理令牌（例如安全声明标记语言 (SAML)）方面发挥着重要作用，
 因此您无需在自己的应用程序中编写十分复杂的安全相关代码。以下资源提供了有关 WIF 的详细信息：
 
--   [Windows Identity Foundation 4.5 示例](http://code.msdn.microsoft.com/site/search?f%5B0%5D.Type=SearchText&f%5B0%5D.Value=wif&f%5B1%5D.Type=Topic&f%5B1%5D.Value=claims-based%20authentication) on MSDN Code Gallery.
+-   [Windows Identity Foundation 4.5 示例](http://code.msdn.microsoft.com/site/search?f%5B0%5D.Type=SearchText&f%5B0%5D.Value=wif&f%5B1%5D.Type=Topic&f%5B1%5D.Value=claims-based%20authentication) MSDN 代码库上的。
 -   [适用于 Visual Studio 11 Beta 的 Windows Identity Foundation 4.5 工具](http://visualstudiogallery.msdn.microsoft.com/e21bf653-dfe1-4d81-b3d3-795cb104066e) on
     MSDN 代码库。
 -   [Windows Identity Foundation 运行时 (.Net 3.5/4.0)](http://www.microsoft.com/zh-cn/download/details.aspx?id=17331) on MSDN.
--   [Windows Identity Foundation 3.5/4.0 示例和 Visual Studio 2008/2010 模板](http://www.microsoft.com/zh-cn/download/details.aspx?displaylang=en&id=4451) on MSDN.
+-   [Windows Identity Foundation 3.5/4.0 示例和 Visual Studio 2008/2010 模板](http://www.microsoft.com/zh-cn/download/details.aspx?displaylang=en&id=4451) MSDN 上的。
 
 **Azure AD 访问控制（以前称为 ACS）**。
 Azure AD 访问控制是一项云服务，用于提供安全令牌
@@ -353,8 +353,8 @@ SQL Database 时都必须提供凭据（登录名和密码）。在管理您的�
 
 请参见以下资源来实施此方案：
 
--   [使用 ACS 保护服务总线](http://channel9.msdn.com/posts/Securing-Service-Bus-with-ACS) (Video)
--   [使用 ACS 保护服务总线](https://skydrive.live.com/view.aspx?cid=123CCD2A7AB10107&resid=123CCD2A7AB10107%211849) (Slides)
+-   [使用 ACS 保护服务总线](http://channel9.msdn.com/posts/Securing-Service-Bus-with-ACS) (视频)
+-   [使用 ACS 保护服务总线](https://skydrive.live.com/view.aspx?cid=123CCD2A7AB10107&resid=123CCD2A7AB10107%211849) (幻灯片)
 -   [使用访问控制服务进行服务总线身份验证和授权](http://msdn.microsoft.com/zh-cn/library/hh403962.aspx)
 
 ##内存中缓存身份识别和访问控制方案
@@ -369,8 +369,7 @@ Azure AD A访问控制进行身份验证。它可使用通过管理门户提供�
 
 -   [如何：以编程方式为 Azure Caching 配置缓存客户端](http://msdn.microsoft.com/zh-cn/library/windowsazure/gg618003.aspx)
 -   [如何：使用应用程序配置文件为 Azure Caching 配置缓存客户端](http://msdn.microsoft.com/zh-cn/library/windowsazure/gg278346.aspx)
--   [Azure 服务总线和 Caching 示例](http://msdn.microsoft.com/zh-cn/library/ee706741.aspx) (Caching Samples
-    一节）
+-   [Azure 服务总线和 Caching 示例](http://msdn.microsoft.com/zh-cn/library/ee706741.aspx) (Caching 示例”一节）
 
 ##Azure Marketplace 身份识别和访问控制方案
 

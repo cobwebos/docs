@@ -9,6 +9,7 @@ Azure 存储帐户是一个安全的帐户，它向你授予对 Azure 存储空�
 在中国有一种类型的存储帐户：
 
 - 标准存储帐户包括 Blob、表和队列存储。文件存储可通过 [Azure 门户](/zh-cn/)请求提供。
+
 <!--
 - 高级存储帐户当前仅支持 Azure 虚拟机磁盘。Azure  高级存储可通过 [Azure 门户](/zh-cn/)请求提供。请参阅[高级存储：Azure 虚拟机工作负载的高性能存储](http://go.microsoft.com/fwlink/?LinkId=521898) for an in-depth overview of Premium Storage.
 -->

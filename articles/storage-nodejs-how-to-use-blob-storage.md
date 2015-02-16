@@ -35,7 +35,7 @@ Node.js API 编写的。涉及的方案包括**上载**、**列出**、
 
 ## <a name="create-app"> </a>创建 Node.js 应用程序
 
-创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅 [创建 Node.js 应用程序并将其部署到 Azure 网站]、[Node.js 云服务][Node.js 云服务]（使用 Windows PowerShell）或 [使用 WebMatrix 构建网站]。
+创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅 [创建 Node.js 应用程序并将其部署到 Azure 网站][Node.js 云服务][Node.js 云服务]（使用 Windows PowerShell）或 [使用 WebMatrix 构建网站]。
 
 ## <a name="configure-access"> </a>配置应用程序以访问存储
 
@@ -108,7 +108,7 @@ All Blob 驻留在一个容器中。若要创建一个新的容器，请使用 *
       }
 	});
 
-Alternatively, you can modify the access level of a container by using **setContainerAcl** to specify the access level. The following example changes the access level to container:
+另外，你可以通过使用 setContainerAcl 指定访问级别来修改容器的访问级别。 下面的示例将访问级别更改为“容器”：
 
     blobSvc.setContainerAcl('mycontainer', null, 'container', function(error, result, response){
 	  if(!error){
@@ -379,7 +379,7 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
   [如何：删除 Blob]: #delete-blobs
   [如何：并发访问]: #concurrent-access
   [如何：使用共享访问签名]: #sas
-[创建 Node.js 应用程序并将其部署到 Azure 网站]: /zh-cn/develop/nodejs/tutorials/create-a- Website-(mac)/
+  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /zh-cn/develop/nodejs/tutorials/create-a- Website-(mac)/
   [使用存储构建 Node.js 云服务]: /zh-cn/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
   [使用存储构建 Node.js Web 应用程序]: /zh-cn/documentation/articles/storage-nodejs-use-table-storage-web-site/
  [使用 WebMatrix 构建网站]: /zh-cn/documentation/articles/web-sites-nodejs-use-webmatrix/

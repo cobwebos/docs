@@ -2,7 +2,7 @@
 
 当有人使用 HTTPS 访问您的网站时，将使用安全套接字层 (SSL) 加密保护网站和浏览器之间的通信的安全。这是保护通过 Internet 发送的数据安全的最常用方法，并且可确保对访问者而言，他们与您的网站的事务是安全的。本文讨论如何为 Azure 网站启用 HTTPS。 
 
-> [WACOM.NOTE] 为了为自定义域名启用 HTTPS，您必须将网站配置为标准模式。如果您当前使用的是免费模式或共享模式，则这可能会产生额外成本。有关共享和标准模式定价的详细信息，请参阅[定价详细信息](http://www.windowsazure.cn/zh-cn/pricing/overview/). To get started with Azure, see [Microsoft Azure Free Trial](http://www.windowsazure.cn/zh-cn/pricing/free-trial/).
+> [WACOM.NOTE] 为了为自定义域名启用 HTTPS，您必须将网站配置为标准模式。如果您当前使用的是免费模式或共享模式，则这可能会产生额外成本。有关共享和标准模式定价的详细信息，请参阅[定价详细信息](http://www.windowsazure.cn/zh-cn/pricing/overview/). 要开始使用 Azure，请参阅  [Microsoft Azure Free Trial](http://www.windowsazure.cn/zh-cn/pricing/free-trial/)。
 
 <a href="bkmk_azurewebsites"></a><h2>\*.chinacloudsites.cn 域</h2>
 

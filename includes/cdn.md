@@ -122,7 +122,7 @@ http://<*CDNNamespace*\>.vo.msecnd.net/<*myPublicContainer*\>/<*BlobName*\>
 
 -   对于 Azure Blob，您可以从公共
     容器中删除 Blob。
--   您可将容器设为专用的而不是公用的。请参阅[限制对容器和 Blob 的访问](http://msdn.microsoft.com/zh-cn/library/dd179354.aspx) for more information.
+-   您可将容器设为专用的而不是公用的。请参阅[限制对容器和 Blob 的访问](http://msdn.microsoft.com/zh-cn/library/dd179354.aspx) 以了解更多信息。
 -   您可以使用管理
     门户禁用或删除 CDN 终结点。
 -   您可以修改托管服务，使其不再响应
