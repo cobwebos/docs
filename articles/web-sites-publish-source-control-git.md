@@ -1,4 +1,3 @@
-<properties title="Publishing with Git (PHP) - Azure" pageTitle="Publishing with Git (PHP) - Azure" keywords="publishing Git Azure, publish website Azure" description="Learn how to use Git to publish an Azure web site, and then enable continuous deployment from GitHub and CodePlex." services="Web Sites" documentationCenter="PHP" authors="larryf" />
+﻿<properties title="使用 Git 进行发布 (PHP) - Azure" pageTitle="使用 Git 进行发布 (PHP) - Azure" keywords="publishing Git Azure, publish  Website Azure" description="了解如何使用 Git 发布 Azure 网站，然后启用从 GitHub 和 CodePlex 进行连续部署。" services=" Websites" documentationCenter="PHP" authors="larryf" />
 
 [WACOM.INCLUDE [publishing-with-git](../includes/publishing-with-git.md)]
-
