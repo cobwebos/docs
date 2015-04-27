@@ -1,4 +1,4 @@
-﻿<properties 
+<properties 
 	pageTitle="高级存储：Azure 虚拟机工作负载的高性能存储" 
 	description="了解 Azure 高级存储磁盘。了解如何创建高级存储帐户。" 
 	services="storage" 
@@ -204,7 +204,7 @@ Azure 会将磁盘大小映射（向上舍入）至表中指定的最接近高�
        <li type=round>快照容量：10 TB</li>
     </ul>
 	</td>
-	<td>入站 + 出站最高每秒 50 GB</td>
+	<td>入站 + 出站最高每秒 50 Gbps</td>
 </tr>
 </tbody>
 </table>
