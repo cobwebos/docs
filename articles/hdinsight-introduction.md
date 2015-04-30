@@ -16,7 +16,7 @@ Apache Hadoop 是一个辅助大数据管理和分析的软件框架。Apache Ha
 
 ### MapReduce
 
-为了降低分析来自各种源的非结构化数据的复杂性，MapReduce 编程模型支持用于闭包映射和精简操作的核心抽象。MapReduce 编程模型会将其所有作业视为对包含密钥值对的数据集进行的计算。因此，输入和输出文件都必须包含仅包括密钥值对的数据集。这种约束的主要收获是导致 MapReduce 作业可以组合。
+为了降低分析来自各种源的非结构化数据的复杂性，MapReduce 编程模型支持用于闭包映射和精简操作的核心抽象。MapReduce 编程模型会将其所有作业视为对包含键值对的数据集进行的计算。因此，输入和输出文件都必须包含仅包括键值对的数据集。这种约束的主要收获是导致 MapReduce 作业可以组合。
 
 其他与 Hadoop 相关的项目（如 Pig 和 Hive）建立在 HDFS 和 MapReduce 框架基础之上。与直接使用 MapReduce 程序相比，此类项目管理群集会轻松得多。例如，Pig 使你能够使用称为 Pig Latin 的过程语言来编写程序，这些程序将在群集上编译为 MapReduce 程序。它还使你能够流畅地控制对数据流的管理。Hive 是一个数据仓库基础结构，它为存储在群集中的文件数据提供表抽象，然后可以使用以声明语言（称为 HiveQL）编写的类似于 SQL 的语句对数据进行查询。
 
@@ -155,11 +155,11 @@ HDInsight（通常还有 Hadoop 技术）最适合于处理大量已记录或存
   [HDInsight 文档]: http://windowsazure.cn/zh-cn/documentation/services/hdinsight/
   [Azure HDInsight 入门]: /zh-cn/manage/services/hdinsight/get-started-hdinsight/
   [运行 HDInsight 示例]: /zh-cn/manage/services/hdinsight/howto-run-samples/
-  [大数据和 Azure]: http://azure.microsoft.com/zh-cn/solutions/big-data/
-  [Azure HDInsight SDK]: http://msdn.microsoft.com/zh-cn/library/dn469975.aspx
+  [大数据和 Azure]: http://azure.microsoft.com/solutions/big-data/
+  [Azure HDInsight SDK]: http://msdn.microsoft.com/library/dn469975.aspx
   [Azure 主页]: https://www.windowsazure.cn
-  [Azure SQL Database]: http://msdn.microsoft.com/zh-cn/library/azure/ee336279.aspx
-  [SQL Database 的管理门户]: http://msdn.microsoft.com/zh-cn/library/azure/gg442309.aspx
+  [Azure SQL Database]: http://msdn.microsoft.com/library/azure/ee336279.aspx
+  [SQL Database 的管理门户]: http://msdn.microsoft.com/library/azure/gg442309.aspx
   [Adventure Works for SQL Database]: http://msftdbprodsamples.codeplex.com/releases/view/37304
   [利用 Power Query 将 Excel 连接到 HDInsight]: /zh-cn/manage/services/hdinsight/connect-excel-with-power-query/
   [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight]: /zh-cn/manage/services/hdinsight/connect-excel-with-hive-ODBC/
