@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
 	pageTitle="使用 CSharp 在 Azure SQL Database 上执行 CREATE ASSEMBLY"
 	description="提供 C# 源代码，用于在先将 DLL 文件编码成包含长十六进制数的字符串后，向 Azure SQL Database 发出 CREATE ASSEMBLY 语句。" 
 	services="sql-database" 
@@ -52,7 +52,7 @@ HTML '&nbsp;' was treated as literal text by build system, thus change title fro
 
 上面的列表未提到...<br/>
 **execute sp_configure 'clr enabled', 1;**<br/>
-因为 Azure SQL Database 不需要此语句，但 Microsoft SQL Server 需要它。
+...，因为 Azure SQL Database 不需要此语句，但 Microsoft SQL Server 需要它。
 
 
 如果需要重新运行，请执行以下 T-SQL 代码删除函数和程序集：
@@ -330,5 +330,4 @@ HTML '&nbsp;' was treated as literal text by build system, thus change title fro
 
 <!-- EndOfFile -->
 
-
-<!--HONumber=50-->
+<!--HONumber=55-->

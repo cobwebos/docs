@@ -20,7 +20,7 @@
 
 > [AZURE.SELECTOR]
 - [时间点还原 - 门户](/zh-cn/documentation/articles/sql-database-point-in-time-restore-tutorial-management-portal/)
-- [时间点还原 - PowerShell](/zh-cn/documentation/articles/sql-database-point-in-time-restore-tutorial-powershell/) 
+- [时间点还原 - PowerShell](/zh-cn/documentation/articles/sql-database-point-in-time-restore-tutorial-powershell/)
 
 ## 概述
 
@@ -52,4 +52,4 @@
 
 [服务管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx)
 
-<!--HONumber=50-->
+<!--HONumber=55-->

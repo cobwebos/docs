@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SQL Database 审核入门 | Azure 
+	pageTitle="SQL Database 审核入门 | Azure" 
 	description="SQL Database 审核入门" 
 	services="sql-database" 
 	documentationCenter="" 
@@ -57,7 +57,7 @@ Azure SQL Database 审核可以跟踪数据库事件，并将审核的事件写�
 
 ## <a id="subheading-2"></a>为数据库设置审核
 
-1. 启动 <a href="https://portal.azure.com" target="_blank">Azure 预览版门户</a> ( https://portal.azure.com )。或者，你也可以启动<a href= "https://manage.windowsazure.cn/" target="_bank">经典 Azure 门户</a> ( https://manage.windowsazure.cn/ )。 请参考以下详细信息。
+1. 启动 <a href="https://portal.azure.com" target="_blank">Azure 预览版门户</a> (https://portal.azure.com)。或者，你也可以启动<a href= "https://manage.windowsazure.cn/" target="_bank">经典 Azure 门户</a> (https://manage.windowsazure.cn/)。请参考以下详细信息。
 2. 导航到你要审核的数据库配置边栏。向下滚动到"操作"部分，然后单击"审核"以启用审核并启动审核配置边栏。
 
 	![][1]
@@ -95,7 +95,7 @@ Azure SQL Database 审核可以跟踪数据库事件，并将审核的事件写�
 
 ## <a id="subheading-4"></a>使用经典 Azure 门户为数据库设置审核
 
-1. 启动<a href= "https://manage.windowsazure.cn/" target="_bank">经典 Azure 门户</a> ( https://manage.windowsazure.cn/ )。 
+1. 启动<a href= "https://manage.windowsazure.cn/" target="_bank">经典 Azure 门户</a> (https://manage.windowsazure.cn/)。 
 2. 单击要审核的数据库，然后单击"审核与安全性预览"选项卡。
 3. 在审核部分中，单击"启用"。
 
@@ -116,7 +116,7 @@ Azure SQL Database 审核可以跟踪数据库事件，并将审核的事件写�
 
 ## <a id="subheading-4"></a>已启用安全性的访问
 
-在生产环境中，你可能需要审核从所有应用程序和工具传往数据库的所有流量。为此，请将"已启用安全性的访问"从"可选"修改为"必需"，然后保存策略。配置为"必需"后，用户将无法选择通过原始连接字符串访问数据库，而只能通过已启用安全性的连接字符串进行访问。
+在生产环境中，你可能需要审核从所有应用程序和工具传往数据库的所有流量。为此，请将"已启用安全性的访问"从"可选"修改为"必需"，然后保存策略。配置为"必需"后，用户将无法选择通过原始连接字符串访问数据库，而只能通过已启用安全性的连接字符串进行访问 。
 
 
 ![][9]
@@ -140,7 +140,7 @@ Azure SQL Database 审核可以跟踪数据库事件，并将审核的事件写�
 
 > [WACOM.NOTE] AzureResourceManager 模块目前以预览版提供。它可能未提供与 Azure 模块相同的管理功能。
 
-可通过运行 Switch-AzureMode cmdlet 来访问  [Azure 资源管理器](https://msdn.microsoft.com/zh-cn/library/dn654592.aspx)模式 (`Switch-AzureMode AzureResourceManager`)。当你处于 Azure 资源管理器模式时，运行 `Get-Command *AzureSql*` 可以列出可用的 cmdlet。
+ 可通过运行 Switch-AzureMode cmdlet 来访问 [Azure 资源管理器](https://msdn.microsoft.com/zh-cn/library/dn654592.aspx)模式 (`Switch-AzureMode AzureResourceManager`)。当你处于 Azure 资源管理器模式时，运行`Get-Command *AzureSql*` 可以列出可用的 cmdlet。
 
 
 
@@ -189,5 +189,4 @@ Azure SQL Database 审核可以跟踪数据库事件，并将审核的事件写�
 [另一个 azure.microsoft.com 文档主题的链接 2]: /zh-cn/documentation/articles/web-sites-custom-domain-name/
 [另一个 azure.microsoft.com 文档主题的链接 3]: /zh-cn/documentation/articles/storage-whatis-account/
 
-
-<!--HONumber=50-->
+<!--HONumber=55-->

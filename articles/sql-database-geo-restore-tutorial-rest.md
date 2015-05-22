@@ -56,4 +56,4 @@
 
 [服务管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx)
 
-<!--HONumber=50-->
+<!--HONumber=55-->

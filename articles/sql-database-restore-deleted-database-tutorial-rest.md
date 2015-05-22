@@ -19,7 +19,7 @@
 # 使用 REST API 还原已删除的 Azure SQL 数据库
 
 > [AZURE.SELECTOR]
-- [还原已删除数据库 - 门户](/zh-cn/documentation/articles/sql-database-restore-deleted-database-tutorial-management-portal/)
+- [还原已删除的数据库 - 门户](/zh-cn/documentation/articles/sql-database-restore-deleted-database-tutorial-management-portal/)
 - [还原已删除的数据库 - PowerShell](/zh-cn/documentation/articles/sql-database-restore-deleted-database-tutorial-powershell/) 
 
 ## 概述
@@ -52,4 +52,4 @@
 
 [服务管理 REST API 参考](http://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx)
 
-<!--HONumber=50-->
+<!--HONumber=55-->

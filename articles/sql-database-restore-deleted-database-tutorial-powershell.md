@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
    pageTitle="在 Azure PowerShell 中还原已删除的 Azure SQL 数据库" 
    description="Microsoft Azure SQL Database, 还原已删除的数据库, 恢复已删除的数据库, Azure PowerShell" 
    services="sql-database" 
@@ -19,7 +19,7 @@
 # 在 Azure PowerShell 中还原已删除的 Azure SQL 数据库
 
 > [AZURE.SELECTOR]
-- [还原已删除数据库 - 门户](/zh-cn/documentation/articles/sql-database-restore-deleted-database-tutorial-management-portal/)
+- [还原已删除的数据库 - 门户](/zh-cn/documentation/articles/sql-database-restore-deleted-database-tutorial-management-portal/)
 - [还原已删除的数据库 - REST API](/zh-cn/documentation/articles/sql-database-restore-deleted-database-tutorial-rest/)
 
 ## 概述
@@ -36,7 +36,7 @@
 
 <!--<iframe src="http://channel9.msdn.com/Blogs/Windows-Azure/Restore-a-Deleted-SQL-Database-With-Microsoft-Azure-PowerShell/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>-->
 
-必须使用基于证书的身份验证来运行以下 cmdlet。有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/zh-cn/documentation/articles/install-configure-powershell/#use-the-certificate-method) 中的*使用证书方法*。
+必须使用基于证书的身份验证来运行以下 cmdlet。有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/zh-cn/documentation/articles/install-configure-powershell/#use-the-certificate-method) 中的 *使用证书方法*。
 
 1. 使用 [Get-AzureSqlDatabase](http://msdn.microsoft.com/zh-cn/library/azure/dn546735.aspx) cmdlet 获取可恢复的数据库列表。
 	* 使用 **RestorableDropped** 开关，并指定从中删除了数据库的服务器的 **ServerName**。
@@ -79,4 +79,4 @@
 
 [Azure PowerShell](http://msdn.microsoft.com/zh-cn/library/azure/jj156055.aspx)
 
-<!--HONumber=50-->
+<!--HONumber=55-->

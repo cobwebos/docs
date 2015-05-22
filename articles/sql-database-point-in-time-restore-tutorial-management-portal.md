@@ -1,4 +1,4 @@
-<properties 
+﻿<properties 
    pageTitle="在 Azure 门户中使用时间点还原来还原 Azure SQL 数据库" 
    description="时间点还原, Microsoft Azure SQL Database, 还原数据库, 恢复数据库, Azure 管理门户, Azure 门户" 
    services="sql-database" 
@@ -20,7 +20,7 @@
 
 > [AZURE.SELECTOR]
 - [时间点还原 - PowerShell](/zh-cn/documentation/articles/sql-database-point-in-time-restore-tutorial-powershell/)
-- [时间点还原 - REST API](/zh-cn/documentation/articles/sql-database-point-in-time-restore-tutorial-rest/) 
+- [时间点还原 - REST API](/zh-cn/documentation/articles/sql-database-point-in-time-restore-tutorial-rest/)
 
 ## 概述
 
@@ -74,4 +74,4 @@
 
 <!--[Azure SQL Database Point in Time Restore (blog)](http://azure.microsoft.com/blog/2014/10/01/azure-sql-database-point-in-time-restore/)-->
 
-<!--HONumber=50-->
+<!--HONumber=55-->
