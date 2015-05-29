@@ -7,14 +7,15 @@
    manager="paulettm"
    editor="cgronlun"/>
 
-
-
-
-
-
-
-
-
+<tags
+   ms.service="hdinsight" 
+   ms.devlang="" 
+   ms.topic="article" 
+   ms.tgt_pltfrm="na" 
+   ms.workload="big-data" 
+   ms.date="02/18/2015" 
+   wacn.date="" 
+   ms.author="larryfr"/>
 
 # 通过 SSH 将 Hive 与 HDInsight 中的 Hadoop 配合使用
 
@@ -30,9 +31,9 @@
 
 * 基于 Linux 的 HDInsight 上的 Hadoop 群集。
 
-* SSH 客户端。SSH 客户端上应该装有 Linux、Unix 和 Mac OS。Windows 用户必须下载 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Putty</a> 之类的客户端。
+* SSH 客户端。SSH 客户端上应该装有 Linux、Unix 和 Mac OS。Windows 用户必须下载 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY</a> 之类的客户端。
 
-## <a id="ssh"></a>使用 SSH 连接
+## <a id="ssh"></a>使用 SSH 进行连接
 
 使用 SSH 命令连接到 HDInsight 群集的完全限定域名 (FQDN)。FQDN 是你为群集指定的名称后接 **.azurehdinsight.cn**。例如，以下命令将连接到名为 **myhdinsight** 的群集：
 
@@ -44,13 +45,13 @@
 
 **如果你在创建 HDInsight 群集时提供了 SSH 身份验证的密码**，则需要根据提示提供该密码。
 
-### Putty（基于 Windows 的客户端）
+### PuTTY（基于 Windows 的客户端）
 
-Windows 未提供内置的 SSH 客户端。建议使用 **Putty**，可以从 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a> 下载。
+Windows 未提供内置的 SSH 客户端。我们建议使用 **PuTTY**，它可以从 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a> 下载。
 
-有关使用 Putty 的详细信息，请参阅<a href="/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">如何在 Azure 上通过 Linux 使用 SSH</a>中的**使用 Putty 连接到 Linux 计算机**部分。
+有关使用 Putty 的详细信息，请参阅<a href="/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">如何在 Azure 上将 SSH 与 Linux 配合使用</a>中的**使用 Putty 连接到 Linux 计算机**部分。
 
-> [AZURE.NOTE] 如果你对 HDInsight 群集使用了 SSH 身份验证的证书，则还需要参阅<a href="/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">如何在 Azure 上通过 Linux 使用 SSH</a>中的**为 Putty 创建 PPK**部分。
+> [AZURE.NOTE] 如果你在 HDInsight 群集上使用了证书进行 SSH 身份验证，则还需要参阅<a href="/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">如何在 Azure 上将 SSH 与 Linux 配合使用</a>中的**为 Putty 创建 PPK** 部分。
 
 ## <a id="hive"></a>使用 Hive 命令
 
@@ -68,28 +69,28 @@ Windows 未提供内置的 SSH 客户端。建议使用 **Putty**，可以从 <a
 
     这些语句将执行以下操作：
 
-    * **DROP TABLE** - 删除表和数据文件（如果表已存在）。
-    * **CREATE EXTERNAL TABLE** - 在 Hive 中创建新的"外部"表。外部表只会在 Hive 中存储表定义。数据将保留在原始位置。
+    * **DROP TABLE** - 删除表和数据文件（如果该表已存在）。
+    * **CREATE EXTERNAL TABLE** - 在 Hive 中创建新的'外部'表。外部表只会在 Hive 中存储表定义。数据将保留在原始位置。
     * **ROW FORMAT** - 告知 Hive 如何设置数据的格式。在此情况下，每个日志中的字段以空格分隔。
     * **STORED AS TEXTFILE LOCATION** - 让 Hive 知道数据的存储位置（example/data 目录），并且数据已存储为文本。
-    * **SELECT** - 选择其列 **t4** 包含值 **[ERROR]** 的所有行计数。这应会返回值 **3**，因为有三个行包含此值。
+    * **SELECT** - 选择第 **t4** 列包含值 **[ERROR]** 的所有行的计数。这应会返回值 **3**，因为有三个行包含此值。
 
     > [AZURE.NOTE] 当你预期以外部源更新基础数据（例如自动化数据上载过程），或以其他 MapReduce 操作更新基础数据，但希望 Hive 查询始终使用最新数据时，必须使用外部表。
     >
     > 删除外部表**不会**删除数据，只会删除表定义。
 
-4. 使用以下语句创建名为 **errorLogs** 的新"内部"表：
+4. 使用以下语句创建名为 **errorLogs** 的新'内部'表：
 
         CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
         INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
 
     这些语句将执行以下操作：
 
-    * **CREATE TABLE IF NOT EXISTS** - 创建表（如果尚不存在）。由于未使用 **EXTERNAL** 关键字，因此这是一个"内部"表，它存储在 Hive 数据仓库中并完全受 Hive 的管理。
+    * **CREATE TABLE IF NOT EXISTS** - 创建表（如果该表尚不存在）。由于未使用 **EXTERNAL** 关键字，因此这是一个"内部"表，它存储在 Hive 数据仓库中并完全受 Hive 的管理。
     * **STORED AS ORC** - 以优化行纵栏表 (ORC) 格式存储数据。这是高度优化且有效的 Hive 数据存储格式。
-    * **INSERT OVERWRITE ...SELECT** - 从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，然后将数据插入 **errorLogs** 表。
+    * **INSERT OVERWRITE ...SELECT** - 从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，然后将数据插入 **errorLogs** 表中。
 
-    若要验证是否只将列 t4 中包含 **[ERROR]** 的行存储到了 **errorLogs** 表，请使用以下语句从 **errorLogs** 返回所有行：
+    若要验证是否只有在第 t4 列中包含 **[ERROR]** 的行才存储到 **errorLogs** 表，请使用以下语句从 **errorLogs** 返回所有行：
 
         SELECT * from errorLogs;
 
@@ -105,18 +106,16 @@ Windows 未提供内置的 SSH 客户端。建议使用 **Putty**，可以从 <a
 
 有关 HDInsight 中的 Hive 的一般信息：
 
-* [将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive/)
+* [在 HDInsight 上将 Hive 与 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive/)
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig/)
+* [在 HDInsight 上将 Pig 与 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig/)
 
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
+* [在 HDInsight 上将 MapReduce 与 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
 
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/zh-cn/library/dn479185.aspx
 
-[azure-purchase-options]: /pricing/overview/
-[azure-free-trial]: /pricing/1rmb-trial/
 
 [apache-tez]: http://tez.apache.org
 [apache-hive]: http://hive.apache.org/
@@ -144,4 +143,4 @@ Windows 未提供内置的 SSH 客户端。建议使用 **Putty**，可以从 <a
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!--HONumber=50-->
+<!---HONumber=56-->

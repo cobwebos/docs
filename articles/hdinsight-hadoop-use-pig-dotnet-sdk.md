@@ -1,4 +1,4 @@
-﻿<properties
+<properties
    pageTitle="在 HDInsight 中使用 Hadoop Pig | Azure"
    description="了解如何使用 .NET SDK for Hadoop 将 Pig 作业提交到 HDInsight 上的 Hadoop。"
    services="hdinsight"
@@ -7,14 +7,15 @@
    manager="paulettm"
    editor="cgronlun"/>
 
-
-
-
-
-
-
-
-
+<tags
+   ms.service="hdinsight" 
+   ms.devlang="" 
+   ms.topic="article" 
+   ms.tgt_pltfrm="na" 
+   ms.workload="big-data" 
+   ms.date="02/18/2015" 
+   wacn.date="" 
+   ms.author="larryfr"/>
 
 # 使用 .NET SDK for Hadoop 运行 Pig 作业
 
@@ -221,12 +222,12 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 有关 HDInsight 中的 Pig 的一般信息。
 
-* [将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig/)
+* [在 HDInsight 上将 Pig 与 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig/)
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息。
 
-* [将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive/)
+* [在 HDInsight 上将 Hive 与 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive/)
 
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
+* [在 HDInsight 上将 MapReduce 与 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
 
-<!--HONumber=50-->
+<!---HONumber=56-->

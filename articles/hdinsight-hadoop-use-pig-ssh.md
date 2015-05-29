@@ -1,4 +1,4 @@
-﻿<properties
+<properties
    pageTitle="在 HDInsight 中使用 Hadoop Pig | Azure"
    description="了解如何通过 SSH 将 Pig 与 HDInsight 上的 Hadoop 配合使用。"
    services="hdinsight"
@@ -7,14 +7,15 @@
    manager="paulettm"
    editor="cgronlun"/>
 
-
-
-
-
-
-
-
-
+<tags
+   ms.service="hdinsight" 
+   ms.devlang="" 
+   ms.topic="article" 
+   ms.tgt_pltfrm="na" 
+   ms.workload="big-data" 
+   ms.date="02/18/2015" 
+   wacn.date="" 
+   ms.author="larryfr"/>
  
 # 使用 Pig 命令 (SSH) 运行 Pig 作业
 
@@ -32,9 +33,9 @@
 
 * 基于 Linux 的 HDInsight（HDInsight 上的 Hadoop）群集。
 
-* SSH 客户端。SSH 客户端上应该装有 Linux、Unix 和 Mac OS。Windows 用户必须下载 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">Putty</a> 之类的客户端。
+* SSH 客户端。SSH 客户端上应该装有 Linux、Unix 和 Mac OS。Windows 用户必须下载 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY</a> 之类的客户端。
 
-## <a id="ssh"></a>使用 SSH 连接
+## <a id="ssh"></a>使用 SSH 进行连接
 
 使用 SSH 命令连接到 HDInsight 群集的完全限定域名 (FQDN)。FQDN 是你为群集指定的名称后接 **.azurehdinsight.cn**。例如，以下命令将连接到名为 **myhdinsight** 的群集。
 
@@ -46,13 +47,13 @@
 
 **如果你在创建 HDInsight 群集时提供了 SSH 身份验证的密码**，则需要根据提示提供该密码。
 
-### Putty（基于 Windows 的客户端）
+### PuTTY（基于 Windows 的客户端）
 
-Windows 未提供内置的 SSH 客户端。建议使用 **Putty**，可以从 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a> 下载。
+Windows 未提供内置的 SSH 客户端。我们建议使用 **PuTTY**，它可以从 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a> 下载。
 
-有关使用 Putty 的详细信息，请参阅<a href="/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">如何在 Azure 上通过 Linux 使用 SSH</a>中的**使用 Putty 连接到 Linux 计算机**部分。
+有关使用 PuTTY 的详细信息，请参阅<a href="/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">如何在 Azure 上将 SSH 与 Linux 配合使用</a>中的**使用 PuTTY 连接到 Linux 计算机**部分。
 
-> [AZURE.NOTE] 如果你对 HDInsight 群集使用了 SSH 身份验证的证书，则还需要参阅<a href="/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">如何在 Azure 上通过 Linux 使用 SSH</a>中的**为 Putty 创建 PPK**部分。
+> [AZURE.NOTE] 如果你在 HDInsight 群集上使用了证书进行 SSH 身份验证，则还需要参阅<a href="/documentation/articles/virtual-machines-linux-use-ssh-key/" target="_blank">如何在 Azure 上将 SSH 与 Linux 配合使用</a>中的**为 Putty 创建 PPK** 部分。
 
 ## <a id="pig"></a>使用 Pig 命令
 
@@ -60,7 +61,7 @@ Windows 未提供内置的 SSH 客户端。建议使用 **Putty**，可以从 <a
 
         pig
 
-	片刻之后，你应会看到 `grunt>` 提示符。
+	稍后，你应该会看到  `grunt>` 提示符。
 
 3. 输入以下语句。
 
@@ -74,7 +75,7 @@ Windows 未提供内置的 SSH 客户端。建议使用 **Putty**，可以从 <a
 
 		LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
 
-	转换后，你可以使用 **DUMP** 来查看数据。在本例中，请使用 `DUMP LEVELS;`。
+	转换后，你可以使用 **DUMP** 来查看数据。在这种情况下，使用 `DUMP LEVELS;`。
 
 5. 使用以下语句继续应用转换。使用 `DUMP` 查看每个步骤后的转换结果。
 
@@ -96,7 +97,7 @@ Windows 未提供内置的 SSH 客户端。建议使用 **Putty**，可以从 <a
 	</tr>
 	</table>
 
-6. 你也可以使用 `STORE` 语句保存转换结果。例如，以下语句会将 `RESULT` 保存到群集的默认存储容器上的 **/example/data/pigout** 目录。
+6. 你也可以使用 `STORE` 语句保存转换结果。例如，以下语句将  `RESULT` 保存到群集的默认存储容器上的 **/example/data/pigout** 目录。
 
 		STORE RESULT into 'wasb:///example/data/pigout'
 
@@ -128,7 +129,7 @@ Windows 未提供内置的 SSH 客户端。建议使用 **Putty**，可以从 <a
 
 		pig ~/pigbatch.pig
 
-	批处理作业完成后，你应该会看到以下输出，而输出应该会与先前步骤中使用 `DUMP RESULT;` 时相同。
+	在批处理作业完成后，你应该会看到以下输出，该输出应该与先前步骤中使用 `DUMP RESULT;` 时相同。
 
 		(TRACE,816)
 		(DEBUG,434)
@@ -145,12 +146,12 @@ Windows 未提供内置的 SSH 客户端。建议使用 **Putty**，可以从 <a
 
 有关 HDInsight 中的 Pig 的一般信息。
 
-* [将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig/)
+* [在 HDInsight 上将 Pig 与 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig/)
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息。
 
-* [将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive/)
+* [在 HDInsight 上将 Hive 与 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive/)
 
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
+* [在 HDInsight 上将 MapReduce 与 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
 
-<!--HONumber=50-->
+<!---HONumber=56-->

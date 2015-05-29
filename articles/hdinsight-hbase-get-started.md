@@ -1,208 +1,321 @@
-<properties linkid="manage-services-hdinsight-hbase-get-started-hdinsight-hadoop" urlDisplayName="Get Started" pageTitle="Get started using HBase with Hadoop in HDInsight | Azure" metaKeywords="" description="Get started using HBase with Hadoop in HDInsight. learn how to created HBase tables and query them with Hive." metaCanonical="" services="hdinsight" documentationCenter="" title="Get started using HBase with Hadoop in HDInsight" authors="bradsev" solutions="big-data" manager="paulettm" editor="cgronlun" />
+<properties
+	pageTitle="在 HDInsight 中使用 Hive 设置和查询 HBase 表 | Azure"
+	description="开始在 HDInsight 中将 HBase 与 Hadoop 配合使用。了解如何使用 Hive 创建和查询 HBase 表。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="mumian"
+	manager="paulettm"
+	editor="cgronlun"/>
 
-<tags ms.service="hdinsight" ms.workload="big-data" ms.tgt_pltfrm="na" ms.devlang="na" ms.topic="article" ms.date="08/21/2014" ms.author="bradsev" />
+<tags
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="03/09/2015" 
+	wacn.date="" 
+	ms.author="jgao"/>
 
-# 开始在 HDInsight 中将 HBase 与 Hadoop 配合使用
 
-HBase 是一种低延迟的 NoSQL 数据库，可用于对大数据进行联机事务处理。HBase 以集成到 Azure 环境中的托管群集形式提供。这些群集配置为在 Azure Blob 存储中直接存储数据，这样就降低了延迟，使客户在性能与价格方面做出选择时拥有更大的弹性。客户可以生成用于处理大型数据集的交互式网站，生成用于存储数百万个终结点的传感器数据与遥测数据的服务，并通过 Hadoop 作业来分析这些数据。
 
-在本教程中，你将要了解如何使用 HDInsight 创建和查询 HBase 表，其中将会介绍以下过程：
+# 开始在 HDInsight 中使用 Apache HBase
 
--   如何使用 Azure 门户设置 HBase 群集。
--   如何启用并使用 RDP 来访问 HBase shell，然后使用 HBase shell 创建 HBase 示例表、添加行并列出表中的行。
--   如何创建要映射到现有 HBase 表的 Hive 表，并使用 HiveQL 来查询 HBase 表中的数据。
--   如何使用 .NET SDK 创建新的 HBase 表、列出帐户中的 HBase 表，以及在表中添加和检索行。
+了解如何通过在 HDInsight 中使用 Hive 创建 HBase 表和查询 HBase 表。
 
-## 本教程的内容
+HBase 是一种低延迟的 NoSQL 数据库，可用于对大数据执行联机事务处理。HBase 以集成到 Azure 环境中的托管群集形式提供。这些群集配置为在 Azure Blob 存储中直接存储数据，这样就减少了延迟，并提高了选择性能和价格的灵活性。这样，客户便可构建用于处理大型数据集的交互式网站，构建用于存储数百万个终结点的传感器数据与遥测数据的服务，并通过 Hadoop 作业来分析这些数据。有关 HBase 及其适用的方案的详细信息，请参阅 [HDInsight HBase 概述][hdinsight-hbase-overview]。
 
--   [在 Azure 门户中设置 HBase 群集][在 Azure 门户中设置 HBase 群集]
--   [从 HBase shell 创建 HBase 示例表][从 HBase shell 创建 HBase 示例表]
--   [使用 Hive 查询 HBase 表][使用 Hive 查询 HBase 表]
--   [使用 HBase C# API 创建一个 HBase 表并从该表中检索数据][使用 HBase C# API 创建一个 HBase 表并从该表中检索数据]
--   [摘要][摘要]
--   [后续步骤][后续步骤]
+> [AZURE.NOTE] HBase（版本 0.98.0）只能用于 HDInsight 上的 HDInsight 3.1 群集（基于 Apache Hadoop 和 YARN 2.4.0）。有关版本信息，请参阅 [HDInsight 提供的 Hadoop 群集版本的新增功能][hdinsight-versions]
 
-## <a name="create-hbase-cluster"></a>在 Azure 门户中设置 HBase 群集
+## 先决条件
 
-本部分介绍如何使用 Azure 门户设置 HBase 群集。
+在开始阅读本教程前，你必须具有：
 
-注意：
-本文中的步骤是使用基本配置设置来创建 HDInsight 群集。有关其他群集配置设置的信息（例如，使用 Azure 虚拟网络或者 Hive 和 Oozie 的元存储），请参阅“设置 HDInsight 群集”。
-[WACOM.INCLUDE [provisioningnote](../includes/hdinsight-provisioning.md)]
+- **Azure 订阅**：有关获得订阅的详细信息，请参阅[购买选项][azure-purchase-options][试用版][azure-trial]。
+- **Azure 存储帐户**：有关说明，请参阅[如何创建存储帐户][azure-create-storageaccount]。
+- 安装有 Visual Studio 2013 的**工作站**：有关说明，请参阅[安装 Visual Studio](http://msdn.microsoft.com/zh-cn/library/e2h7fzkw.aspx)。
 
-**在 Azure 门户中设置 HDInsight 群集**
+## 设置 HBase 群集
 
-1.  登录到 [Azure 管理门户][Azure 管理门户]。
+[AZURE.INCLUDE [provisioningnote](../includes/hdinsight-provisioning.md)]
 
-2.  单击左侧的“HDInsight”以列出你的帐户中群集的状态，然后单击左下角的“+新建”图标。
+**通过使用 Azure 门户设置 HBase 群集**
 
-    ![][0]
 
-3.  在左侧单击第二列中的“HDInsight”图标，然后单击下一列中的“HBase”选项。指定“群集名称”和“群集大小”的值、存储帐户的名称以及新 HBase 群集的密码。
+1. 登录到 [Azure 门户][azure-management-portal]。
+2. 单击左下方的**"新建"**，然后单击**"数据服务"**>**"HDINSIGHT"**>**"HBASE"**。
 
-    ![][1]
+	你还可以使用"自定义创建"选项。
+3. 输入**"群集名称"**、**"群集大小"**、群集用户密码和**"存储帐户"**。
 
-4.  单击左下角的勾选图标以创建该 HBase 群集。
+	![Choosing an HBase cluster type and entering cluster login credentials.][img-hdinsight-hbase-cluster-quick-create]
 
-## <a name="create-sample-table"></a>从 HBase shell 创建 HBase 示例表
+	默认 HTTP 用户名是 admin。你可以通过使用"自定义创建"选项自定义该名称。
 
-本部分介绍如何启用并使用远程桌面协议 (RDP) 来访问 HBase shell，然后使用 HBase shell 创建 HBase 示例表、添加行并列出表中的行。
+	> [AZURE.WARNING] 为了实现 HBase 服务的高可用性，你必须设置至少包含**三**个节点的群集。这可确保，如果一个节点发生故障，则 HBase 数据区域在其他节点上可用。
 
-本部分的内容假设你已完成第一部分所述的过程，也就是说，你已成功创建了一个 HBase 群集。
+4. 单击右下方的复选标记图标，以创建 HBase 群集。
 
-**启用与 HBase 群集的 RDP 连接**
+>[AZURE.NOTE] 在删除 HBase 群集后，你可以通过使用相同的默认 Blob 创建另一个 HBase 群集。新群集将选取你在原始群集中创建的 HBase 表。
 
-1.  若要启用与 HDInsight 群集的远程桌面连接，请选择你创建的 HBase 群集，然后单击“配置”选项卡。单击页底部的“启用远程”按钮，以启用与群集的 RDP 连接。
-2.  在“配置远程桌面”向导中提供凭据和过期日期，然后单击右下角带圆圈的勾选图标。（可能需要几分钟时间才能完成该操作。）
-3.  若要连接到 HDInsight 群集，请单击“配置”选项卡底部的“连接”按钮。
+## 从 HBase shell 创建 HBase 示例表
+本部分介绍如何使用 HBase shell 创建 HBase 表，添加行，并列出行。若要访问 HBase shell，你必须首先启用远程桌面协议 (RDP)，然后建立与 HBase 群集的 RDP 连接。有关说明，请参阅[使用 Azure 门户在 HDInsight 中管理 Hadoop 群集][hdinsight-manage-portal]。
 
-**打开 HBase Shell**
 
-1.  在 RDP 会话中，单击桌面上的“Hadoop 命令提示符”快捷方式。
+**使用 HBase shell**
+ 
+1. 在 RDP 会话中，单击桌面上的**"Hadoop 命令行"**快捷方式。
+2. 将文件夹更改为 HBase 主目录：
 
-2.  从当前文件夹位置切换到 HBase 主目录：
+		cd %HBASE_HOME%\bin
+3. 打开 HBase shell：
 
-        cd %HBASE_HOME%\bin
+		hbase shell
 
-3.  打开 HBase shell：
+4. 创建包含一个列系列的 HBase，然后插入一行：
 
-        hbase shell
+		create 'sampletable', 'cf1'
+		put 'sampletable', 'row1', 'cf1:col1', 'value1'
+		scan 'sampletable'
 
-**创建示例表、添加数据并检索数据**
+	有关 Hbase 表架构的详细信息，请参阅 [HBase 架构设计简介][hbase-schema]。有关 HBase 命令的详细信息，请参阅 [Apache HBase 参考指南][hbase-quick-start]。
+5. 列出 HBase 表：
 
-1.  创建示例表：
+		list
 
-        create 'sampletable', 'cf1'
+**在 HBase WebUI 中检查群集状态**
+ 
+HBase 还附带有可用于帮助监视你的群集的 WebUI。例如，你可以请求统计信息或与区域有关的信息。在 HBase 群集上，你可以在 zookeepernode 地址下方找到 WebUI：
 
-2.  在示例表中添加一行：
 
-        put 'sampletable', 'row1', 'cf1:col1', 'value1'
+	http://zookeepernode:60010/master-status
+		
+在高可用性群集中，你将会找到要托管 WebUI 的当前活动 HBase 主节点的链接。
 
-3.  列出示例表中的行：
+**批量加载示例表**
 
-        scan 'sampletable'
+1. 在 HBase shell 中，创建包含两个列系列的 HBase 表：
 
-## <a name="hive-query"></a>使用 Hive 查询 HBase 表
+		create 'Contacts', 'Personal', 'Office'
 
-设置 HBase 群集并创建一个表后，可以使用 Hive 来查询该表。本部分将创建要映射到 HBase 表的 Hive 表，并使用 Hive 来查询 HBase 表中的数据。
+
+3. 创建包含以下数据的联系人列表，并将其上载到 Azure Blob 存储中名为 /tmp/contacts.txt 的文件夹。有关说明，请参阅[在 HDInsight 中为 Hadoop 作业上载数据][hdinsight-upload-data]。
+
+		8396	Calvin Raji	230-555-0191	5415 San Gabriel Dr.
+		16600	Karen Wu	646-555-0113	9265 La Paz
+		4324	Karl Xie	508-555-0163	4912 La Vuelta
+		16891	Jonathan Jackson	674-555-0110	40 Ellis St.
+		3273	Miguel Miller	397-555-0155	6696 Anchor Drive
+		3588	Osarumwense Agbonile	592-555-0152	1873 Lion Circle
+		10272	Julia Lee	870-555-0110	3148 Rose Street
+		4868	Jose Hayes	599-555-0171	793 Crawford Street
+		4761	Caleb Alexander	670-555-0141	4775 Kentucky Dr.
+		16443	Terry Chander	998-555-0171	771 Northridge Drive
+
+2. 在 Hadoop 命令行中，将文件夹更改为 HBase 主目录：
+
+		cd %HBASE_HOME%\bin
+
+3. 运行 ImportTsv。ImportTsv 是一种要以 TSV 格式将数据加载到 HBase 中的工具。它具有两种不同的用法：以 TSV 格式将数据加载到 Hadoop 分布式文件系统 (HDFS) 中，并准备要加载的文件。有关详细信息，请参阅 [Apache HBase 参考指南][hbase-reference]。
+
+		hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:HomePhone, Office:Address" -Dimporttsv.bulk.output=/tmpOutput Contacts /tmp/contacts.txt
+	
+4. 将输出从以前的命令加载到 HBase 中：
+
+		hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /tmpOutput Contacts
+
+## 使用 Hive 查询 HBase 表
+
+既然你已设置 HBase 群集，并创建 HBase 表，则可以通过使用 Hive 查询表中的数据。本部分将创建要映射到 HBase 表的 Hive 表，并使用该表来查询 HBase 表中的数据。
 
 **打开群集仪表板**
 
-1.  登录到 [Azure 管理门户][Azure 管理门户]。
-2.  单击左窗格中的“HDINSIGHT”。你将会看到所创建的群集的列表，包括你刚刚在上一部分中创建的群集。
-3.  单击你要在其中运行该 Hive 作业的群集名称。
-4.  单击页底部的“管理群集”以打开群集仪表板。这会在另一个浏览器选项卡中打开一个网页。
-5.  输入 Hadoop 用户帐户的用户名和密码。默认的用户名为 **admin**，密码是你在设置过程中输入的密码。仪表板类似于：
+1. 登录到 [Azure 门户][azure-management-portal]。
+2. 单击左窗格中的"HDINSIGHT"。你将会看到群集的列表，包括你在上一部分中创建的群集。
+3. 单击你要在其中运行 Hive 作业的群集名称。
+4. 单击该页底部的**"查询控制台"**，以打开群集仪表板。它将在不同的浏览器标签中打开网页。
+5. 输入 Hadoop 用户帐户用户名和密码。默认用户名是 **admin**，而密码是你在设置过程中输入的密码。此时将打开新浏览器标签。
+6. 单击该页顶部的**"Hive 编辑器"**。Hive 编辑器的外观如下：
 
-    ![][2]
+	![HDInsight cluster dashboard.][img-hdinsight-hbase-hive-editor]
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+	
+
+
+
+
+
+		
+
+
+
+
+
+
 
 **运行 Hive 查询**
 
-1.  若要创建映射到 HBase 表的 Hive 表，请在 Hive 控制台窗口中输入以下 HiveQL 脚本，然后单击“提交”按钮。在执行此语句之前，请确保已使用 HBase Shell 在 HBase 中创建此处引用的示例表。
+1. 在 Hive 编辑器中输入以下 HiveQL 脚本，然后单击**"提交"**，以创建映射到 HBase 表的 Hive 表。确保你已创建本教程中前面引用的示例表，方法是在运行此语句前使用 HBase shell。
 
-        CREATE EXTERNAL TABLE hbasesampletable(rowkey STRING, col1 STRING, col2 STRING)
-        STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
-        WITH SERDEPROPERTIES ('hbase.columns.mapping' = ':key,cf1:col1,cf1:col2')
-        TBLPROPERTIES ('hbase.table.name' = 'sampletable');
+		CREATE EXTERNAL TABLE hbasecontactstable(rowkey STRING, name STRING, homephone STRING, office STRING)
+		STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+		WITH SERDEPROPERTIES ('hbase.columns.mapping' = ':key,Personal:Name,Personal:HomePhone,Office:Address')
+		TBLPROPERTIES ('hbase.table.name' = 'Contacts');
 
-2.  若要针对 HBase 中的数据执行 Hive 查询，请在 Hive 控制台窗口中输入以下 HiveQL 脚本，然后单击“提交”按钮。
+	等到**"状态"**更新为**"已完成"**。
 
-        SELECT count(*) FROM hbasesampletable;
+2. 在 Hive 编辑器中输入以下 HiveQL 脚本，然后单击**"提交"**。Hive 查询会在 HBase 表中查询数据：
 
-3.  若要检索 Hive 查询的结果，请在作业完成执行时，在“作业会话”窗口中单击“查看详细信息”链接。
+     	SELECT count(*) FROM hbasecontactstable;
 
-注意：单击 HBase shell 链接会将选项卡切换到“HBase Shell”。
+4. 若要检索 Hive 查询的结果，请在作业完成运行时，单击**"作业会话"**窗口中的**"查看详细信息"**链接。由于你将一条记录放置在 HBase 表中，因此将只有一个作业输出文件。
+
+
+
 
 **浏览输出文件**
 
-1.  在群集仪表板中，单击顶部的“文件”。
-2.  单击“Templeton-Job-Status”。
-3.  单击其上次修改时间比你前面记下的作业开始时间稍晚的 GUID 编号。记下此 GUID。在后一个部分将要用到它。
-4.  **stdout** 文件包含后一个部分需要的数据。如果需要，你可以单击“stdout”来下载该数据文件的副本。
+1. 在查询控制台中，单击**"文件浏览器"**。
+2. 单击用作 HBase 群集的默认文件系统的 Azure 存储帐户。
+3. 单击 HBase 群集名称。默认 Azure 存储帐户容器使用群集名称。
+4. 单击**"用户"**，然后单击**"管理员"**。（这是 Hadoop 用户名。）
+6. 单击具有与运行 SELECT Hive 查询的时间匹配的**"上次修改时间"**的作业名称。
+4. 单击**"stdout"**。保存文件，并使用记事本打开该文件。此时将有一个输出文件。
 
-## <a name="hbase-powershell"></a>使用 HBase C# API 创建一个 HBase 表并从该表中检索数据
+	![HDInsight HBase Hive Editor File Browser][img-hdinsight-hbase-file-browser]
 
-Marlin 是位于 REST API 顶部的一个精简层，它可以使用 ProtoBuf（以 C# 编写）来处理与 HBase 的交互。必须从 github 下载 Marlin 项目，该项目必须已构建为使用 HBase .NET SDK。
+## 使用适用于 .NET C# 的 HBase REST API 客户端库从 HBase 表创建和检索数据。
 
-1.  遵照所述的生成步骤。从 [Marlin 的项目页][Marlin 的项目页]下载 Marlin 项目。将它解压缩到本地目录。
+你必须从 GitHub 下载适用于 .NET 的 HBase REST API 客户端库并构建项目，以便你可以使用 HBase .NET SDK。以下过程包括有关此任务的说明。
 
-2.  在 Visual Studio 中打开该项目。转到“工具”菜单 -\>“库程序包管理器”，然后选择“管理解决方案的 NuGet 包...”，以打开“管理 NuGet 包”管理器向导
+1. 创建新的 C# Visual Studio Windows 桌面控制台应用程序。
+2. 打开 NuGet 程序包管理器控制台，方法是单击**"工具"**菜单 >**"NuGet 程序包管理器"**>**"程序包管理器控制台"**。
+3. 在控制台中运行以下 NuGet 命令：
 
-    ![][3]
+		Install-Package Microsoft.HBase.Client
 
-3.  在右上角的“联机”框中搜索 protobuf-net 并安装 v2.0.0.68。在“解决方案资源管理器”中右键单击“Marlin”项目并选择“生成”，以生成 Marlin 项目。
+5. 在文件的顶部添加以下 **using** 语句：
 
-4.  检索最终生成的 marlin.dll 并将其添加到你的 C# 项目。
+		using Microsoft.HBase.Client;
+		using org.apache.hadoop.hbase.rest.protobuf.generated;
 
-5.  使用群集凭据创建 Marlin 的新实例并检索群集版本：
+6. 将 **Main** 函数替换为以下内容：
 
-        var credentials = ClusterCredentials.Create("https://yourclustername.azurehdinsight.cn/", "user", "password");
-            var marlin = new Marlin(credentials);
-        // retrieve the version as a test
-        var version = marlin.GetVersion();
-        Console.WriteLine(version);
+        static void Main(string[] args)
+        {
+            string clusterURL = "https://<yourHBaseClusterName>.azurehdinsight.cn";
+            string hadoopUsername= "<yourHadoopUsername>";
+            string hadoopUserPassword = "<yourHadoopUserPassword>";
 
-6.  若要列出群集中的表，可以使用以下代码：
+            string hbaseTableName = "sampleHbaseTable";
 
-        var tables = marlin.ListTables();
-        foreach(var tableName in tables.name) 
-                Console.WriteLine(tableName);
+            // Create a new instance of an HBase client.
+            ClusterCredentials creds = new ClusterCredentials(new Uri(clusterURL), hadoopUsername, hadoopUserPassword);
+            HBaseClient hbaseClient = new HBaseClient(creds);
 
-7.  若要创建新的 HBase 表，请使用以下代码：
+            // Retrieve the cluster version
+            var version = hbaseClient.GetVersion();
+            Console.WriteLine("The HBase cluster version is " + version);
 
-        var schema = new TableSchema();
-        schema.name = "sampletable";
-        schema.columns.Add(new ColumnSchema() { name = "cf1" });
-        schema.columns.Add(new ColumnSchema() { name = "cf2" });
-        marlin.CreateTable(schema);
+            // Create a new HBase table.
+            TableSchema testTableSchema = new TableSchema();
+            testTableSchema.name = hbaseTableName;
+            testTableSchema.columns.Add(new ColumnSchema() { name = "d" });
+            testTableSchema.columns.Add(new ColumnSchema() { name = "f" });
+            hbaseClient.CreateTable(testTableSchema);
 
-8.  若要按某个行的键检索该行，请指定表名称和行键以检索行值。
+            // Insert data into the HBase table.
+            string testKey = "content";
+            string testValue = "the force is strong in this column";
+            CellSet cellSet = new CellSet();
+            CellSet.Row cellSetRow = new CellSet.Row { key = Encoding.UTF8.GetBytes(testKey) };
+            cellSet.rows.Add(cellSetRow);
 
-        var cells = marlin.GetCells("sampletable", "row1");
-        var row = cells.rows[0];
-            foreach(var val in row.values) 
-            {
-               Console.WriteLine(Encoding.UTF8.GetString(val.data));
-            }
+            Cell value = new Cell { column = Encoding.UTF8.GetBytes("d:starwars"), data = Encoding.UTF8.GetBytes(testValue) };
+            cellSetRow.values.Add(value);
+            hbaseClient.StoreCells(hbaseTableName, cellSet);
 
-9.  若要存储新的数据行，可以使用以下代码：
+            // Retrieve a cell by its key.
+            cellSet = hbaseClient.GetCells(hbaseTableName, testKey);
+            Console.WriteLine("The data with the key '" + testKey + "' is: " + Encoding.UTF8.GetString(cellSet.rows[0].values[0].data));
+            // with the previous insert, it should yield: "the force is strong in this column"
 
-        CellSet set = new CellSet();
-        CellSet.Row row = new CellSet.Row() { key = BitConverter.GetBytes(1337) };
-            var value = new Cell()
-                    {
-                        column = Encoding.UTF8.GetBytes("cf1:d"),
-                        data = Encoding.UTF8.GetBytes("Hello World!")
-                    };
-            row.values.Add(value);
-            set.rows.Add(row);
-        marlin.StoreCells("sampletable", set);
+		    //Scan over rows in a table. Assume the table has integer keys and you want data between keys 25 and 35.
+		    Scanner scanSettings = new Scanner()
+		    {
+    		    batch = 10,
+    		    startRow = BitConverter.GetBytes(25),
+    		    endRow = BitConverter.GetBytes(35)
+		    };
 
-## <a name="summary"></a>摘要
+		    ScannerInformation scannerInfo = hbaseClient.CreateScanner(hbaseTableName, scanSettings);
+		    CellSet next = null;
+            Console.WriteLine("Scan results");
 
-在本教程中，你已了解如何设置 HBase 表、如何创建表，以及如何从 HBase shell 查看这些表中的数据。你还了解了如何使用 Hive 来查询 HBase 表中的数据，以及如何使用 HBase C# API 创建一个 HBase 表并从该表中检索数据。
+            while ((next = hbaseClient.ScannerGetNext(scannerInfo)) != null)
+		    {
+    		    foreach (CellSet.Row row in next.rows)
+    		    {
+                    Console.WriteLine(row.key + " : " + Encoding.UTF8.GetString(row.values[0].data));
+    		    }
+		    }
 
-## <a name="next"></a>后续步骤
+            Console.WriteLine("Press ENTER to continue ...");
+            Console.ReadLine();
+        }
 
-[HDInsight HBase 概述][HDInsight HBase 概述]：
+7. 在 **Main** 函数中设置前三个变量。
+8. 按 **F5** 运行应用程序。
+
+
+
+## 后续步骤
+在本教程中，你已了解如何设置 HBase 群集，如何创建表，以及如何从 HBase shell 查看这些表中的数据。你还了解了如何使用 Hive 来查询 HBase 表中的数据，以及如何使用 HBase C# API 创建 HBase 表并从该表中检索数据。
+
+若要了解更多信息，请参阅以下文章：
+
+- [HDInsight HBase 概述][hdinsight-hbase-overview]：
 HBase 是构建于 Hadoop 上的 Apache 开源 NoSQL 数据库，用于为大量非结构化和半结构化数据提供随机访问和高度一致性。
-
-[在 Azure 虚拟网络上设置 HBase 群集][在 Azure 虚拟网络上设置 HBase 群集]：
+- [在 Azure 虚拟网络上设置 HBase 群集][hdinsight-hbase-provision-vnet]：
 通过虚拟网络集成，可以将 HBase 群集部署到应用程序所在的虚拟网络，以便应用程序直接与 HBase 进行通信。
+- [在 HDInsight 中配置 HBase 复制](hdinsight-hbase-geo-replication.md)：了解如何跨两个 Azure 数据中心配置 HBase 复制。 
+了解如何通过在 HDInsight 的 Hadoop 群集中使用 HBase 对大数据执行实时[观点分析](http://zh.wikipedia.org/wiki/Sentiment_analysis)。
 
-<!--- [azure-member-offers]: http://azure.microsoft.com/zh-cn/pricing/member-offers/ --->
+[hdinsight-manage-portal]: hdinsight-administer-use-management-portal
+[hdinsight-upload-data]: hdinsight-upload-data
+[hbase-reference]: http://hbase.apache.org/book.html#importtsv
+[hbase-schema]: http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf
+[hbase-quick-start]: http://hbase.apache.org/book.html#quickstart
 
-  [在 Azure 门户中设置 HBase 群集]: #create-hbase-cluster
-  [从 HBase shell 创建 HBase 示例表]: #create-sample-table
-  [使用 Hive 查询 HBase 表]: #hive-query
-  [使用 HBase C# API 创建一个 HBase 表并从该表中检索数据]: #hbase-powershell
-  [摘要]: #summary
-  [后续步骤]: #next
-  [Azure 管理门户]: https://manage.windowsazure.cn/
-  [0]: http://i.imgur.com/PmGynKZ.jpg
-  [1]: http://i.imgur.com/ecxbB9K.jpg
-  [2]: http://i.imgur.com/tMwXlj9.jpg
-  [Marlin 的项目页]: https://github.com/thomasjungblut/marlin
-  [3]: http://i.imgur.com/hUNoJDJ.jpg
-  [HDInsight HBase 概述]: ../hdinsight-hbase-overview/
-  [在 Azure 虚拟网络上设置 HBase 群集]: ../hdinsight-hbase-provision-vnet
+
+
+
+
+[hdinsight-hbase-overview]: hdinsight-hbase-overview
+[hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet
+[hdinsight-versions]: hdinsight-component-versioning
+[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment
+[azure-purchase-options]: /pricing/purchase-options/
+[azure-trial]: /pricing/1rmb-trial/
+[azure-management-portal]: https://manage.windowsazure.cn/
+[azure-create-storageaccount]: /documentation/articles/storage-create-storage-account/
+
+[img-hdinsight-hbase-cluster-quick-create]: ./media/hdinsight-hbase-get-started/hdinsight-hbase-quick-create.png
+[img-hdinsight-hbase-hive-editor]: ./media/hdinsight-hbase-get-started/hdinsight-hbase-hive-editor.png
+[img-hdinsight-hbase-file-browser]: ./media/hdinsight-hbase-get-started/hdinsight-hbase-file-browser.png
+
+<!---HONumber=56-->

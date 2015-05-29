@@ -7,14 +7,15 @@
    manager="paulettm"
    editor="cgronlun"/>
 
-
-
-
-
-
-
-
-
+<tags
+   ms.service="hdinsight" 
+   ms.devlang="" 
+   ms.topic="article" 
+   ms.tgt_pltfrm="na" 
+   ms.workload="big-data" 
+   ms.date="02/18/2015" 
+   wacn.date="" 
+   ms.author="larryfr"/>
 
 # 使用 PowerShell 对 HDInsight 上的 Hadoop 运行 Hive 查询
 
@@ -30,21 +31,21 @@
 
 * <a href="/documentation/articles/install-configure-powershell/" target="_blank">Azure PowerShell</a>
 
-## <a id="powershell"></a>使用 PowerShell 运行 MapReduce 作业
+## <a id="powershell"></a>使用 Azure PowerShell 运行 MapReduce 作业
 
-Azure PowerShell 提供  *cmdlet*，可让你在 HDInsight 上远程运行 MapReduce 作业。从内部来讲，完成该操作的方法是使用 REST 调用 HDInsight 群集上运行的 <a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat" target="_blank">WebHCat</a>（前称 Templeton）。
+Azure PowerShell 提供 *cmdlets*，可让你在 HDInsight 上远程运行 MapReduce 作业。从内部来讲，完成该操作的方法是使用 REST 调用 HDInsight 群集上运行的 <a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat" target="_blank">WebHCat</a>（前称 Templeton）。
 
 在远程 HDInsight 群集上运行 MapReduce 作业时，将使用以下 Cmdlet。
 
-* **Add-AzureAccount** - 在 Azure 订阅中进行 PowerShell 身份验证
+* **Add-AzureAccount**：向你的 Azure 订阅进行 Azure PowerShell 身份验证
 
-* **New-AzureHDInsightMapReduceJobDefinition** - 使用指定的 MapReduce 信息创建新的*作业定义*
+* **New-AzureHDInsightMapReduceJobDefinition**：通过使用指定的 MapReduce 信息创建新的*作业 定义*
 
-* **Start-AzureHDInsightJob** - 将作业定义发送到 HDInsight、启动作业，并返回可用来检查作业状态的*作业*对象
+* **Start-AzureHDInsightJob**：将作业定义发送到 HDInsight，启动作业，并返回可用来检查作业状态的*作业*对象
 
-* **Wait-AzureHDInsightJob** - 使用作业对象来检查作业的状态。它将等到作业完成，或已超过等待时间
+* **Wait-AzureHDInsightJob**：使用作业对象来检查作业的状态。它等到作业完成或超出等待时间。
 
-* **Get-AzureHDInsightJobOutput** - 用于检索作业的输出
+* **Get-AzureHDInsightJobOutput**：用于检索作业的输出
 
 以下步骤演示了如何使用这些 Cmdlet 在 HDInsight 群集上运行作业。
 
@@ -62,14 +63,13 @@ Azure PowerShell 提供  *cmdlet*，可让你在 HDInsight 上远程运行 MapRe
 		$clusterName = "CLUSTERNAME"
 
 		#Define the MapReduce job
+		#NOTE: If using an HDInsight 2.0 cluster, use hadoop-examples.jar instead.
 		# -JarFile = the JAR containing the MapReduce application
 		# -ClassName = the class of the application
 		# -Arguments = The input file, and the output directory
-		$wordCountJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars
-		/hadoop-mapreduce-examples.jar" `
+		$wordCountJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/hadoop-mapreduce-examples.jar" `
 		                          -ClassName "wordcount" `
-		                          -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data
-		                          /WordCountOutput"
+		                          -Arguments "wasb:///example/data/gutenberg/davinci.txt", "wasb:///example/data/WordCountOutput"
 
 		#Submit the job to the cluster
 		Write-Host "Start the MapReduce job..." -ForegroundColor Green
@@ -83,11 +83,11 @@ Azure PowerShell 提供  *cmdlet*，可让你在 HDInsight 上远程运行 MapRe
 		Write-Host "Display the standard output..." -ForegroundColor Green
 		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $wordCountJob.JobId -StandardOutput
 
-2. 打开新的 **Microsoft Azure PowerShell** 提示符。将目录切换到 **mapreducejob.ps1** 文件所在位置，然后使用以下命令来运行脚本。
+2. 打开一个新的 **Azure PowerShell** 命令提示符。将目录更改为 **mapreducejob.ps1** 文件所在位置，然后使用以下命令来运行脚本：
 
 		.\mapreducejob.ps1
 
-3. 作业完成之后，你应该会收到与下面类似的输出。
+3. 在作业完成后，你应该会收到如下输出：
 
 		Cluster         : CLUSTERNAME
 		ExitCode        : 0
@@ -99,20 +99,21 @@ Azure PowerShell 提供  *cmdlet*，可让你在 HDInsight 上远程运行 MapRe
 		SubmissionTime  : 12/5/2014 8:34:09 PM
 		JobId           : job_1415949758166_0071
 
-	> [AZURE.NOTE] 如果 **ExitCode** 的值不是 0，请参阅[故障排除](#troubleshooting)。
+	此输出指示作业已成功完成。
 
 	这表示作业已成功完成。
+	> [AZURE.NOTE] 如果 **ExitCode** 的值不是 0，请参阅[故障排除](#troubleshooting)。
 
 ## <a id="results"></a>查看作业输出
 
-MapReduce 作业已将操作结果存储到 Azure Blob 存储（位于指定为作业参数的 **wasb:///example/data/WordCountOutput** 路径中）。可以通过 Azure PowerShell 访问Azure Blob 存储，但你必须知道存储帐户名称、密钥，以及 HDInsight 群集用来直接访问文件的容器。
+MapReduce 作业已将操作结果存储到 Azure Blob 存储（位于指定为作业参数的 **wasb:///example/data/WordCountOutput** 路径中）。可以通过 Azure PowerShell 访问 Azure Blob 存储，但你必须知道存储帐户名称、密钥，以及 HDInsight 群集用来直接访问文件的容器。
 
-幸运的是，你可以使用以下 Azure PowerShell Cmdlet 获取此信息：
+幸运的是，你可以通过使用以下 Azure PowerShell Cmdlet 获得此信息：
 
-* **Get-AzureHDInsightCluster** - 返回有关 HDInsight 群集的信息（包括任何关联的存储帐户）。始终会有与群集关联的默认存储帐户。
-* **New-AzureStorageContext** - 如果指定使用 **Get-AzureHDInsightCluster** 检索的存储帐户名称和密钥，则会返回可用来访问存储帐户的内容对象。
-* **Get-AzureStorageBlob** - 如果指定内容对象和容器名称，则会返回容器内的 Blob 列表。
-* **Get-AzureStorageBlobContent** - 如果指定内容对象、文件路径和名称以及容器名称（从 **Get-AzureHDinsightCluster** 返回），则会从 Azure Blob 存储下载文件。
+* **Get-AzureHDInsightCluster**：返回有关 HDInsight 群集的信息，包括任何与之关联的存储帐户。始终会有与群集关联的默认存储帐户。
+* **New-AzureStorageContext**：如果指定使用 **Get-AzureHDInsightCluster** 检索的存储帐户名称和密钥，则会返回可用来访问存储帐户的上下文对象。
+* **Get-AzureStorageBlob**：如果指定上下文对象和容器名称，则会返回容器内的 Blob 列表。
+* **Get-AzureStorageBlobContent**：如果指定上下文对象、文件路径和名称，以及容器名称（从 **Get-AzureHDinsightCluster** 返回），则会从 Azure Blob 存储下载文件。
 
 以下示例将检索存储信息，然后从 **wasb:///example/data/WordCountOutput** 下载输出。将 **CLUSTERNAME** 替换为 HDInsight 群集的名称。
 
@@ -136,29 +137,28 @@ MapReduce 作业已将操作结果存储到 Azure Blob 存储（位于指定为�
 		$storageContainer = $clusterInfo.DefaultStorageAccount.StorageContainerName
 
 		#Create the context object
-		$context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey 
+		$context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
 		$storageAccountKey
 
 		#Download the files from wasb:///example/data/WordCountOutput
 		#Use the -blob switch to filter only blobs contained in example/data/WordCountOutput
-		Get-AzureStorageBlob -Container $storageContainer -Blob example/data/WordCountOutput/* -Context $context 
-		| Get-AzureStorageBlobContent -Context $context
+		Get-AzureStorageBlob -Container $storageContainer -Blob example/data/WordCountOutput/* -Context $context | Get-AzureStorageBlobContent -Context $context
 
-> [AZURE.NOTE] 此示例会将下载的文件存储到你从中运行脚本的目录中的 **example/data/WordCountOutput** 文件夹内。
+> [AZURE.NOTE] 此示例会将下载的文件存储到你从中运行脚本的目录中的 **example/data/WordCountOutput** 文件夹。
 
 MapReduce 作业的输出会存储在名称为 *part-r-#####* 的文件中。使用文本编辑器打开 **example/data/WordCountOutput/part-r-00000** 文件，以查看作业生成的单词和计数。
 
-> [AZURE.NOTE] MapReduce 作业的输出文件是固定不变的。所以，如果你重新运行此示例，将需要更改输出文件的名称。
+> [AZURE.NOTE] MapReduce 作业的输出文件是固定不变的。因此，如果你重新运行此示例，则需要更改输出文件的名称。
 
 ## <a id="troubleshooting"></a>故障排除
 
-如果在作业完成时未返回任何信息，则可能表示处理期间发生错误。若要查看此作业的错误信息，请将以下内容添加到 **mapreducejob.ps1** 文件的末尾，保存，然后重新运行该文件。
+如果在作业完成时未返回任何信息，则可能表示处理期间发生错误。若要查看此作业的错误信息，请将以下命令添加到 **mapreducejob.ps1** 文件的末尾，保存，然后重新运行该文件。
 
 	# Print the output of the WordCount job.
 	Write-Host "Display the standard output ..." -ForegroundColor Green
 	Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $wordCountJob.JobId -StandardError
 
-这样就会返回运行作业时写入到服务器上的 STDERR 的信息，而且可能有助于判断作业的失败原因。
+在运行作业时，这将返回写入到服务器上的 STDERR 的信息，它可帮助确定该作业失败的原因。
 
 ## <a id="summary"></a>摘要
 
@@ -166,14 +166,14 @@ MapReduce 作业的输出会存储在名称为 *part-r-#####* 的文件中。使
 
 ## <a id="nextsteps"></a>后续步骤
 
-有关 HDInsight 中的 MapReduce 作业的一般信息。
+有关 HDInsight 中的 MapReduce 作业的一般信息：
 
 * [在 HDInsight Hadoop 上使用 MapReduce](/documentation/articles/hdinsight-use-mapreduce/)
 
-有关 HDInsight 上的 Hadoop 的其他使用方法的信息。
+有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive/)
+* [在 HDInsight 上将 Hive 与 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive/)
 
-* [将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig/)
+* [在 HDInsight 上将 Pig 与 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig/)
 
-<!--HONumber=50-->
+<!---HONumber=56-->
