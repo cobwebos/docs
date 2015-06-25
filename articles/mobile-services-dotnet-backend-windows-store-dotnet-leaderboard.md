@@ -1,24 +1,20 @@
-<properties urlDisplayName=".NET Client Library" pageTitle="使用 Azure 移动服务 .NET 后端创建排行榜应用程序" metaKeywords="Azure Mobile Services, Mobile Service .NET client, .NET client" description="了解如何使用具有 .NET 后端的 Azure 移动服务生成 Windows 应用商店应用程序。" documentationCenter="Mobile" title="Creating a Leaderboard App with Azure Mobile Services .NET Backend" authors="mwasson" solutions="" manager="dwrede" editor="" />
+<properties 
+	pageTitle="使用 Azure 移动服务 .NET 后端创建排行榜应用程序" 
+	description="了解如何使用具有 .NET 后端的 Azure 移动服务生成 Windows 应用商店应用程序。" 
+	documentationCenter="windows" 
+	authors="MikeWasson" 
+	manager="dwrede" 
+	editor="" 
+	services="mobile-services"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-store" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="mwasson" />
+<tags 
+	ms.service="mobile-services" 
+	ms.date="02/23/2015" 
+	wacn.date=""/>
 
 # 使用 Azure 移动服务 .NET 后端创建排行榜应用程序
 
-本教程将说明如何使用具有 .NET 后端的 Azure 移动服务生成 Windows 应用商店应用程序。Azure 移动服务提供可缩放且安全的后端，具有内置身份验证、监视、推送通知和其他功能，以及用来生成移动应用程序的跨平台客户端库。移动服务的 .NET 后端基于 [ASP.NET Web API](http://asp.net/web-api)，可为 .NET 开发人员提供创建 REST API 的绝佳途径。   
-
-+ [概述]
-+ [关于示例应用程序]
-+ [添加数据模型]
-+ [添加 Web API 控制器]
-+ [使用 DTO 返回相关实体]
-+ [定义自定义 API 来提交分数]
-+ [创建 Windows 应用商店应用程序]
-+ [添加模型类]
-+ [创建视图模型]
-+ [添加 MobileServiceClient 实例]
-+ [创建主页面]
-+ [发布移动服务]
-+ [后续步骤]
+本教程将说明如何使用具有 .NET 后端的 Azure 移动服务生成 Windows 应用商店应用程序。Azure 移动服务提供可缩放且安全的后端，具有内置身份验证、监视、推送通知和其他功能，以及用来生成移动应用程序的跨平台客户端库。移动服务的 .NET 后端基于 [ASP.NET Web API](http://asp.net/web-api)，可为 .NET 开发人员提供创建 REST API 的绝佳途径。
 
 ## 概述
 
@@ -37,12 +33,12 @@ Web API 是一个开源框架，可为 .NET 开发人员提供创建 REST API �
 - 使用 Entity Framework (EF) 创建外键关系和数据传输对象 (DTO)。
 - 使用 ASP.NET Web API 定义自定义 API。
 
-本教程使用 [Visual Studio 2013 Update 3](http://go.microsoft.com/fwlink/p/?LinkID=390465)。 
+本教程使用 [Visual Studio 2013 最新更新版](http://go.microsoft.com/fwlink/p/?LinkID=390465)。
 
 
 ## 关于示例应用程序
 
- *排行榜*显示游戏的玩家列表，以及每个玩家的分数和排名。排行榜可作为较大游戏的一部分，或作为单独的应用程序。排行榜是实际的应用程序，但简单易懂且可用于教程。下面是该应用程序的屏幕截图：
+*排行榜*显示游戏的玩家列表，以及每个玩家的分数和排名。排行榜可作为较大游戏的一部分，或作为单独的应用程序。排行榜是实际的应用程序，但简单易懂且可用于教程。下面是该应用程序的屏幕截图：
 
 ![][1]
 
@@ -68,11 +64,11 @@ PlayerRank 具有 Player 的外键。每个玩家各有零个或一个 PlayerRan
 
 ![][3]
 
-在 Visual Studio 2013 Update 3 中，ASP.NET Web 应用程序项目包含 Microsoft Azure 移动服务的模板。选择此模板，然后单击"确定"。
+在 Visual Studio 2013 中，ASP.NET Web 应用程序项目包含 Azure 移动服务的模板。请选择此模板，然后单击“确定”。
 
 ![][4]
  
-项目模板包含示例控制器和数据对象。  
+项目模板包含示例控制器和数据对象。
 
 ![][5]
  
@@ -80,7 +76,7 @@ PlayerRank 具有 Player 的外键。每个玩家各有零个或一个 PlayerRan
 
 ## 添加数据模型
 
-你将使用 [EF Code First](http://msdn.microsoft.com/data/ee712907#codefirst) 来定义数据库表。在 DataObjects 文件夹下，添加名为  `Player` 的类。
+你将使用 [EF Code First](http://msdn.microsoft.com/zh-cn/data/ee712907#codefirst) 来定义数据库表。在 DataObjects 文件夹下，添加名为 `Player` 的类。
 
 	using Microsoft.WindowsAzure.Mobile.Service;
 	
@@ -109,44 +105,44 @@ PlayerRank 具有 Player 的外键。每个玩家各有零个或一个 PlayerRan
 	    }
 	}
 
-请注意，这两个类都继承自 **EntityData** 类。派生自 **EntityData** 可方便应用程序使用数据，并将跨平台客户端库用于 Azure 移动服务。**EntityData** 还可方便应用程序[处理数据库写入冲突](/zh-cn/documentation/articles/mobile-services-windows-store-dotnet-handle-database-conflicts/)。
+请注意，这两个类都继承自 **EntityData** 类。派生自 **EntityData** 可方便应用程序使用数据，并将跨平台客户端库用于 Azure 移动服务。**EntityData** 还可方便应用程序[处理数据库写入冲突](/documentation/articles/mobile-services-windows-store-dotnet-handle-database-conflicts/)。
 
- `PlayerRank` 类具有指向相关  `Player` 实体的[导航属性](http://msdn.microsoft.com/data/jj713564.aspx)。**[ForeignKey]** 属性让 EF 知道  `Player` 属性表示外键。
+`PlayerRank` 类具有指向相关 `Player` 实体的[导航属性](http://msdn.microsoft.com/zh-cn/data/jj713564.aspx)。**[ForeignKey]** 属性让 EF 知道 `Player` 属性表示外键。
 
 # 添加 Web API 控制器
 
-接下来，你要为  `Player` 和 `PlayerRank` 添加 Web API 控制器。要添加的并不是普通 Web API 控制器，而是专门针对 Azure 移动服务设计的名为 *表控制器*的特殊控制器。
+接下来，你要为 `Player` 和 `PlayerRank` 添加 Web API 控制器。要添加的并不是普通 Web API 控制器，而是专门针对 Azure 移动服务设计的名为*表控制器*的特殊控制器。
 
-右键单击 Controllers 文件夹、选择"添加"，然后选择"新建基架项"。
+右键单击 Controllers 文件夹，选择“添加”，然后选择“新建基架项”。
 
-![][6] 
+![][6]
 
-在"添加基架"对话框中，展开左侧的"通用"，然后选择"Microsoft Azure 移动服务"。接下来，选择"Microsoft Azure 移动服务表控制器"。单击"添加"。
+在“添加基架”对话框中，展开左侧的“通用”，然后选择“Azure 移动服务”。接下来，选择“Azure 移动服务表控制器”。单击**“添加”**。
 
-![][7] 
+![][7]
  
-在"添加控制器"对话框中：
+在“添加控制器”对话框中：
 
-1.	在"模型类"下，选择"Player"。 
-2.	在"数据上下文类"下，选择"MobileServiceContext"。
-3.	将控制器命名为"PlayerController"。
-4.	单击"添加"。
+1.	在“模型类”下，选择“Player”。 
+2.	在“数据上下文类”下，选择“MobileServiceContext”。
+3.	将控制器命名为“PlayerController”。
+4.	单击**“添加”**。
 
 
 此步骤将名为 PlayerController.cs 的文件添加到项目中。
 
-![][8] 
+![][8]
 
 该控制器派生自 **TableController<T>**。此类继承 **ApiController**，但它是专用于 Azure 移动服务的类。
  
-- 路由：**TableController** 的默认路径为 `/tables/{table_name}/{id}`，其中， *table_name* 与实体名称匹配。因此，Player 控制器的路由为 */tables/player/{id}*。这种路由约定使得 **TableController** 与移动服务 [REST API](http://msdn.microsoft.com/library/azure/jj710104.aspx) 相一致。
+- 路由：**TableController** 的默认路径为 `/tables/{table_name}/{id}`，其中，*table_name* 与实体名称匹配。因此，Player 控制器的路由为 */tables/player/{id}*。这种路由约定使得 **TableController** 与移动服务 [REST API](http://msdn.microsoft.com/zh-cn/library/azure/jj710104.aspx) 相一致。
 - 数据访问：对于数据库操作，**TableController** 类使用 **IDomainManager** 接口，该接口定义数据访问的抽象。基架使用 **EntityDomainManager**，这是包装 EF 上下文的 **IDomainManager** 的具体实现。 
 
-现在，请为 PlayerRank 实体添加第二个控制器。请遵循相同的步骤，但选择 PlayerRank 作为模型类。请使用相同的数据上下文类，而不要创建新类。将控制器命名为"PlayerRankController"。
+现在，请为 PlayerRank 实体添加第二个控制器。请遵循相同的步骤，但选择 PlayerRank 作为模型类。请使用相同的数据上下文类，而不要创建新类。将控制器命名为“PlayerRankController”。
 
 ## 使用 DTO 返回相关实体
 
-回想一下， `PlayerRank` 具有相关的  `Player` 实体： 
+回想一下，`PlayerRank` 具有相关的 `Player` 实体：
 
     public class PlayerRank : EntityData
     {
@@ -170,7 +166,7 @@ PlayerRank 具有 Player 的外键。每个玩家各有零个或一个 PlayerRan
 	
 	[{"id":"1","rank":1,"score":150},{"id":"2","rank":3,"score":100},{"id":"3","rank":1,"score":150}]
 
-请注意， `Player` 并未包含在对象图形中。若要包含玩家，可以通过定义 *数据传输对象* (DTO) 将对象图形平面化。 
+请注意，`Player` 并未包含在对象图形中。若要包含玩家，可以通过定义*数据传输对象 (DTO)* 将对象图形平面化。
 
 DTO 是定义如何通过网络发送数据的对象。如果你希望有线格式看起来与数据库模型不同，即可使用 DTO。若要为 `PlayerRank` 创建 DTO，请在 DataObjects 文件夹中添加名为 `PlayerRankDto` 的新类。
 
@@ -213,7 +209,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 	    return SingleResult<PlayerRankDto>.Create(result);
 	}
 
-做出这些更改后，两个 GET 方法将 `PlayerRankDto` 对象返回到客户端。 `PlayerRankDto.PlayerName` 属性设置为玩家姓名。以下是做出此更改后的示例响应：
+做出这些更改后，两个 GET 方法将 `PlayerRankDto` 对象返回到客户端。`PlayerRankDto.PlayerName` 属性设置为玩家姓名。以下是做出此更改后的示例响应：
 
 	HTTP/1.1 200 OK
 	Cache-Control: no-cache
@@ -232,7 +228,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 
 ## 定义自定义 API 来提交分数
 
- `PlayerRank` 实体包含  `Rank` 属性。此值由服务器计算，而我们不希望客户端设置它。客户端应使用自定义 API 提交玩家的分数。当服务器获取新分数时，将更新所有的玩家排名。
+`PlayerRank` 实体包含 `Rank` 属性。此值由服务器计算，而我们不希望客户端设置它。客户端应使用自定义 API 提交玩家的分数。当服务器获取新分数时，将更新所有的玩家排名。
 
 首先，将名为 `PlayerScore` 的类添加到 DataObjects 文件夹。
 
@@ -308,28 +304,27 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
         return Ok();
     }
 
- `PostPlayerScore` 方法采用 `PlayerScore` 实例作为输入。（客户端在 HTTP POST 请求中发送 `PlayerScore`。）该方法将执行以下操作：
+`PostPlayerScore` 方法采用 `PlayerScore` 实例作为输入。（客户端将在 HTTP POST 请求中发送 `PlayerScore`。） 该方法将执行以下操作：
 
 1.	如果数据库中尚无玩家的 `PlayerRank`，则新增一个。
 2.	更新玩家的分数。
 3.	运行 SQL 查询，以分批更新所有玩家排名。
 
-用于定义此方法的自定义路由的 **[Route]** 属性：
+**[Route]** 属性为此方法定义一个自定义路由：
 
 	[Route("api/score")]
 
-也可以将方法放入单独的控制器中。没有哪种方法特别好，具体取决于你想要如何组织代码。
-若要深入了解 **[Route]** 属性，请参阅 [Web API 中的属性路由](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)。
+也可以将方法放入单独的控制器中。没有哪种方法特别好，具体取决于你想要如何组织代码。若要深入了解 **[Route]** 属性，请参阅 [Web API 中的属性路由](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)。
 
 ## 创建 Windows 应用商店应用程序
 
 在本部分中，我将介绍使用移动服务的 Windows 应用商店应用程序。但是，我不会将重点放在 XAML 或 UI 上，而是着重于应用程序逻辑。你可以在[此处](http://code.msdn.microsoft.com/Leaderboard-App-with-Azure-9acf63af)下载完整项目。
 
-将新的 Windows 应用商店应用程序项目添加到解决方案。我使用了空白应用程序 (Windows) 模板。 
+将新的 Windows 应用商店应用程序项目添加到解决方案。我使用了空白应用程序 (Windows) 模板。
 
 ![][10]
  
-使用 NuGet Package Manager 添加移动服务客户端库。在 Visual Studio 中，从"工具"菜单中选择"NuGet Package Manager"。然后选择"Package Manager Console"。在"Package Manager Console"窗口中键入以下命令。
+使用 NuGet Package Manager 添加移动服务客户端库。在 Visual Studio 中，从“工具”菜单中选择“NuGet Package Manager”。然后选择“Package Manager Console”。在“Package Manager Console”窗口中键入以下命令。
 
 	Install-Package WindowsAzure.MobileServices -Project LeaderboardApp
 
@@ -372,7 +367,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 - 视图模型是视图的抽象表示形式。 
 - 视图显示视图模型，并向视图模型发送用户输入。对于 Windows 应用商店应用程序，视图在 XAML 中定义。
 
-![][11] 
+![][11]
 
 添加名为的 `LeaderboardViewModel` 的类。
 
@@ -395,7 +390,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 	    }
 	}
 
-在视图模型上实现 **INotifyPropertyChanged**，使视图模型可以参与数据绑定。 
+在视图模型上实现 **INotifyPropertyChanged**，使视图模型可以参与数据绑定。
 
     class LeaderboardViewModel : INotifyPropertyChanged
     {
@@ -420,7 +415,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
         }    
     }
 
-接下来，添加可查看属性。XAML 将与这些属性建立数据绑定。 
+接下来，添加可查看属性。XAML 将与这些属性建立数据绑定。
 
     class LeaderboardViewModel : INotifyPropertyChanged
     {
@@ -473,9 +468,9 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
         }
     }
 
-当服务的异步操作挂起时， `IsPending` 属性为 true。 `ErrorMessage` 属性包含来自服务的任何错误消息。 
+当服务的异步操作挂起时，`IsPending` 属性为 true。`ErrorMessage` 属性包含来自服务的任何错误消息。
 
-最后，添加调用服务层的方法。 
+最后，添加调用服务层的方法。
 
     class LeaderboardViewModel : INotifyPropertyChanged
     {
@@ -589,7 +584,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 
 ## 添加 MobileServiceClient 实例
 
-打开 App.xaml.cs 文件并将 **MobileServiceClient** 实例添加到 `App` 类。
+打开 *App.xaml.cs* 文件并将 **MobileServiceClient** 实例添加到 `App` 类。
 
 	// New code:
 	using Microsoft.WindowsAzure.MobileServices;
@@ -662,20 +657,20 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 
 在此步骤中，你要将移动服务发布到 Microsoft Azure，并修改应用程序以使用实时服务。
 
-在"解决方案资源管理器"中，右键单击 Leaderboard 项目并选择"发布"。
+在“解决方案资源管理器”中，右键单击 Leaderboard 项目并选择“发布”。
  
 ![][12]
 
-在"发布"对话框中，单击"Microsoft Azure 移动服务"。
+在“发布”对话框中，单击“Azure 移动服务”。
 
 ![][13]
  
-如果你尚未登录你的 Azure 帐户，请单击"登录"。
+如果你尚未登录你的 Azure 帐户，请单击“登录”。
 
 ![][14]
 
 
-选择现有的移动服务，或单击"新建"以创建一个新的服务。然后单击"确定"以发布。
+选择现有的移动服务，或单击“新建”以创建一个新的服务。然后单击“确定”以发布。
 
 ![][15]
  
@@ -686,11 +681,11 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 - 服务的 URL
 - 应用程序密钥
 
-你可以从 Azure 管理门户获取这两项。在管理门户中单击"移动服务"，然后单击移动服务。仪表板选项卡上列出了服务 URL。若要获取应用程序密钥，请单击"管理密钥"。
+你可以从 Azure 管理门户获取这两项。在管理门户中单击“移动服务”，然后单击移动服务。仪表板选项卡上列出了服务 URL。若要获取应用程序密钥，请单击“管理密钥”。
 
 ![][16]
  
-在"管理访问密钥"对话框中，复制应用程序密钥值。
+在“管理访问密钥”对话框中，复制应用程序密钥值。
 
 ![][17]
 
@@ -700,14 +695,14 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
     sealed partial class App : Application
     {
         // TODO: Replace these strings with the real URL and key.
-        const string serviceUrl = "https://yourapp.azure-mobile.cn/";
+        const string serviceUrl = "https://yourapp.azure-mobile.net/";
         const string appKey = "YOUR ACCESSS KEY";
 
         public static MobileServiceClient MobileService = new MobileServiceClient(serviceUrl, appKey);
 
        // ...
 
-现在，当你运行该应用程序时，它将与实际的服务通信。 
+现在，当你运行该应用程序时，它将与实际的服务通信。
 
 ## 后续步骤
 
@@ -718,20 +713,20 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 * [身份验证入门]
 
 <!-- Anchors. -->
-[概述]: #overview
-[关于示例应用程序]: #about-the-sample-app
-[创建项目]: #create-the-project
-[添加数据模型]: #add-data-models
-[添加 Web API 控制器]: #add-web-api-controllers
-[使用 DTO 返回相关实体]: #use-a-dto-to-return-related-entities
-[定义自定义 API 来提交分数]: #define-a-custom-api-to-submit-scores
-[创建 Windows 应用商店应用程序]: #create-the-windows-store-app
-[添加模型类]: #add-model-classes
-[创建视图模型]: #create-a-view-model
-[添加 MobileServiceClient 实例]: #add-a-mobileserviceclient-instance
-[创建主页面]: #create-the-main-page
-[发布移动服务]: #publish-your-mobile-service
-[后续步骤]: #next-steps
+[Overview]: #overview
+[About the sample app]: #about-the-sample-app
+[Create the project]: #create-the-project
+[Add data models]: #add-data-models
+[Add Web API controllers]: #add-web-api-controllers
+[Use a DTO to return related entities]: #use-a-dto-to-return-related-entities
+[Define a custom API to submit scores]: #define-a-custom-api-to-submit-scores
+[Create the Windows Store app]: #create-the-windows-store-app
+[Add model classes]: #add-model-classes
+[Create a view model]: #create-a-view-model
+[Add a MobileServiceClient instance]: #add-a-mobileserviceclient-instance
+[Create the main page]: #create-the-main-page
+[Publish your mobile service]: #publish-your-mobile-service
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 
@@ -755,8 +750,10 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 
 <!-- URLs. -->
 
-[详细了解 Azure 移动服务]: /zh-cn/documentation/services/mobile-services/
+[详细了解 Azure 移动服务]: /documentation/services/mobile-services/
 [详细了解 Web API]: http://asp.net/web-api
-[处理数据库写入冲突]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-handle-database-conflicts/
-[添加推送通知]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[身份验证入门]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users
+[处理数据库写入冲突]: mobile-services-windows-store-dotnet-handle-database-conflicts
+[添加推送通知]: notification-hubs-windows-store-dotnet-get-started
+[身份验证入门]: /documentation/articles/mobile-services-windows-store-dotnet-get-started-users
+
+<!---HONumber=61-->

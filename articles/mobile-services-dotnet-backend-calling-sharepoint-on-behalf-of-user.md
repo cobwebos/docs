@@ -1,18 +1,23 @@
-﻿<properties urlDisplayName="Access SharePoint on behalf of the user" pageTitle="代表用户访问 SharePoint | 移动开发人员中心" metaKeywords="" description="了解如何代表用户调用 SharePoint" metaCanonical="" disqusComments="1" umbracoNaviHide="1" documentationCenter="Mobile" title="Access SharePoint on behalf of the user" authors="mahender" manager="dwrede" />
+<properties 
+	pageTitle="代表用户访问 SharePoint | 移动开发人员中心" 
+	description="了解如何代表用户调用 SharePoint" 
+	documentationCenter="" 
+	authors="mattchenderson" 
+	manager="dwrede" 
+	editor="" 
+	services="mobile-services"/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-multiple" ms.devlang="multiple" ms.topic="article" ms.date="11/21/2014" ms.author="mahender" />
+<tags 
+	ms.service="mobile-services" 
+	ms.date="04/13/2015" 
+	wacn.date=""/>
 
 # 代表用户访问 SharePoint
 
-<div class="dev-onpage-video-clear clearfix">
-<div class="dev-onpage-left-content">
-<p>本主题说明如何代表当前登录的用户访问 SharePoint API。</p>
-<p>如果你更愿意观看视频，右侧的视频片段提供了与本教程相同的步骤。在视频中，Mat Velloso 将引导你更新 Windows 应用商店应用程序，以便与 SharePoint Online 交互。</p>
-</div>
-<div class="dev-onpage-video-wrapper" style="display:none"><a href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Azure-Mobile-Services-AAD-O365-Authentication-identity-across-services" target="_blank" class="label">观看教程</a> <a style="background-image: url('http://media.ch9.ms/ch9/f217/3f8cbf94-f36b-4162-b3da-1c00339ff217/AzureMobileServicesAADO365AuthenticationIdentityA_960.jpg') !important;" href="http://channel9.msdn.com/Series/Windows-Azure-Mobile-Services/Azure-Mobile-Services-AAD-O365-Authentication-identity-across-services" target="_blank" class="dev-onpage-video"><span class="icon">播放视频</span></a> <span class="time">12:51</span></div>
-</div>
+本主题说明如何代表当前登录的用户访问 SharePoint API。如果你更愿意观看视频，右侧的视频片段提供了与本教程相同的步骤。在视频中，Mat Velloso 将引导你更新 Windows 应用商店应用程序，以便与 SharePoint Online 交互。
 
-在本教程中，你将要更新"使用 Active Directory 身份验证库单一登录对应用程序进行身份验证"教程中的应用程序，以便在添加 TodoItem 时在 SharePoint Online 中创建一个 Word 文档。
+
+在本教程中，你将要更新“使用 Active Directory 身份验证库单一登录对应用程序进行身份验证”教程中的应用程序，以便在添加 TodoItem 时在 SharePoint Online 中创建一个 Word 文档。
 
 本教程将引导你完成这些基本步骤，以启用对 SharePoint 的委托访问：
 
@@ -31,11 +36,11 @@
 ## <a name="configure-permissions"></a>配置应用程序以便对 SharePoint 进行委托访问
 默认情况下，你从 AAD 收到的令牌具有有限的权限。若要访问第三方资源或 SaaS 应用程序（例如 SharePoint Online），你必须明确允许此类访问。
 
-1. 在 [Azure 管理门户]的"Active Directory"部分中，选择你的租户。导航至你为移动服务创建的 Web 应用程序。
+1. 在 [Azure 管理门户]的“Active Directory”部分中，选择你的租户。导航至你为移动服务创建的 Web 应用程序。
 
     ![][0]
 
-2. 在"配置"选项卡中，向下滚动到"对其他应用程序的权限"部分。选择"Office 365 SharePoint Online"，然后授与"编辑或删除用户的文件"委托权限。然后单击"保存"。
+2. 在“配置”选项卡中，向下滚动到“对其他应用程序的权限”部分。选择“Office 365 SharePoint Online”，然后授与“编辑或删除用户的文件”委托权限。然后单击“保存”。
 
     ![][1]
 
@@ -45,13 +50,13 @@
 
 若要调用 SharePoint，你必须指定移动服务需要联系的终结点。还需要能够证明移动服务的标识。请使用客户端 ID 和客户端机密对来完成此操作。你已在 AAD 登录设置期间获取并存储了移动服务的客户端 ID。由于这是一些机密凭据，因此不应以明文形式存储在代码中。而是要将这些值设为移动服务的应用程序设置。
 
-1. 返回租户的"AAD 应用程序"选项卡，然后为移动服务选择 Web 应用程序。
+1. 返回租户的“AAD 应用程序”选项卡，然后为移动服务选择 Web 应用程序。
 
-2. 在"配置"下，向下滚动到"密钥"。你将通过生成新密钥来获取客户端机密。请注意，在创建密钥并退出页面后，你将无法再从门户访问此密钥。必须在创建后，将此值复制并存储在安全的位置。选择密钥的持续时间，然后单击"保存"，并复制生成的值。
+2. 在“配置”下，向下滚动到“密钥”。你将通过生成新密钥来获取客户端机密。请注意，在创建密钥并退出页面后，你将无法再从门户访问此密钥。必须在创建后，将此值复制并存储在安全的位置。选择密钥的持续时间，然后单击“保存”，并复制生成的值。
 
     ![][2]
 
-3. 在管理门户的"移动服务"部分中，导航至"配置"选项卡，然后向下滚动至"应用程序设置"。你可以在此处提供密钥-值对，以帮助参考所需的凭据。
+3. 在管理门户的“移动服务”部分中，导航至“配置”选项卡，然后向下滚动至“应用程序设置”。你可以在此处提供密钥-值对，以帮助参考所需的凭据。
 
     ![][3]
 
@@ -69,7 +74,7 @@
 
 1. 在 Visual Studio 中，打开移动服务后端项目。
 
-[WACOM.INCLUDE [mobile-services-dotnet-adal-install-nuget](../includes/mobile-services-dotnet-adal-install-nuget.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-adal-install-nuget](../includes/mobile-services-dotnet-adal-install-nuget.md)]
 
 2. 在该移动服务后端项目中，创建名为 SharePointUploadContext 的新类。在该类中添加以下项：
 
@@ -178,7 +183,7 @@
 
 2. 导航至 SharePoint 站点，并以同一用户的身份登录。
 
-3. 选择"OneDrive"选项卡。在"文档文件夹"下，你应会看到具有 GUID 标题的 Word 文档。当你打开此文档时，应会看到 TodoItem 的文本。
+3. 选择“OneDrive”选项卡。在“文档文件夹”下，你应会看到具有 GUID 标题的 Word 文档。当你打开此文档时，应会看到 TodoItem 的文本。
 
     ![][4]
 
@@ -202,4 +207,6 @@
 <!-- URLs. -->
 [Azure 管理门户]: https://manage.windowsazure.cn/
 [SharePoint Online]: http://office.microsoft.com/zh-cn/sharepoint/
-[使用 Active Directory 身份验证库单一登录对应用程序进行身份验证]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
+[使用 Active Directory 身份验证库单一登录对应用程序进行身份验证]: /documentation/articles/mobile-services-windows-store-dotnet-adal-sso-authentication/
+
+<!---HONumber=61-->

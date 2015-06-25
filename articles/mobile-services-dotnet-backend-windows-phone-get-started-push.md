@@ -1,25 +1,32 @@
-﻿<properties pageTitle="推送通知中心与 .NET 运行时移动服务用法入门" metaKeywords="" description="了解如何使用 Microsoft Azure .NET 运行时移动服务和通知中心将推送通知发送到 Windows Phone 应用程序。" metaCanonical="" services="mobile" documentationCenter="Mobile" title="Get started with push notifications in Mobile Services" authors="wesmc"  solutions="" writer="wesmc" manager="" editor=""  />
+<properties 
+	pageTitle="推送通知中心与 .NET 运行时移动服务用法入门" 
+	description="了解如何使用通知中心和 Azure 移动服务将推送通知发送到 Windows Phone 应用程序。" 
+	services="mobile-services,notification-hubs" 
+	documentationCenter="windows" 
+	authors="wesmc7777" 
+	writer="wesmc" 
+	manager="dwrede" 
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-windows-phone" ms.devlang="dotnet" ms.topic="article" ms.date="09/23/2014" ms.author="wesmc" />
+<tags 
+	ms.service="mobile-services" 
+	ms.date="02/23/2015" 
+	wacn.date=""/>
 
 # 向移动服务应用程序添加推送通知
 
-[WACOM.INCLUDE [mobile-services-selector-get-started-push-legacy](../includes/mobile-services-selector-get-started-push-legacy.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-push-legacy](../includes/mobile-services-selector-get-started-push-legacy.md)]
 
-本主题说明如何结合使用 Azure 移动服务和 .NET 后端向 Windows Phone Silverlight 8 应用程序发送推送通知。在本教程中，你将要使用 Microsoft Azure 通知中心为快速入门项目启用推送通知。完成本教程后，每次插入一条记录时，你的移动服务就会使用通知中心发送一条推送通知。创建的通知中心可在移动服务中任意使用，可独立于移动服务进行管理，并可供其他应用程序和服务使用。
+##概述
 
-本教程将指导你完成启用推送通知的以下基本步骤：
+本主题说明如何结合使用 Azure 移动服务和 .NET 后端向 Windows Phone Silverlight 8 应用程序发送推送通知。在本教程中，你将要使用 Azure 通知中心为快速入门项目启用推送通知。完成本教程后，每次插入一条记录时，你的移动服务就会使用通知中心发送一条推送通知。创建的通知中心可在移动服务中任意使用，可独立于移动服务进行管理，并可供其他应用程序和服务使用。
 
-1. [更新应用程序以注册通知](#update-app)
-2. [更新服务器以发送推送通知](#update-server)
-3. [启用推送通知以进行本地测试](#local-testing)
-4. [插入数据以接收推送通知](#test)
 
 本教程基于移动服务快速入门。在开始本教程之前，必须先完成[将移动服务添加到现有应用程序]以将项目连接到移动服务。
 
->[WACOM.NOTE]本教程面向 Windows Phone 8.1"Silverlight"应用程序。如果你要构建 Windows Phone 8.1 应用商店应用程序，请参阅本教程的 [Windows 应用商店应用程序](mobile-services-dotnet-backend-windows-store-dotnet-get-started-push) 版本。有关 Windows Phone Silverlight 应用程序与 Windows Phone 应用商店应用程序的差别信息，请参阅 [Windows Phone Silverlight 8.1 应用程序]。 
+>[AZURE.NOTE]本教程面向 Windows Phone 8.1“Silverlight”应用程序。如果你要生成 Windows Phone 8.1 应用商店应用程序，请参阅本教程的 [Windows 应用商店应用程序](mobile-services-dotnet-backend-windows-store-dotnet-get-started-push)版本。有关 Windows Phone Silverlight 应用程序与 Windows Phone 应用商店应用程序的差别信息，请参阅 [Windows Phone Silverlight 8.1 应用程序]。
 
-## <a id="update-app"></a>更新应用程序以注册通知
+##更新应用程序以注册通知
 
 只有在你注册通知通道后，你的应用程序才能接收推送通知。
 
@@ -27,7 +34,7 @@
 
         using Microsoft.Phone.Notification;
 
-2. 将以下 `AcquirePushChannel` 方法添加到 `App` 类： 
+2. 将以下 `AcquirePushChannel` 方法添加到 `App` 类：
 
         public static HttpNotificationChannel CurrentChannel { get; private set; }	
         
@@ -86,26 +93,26 @@
 
         AcquirePushChannel();
 
-	这可以确保每次加载应用程序时都会请求注册。在应用程序中，你可能只需要定期执行此注册以确保注册是最新的。 
+	这可以确保每次加载应用程序时都会请求注册。在应用程序中，你可能只需要定期执行此注册以确保注册是最新的。
 
 5. 按 **F5** 键以运行应用。将显示包含注册密钥的弹出式对话框。
   
-6. 在 Visual Studio 中，打开 Package.appxmanifest 文件，并确保"应用程序 UI"选项卡上的"支持 Toast 通知"已设置为"是"。
+6. 在 Visual Studio 中，打开 Package.appxmanifest 文件，并确保“应用程序 UI”选项卡上的“支持 Toast 通知”已设置为“是”。
 
    	![][1]
 
-   	这可以确保你的应用程序能够引发 toast 通知。 
+   	这可以确保你的应用程序能够引发 toast 通知。
 
-## <a id="update-server"></a>更新服务器以发送推送通知
+##更新服务器以发送推送通知
 
-1. 在 Visual Studio 的解决方案资源管理器中，展开移动服务项目中的 **Controllers** 文件夹。打开 TodoItemController.cs 并使用以下代码更新  `PostTodoItem` 方法定义：  
+1. 在 Visual Studio 的解决方案资源管理器中，展开移动服务项目中的 **Controllers** 文件夹。打开 TodoItemController.cs 并使用以下代码更新 `PostTodoItem` 方法定义：  
 
         public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
         {
             TodoItem current = await InsertAsync(item);
             MpnsPushMessage message = new MpnsPushMessage();
-            message.XmlPayload = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<wp:Notification xmlns:wp=\"WPNotification\">" +
+            message.XmlPayload = "<?xml version="1.0" encoding="utf-8"?>" +
+                "<wp:Notification xmlns:wp="WPNotification">" +
                    "<wp:Toast>" +
                         "<wp:Text1>" + item.Text + "</wp:Text1>" +
                    "</wp:Toast> " +
@@ -123,30 +130,30 @@
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
         }
 
-    这段代码可在插入 Todo 项之后发送推送通知（包含所插入项的文本）。在发生错误的情况下，这段代码将添加一个错误日志条目，该条目可在管理门户中的移动服务的"日志"选项卡上查看。
+    这段代码可在插入 Todo 项之后发送推送通知（包含所插入项的文本）。在发生错误的情况下，这段代码将添加一个错误日志条目，该条目可在管理门户中的移动服务的“日志”选项卡上查看。
 
-2. 登录到 [Azure 管理门户]、单击"移动服务"，然后单击你的应用。
+2. 登录到 [Azure 管理门户]，单击“移动服务”，然后单击你的应用。
 
-3. 单击"推送"选项卡，选中"启用未经身份验证的推送通知"，然后单击"保存"。
+3. 单击“推送”选项卡，选中“启用未经身份验证的推送通知”，然后单击“保存”。
 
    	![][4]
 
-	>[WACOM.NOTE]本教程使用未经身份验证模式下的 MPNS。在此模式下，MPNS 将限制可发送到某个设备通道的通知数。若要解除此限制，必须生成一个证书，然后通过单击"上载"并选择该证书来上载该证书<strong></strong>。有关生成证书的详细信息，请参阅<a href="http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx">设置已经过身份验证的 Web 服务以便为 Windows Phone 发送推送通知</a>。
+	>[AZURE.NOTE]本教程使用未经身份验证模式下的 MPNS。在此模式下，MPNS 将限制可发送到某个设备通道的通知数。若要解除此限制，必须生成一个证书，然后通过单击“上载”并选择该证书来上载该证书<strong></strong>。有关生成证书的详细信息，请参阅<a href="http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/ff941099(v=vs.105).aspx">设置已经过身份验证的 Web 服务以便为 Windows Phone 发送推送通知</a>。
 
 这样，移动服务便可以连接到处于未经身份验证模式的 MPNS 以发送推送通知。
 
-## <a id="local-testing"></a> 启用推送通知以进行本地测试
+##启用推送通知以进行本地测试
 
-[WACOM.INCLUDE [mobile-services-dotnet-backend-configure-local-push](../includes/mobile-services-dotnet-backend-configure-local-push.md)]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-configure-local-push](../includes/mobile-services-dotnet-backend-configure-local-push.md)]
 
 
-## <a id="test"></a>在应用程序中测试推送通知
+##在应用程序中测试推送通知
 
 1. 在 Visual Studio 中，按 F5 键运行应用程序。
 
-    >[WACOM.NOTE] 在 Windows Phone 模拟器测试时，你可能会遇到 401 错误"未授权的 RegistrationAuthorizationException"。由于 Windows Phone 模拟器时钟与主机电脑时钟的同步问题，在调用 `RegisterNativeAsync()` 期间可能会出现此错误。这可能会导致安全令牌被拒绝。若要解决此问题，只需在模拟器中手动设置时钟，然后再开始测试。
+    >[AZURE.NOTE]在 Windows Phone 模拟器测试时，你可能会遇到 401 错误“未授权的 RegistrationAuthorizationException”。由于 Windows Phone 模拟器时钟与主机电脑时钟的同步问题，在调用 `RegisterNativeAsync()` 期间可能会出现此错误。这可能会导致安全令牌被拒绝。若要解决此问题，只需在模拟器中手动设置时钟，然后再开始测试。
 
-5. 在应用程序中，在文本框中输入文本"hello push"，单击"保存"，然后立即单击开始按钮或后退按钮以退出应用程序。
+5. 在应用程序中，在文本框中输入文本“hello push”，单击“保存”，然后立即单击开始按钮或后退按钮以退出应用程序。
 
    	![][2]
 
@@ -154,9 +161,9 @@
 
 	![][5]
 
-	>[WACOM.NOTE]如果你仍未退出应用程序，则不会收到该通知。若要在应用程序处于活动状态时接收 toast 通知，你必须处理 [ShellToastNotificationReceived](http://msdn.microsoft.com/library/windowsphone/develop/microsoft.phone.notification.httpnotificationchannel.shelltoastnotificationreceived.aspx) 事件。
+	>[AZURE.NOTE]如果你仍未退出应用程序，则不会收到该通知。若要在应用程序处于活动状态时接收 toast 通知，你必须处理 [ShellToastNotificationReceived](http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/microsoft.phone.notification.httpnotificationchannel.shelltoastnotificationreceived.aspx) 事件。
 
-## <a name="next-steps">后续步骤</a>
+##后续步骤
 
 本教程演示了有关如何使 Windows Phone 应用程序使用移动服务和通知中心发送推送通知的基础知识。建议你接下来完成下一篇教程[向经过身份验证的用户发送推送通知]，其中说明了如何使用标记来做到只将推送通知从移动服务发送到经过身份验证的用户。
 
@@ -168,22 +175,22 @@
 -->
 建议通过以下移动服务和通知中心主题了解更多信息：
 
-* [数据处理入门]
+* [数据处理入门 ]
   <br/>了解有关使用移动服务存储和查询数据的详细信息。
 
-* [身份验证入门]
+* [身份验证入门 ]
   <br/>了解如何通过移动服务对使用不同帐户类型的应用程序用户进行身份验证。
 
-* [什么是通知中心？]
-  <br/>详细了解通知中心如何将通知传送到各个主要客户端平台中的应用程序。
+* [什么是通知中心？] 
+  <br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
 
 * [调试通知中心应用程序](http://go.microsoft.com/fwlink/p/?linkid=386630)
-  </br>获取有关对通知中心解决方案进行故障排除和调试的指导。 
+  </br>获取有关对通知中心解决方案进行故障排除和调试的指导。
 
 * [移动服务 .NET 操作方法概念性参考]
   <br/>了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
-<!-- Anchors. -->
+
 
 <!-- Images. -->
 
@@ -195,18 +202,22 @@
 [5]: ./media/mobile-services-dotnet-backend-windows-phone-get-started-push/mobile-quickstart-push5-wp8.png
 
 <!-- URLs. -->
-[提交应用程序页]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[我的应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[移动服务入门]: /zh-cn/documentation/articles/mobile-services-windows-store-get-started
-[数据处理入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data
-[身份验证入门]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-users
-[推送通知入门]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-push
+[Get started with Mobile Services]: mobile-services-dotnet-backend-windows-phone-get-started
+[将移动服务添加到现有应用程序]: mobile-services-dotnet-backend-windows-phone-get-started-data
+[身份验证入门 ]: mobile-services-dotnet-backend-windows-phone-get-started-users
 
-[通知中心入门]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started
-[什么是通知中心？]: /zh-cn/documentation/articles/notification-hubs-overview/
-[向订户发送通知]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[向用户发送通知]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users/
-[向用户发送跨平台通知]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users-xplat-mobile-services/
-[移动服务服务器脚本参考]: /zh-cn/documentation/articles/mobile-services-how-to-use-server-scripts/
-[移动服务 .NET 操作方法概念性参考]: /zh-cn/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
+[向经过身份验证的用户发送推送通知]: mobile-services-dotnet-backend-windows-phone-push-notifications-app-users
+
+[什么是通知中心？]: notification-hubs-overview
+[Send broadcast notifications to subscribers]: notification-hubs-windows-phone-send-breaking-news
+[Send template-based notifications to subscribers]: notification-hubs-windows-phone-send-localized-breaking-news
+
+
+[移动服务 .NET 操作方法概念性参考]: mobile-services-html-how-to-use-client-library
+[Windows Phone Silverlight 8.1 应用程序]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/dn642082(v=vs.105).aspx
+[Azure 管理门户]: https://manage.windowsazure.cn/
+
+<!---HONumber=61-->

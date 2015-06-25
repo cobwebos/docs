@@ -1,55 +1,49 @@
-<properties pageTitle="向经过身份验证的用户发送推送通知" metaKeywords="push notifications, authentication, users, Notification Hubs, Mobile Services" description="了解如何向特定用户发送推送通知 " metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="Mobile" title="Get started with authentication in Mobile Services" authors="krisragh" solutions="Mobile" manager="dwrede" editor="" />
+<properties
+	pageTitle="向经过身份验证的用户发送推送通知（.NET 后端）"
+	description="了解如何向特定用户发送推送通知"
+	services="mobile-services,notification-hubs"
+	documentationCenter="ios"
+	authors="krisragh"
+	manager="dwrede"
+	editor=""/>
 
-<tags ms.service="mobile-services" ms.workload="mobile" ms.tgt_pltfrm="mobile-ios" ms.devlang="objective-c" ms.topic="article" ms.date="10/10/2014" ms.author="krisragh" />
+<tags
+	ms.service="mobile-services"
+	ms.date="03/03/2015"
+	wacn.date=""/>
 
 # 向经过身份验证的用户发送推送通知
 
-[WACOM.INCLUDE [mobile-services-selector-push-users](../includes/mobile-services-selector-push-users.md)]
+[AZURE.INCLUDE [mobile-services-selector-push-users](../includes/mobile-services-selector-push-users.md)]
 
-<div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-push-notifications-app-users/" title=".NET backend" class="current">.NET 后端</a> | <a href="/zh-cn/documentation/articles/mobile-services-javascript-backend-ios-push-notifications-app-users/"  title="JavaScript backend">JavaScript 后端</a></div>
+在本主题中，你将学习如何向 iOS 上已经过身份验证的用户发送推送通知。在开始本教程之前，请先完成[身份验证入门]和[推送通知入门]教程。
 
-本主题说明如何向任何已注册 iOS 设备上已经过身份验证的用户发送推送通知。与前面的[推送通知][Get started with push notifications]教程不同，本教程将指导你更改移动服务，以要求先对用户进行身份验证，然后，才可以将客户端注册到通知中心以发送推送通知。此外，你还要修改注册，以根据分配的用户 ID 添加标记。最后，将要更新服务器代码，以便只将通知发送到已经过身份验证的用户而不是所有注册。
+在本教程中，首先你会要求用户进行身份验证，再注册通知中心以发送推送通知，然后更新服务器脚本，以便只向经过身份验证的用户发送这些通知。
 
-本教程将指导你完成以下过程：
+##<a name="register"></a>更新服务以要求对注册进行身份验证
 
-+ [更新服务以要求对注册进行身份验证]
-+ [更新应用程序以要求在注册之前登录]
-+ [测试应用程序]
+[AZURE.INCLUDE [mobile-services-dotnet-backend-push-notifications-app-users](../includes/mobile-services-dotnet-backend-push-notifications-app-users.md)]
 
-本教程支持 Windows 应用商店和 Windows Phone 应用商店应用程序。
+##<a name="update-app"></a>更新应用程序以要求在注册之前登录
 
-## 先决条件
+[AZURE.INCLUDE [mobile-services-ios-push-notifications-app-users-login](../includes/mobile-services-ios-push-notifications-app-users-login.md)]
 
-在开始本教程之前，必须已完成以下移动服务教程：
+##<a name="test"></a>测试应用程序
 
-+ [身份验证入门][Get started with authentication]<br/>向 TodoList 示例应用程序添加登录要求。
-
-+ [推送通知入门][Get started with push notifications]<br/>配置 TodoList 示例应用程序，以使用通知中心发送推送通知。
-
-完成这两篇教程后，你可以防止未经身份验证的用户从你的移动服务注册推送通知。
-
-## <a name="register"></a>更新服务以要求对注册进行身份验证
-
-[WACOM.INCLUDE [mobile-services-dotnet-backend-push-notifications-app-users](../includes/mobile-services-dotnet-backend-push-notifications-app-users.md)]
-
-## <a name="update-app"></a>更新应用程序以要求在注册之前登录
-
-[WACOM.INCLUDE [mobile-services-ios-push-notifications-app-users-login](../includes/mobile-services-ios-push-notifications-app-users-login.md)]
-
-## <a name="test"></a>测试应用
-
-[WACOM.INCLUDE [mobile-services-ios-push-notifications-app-users-test-app](../includes/mobile-services-ios-push-notifications-app-users-test-app.md)]
+[AZURE.INCLUDE [mobile-services-ios-push-notifications-app-users-test-app](../includes/mobile-services-ios-push-notifications-app-users-test-app.md)]
 
 <!-- Anchors. -->
-[更新服务以要求对注册进行身份验证]: #register
-[更新应用程序以要求在注册之前登录]: #update-app
-[测试应用程序]: #test
-[后续步骤]:#next-steps
+[Updating the service to require authentication for registration]: #register
+[Updating the app to log in before registration]: #update-app
+[Testing the app]: #test
+[Next Steps]: #next-steps
 
 
 <!-- URLs. -->
-[Get started with authentication]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started-users/
-[Get started with push notifications]: /zh-cn/documentation/articles/mobile-services-dotnet-backend-ios-get-started-push/
+[身份验证入门]: mobile-services-dotnet-backend-ios-get-started-users
+[推送通知入门]: mobile-services-dotnet-backend-ios-get-started-push
 
-[Azure 管理门户]: https://manage.windowsazure.cn/
-[移动服务 .NET 操作方法概念性参考]: /zh-cn/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
+[Azure Management Portal]: https://manage.windowsazure.cn/
+[Mobile Services .NET How-to Conceptual Reference]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
+
+<!---HONumber=61-->

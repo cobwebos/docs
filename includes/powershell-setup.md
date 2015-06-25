@@ -2,18 +2,14 @@
 
 <tags
    ms.service="virtual-machines"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm=""
-   ms.workload="infrastructure"
-   ms.date="04/14/2015"
-   ms.author="josephd" />
+   ms.date="05/12/2015"
+   wacn.date=""/>
 
 ## 设置 PowerShell
 
 在使用 Azure PowerShell 之前，请完成以下步骤的操作。
 
-### 步骤 1：验证 PowerShell 版本
+### 验证 PowerShell 版本
 
 在使用 Windows PowerShell 之前，必须安装 Windows PowerShell 3.0 或 4.0 版。若要查找 Windows PowerShell 版本，请在 Windows PowerShell 命令提示符下键入以下命令。
 
@@ -31,7 +27,7 @@
 	PSCompatibleVersions           {1.0, 2.0, 3.0}
 	PSRemotingProtocolVersion      2.2
 
-确保 **PSVersion** 的值为 3.0 或 4.0。若要安装兼容版本，请参阅 [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) 或 [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855)。
+确保 **PSVersion** 的值为 3.0 或 4.0。若要安装兼容版本，请参阅 [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) 或 [Windows Management Framework 4.0](http://www.microsoft.com/zh-CN/download/details.aspx?id=40855)。
 
 还应安装 Azure PowerShell 0.8.0 或更高版。可以使用此命令在 Azure PowerShell 命令提示符下查看已安装的 Azure PowerShell 版本。
 
@@ -43,31 +39,39 @@
 	-------
 	0.8.16.1
 
-有关说明以及指向最新版本的链接，请参阅[如何安装和配置 Azure PowerShell](powershell-install-configure.md)。
+有关说明以及指向最新版本的链接，请参阅[如何安装和配置 Azure PowerShell](powershell-install-configure)。
 
 
-### 步骤 2：设置你的 Azure 帐户和订阅
+### 设置你的 Azure 帐户和订阅
 
-如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册获取[免费试用版](http://azure.microsoft.com/pricing/free-trial/)。
+如果你还没有 Azure 订阅，你可以注册一个[试用版](/pricing/1rmb-trial/)。
 
-使用此命令列出你的 Azure 订阅。
-
-	Get-AzureSubscription
-
-对于要向其部署新资源的订阅，请注意"帐户"属性。使用"帐户"属性中列出的帐户，通过运行此命令登录到 Azure。
+打开 Azure PowerShell 命令提示符，然后使用此命令登录到 Azure。
 
 	Add-AzureAccount
 
-在 Microsoft Azure 登录对话框中指定帐户的电子邮件地址及其密码。
+如果有多个 Azure 订阅，你可以使用此命令列出 Azure 订阅。
 
-通过在 Azure PowerShell 命令提示符下运行以下命令设置你的 Azure 订阅。将引号内的所有内容（包括 < 和 > 字符）替换为相应的名称。
+	Get-AzureSubscription
 
-	$subscr="<subscription name>"
-	Select-AzureSubscription -SubscriptionName $subscr -Current
-	Set-AzureSubscription -SubscriptionName $subscr
+你将收到以下类型的信息：
 
-你可以从 **Get-AzureSubscription** 命令输出的 **SubscriptionName** 属性获取相应的订阅名称。
+	SubscriptionId            : fd22919d-eaca-4f2b-841a-e4ac6770g92e
+	SubscriptionName          : Visual Studio Ultimate with MSDN
+	Environment               : AzureCloud
+	SupportedModes            : AzureServiceManagement,AzureResourceManager
+	DefaultAccount            : johndoe@contoso.com
+	Accounts                  : {johndoe@contoso.com}
+	IsDefault                 : True
+	IsCurrent                 : True
+	CurrentStorageAccountName : 
+	TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
 
-有关 Azure 订阅和帐户的详细信息，请参阅[如何：连接到订阅](powershell-install-configure.md#Connect)。
+通过在 Azure PowerShell 命令提示符下运行以下命令设置当前的 Azure 订阅。将引号内的所有内容（包括 < and > 字符）替换为相应的名称。
 
-<!---HONumber=56-->
+	$subscr="<SubscriptionName from the display of Get-AzureSubscription>"
+	Select-AzureSubscription -SubscriptionName $subscr -Current	
+
+有关 Azure 订阅和帐户的详细信息，请参阅[如何：连接到你的订阅](powershell-install-configure#Connect)。
+
+<!---HONumber=61-->
