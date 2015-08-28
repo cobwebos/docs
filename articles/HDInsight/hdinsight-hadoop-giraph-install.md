@@ -30,7 +30,7 @@
    
 ## <a name="install"></a>如何安装 Giraph？
 
-用于在 HDInsight 群集上安装 Giraph 的示例脚本可通过 [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1) 上的只读 Azure 存储 Blob 获得。本部分提供有关如何在通过使用 Azure 门户设置群集时使用示例脚本的说明。
+用于在 HDInsight 群集上安装 Giraph 的示例脚本可通过 [https://hdiconfigactions.blob.core.chinacloudapi.cn/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.chinacloudapi.cn/giraphconfigactionv01/giraph-installer-v01.ps1) 上的只读 Azure 存储 Blob 获得。本部分提供有关如何在通过使用 Azure 门户设置群集时使用示例脚本的说明。
 
 > [AZURE.NOTE]示例脚本仅适用于 HDInsight 群集版本 3.1。有关 HDInsight 群集版本的详细信息，请参阅 [HDInsight 群集版本](/documentation/articles/hdinsight-component-versioning)。
 
@@ -44,12 +44,12 @@
 		<tr><td>Name</td>
 			<td>指定脚本操作的名称。例如 <b>Install Giraph</b>。</td></tr>
 		<tr><td>脚本 URI</td>
-			<td>指定调用以自定义群集的脚本的统一资源标识符 (URI)。例如 <i>https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1</i></td></tr>
+			<td>指定调用以自定义群集的脚本的统一资源标识符 (URI)。例如，<i>https://hdiconfigactions.blob.core.chinacloudapi.cn/giraphconfigactionv01/giraph-installer-v01.ps1</i></td></tr>
 		<tr><td>节点类型</td>
 			<td>指定在其上运行自定义脚本的节点。你可以选择“所有节点”、“仅限头节点”或“仅限从节点”<b></b><b></b><b></b>。
 		<tr><td>Parameters</td>
 			<td>根据脚本的需要，指定参数。用于安装 Giraph 的脚本不需要任何参数，因此你可以将此字段留空。</td></tr>
-	</table>
+	</table>	
 
 	你可以添加多个脚本操作，以在群集上安装多个组件。在添加了脚本后，单击复选标记以开始设置群集。
 
@@ -124,7 +124,7 @@
 		Get-AzureStorageBlobContent -Container $containerName -Blob example/output/shortestpaths/part-m-00001 -Context $storageContext -Force
 		Get-AzureStorageBlobContent -Container $containerName -Blob example/output/shortestpaths/part-m-00002 -Context $storageContext -Force
 
-	这在工作站上的当前目录中创建 __example/output/shortestpaths__ 目录结构，并将两个输出文件下载到该位置。
+	此时会在工作站上的当前目录中创建 __example/output/shortestpaths__ 目录结构，并将两个输出文件下载到该位置。
 
 	使用 __Cat__ cmdlet 显示文件的内容：
 
@@ -143,7 +143,7 @@
 	
 	在可视化此数据的情况下，你可以通过体验 ID 1 与所有其他对象之间的最短路径来验证结果。请注意，ID 1 和 ID 4 之间的最短路径为 5。这是从 <span style="color:orange">ID 1 到 ID 3</span>，然后再从 <span style="color:red">ID 3 到 ID 4</span> 的总距离。
 
-	![将对象绘制为圆圈，并绘制对象之间的最短路径](.\media\hdinsight-hadoop-giraph-install\giraph-graph-out.png)
+	![将对象绘制为圆圈，并绘制对象之间的最短路径](./media/hdinsight-hadoop-giraph-install/giraph-graph-out.png)
 
 
 ## <a name="usingPS"></a>使用 Azure PowerShell 在 HDInsight Hadoop 群集上安装 Giraph
@@ -176,7 +176,7 @@
 3. 使用 **Add-AzureHDInsightScriptAction** cmdlet 将脚本操作添加到群集配置中。稍后，在创建群集时，将执行脚本操作。
 
 		# Add a script action to the cluster configuration
-		$config = Add-AzureHDInsightScriptAction -Config $config -Name "Install Giraph" -ClusterRoleCollection HeadNode -Uri https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1
+		$config = Add-AzureHDInsightScriptAction -Config $config -Name "Install Giraph" -ClusterRoleCollection HeadNode -Uri https://hdiconfigactions.blob.core.chinacloudapi.cn/giraphconfigactionv01/giraph-installer-v01.ps1
 
 	**Add-AzureHDInsightScriptAction** cmdlet 采用以下参数：
 
@@ -226,7 +226,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
 
 **创建自签名证书**
 
-创建自签名证书，将其安装到工作站上，然后将其上传到你的 Azure 订阅。有关说明，请参阅[创建自签名证书](/zh-cn/documentation/articles/hdinsight-administer-use-management-portal/#cert)。
+创建自签名证书，将其安装到工作站上，然后将其上传到你的 Azure 订阅。有关说明，请参阅[创建自签名证书](/documentation/articles/hdinsight-administer-use-management-portal/#cert)。
 
 
 **创建 Visual Studio 应用程序**
@@ -315,7 +315,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
         clusterInfo.ConfigActions.Add(new ScriptAction(
           "Install Giraph", // Name of the config action
           new ClusterNodeType[] { ClusterNodeType.HeadNode }, // List of nodes to install Giraph on
-          new Uri("https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1"), // Location of the script to install Giraph
+          new Uri("https://hdiconfigactions.blob.core.chinacloudapi.cn/giraphconfigactionv01/giraph-installer-v01.ps1"), // Location of the script to install Giraph
 		  null //Because the script used does not require any parameters
         ));
 
@@ -349,4 +349,4 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
 [hdinsight-install-spark]: /documentation/articles/hdinsight-hadoop-spark-install
 [hdinsight-cluster-customize]: /documentation/articles/hdinsight-hadoop-customize-cluster
 
-<!---HONumber=66-->
+<!---HONumber=67-->

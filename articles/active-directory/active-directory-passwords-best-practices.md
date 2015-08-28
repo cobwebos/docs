@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="最佳实践：Azure AD 密码管理 | Microsoft Azure" 
+	pageTitle="最佳做法：Azure AD 密码管理 |Windows Azure" 
 	description="有关 Azure Active Directory 中密码管理的部署和使用最佳实践、示例最终用户文档和培训指南。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -30,14 +30,14 @@
 ### 如何配置帐户
 只有满足以下**所有**条件，用户才能使用密码重置：
 
-1.	必须在目录中启用密码重置。请阅读[让用户重置其 Azure AD 密码](active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)或[让用户重置或更改其 AD 密码](active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)，了解如何启用密码重置
+1.	必须在目录中启用密码重置。请阅读[让用户重置其 Azure AD 密码](/documentation/articles/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)或[让用户重置或更改其 AD 密码](/documentation/articles/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)，了解如何启用密码重置
 2.	用户必须获得许可。
  - 云用户必须分配有**任何付费型 Office 365 许可证**，或者 **AAD Basic 许可证**或 **AAD Premium 许可证**。
  - 本地用户（联合或哈希同步）**必须分配有 AAD Premium 许可证**。
 3.	用户必须具有按照当前密码重置策略**定义的最小身份验证数据集**。
  - 如果目录中的对应字段包含的数据格式正确，则将身份验证数据视为已定义。
  - 如果配置了一个关口策略，则将最小身份验证数据集定义为**至少一个**启用的身份验证选项；如果配置了两个关口策略，则将其定义为**至少两个**启用的身份验证选项。
-4.	如果用户使用的是本地帐户，则必须启用并打开[密码写回](active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
+4.	如果用户使用的是本地帐户，则必须启用并打开[密码写回](/documentation/articles/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
 
 ### 填充身份验证数据的方式
 关于如何为你所在组织中的用户指定用于密码重置的数据，你有几种选择。
@@ -57,8 +57,8 @@
 2.	转到 [Azure 管理门户](https://manage.windowsazure.cn)中的“许可证”选项卡，将相应许可证分配给你希望向其提供密码重置的每个用户。
 3.	也可以将密码重置限制在随时间推移缓慢启用该功能的一组用户内，方法是将“限制访问密码重置”开关设置为“是”并选择要为密码重置启用的安全组（请注意，这些用户必须全部分配有许可证）。
 4.	指导用户使用密码重置，方法是向他们发送一封电子邮件指导他们注册、在访问面板上启用强制注册，或者通过 DirSync、PowerShell 或 [Azure 管理门户](https://manage.windowsazure.cn)自行为这些用户上载适当的身份验证数据。下面提供此方面的更多详细信息。下面提供了与此相关的更多详细信息。
-5.	经过一段时间后，导航到“报告”选项卡并查看[**密码重置注册活动**](active-directory-passwords-get-insights#view-password-reset-registration-activity)报告，查看用户注册情况。
-6.	适当数量的用户完成注册后，导航到“报告”选项卡并查看[**密码重置活动**](active-directory-passwords-get-insights#view-password-reset-activity)报告，观看他们使用密码重置。
+5.	经过一段时间后，导航到“报告”选项卡并查看[**密码重置注册活动**](/documentation/articles/active-directory-passwords-get-insights#view-password-reset-registration-activity)报告，查看用户注册情况。
+6.	适当数量的用户完成注册后，导航到“报告”选项卡并查看[**密码重置活动**](/documentation/articles/active-directory-passwords-get-insights#view-password-reset-activity)报告，观看他们使用密码重置。
 
 通知用户可以注册并在组织中使用密码重置的方法有多种。下面将详细介绍。
 
@@ -72,7 +72,7 @@
 ### 使用强制注册
 如果希望你的用户自行注册密码重置，还可以强制他们在登录到访问面板（网址为 [http://myapps.microsoft.com](http://myapps.microsoft.com)）时注册。你可以启用“要求用户在登录到访问面板时注册”选项，从目录的“配置”选项卡启用此选项。
 
-也可以通过将“用户必须确认其联系人数据前的天数”选项修改为一个不是零的值，来定义在可配置的一段时间后是否要求用户重新注册。有关详细信息，请参阅[自定义用户密码管理行为](active-directory-passwords-customize#password-management-behavior)。
+也可以通过将“用户必须确认其联系人数据前的天数”选项修改为一个不是零的值，来定义在可配置的一段时间后是否要求用户重新注册。有关详细信息，请参阅[自定义用户密码管理行为](/documentation/articles/active-directory-passwords-customize#password-management-behavior)。
 
   ![][002]
 
@@ -87,7 +87,7 @@
 ### 自行上载数据
 如果要自行上载身份验证数据，用户无需注册密码重置便可重置其密码。只要用户在其帐户上定义的身份验证数据符合你定义的密码重置策略，这些用户便能重置其密码。
 
-要了解可以通过 DirSync 或 Windows PowerShell 设置哪些属性，请参阅[密码重置使用的数据](active-directory-passwords-learn-more#what-data-is-used-by-password-reset)。
+要了解可以通过 DirSync 或 Windows PowerShell 设置哪些属性，请参阅[密码重置使用的数据](/documentation/articles/active-directory-passwords-learn-more#what-data-is-used-by-password-reset)。
 
 你可以执行以下步骤，通过 [Azure 管理门户](https://manage.windowsazure.cn)上载身份验证数据：
 
@@ -103,7 +103,7 @@
 
     ![][006]
 
-若要了解如何使用上述每个属性，请参阅[密码重置使用的数据](active-directory-passwords-learn-more#what-data-is-used-by-password-reset)。
+若要了解如何使用上述每个属性，请参阅[密码重置使用的数据](/documentation/articles/active-directory-passwords-learn-more#what-data-is-used-by-password-reset)。
 
 ## 示例培训材料
 我们正在准备示例培训材料，以帮助你的 IT 部门和用户快速了解如何部署及使用密码重置。敬请期待！
@@ -114,14 +114,14 @@
 **其他资源**
 
 
-* [什么是密码管理](active-directory-passwords)
-* [密码管理的工作原理](active-directory-passwords-how-it-works)
-* [密码管理入门](active-directory-passwords-getting-started)
-* [自定义密码管理](active-directory-passwords-customize)
-* [如何使用密码管理报告获取 Operational Insights](active-directory-passwords-get-insights)
-* [密码管理常见问题](active-directory-passwords-faq)
-* [排查密码管理问题](active-directory-passwords-troubleshoot)
-* [了解详细信息](active-directory-passwords-learn-more)
+* [什么是密码管理](/documentation/articles/active-directory-passwords)
+* [密码管理的工作原理](/documentation/articles/active-directory-passwords-how-it-works)
+* [密码管理入门](/documentation/articles/active-directory-passwords-getting-started)
+* [自定义密码管理](/documentation/articles/active-directory-passwords-customize)
+* [如何通过密码管理报告获取操作见解](/documentation/articles/active-directory-passwords-get-insights)
+* [密码管理常见问题](/documentation/articles/active-directory-passwords-faq)
+* [密码管理疑难解答](/documentation/articles/active-directory-passwords-troubleshoot)
+* [了解详细信息](/documentation/articles/active-directory-passwords-learn-more)
 * [MSDN 上的密码管理](https://msdn.microsoft.com/zh-cn/library/azure/dn510386.aspx)
 
 
@@ -134,4 +134,4 @@
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
  
 
-<!---HONumber=64-->
+<!---HONumber=67-->

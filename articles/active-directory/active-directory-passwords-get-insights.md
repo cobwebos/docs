@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="深入分析：Azure AD 密码管理报告 | Microsoft Azure" 
+	pageTitle="深入分析：Azure AD 密码管理报告 | Windows Azure" 
 	description="本文介绍如何使用报告来深入分析组织中的密码管理操作。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -12,7 +12,7 @@
 	ms.date="06/08/2015" 
 	wacn.date=""/>
 
-# 如何使用密码管理报告获取 Operational Insights
+# 如何使用密码管理报告获取操作见解
 本部分介绍如何使用 Azure Active Directory 的密码管理报告来查看组织中用户对密码重置和更改的使用情况。
 
 - [**密码管理报告概述**](#overview-of-password-management-reports)
@@ -21,15 +21,15 @@
 - [**在组织中查看密码重置活动**](#view-password-reset-activity)
 
 ## 密码管理报告概述
-一旦部署密码重置，最常见的后续步骤之一便是查看其在组织中的使用情况。例如，你可能希望了解用户对密码重置的注册情况，或者在过去几天内进行了多少个密码重置。下面是一些常见问题，你将能够使用当今 [Azure 管理门户](https://manage.windowsazure.cn)中的密码管理报告来回答这些问题：
+一旦部署密码重置，最常见的后续步骤之一是查看其在组织中的使用情况。例如，你可能希望了解用户对密码重置的注册情况，或者在过去几天内进行了多少个密码重置。下面是一些常见问题，你将能够使用当今 [Azure 管理门户](https://manage.windowsazure.cn)中的密码管理报告来回答这些问题：
 
-- 有多少人已注册了密码重置？
-- 谁已经注册了密码重置？
+- 有多少人注册了密码重置？
+- 谁注册了密码重置？
 - 人们都注册哪些数据？
 - 有多少人在过去 7 天内重置了他们的密码？
 - 用户或管理员用于重置其密码的最常见方法是什么？
 - 用户或管理员尝试使用密码重置时面临的常见问题是什么？
-- 哪些管理员经常重置其自己的密码？
+- 哪些管理员经常重置自己的密码？
 - 密码重置时是否有任何可疑的活动？
 
 
@@ -38,9 +38,9 @@
 
 1.	在 [Azure 管理门户](https://manage.windowsazure.cn)中单击 **Active Directory** 扩展。
 2.	从门户显示的列表中选择你的目录。
-3.	单击“报告”选项卡。
+3.	单击“报表”选项卡。
 4.	查看“活动日志”部分的下方。
-5.	选择“密码重置活动报告”或“密码重置注册活动”报告。
+5.	选择**密码重置活动**报告或**密码重置注册活动**报告。
 
     ![][001]
 
@@ -89,7 +89,7 @@
                 </ul>
                 <ul>
                   <li class="unordered">
-                    <strong>办公电话</strong> – 用户使用了办公室电话进行身份验证<br><br></li>
+                    <strong>办公电话</strong> – 用户使用了办公电话进行身份验证<br><br></li>
                 </ul>
                 <ul>
                   <li class="unordered">
@@ -101,7 +101,7 @@
                 </ul>
                 <ul>
                   <li class="unordered">
-                    <strong>上述任一组合（例如，备用电子邮件 + 移动电话）</strong>– 指定两项策略时发生，并显示用户使用哪两种方法对其密码重置请求进行身份验证。<br><br></li>
+                    <strong>上述任一组合（例如，备用电子邮件 + 移动电话）</strong>– 指定两项关口策略时发生，并显示用户使用哪两种方法对其密码重置请求进行身份验证。<br><br></li>
                 </ul>
               </td>
             </tr>
@@ -154,7 +154,7 @@
                 </ul>
                 <ul>
                   <li class="unordered">
-                    <strong>办公电话</strong> – 用户使用了办公室电话进行身份验证<br><br></li>
+                    <strong>办公电话</strong> – 用户使用了办公电话进行身份验证<br><br></li>
                 </ul>
                 <ul>
                   <li class="unordered">
@@ -166,7 +166,7 @@
                 </ul>
                 <ul>
                   <li class="unordered">
-                    <strong>上述任一组合（例如，备用电子邮件 + 移动电话）</strong>– 指定两项策略时发生，并显示用户使用哪两种方法对其密码重置请求进行身份验证。<br><br></li>
+                    <strong>上述任一组合（例如，备用电子邮件 + 移动电话）</strong>– 指定两项关口策略时发生，并显示用户使用哪两种方法对其密码重置请求进行身份验证。<br><br></li>
                 </ul>
               </td>
             </tr>
@@ -413,7 +413,7 @@
             </tr>
             <tr>
               <td>
-                <p>用户在尝试移动语言呼叫验证选项后联系了管理员</p>
+                <p>用户在尝试移动语音呼叫验证选项后联系了管理员</p>
               </td>
               <td>
                 <p>已联系管理员</p>
@@ -421,7 +421,7 @@
             </tr>
             <tr>
               <td>
-                <p>用户在尝试办公室语言呼叫验证选项后联系了管理员</p>
+                <p>用户在尝试办公室语音呼叫验证选项后联系了管理员</p>
               </td>
               <td>
                 <p>已联系管理员</p>
@@ -453,7 +453,7 @@
             </tr>
             <tr>
               <td>
-                <p>用户试图从设备重置而不启用 Cookie</p>
+                <p>用户试图在不启用 Cookie 的情况下从设备重置</p>
               </td>
               <td>
                 <p>已失败</p>
@@ -522,15 +522,15 @@
 **其他资源**
 
 
-* [什么是密码管理](active-directory-passwords)
-* [密码管理的工作原理](active-directory-passwords-how-it-works)
-* [密码管理入门](active-directory-passwords-getting-started)
-* [自定义密码管理](active-directory-passwords-customize)
-* [密码管理最佳实践](active-directory-passwords-best-practices)
-* [密码管理常见问题](active-directory-passwords-faq)
-* [排查密码管理问题](active-directory-passwords-troubleshoot)
-* [了解详细信息](active-directory-passwords-learn-more)
-* [MSDN 上的密码管理](https://msdn.microsoft.com/library/azure/dn510386.aspx)
+* [什么是密码管理](/documentation/articles/active-directory-passwords)
+* [密码管理的工作原理](/documentation/articles/active-directory-passwords-how-it-works)
+* [密码管理入门](/documentation/articles/active-directory-passwords-getting-started)
+* [自定义密码管理](/documentation/articles/active-directory-passwords-customize)
+* [密码管理最佳实践](/documentation/articles/active-directory-passwords-best-practices)
+* [密码管理常见问题](/documentation/articles/active-directory-passwords-faq)
+* [密码管理疑难解答](/documentation/articles/active-directory-passwords-troubleshoot)
+* [了解详细信息](/documentation/articles/active-directory-passwords-learn-more)
+* [MSDN 上的密码管理](/documentation/articles/https://msdn.microsoft.com/library/azure/dn510386.aspx)
 
 
 
@@ -539,4 +539,4 @@
 [003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
  
 
-<!---HONumber=64-->
+<!---HONumber=67-->

@@ -14,23 +14,23 @@
 
 # 使用 PowerShell 部署和管理通知中心
 
-##概述
+## 概述
 
-本文说明如何使用 PowerShell 来创建和管理 Azure 通知中心。本主题将演示以下常见自动化任务。
+本文说明如何使用 PowerShell 创建和管理 Azure 通知中心。本主题将演示以下常见自动化任务。
 
 + 创建通知中心
 + 设置凭据
 
-如果你还需要为通知中心创建新的服务总线命名空间，请参阅[使用 PowerShell 管理服务总线](service-bus-powershell-how-to-provision)。
+如果您还需要为通知中心创建新的服务总线命名空间，请参阅[使用 PowerShell 管理服务总线](service-bus-powershell-how-to-provision)。
 
 不支持直接使用 Azure PowerShell 随附的 cmdlet 来管理通知中心。在 PowerShell 中，最佳方法是引用 Microsoft.ServiceBus.dll 程序集。该程序集是随[服务总线 NuGet 包](http://www.nuget.org/packages/WindowsAzure.ServiceBus/)一起分发的。
 
 
 ## 先决条件
 
-在开始阅读本文前，你必须具有：
+在开始阅读本文前，您必须具有：
 
-- Azure 订阅。Azure 是基于订阅的平台。有关获得订阅的详细信息，请参阅[购买选项][试用版]。
+- Azure 订阅。Azure 是基于订阅的平台。有关获取订阅的详细信息，请参阅[购买选项]、[成员优惠]或[免费试用]。
 
 - 配备 Azure PowerShell 的计算机。有关说明，请参阅[安装和配置 Azure PowerShell]。
 
@@ -39,7 +39,7 @@
 
 ## 包含对适用于服务总线的 .NET 程序集的引用
 
-Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心。若要设置通知中心和其他不是通过现有 cmdlet 公开的服务总线实体，你可以使用[服务总线 NuGet 包](http://www.nuget.org/packages/WindowsAzure.ServiceBus/)中适用于服务总线的 .NET 客户端。
+Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心。若要设置通知中心和其他不是通过现有 cmdlet 公开的服务总线实体，您可以使用[服务总线 NuGet 包](http://www.nuget.org/packages/WindowsAzure.ServiceBus/)中适用于服务总线的 .NET 客户端。
 
 首先，请确保脚本可以找到 **Microsoft.ServiceBus.dll** 程序集，该程序集在 Visual Studio 项目中以 NuGet 包的形式安装。为了灵活起见，该脚本执行以下步骤：
 
@@ -76,8 +76,7 @@ Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心�
 
 可以使用 Azure PowerShell 随附的 [Get-AzureSBAuthorizationRule] cmdlet 来检索用于提供连接字符串的授权规则。我们将在 `$NamespaceManager` 变量中存储对 `NamespaceManager` 实例的引用。我们将使用 `$NamespaceManager` 设置通知中心。
 
-``` 
-powershell
+``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
 # Create the NamespaceManager object to create the event hub
 Write-Output "Creating a NamespaceManager object for the [$Namespace] namespace..."
@@ -90,7 +89,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 若要设置新的通知中心，请使用[服务总线的 .NET API]。本文只着重于通知中心。若要使用其他服务总线实体，请参阅[使用 PowerShell 管理服务总线](service-bus-powershell-how-to-provision)。
 
-你将在脚本的这个部分设置四个本地变量。
+您将在脚本的这个部分设置四个本地变量。
 
 1. `$Namespace`：将此变量设置为要创建通知中心的命名空间的名称。
 2. `$Path`：将此路径设置为新通知中心的名称。例如“MyHub”。    
@@ -103,8 +102,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 + 如果不存在，脚本将使用 WNS 凭据创建 `NotificationHubDescription`，并将其传递给 `NamespaceManager` 类 `CreateNotificationHub` 方法。
 
-			 
-		powershell
+``` powershell
 
 		$Namespace = "<Enter your namespace>
 		$Path  = "<Enter a name for your notification hub>"
@@ -146,7 +144,7 @@ $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
 	{
 	Write-Host "The [$Namespace] namespace does not exist."
 	}
-	
+```	
 
 
 
@@ -154,15 +152,15 @@ $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
 ## 其他资源
 
 - [使用 PowerShell 管理服务总线](service-bus-powershell-how-to-provision)
-- [如何使用 PowerShell 脚本创建 Service Bus 队列、主题和订阅](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-- [如何使用 PowerShell 脚本创建 Service Bus 命名空间和事件中心](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+- [如何使用 PowerShell 脚本创建 服务总线队列、主题和订阅](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+- [如何使用 PowerShell 脚本创建服务总线命名空间和事件中心](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
-一些现成的脚本也可供下载：
-- [服务总线 PowerShell 脚本](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
+一些现成的脚本也可供下载：- [服务总线 PowerShell 脚本](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
  
 
 [购买选项]: http://www.windowsazure.cn/pricing/overview/
-[试用版]: /pricing/1rmb-trial/
+[成员优惠]: http://azure.microsoft.com/pricing/member-offers/
+[免费试用]: /pricing/1rmb-trial/
 [安装和配置 Azure PowerShell]: install-configure-powershell
 [服务总线的 .NET API]: https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.aspx
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/zh-cn/library/azure/dn495122.aspx
@@ -170,4 +168,4 @@ $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/zh-cn/library/azure/dn495113.aspx
  
 
-<!---HONumber=64-->
+<!---HONumber=67-->

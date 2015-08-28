@@ -1,7 +1,7 @@
 
 <properties 
 	pageTitle="使用媒体服务 REST API 创建筛选器" 
-	description="本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。媒体服务将创建动态清单来存档这些选择性的流。" 
+	description="本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。媒体服务将创建动态清单，以对此选择性的流进行存档。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -15,9 +15,9 @@
 
 #使用媒体服务 REST API 创建筛选器
 
-从 2.11 版开始，媒体服务可让你为资产定义筛选器。这些筛选器是服务器端规则，可让你的客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。通过按客户请求创建的**动态清单**可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
+从 2.11 版开始，媒体服务可让你为资产定义筛选器。这些筛选器是服务器端规则，可让你的客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。通过按客户请求（基于指定筛选器流式传输视频）创建的**动态清单**，可以实现对资产进行这种筛选。
 
-有关与筛选器和动态清单相关的更多详细信息，请参阅[动态清单概述](media-services-dynamic-manifest-overview)。
+有关与筛选器和动态清单相关的更多详细信息，请参阅[动态清单概述](/documentation/articles/media-services-dynamic-manifest-overview)。
 
 本主题说明如何使用 REST API 创建、更新和删除筛选器。
 
@@ -25,18 +25,18 @@
 
 创建筛选器时将使用以下类型：
 
-- [筛选器](https://msdn.microsoft.com/zh-cn/library/azure/hh973617.aspx)
+- [Filter](https://msdn.microsoft.com/zh-cn/library/azure/hh973617.aspx)
 - [AssetFilter](https://msdn.microsoft.com/zh-cn/library/azure/hh973617.aspx)
 - [PresentationTimeRange](https://msdn.microsoft.com/zh-cn/library/azure/hh973617.aspx)
-- [FilterTrackSelect 和 FilterTrackPropertyCondition](https://msdn.microsoft.com/zh-cn/library/azure/hh973617.aspx)
+- [FilterTrackSelect and FilterTrackPropertyCondition](https://msdn.microsoft.com/zh-cn/library/azure/hh973617.aspx)
 
 
 
->[AZURE.NOTE]使用 Media Services REST API 时，需注意以下事项：
+>[AZURE.NOTE]使用媒体服务 REST API 时，需注意以下事项：
 >
->访问 Media Services 中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](media-services-rest-how-to-use)。
+>访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use)。
 
->在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。必须根据[使用 REST API 连接到媒体服务](media-services-rest-connect_programmatically)中所述对新的 URI 执行后续调用。
+>在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到一个 301 重定向，它指定另一个媒体服务 URI。必须根据[使用 REST API 连接到媒体服务](/documentation/articles/media-services-rest-connect_programmatically)中所述对新的 URI 执行后续调用。
 
 
 
@@ -170,7 +170,7 @@
 	x-ms-version: 2.11 
 	Host: media.chinacloudapi.cn 
 	
-### 获取与资产关联的 **AssetFilter**。
+### 获取与资产关联的 **AssetFilter**
 
 ####HTTP 请求
 
@@ -184,7 +184,7 @@
 	x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
 	Host: media.chinacloudapi.cn 
 
-###基于 ID 获取 **AssetFilter**
+###基于其 ID 获取 **AssetFilter**
 
 ####HTTP 请求
 
@@ -324,7 +324,7 @@
 
 ##生成使用筛选器的流 URL
 
-有关如何发布和传送资产的信息，请参阅[将内容传送到客户概述](media-services-deliver-content-overview)。
+有关如何发布和传送资产的信息，请参阅[将内容传送到客户概述](/documentation/articles/media-services-deliver-content-overview)。
 
 
 以下示例演示了如何将筛选器添加到流 URL。
@@ -333,15 +333,15 @@
 
 	http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
-**Apple HTTP 实时流 (HLS) V4**
+**Apple HTTP 实时传送视频流 (HLS) V4**
 
 	http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
 
-**Apple HTTP 实时流 (HLS) V3**
+**Apple HTTP 实时传送视频流 (HLS) V3**
 
 	http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
 
-**平滑流**
+**平滑流式处理**
 
 	http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
 
@@ -354,9 +354,9 @@
 
 ##另请参阅 
 
-[动态清单概述](media-services-dynamic-manifest-overview)
+[动态清单概述](/documentation/articles/media-services-dynamic-manifest-overview)
  
 
  
 
-<!---HONumber=64-->
+<!---HONumber=67-->

@@ -34,7 +34,7 @@ Azure Site Recovery 中的 InMage Scout 在本地 VMWare 站点之间提供实�
 4. 在“名称”中，输入一个友好名称以标识此保管库。
 5. 在“区域”中，为保管库选择地理区域。若要查看受支持的区域，请参阅 [Azure Site Recovery 价格详细信息](http://www.windowsazure.cn/home/features/site-recovery/#price)中的“地域可用性”。
 
-<P>检查状态栏以确认保管库已成功创建。保管库将以“活动”状态列在主要的“恢复服务”页上。<b></b></P>
+<P>检查状态栏以确认保管库已成功创建。保管库将以“活动”状态列在主要的“恢复服务”页上。</P>
 
 ##步骤 2：配置保管库
 
@@ -49,4 +49,4 @@ Azure Site Recovery 中的 InMage Scout 在本地 VMWare 站点之间提供实�
 
 请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上发布你的任何问题。
 
-<!---HONumber=64-->
+<!---HONumber=67-->

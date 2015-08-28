@@ -8,9 +8,10 @@
 	editor="cgronlun"/>
 
 <tags 
-   ms.service="hdinsight"
-   ms.date="07/16/2015" 
-   wacn.date="" /> 
+	ms.service="hdinsight" 
+	
+	ms.date="07/16/2015" 
+	wacn.date="" /> 
 
 # 使用脚本操作自定义 HDInsight 群集
 
@@ -46,10 +47,10 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
 
 Name | 脚本
 ----- | -----
-**安装 Spark** | https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1。请参阅[在 HDInsight 群集上安装并使用 Spark][hdinsight-install-spark]。
-**安装 R** | https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1。请参阅[在 HDInsight 群集上安装并使用 R][hdinsight-install-r]。
-**安装 Solr** | https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1。请参阅[在 HDInsight 群集上安装并使用 Solr](/documentation/articles/hdinsight-hadoop-solr-install)。
-\- **安装 Giraph** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1。请参阅[在 HDInsight 群集上安装并使用 Giraph](/documentation/articles/hdinsight-hadoop-giraph-install)。
+**安装 Spark** | https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1。 请参阅[在 HDInsight 群集上安装并使用 Spark][hdinsight-install-spark]。
+**安装 R** | https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1。 请参阅[在 HDInsight 群集上安装并使用 R][hdinsight-install-r]。
+**安装 Solr** | https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1。 请参阅[在 HDInsight 群集上安装并使用 Solr](/documentation/articles/hdinsight-hadoop-solr-install)。
+- **安装 Giraph** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1。 请参阅[在 HDInsight 群集上安装并使用 Giraph](/documentation/articles/hdinsight-hadoop-giraph-install)。
 
 
 
@@ -169,4 +170,4 @@ HDInsight 服务提供多种方式来使用自定义组件。不论在群集上�
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "群集设置过程中的阶段"
 
-<!---HONumber=66-->
+<!---HONumber=67-->

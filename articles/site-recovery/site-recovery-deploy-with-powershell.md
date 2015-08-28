@@ -17,7 +17,7 @@ Windows PowerShell® 是一种基于任务的命令行 shell 和脚本语言，�
 
 ## 概述
 
-Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障转移和恢复，为业务连续性和灾难恢复 (BCDR) 策略发挥作用。有关部署方案的完整列表，请参阅 [Azure Site Recovery 概述](site-recovery-overview)。
+Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障转移和恢复，为业务连续性和灾难恢复 (BCDR) 策略发挥作用。有关部署方案的完整列表，请参阅 [Azure Site Recovery 概述](/documentation/articles/site-recovery-overview)。
 
 本文说明如何使用 PowerShell 来自动完成有关部署 Azure Site Recovery 的常见任务，包括针对在位于 VMM 私有云中 Hyper-V 主机服务器上的虚拟机上运行的工作负载协调和自动实施保护。此方案使用 Hyper-V 副本将虚拟机从主 VMM 站点复制到 Azure。
 
@@ -100,7 +100,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 	$VaultName = "<testvault123>"
 	$VaultGeo  = "<China North>"
-	$OutputPathForSettingsFile = "<c:>"
+	$OutputPathForSettingsFile = "<c:\>"
 
 ```
 
@@ -121,7 +121,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 	
 		$VaultName = "<testvault123>"
 		$VaultGeo  = "<China North>"
-		$OutputPathForSettingsFile = "<c:>"
+		$OutputPathForSettingsFile = "<c:\>"
 	
 		$VaultSetingsFile = Get-AzureSiteRecoveryVaultSettingsFile -Location $VaultGeo -Name $VaultName -Path $OutputPathForSettingsFile;
 	
@@ -302,7 +302,7 @@ New-AzureStorageAccount -StorageAccountName $StorageAccountName -Label $StorageA
 
 ```
 
-PS C:> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureSubscriptionId $Subscriptions[0].SubscriptionId -AzureVMNetworkId $AzureVmNetworks[0].Id
+PS C:\> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureSubscriptionId $Subscriptions[0].SubscriptionId -AzureVMNetworkId $AzureVmNetworks[0].Id
 
 ```
 
@@ -330,16 +330,13 @@ PS C:> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureSu
 	
 	$protectionEntity = Get-AzureSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $protectionContainer
 		
-	```
+		```
 			
 3. 通过运行以下命令为 VM 启用 DR：
 
 	
-    ```
-    
-    $jobResult = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity 	-Protection Enable -Force
-     
-	```
+		$jobResult = Set-AzureSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity 	-Protection Enable -Force
+	
 
 ## 测试你的部署
 
@@ -405,13 +402,19 @@ PS C:> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureSu
 
 1. 通过运行以下命令获取 RecoveryPlan 对象：
 	
+	```
+	
 		$RPObject = Get-AzureSiteRecoveryRecoveryPlan -Name $RPName;
-
+	
+	```
 	
 2. 通过运行以下命令来启动测试故障转移：
 	
-		$jobIDResult = Start-AzureSiteRecoveryTestFailoverJob -RecoveryPlan $RPObject -Direction PrimaryToRecovery;
-
+	```
+	
+	$jobIDResult = Start-AzureSiteRecoveryTestFailoverJob -RecoveryPlan $RPObject -Direction PrimaryToRecovery;
+	
+	```
 	
 ## <a name=monitor></a>监视活动
 
@@ -450,4 +453,4 @@ if($isJobLeftForProcessing)
 
 <LI>如有问题，请访问 <a href="https://social.msdn.microsoft.com/Forums/azure/zh-CN/home?forum=windowsazurezhchs">Azure 恢复服务论坛</a>。</LI></UL>
 
-<!---HONumber=64-->
+<!---HONumber=67-->

@@ -1,6 +1,6 @@
 <properties pageTitle="Microsoft Azure 门户中基于角色的访问控制" description="介绍基于角色的访问控制的工作原理以及如何设置它" services="" documentationCenter="" authors="Justinha" manager="terrylan" editor=""/>
 
-<tags ms.service="multiple" ms.date="05/05/2015" wacn.date=""/>
+<tags ms.service="multiple" ms.date="06/29/2015" wacn.date=""/>
 
 # Microsoft Azure 门户中基于角色的访问控制 
 
@@ -39,8 +39,7 @@
 
 ## RBAC 与订阅共同管理员共存
 
-订阅管理员和共同管理员将继续对 Azure 门户和管理 API 具有完全访问权限。在 RBAC 模型中，在订阅级别为他们分配所有者角色。  
-但是，Azure 门户和 Azure 资源管理器 API 只支持新的 RBAC 模型。分配了 RBAC 角色的用户和服务不能访问 Azure 管理门户和服务管理 API。将用户添加到 Azure 门户中某个订阅的所有者角色并不会使该用户成为整个 Azure 门户中订阅的共同管理员。
+订阅管理员和共同管理员将继续对 Azure 门户和管理 API 具有完全访问权限。在 RBAC 模型中，在订阅级别为他们分配所有者角色。但是，Azure 门户和 Azure 资源管理器 API 只支持新的 RBAC 模型。分配了 RBAC 角色的用户和服务不能访问 Azure 管理门户和服务管理 API。将用户添加到 Azure 门户中某个订阅的所有者角色并不会使该用户成为整个 Azure 门户中订阅的共同管理员。
 
 如果要授予用户对尚未可通过 Azure 门户管理的 Azure 资源的访问权限，应使用 Azure 管理门户将这些用户添加到订阅共同管理员中。Service Bus 和云服务是目前不能通过使用 RBAC 管理的资源的示例。
 
@@ -60,10 +59,10 @@
 
 以下是访问权限要求以及如何在 Azure 中设置它们的摘要。
 
-用户/组 | 访问权限要求 | 访问角色和作用域  
-------------- | -------------  | ------------  
-Jill Santos 的所有团队 | 读取所有 Azure 资源 | 将表示 Jill Santos 团队的 AD 组添加到 Azure 订阅的读者角色  
-Jill Santos 的所有团队 | 在 Test 资源组中创建和管理所有资源 | 将表示 Jill Santos 团队的 AD 组添加到 Test 资源组的参与者角色  
+用户/组 | 访问权限要求 | 访问角色和作用域
+------------- | -------------  | ------------
+Jill Santos 的所有团队 | 读取所有 Azure 资源 | 将表示 Jill Santos 团队的 AD 组添加到 Azure 订阅的读者角色
+Jill Santos 的所有团队 | 在 Test 资源组中创建和管理所有资源 | 将表示 Jill Santos 团队的 AD 组添加到 Test 资源组的参与者角色
 Brock | 在 Prod 资源组中创建和管理所有资源 | 将 Brock 添加到 Prod 资源组的参与者角色
 
 
@@ -71,7 +70,7 @@ Brock | 在 Prod 资源组中创建和管理所有资源 | 将 Brock 添加到 P
 
 ![][3]
 
-单击*订阅的名称* ** >读者>添加**。从用户和组的列表中，选择或键入 Active Directory 组的名称。
+单击*订阅的名称* ** >“读者”>“添加”**。从用户和组的列表中，选择或键入 Active Directory 组的名称。
 
 ![][4]
 
@@ -85,9 +84,9 @@ Brock | 在 Prod 资源组中创建和管理所有资源 | 将 Brock 添加到 P
 
 也可以通过使用 Windows PowerShell 的 Microsoft Azure 模块来管理角色分配。以下是通过使用 New-AzureRoleAssignment cmdlet（而不是门户）添加 Brock 帐户的示例：
 
-	PS C:> New-AzureRoleAssignment -Mail brockh@contoso.com -RoleDefinitionName Contributor -ResourceGroupName ProdDB
+	PS C:\> New-AzureRoleAssignment -Mail brockh@contoso.com -RoleDefinitionName Contributor -ResourceGroupName ProdDB
 
-有关使用 Windows PowerShell 来添加和删除访问权限的详细信息，请参阅[使用 Windows PowerShell 管理基于角色的访问控制](role-based-access-control-powershell)。
+有关使用 Windows PowerShell 来添加和删除访问权限的详细信息，请参阅[使用 Windows PowerShell 管理基于角色的访问控制](/documentation/articles/role-based-access-control-powershell)。
 
 ### 删除访问权限
 
@@ -97,7 +96,7 @@ Brock | 在 Prod 资源组中创建和管理所有资源 | 将 Brock 添加到 P
 
 以下是如何通过使用 Remove-AzureRoleAssignment cmdlet 删除 Brad Adams 的示例：
 
-	PS C:> Remove-AzureRoleAssignment -Mail badams@contoso.com -RoleDefinitionName Reader -ResourceGroupName TestDB
+	PS C:\> Remove-AzureRoleAssignment -Mail badams@contoso.com -RoleDefinitionName Reader -ResourceGroupName TestDB
 
 ### 添加或删除外部用户的访问权限
 
@@ -124,10 +123,299 @@ Brock | 在 Prod 资源组中创建和管理所有资源 | 将 Brock 添加到 P
 添加外部用户时，将在目录中创建来宾。此后，可以将该来宾添加到组中或将其从组中删除，也可以单独将该来宾添加到角色中或从角色中删除，就像对任何其他目录用户所做的那样。
 
 你还可以从任何角色中删除来宾，就像删除任何用户一样。从资源的角色中删除来宾并不会从目录中删除该来宾。
- 
+
+## 如何跟踪对角色分配的更改
+
+对角色分配的更改记录在[审核日志](http://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/)中，与其他事件类似。对角色分配更改所做的记录可以使用 [Azure PowerShell](https://msdn.microsoft.com/zh-cn/library/azure/jj156055.aspx) 或 [Azure 资源管理器 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dn931927.aspx) 进行检索。
+
+例如，若要针对整个订阅检索角色分配更改列表，请使用 Azure PowerShell 运行以下两个 cmdlet。第一个切换到 Azure 资源管理器模式。
+
+`Switch-AzureMode -name AzureResourceManager`
+
+`Get-AzureSubscriptionIdLog –DetailedOutput -StartTime '06-15-15' -EndTime '06-29-15'`
+
+角色分配更改可在 ResourceProviderName 为 `Microsoft.Authorization` 的事件中捕获。在事件详细信息中捕获的实际分配详情：已分配什么主体，分配给何种角色、针对什么作用域进行了分配。在门户中浏览审核日志时，会显示角色分配更改情况，但该门户不显示事件详细信息。若要查看事件详细信息，必须使用 Azure PowerShell。
+
+### 事件详细信息
+
+下面是进行某项角色分配更改时，事件详细信息的示例：
+
+```
+Authorization        :
+                       Scope     : /subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/resourceGroups/Default-Storage-W
+                       estUS/providers/Microsoft.ClassicStorage/storageAccounts/authzwaes/providers/Microsoft.Authoriza
+                       tion/roleAssignments/531f036a-37ff-40c1-9bb9-aa580ebe7e78
+                       Action    : Microsoft.Authorization/roleAssignments/write
+                       Role      : Subscription Admin
+                       Condition :
+Caller               : William.Hennum@contoso.com
+Claims               :
+                       aud            : https://management.core.windows.net/
+                       iss            : https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/
+                       iat            : 1435333533
+                       nbf            : 1435333533
+                       exp            : 1435337433
+                       ver            : 1.0
+                       http://schemas.microsoft.com/identity/claims/tenantid: 72f988bf-86f1-41af-91ab-2d7cd011db47
+                       http://schemas.microsoft.com/identity/claims/objectidentifier:
+                       dda50086-5e3d-4a4b-b8bc-f54771104d89
+                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn: William.Hennum@contoso.com
+                       puid           : 10030000803CDC0B
+                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier:
+                       MJwntjqWaULfl30NJMiDRVSVCWMX5GzmMNU4oqitDXs
+                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname: William
+                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname: Hennum
+                       name           : William Hennum
+                       http://schemas.microsoft.com/claims/authnmethodsreferences: rsa,wia,mfa
+                       _claim_names   : {"groups":"src1"}
+                       _claim_sources : {"src1":{"endpoint":"https://graph.windows.net/72f988bf-86f1-41af-91ab-2d7cd011
+                       db47/users/dda50086-5e3d-4a4b-b8bc-f54771104d89/getMemberObjects"}}
+                       http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name: William.Hennum@contoso.com
+                       onprem_sid     : S-1-5-21-1721254763-462695806-1538882281-3175325
+                       appid          : c44b4083-3bb0-49c1-b47d-974e53cbdf3c
+                       appidacr       : 2
+                       http://schemas.microsoft.com/identity/claims/scope: user_impersonation
+                       http://schemas.microsoft.com/claims/authnclassreference: 1
+CorrelationId        : d724ffd0-31a4-4564-941b-f3a5d32ad8a4
+Description          :
+EventChannels        : Operation
+EventDataId          : ed8e79b6-c7d1-4332-adcf-70d37546c5a6
+EventName            : BeginRequest
+EventSource          : Administrative
+EventTimestamp       : 6/26/2015 3:53:34 PM
+HttpRequest          :
+                       ClientId        : F7272386-295A-4545-96BD-21F0856A43FE
+                       Method          : PUT
+                       Url             :
+                       ClientIpAddress : 23.99.81.159
+Id                   : /subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/resourceGroups/Default-Storage-WestUS/provid
+                       ers/Microsoft.ClassicStorage/storageAccounts/authzwaes/providers/Microsoft.Authorization/roleAss
+                       ignments/531f036a-37ff-40c1-9bb9-aa580ebe7e78/events/ed8e79b6-c7d1-4332-adcf-70d37546c5a6/ticks/
+                       635709308140011864
+Level                : Informational
+OperationId          : d724ffd0-31a4-4564-941b-f3a5d32ad8a4
+OperationName        : Microsoft.Authorization/roleAssignments/write
+Properties           :
+                       requestbody    : {"Id":"531f036a-37ff-40c1-9bb9-aa580ebe7e78","Properties":{"PrincipalId":"dda50
+                       086-5e3d-4a4b-b8bc-f54771104d89","RoleDefinitionId":"/subscriptions/ff945b8d-441a-41ef-a9db-7bd5
+                       fcc99978/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7"
+                       ,"Scope":"/subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/resourceGroups/Default-Storage-Wes
+                       tUS/providers/Microsoft.ClassicStorage/storageAccounts/authzwaes"}}
+ResourceGroupName    : Default-Storage-WestUS
+ResourceProviderName : Microsoft.Authorization
+ResourceId           : /subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/resourceGroups/Default-Storage-WestUS/provid
+                       ers/Microsoft.ClassicStorage/storageAccounts/authzwaes/providers/Microsoft.Authorization/roleAss
+                       ignments/531f036a-37ff-40c1-9bb9-aa580ebe7e78
+Status               : Started
+SubmissionTimestamp  : 6/26/2015 3:53:50 PM
+SubscriptionId       : ff945b8d-441a-41ef-a9db-7bd5fcc99978
+SubStatus            :`
+```
+
+该事件中的信息解释如下：
+
+| 字段 | 值 | 详细信息 |
+| --- | --- | --- |
+| 调用方 |	`William.Hennum@contoso.com` | 进行角色分配的主体。主体可能是用户、组或服务主体。
+| HttpRequest：方法 | `PUT` | 执行的操作。使用 PUT 来进行分配，使用 DELETE 来删除分配。 |
+| 属性：PrincipalId | `dda50086-5e3d-4a4b-b8bc-f54771104d89` | 	已分配给该角色的主体的对象 ID。主体可能是用户、组或服务主体。你可以确定主体的名称和类型，只需在 Azure Active Directory 中使用 Azure PowerShell 进行查看即可。 |
+| 属性：RoleDefinitionId |	`/subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7	` | 已分配的角色。你可以使用 Azure PowerShell 确定角色的显示名称。 |
+| 属性：Scope | `/subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/resourceGroups/Default-Storage-WestUS/providers/Microsoft.ClassicStorage/storageAccounts/authzwaes` |	在其上进行了角色分配的资源。这可能是资源、资源组或订阅。 |
+
+### 示例 PowerShell 代码段
+
+首先显示的一些示例性 Azure PowerShell 代码用于将 PrincipalId 映射到名称和类型：
+
+```
+# Sample - how to resolve a principal
+function Get-PrincipalDetails($principalId)
+{
+    $principalDetails = "" | select Name, Type
+    $user = Get-AzureADUser -ObjectId $principalId
+    if ($user) {
+        $principalDetails.Name = $user.DisplayName
+        $principalDetails.Type = "User"
+    } else {
+        $group = Get-AzureADGroup -ObjectId $principalId
+        if ($group) {
+            $principalDetails.Name = $group.DisplayName
+            $principalDetails.Type = "Group"
+        } else {
+            $servicePrincipal = Get-AZureADServicePrincipal -objectId $principalId
+            if ($servicePrincipal) {
+                $principalDetails.Name = $servicePrincipal.DisplayName
+                $principalDetails.Type = "Service Principal"
+            }
+        }
+    }
+
+    $principalDetails
+}
+```
+
+接下来显示的一些示例性 Azure PowerShell 代码用于将 Scope 映射到资源名称和类型：
+
+```
+# Sample - how to resolve a resource
+function Get-ResourceDetails($resourceId)
+{
+    $resourceDetails = "" | select Name, Type
+    $resource = Get-AzureResource -Id $resourceId -OutputObjectFormat New
+    if ($resource) {
+        if ($resource.ResourceName) {
+            $resourceDetails.Name = $resource.ResourceName
+            $resourceDetails.Type = "Resource"
+        } elseif ($resource.ResourceGroupName) {
+            $resourceDetails.Name = $resource.ResourceGroupName
+            $resourceDetails.Type = "Resource Group"
+        } elseif ($resource.SubscriptionId) {
+            $resourceDetails.Name = $resource.SubscriptionId
+            $resourceDetails.Type = "Subscription"
+        }
+    }
+    $resourceDetails
+}
+```
+接下来显示的一些示例性 Azure PowerShell 代码将 RoleDefinitionId 映射到角色的显示名称：
+
+```
+
+# Get the name of a role
+function Get-AzureRoleDefinitionName($roleDefinitionId)
+{
+    if (!$Global:_azureRoleDefinitionCache) {
+        $Global:_azureRoleDefinitionCache = @{}
+        Get-AzureRoleDefinition | % { $Global:_azureRoleDefinitionCache[$_.Id] = $_; }
+    }
+
+    if ($Global:_azureRoleDefinitionCache[$roleDefinitionId]) {
+        return $Global:_azureRoleDefinitionCache[$roleDefinitionId].Name
+    } else {
+        return ""
+    }
+}
+
+```
+
+### 示例性 Azure PowerShell 脚本
+
+下面是一个综合性的示例脚本，用于检索特定日期范围的角色分配事件，然后将这些事件作为表输出：
+
+```
+# Sample - how to resolve a principal
+function Get-PrincipalDetails($principalId)
+{
+    $principalDetails = "" | select Name, Type
+    $user = Get-AzureADUser -ObjectId $principalId
+    if ($user) {
+        $principalDetails.Name = $user.DisplayName
+        $principalDetails.Type = "User"
+    } else {
+        $group = Get-AzureADGroup -ObjectId $principalId
+        if ($group) {
+            $principalDetails.Name = $group.DisplayName
+            $principalDetails.Type = "Group"
+        } else {
+            $servicePrincipal = Get-AZureADServicePrincipal -objectId $principalId
+            if ($servicePrincipal) {
+                $principalDetails.Name = $servicePrincipal.DisplayName
+                $principalDetails.Type = "Service Principal"
+            }
+        }
+    }
+
+    $principalDetails
+}
+# Sample - how to resolve a resource
+function Get-ResourceDetails($resourceId)
+{
+    $resourceDetails = "" | select Name, Type
+    $resource = Get-AzureResource -Id $resourceId -OutputObjectFormat New
+    if ($resource) {
+        if ($resource.ResourceName) {
+            $resourceDetails.Name = $resource.ResourceName
+            $resourceDetails.Type = "Resource"
+        } elseif ($resource.ResourceGroupName) {
+            $resourceDetails.Name = $resource.ResourceGroupName
+            $resourceDetails.Type = "Resource Group"
+        } elseif ($resource.SubscriptionId) {
+            $resourceDetails.Name = $resource.SubscriptionId
+            $resourceDetails.Type = "Subscription"
+        }
+    }
+    $resourceDetails
+}
+# Get the name of a role
+function Get-AzureRoleDefinitionName($roleDefinitionId)
+{
+    if (!$Global:_azureRoleDefinitionCache) {
+        $Global:_azureRoleDefinitionCache = @{}
+        Get-AzureRoleDefinition | % { $Global:_azureRoleDefinitionCache[$_.Id] = $_; }
+    }
+
+    if ($Global:_azureRoleDefinitionCache[$roleDefinitionId]) {
+        return $Global:_azureRoleDefinitionCache[$roleDefinitionId].Name
+    } else {
+        return ""
+    }
+}
+# Sample - output the list of role assignment events
+function Get-AzureRBACAuditLog($startDateTime, $endDateTime)
+{
+    $log = Get-AzureSubscriptionIdLog -DetailedOutput -StartTime $startDateTime -EndTime $endDateTime
+    $log = $log | ? { $_.ResourceProviderName -ieq "Microsoft.Authorization" }
+    $startEvents = $log | ? { $_.httpRequest -and $_.Status -ieq "Started" }
+    $endEvents = @{}
+    $log | ? { $_.httpRequest -and $_.Status -ne "Started" } | % { $endEvents[$_.OperationId] = $_ }
+
+    $startEvents | ? { $endEvents.ContainsKey($_.OperationId) } | % {
+        $endEvent = $endEvents[$_.OperationId];
+        $out = "" | select Timestamp, Caller, Action, PrincipalId, PrincipalName, PrincipalType, RoleName, Scope, ScopeName, ScopeType, RoleDefinitionId
+        $out.Timestamp = $endEvent.EventTimestamp
+        $out.Caller = $_.Caller
+        if ($_.HttpRequest.Method -ieq "PUT") {
+            $out.Action = "Granted"
+            if ($_.Properties.Content.ContainsKey("requestbody")) {
+                $messageBody = ConvertFrom-Json $_.Properties.Content["requestbody"]
+            }
+        }
+        elseif ($_.HttpRequest.Method -ieq "DELETE") {
+            $out.Action = "Revoked"
+            if ($endEvent.Properties.Content.ContainsKey("responseBody")) {
+                $messageBody = ConvertFrom-Json $endEvent.Properties.Content["responseBody"]
+            }
+        }
+
+        if ($messageBody) {
+            $out.PrincipalId = $messageBody.properties.principalId
+            $pd = Get-PrincipalDetails $out.PrincipalId
+            $out.PrincipalName = $pd.Name
+            $out.PrincipalType = $pd.Type
+            $out.RoleName = (Get-AzureRoleDefinitionName $messageBody.properties.roleDefinitionId)
+            $out.Scope = $messageBody.properties.Scope
+            $rd = Get-ResourceDetails $out.Scope
+            $out.ScopeName = $rd.Name
+            $out.ScopeType = $rd.Type
+            $out.RoleDefinitionId = $messageBody.properties.roleDefinitionId
+        }
+
+        $out
+    }
+}
+
+```
+
+以下是用于运行该脚本的命令
+
+```
+$log = Get-AzureRBACAuditLog '2015-06-26' '2015-06-27'
+
+$log | Format-Table
+```
+
 ## 使用基于角色的访问控制时的已知问题
 
-如果你在使用基于角色的访问控制功能时遇到问题，请参阅[故障排除基于角色的访问控制](role-based-access-control-troubleshooting)以了解任何可能与该问题相关的已知问题。
+如果你在使用基于角色的访问控制功能时遇到问题，请参阅[故障排除基于角色的访问控制](/documentation/articles/role-based-access-control-troubleshooting)以了解任何可能与该问题相关的已知问题。
 
 
 ## 内置角色
@@ -137,30 +425,30 @@ Azure 基于角色的访问控制附带了以下内置角色，可以将这些�
 单击相应的链接可查看角色定义的**操作**和**不操作**属性。**操作**属性指定对 Azure 资源允许的操作。操作字符串可以使用通配符。角色定义的**不操作**属性指定必须从允许的操作中排除的操作。
 
 
-角色名称 | 说明  
+角色名称 | 说明
 ------------- | -------------  
-[API 管理服务参与者](#api-management-service-contributor) | 允许你管理 API 管理服务，但不能访问它们。  
-[Application Insights 组件参与者](#application-insights-component-contributor) | 允许你管理 Application Insights 组件，但不能访问它们。  
-[BizTalk 参与者](#biztalk-contributor) | 允许你管理 BizTalk 服务，但不能访问它们。  
-[ClearDB MySQL DB 参与者](#cleardb-mysql-db-contributor) | 允许你管理 ClearDB MySQL 数据库，但不能访问它们。  
-[参与者](#contributor) | 参与者可以管理访问权限以外的所有内容。  
-[数据工厂参与者](#data-factory-contributor) | 允许你管理数据工厂，但不能访问它们。  
-[Document DB 帐户参与者](#document-db-account-contributor) | 允许你管理 DocumentDB 帐户，但不能访问它们。  
-[Intelligent Systems 帐户参与者](#intelligent-systems-account-contributor) | 允许你管理 Intelligent Systems 帐户，但不能访问它们。  
-[NewRelic APM 帐户参与者](#newrelic-apm-account-contributor) | 允许你管理 New Relic 应用程序性能管理帐户和应用程序，但不能访问它们。  
-[所有者](#owner) | 所有者可以管理所有内容（包括访问权限）。  
-[读者](#reader) | 读者可以查看所有内容，但不能进行更改。  
-[Redis Cache 参与者](#redis-cache-contributor) | 允许你管理 Redis Cache，但不能访问它们。  
-[SQL DB 参与者](#sql-db-contributor) | 允许你管理 SQL 数据库，但不能访问它们。此外，你也不能管理其与安全性相关的策略或其父 SQL 服务器。  
-[SQL 安全管理器](#sql-security-manager) | 允许你管理 SQL 服务器和数据库与安全性相关的策略，但不能访问它们。  
-[SQL Server 参与者](#sql-server-contributor) | 允许你管理 SQL 服务器和数据库，但不能访问它们，也不能访问与其安全性相关的策略。  
-[计划程序作业集合参与者](#scheduler-job-collections-contributor) | 允许你管理计划程序作业集合，但不能访问它们。  
-[搜索服务参与者](#search-service-contributor) | 允许你管理搜索服务，但不能访问它们。  
-[存储帐户参与者](#storage-account-contributor) | 允许你管理存储帐户，但不能访问它们。  
-[用户访问管理员](#user-access-administrator) | 允许你管理用户对 Azure 资源的访问权限。  
-[虚拟机参与者](#virtual-machine-contributor) | 允许你管理虚拟机，但不能访问它们，也不能访问虚拟机所连接到的虚拟网络或存储帐户。  
-[虚拟网络参与者](#virtual-network-contributor) | 允许你管理虚拟网络，但不能访问它们。  
-[Web 计划参与者](#web-plan-contributor) | 允许你管理网站的 Web 计划，但不能访问它们。  
+[API 管理服务参与者](#api-management-service-contributor) | 允许你管理 API 管理服务，但不能访问它们。
+[Application Insights 组件参与者](#application-insights-component-contributor) | 允许你管理 Application Insights 组件，但不能访问它们。
+[BizTalk 参与者](#biztalk-contributor) | 允许你管理 BizTalk 服务，但不能访问它们。
+[ClearDB MySQL DB 参与者](#cleardb-mysql-db-contributor) | 允许你管理 ClearDB MySQL 数据库，但不能访问它们。
+[参与者](#contributor) | 参与者可以管理访问权限以外的所有内容。
+[数据工厂参与者](#data-factory-contributor) | 允许你管理数据工厂，但不能访问它们。
+[Document DB 帐户参与者](#document-db-account-contributor) | 允许你管理 DocumentDB 帐户，但不能访问它们。
+[Intelligent Systems 帐户参与者](#intelligent-systems-account-contributor) | 允许你管理 Intelligent Systems 帐户，但不能访问它们。
+[NewRelic APM 帐户参与者](#newrelic-apm-account-contributor) | 允许你管理 New Relic 应用程序性能管理帐户和应用程序，但不能访问它们。
+[所有者](#owner) | 所有者可以管理所有内容（包括访问权限）。
+[读者](#reader) | 读者可以查看所有内容，但不能进行更改。
+[Redis Cache 参与者](#redis-cache-contributor) | 允许你管理 Redis Cache，但不能访问它们。
+[SQL DB 参与者](#sql-db-contributor) | 允许你管理 SQL 数据库，但不能访问它们。此外，你也不能管理其与安全性相关的策略或其父 SQL 服务器。
+[SQL 安全管理器](#sql-security-manager) | 允许你管理 SQL 服务器和数据库与安全性相关的策略，但不能访问它们。
+[SQL Server 参与者](#sql-server-contributor) | 允许你管理 SQL 服务器和数据库，但不能访问它们，也不能访问与其安全性相关的策略。
+[计划程序作业集合参与者](#scheduler-job-collections-contributor) | 允许你管理计划程序作业集合，但不能访问它们。
+[搜索服务参与者](#search-service-contributor) | 允许你管理搜索服务，但不能访问它们。
+[存储帐户参与者](#storage-account-contributor) | 允许你管理存储帐户，但不能访问它们。
+[用户访问管理员](#user-access-administrator) | 允许你管理用户对 Azure 资源的访问权限。
+[虚拟机参与者](#virtual-machine-contributor) | 允许你管理虚拟机，但不能访问它们，也不能访问虚拟机所连接到的虚拟网络或存储帐户。
+[虚拟网络参与者](#virtual-network-contributor) | 允许你管理虚拟网络，但不能访问它们。
+[Web 计划参与者](#web-plan-contributor) | 允许你管理网站的 Web 计划，但不能访问它们。
 [网站参与者](#website-contributor) | 允许你管理网站（而非 Web 计划），但不能访问它们。
 
 
@@ -963,16 +1251,17 @@ Azure 基于角色的访问控制附带了以下内置角色，可以将这些�
 </table>
 
 
+## 如何提供反馈
 
 ## 后续步骤
 
 下面是一些其他资源，可帮助你使用基于角色的访问控制：
 
-+ [使用 Windows PowerShell 管理基于角色的访问控制](role-based-access-control-powershell)
-+ [使用 Azure CLI 管理基于角色的访问控制](role-based-access-control-xplat-cli)
-+ [故障排除基于角色的访问控制](role-based-access-control-troubleshooting)
-+ [Azure Active Directory 高级版和基本版](active-directory-editions)
-+ [Azure 订阅与 Azure AD 的关联方式](active-directory-how-subscriptions-associated-directory)
++ [使用 Windows PowerShell 管理基于角色的访问控制](/documentation/articles/role-based-access-control-powershell)
++ [使用 Azure CLI 管理基于角色的访问控制](/documentation/articles/role-based-access-control-xplat-cli)
++ [故障排除基于角色的访问控制](/documentation/articles/role-based-access-control-troubleshooting)
++ [Azure Active Directory 高级版和基本版](/documentation/articles/active-directory-editions)
++ [Azure 订阅与 Azure AD 的关联方式](/documentation/articles/active-directory-how-subscriptions-associated-directory)
 + 有关安全组的自助服务组管理的简介，请参阅 [Active Directory 团队博客](http://blogs.technet.com/b/ad/archive/2014/02/24/more-preview-enhancements-for-windows-azure-ad-premium.aspx)
 
 <!--Image references-->
@@ -987,4 +1276,4 @@ Azure 基于角色的访问控制附带了以下内置角色，可以将这些�
 [9]: ./media/role-based-access-control-configure/RBACInviteExtUser_NEW.png
 [10]: ./media/role-based-access-control-configure/RBACDirConfigTab.png
 
-<!---HONumber=60-->
+<!---HONumber=67-->

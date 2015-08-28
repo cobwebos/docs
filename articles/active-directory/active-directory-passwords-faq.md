@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="常见问题： Azure AD 密码管理 | Microsoft Azure" 
+	pageTitle="常见问题：Azure AD 密码管理 | Windows Azure" 
 	description="有关 Azure AD 中密码管理的常见问题 (FAQ)，包括密码重置、注册、报告和写回本地 Active Directory。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -27,7 +27,7 @@
 ## 密码重置注册
  - **问：我的用户是否可以注册其自己的密码重置数据？**
  
- > **答：**可以。只要已经启用密码重置功能并且用户已获得许可，他们就可以访问“密码重置注册”门户（网址为 http://aka.ms/ssprsetup） 来注册他们用于密码重置的身份验证信息。用户还可以通过以下方式进行注册：转到访问面板 (http://myapps.microsoft.com) ，单击配置文件选项卡，然后单击“注册密码重置”选项。阅读“如何为用户配置密码重置”，了解如何为你的用户配置密码重置。
+ > **答：**可以。只要已经启用密码重置功能并且用户已获得许可，他们就可以访问“密码重置注册”门户（网址为 http://aka.ms/ssprsetup）来注册他们用于密码重置的身份验证信息。用户还可以通过以下方式进行注册：转到访问面板 (http://myapps.microsoft.com)，单击配置文件选项卡，然后单击“注册密码重置”选项。阅读“如何为用户配置密码重置”，了解如何为你的用户配置密码重置。
  
  - **问：我能否代表我的用户定义密码重置数据？**
  
@@ -62,7 +62,7 @@
 
  - **问：多长时间会收到来自密码重置的电子邮件、短信或接到电话？**
  
- > **答：**电子邮件、短信和电话应该会在 1 分钟内到达，通常在 5 秒到 20 秒之间。如果你在此时间范围内未收到通知，请检查垃圾邮件文件夹、所联系的号码 / 电子邮件是否正确，以及是否对目录中的身份验证数据进行了正确的格式设置。若要了解有关对用于密码重置的电话号码和电子邮件地址进行格式设置的更多信息，请参阅“了解密码重置如何使用数据”。
+ > **答：**电子邮件、短信和电话应该会在 1 分钟内到达，通常在 5 秒到 20 秒之间。如果你在此时间范围内未收到通知，请检查垃圾邮件文件夹、所联系的号码/电子邮件是否正确，以及是否对目录中的身份验证数据进行了正确的格式设置。若要了解有关对用于密码重置的电话号码和电子邮件地址进行格式设置的更多信息，请参阅“了解密码重置如何使用数据”。
 
  - **问：密码重置支持哪些语言？**
  
@@ -76,7 +76,7 @@
 
  - **问：我如何告知我的用户到何处重置他们的密码？**
  
- > **答：**你可以直接将用户转到 https://passwordreset.microsoftonline.com ，也可以告知他们单击任何学校或工作 ID 登录屏幕中的“无法访问你的帐户”链接。你可以在你的用户能够轻松访问的任何位置随意发布这些链接（或创建指向它们的 URL 重定向）。
+ > **答：**你可以直接将用户转到 https://passwordreset.microsoftonline.com，也可以告知他们单击任何学校或工作 ID 登录屏幕中的“无法访问你的帐户”链接。你可以在你的用户能够轻松访问的任何位置随意发布这些链接（或创建指向它们的 URL 重定向）。
 
  - **问：我能否在移动设备上使用此页面？**
  
@@ -179,14 +179,14 @@
 **其他资源**
 
 
-* [什么是密码管理](active-directory-passwords)
-* [密码管理的工作原理](active-directory-passwords-how-it-works)
-* [密码管理入门](active-directory-passwords-getting-started)
-* [自定义密码管理](active-directory-passwords-customize)
-* [密码管理最佳实践](active-directory-passwords-best-practices)
-* [如何使用密码管理报告获取 Operational Insights](active-directory-passwords-get-insights)
-* [排查密码管理问题](active-directory-passwords-troubleshoot)
-* [了解详细信息](active-directory-passwords-learn-more)
+* [什么是密码管理](/documentation/articles/active-directory-passwords)
+* [密码管理的工作原理](/documentation/articles/active-directory-passwords-how-it-works)
+* [密码管理入门](/documentation/articles/active-directory-passwords-getting-started)
+* [自定义密码管理](/documentation/articles/active-directory-passwords-customize)
+* [密码管理最佳实践](/documentation/articles/active-directory-passwords-best-practices)
+* [如何通过密码管理报告获取操作见解](/documentation/articles/active-directory-passwords-get-insights)
+* [密码管理疑难解答](/documentation/articles/active-directory-passwords-troubleshoot)
+* [了解详细信息](/documentation/articles/active-directory-passwords-learn-more)
 * [MSDN 上的密码管理](https://msdn.microsoft.com/zh-cn/library/azure/dn510386.aspx)
 
 
@@ -194,4 +194,4 @@
 [002]: ./media/active-directory-passwords-faq/002.jpg "Image_002.jpg"
  
 
-<!---HONumber=64-->
+<!---HONumber=67-->

@@ -1,5 +1,5 @@
 > [AZURE.SELECTOR]
-- [SSH](hdinsight-use-sqoop-mac-linux)
-- [PowerShell](hdinsight-use-sqoop)
+- [SSH](/documentation/articles/hdinsight-use-sqoop-mac-linux)
+- [PowerShell](/documentation/articles/hdinsight-use-sqoop)
 
-<!---HONumber=HO63-->
+<!---HONumber=67-->

@@ -4,14 +4,12 @@
 	description="了解如何管理 Azure 虚拟机。"
 	services="backup"
 	documentationCenter=""
-	authors="jimpark"
-	manager="jwhit"
+	authors="aashishr"
+	manager="shreeshd"
 	editor=""/>
 
 <tags
-	ms.service="backup"
-	ms.date="05/28/2015"
-	wacn.date=""/>
+	ms.service="backup" ms.date="07/17/2015" wacn.date=""/>
 
 # 管理虚拟机
 
@@ -22,13 +20,13 @@
 
   - 单击受保护项的名称可以查看“备份详细信息”选项卡，其中显示了有关上次备份的信息。
 
-       ![虚拟机备份](./media/backup-azure-manage-vms/backup-vmdetails.png)
+        ![Virtual machine backup](./media/backup-azure-manage-vms/backup-vmdetails.png)
 
 2. 若要查看和管理某个虚拟机的备份策略设置，请单击“策略”选项卡。
 
   - “备份策略”选项卡将显示现有策略。你可以根据需要进行更改。如果需要创建新策略，请在“策略”页上单击“创建”。请注意，如果要删除某个策略，则它不应当具有与之关联的任何虚拟机。
 
-       ![虚拟机策略](./media/backup-azure-manage-vms/backup-vmpolicy.png)
+        ![Virtual machine policy](./media/backup-azure-manage-vms/backup-vmpolicy.png)
 
 3. 可以在“作业”页上获取有关虚拟机的操作或状态的更多信息。单击列表中的某个作业可获取更多详细信息，还可以筛选特定虚拟机的作业。
 
@@ -65,7 +63,7 @@
 - 保留 Azure 备份保管库中与虚拟机关联的备份数据
 - 删除与虚拟机关联的备份数据
 
-如果你选择了第一个选项，则可以使用备份数据来还原虚拟机。有关此类虚拟机的定价详细信息，请单击[此处](/home/features/back-up/#price)。
+如果你选择了第一个选项，则可以使用备份数据来还原虚拟机。有关此类虚拟机的定价详细信息，请单击[此处](http://www.windowsazure.cn/home/features/back-up/#price)。
 
 若要停止保护虚拟机，请执行以下操作：
 
@@ -154,6 +152,5 @@
 在“仪表板”页中，可以查看有关 Azure 虚拟机、其存储和过去 24 小时内关联作业的信息。你可以查看备份状态和任何关联的备份错误。
 
   ![仪表板](./media/backup-azure-manage-vms/dashboard-protectedvms.png)
- 
 
-<!---HONumber=64-->
+<!---HONumber=67-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="自定义：Azure AD 密码管理 | Microsoft Azure" 
+	pageTitle="自定义：Azure AD 密码管理 | Windows Azure" 
 	description="如何根据需要在 Azure AD 中自定义密码管理外观、行为和通知。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -13,30 +13,30 @@
 	wacn.date=""/>
 
 # 自定义密码管理以符合组织的需求
-为了尽可能地向用户提供最佳体验，我们建议你了解并试用你可以使用的所有密码管理配置选项。事实上，你可以转到 [Azure 管理门户](https://manage.windowsazure.cn)的“Active Directory 扩展”中的配置选项卡，立即开始探索。本主题将引导你从 [Azure 管理门户](https://manage.windowsazure.cn)中目录的“配置”选项卡，完成管理员可以进行的不同密码管理自定义，包括：
+为了尽可能地向用户提供最佳体验，我们建议你了解并试用你可以使用的所有密码管理配置选项。事实上，你可以通过转到 [Azure 管理门户](https://manage.windowsazure.cn)中“Active Directory 扩展”的配置选项卡立即开始了解。本主题将指导你完成所有不同的密码管理自定义，你可以从 [Azure 管理门户](https://manage.windowsazure.cn)中你目录的“配置”选项卡以管理员身份进行这些自定义，这些自定义包括：
 
 - [**自定义密码管理外观**](#password-managment-look-and-feel)
 - [**自定义用户密码管理行为**](#password-management-behavior)
 - [**自定义密码管理通知**](#password-management-notifications)
 
 ## 密码管理外观
-下表说明了每个控件对注册密码重置并重置密码的用户体验有何影响。你可以在 [Azure 管理门户](https://manage.windowsazure.cn)中目录的“配置”选项卡的“目录属性”部分下配置这些选项。
+下表说明了每个控件对注册密码重置并重置密码的用户体验有何影响。你可以在 [Azure 管理门户](https://manage.windowsazure.cn)内你目录的“配置”选项卡的“目录属性”部分下方配置这些选项。
 
 <table>
             <tbody><tr>
               <td>
                 <p>
-                  <strong>策略控制</strong>
+                  <strong>策略控件</strong>
                 </p>
               </td>
               <td>
                 <p>
-                  <strong>说明</strong>
+                  <strong>描述</strong>
                 </p>
               </td>
               <td>
                 <p>
-                  <strong>影响</strong>
+                  <strong>影响？</strong>
                 </p>
               </td>
             </tr>
@@ -53,25 +53,25 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												确定发件人地址的友好名称，例如，“Microsoft 代表 <strong>Wingtip Toys</strong>”<br><br></li>
+												确定发件人地址的友好名称，例如“Microsoft 代表 <strong>Wingtip Toys</strong>”<br><br></li>
                   <li class="unordered">
-												确定该电子邮件的主题名，例如，“<strong>Wingtip Toys</strong> 帐户电子邮件验证码”<br><br></li>
+												确定该电子邮件的主题名，例如“<strong>Wingtip Toys</strong> 帐户电子邮件验证码”<br><br></li>
                 </ul>
                 <p>
                   <strong>密码重置电子邮件：</strong>
                 </p>
                 <ul>
                   <li class="unordered">
-												确定发件人地址的友好名称，例如，“Microsoft 代表 <strong>Wingtip Toys</strong>”<br><br></li>
+												确定发件人地址的友好名称，例如“Microsoft 代表 <strong>Wingtip Toys</strong>”<br><br></li>
                 </ul>
               </td>
             </tr>
             <tr>
               <td>
-                <p>登录并访问面板页面外观</p>
+                <p>登录页和访问面板页的外观</p>
               </td>
               <td>
-                <p>确定访问密码重置页面的用户是否能看到 Microsoft 徽标或你自己的自定义徽标。此配置项还会将你的品牌添加到访问面板和登录页中。</p>
+                <p>确定访问密码重置页的用户是否能够看到 Microsoft 徽标或你自己的自定义徽标。此配置项还会将你的品牌添加到访问面板和登录页中。</p>
                 <p>
                   
                 </p>
@@ -106,25 +106,25 @@
           </tbody></table>
 
 ## 密码管理行为
-下表说明了每个控件对注册密码重置并重置密码的用户体验有何影响。可以在 [Azure 管理门户](https://manage.windowsazure.cn)中目录的“配置”选项卡的“用户密码重置策略”部分下配置这些选项。
+下表说明了每个控件对注册密码重置并重置密码的用户体验有何影响。你可以在 [Azure 管理门户](https://manage.windowsazure.cn)内你目录的“配置”选项卡的“用户密码重置策略”部分下方配置这些选项。
 
-> [AZURE.NOTE]你所使用的管理员帐户必须分配了 AAD Premium 许可证才能看到这些策略控件。<br><br>这些策略控件仅适用于重置密码的最终用户，而不是管理员。**Microsoft 为管理员指定了默认的备用电子邮件和/或移动电话策略，这些策略无法更改。**
+> [AZURE.NOTE]你使用的管理员帐户必须分配有 AAD Premium 许可证才能查看这些策略控件。<br><br>这些策略控件仅适用于重置其密码的最终用户，而不适用于管理员。**Microsoft 为管理员指定了默认的备用电子邮件和/或移动电话策略，这些策略无法更改。**
 
 <table>
             <tbody><tr>
               <td>
                 <p>
-                  <strong>策略控制</strong>
+                  <strong>策略控件</strong>
                 </p>
               </td>
               <td>
                 <p>
-                  <strong>说明</strong>
+                  <strong>描述</strong>
                 </p>
               </td>
               <td>
                 <p>
-                  <strong>影响</strong>
+                  <strong>影响？</strong>
                 </p>
               </td>
             </tr>
@@ -141,7 +141,7 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												如果设置为“无”，则没有用户能够注册自己的质询数据。<br><br></li>
+												如果设置为“否”，则没有用户能够注册自己的质询数据。<br><br></li>
                   <li class="unordered">
 												如果设置为“是”，则目录中的所有最终用户均可通过转至位于 <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> 的注册门户注册质询数据。<br><br></li>
                   <li class="unordered">
@@ -152,11 +152,11 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												如果设置为“无”，用户会看到一条消息，指示必须联系管理员来重置他们的密码。<br><br></li>
+												如果设置为“否”，用户会看到一条消息，指示必须联系管理员来重置他们的密码。<br><br></li>
                   <li class="unordered">
-												如果设置为“是”，则用户可通过转到 <a href="http://passwordreset.microsoftonline.com">http://passwordreset.microsoftonline.com</a> 或单击任何组织 ID 登录页面上的“无法访问你的帐户”链接来自动重置他们的密码<strong></strong>。<br><br></li>
+												如果设置为“是”，则用户可通过转到 <a href="http://passwordreset.microsoftonline.com">http://passwordreset.microsoftonline.com</a> 或单击任何组织 ID 登录页上的“无法访问你的帐户”<strong></strong>链接来自动重置他们的密码。<br><br></li>
                   <li class="unordered">
-                    <strong>注意：</strong>用户必须分配有 Azure AD Premium 或 Basic 许可证才能重置其密码。<br><br></li>
+                    <strong>注意：</strong>用户必须分配了 Azure AD Premium 或 Basic 许可证才能重置其密码。<br><br></li>
                 </ul>
               </td>
             </tr>
@@ -165,7 +165,7 @@
                 <p>限制对密码重置的访问</p>
               </td>
               <td>
-                <p>确定是否只允许一组特定用户使用密码重置。（仅当“可进行密码重置的用户”设置为“是”时可见）<strong></strong><strong></strong>。</p>
+                <p>确定是否只允许一组特定用户使用密码重置。（仅当“可进行密码重置的用户”<strong></strong>设置为“是”<strong></strong>时可见）。</p>
               </td>
               <td>
                 <p>
@@ -175,7 +175,7 @@
                   <li class="unordered">
 												如果设置为“否”，则目录中的所有最终用户均可在 <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> 注册密码重置<br><br></li>
                   <li class="unordered">
-												如果设置为“是”，则只有在“可以执行密码重置的组”<strong></strong>中指定的最终用户才能在 <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> 注册密码重置<br><br></li>
+												如果设置为“是”，则只有在“可以执行密码重置的组”<strong></strong>控件中指定的最终用户才能在 <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> 注册密码重置<br><br></li>
                 </ul>
                 <p>
                   <strong>密码重置门户：</strong>
@@ -184,7 +184,7 @@
                   <li class="unordered">
 												如果设置为“否”，则目录中的所有最终用户均可重置他们的密码。<br><br></li>
                   <li class="unordered">
-												如果设置为“是”，则只有在“可以执行密码重置的组”中指定的最终用户才能重置他们的密码<strong></strong>。<br><br></li>
+												如果设置为“是”，则只有在“可以执行密码重置的组”<strong></strong>控件中指定的最终用户才能重置他们的密码。<br><br></li>
                 </ul>
               </td>
             </tr>
@@ -197,7 +197,7 @@
                 <p>
                   
                 </p>
-                <p>（仅当“限制对密码重置的访问”设置为“是”时可见）<strong></strong><strong></strong>。</p>
+                <p>（仅当“限制对密码重置的访问”<strong></strong>设置为“是”<strong></strong>时可见）。</p>
               </td>
               <td>
                 <p>
@@ -205,7 +205,7 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												如果未指定组并且单击“保存” <strong></strong>，则将为你创建一个名为 <strong>SSPRSecurityGroupUsers</strong> 的空组。<br><br></li>
+												如果未指定组并且单击“保存”<strong></strong>，则将为你创建一个名为 <strong>SSPRSecurityGroupUsers</strong> 的空组。<br><br></li>
                   <li class="unordered">
 												如果你想要指定自己的组，可以提供自己的显示名称。<br><br></li>
                 </ul>
@@ -214,14 +214,14 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												如果“限制对密码重置的访问”设置为“是”，则只有此组中的最终用户能够注册密码重置<strong></strong><strong></strong>。<br><br></li>
+												如果“限制对密码重置的访问”<strong></strong>设置为“是”<strong></strong>，则只有此组中的最终用户能够注册密码重置。<br><br></li>
                 </ul>
                 <p>
                   <strong>密码重置门户：</strong>
                 </p>
                 <ul>
                   <li class="unordered">
-												如果“限制对密码重置的访问”设置为“是”，则只有此组中的最终用户能够注册他们的密码<strong></strong><strong></strong>。<br><br></li>
+												如果“限制对密码重置的访问”<strong></strong>设置为“是”<strong></strong>，则只有此组中的最终用户能够重置他们的密码。<br><br></li>
                 </ul>
               </td>
             </tr>
@@ -234,7 +234,7 @@
                 <p>
                   
                 </p>
-                <p>（仅当“可进行密码重置的用户”设置为“是”时可见）<strong></strong><strong></strong>。</p>
+                <p>（仅当“可进行密码重置的用户”<strong></strong>设置为“是”<strong></strong>时可见）。</p>
               </td>
               <td>
                 <p>
@@ -259,11 +259,11 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												“办公电话”对应于目录中用户对象的“办公电话”属性<strong></strong>。<br><br></li>
+												“办公电话”对应于目录中用户对象的“办公电话”<strong></strong>属性。<br><br></li>
                   <li class="unordered">
-												“移动电话”对应于目录中用户对象的“身份验证移动”属性（非公开可见）或“移动电话”属性（公开可见）<strong></strong><strong></strong>。服务首先检查“身份验证电话”数据，如果不存在，则回退到“移动电话”属性<strong></strong><strong></strong>。<br><br></li>
+												“移动电话”对应于目录中用户对象的“身份验证移动”<strong></strong>属性（非公开可见）或“移动电话”<strong></strong>属性（公开可见）。服务首先检查“身份验证电话”<strong></strong>数据，如果不存在，则回退到“移动电话”<strong></strong>属性。<br><br></li>
                   <li class="unordered">
-												“备用电子邮件地址”对应于目录中用户对象的“身份验证电子邮件”属性（非公开可见）或“备用电子邮件”属性<strong></strong><strong></strong>。服务首先检查“身份验证电子邮件”数据，如果不存在，则回退到“备用电子邮件”属性<strong></strong><strong></strong>。<br><br></li>
+												“备用电子邮件地址”对应于目录中用户对象的“身份验证电子邮件”<strong></strong>属性（非公开可见）或“备用电子邮件”<strong></strong>属性。服务首先检查“身份验证电子邮件”<strong></strong>数据，如果不存在，则回退到“备用电子邮件”<strong></strong>属性。<br><br></li>
                   <li class="unordered">
 												“安全问题”以专用、安全的方式存储在目录的用户对象上，并且只能由用户在注册期间进行回答。出于安全目的，管理员目前无法编辑或查看这些答案。<br><br></li>
                   <li class="unordered">
@@ -283,7 +283,7 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												确定用户可用作给定验证步骤的质询的身份验证方法。例如，如果用户在 Azure Active Directory 的“办公电话”和“身份验证电话”字段中都输入了数据，则他（她）可以使用其中任一身份验证方法来恢复自己的密码<strong></strong><strong></strong>。<br><br></li>
+												确定用户可用作给定验证步骤的质询的身份验证方法。例如，如果用户在 Azure Active Directory 的“办公电话”<strong></strong>和“身份验证电话”<strong></strong>字段中都输入了数据，则他（她）可以使用其中任一身份验证方法来恢复自己的密码。<br><br></li>
                   <li class="unordered">
                     <strong>注意：</strong>当且仅当用户在你以管理员身份启用的身份验证方法中输入了数据时，他们才能重置自己的密码。<br><br></li>
                 </ul>
@@ -298,7 +298,7 @@
                 <p>
                   
                 </p>
-                <p>（仅当“可进行密码重置的用户”设置为“是”时可见）<strong></strong><strong></strong>。</p>
+                <p>（仅当“可进行密码重置的用户”<strong></strong>设置为“是”<strong></strong>时可见）。</p>
               </td>
               <td>
                 <p>
@@ -320,7 +320,7 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												影响在能够重置密码前用户必须完成的验证步骤数量。一个验证步骤是指用户使用一条身份验证信息（如呼叫他们的办公电话或向他们的备用电子邮件发送电子邮件）验证他们的帐户。<br><br></li>
+												影响在能够重置密码前用户必须完成的验证步骤数量。验证步骤是指用户使用一条身份验证信息（如呼叫他们的办公电话或向他们的备用电子邮件发送电子邮件）验证他们的帐户。<br><br></li>
                   <li class="unordered">
                     <strong>注意：</strong>如果某个用户的帐户中尚未定义按照你所设定的策略成功重置其密码所需的身份验证信息数量，他或她将看到一个错误页面，该页面将指示该用户请求管理员来重置其密码。 <br><br></li>
                 </ul>
@@ -332,7 +332,7 @@
               </td>
               <td>
                 <p>确定用户在注册安全问题选项时必须回答的问题数量的下限。</p>
-                <p>（仅当启用了“安全问题”复选框时可见）<strong></strong>。</p>
+                <p>（仅当启用了“安全问题”<strong></strong>复选框时可见）。</p>
               </td>
               <td>
                 <p>
@@ -344,7 +344,7 @@
                   <li class="unordered">
 												注册所需的问题数量必须大于或等于重置所需的问题数量。<br><br></li>
                   <li class="unordered">
-												我们建议将注册所有的问题数量设置得高于重置所需的问题数量，以使用户可以更灵活地重置他们的密码。这种配置也更为安全，因为我们将从用户已注册的所有问题中为用户随机选择要回答的问题。<br><br></li>
+												我们建议将注册所需的问题数量设置得高于重置所需的问题数量，以使用户可以更灵活地重置他们的密码。这种配置也更为安全，因为我们将从用户已注册的所有问题中为用户随机选择要回答的问题。<br><br></li>
                 </ul>
                 <p>
                   <strong>注册门户：</strong>
@@ -364,7 +364,7 @@
                 <p>
                   
                 </p>
-                <p>（仅当启用了“安全问题”复选框时可见）<strong></strong>。</p>
+                <p>（仅当启用了“安全问题”<strong></strong>复选框时可见）。</p>
               </td>
               <td>
                 <p>
@@ -396,7 +396,7 @@
                 <p>
                   
                 </p>
-                <p>（仅当启用了“安全问题”复选框时可见）<strong></strong>。</p>
+                <p>（仅当启用了“安全问题”<strong></strong>复选框时可见）。</p>
               </td>
               <td>
                 <p>
@@ -450,7 +450,7 @@
                 <p>
                   
                 </p>
-                <p>（仅当“可进行密码重置的用户”设置为“是”时可见）<strong></strong><strong></strong>。</p>
+                <p>（仅当“可进行密码重置的用户”<strong></strong>设置为“是”<strong></strong>时可见）。</p>
               </td>
               <td>
                 <p>
@@ -466,7 +466,7 @@
                   <li class="unordered">
 												如果禁用此功能，你也可以手动将用户发送至 <a href="http://aka.ms/ssprsetup">http://aka.ms/ssprsetup</a> 以注册其联系人数据。 <br><br></li>
                   <li class="unordered">
-												用户也可通过单击访问面板中配置文件选项卡下的“注册进行密码重置”链接来访问注册门户<strong></strong>。<br><br></li>
+												用户还可以通过单击访问面板中“个人资料”选项卡下的“注册密码重置”<strong></strong>链接转到注册门户。<br><br></li>
                   <li class="unordered">
 												可通过单击取消按钮或关闭窗口忽略此注册方法，但如果用户未进行注册，则等到登录时就会非常麻烦。<br><br></li>
                 </ul>
@@ -484,11 +484,11 @@
                 <p>用户必须确认其联系人数据前的天数</p>
               </td>
               <td>
-                <p>启用“要求用户注册”时，此设置将确定用户必须再次确认其数据前可经过的时间段<strong></strong>。</p>
+                <p>启用“要求用户注册”<strong></strong>时，此设置将确定用户必须再次确认其数据前可经过的时间段。</p>
                 <p>
                   
                 </p>
-                <p>（仅当“登录到访问面板时要求用户注册”设置为“是”时可见）<strong></strong><strong></strong>。</p>
+                <p>（仅当“登录到访问面板时要求用户注册”<strong></strong>设置为“是”<strong></strong>时可见）。</p>
               </td>
               <td>
                 <p>
@@ -522,7 +522,7 @@
                 <p>
                   
                 </p>
-                <p>（仅当“可进行密码重置的用户”设置为“是”时可见）<strong></strong><strong></strong>。</p>
+                <p>（仅当“可进行密码重置的用户”<strong></strong>设置为“是”<strong></strong>时可见）。</p>
               </td>
               <td>
                 <p>
@@ -530,7 +530,7 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												如果启用此设置，你必须通过立即填写此设置下的“自定义电子邮件地址或 URL”字段来选择自定义 URL 或电子邮件地址<strong></strong>。<br><br></li>
+												如果启用此设置，你必须通过立即填写此设置下的<strong>“自定义电子邮件地址或 URL”</strong>字段来选择自定义 URL 或电子邮件地址。<br><br></li>
                 </ul>
                 <p>
                   <strong>密码重置门户：</strong>
@@ -545,7 +545,7 @@
                       <li class="unordered">
 														如果没有密码管理员，则将电子邮件发送给所有用户管理员，最多可发送给 100 名收件人。<br><br></li>
                       <li class="unordered">
-														如果没有用户管理员，则将电子邮件发送给所有全球管理员，最多可发送给 100 名收件人。<br><br></li>
+														如果没有用户管理员，则将电子邮件发送给所有全局管理员，最多可发送给 100 名收件人。<br><br></li>
                     </ul>
                   </li>
                   <li class="unordered">
@@ -553,7 +553,7 @@
                   <li class="unordered">
 												如果指定的是 URL，它将在新选项卡中打开。<br><br></li>
                   <li class="unordered">
-												如果指定的是电子邮件地址，我们将创建一个指向该电子邮件地址的链接。<br><br></li>
+												如果指定的是电子邮件地址，我们将创建一个指向该电子邮件地址的 mailto 链接。<br><br></li>
                 </ul>
               </td>
             </tr>
@@ -562,11 +562,11 @@
                 <p>自定义电子邮件地址或 URL</p>
               </td>
               <td>
-                <p>控制“联系你的管理员”链接所指向的电子邮件地址或 URL<strong></strong>。</p>
+                <p>控制“联系你的管理员”<strong></strong>链接指向的电子邮件地址或 URL。</p>
                 <p>
                   
                 </p>
-                <p>（仅当“自定义“联系你的管理员”链接”设置为“是”时可见）<strong></strong><strong></strong>。</p>
+                <p>（仅当“自定义‘联系你的管理员’链接”<strong></strong>设置为“是”<strong></strong>时可见）。</p>
               </td>
               <td>
                 <p>
@@ -574,14 +574,14 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												必须是有效的 Intranet 或 Extranet URL 电子邮件地址。<br><br></li>
+												必须是有效的 Intranet 或 Extranet URL 或电子邮件地址。<br><br></li>
                 </ul>
                 <p>
                   <strong>密码重置门户：</strong>
                 </p>
                 <ul>
                   <li class="unordered">
-												更改“联系你的管理员”链接所指向的位置<strong></strong>。<br><br></li>
+												更改“联系你的管理员”<strong></strong>链接所指向的位置。<br><br></li>
                   <li class="unordered">
 												如果你提供的是电子邮件地址，此链接将成为指向该电子邮件地址的“mailto”链接。<br><br></li>
                   <li class="unordered">
@@ -609,52 +609,52 @@
                 </p>
                 <ul>
                   <li class="unordered">
-												仅当你已通过下载 Azure AD Connect 最新版本并启用“可选功能”选择屏幕下方的“密码写回”选项安装了密码写回时，此控件才会出现<strong></strong><strong></strong>。<br><br></li>
+												仅当你已通过下载 Azure AD Connect 最新版本并启用“可选功能”<strong></strong>选择屏幕下方的“密码写回”<strong></strong>选项安装了密码写回时，此控件才会出现。<br><br></li>
                   <li class="unordered">
-												如果你启用了密码写回功能，但认为存在服务配置问题，可以进入此选项卡并查看“密码写回服务状态”标签，看看是否有问题<strong></strong>。<br><br></li>
+												如果你启用了密码写回功能，但认为存在服务配置问题，可以进入此选项卡并查看“密码写回服务状态”<strong></strong>标签，看看是否有问题。<br><br></li>
                   <li class="unordered">
-												可能显示的状态如下：<br><br><ul><li class="unordered"><strong>已配置</strong> - 所有内容均按预期工作<br><br></li><li class="unordered"><strong>未配置</strong> – 已安装写回功能，但我们不能访问此服务，请检查并确保你未阻止到 443 的出站连接；如果问题仍然存在，请尝试重新安装该服务。<br><br></li></ul></li>
+												可能显示的状态如下：<br><br><ul><li class="unordered"><strong>已配置</strong> – 所有内容均按预期工作<br><br></li><li class="unordered"><strong>未配置</strong> – 已安装写回功能，但我们不能访问此服务，请检查并确保你未阻止到 443 的出站连接；如果问题仍然存在，请尝试重新安装该服务。<br><br></li></ul></li>
                 </ul>
                 <p>
                   <strong>注册门户：</strong>
                 </p>
                 <ul>
                   <li class="unordered">
-												如果写回功能已部署并配置，但此开关设置为“无”，则将禁用写回，因此联合用户和已进行密码哈希同步的用户将不能注册密码重置<strong></strong>。<br><br></li>
+												如果写回功能已部署并配置，但此开关设置为<strong>“否”</strong>，则将禁用写回，因此联合用户和已进行密码哈希同步的用户将不能注册密码重置。<br><br></li>
                   <li class="unordered">
-												如果此开关设置为“是”，则将启用写回，因此联合用户和已进行密码哈希同步的用户将能够重置他们的密码<strong></strong>。<br><br></li>
+												如果此开关设置为“是”<strong></strong>，则将启用写回，因此联合用户和已进行密码哈希同步的用户将能够重置他们的密码。<br><br></li>
                 </ul>
                 <p>
                   <strong>密码重置门户：</strong>
                 </p>
                 <ul>
                   <li class="unordered">
-												如果写回功能已部署并配置，但此开关已设置为“无”，则将禁用写回，因此联合用户和已进行密码哈希同步的用户将不能重置他们的重置<strong></strong>。<br><br></li>
+												如果写回功能已部署并配置，但此开关已设置为“否”<strong></strong>，则将禁用写回，因此联合用户和已进行密码哈希同步的用户将不能重置他们的密码。<br><br></li>
                   <li class="unordered">
-												如果此开关设置为“是”，则将启用写回，因此联合用户和已进行密码哈希同步的用户将能够重置他们的密码<strong></strong>。<br><br></li>
+												如果此开关设置为“是”<strong></strong>，则将启用写回，因此联合用户和已进行密码哈希同步的用户将能够重置他们的密码。<br><br></li>
                 </ul>
               </td>
             </tr>
           </tbody></table>
 
 ## 密码管理通知
-下表介绍每个控件对接收密码重置通知的用户和管理员的体验有何影响。可以在 [Azure 管理门户](https://manage.windowsazure.cn)中目录“配置”选项卡的“通知”部分下方配置这些选项。
+下表说明了每个控件对接收密码重置通知的用户和管理员的体验有何影响。你可以在 [Azure 管理门户](https://manage.windowsazure.cn)内你目录的“配置”选项卡的“通知”部分配置这些选项。
 
 <table>
             <tbody><tr>
               <td>
                 <p>
-                  <strong>策略控制</strong>
+                  <strong>策略控件</strong>
                 </p>
               </td>
               <td>
                 <p>
-                  <strong>说明</strong>
+                  <strong>描述</strong>
                 </p>
               </td>
               <td>
                 <p>
-                  <strong>影响</strong>
+                  <strong>影响？</strong>
                 </p>
               </td>
             </tr>
@@ -715,14 +715,14 @@
 **其他资源**
 
 
-* [什么是密码管理](active-directory-passwords)
-* [密码管理的工作原理](active-directory-passwords-how-it-works)
-* [密码管理入门](active-directory-passwords-getting-started)
-* [密码管理最佳实践](active-directory-passwords-best-practices)
-* [如何使用密码管理报告获取 Operational Insights](active-directory-passwords-get-insights)
-* [密码管理常见问题](active-directory-passwords-faq)
-* [排查密码管理问题](active-directory-passwords-troubleshoot)
-* [了解详细信息](active-directory-passwords-learn-more)
+* [什么是密码管理](/documentation/articles/active-directory-passwords)
+* [密码管理的工作原理](/documentation/articles/active-directory-passwords-how-it-works)
+* [密码管理入门](/documentation/articles/active-directory-passwords-getting-started)
+* [密码管理最佳实践](/documentation/articles/active-directory-passwords-best-practices)
+* [如何通过密码管理报告获取操作见解](/documentation/articles/active-directory-passwords-get-insights)
+* [密码管理常见问题](/documentation/articles/active-directory-passwords-faq)
+* [密码管理疑难解答](/documentation/articles/active-directory-passwords-troubleshoot)
+* [了解详细信息](/documentation/articles/active-directory-passwords-learn-more)
 * [MSDN 上的密码管理](https://msdn.microsoft.com/zh-cn/library/azure/dn510386.aspx) 
 
-<!---HONumber=64-->
+<!---HONumber=67-->
