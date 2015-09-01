@@ -455,7 +455,7 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 6. 在**"确认故障转移"**中，验证故障转移方向（到 Azure），然后选择要故障转移到的恢复点。
 7. 等待故障转移作业完成，然后验证故障转移是否按预期工作，以及复制的虚拟机是否在 Azure 中成功启动。
 
-## THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+##第三方软件通知和信息
 
 Do Not Translate or Localize
 
