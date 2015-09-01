@@ -112,7 +112,7 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 	-  *.blob.core.chinacloudapi.cn
 	-  *.store.core.chinacloudapi.cn
 	
-- 如果您在防火墙上采用基于 IP 地址的规则，请确保这些规则允许从配置服务器到 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)和 HTTPS (443) 中所述的 IP 地址之间的通信。您需要将计划使用的 Azure 区域以及美国西部的 IP 地址范围设为白名单。
+- 如果您在防火墙上采用基于 IP 地址的规则，请确保这些规则允许从配置服务器到 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)和 HTTPS (443) 中所述的 IP 地址之间的通信。您需要将计划使用的 Azure 区域以及美国西部的 IP 地址范围设为允许列表。
 - 如果您要部署包含 VMM 的 Site Recovery 并使用自定义代理，系统会使用您在 Site Recovery 门户的自定义代理设置中指定的代理凭据自动创建一个 VMM RunAs 帐户 (DRAProxyAccount)。您需要设置代理服务器，以便此帐户能够成功完成身份验证。
 - 如果您使用代理，从 HYPER-V 主机服务器上安装的提供程序发送到代理的流量必须通过 HTTP 进行发送。
 
