@@ -455,16 +455,16 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 6. 在**"确认故障转移"**中，验证故障转移方向（到 Azure），然后选择要故障转移到的恢复点。
 7. 等待故障转移作业完成，然后验证故障转移是否按预期工作，以及复制的虚拟机是否在 Azure 中成功启动。
 
-## 第三方软件通知和信息
+## THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
 
-请勿翻译或本地化
+Do Not Translate or Localize
 
-Microsoft 产品或服务中运行的软件和固件基于或包含下列项目中的材料（统称为"第三方代码"）。Microsoft 不是"第三方代码"的原创作者。Microsoft 获取此类"第三方代码"依据的原始版权声明和许可证如下文所述。
+The software and firmware running in the Microsoft product or service is based on or incorporates material from the projects listed below (collectively, “Third Party Code”).  Microsoft is the not original author of the Third Party Code.  The original copyright notice and license, under which Microsoft received such Third Party Code, are set forth below.
 
-A 部分中的信息与下列项目中的"第三方代码"组件相关。提供的此类许可证和信息仅供参考。本"第三方代码"将由 Microsoft 依据 Microsoft 产品或服务的 Microsoft 软件许可条款重新许可给你。  
+The information in Section A is regarding Third Party Code components from the projects listed below. Such licenses and information are provided for informational purposes only.  This Third Party Code is being relicensed to you by Microsoft under Microsoft's software licensing terms for the Microsoft product or service.  
 
-B 部分中的信息与 Microsoft 要依据原始许可条款提供给你的"第三方代码"组件相关。
+The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
-完整文件可以在 [Microsoft 下载中心](http://go.microsoft.com/fwlink/?LinkId=530254)上找到。Microsoft 保留未在此处明确授予的所有权利，无论是暗示、禁止或其他方式。
+The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=530254). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
 <!--HONumber=53-->
