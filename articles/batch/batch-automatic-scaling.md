@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="batch"
-	ms.date="07/21/2015"
+	ms.date="08/05/2015"
 	wacn.date=""/>
 
 # 自动缩放 Azure 批处理池中的计算节点
@@ -19,7 +19,7 @@
 
 如果对池启用了相应的功能并将某个公式关联到池，则会发生自动缩放。该公式用于确定处理应用程序所需的计算节点数。可以在创建池时设置自动缩放，以后也可以对现有的池设置该功能。在启用自动缩放的情况下，可在池上更新公式。
 
-启用自动缩放后，将会根据该公式，每隔 15 分钟调整可用的计算节点数。该公式将对每隔 5 秒收集的样本执行运算，但是，每收集一个样本后并且该样本可供公式使用时，会存在 75 秒的延迟。在使用下述 GetSample 方法时，必须考虑这些时间因素。
+启用自动缩放后，将会根据该公式，每隔 15 分钟调整可用的计算节点数。该公式将对定期收集的样本执行运算，但是，每收集一个样本后并且该样本可供公式使用时，会存在一定的延迟。在使用下述 GetSample 方法时，必须考虑这个因素。
 
 在将公式分配到池之前，始终建议你评估该公式，并且你必须监视自动缩放的运行状态。
 
@@ -52,7 +52,7 @@
     <td>池的专用计算节点的目标数。可以根据任务的实际用法更改该值。</td>
   </tr>
   <tr>
-    <td>$TVMDeallocationOption</td>
+    <td>$NodeDeallocationOption</td>
     <td>从池中删除计算节点时发生的操作。可能的值包括：
       <br/>
       <ul>
@@ -111,7 +111,7 @@
     <td>出站字节数</td>
   </tr>
   <tr>
-    <td>$SampleTVMCount</td>
+    <td>$SampleNodeCount</td>
     <td>计算节点数</td>
   </tr>
   <tr>
@@ -143,18 +143,25 @@
 - double
 - doubleVec
 - 字符串
-- timestamp
+- timestamp。timestamp 是包含以下成员的复合结构。
+	- year
+	- month (1-12)
+	- day (1-31)
+	- weekday（采用数字格式。例如1 表示星期一）
+	- hour（采用 24 时制数字格式。例如13 表示下午 1 点）
+	- minute (00-59)
+	- second (00-59)
 - timeinterval
-	- TimeInterval_Zero
-	- TimeInterval_100ns
-	- TimeInterval_Microsecond
-	- TimeInterval_Millisecond
-	- TimeInterval_Second
-	- TimeInterval_Minute
-	- TimeInterval_Hour
-	- TimeInterval_Day
-	- TimeInterval_Week
-	- TimeInterval_Year
+	- TimeInterval\_Zero
+	- TimeInterval\_100ns
+	- TimeInterval\_Microsecond
+	- TimeInterval\_Millisecond
+	- TimeInterval\_Second
+	- TimeInterval\_Minute
+	- TimeInterval\_Hour
+	- TimeInterval\_Day
+	- TimeInterval\_Week
+	- TimeInterval\_Year
 
 ### 操作
 
@@ -319,10 +326,6 @@
     <td>double val(doubleVec v, double i)</td>
     <td>在起始索引为零的向量 v 中，位置 i 处的元素的值。</td>
   </tr>
-  <tr>
-    <td>doubleVec vec(doubleVecList)</td>
-    <td>从 doubleVecList 显式创建单个 doubleVec。</td>
-  </tr>
 </table>
 
 表中描述的某些函数可以接受列表作为参数。逗号分隔列表为 double 和 doubleVec 的任意组合。例如：
@@ -355,8 +358,8 @@ DoubleVecList 值在计算之前将转换为单个 doubleVec。例如，如果 v
           <li><p><b>doubleVec GetSample(double count)</b> - 在最近的样本中指定所需的样本数。</p>
 				  <p>一个样本最好包含 5 秒钟的度量值数据。GetSample(1) 返回最后一个可用样本，但对于像 $CPUPercent 这样的度量值，你不应使用此方法，因为无法知道样本是何时收集的。它可能是最近收集的，也可能由于系统问题而变得很旧。更好使用如下所示的时间间隔。</p></li>
           <li><p><b>doubleVec GetSample((timestamp | timeinterval) startTime [, double samplePercent])</b> – 指定收集样本数据的时间范围，并选择性地指定必须在请求范围内收集的样本百分比。</p>
-          <p>如果 CPUPercent 历史记录中存在过去十分钟的所在样本，$CPUPercent.GetSample(TimeInterval_Minute*10) 应返回 200 个样本。如果最后一分钟的历史记录仍不存在，则只返回 180 个样本。</p>
-					<p>$CPUPercent.GetSample(TimeInterval_Minute*10, 80) 将会成功，$CPUPercent.GetSample(TimeInterval_Minute*10,95) 将会失败。</p></li>
+          <p>如果 CPUPercent 历史记录中存在过去十分钟的所在样本，$CPUPercent.GetSample(TimeInterval\_Minute*10) 应返回 200 个样本。如果最后一分钟的历史记录仍不存在，则只返回 180 个样本。</p>
+					<p>$CPUPercent.GetSample(TimeInterval\_Minute*10, 80) 将会成功，$CPUPercent.GetSample(TimeInterval_Minute*10,95) 将会失败。</p></li>
           <li><p><b>doubleVec GetSample((timestamp | timeinterval) startTime, (timestamp | timeinterval) endTime [, double samplePercent])</b> – 指定收集数据的时间范围，包括开始时间和结束时间。</p></li></ul></td>
   </tr>
   <tr>
@@ -388,7 +391,7 @@ DoubleVecList 值在计算之前将转换为单个 doubleVec。例如，如果 v
     <td><p>根据 CPU 使用率、带宽使用率、内存使用率和计算节点的数目。可在公式中使用上述系统变量来管理池中的计算节点：</p>
     <p><ul>
       <li>$TargetDedicated</li>
-      <li>$TVMDeallocationOption</li>
+      <li>$NodeDeallocationOption</li>
     </ul></p>
     <p>这些系统变量用于根据节点度量值进行调整：</p>
     <p><ul>
@@ -403,9 +406,9 @@ DoubleVecList 值在计算之前将转换为单个 doubleVec。例如，如果 v
       <li>$NetworkInBytes</li>
       <li>$NetworkInBytes</li></ul></p>
     <p>如果过去 10 分钟的最小平均 CPU 使用率高于 70%，此示例中显示的公式可将池中的计算节点数设置为当前目标节点数的 110%：</p>
-    <p><b>totalTVMs = (min($CPUPercent.GetSample(TimeInterval_Minute*10)) > 0.7) ? ($CurrentDedicated * 1.1) : $CurrentDedicated;</b></p>
+    <p><b>totalTVMs = (min($CPUPercent.GetSample(TimeInterval\_Minute*10)) > 0.7) ? ($CurrentDedicated * 1.1) : $CurrentDedicated;</b></p>
     <p>如果过去 60 分钟的平均 CPU 使用率低于 20%，此示例中显示的公式可将池中的计算节点数设置为当前目标节点数的 90%：</p>
-    <p><b>totalTVMs = (avg($CPUPercent.GetSample(TimeInterval_Minute*60)) &lt; 0.2) ? ($CurrentDedicated * 0.9) : totalTVMs;</b></p>
+    <p><b>totalTVMs = (avg($CPUPercent.GetSample(TimeInterval\_Minute*60)) &lt; 0.2) ? ($CurrentDedicated * 0.9) : totalTVMs;</b></p>
     <p>此示例将专用计算节点的目标数目设置为最大值 400：</p>
     <p><b>$TargetDedicated = min(400, totalTVMs);</b></p></td>
   </tr>
@@ -420,7 +423,7 @@ DoubleVecList 值在计算之前将转换为单个 doubleVec。例如，如果 v
       <li>$FailedTasks</li>
       <li>$CurrentDedicated</li></ul></p>
     <p>此示例中显示的公式将检测过去 15 分钟内是否已记录 70% 的样本。如果没有，则使用最后一个样本。该公式将尝试增大计算节点数，以匹配活动任务数（最大为 3）。因为池的 MaxTasksPerVM 属性设置为 4，该公式将节点数设置为活动任务数的四分之一。它还将 Deallocation 选项设置为“taskcompletion”，使计算机等到任务完成。</p>
-    <p><b>$Samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15); $Tasks = $Samples &lt; 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval_Minute * 15))); $Cores = $TargetDedicated * 4; $ExtraVMs = ($Tasks - $Cores) / 4; $TargetVMs = ($TargetDedicated+$ExtraVMs);$TargetDedicated = max(0,min($TargetVMs,3)); $TVMDeallocationOption = taskcompletion;</b></p></td>
+    <p><b>$Samples = $ActiveTasks.GetSamplePercent(TimeInterval\_Minute * 15); $Tasks = $Samples &lt; 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval\_Minute * 15))); $Cores = $TargetDedicated * 4; $ExtraVMs = ($Tasks - $Cores) / 4; $TargetVMs = ($TargetDedicated+$ExtraVMs);$TargetDedicated = max(0,min($TargetVMs,3)); $NodeDeallocationOption = taskcompletion;</b></p></td>
   </tr>
 </table>
 
@@ -428,8 +431,7 @@ DoubleVecList 值在计算之前将转换为单个 doubleVec。例如，如果 v
 
 在应用程序中使用公式之前，最好先对它进行评估。可以通过对现有池执行测试来评估公式。使用下列方法之一进行这种测试：
 
-- [IPoolManager.EvaluateAutoScale Method](https://msdn.microsoft.com/zh-cn/
-- library/azure/dn931617.aspx) 或 [IPoolManager.EvaluateAutoScaleAsync 方法](https://msdn.microsoft.com/zh-cn/library/azure/dn931545.aspx) – 这些 .NET 方法需要现有池的名称，并需要有包含自动缩放公式的字符串。调用的结果将包含在 [AutoScaleEvaluation 类](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.azure.batch.autoscaleevaluation.aspx)的实例中。
+- [IPoolManager.EvaluateAutoScale 方法](https://msdn.microsoft.com/zh-cn/library/azure/dn931617.aspx)或 [IPoolManager.EvaluateAutoScaleAsync 方法](https://msdn.microsoft.com/zh-cn/library/azure/dn931545.aspx) – 这些 .NET 方法需要现有池的名称，并需要有包含自动缩放公式的字符串。调用的结果将包含在 [AutoScaleEvaluation 类](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.azure.batch.autoscaleevaluation.aspx)的实例中。
 - [评估自动缩放公式](https://msdn.microsoft.com/zh-cn/library/azure/dn820183.aspx) – 在这个 REST 操作中，池名称已在 URI 中指定，自动缩放公式已在请求正文的 autoScaleFormula 元素中指定。操作的响应包含任何可能与该公式相关的错误信息。
 
 ## 在启用自动缩放的情况下创建池
@@ -458,12 +460,42 @@ DoubleVecList 值在计算之前将转换为单个 doubleVec。例如，如果 v
 - [ICloudPool.AutoScaleRun 属性](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.azure.batch.icloudpool.autoscalerun.aspx) – 在使用 .NET 库时，池的这个属性将提供 [AutoScaleRun 类](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.azure.batch.autoscalerun.aspx)的实例，该实例提供 [AutoScaleRun.Error 属性](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.azure.batch.autoscalerun.error.aspx)、[AutoScaleRun.Results 属性](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.azure.batch.autoscalerun.results.aspx)和 [AutoScaleRun.Timestamp 属性](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.azure.batch.autoscalerun.timestamp.aspx)。
 - [获取有关池的信息](https://msdn.microsoft.com/zh-cn/library/dn820165.aspx) – 此 REST API 返回有关池的信息，包括最近的自动缩放运行结果。
 
+## 示例
+
+### 示例 1.
+
+你想要基于周中的时间调整池大小。
+
+    curTime=time();
+    workhours=curTime.hour>=8 && curTime.hour <18;
+    isweekday=curTime.weekday>=1 && curTime.weekday<=5;
+    isworkingweekdayhour = workhours && isweekday;
+    $TargetDedicated=workhours?20:10;
+    
+此公式将检测当前时间。如果是工作日 (1..5) 和工作时间 (8am...6pm)，则将目标池大小设置为 20。否则，将目标池大小设置为 10。
+
+### 示例 2.
+
+基于队列中任务调整池大小的另一个示例。
+
+    // Get pending tasks for the past 15 minutes
+    $Samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15); 
+    // If we have less than 70% data points, we use the last sample point, otherwise we use the maximum of last sample point and the history average
+    $Tasks = $Samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1), avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
+    // If number of pending task is not 0, set targetVM to pending tasks, otherwise half of current dedicated
+    $TargetVMs = $Tasks > 0? $Tasks:max(0, $TargetDedicated/2);
+    // The pool size is capped at 20, if target vm value is more than that, set it to 20. This value should be adjusted according to your case.
+    $TargetDedicated = max(0,min($TargetVMs,20));
+    // optionally, set vm Deallocation mode - shrink VM after task is done.
+    $TVMDeallocationOption = taskcompletion;
+    
+
 ## 后续步骤
 
 1.	你可能需要访问计算节点才能完全评估应用程序的效率。若要利用远程访问，必须将一个用户帐户添加到你要访问的计算节点，并且必须从该节点检索 RDP 文件。通过以下方法之一添加用户帐户：
 
 	- [New-AzureBatchVMUser](https://msdn.microsoft.com/zh-cn/library/mt149846.aspx) – 此 cmdlet 使用池名称、计算节点名称、帐户名和密码作为参数。
-	- [IVM.CreateUser Method](https://msdn.microsoft.com/zh-cn/library/microsoft.azure.batch.ivm.createuser.aspx) – 此 .NET 方法创建 [IUser 接口](https://msdn.microsoft.com/zh-cn/library/microsoft.azure.batch.iuser.aspx)的实例，可在该实例上设置计算节点的帐户名和密码。
+	- [IVM.CreateUser 方法](https://msdn.microsoft.com/zh-cn/library/microsoft.azure.batch.ivm.createuser.aspx) – 此 .NET 方法创建 [IUser 接口](https://msdn.microsoft.com/zh-cn/library/microsoft.azure.batch.iuser.aspx)的实例，可在该实例上设置计算节点的帐户名和密码。
 	- [将用户帐户添加到节点](https://msdn.microsoft.com/zh-cn/library/dn820137.aspx) – 池和计算节点的名称在 URI 中指定，帐户名和密码将发送到此 REST API 的请求正文中的节点。
 
 		获取 RDP 文件：
@@ -473,4 +505,4 @@ DoubleVecList 值在计算之前将转换为单个 doubleVec。例如，如果 v
 	- [Get-AzureBatchRDPFile](https://msdn.microsoft.com/zh-cn/library/mt149851.aspx) – 此 cmdlet 从指定的计算节点获取 RDP 文件，并将其保存到指定的文件位置或流。
 2.	某些应用程序会生成大量难以处理的数据。解决此问题的方法之一是进行[有效的列表查询](/documentation/articles/batch-efficient-list-queries)。
 
-<!---HONumber=66-->
+<!---HONumber=69-->

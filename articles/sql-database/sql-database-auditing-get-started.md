@@ -8,20 +8,22 @@
 	editor=""/>
 
 <tags 
-	ms.service="sql-database" ms.date="02/23/2015" wacn.date=""/>
+	ms.service="sql-database" 
+	ms.date="06/01/2015" 
+	wacn.date=""/>
  
 # SQL Database 审核入门 
-Azure SQL Database 审核可以跟踪数据库事件，并将审核的事件写入 Azure 存储帐户中的审核日志。一般而言，可以在基本、标准和高级服务层中使用审核功能。
+<p>Azure SQL 数据库审核可以跟踪数据库事件，并将审核的事件写入 Azure 存储帐户中的审核日志。一般而言，可以在基本、标准和高级服务层中使用审核功能。
 
 审核可帮助你一直保持遵从法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
-审核工具有助于遵从法规标准，但不能保证遵从法规。有关可帮助你遵从标准的 Azure 计划的详细信息，请参阅 <a href="http://www.windowsazure.cn/zh-cn/support/trust-center/compliance/" target="_blank">Azure 信任中心</a>。
+审核工具有助于遵从法规标准，但不能保证遵从法规。有关可帮助你遵从标准的 Azure 计划的详细信息，请参阅 <a href="/support/trust-center/compliance/" target="_blank">Azure 信任中心</a>。
 
 + [Azure SQL Database 审核基础知识] 
 + [为数据库设置审核]
 + [分析审核日志和报告]
 
-##<a id="subheading-1"></a>Azure SQL 数据库审核基本信息
+## <a id="subheading-1"></a>Azure SQL 数据库审核基础知识
 
 以下各节介绍如何使用 Azure 预览门户配置审核。你也可以[使用经典 Azure 门户为数据库设置审核]。
 
@@ -53,14 +55,14 @@ SQL 数据库审核可让你：
 在设置审核之前，请检查是否正在使用[“下层客户端”](/documentation/articles/sql-database-auditing-and-dynamic-data-masking-downlevel-clients)。
 
 
-##<a id="subheading-2"></a>为数据库设置审核
+## <a id="subheading-2"></a>为数据库设置审核
 
-1. 启动 <a href="https://manage.windowsazure.cn" target="_blank">Azure 预览门户</a> (https://manage.windowsazure.cn)。或者，你也可以启动<a href= "https://manage.windowsazure.cn/" target="_bank">经典 Azure 门户</a> (https://manage.windowsazure.cn/)。请参考以下详细信息。
+1. 启动 <a href="https://manage.windowsazure.cn" target="_blank">Azure 门户</a> (https://manage.windowsazure.cn )。 请参考以下详细信息。
 2. 导航到你要审核的 SQL 数据库/SQL Server 的配置边栏选项卡。单击顶部的“设置”按钮，然后在“设置”边栏选项卡中选择“审核”。
 
 	![][1]
 
-3. 在审核配置边栏选项卡中，选择“存储详细信息”以打开“审核日志存储”边栏选项卡。选择要用于保存日志的 Azure 存储帐户以及保持期。**提示：**为所有审核的数据库使用相同的存储空间帐户，以便充分利用预配置的报告模板。
+3. 在审核配置边栏选项卡中，选择“存储详细信息”以打开“审核日志存储”边栏选项卡。选择要用于保存日志的 Azure 存储帐户以及保持期。**提示：**为所有审核的数据库使用相同的存储帐户，以便充分利用预配置的报告模板。
 
 	![][2]
 
@@ -76,7 +78,7 @@ SQL 数据库审核可让你：
 
 
 
-##<a id="subheading-3">分析审核日志和报告</a>
+## <a id="subheading-3">分析审核日志和报告</a>
 
 审核日志将在设置期间选择的 Azure 存储帐户中前缀为 **SQLDBAuditLogs** 的一系列存储表内进行聚合。你可以使用工具（比如 <a href="http://azurestorageexplorer.codeplex.com/" target="_blank">Azure 存储资源管理器</a>）查看日志文件。
 
@@ -89,34 +91,37 @@ SQL 数据库审核可让你：
 ![][6]
 
 
-##<a id="subheading-4"></a>使用经典 Azure 门户为数据库设置审核
+## <a id="subheading-4"></a>使用经典 Azure 门户为数据库设置审核
 
-1. 启动<a href= "https://manage.windowsazure.cn/" target="_bank">经典 Azure 门户</a> (https://manage.windowsazure.cn/)。 
-2.   单击要审核的 SQL 数据库/SQL Server，然后单击“审核和安全”选项卡。 
+1. 启动<a href= "https://manage.windowsazure.cn/" target="_bank">经典 Azure 门户</a> (https://manage.windowsazure.cn/ )。 
+ 
+2.   单击要审核的 SQL 数据库/SQL Server，然后单击“审核和安全性”选项卡。
+
 3.   如果要为 SQL 数据库配置审核，请在“已启用安全的访问”中选择“必需”。如果要为 SQL Server 配置审核，有两个选项可供选择：(a) 在步骤 7 之后，导航到服务器上的每个 SQL 数据库，并应用此步骤，或者 (2) [修改连接字符串中的服务器 FDQN](/documentation/articles/sql-database-auditing-and-dynamic-data-masking-downlevel-clients)。
+
 4. 在审核部分中，单击“已启用”。
 
-![][7]
+
+	![][7]
 
 5. 根据需要编辑“按事件记录日志”。
 
-![][8]
+	![][8]
 
-6. 选择“存储帐户”并配置“保持期”。![][11]
+6. 选择“存储帐户”并配置“保持期”。
+
+	![][11]
+
 7. 单击“保存”。
 
 
 
-##<a id="subheading-3">生产环境中的用法实践</a>
+
+## <a id="subheading-3">生产环境中的用法实践</a>
 本部分中的说明与以上屏幕截图相关。可以使用 <a href="https://manage.windowsazure.cn" target="_blank">Azure 预览门户</a>或<a href= "https://manage.windowsazure.cn/" target="_bank">经典 Azure 门户</a>。
  
 
-
-
-
-
-
-##<a id="subheading-4"></a>重新生成存储密钥
+## <a id="subheading-4"></a>重新生成存储密钥
 
 在生产环境中，你可能会定期刷新存储密钥。刷新密钥时，你需要重新保存策略。过程如下：
 
@@ -128,7 +133,7 @@ SQL 数据库审核可让你：
 
 4. 返回存储 UI 并**重新生成***辅助访问密钥*（为下一个密钥刷新周期做好准备）。
   
-##<a id="subheading-4"></a>自动化
+## <a id="subheading-4"></a>自动化
 可以使用多个 PowerShell cmdlet 来配置 Azure SQL Database 中的审核。若要访问审核 cmdlet，你必须以 Azure 资源管理器模式运行 PowerShell。
 
 > [AZURE.NOTE][Azure 资源管理器](https://msdn.microsoft.com/zh-cn/library/dn654592.aspx)模块目前以预览版提供。它可能未提供与 Azure 模块相同的管理功能。
@@ -166,8 +171,10 @@ SQL 数据库审核可让你：
 
 
 <!--Link references-->
-[Link 1 to another azure.microsoft.com documentation topic]: /documentation/articles/virtual-machines-windows-tutorial/
-[Link 2 to another azure.microsoft.com documentation topic]: /documentation/articles/web-sites-custom-domain-name/
-[Link 3 to another azure.microsoft.com documentation topic]: /documentation/articles/storage-whatis-account/
+[Link 1 to another azure.microsoft.com documentation topic]: /documentation/articles/virtual-machines-windows-tutorial
+[Link 2 to another azure.microsoft.com documentation topic]: /documentation/articles/web-sites-custom-domain-name
+[Link 3 to another azure.microsoft.com documentation topic]: /documentation/articles/storage-whatis-account
 
-<!---HONumber=67-->
+ 
+
+<!---HONumber=69-->

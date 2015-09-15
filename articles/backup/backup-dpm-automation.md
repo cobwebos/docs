@@ -1,35 +1,54 @@
 <properties
-	pageTitle="Azure 备份 - 使用 Azure PowerShell 部署和管理 DPM 的备份 | Microsoft Azure"
-	description="了解如何使用 Azure PowerShell 部署和管理 Data Protection Manager (DPM) 的 Azure 备份"
+	pageTitle="Azure 备份 - 使用 PowerShell 部署和管理 DPM 的备份 | Windows Azure"
+	description="了解如何使用 PowerShell 部署和管理 Data Protection Manager (DPM) 的 Azure 备份"
 	services="backup"
 	documentationCenter=""
-	authors="Jim-Parker"
+	authors="SamirMehta"
 	manager="jwhit"
 	editor=""/>
 
 <tags
-	ms.service="backup" ms.date="06/23/2015" wacn.date=""/>
+	ms.service="backup"
+	ms.date="08/18/2015"
+	wacn.date=""/>
 
 
-# 使用 Azure PowerShell 部署和管理 Data Protection Manager (DPM) 服务器的 Azure 备份
-本文说明如何使用 Azure PowerShell 在 DPM 服务器上设置 Azure 备份，以及管理备份和恢复。
+# 使用 PowerShell 部署和管理 Data Protection Manager (DPM) 服务器的 Azure 备份
+本文说明如何使用 PowerShell 在 DPM 服务器上设置 Azure 备份，以及管理备份和恢复。
 
-## 设置 Azure PowerShell 环境
-在可以使用 Azure PowerShell 管理 Data Protection Manager 的 Azure 备份之前，需要在 Azure PowerShell 中设置适当的环境。在 Azure PowerShell 会话开始时，请确保运行以下命令，以便导入正确的模块以及正确引用 DPM cmdlet：
+## 设置 PowerShell 环境
+在可以使用 PowerShell 管理 Data Protection Manager 的 Azure 备份之前，需要在 PowerShell 中设置适当的环境。在 PowerShell 会话开始时，请确保运行以下命令，以便导入正确的模块以及正确引用 DPM cmdlet：
 
 ```
-PS C:> & "C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin\DpmCliInitScript.ps1"
+PS C:\> & "C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin\DpmCliInitScript.ps1"
 
 Welcome to the DPM Management Shell!
 
-Full list of cmdlets: Get-Command Only DPM cmdlets: Get-DPMCommand Get general help: help Get help for a cmdlet: help <cmdlet-name> or <cmdlet-name> -? Get definition of a cmdlet: Get-Command <cmdlet-name> -Syntax Sample DPM scripts: Get-DPMSampleScript
+Full list of cmdlets: Get-Command
+Only DPM cmdlets: Get-DPMCommand
+Get general help: help
+Get help for a cmdlet: help <cmdlet-name> or <cmdlet-name> -?
+Get definition of a cmdlet: Get-Command <cmdlet-name> -Syntax
+Sample DPM scripts: Get-DPMSampleScript
 ```
 
 ## 设置和注册
-### 在 DPM 服务器上安装 Azure 备份代理
-在安装 Azure 备份代理之前，必须先将安装程序下载到 Windows Server 上。将安装程序保存到方便访问的位置，例如 *C:\Downloads\*。
 
-若要安装代理，请“在 DPM 服务器上”已提升权限的 Azure PowerShell 控制台中运行以下命令：
+### 创建备份保管库
+可以使用 **New-AzureBackupVault** cmdlet 创建新的备份保管库。备份保管库是一种 ARM 资源，因此需要将它放置在资源组中。在权限提升的 Azure PowerShell 控制台中运行以下命令：
+
+```
+PS C:\> New-AzureResourceGroup –Name “test-rg” –Region “China North”
+PS C:\> $backupvault = New-AzureBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “China North” –Storage GRS
+```
+
+可以使用 **Get-AzureBackupVault** cmdlet 获取给定订阅中所有备份保管库的列表。
+
+
+### 在 DPM 服务器上安装 Azure 备份代理
+在安装 Azure 备份代理之前，必须先将安装程序下载到 Windows Server 上。可以从 [Microsoft 下载中心](http://aka.ms/azurebackup_agent)或者备份保管库的“仪表板”页获取最新版本的安装程序。将安装程序保存到方便访问的位置，例如 *C:\\Downloads*。
+
+若要安装代理，请“在 DPM 服务器上”已提升权限的 PowerShell 控制台中运行以下命令：
 
 ```
 PS C:\> MARSAgentInstaller.exe /q
@@ -52,28 +71,28 @@ PS C:\> MARSAgentInstaller.exe /?
 
 | 选项 | 详细信息 | 默认 |
 | ---- | ----- | ----- |
-| /q | 静默安装 | - |
-| /p:"location" | Azure 备份代理的安装文件夹路径。| C:\Program Files\\Windows Azure Recovery Services Agent |
-| /s:"location" | Azure 备份代理的快取文件夹路径。| C:\Program Files\\Windows Azure Recovery Services Agent\\Scratch |
-| /m | 选择启用 Microsoft Update | - |
-| /nu | 安装完成后不要检查更新 | - |
-| /d | 卸载 Microsoft Azure 恢复服务代理 | - |
-| /ph | 代理主机地址 | - |
-| /po | 代理主机端口号 | - |
-| /pu | 代理主机用户名 | - |
-| /pw | 代理密码 | - |
+| /q | 静默安装 | - | | /p:"location" | Azure 备份代理的安装文件夹路径。| C:\\Program Files\\Windows Azure Recovery Services Agent | | /s:"location" | Azure 备份代理的快取文件夹路径。| C:\\Program Files\\Windows Azure Recovery Services Agent\\Scratch | | /m | 选择启用 Microsoft Update | - | | /nu | 安装完成后不要检查更新 | - | | /d | 卸载 Microsoft Azure 恢复服务代理 | - | | /ph | 代理主机地址 | - | | /po | 代理主机端口号 | - | | /pu | 代理主机用户名 | - | | /pw | 代理密码 | - |
 
 ### 注册到 Azure 备份服务
 在可注册 Azure 备份服务之前，需要确保符合[先决条件](/documentattion/articles/backup-azure-dpm-introduction)。你必须：
 
 - 具备有效的 Azure 订阅
-- 创建备份保管库
-- 下载保管库凭据并将其保存在方便的位置（例如 *C:\Downloads\*）。为方便起见，你也可以重命名保管库凭据。
+- 有一个备份保管库
 
-使用 [Start-DPMCloudRegistration](https://technet.microsoft.com/zh-cn/library/jj612787) cmdlet 即可向保管库注册计算机：
+若要下载保管库凭据，请在 Azure PowerShell 控制台中运行 **Get-AzureBackupVaultCredentials**，并将其存储在方便的位置，例如 *C:\\Downloads*。
 
 ```
-PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredentialsFilePath "C:\Downloads\REGISTER.VaultCredentials"
+PS C:\> $credspath = "C:"
+PS C:\> $credsfilename = Get-AzureBackupVaultCredentials -Vault $backupvault -TargetLocation $credspath
+PS C:\> $credsfilename
+f5303a0b-fae4-4cdb-b44d-0e4c032dde26_backuprg_backuprn_2015-08-11--06-22-35.VaultCredentials
+```
+
+使用 [Start-DPMCloudRegistration](https://technet.microsoft.com/library/jj612787) cmdlet 即可向保管库注册计算机：
+
+```
+PS C:\> $cred = $credspath + $credsfilename
+PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredentialsFilePath $cred
 ```
 
 这将使用指定的保管库凭据向 Windows Azure 保管库注册名为“TestingServer”的 DPM 服务器。
@@ -87,7 +106,7 @@ DPM 服务器在注册到 Azure 备份保管库后，将使用默认的订阅设
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-所有修改都会对此本地 Azure PowerShell 对象 ```$setting``` 进行，然后使用 [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/zh-cn/library/jj612791) cmdlet 将整个对象提交到 DPM 和 Azure 备份以进行保存。需要使用 ```–Commit``` 标志来确保持久保存所做的更改。除非已提交，否则 Azure 备份不会应用和使用这些设置。
+所有修改都会对此本地 PowerShell 对象 ```$setting``` 进行，然后使用 [Set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/zh-cn/library/jj612791) cmdlet 将整个对象提交到 DPM 和 Azure 备份以进行保存。需要使用 ```–Commit``` 标志来确保持久保存所做的更改。除非已提交，否则 Azure 备份不会应用和使用这些设置。
 
 ```
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -113,7 +132,7 @@ PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -Subscrip
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
 ```
 
-在上述示例中，过渡区域将在 Azure PowerShell 对象 ```$setting``` 中设置为 *C:\StagingArea*。请确保指定的文件夹已存在，否则订阅设置的最终提交将会失败。
+在上述示例中，过渡区域将在 PowerShell 对象 ```$setting``` 中设置为 *C:\\StagingArea*。请确保指定的文件夹已存在，否则订阅设置的最终提交将会失败。
 
 
 ### 加密设置
@@ -184,7 +203,7 @@ PS C:\> Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 将数据源添加到保护组后，下一步是使用 [Set-DPMProtectionType](https://technet.microsoft.com/zh-cn/library/hh881725) cmdlet 指定保护方法。在本示例中，将为本地磁盘和云备份设置保护组。
 
 ```
-PS C:\> Set-DPMProtectionType -ProtectionGroup $PG -ShortTerm Disk –LongTerm Online
+PS C:\> Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
 ```
 
 ### 设置保留范围
@@ -211,7 +230,7 @@ PS C:\> Set-DPMPolicyObjective –ProtectionGroup $MPG -OnlineRetentionRangeList
 如果你使用 ```Set-DPMPolicyObjective``` cmdlet 指定保护目标，DPM 会自动设置默认的备份计划。若要更改默认计划，请依序使用 [Get-DPMPolicySchedule](https://technet.microsoft.com/zh-cn/library/hh881749) cmdlet 和 [Set-DPMPolicySchedule](https://technet.microsoft.com/zh-cn/library/hh881723) cmdlet。
 
 ```
-PS C:\> $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTermOnline
+PS C:\> $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTerm Online
 PS C:\> Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[0] -TimesOfDay 02:00
 PS C:\> Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[1] -TimesOfDay 02:00 -DaysOfWeek Sa,Su –Interval 1
 PS C:\> Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[2] -TimesOfDay 02:00 -RelativeIntervals First,Third –DaysOfWeek Sa
@@ -243,10 +262,7 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 
 ## 查看备份点
-可以使用 [Get-DPMRecoveryPoint](https://technet.microsoft.com/zh-cn/library/hh881746) cmdlet 来获取数据源的所有恢复点列表。在此示例中，我们将：
-- 获取 DPM 服务器上要存储在数组 ```$PG``` 中的所有 PG 
-- 获取对应于 ```$PG[0]``` 的数据源
-- 获取数据源的所有恢复点。
+可以使用 [Get-DPMRecoveryPoint](https://technet.microsoft.com/zh-cn/library/hh881746) cmdlet 来获取数据源的所有恢复点列表。在此示例中，我们将：- 获取 DPM 服务器上要存储在数组 ```$PG``` 中的所有 PG - 获取对应于 ```$PG[0]``` 的数据源 - 获取数据源的所有恢复点。
 
 ```
 PS C:\> $PG = Get-DPMProtectionGroup –DPMServerName "TestingServer"
@@ -278,4 +294,4 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 ## 后续步骤
 有关适用于 DPM 的 Azure 备份的详细信息，请参阅 [Azure DPM 备份简介](/documentation/articles/backup-azure-dpm-introduction)
 
-<!---HONumber=67-->
+<!---HONumber=69-->

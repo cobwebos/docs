@@ -131,4 +131,4 @@ Azure 资源管理器通过 Azure PowerShell、适用于 Mac、Linux 和 Windows
 - [对服务主体进行身份验证](resource-group-authenticate-service-principal)
 - [使用 Azure 门户创建新的服务主体](resource-group-create-service-principal-portal)
 
-<!---HONumber=61-->
+<!---HONumber=69-->

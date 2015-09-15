@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="Azure 备份 - 恢复虚拟机"
+	pageTitle="Azure 备份 - 还原虚拟机 | Windows Azure"
 	description="了解如何恢复 Azure 虚拟机"
 	services="backup"
 	documentationCenter=""
@@ -10,8 +10,7 @@
 
 <tags
 	ms.service="backup"
-
-	ms.date="07/17/2015"
+	ms.date="08/11/2015"
 	wacn.date=""/>
 
 # 还原虚拟机
@@ -52,9 +51,9 @@
   - 指定虚拟机名称：在指定的云服务中，虚拟机名称应该是唯一的。如果你打算使用相同的名称替换现有的 VM，请先删除现有的 VM 和数据磁盘，然后从 Azure 备份还原数据。
   - 选择 VM 的云服务：这是创建 VM 的必要步骤。你可以选择使用现有的云服务，或创建新的云服务。
 
-        所选云服务名称应全局唯一。通常，云服务名称以 [cloudservice].cloudapp.net 的形式与面向公众的 URL 相关联。如果该名称已被使用，Azure 不会允许你创建新的云服务。如果你选择创建新的云服务，它将被提供与虚拟机相同的名称，在这种情况下，所选 VM 名称将具备足够的唯一性，可以应用于关联的云服务。
+        Whatever cloud service name is picked should be globally unique. Typically, the cloud service name gets associated with a public-facing URL in the form of [cloudservice].cloudapp.net. Azure will not allow you to create a new cloud service if the name has already been used. If you choose to create select create a new cloud service, it will be given the same name as the virtual machine – in which case the VM name picked should be unique enough to be applied to the associated cloud service.
 
-        我们仅显示未与还原实例详细信息中的任何地缘组关联的云服务和虚拟网络。[了解详细信息](https://msdn.microsoft.com/zh-cn/library/azure/jj156085.aspx)。
+        We only display cloud services and virtual networks that are not associated with any affinity groups in the restore instance details. [Learn More](/documentation/articles/virtual-networks-migrate-to-regional-vnet).
 
 2. 选择 VM 的存储帐户：这是创建 VM 的必要步骤。你可以选择与 Azure 备份保管库位于相同区域的现有存储帐户。不支持区域冗余或高级存储类型的存储帐户。
 
@@ -99,4 +98,4 @@
 ## 后续步骤
 - [管理虚拟机](/documentation/articles/backup-azure-manage-vms)
 
-<!---HONumber=66-->
+<!---HONumber=69-->

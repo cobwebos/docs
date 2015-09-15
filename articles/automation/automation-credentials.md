@@ -6,11 +6,9 @@
    authors="bwren"
    manager="stevenka"
    editor="tysonn" />
-<tags 
-   ms.service="automation"
+<tags  ms.service="自动化"
    
-   ms.date="05/21/2015"
-   wacn.date="" />
+   ms.date="08/18/2015" wacn.date="" />
 
 # Azure 自动化中的凭据资产
 
@@ -20,7 +18,7 @@
 
 ## Windows PowerShell cmdlet
 
-下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。可在自动化 Runbook 中使用的 [Azure PowerShell 模块](/documentation/articles//powershell-install-configure)已随附了这些 cmdlet。
+下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。可在自动化 Runbook 中使用的 [Azure PowerShell 模块](/documentation/articles/powershell-install-configure)已随附了这些 cmdlet。
 
 |Cmdlet|说明|
 |:---|:---|
@@ -70,7 +68,7 @@
 
 ## 在 Runbook 中使用 PowerShell 凭据
 
-在 Runbook 中使用 **Get-AutomationPSCredential** 活动检索凭据资产。此操作将返回“[PSCredential 对象](http://msdn.microsoft.com/zh-cn/library/system.management.automation.pscredential.aspx)”，您可将其用于需要 PSCredential 参数的活动或 cmdlet。还可以检索要单独使用的凭据对象的属性。该对象具有一个用于用户名和安全密码的属性，或者您可以使用 **GetNetworkCredential** 方法返回 [NetworkCredential](http://msdn.microsoft.com/zh-cn/library/system.net.networkcredential.aspx) 对象，该对象将提供该密码的不安全版本。
+在 Runbook 中使用 **Get-AutomationPSCredential** 活动检索凭据资产。此操作将返回“PSCredential 对象”，您可将其用于需要 PSCredential 参数的活动或 cmdlet。[](http://msdn.microsoft.com/zh-cn/library/system.management.automation.pscredential.aspx)还可以检索要单独使用的凭据对象的属性。该对象具有一个用于用户名和安全密码的属性，或者您可以使用 **GetNetworkCredential** 方法返回 [NetworkCredential](http://msdn.microsoft.com/zh-cn/library/system.net.networkcredential.aspx) 对象，该对象将提供该密码的不安全版本。
 
 ### 文本 Runbook 示例
 
@@ -89,7 +87,7 @@
 
 ![将凭据添加到画布](media/automation-credentials/credential-add-canvas.png)
 
-下图显示了在图形 Runbook 中使用凭据的示例。在这种情况下，它被该 Runbook 用来对 Azure 资源提供身份验证，在[配置对 Azure 资源的身份验证](#automation-configuring)中进行了描述。第一个活动检索有权访问 Azure 订阅的凭据。然后，**Add-AzureAccount** 活动使用此凭据对它之后的任何活动提供身份验证。此处是一个[管道链接](automation-graphical-authoring-intro#links-and-workflow)，因为 **Get-AutomationPSCredential** 要求是单个对象。
+下图显示了在图形 Runbook 中使用凭据的示例。在这种情况下，它被该 Runbook 用来对 Azure 资源提供身份验证，在[配置对 Azure 资源的身份验证](#automation-configuring)中进行了描述。第一个活动检索有权访问 Azure 订阅的凭据。然后，**Add-AzureAccount** 活动使用此凭据对它之后的任何活动提供身份验证。此处是一个[管道链接](/documentation/articles/automation-graphical-authoring-intro#links-and-workflow)，因为 **Get-AutomationPSCredential** 要求是单个对象。
 
 ![将凭据添加到画布](media/automation-credentials/get-credential.png)
 
@@ -100,4 +98,4 @@
 
  
 
-<!---HONumber=67-->
+<!---HONumber=69-->

@@ -6,17 +6,15 @@
    authors="bwren"
    manager="stevenka"
    editor="tysonn" />
-<tags
-   ms.service="automation"
+<tags  ms.service="自动化"
    
-   ms.date="05/21/2015"
-   wacn.date="" />
+   ms.date="08/18/2015" wacn.date="" />
 
 # Azure 自动化中的连接资产
 
 自动化连接资产包含从 Runbook 连接到外部服务或应用程序所需的信息。除 URL 和端口等连接信息外，还包括身份验证所需的信息，如用户名和密码。使用连接的值将用于连接一个特定应用程序的所有属性保留在一个资产中，而不是创建多个变量。用户可以从一个位置编辑连接的值，并且您可以在单个参数中将连接名称传递给 Runbook。可在 Runbook 中使用 **Get-AutomationConnection** 活动访问连接的属性。
 
-当创建连接时，必须指定*连接类型*。连接类型是定义了一组属性的模板。连接为其连接类型中定义的每个属性定义值。连接类型通过集成模块添加到 Azure 自动化或使用 [Azure 自动化 API](http://msdn.microsoft.com/zh-cn/library/azure/mt163818.aspx) 创建。在创建连接时，仅能使用安装到您的自动化帐户中的连接类型。
+当创建连接时，必须指定“连接类型”。连接类型是定义了一组属性的模板。连接为其连接类型中定义的每个属性定义值。连接类型通过集成模块添加到 Azure 自动化或使用 [Azure 自动化 API](http://msdn.microsoft.com/zh-cn/library/azure/mt163818.aspx) 创建。在创建连接时，仅能使用安装到您的自动化帐户中的连接类型。
 
 >[AZURE.NOTE]Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。此密钥由主证书加密，并存储在 Azure 自动化中。在存储安全资产之前，会先使用主证书来解密自动化帐户的密钥，然后使用该密钥来加密资产。
 
@@ -100,7 +98,7 @@
 
 ![](media/automation-connections/connection-add-canvas.png)
 
-下图显示了在图形 Runbook 中使用连接的示例。该示例与上面显示的从文本 runbook 中使用 Twilio 发送短信的示例为同一个示例。此示例将对使用连接对象向服务进行身份验证的 **Send-TwilioSMS** 活动使用 **UseConnectionObject** 参数集。此处使用了一个[管道链接](automation-graphical-authoring-intro#links-and-workflow)，因为预期的连接参数是单个对象。
+下图显示了在图形 Runbook 中使用连接的示例。该示例与上面显示的从文本 runbook 中使用 Twilio 发送短信的示例为同一个示例。此示例将对使用连接对象向服务进行身份验证的 **Send-TwilioSMS** 活动使用 **UseConnectionObject** 参数集。此处使用了一个[管道链接](/documentation/articles/automation-graphical-authoring-intro#links-and-workflow)，因为预期的连接参数是单个对象。
 
 将 PowerShell 表达式而不是常量值用作 **To** 参数中的值，是因为此参数要求一个字符串数组值类型，以便您可以将其发送到多个号码。PowerShell 表达式允许您提供单个值或一个数组。
 
@@ -114,7 +112,7 @@
 
 ## 相关文章
 
-- [图形创作中的链接](automation-graphical-authoring-intro#links-and-workflow)
+- [图形创作中的链接](/documentation/articles/automation-graphical-authoring-intro#links-and-workflow)
  
 
-<!---HONumber=67-->
+<!---HONumber=69-->

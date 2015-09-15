@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure 批处理 PowerShell cmdlet 入门 | Microsoft Azure"
+   pageTitle="Azure 批处理 PowerShell cmdlet 入门 | Windows Azure"
    description="介绍用于管理 Azure 批处理服务的 Azure PowerShell cmdlet"
    services="batch"
    documentationCenter=""
@@ -9,13 +9,13 @@
 
 <tags
    ms.service="batch"
-   ms.date="07/08/2015"
+   ms.date="08/07/2015"
    wacn.date=""/>
 
 # Azure 批处理 PowerShell cmdlet 入门
 本文将简要介绍可用于管理批处理帐户的 Azure PowerShell cmdlet，并提供有关批处理作业、任务的信息和其他详细信息。
 
-有关详细的 cmdlet 语法，请键入`get-help <Cmdlet_name>`，或参阅 [Azure 批处理 cmdlet 参考](https://msdn.microsoft.com/zh-cn/library/azure/mt125957.aspx)。
+有关详细的 cmdlet 语法，请键入 `get-help <Cmdlet_name>`，或参阅 [Azure 批处理 cmdlet 参考](https://msdn.microsoft.com/zh-cn/library/azure/mt125957.aspx)。
 
 ## 先决条件
 
@@ -49,7 +49,7 @@
 New-AzureResourceGroup –Name MyBatchResourceGroup –location "China North"
 ```
 
-然后，在资源组中创建新的批处理帐户，此时还应该为 <*account_name*> 指定帐户名，以及批处理服务可用的位置。帐户创建可能需要几分钟才能完成。例如：
+然后，在资源组中创建新的批处理帐户，此时还应该为 <*account\_name*> 指定帐户名，以及批处理服务可用的位置。帐户创建可能需要几分钟才能完成。例如：
 
 ```
 New-AzureBatchAccount –AccountName <account_name> –Location "China North" –ResourceGroupName MyBatchResourceGroup
@@ -108,24 +108,24 @@ Get-AzureBatchPool -BatchContext $context
 ```
 ### 使用 OData 筛选器
 
-你可以使用 **Filter** 参数提供一个 OData 筛选器，以便只查找所需的对象。例如，可以查找名称以“myPool”开头的所有池：
+你可以使用 **Filter** 参数提供一个 OData 筛选器，以便只查找所需的对象。例如，可以查找 ID 以“myPool”开头的所有池：
 
 ```
-$filter = "startswith(name,'myPool')"
+$filter = "startswith(id,'myPool')"
 Get-AzureBatchPool -Filter $filter -BatchContext $context
 ```
 
 此方法的灵活性不如在本地管道中使用“Where-Object”。但是，该查询将直接发送到批处理服务，因此所有筛选都在服务器端发生，这可以节省 Internet 带宽。
 
-### 使用 Name 参数
+### 使用 Id 参数
 
-OData 筛选器的替代方法是使用 **Name** 参数。若要查询名为“myPool”的特定池：
-
-``` 
-Get-AzureBatchWorkItem -Name "myWorkItem" -BatchContext $context 
+OData 筛选器的替代方法是使用 **Id** 参数。若要查询 ID 为“myPool”的特定池：
 
 ```
-**Name** 参数仅支持全名搜索，而不支持通配符或 OData 样式的筛选器。
+Get-AzureBatchPool -Id "myPool" -BatchContext $context
+
+```
+**Id** 参数仅支持全 ID 搜索，而不支持通配符或 OData 样式的筛选器。
 
 ### 使用管道
 
@@ -152,4 +152,4 @@ Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 * [Azure 批处理 cmdlet 参考](https://msdn.microsoft.com/zh-cn/library/azure/mt125957.aspx)
 * [高效的列表查询](/documentation/articles/batch-efficient-list-queries)
 
-<!---HONumber=66-->
+<!---HONumber=69-->

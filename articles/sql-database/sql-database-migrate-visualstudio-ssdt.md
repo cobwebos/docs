@@ -3,16 +3,14 @@
    description="Windows Azure SQL 数据库, 数据库迁移, 导入数据库, 导出数据库, 迁移向导" 
    services="sql-database" 
    documentationCenter="" 
-   authors="kaivalyah2015" 
+   authors="pehteh" 
    manager="jeffreyg" 
    editor="monicar"/>
 
-<tags 
+<tags
    ms.service="sql-database"
-  
-   ms.date="04/14/2015" 
-   wacn.date="" 
-   />
+   ms.date="07/17/2015"
+   wacn.date=""/>
 
 #就地更新数据库，然后部署到 Azure SQL 数据库
 
@@ -22,7 +20,9 @@
  
 由于此选项涉及在部署到 Azure 之前就地更新数据库的架构，所以强烈建议在数据库副本上执行此操作。可使用 Visual Studio 架构比较工具检查将在发布项目之前应用到数据库的整组更改。
 
-使用 SQL Azure 迁移向导 (SAMW) 是可选操作，但强烈建议使用。SAMW 将检测函数主体、存储过程和触发器内的兼容性问题，如果不进行此操作，则在部署前将无法检测到这些问题。如果需要仅有架构的部署，可将更新的架构从 Visual Studio 直接发布到 Azure SQL 数据库。
+使用 SQL Azure 迁移向导 (SAMW) 是可选操作，但强烈建议使用。SAMW 将检测函数主体、存储过程和触发器内的兼容性问题，如果不进行此操作，则在部署前将无法检测到这些问题。
+
+如果需要仅有架构的部署，可将更新的架构从 Visual Studio 直接发布到 Azure SQL 数据库。
 
 ## 迁移步骤
 
@@ -30,7 +30,7 @@
 
 ![替换文字](./media/sql-database-migrate-visualstudio-ssdt/02MigrateSSDT.png)
 
-2.	将导入设置配置为“仅导入应用程序范围对象”。取消选择导入引用的登录名、权限和数据库设置的选项。
+2.	将导入设置配置为“仅导入应用程序范围对象”。取消选中导入引用的登录名、权限和数据库设置的选项。
 
 ![替换文字](./media/sql-database-migrate-visualstudio-ssdt/03MigrateSSDT.png)
 
@@ -91,4 +91,4 @@
 
 ![替换文字](./media/sql-database-migrate-visualstudio-ssdt/13MigrateSSDT.png)
 
-<!---HONumber=67-->
+<!---HONumber=69-->

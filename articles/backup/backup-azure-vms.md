@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure 虚拟机备份 - 备份"
+	pageTitle="Azure 虚拟机备份 - 备份 | Windows Azure"
 	description="了解如何在注册后备份 Azure 虚拟机"
 	services="backup"
 	documentationCenter=""
@@ -9,8 +9,7 @@
 
 <tags
 	ms.service="backup"
-	
-	ms.date="07/06/2015"
+	ms.date="07/30/2015"
 	wacn.date=""/>
 
 
@@ -21,7 +20,7 @@
 
 ![备份 Azure 虚拟机的三个步骤](./media/backup-azure-vms/3-steps-for-backup.png)
 
-## 1.发现 Azure 虚拟机
+## 1\.发现 Azure 虚拟机
 发现过程将在 Azure 上查询订阅中的虚拟机列表和其他信息，例如云服务名称、区域等。
 
 > [AZURE.NOTE]始终应该先运行发现过程。这是为了确保识别任何已添加到订阅的新虚拟机。
@@ -31,18 +30,20 @@
 1. 导航到备份保管库（位于 Azure 门户的“恢复服务”下），然后单击“注册的项”选项卡。
 
 2. 在下拉菜单中选择工作负荷类型“Azure 虚拟机”，然后单击“选择”按钮。
-  ![选择工作负荷](./media/backup-azure-vms/discovery-select-workload.png)
 
-3. 单击页面底部的“发现”按钮。
-  ![发现按钮](./media/backup-azure-vms/discover-button-only.png)
+    ![选择工作负荷](./media/backup-azure-vms/discovery-select-workload.png)
+
+3. 单击页面底部的“发现”按钮。![发现按钮](./media/backup-azure-vms/discover-button-only.png)
 
 4. 发现过程可能会运行几分钟，同时将以表格显示虚拟机。发现过程运行时，屏幕底部会出现 toast 通知。
-  ![发现 VM](./media/backup-azure-vms/discovering-vms.png)
+
+    ![发现 VM](./media/backup-azure-vms/discovering-vms.png)
 
 5. 发现过程完成后，将出现 toast 通知。
-  ![discover-done](./media/backup-azure-vms/discovery-complete.png)
 
-##  2.注册 Azure 虚拟机
+    ![discover-done](./media/backup-azure-vms/discovery-complete.png)
+
+##  2\.注册 Azure 虚拟机
 必须先向 Azure 备份服务注册虚拟机才能保护该虚拟机。注册过程有两个主要目标：
 
 1. 将备份扩展外挂到虚拟机中的 VM 代理
@@ -53,13 +54,13 @@
 
 ### 注册虚拟机
 
-1. 导航到备份保管库（位于 Azure 门户的“恢复服务”下），单击“注册的项”选项卡
+1. 导航到备份保管库（位于 Azure 门户的“恢复服务”下），然后单击“注册的项”选项卡
 
 2. 在下拉菜单中选择工作负荷类型“Azure 虚拟机”，然后单击“选择”按钮。
-  ![选择工作负荷](./media/backup-azure-vms/discovery-select-workload.png)
 
-3. 单击页面底部的“注册”按钮。
-  ![注册按钮](./media/backup-azure-vms/register-button-only.png)
+    ![选择工作负荷](./media/backup-azure-vms/discovery-select-workload.png)
+
+3. 单击页面底部的“注册”按钮。![注册按钮](./media/backup-azure-vms/register-button-only.png)
 
 4. 在“注册项”弹出窗口中，选择你要注册的虚拟机。如果存在两个以上的同名虚拟机，请使用云服务来区别虚拟机。
 
@@ -68,21 +69,25 @@
     >[AZURE.NOTE]只显示未注册且与备份保管库位于相同区域的虚拟机。
 
 5. 为每一个应该注册的虚拟机创建一个作业。toast 通知将显示此活动的状态。单击“查看作业”转到“作业”页。
-  ![注册作业](./media/backup-azure-vms/register-create-job.png)
+
+    ![注册作业](./media/backup-azure-vms/register-create-job.png)
 
 6. 虚拟机还会出现在注册的项列表中，此外会显示注册操作的状态。
-  ![注册状态 1](./media/backup-azure-vms/register-status01.png)
+
+    ![注册状态 1](./media/backup-azure-vms/register-status01.png)
 
 7. 操作完成后，门户中的状态会改变以反映已注册状态。
-  ![注册状态 2](./media/backup-azure-vms/register-status02.png)
 
-## 3.保护：备份 Azure 虚拟机
+    ![注册状态 2](./media/backup-azure-vms/register-status02.png)
+
+## 3\.保护：备份 Azure 虚拟机
 此步骤包括设置虚拟机的备份和保留策略。若要保护虚拟机，请执行以下步骤：
 
 ### 备份 Azure 虚拟机
 1. 导航到备份保管库（位于 Azure 门户的“恢复服务”下），然后单击“注册的项”选项卡。
 2. 在下拉菜单中选择工作负荷类型“Azure 虚拟机”，然后单击“选择”按钮。
-  ![在门户中选择工作负荷](./media/backup-azure-vms/select-workload.png)
+
+    ![在门户中选择工作负荷](./media/backup-azure-vms/select-workload.png)
 
 3. 单击页面底部的“保护”按钮。
 
@@ -101,20 +106,24 @@
     每个备份策略可有多个关联的虚拟机。无论何时，虚拟机只能与一个策略关联。
 
 6. 为每个虚拟机创建一个作业，用于配置保护策略并将虚拟机关联到该策略。单击“作业”选项卡，并选择适当的筛选器来查看“配置保护”作业列表。
-  ![配置保护作业](./media/backup-azure-vms/protect-configureprotection.png)
+
+    ![配置保护作业](./media/backup-azure-vms/protect-configureprotection.png)
 
 7. 完成后，虚拟机将受到策略的保护。只有在等到计划的备份时间过后，初始备份才会完成。现在，虚拟机将会出现在“受保护的项”选项卡下，其“保护状态”为“受保护”（等待初始备份）。
     >[AZURE.NOTE]目前无法在配置保护之后立即开始初始备份。
 
 8. 到了计划的时间后，Azure 备份服务将为每个需要备份的虚拟机创建一个备份作业。单击“作业”选项卡查看“备份”作业列表。在执行备份操作的过程中，Azure 备份服务将向虚拟机中的备份扩展发出一条命令，以刷新所有写入并取得一致的快照。
-  ![备份进行中](./media/backup-azure-vms/protect-inprogress.png)
+
+    ![备份进行中](./media/backup-azure-vms/protect-inprogress.png)
 
 9. 完成后，“受保护的项”选项卡中的虚拟机“保护状态”将显示为“受保护”。
-  ![已使用恢复点备份虚拟机](./media/backup-azure-vms/protect-backedupvm.png)
+
+    ![已使用恢复点备份虚拟机](./media/backup-azure-vms/protect-backedupvm.png)
 
 ## 查看备份状态和详细信息
 虚拟机受保护后，“仪表板”页摘要中的虚拟机计数也会递增。此外，“仪表板”页还显示过去 24 小时内成功、失败和仍在进行的作业数目。单击任何一个类别可在“任务”页中深入查看该类别。
-  ![“仪表板”页中的备份状态](./media/backup-azure-vms/dashboard-protectedvms.png)
+
+![“仪表板”页中的备份状态](./media/backup-azure-vms/dashboard-protectedvms.png)
 
 ## 排查错误
 你可以参考下表中所列的信息，排查使用 Azure 备份时遇到的错误。
@@ -193,4 +202,4 @@
 - [恢复虚拟机](/documentation/articles/backup-azure-restore-vms)
 - [管理虚拟机](/documentation/articles/backup-azure-manage-vms)
 
-<!---HONumber=66-->
+<!---HONumber=69-->
