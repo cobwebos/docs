@@ -1,6 +1,18 @@
-<properties pageTitle="如何使用 Azure 资源管理器自动执行" description="获取有关如何使用 Azure 资源管理器自动执行虚拟机的主题的链接。" services="virtual-machines" documentationCenter="" authors="JoeDavies-MSFT" manager="timlt" editor=""/>
+<properties
+	pageTitle="如何使用 Azure 资源管理器自动执行"
+	description="获取相关主题的链接，了解如何使用资源管理器自动化 Azure 虚拟机的创建和管理过程。"
+	services="virtual-machines"
+	documentationCenter=""
+	authors="davidmu1"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
-<tags ms.service="virtual-machines" ms.date="05/13/2015" wacn.date=""/>
+<tags
+	ms.service="virtual-machines"
+	ms.date="07/09/2015"
+	wacn.date=""/>
+
 
 # 如何使用 Azure 资源管理器自动执行
 
@@ -12,7 +24,7 @@ Azure 资源管理器可简化在 Azure 基础结构服务上运行的复杂应�
 
 [Azure 快速入门模板](http://go.microsoft.com/fwlink/p/?linkid=536445&clcid=0x409)
 
-[使用模板的应用程序框架](virtual-machines-app-frameworks)
+[使用模板的应用程序框架](/documentation/articles/virtual-machines-app-frameworks)
 
 [使用 Azure 资源管理器模板和 Azure CLI 部署和管理虚拟机](/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli)
 
@@ -22,7 +34,7 @@ Azure 资源管理器可简化在 Azure 基础结构服务上运行的复杂应�
 
 [Azure 快速入门模板](http://azure.microsoft.com/documentation/templates/)
 
-[Azure 资源管理器中的 Azure 计算、网络和存储提供程序](virtual-machines-azurerm-versus-azuresm)
+[Azure 资源管理器中的 Azure 计算、网络和存储提供程序](/documentation/articles/virtual-machines-azurerm-versus-azuresm)
 
 
 ## 联网
@@ -43,7 +55,7 @@ Azure 资源管理器可简化在 Azure 基础结构服务上运行的复杂应�
 
 ## 使用 .NET 自动执行
 
-[使用 .NET 库部署 Azure 资源](virtual-machines-arm-deployment)
+[使用 .NET 库部署 Azure 资源](/documentation/articles/virtual-machines-arm-deployment)
    
 ## 使用 Azure Automation 自动执行
 
@@ -53,6 +65,6 @@ Azure 资源管理器可简化在 Azure 基础结构服务上运行的复杂应�
 
 ## 其他资源
 
-[虚拟机文档](http://www.windowsazure.cn/documentation/services/virtual-machines/)
+[虚拟机文档](/documentation/services/virtual-machines)
 
-<!---HONumber=67-->
+<!---HONumber=70-->
