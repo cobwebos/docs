@@ -1,5 +1,5 @@
 <properties 
-pageTitle="为云服务中的角色实例启用通信 | Windows Azure" 
+pageTitle="为云服务中的角色实例启用通信 | Microsoft Azure" 
 description="" 
 services="cloud-services" 
 documentationCenter="" 
@@ -355,4 +355,4 @@ namespace WorkerRole1
 ## 后续步骤
 阅读有关云服务[模型](/documentation/articles/cloud-services-model-and-package)的详细信息。
 
-<!---HONumber=69-->
+<!---HONumber=71-->

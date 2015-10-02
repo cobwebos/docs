@@ -3,13 +3,13 @@
 	description="用于管理 Azure App Service 中 Web 应用的资源链接。" 
 	services="app-service\web" 
 	documentationCenter="" 
-	authors="MikeWasson" 
+	authors="erikre" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
 	ms.service="app-service-web" 
-	ms.date="04/23/2015" 
+	ms.date="07/31/2015" 
 	wacn.date=""/>
 
 # 管理 Azure App Service 中的 Web 应用
@@ -18,11 +18,7 @@
 
 在整个 Web 应用使用期内，您将执行各种管理任务，从初始部署到正常操作、维护与更新。
 
-- [将站点部署为生产环境之前]
-- [网站运行期间]
-- [更新网站时]
-
-许多网站管理任务都可在 Azure 门户中执行。更多详细信息，请参阅[通过 Azure 管理门户管理网站](/documentation/articles/web-sites-manage)。
+许多 Web 应用管理任务都可在 Azure 门户中执行。
 
 ## 将 Web 应用部署到生产之前
 
@@ -97,10 +93,10 @@
 <!-- Anchors. -->
 
 
-[将站点部署为生产环境之前]: #before-you-deploy-your-site-to-production
-[网站运行期间]: #while-your-website-is-running
-[更新网站时]: #when-you-update-your-website
+[Before you deploy your site to production]: #before-you-deploy-your-site-to-production
+[While your website is running]: #while-your-website-is-running
+[When you update your website]: #when-you-update-your-website
 
   
 
-<!---HONumber=67-->
+<!---HONumber=71-->

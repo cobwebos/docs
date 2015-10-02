@@ -102,4 +102,4 @@ Azure 预览门户不会像当前 Azure 门户一样将资源链接在一起。�
 
 [Azure 门户]: https://manage.windowsazure.cn
 
-<!---HONumber=67-->
+<!---HONumber=71-->

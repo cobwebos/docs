@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="07/20/2015" 
+	ms.date="08/11/2015"  
 	wacn.date=""/>
 
 # Azure 媒体服务发行说明
@@ -549,4 +549,4 @@ Azure 媒体服务 .NET SDK 扩展是一组扩展方法和帮助器函数，可�
 [跨多个存储帐户管理媒体服务资产]: http://msdn.microsoft.com/zh-cn/library/azure/dn271889.aspx
 [处理媒体服务作业通知]: http://msdn.microsoft.com/zh-cn/library/azure/dn261241.aspx
 
-<!---HONumber=67-->
+<!---HONumber=71-->

@@ -1,6 +1,22 @@
-<properties title="How to create a MySQL Database in Azure" pageTitle="How to create a MySQL Database in Azure" metaKeywords="MySQL Azure" description="Learn how to use ClearDB to create a MySQL database in an Azure data center." documentationCenter="PHP" services="" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" videoId="" scriptId="" />
+<properties
+	pageTitle="如何在 Azure 中创建 MySQL 数据库"
+	description="了解如何使用 ClearDB 在 Azure 数据中心创建 MySQL 数据库。"
+	documentationCenter="php"
+	services=""
+	authors="rmcmurray"
+	manager="wpickett"
+	editor="jimbe"
+	tags="mysql"/>
 
-[WACOM.INCLUDE [create-mysql-db](../includes/create-mysql-db.md)]
+<tags
+	ms.service="multiple"
+	ms.date="06/03/2015"
+	wacn.date=""/>
 
-<https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql> 提供了示例，演示在 Azure 上 MySQL 如何与 PHP 配合使用。
+#如何在 Azure 中创建 MySQL 数据库
 
+[AZURE.INCLUDE [create-mysql-db](../includes/create-mysql-db.md)]
+
+演示如何在 Azure 上将 MySQL 与 PHP 配合使用的示例位于 <https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql>。
+
+<!---HONumber=71-->

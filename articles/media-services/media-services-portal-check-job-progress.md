@@ -9,12 +9,15 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="05/25/2015" 
+	ms.date="08/11/2015"
 	wacn.date=""/>
 
 #如何：检查作业进度
 
-本文是 [媒体服务点播视频工作流](/documentation/articles/media-services-video-on-demand-workflow)系列的一部分。
+> [AZURE.SELECTOR]
+- [Portal](media-services-portal-check-job-progress.md)
+- [.NET](media-services-check-job-progress.md)
+- [REST](media-services-rest-check-job-progress.md)
 
 ##使用门户检查作业状态
 
@@ -33,4 +36,4 @@
 [checkstatus]: ./media/media-services-portal-check-job-progress/media-services-monitor-job-progress.png
  
 
-<!---HONumber=67-->
+<!---HONumber=71-->

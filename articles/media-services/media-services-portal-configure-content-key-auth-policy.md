@@ -9,15 +9,13 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="05/24/2015" 
+	ms.date="08/11/2015"
 	wacn.date=""/>
 
 
 
 #配置内容密钥授权策略 
 [AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../includes/media-services-selector-content-key-auth-policy.md)]
-
-本文是[媒体服务点播视频工作流](/documentation/articles/media-services-video-on-demand-workflow)和[媒体服务实时传送视频流工作流](/documentation/articles/media-services-live-streaming-workflow)系列的一部分。
 
 
 ##概述
@@ -89,4 +87,4 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
 
-<!---HONumber=67-->
+<!---HONumber=71-->

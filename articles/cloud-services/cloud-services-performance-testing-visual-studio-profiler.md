@@ -190,4 +190,4 @@ Visual Studio 探查器不支持在模拟器中检测 Azure 二进制文件，�
 [16]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally012.png
 [17]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
 
-<!---HONumber=69-->
+<!---HONumber=71-->

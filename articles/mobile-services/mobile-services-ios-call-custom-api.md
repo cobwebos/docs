@@ -13,19 +13,19 @@
 	ms.date="06/04/2015"
 	wacn.date=""/>
 
-#  如何从 iOS 客户端调用自定义 API（JavaScript 后端）
+# 如何从 iOS 客户端调用自定义 API（JavaScript 后端）
 
 [AZURE.INCLUDE [mobile-services-selector-call-custom-api](../includes/mobile-services-selector-call-custom-api.md)]
 
 本主题说明如何从 iOS 应用程序调用自定义 API。自定义 API 可让你定义具有服务器功能的自定义终结点，但此功能不会映射到插入、更新、删除或读取操作。使用自定义 API 能够以更大的力度控制消息，包括 HTTP 标头和正文格式。
 
-##  <a name="define-custom-api"></a>定义自定义 API
+## <a name="define-custom-api"></a>定义自定义 API
 
 [AZURE.INCLUDE [mobile-services-create-custom-api](../includes/mobile-services-create-custom-api.md)]
 
 [AZURE.INCLUDE [mobile-services-ios-call-custom-api](../includes/mobile-services-ios-call-custom-api.md)]
 
-##  后续步骤
+## 后续步骤
 
 本主题说明了如何使用 **invokeApi** 方法从 iOS 应用程序调用一个相当简单的自定义 API。若要了解有关使用 **invokeApi** 方法的详细信息，请参阅文章 [Azure 移动服务中的自定义 API](http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx)。
 
@@ -43,14 +43,14 @@
 
 <!-- URLs. -->
 [Windows Push Notifications & Live Connect]: http://go.microsoft.com/fwlink/?LinkID=257677
-[移动服务服务器脚本参考]: /documentation/articles/mobile-services-how-to-use-server-scripts/
+[移动服务服务器脚本参考]: /documentation/articles/mobile-services-how-to-use-server-scripts
 [My Apps dashboard]: http://go.microsoft.com/fwlink/?LinkId=262039
-[Get started with Mobile Services]: /documentation/articles/mobile-services-ios-get-started/
-[Get started with data]: /documentation/articles/mobile-services-ios-get-started-data/
-[Get started with authentication]: /documentation/articles/mobile-services-ios-get-started-users/
-[Get started with push notifications]: /documentation/articles/mobile-services-ios-get-started-push/
-[Get started with push notifications]: mobile-services-ios-get-started-push
+[Get started with Mobile Services]: /documentation/articles/mobile-services-ios-get-started
+[Get started with data]: /documentation/articles/mobile-services-ios-get-started-data
+[Get started with authentication]: /documentation/articles/mobile-services-ios-get-started-users
+[Get started with push notifications]: /documentation/articles/mobile-services-ios-get-started-push
+[Get started with push notifications]: /documentation/articles/mobile-services-ios-get-started-push
 [在源代码管理中存储服务器脚本]: /documentation/articles/mobile-services-store-scripts-source-control
  
 
-<!---HONumber=HO63-->
+<!---HONumber=71-->

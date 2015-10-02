@@ -93,7 +93,7 @@ ASR 中的每个操作都被审核，可在“作业”选项卡下面跟踪。�
 
 ![排查本地 Hyper-V 问题](./media/site-recovery-monitoring-and-troubleshooting/image12.png)
 
-在本例中，*复制运行状况*指示为“关键”– 请使用*查看复制运行状况*查看详细信息。
+在本例中，“复制运行状况”指示为“关键”– 请使用“查看复制运行状况”查看详细信息。
 
 ![排查本地 Hyper-V 问题](./media/site-recovery-monitoring-and-troubleshooting/image13.png)
 
@@ -226,4 +226,4 @@ SDP 工具将在本地收集日志文件，您也可以在“%LocalAppData%\\Ele
 
 -   [PS/CS 作为虚拟机托管所在的 ESXi 主机发生故障，出现死机紫屏。](http://social.technet.microsoft.com/wiki/contents/articles/31107.vmware-esxi-host-experiences-a-purple-screen-of-death.aspx)
 
-<!---HONumber=67-->
+<!---HONumber=71-->

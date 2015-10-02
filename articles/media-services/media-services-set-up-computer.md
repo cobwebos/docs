@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="07/07/2015"
+	ms.date="08/11/2015" 
 	wacn.date=""/>
 
 #设置你的环境
@@ -38,4 +38,4 @@
 [AZURE.INCLUDE [media-services-selector-connect](../includes/media-services-selector-connect.md)]
  
 
-<!---HONumber=67-->
+<!---HONumber=71-->

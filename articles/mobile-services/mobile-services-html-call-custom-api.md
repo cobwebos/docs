@@ -12,7 +12,7 @@
 	ms.date="06/04/2015" 
 	wacn.date=""/>
 
-#  从 HTML 应用程序调用自定义 API
+# 从 HTML 应用程序调用自定义 API
 
 [AZURE.INCLUDE [mobile-services-selector-call-custom-api](../includes/mobile-services-selector-call-custom-api.md)]
 
@@ -22,11 +22,11 @@
 
 本教程基于移动服务快速入门。在开始本教程之前，必须先完成[移动服务入门]或[将移动服务添加到现有应用程序]。
 
-##  <a name="define-custom-api"></a>定义自定义 API
+## <a name="define-custom-api"></a>定义自定义 API
 
 [AZURE.INCLUDE [mobile-services-create-custom-api](../includes/mobile-services-create-custom-api.md)]
 
-## <a name="update-app"></a>更新应用程序以调用自定义 API
+##<a name="update-app"></a>更新应用程序以调用自定义 API
 
 1. 使用文本编辑器打开 index.html 文件，找到名为 `buttonRefresh` 的 **button** 元素，并紧接在该元素的后面添加以下新元素： 
 
@@ -56,7 +56,7 @@
 
 	此方法可处理新按钮的 **Click** 事件。**invokeApi** 方法在客户端上调用，该客户端向新的自定义 API 发送 POST 请求。与任何错误相同，自定义 API 返回的结果也显示在消息对话框中。
 
-##  <a name="test-app"></a>测试应用程序
+## <a name="test-app"></a>测试应用程序
 
 1. 刷新你的浏览器。
 
@@ -66,7 +66,7 @@
 
 4. 单击“完成全部”按钮。此时会显示一个消息框，指示标记为完成的多个项，并再次执行筛选查询，将所有项从列表中清除。
 
-##  后续步骤
+## 后续步骤
 
 本主题说明了如何使用 **invokeApi** 函数从 HTML/JavaScript 应用程序调用一个相当简单的自定义 API。若要了解有关使用 **invokeApi** 函数的详细信息，请参阅文章 [Azure 移动服务中的自定义 API](http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx)。
 
@@ -84,8 +84,8 @@
 
 <!-- URLs. -->
 [移动服务服务器脚本参考]: /zh-cn/documentation/articles/mobile-services-how-to-use-server-scripts/
-[移动服务入门]: mobile-services-html-get-started
-[将移动服务添加到现有应用程序]: mobile-services-html-get-started-data
-[在源代码管理中存储服务器脚本]: mobile-services-store-scripts-source-control
+[移动服务入门]: /documentation/articles/mobile-services-html-get-started
+[将移动服务添加到现有应用程序]: /documentation/articles/mobile-services-html-get-started-data
+[在源代码管理中存储服务器脚本]: /documentation/articles/mobile-services-store-scripts-source-control
 
-<!---HONumber=HO63-->
+<!---HONumber=71-->

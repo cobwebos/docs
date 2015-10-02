@@ -4,13 +4,12 @@
 	services="app-service\web" 
 	documentationCenter="" 
 	authors="apwestgarth" 
-	writer="cephalin" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
 	ms.service="app-service-web"  
-	ms.date="04/21/2015" 
+	ms.date="08/04/2015" 
 	wacn.date=""/>
 
 # 适用于企业的 Azure App Service Web Apps 产品白皮书 #
@@ -29,7 +28,7 @@ App Service Web Apps 是一款理想的平台，可用于托管外部和内部 W
 
 ## 问题定义 ##
 
-IT 环境正在快速变化，从在资本成本高、前置时间长的传统服务器上进行托管迁移到使用能够自动扩展以处理负载的按需式服务的托管。IT 部门不得不降低基础架构的成本和占地空间以及维护支出以减少资本支出，同时也在不断增加灵活性。较旧的基础架构平台（例如 Windows Server 2003）生命周期的即将结束正促使 IT 部门将云迁移作为一种避免新的长期资本成本的潜在方法。在过去，首席信息官为其他部门制定购买决策；但是慢慢地首席营销官和其他业务部门的负责人在如何花费其预算以及其投资有哪些回报方面发挥着更加积极的作用。企业日益需要其员工比以前任何时候都更具移动性，让员工能够远程工作，花费更多时间与客户在一起，满足客户轻松访问系统的需求。
+IT 环境正在快速变化，从在资本成本高、前置时间长的传统服务器上进行托管迁移到使用能够自动扩展以处理负载的按需式服务的托管。IT 部门不得不降低基础架构的成本和占地空间以及维护支出以减少资本支出，同时也在不断增加灵活性。较旧的基础架构平台（例如 Windows Server 2003）生命周期的结束正促使 IT 部门将云迁移作为一种避免新的长期资本成本的潜在方法。在过去，首席信息官为其他部门制定购买决策；但是慢慢地首席营销官和其他业务部门的负责人在如何花费其预算以及其投资有哪些回报方面发挥着更加积极的作用。企业日益需要其员工比以前任何时候都更具移动性，让员工能够远程工作，花费更多时间与客户在一起，满足客户轻松访问系统的需求。
 
 企业需要每天、每周、每月都进行变革。企业正在借助由第三方或内部提供的充满新特性的定期更新服务寻求即时全球扩展。用户的期望更高，许多人是在自己的私人生活中利用这些服务（例如 Office365）。他们希望在其工作生活中有权访问类似的、最新的、功能丰富的服务。为了满足这种需求，IT 部门必须致力于通过选择和集成第三方服务，仔细选择可以适应业务需求的平台，同时可靠地降低总体拥有成本，帮助企业满足这种需求。
 
@@ -106,21 +105,21 @@ Web Apps 现在在全球 17 个数据中心提供，且还在不断增长。有�
 -	基于 GAC 的程序集 – Web Apps 不允许将程序集部署到全局程序集缓存 (GAC) 中。因此，如果迁移的应用程序在本地利用此功能，请考虑将这些程序集移到该应用程序的 bin 文件夹。
 -	IIS5 兼容模式 – Web Apps 不支持 IIS5 兼容模式，因此每个 Web Apps 实例和父 Web Apps 实例下的所有 Web 应用程序均在单个应用程序池内相同的工作进程中运行。
 -	使用 COM 库 – Web Apps 不允许 COM 组件在平台上注册。因此如果该应用程序正在使用 COM 组件，就需要将这些在托管代码中进行重写并使用该应用程序进行部署。
--	ISAPI 筛选器 – Web Apps 可支持 ISAPI 筛选器。需要将它们部署为应用程序的一部分，并在 Web 应用程序的 web.config 文件中进行注册。有关详细信息，请参阅 [http://aka.ms/azurewebsitesxdt](/documentation/web-sites-transform-extend)。 
+-	ISAPI 筛选器 – Web Apps 可支持 ISAPI 筛选器。需要将它们部署为应用程序的一部分，并在 Web 应用程序的 web.config 文件中进行注册。有关详细信息，请参阅 [http://aka.ms/azurewebsitesxdt](/documentation/articles/web-sites-transform-extend)。 
 
 考虑完这些主题之后，您的 Web 应用程序已准备好支持云。如果一些主题没有完全被满足也不用担心，迁移工具将为迁移提供最佳支持。
 
-迁移流程中的后续步骤是创建 App Service Web 应用和 Azure SQL 数据库。有多个具有不同 CPU 内核数量和 RAM 数量的各种规模的 Web Apps 实例可供您根据 Web 应用程序需求选择。有关详细信息和定价，请参阅 [http://aka.ms/azurewebsitesskus](/home/features/web-site/#price)。同样，Microsoft Azure SQL Database 适用于所有业务需求，可提供各种服务层和性能级别来满足需求。更多信息可访问 [http://aka.ms/azuresqldbskus](/pricing/details/sql-database/)。创建完成后，应用程序被上传到 App Service Web Apps（通过 FTP 或 WebDeploy），然后再迁移到数据库。
+迁移流程中的后续步骤是创建 App Service Web 应用和 Azure SQL 数据库。有多个具有不同 CPU 内核数量和 RAM 数量的各种规模的 Web Apps 实例可供您根据 Web 应用程序需求选择。有关详细信息和定价，请参阅 [http://aka.ms/azurewebsitesskus](/home/features/web-site/#price)。同样，Microsoft Azure SQL 数据库适用于所有业务需求，可提供各种服务层和性能级别来满足需求。更多信息可访问 [http://aka.ms/azuresqldbskus](/pricing/details/sql-database/)。创建完成后，应用程序被上传到 App Service Web Apps（通过 FTP 或 WebDeploy），然后再迁移到数据库。
 
-<!--In this migration the solution uses Azure SQL Database but that is not the only database that is supported on Azure. Companies can also make use of MySQL, MongoDB, Azure DocumentDB and many more via add-ons which can be purchased at the [Azure Store](/marketplace/partner-program/). -->
+<!--In this migration the solution uses Azure SQL ??? but that is not the only database that is supported on Azure. Companies can also make use of MySQL, MongoDB, Azure DocumentDB and many more via add-ons which can be purchased at the [Azure Store](/marketplace/partner-program/). -->
 
 在创建 Azure SQL 数据库时，可使用多种方法从本地服务器中导入现有数据库，从生成现有数据库的脚本到使用[数据层应用程序导出和导入](http://aka.ms/dacpac)。
 
-创建一个新的 Azure SQL Database，使用 SQL Server Management Studio 连接到数据库，然后运行脚本构建数据库架构并用来自本地数据库的数据对其进行填充，此时开支应用程序数据库创建完成。
+创建一个新的 Azure SQL 数据库，使用 SQL Server Management Studio 连接到数据库，然后运行脚本构建数据库架构并用来自本地数据库的数据对其进行填充，此时开支应用程序数据库创建完成。
 
 迁移第一阶段中的最后一步需要将连接字符串更新到应用程序的数据库。这可以通过 Azure 门户来完成。对于每个 Web 应用，您可以修改应用程序的特定设置，包括被应用程序用来连接正在使用的任何数据库的任意连接字符串。
 
-### 使用 Azure SQL Database 的替代方法 ###
+### 使用 Azure SQL 数据库的替代方法 ###
 
 Azure 平台提供了一些替代方法，可以将 Azure SQL 数据库用作 Web 应用程序的主数据库，从而使不同的工作负荷（例如，使用 NoSQL 解决方案）或使该平台可以满足业务的数据需要。例如，业务可能会保存不得存储在场外或公用云环境中的数据，因此会通过查找来维护对其本地数据库的使用。
 
@@ -134,7 +133,7 @@ App Service Web Apps 提供两种连接到本地资源（如数据库）的方�
 
 随着企业的成长，其员工数量也会增长（通过收购或自然的有机增长），因此也必须对 web 应用程序进行扩展以满足这些新需求。事实上，现在经常可以看到同地协同团队和远程办公员工的快速扩展，例如在美国、欧洲和亚洲设有办事处的公司，以及在很多地区组建移动销售团队的公司。Web Apps 能够方便、自动处理弹性缩放比例的更改。
 
-App Service Web Apps 允许通过 Azure 门户将 Web 应用程序配置为可自动进行缩放，具体取决于两个矢量 – 计划时间或按 CPU 使用率。Web Apps 自动缩放提供了一种经济高效而又极其灵活的方式来满足所有业务应用程序（从诸如我们的支出报表系统之类的 Web 应用程序到市场营销网站）在使用上不断变化的要求，而这会在短时升级过程中带来流量的显著提高。有关使用 Web Apps 扩展 Web 应用程序的详细信息和指南，请参阅[如何扩展网站](/documentation/web-sites-scale)。
+App Service Web Apps 允许通过 Azure 门户将 Web 应用程序配置为可自动进行缩放，具体取决于两个矢量 – 计划时间或按 CPU 使用率。Web Apps 自动缩放提供了一种经济高效而又极其灵活的方式来满足所有业务应用程序（从诸如我们的支出报表系统之类的 Web 应用程序到市场营销网站）在使用上不断变化的要求，而这会在短时升级过程中带来流量的显著提高。有关使用 Web Apps 扩展 Web 应用程序的详细信息和指南，请参阅[如何扩展网站](/documentation/articles/web-sites-scale)。
 
 除了 Web Apps 的缩放灵活性之外，整个平台可以跨多个数据中心和地理区域根据 Web 应用程序及其资产的可能分布启用业务连续性和复原功能。
 
@@ -150,4 +149,4 @@ App Service Web Apps 提供了一款灵活、经济高效、响应迅速的解�
  
  
 
-<!---HONumber=67-->
+<!---HONumber=71-->

@@ -90,7 +90,7 @@ Azure 还为组织和软件供应商提供开发工具与服务，用于构建�
 
 Azure 提供一系列的计算、数据、网络和相关服务，你可将其用于大型计算解决方案和工作流。有关其中每项服务的深入指导，请参阅 Azure 服务文档。有关涉及批处理和 HPC 应用程序的一些常见方法，请参阅本文中的[解决方案应用方案](#solution-scenarios)。
 
->[AZURE.NOTE]新服务会定期导入 Azure 平台，可能适用于你的方案。建议仅将预览版服务用于测试或概念认证部署，而不要用于非生产任务负荷。如有疑问，请联系 [Azure 合作伙伴](https://pinpoint.microsoft.com/zh-CN/search?keyword=azure)或者向 *bigcompute@microsoft.com* 发送电子邮件。
+>[AZURE.NOTE]新服务会定期导入 Azure 平台，可能适用于你的方案。建议仅将预览版服务用于测试或概念认证部署，而不要用于非生产任务负荷。如有疑问，请联系 [Azure 合作伙伴](https://pinpoint.microsoft.com/zh-CN/search?keyword=azure)或者向 **bigcompute@microsoft.com* 发送电子邮件。
 
 ### 计算服务
 
@@ -110,7 +110,7 @@ Azure 中的计算服务是大计算解决方案的核心。下表是经常使�
 
 * [Blob、表和队列存储](/documentation/services/storage) - 分别管理大量非结构化数据、NoSQL 数据，以及有关工作流和通信的消息。例如，你可以为大型技术数据集或应用程序处理的输入图像或媒体文件使用 Blob 存储。可以在解决方案中使用队列以进行异步通信。有关这些存储解决方案的详细信息，请参阅 [Microsoft Azure 存储空间简介](/documentation/articles/storage-introduction)。
 
-* Azure 文件存储 - 在 Azure 中使用标准 SMB 通信协议（某些 HPC 群集解决方案需要这种协议）来共享公用文件和数据。
+* [Azure 文件存储](http://azure.microsoft.com/services/storage/files/) - 在 Azure 中使用标准 SMB 通信协议（某些 HPC 群集解决方案需要这种协议）来共享公用文件和数据。
 
 ### 数据和分析服务
 
@@ -118,7 +118,7 @@ Azure 中的计算服务是大计算解决方案的核心。下表是经常使�
 
 <!--* [Data Factory](/documentation/services/data-factory) - Builds data-driven workflows (pipelines) that join, aggregate, and transform data sourced from on-premises, cloud-based, and Internet data stores.-->
 
-* [SQL Database](/documentation/services/sql-databases) - 提供托管平台服务中 Microsoft SQL Server 关系数据库管理系统的主要功能。
+* [SQL 数据库](/documentation/services/sql-databases) - 提供托管平台服务中 Microsoft SQL Server 关系数据库管理系统的主要功能。
 
 * [HDInsight](/documentation/services/hdinsight) - 在云中部署和设置基于 Windows Server 或 Linux 的 Apache Hadoop 群集，用于管理、分析和报告具有高可靠性与可用性的大数据。
 
@@ -218,4 +218,4 @@ Azure 中的计算服务是大计算解决方案的核心。下表是经常使�
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
 
-<!---HONumber=66-->
+<!---HONumber=71-->

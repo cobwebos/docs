@@ -2,7 +2,7 @@
 <properties 
    pageTitle="Azure SDK for .NET 2.7 发行说明" 
    description="Azure SDK for .NET 2.7 发行说明" 
-   services="app-service/web" 
+   services="app-service\web" 
    documentationCenter=".net" 
    authors="Juliako" 
    manager="dwrede" 
@@ -10,7 +10,7 @@
 
 <tags
    ms.service="app-service"
-   ms.date="07/20/2015"
+   ms.date="08/09/2015"
    wacn.date=""/>
 
 
@@ -108,4 +108,6 @@ Azure 资源管理器工具已更新为使用基于角色的访问控制 (RBAC) 
 
 [Azure SDK 2.7 通告文章](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)
 
-<!---HONumber=66-->
+[Azure SDK for .NET 和 API 的支持和停用信息](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
+
+<!---HONumber=71-->

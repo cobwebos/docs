@@ -36,7 +36,7 @@ Azure 门户为你提供两种创建和部署云服务的方法：“快速创�
 
 - **服务包**：服务包 (.cspkg) 包含应用程序代码和配置以及服务定义文件。
 
-您可以通过[此处](/documentation/articles/cloud-services-model-and-package)了解有关这些内容以及如何创建包的详细信息。
+你可以通过[此处](/documentation/articles/cloud-services-model-and-package)了解有关这些内容以及如何创建包的详细信息。
 
 ## 准备应用程序
 在可以部署云服务之前，必须根据你的应用程序代码创建云服务包 (.cspkg)，并创建云服务配置文件 (.cscfg)。Azure SDK 提供了用于准备这些必需的部署文件的工具。你可以从 [Azure 下载](http://azure.microsoft.com/downloads/)页安装 SDK，并使用你选择用于开发应用程序代码的语言。
@@ -62,7 +62,7 @@ Azure 门户为你提供两种创建和部署云服务的方法：“快速创�
 
 ## 步骤 3：创建云服务并上载部署包
 
-1. 登录到 [Azure 门户][]。 
+1. 登录到 [Azure 门户](https://manage.windowsazure.cn)。 
 2. 单击“新建”，单击“计算”，然后向下滚动到并单击“云服务”。
 
     ![发布云服务](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
@@ -104,4 +104,4 @@ Azure 门户为你提供两种创建和部署云服务的方法：“快速创�
 [TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796&clcid=0x409
  
 
-<!---HONumber=67-->
+<!---HONumber=71-->

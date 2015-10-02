@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="移动分析入门 | 移动开发人员中心" 
+	pageTitle="移动分析入门 | Microsoft Azure" 
 	description="移动分析入门。" 
 	documentationCenter="ios" 
 	authors="mattchenderson" 
@@ -12,11 +12,9 @@
 	ms.date="06/03/2015" 
 	wacn.date=""/>
 
-#  移动分析入门 (Capptain)
+# 移动分析入门 (Capptain)
 
-<div class="dev-center-tutorial-selector sublanding">
-<a href="/documentation/articles/mobile-services-ios-get-started-mobile-analytics" title="iOS" class="current">iOS</a>
-</div>
+
 
 在本教程中，你将使用 [Capptain] 将移动分析功能添加到你的应用程序。使用移动分析，可以确定用户如何与你的应用程序进行交互以及哪些部分驱动大多数活动。若要开始获取这些数据，你将使用 Capptain SDK 来装备你的应用程序。
 
@@ -34,7 +32,7 @@
 * 一个 [Capptain] 帐户
 * 一个[移动服务标准层]应用程序
 
-##  <a name="initialize"></a>初始化 Capptain SDK
+## <a name="initialize"></a>初始化 Capptain SDK
 
 1. 导航到已在 Capptain 中注册的应用程序的“应用程序详细信息”页。选择 SDK 选项卡并下载程序包。
 
@@ -65,7 +63,7 @@
           [...]
         }
 
-##  <a name="instrument"></a>重载 UIViewController
+## <a name="instrument"></a>重载 UIViewController
 
 1. 在你的项目中找到 `UIViewController` 的每个子级并确保每个子级改为从 `CapptainViewController` 继承。
 
@@ -85,7 +83,7 @@
 
     你的应用程序现已配置为将分析数据发送到 Capptain。
 
-##  后续步骤
+## 后续步骤
 在 [http://www.capptain.com](http://www.capptain.com) 中了解有关 Capptain 可为应用程序带来哪些作用的详细信息
 
 <!-- Anchors. -->
@@ -97,4 +95,4 @@
 [Capptain]: http://www.capptain.com
 [移动服务标准层]: /home/features/mobile-services/#price
 
-<!---HONumber=HO63-->
+<!---HONumber=71-->

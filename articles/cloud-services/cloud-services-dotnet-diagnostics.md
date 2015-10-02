@@ -50,7 +50,7 @@ NET EventSource |使用 .NET 的代码生成的事件 <a href="http://msdn.micro
 
 本演练介绍如何实现使用 .NET EventSource 类发出遥测数据的 Azure 辅助角色。Azure Diagnostics 用于收集遥测数据，并将其存储在一个 Azure 存储帐户中。创建辅助角色时，Visual Studio 将在适用于 .NET 2.4 和更低版本的 Azure SDK 中，自动启用 Diagnostics 1.0 作为解决方案的一部分。以下说明介绍了创建辅助角色、从解决方案禁用 Diagnostics 1.0，以及在辅助角色中部署 Diagnostics 1.2 或 1.3 的过程。
 
-### 先决条件
+###先决条件
 本文假定你具有 Azure 订阅，并将 Visual Studio 2013 与 Azure SDK 结合使用。如果你没有 Azure 订阅，你可以注册[免费试用版][]。请确保[安装并配置 Azure PowerShell 0.8.7 或更高版本][]。
 
 ### 步骤 1：创建辅助角色
@@ -146,7 +146,7 @@ NET EventSource |使用 .NET 的代码生成的事件 <a href="http://msdn.micro
 ### 步骤 3：部署辅助角色
 1.	从 Visual Studio 中选择 **WadExample** 项目，然后从“生成”菜单中选择“发布”，以将辅助角色部署到 Azure。
 2.	选择你的订阅。
-3.	在“Windows Azure 发布设置”对话框中，选择“新建...”。
+3.	在“Microsoft Azure 发布设置”对话框中，选择“新建...”。
 4.	在“创建云服务和存储帐户”对话框中输入一个名称（例如“WadExample”），然后选择区域或地缘组。
 5.	将“环境”设置为“过渡”。
 6.	适当地修改任何其他设置，然后单击“发布”。
@@ -161,7 +161,7 @@ NET EventSource |使用 .NET 的代码生成的事件 <a href="http://msdn.micro
 
 	![CloudServices\_diag\_add\_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 
-3.	将 WadConfig.xsd 与配置文件相关联。确保 WadExample.xml 编辑器窗口是活动的窗口。按 **F4** 打开“属性”窗口。在“属性”窗口中单击“架构”属性。在“架构”属性中单击“...”。单击“添加...”按钮并导航到 XSD 文件的保存位置，然后选择文件 WadConfig.xsd。单击**“确定”**。
+3.	将 WadConfig.xsd 与配置文件相关联。确保 WadExample.xml 编辑器窗口是活动的窗口。按 **F4** 打开“属性”窗口。在“属性”窗口中单击“架构”属性。在“架构”属性中单击“...”。单击“添加...”按钮并导航到 XSD 文件的保存位置，然后选择文件 WadConfig.xsd。单击“确定”。
 4.	将 WadExample.xml 配置文件的内容替换为以下 XML 并保存该文件。此配置文件定义两个要收集的性能计数器：一个对应于 CPU 使用率，另一个对应于内存使用率。配置将定义对应于 SampleEventSourceWriter 类中方法的四个事件。
 
 ```
@@ -336,7 +336,7 @@ NET EventSource |使用 .NET 的代码生成的事件 <a href="http://msdn.micro
 ### 步骤 5：将 Diagnostics 远程安装到 Azure 虚拟机上
 用于在 VM 上管理 Diagnostics 的 PowerShell cmdlet 为：Set-AzureVMDiagnosticsExtension、Get-AzureVMDiagnosticsExtension 和 Remove-AzureVMDiagnosticsExtension。
 
-1.	在开发人员计算机上，打开 Windows Azure PowerShell。
+1.	在开发人员计算机上，打开 Microsoft Azure PowerShell。
 2.	执行脚本以在 VM 上远程安装 Diagnostics（将 *StorageAccountKey* 替换为 wadexamplevm 存储帐户的存储帐户密钥）：
 
 		$storage_name = "wadexamplevm"
@@ -507,4 +507,4 @@ EventSource|否|表|记录你的代码使用 .NET EventSource 类生成的事件
 [Get-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/zh-cn/library/dn495145.aspx
 [Remove-AzureServiceDiagnosticsExtension]: http://msdn.microsoft.com/zh-cn/library/dn495168.aspx
 
-<!---HONumber=69-->
+<!---HONumber=71-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="04/16/2015"
+	ms.date="08/11/2015" 
 	wacn.date=""/>
 
 
@@ -189,16 +189,9 @@
 
 
 
-##后续步骤
-
-了解有关生成实时传送视频流应用程序的详细信息[生成实时传送视频流应用程序](/documentation/articles/media-services-live-streaming-workflow)
-
-<!-- Anchors. -->
-
-
 <!-- URLs. -->
 [Management Portal]: http://manage.windowsazure.cn/
 
 <!-- Images -->
 
-<!---HONumber=67-->
+<!---HONumber=71-->

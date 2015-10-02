@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="06/16/2015" 
+	ms.date="08/11/2015"  
 	wacn.date=""/>
 
 
@@ -62,4 +62,4 @@ Media Services 限制机制会限制那些发出过多服务请求的应用程�
 1. 单击“提交”以创建该票证。
  
 
-<!---HONumber=67-->
+<!---HONumber=71-->

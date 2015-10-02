@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="05/27/2015" 
+	ms.date="08/11/2015" 
 	wacn.date=""/>
 
 
@@ -496,4 +496,4 @@
 
 [使用执行从单比特率到多比特率流的实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)
 
-<!---HONumber=67-->
+<!---HONumber=71-->

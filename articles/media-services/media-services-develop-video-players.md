@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="07/20/2015" 
+	ms.date="08/11/2015"
 	wacn.date=""/>
 
 
@@ -17,7 +17,7 @@
 
 ##概述
 
-Azure 媒体服务提供你所需的工具，以便你创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。本主题还提供了可用来开发自己的客户端应用程序（这些应用程序使用 Azure 媒体服务中的流媒体）的 SDK 和播放器框架的链接。
+Azure Media Services 提供你所需的工具，以便你创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。本主题还提供了可用来开发自己的客户端应用程序（这些应用程序使用 Azure 媒体服务中的流媒体）的 SDK 和播放器框架的链接。
 
 ##使用现有播放器播放内容
 
@@ -45,14 +45,14 @@ Microsoft Azure 媒体服务允许播放 DASH、平滑流式处理和 HLS 流格
 - [平滑流式处理客户端 SDK](http://www.iis.net/downloads/microsoft/smooth-streaming) 
 - [平滑流式处理 Windows 应用商店应用](/documentation/articles/media-services-build-smooth-streaming-apps)
 - [Microsoft 媒体平台：播放器框架](http://playerframework.codeplex.com/) 
-- [HTML5 播放器框架文档](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
+- [HTML5 Player Framework 文档](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 - [Microsoft Smooth Streaming Plugin for OSMF](https://www.microsoft.com/download/details.aspx?id=36057) 
 - [授权 Microsoft® 平滑流式处理客户端移植工具包](https://www.microsoft.com/mediaplatform/sspk.aspx) 
 - [XBOX 视频应用程序开发](http://xbox.create.msdn.com/) 
 
 ##广告
 
-Azure 媒体服务通过“Windows 媒体平台：播放器框架”提供广告插入支持。附带广告支持的播放器框架在 Windows 8、Silverlight、Windows Phone 8、和 iOS 设备上均可用。每个播放器框架包含演示如何实现播放器应用程序的示例代码。可以插入媒体中的广告有三种不同类型：
+Azure 媒体服务通过“Windows 媒体平台：播放器框架”提供广告插入支持。附带广告支持的播放器框架在 Windows 8、Silverlight、Windows Phone 8 和 iOS 设备上均可用。每个播放器框架包含演示如何实现播放器应用程序的示例代码。可以插入媒体中的广告有三种不同类型：
 
 线性 - 暂停主视频的全帧广告
 
@@ -71,4 +71,4 @@ Azure 媒体服务通过“Windows 媒体平台：播放器框架”提供广告
 [GitHub dash.js 存储库](https://github.com/Dash-Industry-Forum/dash.js)
  
 
-<!---HONumber=67-->
+<!---HONumber=71-->

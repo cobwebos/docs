@@ -27,7 +27,7 @@
 
 ## 步骤 1：暂存应用程序
 
-此任务包括如何使用 **Windows Azure PowerShell** 暂存应用程序。
+此任务包括如何使用 **Microsoft Azure PowerShell** 暂存应用程序。
 
 1.  在发布服务时，只需将 **-Slot** 参数传递给 **Publish-AzureServiceProject** cmdlet。
 
@@ -81,4 +81,4 @@
   [如何在 Azure 中通过交换 VIP 来将服务升级部署到生产]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ee517253.aspx
   [在 Azure 中管理部署概述]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh386336.aspx
 
-<!---HONumber=69-->
+<!---HONumber=71-->

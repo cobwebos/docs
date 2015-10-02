@@ -13,10 +13,7 @@
 	wacn.date=""/>
 
 
-#  使用移动服务和 Pusher 生成实时应用程序
-<div class="dev-center-tutorial-selector sublanding">
-	<a href="" title="iOS" class="current">iOS</a>
-</div>
+# 使用移动服务和 Pusher 生成实时应用程序
 
 本主题说明如何将实时功能添加到基于 Azure 移动服务的应用程序。完成本主题后，你的 TodoList 数据将在所有运行的应用程序实例之间实时同步。
 
@@ -33,15 +30,15 @@ Pusher 是一个基于云的服务，与移动服务一样，它可以让你无�
 
 本教程基于移动服务快速入门。在开始本教程之前，必须先[完成移动服务入门][]。
 
-##  <a name="sign-up"></a>创建新的 Pusher 帐户
+## <a name="sign-up"></a>创建新的 Pusher 帐户
 
 [AZURE.INCLUDE [pusher-sign-up](../includes/pusher-sign-up.md)]
 
-##  <a name="update-app"></a>更新应用程序
+## <a name="update-app"></a>更新应用程序
 
 设置 Pusher 帐户后，下一步就是修改 iOS 应用程序代码以使用新功能。
 
-### 安装 libPusher 库
+###安装 libPusher 库
 
 [libPusher][] 库可让你从 iOS 访问 Pusher。
 
@@ -72,15 +69,15 @@ Pusher 是一个基于云的服务，与移动服务一样，它可以让你无�
 	- Security.framework
 	- SystemConfiguration.framework
 
-9. 最后，在“生成设置”中，找到目标生成设置“其他链接器标志”，并添加 **all_load** 标志。
+9. 最后，在“生成设置”中，找到目标生成设置“其他链接器标志”，并添加 **all\_load** 标志。
 
 	![][add-linker-flag]
 
-	此时将显示针对“调试”生成目标设置的 **-all_load** 标志。
+	此时将显示针对“调试”生成目标设置的 **-all\_load** 标志。
 
 该库现已安装并可供使用。
 
-###  向应用程序添加代码
+### 向应用程序添加代码
 
 1. 在 Xcode 中，打开 **QSTodoService.h** 文件并添加以下方法声明：
 
@@ -236,7 +233,7 @@ Pusher 是一个基于云的服务，与移动服务一样，它可以让你无�
 		    }];
 		}
 
-11. 将 `**your_app_key**` 占位符替换为你前面从“连接信息”对话框中复制的 app_key 值。
+11. 将 `**your_app_key**` 占位符替换为你前面从“连接信息”对话框中复制的 app\_key 值。
 
 12. 将 **onAdd** 方法替换为以下代码：
 
@@ -268,7 +265,7 @@ Pusher 是一个基于云的服务，与移动服务一样，它可以让你无�
 
 
 
-## <a name="install-scripts"></a>安装服务器脚本
+##<a name="install-scripts"></a>安装服务器脚本
 
 
 
@@ -381,7 +378,7 @@ Pusher 是一个基于云的服务，与移动服务一样，它可以让你无�
 
 
 
-## <a name="test-app"></a>测试应用程序
+##<a name="test-app"></a>测试应用程序
 
 
 
@@ -405,7 +402,7 @@ Pusher 是一个基于云的服务，与移动服务一样，它可以让你无�
 
 祝贺你！你已成功配置了你的移动服务应用程序，现在它可以在所有客户端之间实时同步。
 
-##  <a name="nextsteps"></a>后续步骤
+## <a name="nextsteps"></a>后续步骤
 
 现在你已知道，将 Pusher 服务与移动服务结合使用是多么的容易。请点击以下链接了解有关 Pusher 的详细信息。
 
@@ -439,4 +436,4 @@ Pusher 是一个基于云的服务，与移动服务一样，它可以让你无�
 
 [移动服务服务器脚本参考]: /documentation/articles/mobile-services-how-to-use-server-scripts
 
-<!---HONumber=HO63-->
+<!---HONumber=71-->

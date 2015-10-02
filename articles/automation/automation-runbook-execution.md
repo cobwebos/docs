@@ -74,14 +74,14 @@ Runbook 仪表板显示单个 Runbook 的摘要。摘要图表显示在给定的
 
 ## 使用 Windows PowerShell 检索作业状态
 
-可以使用 [Get-AzureAutomationJob](http://msdn.microsoft.com/zh-cn/library/azure/dn690263.aspx) 检索为 Runbook 创建的作业和特定作业的详细信息。如果在 Windows PowerShell 中使用 [Start-AzureAutomationRunbook](http://msdn.microsoft.com/library/azure/dn690259.aspx) 启动了 Runbook，则会返回生成的作业。使用 [Get-AzureAutomationJobOutput](http://msdn.microsoft.com/library/azure/dn690263.aspx) 可以获取作业的输出。
+可以使用 [Get-AzureAutomationJob](http://msdn.microsoft.com/zh-cn/library/azure/dn690263.aspx) 检索为 Runbook 创建的作业和特定作业的详细信息。如果在 Windows PowerShell 中使用 [Start-AzureAutomationRunbook](http://msdn.microsoft.com/library/azure/dn690259.aspx) 启动了 Runbook，则会返回生成的作业。使用 [Get-AzureAutomationJob](http://msdn.microsoft.com/library/azure/dn690263.aspx)Output 可以获取作业的输出。
 
 以下示例命令将检索示例 Runbook 的最后一个作业，并显示其状态、为 Runbook 参数提供的值以及作业的输出。
 
-	$job = (Get-AzureAutomationJob –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" | sort LastModifiedDate –desc)[0]
+	$job = (Get-AzureAutomationJob 朅utomationAccountName "MyAutomationAccount" 朜ame "Test-Runbook" | sort LastModifiedDate 杁esc)[0]
 	$job.Status
 	$job.JobParameters
-	Get-AzureAutomationJobOutput –AutomationAccountName "MyAutomationAccount" -Id $job.Id –Stream Output
+	Get-AzureAutomationJobOutput 朅utomationAccountName "MyAutomationAccount" -Id $job.Id 朣tream Output
 
 ## 公平份额
 
@@ -99,4 +99,4 @@ Runbook 仪表板显示单个 Runbook 的摘要。摘要图表显示在给定的
 
 - [在 Azure Automation 中启动 Runbook](/documentation/articles/automation-starting-a-runbook)
 
-<!---HONumber=69-->
+<!---HONumber=71-->

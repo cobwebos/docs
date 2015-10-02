@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="适用于 Azure 来宾 OS 的更新列表 | Windows Azure" 
+   pageTitle="适用于 Azure 来宾 OS 的更新列表 | Microsoft Azure" 
    description="适用于 Azure 来宾 OS 版本的更新列表" 
    services="cloud-services" 
    documentationCenter="na" 
@@ -181,7 +181,7 @@
 
 [MS15-034]: https://technet.microsoft.com/zh-cn/library/security/MS15-034
 
-[3042553]: https://support.microsoft.com/zh-cn/kb/3042553/
+[3042553]: https://support.microsoft.com/zh-CN/zh-cn/kb/3042553/
 
 [3034682]: http://support.microsoft.com/zh-cn/kb/3034682
 [3036220]: http://support.microsoft.com/zh-cn/kb/3036220
@@ -261,4 +261,4 @@
 [family-explain]: /documentation/articles/cloud-services-guestos-update-matrix#guest-os-family-version-and-release-explanation
  
 
-<!---HONumber=69-->
+<!---HONumber=71-->

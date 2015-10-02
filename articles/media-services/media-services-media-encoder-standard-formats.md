@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="07/08/2015" 
+	ms.date="08/11/2015"
 	wacn.date=""/>
 
 #媒体编码器标准格式和编解码器
@@ -20,7 +20,7 @@
 
 [媒体编码器导入格式](#import_formats)
 
-[媒体编码器导出格式](#export_formats)
+[Media Encoder 导出格式](#export_formats)
 
 
 ##<a id="import_formats"></a>媒体编码器导入格式 
@@ -80,4 +80,4 @@
 
 [使用 Azure 媒体服务对按需内容进行编码](/documentation/articles/media-services-encode-asset)
 
-<!---HONumber=67-->
+<!---HONumber=71-->

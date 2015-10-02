@@ -3,13 +3,13 @@
 	description="本主题列出了你可以用来播放内容的现有播放器。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="Juliako" 
 	manager="dwrede" 
 	editor=""/>
 
 <tags 
 	ms.service="media-services" 
-	ms.date="05/24/2015" 
+	ms.date="08/11/2015" 
 	wacn.date=""/>
 
 
@@ -78,4 +78,4 @@ Azure Media Services 支持多种常用的流式处理格式，如平滑流、HT
  
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
 
-<!---HONumber=67-->
+<!---HONumber=71-->

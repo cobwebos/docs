@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services"  
-	ms.date="05/26/2015" 
+	ms.date="08/11/2015"
 	wacn.date=""/>
 
 #将现有 Blob 复制到媒体服务资产中
@@ -69,7 +69,10 @@ Blob 可以存在于与媒体服务帐户关联的存储帐户中，也可以存
 下面的代码示例执行以下任务：
 
 1. 创建 CloudMediaContext 实例。 
-1. 创建 CloudStorageAccount 实例：_sourceStorageAccount 和_destinationStorageAccount。1. 将本地目录中的平滑流文件上载到位于 _sourceStorageAccount 中的 Blob 容器中。1. 创建一个新资产。为此资产创建的 Blob 容器位于 _destinationStorageAccount 中。1. 使用 Azure 存储 SDK 将指定的 Blob 复制到与此资产关联的容器中。
+1. 创建 CloudStorageAccount 实例：\_sourceStorageAccount 和\_destinationStorageAccount。
+1. 将本地目录中的平滑流文件上载到位于 \_sourceStorageAccount 中的 Blob 容器内。
+1. 创建一个新资产。为此资产创建的 Blob 容器位于 \_destinationStorageAccount 中。
+1. 使用 Azure 存储 SDK 将指定的 Blob 复制到与此资产关联的容器中。
 
 >[AZURE.NOTE]如果定位符已过期，复制操作不会引发异常。
 
@@ -279,4 +282,4 @@ Blob 可以存在于与媒体服务帐户关联的存储帐户中，也可以存
 		}
  
 
-<!---HONumber=64-->
+<!---HONumber=71-->

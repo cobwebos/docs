@@ -1,6 +1,16 @@
-<properties pageTitle="Microsoft Azure 门户中基于角色的访问控制" description="介绍基于角色的访问控制的工作原理以及如何设置它" services="" documentationCenter="" authors="Justinha" manager="terrylan" editor=""/>
+<properties
+	pageTitle="Microsoft Azure 门户中基于角色的访问控制"
+	description="介绍基于角色的访问控制的工作原理以及如何设置它"
+	services=""
+	documentationCenter=""
+	authors="IHenkel"
+	manager="stevenpo"
+	editor=""/>
 
-<tags ms.service="multiple" ms.date="06/29/2015" wacn.date=""/>
+<tags
+	ms.service="multiple"
+	ms.date="08/14/2015"
+	wacn.date=""/>
 
 # Microsoft Azure 门户中基于角色的访问控制 
 
@@ -8,7 +18,7 @@
 
 
 ## Azure 中的 RBAC
-                                                                   
+
 每个 Azure 订阅都与 Azure Active Directory 相关联。使用 Microsoft Azure 管理门户或 Azure 资源管理器 API 访问订阅资源的用户和服务首先需要使用该 Azure Active Directory 进行身份验证。
 
 ![][1]
@@ -29,7 +39,7 @@
 
 + **用户**：可以将角色分配给 Azure AD 中与 Azure 订阅关联的组织用户。还可以通过在 Azure 门户中使用邀请操作为外部 Microsoft 帐户用户（例如 joe@outlook.com）分配角色为这些用户分配角色。为外部 Microsoft 帐户用户分配角色会导致在 Azure AD 中为其创建来宾帐户。如果在目录中禁用此来宾帐户，则不会允许外部用户访问已向该用户授予访问权限的任何 Azure 资源。
 + **组**：可以将角色分配给 Azure AD 安全组。如果用户成为具有访问权限的组的成员，则将自动向该用户授予对资源的访问权限。从组中删除该用户后，该用户也会自动失去对资源的访问权限。通过为组分配角色并将用户添加到这些组来通过组管理访问权限是最佳做法，而不是直接向用户分配角色。Azure RBAC 不允许将角色分配给分发列表。能够将角色分配给组，允许组织将其现有访问控制模型从其本地目录扩展到云中，因此可以重用已建立用于控制本地访问权限的安全组来控制对 Azure 门户中的资源的访问权限。有关用于从本地目录同步用户和组的不同选项的详细信息，请参阅[目录集成](http://technet.microsoft.com/zh-cn/library/jj573653.aspx)。Azure AD 高级版还提供了[委派组管理功能](http://msdn.microsoft.com/zh-cn/library/azure/dn641267.aspx)，使用该功能，可以将创建和管理组的功能委派给 Azure AD 中的非管理员用户。
-+ **服务主体**：服务标识表示为目录中的服务主体。它们使用 Azure AD 进行身份验证，并安全地彼此通信。可以通过 Windows PowerShell 的 Azure 模块将角色分配给表示服务的 Azure AD 服务主体，来向这些服务授予对 Azure 资源的访问权限。 
++ **服务主体**：服务标识表示为目录中的服务主体。它们使用 Azure AD 进行身份验证，并安全地彼此通信。可以通过 Windows PowerShell 的 Azure 模块将角色分配给表示服务的 Azure AD 服务主体，来向这些服务授予对 Azure 资源的访问权限。
 
 #### 资源作用域
 
@@ -41,7 +51,7 @@
 
 订阅管理员和共同管理员将继续对 Azure 门户和管理 API 具有完全访问权限。在 RBAC 模型中，在订阅级别为他们分配所有者角色。但是，Azure 门户和 Azure 资源管理器 API 只支持新的 RBAC 模型。分配了 RBAC 角色的用户和服务不能访问 Azure 管理门户和服务管理 API。将用户添加到 Azure 门户中某个订阅的所有者角色并不会使该用户成为整个 Azure 门户中订阅的共同管理员。
 
-如果要授予用户对尚未可通过 Azure 门户管理的 Azure 资源的访问权限，应使用 Azure 管理门户将这些用户添加到订阅共同管理员中。Service Bus 和云服务是目前不能通过使用 RBAC 管理的资源的示例。
+如果要授予用户对尚未可通过 Azure 门户管理的 Azure 资源的访问权限，应使用 Azure 管理门户将这些用户添加到订阅共同管理员中。服务总线和 StorSimple 是目前不能使用 RBAC 进行管理的资源示例。
 
 ## 管理授权与数据操作
 
@@ -136,7 +146,7 @@ Brock | 在 Prod 资源组中创建和管理所有资源 | 将 Brock 添加到 P
 
 角色分配更改可在 ResourceProviderName 为 `Microsoft.Authorization` 的事件中捕获。在事件详细信息中捕获的实际分配详情：已分配什么主体，分配给何种角色、针对什么作用域进行了分配。在门户中浏览审核日志时，会显示角色分配更改情况，但该门户不显示事件详细信息。若要查看事件详细信息，必须使用 Azure PowerShell。
 
-### 事件详细信息
+###事件详细信息
 
 下面是进行某项角色分配更改时，事件详细信息的示例：
 
@@ -222,7 +232,7 @@ SubStatus            :`
 | 属性：RoleDefinitionId |	`/subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7	` | 已分配的角色。你可以使用 Azure PowerShell 确定角色的显示名称。 |
 | 属性：Scope | `/subscriptions/ff945b8d-441a-41ef-a9db-7bd5fcc99978/resourceGroups/Default-Storage-WestUS/providers/Microsoft.ClassicStorage/storageAccounts/authzwaes` |	在其上进行了角色分配的资源。这可能是资源、资源组或订阅。 |
 
-### 示例 PowerShell 代码段
+###示例 PowerShell 代码段
 
 首先显示的一些示例性 Azure PowerShell 代码用于将 PrincipalId 映射到名称和类型：
 
@@ -297,7 +307,7 @@ function Get-AzureRoleDefinitionName($roleDefinitionId)
 
 ```
 
-### 示例性 Azure PowerShell 脚本
+###示例性 Azure PowerShell 脚本
 
 下面是一个综合性的示例脚本，用于检索特定日期范围的角色分配事件，然后将这些事件作为表输出：
 
@@ -796,7 +806,7 @@ Azure 基于角色的访问控制附带了以下内置角色，可以将这些�
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/*</td>
-<td>创建和管理 SQL Database</td>
+<td>创建和管理 SQL 数据库</td>
 </tr>
 <tr>
 <td>Microsoft.Authorization/*/read</td>
@@ -831,19 +841,19 @@ Azure 基于角色的访问控制附带了以下内置角色，可以将这些�
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/auditingPolicies/*</td>
-<td>无法管理 SQL Database 审核策略</td>
+<td>无法管理 SQL 数据库审核策略</td>
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/connectionPolicies/*</td>
-<td>无法管理 SQL Database 连接策略</td>
+<td>无法管理 SQL 数据库连接策略</td>
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/dataMaskingPolicies/*</td>
-<td>无法管理 SQL Database 数据屏蔽策略</td>
+<td>无法管理 SQL 数据库数据屏蔽策略</td>
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/securityMetrics/*</td>
-<td>无法管理 SQL Database 安全指标</td>
+<td>无法管理 SQL 数据库安全指标</td>
 </tr>
 </table>
 
@@ -863,23 +873,23 @@ Azure 基于角色的访问控制附带了以下内置角色，可以将这些�
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/read</td>
-<td>读取 SQL Database</td>
+<td>读取 SQL 数据库</td>
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/auditingPolicies/*</td>
-<td>创建和管理 SQL Database 审核策略</td>
+<td>创建和管理 SQL 数据库审核策略</td>
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/connectionPolicies/*</td>
-<td>创建和管理 SQL Database 连接策略</td>
+<td>创建和管理 SQL 数据库连接策略</td>
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/dataMaskingPolicies/*</td>
-<td>创建和管理 SQL Database 数据屏蔽策略</td>
+<td>创建和管理 SQL 数据库数据屏蔽策略</td>
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/securityMetrics/*</td>
-<td>创建和管理 SQL Database 安全指标</td>
+<td>创建和管理 SQL 数据库安全指标</td>
 </tr>
 <tr>
 <td>Microsoft.Authorization/*/read</td>
@@ -950,19 +960,19 @@ Azure 基于角色的访问控制附带了以下内置角色，可以将这些�
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/auditingPolicies/*</td>
-<td>无法管理 SQL Database 审核策略</td>
+<td>无法管理 SQL 数据库审核策略</td>
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/connectionPolicies/*</td>
-<td>无法管理 SQL Database 连接策略</td>
+<td>无法管理 SQL 数据库连接策略</td>
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/dataMaskingPolicies/*</td>
-<td>无法管理 SQL Database 数据屏蔽策略</td>
+<td>无法管理 SQL 数据库数据屏蔽策略</td>
 </tr>
 <tr>
 <td>Microsoft.Sql/servers/databases/securityMetrics/*</td>
-<td>无法管理 SQL Database 安全指标</td>
+<td>无法管理 SQL 数据库安全指标</td>
 </tr>
 </table>
 
@@ -1253,6 +1263,8 @@ Azure 基于角色的访问控制附带了以下内置角色，可以将这些�
 
 ## 如何提供反馈
 
+
+
 ## 后续步骤
 
 下面是一些其他资源，可帮助你使用基于角色的访问控制：
@@ -1276,4 +1288,4 @@ Azure 基于角色的访问控制附带了以下内置角色，可以将这些�
 [9]: ./media/role-based-access-control-configure/RBACInviteExtUser_NEW.png
 [10]: ./media/role-based-access-control-configure/RBACDirConfigTab.png
 
-<!---HONumber=67-->
+<!---HONumber=71-->

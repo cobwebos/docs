@@ -1,5 +1,5 @@
 <properties
-	pageTitle="移动服务中的脱机数据同步入门 (iOS) | 移动开发人员中心"
+	pageTitle="移动服务中的脱机数据同步入门 (iOS) | Microsoft Azure"
 	description="了解如何在 iOS 应用程序中使用 Azure 移动服务缓存和同步脱机数据"
 	documentationCenter="ios"
 	authors="krisragh"
@@ -9,10 +9,10 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="03/19/2015"
+	ms.date="07/01/2015"
 	wacn.date=""/>
 
-#  移动服务中的脱机数据同步入门
+# 移动服务中的脱机数据同步入门
 
 [AZURE.INCLUDE [mobile-services-selector-offline](../includes/mobile-services-selector-offline.md)]
 
@@ -26,11 +26,11 @@
 * 跨多个设备同步数据
 * 在两个设备修改同一条记录时检测冲突
 
-> [AZURE.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并获取[免费的移动服务，即使在试用期结束之后仍可继续使用这些服务](/home/features/mobile-services/#price)。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/ target="_blank")。
+> [AZURE.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并获取[免费的移动服务，即使在试用期结束之后仍可继续使用这些服务](/home/features/mobile-services/#price)。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/ target="\_blank")。
 
 本教程是在你必须先完成的[移动服务快速入门教程]的基础之上制作的。首先，让我们回顾“快速入门”中与脱机同步相关的代码。
 
-##  <a name="review-sync"></a>回顾移动服务同步代码
+## <a name="review-sync"></a>回顾移动服务同步代码
 
 Azure 移动服务脱机同步允许最终用户，当无法访问网络时，与本地数据库交互。若要在应用程序中使用这些功能，你可以初始化 `MSClient` 的同步上下文，并引用本机存储。然后，通过 `MSSyncTable` 接口引用你的表。
 
@@ -93,23 +93,23 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 ```
 
 
->[AZURE.NOTE]若要从设备本地存储区中删除已在移动设备数据库中删除的记录，应启用[软删除]。否则，你的应用程序应定期调用 `MSSyncTable.purgeWithQuery` 以清除本地存储。
+>[AZURE.NOTE]若要从设备本地存储区中删除已在移动设备数据库中删除的记录，应启用“软删除”[]。否则，你的应用程序应定期调用 `MSSyncTable.purgeWithQuery` 以清除本地存储。
 
 
 * 在 **QSTodoService.m** 中，`addItem` 和 `completeItem` 方法会在修改数据后调用 `syncData`。在 **QSTodoListViewController.m** 中，`refresh` 方法也会调用 `syncData`，使 UI 在每次刷新和启动时（`init` 调用 `refresh`）显示最新数据。
 
 因为每当你修改数据时，应用程序就会调用 `syncData`，所以无论你何时在应用程序中编辑数据，应用程序都会假设你已联机。
 
-##  <a name="review-core-data"></a>了解核心数据模型
+## <a name="review-core-data"></a>了解核心数据模型
 
 在使用核心数据脱机存储时，你需要在数据模型中定义特定的表和字段。示例应用程序已包含具有正确格式的数据模型。在本部分中，我们会逐步介绍这些表及其用法。
 
 - 打开 **QSDataModel.xcdatamodeld**。已定义了四个表，其中三个由 SDK 使用，一个供 todo 项本身使用：
 
-      * MS_TableOperations：用于跟踪要与服务器同步的项
-      * MS_TableOperationErrors：用于跟踪脱机同步期间发生的错误
-      * MS_TableConfig：用于跟踪所有提取操作最后一次同步操作的上次更新时间
-      * TodoItem：用于储存 todo 项。系统列 **ms_createdAt**、**ms_updatedAt** 和 **ms_version** 是可选的系统属性。
+      * MS\_TableOperations：用于跟踪要与服务器同步的项
+      * MS\_TableOperationErrors：用于跟踪脱机同步期间发生的错误
+      * MS\_TableConfig：用于跟踪所有提取操作最后一次同步操作的上次更新时间
+      * TodoItem：用于储存 todo 项。系统列 **ms\_createdAt**、**ms\_updatedAt** 和 **ms\_version** 是可选的系统属性。
 
 >[AZURE.NOTE]移动服务 SDK 会保留以“**`ms_`**”开头的列名称。请不要在系统列以外的项中使用此前缀。否则，列名称会在使用远程服务时被修改。
 
@@ -117,31 +117,31 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 
     ### 系统表
 
-    #### MS_TableOperations
+    #### MS\_TableOperations
 
     | 属性 | 类型 |
-    |----------- |   ------    |
-    | ID | Integer 64 |
+    |-------------- |   ------    |
+    | ID（必需） | Integer 64 |
     | itemId | String |
     | 属性 | 二进制数据 |
     | table | String |
     | tableKind | Integer 16 |
 
-    #### MS_TableOperationErrors
+    #### MS\_TableOperationErrors
 
     | 属性 | 类型 |
-    |------------ | ----------  |
-    | ID | String |
+    |-------------- | ----------  |
+    | ID（必需） | String |
     | operationId | Integer 64 |
     | 属性 | 二进制数据 |
     | tableKind | Integer 16 |
 
-    #### MS_TableConfig
+    #### MS\_TableConfig
 
 
     | 属性 | 类型 |
-    |----------- | ----------  |
-    | ID | String |
+    |-------------- | ----------  |
+    | ID（必需） | String |
     | key | String |
     | keyType | Integer 64 |
     | table | String |
@@ -151,17 +151,16 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 
     #### TodoItem
 
-    | 属性 | 类型 |
-    |-----------   |  ------ |
-    | ID | String |
-    | complete | Boolean |
-    | text | String |
-    | ms_createdAt | Date |
-    | ms_updatedAt | Date |
-    | ms_version | String |
+    | 属性 | 类型 | 注意 | 
+    |-------------- |  ------ | -------------------------------------------------------|
+    | ID（必需） | String | 远程存储中的主键（必需） |
+    | complete | Boolean | todo 项字段 |
+    | 文本 | String | todo 项字段 |
+    | ms\_createdAt | 日期 | （可选）映射到 \_\_createdAt 系统属性 | | ms\_updatedAt | 日期 |（可选）映射到 \_\_updatedAt 系统属性 | | ms\_version | 字符串 |（可选）用于检测冲突，映射到 \_\_version |
 
 
-##  <a name="setup-sync"></a>更改应用程序的同步行为
+
+## <a name="setup-sync"></a>更改应用程序的同步行为
 
 在本部分中，你将要修改应用程序，使其不会在应用程序启动时或插入及更新项时同步，而只会在执行刷新手势时同步。
 
@@ -183,7 +182,7 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
                 }
 ```
 
-##  <a name="test-app"></a>测试应用程序
+## <a name="test-app"></a>测试应用程序
 
 在本部分中，你将在模拟器中关闭 Wi-Fi 以创建脱机方案。在添加数据项时，数据项将保存在本地核心数据存储中，而不同步到移动服务。
 
@@ -200,7 +199,7 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 
 5. 再次查看 TodoItem 数据。新的和更改的 TodoItem 现在应会出现。
 
-##  摘要
+## 摘要
 
 为了支持移动服务的脱机功能，你使用了 `MSSyncTable` 接口，并使用本地存储初始化了 `MSClient.syncContext`。在这种情况下，本地存储是基于核心数据的数据库。
 
@@ -212,17 +211,17 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 
 		* To pull data from a table on the server to the app, you called `MSSyncTable.pullWithQuery`. A pull always issues a push first. This is to ensure all tables in the local store along with relationships remain consistent. `pullWithQuery` can also be used to filter the data that is stored on the client, by customizing the `query` parameter.
 
-##  后续步骤
+## 后续步骤
 
 * [使用移动服务脱机支持处理冲突]
 
 * [使用移动服务中的软删除][Soft Delete]
 
-##  其他资源
+## 其他资源
 
 * [云覆盖：Azure 移动服务中的脱机同步]
 
-* [Azure Friday: Azure 移动服务中支持脱机的应用程序](注意: 演示适用于 Windows，但功能讨论适用于所有平台)
+* [Azure Friday：Azure 移动服务中支持脱机的应用程序]（注意：演示适用于 Windows，但功能讨论适用于所有平台）
 
 <!-- URLs. -->
 
@@ -252,21 +251,19 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 
 [Core Data]: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreData/cdProgrammingGuide.html
 [Download the preview SDK here]: http://aka.ms/Gc6fex
-[How to use the Mobile Services client library for iOS]: mobile-services-ios-how-to-use-client-library
+[How to use the Mobile Services client library for iOS]: /documentation/articles/mobile-services-ios-how-to-use-client-library
 [Offline iOS Sample]: https://github.com/Azure/mobile-services-samples/tree/master/TodoOffline/iOS/blog20140611
 [Mobile Services sample repository on GitHub]: https://github.com/Azure/mobile-services-samples
 
 
-[Get started with Mobile Services]: mobile-services-ios-get-started
-[Get started with data]: mobile-services-ios-get-started-data
-[使用移动服务脱机支持处理冲突]: mobile-services-ios-handling-conflicts-offline-data
-[Soft Delete]: mobile-services-using-soft-delete
-[Soft Delete]: mobile-services-using-soft-delete
-[软删除]: mobile-services-using-soft-delete
+[Get started with Mobile Services]: /documentation/articles/mobile-services-ios-get-started
+[Get started with data]: /documentation/articles/mobile-services-ios-get-started-data
+[使用移动服务脱机支持处理冲突]: /documentation/articles/mobile-services-ios-handling-conflicts-offline-data
+[Soft Delete]: /documentation/articles/mobile-services-using-soft-delete
 
 
 
-[移动服务快速入门教程]: mobile-services-ios-get-started
+[移动服务快速入门教程]: /documentation/articles/mobile-services-ios-get-started
  
 
-<!---HONumber=HO63-->
+<!---HONumber=71-->

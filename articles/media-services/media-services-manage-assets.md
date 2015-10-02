@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="如何管理媒体服务中的资产" 
-	description="了解如何在媒体服务上管理资产。你还可以管理作业、任务、访问策略、定位符，等等。代码示例用 C# 编写且使用 Media Services SDK for .NET。" 
+	description="了解如何在 Media Services 上管理资产。你还可以管理作业、任务、访问策略、定位符，等等。代码示例用 C# 编写且使用 Media Services SDK for .NET。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -8,16 +8,14 @@
 	editor=""/>
 
 <tags 
-	ms.date="05/24/2015" 
+	ms.date="08/11/2015"
 	wacn.date=""/>
 
 
 #如何：管理存储中的资产
 
-本文是[媒体服务点播视频工作流](/documentation/articles/media-services-video-on-demand-workflow)和[媒体服务实时流式处理工作流](/documentation/articles/media-services-live-streaming-workflow)系列的一部分。
 
-
-创建媒体资产后，可以在服务器上访问并管理这些资产。还可以在服务器上管理属于媒体服务的其他对象，包括作业、任务、访问策略、定位器，等等。
+创建媒体资产后，可以在服务器上访问并管理这些资产。还可以在服务器上管理属于 Media Services 的其他对象，包括作业、任务、访问策略、定位器，等等。
 
 以下示例演示如何按 assetId 查询资产。
 
@@ -72,7 +70,7 @@
 	    Console.Write(builder.ToString());
 	}
 
-以下代码段将从媒体服务帐户中删除所有资产。请注意，如果一个资产与一个程序相关联，则首先必须删除该程序。
+以下代码段将从 Media Services 帐户中删除所有资产。请注意，如果一个资产与一个程序相关联，则首先必须删除该程序。
 
 	foreach (IAsset asset in _context.Assets)
 	{
@@ -81,4 +79,4 @@
 
  
 
-<!---HONumber=67-->
+<!---HONumber=71-->

@@ -9,13 +9,13 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="06/04/2015" 
+	ms.date="08/11/2015" 
 	wacn.date=""/>
 
 
 # Media Services REST API 概述 
 
-Microsoft Azure Media Services 是一项服务，该服务接受基于 OData 的 HTTP 请求并能够以详细 JSON 或 atom+pub 做出响应。由于 Media Services 遵循 Azure 设计准则，因此在连接到 Media Services 时，每个客户端必须使用一组必需的 HTTP 标头，还可以使用一组可选标头。以下部分介绍你在创建请求和接收来自 Media Services 的响应时可以使用的标头和 HTTP 谓词。
+[AZURE.INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]Microsoft Azure Media Services 是一项服务，该服务接受基于 OData 的 HTTP 请求并能够以详细 JSON 或 atom+pub 做出响应。由于 Media Services 遵循 Azure 设计准则，因此在连接到 Media Services 时，每个客户端必须使用一组必需的 HTTP 标头，还可以使用一组可选标头。以下部分介绍你在创建请求和接收来自 Media Services 的响应时可以使用的标头和 HTTP 谓词。
 
 
 ## Media Services 支持的标准 HTTP 请求标头
@@ -60,4 +60,4 @@ Microsoft Azure Media Services 是一项服务，该服务接受基于 OData 的
 <!-- URLs. -->
   [Management Portal]: http://manage.windowsazure.cn/
 
-<!---HONumber=67-->
+<!---HONumber=71-->

@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="了解最新的 Azure 来宾 OS 版本 | Windows Azure" 
+   pageTitle="了解最新的 Azure 来宾 OS 版本 | Microsoft Azure" 
    description="有关 Azure 云服务来宾 OS 的最新发行新闻以及 SDK 兼容性。" 
    services="cloud-services" 
    documentationCenter="na" 
@@ -332,4 +332,4 @@ Microsoft Azure 不断地发布更新。来宾 OS 只不过是此类更新的其
 [fam1retire]: /documentation/articles/cloud-services-guestos-family1-retirement
  
 
-<!---HONumber=69-->
+<!---HONumber=71-->

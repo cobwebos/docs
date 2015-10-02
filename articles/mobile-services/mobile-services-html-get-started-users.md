@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="身份验证入门 (HTML5) | 移动开发人员中心" 
+	pageTitle="向 HTML/JavaScript 应用添加身份验证 | Microsoft Azure" 
 	description="了解如何使用移动服务通过各种标识提供程序（包括 Google、Facebook、Twitter 和 Microsoft）对 HTML 应用程序的用户进行身份验证。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -9,10 +9,10 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="05/28/2015" 
+	ms.date="07/21/2015" 
 	wacn.date=""/>
 
-#  向移动服务应用程序添加身份验证 
+# 向移动服务应用程序添加身份验证 
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
@@ -20,11 +20,11 @@
 
 本教程基于移动服务快速入门。此外，还必须先完成[移动服务入门]教程。
 
-## <a name="register"></a>注册应用程序以进行身份验证并配置移动服务
+##<a name="register"></a>注册应用程序以进行身份验证并配置移动服务
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)]
 
-## <a name="permissions"></a>将权限限制给已经过身份验证的用户
+##<a name="permissions"></a>将权限限制给已经过身份验证的用户
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
@@ -47,7 +47,7 @@
 
 接下来，你需要更新应用程序，以允许在从移动服务请求资源之前进行身份验证。
 
-## <a name="add-authentication"></a>向应用程序添加身份验证
+##<a name="add-authentication"></a>向应用程序添加身份验证
 
 >[AZURE.NOTE]由于登录是在弹出窗口中执行的，因此你应该从按钮的 click 事件调用 <strong>login</strong> 方法。否则，许多浏览器都会隐藏登录窗口。
 
@@ -99,9 +99,7 @@
 
     这将会创建一组用于处理身份验证过程的函数。将使用 Facebook 登录对用户进行身份验证。如果使用的标识提供者不是 Facebook，请将传递给上述 **login** 方法的值更改为下列其中一项：*microsoftaccount*、*facebook*、*twitter*、*google* 或 *aad*。
 
-	>[AZURE.IMPORTANT]在 PhoneGap 应用程序中，还必须向项目中添加以下插件：
-	><ul><li><code>phonegap plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git</code></li> 
-	><li><code>phonegap plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git</code></li></ul>
+	>[AZURE.IMPORTANT]在 PhoneGap 应用程序中，还必须向项目中添加以下插件：<ul><li><code>phonegap plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git</code></li> <li><code>phonegap plugin add https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git</code></li></ul>
 
 9. 返回到运行应用程序的浏览器并刷新页。
 
@@ -109,7 +107,7 @@
 
 	>[AZURE.NOTE]如果使用 Internet Explorer，可能会在登录后收到错误：<code>无法访问窗口打开程序。它可能位于不同的 Internet Explorer 区域</code>。发生此错误的原因是因为弹出窗口在与本地主机 (Intranet) 不同的安全区域 (Internet) 上运行。这只在使用本地主机开发期间影响应用程序。一种解决方法是打开“Internet 选项”的“安全性”选项卡，单击“本地 Intranet”，单击“站点”，然后禁用“自动检测 Intranet 网络”<strong></strong><strong></strong><strong></strong><strong></strong><strong></strong>。完成测试后，请记得将此设置更改回来。
 
-##  <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 在下一教程[使用脚本为用户授权]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。请在[移动服务 HTML/JavaScript 操作方法概念性参考]中了解有关如何将移动服务与 HTML/JavaScript 一起使用的详细信息
 
@@ -128,12 +126,12 @@
 [15]: ./media/mobile-services-html-get-started-users/mobile-portal-change-table-perms.png
 
 <!-- URLs. -->
-[移动服务入门]: mobile-services-html-get-started
-[Get started with data]: mobile-services-html-get-started-data
-[使用脚本为用户授权]: mobile-services-javascript-backend-service-side-authorization
+[移动服务入门]: /documentation/articles/mobile-services-html-get-started
+[Get started with data]: /documentation/articles/mobile-services-html-get-started-data
+[使用脚本为用户授权]: /documentation/articles/mobile-services-javascript-backend-service-side-authorization
 
 [Azure Management Portal]: https://manage.windowsazure.cn/
-[移动服务 HTML/JavaScript 操作方法概念性参考]: mobile-services-html-how-to-use-client-library
+[移动服务 HTML/JavaScript 操作方法概念性参考]: /documentation/articles/mobile-services-html-how-to-use-client-library
  
 
-<!---HONumber=HO63-->
+<!---HONumber=71-->

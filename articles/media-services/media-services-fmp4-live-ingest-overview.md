@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services"  
-	ms.date="05/21/2015" 
+	ms.date="08/11/2015" 
 	wacn.date=""/>
 
 #Azure 媒体服务分片 MP4 实时引入规范
@@ -45,7 +45,7 @@
 5. [1] 中的第 3.3.6 部分定义了名为 MovieFragmentRandomAccessBox (‘mfra’) 的框，此框可能会在实时引入结束时发送，表示通道 EOS（流式传输结束）。Azure 媒体服务的引入逻辑使得 EOS（流式传输结束）的使用方式已过时，不应该发送实时引入的 ‘mfra’ 框。如果已发送，Azure 媒体服务会无提示方式将其忽略。建议使用[通道重置](https://msdn.microsoft.com/zh-cn/library/azure/dn783458.aspx#reset_channels)来重置引入点的状态，此外，建议使用[节目停止](https://msdn.microsoft.com/zh-cn/library/azure/dn783463.aspx#stop_programs)来结束演播与流。
 6. MP4 片段持续时间应该是恒定的才能减少客户端清单的大小，并通过使用重复标记来改善客户端下载启发。为了补偿非整数的帧速率，持续时间可能会波动。
 7. MP4 片段持续期间应该大约在 2 到 6 秒之间。
-8. 应该以递增顺序送达 MP4 片段时间戳和索引（TrackFragmentExtendedHeaderBox fragment_absolute_time 和 fragment_index）。尽管 Azure 媒体服务在复制片段方面很有弹性，但是其根据媒体时间轴将片段重新排序的功能非常有限。
+8. 应该以递增顺序送达 MP4 片段时间戳和索引（TrackFragmentExtendedHeaderBox fragment\_absolute\_time 和 fragment\_index）。尽管 Azure 媒体服务在复制片段方面很有弹性，但是其根据媒体时间轴将片段重新排序的功能非常有限。
 
 ##协议格式 – HTTP
 
@@ -135,7 +135,7 @@ Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行
 3. 新编码器的 POST 请求必须包含与故障实例相同的分片 MP4 标头框。
 4. 新编码器必须与所有其他运行中的编码器正确同步，相同的实时演播才能生成与相符片段边界同步的音频/视频样本。
 5. 新流必须在语义上等同于上一个流，并可在标头与片段级别互换。
-6. 新的编码器应该尝试最大程度地减少数据丢失。媒体片段的 fragment_absolute_time 与 fragment_index 应该从编码器上次停止的时间点开始增加。fragment_absolute_time 与 fragment_index 应该连续增加，但允许视需要造成不连续情况。Azure 媒体服务将忽略已收到并处理的片段，因此在片段重新发送端造成错误，好过在媒体时间轴上造成不连续情况。 
+6. 新的编码器应该尝试最大程度地减少数据丢失。媒体片段的 fragment\_absolute\_time 与 fragment\_index 应该从编码器上次停止的时间点开始增加。fragment\_absolute\_time 与 fragment\_index 应该连续增加，但允许视需要造成不连续情况。Azure 媒体服务将忽略已收到并处理的片段，因此在片段重新发送端造成错误，好过在媒体时间轴上造成不连续情况。 
 
 ##编码器冗余 
 
@@ -202,4 +202,4 @@ Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行
 
  
 
-<!---HONumber=64-->
+<!---HONumber=71-->

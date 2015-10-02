@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="07/16/2015"
+	ms.date="08/11/2015" 
 	wacn.date=""/>
 
 
@@ -222,9 +222,8 @@ SAS URL 采用以下格式：
 ![AMSPlayer][AMSPlayer]
 
 
-##后续步骤
 
-了解有关生成视频点播应用程序的详细信息 [生成 VoD 应用程序](/documentation/articles/media-services-video-on-demand-workflow) <!--
+<!--
 ###Additional Resources
 - <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure Media Services 101 - Get your video online now!</a>
 - <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure Media Services 102 - Dynamic Packaging and Mobile Devices</a>
@@ -234,7 +233,7 @@ SAS URL 采用以下格式：
 
 
 <!-- URLs. -->
-[]: http://manage.windowsazure.cn/
+[Management Portal]: http://manage.windowsazure.cn/
 
 
 <!-- Images -->
@@ -251,4 +250,4 @@ SAS URL 采用以下格式：
 [AMSPlayer]: ./media/media-services-portal-get-started/media-services-portal-player.png
  
 
-<!---HONumber=67-->
+<!---HONumber=71-->

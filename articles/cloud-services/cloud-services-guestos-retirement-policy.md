@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure 来宾 OS 可支持性和停用策略指南 | Windows Azure" 
+   pageTitle="Azure 来宾 OS 可支持性和停用策略指南 | Microsoft Azure" 
    description="介绍有关 Microsoft 对云服务使用的 Azure 来宾 OS 提供的支持的信息。" 
    services="cloud-services" 
    documentationCenter="na" 
@@ -86,4 +86,4 @@ Microsoft 将继续推出合并了最新 MSRC 更新的新来宾 OS 版本，直
 ## 后续步骤
 查看最新的[来宾 OS 版本](/documentation/articles/cloud-services-guestos-update-matrix)。
 
-<!---HONumber=69-->
+<!---HONumber=71-->

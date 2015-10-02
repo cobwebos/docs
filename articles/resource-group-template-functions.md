@@ -1,15 +1,15 @@
 <properties
    pageTitle="Azure 资源管理器模板函数"
-   description="介绍可在 Azure 资源管理器模板中用来将应用程序部署到 Azure 的函数。"
-   services="na"
+   description="介绍在 Azure 资源管理器模板中检索值、格式字符串和检索部署信息时所使用的函数。"
+   services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
    manager="wpickett"
    editor=""/>
 
 <tags
-   ms.service="na"
-   ms.date="04/28/2015"
+   ms.service="azure-resource-manager"
+   ms.date="07/27/2015"
    wacn.date=""/>
 
 # Azure 资源管理器模板函数
@@ -48,12 +48,45 @@
         }
     }
 
+## copyIndex
+
+**copyIndex(offset)**
+
+返回一个迭代循环的当前索引。有关使用此函数的示例，请参阅[在 Azure 资源管理器中创建多个资源实例](resource-group-create-multiple.md)。
+
+## 部署
+
+**deployment()**
+
+返回有关当前部署操作的信息。
+
+将返回有关部署的信息，作为具有以下属性的对象：
+
+    {
+      "name": "",
+      "properties": {
+        "template": {},
+        "parameters": {},
+        "mode": "",
+        "provisioningState": ""
+      }
+    }
+
+以下示例演示了如何返回 outputs 部分中的部署信息。
+
+    "outputs": {
+      "exampleOutput": {
+        "value": "[deployment()]",
+        "type" : "object"
+      }
+    }
+
 ## listKeys
 
-**listKeys (resourceName 或 resourceIdentifier, [apiVersion])**
+**listKeys (resourceName or resourceIdentifier, [apiVersion])**
 
-返回存储帐户的密钥。可以使用 [resourceId 函数](#resourceid)或使用格式 **providerNamespace/resourceType/resourceName** 指定 resourceId。可以使用该函数来获取 primaryKey 和 secondaryKey。
-
+返回存储帐户的密钥。可以使用 [resourceId 函数](./#resourceid)或使用格式 **providerNamespace/resourceType/resourceName** 指定 resourceId。可以使用该函数来获取 primaryKey 和 secondaryKey。
+  
 | 参数 | 必选 | 说明
 | :--------------------------------: | :------: | :----------
 | resourceName 或 resourceIdentifier | 是 | 存储帐户的唯一标识符。
@@ -61,12 +94,34 @@
 
 以下示例演示了如何从 outputs 节中的存储帐户返回密钥。
 
-    "outputs": {
-      "exampleOutput": {
-        "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0])]",
-        "type" : "object"
-      }
+    "outputs": { 
+      "exampleOutput": { 
+        "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0])]", 
+        "type" : "object" 
+      } 
+    } 
+
+## padLeft
+
+**padLeft(stringToPad, totalLength, paddingCharacter)**
+
+通过向左侧添加字符直至到达指定的总长度返回右对齐的字符串。
+  
+| 参数 | 必选 | 说明
+| :--------------------------------: | :------: | :----------
+| stringToPad | 是 | 要右对齐的字符串。
+| totalLength | 是 | 返回字符串中的字符总数。
+| paddingCharacter | 是 | 要用于向左填充直到达到总长度的字符。
+
+以下示例演示如何通过添加零字符直到字符串达到 10 个字符进而填充该用户提供的参数值。如果原始的参数值超过 10 个字符，将不会添加任何字符。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "paddedAppName": "[padLeft(parameters('appName'),10,'0')]"
     }
+
 
 ## 参数
 
@@ -80,7 +135,7 @@
 
 以下示例演示了 parameters 函数的简化用法。
 
-    "parameters": {
+    "parameters": { 
       "siteName": {
           "type": "string"
       }
@@ -124,7 +179,7 @@
 
 ## reference
 
-**reference (resourceName 或 resourceIdentifier, [apiVersion])**
+**reference (resourceName or resourceIdentifier, [apiVersion])**
 
 使表达式能够从另一个资源的运行时状态派生其值。
 
@@ -135,13 +190,34 @@
 
 **reference** 函数从运行时状态派生其值，因此不能在 variables 节中使用。可以在模板的 outputs 节中使用它。
 
-如果在相同的模板内设置了引用的资源，则可使用 reference 表达式来声明一个资源依赖于另一个资源。
+如果在相同的模板内设置了引用的资源，则可使用 reference 表达式来隐式声明一个资源依赖于另一个资源。另外，不需要使用 **dependsOn** 属性。只有当引用的资源已完成部署后，才会对表达式进行计算。
 
     "outputs": {
       "siteUri": {
           "type": "string",
           "value": "[concat('http://',reference(resourceId('Microsoft.Web/sites', parameters('siteName'))).hostNames[0])]"
       }
+    }
+
+## replace
+
+**replace(originalString, oldCharacter, newCharacter)**
+
+如果在所有实例中特定字符串中的一个字符已被替换为另一个字符时，则返回新的字符串。
+
+| 参数 | 必选 | 说明
+| :--------------------------------: | :------: | :----------
+| originalString | 是 | 包含将某一个字符替换为另一个字符的所有实例的字符串。
+| oldCharacter | 是 | 要从原始字符串中删除的字符。
+| newCharacter | 是 | 要添加到已删除字符的位置的字符。
+
+以下示例演示如何从用户提供的字符串中删除所有的短划线。
+
+    "parameters": {
+        "identifier": { "type": "string" }
+    },
+    "variables": { 
+        "newidentifier": "[replace(parameters('identifier'),'-','')]"
     }
 
 ## resourceGroup
@@ -175,7 +251,7 @@
 返回资源的唯一标识符。如果资源名称不确定或未设置在相同的模板内，请使用此函数。将使用以下格式返回标识符：
 
     /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/{resourceProviderNamespace}/{resourceType}/{resourceName}
-
+      
 | 参数 | 必选 | 说明
 | :---------------: | :------: | :----------
 | resourceGroupName | 否 | 可选的资源组名称。默认值为当前资源组。如果要检索另一个资源组中的资源，请指定此值。
@@ -187,11 +263,11 @@
 
     [resourceId('myWebsitesGroup', 'Microsoft.Web/sites', parameters('siteName'))]
     [resourceId('Microsoft.SQL/servers/databases', parameters('serverName'),parameters('databaseName'))]
-
+    
 通常，在替代资源组中使用存储帐户或虚拟网络时，需要使用此函数。存储帐户或虚拟网络可能用于多个资源组中；因此，你不想要在删除单个资源组时删除它们。以下示例演示了如何轻松使用外部资源组中的资源：
 
     {
-      "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+      "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "parameters": {
           "virtualNetworkName": {
@@ -245,12 +321,51 @@
 
 以下示例演示了在 outputs 节中调用的 subscription 函数。
 
-    "outputs": {
-      "exampleOutput": {
-          "value": "[subscription()]",
-          "type" : "object"
-      }
+    "outputs": { 
+      "exampleOutput": { 
+          "value": "[subscription()]", 
+          "type" : "object" 
+      } 
+    } 
+
+## toLower
+
+**toLower(stringToChange)**
+
+将指定的字符串转换为小写。
+
+| 参数 | 必选 | 说明
+| :--------------------------------: | :------: | :----------
+| stringToChange | 是 | 将转换为小写的字符串。
+
+以下示例将用户提供的参数值转换为小写。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "lowerCaseAppName": "[toLower(parameters('appName'))]"
     }
+
+## toUpper
+
+**toUpper(stringToChange)**
+
+将指定的字符串转换为大写。
+
+| 参数 | 必选 | 说明
+| :--------------------------------: | :------: | :----------
+| stringToChange | 是 | 将转换为大写的字符串。
+
+以下示例将用户提供的参数值转换为大写。
+
+    "parameters": {
+        "appName": { "type": "string" }
+    },
+    "variables": { 
+        "upperCaseAppName": "[toUpper(parameters('appName'))]"
+    }
+
 
 ## variables
 
@@ -264,9 +379,9 @@
 
 
 ## 后续步骤
-- [创作 Azure 资源管理器模板](resource-group-authoring-templates)
-- [高级模板操作](resource-group-advanced-template)
-- [使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy)
-- [Azure 资源管理器概述](resource-group-overview)
+- 有关 Azure 资源管理器模板中对各部分的说明，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)
+- 若要合并多个模版，请参阅[将已链接的模版与 Azure 资源管理器配合使用](/documentation/articles/resource-group-linked-templates)
+- 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](/documentation/articles/resource-group-create-multiple)
+- 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](/documentation/articles/resource-group-template-deploy)
 
-<!---HONumber=61-->
+<!---HONumber=71-->

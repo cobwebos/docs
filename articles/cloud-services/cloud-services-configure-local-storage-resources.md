@@ -100,4 +100,4 @@ Azure 托管库提供了一些类，可用于从角色实例中运行的代码�
 
 - [为 Azure 设置云服务](https://msdn.microsoft.com/zh-cn/library/azure/hh124108.aspx)
 
-<!---HONumber=69-->
+<!---HONumber=71-->

@@ -1,20 +1,24 @@
 <properties
    pageTitle="创作 Azure 资源管理器模板"
    description="使用声明性 JSON 语法创建 Azure 资源管理器模板，以将应用程序部署到 Azure。"
-   services="multiple"
+   services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
    manager="wpickett"
    editor=""/>
 
 <tags
-   ms.service="multiple"
-   ms.date="04/28/2015"
+   ms.service="azure-resource-manager"
+   ms.date="08/20/2015"
    wacn.date=""/>
 
 # 创作 Azure 资源管理器模板
 
 Azure 应用程序通常需要多种资源的组合（例如数据库服务器、数据库或网站）来达到所需的目标。你无需单独部署和管理每个资源，而可以创建一个 Azure 资源管理器模板，以单个协调操作为应用程序部署和设置所有资源。在模板中，定义应用程序所需的资源，并指定部署参数以针对不同的环境输入值。模板中包含可用于构造部署值的 JSON 和表达式。
+
+本主题介绍了该模板的部分。对于实际的架构，请参阅 [Azure 资源管理器架构](https://github.com/Azure/azure-resource-manager-schemas)。
+
+您必须将您的模版大小限制为 1 MB 以内，每个参数文件大小限制为 64 KB 以内。已完成对迭代资源定义和变量值和参数值的扩展后，1 MB 的限制将适用于该模板的最终状态。
 
 ## 模板格式
 
@@ -42,52 +46,54 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
 
 ## 表达式和函数
 
-模板的基本语法为 JSON；但是，表达式和函数扩展了模板中提供的 JSON，使你能够创建严格意义上不是文本值的值。表达式括在方括号（[ 和 ]）中，将在部署模板时求值。表达式可以出现在 JSON 字符串值中的任何位置，并始终返回另一个 JSON 值。如果你需要使用以方括号 [ 开头的文本字符串，必须使用两个方括号 [[。
+模板的基本语法为 JSON；但是，表达式和函数扩展了模板中提供的 JSON，使你能够创建严格意义上不是文本值的值。表达式括在方括号（[ 和 ]）中，并在部署模板时进行求值。表达式可以出现在 JSON 字符串值中的任何位置，并始终返回另一个 JSON 值。如果需要使用以方括号 [ 开头的文本字符串，则必须使用两个方括号 [[。
 
-通常，你会将表达式与函数一起使用，以执行用于配置部署的操作。如同在 JavaScript 中一样，函数调用的格式为 **functionName(arg1,arg2,arg3)**。使用点和 [index] 运算符引用属性。以下列表中显示了常用的函数。
+通常，你会将表达式与函数一起使用，以执行用于配置部署的操作。如同在 JavaScript 中一样，函数调用的格式为 **functionName(arg1,arg2,arg3)**。使用点和 [index] 运算符引用属性。
 
-- **parameters(parameterName)** 
+以下列表显示常见函数。
 
-	返回执行部署时提供的参数值。
+- **parameters(parameterName)**
 
-- **variables(variableName)** 
-- 
-	返回模板中定义的变量。
+    返回在执行部署时提供的参数值。
 
-- **concat(arg1,arg2,arg3,...)** 
-- 
-	将多个字符串值组合在一起。此函数可以采用任意数目的参数。
+- **variables(variableName)**
 
-- **base64(inputString)** 
-- 
-	返回输入字符串的 base64 表示形式。
+    返回在模板中定义的变量。
 
-- **resourceGroup()** 
-- 
-	返回表示当前资源组的结构化对象（包括 id、name 和 location 属性）。
+- **concat(arg1,arg2,arg3,...)**
 
-- **resourceId([resourceGroupName], resourceType, resourceName1, [resourceName2]...)** 
-- 
-	返回资源的唯一标识符。可用于从另一个资源组检索资源。
+    合并多个字符串值。此函数可以结合任意数目的参数。
 
-以下示例演示了在构造值时如何使用某些函数：
+- **base64(inputString)**
 
+    返回输入字符串的 base64 表示形式。
+
+- **resourceGroup()**
+
+    返回表示当前资源组的结构化对象（包括 id、名称和位置属性）。
+
+- **resourceId([resourceGroupName], resourceType, resourceName1, [resourceName2]...)**
+
+    返回资源的唯一标识符。可用于从另一个资源组检索资源。
+
+以下示例演示如何在构造值时使用一些函数：
+ 
     "variables": {
        "location": "[resourceGroup().location]",
        "usernameAndPassword": "[concat('parameters('username'), ':', parameters('password'))]",
        "authorizationHeader": "[concat('Basic ', base64(variables('usernameAndPassword')))]"
     }
 
+现在开始，您对表达式和函数的了解足以能够了解该模板的各个部分。有关所有模板函数（包括参数和返回值的格式）的详细信息，请参阅 [Azure 资源管理器模板函数](/documentation/articles/resource-group-template-functions)。
 
- 现在，你对表达式和函数有了足够的了解，接下来可以学习模板的节。有关所有模板函数（包括参数和返回值的格式）的详细信息，请参阅 [Azure 资源管理器模板函数](resource-group-template-functions)。
 
-## Parameters 
+## Parameters
 
-在模板的 parameters 节中，可以指定用户在部署资源时可以输入的值。你可以在整个模板中使用这些参数值，来为部署的资源设置值。在模板的其他节中，只能使用 parameters 节中声明的参数。
+在模板的参数部分中，您可以指定用户在部署资源时能够输入的值。你可以在整个模板中使用这些参数值，来为部署的资源设置值。在模板的其他节中，只能使用 parameters 节中声明的参数。
 
 在 parameters 节中，不能使用一个参数值来构造另一个参数值。这种类型的操作通常在 variables 节中发生。
 
-定义具有以下结构的参数：
+使用以下结构定义参数：
 
     "parameters": {
        "<parameterName>" : {
@@ -97,22 +103,23 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
        }
     }
 
-| 元素名称 | 必需 | 说明 
-| :------------: | :------: | :---------- 
-| parameterName | 是 | 参数的名称。必须是有效的 JavaScript 标识符。 
-| type | 是 | 参数值的类型。参阅以下允许类型的列表。 
-| defaultValue | 否 | 参数的默认值（如果没有为参数提供任何值）。 
-| allowedValues | 否 | 参数的允许值数组，用于确保提供正确的值。
+| 元素名称 | 必选 | 说明
+| :------------: | :------: | :----------
+| parameterName | 是 | 参数的名称。必须是有效的 JavaScript 标识符。
+| type | 是 | 参数值的类型。请参阅以下允许类型的列表。
+| defaultValue | 否 | 参数的默认值，如果没有为参数提供任何值。
+| allowedValues | 否 | 用来确保提供正确值的参数的允许值数组。
 
-允许的类型和值为：
+允许的类型和值是：
 
-- string 或 secureString - 任何有效的 JSON 字符串 
-- int - 任何有效的 JSON 整数 
-- bool - 任何有效的 JSON 布尔值 
-- object - 任何有效的 JSON 对象 
-- array - 任何有效的 JSON 数组 
+- 字符串或 secureString - 任何有效的 JSON 字符串
+- int - 任何有效的 JSON 整数
+- 布尔值 - 任何有效的 JSON 布尔值
+- 对象或 secureObject - 任何有效的 JSON 对象
+- 数组 - 任何有效的 JSON 数组
 
->[AZURE.NOTE] 所有密码、密钥和其他机密应使用 **secureString** 类型。部署资源后，无法读取使用 secureString 类型的模板参数。
+
+>[AZURE.NOTE]所有密码、密钥和其他机密信息应使用 **secureString** 类型。部署资源后，无法读取使用 secureString 类型的模板参数。
 
 以下示例演示如何定义参数：
 
@@ -139,10 +146,11 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
        }
     }
 
-## Variables 
-在 variables 节中，可以构造一些值来简化模板语言表达式。通常，这些变量基于通过参数提供的值。
+## 变量
 
-以下示例演示了如何定义从两个参数值构造的变量：
+在变量部分中，可构造用于简化模板语言表达式的值。通常，这些变量基于通过参数提供的值。
+
+以下示例演示如何定义从两个参数值构造出的变量：
 
     "parameters": {
        "username": {
@@ -156,8 +164,7 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
        "connectionString": "[concat('Name=', parameters('username'), ';Password=', parameters('password'))]"
     }
 
-
-以下示例演示了一个具有复杂 JSON 类型的变量，以及从其他变量构造的变量：
+下一个示例演示一个属于复杂的 JSON 类型的变量，以及从其他变量构造出的变量：
 
     "parameters": {
        "environmentName": {
@@ -209,7 +216,7 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
 
 | 元素名称 | 必选 | 说明
 | :----------------------: | :------: | :----------
-| apiVersion | 是 | 支持该资源的 API 版本。
+| apiVersion | 是 | 支持该资源的 API 版本。有关资源的可用版本和架构，请参阅 [Azure 资源管理器架构](https://github.com/Azure/azure-resource-manager-schemas)。
 | type | 是 | 资源的类型。此值是资源提供程序的命名空间以及资源提供程序支持的资源类型的组合。
 | name | 是 | 资源的名称。该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。
 | location | 否 | 提供的资源支持的地理位置。
@@ -218,7 +225,7 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
 | 属性 | 否 | 特定于资源的配置设置。
 | 资源 | 否 | 依赖于所定义的资源的子资源。
 
-如果资源名称不是唯一的，你可以使用 **resourceId** 帮助器函数（下面将会介绍）获取任何资源的唯一标识符。
+如果资源名称不是唯一的，您可以使用 **resourceId** 帮助器函数（下面将会介绍）获取任何资源的唯一标识符。
 
 以下示例演示了 **Microsoft.Web/serverfarms** 资源，以及一个包含嵌套 **Extensions** 资源的 **Microsoft.Web/sites** 资源：
 
@@ -302,15 +309,17 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
 ## 更高级方案。
 本主题提供了有关模板的简介。但是，你的方案可能需要更高级的任务。
 
-你可能需要将两个模板合并在一起，或者在父模板中使用子模板。有关详细信息，请参阅[嵌套的模板](resource-group-advanced-template#nested-template)。
+你可能需要将两个模板合并在一起，或者在父模板中使用子模板。有关详细信息，请参阅[将已链接的模版与 Azure 资源管理器配合使用](/documentation/articles/resource-group-advanced-template/#nested-template)。
 
-你可能需要使用不同资源组中的资源。使用跨多个资源组共享的存储帐户或虚拟网络时，这很常见。有关详细信息，请参阅 [resourceId 函数](resource-group-template-functions#resourceid)。
+若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](/documentation/articles/resource-group-create-multiple)。
+
+你可能需要使用不同资源组中的资源。使用跨多个资源组共享的存储帐户或虚拟网络时，这很常见。有关详细信息，请参阅 [resourceId 函数](/documentation/articles/resource-group-template-functions/#resourceid)。
 
 ## 完整的模板
 以下模板将部署一个 Web 应用程序，并使用 .zip 文件中的代码设置该应用程序。
 
     {
-       "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
        "contentVersion": "1.0.0.0",
        "parameters": {
          "siteName": {
@@ -389,9 +398,9 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
     }
 
 ## 后续步骤
-- [Azure 资源管理器模板函数](resource-group-template-functions)
-- [使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy)
-- [高级模板操作](resource-group-advanced-template)
-- [Azure 资源管理器概述](resource-group-overview)
+- 有关您可以使用的来自模板中的函数的详细信息，请参阅 [Azure 资源管理器模板函数](/documentation/articles/resource-group-template-functions)
+- 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](/documentation/articles/azure-portal/resource-group-template-deploy)
+- 有关进一步了解部署应用程序的示例，请参阅[按可预见的方式在 Azure 中设置和部署微服务](/documentation/articles/app-service-deploy-complex-application-predictably)
+- 若要查看可用架构，请参阅 [Azure 资源管理器架构](https://github.com/Azure/azure-resource-manager-schemas)。
 
-<!---HONumber=61-->
+<!---HONumber=71-->

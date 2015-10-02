@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services"  
-	ms.date="06/29/2015" 
+	ms.date="08/17/2015"  
 	wacn.date=""/>
 
 
@@ -20,7 +20,7 @@
 有关在实时流式处理视频中隐藏式字幕和广告支持的详细信息，请参阅[支持的隐藏式字幕和广告插入标准](https://msdn.microsoft.com/zh-cn/library/azure/dn783466.aspx#caption_ad)。
 
  
-##<a id="insert_ads_into_media"></a> 向媒体中插入广告
+##<a id="insert_ads_into_media"></a>向媒体中插入广告
 
 Azure 媒体服务通过“Windows 媒体平台：播放器框架”提供广告插入支持。附带广告支持的播放器框架在 Windows 8、Silverlight、Windows Phone 8 和 iOS 设备上均可用。每个播放器框架均包含显示如何实现播放器应用程序的示例代码。可插入 media:list 中的广告有三种。
 
@@ -354,8 +354,6 @@ VPAID 是用于使可执行广告单元能够与视频播放器进行通信的 A
 
 Microsoft Media Platform：适用于 Windows 8 和 Windows Phone 8 的播放器框架包含示例应用程序集合，这些示例应用程序向你展示如何使用该框架实现视频播放器应用程序。可以从[适用于 Windows 8 和 Windows Phone 8 的播放器框架](https://playerframework.codeplex.com/releases/view/105214)下载播放器框架和示例。
 
-有关插入广告的详细信息，请参阅[向媒体中插入广告](media-services-inserting-ads-on-client-side.md#insert_ads_into_media)。
-
 打开 Microsoft.PlayerFramework.Xaml.Samples 解决方案时，将看到项目中的多个文件夹。Advertising 文件夹包含与创建具有广告支持的视频播放器相关的示例代码。Advertising 文件夹中有多个 XAML/cs 文件，每一个均显示如何以不同的方式插入广告。以下列表对每个文件进行描述：
 
 - AdPodPage.xaml 演示如何显示广告荚。
@@ -620,7 +618,18 @@ Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程
         [self logFrameworkError];
     }
          
-   以下示例演示如何安排早期绑定 VAST 广告。//Example:4 Schedule an early binding VAST ad //Download the VAST file if (![framework.adResolver downloadManifest:&manifest withURL:[NSURL URLWithString:@"http://portalvhdsq3m25bf47d15c.blob.core.chinacloudapi.cn/vast/PlayerTestVAST.xml"]]) { [self logFrameworkError]; } else { adLinearTime.startTime = 7; adLinearTime.duration = 0;
+   以下示例演示如何安排早期绑定 VAST 广告。    
+	//Example:4 Schedule an early binding VAST ad
+    //Download the VAST file
+    if (![framework.adResolver downloadManifest:&manifest withURL:[NSURL URLWithString:@"http://portalvhdsq3m25bf47d15c.blob.core.chinacloudapi.cn/vast/PlayerTestVAST.xml"]])
+    {
+        [self logFrameworkError];
+    }
+    else
+    {
+        adLinearTime.startTime = 7;
+        adLinearTime.duration = 0;
+        
         
 		// Create AdInfo instance
 	    AdInfo *vastAdInfo2 = [[[AdInfo alloc] init] autorelease];
@@ -798,6 +807,6 @@ Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程
  
 ##另请参阅
 
-[开发视频播放器应用程序](/documentation/articles/media-services-develop-video-players) [适用于 iOS 的 Azure 媒体播放器框架简介](https://channel9.msdn.com/Series/Windows-Azure-Media-Services-Tutorials/An-introduction-to-Azure-Media-Player-Framework-for-IOS)
+[开发视频播放器应用程序](/documentation/articles/media-services-develop-video-players)
 
-<!---HONumber=67-->
+<!---HONumber=71-->

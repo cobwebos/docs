@@ -14,7 +14,7 @@
 
 
 
-#使用 Azure Automation 管理 Azure 云服务
+# 使用 Azure Automation 管理 Azure 云服务
 
 本指南介绍 Azure Automation 服务，以及如何使用它来简化 Azure 云服务的管理。
 
@@ -38,4 +38,4 @@ Azure Automation 提供高度可靠且高度可用的工作流执行引擎，它
 
 请参阅 Azure 自动化[入门教程](/documentation/articles/automation-create-runbook-from-samples)
 
-<!---HONumber=69-->
+<!---HONumber=71-->

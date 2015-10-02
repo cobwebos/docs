@@ -76,4 +76,4 @@ public override bool OnStart()
 ## 后续步骤
 了解如何[创建云服务包](/documentation/articles/cloud-services-model-and-package)。
 
-<!---HONumber=69-->
+<!---HONumber=71-->

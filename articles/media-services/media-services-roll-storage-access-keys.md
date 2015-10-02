@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="05/24/2015" 
+	ms.date="08/11/2015"
 	wacn.date=""/>
 
 #如何：轮转存储访问密钥后更新媒体服务
@@ -103,4 +103,4 @@ Media Services 依赖于其中的一个存储密钥（主密钥或辅助密钥�
 
  
 
-<!---HONumber=67-->
+<!---HONumber=71-->

@@ -270,4 +270,4 @@ Azure 仅允许 Web 角色有一个入口点。这意味着所有通信都通过
 [vs_reconfigure]: https://msdn.microsoft.com/zh-cn/library/ee405486.aspx
 [vs_create]: https://msdn.microsoft.com/zh-cn/library/ee405487.aspx
 
-<!---HONumber=67-->
+<!---HONumber=71-->

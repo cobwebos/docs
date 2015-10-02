@@ -24,7 +24,7 @@
 
 你是否已经了解什么是 CNAME 和 A 记录？ [跳过解释](#add-a-cname-record-for-your-custom-domain)。
 
-> [AZURE.NOTE]本任务中的过程适用于 Azure 云服务。有关网站，请参阅[为 Azure App Service Web 应用配置自定义域名](/documentation/articles/app-service-web/web-sites-custom-domain-name)。有关存储帐户，请参阅 [/documentation/articles/Configuring a Custom Domain Name for an Azure Storage Account](../storage/storage-custom-domain-name)。
+> [AZURE.NOTE]本任务中的过程适用于 Azure 云服务。有关网站，请参阅[为 Azure App Service Web 应用配置自定义域名](/documentation/articles/app-service-web/web-sites-custom-domain-name)。有关存储帐户，请参阅 [/documentation/articles/Configuring a Custom Domain Name for an Azure Storage Account](/documentation/articles/storage-custom-domain-name)。
 
 <p/>
 
@@ -144,4 +144,4 @@ CNAME 记录将*特定*域（例如 **contoso.com** 或 **www.contoso.com**）�
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
  
 
-<!---HONumber=67-->
+<!---HONumber=71-->

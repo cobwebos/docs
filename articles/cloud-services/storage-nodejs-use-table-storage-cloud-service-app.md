@@ -21,7 +21,7 @@
 
 ## 概述
 
-在本教程中，你将通过将用于 Node.js 的 Windows Azure 客户端库与数据管理服务结合使用，来扩展在[使用 Express 生成 Node.js Web 应用程序]教程中创建的应用程序。你将扩展你的应用程序以创建可部署到 Azure 的基于 Web 的任务列表应用程序。用户可以通过任务列表来检索任务、添加新任务以及将任务标记为已完成。
+在本教程中，你将通过将用于 Node.js 的 Microsoft Azure 客户端库与数据管理服务结合使用，来扩展在[使用 Express 生成 Node.js Web 应用程序]教程中创建的应用程序。你将扩展你的应用程序以创建可部署到 Azure 的基于 Web 的任务列表应用程序。用户可以通过任务列表来检索任务、添加新任务以及将任务标记为已完成。
 
 任务项存储在 Azure 存储空间中。Azure 存储空间提供了具有容错能力且可用性非常好的非结构化数据存储。Azure 存储空间包含一些可用来存储和访问数据的数据结构，你可以通过 Azure SDK for Node.js 中包含的 API 或通过 REST API 利用存储服务。有关详细信息，请参阅[在 Azure 中存储和访问数据]。
 
@@ -94,7 +94,7 @@
 		+-- xml2js@0.2.7 (sax@0.5.2)
 		+-- request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
 
-##在 Node 应用程序中使用表服务
+## 在 Node 应用程序中使用表服务
 
 在本节中，你将通过添加一个包含你的任务模型的 **task.js** 文件来扩展 **express** 命令创建的基本应用程序。你还将修改现有 **app.js** 并创建使用该模型的新** tasklist.js** 文件。
 
@@ -359,7 +359,7 @@
 部署完成后，你将看到如下响应：
 
 	PS C:\node\tasklist> publish-azureserviceproject -servicename tasklist -location "West US"
-	WARNING: Publishing tasklist to Windows Azure. This may take several minutes...
+	WARNING: Publishing tasklist to Microsoft Azure. This may take several minutes...
 	WARNING: 2:18:42 PM - Preparing runtime deployment for service 'tasklist'
 	WARNING: 2:18:42 PM - Verifying storage account 'tasklist'...
 	WARNING: 2:18:43 PM - Preparing deployment for tasklist with Subscription ID: 65a1016d-0f67-45d2-b838-b8f373d6d52e...
@@ -403,4 +403,4 @@ Azure 将按使用的服务器小时数对 Web 角色实例计费。你的应用
   [Node.js Web 应用程序]: /develop/nodejs/tutorials/getting-started/
  
 
-<!---HONumber=69-->
+<!---HONumber=71-->

@@ -136,4 +136,4 @@
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
 [2]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithallfiles.png
 
-<!---HONumber=69-->
+<!---HONumber=71-->

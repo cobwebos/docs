@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何在多个客户端上使用单个移动服务后端 | Azure 移动服务" 
+	pageTitle="如何在多个客户端上使用单个移动服务后端 | Microsoft Azure" 
 	description="了解如何在面向不同移动平台（包括 Windows 应用商店和 Windows Phone）的多个客户端应用程序上使用单个移动服务后端。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -11,11 +11,11 @@
 	ms.date="06/04/2015" 
 	wacn.date=""/>
 
-#  通过单个移动服务支持多个设备平台
+# 通过单个移动服务支持多个设备平台
  
 在移动应用程序开发中使用 Azure 移动服务的主要优势之一在于，能够使用单个后端服务来支持多个客户端平台上的应用程序。移动服务为所有主要设备平台提供了本机客户端库，让你更轻松地使用单个后端服务，通过跨平台开发人员工具开发应用程序。本主题讨论在使用单个移动服务后端时让应用程序运行在多个客户端平台上的注意事项。
 
-## <a id="push"></a>跨平台推送通知
+##<a id="push"></a>跨平台推送通知
 
 移动服务使用 Azure 通知中心将推送通知发送到你在所有主要设备平台上的客户端应用程序。通知中心提供了一致且统一的基础结构让你创建和管理设备注册，以及发送跨平台的推送通知。通知中心通过使用以下特定于平台的通知服务支持发送推送通知：
 
@@ -38,11 +38,11 @@
 
 链接到特定于客户端的教程的以下各节中的表显示了如何实现从 .NET 和 JavaScript 后端移动服务推送通知。
 
-### .NET 后端
+###.NET 后端
 
 在 .NET 后端移动服务中，通过调用从 [ApiServices.Push](http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobile.service.apiservices.push.aspx) 属性获取的 [PushClient](http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobile.service.notifications.pushclient.aspx) 对象的 [SendAsync] 方法发送通知。发送的推送通知（本机或模板）取决于传递给 [SendAsync] 方法的特定 [IPushMessage](http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobile.service.notifications.ipushmessage.aspx) 派生的对象，如下表所示：
 
-|平台 |[APNS](mobile-services-dotnet-backend-ios-get-started-push)|[GCM](mobile-services-dotnet-backend-android-get-started-push) |[WNS](mobile-services-dotnet-backend-windows-store-dotnet-get-started-push) |[MPNS](mobile-services-dotnet-backend-windows-phone-get-started-push)|
+|平台 |[APNS](mobile-services-dotnet-backend-ios-get-started-push)|[GCM](mobile-services-dotnet-backend-android-get-started-push) |[WNS](/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push) |[MPNS](/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-push)|
 |-----|-----|----|----|-----|
 |本机|[ApplePushMessage](http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobile.service.applepushmessage.aspx) |[GooglePushMessage](http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobile.service.googlepushmessage.aspx) |[WindowsPushMessage](http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobile.service.windowspushmessage.aspx) | [MpnsPushMessage](http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobile.service.mpnspushmessage.aspx) |
 
@@ -73,11 +73,11 @@
 	// Send a push notification to all template registrations.
     await Services.Push.SendAsync(templatePayload); 
  
-### JavaScript 后端
+###JavaScript 后端
 
 在 JavaScript 后端移动服务中，通过调用从全局 [push 对象]获取的特定于平台的对象的 **send** 方法发送通知，如下表所示：
 
-|平台 |[APNS](mobile-services-javascript-backend-ios-get-started-push)|[GCM](mobile-services-javascript-backend-android-get-started-push) |[WNS](mobile-services-javascript-backend-windows-store-dotnet-get-started-push) |[MPNS](mobile-services-javascript-backend-windows-phone-get-started-push)|
+|平台 |[APNS](mobile-services-javascript-backend-ios-get-started-push)|[GCM](/documentation/articles/mobile-services-javascript-backend-android-get-started-push) |[WNS](/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push) |[MPNS](/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push)|
 |-----|-----|----|----|-----|
 |本机|[apns 对象](http://msdn.microsoft.com/zh-cn/library/azure/jj839711.aspx) |[gcm 对象](http://msdn.microsoft.com/zh-cn/library/azure/dn126137.aspx) |[wns 对象](http://msdn.microsoft.com/zh-cn/library/azure/jj860484.aspx) | [mpns 对象](http://msdn.microsoft.com/zh-cn/library/azure/jj871025.aspx) |
 
@@ -128,7 +128,7 @@
                     }
                 }); 
 
-## <a id="xplat-app-dev"></a>跨平台应用程序开发
+##<a id="xplat-app-dev"></a>跨平台应用程序开发
 开发所有主要移动设备平台的本机移动设备应用程序要求你（或你的组织）至少具备 Objective-C、Java 和 C# 或 JavaScript 编程语言的专业知识。由于在这些不同平台中开发费用昂贵，一些开发人员为其应用程序选择完全基于 Web 浏览器的体验。但是，此类基于 Web 的体验不能访问大多数本机资源，这些资源提供了用户希望在其移动设备上实现的丰富体验。
 
 可使用跨平台工具，这些工具在仍共享单一代码库（通常是 JavaScript）的同时，在移动设备上提供了更丰富的本机体验。移动服务通过提供以下开发平台的快速入门教程，可让你轻松创建和管理跨平台应用程序开发平台的后端服务：
@@ -146,7 +146,7 @@
 	你可以使用 Xamarin Studio 或 Visual Studio 2013 构建 Xamarin 应用程序。有关详细信息，请参阅 [Visual Studio 中的跨平台开发](http://msdn.microsoft.com/zh-cn/library/dn771552.aspx)。
 
 
-## <a id="shared-vs"></a>共享和重用 Visual Studio 项目中的代码
+##<a id="shared-vs"></a>共享和重用 Visual Studio 项目中的代码
 
 移动服务包括 .NET 客户端库，它是支持在所有 Windows 平台上开发的 .NET Framework 可移植类库 (PCL)。有关详细信息，请参阅[如何将 .NET 客户端用于移动服务]。这样，可轻松地在多个 C# 项目中重用相同的移动服务代码，例如用于数据访问或身份验证的代码。
 
@@ -154,7 +154,7 @@
 
 除了此一般指南外，Visual Studio 还提供了特定工具，用于在多个客户端应用程序项目中重用移动服务代码，这些工具将在以下各节中讨论。有关使用 Visual Studio 2013 构建跨平台应用程序的更多常规信息，请参阅 [Visual Studio 中的跨平台开发](http://msdn.microsoft.com/zh-cn/library/dn771552.aspx)。
 
-###  通用 Windows 应用程序
+### 通用 Windows 应用程序
 
 Visual Studio 2013 Update 2 添加了对通用 Windows 应用程序项目的支持。通用应用程序是包括 Windows 应用商店 8.1 和 Windows Phone 应用商店 8.1 应用程序项目，以及共享的代码项目的解决方案。在这种项目中，共享的代码将视为是 Windows 应用商店和 Windows Phone 项目的一部分。有关详细信息，请参阅[构建适用于所有 Windows 设备的通用 Windows 应用程序]。可以使用 C#/XAML 和 JavaScript/HTML 编写通用 Windows 应用程序。
 
@@ -162,14 +162,14 @@ Visual Studio 2013 Update 2 添加了对通用 Windows 应用程序项目的支�
 
 >[AZURE.NOTE]该门户提供的快速入门应用程序项目的 C# 版本共享 MainPage.xaml.cs 代码隐藏页，但未使用视图模型。有关作为用 C# 编写使用 MVVM 的通用 Windows 应用程序项目的 TodoList 应用程序示例，请参阅[使用 MVVM 的 Azure 移动服务的通用 Windows 应用程序项目]。
 
-### <a id="xamarin"></a>Xamarin 开发
+###<a id="xamarin"></a>Xamarin 开发
 
 通过使用 Xamarin 和 Visual Studio 或 Xamarin Studio，你可以利用 Visual Studio 和 C# 开发体验开发适用于 iOS 和 Android 的应用程序。Xamarin 使用 .NET Framework 的跨平台实现，让你使用 C# 代码开发 iOS 和 Android 应用程序。通过使用 Xamarin，你可以利用 Windows 项目中使用移动服务 .NET 客户端库的现有代码来访问移动服务。有关详细信息，请参阅 [Visual Studio 中的跨平台开发](http://msdn.microsoft.com/zh-cn/library/dn771552.aspx)。
 
-若要开始构建使用移动服务的 Xamarin 应用程序，请参阅 Xamarin 快速入门教程 ([iOS](mobile-services-ios-get-started)/[Android](mobile-services-android-get-started))。
+若要开始构建使用移动服务的 Xamarin 应用程序，请参阅 Xamarin 快速入门教程 ([iOS](/documentation/articles/mobile-services-ios-get-started)/[Android](/documentation/articles/mobile-services-android-get-started))。
 
 
-###  Windows 应用商店和 Windows Phone Silverlight 应用程序
+### Windows 应用商店和 Windows Phone Silverlight 应用程序
 
 在 Windows Phone 8.1 中，你可以选择使用以前的基于 Silverlight 的 XAML 开发应用程序，或者使用基于 Windows 运行时的 XAML 实现通用 Windows 应用程序的开发。有关 Windows Phone 8.1 Silverlight 应用程序和 Windows Phone 应用商店 8.1 应用程序的详细信息，请参阅 [Windows Phone 8 开发人员下一步要做什么]。
 
@@ -195,12 +195,12 @@ Visual Studio 2013 Update 2 添加了对通用 Windows 应用程序项目的支�
 [如何将 .NET 客户端用于移动服务]: zh-cn/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/
 [push 对象]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554217.aspx
 [TemplatePushMessage]: http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobile.service.templatepushmessage.aspx
-[PhoneGap]: mobile-services-javascript-backend-phonegap-get-started
-[Sencha]: partner-sencha-mobile-services-get-started
-[Appcelerator]: partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started
+[PhoneGap]: /documentation/articles/mobile-services-javascript-backend-phonegap-get-started
+[Sencha]: /documentation/articles/partner-sencha-mobile-services-get-started
+[Appcelerator]: /documentation/articles/partner-appcelerator-mobile-services-javascript-backend-appcelerator-get-started
 [SendAsync]: http://msdn.microsoft.com/zh-cn/library/microsoft.windowsazure.mobile.service.notifications.pushclient.sendasync.aspx
 [Windows Phone 8 开发人员下一步要做什么]: http://msdn.microsoft.com/zh-cn/library/windows/apps/dn655121(v=vs.105).aspx
 [构建适用于所有 Windows 设备的通用 Windows 应用程序]: http://go.microsoft.com/fwlink/p/?LinkId=509905
 [使用 MVVM 的 Azure 移动服务的通用 Windows 应用程序项目]: http://code.msdn.microsoft.com/Universal-Windows-app-for-db3564de
 
-<!---HONumber=HO63-->
+<!---HONumber=71-->

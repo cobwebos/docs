@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="06/08/2015" 
+	ms.date="08/11/2015" 
 	wacn.date=""/>
 
 
@@ -216,4 +216,4 @@ Media Services 支持与 Azure CDN 集成。有关如何启用 Azure CDN 的信�
 [vod-overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
  
 
-<!---HONumber=67-->
+<!---HONumber=71-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="cache" 
-	ms.date="05/26/2015" 
+	ms.date="08/18/2015" 
 	wacn.date=""/>
 
 # 如何使用 Azure 托管缓存服务
@@ -41,7 +41,7 @@ Azure 托管缓存服务包含以下功能：
 
 本指南提供了托管缓存服务的入门概述。有关超出本入门指南范围的功能的更多详细信息，请参阅 [Azure 托管缓存服务概述][]。
 
-<a name="getting-started-cache-service">
+<a name="getting-started-cache-service"></a>
 ## 缓存服务入门
 
 托管缓存服务入门相当容易。若要开始使用，需要首先设置和配置缓存。接下来，配置缓存客户端，以便它们可以访问缓存。在配置了缓存客户端后，就可以开始使用它们。
@@ -50,7 +50,7 @@ Azure 托管缓存服务包含以下功能：
 -	[配置缓存][]
 -	[配置缓存客户端][]
 
-<a name="create-cache">
+<a name="create-cache"></a>
 ## 创建缓存
 
 托管缓存服务中的缓存是使用 PowerShell cmdlet 创建的。
@@ -117,7 +117,7 @@ Azure 托管缓存服务包含以下功能：
 
 
 
-<a name="enable-caching">
+<a name="enable-caching"></a>
 ## 配置缓存
 
 在管理门户的针对缓存的“配置”选项卡中配置针对你的缓存的选项。每个缓存都具有“默认”命名缓存，并且标准和高级缓存产品支持最多 9 个附加的命名缓存，总共 10 个。每个命名缓存都具有自己的一组选项，可用于以高度灵活的方式配置你的缓存。
@@ -162,7 +162,7 @@ Azure 托管缓存服务包含以下功能：
 
 在配置缓存后，可以配置缓存客户端以允许访问缓存。
 
-<a name="NuGet">
+<a name="NuGet"></a>
 ## 配置缓存客户端
 
 使用托管缓存服务创建的缓存可从 Azure 网站、Web 角色、辅助角色和虚拟机中运行的 Azure 应用程序进行访问。提供了 NuGet 包，它可用于简化缓存客户端应用程序的配置。
@@ -171,7 +171,7 @@ Azure 托管缓存服务包含以下功能：
 
 ![NuGet 包菜单][NuGetPackageMenu]
 
-在“联机搜索”文本框中键入 **WindowsAzure.Caching**，然后从结果中选择“Windows Azure 缓存” 。单击“安装”，然后单击“我接受”。
+在“联机搜索”文本框中键入 **WindowsAzure.Caching**，然后从结果中选择“Microsoft Azure 缓存” 。单击“安装”，然后单击“我接受”。
 
 ![NuGet 包][NuGetPackage]
 
@@ -256,7 +256,7 @@ NuGet 包还添加对以下程序集的引用：
 
 在配置了你的客户端项目的缓存后，你可以使用以下各节中介绍的方法来使用你的缓存。
 
-<a name="working-with-caches">
+<a name="working-with-caches"></a>
 ## 使用缓存
 
 本节中的步骤介绍如何使用缓存执行常见任务。
@@ -267,7 +267,7 @@ NuGet 包还添加对以下程序集的引用：
 -   [如何在缓存中存储 ASP.NET 会话状态][]
 -   [如何在缓存中存储 ASP.NET 页面输出缓存][]
 
-<a name="create-cache-object">
+<a name="create-cache-object"></a>
 ## 如何创建 DataCache 对象
 
 若要以编程方式使用缓存，你需要引用该缓存。将以下代码添加到要从中使用 Azure Cache 的任何文件的顶部：
@@ -290,7 +290,7 @@ NuGet 包还添加对以下程序集的引用：
     // Or DataCache cache = cacheFactory.GetCache("MyCache");
     // cache can now be used to add and retrieve items.	
 
-<a name="add-object">
+<a name="add-object"></a>
 ## 如何在缓存中添加和检索对象
 
 若要向缓存中添加项，可以使用 **Add** 或 **Put** 方法。**Add** 方法将指定的对象添加到缓存中，并按键参数的值进行键控。
@@ -324,7 +324,7 @@ NuGet 包还添加对以下程序集的引用：
     // replace it.
     cache.Put("item", "value");
 
-<a name="specify-expiration">
+<a name="specify-expiration"></a>
 ## 如何在缓存中指定对象的有效期
 
 默认情况下，缓存中的项在放入缓存中 10 分钟后到期。在管理门户的针对缓存的“配置”选项卡上的“时间(分钟)”设置中配置此选项。
@@ -346,7 +346,7 @@ NuGet 包还添加对以下程序集的引用：
     DataCacheItem item = cache.GetCacheItem("item");
     TimeSpan timeRemaining = item.Timeout;
 
-<a name="store-session">
+<a name="store-session"></a>
 ## 如何在缓存中存储 ASP.NET 会话状态
 
 用于 Azure Cache 的会话状态提供程序是用于 ASP.NET 应用程序的进程外存储机制。此提供程序允许你将会话状态存储在 Azure 缓存中而非内存或 SQL Server 数据库中。若要使用缓存会话状态提供程序，请首先配置缓存，然后使用缓存 NuGet 包配置用于缓存的 ASP.NET 应用程序，如[托管缓存服务入门][]中所述。在安装缓存 NuGet 包时，它会在 web.config 中添加一个包含 ASP.NET 应用程序所需配置的注释掉的节，以使用用于 Azure Cache 的会话状态提供程序。
@@ -370,7 +370,7 @@ NuGet 包还添加对以下程序集的引用：
 
 有关使用托管缓存服务会话状态提供程序的详细信息，请参阅[用于 Azure Cache 的会话状态提供程序][]。
 
-<a name="store-page">
+<a name="store-page"></a>
 ## 如何在缓存中存储 ASP.NET 页面输出缓存
 
 用于 Azure Cache 的输出缓存提供程序是用于输出缓存数据的进程外存储机制。此数据专门用于完整 HTTP 响应（页面输出缓存）。此提供程序会插入 ASP.NET 4 中引入的新输出缓存提供程序扩展点。若要使用该输出缓存提供程序，请首先配置缓存群集，然后使用缓存 NuGet 包配置用于缓存的 ASP.NET 应用程序，如[托管缓存服务入门][]中所述。在安装 Caching NuGet 包时，它会在 web.config 中添加以下包含 ASP.NET 应用程序所需配置的注释掉的节，以使用用于 Azure Caching 的输出缓存提供程序。
@@ -400,7 +400,7 @@ NuGet 包还添加对以下程序集的引用：
 
 有关使用用于 Azure Cache 的输出缓存提供程序的详细信息，请参阅[用于 Azure Cache 的输出缓存提供程序][]。
 
-<a name="next-steps">
+<a name="next-steps"></a>
 ## 后续步骤
 
 现在，你已了解托管缓存服务的基础知识，请单击下面的链接了解如何执行更复杂的缓存任务。
@@ -479,4 +479,4 @@ NuGet 包还添加对以下程序集的引用：
 
 [哪种 Azure Cache 产品/服务适合我？]: http://msdn.microsoft.com/zh-cn/library/azure/dn766201.aspx
 
-<!---HONumber=67-->
+<!---HONumber=71-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure 云服务和 ASP.NET 入门 | Windows Azure"
+	pageTitle="Azure 云服务和 ASP.NET 入门 | Microsoft Azure"
 	description="了解如何使用 ASP.NET MVC 和 Azure 创建多层应用程序。该应用程序运行在云服务中，带有 web 角色和辅助角色。它使用实体框架、SQL 数据库和 Azure 存储队列和 Blob。"
 	services="cloud-services, storage"
 	documentationCenter=".net"
@@ -149,7 +149,7 @@ Azure 云服务是该应用程序将运行的环境。
 
 在云中运行应用程序时，它将使用基于云的数据库。
 
-1. 在 [Azure 门户](http://manage.windowsazure.cn)中，单击“新建”>“数据服务”>“SQL 数据库”>“快速创建”。
+1. 在 Azure 门户中，单击“新建”>“数据服务”>“SQL 数据库”>“快速创建”[](http://manage.windowsazure.cn)。
 
 1. 在“数据库名称”框中，输入 *contosoads*。
 
@@ -341,7 +341,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
 9. 就像在本地运行应用程序一样，现在可以通过创建、查看和编辑一些广告测试应用程序。
 
->[AZURE.NOTE]完成测试后，删除或停止云服务。即使你不使用云服务，也会产生费用，因为要为它保留虚拟机资源。如果保持运行云服务，找到你 URL 的任何人都可以创建和查看广告。在 [Azure 门户](http://manage.windowsazure.com)中，转到云服务的“仪表板”选项卡，然后单击页面底部的“删除”按钮。如果你只是想要暂时防止其他人访问站点，请单击“停止”。在这种情况下，会继续产生费用。当你不再需要 SQL Database 和存储帐户时，可以遵循类似的过程将其删除。
+>[AZURE.NOTE]完成测试后，删除或停止云服务。即使你不使用云服务，也会产生费用，因为要为它保留虚拟机资源。如果保持运行云服务，找到你 URL 的任何人都可以创建和查看广告。在 [Azure 门户](http://manage.windowsazure.com)中，转到云服务的“仪表板”选项卡，然后单击页面底部的“删除”按钮。如果你只是想要暂时防止其他人访问站点，请单击“停止”。在这种情况下，会继续产生费用。当你不再需要 SQL 数据库和存储帐户时，可以遵循类似的过程将其删除。
 
 ## 从头开始创建应用程序
 
@@ -361,7 +361,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
 1. 在 Visual Studio 中，从“文件”菜单中选择“新建项目”。
 
-2. 在“新建项目”对话框的左窗格中，展开“Visual C#”，选择“云”模板，然后选择“Windows Azure 云服务”模板。
+2. 在“新建项目”对话框的左窗格中，展开“Visual C#”，选择“云”模板，然后选择“Microsoft Azure 云服务”模板。
 
 3. 将项目和解决方案命名为 ContosoAdsCloudService，然后单击“确定”。
 
@@ -795,9 +795,9 @@ Contoso 广告应用程序有意保持入门教程的简单性。例如，它没
 
 * [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31)。在概念上与 Contoso 广告类似，但实施更多的功能和详细的实际编码做法。
 * [带有表、队列和 Blob 的 Azure 云服务多层应用程序](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。介绍 Azure 存储表以及 blob 和队列，并附带[分步教程系列](/documentation/articles/cloud-services-dotnet-multi-tier-app-storage-1-overview)。
-* [Windows Azure 中的云服务基础知识](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649)。一个综合示例，演示各种最佳实践，由 Microsoft 模式和实践组生产。
+* [Microsoft Azure 中的云服务基础知识](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649)。一个综合示例，演示各种最佳实践，由 Microsoft 模式和实践组生产。
 
-有关云开发的常规信息，请参阅[使用 Windows Azure 构建实际的云应用](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)。
+有关云开发的常规信息，请参阅[使用 Microsoft Azure 构建实际的云应用](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)。
 
 
 有关详细信息，请参阅以下资源：
@@ -806,4 +806,4 @@ Contoso 广告应用程序有意保持入门教程的简单性。例如，它没
 * [如何管理云服务](/documentation/articles/cloud-services-how-to-manage)
 * [Azure 存储空间](/documentation/services/storage/)
 
-<!---HONumber=69-->
+<!---HONumber=71-->

@@ -53,7 +53,7 @@
 
 1. 在团队资源管理器的“解决方案”部分，选择新的链接在本地存储库中创建一个新项目。<br/> ![][4]
 
-2. 你可以通过执行本演练中的步骤来部署网站或云服务（Azure 应用程序）。创建新的 Windows Azure 云服务项目或新的 ASP.NET MVC 项目。确保项目以 .NET Framework 4 或 4.5 为目标。如果你要创建云服务项目，请添加 ASP.NET MVC Web 角色和辅助角色。如果你想要创建网站，请选择 ASP.NET Web 应用程序项目模板，然后选择 MVC。请参阅 [Azure 和 ASP.NET 入门](/documentation/articles/web-sites-dotnet-get-started)。
+2. 你可以通过执行本演练中的步骤来部署网站或云服务（Azure 应用程序）。创建新的 Microsoft Azure 云服务项目或新的 ASP.NET MVC 项目。确保项目以 .NET Framework 4 或 4.5 为目标。如果你要创建云服务项目，请添加 ASP.NET MVC Web 角色和辅助角色。如果你想要创建网站，请选择 ASP.NET Web 应用程序项目模板，然后选择 MVC。请参阅 [Azure 和 ASP.NET 入门](/documentation/articles/web-sites-dotnet-get-started)。
 
 3. 打开解决方案的快捷菜单，然后选择“提交”。<br/> ![][7]
 
@@ -105,9 +105,8 @@
 <tr><td>允许升级</td><td>允许部署更新现有的部署，而不允许创建新部署。保留 IP 地址。</td></tr><tr><td>不要删除</td><td>如果为 true，则不会覆盖现有的无关部署（允许升级）。</td></tr>
 <tr><td>部署设置的路径</td><td>网站的 .pubxml 文件的路径，相对于存储库的根文件夹。对于云服务将忽略该属性。</td></tr>
 <tr><td>Sharepoint 部署环境</td><td>与服务名称相同</td></tr>
-<tr><td>Windows Azure 部署环境</td><td>网站或云服务的名称</td></tr>
+<tr><td>Microsoft Azure 部署环境</td><td>网站或云服务的名称</td></tr>
 </table> 
-<br/>
 
 11. 此时，你的生成应已成功完成。<br/> ![][28]
 
@@ -206,4 +205,4 @@
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=69-->
+<!---HONumber=71-->

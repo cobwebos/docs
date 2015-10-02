@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services"  
-	ms.date="05/24/2015" 
+	ms.date="08/11/2015" 
 	wacn.date=""/>
 
 
@@ -246,4 +246,4 @@
 	}
  
 
-<!---HONumber=64-->
+<!---HONumber=71-->

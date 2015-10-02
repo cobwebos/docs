@@ -11,7 +11,7 @@
 <tags
    ms.service="best-practice"
    ms.date="04/28/2015"
-   ms.author="masashin"/>
+   wacn.date=""/>
 
 # 缓存指南
 
@@ -44,7 +44,7 @@ _图 1：在不同的应用程序实例中使用内存中缓存_
 
 使用共享缓存有助于缓解每个缓存中可能存在不同数据的忧虑，这种情况可能会发生于内存中缓存。共享缓存可通过找出位于不同位置的缓存，确保不同的应用程序实例（通常作为不同服务的一部分托管，如图 2 所示）看到同一缓存数据视图。
 
-![使用共享缓存_](./media/best-practices-caching/Figure2.png)
+![使用共享缓存\_](./media/best-practices-caching/Figure2.png)
 
 _图 2：使用共享缓存_
 
@@ -119,8 +119,7 @@ _图 2：使用共享缓存_
 
 但是，在缓存暂时不可用的情况下回退到原始数据存储可能会影响系统的可缩放性；在恢复数据存储时，原始数据存储可能忙于处理数据请求，导致超时和连接失败。应该考虑的策略是在每个应用程序实例中实施本地专用缓存，以及所有应用程序实例访问的共享缓存。当应用程序检索项时，可能会先后在本地缓存、共享缓存和原始数据存储中检查。共享缓存不可用时，本地缓存可以使用共享缓存或数据库中的数据来填充。采用此方法需要经过慎重的配置，以防止本地缓存相对于共享缓存而言太过时，但在无法访问共享缓存时，它可以充当缓冲区。图 3 显示了此结构。
 
-![将本地、专用和共享缓存配合使用_](./media/best-practices-caching/Caching3.png)
-_图 3：将本地、专用和共享缓存配合使用_
+![将本地、专用和共享缓存配合使用\_](./media/best-practices-caching/Caching3.png)_图 3：将本地、专用和共享缓存配合使用_
 
 为了支持保存相对长期数据的大型缓存，某些缓存服务在缓存不可用时，提供实施自动故障转移的高可用性选项。这种方法通常涉及到将存储在主缓存服务器上的缓存数据复制到辅助缓存服务器，并在主服务器故障或断开连接时切换到辅助服务器。为了减少与写入多个目标相关的延迟，当数据写入主服务器上的缓存时，复制到辅助服务器的操作可以异步发生。此方法可能会导致某些缓存的信息在发生故障时丢失，但是此数据的比例应该小于缓存的总体大小。
 
@@ -150,7 +149,7 @@ _图 3：将本地、专用和共享缓存配合使用_
 
 若要在数据流入或流出缓存时保护数据，你可以依赖于客户端应用程序用来连接缓存的网络基础结构所提供的安全功能。如果在托管客户端应用程序的同一组织中使用现场服务器来实施缓存，则网络本身的隔离可能不需要你采取任何其他措施。如果缓存位于远程，且需要基于公共网络（例如 Internet）的 TCP 或 HTTP 连接，你应该考虑实施 SSL。
 
-## 使用 Microsoft Azure 实施缓存的注意事项
+## 使用 Microsoft Azure 实现缓存的注意事项
 
 Azure 提供 Azure Redis 缓存。这是开源 Redis 缓存的一种实现，可在 Azure 数据中心作为服务运行。它提供可从任何 Azure 应用程序访问的缓存服务，无论应用程序是实施为云服务、网站，还是在 Azure 虚拟机中。拥有适当访问密钥的客户端应用程序可以共享缓存。
 
@@ -428,54 +427,16 @@ Redis 支持对字符串值执行一系列原子性“获取和设置”操作�
 
 - `INCR`、`INCRBY`、`DECR` 和 `DECRBY`，用于对整数数字数据值执行原子递增和递减操作。StackExchange 库提供了 `IDatabase.StringIncrementAsync` 和 `IDatabase.StringDecrementAsync` 方法的重载版本，用于执行这些操作并返回存储在缓存中的结果值。以下代码段演示了如何使用这些方法：
 
-  ```csharp
-  ConnectionMultiplexer redisHostConnection = ...;
-  IDatabase cache = redisHostConnection.GetDatabase();
-  ...
-  await cache.StringSetAsync("data:counter", 99);
-  ...
-  long oldValue = await cache.StringIncrementAsync("data:counter");
-  // Increment by 1 (the default)
-  // oldValue should be 100
-
-  long newValue = await cache.StringDecrementAsync("data:counter", 50);
-  // Decrement by 50
-  // newValue should be 50
-  ```
+ ```csharp ConnectionMultiplexer redisHostConnection = ...; IDatabase cache = redisHostConnection.GetDatabase(); ... await cache.StringSetAsync("data:counter", 99); ... long oldValue = await cache.StringIncrementAsync("data:counter"); // Increment by 1 (the default) // oldValue should be 100  long newValue = await cache.StringDecrementAsync("data:counter", 50); // Decrement by 50 // newValue should be 50 ```
 
 - `GETSET` 用于检索与键关联的值，并将其更改为新值。StackExchange 库通过 `IDatabase.StringGetSetAsync` 方法使此操作可供使用。以下代码段演示了此方法的示例。此代码从前一示例返回与键 "data:counter" 关联的当前值，并将此键的值重置为零，这些都是同一操作的一部分：
 
-  ```csharp
-  ConnectionMultiplexer redisHostConnection = ...;
-  IDatabase cache = redisHostConnection.GetDatabase();
-  ...
-  string oldValue = await cache.StringGetSetAsync("data:counter", 0);
-  ```
+```csharp  ConnectionMultiplexer redisHostConnection = ...;  IDatabase cache = redisHostConnection.GetDatabase();.. string oldValue = await cache.StringGetSetAsync("data:counter", 0);
+```
 
 - `MGET` 和 `MSET` 可以作为单个操作返回或更改一组字符串值。`IDatabase.StringGetAsync` 和 `IDatabase.StringSetAsync` 已重载以支持此功能，如以下示例中所示：
 
-  ```csharp
-  ConnectionMultiplexer redisHostConnection = ...;
-  IDatabase cache = redisHostConnection.GetDatabase();
-  ...
-  // Create a list of key/value pairs
-  var keysAndValues =
-      new List<KeyValuePair<RedisKey, RedisValue>>()
-      {
-          new KeyValuePair<RedisKey, RedisValue>("data:key1", "value1"),
-          new KeyValuePair<RedisKey, RedisValue>("data:key99", "value2"),
-          new KeyValuePair<RedisKey, RedisValue>("data:key322", "value3")
-      };
-
-  // Store the list of key/value pairs in the cache
-  cache.StringSet(keysAndValues.ToArray());
-  ...
-  // Find all values that match a list of keys
-  RedisKey[] keys = { "data:key1", "data:key99", "data:key322"};
-  RedisValue[] values = null;
-  values = cache.StringGet(keys);
-  // values should contain { "value1", "value2", "value3" }
-  ```
+  ```csharp ConnectionMultiplexer redisHostConnection = ...; IDatabase cache = redisHostConnection.GetDatabase(); ... // Create a list of key/value pairs var keysAndValues = new List<KeyValuePair<RedisKey  RedisValue>>() { new KeyValuePair<RedisKey  RedisValue>("data:key1", "value1"), new KeyValuePair<RedisKey  RedisValue>("data:key99", "value2"), new KeyValuePair<RedisKey  RedisValue>("data:key322", "value3") };  // Store the list of key/value pairs in the cache cache.StringSet(keysAndValues.ToArray()); ... // Find all values that match a list of keys RedisKey keys = { "data:key1", "data:key99", "data:key322"}; RedisValue values = null; values = cache.StringGet(keys); // values should contain { "value1", "value2", "value3" } ```
 
 你也可以将多个操作合并成单个 Redis 事务，如本指南的“Redis 事务和批处理”部分中所述。StackExchange 库通过 `ITransaction` 接口提供事务支持。可以使用 IDatabase.CreateTransaction 方法创建 ITransaction 对象，并使用 `ITransaction` 对象提供的方法调用对事务的命令。`ITransaction` 接口像 `IDatabase` 接口一样提供对类似一组方法的访问，不过，所有方法是异步的；这些方法仅在调用 `ITransaction.Execute` 方法时执行。execute 方法返回的值指示事务创建是成功 (true) 还是失败 (false)。
 
@@ -657,7 +618,7 @@ foreach (var value in await cache.SetMembersAsync("tag:iot:blog:posts"))
 
 ### 查找最近访问的项
 
-许多应用程序遇到的常见问题是如何查找最近访问的项。例如，博客站点可能要显示有关最近读过的博客文章的信息。你可以使用 Redis 列表来实现此功能。Redis 列表包含共享同一个键的多个项，但列表充当双端队列。你可以使用 LPUSH（左推）和 RPUSH（右推）命令将项推送到列表一端。可以使用 LPOP 和 RPOP 命令从列表的一端检索项。你还可以使用 LRANGE 和 RRANGE 命令返回一组元素。以下代码段演示了如何使用 StackExchange 库来执行这些操作。此代码使用前面示例中的 BlogPost 类型。当用户阅读博客文章时，系统会使用 IDatabase.ListLeftPushAsync 方法，将博客文章的标题推送到与 Redis 缓存中键 "blog:recent_posts" 关联的列表：
+许多应用程序遇到的常见问题是如何查找最近访问的项。例如，博客站点可能要显示有关最近读过的博客文章的信息。你可以使用 Redis 列表来实现此功能。Redis 列表包含共享同一个键的多个项，但列表充当双端队列。你可以使用 LPUSH（左推）和 RPUSH（右推）命令将项推送到列表一端。可以使用 LPOP 和 RPOP 命令从列表的一端检索项。你还可以使用 LRANGE 和 RRANGE 命令返回一组元素。以下代码段演示了如何使用 StackExchange 库来执行这些操作。此代码使用前面示例中的 BlogPost 类型。当用户阅读博客文章时，系统会使用 IDatabase.ListLeftPushAsync 方法，将博客文章的标题推送到与 Redis 缓存中键 "blog:recent\_posts" 关联的列表：
 
 ```csharp
 ConnectionMultiplexer redisHostConnection = ...;
@@ -766,8 +727,7 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 
 - 多个订阅者可以订阅同一个通道，他们都将接收发布到该通道的消息。
 - 订阅者仅接收订阅后发布的消息。通道不会缓冲，一旦发布消息，Redis 基础结构就会将消息推送到每个订阅者，然后删除消息。
-- 默认情况下，订阅者根据发送顺序来接收消息。在具有大量消息和许多订阅者与发布者的高度活跃系统中，保证依序传送消息可能会降低系统性能。如果每个消息各自独立且顺序并不重要，则你可以通过 Redis 系统启用并发处理，这有助于提高响应度。你可以在 StackExchange 客户端中，通过将订阅者使用的连接的 PreserveAsyncOrder 设置为 false 来实现此目的：
-  ```csharp
+- 默认情况下，订阅者根据发送顺序来接收消息。在具有大量消息和许多订阅者与发布者的高度活跃系统中，保证依序传送消息可能会降低系统性能。如果每个消息各自独立且顺序并不重要，则你可以通过 Redis 系统启用并发处理，这有助于提高响应度。你可以在 StackExchange 客户端中，通过将订阅者使用的连接的 PreserveAsyncOrder 设置为 false 来实现此目的：```csharp
   ConnectionMultiplexer redisHostConnection = ...;
   redisHostConnection.PreserveAsyncOrder = false;
   ISubscriber subscriber = redisHostConnection.GetSubscriber();
@@ -805,4 +765,4 @@ subscriber.PublishAsync("messages:blogPosts", blogPost.Title);
 - StackExchange.Redis 存储库上的 [Redis 中的事务](https://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Transactions.md)页。
 - Microsoft 网站上的[数据分区指南](http://msdn.microsoft.com/zh-cn/library/dn589795.aspx)。
 
-<!---HONumber=67-->
+<!---HONumber=71-->

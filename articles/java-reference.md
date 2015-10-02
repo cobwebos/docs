@@ -1,6 +1,19 @@
-<properties linkid="develop-java-javadocs" urlDisplayName="Javadocs" pageTitle="Javadocs - Azure resources" metaKeywords="" description="Javadoc API reference for the Azure SDK for Java." metaCanonical="" services="" documentationCenter="Java" title="Javadoc Content" authors="robmcm" solutions="" manager="wpickett" editor="mollybos" scriptId="" videoId="" />
+<properties 
+	pageTitle="Javadocs |Microsoft Azure" 
+	description="有关 Azure SDK for Java 的 Javadoc API 引用。" 
+	services="" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="wpickett" 
+	editor="jimbe"/>
+
+<tags 
+	ms.service="multiple" 
+	ms.date="06/03/2015" 
+	wacn.date=""/>
 
 # Javadoc 内容
 
 可以在 <http://dl.windowsazure.com/javadoc> 上查看有关 Azure Libraries for Java 的 Javadoc 内容。
 
+<!---HONumber=71-->

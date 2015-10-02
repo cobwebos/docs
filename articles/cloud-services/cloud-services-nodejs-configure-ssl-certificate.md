@@ -187,4 +187,4 @@
   [key-protection]: ./media/cloud-services-nodejs-configure-ssl-certificate/exportable.png
   [在 Azure 辅助角色中为 Node.js 应用程序配置 SSL]: /documentation/articles/cloud-services-nodejs-configure-ssl-certficate-worker-role/
 
-<!---HONumber=69-->
+<!---HONumber=71-->

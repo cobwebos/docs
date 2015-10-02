@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="使用 REST 创建 ContentKey" 
-	description="了解如何创建可安全访问资产的内容密钥。" 
+	description="了解如何创建提供对资产进行安全访问的内容密钥。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -9,15 +9,18 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="04/15/2015" 
+	ms.date="08/11/2015" 
 	wacn.date=""/>
 
 
 #使用 REST 创建 ContentKey
 
-本文是[媒体服务点播视频工作流](/documentation/articles/media-services-video-on-demand-workflow)和[媒体服务实时流式处理工作流](/documentation/articles/media-services-live-streaming-workflow)系列的一部分。
 
-媒体服务允许你创建新资产和传送加密的资产。**ContentKey** 提供对**资产**的安全访问。
+> [AZURE.SELECTOR]
+- [REST](media-services-rest-create-contentkey.md)
+- [.NET](media-services-dotnet-create-contentkey.md)
+
+Media Services 允许你创建新资产和传送加密的资产。**ContentKey** 提供对**资产**的安全访问。
 
 创建新资产时（例如，[上载文件](/documentation/articles/media-services-rest-upload-files)之前），可以指定以下加密选项：**StorageEncrypted**、**CommonEncryptionProtected** 或 **EnvelopeEncryptionProtected**。
 
@@ -61,11 +64,11 @@
 请注意，本主题中省略了生成 AES 密钥、加密密钥以及计算校验和的示例。仅提供了演示如何与媒体服务进行交互的示例。
 
 
->[AZURE.NOTE]使用媒体服务 REST API 时，需注意以下事项：
+>[AZURE.NOTE]使用 Media Services REST API 时，需注意以下事项：
 >
->访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use)。
+>访问 Media Services 中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use)。
 
->在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到一个 301 重定向，它指定另一个媒体服务 URI。必须根据[使用 REST API 连接到媒体服务](/zh-cn/documentation/articles/media-services-rest-connect_programmatically/)中所述对新的 URI 执行后续调用。
+>在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。必须按[使用 REST API 连接到媒体服务](/zh-cn/documentation/articles/media-services-rest-connect_programmatically/)中所述对新的 URI 执行后续调用。
 
 ##检索 ProtectionKeyId 
  
@@ -142,7 +145,7 @@
 
 ##创建 ContentKey 
 
-检索 X.509 证书并使用其公钥加密内容密钥后，创建一个 **ContentKey** 实体并相应地设置其属性值。
+检索到 X.509 证书并使用其公钥加密你的内容密钥后，请创建一个 **ContentKey** 实体并相应地设置其属性值。
 
 创建内容密钥时必须设置的值之一是内容密钥类型。选择以下值之一。
 
@@ -243,4 +246,4 @@
 
 	HTTP/1.1 204 No Content
 
-<!---HONumber=67-->
+<!---HONumber=71-->

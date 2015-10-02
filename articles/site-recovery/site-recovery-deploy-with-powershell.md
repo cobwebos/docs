@@ -100,7 +100,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 	$VaultName = "<testvault123>"
 	$VaultGeo  = "<China North>"
-	$OutputPathForSettingsFile = "<c:\>"
+	$OutputPathForSettingsFile = "<c:>"
 
 ```
 
@@ -121,7 +121,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 	
 		$VaultName = "<testvault123>"
 		$VaultGeo  = "<China North>"
-		$OutputPathForSettingsFile = "<c:\>"
+		$OutputPathForSettingsFile = "<c:>"
 	
 		$VaultSetingsFile = Get-AzureSiteRecoveryVaultSettingsFile -Location $VaultGeo -Name $VaultName -Path $OutputPathForSettingsFile;
 	
@@ -181,7 +181,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 	
 	$BinPath = $env:SystemDrive+"\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin"
 	pushd $BinPath
-	$encryptionFilePath = "C:\temp\"
+	$encryptionFilePath = "C:\temp"
 	.\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env:COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice
 	
 	```
@@ -349,7 +349,7 @@ PS C:\> New-AzureSiteRecoveryNetworkMapping -PrimaryNetwork $Networks[0] -AzureS
 
 ### 创建恢复计划
 
-1. 使用以下数据创建 .xml 文件作为恢复计划模板，然后将它保存为“C:\RPTemplatePath.xml”。
+1. 使用以下数据创建 .xml 文件作为恢复计划模板，然后将它保存为“C:\\RPTemplatePath.xml”。
 2. 更改 RecoveryPlan 节点 ID、Name、PrimaryServerId 和 SecondaryServerId。
 3. 更改 ProtectionEntity 节点 PrimaryProtectionEntityId（来自 VMM 的 vmid）。
 4. 可以通过添加更多 ProtectionEntity 节点来添加更多 VM。
@@ -453,4 +453,4 @@ if($isJobLeftForProcessing)
 
 <LI>如有问题，请访问 <a href="https://social.msdn.microsoft.com/Forums/azure/zh-CN/home?forum=windowsazurezhchs">Azure 恢复服务论坛</a>。</LI></UL>
 
-<!---HONumber=67-->
+<!---HONumber=71-->

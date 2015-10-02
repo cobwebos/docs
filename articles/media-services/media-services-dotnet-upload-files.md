@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="07/23/2015" 
+	ms.date="08/17/2015" 
 	wacn.date=""/>
 
 
@@ -300,4 +300,4 @@
 
 [如何获取媒体处理器]: /documentation/articles/media-services-get-media-processor
 
-<!---HONumber=66-->
+<!---HONumber=71-->

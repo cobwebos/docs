@@ -1,17 +1,10 @@
-<properties 
-   pageTitle="为 Windows Azure VPN 网关配置强制隧道"
-   description="如果您的虚拟网络具有跨界 VPN 网关，您可以将全部 Internet 绑定流量重定向或强制返回到本地位置。"
-   services="vpn-gateway"
-   documentationCenter="na"
-   authors="cherylmc"
-   manager="jdial"
-   editor="tysonn" />
-<tags 
+<properties pageTitle="为 Microsoft Azure VPN 网关配置强制隧道 | Microsoft Azure" description="如果你的虚拟网络具有跨界 VPN 网关，你可以将全部 Internet 绑定流量重定向或强制返回到本地位置。" services="vpn-gateway" documentationCenter="na" authors="cherylmc" manager="carolz" editor="" />
+<tags  
    ms.service="vpn-gateway"
-   ms.date="07/13/2015"
+   ms.date="08/20/2015"
    wacn.date="" />
 
-# 关于强制隧道
+# 配置强制隧道
 
 借助强制隧道，您可以通过站点到站点 VPN 隧道，将全部 Internet 绑定流量重定向或“强制”返回到本地位置，以进行检查和审核。这是很多企业 IT 策略的关键安全要求。没有强制隧道，来自 Azure 中虚拟机的 Internet 绑定流量会始终通过 Azure 网络基础设施直接连接到 Internet。没有该选项，您无法对流量进行检查或审核。未经授权的 Internet 访问可能会导致信息泄漏或其他类型的安全漏洞。
 
@@ -39,13 +32,15 @@
 
 -  在发布的用户定义路由中，您可以创建路由表来添加默认路由，然后将路由表关联到虚拟网络子网，在这些子网启用强制隧道。
 
-- 强制隧道必须关联到具有 Azure 动态路由 VPN 网关的 VNet，不能是静态网关。您需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
+- 强制隧道必须关联到具有动态路由 VPN 网关的 VNet，不能是静态网关。您需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
 
+- 请注意，ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。有关详细信息，请参阅 [ExpressRoute 文档](https://azure.microsoft.com/documentation/services/expressroute/)。
 
+## 配置概述
 
-## 如何配置强制隧道
+以下过程将帮助你为虚拟网络指定强制隧道。配置步骤与下面的虚拟网络 netcfg 文件示例相对应。
 
-下面的说明将帮助您在虚拟网络中指定强制隧道。配置步骤与下面的虚拟网络示例相对应。这个多层 VNet 虚拟网络具有 3 个子网：*前端*、*中间层*和*后端*子网，具有 4 个跨界连接：一个 *DefaultSiteHQ* 和 3 个*分支*。下列配置步骤将 *DefaultSiteHQ* 设置为使用强制隧道的默认站点连接，并将*中间层*和*后端*子网配置为使用强制隧道。
+在本示例中，虚拟网络“MultiTier-VNet”具有 3 个子网：*前端*、*中间层*和*后端*子网，具有 4 个跨界连接：一个 *DefaultSiteHQ* 和 3 个*分支*。以下过程步骤将 *DefaultSiteHQ* 设置为使用强制隧道的默认站点连接，并将*中间层*和*后端*子网配置为使用强制隧道。
 
 	<VirtualNetworkSite name="MultiTier-VNet" Location="North Europe">
      <AddressSpace>
@@ -91,6 +86,8 @@
 
 - 使用 Web 平台安装程序的 Azure PowerShell cmdlet 最新版本。可以从[下载页面](http://azure.microsoft.com/downloads/)的“Windows PowerShell”部分下载并安装最新版本。
 
+## 配置强制隧道
+
 使用以下过程配置强制隧道。
 
 1. 创建一个路由表。使用以下 cmdlet 创建路由表。
@@ -120,6 +117,8 @@
 
 ## 其他 PowerShell cmdlet
 
+在使用强制隧道配置时，你可能会发现下面一些附加的 PowerShell cmdlet 很有用。
+
 **删除路由表：**
 
 	Remove-AzureRouteTable -RouteTableName <routeTableName>
@@ -146,6 +145,6 @@
 
 ## 后续步骤
 
-你可以将虚拟机添加到虚拟网络。请参阅[如何创建自定义虚拟机](/documentation/articles/virtual-machines-create-custom)。
+有关保护网络流量的信息。参阅[什么是网络安全组](../virtual-network/virtual-networks-nsg.md)。
 
-<!---HONumber=67-->
+<!---HONumber=71-->

@@ -8,8 +8,8 @@
    editor=""/>
 
 <tags
-   ms.service="na"
-   ms.date="04/28/2015"
+   ms.service="azure-resource-manager"
+   ms.date="07/24/2015"
    wacn.date=""/>
 
 # 使用 Azure 门户创建新的 Azure 服务主体
@@ -20,7 +20,7 @@
 本主题说明如何使用 Azure 门户创建新的服务主体。目前，你必须使用 Microsoft Azure 门户来创建新的服务主体。在更新的版本中，此功能将添加到 Azure 预览版门户。
 
 ## 概念
-1. Azure Active Directory (AAD) - 云的标识与访问管理服务生成版。有关详细信息，请参阅：[什么是 Azure Active Directory](active-directory-whatis)
+1. Azure Active Directory (AAD) - 云的标识与访问管理服务生成版。有关详细信息，请参阅：[什么是 Azure Active Directory](/documentation/articles/active-directory-whatis)
 2. 服务主体 - 目录中应用程序的实例。
 3. AD 应用程序 - AAD 中向 AAD 标识某个应用程序的目录记录。有关详细信息，请参阅 [Azure AD 中的身份验证基本知识](https://msdn.microsoft.com/zh-cn/library/azure/874839d9-6de6-43aa-9a5c-613b0c93247e#BKMK_Auth)。
 
@@ -80,7 +80,7 @@
    ![保存的密钥][8]
 
 4. 现在，你可以使用该密钥来以服务主体的身份进行身份验证。除了“密钥”以外，你还需要使用“客户端 ID”来登录。转到“客户端 ID”并复制它。
-
+  
    ![客户端 ID][5]
 
 
@@ -90,30 +90,12 @@
 * **密钥** - 与你的密码相同。
 
 ## 后续步骤
-入门
 
-- [Azure 资源管理器概述](resource-group-overview)  
-- [将 Azure PowerShell 与 Azure 资源管理器配合使用](powershell-azure-resource-manager)
-- [将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理配合使用](xplat-cli-azure-resource-manager)  
-- [使用 Azure 门户管理 Azure 资源](resource-group-portal)  
+- 若要了解有关指定安全策略的信息，请参阅[管理和审核对资源的访问权限](/documentation/articles/resource-group-rbac)  
+- 有关允许服务主体访问资源的步骤，请参阅[通过 Azure 资源管理器对服务主体进行身份验证](/documentation/articles/resource-group-authenticate-service-principal)  
+- 有关基于角色的访问控制的概述，请参阅 [Microsoft Azure 门户中基于角色的访问控制](/documentation/articles/role-based-access-control-configure)
+- 有关在 Azure 资源管理器中实现安全性的指南，请参阅 [Azure 资源管理器的安全注意事项](/documentation/articles/best-practices-resource-manager-security)
 
-创建和部署应用程序
-
-- [创作 Azure 资源管理器模板](resource-group-authoring-templates)  
-- [使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy)  
-- [Azure 中的资源组部署疑难解答](resource-group-deploy-debug)  
-- [Azure 资源管理器模板函数](resource-group-template-functions)  
-- [高级模板操作](resource-group-advanced-template)  
-- [使用 .NET 库和模板部署 Azure 资源](arm-template-deployment)
-
-组织资源
-
-- [使用标记来组织 Azure 资源](resource-group-using-tags)  
-
-管理和审核访问权限
-
-- [管理和审核对资源的访问权限](resource-group-rbac)  
-- [通过 Azure 资源管理器对服务主体进行身份验证](resource-group-authenticate-service-principal)  
 
 <!-- Images. -->
 [1]: ./media/resource-group-create-service-principal-portal/active-directory.png
@@ -130,4 +112,4 @@
 [12]: ./media/resource-group-create-service-principal-portal/add-icon.png
 [13]: ./media/resource-group-create-service-principal-portal/save-icon.png
 
-<!---HONumber=61-->
+<!---HONumber=71-->

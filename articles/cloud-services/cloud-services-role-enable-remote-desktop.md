@@ -109,4 +109,4 @@ wacn.date=""/>
 ## 后续步骤
 可能需要[打包](/documentation/articles/cloud-services-model-and-package)或[上载（部署）](/documentation/articles/cloud-services-how-to-create-deploy-portal)你的应用程序。
 
-<!---HONumber=67-->
+<!---HONumber=71-->

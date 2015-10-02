@@ -26,13 +26,10 @@ Azure 提供了用于运行应用程序的不同托管模型。每种模型提�
 
 
 ## 后续步骤
-[在 .NET 中创建云服务应用](cloud-services-dotnet-get-started)<br/>
-[在 Node.js 中创建云服务应用](cloud-services-nodejs-develop-deploy-app)<br/>
-[在 PHP 中创建云服务应用](cloud-services-php-create-web-role)<br/>
-[在 Python 中创建云服务应用](cloud-services-python-ptvs)<br/>
+[在 .NET 中创建云服务应用](/documentation/articles/cloud-services-dotnet-get-started)<br/>[在 Node.js 中创建云服务应用](/documentation/articles/cloud-services-nodejs-develop-deploy-app)<br/>[在 PHP 中创建云服务应用](/documentation/articles/cloud-services-php-create-web-role)<br/>[在 Python 中创建云服务应用](/documentation/articles/cloud-services-python-ptvs)<br/>
 
-[App Service]: app-service-choose-me
-[虚拟机]: virtual-machines-choose-me
+[App Service]: /documentation/articles/app-service-choose-me
+[虚拟机]: /documentation/articles/virtual-machines-choose-me
 [云服务]: #tellmecs
 
-<!---HONumber=64-->
+<!---HONumber=71-->

@@ -9,13 +9,16 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="07/16/2015" 
+	ms.date="08/11/2015"  
 	wacn.date=""/>
 
 
 #如何缩放编码
 
-本文是 [媒体服务点播视频工作流](/documentation/articles/media-services-video-on-demand-workflow)系列的一部分。
+> [AZURE.SELECTOR]
+- [.NET](media-services-dotnet-encoding-units.md)
+- [Portal](media-services-portal-encoding-units.md)
+- [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
 
 ##概述
 
@@ -49,4 +52,4 @@ Media Services 帐户与保留单元类型相关联，后者决定了编码作�
 
 有关配额和限制以及如何开具支持票证的信息，请参阅[配额和限制](/documentation/articles/media-services-quotas-and-limitations)。
 
-<!---HONumber=67-->
+<!---HONumber=71-->

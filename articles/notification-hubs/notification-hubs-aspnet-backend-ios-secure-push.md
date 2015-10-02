@@ -1,16 +1,28 @@
-<properties title="Azure Notification Hubs Secure Push" pageTitle="Azure 通知中心安全推送" metaKeywords="Azure push notifications, Azure notification hubs, secure push" description="了解如何从 Azure 将安全推送通知发送到 iOS 应用。代码示例是使用 .Objective-C 和 C# 编写的。" documentationCenter="Mobile" metaCanonical="" disqusComments="1" umbracoNaviHide="0" authors="yuaxu" manager="dwrede" />
+<properties 
+	pageTitle="Azure 通知中心安全推送" 
+	description="了解如何从 Azure 将安全推送通知发送到 iOS 应用。代码示例是使用 .Objective-C 和 C# 编写的。" 
+	documentationCenter="ios" 
+	authors="wesmc7777" 
+	manager="dwrede" 
+	editor="" 
+	services="notification-hubs"/>
 
-<tags ms.service="notification-hubs" ms.date="10/10/2014" wacn.date="" />
+<tags 
+	ms.service="notification-hubs" 
+	ms.date="06/02/2015" 
+	wacn.date=""/>
 
-# Azure 通知中心安全推送
+#Azure 通知中心安全推送
 
-<div class="dev-center-tutorial-selector sublanding">
-    	<a href="/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-secure-push" title="Windows 通用">Windows 通用</a><a href="/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push" title="iOS" class="current">iOS</a> <a href="/documentation/articles/notification-hubs-aspnet-backend-android-secure-push" title="Android">Android</a>
-</div>
+> [AZURE.SELECTOR]
+- [Windows Universal](/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-secure-push)
+- [iOS](/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push)
+- [Android](/documentation/articles/notification-hubs-aspnet-backend-android-secure-push)
 
-## 概述
 
-利用 Windows Azure 中的推送通知支持，您可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。
+##概述
+
+利用 Microsoft Azure 中的推送通知支持，您可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。
 
 由于法规或安全约束，有时应用程序可能想要在通知中包含某些无法通过标准推送通知基础结构传输的内容。本教程介绍如何通过客户端设备和应用后端之间安全且经过验证的连接发送敏感信息，以便获得相同的体验。
 
@@ -140,4 +152,4 @@
 
 [IOS1]: ./media/notification-hubs-aspnet-backend-ios-secure-push/secure-push-ios-1.png
 
-<!---HONumber=67-->
+<!---HONumber=71-->

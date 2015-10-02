@@ -9,16 +9,16 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="06/05/2015" 
+	ms.date="08/17/2015" 
 	wacn.date=""/>
 
 
-#  使用 JavaScript 后端移动服务
+# 使用 JavaScript 后端移动服务
 
-<div class="dev-center-tutorial-subselector"><a href="/zh-cn/documentation/articles/mobile-services-dotnet-backend-how-to-use/" title=".NET 后端">.NET 后端</a> | <a href="/zh-cn/documentation/articles/mobile-services-how-to-use-server-scripts/"  title="JavaScript 后端" class="current">JavaScript 后端</a></div>
+ 
 本文提供有关如何在 Azure 移动服务中使用 JavaScript 后端的详细信息和示例。
 
-## <a name="intro"></a>介绍
+##<a name="intro"></a>介绍
 
 在 JavaScript 后端移动服务中，你可以定义 JavaScript 代码形式的自定义业务逻辑，该代码将在服务器中存储和执行。此服务器脚本代码将分配到下列服务器功能之一：
 
@@ -31,7 +31,7 @@
 有关各个服务器脚本对象和函数的说明，请参阅[移动服务服务器脚本参考]。
 
 
-## <a name="table-scripts"></a>表操作
+##<a name="table-scripts"></a>表操作
 
 表操作脚本是一种服务器脚本，它将注册到对表执行的操作 &mdash; 插入、读取、更新或删除 (*del*)。本部分介绍如何在 JavaScript 后端使用表操作，具体包括以下小节：
 
@@ -44,7 +44,7 @@
 + [如何：添加自定义参数]
 + [如何：处理表用户][How to: Work with users]
 
-### <a name="basic-table-ops"></a>表操作概述
+###<a name="basic-table-ops"></a>表操作概述
 
 该脚本的名称必须与注册的操作类型相匹配。对于一个给定的表操作，只能注册一个脚本。每当 REST 请求调用给定的操作时（例如，当收到要在表中插入项的 POST 请求时），就会执行该脚本。移动服务不会保存每次执行脚本后的状态。由于每次运行脚本时都会创建一个新的全局上下文，因此脚本中定义的所有状态变量都会重新初始化。如果你想要存储执行不同请求后的状态，请在移动服务中创建一个表，然后读取状态并将状态写入该表。有关详细信息，请参阅[如何：从脚本访问表]。
 
@@ -82,7 +82,7 @@
 
 每个服务器脚本都有一个主函数，并包含可选的 Helper 函数。即使服务器脚本是为特定表创建的，它也可以引用同一数据库中的其他表。你还可以将公用函数定义为可在脚本之间共享的模块。有关详细信息，请参阅[源代码管理和共享代码][Source control, shared code, and helper functions]。
 
-### <a name="register-table-scripts"></a>如何：注册表脚本
+###<a name="register-table-scripts"></a>如何：注册表脚本
 
 你可以使用下列方式之一定义可注册到表操作的服务器脚本：
 
@@ -138,7 +138,7 @@
 有关更多示例，请参阅[读取和写入数据]、[修改请求]和[验证数据]。
 
 
-### <a name="override-response"></a>如何：重写默认响应
+###<a name="override-response"></a>如何：重写默认响应
 
 你还可以使用脚本来实现能够重写默认响应行为的验证逻辑。如果验证失败，则只需调用 **respond** 函数而不是 **execute** 函数，然后将响应写入客户端：
 
@@ -153,7 +153,7 @@
 
 在此示例中，当所插入项的 `userId` 属性与为经过身份验证的客户端提供提供的 [user 对象]的 `userId` 不匹配时，该请求将被拒绝。在这种情况下，数据库操作 (*insert*) 将不会发生，并且会将 HTTP 状态代码为 403 的响应以及自定义的错误消息返回到客户端。有关更多示例，请参阅[修改响应]。
 
-### <a name="override-success"></a>如何：重写 execute success
+###<a name="override-success"></a>如何：重写 execute success
 
 默认情况下，在表操作中，**execute** 函数会自动写入响应。但是，你可以向 execute 函数传递两个可选参数，用于重写该函数在成功和/或出错时的行为。
 
@@ -175,7 +175,7 @@
 
 >[AZURE.NOTE]只有在先调用 **execute** 函数之后，才能调用不带参数的 **respond** 来调用默认响应。
  
-### <a name="override-error"></a>如何：重写默认错误处理
+###<a name="override-error"></a>如何：重写默认错误处理
 
 如果与数据库的连接断开、对象无效或者查询不正确，**execute** 函数可能会失败。默认情况下，当发生错误时，服务器脚本会记录错误，并将错误结果写入到响应中。由于移动服务提供了默认的错误处理，因此你不需要处理服务中可能会发生的错误。
 
@@ -195,7 +195,7 @@
 
 如果需要，你也可以同时提供 **success** 和 **error** 处理程序。
 
-### <a name="generate-guids"></a>如何：生成唯一 ID 值
+###<a name="generate-guids"></a>如何：生成唯一 ID 值
 
 移动服务支持为表的 **ID** 列使用唯一的自定义字符串值。这样，应用程序便可为 ID 使用自定义值（如电子邮件地址或用户名）。
 
@@ -224,13 +224,13 @@
 `id` 的值必须唯一，并且不能包含以下集中的字符：
 
 + 控制字符：[0x0000-0x001F] 和 [0x007F-0x009F]。有关详细信息，请参阅 [ASCII 控制代码 C0 和 C1](http://zh.wikipedia.org/wiki/Data_link_escape_character#C1_set)。
-+  可打印字符：**"**(0x0022), **\+** (0x002B), **/** (0x002F), **?** (0x003F), **\\** (0x005C), **`** (0x0060)
++  可打印字符：**"**(0x0022), **+** (0x002B), **/** (0x002F), **?** (0x003F), **\** (0x005C), **`** (0x0060)
 +  ID“.”和“..”
 
 也可以为表使用整数 ID。若要使用整数 ID，必须结合 `--integerId` 选项使用 `mobile table create` 命令创建表。应在适用于 Azure 的命令行界面 (CLI) 中使用此命令。有关使用 CLI 的详细信息，请参阅[用于管理移动服务表的 CLI](../virtual-machines-command-line-tools.md#Mobile_Tables)。
 
 
-### <a name="access-headers"></a>如何：访问自定义参数
+###<a name="access-headers"></a>如何：访问自定义参数
 
 向移动服务发送请求时，你可以在请求 URI 中包含自定义参数，以指示表操作脚本如何处理给定的请求。然后，你可以修改脚本，通过检查参数的方式来确定处理路径。
 
@@ -284,7 +284,7 @@
 		}
 
 
-### <a name="work-with-users"></a>如何：处理用户
+###<a name="work-with-users"></a>如何：处理用户
 
 在 Azure 移动服务中，你可以使用标识提供程序对用户进行身份验证。有关详细信息，请参阅[身份验证入门]。当经过身份验证的用户调用表操作时，移动服务将使用 [user 对象]向已注册的脚本函数提供有关该用户的信息。可以使用 **userId** 属性来存储和检索用户特定的信息。以下示例将基于某个经过身份验证的用户的 userId 来设置项的 owner 属性：
 
@@ -302,7 +302,7 @@
 	    request.execute();
 	}
 
-## <a name="custom-api"></a>自定义 API
+##<a name="custom-api"></a>自定义 API
 
 本部分介绍如何创建和使用自定义 API 终结点，具体包括以下小节：
 	
@@ -313,7 +313,7 @@
 + [如何：处理用户和自定义 API 中的标头]
 + [如何：在一个自定义 API 中定义多个路由]
 
-### <a name="custom-api-overview"></a>自定义 API 概述
+###<a name="custom-api-overview"></a>自定义 API 概述
 
 自定义 API 是移动服务中可通过一个或多个标准 HTTP 方法访问的终结点，这些方法包括：GET、POST、PUT、PATCH 和 DELETE。可以在单个脚本文件中为自定义 API 支持的每个 HTTP 方法单独定义一个函数导出。收到使用给定方法向自定义 API 发出的请求后，将调用注册的脚本。有关详细信息，请参阅[自定义 API]。
 
@@ -329,7 +329,7 @@
 
 每次执行后都会保留全局状态。
 
-### <a name="define-custom-api"></a>如何：定义自定义 API
+###<a name="define-custom-api"></a>如何：定义自定义 API
 
 你可以使用下列方式之一定义可注册到自定义 API 终结点中 HTTP 方法的服务器脚本：
 
@@ -343,7 +343,7 @@
 
 + 使用 Azure 命令行工具中的命令提示符。有关详细信息，请参阅[使用命令行工具]。
 
-### <a name="handle-methods"></a>如何：实现 HTTP 方法
+###<a name="handle-methods"></a>如何：实现 HTTP 方法
 
 一个自定义 API 可以处理一个或多个 HTTP 方法：GET、POST、PUT、PATCH 和 DELETE。将为自定义 API 处理的每个 HTTP 方法定义一个导出函数。单个自定义 API 代码文件可以导出下列一个或所有函数：
 
@@ -355,7 +355,7 @@
 
 不能使用服务器脚本中尚未实现的 HTTP 方法调用自定义 API 终结点，该调用会返回 405（“不允许的方法”）错误响应。可向每个支持 HTTP 方法单独分配权限级别。
 
-### <a name="api-return-xml"></a>如何：发送和接收 XML 格式的数据
+###<a name="api-return-xml"></a>如何：发送和接收 XML 格式的数据
 
 当客户端存储和检索数据时，移动服务将使用 JavaScript 对象表示法 (JSON) 来表示消息正文中的数据。但是，在某些情况下，你可能希望使用 XML 负载。例如，Windows 应用商店应用程序具有内置的定期通知功能，这就需要服务发出 XML 数据。有关详细信息，请参阅[定义支持定期通知的自定义 API]。
 
@@ -371,7 +371,7 @@
 
 		https://todolist.azure-mobile.net/api/orderpizza
 
-### <a name="get-api-user"></a>如何：处理用户和自定义 API 中的标头
+###<a name="get-api-user"></a>如何：处理用户和自定义 API 中的标头
 
 在 Azure 移动服务中，你可以使用标识提供程序对用户进行身份验证。有关详细信息，请参阅[身份验证入门]。当经过身份验证的用户请求自定义 API 时，移动服务将使用[用户对象]向自定义 API 代码提供有关该用户的信息。可从 [request 对象]的 user 属性访问 [user 对象]。可以使用 **userId** 属性来存储和检索用户特定的信息。
 
@@ -402,7 +402,7 @@
 
 这个简单示例将读取名为 `my-custom-header` 的自定义标头，然后在响应中返回值。
 
-### <a name="api-routes"></a>如何：在一个自定义 API 中定义多个路由
+###<a name="api-routes"></a>如何：在一个自定义 API 中定义多个路由
 
 移动服务允许你在一个自定义 API 中定义多个路径或路由。例如，向 **calculator** 自定义 API 中的以下 URL 发出的 HTTP GET 请求将分别调用 **add** 或 **subtract** 函数：
 
@@ -438,13 +438,13 @@ HTTP GET 请求可按如下所示调用上述自定义 API 示例中的两个路
 
 		{"result":-2}
 
-## <a name="scheduler-scripts"></a>作业计划程序
+##<a name="scheduler-scripts"></a>作业计划程序
 
 移动服务允许你定义按固定计划以作业形式执行或通过管理门户按需执行的服务器脚本。计划的作业可用于执行周期性任务，例如，清理表数据和批处理。有关详细信息，请参阅[计划作业]。
 
 注册到计划作业的脚本具有一个与计划作业同名的主函数。由于 HTTP 请求不调用计划的脚本，没有可由服务器运行时传递的上下文，因此该函数不采用任何参数。与其他类型的脚本一样，你可以使用子例程函数并需要使用共享模块。有关详细信息，请参阅[源代码管理、共享代码和 Helper 函数]。
 
-### <a name="scheduler-scripts"></a>如何：定义计划的作业脚本
+###<a name="scheduler-scripts"></a>如何：定义计划的作业脚本
 
 可将一个服务器脚本分配到移动服务计划程序中定义的作业。这些脚本属于该作业，并根据作业计划执行。（你也可以使用[管理门户]按需运行作业。） 定义计划作业的脚本不带参数，因为移动服务不会向它传递任何数据；该脚本作为常规 JavaScript 函数执行，不直接与移动服务交互。
 
@@ -460,7 +460,7 @@ HTTP GET 请求可按如下所示调用上述自定义 API 示例中的两个路
 
 >[AZURE.NOTE]启用源代码管理后，你可以直接在 git 存储库的 .\\service\\scheduler 子文件夹中编辑计划的作业脚本文件。有关详细信息，请参阅 [如何：使用源代码管理来共享代码]。
 
-## <a name="shared-code"></a>源代码管理、共享代码和 Helper 函数
+##<a name="shared-code"></a>源代码管理、共享代码和 Helper 函数
 
 本部分说明如何利用源代码管理来添加你自己的自定义 node.js 模块、共享的代码和其他代码重用策略，具体包括以下小节：
 
@@ -470,7 +470,7 @@ HTTP GET 请求可按如下所示调用上述自定义 API 示例中的两个路
 + [如何：使用源代码管理来共享代码]
 + [如何：使用应用程序设置] 
 
-### <a name="leverage-source-control"></a>利用共享代码概述
+###<a name="leverage-source-control"></a>利用共享代码概述
 
 由于移动服务使用服务器上的 Node.js，因此你的脚本已经获取了对内置 Node.js 模块的访问权限。你也可以使用源代码管理定义自己的模块，或者将其他 Node.js 模块添加到你的服务。
 
@@ -486,7 +486,7 @@ HTTP GET 请求可按如下所示调用上述自定义 API 示例中的两个路
 + **util**：包含各种实用工具，例如字符串格式设置和对象类型检查。有关详细信息，请参阅 [Node.js 文档][util API]。 
 + **zlib**：公开压缩功能，例如 gzip 和 deflate。有关详细信息，请参阅 [Node.js 文档][zlib API]。 
 
-### <a name="modules-helper-functions"></a>如何：利用模块
+###<a name="modules-helper-functions"></a>如何：利用模块
 
 移动服务公开了脚本可以使用全局 **require** 函数加载的一组模块。例如，脚本可以要求使用 **request** 发出 HTTP 请求：
 
@@ -498,7 +498,7 @@ HTTP GET 请求可按如下所示调用上述自定义 API 示例中的两个路
 	} 
 
 
-### <a name="shared-code-source-control"></a>如何：使用源代码管理来共享代码
+###<a name="shared-code-source-control"></a>如何：使用源代码管理来共享代码
 
 你可以将源代码管理与 Node.js 程序包管理器 (npm) 结合使用，以控制可供移动服务使用的模块。可通过两种方式实现此目的：
 
@@ -512,7 +512,7 @@ HTTP GET 请求可按如下所示调用上述自定义 API 示例中的两个路
 
 >[AZURE.NOTE]在 package.json 中指定的模块或者上载到移动服务的模块只会在服务器脚本代码中使用。移动服务运行时不使用这些模块。
 
-### <a name="helper-functions"></a>如何：使用 Helper 函数
+###<a name="helper-functions"></a>如何：使用 Helper 函数
 
 除了要求使用模块外，单个服务器脚本还可以包含 Helper 函数。这些函数与主函数不同，后者可用于分离脚本中的代码。
 
@@ -533,7 +533,7 @@ HTTP GET 请求可按如下所示调用上述自定义 API 示例中的两个路
  
 在脚本中，Helper 函数必须在主函数之后声明。必须声明脚本中的所有变量。未声明的变量会导致出错。
 
-Helper 函数也可以只定义一次，然后在服务器脚本之间共享。若要在脚本之间共享某个函数，必须导出该函数，并且脚本文件必须在 `.\service\shared\` 目录中存在。以下模板演示了如何在文件 `.\services\shared\helpers.js` 中导出共享函数：
+Helper 函数也可以只定义一次，然后在服务器脚本之间共享。若要在脚本之间共享某个函数，必须导出该函数，并且脚本文件必须在 `.\service\shared` 目录中存在。以下模板演示了如何在文件 `.\services\shared\helpers.js` 中导出共享函数：
 
 		exports.handleUnapprovedItem = function (tables, user, callback) {
 		    
@@ -557,7 +557,7 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 
 可以使用[源代码管理][How to: Share code by using source control]或[命令行工具][Using the command line tool]将脚本文件上载到共享目录。
 
-### <a name="app-settings"></a>如何：使用应用程序设置
+###<a name="app-settings"></a>如何：使用应用程序设置
 
 移动服务允许你将值安全地存储为应用程序设置，服务器脚本在运行时可以访问这些设置。将数据添加到移动服务的应用程序设置时，名称/值对将以加密的形式存储，你可以在服务器脚本中访问这些数据，而无需在脚本文件中对其进行硬编码。有关详细信息，请参阅[应用设置]。
 
@@ -595,7 +595,7 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 
 请注意，此目录结构与使用源代码管理时的 git 存储库相同。
 
-从命令行工具上载脚本文件时，必须先导航到 `.\services\` 目录。以下命令从 `table` 子目录上载名为 `todoitem.insert.js` 的脚本：
+从命令行工具上载脚本文件时，必须先导航到 `.\services` 目录。以下命令从 `table` 子目录上载名为 `todoitem.insert.js` 的脚本：
 
 		~$azure mobile script upload todolist table/todoitem.insert.js
 		info:    Executing command mobile script upload
@@ -630,9 +630,9 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 
 有关详细信息，请参阅[用于管理 Azure 移动服务的命令]。
 
-## <a name="working-with-tables"></a>使用表
+##<a name="working-with-tables"></a>使用表
 
-本部分详细介绍了用于直接处理 SQL Database 表数据的策略，具体包括以下小节：
+本部分详细介绍了用于直接处理 SQL 数据库表数据的策略，具体包括以下小节：
 
 + [使用表的概述](#overview-tables)
 + [如何：从脚本访问表]
@@ -640,13 +640,13 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 + [如何：将 JSON 类型映射到数据库类型]
 + [使用 Transact-SQL 访问表]
 
-### <a name="overview-tables"></a>使用表的概述
+###<a name="overview-tables"></a>使用表的概述
 
 移动服务中的许多情况都要求服务器脚本访问数据库中的表。例如，由于每次执行脚本后移动服务不保存状态，因此，必须在表中存储每次执行脚本后需要持久保留的数据。你还可能想要检查权限表中的条目，或者要存储审核数据而不仅仅是写入日志，因为日志中的数据保留期有限，并且无法以编程方式访问。
 
 移动服务提供两种用于访问表的方法：使用 [table 对象]代理，或者通过使用 [mssql 对象]撰写 Transact-SQL 查询。使用 [table 对象]可以轻松访问服务器脚本代码中的表数据，不过，[mssql 对象]支持更复杂的数据操作，并提供最大的灵活性。
 
-### <a name="access-tables"></a>如何：从脚本访问表
+###<a name="access-tables"></a>如何：从脚本访问表
 
 从脚本访问表的最简单方法就是使用 [tables 对象]。**getTable** 函数将返回一个 [table 对象]实例，即用于访问所请求表的代理。然后，你可以调用该代理的函数来访问和更改数据。
 
@@ -704,7 +704,7 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 
 以下部分的代码示例中提供了最后一个示例：[如何：访问自定义参数][How to: Add custom parameters]。
 
-### <a name="bulk-inserts"></a>如何：执行批量插入
+###<a name="bulk-inserts"></a>如何：执行批量插入
 
 如果你使用 **for** 或 **while** 循环直接在表中插入大量的项（例如 1000 个），可能会遇到 SQL 连接限制，导致某些插入操作失败。你的请求可能永远无法完成，或者返回 HTTP 500 内部服务器错误。若要避免此问题，可以按照大约每 10 个一批的形式插入项。插入第一批后，再提交下一批，直至完成。
 
@@ -754,7 +754,7 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 
 可以在此[博客文章](http://blogs.msdn.com/b/jpsanders/archive/2013/03/20/server-script-to-insert-table-items-in-windows-azure-mobile-services.aspx)中找到整个代码示例和相关的讨论。如果使用此代码，你可以根据你的具体情况对它进行改写，并全面进行测试。
 
-### <a name="JSON-types"></a>如何：将 JSON 类型映射到数据库类型
+###<a name="JSON-types"></a>如何：将 JSON 类型映射到数据库类型
 
 客户端上的数据类型集合不同于移动服务数据库表中的数据类型集合。有时它们可以轻松地映射到另一种类型，而其他时候不会映射。移动服务执行映射中的多种类型转换：
 
@@ -801,7 +801,7 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 </tr>
 </table>
 
-### <a name="TSQL"></a>使用 Transact-SQL 访问表
+###<a name="TSQL"></a>使用 Transact-SQL 访问表
 
 从服务器脚本处理表数据的最简单方法就是使用 [table 对象]代理。但是，[table 对象]并不支持一些较为高级的方案，例如，联接查询和其他一些复杂查询，以及存储过程的调用。在这些情况下，你必须使用 [mssql 对象]针对关系表直接执行 Transact-SQL 语句。此对象提供以下函数：
 
@@ -817,7 +817,7 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 + [如何：运行返回 *raw* 结果的查询]
 + [如何：获取对数据库连接的访问权限]	
 
-#### <a name="static-query"></a>如何：运行静态查询
+####<a name="static-query"></a>如何：运行静态查询
 
 以下查询不带参数，将返回 `statusupdate` 表中的三条记录。行集采用标准的 JSON 格式。
 
@@ -831,7 +831,7 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 		});
 
 
-#### <a name="dynamic-query"></a>如何：运行动态参数化查询
+####<a name="dynamic-query"></a>如何：运行动态参数化查询
 
 以下示例通过从权限表中读取每个用户的权限来实现自定义授权。执行该查询时，占位符 (?) 将被替换为提供的参数。
 
@@ -852,7 +852,7 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 		    });
 
 
-#### <a name="joins"></a>如何：联接关系表
+####<a name="joins"></a>如何：联接关系表
 
 你可以使用 [mssql 对象]的 **query** 方法联接两个表，以传入实现联接的 TSQL 代码。假设 **ToDoItem** 表中有一些项，其中每个项都有一个对应于表中的列的 **priority** 属性。其中一个项类似于：
 
@@ -877,7 +877,7 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 		{ text: 'Take out the trash', complete: false, description: 'Critical'}
 
 
-#### <a name="raw"></a>如何：运行返回 *raw* 结果的查询
+####<a name="raw"></a>如何：运行返回 *raw* 结果的查询
 
 此示例将像前面一样执行查询，不过，这次会逐行逐列地返回需要你予以分析的“原始”格式结果集。用到此查询的可能情况是你需要访问移动服务不支持的数据类型。此代码会直接将输出写入控制台日志，使你能够检查原始格式。
 
@@ -920,7 +920,7 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 		     [ 4, 'we need to fix this one real soon now', null, 1 ],
 		   ] }
 
-#### <a name="connection"></a>如何：获取对数据库连接的访问权限
+####<a name="connection"></a>如何：获取对数据库连接的访问权限
 
 可以使用 **open** 方法获取对数据库连接的访问权限。执行此操作的原因之一是你需要使用数据库事务。
 
@@ -935,11 +935,11 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 				}
 		    });
 
-## <a name="debugging"></a>调试和故障排除
+##<a name="debugging"></a>调试和故障排除
 
 调试服务器脚本及排查其错误的主要方法是写入服务日志。默认情况下，移动服务会将执行服务脚本期间发生的错误写入服务日志。你的脚本也可以对日志执行写入操作。写入日志是调试脚本及验证其行为是否符合预期的良好方法。
 
-### <a name="write-to-logs"></a>如何：将输出写入移动服务日志
+###<a name="write-to-logs"></a>如何：将输出写入移动服务日志
 
 若要写入日志，请使用全局 [console 对象]。使用 **log** 或 **info** 函数记录信息级警告。**warning** 和 **error** 函数将记录其对应级别，这些级别已在日志中予以标注。
 
@@ -1070,4 +1070,4 @@ Helper 函数也可以只定义一次，然后在服务器脚本之间共享。�
 [config module]: http://msdn.microsoft.com/zh-cn/library/dn508125.aspx
 [Azure 移动服务中对 package.json 的支持]: http://go.microsoft.com/fwlink/p/?LinkId=391036
 
-<!---HONumber=HO63-->
+<!---HONumber=71-->

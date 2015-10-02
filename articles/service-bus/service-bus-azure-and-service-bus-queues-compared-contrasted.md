@@ -200,8 +200,7 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 |比较条件|Azure 队列|Service Bus 队列|
 |---|---|---|
 |管理协议|**基于 HTTP/HTTPS 的 REST**|**基于 HTTPS 的 REST**|
-|运行时协议|**基于 HTTP/HTTPS 的 REST**|**基于 HTTPS 的 REST**<br/><br/>**AMQP 1.0 标准（具有 TLS 的 TCP）**|
-|.NET 托管 API|**是**<br/><br/>（.NET 托管存储客户端 API）|**是**<br/><br/>（.NET 托管的中转消息传送 API）|
+|运行时协议|**基于 HTTP/HTTPS 的 REST**|**基于 HTTPS 的 REST**<br/><br/>**AMQP 1.0 标准（具有 TLS 的 TCP）**| |.NET 托管 API|**是**<br/><br/>（.NET 托管存储客户端 API）|**是**<br/><br/>（.NET 托管的中转消息传送 API）|
 |本机 C++|**是**|**否**|
 |Java API|**是**|**是**|
 |PHP API|**是**|**是**|
@@ -221,7 +220,7 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 
 - Azure 队列名称长度可以在 3-63 个字符之间，可以包含小写字母、数字和连字符。有关详细信息，请参阅[命名队列和元数据](https://msdn.microsoft.com/zh-cn/library/dd179349.aspx)。
 
-- 服务总线队列名称长度最大可达 260 个字符，且命名规则限制较少。服务总线队列名称可以包含字母、数字、句点 (.)、连字符 (-) 和下划线 (_)。
+- 服务总线队列名称长度最大可达 260 个字符，且命名规则限制较少。服务总线队列名称可以包含字母、数字、句点 (.)、连字符 (-) 和下划线 (\_)。
 
 ## 性能
 
@@ -303,8 +302,8 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 
 以下文章提供了有关使用 Azure 队列或服务总线队列的更多指导和信息。
 
-- [如何使用 Service Bus 队列](service-bus-dotnet-how-to-use-queues)
-- [如何使用队列存储服务](storage-dotnet-how-to-use-queues)
+- [如何使用 Service Bus 队列](/documentation/articles/service-bus-dotnet-how-to-use-queues)
+- [如何使用队列存储服务](/documentation/articles/storage-dotnet-how-to-use-queues)
 - [使用服务总线中转消息传送改进性能的最佳实践](https://msdn.microsoft.com/zh-cn/library/hh528527.aspx)
 - [Azure 服务总线中的队列和主题简介](http://www.code-magazine.com/article.aspx?quickid=1112041)
 - [服务总线开发人员指南](http://www.cloudcasts.net/devguide/)
@@ -314,4 +313,4 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 - [了解 Azure 存储计费 - 带宽、事务和容量](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
  
 
-<!---HONumber=64-->
+<!---HONumber=71-->

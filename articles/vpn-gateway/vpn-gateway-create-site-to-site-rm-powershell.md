@@ -1,5 +1,5 @@
 <properties
-   pageTitle="使用 Azure 资源管理器和 PowerShell 创建具有站点到站点 VPN 连接的虚拟网络 | Windows Azure"
+   pageTitle="使用 Azure 资源管理器和 PowerShell 创建具有站点到站点 VPN 连接的虚拟网络 | Microsoft Azure"
    description="使用 Azure 资源管理器和 PowerShell 创建从虚拟网络到本地位置的站点到站点 VPN 连接"
    services="vpn-gateway"
    documentationCenter="na"
@@ -10,7 +10,7 @@
 
 <tags
    ms.service="vpn-gateway"
-   ms.date="07/22/2015"
+   ms.date="07/28/2015"
    wacn.date=""/>
 
 # 使用 Azure 资源管理器和 PowerShell 创建具有站点到站点 VPN 连接的虚拟网络
@@ -22,14 +22,14 @@
 
 本主题将指导您创建一个 Azure 资源管理器虚拟网络和一个到本地网络的站点到站点 VPN 连接。
 
-Azure 当前有两种管理模式：Azure 服务管理和 Azure 资源管理器 (ARM)。根据虚拟网络的创建模式，站点到站点的设置有所不同。以下说明适用于 ARM。如果您想改为创建一个 Azure 服务管理站点到站点 VPN 连接，请参阅[在管理门户中创建站点到站点 VPN 连接](/documentation/articles/vpn-gateway-site-to-site-create)。
+Azure 目前有两种部署模式：经典部署模式和 Azure 资源管理器部署模式。根据用于部署虚拟网络的模型，站点到站点设置会有所不同。以下说明适用于资源管理器。如果你想要使用经典部署模型创建站点到站点 VPN 网关连接，请参阅[在管理门户中创建站点到站点 VPN 连接](/documentation/articles/vpn-gateway-site-to-site-created)。
 
 
 ## 开始之前
 
 在开始之前，请验证您具有以下各项：
 
-- 一台兼容 VPN 设备（和能够对其进行配置的人员）。请参阅[关于 VPN 设备](/documentation/articles/vpn-gateway-vpn-devices)。
+- 一台兼容 VPN 设备（和能够对其进行配置的人员）。请参阅[关于 VPN 设备](/documentation/articles/vpn-gateway-about-vpn-devices)。
 - 一个用于 VPN 设备的面向外部的公共 IP 地址。此 IP 地址不得位于 NAT 之后。
 - 最新版本的 Azure PowerShell cmdlet。可以从[下载页面](http://azure.microsoft.com/downloads/)的 Windows PowerShell 部分下载并安装最新版本。 
 - Azure 订阅。如果您还没有 Azure 订阅，可以注册一个 [Azure 试用版](http://www.windowsazure.cn/pricing/1rmb-trial/)。
@@ -116,9 +116,10 @@ Azure 当前有两种管理模式：Azure 服务管理和 Azure 资源管理器 
 
 ## 创建网关
 
-在此步骤中，您将创建虚拟网络网关。
+在此步骤中，您将创建虚拟网络网关。使用以下值：
 
-		New-AzureVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig
+- 网关类型为 *Vpn*。
+- VpnType 可以是 RouteBased*（在某些文档中称为动态网关）或 *Policy Based*（在某些文档中称为静态网关）。有关 VPN 网关类型的详细信息，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md)。New-AzureVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
 
 ## 配置 VPN 设备
 
@@ -130,18 +131,18 @@ Azure 当前有两种管理模式：Azure 服务管理和 Azure 资源管理器 
 
 ## 创建 VPN 连接
 
-接下来，您将在虚拟网络网关和 VPN 设备之间创建站点到站点 VPN 连接。请务必替换为您自己的值。注意，共享密钥必须与您用于 VPN 设备配置的值匹配。
+接下来，您将在虚拟网络网关和 VPN 设备之间创建站点到站点 VPN 连接。请务必替换为您自己的值。共享密钥必须与你用于 VPN 设备配置的值匹配。
 
 		$gateway1 = Get-AzureVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 		$local = Get-AzureLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
 
 		New-AzureVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 
-几分钟后，连接应建立完毕。注意，此时，通过 ARM 创建的站点到站点 VPN 连接在门户中不可见。
+几分钟后，连接应建立完毕。此时，通过资源管理器创建的站点到站点 VPN 连接在门户中不可见。
 
 
 ## 后续步骤
 
 将虚拟机添加到虚拟网络。[创建虚拟机](/documentation/articles/virtual-machines-windows-tutorial)。
 
-<!---HONumber=67-->
+<!---HONumber=71-->

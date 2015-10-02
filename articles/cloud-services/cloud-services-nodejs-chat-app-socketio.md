@@ -118,12 +118,12 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
 	> [AZURE.IMPORTANT]确保使用唯一名称，否则发布过程会失败。部署完成后，浏览器将打开并导航到已部署的服务。
 	> 
 	> 如果你收到一条错误，指出导入的发布配置文件中不存在提供的订阅名称，则你必须先为你的订阅下载和导入发布配置文件，然后再部署到 Azure。
-<!-- See the **Deploying the Application to Azure** section of [Build and deploy a Node.js application to an Azure Cloud Service](/develop/nodejs/tutorials/getting-started/)-->
+	<!-- See the **Deploying the Application to Azure** section of [Build and deploy a Node.js application to an Azure Cloud Service](/develop/nodejs/tutorials/getting-started/)-->
 
     ![显示托管在 Azure 上的服务的浏览器窗口][completed-app]
 
 	> [AZURE.NOTE]如果你收到一条错误，指出导入的发布配置文件中不存在提供的订阅名称，则你必须先为你的订阅下载和导入发布配置文件，然后再部署到 Azure。
-<!-- See the **Deploying the Application to Azure** section of [Build and deploy a Node.js application to an Azure Cloud Service](https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/)-->
+	<!-- See the **Deploying the Application to Azure** section of [Build and deploy a Node.js application to an Azure Cloud Service](https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/)-->
 
 你的应用程序现在即可在 Azure 上运行，并可使用 Socket.IO 在不同客户端之间中继聊天消息。
 
@@ -131,7 +131,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
 
 ## 后续步骤
 
-在本教程中，你已了解如何创建在 Azure 云服务中托管的基本聊天应用程序。若要了解如何在 Azure 网站中托管此应用程序，请参阅 [在 Azure 网站中使用 Socket.IO 生成 Node.js 聊天应用程序][chat Website]。
+在本教程中，你已了解如何创建在 Azure 云服务中托管的基本聊天应用程序。若要了解如何在 Azure 网站中托管此应用程序，请参阅 [在 Azure 网站中使用 Socket.IO 生成 Node.js 聊天应用程序][chatwebsite]。
 
   [chat Website]: /documentation/articles/web-sites-nodejs-chat-app-socketio/
 
@@ -155,4 +155,4 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
   [The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
   
 
-<!---HONumber=69-->
+<!---HONumber=71-->

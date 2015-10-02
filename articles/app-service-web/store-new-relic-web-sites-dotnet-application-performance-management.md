@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="app-service-web" 	
-	ms.date="04/17/2015" 
+	ms.date="07/30/2015" 
 	wacn.date=""/>
 
 
@@ -30,11 +30,11 @@ New Relic Standard 可供 Azure 用户免费使用。New Relic Pro 基于你所�
 
 <!--For pricing information see the [New Relic page in the Azure Marketplace](/marketplace/partners/newrelic/newrelic).-->
 
-> [AZURE.NOTE]只列出了 10 个以下的计算实例的价格。如果计数大于 10，请联系 New Relic (sales@newrelic.com) 获取批量定价。
+> [AZURE.NOTE] 只列出了 10 个以下的计算实例的价格。如果计数大于 10，请联系 New Relic (sales@newrelic.com) 获取批量定价。
 
 Azure 客户在部署 New Relic 代理时可获得一个为期两周的 New Relic Pro 试用订阅。
 
-使用 Azure 应用商店注册 New Relic 
+使用 Azure 应用商店注册 New Relic
 --
 
 New Relic 可与 Azure Web 角色、辅助角色和 Azure App Service 无缝集成。
@@ -64,9 +64,9 @@ New Relic 可与 Azure Web 角色、辅助角色和 Azure App Service 无缝集�
 
 	![](./media/store-new-relic-web-sites-dotnet-application-performance-management/configure-new-relic-integration.png)
 
-	完成保存操作后，在 Web 应用的边栏选项卡中单击“所有设置”，然后单击“应用程序设置”。你应会看到 **NEWRELIC_LICENSEKEY** 设置已添加到边栏选项卡的“应用设置”部分，以支持 New Relic：
+	完成保存操作后，在 Web 应用的边栏选项卡中单击“所有设置”，然后单击“应用程序设置”。你应会看到 **NEWRELIC\_LICENSEKEY** 设置已添加到边栏选项卡的“应用设置”部分，以支持 New Relic：
 
-	>[AZURE.NOTE]新的应用设置最多可能需要 30 秒的时间才能生效。若要强制使设置立即生效，请重新启动 Web 应用。
+	>[AZURE.NOTE] 新的应用设置最多可能需要 30 秒的时间才能生效。若要强制使设置立即生效，请重新启动 Web 应用。
 
 ## 步骤 3：发布 ASP.NET Web 应用
 
@@ -114,14 +114,14 @@ New Relic 可与 Azure Web 角色、辅助角色和 Azure App Service 无缝集�
     </tr>
     <tr>
        <td>查看 Worldwide Apdex 详细信息</td>
-       <td>从“概览”的“浏览器”视图中，指向“Global Apdex”图上的任何位置<b></b>。<br /><b>提示：</b>若要直接转到所选应用程序的<a href="https://newrelic.com/docs/site/geography" target="_blank">“地理”</a> 仪表板，请单击“全球 Apdex”标题，或单击“全球 Apdex”图上的任何位置<b></b>。</td>
+       <td>从“概览”的“浏览器”视图中，指向“Global Apdex”图上的任何位置<b></b>。<br /><b>提示：</b>若要直接转到所选应用程序的<a href="https://newrelic.com/docs/site/geography" target="_blank">地理</a> 仪表板，请单击“全球 Apdex”标题，或单击“全球 Apdex”图上的任何位置<b></b>。</td>
     </tr>
     <tr>
-       <td>查看<a href="https://docs.newrelic.com/docs/applications-menu/transactions-dashboard" target="_blank">“Web 事务”</a>仪表板</td>
-       <td>单击“应用程序概览”仪表板上的“Web 事务”表。或者，若要查看有关特定 Web 事务（包括<a href="https://newrelic.com/docs/site/key-transactions" target="_blank">“关键事务”</a>）的详细信息，请单击其名称。</td>
+       <td>查看<a href="https://docs.newrelic.com/docs/applications-menu/transactions-dashboard" target="_blank">Web 事务</a>仪表板</td>
+       <td>单击“应用程序概览”仪表板上的“Web 事务”表。或者，若要查看有关特定 Web 事务（包括<a href="https://newrelic.com/docs/site/key-transactions" target="_blank">关键事务</a>）的详细信息，请单击其名称。</td>
     </tr>
     <tr>
-       <td>查看<a href="https://newrelic.com/docs/site/errors" target="_blank">“错误”</a>仪表板</td>
+       <td>查看仪表板<a href="https://newrelic.com/docs/site/errors" target="_blank">错误</a></td>
        <td>单击“应用程序概览”仪表板上的“错误率”图表的标题。<br /><b>提示：</b>你还可以从“应用程序”>“（你的应用）”>“事件”>“错误”中查看“错误”仪表板<b></b>。</td>
     </tr>
     <tr>
@@ -153,7 +153,7 @@ New Relic 可与 Azure Web 角色、辅助角色和 Azure App Service 无缝集�
  * [实时用户监视](https://newrelic.com/docs/features/real-user-monitoring)：概述 RUM 如何详细记录你的用户的浏览器加载你的网页所需的时间、这些用户所在的位置以及他们使用的浏览器
  * [查找帮助](https://newrelic.com/docs/site/finding-help)：通过 New Relic 的联机帮助中心提供的资源
 
->[AZURE.NOTE]如果你想要在注册帐户之前开始使用 Azure App Service，请转到[“试用 App Service”](http://go.microsoft.com/fwlink/?LinkId=523751)，你可以通过该网站在 App Service 中创建一个生存期较短的入门站点。你不需要使用信用卡，也不需要做出承诺。
+>[AZURE.NOTE] 如果你想要在注册帐户之前开始使用 Azure App Service，请转到[试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，你可以通过该网站在 App Service 中创建一个生存期较短的入门站点。你不需要使用信用卡，也不需要做出承诺。
 
 ## 发生的更改
 * 有关从网站更改为 App Service 的指南，请参阅：[Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
@@ -172,4 +172,4 @@ New Relic 可与 Azure Web 角色、辅助角色和 Azure App Service 无缝集�
 [custom]: ./media/store-new-relic-web-sites-dotnet-application-performce-management/nrcustom.png
  
 
-<!---HONumber=66-->
+<!---HONumber=71-->

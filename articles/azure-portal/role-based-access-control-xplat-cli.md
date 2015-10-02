@@ -3,18 +3,20 @@
 	description="使用 Azure 命令行界面管理基于角色的访问控制"
 	services="azure-portal"
 	documentationCenter="na"
-	authors="Justinha"
-	manager="terrylan"
+	authors="IHenkel"
+	manager="stevenpo"
 	editor=""/>
 
 <tags 
 	ms.service="azure-portal" 
-	ms.date="06/02/2015" 
+	ms.date="08/14/2015"
 	wacn.date=""/>
 
 # 使用 Azure 命令行界面 (Azure CLI) 管理基于角色的访问控制 #
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/documentation/articles/role-based-access-control-powershell" title="Windows PowerShell" class="current">Windows PowerShell</a><a href="/documentation/articles/role-based-access-control-../xplat-cli" title="Azure CLI">Azure CLI</a></div>
+> [AZURE.SELECTOR]
+- [Windows PowerShell](/documentation/articles/role-based-access-control-powershell)
+- [Azure CLI](/documentation/articles/role-based-access-control-xplat-cli)
 
 使用 Azure 门户中基于角色的访问控制 (RBAC) 和 Azure 资源管理器 API 可以精细地管理对订阅和资源的访问。使用此功能，可以通过在特定范围内为 Active Directory 用户、组或服务主体分配某些角色来向其授予访问权限。
 
@@ -58,7 +60,7 @@
     # Use the subscription name to select the one you want to work on.
     azure account set <subscription name>
 
-有关详细信息，请参阅[安装和配置 Azure CLI](/documentation/articles/xplat-cli.md)。
+有关详细信息，请参阅[安装和配置 Azure CLI](/documentation/articles/xplat-cli)。
 
 ## <a id="check"></a>检查现有的角色分配 ##
 
@@ -88,13 +90,15 @@
 
 - 要将角色分配给谁：可以使用以下 Azure Active Directory cmdlet 查看你在目录中拥有哪些用户、组和服务主体。
 
-    `azure ad user list
-    azure ad user show
-    azure ad group list
-    azure ad group show
-    azure ad group member list
-    azure ad sp list
-    azure ad sp show`
+    ```
+    azure ad user list  
+    azure ad user show  
+    azure ad group list  
+    azure ad group show  
+    azure ad group member list  
+    azure ad sp list  
+    azure ad sp show  
+    ```
 
 - 你要分配哪些角色：可以使用以下 cmdlet 查看支持的角色定义。
 
@@ -143,4 +147,4 @@
 - [使用 Windows PowerShell 配置基于角色的访问控制](/documentation/articles/role-based-access-control-powershell)
 - [故障排除基于角色的访问控制](/documentation/articles/role-based-access-control-troubleshooting)
 
-<!---HONumber=67-->
+<!---HONumber=71-->

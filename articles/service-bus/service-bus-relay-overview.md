@@ -29,10 +29,10 @@
 
 有关服务总线中继的详细信息，请参阅以下主题。
 
-- [Azure 服务总线体系结构概述](fundamentals-service-bus-hybrid-solutions)
+- [Azure 服务总线体系结构概述](/documentation/articles/fundamentals-service-bus-hybrid-solutions)
 
-- [如何使用 Service Bus 中继服务](service-bus-dotnet-how-to-use-relay)
+- [如何使用 Service Bus 中继服务](/documentation/articles/service-bus-dotnet-how-to-use-relay)
 
  
 
-<!---HONumber=64-->
+<!---HONumber=71-->

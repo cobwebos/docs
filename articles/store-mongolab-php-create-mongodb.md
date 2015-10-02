@@ -1,4 +1,17 @@
-<properties title="How to use MongoLab to Create a MongoDB database in Azure" pageTitle="How to use MongoLab to Create a MongoDB database in Azure" metaKeywords="MongoLab MongoDB Azure" description="Learn how to use MongoLab to create a MongoDB database in Azure." documentationCenter="PHP" services="" authors="" />
+<properties 
+	pageTitle="如何在 Azure 中使用 MongoLab 创建 MongoDB 数据库" 
+	description="了解如何在 Azure 中使用 MongoLab 创建 MongoDB 数据库。" 
+	documentationCenter="php" 
+	services="" 
+	authors="chrischang127" 
+	manager="partners@mongolab.com" 
+	editor=""/>
 
-[WACOM.INCLUDE [create-mongolab-mongodb](../includes/create-mongolab-mongodb.md)]
+<tags 
+	ms.service="multiple" 
+	ms.date="08/06/2015" 
+	wacn.date=""/>
 
+[AZURE.INCLUDE [create-mongolab-mongodb](../includes/create-mongolab-mongodb.md)]
+
+<!---HONumber=71-->

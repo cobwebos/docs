@@ -84,7 +84,7 @@ Node.js 包含核心运行时中最小的一个功能集。开发人员在开发
 
 	之所以需要进行此更改，是因为我们已将文件（以前的 **bin/www**）移到了所需应用程序文件所在的同一个目录。完成此更改后，请保存 **server.js** 文件。
 
-8.  使用以下命令以在 Windows Azure 仿真程序中运行应用程序：
+8.  使用以下命令以在 Microsoft Azure 仿真程序中运行应用程序：
 
         PS C:\node\expressapp\WebRole1> Start-AzureEmulator -launch
 
@@ -129,4 +129,4 @@ Node.js 包含核心运行时中最小的一个功能集。开发人员在开发
   [Express]: http://expressjs.com/
   [http://jade-lang.com]: http://jade-lang.com
 
-<!---HONumber=69-->
+<!---HONumber=71-->

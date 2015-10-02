@@ -325,7 +325,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
 	sms.delete_hosted_service(service_name='myvm')
 
-##如何：基于捕获的虚拟机映像创建虚拟机
+## 如何：基于捕获的虚拟机映像创建虚拟机
 
 若要捕获 VM 映像，请先调用 **capture\_vm\_image** 方法：
 
@@ -429,4 +429,4 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 [Cloud Services]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj155995.aspx
 [Virtual Machines]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj156003.aspx
 
-<!---HONumber=69-->
+<!---HONumber=71-->
