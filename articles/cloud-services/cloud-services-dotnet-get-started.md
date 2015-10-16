@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="cloud-services"
-	ms.date="06/08/2015"
+	ms.date="09/01/2015"
 	wacn.date=""/>
 
 # Azure 云服务和 ASP.NET 入门
@@ -78,13 +78,13 @@
 
 3. 从“文件”菜单中，选择“打开项目”，导航到下载解决方案的位置，然后打开解决方案文件。
 
-3. 按 CTRL+SHIFT+B 生成解决方案。
+4. 按 CTRL+SHIFT+B 生成解决方案。
 
 	默认情况下，Visual Studio 会自动还原 NuGet 包的内容，它未包括在 *.zip* 文件中。如果包未还原，请通过转到“管理解决方案的 NuGet 包”对话框并单击右上角的“还原”按钮手动安装。
 
-3. 在“解决方案资源管理器”中，确保 **ContosoAdsCloudService** 被选为启动项目。
+5. 在“解决方案资源管理器”中，确保 **ContosoAdsCloudService** 被选为启动项目。
 
-1. 按 Ctrl+F5 运行应用程序。
+6. 按 Ctrl+F5 运行应用程序。
 
 	在本地运行云服务项目时，Visual Studio 会自动调用 Azure *计算模拟器*和 Azure *存储模拟器*。计算仿真程序使用您的计算机资源，以模拟 web 角色和辅助角色环境。存储模拟器使用 [SQL Server Express LocalDB](http://msdn.microsoft.com/zh-cn/library/hh510202.aspx) 数据库模拟 Azure 云存储。
 
@@ -92,19 +92,19 @@
 
 	![Contoso 广告体系结构](./media/cloud-services-dotnet-get-started/home.png)
 
-2. 单击“创建广告”。
+7. 单击“创建广告”。
 
-2. 输入一些测试数据并选择一个要上载的“.jpg”图像，然后单击“创建”。
+8. 输入一些测试数据并选择一个要上载的“.jpg”图像，然后单击“创建”。
 
 	![创建页面](./media/cloud-services-dotnet-get-started/create.png)
 
 	该应用程序转到索引页，但它不显示新广告的缩略图，因为该处理尚未发生。
 
-3. 稍等片刻，然后刷新该索引页查看缩略图。
+9. 稍等片刻，然后刷新该索引页查看缩略图。
 
 	![索引页面](./media/cloud-services-dotnet-get-started/list.png)
 
-4. 单击广告的“详细信息”查看实际尺寸的图像。
+10. 单击广告的“详细信息”查看实际尺寸的图像。
 
 	![详细信息页](./media/cloud-services-dotnet-get-started/details.png)
 
@@ -131,15 +131,15 @@ Azure 云服务是该应用程序将运行的环境。
 
 2. 单击“新建”>“计算”>“云服务”>“快速创建”。
 
-4. 在 URL 输入框中，输入 URL 前缀。
+3. 在 URL 输入框中，输入 URL 前缀。
 
 	此 URL 必须是唯一的。如果您选择的前缀已被其他人使用，将获得一条错误消息。
 
-5. 选择您要在其中部署该应用程序的区域。
+4. 选择您要在其中部署该应用程序的区域。
 
 	此字段指定你的云服务将托管在哪个数据中心。对于生产应用程序，你可以选择离客户最近的区域。对于本教程，选择离您最近的区域。
 
-6. 单击“创建云服务”。
+5. 单击“创建云服务”。
 
 	在下图中，使用 URL contosoads.cloudapp.net 创建一个云服务。
 
@@ -151,33 +151,33 @@ Azure 云服务是该应用程序将运行的环境。
 
 1. 在 Azure 门户中，单击“新建”>“数据服务”>“SQL 数据库”>“快速创建”[](http://manage.windowsazure.cn)。
 
-1. 在“数据库名称”框中，输入 *contosoads*。
+2. 在“数据库名称”框中，输入 *contosoads*。
 
-1. 从“服务器”下拉列表中选择“新建 SQL 数据库服务器”。
+3. 从“服务器”下拉列表中选择“新建 SQL 数据库服务器”。
 
 	或者，如果你的订阅已有一台服务器，可从下拉列表中选择该服务器。
 
-1. 选择的**区域**与你为云服务所选择的相同。
+4. 选择的**区域**与你为云服务所选择的相同。
 
 	当云服务和数据库位于不同的数据中心（不同区域）时，延迟将增加，并且您将支付带宽数据中心之外的费用。数据中心内的带宽是免费的。
 
-1. 输入管理员“登录名”和“密码”。
+5. 输入管理员“登录名”和“密码”。
 
 	如果你选择了“新建 SQL 数据库服务器”，则在此处不要输入现有名称和密码。你应输入新的名称和密码，你现在定义的名称和密码将在你以后访问数据库时使用。如果你选择之前创建的服务器，系统将提示你已创建的管理用户帐户的密码。
 
-1. 单击“创建 SQL 数据库”。
+6. 单击“创建 SQL 数据库”。
 
 	![新 SQL 数据库](./media/cloud-services-dotnet-get-started/newdb.png)
 
-1. Azure 完成创建数据库后，在门户的左窗格中单击“SQL 数据库”选项卡，然后单击新数据库的名称。
+7. Azure 完成创建数据库后，在门户的左窗格中单击“SQL 数据库”选项卡，然后单击新数据库的名称。
 
-2. 单击“仪表板”选项卡。
+8. 单击“仪表板”选项卡。
 
-3. 单击“管理允许的 IP 地址”。
+9. 单击“管理允许的 IP 地址”。
 
-4. 在“允许的服务”下，将“Azure 服务”更改为“是”。
+10. 在“允许的服务”下，将“Azure 服务”更改为“是”。
 
-5. 单击“保存”。
+11. 单击“保存”。
 
 ### 创建 Azure 存储帐户
 
@@ -187,17 +187,17 @@ Azure 存储帐户提供在云中存储队列和 Blob 数据的资源。
 
 1. 在 [Azure 门户](http://manage.windowsazure.cn)中，单击“新建”>“数据服务”>“存储”>“快速创建”。
 
-4. 在“URL”框中，输入 URL 前缀。
+2. 在“URL”框中，输入 URL 前缀。
 
 	此前缀加上在框下看到的文本将是你的存储帐户的唯一 URL。如果其他人已使用您输入的前缀，您必须选择不同的前缀。
 
-5. 将“区域”下拉列表设置到为云服务选择的相同区域。
+3. 将“区域”下拉列表设置到为云服务选择的相同区域。
 
 	当云服务和存储帐户位于不同的数据中心（不同区域）时，延迟将增加，并且你需要为数据中心外的带宽付费。数据中心内的带宽是免费的。
 
 	Azure 地缘组实际上是一种机制，目的是最小化数据中心内不同资源之间的距离，这样可以降低延迟。本教程不使用地缘组。有关详细信息，请参阅[如何在 Azure 中创建地缘组](http://msdn.microsoft.com/zh-cn/library/jj156209.aspx)。
 
-6. 将“复制”下拉列表设置为“本地冗余”。
+4. 将“复制”下拉列表设置为“本地冗余”。
 
 	为存储帐户启用地域复制时，会将存储内容复制到辅助数据中心，这样就能够在主要位置发生重大灾难时将故障转移到该位置。地域复制可能会产生额外的成本。对于测试和开发帐户，你通常不希望因为地域复制而付款。有关详细信息，请参阅[创建、管理或删除存储帐户](/documentation/articles/storage-manage-storage-account/#replication-options)。
 
@@ -232,55 +232,55 @@ Web 项目和辅助角色项目自身具有数据库连接字符串，并且当�
 
 	![连接字符串](./media/cloud-services-dotnet-get-started/connstrings.png)
 
-4. 在 *Web.Release.config* 转换文件中，删除 `{connectionstring}` 并将 Azure 门户中的 ADO.NET 连接字符串粘贴在其原位置。
+3. 在 *Web.Release.config* 转换文件中，删除 `{connectionstring}` 并将 Azure 门户中的 ADO.NET 连接字符串粘贴在其原位置。
 
-5. 在粘贴到 *Web.Release.config* 转换文件的连接字符串中，请用你为新的 SQL 数据库创建的密码替换 `{your_password_here}`。
+4. 在粘贴到 *Web.Release.config* 转换文件的连接字符串中，请用你为新的 SQL 数据库创建的密码替换 `{your_password_here}`。
 
-7. 保存文件。
+5. 保存文件。
 
 6. 选择并复制连接字符串，供在以下步骤中配置辅助角色项目的使用（不带周围的引号）。
 
-5. 在云服务项目的“角色”下的“解决方案资源管理器”中，右键单击“ContosoAdsWorker”并单击“属性”。
+7. 在云服务项目的“角色”下的“解决方案资源管理器”中，右键单击“ContosoAdsWorker”并单击“属性”。
 
 	![角色属性](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
 
-6. 单击“设置”选项卡。
+8. 单击“设置”选项卡。
 
-7. 将“服务配置”更改为“云”。
+9. 将“服务配置”更改为“云”。
 
-7. 选择 `ContosoAdsDbConnectionString` 设置中的文本，然后粘贴你从本教程上一部分复制的连接字符串。
+10. 选择 `ContosoAdsDbConnectionString` 设置中的文本，然后粘贴你从本教程上一部分复制的连接字符串。
 
 	![辅助角色的数据库连接字符串](./media/cloud-services-dotnet-get-started/workerdbcs.png)
 
-7. 保存所做更改。
+11. 保存所做更改。
 
 ### 配置解决方案以便在 Azure 中运行时使用您的 Azure 存储帐户
 
 Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储在云服务项目中的环境设置。对于每个项目，应用程序将在本地运行以及在云中运行时，没有使用一组单独的设置。您将更新用于 web 和辅助角色项目的云环境设置。
 
-4. 在“解决方案资源管理器”中，右键单击“ContosoAdsCloudService”项目中“角色”下的“ContosoAdsWeb”，然后单击“属性”。
+1. 在“解决方案资源管理器”中，右键单击“ContosoAdsCloudService”项目中“角色”下的“ContosoAdsWeb”，然后单击“属性”。
 
 	![角色属性](./media/cloud-services-dotnet-get-started/roleproperties.png)
 
-5. 单击“设置”选项卡。在“服务配置”下拉列表框中，选择“云”。
+2. 单击“设置”选项卡。在“服务配置”下拉列表框中，选择“云”。
 
 	![云配置](./media/cloud-services-dotnet-get-started/sccloud.png)
 
-6. 选择“StorageConnectionString”条目，你将看到一个省略号 (**...**) 按钮，位于行的右端。单击省略号按钮打开“创建存储帐户连接字符串”对话框。
+3. 选择“StorageConnectionString”条目，你将看到一个省略号 (**...**) 按钮，位于行的右端。单击省略号按钮打开“创建存储帐户连接字符串”对话框。
 
 	![打开连接字符串创建框](./media/cloud-services-dotnet-get-started/opencscreate.png)
 
-1. 在“创建存储连接字符串”对话框中，单击“使用你的订阅进行连接”，选择你以前创建的存储帐户，然后单击“确定”。如尚未登录，将提示您输入 Azure 帐户凭据。
+4. 在“创建存储连接字符串”对话框中，单击“使用你的订阅进行连接”，选择你以前创建的存储帐户，然后单击“确定”。如尚未登录，将提示您输入 Azure 帐户凭据。
 
 	![创建存储连接字符串](./media/cloud-services-dotnet-get-started/createstoragecs.png)
 
-1. 保存所做更改。
+5. 保存所做更改。
 
-2. 按照你所使用的针对 `StorageConnectionString` 连接字符串的相同过程，设置 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` 连接字符串。
+6. 按照你所使用的针对 `StorageConnectionString` 连接字符串的相同过程，设置 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` 连接字符串。
 
 	此连接字符串用于日志记录。
 
-2. 请按照用于 **ContosoAdsWeb** 角色的相同过程为 **ContosoAdsWorker** 角色设置两个连接字符串。不要忘记将“服务配置”设置为“云”。
+7. 请按照用于 **ContosoAdsWeb** 角色的相同过程为 **ContosoAdsWorker** 角色设置两个连接字符串。不要忘记将“服务配置”设置为“云”。
 
 已使用 Visual Studio 用户界面进行配置的角色环境设置存储在 ContosoAdsCloudService 项目的以下文件中：
 
@@ -311,7 +311,7 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
 ###  将项目部署到 Azure
 
-3.	在“解决方案资源管理器”中，右键单击“ContosoAdsCloudService”云项目并选择“发布”。
+1.	在“解决方案资源管理器”中，右键单击“ContosoAdsCloudService”云项目并选择“发布”。
 
 	![发布菜单](./media/cloud-services-dotnet-get-started/pubmenu.png)
 
@@ -325,23 +325,23 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
 	本教程可以使用“高级”选项卡中的默认设置。有关高级选项卡的信息，请参阅[发布 Azure 应用程序向导](http://msdn.microsoft.com/zh-cn/library/windowsazure/hh535756.aspx)。
 
-2. 在“摘要”步骤中，单击“发布”。
+4. 在“摘要”步骤中，单击“发布”。
 
 	![摘要步骤](./media/cloud-services-dotnet-get-started/pubsummary.png)
 
    “Azure 活动日志”窗口将在 Visual Studio 中打开。
 
-2. 单击右箭头图标以展开部署详细信息。
+5. 单击右箭头图标以展开部署详细信息。
 
 	部署可能需要 5 分钟或更长时间。
 
 	![Azure 活动日志窗口](./media/cloud-services-dotnet-get-started/waal.png)
 
-1. 当部署状态为完成时，单击“网站 URL”以启动应用程序。
+6. 当部署状态为完成时，单击“网站 URL”以启动应用程序。
 
-9. 就像在本地运行应用程序一样，现在可以通过创建、查看和编辑一些广告测试应用程序。
+7. 就像在本地运行应用程序一样，现在可以通过创建、查看和编辑一些广告测试应用程序。
 
->[AZURE.NOTE]完成测试后，删除或停止云服务。即使你不使用云服务，也会产生费用，因为要为它保留虚拟机资源。如果保持运行云服务，找到你 URL 的任何人都可以创建和查看广告。在 [Azure 门户](http://manage.windowsazure.com)中，转到云服务的“仪表板”选项卡，然后单击页面底部的“删除”按钮。如果你只是想要暂时防止其他人访问站点，请单击“停止”。在这种情况下，会继续产生费用。当你不再需要 SQL 数据库和存储帐户时，可以遵循类似的过程将其删除。
+>[AZURE.NOTE]完成测试后，删除或停止云服务。即使你不使用云服务，也会产生费用，因为要为它保留虚拟机资源。如果保持运行云服务，找到你 URL 的任何人都可以创建和查看广告。在 Azure 门户中，转到云服务的“仪表板”选项卡，然后单击页面底部的“删除”按钮[](http://manage.windowsazure.com)。如果你只是想要暂时防止其他人访问站点，请单击“停止”。在这种情况下，会继续产生费用。当你不再需要 SQL 数据库和存储帐户时，可以遵循类似的过程将其删除。
 
 ## 从头开始创建应用程序
 
@@ -375,15 +375,15 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
 	![更改身份验证](./media/cloud-services-dotnet-get-started/chgauth.png)
 
-7. 在“更改身份验证”对话框中，选择“无身份验证”，然后单击“确定”。
+6. 在“更改身份验证”对话框中，选择“无身份验证”，然后单击“确定”。
 
 	![无身份验证](./media/cloud-services-dotnet-get-started/noauth.png)
 
-8. 在“新建 ASP.NET 项目”对话框中，单击“确定”。
+7. 在“新建 ASP.NET 项目”对话框中，单击“确定”。
 
-9. 在“解决方案资源管理器”中，右键单击该解决方案（而不是其中某个项目），然后选择“添加 - 新建项目”。
+8. 在“解决方案资源管理器”中，右键单击该解决方案（而不是其中某个项目），然后选择“添加 - 新建项目”。
 
-11. 在“添加新项目”对话框中，选择左窗格中“Visual C#”下面的“Windows 桌面”，然后单击“类库”模板。
+9. 在“添加新项目”对话框中，选择左窗格中“Visual C#”下面的“Windows 桌面”，然后单击“类库”模板。
 
 10. 将项目命名为 *ContosoAdsCommon*，然后单击“确定”。
 
@@ -391,29 +391,29 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
 ### 更新和添加 NuGet 包
 
-11. 打开解决方案的“管理 NuGet 包”对话框。
+1. 打开解决方案的“管理 NuGet 包”对话框。
 
-12. 在左窗格中，选择“更新”。
+2. 在左窗格中，选择“更新”。
 
-13. 查找“Azure 存储空间”包，如果它在列表中，单击“更新”以获取最新版本的存储客户端库。
+3. 查找“Azure 存储空间”包，如果它在列表中，单击“更新”以获取最新版本的存储客户端库。
 
 	![更新 SCL](./media/cloud-services-dotnet-get-started/updstg.png)
 
 	存储客户端库更新频率高于 Visual Studio 项目模板，因此您通常会发现该版本中新创建的计划需求需要更新。
 
-14. 在左窗格中，选择“联机”。
+4. 在左窗格中，选择“联机”。
 
-16. 找到 *EntityFramework* NuGet 包，并将其安装在所有三个项目中。
+5. 找到 *EntityFramework* NuGet 包，并将其安装在所有三个项目中。
 
 ### 设置项目引用
 
-10. 在 ContosoAdsWeb 项目中，设置对 ContosoAdsCommon 项目的引用。右键单击 ContosoAdsWeb 项目中，然后单击“引用”>“添加引用”。在“引用管理器”对话框中，选择左窗格中的“解决方案 - 项目”，选择 **ContosoAdsCommon**，然后单击“确定”。
+1. 在 ContosoAdsWeb 项目中，设置对 ContosoAdsCommon 项目的引用。右键单击 ContosoAdsWeb 项目中，然后单击“引用”>“添加引用”。在“引用管理器”对话框中，选择左窗格中的“解决方案 - 项目”，选择 **ContosoAdsCommon**，然后单击“确定”。
 
-11. 在 ContosoAdsWorker 项目中，设置对 ContosoAdsCommon 项目的引用。
+2. 在 ContosoAdsWorker 项目中，设置对 ContosoAdsCommon 项目的引用。
 
 	ContosoAdsCommon 将包含实体框架数据模型和上下文类，将在前端和后端使用。
 
-11. 在 ContosoAdsWorker 项目中，设置对 `System.Drawing` 的引用。
+3. 在 ContosoAdsWorker 项目中，设置对 `System.Drawing` 的引用。
 
 	后端使用此程序集将图像转换为缩略图。
 
@@ -421,31 +421,31 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
 在本部分中，您将为本地测试配置 Azure 存储和 SQL 连接字符串。本教程前面的部署说明解释如何当应用程序在云中运行时设置连接字符串。
 
-3. 在 ContosoAdsWeb 项目中，打开应用程序 Web.config 文件，并在 `configSections` 元素后面插入以下 `connectionStrings` 元素。
+1. 在 ContosoAdsWeb 项目中，打开应用程序 Web.config 文件，并在 `configSections` 元素后面插入以下 `connectionStrings` 元素。
 
 		<connectionStrings>
 		  <add name="ContosoAdsContext" connectionString="Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;" providerName="System.Data.SqlClient" />
 		</connectionStrings>
 
-3. 保存所做更改。
+2. 保存所做更改。
 
-2. 在 ContosoAdsCloudService 项目中，右键单击“角色”下的 ContosoAdsWeb，然后单击“属性”。
+3. 在 ContosoAdsCloudService 项目中，右键单击“角色”下的 ContosoAdsWeb，然后单击“属性”。
 
 	![角色属性](./media/cloud-services-dotnet-get-started/roleproperties.png)
 
-3. 在“ContosAdsWeb 角色”属性窗口中，单击“设置”选项卡，然后单击“添加设置”。
+4. 在“ContosAdsWeb 角色”属性窗口中，单击“设置”选项卡，然后单击“添加设置”。
 
 	将“服务配置”保留设置为“所有配置”。
 
-4. 添加名为 *StorageConnectionString* 的新设置。将“类型”设置为“ConnectionString”，并将“值”设置为“UseDevelopmentStorage=true”。
+5. 添加名为 *StorageConnectionString* 的新设置。将“类型”设置为“ConnectionString”，并将“值”设置为“UseDevelopmentStorage=true”。
 
 	![新连接字符串](./media/cloud-services-dotnet-get-started/scall.png)
 
-5. 保存所做更改。
+6. 保存所做更改。
 
-3. 按照相同的过程在 ContosoAdsWorker 角色属性中添加存储连接字符串。
+7. 按照相同的过程在 ContosoAdsWorker 角色属性中添加存储连接字符串。
 
-5. 还是在“ContosoAdsWorker [角色]”属性窗口中，添加另一个连接字符串：
+8. 还是在“ContosoAdsWorker [角色]”属性窗口中，添加另一个连接字符串：
 
 	* 名称：ContosoAdsDbConnectionString
 	* 类型：字符串
@@ -459,9 +459,9 @@ Web 角色项目和辅助角色项目的 azure 存储帐户连接字符串存储
 
 要将文件添加到某个项目或文件夹，请右键单击该项目或文件夹，然后单击“添加”>“现有项”。选择所需的文件，然后单击“添加”。如果询问你是否想要替换现有文件，请单击“是”。
 
-3. 在 ContosoAdsCommon 项目中，删除 *Class1.cs* 文件，并在其原位置添加来自下载项目的 *Ad.cs* 和 *ContosoAdscontext.cs* 文件。
+1. 在 ContosoAdsCommon 项目中，删除 *Class1.cs* 文件，并在其原位置添加来自下载项目的 *Ad.cs* 和 *ContosoAdscontext.cs* 文件。
 
-3. 在 ContosoAdsWeb 项目中，从下载的项目添加以下文件。
+2. 在 ContosoAdsWeb 项目中，从下载的项目添加以下文件。
 	- *Global.asax.cs*。  
 	- 在 *Views/Shared* 文件夹中：<em>\_Layout.cshtml</em>。
 	- 在 *Views/Home* 文件夹中：*Index.cshtml*。
@@ -799,6 +799,7 @@ Contoso 广告应用程序有意保持入门教程的简单性。例如，它没
 
 有关云开发的常规信息，请参阅[使用 Microsoft Azure 构建实际的云应用](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)。
 
+有关 Azure 存储最佳实践和模式的视频介绍，请参阅 [Microsoft Azure 存储 – 新增功能、最佳实践和模式](http://channel9.msdn.com/Events/Build/2014/3-628)。
 
 有关详细信息，请参阅以下资源：
 
@@ -806,4 +807,4 @@ Contoso 广告应用程序有意保持入门教程的简单性。例如，它没
 * [如何管理云服务](/documentation/articles/cloud-services-how-to-manage)
 * [Azure 存储空间](/documentation/services/storage/)
 
-<!---HONumber=71-->
+<!---HONumber=74-->

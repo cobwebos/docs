@@ -1,34 +1,31 @@
-<properties 
-	pageTitle="Azure 存储入门" 
-	description="如何开始在 Visual Studio 中的 Azure WebJob 项目中使用 Azure blob 存储" 
-	services="storage" 
-	documentationCenter="" 
-	authors="patshea123" 
-	manager="douge" 
+<properties
+	pageTitle="开始使用 blob 存储和 Visual Studio 连接服务（WebJob 项目）| Microsoft Azure"
+	description="在使用 Visual Studio 连接服务连接到 Azure 存储后，如何开始使用 WebJob 项目中的 Blob 存储"
+	services="storage"
+	documentationCenter=""
+	authors="patshea123"
+	manager="douge"
 	editor="tglee"/>
 
-<tags 
+<tags
 	ms.service="storage"
-	
-	ms.date="07/13/2015" 
+	ms.date="09/03/2015"
 	wacn.date=""/>
 
-# Azure 存储入门（Azure WebJob 项目）
+# 开始使用 Azure Blob 存储和 Visual Studio 连接服务（WebJob 项目）
 
 > [AZURE.SELECTOR]
-> - [Getting Started](/documentation/articles/vs-storage-webjobs-getting-started-blobs)
-> - [What Happened](/documentation/articles/vs-storage-webjobs-what-happened)
-
-> [AZURE.SELECTOR]
+> - [入门](/documentation/articles/vs-storage-webjobs-getting-started-blobs)
+> - [发生了什么情况](/documentation/articles/vs-storage-webjobs-what-happened)
 > - [Blobs](/documentation/articles/vs-storage-webjobs-getting-started-blobs)
-> - [Queues](/documentation/articles/vs-storage-webjobs-getting-started-queues)
-> - [Tables](/documentation/articles/vs-storage-webjobs-getting-started-tables)
+> - [队列](/documentation/articles/vs-storage-webjobs-getting-started-queues)
+> - [表](/documentation/articles/vs-storage-webjobs-getting-started-tables)
 
 ## 概述
 
-当你使用 Visual Studio“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。
+本文章提供 C# 代码示例，用于演示如何在创建或更新 Azure blob 后触发进程。这些代码示例使用 [WebJobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk) 版本 1.x。当你使用 Visual Studio“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。
 
-本文章提供 C# 代码示例，用于演示如何在创建或更新 Azure blob 后触发进程。这些代码示例使用 [WebJobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk) 版本 1.x。
+
 
 ## 如何在创建或更新 Blob 后触发函数
 
@@ -199,7 +196,7 @@ SDK 自动反序列化 JSON 消息。下面是 `PoisonBlobMessage` 类：
 
 若要在应用程序启动后检测新的或已更改的 Blob，SDK 会定期读取从 Blob 存储日志。blob 日志将进行缓冲，仅每隔 10 分钟左右获取物理写入，因此创建或更新 blob 后可能存在很长的延迟，然后才会执行对应的 `BlobTrigger` 函数。
 
-使用 `Blob` 属性创建的 blob 出现异常。当 WebJobs SDK 创建新 blob 时，会立即将新的 blob 传递给任何匹配的 `BlobTrigger` 函数。因此，如果建立了 Blob 输入和输出的链接，则 SDK 可以高效地处理它们。但是，如果您想要对通过其他方式创建或更新的 blob 降低运行 blob 处理功能的延迟时间，我们建议使用 `QueueTrigger`（而不是 `BlobTrigger`）。
+使用 `Blob` 属性创建的 blob 出现异常。当 WebJobs SDK 创建新 blob 时，会立即将新的 blob 传递给任何匹配的 `BlobTrigger` 函数。因此，如果建立了 Blob 输入和输出的链接，则 SDK 可以高效地处理它们。但是，如果你想要对通过其他方式创建或更新的 blob 降低运行 blob 处理功能的延迟时间，我们建议使用 `QueueTrigger`（而不是 `BlobTrigger`）。
 
 ### <a id="receipts"></a> Blob 回执
 
@@ -213,7 +210,7 @@ Blob 回执在 AzureWebJobsStorage 连接字符串指定的 Azure 存储帐户�
 * Blob 名称
 * ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
 
-如果您想要强制重新处理某个 blob，则可以从 *azure-webjobs-hosts* 容器中手动删除该 blob 的 blob 回执。
+如果你想要强制重新处理某个 blob，则可以从 *azure-webjobs-hosts* 容器中手动删除该 blob 的 blob 回执。
 
 ## <a id="queues"></a> 队列文章涵盖的相关主题
 
@@ -233,7 +230,7 @@ Blob 回执在 AzureWebJobsStorage 连接字符串指定的 Azure 存储帐户�
 
 ## <a id="nextsteps"></a>后续步骤
 
-本指南提供的代码示例演示了如何处理常见方案以操作 Azure Blob。有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 推荐资源](http://www.windowsazure.cn/documentation/articles/websites-webjobs-resources/)。
+本文提供了代码示例，演示如何处理用于操作 Azure blob 的常见方案。有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 推荐资源](http://www.windowsazure.cn/documentation/articles/websites-webjobs-resources/)。
  
 
-<!---HONumber=67-->
+<!---HONumber=74-->

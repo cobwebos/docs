@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="cloud-services"
-	ms.date="06/01/2015"
+	ms.date="08/31/2015"
 	wacn.date=""/>
 
 
@@ -23,7 +23,7 @@
 
 有关云服务以及如何将它们与 Azure 网站和虚拟机进行比较的更多信息，请参阅 [Azure 网站、云服务和虚拟机的比较](/documentation/articles/choose-web-site-cloud-service-vm)。
 
->[AZURE.TIP]想要构建一个简单的网站？ 如果你的方案只涉及一个简单的网站前端，则可以考虑<a href="/documentation/articles/web-sites-nodejs-develop-deploy-mac">使用轻型 Web 应用</a>。 随着你的 Web 应用的不断扩大和你的需求的变化，你可以轻松升级到云服务。
+>[AZURE.TIP]想要构建一个简单的网站？ 如果你的方案只涉及一个简单的网站前端，则可以考虑<a href="/documentation/articles/web-sites-nodejs-develop-deploy-mac/">使用轻型 Web 应用</a>。 随着你的 Web 应用的不断扩大和你的需求的变化，你可以轻松升级到云服务。
 
 
 通过学习本教程，你将可以生成一个托管在 Web 角色中的简单 Web 应用程序。你将使用计算模拟器在本地测试你的应用程序，然后使用 PowerShell 命令行工具来部署该应用程序。
@@ -49,7 +49,8 @@
 
 1. 以管理员身份运行 **Azure PowerShell**。（在“开始”菜单或“开始”屏幕中，搜索 **Azure PowerShell**。）
 
-2.  输入以下 PowerShell cmdlet 来创建项目：
+2.  [将 PowerShell 连接](/documentation/articles/powershell-install-configure/#how-to-connect-to-your-subscription)到订阅。
+3.  输入以下 PowerShell cmdlet 来创建项目：
 
         New-AzureServiceProject helloworld
 
@@ -112,11 +113,12 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 
 ### 发布应用程序
 
-若要发布，请按如下所示运行 **Publish-AzureServiceProject** cmdlet：
+若要发布，请运行以下命令：
 
-    Publish-AzureServiceProject -ServiceName NodeHelloWorld -Location "China North" -Launch
+  	$ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))   
+	Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
 
-- **-ServiceName** 指定部署的名称。此名称必须唯一，否则发布过程将会失败。
+- **-ServiceName** 指定部署的名称。此名称必须唯一，否则发布过程将会失败。**Get-Date** 命令附加应使名称唯一的日期/时间字符串。
 
 - **-Location** 指定托管应用程序的数据中心。若要查看可用数据中心的列表，请使用 **Get-AzureLocation** cmdlet。
 
@@ -187,4 +189,4 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 [How to Delete a Storage Account from an Azure Subscription]: /documentation/articles/storage-manage-storage-account
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
 
-<!---HONumber=71-->
+<!---HONumber=74-->

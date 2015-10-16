@@ -3,13 +3,13 @@
 	description="本教程以“使用 Express 构建 Web 应用程序”教程为基础，演示如何添加 Azure 存储服务和 Azure 模块。" 
 	services="cloud-services, storage" 
 	documentationCenter="nodejs" 
-	authors="MikeWasson" 
+	authors="TomArcher" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
 	ms.service="storage" 
-	ms.date="02/25/2015" 
+	ms.date="09/01/2015" 
 	wacn.date=""/>
 
 
@@ -71,7 +71,7 @@
 
 ### 安装其他模块
 
-2. 使用以下命令在本地安装 azure、[node-uuid]、[nconf] 和 [async] 模块，并将它们的一个条目保存到 **package.json** 文件：
+1. 使用以下命令在本地安装 azure、[node-uuid]、[nconf] 和 [async] 模块，并将它们的一个条目保存到 **package.json** 文件：
 
 		PS C:\node\tasklist\WebRole1> npm install azure-storage node-uuid async nconf --save
 
@@ -94,7 +94,7 @@
 		+-- xml2js@0.2.7 (sax@0.5.2)
 		+-- request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
 
-## 在 Node 应用程序中使用表服务
+##在 Node 应用程序中使用表服务
 
 在本节中，你将通过添加一个包含你的任务模型的 **task.js** 文件来扩展 **express** 命令创建的基本应用程序。你还将修改现有 **app.js** 并创建使用该模型的新** tasklist.js** 文件。
 
@@ -194,7 +194,7 @@
 		  this.task = task;
 		}
 
-2. 继续向 **tasklist.js** 文件添加用于**showTasks**、**addTask** 和 **completeTasks** 的方法：
+3. 继续向 **tasklist.js** 文件添加用于**showTasks**、**addTask** 和 **completeTasks** 的方法：
 
 		TaskList.prototype = {
 		  showTasks: function(req, res) {
@@ -238,7 +238,7 @@
 		  }
 		}
 
-3. 保存 **tasklist.js** 文件。
+4. 保存 **tasklist.js** 文件。
 
 ### 修改 app.js
 
@@ -389,7 +389,7 @@ Azure 将按使用的服务器小时数对 Web 角色实例计费。你的应用
 
 	停止服务可能需要花费几分钟时间。在服务停止时，你会收到一条指示服务已停止的消息。
 
-3.  若要删除服务，请调用以下 cmdlet：
+2.  若要删除服务，请调用以下 cmdlet：
 
         PS C:\node\tasklist\WebRole1> Remove-AzureService contosotasklist
 
@@ -403,4 +403,4 @@ Azure 将按使用的服务器小时数对 Web 角色实例计费。你的应用
   [Node.js Web 应用程序]: /develop/nodejs/tutorials/getting-started/
  
 
-<!---HONumber=71-->
+<!---HONumber=74-->

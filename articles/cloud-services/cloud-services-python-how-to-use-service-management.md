@@ -152,7 +152,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
 ## <a name="CreateStorageService"> </a>如何：创建存储服务
 
-利用[存储服务]，可以访问 Azure [Blob][azure-blobs]、[表][azure-tables]和[队列][azure-queues]。若要创建存储服务，你需要服务名称（3 至 24 个小写字符且在 Azure 中是唯一的）、说明、标签（最多 100 个字符，自动编码为 base64）以及位置或地缘组。下面的示例演示如何通过指定位置来创建存储服务。如果你要使用地缘组，则必须首先创建地缘组（请参阅[如何：创建地缘组](#CreateAffinityGroup)），并使用 **affinity\_group** 参数对其进行设置。
+利用[存储服务]，可以访问 Azure [Blob][azure-blobs]、[表][azure-tables]和[队列][azure-queues]。若要创建存储服务，你需要服务名称（3 至 24 个小写字符且在 Azure 中是唯一的）、说明、标签（最多 100 个字符，自动编码为 base64）以及位置。下面的示例演示如何通过指定位置来创建存储服务。
 
 	from azure import *
 	from azure.servicemanagement import *
@@ -325,7 +325,7 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 
 	sms.delete_hosted_service(service_name='myvm')
 
-## 如何：基于捕获的虚拟机映像创建虚拟机
+##如何：基于捕获的虚拟机映像创建虚拟机
 
 若要捕获 VM 映像，请先调用 **capture\_vm\_image** 方法：
 
@@ -429,4 +429,4 @@ Azure SDK for Python 可包装 [Azure 服务管理 API][svc-mgmt-rest-api]，后
 [Cloud Services]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj155995.aspx
 [Virtual Machines]: http://msdn.microsoft.com/zh-cn/library/windowsazure/jj156003.aspx
 
-<!---HONumber=71-->
+<!---HONumber=74-->

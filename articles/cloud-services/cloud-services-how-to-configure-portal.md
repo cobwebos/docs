@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何配置云服务 - Azure" 
+	pageTitle="如何配置云服务 | Microsoft Azure" 
 	description="了解如何在 Azure 中配置云服务。了解如何更新云服务配置以及配置对角色实例的远程访问。" 
 	services="cloud-services" 
 	documentationCenter="" 
@@ -18,8 +18,8 @@
 # 如何配置云服务
 
 > [AZURE.SELECTOR]
-- [Azure Portal](/documentation/articles/cloud-services-how-to-configure)
-- [Azure Portal](/documentation/articles/cloud-services-how-to-configure-portal)
+- [Azure 门户](/documentation/articles/cloud-services-how-to-configure)
+- [Azure 门户](/documentation/articles/cloud-services-how-to-configure-portal)
 
 你可以在 Azure 管理门户中配置最常使用的云服务设置。或者，如果你希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上载更新文件并使用配置更改更新云服务。无论使用哪种方法，配置更新都将应用于所有角色实例。
 
@@ -37,11 +37,11 @@
     
     从这里可以查看“属性”、更改“配置”、管理“证书”并管理有权访问此云服务的“用户”。
 
-2. 在“监视”节下你可以单击任何磁贴来配置警报。
+3. 在“监视”节下你可以单击任何磁贴来配置警报。
 
     ![云服务监视](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
     
-3. 在“角色和实例”节下你可以单击任何云服务角色来管理该实例。
+4. 在“角色和实例”节下你可以单击任何云服务角色来管理该实例。
 
     ![云服务实例](./media/cloud-services-how-to-configure-portal/cs-instance.png)
     
@@ -81,8 +81,8 @@
 
 ## 配置对角色实例的远程访问
 
-不能使用 **Azure 门户**配置远程访问，仅可通过 [Azure 门户](https://manage.windowsazure.cn)更改此设置。详细信息见[此处](cloud-services-how-to-configure.md#configure-remote-access-to-role-instances)。
+不能使用 **Azure 门户**配置远程访问，仅可通过 [Azure 门户](https://manage.windowsazure.cn)更改此设置。详细信息见[此处](/documentation/articles/cloud-services-how-to-configure/#configure-remote-access-to-role-instances)。
 			
  
 
-<!---HONumber=71-->
+<!---HONumber=74-->

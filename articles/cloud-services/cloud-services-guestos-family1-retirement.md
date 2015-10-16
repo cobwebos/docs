@@ -61,14 +61,14 @@ foreach($subscription in Get-AzureSubscription) {
 
 基于 Windows Server 2012 的**来宾 OS 系列 3.x**
 
-1. 确保你的应用程序使用了 SDK 1.8 或更高版本以及 .NET framework 4.0 或 4.5。 
-2. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“3”，然后重新部署云服务。
+3. 确保你的应用程序使用了 SDK 1.8 或更高版本以及 .NET framework 4.0 或 4.5。 
+4. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“3”，然后重新部署云服务。
 
 
 基于 Windows Server 2008 R2 的**来宾 OS 系列 2.x**
 
-1. 确保你的应用程序使用了 SDK 1.3 和更高版本以及 .NET framework 3.5 或 4.0。 
-2. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“2”，然后重新部署云服务。
+5. 确保你的应用程序使用了 SDK 1.3 和更高版本以及 .NET framework 3.5 或 4.0。 
+6. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“2”，然后重新部署云服务。
 
 
 ## 对来宾 OS 系列 1 的延长支持已于 2014 年 11 月 3 日结束
@@ -77,4 +77,4 @@ foreach($subscription in Get-AzureSubscription) {
 ## 后续步骤
 查看最新的[来宾 OS 版本](/documentation/articles/cloud-services-guestos-update-matrix)。
 
-<!---HONumber=71-->
+<!---HONumber=74-->

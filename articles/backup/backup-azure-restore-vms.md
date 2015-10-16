@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="Azure 备份 - 还原虚拟机 | Windows Azure"
+	pageTitle="Azure 备份 - 还原虚拟机 | Microsoft Azure"
 	description="了解如何恢复 Azure 虚拟机"
 	services="backup"
 	documentationCenter=""
@@ -88,14 +88,23 @@
 
 还原虚拟机后，你可能需要重新安装原始 VM 上的扩展，并在 Azure 门户中为虚拟机[修改终结点](/documentation/articles/virtual-machines-set-up-endpoints)。
 
-## 排查错误
-大部分的错误都可以根据“错误详细信息”中所建议的操作予以解决。下面是可以帮助进行故障排除的附加要点：
+## 还原域控制器 VM
+Azure 备份支持对域控制器 (DC) 虚拟机进行备份的方案。但在还原过程中，你必须谨慎操作。在单 DC 配置中，域控制器 VM 的还原体验大大不同于多 DC 配置中的 VM。
 
-| 备份操作 | 错误详细信息 | 解决方法 |
-| -------- | -------- | -------|
-| 还原 | 发生云内部错误，还原失败 | <ol><li>使用 DNS 设置配置了你正在尝试还原的云服务。你可以检查 <br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production" Get-AzureDns -DnsSettings $deployment.DnsSettings<br>如果配置了地址，则表示配置了 DNS 设置。<br> <li>尝试还原的云服务配置了 ReservedIP，且云服务中现有的 VM 处于停止状态。<br>可以使用以下 PowerShell cmdlet 检查云服务是否有保留的 IP：<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName</ol> |
+### 单 DC
+可以通过 Azure 门户或 PowerShell 还原该 VM（与任何其他 VM 一样）。
+
+### 多 DC
+当你的环境为多 DC 环境时，域控制器有自己的数据同步方式。在不提供相应预防措施的情况下还原较旧的备份点时，USN 回退过程可能会在多 DC 环境中造成破坏。恢复此类 VM 的正确方法是在 DSRM 模式下启动它。
+
+需要解决的难题是，DSRM 模式不存在于 Azure 中。因此若要还原此类 VM，不能使用 Azure 门户。唯一支持的还原机制是使用 PowerShell 进行基于磁盘的还原。
+
+>[AZURE.WARNING]对于多 DC 环境中的域控制器 VM，请勿使用 Azure 门户来还原！ 仅支持基于 PowerShell 的还原
+
+阅读更多内容，了解 [USN 回退问题](https://technet.microsoft.com/library/dd363553)以及建议的问题解决策略。
 
 ## 后续步骤
-- [管理虚拟机](/documentation/articles/backup-azure-manage-vms)
+- [排查错误](backup-azure-vms-troubleshoot.md#restore)
+- [管理虚拟机](backup-azure-manage-vms)
 
-<!---HONumber=69-->
+<!---HONumber=74-->

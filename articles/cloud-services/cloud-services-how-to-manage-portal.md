@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何管理云服务 - Azure" 
+	pageTitle="如何管理云服务 | Microsoft Azure" 
 	description="了解如何在 Azure 预览门户中管理云服务。" 
 	services="cloud-services" 
 	documentationCenter="" 
@@ -16,8 +16,8 @@
 # 如何管理云服务
 
 > [AZURE.SELECTOR]
-- [Azure Portal](/documentation/articles/cloud-services-how-to-manage)
-- [Azure Portal](/documentation/articles/cloud-services-how-to-manage-portal)
+- [Azure 门户](/documentation/articles/cloud-services-how-to-manage)
+- [Azure 门户](/documentation/articles/cloud-services-how-to-manage-portal)
 
 在 Azure 预览门户的“云服务”区域中，可以更新服务角色或部署、将预留部署升级到生产环境、将资源链接到云服务，以便可以查看资源依赖关系并对资源进行整体缩放，以及删除云服务或部署。
 
@@ -46,7 +46,7 @@
 
 	如果每个角色至少具有两个角色实例（虚拟机），那么 Azure 在云服务更新期间只能保证 99.95% 的服务可用性。这使得一台虚拟机可以在另一台虚拟机正更新时处理客户端请求。
 
-8. 单击“确定”开始更新服务。
+7. 单击“确定”开始更新服务。
 
 
 
@@ -102,4 +102,4 @@ Azure 预览门户不会像当前 Azure 门户一样将资源链接在一起。�
 
 [Azure 门户]: https://manage.windowsazure.cn
 
-<!---HONumber=71-->
+<!---HONumber=74-->

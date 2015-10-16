@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="cloud-services" 
-	ms.date="05/29/2015" 
+	ms.date="09/01/2015" 
 	wacn.date=""/>
 
 
@@ -44,7 +44,7 @@
 
 	![enable-azureserviceprojectremotedesktop][enable-rdp]
 
-3.  输入以下 PowerShell cmdlet 以发布更改：
+5.  输入以下 PowerShell cmdlet 以发布更改：
 
     	Publish-AzureServiceProject
 
@@ -62,15 +62,15 @@
 
     ![实例页][3]
 
-2.  单击“连接”后，Web 浏览器会提示你保存.rdp 文件。打开此文件。（例如，如果你使用的是 Internet Explorer，请单击“打开”。）
+3.  单击“连接”后，Web 浏览器会提示你保存.rdp 文件。打开此文件。（例如，如果你使用的是 Internet Explorer，请单击“打开”。）
 
     ![提示打开或保存 .rdp 文件][4]
 
-3.  打开该文件时，会显示以下安全提示：
+4.  打开该文件时，会显示以下安全提示：
 
     ![Windows 安全性提示][5]
 
-4.  单击“连接”，将显示一个安全提示，要求输入访问该实例的凭据。输入你在 [步骤 1][步骤 1：使用 Azure PowerShell 配置服务以进行远程桌面访问] 中创建的密码，然后单击“确定”。
+5.  单击“连接”，将显示一个安全提示，要求输入访问该实例的凭据。输入你在 [步骤 1][步骤 1：使用 Azure PowerShell 配置服务以进行远程桌面访问] 中创建的密码，然后单击“确定”。
 
     ![用户名/密码提示][6]
 
@@ -111,4 +111,4 @@
   [远程访问 Azure 中的角色实例]: http://msdn.microsoft.com/zh-cn/library/windowsazure/hh124107.aspx
   [将远程桌面与 Azure 角色一起使用]: http://msdn.microsoft.com/zh-cn/library/windowsazure/gg443832.aspx
 
-<!---HONumber=71-->
+<!---HONumber=74-->

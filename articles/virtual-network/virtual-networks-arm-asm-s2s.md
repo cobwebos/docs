@@ -8,7 +8,7 @@
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
-   ms.date="07/14/2015"
+   ms.date="09/18/2015"
    wacn.date="" />
 
 # 将经典 VNet 连接到新 VNet
@@ -114,7 +114,7 @@ Azure 当前有两种管理模式：Azure 服务管理（称之为经典）和 A
 
 		$vm1 = New-AzureVMConfig -Name "VM01" -InstanceSize "ExtraLarge" `
 		    -Image $WinImage.ImageName –AvailabilitySetName "MyAVSet1" `
-		    -MediaLocation "https://v1v2teststorage1.blob.core.windows.net/vhd/vm01.vhd"
+		    -MediaLocation "https://v1v2teststorage1.blob.core.chinacloudapi.cn/vhd/vm01.vhd"
 		Add-AzureProvisioningConfig –VM $vm1 -Windows `
 		    -AdminUserName "user" -Password "P@ssw0rd" 
 
@@ -132,7 +132,7 @@ Azure 当前有两种管理模式：Azure 服务管理（称之为经典）和 A
 
 若要使用经典 Azure 门户为 vnet01 创建 VPN 网关，请遵循以下说明。
 
-1. 在 https://manage.windowsazure.com 处打开经典 Azure 门户。如有必要，可指定你的凭据。
+1. 在 https://manage.windowsazure.cn 处打开经典 Azure 门户。如有必要，可指定你的凭据。
 2. 向下滚动“所有项目”列表，并单击“网络”。
 3. 在虚拟网络列表上，单击 **vnet01**，然后单击“配置”。
 4. 在“站点到站点连接”下，选中“连接到本地网络”复选框。
@@ -198,7 +198,7 @@ Azure 当前有两种管理模式：Azure 服务管理（称之为经典）和 A
 
 	>[AZURE.NOTE]此操作可能需要几分钟。
 
-7. 从浏览器中导航到 https://ms.portal.azure.com/，必要时输入你的凭据。
+7. 从浏览器中导航到 https://ms.portal.azure.com/ ，必要时输入你的凭据。
 8. 单击 Azure 门户中的 **RG1** 资源组磁铁，如下所示。
 
 	![VNet 仪表板](./media/virtual-networks-arm-asm-s2s/figure06.png)
@@ -308,7 +308,7 @@ Azure 当前有两种管理模式：Azure 服务管理（称之为经典）和 A
 			-LocalNetworkGateway2 $vnet01gateway -ConnectionType IPsec `
 			-RoutingWeight 10 -SharedKey 'abc123'
 
-3. 在 https://manage.windowsazure.com 处打开 Azure 门户，必要时输入你的凭据。
+3. 在 https://manage.windowsazure.cn 处打开 Azure 门户，必要时输入你的凭据。
 4. 在“所有项目”下，向下滚动并单击“网络”，然后单击 **vnet01**，再单击“仪表板”。请注意 **vnet01** 与 **vnet02** 之间的连接现已建立，如下所示。
 
 	![VNet 仪表板](./media/virtual-networks-arm-asm-s2s/figure11.png)
@@ -334,7 +334,7 @@ Azure 当前有两种管理模式：Azure 服务管理（称之为经典）和 A
 
 		ipconfig
 
-		Connection-specific DNS Suffix  . : 4oxp4ce0c5rulb1iey4cdqhasg.gx.internal.cloudapp.net
+		Connection-specific DNS Suffix  . : 4oxp4ce0c5rulb1iey4cdqhasg.gx.internal.chinacloudapp.cn
 		Link-local IPv6 Address . . . . . : fe80::8cea:a98a:5c48:4c58%12
 		IPv4 Address. . . . . . . . . . . : 10.2.0.101
 		Subnet Mask . . . . . . . . . . . : 255.255.255.0
@@ -359,4 +359,4 @@ Azure 当前有两种管理模式：Azure 服务管理（称之为经典）和 A
 - 了解有关[适用于 ARM 的网络资源提供程序 (NRP)](/documentation/articles/resource-groups-networking) 的详细信息。
 - 查看有关如何[在经典 VNet 和 ARM VNet 之间创建 S2S VPN 连接](/documentation/articles/virtual-networks-arm-asm-s2s-howto)的通用准则。
 
-<!---HONumber=67-->
+<!---HONumber=74-->

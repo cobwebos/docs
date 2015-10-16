@@ -8,7 +8,7 @@
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
-   ms.date="07/14/2015"
+   ms.date="09/18/2015"
    wan.date="" />
 
 # 将经典 VNet 连接到新 VNet
@@ -126,4 +126,4 @@ Azure 当前有两种管理模式：Azure 服务管理（称之为经典）和 A
 - 了解有关[适用于 ARM 的网络资源提供程序 (NRP)](/documentation/articles/resource-groups-networking) 的详细信息。
 - 创建[使用 S2S VPN 以将经典 VNet 连接到 ARM VNet 的端到端解决方案](/documentation/articles/virtual-networks-arm-asm-s2s)。
 
-<!---HONumber=67-->
+<!---HONumber=74-->

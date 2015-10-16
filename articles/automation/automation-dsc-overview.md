@@ -9,12 +9,10 @@
 
 <tags
    ms.service="automation"
-   ms.date="08/18/2015"
+   ms.date="09/16/2015"
    wacn.date=""/>
 
 # Azure 自动化 DSC 概述 #
-
->[AZURE.IMPORTANT]**Azure 自动化 DSC 当前为受限预览版**，不支持用于生产工作负荷。它目前主要基于 cmdlet，并有精简的图形用户界面。注册获取 Azure 自动化 DSC 的预览版本即表示你认同此功能为预览版本，同意[服务协议](/support/legal/sla)中规定的功能缩减或不同服务条款，并同意[预览版补充条款](http://azure.microsoft.com/zh-cn/support/legal/preview-supplemental-terms/)。虽然此服务当前可免费使用，但以后会对其定价。
 
 ## 什么是 PowerShell DSC？ ##
 所需状态配置 (DSC) 是 Windows PowerShell 中一个新的管理平台，可通过声明性的 PowerShell 语法管理物理主机和虚拟机的配置。
@@ -67,20 +65,13 @@ PowerShell DSC 引入了名为“配置”的新概念。使用配置，你可�
 
 Azure 自动化 DSC 允许你在 Azure 自动化中导入、创作和编译 DSC 配置，这与你可以在 Azure 自动化中导入、创作和启动 Runbook 类似。
 
-Azure 自动化 DSC 目前在 [Azure 资源管理器 PowerShell 模块](https://msdn.microsoft.com/zh-cn/library/mt244122.aspx)中提供以下 cmdlet，用于对 DSC 配置进行管理：
-
-- `Get-AzureAutomationDscConfiguration`
-- `Import-AzureAutomationDscConfiguration`
-
 >[AZURE.IMPORTANT]在 Azure 自动化 DSC 中，一项配置只应包含一个配置块，块名称与配置名称相同。
 
 ###节点配置###
 
-编译 DSC 配置时，会生成一个或多个节点配置，具体取决于配置中的节点块。节点配置等同于“MOF”或"配置文档"（如果你熟悉这些 PS DSC 术语的话），表示"角色"（例如 Web 服务器或辅助角色），即一个或多个节点应采用的所需状态。
+编译 DSC 配置时，会生成一个或多个节点配置，具体取决于配置中的节点块。节点配置等同于“MOF”或"配置文档"（如果你熟悉这些 PS DSC 术语的话），表示"角色"（例如 Web 服务器或辅助角色），即一个或多个节点应采用的所需状态。在 Azure 自动化 DSC 中，节点配置的名称采用“<Configuration-name>.<Node configuration-block-name>”的形式。
 
 PS DSC 节点现在可以感知那些应通过 DSC 推送或拉取方法来执行的节点配置。Azure 自动化 DSC 依赖于 DSC 拉取方法，在该方法中，节点会从 Azure 自动化 DSC 拉取服务器中请求应该应用的节点配置。由于节点会向 Azure 自动化 DSC 发出请求，因此这些节点可能会位于防火墙之后，也可能会关闭所有入站端口，等等。它们只需通过出站访问方式来访问 Internet。
-
-Azure 自动化 DSC 目前在 [Azure 资源管理器 PowerShell 模块](https://msdn.microsoft.com/zh-cn/library/mt244122.aspx)中提供以下cmdlet，用于管理 DSC 节点配置：`Get-AzureAutomationDscNodeConfiguration`
 
 
 ###节点###
@@ -89,75 +80,6 @@ DSC 节点是由 DSC 管理其配置的任何计算机。这可以是 Azure VM �
 
 Azure 自动化 DSC 可以在载入节点后对其进行轻松的管理，并允许更改分配给每个服务器端节点的节点配置，这样当某个节点下一次检查服务器上是否有说明时，它就会采用不同的角色，并且会相应地更改其配置方式。节点还报告其状态以及其配置是否符合 Azure 自动化 DSC 的要求。
 
-Azure 自动化 DSC 目前在 [Azure 资源管理器 PowerShell 模块](https://msdn.microsoft.com/zh-cn/library/mt244122.aspx)中提供以下 cmdlet，用于对 DSC 节点进行管理：
-
--	`Get-AzureAutomationDscNode`  
--	`Register-AzureAutomationDscNode`（用于将 Azure v2 VM 加载为节点）
--	`Get-AzureAutomationDscOnboardingMetaconfig`（用于加载节点）
--	`Set-AzureAutomationDscNode`（用于设置/更新节点到节点配置映射）
--	`Unregister-AzureAutomationDscNode`
--	`Get-AzureAutomationDscNodeReport`
--	`Export-AzureAutomationDscNodeReportContent`
-
-可以使用 `Get-AzureAutomationRegistrationInfo` cmdlet 来获取所需的注册 URL 和密钥，以便将 Azure 经典 VM 加入 Azure 自动化帐户，不管是通过Azure 门户中的 Azure 自动化 DSC VM 扩展还是通过 PowerShell 来进行。
-
-
-Azure 自动化 DSC VM 扩展：
-
-![替换文字](./media/automation-dsc-overview/AADSC_4.png)
-
-
-PowerShell：
-
-    # fill in correct values for your VM / Automation Account here
-    $VMName = ""
-    $ServiceName = ""
-    $AutomationAccountName = ""
-    $AutomationAccountResourceGroup = ""
-
-
-    # get Azure Automation DSC registration info
-    Switch-AzureMode AzureResourceManager
-
-    $Account = Get-AzureAutomationAccount -ResourceGroupName $AutomationAccountResourceGroup -Name $AutomationAccountName
-
-    $RegistrationInfo = $Account | Get-AzureAutomationRegistrationInfo
-
-
-    # use the DSC extension to onboard the VM for management with Azure Automation DSC
-    Switch-AzureMode AzureServiceManagement
-
-    $VM = Get-AzureVM -Name $VMName -ServiceName $ServiceName
-
-    $PublicConfiguration = ConvertTo-Json -Depth 8 @{
-        SasToken = ""
-        ModulesUrl = "https://eus2oaasibizamarketprod1.blob.core.chinacloudapi.cn/automationdscpreview/RegistrationMetaConfig.zip"
-        ConfigurationFunction = "RegistrationMetaConfig.ps1\RegistrationMetaConfig"
-
-        # update these DSC agent configurations if these defaults are not what you want. 
-        # See https://technet.microsoft.com/zh-cn/library/dn249922.aspx?f=255&MSPPError=-2147217396 for more details
-        Properties = @{
-            RegistrationKey = $RegistrationInfo.PrimaryKey
-            RegistrationUrl = $RegistrationInfo.Endpoint
-            NodeConfigurationName = "configname.webserver"
-            ConfigurationMode = "ApplyAndMonitor"
-            ConfigurationModeFrequencyMins = 15
-            RefreshFrequencyMins = 30
-           RebootNodeIfNeeded = $False
-           ActionAfterReboot = "ContinueConfiguration"
-           AllowModuleOverwrite = $False
-        }
-    } 
-
-    $VM = Set-AzureVMExtension `
-        -VM $vm `
-        -Publisher Microsoft.Powershell `
-        -ExtensionName DSC `
-        -Version 1.9 `
-        -PublicConfiguration $PublicConfiguration
-
-    $VM | Update-AzureVM
- 
 
 ###资源###
 DSC 资源是可用于定义 Windows PowerShell 所需状态配置 (DSC) 配置的构建基块。DSC 附带了一组内置功能，用于配置资源（如文件和文件夹、服务器功能和角色、注册表设置、环境变量，以及服务和进程）。若要了解内置 DSC 资源的完整列表以及如何使用它们，请参阅[内置 Windows PowerShell 所需状态配置资源](https://technet.microsoft.com/zh-cn/library/dn249921.aspx)。
@@ -166,12 +88,6 @@ DSC 资源是可用于定义 Windows PowerShell 所需状态配置 (DSC) 配置�
 
 Azure 自动化 DSC 附带的内置 DSC 资源与 PS DSC 附带的完全一样。通过将包含额外资源的 PowerShell 模块导入 Azure 自动化中，可以向 Azure 自动化 DSC 添加这些资源。
 
-Azure 自动化 DSC 目前在 [Azure 资源管理器 PowerShell 模块](powershell-azure-resource-manager)中提供以下 cmdlet，用于对 DSC 节点进行管理：
-
-- `New-AzureAutomationModule`
-- `Remove-AzureAutomationModule`
-- `Set-AzureAutomationModule`
-- `Get-AzureAutomationModule`
 
 ###编译作业###
 Azure 自动化 DSC 中的编译作业是配置的编译实例，用于创建一个或多个节点配置。它们类似于 Azure 自动化 Runbook 作业，但实际上并不执行任何任务，只是创建节点配置。编译作业创建的任何节点配置会自动放置在 Azure 自动化 DSC 拉取服务器上，并覆盖以前版本的节点配置（如果此配置存在以前的版本）。编译作业所生成的节点配置的名称采用“<Configuration-name>.<Node configuration-block-name>”的形式。例如，编译以下配置将生成名为“MyConfiguration.webserver”的单节点配置
@@ -189,14 +105,13 @@ Azure 自动化 DSC 目前在 [Azure 资源管理器 PowerShell 模块](powershe
 -	`Get-AzureAutomationDscCompilationJobOutput`
 -	`Start-AzureAutomationDscCompilationJob`
 
+##Azure 自动化 DSC 生命周期##
+从空的自动化帐户转到一组受管的正确配置的节点涉及一系列流程，包括定义配置、将这些配置转变成节点配置、将节点加入 Azure 自动化 DSC 中和这些节点配置中。下图说明了 Azure 自动化 DSC 生命周期：
+
+![替换文字](./media/automation-dsc-overview/DSCLifecycle.png)
+
+
 ##难题/已知问题：##
-
-- 由于 Azure 自动化 DSC 为预览版，因此第一次使用此功能时，你需要通过 Azure PowerShell cmdlet 或 Azure 预览门户来注册获取它。你可以通过调用以下两个 cmdlet 来注册：
-
- - `Register-AzureProvider –ProviderNamespace Microsoft.Automation`
- - `Register-AzureProviderFeature -FeatureName dsc -ProviderNamespace Microsoft.Automation` 
- 
->[AZURE.NOTE]Azure 自动化 DSC 注册可能需要长达一小时才能完成，然后你才能使用此功能。
 
 - 目前，Azure 自动化 DSC 不支持进行部分式的或复合式的 DSC 配置。
 
@@ -208,18 +123,19 @@ Azure 自动化 DSC 目前在 [Azure 资源管理器 PowerShell 模块](powershe
 
 - 用于通过“版本/文件夹”格式来指定模块中并行 DSC 资源的 PowerShell 模块目前无法在 Azure 自动化中使用。
 
-- 使用 `New-AzureAutomationModule` 或 `Set-AzureAutomationModule` cmdlet 将 PowerShell 模块导入 Azure 自动化中时，模块导入是异步的。即使该 cmdlet 成功返回，也并不意味着模块导入成功完成。若要检查导入是否成功，请使用 `Get-AzureAutomationModule –Name <ModuleName>`（确保只获取此模块，而非所有模块）并确保模块的 **ProvisioningState** 字段指示导入已成功。
-
 - 已导入 Azure 自动化中的 PowerShell 模块不能包含 .doc 或 .docx 文件。某些包含 DSC 资源的 PowerShell 模块包含这些文件，可用作帮助文件。在导入到 Azure 自动化中之前，这些文件应从模块中删除。
 
-- Azure 自动化中的配置当前仅支持针对参数值的字符串。如果你想要传递针对参数值的字符串之外的内容，可将该参数值作为 JSON 字符串传递，然后在配置中使用 ConvertFrom-Json 将 JSON 字符串转换回非字符串值。
-
-- 将某个节点首次注册到 Azure 自动化帐户时，或者将节点更改为映射到服务器端的其他节点配置时，其状态将是合规的，即使该节点的状态实际上并不符合它现在所映射到的节点配置。注册以后或者节点配置映射更改以后，如果该节点发送了首个报告，则节点状态将是可以信任的。
+- 将某个节点首次注册到 Azure 自动化帐户时，或者将节点更改为映射到服务器端的其他节点配置时，其状态将为“兼容”，即使该节点的状态实际上并不符合它现在所映射到的节点配置。注册以后或者节点配置映射更改以后，如果该节点执行了首个拉取操作并发送了首个报告，则节点状态将是可以信任的。
 
 - 当载入 Azure VM，以便在 Azure 预览门户中使用 Azure 自动化 DSC 通过 `Register-AzureAutomationDscNode`、`Set-AzureVMExtension` 或 Azure 自动化 DSC VM 扩展进行管理时，如果注册失败并出现消息“计算机名称未指定且配置目录没有任何配置文件”，则需注意该消息为假警报，VM 注册实际上已成功。可以使用 `Get-AzureAutomationDscNode` cmdlet 来验证注册是否成功。
 
 - 在 Azure 预览门户中使用 `Register-AzureAutomationDscNode`、`Set-AzureVMExtension` 或 Azure 自动化 DSC VM 扩展登记 Azure VM 以使用 Azure 自动化 DSC 进行管理时，最多可能需要一小时 VM 才会在 Azure 自动化中显示为 DSC 节点。Azure VM DSC 扩展将在 VM 上安装 Windows Management Framework 5.0，以便将 VM 登记到 Azure 自动化 DSC。
 
-- 登记到 Azure 自动化 DSC 的 DSC 节点一开始会显示为“合规”状态，即使它们实际上不符合映射的 DSC 节点配置。在节点执行其第一次提取并将其第一个 DSC 报告发送到 Azure 自动化 DSC 之后，节点的状态应该是正确的。
+- 注册节点包括节点自动与要使用的证书协商，以便该特定节点通过 Azure 自动化 DSC 进行身份验证，此外还包括注册后操作。此证书的过期时间为自创建之后起一年，目前 PS DSC 拉取协议并没有提供相关方法在该证书快过期时颁发新的证书。因此，节点在一年过后需要向 Azure 自动化 DSC 注册，除非本协议是通过即将推出的 WMF 版本（希望该版本在从现在算起不到一年中推出）实现的。
 
-<!---HONumber=69-->
+##相关文章##
+
+- [Azure 自动化 DSC cmdlet](https://msdn.microsoft.com/library/mt244122.aspx)
+- [Azure 自动化 DSC 定价](http://azure.microsoft.com/pricing/details/automation/)
+
+<!---HONumber=74-->

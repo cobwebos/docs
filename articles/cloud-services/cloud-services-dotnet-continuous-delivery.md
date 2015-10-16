@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 Azure 中使用 TFS 持续交付云服务"
+	pageTitle="在 Azure 中使用 TFS 持续交付云服务 | Microsoft Azure"
 	description="了解如何设置 Azure 云应用程序的持续交付。MSBuild 命令行语句和 PowerShell 脚本的代码示例。"
 	services="cloud-services"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="cloud-services"
-	ms.date="07/07/2015"
+	ms.date="08/19/2015"
 	wacn.date=""/>
 
 # 在 Azure 中持续交付云服务
@@ -27,14 +27,16 @@
 无需在生成服务器上安装 Visual Studio。若要使用 Team Foundation 生成服务管理生成服务器，请按照 [Team Foundation 生成服务][]文档中的说明操作。
 
 1.  在生成服务器上，安装包含 MSBuild 的 [.NET Framework 4][]、[.NET Framework 4.5][] 或 [.NET Framework 4.5.2][]。
-2.  安装 [Azure 创作工具][]（根据你的生成服务器的处理器，查找 WindowsAzureAuthoringTools-x86.msi 或 WindowsAzureAuthoringTools-x64.msi）。旧版文件的文件名可能包含 WindowsAzure。
-3. 安装 [Azure 库][]（查找 MicrosoftAzureLibsForNet-x86.msi 或 MicrosoftAzureLibsForNet-x64.msi）。
-4.  将 Microsoft.WebApplication.targets 文件从 Visual Studio 安装复制到生成服务器中。在装有 Visual Studio 的计算机上，该文件位于目录 C:\\Program Files(x86)\\MSBuild\\Microsoft\\VisualStudio\\v11.0\\WebApplications（对于 Visual Studio 2013，为 v12.0）中。您应将该文件复制到生成服务器上的同一目录中。
-5.  安装 [Azure Tools for Visual Studio][]。查找用于生成 Visual Studio 2012 项目的 MicrosoftAzureTools.VS110.exe，用于生成 Visual Studio 2013 项目的 MicrosoftAzureTools.VS120.exe，和用于生成 Visual Studio 2015 预览版项目的 MicrosoftAzureTools.VS140.exe。
+2.  安装[用于 .NET 的 Azure 创作工具](http://go.microsoft.com/fwlink/?LinkId=623518)（如果你的生成服务器具有 32 位操作系统/处理器，将替代链接中的 MicrosoftAzureAuthoringTools-x86.msi，而不是 MicrosoftAzureAuthoringTools-x64.msi）。
+3. 安装[用于 .NET 的 Azure 库](http://go.microsoft.com/fwlink/?LinkId=623519)（如果需要，将替代链接中的 MicrosoftAzureLibsForNet-x86.msi）。
+4.  将 Microsoft.WebApplication.targets 文件从 Visual Studio 安装复制到生成服务器。
+
+	在已安装 Visual Studio 的计算机上，此文件位于目录 C:\\Program Files(x86)\\MSBuild\\Microsoft\\VisualStudio\\v14.0\\WebApplications（对于 Visual Studio 2013，为 v12.0）。您应将该文件复制到生成服务器上的同一目录中。
+5.  安装 [Azure Tools for Visual Studio](http://go.microsoft.com/fwlink/?LinkId=623520)。使用 MicrosoftAzureTools.VS140.exe 生成 Visual Studio 2015 项目，或使用 MicrosoftAzureTools.VS120.exe 生成 Visual Studio 2013 项目。
 
 ## 步骤 2：使用 MSBuild 命令生成包
 
-本部分介绍如何构造用于生成 Azure 包的 MSBuild 命令。在生成服务器上执行此步骤可确认所有内容配置正确并且 MSBuild 命令起到预期作用。你可将此命令行添加到生成服务器上的现有生成脚本中，也可在 TFS 生成定义中使用此命令行，如下一部分所述。有关命令行参数和 MSBuild 的详细信息，请参阅 [MSBuild 命令行参考][]。
+本部分介绍如何构造用于生成 Azure 包的 MSBuild 命令。在生成服务器上执行此步骤可确认所有内容配置正确并且 MSBuild 命令起到预期作用。你可将此命令行添加到生成服务器上的现有生成脚本中，也可在 TFS 生成定义中使用此命令行，如下一部分所述。有关命令行参数和 MSBuild 的详细信息，请参阅 [MSBuild 命令行参考](https://msdn.microsoft.com/zh-cn/library/ms164311%28v=vs.140%29.aspx)。
 
 1.  如果在生成服务器上安装了 Visual Studio，请单击“开始”、再单击“所有程序”，然后在“Visual Studio 工具”文件夹中找到并单击“Visual Studio 命令提示符”。
 
@@ -71,7 +73,7 @@
 
 ## 步骤 3：使用 TFS Team Build 生成包（可选）
 
-如果你已将 Team Foundation Server (TFS) 设置为生成控制器并将生成服务器设置为 TFS 生成计算机，则可为 Azure 包设置自动化生成。有关如何设置 Team Foundation Server 并将其用作生成系统的信息，请参阅[了解 Team Foundation Build 系统][]。具体而言，以下过程假设你已根据[配置生成计算机][]中所述配置了生成服务器，此外，你已创建了一个团队项目并在该团队项目中创建了一个云服务项目。
+如果你已将 Team Foundation Server (TFS) 设置为生成控制器并将生成服务器设置为 TFS 生成计算机，则可为 Azure 包设置自动化生成。有关如何设置 Team Foundation Server 并将其用作生成系统的信息，请参阅[扩大生成系统][]。具体而言，以下过程假设你已根据[部署和配置生成服务器][]中所述配置了生成服务器，此外，你已创建了一个团队项目并在该团队项目中创建了一个云服务项目。
 
 若要将 TFS 配置为生成 Azure 包，请执行下列步骤：
 
@@ -93,7 +95,7 @@
 
     **注意：**通过将这些文件复制到公共共享，可以更轻松地手动从开发计算机部署包。
 
-5.  通过签入对项目的更改来测试生成步骤是否成功或对新生成进行排队。若要对新生成进行排队，请在团队资源管理器中，右键单击“所有生成定义”，然后选择“使新生成入队”。
+7.  通过签入对项目的更改来测试生成步骤是否成功或对新生成进行排队。若要对新生成进行排队，请在团队资源管理器中，右键单击“所有生成定义”，然后选择“使新生成入队”。
 
 ## 步骤 4：使用 Powershell 脚本发布包
 
@@ -117,11 +119,11 @@
 
     这将显示有关您的订阅的信息。确认所有内容正确。
 
-4.  将[本文末尾][]提供的脚本模板保存到脚本文件夹，路径为 c:\\scripts\\WindowsAzure\**PublishCloudService.ps1**。
+5.  将[本文末尾][]提供的脚本模板保存到脚本文件夹，路径为 c:\\scripts\\WindowsAzure\**PublishCloudService.ps1**。
 
-5.  查看脚本的参数部分。添加或修改任何默认值。始终可通过传入显式参数来覆盖这些值。
+6.  查看脚本的参数部分。添加或修改任何默认值。始终可通过传入显式参数来覆盖这些值。
 
-6.  确保已在订阅中创建可通过发布脚本定位的有效云服务和存储帐户。存储帐户（Blob 存储）将用于在创建部署时上载和临时存储部署包和配置文件。
+7.  确保已在订阅中创建可通过发布脚本定位的有效云服务和存储帐户。存储帐户（Blob 存储）将用于在创建部署时上载和临时存储部署包和配置文件。
 
     -   若要创建新的云服务，你可调用此脚本或使用 Azure 管理门户。云服务名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。
 
@@ -131,7 +133,7 @@
 
             New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "China East" -Label "mytestcloudservice"
 
-7.  直接从 Azure PowerShell 调用脚本，或将此脚本连接到在包生成后进行的主机生成自动化。
+8.  直接从 Azure PowerShell 调用脚本，或将此脚本连接到在包生成后进行的主机生成自动化。
 
     **警告：**默认情况下，此脚本将始终删除或替换现有部署（如果检测到这些部署）。这对于从没有用户提示的自动化中启用持续集成是必需的。
 
@@ -163,7 +165,7 @@
 
         Add-AzureCertificate -serviceName 'mytestcloudservice' -certToDeploy (get-item cert:\CurrentUser\MY\C33B6C432C25581601B84C80F86EC2809DC224E8
 
-    或者，可以导出带私钥的证书文件 PFX，并使用 Azure 管理门户将证书上载到每个目标云服务。阅读以下文章以了解详细信息：http://msdn.microsoft.com/zh-cn/library/windowsazure/gg443832.aspx。
+    或者，可以导出带私钥的证书文件 PFX，并使用 Azure 管理门户将证书上载到每个目标云服务。阅读以下文章以了解详细信息：[http://msdn.microsoft.com/zh-cn/library/windowsazure/gg443832.aspx][]。
 
     **升级部署与删除部署 -> 新建部署**
 
@@ -183,11 +185,11 @@
 
 3.	按照[这些说明](http://msdn.microsoft.com/zh-cn/library/dd647551.aspx)添加生成过程模板的活动项目，下载默认模板，将其添加到项目并将其签入。为生成过程模板指定新名称，如 AzureBuildProcessTemplate。
 
-3.  返回到“进程”选项卡，然后使用“显示详细信息”显示可用生成过程模板的列表。选择“新建...”按钮，然后导航到你刚刚添加并签入的项目。找到刚刚创建的模板，然后选择“确定”。
+4.  返回到“进程”选项卡，然后使用“显示详细信息”显示可用生成过程模板的列表。选择“新建...”按钮，然后导航到你刚刚添加并签入的项目。找到刚刚创建的模板，然后选择“确定”。
 
-4.  打开选定的过程模板以进行编辑。可以直接在工作流设计器或 XML 编辑器中打开以处理 XAML。
+5.  打开选定的过程模板以进行编辑。可以直接在工作流设计器或 XML 编辑器中打开以处理 XAML。
 
-5.  在工作流设计器的参数选项卡中将以下一系列新参数作为单独的行项添加。所有参数应具有 direction=In 和 type=String。这两个值将用于将参数从生成定义流入工作流中，然后用于调用发布脚本。
+6.  在工作流设计器的参数选项卡中将以下一系列新参数作为单独的行项添加。所有参数应具有 direction=In 和 type=String。这两个值将用于将参数从生成定义流入工作流中，然后用于调用发布脚本。
 
         SubscriptionName
         StorageAccountName
@@ -236,7 +238,7 @@
 
           <this:Process.MSBuildArguments>
 
-6.  在“在代理上运行”结束时添加一个新的序列：
+7.  在“在代理上运行”结束时添加一个新的序列：
 
     1.  首先，通过添加 If 语句活动来检查有效的脚本文件。将条件设置为此值：
 
@@ -315,11 +317,11 @@
 	    </Sequence>
 
 
-7.  保存生成过程模板工作流并签入此文件。
+8.  保存生成过程模板工作流并签入此文件。
 
-8.  编辑生成定义（如果已打开，请将它关闭）。如果在“过程模板”列表中看不到新模板，请选择“新建”按钮。
+9.  编辑生成定义（如果已打开，请将它关闭）。如果在“过程模板”列表中看不到新模板，请选择“新建”按钮。
 
-9.  在“杂项”部分中设置参数属性，如下所示：
+10.  在“杂项”部分中设置参数属性，如下所示：
 
     1.  CloudConfigLocation ='c:\\drops\\app.publish\\ServiceConfiguration.Cloud.cscfg' *此值派生自：($PublishDir)ServiceConfiguration.Cloud.cscfg*
 
@@ -339,9 +341,9 @@
 
     ![][6]
 
-10. 保存对生成定义所做的更改。
+11. 保存对生成定义所做的更改。
 
-11. 对生成进行排队以便同时执行包生成和发布。如果你的触发器设置为“持续集成”，则将在每次签入时执行此行为。
+12. 对生成进行排队以便同时执行包生成和发布。如果你的触发器设置为“持续集成”，则将在每次签入时执行此行为。
 
 ### PublishCloudService.ps1 脚本模板
 
@@ -555,14 +557,10 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
   [Team Foundation 生成服务]: http://go.microsoft.com/fwlink/p/?LinkId=239963
   [.NET Framework 4]: http://go.microsoft.com/fwlink/?LinkId=239538
   [.NET Framework 4.5]: http://go.microsoft.com/fwlink/?LinkId=245484
-  [.NET Framework 4.5.2]: http://www.microsoft.com/zh-CN/download/details.aspx?id=42643
-  [Azure 创作工具]: http://www.microsoft.com/zh-CN/download/details.aspx?id=44938
-  [Azure 库]: http://www.windowsazure.cn/downloads/?sdk=net
-  [Azure Tools for Visual Studio]: http://www.windowsazure.cn/downloads/?sdk=net
-  [MSBuild 命令行参考]: http://msdn.microsoft.com/zh-cn/library/ms164311(v=VS.90).aspx
-  [1]: http://go.microsoft.com/fwlink/p/?LinkId=239966
-  [了解 Team Foundation Build 系统]: http://go.microsoft.com/fwlink/?LinkId=238798
-  [配置生成计算机]: http://go.microsoft.com/fwlink/?LinkId=238799
+  [.NET Framework 4.5.2]: http://go.microsoft.com/fwlink/?LinkId=521668
+	[1]: http://go.microsoft.com/fwlink/p/?LinkId=239966
+  [扩大生成系统]: http://go.microsoft.com/fwlink/?LinkId=238798
+  [部署和配置生成服务器]: http://go.microsoft.com/fwlink/?LinkId=238799
   [0]: ./media/cloud-services-dotnet-continuous-delivery/tfs-01.png
   [2]: ./media/cloud-services-dotnet-continuous-delivery/tfs-02.png
   [Azure PowerShell cmdlet]: http://go.microsoft.com/fwlink/?LinkId=256262
@@ -574,4 +572,4 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
   [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
   [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
 
-<!---HONumber=71-->
+<!---HONumber=74-->

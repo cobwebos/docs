@@ -10,7 +10,7 @@
 
 <tags
    ms.service="virtual-network"
-   ms.date="05/27/2015"
+   ms.date="08/21/2015"
    wacn.date=""
    />
    
@@ -157,4 +157,4 @@ LoadBalancerDistribution 的值可以是 sourceIP（用于 2 元组关联）、s
     Date: Thu, 16 Oct 2014 22:49:21 GMT
  
 
-<!---HONumber=70-->
+<!---HONumber=74-->

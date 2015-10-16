@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="如何缩放云服务 | Microsoft Azure" 
-	description="了解如何在 Azure 中缩放云服务和链接的资源。" 
+	pageTitle="为云服务配置自动缩放 | Microsoft Azure" 
+	description="了解如何使用门户在 Azure 中为云服务和链接资源配置自动缩放规则。" 
 	services="cloud-services" 
 	documentationCenter="" 
 	authors="Thraka" 
@@ -9,14 +9,14 @@
 
 <tags 
 	ms.service="cloud-services" 
-	ms.date="06/16/2015"
+	ms.date="09/08/2015"
 	wacn.date=""/>
 
 
 
 
 
-# 如何缩放应用程序
+# 如何自动缩放应用程序
 
 
 在 Azure 管理门户的“缩放”页上，你可以手动缩放应用程序，也可以设置参数使其自动缩放。你可以缩放运行 Web 角色、辅助角色或虚拟机的应用程序。若要缩放运行 Web 角色或辅助角色实例的应用程序，你需要添加或删除角色实例以适应工作负载。
@@ -224,4 +224,4 @@
 [scale_schedule]: ./media/cloud-services-how-to-scale/CloudServices_SetUpSchedule.png
  
 
-<!---HONumber=71-->
+<!---HONumber=74-->
