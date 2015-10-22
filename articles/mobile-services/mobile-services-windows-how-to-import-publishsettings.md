@@ -1,18 +1,18 @@
-<properties 
-	pageTitle="在 Visual Studio 2013 导入发布设置文件 | 移动服务" 
-	description="了解如何在 Visual Studio 2013 中为 Azure 移动服务应用程序导入订阅发布设置文件。" 
-	documentationCenter="" 
-	services="mobile-services" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="在 Visual Studio 2013 中导入发布设置文件 | Microsoft Azure"
+	description="了解如何在 Visual Studio 2013 中为 Azure 移动服务应用程序导入订阅发布设置文件。"
+	documentationCenter=""
+	services="mobile-services"
+	manager="dwrede"
+	editor=""
 	authors="ggailey777"/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="04/13/2015" 
+	ms.date="08/18/2015" 
 	wacn.date=""/>
 
-#  在 Visual Studio 2013 中导入订阅发布设置文件
+# 在 Visual Studio 2013 中导入订阅发布设置文件
 
 在您能够创建移动服务之前，必须将来自 Azure 的订阅发布设置文件导入 Visual Studio。这使 Visual Studio 能够代表您连接到 Azure。
 
@@ -57,4 +57,4 @@
 
 [Azure Management Portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

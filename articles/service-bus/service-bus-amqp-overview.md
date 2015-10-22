@@ -7,7 +7,8 @@
 	manager="timlt" 
 	editor="mattshel"/>
 
-<tags ms.service="service-bus"
+<tags 
+	ms.service="service-bus" 
 
 	ms.date="07/21/2015" 
 	wacn.date=""/>
@@ -73,7 +74,7 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 | C | Apache Qpid Proton-C |
 | PHP | Apache Qpid Proton-PHP |
 | Python | Apache Qpid Proton-Python |
-
+| C# | AMQP .Net Lite |
 
 **图 2：AMQP 1.0 客户端库表**
 
@@ -88,10 +89,10 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 
 *    [如何将 AMQP 1.0 与服务总线 .NET API 一起使用](http://aka.ms/lym3vk)
 *    [如何将 Java 消息服务 (JMS) API 用于服务总线 和 AMQP 1.0](http://aka.ms/ll1fm3)
-*    [服务总线 AMQP 开发人员指南](http://msdn.microsoft.com//zh-cn/library/jj841071.aspx)
+*    [服务总线 AMQP 开发人员指南](http://msdn.microsoft.com/zh-cn/library/jj841071.aspx)
 *    [OASIS 高级消息队列协议 (AMQP) 1.0 版规范](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
 
 [0]: ./media/service-bus-amqp-overview/Example1.png
 [服务总线 AMQP 开发人员指南]: http://msdn.microsoft.com/zh-cn/library/jj841071.aspx
 
-<!---HONumber=71-->
+<!---HONumber=74-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="使用 PowerShell 创建和管理 SQL Database 弹性数据库池" 
-   description="使用 PowerShell 创建和管理 Azure SQL Database 弹性数据库池" 
+   pageTitle="使用 PowerShell 创建和管理 SQL 数据库弹性数据库池" 
+   description="使用 PowerShell 创建和管理 Azure SQL 数据库弹性数据库池" 
    services="sql-database" 
    documentationCenter="" 
    authors="stevestein" 
@@ -9,10 +9,10 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="08/12/2015"
+   ms.date="08/25/2015"
    wacn.date=""/>
 
-# 使用 PowerShell 创建和管理 SQL Database 弹性数据库池
+# 使用 PowerShell 创建和管理 SQL 数据库弹性数据库池
 
 > [AZURE.SELECTOR]
 - [Azure 门户](/documentation/articles/sql-database-elastic-pool-portal)
@@ -101,6 +101,7 @@
 
 在上一步创建的池是空的，里面没有弹性数据库。以下部分说明如何在池中创建新的弹性数据库，以及如何将现有数据库添加到池中。
 
+*创建池后，你还可以使用 Transact-SQL 在该池中创建新的弹性数据库，以及将现有数据库移入和移出池。有关详细信息，请参阅[弹性数据库池参考 - Transact-SQL](/documentation/articles/sql-database-elastic-pool-reference/#Transact-SQL)。*
 
 ### 在弹性数据库池中创建新的弹性数据库
 
@@ -113,7 +114,7 @@
 
 ### 将现有数据库移入弹性数据库池
 
-若要将现有数据库移到池中，请使用 **Set-AzurSqlDatabase** cmdlet 并设置 **ElasticPoolName** 参数。
+若要将现有数据库移入池中，请使用 **Set-AzureSqlDatabase** cmdlet 并设置 **ElasticPoolName** 参数。
 
 
 为了演示，请创建一个不在弹性数据库池中的数据库。
@@ -188,7 +189,9 @@
 
 * 就此 API 来说，检索的度量值将表示为为该弹性数据库池设置的单个 databaseDtuMax（或者 CPU、IO 等基础度量值的等效最大值）的百分比。例如，对于任何此类度量值来说，50% 的使用率表示特定资源消耗为父弹性数据库池中该资源的相应 DB 上限的 50%。 
 
-获取度量值：$metrics = (Get-Metrics -ResourceId /subscriptions/d7c1d29a-ad13-4033-877e-8cc11d27ebfd/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/databases/myDB -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015")
+获取度量值： 
+
+	$metrics = (Get-Metrics -ResourceId /subscriptions/d7c1d29a-ad13-4033-877e-8cc11d27ebfd/resourceGroups/FabrikamData01/providers/Microsoft.Sql/servers/fabrikamsqldb02/databases/myDB -TimeGrain ([TimeSpan]::FromMinutes(5)) -StartTime "4/18/2015" -EndTime "4/21/2015")
 
 重复进行调用并追加数据，以便根据需要获取更多天数：
 
@@ -235,4 +238,4 @@
 
 有关弹性数据库和弹性数据库池的详细信息，包括 API 和错误详细信息，请参阅[弹性数据库池参考](/documentation/articles/sql-database-elastic-pool-reference)。
 
-<!---HONumber=69-->
+<!---HONumber=74-->

@@ -7,8 +7,8 @@
 	manager="timlt"
 	editor=""/>
 
-<tags ms.service="service-bus"
-
+<tags
+	ms.service="service-bus"
 	ms.date="07/02/2015"
 	wacn.date=""/>
 
@@ -69,15 +69,15 @@
 
 	![][32]
 
-4. 	当提示你运行或保存安装文件时，请单击“运行”。
+3. 	当提示你运行或保存安装文件时，请单击“运行”。
 
     ![][3]
 
-5.  在 Web 平台安装程序中，单击“安装”，然后继续安装。
+4.  在 Web 平台安装程序中，单击“安装”，然后继续安装。
 
     ![][33]
 
-6.  安装完成后，你便做好了开发应用的准备工作。SDK 包含了一些工具，可利用这些工具在 Visual Studio 中开发 Azure 应用程序。如果你未安装 Visual Studio，它还会安装免费的Visual Studio Express for Web。
+5.  安装完成后，你便做好了开发应用的准备工作。SDK 包含了一些工具，可利用这些工具在 Visual Studio 中开发 Azure 应用程序。如果你未安装 Visual Studio，它还会安装免费的Visual Studio Express for Web。
 
 ## 设置服务总线命名空间
 
@@ -492,7 +492,7 @@
 
   [0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
   [1]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-100.png
-  [sbqueuecomparison]: service-bus-azure-and-service-bus-queues-compared-contrasted.md
+  [sbqueuecomparison]: /documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted
   [2]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-101.png
   [获取工具和 SDK]: http://go.microsoft.com/fwlink/?LinkId=271920
   [3]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-3.png
@@ -534,4 +534,4 @@
   [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   [executionmodels]: /documentation/articles/fundamentals-application-models
 
-<!---HONumber=71-->
+<!---HONumber=74-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 #Azure Media Services 概念 
@@ -48,9 +48,9 @@
 
 若要传送存储加密资产，必须配置资产的传送策略，以使 Media Services 了解要如何传送你的内容。在流式传输资产之前，流式处理服务器会删除存储加密，然后再使用指定的传传送策略（例如 AES、PlayReady 或无加密）流式传输你的内容。
 
-**CommonEncryption** - 如果要采用常用加密或 PlayReady DRM 加密（或上载已加密的）内容（例如，受 PlayReady DRM 保护的平滑流式处理），请使用此选项。
+**CommonEncryptionProtected** - 如果要采用常用加密或 PlayReady DRM 加密（或上载已加密的）内容（例如，受 PlayReady DRM 保护的平滑流），请使用此选项。
 
-**EnvelopeEncrypted** – 如果要保护（或上载已加密的）采用高级加密标准 (AES) 加密的 HTTP 实时流 (HLS)，请使用此选项。请注意，如果上载已采用 AES 加密的 HLS，则该 HLS 必须已经由 Transform Manager 加密。
+**EnvelopeEncryptionProtected** - 如果要保护（或上载已加密的）采用高级加密标准 (AES) 加密的 HTTP 实时流 (HLS)，请使用此选项。请注意，如果上载已采用 AES 加密的 HLS，则该 HLS 必须已经由 Transform Manager 加密。
 
 ###访问策略 
 
@@ -95,14 +95,14 @@
 
 ###Media Services 编码器
 
-有关受支持的编码器的信息，请参阅[编码器](/zh-cn/documentation/articles/media-services-encode-asset)。
+有关受支持的编码器的信息，请参阅[编码器](/documentation/articles/media-services-encode-asset)。
 
 
 ##实时流式处理
 
-###实时转码器
+###本地（第三方）实时转码器
 
-实时编码器（又称转码器）将相机传来的音频和/或视频转换成多码率 RTMP 或平滑流格式。然后，转码器将自适应比特率 RTMP 或平滑流推送到 Media Services 通道。然后，Media Services 对该事件进行实况转播。
+本地实时编码器（或转码器）将相机传来的音频和/或视频转换成多码率 RTMP 或平滑流格式。然后，转码器将自适应比特率 RTMP 或平滑流推送到 Media Services 通道。然后，Media Services 对该事件进行实况转播。
 
 ###通道
 
@@ -112,23 +112,25 @@
 
 每个媒体服务帐户均可包含多个通道、多个节目以及多个 StreamingEndpoint。根据带宽和安全性需求，StreamingEndpoint 服务可专用于一个或多个通道。任何 StreamingEndpoint 都可以从任何通道拉取。
 
-默认情况下，最多可以向媒体服务帐户添加 5 个通道。若要请求更高的限制，请参阅[配额和限制](media-services-quotas-and-limitations.md)。
+默认情况下，最多可以向媒体服务帐户添加 5 个通道。若要请求更高的限制，请参阅[配额和限制](/documentation/articles/media-services-quotas-and-limitations)。
 
 只有当你的频道处于正在运行状态时才会向你收费。
 
 ###节目 
 
-[节目](https://msdn.microsoft.com/zh-cn/library/azure/dn783463.aspx)用于控制实时流中的片段的发布和存储。通道管理节目。频道和节目的关系非常类似于传统媒体，频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。你可以通过设置 **ArchiveWindowLength** 属性，指定你希望保留多少小时的节目录制内容。此值的设置范围是最短 5 分钟，最长 25 小时。
+[节目](https://msdn.microsoft.com/zh-cn/library/azure/dn783463.aspx)用于控制实时流中的片段的发布和存储。通道管理节目。频道和节目的关系非常类似于传统媒体，频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。
+你可以通过设置 **ArchiveWindowLength** 属性，指定你希望保留多少小时的节目录制内容。此值的设置范围是最短 5 分钟，最长 25 小时。
 
 ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。超出指定时间长度后，节目也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。此属性的这个值还决定了客户端清单能够增加多长时间。
 
-每个节目都与某个资产关联。若要发布节目，必须为关联的资产创建定位符。创建此定位符后，你可以生成提供给客户端的流 URL。一个通道最多支持三个并发运行的节目，因此你可以为同一传入流创建多个存档。这样，你便可以根据需要发布和存档事件的不同部分。例如，你的业务要求是存档 6 小时的节目，但只广播过去 10 分钟的内容。为了实现此目的，你需要创建两个同时运行的节目。一个节目设置为存档 6 小时的事件但不发布该节目。另一个节目设置为存档 10 分钟的事件，并且要发布该节目。
+每个节目都与某个资产关联。若要发布节目，必须为关联的资产创建定位符。创建此定位符后，你可以生成提供给客户端的流 URL。
+一个通道最多支持三个并发运行的节目，因此你可以为同一传入流创建多个存档。这样，你便可以根据需要发布和存档事件的不同部分。例如，你的业务要求是存档 6 小时的节目，但只广播过去 10 分钟的内容。为了实现此目的，你需要创建两个同时运行的节目。一个节目设置为存档 6 小时的事件但不发布该节目。另一个节目设置为存档 10 分钟的事件，并且要发布该节目。
 
 ##保护内容
 
 ###动态加密
 
-借助 Microsoft Azure Media Services，你可以传送使用高级加密标准 (AES)（使用 128 位加密密钥）和 PlayReady DRM 动态加密的内容。
+借助 Microsoft Azure 媒体服务，你可以传送使用高级加密标准 (AES)（使用 128 位加密密钥）和 PlayReady DRM 动态加密的内容。
 
 当前你可以加密以下流格式：HLS、MPEG DASH 和平滑流。无法加密 HDS 流格式或渐进式下载。
 
@@ -152,7 +154,8 @@ Media Services 提供了用于传送 PlayReady 许可证的服务。当最终用
 
 ###令牌限制
 
-内容密钥授权策略可能受到一种或多种授权限制：开放、令牌限制或 IP 限制。令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。Media Services 支持采用简单 Web 令牌 (SWT) 格式和 JSON Web 令牌 (JWT) 格式的令牌。Media Services 不提供安全令牌服务。你可以创建自定义 STS 或利用 Microsoft Azure ACS 来颁发令牌。必须将 STS 配置为创建令牌，该令牌使用指定密钥以及你在令牌限制配置中指定的颁发声明进行签名。如果令牌有效，而且令牌中的声明与为密钥（或许可证）配置的声明相匹配，则 Media Services 密钥传送服务会将请求的密钥（或许可证）返回到客户端。在配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。Media Services 密钥交付服务将验证令牌中的这些值是否与模板中的值匹配。
+内容密钥授权策略可能受到一种或多种授权限制：开放、令牌限制或 IP 限制。令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。Media Services 支持采用简单 Web 令牌 (SWT) 格式和 JSON Web 令牌 (JWT) 格式的令牌。Media Services 不提供安全令牌服务。你可以创建自定义 STS 或利用 Microsoft Azure ACS 来颁发令牌。必须将 STS 配置为创建令牌，该令牌使用指定密钥以及你在令牌限制配置中指定的颁发声明进行签名。如果令牌有效，而且令牌中的声明与为密钥（或许可证）配置的声明相匹配，则 Media Services 密钥传送服务会将请求的密钥（或许可证）返回到客户端。
+在配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。Media Services 密钥交付服务将验证令牌中的这些值是否与模板中的值匹配。
 
 ##传送
 
@@ -165,9 +168,9 @@ Media Services 提供了用于传送 PlayReady 许可证的服务。当最终用
 
 StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容交付网络 (CDN) 以进一步分发（Azure Media Services 现在还提供了 Azure CDN 集成）。 StreamingEndpoint 服务的出站流可以是实时流，也可以是 Media Services 帐户中的视频点播资产。此外，还可以通过调整扩展单元（也称为流单元）来控制 StreamingEndpoint 服务处理不断增长的带宽需求的能力。建议为生产环境中的应用程序分配一个或多个扩展单元。缩放单元提供能够以 200 Mbps 为增量购买的专用出口容量和附加功能（当前包括使用动态打包）。
 
-建议使用动态打包和/或动态加密。若要使用这些功能，你必须获取你计划从中流式传输内容的终结点的至少一个流式处理单位。有关详细信息，请参阅[缩放流式处理单位](/zh-cn/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
+建议使用动态打包和/或动态加密。若要使用这些功能，你必须获取你计划从中流式传输内容的终结点的至少一个流式处理单位。有关详细信息，请参阅[缩放流式处理单位](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
 
-默认情况下，每个媒体服务帐户最多可以包含 2 个流式处理终结点。若要请求更高的限制，请参阅[配额和限制](media-services-quotas-and-limitations.md)。
+默认情况下，每个媒体服务帐户最多可以包含 2 个流式处理终结点。若要请求更高的限制，请参阅[配额和限制](/documentation/articles/media-services-quotas-and-limitations)。
 
 仅当 StreamingEndpoint 处于运行状态时才进行计费。
 
@@ -232,4 +235,4 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 
 		http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f) 
 
-<!---HONumber=71-->
+<!---HONumber=74-->

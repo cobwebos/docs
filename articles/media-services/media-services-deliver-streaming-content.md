@@ -9,22 +9,22 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015" 
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 
 #如何：传送流内容
  
 > [AZURE.SELECTOR]
-- [REST](media-services-rest-deliver-streaming-content.md)
-- [.NET](media-services-deliver-streaming-content.md)
-- [Portal](media-services-manage-content.md#publish)
+- [REST](/documentation/articles/media-services-rest-deliver-streaming-content)
+- [.NET](/documentation/articles/media-services-deliver-streaming-content)
+- [Portal](/documentation/articles/media-services-manage-content#publish)
 
 ##概述
 
-你可以通过创建 OnDemand 流式处理定位符并生成流 URL 来流式传输自适应比特率 MP4 集。[对资产进行编码](media-services-encode-asset.md)主题说明了如何编码成自适应比特率 MP4 集。
+你可以通过创建 OnDemand 流式处理定位符并生成流 URL 来流式传输自适应比特率 MP4 集。[对资产进行编码](media-services-encode-asset)主题说明了如何编码成自适应比特率 MP4 集。
 
->[AZURE.NOTE]如果内容已加密，则在创建定位符之前配置资产传送策略（如[本](media-services-dotnet-configure-asset-delivery-policy.md)主题中所述）。
+>[AZURE.NOTE]如果内容已加密，则在创建定位符之前配置资产传送策略（如[本](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy)主题中所述）。
 
 你也可以使用 OnDemand 流式处理定位符生成指向可渐进式下载的 MP4 文件的 URL。
 
@@ -85,11 +85,11 @@
 代码将输出：
 	
 	URL to manifest for client streaming using Smooth Streaming protocol:
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
+	http://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
 	URL to manifest for client streaming using HLS protocol:
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
+	http://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 	URL to manifest for client streaming using MPEG DASH protocol:
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
+	http://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 	
 
 >[AZURE.NOTE]你也可以通过 SSL 连接流式传输内容。为此，请确保流 URL 以 HTTPS 开头。
@@ -126,10 +126,10 @@
 
 代码将输出：
 	
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4
-	http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4
+	http://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
+	http://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_400kbps_AAC_und_ch2_96kbps.mp4
+	http://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4
+	http://amstest1.streaming.mediaservices.chinacloudapi.cn/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_2250kbps_AAC_und_ch2_96kbps.mp4
 	
 	. . . 
 
@@ -155,6 +155,6 @@
  
 ##另请参阅
 
-[下载资产](media-services-deliver-asset-download.md)
+[下载资产](/documentation/articles/media-services-deliver-asset-download)
 
-<!---HONumber=71-->
+<!---HONumber=74-->

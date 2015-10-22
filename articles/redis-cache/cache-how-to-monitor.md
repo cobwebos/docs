@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="cache" 
-	ms.date="06/29/2015" 
+	ms.date="08/25/2015" 
 	wacn.date=""/>
 
 # 如何监视 Azure Redis 缓存
@@ -217,4 +217,4 @@ Azure Redis 缓存提供如下功能：将诊断数据存储在存储帐户中�
 
 [redis-cache-add-alert]: ./media/cache-how-to-monitor/redis-cache-add-alert.png
 
-<!---HONumber=67-->
+<!---HONumber=74-->

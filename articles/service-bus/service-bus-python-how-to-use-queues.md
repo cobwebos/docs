@@ -1,6 +1,14 @@
-<properties linkid="develop-python-service-bus-queues" urlDisplayName="Service Bus Queues" pageTitle="如何使用服务总线队列 (Python) - Azure" metaKeywords="Azure Service Bus queues, Azure queues, Azure messaging, Azure queues Python" description="了解如何在 Azure 中使用 Service Bus 队列。代码示例是使用 Python 编写的。" metaCanonical="" services="service-bus" documentationCenter="Python" title="How to Use Service Bus Queues" authors="" solutions="" manager="" editor="" />
-<tags  ms.service="service-bus"
+<properties 
+	pageTitle="如何使用服务总线队列 (Python) | Microsoft Azure" 
+	description="了解如何使用 Python 中的 Azure 服务总线队列" 
+	services="service-bus" 
+	documentationCenter="python" 
+	authors="huguesv" 
+	manager="timlt" 
+	editor=""/>
 
+<tags 
+	ms.service="service-bus" 
 	ms.date="07/06/2015" 
 	wacn.date=""/>
 
@@ -26,7 +34,7 @@
 		shared_access_key_name='sharedaccesskeyname',
 		shared_access_key_value='sharedaccesskey')
 
-SAS 密钥名称和值可以在 Azure 门户连接信息中找到，也可以在服务器资源管理器中选择服务总线命名空间后，在“Visual Studio 属性”窗口中找到（如前一部分中所示）。
+SAS 密钥名称和值可以在 Azure 门户连接信息中找到，也可以在服务器资源管理器中选择服务总线命名空间后，在 Visual Studio “属性”窗口中找到（如前一部分中所示）。
 
 	bus_service.create_queue('taskqueue')
 
@@ -73,17 +81,17 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 还存在与队列中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），Service Bus 将自动解锁该消息并使它可再次被接收。
 
-如果应用程序在处理消息之后，但在调用 **delete** 方法之前崩溃，则在应用程序重新启动时会将该消息重新传送给它。此情况通常称作**至少处理一次**，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。这通常可以通过使用消息的 **MessageId** 属性来实现，该属性在多次传送尝试中保持不变。
+如果应用程序在处理消息之后，但在调用 **delete** 方法之前崩溃，则在应用程序重新启动时会将该消息重新传送给它。此情况通常称作“至少处理一次”，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。这通常可以通过使用消息的 **MessageId** 属性来实现，该属性在多次传送尝试中保持不变。
 
 ## 后续步骤
 
 现在，你已了解有关服务总线队列的基础知识，单击下面的链接可了解更多信息。
 
--   参阅 MSDN 参考：[队列、主题和订阅][]。
+-   请参阅[队列、主题和订阅][]。
 
 [Azure Management Portal]: http://manage.windowsazure.cn
 [Python Azure 包]: https://pypi.python.org/pypi/azure
-[队列、主题和订阅]: http://msdn.microsoft.com/zh-cn/library/azure/hh367516.aspx
+[队列、主题和订阅]: /documentation/articles/service-bus-queues-topics-subscriptions
  
 
-<!---HONumber=71-->
+<!---HONumber=74-->

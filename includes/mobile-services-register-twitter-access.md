@@ -21,7 +21,7 @@
 
 	![](./media/mobile-services-register-twitter-access/mobile-identity-tab-twitter-only.png)
 
-2. 单击“配置”选项卡，向下滚动到“应用设置”，输入你从 Twitter 网站获取的下述每个项的“名称”和“值”对，然后单击“保存”。
+7. 单击“配置”选项卡，向下滚动到“应用设置”，输入你从 Twitter 网站获取的下述每个项的“名称”和“值”对，然后单击“保存”。
 
 	+ `TWITTER_ACCESS_TOKEN`
 	+ `TWITTER_ACCESS_TOKEN_SECRET`
@@ -32,9 +32,9 @@
 
 <!-- URLs. -->
 [Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
-[Azure 管理门户]: https://manage.windowsazure.com/
+[Azure 管理门户]: https://manage.windowsazure.cn/
 [Register your apps for Twitter login with Mobile Services]: /documentation/articles//mobile-services-how-to-register-twitter-authentication
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [应用设置]: http://msdn.microsoft.com/zh-cn/library/azure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=71-->
+<!---HONumber=74-->

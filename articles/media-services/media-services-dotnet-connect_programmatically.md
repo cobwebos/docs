@@ -9,18 +9,18 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"  
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 
 # 使用 Media Services SDK for .NET 连接到 Media Services 帐户
 
 > [AZURE.SELECTOR]
-- [REST](media-services-rest-connect_programmatically.md)
-- [.NET](media-services-dotnet-connect_programmatically.md)
+- [REST](/documentation/articles/media-services-rest-connect_programmatically)
+- [.NET](/documentation/articles/media-services-dotnet-connect_programmatically)
 
 
-本主题介绍如何在使用 Media Services SDK for .NET 编程时获取与 Microsoft Azure Media Services 的编程连接。
+本主题介绍如何在使用 Media Services SDK for .NET 编程时获取与 Microsoft Azure 媒体服务的编程连接。
 
 
 ## 连接到 Media Services
@@ -40,7 +40,7 @@
 
 若要开始针对媒体服务编程，你需要创建一个代表服务器上下文的 **CloudMediaContext** 实例。**CloudMediaContext** 包括对各种重要集合的引用，这些集合包括作业、资产、文件、访问策略和定位符。
 
->[AZURE.NOTE]**CloudMediaContext** 类不是线程安全的。每个线程或每组操作均应创建一个新 CloudMediaContext。
+>[AZURE.NOTE] **CloudMediaContext** 类不是线程安全的。每个线程或每组操作均应创建一个新 CloudMediaContext。
 
 
 CloudMediaContext 具有五个构造函数重载。建议使用以 **MediaServicesCredentials** 为参数的构造函数。有关详细信息，请参阅下面的**重复使用访问控制服务令牌**。
@@ -60,7 +60,7 @@ CloudMediaContext 具有五个构造函数重载。建议使用以 **MediaServic
 本部分说明如何通过使用以 MediaServicesCredentials 为参数的 CloudMediaContext 构造函数重复使用访问控制服务令牌。
 
 
-[Azure Active Directory 访问控制](https://msdn.microsoft.com/zh-cn/library/hh147631.aspx)（也称为访问控制服务或 ACS）是一个基于云的服务，可轻松对用户进行身份验证和授权以使用户获得访问其 Web 应用程序的权限。Microsoft Azure Media Services 通过需要 ACS 令牌的 OAuth 协议控制对其服务的访问。Media Services 从授权服务器接收 ACS 令牌。
+[Azure Active Directory 访问控制](https://msdn.microsoft.com/zh-cn/library/hh147631.aspx)（也称为访问控制服务或 ACS）是一个基于云的服务，可轻松对用户进行身份验证和授权以使用户获得访问其 Web 应用程序的权限。Microsoft Azure 媒体服务通过需要 ACS 令牌的 OAuth 协议控制对其服务的访问。Media Services 从授权服务器接收 ACS 令牌。
 
 使用 Media Services SDK 进行开发时，可选择不处理令牌，而是由 SDK 代码为你进行管理。不过，将 ACS 令牌完全交由 SDK 管理会导致不必要的令牌请求。请求令牌将耗用一定的时间并消耗客户端和服务器资源。此外，如果速度过快，ACS 服务器还会限制请求。上限为每秒钟 30 条请求，请参阅 [ACS 服务限制](https://msdn.microsoft.com/zh-cn/library/gg185909.aspx)了解更多详细信息。
 
@@ -190,4 +190,4 @@ CloudMediaContext 具有五个构造函数重载。建议使用以 **MediaServic
 
 <!-- URLs. -->
 
-<!---HONumber=71-->
+<!---HONumber=74-->

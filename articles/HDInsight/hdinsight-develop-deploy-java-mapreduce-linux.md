@@ -1,5 +1,5 @@
 <properties
-	pageTitle="为 Hadoop 开发 Java MapReduce 程序 | Windows Azure"
+	pageTitle="为 Hadoop 开发 Java MapReduce 程序 | Microsoft Azure"
 	description="了解如何在 HDInsight Emulator 上开发 Java MapReduce 程序，以及如何将这些程序部署到 HDInsight。"
 	services="hdinsight"
 	editor="cgronlun"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="06/26/2015"
+	ms.date="09/02/2015"
 	wacn.date=""/>
 
 # 为 HDInsight 中的 Hadoop 开发 Java MapReduce 程序
@@ -34,13 +34,13 @@
 
 可以在安装 Java 和 JDK 时设置以下环境变量。不过，你应该检查它们是否存在并且包含系统的正确值。
 
-* **JAVA_HOME** - 应该指向已安装 Java 运行时环境 (JRE) 的目录。例如，在 OS X、Unix 或 Linux 系统中，它的值应该类似于 `/usr/lib/jvm/java-7-oracle`。在 Windows 中，它的值类似于 `c:\Program Files (x86)\Java\jre1.7`
+* **JAVA\_HOME** - 应该指向已安装 Java 运行时环境 (JRE) 的目录。例如，在 OS X、Unix 或 Linux 系统中，它的值应该类似于 `/usr/lib/jvm/java-7-oracle`。在 Windows 中，它的值类似于 `c:\Program Files (x86)\Java\jre1.7`
 
 * **PATH** - 应该包含以下路径：
 
-	* **JAVA_HOME**（或等效的路径）
+	* **JAVA\_HOME**（或等效的路径）
 
-	* **JAVA_HOME\\bin**（或等效的路径）
+	* **JAVA\_HOME\\bin**（或等效的路径）
 
 	* 安装 Maven 的目录
 
@@ -62,7 +62,7 @@
 
 ##添加依赖项
 
-1. 编辑 __pom.xml__ 文件，并在 `<dependencies>` 节中添加以下代码。
+1. 编辑__pom.xml__ 文件，并在 `<dependencies>` 节中添加以下代码。
 
 		<dependency>
 		  <groupId>org.apache.hadoop</groupId>
@@ -216,7 +216,7 @@
 
 	这将会清除以前的所有生成项目，下载尚未安装的所有依赖项，然后生成并打包应用程序。
 
-3. 完成该命令后，__wordcountjava/target__ 目录将包含名为 __wordcountjava-1.0-SNAPSHOT.jar__ 的文件。
+3. 完成该命令后，__wordcountjava/target__ 目录将包含名为__wordcountjava-1.0-SNAPSHOT.jar__ 的文件。
 
 	> [AZURE.NOTE]__wordcountjava-1.0-SNAPSHOT.jar__ 文件是一种 uberjar，其中不仅包含 WordCount 作业，还包含该作业在运行时需要的依赖关系。
 
@@ -293,4 +293,4 @@
 [image-emulator-wordcount-compile]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Compile-Java-MapReduce.png
 [image-emulator-wordcount-run]: ./media/hdinsight-develop-deploy-java-mapreduce/HDI-Emulator-Run-Java-MapReduce.png
 
-<!---HONumber=67-->
+<!---HONumber=74-->

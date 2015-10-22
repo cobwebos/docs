@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services"  
-	ms.date="08/17/2015"  
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 
@@ -155,7 +155,7 @@ Application/x-javascript - 资源显示在 HTML <**脚本**> 标记中。
 
 Application/x-shockwave-flash – 资源显示在 Flash Player 中。
 
-**<IFrameResource>** 描述可以在 IFrame 中显示的 HTML 资源。**<HTMLResource>** 描述可以插入网页中的一段 HTML 代码。**<TrackingEvents>** 指定跟踪事件以及事件发生时要请求的 URI。在此示例中，跟踪了 acceptInvitation 事件和折叠事件。有关 **<NonLinearAds>** 元素及其子元素的详细信息，请参阅 IAB.NET/VAST。请注意，**<TrackingEvents>** 元素位于 **<NonLinearAds>** 元素内，而不是 **<NonLinear>** 元素内。
+**<IFrameResource>**描述可以在 IFrame 中显示的 HTML 资源。**<HTMLResource>**描述可以插入网页中的一段 HTML 代码。**<TrackingEvents>**指定跟踪事件以及事件发生时要请求的 URI。在此示例中，跟踪了 acceptInvitation 事件和折叠事件。有关**<NonLinearAds>**元素及其子元素的详细信息，请参阅 IAB.NET/VAST。请注意，**<TrackingEvents>**元素位于**<NonLinearAds>**元素内，而不是**<NonLinear>**元素内。
 
 在 <CompanionAds> 元素内定义伴随广告。<CompanionAds> 元素可以包含一个或多个 <Companion> 元素。每个 <Companion> 元素均描述一个伴随广告，并且可以包含以与非线性广告相同的方式定义的 <StaticResource><IFrameResource> 或 <HTMLResource>。VAST 文件可以包含多个伴随广告，播放器应用程序可以选择最适合显示的广告。有关 VAST 的详细信息，请参阅 [VAST 3.0](http://www.iab.net/media/file/VASTv3.0.pdf)。
 
@@ -488,7 +488,7 @@ ProgrammaticAdPage.xaml.cs 文件创建 AdHandlerPlugin，添加 TimelineMarker 
 
 此示例使用 AdSchedulerPlugin 通过指定包含广告的 .wmv 文件安排中置式广告。
 	
-	<mmppf:MediaPlayer x:Name="player" Source="http://smf.cloudapp.net/html5/media/bigbuck.mp4">
+	<mmppf:MediaPlayer x:Name="player" Source="http://smf.chinacloudapp.cn/html5/media/bigbuck.mp4">
 	            <mmppf:MediaPlayer.Plugins>
 	                <ads:AdSchedulerPlugin>
 	                    <ads:AdSchedulerPlugin.Advertisements>
@@ -567,7 +567,7 @@ ProgrammaticAdPage.xaml.cs 文件创建 AdHandlerPlugin，添加 TimelineMarker 
 
 Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程序集合，这些示例应用程序向你展示如何使用该框架实现视频播放器应用程序。可以从 [Azure 媒体播放器框架](https://github.com/Azure/azure-media-player-framework)下载播放器框架和示例。GitHub 页面具有指向 Wiki（含有关播放器框架的其他信息）的链接和播放器示例简介：[Azure 媒体播放器 Wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework)。
 
-有关插入广告的详细信息，请参阅[向媒体中插入广告](media-services-inserting-ads-on-client-side.md#insert_ads_into_media)。
+有关插入广告的详细信息，请参阅[向媒体中插入广告](/documentation/articles/media-services-inserting-ads-on-client-side#insert_ads_into_media)。
 
 ###使用 VMAP 安排广告
 
@@ -618,18 +618,16 @@ Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程
         [self logFrameworkError];
     }
          
-   以下示例演示如何安排早期绑定 VAST 广告。    
-	//Example:4 Schedule an early binding VAST ad
+   以下示例演示如何安排早期绑定 VAST 广告。
+    //Example:4 Schedule an early binding VAST ad
     //Download the VAST file
     if (![framework.adResolver downloadManifest:&manifest withURL:[NSURL URLWithString:@"http://portalvhdsq3m25bf47d15c.blob.core.chinacloudapi.cn/vast/PlayerTestVAST.xml"]])
     {
         [self logFrameworkError];
     }
     else
-    {
-        adLinearTime.startTime = 7;
+        { adLinearTime.startTime = 7;
         adLinearTime.duration = 0;
-        
         
 		// Create AdInfo instance
 	    AdInfo *vastAdInfo2 = [[[AdInfo alloc] init] autorelease];
@@ -649,7 +647,7 @@ Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程
 
 	//Example:1 How to use RCE.
 	// specify manifest for ad content
-	NSString *secondContent=@"http://wamsblureg001orig-hs.cloudapp.net/6651424c-a9d1-419b-895c-6993f0f48a26/The%20making%20of%20Microsoft%20Surface-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
+	NSString *secondContent=@"http://wamsblureg001orig-hs.chinacloudapp.cn/6651424c-a9d1-419b-895c-6993f0f48a26/The%20making%20of%20Microsoft%20Surface-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
 	
 	// specify ad length
     mediaTime.currentPlaybackPosition = 0;
@@ -693,7 +691,7 @@ Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程
 	
 	//Example:6 Schedule a single non sticky mid roll Ad
 	// specify URL to content
-	NSString *oneTimeAd=@"http://wamsblureg001orig-hs.cloudapp.net/5389c0c5-340f-48d7-90bc-0aab664e5f02/Windows%208_%20You%20and%20Me%20Together-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
+	NSString *oneTimeAd=@"http://wamsblureg001orig-hs.chinacloudapp.cn/5389c0c5-340f-48d7-90bc-0aab664e5f02/Windows%208_%20You%20and%20Me%20Together-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
 	
 	// create an AdInfo instance
 	AdInfo *oneTimeInfo = [[[AdInfo alloc] init] autorelease];
@@ -719,7 +717,7 @@ Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程
 以下示例演示如何安排粘性中置式广告。每当到达时间线上指定时间点时就会显示粘性广告。
 
 	//Example:7 Schedule a single sticky mid roll Ad
-	NSString *stickyAd=@"http://wamsblureg001orig-hs.cloudapp.net/2e4e7d1f-b72a-4994-a406-810c796fc4fc/The%20Surface%20Movement-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
+	NSString *stickyAd=@"http://wamsblureg001orig-hs.chinacloudapp.cn/2e4e7d1f-b72a-4994-a406-810c796fc4fc/The%20Surface%20Movement-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
 	// create AdInfo instance
 	AdInfo *stickyAdInfo = [[[AdInfo alloc] init] autorelease];
 	// set URI to ad
@@ -744,7 +742,7 @@ Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程
 以下示例演示如何安排后置式广告。
 
 	//Example:8 Schedule Post Roll Ad
-	NSString *postAdURLString=@"http://wamsblureg001orig-hs.cloudapp.net/aa152d7f-3c54-487b-ba07-a58e0e33280b/wp-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
+	NSString *postAdURLString=@"http://wamsblureg001orig-hs.chinacloudapp.cn/aa152d7f-3c54-487b-ba07-a58e0e33280b/wp-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
 	// create AdInfo instance
 	AdInfo *postAdInfo = [[[AdInfo alloc] init] autorelease];
 	postAdInfo.clipURL = [NSURL URLWithString:postAdURLString];
@@ -764,7 +762,7 @@ Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程
 以下示例演示如何安排前置式广告。
 	
 	//Example:9 Schedule Pre Roll Ad
-	NSString *adURLString = @"http://wamsblureg001orig-hs.cloudapp.net/2e4e7d1f-b72a-4994-a406-810c796fc4fc/The%20Surface%20Movement-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
+	NSString *adURLString = @"http://wamsblureg001orig-hs.chinacloudapp.cn/2e4e7d1f-b72a-4994-a406-810c796fc4fc/The%20Surface%20Movement-m3u8-aapl.ism/Manifest(format=m3u8-aapl)";
 	AdInfo *adInfo = [[[AdInfo alloc] init] autorelease];
 	adInfo.clipURL = [NSURL URLWithString:adURLString];
 	adInfo.mediaTime = [[[MediaTime alloc] init] autorelease];
@@ -809,4 +807,4 @@ Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程
 
 [开发视频播放器应用程序](/documentation/articles/media-services-develop-video-players)
 
-<!---HONumber=71-->
+<!---HONumber=74-->

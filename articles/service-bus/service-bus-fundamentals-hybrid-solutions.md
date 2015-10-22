@@ -7,8 +7,8 @@
 	manager="timlt" 
 	editor=""/>
 
-<tags ms.service="service-bus"
-
+<tags 
+	ms.service="service-bus" 
 	ms.date="07/25/2015" 
 	wacn.date=""/>
 
@@ -126,4 +126,4 @@
 [3]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_03_topicsandsubscriptions.png
 [4]: ./media/service-bus-fundamentals-hybrid-solutions/SvcBus_04_relay.png
 
-<!---HONumber=71-->
+<!---HONumber=74-->

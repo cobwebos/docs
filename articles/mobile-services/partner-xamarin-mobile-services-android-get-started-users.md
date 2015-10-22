@@ -9,10 +9,10 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="05/14/2015" 
+	ms.date="08/18/2015" 
 	wacn.date=""/>
 
-#  向移动服务应用程序添加身份验证
+# 向移动服务应用程序添加身份验证
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
@@ -107,10 +107,10 @@
 
    	当你成功登录时，应用应该运行而不出现错误，你应该能够查询移动服务，并对数据进行更新。
 
-##  获取已完成的示例
+## 获取已完成的示例
 下载[已完成的示例项目]。请务必使用你自己的 Azure 设置更新 **applicationURL** 和 **applicationKey** 变量。
 
-##  <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 在下一教程[使用脚本为用户授权]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。
 
@@ -129,10 +129,10 @@
 [15]: ./media/partner-xamarin-mobile-services-android-get-started-users/mobile-portal-change-table-perms.png
 
 <!-- URLs. -->
-[使用脚本为用户授权]: mobile-services-javascript-backend-service-side-authorization
+[使用脚本为用户授权]: /documentation/articles/mobile-services-javascript-backend-service-side-authorization
 
 [Azure Management Portal]: https://manage.windowsazure.cn/
 
 [已完成的示例项目]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

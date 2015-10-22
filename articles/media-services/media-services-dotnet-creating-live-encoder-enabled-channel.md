@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015" 
+	ms.date="09/07/2015"
 	wacn.date=""/>
 
 
@@ -75,6 +75,8 @@
 1. 显示和隐藏清单。启动和停止广告。将使用长时间运行的 API。
 1. 清理频道及所有关联的资源。
 
+>[AZURE.NOTE]虽然此功能处于预览状态，但是实时事件的最大建议持续时间为 8 小时。
+>
 ##先决条件
 以下是完成本教程所需具备的条件。
 
@@ -491,9 +493,4 @@
 	}
 	
 
-	
-##相关主题
-
-[使用执行从单比特率到多比特率流的实时编码的频道](media-services-manage-live-encoder-enabled-channels.md)
-
-<!---HONumber=71-->
+<!---HONumber=74-->

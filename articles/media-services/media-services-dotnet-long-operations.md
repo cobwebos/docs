@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015" 
+	ms.date="09/07/2015"
 	wacn.date=""/>
 
 
@@ -182,4 +182,4 @@ Microsoft Azure 媒体服务提供了相应的 API 用来请求媒体服务启�
 	Console.WriteLine(channelId);
  
 
-<!---HONumber=71-->
+<!---HONumber=74-->

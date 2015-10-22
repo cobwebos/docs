@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 PhoneGap 的移动服务入门 |移动开发人员中心"
+	pageTitle="使用 Azure 移动服务开发 PhoneGap/cordova 应用入门"
 	description="请按照本教程中的说明操作，开始使用用于 PhoneGap 开发的 Azure 移动服务（面向 iOS、, Android 和 Windows Phone）。"
 	services="mobile-services"
 	documentationCenter=""
@@ -9,14 +9,10 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-phonegap"
-	ms.devlang="multiple"
-	ms.topic="article" 
-	ms.date="04/24/2015"
-	ms.author="ggailey777"/>
+	ms.date="07/21/2015"
+	wacn.date=""/>
 
-#  移动服务入门
+# 移动服务入门
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
@@ -26,7 +22,7 @@
 
 ![][3]
 
-###  其他要求
+### 其他要求
 
 完成本教程需要使用：
 
@@ -40,11 +36,11 @@
 - iOS：安装 [Xcode]（需要 v4.4+）
 - Android：[安装 Android 开发人员工具][Android SDK]<br/>（适用于 Android 的移动服务 SDK 支持用于 Android 2.2 或更高版本的应用程序。运行快速入门应用程序需要安装 Android 4.2 或更高版本。)
 
-##  创建新的移动服务
+## 创建新的移动服务
 
 [AZURE.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
-##  创建新的 PhoneGap 应用程序
+## 创建新的 PhoneGap 应用程序
 
 在本部分中，你将要创建一个连接到移动服务的新的 PhoneGap 应用程序。
 
@@ -66,7 +62,7 @@
 
 	随即将会下载已连接到移动服务的示例_待办事项列表_应用程序的项目，以及移动服务 JavaScript SDK。将压缩的项目文件保存到本地计算机，并记下保存位置。
 
-##  运行新的 PhoneGap 应用程序
+## 运行新的 PhoneGap 应用程序
 
 本教程的最后一个阶段是生成和运行你的新应用程序。
 
@@ -118,13 +114,13 @@
 	![](./media/mobile-services-javascript-backend-phonegap-get-started/mobile-data-browse.png)
 	
 
-##  针对每个平台进行应用程序更新并重新生成项目
+## 针对每个平台进行应用程序更新并重新生成项目
 
 1. 在“www”目录（在本例中为“todolist/www”）中对代码文件进行更改。
 
 2. 验证是否可以访问系统路径中的所有目标平台工具。
 
-2. 在项目根目录中打开命令提示符，然后运行下列平台特定的命令之一：
+3. 在项目根目录中打开命令提示符，然后运行下列平台特定的命令之一：
 
 	+ **Windows Phone**
 
@@ -148,12 +144,14 @@
 
 >[AZURE.NOTE]你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 js/index.js 文件中。
 
-##  后续步骤
+## 后续步骤
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-* [向应用程序添加身份验证]<br/>了解如何使用标识者对应用程序的用户进行身份验证。
+* [向应用程序添加身份验证]
+  <br/>了解如何使用标识者对应用程序的用户进行身份验证。
   
-* [向应用程序添加推送通知](https://msdn.microsoft.com/magazine/dn879353.aspx)<br/>了解如何向应用程序注册和发送推送通知。
+* [向应用程序添加推送通知](https://msdn.microsoft.com/magazine/dn879353.aspx)
+  <br/>了解如何向应用程序注册和发送推送通知。
 
 <!-- Images. -->
 [0]: ./media/mobile-services-javascript-backend-phonegap-get-started/portal-screenshot1.png
@@ -163,11 +161,11 @@
 [4]: ./media/mobile-services-javascript-backend-phonegap-get-started/mobile-portal-quickstart-android.png
 
 <!-- URLs. -->
-[Add Mobile Services to an existing app]: mobile-services-html-get-started-data
-[向应用程序添加身份验证]: mobile-services-html-get-started-users
+[Add Mobile Services to an existing app]: /documentation/articles/mobile-services-html-get-started-data
+[向应用程序添加身份验证]: /documentation/articles/mobile-services-html-get-started-users
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 [Management Portal]: https://manage.windowsazure.cn/
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

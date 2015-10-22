@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="在命令行管理移动服务 - Azure 教程" 
+	pageTitle="在命令行管理移动服务 | Microsoft Azure" 
 	description="了解如何使用命令行工具创建、 部署和管理您的 Azure 移动服务。" 
 	services="mobile-services" 
 	documentationCenter="Mobile" 
@@ -9,12 +9,12 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="04/07/2015" 
+	ms.date="07/22/2015" 
 	wacn.date=""/>
 
-#  使用命令行工具自动操作移动服务 
+# 使用命令行工具自动操作移动服务 
 
-## 概述
+##概述
 
 本主题说明如何使用 Azure 命令行工具来自动创建和管理 Azure 移动服务。另外，还说明了如何安装和开始使用这些命令行工具，以及如何使用它们执行关键的移动服务。
  
@@ -22,11 +22,7 @@
 
 本主题有选择地介绍了 Azure 命令行工具支持的多个常见管理任务。有关详细信息，请参阅 [Azure 命令行工具文档][reference-docs]。
 
-<!--+  You must download and install the Azure command-line tools to your local machine. To do this, follow the instructions in the first section of this topic. 
-
-+ (Optional) To be able to execute HTTP requests directly from the command-line, you must use cURL or an equivalent tool. cURL runs on a variety of platforms. Locate and install cURL for your specific platform from the <a href=http://go.microsoft.com/fwlink/p/?LinkId=275676 target="_blank">cURL download  page</a>.-->
-
-## 安装 Azure 命令行工具
+##安装 Azure 命令行工具
 
 以下列表包含有关安装命令行工具的信息（具体取决于你的操作系统）：
 
@@ -40,7 +36,7 @@
 
 若要测试安装，请在命令提示符下键入 `azure`。如果安装成功，则会显示所有可用 `azure` 命令的列表。
 
-## 如何下载和导入发布设置
+##如何下载和导入发布设置
 
 若要开始操作，必须先下载并导入你的发布设置。然后，你便可以使用这些工具来创建和管理 Azure 服务。若要下载你的发布设置，请使用 `account download` 命令：
 
@@ -62,9 +58,9 @@
 
 导入发布设置后，为安全起见，应删除 `.publishsettings` 文件。有关详细信息，请参阅[如何安装适用于 Mac 和 Linux 的 Azure 命令行工具]。现在，你便可以通过命令行或者批处理文件开始创建和管理 Azure 移动服务了。
 
-## 如何创建移动服务
+##如何创建移动服务
 
-可以使用命令行工具创建新的移动服务实例。在创建移动服务的同时，还会在新服务器中创建一个 SQL Database 实例。
+可以使用命令行工具创建新的移动服务实例。在创建移动服务的同时，还会在新服务器中创建一个 SQL 数据库实例。
 
 以下命令将在订阅中创建一个新的移动服务实例，其中`<service-name>`是新移动服务的名称，`<server-admin>`是新服务器的登录名，`<server-password>`是新登录名的密码：
 
@@ -72,7 +68,7 @@
 
 当存在指定的移动服务时，`mobile create` 命令将会失败。在尝试重新创建某个移动服务之前，你应该在自动化脚本中尝试删除该移动服务。
 
-## 如何列出订阅中的现有移动服务
+##如何列出订阅中的现有移动服务
 
 > [AZURE.NOTE]CLI 中与“list”和“script”相关的命令只适用于 JavaScript 后端。
 
@@ -82,17 +78,17 @@
 
 此命令还会显示每个移动服务的当前状态和 URL。
 
-## 如何删除现有的移动服务
+##如何删除现有的移动服务
 
-可以使用命令行工具将现有的某个移动服务连同相关的 SQL Database 和服务器一起删除。以下命令将删除移动服务，其中`<service-name>`是要删除的移动服务的名称：
+可以使用命令行工具将现有的某个移动服务连同相关的 SQL 数据库和服务器一起删除。以下命令将删除移动服务，其中`<service-name>`是要删除的移动服务的名称：
 
 		azure mobile delete <service-name> -a -q
 
-如果包含 `-a` 和 `-q` 参数的话，此命令还会删除该移动服务使用的 SQL Database 和服务器且不显示任何提示。
+如果包含 `-a` 和 `-q` 参数的话，此命令还会删除该移动服务使用的 SQL 数据库和服务器且不显示任何提示。
 
-> [AZURE.NOTE]如果不随 <code>-a</code> 或 <code>-d</code> 一起指定 <code>-q</code> 参数，则执行将会暂停，并且系统会提示你针对 SQL Database 选择删除选项。仅当没有其他任何服务使用该数据库或服务器时，才能使用 <code>-a</code> 参数；否则，请使用 <code>-d</code> 参数，以便只删除属于要删除的移动服务的数据。
+> [AZURE.NOTE]如果不随 <code>-a</code> 或 <code>-d</code> 一起指定 <code>-q</code> 参数，则执行将会暂停，并且系统会提示你针对 SQL 数据库选择删除选项。仅当没有其他任何服务使用该数据库或服务器时，才能使用 <code>-a</code> 参数；否则，请使用 <code>-d</code> 参数，以便只删除属于要删除的移动服务的数据。
 
-## 如何在移动服务中创建表
+##如何在移动服务中创建表
 
 以下命令将在指定的移动服务中创建一个表，其中，`<service-name>` 是移动服务的名称，`<table-name>` 是要创建的表的名称：
 
@@ -106,15 +102,16 @@
 
 下面显示了脚本权限值与 [Azure 管理门户]中的权限值的对照表。
 
-<table border="1" width="100%"><tr><th>脚本中的值</th><th>管理门户中的值</th></tr>
-<tr><td><code>public</code></td><td>所有人</td></tr>
-<tr><td><code>application</code>（默认值）</td><td>具有应用程序密钥的任何人</td></tr>
-<tr><td><code>user</code></td><td>仅经过身份验证的用户</td></tr>
-<tr><td><code>admin </code></td><td>仅脚本和管理员</td></tr></table>
+|脚本值|管理门户值|
+|========|========|
+|`public`|每个人|
+|`application`（默认值）|拥有应用程序密钥的任何人|
+|`user`|仅限经过身份验证的用户|
+|`admin`|仅限脚本和管理员|
 
 当存在指定的表时，`mobile table create` 命令将会失败。在尝试重新创建某个表之前，你应该在自动化脚本中尝试删除该表。
 
-## 如何列出移动服务中的现有表
+##如何列出移动服务中的现有表
 
 以下命令将返回移动服务中所有表的列表，其中`<service-name>`是移动服务的名称：
 
@@ -122,7 +119,7 @@
 
 此命令还会显示每个表中的索引数，以及表中当前的数据行数。
 
-## 如何删除移动服务中的现有表
+##如何删除移动服务中的现有表
 
 以下命令将删除移动服务中的某个表，其中，`<service-name>` 是移动服务的名称，`<table-name>` 是要删除的表的名称：
 
@@ -130,7 +127,7 @@
 
 在自动化脚本中，使用 `-q` 参数可以删除该表且不显示会阻碍执行的确认提示。
 
-## 如何将脚本注册到表操作
+##如何将脚本注册到表操作
 
 以下命令将一个函数上载并注册到表中的某个操作，其中，`<service-name>` 是移动服务的名称，`<table-name>` 是表的名称，`<operation>` 是表操作（可以是 `read`、`insert`、`update` 或 `delete`）：
 
@@ -186,4 +183,4 @@
 [reference-docs]: /documentation/articles/virtual-machines-command-line-tools/#Commands_to_manage_mobile_services
 [如何安装适用于 Mac 和 Linux 的 Azure 命令行工具]: /zh-cn/documentation/articles/xplat-cli
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

@@ -5,12 +5,12 @@
 	documentationCenter="" 
 	authors="nitinme" 
 	manager="paulettm" 
-	editor="cgronlun"/>
-
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags 
-	ms.service="hdinsight"
-	ms.date="07/10/2015" 
+	ms.service="hdinsight" 
+	ms.date="07/31/2015" 
 	wacn.date=""/>
 
 # Spark Streaming：在 HDInsight 上使用 Apache Spark 处理来自 Azure 事件中心的事件
@@ -23,7 +23,7 @@ Spark Streaming 可以扩展核心 Spark API，以生成可缩放、高吞吐量
 
 必须满足以下条件：
 
-- Azure 订阅。
+- Azure 订阅。请参阅[获取 Azure 免费试用版][azure-trial]。
 - Apache Spark 群集。有关说明，请参阅[在 Azure HDInsight 中设置 Apache Spark 群集](/documentation/articles/hdinsight-apache-spark-provision-clusters)。
 - 一个 [Azure 事件中心](/documentation/articles/service-bus-event-hubs-csharp-ephcs-getstarted)。
 - 一个装有 Visual Studio 2013 的工作站。有关说明，请参阅[安装 Visual Studio](https://msdn.microsoft.com/zh-cn/library/e2h7fzkw.aspx)。
@@ -120,7 +120,8 @@ Spark Streaming 可以扩展核心 Spark API，以生成可缩放、高吞吐量
 
 3. 在 Zeppelin 笔记本的新段落中，输入以下代码段以读取在 Spark 中收到的消息。
 
-		%sql select * from mytemptable limit 10
+		%sql 
+		select * from mytemptable limit 10
 
 	以下屏幕截图显示了 **mytemptable** 中收到的消息。
 
@@ -161,4 +162,4 @@ Spark Streaming 可以扩展核心 Spark API，以生成可缩放、高吞吐量
 [azure-management-portal]: https://manage.windowsazure.cn/
 [azure-create-storageaccount]: /documentation/articles/storage-create-storage-account/
 
-<!---HONumber=66-->
+<!---HONumber=74-->

@@ -5,11 +5,12 @@
 	documentationCenter="" 
 	authors="nitinme" 
 	manager="paulettm" 
-	editor="cgronlun"/>
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags 
 	ms.service="hdinsight" 
-	ms.date="07/19/2015" 
+	ms.date="09/03/2015" 
 	wacn.date=""/>
 
 
@@ -24,7 +25,7 @@
 
 必须满足以下条件：
 
-- Azure 订阅。 
+- Azure 订阅。请参阅[获取 Azure 免费试用版][azure-trial]。
 - Apache Spark 群集。有关说明，请参阅[在 Azure HDInsight 中设置 Apache Spark 群集](/documentation/articles/hdinsight-apache-spark-provision-clusters)。
 - 装有 Microsoft Spark ODBC 驱动程序的计算机。可从[此处](http://go.microsoft.com/fwlink/?LinkId=616229)安装该驱动程序。
 - [Power BI](http://www.powerbi.com/) 或 [Tableau Desktop](http://www.tableau.com/products/desktop) 等 BI 工具。可以从 [http://www.powerbi.com/](http://www.powerbi.com/) 获取免费的 Power BI 预览版订阅。
@@ -123,7 +124,7 @@
 
 	  ![列出 Hive 表](./media/hdinsight-apache-spark-use-bi-tools/HDI.Spark.PowerBI.Display.Tables.png "列出 Hive 表")
 
-7. 生成视觉效果，以显示每栋建筑物的目标温度与实际温度之间的差异。为此，请拖放“轴”下面的“BuildingID”字段，以及“值”下面的“ActualTemp”/“**TargetTemp**”字段。
+7. 生成视觉效果，以显示每栋建筑物的目标温度与实际温度之间的差异。为此，请拖放“轴”下面的“BuildingID”字段，以及“值”下面的“**ActualTemp**”/“**TargetTemp**”字段。
 
 	![创建视觉效果](./media/hdinsight-apache-spark-use-bi-tools/HDI.Spark.PowerBI.Visual.1.png "创建视觉效果")
 
@@ -200,4 +201,4 @@
 [azure-management-portal]: https://manage.windowsazure.cn/
 [azure-create-storageaccount]: /documentation/articles/storage-create-storage-account
 
-<!---HONumber=66-->
+<!---HONumber=74-->

@@ -9,10 +9,10 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="04/16/2015"
+	ms.date="07/09/2015"
 	wacn.date=""/>
 
-#  <a name="getting-started"></a>移动服务入门
+# <a name="getting-started"></a>移动服务入门
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
@@ -34,11 +34,11 @@
 
 > [AZURE.IMPORTANT]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial)。
 
-##  <a name="create-new-service"></a>创建新的移动服务
+## <a name="create-new-service"></a>创建新的移动服务
 
 [AZURE.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
-##  创建新的 Xamarin iOS 应用程序
+## 创建新的 Xamarin iOS 应用程序
 
 创建移动服务后，你可以在管理门户中遵照一个简易的快速入门项目来创建新应用程序或修改现有应用程序，以连接到你的移动服务。
 
@@ -62,7 +62,7 @@
 
 	随即将会下载示例_待办事项列表_应用程序的项目，该应用程序已连接到移动服务，并引用 Xamarin.iOS 的 Azure 移动服务组件。将压缩的项目文件保存到本地计算机，并记下保存位置。
 
-##  运行新的 Xamarin.iOS 应用程序
+## 运行新的 Xamarin.iOS 应用程序
 
 本教程的最后一个阶段是生成和运行你的新应用程序。
 
@@ -74,7 +74,7 @@
 
 2. 按“运行”按钮以生成项目，并在 iPhone 模拟器中启动应用，这是此项目的默认设置。
 
-3. 在应用程序中键入有意义的文本（例如 _Complete the tutorial_），然后单击加号 (+) 图标。
+3. 在应用中键入有意义的文本（例如 _Complete the tutorial_），然后单击加号 (**+**) 图标。
 
 	![][10]
 
@@ -91,14 +91,20 @@
 	![][12]
 
 
-##  后续步骤
+## 后续步骤
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-* [脱机数据同步入门]<br/>了解如何快速开始使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
+* [数据处理入门]
+  <br/>了解如何将一个新表添加到移动服务中，然后对该表进行读取和写入操作。
 
-* [身份验证入门]<br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
+* [脱机数据同步入门]
+  <br/>了解如何快速开始使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
 
-* [推送通知入门 ]<br/>了解如何向应用程序发送一条很基本的推送通知。
+* [身份验证入门]
+  <br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
+
+* [推送通知入门]
+  <br/>了解如何向应用程序发送一条很基本的推送通知。
 
 <!-- Anchors. -->
 [Getting started with Mobile Services]: #getting-started
@@ -118,14 +124,14 @@
 
 
 <!-- URLs. -->
-[Get started with data]: /develop/mobile/tutorials/get-started-with-data-xamarin-ios
+[数据处理入门]: /develop/mobile/tutorials/get-started-with-data-xamarin-ios
 [脱机数据同步入门]: /develop/mobile/tutorials/mobile-services-xamarin-ios-get-started-offline-data
 [身份验证入门]: /develop/mobile/tutorials/get-started-with-users-xamarin-ios
-[推送通知入门 ]: /develop/mobile/tutorials/get-started-with-push-xamarin-ios
+[推送通知入门]: /develop/mobile/tutorials/get-started-with-push-xamarin-ios
 
 [Xamarin Studio]: http://xamarin.com/download
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
 [Management Portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

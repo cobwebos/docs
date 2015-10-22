@@ -9,14 +9,14 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="05/13/2015"
+	ms.date="08/18/2015"
 	wacn.date=""/>
 
-#  向移动服务应用程序添加推送通知
+# 向移动服务应用程序添加推送通知
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
 
-## 概述
+##概述
 
 本主题说明如何使用 Azure 移动服务向 Xamarin.iOS 8 应用程序发送推送通知。在本教程中，你将要使用 Apple 推送通知服务 (APNS) 向[移动服务入门]项目添加推送通知。完成本教程后，每次插入一条记录时，你的移动服务就会发送一条推送通知。
 
@@ -31,7 +31,7 @@
 
 APNS 使用证书对你的移动服务进行身份验证。按照以下说明创建必要的证书并将其上载到你的移动服务。有关正式的 APNS 功能文档，请参阅 [Apple 推送通知服务]。
 
-##  <a name="certificates"></a>生成证书签名请求文件
+## <a name="certificates"></a>生成证书签名请求文件
 
 首先，你必须生成证书签名请求 (CSR) 文件，Apple 将使用该文件生成签名证书。
 
@@ -53,7 +53,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 接下来，你将要向 Apple 注册你的应用程序、启用推送通知并上载这个导出的 CSR 以创建一个推送证书。
 
-##  <a name="register"></a>为推送通知注册应用程序
+## <a name="register"></a>为推送通知注册应用程序
 
 若要将推送通知从移动服务发送到 iOS 应用程序，你必须向 Apple 注册应用程序，并注册推送通知。
 
@@ -101,9 +101,9 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
   	![][9]
 
-    注意：默认情况下，下载的文件（开发证书）名为 <strong>aps_development.cer</strong>。
+    注意：默认情况下，下载的文件（开发证书）名为 <strong>aps\_development.cer</strong>。
 
-7. 双击下载的推送证书 **aps_development.cer**。
+7. 双击下载的推送证书 **aps\_development.cer**。
 
    	将在 Keychain 中安装新证书，如下所示：
 
@@ -113,7 +113,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 稍后，你将要使用此证书生成一个 .p12 文件，并将其上载到移动服务以使用 APNS 启用身份验证。
 
-##  <a name="profile"></a>为应用程序创建配置文件
+## <a name="profile"></a>为应用程序创建配置文件
  
 1. 返回 <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS 设置门户</a>，选择“Provisioning Profiles”（设置配置文件），选择“All”（全部），然后单击“+”按钮创建一个新的配置文件。此时会启动“Add iOS Provisiong Profile”（添加 iOS 设置配置文件）向导。
 
@@ -141,7 +141,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
     ![][117]
 
-##  <a name="configure-mobileServices"></a>配置移动服务以发送推送请求
+## <a name="configure-mobileServices"></a>配置移动服务以发送推送请求
 
 将应用注册到 APNS 并配置项目后，接下来必须配置移动服务以便与 APNS 集成。
 
@@ -167,7 +167,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 现在，你的移动服务已配置为使用 APNS。
 
-##  <a name="configure-app"></a>配置 Xamarin.iOS 应用程序
+## <a name="configure-app"></a>配置 Xamarin.iOS 应用程序
 
 1. 在 Xamarin.Studio 中，打开 **Info.plist**，然后使用前面创建的 ID 更新“捆绑标识符”。
 
@@ -185,7 +185,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
     这可以确保 Xamarin 项目使用新配置文件进行代码签名。有关正式的 Xamarin 设备设置文档，请参阅 [Xamarin 设备设置]。
 
-##  <a name="add-push"></a>向应用程序添加推送通知
+## <a name="add-push"></a>向应用程序添加推送通知
 
 1. 在 Xamarin.Studio 中，打开 AppDelegate.cs 文件，并添加以下属性：
 
@@ -260,7 +260,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 8. 在 **TodoListViewController** 中，修改 **OnAdd** 操作以获取存储在 **AppDelegeate** 中的设备标记，并将它存储到所添加的 **TodoItem** 中。
 
-      string deviceToken = ((AppDelegate)UIApplication.SharedApplication.Delegate).DeviceToken;
+        string deviceToken = ((AppDelegate)UIApplication.SharedApplication.Delegate).DeviceToken;
 
 			var newItem = new TodoItem() 
 			{
@@ -271,9 +271,9 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 你的应用现已更新，可支持推送通知。
 
-##  <a name="update-scripts"></a>在管理门户中更新已注册的插入脚本
+## <a name="update-scripts"></a>在管理门户中更新已注册的插入脚本
 
-1. 在管理门户中，单击“数据”选项卡，然后单击 **TodoItem** 表。 
+1. 在管理门户中，单击“数据”选项卡，然后单击“TodoItem”表。 
 
    	![][21]
 
@@ -303,7 +303,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
    >[AZURE.NOTE]此脚本将延迟发送通知，使你有足够的时间关闭应用程序以接收 toast 通知。
 
-##  <a name="test"></a>在应用程序中测试推送通知
+## <a name="test"></a>在应用程序中测试推送通知
 
 1. 在支持 iOS 的设备中按“运行”按钮以生成项目并启动应用程序，然后单击“确定”接受推送通知
 
@@ -311,7 +311,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
    >[AZURE.NOTE]你必须显式接受来自应用程序的推送通知。此请求只会在首次运行应用程序时出现。
 
-2. 在应用程序中键入有意义的文本（例如 _A new Mobile Services task_），然后单击加号 (**+**) 图标。
+2. 在应用中键入有意义的文本（例如 _A new Mobile Services task_），然后单击加号 (**+**) 图标。
 
   	![][24]
 
@@ -383,7 +383,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Apple 推送通知服务]: http://go.microsoft.com/fwlink/p/?LinkId=272584
-[移动服务入门]: mobile-services-ios-get-started
+[移动服务入门]: /documentation/articles/mobile-services-ios-get-started
 
 [Xamarin 设备设置]: http://developer.xamarin.com/guides/ios/getting_started/installation/device_provisioning/
 
@@ -391,5 +391,6 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 [apns 对象]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 [Azure 移动服务组件]: http://components.xamarin.com/view/azure-mobile-services/
 [completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331303
+[Xamarin.iOS]: http://xamarin.com/download
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

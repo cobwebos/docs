@@ -5,11 +5,12 @@
 	documentationCenter="" 
 	authors="nitinme" 
 	manager="paulettm" 
-	editor="cgronlun"/>
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags 
 	ms.service="hdinsight" 
-	ms.date="07/19/2015" 
+	ms.date="07/31/2015" 
 	wacn.date=""/>
 
 
@@ -73,4 +74,4 @@ HDInsight 中的 Apache Spark 群集专门为多租户而设计，因此资源�
 [azure-management-portal]: https://manage.windowsazure.cn/
 [azure-create-storageaccount]: /documentation/articles/storage-create-storage-account
 
-<!---HONumber=66-->
+<!---HONumber=74-->

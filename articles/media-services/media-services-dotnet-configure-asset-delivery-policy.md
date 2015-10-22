@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"  
+	ms.date="09/20/2015"  
 	wacn.date=""/>
 
 #如何：配置资产传送策略
@@ -47,7 +47,7 @@ HDS
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.chinacloudapi.cn/{locator ID}/{filename}.ism/Manifest(format=f4m-f4f)
 
-有关如何发布资产和生成流 URL 的说明，请参阅[生成流 URL](/zh-cn/documentation/articles/media-services-deliver-streaming-content)。
+有关如何发布资产和生成流 URL 的说明，请参阅[生成流 URL](/documentation/articles/media-services-deliver-streaming-content)。
 
 ##清除资产传送策略 
 
@@ -97,14 +97,41 @@ HDS
             assetDeliveryPolicy.AssetDeliveryPolicyType);
     }
 
+Azure 媒体服务还允许你添加 Widevine 加密。以下示例演示将 PlayReady 和 Widevine 添加到资产传送策略。
+
+	static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
+	{
+	    Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
+	
+	    Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+	        new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+	    {
+	        {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
+	        {AssetDeliveryPolicyConfigurationKey.WidevineLicenseAcquisitionUrl,"http://testurl"},
+	        
+	    };
+	
+	    var assetDeliveryPolicy = _context.AssetDeliveryPolicies.Create(
+	            "AssetDeliveryPolicy",
+	        AssetDeliveryPolicyType.DynamicCommonEncryption,
+	        AssetDeliveryProtocol.Dash,
+	        assetDeliveryPolicyConfiguration);
+	
+	   
+	    // Add AssetDelivery Policy to the asset
+	    asset.DeliveryPolicies.Add(assetDeliveryPolicy);
+	
+	}
+
+>[AZURE.NOTE]使用 Widevine 加密时，只能使用 DASH 传送。请确保在资产传送协议中指定 DASH (2)。
 
 
 ##DynamicEnvelopeEncryption 资产传送策略 
 
-以下 **CreateAssetDeliveryPolicy** 方法将创建 **AssetDeliveryPolicy**，该策略配置为将动态信封加密 (**DynamicEnvelopeEncryption**) 应用到 HLS 和 DASH 协议（将阻止流式处理其他协议）。该方法采用以下两种参数：**Asset**（要将传送策略应用到的资产）和 **IContentKey**（**EnvelopeEncryption** 类型的内容密钥。有关详细信息，请参阅：[创建内容密钥](/documentation/articles/media-services-dotnet-create-contentkey#envelope_contentkey)）。
+以下 **CreateAssetDeliveryPolicy** 方法将创建 **AssetDeliveryPolicy**，该策略配置为将动态信封加密 (**DynamicEnvelopeEncryption**) 应用到 HLS 和 DASH 协议（将阻止流式处理的其他协议）。该方法采用以下两种参数：**Asset**（要将传送策略应用到的资产）和 **IContentKey**（**EnvelopeEncryption** 类型的内容密钥。有关详细信息，请参阅：[创建内容密钥](/documentation/articles/media-services-dotnet-create-contentkey#envelope_contentkey)）。
 
 
-有关在创建 AssetDeliveryPolicy 时可指定的值的信息，请参阅[定义 AssetDeliveryPolicy 时使用的类型](#types)一节。
+有关创建 AssetDeliveryPolicy 时可以指定哪些值的信息，请参阅[定义 AssetDeliveryPolicy 时使用的类型](#types)一节。
 
     private static void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
     {
@@ -283,6 +310,11 @@ HDS
         /// The initialization vector to use for envelope encryption.
         /// </summary>
         EnvelopeEncryptionIV,
+
+        /// <summary>
+        /// Widevine DRM acquisition url
+        /// </summary>
+        WidevineLicenseAcquisitionUrl
     }
 
-<!---HONumber=71-->
+<!---HONumber=74-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"  
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 
@@ -40,7 +40,7 @@
 
 媒体服务可让你为资产定义筛选器。这些筛选器是服务器端规则，可让你的客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。通过按客户请求创建的**动态清单**可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
 
-有关详细信息，请参阅[筛选器和动态清单](media-services-dynamic-manifest-overview.md)。
+有关详细信息，请参阅[筛选器和动态清单](/documentation/articles/media-services-dynamic-manifest-overview)。
 
 ###定位符
 
@@ -53,9 +53,9 @@
 
 定位符附带过期日期。当你使用门户发布资产时，将会创建过期日期在 100 年后的定位符。
 
->[AZURE.NOTE]如果你使用门户在 2015 年 3 月之前创建了定位符，则会创建过期日期在两年后的定位符。
+>[AZURE.NOTE] 如果你使用门户在 2015 年 3 月之前创建了定位符，则会创建过期日期在两年后的定位符。
 
-若要更新定位符的过期日期，请使用 [REST](https://msdn.microsoft.com/zh-CN/library/azure/hh974308.aspx#update_a_locator) 或 <a href="https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mediaservices.client.ilocator.update(v=azure.10).aspx">.NET</a> API。请注意，当你更新 SAS 定位符的过期日期时，URL 会发生变化。
+若要更新定位符的过期日期，请使用 [REST](http://msdn.microsoft.com/zh-cn/library/azure/hh974308.aspx#update_a_locator) 或 [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API。请注意，当你更新 SAS 定位符的过期日期时，URL 会发生变化。
  
 定位符不用于管理按用户的访问控制。要为不同用户提供不同的访问权限，请使用数字权限管理 (DRM) 解决方案。有关详细信息，请参阅[保护媒体](https://msdn.microsoft.com/zh-CN/library/azure/dn282272.aspx)。
 
@@ -68,7 +68,7 @@
 
 若要为用户提供流 URL，必须先创建一个 OnDemandOrigin 定位符。通过创建定位符，将为你提供包含要流式传输的内容的资产的基本路径。但是，为了能够流式传输该内容，你需要进一步修改此路径。若要构造流清单文件的完整 URL，你必须将定位符的 Path 值与清单 (filename.ism) 文件名连接起来。然后，向定位符路径追加 /Manifest 和相应的格式（如果需要）。
 
-你也可以通过 SSL 连接流式传输内容。为此，请确保流 URL 以 HTTPS 开头。
+>[AZURE.NOTE]你也可以通过 SSL 连接流式传输内容。为此，请确保流 URL 以 HTTPS 开头。
 
 请注意，仅当你要从中传送内容的流式处理终结点是在 2014 年 9 月 10 日以后创建的时，才可以通过 SSL 流式传输内容。如果流 URL 基于 9 月 10 日之后创建的流式处理终结点，则 URL 会包含“streaming.mediaservices.chinacloudapi.cn”（新格式）。包含“origin.mediaservices.chinacloudapi.cn”（旧格式）的流 URL 不支持 SSL。如果你的 URL 采用旧格式，并且你希望能够通过 SSL 流式传输内容，请创建新的流式处理终结点。使用基于新流式处理终结点创建的 URL 通过 SSL 流式传输你的内容。
 
@@ -199,4 +199,4 @@ Media Services 所提供的动态打包可让你以 Media Services 支持的流�
 
 [轮转存储密钥后更新 Media Services 定位符](/documentation/articles/media-services-roll-storage-access-keys)
 
-<!---HONumber=71-->
+<!---HONumber=74-->

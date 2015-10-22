@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用移动服务中的软删除 （Windows 应用商店）|移动开发人员中心" 
+	pageTitle="使用移动服务中的软删除（Windows 应用商店）| Microsoft Azure" 
 	description="了解如何在你的应用程序中使用 Azure 移动服务软删除功能" 
 	documentationCenter="" 
 	authors="wesmc7777" 
@@ -12,13 +12,13 @@
 	ms.date="06/18/2015" 
 	wacn.date=""/>
 
-#  使用移动服务中的软删除
+# 使用移动服务中的软删除
 
-## 概述
+##概述
 
-使用 JavaScript 或.NET 后端创建的表可根据需要启用软删除。使用软删除时，将在数据库中添加一个名为 *__deleted* 的 [SQL 位类型]的新列。启用软删除后，删除操作不会以物理方式删除来自数据库的行，而是将已删除的列的值设置为 TRUE。
+使用 JavaScript 或.NET 后端创建的表可根据需要启用软删除。使用软删除时，将在数据库中添加一个名为 *\_\_deleted* 的 [SQL 位类型]的新列。启用软删除后，删除操作不会以物理方式删除来自数据库的行，而是将已删除的列的值设置为 TRUE。
 
-启用软删除后再查询表的记录时，默认情况下，已删除的行不会返回在查询中。若要请求这些行，必须在 [REST 查询操作](http://msdn.microsoft.com/zh-cn/library/azure/jj677199.aspx)中传递查询参数 *__includeDeleted=true*。在.NET 客户端 SDK 中，你还可以使用帮助器方法 `IMobileServiceTable.IncludeDeleted()`。
+启用软删除后再查询表的记录时，默认情况下，已删除的行不会返回在查询中。若要请求这些行，必须在 [REST 查询操作](http://msdn.microsoft.com/zh-cn/library/azure/jj677199.aspx)中传递查询参数 *\_\_includeDeleted=true*。在.NET 客户端 SDK 中，你还可以使用帮助器方法 `IMobileServiceTable.IncludeDeleted()`。
 
 软删除支持首次与 1.0.402 版 Microsoft Azure 移动服务.NET 后端发布的.NET 后端。可以从 [Microsoft Azure 移动服务.NET 后端](http://go.microsoft.com/fwlink/?LinkId=513165)获取最新的 NuGet 包。
 
@@ -33,7 +33,7 @@
 
 
 
-## 启用面向.NET 后端的软删除
+##启用面向.NET 后端的软删除
 
 软删除支持首次与 1.0.402 版 Microsoft Azure 移动服务.NET 后端发布的.NET 后端。可以从 [Microsoft Azure 移动服务.NET 后端](http://go.microsoft.com/fwlink/?LinkId=513165)获取最新的 NuGet 包。
 
@@ -42,8 +42,8 @@
 1. 在 Visual Studio 中打开 .NET 后端移动服务项目。
 2. 右键单击.NET 后端项目，然后单击“管理 NuGet 包”。 
 3. 在包管理器对话框中，单击更新下的 **Nuget.org**，然后安装 1.0.402 或更高版本的 [Microsoft Azure 移动服务.NET 后端](http://go.microsoft.com/fwlink/?LinkId=513165) NuGet 包。
-3. 在 Visual Studio 的解决方案资源管理器中，展开 .NET 后端项目下的“控制器”节点，然后打开控制器源代码。例如 *TodoItemController.cs*。
-4. 在控制器的 `Initialize()` 方法中，将参数 `enableSoftDelete: true` 传递给 EntityDomainManager 构造函数。
+4. 在 Visual Studio 的解决方案资源管理器中，展开 .NET 后端项目下的“控制器”节点，然后打开控制器源代码。例如 *TodoItemController.cs*。
+5. 在控制器的 `Initialize()` 方法中，将参数 `enableSoftDelete: true` 传递给 EntityDomainManager 构造函数。
 
         protected override void Initialize(HttpControllerContext controllerContext)
         {
@@ -53,7 +53,7 @@
         }
 
 
-## 启用面向 JavaScript 后端的软删除
+##启用面向 JavaScript 后端的软删除
 
 如果你正在为你的移动服务创建一个新表，那么你可以在表创建页面上启用软删除。
 
@@ -62,15 +62,15 @@
 若要在 JavaScript 后端中的现有表上启用软删除：
 
 1. 在[管理门户]中，单击你的移动服务。然后单击数据选项卡。
-2. 在数据页面上，单击以选择所需的表。然后在命令栏中单击“启用软删除”按钮。如果表已启用软删除，则此按钮将不会出现，但当你单击表的“浏览”或“列”选项卡时，可以看到 *__deleted* 列。
+2. 在数据页面上，单击以选择所需的表。然后在命令栏中单击“启用软删除”按钮。如果表已启用软删除，则此按钮将不会出现，但当你单击表的“浏览”或“列”选项卡时，可以看到 *\_\_deleted* 列。
 
     ![][0]
 
-    若要对表禁用软删除，请单击“列”选项卡，然后单击 *__deleted* 列和“删除”按钮。
+    若要对表禁用软删除，请单击“列”选项卡，然后单击 *\_\_deleted* 列和“删除”按钮。
 
     ![][1]
 
-##  <a name="using-with-dotnet"></a>在 .NET 后端使用软删除
+## <a name="using-with-dotnet"></a>在 .NET 后端使用软删除
 
 
 以下计划的作业清除存在时间超过一个月的软删除的记录：
@@ -99,12 +99,12 @@
         }
     }
 
-若要了解有关使用 .NET 后端移动服务计划作业的详细信息，请参阅：[使用 JavaScript 后端移动服务计划定期作业](mobile-services-dotnet-backend-schedule-recurring-tasks)
+若要了解有关使用 .NET 后端移动服务计划作业的详细信息，请参阅：[使用 JavaScript 后端移动服务计划定期作业](/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks)
 
 
 
 
-## 在 JavaScript 后端使用软删除
+##在 JavaScript 后端使用软删除
 
 你可以借助 JavaScript 后端移动服务，使用表脚本来添加关于软删除的逻辑。
 
@@ -122,11 +122,11 @@
         }
     });
 
-若要通过 HTTP 请求检索已删除的记录，请添加查询参数"__includedeleted=true"：
+若要通过 HTTP 请求检索已删除的记录，请添加查询参数"\_\_includedeleted=true"：
 
     http://youservice.azure-mobile.net/tables/todoitem?__includedeleted=true
 
-###  制定用于清除软删除记录的计划作业的样本。
+### 制定用于清除软删除记录的计划作业的样本。
 
 这是一个计划作业示例，用于删除在某一特定日期之前更新的记录：
 
@@ -140,7 +140,7 @@
         }});
     }
 
-若要了解有关使用 JavaScript 后端移动服务计划作业的详细信息，请参阅：[使用 JavaScript 后端移动服务计划定期作业](mobile-services-schedule-recurring-tasks)。
+若要了解有关使用 JavaScript 后端移动服务计划作业的详细信息，请参阅：[使用 JavaScript 后端移动服务计划定期作业](/documentation/articles/mobile-services-schedule-recurring-tasks)。
 
 
 
@@ -156,4 +156,4 @@
 [移动服务的脱机数据同步]: mobile-services-windows-store-dotnet-get-started-offline-data
 [管理门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

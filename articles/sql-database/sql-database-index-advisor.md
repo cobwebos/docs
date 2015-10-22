@@ -7,10 +7,9 @@
    manager="jeffreyg" 
    editor="monicar"/>
 
-<tags 
-   ms.service=“sql-database”
-  
-   ms.date=“06/30/2015”
+<tags
+   ms.service="sql-database"
+   ms.date="06/30/2015"
    wacn.date=""/>
 
 # SQL 数据库索引顾问
@@ -168,4 +167,4 @@ SQL 数据库服务通过分析 SQL 数据库的历史资源使用状况来评�
 [3]: ./media/sql-database-index-advisor/recommended-indexes.png
 [4]: ./media/sql-database-index-advisor/index-operations.png
 
-<!---HONumber=67-->
+<!---HONumber=74-->

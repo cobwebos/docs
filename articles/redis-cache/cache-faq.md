@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="cache" 
-	ms.date="07/24/2015" 
+	ms.date="08/25/2015" 
 	wacn.date=""/>
 
 # Azure Redis 缓存常见问题
@@ -46,7 +46,7 @@ C6|53 GB|153,219|1000+
 
 有关下载 Redis 工具（例如 `redis-benchmark.exe`）的说明，请参阅[如何运行 Redis 命令？](#cache-commands)部分。
 
-<a name="cache-region">
+<a name="cache-region"></a>
 ## 我应该将缓存放在哪个区域？
 
 为了获得最佳性能并最大程度地降低延迟，请在缓存客户端应用程序所在的区域放置 Azure Redis 缓存。
@@ -61,7 +61,7 @@ C6|53 GB|153,219|1000+
 
 超时发生在用来与 Redis 通信的客户端中。大多数情况下，Redis 服务器不会超时。将某个命令发送到 Redis 服务器后，该命令将会排队，Redis 服务器最终会提取该命令并执行它。但是，客户端在此过程中可能会超时，在这种情况下，会在调用端引发异常。有关排查超时问题的详细信息，请参阅[调查 Azure Redis 缓存的 StackExchange.Redis 超时异常](http://azure.microsoft.com/blog/2015/02/10/investigating-timeout-exceptions-in-stackexchange-redis-for-azure-redis-cache/)。
 
-<a name="cache-monitor">
+<a name="cache-monitor"></a>
 ## 如何监视缓存的运行状况和性能？
 
 可以在 [Azure 预览门户](https://portal.azure.com)中监视 Microsoft Azure Redis 缓存实例。你可以查看度量值、将度量值图表固定到启动面板、自定义监视图表的日期和时间范围、在图表中添加和删除度量值，以及设置符合特定条件时发出的警报。借助这些工具，你可以监视 Azure Redis 缓存实例的运行状况，以及管理缓存应用程序。有关监视缓存的详细信息，请参阅[监视 Azure Redis 缓存](https://msdn.microsoft.com/library/azure/dn763945.aspx)。
@@ -132,9 +132,9 @@ Redis 服务器不能现成地支持 SSL，但 Azure Redis 缓存可提供此支
 
 `redis-cli` 等 Redis 工具对 SSL 端口不起作用，但是，你可以根据[适用于 Redis 预览版的 ASP.NET 会话状态提供程序通告](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)中的说明，使用 `stunnel` 等实用程序安全地将这些工具连接到 SSL。
 
-有关下载 Redis 工具的说明，请参阅如何运行 Redis 命令？部分。
+有关下载 Redis 工具的说明，请参阅[如何运行 Redis 命令？](#缓存-命令)部分。
 
-<a name="cache-benchmarking">
+<a name="cache-benchmarking"></a>
 ## 如何制定基准和测试缓存的性能？
 
 -	[启用缓存诊断](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)，以便可以[监视](https://msdn.microsoft.com/library/azure/dn763945.aspx)缓存的运行状况。可以在门户中查看度量值，也可以使用所选的工具[下载和查看](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)这些度量值。
@@ -147,22 +147,22 @@ Redis 服务器不能现成地支持 SSL，但 Azure Redis 缓存可提供此支
 <a name="cache-commands">
 ## 如何运行 Redis 命令？
 
-你可以使用 [Redis 命令](http://redis.io/commands#)中列出的任何命令，但[Azure Redis 缓存中不支持 Redis 命令](cache-configure.md#redis-commands-not-supported-in-azure-redis-cache)中列出的命令除外。可以配合多个选项来运行 Redis 命令。
+你可以使用 [Redis 命令](http://redis.io/commands#)中列出的任何命令，但 [Azure Redis 缓存中不支持 Redis 命令](/documentation/articles/cache-configure#redis-commands-not-supported-in-azure-redis-cache)中列出的命令除外。可以配合多个选项来运行 Redis 命令。
 
--	如果你有标准缓存，可以使用 [Redis 控制台](cache-configure.md#redis-console)运行 Redis 命令。你可以在 Azure 门户中安全运行 Redis 命令。
+-	如果你有标准缓存，可以使用 [Redis 控制台](/documentation/articles/cache-configure#redis-console)运行 Redis 命令。你可以在 Azure 门户中安全运行 Redis 命令。
 -	你还可以使用 Redis 命令行工具。若要使用这些选项，请执行以下步骤。
 	-	下载 [Redis 命令行工具](https://github.com/MSOpenTech/redis/releases/download/win-2.8.19.1/redis-2.8.19.zip)。
 	-	使用 `redis-cli.exe` 连接到缓存。使用 -h 开关传入缓存终结点，如以下示例中所示使用 -a 传入键。
-		-	`redis-cli -h <your cache name>.redis.cache.windows.net -a <key>`
+		-	`redis-cli -h <your cache name>.redis.cache.chinacloudapi.cn -a <key>`
 	-	请注意，Redis 命令行工具对 SSL 端口不起作用，但是，你可以根据[适用于 Redis 预览版的 ASP.NET 会话状态提供程序通告](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)中的说明，使用 `stunnel` 等实用程序安全地将这些工具连接到 SSL。
 
-<a name="cache-common-patterns">
+<a name="cache-common-patterns"></a>
 ## 常见的缓存模式和注意事项有哪些？
 
 -	Microsoft 模式和实践小组制定了以下指导原则。
 	-	[缓存指导原则](https://github.com/mspnp/azure-guidance/blob/master/Caching.md)。
 	-	[Azure 云应用程序设计和实施指导原则](https://github.com/mspnp/azure-guidance)
--	[使用 Azure Redis 缓存的常见缓存模式](cache-howto-common-cache-patterns.md)
+-	[使用 Azure Redis 缓存的常见缓存模式](/documentation/articles/cache-howto-common-cache-patterns)
 
 <a name="cache-reference"></a>
 ## Azure Redis 缓存为何不像某些其他 Azure 服务一样提供 MSDN 类库参考？
@@ -171,4 +171,4 @@ Microsoft Azure Redis 缓存基于主流开源 Redis 缓存，让你能够访问
 
 由于客户端各不相同，因此 MSDN 上未提供统一的类参考；而是每个客户端都在维护其自身的参考文档。除了参考文档以外，Azure.com 的 [Redis 缓存文档](http://azure.microsoft.com/documentatgion/services/redis-cache/)页上提供了许多教程，说明如何使用不同的语言和缓存客户端开始使用 Azure Redis 缓存。
 
-<!---HONumber=71-->
+<!---HONumber=74-->

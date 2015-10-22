@@ -10,11 +10,15 @@
 
 <tags 
 	ms.service="multiple" 
-	ms.date="04/24/2015" 
+	ms.date="08/31/2015" 
 	wacn.data=""/>
 # 使用 Azure SDK for Java 在 Azure 上创建 Web 应用
 
-本演练演示如何创建一个 Azure SDK for Java 应用程序以用于在 Azure 上创建网站，然后将一个应用程序部署到该网站。它由两个部分组成：
+<!-- Azure Active Directory workflow is not yet available on the Azure Portal -->
+
+## 概述
+
+本演练演示如何创建一个 Azure SDK for Java 应用程序，以便在 Azure 上创建网站，然后将一个应用程序部署到该网站。它由两个部分组成：
 
 - 第 1 部分演示如何生成创建 Web 应用的 Java 应用程序。
 - 第 2 部分演示如何创建简单的 JSP "Hello World" 应用程序，然后使用 FTP 客户端将代码部署到 Azure 网站。
@@ -24,7 +28,7 @@
 
 ### 软件安装
 
-本文中的 AzureWebDemo 应用程序代码是使用 Azure Java SDK 0.7.0 编写的，你可以使用 [Web 平台安装程序 (WebPI)](http://go.microsoft.com/fwlink/?LinkID=252838) 进行安装。此外，请确保使用最新版本的 [Azure Toolkit for Eclipse](https://msdn.microsoft.com/library/azure/hh690946.aspx)。安装 SDK 之后，通过在“Maven 存储库”中运行“更新索引”更新 Eclipse 项目中的依赖项，然后在“依赖项”窗口中重新添加每个包的最新版本。可以通过单击“帮助 > 安装详细信息”验证 Eclipse 中已安装软件的版本；至少应具有以下版本：
+本文中的 AzureWebDemo 应用程序代码是使用 Azure Java SDK 0.7.0 编写的，你可以使用 [Web 平台安装程序][] (WebPI) 进行安装。此外，请确保使用最新版本的 [Azure Toolkit for Eclipse][]。安装 SDK 之后，通过在“Maven 存储库”中运行“更新索引”更新 Eclipse 项目中的依赖项，然后在“依赖项”窗口中重新添加每个包的最新版本。可以通过单击“帮助 > 安装详细信息”验证 Eclipse 中已安装软件的版本；至少应具有以下版本：
 
 - Package for Microsoft Azure Libraries for Java 0.7.0.20150309
 - Eclipse IDE for Java EE Developers 4.4.2.20150219
@@ -37,7 +41,7 @@
 
 ### 在 Azure 中创建 Active Directory (AD)
 
-如果你的 Azure 订阅中还没有 Active Directory (AD)，请使用你的 Microsoft 帐户登录 Azure 管理门户 (AMP)。如果你有多个订阅，请单击“订阅”并选择要用于此项目的订阅的默认目录。然后单击“应用”切换到该订阅视图。
+如果你的 Azure 订阅中还没有 Active Directory (AD)，请使用你的 Microsoft 帐户登录 [Azure 管理门户][] (AMP)。如果你有多个订阅，请单击“订阅”并选择要用于此项目的订阅的默认目录。然后单击“应用”切换到该订阅视图。
 
 1. 从左侧菜单中选择“Active Directory”。单击“新建 > 目录 > 自定义创建”。
 
@@ -45,18 +49,18 @@
 
 3. 在“名称”中输入目录名称。
 
-4. 在“域”中输入域名。这是默认情况下你的目录附带的基本域名，它采用 `<domain_name>.onmicrosoft.com` 格式。可以根据目录名称或你拥有的其他域名将它命名。以后，可以添加你的组织已在使用的其他域名。
+4. 在“域”中输入域名。这是默认情况下你的目录附带的基本域名，它采用 `<domain_name>.partner.onmschina.cn` 格式。可以根据目录名称或你拥有的其他域名将它命名。以后，可以添加你的组织已在使用的其他域名。
 
 5. 在“国家或地区”中选择你的区域设置。
 
-有关 AD 的详细信息，请参阅[什么是 Azure AD 目录？](http://technet.microsoft.com/library/jj573650.aspx)。
+有关 AD 的详细信息，请参阅[什么是 Azure AD 目录][]？
 
 
 ### 创建 Azure 的管理证书
 
 Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。对于使用服务管理 API 代表订阅所有者管理订阅资源的客户端应用程序，你可以使用这些 X.509 v3 证书来对其进行身份验证。
 
-此过程中的代码使用自签名证书在 Azure 上进行身份验证。对于此过程，你需要事先创建一个证书并将其上载到 Azure 管理门户 (AMP)。这包括以下步骤：
+此过程中的代码使用自签名证书在 Azure 上进行身份验证。对于此过程，你需要事先创建一个证书并将其上载到 [Azure 管理门户][] (AMP)。这包括以下步骤：
 
 - 生成表示客户端证书的 PFX 文件，并将其保存在本地。
 - 从 PFX 文件生成管理证书（CER 文件）。
@@ -64,14 +68,14 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。对
 - 将 PFX 文件转换为 JKS，因为 Java 以这种格式来使用证书进行身份验证。
 - 编写引用本地 JKS 文件的应用程序身份验证代码。
 
-完成此过程后，CER 证书将驻留在 Azure 订阅中，JKS 证书将驻留在本地驱动器中。有关管理证书的详细信息，请参阅[创建并上载 Azure 的管理证书](http://msdn.microsoft.com/zh-cn/library/azure/gg551722.aspx)。
+完成此过程后，CER 证书将驻留在 Azure 订阅中，JKS 证书将驻留在本地驱动器中。有关管理证书的详细信息，请参阅[创建并上载 Azure 的管理证书][]。
 
 
 #### 创建证书
 
 若要创建自己的自签名证书，请在操作系统上打开一个命令控制台并运行以下命令。
 
-> **注意：**运行此命令的计算机必须已安装 JDK。此外，keytool 的路径取决于安装 JDK 的位置。有关详细信息，请参阅 Java 联机文档中的[密钥和证书管理工具 (keytool)](http://docs.oracle.com/javase/6/docs/technotes/tools/windows/keytool.html)。
+> **注意：**运行此命令的计算机必须已安装 JDK。此外，keytool 的路径取决于安装 JDK 的位置。有关详细信息，请参阅 Java 联机文档中的[密钥和证书管理工具 (keytool)][]。
 
 创建 .pfx 文件：
 
@@ -95,7 +99,7 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。对
 - `<password>` 是选择用于保护证书的密码；它的长度必须至少为 6 个字符。可以不输入密码，但不建议这样做。
 - `<dname>` 是要与别名关联的 X.500 可分辨名称，它用作自签名证书中的颁发者和使用者字段。
 
-有关详细信息，请参阅[创建并上载 Azure 的管理证书](http://msdn.microsoft.com/zh-cn/library/azure/gg551722.aspx)。
+有关详细信息，请参阅[创建并上载 Azure 的管理证书][]。
 
 
 #### 上载证书
@@ -145,14 +149,14 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。对
 
     ![][1]
     
-    此步骤可能需要几分钟时间，具体取决于你的连接速度。重新生成索引后，“中央” Maven 存储库中应会显示 Microsoft Azure 包。
+    此步骤可能需要几分钟时间，具体取决于你的连接速度。重新生成索引后，“中央”Maven 存储库中应会显示 Microsoft Azure 包。
 
 6. 在“依赖项”中，单击“添加”。在“输入组 ID...”中输入 `azure-management`。选择基础管理和 Web Apps 管理的包：
 
         com.microsoft.azure  azure-management
         com.microsoft.azure  azure-management-websites
 
-    > **注意：**如果在新版本发布后更新依赖项，则需要重新添加此列表中的每个依赖项。单击“添加”后，选择每个依赖项，则会在“依赖项”列表显示新的版本号。
+    > **注意：**如果在新版本发布后更新依赖项，则需要重新添加此列表中的每个依赖项。单击“添加”后，选择每个依赖项，则会在“依赖项”列表中显示新的版本号。
 
 单击**“确定”**。Azure 包随即会出现在“依赖项”列表中。
 
@@ -234,7 +238,7 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。对
 
 #### 定义 Web 创建方法
 
-接下来，定义用于创建 Web 应用的方法。此方法 `createWebApp` 指定 Web 应用的参数和 Web 空间。它还会创建并配置 App Service Web Apps 管理客户端，该客户端由 [WebSiteManagementClient](http://dl.windowsazure.com/javadoc/com/microsoft/windowsazure/management/websites/WebSiteManagementClient.html) 对象进行定义。管理客户端对于创建 Web Apps 至关重要。它提供 RESTful web 服务，使应用程序能够通过调用服务管理 API 来管理 Web Apps（执行创建、更新和删除等操作）。
+接下来，定义用于创建 Web 应用的方法。此方法（`createWebApp`）指定 Web 应用的参数和 Web 空间。它还会创建并配置 Azure 网站管理客户端，该客户端由 [WebSiteManagementClient][] 对象进行定义。管理客户端对于创建 Web Apps 至关重要。它提供 RESTful web 服务，使应用程序能够通过调用服务管理 API 来管理 Web Apps（执行创建、更新和删除等操作）。
 
     private static void createWebApp() throws Exception {
 
@@ -251,7 +255,7 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。对
         // and pass it the Service management configuration object.
         WebSiteManagementClient webAppManagementClient = WebSiteManagementService.create(config);
 
-        // Create an App Service plan for the web app with the specified parameters.
+        // Create an Azure Websites plan for the web app with the specified parameters.
         WebHostingPlanCreateParameters appServicePlanParams = new WebHostingPlanCreateParameters();
         appServicePlanParams.setName(appServicePlanName);
         appServicePlanParams.setSKU(SkuOptions.Free);
@@ -264,7 +268,7 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。对
         webSpaceDetails.setName(webSpaceName);
 
         // Set web app parameters.
-        // Note that the server farm name takes the Azure App Service plan name.
+        // Note that the server farm name takes the Azure Websites plan name.
         WebSiteCreateParameters webAppCreateParameters = new WebSiteCreateParameters();
         webAppCreateParameters.setName(webAppName);
         webAppCreateParameters.setServerFarm(appServicePlanName);
@@ -393,7 +397,7 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。对
 
     单击“完成”。
 
-7. 当应用程序运行时，你应该会在 Eclipse (`http://localhost:8080/JSPHello/`) 中的 localhost 窗口中看到显示的“JSPHello”页，其中显示了以下消息：
+7. 当应用程序运行时，你应该会在 Eclipse (`http://localhost:8080/JSPHello/`) 的 localhost 窗口中看到显示的“JSPHello”页，其中显示了以下消息：
 
     `Hello World, the time is Tue Mar 24 23:21:10 GMT 2015`
 
@@ -427,7 +431,7 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。对
 
 有关使用 FTP 部署道 Web 应用的详细信息，请参阅以下主题：
 
-- [使用 FTP 实用工具部署](/documentation/articles/web-sites-deploy/#ftp)
+- [使用 FTP 实用工具部署](/documentation/articles/web-sites-deploy)
 
 
 #### 设置部署凭据
@@ -436,14 +440,14 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。对
 
 1. 登录 AMP，然后单击“Web Apps”。确保“WebDemoWebApp”已显示在 Web Apps 列表中，并确保它正在运行。单击“WebDemoWebApp”以打开其“仪表板”页。
 
-2. 在“仪表板”页上的“速览”下，单击“设置部署凭据”（如果你已有部署凭据，则此选项应为“重置部署凭据”）。
+2. 在“仪表板”页的“速览”下，单击“设置部署凭据”（如果你已有部署凭据，则此选项应为“重置部署凭据”）。
 
     部署凭据与某个 Microsoft 帐户关联。需要指定可用于使用 Git 和 FTP 进行部署的用户名和密码。可以使用这些凭据部署到与你的 Microsoft 帐户关联的所有 Azure 订阅中的任何 Web 应用。在对话框中提供 Git 和 FTP 部署凭据，并记下用户名和密码以供将来使用。
 
 
 #### 获取 FTP 连接信息
 
-若要使用 FTP 将应用程序文件部署到新建的 Web 应用，你需要获取连接信息。可通过两种方法获取连接信息。一种方法是访问 Web 应用的“仪表板”页；另一种方法是下载 Web 应用的发布配置文件。发布配置文件是一个 XML 文件，它提供 Azure App Service 中 Web Apps 的 FTP 主机名和登录凭据等信息。你可以使用此用户名和密码部署到与 Azure 帐户关联的所有订阅中的任何 Web 应用，而不仅仅是此 Web 应用。
+若要使用 FTP 将应用程序文件部署到新建的 Web 应用，你需要获取连接信息。可通过两种方法获取连接信息。一种方法是访问 Web 应用的“仪表板”页；另一种方法是下载 Web 应用的发布配置文件。发布配置文件是一个 XML 文件，它提供 Azure 网站中 Web 应用的 FTP 主机名和登录凭据等信息。你可以使用此用户名和密码部署到与 Azure 帐户关联的所有订阅中的任何 Web 应用，而不仅仅是此 Web 应用。
 
 从网站的“仪表板”页获取 FTP 连接信息：
 
@@ -460,7 +464,7 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。对
         <publishProfile
             profileName="WebDemoWebApp - FTP"
             publishMethod="FTP"
-            publishUrl="ftp://waws-prod-bay-NNN.ftp.azurewebsites.windows.net/site/wwwroot"
+            publishUrl="ftp://waws-prod-bay-NNN.ftp.azurewebsites.chinacloudapi.cn/site/wwwroot"
             ftpPassiveMode="True"
             userName="WebDemoWebApp\$WebDemoWebApp"
             userPWD="<deployment-password>"
@@ -481,7 +485,7 @@ Azure SDK for Java 使用管理证书在 Azure 订阅中进行身份验证。对
 
 1. 在 AMP 中，转到 Web 应用的“仪表板”页，然后单击“配置”。在“配置”页上指定以下设置。
 
-2. 在“Java 版本”中，默认值为“关闭” ；选择你的应用程序所针对的 Java 版本，例如 1.7.0\_51。完成此操作后，还请确保“Web 容器”已设置为 Tomcat 服务器的版本。
+2. 在“Java 版本”中，默认值为“关闭”；选择你的应用程序所针对的 Java 版本，例如 1.7.0\_51。完成此操作后，还请确保“Web 容器”已设置为 Tomcat 服务器的版本。
 
 3. 在“默认文档”中，添加 index.jsp 并将其上移至列表的顶部。（Web Apps 的默认文件为 hostingstart.html。）
 
@@ -530,7 +534,7 @@ JSPHello.war 自身首先会显示在目录区域中：
 1. 在 FileZilla 中，单击“文件 > 站点管理员”。
 2. 在“站点管理员”对话框中，单击“新建站点”。随后，“选择条目”中会出现新的空白 FTP 站点，提示你提供名称。对于此过程，请将它命名为 `AzureWebDemo-FTP`。
 
-    在“常规”选项卡上，指定以下设置： - “主机”：输入从仪表板中复制的“FTP 主机名” - “端口”：（将其留空，因为这是被动传输并且服务器会确定使用的端口。） - “协议”：FTP 文件传输协议 - “加密”：使用普通的 FTP - “登录类型”： 普通 - “用户”：输入从仪表板中复制的部署/FTP 用户。这是完整的 FTP 用户名，其形式为 *webappname\\username*。 - “密码”：输入在设置部署凭据时指定的密码。
+    在“常规”选项卡上，指定以下设置： -“主机”：输入从仪表板中复制的“FTP 主机名” -“端口”：（将其留空，因为这是被动传输并且服务器会确定使用的端口。）-“协议”：FTP 文件传输协议 -“加密”：使用普通的 FTP -“登录类型”： 普通 -“用户”：输入从仪表板中复制的部署/FTP 用户。这是完整的 FTP 用户名，其形式为 *webappname\\username*。-“密码”：输入在设置部署凭据时指定的密码。
 
     在“传输设置”选项卡上，选择“被动”。
 
@@ -573,5 +577,17 @@ JSPHello.war 自身首先会显示在目录区域中：
   [8]: ./media/java-create-azure-website-using-java-sdk/kudu-console-drag-drop.png
   [9]: ./media/java-create-azure-website-using-java-sdk/kudu-console-jsphello-war-1.png
   [10]: ./media/java-create-azure-website-using-java-sdk/kudu-console-jsphello-war-2.png
+ 
 
-<!---HONumber=71-->
+[Azure Websites]: http://go.microsoft.com/fwlink/?LinkId=529714
+[Web 平台安装程序]: http://go.microsoft.com/fwlink/?LinkID=252838
+[Azure Toolkit for Eclipse]: https://msdn.microsoft.com/library/azure/hh690946.aspx
+[Azure classic portal]: https://manage.windowsazure.cn
+[什么是 Azure AD 目录]: http://technet.microsoft.com/library/jj573650.aspx
+[创建并上载 Azure 的管理证书]: http://msdn.microsoft.com/zh-cn/library/azure/gg551722.aspx
+[密钥和证书管理工具 (keytool)]: http://docs.oracle.com/javase/6/docs/technotes/tools/windows/keytool.html
+[WebSiteManagementClient]: http://dl.windowsazure.cn/javadoc/com/microsoft/windowsazure/management/websites/WebSiteManagementClient.html
+[WebSpaceNames]: http://dl.windowsazure.cn/javadoc/com/microsoft/windowsazure/management/websites/models/WebSpaceNames.html
+[Azure 管理门户]: https://manage.windowsazure.cn
+
+<!---HONumber=74-->

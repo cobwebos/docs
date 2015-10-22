@@ -1,24 +1,24 @@
-<properties 
-	pageTitle="将移动服务添加到现有应用程序 (Xamarin.Android) - Azure 移动服务" 
-	description="了解如何存储数据，以及如何从 Azure 移动服务 Xamarin.Android 应用程序访问数据。" 
-	documentationCenter="xamarin" 
-	authors="ggailey777" 
-	manager="dwrede" 
-	services="mobile-services" 
+<properties
+	pageTitle="将移动服务添加到现有应用 (Xamarin.Android) | Microsoft Azure"
+	description="了解如何存储数据，以及如何从 Azure 移动服务 Xamarin.Android 应用程序访问数据。"
+	documentationCenter="xamarin"
+	authors="ggailey777"
+	manager="dwrede"
+	services="mobile-services"
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="04/24/2015" 
+	ms.date="08/18/2015" 
 	wacn.date=""/>
 
-#  将移动服务添加到现有应用程序
+# 将移动服务添加到现有应用程序
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
 此主题说明如何通过 Azure 移动服务来利用 Xamarin.Android 应用程序中的数据。在本教程中，你将要下载一个可在内存中存储数据的应用程序，创建一个新的移动服务，将该移动服务与该应用程序相集成，然后登录到 Azure 管理门户以查看运行该应用程序时对数据所做的更改。
 
-> [AZURE.NOTE]本教程旨在帮助你更好地了解如何使用移动服务通过 Azure 来存储数据以及从 Xamarin.Android 应用程序检索数据。因此，本主题指导你完成的许多步骤已在移动服务快速入门中代你完成。如果这是你第一次体验移动服务，请考虑首先完成[移动服务入门](partner-xamarin-mobile-services-android-get-started)教程。</div>
+> [AZURE.NOTE]本教程旨在帮助你更好地了解如何使用移动服务通过 Azure 来存储数据以及从 Xamarin.Android 应用程序检索数据。因此，本主题指导你完成的许多步骤已在移动服务快速入门中代你完成。如果这是你第一次体验移动服务，请考虑首先完成[移动服务入门](/develop/mobile/tutorials/get-started-xamarin-android)教程。
 
 本教程将指导你完成以下基本步骤：
 
@@ -28,13 +28,13 @@
 4. [更新应用程序以使用移动服务]
 5. [针对移动服务测试应用程序]
 
-> [AZURE.IMPORTANT]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial target="_blank)。
+> [AZURE.IMPORTANT]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial target="\_blank)。
 
 本教程需要 [Azure 移动服务组件]、[Xamarin.Android] 和 Android SDK 4.2 或更高版本。
 
 > [AZURE.NOTE]下载的 GetStartedWithData 项目需要针对 Android 4.2 或更高版本。但是，移动服务 SDK 只需要 Android 2.2 或更高版本。
 
-##  <a name="download-app"></a>下载 GetStartedWithData 项目
+## <a name="download-app"></a>下载 GetStartedWithData 项目
 
 本教程是在 [GetStartedWithData 应用程序][GitHub]（一个 Xamarin.Android 应用程序）的基础上制作的。此应用的 UI 与移动服务 Android 快速入门中生成的应用相同，不过，前者的一些新增项本地存储在内存中。
 
@@ -58,11 +58,11 @@
 
    	请注意，保存的文本将存储在内存中的集合中，并显示在下面的列表中。
 
-##  <a name="create-service"></a>在管理门户中创建新的移动服务
+## <a name="create-service"></a>在管理门户中创建新的移动服务
 
 [AZURE.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
 
-##  <a name="add-table"></a>将新表添加到移动服务
+## <a name="add-table"></a>将新表添加到移动服务
 
 为了能够在新移动服务中存储应用程序数据，必须先创建一个新表。
 
@@ -92,7 +92,7 @@
 
 现在，您可以将新移动服务用作应用的数据存储。
 
-##  <a name="update-app"></a>更新应用程序以使用移动服务进行数据访问
+## <a name="update-app"></a>更新应用程序以使用移动服务进行数据访问
 
 将移动服务准备就绪后，您可以更新应用，以便在移动服务而不是本地集合中存储项。
 
@@ -201,13 +201,13 @@
 
 既然此应用已更新从而将移动服务用于后端存储，就可以针对移动服务测试该应用。
 
-##  <a name="test-app"></a>针对新移动服务测试应用程序
+## <a name="test-app"></a>针对新移动服务测试应用程序
 
 1. 在“运行”菜单中，单击“开始执行(不调试)”以启动项目。系统将要求你选择现有模拟器映像或已连接的 USB Android 设备。
 
 	这将执行使用 Xamarin.Android 构建的应用程序，该应用程序使用客户端库发送一个查询，该查询从你的移动服务返回项目。
 
-5. 和前面一样，输入有意义的文本，然后单击“添加”。
+2. 和前面一样，输入有意义的文本，然后单击“添加”。
 
    	此时会将一个新项作为 insert 发送到移动服务。
 
@@ -221,10 +221,10 @@
 
 针对 Xamarin.Android 的**数据处理入门**教程到此结束。
 
-##  获取已完成的示例
+## 获取已完成的示例
 下载[已完成的示例项目]。请务必使用你自己的 Azure 设置更新 **applicationURL** 和 **applicationKey** 变量。
 
-##  <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 本教程演示了有关如何使 Xamarin.Android 应用程序处理移动服务中的数据的基础知识。
 
@@ -238,10 +238,10 @@
 
 完成了数据系列教程后，请试着学习以下其他 Xamarin.Android 教程：
 
-* [身份验证入门] 
+* [身份验证入门]
   了解如何对应用程序用户进行身份验证。
 
-* [推送通知入门 ] 
+* [推送通知入门]
   了解如何使用移动服务将非常基本的推送通知发送到应用程序。
 
 <!-- Anchors. -->
@@ -271,7 +271,7 @@
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-android
 [Get started with data]: /develop/mobile/tutorials/get-started-with-data-xamarin-android
 [身份验证入门]: /develop/mobile/tutorials/get-started-with-users-xamarin-android
-[推送通知入门 ]: /develop/mobile/tutorials/get-started-with-push-xamarin-android
+[推送通知入门]: /develop/mobile/tutorials/get-started-with-push-xamarin-android
 
 [Azure Management Portal]: https://manage.windowsazure.cn/
 [管理门户]: https://manage.windowsazure.cn/
@@ -282,4 +282,4 @@
 
 [已完成的示例项目]: http://go.microsoft.com/fwlink/p/?LinkId=331302
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

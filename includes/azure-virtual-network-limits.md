@@ -1,40 +1,46 @@
-<table cellspacing="0" border="1">
-<tr>
-   <th align="left" valign="middle">资源</th>
-   <th align="left" valign="middle">默认限制</th>
-   <th align="left" valign="middle">最大限制</th>
-</tr>
-<tr>
-   <td valign="middle"><p>每个订阅的<a href="http://msdn.microsoft.com/zh-cnlibrary/azure/jj156007.aspx">虚拟网络数</a><sup>1</sup></p></td>
-   <td valign="middle"><p>10</p></td>
-   <td valign="middle"><p>100</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>每个虚拟网络的总虚拟机数<sup>2</sup></p></td>
-   <td valign="middle"><p>2048</p></td>
-   <td valign="middle"><p>2048</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>虚拟机或角色实例的并发 TCP 连接</p></td>
-   <td valign="middle"><p>500K</p></td>
-   <td valign="middle"><p>500K</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>每个终结点的访问控制列表 (ACL) 数<sup>3</sup></p></td>
-   <td valign="middle"><p>50</p></td>
-   <td valign="middle"><p>50</p></td>
-</tr>
-<tr>
-   <td valign="middle"><p>每个虚拟网络的本地网络站点</p></td>
-   <td valign="middle"><p>10</p></td>
-   <td valign="middle"><p>10</p></td>
-</tr>
-</table>
+以下限制仅适用于通过每个订阅的典型部署模型进行管理的网络资源。
 
-<sup>1</sup>每个虚拟网络支持单个[虚拟网络网关](http://msdn.microsoft.com/zh-cn/library/azure/jj156210.aspx)。
+资源| 默认限制
+--- | ---
+每个订阅的虚拟网络数 | 50
+每个虚拟网络的本地网络站点 | 20
+每个虚拟网络的 DNS 服务器数 | 20
+每个虚拟网络的虚拟机数和角色实例数 | 2048
+虚拟机或角色实例的并发 TCP 连接 | 500K
+网络安全组 (NSG) | 100
+每个 NSG 的 NSG 规则数 | 200
+用户定义路由表数 | 100
+每个路由表的用户定义的路由数 | 100
+公共 IP 地址 (动态) | 5
+保留的公共 IP 地址 | 20
+每个部署的公共 VIP | 5
+每个部署的私有 VIP (ILB) | 1
+终结点访问控制列表 (ACL) | 50
 
-<sup>2</sup>虚拟机总数包括虚拟机和 Web/辅助角色实例。
 
-<sup>3</sup>虚拟机的输入终结点支持 ACL。对于 web/辅助角色，在输入和实例输入终结点上支持它。
+#### 网络限制 - Azure 资源管理器
 
-<!---HONumber=HO63-->
+以下限制仅适用于通过每个订阅的每个区域的 Azure 资源管理器进行管理的网络资源。
+
+资源| 默认限制
+--- | ---
+每个订阅的虚拟网络数 | 50
+每个虚拟网络的 DNS 服务器数 | 9
+每个虚拟网络的虚拟机数和角色实例数 | 2048
+虚拟机或角色实例的并发 TCP 连接 | 500K
+网络接口 (NIC) | 300
+网络安全组 (NSG) | 100
+每个 NSG 的 NSG 规则数 | 200
+用户定义路由表数 | 100
+每个路由表的用户定义的路由数 | 100
+公共 IP 地址 (动态) | 60
+保留的公共 IP 地址 | 20
+负载平衡器（内部和面向 internet） | 100
+每个负载平衡器的负载平衡器规则数 | 150
+每个负载平衡器的公共前端 IP 数 | 5
+每个负载平衡器的私有前端 IP 数 | 1
+应用程序网关数 | 10
+
+如果你需要增加这些限制，请与支持部门联系。
+
+<!---HONumber=74-->

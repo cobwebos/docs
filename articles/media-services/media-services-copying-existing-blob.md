@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services"  
-	ms.date="08/11/2015"
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 #将现有 Blob 复制到媒体服务资产中
@@ -282,4 +282,4 @@ Blob 可以存在于与媒体服务帐户关联的存储帐户中，也可以存
 		}
  
 
-<!---HONumber=71-->
+<!---HONumber=74-->

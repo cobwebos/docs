@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"  
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 
@@ -35,7 +35,7 @@
   </thead>
   <tbody>
     <tr>
-       <td>Azure Media Encoder</td>
+       <td>Azure 媒体编码器</td>
        <td>让你使用 Azure 媒体编码器运行编码任务。</td>
        <td><a href="http://msdn.microsoft.com/zh-cn/library/jj129582.aspx">Azure 媒体编码器的任务预设字符串</a></td>
     </tr>
@@ -45,19 +45,19 @@
        <td><a href="http://www.windowsazure.cn/documentation/articles/media-services-encode-with-premium-workflow/">使用媒体编码器高级工作流进行编码。</a></td>
     </tr>    
 	<tr>
-        <td>Azure Media Indexer</td>
+        <td>Azure 媒体索引器</td>
         <td>使媒体文件和内容可搜索，以及生成隐藏字幕跟踪和关键字。</td>
-		<td><a href="http://azure.microsoft.com/documentation/articles/media-services-index-content/">使用 Azure Media Indexer 为媒体文件编制索引</a>。</td>
+		<td><a href="/documentation/articles/media-services-index-content/">使用Azure 媒体索引器为媒体文件编制索引</a>。</td>
     </tr>
     <tr>
-        <td>Microsoft Azure Media Packager</td>
+        <td>Microsoft Azure 媒体包装器</td>
         <td>让你将媒体资产从 .mp4 格式转换为平滑流式处理格式。还可让你将媒体资产从平滑流式处理格式转换为 Apple HTTP 实时流 (HLS) 格式。</td>
-		<td><a href="http://msdn.microsoft.com/zh-cn/library/hh973635.aspx">Azure Media Packager 的任务预设字符串</a></td>
+		<td><a href="http://msdn.microsoft.com/zh-cn/library/hh973635.aspx">Azure 媒体包装器的任务预设字符串</a></td>
     </tr>
     <tr>
-        <td>Microsoft Azure Media Encryptor</td>
+        <td>Azure 媒体加密器</td>
         <td>让你使用 PlayReady 保护加密媒体资产。</td>
-        <td><a href="http://msdn.microsoft.com/zh-cn/library/hh973610.aspx">Azure Media Packager 的任务预设字符串</a></td>
+        <td><a href="http://msdn.microsoft.com/zh-cn/library/hh973610.aspx">Azure 媒体包装器的任务预设字符串</a></td>
     </tr>
 	<tr>
 		<td>Azure Media Hyperlapse（预览）</td>
@@ -95,4 +95,4 @@
 [Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/zh-cn/library/jj129582.aspx
 [如何：以编程方式连接到媒体服务]: /documentation/articles/media-services-set-up-computer
 
-<!---HONumber=71-->
+<!---HONumber=74-->

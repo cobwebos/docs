@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="向经过身份验证的用户发送推送通知" 
-	description="了解如何向特定用户发送推送通知" 
+	pageTitle="向经过身份验证的 Windows Phone Silverlight 应用用户发送推送通知 | Microsoft Azure" 
+	description="了解如何从 Azure 移动服务向 Windows Phone Silverlight 应用的特定用户发送推送通知。" 
 	services="mobile-services,notification-hubs" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
@@ -12,7 +12,7 @@
 	ms.date="06/04/2015" 
 	wacn.date=""/>
 
-#  向经过身份验证的用户发送推送通知
+# 向经过身份验证的用户发送推送通知
 
 [AZURE.INCLUDE [mobile-services-selector-push-users](../includes/mobile-services-selector-push-users.md)]
 
@@ -20,7 +20,7 @@
 
 >[AZURE.NOTE]本教程支持 Windows Phone 8.0 和 Windows Phone 8.1 Silverlight 应用程序。对于 Windows Phone 8.1 应用商店应用程序，请参阅[本主题的 Windows 应用商店版本](mobile-services-javascript-backend-windows-store-dotnet-push-notifications-app-users)。
 
-## 先决条件 
+##先决条件 
 
 在开始本教程之前，必须已完成以下移动服务教程：
 
@@ -30,7 +30,7 @@
 
 完成这两篇教程后，你可以防止未经身份验证的用户从你的移动服务注册推送通知。
 
-## <a name="register"></a>更新服务以要求对注册进行身份验证
+##<a name="register"></a>更新服务以要求对注册进行身份验证
 
 [AZURE.INCLUDE [mobile-services-javascript-backend-push-notifications-app-users](../includes/mobile-services-javascript-backend-push-notifications-app-users.md)]
 
@@ -64,12 +64,12 @@
 
 <p>此插入脚本使用用户 ID 标记向已登录用户创建的所有 Windows Phone (MPNS) 应用程序注册发送推送通知（包括插入项的文本）。</p></li></ol>
 
-## <a name="update-app"></a>更新应用程序以要求在注册之前登录
+##<a name="update-app"></a>更新应用程序以要求在注册之前登录
 
 [AZURE.INCLUDE [mobile-services-windows-phone-push-notifications-app-users](mobile-services-windows-phone-push-notifications-app-users)]
 
 
-## <a name="test"></a>测试应用程序
+##<a name="test"></a>测试应用程序
 
 [AZURE.INCLUDE [mobile-services-windows-test-push-users](../includes/mobile-services-windows-test-push-users.md)]
 
@@ -85,4 +85,4 @@
 [向应用程序添加推送通知]: mobile-services-javascript-backend-windows-phone-get-started-push
 [Azure Management Portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

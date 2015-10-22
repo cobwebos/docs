@@ -9,13 +9,10 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="05/14/2015"
+	ms.date="08/18/2015"
 	wacn.date=""/>
 
-#  向移动服务应用程序添加身份验证
-<div class="dev-center-tutorial-selector sublanding"> 
-	<a href="/develop/mobile/tutorials/get-started-with-users-dotnet" title="Windows 应用商店 C#">Windows 应用商店 C#</a><a href="/develop/mobile/tutorials/get-started-with-users-js" title="Windows 应用商店 JavaScript">Windows 应用商店 JavaScript</a><a href="/develop/mobile/tutorials/get-started-with-users-wp8" title="Windows Phone">Windows Phone</a><a href="/develop/mobile/tutorials/get-started-with-users-ios" title="iOS">iOS</a><a href="/develop/mobile/tutorials/get-started-with-users-android" title="Android">Android</a><a href="/develop/mobile/tutorials/get-started-with-users-html" title="HTML">HTML</a><a href="/develop/mobile/tutorials/get-started-with-users-xamarin-ios" title="Xamarin.iOS" class="current">Xamarin.iOS</a><a href="/develop/mobile/tutorials/get-started-with-users-xamarin-android" title="Xamarin.Android">Xamarin.Android</a>
-</div>
+# 向移动服务应用程序添加身份验证
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
@@ -31,25 +28,25 @@
 
 完成本教程需要安装 [Xamarin.iOS]、XCode 6.0 和 iOS 7.0 或更高版本。
 
-## <a name="register"></a>注册应用程序以进行身份验证并配置移动服务
+##<a name="register"></a>注册应用程序以进行身份验证并配置移动服务
 
 [AZURE.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)]
 
-## <a name="permissions"></a>将权限限制给已经过身份验证的用户
+##<a name="permissions"></a>将权限限制给已经过身份验证的用户
 
 
 [AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)]
 
 
-3. 在 Xcode 中，打开你在完成[移动服务入门]教程时创建的项目。 
+1. 在 Xcode 中，打开你在完成[移动服务入门]教程时创建的项目。 
 
-4. 在 iPhone 模拟器中按“运行”按钮以生成项目并启动应用程序；验证启动该应用程序后，是否会引发状态代码为 401（“未授权”）的未处理异常。
+2. 在 iPhone 模拟器中按“运行”按钮以生成项目并启动应用程序；验证启动该应用程序后，是否会引发状态代码为 401（“未授权”）的未处理异常。
    
    	发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 _TodoItem_ 表现在要求身份验证。
 
 接下来，你需要更新应用程序，以便在从移动服务请求资源之前对用户进行身份验证。
 
-## <a name="add-authentication"></a>向应用程序添加身份验证
+##<a name="add-authentication"></a>向应用程序添加身份验证
 
 1. 打开 **TodoService** 项目文件，并添加以下变量
 
@@ -71,7 +68,7 @@
             }
         }
 
-	> [AZURE.NOTE]如果使用的标识提供者不是 Microsoft 帐户，请将传递给上述 **LoginAsync** 的值更改为下列其中一项：_WindowsAzureActiveDirectory_。
+	> [AZURE.NOTE]如果使用的标识提供程序不是 Microsoft 帐户，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：_Facebook_、_Twitter_、_Google_ 或 _WindowsAzureActiveDirectory_。
 
 3. 从 **ToDoService** 构造函数将对 **ToDoItem** 表的请求移到名为 **CreateTable** 的新方法中：
 
@@ -114,10 +111,10 @@
 
    	当你成功登录时，应用应该运行而不出现错误，你应该能够查询移动服务，并对数据进行更新。
 
-##  获取已完成的示例
+## 获取已完成的示例
 下载[已完成的示例项目]。请务必使用你自己的 Azure 设置更新 **applicationURL** 和 **applicationKey** 变量。
 
-##  <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 在下一教程[使用脚本为用户授权]中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。
 
@@ -147,5 +144,6 @@
 
 [Azure Management Portal]: https://manage.windowsazure.cn/
 [已完成的示例项目]: http://go.microsoft.com/fwlink/p/?LinkId=331328
+[Xamarin.iOS]: http://xamarin.com/download
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

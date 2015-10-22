@@ -1,15 +1,15 @@
-<properties 
-	pageTitle="使用 Twilio 实现语音和短信功能 | 移动开放中心" 
-	description="了解如何在 Azure 移动服务中使用 Twilio API 执行常见任务。" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="devinrader" 
-	manager="twilio" 
+<properties
+	pageTitle="使用 Twilio 实现语音和短信功能 | Microsoft Azure"
+	description="了解如何在 Azure 移动服务中使用 Twilio API 执行常见任务。"
+	services="mobile-services"
+	documentationCenter=""
+	authors="devinrader"
+	manager="twilio"
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="04/24/2015" 
+	ms.date="06/16/2015"
 	wacn.date=""/>
 
 
@@ -166,7 +166,7 @@ Twilio 提供了可包装 Twilio 各个方面的 Node.js 库，使你能够以�
 
 当您的应用程序开始调用 Twilio API 时（例如通过 client.InitiateOutboundCall 方法），Twilio 会将您的请求发送到预期返回 TwiML 响应的 URL。“如何：发起传出呼叫”中的示例使用 Twilio 提供的 URL http://twimlets.com/message 返回该响应。
 
-> [AZURE.NOTE]虽然 TwiML 专供 Web 服务使用，但您可以在浏览器中查看 TwiML。例如，单击 [twimlet_message_url](http://twimlets.com/message) 可查看空 &lt;Response&gt; 元素；又如，单击 [twimlet_message_url_hello_world](http://twimlets.com/message?Message%5B0%5D=Hello%20World) 可查看包含 &lt;Say&gt; 元素的 &lt;Response&gt; 元素。
+> [AZURE.NOTE]虽然 TwiML 专供 Web 服务使用，但您可以在浏览器中查看 TwiML。例如，单击 [twimlet\_message\_url](http://twimlets.com/message) 可查看空 &lt;Response&gt; 元素；又如，单击 [twimlet\_message\_url\_hello\_world](http://twimlets.com/message?Message%5B0%5D=Hello%20World) 可查看包含 &lt;Say&gt; 元素的 &lt;Response&gt; 元素。
 
 您可以创建自己的返回 HTTP 响应的 URL 网站，而不用依赖 Twilio 提供的 URL。您可以使用任何语言创建返回 HTTP 响应的站点。本主题假设您将从 ASP.NET 泛型处理程序托管该 URL。
 
@@ -203,7 +203,7 @@ Twilio 提供了可包装 Twilio 各个方面的 Node.js 库，使你能够以�
         });
     };
 
-[AZURE.INCLUDE [twilio_additional_services_and_next_steps](../includes/twilio_additional_services_and_next_steps.md)]
+[AZURE.INCLUDE [twilio\_additional\_services\_and\_next\_steps](../includes/twilio_additional_services_and_next_steps.md)]
 
 
 [twilio_rest_making_calls]: http://www.twilio.com/docs/api/rest/making-calls
@@ -226,4 +226,4 @@ Twilio 提供了可包装 Twilio 各个方面的 Node.js 库，使你能够以�
 [azure_twilio_howto_php]: /documentation/articles/partner-twilio-php-how-to-use-voice-sms/
  
 
-<!---HONumber=67-->
+<!---HONumber=74-->

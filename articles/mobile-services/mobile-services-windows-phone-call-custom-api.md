@@ -9,10 +9,10 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="06/03/2015" 
+	ms.date="06/16/2015"
 	wacn.date=""/>
 
-#  从客户端调用自定义 API
+# 从客户端调用自定义 API
 
 [AZURE.INCLUDE [mobile-services-selector-call-custom-api](../includes/mobile-services-selector-call-custom-api.md)]
 
@@ -20,15 +20,15 @@
 
 本主题中创建的自定义 API 使你能够发送单个 POST 请求，将已完成的标记设置为 `true` 的表中的所有 todo 项。如果没有此自定义 API，客户端必须逐个地发送请求，以更新表中每个 todo 项的该标志。
 
-将此功能添加到你在完成[将移动服务添加到现有应用程序](mobile-services-windows-phone-get-started-data)教程后创建的应用程序。本教程是在 GetStartedWithData 示例（一个简单的 TodoList 应用程序）基础上制作的。在开始本教程之前，必须先完成[将移动服务添加到现有应用程序](mobile-services-windows-phone-get-started-data)。
+将此功能添加到你在完成[将移动服务添加到现有应用程序](/documentation/articles/mobile-services-windows-phone-get-started-data)教程后创建的应用程序。本教程是在 GetStartedWithData 示例（一个简单的 TodoList 应用程序）基础上制作的。在开始本教程之前，必须先完成[将移动服务添加到现有应用程序](/documentation/articles/mobile-services-windows-phone-get-started-data)。
 
-##  <a name="define-custom-api"></a>定义自定义 API
+## <a name="define-custom-api"></a>定义自定义 API
 
 [AZURE.INCLUDE [mobile-services-create-custom-api](../includes/mobile-services-create-custom-api.md)]
 
 [AZURE.INCLUDE [mobile-services-windows-phone-call-custom-api](../includes/mobile-services-windows-phone-call-custom-api.md)]
 
-##  后续步骤
+## 后续步骤
 
 本主题说明了如何使用 **InvokeApiAsync** 方法从 Windows Phone 应用程序调用一个相当简单的自定义 API。若要了解有关使用 **InvokeApiAsync** 方法的详细信息，请参阅文章 [Azure 移动服务中的自定义 API](http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx)。
 
@@ -56,4 +56,4 @@
 
 [在源代码管理中存储服务器脚本]: /documentation/articles/mobile-services-store-scripts-source-control
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

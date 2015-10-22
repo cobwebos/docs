@@ -8,7 +8,7 @@
    editor="tysonn"/>
 <tags 
    ms.service="service-bus"
-   ms.date="05/21/2015"
+   ms.date="09/11/2015"
    wacn.date=""/>
 
 # Azure 队列和服务总线队列 - 比较与对照
@@ -138,7 +138,7 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 |就地更新|**是**|**是**|
 |服务器端事务日志|**是**|**否**|
 |存储度量值|**是**<br/><br/>**分钟度量值**：提供可用性、TPS、API 调用计数、错误计数等指标的实时度量值，所有这些值都是实时的（每分钟进行汇总，并在生产过程中发生后几分钟之内报告）。有关详细信息，请参阅[关于存储分析度量值](https://msdn.microsoft.com/zh-cn/library/hh343258.aspx)。|**是**<br/><br/>（通过调用 [GetQueues](https://msdn.microsoft.com/zh-cn/library/hh293128.aspx) 进行大容量查询）|
-|状态管理|**否**|**是**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)、[Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)、[Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)、[Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)|
+|状态管理|**否**|**是**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)、 [Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)、 [Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)、 [Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)|
 |消息自动转发|**否**|**是**|
 |清除队列函数|**是**|**否**|
 |消息组|**否**|**是**<br/><br/>（通过使用消息传送会话）|
@@ -253,7 +253,7 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 |比较条件|Azure 队列|Service Bus 队列|
 |---|---|---|
 |身份验证|**对称密钥**|**对称密钥**|
-|访问控制模型|通过 SAS 令牌进行的委托访问。|通过 ACS 进行的 RBAC|
+|安全模型|通过 SAS 令牌进行的委托访问。|SAS|
 |标识提供者联合|**否**|**是**|
 
 ### 其他信息
@@ -262,17 +262,13 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 
 - Azure 队列提供的身份验证方案涉及使用对称密钥，该密钥是基于哈希的消息身份验证代码 (HMAC)，使用 SHA-256 算法计算并编码为 **Base64** 字符串。有关相应协议的详细信息，请参阅[对存储帐户的访问进行身份验证](https://msdn.microsoft.com/zh-cn/library/hh225339.aspx)。服务总线队列支持使用对称密钥的类似模型。有关详细信息，请参阅[使用服务总线进行共享访问签名身份验证](https://msdn.microsoft.com/zh-cn/library/dn170477.aspx)。
 
-- 服务总线支持的 Microsoft Azure Active Directory 访问控制（也称为访问控制服务或 ACS）提供三个不同的角色：**管理员**、**发送者**和**接收者**，目前 Azure 队列不支持后者。
-
-- 因为服务总线提供了 ACS 集成，所以你可以联合 Active Directory（通过使用 ADFS）和其他常见 Web 标识提供者。
-
 ## 成本
 
 本部分从成本角度对 Azure 队列和服务总线队列进行了比较。
 
 |比较条件|Azure 队列|Service Bus 队列|
 |---|---|---|
-|队列事务成本|**$0.0005**<br/><br/>（每 10,000 个事务）|**基本层**：**$0.05**<br/><br/>（每 100 万次操作）|
+|队列事务成本|**0.0036 美元**<br/><br/>（每 100,000 个事务）|**基本层**：**$0.05**<br/><br/>（每 100 万次操作）|
 |计费操作|**全部**|**仅发送/接收**<br/><br/>（其他操作不收费）|
 |空闲事务|**可计费**<br/><br/>（查询空队列计为收费事务）|**可计费**<br/><br/>（针对空队列的接收被视为计费消息）|
 |存储成本|**$0.07**<br/><br/>（GB/月）|**$0.00**|
@@ -285,8 +281,6 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 - 位于同一区域内的 Azure 服务之间的数据传输不收费。
 
 - 截至撰写本文之时，所有入站数据传输都不收费。
-
-- 针对服务总线队列执行消息传送操作时，ACS 事务的成本是微不足道的。服务总线会针对消息传送工厂对象的单个实例获取一个 ACS 标记。然后，重复使用该标记直至其过期（大约 20 分钟后）。因此，服务总线中的消息传送操作量与支持这些操作所需的 ACS 事务量不直接成比例。
 
 - 在支持长轮询的情况下，在需要低延迟传递时，使用服务总线队列可达到经济高效的结果。
 
@@ -313,4 +307,4 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 - [了解 Azure 存储计费 - 带宽、事务和容量](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
  
 
-<!---HONumber=71-->
+<!---HONumber=74-->

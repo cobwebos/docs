@@ -13,7 +13,7 @@
 	ms.date="06/09/2015" 
 	wacn.date=""/>
 
-#  <a name="getting-started"></a>移动服务入门
+# <a name="getting-started"></a>移动服务入门
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
@@ -31,13 +31,13 @@
 
 下载的快速入门项目包含适用于 Xamarin.Android 的 Azure 移动服务组件。尽管此项目面向 Android 4.2 或更高版本，但移动服务 SDK 只需要 Android 2.2 或更高版本。
 
-> [AZURE.IMPORTANT]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial target="_blank)。
+> [AZURE.IMPORTANT]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial target="\_blank)。
 
-##  <a name="create-new-service"></a>创建新的移动服务
+## <a name="create-new-service"></a>创建新的移动服务
 
 [AZURE.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
 
-##  创建新的 Xamarin.Android 应用程序
+## 创建新的 Xamarin.Android 应用程序
 
 创建移动服务后，你可以在管理门户中遵照一个简易的快速入门项目来创建新应用程序或修改现有应用程序，以连接到你的移动服务。
 
@@ -59,7 +59,7 @@
 
 	随即将会下载已连接到移动服务的示例_待办事项列表_应用程序的项目。将压缩的项目文件保存到本地计算机，并记下保存位置。
 
-##  运行 Android 应用程序
+## 运行 Android 应用程序
 
 本教程的最后一个阶段是生成和运行你的新应用程序。
 
@@ -83,7 +83,7 @@
 
 	> [AZURE.NOTE]你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 ToDoActivity.cs C# 文件中。
 
-6. 返回管理门户，单击“数据”选项卡，然后单击 **TodoItem** 表。
+5. 返回管理门户，单击“数据”选项卡，然后单击 **TodoItem** 表。
 
 	![][11]
 
@@ -91,10 +91,10 @@
 
 	![][12]
 
-##  <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-* [脱机数据同步入门]<br/>了解有关使用移动服务存储和查询数据的详细信息。<br/>了解如何快速开始使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
+* [脱机数据同步入门]<br/>了解如何快速开始使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
 
 * [身份验证入门]<br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
 
@@ -123,13 +123,13 @@
 
 
 <!-- URLs. -->
-[Get started with data]: partner-xamarin-mobile-services-android-get-started-data
-[脱机数据同步入门]: mobile-services-xamarin-android-get-started-offline-data
-[身份验证入门]: partner-xamarin-mobile-services-android-get-started-users
-[推送通知入门 ]: partner-xamarin-mobile-services-android-get-started-push
+[Get started with data]: /documentation/articles/partner-xamarin-mobile-services-android-get-started-data
+[脱机数据同步入门]: /documentation/articles/mobile-services-xamarin-android-get-started-offline-data
+[身份验证入门]: /documentation/articles/partner-xamarin-mobile-services-android-get-started-users
+[推送通知入门 ]: /documentation/articles/partner-xamarin-mobile-services-android-get-started-push
 [Xamarin.Android]: http://xamarin.com/download
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [WindowsAzure.com]: http://www.windowsazure.com/
 [Management Portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

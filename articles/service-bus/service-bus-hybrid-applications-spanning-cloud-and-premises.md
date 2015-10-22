@@ -1,6 +1,14 @@
-<properties pageTitle="启用跨云和本地的混合应用程序" metaKeywords="Service Bus, Cloud, Hybrid" description="了解如何构建跨云和本地的混合应用程序。" services="service-bus" documentationCenter=".NET" title="Enable Hybrid Applications Spanning Cloud and Premises" authors="sethm" solutions="" manager="timlt" editor="mattshel" />
-<tags  ms.service="service-bus"
+<properties 
+	pageTitle="启用跨云和本地的混合应用程序" 
+	description="了解如何构建跨云和本地的混合应用程序。" 
+	services="service-bus" 
+	documentationCenter=".net" 
+	authors="sethmanheim" 
+	manager="timlt" 
+	editor=""/>
 
+<tags 
+	ms.service="service-bus" 
 	ms.date="07/02/2015" 
 	wacn.date=""/>
 
@@ -11,7 +19,7 @@
 
 ## 探究
 
-- [Service Bus 中继](/zh-cn/documentation/articles/service-bus-dotnet-how-to-use-relay/)
+- [Service Bus 中继](/zh-cn/documentation/articles/service-bus-dotnet-how-to-use-relay)
 - [中继消息传送和中转消息传送](http://msdn.microsoft.com/zh-cn/library/azure/hh367519.aspx)
 
 ## 构建
@@ -33,4 +41,4 @@
 - [移动服务](/home/features/mobile-services/)
 - [云服务](/home/features/cloud-services/) 
 
-<!---HONumber=71-->
+<!---HONumber=74-->

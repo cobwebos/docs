@@ -1,15 +1,16 @@
 <properties
-	pageTitle="使用 Mahout 和 Hadoop 生成建议 |Windows Azure"
+	pageTitle="使用 Mahout 和 Hadoop 生成建议 |Microsoft Azure"
 	description="了解如何使用 Apache Mahout 机器学习库通过基于 Linux 的 HDInsight (Hadoop) 生成电影推荐。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
 	manager="paulettm"
-	editor=""/>
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
 	ms.service="hdinsight"
-	ms.date="06/16/2015"
+	ms.date="09/02/2015"
 	wacn.date=""/>
 
 #通过 HDInsight 中基于 Linux 的 Hadoop（预览版）使用 Apache Mahout 生成电影推荐
@@ -251,4 +252,4 @@ Mahout 作业不删除在处理作业时创建的临时数据。在示例作业�
 [tools]: https://github.com/Blackmist/hdinsight-tools
  
 
-<!---HONumber=67-->
+<!---HONumber=74-->

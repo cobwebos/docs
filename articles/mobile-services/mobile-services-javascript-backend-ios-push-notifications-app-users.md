@@ -1,5 +1,5 @@
 <properties
-	pageTitle="向经过身份验证的用户发送推送通知"
+	pageTitle="向 iOS 中经过身份验证的用户发送推送通知（JavaScript 后端）"
 	description="了解如何向特定用户发送推送通知"
 	services="mobile-services,notification-hubs"
 	documentationCenter="ios"
@@ -10,10 +10,10 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="04/02/2015"
+	ms.date="07/01/2015"
 	wacn.date=""/>
 
-#  向经过身份验证的用户发送推送通知
+# 向经过身份验证的用户发送推送通知
 
 [AZURE.INCLUDE [mobile-services-selector-push-users](../includes/mobile-services-selector-push-users.md)]
 
@@ -22,7 +22,7 @@
 在本教程中，首先你会要求用户进行身份验证，再注册通知中心以发送推送通知，然后更新服务器脚本，以便只向经过身份验证的用户发送这些通知。
 
 
-## <a name="register"></a>更新服务以要求对注册进行身份验证
+##<a name="register"></a>更新服务以要求对注册进行身份验证
 
 [AZURE.INCLUDE [mobile-services-javascript-backend-push-notifications-app-users](../includes/mobile-services-javascript-backend-push-notifications-app-users.md)]
 
@@ -45,11 +45,11 @@ var userId = user.userId;
         }
 ```
 
-## <a name="update-app"></a>更新应用程序以要求在注册之前登录
+##<a name="update-app"></a>更新应用程序以要求在注册之前登录
 
 [AZURE.INCLUDE [mobile-services-ios-push-notifications-app-users-login](../includes/mobile-services-ios-push-notifications-app-users-login.md)]
 
-## <a name="test"></a>测试应用程序
+##<a name="test"></a>测试应用程序
 
 [AZURE.INCLUDE [mobile-services-ios-push-notifications-app-users-test-app](../includes/mobile-services-ios-push-notifications-app-users-test-app.md)]
 
@@ -63,15 +63,10 @@ var userId = user.userId;
 
 
 <!-- URLs. -->
-[身份验证入门]: mobile-services-ios-get-started-users
-[推送通知入门]: mobile-services-javascript-backend-ios-get-started-push
+[身份验证入门]: /documentation/articles/mobile-services-ios-get-started-users
+[推送通知入门]: /documentation/articles/mobile-services-javascript-backend-ios-get-started-push
 
 [Azure Management Portal]: https://manage.windowsazure.cn/
-[Mobile Services .NET How-to Conceptual Reference]: mobile-services-ios-how-to-use-client-library
+[Mobile Services .NET How-to Conceptual Reference]: /documentation/articles/mobile-services-ios-how-to-use-client-library
 
-[23]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push1-ios.png
-[24]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push2-ios.png
-[25]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push3-ios.png
-[26]: ./media/mobile-services-ios-get-started-push/mobile-quickstart-push4-ios.png
-
-<!---HONumber=HO63-->
+<!---HONumber=74-->

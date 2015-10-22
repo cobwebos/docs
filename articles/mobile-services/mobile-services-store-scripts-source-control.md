@@ -1,29 +1,29 @@
-<properties 
-	pageTitle="在源代码管理中存储项目代码 - Azure 移动服务" 
-	description="了解如何在您的计算机本地 Git 存储库中存储您的服务器脚本文件和模块。" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="在源代码管理中存储 JavaScript 后端项目代码 | Azure 移动服务"
+	description="了解如何在您的计算机本地 Git 存储库中存储您的服务器脚本文件和模块。"
+	services="mobile-services"
+	documentationCenter=""
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="04/24/2015" 
+	ms.date="09/15/2015" 
 	wacn.date=""/>
 
-#  在源代码管理中存储项目代码
+# 在源代码管理中存储项目代码
 
 
 本主题向您展示了如何使用 Azure 移动服务提供的源代码管理来存储服务器脚本。脚本和其他 JavaScript 后端代码文件可从您的本地 Git 存储库提升到生产移动服务。另外，本主题还说明了如何定义可在多个脚本之间使用的共享代码，以及如何使用 package.json 文件来为您的移动服务添加 Node.js 模块。
 
 若要完成本教程，你必须事先参考[移动服务入门]或[将移动服务添加到现有应用程序]教程创建一个移动服务。
 
-## <a name="enable-source-control"></a>在移动服务中启用源代码管理
+##<a name="enable-source-control"></a>在移动服务中启用源代码管理
 
 [AZURE.INCLUDE [mobile-services-enable-source-control](../includes/mobile-services-enable-source-control.md)]
 
-## <a name="clone-repo"></a>安装 Git 并创建本地存储库
+##<a name="clone-repo"></a>安装 Git 并创建本地存储库
 
 1. 在本地计算机上安装 Git。 
 
@@ -58,7 +58,7 @@
 
 创建本地存储库后，您可以更改服务器脚本，以及将更改推送回到移动服务。
 
-## <a name="deploy-scripts"></a>将更新的脚本文件部署到移动服务
+##<a name="deploy-scripts"></a>将更新的脚本文件部署到移动服务
 
 1. 浏览到 .\\service\\table 子文件夹，如果 todoitem.insert.js 文件不存在，现在请创建该文件。
 
@@ -90,19 +90,19 @@
 7. 
 	可以看到，显示的插入操作脚本与您刚刚上载到存储库的 JavaScript 代码相同。
 
-## <a name="use-npm"></a>在服务器脚本中利用共享代码和 Node.js 模块
+##<a name="use-npm"></a>在服务器脚本中利用共享代码和 Node.js 模块
 
 移动服务允许你访问整个核心 Node.js 模块集，你可以通过 **require** 函数在代码中使用这些模块。移动服务还可使用不属于核心 Node.js 程序包的 Node.js 模块，您甚至可以定义自己的共享代码作为 Node.js 模块。有关创建模块的详细信息，请参阅 Node.js API 参考文档中的[模块]。
 
 将 Node.js 模块添加到移动服务的建议方法为对服务的 package.json 文件添加引用。然后通过更新 package.json 文件为你的移动服务添加 [node-uuid] Node.js 模块。当更新推送到 Azure 时，移动服务重新启动，模块安装完成。然后，你可以使用此模块为已插入项的 **uuid** 属性生成新的 GUID 值。
 
-2. 导航到本地 Git 存储库的 `.\service` 文件夹，在文本编辑器中打开 package.json 文件，然后将以下字段添加到 **dependencies** 对象：
+1. 导航到本地 Git 存储库的 `.\service` 文件夹，在文本编辑器中打开 package.json 文件，然后将以下字段添加到 **dependencies** 对象：
 
 		"node-uuid": "~1.4.3"
 
 	>[AZURE.NOTE]对 package.json 文件执行这项更新会导致推送提交内容后重新启动移动服务。
 
-4. 现在，请浏览到 .\\service\\table 子文件夹，打开 todoitem.insert.js 文件并按如下所示修改该文件：
+2. 现在，请浏览到 .\\service\\table 子文件夹，打开 todoitem.insert.js 文件并按如下所示修改该文件：
 
 		function insert(item, user, request) {
 		    var uuid = require('node-uuid');
@@ -113,7 +113,7 @@
 
 	此代码将在表中添加一个 uuid 列，并使用唯一的 GUID 标识符填充该列。
 
-5. 像在前一部分中一样，在 Git 命令提示符下键入以下命令：
+3. 像在前一部分中一样，在 Git 命令提示符下键入以下命令：
 
 		$ git add .
 		$ git commit -m "added node-uuid module"
@@ -121,13 +121,15 @@
 		
 	这样就会添加新的文件，提交您的更改，并将新的 node-uuid 模块以及对 todoitem.insert.js 脚本所做的更改推送到您的移动服务。
 
-##  <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 完成本教程后，你便知道了如何在源代码管理中存储脚本。我们建议您了解有关如何使用服务器脚本和自定义 API 的详细信息：
 
-+ [在移动服务中使用服务器脚本]<br/>说明如何使用服务器脚本、作业计划程序和自定义 API。
++ [在移动服务中使用服务器脚本]
+  <br/>说明如何使用服务器脚本、作业计划程序和自定义 API。
 
-+ [从客户端调用自定义 API]<br/>说明如何创建可从客户端调用的自定义 API。
++ [从客户端调用自定义 API]
+  <br/>说明如何创建可从客户端调用的自定义 API。
 
 <!-- Anchors. -->
 [Enable source control in your mobile service]: #enable-source-control
@@ -144,12 +146,12 @@
 [Git website]: http://git-scm.com
 [源代码管理]: http://msdn.microsoft.com/zh-cn/library/windowsazure/c25aaede-c1f0-4004-8b78-113708761643
 [安装 Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[移动服务入门]: mobile-services-ios-get-started
-[将移动服务添加到现有应用程序]: mobile-services-ios-get-started-data
-[在移动服务中使用服务器脚本]: mobile-services-how-to-use-server-scripts
+[移动服务入门]: /documentation/articles/mobile-services-ios-get-started
+[将移动服务添加到现有应用程序]: /documentation/articles/mobile-services-ios-get-started-data
+[在移动服务中使用服务器脚本]: /documentation/articles/mobile-services-how-to-use-server-scripts
 [Azure Management Portal]: https://manage.windowsazure.cn/
-[从客户端调用自定义 API]: mobile-services-ios-call-custom-api.md
+[从客户端调用自定义 API]: /documentation/articles/mobile-services-ios-call-custom-api.md
 [模块]: http://nodejs.org/api/modules.html
 [node-uuid]: https://npmjs.org/package/node-uuid
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

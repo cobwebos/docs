@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="使用移动服务将图像上载到 Blob 存储 (Windows Phone) | 移动服务" 
-	description="了解如何使用移动服务将图像上载到 Azure Blob 存储。" 
+	pageTitle="将图像从 Windows Phone Silverlight 应用上载到 Azure 存储空间 | Microsoft Azure" 
+	description="了解如何使用移动服务将图像从 Windows Phone Silverlight 应用上载到 Azure Blob 存储。" 
 	documentationCenter="windows" 
 	authors="ggailey777" 
 	services="mobile-services" 
@@ -9,23 +9,23 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="06/04/2015" 
+	ms.date="07/21/2015" 
 	wacn.date=""/>
 
-#  使用移动服务将图像上载到 Azure 存储空间
+# 使用移动服务将图像上载到 Azure 存储空间
 
 [AZURE.INCLUDE [mobile-services-selector-upload-data-blob-storage](../includes/mobile-services-selector-upload-data-blob-storage.md)]
 
-## 概述
+##概述
 
-本主题说明如何借助 Azure 移动服务，使应用程序能够在 Azure 存储空间中上载和存储用户生成的图像。移动服务使用 SQL Database 存储数据。但是，将二进制大型对象 (BLOB) 数据存储在 Azure Blob 存储服务中可以提高效率。
+本主题说明如何借助 Azure 移动服务，使应用程序能够在 Azure 存储空间中上载和存储用户生成的图像。移动服务使用 SQL 数据库存储数据。但是，将二进制大型对象 (BLOB) 数据存储在 Azure Blob 存储服务中可以提高效率。
 
 你无法使用客户端应用程序安全地分发所需的凭据，因此无法安全地将数据上载到 Blob 存储服务。你必须将这些凭据存储在移动服务中，并使用它们来生成用于上载新图像的共享访问签名 (SAS)。移动服务会向客户端应用程序安全返回 SAS（一个凭据，其过期时间较短 &mdash; 在本例中为 5 分钟）。然后，应用程序将使用此临时凭据来上载图像。在此示例中，公众可以从 Blob 服务下载。
 
-在本教程中，你将要向 [GetStartedWithData 示例应用程序项目](mobile-services-windows-phone-get-started-data)添加功能，使用户能够拍摄照片，并使用移动服务生成的 SAS 将图像上载到 Azure。
+在本教程中，你将要向 [GetStartedWithData 示例应用程序项目](/documentation/articles/mobile-services-windows-phone-get-started-data)添加功能，使用户能够拍摄照片，并使用移动服务生成的 SAS 将图像上载到 Azure。
 
 
-## 先决条件
+##先决条件
 
 本教程需要的内容如下：
 
@@ -33,10 +33,10 @@
 + [Windows Phone SDK 8.0] 或更高版本
 + 为 Microsoft Visual Studio 安装 Nuget Package Manager。
 + [Azure 存储帐户][How To Create a Storage Account]
-+ 完成教程[将移动服务添加到现有应用程序](mobile-services-windows-phone-get-started-data)  
++ 完成教程[将移动服务添加到现有应用程序](/documentation/articles/mobile-services-windows-phone-get-started-data)  
 
 
-## 安装 Windows Phone 应用程序的存储客户端
+##安装 Windows Phone 应用程序的存储客户端
 
 若要使用 SAS 将图像上载到 Blob 存储，必须先添加 NuGet 包，该包用于安装 Windows Phone 应用程序的存储客户端库。
 
@@ -50,7 +50,7 @@
 
 接下来，你要更新快速入门应用程序以捕获和上载图像。
 
-## 在管理门户中更新已注册的插入脚本
+##在管理门户中更新已注册的插入脚本
 
 
 [AZURE.INCLUDE [mobile-services-configure-blob-storage](../includes/mobile-services-configure-blob-storage.md)]
@@ -60,7 +60,7 @@
 [AZURE.INCLUDE [mobile-services-windows-phone-upload-to-blob-storage](../includes/mobile-services-windows-phone-upload-to-blob-storage.md)]
 
 
-## 后续步骤
+##后续步骤
 
 现在，你已能够通过将移动服务与 Blob 服务集成安全地上载图片，请查看一些其他的后端服务和集成主题：
 
@@ -72,7 +72,7 @@
 
   了解如何使用移动服务作业计划程序功能，定义按你定义的计划执行的服务器脚本代码。
 
-## 另请参阅
+##另请参阅
 
 + [移动服务服务器脚本参考]
 
@@ -96,4 +96,4 @@
 [移动服务 .NET 操作方法概念性参考]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 [Windows Phone SDK 8.0]: http://www.microsoft.com/zh-cn/download/details.aspx?id=35471
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

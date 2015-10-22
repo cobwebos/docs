@@ -10,33 +10,29 @@
 
 <tags
    ms.service="hdinsight"
-   ms.date="07/24/2015"
+   ms.date="08/12/2015"
    wacn.date=""/>
 
-# 有关在 Linux 上使用 HDInsight 的信息（预览版）
+# 有关在 Linux 上使用 HDInsight 的信息
 
 基于 Linux 的 Azure HDInsight 群集提供基于熟悉的 Linux 环境并在 Azure 云中运行的 Hadoop。在大多数情况下，它的工作方式应该与其他任何 Hadoop-on-Linux 安装完全相同。本文档指出了你应该注意的具体差异。
 
 ## 域名
 
-连接到群集时要使用的完全限定域名 (FQDN) 是 **&lt;clustername>.azurehdinsight.net** 或（仅限 SSH）**&lt;clustername-ssh>.azurehdinsight.cn**。
+连接到群集时要使用的完全限定域名 (FQDN) 是 **&lt;clustername>.azurehdinsight.cn** 或（仅限 SSH）**&lt;clustername-ssh>.azurehdinsight.cn**。
 
 
 ## 对服务的远程访问
 
 * **Ambari (web)** - https://&lt;clustername>.azurehdinsight.cn
 
-	> [AZURE.NOTE]使用群集管理员用户和密码进行身份验证，然后登录到 Ambari。这也使用群集管理员用户和密码。
+	使用群集管理员用户和密码进行身份验证，然后登录到 Ambari。这也使用群集管理员用户和密码。
+
+	身份验证是纯文本身份验证 - 始终使用 HTTPS 来帮助确保连接是安全的。
+
+	> [AZURE.IMPORTANT]虽然可以直接通过 Internet 访问群集的 Ambari，但若要使用某些功能，则需要根据访问群集所用的内部域名的节点来达到目的。由于这是内部域名且未公开，因此，在尝试通过 Internet 访问某些功能时，你将会收到“找不到服务器”的错误。
 	>
-	> 身份验证是纯文本身份验证 - 始终使用 HTTPS 来帮助确保连接是安全的。
-
-	虽然可以直接通过 Internet 访问群集的 Ambari，但若要使用某些功能，则需要根据访问群集所用的内部域名的节点来达到目的。由于这是内部域名且未公开，因此，在尝试通过 Internet 访问某些功能时，你将会收到“找不到服务器”的错误。
-
-	若要解决此问题，请使用 SSH 隧道通过代理将 Web 流量传送到群集头节点。使用以下文章中的 **SSH 隧道**部分，创建从本地计算机上的端口到群集的 SSH 隧道：
-
-	* [在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix)：通过使用 `ssh` 命令创建 SSH 隧道的步骤。
-
-	* [从 Windows 在 HDInsight 上配合使用 SSH 与基于 Linux 的 Hadoop](hdinsight-hadoop-linux-use-ssh-windows)：使用 PuTTY 来创建 SSH 隧道的相关步骤。
+	> 若要使用 Ambari web UI 的全部功能，请使用 SSH 隧道通过代理将 Web 流量传送到群集头节点。请参阅[使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI](hdinsight-linux-ambari-ssh-tunnel)
 
 * **Ambari (REST)** - https://&lt;clustername>.azurehdinsight.cn/ambari
 
@@ -50,7 +46,7 @@
 	>
 	> 身份验证是纯文本身份验证 - 始终使用 HTTPS 来帮助确保连接是安全的。
 
-* **SSH** - &lt;clustername>-ssh.azurehdinsight.cn on port 22on port 22 or 23.端口 22 用于连接 headnode0，而端口 23 用于连接 headnode1。有关头节点的详细信息，请参阅 [HDInsight 中的 Hadoop 群集的可用性和可靠性](hdinsight-high-availability-linux)。
+* **SSH** - &lt;clustername>-ssh.azurehdinsight.cn，使用端口 22 或 23。端口 22 用于连接 headnode0，而端口 23 用于连接 headnode1。有关头节点的详细信息，请参阅 [HDInsight 中的 Hadoop 群集的可用性和可靠性](hdinsight-high-availability-linux)。
 
 	> [AZURE.NOTE]你只能通过 SSH 从客户端计算机访问群集头节点。在连接后，你可以通过使用 SSH 从头节点访问从节点。
 
@@ -77,7 +73,7 @@ HDInsight 使用 Azure Blob 存储作为默认存储，以提供以下优势：
 
 	hadoop fs -ls /example/data
 
-一些命令可能会要求你指定使用的是 Blob 存储。对于这些命令，你可以在它的前面加上前缀 ****WASB://**。
+一些命令可能会要求你指定使用的是 Blob 存储。对于这些命令，你可以在它的前面加上前缀 **WASB://**。
 
 HDInsight 还允许你将多个 Blob 存储帐户与群集相关联。若要访问非默认 Blob 存储帐户上的数据，可以使用以下格式：**WASB://&lt;container-name>@&lt;account-name>.blob.core.chinacloudapi.cn/**。例如，以下命令会列出指定容器和 Blob 存储帐户的 **/example/data** 目录的内容：
 
@@ -113,7 +109,7 @@ HDInsight 还允许你将多个 Blob 存储帐户与群集相关联。若要访�
 
 除了通过群集的 Hadoop 命令，还有各种不同方式可用来访问 Blob：
 
-* [Azure 跨平台命令行界面](xplat-cli)：用于 Azure 的跨平台命令。在安装后，使用 `azure storage` 命令获取使用存储的帮助，或者使用 `azure blob` 获取特定于 Blob 的命令。
+* [适用于 Mac、Linux 和 Windows 的 Azure CLI](xplat-cli)：适用于 Azure 的命令行界面命令。在安装后，使用 `azure storage` 命令获取有关使用存储的帮助，或者使用 `azure blob` 获取特定于 Blob 的命令。
 
 * [blobxfer.py](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage)：用于 Azure 存储中的 Blob 的 python 脚本。
 
@@ -133,10 +129,80 @@ HDInsight 还允许你将多个 Blob 存储帐户与群集相关联。若要访�
 
 * [存储 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dd135733.aspx)
 
-##后续步骤
+##<a name="scaling"></a>缩放你的群集
+
+群集缩放功能可让你更改 Azure HDInsight 中运行的群集使用的数据节点数，而无需删除然后再重新创建群集。
+
+你可以在其他作业或进程正在群集上运行时执行缩放操作。
+
+不同的群集类型会受缩放操作影响，如下所示：
+
+* __Hadoop__：减少群集中的节点数时，群集中的某些服务将重新启动。这会导致正在运行或挂起的作业在缩放操作完成时失败。你可以在操作完成后重新提交这些作业。
+
+* __HBase__：在完成缩放操作后的几分钟内，区域服务器会自动进行平衡。若要手动平衡区域服务器，请使用以下步骤：
+
+	1. 使用 SSH 连接到 HDInsight 群集。有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文档之一：
+
+		* [在 Linux、Unix 和 Mac OS X 上将 SSH 与 HDInsight 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix)
+
+		* [在 Windows 上将 SSH 与 HDInsight 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows)
+
+	1. 使用以下命令来启动 HBase shell：
+
+			hbase shell
+
+	2. 加载 HBase shell 后，使用以下方法来手动平衡区域服务器：
+
+			balancer
+
+* __Storm__：你应在执行缩放操作后重新平衡任何正在运行的 Storm 拓扑。这允许拓扑根据群集中的新节点数重新调整并行度设置。若要重新平衡正在运行的拓扑，请使用下列选项之一：
+
+	* __SSH__：连接到服务器并使用以下命令来重新平衡拓扑：
+
+			storm rebalance TOPOLOGYNAME
+
+		你还可以指定参数来替代拓扑原来提供的并行度提示。例如，`storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` 会将拓扑重新配置为 5 个工作进程，蓝色的 BlueSpout 组件有 3 个 executor，黄色 YellowBolt 组件有 10 个 executor。
+
+	* __Storm UI__：使用以下步骤来重新平衡使用 Storm UI 的拓扑。
+
+		1. [创建到群集的 SSH 隧道并打开 Ambari Web UI](/documentation/articles/hdinsight-linux-ambari-ssh-tunnel)。
+
+		2. 从页面左侧的服务列表中选择 __Storm__。然后从“快速链接”中选择 __Storm UI__。
+
+			![快速链接中的 Storm UI 条目](./media/hdinsight-hadoop-linux-information/ambari-storm.png)
+
+			这将会显示 Storm UI：
+
+			![Storm UI](./media/hdinsight-hadoop-linux-information/storm-ui.png)
+
+		3. 选择要重新平衡的拓扑，然后选择“重新平衡”按钮。输入执行重新平衡操作前的延迟。
+
+有关缩放 HDInsight 群集的特定信息，请参阅：
+
+* [使用 Azure 预览门户管理 HDInsight 中的 Hadoop 群集](/documentation/articles/hdinsight-administer-use-portal-linux#scaling)
+
+* [使用 Azure PowerShell 管理 HDInsight 中的 Hadoop 群集](/documentation/articles/hdinsight-administer-use-command-line#scaling)
+
+## 如何安装 Hue（或其他 Hadoop 组件）？
+
+HDInsight 是一项托管服务，这意味着如果检测到问题，Azure 可能会自动破坏并重新预配群集中的节点。因此，不建议在群集节点上手动安装组件。
+
+请改用 [HDInsight 脚本操作](hdinsight-hadoop-customize-cluster)。
+
+脚本操作是在群集预配期间运行的 Bash 脚本，可用于在群集上安装其他组件。提供了用于安装以下组件的示例脚本：
+
+* [Hue](hdinsight-hadoop-hue-linux)
+* [Giraph](hdinsight-hadoop-giraph-install-linux)
+* [R](hdinsight-hadoop-r-scripts-linux)
+* [Solr](hdinsight-hadoop-solr-install-linux)
+* [Spark](hdinsight-hadoop-spark-install-linux)
+
+有关开发你自己的脚本操作的信息，请参阅[使用 HDInsight 进行脚本操作开发](hdinsight-hadoop-script-actions-linux)。
+
+## 后续步骤
 
 * [将 Hive 与 HDInsight 配合使用](/documentation/articles/hdinsight-use-hive/)
 * [将 Pig 与 HDInsight 配合使用](/documentation/articles/hdinsight-use-pig/)
 * [将 MapReduce 作业与 HDInsight 配合使用](/documentation/articles/hdinsight-use-mapreduce)
 
-<!---HONumber=71-->
+<!---HONumber=74-->

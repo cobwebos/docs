@@ -1,15 +1,16 @@
 <properties
-	pageTitle="在 HDInsight 上为 Hadoop 服务启用堆转储 | Windows Azure"
+	pageTitle="在 HDInsight 上为 Hadoop 服务启用堆转储 | Microsoft Azure"
 	description="为基于 Linux 的 HDInsight 群集中的 Hadoop 服务启用堆转储，以便进行调试和分析。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
 	manager="paulettm"
-	editor="cgronlun"/>
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
 	ms.service="hdinsight"
-	ms.date="06/19/2015"
+	ms.date="09/02/2015"
 	wacn.date=""/>
 
 
@@ -37,7 +38,7 @@
 
 在某项服务启动时，可以通过将选项（有时称为 opts 或参数）传递到 JVM 来启用堆转储。对于大多数 Hadoop 服务，这可以通过修改用于启动该服务的 shell 脚本来完成。
 
-在每个脚本中，有一个针对 **\*\_OPTS** 的导出，其中包含传递到 JVM 的选项。例如，在 **hadoop-env.sh** 脚本中，以 `export HADOOP_NAMENODE_OPTS=` 开头的行包含适用于 NameNode 服务的选项。
+在每个脚本中，有一个针对 \***\_OPTS** 的导出，其中包含传递到 JVM 的选项。例如，在 **hadoop-env.sh** 脚本中，以 `export HADOOP_NAMENODE_OPTS=` 开头的行包含适用于 NameNode 服务的选项。
 
 映射和化简进程稍有不同，因为这些进程是 MapReduce 服务的子进程。每个映射或化简进程都在子容器中运行，其中有两个条目包含这些进程的 JVM 选项。二者均包含在 **mapred-site.xml** 中：
 
@@ -92,9 +93,9 @@
 
     ![筛选的列表](./media/hdinsight-hadoop-heap-dump-linux/filter.png)
 
-4. 查找需为其启用堆转储的服务的 **\*\_OPTS** 条目，然后添加你希望启用的选项。在下图中，我已将 `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` 添加到 **HADOOP_NAMENODE_OPTS** 条目：
+4. 查找需为其启用堆转储的服务的 ***\_OPTS** 条目，然后添加你希望启用的选项。在下图中，我已将 `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` 添加到 **HADOOP\_NAMENODE\_OPTS** 条目：
 
-    ![HADOOP_NAMENODE_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
+    ![HADOOP\_NAMENODE\_OPTS with -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/](./media/hdinsight-hadoop-heap-dump-linux/opts.png)
 
 	> [AZURE.NOTE]为映射或化简进程启用堆转储时，则需查找标记为 **mapreduce.admin.map.child.java.opts** 和 **mapreduce.admin.reduce.child.java.opts** 的字段。
 
@@ -116,4 +117,4 @@
 
 8. 一旦重新启动服务，可使用**“服务操作”**按钮**关闭维护模式**。这样一来，Ambari 就可以继续监视服务的警报。
 
-<!---HONumber=67-->
+<!---HONumber=74-->

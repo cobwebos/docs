@@ -9,14 +9,14 @@
 
 <tags 
 	ms.service="app-service-web" 
-	ms.date="06/26/2015" 
+	ms.date="09/16/2015" 
 	wacn.date=""/>
 # 使用 WebJobs 运行后台任务
 
 ## 概述
 你可以使用三种方式在网站上运行程序或脚本，即：按需、连续或按计划。使用 WebJobs 无需支付额外的费用。
 
-本文说明如何使用 Azure 管理门户来部署 Web 作业。有关如何使用 Visual Studio 或连续交付过程进行部署的信息，请参阅[如何将 Azure WebJobs 部署到 Azure 网站](/zh-cn/documentation/articles/websites-dotnet-deploy-webjobs)。
+本文说明如何使用 Azure 管理门户来部署 Web 作业。有关如何使用 Visual Studio 或连续交付过程进行部署的信息，请参阅[如何将 Azure Web 作业部署到 Azure 网站](/documentation/articles/websites-dotnet-deploy-webjobs)。
 
 Azure WebJobs SDK 简化了许多 Web 作业编程任务。有关详细信息，请参阅[什么是 WebJobs SDK](../websites-dotnet-webjobs-sdk)。
 
@@ -40,16 +40,17 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。有关详细信息，
 * .php（使用 php）
 * .py（使用 Python）
 * .js（使用 Node）
+* .jar（使用 java）
 
-## <a name="CreateOnDemand"></a>创建按需运行任务
+## <a name="CreateOnDemand"></a>在门户中创建按需 Web 作业
 
-1. 在“WebJobs”页的命令栏中，单击“添加”。此时将显示“新作业”对话框。
+1. 在“Web 作业”页的命令栏中，单击“添加”。此时将显示“新作业”对话框。
 	
 	![按需运行任务][OnDemandWebJob]
 	
 2. 在“名称”下，提供任务的名称。名称必须以字母或数字开头，并且不能包含除“-”和“\_”以外的任何特殊字符。
 	
-3. 在“内容（Zip 文件 – 最大 100MB）”框中，浏览到包含你的脚本的 zip 文件。Zip 文件应包含可执行文件 (.exe .cmd .bat .sh .php .py .js)，以及运行程序或脚本所需的任何支持文件。
+3. 在“内容(Zip 文件 – 最大 100MB)”框中，浏览到包含你的脚本的 zip 文件。Zip 文件应包含可执行文件 (.exe .cmd .bat .sh .php .py .js)，以及运行程序或脚本所需的任何支持文件。
 	
 4. 在“如何运行”框中，选择“按需运行”。
 	
@@ -119,9 +120,9 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。有关详细信息，
 	
 ### <a name="Scheduler"></a>计划作业和 Azure 计划程序
 
-可以在 Azure 计划程序门户中进一步配置计划作业。
+可以在 Azure 计划程序[门户(http://manage.windowsazure.cn)中进一步配置计划作业。
 
-1.	在“WebJobs”页上，单击作业的“计划”链接，以导航到 Azure 计划程序门户页。 
+1.	在“Web 作业”页上，单击作业的“计划”链接，以导航到 Azure 计划程序门户页。 
 	
 	![链接到 Azure 计划程序][LinkToScheduler]
 	
@@ -135,7 +136,7 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。有关详细信息，
 	
 ## <a name="ViewJobHistory"></a>查看作业历史记录
 
-1. 若要查看作业的执行历史记录（包括使用 WebJobs SDK 创建的作业），请单击 WebJobs 边栏选项卡的“日志”列下方的相应链接。（如果需要，你可以使用剪贴板图标将日志文件页的 URL 复制到剪贴板中）
+1. 若要查看作业的执行历史记录（包括使用 WebJobs SDK 创建的作业），请单击“Web 作业”边栏选项卡的“日志”列下方的相应链接。（如果需要，你可以使用剪贴板图标将日志文件页的 URL 复制到剪贴板中）
 	
 	![日志链接](./media/web-sites-create-web-jobs/wjbladelogslink.png)
 		
@@ -143,7 +144,7 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。有关详细信息，
 	
 	![WebJobDetails][WebJobDetails]
 	
-3. 此时将显示“WebJob 运行详细信息”页。单击“切换输出”以查看日志内容的文本。输出日志使用文本格式。
+3. 此时将显示“Web 作业运行详细信息”页。单击“切换输出”以查看日志内容的文本。输出日志使用文本格式。
 	
 	![Web 作业运行详细信息][WebJobRunDetails]
 	
@@ -151,7 +152,7 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。有关详细信息，
 	
 	![下载日志输出][DownloadLogOutput]
 	
-5. 页面顶部的“WebJobs”链接提供了一种简便方法，可用于访问历史记录仪表板上的 Web 作业列表。
+5. 页面顶部的“Web 作业”链接提供了一种简便方法，可用于访问历史记录仪表板上的 Web 作业列表。
 	
 	![链接到 Web 作业列表][WebJobsLinkToDashboardList]
 	
@@ -199,4 +200,4 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。有关详细信息，
 [SchedulerPortal]: ./media/web-sites-create-web-jobs/32SchedulerPortal.png
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
 
-<!---HONumber=71-->
+<!---HONumber=74-->

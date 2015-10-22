@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用移动服务中的脱机数据处理冲突 (Windows Phone) | 移动开发人员中心" 
+	pageTitle="在移动服务中处理与脱机数据的冲突 (Windows Phone) | Microsoft Azure" 
 	description="了解在 Windows Phone 应用程序中同步脱机数据时如何使用 Azure 移动服务处理冲突" 
 	documentationCenter="windows" 
 	authors="wesmc7777" 
@@ -13,23 +13,23 @@
 	wacn.date=""/>
 
 
-#  在“移动服务”中处理与脱机数据同步的冲突
+# 在“移动服务”中处理与脱机数据同步的冲突
 
 [AZURE.INCLUDE [mobile-services-selector-offline-conflicts](../includes/mobile-services-selector-offline-conflicts.md)]
 
-## 概述
+##概述
 
 本主题演示在使用 Azure 移动服务的脱机功能时如何同步数据和处理冲突。在本教程中，你将下载一个同时支持脱机和联机数据的应用程序，将移动服务与该应用程序集成，然后在运行该应用程序时登录到 Azure 管理门户以查看和更新数据库。
 
 本教程以前一教程[脱机数据处理入门]中的步骤和示例应用程序为基础。在开始本教程之前，必须先完成[脱机数据处理入门]。
 
 
-## 先决条件
+##先决条件
 
 本教程需要 Visual Studio 2012 和 [Windows Phone 8 SDK]。
 
 
-## 下载示例项目
+##下载示例项目
 
 
 
@@ -52,7 +52,7 @@
 请注意，此应用程序尚未连接到任何移动服务，因此“推送”和“拉取”按钮将引发异常。
 
 
-## 向数据模型添加列
+##向数据模型添加列
 
 在本节中，你将更新移动服务的数据库，使之包括具有截止日期列的 TodoItem 表。此应用程序允许你在运行时更改项目的截止日期，以便在本教程的后面部分制造同步冲突。
 
@@ -62,7 +62,7 @@
 
 更新数据库，使之包括该表。
 
-###  <a name="dotnet-backend"></a>更新 .NET 后端移动服务的数据库 
+### <a name="dotnet-backend"></a>更新 .NET 后端移动服务的数据库 
 
 如果你使用的是移动服务的 .NET 后端，请执行以下步骤来更新数据库的架构。
 
@@ -77,11 +77,11 @@
           }
 
 
-3. 在 Visual Studio 的解决方案资源管理器中，展开“App_Start”文件夹，然后打开 WebApiConfig.cs 文件。
+3. 在 Visual Studio 的解决方案资源管理器中，展开“App\_Start”文件夹，然后打开 WebApiConfig.cs 文件。
 
     请注意，在 WebApiConfig.cs 文件中，默认数据库初始值设定项类是从 `DropCreateDatabaseIfModelChanges` 类派生的。这意味着，对该模型的任何更改将导致表被删除并重新创建，以适应新模型。因此表中的数据将丢失，并且表将重新植入。修改数据库初始值设定项的 Seed 方法，使下述 `Seed()` 初始化函数可以初始化新的 DueDate 列。保存 WebApiConfig.cs 文件。
 
-    >[AZURE.NOTE]使用默认数据库初始值设定项时，只要实体框架在代码优先模型定义中检测到数据模型更改，它就会删除并重新创建数据库。若要进行此数据模型更改并维护数据库中的现有数据，必须使用代码优先迁移。有关更多信息，请参阅[如何使用代码优先迁移来更新数据模型](mobile-services-dotnet-backend-how-to-use-code-first-migrations)。
+    >[AZURE.NOTE]使用默认数据库初始值设定项时，只要实体框架在代码优先模型定义中检测到数据模型更改，它就会删除并重新创建数据库。若要进行此数据模型更改并维护数据库中的现有数据，必须使用代码优先迁移。有关更多信息，请参阅[如何使用代码优先迁移来更新数据模型](/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations)。
 
 
         new TodoItem { Id = "1", Text = "First item", Complete = false, DueDate = DateTime.Today },
@@ -97,7 +97,7 @@
 5. 在 Visual Studio 的解决方案资源管理器中，右键单击你的 .NET 后端移动服务项目，然后单击“发布”以发布你的更改。
 
 
-###  <a name="javascript-backend"></a>更新 JavaScript 后端移动服务的数据库
+### <a name="javascript-backend"></a>更新 JavaScript 后端移动服务的数据库
 
 对于 JavaScript 后端移动服务，你将添加一个名为“TodoWithDate”的新表。若要为 JavaScript 后端移动服务添加 **TodoWithDate** 表，请执行以下步骤。
 
@@ -108,7 +108,7 @@
   3. 单击页面底部的“创建”，创建一个名为“TodoWithDate”的新表。
 
 
-## 针对移动服务测试应用程序
+##针对移动服务测试应用程序
 
 现在可以针对移动服务测试应用程序了。
 
@@ -141,15 +141,15 @@
 
    	 
 
-7. 回到应用程序，单击“推送”。
+6. 回到应用程序，单击“推送”。
 
-8. 在管理门户中，单击“TodoItem”表上的“刷新”。现在，你应该看到你在应用程序中输入的数据。
+7. 在管理门户中，单击“TodoItem”表上的“刷新”。现在，你应该看到你在应用程序中输入的数据。
 
    	![][3]
 
-9. 让**模拟器 WVGA 512MB** 保持启动并运行状态，为下一节做准备。在下一节中，你将在两个模拟器中运行此应用程序以制造冲突。
+8. 让**模拟器 WVGA 512MB** 保持启动并运行状态，为下一节做准备。在下一节中，你将在两个模拟器中运行此应用程序以制造冲突。
 
-## 更新后端中的数据以制造冲突
+##更新后端中的数据以制造冲突
 
 在实际情况中，当一个应用程序将更新推送到数据库中的一条记录，然后另一个应用程序尝试使用该记录中过时的版本字段将更改推送到同一条记录时，会发生同步冲突。如果应用程序的一个实例在未拉取已更新记录的情况下尝试更新同一条记录，则会发生冲突，并且冲突将在应用程序中作为 `MobileServicePreconditionFailedException` 被捕获。
 
@@ -181,7 +181,7 @@
 
     ![][8]
 
-##  查看处理同步冲突的代码
+## 查看处理同步冲突的代码
 
 若要设置脱机功能以检测冲突，必须在本地数据库和数据传输对象中包括版本列。类 `TodoItem` 具有以下成员：
 
@@ -236,4 +236,4 @@
 [SQLite for Windows Phone 8]: http://go.microsoft.com/fwlink/?LinkId=397953
 [Get started with data]: /documentation/articles/mobile-services-windows-phone-get-started-data/
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

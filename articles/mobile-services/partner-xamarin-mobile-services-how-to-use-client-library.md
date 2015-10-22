@@ -1,25 +1,25 @@
-<properties 
-	pageTitle="如何使用 Xamarin 组件客户端 - Azure 移动服务功能指南" 
-	description="了解如何使用适用于 Azure 移动服务的 Xamarin 组件客户端。" 
-	authors="lindydonna" 
-	manager="dwrede" 
-	editor="" 
-	services="mobile-services" 
+<properties
+	pageTitle="如何使用 Xamarin 组件客户端 | Microsoft Azure"
+	description="了解如何使用适用于 Azure 移动服务的 Xamarin 组件客户端。"
+	authors="lindydonna"
+	manager="dwrede"
+	editor=""
+	services="mobile-services"
 	documentationCenter="xamarin"/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="04/24/2015" 
+	ms.date="08/18/2015" 
 	wacn.date=""/>
 
-#  如何使用适用于 Azure 移动服务的 Xamarin 组件客户端
+# 如何使用适用于 Azure 移动服务的 Xamarin 组件客户端
 [AZURE.INCLUDE [mobile-services-selector-client-library](../includes/mobile-services-selector-client-library.md)]
 
 本指南演示如何在用于 iOS 和 Android 的 Xamarin 应用程序中使用针对 Azure 移动服务的 Xamarin 组件客户端来执行常见任务。所述的任务包括查询数据、插入、更新和删除数据、对用户进行身份验证和处理错误。如果你是第一次使用移动服务，最好先完成“移动服务快速入门”教程 ([Xamarin.iOS][Xamarin.iOS quickstart tutorial]/[Xamarin.Android][Xamarin.Android quickstart tutorial]) 以及“.NET 中的数据处理入门”教程 ([Xamarin.iOS][Xamarin.iOS data tutorial]/[Xamarin.Android][Xamarin.Android data tutorial])。快速入门教程要求安装 [Xamarin][Xamarin download]（即[移动服务 SDK]），它可帮助你配置帐户并创建第一个移动服务。
 
 [AZURE.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
-##  <a name="setup"></a>安装与先决条件
+## <a name="setup"></a>安装与先决条件
 
 假设你已创建一个移动服务和一个表。有关详细信息，请参阅[创建表](http://go.microsoft.com/fwlink/?LinkId=298592)。在本主题使用的代码中，表的名称为 `TodoItem`，其中包含以下列：`id`、`Text` 和 `Complete`。
 
@@ -39,7 +39,7 @@
 	
 启用动态架构后，Azure 移动服务将基于 insert 或 update 请求中的对象自动生成新列。有关详细信息，请参阅[动态架构](http://go.microsoft.com/fwlink/?LinkId=296271)。
 
-##  <a name="create-client"></a>如何创建移动服务客户端
+## <a name="create-client"></a>如何创建移动服务客户端
 
 以下代码将创建用于访问移动服务的 `MobileServiceClient` 对象。
 			
@@ -50,7 +50,7 @@
 
 在上面的代码中，请将 `AppUrl` 和 `AppKey` 依次替换为移动服务 URL 和应用程序密钥。在 Azure 管理门户中选择你的移动服务，然后单击“仪表板”即可获取这两个值。
 
-##  <a name="instantiating"></a>如何创建表引用
+## <a name="instantiating"></a>如何创建表引用
 
 访问或修改移动服务表中数据的所有代码都将对 `MobileServiceTable` 对象调用函数。对 `MobileServiceClient` 的实例调用 [GetTable](http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554275.aspx) 函数可获取对表的引用。
 
@@ -59,11 +59,11 @@
 
 这是类型化的序列化模型；请参阅下面有关<a href="#untyped">非类型化序列化模型</a>的介绍。
 			
-##  <a name="querying"></a>如何从移动服务查询数据 
+## <a name="querying"></a>如何从移动服务查询数据 
 
 本部分介绍如何向移动服务发出查询。其中的小节介绍了排序、筛选和分页等不同操作。
 			
-###  <a name="filtering"></a>如何筛选返回的数据
+### <a name="filtering"></a>如何筛选返回的数据
 
 以下代码演示了如何通过在查询中包含 `Where` 子句来筛选数据。该代码将返回 `Complete` 属性等于 `false` 的 `todoTable` 中的所有项。`Where` 函数针对该表将一个行筛选谓词应用到查询。
 	
@@ -111,7 +111,7 @@
 
 `where` 子句支持可转换成移动服务 OData 子集的操作，其中包括关系运算符（==、!=、<、<=、>、>=）、数学运算符（+、-、/、*、%）、数字精度（Math.Floor、Math.Ceiling）、字符串函数（Length、Substring、Replace、IndexOf、StartsWith、EndsWith）、日期属性（Year、Month、Day、Hour、Minute、Second）、对象的访问属性，以及组合了上述所有操作的表达式。
 
-###  <a name="sorting"></a>如何为返回的数据排序
+### <a name="sorting"></a>如何为返回的数据排序
 
 以下代码演示了如何通过在查询中包含 `OrderBy` 或 `OrderByDescending` 函数来为数据排序。该代码将返回 `todoTable` 中的项，这些项已按 `Text` 字段的升序排序。默认情况下，服务器只返回前 50 个元素。
 
@@ -129,7 +129,7 @@
 					.OrderByDescending(todoItem => todoItem.Text)       
  	List<TodoItem> items = await query.ToListAsync();			
 
-###  <a name="paging"></a>如何在页中返回数据
+### <a name="paging"></a>如何在页中返回数据
 
 以下代码演示了如何通过在查询中使用 `Take` 和 `Skip` 子句来实现返回数据的分页。执行以下查询后，将返回表中的前三个项。
 
@@ -152,7 +152,7 @@
 
 这是将硬编码分页值传递给 `Take` 和 `Skip` 方法的简化方案。在实际应用中，你可以对页导航控件或类似的 UI 使用类似于上面的查询，让用户导航到上一页和下一页。
 
-###  <a name="selecting"></a>如何选择特定的列
+### <a name="selecting"></a>如何选择特定的列
 
 你可以通过在查询中添加 `Select` 子句来指定要包含在结果中的属性集。例如，以下代码演示了如何做到只选择一个字段，以及如何选择并格式化多个字段：
 
@@ -175,14 +175,14 @@
 					.Take(3);
 	List<string> items = await query.ToListAsync();
 	
-###  <a name="lookingup"></a>如何：按 ID 查找数据
+### <a name="lookingup"></a>如何：按 ID 查找数据
 
 使用 `LookupAsync` 函数可以查找数据库中具有特定 ID 的对象。
 
 	// This query filters out the item with the ID of 25
 	TodoItem item25 = await todoTable.LookupAsync(25);
 
-##  <a name="inserting"></a>如何在移动服务中插入数据
+## <a name="inserting"></a>如何在移动服务中插入数据
 
 > [AZURE.NOTE]如果你想要对某个类型执行插入、查找、删除或更新操作，则需要创建一个名为 **Id** 的成员（不考虑大小写）。正因如此，示例类 **TodoItem** 包含了一个名为 **Id** 的成员。在插入操作期间，ID 值不能设置为默认值以外的任何值；相比之下，在更新和删除操作中 ID 值应始终设置为非默认值并且应始终存在。
 
@@ -201,7 +201,7 @@
 
 如果你尝试插入已设置“Id”字段的项目，你将收到服务发出的 `MobileServiceInvalidOperationException`。
 
-##  <a name="modifying"></a>如何：在移动服务中修改数据
+## <a name="modifying"></a>如何：在移动服务中修改数据
 
 以下代码演示了如何使用新的信息更新具有相同 ID 的现有实例。参数包含要作为 .NET 对象更新的数据。
 
@@ -219,7 +219,7 @@
 如果你尝试更新某个项但尚未设置“Id”字段，则服务无法识别要更新的实例，因此你会收到服务发出的 `MobileServiceInvalidOperationException`。同样，如果你尝试更新某个非类型化项但尚未设置“Id”字段，则也会收到服务发出的 `MobileServiceInvalidOperationException`。
 			
 			
-##  <a name="deleting"></a>如何在移动服务中删除数据
+## <a name="deleting"></a>如何在移动服务中删除数据
 
 以下代码演示了如何删除现有实例。该实例由 `todoItem` 中设置的“Id”字段标识。
 
@@ -235,13 +235,13 @@
 		
 
 
-##  <a name="authentication"></a>如何对用户进行身份验证
+## <a name="authentication"></a>如何对用户进行身份验证
 
 移动服务支持使用各种外部标识提供者对应用程序用户进行身份验证和授权，这些提供者包括：Facebook、Google、Microsoft 帐户、Twitter 和 Active Directory。你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。你还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。有关详细信息，请参阅“身份验证入门”教程 ([Xamarin.iOS][Xamarin.iOS authentication]/[Xamarin.Android][Xamarin.Android authentication])。
 
 支持两种身份验证流：_服务器流_和_客户端流_。服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。客户端流依赖于提供者和设备特定的 SDK，因此允许与设备特定的功能进行更深入的集成。
 
-###  服务器流
+### 服务器流
 若要让移动服务管理 Windows 应用商店或 Windows Phone 应用程序中的身份验证过程，必须将你的应用程序注册到标识提供者。然后，需要在移动服务中配置提供者提供的应用程序 ID 和机密。有关详细信息，请参阅“身份验证入门”教程 ([Xamarin.iOS][Xamarin.iOS authentication]/[Xamarin.Android][Xamarin.Android authentication])。
 
 注册标识提供者后，只需结合提供者的 [MobileServiceAuthenticationProvider] 值调用 [LoginAsync 方法]。例如，以下代码将使用 Facebook 启动服务器流登录。
@@ -274,7 +274,7 @@
 
 在此情况下，移动服务将通过以下方式管理 OAuth 2.0 身份验证流：显示选定提供者的登录页，并在用户成功使用标识提供者登录后生成移动服务身份验证令牌。[LoginAsync 方法]将返回 [MobileServiceUser]，该类将提供已经过身份验证的用户的 [userId]，以及 JSON Web 令牌 (JWT) 形式的 [MobileServiceAuthenticationToken]。你可以缓存此令牌，并在它过期之前重复使用。有关详细信息，请参阅[缓存身份验证令牌]。
 
-###  客户端流
+### 客户端流
 
 你的应用程序还能够独立联系标识提供者，然后将返回的令牌提供给移动服务以进行身份验证。使用此客户端流可为用户提供单一登录体验，或者从标识提供者中检索其他用户数据。
 
@@ -311,7 +311,7 @@
 		}
 	}
 
-###  <a name="caching"></a>缓存身份验证令牌
+### <a name="caching"></a>缓存身份验证令牌
 在某些情况下，完成首次用户身份验证后，可以避免调用 login 方法。你可以使用本地安全存储（如 [Xamarin.Auth][Xamarin.Auth component]）缓存当前用户首次登录时使用的标识，以后每次该用户登录时，系统都会检查缓存中是否存在该用户标识。如果缓存为空，则用户仍然需要完成整个登录过程。
 
 	using Xamarin.Auth;
@@ -344,7 +344,7 @@
 	accountStore.Delete(account, "Facebook");
 
 
-##  <a name="errors"></a>如何：处理错误
+## <a name="errors"></a>如何：处理错误
 
 在移动服务中，你可能会遇到各种形式的错误，并且可以通过多种方式来验证和解决这些错误。
 
@@ -378,7 +378,7 @@
 		}
 	}
 
-##  <a name="untyped"></a>如何处理非类型化数据
+## <a name="untyped"></a>如何处理非类型化数据
 
 Xamarin 组件客户端在设计上支持强类型化方案。但有时，松散类型化的体验可为用户带来方便；例如，在处理采用开放架构的对象时，可能就需要这种体验。可按如下所示启用这种方案。在查询中，先指定 LINQ 语句并使用有线格式。
 
@@ -390,25 +390,31 @@ Xamarin 组件客户端在设计上支持强类型化方案。但有时，松散
 
 此时，你将获取一些可以像属性包一样使用的 JSON 值。有关 JToken 和 Json.NET 的详细信息，请参阅 [Json.NET](http://json.codeplex.com/)
 
-##  <a name="unit-testing"></a>如何：设计单元测试
+## <a name="unit-testing"></a>如何：设计单元测试
 
 `MobileServiceClient.GetTable` 返回的值和查询是接口。这使它们可轻松“模拟”用于测试目的，以便创建一个实现测试逻辑的 `MyMockTable : IMobileServiceTable<TodoItem>`。
 
-##  <a name="nextsteps"></a>后续步骤
+## <a name="nextsteps"></a>后续步骤
 
 完成这篇概念性的操作方法参考主题后，请详细了解如何在移动服务中执行重要任务：
 
-* 移动服务入门 ([Xamarin.iOS][Get started with Mobile Services iOS]/[Xamarin.Android][Get started with Mobile Services Android]) <br/>了解移动服务使用方面的基础知识。
+* 移动服务入门 ([Xamarin.iOS][Get started with Mobile Services iOS]/[Xamarin.Android][Get started with Mobile Services Android])
+  <br/>了解移动服务使用方面的基础知识。
 
-* 数据处理入门 ([Xamarin.iOS][Get started with data iOS]/[Xamarin.Android][Get started with data Android]) <br/>了解有关使用移动服务存储和查询数据的详细信息。
+* 数据处理入门 ([Xamarin.iOS][Get started with data iOS]/[Xamarin.Android][Get started with data Android])
+  <br/>了解有关使用移动服务存储和查询数据的详细信息。
 
-* 身份验证入门 ([Xamarin.iOS][Get started with authentication iOS]/[Xamarin.Android][Get started with authentication Android]) <br/>了解如何使用标识提供者对应用程序的用户进行身份验证。
+* 身份验证入门 ([Xamarin.iOS][Get started with authentication iOS]/[Xamarin.Android][Get started with authentication Android])
+  <br/>了解如何使用标识提供者对应用程序的用户进行身份验证。
 
-* 使用脚本验证和修改数据 ([Xamarin.iOS][Validate and modify data with scripts ios]/[Xamarin.Android][Validate and modify data with scripts android]) <br/>了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
+* 使用脚本验证和修改数据 ([Xamarin.iOS][Validate and modify data with scripts ios]/[Xamarin.Android][Validate and modify data with scripts android])
+  <br/>了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
-* 使用分页优化查询 ([Xamarin.iOS][Refine queries with paging iOS]/[Xamarin.Android][Refine queries with paging Android]) <br/>了解如何使用查询中的分页控制单个请求中处理的数据量。
+* 使用分页优化查询 ([Xamarin.iOS][Refine queries with paging iOS]/[Xamarin.Android][Refine queries with paging Android])
+  <br/>了解如何使用查询中的分页控制单个请求中处理的数据量。
 
-* 使用脚本为用户授权 ([Xamarin.iOS][Authorize users with scripts iOS]/[Xamarin.Android][Authorize users with scripts Android]) <br/>了解如何采用移动服务基于已进行身份验证的用户提供的用户 ID 值，并使用该值来筛选移动服务返回的数据。
+* 使用脚本为用户授权 ([Xamarin.iOS][Authorize users with scripts iOS]/[Xamarin.Android][Authorize users with scripts Android])
+  <br/>了解如何采用移动服务基于已进行身份验证的用户提供的用户 ID 值，并使用该值来筛选移动服务返回的数据。
 
 <!-- Anchors. -->
 [What is Mobile Services]: #what-is
@@ -467,4 +473,4 @@ Xamarin 组件客户端在设计上支持强类型化方案。但有时，松散
 [UserID]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid.aspx
 [MobileServiceAuthenticationToken]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken.aspx
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

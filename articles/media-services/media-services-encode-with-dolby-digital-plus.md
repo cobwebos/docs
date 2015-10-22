@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"  
+	ms.date="09/07/2015"   
 	wacn.date=""/>
 
 #使用 Dolby Digital Plus 编码媒体
@@ -598,7 +598,7 @@ Azure Media Encoder 可以使用 DPLM SDK 来测量输入音频中对话的响�
 
 **注意：**
 
-** EBU R128** 模式可以通过 **ITU\_R\_BS\_1770\_2\_DI** 实现
+**EBU R128** 模式可以通过 **ITU\_R\_BS\_1770\_2\_DI** 实现
 
 包括 **Leq(A)** 完全是出于历史原因的考虑，它只能用于特定的旧工作流
 
@@ -646,4 +646,4 @@ Azure Media Encoder 可以使用 DPLM SDK 来测量输入音频中对话的响�
 
 **TruePeak** - 此结果包含自重置计量以来任何通道内的最大绝对真实峰值。有关真实峰值的说明，请参阅 ITU‐R BS.1770‐2。值范围可以是 -70 至 12.04 dBTP。
 
-<!---HONumber=71-->
+<!---HONumber=74-->

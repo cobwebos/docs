@@ -5,11 +5,12 @@
 	documentationCenter="" 
 	authors="nitinme" 
 	manager="paulettm" 
-	editor="cgronlun"/>
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags 
 	ms.service="hdinsight"
-	ms.date="07/19/2015"
+	ms.date="07/31/2015" 
 	wacn.date=""/>
 
 
@@ -21,7 +22,7 @@
 
 必须满足以下条件：
 
-- Azure 订阅。 
+- Azure 订阅。请参阅[获取 Azure 免费试用版][azure-trial]。
 - Apache Spark 群集。有关说明，请参阅[在 Azure HDInsight 中设置 Apache Spark 群集](/documentation/articles/hdinsight-apache-spark-provision-clusters)。 
 
 ##<a name="data"></a>讲解数据
@@ -200,7 +201,7 @@
 		Row(SystemInfo=u'17 10', prediction=1.0, probability=DenseVector([0.4925, 0.5075]))
 		Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
 
-	从预测中的第一行可以看出，对于 ID 为 20 且年数为 25 的 HVAC 系统，建筑物处于高温状态 (**prediction=1.0**)。DenseVector (0.49999) 的第一个值对应于预测 0.0，第二个值 (0.5001) 对应于预测 1.0。在输出中，即使第二个值只稍高一点，模型也仍旧显示 **prediction=1.0**。
+	从预测中的第一行可以看出，对于 ID 为 20 且系统年数为 25 的 HVAC 系统，建筑物处于高温状态 (**prediction=1.0**)。DenseVector (0.49999) 的第一个值对应于预测 0.0，第二个值 (0.5001) 对应于预测 1.0。在输出中，即使第二个值只稍高一点，模型也仍旧显示 **prediction=1.0**。
 
 11. 现在可以通过重新启动内核来退出笔记本。在顶部菜单栏中，依次单击“内核”、“重新启动”，然后在出现提示时再次单击“重新启动”。
 
@@ -209,7 +210,7 @@
 
 ##<a name="anaconda"></a>使用机器学习 Anaconda scikit-learn 库
 
-HDInsight 上的 Apache Spark 群集包含 Anaconda 库，其中包括适用于机器学习的 **scikit-learn** 库。该库还包含用于直接从 Jupyter 笔记本生成示例应用程序的各种数据集。有关使用 scikit-learn 库的示例，请参阅 [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html)。
+HDInsight 上的 Apache Spark 群集包含 Anaconda 库，其中包括适用于机器学习的 **scikit-learn** 库。该库还包含用于直接从 Jupyter 笔记本生成示例应用程序的各种数据集。有关使用 scikit-learn 库的示例，请参阅 [http://scikit-learn.org/stable/auto\_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html)。
 
 ##<a name="seealso"></a>另请参阅
 
@@ -235,4 +236,4 @@ HDInsight 上的 Apache Spark 群集包含 Anaconda 库，其中包括适用于�
 [azure-management-portal]: https://manage.windowsazure.cn/
 [azure-create-storageaccount]: /documentation/articles/storage-create-storage-account
 
-<!---HONumber=66-->
+<!---HONumber=74-->

@@ -7,9 +7,11 @@
    manager="timlt"
    editor=""/>
 
-<tags ms.service="service-bus"
+<tags
+   ms.service="service-bus"
 
-   ms.date="08/14/2015" wacn.date=""/>
+   ms.date="08/14/2015"
+   wacn.date=""/>
 
 # 使用 PowerShell 管理 Service Bus 和事件中心资源
 
@@ -77,7 +79,7 @@ catch [System.Exception]
 2. 如果找到该命名空间，则报告它找到的内容。
 3. 如果找不到该命名空间，则会创建该命名空间，然后检索新创建的命名空间。
 
-		 powershell
+	``` powershell
 		
 		$Namespace = "MyServiceBusNS"
 		$Location = "China East"
@@ -98,7 +100,7 @@ catch [System.Exception]
 		    $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
 		    Write-Host "The [$Namespace] namespace in the [$Location] region has been successfully created."
 		}
-		
+	```
 若要设置其他 Service Bus 实体，请从 SDK 创建 `NamespaceManager` 对象的一个实例。可以使用 [Get-AzureSBAuthorizationRule] cmdlet 来检索用于提供连接字符串的授权规则。此示例在 `$NamespaceManager` 变量中存储对 `NamespaceManager` 实例的引用。此脚本稍后将使用 `$NamespaceManager` 来设置其他实体。
 
 	``` powershell
@@ -269,4 +271,4 @@ catch [System.Exception]
 [.NET API for Service Bus]: https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.aspx
 [安装和配置 Azure PowerShell]: /documentation/articles/install-configure-powershell
 
-<!---HONumber=71-->
+<!---HONumber=74-->

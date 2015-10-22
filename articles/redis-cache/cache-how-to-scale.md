@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="cache" 
-	ms.date="06/18/2015" 
+	ms.date="09/10/2015" 
 	wacn.date=""/>
 
 # 如何缩放 Azure Redis 缓存
@@ -17,8 +17,6 @@
 >[AZURE.NOTE]Azure Redis 缓存缩放功能目前处于预览状态。
 
 Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。如果创建缓存后，你的应用程序的要求发生更改，可以使用 [Azure 门户](https://manage.windowsazure.cn)中的“更改定价层”边栏选项卡缩放缓存的大小。
-
->[AZURE.NOTE]当你缩放 Azure Redis 缓存时可以更改大小，但不能将缓存从“标准”更改为“基本”，反之亦然。
 
 ## 何时缩放
 
@@ -36,13 +34,19 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 ## 缩放缓存
 要缩放缓存，在 [Azure 门户](https://manage.windowsazure.cn)中[浏览到缓存](https://msdn.microsoft.com/zh-cn/library/azure/dn793612.aspx#RedisCacheConfiguration)，单击“Redis 缓存”边栏选项卡中的“标准层”或“基本层”部分。
 
+你也可以单击“Redis 缓存”边栏选项卡中的“标准级别”或“基本级别”部分。
+
 ![定价层][redis-cache-pricing-tier-part]
 
 从“定价层”边栏选项卡选择所需的定价层，然后单击“选择”。
 
 ![定价层][redis-cache-pricing-tier-blade]
 
->[AZURE.NOTE]缓存不能从“基本”改为“标准”，反之亦然，你也不能将缓存从更大的大小减少到 250 MB。你可以将缓存从 250 MB 增加到更大大小，但不能缩回到 250MB 定价层。如果需要从“基本”更改为“标准”，或减少到 250 MB 大小，则必须创建新的缓存。
+>[AZURE.NOTE]你可以扩展到不同定价层，但有以下限制。
+>
+>-	不能从**标准**缓存缩放为**基本**缓存。
+>-	可以从**基本**缓存缩放为**标准**缓存，但不能同时更改大小。如果你需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
+>-	不能从较大的大小减小为 **C0 (250 MB)** 大小。
 
 当缓存缩放到新的定价层，将在“Redis 缓存”边栏选项卡中显示**缩放**状态。
 
@@ -50,16 +54,14 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
 缩放完成后，状态将从**缩放**更改为**运行**。
 
->[AZURE.IMPORTANT]在缩放操作期间，“基本”缓存处于脱机状态，且所有缓存中的数据都将丢失。缩放操作一完成，“基本”缓存将重新联机，且不含任何数据。“标准”缓存在缩放操作中保持联机状态，当将“标准”缓存扩展至更大大小时通常不会丢失数据。当将“标准”缓存缩小到更小大小时，如果新的大小小于缓存的数据量则可能丢失某些数据。如果缩小时数据丢失，则使用 [allkeys lru](http://redis.io/topics/lru-cache) 逐出策略逐出密钥。注意，当“标准”缓存有 99.9% 可用的 SLA 时，则没有用于数据丢失的 SLA。
-
 ## 如何自动执行缩放操作
 
-除了在 Azure 门户中缩放你的 Azure Redis 缓存实例，你还可以使用 [Windows Azure 管理库 (MAML)](http://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/) 进行缩放。要缩放你的缓存，请调用 `IRedisOperations.CreateOrUpdate` 方法并传入 `RedisProperties.SKU.Capacity` 的新大小。
+除了在 Azure 门户中缩放你的 Azure Redis 缓存实例，你还可以使用 [Microsoft Azure 管理库 (MAML)](http://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/) 进行缩放。要缩放你的缓存，请调用 `IRedisOperations.CreateOrUpdate` 方法并传入 `RedisProperties.SKU.Capacity` 的新大小。
 
     static void Main(string[] args)
     {
         // For instructions on getting the access token, see
-        // https://msdn.microsoft.com/zh-cn/library/azure/dn790557.aspx#bk_portal
+        // /documentation/articles/cache-configure/#access-keys
         string token = GetAuthorizationHeader();
 
         TokenCloudCredentials creds = new TokenCloudCredentials(subscriptionId,token);
@@ -86,25 +88,33 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
 ## 缩放的工作原理
 
-对一个**基本**缓存进行缩放后，将关闭该缓存，同时使用新的大小设置一个新的缓存。在此期间，缓存不可用，且缓存中的所有数据都将丢失。
+将**基本**缓存缩放为不同大小时，将关闭该缓存，同时使用新的大小预配一个新缓存。在此期间，缓存不可用，且缓存中的所有数据都将丢失。
 
-对一个**标准**缓存进行缩放后，将关闭其中一个副本，同时将其重新设置为新的大小，将数据转移，然后，在重新设置另一个副本之前，另一个副本将执行一次故障转移，类似于一个缓存节点发生故障时所发生的过程。
+将**基本**缓存缩放为**标准**缓存时，将预配副本缓存并将主缓存中的数据复制到副本缓存。在缩放过程中，缓存仍然可用。
+
+将**标准**缓存缩放为不同大小时，将关闭其中一个副本，同时将其重新预配为新的大小，将数据转移，然后，在重新预配另一个副本之前，另一个副本将执行一次故障转移，类似于一个缓存节点发生故障时所发生的过程。
 
 ## 在缩放过程中是否会丢失缓存上的数据
 
-缩放**基本**缓存后，所有数据都将丢失，且缩放操作期间缓存不可用。
+将**基本**缓存缩放为新的大小时，所有数据都将丢失，且在缩放操作期间缓存将不可用。
 
-将**标准**缓存扩展到更大大小时，通常将保留所有数据。将**标准**缓存缩小到更小大小时，数据可能会丢失，具体取决于与缩放后的新大小相关的缓存中的数据量。如果缩小时数据丢失，则使用 [allkeys lru](http://redis.io/topics/lru-cache) 逐出策略逐出密钥。注意，当“标准”缓存有 99.9% 可用的 SLA 时，则没有用于数据丢失的 SLA。
+将**基本**缓存缩放为**标准**缓存时，通常将保留缓存中的数据。
+
+将**标准**缓存扩展为更大大小时，通常将保留所有数据。将**标准**缓存缩小到更小大小时，数据可能会丢失，具体取决于与缩放后的新大小相关的缓存中的数据量。如果缩小时数据丢失，则使用 [allkeys lru](http://redis.io/topics/lru-cache) 逐出策略逐出密钥。
+
+注意，当“标准”缓存有 99.9% 可用的 SLA 时，则没有用于数据丢失的 SLA。
 
 ## 缩放时缓存是否可用
 
 **标准**缓存在缩放操作期间保持可用。
 
-**基本**缓存在缩放操作期间处于脱机状态。
+**基本**缓存在执行缩放为不同大小的缩放操作过程中处于脱机状态，但在从**基本**缓存缩放为**标准**缓存时仍然可用。
 
 ## 不支持的操作
 
-你不能在缩放操作过程中将**基本**缓存更改为**标准**缓存，反之亦然。
+不能从**标准**缓存更改为**基本**缓存。
+
+可以从**基本**缓存缩放为**标准**缓存，但不能同时更改大小。如果你需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
 
 你可以从 **C0** (250 MB) 缓存增加到更大大小，但是你不能从更大大小缩回到 **C0** 缓存。
 
@@ -134,4 +144,4 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
-<!---HONumber=67-->
+<!---HONumber=74-->

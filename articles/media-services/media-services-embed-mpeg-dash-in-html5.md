@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015" 
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 
@@ -102,4 +102,4 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。其目标�
 
 [GitHub dash.js 存储库](https://github.com/Dash-Industry-Forum/dash.js)
 
-<!---HONumber=71-->
+<!---HONumber=74-->

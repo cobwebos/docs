@@ -9,15 +9,15 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015" 
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 
 #使用 .NET 创建内容密钥
 
 > [AZURE.SELECTOR]
-- [REST](media-services-rest-create-contentkey.md)
-- [.NET](media-services-dotnet-create-contentkey.md)
+- [REST](/documentation/articles/media-services-rest-create-contentkey)
+- [.NET](/documentation/articles/media-services-dotnet-create-contentkey)
 
 媒体服务允许你创建资产和传送加密的资产。**ContentKey** 提供对**资产**的安全访问。
 
@@ -131,4 +131,4 @@ call
 
 	IContentKey key = CreateCommonTypeContentKey(encryptedsset);
 
-<!---HONumber=71-->
+<!---HONumber=74-->

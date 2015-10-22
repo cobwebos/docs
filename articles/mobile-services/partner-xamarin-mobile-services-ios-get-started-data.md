@@ -1,5 +1,5 @@
 <properties
-	pageTitle="将移动服务添加到现有应用程序 (Xamarin.iOS) - Azure 移动服务"
+	pageTitle="将移动服务添加到现有应用 (Xamarin.iOS) | Microsoft Azure"
 	description="了解如何存储数据，以及如何从 Azure 移动服务 Xamarin.iOS 应用程序访问数据。"
 	documentationCenter="xamarin"
 	authors="ggailey777"
@@ -9,16 +9,16 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="04/24/2015"
+	ms.date="08/18/2015"
 	wacn.date=""/>
 
-#  将移动服务添加到现有应用程序
+# 将移动服务添加到现有应用程序
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
 此主题说明如何通过 Azure 移动服务来利用 Xamarin.iOS 应用程序中的数据。在本教程中，你将要下载一个可在内存中存储数据的应用程序，创建一个新的移动服务，将该移动服务与该应用程序相集成，然后登录到 Azure 管理门户以查看运行该应用程序时对数据所做的更改。
 
-> [AZURE.NOTE]本教程旨在帮助你更好地了解如何使用移动服务通过 Azure 来存储数据以及从 Xamarin.iOS 应用程序检索数据。因此，本主题指导你完成的许多步骤已在移动服务快速入门中代你完成。如果这是你第一次体验移动服务，请考虑首先完成[移动服务入门](partner-xamarin-mobile-services-ios-get-started)教程。
+> [AZURE.NOTE]本教程旨在帮助你更好地了解如何使用移动服务通过 Azure 来存储数据以及从 Xamarin.iOS 应用程序检索数据。因此，本主题指导你完成的许多步骤已在移动服务快速入门中代你完成。如果这是你第一次体验移动服务，请考虑首先完成[移动服务入门](/documentation/articles/partner-xamarin-mobile-services-ios-get-started)教程。
 
 本教程将指导你完成以下基本步骤：
 
@@ -30,9 +30,9 @@
 
 本教程需要安装 [Azure 移动服务组件]、[XCode 6.0][Install Xcode]、[Xamarin.iOS] 和 iOS 7.0 或更高版本。
 
-> [AZURE.IMPORTANT]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial target="_blank)。
+> [AZURE.IMPORTANT]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial target="\_blank)。
 
-##  <a name="download-app"></a>下载 GetStartedWithData 项目
+## <a name="download-app"></a>下载 GetStartedWithData 项目
 
 本教程是在 [GetStartedWithData 应用程序][GitHub]（一个 Xamarin.iOS 应用程序）的基础上制作的。此应用程序的 UI 与移动服务 Xamarin.iOS 快速入门中生成的应用程序相同，不过，前者的一些新增项本地存储在内存中。
 
@@ -50,13 +50,13 @@
 
    	可以看到，保存的文本已显示在下面的列表中。
 
-##  <a name="create-service"></a>在管理门户中创建新的移动服务
+## <a name="create-service"></a>在管理门户中创建新的移动服务
 
 [AZURE.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
 
-##  <a name="add-table"></a>将新表添加到移动服务
+## <a name="add-table"></a>将新表添加到移动服务
 
-为了能够在新移动服务中存储应用数据，必须先在关联的 SQL Database 实例中创建一个新表。
+为了能够在新移动服务中存储应用数据，必须先在关联的 SQL 数据库实例中创建一个新表。
 
 1. 在管理门户中单击“移动服务”，然后单击你刚刚创建的移动服务。
 
@@ -84,7 +84,7 @@
 
 现在，您可以将新移动服务用作应用的数据存储。
 
-##  <a name="update-app"></a>更新应用程序以使用移动服务进行数据访问
+## <a name="update-app"></a>更新应用程序以使用移动服务进行数据访问
 
 将移动服务准备就绪后，您可以更新应用，以便在移动服务而不是本地集合中存储项。
 
@@ -122,16 +122,27 @@
 9. 取消注释 **TodoService** 构造函数中的以下行：
 
 		// TODO:: Uncomment these lines to use Mobile Services
-		client = new MobileServiceClient(Constants.ApplicationURL, Constants.ApplicationKey).WithFilter(this); 
-		todoTable = client.GetTable<TodoItem>(); 
+		client = new MobileServiceClient(Constants.ApplicationURL, Constants.ApplicationKey).WithFilter(this);
+		todoTable = client.GetTable<TodoItem>();
 
     这将创建移动服务客户端的一个实例，并创建 TodoItem 表实例。
 
 10. 取消注释 **TodoService** 的 **RefreshDataAsync** 方法中的以下行
 
-		// TODO:: Uncomment these lines to use Mobile Services
-    try { // This code refreshes the entries in the list view by querying the TodoItems table. // The query excludes completed TodoItems Items = await todoTable .Where (todoItem => todoItem.Complete == false).ToListAsync(); } catch (MobileServiceInvalidOperationException e) { Console.Error.WriteLine (@"ERROR {0}", e.Message); return null; }
-        
+			// TODO:: Uncomment these lines to use Mobile Services
+			try
+	    {
+				// This code refreshes the entries in the list view by querying the TodoItems table.
+				// The query excludes completed TodoItems
+				Items = await todoTable
+					.Where (todoItem => todoItem.Complete == false).ToListAsync();
+			}
+	    catch (MobileServiceInvalidOperationException e)
+	    {
+				Console.Error.WriteLine (@"ERROR {0}", e.Message);
+				return null;
+			}
+
     这将会创建一个查询，用于返回尚未完成的所有任务。
 
 11. 找到 **InsertTodoItemAsync** 方法，并取消注释以下行：
@@ -140,15 +151,15 @@
 		
     此代码会将一个插入请求发送到移动服务。
 
-13. 找到 **CompleteItemAsync** 方法，并取消注释以下行：
+12. 找到 **CompleteItemAsync** 方法，并取消注释以下行：
 
 		await todoTable.UpdateAsync(item);
-		
+
    	此代码将删除标记为已完成的 TodoItem。
 
 既然此应用已更新从而将移动服务用于后端存储，就可以针对移动服务测试该应用。
 
-##  <a name="test-app"></a>针对新移动服务测试应用程序
+## <a name="test-app"></a>针对新移动服务测试应用程序
 
 1. 在 Xamarin Studio 中，从某个主组合框选择要部署到的模拟器或设备，然后转到“运行”菜单并选择“开始执行(不调试)”以启动应用程序。
 
@@ -168,24 +179,28 @@
 
 针对 Xamarin.iOS 的**数据处理入门**教程到此结束。
 
-##  获取已完成的示例
+## 获取已完成的示例
 下载[已完成的示例项目]。请务必使用你自己的 Azure 设置更新 **applicationURL** 和 **applicationKey** 变量。
 
-##  <a name="next-steps"></a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 本教程演示了有关如何使 iOS 应用程序处理移动服务中的数据的基础知识。
 
 接下来，建议你完成下列教程之一，这些教程是基于本教程中创建的 GetStartedWithData 应用程序制作的：
 
-* [使用脚本验证和修改数据]<br/>了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
+* [使用脚本验证和修改数据]
+  <br/>了解更多有关使用移动服务中的服务器脚本验证和更改从应用程序发送的数据的信息。
 
-* [使用分页优化查询]<br/>了解如何使用查询中的分页控制单个请求中处理的数据量。
+* [使用分页优化查询]
+  <br/>了解如何使用查询中的分页控制单个请求中处理的数据量。
 
 完成了数据系列教程后，请试着学习以下其他 iOS 教程：
 
-* [身份验证入门]<br/>了解如何对应用程序用户进行身份验证。
+* [身份验证入门]
+  <br/>了解如何对应用程序用户进行身份验证。
 
-* [推送通知入门]<br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
+* [推送通知入门]
+  <br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
 
 <!-- Anchors. -->
 
@@ -227,4 +242,4 @@
 [Xamarin.iOS]: http://xamarin.com/download
  
 
-<!---HONumber=HO63-->
+<!---HONumber=74-->

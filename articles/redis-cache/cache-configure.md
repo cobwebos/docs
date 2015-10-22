@@ -8,7 +8,7 @@
    editor="tysonn" />
 <tags 
    ms.service="cache"
-   ms.date="07/24/2015"
+   ms.date="09/03/2015"
    wacn.date="" />
 
 # 如何配置 Azure Redis 缓存
@@ -17,7 +17,7 @@
 
 ## 配置 Redis 缓存设置
 
-可以在 [Windows Azure 门户](http://manage.windowsazure.cn/)中使用“浏览”边栏选项卡访问缓存。
+可以在 [Microsoft Azure 门户](http://manage.windowsazure.cn/)中使用“浏览”边栏选项卡访问缓存。
 
 ![Azure Redis 缓存浏览边栏选项卡](./media/cache-configure/IC796920.png)
 
@@ -50,6 +50,12 @@
 默认情况下，为新缓存禁用非 SSL 访问。要启用非 SSL 端口，则单击“访问端口”边栏选项卡，然后单击“否”。
 
 ![Redis 缓存访问端口](./media/cache-configure/IC808316.png)
+
+## 定价层
+
+单击“定价层”可查看或更改缓存的定价层。有关缩放的详细信息，请参阅[如何缩放 Azure Redis 缓存](cache-how-to-scale)。
+
+![Redis 缓存定价层](./media/cache-configure/pricing-tier.png)
 
 ## Diagnostics
 
@@ -94,7 +100,7 @@
 
 ![Redis 缓存用户和标记](./media/cache-configure/IC808320.png)
 
-门户中的“用户”部分对基于角色的访问控制 (RBAC) 提供支持，以帮助简单准确地满足组织的访问管理要求。有关详细信息，请参阅 [Windows Azure 预览门户中基于角色的访问控制](/documentation/articles/role-based-access-control-configure)。
+门户中的“用户”部分对基于角色的访问控制 (RBAC) 提供支持，以帮助简单准确地满足组织的访问管理要求。有关详细信息，请参阅 [Microsoft Azure 预览门户中基于角色的访问控制](/documentation/articles/role-based-access-control-configure)。
 
 “标记”部分可帮助你组织资源。有关详细信息，请参阅[使用标记来组织 Azure 资源](/documentation/articles/resource-group-using-tags)。
 
@@ -111,12 +117,22 @@
 |设置|默认值|说明|
 |---|---|---|
 |数据库|16|默认数据库是 DB 0，可使用 connection.GetDataBase(dbid) 对每个连接使用不同数据库，其中 dbid 是 0 到 15 之间的数字。|
-|maxclients|10,000|这是同一时间内允许的最大已连接客户端数。一旦达到该限制，Redis 将在关闭所有新连接的同时发送“达到客户端最大数量”的错误。|
+|maxclients|取决于定价层<sup>1</sup>|这是同一时间内允许的最大已连接客户端数。一旦达到该限制，Redis 将在关闭所有新连接的同时发送“达到客户端最大数量”的错误。|
 |maxmemory-policy|volatile-lru|Maxmemory 策略是达到 maxmemory（创建缓存时所选缓存服务的大小）时，Redis 将根据它选择要删除内容的设置。Azure Redis 缓存的默认设置为 volatile-lru，此设置使用 LRU 算法删除具有过期设置的密钥。可以在门户中配置此设置。有关详细信息，请参阅 [Maxmemory-policy 和 maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)。|
 |maxmemory-samples|3|LRU 和最小 TTL 算法不是精确算法而是近似算法（为了节省内存），因此你还可以选择示例大小进行检查。例如，对于默认设置，Redis 将检查三个密钥并选取最近使用较少的一个。|
 |lua-time-limit|5,000|Lua 脚本的最大执行时间（以毫秒为单位）。如果达到最大执行时间，Redis 将记录达到最大允许时间后仍继续执行的脚本，并将开始在查询答复时出现错误。|
 |lua-event-limit|500|这是脚本事件队列的最大大小。|
 |client-output-buffer-limit normalclient-output-buffer-limit pubsub|0 0 032mb 8mb 60|客户端输出缓冲区限制可用于强制断开处于某种原因（一个常见原因是发布/订阅客户端处理消息的速度慢于发布者提供消息的速度）而未从服务器快速读取数据的客户端的连接。有关详细信息，请参阅 [http://redis.io/topics/clients](http://redis.io/topics/clients)。|
+
+<sup>1</sup>`maxclients` 对于每个 Azure Redis 缓存定价层都是不同的。
+
+-	C0 (250 MB) 缓存 - 最多支持 256 个连接
+-	C1 (1 GB) 缓存 - 最多支持 1,000 个连接
+-	C2 (2.5 GB) 缓存 - 最多支持 2,000 个连接
+-	C3 (6 GB) 缓存 - 最多支持 5,000 个连接
+-	C4 (13 GB) 缓存 - 最多支持 10,000 个连接
+-	C5 (26 GB) 缓存 - 最多支持 15,000 个连接
+-	C6 (53 GB) 缓存 - 最多支持 20,000 个连接
 
 ## Azure Redis 缓存中不支持 Redis 命令
 
@@ -150,4 +166,4 @@
 ## 后续步骤
 -	有关使用 Redis 命令的详细信息，请参阅[如何运行 Redis 命令？](/documentation/articles/cache-faq#how-can-i-run-redis-commands)
 
-<!---HONumber=67-->
+<!---HONumber=74-->

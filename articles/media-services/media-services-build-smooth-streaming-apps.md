@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="05/26/2015" 
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 
@@ -39,7 +39,8 @@
 
 ![平滑流式处理 Windows 应用商店应用程序示例][PlayerApplication]
  
-有关开发 Windows 应用商店应用程序的详细信息，请参阅[开发适用于 Windows 8 的极佳应用](http://msdn.microsoft.com/zh-cn/windows/apps/br229512.aspx)。本课包含以下过程：
+有关开发 Windows 应用商店应用程序的详细信息，请参阅[开发适用于 Windows 8 的极佳应用](http://msdn.microsoft.com/zh-cn/windows/apps/br229512.aspx)。
+本课包含以下过程：
 
 1.	创建 Windows 应用商店项目
 2.	设计用户界面 (XAML)
@@ -316,7 +317,8 @@ MediaElement 控件并非原本就支持平滑流式处理内容。若要启用�
 
 4.	在 **MainPage** 构造函数的末尾，添加以下行以订阅自适应源打开事件：
 	
-	adaptiveSourceManager.AdaptiveSourceOpenedEvent += new AdaptiveSourceOpenedEventHandler(mediaElement\_AdaptiveSourceOpened);
+	adaptiveSourceManager.AdaptiveSourceOpenedEvent += 
+    new AdaptiveSourceOpenedEventHandler(mediaElement\_AdaptiveSourceOpened);
 
 5.	按 **CTRL+S** 保存文件。
 
@@ -501,7 +503,9 @@ MediaElement 控件并非原本就支持平滑流式处理内容。若要启用�
 
 7.	在 **MediaOpened** 方法的末尾，添加以下代码：
 	
-	sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan); sliderProgress.Width = mediaElement.Width; setupTimer();
+	sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan);
+	sliderProgress.Width = mediaElement.Width;
+	setupTimer();
 
 8.	按 **CTRL+S** 保存文件。
 
@@ -568,7 +572,8 @@ MediaElement 控件并非原本就支持平滑流式处理内容。若要启用�
 **修改代码隐藏文件**
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，然后单击“查看代码”。
-2. 在 SSPlayer 命名空间中添加一个新类：#region class Stream
+2. 在 SSPlayer 命名空间中添加一个新类：
+		#region class Stream
 	
 	    public class Stream
 	    {
@@ -798,7 +803,7 @@ MediaElement 控件并非原本就支持平滑流式处理内容。若要启用�
 **修改 XAML 文件**
 
 1. 在解决方案资源管理器中，右键单击“MainPage.xaml”，然后单击“查看设计器”。
-2. 找到名为 **gridStreamAndBitrateSelection** 的 Grid 标记，并在该标记的末尾追加以下代码：
+2. 找到名为 **gridStreamAndBitrateSelection** 的 &lt;Grid&gt; 标记，并在该标记的末尾追加以下代码：
 
 		<StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
 		 <StackPanel Orientation="Horizontal">
@@ -999,4 +1004,4 @@ MediaElement 控件并非原本就支持平滑流式处理内容。若要启用�
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
 
-<!---HONumber=71-->
+<!---HONumber=74-->

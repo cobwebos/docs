@@ -9,11 +9,11 @@
 
 <tags 
 	ms.service="hdinsight"
-	ms.date="07/19/2015" 
+	ms.date="08/07/2015"
 	wacn.date=""/>
 
 
-# 快速入门：在 HDInsight 上设置 Apache Spark 并使用 Spark SQL 运行交互式查询
+# 快速入门：在 Azure HDInsight 上预配 Apache Spark 并使用 Spark SQL 运行交互式查询
 
 了解如何使用“快速创建”选项在 HDInsight 中设置 Apache Spark 群集，然后使用基于 Web 的 [Zeppelin](https://zeppelin.incubator.apache.org) 和 [Jupyter](https://jupyter.org) 笔记本在 Spark 群集上运行 Spark SQL 交互式查询。
 
@@ -22,24 +22,9 @@
 
 **先决条件：**
 
-在开始学习本教程之前，你必须有一个 Azure 订阅。
-
-##<a name="storage"></a>创建 Azure 存储帐户
-
-在 HDInsight 中设置 HDInsight 群集时，将要指定 Azure 存储帐户。将该帐户的一个特定 Blob 存储容器指定为默认文件系统。默认情况下，HDInsight 群集与你指定的存储帐户设置在同一数据中心内。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用][hdinsight-storage]。
+在开始学习本教程之前，你必须有一个 Azure 订阅。请参阅[获取 Azure 免费试用版][azure-trial]。
 
 
-**创建 Azure 存储帐户**
-
-1. 登录到 [Azure 门户][azure-management-portal]。
-2. 单击左下角的“新建”，然后如图所示输入值。
-
-	![Azure 门户，你可以在其中使用“快速创建”设置新的存储帐户](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.StorageAccount.QuickCreate.png "Azure 门户，你可以在其中使用“快速创建”设置新的存储帐户")
-
->[AZURE.NOTE]确保在群集支持的位置中创建存储帐户。
-
-从列表中选择新存储帐户，然后单击页面底部的“管理访问密钥”。记下“主访问密钥”（或“辅助访问密钥”- 任一密钥都有效）。本教程后面的步骤中将会用到此密钥。有关详细信息，请参阅[如何创建存储帐户][azure-create-storageaccount]。
-	
 ##<a name="provision"></a>设置 HDInsight Spark 群集
 
 在本部分中，你将基于 Spark 版本 1.3.1 设置一个 HDInsight 版本 3.2 群集。有关 HDInsight 版本及其 SLA 的信息，请参阅 [HDInsight 组件版本](/documentation/articles/hdinsight-component-versioning)。
@@ -76,7 +61,7 @@
 
 4. 将示例数据载入临时表。当你在 HDInsight 中设置 Spark 群集时，系统会将示例数据文件 **hvac.csv** 复制到 **\\HdiSamples\\SensorSampleData\\hvac** 下的关联存储帐户。
 
-	将以下代码段粘贴到新笔记本中默认创建的空白段落处。
+	将以下代码粘贴到新笔记本中默认创建的空白段落处：
 
 		// Create an RDD using the default Spark context, sc
 		val hvacText = sc.textFile("wasb:///HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -96,8 +81,8 @@
 		
 		// Register as a temporary table called "hvac"
 		hvac.registerTempTable("hvac")
-		
-	按 **SHIFT + ENTER** 或单击“播放”按钮，使段落运行代码段。段落右上角的状态应从“就绪”逐渐变成“挂起”、“正在运行”和“已完成”。输出将显示在同一段落的底部。屏幕截图如下所示：
+
+	按键盘上的 **SHIFT + ENTER** 或单击“播放”按钮，使段落运行代码。段落右上角的状态应从“就绪”逐渐变成“挂起”、“正在运行”和“已完成”。输出将显示在同一段落的底部。屏幕截图如下所示：
 
 	![基于原始数据创建临时表](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.Note.LoadDataIntoTable.png "基于原始数据创建临时表")
 
@@ -116,21 +101,20 @@
 
 	![使用笔记本运行 Spark SQL 语句](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.Note.SparkSQLQuery1.png "使用笔记本运行 Spark SQL 语句")
 
-	 单击显示选项（以矩形突出显示）以针对相同输出切换不同的表示形式。单击“设置”以选择构成输出中的密钥和值的项。以上屏幕截图使用 **buildingID** 作为密钥，使用 **temp_diff** 平均值作为值。
+	 单击显示选项（以矩形突出显示）以针对相同输出切换不同的表示形式。单击“设置”以选择构成输出中的密钥和值的项。以上屏幕截图使用 **buildingID** 作为密钥，使用 **temp\_diff** 平均值作为值。
 
-	
-6. 你还可以在查询中使用变量来运行 Spark SQL 语句。下一个代码段演示如何在查询中使用你可以用来查询的值定义 **Temp** 变量。当你首次运行查询时，下拉列表中会自动填充你指定的变量值。
+6. 你还可以在查询中使用变量来运行 Spark SQL 语句。下一个代码演示如何在查询中使用你要用来查询的可能值定义 **Temp** 变量。当你首次运行查询时，下拉列表中会自动填充你指定的变量值。
 
 		%sql
 		select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff
 		from hvac
 		where targettemp > "${Temp = 65,65|75|85}" 
 
-	将此代码段粘贴到新段落，然后按 **SHIFT + ENTER**。以下屏幕快照显示了输出。
+	将此代码示例粘贴到新段落中，然后按 **SHIFT + ENTER**。以下屏幕快照显示了输出。
 
 	![使用笔记本运行 Spark SQL 语句](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.Note.SparkSQLQuery2.png "使用笔记本运行 Spark SQL 语句")
 
-	对于后续查询，可以从下拉列表中选择新的值，然后再次运行查询。单击“设置”以选择构成输出中的密钥和值的项。以上屏幕截图使用 **buildingID** 作为密钥，使用 **temp_diff** 平均值作为值，使用 **targettemp** 作为组。
+	对于后续查询，可以从下拉列表中选择新的值，然后再次运行查询。单击“设置”以选择构成输出中的密钥和值的项。以上屏幕截图使用 **buildingID** 作为密钥，使用 **temp\_diff** 平均值作为值，使用 **targettemp** 作为组。
 
 7. 重新启动 Spark SQL 解释程序以退出应用程序。单击顶部的“解释程序”选项卡，然后针对 Spark 解释程序单击“重新启动”。
 
@@ -151,7 +135,7 @@
 
 	![提供笔记本的名称](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.Note.Jupyter.Notebook.Name.png "提供笔记本的名称")
 
-4. 导入所需的模块，然后创建 Spark 和 SQL 上下文。将以下代码段粘贴到空白单元格中，然后按 **SHIFT + ENTER**。
+4. 导入所需的模块，然后创建 Spark 和 SQL 上下文。将以下代码示例粘贴到空白单元格中，然后按 **SHIFT + ENTER**。
 
 		from pyspark import SparkContext
 		from pyspark.sql import SQLContext
@@ -161,14 +145,13 @@
 		sc = SparkContext('spark://headnodehost:7077', 'pyspark')
 		sqlContext = SQLContext(sc)
 
-	每当你在 Jupyter 中运行作业时，Web 浏览器窗口标题中会显示“(繁忙)”状态以及笔记本标题。右上角 **Python 2** 文本的旁边还会出现一个实心圆。作业完成后，实心圆将变成空心圆。
+	每当你在 Jupyter 中运行作业时，Web 浏览器窗口标题中都会显示“(繁忙)”状态以及笔记本标题。右上角 **Python 2** 文本的旁边还会出现一个实心圆。作业完成后，实心圆将变成空心圆。
 
 	 ![Jupyter 笔记本作业的状态](./media/hdinsight-apache-spark-zeppelin-notebook-jupyter-spark-sql/HDI.Spark.Jupyter.Job.Status.png "Jupyter 笔记本作业的状态")
 
 4. 将示例数据载入临时表。当你在 HDInsight 中设置 Spark 群集时，系统会将示例数据文件 **hvac.csv** 复制到 **\\HdiSamples\\SensorSampleData\\hvac** 下的关联存储帐户。
 
-	将以下代码段粘贴到空白单元格中，然后按 **SHIFT + ENTER**。此代码段会将数据注册到名为 **hvac** 的临时表。
-
+	将以下代码示例粘贴到空白单元格中，然后按 **SHIFT + ENTER**。此代码示例会将数据注册到名为 **hvac** 的临时表中。
 
 		# Load the data
 		hvacText = sc.textFile("wasb:///HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -186,7 +169,7 @@
 		hvacdf.registerAsTable("hvac")
 		
 		# Run queries against the table and display the data
-		data = sqlContext.sql("select buildingID, (targettemp - actualtemp) as temp_diff, date from hvac where date = \"6/1/13\"")
+		data = sqlContext.sql("select buildingID, (targettemp - actualtemp) as temp_diff, date from hvac where date = "6/1/13"")
 		data.show()
 
 5. 作业成功完成后，将显示以下输出。
@@ -238,4 +221,4 @@
 [azure-management-portal]: https://manage.windowsazure.cn/
 [azure-create-storageaccount]: /documentation/articles/storage-create-storage-account
 
-<!---HONumber=66-->
+<!---HONumber=74-->
