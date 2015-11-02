@@ -1,6 +1,17 @@
-<properties urlDisplayName="Breaking News" pageTitle="通知中心突发新闻教程 - Android" metaKeywords="" description="了解如何使用 Azure 服务总线通知中心向 Android 设备发送突发新闻通知。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send breaking news" authors="ricksal" solutions="" manager="dwrede" editor="" />
+<properties
+	pageTitle="通知中心突发新闻教程 - Android"
+	description="了解如何使用 Azure 服务总线通知中心向 Android 设备发送突发新闻通知。"
+	services="notification-hubs"
+	documentationCenter="android"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""/>
 
-<tags ms.service="notification-hubs" ms.date="11/22/2014" wacn.date="" />
+<tags
+	ms.service="notification-hubs"
+	ms.date="09/08/2015" 
+	wacn.date="" />
+
 
 # 使用通知中心发送突发新闻
 
@@ -21,7 +32,7 @@
 
 第一步是向现有主活动添加 UI 元素，以允许用户选择要注册的类别。用户选择的类别存储在设备上。应用程序启动时，使用所选类别作为标签在你的通知中心创建设备注册。
 
-1. 打开 res/layout/activity\_main.xml 文件，并将此文件内容替换为以下内容：
+1. 打开 res/layout/activity_main.xml 文件，并将此文件内容替换为以下内容：
 			
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		    xmlns:tools="http://schemas.android.com/tools"
@@ -303,4 +314,4 @@
 [Azure Management Portal]: https://manage.windowsazure.cn/
 [wns object]: https://msdn.microsoft.com/zh-cn/library/azure/jj860484.aspx
 
-<!---HONumber=71-->
+<!---HONumber=76-->

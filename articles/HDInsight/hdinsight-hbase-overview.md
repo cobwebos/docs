@@ -15,7 +15,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="07/28/2015"
+	ms.date="09/17/2015"
 	wacn.date="" 
 	ms.author="jgao"/>
 
@@ -46,7 +46,7 @@ HDInsight 实施利用 HBase 的横向扩展架构来提供表自动分片、使
 
 - 实时查询：[Phoenix](http://phoenix.apache.org/) 是 Apache HBase 的 SQL 查询引擎。该引擎以 JDBC 驱动程序的形式供用户访问，并且支持使用 SQL 来查询和管理 HBase 表。
 
-- HBase 即平台：应用程序可以将 HBase 作为数据存储库而在其上运行。具体示例包括 Phoenix、OpenTSDB、Kiji 和 Titan。应用程序也可以与 HBase 集成。具体示例包括：Hive、Pig、Solr、Storm、Flume、Impala、Spark、Ganglia 和 Drill。
+- HBase 即平台：应用程序可以将 HBase 作为数据存储库而在其上运行。具体示例包括 Phoenix、OpenTSDB、Kiji 和 Titan。应用程序也可以与 HBase 集成。具体示例包括：Hive、Pig、Solr、Storm、Flume、Impala、Ganglia 和 Drill。
 
 
 ##<a name="next-steps"></a>后续步骤
@@ -82,4 +82,4 @@ HDInsight 实施利用 HBase 的横向扩展架构来提供表自动分片、使
 
 [apache-hadoop]: http://hadoop.apache.org/
 
-<!---HONumber=71-->
+<!---HONumber=76-->

@@ -1,17 +1,22 @@
 ## 使用 Azure CLI 部署 ARM 模板
 
-若要使用 PowerShell 部署下载的 ARM 模板，请执行以下步骤。
+若要使用 Azure CLI 部署下载的 ARM 模板，请执行以下步骤。
 
 1. 如果你从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](/documentation/articles/xplat-cli)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
 2. 运行 **azure config mode** 命令以切换到资源管理器模式，如下所示。
 
 		azure config mode arm
 
+	下面是上述命令的预期输出：
+
 		info:    New mode is arm
 
-3. 如有必要，请运行 **azure group create** 以创建新资源组，如下所示。请注意命令的输出。在输出后显示的列表说明了所用的参数。有关资源组的详细信息，请访问 [Azure 资源管理器概述](documentation/articles/resource-group-overview#resource-groups)。
+3. 如有必要，请运行 **azure group create** 以创建新资源组，如下所示。请注意命令的输出。在输出后显示的列表说明了所用的参数。有关资源组的详细信息，请访问 [Azure 资源管理器概述](documentation/articles/resource-group-overview)。
 
 		azure group create -n TestRG -l centralus
+
+	下面是上述命令的预期输出：
+
 		info:    Executing command group create
 		+ Getting resource group TestRG
 		+ Creating resource group TestRG
@@ -30,6 +35,8 @@
 4. 运行 **azure group deployment create** cmdlet 以使用你在前面下载并修改的模板和参数文件部署新 VNet。在输出后显示的列表说明了所用的参数。
 
 		azure group deployment create -g TestRG -n TestVNetDeployment -f C:\ARM\azuredeploy.json -e C:\ARM\azuredeploy-parameters.json
+
+	下面是上述命令的预期输出：
 
 		info:    Executing command group deployment create
 		+ Initializing template configurations and parameters
@@ -62,6 +69,8 @@
 
 		azure network vnet show -g TestRG -n TestVNet
 
+	下面是上述命令的预期输出：
+
 		info:    Executing command network vnet show
 		+ Looking up virtual network "TestVNet"
 		data:    Id                              : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
@@ -80,4 +89,4 @@
 		data:
 		info:    network vnet show command OK
 
-<!---HONumber=69-->
+<!---HONumber=76-->

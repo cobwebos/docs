@@ -8,7 +8,7 @@
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
-   ms.date="05/28/2015"
+   ms.date="09/01/2015"
    wacn.date="" />
 
 # 在服务配置文件中指定 DNS 设置
@@ -25,7 +25,7 @@
         <DnsServer name="ID3" IPAddress="IPAddress3" />
       </DnsServers>
 
->[AZURE.WARNING]**DnsServer** 元素中的 **name** 属性仅用作引用名称。它不表示 DNS 服务器的主机名。每个 **DnsServer** 属性值必须在整个 Microsoft Azure 订阅中具有唯一性。
+>[AZURE.WARNING]**DnsServer** 元素中的 **name** 属性仅用作引用名称。它不表示 DNS 服务器的主机名。每个 **DnsServer** 属性值必须在整个 Microsoft Azure 订阅中是唯一的。
 
 ## 另请参阅
 
@@ -37,4 +37,4 @@
 
 [关于管理门户中的虚拟网络设置](http://go.microsoft.com/fwlink/?LinkId=248092)
 
-<!---HONumber=67-->
+<!---HONumber=76-->

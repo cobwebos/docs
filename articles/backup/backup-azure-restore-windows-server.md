@@ -1,5 +1,5 @@
 <properties
-   pageTitle="将数据从 Azure 还原到 Windows Server 或 Windows 客户端 | Windows Azure"
+   pageTitle="将数据从 Azure 还原到 Windows Server 或 Windows 客户端 | Microsoft Azure"
    description="了解如何从 Windows Server 或 Windows 客户端还原。"
    services="backup"
    documentationCenter=""
@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="backup"
+         ms.service="backup"
 	 ms.date="08/13/2015"
 	 wacn.date=""/>
 
@@ -112,4 +112,4 @@
 - [备份 Azure 虚拟机](/documentation/articles/backup-azure-vms-introduction)
 - [备份 Microsoft 工作负荷](/documentation/articles/backup-azure-dpm-introduction)
 
-<!---HONumber=69-->
+<!---HONumber=76-->

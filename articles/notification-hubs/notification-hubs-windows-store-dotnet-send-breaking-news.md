@@ -10,7 +10,7 @@
 
 <tags
     ms.service="mobile-services,notification-hubs" 
-    ms.date="05/27/2015" 
+	ms.date="06/16/2015"
     wacn.date=""/>
 
 # 使用通知中心发送突发新闻
@@ -243,4 +243,4 @@
 
  
 
-<!---HONumber=71-->
+<!---HONumber=76-->

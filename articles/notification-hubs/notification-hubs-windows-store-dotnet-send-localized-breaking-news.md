@@ -1,6 +1,6 @@
 <properties
 	pageTitle="通知中心本地化的突发新闻教程"
-	description="了解如何使用 Azure 服务总线通知中心发送本地化的突发新闻通知。"
+	description="了解如何使用 Azure 通知中心发送本地化的突发新闻通知。"
 	services="notification-hubs"
 	documentationCenter="windows"
 	authors="wesmc7777"
@@ -9,7 +9,7 @@
 
 <tags
     ms.service="mobile-services,notification-hubs"
-    ms.date="08/18/2015"
+    ms.date="09/08/2015" 
     wacn.date=""/>
 
 # 使用通知中心发送本地化的突发新闻
@@ -226,4 +226,4 @@
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [针对 Windows 应用商店的通知中心操作指南]: http://msdn.microsoft.com/library/jj927172.aspx
 
-<!---HONumber=71-->
+<!---HONumber=76-->

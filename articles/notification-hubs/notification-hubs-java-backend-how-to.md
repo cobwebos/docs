@@ -1,4 +1,11 @@
-<properties urlDisplayName="How to use Notification Hubs with Java" pageTitle="如何结合使用通知中心与 Java" metaKeywords="" description="了解如何从 Java 后端使用 Azure 通知中心。" metaCanonical="" services="mobile-services,notification-hubs,push,java" documentationCenter="" title="How to use Notification Hubs with Java" authors="piyushjo" solutions="" manager="dwrede" editor="" />
+<properties 
+	pageTitle="如何结合使用通知中心与 Java" 
+	description="了解如何从 Java 后端使用 Azure 通知中心。" 
+	services="notification-hubs" 
+	documentationCenter="" 
+	authors="ysxu" 
+	manager="dwrede" 
+	editor=""/>
 
 <tags 
     ms.service="notification-hubs" 
@@ -12,7 +19,8 @@
 - [Python](/documentation/articles/notification-hubs-nodejs-how-to-use-notification-hubs)
 - [Node.js](/documentation/articles/notification-hubs-nodejs-how-to-use-notification-hubs)
 		
-本主题将向你介绍完全受支持的全新官方 Azure 通知中心 Java SDK 的主要功能。这是一个开源项目，你可以在 [Java SDK] 查看完整的 SDK 代码。
+本主题将向你介绍完全受支持的全新官方 Azure 通知中心 Java SDK 的主要功能。
+这是一个开源项目，你可以在 [Java SDK] 查看完整的 SDK 代码。
 
 通常情况下，如 MSDN 主题[通知中心 REST API](http://msdn.microsoft.com/zh-cn/library/dn223264.aspx) 中所述，你可以使用通知中心 REST 接口从 Java/PHP/Python/Ruby 后端访问所有通知中心功能。此 Java SDK 在以 Java 形式表示的 REST 接口上提供瘦包装器。
 
@@ -142,15 +150,15 @@ SDK 当前支持：
 如果你希望进行更新：
 
 	installation.addTag("foo");
-	installation.addTemplate("template1", new InstallationTemplate("{"data":{"key1":"$(value1)"}}","tag-for-template1"));
-	installation.addTemplate("template2", new InstallationTemplate("{"data":{"key2":"$(value2)"}}","tag-for-template2"));
+	installation.addTemplate("template1", new InstallationTemplate("{\"data\":{\"key1\":\"$(value1)\"}}","tag-for-template1"));
+	installation.addTemplate("template2", new InstallationTemplate("{\"data\":{\"key2\":\"$(value2)\"}}","tag-for-template2"));
 	hub.createOrUpdateInstallation(installation);
 
 对于高级方案，我们提供有部分更新功能，以允许仅修改安装对象的特定属性。基本上，部分更新是你针对安装对象运行 JSON Patch 操作的子集。
 
 	PartialUpdateOperation addChannel = new PartialUpdateOperation(UpdateOperationType.Add, "/pushChannel", "adm-push-channel2");
 	PartialUpdateOperation addTag = new PartialUpdateOperation(UpdateOperationType.Add, "/tags", "bar");
-	PartialUpdateOperation replaceTemplate = new PartialUpdateOperation(UpdateOperationType.Replace, "/templates/template1", new InstallationTemplate("{"data":{"key3":"$(value3)"}}","tag-for-template1")).toJson());
+	PartialUpdateOperation replaceTemplate = new PartialUpdateOperation(UpdateOperationType.Replace, "/templates/template1", new InstallationTemplate("{\"data\":{\"key3\":\"$(value3)\"}}","tag-for-template1")).toJson());
 	hub.patchInstallation("installation-id", addChannel, addTag, replaceTemplate);
 
 删除安装：
@@ -214,32 +222,44 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。你请求的操作会�
 
 	List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
 
-**使用 SAS 签名的 URI：**这是某些 BLOB 文件或 BLOB 容器的 URL，加上一套例如权限和过期日期的参数，再加上使用帐户的 SAS 密钥制成的所有这些内容的签名。Azure 存储 Java SDK 具有丰富的功能，包括创建这种类型的 URI。作为简单的替代，你可以考虑使用 ImportExportE2E 测试类（来自 github 位置），其具有非常基本、精简的签名算法。
+**使用 SAS 签名的 URI：**
+这是某些 BLOB 文件或 BLOB 容器的 URL，加上一套例如权限和过期日期的参数，再加上使用帐户的 SAS 密钥制成的所有这些内容的签名。Azure 存储 Java SDK 具有丰富的功能，包括创建这种类型的 URI。作为简单的替代，你可以考虑使用 ImportExportE2E 测试类（来自 github 位置），其具有非常基本、精简的签名算法。
 
 ###发送通知
 通知对象只有带有标头的正文，一些实用工具方法可帮助你构建本机和模板通知对象。
 
 * **Windows 应用商店和 Windows Phone 8.1（非 Silverlight）**
 
-	String toast = "<toast><visual><binding template="ToastText01"><text id="1">Hello from Java!</text></binding></visual></toast>"; Notification n = Notification.createWindowsNotification(toast); hub.sendNotification(n);
+	String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
+	Notification n = Notification.createWindowsNotification(toast);
+	hub.sendNotification(n);
 
 * **iOS**
 
-	String alert = "{"aps":{"alert":"Hello from Java!"}}"; Notification n = Notification.createAppleNotification(alert); hub.sendNotification(n);
+	String alert = "{\"aps\":{\"alert\":\"Hello from Java!\"}}";
+	Notification n = Notification.createAppleNotification(alert);
+	hub.sendNotification(n);
 
 * **Android**
 
-		String message = "{"data":{"msg":"Hello from Java!"}}";
+		String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
 		Notification n = Notification.createGcmNotification(message);
 		hub.sendNotification(n);
 
 * **Windows Phone 8.0 和 8.1 Silverlight**
 
-	String toast = "<?xml version="1.0" encoding="utf-8"?>" + "<wp:Notification xmlns:wp="WPNotification">" + "<wp:Toast>" + "<wp:Text1>Hello from Java!</wp:Text1>" + "</wp:Toast> " + "</wp:Notification>"; Notification n = Notification.createMpnsNotification(toast); hub.sendNotification(n);
+	String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+		        "<wp:Notification xmlns:wp=\"WPNotification\">" +
+		           "<wp:Toast>" +
+		                "<wp:Text1>Hello from Java!</wp:Text1>" +
+		           "</wp:Toast> " +
+		        "</wp:Notification>";
+	Notification n = Notification.createMpnsNotification(toast);
+	hub.sendNotification(n);
 
 * **Kindle Fire**
 
-		String message = "{"data":{"msg":"Hello from Java!"}}";
+		String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
 		Notification n = Notification.createAdmNotification(message);
 		hub.sendNotification(n);
 
@@ -286,4 +306,4 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。你请求的操作会�
 [Maven]: http://maven.apache.org/
  
 
-<!---HONumber=71-->
+<!---HONumber=76-->

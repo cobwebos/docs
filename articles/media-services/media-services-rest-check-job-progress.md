@@ -9,15 +9,15 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"  
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 #如何：检查作业进度
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-portal-check-job-progress.md)
-- [.NET](media-services-check-job-progress.md)
-- [REST](media-services-rest-check-job-progress.md)
+- [Portal](/documentation/articles/media-services-portal-check-job-progress)
+- [.NET](/documentation/articles/media-services-check-job-progress)
+- [REST](/documentation/articles/media-services-rest-check-job-progress)
 
 当你运行作业时，通常需要采用某种方式来跟踪作业进度。你可以使用作业的 State 属性来查看该作业的状态。有关 State 属性的详细信息，请参阅[作业实体属性](https://msdn.microsoft.com/zh-cn/library/azure/5100ddd7-92ff-4c37-84d2-4f84fee250a7#job_entity_properties)。
 
@@ -51,4 +51,4 @@
 	
 	{"odata.metadata":"https://media.chinacloudapi.cn/api/$metadata#Jobs","value":[{"Id":"nb:jid:UUID:f3c43f94-327f-2347-90bb-3bf79f8559f1","Name":"Encoding BigBuckBunny into to H264 Adaptive Bitrate MP4 Set 720p","Created":"2015-02-11T01:46:08.897","LastModified":"2015-02-11T01:46:08.897","EndTime":null,"Priority":0,"RunningDuration":0.0,"StartTime":"2015-02-11T01:46:16.58","State":2,"TemplateId":null,"JobNotificationSubscriptions":[]}]}
 
-<!---HONumber=71-->
+<!---HONumber=76-->

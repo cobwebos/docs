@@ -9,4 +9,4 @@
   - 使用[队列存储](./storage-dotnet-how-to-use-queues.md)来存储非结构化数据。
   - 使用 [SQL 数据库](../sql-database/sql-database-dotnet-how-to-use.md)来存储关系数据。
 
-<!---HONumber=74-->
+<!---HONumber=76-->

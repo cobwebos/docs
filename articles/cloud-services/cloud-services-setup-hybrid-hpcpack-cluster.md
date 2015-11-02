@@ -13,7 +13,7 @@
 	wacn.date=""/>
 
 
-# 使用 Microsoft HPC Pack 设置混合计算群集
+#使用 Microsoft HPC Pack 设置混合计算群集
 本教程说明如何使用 Microsoft HPC Pack 2012 R2 和 Azure 设置小型的混合高性能计算 (HPC) 群集。该群集将由一个本地头节点（运行 Windows Server 操作系统和 HPC Pack 的计算机）和一些计算节点（在 Azure 云服务中作为辅助角色实例按需部署）构成。你可以在混合群集上运行计算作业。
  
 ![混合 HPC 群集][Overview]
@@ -102,7 +102,7 @@ HPC Pack 将在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 
 	![证书设置][upload_cert1]
 
-4. 在头节点上浏览找到文件 C:\\Program Files\\Microsoft HPC Pack 2012\\Bin\\hpccert.cer。然后，单击“检查”按钮。
+4. 在头节点上浏览找到文件 C:\Program Files\Microsoft HPC Pack 2012\Bin\hpccert.cer。然后，单击“检查”按钮。
 
 	![上载证书][install_hpc10]
 
@@ -204,7 +204,7 @@ HPC Pack 将在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 
 	![指定节点][add_node2]
 
-	有关可用虚拟机大小的详细信息，请参阅 [Azure 的虚拟机和云服务大小](https://msdn.microsoft.com/zh-CN/library/windowsazure/dn197896.aspx)。
+	有关可用虚拟机大小的详细信息，请参阅 [Azure 的虚拟机和云服务大小](https://msdn.microsoft.com/zh-cn/library/windowsazure/dn197896.aspx)。
 
 4. 在“完成添加节点向导”页上，单击“完成”。
 
@@ -343,4 +343,4 @@ HPC Pack 将在头节点上安装称作默认 Microsoft HPC Azure 管理证书�
 [stop_node4]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/stop_node4.png
 [view_instances2]: ./media/cloud-services-setup-hybrid-hpcpack-cluster/view_instances2.png
 
-<!---HONumber=71-->
+<!---HONumber=76-->

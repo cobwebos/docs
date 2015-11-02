@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure 通知中心入门"
-	description="了解如何使用 Azure 通知中心推送通知。"
+	pageTitle="Azure 通知中心入门（Windows 应用商店应用）| Microsoft Azure"
+	description="在本教程中，你将了解如何使用 Azure 通知中心将通知推送到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用程序。"
 	services="notification-hubs"
 	documentationCenter="windows"
 	authors="wesmc7777"
@@ -9,16 +9,16 @@
 
 <tags
     ms.service="notification-hubs"
-    ms.date="06/09/2015"
+    ms.date="09/03/2015"
     wacn.date=""/>
 
-# 通知中心入门
+# 通知中心入门（Windows 应用商店应用）
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ##概述
 
-本主题演示如何使用 Azure 通知中心将推送通知发送到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用程序。如果你要以 Windows Phone 8.1 Silverlight 为目标，请参阅 [Windows Phone](documentation/articles/notification-hubs-windows-phone-get-started) 版本。在本教程中，您将创建一个空白 Windows 应用商店应用程序，它使用 Windows 推送通知服务 (WNS) 接收推送通知。完成后，你将能使用通知中心将推送通知广播到运行你的应用程序的所有设备。
+本教程演示如何使用 Azure 通知中心将推送通知发送到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用程序。如果你要以 Windows Phone 8.1 Silverlight 为目标，请参阅 [Windows Phone](notification-hubs-windows-phone-get-started.md) 版本。在本教程中，你将创建一个空白 Windows 应用商店应用，它使用 Windows 推送通知服务 (WNS) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。
 
 本教程演示使用通知中心的简单广播方案。请确保随后学习下一教程以了解如何使用通知中心来发送到特定用户和设备组。
 
@@ -37,9 +37,9 @@
 
 ##为 Windows 应用商店注册应用程序
 
-要从移动服务将推送通知发送到 Windows 应用商店应用程序，你必须将你的应用程序提交到 Windows 应用商店。然后必须将通知中心配置为与 WNS 集成。
+若要将推送通知发送到 Windows 应用商店应用，你必须将你的应用关联到 Windows 应用商店。然后必须将通知中心配置为与 WNS 集成。
 
-1. 如果尚未注册应用，请在开发人员中心内导航到 Windows 应用商店应用程序的“提交应用”页，用 Microsoft 帐户登录，然后单击“应用名称”。<a href="http://go.microsoft.com/fwlink/p/?LinkID=266582" target="_blank"></a>
+1. 如果尚未注册应用，请在开发人员中心内导航到 Windows 应用商店应用程序的[“提交应用”](http://go.microsoft.com/fwlink/p/?LinkID=26658)页，用 Microsoft 帐户登录，然后单击“应用名称”。
 
    	![][0]
 
@@ -49,7 +49,7 @@
 
    	此操作为应用创建一个新的 Windows 应用商店注册。
 
-3. 在 Visual Studio 中，使用“空白应用”模板来创建新的 Visual C# 应用商店应用项目。
+3. 在 Visual Studio 中，使用“空白应用”模板来创建一个新的 Visual C# 应用商店应用项目。
 
    	![][2]
 
@@ -59,7 +59,7 @@
 
    	将显示“将应用与 Windows 应用商店关联”向导。
 
-5. 在该向导中，单击“登录”，然后用你的 Microsoft 帐户登录。
+5. 在该向导中，单击“登录”，然后使用你的 Microsoft 帐户登录。
 
 6. 单击在第 2 步中注册的应用，单击“下一步”，然后单击“关联”。
 
@@ -81,7 +81,8 @@
 
    	![][6]
 
- 	> [AZURE.NOTE]**安全说明**：客户端密钥和程序包 SID 是重要的安全凭据。请勿将这些值告知任何人或随你的应用程序分发它们。
+ 	> [AZURE.NOTE] **安全说明**：
+ 	客户端密钥和程序包 SID 是重要的安全凭据。请勿将这些值告知任何人或随你的应用程序分发它们。
 
 ##配置通知中心
 
@@ -270,4 +271,4 @@
 [提醒概述]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
  
 
-<!---HONumber=71-->
+<!---HONumber=76-->

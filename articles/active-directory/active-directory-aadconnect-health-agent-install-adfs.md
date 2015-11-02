@@ -73,4 +73,4 @@
 * [在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs)
 * [Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq)
 
-<!---HONumber=74-->
+<!---HONumber=76-->

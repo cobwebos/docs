@@ -3,10 +3,12 @@
 可以使用 Azure CLI 从运行 Windows、Linux 或 OSX 的任何计算机上的命令提示符管理 Azure 资源。若要使用 Azure CLI 创建 VNet，请执行以下步骤。
 
 1. 如果你从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](/documentation/articles/xplat-cli)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
-2. 运行 **azure network vnet create** 命令以创建 VNet 和子网，如下所示。请注意 CLI 命令的输出。在输出后显示的列表说明了所用的参数。
+2. 运行 **azure network vnet create** 命令以创建 VNet 和子网，如下所示。在输出后显示的列表说明了所用的参数。
 
 			azure network vnet create --vnet TestVNet -e 192.168.0.0 -i 16 -n FrontEnd -p 192.168.1.0 -r 24 -l "Central US"
 	
+	预期输出：
+
 			info:    Executing command network vnet create
 			+ Looking up network configuration
 			+ Looking up locations
@@ -21,10 +23,12 @@
 	- **-r（或 --subnet-cidr）**。子网的网络掩码（采用 CIDR 格式）。对于我们的方案，为 *24*。
 	- **-l（或 --location）**。要在其中创建 VNet 的 Azure 区域 。对于我们的方案，为 *Central US*。
 
-3. 运行 **azure network vnet subnet create** 命令以创建子网，如下所示。请注意命令的输出。在输出后显示的列表说明了所用的参数。
+3. 运行 **azure network vnet subnet create** 命令以创建子网，如下所示。在输出后显示的列表说明了所用的参数。
 
 			azure network vnet subnet create -t TestVNet -n BackEnd -a 192.168.2.0/24
 	
+	下面是上述命令的预期输出：
+
 			info:    Executing command network vnet subnet create
 			+ Looking up network configuration
 			+ Creating subnet "BackEnd"
@@ -43,6 +47,8 @@
 
 			azure network vnet show
 
+	下面是上述命令的预期输出：
+
 			info:    Executing command network vnet show
 			Virtual network name: TestVNet
 			+ Looking up the virtual network sites
@@ -59,4 +65,4 @@
 			data:
 			info:    network vnet show command OK
 
-<!---HONumber=69-->
+<!---HONumber=76-->

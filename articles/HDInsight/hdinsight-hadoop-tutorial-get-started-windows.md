@@ -11,24 +11,18 @@
 
 <tags
    ms.service="hdinsight"
-   ms.date="08/07/2015"
+   ms.date="09/03/2015"
    wacn.date=""/>
 
 
 # Hadoop 教程：在 Windows 上的 HDInsight 中开始将 Hadoop 与 Hive 查询配合使用
 
-> [AZURE.SELECTOR]
-- [Windows](/documentation/articles/hdinsight-hadoop-tutorial-get-started-windows)
-- [Linux](/documentation/articles/hdinsight-hadoop-linux-tutorial-get-started)
 
 为了帮助你了解并开始使用 Windows 上的 HDInsight，本教程说明了如何对 Hadoop 群集中的非结构化数据运行 Hive 查询，然后在 Microsoft Excel 中分析结果。
 
+[AZURE.INCLUDE [hdinsight-azure-preview-portal](../includes/hdinsight-azure-preview-portal.md)]
 
-> [AZURE.NOTE]如果你是 Hadoop 和大数据的新手，可以进一步了解这些术语：[Apache Hadoop][apache-hadoop]、[MapReduce][apache-mapreduce]、[HDFS][apache-hdfs] 和 [Hive][apache-hive]。若要了解 HDInsight 如何在 Azure 中启用 Hadoop，请参阅 [HDInsight 中的 Hadoop 简介][hadoop-hdinsight-intro]。
-
-Microsoft 还提供了 HDInsight Emulator for Azure（以前称作 *Microsoft HDInsight 开发者预览版*），与 Azure HDInsight 的通用版本结合使用。Emulator 针对开发人员方案，仅支持单节点部署。有关如何使用 HDInsight Emulator 的信息，请参阅 [HDInsight Emulator 入门][hdinsight-emulator]。
-
-> [AZURE.NOTE]有关如何设置 HBase 群集的说明，请参阅[在 HDInsight 中设置 HBase 群集][hdinsight-hbase-custom-provision]。请参阅 <a href="http://go.microsoft.com/fwlink/?LinkId=510237">Hadoop 与 HBase 之间的差别</a>，以了解为何要选择其中的某一种数据库。
+* [在 Windows 上开始使用 HDInsight 中的 Hadoop](/documentation/articles/hdinsight-hadoop-tutorial-get-started-windows-v1)
 
 ## 本 Hadoop 教程的目标是什么？
 
@@ -50,9 +44,7 @@ Microsoft 还提供了 HDInsight Emulator for Azure（以前称作 *Microsoft HD
 
 ##<a name="provision"></a>设置 Hadoop 群集
 
-当你设置群集时，便设置了包含 Hadoop 和相关应用程序的 Azure 计算资源。在此部分中，设置基于 Hadoop 版本 2.4 的 HDInsight 版本 3.1 群集。你还可以使用 Azure 门户、HDInsight PowerShell cmdlet 或 HDInsight .NET SDK 为其他版本创建 Hadoop 群集。有关说明，请参阅[使用自定义选项设置 HDInsight 群集][hdinsight-provision]。有关 HDInsight 版本及其 SLA 的信息，请参阅 [HDInsight 组件版本](hdinsight-component-versioning.md)。
-
-[AZURE.INCLUDE [provisioningnote](../includes/hdinsight-provisioning.md)]
+当你设置群集时，便设置了包含 Hadoop 和相关应用程序的 Azure 计算资源。在本部分，你将预配一个 HDInsight 版本 3.2 群集。你还可以使用 Azure 门户、HDInsight PowerShell cmdlet 或 HDInsight .NET SDK 为其他版本创建 Hadoop 群集。有关说明，请参阅[使用自定义选项设置 HDInsight 群集][hdinsight-provision]。有关 HDInsight 版本及其 SLA 的信息，请参阅 [HDInsight 组件版本](/documentation/articles/hdinsight-component-versioning)。
 
 
 **设置 Hadoop 群集**
@@ -90,7 +82,15 @@ Microsoft 还提供了 HDInsight Emulator for Azure（以前称作 *Microsoft HD
 
 成功设置的 HDInsight 群集提供包括入门库的查询控制台以直接从门户运行示例。通过浏览一些基本方案，你可以使用示例了解如何使用 HDInsight。这些示例提供所有必要组件，比如要分析的数据和要对数据运行的查询。若要了解有关入门库中的示例的详细信息，请参阅[使用 HDInsight 入门库了解 HDInsight 中的 Hadoop](hdinsight-learn-hadoop-use-sample-gallery)。
 
-**若要运行示例**，请从 Azure 门户中单击你想要运行示例的群集名称，然后单击页面底部的“查询控制台”。从打开的网页中，单击“入门库”选项卡，然后在“示例”类别下，单击要运行的示例。按照网页上的说明完成示例。下表列出了几个示例，并提供了有关每个示例的作用的详细信息。
+**运行示例**
+
+1. 在 Azure 预览门户启动板中，单击刚创建的群集所对应的磁贴。
+ 
+2. 在新的边栏选项卡中，单击“仪表板”。出现提示时，输入群集的管理员用户名和密码。
+
+	![启动群集仪表板](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.Cluster.Dashboard.png "启动群集仪表板")
+ 
+3. 从打开的网页中，单击“入门库”选项卡，然后在“使用示例数据的解决方案”类别下，单击要运行的示例。按照网页上的说明完成示例。下表列出了几个示例，并提供了有关每个示例的作用的详细信息。
 
 示例 | 它有什么作用？
 ------ | ---------------
@@ -241,4 +241,4 @@ Microsoft 还提供了 HDInsight Emulator for Azure（以前称作 *Microsoft HD
 [image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!---HONumber=71-->
+<!---HONumber=76-->

@@ -1,7 +1,15 @@
-<properties linkid="develop-notificationhubs-tutorials-get-started-kindle" urlDisplayName="Get Started" pageTitle="Azure 通知中心入门" metaKeywords="" description="了解如何使用 Azure 通知中心发送推送通知。" metaCanonical="" services="notification-hubs" documentationCenter="Mobile" title="Get started with Notification Hubs" authors="sethm" solutions="" manager="dwrede" editor="" />
+<properties
+	pageTitle="Azure 通知中心入门（Kindle 应用）| Microsoft Azure"
+	description="在本教程中，你将了解如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。"
+	services="notification-hubs"
+	documentationCenter=""
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""/>
+
 <tags
 	ms.service="notification-hubs"
-	ms.date="06/16/2015"
+	ms.date="09/03/2015"
 	wcdn.date=""/>
 # 通知中心入门
 
@@ -266,4 +274,4 @@
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
 
-<!---HONumber=71-->
+<!---HONumber=76-->

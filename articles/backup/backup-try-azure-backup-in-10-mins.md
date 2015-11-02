@@ -49,4 +49,4 @@ Azure 备份的设置极其简单，以下操作方法视频将会帮助你入�
 - [备份 Windows Server](/documentation/articles/backup-azure-backup-windows-server)
 - 访问 [Azure 备份论坛](http://go.microsoft.com/fwlink/p/?LinkId=290933)。
 
-<!---HONumber=74-->
+<!---HONumber=76-->

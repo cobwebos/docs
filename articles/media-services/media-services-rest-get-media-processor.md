@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015" 
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 
@@ -17,8 +17,8 @@
 
 
 > [AZURE.SELECTOR]
-- [.NET](media-services-get-media-processor.md)
-- [REST](media-services-rest-get-media-processor.md)
+- [.NET](/documentation/articles/media-services-get-media-processor)
+- [REST](/documentation/articles/media-services-rest-get-media-processor)
 
 ##概述
 
@@ -28,10 +28,10 @@
 
 媒体处理器名称|说明|更多信息
 ---|---|---
-Azure Media Encoder|让你使用 Azure 媒体编码器运行编码任务。|[Azure Media Encoder](media-services-encode-asset.md#azure_media_encoder)
-媒体编码器标准版|让你使用媒体编码器标准版运行编码任务。|[Azure Media Encoder](media-services-encode-asset.md#media_encoder_standard)
-媒体编码器高级工作流|允许你使用媒体编码器高级工作流运行编码任务。|[媒体编码器高级工作流](media-services-encode-asset.md#media_encoder_premium_wokrflow)
-Azure Media Indexer| 使媒体文件和内容可搜索，以及生成隐藏字幕跟踪和关键字。|[使用 Azure Media Indexer 为媒体文件编制索引](media-services-index-content.md)。
+Azure Media Encoder|让你使用 Azure 媒体编码器运行编码任务。|[Azure Media Encoder](/documentation/articles/media-services-encode-asset#azure_media_encoder)
+媒体编码器标准版|让你使用媒体编码器标准版运行编码任务。|[Azure Media Encoder](/documentation/articles/media-services-encode-asset#media_encoder_standard)
+媒体编码器高级工作流|允许你使用媒体编码器高级工作流运行编码任务。|[媒体编码器高级工作流](/documentation/articles/media-services-encode-asset#media_encoder_premium_wokrflow)
+Azure Media Indexer| 使媒体文件和内容可搜索，以及生成隐藏字幕跟踪和关键字。|[使用 Azure Media Indexer 为媒体文件编制索引](media-services-index-content)。
 Azure Media Hyperlapse（预览）|使你能够通过视频防抖动功能消除视频中的“晃动”。也可使将内容制作为可用剪辑的速度加快。|		[Azure Media Hyperlapse](http://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)</a>
 存储解密| 让你解密使用存储加密技术加密的媒体资产。|不适用
 Microsoft Azure Media Packager|让你将媒体资产从 .mp4 格式转换为平滑流式处理格式。还可让你将媒体资产从平滑流式处理格式转换为 Apple HTTP 实时流 (HLS) 格式。|[Azure Media Packager 的任务预设字符串](http://msdn.microsoft.com/library/hh973635.aspx)
@@ -43,7 +43,7 @@ Microsoft Azure Media Encryptor|让你使用 PlayReady 保护加密媒体资产�
 >
 >访问 Media Services 中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use)。
 
->在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。必须根据[使用 REST API 连接到媒体服务](/zh-cn/documentation/articles/media-services-rest-connect_programmatically/)中所述对新的 URI 执行后续调用。
+>在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。必须根据[使用 REST API 连接到媒体服务](/documentation/articles/media-services-rest-connect_programmatically/)中所述对新的 URI 执行后续调用。
 
 
 
@@ -88,4 +88,4 @@ Microsoft Azure Media Encryptor|让你使用 PlayReady 保护加密媒体资产�
 [Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/zh-cn/library/jj129582.aspx
 [How to: Connect to Media Services Programmatically]: /documentation/articles/media-services-rest-connect_programmatically
 
-<!---HONumber=71-->
+<!---HONumber=76-->

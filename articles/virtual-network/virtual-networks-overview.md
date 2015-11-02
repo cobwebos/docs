@@ -8,7 +8,7 @@
    editor="tysonn" />
 <tags
    ms.service="virtual-network"
-   ms.date="08/05/2015"
+   ms.date="09/14/2015"
    wacn.date="" />
 
 # 虚拟网络概述
@@ -89,4 +89,4 @@ VNet 为部署到它们的 IaaS VM 和 PaaS 角色的角色实例提供以下服
 - [保留公共 IP 地址](/documentation/articles/virtual-networks-reserved-public-ip)。
 - 了解[用户定义的路由和 IP 转发](/documentation/articles/virtual-networks-udr-overview)。
 
-<!---HONumber=69-->
+<!---HONumber=76-->

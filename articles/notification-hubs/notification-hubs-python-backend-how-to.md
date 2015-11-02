@@ -1,4 +1,11 @@
-<properties urlDisplayName="How to use Notification Hubs with Python" pageTitle="如何结合使用通知中心与 Python" metaKeywords="" description="了解如何从 Python 后端使用 Azure 通知中心。" metaCanonical="" services="notification-hubs,push,python,notification hubs REST APIs" documentationCenter="" title="How to use Notification Hubs with Python" authors="piyushjo" solutions="" manager="dwrede" editor="" />
+<properties 
+	pageTitle="如何结合使用通知中心与 Python" 
+	description="了解如何从 Python 后端使用 Azure 通知中心。" 
+	services="notification-hubs" 
+	documentationCenter="" 
+	authors="ysxu" 
+	manager="dwrede" 
+	editor=""/>
 
 <tags
       ms.service="notification-hubs" 
@@ -218,7 +225,7 @@
 
 ### Windows 应用商店和 Windows Phone 8.1（非 Silverlight）
 
-	wns_payload = """<toast><visual><binding template="ToastText01"><text id="1">Test</text></binding></visual></toast>"""
+	wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Test</text></binding></visual></toast>"""
 	hub.send_windows_notification(wns_payload)
 
 ### Windows Phone 8.0 和 8.1 Silverlight
@@ -267,7 +274,8 @@
 ## 示例:
 
 ### 启用调试属性
-如果在初始化 NotificationHub 时启用调试标志，你将会看到详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，你可以从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：![][1]
+如果在初始化 NotificationHub 时启用调试标志，你将会看到详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，你可以从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：
+	![][1]
 
 你将看到如详细的通知中心结果，例如
 
@@ -341,4 +349,4 @@
 [4]: ./media/notification-hubs-python-backend-how-to/SendWithMultipleTags.png
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
 
-<!---HONumber=71-->
+<!---HONumber=76-->

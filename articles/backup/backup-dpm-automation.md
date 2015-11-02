@@ -1,15 +1,15 @@
 <properties
-	pageTitle="Azure 备份 - 使用 PowerShell 部署和管理 DPM 的备份 | Windows Azure"
+	pageTitle="Azure 备份 - 使用 PowerShell 部署和管理 DPM 的备份 | Microsoft Azure"
 	description="了解如何使用 PowerShell 部署和管理 Data Protection Manager (DPM) 的 Azure 备份"
 	services="backup"
 	documentationCenter=""
-	authors="SamirMehta"
+	authors="AnuragMehrotra"
 	manager="jwhit"
 	editor=""/>
 
 <tags
 	ms.service="backup"
-	ms.date="08/18/2015"
+	ms.date="09/04/2015"
 	wacn.date=""/>
 
 
@@ -20,7 +20,7 @@
 在可以使用 PowerShell 管理 Data Protection Manager 的 Azure 备份之前，需要在 PowerShell 中设置适当的环境。在 PowerShell 会话开始时，请确保运行以下命令，以便导入正确的模块以及正确引用 DPM cmdlet：
 
 ```
-PS C:\> & "C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin\DpmCliInitScript.ps1"
+PS C:> & "C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin\DpmCliInitScript.ps1"
 
 Welcome to the DPM Management Shell!
 
@@ -71,7 +71,16 @@ PS C:\> MARSAgentInstaller.exe /?
 
 | 选项 | 详细信息 | 默认 |
 | ---- | ----- | ----- |
-| /q | 静默安装 | - | | /p:"location" | Azure 备份代理的安装文件夹路径。| C:\\Program Files\\Windows Azure Recovery Services Agent | | /s:"location" | Azure 备份代理的快取文件夹路径。| C:\\Program Files\\Windows Azure Recovery Services Agent\\Scratch | | /m | 选择启用 Microsoft Update | - | | /nu | 安装完成后不要检查更新 | - | | /d | 卸载 Microsoft Azure 恢复服务代理 | - | | /ph | 代理主机地址 | - | | /po | 代理主机端口号 | - | | /pu | 代理主机用户名 | - | | /pw | 代理密码 | - |
+| /q | 静默安装 | - |
+| /p:"location" | Azure 备份代理的安装文件夹路径。| C:\\Program Files\\Microsoft Azure Recovery Services Agent |
+| /s:"location" | Azure 备份代理的快取文件夹路径。| C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
+| /m | 选择启用 Microsoft Update | - |
+| /nu | 安装完成后不要检查更新 | - |
+| /d | 卸载 Microsoft Azure 恢复服务代理 | - |
+| /ph | 代理主机地址 | - |
+| /po | 代理主机端口号 | - |
+| /pu | 代理主机用户名 | - |
+| /pw | 代理密码 | - |
 
 ### 注册到 Azure 备份服务
 在可注册 Azure 备份服务之前，需要确保符合[先决条件](/documentattion/articles/backup-azure-dpm-introduction)。你必须：
@@ -95,7 +104,7 @@ PS C:\> $cred = $credspath + $credsfilename
 PS C:\> Start-DPMCloudRegistration -DPMServerName "TestingServer" -VaultCredentialsFilePath $cred
 ```
 
-这将使用指定的保管库凭据向 Windows Azure 保管库注册名为“TestingServer”的 DPM 服务器。
+这将使用指定的保管库凭据向 Microsoft Azure 保管库注册名为“TestingServer”的 DPM 服务器。
 
 > [AZURE.IMPORTANT]请勿使用相对路径来指定保管库凭据文件。必须提供绝对路径作为 cmdlet 的输入。
 
@@ -160,7 +169,7 @@ PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -Subscrip
 1. “组成员”是你要在相同的保护组中保护的所有可保护对象的列表（在 DPM 中也称为“数据源”）。例如，你可能想要保护一个保护组中的生产 VM 与另一个保护组中的 SQL Server 数据库，因为它们可能有不同的备份要求。在可以备份生产服务器上的任何数据源之前，需要确保 DPM 代理已安装在服务器上并受 DPM 的管理。遵循[安装 DPM 代理](https://technet.microsoft.com/zh-cn/library/bb870935.aspx)的步骤，并将代理链接到相应的 DPM 服务器。
 2. “数据保护方法”指定目标备份位置 - 磁带、磁盘和云。在本示例中，我们将在本地磁盘和云中保护数据。
 3. 一个“备份计划”，指定何时需要进行备份，以及应该在 DPM 服务器和生产服务器之间同步数据的频率。
-4. 一个“保留计划”，指定要在 Azure 中保留恢复点多长时间。
+4. 一个**保留计划**，指定要在 Azure 中保留恢复点多长时间。
 
 ### 创建保护组
 首先，使用 [Add-DPMProtectionGroup](https://technet.microsoft.com/zh-cn/library/hh881722) cmdlet 创建新的保护组。
@@ -204,6 +213,7 @@ PS C:\> Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 
 ```
 PS C:\> Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
+PS C:\> Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 ```
 
 ### 设置保留范围
@@ -253,6 +263,10 @@ PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 PS C:\> Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 ```
+### 更改 DPM 副本和恢复点卷的大小
+你还可以使用 [Set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/zh-CN/library/hh881618(v=sc.20).aspx) cmdlet 更改 DPM 副本卷和和卷影复制卷的大小，如以下示例所示：
+Get-DatasourceDiskAllocation -Datasource $DS
+Set-DatasourceDiskAllocation -Datasource $DS -ProtectionGroup $MPG -manual -ReplicaArea (2gb) -ShadowCopyArea (2gb)
 
 ### 将更改提交到保护组
 最后，需要提交更改，然后 DPM 才可以根据每个新保护组配置进行备份。这可以使用 [Set-DPMProtectionGroup](https://technet.microsoft.com/zh-cn/library/hh881758) cmdlet 来实现。
@@ -294,4 +308,4 @@ PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -Recovery
 ## 后续步骤
 有关适用于 DPM 的 Azure 备份的详细信息，请参阅 [Azure DPM 备份简介](/documentation/articles/backup-azure-dpm-introduction)
 
-<!---HONumber=69-->
+<!---HONumber=76-->

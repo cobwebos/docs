@@ -27,7 +27,7 @@
 + [移动服务 Android SDK]
 + [百度推送 Android SDK]
 
->[WACN.NOTE] 若要完成本教程，你必须具有有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.cn/zh-cn/pricing/free-trial/?WT.mc\_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.cn%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F"" target="\_blank">Azure 免费试用</a>。
+>[AZURE.NOTE]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://www.windowsazure.cn/zh-cn/pricing/1rmb-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.cn%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F)。
 
 本教程将指导你完成启用推送通知的以下基本步骤：
 
@@ -376,15 +376,15 @@
 		    @Override
 		    public void onNotificationClicked(Context context, String title,
 		            String description, String customContentString) {
-		        String notifyString = "title="" + title + "" description=""
-		                + description + "" customContent=" + customContentString;
+		        String notifyString = "title=\"" + title + "\" description=\""
+		                + description + "\" customContent=" + customContentString;
 		        Log.d(TAG, notifyString);
 		    }
 		
 		    @Override
 		    public void onMessage(Context context, String message,
 		            String customContentString) {
-		        String messageString = "message="" + message + "" customContentString=" + customContentString;
+		        String messageString = "message=\"" + message + "\" customContentString=" + customContentString;
 		        Log.d(TAG, messageString);
 		    }
 		}
@@ -394,7 +394,9 @@
 	        PushManager.startWork(getApplicationContext(),
 	                PushConstants.LOGIN_TYPE_API_KEY, ConfigurationSettings.API_KEY);
 
-在顶部添加以下 import 语句：import com.baidu.android.pushservice.PushConstants; import com.baidu.android.pushservice.PushManager;
+and add the following import statements at the top:
+			import com.baidu.android.pushservice.PushConstants;
+			import com.baidu.android.pushservice.PushManager;
 
 ##<a id="send"></a>向应用发送通知
 
@@ -483,4 +485,4 @@
 []: http://www.baidu.com/
 [百度门户]: http://www.baidu.com/
 
-<!---HONumber=71-->
+<!---HONumber=76-->

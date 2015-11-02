@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="cache" 
-	ms.date="08/11/2015" 
+	ms.date="08/25/2015" 
 	wacn.date=""/>
 
 # Azure Redis Cache 示例 
@@ -34,7 +34,7 @@
 
 有关详细信息，请参阅 github 上的 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)；有关更多的使用方案，请参阅 [StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/StackExchange.Redis.Tests) 单位测试。
 
-[如何将 Azure Redis 缓存与 Python 配合](cache-python-get-started.md)使用展示了在使用 Python 和 [redis-py](https://github.com/andymccurdy/redis-py) 客户端的情况下使用 Azure Redis 缓存的入门知识。
+[如何将 Azure Redis 缓存与 Python 配合使用](/documentation/articles/cache-python-get-started)展示了如何使用 Python 和 [redis-py](https://github.com/andymccurdy/redis-py) 客户端开始使用 Azure Redis 缓存。
 
 [PHP 示例](https://msdn.microsoft.com/library/azure/dn690470.aspx#PHPExample)演示了将 Azure Redis 缓存与 PHP 和 [predis](https://github.com/nrk/predis) 客户端配合使用的入门知识。
 
@@ -71,4 +71,4 @@
 
 [带宽监视器](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor)示例允许你监视客户端上使用的带宽。若要测量带宽、请在缓存客户端计算机上运行该示例，对缓存执行调用，然后观察带宽监视器示例报告的带宽。
 
-<!---HONumber=71-->
+<!---HONumber=76-->

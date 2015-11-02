@@ -3,14 +3,14 @@
 	description="列出创建 Windows 虚拟机的不同方式，并提供说明链接。"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="KBDAzure"
+	authors="cynthn"
 	manager="timlt"
 	editor=""
 	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="07/15/2015"
+	ms.date="09/15/2015"
 	wacn.date=""/>
 
 # 创建 Windows 虚拟机的不同方式
@@ -63,8 +63,6 @@ Azure 门户的图形用户界面是一种试用虚拟机的简便方式，尤�
 [附加数据磁盘][]
 
 ## 其他资源
-[关于 Azure 虚拟机配置设置][]
-
 [基本配置测试环境][]
 
 [Azure 混合云测试环境][]
@@ -93,10 +91,8 @@ Azure 门户的图形用户界面是一种试用虚拟机的简便方式，尤�
 
 [附加数据磁盘]: /documentation/articles/storage-windows-attach-disk
 
-[关于 Azure 虚拟机配置设置]: http://msdn.microsoft.com/zh-cn/library/azure/dn763935.aspx
-
 [基本配置测试环境]: /documentation/articles/virtual-machines-base-configuration-test-environment
 
 [Azure 混合云测试环境]: /documentation/articles/virtual-machines-hybrid-cloud-test-environments
 
-<!---HONumber=70-->
+<!---HONumber=76-->

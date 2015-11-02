@@ -1,7 +1,15 @@
-<properties linkid="develop-notificationhubs-tutorials-send-breaking-news-ios" urlDisplayName="Breaking News" pageTitle="通知中心突发新闻教程 - iOS" metaKeywords="" description="了解如何使用 Azure 服务总线通知中心向 iOS 设备发送突发新闻通知。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send breaking news" authors="ricksal" solutions="" manager="" editor="" />
-<tags 
-	ms.service="notification-hubs" 
-	ms.date="06/01/2015" 
+<properties
+	pageTitle="通知中心突发新闻教程 - iOS"
+	description="了解如何使用 Azure 服务总线通知中心向 iOS 设备发送突发新闻通知。"
+	services="notification-hubs"
+	documentationCenter="ios"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""/>
+
+<tags
+	ms.service="notification-hubs"
+	ms.date="06/16/2015"
 	wacn.date=""/>
 
 # 使用通知中心发送突发新闻
@@ -334,7 +342,6 @@
 
 3. 每个订阅突发新闻的设备都会收到刚刚发送的突发新闻通知。
 
-	![][4] ![][5]
 
 
 ## 后续步骤
@@ -355,8 +362,7 @@
 [1]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-subscribed.png
 [2]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios1.png
 [3]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
-[4]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews1.png
-[5]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews2.png
+
 
 
 
@@ -375,4 +381,4 @@
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/zh-cn/library/jj927168.aspx
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
 
-<!---HONumber=71-->
+<!---HONumber=76-->

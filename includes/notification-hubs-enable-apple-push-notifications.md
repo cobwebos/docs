@@ -1,7 +1,7 @@
 
 Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。请遵照这些说明来创建用于发送和接收通知的所需推送证书。有关正式的 APNS 功能文档，请参阅 [Apple 推送通知服务](http://go.microsoft.com/fwlink/p/?LinkId=272584)。
 
-## 生成证书签名请求文件
+##生成证书签名请求文件
 
 首先，你必须生成证书签名请求 (CSR) 文件，Apple 将使用该文件生成签名的推送证书。
 
@@ -23,7 +23,7 @@ Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。
 
 接下来，你将要向 Apple 注册你的应用程序、启用推送通知并上载这个导出的 CSR 以创建一个推送证书。
 
-## 为推送通知注册应用程序
+##为推送通知注册应用程序
 
 若要将推送通知发送到 iOS 应用程序，你必须向 Apple 注册应用程序，还要注册推送通知。
 
@@ -80,9 +80,9 @@ Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。
 
   	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-downloaded.png)
 
-    > [AZURE.NOTE]默认情况下，下载的文件（开发证书）名为 **aps_development.cer**。
+    > [AZURE.NOTE]默认情况下，下载的文件（开发证书）名为 **aps\_development.cer**。
 
-7. 双击下载的推送证书 **aps_development.cer**。
+7. 双击下载的推送证书 **aps\_development.cer**。
 
    	将在 Keychain 中安装新证书，如下所示：
 
@@ -92,7 +92,7 @@ Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。
 
 稍后，你将要使用此证书生成一个 .p12 文件，以使用 APNS 启用身份验证。
 
-## 为应用程序创建配置文件
+##为应用程序创建配置文件
 
 1. 返回 <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS 设置门户</a>，选择“Provisioning Profiles”（设置配置文件），选择“All”（全部），然后单击“+”按钮创建一个新的配置文件。此时会启动“Add iOS Provisiong Profile”（添加 iOS 设置配置文件）向导
 
@@ -125,4 +125,4 @@ Apple 推送通知服务 (APNS) 使用证书对推送通知进行身份验证。
 
    	![](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
 
-<!---HONumber=HO63-->
+<!---HONumber=76-->

@@ -9,13 +9,13 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015" 
+	ms.date="09/07/2015"
 	wacn.date=""/>
 
 
 # Media Services REST API 概述 
 
-[AZURE.INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]Microsoft Azure Media Services 是一项服务，该服务接受基于 OData 的 HTTP 请求并能够以详细 JSON 或 atom+pub 做出响应。由于 Media Services 遵循 Azure 设计准则，因此在连接到 Media Services 时，每个客户端必须使用一组必需的 HTTP 标头，还可以使用一组可选标头。以下部分介绍你在创建请求和接收来自 Media Services 的响应时可以使用的标头和 HTTP 谓词。
+[AZURE.INCLUDE [media-services-selector-setup](../includes/media-services-selector-setup.md)]Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HTTP 请求并能够以详细 JSON 或 atom+pub 做出响应。由于 Media Services 遵循 Azure 设计准则，因此在连接到 Media Services 时，每个客户端必须使用一组必需的 HTTP 标头，还可以使用一组可选标头。以下部分介绍你在创建请求和接收来自 Media Services 的响应时可以使用的标头和 HTTP 谓词。
 
 
 ## Media Services 支持的标准 HTTP 请求标头
@@ -49,7 +49,7 @@
 
 ## 发现 Media Services 模型
 
-为了使 Media Services 实体易于发现，可使用 $metadata 操作。使用该操作，你可以检索所有有效的实体类型、实体属性、关联、函数、操作等。以下示例说明了如何构建 URI：https://media.windows.net/API/$metadata。
+为了使 Media Services 实体易于发现，可使用 $metadata 操作。使用该操作，你可以检索所有有效的实体类型、实体属性、关联、函数、操作等。以下示例说明了如何构建 URI：https://media.chinacloudapi.cn/API/$metadata。
 
 如果希望在浏览器中查看元数据，应在 URI 的末尾追加“?api-version=2.x”，或不要在请求中包括 x-ms-version 标头。
 
@@ -60,4 +60,4 @@
 <!-- URLs. -->
   [Management Portal]: http://manage.windowsazure.cn/
 
-<!---HONumber=71-->
+<!---HONumber=76-->

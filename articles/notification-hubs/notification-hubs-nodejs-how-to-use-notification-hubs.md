@@ -1,7 +1,15 @@
-<properties linkid="develop-nodejs-how-to-guides-service-bus-notification-hubs" urlDisplayName="Notification Hubs" pageTitle="Service Bus 通知中心 - Node.js 开发人员中心" metaKeywords="" description="了解如何使用 Service Bus 通知中心发送推送通知。代码示例是针对 Node.js 应用程序编写的。" metaCanonical="" services="service-bus" documentationCenter="Node.js" title="How to Use Service Bus Notification Hubs" authors="larryfr" solutions="" manager="" editor="" />
+<properties
+	pageTitle="如何通过 Node.js 使用通知中心"
+	description="了解如何使用通知中心从 Node.js 应用程序发送推送通知。"
+	services="notification-hubs"
+	documentationCenter="nodejs"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""/>
+
 <tags
 	ms.service="notification-hubs"
-	ms.date="06/02/2015"
+	ms.date="06/16/2015"
 	wacn.date=""/>
 	
 	
@@ -177,7 +185,7 @@ Azure 通知中心可提供用于向移动设备发送推送通知的易于使�
 
 现在，你已了解有关通知中心的基础知识，请单击下面的链接了解更多信息。
 
--   请参阅 MSDN 参考：[Azure 通知中心][]。
+-   请参阅 MSDN 参考：[Azure 通知中心](http://msdn.microsoft.com/zh-cn/library/windowsazure/jj927170.aspx)。
 -   访问 GitHub 上的 [Azure SDK for Node] 存储库。
 
   [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
@@ -211,4 +219,4 @@ Azure 通知中心可提供用于向移动设备发送推送通知的易于使�
   [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
   [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 
-<!---HONumber=71-->
+<!---HONumber=76-->

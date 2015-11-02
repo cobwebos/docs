@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 #使用从本地编码器接收多比特率实时流的频道
@@ -154,7 +154,7 @@
 
 在频道开始摄取数据后，你可以预览流。
 
-请注意，当前，不管指定了哪种输入类型，都只能以分片 MP4 (Smooth Streaming) 格式来传送预览流。你可以使用 [http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor) 播放器来测试平滑流。你还可以使用 Azure 管理门户中承载的播放器来查看你的流。
+请注意，当前，不管指定了哪种输入类型，都只能以分片 MP4 (Smooth Streaming) 格式来传送预览流。你可以使用 [http://smf.chinacloudapp.cn/healthmonitor](http://smf.chinacloudapp.cn/healthmonitor) 播放器来测试平滑流。你还可以使用 Azure 管理门户中承载的播放器来查看你的流。
 
 
 ####允许的 IP 地址
@@ -236,29 +236,7 @@
 - 当频道或其关联的节目正在运行时，无法更改输入协议。如果你需要不同的协议，应当针对每个输入协议创建单独的频道。 
 - 仅当你的频道处于**“正在运行”**状态时才会向你收费。有关详细信息，请参阅[此](/documentation/articles/media-services-manage-channels-overview#states)部分。
 
-##<a id="tasks"></a>与实时流式处理相关的任务
-
-###创建 Media Services 帐户
-
-[创建 Azure Media Services 帐户](/documentation/articles/media-services-create-account)。
-
-###配置流式处理终结点
-
-有关流式处理终结点的概述以及如何管理它们的信息，请参阅[如何在 Media Services 帐户中管理流式处理终结点](/documentation/articles/media-services-manage-origins)
-
-###设置开发环境  
-
-为开发环境选择**“.NET”**或**“REST API”**。
-
-[AZURE.INCLUDE [media-services-selector-setup](../includes/media-services-selector-setup.md)]
-
-###以编程方式建立连接  
-
-选择**“.NET”**或**“REST API”**以编程方式连接到 Azure Media Services。
-
-[AZURE.INCLUDE [media-services-selector-connect](../includes/media-services-selector-connect.md)]
-
-###创建从本地编码器接收多比特率实时流的频道
+##如何创建从本地编码器接收多比特率实时流的频道
 
 有关本地实时编码器的更多信息，请参阅[将第三方实时编码器与 Azure 媒体服务结合使用](https://msdn.microsoft.com/zh-cn/library/azure/dn783464.aspx)。
 
@@ -266,56 +244,6 @@
 
 [AZURE.INCLUDE [media-services-selector-manage-channels](../includes/media-services-selector-manage-channels.md)]
 
-###保护资源
-
-**概述**：
-
-[内容保护概述](/documentation/articles/media-services-content-protection-overview)
-
-
-如果要使用高级加密标准 (AES)（使用 128 位加密密钥）或 PlayReady DRM 加密与节目关联的资源，则需要创建内容密钥。
-
-使用 **.NET** 或 **REST API** 创建密钥。
-
-[AZURE.INCLUDE [media-services-selector-create-contentkey](../includes/media-services-selector-create-contentkey.md)]
-
-创建内容密钥后，可以使用 **.NET** 或 **REST API** 配置密钥授权策略。
-
-[AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../includes/media-services-selector-content-key-auth-policy.md)]
-
-####与合作伙伴集成
-
-[使用 castLabs 将 DRM 许可证传送到 Azure Media Services](/documentation/articles/media-services-castlabs-integration)
-
-###发布和传送资源
-
-**概述**：
-
-- [动态打包概述](/documentation/articles/media-services-dynamic-packaging-overview)
-
-使用 **.NET** 或 **REST API** 配置资源传送策略。
-
-[AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../includes/media-services-selector-asset-delivery-policy.md)]
-
-使用 **Azure 管理门户**或 **.NET** 发布资源（通过创建定位符）。
-
-[AZURE.INCLUDE [media-services-selector-publish](../includes/media-services-selector-publish.md)]
-
-传送内容
-
-> [AZURE.SELECTOR]
-- [Overview](/documentation/articles/media-services-deliver-content-overview)
-
-
-###启用 Azure CDN
-
-Media Services 支持与 Azure CDN 集成。有关如何启用 Azure CDN 的信息，请参阅[如何在 Media Services 帐户中管理流式处理终结点](/documentation/articles/media-services-manage-origins#enable_cdn)。
-
-###缩放 Media Services 帐户
-
-通过指定要为帐户设置的**流式处理保留单元**数，可以缩放 **Media Services**。
-
-有关缩放流式处理单元的信息，请参阅：[如何缩放流式处理单元](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
 
 ##相关主题
 
@@ -328,4 +256,4 @@ Media Services 支持与 Azure CDN 集成。有关如何启用 Azure CDN 的信�
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
  
 
-<!---HONumber=71-->
+<!---HONumber=76-->

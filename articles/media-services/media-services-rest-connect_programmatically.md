@@ -9,16 +9,16 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 # 使用 Media Services REST API 连接到 Media Services 帐户
 
 > [AZURE.SELECTOR]
-- [.NET](media-services-dotnet-connect_programmatically.md)
-- [REST](media-services-rest-connect_programmatically.md)
+- [.NET](/documentation/articles/media-services-dotnet-connect_programmatically)
+- [REST](/documentation/articles/media-services-rest-connect_programmatically)
 
-本主题介绍如何在使用 Media Services REST API 编程时获取与 Microsoft Azure Media Services 的编程连接。
+本主题介绍如何在使用媒体服务 REST API 编程时获取与 Microsoft Azure 媒体服务的编程连接。
 
 访问 Microsoft Azure 媒体服务时需要以下两项内容：由 Azure 访问控制服务 (ACS) 提供的访问令牌和媒体服务本身的 URI。在创建这些请求时，可以使用任何想要的方法，前提是在调用 Media Services 时指定了正确的标头值，并且正确地传入了访问令牌。
 
@@ -84,7 +84,7 @@
 	
 	{  
 	   "token_type":"http://schemas.xmlsoap.org/ws/2009/11/swt-token-profile-1.0",
-	   "access_token":"http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421330840&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&HMACSHA256=uf69n82KlqZmkJDNxhJkOxpyIpA2HDyeGUTtSnq1vlE%3d",
+	   "access_token":"http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f19258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421330840&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&HMACSHA256=uf69n82KlqZmkJDNxhJkOxpyIpA2HDyeGUTtSnq1vlE%3d",
 	   "expires_in":"21600",
 	   "scope":"urn:WindowsAzureMediaServices"
 	}
@@ -96,11 +96,11 @@
 
 ###连接到 Media Services URI
 
-媒体服务的根 URI 为 https://media.chinacloudapi.cn/。你最初应连接到此 URI，如果在响应中收到“301 重定向”，则应随后调用新 URI。此外，请勿在请求中使用任何自动重定向/跟踪逻辑。HTTP 谓词和请求正文将不会转发到新 URI。
+媒体服务的根 URI 为 https://media.chinacloudapi.cn/。 你最初应连接到此 URI，如果在响应中收到“301 重定向”，则应随后调用新 URI。此外，请勿在请求中使用任何自动重定向/跟踪逻辑。HTTP 谓词和请求正文将不会转发到新 URI。
 
-请注意，用于上载和下载资产文件的根 URI 为 https://yourstorageaccount.blob.core.chinacloudapi.cn/，其中的存储帐户名为你在媒体服务帐户设置期间使用的同一帐户名。
+请注意，用于上载和下载资产文件的根 URI 为 https://yourstorageaccount.blob.core.chinacloudapi.cn/ ，其中的存储帐户名为你在媒体服务帐户设置期间使用的同一帐户名。
 
-以下示例演示了对媒体服务根 URI 发出的 HTTP 请求 (https://media.chinacloudapi.cn/))。该请求将在响应中获取 301 重定向。后续请求使用新的 URI (https://wamsbayclus001rest-hs.chinacloudapp.cn/api/))。
+以下示例演示了对媒体服务根 URI 发出的 HTTP 请求 (https://media.chinacloudapi.cn/)。 该请求将在响应中获取 301 重定向。后续请求使用新的 URI (https://wamsbayclus001rest-hs.chinacloudapp.cn/api/)。     
 
 **HTTP 请求**：
 	
@@ -164,4 +164,4 @@
 
 <!-- URLs. -->
 
-<!---HONumber=71-->
+<!---HONumber=76-->

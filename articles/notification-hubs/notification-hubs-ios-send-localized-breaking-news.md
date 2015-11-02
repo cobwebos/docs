@@ -1,8 +1,20 @@
-<properties linkid="develop-notificationhubs-tutorials-send-localized-breaking-news-iOS" urlDisplayName="Localized Breaking News" pageTitle="通知中心本地化的突发新闻教程 - iOS" metaKeywords="" description="了解如何使用 Azure 服务总线通知中心发送本地化的突发新闻通知 (iOS)。" metaCanonical="" services="mobile-services,notification-hubs" documentationCenter="" title="Use Notification Hubs to send localized breaking news to iOS devices" authors="ricksal" solutions="" manager="" editor="" />
-<tags 
-	ms.service="notification-hubs" 
-	ms.date="06/02/2015" 
-	wacn.date=""/>
+<properties
+	pageTitle="通知中心本地化的突发新闻教程 - iOS"
+	description="了解如何使用 Azure 服务总线通知中心发送本地化的突发新闻通知 (iOS)。"
+	services="notification-hubs"
+	documentationCenter="ios"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""/>
+
+<tags
+	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="ios"
+	ms.devlang="objective-c"
+	ms.topic="article"
+	ms.date="06/16/2015"
+	ms.author="wesmc"/>
 # 使用通知中心将本地化的突发新闻发送到 iOS 设备
 
 > [AZURE.SELECTOR]
@@ -67,7 +79,7 @@
 我们现在将修改你在[使用通知中心发送突发新闻]主题中创建的“突发新闻”应用，以使用模板发送本地化的突发新闻。
 
 
-在 MainStoryboard\_iPhone.storyboard 中，添加具有我们支持的三种语言的分段控件：英语、法语和汉语。
+在 MainStoryboard_iPhone.storyboard 中，添加具有我们支持的三种语言的分段控件：英语、法语和汉语。
 
 ![][13]
 
@@ -118,7 +130,7 @@
 		            break;
 		    }
 		    
-		    NSString* template = [NSString stringWithFormat:@"{"aps":{"alert":"$(News_%@)"},"inAppMessage":"$(News_%@)"}", localeString, localeString];
+		    NSString* template = [NSString stringWithFormat:@"{\"aps\":{\"alert\":\"$(News_%@)\"},\"inAppMessage\":\"$(News_%@)\"}", localeString, localeString];
 		    
 		    [hub registerTemplateWithDeviceToken:self.deviceToken name:@"newsTemplate" jsonBodyTemplate:template expiryTemplate:@"0" tags:categories completion:completion];
 		}
@@ -228,4 +240,4 @@
 [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
 [适用于 iOS 的通知中心操作方法]: http://msdn.microsoft.com/zh-cn/library/jj927168.aspx
 
-<!---HONumber=71-->
+<!---HONumber=76-->

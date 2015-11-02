@@ -1,7 +1,7 @@
 <properties 
-	pageTitle="有关 Azure Web 作业的推荐资源" 
+	pageTitle="Azure Web 作业文档资源" 
 	description="学习如何使用 Azure Web 作业和 Azure WebJobs SDK 时可以参考的推荐资源" 
-	services="web-sites, storage" 
+	services="app-service\web" 
 	documentationCenter=".net" 
 	authors="tdykstra" 
 	manager="wpickett" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="app-service-web" 
-	ms.date="06/07/2015"
+	ms.date="09/08/2015" 
 	wacn.date=""/>
 
 # Azure Web 作业文档资源
@@ -18,7 +18,7 @@
 
 本主题提供了有关如何使用 Azure Web 作业和 Azure WebJobs SDK 的文档资源的链接。Azure Web 作业可让你在 Azure 网站上以后台进程的形式运行脚本或程序。你可以上载和运行可执行文件，例如 cmd、bat、exe (.NET)、ps1、sh、php、py、js 和 jar。这些程序将按计划 (cron) 或者连续地以 Web 作业的形式运行。
 
-借助 WebJobs SDK 可以更方便地使用 Azure 存储空间。WebJobs SDK 还有一个绑定和触发器系统，该系统可与 Microsoft Azure 存储 Blob、队列和表以及 Service Bus 队列配合工作。
+借助 WebJobs SDK 可以更方便地使用 Azure 存储空间。WebJobs SDK 还有一个绑定和触发器系统，该系统可与 Microsoft Azure 存储 Blob、队列和表以及服务总线队列配合工作。
 
 使用 Visual Studio 中集成的工具，可以顺利地创建、部署和管理 Web 作业。你可以从模板创建 Web 作业，还可以发布和管理（运行/停止/监视/调试）这些作业。
 
@@ -27,6 +27,7 @@ Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你
 ##<a name="getstarted"></a>Web 作业和 WebJobs SDK 入门
 
 * [Azure Web 作业简介](http://www.hanselman.com/blog/IntroducingWindowsAzureWebJobs.aspx)
+* [Azure Web 作业功能很强大，快来试试吧！](http://www.troyhunt.com/2015/01/azure-webjobs-are-awesome-and-you.html) （Troy Hunt 的博客文章。）
 * [Azure Web 作业功能](http://azure.microsoft.com/blog/2014/10/22/webjobs-goes-into-full-production/)
 * [什么是 WebJobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk/)
 * [模式与实践中的后台作业指南](https://github.com/mspnp/azure-guidance/blob/master/Background-Jobs.md)
@@ -53,6 +54,8 @@ Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你
 
 * [添加 Azure Web 作业对话框](/documentation/articles/websites-dotnet-deploy-webjobs/#configure)
 * [在 Azure 管理门户中创建计划的 Web 作业](/documentation/articles/web-sites-create-web-jobs/#CreateScheduled)
+* [将计划程序作业挂接到 Web 作业](http://blog.davidebbo.com/2015/05/scheduled-webjob.html)
+* [通过 cron 表达式计划 Azure Web 作业](http://blog.amitapple.com/post/2015/06/scheduling-azure-webjobs/)
 
 ##<a name="debug"></a>测试和调试 Web 作业
 
@@ -76,7 +79,6 @@ Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你
 ##<a name="additional"></a>其他 Web 作业资源
 
 * [Magnus Mårtensson 发表的 Azure Web 作业 GA 博客文章](http://magnusmartensson.com/azure-webjobs-ga)
-* [GitHub 中的 Web 作业设置文档](https://github.com/projectkudu/kudu/wiki/Web-jobs)。
 * [在 Azure 网站上运行 Powershell Web 作业](http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx)
 * [在 Azure 完成触发 Web 作业时接收通知](http://blog.amitapple.com/post/2014/03/webjobs-notification/)
 * [使用 Web 作业创建简单的网站备份保留策略](http://azure.microsoft.com/blog/2014/04/28/simple-web-site-backup-retention-policy-with-webjobs/)
@@ -97,7 +99,7 @@ Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你
 ##<a name="samples"></a>示例 Web 作业应用程序
 
 * [Web 作业团队在 GitHub 上提供的示例应用程序](https://github.com/azure/azure-webjobs-sdk-samples)
-* [使用 WebJobs SDK 创建包含 Web 作业后端的简单 Azure 网站](http://code.msdn.microsoft.com/Simple-Azure-Website-with-b4391eeb)
+* [使用 WebJobs SDK 创建包含 Web 作业后端的简单 Azure Web 应用](http://code.msdn.microsoft.com/Simple-Azure-Website-with-b4391eeb)
 * [SiteMonitR](http://code.msdn.microsoft.com/SiteMonitR-dd4fcf77)。演示计划 Web 作业和事件驱动型 Web 作业的用法。请参阅博客文章[使用 Azure WebJobs SDK 重新生成 SiteMonitR](http://www.bradygaster.com/post/rebuilding-the-sitemonitr-using-windows-azure-webjobs)。
 
 ##<a name="blogs"></a>博客
@@ -114,4 +116,4 @@ Azure 门户中的 Web 作业仪表板提供了强大的管理功能，可让你
 * [Azure 网站论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs)
 * [Azure 网站用户之声站点](/product-feedback)
 
-<!---HONumber=71-->
+<!---HONumber=76-->

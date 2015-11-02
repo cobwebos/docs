@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 
@@ -20,7 +20,7 @@
 
 ##概述
 
-借助 Microsoft Azure Media Services，你可以传送使用高级加密标准 (AES)（使用 128 位加密密钥）和 PlayReady DRM 加密的内容。媒体服务还提供了一个**密钥\\许可证传送服务**，客户端可从中获取密钥或许可证，以用于播放加密的内容。
+借助 Microsoft Azure 媒体服务，你可以传送使用高级加密标准 (AES)（使用 128 位加密密钥）和 PlayReady DRM 加密的内容。媒体服务还提供了一个**密钥\\许可证传送服务**，客户端可从中获取密钥或许可证，以用于播放加密的内容。
 
 本主题介绍了如何使用 **Azure 管理门户**配置内容密钥授权策略。以后，可以使用该密钥来动态加密你的内容。请注意，当前你可以加密以下流格式：HLS、MPEG DASH 和平滑流式处理。无法加密 HDS 流格式或渐进式下载。
  
@@ -87,4 +87,4 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
 
-<!---HONumber=71-->
+<!---HONumber=76-->

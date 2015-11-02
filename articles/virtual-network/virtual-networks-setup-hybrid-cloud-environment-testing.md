@@ -10,12 +10,12 @@
 
 <tags 
 	ms.service="virtual-network" 
-	ms.date="07/08/2015" 
+	ms.date="09/10/2015" 
 	wacn.date=""/>
 
 # 设置用于测试的混合云环境
 
-本主题将指导你一步步创建用于 Microsoft Azure 的混合云环境，以便进行测试。这是生成的配置。
+本主题将指导你逐步使用 Microsoft Azure 创建混合云环境，以便进行测试。这是生成的配置。
 
 ![](./media/virtual-networks-setup-hybrid-cloud-environment-testing/CreateHybridCloudVNet_5.png)
 
@@ -41,7 +41,7 @@
 
 如果你还没有 Azure 订阅，可以在[试用 Azure](/pricing/1rmb-trial/) 中注册一个免费试用版。
 
->[AZURE.NOTE]Azure 中的虚拟机和虚拟网关在运行时会持续产生货币成本。此成本是针对你的免费试用版本、MSDN 订阅或付费订阅的。若要在不使用的情况下降低运行此测试环境的成本，请参阅本主题中的[最大程度地降低此环境的持续使用成本](#costs)，了解详细信息。
+>[AZURE.NOTE] Azure 中的虚拟机和虚拟网关在运行时会持续产生货币成本。此成本是针对你的免费试用版本、MSDN 订阅或付费订阅的。若要在不使用的情况下降低运行此测试环境的成本，请参阅本主题中的[最大程度地降低此环境的持续使用成本](#costs)，了解详细信息。
 
 此配置要求使用一个由最多四台计算机组成的测试子网，这些计算机使用公共 IP 地址直接连接到 Internet。如果没有这些资源，你也可以[设置用于测试的模拟混合云环境](/documentation/articles/virtual-networks-setup-simulated-hybrid-cloud-environment-testing)。模拟混合云测试环境只需要 Azure 订阅。
 
@@ -53,8 +53,8 @@
 
 	New-ADReplicationSite -Name "TestLab" 
 	New-ADReplicationSite -Name "TestVNET"
-	New-ADReplicationSubnet –Name "10.0.0.0/8" –Site "TestLab"
-	New-ADReplicationSubnet –Name "192.168.0.0/16" –Site "TestVNET
+	New-ADReplicationSubnet “Name "10.0.0.0/8" “Site "TestLab"
+	New-ADReplicationSubnet “Name "192.168.0.0/16" “Site "TestVNET
 
 这是你当前的配置。
 
@@ -81,15 +81,15 @@ RRAS1 在 Corpnet 子网和 TestVNET 虚拟网络的计算机之间提供通信�
 	$publicIPpreflength=<Prefix length of your public IP address>
 	[IPAddress]$publicDG="<Your ISP default gateway>"
 	[IPAddress]$publicDNS="<Your ISP DNS server(s)>"
-	Rename-NetAdapter –Name $corpnetAdapterName –NewName Corpnet
-	Rename-NetAdapter –Name $internetAdapterName –NewName Internet
-	New-NetIPAddress -InterfaceAlias "Internet" -IPAddress $publicIP -PrefixLength $publicIPpreflength –DefaultGateway $publicDG
+	Rename-NetAdapter -Name $corpnetAdapterName -NewName Corpnet
+	Rename-NetAdapter -Name $internetAdapterName -NewName Internet
+	New-NetIPAddress -InterfaceAlias "Internet" -IPAddress $publicIP -PrefixLength $publicIPpreflength “DefaultGateway $publicDG
 	Set-DnsClientServerAddress -InterfaceAlias Internet -ServerAddresses $publicDNS
 	New-NetIPAddress -InterfaceAlias "Corpnet" -IPAddress 10.0.0.2 -AddressFamily IPv4 -PrefixLength 24
 	Set-DnsClientServerAddress -InterfaceAlias "Corpnet" -ServerAddresses 10.0.0.1
 	Set-DnsClient -InterfaceAlias "Corpnet" -ConnectionSpecificSuffix corp.contoso.com
-	New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
-	New-NetFirewallRule –DisplayName “Allow ICMPv4-Out” –Protocol ICMPv4 –Direction Outbound
+	New-NetFirewallRule -DisplayName "Allow ICMPv4-Input" -Protocol ICMPv4
+	New-NetFirewallRule -DisplayName "Allow ICMPv4-Output" -Protocol ICMPv4 -Direction Outbound
 	Disable-NetAdapterBinding -Name "Internet" -ComponentID ms_msclient
 	Disable-NetAdapterBinding -Name "Internet" -ComponentID ms_server
 	ping dc1.corp.contoso.com
@@ -193,14 +193,14 @@ RRAS1 在 Corpnet 子网和 TestVNET 虚拟网络的计算机之间提供通信�
  
 在 DC1 的管理员级 Windows PowerShell 命令提示符下运行这些命令。
 
-	New-NetRoute –DestinationPrefix "0.0.0.0/0" –InterfaceAlias "Ethernet" –NextHop 10.0.0.2
-	Set-DhcpServerv4OptionValue –Router 10.0.0.2
+	New-NetRoute -DestinationPrefix "0.0.0.0/0" -InterfaceAlias "Ethernet" -NextHop 10.0.0.2
+	Set-DhcpServerv4OptionValue -Router 10.0.0.2
 
 如果接口名称不是“Ethernet”，请使用 **Get-NetAdapter** 命令确定接口名称。
 
 在 APP1 的管理员级 Windows PowerShell 命令提示符下运行此命令。
 
-	New-NetRoute –DestinationPrefix "0.0.0.0/0" –InterfaceAlias "Ethernet" –NextHop 10.0.0.2
+	New-NetRoute -DestinationPrefix "0.0.0.0/0" -InterfaceAlias "Ethernet" -NextHop 10.0.0.2
 
 在 CLIENT1 的管理员级 Windows PowerShell 命令提示符下运行此命令。
 
@@ -219,13 +219,13 @@ RRAS1 在 Corpnet 子网和 TestVNET 虚拟网络的计算机之间提供通信�
 	$ServiceName="<Your cloud service name from Phase 3>"
 	$image = Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name DC2 -InstanceSize Medium -ImageName $image
-	$cred=Get-Credential –Message "Type the name and password of the local administrator account for DC2."
+	$cred=Get-Credential -Message "Type the name and password of the local administrator account for DC2."
 	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password 
 	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $LocalAdminName -Password $LocalAdminPW	
 	$vm1 | Set-AzureSubnet -SubnetNames TestSubnet
 	$vm1 | Set-AzureStaticVNetIP -IPAddress 192.168.0.4
-	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 20 -DiskLabel ADFiles –LUN 0 -HostCaching None
-	New-AzureVM –ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
+	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 20 -DiskLabel ADFiles -LUN 0 -HostCaching None
+	New-AzureVM -ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
 
 
 接下来，登录到新的 DC2 虚拟机上。
@@ -322,4 +322,4 @@ RRAS1 在 Corpnet 子网和 TestVNET 虚拟网络的计算机之间提供通信�
 接下来，请转到本地计算机上的 Azure 管理门户中等待，一直等到 TestVNET 虚拟网络显示状态为“已连接”。
  
 
-<!---HONumber=70-->
+<!---HONumber=76-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="08/07/2015"
+	ms.date="09/02/2015"
 	wacn.date=""/>
 
 
@@ -72,17 +72,18 @@ CentOS Linux 分发是从 Red Hat Enterprise Linux (RHEL) 的源代码派生的�
 9. [MSOpenTech VM Depot](https://vmdepot.msopentech.com/List/Index?sort=Featured&search=OpenSUSE)
 11. [如何：安装和运行 MySQL](/documentation/articles/virtual-machines-linux-mysql-use-opensuse)
 12. [如何：准备自定义 SLES 或 openSUSE VM](/documentation/articles/virtual-machines-linux-create-upload-vhd-suse)  
-13. [SUSE 论坛](https://forums.suse.com/showthread.php?5622-New-Update-Infrastructure)如何：移动到新的修补程序服务器
+13. [[SUSE 论坛] 如何：移动到新的修补程序服务器](https://forums.suse.com/showthread.php?5622-New-Update-Infrastructure)
 
 ### CoreOS
 
 CoreOS 是一个小型的经优化的发行版，适用于具有高度的自定义控制的纯计算规模。
 
 11. [如何：在 Azure 上使用 CoreOS](/documentation/articles/virtual-machines-linux-coreos-how-to)
+12. [如何：开始在 Azure 上的 CoreOS 上使用 Fleet 和 Docker](/documentation/articles/virtual-machines-linux-coreos-fleet-get-started)
 12. [博客：TechEd Europe -- Windows Docker 客户端和 Linux 容器](http://azure.microsoft.com/blog/2014/10/28/new-docker-coreos-topics-linux-on-azure/)
 13. [博客：Azure 正在变得更大、更快、更加开放](http://azure.microsoft.com/blog/2014/10/20/azures-getting-bigger-faster-and-more-open/)
-14. [Github：在 Azure 上部署 CoreOS 快速入门](https://github.com/timfpark/coreos-azure)
-15. [Github：使用 Spring Boot、MongoDB 和 CoreOS 部署 Java 应用程序](https://github.com/chanezon/azure-linux/tree/master/coreos/cloud-init)
+14. [GitHub：在 Azure 上部署 CoreOS 快速入门](https://github.com/timfpark/coreos-azure)
+15. [GitHub：使用 Spring Boot、MongoDB 和 CoreOS 部署 Java 应用](https://github.com/chanezon/azure-linux/tree/master/coreos/cloud-init)
 
 #### [Oracle Linux](http://azure.microsoft.com/marketplace/?term=Oracle+Linux)
   2. [为 Azure 准备 Oracle Linux 虚拟机](/documentation/articles/virtual-machines-linux-create-upload-vhd-oracle)
@@ -97,7 +98,7 @@ CoreOS 是一个小型的经优化的发行版，适用于具有高度的自定�
 
 ## 基础知识
 
-1. [基础知识：Azure 命令行界面 (CLI)](/documentation/articles/xplat-cli)
+1. [基础知识：Azure 命令行界面 (Azure CLI)](/documentation/articles/xplat-cli)
 4. [基础知识：证书的使用和管理](http://msdn.microsoft.com/zh-cn/library/azure/gg981929.aspx)
 5. [基础知识：选择 Linux 用户名](/documentation/articles/virtual-machines-linux-usernames)
 6. [基础知识：使用 Azure 门户登录到 Linux VM](/documentation/articles/virtual-machines-linux-how-to-log-on)
@@ -160,7 +161,7 @@ CoreOS 是一个小型的经优化的发行版，适用于具有高度的自定�
 可查找此部分来快速填写。如果你有任何建议，请向我们发送 PR 或者在下文中的意见部分留言。
 
 1. [使用 Azure CLI 创建多 VM 部署](/documentation/articles/virtual-machines-create-multi-vm-deployment-xplat-cli)
-2. [Patrick Chanezon 的 Azure Linux Github 存储库](https://github.com/chanezon/azure-linux)
+2. [Patrick Chanezon 的 Azure Linux GitHub 存储库](https://github.com/chanezon/azure-linux)
 3. [视频：如何使用 **usbip** 将 Linux 上的本地 USB 数据移到 Azure](http://channel9.msdn.com/Blogs/Open/On-premises-USB-devices-on-Linux-on-Azure-via-usbip)
 4. [视频：在浏览器中使用 fernapp 访问 Azure 上基于 Linux 的 GUI](http://channel9.msdn.com/Blogs/Open/Accessing-Linux-based-GUI-on-Azure-over-browser-with-fernapp)
 5. [视频：使用 Azure 文件预览版在 Linux 上进行存储共享 -- 第 1 部分](http://channel9.msdn.com/Blogs/Open/Shared-storage-on-Linux-via-Azure-Files-Preview-Part-1)
@@ -195,7 +196,7 @@ CoreOS 是一个小型的经优化的发行版，适用于具有高度的自定�
 	- [如何：通过 HDInsight 使用 Hadoop 和 Hive 入门](/documentation/articles/hdinsight-get-started)  
 3. [Azure HDInsight](/documentation/services/hdinsight/) -- Azure 上的一项完全托管的 Hadoop 服务。
 
-### 关系型数据
+### 关系数据库
 2. MySQL
     - [如何：安装和运行 MySQL](/documentation/articles/virtual-machines-linux-mysql-use-opensuse)
     - [如何：优化 Azure 上的 MySQL 的性能](/documentation/articles/virtual-machines-linux-optimize-mysql-perf)
@@ -218,6 +219,13 @@ CoreOS 是一个小型的经优化的发行版，适用于具有高度的自定�
 8. [基础知识：如何为 Linux 重置密码或 SSH 属性](/documentation/articles/virtual-machines-linux-use-vmaccess-reset-password-or-ssh)
 9. [基础知识：使用 Root](/documentation/articles/virtual-machines-linux-use-root-privileges)
 
+## Linux 高性能计算 (HPC)
+
+
+4.	[教程：Azure 的 HPC Pack 群集中的 Linux 计算节点入门](/documentation/articles/virtual-machines-linux-cluster-hpcpack)
+5.	[教程：在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 NAMD](/documentation/articles/virtual-machines-linux-cluster-hpcpack-namd)
+6.	[教程：设置 Linux RDMA 群集以运行 MPI 应用程序](/documentation/articles/virtual-machines-linux-cluster-rdma)
+
 
 ## 开发运营、管理和优化
 
@@ -233,8 +241,10 @@ CoreOS 是一个小型的经优化的发行版，适用于具有高度的自定�
 	- [在 Azure 上使用 Docker 和 Compose 入门](/documentation/articles/virtual-machines-docker-compose-quickstart)
 
 2. [Fleet with CoreOS](/documentation/articles/virtual-machines-linux-coreos-how-to)
-3. [Deis：在 Azure 中的 CoreOS 群集上安装 Deis](https://github.com/chanezon/azure-linux/tree/master/coreos/deis)
+3. Deis
+	- [GitHub 存储库：在 Azure 中的 CoreOS 群集上安装 Deis](https://github.com/chanezon/azure-linux/tree/master/coreos/deis)
 4. Kubernetes
+	- [使用 CoreOS 和 Weave 实现 Kubernetes 群集部署自动化的完整指南](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)
 	- [Kubernetes 可视化工具](http://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure)
 5. Jenkins 和 Hudson
 	- [博客：适用于 Azure 的 Jenkins Slave 插件](http://msopentech.com/blog/2014/09/23/announcing-jenkins-slave-plugin-azure/)
@@ -243,6 +253,7 @@ CoreOS 是一个小型的经优化的发行版，适用于具有高度的自定�
 	- [第三方：适用于 Azure 的 Hudson Storage 插件](https://github.com/hudson3-plugins/windows-azure-storage-plugin)
 10. Chef
 	- [Chef 和虚拟机](/documentation/articles/virtual-machines-windows-install-chef-client)
+	- [视频：Chef 是什么及其工作原理](https://msopentech.com/blog/2014/03/31/using-chef-to-manage-azure-resources/)
 
 13. Powershell DSC for Linux
     - [博客：如何执行 Powershell DSC for Linux](http://blogs.technet.com/b/privatecloud/archive/2014/05/19/powershell-dsc-for-linux-step-by-step.aspx)
@@ -265,6 +276,8 @@ CoreOS 是一个小型的经优化的发行版，适用于具有高度的自定�
 [Devops, Management, and Optimization]: #devops
 [Support, Troubleshooting, and "It Just Doesn't Work"]: #supportdebug
 
-<!--链接引用--在实际的文章中，在斜杠之前只需单个句点。> [如何在 Azure 上使用 docker-machine]：/documentation/articles/virtual-machines-docker-machine [如何在 Azure 上将 docker 与 swarm 一起使用]：/documentation/articles/virtual-machines-docker-swarm
+<!--链接引用--在实际的文章中，在斜杠之前只需单个句点。-->
+[如何在 Azure 上使用 docker-machine]: /documentation/articles/virtual-machines-docker-machine
+[如何在 Azure 上将 docker 与 swarm 一起使用]: /documentation/articles/virtual-machines-docker-swarm
 
-<!---HONumber=70-->
+<!---HONumber=76-->

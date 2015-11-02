@@ -10,12 +10,12 @@
 
 <tags 
 	ms.service="virtual-network" 
-	ms.date="07/08/2015" 
+	ms.date="09/10/2015" 
 	wacn.date=""/>
 
 # 设置用于测试的模拟混合云环境
 
-本主题将指导你一步步创建用于 Microsoft Azure 的模拟混合云环境，以便使用两个独立的 Azure 虚拟网络进行测试。当你没有直接的 Internet 连接和可用的公共 IP 地址时，可使用此配置作为[设置用于测试的混合云环境](/documentation/articles/virtual-networks-setup-hybrid-cloud-environment-testing)的替代方法。这是生成的配置。
+本主题将指导你逐步使用 Microsoft Azure 创建模拟混合云环境，以便使用两个独立的 Azure 虚拟网络进行测试。当你没有直接的 Internet 连接和可用的公共 IP 地址时，可使用此配置作为[设置用于测试的混合云环境](/documentation/articles/virtual-networks-setup-hybrid-cloud-environment-testing)的替代方法。这是生成的配置。
 
 ![](./media/virtual-networks-setup-simulated-hybrid-cloud-environment-testing/CreateSimHybridCloud_4.png)
 
@@ -39,7 +39,8 @@
 4.	配置 DC2。 
 
 如果你还没有 Azure 订阅，可以在[试用 Azure](/pricing/1rmb-trial/) 中注册一个免费试用版。
->[AZURE.NOTE]Azure 中的虚拟机和虚拟网关在运行时会持续产生货币成本。此成本是针对你的免费试用版本、MSDN 订阅或付费订阅的。若要在不使用的情况下降低运行此测试环境的成本，请参阅本主题中的[最大程度地降低此环境的持续使用成本](#costs)，了解详细信息。
+
+>[AZURE.NOTE] Azure 中的虚拟机和虚拟网关在运行时会持续产生货币成本。此成本是针对你的免费试用版本、MSDN 订阅或付费订阅的。若要在不使用的情况下降低运行此测试环境的成本，请参阅本主题中的[最大程度地降低此环境的持续使用成本](#costs)，了解详细信息。
 
 
 ## 阶段 1：配置 TestLab 虚拟网络
@@ -50,8 +51,8 @@
 
 	New-ADReplicationSite -Name "TestLab" 
 	New-ADReplicationSite -Name "TestVNET"
-	New-ADReplicationSubnet –Name "10.0.0.0/8" –Site "TestLab"
-	New-ADReplicationSubnet –Name "192.168.0.0/16" –Site "TestVNET"
+	New-ADReplicationSubnet -Name "10.0.0.0/8" -Site "TestLab"
+	New-ADReplicationSubnet -Name "192.168.0.0/16" -Site "TestVNET"
 
 这是你当前的配置。
 
@@ -88,7 +89,7 @@
 
 ![](./media/virtual-networks-setup-simulated-hybrid-cloud-environment-testing/CreateSimHybridCloud_2.png)
  
-## 阶段 3：创建 VNet 到 VNet 连接
+##阶段 3：创建 VNet 到 VNet 连接
 
 首先，你将创建表示每个虚拟网络的地址空间的本地网络。
 
@@ -137,7 +138,7 @@
 接下来你将配置预共享的密钥，以便两个网关使用同一值，即 Azure 管理门户为 TestLab 虚拟网络确定的密钥值。在本地计算机上的 Azure PowerShell 命令提示符处运行这些命令，填充 TestLab 预共享密钥的值。
 
 	$preSharedKey="<The preshared key for the TestLab virtual network>"
-	Set-AzureVNetGatewayKey -VNetName TestVNET -LocalNetworkSiteName TestLabLNet –SharedKey $preSharedKey
+	Set-AzureVNetGatewayKey -VNetName TestVNET -LocalNetworkSiteName TestLabLNet -SharedKey $preSharedKey
 
 接下来，在本地计算机的 Azure 管理门户的“网络”页上，依次单击任务栏中的“TestLab”虚拟网络、“仪表板”、“连接”。等待，直到 TestLab 虚拟网络显示状态为“已连接”。
 
@@ -150,14 +151,14 @@
 首先，创建适用于 DC2 的 Azure 虚拟机。在本地计算机的 Azure PowerShell 命令提示符处运行这些命令。
 
 	$ServiceName="<Your cloud service name from Phase 2>"
-	$cred=Get-Credential –Message "Type the name and password of the local administrator account for DC2."
+	$cred=Get-Credential -Message "Type the name and password of the local administrator account for DC2."
 	$image = Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name DC2 -InstanceSize Medium -ImageName $image
 	$vm1 | Add-AzureProvisioningConfig -Windows -AdminUsername $cred.GetNetworkCredential().Username -Password $cred.GetNetworkCredential().Password
 	$vm1 | Set-AzureSubnet -SubnetNames TestSubnet
 	$vm1 | Set-AzureStaticVNetIP -IPAddress 192.168.0.4
-	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 20 -DiskLabel ADFiles –LUN 0 -HostCaching None
-	New-AzureVM –ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
+	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 20 -DiskLabel ADFiles -LUN 0 -HostCaching None
+	New-AzureVM -ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
 
 接下来，登录到新的 DC2 虚拟机上。
 
@@ -263,8 +264,8 @@
 接下来你将配置预共享的密钥，以便两个网关使用同一值，即 Azure 管理门户为 TestLab 虚拟网络确定的密钥值。在本地计算机上的 Azure PowerShell 命令提示符处运行这些命令，填充 TestLab 预共享密钥的值。
 
 	$preSharedKey="<The preshared key for the TestLab virtual network>"
-	Set-AzureVNetGatewayKey -VNetName TestVNET -LocalNetworkSiteName TestLabLNet –SharedKey $preSharedKey
+	Set-AzureVNetGatewayKey -VNetName TestVNET -LocalNetworkSiteName TestLabLNet -SharedKey $preSharedKey
 
 接下来，在 Azure 管理门户的“网络”页上，单击任务栏中的“TestLab”虚拟网络，然后单击“连接”。等待，直到 TestLab 虚拟网络显示状态为“已连接”，即已连接到 TestVNET 本地网络。
 
-<!---HONumber=70-->
+<!---HONumber=76-->

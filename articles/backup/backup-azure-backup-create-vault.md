@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="backup"
+        ms.service="backup"
 	 ms.date="08/11/2015"
 	 wacn.date=""/>
 
@@ -64,4 +64,4 @@ GRS 维护你的数据的六个副本。使用 GRS 时，你的数据将在主�
 [4]: ./media/backup-azure-backup-create-vault/grs.png
 [5]: ./media/backup-azure-backup-create-vault/lrs.png
 
-<!---HONumber=69-->
+<!---HONumber=76-->

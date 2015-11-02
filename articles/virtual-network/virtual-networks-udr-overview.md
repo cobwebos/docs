@@ -8,7 +8,7 @@
    editor="tysonn" />
 <tags 
    ms.service="virtual-network"
-   ms.date="06/09/2015"
+   ms.date="09/04/2015"
    wacn.date="" />
 
 # 用户定义的路由和 IP 转发
@@ -86,4 +86,4 @@
 - 了解如何[创建路由](/documentation/articles/virtual-networks-udr-how-to#How-to-manage-routes)并将路由关联到子网。
 - 了解如何为运行虚拟设备的 VM [启用 IP 转发](/documentation/articles/virtual-networks-udr-how-to#How-to-Manage-IP-Forwarding)。 
 
-<!---HONumber=70-->
+<!---HONumber=76-->

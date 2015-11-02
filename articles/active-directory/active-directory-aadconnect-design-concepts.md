@@ -10,7 +10,7 @@
 <tags
    ms.service="active-directory"
 
-   ms.date="09/03/2015" 
+   ms.date="09/03/2015"
    wacn.date=""/>
 
 # Azure AD Connect 的设计概念
@@ -63,4 +63,4 @@ sourceAnchor 属性区分大小写。“JohnDoe”与“johndoe”是不同的�
 - 如果你要安装其他 Azure AD Connect 服务器，则必须选择以前所用的同一 sourceAnchor 属性。如果以前使用 DirSync，现在想要迁移到 Azure AD Connect，则必须使用 **objectGUID**，因为这是 DirSync 所用的属性。
 - 如果 sourceAnchor 值在对象导出到 Azure AD 之后发生更改，则 Azure AD Connect Sync 将引发错误，并且不允许在更正问题且在源目录中改回 sourceAnchor 之前，对此对象进行任何其他更改。
 
-<!---HONumber=74-->
+<!---HONumber=76-->

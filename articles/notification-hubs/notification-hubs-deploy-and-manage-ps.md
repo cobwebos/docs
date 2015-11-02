@@ -50,7 +50,7 @@ Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心�
 
 下面说明如何在 PowerShell 脚本中实现这些步骤：
 
-		powershell
+	powershell
 
 	try
 	{
@@ -72,17 +72,16 @@ Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心�
 
 ## 创建 NamespaceManager 类
 
-若要设置通知中心和其他服务总线实体，请从 SDK 创建 [NamespaceManager](http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.namespacemanager.aspx) 类的实例。
+若要预配通知中心和其他服务总线实体，请从 SDK 创建 [NamespaceManager](http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.namespacemanager.aspx) 类的实例。
 
-可以使用 Azure PowerShell 随附的 [Get-AzureSBAuthorizationRule] cmdlet 来检索用于提供连接字符串的授权规则。我们将在 `$NamespaceManager` 变量中存储对 `NamespaceManager` 实例的引用。我们将使用 `$NamespaceManager` 设置通知中心。
+你可以使用 Azure PowerShell 附带的 [Get-AzureSBAuthorizationRule] cmdlet 检索用于提供连接字符串的授权规则。 我们会将对 `NamespaceManager` 实例的引用还原到 `$NamespaceManager` 变量中。我们将使用 `$NamespaceManager` 来预配通知中心。
 
-``` powershell
-$sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
-# Create the NamespaceManager object to create the event hub
-Write-Output "Creating a NamespaceManager object for the [$Namespace] namespace..."
-$NamespaceManager=[Microsoft.ServiceBus.NamespaceManager]::CreateFromConnectionString($sbr.ConnectionString);
-Write-Output "NamespaceManager object for the [$Namespace] namespace has been successfully created."
-```
+	powershell
+	$sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
+# 创建用于创建事件中心的 NamespaceManager 对象
+	Write-Output "Creating a NamespaceManager object for the [$Namespace] namespace..."
+	$NamespaceManager=[Microsoft.ServiceBus.NamespaceManager]::CreateFromConnectionString($sbr.ConnectionString);
+	Write-Output "NamespaceManager object for the [$Namespace] namespace has been successfully created."
 
 
 ## 设置新通知中心 
@@ -102,7 +101,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 
 + 如果不存在，脚本将使用 WNS 凭据创建 `NotificationHubDescription`，并将其传递给 `NamespaceManager` 类 `CreateNotificationHub` 方法。
 
-``` powershell
+	powershell
 
 		$Namespace = "<Enter your namespace>
 		$Path  = "<Enter a name for your notification hub>"
@@ -112,7 +111,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 		$WnsCredential = New-Object -TypeName Microsoft.ServiceBus.Notifications.WnsCredential -ArgumentList $WnsPackageSid,$WnsSecretkey
 
 # 查询命名空间
-$CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
+	$CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
 
 # 检查命名空间是否已存在  
 
@@ -168,4 +167,4 @@ $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/zh-cn/library/azure/dn495113.aspx
  
 
-<!---HONumber=71-->
+<!---HONumber=76-->

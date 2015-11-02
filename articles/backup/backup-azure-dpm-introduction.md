@@ -8,7 +8,9 @@
 	editor=""/>
 
 <tags
-	ms.service="backup" ms.date="07/16/2015" wacn.date=""/>
+	ms.service="backup" 
+	ms.date="07/16/2015" 
+	wacn.date=""/>
 
 # Azure DPM 备份简介
 
@@ -82,4 +84,4 @@ System Center DPM 备份文件和应用程序数据。备份到 DPM 的数据可
 
 >[AZURE.NOTE]从 System Center 2012 DPM SP1 开始，你可以使用 Microsoft Azure 备份将 DPM 保护的工作负载备份到 Azure。
 
-<!---HONumber=67-->
+<!---HONumber=76-->

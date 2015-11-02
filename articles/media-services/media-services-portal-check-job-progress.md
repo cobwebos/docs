@@ -9,15 +9,15 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 #如何：检查作业进度
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-portal-check-job-progress.md)
-- [.NET](media-services-check-job-progress.md)
-- [REST](media-services-rest-check-job-progress.md)
+- [门户](/documentation/articles/media-services-portal-check-job-progress)
+- [.NET](/documentation/articles/media-services-check-job-progress)
+- [REST](/documentation/articles/media-services-rest-check-job-progress)
 
 ##使用门户检查作业状态
 
@@ -28,6 +28,15 @@
 
 	![CheckStatus][checkstatus]
 
+
+##媒体服务学习路径
+
+你可以在此处查看 AMS 学习路径：
+
+- [AMS 实时流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS 按需流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
 ##后续步骤
 
 发布内容。有关详细信息，请参阅[如何：对资产进行编码](/documentation/articles/media-services-manage-content#publish)。
@@ -36,4 +45,4 @@
 [checkstatus]: ./media/media-services-portal-check-job-progress/media-services-monitor-job-progress.png
  
 
-<!---HONumber=71-->
+<!---HONumber=76-->

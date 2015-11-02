@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="在 Azure App Service 中还原 Web 应用" 
+	pageTitle="在 Azure 网站中还原 Web 应用" 
 	description="了解如何从备份还原 Web 应用。" 
 	services="app-service\web" 
 	documentationCenter="" 
@@ -9,16 +9,16 @@
 
 <tags 
 	ms.service="app-service-web" 
-	ms.date="07/03/2015" 
+	ms.date="09/16/2015" 
 	wacn.date=""/>
 
 #还原 Microsoft Azure 网站
 
-本文介绍如何通过使用 Azure 网站备份功能来还原你先前备份的 Web 应用。有关更多信息，请参阅 [Microsoft Azure 网站备份](/zh-cn/documentation/articles/web-sites-backup/)。
+本文介绍如何通过使用 Azure 网站备份功能来还原你先前备份的 Web 应用。有关详细信息，请参阅 [Microsoft Azure 网站备份](/documentation/articles/web-sites-backup/)。
 
 利用 Web Apps 还原功能，可将 Web 应用还原到以前某个你自己需要的状态，或基于原有 Web 应用备份之一创建新的 Web 应用。创建与最新版本并行运行的新 Web 应用对于 A/B 测试会很有用。
 
-Web Apps 还原功能在 [Azure 门户](http://.com)中的“备份”边栏选项卡上，只能用于“标准”和“高级”模式。有关使用标准或高级模式缩放应用的信息，请参阅[在 Azure App Service 中缩放 Web 应用](web-sites-scale.md)。
+Web Apps 还原功能在 [Azure 门户](http://.com)中的“备份”边栏选项卡上，只能用于“标准”模式。有关使用“标准”模式缩放应用的信息，请参阅[在 Azure 网站中缩放 Web 应用](/documentation/articles/web-sites-scale)。
 
 ##本文内容
 - [从以前制作的备份中还原 Azure 网站](#PreviousBackup)
@@ -54,7 +54,7 @@ Web Apps 还原功能在 [Azure 门户](http://.com)中的“备份”边栏选�
 	![浏览云存储][BrowseCloudStorage]
 	
 
-4. 展开要使用的存储帐户的名称，然后选择 ** Websitebackups**，其中包含你的备份。
+4. 展开要使用的存储帐户的名称，然后选择 **Websitebackups**，其中包含你的备份。
 5. 选择包含要还原的备份的 zip 文件，然后单击“打开”。
 6. 存储帐户文件已选好，并显示在存储帐户框中。单击向右箭头以继续。
 	
@@ -81,9 +81,9 @@ Web Apps 还原功能在 [Azure 门户](http://.com)中的“备份”边栏选�
 	
 	![选择数据库服务器主机][ChooseDBServer]
 	
-	> [AZURE.NOTE]不能还原与同一 SQL Server 同名的 SQL 数据库。必须选择其他数据库名称或其他要将该数据库还原到其中的 SQL Server 主机。
+	> [AZURE.NOTE] 不能还原与同一 SQL Server 同名的 SQL 数据库。必须选择其他数据库名称或其他要将该数据库还原到其中的 SQL Server 主机。
 	
-	> [AZURE.NOTE]您可以将同名的 MySQL 数据库还原到同一服务器，但请注意，这将清除出存储在 MySQL 数据库中的现有内容。
+	> [AZURE.NOTE] 您可以将同名的 MySQL 数据库还原到同一服务器，但请注意，这将清除出存储在 MySQL 数据库中的现有内容。
 	
 3. 如果选择还原现有数据库，需要提供用户名和密码。如果选择还原到新数据库，需要提供新数据库名称：
 	
@@ -96,7 +96,7 @@ Web Apps 还原功能在 [Azure 门户](http://.com)中的“备份”边栏选�
 	
 5. 单击复选标记以开始还原操作。操作完成时，在门户网站的列表中将能够看到新网站实例（如果那是你选择的还原选项）。
 	
-	![已还原的 Contoso 网站][RestoredContoso Website]
+	![还原的 Contoso 网站][RestoredContoso Website]
 
 <a name="OperationLogs"></a>
 ##查看操作日志
@@ -107,11 +107,11 @@ Web Apps 还原功能在 [Azure 门户](http://.com)中的“备份”边栏选�
 	
 2. 你会跳转到管理服务门户的“操作日志”页面，并可在里面的操作日志列表中看到还原操作日志：
 	
-	![管理服务操作日志页][ManagementServicesOperationLogsList]
+	![“管理服务操作日志”页面][ManagementServicesOperationLogsList]
 	
 3. 若要查看有关该操作的详细信息，请在列表中选择该操作，然后单击命令栏上的“详细信息”按钮。
 	
-	![详细信息按钮][DetailsButton]
+	![“详细信息”按钮][DetailsButton]
 	
 	执行此操作时，“操作详细信息”窗口会打开，显示日志文件的可复制内容：
 	
@@ -120,6 +120,8 @@ Web Apps 还原功能在 [Azure 门户](http://.com)中的“备份”边栏选�
 
 <!-- IMAGES -->
 [ChooseBackupSource]: ./media/web-sites-restore/01ChooseBackupSource.png
+[ChooseRestoreNow]: ./media/web-sites-restore/02ChooseRestoreNow.png
+[ViewContainers]: ./media/web-sites-restore/03ViewContainers.png
 [StorageAccountFile]: ./media/web-sites-restore/02StorageAccountFile.png
 [BrowseCloudStorage]: ./media/web-sites-restore/03BrowseCloudStorage.png
 [StorageAccountFileSelected]: ./media/web-sites-restore/04StorageAccountFileSelected.png
@@ -127,10 +129,10 @@ Web Apps 还原功能在 [Azure 门户](http://.com)中的“备份”边栏选�
 [ChooseDBServer]: ./media/web-sites-restore/06ChooseDBServer.png
 [RestoreToNewSQLDB]: ./media/web-sites-restore/07RestoreToNewSQLDB.png
 [NewSQLDBConfig]: ./media/web-sites-restore/08NewSQLDBConfig.png
-[RestoredContoso Website]: ./media/web-sites-restore/09RestoredContoso Website.png
+[RestoredContoso Website]: ./media/web-sites-restore/09RestoredContosoWebsite.png
 [DashboardOperationLogsLink]: ./media/web-sites-restore/10DashboardOperationLogsLink.png
 [ManagementServicesOperationLogsList]: ./media/web-sites-restore/11ManagementServicesOperationLogsList.png
 [DetailsButton]: ./media/web-sites-restore/12DetailsButton.png
 [OperationDetails]: ./media/web-sites-restore/13OperationDetails.png
 
-<!---HONumber=71-->
+<!---HONumber=76-->

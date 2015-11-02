@@ -1,5 +1,5 @@
 <properties
-   pageTitle="将 Windows Server 或 Windows 客户端文件和文件夹备份到 Azure | Windows Azure"
+   pageTitle="将 Windows Server 或 Windows 客户端文件和文件夹备份到 Azure | Microsoft Azure"
    description="了解如何从 Windows Server 或 Windows 客户端备份到 Azure。"
    services="backup"
    documentationCenter=""
@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-   ms.service="backup"
+        ms.service="backup"
 	 ms.date="08/13/2015"
 	 wacn.date=""/>
 
@@ -50,4 +50,4 @@
 - [从 Azure 还原 Windows Server 或 Windows 客户端](/documentation/articles/backup-azure-restore-windows-server)
 - [Azure 备份常见问题](/documentation/articles/backup-azure-backup-faq)
 
-<!---HONumber=69-->
+<!---HONumber=76-->

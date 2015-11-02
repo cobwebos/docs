@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="05/28/2015" 
+	ms.date="08/24/2015" 
 	wacn.date=""/>
 
 # Azure AD Connect - SSL 证书要求
@@ -28,4 +28,4 @@
 支持通配符证书。
  
 
-<!---HONumber=67-->
+<!---HONumber=76-->

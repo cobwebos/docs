@@ -1,14 +1,16 @@
 <properties 
-	pageTitle="Azure 中的虚拟机和容器" 
+	pageTitle="虚拟机和容器 | Microsoft Azure" 
 	description="介绍虚拟机、Docker 和 Linux 容器及其在 Azure 中各自组的使用情况，包括各自的好处以及每种方法的适用情况。" 
 	services="virtual-machines" 
 	documentationCenter="virtual-machines" 
 	authors="squillace" 
-	manager="timlt" />
+	manager="timlt"
+	tags="azure-resource-manager,azure-service-management" 
+/>
 	
 
 <tags 
-	ms.service="virtual-machines"
+	ms.service="virtual-machines" 
 	ms.date="07/02/2015" 
 	wacn.date="" />
 
@@ -102,8 +104,8 @@ IT 和运营专家还可以从容器与虚拟机的组合中获益。
 | 功能 | VM | 容器 |
 | :------------- |-------------| ----------- |
 | “默认”安全支持 | 达到更高程度 | 程度略低 |
-| 所需的磁盘内存 | 完整的操作系统加应用程序 | 仅应用程序要求 |
-| 启动所需时间 | 明显长很多：操作系统启动以及应用程序加载 | 明显短很多：仅应用程序需要启动，因为内核已经在运行 |
+| 所需的磁盘内存 | 完整操作系统加上应用 | 仅限应用要求 |
+| 启动所需时间 | 明显更长：操作系统引导和应用程序加载 | 明显短很多：仅应用程序需要启动，因为内核已经在运行 |
 | 可移植性 | 通过适当的准备实现可移植 | 在映像格式内可移植；通常更小 | 
 | 映像自动化 | 相差很大，具体取决于操作系统和应用程序 | [Docker 注册表](https://registry.hub.docker.com/)；其他
 
@@ -172,7 +174,7 @@ Docker 工具：
 	- [Docker 安装说明](https://docs.docker.com/installation/#installation)
 
 
-Windows Azure 上的 Docker：
+Microsoft Azure 上的 Docker：
 
 - [适用于 Azure 上 的 Linux 的 Docker VM 扩展](/documentation/articles/virtual-machines-docker-vm-extension)
 - [Azure Docker VM 扩展用户指南](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
@@ -230,4 +232,4 @@ Linux 分发和 Azure 示例：
 [微服务]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-<!---HONumber=67-->
+<!---HONumber=76-->

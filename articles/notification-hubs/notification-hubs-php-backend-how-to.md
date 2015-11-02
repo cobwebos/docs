@@ -1,4 +1,11 @@
-<properties urlDisplayName="How to use Notification Hubs with PHP" pageTitle="如何结合使用通知中心与 PHP" metaKeywords="" description="了解如何从 PHP 后端使用 Azure 通知中心。" metaCanonical="" services="mobile-services,notification-hubs,push,php" documentationCenter="" title="How to use Notification Hubs with PHP" authors="piyushjo" solutions="" manager="dwrede" editor="" />
+<properties 
+	pageTitle="如何结合使用通知中心与 PHP" 
+	description="了解如何从 PHP 后端使用 Azure 通知中心。" 
+	services="notification-hubs" 
+	documentationCenter="" 
+	authors="ysxu" 
+	manager="dwrede" 
+	editor=""/>
 
 <tags 
      ms.service="notification-hubs"
@@ -34,7 +41,8 @@
 	$hub->sendNotification($notification);
 
 ## 实现
-如果你尚未实现，请按照我们[入门的教程]学至最后一节，其中你必须实现后端。此外，如果你希望可以使用来自 [PHP REST 包装器示例]的代码并直接转到[完成本教程](#complete-tutorial)部分。
+如果你尚未实现，请按照我们[入门的教程]学至最后一节，其中你必须实现后端。
+此外，如果你希望可以使用来自 [PHP REST 包装器示例]的代码并直接转到[完成本教程](#complete-tutorial)部分。
 
 有关实现完整 REST 包装器的所有详细信息，请访问 [MSDN](http://msdn.microsoft.com/zh-cn/library/dn530746.aspx)。在本部分中，我们将向你介绍访问通知中心 REST 终结点所需的主要步骤的 PHP 实现：
 
@@ -80,7 +88,8 @@
 
 
 ### 创建安全令牌
-有关安全令牌创建的详细信息，请访问[此处](http://msdn.microsoft.com/zh-cn/library/dn495627.aspx)。下面的方法必须添加到 **NotificationHub** 类，以根据当前请求的 URL 和提取自连接字符串的凭据创建令牌。
+有关安全令牌创建的详细信息，请访问[此处](http://msdn.microsoft.com/zh-cn/library/dn495627.aspx)。
+下面的方法必须添加到 **NotificationHub** 类，以根据当前请求的 URL 和提取自连接字符串的凭据创建令牌。
 
 	private function generateSasToken($uri) {
 		$targetUri = strtolower(rawurlencode(strtolower($uri)));
@@ -192,7 +201,8 @@
 ##<a name="complete-tutorial"></a>完成教程
 现在，你可以通过从 PHP 后端发送通知来完成该入门教程。
 
-初始化你的通知中心客户端（按[入门的教程]中所述替换连接字符串和中心名称）：$hub = new NotificationHub("连接字符串", "中心名称");
+初始化你的通知中心客户端（按[入门的教程]中所述替换连接字符串和中心名称）：
+	$hub = new NotificationHub("连接字符串", "中心名称");
 
 然后，根据你的目标移动平台添加发送代码。
 
@@ -247,4 +257,4 @@
 [PHP REST 包装器示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [入门的教程]: /documentation/articles/notification-hubs-ios-get-started
 
-<!---HONumber=71-->
+<!---HONumber=76-->

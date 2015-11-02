@@ -9,12 +9,16 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="08/14/2015"
+	ms.date="09/16/2015"
 	wacn.date=""/>
 
 #使用 PlayReady DRM 动态加密和许可证传送服务
 
-Microsoft Azure 媒体服务 允许你传送受 [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) 保护的 MPEG-DASH 流、平滑流式处理流和 HTTP 实时流式处理 (HLS) 流。
+> [AZURE.SELECTOR]
+- [.NET](/documentation/articles/media-services-protect-with-drm)
+- [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+
+Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) 保护的 MPEG-DASH 流、平滑流式处理流和 HTTP 实时流式处理 (HLS) 流。
 
 媒体服务现在提供有用于传送 Microsoft PlayReady 许可证的服务。媒体服务还提供用于配置所需权限和限制的 API，这样当用户尝试播放受保护的内容时，PlayReady DRM 运行时便会强制实施这些权限和限制。当用户请求观看受 PlayReady 保护的内容时，客户端播放器应用程序将向 Azure 媒体服务请求内容。然后，Azure 媒体服务将客户端重定向到 Azure 媒体服务PlayReady 授权服务器，后者将对用户进行身份验证，并授予用户对该内容的访问权限。PlayReady 许可证包含客户端播放器用来对内容进行解密和流式传输的解密密钥。
 
@@ -24,7 +28,7 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 
 本主题适合开发受保护媒体传送应用程序的开发人员。本主题介绍如何使用授权策略来配置 PlayReady 许可证传送服务，确保只有经过授权的客户端才能接收 PlayReady 许可证。此外还将介绍如何使用动态加密。
 
->[AZURE.NOTE]若要开始使用动态加密，你必须首先获取至少一个缩放单位（也称为流式处理单位）。有关详细信息，请参阅[如何缩放媒体服务](media-services-manage-origins.md#scale_streaming_endpoints)。
+>[AZURE.NOTE]若要开始使用动态加密，你必须首先获取至少一个缩放单位（也称为流式处理单位）。有关详细信息，请参阅[如何缩放媒体服务](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
 
 ##PlayReady 动态加密和 PlayReady 许可证传送服务工作流
 
@@ -92,7 +96,7 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 
 ##将包含文件的资产编码为自适应比特率 MP4 集。
 
-使用动态加密时，你只需创建包含一组多码率 MP4 文件或多码率平滑流源文件的资产。然后，点播流服务器会确保你以选定的协议按清单或分段请求中的指定格式接收流。因此，你只需以单一存储格式存储文件并为其付费，然后 Media Services 服务就会基于客户端的请求构建并提供相应响应。有关详细信息，请参阅[动态打包概述](media-services-dynamic-packaging-overview.md)主题。
+使用动态加密时，你只需创建包含一组多码率 MP4 文件或多码率平滑流源文件的资产。然后，点播流服务器会确保你以选定的协议按清单或分段请求中的指定格式接收流。因此，你只需以单一存储格式存储文件并为其付费，然后 Media Services 服务就会基于客户端的请求构建并提供相应响应。有关详细信息，请参阅[动态打包概述](/documentation/articles/media-services-dynamic-packaging-overview)主题。
 
 以下代码段向你演示如何将资产编码为自适应比特率 MP4 集：
 
@@ -135,14 +139,14 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 
 在媒体服务中，内容密钥包含用于加密资产的密钥。
 
-有关详细信息，请参阅[创建内容密钥](media-services-dotnet-create-contentkey.md)。
+有关详细信息，请参阅[创建内容密钥](/documentation/articles/media-services-dotnet-create-contentkey)。
 
 
 ##<a id="configure_key_auth_policy"></a>配置内容密钥授权策略
 
 Media Services 支持通过多种方式对发出密钥请求的用户进行身份验证。你必须配置内容密钥授权策略，客户端（播放器）必须遵守该策略，才能将密钥传送到客户端。内容密钥授权策略可能受到一种或多种授权限制：开放、令牌限制或 IP 限制。
 
-有关详细信息，请参阅[配置内容密钥授权策略](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption)。
+有关详细信息，请参阅[配置内容密钥授权策略](/documentation/articles/media-services-dotnet-configure-content-key-auth-policy#playready-dynamic-encryption)。
 
 ##<a id="configure_asset_delivery_policy"></a>配置资产传送策略 
 
@@ -152,7 +156,7 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 - 资产传送协议（例如 MPEG DASH、HLS、HDS、平滑流或全部）。 
 - 动态加密类型（在本示例中为“常用加密”）。 
 
-有关详细信息，请参阅[配置资产传送策略](media-services-rest-configure-asset-delivery-policy.md)。
+有关详细信息，请参阅[配置资产传送策略](/documentation/articles/media-services-rest-configure-asset-delivery-policy)。
 
 ##<a id="create_locator"></a>创建 OnDemand 流定位符以获取流 URL
 
@@ -160,7 +164,7 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 
 >[AZURE.NOTE]如果你添加或更新资产的传送策略，则必须删除现有定位符（如果有）并创建新定位符。
 
-有关如何发布资产和生成流 URL 的说明，请参阅[生成流 URL](media-services-deliver-streaming-content.md)。
+有关如何发布资产和生成流 URL 的说明，请参阅[生成流 URL](/documentation/articles/media-services-deliver-streaming-content)。
 
 ##获取测试令牌
 
@@ -178,7 +182,7 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 	Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 
 	
-你可以使用 [AMS Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) 来测试你的流。
+你可以使用 [AMS Player](http://amsplayer.chinacloudsites.cn/azuremediaplayer.html) 来测试你的流。
 
 ##<a id="example"></a>示例
 
@@ -298,7 +302,7 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		                Console.WriteLine();
 		            }
 		
-		            // You can use the http://smf.cloudapp.net/healthmonitor player 
+		            // You can use the http://smf.chinacloudapp.cn/healthmonitor player 
 		            // to test the smoothStreamURL URL.
 		            //
 		            string url = GetStreamingOriginLocator(encodedAsset);
@@ -474,8 +478,8 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		
 		            template.PrimaryVerificationKey = new SymmetricVerificationKey();
 		            template.AlternateVerificationKeys.Add(new SymmetricVerificationKey());
-		            template.Audience = _sampleAudience;
-		            template.Issuer = _sampleIssuer;
+		            template.Audience = _sampleAudience.ToString();
+		            template.Issuer = _sampleIssuer.ToString();
 		            template.RequiredClaims.Add(TokenClaim.ContentKeyIdentifierClaim);
 		
 		            return TokenRestrictionTemplateSerializer.Serialize(template);
@@ -571,4 +575,4 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		    }
 		}
 
-<!---HONumber=71-->
+<!---HONumber=76-->

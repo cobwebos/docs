@@ -1,15 +1,25 @@
-<properties linkid="develop-notificationhubs-tutorials-get-started-windowsphone" urlDisplayName="Get Started" pageTitle="Azure 通知中心入门" metaKeywords="" description="了解如何使用 Azure 通知中心推送通知。" metaCanonical="" services="notification-hubs" documentationCenter="Mobile" title="Get started with Notification Hubs" authors="sethm" solutions="" manager="" editor="" />
+<properties
+	pageTitle="Azure 通知中心入门（Windows Phone）| Microsoft Azure"
+	description="在本教程中，你将了解如何使用 Azure 通知中心将通知推送到 Windows Phone 8 或 Windows Phone 8.1 Silverlight 应用程序。"
+	services="notification-hubs"
+	documentationCenter="windows"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor="dwrede"/>
+
 <tags
 	ms.service="notification-hubs"
-	ms.date="06/16/2015"
+	ms.date="09/08/2015"
 	wacn.date=""/>
 # 通知中心入门
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/" title="Windows Universal">Windows Universal</a><a href="/zh-cn/documentation/articles/notification-hubs-windows-phone-get-started/" title="Windows Phone" class="current">Windows Phone</a><a href="/zh-cn/documentation/articles/notification-hubs-ios-get-started/" title="iOS">iOS</a><a href="/zh-cn/documentation/articles/notification-hubs-android-get-started/" title="Android">Android</a><a href="/zh-cn/documentation/articles/notification-hubs-kindle-get-started/" title="Kindle">Kindle</a><a href="/zh-cn/documentation/articles/notification-hubs-baidu-get-started/" title="Baidu">Baidu</a><a href="/zh-cn/documentation/articles/partner-xamarin-notification-hubs-ios-get-started/" title="Xamarin.iOS">Xamarin.iOS</a><a href="/zh-cn/documentation/articles/partner-xamarin-notification-hubs-android-get-started/" title="Xamarin.Android">Xamarin.Android</a></div>
+[AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
+
+##概述
 
 本主题演示如何使用 Azure 通知中心将推送通知发送到 Windows Phone 8 或 Windows Phone 8.1 Silverlight 应用程序。如果你要以 Windows Phone 8.1（非 Silverlight）为目标，请参阅 [Windows Universal](/zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/) 版本。在本教程中，您将创建一个空白 Windows Phone 8 应用程序，它使用 Microsoft 推送通知服务 (MPNS) 接收推送通知。完成后，你将能使用通知中心将推送通知广播到运行你的应用程序的所有设备。
 
-> [AZURE.NOTE]通知中心 Windows Phone SDK 不支持将 WNS 与 Windows Phone 8.1 Silverlight 应用配合使用。若要将 WNS（而不是 MPNS）与 Windows Phone 8.1 Silverlight 应用配合使用，请根据 [Windows Universal 入门](/zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/)中所述设置 WNS 凭据。然后，你便可以根据[通知用户](/zh-cn/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/)教程中所述通过后端注册，或者使用 [通知中心 REST API](http://msdn.microsoft.com/zh-cn/library/dn223264.aspx) 注册。
+> [AZURE.NOTE]通知中心 Windows Phone SDK 不支持将 WNS 与 Windows Phone 8.1 Silverlight 应用配合使用。若要将 WNS（而不是 MPNS）与 Windows Phone 8.1 Silverlight 应用配合使用，请根据 [Windows Universal 入门](/zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started/)中所述设置 WNS 凭据。然后，你便可以根据[通知用户](/zh-cn/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/)教程中所述通过后端注册，或者使用[通知中心 REST API](http://msdn.microsoft.com/zh-cn/library/dn223264.aspx) 注册。
 
 本教程将指导你完成启用推送通知的以下步骤：
 
@@ -59,7 +69,7 @@
 		<p>本教程使用未经身份验证模式下的 MPNS。MPNS 未经身份验证的模式对你可以发送到每个通道的通知有一些限制。通知中心支持 <a href="http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/ff941099(v=vs.105).aspx">MPNS 身份验证模式</a>。<!--Refer to [Notification Hubs How-To for Windows Phone 8] for more information on how to use MPNS authenticated mode.--></p>
 </div>
 
-##<a name="connecting-app"></a>将你的应用连接到通知中心
+##<a name="connecting-app"></a>将应用连接到通知中心
 
 1. 在 Visual Studio 中创建一个新的 Windows Phone 8 应用程序。
 
@@ -77,7 +87,7 @@
 
 	![][20]
 
-	随后将使用 <a href="http://nuget.org/packages/WindowsAzure.Messaging.Managed/">WindowsAzure.Messaging.Managed NuGet 包</a>下载、安装并添加对 Windows 的 Azure 消息传送库的引用。
+	此时将使用 <a href="http://nuget.org/packages/WindowsAzure.Messaging.Managed/">WindowsAzure.Messaging.Managed NuGet 包</a>下载、安装并添加对 Windows 的 Azure 消息传送库的引用。
 
 4. 打开文件 App.xaml.cs 并添加以下 `using` 语句：
 
@@ -100,7 +110,8 @@
             await hub.RegisterNativeAsync(args.ChannelUri.ToString());
         });
 
-    确保插入你的中心名称以及在前一部分中获取的名为 **DefaultListenSharedAccessSignature** 的连接字符串。此代码从 MPNS 检索应用程序的 ChannelURI，然后将该 ChannelURI 注册到您的通知中心。它还保证每次启动应用程序时都在通知中心注册 ChannelURI。
+    确保插入你的中心名称以及在前一部分中获取的名为 **DefaultListenSharedAccessSignature** 的连接字符串。
+    此代码从 MPNS 检索应用程序的 ChannelURI，然后将该 ChannelURI 注册到您的通知中心。它还保证每次启动应用程序时都在通知中心注册 ChannelURI。
 
 	>[WACN.NOTE]本教程将一个 toast 通知发送到设备。而当你发送磁贴通知时，必须在通道上调用 **BindToShellTile** 方法。若要同时支持 toast 通知和磁贴通知，请同时调用 **BindToShellTile** 和 **BindToShellToast**。
     
@@ -116,7 +127,7 @@
 
 ##<a name="send"></a>从后端发送通知
 
-你可以使用通知中心通过 <a href="http://msdn.microsoft.com/zh-cn/library/windowsazure/dn223264.aspx">REST 接口</a>从任意后端发送通知。在本教程中，你将使用 .NET 控制台应用程序来发送通知。有关如何从与通知中心集成的 Azure 移动服务后端中发送通知的示例，请参阅**移动服务中的推送通知入门**（[.NET 后端](/zh-cn/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/) | [JavaScript 后端](/zh-cn/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/)）。有关如何使用 REST API 发送通知的示例，请参阅**如何使用 Java/PHP** ([Java](/zh-cn/documentation/articles/notification-hubs-java-backend-how-to/) | [PHP](/zh-cn/documentation/articles/notification-hubs-php-backend-how-to/)) 中的通知中心。
+你可以使用通知中心通过 <a href="http://msdn.microsoft.com/zh-cn/library/windowsazure/dn223264.aspx">REST 接口</a>从任意后端发送通知。在本教程中，你将使用 .NET 控制台应用程序来发送通知。有关如何从与通知中心集成的 Azure 移动服务后端发送通知的示例，请参阅**移动服务中的推送通知入门**（[.NET 后端](/zh-cn/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/) | [JavaScript 后端](/zh-cn/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push/)）。有关如何使用 REST API 发送通知的示例，请参阅**如何通过 Java/PHP 使用通知中心** ([Java](/zh-cn/documentation/articles/notification-hubs-java-backend-how-to/) | [PHP](/zh-cn/documentation/articles/notification-hubs-php-backend-how-to/))。
 
 1. 右键单击解决方案，选择“添加”和“新建项目...”，单击“Visual C#”下面的“Windows”和“控制台应用程序”，然后单击“确定”。 
 
@@ -132,7 +143,7 @@
 
         Install-Package WindowsAzure.ServiceBus
     
-	这会添加对使用 <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 包</a>的 Azure 服务总线 SDK 的引用。
+	这将使用 <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 包</a>添加对 Azure 服务总线 SDK 的引用。
 
 4. 打开文件 Program.cs 并添加以下 `using` 语句：
 
@@ -170,7 +181,7 @@
 
 ## <a name="next-steps"></a>后续步骤
 
-在这个简单的示例中，你已将通知广播到所有 Windows Phone 8 设备。为了针对特定客户，请参考教程[使用通知中心将通知推送到用户]。如果要按兴趣细分用户组，可以阅读[使用通知中心发送突发新闻]。在[通知中心指南]中了解有关如何使用通知中心的更多信息。
+在这个简单的示例中，你已将通知广播到所有 Windows Phone 8 设备。若要针对特定客户，请参考教程[使用通知中心将通知推送到用户]。如果要按兴趣组划分用户，可以阅读[使用通知中心发送突发新闻]。在[通知中心指南]中了解有关如何使用通知中心的更多信息。
 
 <!-- Anchors. -->
 [创建通知中心]: #configure-hub
@@ -210,4 +221,4 @@
 [toast 目录]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/jj662938(v=vs.105).aspx
 [磁贴目录]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/hh202948(v=vs.105).aspx
 
-<!---HONumber=71-->
+<!---HONumber=76-->

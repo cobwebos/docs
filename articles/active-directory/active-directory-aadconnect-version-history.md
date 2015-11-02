@@ -138,4 +138,4 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect)
 
-<!---HONumber=74-->
+<!---HONumber=76-->

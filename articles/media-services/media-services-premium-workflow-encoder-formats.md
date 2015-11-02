@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"  
+	ms.date="09/07/2015" 
 	wacn.date=""/>
 
 #Media Encoder Premium Workflow 格式和编解码器
@@ -123,4 +123,4 @@
 
 如果输入视频不包含隐藏式字幕，输出资产仍将包含一个空的 TTML 文件。
 
-<!---HONumber=71-->
+<!---HONumber=76-->

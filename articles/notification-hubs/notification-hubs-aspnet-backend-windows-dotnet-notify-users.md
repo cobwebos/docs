@@ -7,9 +7,10 @@
 	services="notification-hubs" 
 	editor=""/>
 
-<tags 
-	ms.service="notification-hubs" 
-	ms.date="05/31/2015" 
+<tags
+	ms.service="notification-hubs"
+
+	ms.date="06/16/2015"
 	wacn.date=""/>
 
 #Azure 通知中心 - 通知用户
@@ -168,7 +169,7 @@
 
                 try
                 {
-                    await httpClient.PostAsync(POST_URL, new StringContent(""" + message + """,
+                    await httpClient.PostAsync(POST_URL, new StringContent("\"" + message + "\"",
                         System.Text.Encoding.UTF8, "application/json"));
                 }
                 catch (Exception ex)
@@ -369,4 +370,4 @@
 [使用通知中心发送突发新闻]: notification-hubs-windows-store-dotnet-send-breaking-news.md
 [通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
 
-<!---HONumber=71-->
+<!---HONumber=76-->

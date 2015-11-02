@@ -1,7 +1,7 @@
 <properties linkid="dev-net-service-bus-amqp-overview" urlDisplayName="Azure Notification Hubs" pageTitle="Azure 通知中心" metaKeywords="Azure push notifications, Azure notification hubs, Azure messaging" description="了解如何在 Azure 中使用通知中心。代码示例是使用 .NET API 通过 C# 编写的。" metaCanonical="" disqusComments="1" umbracoNaviHide="0" title="Azure Notification Hubs" authors="sethm" />
 <tags 
 	ms.service="notification-hubs" 
-	ms.date="06/02/2015" 
+	ms.date="06/16/2015"
 	wacn.date=""/>
 
 
@@ -51,7 +51,8 @@ Azure 通知中心提供易用的基础结构，使你能够从任何后端（�
 1.  客户端应用程序与 PNS 联系以检索其_句柄_。句柄类型取决于系统。对于 WNS，它是 URI 或“通知通道”。 对于 APNS，它是令牌。
 2.  客户端应用将此句柄存储在应用_后端_中以供日后使用。对于 WNS，后端通常是云服务。对于 Apple，该系统称为_提供程序_。
 3.  为发送推送通知，应用程序后端使用句柄与 PNS 联系以定位到特定客户端应用程序实例。
-4.  PNS 将通知转发到句柄所指定的设备。![][0]
+4.  PNS 将通知转发到句柄所指定的设备。
+![][0]
 
 ##推送通知的难点
 
@@ -144,4 +145,4 @@ Azure 通知中心提供易用的基础结构，使你能够从任何后端（�
   [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.notifications.aspx
   
 
-<!---HONumber=71-->
+<!---HONumber=76-->

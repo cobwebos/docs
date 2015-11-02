@@ -1,4 +1,12 @@
-<properties linkid="develop-notificationhubs-tutorials-get-started-xamarin-ios" urlDisplayName="Get Started" pageTitle="通知中心入门 - Xamarin iOS 应用程序" metaKeywords="" description="了解如何使用 Azure 通知中心将推送通知发送到 Xamarin iOS 应用程序。" metaCanonical="" disqusComments="0" umbracoNaviHide="1" services="mobile-services,notification-hubs" documentationCenter="" title="Get started with Notification Hubs" authors="" />
+<properties
+	pageTitle="通知中心入门（Xamarin iOS 应用）| Microsoft Azure"
+	description="在本教程中，你将了解如何使用 Azure 通知中心将推送通知发送到 Xamarin iOS 应用程序。"
+	services="notification-hubs"
+	documentationCenter="xamarin"
+	authors="ysxu"
+	manager="dwrede"
+	editor=""/>
+
 <tags
 	ms.service="notification-hubs"
 	ms.date="07/28/2015"
@@ -9,7 +17,8 @@
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ##概述
-本主题演示如何使用 Azure 通知中心将推送通知发送到 iOS 应用程序。在本教程中，你将创建一个空白 Xamarin.iOS 应用，它使用 Apple 推送通知服务 (APNs) 接收推送通知。完成后，你将能使用通知中心将推送通知广播到运行你的应用程序的所有设备。[NotificationHubs][GitHub] 应用程序示例中提供了完成的代码。
+本主题演示如何使用 Azure 通知中心将推送通知发送到 iOS 应用程序。
+在本教程中，你将创建一个空白 Xamarin.iOS 应用，它使用 Apple 推送通知服务 (APNs) 接收推送通知。完成后，你将能使用通知中心将推送通知广播到运行你的应用程序的所有设备。[NotificationHubs][GitHub] 应用程序示例中提供了完成的代码。
 
 本教程演示使用通知中心的简单广播方案。
 
@@ -71,15 +80,15 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
    	![][108]
    
 
-这将生成你的应用程序 ID 并且请求你提交该信息。单击“提交”。
+	这将生成你的应用程序 ID 并且请求你提交该信息。单击“提交”。
    
    	![][109]
    
-单击“Submit”（提交）后，你将会看到如下所示的“Registration complete”（注册已完成）屏幕。单击“Done”（完成）。
+	单击“Submit”（提交）后，你将会看到如下所示的“Registration complete”（注册已完成）屏幕。单击“Done”（完成）。
    
    	![][110]
 
-> [AZURE.NOTE]如果你选择提供“Bundle Identifier”（捆绑标识符）值，而不是 MobileServices.Quickstart，则还必须更新 Xcode 项目中的捆绑标识符值。
+	> [AZURE.NOTE]如果你选择提供“Bundle Identifier”（捆绑标识符）值，而不是 MobileServices.Quickstart，则还必须更新 Xcode 项目中的捆绑标识符值。
 
 3. 找到你刚刚创建的应用程序 ID，然后单击其行。
 
@@ -476,4 +485,4 @@ Apple 推送通知服务 (APNS) 使用证书来验证你的移动服务。按照
 [Xamarin.iOS]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
 
-<!---HONumber=71-->
+<!---HONumber=76-->

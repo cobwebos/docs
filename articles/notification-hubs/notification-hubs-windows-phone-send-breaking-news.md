@@ -1,4 +1,12 @@
-<properties linkid="manage-services-web-sites-operating-system-functionality-available-to-applications" urlDisplayName="Operating System Functionality Available to Applications on Azure  Websites" pageTitle="可用于 Azure 网站上的应用程序的操作系统功能" metaKeywords="" description="了解可用于在 Azure 网站上运行的所有应用程序的常见基准操作系统功能，包括文件访问、网络访问和注册表访问。" metaCanonical="" services="notification-hubs" documentationCenter="" title="Use Notification Hubs to send breaking news" authors="glenga" solutions="" manager="" editor="" />
+<properties
+	pageTitle="使用通知中心发送突发新闻 (Windows Phone)"
+	description="通过 Azure 通知中心使用注册中的标记将突发新闻发送到 Windows Phone 应用。"
+	services="notification-hubs"
+	documentationCenter="windows"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""/>
+
 <tags
 	ms.service="notification-hubs"
 	ms.date="08/18/2015" 
@@ -246,4 +254,4 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
 [Azure Management Portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=71-->
+<!---HONumber=76-->

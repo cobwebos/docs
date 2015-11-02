@@ -10,7 +10,7 @@
 
 <tags
    ms.service="hdinsight"
-   ms.date="07/06/2015"
+   ms.date="08/21/2015"
    wacn.date="" 
    ms.author="larryfr"/>
 
@@ -60,7 +60,7 @@ Pig Latin 还支持使用用户定义函数 (UDF) 来调用外部组件，以便
 
 由于 WASB 是 HDInsight 的默认存储，你也可以使用 Pig Latin 中的 **/example/data/sample.log** 来访问该文件。
 
-> [AZURE.NOTE]语法 ****wasb:///** 用于访问存储在 HDInsight 群集的默认存储容器中的文件。如果你在预配群集时指定了其他存储帐户，并且你想要访问存储在这些帐户中的文件，则可以通过指定容器名称和存储帐户地址来访问这些数据，例如：****wasb://mycontainer@mystorage.blob.core.chinacloudapi.cn/example/data/sample.log**。
+> [AZURE.NOTE]语法 **wasb:///** 用于访问存储在 HDInsight 群集的默认存储容器中的文件。如果你在预配群集时指定了其他存储帐户，并且你想要访问存储在这些帐户中的文件，则可以通过指定容器名称和存储帐户地址来访问这些数据，例如：**wasb://mycontainer@mystorage.blob.core.chinacloudapi.cn/example/data/sample.log**。
 
 
 ##<a id="job"></a>关于示例作业
@@ -85,11 +85,23 @@ HDInsight 可以使用各种方法来运行 Pig Latin 作业。使用下表来�
 
 | **使用此方法**，如果你想要... | ...**交互式** shell | ...**批处理** | ...使用此**群集操作系统** | ...从此**客户端操作系统** |
 |:--------------------------------------------------------------			|:---------------------------:|:-----------------------:|:------------------------------------------|:-----------------------------------------|
-| [SSH](/documentation/articles/hdinsight-hadoop-use-pig-ssh) | ✔ | ✔ | Linux | Linux、Unix、Mac OS X 或 Windows |
-| [Curl](/documentation/articles/hdinsight-hadoop-use-pig-curl) | &nbsp; | ✔ | Linux 或 Windows | Linux、Unix、Mac OS X 或 Windows |
-| [.NET SDK for Hadoop](/documentation/articles/hdinsight-hadoop-use-pig-dotnet-sdk) | &nbsp; | ✔ | Linux 或 Windows | Windows（暂时） |
-| [Windows PowerShell](/documentation/articles/hdinsight-hadoop-use-pig-powershell) | &nbsp; | ✔ | Linux 或 Windows | Windows |
+| [Curl](/documentation/articles/hdinsight-hadoop-use-pig-curl) | &nbsp; | ✔ | Windows | Windows |
+| [.NET SDK for Hadoop](/documentation/articles/hdinsight-hadoop-use-pig-dotnet-sdk) | &nbsp; | ✔ | Windows | Windows（暂时） |
+| [Windows PowerShell](/documentation/articles/hdinsight-hadoop-use-pig-powershell) | &nbsp; | ✔ | Windows | Windows |
 | [远程桌面](/documentation/articles/hdinsight-hadoop-use-pig-remote-desktop) | ✔ | ✔ | Windows | Windows |
+
+
+## 使用本地 SQL Server Integration Services 在 Azure HDInsight 上运行 Pig 作业
+
+你也可以使用 SQL Server Integration Services (SSIS) 来运行 Pig 作业。Azure Feature Pack for SSIS 提供适用于 HDInsight 上的 Pig 作业的以下组件。
+
+
+- [Azure HDInsight Pig 任务][pigtask]
+- [Azure 订阅连接管理器][connectionmanager]
+
+
+在[此处][ssispack]了解有关 Azure Feature Pack for SSIS 的详细信息。
+
 
 ##<a id="nextsteps"></a>后续步骤
 
@@ -104,7 +116,9 @@ HDInsight 可以使用各种方法来运行 Pig Latin 作业。使用下表来�
 [apachepig-home]: http://pig.apache.org/
 [putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 [curl]: http://curl.haxx.se/
-
+[pigtask]: http://msdn.microsoft.com/zh-CN/library/mt146781(v=sql.120).aspx
+[connectionmanager]: http://msdn.microsoft.com/zh-CN/library/mt146773(v=sql.120).aspx
+[ssispack]: http://msdn.microsoft.com/zh-CN/library/mt146770(v=sql.120).aspx
 
 [hdinsight-storage]: /zh-cn/documentation/articles/hdinsight-use-blob-storage/
 [hdinsight-upload-data]: /zh-cn/documentation/articles/hdinsight-upload-data/
@@ -112,6 +126,7 @@ HDInsight 可以使用各种方法来运行 Pig Latin 作业。使用下表来�
 [hdinsight-admin-powershell]: /zh-cn/documentation/articles/hdinsight-administer-use-powershell/
 
 [hdinsight-use-hive]: /zh-cn/documentation/articles/hdinsight-use-hive/
+[hdinsight-use-mapreduce]: /documentation/articles/hdinsight-use-mapreduce/
 
 [hdinsight-provision]: /zh-cn/documentation/articles/hdinsight-provision-clusters/
 [hdinsight-submit-jobs]: /zh-cn/documentation/articles/hdinsight-submit-hadoop-jobs-programmatically/#mapreduce-sdk
@@ -125,4 +140,4 @@ HDInsight 可以使用各种方法来运行 Pig Latin 作业。使用下表来�
 [image-hdi-pig-powershell]: ./media/hdinsight-use-pig/hdi.pig.powershell.png
 [image-hdi-pig-architecture]: ./media/hdinsight-use-pig/HDI.Pig.Architecture.png
 
-<!---HONumber=71-->
+<!---HONumber=76-->

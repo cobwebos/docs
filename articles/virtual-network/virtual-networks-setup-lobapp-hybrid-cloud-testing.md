@@ -10,12 +10,14 @@
 
 <tags 
 	ms.service="virtual-network" 
-	ms.date="07/08/2015" 
+	ms.date="09/10/2015" 
 	wacn.date=""/>
 
 # 在混合云中设置用于测试且基于 Web 的 LOB 应用程序
 
-本主题将指导你一步步创建混合云环境，以便测试在 Microsoft Azure 中托管的 Intranet 业务线 (LOB) 应用程序。这是生成的配置。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍如何使用经典部署模型创建资源。
+
+本主题将指导你逐步创建混合云环境，以便测试在 Microsoft Azure 中托管的 Intranet 业务线 (LOB) 应用程序。这是生成的配置。
 
 ![](./media/virtual-networks-setup-lobapp-hybrid-cloud-testing/CreateLOBAppHybridCloud_3.png)
 
@@ -49,7 +51,7 @@
 
 ![](./media/virtual-networks-setup-lobapp-hybrid-cloud-testing/CreateLOBAppHybridCloud_1.png)
 
-> [AZURE.NOTE]就阶段 1 来说，你也可以设置模拟混合云测试环境。有关说明，请参阅[设置用于测试的模拟混合云环境](/documentation/articles/virtual-networks-setup-simulated-hybrid-cloud-environment-testing)。
+> [AZURE.NOTE] 就阶段 1 来说，你也可以设置模拟混合云测试环境。有关说明，请参阅[设置用于测试的模拟混合云环境](/documentation/articles/virtual-networks-setup-simulated-hybrid-cloud-environment-testing)。
  
 ## 阶段 2：配置 SQL Server 计算机 (SQL1)
 
@@ -59,15 +61,15 @@
 
 	$storageacct="<Name of the storage account for your TestVNET virtual network>"
 	$ServiceName="<The cloud service name for your TestVNET virtual network>"
-	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for SQL1."
-	$cred2=Get-Credential –UserName "CORP\User1" –Message "Now type the password for the CORP\User1 account."
-	Set-AzureStorageAccount –StorageAccountName $storageacct
+	$cred1=Get-Credential -Message "Type the name and password of the local administrator account for SQL1."
+	$cred2=Get-Credential -UserName "CORP\User1" -Message "Now type the password for the CORP\User1 account."
+	Set-AzureStorageAccount -StorageAccountName $storageacct
 	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "SQL Server 2014 RTM Standard on Windows Server 2012 R2" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name SQL1 -InstanceSize Large -ImageName $image
 	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain "CORP" -DomainUserName "User1" -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain "corp.contoso.com"
 	$vm1 | Set-AzureSubnet -SubnetNames TestSubnet
-	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 100 -DiskLabel SQLFiles –LUN 0 -HostCaching None
-	New-AzureVM –ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
+	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB 100 -DiskLabel SQLFiles -LUN 0 -HostCaching None
+	New-AzureVM -ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
 
 接下来，*使用本地管理员帐户*连接到新的 SQL1 虚拟机。
 
@@ -82,7 +84,7 @@
 
 接下来，请配置 Windows 防火墙规则，允许进行基本的连接测试所需的以及 SQL Server 所需的通信。在 SQL1 上管理员级 Windows PowerShell 命令提示符下运行这些命令。
 
-	New-NetFirewallRule -DisplayName “SQL Server” -Direction Inbound –Protocol TCP –LocalPort 1433,1434,5022 -Action allow 
+	New-NetFirewallRule -DisplayName "SQL Server" -Direction Inbound -Protocol TCP -LocalPort 1433,1434,5022 -Action allow 
 	Set-NetFirewallRule -DisplayName "File and Printer Sharing (Echo Request - ICMPv4-In)" -enabled True
 	ping dc1.corp.contoso.com
 
@@ -134,13 +136,13 @@
 首先，在本地计算机上的 Azure PowerShell 命令提示符下使用这些命令创建适用于 LOB1 的 Azure 虚拟机。
 
 	$ServiceName="<The cloud service name for your TestVNET virtual network>"
-	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for LOB1."
-	$cred2=Get-Credential –UserName "CORP\User1" –Message "Now type the password for the CORP\User1 account."
+	$cred1=Get-Credential -Message "Type the name and password of the local administrator account for LOB1."
+	$cred2=Get-Credential -UserName "CORP\User1" -Message "Now type the password for the CORP\User1 account."
 	$image = Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 	$vm1=New-AzureVMConfig -Name LOB1 -InstanceSize Medium -ImageName $image
 	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain "CORP" -DomainUserName "User1" -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain "corp.contoso.com"
 	$vm1 | Set-AzureSubnet -SubnetNames TestSubnet
-	New-AzureVM –ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
+	New-AzureVM -ServiceName $ServiceName -VMs $vm1 -VNetName TestVNET
 
 接下来，使用 CORP\\User1 帐户凭据连接到 LOB1 虚拟机。
 
@@ -155,11 +157,11 @@
 
 1.	运行服务器管理器，然后单击“添加角色和功能”。
 2.	在“开始之前”页上，单击“下一步”。
-3.	在“选择安装类型”页上，单击“下一步”。
-4.	在“选择目标服务器”页上，单击“下一步”。
-5.	在“服务器角色”页上，单击“角色”列表中的“Web 服务器(IIS)”。
-6.	出现提示时，单击“添加功能”，然后单击“下一步”。
-7.	在“选择功能”页上，单击“下一步”。
+3.	在“选择安装类型”页上，单击**“下一步”**。
+4.	在“选择目标服务器”页上，单击**“下一步”**。
+5.	在“服务器角色”页上，单击**“角色”**列表中的**“Web 服务器(IIS)”**。
+6.	出现提示时，单击**“添加功能”**，然后单击**“下一步”**。
+7.	在“选择功能”页上，单击**“下一步”**。
 8.	在“Web 服务器(IIS)”页上，单击“下一步”。
 9.	在“选择角色服务”页上，选择或清除测试 LOB 应用程序所需的服务的复选框，然后单击“下一步”。
 10.	在“确认安装选择”页上，单击“安装”。
@@ -192,4 +194,4 @@
 [Azure 基础结构服务实施准则](/documentation/articles/virtual-machines-infrastructure-services-implementation-guidelines)
  
 
-<!---HONumber=70-->
+<!---HONumber=76-->

@@ -10,12 +10,12 @@
 <tags
 	ms.service="automation"
 
-	ms.date="07/06/2015"
+	ms.date="09/17/2015"
 	wacn.date=""/>
 
 # 什么是 Azure Automation？
 
-借助 Windows Azure 自动化，用户可以自动完成通常要在云环境和企业环境中执行的手动、长时间进行、易出错且重复性高的任务。本文提供了有关 Azure 自动化的一些常见问题的简要解答。您可以参考此库中的其他文章，以了解有关不同主题的更多详细信息。
+借助 Microsoft Azure 自动化，用户可以自动完成通常要在云环境和企业环境中执行的手动、长时间进行、易出错且重复性高的任务。本文提供了有关 Azure 自动化的一些常见问题的简要解答。您可以参考此库中的其他文章，以了解有关不同主题的更多详细信息。
 
 ## Azure 自动化提供什么价值？
 
@@ -45,7 +45,7 @@ Runbook 是 Azure 自动化中执行某些自动化过程的一组任务。它�
 
 ## Azure 自动化如何与其他自动化工具关联？
 
-[Service Management Automation (SMA)](http://technet.microsoft.com/zh-cn/library/dn469260.aspx) 用于自动处理私有云中的管理任务。它作为 [Windows Azure Pack](http://www.microsoft.com/server-cloud/products/windows-azure-pack/default.aspx) 的组件本地安装在您的数据中心中。SMA 和 Azure 自动化使用基于 Windows PowerShell 工作流的相同的 Runbook 格式，但 SMA 不支持[图形 Runbook](/documentation/articles/automation-graphical-authoring-intro)。
+[Service Management Automation (SMA)](http://technet.microsoft.com/zh-cn/library/dn469260.aspx) 用于自动处理私有云中的管理任务。它作为 [Microsoft Azure Pack](http://www.microsoft.com/server-cloud/products/windows-azure-pack/default.aspx) 的组件本地安装在您的数据中心中。SMA 和 Azure 自动化使用基于 Windows PowerShell 工作流的相同的 Runbook 格式，但 SMA 不支持[图形 Runbook](/documentation/articles/automation-graphical-authoring-intro)。
 
 [System Center 2012 Orchestrator](http://technet.microsoft.com/zh-cn/library/hh237242.aspx) 适用于本地资源的自动化。它使用与 Azure 自动化和 Service Management Automation 不同的 Runbook 格式，并且具有图形界面，可用于创建 Runbook 而无需编写任何脚本。它的 Runbook 由专门为 Orchestrator 编写的集成包中的活动构成。
 
@@ -60,6 +60,6 @@ Runbook 是 Azure 自动化中执行某些自动化过程的一组任务。它�
 
 ## 我是否可以提供反馈？
 
-**欢迎提供反馈！** 如果您正在寻找 Azure 自动化 Runbook 解决方案或集成模块，请在脚本中心发布脚本请求。如果您有关于 Azure 自动化的反馈或功能请求，请将其发布在[用户之声](http://feedback.windowsazure.com/forums/34192--general-feedback)。谢谢！
+**欢迎提供反馈！** 如果您正在寻找 Azure 自动化 Runbook 解决方案或集成模块，请在脚本中心发布脚本请求。如果您有关于 Azure 自动化的反馈或功能请求，请将其发布在[用户之声](http://feedback.windowsazure.cn/forums/34192--general-feedback)。谢谢！
 
-<!---HONumber=67-->
+<!---HONumber=76-->

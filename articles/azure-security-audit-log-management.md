@@ -110,7 +110,8 @@ Azure 诊断将日志从客户云服务应用程序和 [Azure 虚拟机](/docume
 
 ### 使用 Azure 诊断从 Azure 虚拟机进行安全数据收集
 
-下面的示例使用 Azure Diagnostics 1.2 和 Azure PowerShell cmdlet 从虚拟机启用安全数据收集。在计划的时间间隔（这是可配置的）里从虚拟机收集数据并将其推送到客户订阅中的 Azure 存储空间。在本部分中，我们将逐步介绍如何使用 Azure 诊断完成两个日志收集方案：
+下面的示例使用 Azure Diagnostics 1.2 和 Azure PowerShell cmdlet 从虚拟机启用安全数据收集。在计划的时间间隔（这是可配置的）里从虚拟机收集数据并将其推送到客户订阅中的 Azure 存储空间。
+在本部分中，我们将逐步介绍如何使用 Azure 诊断完成两个日志收集方案：
 
 1. 在虚拟机上设置安全日志收集管道的新实例。
 2. 使用虚拟机上的新配置更新现有安全日志收集管道。
@@ -199,7 +200,8 @@ $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
 
 1.	在 Visual Studio（2013、2012 和 2010 SP1）中，单击“视图”，然后单击“服务器资源管理器”。
 2.	导航到您的存储帐户。
-3.	单击“表”，然后双击相应的表来查看从虚拟机中收集的安全日志。![][2]
+3.	单击“表”，然后双击相应的表来查看从虚拟机中收集的安全日志。
+![][2]
 
 4.	右键单击名为 WADWindowsEventLogsTable 的表，然后单击“查看数据”以打开表视图，如下所示：
 
@@ -610,4 +612,4 @@ Azure Active Directory (Azure AD) 包括一组安全、使用情况和审核日�
 [19]: ./media/azure-security-audit-log-management/sec-view-blob-container.png
 [20]: ./media/azure-security-audit-log-management/sec-hdinsight-analysis.png
 
-<!---HONumber=71-->
+<!---HONumber=76-->

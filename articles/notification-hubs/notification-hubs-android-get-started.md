@@ -1,23 +1,23 @@
 <properties 
-	pageTitle="Azure 通知中心入门" 
-	description="了解如何使用 Azure 通知中心推送通知。" 
+	pageTitle="Azure 通知中心入门（Android 应用）| Microsoft Azure" 
+	description="在本教程中，你将了解如何使用 Azure 通知中心将通知推送到 Android 设备。"
 	services="notification-hubs" 
 	documentationCenter="android" 
 	authors="wesmc7777" 
 	manager="dwrede" 
 	editor=""/>
 <tags 	
-	ms.date="05/27/2015" 
-	ms.author="wesmc"
-    wacn.date="" />
+	ms.service="notification-hubs"
+	ms.date="09/03/2015"
+	wacn.date="" />
 
-# 通知中心入门
+# 通知中心入门（Android 应用）
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ##概述
 
-本主题演示如何使用 Azure 通知中心将推送通知发送到 Android 应用程序。在本教程中，您将创建一个空白 Android 应用程序，它使用 Google Cloud Messaging (GCM) 接收推送通知。完成后，你将能使用通知中心将推送通知广播到运行你的应用程序的所有设备。
+本教程演示如何使用 Azure 通知中心将推送通知发送到 Android 应用程序。你将创建一个空白 Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。
 
 本教程演示使用通知中心的简单广播方案。请确保随后学习下一教程以了解如何使用通知中心来发送到特定用户和设备组。
 
@@ -26,11 +26,11 @@
 
 本教程需要的内容如下：
 
-+ Android Studio，可从<a href="http://go.microsoft.com/fwlink/?LinkId=389797">此处</a>下载
-+ 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fzh-CN%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started%2F)。
++ Android Studio，可从 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 站点</a>下载。
++ 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://www.windowsazure.cn/zh-cn/pricing/1rmb-trial/)。
 
 
-完成本教程是学习有关 Android 应用程序的所有其他通知中心教程的先决条件。
+完成本教程是学习有关 Android 应用的所有其他通知中心教程的先决条件。
 
 
 ##创建支持 Google Cloud Messaging 的项目
@@ -66,7 +66,9 @@
 
 
 
-	这两个包的参考文档位于以下链接： * [com.microsoft.windowsazure.messaging](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/messaging/package-summary.html) * [com.microsoft.windowsazure.notifications](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/notifications/package-summary.html)
+	这两个包的参考文档位于以下链接：
+	* [com.microsoft.windowsazure.messaging](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/messaging/package-summary.html) 
+	* [com.microsoft.windowsazure.notifications](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/notifications/package-summary.html)
 
 
     > [AZURE.NOTE]在后续的 SDK 版本中，文件名末尾的数字可能更改。
@@ -100,9 +102,13 @@
 		private NotificationHub hub;
     	private String HubName = "<Enter Your Hub Name>";
 		private String HubListenConnectionString = "<Your default listen connection string>";
+	    private static Boolean isVisible = false;
 
 
-	确保更新三个占位符：* * **SENDER\_ID**：将 `SENDER_ID` 设置为前面在从 [Google Cloud Console](http://cloud.google.com/console) 中创建的项目获取的项目编号。* **HubListenConnectionString**：将 `HubListenConnectionString` 设置为中心的 **DefaultListenAccessSignature** 连接字符串。在 [Azure 管理门户]上，单击中心的“仪表板”选项卡上的“查看连接字符串”，即可复制该连接字符串。* **HubName**：在 Azure 中的页面顶部显示的通知中心名称（**不是**完整 URL）。例如 `"myhub"`。
+	确保更新三个占位符：
+	* **SENDER\_ID**：将 `SENDER_ID` 设置为前面在从 [Google Cloud Console](http://cloud.google.com/console) 中创建的项目获取的项目编号。
+	* **HubListenConnectionString**：将 `HubListenConnectionString` 设置为中心的 **DefaultListenAccessSignature** 连接字符串。在 [Azure 管理门户]上，单击中心的“仪表板”选项卡上的“查看连接字符串”，即可复制该连接字符串。
+	* **HubName**：在 Azure 中的中心页面顶部显示的通知中心名称（**不是**完整 URL）。例如 `"myhub"`。
 
 
 
@@ -134,7 +140,22 @@
         	}.execute(null, null, null);
     	}
 
-		
+
+7. 向活动添加 **DialogNotify** 方法可在应用正在运行且可见时显示通知。此外还重写 **onStart** 和 **onStop** 以确定该活动是否可见以便显示对话框。
+
+	    @Override
+	    protected void onStart() {
+	        super.onStart();
+	        isVisible = true;
+	    }
+	
+	    @Override
+	    protected void onStop() {
+	        super.onStop();
+	        isVisible = false;
+	    }
+
+
 		/**
 		  * A modal AlertDialog for displaying a message on the UI thread
 		  * when theres an exception or message to report.
@@ -144,6 +165,9 @@
 		  */
     	public void DialogNotify(final String title,final String message)
     	{
+	        if (isVisible == false)
+	            return;
+
         	final AlertDialog.Builder dlg;
         	dlg = new AlertDialog.Builder(this);
 
@@ -166,7 +190,7 @@
         	});
     	}
 
-7. 因为 Android 不显示通知，你必须编写自己的接收器。在 **AndroidManifest.xml** 中的 `<application>` 元素内添加以下元素。
+8. 因为 Android 不显示通知，你必须编写自己的接收器。在 **AndroidManifest.xml** 中的 `<application>` 元素内添加以下元素。
 
 	> [AZURE.NOTE]将占位符替换为你的包名称。
 
@@ -179,14 +203,14 @@
         </receiver>
 
 
-8. 在“项目”视图中，展开“应用”>“src”>“main”>“java”。右键单击 **java** 下的包文件夹，单击“新建”，然后单击“Java 类”。
+9. 在“项目”视图中，展开“应用”>“src”>“main”>“java”。右键单击 **java** 下的包文件夹，单击“新建”，然后单击“Java 类”。
 
 	![][6]
 
 9. 在新类的“名称”字段中输入 **MyHandler**，然后单击“确定”。
 	
 
-10. 在 **MyHandler.java** 的顶部添加以下 import 语句：
+11. 在 **MyHandler.java** 的顶部添加以下 import 语句：
 
 		import android.app.NotificationManager;
 		import android.app.PendingIntent;
@@ -197,12 +221,12 @@
 		import com.microsoft.windowsazure.notifications.NotificationsHandler;
 		
 
-11. 更新类声明，使 `MyHandler` 成为 `com.microsoft.windowsazure.notifications.NotificationsHandler` 的子类，如下所示。
+12. 更新类声明，使 `MyHandler` 成为 `com.microsoft.windowsazure.notifications.NotificationsHandler` 的子类，如下所示。
 
 		public class MyHandler extends NotificationsHandler {
 
 
-12. 在 `MyHandler` 类中添加以下代码。
+13. 在 `MyHandler` 类中添加以下代码。
 
 	此代码将重写 `OnReceive` 方法，因此处理程序将弹出 `AlertDialog` 以显示收到的通知。处理程序还会使用 `sendNotification()` 方法将通知发送到 Android 通知管理器。
 
@@ -240,10 +264,10 @@
 			mBuilder.setContentIntent(contentIntent);
 			mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 		}
-	
-13. 在 Android Studio 的菜单栏上，单击“生成”>“重新生成项目”，以确保不会检测到任何错误。
 
-##如何发送通知
+14. 在 Android Studio 的菜单栏上，单击“生成”>“重新生成项目”，以确保不会检测到任何错误。
+
+##发送通知
 
 
 
@@ -255,7 +279,7 @@
 
 ![][31]
 
-1. 在 Android Studio 的项目视图中展开“应用”>“src”>“main”>“res”>“layout”。打开 **activity\_main.xml** 布局文件，然后单击“文本”选项卡以更新文件的文本内容。使用以下代码更新文件，该代码将添加新的 `Button` 和 `EditText` 控件，用于将通知消息发送到通知中心。将此代码添加在底部紧靠 `</RelativeLayout>` 前面的位置。
+1. 在 Android Studio 的项目视图中展开“应用”>“src”>“main”>“res”>“layout”。打开 **activity\_main.xml** 布局文件，然后单击“文本”选项卡以更新文件的文本内容。使用以下代码更新文件，该代码将添加新的 `Button` 和 `EditText` 控件，用于将通知消息发送到通知中心。将此代码添加到底部紧靠 `</RelativeLayout>` 前面的位置。
 
 	    <Button
         android:layout_width="wrap_content"
@@ -275,7 +299,7 @@
         android:layout_marginBottom="42dp"
         android:hint="@string/notification_message_hint" />
 
-2. 在 Android Studio 的项目视图中展开“应用”>“src”>“main”>“res”>“values”。打开 **strings.xml** 文件并添加新的 `Button` 和 `EditText` 控件引用的字符串值。在文件底部紧靠在 `</resources>` 前面的位置添加这些值。
+2. 在 Android Studio 的项目视图中展开“应用”->“src”->“main”->“res”->“values”。打开 **strings.xml** 文件并添加新的 `Button` 和 `EditText` 控件引用的字符串值。在文件底部紧靠在 `</resources>` 前面的位置添加这些值。
 
         <string name="send_button">Send Notification</string>
         <string name="notification_message_hint">Enter notification message text</string>
@@ -300,14 +324,14 @@
 
 3. 在 **MainActivity.java** 文件中，将以下成员添加在 `MainActivity` 类的最上面。
 
-	在 `HubName` 中，为中心（不是命名空间）输入名称。例如“myhub”。此外，输入 **DefaultFullSharedAccessSignature** 连接字符串。单击通知中心的“仪表板”选项卡上的“查看连接字符串”，即可从 [Azure 管理门户]复制此连接字符串。
+	在 `HubName` 中，为中心（不是命名空间）输入名称。例如“myhub”。此外，还输入 **DefaultFullSharedAccessSignature** 连接字符串。单击通知中心的“仪表板”选项卡上的“查看连接字符串”，即可从 [Azure 管理门户]复制此连接字符串。
 
 	    private String HubEndpoint = null;
 	    private String HubSasKeyName = null;
 	    private String HubSasKeyValue = null;
 		private String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
 
-4. 活动保留中心名称以及中心的完整共享访问连接字符串。你必须创建软件访问签名 (SaS) 令牌对 POST 请求进行身份验证，以便将消息发送到通知中心。为此，可以分析连接字符串中的密钥数据，然后根据[一般概念](http://msdn.microsoft.com/library/azure/dn495627.aspx) REST API 参考中所述创建 SaS 令牌。
+4. 活动保留中心名称以及中心的完整共享访问连接字符串。你必须创建软件访问签名 (SaS) 令牌对 POST 请求进行身份验证，以便将消息发送到通知中心。为此，可以分析连接字符串中的密钥数据，然后按照[基本概念](http://msdn.microsoft.com/library/azure/dn495627.aspx) REST API 参考中所述创建 SaS 令牌。
 
 	在 **MainActivity.java** 中，将以下方法添加到 `MainActivity` 类，以分析连接字符串。
 
@@ -390,7 +414,7 @@
         }
 
 
-6. 在 **MainActivity.java** 中，将以下方法添加到 `MainActivity` 类，以使用 REST API 处理**发送通知**按钮点击并将通知消息发送到中心。
+6. 在 **MainActivity.java** 中，将以下方法添加到 `MainActivity` 类，以使用 REST API 处理“发送通知”按钮点击并将通知消息发送到中心。
 
         /**
          * Send Notification button click handler. This method parses the 
@@ -464,7 +488,7 @@
 
 ##后续步骤
 
-在这个简单的示例中，你将通知广播到所有 Android 设备。若要向特定的用户推送消息，请参考教程[使用通知中心将通知推送到用户]，如果要按兴趣组来划分用户，请阅读[使用通知中心发送突发新闻]。在[通知中心指南]中了解有关如何使用通知中心的更多信息。
+在这个简单的示例中，你将通知广播到所有 Android 设备。若要向特定用户推送消息，请参考教程[使用通知中心将通知推送到用户]，如果要按兴趣组来划分用户，请阅读[使用通知中心发送突发新闻]。在[通知中心指南]中了解有关如何使用通知中心的更多信息。
 
 
 <!-- Images. -->
@@ -501,10 +525,10 @@
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Azure 管理门户]: https://manage.windowsazure.com/
+[Azure 管理门户]: https://manage.windowsazure.cn/
 [通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
 [使用通知中心将通知推送到用户]: notification-hubs-aspnet-backend-android-notify-users.md
 [使用通知中心发送突发新闻]: notification-hubs-aspnet-backend-android-breaking-news.md
  
 
-<!---HONumber=71-->
+<!---HONumber=76-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"
+	ms.date="09/07/2015"
 	wacn.date=""/>
 
 
@@ -65,4 +65,4 @@
 
 [Azure 高级编码器工作流设计器培训视频](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=71-->
+<!---HONumber=76-->

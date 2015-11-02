@@ -1,8 +1,20 @@
-<properties linkid="notification-hubs-how-to-guides-howto-register-user-with-aspnet-webapi-ios" urlDisplayName="Notify iOS app users by using Web API" pageTitle="通过使用 Web API 注册推送通知的当前用户 - 通知中心" metaKeywords="Azure registering application, Notification Hubs, Azure push notifications, push notification iOS app" description="了解在 ASP.NET Web API 执行注册时如何在 iOS 应用程序中请求向 Azure 通知中心注册推送通知。" metaCanonical="" services="notification-hubs" documentationCenter="" title="Register the current user for push notifications by using ASP.NET" authors="" solutions="" manager="" editor="" />
-<tags 
-	ms.service="notification-hubs" 
-	ms.date="06/02/2015" 
-	wacn.date=""/>
+<properties
+	pageTitle="通过使用 Web API 注册推送通知的当前用户 | Microsoft Azure"
+	description="了解在 ASP.NET Web API 执行注册时如何在 iOS 应用程序中请求向 Azure 通知中心注册推送通知。"
+	services="notification-hubs"
+	documentationCenter="ios"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""/>
+
+<tags
+	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="ios"
+	ms.devlang="objective-c"
+	ms.topic="article"
+	ms.date="06/16/2015"
+	ms.author="wesmc"/>
 # 通过使用 ASP.NET 注册推送通知的当前用户
 
 > [AZURE.SELECTOR]
@@ -225,4 +237,4 @@
 [Azure Management Portal]: https://manage.windowsazure.cn/
 [通知中心入门]: /manage/services/notification-hubs/get-started-notification-hubs-ios
 
-<!---HONumber=71-->
+<!---HONumber=76-->

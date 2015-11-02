@@ -19,7 +19,7 @@
 Azure Active Directory Connect 由三个主要部分组成，分别是同步服务、可选的 Active Directory 联合身份验证服务功能，以及使用 [Azure AD Connect Health](https://msdn.microsoft.com/library/azure/dn906722.aspx) 实现的监视功能。
 
 
-<center>![Azure AD Connect 堆栈](./media/active-directory-aadconnect-how-it-works/AADConnectStack2.png) 
+<center>![Azure AD Connect 堆栈](./media/active-directory-aadconnect-how-it-works/AADConnectStack2.png)
 </center>
 
 - 同步 - 此部分由以前包含以前作为 DirSync 和 AAD Sync 发布的组件和功能组成。此部分负责创建用户和组。它还负责确保本地环境中有关用户和组的信息与云匹配。
@@ -44,4 +44,4 @@ Azure Active Directory Connect 由三个主要部分组成，分别是同步服�
 
  
 
-<!---HONumber=74-->
+<!---HONumber=76-->

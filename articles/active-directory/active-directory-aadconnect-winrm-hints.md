@@ -4,12 +4,12 @@
 	services="active-directory" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="swadhwa" 
+	manager="stevenpo" 
 	editor="curtand"/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="05/28/2015" 
+	ms.date="08/24/2015" 
 	wacn.date=""/>
 
 # Azure AD Connect - Windows 远程托管提示
@@ -41,4 +41,4 @@
 * [Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom)
 * [MSDN 上的 Azure AD Connect](https://msdn.microsoft.com/zh-cn/library/azure/dn832695.aspx) 
 
-<!---HONumber=67-->
+<!---HONumber=76-->

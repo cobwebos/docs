@@ -8,7 +8,9 @@
 	editor=""/>
 
 <tags
-	ms.service="backup" ms.date="07/14/2015" wacn.date=""/>
+	ms.service="backup" 
+	ms.date="07/14/2015" 
+	wacn.date=""/>
 
 
 # 将 SharePoint 场备份到 Azure
@@ -42,7 +44,8 @@ DPM 以本地系统的形式运行，并备份 SQL Server 数据库，它需要�
 尽管性能取决于许多因素，例如 SharePoint 场的大小，但一般做法是使用一台 DPM 服务器来保护 25TB 的 SharePoint 场。
 
 ### DPM Update Rollup 5
-若要开始在 Azure 上保护 SharePoint 场，你需要安装 DPM Update Rollup 5 或更高版本。Update Rollup 5 提供在 Azure 上保护 SharePoint 场的功能（使用 SQL AlwaysOn 进行配置）。有关详细信息，请参阅[安装 DPM Update Rollup 5](http://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)
+若要开始在 Azure 上保护 SharePoint 场，你需要安装 DPM Update Rollup 5 或更高版本。Update Rollup 5 提供在 Azure 上保护 SharePoint 场的功能（使用 SQL AlwaysOn 进行配置）。
+有关详细信息，请参阅[安装 DPM Update Rollup 5](http://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)
 
 ### 不支持的功能
 1. 保护 SharePoint 场不会保护搜索索引或应用程序服务数据库。你需要单独为这些数据库配置保护。
@@ -54,11 +57,11 @@ DPM 以本地系统的形式运行，并备份 SQL Server 数据库，它需要�
 你可以在前端 Web 服务器的 [DPM 安装路径]\\bin 文件夹中找到 **ConfigureSharePoint.exe**。此工具可将 SharePoint 场的凭据提供给保护代理。应在单个 WFE 服务器上运行该工具。如果你有多个 WFE 服务器，在配置保护组时，请只选择其中一个。
 
 ### 配置 SharePoint VSS 写入器服务
-1. 在 WFE 服务器上的命令提示符下，切换到 [DPM 安装路径]\\bin\\
+1. 在 WFE 服务器上的命令提示符下，切换到 [DPM 安装路径]\bin\
 2. 运行 ConfigureSharePoint-EnableSharePointProtection
 3. 输入场管理员凭据。此帐户应是 WFE 服务器上本地管理员组的成员。如果场管理员不是本地管理员，请在 WFE 服务器上授予以下权限：
-  - 授予 WSS_Admin_WPG 组对 DPM 文件夹 (%Program Files%\\Microsoft Data Protection Manager\\DPM) 的完全控制权。
-  - 授予 WSS_Admin_WPG 组对 DPM 注册表项 (HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Microsoft Data Protection Manager) 的读取访问权限。
+  - 授予 WSS_Admin_WPG 组对 DPM 文件夹 (%Program Files%\Microsoft Data Protection Manager\DPM) 的完全控制权。
+  - 授予 WSS_Admin_WPG 组对 DPM 注册表项 (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager) 的读取访问权限。
 
 >[AZURE.NOTE]每当 SharePoint 场管理员凭据发生更改时，你需要重新运行 ConfigureSharePoint.exe。
 
@@ -67,7 +70,7 @@ DPM 以本地系统的形式运行，并备份 SQL Server 数据库，它需要�
 
 ### 保护 SharePoint 场
 1. 在 DPM 管理员控制台的“保护”选项卡中，单击“新建”。
-    ![“新建保护”选项卡](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
+	![“新建保护”选项卡](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
 
 2. 在“创建新保护组”向导的“选择保护组类型”屏幕上，选择“服务器”，然后单击“下一步”。
 
@@ -129,7 +132,7 @@ DPM 以本地系统的形式运行，并备份 SQL Server 数据库，它需要�
 
 ## 使用 DPM 从磁盘还原 SharePoint 项
 在以下示例中，“恢复 SharePoint 项”被意外删除，需要恢复。
-    ![DPM SharePoint 保护 4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
+![DPM SharePoint 保护 4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
 1. 打开“DPM 管理员控制台”。DPM 保护的所有 SharePoint 场都在“保护”选项卡中显示。
 
@@ -218,15 +221,18 @@ DPM 以本地系统的形式运行，并备份 SQL Server 数据库，它需要�
 5. 此时，请按照[上述恢复步骤](#restore-a-sharepoint-item-from-disk-using-dpm)，从磁盘恢复 Sharepoint 内容数据库。
 
 ## 常见问题
-问：哪些版本的 DPM 支持 SQL 2014 和 SQL 2012 (SP2)<br>答：包含 Update Rollup 4 的 DPM 2012 R2 提供此支持
+问：哪些版本的 DPM 支持 SQL 2014 和 SQL 2012 (SP2)<br>
+答：包含 Update Rollup 4 的 DPM 2012 R2 提供此支持
 
-问：如果使用 SQL AlwaysOn（使用磁盘上保护）配置了 SharePoint，我是否能将 SharePoint 项恢复到原始位置？<br> 答：可以，项可以恢复到原始 SharePoint 站点
+问：如果使用 SQL AlwaysOn（使用磁盘上保护）配置了 SharePoint，我是否能将 SharePoint 项恢复到原始位置？<br> 
+答：可以，项可以恢复到原始 SharePoint 站点
 
-问：如果使用 SQL AlwaysOn 配置了 SharePoint，我是否能将 SharePoint 数据库恢复到原始位置？<br> 答：由于 SharePoint 数据库是在 SQL AlwaysOn 中配置的，因此除非删除可用性组 (AG)，否则无法修改它们。因此，DPM 无法将数据库还原到原始位置。你可以将 SQL 数据库恢复到其他 SQL 实例。
+问：如果使用 SQL AlwaysOn 配置了 SharePoint，我是否能将 SharePoint 数据库恢复到原始位置？<br> 
+答：由于 SharePoint 数据库是在 SQL AlwaysOn 中配置的，因此除非删除可用性组 (AG)，否则无法修改它们。因此，DPM 无法将数据库还原到原始位置。你可以将 SQL 数据库恢复到其他 SQL 实例。
 
 ## 后续步骤
 
 - 查看 [System Center 2012 - Data Protection Manager 发行说明](https://technet.microsoft.com/zh-cn/library/jj860415.aspx)
 - 查看 [System Center 2012 SP1 中的 Data Protection Manager 发行说明](https://technet.microsoft.com/zh-cn/library/jj860394.aspx)
 
-<!---HONumber=66-->
+<!---HONumber=76-->

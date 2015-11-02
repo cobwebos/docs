@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/14/2015" 
+	ms.date="09/18/2015" 
 	wacn.date=""/>
 
 #使用 REST API 开始传送点播视频 (VoD) 
@@ -42,7 +42,7 @@
 
 ## <a id="create_ams"></a>使用门户创建媒体服务帐户
 
-1. 在“管理门户”[][]中，依次单击“新建”、“媒体服务”和“快速创建”。
+1. 在[管理门户][]中，依次单击“新建”、“媒体服务”和“快速创建”。
    
 	![Media Services 快速创建](./media/media-services-rest-get-started/wams-QuickCreate.png)
 
@@ -147,11 +147,11 @@
 
 ###连接到 Media Services URI
 
-媒体服务的根 URI 为 https://media.chinacloudapi.cn/。你最初应连接到此 URI，如果在响应中收到“301 重定向”，则应随后调用新 URI。此外，请勿在请求中使用任何自动重定向/跟踪逻辑。HTTP 谓词和请求正文将不会转发到新 URI。
+媒体服务的根 URI 为 https://media.chinacloudapi.cn/。 你最初应连接到此 URI，如果在响应中收到“301 重定向”，则应随后调用新 URI。此外，请勿在请求中使用任何自动重定向/跟踪逻辑。HTTP 谓词和请求正文将不会转发到新 URI。
 
-请注意，用于上载和下载资产文件的根 URI 为 https://yourstorageaccount.blob.core.chinacloudapi.cn/，其中的存储帐户名为你在媒体服务帐户设置期间使用的同一帐户名。
+请注意，用于上载和下载资产文件的根 URI 为 https://yourstorageaccount.blob.core.chinacloudapi.cn/ ，其中的存储帐户名为你在媒体服务帐户设置期间使用的同一帐户名。
 
-以下示例演示了对媒体服务根 URI 发出的 HTTP 请求 (https://media.chinacloudapi.cn/))。该请求将在响应中获取 301 重定向。后续请求使用新的 URI (https://wamsbayclus001rest-hs.chinacloudapp.cn/api/))。
+以下示例演示了对媒体服务根 URI 发出的 HTTP 请求 (https://media.chinacloudapi.cn/))。 该请求将在响应中获取 301 重定向。后续请求使用新的 URI (https://wamsbayclus001rest-hs.chinacloudapp.cn/api/))。
 
 **HTTP 请求**：
 	
@@ -183,7 +183,7 @@
 			
 	GET https://wamsbayclus001rest-hs.chinacloudapp.cn/api/ HTTP/1.1
 	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
-	x-ms-version: 2.8
+	x-ms-version: 2.11
 	Accept: application/json
 	Host: wamsbayclus001rest-hs.chinacloudapp.cn
 
@@ -1176,7 +1176,7 @@ MPEG DASH 的流 URL 采用以下格式：
 
 ## <a id="play"></a>播放内容  
 
-若要流式处理视频，请使用 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
+若要流式处理视频，请使用 [Azure 媒体服务播放器](http://amsplayer.chinacloudsites.cn/azuremediaplayer.html)。
 
 若要测试渐进式下载，请将 URL 粘贴到浏览器（例如 IE、Chrome、Safari）中。
 
@@ -1188,6 +1188,6 @@ MPEG DASH 的流 URL 采用以下格式：
 
 
 <!-- URLs. -->
-  [Management Portal]: http://manage.windowsazure.cn/
+  [管理门户]: http://manage.windowsazure.cn/
 
-<!---HONumber=71-->
+<!---HONumber=76-->

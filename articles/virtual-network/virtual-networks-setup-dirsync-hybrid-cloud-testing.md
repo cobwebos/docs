@@ -10,12 +10,12 @@
 
 <tags 
 	ms.service="virtual-network" 
-	ms.date="07/08/2015" 
+	ms.date="09/10/2015" 
 	wacn.date=""/>
 
 # 在混合云中设置 Office 365 目录同步 (DirSync) 以便进行测试
 
-本主题将指导你一步步创建混合云环境，以便测试在 Microsoft Azure 中托管的带密码同步的 Office 365 目录同步 (DirSync)。这是生成的配置。
+本主题将指导你逐步创建混合云环境，以便测试在 Microsoft Azure 中托管的带密码同步的 Office 365 目录同步 (DirSync)。这是生成的配置。
 
 ![](./media/virtual-networks-setup-dirsync-hybrid-cloud-testing/CreateDirSyncHybridCloud_3.png)
  
@@ -48,7 +48,7 @@
 
 ![](./media/virtual-networks-setup-dirsync-hybrid-cloud-testing/CreateDirSyncHybridCloud_1.png)
 
-> [AZURE.NOTE]就阶段 1 来说，你也可以设置模拟混合云测试环境。有关说明，请参阅[设置用于测试的模拟混合云环境](/documentation/articles/virtual-networks-setup-simulated-hybrid-cloud-environment-testing)。
+> [AZURE.NOTE] 就阶段 1 来说，你也可以设置模拟混合云测试环境。有关说明，请参阅[设置用于测试的模拟混合云环境](/documentation/articles/virtual-networks-setup-simulated-hybrid-cloud-environment-testing)。
 
 ## 阶段 2：配置 Office 365 FastTrack 试用版
 
@@ -63,7 +63,7 @@
 3.	单击“开始使用 FastTrack”。
 4.	在“开始使用 FastTrack”页的“首先，注册 Office 365 试用版”下，单击“企业在此注册”。
 5.	在“步骤 1”页上填写该页面的内容，在“企业电子邮件地址”中指定新的 Microsoft 帐户，然后单击“下一步”。
-6.	在“步骤 2”页的第一个字段中键入初始 Office 365 帐户的名称，然后键入虚构的公司名称和密码。在安全的位置记录生成的电子邮件地址（例如 user123@contoso123.onmicrosoft.com）和密码。你需要提供此信息才能完成阶段 3 中的 Active Directory 同步工具配置向导。单击**“下一步”**。
+6.	在“步骤 2”页的第一个字段中键入初始 Office 365 帐户的名称，然后键入虚构的公司名称和密码。在安全的位置记录生成的电子邮件地址（例如 user123@contoso123.partner.onmschina.cn）和密码。你需要提供此信息才能完成阶段 3 中的 Active Directory 同步工具配置向导。单击**“下一步”**。
 7.	在“步骤 3”页上，键入具有短信功能的移动电话或智能手机的电话号码，然后单击“给我发送短信”。
 8.	在你的手机收到短信后，键入验证代码，然后单击“创建我的帐户”。 
 9.	当 Office 365 成功创建你的帐户以后，单击“你已准备就绪”。
@@ -193,4 +193,4 @@
 
  
 
-<!---HONumber=70-->
+<!---HONumber=76-->

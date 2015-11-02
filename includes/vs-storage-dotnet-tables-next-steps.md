@@ -4,8 +4,8 @@
 - 通过查看[在 Azure 中存储和访问数据](https://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx)了解可以通过 Azure 存储空间执行的更高级任务。    
 - 了解如何使用 [Azure WebJobs SDK](../app-service/websites-dotnet-webjobs-sdk.md) 简化你编写的用于 Azure 存储空间的代码
 - 查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
-  - 使用[ Blob 存储](./storage-dotnet-how-to-use-blobs.md)来存储结构化数据。
+  - 使用 [Blob 存储](./storage-dotnet-how-to-use-blobs.md)来存储结构化数据。
   - 使用[表存储](./storage-dotnet-how-to-use-tables.md)来存储结构化数据。
   - 使用 [SQL 数据库](../sql-database/sql-database-dotnet-how-to-use.md)来存储关系数据。
 
-<!---HONumber=74-->
+<!---HONumber=76-->

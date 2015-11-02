@@ -8,7 +8,7 @@
    editor="tysonn"/>
 <tags 
    ms.service="virtual-network"
-   ms.date="06/08/2015"
+   ms.date="09/02/2015"
    wacn.date=""/>
 
 # 如何管理虚拟网络 (VNet) 属性
@@ -96,4 +96,4 @@
 
 [如何删除虚拟网络 (VNet)](virtual-networks-delete-vnet)
 
-<!---HONumber=64-->
+<!---HONumber=76-->

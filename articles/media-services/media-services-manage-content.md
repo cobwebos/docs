@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"
+	ms.date="09/07/2015"
 	wacn.date=""/>
 
 
@@ -58,7 +58,7 @@
 - [.NET](/documentation/articles/media-services-index-content)
 - [Portal](/documentation/articles/media-services-manage-content#index)
 
-使用 Azure Media Indexer，可以使媒体文件内容可供搜索，并为隐藏的字幕和关键字生成全文本脚本。你可以根据下面所示的步骤，使用管理门户为内容编制索引。但是，如果你想要以更大的力度控制文件和索引作业的完成方式，可以使用 Media Services SDK for .NET 或 REST API。有关详细信息，请参阅[使用 Azure Media Indexer 为媒体文件编制索引](media-services-index-content.md)。
+使用 Azure Media Indexer，可以使媒体文件内容可供搜索，并为隐藏的字幕和关键字生成全文本脚本。你可以根据下面所示的步骤，使用管理门户为内容编制索引。但是，如果你想要以更大的力度控制文件和索引作业的完成方式，可以使用 Media Services SDK for .NET 或 REST API。有关详细信息，请参阅[使用 Azure 媒体索引器为媒体文件编制索引](/documentation/articles/media-services-index-content)。
 
 下面的步骤演示如何使用管理门户为内容编制索引。
 
@@ -138,6 +138,11 @@ Media Services 所提供的动态打包可让你以 Media Services 支持的流�
 
 	你启用加密后，每当播放器请求流时，媒体服务将使用指定的密钥通过 AES 或 PlayReady 加密来动态加密你的内容。为了解密流，播放器将从密钥传送服务请求密钥。为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
+另请参阅：
+
+- [使用 PlayReady DRM 进行保护](media-services-rest-deliver-streaming-content)
+- [使用 AES-128 密钥进行保护](media-services-protect-with-aes128)
+
 ##<a id="publish"></a>如何：发布内容
 
 > [AZURE.SELECTOR]
@@ -192,7 +197,7 @@ SAS URL 采用以下格式：
 请注意以下事项：
 
 - 确保视频已发布。
-- **媒体服务内容播放器**从默认的流式处理终结点播放。如果要从非默认流式处理终结点播放，请使用其他播放器。例如 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
+- **媒体服务内容播放器**从默认的流式处理终结点播放。如果要从非默认流式处理终结点播放，请使用其他播放器。例如 [Azure 媒体服务播放器](http://amsplayer.chinacloudsites.cn/azuremediaplayer.html)。
  
 
 ![AMSPlayer][AMSPlayer]
@@ -210,4 +215,4 @@ SAS URL 采用以下格式：
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-manage-content/media-services-portal-player.png
 
-<!---HONumber=71-->
+<!---HONumber=76-->

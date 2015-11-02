@@ -69,4 +69,4 @@ Azure AD Connect Health 性能监视提供有关度量值的监视信息。选�
 * [Azure AD Connect Health 操作](active-directory-aadconnect-health-operations)
 * [Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq)
 
-<!---HONumber=74-->
+<!---HONumber=76-->

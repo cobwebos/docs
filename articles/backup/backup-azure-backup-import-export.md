@@ -1,12 +1,15 @@
 <properties
-   pageTitle="Azure 备份 - 使用 Azure 导入/导出服务进行脱机备份或初始种子设定 | Windows Azure"
+   pageTitle="Azure 备份 - 使用 Azure 导入/导出服务进行脱机备份或初始种子设定 | Microsoft Azure"
    description="了解 Azure 备份如何让你使用 Azure 导入/导出服务离线发送数据。本文介绍如何使用 Azure 导入导出服务来脱机设定初始备份数据的种子。"
    services="backup"
    documentationCenter=""
    authors="aashishr"
    manager="shreeshd"
    editor=""/>
-<tags  ms.service="backup" ms.devlang="na" ms.topic="article" ms.tgt_pltfrm="na" ms.workload="storage-backup-recovery" ms.date="07/14/2015" ms.author="aashishr"; "jimpark"/>
+<tags
+   ms.service="backup"
+   ms.date="08/28/2015"
+   wacn.date=""/>
 
 # Azure 备份中的脱机备份工作流
 
@@ -18,9 +21,9 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 
 ## 先决条件
 
-1. 你必须熟悉[此处](/documentation/articles/storage-import-export-service)列出的 Azure 导入导出工作流。
+1. 您必须熟悉[此处](/documentation/articles/storage-import-export-service)列出的 Azure 导入导出工作流。
 2. 在启动工作流之前，请确保已创建 Azure 备份保管库，已下载保管库凭据，已在 Windows Server/Windows 客户端或 System Center Data Protection Manager (SCDPM) 服务器以及已注册到 Azure 备份保管库的计算机上安装 Azure 备份代理。
-3. 下载中的 Azure 发布文件设置[此处](https://manage.windowsazure.cn/publishsettings)你计划用于备份我们的数据的计算机上。
+3. 下载中的 Azure 发布文件设置[此处](https://manage.windowsazure.cn/publishsettings)您计划用于备份我们的数据的计算机上。
 4. 准备“暂存位置”，这可能是网络共享或计算机上的其他驱动器。确保临时位置具有足够的磁盘空间来保存你的初始副本。例如，如果您尝试备份 500GB 文件服务器，请确保暂存区域至少为 500GB（尽管将使用较少的量）。暂存区域是“短时存储”并在此工作流期间暂时使用。
 5. 外部 SATA 驱动器编写器和外部 3.5 英寸 SATA 驱动器。只支持对 3.5 英寸 SATA II/III 硬盘驱动器使用导入/导出服务。不支持大于 4TB 的硬盘驱动器。你可以使用 SATA II/III USB 适配器在外部将 SATA II/III 磁盘连接到大多数计算机。检查的最新的一套驱动器支持的服务的 Azure 导入/导出文档。
 6. SATA 驱动器编写器连接到计算机上启用 BitLocker。
@@ -35,13 +38,14 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 
     ![ImportScreen](./media/backup-azure-backup-import-export/importscreen.png)
 
-    SCDPM 中的对应屏幕如下所示。<br/>![DPM 导入屏幕](./media/backup-azure-backup-import-export/dpmoffline.png)
+    SCDPM 中的对应屏幕如下所示。<br/>
+    ![DPM 导入屏幕](./media/backup-azure-backup-import-export/dpmoffline.png)
 
     其中：
 
     - **暂存位置** - 表示写入初始备份副本的临时存储位置。这可能是网络共享上或在本地计算机上。
     - **Azure 导入作业名称** - 作为完成此工作流的一部分，你将需要在 Azure 门户中创建“导入作业”（在该文档的稍后部分中介绍）。提供了你计划更高版本在 Azure 门户中使用的输入。
-    - **Azure 发布设置** - 一个 XML 文件，其中包含有关你订阅的个人资料的信息。它还包含到你的订阅关联的安全凭据。可以从[此处](https://manage.windowsazure.com/publishsettings)下载该文件。提供发布设置文件的本地路径。
+    - **Azure 发布设置** - 一个 XML 文件，其中包含有关您订阅的个人资料的信息。它还包含到你的订阅关联的安全凭据。可以从[此处](https://manage.windowsazure.com/publishsettings)下载该文件。提供发布设置文件的本地路径。
     - **Azure 订阅 ID** - 提供计划用来启动 Azure 导入作业的 Azure 订阅 ID。如果你有多个 Azure 订阅，使用与导入作业关联的 ID。
     - **Azure 存储帐户** - 输入将与此导入作业相关联的 Azure 存储帐户的名称。
     - **Azure 存储容器** - 输入将导入此作业的数据的目标存储 Blob 的名称。
@@ -60,11 +64,11 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 
 ### 准备 SATA 驱动器
 
-1. 将 [Windows Azure 导入/导出工具](http://go.microsoft.com/fwlink/?linkid=301900&clcid=0x409)下载到“复制计算机”。确保可从你打算运行下一个命令集的计算机访问的临时位置（在上一步）。如果需要，请在复制计算机可以与源计算机相同。
+1. 将 [Microsoft Azure 导入/导出工具](http://go.microsoft.com/fwlink/?linkid=301900&clcid=0x409)下载到“复制计算机”。确保可从你打算运行下一个命令集的计算机访问的临时位置（在上一步）。如果需要，请在复制计算机可以与源计算机相同。
 
 2. 解压缩 *WAImportExport.zip* 文件。运行 *WAImportExport* 工具，它将格式化 SATA 驱动器，将备份数据写入到 SATA 驱动器并对其进行加密。在运行以下命令之前请确保在计算机上启用了 BitLocker。<br/>
 
-    *.\\WAImportExport.exe PrepImport /j:<*JournalFile*>.jrn /id: <*SessionId*> /sk:<*StorageAccountKey*> /BlobType:**PageBlob** /t:<*TargetDriveLetter*> /format /encrypt /srcdir:<*staging location*> /dstdir: <*DestinationBlobVirtualDirectory*>/*
+    *.\WAImportExport.exe PrepImport /j:<*JournalFile*>.jrn /id: <*SessionId*> /sk:<*StorageAccountKey*> /BlobType:**PageBlob** /t:<*TargetDriveLetter*> /format /encrypt /srcdir:<*staging location*> /dstdir: <*DestinationBlobVirtualDirectory*>/*
 
 
 | 参数 | 说明
@@ -77,7 +81,7 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 |/format | 在需要格式化驱动器时指定此参数；否则，请将其忽略。在对驱动器进行格式化之前，该工具将提示你通过控制台进行确认。若不希望显示该确认，请指定 /silentmode 参数。|
 |/encrypt | 在尚未使用 BitLocker 对驱动器进行加密但需要使用此工具进行加密时，指定此参数。如果已使用 BitLocker 对驱动器进行加密，则忽略此参数并指定 /bk 参数，同时还提供现有 BitLocker 密钥。如果指定 /format 参数，则还必须指定 /encrypt 参数。 |
 |/srcdir:<*SourceDirectory*> | 包含要复制到目标驱动器中的文件的源目录。目录路径必须是绝对路径（而非相对路径）。|
-|/dstdir:<*DestinationBlobVirtualDirectory*> | Windows Azure 存储帐户中的目标虚拟目录的路径。在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。请记住，容器名称必须是小写的。|
+|/dstdir:<*DestinationBlobVirtualDirectory*> | Microsoft Azure 存储帐户中的目标虚拟目录的路径。在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。请记住，容器名称必须是小写的。|
 
   >[AZURE.NOTE]捕获整个工作流的信息的 WAImportExport 文件夹中创建日志文件。在 Azure 门户中创建导入作业时，将需要此文件。
 
@@ -108,4 +112,4 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 - 如有 Azure 导入/导出工作流方面的任何问题，请参阅此[文章](/documentation/articles/storage-import-export-service)。
 - 如有工作流方面的任何问题，请参阅 Azure 备份[常见问题](/documentation/articles/backup-azure-backup-faq)的“脱机备份”部分
 
-<!---HONumber=69-->
+<!---HONumber=76-->

@@ -10,18 +10,19 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="08/11/2015"
+	ms.date="09/07/2015"
 	wacn.date=""/>
 
 
 #<a id="managemediaservicesorigins"></a>如何在媒体服务帐户中管理流式处理终结点
 
-本文是[媒体服务点播视频工作流](/documentation/articles/media-services-video-on-demand-workflow)和[媒体服务实时传送视频流工作流](/documentation/articles/media-services-live-streaming-workflow)系列的一部分。
-
+> [AZURE.SELECTOR]
+- [门户](media-services-manage-origins)
+- [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 
 在 Microsoft Azure 媒体服务中，**流式处理终结点**表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容传送网络 (CDN) 以进一步分发。媒体服务还提供无缝 Azure CDN 集成。StreamingEndpoint 服务的出站流可以是实时流，也可以是 Media Services 帐户中的视频点播资产。
 
-此外，还可以通过调整扩展单元（也称为流单元）来控制流式处理终结点服务处理不断增长的带宽需求的能力。建议为生产环境中的应用程序分配一个或多个扩展单元。缩放单位为你提供了可按照 200 Mbps 的增量购买的专用出口容量和包括[动态包装](https://msdn.microsoft.com/library/azure/jj889436.aspx)、CDN 集成和高级配置在内的其他功能。
+此外，还可以通过调整扩展单元（也称为流单元）来控制流式处理终结点服务处理不断增长的带宽需求的能力。建议为生产环境中的应用程序分配一个或多个扩展单元。缩放单位为你提供了可按照 200 Mbps 的增量购买的专用出口容量和包括[动态打包](media-services-dynamic-packaging-overview)、CDN 集成和高级配置在内的其他功能。
 
 请注意，仅当 StreamingEndpoint 处于运行状态时才进行计费。
 
@@ -43,11 +44,11 @@
 	![“流式处理终结点”页][streaming-endpoint]
 
 
-默认情况下可以具有最多两个流式处理终结点。如果需要请求详细信息，请参阅[配额和限制](/documentation/articles/media-services-quotas-and-limitations)。
+默认情况下可以具有最多两个流式处理终结点。如果需要请求更多，请参阅[配额和限制](/documentation/articles/media-services-quotas-and-limitations)。
 
 ##<a id="scale_streaming_endpoints"></a>缩放流式处理终结点
 
-流式处理单元为你提供了可按照 200 Mbps 的增量购买的专用出口容量和其他功能（当前包括[动态包装功能](http://go.microsoft.com/fwlink/?LinkId=276874)）。默认情况下，流式处理在共享实例模型中配置，该模型的服务器资源（例如计算机、出口容量等）与所有其他用户共享。若要增加流式处理吞吐量，建议购买流式处理单元。
+流式处理单元为你提供了可按照 200 Mbps 的增量购买的专用出口容量和其他功能（当前包括[动态打包功能](media-services-dynamic-packaging-overview)）。默认情况下，流式处理在共享实例模型中配置，该模型的服务器资源（例如计算机、出口容量等）与所有其他用户共享。若要增加流式处理吞吐量，建议购买流式处理单元。
 
 可以使用 .NET SDK、REST API 或 Azure 管理门户进行缩放。
 
@@ -123,7 +124,7 @@
 ###其他注意事项
 
 - 为流式处理终结点启用 CDN 时，客户端不能从原点直接请求内容。如果需要能够分别使用或不使用 CDN 测试内容，则可以创建另一个不启用 CDN 的流式处理终结点。
-- 流式处理终结点主机名在启用 CDN 后仍保持不变。启用 CDN 后，不需要对媒体服务工作流进行任何更改。例如，如果流式处理终结点主机名是 strasbourg.streaming.mediaservices.windows.net，则启用 CDN 后使用完全相同的主机名。
+- 流式处理终结点主机名在启用 CDN 后仍保持不变。启用 CDN 后，不需要对媒体服务工作流进行任何更改。例如，如果流式处理终结点主机名是 strasbourg.streaming.mediaservices.chinacloudapi.cn，则启用 CDN 后使用完全相同的主机名。
 - 对于新的流式处理终结点，只需通过创建新的终结点即可启用 CDN；对于现有流式处理终结点，则需要首先停止该终结点，然后再启用 CDN。
  
 
@@ -135,4 +136,4 @@
 [configure-origin]: ./media/media-services-manage-origins/media-services-origins-configure.png
 [configure-origin-configure-custom-host-names]: ./media/media-services-manage-origins/media-services-configure-custom-host-names.png
 
-<!---HONumber=71-->
+<!---HONumber=76-->

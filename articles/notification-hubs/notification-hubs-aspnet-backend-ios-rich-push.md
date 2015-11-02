@@ -1,18 +1,29 @@
-<properties title="Azure Notification Hubs Rich Push" pageTitle="Azure 通知中心富推送" metaKeywords="Azure push notifications, Azure notification hubs, rich push" description="了解如何从 Azure 将富推送通知发送到 iOS 应用。代码示例是使用 .Objective-C 和 C# 编写的。" documentationCenter="Mobile" metaCanonical="" services="notification-hubs" authors="yuaxu" manager="timlt" />
+<properties
+	pageTitle="Azure 通知中心富推送"
+	description="了解如何从 Azure 将富推送通知发送到 iOS 应用。代码示例是使用 .Objective-C 和 C# 编写的。"
+	documentationCenter="ios"
+	services="notification-hubs"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""/>
 
-<tags ms.service="notification-hubs"  ms.date="10/10/2014" wacn.date="" />
+<tags
+	ms.service="notification-hubs"
+	ms.date="06/16/2015"
+	wacn.date=""/>
 
-# Azure 通知中心富推送
+#Azure 通知中心富推送
 
 <div class="dev-center-tutorial-selector sublanding">
         <a href="/documentation/articles/notification-hubs-aspnet-backend-ios-rich-push" title="iOS" class="current">iOS</a>
 </div>
 
-## 概述
+##概述
 
 为了吸引用户使用即时丰富内容，除纯文本之外，应用程序可能还需要以其他形式进行推送。这些通知将提升用户交互并显示 URL、声音、图像/优惠券等内容。本教程以[通知用户](/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users)主题为基础，演示如何发送包含有效负载（例如图像）的推送通知。
 
-本教程适用于 iOS 7 和 8。![][IOS1]
+本教程适用于 iOS 7 和 8。
+  ![][IOS1]
 
 在高级别中：
 
@@ -367,4 +378,4 @@
 [IOS3]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-3.png
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
 
-<!---HONumber=67-->
+<!---HONumber=76-->
