@@ -4,7 +4,7 @@
 	services="active-directory" 
 	documentationCenter="" 
 	authors="curtand" 
-	manager="terrylan" 
+	manager="stevenpo"
 	editor=""/>
 
 <tags 
@@ -38,4 +38,4 @@
 * [以组织身份注册 Azure](/documentation/articles/sign-up-organization)
 * [Azure 标识](/documentation/articles/fundamentals-identity)
 
-<!---HONumber=74-->
+<!---HONumber=79-->

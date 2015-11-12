@@ -17,8 +17,7 @@
 
 本文概述了如何在 Windows VM 上通过 Azure Powershell cmdlet 来使用自定义脚本扩展。
 
-虚拟机 (VM) 扩展由 Microsoft 和受信任的第三方发布者构建，用于扩展 VM 的功能。有关 VM 扩展的概述，请参阅
-[Azure VM 扩展和功能](/documentation/articles/virtual-machines-extensions-features)。
+虚拟机 (VM) 扩展由 Microsoft 和受信任的第三方发布者构建，用于扩展 VM 的功能。有关 VM 扩展的概述，请参阅 [Azure VM 扩展和功能](/documentation/articles/virtual-machines-extensions-features)。
 
 [AZURE.INCLUDE [了解部署模型](../../includes/learn-about-deployment-models-include.md)]本文介绍如何使用经典部署模型创建资源。你还可以使用[资源管理器部署模型](virtual-machines-extensions-customscript%20-with%20template.md)创建资源。
 
@@ -88,4 +87,4 @@
 <!--Image references-->
 [5]: ./media/virtual-machines-extensions-customscript/addcse.png
 
-<!---HONumber=76-->
+<!---HONumber=79-->

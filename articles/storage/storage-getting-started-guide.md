@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="五分钟内开始使用 Azure 存储空间 | Windows Azure" 
-	description="使用 Azure 快速入门、Visual Studio 和 Azure 存储模拟器快速掌握 Windows Azure Blob、表和队列。在五分钟内运行你的第一个 Azure 存储空间应用程序。" 
+	pageTitle="五分钟内开始使用 Azure 存储空间 | Microsoft Azure" 
+	description="使用 Azure 快速入门、Visual Studio 和 Azure 存储模拟器快速掌握 Microsoft Azure Blob、表和队列。在五分钟内运行你的第一个 Azure 存储空间应用程序。" 
 	services="storage" 
 	documentationCenter=".net" 
 	authors="tamram" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="05/28/2015" 
+	ms.date="09/28/2015" 
 	ms.author="tamram;selcint"/>
 
 # 五分钟内开始使用 Azure 存储空间 
@@ -92,7 +92,7 @@
 
 若要了解有关 Azure 存储空间的详细信息，请参阅以下资源：
 
-* [Windows Azure 存储空间简介](/documentation/articles/storage-introduction)
+* [Microsoft Azure 存储空间简介](/documentation/articles/storage-introduction)
 * [如何通过 .NET 使用 Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs)
 * [如何通过 .NET 使用表存储](/documentation/articles/storage-dotnet-how-to-use-tables)
 * [如何通过 .NET 使用队列存储](/documentation/articles/storage-dotnet-how-to-use-queues)
@@ -103,4 +103,4 @@
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
  
 
-<!---HONumber=70-->
+<!---HONumber=79-->

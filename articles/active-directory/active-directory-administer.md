@@ -87,8 +87,7 @@ Azure 管理门户、Office 365 管理中心、Microsoft Intune 帐户门户和 
 
 这些用于管理用户和组的帐户门户及关联的 Azure AD PowerShell cmdlet 均构建在 Azure AD 平台之上。
 
-如果你在上述服务之一的上下文中登录时使用任何门户（或 cmdlet）更改了组织数据，则当你下次在该服务的上下文中登录时，此更改也会显示在其他门户中，因为此数据在你订阅的 Microsoft 云服务之间共享。
-例如，如果使用 Office 365 管理中心阻止某个用户登录，则该操作会阻止该用户登录到你的组织当前订阅的任何其他服务。如果在 Microsoft Intune 帐户门户的上下文中请求相同的用户帐户，则会看到该用户被阻止。
+如果你在上述服务之一的上下文中登录时使用任何门户（或 cmdlet）更改了组织数据，则当你下次在该服务的上下文中登录时，此更改也会显示在其他门户中，因为此数据在你订阅的 Microsoft 云服务之间共享。例如，如果使用 Office 365 管理中心阻止某个用户登录，则该操作会阻止该用户登录到你的组织当前订阅的任何其他服务。如果在 Microsoft Intune 帐户门户的上下文中请求相同的用户帐户，则会看到该用户被阻止。
 
 ## 如何添加和管理多个目录？
 
@@ -145,4 +144,4 @@ Azure AD 要求删除目录之前必须符合特定的条件。这可以降低�
 [1]: ./media/active-directory-administer/aad_portals.png
 [2]: ./media/active-directory-administer/azure_tenants.png
 
-<!---HONumber=76-->
+<!---HONumber=79-->

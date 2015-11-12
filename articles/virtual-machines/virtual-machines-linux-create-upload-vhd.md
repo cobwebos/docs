@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 Azure 中创建和上载 Linux VHD"
+	pageTitle="在 Azure 中创建和上载 Linux VHD | Microsoft Azure"
 	description="了解如何创建和上载包含 Linux 操作系统的 Azure 虚拟硬盘 (VHD)。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -19,6 +19,8 @@
 
 [AZURE.INCLUDE [trial-note](../includes/free-trial-note.md)]
 
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍如何使用服务管理器上载 VHD。
+
 Azure 中的虚拟机所运行的操作系统基于你在创建虚拟机时选择的映像。你的映像以 VHD 格式和 .vhd 文件的形式存储在存储帐户中。有关详细信息，请参阅[关于 Azure 中的磁盘和映像](https://msdn.microsoft.com/library/azure/jj672979.aspx)。
 
 当你创建虚拟机时，你可以自定义部分操作系统设置，使之适合于要运行的应用程序。有关说明，请参阅[如何创建自定义虚拟机](/documentation/articles/virtual-machines-create-custom)。
@@ -27,7 +29,7 @@ Azure 中的虚拟机所运行的操作系统基于你在创建虚拟机时选�
 
 
 ##先决条件##
-本文假定您拥有以下项目：
+本文假定你拥有以下项目：
 
 - **管理证书** - 你已为要为其上载 VHD 的订阅创建一个管理证书，并且已将该证书导出到 .cer 文件。有关创建证书的详细信息，请参阅[为 Azure 创建和上载管理证书](https://msdn.microsoft.com/zh-cn/library/azure/gg551722.aspx)（可能为英文页面）。
 
@@ -43,7 +45,7 @@ Azure 中的虚拟机所运行的操作系统基于你在创建虚拟机时选�
 
 ## <a id="prepimage"> </a>步骤 1：准备要上载的映像 ##
 
-Windows Azure 支持多种 Linux 分发（请参阅[认可的分发](/documentation/articles/linux-endorsed-distributions)）。以下文章将指导你完成如何准备 Azure 上支持的各种 Linux 分发：
+Microsoft Azure 支持多种 Linux 分发（请参阅[认可的分发](/documentation/articles/linux-endorsed-distributions)）。以下文章将指导你完成如何准备 Azure 上支持的各种 Linux 分发：
 
 - **[基于 CentOS 的分发](/documentation/articles/virtual-machines-linux-create-upload-vhd-centos)**
 - **[Oracle Linux](/documentation/articles/virtual-machines-linux-create-upload-vhd-oracle)**
@@ -58,7 +60,7 @@ Windows Azure 支持多种 Linux 分发（请参阅[认可的分发](/documentat
 
 ## <a id="connect"> </a>步骤 2：准备连接到 Azure ##
 
-您首先需要在计算机和 Azure 中的订阅之间建立一个安全连接，然后才能上载 .vhd 文件。
+你首先需要在计算机和 Azure 中的订阅之间建立一个安全连接，然后才能上载 .vhd 文件。
 
 
 ### 如果使用 Azure CLI
@@ -140,9 +142,9 @@ Windows Azure 支持多种 Linux 分发（请参阅[认可的分发](/documentat
 
 你需要一个存储帐户，以便向其上载你的 VHD 文件。你可以选择现有的存储帐户，也可以创建一个新的。若要创建存储帐户，请参阅[创建存储帐户](/documentation/articles/storage-create-storage-account)
 
-在上载 .vhd 文件时，您可以将 .vhd 文件放置在 Blob 存储中的任何位置。在以下命令示例中，**BlobStorageURL** 是你计划使用的存储帐户的 URL，**YourImagesFolder** 是要在其中存储映像的 Blob 存储中的容器。**VHDName** 是显示在[管理门户](http://manage.windowsazure.cn)中用于标识虚拟硬盘的标签。**PathToVHDFile** 是 .vhd 文件的完整路径和名称。
+在上载 .vhd 文件时，你可以将 .vhd 文件放置在 Blob 存储中的任何位置。在以下命令示例中，**BlobStorageURL** 是你计划使用的存储帐户的 URL，**YourImagesFolder** 是要在其中存储映像的 Blob 存储中的容器。**VHDName** 是显示在[管理门户](http://manage.windowsazure.cn)中用于标识虚拟硬盘的标签。**PathToVHDFile** 是 .vhd 文件的完整路径和名称。
 
-从您在上一步中使用的 Azure PowerShell 窗口中，键入：
+从你在上一步中使用的 Azure PowerShell 窗口中，键入：
 
 		Add-AzureVhd -Destination <BlobStorageURL>/<YourImagesFolder>/<VHDName> -LocalFilePath <PathToVHDFile>
 
@@ -155,4 +157,4 @@ Windows Azure 支持多种 Linux 分发（请参阅[认可的分发](/documentat
 [Step 2: Prepare the connection to Azure]: #connect
 [Step 3: Upload the image to Azure]: #upload
 
-<!---HONumber=70-->
+<!---HONumber=79-->

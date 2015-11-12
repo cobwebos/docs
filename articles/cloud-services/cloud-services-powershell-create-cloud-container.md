@@ -4,12 +4,12 @@
    services="cloud-services"
    documentationCenter=".net"
    authors="cawaMS"
-   manager="bscholl" 
+   manager="paulyuk" 
    editor=""/>
 
 <tags
    ms.service="cloud-services"
-   ms.date="06/19/2015"
+   ms.date="10/14/2015"
    wacn.date=""/>
 
 # 如何使用 Azure PowerShell 命令创建一个空的云服务容器
@@ -17,19 +17,20 @@
 
 2. **New-AzureService** 是用于创建空云服务容器的 cmdlet。
 
-        New-AzureService [-ServiceName] <String> [-AffinityGroup] <String> [[-Label] <String>] [[-Description] <String>] [[-ReverseDnsFqdn] <String>] [<CommonParameters>]
-    	New-AzureService [-ServiceName] <String> [-Location] <String> [[-Label] <String>] [[-Description] <String>] [[-ReverseDnsFqdn] <String>] [<CommonParameters>]
-
+    ```
+    New-AzureService [-ServiceName] <String> [-AffinityGroup] <String> [[-Label] <String>] [[-Description] <String>] [[-ReverseDnsFqdn] <String>] [<CommonParameters>]
+    New-AzureService [-ServiceName] <String> [-Location] <String> [[-Label] <String>] [[-Description] <String>] [[-ReverseDnsFqdn] <String>] [<CommonParameters>]
+```
 
    调用该 cmdlet 的示例：
-
-		New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
-
+```
+New-AzureService -ServiceName "mytestcloudservice" -Location "North Central US" -Label "mytestcloudservice"
+```
 
 3. 有关创建 Azure 云服务的详细信息，请运行：
-
-		Get-help New-AzureService
-
+```
+Get-help New-AzureService
+```
 
 4. 后续步骤：
 
@@ -38,4 +39,4 @@
     - 若要将云服务项目发布到 Azure，请参阅[在 Azure 中持续交付云服务](cloud-services-dotnet-continuous-delivery.md)中的 **PublishCloudService.ps1** 代码示例
  
 
-<!---HONumber=71-->
+<!---HONumber=79-->

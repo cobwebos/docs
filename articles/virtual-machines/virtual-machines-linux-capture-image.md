@@ -1,6 +1,6 @@
 <properties
-	pageTitle="捕获运行 Linux 的虚拟机的映像"
-	description="了解如何捕获运行 Linux 的 Azure 虚拟机 (VM) 的映像。"
+	pageTitle="捕获运行 Linux 的虚拟机的映像 | Microsoft Azure"
+	description="了解如何使用经典部署模型和 Azure CLI 捕获运行 Linux 的 Azure 虚拟机 (VM) 的映像。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -31,7 +31,7 @@ Azure 将此模板视为一个映像并将其存储在“映像”下。这也�
 
 1. 使用所选 SSH 客户端连接到虚拟机。有关详细信息，请参阅[如何登录到运行 Linux 的虚拟机][]。
 
-2. 在 SSH 窗口中，键入下面的命令，然后输入在虚拟机上创建的帐户的密码：请注意，`waagent` 的输出结果可能会因此实用程序的版本而略有差异：
+2. 在 SSH 窗口中，键入以下命令。请注意，`waagent` 的输出结果可能会因此实用程序的版本而略有差异：
 
 	`sudo waagent -deprovision`
 
@@ -86,7 +86,7 @@ Azure 将此模板视为一个映像并将其存储在“映像”下。这也�
 
 **另请参阅：**[Azure Linux 代理用户指南](/documentation/articles/virtual-machines-linux-agent-user-guide)
 
-[]: http://manage.windowsazure.cn
+
 [管理门户]: http://manage.windowsazure.cn
 [如何登录到运行 Linux 的虚拟机]: /documentation/articles/virtual-machines-linux-how-to-log-on
 [关于 Azure 中的虚拟机映像]: http://msdn.microsoft.com/zh-cn/library/azure/dn790290.aspx
@@ -94,4 +94,4 @@ Azure 将此模板视为一个映像并将其存储在“映像”下。这也�
 [How to Attach a Data Disk to a Virtual Machine]: /documentation/articles/storage-windows-attach-disk
 [如何创建运行 Linux 的虚拟机]: /documentation/articles/virtual-machines-linux-tutorial
 
-<!---HONumber=70-->
+<!---HONumber=79-->

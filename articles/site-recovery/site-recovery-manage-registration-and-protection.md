@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="site-recovery" 
-	ms.date="07/08/2015" 
+	ms.date="10/07/2015" 
 	wacn.date=""/>
 
 # 管理注册和保护
@@ -224,4 +224,4 @@
 
  
 
-<!---HONumber=71-->
+<!---HONumber=79-->

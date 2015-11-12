@@ -3,13 +3,13 @@
 	description="本主题介绍如何使用 .NET 通过媒体编码器标准版对资产进行编码。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/20/2015"    
+<tags
+	ms.service="media-services"
+	ms.date="10/15/2015"
 	wacn.date=""/>
 
 
@@ -17,11 +17,11 @@
 
 编码作业是 Media Services 中最常见的处理操作之一。可通过创建编码作业将媒体文件从一种编码转换为另一种编码。进行编码时，可以使用 Media Services 内置的 Media Encoder。你也可以使用 Media Services 合作伙伴提供的编码器；可通过 Azure 应用商店获取第三方编码器。
 
-本主题介绍如何使用 .NET 通过媒体编码器标准版对资产进行编码。媒体编码器标准版使用[此处](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的编码器预设之一进行配置。
+本主题介绍如何使用 .NET 通过媒体编码器标准版对资产进行编码。媒体编码器标准版使用[此处](https://msdn.microsoft.com/zh-cn/library/azure/mt269960.aspx)所述的编码器预设之一进行配置。
 
 建议始终将夹层文件编码为自适应比特率 MP4 集，然后使用[动态打包](/documentation/articles/media-services-dynamic-packaging-overview)将该集转换为所需的格式。若要利用动态打包，首先必须获取你计划从中传送内容的流式处理终结点的至少一个点播流单元。有关详细信息，请参阅[如何缩放媒体服务](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
 
-如果你的输出资产已经过存储加密，则必须配置资产传送策略。有关详细信息，请参阅[配置资产传送策略](media-services-dotnet-configure-asset-delivery-policy)。
+如果你的输出资产已经过存储加密，则必须配置资产传送策略。有关详细信息，请参阅[配置资产传送策略](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy)。
 
 ##示例
 
@@ -29,14 +29,14 @@
 
 - 创建编码作业。
 - 获取对媒体编码器标准版编码器的引用。
-- 从[此处](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所示的预设之一加载预设 XML。
+- 指定使用“H264 多比特率 720p”预设。你可以在[此处](https://msdn.microsoft.com/zh-cn/library/azure/mt269960.aspx)看到所有预设。你也可以在[此处](https://msdn.microsoft.com/zh-cn/library/mt269962.aspx)查看相关主题，了解这些预设必须遵循的架构。
 - 将一个编码任务添加到该作业。 
 - 指定要编码的输入资产。
 - 创建将包含所编码资产的输出资产。
 - 添加事件处理程序以检查作业进度。
 - 提交作业。
 		
-		static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset, string pathToLocalPresetFile)
+		static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
 		{
 		    // Declare a new job.
 		    IJob job = _context.Jobs.Create("Media Encoder Standard Job");
@@ -109,16 +109,19 @@
 		    return processor;
 		}
 
+<!-- deleted by customization
 
-##媒体服务学习路径
+##Media Services learning paths
 
-你可以在此处查看 AMS 学习路径：
+You can view AMS learning paths here:
 
-- [AMS 实时流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS 按需流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+- [AMS Live Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS on Demand Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+-->
 
 ##另请参阅 
 
+[如何使用媒体编码器标准通过 .NET 来生成缩略图](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes)
 [媒体服务编码概述](/documentation/articles/media-services-encode-asset)
 
-<!---HONumber=74-->
+<!---HONumber=79-->

@@ -1,16 +1,16 @@
 <properties
- pageTitle="使用 Maven 开发 Scalding MapReduce 作业 | Azure"
+ pageTitle="使用 Maven 开发 Scalding MapReduce 作业 | Microsoft Azure"
  description="了解如何使用 Maven 创建 Scalding MapReduce 作业，然后在 Hadoop on HDInsight 群集上部署并运行该作业。"
  services="hdinsight"
  documentationCenter=""
  authors="Blackmist"
  manager="paulettm"
  editor="cgronlun"
-	tags="azure-portal"/>
+ tags="azure-portal"/>
 <tags
- ms.service="hdinsight"
- ms.date="07/06/2015"
- wacn.date=""/>
+	ms.service="hdinsight"
+	ms.date="09/23/2015"
+	wacn.date=""/>
 
 # 使用 Apache Hadoop on HDInsight 开发 Scalding MapReduce 作业
 
@@ -20,13 +20,14 @@ Scalding 是一种 Scala 库，它可以让你轻松地创建 Hadoop MapReduce �
 
 ## 先决条件
 
-* Azure 订阅
+- **一个 Azure 订阅**。请参阅[获取 Azure 试用版](/pricing/1rmb-trial/)。
+* **HDInsight 群集上的基于 Windows 的 Hadoop**。有关详细信息，请参阅[在 HDInsight 上预配基于 Windows 的 Hadoop](/documentation/articles/hdinsight-provision-clusters)。
+<!-- deleted by customization or Linux -->
+<!-- deleted by customization [Provision Linux-based Hadoop on HDInsight](/documentation/articles/hdinsight-provision-clusters) or -->
 
-* 基于 Windows 或 Linux 的 Hadoop on HDInsight 群集 - 有关详细信息，请参阅[预配基于 Linux 的 Hadoop on HDInsight](/documentation/articles/hdinsight-hadoop-provision-linux-clusters) 或[预配基于 Windows 的 Hadoop on HDInsight](/documentation/articles/hdinsight-provision-clusters)。
+* **[Maven](http://maven.apache.org/)**
 
-* [Maven](http://maven.apache.org/)
-
-* [Java 平台 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 或更高版本
+* **[Java 平台 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 或更高版本**
 
 ## 创建和生成项目
 
@@ -180,35 +181,37 @@ Scalding 是一种 Scala 库，它可以让你轻松地创建 Hadoop MapReduce �
 
     完成此作业后，可以在 **target/scaldingwordcount-1.0-SNAPSHOT.jar** 中找到包含 WordCount 应用程序的程序包。
 
-## 在基于 Linux 的群集上运行作业
+<!-- deleted by customization
 
-> [AZURE.NOTE]以下步骤使用 SSH 和 Hadoop 命令。有关运行 MapReduce 作业的其他方法，请参阅[在 Hadoop on HDInsight 中使用 MapReduce](/documentation/articles/hdinsight-use-mapreduce)。
+## Run the job on a Linux-based cluster
 
-1. 使用以下命令将该程序包上载到你的 HDInsight 群集：
+> [AZURE.NOTE] The following steps use SSH and the Hadoop command. For other methods of running MapReduce jobs, see [Use MapReduce in Hadoop on HDInsight](/documentation/articles/hdinsight-use-mapreduce).
+
+1. Use the following command to upload the package to your HDInsight cluster:
 
         scp target/scaldingwordcount-1.0-SNAPSHOT.jar username@clustername-ssh.azurehdinsight.cn:
 
-    这样就会将两个文件从本地系统复制到头节点。
+    This copies the files from the local system to the head node.
 
-    > [AZURE.NOTE]如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。如果你使用了 SSH 密钥，你可能必须使用 `-i` 参数和私钥的路径。例如 `scp -i /path/to/private/key target/scaldingwordcount-1.0-SNAPSHOT.jar username@clustername-ssh.azurehdinsight.cn:.`
+    > [AZURE.NOTE] If you used a password to secure your SSH account, you will be prompted for the password. If you used an SSH key, you may have to use the `-i` parameter and the path to the private key. For example, `scp -i /path/to/private/key target/scaldingwordcount-1.0-SNAPSHOT.jar username@clustername-ssh.azurehdinsight.cn:.`
 
-2. 输入以下命令连接到群集头节点：
+2. Use the following command to connect to the cluster head node:
 
         ssh username@clustername-ssh.azurehdinsight.cn
 
-    > [AZURE.NOTE]如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。如果你使用了 SSH 密钥，你可能必须使用 `-i` 参数和私钥的路径。例如 `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.cn`
+    > [AZURE.NOTE] If you used a password to secure your SSH account, you will be prompted for the password. If you used an SSH key, you may have to use the `-i` parameter and the path to the private key. For example, `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.cn`
 
-3. 连接到头节点后，使用以下命令运行该单词计数作业
+3. Once connected to the head node, use the following command to run the word cound job
 
         hadoop jar scaldingwordcount-1.0-SNAPSHOT.jar com.microsoft.example.WordCount --hdfs --input wasb:///example/data/gutenberg/davinci.txt --output wasb:///example/wordcountout
 
-    这将会运行前面实现的 WordCount 类。`--hdfs` 指示作业使用 HDFS。`--input` 指定输入文本文件，而 `--output` 指定输出位置。
+    This runs the WordCount class you implemented earlier. `--hdfs` instructs the job to use HDFS. `--input` specifies the input text file, while `--output` specifies the output location.
 
-4. 完成作业后，使用以下命令查看输出。
+4. After the job completes, use the following to view the output.
 
         hadoop fs -text wasb:///example/wordcountout/part-00000
 
-    这将会显示如下信息：
+    This will display information similar to the following:
 
         writers 9
         writes  18
@@ -223,10 +226,11 @@ Scalding 是一种 Scala 库，它可以让你轻松地创建 Hadoop MapReduce �
         wrote   34
         wrotefootnote   1
         wrought 7
+-->
 
 ## 在基于 Windows 的群集上运行作业
 
-> [AZURE.NOTE]以下步骤使用 Windows PowerShell。有关运行 MapReduce 作业的其他方法，请参阅[在 Hadoop on HDInsight 中使用 MapReduce](/documentation/articles/hdinsight-use-mapreduce)。
+> [AZURE.NOTE]以下步骤使用 Windows PowerShell。有关运行 MapReduce 作业的其他方法，请参阅[在 HDInsight 上的 Hadoop 中使用 MapReduce](/documentation/articles/hdinsight-use-mapreduce)。
 
 1. [安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell)。
 
@@ -287,4 +291,4 @@ Scalding 是一种 Scala 库，它可以让你轻松地创建 Hadoop MapReduce �
 
 * [将 MapReduce 作业与 HDInsight 配合使用](/documentation/articles/hdinsight-use-mapreduce)
 
-<!---HONumber=71-->
+<!---HONumber=79-->

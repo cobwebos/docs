@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="batch"
-	ms.date="07/21/2015"
+	ms.date="09/23/2015"
 	wacn.date=""/>
 
 # 适用于 .NET 的 Azure 批处理库入门  
@@ -204,11 +204,11 @@
 			BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials("https://[account-name].[region].batch.azure.com", "[account-name]", "[account-key]");
 			BatchClient client = BatchClient.Open(cred);
 
-	替换以下值：
+	将括号中的值替换为与批处理帐户相关联的值，每个值都可以在 [Azure 预览门户](https://portal.azure.com)中找到。若要查找这些值，请登录到 [Azure 预览门户](https://portal.azure.com)并执行以下操作：
 
-	- 将 **[account-name]** 替换为前面创建的批处理帐户的名称。
-	- 将 **[region]** 替换为帐户所在的区域。<!--See [Azure Regions](http://azure.microsoft.com/regions/) -->以了解可用的区域。
-	- 将 **[account-key]** 替换为批处理帐户的主密钥。
+	- **[account-name]** - 单击“批处理帐户”，然后选择你此前创建的批处理帐户
+	- **[account-url]** - 在批处理帐户边栏选项卡中，单击“属性”>“URL”
+	- **[account-key]** - 在批处理帐户边栏选项卡中，单击“属性”>“密钥”>“主访问密钥”
 
 3.	将以下用于创建池的方法添加到 Program 类：
 
@@ -491,4 +491,4 @@
 
 2. 某些应用程序会生成大量难以处理的数据。解决此问题的方法之一是进行[有效的列表查询](/documentation/articles/batch-efficient-list-queries)。
 
-<!---HONumber=71-->
+<!---HONumber=79-->

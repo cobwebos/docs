@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multiple" 
-	ms.date="06/03/2015" 
+	ms.date="08/31/2015" 
 	wacn.date=""/>
 
 # 将证书添加到 Java CA 证书存储
@@ -46,6 +46,6 @@ Baltimore 证书可能已安装到您的 cacerts 存储中，因此请务必先�
 
 如果您需要添加 Baltimore CyberTrust 根，它具有序列号 02:00:00:b9 和 SHA1 指纹 d4:de:20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74。可以从 <https://cacert.omniroot.com/bc2025.crt> 下载、使用扩展名 **.cer** 保存到本地文件，然后使用如上所示的 **keytool** 导入。
 
-有关 Azure 使用的根证书的详细信息，请参阅 [Microsoft Azure 根证书迁移](http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx)。
+有关 Azure 使用的根证书的详细信息，请参阅 [Azure 根证书迁移](http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx)。
 
-<!---HONumber=71-->
+<!---HONumber=79-->

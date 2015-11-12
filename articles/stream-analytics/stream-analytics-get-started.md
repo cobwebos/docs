@@ -1,7 +1,7 @@
 <properties
-	pageTitle="流分析入门：实时检测欺诈行为 | Windows Azure"
+	pageTitle="流分析入门：实时检测欺诈行为 | Microsoft Azure"
 	description="了解如何通过流分析创建实时欺诈行为检测解决方案。使用事件中心进行实时事件处理。"
-	keywords="event hub,fraud detection,real-time,real-time processing"
+	keywords="事件中心,欺诈检测,实时,实时处理"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="stream-analytics"
-	ms.date="08/19/2015"
+	ms.date="10/05/2015"
 	wacn.date="" />
 
 
@@ -24,7 +24,9 @@
 
 ## 方案：实时进行远程通信和 SIM 欺诈行为检测
 
-电信公司的传入呼叫数据量很大。电信公司需要从其数据中获取以下信息：* 将这些数据削减到一个可管理的数量，然后分析特定时间和特定地理区域客户的使用情况。* 实时检测 SIM 欺诈行为（在差不多同一时间出现多个同一身份发起的呼叫，但这些呼叫却位于不同的地理区域），以便快速进行应对，向客户发送通知或关闭相应的服务。
+电信公司的传入呼叫数据量很大。电信公司需要从其数据中获取以下信息：
+* 将这些数据削减到一个可管理的数量，然后分析特定时间和特定地理区域客户的使用情况。
+* 实时检测 SIM 欺诈行为（在差不多同一时间出现多个同一身份发起的呼叫，但这些呼叫却位于不同的地理区域），以便快速进行应对，向客户发送通知或关闭相应的服务。
 
 在标准的物联网 (IoT) 方案中，会生成大量的遥测或传感器数据，客户需要对这些数据进行聚合分析，或者需要在出现异常情况时对其用户实时进行提醒。
 
@@ -253,4 +255,4 @@
 - [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
 - [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
-<!---HONumber=69-->
+<!---HONumber=79-->

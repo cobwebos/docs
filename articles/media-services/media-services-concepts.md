@@ -3,13 +3,13 @@
 	description="本部分概述 Azure Media Services 的概念。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="Juliako" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015" 
+<tags
+	ms.service="media-services"
+	ms.date="09/28/2015"
 	wacn.date=""/>
 
 #Azure Media Services 概念 
@@ -75,7 +75,7 @@
 
 对 Azure 存储空间进行的所有访问都要通过存储帐户完成。一个 Media Service 帐户可与一个或多个存储帐户相关联。一个帐户可以包含无限个容器，只要每个帐户的容器总大小不超过 500TB 即可。Media Services 提供 SDK 级工具，可用于管理多个存储帐户，并在上载到这些帐户时基于指标或随机分发使资产分发达到负载平衡。有关详细信息，请参阅[使用 Azure 存储空间](https://msdn.microsoft.com/zh-cn/library/azure/dn767951.aspx)。
 
-##作业\\任务
+##作业和任务
 
 [作业](https://msdn.microsoft.com/zh-cn/library/azure/hh974289.aspx)通常用于处理（例如，索引或编码）一个音频/视频演示。如果要处理多个视频，应为要编码的每个视频创建一个作业。
 
@@ -124,6 +124,7 @@
 ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。超出指定时间长度后，节目也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。此属性的这个值还决定了客户端清单能够增加多长时间。
 
 每个节目都与某个资产关联。若要发布节目，必须为关联的资产创建定位符。创建此定位符后，你可以生成提供给客户端的流 URL。
+
 一个通道最多支持三个并发运行的节目，因此你可以为同一传入流创建多个存档。这样，你便可以根据需要发布和存档事件的不同部分。例如，你的业务要求是存档 6 小时的节目，但只广播过去 10 分钟的内容。为了实现此目的，你需要创建两个同时运行的节目。一个节目设置为存档 6 小时的事件但不发布该节目。另一个节目设置为存档 10 分钟的事件，并且要发布该节目。
 
 ##保护内容
@@ -150,18 +151,19 @@ Media Services 提供用于向已授权客户端传送 PlayReady 许可证和 AE
 
 Media Services 提供了用于传送 PlayReady 许可证的服务。当最终用户播放器（例如 Silverlight）尝试播放受 PlayReady 保护的内容时，将向许可证交付服务发送请求以获取许可证。如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并可用于解密和播放指定的内容。
 
-许可证包含在用户尝试播放受保护的内容时要由 PlayReady DRM 运行时强制实施的权限和限制。Media Services 提供了可让你配置 PlayReady 许可证的 API。有关详细信息，请参阅[媒体服务 PlayReady 许可证模板概述](https://msdn.microsoft.com/zh-cn/library/azure/dn783459.aspx)。
+许可证包含在用户尝试播放受保护的内容时要由 PlayReady DRM 运行时强制实施的权限和限制。Media Services 提供了可让你配置 PlayReady 许可证的 API。有关详细信息，请参阅[媒体服务 PlayReady 许可证模板概述](https://msdn.microsoft.com/zh-cn/library/azure/dn783459.aspx)
 
 ###令牌限制
 
 内容密钥授权策略可能受到一种或多种授权限制：开放、令牌限制或 IP 限制。令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。Media Services 支持采用简单 Web 令牌 (SWT) 格式和 JSON Web 令牌 (JWT) 格式的令牌。Media Services 不提供安全令牌服务。你可以创建自定义 STS 或利用 Microsoft Azure ACS 来颁发令牌。必须将 STS 配置为创建令牌，该令牌使用指定密钥以及你在令牌限制配置中指定的颁发声明进行签名。如果令牌有效，而且令牌中的声明与为密钥（或许可证）配置的声明相匹配，则 Media Services 密钥传送服务会将请求的密钥（或许可证）返回到客户端。
+
 在配置令牌限制策略时，必须指定主验证密钥、颁发者和受众参数。主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。Media Services 密钥交付服务将验证令牌中的这些值是否与模板中的值匹配。
 
 ##传送
 
 ###<a id="dynamic_packaging"></a>动态打包
 
-在使用媒体服务时，建议你始终将夹层文件编码为自适应比特率 MP4 集，然后使用[动态打包](/documentation/articles/media-services-dynamic-packaging-overview)将该集转换为所需的格式
+在使用媒体服务时，建议你始终将夹层文件编码为自适应比特率 MP4 集，然后使用[动态打包](/documentation/articles/media-services-dynamic-packaging-overview)将该集转换为所需的格式。
 
 
 ###流式处理终结点
@@ -176,7 +178,7 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 
 ###资产传送策略
 
-媒体服务内容传送工作流中的步骤之一是[为想要流式传输的资产配置传送策略](https://msdn.microsoft.com/zh-cn/library/azure/dn799055.aspx)。资产传送策略告知 Media Services 你希望如何传送资产：应该将资产动态打包成哪种流式处理协议（例如 MPEG DASH、HLS、平滑流或全部），是否要动态加密资产以及如何加密（信封或常用加密）。
+媒体服务内容传送工作流中的步骤之一是配置[资产传送策略](https://msdn.microsoft.com/zh-cn/library/azure/dn799055.aspx)，以便对其进行流式传输。资产传送策略告知 Media Services 你希望如何传送资产：应该将资产动态打包成哪种流式处理协议（例如 MPEG DASH、HLS、平滑流或全部），是否要动态加密资产以及如何加密（信封或常用加密）。
 
 如果你有存储加密的资产，在流式传输资产之前，流式处理服务器会删除存储加密，然后再使用指定的传送策略流式传输你的内容。例如，若要传送使用高级加密标准 (AES) 加密密钥加密的资产，请将策略类型设为 DynamicEnvelopeEncryption。若要删除存储加密并以明文的形式流式传输资产，请将策略类型设为 NoDynamicEncryption。
 
@@ -235,4 +237,14 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 
 		http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f) 
 
-<!---HONumber=74-->
+<!-- deleted by customization
+ 
+##Media Services learning paths
+
+You can view AMS learning paths here:
+
+- [AMS Live Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS on Demand Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+-->
+
+<!---HONumber=79-->

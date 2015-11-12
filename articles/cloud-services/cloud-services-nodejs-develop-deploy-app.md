@@ -37,7 +37,7 @@
 > [AZURE.NOTE]本教程使用 Azure PowerShell，因此需要在 Windows 上运行。
 
 - 安装和配置 [Azure PowerShell](/documentation/articles/install-configure-powershell)。
-- 下载并安装 [Azure SDK for .NET 2.5](http://go.microsoft.com/fwlink/?linkid=518091)。在安装设置中，选择：
+- 下载并安装 [Azure SDK for .NET 2.7](http://www.microsoft.com/zh-CN/download/details.aspx?id=48178)。在安装设置中，选择：
     - MicrosoftAzureAuthoringTools
     - MicrosoftAzureComputeEmulator
 
@@ -128,7 +128,8 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 
 ![Publish-AzureService 命令的输出](./media/cloud-services-nodejs-develop-deploy-app/node19.png)
 
-> [AZURE.NOTE]部署应用程序并在首次发布该程序后使其可供使用可能需要花费几分钟时间。
+> [AZURE.NOTE]
+> 部署应用程序并在首次发布该程序后使其可供使用可能需要花费几分钟时间。
 
 在部署完成后，系统会打开一个浏览器窗口并导航到云服务。
 
@@ -173,6 +174,9 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 
 	> [AZURE.NOTE]删除服务不会删除最初发布服务时所创建的存储帐户，并且你仍需为使用的存储付费。有关删除存储帐户的详细信息，请参阅[如何从 Azure 订阅中删除存储帐户](http://msdn.microsoft.com/library/windowsazure/hh531562.aspx)。
 
+## 后续步骤
+
+有关详细信息，请参阅 [Node.js 开发人员中心](/develop/nodejs/)。
 
 [The Windows Start menu with the Azure SDK Node.js entry expanded]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-menu.png
 [mkdir]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-6.png
@@ -189,4 +193,4 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 [How to Delete a Storage Account from an Azure Subscription]: /documentation/articles/storage-manage-storage-account
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
 
-<!---HONumber=74-->
+<!---HONumber=79-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="如何通过 .NET 使用 Blob 存储 | Windows Azure"
+	pageTitle="如何通过 .NET 使用 Blob 存储 | Microsoft Azure"
 	description="了解 Azure Blob 存储以及如何创建容器，如何上载、下载、列出和删除 Blob 内容。"
 	services="storage"
 	documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="08/04/2015"
+	ms.date="10/16/2015"
 	wacn.date=""/>
 
 
@@ -33,8 +33,8 @@
 
 [AZURE.INCLUDE [storage-dotnet-obtain-assembly](../includes/storage-dotnet-obtain-assembly.md)]
 
-###命名空间声明
-在您希望在其中以编程方式访问 Azure 存储空间的任何 C# 文件中，将以下命名空间声明添加到文件的顶部：
+### 命名空间声明
+在你希望在其中以编程方式访问 Azure 存储空间的任何 C# 文件中，将以下命名空间声明添加到文件的顶部：
 
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.Storage;
@@ -45,7 +45,7 @@
 
 [AZURE.INCLUDE [storage-dotnet-retrieve-conn-string](../includes/storage-dotnet-retrieve-conn-string.md)]
 
-您可以使用 **CloudBlobClient** 类型来检索表示存储在 Blob 存储服务中的容器和 Blob 的对象。以下代码使用我们在上面检索到的存储帐户对象创建 **CloudBlobClient** 对象：
+你可以使用 **CloudBlobClient** 类型来检索表示存储在 Blob 存储服务中的容器和 Blob 的对象。以下代码使用我们在上面检索到的存储帐户对象创建 **CloudBlobClient** 对象：
 
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
@@ -68,7 +68,7 @@
     // Create the container if it doesn't already exist.
     container.CreateIfNotExists();
 
-默认情况下，新容器是专用容器，因此你必须指定存储访问密钥才能从该容器下载 Blob。如果您要让容器中的文件可供所有人使用，则可以使用以下代码将容器设置为公共容器：
+默认情况下，新容器是专用容器，因此你必须指定存储访问密钥才能从该容器下载 Blob。如果你要让容器中的文件可供所有人使用，则可以使用以下代码将容器设置为公共容器：
 
     container.SetPermissions(
         new BlobContainerPermissions { PublicAccess =
@@ -105,7 +105,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 
 ## 列出容器中的 Blob
 
-若要列出容器中的 Blob，首先需要获取容器引用。然后，您可以使用容器的 **ListBlobs** 方法来检索其中的 Blob 和/或目录。若要访问返回的 **IListBlobItem** 的丰富属性和方法，您必须将它转换到 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 对象。如果类型未知，您可以使用类型检查来确定要将其转换为哪种类型。以下代码演示了如何检索和输出 `photos` 容器中每一项的 URI：
+若要列出容器中的 Blob，首先需要获取容器引用。然后，你可以使用容器的 **ListBlobs** 方法来检索其中的 Blob 和/或目录。若要访问返回的 **IListBlobItem** 的丰富属性和方法，你必须将它转换到 **CloudBlockBlob**、**CloudPageBlob** 或 **CloudBlobDirectory** 对象。如果类型未知，你可以使用类型检查来确定要将其转换为哪种类型。以下代码演示了如何检索和输出 `photos` 容器中每一项的 URI：
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -142,7 +142,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 		}
 	}
 
-如上所示，您可以命名 Blob，在其名称中包含路径信息。这将创建一个虚拟目录结构，你可以像传统文件系统一样组织和遍历。注意，该目录结构仅是虚拟的 - 在 Blob 存储中可用的唯一资源是容器和 Blob。但是，存储空间客户端库提供 **CloudBlobDirectory** 对象来引用虚拟目录，并简化了以这种方式组织的 Blob 的使用过程。
+如上所示，你可以命名 Blob，在其名称中包含路径信息。这将创建一个虚拟目录结构，你可以像传统文件系统一样组织和遍历。注意，该目录结构仅仅是虚拟的 - Blob 存储中唯一可用的资源是容器和 Blob。但是，存储空间客户端库提供 **CloudBlobDirectory** 对象来引用虚拟目录，并简化了以这种方式组织的 Blob 的使用过程。
 
 例如，考虑名为 `photos` 的容器中包含的下面一组块 Blob：
 
@@ -155,14 +155,14 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 	2011/architecture/description.txt
 	2011/photo7.jpg
 
-当您在“photos”容器上调用 **ListBlobs**（如上面的示例中）时，返回一个层次结构列表。它包含 **CloudBlobDirectory** 和 **CloudBlockBlob** 对象，分别表示容器中的目录和 Blob。生成的输出如下所示：
+当你在“photos”容器上调用 **ListBlobs**（如上面的示例中）时，返回一个层次结构列表。它包含 **CloudBlobDirectory** 和 **CloudBlockBlob** 对象，分别表示容器中的目录和 Blob。生成的输出如下所示：
 
 	Directory: https://<accountname>.blob.core.chinacloudapi.cn/photos/2010/
 	Directory: https://<accountname>.blob.core.chinacloudapi.cn/photos/2011/
 	Block blob of length 505623: https://<accountname>.blob.core.chinacloudapi.cn/photos/photo1.jpg
 
 
-另外，也可以将 **ListBlobs** 方法的 **UseFlatBlobListing** 参数设置为 **true**。在这种情况下，作为 **CloudBlockBlob** 对象返回容器中的每一个 Blob。对 **ListBlobs** 的调用返回一个平面列表，如下所示：
+另外，也可以将 **ListBlobs** 方法的 **UseFlatBlobListing** 参数设置为 **true**。在此案例中，容器中的每一个 Blob 都作为 **CloudBlockBlob** 对象返回。对 **ListBlobs** 的调用返回一个平面列表，如下所示：
 
     // Loop over items within the container and output the length and URI.
 	foreach (IListBlobItem item in container.ListBlobs(null, true))
@@ -184,7 +184,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 
 ## 下载 Blob
 
-若要下载 Blob，请首先检索 Blob 引用，然后调用 **DownloadToStream** 方法。以下示例使用 **DownloadToStream** 方法将 Blob 内容传输到一个流对象，然后您可以将该对象保存到本地文件。
+若要下载 Blob，请首先检索 Blob 引用，然后调用 **DownloadToStream** 方法。以下示例使用 **DownloadToStream** 方法将 Blob 内容传输到一个流对象，然后你可以将该对象保存到本地文件。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -252,7 +252,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 
 如果要列出大量 Blob，或需要控制一个列表操作中返回的结果数，则可以结果页的方式列出 Blob。此示例显示如何以页面形式异步返回结果，这样就不会在等待返回大型结果集时阻止操作的执行。
 
-此示例演示平面 Blob 列表，但您也可以执行分层列表，只需将 **ListBlobsSegmentedAsync** 方法的 `useFlatBlobListing` 参数设置为 `false` 即可。
+此示例演示平面 Blob 列表，但你也可以执行分层列表，只需将 **ListBlobsSegmentedAsync** 方法的 `useFlatBlobListing` 参数设置为 `false` 即可。
 
 由于示例方法调用异步方法，因此必须以 `async` 关键字开头，且必须返回 **Task** 对象。为 **ListBlobsSegmentedAsync** 方法指定的 await 关键字将挂起示例方法的执行，直至列表任务完成。
 
@@ -287,7 +287,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 
 ## 写入追加 Blob
 
-追加 Blob 是一个新类型的 Blob，由用于 .NET 的 Azure 存储空间客户端库 5.x 版引入。追加 Blob 针对追加操作（例如日志记录）进行了优化。类似于块 Blob，追加 Blob 由块组成，但是当您将新的块添加到追加 Blob 时，始终追加到该 Blob 的末尾。您不能更新或删除追加 Blob 中现有的块。追加 Blob 的块 ID 不公开，因为它们是用于一个块 Blob 的。
+追加 Blob 是一个新类型的 Blob，由用于 .NET 的 Azure 存储空间客户端库 5.x 版引入。追加 Blob 针对追加操作（例如日志记录）进行了优化。类似于块 Blob，追加 Blob 由块组成，但是当你将新的块添加到追加 Blob 时，始终追加到该 Blob 的末尾。你不能更新或删除追加 Blob 中现有的块。追加 Blob 的块 ID 不公开，因为它们是用于一个块 Blob 的。
  
 追加 Blob 中的每个块可以有不同的大小，最大为 4 MB，并且追加 Blob 最多可包含 50000 个块。因此，追加 Blob 的最大大小稍微大于 195 GB（4 MB X 50000 块）。
 
@@ -323,8 +323,8 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
     //Simulate a logging operation by writing text data and byte data to the end of the append blob.
     for (int i = 0; i < numBlocks; i++)
     {
-        appendBlob.AppendText(String.Format("Timestamp: {0} \tLog Entry: {1}{2}",
-            DateTime.Now.ToUniversalTime().ToString(), bytes[i], Environment.NewLine));
+        appendBlob.AppendText(String.Format("Timestamp: {0:u} \tLog Entry: {1}{2}",
+            DateTime.UtcNow, bytes[i], Environment.NewLine));
     }
 
     //Read the append blob to the console window.
@@ -334,7 +334,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 
 ## 后续步骤
 
-现在，你已了解有关 Blob 存储的基础知识，可单击下面的链接来了解更复杂的存储任务。<ul> <li>查看 Blob 服务参考文档，了解有关可用 API 的完整详情：<ul> <li><a href="http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409">用于 .NET 的存储空间客户端库参考</a> </li> <li><a href="http://msdn.microsoft.com/zh-cn/library/azure/dd179355">REST API 参考</a></li> </ul> </li> <li>在以下位置了解使用 Azure 存储空间能够执行的更高级任务：<a href="http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx">在 Azure 中存储和访问数据</a>。</li> <li>了解如何使用 <a href="../websites-dotnet-webjobs-sdk/">Azure WebJobs SDK 简化您编写的用于 Azure 存储空间的代码。</li> <li>查看更多功能指南，以了解在 Azure 中存储数据的其他方式。<ul> <li>使用<a href="/documentation/articles/storage-dotnet-how-to-use-tables/">表存储</a>存储结构化数据。</li> <li>使用<a href="/documentation/articles/storage-dotnet-how-to-use-queues/">队列存储</a>存储非结构化数据。</li> <li>使用 <a href="/documentation/articles/sql-database-dotnet-how-to-use/">SQL 数据库</a>存储关系数据。</li> </ul> </li> </ul>
+现在，你已了解有关 Blob 存储的基础知识，可单击下面的链接来了解更复杂的存储任务。<ul> <li>查看 Blob 服务参考文档，了解有关可用 API 的完整详情：<ul> <li><a href="http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409">用于 .NET 的存储空间客户端库参考</a> </li> <li><a href="http://msdn.microsoft.com/zh-cn/library/azure/dd179355">REST API 参考</a></li> </ul> </li> <li>在以下位置了解使用 Azure 存储空间能够执行的更高级任务：<a href="http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx">在 Azure 中存储和访问数据</a>。</li> <li>了解如何使用 <a href="../websites-dotnet-webjobs-sdk/">Azure WebJobs SDK</li> 简化你编写的用于 Azure 存储空间的代码。 <li>查看更多功能指南，以了解在 Azure 中存储数据的其他方式。<ul> <li>使用<a href="/documentation/articles/storage-dotnet-how-to-use-tables/">表存储</a>存储结构化数据。</li> <li>使用<a href="/documentation/articles/storage-dotnet-how-to-use-queues/">队列存储</a>存储非结构化数据。</li> <li>使用 <a href="/documentation/articles/sql-database-dotnet-how-to-use/">SQL 数据库</a>存储关系数据。</li> </ul> </li> </ul>
 
   [Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-blobs/blob6.png
@@ -349,4 +349,4 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
   [REST API reference]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
  
 
-<!---HONumber=70-->
+<!---HONumber=79-->

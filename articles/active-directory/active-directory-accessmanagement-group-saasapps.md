@@ -1,43 +1,43 @@
 
 <properties 
-	pageTitle="使用组来管理对 SaaS 应用程序的访问 | Windows Azure" 
-	description="本主题介绍如何使用 Azure AD Premium 中的组来分配对集成 Azure AD 的 SaaS 应用程序的访问权限。" 
+	pageTitle="使用组来管理对 SaaS 应用程序的访问 | Microsoft Azure" 
+	description="如何在 Azure AD Premium 或 Basic 中使用组来分配对与 Azure AD 集成的 SaaS 应用程序的访问权限。"
 	services="active-directory" 
 	documentationCenter="" 
 	authors="femila" 
-	manager="swadhwa" 
-	editor=""
-	tags="azure-classic-portal"/>
+	manager="stevenpo"
+	editor=""/> tags="azure-classic-portal"/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="07/13/2015" 
+	ms.date="10/09/2015"
 	wacn.date=""/>
 
 
 # 使用组来管理对 SaaS 应用程序的访问
 
-如果你安装了 Azure AD 高级版，则可以使用组来分配对集成 Azure AD 的 SaaS 应用程序的访问权限。例如，如果你想要分配市场营销部门的访问权限以使用五个不同的 SaaS 应用程序，你可以创建一个包含市场营销部门中用户的组，然后将该组分配到市场营销部门所需的这五个 SaaS 应用程序。这样，通过在一个位置管理市场营销部门的成员身份，可以节省时间。然后，当他们被添加为市场营销组的成员时，用户就被分配到应用程序，当将他们从市场营销组中删除时，就将从应用程序中删除其分配。
+有了 Azure AD Premium，你就可以使用组分配对与 Azure AD 集成的 SaaS 应用程序的访问权限。例如，如果要为营销部分配使用五个不同 SaaS 应用程序所需的访问权限，则可以创建一个包含销售部用户的组，然后将该组分配给营销部所需的这五个 SaaS 应用程序。这样就可以在一个位置管理营销部的成员身份，从而节省了时间。之后，当将用户添加为营销组的成员时，这些用户将分配到应用程序；当将用户从营销组中删除时，也会从应用程序中删除为其分配的权限。
 
-此功能可用于数百个你可从 Azure AD 应用程序库内添加的应用程序。
+此功能适用于可从 Azure AD 应用程序库中添加的数百个应用程序。
 
-**将组的访问权限分配给 SaaS 应用程序**
-
-
-1. 打开所选择的浏览器并转到 Azure 管理门户。在 Azure 管理门户的左侧导航栏上，找到 Active Directory 扩展。在“目录”选项卡下，单击你要在其中将组的访问权限分配给 SaaS 应用程序的目录。
+**为组分配对 SaaS 应用程序的访问权限**
 
 
-2. 单击你目录的“应用程序”选项卡。单击一个从应用程序库添加的应用程序，然后单击“用户和组”选项卡。
-
-3. 在“用户和组”选项卡上，在“开头”字段中，输入你要向其分配访问权限的组的名称，然后单击右上角的复选标记。你只需键入组名称的第一部分。然后，单击该组以突出显示它，再单击“分配访问权限”按钮并在看到确认消息时单击“是”。
+1. 打开所选的浏览器并转到 Azure 管理门户。在 Azure 管理门户的左侧导航栏上，找到“Active Directory”扩展。在“目录”选项卡下，单击要在其中为组分配对 Saas 应用程序的访问权限的目录。
 
 
-4. 你还可以查看直接或通过使用组成员身份分配到该应用程序的用户。若要执行此操作，请将“显示下拉列表”从“组”更改为“所有用户”。该列表显示目录中的用户，而无论是否每个用户都分配到该应用程序。此列表还显示已分配的用户是直接（分配类型显示为“直接”）还是通过组成员身份（分配类型显示为“继承”）分配到应用程序。
+2. 单击该目录的“应用程序”选项卡。单击从应用程序库中添加的应用程序，然后单击“用户和组”选项卡。
+
+3. 在“用户和组”选项卡的“开头为”字段中，输入要为其分配访问权限的组的名称，然后单击右上角的复选标记。你只需键入组名称的开头部分。然后，单击该组以突出显示它，然后单击“分配访问权限”按钮。当你看到确认消息时，请单击“是”。
 
 
-> [AZURE.NOTE]一旦启用了 Azure AD Premium，将只看到“用户和组”选项卡。
+4. 你还可以查看哪些用户分配到了该应用程序，无论这些用户是直接分配还是按组成员身份分配。为此，请将“显示”下拉列表从“组”更改为“所有用户”。此列表显示目录中的用户，以及每个用户是否已分配到该应用程序。此列表还显示分配的用户是直接分配到该应用程序（分配类型显示为“直接”），还是按组成员身份分配（分配类型显示为“继承”）。
 
-下面的主题将提供有关 Azure Active Directory 的一些其他信息
+
+> [AZURE.NOTE]
+> 仅当启用了 Azure AD Premium 或 Azure AD Basic 后，才会看到“用户和组”选项卡。
+
+下面这些主题提供了有关 Azure Active Directory 的其他一些信息
 
 * [使用 Azure Active Directory 组管理对资源的访问](/documentation/articles/active-directory-manage-groups)
 
@@ -45,4 +45,4 @@
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=67-->
+<!---HONumber=79-->

@@ -1,12 +1,12 @@
 > [AZURE.SELECTOR]
-- [它是什么](active-directory-passwords)
-- [工作原理](active-directory-passwords-how-it-works)
-- [入门](active-directory-passwords-getting-started)
-- [自定义](active-directory-passwords-customize)
-- [最佳做法](active-directory-passwords-best-practices)
-- [深入探索](active-directory-passwords-get-insights)
-- [FAQ](active-directory-passwords-faq)
-- [疑难解答](active-directory-passwords-troubleshoot)
-- [了解详情](active-directory-passwords-learn-more)
+- [What is it](/documentation/articles/active-directory-passwords)
+- [How it works](/documentation/articles/active-directory-passwords-how-it-works)
+- [Getting started](/documentation/articles/active-directory-passwords-getting-started)
+- [Customize](/documentation/articles/active-directory-passwords-customize)
+- [Best practices](/documentation/articles/active-directory-passwords-best-practices)
+- [Get insights](/documentation/articles/active-directory-passwords-get-insights)
+- [FAQ](/documentation/articles/active-directory-passwords-faq)
+- [Troubleshooting](/documentation/articles/active-directory-passwords-troubleshoot)
+- [Learn more](/documentation/articles/active-directory-passwords-learn-more)
 
-<!---HONumber=HO63-->
+<!---HONumber=79-->

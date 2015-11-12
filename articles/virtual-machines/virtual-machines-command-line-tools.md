@@ -1,6 +1,6 @@
 <properties
-	pageTitle="将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 服务管理配合使用 | Microsoft Azure"
-	description="了解如何使用适用于 Mac、Linux 和 Windows 的命令行工具，在 Azure CLI asm 模式下管理 Azure。"
+	pageTitle="配合使用 Azure CLI 和服务管理 | Microsoft Azure"
+	description="了解如何使用适用于 Mac、Linux 和 Windows 的命令行工具，在经典（Azure 服务管理）模式下使用 Azure CLI 管理 Azure。"
 	services="virtual-machines, mobile-services, cloud-services"
 	documentationCenter=""
 	authors="dlepow"
@@ -10,22 +10,27 @@
 
 <tags
 	ms.service="multiple"
-	ms.date="06/30/2015"
+	ms.date="10/07/2015"
 	wacn.date=""/>
 
 # 将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 服务管理配合使用
 
-本主题介绍如何在 **asm** 模式下使用 Azure CLI 在 Mac、Linux 和 Windows 计算机的命令行中上创建、管理和删除服务。此功能类似于随面向 .NET、Node.JS 和 PHP 的 Azure SDK 一起安装的 Windows PowerShell 服务管理 cmdlet 所提供的功能。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍如何使用经典部署模型创建资源。你还可以使用[资源管理器部署模型](virtual-machines-deploy-rmtemplates-azure-cli)创建资源。
 
-> [AZURE.NOTE]在 **asm** 模式下使用 Azure 服务从概念上讲类似于考虑各个 Azure 概念和服务（如网站、虚拟机、虚拟网络、存储等）。使用资源的逻辑分组分层模型的更丰富功能可在 **arm** 模式下使用命令行获得。若要切换到该模式，请参阅[将 Azure 命令行界面用于资源管理器](/documentation/articles/xplat-cli-azure-resource-manager)。
+本文介绍如何在服务管理模式（asm 模式）下使用 Azure CLI 在 Mac、Linux 和 Windows 计算机的命令行中创建、管理和删除服务。你可以使用 Azure SDK 的各种库、Azure PowerShell 和 Azure 门户执行许多相同的任务。在服务管理模式下使用 Azure 服务从概念上讲类似于创建和管理各个 Azure 概念和服务（如网站、虚拟机、虚拟网络、存储器等）。
 
-有关安装说明，请参阅[安装和配置 Azure 命令行界面](/documentation/articles/xplat-cli-install)。
+> [AZURE.NOTE]
+若要开始使用，首先[安装 Azure CLI](/documentation/articles/xplat-cli-install.md)，并[登录以使用与你的帐户关联的 Azure 资源](../xplat-cli-connect.md)。
+
+## 本文的讨论范围
+
+本文提供了用于经典（服务管理）部署模型的常用 Azure CLI 命令的语法和选项。它并不是完整的参考，并且你的 CLI 版本可能会显示某些不同的命令或参数。要在服务管理模式下在命令行中查看当前的命令语法和选项，请键入 `azure help`；要显示某个命令的帮助，请键入 `azure help [command]`。你还可以在创建和管理具体 Azure 服务的说明文档中找到 CLI 示例。
 
 可选参数显示在方括号中（例如，[参数]）。其他所有参数都是必需的。
 
 除了此处记录的特定于命令的可选参数外，还有三个可用于显示详细输出（例如请求选项和状态代码）的可选参数。-v 参数提供详细输出，而 -vv 参数提供更详细的输出。--json 选项将以原始的 json 格式输出结果。
 
-## 设置 **asm** 模式
+## 设置服务管理模式
 
 当前，首次安装 CLI 时，在默认情况下启用服务管理模式。如果需要，请使用以下命令启用 Azure CLI 服务管理命令。
 
@@ -182,7 +187,7 @@
 ## 用于管理 Azure 虚拟机的命令
 下图显示了如何在 Azure 云服务的生产部署环境中托管 Azure 虚拟机。
 
-![AZURE 技术图表](./media/virtual-machines-command-line-tools/architecturediagram.jpg)
+![Azure 技术图表](./media/virtual-machines-command-line-tools/architecturediagram.jpg)
 
 **create-new** 在 Blob 存储中创建驱动器（即，图中的 e:\\）；**attach** 会将已创建但未附加的磁盘附加到虚拟机。
 
@@ -202,7 +207,21 @@ Windows 虚拟机稍后可以通过添加端口 3389 作为终结点来启用 RD
 
 此命令支持以下可选参数：
 
-**-c, --connect** 在托管服务中已创建的部署中创建虚拟机。如果 -vmname 未与此选项一起使用，将自动生成新虚拟机的名称。<br /> **-n, --vm-name** 指定虚拟机的名称。默认情况下，此参数采用托管服务名称。如果未指定 -vmname，将生成 &lt;service-name>&lt;id> 形式的新虚拟机名称，其中 &lt;id> 是服务中现有虚拟机的数量加上 1。例如，如果你使用此命令向拥有一个现有虚拟机的托管服务 MyService 中添加新虚拟机，则会将新虚拟机命名为 MyService2。<br /> **-u, --blob-url** 指定从中创建虚拟机系统磁盘的目标 Blob 存储 URL。<br /> **-z, --vm-size** 指定虚拟机的大小。有效值为：“ExtraSmall”、“Small”、“Medium”、“Large”、“ExtraLarge”、“A5”、“A6”、“A7”、“A8”、“A9”、“A10”、“A11”、“Basic\_A0”、“Basic\_A1”、“Basic\_A2”、“Basic\_A3”、“Basic\_A4”、“Standard\_D1”、“Standard\_D2”、“Standard\_D3”、“Standard\_D4”、“Standard\_D11”、“Standard\_D12”、“Standard\_D13”、“Standard\_D14”、“Standard\_DS1”、“Standard\_DS2”、“Standard\_DS3”、“Standard\_DS4”、“Standard\_DS11”、“Standard\_DS12”、“Standard\_DS13”、“Standard\_DS14”、“Standard\_G1”、“Standard\_G2”、“Standard\_G3”、“Standard\_G4”、“Standard\_G55”。默认值为“Small”。<br /> **-r** 添加到 Windows 虚拟机的 RDP 连接。<br /> **-e, --ssh** 添加到 Windows 虚拟机的 SSH 连接。<br /> **-t, --ssh-cert** 指定 SSH 证书。<br /> **-s** 订阅。<br /> **-o, --community** 指定的映像是社区映像。<br /> **-w** 虚拟网络名称。<br/> **-l, --location** 指定位置（例如，“North Central China”）。<br /> **-a, --affinity-group** 指定地缘组。<br /> **-w, --virtual-network-name** 指定要在其中添加新虚拟机的虚拟网络。可从 Azure 门户设置和管理虚拟网络。<br /> **-b, --subnet-names** 指定要分配虚拟机的子网名称。
+**-c, --connect** 在托管服务中已创建的部署中创建虚拟机。如果 -vmname 未与此选项一起使用，将自动生成新虚拟机的名称。<br /> 
+**-n, --vm-name** 指定虚拟机的名称。默认情况下，此参数采用托管服务名称。如果未指定 -vmname，将生成 &lt;service-name>&lt;id> 形式的新虚拟机名称，其中 &lt;id> 是服务中现有虚拟机的数量加上 1。例如，如果你使用此命令向拥有一个现有虚拟机的托管服务 MyService 中添加新虚拟机，则会将新虚拟机命名为 MyService2。<br /> 
+**-u, --blob-url** 指定从中创建虚拟机系统磁盘的目标 Blob 存储 URL。<br /> 
+**-z, --vm-size** 指定虚拟机的大小。有效值为：
+“ExtraSmall”、“Small”、“Medium”、“Large”、“ExtraLarge”、“A5”、“A6”、“A7”、“A8”、“A9”、“A10”、“A11”、“Basic\_A0”、“Basic\_A1”、“Basic\_A2”、“Basic\_A3”、“Basic\_A4”、“Standard\_D1”、“Standard\_D2”、“Standard\_D3”、“Standard\_D4”、“Standard\_D11”、“Standard\_D12”、“Standard\_D13”、“Standard\_D14”、“Standard\_DS1”、“Standard\_DS2”、“Standard\_DS3”、“Standard\_DS4”、“Standard\_DS11”、“Standard\_DS12”、“Standard\_DS13”、“Standard\_DS14”、“Standard\_G1”、“Standard\_G2”、“Standard\_G3”、“Standard\_G4”、“Standard\_G55”。默认值为“Small”。<br /> 
+**-r** 添加到 Windows 虚拟机的 RDP 连接。<br />
+**-e, --ssh** 添加到 Windows 虚拟机的 SSH 连接。<br /> 
+**-t, --ssh-cert** 指定 SSH 证书。<br /> 
+**-s** 订阅。<br /> 
+**-o, --community** 指定的映像是社区映像。<br /> 
+**-w** 虚拟网络名称。<br/> 
+**-l, --location** 指定位置（例如，“North Central China”）。<br /> 
+**-a, --affinity-group** 指定地缘组。<br /> 
+**-w, --virtual-network-name** 指定要在其中添加新虚拟机的虚拟网络。可从 Azure 门户设置和管理虚拟网络。<br /> 
+**-b, --subnet-names** 指定要分配虚拟机的子网名称。
 
 在此示例中，MSFT\_\_Win2K8R2SP1-120514-1520-141205-01-zh-CN-30GB 是该平台提供的映像。有关操作系统映像的详细信息，请参阅 VM 映像列表。
 
@@ -783,7 +802,7 @@ Azure Web 应用是可通过 URI 访问的 Web 配置。Web 应用在虚拟机�
 
 此命令支持以下附加选项：
 
-**-q 或 **--quiet**：不提示确认。在自动化脚本中使用此选项。
+****-q 或 **--quiet**：不提示确认。在自动化脚本中使用此选项。
 
 
 **site start [options] [name]**
@@ -806,7 +825,7 @@ Azure Web 应用是可通过 URI 访问的 Web 配置。Web 应用在虚拟机�
 	info:   Site mysite has been stopped
 	info:   site stop command OK
 
-**site restart [options] [name]
+****site restart [options] [name]
 
 此命令停止然后启动指定的 Web 应用。
 
@@ -2036,7 +2055,7 @@ Azure 移动服务汇聚了一系列支持你的应用程序的后端功能的 A
 
 ## 用于管理 SQL 数据库的命令
 
-使用这些命令来管理你的 Azure SQL Database
+使用这些命令来管理你的 Azure SQL 数据库
 
 ###用于管理 SQL Server 的数据库
 
@@ -2342,4 +2361,4 @@ Azure 移动服务汇聚了一系列支持你的应用程序的后端功能的 A
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=69-->
+<!---HONumber=79-->

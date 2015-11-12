@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="site-recovery"
-	ms.date="05/07/2015"
+	ms.date="10/12/2015"
 	wacn.date=""/>
 
 
@@ -18,7 +18,7 @@
 
 ## 概述
 
-Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因为它可以安排复制、故障转移和恢复虚拟机和物理服务器。在 [Site Recovery 概述](hyper-v-recovery-manager-overview)中了解可能的部署方案。
+Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因为它可以安排复制、故障转移和恢复虚拟机和物理服务器。在 [Site Recovery 概述](/documentation/articles/site-recovery-overview)中了解可能的部署方案。
 
 本文介绍如何部署 Site Recovery 来复制本地站点上运行 Windows Server 2012 R2 的 Hyper-V 服务器上的虚拟机。到 Azure 存储空间的复制由 Site Recovery 来协调。如果你在运行 Hyper-V 服务器但未部署 System Center Virtual Machine Manager (VMM)，则此部署将特别有用。
 
@@ -37,18 +37,19 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 ### Azure 先决条件
 
 - 需要一个 [Microsoft Azure](http://www.windowsazure.cn/) 帐户。你可以从[试用版](/pricing/1rmb-trial/)开始。
-- - 你将需要使用 Azure 存储帐户来存储复制的数据。需要为帐户启用地域复制。它应该位于 Azure Site Recovery 保管库所在的区域中，并与相同订阅关联。若要了解详细信息，请阅读 [Microsoft Azure 存储空间简介](storage-introduction)。
-- - 需要一个 Azure 虚拟网络，以便在故障转移后可将复制的虚拟机连接到网络。
+- 你将需要使用 Azure 存储帐户来存储复制的数据。需要为帐户启用地域复制。它应该位于 Azure Site Recovery 保管库所在的区域中，并与相同订阅关联。若要了解详细信息，请阅读 [Microsoft Azure 存储空间简介](/documentation/articles/storage-introduction)。
+- 需要一个 Azure 虚拟网络，以便在故障转移后可将复制的虚拟机连接到网络。
 
-## Hyper-V 先决条件
+### Hyper-V 先决条件
 
 - 源本地站点中至少有一台运行 Windows Server 2012 R2 的服务器，并且源站点中存在 Hyper-V 角色。
 - Hyper-V 服务器应包含一个或多个虚拟机。
 - Hyper-V 服务器应直接或通过代理连接到 Internet。
+- Hyper-V 服务器应该安装 [KB2961977](https://support.microsoft.com/zh-cn/kb/2961977 "KB2961977") 中提到的修补程序。
 
 ### 虚拟机先决条件
 
-要保护的虚拟机应符合 [Azure 先决条件](https://msdn.microsoft.com/zh-cn/library/azure/dn469078.aspx#BKMK_E2A)。
+要保护的虚拟机应符合[虚拟机先决条件](/documentation/articles/site-recovery-best-practices#virtual-machines)。
 
 ### 提供程序和代理先决条件
 
@@ -57,12 +58,18 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 - 你应该运行最新版本的提供程序和代理。
 - 保管库中的所有 Hyper-V 服务器应具有相同的版本。
 - 提供程序将需要通过 Internet 连接到 Azure Site Recovery。你可以使用 VMM 服务器上当前配置的代理设置或者使用你在安装提供程序期间配置的自定义代理设置，来实现不带代理的部署。若要使用现有的代理服务器，请确保用于连接 Azure 的 URL 可以通过防火墙：
-	- hypervrecoverymanager.windowsazure.cn
+	- **.hypervrecoverymanager.windowsazure.cn
 	- **.accesscontrol.chinacloudapi.cn
-- **.backup.windowsazure.cn
-- 若要使用自定义代理，请在安装提供程序之前设置代理服务器。在设置提供程序期间，你需要指定代理服务器地址和端口，以及用于访问的凭据。
+	- **.backup.windowsazure.cn
+	- **.blob.core.chinacloudapi.cn
+	- **.store.core.chinacloudapi.cn
+- 若要使用自定义代理，请在安装提供程序之前设置代理服务器。在设置提供程序期间，你需要指定代理服务器地址和端口，以及用于访问的凭据。请注意，不支持基于 HTTPS 的代理。
 
+以下图片显示了Azure Site Recovery 用来完成业务流程和复制的不同通信通道和端口
 
+![B2A 拓扑](./media/site-recovery-hyper-v-site-to-azure/B2ATopology.png)
+
+ 
 ## 步骤 1：创建保管库
 
 1. 登录到[管理门户](https://manage.windowsazure.cn)。
@@ -75,7 +82,7 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 
 4. 在“名称”中，输入一个友好名称以标识此保管库。
 
-5. 在“区域”中，为保管库选择地理区域。若要查看受支持的区域，请参阅 Azure Site Recovery 价格详细信息中的“地域可用性”[](/home/features/site-recovery/#price)。
+5. 在“区域”中，为保管库选择地理区域。若要查看受支持的区域，请参阅 [Azure Site Recovery 价格详细信息](/home/features/site-recovery/#price)中的“地域可用性”。
 
 6. 单击“创建保管库”。
 
@@ -132,12 +139,12 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 
 	- 如果 Hyper-V 服务器上的默认代理需要身份验证，则你应该选择使用自定义代理服务器。键入默认代理详细信息，然后指定凭据。
 	- 如果要使用自定义代理服务器，请在安装提供程序之前设置它。
-	- 豁免以下地址通过代理进行路由：
-		- 用于连接到 Azure 站点恢复的 URL：*.hypervrecoverymanager.windowsazure.cn
-- **.accesscontrol.chinacloudapi.cn
-- **.backup.windowsazure.cn
-- **.blob.core.chinacloudapi.cn
-- **.store.core.chinacloudapi.cn
+	- 以下 URL 应可从 Hyper-v 主机访问
+		- **.hypervrecoverymanager.windowsazure.cn
+		- **.accesscontrol.chinacloudapi.cn
+		- **.backup.windowsazure.cn
+		- **.blob.core.chinacloudapi.cn
+		- **.store.core.chinacloudapi.cn
 
 	- 允许 [Azure 数据中心 IP 范围](https://msdn.microsoft.com/zh-cn/library/azure/dn175718.aspx)中所述的 IP 地址，以及 HTTPS (443) 协议。必须将你打算使用的 Azure 区域以及中国东部的 IP 范围加入允许列表。
 
@@ -154,22 +161,32 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 
 	![服务器注册](./media/site-recovery-hyper-v-site-to-azure/SRHVSite_Provider7.png)
 
-请注意，如果你想要在 Server Core for Windows Server 2012 R2 或独立的 Hyper-V Server 2012 R2 上安装提供程序，请执行以下操作：
+	> [AZURE.NOTE]也可使用以下命令行来安装 Azure Site Recovery 提供程序。此命令可用来将提供程序安装在 Server CORE for Windows Server 2012 R2 上
+	>
+	>1. 将提供程序安装文件和注册密钥下载到某个文件夹（例如 C:\\ASR）中
+	>2. 使用 **Administrator** 权限从命令提示符处执行以下命令，以便提取提供程序安装程序
+	>
+	    C:\\Windows\\System32> CD C:\\ASR
+	    C:\\ASR>AzureSiteRecoveryProvider.exe /x:. /q
+	>4. 执行以下命令以安装提供程序
+	>
+	    C:\\ASR> setupdr.exe /i
+	>5. 运行以下命令以注册提供程序
+	>
+	    	CD C:\Program Files\Azure Site Recovery Provider\
+	    	C:\Program Files\Azure Site Recovery Provider> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file>
 
-1. 下载提供程序安装文件和注册密钥。
-2. 通过键入以下命令提取提供程序安装程序：
+	>----------
+	>####命令行安装参数列表####
+	>- **/Credentials**：用于指定注册密钥文件所在位置的必需参数  
+	> - **/FriendlyName**：在 Azure Site Recovery 门户中显示的 Hyper-V 主机服务器名称的必需参数。
+	> - **/proxyAddress**：可选参数，用于指定代理服务器的地址。
+	> - **/proxyport**：可选参数，用于指定代理服务器的端口。
+	> - **/proxyUsername**：可选参数，用于指定代理服务器用户名（如果代理服务器要求身份验证）。
+	> - **/proxyPassword**：可选参数，用于指定密码，以便通过代理服务器进行身份验证（如果代理服务器要求身份验证）。
 
-	`C:\Windows\System32> CD C:\ASR` `C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q`
-3. 键入以下命令以安装提供程序：`C:\ASR> setupdr.exe /i`
-4. 键入以下命令以注册服务器：`C:\ASR> DRConfigurator.exe /r /Credentials <Path to the registration key file> /FriendlyName <Name of the Hyper-V host>`
+>[AZURE.NOTE]你可以配置各个 Hyper-V 主机，以便使用不同的网络带宽设置将虚拟机复制到 Azure。详细了解[如何管理本地到 Azure 保护网络带宽使用](https://support.microsoft.com/zh-cn/kb/3056159)
 
-	- /Credentials：用于指定注册密钥文件所在位置的必需参数。
-	- /FriendlyName：在 Azure Site Recovery 门户中显示的 Hyper-V 主机服务器名称的必需参数。
-	- 可选的代理参数：
-		- /proxyAddress <address>：代理服务器的地址
-		- /proxyport <port>：代理服务器的端口
-		- /proxyUsername <username>：当代理需要身份验证时使用的凭据。
-		- proxyPassword <password>
 
 ## 步骤 4：创建 Azure 资源
 
@@ -180,7 +197,8 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 
 ## 步骤 5：创建并配置保护组
 
-保护组是你想要使用相同的保护设置保护的虚拟机的逻辑分组。可以将保护设置应用到保护组，这些设置将应用到你在组添加的所有虚拟机。1.在“创建和配置保护组”中，单击“创建保护组”。如果缺少任何必备组件，系统将发出一条消息，你可以单击“查看详细信息”来了解详细信息。
+保护组是你想要使用相同的保护设置保护的虚拟机的逻辑分组。可以将保护设置应用到保护组，这些设置将应用到你在组添加的所有虚拟机。
+1.在“创建和配置保护组”中，单击“创建保护组”。如果缺少任何必备组件，系统将发出一条消息，你可以单击“查看详细信息”来了解详细信息。
 
 2. 在“保护组”选项卡中，添加一个保护组。指定名称、源 Hyper-V 站点、目标 **Azure**、你的 Azure Site Recovery 订阅名称和 Azure 存储帐户。
 
@@ -207,13 +225,13 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 	随后将开始运行“启用保护”作业。你可以在“作业”选项卡上跟踪进度。在“完成保护”作业运行之后，虚拟机就可以进行故障转移了。
 3. 在设置保护后，你可以：
 
-	- 在“受保护的项”>“保护组”>“protectiongroup\_name”>“虚拟机”中查看虚拟机。可以在“属性”选项卡中深入查看虚拟机详细信息。
-	- 在“受保护的项”>“保护组”>“protectiongroup\_name”>“虚拟机”>“virtual\_machine\_name”>“配置”中配置虚拟机的故障转移属性。你可以配置：
+	- 在“受保护的项”>“保护组”>*protectiongroup_name*>“虚拟机”中查看虚拟机。可以在“属性”选项卡中深入查看虚拟机详细信息。
+	- 在“受保护的项”>“保护组”>*protectiongroup_name*>“虚拟机”>*virtual_machine_name*>“配置”中配置虚拟机的故障转移属性。你可以配置：
 		- **名称**：虚拟机在 Azure 中的名称。
 		- **大小**：故障转移的虚拟机的目标大小。
 
 		![配置虚拟机属性](./media/site-recovery-hyper-v-site-to-azure/VMProperties.png)
-	- 在“受保护的项”>“保护组”>“protectiongroup\_name”>“虚拟机”>“virtual\_machine\_name”>“配置”中配置其他虚拟机设置，包括：
+	- 在“受保护的项”>“保护组”>*protectiongroup_name*>“虚拟机”>*virtual_machine_name*>“配置”中配置其他虚拟机设置，包括：
 
 		- **网络适配器**：网络适配器数目根据你为目标虚拟机指定的大小来确定。
 			- 大型 (A3) 和 A6：2
@@ -235,22 +253,21 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 
 		![配置虚拟机属性](./media/site-recovery-hyper-v-site-to-azure/SRHVSite_VMMultipleNic.png)
 
+## 步骤 7：创建恢复计划
 
-### <a id="recoveryplans"></a>步骤 7：测试部署
+为了对部署进行测试，你可以针对单个虚拟机或单个恢复计划（其中包含一个或多个虚拟机）运行测试性故障转移。若要创建恢复计划，请[遵循这些说明](/documentation/articles/site-recovery-create-recovery-plans)
+
+## 步骤 8：测试部署
 
 可通过两种方式运行到 Azure 的测试故障转移。
 
 - 没有 Azure 网络的测试故障转移—此类型的测试故障转移检查虚拟机是否可以正常在 Azure 中运行。在故障转移后，虚拟机不会连接到任何 Azure 网络。
 - 具有 Azure 网络的测试故障转移—此类型的故障转移检查整个复制环境是否可以按预期运行，并且在故障转移后，虚拟机将连接到指定的目标 Azure 网络。对于测试故障转移的子网处理，将根据副本虚拟机的子网确定测试虚拟机的子网。这不同于常规复制，在常规复制中，副本虚拟机的子网是根据源虚拟机的子网确定的。
 
-如果你希望在不指定 Azure 目标网络的情况下为启用了保护的虚拟机运行到 Azure 的测试故障转移，则不需要做任何准备。若要运行具有目标 Azure 网络的测试故障转移，你将需要创建一个与你的 Azure 生产网络相隔离的新 Azure 网络（你在 Azure 中新建网络时的默认行为），并设置基础结构以便复制的虚拟机可以按预期方式工作。使用，可以使用 Azure Site Recovery 将包含域控制器和 DNS 的虚拟机复制到 Azure，并可以使用测试故障故障转移在测试网络中创建此类虚拟机。若要运行测试故障转移，请执行以下步骤：
+如果你希望在不指定 Azure 目标网络的情况下为启用了保护的虚拟机运行到 Azure 的测试故障转移，则不需要做任何准备。若要运行具有目标 Azure 网络的测试性故障转移，你将需要创建一个与你的 Azure 生产网络相隔离的新 Azure 网络（你在 Azure 中新建网络时的默认行为）。看看如何[运行测试性故障转移](/documentation/articles/site-recovery-failover#run-a-test-failover)，以获取更多详细信息。
 
 
-1. 在将用于本地虚拟机的实际测试故障转移的同一网络中，对包含域控制器和 DNS 的虚拟机执行测试故障转移。
-2. 记下分配给故障转移后的 DNS 虚拟机的 IP 地址。
-3. 在将用于故障转移的 Azure 虚拟网络中，将这两个 IP 地址添加为 DNS 服务器的地址。
-4. 在指定 Azure 测试网络的情况下运行源本地虚拟机的测试故障转移。
-5. 在验证测试故障转移按预期方式工作后，将测试故障转移标记为已针对恢复计划完成，然后将测试故障转移标记为已针对域控制器和 DNS 虚拟机完成。
+你还需要设置已复制虚拟机的基础结构，使之能够正常工作。使用，可以使用 Azure Site Recovery 将包含域控制器和 DNS 的虚拟机复制到 Azure，并可以使用测试故障故障转移在测试网络中创建此类虚拟机。如需更多详细信息，请参阅 [Active Directory 的测试性故障转移注意事项](/documentation/articles/site-recovery-active-directory#considerations-for-test-failover)部分。
 
 若要运行测试故障转移，请执行以下操作：
 
@@ -264,7 +281,7 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 5. 在故障转移后，你将能够在 Azure 门户中看到虚拟机测试副本。如果你已设置为从本地网络访问虚拟机，则可以启动与虚拟机的远程桌面连接。
 
 	1. 验证虚拟机成功启动。
-    2. 如果想要在故障转移之后使用远程桌面连接到 Azure 中的虚拟机，请在虚拟机上启用远程桌面连接，然后运行测试故障转移。还需要在虚拟机上添加 RDP 终结点。你可以利用 [Azure 自动化 Runbook](site-recovery-runbook-automation) 来执行此操作。
+    2. 如果想要在故障转移之后使用远程桌面连接到 Azure 中的虚拟机，请在虚拟机上启用远程桌面连接，然后运行测试故障转移。还需要在虚拟机上添加 RDP 终结点。你可以利用 [Azure 自动化 Runbook](/documentation/articles/site-recovery-runbook-automation) 来执行此操作。
     3. 故障转移后，如果想要在远程桌面中使用公共 IP 地址连接到 Azure 中的虚拟机，请确保没有任何域策略阻止你使用公共地址连接到虚拟机。
 
 6. 完成测试后，执行以下操作：
@@ -278,4 +295,8 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 	4. 单击“说明”以记录并保存与测试故障转移相关联的任何观测结果。
 	5.  单击“测试故障转移已完成”。清理测试环境以自动关闭电源，并删除测试虚拟机。
 
-<!---HONumber=71-->
+## 后续步骤
+
+设置并运行部署以后，请[详细了解](/documentation/articles/site-recovery-failover)故障转移。
+
+<!---HONumber=79-->

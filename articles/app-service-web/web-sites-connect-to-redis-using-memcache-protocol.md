@@ -1,5 +1,7 @@
+<!-- not suitable for Mooncake -->
+
 <properties
-   pageTitle="通过 Memcache 协议将 Azure App Service 中的 Web 应用连接到 Redis 缓存"
+   pageTitle="通过 Memcache 协议将 Azure 网站中的 Web 应用连接到 Redis 缓存"
    description="使用 Memcache 协议将 Azure App Service 中的 Web 应用连接到 Redis 缓存"
    services="app-service\web"
    documentationCenter="php"
@@ -12,11 +14,11 @@
    ms.date="06/30/2015"
    wacn.date=""/>
 
-# 通过 Memcache 协议将 Azure App Service 中的 Web 应用连接到 Redis 缓存
+# 通过 Memcache 协议将 Azure 网站中的 Web 应用连接到 Redis 缓存
 
-在本文中，你将学习如何使用 [Memcache][13] 协议将 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) 中的 WordPress Web 应用连接到 [Azure Redis 缓存][12]。如果你有将 Memcached 服务器用于内存缓存的现有 Web 应用，则可以将其迁移到 Azure App Service，并使用 Microsoft Azure 中的第一方缓存解决方案，其中对你的应用程序代码进行少量更改或无更改。此外，你可以利用现有的 Memcache 专业知识在 Azure App Service（带有用于内部缓存的 Azure Redis 缓存）中创建高度可缩放的分布式应用，同时使用常用的应用程序框架，例如 .NET、PHP、Node.js、Java 和 Python。
+在本文中，你将学习如何使用 [Memcache][13] 协议将 [Azure 网站](/documentation/services/web-sites/)中的 WordPress Web 应用连接到 [Azure Redis 缓存][12]。如果你的现有 Web 应用使用 Memcached 服务器作为内存中缓存，则你可以将其迁移到 Azure 网站，并使用 Microsoft Azure 中的第一方缓存解决方案，其中对你的应用程序代码进行少量更改或无更改。此外，你可以利用现有的 Memcache 专业知识，在使用 Azure Redis 缓存作为内存中缓存的 Azure 网站中创建高度可缩放的分布式应用，同时使用常用的应用程序框架，例如 .NET、PHP、Node.js、Java 和 Python。
 
-App Service Web Apps 使用 Web Apps Memcache 填充码启用该应用程序方案，这是充当 Memcache 代理服务器的本地 Memcached 服务器，用于缓存对 Azure Redis 缓存的调用。这使得使用 Memcache 协议通信的任何应用可以使用 Redis 缓存缓存数据。此 Memcache 填充码在协议级别运行，因此只要它使用 Memcached 协议通信，就可以供任何应用程序或应用程序框架使用。
+Azure 网站使用 Web Apps Memcache 填充码启用该应用程序方案，这是充当 Memcache 代理服务器的本地 Memcached 服务器，用于缓存对 Azure Redis 缓存的调用。这使得使用 Memcache 协议通信的任何应用可以使用 Redis 缓存缓存数据。此 Memcache 填充码在协议级别运行，因此只要它使用 Memcached 协议通信，就可以供任何应用程序或应用程序框架使用。
 
 ## 先决条件
 
@@ -28,11 +30,11 @@ Web Apps Memcache 填充码可以与任何应用程序一起使用，前提是�
 * [设置 Azure Redis Cache Service 的实例][1]
 * [在 Azure 中部署可缩放的 WordPress 站点][0]
 
-部署可缩放的 WordPress 站点并设置 Redis 缓存实例后，你随时可以启用 Azure App Service Web Apps 中的 Memcache 填充码。
+部署可缩放的 WordPress 站点并设置 Redis 缓存实例后，你随时可以启用 Azure 网站中的 Memcache 填充程序。
 
 ## 启用 Web Apps Memcache 填充码
 
-若要配置 Memcache 填充码，你必须创建三项应用设置。这可以使用多种方法来完成，其中包括 [Azure 门户](http://go.microsoft.com/fwlink/?LinkId=529715)、[旧门户][3]、[Azure PowerShell Cmdlet][5] 或 [ Azure 命令行界面][5]。在本文中，我将使用 [Azure 门户][4]来设置应用设置。从 Redis 缓存实例的“设置”边栏选项卡中，可以检索以下值。
+若要配置 Memcache 填充码，你必须创建三项应用设置。这可以使用多种方法来完成，其中包括 [Azure 管理门户](https://manage.windowsazure.cn/)、[管理门户][3]、[Azure PowerShell Cmdlet][5] 或 [ Azure 命令行界面][5]。在本文中，我将使用 [Azure 管理门户][4]来设置应用设置。从 Redis 缓存实例的“设置”边栏选项卡中，可以检索以下值。
 
 ![Azure Redis 缓存设置边栏选项卡](./media/web-sites-connect-to-redis-using-memcache-protocol/1-azure-redis-cache-settings.png)
 
@@ -70,7 +72,7 @@ Web Apps Memcache 填充码可以与任何应用程序一起使用，前提是�
 
 ### 下载 php\_memcache 扩展
 
-浏览到“PECL”[][6]，在缓存类别下单击“memcache”[][7]。在下载列中，单击 DLL 链接。
+浏览到“PECL”，在缓存类别下单击“memcache”。[][6][][7]在下载列中，单击 DLL 链接。
 
 ![PHP PECL 网站](./media/web-sites-connect-to-redis-using-memcache-protocol/7-php-pecl-website.png)
 
@@ -80,7 +82,7 @@ Web Apps Memcache 填充码可以与任何应用程序一起使用，前提是�
 
 ### 启用 php\_memcache 扩展
 
-下载文件之后，将 **php\_memcache.dll** 解压缩并上载到 **d:\\home\\site\\wwwroot\\bin\\ext\** 目录。php\_memcache.dll 上载到 Web 应用之后，需要启用扩展，使之成为 PHP Runtime 的扩展。若要在 Azure 门户中启用 Memcache 扩展，请打开 Web 应用的“应用程序设置”边栏选项卡，然后添加密钥为 **PHP\_EXTENSIONS**、值为 **bin\\ext\\php\_memcache.dll** 的新应用设置。
+下载文件之后，将 **php\_memcache.dll** 解压缩并上载到 **d:\\home\\site\\wwwroot\\bin\\ext\** 目录。php\_memcache.dll 上载到 Web 应用之后，需要启用扩展，使之成为 PHP Runtime 的扩展。若要在 Azure 管理门户中启用 Memcache 扩展，请打开 Web 应用的“应用程序设置”边栏选项卡，然后添加密钥为 **PHP\_EXTENSIONS**、值为 **bin\\ext\\php\_memcache.dll** 的新应用设置。
 
 
 > 如果 Web 应用需要加载多个 PHP 扩展，则 PHP\_EXTENSIONS 的值应为由逗号分隔的 DLL 文件相对路径的列表。
@@ -97,7 +99,7 @@ Web Apps Memcache 填充码可以与任何应用程序一起使用，前提是�
 
 ![WordPress 插件页](./media/web-sites-connect-to-redis-using-memcache-protocol/10-wordpress-plugin.png)
 
-在搜索框中，键入 **memcached**，然后按“Enter”键。
+在搜索框中，键入 **memcached**，然后按 **Enter** 键。
 
 ![WordPress 添加新项插件](./media/web-sites-connect-to-redis-using-memcache-protocol/11-wordpress-add-new-plugin.png)
 
@@ -143,7 +145,7 @@ $memcached_servers = array(
 
 ![Azure Redis 缓存访问端口](./media/web-sites-connect-to-redis-using-memcache-protocol/16-azure-redis-cache-access-port.png)
 
-单击“否”，以**允许仅通过 SSL 访问**。
+单击“只允许通过 SSL 访问”旁边的“否”。
 
 ![Azure Redis 缓存访问端口仅限 SSL](./media/web-sites-connect-to-redis-using-memcache-protocol/17-azure-redis-cache-access-port-ssl-only.png)
 
@@ -161,7 +163,7 @@ $memcached_servers = array(
 redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –p 6379
 ```
 
-将 **<hostname-for-redis-cache>** 替换为实际的 xxxxx.redis.cache.windows.net 主机名，将 **<primary-key-for-redis-cache>** 替换为缓存的访问密钥，然后按“Enter”。CLI 连接到 Redis 缓存实例之后，发出任何 Redis 命令。在下面的屏幕截图中，我已选择列出密钥。
+将 **<hostname-for-redis-cache>** 替换为实际的 xxxxx.redis.cache.chinacloudapi.cn 主机名，将 **<primary-key-for-redis-cache>** 替换为缓存的访问密钥，然后按 **Enter**。CLI 连接到 Redis 缓存实例之后，发出任何 Redis 命令。在下面的屏幕截图中，我已选择列出密钥。
 
 ![在终端从 Redis CLI 连接到 Azure Redis 缓存](./media/web-sites-connect-to-redis-using-memcache-protocol/19-redis-cli-terminal.png)
 
@@ -171,11 +173,11 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 
 祝贺你！ WordPress 应用现在有了集中式的内存中缓存，这将有助于提高吞吐量。请记住，Web Apps Memcache 填充码可以与任何 Memcache 客户端结合使用，无需考虑编程语言或应用程序框架。若要提供反馈或者提问有关 Web Apps Memcache 填充码的问题，请在 [MSDN 论坛][10]或 [Stackoverflow][11] 上发布相关文章。
 
->[AZURE.NOTE]如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。你不需要使用信用卡，也不需要做出承诺。
+>[AZURE.NOTE]若想要在注册 Azure 帐户前开始使用 Azure 网站，请转至[试用 Azure 网站](http://go.microsoft.com/fwlink/?LinkId=523751)，在此处，可立即在 Azure 网站中创建临时初学者 Web 应用。你不需要使用信用卡，也不需要做出承诺。
 
 ## 发生的更改
-* 有关从网站更改为 App Service 的指南，请参阅 [Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 有关从旧门户更改为新门户的指南，请参阅：[有关在预览门户中导航的参考](http://go.microsoft.com/fwlink/?LinkId=529715)
+* 有关从网站更改为 Azure 网站的指南，请参阅：[Azure 网站及其对现有 Azure 服务的影响](/documentation/services/web-sites/)
+* 有关从管理门户更改为新门户的指南，请参阅[有关在预览门户中导航的参考](https://manage.windowsazure.cn/)
 
 
 [0]: http://bit.ly/1F0m3tw
@@ -194,4 +196,4 @@ redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –
 [13]: http://memcached.org
  
 
-<!---HONumber=71-->
+<!---HONumber=79-->

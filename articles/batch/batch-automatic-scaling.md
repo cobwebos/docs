@@ -15,7 +15,7 @@
 
 # 自动缩放 Azure 批处理池中的计算节点
 
-自动缩放 Azure 批处理池中的计算节点是指动态调整应用程序使用的处理能力。这种调整灵活性节省了时间和资金。若要了解有关计算节点和池的详细信息，请参阅 [Azure 批次技术概述](/documentation/articles/batch-technical-overview)。
+自动缩放 Azure 批处理池中的计算节点是指动态调整应用程序使用的处理能力。这种调整灵活性节省了时间和资金。若要了解有关计算节点和池的详细信息，请参阅 [Azure 批次技术概述](batch-technical-overview.md)。
 
 如果对池启用了相应的功能并将某个公式与池相关联，则会发生自动缩放。该公式用于确定处理应用程序所需的计算节点数。对定期收集的样本进行操作时，池中可用计算节点的数目会根据关联的公式每 15 分钟调整一次。
 
@@ -66,7 +66,7 @@
    </tr>
 </table>
 
-你只能读取这些系统定义变量的值，以根据样本中计算节点的度量值进行调整。
+*获取*这些**系统定义变量**的值即可根据样本中计算节点的度量值进行调整。这些变量是只读变量。
 
 <table>
   <tr>
@@ -154,20 +154,20 @@
 	- minute (00-59)
 	- second (00-59)
 - timeinterval
-	- TimeInterval\_Zero
-	- TimeInterval\_100ns
-	- TimeInterval\_Microsecond
-	- TimeInterval\_Millisecond
-	- TimeInterval\_Second
-	- TimeInterval\_Minute
-	- TimeInterval\_Hour
-	- TimeInterval\_Day
-	- TimeInterval\_Week
-	- TimeInterval\_Year
+	- TimeInterval_Zero
+	- TimeInterval_100ns
+	- TimeInterval_Microsecond
+	- TimeInterval_Millisecond
+	- TimeInterval_Second
+	- TimeInterval_Minute
+	- TimeInterval_Hour
+	- TimeInterval_Day
+	- TimeInterval_Week
+	- TimeInterval_Year
 
 ### 操作
 
-上面所列的类型允许的**操作**。
+上面所列的类型允许的**操作**：
 
 <table>
   <tr>
@@ -246,7 +246,7 @@
 
 ### 函数
 
-可以使用以下预定义函数来定义自动缩放公式。
+可以使用以下预定义**函数**来定义自动缩放公式。
 
 <table>
   <tr>
@@ -383,7 +383,7 @@
 
 ### 度量值
 
-在定义公式时，你可以使用资源和任务**度量值**，这些度量值看用于管理池中的计算节点。
+在定义公式时，你可以使用资源和任务**度量值**，这些度量值可用于管理池中的计算节点。
 
 <table>
   <tr>
@@ -399,29 +399,28 @@
     </ul></p>
     <p>这些系统定义变量用于根据节点资源度量值进行调整：</p>
     <p><ul>
-     <li>$CPUPercent</li>
-     <li>$WallClockSeconds</li>
-     <li>$MemoryBytes</li>
-     <li>$DiskBytes</li>
-     <li>$DiskReadBytes</li>
-     <li>$DiskWriteBytes</li>
-     <li>$DiskReadOps</li>
-     <li>$DiskWriteOps</li>
-     <li>$NetworkInBytes</li>
-     <li>$NetworkOutBytes</li></ul></p>
+      <li>$CPUPercent</li>
+      <li>$WallClockSeconds</li>
+      <li>$MemoryBytes</li>
+      <li>$DiskBytes</li>
+      <li>$DiskReadBytes</li>
+      <li>$DiskWriteBytes</li>
+      <li>$DiskReadOps</li>
+      <li>$DiskWriteOps</li>
+      <li>$NetworkInBytes</li>
+      <li>$NetworkOutBytes</li></ul></p>
  
   </tr>
   <tr>
     <td>任务</td>
     <td><p>根据任务的状态，例如“活动”、“挂起”和“已完成”。</p>
-    <p>这些系统变量用于根据任务度量值进行调整：</p>
+    <p>这些系统定义变量用于根据任务度量值进行调整：</p>
     <p><ul>
       <li>$ActiveTasks</li>
       <li>$RunningTasks</li>
       <li>$SucceededTasks</li>
       <li>$FailedTasks</li>
-      <li>$CurrentDedicated</li></ul></p>
-
+      <li>$CurrentDedicated</li></ul></p></td>
   </tr>
 </table>
 
@@ -455,9 +454,9 @@
 
 若要在创建池时启用自动缩放功能，请使用以下方法之一：
 
-- [New-AzureBatchPool](https://msdn.microsoft.com/zh-cn/library/azure/mt125936.aspx) – 此 cmdlet 使用 AutoScaleFormula 参数来指定自动缩放公式。
-- [IPoolManager.CreatePool 方法](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.azure.batch.ipoolmanager.createpool.aspx) – 在调用此 .NET 方法创建池后，将对池设置 [ICloudPool.AutoScaleEnabled 属性](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.azure.batch.icloudpool.autoscaleenabled.aspx)和 [ICloudPool.AutoScaleFormula 情况](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.azure.batch.icloudpool.autoscaleformula.aspx)，以启用自动缩放。
-- [将池添加到帐户](https://msdn.microsoft.com/zh-cn/library/azure/dn820174.aspx) – 创建池后，此 REST API 中使用的 enableAutoScale 和 autoScaleFormula 元素将为池设置自动缩放。
+- [New-AzureBatchPool](https://msdn.microsoft.com/library/azure/mt125936.aspx) – 此 Azure PowerShell cmdlet 使用 AutoScaleFormula 参数来指定自动缩放公式。
+- [BatchClient.PoolOperations.CreatePool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx) – 在调用此 .NET 方法创建池后，将设置池的 [CloudPool.AutoScaleEnabled](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscaleenabled.aspx) 和 [CloudPool.AutoScaleFormula](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscaleformula.aspx) 属性，以启用自动缩放。
+- [将池添加到帐户](https://msdn.microsoft.com/library/azure/dn820174.aspx) – 创建池后，此 REST API 请求中使用的 enableAutoScale 和 autoScaleFormula 元素将为池设置自动缩放。
 
 > [AZURE.NOTE]如果池是使用上述方法之一创建的，则当你在池创建后设置自动缩放时，将不指定该池的 *targetDedicated* 参数（不能指定）。另请注意，如果你希望手动调整启用自动缩放功能的池的大小（例如，使用 [BatchClient.PoolOperations.ResizePool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.resizepool.aspx) 来调整），则必须先禁用该池的自动缩放功能，然后再调整池的大小。
 
@@ -470,10 +469,10 @@
 
 ## 创建池后启用自动缩放
 
-如果你使用 targetDedicated 参数设置了包含指定计算节点数的池，则以后可以更新现有池以自动缩放。可以通过以下方法之一实现此目的：
+如果你使用 *targetDedicated* 参数设置了包含指定计算节点数的池，则以后可以更新现有池以自动缩放。通过以下方法之一执行这种检查：
 
-- [IPoolManager.EnableAutoScale 方法](https://msdn.microsoft.com/zh-cn/library/azure/dn931709.aspx) – 此 .NET 方法需要现有池的名称和自动缩放公式。
-- [启用/禁用自动缩放](https://msdn.microsoft.com/zh-cn/library/azure/dn820173.aspx) – 此 REST API 需要 URI 中现有池的名称，以及请求正文中的自动缩放公式。
+- [BatchClient.PoolOperations.EnableAutoScale](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.enableautoscale.aspx) – 此 .NET 方法需要现有池的 ID 和自动缩放公式才能应用到池。
+- [允许对池进行自动缩放](https://msdn.microsoft.com/library/azure/dn820173.aspx) – 此 REST API 请求要求 URI 中存在现有池的 ID，以及请求正文中存在自动缩放公式。
 
 > [AZURE.NOTE]如果某个值是在创建池时为 *targetDedicated* 参数指定的，则会在评估自动缩放公式时忽略该值。
 
@@ -610,4 +609,4 @@
         * [Get-AzureBatchRDPFile](https://msdn.microsoft.com/library/mt149851.aspx) – 此 PowerShell cmdlet 从指定的计算节点获取 RDP 文件，并将其保存到指定的文件位置或流。
 2.	某些应用程序会生成大量难以处理的数据。解决此问题的方法之一是进行[有效的列表查询](batch-efficient-list-queries.md)。
 
-<!---HONumber=74-->
+<!---HONumber=79-->

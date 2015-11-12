@@ -4,7 +4,7 @@
    services="active-directory" 
    documentationCenter="" 
    authors="shoatman" 
-   manager="terrylanfear" 
+   manager="stevenpo"
    editor="billmath"/>
 
 <tags 
@@ -18,7 +18,7 @@
 
 ## 下载 Azure AD Connect
 
-若要开始使用 Azure AD Connect，可以使用以下链接下载最新版本：[下载 Azure AD Connect 公共预览版](http://connect.microsoft.com/site1164/program8612)
+若要开始使用 Azure AD Connect，可以使用以下链接下载最新版本：[下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)
 
 ## 安装 Azure AD Connect 之前
 在安装 Azure AD Connect 以及从 DirSync 升级之前，你需要做好以下几项准备。
@@ -141,8 +141,7 @@ UI 中会显示以下选项：
 7. 单击“下一步”。   
 8. 在“已准备好配置”页上，保留选中“配置完成后立即开始同步过程”。  
 
-> [AZURE.NOTE]将会开始 Windows Server Active Directory 和 Azure Active Directory 之间的同步，但不会将任何更改导出到 Azure AD。每次只能有一个同步工具在主动导出更改。
-9. 单击“安装”。
+> [AZURE.NOTE]将会开始 Windows Server Active Directory 和 Azure Active Directory 之间的同步，但不会将任何更改导出到 Azure AD。每次只能有一个同步工具在主动导出更改。9.单击“安装”。
 
 > [AZURE.NOTE]取消选中“开始同步”复选框，确保 DirSync（仍已安装并正在运行）和 Azure AD Connect 未尝试同时写入到 AAD。
 
@@ -200,7 +199,7 @@ UI 中会显示以下选项：
 * [Azure AD Connect 工作原理](/documentation/articles/active-directory-aadconnect-how-it-works)
 * [Azure AD Connect 后续步骤](/documentation/articles/active-directory-aadconnect-whats-next)
 * [了解详细信息](/documentation/articles/active-directory-aadconnect-learn-more)
-* [MSDN 上的 Azure AD Connect](https://msdn.microsoft.com/zh-cn/library/azure/dn832695.aspx)
+* [MSDN 上的 Azure AD Connect](/documentation/articles/active-directory-aadconnect)
  
 
-<!---HONumber=76-->
+<!---HONumber=79-->

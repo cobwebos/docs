@@ -4,12 +4,12 @@
 	services="active-directory" 
 	documentationCenter="" 
 	authors="curtand"
-	manager="msStevenPo"
+	manager="stevenpo"
 	editor=""/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="05/12/2015"
+	ms.date="08/14/2015"
 	wacn.date="" />
 
 # 将自己的域名添加到 Azure AD
@@ -65,7 +65,8 @@ Office 365 用户可能对下列相关主题感兴趣：
         1. 确保选中“我计划配置此域为使用本地 Active Directory 进行单点登录”复选框，然后单击“添加”按钮。
         2. 在看到已成功向 Azure AD 添加域的消息后，单击箭头移到下一页，然后遵照该页上的指示配置你为单一登录添加的域。
 
-> [AZURE.NOTE]将域名添加到 Azure AD 并验证此域后，可以更改新电子邮件地址的默认域名。有关详细信息，请参阅[如何更改用户的主域名？](#how-can-i-change-the-primary-domain-name-for-users?) 还可以编辑现有用户帐户的配置文件，以将电子邮件地址（同时也是你的用户 ID）更新为使用自定义域名而不是 partner.onmschina.cn 域。
+> [AZURE.NOTE]
+> 将域名添加到 Azure AD 并验证此域后，可以更改新电子邮件地址的默认域名。有关详细信息，请参阅[如何更改用户的主域名？](#how-can-i-change-the-primary-domain-name-for-users?) 还可以编辑现有用户帐户的配置文件，以将电子邮件地址（同时也是你的用户 ID）更新为使用自定义域名而不是 partner.onmschina.cn 域。
 
 ### 编辑云服务的 DNS 记录
 
@@ -209,4 +210,4 @@ Office 365 提供了[针对公共域注册机构的具体说明](https://support
 - [以组织身份注册 Azure](sign-up-organization)
 - [在 Azure AD 中管理域](https://msdn.microsoft.com/zh-cn/library/azure/dn919677.aspx)
 
-<!---HONumber=76-->
+<!---HONumber=79-->

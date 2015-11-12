@@ -1,5 +1,5 @@
 <properties
- pageTitle="设置 Linux RDMA 群集以运行 MPI 应用程序 | Windows Azure"
+ pageTitle="设置 Linux RDMA 群集以运行 MPI 应用程序 | Microsoft Azure"
  description="了解如何创建 A8 或 A9 大小 VM 的 Linux 群集以使用 RDMA 运行 MPI 应用。"
  services="virtual-machines"
  documentationCenter=""
@@ -7,10 +7,9 @@
  manager="timlt"
  editor=""/>
 <tags
-ms.service="virtual-machines"
-
- ms.date="07/17/2015"
- wacn.date=""/>
+	ms.service="virtual-machines"
+	 ms.date="07/17/2015"
+	 wacn.date=""/>
 
 # 设置 Linux RDMA 群集以运行 MPI 应用程序
 
@@ -94,7 +93,7 @@ azure vm create -g <username> -p <password> -c <cloud-service-name> -l <location
 
 在 VM 完成预配后，使用 VM 的外部 IP 地址（或 DNS 名称）和你配置的外部端口号通过 SSH 登录到 VM，然后对其进行自定义。有关连接详细信息，请参阅[如何登录到运行 Linux 的虚拟机](/documentation/articles/virtual-machines-linux-how-to-log-on)。
 
->[AZURE.NOTE]Windows Azure 不提供对 Linux VM 的根访问权限。若要在以用户身份连接时获得管理访问权限，可以使用 `sudo –s`。
+>[AZURE.NOTE]Microsoft Azure 不提供对 Linux VM 的根访问权限。若要在以用户身份连接时获得管理访问权限，可以使用 `sudo –s`。
 
 **更新** - 你可以使用 **zypper** 和 NFS 实用工具安装更新。
 
@@ -134,7 +133,7 @@ $ ssh-keygen
 $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 
-在 /.ssh 目录中编辑或创建 ssh_config 文件。提供将在 Azure 中使用的专用网络的 IP 地址范围：
+在 /.ssh 目录中编辑或创建 ssh\_config 文件。提供将在 Azure 中使用的专用网络的 IP 地址范围：
 
 ```
 host 10.32.0.*
@@ -187,7 +186,7 @@ azure vm capture -t <vm-name> <image-name>
 ### Select a region where A8 and A9 VMs are available, such as West US
 ### See Azure Pricing pages for prices and availability of A8 and A9 VMs
 
-azure network vnet create -l "West US" –e 10.32.0.0 <network-name>
+azure network vnet create -l "China East" –e 10.32.0.0 -i 16 <network-name>
 
 ### Create a cloud service. All the A8 and A9 instances need to be in the same cloud service for Linux RDMA to work across InfiniBand.
 ### Note: The current maximum number of VMs in a cloud service is 50. If you need to provision more than 50 VMs in the same cloud service in your cluster, contact Azure Support.
@@ -205,7 +204,7 @@ portnumber=101
 ### In this cluster there will be 8 size A9 nodes, named cluster11 to cluster18. Specify your captured image in <image-name>.
 
 for (( i=11; i<19; i++ )); do
-        azure vm create -g <username> -p <password> -c <cloud-service-name> -z A9 -n $vmname$i -e $portnumber$i <image-name>
+        azure vm create -g <username> -p <password> -c <cloud-service-name> -z A9 -n $vmname$i -e $portnumber$i -w <network-name> -b Subnet-1 <image-name>
 done
 
 ### Save this script and run it at the CLI prompt to provision your cluster
@@ -253,7 +252,7 @@ private ip address2:16
 你可以运行以下 Intel MPI 命令，以通过使用 pingpong 基准来验证群集配置。
 
 ```
-/opt/intel/impi_latest/bin64/mpirun -hosts <host1>, <host2> -ppn 1 -n 2 -env I_MPI_FABRICS dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0
+/opt/intel/impi_latest/bin64/mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS dapl -env I_MPI_DAPL_PROVIDER=ofa-v2-ib0 -env I_MPI_DYNAMIC_CONNECTION=0 /opt/intel/impi_latest/bin64/IMB-MPI1 pingpong
 
 /opt/intel/impi_latest/bin64/IMB-MPI1 pingpong
 ```
@@ -338,4 +337,4 @@ private ip address2:16
 
 * 有关 Intel MPI 的指南，请参阅 [Intel MPI 库文档](https://software.intel.com/zh-cn/articles/intel-mpi-library-documentation/)。
 
-<!---HONumber=67-->
+<!---HONumber=79-->

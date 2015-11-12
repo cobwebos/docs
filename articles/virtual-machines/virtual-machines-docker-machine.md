@@ -1,10 +1,25 @@
-<properties pageTitle="如何在 Azure 上使用 docker-machine" description="演示如何在 Azure 上启动和运行 Ubuntu 上的 Docker 计算机。" services="virtual-machines" documentationCenter="virtual-machines" authors="squillace" manager="timlt" editor="tysonn"/>
+<properties
+   pageTitle="将 docker-machine 与 Azure 起使用 | Microsoft Azure"
+   description="演示如何使用经典部署模型在 Azure 上启动和运行 Ubuntu 上的 Docker 计算机。"
+   services="virtual-machines"
+   documentationCenter="virtual-machines"
+   authors="squillace"
+   manager="timlt"
+   editor="tysonn"
+   tags="azure-service-management"/>
 
-<tags ms.service="virtual-machines" ms.date="05/25/2015" wacn.date=""/>
+<tags
+   ms.service="virtual-machines"
+   ms.date="09/22/2015"
+   wacn.date=""/>
 
 # 如何将 docker-machine 与 Azure 一起使用
 
 本主题介绍如何将 [Docker](https://www.docker.com/) 与[计算机](https://github.com/docker/machine)和 [Azure CLI](https://github.com/Azure/azure-xplat-cli) 结合使用来创建 Azure 虚拟机，以便快速轻松地从运行 Ubuntu 的计算机管理 Linux 容器。为了演示，本教程将说明如何同时部署 [busybox Docker Hub 映像](https://registry.hub.docker.com/_/busybox/)和 [nginx Docker Hub 映像](https://registry.hub.docker.com/_/nginx/)，并配置容器将 Web 请求路由到 nginx 容器。（Docker **计算机**文档介绍如何针对其他平台修改这些说明。）
+
+
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
+
 
 完成本教程有一些先决条件。你将需要安装以下项：
 
@@ -16,7 +31,7 @@
 
 ## 获取 docker-machine - 或生成它
 
-熟悉 **docker-machine** 的最快方法是直接从[版本共享](https://github.com/docker/machine/releases)下载相应的发行版。本教程中的客户端计算机在 x64 计算机上运行 Ubuntu，因此 **docker-machine_linux amd64** 映像是所使用的那一个。
+熟悉 **docker-machine** 的最快方法是直接从[版本共享](https://github.com/docker/machine/releases)下载相应的发行版。本教程中的客户端计算机在 x64 计算机上运行 Ubuntu，因此 **docker-machine\_linux amd64** 映像是所使用的那一个。
 
 你还可以按照[提供给虚拟机](https://github.com/docker/machine#contributing)的步骤自己构建 **docker-machine**。为执行此生成你应准备好下载多达 1 GB 或更多的内容，但通过这样做你可以按所需方式准确地自定义自己的体验。
 
@@ -24,7 +39,7 @@
 
 <br />
 
->  无论你使用哪种方法，你都必须直接在命令行上调用二进制文件或将二进制文件放在路径（例如 **/usr/local/bin**）上。请记住，确保通过键入 `chmod +x` &lt;*`binaryName`*&gt; 将它标记为可执行文件，其中 &lt;*`binaryName`*&gt; 是 Docker 计算机可执行文件的名称。本教程使用 **docker-machine_linux-amd64**。
+>  无论你使用哪种方法，你都必须直接在命令行上调用二进制文件或将二进制文件放在路径（例如 **/usr/local/bin**）上。请记住，确保通过键入 `chmod +x` &lt;*`binaryName`*&gt; 将它标记为可执行文件，其中 &lt;*`binaryName`*&gt; 是 Docker 计算机可执行文件的名称。本教程使用 **docker-machine\_linux-amd64**。
 
 ## 为 docker、计算机和 Azure 创建证书和密钥文件
 
@@ -182,7 +197,7 @@
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 后续步骤
-转到 [Docker 用户指南](https://docs.docker.com/userguide/)并在 Windows Azure 上创建一些应用程序。或者，在 Azure 上玩 [**docker** 和 swarm](https://github.com/docker/swarm)](virtual-machines-docker-swarm)，并了解如何将 swarm 用于 docker 和 Azure。
+转到 [Docker 用户指南](https://docs.docker.com/userguide/)并在 Microsoft Azure 上创建一些应用程序。或者，在 Azure 上玩 [**docker** 和 swarm](https://github.com/docker/swarm)](virtual-machines-docker-swarm)，并了解如何将 swarm 用于 docker 和 Azure。
 
 <!--Image references-->
 [nginx]: ./media/virtual-machines-docker-machine/nginxondocker.png
@@ -196,4 +211,4 @@
 [Link 3 to another azure.microsoft.com documentation topic]: /documentation/articles/storage-whatis-account
  
 
-<!---HONumber=67-->
+<!---HONumber=79-->

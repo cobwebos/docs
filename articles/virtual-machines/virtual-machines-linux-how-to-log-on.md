@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="03/16/2015"
+	ms.date="08/25/2015"
 	wacn.date=""/>
 
 
@@ -49,4 +49,4 @@
 <!-- LINKS -->
 [如何为 Linux 虚拟机重置密码或 SSH]: http://go.microsoft.com/fwlink/p/?LinkId=512138
 
-<!---HONumber=70-->
+<!---HONumber=79-->

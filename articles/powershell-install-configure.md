@@ -9,12 +9,14 @@
 
 <tags
 	ms.service="multiple"
-	ms.date="02/20/2015"
+	ms.date="10/13/2015"
 	wacn.date=""/>
 
 # 如何安装和配置 Azure PowerShell#
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/documentation/articles/powershell-install-configure" title="PowerShell" class="current">PowerShell</a><a href="/documentation/articles/xplat-cli" title="Azure CLI">Azure CLI</a></div>
+<div class="dev-center-tutorial-selector sublanding"><a href="/documentation/articles/install-and-configure-windows-powershell/" title="PowerShell" class="current">PowerShell</a><a href="/manage/install-and-configure-cli/" title="Azure CLI">Azure CLI</a></div>
+
+> [AZURE.NOTE]**Azure PowerShell 1.0 预览版**现已在 [PowerShell 库](http://www.powershellgallery.com/)中发布。此预览版对以前的版本做了很多更改，我们将使用它来收集反馈，并会将它整合到 Azure PowerShell 1.0 中。**此预览版不适用于任务关键型应用程序**。如果你运行的是此类应用程序，请继续使用 Azure PowerShell 0.9.8。如果你使用了 1.0 预览版，可以随时将其卸载并重新改用 0.9.8。有关完整安装说明，请参阅此[博客文章](https://azure.microsoft.com/zh-CN/blog/azps-1-0-pre/)。
 
 你可以使用 Windows PowerShell 在 Azure 中执行各种任务，不管是在命令提示符下以交互方式，还是通过脚本自动执行执行。Azure PowerShell 是一个模块，提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet。你可以使用 cmdlet 来创建、测试、部署和管理通过 Azure 平台传送的解决方案和服务。在大多数情况下，这些 cmdlet 可让你执行在 Azure 管理门户中可以执行的任务。例如，你可以创建和配置云服务、虚拟机、虚拟网络和 Web 应用程序。
 
@@ -175,7 +177,7 @@ Azure 模块包含可帮助你下载和导入证书的 cmdlet。
 
 		Remove-AzureWebsite -Name mySite
 
-8. 若要完成该任务，请确认已删除 Web 应用程序。
+7. 若要完成该任务，请确认已删除 Web 应用程序。
 
 		Get-AzureWebsite -Name mySite
 
@@ -226,8 +228,7 @@ Azure 模块包含可帮助你下载和导入证书的 cmdlet。
 
 
 
-
-- Azure 库中也提供了有关 Azure PowerShell 模块中 cmdlet 的参考信息。有关信息，请参阅 [Azure Cmdlet 参考](http://msdn.microsoft.com/zh-cn/library/azure/jj554330.aspx)。
+- Azure 库中也提供了有关 Azure PowerShell 模块中 cmdlet 的参考信息。有关信息，请参阅 [Azure Cmdlet 参考](http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554330.aspx)。
 
 要获得社区中的帮助信息，请尝试以下常见论坛：
 
@@ -251,4 +252,10 @@ Azure 模块包含可帮助你下载和导入证书的 cmdlet。
 
 - 有关适用于 Azure AD 的 cmdlet 的信息，请参阅[使用 Windows PowerShell 管理 Azure AD](https://technet.microsoft.com/zh-cn/library/jj151815.aspx)。
 
-<!---HONumber=71-->
+
+
+
+
+  [Microsoft Online Services Customer Portal]: https://mocp.microsoftonline.com/site/default.aspx
+
+<!---HONumber=79-->

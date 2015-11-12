@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="09/21/2015"
+	ms.date="10/19/2015"
 	wacn.date=""/>
 
 # 在 Azure AD 中分配管理员角色
@@ -80,4 +80,4 @@
 - [管理密码](/documentation/articles/active-directory-manage-passwords)
 - [管理组](/documentation/articles/active-directory-manage-groups)
 
-<!---HONumber=76-->
+<!---HONumber=79-->

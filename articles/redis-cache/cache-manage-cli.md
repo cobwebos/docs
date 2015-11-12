@@ -7,9 +7,9 @@
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="cache" 
-	ms.date="09/16/2015" 
+<tags
+	ms.service="cache"
+	ms.date="09/30/2015"
 	wacn.date=""/>
 
 # 如何使用 Azure 命令行界面 (Azure CLI) 创建和管理 Azure Redis 缓存
@@ -20,10 +20,10 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。本文演示
 
 若要使用 Azure CLI 创建和管理 Azure Redis 缓存实例，必须完成以下步骤。
 
--	你必须具有 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个[免费试用帐户](http://azure.microsoft.com/pricing/free-trial/)。
--	[安装 Azure CLI](/documentation/articles/xplat-cli#install)。
--	将 Azure CLI 安装与个人 Azure 帐户或者工作或学校 Azure 帐户关联，然后使用 `azure login` 命令从 Azure CLI 登录。若要了解差别并进行选择，请参阅[如何连接到 Azure 订阅](/documentation/articles/xplat-cli#configure)。
--	在运行以下任何命令之前，通过运行以下命令将 Azure CLI 切换到资源管理器模式下。`azure config mode arm` 有关详细信息，请参阅[设置 Azure 资源管理器模式](../virtual-machines/xplat-cli-azure-resource-manager.md#setting-the-azure-resource-manager-mode)。
+-	你必须具有 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个[试用帐户](/pricing/1rmb-trial/)。
+-	[安装 Azure CLI](/documentation/articles/xplat-cli-install)。
+-	将 Azure CLI 安装与个人 Azure 帐户或者工作或学校 Azure 帐户关联，然后使用 `azure login` 命令从 Azure CLI 登录。若要了解区别并进行选择，请参阅[从 Azure 命令行界面 (Azure CLI) 连接到 Azure 订阅](/documentation/articles/xplat-cli-connect)。
+-	在运行以下任何命令之前，通过运行 `azure config mode arm` 命令将 Azure CLI 切换到资源管理器模式下。有关详细信息，请参阅[设置 Azure 资源管理器模式](/documentation/articles/xplat-cli-azure-resource-manager#setting-the-azure-resource-manager-mode)。
 
 ## Redis 缓存属性
 
@@ -250,4 +250,4 @@ Azure CLI 是从任何平台管理 Azure 基础结构的好办法。本文演示
 	help:
 	help:    Current Mode: arm (Azure Resource Management)
 
-<!---HONumber=74-->
+<!---HONumber=79-->

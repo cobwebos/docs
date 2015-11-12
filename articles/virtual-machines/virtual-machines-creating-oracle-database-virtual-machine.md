@@ -1,7 +1,21 @@
-<properties title="Creating an Oracle Database Virtual Machine in Azure" pageTitle="在 Azure 中创建 Oracle Database 虚拟机" description="逐步演示了一个在 Windows Azure 中创建 Oracle 虚拟机，然后在其上创建 Oracle 数据库的示例。" services="virtual-machines" authors="bbenz" documentationCenter=""/>
-<tags ms.service="virtual-machines" ms.date="06/22/2015" wacn.date="" />
+<properties 
+	pageTitle="使用 Azure 门户创建 Oracle Database VM | Microsoft Azure" 
+	description="了解如何使用经典部署模型和 Azure 预览门户创建虚拟机，并在虚拟机中创建 Oracle Database。" 
+	services="virtual-machines" 
+	authors="bbenz" 
+	documentationCenter=""
+	tags="azure-service-management"/>
+	
+<tags 
+	ms.service="virtual-machines" 
+	ms.date="06/22/2015" 
+	wacn.date="" />
+	
 #在 Azure 中创建 Oracle Database 虚拟机
-以下示例演示了如何在 Azure 中，基于 Windows Server 2012 上运行的、由 Microsoft 提供的 Oracle Database 映像创建一个虚拟机。该过程包括两个步骤：创建虚拟机，然后在该虚拟机中创建 Oracle 数据库。所示的示例采用 Oracle Database 版本 12c，但在 11g 中的步骤几乎相同。
+
+[AZURE.INCLUDE [了解部署模型](../../includes/learn-about-deployment-models-include.md)]本文介绍如何使用经典部署模型创建资源。
+
+以下示例演示了如何在 Azure 中，基于 Windows Server 2012 上运行的、由 Microsoft 提供的 Oracle Database 映像创建一个虚拟机 (VM)。执行以下两个步骤。首先，创建 VM，然后在 VM 中创建 Oracle Database。所示的示例采用 Oracle Database 版本 12c，但在 11g 中的步骤几乎相同。
 
 ##在 Azure 中创建 Oracle Database 虚拟机
 
@@ -13,13 +27,13 @@
 
 4.	指定 VM 的“主机名”。
 
-5.	指定 VM 的“用户名”。请注意，此用户用于远程登录 VM；这不是 Oracle 数据库用户名。
+5.	指定 VM 的**“用户名”**。请注意，此用户用于远程登录 VM；这不是 Oracle 数据库用户名。
 
 6.	指定并确认 VM 的密码，或提供 SSH 公钥。
 
 7.	选择一个**定价层**。请注意，默认情况下会显示建议的定价层，若要查看所有配置选项，请单击右上角的“全部查看”。
 
-8.	根据需要设置[“可选配置”](https://msdn.microsoft.com/zh-cn/library/azure/dn763935.aspx)，但请注意以下事项：
+8.	根据需要设置“可选配置”[](https://msdn.microsoft.com/zh-cn/library/azure/dn763935.aspx)，但请注意以下事项：
 
 	1. 将“存储帐户”保持不变，以使用 VM 名称创建新的存储帐户。
 
@@ -42,13 +56,13 @@
 
 2.	单击“虚拟机”。
 
-3.	单击你要登录到的虚拟机名称。
+3.	单击你要登录的虚拟机名称。
 
 4.	单击“连接”。
 
 5.	根据需要响应提示以连接到虚拟机。提示需要管理员名称和密码时，请使用你创建虚拟机时提供的值。
 
-6.	创建名为 **ORACLE_HOSTNAME** 的环境变量，其值设置为虚拟机的计算机名称。可以使用以下步骤创建环境变量：
+6.	创建名为 **ORACLE\_HOSTNAME** 的环境变量，其值设置为虚拟机的计算机名称。可以使用以下步骤创建环境变量：
 
 	1.	单击 Windows“开始”菜单，键入“控制面板”，然后依次单击“控制面板”图标、“系统和安全性”、“系统”、“高级系统设置”。
 
@@ -56,7 +70,7 @@
 
 	3.	在“系统变量”部分下，单击“新建”以创建变量。
 
-	4.	在“新建系统变量”对话框中，输入 **ORACLE_HOSTNAME** 作为变量名称，并输入虚拟机的计算机名称作为值。若要确定计算机名称，请打开命令提示符并运行 **SET COMPUTERNAME**（该命令的输出将包含计算机名称）。
+	4.	在“新建系统变量”对话框中，输入 **ORACLE\_HOSTNAME** 作为变量名称，并输入虚拟机的计算机名称作为值。若要确定计算机名称，请打开命令提示符并运行 **SET COMPUTERNAME**（该命令的输出将包含计算机名称）。
 	
 	5.	单击“确定”保存新环境变量并关闭“新建系统变量”对话框。
 
@@ -92,7 +106,7 @@
 
 3.	在 SQL Plus 命令提示符下运行以下命令：
 
-		select * from GLOBAL_NAME;
+		select * from GLOBAL\_NAME;
 
 	结果应是你创建的数据库的全局名称。
 
@@ -132,7 +146,7 @@
 
 1.	登录到 [Azure 门户](https://manage.windowsazure.cn)。
 
-2.	单击“浏览”
+2.	单击**“浏览”**
 
 3.    单击“虚拟机”
 
@@ -157,7 +171,7 @@
 10. 单击**“确定”**
 
 ##启用 Oracle Database Enterprise Manager 远程访问
-如果你想要启用对 Oracle Database Enterprise Manager 的远程访问，请在防火墙中打开端口 5500，并在 Azure 管理门户中为端口 5500 创建一个虚拟机终结点（使用上述步骤打开端口 1521，并为端口 1521 创建终结点）。然后，打开一个浏览器并导航到采用 `http://<<unique_domain_name>>:5500/em` 格式的 URL，以从远程计算机运行 Oracle Enterprise Manager。（可以通过以下方式确定 *\<\<unique\_domain\_name\>\>* 的值：在 [Azure 门户](https://manage.windowsazure.cn)中单击“虚拟机”，然后选择你要用于运行 Oracle 数据库的虚拟机）。
+如果你想要启用对 Oracle Database Enterprise Manager 的远程访问，请在防火墙中打开端口 5500，并在 Azure 管理门户中为端口 5500 创建一个虚拟机终结点（使用上述步骤打开端口 1521，并为端口 1521 创建终结点）。然后，打开一个浏览器并导航到采用 `http://<<unique_domain_name>>:5500/em` 格式的 URL，以从远程计算机运行 Oracle Enterprise Manager。（可以通过以下方式确定 *<<unique\_domain\_name>>* 的值：在 [Azure 门户](https://manage.windowsazure.cn)中单击“虚拟机”，然后选择你要用于运行 Oracle 数据库的虚拟机）。
 
 ##配置常用选项和高级选项套装
 如果选择“包含常用选项的 Oracle Database”或“包含高级选项套装的 Oracle Database”，则下一步是在 Oracle 安装中配置附加功能。由于配置可能会根据你对每个组件的需求而有很大的不同，因此，请参阅 Oracle 文档，以获取有关在 Windows 上设置这些产品的说明。
@@ -177,6 +191,6 @@
 
 -	[Azure 的 Oracle 虚拟机映像](/documentation/articles/virtual-machines-oracle-list-oracle-virtual-machine-images)
 
--	[Oracle Database 2 Day DBA 12c 版本 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
+-	[Oracle Database 2 Day DBA 12c 发行版 1](http://docs.oracle.com/cd/E16655_01/server.121/e17643/toc.htm)
 
-<!---HONumber=67-->
+<!---HONumber=79-->

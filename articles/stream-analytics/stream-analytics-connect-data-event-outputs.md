@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="创建流分析输出 | Windows Azure" 
+	pageTitle="创建流分析输出 | Microsoft Azure" 
 	description="了解如何连接到用于流分析解决方案的输出目标并对其进行配置。" 
 	documentationCenter="" 
 	services="stream-analytics"
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="08/19/2015" 
+	ms.date="10/05/2015" 
 	wacn.date=""/>
 
 # 创建流分析输出
@@ -85,7 +85,7 @@ Azure 流分析提供了七种不同的方法来存储和查看作业输出。SQ
 ## 使用事件中心作为输出 ##
 ---
 ### 概述 ###
- 
+ 
 事件中心是高度可伸缩的事件引入器，通常是最常用的进行流分析数据引入的方法。另外，事件中心可以稳定地处理大量的事件，因此尤其适合作业输出。当流分析作业的输出将要成为另一个流式处理作业的输入时，可以将事件中心用作输出。有关事件中心的更多详细信息，请访问位于[事件中心](/documentation/services/event-hubs/ "事件中心")的门户。
  
 ### Parameters ###
@@ -141,7 +141,7 @@ Power BI 可以用作流分析作业的输出，以便为流分析用户提供�
     ![graphic24][graphic24]
 
 
->	[AZURE.NOTE] 不得在 Power BI 仪表板中显式创建数据集和表。当作业已启动并且作业开始向 Power BI 发送输出时，系统将自动填充数据集和表。请注意，如果作业查询未返回任何结果，则不会创建数据集和表。另请注意，如果 Power BI 已具有与此流分析作业中提供的数据集和表名称相同的数据集和表，则现有数据将被覆盖。
+>	[AZURE.NOTE] 不应在 Power BI 仪表板中显式创建数据集和表。当作业启动并且开始将输出抽取到 Power BI 中时，会自动填充数据集和表。请注意，如果作业查询没有返回任何结果，则不会创建数据集和表。另请注意，如果 Power BI 已经有一个数据集和表，且与流分析作业中提供的数据集和表名称相同，则会覆盖现有的数据。
 
 *	单击**“确定”**和**“测试连接”**。现在，输出配置已完成。
 
@@ -160,7 +160,8 @@ Power BI 可以用作流分析作业的输出，以便为流分析用户提供�
 4. 分区键（必需）。
 5. 行键
 
-若要更好地设计分区键和行键，请参阅下面的文章：[为 Azure 表存储设计可扩展分区策略](https://msdn.microsoft.com/zh-cn/library/azure/hh508997.aspx)。
+若要更好地设计分区键和行键，请参阅下面的文章：
+[为 Azure 表存储设计可扩展分区策略](https://msdn.microsoft.com/zh-cn/library/azure/hh508997.aspx)。
 
 ### 添加 Azure 表存储作为输出 ###
 
@@ -302,4 +303,4 @@ Service Bus 队列提供的是一对一的从发送方到接收方的通信方�
 [graphic37]: ./media/stream-analytics-connect-data-event-outputs/37-stream-analytics-connect-data-event-input-output.png
 [graphic38]: ./media/stream-analytics-connect-data-event-outputs/38-stream-analytics-connect-data-event-input-output.png
 
-<!---HONumber=69-->
+<!---HONumber=79-->

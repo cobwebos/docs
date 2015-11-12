@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="如何将 Hudson 用于 Azure Blob 服务 | Windows Azure" 
-	description="介绍如何将 Hudson 与 Windows Azure Blob 存储一起使用作为生成项目的存储库。" 
+	pageTitle="如何将 Hudson 用于 Azure Blob 服务 | Microsoft Azure" 
+	description="介绍如何将 Hudson 与 Microsoft Azure Blob 存储一起使用作为生成项目的存储库。" 
 	services="storage" 
 	documentationCenter="java" 
 	authors="rmcmurray" 
@@ -9,21 +9,19 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="06/03/2015" 
+	ms.date="10/12/2015" 
 	wacn.date=""/>
 
-#将 Azure 存储空间用于 Hudson 持续集成解决方案
-
-作者：[Microsoft Open Technologies Inc.][ms-open-tech]
+# 将 Azure 存储空间用于 Hudson 持续集成解决方案
 
 ## 概述
 
 下列信息演示了如何将 Azure Blob 服务用作 Jenkins 持续集成 (CI) 解决方案创建的生成项目的存储库，或者用作要在生成过程中使用的可下载文件的源。在以下情况中你将会发现这一做法很有用：你在敏捷开发环境进行编码（使用 Java 或其他语言），生成是基于持续集成运行的并且你需要一个适用于生成项目的存储库，以便（举例来说）你能与其他组织成员、你的客户共享生成项目或维护存档。另一种情况是，当你的生成作业本身需要其他文件时，例如需要下载依赖项作为生成输入的一部分时。
 
-在本教程中，你将使用 Microsoft Open Technologies, Inc. 提供的适用于 Hudson CI 的 Azure 存储插件。
+在本教程中，你将使用 Microsoft 提供的适用于 Hudson CI 的 Azure 存储插件。
 
 ## Hudson 简介 ##
-Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频繁地生成版本，实现了软件项目的持续集成，因此提高了开发人员的工作效率。生成是版本控制的，并且可将生成项目上载到不同存储库中。本主题将演示如何将 Azure Blob 存储用作生成项目的存储库。它还将演示如何从 Azure Blob 存储下载依赖项。
+Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频繁地生成版本，实现了软件项目的持续集成，因此提高了开发人员的工作效率。生成是版本控制的，并且可将生成项目上载到不同存储库中。本文将演示如何将 Azure Blob 存储用作生成项目的存储库。它还将演示如何从 Azure Blob 存储下载依赖项。
 
 有关 Hudson 的更多信息，请访问 [Hudson 概览][]。
 
@@ -73,7 +71,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 2. 在“管理 Hudson”页中，单击“管理插件”。
 3. 单击“可用”选项卡。
 4. 单击“其他”。
-5. 在“项目上载程序”部分，选中“Windows Azure 存储插件”。
+5. 在“项目上载程序”部分中，选择“Microsoft Azure 存储插件”。
 6. 单击“安装”。
 7. 安装完毕后，重新启动 Hudson。
 
@@ -81,8 +79,8 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 
 1. 在 Hudson 仪表板中，单击“管理 Hudson”。
 2. 在“管理 Hudson”页中，单击“配置系统”。
-3. 在“Windows Azure 存储帐户配置”部分：
-    1. 输入你的存储帐户名称，获取该帐户名称可以通过 Azure 门户 (<https://manage.windowsazure.cn>)。
+3. 在“Microsoft Azure 存储帐户配置”部分：
+    1. 输入你的存储帐户名称，可以通过[管理门户](https://manage.windowsazure.cn)获取该帐户名称。
     2. 输入你的存储帐户密钥，同样可以从 Azure 门户获取该密钥。
     3. 如果你在使用公共 Azure 云，对于“Blob 服务终结点 URL”，请使用默认值。如果你在使用其他 Azure 云，则使用在 Azure 管理门户中为你的存储帐户指定的终结点。 
     4. 单击“验证存储凭据”以验证你的存储帐户。 
@@ -104,7 +102,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
         date /t > date.txt
         time /t >> date.txt
  
-5. 在作业配置的“后期生成操作”部分，单击“将项目上载到 Windows Azure Blob 存储”。
+5. 在作业配置的“后期生成操作”部分，单击“将项目上载到 Microsoft Azure Blob 存储”。
 6. 对于“存储帐户名称”，选择要使用的存储帐户。
 7. 对于“容器名称”，请指定容器名称。（如果上载生成项目时不存在该容器，则将创建该容器。） 你可使用环境变量，因此在此示例中，请输入 **${JOB\_NAME}** 作为容器名称。
 
@@ -112,14 +110,14 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
     
     在你为“执行 Windows 批处理命令”输入脚本的“命令”部分下方，有一个指向 Hudson 所识别环境变量的链接。单击此链接可了解环境变量名称和说明。请注意，不允许将包含特殊字符的环境变量（如 **BUILD\_URL** 环境变量）用作容器名称或通用虚拟路径。
 
-8. 对于此示例，请单击“默认将新容器设为公开的”。（如果要使用私有容器，你将需要创建共享访问签名以允许访问。这超出了本主题的范围。你可在[创建共享访问签名](http://msdn.microsoft.com/zh-cn/library/azure/jj721951.aspx)中了解有关共享访问签名的详细信息。）
+8. 对于此示例，请单击“默认将新容器设为公开的”。（如果要使用私有容器，你将需要创建共享访问签名以允许访问。这超出了本文的范围。你可在[创建共享访问签名](http://msdn.microsoft.com/zh-cn/library/azure/jj721951.aspx)中了解有关共享访问签名的详细信息。）
 9. [可选]如果你希望在上载生成项目之前清除容器的内容，请单击“在上载前清除容器”（如果你不希望清除容器的内容，则使该复选框保持未选中状态）。
 10. 对于“要上载的项目列表”，请输入 **text/*.txt**。
 11. 对于“已上载项目的通用虚拟路径”，输入 **${BUILD\_ID}/${BUILD\_NUMBER}**。
 12. 单击“保存”以保存你的设置。
 13. 在 Hudson 仪表板中，单击“立即生成”以运行 **MyJob**。检查控制台输出中的状态。当生成后操作开始上载生成项目时，Azure 存储的状态消息将包括在控制台输出中。
 14. 成功完成此作业后，你可通过打开公共 Blob 检查生成项目。
-    1. 登录到 Azure 管理门户 (<https://manage.windowsazure.cn>)。
+    1. 登录到 Azure 管理门户 <https://manage.windowsazure.cn>。
     2. 单击“存储”。
     3. 单击你用于 Hudson 的存储帐户名称。
     4. 单击“容器”。
@@ -147,7 +145,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 
 - **存储帐户**：对 Azure 存储服务的所有访问都要通过存储帐户来完成。存储帐户是访问 blob 的最高级别的命名空间。一个帐户可以包含无限个容器，只要这些容器的总大小不超过 100 TB 即可。
 - **容器**：一个容器包含一组 blob 集。所有 blob 必须位于相应的容器中。一个帐户可以包含无限个容器。一个容器可以存储无限个 Blob。
-- **Blob**：任何类型和大小的文件。可将两类 Blob 存储到 Azure 存储空间中：块 Blob 和页 Blob。大部分文件都是块 blob。一个块 Blob 的大小可以达到 200 GB。本教程使用的是块 Blob。另一种 Blob 类型为页 Blob，其大小可以达 1 TB，在对文件中的一系列字节进行频繁修改时，这种 Blob 类型更加高效。有关 Blob 的更多信息，请参阅[了解块 Blob 和页 Blob](http://msdn.microsoft.com/zh-cn/library/azure/ee691964.aspx)。
+- **Blob**：任何类型和大小的文件。可将两类 Blob 存储到 Azure 存储空间中：块 Blob 和页 Blob。大部分文件都是块 blob。单个块 Blob 最大可以为 200 GB。本教程使用的是块 Blob。另一种 Blob 类型为页 Blob，其大小可以达 1 TB，在对文件中的一系列字节进行频繁修改时，这种 Blob 类型更加高效。有关 Blob 的更多信息，请参阅[了解块 Blob 和页 Blob](http://msdn.microsoft.com/zh-cn/library/azure/ee691964.aspx)。
 - **URL 格式**：可使用以下 URL 格式对 Blob 寻址：
 
     `http://storageaccount.blob.core.chinacloudapi.cn/container_name/blob_name`
@@ -158,8 +156,9 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 
     `http://example.blob.core.chinacloudapi.cn/myjob/2014-05-01_11-56-22/1/hello.txt`
 
+## 后续步骤
+
   [如何创建存储帐户]: http://go.microsoft.com/fwlink/?LinkId=279823
   [Hudson 概览]: http://wiki.eclipse.org/Hudson-ci/Meet_Hudson
-  [ms-open-tech]: http://cn.msopentech.com
 
-<!---HONumber=70-->
+<!---HONumber=79-->

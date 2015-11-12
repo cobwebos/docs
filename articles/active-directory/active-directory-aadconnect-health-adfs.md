@@ -64,9 +64,9 @@ Azure AD Connect Health 性能监视提供有关度量值的监视信息。选�
 
 ## 相关链接
 
-* [Azure AD Connect Health](active-directory-aadconnect-health)
-* [适用于 AD FS 的 Azure AD Connect Health 代理安装](active-directory-aadconnect-health-agent-install-adfs)
-* [Azure AD Connect Health 操作](active-directory-aadconnect-health-operations)
-* [Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq)
+* [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health)
+* [适用于 AD FS 的 Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install-adfs)
+* [Azure AD Connect Health 操作](/documentation/articles/active-directory-aadconnect-health-operations)
+* [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
 
-<!---HONumber=76-->
+<!---HONumber=79-->

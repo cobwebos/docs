@@ -8,7 +8,7 @@
    editor="mbaldwin" />
 <tags
    ms.service="active-directory"
-   ms.date="09/08/2015"
+   ms.date="09/17/2015"
    wacn.date="" />
 
 # Azure Active Directory 图形 API
@@ -62,4 +62,4 @@ Azure Active Directory 图形 API 通过 REST API 终结点提供对 Azure AD �
 
 [Azure Active Directory 开发人员指南](active-directory-developers-guide)
 
-<!---HONumber=74-->
+<!---HONumber=79-->

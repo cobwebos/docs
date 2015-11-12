@@ -1,18 +1,22 @@
 <properties
-	pageTitle="VM 上需要进行大量计算的 Java 应用程序 | Windows Azure"
+	pageTitle="VM 上需要进行大量计算的 Java 应用程序 | Microsoft Azure"
 	description="了解如何创建运行可由其他 Java 应用程序监视的、需要进行大量计算的 Java 应用程序的 Azure 虚拟机。"
 	services="virtual-machines"
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe"/>
+	editor="jimbe"
+	tags="azure-service-management,azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="06/03/2015"
+	ms.date="09/22/2015"
 	wacn.date="robmcm"/>
 
 # 如何在虚拟机上通过 Java 运行需要进行大量计算的任务
+
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
+ 
 
 借助 Azure，您可以使用虚拟机来处理需要进行大量计算的任务。例如，虚拟机可以处理任务并将结果传送给客户端计算机或移动应用程序。阅读完本文后，你将了解如何创建运行可由其他 Java 应用程序监视的、需要进行大量计算的 Java 应用程序的虚拟机。
 
@@ -43,31 +47,31 @@
 1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
 2. 依次单击“新建”、“计算”、“虚拟机”和“从库中”。
 3. 在“虚拟机映像选择”对话框中，选择“JDK 7 Windows Server 2012”。请注意，万一你安装的是还不能在 JDK 7 中运行的旧应用程序，可选择 **JDK 6 Windows Server 2012**。
-4. 单击“下一步”。
+4. 单击**“下一步”**。
 4. 在“虚拟机配置”对话框中：
     1. 指定虚拟机的名称。
     2. 指定要用于虚拟机的大小。
     3. 在“用户名”字段中输入管理员的名称。记住您下次要输入的此名称和密码，远程登录虚拟机时您将使用它们。
     4. 在“新密码”字段中输入密码，然后在“确认”字段中重新输入一次。这是 Administrator 帐户密码。
-    5. 单击“下一步”。
+    5. 单击**“下一步”**。
 5. 在下一个“虚拟机配置”对话框中：
     1. 对于“云服务”，使用默认的“创建新云服务”。
     2. “云服务 DNS 名称”的值在 cloudapp.net 中必须唯一。如有必要，请修改此值，这样 Azure 就会将其指示为唯一值。
     2. 指定区域、地缘组或虚拟网络。在本教程中，请指定区域，如“美国西部”。
     2. 对于“存储帐户”框，请选择“使用自动生成的存储帐户”。
     3. 对于“可用性集”，请选择“(无)”。
-    4. 单击“下一步”。
+    4. 单击**“下一步”**。
 5. 在最后一个“虚拟机配置”对话框中：
     1. 接受默认的终结点项。
     2. 单击“完成”。
 
 ## 远程登录到虚拟机
 
-1. 登录到[管理门户](https://manage.windowsazure.cn)。
+1. 登录到“管理门户”。[](https://manage.windowsazure.cn)
 2. 单击“虚拟机”。
-3. 单击您要登录的虚拟机名称。
+3. 单击你要登录的虚拟机名称。
 4. 单击“连接”。
-5. 根据需要响应提示以连接到虚拟机。提示需要管理员名称和密码时，请使用您创建虚拟机时提供的值。
+5. 根据需要响应提示以连接到虚拟机。提示需要管理员名称和密码时，请使用你创建虚拟机时提供的值。
 
 请注意，Azure Service Bus 功能需要将 Baltimore CyberTrust 根证书作为你的 JRE 的 **cacerts** 存储的一部分安装。此证书将自动包含在本教程使用的 Java 运行时环境 (JRE) 中。如果你的 JRE **cacerts** 存储中没有此证书，请参阅[将证书添加到 Java CA 证书存储][add_ca_cert]，以获取有关添加该证书的信息（以及有关在你的 cacerts 存储中查看证书的信息）。
 
@@ -79,27 +83,21 @@
 
 1.  登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
 2.  在管理门户的左下方导航窗格中，单击“Service Bus、Access Control 和 Caching”。
-3.  在管理门户的左上方窗格中，单击“ServiceBus”节点，然后单击“新建”按钮。  
-	![“Service Bus 节点”屏幕快照][svc_bus_node]
-4.  在“新建服务命名空间”对话框中，输入一个命名空间，然后单击“检查可用性”按钮以确保该命名空间是唯一的。  
-	![“创建新的命名空间”屏幕快照][create_namespace]
+3.  在管理门户的左上方窗格中，单击“ServiceBus”节点，然后单击“新建”按钮。![“Service Bus 节点”屏幕快照][svc_bus_node]
+4.  在“新建服务命名空间”对话框中，输入一个命名空间，然后单击“检查可用性”按钮以确保该命名空间是唯一的。![“创建新的命名空间”屏幕快照][create_namespace]
 5.  确保该命名空间名称可用之后，选择应该承载你的命名空间的国家或地区，然后单击“创建命名空间”按钮。  
-      
+
     您创建的命名空间随后将显示在管理门户中，然后要花费一段时间来激活。请等到状态变为“活动”后再继续下一步。
 
 ## 获取命名空间的默认管理凭据
 
 若要在新命名空间上执行管理操作（如创建队列），则需要获取该命名空间的管理凭据。
 
-1.  在左侧导航窗格中，单击“Service Bus”节点以显示可用命名空间的列表。
-	![“可用命名空间”屏幕快照][avail_namespaces]
-2.  从显示的列表中选择刚刚创建的命名空间。
-	![“命名空间列表”屏幕快照][namespace_list]
-3.  右侧的“属性”窗格将列出新命名空间的属性。
-	![“属性窗格”屏幕快照][properties_pane]
-4.  将隐藏“默认密钥”。单击“查看”按钮以显示安全凭据。
-	![“默认密钥”屏幕快照][default_key]
-5.  记下默认颁发者和默认密钥，因为你将在下面使用此信息来对命名空间执行操作。 
+1.  在左侧导航窗格中，单击“Service Bus”节点以显示可用命名空间的列表。![“可用命名空间”屏幕快照][avail_namespaces]
+2.  从显示的列表中选择刚刚创建的命名空间。![“命名空间列表”屏幕快照][namespace_list]
+3.  右侧的“属性”窗格将列出新命名空间的属性。![“属性窗格”屏幕快照][properties_pane]
+4.  将隐藏“默认密钥”。单击“查看”按钮以显示安全凭据。![“默认密钥”屏幕快照][default_key]
+5.  记下默认颁发者和默认密钥，因为你将在下面使用此信息来对命名空间执行操作。
 
 ## 如何创建 Java 应用程序来执行需要进行大量计算的任务
 
@@ -518,4 +516,4 @@
 [default_key]: ./media/virtual-machines-java-run-compute-intensive-task/SvcBusQueues_07_DefaultKey.jpg
 [add_ca_cert]: /documentation/articles/java-add-certificate-ca-store
 
-<!---HONumber=70-->
+<!---HONumber=79-->

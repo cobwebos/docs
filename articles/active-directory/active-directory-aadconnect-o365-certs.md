@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="08/24/2015" 
+	ms.date="10/13/2015"
 	wacn.date=""/>
 
 
@@ -22,7 +22,7 @@
 如果你使用的是 AD FS 2.0 或更高版本，Office 365 和 Azure AD 会在你的证书过期之前自动对其进行更新。你不需要执行任何手动步骤，也不需要以计划任务的形式运行脚本。为此，你必须让以下两项默认的 AD FS 配置设置生效：
 
 - AD FS 属性 AutoCertificateRollover 必须设置为 True，表示 AD FS 会在旧的令牌签名和令牌解密证书过期之前自动生成新的。
-	- 如果该值为 False，则表示你使用的是自定义证书设置。如需全面指导，请转到[此处](https://msdn.microsoft.com/zh-cn/library/azure/JJ933264.aspx#BKMK_NotADFSCert)。
+	- 如果该值为 False，则表示你使用的是自定义证书设置。如需全面指导，请转到[此处](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert)。
 - 联合身份验证元数据必须可以通过公共 Internet 进行使用。
 	
 	下面是如何进行检查：
@@ -81,4 +81,4 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 >[AZURE.NOTE]如果你需要支持多个顶级域（例如 contoso.com 和 fabrikam.com），则必须将 SupportMultipleDomain 开关用于任何 cmdlet。有关详细信息，请参阅“支持多个顶级域”。最后，请确保所有 Web 应用程序代理服务器都通过 [Windows Server May 2014](http://support.microsoft.com/kb/2955164) 汇总进行了更新，否则代理可能无法使用新证书自行进行更新，导致服务中断。
 
-<!---HONumber=76-->
+<!---HONumber=79-->

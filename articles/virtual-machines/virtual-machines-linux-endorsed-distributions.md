@@ -1,11 +1,13 @@
 <properties 
-	pageTitle="Azure 中的 Linux 的认可分发" 
-	description="了解 Azure 认可的分发中的 Linux，包括 Ubuntu、OpenLogic 和 SUSE 的指南。" 
+	pageTitle="Linux 的认可分发 | Microsoft Azure" 
+	description="了解 Azure 认可的分发中的 Linux，包括 Ubuntu、OpenLogic、Oracle 和 SUSE 的指南。" 
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="szarkos" 
 	manager="timlt" 
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-service-management,azure-resource-manager" 
+	/>
 
 <tags 
 	ms.service="virtual-machines" 
@@ -14,7 +16,7 @@
 
 
 
-# Azure 认可的分发中的 Linux
+#Azure 认可的分发中的 Linux
 
 Azure 库中的 Linux 映像由很多合作伙伴提供，并且我们正在与各个 Linux 社区合作，以便向“认可的分发”列表添加更多风格。在此期间，对于该库未提供的分发，你始终可以按照[本页](/documentation/articles/virtual-machines-linux-create-upload-vhd)中的指南自备 Linux。
 
@@ -73,4 +75,4 @@ Azure 上的 SUSE Linux Enterprise Server 是一个已验证的平台，该平�
 
  
 
-<!---HONumber=70-->
+<!---HONumber=79-->

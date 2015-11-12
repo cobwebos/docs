@@ -1,16 +1,17 @@
-<properties 
-   pageTitle="使用 Chef 自动执行 Azure 虚拟机部署" 
-   description="学习使用 Chef 自动部署 Azure 虚拟机的技术" 
-   services="virtual-machines" 
-   documentationCenter="" 
-   authors="diegoviso" 
-   manager="timlt" 
+<properties
+   pageTitle="使用 Chef 部署 Azure 虚拟机 | Microsoft Azure"
+   description="了解如何使用 Chef 在 Microsoft Azure 中自动执行虚拟机的部署和配置"
+   services="virtual-machines"
+   documentationCenter=""
+   authors="diegoviso"
+   manager="timlt"
+   tags="azure-service-management,azure-resource-manager"
    editor=""/>
 
 <tags 
-	ms.service="virtual-machines"
+	ms.service="virtual-machines" 
 	ms.date="05/19/2015" 
-	wacndate=""/>
+	wacn.date=""/>
 
 # 使用 Chef 自动执行 Azure 虚拟机部署
 
@@ -237,4 +238,4 @@ PEM 文件包含你的组织和用于通信的管理私钥，而 **knife.rb** �
 
 <!--Link references-->
 
-<!---HONumber=69-->
+<!---HONumber=79-->

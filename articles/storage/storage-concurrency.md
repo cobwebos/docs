@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="在 Windows Azure 存储中管理并发" 
+	pageTitle="在 Microsoft Azure 存储中管理并发" 
 	description="如何管理 Blob、队列、表和文件服务的并发" 
 	services="storage" 
 	documentationCenter="" 
@@ -9,10 +9,10 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="06/18/2015" 
+	ms.date="09/03/2015" 
 	wacn.date=""/>
 
-#在 Windows Azure 存储中管理并发
+# 在 Microsoft Azure 存储中管理并发
 
 ## 概述 
 
@@ -89,10 +89,7 @@ Azure 存储服务支持所有三个策略，尽管它具有独特的功能，�
 获取容器元数据|	是|	否|
 设置容器元数据|	是|	是|
 获取容器 ACL|	是|	否|
-设置容器 ACL|	是|	是 (*)|
-删除容器| 否| 是|
-租赁容器| 是| 是|
-列出 Blob| 否| 否 
+设置容器 ACL|	是|	是 (*)| 删除容器| 否| 是| 租赁容器| 是| 是| 列出 Blob| 否| 否 
 
 (*) 将缓存由 SetContainerACL 定义的权限，传播这些权限的更新需要 30 秒的时间，在此期间，不保证更新是一致的。
 
@@ -106,16 +103,7 @@ Azure 存储服务支持所有三个策略，尽管它具有独特的功能，�
 设置 Blob 属性|	是|	是|
 获取 Blob 元数据|	是|	是|
 设置 Blob 元数据|	是|	是|
-租赁 Blob (*)| 是| 是|
-制作 Blob 快照| 是| 是|
-复制 Blob| 是| 是（用于源 Blob 和目标 Blob）|
-中止复制 Blob| 否| 否|
-删除 Blob| 否| 是|
-放置块| 否| 否|
-放置块列表| 是| 是|
-获取块列表| 是| 否|
-放置页面| 是| 是|
-获取页面范围| 是| 是
+租赁 Blob (*)| 是| 是| 制作 Blob 快照| 是| 是| 复制 Blob| 是| 是（用于源 Blob 和目标 Blob）| 中止复制 Blob| 否| 否| 删除 Blob| 否| 是| 放置块| 否| 否| 放置块列表| 是| 是| 获取块列表| 是| 否| 放置页面| 是| 是| 获取页面范围| 是| 是
 
 (*) 租赁 Blob 不更改 Blob 中的 ETag。
 
@@ -266,7 +254,7 @@ customer.ETag = "*"；
 - [管理文件锁](http://msdn.microsoft.com/zh-cn/library/azure/dn194265.aspx)  
 
 ## 摘要和后续步骤
-经过精心设计，Windows Azure 存储服务可以满足最复杂的在线应用程序需要，而不会迫使开发人员对主要设计假设做出妥协或重新思考，例如他们视为理所当然的并发和数据一致性。
+经过精心设计，Microsoft Azure 存储服务可以满足最复杂的在线应用程序需要，而不会迫使开发人员对主要设计假设做出妥协或重新思考，例如他们视为理所当然的并发和数据一致性。
 
 对于本博客中引用的完整示例应用程序：
 
@@ -274,11 +262,11 @@ customer.ETag = "*"；
 
 有关 Azure 存储的详细信息，请参阅：
 
-- [Windows Azure 存储主页](/home/features/storage/)
+- [Microsoft Azure 存储主页](/home/features/storage/)
 - [Azure 存储简介](//documentation/articles/storage-introduction)
 - [Blob](/documentation/articles/storage-dotnet-how-to-use-blobs)、[表](/documentation/articles/storage-dotnet-how-to-use-tables)和[队列](/documentation/articles/storage-dotnet-how-to-use-queues)的存储使用入门
-- 存储体系结构 – [Windows Azure 存储：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- 存储体系结构 – [Microsoft Azure 存储：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
  
 
-<!---HONumber=70-->
+<!---HONumber=79-->

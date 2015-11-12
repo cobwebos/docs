@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="06/18/2015" 
+	ms.date="09/27/2015" 
 	wacn.date=""/>
 
 
@@ -37,7 +37,7 @@
 
 创建作业时，需通知导入/导出服务：你要将一个或多个硬盘驱动器运送到 Azure 数据中心。对于某一导入作业，你将要运送包含文件数据的硬盘驱动器。对于某一导出作业，你将要运送空硬盘驱动器。
 
-若要为导入作业准备要运送的驱动器，你需要运行 **Windows Azure 导入/导出工具**，该工具可帮助你将数据复制到驱动器、使用 BitLocker 对驱动器上的数据进行加密以及生成驱动器日志文件。我们将在下文中讨论此方面的内容。
+若要为导入作业准备要运送的驱动器，你需要运行 **Microsoft Azure 导入/导出工具**，该工具可帮助你将数据复制到驱动器、使用 BitLocker 对驱动器上的数据进行加密以及生成驱动器日志文件。我们将在下文中讨论此方面的内容。
 
 > [AZURE.NOTE]必须使用 BitLocker 驱动器加密对驱动器上的数据进行加密。这将在运送过程中保护你的数据。对于导出作业，该导入/导出服务在将驱动器运送回你处之前对你的数据进行加密。
 
@@ -46,7 +46,10 @@
 ### 要求和范围
 
 1.	**订阅和存储帐户：**你必须已拥有 Azure 订阅以及一个或多个存储帐户，才能使用导入/导出服务。每个作业只能用于将数据传输到一个存储帐户或者从一个存储帐户传输数据。换言之，一个作业不能跨多个存储帐户。有关创建新存储帐户的信息，请参阅[如何创建存储帐户](/documentation/articles/storage-create-storage-account)。
-2.	**硬盘驱动器：**只支持对 3.5 英寸 SATA II/III 硬盘驱动器使用导入/导出服务。支持容量最高为 6 TB 的硬盘驱动器。对于导入作业，将处理驱动器上的第一个数据卷。该数据卷必须使用 NTFS 进行格式化。你可以使用 SATA II/III USB 适配器在外部将 SATA II/III 磁盘连接到大多数计算机。
+2.	**硬盘驱动器：**只支持将 3.5 英寸 SATA II/III 内部硬盘驱动器用于导入/导出服务。支持容量最高为 6 TB 的硬盘驱动器。对于导入作业，将处理驱动器上的第一个数据卷。该数据卷必须使用 NTFS 进行格式化。你可以使用外部 SATA II/III USB 适配器在外部将 SATA II/III 磁盘连接到大多数计算机。
+
+  >[AZURE.IMPORTANT]此服务不支持内置 USB 适配器附带的外部硬盘驱动器。请不要准备外部 HDD。外包装内的磁盘也不能用于导入数据。请使用 3.5 英寸 SATA II/III **内部**硬盘驱动器。如果无法将 SATA 磁盘直接连接到计算机，请使用外部 SATA 转 USB 适配器。请参阅“常见问题”部分中建议的适配器列表。
+
 3.	**BitLocker 加密：**必须使用 BitLocker 通过用数字密码保护的加密密钥对硬盘驱动器上存储的所有数据进行加密。
 4.	**Blob 存储目标：**可以将数据上载到块 Blob 和页 Blob 或者从块 Blob 和页 Blob 下载数据。 
 5.	**作业数：**对于每个存储帐户，一个客户最多可以有 20 个处于活动状态的作业。
@@ -58,7 +61,7 @@
 
 ### 准备驱动器
 
-在创建导入作业前，使用 Microsoft Azure 导入/导出工具准备你的驱动器。有关使用 Windows Azure 导入/导出工具的更多详细信息，请参阅 [Windows Azure 导入/导出工具参考](http://msdn.microsoft.com/zh-cn/library/dn529096.aspx)。你可以以独立软件包的方式下载 [Windows Azure 导入/导出工具](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)。
+在创建导入作业前，使用 Microsoft Azure 导入/导出工具准备你的驱动器。有关使用 Microsoft Azure 导入/导出工具的更多详细信息，请参阅 [Microsoft Azure 导入/导出工具参考](http://msdn.microsoft.com/zh-cn/library/dn529096.aspx)。你可以以独立软件包的方式下载 [Microsoft Azure 导入/导出工具](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)。
   
 若要准备你的驱动器，请按照以下三个步骤执行：
 
@@ -66,7 +69,7 @@
 2.	确定 Azure Blob 服务中用于你的数据的目标 Blob。
 3.	使用 Microsoft Azure 导入/导出工具将你的数据复制到一个或多个硬盘驱动器。
 
-对于每个驱动器，在准备它时，Windows Azure 导入/导出工具会生成一个*驱动器日记*文件。该驱动器日志文件存储于你的本地计算机上，而不是存储于驱动器本身。你在创建导入作业时将上载该日志文件。驱动器日志文件将包含驱动器 ID 和 BitLocker 密钥，以及与驱动器有关的其他信息。
+对于每个驱动器，在准备它时，Microsoft Azure 导入/导出工具会生成一个*驱动器日记*文件。该驱动器日志文件存储于你的本地计算机上，而不是存储于驱动器本身。你在创建导入作业时将上载该日志文件。驱动器日志文件将包含驱动器 ID 和 BitLocker 密钥，以及与驱动器有关的其他信息。
 
 ### 创建导入作业
 
@@ -182,7 +185,7 @@
 	- Anker 68UPSHHDS-BU
 	- Startech SATADOCK22UE 
 
-> [AZURE.NOTE]如果你有上方没有列出的转换器，则在购买受支持的转换器之前，可以尝试使用你的转换器运行 Microsoft Azure 导入/导出工具来准备驱动器并看看它是否工作。
+> [AZURE.NOTE]如果你有上面没有列出的转换器，则在购买受支持的转换器之前，可以尝试使用你的转换器运行 Microsoft Azure 导入/导出工具来准备驱动器并看看它是否正常工作。- 不支持带内置 USB 适配器的外部 HDD。
 
 **如果我想要导入或导出超过 10 个驱动器，我应该做什么？**
 
@@ -242,7 +245,7 @@
 
 	> [AZURE.IMPORTANT]请注意，你发运的物理介质可能需要穿越国界。你应当负责确保你的物理介质和数据是遵照适用的法律导入和/或导出的。在发运物理介质之前，请咨询你的顾问以验证你的介质和数据是否可以合法地发运到所确定的数据中心。这将有助于确保它可以及时到达 Microsoft。
 
-- 在发运你的包裹时，必须遵守[ Windows Azure 服务条款](/support/legal/services-terms/)和 [Windows Azure 预览功能补充使用条款](http://azure.microsoft.com/zh-cn/support/legal/preview-supplemental-terms/)上的条款。
+- 发运你的包裹时，必须遵循 [Microsoft Azure 服务条款](/support/legal/services-terms/)中的条款。
 
 **我是否可为导入/导出作业从 Microsoft 购买驱动器？**
 
@@ -258,4 +261,4 @@
 [export-job-03]: ./media/storage-import-export-service/export-job-03.png
 [export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
 
-<!---HONumber=69-->
+<!---HONumber=79-->

@@ -9,12 +9,16 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="09/09/2015"
+	ms.date="10/09/2015"
 	wacn.date=""/>
 
 
 # 使用 C&#x23; 连接和查询 SQL 数据库
 
+> [AZURE.SELECTOR]
+- [C#](/documentation/articles/sql-database-connect-query)
+- [SSMS](/documentation/articles/sql-database-connect-query-ssms)
+- [Excel](/documentation/articles/sql-database-connect-excel)
 
 你想要编写一个 C# 程序，该程序使用 ADO.NET 连接到云中的 Azure SQL 数据库。
 
@@ -37,7 +41,7 @@
 - Visual Studio 2013 Update 4（或更高版本）。Microsoft 现在*免费*提供 Visual Studio Community。
  - [Visual Studio Community，下载](http://www.visualstudio.com/products/visual-studio-community-vs)
  - [Visual Studio 的更多免费选项](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
- - 或者，利用本主题中介绍 [Azure 预览门户](http://portal.azure.com/)的后续[步骤](#InstallVSForFree)，指导你安装 Visual Studio。
+ - 或者，让本主题中后面的[步骤](#InstallVSForFree)介绍 [Azure 预览门户](http://portal.azure.com/)如何指导你安装 Visual Studio。
 
 
 <a name="InstallVSForFree" id="InstallVSForFree"></a>
@@ -50,13 +54,13 @@
 如果你需要安装 Visual Studio，可以：
 
 - 使用浏览器导航到 Visual Studio 产品网页（该网页提供免费下载及其他选项），免费安装 Visual Studio Community；或者
-- 利用 [Azure 预览门户](http://portal.azure.com/)指导你找到下载网页，这将在后面的部分进行介绍。
+- 让 [Azure 预览门户](http://portal.azure.com/)指导你找到下载网页，这将在后面的部分进行介绍。
 
 
 ### 通过 Azure 预览门户安装 Visual Studio
 
 
-1. 登录 [Azure 预览门户](http://portal.azure.com/)，网址为 http://portal.azure.com/。
+1. 通过 [Azure 预览门户](http://portal.azure.com/)（网址为 http://portal.azure.com/） 登录。
 
 2. 单击“浏览*全部”>“SQL 数据库”。将打开边栏选项卡搜索数据库。
 
@@ -70,7 +74,7 @@
  
 	![“在 Visual Studio 中打开”按钮][20-OpenInVisualStudioButton]
 
-7. 单击“Community（免费）”链接或类似的链接。将添加新的网页。
+7. 单击“Community (免费)”链接或类似的链接。将添加新的网页。
 
 8. 使用新网页上的链接安装 Visual Studio。
 
@@ -89,7 +93,7 @@
 在 Visual Studio 中，按照“C#”>“Windows”>“控制台应用程序”的初学者模板创建新项目。
 
 
-1. 单击“文件”>“新建”>“项目”。将显示“***”对话框。
+1. 单击“文件”>“新建”>“项目”。将显示“****”对话框。
 
 2. 在“已安装”下，扩展到 C# 和 Windows，以便“控制台应用程序”选项显示在中间窗格中。
 
@@ -120,7 +124,7 @@
 
 使用 [Azure 预览门户](http://portal.azure.com/)复制数据库的连接字符串。
 
-首次使用时，系统会将 Visual Studio 连接的你的 Azure SQL 数据库的 **AdventureWorksLT** 数据库。
+首次使用时，系统会将 Visual Studio 连接到 Azure SQL 数据库的 **AdventureWorksLT** 数据库。
 
 
 [AZURE.INCLUDE [sql-database-include-connection-string-20-portalshots](../includes/sql-database-include-connection-string-20-portalshots.md)]
@@ -131,7 +135,7 @@
 
 1. 在 Visual Studio 中，从“解决方案资源管理器”窗格中打开 App.config 文件。
 
-2. 如下面示例中的 App.config 代码示例所示，添加 **&#x3c;configuration&#x3e; &#x3c;/configuration&#x3e;** 元素。
+2. 如下面的示例 App.config 代码示例所示，添加 **&#x3c;configuration&#x3e; &#x3c;/configuration&#x3e;** 元素。
  - 将 *{your\_placeholders}* 替换为你自己的实际值：
 
 ```
@@ -169,7 +173,7 @@
 	![在示例 C# 程序代码中粘贴][40-VSProgramCsOverlay]
 
 2. 通过在下面的示例 C# 代码中粘贴，覆盖 Program.cs 中的所有起始代码。
- - 如果你想要更短的代码示例，可以将整个连接字符串作为文本分配给变量 **SQLConnectionString**。然后可以擦除 **GetConnectionStringFromExeConfig** 和 **GatherPasswordFromConsole** 这两种方法。
+ - 如果你想要更短的代码示例，可以将整个连接字符串作为文本分配给变量 **SQLConnectionString**。然后可以擦除 **GetConnectionStringFromExeConfig** 和 **GatherPasswordFromConsole** 这两个方法。
 
 
 ```
@@ -286,9 +290,9 @@ namespace ConnectAndQuery_Example
 
 2. 从键盘收集用户名和密码，添加它们以完成连接字符串。
 
-3. 使用该连接字符串和 ADO.NET 类来连接到 Azure SQL 数据库中的 **AdventureWorksLT** 演示数据库。
+3. 使用该连接字符串和 ADO.NET 类连接到 Azure SQL 数据库中的 **AdventureWorksLT** 演示数据库。
 
-4. 发出 SQL **SELECT** 来从 **SalesLT** 表中读取。
+4. 发出 SQL **SELECT** 以从 **SalesLT** 表中读取。
 
 5. 将返回的行打印到控制台。
 
@@ -315,7 +319,7 @@ namespace ConnectAndQuery_Example
 
 
 
-有关详细信息，请参阅：<br/>[如何：在 SQL 数据库上配置防火墙设置](/documentation/articles/sql-database-configure-firewall-settings)
+有关详细信息，请参阅<br/> [如何：在 SQL 数据库上配置防火墙设置](/documentation/articles/sql-database-configure-firewall-settings)
 
 
 
@@ -335,7 +339,7 @@ namespace ConnectAndQuery_Example
 
 - [SQL 数据库的客户端快速入门代码示例](/documentation/articles/sql-database-develop-quick-start-client-code-samples)
 
-- 如果你的客户端程序运行在 Azure VM 上，请参阅<br/>[适用于 ADO.NET 4.5 和 SQL 数据库 V12 的 1433 之外的端口](/documentation/articles/sql-database-develop-direct-route-ports-adonet-v12)，了解 TCP 端口而非 1433。
+- 如果你的客户端程序运行在 Azure VM 上，请参阅<br/>[适用于 ADO.NET 4.5 和 SQL 数据库 V12 的 1433 之外的端口](/documentation/articles/sql-database-develop-direct-route-ports-adonet-v12)，了解 1433 以外的 TCP 端口。
 
 
 
@@ -349,4 +353,4 @@ namespace ConnectAndQuery_Example
 
 [50-VSCopyToOutputDirectoryProperty]: ./media/sql-database-connect-query/connqry-vs-appconfig-copytoputputdir-h.png
 
-<!---HONumber=74-->
+<!---HONumber=79-->

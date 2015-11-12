@@ -8,10 +8,10 @@
 	editor=""/>
 
 <tags 
-	ms.service="virtual-network"
+	ms.service="virtual-network" 
 	ms.date="08/17/2015" 
-	wacn.date=""
-	/>
+        wacn.date=""
+/>
 
 # 教程：在 Azure 中创建仅包含云的虚拟网络
 
@@ -113,4 +113,4 @@
 [Image7]: ./media/create-virtual-network/createVNet_07_VNetExampleSpaces.png
 [Image8]: ./media/create-virtual-network/createVNet_07_VNetExampleSpaces.png
 
-<!---HONumber=69-->
+<!---HONumber=79-->

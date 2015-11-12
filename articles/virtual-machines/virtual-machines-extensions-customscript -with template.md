@@ -27,7 +27,11 @@
 
 Azure 资源管理器模板可让你通过定义资源之间的依赖关系，使用 JSON 语言以声明方式指定 Azure IaaS 基础结构。有关 Azure 资源管理器模板的详细概述，请参阅以下文章：
 
-<a href="/documentation/articles/resource-group-overview/" target="_blank">资源组概述</a>。<br/><a href="/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli/" target="_blank">使用 Azure CLI 部署模板</a>。<br/><a href="/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/" target="_blank">使用 Azure Powershell 部署模板</a>。
+<a href="/documentation/articles/resource-group-overview/" target="_blank">资源组概述</a>。
+<br/>
+<a href="/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli/" target="_blank">使用 Azure CLI 部署模板</a>。
+<br/>
+<a href="/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/" target="_blank">使用 Azure Powershell 部署模板</a>。
 
 ### 运行自定义脚本扩展的先决条件
 
@@ -98,4 +102,4 @@ Azure 资源管理器模板可让你通过定义资源之间的依赖关系，�
 </br>
 <a href="https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/" target="_blank">Windows VM 上的自定义脚本扩展</a>。
 
-<!---HONumber=76-->
+<!---HONumber=79-->

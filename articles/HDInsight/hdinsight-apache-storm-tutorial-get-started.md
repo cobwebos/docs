@@ -1,7 +1,7 @@
 <properties
-	pageTitle="Apache Storm 教程：Storm 入门 | Azure"
+	pageTitle="Apache Storm 教程：Storm 入门 | Microsoft Azure"
 	description="开始在 HDInsight 上使用 Apache Storm 和 Storm 初学者示例进行大数据分析。了解如何使用 Storm 实时处理数据。"
-	keywords="apache storm,apache storm tutorial,big data analytics,storm starter"
+	keywords="apache storm,apache storm 教程,大数据分析,storm 初学者"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -11,14 +11,27 @@
 
 <tags
 	ms.service="hdinsight"
-	wacn.date=""
-	ms.date="08/05/2015"/>
+	ms.date="10/09/2015"
+	wacn.date=""/>
 
 
 # Apache Storm 教程：用于在 HDInsight 上进行大数据分析的 Storm 初学者示例入门
 
-Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算系统，用于处理数据流。使用 Azure HDInsight 上的 Storm，你可以创建一个基于云的、用于实时执行大数据分析的 Storm 群集。
+Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算系统，用于处理数据流。使用 Microsoft Azure HDInsight 上的 Storm，你可以创建一个基于云的、用于实时执行大数据分析的 Storm 群集。
 
+<!-- deleted by customization
+
+[AZURE.INCLUDE [preview portal](../includes/hdinsight-azure-preview-portal.md)]
+-->
+
+* [Apache Storm 教程：用于在 HDInsight 上进行大数据分析的 Storm 初学者示例入门](/documentation/articles/hdinsight-apache-storm-tutorial-get-started-v1)
+
+<!-- deleted by customization
+
+   
+
+> [AZURE.NOTE] The steps in this article create a Windows-based HDInsight cluster. For steps to create a Linux-based Storm on HDInsight cluster, see [Apache Storm tutorial: Get started with the Storm Starter sample using data analytics on HDInsight](/documentation/articles/hdinsight-apache-storm-tutorial-get-started)
+-->
 
 ## 先决条件
 
@@ -30,11 +43,69 @@ Apache Storm 是一个可扩展的、具有容错能力的分布式实时计算�
 
 Storm on HDInsight 使用 Azure Blob 存储来存储提交到群集的日志文件和拓扑。使用以下步骤来创建用于群集的 Azure 存储帐户：
 
-1. 登录到 [Azure 门户](http://manage.windowsazure.cn/)。
+<!-- deleted by customization
+
+1. Sign in to the [Azure preview portal][preview-portal].
+
+2. Select **NEW**, select __Data Analytics__, and then select __HDInsight__.
+
+	![Create a new cluster in the Azure preview portal](./media/hdinsight-apache-storm-tutorial-get-started/new-cluster.png)
+
+3. Enter a __Cluster Name__, and then select __Storm__ for the __Cluster Type__. A green check appears beside the __Cluster Name__ if it is available.
+
+	![Cluster name, cluster type, and OS Type](./media/hdinsight-apache-storm-tutorial-get-started/clustername.png)
+
+4. If you have more than one subscription, select the __Subscription__ entry to select the Azure subscription that will be used for the cluster.
+
+5. For __Resource Group__, you can select the entry to see a list of existing resource groups and then select the one to create the cluster in. Or you can select __Create New__ and then enter the name of the new resource group. A green check appears to indicate if the new group name is available.
+
+	> [AZURE.NOTE] This entry defaults to one of your existing resource groups, if any are available.
+
+6. Select __Credentials__, and then enter a __Cluster Login Username__ and __Cluster Login Password__. Finally, use  __Select__ to set the credentials. Remote desktop will not be used in this document, so you can leave it disabled.
+
+	![Cluster credentials blade](./media/hdinsight-apache-storm-tutorial-get-started/clustercredentials.png)
+
+6. For __Data Source__, you can select the entry to choose an existing data source, or create a new one.
+
+	![Data source blade](./media/hdinsight-apache-storm-tutorial-get-started/datasource.png)
+
+	Currently you can select an Azure storage account as the data source for an HDInsight cluster. Use the following to understand the entries on the __Data Source__ blade.
+
+	- __Selection Method__: Set this to __From all subscriptions__ to enable browsing of storage accounts on your subscriptions. Set to __Access Key__ if you want to enter the __Storage Name__ and __Access Key__ of an existing storage account.
+
+	- __Create New__: Use this to create a new storage account. Use the field that appears to enter the name of the storage account. A green check appears if the name is available.
+
+	- __Choose Default Container__: Use this to enter the name of the default container to use for the cluster. While you can enter any name here, we recommend using the same name as the cluster so that you can easily recognize that the container is used for this specific cluster.
+
+	- __Location__: The geographic region that the storage account will be is in, or will be created in.
+
+		> [AZURE.IMPORTANT] Selecting the location for the default data source also sets the location of the HDInsight cluster. The cluster and default data source must be located in the same region.
+
+	- __Select__: Use this to save the data source configuration.
+
+7. Select __Node Pricing Tiers__ to display information about the nodes that will be created for this cluster. By default, the number of worker nodes is set to __4__. Set this to __1__, as this is sufficient for this tutorial and reduces the cost of the cluster. The estimated cost of the cluster is shown at the bottom of this blade.
+
+	![Node pricing tiers blade](./media/hdinsight-apache-storm-tutorial-get-started/nodepricingtiers.png)
+
+	Use  __Select__ to save the __Node Pricing Tiers__ information.
+
+8. Select __Optional Configuration__. This blade allows you to select the cluster version, as well as configure other optional settings such as joining a __Virtual Network__ or setting up an __External Metastore__ to hold data for Hive and Oozie.
+
+	![Optional configuration blade](./media/hdinsight-apache-storm-tutorial-get-started/optionalconfiguration.png)
+
+9. Ensure that __Pin to Startboard__ is selected, and then select __Create__. This creates the cluster and adds a tile for it to the Startboard of your Azure Management Portal. The icon indicates that the cluster is provisioning, and changes to display the HDInsight icon once provisioning has completed.
+
+	| While provisioning | Provisioning complete |
+	| ------------------ | --------------------- |
+	| ![Provisioning indicator on Startboard](./media/hdinsight-apache-storm-tutorial-get-started/provisioning.png) | ![Provisioned cluster tile](./media/hdinsight-apache-storm-tutorial-get-started/provisioned.png) |
+
+--> 
+1.登录到 [Azure 管理门户](http://manage.windowsazure.cn/)。
+<!-- keep by customization: begin -->
 
 2. 单击左下角的“新建”，依次指向“数据服务”和“存储”，然后单击“快速创建”。
 
-	![在 Azure 门户中，可以使用“快速创建”来设置新的存储帐户。](./media/hdinsight-apache-storm-tutorial-get-started/HDI.StorageAccount.QuickCreate.png)
+	![在 Azure 管理门户中，可以使用“快速创建”来设置新的存储帐户。](./media/hdinsight-apache-storm-tutorial-get-started/HDI.StorageAccount.QuickCreate.png)
 
 3. 输入“URL”、“位置”和“复制”的信息，然后单击“创建存储帐户”。为 HDInsight 创建存储时，请不要选择地缘组。你将在存储列表中看到新的存储帐户。
 
@@ -44,13 +115,13 @@ Storm on HDInsight 使用 Azure Blob 存储来存储提交到群集的日志文�
 
 有关创建存储帐户的详细信息，请参阅<a href="/documentation/articles/storage-create-storage-account/" target="_blank">如何创建存储帐户</a>。
 
-##在 Azure 门户中设置 Storm 群集
+##在 Azure 管理门户中预配 Storm 群集
 
-当你设置 HDInsight 群集时，便设置了包含 Apache Storm 和相关应用程序的 Azure 计算资源。你还可以使用 Azure 门户、适用于 HDInsight 的 Azure PowerShell cmdlet 或 HDInsight .NET SDK 为其他版本创建 Hadoop 群集。有关说明，请参阅[使用自定义选项设置 HDInsight 群集][hdinsight-provision]。有关不同 HDInsight 版本及其服务级别协议 (SLA) 的信息，请参阅 [HDInsight 组件版本控制](hdinsight-component-versioning)页。
+当你设置 HDInsight 群集时，便设置了包含 Apache Storm 和相关应用程序的 Azure 计算资源。你还可以使用 Azure 管理门户、适用于 HDInsight 的 Azure PowerShell cmdlet 或 HDInsight .NET SDK 为其他版本创建 Hadoop 群集。有关说明，请参阅[使用自定义选项设置 HDInsight 群集][hdinsight-provision]。有关不同 HDInsight 版本及其服务级别协议 (SLA) 的信息，请参阅 [HDInsight 组件版本控制](/documentation/articles/hdinsight-component-versioning)页。
 
 [AZURE.INCLUDE [provisioningnote](../includes/hdinsight-provisioning.md)]
 
-1. 登录到 [Azure 门户][azureportal]。
+1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
 
 2. 在左窗格中单击“HDInsight”，然后单击页面左下角的“+新建”。
 
@@ -65,21 +136,28 @@ Storm on HDInsight 使用 Azure Blob 存储来存储提交到群集的日志文�
 	> [AZURE.NOTE]群集的管理员帐户名为 **admin**。输入的密码是此帐户的密码。你将需要此信息来对群集执行操作，例如提交或管理 Storm 拓扑。
 
 5. 最后，选中“创建 HDINSIGHT 群集”旁边的复选标记以创建群集。
-
+<!-- keep by customization: end -->
 	> [AZURE.NOTE]创建群集需要一些时间，通常约 15 分钟左右。使用启动板上的磁贴或页面左侧的“通知”项检查预配过程。
 
-##在 HDInsight 上运行 Storm 初学者示例
+## 在 HDInsight 上运行 Storm 初学者示例
 
 本 Apache Storm 教程将介绍如何在 GitHub 上使用 Storm 初学者示例执行大型数据分析。
 
 每个 Storm on HDInsight 群集都附带了一个 Storm 仪表板，可用于上载并在群集上运行 Storm 拓扑。每个群集还附带了可直接从 Storm 仪表板运行的示例拓扑。
 
-###<a id="connect"></a>连接到仪表板
+### <a id="connect"></a>连接到仪表板
+<!-- deleted by customization
 
-仪表板位于 **https://&lt;clustername>.azurehdinsight.cn//**，其中 **clustername** 是群集的名称。Azure 门户页底部也提供了仪表板的链接。
+The dashboard is located at **https://&lt;clustername>.azurehdinsight.cn//**, where **clustername** is the name of the cluster. You can also find a link to the dashboard by selecting the cluster from the Startboard and selecting the __Dashboard__ link at the top of the blade.
 
-![包含 Storm“仪表板”链接的 Azure 门户](./media/hdinsight-apache-storm-tutorial-get-started/dashboard-link.png)
+![Azure Management Portal with Storm Dashboard link](./media/hdinsight-apache-storm-tutorial-get-started/dashboard.png)
 
+-->
+<!-- keep by customization: begin -->
+仪表板位于 **https://&lt;clustername>.azurehdinsight.cn//**，其中 **clustername** 是群集的名称。群集的 Azure 管理门户页底部也提供了仪表板的链接。
+
+![包含 Storm“仪表板”链接的 Azure 管理门户](./media/hdinsight-apache-storm-tutorial-get-started/dashboard-link.png) 
+<!-- keep by customization: end -->
 > [AZURE.NOTE]在连接到仪表板时，系统将提示你输入用户名和密码。这是创建群集时所用的管理员名称 (**admin**) 和密码。
 
 加载 Storm 仪表板后，你将看到“提交拓扑”窗体。
@@ -88,7 +166,7 @@ Storm on HDInsight 使用 Azure Blob 存储来存储提交到群集的日志文�
 
 “提交拓扑”窗体可用于上载和运行包含 Storm 拓扑的 .jar 文件。它还包括群集随附的几个基本示例。
 
-###<a id="run"></a>从 GitHub 中的 Storm 初学者项目运行单词计数示例
+### <a id="run"></a>从 GitHub 中的 Storm 初学者项目运行单词计数示例
 
 群集随附的示例包括单词计数拓扑的多种变体。这些示例包括随机生成句子的 **spout**，和将每个句子分解成不同的单词，然后统计每个单词出现次数的 **bolt**。这些示例来自 Apache Storm 中包含的 [Storm 初学者示例](https://github.com/apache/storm/tree/master/examples/storm-starter)。
 
@@ -107,7 +185,7 @@ Storm on HDInsight 使用 Azure Blob 存储来存储提交到群集的日志文�
 
 	> [AZURE.NOTE]结果不会指示已完成拓扑 - **Storm 拓扑在启动后将一直运行，直到你停止它**。 单词计数拓扑将会生成随机的句子，并会一直计算所遇到的每个单词的出现次数，直到你将其停止。
 
-###<a id="monitor"></a>监视拓扑
+### <a id="monitor"></a>监视拓扑
 
 Storm UI 可以用于监视拓扑。
 
@@ -176,15 +254,15 @@ Storm UI 可以用于监视拓扑。
 
 	从这些数据中，你可以看到，单词 **seven** 出现了 1,493,957 次。就是自从启动此拓扑以来该单词出现的次数。
 
-###停止拓扑
+### 停止拓扑
 
 返回到单词计数拓扑的“拓扑摘要”页，然后从“拓扑操作”部分中选择“终止”。出现提示时，输入停止拓扑之前要等待的秒数，即 10。超时期限过后，当你访问仪表板的“Storm UI”部分时，将不再显示该拓扑。
 
-##摘要
+## 摘要
 
 在本 Apache Storm 教程中，你已使用 Storm 初学者示例学习如何创建 Storm on HDInsight 群集，以及如何使用 Storm 仪表板来部署、监视和管理 Storm 拓扑。
 
-##<a id="next"></a>后续步骤
+## <a id="next"></a>后续步骤
 
 * **HDInsight Tools for Visual Studio** - HDInsight Tools 允许你使用 Visual Studio 提交、监视和管理 Storm 拓扑，就像在前面提到的 Storm 仪表板中一样。HDInsight Tools 可让你创建 C# Storm 拓扑，并包含可在群集上部署和运行的示例拓扑。
 
@@ -213,6 +291,7 @@ Storm UI 可以用于监视拓扑。
 [stormstarter]: https://github.com/apache/storm/tree/master/examples/storm-starter
 [stormjavadocs]: https://storm.incubator.apache.org/apidocs/
 [azureportal]: https://manage.windowsazure.cn/
-[hdinsight-provision]: hdinsight-provision-clusters
+[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters
+<!-- deleted by customization [preview-portal]: https://manage.windowsazure.cn -->
 
-<!---HONumber=74-->
+<!---HONumber=79-->

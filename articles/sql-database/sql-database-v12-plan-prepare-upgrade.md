@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="09/16/2015"
+	ms.date="10/08/2015"
 	wacn.date=""/>
 
 
@@ -29,8 +29,7 @@
 | 标题和链接 | 内容说明 |
 | :--- | :--- |
 | [SQL 数据库 V12 的新增功能](/documentation/articles/sql-database-v12-whats-new) | 介绍 V12 如何使 Azure SQL 数据库几乎能够完全与 Microsoft SQL Server 兼容。 |
-| [演练：注册最新的 SQL 数据库更新版 V12](/documentation/articles/sql-database-v12-sign-up) | 介绍将 Azure SQL 数据库 s 升级到 V12 时必须执行的步骤。 |
-| [在 SQL 数据库更新版 V12 中创建数据库](/documentation/articles/sql-database-create) | 介绍如何在版本 V12 中创建新的 Azure SQL 数据库。其中介绍了各个选项，而不仅仅是如何创建空数据库。 |
+| [在 SQL 数据库 V12 中创建数据库](/documentation/articles/sql-database-create) | 介绍如何在版本 V12 中创建新的 Azure SQL 数据库。其中介绍了各个选项，而不仅仅是如何创建空数据库。 |
 
 
 ## 提前规划
@@ -56,15 +55,15 @@
 
 有关基本、标准和高级服务层的详细信息，请参阅：
 
-
+- [SQL 数据库服务层](/documentation/articles/sql-database-service-tiers)
 - [将 SQL 数据库 Web/企业数据库升级到新服务层](/documentation/articles/sql-database-upgrade-new-service-tiers)
-- [Azure SQL 数据库定价](/home/features/sql-database/#price)
+
 
 
 ### 查看地域复制配置
 
 
-如果你的 Azure SQL 数据库已针对地域复制进行配置，则你应记录其当前配置并停止地域复制，然后才能启动升级准备操作。升级完成后，你必须重新为地域复制配置数据库。
+如果你的 Azure SQL 数据库已针对异地复制进行配置，则你应记录其当前配置并停止异地复制，然后才能启动升级准备操作。升级完成后，你必须重新为地域复制配置数据库。
 
 
 策略是将源保持不变，并在数据库的副本上进行测试。
@@ -134,8 +133,7 @@ Azure 有三个门户，每个门户针对 SQL 数据库 V12 提供不同的功�
  - *无法*将 V11 数据库升级到 V12。
 
 
-- （http://*yourservername*.database.chinacloudapi.cn)<br/>
-Azure SQL 数据库管理门户：
+- （http://*yourservername*.database.chinacloudapi.cn)<br/> Azure SQL 数据库管理门户：
  - 无法管理 V12 服务器。
 
 
@@ -166,6 +164,7 @@ Azure SQL 数据库管理门户：
 | :--- | :--- |
 | 升级持续时间 | 升级持续时间取决于服务器中数据库的大小、版本和数量。如果服务器中的数据库存在以下情况，升级过程可能会持续几小时甚至几天：<br/><br/>* 大于 50 GB<br/>* 位于非高级服务层上<br/><br/>升级期间在服务器上创建新数据库也可能会延长升级持续时间。 |
 | 没有地域复制 | 目前，从 V11 升级的 V12 服务器不支持地域复制。 |
+| 在升级到 V12 的最后一个阶段，数据库将暂时不可用 | 在升级过程中，属于 V11 服务器的数据库将保持可用。但是，与服务器和数据库的连接，在最后一个阶段当开始从 V11 切换到准备就绪的 V12 时，暂时不可用。<br/><br/>切换期间可能从 40 秒到 5 分钟变动。对于大多数服务器，切换应在 90 秒内完成。对于具有大量数据库的服务器，或者当数据库有大量写入工作负荷时，切换时间会增加。 |
 
 
 ### 升级到 V12 *之后*的限制
@@ -197,7 +196,7 @@ Azure SQL 数据库管理门户：
 - [Azure SQL 数据库 V12 数据层应用程序框架 (DacFx) 2015 年 2 月版](https://www.microsoft.com/zh-CN/download/details.aspx?id=45886)
 
 
-> [AZURE.NOTE] 前面的工具链接已在 2015 年 3 月 2 日或之后更新。我们建议你使用这些工具的较新更新版。
+> [AZURE.NOTE]前面的工具链接已在 2015 年 3 月 2 日或之后更新。我们建议你使用这些工具的较新更新版。
 
 
 #### 自动导出
@@ -220,15 +219,16 @@ Azure SQL 数据库管理门户：
 ### PowerShell cmdlet
 
 
-可以使用 Powershell cmdlet 来启动、停止或监视从 Azure SQL 数据库 V11 或其他任何低于 V12 的版本到 V12 的升级。
+可以使用 PowerShell cmdlett 来启动、停止或监视从 Azure SQL 数据库 V11 或其他任何低于 V12 的版本到 V12 的升级。
+
+- [使用 PowerShell 升级到 SQL 数据库 V12](/documentation/articles/sql-database-upgrade-server)
+
+有关这些 PowerShell cmdlet 的参考文档，请参阅：
 
 
-有关这些 Powershell cmdlet 的参考文档，请参阅：
-
-
-- [Get-AzureSqlServerUpgrade](http://msdn.microsoft.com/zh-cn/library/mt143621.aspx)
-- [Start-AzureSqlServerUpgrade](http://msdn.microsoft.com/zh-cn/library/mt143623.aspx)
-- [Stop-AzureSqlServerUpgrade](http://msdn.microsoft.com/zh-cn/library/mt143622.aspx)
+- [Get-AzureRMSqlServerUpgrade](https://msdn.microsoft.com/zh-cn/library/azure/mt603582.aspx)
+- [Start-AzureRMSqlServerUpgrade](https://msdn.microsoft.com/zh-cn/library/azure/mt619403.aspx)
+- [Stop-AzureRMSqlServerUpgrade](https://msdn.microsoft.com/zh-cn/library/azure/mt603589.aspx)
 
 
 Stop- cmdlet 表示取消，而不是暂停。你无法在中途恢复升级，而只能从头开始重新升级。Stop- cmdlet 将清理并释放所有相应的资源。
@@ -240,10 +240,6 @@ Stop- cmdlet 表示取消，而不是暂停。你无法在中途恢复升级，�
 如果任何奇怪的原因导致升级失败，V11 数据库将保持活动状态并像平常一样工作。
 
 
-> [AZURE.NOTE]
-> 在升级到 V12 期间，版本低于 V12 的数据库*仍然支持*数据访问。
-
-
 ## 相关链接
 
 
@@ -252,5 +248,6 @@ Stop- cmdlet 表示取消，而不是暂停。你无法在中途恢复升级，�
 
 <!--Anchors-->
 [Subheading 1]: #subheading-1
+ 
 
-<!---HONumber=76-->
+<!---HONumber=79-->

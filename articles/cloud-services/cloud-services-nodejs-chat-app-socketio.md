@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用 Socket.io 生成 Node.js 应用程序 | Microsoft Azure" 
+	pageTitle="使用 Socket.io 构建 Node.js 应用程序 | Microsoft Azure" 
 	description="了解如何在 Azure 上托管的 node.js 应用程序中使用 socket.io。" 
 	services="cloud-services" 
 	documentationCenter="nodejs" 
@@ -28,7 +28,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
 
 确保以下产品和版本已安装才能成功完成本文中的示例：
 
-* 安装 [Visual Studio 2013](https://www.visualstudio.com/zh-cn/downloads/download-visual-studio-vs.aspx)
+* 安装 [Visual Studio 2013](https://www.visualstudio.com/zh-CN/downloads/download-visual-studio-vs.aspx)
 * 安装 [Node.js](https://nodejs.org/download/)
 * 安装 [Python 2.7.10 版](https://www.python.org/)
 
@@ -145,7 +145,8 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
 
 在本教程中，你已了解如何创建在 Azure 云服务中托管的基本聊天应用程序。若要了解如何在 Azure 网站中托管此应用程序，请参阅 [在 Azure 网站中使用 Socket.IO 生成 Node.js 聊天应用程序][chatwebsite]。
 
-  [chat Website]: /documentation/articles/web-sites-nodejs-chat-app-socketio/
+有关详细信息，另请参阅 [Node.js 开发人员中心](/develop/nodejs/)。
+  [聊天网站]：/documentation/articles/web-sites-nodejs-chat-app-socketio/
 
   [Azure SLA]: /support/legal/sla
   [Azure SDK for Node.js GitHub repository]: https://github.com/WindowsAzure/azure-sdk-for-node
@@ -167,4 +168,4 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
   [The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
   
 
-<!---HONumber=74-->
+<!---HONumber=79-->

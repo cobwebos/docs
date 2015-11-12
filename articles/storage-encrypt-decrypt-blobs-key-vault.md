@@ -1,6 +1,6 @@
 <properties
-   pageTitle="在 Microsoft Azure 存储空间中使用 Azure 密钥保管库加密和解密 Blob"
-   description="本教程将指导您如何将 Microsoft Azure 存储空间的客户端加密与 Azure 密钥保管库配合使用来加密和解密 blob"
+   pageTitle="在 Microsoft Azure 存储空间中使用 Azure 密钥保管库加密和解密 Blob | Microsoft Azure"
+   description="本教程将指导你如何将 Microsoft Azure 存储空间的客户端加密与 Azure 密钥保管库配合使用来加密和解密 Blob。"
    services="storage"
    documentationCenter=""
    authors="adhurwit"
@@ -233,4 +233,4 @@ RSA 密钥的私钥则保留在密钥保管库中，为了进行解密，来自�
 <!--Image references-->
 [1]: ./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png
 
-<!---HONumber=71-->
+<!---HONumber=79-->

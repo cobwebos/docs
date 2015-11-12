@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="使用用于 C++ 的 Windows Azure 存储客户端库列出 Azure 存储资源 | Windows Azure" 
-    description="了解如何在用于 C++ 的 Windows Azure 存储客户端库中使用列表 API 来枚举容器、blob、队列、表和实体。" 
+    pageTitle="使用用于 C++ 的 Microsoft Azure 存储客户端库列出 Azure 存储资源 | Microsoft Azure" 
+    description="了解如何在用于 C++ 的 Microsoft Azure 存储客户端库中使用列表 API 来枚举容器、blob、队列、表和实体。" 
     documentationCenter=".net" 
     services="storage"
     authors="tamram" 
@@ -8,13 +8,12 @@
     editor=""/>
 <tags 
     ms.service="storage" 
-   
-    ms.date="07/19/2015" 
+    ms.date="09/23/2015" 
     wacn.date=""/>
 
 # 使用 C++ 列出 Azure 存储资源
 
-使用 Azure 存储空间进行开发时，很多情况下列表操作很重要。本文介绍如何使用用于 C++ 的 Windows Azure 存储客户端库中提供的列表 API 最有效率地枚举 Azure 存储空间中的对象。
+使用 Azure 存储空间进行开发时，很多情况下列表操作很重要。本文介绍如何使用用于 C++ 的 Microsoft Azure 存储客户端库中提供的列表 API 最有效率地枚举 Azure 存储空间中的对象。
 
 >[AZURE.NOTE]本指南主要面向适用于 C++ 版本 1.x 的 Azure 存储客户端库，该库可通过 [NuGet](http://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/Azure/azure-storage-cpp) 获取。
 
@@ -51,8 +50,8 @@
 
 分段列表操作的响应包括：
 
--	<i>_segment</i>，其中包含针对列表 API 进行单个调用时返回的结果集。 
--	*continuation_token*，将传递给下一个调用，以获取下一页结果。当不再有需要返回的结果时，继续标记为 null。
+-	<i>\_segment</i>，其中包含针对列表 API 进行单个调用时返回的结果集。 
+-	*continuation\_token*，将传递给下一个调用，以获取下一页结果。当不再有需要返回的结果时，继续标记为 null。
 
 例如，进行典型调用以列出容器中的所有 blob 时，该调用的代码段可能如下所示。我们的[示例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)中提供了该代码：
 
@@ -77,15 +76,15 @@
 	}
 	while (!token.empty());
 
-请注意，一页中返回的结果数可以通过每个 API 的重载中的参数 *max_results* 进行控制，例如：
+请注意，一页中返回的结果数可以通过每个 API 的重载中的参数 *max\_results* 进行控制，例如：
 	
 	list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing, 
 		blob_listing_details::values includes, int max_results, const continuation_token& token, 
 		const blob_request_options& options, operation_context context)
 
-如果未指定 *max_results* 参数，则会在单个页面中返回默认的最大值（最多 5000 个结果）。
+如果未指定 *max\_results* 参数，则会在单个页面中返回默认的最大值（最多 5000 个结果）。
 
-另请注意，针对 Azure 表存储进行查询时，可能不会返回任何记录，或者返回的记录数小于你所指定的 *max_results* 参数的值，即使继续标记不为空。可能的一个原因是，查询可能无法在 5 秒钟内完成。只要继续标记不为空，查询就会继续，你的代码不应假定分段结果的大小。
+另请注意，针对 Azure 表存储进行查询时，可能不会返回任何记录，或者返回的记录数小于你所指定的 *max\_results* 参数的值，即使继续标记不为空。可能的一个原因是，查询可能无法在 5 秒钟内完成。只要继续标记不为空，查询就会继续，你的代码不应假定分段结果的大小。
 
 大多数情况下，建议采用分段列表编码模式，因为这样可以明确地了解列表或查询的进度，以及服务对每个请求是如何响应的。具体说来，对于 C++ 应用程序或服务来说，对列表进程进行低级别的控制可以更好地控制内存和性能。
 
@@ -125,7 +124,7 @@ SDK 中的此类贪婪列表 API 在 C#、Java 或 JavaScript Node.js 环境中�
 	    token = segment.continuation_token();
 	} while (!token.empty());
 
-你可以指定该段的 *max_results* 参数，在请求数和内存使用量之间进行平衡，以便满足应用程序的性能要求。
+你可以指定该段的 *max\_results* 参数，在请求数和内存使用量之间进行平衡，以便满足应用程序的性能要求。
 
 此外，如果你使用了分段列表 API，但采用“贪婪”方式将数据存储在本地集合中，则我们也强烈建议你对代码进行重构，谨慎地应对数据处理规模扩大时将数据存储在本地集合中带来的问题。
 
@@ -135,7 +134,7 @@ SDK 中的此类贪婪列表 API 在 C#、Java 或 JavaScript Node.js 环境中�
 
 如果你还使用 C# 或 Oracle Java SDK，则应熟悉枚举型编程模式，该模式提供懒惰形式的列表，仅在需要时才提取具有特定偏移量的数据。在 C++ 中，基于迭代器的模板也提供了类似方法。
 
-典型的懒惰列表 API（使用 **list_blobs** 作为示例）如下所示：
+典型的懒惰列表 API（使用 **list\_blobs** 作为示例）如下所示：
 
 	list_blob_item_iterator list_blobs() const;
 
@@ -181,4 +180,4 @@ SDK 中的此类贪婪列表 API 在 C#、Java 或 JavaScript Node.js 环境中�
 -	[Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 -	[Azure 存档文档](http://www.windowsazure.cn/documentation/services/storage/)
 
-<!---HONumber=67-->
+<!---HONumber=79-->

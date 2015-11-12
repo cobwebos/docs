@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="有关 Azure AD Connect 凭据和权限的更多信息" 
+	pageTitle="有关 Azure AD Connect 凭据和权限的详细信息 | Microsoft Azure" 
 	description="Azure AD Connect 凭据和权限的自定义设置描述。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="08/24/2015" 
+	ms.date="10/13/2015"
 	wacn.date=""/>
 
 
@@ -83,8 +83,8 @@ AD FS：GMSA 帐户 (aadcsvc$)|域用户|FS 服务登录帐户
 * [用于密码同步的权限](https://msdn.microsoft.com/library/azure/dn757602.aspx#psynch)
 * [用于 Exchange 混合部署的权限](https://msdn.microsoft.com/library/azure/dn757602.aspx#exchange)
 * [用于密码写回的权限](https://msdn.microsoft.com/library/azure/dn757602.aspx#pwriteback)
-* [Azure AD Connect 的自定义安装](active-directory-aadconnect-get-started-custom.md)
-* [MSDN 上的 Azure AD Connect](active-directory-aadconnect.md)
+* [Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom)
+* [MSDN 上的 Azure AD Connect](/documentation/articles/active-directory-aadconnect)
  
 
-<!---HONumber=76-->
+<!---HONumber=79-->

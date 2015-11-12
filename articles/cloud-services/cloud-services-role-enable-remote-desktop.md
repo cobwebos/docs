@@ -8,7 +8,7 @@ manager="timlt"
 editor=""/>
 <tags 
 ms.service="cloud-services"  
-ms.date="07/06/2015" 
+ms.date="10/14/2015" 
 wacn.date=""/>
 
 # 为 Azure 云服务中的角色设置远程桌面连接
@@ -89,11 +89,10 @@ wacn.date=""/>
 
 此方法允许你在开发过程中为应用程序启用远程桌面。此方法需要将加密的密码存储在服务配置文件中，并且如果对远程桌面配置进行了任何更新，将需要重新部署应用程序。如果你想要避免这些弊端，应使用上面所述的基于远程桌面扩展的方法。
 
-可以通过服务定义文件方法使用 Visual Studio [启用远程桌面连接](https://msdn.microsoft.com/zh-cn/library/gg443832.aspx)。
-下面的步骤介绍了要启用远程桌面需要对服务模型文件进行的更改。在发布时，Visual Studio 将自动进行这些更改。
+可以通过服务定义文件方法使用 Visual Studio [启用远程桌面连接](https://msdn.microsoft.com/zh-cn/library/gg443832.aspx)。下面的步骤介绍了要启用远程桌面需要对服务模型文件进行的更改。在发布时，Visual Studio 将自动进行这些更改。
 
 ### 在服务模型中设置连接 
-使用 **Imports** 元素将 **RemoteAccess** 模块和 **RemoteForwarder** 模块导入到 [ServiceDefinition.csdef](cloud-services-model-and-package.md#csdef) 文件中。
+使用 **Imports** 元素将 **RemoteAccess** 模块和 **RemoteForwarder** 模块导入到 [ServiceDefinition.csdef](/documentation/articles/cloud-services-model-and-package/#csdef) 文件中。
 
 服务定义文件应类似于下面的示例，并添加 `<Imports>` 元素。
 
@@ -144,4 +143,4 @@ wacn.date=""/>
 
 [如何配置云服务](/documentation/articles/cloud-services-how-to-configure)
 
-<!---HONumber=74-->
+<!---HONumber=79-->

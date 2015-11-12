@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="multiple"
-	ms.date="06/03/2015"
+	ms.date="08/31/2015"
 	wacn.date=""/>
 
 #如何在 Azure 中创建 MySQL 数据库
@@ -19,4 +19,4 @@
 
 演示如何在 Azure 上将 MySQL 与 PHP 配合使用的示例位于 <https://github.com/WindowsAzure/azure-sdk-for-php-samples/tree/master/tasklist-mysql>。
 
-<!---HONumber=71-->
+<!---HONumber=79-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="cloud-services" 
-	ms.date="06/29/2015"
+	ms.date="09/22/2015"
 	wacn.date=""/>
 
 
@@ -39,9 +39,11 @@ Azure 管理门户还允许你[为 Azure 云服务中的角色启用远程桌面
 
 3. 对于服务角色（按角色分组），你可以更新下列设置：
     
-    >**设置**：修改服务配置 (.cscfg) 文件的 *ConfigurationSettings* 元素中指定的其他配置设置的值。
+    >**设置**：
+    >修改服务配置 (.cscfg) 文件的 *ConfigurationSettings* 元素中指定的其他配置设置的值。
     >
-    >**证书**：更改 SSL 加密中用于角色的证书指纹。若要更改证书，你必须首先上载新证书（在“证书”页上）。然后更新角色设置中显示的证书字符串中的指纹。
+    >**证书**：
+    >更改 SSL 加密中用于角色的证书指纹。若要更改证书，你必须首先上载新证书（在“证书”页上）。然后更新角色设置中显示的证书字符串中的指纹。
 
 4. 在“操作系统”中，你可以更改角色实例的操作系统系列或版本，或选择“自动”以启用当前操作系统版本的自动更新。操作系统设置将应用到 Web 角色和辅助角色，但不影响虚拟机。
 
@@ -74,8 +76,12 @@ Azure 管理门户还允许你[为 Azure 云服务中的角色启用远程桌面
     4. 单击“确定”（复选标记）。
 
 
-## 其他资源
+## 后续步骤
 
-[为 Azure 云服务中的角色启用远程桌面连接](/documentation/articles/cloud-services-role-enable-remote-desktop)
+* 了解如何[部署云服务](/documentation/articles/cloud-services-how-to-create-deploy)。
+* 配置[自定义域名](/documentation/articles/cloud-services-custom-domain-name)。
+* [管理云服务](/documentation/articles/cloud-services-how-to-manage)。
+* [为 Azure 云服务中的角色启用远程桌面连接](/documentation/articles/cloud-services-role-enable-remote-desktop)
+* 配置 [ssl 证书](/documentation/articles/cloud-services-configure-ssl-certificate)。
 
-<!---HONumber=74-->
+<!---HONumber=79-->

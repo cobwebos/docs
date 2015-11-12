@@ -149,4 +149,4 @@ Azure 批处理可帮助你在云中有效运行大规模并行和高性能计�
 [work_item_workflow]: ./media/batch-technical-overview/work_item_workflow.png
 [app_pub_workflow]: ./media/batch-technical-overview/app_pub_workflow.png
 
-<!---HONumber=66-->
+<!---HONumber=79-->

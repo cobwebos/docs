@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="08/24/2015" 
+	ms.date="10/13/2015"
 	wacn.date=""/>
 
 # 设置 Azure AD Connect 时需要使用企业管理员帐户连接 AD DS 的原因
@@ -27,6 +27,6 @@
 
 * [有关 Azure AD Connect 帐户和权限的更多信息](/documentation/articles/active-directory-aadconnect-account-summary)
 * [Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom)
-* [MSDN 上的 Azure AD Connect](https://msdn.microsoft.com/zh-cn/library/azure/dn832695.aspx) 
+* [MSDN 上的 Azure AD Connect](active-directory-aadconnect.md)
 
-<!---HONumber=76-->
+<!---HONumber=79-->

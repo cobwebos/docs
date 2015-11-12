@@ -27,7 +27,7 @@
 
 | **服务** | **重试功能** | **策略配置** | **范围** | **遥测功能** |
 |---------------------------------------|-----------------------------------------|------------------------------|--------------------------------------------------|------------------------
-| **[AzureStorage](#azure-storage-retry-guidelines)** | 客户端原生 | 编程 | 客户端和各项操作 | TraceSource |
+| **[AzureStorage](#azure-storage-retry-guidelines)** | 客户端原生 | 编程 | 客户端؜ ؜ ؜ 和各项操作 | TraceSource |
 | **[使用 Entity Framework 的 SQL 数据库](#sql-database-using-entity-framework-6-retry-guidelines)** | 客户端原生 | 编程 | 每个应用域均为全局 | 无 |
 | **[使用 ADO.NET 的 SQL 数据库](#sql-database-using-ado-net-retry-guidelines)** | Topaz* | 声明性和编程 | 各个语句或代码块 | “自定义” |
 | **[服务总线](#service-bus-retry-guidelines)** | 客户端原生 | 编程 | 命名空间管理器、消息工厂和客户端 | ETW |
@@ -35,7 +35,7 @@
 | **[DocumentDB](#documentdb-pre-release-retry-guidelines)** | 服务原生 | 不可配置 | 全局 | TraceSource |
 | **[搜索](#search-retry-guidelines)** | Topaz*（使用自定义检测策略） | 声明性和编程 | 代码块 | “自定义” |
 | **[Active Directory](#azure-active-directory-retry-guidelines)** | Topaz*（使用自定义检测策略） | 声明性和编程 | 代码块 | “自定义” |
-*Topaz 是<a href="http://msdn.microsoft.com/library/dn440719.aspx">企业库 6.0</a> 中包含的临时故障处理应用程序块的易记名称。对于大多数类型的服务，您可以结合使用自定义检测策略和 Topaz，如本指南所述。本指南末尾的[临时故障处理应用程序块 (Topaz) 策略](#transient-fault-handling-application-block-topaz-strategies)部分中介绍了 Topaz 默认策略。请注意，临时故障处理应用程序块现在是一个开放源代码框架，不受 Microsoft 直接支持。
+**Topaz 是<a href="http://msdn.microsoft.com/library/dn440719.aspx">企业库 6.0</a> 中包含的临时故障处理应用程序块的易记名称。对于大多数类型的服务，您可以结合使用自定义检测策略和 Topaz，如本指南所述。本指南末尾的[临时故障处理应用程序块 (Topaz) 策略](#transient-fault-handling-application-block-topaz-strategies)部分中介绍了 Topaz 默认策略。请注意，临时故障处理应用程序块现在是一个开放源代码框架，不受 Microsoft 直接支持。
 
 > [AZURE.NOTE]对于大多数 Azure 内置重试机制，目前尚无方法针对不同类型的错误或异常（不局限于重试策略功能）应用不同的重试策略。因此，根据指南，最好在编写时配置可提供最佳平均性能和可用性的策略。微调策略的一种方法是分析日志文件，以确定发生的临时故障的类型。例如，如果大部分错误都与网络连接问题相关，那么您可以立即尝试重试，而不是等待很长一段时间才进行首次重试。
 
@@ -242,7 +242,7 @@ public class BloggingContextConfiguration : DbConfiguration
 {
   public BlogConfiguration()
   {
-    // Set up the execution strategy for SQL ??? (exponential) with 5 retries and 4 sec delay
+    // Set up the execution strategy for SQL Database (exponential) with 5 retries and 4 sec delay
     this.SetExecutionStrategy(
          "System.Data.SqlClient", () => new SqlAzureExecutionStrategy(5, TimeSpan.FromSeconds(4)));
   }
@@ -317,7 +317,7 @@ namespace RetryCodeSamples
 	{
 	    public BlogConfiguration()
 	    {
-	        // Set up the execution strategy for SQL ??? (exponential) with 5 retries and 12 sec delay.
+	        // Set up the execution strategy for SQL Database (exponential) with 5 retries and 12 sec delay.
 	        // These values could be loaded from configuration rather than being hard-coded.
 	        this.SetExecutionStrategy(
 	                "System.Data.SqlClient", () => new SqlAzureExecutionStrategy(5, TimeSpan.FromSeconds(12)));
@@ -563,14 +563,14 @@ client.RetryPolicy = new RetryExponential(minBackoff: TimeSpan.FromSeconds(0.1),
 ```text
 Microsoft-ServiceBus-Client/RetryPolicyIteration
 ThreadID="14,500"
-FormattedMessage="[TrackingId:] RetryExponential: Operation Get:https://retry-guidance-tests.servicebus.windows.net/TestQueue/?api-version=2014-05 at iteration 0 is retrying after 00:00:00.1000000 sleep because of Microsoft.ServiceBus.Messaging.MessagingCommunicationException: The remote name could not be resolved: 'retry-guidance-tests.servicebus.windows.net'.TrackingId:6a26f99c-dc6d-422e-8565-f89fdd0d4fe3, TimeStamp:9/5/2014 10:00:13 PM."
+FormattedMessage="[TrackingId:] RetryExponential: Operation Get:https://retry-guidance-tests.servicebus.chinacloudapi.cn/TestQueue/?api-version=2014-05 at iteration 0 is retrying after 00:00:00.1000000 sleep because of Microsoft.ServiceBus.Messaging.MessagingCommunicationException: The remote name could not be resolved: 'retry-guidance-tests.servicebus.chinacloudapi.cn'.TrackingId:6a26f99c-dc6d-422e-8565-f89fdd0d4fe3, TimeStamp:9/5/2014 10:00:13 PM."
 trackingId=""
 policyType="RetryExponential"
-operation="Get:https://retry-guidance-tests.servicebus.windows.net/TestQueue/?api-version=2014-05"
+operation="Get:https://retry-guidance-tests.servicebus.chinacloudapi.cn/TestQueue/?api-version=2014-05"
 iteration="0"
 iterationSleep="00:00:00.1000000"
 lastExceptionType="Microsoft.ServiceBus.Messaging.MessagingCommunicationException"
-exceptionMessage="The remote name could not be resolved: 'retry-guidance-tests.servicebus.windows.net'.TrackingId:6a26f99c-dc6d-422e-8565-f89fdd0d4fe3,TimeStamp:9/5/2014 10:00:13 PM"
+exceptionMessage="The remote name could not be resolved: 'retry-guidance-tests.servicebus.chinacloudapi.cn'.TrackingId:6a26f99c-dc6d-422e-8565-f89fdd0d4fe3,TimeStamp:9/5/2014 10:00:13 PM"
 ```
 
 ### 示例（服务总线）
@@ -592,7 +592,7 @@ namespace RetryCodeSamples
 	class ServiceBusCodeSamples
 	{
 		private const string connectionString =
-		    @"Endpoint=sb://[my-namespace].servicebus.windows.net/;
+		    @"Endpoint=sb://[my-namespace].servicebus.chinacloudapi.cn/;
 		        SharedAccessKeyName=RootManageSharedAccessKey;
 		        SharedAccessKey=C99..........Mk=";
 
@@ -1117,4 +1117,4 @@ var result = await policy.ExecuteAsync(() => authContext.AcquireTokenAsync(resou
 | **线性（固定间隔）** | retryCount<br />retryInterval<br />fastFirstRetry<br /> | 10<br />1 秒<br />true | 重试尝试次数。<br />重试之间延迟。<br />是否立即进行首次重试尝试。 |
 有关使用临时故障处理应用程序块的示例，请参阅本指南中前面与使用 ADO.NET 的 Azure SQL 数据库和 Azure Active Directory 有关的示例部分。
 
-<!---HONumber=71-->
+<!---HONumber=79-->

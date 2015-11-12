@@ -9,7 +9,7 @@
 
 <tags
    ms.service="batch"
-   ms.date="07/01/2015"
+   ms.date="09/29/2015"
    wacn.date=""/>
 
 # 批处理和 HPC 解决方案
@@ -218,4 +218,4 @@ Azure 中的计算服务是大计算解决方案的核心。下表是经常使�
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
 
-<!---HONumber=71-->
+<!---HONumber=79-->

@@ -57,7 +57,7 @@
             },
             "location": {
                 "type": "string",
-                "allowedValues": ["East US", "West US", "West Europe", "East Asia", "South East Asia"],
+                "allowedValues": ["China North", "China East"],
                 "metadata": {
                     "description": "Location of the Vault"
                 }
@@ -333,4 +333,4 @@ Azure 使用路由表来决定如何根据每个数据包的目标来转发 IP �
 - 若要配置路由和 IP 转发，请参阅[如何在 Azure 中创建路由和启用 IP 转发](/documentation/articles/virtual-networks-udr-how-to) 
 - 有关基于角色的访问控制的概述，请参阅 [Microsoft Azure 门户中基于角色的访问控制](/documentation/articles/role-based-access-control-configure)
 
-<!---HONumber=71-->
+<!---HONumber=79-->

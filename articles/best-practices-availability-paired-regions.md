@@ -9,7 +9,7 @@
 
 <tags
     ms.service="backup"
-    ms.date="07/07/2015"
+    ms.date="09/16/2015"
     wacn.date=""/>
 
 # 使用 Azure 区域对提高可用性
@@ -69,15 +69,20 @@ Azure 在世界各地的多个地理位置运营。Azure 地理位置是至少�
 ## 配对区域的优势
 如图 2 所示。
 
-![5Orange](./media/best-practices-availability-paired-regions/5Orange.png) **物理隔离** – Azure 希望区域对中数据中心之间的距离尽量至少保持 300 英里，不过，要在所有地理位置满足这个要求并不实际且不可能。物理数据中心隔离能够降低自然灾害、社会动乱、电力中断或物理网络中断同时影响两个区域的可能性。隔离受限于地理位置的约束（地理位置大小、电源/网络基础结构可用性、法规，等等）。
+![5Orange](./media/best-practices-availability-paired-regions/5Orange.png)
+**物理隔离** – Azure 希望区域对中数据中心之间的距离尽量至少保持 300 英里，不过，要在所有地理位置满足这个要求并不实际且不可能。物理数据中心隔离能够降低自然灾害、社会动乱、电力中断或物理网络中断同时影响两个区域的可能性。隔离受限于地理位置的约束（地理位置大小、电源/网络基础结构可用性、法规，等等）。
 
-![6Orange](./media/best-practices-availability-paired-regions/6Orange.png) **平台提供的复制** - 某些服务（例如异地冗余存储）提供自动复制到配对区域的功能。
+![6Orange](./media/best-practices-availability-paired-regions/6Orange.png)
+**平台提供的复制** - 某些服务（例如异地冗余存储）提供自动复制到配对区域的功能。
 
-![7Orange](./media/best-practices-availability-paired-regions/7Orange.png) **区域恢复顺序** – 如果发生广泛中断，会优先恢复每个对中的某一个区域。可以保证跨配对区域部署的应用程序在其中一个区域中优先恢复。如果应用程序部署在未配对的区域中，则可能会发生恢复延迟；最坏的情况是，选择两个的区域可能最后才会得到恢复。
+![7Orange](./media/best-practices-availability-paired-regions/7Orange.png)
+**区域恢复顺序** – 如果发生广泛中断，会优先恢复每个对中的某一个区域。可以保证跨配对区域部署的应用程序在其中一个区域中优先恢复。如果应用程序部署在未配对的区域中，则可能会发生恢复延迟；最坏的情况是，选择两个的区域可能最后才会得到恢复。
 
-![8Orange](./media/best-practices-availability-paired-regions/8Orange.png) **依序更新** – 计划的 Azure 系统更新将按顺序发布到配对的区域（不是同时发布），以便在出现罕见的更新失败时，将停机时间、Bug 影响和逻辑故障的可能性降到最低。
+![8Orange](./media/best-practices-availability-paired-regions/8Orange.png)
+**依序更新** – 计划的 Azure 系统更新将按顺序发布到配对的区域（不是同时发布），以便在出现罕见的更新失败时，将停机时间、Bug 影响和逻辑故障的可能性降到最低。
 
 
-![9Orange](./media/best-practices-availability-paired-regions/9Orange.png) **数据驻留** – 一个区域驻留在与其配对区域相同的地理位置（巴西南部除外），以符合税务和执法管辖范围方面的数据驻留要求。
+![9Orange](./media/best-practices-availability-paired-regions/9Orange.png)
+**数据驻留** – 一个区域驻留在与其配对区域相同的地理位置（巴西南部除外），以符合税务和执法管辖范围方面的数据驻留要求。
 
-<!---HONumber=67-->
+<!---HONumber=79-->

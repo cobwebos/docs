@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="08/24/2015"
+   ms.date="10/13/2015"
    wacn.date=""/>
 
 # Azure AD Connect：版本发布历史记录
@@ -18,7 +18,7 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 本文旨在帮助你跟踪已发布的版本，并了解你是否需要更新为最新版本。
 
-## 1.0.8667.0
+## 1\.0.8667.0
 发布日期：2015 年 8 月
 
 **新功能：**
@@ -38,14 +38,14 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 - 由于 Active Directory 连接器上的密码不正确，某些配置中的密码写回失败。
 - 如果属性筛选中使用 dn，则无法升级 DirSync。
 
-## 1.0.8641.0
+## 1\.0.8641.0
 发布日期：2015 年 6 月
 
 **Azure AD Connect 的初始版本。**
 
 名称从 Azure AD Sync 更改为 Azure AD Connect。
 
-## 1.0.494.0501
+## 1\.0.494.0501
 发布日期：2015 年 5 月
 
 **新要求：**
@@ -56,7 +56,7 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 - 从 Azure AD 进行密码写回失败并出现 servicebus 连接错误。
 
-## 1.0.491.0413
+## 1\.0.491.0413
 发布日期：2015 年 4 月
 
 **已解决的问题和改进：**
@@ -73,7 +73,7 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 - 联接现在可以连接到 MV 中的“任何”对象类型。
 
-## 1.0.485.0222
+## 1\.0.485.0222
 发布日期：2015 年 2 月
 
 **改进：**
@@ -87,7 +87,7 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 - 在设备管理后从 Azure AD 连接器导入时，已在 Azure AD/Intune 中启用了“Stopped-server”。
 - 从同一林中的多个域联接外部安全主体 (FSP) 会导致模糊联接错误。
 
-## 1.0.475.1202
+## 1\.0.475.1202
 发布日期：2014 年 12 月
 
 **新功能：**
@@ -108,7 +108,7 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 - 修复了第二次运行安装向导时丢失 sourceAnchor 设置的问题。
 - 修复了用于密码同步的 ETW 跟踪
 
-## 1.0.470.1023
+## 1\.0.470.1023
 发布日期：2014 年 10 月
 
 **新功能：**
@@ -128,14 +128,12 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 必须为 AD 帐户授予其他权限，才能从 AD 读取密码哈希。要授予的权限称为“复制目录更改”和“复制目录更改所有项”。需要这两个权限才能读取密码哈希。
 
-## 1.0.419.0911
+## 1\.0.419.0911
 发布日期：2014 年 9 月
 
 **Azure AD Sync 的初始版本。**
 
-## 其他资源
-[Azure AD Connect Sync：自定义同步选项](active-directory-aadconnectsync-whatis)
+## 后续步骤
+了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
 
-[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect)
-
-<!---HONumber=76-->
+<!---HONumber=79-->

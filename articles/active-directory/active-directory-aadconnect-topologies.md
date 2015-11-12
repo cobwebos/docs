@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="09/08/2015"
+   ms.date="10/13/2015"
    wacn.date=""/>
 
 # Azure AD Connect 的拓扑
@@ -53,10 +53,10 @@ Azure AD Connect 向导提供如何合并用户的多个选项，因此即使不
 下一部分将讨论常见拓扑：[独立的拓扑](#multiple-forests-separate-topologies)、[完整网格](#multiple-forests-full-mesh-with-optional-galsync)和[帐户资源](#multiple-forests-account-resource-forest)。
 
 在 Azure AD Connect Sync 提供的默认配置中，进行以下假设：
-1.用户只有一个已启用的帐户并且此帐户所在的林用于对用户进行身份验证。这是为了进行密码同步和联合；userPrincipalName 和 sourceAnchor/immutableID 将来自此林。
-2.用户只有一个邮箱。
-3.托管用户邮箱的林具有 Exchange 全局地址列表 (GAL) 中可见属性的最佳数据质量。如果用户没有邮箱，则任何林都可以用于提供这些属性值。
-4.如果你有链接的邮箱，则在不同的林中还有另一个帐户用于登录。
+1. 用户只有一个已启用的帐户并且此帐户所在的林用于对用户进行身份验证。这是为了进行密码同步和联合；userPrincipalName 和 sourceAnchor/immutableID 将来自此林。
+2. 用户只有一个邮箱。
+3. 托管用户邮箱的林具有 Exchange 全局地址列表 (GAL) 中可见属性的最佳数据质量。如果用户没有邮箱，则任何林都可以用于提供这些属性值。
+4. 如果你有链接的邮箱，则在不同的林中还有另一个帐户用于登录。
 
 如果你的环境不符合这些假设，将发生以下情况： 
 - 如果有一个以上的活动帐户或一个以上的邮箱，同步引擎将选择其中一个并忽略其他的帐户或邮箱。 
@@ -74,7 +74,8 @@ Azure AD Connect 向导提供如何合并用户的多个选项，因此即使不
 
 ![MultiForestSeperateTopologies](./media/active-directory-aadconnect-topologies/MultiForestSeperateTopologies.png)
 
-在此环境中，本地的所有林都被视为单独的实体，并且没有用户出现在任何其他林中。每个林都有其自己的 Exchange 组织，并且林之间没有任何 GALSync。合并/收购之后或在其中每个业务单位在相互隔离的情况下运营的组织中，可能出现这种情况。在 Azure AD 中，这些林将在相同的组织中并与统一 GAL 一起出现。在此图中，每个林中的每个对象会在 metaverse 中出现一次，并在目标 Azure AD 目录中聚合。
+在此环境中，本地的所有林都被视为单独的实体，并且没有用户出现在任何其他林中。每个林都有其自己的 Exchange 组织，并且林之间没有任何 GALSync。合并/收购之后或在其中每个业务单位在相互隔离的情况下运营的组织中，可能出现这种情况。在 Azure AD 中，这些林将在相同的组织中并与统一 GAL 一起出现。
+在此图中，每个林中的每个对象会在 metaverse 中出现一次，并在目标 Azure AD 目录中聚合。
 
 ### 多个林 – 匹配用户
 在“用户标识存在于多个目录”中选择其中一个选项的所有多个林方案中，常见的方案是每个林中都可以找到分发组和安全组，并且可以包含用户、联系人和 FSP（外部安全主体）的混合形式。
@@ -110,8 +111,8 @@ FSP 可在 ADDS 中用来代表安全组中来自其他林的成员。同步引�
 
 | 工作负载 | |
 | --------- | --------- |
-| Exchange Online |	如果有多个本地 Exchange 组织（即 Exchange 已部署到多个林），则必须使用 Exchange 2013 SP1 或更高版本。可以在此找到详细信息：[包含多个 Active Directory 林的混合部署](https://technet.microsoft.com/zh-cn/library/jj873754.aspx) |
-| Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。可以在此找到支持的拓扑的详细信息：[Skype for Business Server 2015 的环境要求](https://technet.microsoft.com/zh-cn/library/dn933910.aspx) |
+| Exchange Online |	如果有多个本地 Exchange 组织（即 Exchange 已部署到多个林），则必须使用 Exchange 2013 SP1 或更高版本。可以在此找到详细信息：[包含多个 Active Directory 林的混合部署](https://technet.microsoft.com/zh-CN/library/jj873754.aspx) |
+| Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。可以在此找到支持的拓扑的详细信息：[Skype for Business Server 2015 的环境要求](https://technet.microsoft.com/zh-CN/library/dn933910.aspx) |
 
 ## 暂存服务器
 ![StagingServer](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)
@@ -164,7 +165,10 @@ Azure AD 目录在设计上是隔离的。它不支持将 Azure AD Connect 同�
 支持使用本地 FIM2010/MIM2016 在两个 Exchange 组织之间 GALsync 用户。一个组织中的用户将显示为另一组织中的外部用户/联系人。这些不同的本地 AD 可同步到它们自身的 Azure AD 目录。
 
 ## 后续步骤
-若要了解如何为这些方案安装 Azure AD Connect，请参阅[Azure AD Connect 的自定义安装](active-directory-aadconnect-get-started-custom)。
-若要深入了解 Azure AD Connect 同步的配置，请参阅 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis)。
+若要了解如何为这些方案安装 Azure AD Connect，请参阅[Azure AD Connect 的自定义安装](active-directory-aadconnect-get-started-custom.md)。
 
-<!---HONumber=74-->
+了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。
+
+了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
+
+<!---HONumber=79-->

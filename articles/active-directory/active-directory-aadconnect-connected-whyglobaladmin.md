@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="08/24/2015" 
+	ms.date="10/13/2015"
 	wacn.date=""/>
 
 # 设置 Azure AD Connect 时需要 Azure AD 全局管理员帐户的原因
@@ -30,4 +30,4 @@
 * [Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom)
 * [MSDN 上的 Azure AD Connect](https://msdn.microsoft.com/zh-cn/library/azure/dn832695.aspx) 
 
-<!---HONumber=76-->
+<!---HONumber=79-->

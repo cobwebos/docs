@@ -3,13 +3,13 @@
 	description="本主题演示如何使用 .NET 通过本地编码器进行实时编码。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="Juliako,cenkdin" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015"  
+<tags
+	ms.service="media-services"
+	ms.date="10/15/2015"
 	wacn.date=""/>
 
 #如何使用本地编码器进行实时编码
@@ -371,12 +371,14 @@
 		    }
 		}
 
+<!-- deleted by customization
 
-##媒体服务学习路径
+##Media Services learning paths
 
-你可以在此处查看 AMS 学习路径：
+You can view AMS learning paths here:
 
-- [AMS 实时流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS 按需流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+- [AMS Live Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS on Demand Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+-->
 
-<!---HONumber=74-->
+<!---HONumber=79-->

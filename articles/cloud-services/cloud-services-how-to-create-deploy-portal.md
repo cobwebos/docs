@@ -1,6 +1,6 @@
 <properties
-	pageTitle="如何创建和部署云服务 | Microsoft Azure"
-	description="了解如何在 Azure 中使用“快速创建”方法创建和部署云服务。"
+	pageTitle="如何创建和部署云服务（预览门户）| Microsoft Azure"
+	description="了解如何在 Azure 中使用“快速创建”方法创建和部署云服务。这些示例使用 Azure 预览门户。"
 	services="cloud-services"
 	documentationCenter=""
 	authors="Thraka"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="cloud-services"
-	ms.date="06/30/2015"
+	ms.date="09/22/2015"
 	wacn.date=""/>
 
 
@@ -30,11 +30,14 @@ Azure 门户为你提供两种创建和部署云服务的方法：“快速创�
 ## 概念
 要将应用程序部署为 Azure 中的云服务，需要以下三个组件：
 
-- **服务定义**：云服务定义文件 (.csdef) 定义服务模型，包括角色数量。
+- **服务定义**：
+  云服务定义文件 (.csdef) 定义服务模型，包括角色数量。
 
-- **服务配置**：云服务配置文件 (.cscfg) 为云服务和各个角色提供配置设置，包括角色实例的数量。
+- **服务配置**：
+  云服务配置文件 (.cscfg) 为云服务和各个角色提供配置设置，包括角色实例的数量。
 
-- **服务包**：服务包 (.cspkg) 包含应用程序代码和配置以及服务定义文件。
+- **服务包**：
+  服务包 (.cspkg) 包含应用程序代码和配置以及服务定义文件。
 
 你可以通过[此处](/documentation/articles/cloud-services-model-and-package)了解有关这些内容以及如何创建包的详细信息。
 
@@ -102,6 +105,12 @@ Azure 门户为你提供两种创建和部署云服务的方法：“快速创�
 
 
 [TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796&clcid=0x409
- 
 
-<!---HONumber=74-->
+## 后续步骤
+
+* [云服务的常规配置](/documentation/articles/cloud-services-how-to-configure-portal)。
+* 配置[自定义域名](/documentation/articles/cloud-services-custom-domain-name-portal)。
+* [管理云服务](/documentation/articles/cloud-services-how-to-manage-portal)。
+* 配置 [ssl 证书](/documentation/articles/cloud-services-configure-ssl-certificate-portal)。
+
+<!---HONumber=79-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="大型计算：用于批处理和高性能计算 (HPC) 的技术资源 | Windows Azure"
+   pageTitle="大型计算：用于批处理和高性能计算 (HPC) 的技术资源 | Microsoft Azure"
    description="列出了旨在帮助你在 Azure 中运行大规模并行、批处理和 HPC 工作负荷的技术资源。"
    services="batch, cloud-services, virtual-machines"
    documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="multiple"
-   ms.date="07/28/2015"
+   ms.date="09/29/2015"
    wacn.date=""/>
 
 # Azure 中的大型计算：用于批处理和高性能计算 (HPC) 的技术资源
@@ -19,7 +19,7 @@
 
 了解 Azure 中的大型计算选项，并根据工作负荷和业务需要选择适当的方法。
 
-* [Batch 和 HPC 解决方案](/documentation/articles/batch-hpc-solutions)
+* [Batch 和 HPC 解决方案](batch-hpc-solutions.md)
 
 
 ## Azure 批处理
@@ -46,33 +46,10 @@ HPC Pack 是在 Microsoft Azure 和 Windows Server 技术基础之上构建的 M
 
 * [文档](https://technet.microsoft.com/zh-cn/library/jj899572.aspx)
 
-* **Azure VM 映像**
 
-    * [Windows Server 2012 R2 上的 HPC Pack](http://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)
+* [在 Azure 中使用 Microsoft HPC Pack 时的 HPC 群集选项](../virtual-machines/virtual-machines-hpcpack-cluster-options.md)
 
-    * [Windows Server 2012 R2 上的 HPC Pack 计算节点](http://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodeonwindowsserver2012r2/)
-
-    * [Windows Server 2012 R2 上包含 Excel 的 HPC Pack 计算节点](http://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2computenodewithexcelonwindowsserver2012r2/)
-
-* **Azure 快速入门模板和脚本**
-
-    * [创建 HPC 群集](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)
-
-    * [使用自定义计算节点映像创建 HPC 群集](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)
-
-    * [部署 HPC Pack IaaS 的 PowerShell 脚本](https://www.microsoft.com/download/details.aspx?id=44949)
-
-* **Azure 教程**
-
-    * [教程：Azure 的 HPC Pack 群集中的 Linux 计算节点入门](/documentation/articles/virtual-machines-linux-cluster-hpcpack)
-
-    * [教程：开始使用 Azure 中的 HPC Pack 群集运行 Excel 和 SOA 工作负荷](/documentation/articles/virtual-machines-excel-cluster-hpcpack)
-
-    * [教程：使用 Azure 中的 HPC Pack 设置混合群集](/documentation/articles/cloud-services-setup-hybrid-hpcpack-cluster)
-
-    * [Azure VM 中的 HPC Pack](https://msdn.microsoft.com/zh-cn/library/azure/dn518135.aspx)
-
-    * [使用 HPC Pack 迸发到 Azure](https://technet.microsoft.com/zh-cn/library/gg481749.aspx)
+* [使用 HPC Pack 迸发到 Azure](https://technet.microsoft.com/library/gg481749.aspx)
 
 
 * [Windows HPC 论坛](https://social.microsoft.com/Forums/home?category=windowshpc)
@@ -103,9 +80,7 @@ Azure 提供[不同的大小](/documentation/articles/virtual-machines-size-spec
 
 * [设置 Linux RDMA 群集以运行 MPI 应用程序](/documentation/articles/virtual-machines-linux-cluster-rdma)
 
-* [A8 和 A9 实例：HPC Pack 快速入门](https://msdn.microsoft.com/zh-cn/library/azure/dn594431.aspx)
-
-* [在 A8 和 A9 实例上运行 MPI 应用程序](https://msdn.microsoft.com/zh-cn/library/azure/dn592104.aspx)
+* [通过 Microsoft HPC Pack 设置 Windows RDMA 群集以运行 MPI 应用程序](../virtual-machines/virtual-machines-windows-hpcpack-cluster-rdma.md)
 
 ## 体系结构蓝图
 
@@ -119,7 +94,11 @@ Azure 提供[不同的大小](/documentation/articles/virtual-machines-size-spec
 
 ## 相关的 Azure 服务
 
-* [HDInsight](/documentation/services/hdinsight/)
+* [Data Factory](http://azure.microsoft.com/documentation/services/data-factory/)
+
+* [机器学习](http://azure.microsoft.com/documentation/services/machine-learning/)
+
+* [HDInsight](http://azure.microsoft.com/documentation/services/hdinsight/)
 
 * [虚拟机](/documentation/services/virtual-machines/)
 
@@ -132,5 +111,6 @@ Azure 提供[不同的大小](/documentation/articles/virtual-machines-size-spec
 ## 后续步骤
 
 * 有关最新通告，请参阅 [Microsoft HPC 和批处理团队博客](http://blogs.technet.com/b/windowshpc/)与 [Azure 博客](http://azure.microsoft.com/blog/tag/hpc/)。
+* 另请参阅 [Batch 中的新增功能](http://azure.microsoft.com/updates/?service=batch)或订阅 [RSS 源](http://azure.microsoft.com/updates/feed/?service=batch)。
 
-<!---HONumber=69-->
+<!---HONumber=79-->

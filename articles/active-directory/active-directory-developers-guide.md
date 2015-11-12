@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="09/02/2015"
+   ms.date="10/16/2015"
    wacn.date=""/>
 
 
@@ -67,19 +67,21 @@
 - [了解 Azure Active Directory 应用程序清单](active-directory-application-manifest)
 - [使用 Office 365 API 创建应用](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
 - [将适用于 Office 365 的 Web 应用提交到卖家仪表板](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
+- [预览：如何构建可以使用个人帐户和工作或学校帐户来登录用户的应用](active-directory-appmodel-v2-overview.md)
+- [预览：如何构建可以注册和登录使用者的应用](active-directory-b2c-overview.md)
 
 ## 引用
 
 以下文章提供了有关 REST 和身份验证库 API、协议、错误、代码示例和终结点的基础参考信息。
 
-####  支持
-- **[从何处获得支持](http://stackoverflow.com/questions/tagged/azure-active-directory)**：通过搜索标记 [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) 和 [adal](http://stackoverflow.com/questions/tagged/adal) 查找有关堆栈溢出的 Azure AD 解决方案。
+### 支持
+- [已标记问题](http://stackoverflow.com/questions/tagged/azure-active-directory)：通过搜索标记 [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) 和 [adal](http://stackoverflow.com/questions/tagged/adal) 查找有关堆栈溢出的 Azure Active Directory 解决方案。
 
-#### 代码
+### 代码
 
-- **[Azure AD 开放源代码库](http://github.com/AzureAD)**：查找库源代码的最简单方法是使用我们的[库列表](https://msdn.microsoft.com/zh-cn/library/azure/dn151135.aspx)。
+- [Azure Active Directory 开放源代码库](http://github.com/AzureAD)：查找库源代码的最简单方法是使用我们的[库列表](active-directory-authentication-libraries.md)。
 
-- **[Azure AD 示例](http://github.com/AzureADSamples)**：浏览示例列表的最简单办法是使用[代码示例索引](active-directory-code-samples)。
+- [Azure Active Directory 示例](http://github.com/AzureADSamples)：浏览示例列表的最简单办法是使用[代码示例的索引](active-directory-code-samples.md)。
 
 
 #### Graph API
@@ -106,10 +108,12 @@
 
 ## 社交
 
-- **[Active Directory 团队博客](http://blogs.technet.com/b/ad/)**：实时了解 Azure AD 领域的最新开发情况。
+- [Active Directory 团队博客](http://blogs.technet.com/b/ad/)：Azure Active Directory 领域的最新开发情况。
 
-- **[Azure AD Graph 博客](http://blogs.msdn.com/b/aadgraphteam)**：特定于图形 API 的 Azure AD 信息。
+- [Azure Active Directory Graph 团队博客](http://blogs.msdn.com/b/aadgraphteam)：特定于图形 API 的 Azure Active Directory 信息。
 
-- **[云标识](http://www.cloudidentity.net)**：从 Azure Active Directory PM 原理的角度讲解标识管理即服务的设计理念。
+- [云标识](http://www.cloudidentity.net)：从 Azure Active Directory PM 原理的角度讲解标识管理即服务的设计理念。
 
-<!---HONumber=74-->
+- [Twitter 上的 Azure Active Directory](https://twitter.com/azuread)：以 140 个或更少的字符发布的 Azure Active Directory 公告。
+
+<!---HONumber=79-->

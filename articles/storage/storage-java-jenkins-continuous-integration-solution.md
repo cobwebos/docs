@@ -1,14 +1,9 @@
 <properties 
-	urlDisplayName="Jenkins Continuous Integration" 
-	pageTitle="将 Azure 存储用于 Jenkins 持续集成解决方案 | Windows Azure" 
-	metaKeywords="" 
+	pageTitle="将 Azure 存储用于 Jenkins 持续集成解决方案 | Microsoft Azure" 
 	description="本教程演示如何使用 Azure Blob 服务作为 Jenkins 持续集成解决方案创建的生成项目的存储库。" 
-	metaCanonical="" 
 	services="storage" 
 	documentationCenter="java" 
-	title="" 
 	authors="rmcmurray" 
-	solutions="" 
 	manager="wpickett" 
 	editor="jimbe" 
 	scriptId="" 
@@ -16,18 +11,16 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="06/03/2015" 
+	ms.date="10/12/2015" 
 	wacn.date=""/>
 
 # 将 Azure 存储空间用于 Jenkins 持续集成解决方案
-
-作者：[Microsoft Open Technologies Inc.][ms-open-tech]
 
 ## 概述
 
 下列信息演示了如何将 Azure Blob 服务用作 Jenkins 持续集成 (CI) 解决方案创建的生成项目的存储库，或者用作要在生成过程中使用的可下载文件的源。在以下情况中你将会发现这一做法很有用：你在敏捷开发环境进行编码（使用 Java 或其他语言），生成是基于持续集成运行的并且你需要一个适用于生成项目的存储库，以便（举例来说）你能与其他组织成员、你的客户共享生成项目或维护存档。另一种情况是，当你的生成作业本身需要其他文件时，例如需要下载依赖项作为生成输入的一部分时。
 
-在本教程中，你将使用 Microsoft Open Technologies, Inc. 提供的适用于 Jenkins CI 的 Azure 存储插件。
+在本教程中，你将使用 Microsoft 提供的适用于 Jenkins CI 的 Azure 存储插件。
 
 ## Jenkins 概述 ##
 
@@ -76,7 +69,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
 1. 在 Jenkins 仪表板中，单击“管理 Jenkins”。
 2. 在“管理 Jenkins”页中，单击“管理插件”。
 3. 单击“可用”选项卡。
-4. 在“项目上载程序”部分，选中“Windows Azure 存储插件”。
+4. 在“项目上载程序”部分，选中“Microsoft Azure 存储插件”。
 5. 单击“安装而不重新启动”或“立即下载并在重新启动后安装”。
 6. 重新启动 Jenkins。
 
@@ -84,7 +77,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
 
 1. 在 Jenkins 仪表板中，单击“管理 Jenkins”。
 2. 在“管理 Jenkins”页中，单击“配置系统”。
-3. 在“Windows Azure 存储帐户配置”部分：
+3. 在“Microsoft Azure 存储帐户配置”部分：
     1. 输入你的存储帐户名称，获取该帐户名称可以通过 Azure 门户 (<https://manage.windowsazure.cn>)。
     2. 输入你的存储帐户密钥，同样可以从 Azure 门户获取该密钥。
     3. 如果你在使用公共 Azure 云，对于“Blob 服务终结点 URL”，请使用默认值。如果你在使用其他 Azure 云，则使用在 Azure 管理门户中为你的存储帐户指定的终结点。 
@@ -137,7 +130,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
 1. 在作业配置的“生成”部分中，单击“添加生成步骤”并选择“从 Azure Blob 存储下载”。
 2. 对于“存储帐户名称”，选择要使用的存储帐户。
 3. 对于“容器名称”，指定包含你要下载的 Blob 的容器的名称。你可以使用环境变量。
-4. 对于“Blob 名称”，指定 Blob 名称。你可以使用环境变量。另外，在指定 Blob 名称的初始字母后，你可以使用星号作为通配符。例如，**project\*** 将指定其名称以 **project** 开头的所有 Blob。
+4. 对于“Blob 名称”，指定 Blob 名称。你可以使用环境变量。另外，在指定 Blob 名称的初始字母后，你可以使用星号作为通配符。例如，**project*** 将指定其名称以 **project** 开头的所有 Blob。
 5. [可选]对于“下载路径”，指定 Jenkins 计算机上你希望将文件从 Azure Blob 存储下载到其中的路径。也可以使用环境变量。（如果你没有为“下载路径”提供值，则 Azure Blob 存储中的文件将被下载到作业的工作空间中。）
 
 如果你还希望从 Azure Blob 存储下载其他项，可以创建其他生成步骤。
@@ -165,6 +158,6 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
 
   [如何创建存储帐户]: http://go.microsoft.com/fwlink/?LinkId=279823
   [Jenkins 概览]: https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins
-  [ms-open-tech]: http://cn.msopentech.com
+ 
 
-<!---HONumber=70-->
+<!---HONumber=79-->

@@ -1,11 +1,12 @@
 <properties
-	pageTitle="在 Linux 虚拟机上安装 LAMP 堆栈"
-	description="了解如何在 Azure 中的 Linux 虚拟机 (VM) 上安装 LAMP 堆栈。可以在 Ubuntu 或 CentOS 上进行安装。"
+	pageTitle="在 Linux 虚拟机上安装 LAMP 堆栈 | Microsoft Azure"
+	description="了解如何在 Azure 中的 Linux 虚拟机 (VM) 上安装 LAMP 堆栈。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="szarkos"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags=¡°azure-service-management,azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -15,6 +16,8 @@
 
 
 #在 Azure 中的 Linux 虚拟机上安装 LAMP 堆栈
+
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍如何使用资源管理器部署模型或经典部署模型创建资源。
 
 LAMP 堆栈包含以下不同元素：
 
@@ -120,4 +123,4 @@ LAMP 堆栈包含以下不同元素：
 
 - [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
 
-<!---HONumber=70-->
+<!---HONumber=79-->

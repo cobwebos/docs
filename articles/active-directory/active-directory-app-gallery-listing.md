@@ -1,6 +1,6 @@
 <properties
    pageTitle="列出 Azure Active Directory 应用程序库中的应用程序"
-   description="介绍面向开发人员的 Azure Active Directory 资源的综合性指南"
+   description="如何列出 Azure Active Directory 库中支持单一登录的应用程序 | Microsoft Azure"
    services="active-directory"
    documentationCenter="dev-center-name"
    authors="msmbaldwin"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="04/29/2015"
+   ms.date="09/17/2015"
    wacn.date=""/>
 
 
@@ -53,4 +53,4 @@
 >
 > 附加应用程序徽标（PNG 文件，150 x 122 像素，透明背景色）：
 
-<!---HONumber=67-->
+<!---HONumber=79-->

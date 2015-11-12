@@ -6,11 +6,10 @@
    authors="bwren"
    manager="stevenka"
    editor="tysonn" />
-<tags 
-   ms.service="automation"
-   
-   ms.date="07/06/2015"
-   wacn.date="" />
+<tags
+	ms.service="automation"
+	ms.date="10/01/2015"
+	wacn.date=""/>
 
 # 学习 Windows PowerShell 工作流
 
@@ -49,7 +48,7 @@ Azure 自动化中有两种类型的 Runbook，“文本”和“图形”。您
 
 活动是工作流中的特定任务。就像脚本由一个或多个命令构成一样，工作流由一个或多个按顺序执行的活动构成。Windows PowerShell 工作流在运行工作流时，会自动将许多 Windows PowerShell cmdlet 转换为活动。当你在 Runbook 中指定其中的某个 cmdlet 时，相应的活动实际上由 Windows Workflow Foundation 运行。对于这些没有相应活动的 cmdlet，Windows PowerShell 工作流将自动在 [InlineScript](#inlinescript) 活动中运行该 cmdlet。有一组 cmdlet 已被排除，不能包含在工作流中，除非你显式将它们包含在 InlineScript 块中。有关这些概念的更多详细信息，请参阅[在脚本工作流中使用活动](http://technet.microsoft.com/zh-cn/library/jj574194.aspx)。
 
-工作流活动共享一组公用参数来配置其操作。有关工作流通用参数的详细信息，请参阅 [about_WorkflowCommonParameters](http://technet.microsoft.com/zh-cn/library/jj129719.aspx)。
+工作流活动共享一组公用参数来配置其操作。有关工作流通用参数的详细信息，请参阅 [about\_WorkflowCommonParameters](http://technet.microsoft.com/zh-cn/library/jj129719.aspx)。
 
 ### 位置参数
 
@@ -141,7 +140,7 @@ InlineScript 使用如下所示的语法。
 - 您无法在 InlineScriptBlock 块内部使用[并行执行](#parallel-execution)。
 - 因为 InlineScript 会在 InlineScript 块的整个长度内占有 Windows PowerShell 会话，因此会影响工作流的可伸缩性。
 
-有关使用 InlineScript 的进一步信息，请参阅[在工作流中运行 Windows PowerShell 命令](http://technet.microsoft.com/zh-cn/library/jj574197.aspx)和 [about_InlineScript](http://technet.microsoft.com/zh-cn/library/jj649082.aspx)。
+有关使用 InlineScript 的进一步信息，请参阅[在工作流中运行 Windows PowerShell 命令](http://technet.microsoft.com/zh-cn/library/jj574197.aspx)和 [about\_InlineScript](http://technet.microsoft.com/zh-cn/library/jj649082.aspx)。
 
 
 ## 并行处理
@@ -208,7 +207,7 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
 
 ## 检查点
 
-*“检查点”*是工作流变量的当前状态的快照，包括变量的当前值以及到该点为止生成的任何输出。如果工作流以错误结束或[挂起](suspending-a-workflow)，则其下次运行时将从其上一个检查点开始，而不是从工作流的起点开始。您可以使用 **Checkpoint-Workflow** 活动在工作流中设置一个检查点。
+“检查点”是工作流变量的当前状态的快照，包括变量的当前值以及到该点为止生成的任何输出。如果工作流以错误结束或[挂起](/documentation/articles/suspending-a-workflow)，则其下次运行时将从其上一个检查点开始，而不是从工作流的起点开始。您可以使用 **Checkpoint-Workflow** 活动在工作流中设置一个检查点。
 
 在以下示例代码中，Activity2 后发生的异常导致工作流结束。当工作流再次运行时，它会通过运行 Activity2 来启动，因为此活动刚好在设置的上一个检查点之后。
 
@@ -246,4 +245,4 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
 
 - [Windows PowerShell 工作流入门](http://technet.microsoft.com/zh-cn/library/jj134242.aspx) 
 
-<!---HONumber=67-->
+<!---HONumber=79-->

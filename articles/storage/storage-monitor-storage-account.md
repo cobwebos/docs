@@ -1,5 +1,5 @@
 <properties
-	pageTitle="如何监视存储帐户 | Windows Azure"
+	pageTitle="如何监视存储帐户 | Microsoft Azure"
 	description="了解如何使用 Azure 门户在 Azure 中监视存储帐户。"
 	services="storage"
 	documentationCenter=""
@@ -9,25 +9,25 @@
 
 <tags
 	ms.service="storage"
-	ms.date="06/22/2015"
+	ms.date="09/27/2015"
 	wacn.date=""/>
 
 # 监视 Azure 门户中的存储帐户
 
 ## 概述
 
-您可以在 Azure 门户中监视您的存储帐户。在配置您的存储帐户用于通过门户进行监视时，Azure 存储空间使用[存储分析](http://msdn.microsoft.com/zh-cn/library/azure/hh343270.aspx)跟踪帐户和日志请求数据的指标。
+你可以从 Azure 管理门户监视你的存储帐户。在配置您的存储帐户用于通过门户进行监视时，Azure 存储空间使用[存储分析](http://msdn.microsoft.com/zh-cn/library/azure/hh343270.aspx)跟踪帐户和日志请求数据的指标。
 
-> [AZURE.NOTE] 在 Azure 门户中查看监视数据会产生相关的额外费用。有关详细信息，请参阅<a href="http://msdn.microsoft.com/zh-cn/library/azure/hh360997.aspx">存储分析和计费</a>。<br />
+> [AZURE.NOTE]在 Azure 门户中查看监视数据会产生相关的额外费用。有关详细信息，请参阅<a href="http://msdn.microsoft.com/zh-cn/library/azure/hh360997.aspx">存储分析和计费</a>。<br />
 
-> Azure 文件服务当前不支持存储分析。
+> Azure 文件存储目前支持存储分析指标，但尚不支持日志记录。可以通过 [Azure 管理门户](https://manage.windowsazure.cn)为 Azure 文件存储启用指标。
 
-> 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Windows Azure 存储空间问题](../storage-monitoring-diagnosing-troubleshooting/)。
+> 有关使用存储分析及其他工具来识别、诊断和排查 Azure 存储相关问题的深入指导，请参阅[监视、诊断和排查 Microsoft Azure 存储空间问题](/documentation/articles/storage-monitoring-diagnosing-troubleshooting)。
 
 
 ## 如何：为存储帐户配置监视
 
-1. 在 [Azure 门户](https://manage.windowsazure.cn/)中，单击“存储”，然后单击存储帐户名称以打开仪表板。
+1. 在 [Azure 管理门户](https://manage.windowsazure.cn/)中，单击“存储”，然后单击存储帐户名称以打开仪表板。
 
 2. 单击“配置”，然后向下滚动到 Blob、表和队列服务的“监视”设置。
 
@@ -96,7 +96,7 @@
 
 	![监视\_详细监视视图](./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png)
 
-	> [AZURE.NOTE] 在选择度量值时应考虑成本。在刷新监视视图时会产生相关的事务和数据传出费用。有关详细信息，请参阅[存储分析和计费](http://msdn.microsoft.com/zh-cn/library/azure/hh360997.aspx)。
+	> [AZURE.NOTE]在选择度量值时应考虑成本。在刷新监视视图时会产生相关的事务和数据传出费用。有关详细信息，请参阅[存储分析和计费](http://msdn.microsoft.com/zh-cn/library/azure/hh360997.aspx)。
 
 3. 单击“添加度量值”。
 
@@ -153,4 +153,4 @@
 
 诊断日志保存在你的存储帐户下名为 $logs 的 Blob 容器中。有关访问 $logs 容器的信息，请参阅[关于存储分析日志记录](http://msdn.microsoft.com/zh-cn/library/azure/hh343262.aspx)。
 
-<!---HONumber=70-->
+<!---HONumber=79-->

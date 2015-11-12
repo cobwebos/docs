@@ -1,20 +1,24 @@
-<properties 
-	 pageTitle="关于虚拟机扩展和功能 | Microsoft Azure" 
-	 description="介绍了许多虚拟机扩展，这些虚拟机扩展按它们提供或改进的功能分组，例如连接和基本管理。" 
-	 services="virtual-machines" 
-	 documentationCenter="" 
-	 authors="squillace" 
-	 manager="timlt" 
-	 editor=""/>
-<tags 
-	 ms.service="virtual-machines" 
-	 ms.date="10/31/2014" 
-	 wacn.date=""/>
+<properties
+ pageTitle="虚拟机扩展和功能 | Microsoft Azure"
+ description="了解可为 Azure 虚拟机提供哪些扩展，这些虚拟机扩展按它们提供或改进的功能进行分组。"
+ services="virtual-machines"
+ documentationCenter=""
+ authors="squillace"
+ manager="timlt"
+ editor=""
+ tags="azure-service-management,azure-resource-manager"/>
 
+<tags
+ ms.service="virtual-machines"
+ ms.date="09/03/2015"
+ wacn.date=""/>
 #关于虚拟机扩展和功能
 Microsoft Azure 提供由 Microsoft 和受信任的第三方提供商生成的 VM 扩展以实现安全性、运行时、调试、管理和其他功能，你可以在使用 Azure 虚拟机时利用这些功能提高工作效率。本主题介绍 Azure VM 扩展为 Windows 和 Linux 虚拟机提供的供你使用的各种功能并指向每个扩展的文档。
 
-有关 VM 代理以及它们如何工作以支持 VM 扩展的详细信息，请参阅 [VM 代理和 VM 扩展概述](https://msdn.microsoft.com/zh-cn/library/dn832621.aspx)。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍使用资源管理器部署模型或经典部署模型创建的资源。
+
+
+有关 VM 代理以及它们如何工作以支持 VM 扩展的详细信息，请参阅 [VM 代理和 VM 扩展概述](https://msdn.microsoft.com/library/dn832621.aspx)。
 
 ##Azure VM 扩展
 
@@ -91,6 +95,6 @@ VM 扩展实现了你要用于 VM 的大多数关键功能，包括重置密码�
 |VM 扩展名称|功能说明|更多信息|
 |---|---|---|
 |**BGInfo**|使用 RDP 时在桌面上显示有用服务器信息的合并图片。|[BGInfo 扩展](https://msdn.microsoft.com/zh-cn/library/dn606289.aspx)|
-|**HpcVmDrivers**|在 A8 或 A9 大小虚拟机上安装、配置和维护以下网络设备驱动程序，以便 VM 可以访问 Azure 远程直接内存访问 (RDMA) 网络。|[HpcVmDrivers 扩展](https://msdn.microsoft.com/zh-cn/library/dn690126.aspx)
+|**HpcVmDrivers**|在运行 Windows Server 2012 R2 或 Windows Server 2012 的 A8 或 A9 VM 上，安装、配置和维护远程直接内存访问 (RDMA) 网络设备驱动程序。运行并行 MPI 应用程序时，支持群集 A8 或 A9 VM 使用 RDMA 网络。|[关于 A8、A9、A10 和 A11 计算密集型实例](/documentation/articles/virtual-machines-a8-a9-a10-a11-specs)
 
-<!---HONumber=69-->
+<!---HONumber=79-->

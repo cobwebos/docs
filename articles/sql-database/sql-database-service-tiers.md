@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="09/11/2015"
+   ms.date="10/13/2015"
    wacn.date=""/>
 
 # 服务层
@@ -26,7 +26,8 @@
 | **标准** | 大多数云应用程序的首选选项，支持多个并发查询。示例包括工作组或 Web 应用程序。 |
 | **高级** | 专为高事务量设计，支持大量并发用户，并且需要最高级别的业务连续性功能。示例包括支持任务关键型应用程序的数据库。 |
 
->[AZURE.NOTE] Web 和 Business Edition 即将停用。了解如何[升级 Web 和 Business Edition](/documentation/articles/sql-database-upgrade-new-service-tiers.md)。<!--  如果你打算继续使用 Web 和 Business Edition，请阅读[版本停用常见问题](http://azure.microsoft.com/pricing/details/sql-database/web-business/)-->
+>[AZURE.NOTE]Web 和 Business Edition 即将停用。了解如何[升级 Web 和 Business Edition](/documentation/articles/sql-database-upgrade-new-service-tiers.md)。
+<!-- Please read the [Sunset FAQ](http://azure.microsoft.com/pricing/details/sql-database/web-business/) if you plan to continue using Web and Business Editions.-->
 
 ### 用于单一数据库的服务层
 对于单一数据库，每个服务层均包含多个性能级别，你可以灵活选择最适合工作负荷需求的级别。如果你需要向上或向下缩放，可以在 Azure 门户中轻松更改数据库层，且不会给应用程序造成任何中断。有关详细信息，请参阅[更改数据库服务层和性能级别](sql-database-scale-up.md)。
@@ -44,7 +45,7 @@
 
 [AZURE.INCLUDE [用于弹性数据库的 SQL 数据库服务层表](../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
->[AZURE.NOTE] 池中的每个数据库也遵循该层的单一数据库特征。例如，基本池具有每池最大会话数为 2400 – 28800 的限制，但该池中单个数据库具有 300 个会话数的数据库限制（即在上一节中指定的单个基本数据库的限制）。
+>[AZURE.NOTE]池中的每个数据库也遵循该层的单一数据库特征。例如，基本池具有每池最大会话数为 2400 – 28800 的限制，但该池中单个数据库具有 300 个会话数的数据库限制（即在上一节中指定的单个基本数据库的限制）。
 
 ## 了解 DTU
 
@@ -86,4 +87,4 @@
 现在，你已了解有关 SQL 数据库层的信息，可使用[免费试用版](/pricing/1rmb-trial/)来试用这些层，并了解[如何创建你的第一个 SQL 数据库](/documentation/articles/sql-database-get-started)！
  
 
-<!---HONumber=76-->
+<!---HONumber=79-->

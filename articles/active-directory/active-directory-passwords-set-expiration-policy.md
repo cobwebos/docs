@@ -9,10 +9,6 @@
 
 <tags
 	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
 	ms.date="09/10/2015"
 	ms.author="curtand"/>
 
@@ -64,4 +60,4 @@
 
 	- 若要将组织中所有用户的密码设置为永不过期，请运行以下 cmdlet：`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires \$true`
 
-<!---HONumber=74-->
+<!---HONumber=79-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="创建 Linux 虚拟机的不同方式"
-	description="列出创建 Linux 虚拟机的不同方式，并提供说明链接。"
+	pageTitle="创建 Linux VM 的不同方式 | Microsoft Azure"
+	description="列出在 Azure 上创建 Linux 虚拟机的不同方式，并提供进一步说明链接。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
@@ -61,7 +61,6 @@ Azure 门户的图形用户界面是一种试用虚拟机的简便方式，尤�
 [附加数据磁盘][]
 
 ## 其他资源
-[关于 Azure VM 配置设置][]
 
 [基本配置测试环境][]
 
@@ -92,11 +91,11 @@ Azure 门户的图形用户界面是一种试用虚拟机的简便方式，尤�
 
 [附加数据磁盘]: /documentation/articles/virtual-machines-linux-how-to-attach-disk
 
-[关于 Azure VM 配置设置]: https://msdn.microsoft.com/zh-CN/library/azure/dn763935.aspx
+[About Azure VM configuration settings]: https://msdn.microsoft.com/zh-CN/library/azure/dn763935.aspx
 [基本配置测试环境]: /documentation/articles/virtual-machines-base-configuration-test-environment
 [Azure 混合云测试环境]: /documentation/articles/virtual-machines-hybrid-cloud-test-environments
 
 [创建运行 Linux 的虚拟机]: /documentation/articles/virtual-machines-linux-tutorial
 [创建自定义虚拟机]: /documentation/articles/virtual-machines-create-custom
 
-<!---HONumber=70-->
+<!---HONumber=79-->

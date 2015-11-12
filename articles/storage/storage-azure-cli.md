@@ -1,5 +1,5 @@
 <properties
-    pageTitle="将 Azure CLI 用于 Azure 存储空间 | Windows Azure"
+    pageTitle="将 Azure CLI 用于 Azure 存储空间 | Microsoft Azure"
     description="了解如何将 Azure 命令行界面 (Azure CLI) 用于 Azure 存储空间，以便创建和管理存储帐户并处理 Azure blob 和文件。"
     services="storage"
     documentationCenter="na"
@@ -8,8 +8,7 @@
 
 <tags
     ms.service="storage"
-   
-    ms.date="05/27/2015"
+    ms.date="09/28/2015"
     wacn.date=""/>
 
 # 将 Azure CLI 用于 Azure 存储空间
@@ -28,11 +27,11 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 
 本指南使用 Ubuntu 作为示例，但其他 OS 平台的操作应与此类似。
 
-**Azure 新用户：**获取一个 Windows Azure 订阅以及与该订阅关联的 Microsoft 帐户。有关 Azure 购买选项的信息，请参阅[免费试用](http://www.windowsazure.cn/pricing/1rmb-trial/)、[购买选项](http://azure.microsoft.com/pricing/purchase-options/)、和[成员优惠](http://azure.microsoft.com/pricing/member-offers/)（适用于 MSDN、Microsoft 合作伙伴网络和 BizSpark 以及其他 Microsoft 计划的成员）。
+**Azure 新用户：**获取一个 Microsoft Azure 订阅以及与该订阅关联的 Microsoft 帐户。有关 Azure 购买选项的信息，请参阅[免费试用](http://www.windowsazure.cn/pricing/1rmb-trial/)、[购买选项](http://azure.microsoft.com/pricing/purchase-options/)、和[成员优惠](http://azure.microsoft.com/pricing/member-offers/)（适用于 MSDN、Microsoft 合作伙伴网络和 BizSpark 以及其他 Microsoft 计划的成员）。
 
 有关 Azure 订阅的详细信息，请参阅[管理帐户、订阅和管理角色](https://msdn.microsoft.com/zh-cn/library/azure/hh531793.aspx)。
 
-**创建 Windows Azure 订阅和帐户之后：**
+**创建 Microsoft Azure 订阅和帐户之后：**
 
 1. 按照[安装 Azure CLI](/documentation/articles//xplat-cli-install) 中概述的说明，下载和安装 Azure CLI。
 2. 安装了 Azure CLI 之后，你将可以从命令行界面（Bash、终端、命令提示符）使用 azure 命令访问 Azure CLI 命令。键入 `azure` 命令，你应该会看到以下输出：
@@ -91,7 +90,7 @@ Azure CLI 提供了一组开源且跨平台的命令，这些命令可以用于 
 
 ### 连接到你的 Azure 订阅
 
-大多数存储命令没有 Azure 订阅也可以使用，不过我们仍建议你通过 Azure CLI 连接到你的订阅。若要配置 Azure CLI 以使用你的订阅，请遵循[如何连接到 Azure 订阅](/documentation/articles/xplat-cli#how-to-connect-to-your-azure-subscription)中的步骤。
+大多数存储命令没有 Azure 订阅也可以使用，不过我们仍建议你通过 Azure CLI 连接到你的订阅。若要配置 Azure CLI 以使用你的订阅，请遵循[如何连接到 Azure 订阅](/documentation/articles/xplat-cli-install#how-to-connect-to-your-azure-subscription)中的步骤。
 
 ### 新建存储帐户
 
@@ -166,13 +165,13 @@ Azure Blob 存储支持块 Blob 和页 Blob。有关详细信息，请参阅[了
 
 ## 创建和管理文件共享
 
-Azure 文件存储使用标准 SMB 2.1 协议为应用程序提供共享存储。Windows Azure 虚拟机和云服务可以通过装载的共享跨应用程序组件共享文件数据。你可以通过 Azure CLI 管理文件共享和文件数据。有关 Azure 文件存储的详细信息，请参阅[如何通过 PowerShell 和 .NET 使用 Azure 文件存储](storage-dotnet-how-to-use-files)。
+Azure 文件存储使用标准 SMB 协议为应用程序提供共享存储。Microsoft Azure 虚拟机和云服务以及本地应用程序可以通过装载的共享来共享文件数据。你可以通过 Azure CLI 管理文件共享和文件数据。有关 Azure 文件存储的详细信息，请参阅[如何通过 Windows 使用 Azure 文件存储](/documentation/articles/storage-dotnet-how-to-use-files)或[如何通过 Linux 使用 Azure 文件存储](/documentation/articles/storage-how-to-use-files-linux)。
 
-> [AZURE.NOTE]Azure 文件存储目前发布了预览版。若要请求访问预览版，请导航到 [Windows Azure 预览页](/services/preview/)，然后请求访问“Azure 文件”。你的请求得到批准后，系统就会通知你，然后你就可以访问文件存储预览版。然后，你就可以创建用于访问文件存储的存储帐户。
+> [AZURE.NOTE]Azure 文件存储目前发布了预览版。若要请求访问预览版，请导航到 [Microsoft Azure 预览页](/services/preview/)，然后请求访问“Azure 文件”。你的请求得到批准后，系统就会通知你，然后你就可以访问文件存储预览版。然后，你就可以创建用于访问文件存储的存储帐户。
 
 ### 创建文件共享
 
-Azure 文件共享是 Azure 中的 SMB 2.1 文件共享。所有目录和文件都必须在文件共享中创建。一个帐户可以包含无限数量的共享，一个共享可以存储无限数量的文件，直到达到存储帐户的容量限制为止。下面的示例创建名为 **myshare** 的文件共享。
+Azure 文件共享是 Azure 中的 SMB 文件共享。所有目录和文件都必须在文件共享中创建。一个帐户可以包含无限数量的共享，一个共享可以存储无限数量的文件，直到达到存储帐户的容量限制为止。下面的示例创建名为 **myshare** 的文件共享。
 
         azure storage share create myshare
 
@@ -200,15 +199,25 @@ Azure 文件共享是 Azure 中的 SMB 2.1 文件共享。所有目录和文件�
 
 请注意，进行列表操作时，目录名是可选的。如果省略目录名，该命令会列出共享中根目录的内容。
 
+### 复制文件
+
+从 Azure CLI 的 0.9.8 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。下面，我们演示如何使用 CLI 命令执行这些复制操作。若要将文件复制到新目录中：
+
+	azure storage file copy start --source-share srcshare --source-path srcdir/hello.txt --dest-share destshare --dest-path destdir/hellocopy.txt --connection-string $srcConnectionString --dest-connection-string $destConnectionString
+	
+若要将 blob 复制到一个文件目录中：
+
+	azure storage file copy start --source-container srcctn --source-blob hello2.txt --dest-share hello --dest-path hellodir/hello2copy.txt --connection-string $srcConnectionString --dest-connection-string $destConnectionString
+
 ## 后续步骤
 
 下面是一些相关的文章和资源，可以让你更多地了解 Azure 存储空间。
 
-- [Azure 存档文档](http://www.windowsazure.cn/documentation/services/storage/)
+- [Azure 存档文档](/documentation/services/storage)
 - [Azure 存储 REST API 引用](https://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx)
 
 
 [Image1]: ./media/storage-azure-cli/azure_command.png
  
 
-<!---HONumber=67-->
+<!---HONumber=79-->

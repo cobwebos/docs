@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="08/24/2015" 
+	ms.date="10/13/2015"
 	wacn.date=""/>
 
 
@@ -36,10 +36,10 @@ Exchange 混合部署|参阅 [Office 365 Exchange 混合 AAD 同步写回属性�
 
 * [有关 Azure AD Connect 帐户和权限的更多信息](/documentation/articles/active-directory-aadconnect-account-summary)
 * [用于密码同步的权限](https://msdn.microsoft.com/zh-cn/library/azure/dn757602.aspx#psynch)
-* [用于 Exchange 混合部署的权限](https://msdn.microsoft.com/zh-cn/library/azure/dn757602.aspx#exchange)
-* [用于密码写回的权限](https://msdn.microsoft.com/zh-cn/library/azure/dn757602.aspx#pwriteback)
+* [用于 Exchange 混合部署的权限](https://msdn.microsoft.com/library/azure/dn757602.aspx#exchange)
+* [用于密码写回的权限](https://msdn.microsoft.com/library/azure/dn757602.aspx#pwriteback)
 * [Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom)
-* [MSDN 上的 Azure AD Connect](https://msdn.microsoft.com/zh-cn/library/azure/dn832695.aspx)
+* [MSDN 上的 Azure AD Connect](/documentation/articles/active-directory-aadconnect)
  
 
-<!---HONumber=76-->
+<!---HONumber=79-->

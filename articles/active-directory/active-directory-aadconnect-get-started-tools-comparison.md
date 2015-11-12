@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="08/24/2015" 
+	ms.date="10/13/2015"
 	wacn.date=""/>
 
 # 目录集成工具比较
@@ -22,9 +22,7 @@
 
 每个表中的代号解释如下。
 
-● = 现已发布</br>
-FR = 未来版本</br>
-PP = 公共预览版本</br>
+● = 现已发布</br> FR = 未来版本</br> PP = 公共预览版本</br>
 
 
 ## 本地到云的同步
@@ -85,4 +83,7 @@ PP = 公共预览版本</br>
 允许删除从 AD 流向 Azure AD 的属性 | ● | ● | |  
 允许对属性流进行高级自定义 | ● | ● | | ●  
 
-<!---HONumber=76-->
+## 后续步骤
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+
+<!---HONumber=79-->

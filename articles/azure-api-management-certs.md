@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="na" 
-	ms.date="07/20/2015"
+	ms.date="10/01/2015"
 	wa.date=""/>
 
 
@@ -48,4 +48,4 @@
 
 现在，您已经拥有与订阅关联的管理证书，您可以（在本地安装匹配的证书之后）以编程的方式连接到 [Service Management REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx)，并使也和该订阅相关联的各种 Azure 资源自动化。
 
-<!---HONumber=71-->
+<!---HONumber=79-->

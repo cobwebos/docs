@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="使用媒体服务 .NET SDK 创建筛选器" 
+	pageTitle="使用 Azure 媒体服务 .NET SDK 创建筛选器" 
 	description="本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。媒体服务将创建动态清单来存档此选择性流。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="dwrede,cenkdin" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015"  
+<tags
+	ms.service="media-services"
+	ms.date="10/18/2015"
 	wacn.date=""/>
 
 
-#使用媒体服务 .NET SDK 创建筛选器
+#使用 Azure 媒体服务 .NET SDK 创建筛选器
 
 > [AZURE.SELECTOR]
 - [.NET](/documentation/articles/media-services-dotnet-dynamic-manifest)
@@ -130,17 +130,19 @@
 	http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f, filter=MyFilter)
 
 
+<!-- deleted by customization
 
-##媒体服务学习路径
+##Media Services learning paths
 
-你可以在此处查看 AMS 学习路径：
+You can view AMS learning paths here:
 
-- [AMS 实时流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS 按需流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+- [AMS Live Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS on Demand Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+-->
 
 ##另请参阅 
 
 [动态清单概述](/documentation/articles/media-services-dynamic-manifest-overview)
  
 
-<!---HONumber=74-->
+<!---HONumber=79-->

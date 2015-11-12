@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="08/24/2015" 
+	ms.date="10/13/2015"
 	wacn.date=""/>
 
 
@@ -20,12 +20,11 @@ Azure AD Connect 可让用户使用同一组密码登录云和本地资源。你
 
 
 ### 密码同步
-使用密码同步可将用户密码的哈希从本地 Active Directory 同步到 Azure AD。当密码在本地更改或重置时，新密码将立即同步到 Azure AD，使用户用来访问云资源的密码始终与本地相同。密码绝不将发送到 Azure AD，也不会以明文存储在 Azure AD 中。
-可将密码同步与密码写回一起使用，以便在 Azure AD 中启用自助密码重置。
+使用密码同步可将用户密码的哈希从本地 Active Directory 同步到 Azure AD。当密码在本地更改或重置时，新密码将立即同步到 Azure AD，使用户用来访问云资源的密码始终与本地相同。密码绝不将发送到 Azure AD，也不会以明文存储在 Azure AD 中。可将密码同步与密码写回一起使用，以便在 Azure AD 中启用自助密码重置。
 
 <center>![云](./media/active-directory-aadconnect-user-signin/passwordhash.png)</center>
 
-[有关密码同步的详细信息](https://msdn.microsoft.com/zh-cn/library/azure/dn246918.aspx)
+[有关密码同步的详细信息](https://msdn.microsoft.com/library/azure/dn246918.aspx)
 
 
 ### 使用 Windows Server 2012 R2 场中新的或现有 AD FS 的联合
@@ -61,4 +60,4 @@ Azure AD Connect 可让用户使用同一组密码登录云和本地资源。你
 	- 使用设备注册、Azure AD 联接或 Intune MDM 策略对本地资源和云资源进行条件性访问
  
 
-<!---HONumber=76-->
+<!---HONumber=79-->

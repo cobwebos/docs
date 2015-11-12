@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用脚本操作在 Hadoop 群集上安装 Solr | Azure" 
+	pageTitle="使用脚本操作在 Hadoop 群集上安装 Solr | Microsoft Azure" 
 	description="了解如何使用 Solr 自定义 HDInsight 群集。你将使用脚本操作配置选项来通过脚本安装 Solr。" 
 	services="hdinsight" 
 	documentationCenter="" 
@@ -7,60 +7,83 @@
 	manager="paulettm" 
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.date="08/07/2015" 
+<tags
+	ms.service="hdinsight"
+	ms.date="10/02/2015"
 	wacn.date=""/>
 
 # 在 HDInsight Hadoop 群集上安装并使用 Solr
 
-你可以通过使用**“脚本操作”**群集自定义，在 Azure HDInsight 上 Hadoop 中的任何类型的群集上安装 Solr。仅当创建群集时，你才能通过脚本操作运行脚本来自定义群集。有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]。
 
-[AZURE.INCLUDE [hdinsight-azure-portal](../../includes/hdinsight-azure-portal.md)]
+了解如何使用 Solr 通过脚本操作来自定义基于 Windows 的 HDInsight 群集，以及如何使用 R 来搜索数据。
+<!-- deleted by customization For information on using Solr with a Linux-based cluster, see [Install and use Solr on HDinsight Hadoop clusters (Linux)](/documentation/articles/hdinsight-hadoop-solr-install-linux).-->
+ 
+你可以使用*脚本操作*，在 Azure HDInsight 的任何一种群集（Hadoop、Storm、HBase）上安装 Solr。用于在 HDInsight 群集上安装 Solr 的示例脚本可通过 [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1) 上的只读 Azure 存储 Blob 获得。
+<!-- deleted by customization , Spark -->
 
-* [在 HDInsight 群集上安装 Solr](hdinsight-hadoop-solr-install.md)
+示例脚本仅适用于 HDInsight 群集版本 3.1。有关 HDInsight 群集版本的详细信息，请参阅 [HDInsight 群集版本](/documentation/articles/hdinsight-component-versioning)。
 
-在本主题中，你将学习如何通过使用脚本操作安装 Solr。Solr 是一种功能强大的搜索平台，提供了企业级搜索功能，用于搜索由 Hadoop 管理的数据。在 HDInsight 群集上安装了 Solr 后，你还将学习如何通过使用 Solr 搜索数据。
+本主题中使用的示例脚本将使用特定配置创建基于 Windows 的 Solr 群集。如果你要使用不同集合、分片、架构、副本等配置 Solr 群集，则必须相应地修改脚本和 Solr 二进制文件。
 
-> [AZURE.NOTE]本主题中使用的示例脚本将使用特定配置创建 Solr 群集。如果你要使用不同集合、分片、架构、副本等配置 Solr 群集，则必须相应地修改脚本和 Solr 二进制文件。
+**相关文章** 
+<!-- deleted by customization 
 
+- [Install Solr on HDInsight clusters](/documentation/articles/hdinsight-hadoop-solr-install): install Solr on HDInsight cluster using the Azure Preview Portal
+- [Install and use Solr on HDinsight Hadoop clusters (Linux)](/documentation/articles/hdinsight-hadoop-solr-install-linux)
+--> 
+- [在 HDInsight 中创建 Hadoop 群集](/documentation/articles/hdinsight-provision-clusters)：有关如何创建 HDInsight 群集的一般信息 
+- [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关如何使用脚本操作自定义 HDInsight 群集的一般信息 
+- [针对 HDInsight 开发脚本操作脚本](/documentation/articles/hdinsight-hadoop-script-actions)
 
-## <a name="whatis"></a>什么是 Solr？
+<!-- keep by customization: begin -->
+<a name="whatis"></a> 
+<!-- keep by customization: end -->
+## 什么是 Solr？
 
-<a href="http://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> 是一种企业搜索平台，用于对数据实现功能强大的全文搜索。虽然 Hadoop 可用于存储和管理大量数据，但是，Apache Solr 提供了快速检索数据的搜索功能。本主题提供有关如何自定义 HDInsight 群集以安装 Solr 的说明。
+<a href="http://lucene.apache.org/solr/features.html" target="_blank">Apache Solr</a> 是一种企业搜索平台，用于对数据实现功能强大的全文搜索。虽然 Hadoop 可用于存储和管理大量数据，但是，Apache Solr 提供了快速检索数据的搜索功能。
+<!-- deleted by customization 
 
-## <a name="install"></a>如何安装 Solr？
+## Install Solr using portal
 
-用于在 HDInsight 群集上安装 Solr 的示例脚本可通过 [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1) 上的只读 Azure 存储 Blob 获得。本部分提供有关如何在通过使用 Azure 门户设置群集时使用示例脚本的说明。
+[AZURE.INCLUDE [hdinsight-azure-portal](../includes/hdinsight-azure-portal.md)]
 
+-->
+<!-- keep by customization: begin -->
+## 如何安装 Solr？
 
-> [AZURE.NOTE]示例脚本仅适用于 HDInsight 群集版本 3.1。有关 HDInsight 群集版本的详细信息，请参阅 [HDInsight 群集版本](hdinsight-component-versioning.md)。
+用于在 HDInsight 群集上安装 Solr 的示例脚本可通过 [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1) 上的只读 Azure 存储 Blob 获得。本部分说明了如何在通过 Azure 管理门户预配群集时使用示例脚本。 
+<!-- keep by customization: end -->
+* [在 HDInsight 群集上安装 Solr](/documentation/articles/hdinsight-hadoop-solr-install)
 
-
-1. 根据[使用自定义选项设置群集](hdinsight-provision-clusters.md#portal)中的说明，使用“自定义创建”选项开始设置群集。 
+1. 根据[在 HDInsight 中创建 Hadoop 群集](/documentation/articles/hdinsight-provision-clusters#portal)中的说明，使用“自定义创建”选项开始创建群集。 
 2. 在向导的“脚本操作”页上，单击“添加脚本操作”，以提供有关脚本操作的详细信息，如下所示：
 
 	![使用脚本操作自定义群集](./media/hdinsight-hadoop-solr-install-v1/hdi-script-action-solr.png "使用脚本操作自定义群集")
 	
 	<table border='1'>
-	<tr><th>属性</th><th>值</th></tr>
-	<tr><td>Name</td>
-		<td>指定脚本操作的名称。例如 <b>Install Solr</b>。</td></tr>
-	<tr><td>脚本 URI</td>
-		<td>指定调用以自定义群集的脚本的统一资源标识符 (URI)。例如 <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
-	<tr><td>节点类型</td>
-		<td>指定在其上运行自定义脚本的节点。你可以选择“所有节点”、“仅限头节点”或“仅限从节点”<b></b><b></b><b></b>。
-	<tr><td>Parameters</td>
-		<td>根据脚本的需要，指定参数。用于安装 Solr 的脚本不需要任何参数，因此，你可以将此项保留为空。</td></tr>
-</table>你可以添加多个脚本操作，以在群集上安装多个组件。在添加了脚本后，单击复选标记以开始设置群集。
+		<tr><th>属性</th><th>值</th></tr>
+		<tr><td>Name</td>
+			<td>指定脚本操作的名称。例如 <b>Install Solr</b>。</td></tr>
+		<tr><td>脚本 URI</td>
+			<td>指定调用以自定义群集的脚本的统一资源标识符 (URI)。例如 <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
+		<tr><td>节点类型</td>
+			<td>指定在其上运行自定义脚本的节点。你可以选择“所有节点”、“仅限头节点”或“仅限从节点”<b></b><b></b><b></b>。
+		<tr><td>Parameters</td>
+			<td>根据脚本的需要，指定参数。用于安装 Solr 的脚本不需要任何参数，因此，你可以将此项保留为空。</td></tr>
+	</table>
+
+	你可以添加多个脚本操作，以在群集上安装多个组件。在添加了脚本后，单击复选标记以开始创建群集。
 
 你还可以通过 Azure PowerShell 或 the HDInsight .NET SDK 使用脚本在 HDInsight 上安装 Solr。本主题后面将提供有关这些过程的说明。
 
-## <a name="usesolr"></a>如何在 HDInsight 中使用 Solr？
+<!-- keep by customization: begin -->
+<a name="usesolr"></a> 
+<!-- keep by customization: end -->
+## 使用 Solr
 
 你必须从使用一些数据文件为 Solr 编制索引开始。然后，可以使用 Solr 对索引数据运行搜索查询。执行以下步骤，以在 HDInsight 群集中使用 Solr：
 
-1. **使用远程桌面协议 (RDP) 远程连接到安装有 Solr 的 HDInsight 群集**。在 Azure 门户中，对你创建的安装有 Solr 的群集启用远程桌面，然后远程连接到该群集。有关说明，请参阅<a href="http://azure.microsoft.com/documentation/articles/hdinsight-administer-use-management-portal/#rdp" target="_blank">使用 RDP 连接到 HDInsight 群集</a>。
+1. **使用远程桌面协议 (RDP) 远程连接到安装有 Solr 的 HDInsight 群集**。在 Azure 管理门户中，对你创建的安装有 Solr 的群集启用远程桌面，然后远程连接到该群集。有关说明，请参阅<a href="/documentation/articles/hdinsight-administer-use-management-portal-v1/#rdp" target="_blank">使用 RDP 连接到 HDInsight 群集</a>。
 
 2. **通过上载数据文件为 Solr 编制索引**。在为 Solr 编制索引时，你应将可能需要搜索的文档放置在其中。若要为 Solr 编制索引，请使用 RDP 远程连接到群集，导航到桌面，打开 Hadoop 命令行，然后导航到 **C:\\apps\\dist\\solr-4.7.2\\example\\exampledocs**。运行以下命令：
 	
@@ -76,7 +99,7 @@
 
 	post.jar 实用程序通过以下两个示例文档为 Solr 编制索引：**solr.xml** 和 **monitor.xml**。post.jar 实用程序和示例文档是随 Solr 安装一起提供的。
 
-3. **使用 Solr 仪表板在索引文档中搜索**。在连接到 HDInsight 群集的 RDP 会话中，打开 Internet Explorer，然后启动位于 ****http://headnodehost:8983/solr/#/** 的 Solr 仪表板。在左窗格的**“核心选择器”**下拉列表中，选择**“collection1”**，然后在其中单击**“查询”**。作为示例，若要在 Solr 中选择并返回所有文档，请提供以下值：
+3. **使用 Solr 仪表板在索引文档中搜索**。在连接到 HDInsight 群集的 RDP 会话中，打开 Internet Explorer，然后启动位于 **http://headnodehost:8983/solr/#/** 的 Solr 仪表板。在左窗格的**“核心选择器”**下拉列表中，选择**“collection1”**，然后在其中单击**“查询”**。作为示例，若要在 Solr 中选择并返回所有文档，请提供以下值：
 	1. 在 **q** 文本框中，输入 ***:***。此时将返回所有已在 Solr 中编制索引的文档。如果你要在文档中搜索特定字符串，则可以在此处输入该字符串。
 	2. 在 **wt** 文本框中，选择输出格式。默认值为 **json**。单击**“执行查询”**。
 
@@ -162,9 +185,17 @@
 
 		此命令会将快照复制到与群集关联的默认存储帐户中容器下方的 /example/data/。
 
-## <a name="usingPS"></a>通过使用 Azure PowerShell 在 HDInsight Hadoop 群集上安装 Solr
+<!-- keep by customization: begin -->
+<a name="usingPS"></a> 
+<!-- keep by customization: end -->
+## 使用 Azure PowerShell 安装 Solr
+<!-- deleted by customization
 
-在本部分中，我们使用 **<a href = "http://msdn.microsoft.com/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptAction</a>** cmdlet 通过脚本操作来调用脚本，以自定义群集。在继续前，确保你已安装并配置 Azure PowerShell。有关配置工作站以运行 HDInsight Windows Powershell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell][powershell-install-configure]。
+See [Customize HDInsight clusters using Script Action](/documentation/articles/hdinsight-hadoop-customize-cluster#call_scripts_using_powershell).  The sample demonstrates how to install Spark using Azure PowerShell. You need to customize the script to use [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+
+-->
+<!-- keep by customization: begin -->
+在本部分中，我们使用 **<a href = "http://msdn.microsoft.com/zh-cn/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptAction</a>** cmdlet 通过脚本操作来调用脚本，以自定义群集。在继续前，确保你已安装并配置 Azure PowerShell。有关配置工作站以运行 HDInsight Windows Powershell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell][powershell-install-configure]。
 
 执行以下步骤：
 
@@ -185,7 +216,7 @@
 		# Specify the configuration options
 		Select-AzureSubscription $subscriptionName
 		$config = New-AzureHDInsightClusterConfig -ClusterSizeInNodes $clusterNodes
-		$config.DefaultStorageAccount.StorageAccountName="$storageAccountName.blob.core.windows.net"
+		$config.DefaultStorageAccount.StorageAccountName="$storageAccountName.blob.core.chinacloudapi.cn"
 		$config.DefaultStorageAccount.StorageAccountKey=$storageAccountKey
 		$config.DefaultStorageAccount.StorageContainerName=$containerName
 	
@@ -225,9 +256,14 @@
 
 出现提示时，请输入群集的凭据。创建群集可能需要几分钟时间。
 
+<a name="usingSDK"></a> 
+<!-- keep by customization: end -->
+## 使用 .NET SDK 安装 Solr
+<!-- deleted by customization
 
-## <a name="usingSDK"></a>通过使用 .NET SDK 在 HDInsight Hadoop 群集上安装 Solr
-
+See [Customize HDInsight clusters using Script Action](/documentation/articles/hdinsight-hadoop-customize-cluster#call_scripts_using_azure_powershell). The sample demonstrates how to install Spark using the .NET SDK. You need to customize the script to use [https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1).
+-->
+<!-- keep by customization: begin -->
 HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使用 HDInsight 的操作。本部分提供有关如何使用 SDK 中的脚本操作设置安装有 Solr 的群集的说明。必须执行以下过程：
 
 - 安装 HDInsight .NET SDK
@@ -242,7 +278,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
 
 **创建自签名证书**
 
-创建自签名证书，将其安装到工作站上，然后将其上传到你的 Azure 订阅。有关说明，请参阅[创建自签名证书](http://go.microsoft.com/fwlink/?LinkId=511138)。
+创建自签名证书，将其安装到工作站上，然后将其上传到你的 Azure 订阅。有关说明，请参阅[创建自签名证书](/documentation/articles/hdinsight-administer-use-management-portal-v1)。
 
 
 **创建 Visual Studio 应用程序**
@@ -296,7 +332,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
         string thumbprint = "<CertificateThumbprint>";  
         string subscriptionId = "<AzureSubscriptionID>";
         string location = "<MicrosoftDataCenterLocation>";
-        string storageaccountname = "<AzureStorageAccountName>.blob.core.windows.net";
+        string storageaccountname = "<AzureStorageAccountName>.blob.core.chinacloudapi.cn";
         string storageaccountkey = "<AzureStorageAccountKey>";
         string username = "<HDInsightUsername>";
         string password = "<HDInsightUserPassword>";
@@ -326,7 +362,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
             Version = "3.1"
         };        
 
-10. 将以下代码追加到 Main() 函数，以使用 [ScriptAction](http://msdn.microsoft.com/library/microsoft.windowsazure.management.hdinsight.clusterprovisioning.data.scriptaction.aspx) 类调用自定义脚本来安装 Solr。
+10. 将以下代码追加到 Main() 函数，以使用 [ScriptAction](http://msdn.microsoft.com/zh-cn/library/microsoft.windowsazure.management.hdinsight.clusterprovisioning.data.scriptaction.aspx) 类调用自定义脚本来安装 Solr。
 
 		// Add the script action to install Solr
         clusterInfo.ConfigActions.Add(new ScriptAction(
@@ -348,21 +384,31 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 应用程序使�
 
 	.\CreateSolrCluster <cluster-name>
 
-提供群集名称，并按 ENTER 设置安装有 Solr 的群集。
+提供群集名称，并按 ENTER 预配安装有 Solr 的群集。
+<!-- keep by customization: end -->
 
+## 另请参阅
+<!-- deleted by customization
 
-## 另请参阅##
-- [在 HDInsight 群集上安装并使用 Spark][hdinsight-install-spark]。使用群集自定义在 HDInsight Hadoop 群集上安装 Spark。Spark 是一种开放源代码并行处理框架，支持内存中处理，以提升大数据分析应用程序的性能。
-- [在 HDInsight 群集上安装 R][hdinsight-install-r]。使用群集自定义在 HDInsight Hadoop 群集上安装 R。R 是一种用于统计计算的开放源代码语言和环境。它提供了数百个内置统计函数及其自己的编程语言，可结合各方面的函数编程和面向对象的编程。它还提供了各种图形功能。
-- [在 HDInsight 群集上安装 Giraph](hdinsight-hadoop-giraph-install.md)。使用群集自定义在 HDInsight Hadoop 群集上安装 Giraph。Giraph 可让你通过使用 Hadoop 执行图形处理，并可以在 Azure HDInsight 上使用。
+- [Install Solr on HDInsight clusters](/documentation/articles/hdinsight-hadoop-solr-install): install Solr on HDInsight cluster using the Azure Preview Portal
+- [Install and use Solr on HDinsight Hadoop clusters (Linux)](/documentation/articles/hdinsight-hadoop-solr-install-linux)
+-->
+- [在 HDInsight 中创建 Hadoop 群集](/documentation/articles/hdinsight-provision-clusters)：有关如何创建 HDInsight 群集的一般信息
+- [使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]：有关如何使用脚本操作自定义 HDInsight 群集的一般信息
+- [为 HDInsight 开发脚本操作脚本](/documentation/articles/hdinsight-hadoop-script-actions)
+- [在 HDInsight 群集上安装 R][hdinsight-install-r]：有关如何安装 R 的脚本操作示例
+- [在 HDInsight 群集上安装 Giraph](/documentation/articles/hdinsight-hadoop-giraph-install)：有关如何安装 Giraph 的脚本操作示例
 
+<!-- deleted by customization
+- [Install and use Spark on HDInsight clusters][hdinsight-install-spark]: Script Action sample about installing Spark
+-->
 
+[powershell-install-configure]: /documentation/articles/install-configure-powershell
+[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters
+[hdinsight-install-r]: /documentation/articles/hdinsight-hadoop-r-scripts
+<!-- deleted by customization
+[hdinsight-install-spark]: /documentation/articles/hdinsight-hadoop-spark-install
+-->
+[hdinsight-cluster-customize]: /documentation/articles/hdinsight-hadoop-customize-cluster
 
-[powershell-install-configure]: ../install-configure-powershell.md
-[hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
-[hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
- 
-
-<!---HONumber=71-->
+<!---HONumber=79-->

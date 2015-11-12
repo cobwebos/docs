@@ -8,14 +8,15 @@
 	editor="tysonn"
 	tags="azure-resource-manager"/>
 
-<tags 
-	ms.service="virtual-machines"
+<tags
+ ms.service="virtual-machines"
+
 	ms.date="07/28/2015"
 	wacn.date=""/>
 
 # 使用计算、网络和存储 .NET 库部署 Azure 资源
 
-本教程演示了如何使用计算、存储和网络 .NET 库中的某些可用客户端来创建和删除 Windows Azure 中的资源。它还演示了如何使用 Azure Active Directory 对发往 Azure 资源管理器的请求进行身份验证。
+本教程演示了如何使用计算、存储和网络 .NET 库中的某些可用客户端来创建和删除 Microsoft Azure 中的资源。它还演示了如何使用 Azure Active Directory 对发往 Azure 资源管理器的请求进行身份验证。
 
 [AZURE.INCLUDE [trial-note](../includes/free-trial-note.md)]
 
@@ -384,4 +385,4 @@
 
 	![创建 AD 应用程序](./media/virtual-machines-arm-deployment/crpportal.png)
 
-<!---HONumber=69-->
+<!---HONumber=79-->

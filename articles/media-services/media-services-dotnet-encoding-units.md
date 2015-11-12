@@ -3,16 +3,14 @@
 	description="了解如何使用 .NET 添加编码单元"  
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,milangada,gtrifonov" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015"
+<tags
+	ms.service="media-services"
+	ms.date="10/15/2015"
 	wacn.date=""/>
-
-
 
 
 #如何使用 .NET SDK 缩放编码
@@ -21,7 +19,7 @@
 > [AZURE.SELECTOR]
 - [门户](/documentation/articles/media-services-portal-encoding-units)
 - [.NET](/documentation/articles/media-services-dotnet-encoding-units)
-- [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+- [REST](https://msdn.microsoft.com/zh-cn/library/azure/dn859236.aspx)
 
 ##概述
 
@@ -49,16 +47,33 @@ Media Services 帐户与保留单元类型相关联，后者决定了编码作�
 
 若要开具支持票证，请执行以下操作：
 
-1. 在[管理门户](http://manage.windowsazure.cn)中登录到你的 Azure 帐户。
-2. 转到“[支持](http://www.windowsazure.cn/support/contact/)”。
-3. 单击“获取支持”。
-4. 选择你的订阅。
-5. 在支持类型下，选择“技术”。
-6. 单击“创建票证”。
-7. 在下一页显示的产品列表中选择“Azure Media Services”。
-8. 选择适合你问题的“问题类型”。
-9. 单击“继续”。
-10. 根据下一页上的说明进行操作，然后输入问题的详细信息。   
-11. 单击“提交”以创建该票证。
+1. 单击[获取支持](https://manage.windowsazure.cn/?getsupport=true)。如果你尚未登录，系统将提示你输入凭据。
 
-<!---HONumber=74-->
+1. 选择你的订阅。
+ 
+1. 在支持类型下，选择“技术”。
+ 
+1. 单击“创建票证”。
+ 
+1. 在下一页显示的产品列表中选择“Azure Media Services”。
+ 
+1. 选择适合你问题的“问题类型”。
+ 
+1. 单击“继续”(Continue)。
+ 
+1. 根据下一页上的说明进行操作，然后输入问题的详细信息。
+ 
+1. 单击“提交”以创建该票证。
+ 
+
+
+
+##媒体服务学习路径
+
+你可以在此处查看 AMS 学习路径：
+
+- [AMS 实时流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS 按需流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+ 
+
+<!---HONumber=79-->

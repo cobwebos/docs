@@ -3,37 +3,37 @@
 	description="本主题概括介绍并比较了 Azure 按需媒体编码器。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015"  
+<tags
+	ms.service="media-services"
+	ms.date="10/15/2015"
 	wacn.date=""/>
 
 #简要介绍并比较 Azure 按需媒体编码器
 
 ##编码概述
 
-编码器使用编解码器压缩数字媒体。通常，通过编码器的各种设置，你可以指定所生成媒体的属性，例如，使用的编解码器、文件格式、分辨率和比特率。文件格式是用于保存压缩视频以及用来压缩视频的编解码器的相关信息的容器。
+Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。
 
-编解码器有两个组件：一个用于压缩数字媒体文件进行传输，另一个用于解压缩数字媒体文件进行播放。有音频编解码器（用于压缩和解压缩音频）和视频编解码器（用于压缩和解压缩视频）。编解码器可以使用无损压缩或有损压缩。无损编解码器在进行压缩时会保留全部信息。文件解压缩后，得到的文件与输入媒体相同，因此无损编解码器非常适用于存档和存储。有损编解码器在编码时会丢失部分信息，可通过牺牲视频质量生成比原始文件小的文件，因此非常适用于在 Internet 上进行流式传输。
-
-了解编解码器与文件格式之间的区别很重要。编解码器是实现压缩/解压缩算法的软件，而文件格式是用于保存压缩视频的容器。有关详细信息，请参阅[编码与打包](http://blog-ndrouin.chinacloudsites.cn/streaming-media-terminology-explained/)。
+一开始使用媒体服务时，了解编解码器与文件格式之间的区别很重要。编解码器是实现压缩/解压缩算法的软件，而文件格式是用于保存压缩视频的容器。
 
 Media Services 所提供的动态打包可让你以 Media Services 支持的流格式（MPEG DASH、HLS、Smooth Streaming、HDS）传送自适应比特率 MP4 或平滑流编码内容，而无须重新打包成这些流格式。
 
-若要使用[动态打包](/documentation/articles/media-services-dynamic-packaging-overview)，你需要执行以下操作：
+若要使用[动态打包](/documentation/articles/media-services-dynamic-packaging-overview)，必须执行下列操作：
 
 - 将夹层（源）文件编码成一组自适应比特率 MP4 文件或自适应比特率平滑流文件（本教程稍后将演示编码步骤）。
-- 针对你要传送内容的流式处理终结点，获取至少一个按需流式处理单位。有关详细信息，请参阅[如何缩放按需流式处理保留单位](media-services-manage-origins.md#scale_streaming_endpoints/)。
+- 针对你要传送内容的流式处理终结点，获取至少一个按需流式处理单位。有关详细信息，请参阅[如何缩放按需流式处理保留单位](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
 
 媒体服务支持将在本文中介绍的以下按需编码器：
 
 - **媒体编码器标准版**
-- **Azure 媒体编码器** 
-- **媒体编码器高级工作流**
+- **Azure Media Encoder** 
+<!-- deleted by customization
+- **Media Encoder Premium Workflow**
+-->
 
 本文简要概述了按需媒体编码器，并提供了指向介绍更多详细信息的文章的链接。本主题还提供了编码器的比较。
 
@@ -43,7 +43,7 @@ Media Services 所提供的动态打包可让你以 Media Services 支持的流�
 
 ###概述
 
-建议使用媒体编码器标准版编码器。但是，它当前未通过 Azure 门户公开。
+建议使用媒体编码器标准版编码器。但是，它当前未通过 Azure 管理门户公开。
 
 与 Azure 媒体编码器相比，此编码器支持更多输入和输出格式和编解码器。其他优点包括：
 
@@ -62,43 +62,7 @@ Media Services 所提供的动态打包可让你以 Media Services 支持的流�
 
 ###预设
 
-媒体编码器标准版使用[此处](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)所述的编码器预设之一进行配置。
-
-###输入和输出元数据
-
-编码器输入元数据在[此处](http://msdn.microsoft.com/zh-cn/library/azure/dn783120.aspx)说明（与 Azure 媒体编码器相同）。
-
-编码器输出元数据在[此处](http://msdn.microsoft.com/zh-cn/library/azure/dn783217.aspx)说明（与 Azure 媒体编码器相同）。
-
-###缩略图
-
-目前不支持。
-
-###音频和/或视频叠加
-
-目前不支持。
-
-###另请参阅
-
-[媒体服务博客](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
- 
-##Azure 媒体编码器
-
-###概述
-
-Azure 媒体编码器是媒体服务支持的编码器之一。从 2015 年 7 月开始，建议使用[媒体编码器标准版](/documentation/articles/media-services-encode-asset#media_encoder_standard)。
-
-###如何使用
-
-[如何使用 Azure 媒体编码器进行编码](media-services-dotnet-encode-asset)
-
-###格式
-
-[格式和编解码器](/documentation/articles/media-services-azure-media-encoder-formats)
-
-###预设
-
-Azure 媒体编码器使用[此处](https://msdn.microsoft.com/library/azure/dn619392.aspx)所述的编码器预设之一进行配置。你还可以在[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)获取实际的 Azure 媒体编码器预设文件。
+媒体编码器标准版使用[此处](https://msdn.microsoft.com/zh-cn/library/azure/mt269960.aspx)所述的编码器预设之一进行配置。
 
 ###输入和输出元数据
 
@@ -108,7 +72,43 @@ Azure 媒体编码器使用[此处](https://msdn.microsoft.com/library/azure/dn6
 
 ###缩略图
 
-[创建缩略图](https://msdn.microsoft.com/library/azure/Dn673581.aspx)
+有关如何生成缩略图的信息，请参阅[如何使用媒体编码器标准版来生成缩略图](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes)。
+
+###音频和/或视频叠加
+
+目前不支持。
+
+###另请参阅
+
+[媒体服务博客](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
+ 
+##Azure Media Encoder
+
+###概述
+
+Azure 媒体编码器是媒体服务支持的编码器之一。从 2015 年 7 月开始，建议使用[媒体编码器标准版](/documentation/articles/media-services-encode-asset#media_encoder_standard)。
+
+###如何使用
+
+[如何使用 Azure 媒体编码器进行编码](/documentation/articles/media-services-dotnet-encode-asset)
+
+###格式
+
+[格式和编解码器](/documentation/articles/media-services-azure-media-encoder-formats)
+
+###预设
+
+Azure 媒体编码器使用[此处](https://msdn.microsoft.com/zh-cn/library/azure/dn619392.aspx)所述的编码器预设之一进行配置。你还可以在[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/Azure%20Media%20Encoder)获取实际的 Azure 媒体编码器预设文件。
+
+###输入和输出元数据
+
+编码器输入元数据在[此处](http://msdn.microsoft.com/zh-cn/library/azure/dn783120.aspx)说明。
+
+编码器输出元数据在[此处](http://msdn.microsoft.com/zh-cn/library/azure/dn783217.aspx)说明。
+
+###缩略图
+
+[创建缩略图](https://msdn.microsoft.com/zh-cn/library/hh973624.aspx)
 
 ###音频和/或视频叠加
 
@@ -120,17 +120,19 @@ Azure 媒体编码器使用[此处](https://msdn.microsoft.com/library/azure/dn6
 
 ###另请参阅
 
-[使用 Dolby Digital Plus 编码媒体](media-services-encode-with-dolby-digital-plus)
+[使用 Dolby Digital Plus 编码媒体](/documentation/articles/media-services-encode-with-dolby-digital-plus)
 
 ##媒体编码器高级工作流
-	
+
+###概述
+
+[在 Azure 媒体服务中引入高级编码](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+
+###如何使用
+
 媒体编码器高级工作流使用复杂的工作流进行配置。可以使用[工作流设计器](/documentation/articles/media-services-workflow-designer)工具创建和更新工作流文件。
 
-有关详细信息，请参阅：
-
-- [在 Azure 媒体服务中引入高级编码](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
-- [如何在 Azure 媒体服务中使用高级编码](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
-
+[如何在 Azure 媒体服务中使用高级编码](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 
 ##<a id="compare_encoders"></a>比较编码器
 
@@ -139,16 +141,18 @@ Azure 媒体编码器使用[此处](https://msdn.microsoft.com/library/azure/dn6
 媒体处理器名称|适用定价|说明
 ---|---|---
 **媒体编码器标准版** |编码器|编码任务将根据“编码器”列下输出资产的大小（以 GB 为单位）按[此处][1]指定的费率进行收费。
-**Azure 媒体编码器** |编码器|编码任务将根据“编码器”列下输出资产的大小（以 GB 为单位）按[此处][1]指定的费率进行收费。
-**媒体编码器高级工作流** |高级编码器|编码任务将根据“高级编码器”列下输出资产的大小（以 GB 为单位）按[此处][1]指定的费率进行收费。
+**Azure Media Encoder** |编码器|编码任务将根据“编码器”列下输出资产的大小（以 GB 为单位）按[此处][1]指定的费率进行收费。
+<!-- deleted by customization
+**Media Encoder Premium Workflow** |PREMIUM ENCODER|Encoding Tasks will be charged according to the size of the output Asset, in GBytes, at the rate specified [here][1], under the PREMIUM ENCODER column.
+-->
 
 
-本节比较了**媒体编码器标准版**、**Azure 媒体编码器**和**媒体编码器高级工作流**的编码功能。
+本部分比较了**媒体编码器标准版**和 **Azure 媒体编码器**<!-- deleted by customization , and **Media Encoder Premium Workflow** -->的编码功能。
 
 
 ###输入容器/文件格式
 
-输入容器/文件格式|媒体编码器标准版|Azure 媒体编码器|媒体编码器高级工作流
+输入容器/文件格式|媒体编码器标准版|Azure Media Encoder|媒体编码器高级工作流
 ---|---|---|---
 Adobe® Flash® F4V |是|否 |是
 MXF/SMPTE 377M |是|受限制|是
@@ -160,12 +164,12 @@ Windows Media/ASF |是|是 |是
 AVI（8 位/10 位未压缩）|是|是 |是
 3GPP/3GPP2 |是|是 |否
 平滑流文件格式 (PIFF 1.3)|是|是|否
-[Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984)|是|否|否
+[Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/zh-cn/library/windows/desktop/dd692984)|是|否|否
 Matroska/WebM |是|否|否
 
 ###输入视频编解码器
 
-输入视频编解码器|媒体编码器标准版|Azure 媒体编码器|媒体编码器高级工作流
+输入视频编解码器|媒体编码器标准版|Azure Media Encoder|媒体编码器高级工作流
 ---|---|---|---
 AVC 8 位/10 位，最高支持 4:2:2，包括 AVCIntra |8 位 4:2:0 和 4:2:2|仅限 8 位 4:2:0|是
 Avid DNxHD（MXF 格式） |是|否|是
@@ -180,7 +184,7 @@ Mpeg-4 第 2 部分 |是|否|否
 
 ###输入音频编解码器
 
-输入音频编解码器|媒体编码器标准版|Azure 媒体编码器|媒体编码器高级工作流
+输入音频编解码器|媒体编码器标准版|Azure Media Encoder|媒体编码器高级工作流
 ---|---|---|---
 AES（SMPTE 331M 和 302M、AES3-2003） |否|否|是
 Dolby® E |否|否|是
@@ -198,7 +202,7 @@ WAV/PCM|是|是|是
 
 ###输出容器/文件格式
 
-输出容器/文件格式|媒体编码器标准版|Azure 媒体编码器|媒体编码器高级工作流
+输出容器/文件格式|媒体编码器标准版|Azure Media Encoder|媒体编码器高级工作流
 ---|---|---|---
 Adobe® Flash® F4V|否|否|是
 MXF（OP1a、XDCAM 和 AS02）|否|否|是
@@ -212,7 +216,7 @@ AVI（8 位/10 位未压缩）|否|否|是
 
 ###输出视频编解码器
 
-输出视频编解码器|媒体编码器标准版|Azure 媒体编码器|媒体编码器高级工作流
+输出视频编解码器|媒体编码器标准版|Azure Media Encoder|媒体编码器高级工作流
 ---|---|---|---
 AVC（H.264；8 位；最高支持 High Profile、Level 5.2；4K Ultra HD；AVC Intra）|仅限 8 位 4:2:0|仅限 8 位 4:2:0，最高支持 1080p|是
 Avid DNxHD（MXF 格式）|否|否|是
@@ -224,7 +228,7 @@ JPEG 缩图创建|否|是|是
 
 ###输出音频编解码器
 
-输出音频编解码器|媒体编码器标准版|Azure 媒体编码器|媒体编码器高级工作流
+输出音频编解码器|媒体编码器标准版|Azure Media Encoder|媒体编码器高级工作流
 ---|---|---|---
 AES（SMPTE 331M 和 302M、AES3-2003）|否|否|是
 Dolby® Digital (AC3)|否|是|是
@@ -248,6 +252,6 @@ Windows Media 音频|否|是|是
 
  
 <!--Reference links in article-->
-[1]: http://azure.microsoft.com/pricing/details/media-services/
+[1]: /home/features/media-services/#price
 
-<!---HONumber=74-->
+<!---HONumber=79-->

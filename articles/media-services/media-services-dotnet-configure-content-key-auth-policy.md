@@ -1,21 +1,21 @@
 <properties 
-	pageTitle="动态加密：使用 .NET 配置内容密钥授权策略" 
-	description="了解如何配置内容密钥的授权策略。" 
+	pageTitle="使用 Media Services .NET SDK 配置内容密钥授权策略" 
+	description="了解如何使用 Media Services .NET SDK 配置内容密钥的授权策略。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,Mingfeiy" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/16/2015"
+<tags
+	ms.service="media-services"
+	ms.date="10/18/2015"
 	wacn.date=""/>
 
 
 
 #动态加密：配置内容密钥授权策略 
-[AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../includes/media-services-selector-content-key-auth-policy)]
+[AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../includes/media-services-selector-content-key-auth-policy.md)]
 
 
 ##概述
@@ -385,8 +385,20 @@ Media Services 允许你配置相应的权限和限制，以便在用户尝试�
     }
 
 
+<!-- deleted by customization
+
+##Media Services learning paths
+
+You can view AMS learning paths here:
+
+- [AMS Live Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS on Demand Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+-->
+
+
 
 ##后续步骤
 在配置内容密钥的授权策略后，请转到[如何配置资产传送策略](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy)主题。
+ 
 
-<!---HONumber=74-->
+<!---HONumber=79-->

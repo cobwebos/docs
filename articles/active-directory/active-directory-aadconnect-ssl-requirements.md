@@ -4,12 +4,12 @@
 	services="active-directory" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="swadhwa" 
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="08/24/2015" 
+	ms.date="10/13/2015"
 	wacn.date=""/>
 
 # Azure AD Connect - SSL 证书要求
@@ -28,4 +28,4 @@
 支持通配符证书。
  
 
-<!---HONumber=76-->
+<!---HONumber=79-->

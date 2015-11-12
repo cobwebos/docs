@@ -7,10 +7,10 @@
    manager="timlt"
    editor=""/>
 
-<tags 
-	ms.service="virtual-machines"
-	ms.date="08/07/2015" 
-	wacn.date=""/>
+<tags
+   ms.service="virtual-machines"
+   ms.date="08/07/2015"
+   wacn.date=""/>
 
 # 在 Azure 虚拟机上使用 Docker 和 Compose 入门
 
@@ -20,7 +20,7 @@
 
 ## 步骤 1：将 Linux VM 设置为 Docker 主机
 
-可以使用各种 Azure 过程和 Azure 应用商店中提供的映像创建 Linux VM 并将其设置为 Docker 主机。有关示例，请参阅[从 Azure 命令行界面使用 Docker VM 扩展](virtual-machines-docker-with-xplat-cli)，了解使用 Docker VM 扩展创建 Ubuntu VM 的快速过程。使用 Docker VM 扩展时，你的 VM 将自动设置为 Docker 主机。该文中的示例演示如何在服务管理模式下使用[适用于 Mac、Linux 和 Windows 的 Azure 命令行界面](/documentation/articles/xplat-cli.md) (Azure CLI) 创建 VM。
+可以使用各种 Azure 过程和 Azure 应用商店中提供的映像创建 Linux VM 并将其设置为 Docker 主机。有关示例，请参阅[从 Azure 命令行界面使用 Docker VM 扩展](/documentation/articles/virtual-machines-docker-with-xplat-cli)，了解使用 Docker VM 扩展创建 Ubuntu VM 的快速过程。使用 Docker VM 扩展时，你的 VM 将自动设置为 Docker 主机。该文中的示例演示如何在服务管理模式下使用[适用于 Mac、Linux 和 Windows 的 Azure 命令行界面](/documentation/articles/xplat-cli.md) (Azure CLI) 创建 VM。
 
 ## 步骤 2：安装 Compose
 
@@ -41,7 +41,8 @@ $ chmod +x /usr/local/bin/docker-compose
 $ docker-compose --version
 ```
 
-你将看到与 ```
+你将看到与 
+```
 docker-compose 1.3.2
 ``` 类似的输出。
 
@@ -52,9 +53,18 @@ docker-compose 1.3.2
 
 在 VM 上创建工作目录，并使用你最喜欢的文本编辑器创建 `docker-compose.yml`。若要试用一个简单示例，请将以下文本复制到该文件中。此配置将使用 [DockerHub 注册表](https://registry.hub.docker.com/_/wordpress/)中的映像安装 WordPress（开源博客和内容管理系统）和链接的后端 MariaDB SQL 数据库。
 
- ``` wordpress: image: wordpress links: - db:mysql ports: - 8080:80
+ ```
+ wordpress: 
+ image: wordpress 
+ links: 
+ - db:mysql 
+ ports: 
+ - 8080:80
 
-db: image: mariadb environment: MYSQL\_ROOT\_PASSWORD: <your password>
+db:
+image: mariadb
+environment:
+MYSQL\_ROOT\_PASSWORD: <your password>
 
 ```
 
@@ -70,7 +80,9 @@ $ docker-compose up -d
 This starts the Docker containers specified in `docker-compose.yml`. You'll see output similar to:
 
 ```
-正在创建 wordpress\_db\_1...正在创建 wordpress\_wordpress\_1...```
+正在创建 wordpress\_db\_1...
+正在创建 wordpress\_wordpress\_1...
+```
 
 >[AZURE.NOTE]启动时请务必使用 **-d** 选项，以使容器在后台继续运行。
 
@@ -108,4 +120,4 @@ $ azure vm endpoint create <machine-name> 80 8080
 
 [wordpress_start]: ./media/virtual-machines-docker-compose-quickstart/WordPress.png
 
-<!---HONumber=69-->
+<!---HONumber=79-->
