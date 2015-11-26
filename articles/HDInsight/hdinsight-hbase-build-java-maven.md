@@ -1,6 +1,6 @@
 <properties
-	pageTitle="使用 Maven 构建 HBase 应用程序 | Azure"
-	description="了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，然后将其部署到 Azure HDInsight"
+	pageTitle="使用 Maven 构建 HBase 应用程序并将其部署到基于 Windows 的 HDInsight | Microsoft Azure"
+	description="了解如何使用 Apache Maven 构建基于 Java 的 Apache HBase 应用程序，然后将其部署到基于 Windows 的 Azure HDInsight 群集。"
 	services="hdinsight"
 	documentationCenter=""
 	authors="Blackmist"
@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="08/11/2015"
+	ms.date="10/09/2015"
 	wacn.date=""/>
 
 #借助 Maven 生成可将 HBase 与 HDInsight (Hadoop) 配合使用的 Java 应用程序
@@ -25,7 +25,7 @@
 
 * [Maven](http://maven.apache.org/)
 
-* [安装有 HBase 的 Azure HDInsight 群集](hdinsight-hbase-get-started.md#create-hbase-cluster)
+* [安装有 HBase 的 Azure HDInsight 群集](/documentation/articles/hdinsight-hbase-get-started#create-hbase-cluster)
 
 ##创建项目
 
@@ -152,7 +152,7 @@
 
 	此文件将用于加载 HDInsight 群集的 HBase 配置。
 
-	> [AZURE.NOTE]这是极小的 hbase-site.xml 文件，其中包含 HDInsight 群集的基本最低设置。有关 HDInsight 使用的 hbase-site.xml 配置文件的完整版本，请参阅[通过使用 Azure 门户在 HDInsight 中管理 Hadoop 群集](hdinsight-administer-use-management-portal.md#rdp)。hbase-site.xml 文件位于 C:\\apps\\dist\\hbase-&lt;version number>-hadoop2\\conf 目录中。在群集上更新 HBase 后，文件路径的版本号部分将发生变化。
+	> [AZURE.NOTE]这是极小的 hbase-site.xml 文件，其中包含 HDInsight 群集的基本最低设置。有关 HDInsight 使用的 hbase-site.xml 配置文件的完整版本，请参阅[使用 Azure 管理门户在 HDInsight 中管理 Hadoop 群集](/documentation/articles/hdinsight-administer-use-management-portal-v1#rdp)。hbase-site.xml 文件位于 C:\\apps\\dist\\hbase-&lt;version number>-hadoop2\\conf 目录中。在群集上更新 HBase 后，文件路径的版本号部分将发生变化。
 
 3. 保存 __hbase-site.xml__ 文件。
 
@@ -347,7 +347,7 @@
 
 ##上载 JAR 文件并启动作业
 
-> [AZURE.NOTE]你可以使用多种方法将文件上载到 HDInsight 群集，如[在 HDInsight 中为 Hadoop 作业上载数据](hdinsight-upload-data.md)中所述。以下步骤使用 [Azure PowerShell](../install-configure-powershell.md)。
+> [AZURE.NOTE]你可以使用多种方法将文件上载到 HDInsight 群集，如[在 HDInsight 中为 Hadoop 作业上载数据](/documentation/articles/hdinsight-upload-data)中所述。以下步骤使用 [Azure PowerShell](/documentation/articles/install-configure-powershell)。
 
 1. 安装并配置 Azure PowerShell 后，请创建名为 __hbase-runner.psm1__ 的新文件。使用以下项作为此文件的内容：
 
@@ -480,7 +480,7 @@
 		    # Is the Azure module installed?
 		    if (-not(Get-Module -ListAvailable Azure))
 		    {
-		        throw "Azure PowerShell not found! For help, see http://www.windowsazure.com/documentation/articles/install-configure-powershell/"
+		        throw "Azure PowerShell not found! For help, see /documentation/articles/install-configure-powershell/"
 		    }
 
 		    # Is there an active Azure subscription?
@@ -588,4 +588,4 @@
 
 使用 `-showErr` 参数可查看运行作业时生成的标准错误 (STDERR)。
 
-<!---HONumber=71-->
+<!---HONumber=82-->

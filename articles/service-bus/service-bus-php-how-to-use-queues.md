@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何使用服务总线队列 (PHP) | Microsoft Azure" 
+	pageTitle="如何通过 PHP 使用服务总线队列 | Microsoft Azure" 
 	description="了解如何在 Azure 中使用 Service Bus 队列。采用 PHP 编写的代码示例。" 
 	services="service-bus" 
 	documentationCenter="php" 
@@ -7,22 +7,24 @@
 	manager="timlt" 
 	editor=""/>
 
-<tags
-	ms.service="service-bus"
-	ms.date="07/06/2015" 
+<tags 
+	ms.service="service-bus" 
+	ms.date="10/14/2015" 
 	wacn.date=""/>
 
 # 如何使用 Service Bus 队列
 
+[AZURE.INCLUDE [service-bus-selector-queues](../includes/service-bus-selector-queues.md)]
+
 本指南说明如何使用服务总线队列。示例是用 PHP 编写的并使用了 [Azure SDK for PHP](/documentation/articles/php-download-sdk)。涉及的任务包括**创建队列**、**发送和接收消息**以及**删除队列**。
 
-[AZURE.INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+[AZURE.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
 ## 创建 PHP 应用程序
 
 创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码中引用 [Azure SDK for PHP](/documentation/articles/php-download-sdk) 中的类。你可以使用任何开发工具或记事本创建应用程序。
 
-> [AZURE.NOTE]你的 PHP 安装还必须已安装并启用 [OpenSSL 扩展](http://php.net/openssl)。
+> [AZURE.NOTE] 你的 PHP 安装还必须已安装并启用 [OpenSSL 扩展](http://php.net/openssl)。
 
 在本指南中，你将使用服务功能，这些功能可在 PHP 应用程序中本地调用，或通过在 Azure 的 Web 角色、辅助角色或网站中运行的代码调用。
 
@@ -39,7 +41,7 @@
 
 下面的示例演示了如何包括 autoloader 文件并引用 **ServicesBuilder** 类。
 
-> [AZURE.NOTE]本示例（以及本文中的其他示例）假定你已通过 Composer 安装用于 Azure 的 PHP 客户端库。如果你已手动安装这些库或将其作为 PEAR 包安装，则必须引用 **WindowsAzure.php** autoloader 文件。
+> [AZURE.NOTE] 本示例（以及本文中的其他示例）假定你已通过 Composer 安装用于 Azure 的 PHP 客户端库。如果你已手动安装这些库或将其作为 PEAR 包安装，则必须引用 **WindowsAzure.php** autoloader 文件。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
@@ -102,7 +104,7 @@
 		echo $code.": ".$error_message."<br />";
 	}
 
-> [AZURE.NOTE]你可以使用 `ServiceBusRestProxy` 对象上的 `listQueues` 方法检查队列是否在服务命名空间中已存在指定名称。
+> [AZURE.NOTE] 你可以使用 `ServiceBusRestProxy` 对象上的 `listQueues` 方法检查队列是否在服务命名空间中已存在指定名称。
 
 ## 如何：向队列发送消息
 
@@ -194,17 +196,11 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 ## 后续步骤
 
-现在，你已了解服务总线队列的基础知识，请参阅[队列、主题和订阅][]主题以获取更多信息。
+现在，你已了解服务总线队列的基础知识，请参阅[队列、主题和订阅][]以获取更多信息。
 
-[Service Bus Queue Diagram]: ../../../DevCenter/Java/Media/SvcBusQueues_01_FlowDiagram.jpg
-[Azure Management Portal]: http://manage.windowsazure.cn/
-[Service Bus Node screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_02_SvcBusNode.jpg
-[Create a New Namespace screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_03_CreateNewSvcNamespace.jpg
-[Available Namespaces screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_04_SvcBusNode_AvailNamespaces.jpg
-[Namespace List screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_05_NamespaceList.jpg
-[Properties Pane screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_06_PropertiesPane.jpg
-[Default Key screenshot]: ../../../DevCenter/Java/Media/SvcBusQueues_07_DefaultKey.jpg
+有关详细信息，请参阅 [PHP 开发人员中心](/develop/php/)。
+
 [队列、主题和订阅]: /documentation/articles/service-bus-queues-topics-subscriptions
 [require_once]: http://php.net/require_once
 
-<!---HONumber=74-->
+<!---HONumber=82-->

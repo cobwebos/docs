@@ -1,17 +1,17 @@
 <properties
-   pageTitle="Apache Storm on HDInsight 简介 | Azure"
-   description="获取有关 Apache Storm 的简介，并了解如何使用 Storm on HDInsight 在云中构建实时数据分析解决方案。"
-   services="hdinsight"
-   documentationCenter=""
-   authors="Blackmist"
-   manager="paulettm"
-   editor="cgronlun"
-   tags="azure-portal"/>
+	pageTitle="Apache Storm on HDInsight 简介 | Microsoft Azure"
+	description="获取有关 Apache Storm 的简介，并了解如何使用 Storm on HDInsight 在云中构建实时数据分析解决方案。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="Blackmist"
+	manager="paulettm"
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
-   ms.service="hdinsight"
-   ms.date="07/24/2015"
-   wacn.date=""/>
+	ms.service="hdinsight"
+	ms.date="09/23/2015"
+	wacn.date=""/>
 
 #Apache Storm on HDInsight 简介：面向 Hadoop 的实时分析
 
@@ -47,13 +47,13 @@ Apache Storm on HDInsight 是已集成到 Azure 环境中的托管群集。它�
 
 你可以在分钟数设置好新的 Storm on HDInsight 群集。指定群集名称、大小、管理员帐户和存储帐户。Azure 将创建该群集，包括示例拓扑和 Web 管理仪表板。
 
-> [AZURE.NOTE]你也可以使用 [Azure CLI](/documentation/articles/xplat-cli.md) 或 [Azure PowerShell](/documentation/articles/powershell-install-configure.md) 预配 Storm 群集。
+> [AZURE.NOTE]你也可以使用 [Azure CLI](/documentation/articles/xplat-cli-install) 或 [Azure PowerShell](/documentation/articles/powershell-install-configure) 预配 Storm 群集。
 
 在提交请求后的 15 分钟内，你就可以运行新的 Storm 群集，并准备好建立第一个实时分析管道。
 
 ###易于使用
 
-如果你使用 Visual Studio，HDInsight Tools for Visual Studio 允许你创建 C# 和混合 C#/Java 拓扑，然后将它们提交到 Storm on HDInsight 群集。
+__对于基于 Windows 的 Storm on HDInsight 群集__，HDInsight Tools for Visual Studio 允许你创建 C# 和混合 C#/Java 拓扑，然后将它们提交到 Storm on HDInsight 群集。
 
 ![Storm 项目创建](./media/hdinsight-storm-overview/createproject.png)
 
@@ -61,17 +61,21 @@ HDInsight Tools for Visual Studio 还提供了一个接口让你监视和管理�
 
 ![Storm 管理](./media/hdinsight-storm-overview/stormview.png)
 
-有关使用 HDInsight 工具创建 HDInsight 应用程序的示例，请参阅[使用 HDInsight Tools for Visual Studio 开发 C# Storm 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology)。
+有关使用 HDInsight 工具创建 HDInsight 应用程序的示例，请参阅[使用 HDInsight Tools for Visual Studio 开发 C# Storm 拓扑](/documentation/articles/hdinsight-storm-develop-csharp-visual-studio-topology)。
 
-有关 HDInsight Tools for Visual Studio 的详细信息，请参阅 [HDInsight Tools for Visual Studio 入门](hdinsight-hadoop-visual-studio-tools-get-started)。
+有关 HDInsight Tools for Visual Studio 的详细信息，请参阅 [HDInsight Tools for Visual Studio 入门](/documentation/articles/hdinsight-hadoop-visual-studio-tools-get-started)。
 
 每个 Storm on HDInsight 群集还提供一个基于 Web 的 Storm 仪表板让提交、监视和管理群集上运行的 Storm 拓扑。
 
 ![Storm 仪表板](./media/hdinsight-storm-overview/dashboard.png)
 
-有关使用 Storm 仪表板的详细信息，请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](hdinsight-storm-deploy-monitor-topology)。
+有关使用 Storm 仪表板的详细信息，请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](/documentation/articles/hdinsight-storm-deploy-monitor-topology)。
 
-Storm on HDInsight 还支持通过**事件中心 Spout** 与 Azure 事件中心轻松集成。可以使用 **%STORM\_HOME%\\examples\\eventhubspout\\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** 在每个 Storm 群集上实现此目的。有关在 Storm 拓扑中使用此 Spout 的示例，请参阅[事件中心入门](service-bus-event-hubs-c-storm-getstarted)和[使用 Storm 和 HBase 分析传感器数据](hdinsight-storm-sensor-data-analysis)。
+Storm on HDInsight 还支持通过**事件中心 Spout** 与 Azure 事件中心轻松集成。可以使用 **%STORM\_HOME%\\examples\\eventhubspout\\eventhubs-storm-spout-0.9-jar-with-dependencies.jar** 在每个 Storm 群集上实现此目的。有关在 Storm 中使用此 Spout 的示例，请参阅以下文档：
+
+* [开发使用 Azure 事件中心的 C# 拓扑](/documentation/articles/hdinsight-storm-develop-csharp-event-hub-topology)
+
+* [开发使用 Azure 事件中心的 Java 拓扑](/documentation/articles/hdinsight-storm-develop-java-event-hub-topology)
 
 ###可靠性
 
@@ -142,7 +146,7 @@ Storm on HDInsight 群集支持 C#、Java 和 Python。
 
 HDInsight Tools for Visual Studio 允许 .NET 开发人员以 C# 语言设计和实施拓扑。你也可以创建使用 Java 和 C# 组件的混合拓扑。
 
-有关详细信息，请参阅[使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](hdinsight-storm-develop-csharp-visual-studio-topology.md)。
+有关详细信息，请参阅[使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](/documentation/articles/hdinsight-storm-develop-csharp-visual-studio-topology)。
 
 ###Java
 
@@ -150,7 +154,9 @@ HDInsight Tools for Visual Studio 允许 .NET 开发人员以 C# 语言设计和
 
 有关 Trident 的详细信息，请参阅 apache.org 上的 [Trident 教程](https://storm.incubator.apache.org/documentation/Trident-tutorial.html)。
 
-有关原始 Java 和 Trident 拓扑的示例，请参阅 HDInsight Storm 群集上的 **%storm\_home%\\contrib\\storm-starter** 目录。
+有关 Java 和 Trident 拓扑的示例，请参阅[示例 Storm 拓扑列表](/documentation/articles/hdinsight-storm-example-topology)或 HDInsight Storm 群集上的 storm-starter 示例。
+
+基于 Windows 的群集上的 **%storm\_home%\\contrib\\storm-starter** 目录。
 
 ##常见的开发模式有哪些？
 
@@ -170,13 +176,13 @@ Storm 可以提供不同级别的有保证的消息处理。例如，基本的 S
 
 在以下 Java 实例中，fieldsGrouping 用于将来自组件“1”、“2”和“3”的元组路由至 **MyJoiner** bolt。
 
-	builder.setBolt("join", new MyJoiner(), parallelism) .fieldsGrouping("1", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("2", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("3", new Fields("joinfield1", "joinfield2")); 
+	builder.setBolt("join", new MyJoiner(), parallelism) .fieldsGrouping("1", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("2", new Fields("joinfield1", "joinfield2")) .fieldsGrouping("3", new Fields("joinfield1", "joinfield2"));
 
 ###批处理
 
 批处理可以通过若干方式来实现。利用基本 Storm Java 拓扑，你可以在发出元组前使用简单计数器对 X 个元组进行批处理，或使用称为计时周期元组的内部计时机制每 X 秒发出一批元组。
 
-有关使用计时周期的示例，请参阅[使用 Storm 和 HDInsight 分析传感器数据](/documentation/articles/hdinsight-storm-sensor-data-analysis.md)
+有关使用计时周期的示例，请参阅[使用 HDInsight 上的 Storm 和 HBase 分析传感器数据](/documentation/articles/hdinsight-storm-sensor-data-analysis)。
 
 如果你使用的是 Trident，则其基于批量处理元组。
 
@@ -201,6 +207,6 @@ Storm 可以提供不同级别的有保证的消息处理。例如，基本的 S
 [stormtrident]: https://storm.incubator.apache.org/documentation/Trident-API-Overview.html
 [samoa]: http://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
-[gettingstarted]: hdinsight-storm-getting-started
+[gettingstarted]: /documentation/articles/hdinsight-apache-storm-tutorial-get-started
 
-<!---HONumber=71-->
+<!---HONumber=82-->

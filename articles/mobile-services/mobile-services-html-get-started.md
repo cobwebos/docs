@@ -1,5 +1,5 @@
 <properties
-	pageTitle="用于 HTML 5 应用程序的 Azure 移动服务入门"
+	pageTitle="适用于 HTML/JavaScript 应用的 Azure 移动服务入门 | Microsoft Azure"
 	description="按照本教程进行操作，开始使用 Azure 移动服务进行 HTML 开发。"
 	services="mobile-services"
 	documentationCenter=""
@@ -9,13 +9,16 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="07/25/2015"
+	ms.date="10/05/2015"
 	wacn.date=""/>
 
 
 # <a name="getting-started"></a>移动服务入门
 
 [AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
+&nbsp;
+
+[AZURE.INCLUDE [mobile-services-hero-slug](../includes/mobile-services-hero-slug.md)]
 
 ##概述 
 
@@ -113,13 +116,14 @@
 ## <a name="next-steps"></a>后续步骤
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-* **[数据处理入门]**<br/>了解有关使用移动服务存储和查询数据的详细信息。
-  
-* **[从 HTML 应用程序调用自定义 API]**<br/>将 HTML 应用程序连接到移动服务上托管的自定义 API。
+* **[向应用程序添加身份验证]**
+了解如何使用标识提供者对应用程序的用户进行身份验证。
 
-* **[身份验证入门]**<br/>了解如何使用标识提供者对应用程序的用户进行身份验证。
+* **[移动服务 HTML/JavaScript 操作方法概念性参考]**
+了解有关如何将移动服务与 HTML/JavaScript 配合使用的详细信息
 
-* **[移动服务 HTML/JavaScript 操作方法概念性参考]**<br/>了解有关如何将移动服务与 HTML/JavaScript 配合使用的详细信息
+
+[AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
 [Getting started with Mobile Services]: #getting-started
@@ -129,10 +133,6 @@
 
 <!-- Images. -->
 [0]: ./media/mobile-services-html-get-started/mobile-quickstart-completed-html.png
-
-
-
-
 
 [6]: ./media/mobile-services-html-get-started/mobile-portal-quickstart-html.png
 [7]: ./media/mobile-services-html-get-started/mobile-quickstart-steps-html.png
@@ -144,9 +144,7 @@
 
 
 <!-- URLs. -->
-[数据处理入门]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-with-data-html
-[身份验证入门]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-with-users-html
-[从 HTML 应用程序调用自定义 API]: /documentation/articles/mobile-services-html-call-custom-api
+[向应用程序添加身份验证]: /documentation/articles/mobile-services-html-get-started-users
 
 [Management Portal]: https://manage.windowsazure.cn/
 [Microsoft Web 平台安装程序]: http://go.microsoft.com/fwlink/p/?LinkId=286333
@@ -154,4 +152,4 @@
 [移动服务 HTML/JavaScript 操作方法概念性参考]: /zh-cn/documentation/articles/mobile-services-html-how-to-use-client-library
 [Cross-origin resource sharing]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn155871.aspx
 
-<!---HONumber=71-->
+<!---HONumber=82-->

@@ -16,7 +16,7 @@
 # 使用通知中心发送突发新闻
 
 
-[AZURE.INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
+[AZURE.INCLUDE [notification-hubs-selector-breaking-news](../includes/notification-hubs-selector-breaking-news)]
 
 
 ##概述
@@ -243,4 +243,4 @@
 
  
 
-<!---HONumber=76-->
+<!---HONumber=82-->

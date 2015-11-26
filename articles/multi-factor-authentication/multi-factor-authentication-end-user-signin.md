@@ -1,15 +1,15 @@
 <properties 
-	pageTitle="使用 Azure Multi-Factor Authentication 时的 Azure 登录体验" 
+	pageTitle="使用 Azure Multi-Factor Authentication 时的 Azure MFA 登录体验" 
 	description="本页将会提供有关可在哪个位置查看 Azure MFA 支持的各种登录方法的指导。" 
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	manager="stevenpo" 
+	editor="curtland"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="06/02/2015" 
+	ms.date="10/15/2015" 
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 的登录体验
@@ -22,11 +22,80 @@
 
 你在做什么？|说明
 :------------- | :------------- | 
-[使用手机或办公电话登录](/documentation/articles/multi-factor-authentication-end-user-signin-phone) | 这是使用手机或办公电话登录时所能预期到的情况。
-[在移动应用中使用通知登录](/documentation/articles/multi-factor-authentication-end-user-signin-app-notify) | 这是在移动应用中使用通知登录时所能预期到的情况。
-[在移动应用中使用验证码登录](/documentation/articles/multi-factor-authentication-end-user-signin-app-verify)|这是在移动应用中使用验证码登录时所能预期到的情况。
-[使用替代方法登录](/documentation/articles/multi-factor-authentication-end-user-signin-alt)|说明使用替代方法时所能预期到的情况。
+[使用手机或办公电话登录](#signing-in-with-mobile-or-office-phone) | 这是使用手机或办公电话登录时所能预期到的情况。
+[在移动应用中使用通知登录](#signing-in-with-the-mobile-app-using-notification) | 这是在移动应用中使用通知登录时所能预期到的情况。
+[在移动应用中使用验证码登录](#signing-in-with-the-mobile-app-using-verification-code)|这是在移动应用中使用验证码登录时所能预期到的情况。
+[使用替代方法登录](#signing-in-with-an-alternate-method)|说明使用替代方法时所能预期到的情况。
+
+## 使用手机或办公电话登录
+
+以下信息介绍在使用手机或办公电话执行 Multi-Factor Authentication 时的体验。
+
+### 使用办公电话或手机呼叫登录
+
+- 使用你的用户名和密码登录到 Office 365 等应用程序或服务。
+- Microsoft 将会向你拨打电话。
+
+![Microsoft 呼叫](./media/multi-factor-authentication-end-user-signin-phone/call.png)
+
+- 请接听电话并按 # 键。
+
+![Answer](./media/multi-factor-authentication-end-user-signin-phone/phone.png)
+
+- 现在你应已登录。</li>
+
+## 在移动应用中使用通知登录
+
+以下信息介绍在系统向你发送通知后，你在移动应用上使用 Multi-Factor Authentication 的体验。
+
+### 使用发送到移动应用的通知登录
+
+- 使用你的用户名和密码登录到 Office 365 等应用程序或服务。
+- Microsoft 将发送一条通知。
+
+![Microsoft 发送通知](./media/multi-factor-authentication-end-user-signin-app-notify/notify.png)
+
+
+- 请接听电话并按验证键。
+
+![验证](./media/multi-factor-authentication-end-user-signin-app-notify/phone.png)
+
+
+- 现在你应已登录。
+
+
+## 在移动应用中使用验证码登录
+
+以下信息介绍当你使用验证码执行身份验证时，在移动应用上使用 Multi-Factor Authentication 的体验。
+
+### 使用移动应用中的验证码登录
+
+- 使用你的用户名和密码登录到 Office 365 等应用程序或服务。
+- Microsoft 将提示你输入验证码。
+
+![输入验证码](./media/multi-factor-authentication-end-user-signin-app-verify/verify.png)
+
+- 打开手机上的 Azure 验证器应用，然后在登录框中输入该代码。
+
+![获取验证码](./media/multi-factor-authentication-end-user-signin-app-verify/phone.png)
+
+- 现在你应已登录。
+
+
+## 使用替代方法登录
+
+
+以下部分将会说明当你的主要方法不可用时，如何使用替代方法进行登录。
+
+### 使用替代方法登录
+
+- 使用你的用户名和密码登录到 Office 365 等应用程序或服务。
+- 选择使用不同的验证选项。系统会显示不同的选项供你选择。看到的选项数目取决于你设置了多少个选项。
+
+![使用替代方法](./media/multi-factor-authentication-end-user-signin-alt/alt.png)
+
+- 选择一种替代方法并登录。
 
  
 
-<!---HONumber=69-->
+<!---HONumber=82-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="backup"
-	ms.date="08/18/2015"
+	ms.date="10/01/2015"
 	wacn.date=""/>
 
 # Azure 备份简介
@@ -46,23 +46,32 @@ Azure 备份是一个多租户 Azure 服务，可让你备份任意位置（本�
 7. **云中备份**：Azure 备份为运行中的 Azure IaaS 虚拟机提供基于 VSS 的应用程序一致性备份，并且备份时无需关闭虚拟机。它还可以备份 Azure 中的 Linux 虚拟机，并保证文件系统一致性。
 
 
+## 部署方案
+| 组件 | 可以在 Azure 中部署吗？ | 可以在本地部署吗？ | 支持的目标存储|
+| --- | --- | --- | --- |
+| Azure 备份代理 | **是**<br><br>Azure 备份代理可以部署在 Azure 中运行的任何 Windows Server VM 上。 | **是**<br><br>Azure 备份代理可以部署在任何 Windows Server VM 或物理计算机上。 | Azure 备份保管库 |
+| System Center Data Protection Manager (SCDPM) | **是**<br><br>请了解有关[使用 SCDPM 保护 Azure 中的工作负荷](http://blogs.technet.com/b/dpm/archive/2014/09/02/azure-iaas-workload-protection-using-data-protection-manager.aspx)的详细信息。 | **是**<br><br>请了解有关[保护数据中心内的工作负荷和 VM](https://technet.microsoft.com/zh-CN/library/hh758173.aspx) 的详细信息。 | 本地附加的磁盘、<br>Azure 备份保管库、<br>磁带（仅限本地） |
+| Azure 备份（VM 扩展） | **是**<br><br>专门用于[备份 Azure IaaS 虚拟机](backup-azure-vms-introduction.md)。 | **否**<br><br>请使用 SCDPM 备份数据中心内的虚拟机。 | Azure 备份保管库 |
+
+
 ## 应用程序和工作负荷
 
 | 工作负载 | 源计算机 | Azure 备份解决方案 |
 | --- | --- |---|
-| 文件和文件夹 | Windows Server、Windows 客户端 | Azure 备份代理 |
-| 文件和文件夹 | Windows Server、Windows 客户端 | System Center DPM |
+| 文件和文件夹 | Windows Server | [Azure 备份代理](backup-configure-vault.md)、<br>[System Center DPM](backup-azure-dpm-introduction.md) |
+| 文件和文件夹 | Windows 客户端 | [Azure 备份代理](backup-configure-vault.md)、<br>[System Center DPM](backup-azure-dpm-introduction.md) |
 | Hyper-V 虚拟机 (Windows) | Windows Server | System Center DPM |
 | Hyper-V 虚拟机 (Linux) | Windows Server | System Center DPM |
-| Microsoft SQL Server | Windows Server | System Center DPM |
-| Microsoft SharePoint | Windows Server | System Center DPM |
+| Microsoft SQL Server | Windows Server | [System Center DPM](backup-azure-backup-sql.md) |
+| Microsoft SharePoint | Windows Server | [System Center DPM](backup-azure-backup-sharepoint.md) |
 | Microsoft Exchange | Windows Server | System Center DPM |
-| Azure IaaS VMs (Windows)| - | Azure 备份 | 
-| Azure IaaS VMs (Linux) | - | Azure 备份 |
+| Azure IaaS VM (Windows)| - | [Azure 备份（VM 扩展）](backup-azure-vms-introduction.md)|
+| Azure IaaS VM (Linux) | - | [Azure 备份（VM 扩展）](backup-azure-vms-introduction.md)|
+
 
 ## 后续步骤
 - [尝试 Azure 备份](/documentation/articles/backup-try-azure-backup-in-10-mins)
 - [此处](/documentation/articles/backup-azure-backup-faq)列出了有关 Azure 备份服务的常见问题。
 - 访问 [Azure 备份论坛](http://go.microsoft.com/fwlink/p/?LinkId=290933)。
 
-<!---HONumber=76-->
+<!---HONumber=82-->

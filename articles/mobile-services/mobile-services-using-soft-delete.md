@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="06/18/2015" 
+	ms.date="09/28/2015" 
 	wacn.date=""/>
 
 # 使用移动服务中的软删除
@@ -156,4 +156,4 @@
 [移动服务的脱机数据同步]: mobile-services-windows-store-dotnet-get-started-offline-data
 [管理门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=74-->
+<!---HONumber=82-->

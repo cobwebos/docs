@@ -3,8 +3,8 @@
 	description="了解如何在 Azure 中使用 Service Bus 主题和订阅。相关代码示例是针对 Ruby 应用程序编写的。"
 	services="service-bus"
 	documentationCenter="ruby"
-	authors="tfitzmac"
-	manager="wpickett"
+	authors="sethmanheim"
+	manager="timlt"
 	editor=""/>
 
 <tags
@@ -16,8 +16,9 @@
 
 
 
-
 # 如何使用 Service Bus 主题/订阅
+
+[AZURE.INCLUDE [service-bus-selector-topics](../includes/service-bus-selector-topics.md)]
 
 本指南将演示如何从 Ruby 应用程序使用 Service Bus 主题和订阅。涉及的任务包括**创建主题和订阅、创建订阅筛选器、将消息发送到**主题、**从订阅接收消息**以及**删除主题和订阅**。有关主题和订阅的详细信息，请参阅[后续步骤](#next-steps)部分。
 
@@ -55,7 +56,8 @@
 
        ![Copy key](./media/service-bus-ruby-how-to-use-topics-subscriptions/defaultkey.png)
 
-> [AZURE.NOTE]登录到 [Azure 管理门户](http://manage.windowsazure.cn/)并导航到服务总线命名空间的连接信息后，也可以看到此密钥。
+> [AZURE.NOTE]
+> 登录到 [Azure 管理门户](http://manage.windowsazure.cn/)并导航到服务总线命名空间的连接信息后，也可以看到此密钥。
 
 ## 创建 Ruby 应用程序
 
@@ -160,7 +162,7 @@ Azure 模块将读取环境变量 **AZURE\_SERVICEBUS\_NAMESPACE** 和 **AZURE\_
 
 ## 如何将消息发送到主题
 
-若要将消息发送到服务总线主题，你的应用程序必须使用 **Azure::ServiceBusService** 对象的** send\_topic\_message()** 方法。发送到服务总线主题的消息是 **Azure::ServiceBus::BrokeredMessage** 对象。**Azure::ServiceBus::BrokeredMessage** 对象具有一组标准属性（如 **label** 和 **time\_to\_live**）、一个用于保存自定义应用程序特定属性的字典以及一段字符串数据正文。应用程序可以通过将字符串值传递给 **send\_topic\_message()** 方法来设置消息正文，并且任何必需的标准属性将用默认值来填充。
+若要将消息发送到服务总线主题，你的应用程序必须使用 **Azure::ServiceBusService** 对象的 **send\_topic\_message()** 方法。发送到服务总线主题的消息是 **Azure::ServiceBus::BrokeredMessage** 对象。**Azure::ServiceBus::BrokeredMessage** 对象具有一组标准属性（如 **label** 和 **time\_to\_live**）、一个用于保存自定义应用程序特定属性的字典以及一段字符串数据正文。应用程序可以通过将字符串值传递给 **send\_topic\_message()** 方法来设置消息正文，并且任何必需的标准属性将用默认值来填充。
 
 下面的示例演示如何向“test-topic”发送五条测试消息。请注意，每条消息的 **message\_number** 自定义属性值因循环迭代而异（这将确定哪些订阅接收它）：
 
@@ -214,4 +216,4 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 -   [SqlFilter](http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx) 的 API 参考。
 -	访问 GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 
-<!---HONumber=74-->
+<!---HONumber=82-->

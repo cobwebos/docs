@@ -7,9 +7,9 @@
 	manager="wpickett" 
 	editor="jimbe"/>
 
-<tags 
-	ms.service="app-service-web" 
-	ms.date="08/10/2015" 
+<tags
+	ms.service="app-service-web"
+	ms.date="09/22/2015"
 	wacn.date=""/>
 
 # 如何通过 WebJobs SDK 使用 Azure Service Bus
@@ -36,7 +36,6 @@
 -   [如何使用 Service Bus 主题](#topics)
 -   [存储队列文章涵盖的相关主题](#queues)
 -   [后续步骤](#nextsteps)
-
 ## <a id="prerequisites"></a>先决条件
 
 你必须先安装 [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/) NuGet 包和其他 WebJobs SDK 包，然后才能使用服务总线。
@@ -46,7 +45,7 @@
 		<connectionStrings>
 		    <add name="AzureWebJobsDashboard" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/>
 		    <add name="AzureWebJobsStorage" connectionString="DefaultEndpointsProtocol=https;AccountName=[accountname];AccountKey=[accesskey]"/>
-		    <add name="AzureWebJobsServiceBus" connectionString="Endpoint=sb://[yourServiceNamespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[yourKey]"/>
+		    <add name="AzureWebJobsServiceBus" connectionString="Endpoint=sb://[yourServiceNamespace].servicebus.chinacloudapi.cn/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[yourKey]"/>
 		</connectionStrings>
 
 有关在 App.config 文件中包含服务总线连接字符串设置的示例项目，请参阅[服务总线示例](https://github.com/Azure/azure-webjobs-sdk-samples/tree/master/BasicSamples/ServiceBus)。
@@ -73,7 +72,7 @@ Service Bus 会自行执行有害队列处理，因此不需要由 WebJobs SDK �
 		    logger.WriteLine(message);
 		}
 
-**注意：**如果你在未使用 WebJobs SDK 的应用程序中创建队列消息，请务必将 [BrokeredMessage.ContentType](http://msdn.microsoft.com/library/microsoft.servicebus.messaging.brokeredmessage.contenttype.aspx) 设置为 “text/plain”。
+**注意：**如果你在未使用 WebJobs SDK 的应用程序中创建队列消息，请务必将 [BrokeredMessage.ContentType](http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.brokeredmessage.contenttype.aspx) 设置为 “text/plain”。
 
 ### POCO 队列消息
 
@@ -85,7 +84,7 @@ SDK 会自动反序列化包含 POCO[（普通旧 CLR 对象](http://en.wikipedi
 		    logger.WriteLine("Queue message refers to blob: " + blobInfo.BlobName);
 		}
 
-有关展示如何使用 POCO 属性在同一函数中处理 blob 和表的代码示例，请参阅[这篇文章的存储队列版本](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#pocoblobs)。
+有关展示如何使用 POCO 属性在同一函数中处理 blob 和表的代码示例，请参阅[这篇文章的存储队列版本](/documentation/articles/websites-dotnet-webjobs-sdk-storage-queues-how-to#pocoblobs)。
 
 如果创建队列消息的代码不使用 WebJobs SDK，请使用类似于以下示例的代码：
 
@@ -168,7 +167,7 @@ SDK 会自动反序列化包含 POCO[（普通旧 CLR 对象](http://en.wikipedi
 
 ## <a id="nextsteps"></a>后续步骤
 
-本指南中包含的代码示例展示了如何处理常见方案来结合使用 Azure 服务总线。有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 推荐资源](http://go.microsoft.com/fwlink/?linkid=390226)。
+本指南中包含的代码示例展示了如何处理常见方案来结合使用 Azure 服务总线。有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 推荐资源](/documentation/articles/websites-webjobs-resources/)。
  
 
-<!---HONumber=71-->
+<!---HONumber=82-->

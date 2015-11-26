@@ -4,12 +4,12 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn" />
-<tags 
-   ms.service="virtual-network"
-   ms.date="07/20/2015"
-   wacn.date="" />
+<tags
+	ms.service="virtual-network"
+	ms.date="10/19/2015"
+	wacn.date=""/>
 
 # 虚拟网络常见问题解答
 
@@ -19,4 +19,4 @@
 
 有关最新的虚拟网络 VPN 常见问题，请参阅 [VPN 网关常见问题](/documentation/articles/vpn-gateway-vpn-faq)。
 
-<!---HONumber=67-->
+<!---HONumber=82-->

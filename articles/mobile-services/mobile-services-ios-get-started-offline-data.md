@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="07/01/2015"
+	ms.date="10/01/2015"
 	wacn.date=""/>
 
 # 移动服务中的脱机数据同步入门
@@ -156,7 +156,9 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
     | ID（必需） | String | 远程存储中的主键（必需） |
     | complete | Boolean | todo 项字段 |
     | 文本 | String | todo 项字段 |
-    | ms\_createdAt | 日期 | （可选）映射到 \_\_createdAt 系统属性 | | ms\_updatedAt | 日期 |（可选）映射到 \_\_updatedAt 系统属性 | | ms\_version | 字符串 |（可选）用于检测冲突，映射到 \_\_version |
+    | ms\_createdAt | 日期 | （可选）映射到 \_\_createdAt 系统属性 | 
+    | ms\_updatedAt | 日期 |（可选）映射到 \_\_updatedAt 系统属性 | 
+    | ms\_version | 字符串 |（可选）用于检测冲突，映射到 \_\_version |
 
 
 
@@ -186,7 +188,7 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 
 在本部分中，你将在模拟器中关闭 Wi-Fi 以创建脱机方案。在添加数据项时，数据项将保存在本地核心数据存储中，而不同步到移动服务。
 
-1. 在 iOS 模拟器中关闭 Wi-Fi。这会模拟脱机方案。
+1. 在 Mac 上关闭 Internet 连接。只是在 iOS 模拟器中关闭 WiFi 可能不起作用，因为模拟器仍可以使用 Mac 主机的 Internet 连接，因此只是关闭了计算机本身的 Internet。这会模拟脱机方案。
 
 2. 添加一些 todo 项或完成某些项。退出模拟器（或强行关闭应用程序），然后重新启动。验证你的更改是否已保存。请注意，数据项仍会显示，因为它们都保留在本地核心数据存储中。
 
@@ -221,7 +223,7 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 
 * [云覆盖：Azure 移动服务中的脱机同步]
 
-* [Azure Friday：Azure 移动服务中支持脱机的应用程序]（注意：演示适用于 Windows，但功能讨论适用于所有平台）
+* [Aazure Friday：Azure 移动服务中支持脱机的应用]（注意：演示针对 Windows，但功能讨论适用于所有平台）
 
 <!-- URLs. -->
 
@@ -257,13 +259,14 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 
 
 [Get started with Mobile Services]: /documentation/articles/mobile-services-ios-get-started
-[Get started with data]: /documentation/articles/mobile-services-ios-get-started-data
 [使用移动服务脱机支持处理冲突]: /documentation/articles/mobile-services-ios-handling-conflicts-offline-data
 [Soft Delete]: /documentation/articles/mobile-services-using-soft-delete
+[]: /documentation/articles/mobile-services-using-soft-delete
 
-
+[云覆盖：Azure 移动服务中的脱机同步]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Aazure Friday：Azure 移动服务中支持脱机的应用]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
 [移动服务快速入门教程]: /documentation/articles/mobile-services-ios-get-started
  
 
-<!---HONumber=71-->
+<!---HONumber=82-->

@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="07/23/2015"
+   ms.date="10/08/2015"
    wacn.date=""/>
 
 # 在发生用户错误后恢复 Azure SQL 数据库
@@ -27,9 +27,11 @@ Azure SQL 数据库始终会还原到新数据库。这些还原功能适用于�
 
 基本、标准和高级数据库的保留期分别为 7 天、14 天和 35 天。若要了解有关数据库保留期的详细信息，请阅读[业务连续性概述](/documentation/articles/sql-database-business-continuity)。
 
+> [AZURE.NOTE]还原数据库会创建一个新的数据库。必须确保要还原到的服务器具有足够的 DTU，可以容纳新数据库的容量。你可以通过[与支持人员联系](http://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/)来请求增加此配额。
+
 ###Azure 门户
 1. 登录到 [Azure 门户](https://manage.windowsazure.cn)
-2. 在屏幕左侧选择“浏览”，然后选择“SQL 数据库”
+2. 在屏幕左侧选择“浏览”，然后选择“SQL 数据库”。
 3. 导航到你的数据库并选择它。
 4. 在数据库边栏选项卡的顶部，选择“还原”。
 5. 指定数据库名称和时间点，然后单击“创建”。
@@ -39,7 +41,9 @@ Azure SQL 数据库始终会还原到新数据库。这些还原功能适用于�
 ###PowerShell
 使用 PowerShell 以编程方式执行数据库还原。
 
-若要使用时间点还原来还原数据库，请使用 [Start-AzureSqlDatabaseRestore](https://msdn.microsoft.com/zh-cn/library/dn720218.aspx?f=255&MSPPError=-2147217396) cmdlet。<!-- For a detailed walk through, please see our [how-to video](http://azure.microsoft.com/documentation/videos/restore-a-sql-database-using-point-in-time-restore-with-microsoft-azure-powershell/).-->
+> [AZURE.IMPORTANT]本文包含最高为 Azure PowerShell 版本 1.0 *但不包括* 1.0 及更高版本的命令。可以使用 **Get-Module azure | format-table version** 命令查看 Azure PowerShell 的版本。
+
+若要使用时间点还原来还原数据库，请使用 [Start-AzureSqlDatabaseRestore](https://msdn.microsoft.com/zh-cn/library/dn720218.aspx?f=255&MSPPError=-2147217396) cmdlet。
 
 		$Database = Get-AzureSqlDatabase -ServerName "YourServerName" –DatabaseName “YourDatabaseName”
 		$RestoreRequest = Start-AzureSqlDatabaseRestore -SourceDatabase $Database –TargetDatabaseName “NewDatabaseName” –PointInTime “2015-01-01 06:00:00”
@@ -62,6 +66,8 @@ Azure SQL 数据库始终会还原到新数据库。这些还原功能适用于�
 在删除了某个数据库的情况下，Azure SQL 数据库允许你将删除的数据库还原到删除时的时间点。Azure SQL 数据库将会根据数据库的保留期存储已删除的数据库备份。
 
 已删除的数据库的保留期由该数据库尚未删除时所在的服务层或者数据库存在的天数确定（以两者中较小的为准）。若要了解有关数据库保留期的详细信息，请阅读[业务连续性概述](/documentation/articles/sql-database-business-continuity)。
+
+> [AZURE.NOTE]还原数据库会创建一个新的数据库。必须确保要还原到的服务器具有足够的 DTU，可以容纳新数据库的容量。你可以通过[与支持人员联系](http://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/)来请求增加此配额。
 
 ###Azure 门户
 1. 登录到 [Azure 门户](https://manage.windowsazure.cn)
@@ -105,4 +111,4 @@ Azure SQL 数据库始终会还原到新数据库。这些还原功能适用于�
 完成还原后，你可以根据[确认已恢复的数据库](/documentation/articles/sql-database-recovered-finalize)指南，来配置要使用的已恢复数据库。
  
 
-<!---HONumber=69-->
+<!---HONumber=82-->

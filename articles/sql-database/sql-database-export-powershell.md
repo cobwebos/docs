@@ -9,21 +9,20 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="09/05/2015"
+	ms.date="10/13/2015"
 	ms.topic="article"
 	wacn.date=""/>
 
 
-# 使用 PowerShell 创建和导出 SQL 数据库的 BACPAC
+# 使用 PowerShell 创建和导出 Azure SQL 数据库的 BACPAC
 
 **单一数据库**
 
 > [AZURE.SELECTOR]
-- [Azure 预览门户](/documentation/articles/sql-database-export)
 - [PowerShell](/documentation/articles/sql-database-export-powershell)
 
 
-本文介绍如何通过 PowerShell 手动导出 SQL 数据库的 BACPAC。
+本文说明如何使用 PowerShell 导出 Azure SQL 数据库的 BACPAC。
 
 BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息，请参阅[数据层应用程序](https://msdn.microsoft.com/library/ee210546.aspx)中的备份包 (.bacpac)。
 
@@ -141,4 +140,4 @@ BACPAC 导出到 Azure 存储 blob 容器中，你可以在操作成功完成后
 - [灾难恢复练习](/documentation/articles/sql-database-disaster-recovery-drills)
 - [SQL 数据库文档](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=74-->
+<!---HONumber=82-->

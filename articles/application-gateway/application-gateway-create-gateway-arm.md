@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="使用 Azure 资源管理器创建、启动或删除应用程序网关 | Windows Azure"
+   pageTitle="使用 Azure 资源管理器创建、启动或删除应用程序网关 | Microsoft Azure"
    description="本页提供有关使用 Azure 资源管理器创建、配置、启动和删除 Azure 应用程序网关的说明"
    documentationCenter="na"
    services="application-gateway"
@@ -14,11 +14,24 @@
 
 # 使用 Azure 资源管理器创建、启动或删除应用程序网关
 
-> [AZURE.SELECTOR]
-- [Azure classic steps](/documentation/articles/application-gateway-create-gateway)
-- [Resource Manager Powershell steps](/documentation/articles/application-gateway-create-gateway-arm)
+应用程序网关是第 7 层负载平衡器。它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。应用程序网关具有以下应用程序传递功能：HTTP 负载平衡、基于 Cookie 的会话相关性和 SSL 卸载。
 
-在此版本中，你可以使用 PowerShell 或 REST API 调用创建应用程序网关。即将推出的版本将会提供门户和 CLI 支持。本文将指导你完成创建、配置、启动和删除应用程序网关的步骤。
+
+> [AZURE.SELECTOR]
+- [Azure 经典模式步骤](/documentation/articles/application-gateway-create-gateway)
+- [资源管理器模式 Powershell 步骤](/documentation/articles/application-gateway-create-gateway-arm)
+- [Azure 资源管理器模板步骤](/documentation/articles/application-gateway-create-gateway-arm-template)
+
+
+<BR>
+
+
+本文将指导你完成创建、配置、启动和删除应用程序网关的步骤。
+
+
+>[AZURE.IMPORTANT] 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：资源管理器部署模型和经典部署模型。在使用任何 Azure 资源之前，请确保你了解[部署模型和工具](azure-classic-rm.md)。可以通过单击本文顶部的选项卡来查看不同工具的文档。本文档将说明使用 Azure 资源管理器创建应用程序网关的方式。若要使用经典版本，请转到[使用 PowerShell 创建应用程序网关经典部署](application-gateway-create-gateway.md)。
+
+
 
 ## 开始之前
 
@@ -161,7 +174,7 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 
 配置应用程序网关的实例大小
 
->[AZURE.NOTE]*InstanceCount* 的默认值为 2，最大值为 10。*GatewaySize* 的默认值为 Medium。你可以在 Standard\_Small、Standard\_Medium 和 Standard\_Large 之间进行选择。
+>[AZURE.NOTE] *InstanceCount* 的默认值为 2，最大值为 10。*GatewaySize* 的默认值为 Medium。你可以在 Standard\_Small、Standard\_Medium 和 Standard\_Large 之间进行选择。
 
 ## 使用 New-AzureApplicationGateway 创建应用程序网关
 
@@ -375,7 +388,7 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 
 	
 
->[AZURE.NOTE]可以使用“-force”开关来抑制删除确认消息
+>[AZURE.NOTE] 可以使用“-force”开关来抑制删除确认消息
 >
 
 若要验证是否已删除服务，可以使用 `Get-AzureApplicationGateway` cmdlet。此步骤不是必需的。
@@ -397,4 +410,4 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 <!--- [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)-->
 - [Azure 流量管理器](/documentation/services/traffic-manager/)
 
-<!---HONumber=69-->
+<!---HONumber=82-->

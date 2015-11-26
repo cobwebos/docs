@@ -4,11 +4,11 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="adinah"
-   editor="tysonn"/>
+   manager="carolz"
+   editor=""/>
 <tags
    ms.service="expressroute"
-   ms.date="07/28/2015"
+   ms.date="09/02/2015"
    wacn.date=""/>
 
 # ExpressRoute 常见问题
@@ -44,20 +44,18 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务。我们即将宣布�
 ### ExpressRoute 是否提供服务级别协议 (SLA)？
 有关详细信息，请参阅 [ExpressRoute SLA 页](/support/legal/sla/)。
 
-## 支持的 Azure 服务
+## 支持的服务
 大多数 Azure 服务都通过 ExpressRoute 提供支持。
 
-与虚拟机和虚拟网络中部署的云服务的连接通过专用对等路径提供支持。
+- 与虚拟机和虚拟网络中部署的云服务的连接通过专用对等路径提供支持。
+- 可通过公共对等路径访问 Azure 网站。
+- 可通过公共对等路径访问所有其他服务。下面列出了例外情况。
 
-可通过公共对等路径访问 Azure 网站。
+	**不支持以下服务：**
 
-可通过公共对等路径访问所有其他服务。下面列出了例外情况 -
-
-**不支持以下项目：**
-
-- CDN
-- Visual Studio Online Load Testing
-- 多重身份验证
+	- CDN
+	- Visual Studio Online Load Testing
+	- 多重身份验证
 
 ## 数据和连接
 
@@ -87,7 +85,7 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务。我们即将宣布�
 如果其中一个交叉连接出现故障，你不会失去连接。冗余连接可用于支持网络负载。另外，你还可以在不同对等位置创建多条线路以获得故障恢复能力。
 
 ### 我是否需要配置这两种链路才能使服务正常工作？
-如果你正在通过 NSP 进行连接，NSP 将负责为你配置冗余链接。如果你正在通过 EXP 进行连接，则必须配置这两条链路。如果没有为线路配置冗余，我们的 SLA 将无效。
+如果你正在通过 NSP 进行连接，NSP 将负责为你配置冗余链接。如果你所在的位置提供 EXP，则你必须为 EXP 云交换平台配置两条 LAN 链路。如果你从专用数据中心通过单条 WAN 链路连接到 EXP，则需要在 EXP 中终止你自己的路由器上的 WAN 链路，然后为 EXP 云交换平台配置两条 LAN 链路。
 
 ### 能否使用 ExpressRoute 将我的一个 VLAN 扩展到 Azure？
 否。我们不支持将第 2 层连接扩展到 Azure。
@@ -126,7 +124,7 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务。我们即将宣布�
 不能。连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，从路由角度看不是相互隔离的。如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
 
 ### 能否将一个虚拟网络连接到多条 ExpressRoute 线路？
-是的。可以将一个虚拟网络最多链接到 4 条 ExpressRoute 线路。所有 ExpressRoute 线路必须位于同一个大洲。可以通过不同区域的不同服务提供商订购线路。
+是的。可以将一个虚拟网络最多链接到 4 条 ExpressRoute 线路。必须通过 4 个不同的位置订购这些线路。
 
 ### 能否从连接到 ExpressRoute 线路的虚拟网络访问 Internet？
 是的。如果你尚未通过 BGP 会话公布默认路由 (0.0.0.0/0) 或 Internet 路由前缀，你将能够从连接到 ExpressRoute 线路的虚拟网络连接到 Internet。
@@ -156,6 +154,9 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务。我们即将宣布�
 
 ### 如果超过 BGP 限制，会发生什么情况？
 BGP 会话将被删除。当前缀计数低于限制后，将重置这些会话。
+
+### ExpressRoute BGP 保持时间是多少？ 是否可以调整它?
+保持时间为 180。Keep-Alive（保持活动）消息每隔 60 秒发送一次。这是 Microsoft 端的固定设置，不能更改。
 
 ### 将默认路由 (0.0.0.0/0) 播发到虚拟网络后，我无法激活 Azure VM 上运行的 Windows。我如何解决此问题？
 以下步骤可帮助 Azure 识别激活请求：
@@ -248,7 +249,7 @@ ExpressRoute 高级版包括下面列出的功能集合。
 
 ### 通过 ExpressRoute 连接可以访问哪些 Office 365 服务？
 
-**支持以下 Office 365 服务**
+**支持以下 Office 365 服务：**
 
 - Exchange Online 和 Exchange Online Protection
 - SharePoint Online
@@ -260,7 +261,7 @@ ExpressRoute 高级版包括下面列出的功能集合。
 - Delve
 - Project Online
 
-**不支持以下 Office 365 服务**
+**不支持以下 Office 365 服务：**
 
 - Yammer
 - Office 365 ProPlus 客户端下载
@@ -282,4 +283,4 @@ ExpressRoute 高级版包括下面列出的功能集合。
 是的。即使为你的网络配置了 ExpressRoute，也可以通过 Internet 访问 Office 365 服务终结点。如果你所在的位置已配置为通过 ExpressRoute 连接到 Office 365 服务，则你将通过 ExpressRoute 进行连接。
  
 
-<!---HONumber=69-->
+<!---HONumber=82-->

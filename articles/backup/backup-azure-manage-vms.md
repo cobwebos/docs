@@ -1,22 +1,24 @@
 
 <properties
-	pageTitle="Azure 备份 - 管理虚拟机"
+	pageTitle="Azure 备份 - 管理虚拟机 | Microsoft Azure"
 	description="了解如何管理 Azure 虚拟机。"
 	services="backup"
 	documentationCenter=""
-	authors="aashishr"
+	authors="trinadhk"
 	manager="shreeshd"
 	editor=""/>
 
 <tags
 	ms.service="backup" 
-	ms.date="09/09/2015"
+	ms.date="10/01/2015"
 	wacn.date=""/>
 
-# 管理虚拟机
 
+# 管理和监视 Azure 虚拟机的备份
 
 ## 管理受保护的虚拟机
+
+若要管理受保护的虚拟机，请执行以下操作：
 
 1. 若要查看和管理某个虚拟机的备份设置，请单击“受保护的项”选项卡。
 
@@ -53,7 +55,7 @@
 
     ![创建备份作业](./media/backup-azure-manage-vms/creating-job.png)
 
-    >[AZURE.NOTE]若要查看与虚拟机关联的策略，请向下钻取到“受保护的项”页中的虚拟机，然后转到“备份策略”选项卡。
+    >[AZURE.NOTE] 若要查看与虚拟机关联的策略，请向下钻取到“受保护的项”页中的虚拟机，然后转到“备份策略”选项卡。
 
 3. 创建作业后，可以单击 Toast 栏中的“查看作业”按钮，以在“作业”页中查看相应的作业。
 
@@ -106,7 +108,7 @@
 
   ![重新保护 VM](./media/backup-azure-manage-vms/reprotected-status.png)
 
->[AZURE.NOTE]重新保护虚拟机时，你可以选择一个不同的策略，而不是最初用于保护虚拟机的策略。
+>[AZURE.NOTE] 重新保护虚拟机时，你可以选择一个不同的策略，而不是最初用于保护虚拟机的策略。
 
 ## 取消注册虚拟机
 
@@ -150,14 +152,12 @@
 
     完成该作业后，与虚拟机对应的条目将从“受保护的项”页中删除。
 
-
-###仪表板
-
+## 仪表板
 在“仪表板”页中，可以查看有关 Azure 虚拟机、其存储和过去 24 小时内关联作业的信息。你可以查看备份状态和任何关联的备份错误。
 
 ![仪表板](./media/backup-azure-manage-vms/dashboard-protectedvms.png)
 
->[AZURE.NOTE]仪表板中的值每 24 小时刷新一次。
+>[AZURE.NOTE] 仪表板中的值每 24 小时刷新一次。
 
 ## 审核操作
 可以通过 Azure 备份来查看客户触发的备份操作的“操作日志”，因此可以轻松地确切了解针对备份保管库执行了哪些管理操作。通过操作日志，可以针对备份操作进行很好的事后总结和审核。
@@ -253,4 +253,4 @@ PS C:\> Add-AlertRule -Operator GreaterThanOrEqual -Threshold 1 -ResourceId '/su
 
 - [还原 Azure VM](backup-azure-restore-vms)
 
-<!---HONumber=76-->
+<!---HONumber=82-->

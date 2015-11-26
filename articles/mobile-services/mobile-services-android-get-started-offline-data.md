@@ -1,5 +1,5 @@
 <properties
-	pageTitle="将脱机数据同步添加到 Android 移动服务应用 | 移动开发人员中心"
+	pageTitle="将脱机数据同步添加到 Android 移动服务应用 | Microsoft Azure"
 	description="了解如何使用 Azure 移动服务在 Android 应用程序中缓存和同步脱机数据"
 	documentationCenter="android"
 	authors="RickSaling"
@@ -7,9 +7,9 @@
 	editor=""
 	services="mobile-services"/>
 
-<tags ms.service="mobile-services"
-
-	ms.date="06/30/2015"
+<tags
+	ms.service="mobile-services"
+	ms.date="10/01/2015"
 	wacn.date=""/>
 
 # 将脱机数据同步添加到 Android 移动服务应用
@@ -208,7 +208,6 @@ One thing which is important to point out: if there are pending changes in the l
 
 
 [Get started with Mobile Services]: /documentation/articles/mobile-services-android-get-started
-[Get started with data]: /documentation/articles/mobile-services-android-get-started-data
 [Handling Conflicts with Offline Support for Mobile Services]: /documentation/articles/mobile-services-android-handling-conflicts-offline-data
 [Soft Delete]: /documentation/articles/mobile-services-using-soft-delete
 
@@ -217,4 +216,4 @@ One thing which is important to point out: if there are pending changes in the l
 
 [移动服务快速入门教程]: /documentation/articles/mobile-services-android-get-started
 
-<!---HONumber=71-->
+<!---HONumber=82-->

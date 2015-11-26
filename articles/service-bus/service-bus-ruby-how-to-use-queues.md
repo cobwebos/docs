@@ -1,10 +1,10 @@
 <properties
-	pageTitle="如何使用服务总线队列 (Ruby) | Microsoft Azure"
+	pageTitle="如何通过 Ruby 使用服务总线队列 | Microsoft Azure"
 	description="了解如何在 Azure 中使用 Service Bus 队列。用 Ruby 编写的代码示例。"
 	services="service-bus"
 	documentationCenter="ruby"
-	authors="tfitzmac"
-	manager="wpickett"
+	authors="sethmanheim"
+	manager="timlt"
 	editor=""/>
 
 <tags
@@ -16,6 +16,8 @@
 
 
 # 如何使用 Service Bus 队列
+
+[AZURE.INCLUDE [service-bus-selector-queues](../includes/service-bus-selector-queues.md)]
 
 本指南演示如何使用 Service Bus 队列。相关示例通过 Ruby 编写并使用 Azure gem。涉及的任务包括**创建队列、发送和接收消息**以及**删除队列**。有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
 
@@ -51,9 +53,10 @@ Service Bus 队列是一种可用于各种应用场景的通用技术：
 
 你运行的用于创建 Azure 服务总线命名空间的 PowerShell cmdlet 将显示可用于管理命名空间的密钥。复制 **DefaultKey** 值。你将本教程稍后的代码中使用此值。
 
-   ![Copy key](./media/service-bus-ruby-how-to-use-queues/defaultkey.png)
+       ![Copy key](./media/service-bus-ruby-how-to-use-queues/defaultkey.png)
 
-> [AZURE.NOTE]登录到 [Azure 管理门户](http://manage.windowsazure.cn/)并导航到服务总线命名空间的连接信息后，也可以看到此密钥。
+> [AZURE.NOTE]
+> 登录到 [Azure 管理门户](http://manage.windowsazure.cn/)并导航到服务总线命名空间的连接信息后，也可以看到此密钥。
 
 ## 创建 Ruby 应用程序
 
@@ -145,6 +148,6 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 -   [队列、主题和订阅](/documentation/articles/service-bus-queues-topics-subscriptions)的概述
 -   访问 GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 
-有关本文中讨论的 Azure 服务总线队列与[如何使用 Azure 队列服务](/develop/ruby/how-to-guides/queue-service/)一文中讨论的 Azure 队列的比较，请参阅 [Azure 队列和 Azure 服务总线队列 - 比较与对照](/documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted)
+有关本文中讨论的 Azure 服务总线队列与[如何使用 Azure 队列服务](/develop/ruby/)一文中讨论的 Azure 队列的比较，请参阅 [Azure 队列和 Azure 服务总线队列 - 比较与对照](/documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted)
 
-<!---HONumber=74-->
+<!---HONumber=82-->

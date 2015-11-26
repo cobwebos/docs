@@ -1,19 +1,18 @@
 <properties
-   
-   pageTitle="了解 Hive 是什么以及如何使用 HiveQL | Azure"
-   description="了解 Apache Hive 以及如何将它与 HDInsight 中的 Hadoop 配合使用。选择如何运行 Hive 作业，并使用 HiveQL 分析一个示例 Apache log4j 文件。"
-   keywords="hiveql,什么是 hive"
-   services="hdinsight"
-   documentationCenter=""
-   authors="Blackmist"
-   manager="paulettm"
-   editor="cgronlun"
-   tags="azure-portal"/>
+	pageTitle="了解什么是 Hive 以及如何使用 HiveQL | Microsoft Azure"
+	description="了解 Apache Hive 以及如何将它与 HDInsight 中的 Hadoop 配合使用。选择如何运行 Hive 作业，以及如何使用 HiveQL 来分析示例 Apache log4j 文件。"
+	keywords="hiveql,what is hive"
+	services="hdinsight"
+	documentationCenter=""
+	authors="Blackmist"
+	manager="paulettm"
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
-   ms.service="hdinsight"
-   ms.date="08/28/2015"
-   wacn.date=""/>
+	ms.service="hdinsight"
+	ms.date="10/05/2015"
+	wacn.date=""/>
 
 # 将 Hive 和 HiveQL 与 HDInsight 中的 Hadoop 配合使用以分析示例 Apache log4j 文件
 
@@ -31,9 +30,9 @@ Hive 知道如何处理结构化和半结构化数据，例如其中的字段以
 
 还可以通过**用户定义函数的 (UDF)** 扩展 Hive。UDF 允许你实现 HiveQL 中不容易建模的功能或逻辑。有关将 UDF 与 Hive 配合使用的示例，请参阅：
 
-* [在 HDInsight 中将 Python 与 Hive 和 Pig 配合使用](hdinsight-python)
+* [在 HDInsight 中将 Python 与 Hive 和 Pig 配合使用](/documentation/articles/hdinsight-python)
 
-* [在 HDInsight 中将 C# 与 Hive 和 Pig 配合使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp)
+* [在 HDInsight 中将 C# 与 Hive 和 Pig 配合使用](/documentation/articles/hdinsight-hadoop-hive-pig-udf-dotnet-csharp)
 
 * [如何将自定义 Hive UDF 添加到 HDInsight](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
@@ -45,7 +44,7 @@ Hive 知道如何处理结构化和半结构化数据，例如其中的字段以
 
 在前面的示例中，日志级别为 ERROR。
 
-> [AZURE.NOTE]你也可以使用 [Apache Log4j](http://zh.wikipedia.org/wiki/Log4j) 日志记录工具生成 log4j 文件，然后将该文件上载到 Blob 容器。请参阅[将数据上载到 HDInsight](hdinsight-upload-data) 以获取相关说明。有关如何将 Azure Blob 存储与 HDInsight 配合使用的详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](hdinsight-use-blob-storage)。
+> [AZURE.NOTE]你也可以使用 [Apache Log4j](http://en.wikipedia.org/wiki/Log4j) 日志记录工具生成 log4j 文件，然后将该文件上载到 Blob 容器。请参阅[将数据上载到 HDInsight](/documentation/articles/hdinsight-upload-data) 以获取相关说明。有关如何将 Azure Blob 存储与 HDInsight 配合使用的详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](/documentation/articles/hdinsight-use-blob-storage)。
 
 示例数据存储在 HDInsight 用作默认文件系统的 Azure Blob 存储中。HDInsight 可以使用 **wasb** 前缀来访问存储在 Blob 中的文件。例如，若要访问 sample.log 文件，可使用以下语法：
 
@@ -75,7 +74,7 @@ Hive 知道如何处理结构化和半结构化数据，例如其中的字段以
 * **INPUT\_\_FILE\_\_NAME LIKE '%.log'** - 告诉 Hive，我们只应返回以 .log 结尾的文件中的数据。此项将搜索限定于包含数据的 sample.log 文件，使搜索不会返回与所定义架构不符的其他示例数据文件中的数据。
 
 > [AZURE.NOTE]当你预期以外部源更新基础数据（例如自动化数据上载过程），或以其他 MapReduce 操作更新基础数据，但希望 Hive 查询始终使用最新数据时，必须使用外部表。
-	>
+>
 > 删除外部表**不会**删除数据，只会删除表定义。
 
 创建外部表后，使用以下语句创建**内部**表。
@@ -95,13 +94,15 @@ Hive 知道如何处理结构化和半结构化数据，例如其中的字段以
 
 ##<a id="usetez"></a>使用 Apache Tez 提高性能
 
-[Apache Tez](http://tez.apache.org) 是可让数据密集型应用程序（例如 Hive）大规模高效运行的框架。在最新版的 HDInsight 中，Hive 支持在 Tez 上运行。
+[Apache Tez](http://tez.apache.org) 是可让数据密集型应用程序（例如 Hive）大规模高效运行的框架。在最新版的 HDInsight 中，Hive 支持在 Tez 上运行。默认情况下，已经为基于 Linux 的 HDInsight 群集启用了 Tez。
 
-对于基于 Windows 的 HDInsight 群集来说，Tez 目前默认处于关闭状态，必须将其启用。若要充分利用 Tez，你必须设置 Hive 查询的以下值：
+> [AZURE.NOTE]对于基于 Windows 的 HDInsight 群集来说，Tez 目前默认处于关闭状态，必须将其启用。若要充分利用 Tez，你必须设置 Hive 查询的以下值：
+>
+> ```set hive.execution.engine=tez;```
+>
+>你可为每个查询提交此值，只需将它放置在查询的开头即可。你也可以在创建群集时设置配置值，而在群集上将此值默认为打开。可以在[预配 HDInsight 群集](/documentation/articles/hdinsight-provision-clusters)中找到详细信息。
 
-	set hive.execution.engine=tez;
-
-你可为每个查询提交此值，只需将它放置在查询的开头即可。你也可以在创建群集时设置配置值，而在群集上将此值默认为打开。可以在[预配 HDInsight 群集](hdinsight-provision-clusters)中找到详细信息。
+[Tez 上的 Hive 设计文档](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez)包含实现选项和优化配置的详细信息。
 
 
 ##<a id="run"></a>选择如何运行 HiveQL 作业
@@ -110,11 +111,11 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。使用下表来确定�
 
 | **使用此方法**，如果你想要... | ...**交互式** shell | ...**批处理** | ...使用此**群集操作系统** | ...从此**客户端操作系统** |
 |:--------------------------------------------------------------------------------|:---------------------------:|:-----------------------:|:------------------------------------------|:-----------------------------------------|
-| [Curl](hdinsight-hadoop-use-hive-curl) | &nbsp; | ✔ | 或 Windows | Windows |
-| [查询控制台](hdinsight-hadoop-use-hive-query-console) | &nbsp; | ✔ | Windows | 基于浏览器 |
-| [HDInsight tools for Visual Studio](hdinsight-hadoop-use-hive-visual-studio) | &nbsp; | ✔ | Windows | Windows |
-| [Windows PowerShell](hdinsight-hadoop-use-hive-powershell) | &nbsp; | ✔ | Windows | Windows |
-| [远程桌面](hdinsight-hadoop-use-hive-remote-desktop) | ✔ | ✔ | Windows | Windows |
+| [Curl](/documentation/articles/hdinsight-hadoop-use-hive-curl) | &nbsp; | ✔ | Windows | Windows |
+| [查询控制台](/documentation/articles/hdinsight-hadoop-use-hive-query-console) | &nbsp; | ✔ | Windows | 基于浏览器 |
+| [HDInsight tools for Visual Studio](/documentation/articles/hdinsight-hadoop-use-hive-visual-studio) | &nbsp; | ✔ | Windows | Windows |
+| [Windows PowerShell](/documentation/articles/hdinsight-hadoop-use-hive-powershell) | &nbsp; | ✔ | Windows | Windows |
+| [远程桌面](/documentation/articles/hdinsight-hadoop-use-hive-remote-desktop) | ✔ | ✔ | Windows | Windows |
 
 ## 使用本地 SQL Server Integration Services 在 Azure HDInsight 上运行 Hive 作业
 
@@ -139,39 +140,41 @@ HDInsight 可以使用各种方法运行 HiveQL 作业。使用下表来确定�
 
 [check]: ./media/hdinsight-use-hive/hdi.checkmark.png
 
-[1]: hdinsight-hadoop-visual-studio-tools-get-started
+[1]: /documentation/articles/hdinsight-hadoop-visual-studio-tools-get-started
 
-[hdinsight-sdk-documentation]: https://msdn.microsoft.com/zh-cn/library/dn479185.aspx
+[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/zh-cn/library/dn479185.aspx
 
-
+[azure-purchase-options]: /pricing/overview/
+[azure-member-offers]: /pricing/member-offers/
+[azure-trial]: /pricing/1rmb-trial/
 
 [apache-tez]: http://tez.apache.org
 [apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://zh.wikipedia.org/wiki/Log4j
+[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
 [import-to-excel]: /documentation/articles/hdinsight-connect-excel-power-query/
-[hivetask]: http://msdn.microsoft.com/zh-CN/library/mt146771(v=sql.120).aspx
-[connectionmanager]: http://msdn.microsoft.com/zh-CN/library/mt146773(v=sql.120).aspx
-[ssispack]: http://msdn.microsoft.com/zh-CN/library/mt146770(v=sql.120).aspx
+[hivetask]: http://msdn.microsoft.com/zh-cn/library/mt146771(v=sql.120).aspx
+[connectionmanager]: http://msdn.microsoft.com/zh-cn/library/mt146773(v=sql.120).aspx
+[ssispack]: http://msdn.microsoft.com/zh-cn/library/mt146770(v=sql.120).aspx
 
-[hdinsight-use-pig]: hdinsight-use-pig
-[hdinsight-use-oozie]: hdinsight-use-oozie
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data
-[hdinsight-use-mapreduce]: hdinsight-use-mapreduce
+[hdinsight-use-pig]: /documentation/articles/hdinsight-use-pig
+[hdinsight-use-oozie]: /documentation/articles/hdinsight-use-oozie
+[hdinsight-analyze-flight-data]: /documentation/articles/hdinsight-analyze-flight-delay-data
+[hdinsight-use-mapreduce]: /documentation/articles/hdinsight-use-mapreduce
 
 
-[hdinsight-storage]: hdinsight-use-blob-storage
+[hdinsight-storage]: /documentation/articles/hdinsight-use-blob-storage
 
-[hdinsight-provision]: hdinsight-provision-clusters
-[hdinsight-submit-jobs]: hdinsight-submit-hadoop-jobs-programmatically
-[hdinsight-upload-data]: hdinsight-upload-data
-[hdinsight-get-started]: hdinsight-get-started
+[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters
+[hdinsight-submit-jobs]: /documentation/articles/hdinsight-submit-hadoop-jobs-programmatically
+[hdinsight-upload-data]: /documentation/articles/hdinsight-upload-data
+[hdinsight-get-started]: /documentation/articles/hdinsight-get-started
 
-[Powershell-install-configure]: install-configure-powershell
+[Powershell-install-configure]: /documentation/articles/install-configure-powershell
 [powershell-here-strings]: http://technet.microsoft.com/zh-cn/library/ee692792.aspx
 
 [image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 [image-hdi-hive-architecture]: ./media/hdinsight-use-hive/HDI.Hive.Architecture.png
 
-<!---HONumber=76-->
+<!---HONumber=82-->

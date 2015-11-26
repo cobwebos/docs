@@ -13,11 +13,7 @@
      wacn.date="" />
 
 # 如何通过 PHP 使用通知中心
-> [AZURE.SELECTOR] 
-- [Java](/documentation/articles/notification-hubs-php-backend-how-to)
-- [PHP](/documentation/articles/notification-hubs-python-backend-how-to)
-- [Python](/documentation/articles/notification-hubs-nodejs-how-to-use-notification-hubs)
-- [Node.js](/documentation/articles/notification-hubs-nodejs-how-to-use-notification-hubs)
+[AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../includes/notification-hubs-backend-how-to-selector.md)]
 
 如 MSDN 主题[通知中心 REST API](http://msdn.microsoft.com/zh-cn/library/dn223264.aspx) 中所述，你可以使用通知中心 REST 接口从 Java/PHP/Ruby 后端访问所有通知中心功能。
 
@@ -41,8 +37,7 @@
 	$hub->sendNotification($notification);
 
 ## 实现
-如果你尚未实现，请按照我们[入门的教程]学至最后一节，其中你必须实现后端。
-此外，如果你希望可以使用来自 [PHP REST 包装器示例]的代码并直接转到[完成本教程](#complete-tutorial)部分。
+如果你尚未实现，请按照我们[入门的教程]学至最后一节，其中你必须实现后端。此外，如果你希望可以使用来自 [PHP REST 包装器示例]的代码并直接转到[完成本教程](#complete-tutorial)部分。
 
 有关实现完整 REST 包装器的所有详细信息，请访问 [MSDN](http://msdn.microsoft.com/zh-cn/library/dn530746.aspx)。在本部分中，我们将向你介绍访问通知中心 REST 终结点所需的主要步骤的 PHP 实现：
 
@@ -202,7 +197,7 @@
 现在，你可以通过从 PHP 后端发送通知来完成该入门教程。
 
 初始化你的通知中心客户端（按[入门的教程]中所述替换连接字符串和中心名称）：
-	$hub = new NotificationHub("连接字符串", "中心名称");
+$hub = new NotificationHub("连接字符串", "中心名称");
 
 然后，根据你的目标移动平台添加发送代码。
 
@@ -253,8 +248,9 @@
 * 在 [突发新闻教程] 中继续学习通知中心标记功能
 * 在 [通知用户教程] 中了解如何将通知推送到单个用户
 
+有关详细信息，另请参阅 [PHP 开发中心](/develop/php/)。
 
 [PHP REST 包装器示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [入门的教程]: /documentation/articles/notification-hubs-ios-get-started
 
-<!---HONumber=76-->
+<!---HONumber=82-->

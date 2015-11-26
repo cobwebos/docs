@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="09/15/2015"
+   ms.date="10/07/2015"
    wacn.date=""/>
 
 # 了解资源管理器部署和经典部署
@@ -42,13 +42,17 @@
 
         ![preview portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        For Compute, Storage, and Networking resources, you have the option of using either Resourece Manager or Classic deployment. Select **Resource Manager**.
+        对于计算、存储和网络资源，你可以选择使用“资源管理器”或“经典”部署。选择“资源管理器”。
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
-  - PowerShell 命令在 **AzureResourceManager** 模式下运行。
+  - 对于低于 1.0 预览版的 Azure PowerShell 版本，命令将在 **AzureResourceManager** 模式下运行。
 
             PS C:\> Switch-AzureMode -Name AzureResourceManager
+
+  - 对于 Azure PowerShell 1.0 预览版，请使用命令的资源管理器版本。这些命令采用 *verb-AzureRm* 格式，如下所示。
+
+            PS C:\> Get-AzureRmResourceGroupDeployment
 
   - 适用于 REST 操作的 [Azure 资源管理器 REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx)。
   - Azure CLI 命令在 **arm** 模式下运行。
@@ -69,13 +73,17 @@
 
         ![Azure portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        Or, the preview portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
+        或者，访问预览门户，并且指定“经典”部署（适用于计算、存储和网络）。
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
-  - PowerShell 命令在 **AzureServiceManagement** 模式下运行（这是默认模式，因此，如果不特意切换到 AzureResourceManager，您会在 AzureServiceManagement 模式下运行）。
+  - 对于低于 1.0 预览版的 Azure PowerShell 版本，命令在 **AzureServiceManagement** 模式下运行（这是默认模式，因此，如果不特意切换到 AzureResourceManager，你会在 AzureServiceManagement 模式下运行）。
 
             PS C:\> Switch-AzureMode -Name AzureServiceManagement
+
+  - 对于 Azure PowerShell 1.0 预览版，请使用命令的服务管理版本。这些命令名称**不**采用 *verb-AzureRm* 格式，如下所示。
+
+            PS C:\> Get-AzureDeployment
 
   - 适用于 REST 操作的[服务管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx)。
   - Azure CLI 命令在 **asm** 或默认模式下运行。
@@ -113,7 +121,7 @@
 
 在经典部署模型中创建的资源不支持资源管理器操作。在某些情况下，资源管理器命令可以检索通过经典部署创建的资源的相关信息，或者可以执行管理任务，例如将经典资源移动到另一个资源组，但这些情况下，并不意味着该类型支持资源管理器操作。例如，假定您有一个资源组包含通过资源管理器和经典模型创建的虚拟机。如果您运行以下 PowerShell 命令，您将看到所有虚拟机：
 
-    PS C:\> Get-AzureResourceGroup -Name ExampleGroup
+    PS C:\> Get-AzureRmResourceGroup -Name ExampleGroup
     ...
     Resources :
      Name                 Type                                          Location
@@ -154,4 +162,4 @@
 - 若要了解如何创建声明性部署模板，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
 - 若要查看用于部署模板的命令，请参阅[使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy.md)。
 
-<!---HONumber=79-->
+<!---HONumber=82-->

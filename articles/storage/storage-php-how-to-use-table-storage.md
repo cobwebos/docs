@@ -1,5 +1,5 @@
 <properties
-	pageTitle="如何通过 PHP 使用表存储 | Windows Azure"
+	pageTitle="如何通过 PHP 使用表存储 | Microsoft Azure"
 	description="了解如何通过 PHP 使用表服务来创建和删除表以及插入、删除和查询表。"
 	services="storage"
 	documentationCenter="php"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="07/29/2015"
+	ms.date="09/23/2015"
 	wacn.date=""/>
 
 
@@ -465,7 +465,9 @@
 - 请参阅 MSDN 参考：[Azure 存储](http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx)
 - 访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 
-[download]: http://go.microsoft.com/fwlink/?LinkID=252473
+有关详细信息，另请参阅 [PHP 开发中心](/develop/php/)。
+
+[download]: /documentation/articles/php-download-sdk
 [Storing and accessing data in Azure]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
 [require_once]: http://php.net/require_once
 [table-service-timeouts]: http://msdn.microsoft.com/zh-cn/library/azure/dd894042.aspx
@@ -474,4 +476,4 @@
 [filters]: http://msdn.microsoft.com/zh-cn/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/zh-cn/library/azure/dd894038.aspx
 
-<!---HONumber=70-->
+<!---HONumber=82-->

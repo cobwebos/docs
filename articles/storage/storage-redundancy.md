@@ -1,7 +1,7 @@
 
 <properties 
-  pageTitle="Azure 存储复制 | Windows Azure" 
-  description="复制 Windows Azure 存储帐户中的数据以实现持久性和高可用性。复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。" 
+  pageTitle="Azure 存储复制 | Microsoft Azure" 
+  description="复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。" 
   services="storage" 
   documentationCenter="" 
   authors="tamram" 
@@ -10,35 +10,35 @@
 
 <tags 
   ms.service="storage" 
-  ms.date="05/26/2015" 
+  ms.date="10/07/2015" 
   wacn.date=""/>
 
 # Azure 存储复制
 
-始终复制 Windows Azure 存储帐户中的数据以确保持久性和高可用性，并且即使在遇到临时硬件故障时也符合 [Azure 存储 SLA 要求](http://azure.microsoft.com/support/legal/sla/)。
+始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性，并且即使在遇到临时硬件故障时也符合 [Azure 存储 SLA 要求](http://azure.microsoft.com/support/legal/sla/)。
 
 创建存储帐户时，必须选择以下复制选项之一：
 
-- [本地冗余存储](#locally-redundant-storage)
-- [区域冗余存储](#zone-redundant-storage)
-- [异地冗余存储](#geo-redundant-storage)
-- [读取访问异地冗余存储](#read-access-geo-redundant-storage)
+- [本地冗余存储空间 (LRS)](#locally-redundant-storage)
+- [区域冗余存储空间 (ZRS)](#zone-redundant-storage)
+- [异地冗余存储空间 (GRS)](#geo-redundant-storage)
+- [读取访问异地冗余存储空间 (RA-GRS)](#read-access-geo-redundant-storage)
 
 下表简要概述了 LRS、ZRS、GRS 和 RA-GRS 之间的差异，而后续章节将详细介绍每种类型的复制。
 
 
 |复制策略|LRS|ZRS|GRS|RA-GRS 
 |--------------------|---|---|---|------
-|数据在多个实施之间进行复制|否|是|是|是|
-|可以从辅助位置和主位置读取数据|否|否|否|是
-|在单独的节点上维护的数据副本数|3|3|6|6 
+|数据在多个实施之间进行复制。|否|是|是|是|
+|可以从辅助位置和主位置读取数据。|否|否|否|是
+|在单独的节点上维护的数据副本数。|3|3|6|6
 
 
 ## 本地冗余存储
 
 本地冗余存储 (LRS) 在你创建存储帐户所在的区域中复制数据。为最大程度地提高持久性，针对你的存储帐户中的数据发出的每个请求将复制三次。这三个副本每个都驻留在不同的容错域和升级域中。容错域 (FD) 是一组代表出错的物理单元的节点，可将其视为属于同一物理机架的节点。升级域 (UD) 是一组在服务升级（部署）的过程中一起升级的节点。三个副本将分布在 UD 和 FD 上，以确保即使在硬件故障影响单个机架，以及在部署期间升级节点时，数据也可用。请求仅在写入所有三个副本后，才成功返回。
 
-虽然对于大多数应用程序建议使用异地冗余存储，但是本地冗余存储在某些情况下可能需要：
+虽然对于大多数应用程序建议使用异地冗余存储 (GRS)，但是本地冗余存储在某些情况下可能需要：
 
 - 比 GRS 相比，LRS 成本更低，并且还提供更高的吞吐量。如果应用程序存储可轻松重构的数据，则可以选择 LRS。
 
@@ -52,7 +52,7 @@
 区域冗余存储 (ZRS) 在两到三个设施之间复制数据（在单个区域内或两个区域之间），提供比 LRS 更高的持久性。如果你的存储帐户启用了 ZRS，即使其中一个设施出现故障，你的数据也能持久保存。
 
 
->[AZURE.NOTE] ZRS 当前仅可用于块 Blob。请注意，在创建存储帐户并选择区域冗余复制后，您无法将其转换为使用任何其他类型的复制，反之亦然。
+>[AZURE.NOTE] ZRS 当前仅适用于块 Blob，并且仅支持版本 2014-02-14 和更高版本。请注意，在创建存储帐户并选择区域冗余复制后，你无法将其转换为使用任何其他类型的复制，反之亦然。
 
 
 ## 异地冗余存储 
@@ -64,7 +64,7 @@
  
 > [AZURE.NOTE] 使用 GRS 时，写入数据请求将异步复制到辅助区域。请务必注意，选择 GRS 不会影响针对主区域发出的请求的延迟。但是，由于异步复制涉及延迟，遇到区域性灾难时，如果无法将数据从主区域中恢复，则尚未复制到辅助区域的更改可能会丢失。
  
-创建存储帐户时，可以为帐户选择主区域。辅助区域是根据主区域确定的且无法更改。下表显示了配对的主区域和辅助区域：
+创建存储帐户时，可以为帐户选择主区域。辅助区域是根据主区域确定的且无法更改。下表显示了配对的主要区域和次要区域。
 
 |主要 |辅助        
 | ---------------   |----------------
@@ -80,9 +80,9 @@
 ## 后续步骤
 
 - [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets) 
-- [Windows Azure 存储冗余选项和读取访问异地冗余存储](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)  
-- [使用 RA-GRS 的 Windows Azure 存储模拟器 3.1](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/08/microsoft-azure-storage-emulator-3-1-with-ra-grs.aspx)
+- [Microsoft Azure 存储冗余选项和读取访问异地冗余存储](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)  
+- [使用 RA-GRS 的 Microsoft Azure 存储模拟器 3.1](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/08/microsoft-azure-storage-emulator-3-1-with-ra-grs.aspx)
 - [Azure 存储 SOSP 论文](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)  
  
 
-<!---HONumber=70-->
+<!---HONumber=82-->

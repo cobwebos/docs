@@ -7,9 +7,9 @@
 	manager="dwrede" 
 	editor=""/>
 
-<tags ms.service="mobile-services"
-
-	ms.date="06/03/2015" 
+<tags 
+	ms.service="mobile-services" 
+	ms.date="10/05/2015" 
 	wacn.date=""/>
 
 
@@ -645,6 +645,12 @@
 
 每次修改 *ToDoItem* 表后，也必须调用该适配器（如果你想要显示执行修改操作后的结果）。由于修改是按记录完成的，因此要处理的是单个行而不是一个集合。插入项时，需要对适配器调用 *add* 方法；删除项时，需要调用 *remove* 方法。
 
+##<a name="custom-api"></a>如何：调用自定义 API
+
+自定义 API 可让你定义自定义终结点，这些终结点将会公开不映射到插入、更新、删除或读取操作的服务器功能。使用自定义 API 能够以更大的力度控制消息传送，包括读取和设置 HTTP 消息标头，以及定义除 JSON 以外的消息正文格式。有关如何在移动服务中创建自定义 API 的示例，请参阅[如何：定义自定义 API 终结点](/documentation/articles/mobile-services-dotnet-backend-define-custom-api)。
+
+[AZURE.INCLUDE [mobile-services-android-call-custom-api](../includes/mobile-services-android-call-custom-api.md)]
+
 
 ##<a name="authentication"></a>如何对用户进行身份验证
 
@@ -845,7 +851,8 @@
 
 ### <a name="table"></a>如何在客户端与移动服务之间映射不同的表名称
 
-如以下代码所示，只需使用 <a href="http://go.microsoft.com/fwlink/p/?LinkId=296840" target="_blank">getTable()</a> 函数的重写之一，就能轻松地将客户端表名称映射为不同的移动服务表名称。
+如以下代码所示，只需使用 
+<a href="http://go.microsoft.com/fwlink/p/?LinkId=296840" target="_blank">getTable()</a> 函数的重写之一，就能轻松地将客户端表名称映射为不同的移动服务表名称。
 
 		mToDoTable = mClient.getTable("ToDoItemBackup", ToDoItem.class);
 
@@ -924,4 +931,4 @@
 [移动服务快速入门]: /documentation/articles/mobile-services-android-get-started
 [ASCII 控制代码 C0 和 C1]: http://zh.wikipedia.org/wiki/Data_link_escape_character#C1_set
 
-<!---HONumber=71-->
+<!---HONumber=82-->

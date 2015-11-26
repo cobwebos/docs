@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="07/01/2015"
+	ms.date="10/01/2015"
 	wacn.date=""/>
 
 # 向现有应用程序添加身份验证
@@ -78,4 +78,6 @@
 [Get started with push notifications]: /documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-with-push-ios
 [Authorize users with scripts]: /documentation/articles/mobile-services-ios-authorize-users-in-scripts
 
-<!---HONumber=74-->
+[Azure Management Portal]: https://manage.windowsazure.cn/
+
+<!---HONumber=82-->

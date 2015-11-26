@@ -136,32 +136,29 @@
 
 本教程演示了启用 Windows 应用商店应用程序以便使用移动服务和通知中心发送推送通知的基础知识。接下来，请考虑完成以下教程之一：
 
-+ [向经过身份验证的用户发送推送通知](/documentation/articles/mobile-services-javascript-backend-windows-phone-push-notifications-app-users)
-	<br/>了解如何使用标记来做到只将推送通知从移动服务发送到经过身份验证的用户。
-
 + [将广播通知发送到订户](/documentation/articles/notification-hubs-windows-phone-send-breaking-news)
-	<br/>了解用户如何注册和接收他们感兴趣的类别的推送通知。
+<br/>了解用户如何注册和接收他们感兴趣的类别的推送通知。
 
 + [将平台无关的通知发送到订户](/documentation/articles/notification-hubs-aspnet-cross-platform-notify-users)
-	<br/>了解如何使用模板从移动服务发送推送通知，且不会在后端中产生平台特定的负载。
+<br/>了解如何使用模板从移动服务发送推送通知，且不会在后端中产生平台特定的负载。
 
 
 通过以下主题了解有关移动服务和通知中心的详细信息：
 
 * [Azure 通知中心 - 诊断指南](/documentation/articles/notification-hubs-diagnosing)
-  <br/>了解如何排查推送通知问题。
+<br/>了解如何排查推送通知问题。
 
-* [身份验证入门]
-  <br/>了解如何通过移动服务对使用不同帐户类型的应用程序用户进行身份验证。
+* [身份验证入门 ]
+<br/>了解如何通过移动服务对使用不同帐户类型的应用程序用户进行身份验证。
 
-* [什么是通知中心？]
-  <br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
+* [什么是通知中心？] 
+<br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
 
 * [移动服务 .NET 操作方法概念性参考]
-  <br/>了解有关如何将移动服务与 .NET 一起使用的详细信息。
+<br/>了解有关如何将移动服务与 .NET 一起使用的详细信息。
 
 * [移动服务服务器脚本参考]
-  <br/>了解有关如何在移动服务中实施业务逻辑的详细信息。
+<br/>了解有关如何在移动服务中实施业务逻辑的详细信息。
 
 <!-- Anchors. -->
 
@@ -173,7 +170,7 @@
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 [将移动服务添加到现有应用程序]: /documentation/articles/mobile-services-windows-phone-get-started-data
-[身份验证入门]: /documentation/articles/mobile-services-windows-phone-get-started-users
+[身份验证入门 ]: /documentation/articles/mobile-services-windows-phone-get-started-users
 
 [设置已经过身份验证的 Web 服务以便为 Windows Phone 发送推送通知]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/ff941099(v=vs.105).aspx
 
@@ -184,4 +181,4 @@
 
  
 
-<!---HONumber=74-->
+<!---HONumber=82-->

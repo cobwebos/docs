@@ -3,13 +3,13 @@
 	description="本主题概述 Azure 媒体编码器标准格式和编解码器。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/16/2015"
+<tags
+	ms.service="media-services"
+	ms.date="10/15/2015"
 	wacn.date=""/>
 
 #媒体编码器标准格式和编解码器
@@ -29,7 +29,7 @@ MPEG2-PS、MPEG2-TS、3GP（.ts、.ps、.3gp、.3gpp、.mpg） |是
 Windows Media 视频 (WMV)/ASF（.wmv、.asf） |是 
 AVI（8 位/10 位未压缩）(.avi)|是 
 MP4（.mp4、.m4a、.m4v）/ISMV（.isma、.ismv）|是 
-[Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |是 
+[Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/zh-cn/library/windows/desktop/dd692984) (.dvr-ms) |是 
 Matroska/WebM (.mkv) |是 
 WAVE/WAV (.wav) |是 
 QuickTime (.mov) |是
@@ -96,16 +96,16 @@ Dolby® Digital Plus (E-AC3) |否
 下表列出了导出操作支持的编解码器和文件格式。
 
 
-<table border="1">
-<tr><th>文件格式</th><th>视频编解码器</th><th>音频编解码器</th></tr>
-<tr><td>MP4 (*.mp4)<br/><br/>（包括多码率 MP4 容器） </td><td>H.264（High、Main 和 Baseline Profile）</td><td>AAC-LC、HE-AAC v1、HE-AAC v2 </td></tr>
-<tr><td>MPEG2-TS </td><td>H.264（High、Main 和 Baseline Profile）</td><td>AAC-LC、HE-AAC v1、HE-AAC v2 </td></tr>
-</table>
+文件格式|视频编解码器|音频编解码器
+---|---|---
+MP4<br/><br/>（包括多码率 MP4 容器） |H.264（High、Main 和 Baseline Profile）|AAC-LC、HE-AAC v1、HE-AAC v2 
+MPEG2-TS |H.264（High、Main 和 Baseline Profile）|AAC-LC、HE-AAC v1、HE-AAC v2 
+
 
 ##另请参阅
 
 [使用 Azure 媒体服务对按需内容进行编码](/documentation/articles/media-services-encode-asset)
 
-[如何使用媒体编码器标准版进行编码](media-services-dotnet-encode-with-media-encoder-standard)
+[如何使用媒体编码器标准版进行编码](/documentation/articles/media-services-dotnet-encode-with-media-encoder-standard)
 
-<!---HONumber=76-->
+<!---HONumber=82-->

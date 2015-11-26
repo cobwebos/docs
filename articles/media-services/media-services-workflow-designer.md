@@ -1,22 +1,26 @@
+<!-- not suitable for Mooncake -->
+
 <properties 
 	pageTitle="使用工作流设计器创建高级编码工作流" 
 	description="了解如何使用工作流设计器创建高级编码工作流。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,johndeu,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015"
+<tags
+	ms.service="media-services"
+	ms.date="10/15/2015"
 	wacn.date=""/>
 
 
 #使用工作流设计器创建高级编码工作流
 
 ##概述
-**工作流设计器**是一个独立的工具，它用于创建工作流/图表，以使用**媒体编码器高级工作流**进行编码。
+
+**工作流设计器**是一个 Windows 桌面工具，可用于设计和构建自定义工作流，以使用**媒体编码器高级工作流**进行编码。
+
 
 你还可以使用此工具来修改[现有的工作流](/documentation/articles/media-services-workflow-designer#existing_workflows)。
 
@@ -61,8 +65,18 @@
  
 > [AZURE.VIDEO azure-premium-encoder-workflow-designer-training-videos-day-3]
 
+
+
+##媒体服务学习路径
+
+你可以在此处查看 AMS 学习路径：
+
+- [AMS 实时流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
+- [AMS 按需流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+
 ##另请参阅
 
 [Azure 高级编码器工作流设计器培训视频](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=76-->
+<!---HONumber=82-->

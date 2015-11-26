@@ -1,5 +1,5 @@
 <properties
-   pageTitle="在 HDInsight 中将 Pig 与远程桌面配合使用 | Azure"
+   pageTitle="在 HDInsight 中将 Pig 与远程桌面配合使用 | Microsoft Azure"
    description="了解如何使用 Pig 命令从到基于 Windows 的 HDInsight Hadoop 群集的远程桌面连接运行 Pig Latin 语句。"
    services="hdinsight"
    documentationCenter=""
@@ -9,9 +9,9 @@
 	tags="azure-portal"/>
 
 <tags
-   ms.service="hdinsight" 
-   ms.date="07/06/2015"
-   wacn.date=""/>
+	ms.service="hdinsight"
+	ms.date="09/23/2015"
+	wacn.date=""/>
 
 #从远程桌面连接运行 Pig 作业
 
@@ -31,7 +31,7 @@
 
 ##<a id="connect"></a>使用远程桌面进行连接
 
-为 HDInsight 群集启用远程桌面，然后根据[使用 RDP 连接到 HDInsight 群集](/documentation/articles/hdinsight-administer-use-management-portal#rdp)中的说明连接到该群集。
+为 HDInsight 群集启用远程桌面，然后根据[使用 RDP 连接到 HDInsight 群集](/documentation/articles/hdinsight-administer-use-management-portal-v1#rdp)中的说明连接到该群集。
 
 ##<a id="pig"></a>使用 Pig 命令
 
@@ -124,12 +124,12 @@
 
 有关 HDInsight 中的 Pig 的一般信息：
 
-* [将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig/)
+* [将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig)
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive/)
+* [将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive)
 
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
+* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce)
 
-<!---HONumber=71-->
+<!---HONumber=82-->

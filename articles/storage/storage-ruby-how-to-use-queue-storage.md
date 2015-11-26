@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何通过 Ruby 使用队列存储 | Windows Azure" 
+	pageTitle="如何通过 Ruby 使用队列存储 | Microsoft Azure" 
 	description="了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。用 Ruby 编写的相关示例。" 
 	services="storage" 
 	documentationCenter="ruby" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="07/29/2015" 
+	ms.date="09/23/2015" 
 	wacn.date=""/>
 
 
@@ -19,7 +19,7 @@
 
 ## 概述
 
-本指南演示如何使用 Windows Azure 队列存储服务执行常见方案。相关示例是使用 Ruby Azure API 编写的。介绍的方案包括“插入”、“扫视”、“获取”和“删除”队列消息以及“创建”和“删除”队列。
+本指南演示如何使用 Microsoft Azure 队列存储服务执行常见方案。相关示例是使用 Ruby Azure API 编写的。介绍的方案包括“插入”、“扫视”、“获取”和“删除”队列消息以及“创建”和“删除”队列。
 
 [AZURE.INCLUDE [storage-queue-concepts-include](../includes/storage-queue-concepts-include.md)]
 
@@ -149,4 +149,4 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 有关本文中讨论的 Azure 队列服务与[如何使用 Service Bus 队列](/develop/ruby/how-to-guides/service-bus-queues/)一文中讨论的 Azure Service Bus 队列的比较，请参阅 [Azure 队列和 Azure Service Bus 队列 - 比较与对照](http://msdn.microsoft.com/library/azure/hh767287.aspx)
  
 
-<!---HONumber=70-->
+<!---HONumber=82-->

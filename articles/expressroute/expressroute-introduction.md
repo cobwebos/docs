@@ -1,103 +1,123 @@
 <properties 
-   pageTitle="ExpressRoute 简介 | Windows Azure"
-   description="本页提供 ExpressRoute 服务的概述，包括 ExpressRoute 连接的工作方式、使用 Exchange 提供商和网络服务提供商，以及 ExpressRoute 公共对等互连、专用对等互连和 Microsoft 对等互连。"
+   pageTitle="ExpressRoute 简介 | Microsoft Azure"
+   description="本页提供 ExpressRoute 服务的概述，包括 ExpressRoute 连接的工作原理。"
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="adinah"
-   editor="tysonn"/>
+   manager="carolz"
+   editor=""/>
 <tags 
    ms.service="expressroute"
-   ms.date="06/15/2015"
+   ms.date="09/22/2015"
    wacn.date=""/>
 
 # ExpressRoute 技术概述
 
-使用 Microsoft Azure ExpressRoute，可在 Azure 数据中心与你的本地环境或共同租用环境中的基础结构之间创建专用连接。使用 ExpressRoute，你可以在 ExpressRoute 合作伙伴共同租用的设施中建立与 Azure 的连接，也可以直接从现有的 WAN 网络（如网络服务提供商提供的 MPLS VPN）连接到 Microsoft 云服务（例如 Microsoft Azure 和 Office 365）。
- 
-与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的安全性、更多的可靠性、更快的速度和更少的延迟。在某些情况下，使用 ExpressRoute 连接在本地网络和 Azure 之间传输数据还可以产生显著的成本效益。如果你已创建从本地网络到 Azure 的跨界连接，则可以在不改动虚拟网络的情况下迁移到 ExpressRoute 连接。
-
-有关详细信息，请参阅 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)。
-
-## ExpressRoute 连接的工作原理
-
-若要将 WAN 连接到 Windows 云服务，你必须通过连接提供商订购并启用一条专用线路。有两种类型的连接供你选择：通过交换提供商 (EXP) 的第 3 层直接连接，或通过网络服务提供商 (NSP) 的第 3 层连接。你可以选择在 WAN 和 Microsoft 云之间启用一种或两种类型的连接。
-
-## Exchange 提供商和网络服务提供商
-ExpressRoute 提供商划分为网络服务提供商 (NSP) 和 Exchange 提供商 (EXP)。
-
-![](./media/expressroute-introduction/expressroute-nsp-exp.png)
-
-
-| |**Exchange 提供商**|**网络服务提供商**|
-|---|---|---|
-|**典型连接模型**| 点对点以太网链接或通过云交换连接 | 通过电信公司 VPN 的任意对等连接 |
-|**支持的带宽**|200 Mbps、500 Mbps、1 Gbps 和 10 Gbps|10 Mbps、50 Mbps、100 Mbps、500 Mbps、1 Gbps|
-|**连接提供商**|[Exchange 提供商](/documentation/articles/expressroute-locations)|[网络服务提供商](/documentation/articles/expressroute-locations)|
-|**路由**|直接使用客户边缘路由器建立 BGP 会话| 与电信公司建立 BGP 会话|
-|**价格**|[EXP 价格](/home/features/expressroute/#price)|[NSP 价格](/home/features/expressroute/#price)|
-
-### Exchange 提供商 (EXP)
-我们与 Equinix 和 TeleCity 集团等云交换服务提供商，以及 Cole 和 Level 3 等点对点连接服务提供商合作，以帮助在 Azure 与客户本地之间建立连接。我们提供从 200 Mbps 到 10 Gbps（200 Mbps、500 Mbps、1 Gbps 和 10 Gbps）的线路带宽。
-
-如果你想要通过交换提供商建立第 3 层直接连接，可以采用下列 3 种方法之一：
-
-- 可以将 Equinix 的 Cloud Exchange 或 TeleCity 的 Cloud IX 设备放置在我们提供服务的位置。在这种情况下，你需要订购云交换设施的冗余连接。 
-- 你可以与提供商（例如 Level 3）合作，以便在数据中心与 Microsoft 之间设置以太网线路。 
-- 你可以与本地连接提供商合作，以购买最接近交换提供商设施的冗余连接，以及连接到云交换设施。
-
-我们确实需要你建立冗余连接，以满足我们的 SLA 要求。我们不支持直接连接到 Microsoft 边缘。专用线路始终应通过以太网提供商或本地云交换设施启用。尽管这样会在 Microsoft 与你的网络之间建立第 2 层连接，但我们不支持扩展第 2 层域。你必须在边缘路由器与 Microsoft 边缘路由器之间设置冗余路由会话，以建立第 3 层连接。
-
-若要了解有关配置的详细信息并查看实际示例，你可以遵循以下分步指南操作：[通过 Exchange 提供商配置 ExpressRoute 连接](/documentation/articles/expressroute-configuring-exps)。
-
-
-### 网络服务提供商 (NSP)
-
-我们与 AT&T 和 British Telecom 等电信公司合作，以便在 Azure 与你的 WAN 之间建立连接。我们提供从 10 Mbps 到 1 Gbps（10 Mbps、50 Mbps、100 Mbps 和 500 Mbps、1 Gbps）的线路带宽。
-
-如果你使用了我们一家合作伙伴提供的 VPN 服务，则无需部署任何新硬件或者对现有网络做出重大配置更改，就能将网络扩展到 Azure。
-
-若要了解有关配置的详细信息并查看实际示例，你可以遵循以下分步指南操作：[通过网络服务提供商配置 ExpressRoute 连接](/documentation/articles/expressroute-configuring-nsps)。
-
-## ExpressRoute 对等互连
-下图提供了你的 WAN 与 Microsoft 之间的连接的逻辑表示形式。你必须通过连接提供商 (NSP/EXP) 订购一条*专用线路*，才能将 WAN 连接到 Microsoft。专用线路表示通过连接提供商在你的 WAN 与 Microsoft 之间建立的逻辑连接。你可以订购许多的专用线路，每个线路可部署在相同或不同的区域，并可以通过不同的服务提供商连接到你的 WAN。
+Microsoft Azure ExpressRoute 可让你通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。使用 ExpressRoute 可与 Microsoft Azure、Office 365 和 CRM Online 等 Microsoft 云服务建立连接。可以从任意位置之间的 (IP VPN) 网络、点到点以太网或在共置设施上通过连接服务提供商的虚拟交叉连接来建立这种连接。ExpressRoute 连接不通过公共 Internet 。与通过 Internet 的典型连接相比，ExpressRoute 连接提供更高的可靠性、更快的速度、更低的延迟和更高的安全性。
 
 ![](./media/expressroute-introduction/expressroute-basic.png)
 
-一条专用线路具有多个关联的路由域 - 公共域、专用域和 Microsoft 域。在一组路由器上，每个路由域采用相同的配置（主动-主动，或负载分担）以实现高可用性。
+**主要优势包括：**
 
-![](./media/expressroute-introduction/expressroute-peerings.png)
+- 通过连接服务提供商在本地网络与 Microsoft 云之间建立第 3 层连接。可以从任意位置之间的 (IPVPN) 网络、点到点以太网，或通过以太网交换经由虚拟交叉连接来建立这种连接。
+- 跨地缘政治区域中的所有区域连接到 Microsoft 云服务。
+- 通过 ExpressRoute 高级版附加组件从全球连接到所有区域的 Microsoft 服务。
+- 通过行业标准协议 (BGP) 在你的网络与 Microsoft 之间进行动态路由。
+- 在每个对等位置提供内置冗余以提高可靠性。
+- 连接运行时间 [SLA](/support/legal/sla/)。
+- 提供 QoS，并支持特殊应用程序（例如 Skype for Business）的多种服务等级。
 
+有关详细信息，请参阅 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)。
 
-### 专用对等互连
-可以通过专用对等域来连接虚拟网络内部署的 Azure 计算服务（即虚拟机 (IaaS) 和云服务 (PaaS)）。专用对等域被视为进入 Microsoft Azure 的核心网络的受信任扩展。可以在核心网络和 Azure 虚拟网络 (VNet) 之间设置双向连接。这样，将便可以使用专用 IP 地址直接连接到虚拟机和云服务。
+## 如何使用 ExpressRoute 将我的网络连接到 Microsoft？
 
-可以将多个虚拟网络连接到专用对等域。有关限制和局限性的信息请查看[常见问题页](/documentation/articles/expressroute-faqs)。
-  
+有三种方法可以在本地网络与 Microsoft 云之间建立连接。
 
-### 公共对等互连
-Azure 存储空间、SQL Database 和网站等服务是使用公共 IP 地址提供的。你可以通过公共对等路由域私下连接到公共 IP 地址（包括云服务的 VIP）上托管的服务。可以将公共对等域连接到 Extranet，并从 WAN 连接到公共 IP 地址上的所有 Azure 服务，而无需通过 Internet 连接。始终会从 WAN 发起到 Windows Azure 服务的连接。Windows Azure 服务无法通过此路由域发起到你网络的连接。启用公共对等互连后，你将能够连接到所有 Azure 服务。我们不允许选择要将路由播发到的服务。可以在 [Windows Azure 数据中心 IP 范围](http://www.microsoft.com/download/details.aspx?id=41653)页上查看我们通过此对等互连播发给你的前缀列表。你可以在网络中定义自定义路由筛选器，以只使用所需的路由。
+1. **共置于云交换位置。** 如果你所在的位置提供云交换设施，则你可以订购虚拟交叉连接，以通过共同租用提供商的以太网交换连接到 Microsoft 云。共同租用提供商可以在共置设施中的基础结构与 Microsoft 云之间提供第 2 层交叉连接或托管的第 3 层交叉连接。
+2.	**点到点以太网连接。** 你可以通过点到点以太网链路，将本地数据中心/办公室连接到 Microsoft 云。点到点以太网提供商可以在你的站点与 Microsoft 云之间提供第 2 层连接或托管的第 3 层连接。
+3.	**任意位置之间的 (IPVPN) 网络。** 你可以将 WAN 集成到 Microsoft 云。IPVPN 提供商（通常提供 MPLS VPN）可在分支机构与数据中心之间提供任意位置之间的连接。Microsoft 云可与你的 WAN 互连，就如同它是其他任何一个分支机构。WAN 提供商通常提供托管的第 3 层连接。
 
-有关通过公共对等路由域支持的服务的详细信息，请查看[常见问题页](/documentation/articles/expressroute-faqs)。
+![](./media/expressroute-introduction/expressroute-connectivitymodels.png)
+
+在上述所有连接模型中，ExpressRoute 功能与特性完全相同。连接服务提供商可以提供上述列表中的一个或多个连接模型。你可以咨询连接服务提供商以选择最合适的模型。
+
+## ExpressRoute 功能
+
+ExpressRoute 支持以下特性和功能。
+
+### 第 3 层连接
+
+Microsoft 采用行业标准动态路由协议 (BGP)，在本地网络、Azure 中的实例和 Microsoft 公共地址之间交换路由。我们根据不同的流量配置文件来与网络建立多个 BGP 会话。有关详细信息，请参阅 [ExpressRoute 线路和路由域](/documentation/articles/expressroute-circuit-peerings)一文。
+
+### 冗余
+
+每个 ExpressRoute 线路有两道连接，用于从连接服务提供商/你的网络边缘连接到两个 Microsoft 企业边缘路由器 (MSEE)。Microsoft 要求从连接服务提供商/你的一端建立双重 BGP 连接 – 各自连接到每个 MSEE。你可以选择不要在你的一端部署冗余设备/以太网路线。但是，连接服务提供商会使用冗余设备，确保以冗余方式将你的连接移交给 Microsoft。冗余的第 3 层连接配置是 Microsoft [SLA](http://azure.microsoft.com/support/legal/sla/) 生效的条件。
+
+### 与 Microsoft 云服务建立连接
+
+通过 ExpressRoute 连接可访问以下服务。
+
+- Microsoft Azure 服务
+- Microsoft Office 365 服务
+- Microsoft CRM Online 服务（即将推出） 
  
-### Windows 对等互连
-与其他所有 Windows Online Services（如 Office 365 服务）的连接将通过 Windows 对等互连建立。我们将通过 Windows 对等路由域在你的 WAN 和 Windows 云服务之间启用双向连接。你只能通过由你或者你的连接提供商拥有的公共 IP 地址连接到 Windows 云服务，并且必须遵守我们规定的所有规则。有关详细信息，请查看 [ExpressRoute 先决条件](/documentation/articles/expressroute-prerequisites)页。
+你可以访问 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)页，以获取通过 ExpressRoute 支持的服务的详细列表。
 
-有关支持的服务、费用和配置详细信息，请查看[常见问题页](/documentation/articles/expressroute-faqs)。有关提供 Windows 对等互连支持的连接提供商列表，请查看 [ExpressRoute 位置](/documentation/articles/expressroute-locations)页。
+### 与地缘政治区域中的所有区域建立连接
 
+可以在我们的某个[对等位置](/documentation/articles/expressroute-locations)连接到 Microsoft，然后访问该地缘政治区域中的所有区域。
 
-下表比较了三种路由域。
+例如，如果你在阿姆斯特丹通过 ExpressRoute 连接到 Microsoft，则就能够访问在欧洲北部和欧洲西部托管的所有 Microsoft 云服务。有关地缘政治地区、关联的 Microsoft 云区域和对应的 ExpressRoute 对等位置的概述，请参阅 [ExpressRoute 合作伙伴和对等位置](/documentation/articles/expressroute-locations)。
 
-||**专用对等互连**|**公共对等互连**|**Windows 对等互连**| |---|---|---|---| |**每个对等互连支持的最大前缀数**|默认为 4000，使用 ExpressRoute 高级版时为 10,000|默认为 4000，使用 ExpressRoute 高级版时为 10,000|200| |**支持的 IP 地址范围**|WAN 中任何有效的 IPv4 地址|由你或你的连接提供商拥有的公共 IPv4 地址|由你或你的连接提供商拥有的公共 IPv4 地址| |**AS 编号要求**|专用和公共 AS 编号。客户必须拥有公共 AS 编号。|专用和公共 AS 编号。客户必须拥有公共 AS 编号。| 仅限公共 AS 编号。必须向路由注册机构验证 AS 编号，以验证所有权。| |**路由接口 IP 地址**|RFC1918 和公共 IP 地址|向客户注册的公共 IP 地址/路由注册机构中的 NSP。| 向客户注册的公共 IP 地址/路由注册机构中的 NSP。| |**MD5 哈希支持**| 是|是|是|
+### 使用 ExpressRoute 高级版附加组件建立全球连接
 
-你可以选择启用一个或多个路由域作为专用线路的一部分。如果客户想要引入单个路由域，你可以选择将所有路由域放置在同一个 VPN 中（对于 NSP）。此外，可以像以上示意图中一样，将它们放置在不同的路由域中。建议的配置是将专用对等域直接连接到核心网络，并将公共和 Windows 对等链接连接到 Extranet。
- 
-如果你选择使用所有三个对等会话，必须使用三对 BGP 会话（每一对用于一个对等类型）。BGP 会话对提供高度可用的链接。如果你要通过 EXP 进行连接，则需要负责配置和管理路由（除非 EXP 可为你管理路由）。如果你选择通过 NSP 进行连接，则可以依赖 NSP 来为你管理路由。可以通过查看设置 ExpressRoute 的工作流来了解详细信息
+你可以启用 ExpressRoute 高级版附加功能，将连接扩展为跨越地缘政治边界。例如，如果你在阿姆斯特丹通过 ExpressRoute 连接到 Microsoft，则就能够访问全球所有区域托管的所有 Microsoft 云服务（不包括国家/地区云）。就像访问欧洲北部和西部区域一样，你还可以访问部署在南美洲或澳大利亚的服务。
 
+### 丰富的连接合作伙伴生态系统
+
+ExpressRoute 的连接服务提供商和 SI 合作伙伴生态系统不断发展。有关最新信息，请参阅 [ExpressRoute 提供商和位置](/documentation/articles/expressroute-locations)一文。
+
+### 与国家/地区云建立连接
+
+Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。有关国家/地区云和提供商的列表，请参阅 [ExpressRoute 提供商和位置](/documentation/articles/expressroute-locations)页。
+
+### 支持的带宽选项
+
+你可以购买各种带宽的 ExpressRoute 线路。支持的带宽列表如下。请务必咨询连接服务提供商，以获取他们支持的带宽列表。
+
+- 50 Mbps
+- 100 Mbps
+- 200 Mbps
+- 500 Mbps
+- 1 Gbps
+- 2 Gbps
+- 5 Gbps
+- 10 Gbps
+
+### 动态调整带宽
+
+你可以在不中断连接的情况下增大 ExpressRoute 线路带宽（尽最大努力）。
+
+### 弹性计费模式
+
+你可以选择最适合自己的计费模式。请从以下计费模式中选择。有关详细信息，请参阅 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)页。
+
+- **无限制数据**。ExpressRoute 线路按月计费，所有入站和出站数据传输不收取费用。 
+- **计量数据**。ExpressRoute 线路按月计费。所有入站数据传输免费。出站数据传输按每 GB 数据传输计费。数据传输费率根据区域不同而异。
+- **ExpressRoute 高级版附加组件**。ExpressRoute 高级版是 ExpressRoute 线路上的附加组件。ExpressRoute 高级版附加组件提供以下功能： 
+	- 提高 Azure 公共和 Azure 专用对等互连的路由限制，从4000 路由提升至 10,000 路由。
+	- 服务的全球连接。在任何区域（国家/地区云除外）创建的 ExpressRoute 线路都将能够访问位于全球其他区域的资源。例如，创建于欧洲西部的虚拟网络可以通过在硅谷设置的 ExpressRoute 线路进行访问。
+	- 增加了每个 ExpressRoute 线路的 VNet 链接数量，从 10 增加至更大的限制，具体取决于线路的带宽。
 
 ## 后续步骤
 
-- 查找服务提供商。请参阅 [ExpressRoute 服务提供商和位置](/documentation/articles/expressroute-locations)。
-- 配置 ExpressRoute 连接。有关说明，请参阅[通过网络服务提供商配置 ExpressRoute 连接](/documentation/articles/expressroute-configuring-nsps)或[通过 Exchange 提供商配置 ExpressRoute 连接](/documentation/articles/expressroute-configuring-exps)。 
+- 了解 ExpressRoute 连接和路由域。请参阅 [ExpressRoute 线路和路由域](/documentation/articles/expressroute-circuit-peerings)。
+- 查找服务提供商。请参阅 [ExpressRoute 合作伙伴和对等位置](/documentation/articles/expressroute-locations)。
+- 确保符合所有先决条件。请参阅 [ExpressRoute 先决条件](/documentation/articles/expressroute-prerequisites)。
+- 请参阅[路由](/documentation/articles/expressroute-routing)、[NAT](/documentation/articles/expressroute-nat) 和 [QoS](/documentation/articles/expressroute-qos) 的要求。
+- 配置 ExpressRoute 连接。
+	- [创建 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-classic)
+	- [配置路由](/documentation/articles/expressroute-howto-routing-classic)
+	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
 
-<!---HONumber=69-->
+<!---HONumber=82-->

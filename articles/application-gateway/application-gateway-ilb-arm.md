@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="使用 Azure 资源管理器创建和配置具有内部负载平衡器 (ILB) 的应用程序网关 | Windows Azure"
+   pageTitle="使用 Azure 资源管理器创建和配置具有内部负载平衡器 (ILB) 的应用程序网关 | Microsoft Azure"
    description="本页提供有关使用 Azure 资源管理器创建、配置、启动和删除具有内部负载平衡器 (ILB) 的 Azure 应用程序网关的说明"
    documentationCenter="na"
    services="application-gateway"
@@ -8,15 +8,15 @@
    editor="tysonn"/>
 <tags 
    ms.service="application-gateway"
-   ms.date="08/07/2015"
+   ms.date="09/21/2015"
    wacn.date=""/>
 
 
 # 使用 Azure 资源管理器创建具有内部负载平衡器 (ILB) 的应用程序网关
 
 > [AZURE.SELECTOR]
-- [Azure classic steps](/documentation/articles/application-gateway-ilb)
-- [Resource Manager Powershell steps](/documentation/articles/application-gateway-ilb-arm)
+- [Azure 经典模式步骤](/documentation/articles/application-gateway-ilb)
+- [资源管理器模式 Powershell 步骤](/documentation/articles/application-gateway-ilb-arm)
 
 可以配置使用面对 Internet 的 VIP 或不向 Internet 公开的内部终结点（也称为内部负载平衡器 (ILB) 终结点）的应用程序网关。配置使用 ILB 的网关适用于不向 Internet 公开的内部业务线应用程序。对于位于不向 Internet 公开的安全边界内的多层应用程序中的服务/层也很有用，但仍需要执行循环负载分散、会话粘性或 SSL 终止。本文将引导你配置具有 ILB 的应用程序网关。
 
@@ -39,7 +39,8 @@
  
 ## 创建新的应用程序网关
 
-使用 Azure 经典门户和 Azure 资源管理器的差别在于创建应用程序网关的顺序和需要配置的项。使用资源管理器，组成应用程序网关的所有项都将分开配置，然后放在一起创建应用程序网关资源。
+使用 Azure 经典门户和 Azure 资源管理器的差别在于创建应用程序网关的顺序和需要配置的项。
+使用资源管理器，组成应用程序网关的所有项都将分开配置，然后放在一起创建应用程序网关资源。
 
 
 以下是创建应用程序网关所要执行的步骤：
@@ -103,6 +104,12 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 
 使用前缀 10.0.0.0/16 和子网 10.0.0.0/24，在中国北部区域的“appw-rg”资源组中创建名为“appgwvnet”的虚拟网络
 	
+### 步骤 3
+
+	$subnet=$vnet.subnets[0]
+
+将子网对象分配到变量 $subnet 以完成后续步骤。
+ 
 
 ## 创建应用程序网关配置对象
 
@@ -154,7 +161,7 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 
 配置应用程序网关的实例大小
 
->[AZURE.NOTE]*InstanceCount* 的默认值为 2，最大值为 10。*GatewaySize* 的默认值为 Medium。你可以在 Standard\_Small、Standard\_Medium 和 Standard\_Large 之间进行选择。
+>[AZURE.NOTE] *InstanceCount* 的默认值为 2，最大值为 10。*GatewaySize* 的默认值为 Medium。你可以在 Standard\_Small、Standard\_Medium 和 Standard\_Large 之间进行选择。
 
 ## 使用 New-AzureApplicationGateway 创建应用程序网关
 
@@ -201,7 +208,7 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 
 此示例演示了一个正常运行并已准备好将流量定向到 `http://<generated-dns-name>.cloudapp.net` 的应用程序网关。
 
-	PS C:\> Get-AzureApplicationGateway -Name appgwtest -ResourceGroupName app-rg
+	PS C:\> Get-AzureApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
 	VERBOSE: 8:09:28 PM - Begin Operation: Get-AzureApplicationGateway 
 	VERBOSE: 8:09:30 PM - Completed Operation: Get-AzureApplicationGateway
@@ -230,7 +237,7 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 
 获取应用程序网关对象，并将其关联到变量“$getgw”：
  
-	$getgw =  Get-AzureApplicationGateway -Name appgwtest -ResourceGroupName app-rg
+	$getgw =  Get-AzureApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
 ### 步骤 2
 	 
@@ -247,7 +254,7 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 应用程序网关进入停止状态后，请使用 `Remove-AzureApplicationGateway` cmdlet 删除该服务。
 
 
-	PS C:\> Remove-AzureApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+	PS C:\> Remove-AzureApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Force
 
 	VERBOSE: 10:49:34 PM - Begin Operation: Remove-AzureApplicationGateway 
 	VERBOSE: 10:50:36 PM - Completed Operation: Remove-AzureApplicationGateway
@@ -255,13 +262,13 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 	----       ----------------     ------------                             ----
 	Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 
->[AZURE.NOTE]可以使用“-force”开关来抑制删除确认消息
+>[AZURE.NOTE] 可以使用“-force”开关来抑制删除确认消息
 >
 
 若要验证是否已删除服务，可以使用 `Get-AzureApplicationGateway` cmdlet。此步骤不是必需的。
 
 
-	PS C:\>Get-AzureApplicationGateway -Name appgwtest-ResourceGroupName app-rg
+	PS C:\>Get-AzureApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 
 	VERBOSE: 10:52:46 PM - Begin Operation: Get-AzureApplicationGateway 
 
@@ -279,4 +286,4 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 <!--- [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)-->
 - [Azure 流量管理器](/documentation/services/traffic-manager/)
 
-<!---HONumber=69-->
+<!---HONumber=82-->

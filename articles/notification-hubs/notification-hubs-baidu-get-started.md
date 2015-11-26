@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure 通知中心入门"
-	description="了解如何使用 Azure 通知中心推送通知。"
+	pageTitle="通过百度开始使用 Azure 通知中心 | Microsoft Azure"
+	description="在本教程中，你将了解如何通过百度使用 Azure 通知中心将通知推送到 Android 设备。"
 	services="notification-hubs"
 	documentationCenter="android"
 	authors="wesmc7777"
@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="06/16/2015"
+	ms.date="09/03/2015"
 	wacn.date=""/>
-# 通知中心入门
+# 通过百度开始使用通知中心
 
-[AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
+[AZURE.INCLUDE [notification-hubs-selector-get-started](../includes/notification-hubs-selector-get-started)]
 
 ##概述
 
@@ -23,26 +23,18 @@
 
 本教程需要的内容如下：
 
-+ Android SDK（它假定你将使用 Eclipse），你可以从<a href="http://go.microsoft.com/fwlink/?LinkId=389797">此处</a>下载该 SDK
++ Android SDK（我们假设你要使用 Eclipse），可从 <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android 站点</a>下载该 SDK
 + [移动服务 Android SDK]
 + [百度推送 Android SDK]
 
->[AZURE.NOTE]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://www.windowsazure.cn/zh-cn/pricing/1rmb-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.cn%2Fzh-cn%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F)。
+>[AZURE.NOTE]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fzh-CN%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)。
 
-本教程将指导你完成启用推送通知的以下基本步骤：
 
-* [创建百度帐户](#createBaiduAccount)
-* [注册为百度开发者](#registerBaiduDeveloper)
-* [创建百度云推送项目](#createBaiduPushProject)
-* [配置通知中心](#configure-hub)
-* [将你的应用程序连接到通知中心](#connecting-app)
-* [向应用程序发送通知](#send)
+##创建百度帐户
 
-##<a id="createBaiduAccount"></a>创建百度帐户
+若要使用百度，你必须有一个百度帐户。如果你已有一个帐户，请登录[百度门户]，并跳到下一步骤。否则请参阅以下说明创建百度帐户。
 
-若要使用百度，必须创建帐户。如果你已有帐户，请使用百度帐户登录到[百度门户]，并跳到下一个步骤；否则，请参阅下面有关如何创建新百度帐号的说明。
-
-1. 转到百度门户并单击“登录”链接。[]单击“立即注册”以启动新帐户注册过程。 
+1. 转到[百度门户]并单击“登录”链接。单击“立即注册”以启动帐户注册过程。
 
    	![][1]
 
@@ -50,7 +42,7 @@
 
    	![][2]
 
-3. 系统会将一封电子邮件发送到你输入的电子邮件地址，该邮件包含一个用于激活你的百度帐号的链接。
+3. 系统会将一封电子邮件发送到你输入的电子邮件地址，该邮件包含一个用于激活你的百度帐户的链接。
 
    	![][3]
 
@@ -58,9 +50,9 @@
 
    	![][4]
 
-当你有已激活的百度帐户后，请使用你的帐户登录到[百度门户]。
+当你有已激活的百度帐户后，请登录[百度门户]。
 
-##<a id="registerBaiduDeveloper"></a>注册为百度开发者
+##注册为百度开发者
 
 1. 登录到[百度门户]后，请单击“更多>>”。
 
@@ -78,7 +70,7 @@
 
   	![][8]
 
-5. 输入你的名称、说明以及用于接收验证短信的手机号码，然后单击“发送验证码”。请注意，对于国际电话号码，你需要将国家/地区代码括在括号内，例如对于美国号码，电话号码将为 **(1)1234567890**。
+5. 输入你的名称、说明以及用于接收验证短信的手机号码，然后单击“发送验证码”。请注意，对于国际电话号码，你需要将国家/地区代码括在括号内。例如，对于美国号码，电话号码类似于 **(1)1234567890**。
 
   	![][9]
 
@@ -92,7 +84,7 @@
 
   	![][11]
 
-##<a id="createBaiduPushProject"></a>创建百度云推送项目
+##创建百度云推送项目
 
 在创建百度云推送项目时，你将收到应用程序 ID、API 密钥和密钥。
 
@@ -124,7 +116,7 @@
 
   	![][15]
 
-8. 创建成功后，将显示一个页面，其中包含 AppID、“API 密钥”和“密钥”。请记下 **API 密钥**和**机密密钥**，我们将在以后使用它们。
+8. 成功创建百度云推送项目后，将显示一个页面，其中包含“AppID”、“API 密钥”和“机密密钥”。请记下 API 密钥和机密密钥，因为稍后将要用到。
 
   	![][16]
 
@@ -142,13 +134,13 @@
 
 你将会看到“保存成功!”消息。
 
-##<a id="configure-hub"></a>配置通知中心
+##配置通知中心
 
-1. 登录到 [Azure 管理门户]，然后单击屏幕底部的“+新建”。
+1. 登录到 [Azure 门户]，然后单击屏幕底部的“+新建”。
 
-2. 依次单击“应用程序服务”、“服务总线”、“通知中心”、“快速创建”。
- 
-3. 为你的**通知中心**提供名称，选择要在其中创建此通知中心的**区域**和**命名空间**，然后单击“创建新的通知中心”
+2. 依次单击“应用程序服务”、“服务总线”、“通知中心”和“快速创建”。
+
+3. 为你的**通知中心**提供名称，选择要在其中创建此通知中心的**区域**和**命名空间**，然后单击“创建新的通知中心”。
 
   	![][17]
 
@@ -160,7 +152,7 @@
 
   	![][19]
 
-6. 向下滚动到“百度通知设置”部分，然后输入先前从百度控制台获得的百度云推送项目的 **API 密钥**和**机密密钥**。在输入这些值后，单击“保存”。
+6. 向下滚动到“百度通知设置”部分，然后输入先前从百度控制台获得的百度云推送项目的 API 密钥和机密密钥。单击“保存”。
 
   	![][20]
 
@@ -172,9 +164,9 @@
 
     ![][22]
 
-##<a id="connecting-app"></a>将应用连接到通知中心
+##将你的应用连接到通知中心
 
-1. 在 Eclipse ADT 中，创建新的 Android 项目（“文件”->“新建”->“Android 应用程序”）。
+1. 在 Eclipse ADT 中，创建新的 Android 项目（“文件”>“新建”>“Android 应用程序项目”）。
 
     ![][23]
 
@@ -190,11 +182,11 @@
 
     ![][26]
 
-5. 下载并解压缩[移动服务 Android SDK]，打开 **notificationhubs** 文件夹，将 **notification-hubs-x.y.jar** 文件复制到 Eclipse 项目的 *libs* 文件夹，并刷新 *libs* 文件夹。
+5. 下载并解压缩[移动服务 Android SDK]，打开 **notificationhubs** 文件夹，将 **notification-hubs-x.y.jar** 文件复制到 Eclipse 项目的 **libs** 文件夹，并刷新 *libs* 文件夹。
 
-6. 下载并解压缩[百度推送 Android SDK]，打开 **libs** 文件夹，将 *pushservice-x.y.z jar* 文件以及 *armeabi* 和 *mips* 文件夹复制到 Android 应用程序的 **libs** 文件夹。
+6. 下载并解压缩[百度推送 Android SDK]，打开 **libs** 文件夹，将 **pushservice-x.y.z jar** 文件以及 **armeabi** 和 **mips** 文件夹复制到 Android 应用程序的 **libs** 文件夹。
 
-7. 打开 Android 项目的 **AndroidManifest.xml**，并添加百度 SDK 所需的权限。
+7. 打开 Android 项目的 **AndroidManifest.xml**，文件并添加百度 SDK 所需的权限。
 
 	    <uses-permission android:name="android.permission.INTERNET" />
 	    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -209,11 +201,11 @@
 	    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
 	    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 
-8. 向 **AndroidManifest.xml** 中的 *application* 元素添加 *android:name* 属性，并替换 *yourprojectname*（例如 **com.example.BaiduTest**）：确保此项目名称与你在百度控制台中配置的项目名称匹配。
+8. 向 **AndroidManifest.xml** 中的 **application** 元素添加 **android:name** 属性，并替换 *yourprojectname*（例如 **com.example.BaiduTest**）。确保此项目名称与你在百度控制台中配置的项目名称匹配。
 
 		<application android:name="yourprojectname.DemoApplication"
 
-9. 在 .MainActivity 活动元素后的 application 元素内添加以下配置，并替换 *yourprojectname*（例如 **com.example.BaiduTest**）：
+9. 在 **.MainActivity** 活动元素后的 application 元素内添加以下配置，并替换 *yourprojectname*（例如 **com.example.BaiduTest**）：
 
 		<receiver android:name="yourprojectname.MyPushMessageReceiver">
 		    <intent-filter>
@@ -222,7 +214,7 @@
 		        <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
 		    </intent-filter>
 		</receiver>
-		
+
 		<receiver android:name="com.baidu.android.pushservice.PushServiceReceiver"
 		    android:process=":bdservice_v1">
 		    <intent-filter>
@@ -231,7 +223,7 @@
 				<action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
 		    </intent-filter>
 		</receiver>
-        
+
         <receiver android:name="com.baidu.android.pushservice.RegistrationReceiver"
             android:process=":bdservice_v1">
             <intent-filter>
@@ -241,9 +233,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_REMOVED"/>
                 <data android:scheme="package" />
-            </intent-filter>                   
+            </intent-filter>
         </receiver>
-        
+
         <service
             android:name="com.baidu.android.pushservice.PushService"
             android:exported="true"
@@ -266,13 +258,13 @@
 				public static String NotificationHubName = "...";
 				public static String NotificationHubConnectionString = "...";
 			}
-	
-	使用先前从百度云项目中检索到的内容设置 *API\_KEY* 的值，使用 Azure 门户中的通知中心名称设置 *NotificationHubName*，并使用 Azure 门户中的 DefaultListenSharedAccessSignature 设置 *NotificationHubConnectionString*。
+
+	使用先前从百度云项目中检索到的内容设置 **API\_KEY** 的值，使用 Azure 门户中的通知中心名称设置 **NotificationHubName**，并使用 Azure 门户中的 DefaultListenSharedAccessSignature 设置 **NotificationHubConnectionString**。
 
 11. 添加一个名为 **DemoApplication.java** 的新类，并向此类中添加以下代码：
 
 		import com.baidu.frontia.FrontiaApplication;
-		
+
 		public class DemoApplication extends FrontiaApplication {
 		    @Override
 		    public void onCreate() {
@@ -280,7 +272,7 @@
 		    }
 		}
 
-12. 添加另一个名为 **MyPushMessageReceiver.java** 的新类，并向此类中添加以下代码。此类用于处理从百度推送服务器收到的推送通知：
+12. 添加另一个名为 **MyPushMessageReceiver.java** 的新类，并向此类中添加以下代码。此类用于处理从百度推送服务器收到的推送通知。
 
 		import java.util.List;
 		import android.content.Context;
@@ -288,14 +280,14 @@
 		import android.util.Log;
 		import com.baidu.frontia.api.FrontiaPushMessageReceiver;
 		import com.microsoft.windowsazure.messaging.NotificationHub;
-		
+
 		public class MyPushMessageReceiver extends FrontiaPushMessageReceiver {
 		    /** TAG to Log */
 			public static NotificationHub hub = null;
 			public static String mChannelId, mUserId;
 		    public static final String TAG = MyPushMessageReceiver.class
 		            .getSimpleName();
-		    
+
 			@Override
 		    public void onBind(Context context, int errorCode, String appid,
 		            String userId, String channelId, String requestId) {
@@ -305,30 +297,30 @@
 		        Log.d(TAG, responseString);
 		        mChannelId = channelId;
 		        mUserId = userId;
-		        
+
 		        try {
 		       	 if (hub == null) {
 		                hub = new NotificationHub(
-		                		ConfigurationSettings.NotificationHubName, 
-		                		ConfigurationSettings.NotificationHubConnectionString, 
+		                		ConfigurationSettings.NotificationHubName,
+		                		ConfigurationSettings.NotificationHubConnectionString,
 		                		context);
 		                Log.i(TAG, "Notification hub initialized");
 		            }
 		        } catch (Exception e) {
 		           Log.e(TAG, e.getMessage());
 		        }
-		        
+
 		        registerWithNotificationHubs();
 			}
-		    
+
 		    private void registerWithNotificationHubs() {
 		       new AsyncTask<Void, Void, Void>() {
 		          @Override
 		          protected Void doInBackground(Void... params) {
 		             try {
 		            	 hub.registerBaidu(mUserId, mChannelId);
-		            	 Log.i(TAG, "Registered with Notification Hub - '" 
-		     	    			+ ConfigurationSettings.NotificationHubName + "'" 
+		            	 Log.i(TAG, "Registered with Notification Hub - '"
+		     	    			+ ConfigurationSettings.NotificationHubName + "'"
 		     	    			+ " with UserId - '"
 		     	    			+ mUserId + "' and Channel Id - '"
 		     	    			+ mChannelId + "'");
@@ -339,7 +331,7 @@
 		         }
 		       }.execute(null, null, null);
 		    }
-		    
+
 		    @Override
 		    public void onSetTags(Context context, int errorCode,
 		            List<String> sucessTags, List<String> failTags, String requestId) {
@@ -348,7 +340,7 @@
 		                + " requestId=" + requestId;
 		        Log.d(TAG, responseString);
 		    }
-		
+
 		    @Override
 		    public void onDelTags(Context context, int errorCode,
 		            List<String> sucessTags, List<String> failTags, String requestId) {
@@ -357,7 +349,7 @@
 		                + " requestId=" + requestId;
 		        Log.d(TAG, responseString);
 		    }
-		
+
 		    @Override
 		    public void onListTags(Context context, int errorCode, List<String> tags,
 		            String requestId) {
@@ -365,26 +357,26 @@
 		                + tags;
 		        Log.d(TAG, responseString);
 		    }
-		
+
 		    @Override
 		    public void onUnbind(Context context, int errorCode, String requestId) {
 		        String responseString = "onUnbind errorCode=" + errorCode
 		                + " requestId = " + requestId;
 		        Log.d(TAG, responseString);
 		    }
-		
+
 		    @Override
 		    public void onNotificationClicked(Context context, String title,
 		            String description, String customContentString) {
-		        String notifyString = "title=\"" + title + "\" description=\""
-		                + description + "\" customContent=" + customContentString;
+		        String notifyString = "title="" + title + "" description=""
+		                + description + "" customContent=" + customContentString;
 		        Log.d(TAG, notifyString);
 		    }
-		
+
 		    @Override
 		    public void onMessage(Context context, String message,
 		            String customContentString) {
-		        String messageString = "message=\"" + message + "\" customContentString=" + customContentString;
+		        String messageString = "message="" + message + "" customContentString=" + customContentString;
 		        Log.d(TAG, messageString);
 		    }
 		}
@@ -394,23 +386,24 @@
 	        PushManager.startWork(getApplicationContext(),
 	                PushConstants.LOGIN_TYPE_API_KEY, ConfigurationSettings.API_KEY);
 
-and add the following import statements at the top:
+14. 打开顶部的以下 import 语句：
+
 			import com.baidu.android.pushservice.PushConstants;
 			import com.baidu.android.pushservice.PushManager;
 
-##<a id="send"></a>向应用发送通知
+##向应用程序发送通知
 
-你可以使用通知中心从任何使用 <a href="http://msdn.microsoft.com/zh-cn/library/windowsazure/dn223264.aspx">REST 接口</a>的后端发送通知。在本教程中，我们使用 .NET 控制台应用程序来对其进行说明。
+你可以通过 Azure 通知中心从任何使用 <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST 接口</a>的后端发送通知。在本教程中，我们使用 .NET 控制台应用来对其进行说明。
 
 1. 创建新的 Visual C# 控制台应用程序：
 
 	![][30]
 
-2. 使用 <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 包</a>添加对 Azure 服务总线 SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库包管理器”和“包管理器控制台”。然后，在控制台窗口中键入以下内容并按 Enter：
+2. 使用 <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 包</a>添加对 Azure 服务总线 SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入以下内容并按 Enter：
 
         Install-Package WindowsAzure.ServiceBus
 
-3. 打开文件 Program.cs 并添加以下 using 语句：
+3. 打开文件 **Program.cs** 并添加以下 using 语句：
 
         using Microsoft.ServiceBus.Notifications;
 
@@ -423,24 +416,20 @@ and add the following import statements at the top:
 			var result = await hub.SendBaiduNativeNotificationAsync(message);
 		}
 
-5. 然后在 Main 方法中添加下列行：
+5. 在 **Main** 方法中添加下列行：
 
          SendNotificationAsync();
 		 Console.ReadLine();
 
-##<a name="test-app"></a>测试应用
+##测试应用程序
 
-若要使用实际的手机测试此应用程序，只需使用 USB 电缆将该手机连接到计算机。
+若要使用实际的手机测试此应用，只需使用 USB 电缆将该手机连接到你的计算机。这会将你的应用加载到连接的手机中。
 
-若要使用模拟器测试此应用程序，请执行以下操作：
+若要使用模拟器测试此应用，请在 Eclipse 顶部工具栏中，单击“运行”，然后选择你的应用。这将启动模拟器，然后加载并运行该应用。
 
-1. 在 Eclipse 顶部工具栏中，单击“运行”，然后选择你的应用程序。 
+该应用将从百度推送通知服务检索“userId”和“channelId”，并注册到通知中心。
 
-2. 这将在连接的手机上加载你的应用程序，或者它启动模拟器，加载并运行该应用程序。
-
-3. 此应用程序从百度推送通知服务检索“userId”和“channelId”，并注册到通知中心。
-	
-4.	若要在使用 .Net 控制台应用程序时发送测试通知，只需在 Visual Studio 中按 F5 键以运行此应用程序，此应用程序将发送一则通知，该通知将显示在你的设备或模拟器的顶部通知区域中。
+若要在使用 .Net 控制台应用程序时发送测试通知，只需在 Visual Studio 中按 F5 键以运行该应用程序。该应用程序将发送一条通知，该通知显示在设备或模拟器的顶部通知区域。
 
 
 <!-- Images. -->
@@ -481,8 +470,7 @@ and add the following import statements at the top:
 <!-- URLs. -->
 [移动服务 Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [百度推送 Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
-[Azure 管理门户]: https://manage.windowsazure.cn/
-[]: http://www.baidu.com/
+[Azure 门户]: https://manage.windowsazure.com/
 [百度门户]: http://www.baidu.com/
 
-<!---HONumber=76-->
+<!---HONumber=82-->

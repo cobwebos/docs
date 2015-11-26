@@ -1,6 +1,6 @@
 <properties
 	pageTitle="本地/云混合应用程序 (.NET) | Microsoft Azure"
-	description="了解如何使用 Azure Service Bus 中继创建 .NET 本地/云混合应用程序。"
+	description="了解如何使用 Azure 服务总线中继创建 .NET 本地/云混合应用程序。"
 	services="service-bus"
 	documentationCenter=".net"
 	authors="sethmanheim"
@@ -9,12 +9,12 @@
 
 <tags
 	ms.service="service-bus"
-	ms.date="06/02/2015"
+	ms.date="10/07/2015"
 	wacn.date=""/>
 
-# 使用 Service Bus 中继创建 .NET 本地/云混合应用程序
+# 使用 Azure 服务总线中继创建 .NET 本地/云混合应用程序
 
-## 介绍
+##介绍
 
 使用 Visual Studio 2013 和免费的 Azure SDK for .NET，可以轻松地开发针对 Microsoft Azure 的混合云应用程序。本文假设你之前未使用过 Azure。在不到 30 分钟的时间内，你就能让使用多个 Azure 资源的应用程序在云中启动并运行。
 
@@ -25,7 +25,7 @@
 
 [AZURE.INCLUDE [create-account-note](../includes/create-account-note.md)]
 
-## 服务总线中继功能将为混合解决方案带来哪些帮助
+##服务总线中继功能将为混合解决方案带来哪些帮助
 
 业务解决方案通常由为处理独特的新业务需求而编写的自定义代码和已有的解决方案和系统所提供的现有功能组成。
 
@@ -45,7 +45,7 @@
 
 ![][1]
 
-## 设置开发环境
+##设置开发环境
 
 在你可以开始开发 Azure 应用程序之前，需要获取相应工具并设置开发环境。
 
@@ -138,13 +138,13 @@
 
     ![][12]
 
-7.  如果你已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。否则，请访问 [NuGet][]，然后单击“安装 NuGet”[](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)。按照提示操作以安装 NuGet 包管理器，然后重新启动 Visual Studio。
+7.  如果你已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。否则，请访问 [NuGet][]，然后单击[“安装 NuGet”](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)。按照提示操作以安装 NuGet 包管理器，然后重新启动 Visual Studio。
 
 8.  在解决方案资源管理器中，右键单击“引用”，然后单击“管理 NuGet 包”。
 
 9.  在“NuGet”对话框的左栏中，单击“联机”。
 
-10. 	在右栏中，单击“搜索”框，键入“**服务总线**”，然后选择“Microsoft Azure 服务总线”项。单击“安装”以完成安装，然后关闭此对话框。
+10. 在右栏中，单击“搜索”框，键入“**服务总线**”，然后选择“Microsoft Azure 服务总线”项。单击“安装”以完成安装，然后关闭此对话框。
 
     ![][13]
 
@@ -549,8 +549,7 @@ Azure 将按使用的服务器小时数对 Web 角色实例计费。你的应用
 
 若要了解有关 Service Bus 的详细信息，请参阅以下资源：
 
-* [Azure 服务总线][sbmsdn]  
-* [Service Bus 操作方法][sbwacom]  
+* [Azure 服务总线][sbwacom]  
 * [如何使用 Service Bus 队列][sbwacomqhowto]  
 
 
@@ -559,7 +558,7 @@ Azure 将按使用的服务器小时数对 Web 角色实例计费。你的应用
   [获取工具和 SDK]: http://go.microsoft.com/fwlink/?LinkId=271920
   [NuGet]: http://nuget.org
   [2]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-3.png
-  [3]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-4-2-WebPI.png
+  [3]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-42-webpi.png
 
 
   [Azure 管理门户]: http://manage.windowsazure.cn
@@ -568,7 +567,7 @@ Azure 将按使用的服务器小时数对 Web 角色实例计费。你的应用
 
 
 
-  [使用 NuGet 服务总线包]: http://go.microsoft.com/fwlink/?LinkId=234589
+  [使用 NuGet 服务总线包]: https://msdn.microsoft.com/zh-cn/library/azure/dn741354.aspx
   [10]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-1.png
   [11]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-1.png
   [12]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-con-3.png
@@ -605,10 +604,8 @@ Azure 将按使用的服务器小时数对 Web 角色实例计费。你的应用
   [43]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/getting-started-hybrid-43.png
   [45]: ./media/service-bus-dotnet-hybrid-app-using-service-bus-relay/hy-web-45.png
 
-  [sbmsdn]: http://msdn.microsoft.com/zh-cn/library/azure/ee732537.aspx
-  [sbwacom]: /documentation/services/service-bus/
-  [sbwacomqhowto]: /develop/net/how-to-guides/service-bus-queues/
-  [executionmodels]: http://azure.microsoft.com/develop/net/fundamentals/compute/
- 
+  [sbwacom]: /services/service-bus/
+  [sbwacomqhowto]: /documentation/articles/service-bus-dotnet-how-to-use-queues
+  [executionmodels]: /documentation/articles/fundamentals-application-models
 
-<!---HONumber=74-->
+<!---HONumber=82-->

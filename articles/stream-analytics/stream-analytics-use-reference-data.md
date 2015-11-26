@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="09/09/2015" 
+	ms.date="10/05/2015" 
 	wacn.date=""/>
 
 # 将引用数据用作输入
@@ -70,7 +70,7 @@
 
 如果你的引用数据是缓慢变化的数据集，则使用 {date} 和 {time} 令牌在输入配置中指定路径模式即可实现对刷新引用数据的支持。流分析将根据此路径模式选取引用数据定义。例如，使用 ````"/sample/{date}/{time}/products.csv"```` 模式时，日期格式为“YYYY-MM-DD”，时间格式为“HH:mm”，这是告诉流分析在 2015 年 4 月 16 日下午 5:30（UTC 时区）提取更新的 blob ````"/sample/2015-04-16/17:30/products.csv"````。
 
-> [AZURE.NOTE]当前，流分析作业仅在计算机时间与 blob 名称中的编码时间一致时查找 blob 刷新。例如，作业将查找 2015 年 4 月 16 日 UTC 时区下午 5:30 与下午 5:30:59.9 的 /sample/2015-04-16/17:30/products.csv。当计算机时钟到达下午 5:31 时，流分析作业会停止查找 /sample/2015-04-16/17:30/products.csv，开始查找 /sample/2015-04-16/17:31/products.csv。仅在作业首次开始的时候，才会考虑以前的引用数据 blob。此时，作业查找的是在指定的作业开始时间之前生成的最新 blob。这样做是为了确保在作业开始时存在非空的引用数据集。如果找不到此类数据集，则作业会失败，将向用户显示一个诊断通知。
+> [AZURE.NOTE] 当前，流分析作业仅在计算机时间与 blob 名称中的编码时间一致时查找 blob 刷新。例如，作业将查找 2015 年 4 月 16 日 UTC 时区下午 5:30 与下午 5:30:59.9 的 /sample/2015-04-16/17:30/products.csv。当计算机时钟到达下午 5:31 时，流分析作业会停止查找 /sample/2015-04-16/17:30/products.csv，开始查找 /sample/2015-04-16/17:31/products.csv。仅在作业首次开始的时候，才会考虑以前的引用数据 blob。此时，作业查找的是在指定的作业开始时间之前生成的最新 blob。这样做是为了确保在作业开始时存在非空的引用数据集。如果找不到此类数据集，则作业会失败，将向用户显示一个诊断通知。
 
 [Azure 数据工厂](http://azure.microsoft.com/documentation/services/data-factory/)可用来安排这样的任务，创建流分析更新引用数据定义所需的已更新 blob。数据工厂是一项基于云的数据集成服务，可对数据移动和转换进行安排并使其实现自动化。数据工厂支持[连接到大量基于云和本地的数据存储](./articles/data-factory-data-movement-activities.md)以及按你指定的定期计划轻松地移动数据。有关如何将数据工厂管道设置为生成按预定义计划刷新的流分析引用数据的详细信息和分步指导，请查看此 [GitHub 示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs)。
 
@@ -93,4 +93,4 @@
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=79-->
+<!---HONumber=82-->

@@ -1,24 +1,24 @@
 <properties 
-	pageTitle="如何缩放编码保留单元" 
+	pageTitle="如何使用 Azure 管理门户缩放编码保留单位" 
 	description="了解如何通过指定要为帐户设置的“按需流式处理保留单位”和“编码保留单位”数，缩放 Media Services 。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,milangada" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015"
+<tags
+	ms.service="media-services"
+	ms.date="10/15/2015"
 	wacn.date=""/>
 
 
-#如何缩放编码
+#如何使用 Azure 管理门户缩放编码
 
 > [AZURE.SELECTOR]
 - [.NET](/documentation/articles/media-services-dotnet-encoding-units)
 - [Portal](/documentation/articles/media-services-portal-encoding-units)
-- [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+- [REST](https://msdn.microsoft.com/zh-cn/library/azure/dn859236.aspx)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 
 ##概述
@@ -53,4 +53,9 @@ Media Services 帐户与保留单元类型相关联，后者决定了编码作�
 
 有关配额和限制以及如何开具支持票证的信息，请参阅[配额和限制](/documentation/articles/media-services-quotas-and-limitations)。
 
-<!---HONumber=76-->
+
+
+
+ 
+
+<!---HONumber=82-->

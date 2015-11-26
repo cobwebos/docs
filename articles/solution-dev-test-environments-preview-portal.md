@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="09/17/2015"
+   ms.date="10/08/2015"
    wacn.date=""/>
 
 # Microsoft Azure 中的开发和测试环境
@@ -41,7 +41,7 @@ Azure 资源管理器模板定义应用程序使用的所有 Azure 资源。你�
 
 > [AZURE.NOTE]你可以通过单击[预配包含 SQL 数据库的 Web 应用](http://azure.microsoft.com/documentation/templates/201-web-app-sql-database/)一文中的“部署到 Azure”按钮直接将模板部署到 Azure。你可能发现这对了解模板很有帮助，但这样做并不能使用应用程序代码编辑、保存模板与参数值及控制其版本。本文中的步骤说明如何使用应用程序代码保存模板和参数值及控制其版本。
 
-  **步骤 1：**查看 201-web-app-sql-database 文件夹中 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json) 文件的内容。这是 Azure 资源管理器模板文件。在视图模式中，单击“原始”按钮。[](https://github.com/Azure/azure-quickstart-templates/raw/master/201-web-app-sql-database/azuredeploy.json)使用鼠标选择此文件的整个内容，然后将它以“TestApp1-Template.json”文件名保存到计算机。
+  **步骤 1：**查看 201-web-app-sql-database 文件夹中 [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json) 文件的内容。这是 Azure 资源管理器模板文件。在视图模式中，单击[“原始”](https://github.com/Azure/azure-quickstart-templates/raw/master/201-web-app-sql-database/azuredeploy.json)按钮。使用鼠标选择此文件的整个内容，然后将它以“TestApp1-Template.json”文件名保存到计算机。
 
 在该模板文件中，你会看到“resources”部分，其中定义了此模板创建的 Azure 资源。在其他资源类型中，此模板将创建 [Azure Web 应用](app-service-web/app-service-web-overview.md)和 [Azure SQL 数据库](sql-database/sql-database-technical-overview.md)资源。
 
@@ -53,7 +53,7 @@ Azure 资源管理器模板定义应用程序使用的所有 Azure 资源。你�
 
 你可能希望在每个环境中创建相同的 Azure 资源，但也可能希望在每个环境中设置不同的资源。这就是参数文件的作用。
 
-  **步骤 2：**查看 201-web-app-sql-database 文件夹中 [azuredeploy-parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy-parameters.json) 文件的内容。这是在步骤 1 中保存的模板文件的参数文件。在视图模式中，单击“原始”按钮。[](https://github.com/Azure/azure-quickstart-templates/raw/master/201-web-app-sql-database/azuredeploy-parameters.json)使用鼠标选择此文件的整个内容，然后使用以下名称将它保存在计算机上的三个不同文件中：
+  **步骤 2：**查看 201-web-app-sql-database 文件夹中 [azuredeploy-parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy-parameters.json) 文件的内容。这是在步骤 1 中保存的模板文件的参数文件。在视图模式中，单击[“原始”](https://github.com/Azure/azure-quickstart-templates/raw/master/201-web-app-sql-database/azuredeploy-parameters.json)按钮。使用鼠标选择此文件的整个内容，然后使用以下名称将它保存在计算机上的三个不同文件中：
 
 - TestApp1-Parameters-Development.json
 - TestApp1-Parameters-Test.json
@@ -176,7 +176,7 @@ Azure 资源管理器模板定义应用程序使用的所有 Azure 资源。你�
 
   确保已按[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure) 一文中的详述，在 Windows 计算机上安装了 PowerShell 并已连接到你的订阅。在 PowerShell 命令提示符下，键入以下命令以创建开发环境的资源组。
 
-	New-AzureResourceGroup -Name TestApp1-Development -Location "Central US"
+	New-AzureRmResourceGroup -Name TestApp1-Development -Location "China North"
 
   如果命令成功，将返回以下信息：
 
@@ -196,11 +196,11 @@ Azure 资源管理器模板定义应用程序使用的所有 Azure 资源。你�
 
   若要创建测试环境的资源组，请键入以下命令：
 
-	New-AzureResourceGroup -Name TestApp1-Test -Location "Central US"
+	New-AzureResourceGroup -Name TestApp1-Test -Location "China North"
 
   若要创建预生产环境的资源组，请键入以下命令：
 
-	New-AzureResourceGroup -Name TestApp1-Pre-Production -Location "Central US"
+	New-AzureResourceGroup -Name TestApp1-Pre-Production -Location "China North"
 
  **步骤 6：**使用应用程序的模板文件，将 Azure 资源部署到每个环境的资源组，并使用下列任一方法将其部署到每个环境的参数文件。这两种方法会达到完全相同的效果。
 
@@ -226,11 +226,11 @@ Azure 资源管理器模板定义应用程序使用的所有 Azure 资源。你�
 	data:    -----------------------------  ------------  ----------------------------
 	data:    siteName                       String        TestApp1Dev
 	data:    hostingPlanName                String        TestApp1PlanDev
-	data:    siteLocation                   String        Central US
+	data:    siteLocation                   String        China North
 	data:    sku                            String        Free
 	data:    workerSize                     String        0
 	data:    serverName                     String        testapp1dev
-	data:    serverLocation                 String        Central US
+	data:    serverLocation                 String        China North
 	data:    administratorLogin             String        testapp1Admin
 	data:    administratorLoginPassword     SecureString  undefined
 	data:    databaseName                   String        testapp1dev
@@ -252,9 +252,9 @@ Azure 资源管理器模板定义应用程序使用的所有 Azure 资源。你�
   
   **方法 2：**PowerShell
 
-  在 PowerShell 命令提示符下键入以下命令（将 [path] 替换为前面步骤中的文件保存路径），将资源部署到为开发环境创建的资源组。
+  在 PowerShell 命令提示符下键入以下命令（将 [path] 替换为前面步骤中的文件保存路径），将资源部署到为开发环境创建的资源组。如果你使用 Azure PowerShell 1.0 预览版，则命令为 **New-AzureRmResourceGroupDeployment**，如下所示。如果你使用的 Azure PowerShell 版本低于 1.0 预览版，则命令为 **New-AzureResourceGroupDeployment**。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName TestApp1-Development -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Development.json -Name Deployment1 
+	New-AzureRmResourceGroupDeployment -ResourceGroupName TestApp1-Development -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Development.json -Name Deployment1 
 
   如果命令成功，将返回以下信息：
 
@@ -288,11 +288,11 @@ Azure 资源管理器模板定义应用程序使用的所有 Azure 资源。你�
 
   在 PowerShell 命令提示符下键入以下命令（将 [path] 替换为前面步骤中的文件保存路径），将资源部署到为测试环境创建的资源组。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName TestApp1-Test -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Test.json -Name Deployment1
+	New-AzureRmResourceGroupDeployment -ResourceGroupName TestApp1-Test -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Test.json -Name Deployment1
 
   在 PowerShell 命令提示符下键入以下命令（将 [path] 替换为前面步骤中的文件保存路径），将资源部署到为预生产环境创建的资源组。
 
-	New-AzureResourceGroupDeployment -ResourceGroupName TestApp1-Pre-Production -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Pre-Production.json -Name Deployment1
+	New-AzureRmResourceGroupDeployment -ResourceGroupName TestApp1-Pre-Production -TemplateFile [path]TestApp1-Template.json -TemplateParameterFile [path]TestApp1-Parameters-Pre-Production.json -Name Deployment1
 
 在源代码管理系统中可以使用应用程序代码控制模板和参数文件的版本和进行维护。还可以将上述命令保存到脚本文件，以及将它们与代码一起保存。
 
@@ -342,9 +342,9 @@ Azure 资源管理器模板定义应用程序使用的所有 Azure 资源。你�
   
   **方法 2：**PowerShell
 
-  在 PowerShell 提示符下键入以下命令：
+  如果你使用 Azure PowerShell 1.0 预览版，则用于删除资源组的命令为 **Remove-AzureRmResourceGroup**，如下所示。如果你使用的 Azure PowerShell 版本低于 1.0 预览版，则命令为 **Remove-AzureResourceGroup**。在 PowerShell 提示符下键入以下命令：
 
-	Remove-AzureResourceGroup -Name TestApp1-Development
+	Remove-AzureRmResourceGroup -Name TestApp1-Development
 
   如果你在提示下输入“y”，命令将返回以下内容：
 
@@ -354,8 +354,8 @@ Azure 资源管理器模板定义应用程序使用的所有 Azure 资源。你�
 
   在 PowerShell 提示符下键入以下命令，以删除剩余的环境：
 
-	Remove-AzureResourceGroup -Name TestApp1-Test
-	Remove-AzureResourceGroup -Name TestApp1-Pre-Production
+	Remove-AzureRmResourceGroup -Name TestApp1-Test
+	Remove-AzureRmResourceGroup -Name TestApp1-Pre-Production
 
 不管使用哪种方法，一旦命令完成执行，资源组及其包含的所有资源都将不再存在，但你不再需要支付资源的使用费。
 
@@ -380,4 +380,4 @@ Azure 资源管理器模板定义应用程序使用的所有 Azure 资源。你�
 - 使用 [Visual Studio Release Management](http://msdn.microsoft.com/Library/vs/alm/Release/overview) 创建受管的连续部署管道，以快速轻松地定期发布产品。
 - 请求 [Azure 开发/测试实验室](http://azure.microsoft.com/campaigns/devtest-lab/)的预览邀请。它可让你使用模板管理开发和测试实验室环境，并配置组织内的使用配额和策略。
 
-<!---HONumber=79-->
+<!---HONumber=82-->

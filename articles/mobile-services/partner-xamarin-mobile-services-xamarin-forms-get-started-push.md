@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="06/10/2015"
+	ms.date="10/05/2015"
 	wacn.date=""/>
 
 # 向 Xamarin.Forms 应用添加推送通知
@@ -387,13 +387,13 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 1. 在管理门户中，单击“数据”选项卡，然后单击“TodoItem”表。
 
-   ![][21]
+	![][21]
 
 2. 在 **todoitem** 中，单击“脚本”选项卡，然后选择“插入”。
 
-   ![][22]
+	![][22]
 
-    This displays the function that is invoked when an insert occurs in the **TodoItem** table.
+    将显示当 **TodoItem** 表中发生插入时所调用的函数。
 
 3. 将 insert 函数替换为以下代码，然后单击“保存”：
 
@@ -514,7 +514,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 	>[AZURE.NOTE]**GcmServiceBase** 类实现 **OnRegistered()**、**OnUnRegistered()**、**OnMessage()** 和 **OnError()** 方法。必须在 **GcmService** 类中重写这些方法。
 
-6. 将以下代码添加到 **GcmService** 类，以便重写 **OnRegistered** 事件处理程序。
+6. 将以下代码添加到 **GcmService** 类，以便重写 **OnRegistered **事件处理程序。
 
         protected override void OnRegistered(Context context, string registrationId)
         {
@@ -842,4 +842,4 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 [已完成的 Xamarin.Forms Azure 推送通知示例]: https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithPushXamarinForms
  
 
-<!---HONumber=74-->
+<!---HONumber=82-->

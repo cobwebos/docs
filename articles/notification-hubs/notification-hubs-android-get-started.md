@@ -13,7 +13,7 @@
 
 # 通知中心入门（Android 应用）
 
-[AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
+[AZURE.INCLUDE [notification-hubs-selector-get-started](../includes/notification-hubs-selector-get-started)]
 
 ##概述
 
@@ -35,12 +35,12 @@
 
 ##创建支持 Google Cloud Messaging 的项目
 
-[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
+[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../includes/mobile-services-enable-google-cloud-messaging)]
 
 
 ##配置新通知中心
 
-[AZURE.INCLUDE [notification-hubs-android-configure-push](../../includes/notification-hubs-android-configure-push.md)]
+[AZURE.INCLUDE [notification-hubs-android-configure-push](../includes/notification-hubs-android-configure-push)]
 
 ##<a id="connecting-app"></a>将你的应用连接到通知中心
 
@@ -106,7 +106,7 @@
 
 
 	确保更新三个占位符：
-	* **SENDER\_ID**：将 `SENDER_ID` 设置为前面在从 [Google Cloud Console](http://cloud.google.com/console) 中创建的项目获取的项目编号。
+	* * **SENDER\_ID**：将 `SENDER_ID` 设置为前面在从 [Google Cloud Console](http://cloud.google.com/console) 中创建的项目获取的项目编号。
 	* **HubListenConnectionString**：将 `HubListenConnectionString` 设置为中心的 **DefaultListenAccessSignature** 连接字符串。在 [Azure 管理门户]上，单击中心的“仪表板”选项卡上的“查看连接字符串”，即可复制该连接字符串。
 	* **HubName**：在 Azure 中的中心页面顶部显示的通知中心名称（**不是**完整 URL）。例如 `"myhub"`。
 
@@ -531,4 +531,4 @@
 [使用通知中心发送突发新闻]: notification-hubs-aspnet-backend-android-breaking-news.md
  
 
-<!---HONumber=76-->
+<!---HONumber=82-->

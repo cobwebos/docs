@@ -21,7 +21,7 @@
 + 创建通知中心
 + 设置凭据
 
-如果你还需要为通知中心创建新的服务总线命名空间，请参阅[使用 PowerShell 管理服务总线](service-bus-powershell-how-to-provision)。
+如果你还需要为通知中心创建新的服务总线命名空间，请参阅[使用 PowerShell 管理服务总线](../service-bus/service-bus-powershell-how-to-provision.md)。
 
 不支持直接使用 Azure PowerShell 随附的 cmdlet 来管理通知中心。在 PowerShell 中，最佳方法是引用 Microsoft.ServiceBus.dll 程序集。该程序集是随[服务总线 NuGet 包](http://www.nuget.org/packages/WindowsAzure.ServiceBus/)一起分发的。
 
@@ -50,7 +50,7 @@ Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心�
 
 下面说明如何在 PowerShell 脚本中实现这些步骤：
 
-	powershell
+``` powershell
 
 	try
 	{
@@ -70,23 +70,24 @@ Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心�
 	}
 
 
-## 创建 NamespaceManager 类
+## Create the NamespaceManager class
 
-若要预配通知中心和其他服务总线实体，请从 SDK 创建 [NamespaceManager](http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.namespacemanager.aspx) 类的实例。
+To provision Notification Hubs and other Service Bus entities, create an instance of the [NamespaceManager](http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.namespacemanager.aspx) class from the SDK. 
 
-你可以使用 Azure PowerShell 附带的 [Get-AzureSBAuthorizationRule] cmdlet 检索用于提供连接字符串的授权规则。 我们会将对 `NamespaceManager` 实例的引用还原到 `$NamespaceManager` 变量中。我们将使用 `$NamespaceManager` 来预配通知中心。
+You can use the [Get-AzureSBAuthorizationRule] cmdlet included with Azure PowerShell to retrieve an authorization rule that's used to provide a connection string. We'll store a reference to the `NamespaceManager` instance in the `$NamespaceManager` variable. We will use `$NamespaceManager` to provision a notification hub.
 
-	powershell
-	$sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
+``` powershell
+$sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
 # 创建用于创建事件中心的 NamespaceManager 对象
-	Write-Output "Creating a NamespaceManager object for the [$Namespace] namespace..."
-	$NamespaceManager=[Microsoft.ServiceBus.NamespaceManager]::CreateFromConnectionString($sbr.ConnectionString);
-	Write-Output "NamespaceManager object for the [$Namespace] namespace has been successfully created."
+Write-Output "正在为 [$Namespace] 命名空间创建 NamespaceManager 对象..." 
+$NamespaceManager=[Microsoft.ServiceBus.NamespaceManager]::CreateFromConnectionString($sbr.ConnectionString); 
+Write-Output "已成功为 [$Namespace] 命名空间创建 NamespaceManager 对象。"
+```
 
 
 ## 设置新通知中心 
 
-若要设置新的通知中心，请使用[服务总线的 .NET API]。本文只着重于通知中心。若要使用其他服务总线实体，请参阅[使用 PowerShell 管理服务总线](service-bus-powershell-how-to-provision)。
+若要设置新的通知中心，请使用[服务总线的 .NET API]。本文只着重于通知中心。若要使用其他服务总线实体，请参阅[使用 PowerShell 管理服务总线](../service-bus/service-bus-powershell-how-to-provision.md)。
 
 你将在脚本的这个部分设置四个本地变量。
 
@@ -101,7 +102,7 @@ Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心�
 
 + 如果不存在，脚本将使用 WNS 凭据创建 `NotificationHubDescription`，并将其传递给 `NamespaceManager` 类 `CreateNotificationHub` 方法。
 
-	powershell
+``` powershell
 
 		$Namespace = "<Enter your namespace>
 		$Path  = "<Enter a name for your notification hub>"
@@ -111,7 +112,7 @@ Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心�
 		$WnsCredential = New-Object -TypeName Microsoft.ServiceBus.Notifications.WnsCredential -ArgumentList $WnsPackageSid,$WnsSecretkey
 
 # 查询命名空间
-	$CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
+$CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
 
 # 检查命名空间是否已存在  
 
@@ -154,7 +155,8 @@ Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心�
 - [如何使用 PowerShell 脚本创建 Service Bus 队列、主题和订阅](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
 - [如何使用 PowerShell 脚本创建 Service Bus 命名空间和事件中心](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
-一些现成的脚本也可供下载：- [服务总线 PowerShell 脚本](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
+一些现成的脚本也可供下载：
+- [服务总线 PowerShell 脚本](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
  
 
 [购买选项]: http://www.windowsazure.cn/pricing/overview/
@@ -167,4 +169,4 @@ Azure PowerShell 中的 PowerShell cmdlet 尚不支持管理 Azure 通知中心�
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/zh-cn/library/azure/dn495113.aspx
  
 
-<!---HONumber=76-->
+<!---HONumber=82-->

@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="09/09/2015" 
+	ms.date="09/29/2015" 
 	wacn.date=""/>
 
 # 设置警报
@@ -25,7 +25,7 @@
 
 ## 通过 Azure 门户设置警报
 
-可通过两种方式设置警报：
+可在 Azure 管理门户中通过两种方式设置警报：
 
 1.	流分析作业的“监视”选项卡  
 2.	管理服务中的“操作日志”  
@@ -46,7 +46,7 @@
 
 ## 通过操作日志设置警报
 
-1.	在 [Azure 门户](https://manage.windowsazure.cn)中的“管理服务”中，转到“警报”选项卡。  
+1.	在 [Azure 门户](https://manage.windowsazure.com)中的“管理服务”中，转到“警报”选项卡。  
 2.	单击“添加规则”  
 
     ![条件](./media/stream-analytics-set-up-alerts/04-stream-analytics-set-up-alerts.png)
@@ -66,4 +66,4 @@
 - [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 - [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
-<!---HONumber=79-->
+<!---HONumber=82-->

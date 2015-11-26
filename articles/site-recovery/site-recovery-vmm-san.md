@@ -7,19 +7,14 @@
 	manager="jwhit" 
 	editor="tysonn"/>
 
-<tags wacn.date="05/15/2015"
-
+<tags 
 	ms.service="site-recovery" 
-	ms.workload="backup-recovery" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/23/2015" 
-	ms.author="raynew"/>
+	ms.date="10/12/2015"
+	wacn.date=""/>
 
 # 使用 SAN 在本地 VMM 站点之间设置保护
 
-Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因为它可以安排复制、故障转移和恢复虚拟机和物理服务器。阅读 [Azure Site Recovery 概述](/documentation/articles/hyper-v-recovery-manager-overview)以了解可能的部署方案。
+Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因为它可以安排复制、故障转移和恢复虚拟机和物理服务器。阅读 [Azure Site Recovery 概述](/documentation/articles/site-recovery-overview)以了解可能的部署方案。
 
 本演练介绍如何部署 Site Recovery，以协调和自动化本地 Hyper-V 服务器上另一个 VMM 在本地站点，使用存储基于数组的 (SAN) 复制由 System Center VMM 管理的运行的虚拟机工作负载的保护。
 
@@ -60,14 +55,11 @@ Azure Site Recovery 有助于业务连续性和灾难恢复 (BCDR) 策略，因�
 
 ### VMM 先决条件
 
-- 尽管你可以为两个站点使用单个 VMM，但我们建议你在部署为物理或虚拟独立服务器或虚拟群集的、运行 System Center 2012 R2 [VMM Update Rollup 5.0](https://support.microsoft.com/zh-cn/kb/3023195) 的每个本地站点中使用一个 VMM 服务器。
+- 需要在每个本地站点中准备至少一台 VMM 服务器，该服务器部署为独立的物理或虚拟服务器，或部署为虚拟群集，在装有 [VMM 更新汇总 5.0](https://support.microsoft.com/zh-cn/kb/3023195) 的 System Center 2012 R2 上运行。
 - 要保护的主 VMM 服务器上和辅助 VMM 服务器上都至少有一个云。你要保护的主要云必须包含以下内容：
 	- 一个或多个 VMM 主机组
 	- 每个主机组中有一个或多个 Hyper-V 群集。
 	- 一个或多个位于云中源 Hyper-V 服务器上的虚拟机。
-
-辅助云必须包含以下项：- 一个或多个 VMM 主机组 - 每个主机组中有一个或多个 Hyper-V 群集。
-
 		
 ### Hyper-V 要求
 
@@ -202,47 +194,82 @@ Site Recovery 将协调 VMM 云中 Hyper-V 主机服务器上的虚拟机的保�
 
 	![注册密钥](./media/site-recovery-vmm-san/SRSAN_QuickStartRegKey.png)
 
-3. 在“准备 VMM 服务器”中，单击“生成注册密钥文件”。该密钥生成后，有效期为 5 天。如果你不用在要保护的 VMM 服务器上运行控制台，请将文件下载到 VMM 服务器可以访问的安全位置。例如，下载到某个共享中。请注意：
+4. 在“快速启动”页面上的“准备 VMM 服务器”中，单击“下载用于在 VMM 服务器上安装的 Microsoft Azure Site Recovery 提供程序”来获取最新版本的提供程序安装文件。
 
-- 如果你是第一次安装提供程序，请将它安装在群集中的活动节点上并完成安装，以在 Azure Site Recovery 保管库中注册 VMM 服务器。然后，在群集中的其他节点上安装提供程序。
-- 如果要升级提供程序版本，请在群集中的所有节点上运行提供程序安装。
+2. 在源 VMM 服务器上运行此文件。如果 VMM 部署到群集中并且你是首次安装该提供程序，请将其安装在一个活动节点上并完成安装以在保管库中注册 VMM 服务器。然后在其他节点上安装该提供程序。请注意，如果你是在升级提供程序，则需要在所有节点上进行升级，因为所有节点都应当运行相同的提供程序版本。
 
-4. 单击“下载用于在 VMM 服务器上安装的 Microsoft Azure Site Recovery 提供程序”来获取最新版本的提供程序安装文件。
-5. 在源和目标 VMM 服务器上运行此文件，以打开“Azure Site Recovery 提供程序安装程序”向导。
-6. 在“先决条件检查”页上，选择停止 VMM 服务以开始安装提供程序。该服务会停止，并将在安装程序完成时自动重新启动。如果要在 VMM 群集上安装，则需要停止“群集”角色。
 
-	![先决条件](./media/site-recovery-vmm-san/SRSAN_ProviderPrereq.png)
+3. 安装程序将执行简单的“先决条件检查”，并请求授权停止 VMM 服务以开始安装提供程序。VMM 服务将在安装程序完成时自动重新启动。如果你是在 VMM 群集上进行安装，则会提示你停止群集角色。
 
-5. 在“Microsoft 更新”中，你可以选择获取更新。当启用了此设置时，将根据你的 Microsoft 更新策略自动安装提供程序更新。
+4. 在“Microsoft 更新”中，你可以选择获取更新。当启用了此设置时，将根据你的 Microsoft 更新策略自动安装提供程序更新。
 
-安装提供程序后，继续设置以在保管库中注册服务器。
+	![Microsoft 更新](./media/site-recovery-vmm-san/VMMASRInstallMUScreen.png)
 
-6. 在“Internet 连接”页上，指定在 VMM 服务器上运行的提供程序如何连接到 Internet。你可以选择不使用代理、使用在 VMM 服务器上配置的默认代理，或使用自定义代理服务器。请注意：
 
-	- 如果要使用自定义代理服务器，请在安装提供程序之前设置它。
-	- 豁免以下地址通过代理进行路由：
-		- 用于连接到 Azure Site Recovery 的 URL：*.hypervrecoverymanager.windowsazure.cn
-- **.accesscontrol.chinacloudapi.cn
-- **.backup.windowsazure.cn
-- **.blob.core.chinacloudapi.cn
-- **.store.core.chinacloudapi.cn
-- 允许 [Azure 数据中心 IP 范围](https://msdn.microsoft.com/zh-cn/library/azure/dn175718.aspx)中所述的 IP 地址，并允许 HTTP (80) 和 HTTPS (443) 协议。 
-	- 如果你选择使用自定义代理，将使用指定的代理凭据自动创建一个 VMM 运行方式帐户 (DRAProxyAccount)。对代理服务器进行配置以便该帐户可以成功通过身份验证。
-	- 可以在 VMM 控制台中修改 VMM 运行身份帐户设置。若要执行此操作，请打开“设置”工作区，展开“安全性”，单击“运行身份帐户”，然后修改 DRAProxyAccount 的密码。你将需要重新启动 VMM 服务以使此设置生效。
-	- 将运行测试以验证 Internet 连接。任何代理错误都显示在 VMM 控制台中。
+1.  安装位置设置为 **<SystemDrive>\\Program Files\\Microsoft System Center 2012 R2\\Virtual Machine Manager\\bin**。单击“安装”按钮，开始安装提供程序。
+![InstallLocation](./media/site-recovery-vmm-san/VMMASRInstallLocationScreen.png)
 
-	![Internet 设置](./media/site-recovery-vmm-san/SRSAN_ProviderProxy.png)
 
-7. 在“注册密钥”中，选择你从 Azure Site Recovery 下载并复制到 VMM 服务器的密钥。
-8. 在“服务器名称”中，指定一个友好名称以在保管库中标识该 VMM 服务器。
 
-	![服务器注册](./media/site-recovery-vmm-san/SRSAN_ProviderRegKeyServerName.png)
+1. 安装提供程序之后，请单击“注册”按钮，以在保管库中注册服务器。![InstallComplete](./media/site-recovery-vmm-san/VMMASRInstallComplete.png)
 
-9. 在“初始云元数据同步”中，选择是否要将 VMM 服务器上所有云的元数据与保管库进行同步。此操作在每个服务器上只需执行一次。如果你不希望同步所有云，可以将此设置保留为未选中状态并在 VMM 控制台中的云属性中分别同步各个云。“数据加密”选项不适用于此方案。
+5. 在“Internet 连接”中，指定在 VMM 服务器上运行的提供程序如何连接到 Internet。选择“使用默认系统代理设置”以使用服务器上配置的默认 Internet 连接设置。
 
-	![服务器注册](./media/site-recovery-vmm-san/SRSAN_ProviderSyncEncrypt.png)
+	![Internet 设置](./media/site-recovery-vmm-san/VMMASRRegisterProxyDetailsScreen.png) 
+	- 如果希望使用自定义代理，则应当在安装该提供程序之前设置它。当配置自定义代理设置时，会运行测试来检查代理连接。
+	- 如果你确实使用自定义代理，或者你的默认代理要求进行身份验证，则需要输入代理详细信息，包括代理地址和端口。
+	- 应该能够从 VMM 服务器和 Hyper-V 主机访问以下 URL：
+	- 用于连接到 Azure 站点恢复的 URL：*.hypervrecoverymanager.windowsazure.cn 
+	- *.accesscontrol.chinacloudapi.cn 
+	- *.backup.windowsazure.cn 
+	- *.blob.core.chinacloudapi.cn 
+	- *.store.core.chinacloudapi.cn 
+	- 允许 [Azure 数据中心 IP 范围](https://msdn.microsoft.com/zh-cn/library/azure/dn175718.aspx)中所述的 IP 地址和 HTTPS (443) 协议。必须将你打算使用的 Azure 区域以及中国东部的 IP 范围加入允许列表。
 
-11. 在下一页上，单击“注册”以完成安装过程。注册后，Azure Site Recovery 将检索 VMM 服务器中的元数据。服务器显示在保管库中“服务器”页上的“资源”选项卡中。<b></b>安装提供程序后，在 VMM 控制台中修改提供程序设置。
+	- 如果你使用自定义代理，则将使用指定的代理凭据自动创建一个 VMM 运行身份帐户 (DRAProxyAccount)。对代理服务器进行配置以便该帐户可以成功通过身份验证。可以在 VMM 控制台中修改 VMM 运行身份帐户设置。若要执行此操作，请打开“设置”工作区，展开“安全性”，单击“运行身份帐户”，然后修改 DRAProxyAccount 的密码。你将需要重新启动 VMM 服务以使此设置生效。
+
+6. 在“注册密钥”中，选择你从 Azure Site Recovery 下载并复制到 VMM 服务器的密钥。
+7. 在“保管库名称”中，验证将要在其中注册服务器的保管库的名称。单击*“下一步”*。
+
+
+	![服务器注册](./media/site-recovery-vmm-san/VMMASRRegisterVaultCreds.png)
+
+9. 此设置仅适用于 VMM 到 Azure 方案，如果你是仅从 VMM 到 VMM 的用户，则可以忽略此屏幕。
+
+	![服务器注册](./media/site-recovery-vmm-san/VMMASRRegisterEncryptionScreen.png)
+
+8. 在“服务器名称”中，指定一个友好名称以在保管库中标识该 VMM 服务器。在群集配置中，请指定 VMM 群集角色名称。
+
+8. 在“初始云元数据同步”中，选择是否要将 VMM 服务器上所有云的元数据与保管库进行同步。此操作在每个服务器上只需执行一次。如果你不希望同步所有云，可以将此设置保留为未选中状态并在 VMM 控制台中的云属性中分别同步各个云。
+![服务器注册](./media/site-recovery-vmm-san/VMMASRRegisterFriendlyName.png)
+
+
+8. 单击“下一步”以完成此过程。注册后，Azure Site Recovery 将检索 VMM 服务器中的元数据。服务器显示在保管库中“服务器”页上的“VMM 服务器”选项卡中。
+
+>[AZURE.NOTE]也可使用以下命令行来安装 Azure Site Recovery 提供程序。此命令可用来将提供程序安装在 Server CORE for Windows Server 2012 R2 上
+>
+>1. 将提供程序安装文件和注册密钥下载到某个文件夹（例如 C:\\ASR）中
+>2. 停止 System Center Virtual Machine Manager 服务
+>3. 使用 **Administrator** 权限从命令提示符处执行以下命令，以便提取提供程序安装程序
+>
+    	C:\Windows\System32> CD C:\ASR
+    	C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
+>4. 执行以下命令以安装提供程序
+>
+		C:\ASR> setupdr.exe /i
+>5. 运行以下命令以注册提供程序
+>
+    	CD C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin
+    	C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>         
+ ####命令行安装参数列表####
+>
+ - **/Credentials**：用于指定注册密钥文件所在位置的必需参数  
+ - **/FriendlyName**：在 Azure Site Recovery 门户中显示的 Hyper-V 主机服务器名称的必需参数。
+ - **/EncryptionEnabled**：仅当你需要在 Azure 中以静止方式为虚拟机加密时，才需要在 VMM 到 Azure 方案中使用这个可选参数。请确保提供的文件名具有 **.pfx** 扩展名。
+ - **/proxyAddress**：可选参数，用于指定代理服务器的地址。
+ - **/proxyport**：可选参数，用于指定代理服务器的端口。
+ - **/proxyUsername**：可选参数，用于指定代理服务器用户名（如果代理服务器要求身份验证）。
+ - **/proxyPassword**：可选参数，用于指定密码，以便通过代理服务器进行身份验证（如果代理服务器要求身份验证）。
 
 
 ## 步骤 4：映射存储阵列和池
@@ -320,9 +347,9 @@ Site Recovery 将协调 VMM 云中 Hyper-V 主机服务器上的虚拟机的保�
 测试你的部署，以确保虚拟机和数据可按预期方式故障转移。为此，你将要通过选择复制组创建恢复计划。然后，对该计划运行测试故障转移。
 
 1. 在“恢复计划”选项卡上，单击“创建恢复计划”。
-1. 为恢复计划指定一个名称，并指定源和目标 VMM 服务器。源服务器必须具有启用了故障转移和恢复的虚拟机。选择“SAN”，以仅查看为 SAN 复制配置的云。
-
-	![创建恢复计划](./media/site-recovery-vmm-san/SRSAN_RPlan.png)
+2. 为恢复计划指定一个名称，并指定源和目标 VMM 服务器。源服务器必须具有启用了故障转移和恢复的虚拟机。选择“SAN”，以仅查看为 SAN 复制配置的云。
+3. 
+![创建恢复计划](./media/site-recovery-vmm-san/SRSAN_RPlan.png)
 
 1. 在“选择虚拟机”中，选择复制组。将选择与复制组关联的所有虚拟机，并将其添加到恢复计划。这些虚拟机将添加到恢复计划的默认组（组 1）中。如果需要，你可以添加更多的组。请注意，在复制后，各个虚拟机将根据恢复计划组的顺序启动。
 
@@ -334,27 +361,24 @@ Site Recovery 将协调 VMM 云中 Hyper-V 主机服务器上的虚拟机的保�
 	![选择测试网络](./media/site-recovery-vmm-san/SRSAN_TestFailover1.png)
 
 
-1. 将在副本虚拟机所在的同一主机上创建测试虚拟机。它将被添加到副本虚拟机所在的云中。
-1. 在故障转移之后，副本虚拟机的 IP 地址可能与主虚拟机的 IP 地址不同。虚拟机在启动后将更新它们使用的 DNS 服务器。你也可以添加一个脚本来更新 DNS 服务器，以确保及时更新。 
+8. 将在副本虚拟机所在的同一主机上创建测试虚拟机。它不会被添加到副本虚拟机所在的云中。
+9. 在复制之后，副本虚拟机将具有与主虚拟机的 IP 地址不同的 IP 地址。如果你是通过 DHCP 颁发地址，则 DNS 将自动更新。如果你未使用 DHCP 并且希望确保地址相同，则需要运行两个脚本。
+10. 运行此示例脚本来检索 IP 地址。
 
-#### 用于检索 IP 地址的脚本
-运行此示例脚本来检索 IP 地址。
+    	$vm = Get-SCVirtualMachine -Name <VM_NAME>
+		$na = $vm[0].VirtualNetworkAdapters>
+		$ip = Get-SCIPAddress -GrantToObjectID $na[0].id
+		$ip.address  
 
-    $vm = Get-SCVirtualMachine -Name <VM_NAME>
-	$na = $vm[0].VirtualNetworkAdapters>
-	$ip = Get-SCIPAddress -GrantToObjectID $na[0].id
-	$ip.address 
-  
-#### 用于更新 DNS 的脚本
-运行此示例脚本来更新 DNS 并指定你通过前一个示例脚本检索到的 IP 地址。
+11. 运行此示例脚本来更新 DNS 并指定你通过前一个示例脚本检索到的 IP 地址。
 
-	[string]$Zone,
-	[string]$name,
-	[string]$IP
-	)
+	[string]$Zone, 
+	[string]$name, 
+	[string]$IP 
+	) 
 	$Record = Get-DnsServerResourceRecord -ZoneName $zone -Name $name
-	$newrecord = $record.clone()
-	$newrecord.RecordData[0].IPv4Address  =  $IP
+	$newrecord = $record.clone() 
+	$newrecord.RecordData[0].IPv4Address = $IP
 	Set-DnsServerResourceRecord -zonename $zone -OldInputObject $record -NewInputObject $Newrecord
 
 
@@ -369,4 +393,4 @@ Site Recovery 将协调 VMM 云中 Hyper-V 主机服务器上的虚拟机的保�
 有关与作业和仪表板交互的详细信息，请参阅[操作和监视](https://msdn.microsoft.com/zh-cn/library/dn788906.aspx)。
 	
 
-<!---HONumber=71-->
+<!---HONumber=82-->

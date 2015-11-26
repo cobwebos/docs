@@ -1,5 +1,5 @@
 <properties
-   pageTitle="使用 Azure 备份来取代磁带基础结构 | Windows Azure"
+   pageTitle="使用 Azure 备份来取代磁带基础结构 | Microsoft Azure"
    description="了解如何 Azure 备份如何提供类似于磁带的语义，让你在 Azure 中备份和还原数据"
    services="backup"
    documentationCenter=""
@@ -8,11 +8,14 @@
    editor=""/>
 <tags
    ms.service="backup"
-   ms.date="07/01/2015"
+   ms.date="09/22/2015"
    wacn.date=""/>
 
 # 使用 Azure 备份来取代磁带基础结构
-Azure 备份和 System Center Data Protection Manager 客户可以：- 根据最适合组织需求的计划备份数据 - 长期保留备份数据 - 使用 Azure（而不是磁带）解决其长期数据保留需求。
+Azure 备份和 System Center Data Protection Manager 客户可以：
+- 根据最适合组织需求的计划备份数据
+- 长期保留备份数据
+- 使用 Azure（而不是磁带）解决其长期数据保留需求。
 
 本文将介绍客户如何启用备份和保留策略。使用磁带解决长期数据保留需求的客户现在可以使用一种强大而可行并且同样提供此功能的替代解决方案。最新版本的 Azure 备份（可从[此处](http://aka.ms/azurebackup_agent)获取）中已启用该功能。SCDPM 客户在使用此功能之前需要迁移到 UR5。
 
@@ -50,6 +53,8 @@ Azure 备份和 System Center Data Protection Manager 客户可以：- 根据最
 
 恢复点总数为 56。
 
+> [AZURE.NOTE] Azure 备份对恢复点的数量没有限制。
+
 ## 高级配置
 通过单击上述屏幕中的“修改”，客户可以进一步灵活指定保留计划。
 
@@ -61,4 +66,4 @@ Azure 备份和 System Center Data Protection Manager 客户可以：- 根据最
 - [Azure 备份简介](/documentation/articles/backup-introduction-to-azure-backup)
 - [尝试 Azure 备份](/documentation/articles/backup-try-azure-backup-in-10-mins)
 
-<!---HONumber=69-->
+<!---HONumber=82-->

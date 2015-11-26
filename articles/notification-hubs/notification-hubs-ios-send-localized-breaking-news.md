@@ -26,7 +26,6 @@
 
 本主题演示如何使用 Azure 通知中心的**模板**功能广播已按语言和设备本地化的突发新闻通知。在本教程中，你从在[使用通知中心发送突发新闻]中创建的 Windows 应用商店应用程序开始操作。完成时，你将可以注册感兴趣的突发新闻类别，指定要接收通知的语言并仅接收采用该语言的这些类别的推送通知。
 
-本教程将指导你完成启用此方案的以下基本步骤：
 
 1. [模板概念]
 2. [应用程序用户界面]
@@ -79,7 +78,7 @@
 我们现在将修改你在[使用通知中心发送突发新闻]主题中创建的“突发新闻”应用，以使用模板发送本地化的突发新闻。
 
 
-在 MainStoryboard_iPhone.storyboard 中，添加具有我们支持的三种语言的分段控件：英语、法语和汉语。
+在 MainStoryboard\_iPhone.storyboard 中，添加具有我们支持的三种语言的分段控件：英语、法语和汉语。
 
 ![][13]
 
@@ -130,7 +129,7 @@
 		            break;
 		    }
 		    
-		    NSString* template = [NSString stringWithFormat:@"{\"aps\":{\"alert\":\"$(News_%@)\"},\"inAppMessage\":\"$(News_%@)\"}", localeString, localeString];
+		    NSString* template = [NSString stringWithFormat:@"{"aps":{"alert":"$(News_%@)"},"inAppMessage":"$(News_%@)"}", localeString, localeString];
 		    
 		    [hub registerTemplateWithDeviceToken:self.deviceToken name:@"newsTemplate" jsonBodyTemplate:template expiryTemplate:@"0" tags:categories completion:completion];
 		}
@@ -232,7 +231,7 @@
 [Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-ios
 [Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-users-ios
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js.md
+[JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
 [Azure Management Portal]: https://manage.windowsazure.cn/
 [Windows Developer Preview registration steps for Mobile Services]: ../HowTo/mobile-services-windows-developer-preview-registration.md
@@ -240,4 +239,4 @@
 [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
 [适用于 iOS 的通知中心操作方法]: http://msdn.microsoft.com/zh-cn/library/jj927168.aspx
 
-<!---HONumber=76-->
+<!---HONumber=82-->

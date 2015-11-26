@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="05/28/2015"
+	ms.date="09/28/2015"
 	wacn.date=""/>
 
 
@@ -118,12 +118,10 @@
 [Azure Management Portal]: https://manage.windowsazure.cn/
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
-[Get started with data]: /documentation/articles/mobile-services-dotnet-backend-ios-get-started-data
 [Get started with authentication]: /documentation/articles/mobile-services-dotnet-backend-ios-get-started-users
-[Send push notifications to authenticated users]: /documentation/articles/mobile-services-dotnet-backend-ios-push-notifications-app-users
 [Mobile Services Objective-C how-to conceptual reference]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 [What are Notification Hubs?]: /documentation/articles/notification-hubs-overview
 [Send broadcast notifications to subscribers]: /documentation/articles/notification-hubs-ios-send-breaking-news
 [Send template-based notifications to subscribers]: /documentation/articles/notification-hubs-ios-send-localized-breaking-news
 
-<!---HONumber=71-->
+<!---HONumber=82-->

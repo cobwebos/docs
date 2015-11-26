@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="06/16/2015"
+	ms.date="09/28/2015"
 	wacn.date=""/>
 
 # 向 iOS 应用程序和 JavaScript 后端添加推送通知
@@ -35,6 +35,7 @@
 
 
 ```
+
         function insert(item, user, request) {
             request.execute();
             // Set timeout to delay the notification, to provide time for the
@@ -101,7 +102,6 @@
 [Mobile Services iOS SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 [移动服务入门]: /documentation/articles/mobile-services-ios-get-started
-[Get started with data]: /documentation/articles/mobile-services-ios-get-started-data
 [Get started with authentication]: /documentation/articles/mobile-services-ios-get-started-users
 [Azure Management Portal]: https://manage.windowsazure.cn/
 [apns 对象]: http://go.microsoft.com/fwlink/p/?LinkId=272333
@@ -114,4 +114,4 @@
 [Send template-based notifications to subscribers]: /documentation/articles/notification-hubs-ios-send-localized-breaking-news
 [Mobile Services Objective-C how-to conceptual reference]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 
-<!---HONumber=74-->
+<!---HONumber=82-->

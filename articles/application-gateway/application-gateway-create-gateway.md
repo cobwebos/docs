@@ -8,18 +8,27 @@
    editor="tysonn"/>
 <tags 
    ms.service="application-gateway" 
-   ms.date="07/29/2015"
+   ms.date="09/21/2015"
    wacn.date=""/>
 
 # 创建、启动或删除应用程序网关
 
-在此版本中，你可以使用 PowerShell 或 REST API 调用创建应用程序网关。即将推出的版本将会提供门户和 CLI 支持。
+应用程序网关是第 7 层负载平衡器。它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。应用程序网关具有以下应用程序传递功能：HTTP 负载平衡、基于 Cookie 的会话相关性和 SSL 卸载。
+
+> [AZURE.SELECTOR]
+- [Azure 经典模式 Powershell 步骤](application-gateway-create-gateway.md)
+- [Azure 资源管理器模式 Powershell 步骤](application-gateway-create-gateway-arm.md)
+- [Azure 资源管理器模板步骤](application-gateway-create-gateway-arm-template.md)
+
+
+<BR>
 
 本文将指导你完成创建、配置、启动和删除应用程序网关的步骤。
 
-> [AZURE.SELECTOR]
-- [Azure classic steps](/documentation/articles/application-gateway-create-gateway)
-- [Resource Manager Powershell steps](/documentation/articles/application-gateway-create-gateway-arm)
+
+>[AZURE.IMPORTANT] 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：资源管理器部署模型和经典部署模型。在使用任何 Azure 资源之前，请确保你了解[部署模型和工具](azure-classic-rm.md)。可以通过单击本文顶部的选项卡来查看不同工具的文档。本文档将说明使用 Azure 经典部署创建应用程序网关的方式。若要使用资源管理器版本，请转到[使用资源管理器创建应用程序网关部署](application-gateway-create-gateway-arm.md)。
+
+
 
 
 
@@ -88,7 +97,7 @@
 	VirtualIPs    : {}
 	DnsName       :
 
->[AZURE.NOTE]*InstanceCount* 的默认值为 2，最大值为 10。*GatewaySize* 的默认值为 Medium。你可以选择 Small、Medium 或 Large。
+>[AZURE.NOTE] *InstanceCount* 的默认值为 2，最大值为 10。*GatewaySize* 的默认值为 Medium。你可以选择 Small、Medium 或 Large。
 
 
  *Vip* 和 *DnsName* 显示为空白，因为网关尚未启动。这些值将在网关进入运行状态后立即创建。
@@ -150,7 +159,7 @@
 
 编辑配置项的括号之间的值。使用扩展名 .xml 保存文件
 
->[AZURE.IMPORTANT]协议项 Http 或 Https 区分大小写。
+>[AZURE.IMPORTANT] 协议项 Http 或 Https 区分大小写。
 
 以下示例演示如何使用配置文件设置应用程序网关负载平衡公共端口 80 上的 Http 流量，并将网络流量发送到 2 个 IP 地址之间的后端端口 80。
 
@@ -218,7 +227,7 @@
 
 以下示例演示如何使用配置对象配置应用程序网关。必须单独配置所有的配置项，然后将其添加到应用程序网关配置对象。创建配置对象之后，使用 `Set-AzureApplicationGateway` 命令将配置提交到前面创建的应用程序网关资源。
 
->[AZURE.NOTE]在为每个配置对象分配值之前，需要声明 PowerShell 用于存储的对象类型。在其中创建单个项的第一行定义了要使用哪个 Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(对象名称)。
+>[AZURE.NOTE] 在为每个配置对象分配值之前，需要声明 PowerShell 用于存储的对象类型。在其中创建单个项的第一行定义了要使用哪个 Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model(对象名称)。
 
 ### 步骤 1
 
@@ -324,7 +333,7 @@
 配置网关后，使用 `Start-AzureApplicationGateway` cmdlet 来启动网关。成功启动网关后，将开始计收应用程序网关的费用。
 
 
-> [AZURE.NOTE]`Start-AzureApplicationGateway` cmdlet 最多可能需要 15 到 20 分钟才能完成。
+> [AZURE.NOTE] `Start-AzureApplicationGateway` cmdlet 最多可能需要 15 到 20 分钟才能完成。
 
 
 
@@ -407,4 +416,4 @@
 <!--- [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)-->
 - [Azure 流量管理器](/documentation/services/traffic-manager)
 
-<!---HONumber=69-->
+<!---HONumber=82-->

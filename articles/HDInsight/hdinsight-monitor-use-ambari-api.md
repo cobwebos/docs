@@ -1,23 +1,23 @@
-<properties 
-	pageTitle="使用 Ambari API 在 HDInsight 中监视 Hadoop 群集 | Azure" 
+<!-- not suitable for Mooncake -->
+
+<properties
+	pageTitle="使用 Ambari API 在 HDInsight 中监视 Hadoop 群集 | Microsoft Azure"
 	description="使用 Apache Ambari API 设置、管理和监视 Hadoop 群集。直观的操作员工具和 API 消除了 Hadoop 的复杂性。"
-	services="hdinsight" 
-	documentationCenter="" 
+	services="hdinsight"
+	documentationCenter=""
 	tags="azure-portal"
-	authors="mumian" 
-	editor="cgronlun" 
+	authors="mumian"
+	editor="cgronlun"
 	manager="paulettm"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.date="07/28/2015"
+<tags
+	ms.service="hdinsight"
+	ms.date="09/25/2015"
 	wacn.date=""/>
- 
-# 使用 Ambari API 在 HDInsight 中监视 Hadoop 群集
- 
-了解如何通过使用 Ambari API 监视 HDInsight 群集版本 3.1 和 2.1。
 
-> [AZURE.NOTE]本文中的信息主要针对提供 Ambari REST API 只读版本的基于 Windows 的 HDInsight 群集。对于基于 Linux 的群集，请参阅[使用 Ambari 管理 Hadoop 群集](hdinsight-hadoop-manage-ambari.md)。
+# 使用 Ambari API 在 HDInsight 中监视 Hadoop 群集
+
+了解如何通过使用 Ambari API 监视 HDInsight 群集版本 3.1 和 2.1。
 
 ## <a id="whatisambari"></a>什么是 Ambari？
 
@@ -31,7 +31,8 @@ HDInsight 目前仅支持 Ambari 监视功能。Ambari API 1.0 受 HDInsight 版
 
 在开始阅读本教程前，你必须具有：
 
-- **配备 Azure PowerShell 的工作站**。请参阅[安装和配置 Azure PowerShell][powershell-install]。若要执行 Azure PowerShell 脚本，必须以管理员身份运行 Azure PowerShell 并将执行策略设为 *RemoteSigned*。有关详细信息，请参阅[运行 Windows PowerShell 脚本][powershell-script]。
+- **配备 Azure PowerShell 的工作站**。请参阅[安装和使用 Azure PowerShell](/documentation/articles/install-configure-powershell)。
+
 
 - （可选）[cURL][curl]。若要安装它，请参阅 [cURL 版本和下载][curl-download]。
 
@@ -39,12 +40,13 @@ HDInsight 目前仅支持 Ambari 监视功能。Ambari API 1.0 受 HDInsight 版
 
 - **一个 Azure HDInsight 群集**。有关群集预配的说明，请参阅[开始使用 HDInsight][hdinsight-get-started] 或[预配 HDInsight 群集][hdinsight-provision]。你将需要以下数据才能完成本教程：
 
-	<table border="1">
-<tr><th>群集属性</th><th>Azure PowerShell 变量名</th><th>值</th><th>说明</th></tr>
-<tr><td>HDInsight 群集名称</td><td>$clusterName</td><td></td><td>你的 HDInsight 群集的名称。</td></tr>
-<tr><td>群集用户名</td><td>$clusterUsername</td><td></td><td>在设置时指定的群集用户名。</td></tr>
-<tr><td>群集密码</td><td>$clusterPassword</td><td></td><td>群集用户密码。</td></tr>
-</table>> [AZURE.NOTE]在表中填充值。这将有助于完成本教程。
+群集属性|Azure PowerShell 变量名|值|说明
+---|---|---|---
+HDInsight 群集名称|$clusterName||你的 HDInsight 群集的名称。
+群集用户名|$clusterUsername||在设置时指定的群集用户名。
+群集密码|$clusterPassword||群集用户密码。
+
+	> [AZURE.NOTE] Fill-in the values in the table. This will be helpful for going through this tutorial.
 
 
 
@@ -59,15 +61,15 @@ HDInsight 目前仅支持 Ambari 监视功能。Ambari API 1.0 受 HDInsight 版
 	$clusterName = "<HDInsightClusterName>"
 	$clusterUsername = "<HDInsightClusterUsername>"
 	$clusterPassword = "<HDInsightClusterPassword>"
-	
+
 	$ambariUri = "https://$clusterName.azurehdinsight.cn:443/ambari"
 	$uriJobTracker = "$ambariUri/api/v1/clusters/$clusterName.azurehdinsight.cn/services/yarn/components/resourcemanager"
-	
+
 	$passwd = ConvertTo-SecureString $clusterPassword -AsPlainText -Force
 	$creds = New-Object System.Management.Automation.PSCredential ($clusterUsername, $passwd)
-	
-	$response = Invoke-RestMethod -Method Get -Uri $uriJobTracker -Credential $creds -OutVariable $OozieServerStatus 
-	
+
+	$response = Invoke-RestMethod -Method Get -Uri $uriJobTracker -Credential $creds -OutVariable $OozieServerStatus
+
 	$response.metrics.'yarn.queueMetrics'
 
 下面是用于*在 HDInsight 2.1 群集*中获取 MapReduce 作业跟踪器信息的 Azure PowerShell 脚本：
@@ -75,15 +77,15 @@ HDInsight 目前仅支持 Ambari 监视功能。Ambari API 1.0 受 HDInsight 版
 	$clusterName = "<HDInsightClusterName>"
 	$clusterUsername = "<HDInsightClusterUsername>"
 	$clusterPassword = "<HDInsightClusterPassword>"
-	
+
 	$ambariUri = "https://$clusterName.azurehdinsight.cn:443/ambari"
 	$uriJobTracker = "$ambariUri/api/v1/clusters/$clusterName.azurehdinsight.cn/services/mapreduce/components/jobtracker"
-	
+
 	$passwd = ConvertTo-SecureString $clusterPassword -AsPlainText -Force
 	$creds = New-Object System.Management.Automation.PSCredential ($clusterUsername, $passwd)
-	
-	$response = Invoke-RestMethod -Method Get -Uri $uriJobTracker -Credential $creds -OutVariable $OozieServerStatus 
-	
+
+	$response = Invoke-RestMethod -Method Get -Uri $uriJobTracker -Credential $creds -OutVariable $OozieServerStatus
+
 	$response.metrics.'mapred.JobTracker'
 
 输出为：
@@ -97,7 +99,7 @@ HDInsight 目前仅支持 Ambari 监视功能。Ambari API 1.0 受 HDInsight 版
 	curl -u <username>:<password> -k https://<ClusterName>.azurehdinsight.cn:443/ambari/api/v1/clusters/<ClusterName>.azurehdinsight.cn
 
 输出为：
-	
+
 	{"href":"https://hdi0211v2.azurehdinsight.cn/ambari/api/v1/clusters/hdi0211v2.azurehdinsight.cn/",
 	 "Clusters":{"cluster_name":"hdi0211v2.azurehdinsight.cn","version":"2.1.3.0.432823"},
 	 "services"[
@@ -119,22 +121,20 @@ HDInsight 目前仅支持 Ambari 监视功能。Ambari API 1.0 受 HDInsight 版
 
 下表列出了一些最常用的 Ambari 监视 API 调用。有关该 API 的详细信息，请参阅 [Ambari API 参考][ambari-api-reference]。
 
-<table border="1">
-<tr><th>监视 API 调用</th><th>URI</th><th>说明</th></tr>
-<tr><td>获取群集</td><td><tt>/api/v1/clusters</tt></td><td></td></tr>
-<tr><td>获取群集信息</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.cn</tt></td><td>群集、服务、主机</td></tr>
-<tr><td>获取服务</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.cn/services</tt></td><td>服务包括：hdfs、mapreduce</td></tr>
-<tr><td>获取服务信息</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.cn/services/&lt;ServiceName></tt></td><td></td></tr>
-<tr><td>获取服务组件</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.cn/services/&lt;ServiceName>/components</tt></td><td>HDFS：namenode、datanode<br/>MapReduce：jobtracker；tasktracker</td></tr>
-<tr><td>获取组件信息</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.cn/services/&lt;ServiceName>/components/&lt;ComponentName></tt></td><td>ServiceComponentInfo、主机组件、指标</td></tr>
-<tr><td>获取主机</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.cn/hosts</tt></td><td>headnode0、workernode0</td></tr>
-<tr><td>获取主机信息</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.cn/hosts/&lt;HostName> 
-</td><td></td></tr>
-<tr><td>获取主机组件</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.cn/hosts/&lt;HostName>/host_components </tt></td><td>namenode、resourcemanager</td></tr>
-<tr><td>获取主机组件信息</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.cn/hosts/&lt;HostName>/host_components/&lt;ComponentName> </tt></td><td>HostRoles、组件、主机、指标</td></tr>
-<tr><td>获取配置</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.cn/configurations </tt></td><td>配置类型：core-site、hdfs-site、mapred-site、hive-site</td></tr>
-<tr><td>获取配置信息</td><td><tt>/api/v1/clusters/&lt;ClusterName>.azurehdinsight.cn/configurations?type=&lt;ConfigType>&amp;tag=&lt;VersionName> </tt></td><td>配置类型：core-site、hdfs-site、mapred-site、hive-site</td></tr>
-</table>
+监视 API 调用|URI|说明
+---|---|---
+获取群集|`/api/v1/clusters`|
+获取群集信息|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.cn`|群集、服务、主机
+获取服务|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.cn/services`|服务包括：hdfs、mapreduce
+获取服务信息|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.cn/services/&lt;ServiceName&gt;`|
+获取服务组件|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.cn/services/&lt;ServiceName&gt;/components`|HDFS：namenode、datanode<br/>MapReduce：jobtracker；tasktracker
+获取组件信息|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.cn/services/&lt;ServiceName&gt;/components/&lt;ComponentName&gt;`|ServiceComponentInfo、主机组件、指标
+获取主机|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.cn/hosts`|headnode0、workernode0
+获取主机信息|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.cn/hosts/&lt;HostName&gt;`|
+获取主机组件|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.cn/hosts/&lt;HostName&gt;/host_components`|namenode、resourcemanager
+获取主机组件信息|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.cn/hosts/&lt;HostName&gt;/host_components/&lt;ComponentName&gt;`|HostRoles、组件、主机、指标
+获取配置|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.cn/configurations`|配置类型：core-site、hdfs-site、mapred-site、hive-site
+获取配置信息|`/api/v1/clusters/&lt;ClusterName&gt;.azurehdinsight.cn/configurations?type=&lt;ConfigType&gt;&tag=&lt;VersionName&gt;`|配置类型：core-site、hdfs-site、mapred-site、hive-site
 
 
 ##<a id="nextsteps"></a>后续步骤 
@@ -157,16 +157,16 @@ HDInsight 目前仅支持 Ambari 监视功能。Ambari API 1.0 受 HDInsight 版
 
 [microsoft-hadoop-SDK]: http://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
 
-[Powershell-install]: install-configure-powershell
+[Powershell-install]: /documentation/articles/install-configure-powershell
 [Powershell-script]: http://technet.microsoft.com/zh-cn/library/ee176949.aspx
 
-[hdinsight-admin-powershell]: hdinsight-administer-use-powershell
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal
-[hdinsight-admin-cli]: hdinsight-administer-use-command-line
+[hdinsight-admin-powershell]: /documentation/articles/hdinsight-administer-use-powershell
+[hdinsight-admin-portal]: /documentation/articles/hdinsight-administer-use-management-portal-v1
+[hdinsight-admin-cli]: /documentation/articles/hdinsight-administer-use-command-line
 [hdinsight-documentation]: /documentation/services/hdinsight/
-[hdinsight-get-started]: hdinsight-get-started
-[hdinsight-provision]: hdinsight-provision-clusters
+[hdinsight-get-started]: /documentation/articles/hdinsight-get-started
+[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters
 
 [img-jobtracker-output]: ./media/hdinsight-monitor-use-ambari-api/hdi.ambari.monitor.jobtracker.output.png
 
-<!---HONumber=71-->
+<!---HONumber=82-->

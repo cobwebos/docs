@@ -15,18 +15,17 @@
 
 # 将移动服务添加到现有应用程序
 
-[AZURE.INCLUDE [mobile-services-selector-get-started-data-legacy](../includes/mobile-services-selector-get-started-data-legacy.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
 ##概述
 
-<p>此主题说明如何通过 Azure 移动服务来利用 Windows Phone 8 应用程序中的数据。在本教程中，你将要下载一个可在内存中存储数据的应用程序，创建一个新的移动服务，将该移动服务与该应用程序相集成，然后登录到 Azure 管理门户以查看运行该应用程序时对数据所做的更改。</p>
-</div> <div class="dev-onpage-video-wrapper"><a href="http://go.microsoft.com/fwlink/?LinkID=298628" target="_blank" class="label">观看教程</a> <a style="background-image: url('/media/devcenter/mobile/videos/mobile-wp8-get-started-data-180x120.png') !important;" href="http://go.microsoft.com/fwlink/?LinkID=298628" target="_blank" class="dev-onpage-video"><span class="icon">播放视频</span></a> <span class="time">12:54</span></div> </div>
+此主题说明如何通过 Azure 移动服务来利用 Windows Phone 8 应用程序中的数据。在本教程中，你将要下载一个可在内存中存储数据的应用程序，创建一个新的移动服务，将该移动服务与该应用程序相集成，然后登录到 Azure 管理门户以查看运行该应用程序时对数据所做的更改。
 
 ##先决条件 
 
 + Visual Studio 2012 Express for Windows Phone 8，以及 Windows 8 上运行的 [Windows Phone 8 SDK]。若要在完成本教程后创建一个 Windows Phone 8.1 应用程序，您必须使用 Visual Studio 2013 Update 2 或更高版本。 
 
->[AZURE.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 <a href="/pricing/1rmb-trial/ target="\_blank">Azure 试用</a>。
++ 一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 <a href="/pricing/1rmb-trial/ target="\_blank">Azure 试用</a>。
 
 ##<a name="download-app"></a>下载 GetStartedWithData 项目
 
@@ -158,13 +157,13 @@
 本教程演示了有关如何使 Windows Phone 8 应用程序处理移动服务中的数据的基础知识。建议你接下来阅读下列其他主题之一：
 
 * [向应用程序添加身份验证](/documentation/articles/mobile-services-windows-phone-get-started-users)
-  <br/>了解如何对应用程序用户进行身份验证。
+<br/>了解如何对应用程序用户进行身份验证。
 
 * [向应用程序添加推送通知](/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push)
-  <br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
+<br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
  
 * [移动服务 C# 操作方法概念性参考 ](/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library)
-  <br/>了解有关如何将移动服务与 .NET 一起使用的详细信息。
+<br/>了解有关如何将移动服务与 .NET 一起使用的详细信息。
  
 <!-- Anchors. -->
 [Download the Windows Phone 8 app project]: #download-app
@@ -190,4 +189,4 @@
 [开发人员代码示例站点]: http://go.microsoft.com/fwlink/p/?LinkId=271146
  
 
-<!---HONumber=74-->
+<!---HONumber=82-->

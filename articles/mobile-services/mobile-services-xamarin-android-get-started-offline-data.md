@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="06/15/2015"
+	ms.date="09/25/2015"
 	wacn.date=""/>
 
 # 在移动服务中使用脱机数据同步
@@ -89,7 +89,7 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 
     在此示例中，我们检索远程中的所有记录 `TodoItem` 表中，但它也可能是要作为筛选依据传递查询的记录。`PullAsync()` 的第一个参数是用于增量同步的查询 ID；增量同步使用 `UpdatedAt` 时间戳以仅获取自上次同步以来修改的那些记录。查询 ID 应对于你的应用程序中的每个逻辑查询都是唯一的描述性字符串。若选择不要增量同步，请传递 `null` 作为查询 ID。此命令会检索每个请求的操作，这是可能效率低下上的所有记录。
 
-    >[AZURE.NOTE]若要从设备本地存储区中删除已在移动设备数据库中删除的记录，应启用“[软删除]”。否则，你的应用程序应定期调用 `IMobileServiceSyncTable.PurgeAsync()` 以清除本地存储。
+    >[AZURE.NOTE]若要从设备本地存储区中删除已在移动设备数据库中删除的记录，应启用“软删除”[]。否则，你的应用程序应定期调用 `IMobileServiceSyncTable.PurgeAsync()` 以清除本地存储。
 
     请注意，推送和请求操作可能会发生 `MobileServicePushFailedException`。下一篇教程[使用移动服务脱机支持处理冲突]说明了如何处理这些同步相关的异常。
 
@@ -155,12 +155,11 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 
 
 <!-- URLs. -->
-[使用移动服务脱机支持处理冲突]: /documentation/articles/mobile-services-xamarin-android-handling-conflicts-offline-data/
-[处理脱机支持的移动服务与冲突]: /documentation/articles/mobile-services-xamarin-android-handling-conflicts-offline-data/
-[Get started with data]: /documentation/articles/partner-xamarin-mobile-services-android-get-started-data/
+[使用移动服务脱机支持处理冲突]: /documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data
+[处理脱机支持的移动服务与冲突]: /documentation/articles/mobile-services-windows-store-dotnet-handling-conflicts-offline-data
 [移动服务入门]: /documentation/articles/partner-xamarin-mobile-services-android-get-started/
 [如何使用适用于 Azure 移动服务的 Xamarin 组件客户端]: /documentation/articles/partner-xamarin-mobile-services-how-to-use-client-library/
-[软删除]: /documentation/articles/mobile-services-using-soft-delete/
+[]: /documentation/articles/mobile-services-using-soft-delete/
 
 [Mobile Services SDK Nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.0
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
@@ -168,4 +167,4 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 [Xamarin 扩展]: http://xamarin.com/visual-studio
 [NuGet Addin for Xamarin]: https://github.com/mrward/monodevelop-nuget-addin
 
-<!---HONumber=74-->
+<!---HONumber=82-->

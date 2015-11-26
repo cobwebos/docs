@@ -20,7 +20,7 @@
 
 ## 配置先决条件
 
-- 你将需要最新版本的 Azure PowerShell 模块。可以从 [Azure 下载页](/downloads)的 PowerShell 部分下载最新 PowerShell 模块。按照[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure) 页上的说明操作，以便获取有关如何配置计算机以使用 Azure PowerShell 模块的分步指导。 
+- 你将需要最新版本的 Azure PowerShell 模块。可以从 [Azure 下载页](/downloads/)的 PowerShell 部分下载最新 PowerShell 模块。按照[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure) 页上的说明操作，以便获取有关如何配置计算机以使用 Azure PowerShell 模块的分步指导。 
 - 在开始配置之前，请务必查看[先决条件](/documentation/articles/expressroute-prerequisites)页和[工作流](/documentation/articles/expressroute-workflows)页。
 
 ## 创建和预配 ExpressRoute 线路
@@ -60,7 +60,7 @@
 		InterCloud           Washington                     200Mbps:200, 500Mbps:500, 1Gbps:1000, 10Gbps:10000                                                                                                                                                           
 		                     DC,London,Singapore,Amsterdam                                                                                                                                                                                                               
 		Internet Solutions   London,Amsterdam               10Mbps:10, 50Mbps:50, 100Mbps:100, 500Mbps:500, 1Gbps:1000                                                                                                                                                   
-		¨C Cloud Connect                                                                                                                                                                                                                                                  
+		– Cloud Connect                                                                                                                                                                                                                                                  
 		Interxion            Amsterdam                      200Mbps:200, 500Mbps:500, 1Gbps:1000, 10Gbps:10000                                                                                                                                                           
 		Level 3              London,Chicago,Dallas,Seattle, 200Mbps:200, 500Mbps:500, 1Gbps:1000, 10Gbps:10000                                                                                                                                                           
 		Communications -     Silicon Valley,Washington DC                                                                                                                                                                                                                
@@ -320,4 +320,4 @@
 - [配置路由](/documentation/articles/expressroute-howto-routing-classic)
 - [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic) 
 
-<!---HONumber=76-->
+<!---HONumber=82-->

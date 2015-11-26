@@ -10,13 +10,14 @@
 
 <tags
 	ms.service="backup"
-	ms.date="08/11/2015"
+	ms.date="10/01/2015"
 	wacn.date=""/>
 
-# 还原虚拟机
+# 还原 Azure 虚拟机
 你可以使用还原操作，通过存储在 Azure 备份保管库中的备份将虚拟机还原到新的 VM。
 
-## 选择要还原的项
+## 还原工作流
+### 1.选择要还原的项
 
 1. 导航到“受保护的项”选项卡，然后选择你要还原到新 VM 的虚拟机。
 
@@ -67,7 +68,7 @@
 
     ![选择虚拟网络](./media/backup-azure-restore-vms/restore-cs-vnet.png)
 
-4. 选择子网：如果 VNET 有子网，默认选择的选项为第一个子网。从下拉选项中选择你想要的子网。有关子网详细信息，请转到[门户主页](https://manage.windowsazure.cn)中的“网络”扩展，然后转到“虚拟网络”并在选择虚拟网络后，向下钻取到“配置”以查看子网详细信息。
+4. 选择子网：如果 VNET 有子网，默认选择的选项为第一个子网。从下拉选项中选择你想要的子网。有关子网详细信息，请转到[门户主页](https://manage.windowsazure.com/)中的“网络”扩展，然后转到“虚拟网络”并在选择虚拟网络后，向下钻取到“配置”以查看子网详细信息。
 
     ![选择子网](./media/backup-azure-restore-vms/select-subnet.png)
 
@@ -99,7 +100,7 @@ Azure 备份支持对域控制器 (DC) 虚拟机进行备份的方案。但在�
 
 需要解决的难题是，DSRM 模式不存在于 Azure 中。因此若要还原此类 VM，不能使用 Azure 门户。唯一支持的还原机制是使用 PowerShell 进行基于磁盘的还原。
 
->[AZURE.WARNING]对于多 DC 环境中的域控制器 VM，请勿使用 Azure 门户来还原！ 仅支持基于 PowerShell 的还原
+>[AZURE.WARNING] 对于多 DC 环境中的域控制器 VM，请勿使用 Azure 门户来还原！ 仅支持基于 PowerShell 的还原
 
 阅读更多内容，了解 [USN 回退问题](https://technet.microsoft.com/library/dd363553)以及建议的问题解决策略。
 
@@ -107,4 +108,4 @@ Azure 备份支持对域控制器 (DC) 虚拟机进行备份的方案。但在�
 - [排查错误](backup-azure-vms-troubleshoot.md#restore)
 - [管理虚拟机](backup-azure-manage-vms)
 
-<!---HONumber=76-->
+<!---HONumber=82-->

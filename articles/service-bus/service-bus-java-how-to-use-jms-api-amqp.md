@@ -27,7 +27,7 @@
 
 此指南假定你已具有包含名为“queue1”的队列的 Service Bus 命名空间。 如果没有，则可以使用 [Azure 管理门户](http://manage.windowsazure.cn)创建命名空间和队列。有关如何创建服务总线命名空间和队列的详细信息，请参阅[如何使用服务总线队列](/documentation/articles/service-bus-dotnet-how-to-use-queues)。**注意**：必须创建已禁用分区的队列，因为分区的队列和主题尚不提供 AMQP 支持。有关详细信息，请参阅[分区消息实体](http://msdn.microsoft.com/library/azure/dn520246.aspx)。
 
-## 下载 AMQP 1.0 JMS 客户端库
+##下载 AMQP 1.0 JMS 客户端库
 
 有关从哪里下载 Apache Qpid JMS AMQP 1.0 客户端库的最新版本的信息，请访问 [http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html](http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html)。
 
@@ -38,7 +38,7 @@
 *    qpid-amqp-1-0-client-jms-[version].jar
 *    qpid-amqp-1-0-common-[version].jar
 
-## 为 Java 应用程序编码
+##为 Java 应用程序编码
 
 ### Java 命名和目录接口 (JNDI)
 JMS 使用 Java 命名和目录接口 (JNDI) 创建逻辑名称和物理名称之间的分隔。将使用 JNDI 解析以下两种类型的 JMS 对象：ConnectionFactory 和 Destination。JNDI 使用一个提供程序模型，你可以在其中插入不同目录服务来处理名称解析任务。Apache Qpid JMS AMQP 1.0 库附带一个使用以下格式的属性文件配置的、基于属性文件的简单 JNDI 提供程序。
@@ -238,7 +238,7 @@ Received message with JMSMessageID = ID:956102171969368961
 exit
 ```
 
-## JMS 和 .NET 之间的跨平台消息传送
+##JMS 和 .NET 之间的跨平台消息传送
 
 本指南说明了如何使用 JMS 向 Service Bus 发送消息以及从 Service Bus 接收消息。但是，AMQP 1.0 的关键优势之一是它支持通过以不同语言编写的组件生成应用程序，从而能够可靠和完全无损地交换消息。
 
@@ -308,7 +308,7 @@ Received message with JMSMessageID = ID:acbca67f03c346de9b7893026f97ddeb
 exit
 ```
 
-## 不受支持的功能和限制
+##不受支持的功能和限制
 
 在将 JMS over AMQP 1.0 用于 Service Bus 时存在以下限制，即：
 
@@ -318,7 +318,7 @@ exit
 * 当前不支持临时目标（即 **TemporaryQueue** 和 **TemporaryTopic**），以及使用这些目标的 **QueueRequestor** 和 **TopicRequestor** API。
 * 不支持事务处理会话和分布式事务。
 
-## 摘要
+##摘要
 
 本操作方法指南演示了如何通过使用常用 JMS API 和 AMQP 1.0 通过 Java 使用 Service Bus 中转消息传送功能（队列和发布/订阅主题）。
 
@@ -330,5 +330,6 @@ exit
 * [如何将 AMQP 1.0 与服务总线 .NET API 一起使用](/documentation/articles/service-bus-dotnet-advanced-message-queuing)
 * [服务总线 AMQP 1.0 开发人员指南](http://msdn.microsoft.com/zh-cn/library/windowsazure/jj841071.aspx)
 * [如何使用 Service Bus 队列](/documentation/articles/service-bus-dotnet-how-to-use-queues)
+* [Java 开发人员中心](/develop/java/)。
 
-<!---HONumber=74-->
+<!---HONumber=82-->

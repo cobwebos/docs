@@ -7,14 +7,15 @@
 	manager="dwrede"
 	editor=""/>
 
-<tags
-	ms.service="notification-hubs"
+<tags 
+ms.service="notification-hubs"
+
 	ms.date="06/16/2015"
 	wacn.date=""/>
 
 # 使用通知中心发送突发新闻
 
-[AZURE.INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
+[AZURE.INCLUDE [notification-hubs-selector-breaking-news](../includes/notification-hubs-selector-breaking-news)]
 
 
 ##概述
@@ -381,4 +382,4 @@
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/zh-cn/library/jj927168.aspx
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
 
-<!---HONumber=76-->
+<!---HONumber=82-->

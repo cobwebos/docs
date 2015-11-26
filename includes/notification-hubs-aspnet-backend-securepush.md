@@ -61,7 +61,7 @@
             var usernameTag = "username:" + HttpContext.Current.User.Identity.Name;
 
             // windows
-            var rawNotificationToBeSent = new Microsoft.ServiceBus.Notifications.WindowsNotification(secureNotificationInTheBackend.Id.ToString(),
+            var rawNotificationToBeSent = new Microsoft.Azure.NotificationHubs.WindowsNotification(secureNotificationInTheBackend.Id.ToString(),
                             new Dictionary<string, string> {
                                 {"X-WNS-Type", "wns/raw"}
                             });
@@ -84,4 +84,4 @@
 
 24. 选择 Azure 网站作为发布目标。使用您的 Azure 帐户登录，选择一个现有的或新的网站，并记下“连接”选项卡中的**目标 URL** 属性。在本教程后面的部分中，我们将此 URL 称为*后端终结点*。单击“发布”。
 
-<!---HONumber=76-->
+<!---HONumber=82-->

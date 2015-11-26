@@ -9,21 +9,18 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="06/16/2015"
+	ms.date="09/24/2015"
 	wacn.date=""/>
 
 #Azure 通知中心富推送
 
-<div class="dev-center-tutorial-selector sublanding">
-        <a href="/documentation/articles/notification-hubs-aspnet-backend-ios-rich-push" title="iOS" class="current">iOS</a>
-</div>
 
 ##概述
 
 为了吸引用户使用即时丰富内容，除纯文本之外，应用程序可能还需要以其他形式进行推送。这些通知将提升用户交互并显示 URL、声音、图像/优惠券等内容。本教程以[通知用户](/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users)主题为基础，演示如何发送包含有效负载（例如图像）的推送通知。
 
 本教程适用于 iOS 7 和 8。
-  ![][IOS1]
+![][IOS1]
 
 在高级别中：
 
@@ -117,7 +114,7 @@
             var usernameTag = "username:" + HttpContext.Current.User.Identity.Name;
 
             // Silent notification with content available
-            var aboutUser = "{\"aps\": {\"content-available\": 1, \"sound\":\"\"}, \"richId\": \"" + richNotificationInTheBackend.Id.ToString() + "\",  \"richMessage\": \"" + richNotificationInTheBackend.Message + "\", \"richType\": \"" + richNotificationInTheBackend.RichType + "\"}";
+            var aboutUser = "{"aps": {"content-available": 1, "sound":""}, "richId": "" + richNotificationInTheBackend.Id.ToString() + "",  "richMessage": "" + richNotificationInTheBackend.Message + "", "richType": "" + richNotificationInTheBackend.RichType + ""}";
 
             // Send notification to apns
             await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(aboutUser, usernameTag);
@@ -378,4 +375,4 @@
 [IOS3]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-3.png
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
 
-<!---HONumber=76-->
+<!---HONumber=82-->

@@ -1,15 +1,15 @@
 <properties 
 	pageTitle="预配 Redis 缓存" 
 	description="使用 Azure 资源管理器模板部署 Azure Redis 缓存。" 
-	services="redis-cache" 
+	services="app-service" 
 	documentationCenter="" 
 	authors="tfitzmac" 
 	manager="wpickett" 
 	editor=""/>
 
-<tags 
-	ms.service="cache" 
-	ms.date="09/15/2015" 
+<tags
+	ms.service="app-service"
+	ms.date="10/02/2015"
 	wacn.date=""/>
 
 # 使用模板创建 Redis 缓存
@@ -22,13 +22,15 @@
 
 有关完整的模板，请参阅 [Redis 缓存模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)。
 
+>[AZURE.NOTE] 用于新[高级层](/documentation/articles/cache-premium-tier-intro)的 ARM 模板即将推出。若要检查最新模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)并搜索 `Redis Cache`。
+
 ## 将部署的内容
 
 在此模板中，你将部署 Azure Redis 缓存，以便使用现有存储帐户保存诊断数据。
 
 若要自动运行部署，请单击以下按钮：
 
-[![部署到 Azure](http://azuredeploy.net/deploybutton.png)](https://manage.windowsazure.cn#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+![部署到 Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)
 
 ## Parameters
 
@@ -120,10 +122,10 @@ Redics 缓存的位置。为获得最佳性能，请使用要与缓存配合使�
 
 ### PowerShell
 
-    New-AzureResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache -redisCacheLocation "West US"
+    New-AzureResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache -redisCacheLocation "China North"
 
 ### Azure CLI
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=76-->
+<!---HONumber=82-->

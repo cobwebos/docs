@@ -14,11 +14,11 @@
 
 # 通知中心入门
 
-[AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
+[AZURE.INCLUDE [notification-hubs-selector-get-started](../includes/notification-hubs-selector-get-started.md)]
 
 ##概述
 
-本主题说明如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。在本教程中，您将创建一个空白 Xamarin.Android 应用程序，它使用 Google Cloud Messaging (GCM) 接收推送通知。完成后，你将能使用通知中心将推送通知广播到运行你的应用程序的所有设备。[NotificationHubs 应用][GitHub]示例中提供了完成的代码。
+本教程说明如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。你将创建一个空白 Xamarin.Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。[NotificationHubs][GitHub] 应用程序示例中提供了完成的代码。
 
 本教程演示使用通知中心的简单广播方案。
 
@@ -38,11 +38,11 @@
 
 ##<a name="register"></a>启用 Google Cloud Messaging
 
-[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
+[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../includes/mobile-services-enable-google-cloud-messaging.md)]
 
 ##<a name="configure-hub"></a>配置通知中心
 
-[AZURE.INCLUDE [notification-hubs-android-configure-push](../../includes/notification-hubs-android-configure-push.md)]
+[AZURE.INCLUDE [notification-hubs-android-configure-push](../includes/notification-hubs-android-configure-push.md)]
 
 ##<a name="connecting-app"></a>将你的应用连接到通知中心
 
@@ -352,14 +352,14 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 下面是你可能想要查看的有关发送通知的其他教程列表：
 
-- ASP.NET：[使用通知中心将通知推送到用户]。
+- ASP.NET：请参阅[使用通知中心将通知推送到用户]。
 - Azure 通知中心 Java SDK：有关从 Java 发送通知的信息，请参阅[如何通过 Java 使用通知中心](notification-hubs-java-backend-how-to.md)。这种方法已在 Eclipse for Android 开发环境中进行测试。
-- PHP：[如何通过 PHP 使用通知中心](notification-hubs-php-backend-how-to.md)。
+- PHP：请参阅[如何通过 PHP 使用通知中心](notification-hubs-php-backend-how-to.md)。
 
 
 在本教程的后续小节中，你将使用 .NET 控制台应用和移动服务来发送通知，通过节点脚本来执行这些操作。
 
-####使用 .NET 应用程序发送通知：
+###使用 .NET 应用发送通知
 
 
 Microsoft 提供了 Azure 服务总线 SDK 用于在.NET 平台上发送通知。在本部分中，你将通过 Visual Studio 创建 .NET 控制台应用程序，以使用 Azure 服务总线 SDK 来发送通知。
@@ -368,7 +368,7 @@ Microsoft 提供了 Azure 服务总线 SDK 用于在.NET 平台上发送通知�
 
    	![][20]
 
-2. 使用 <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 包</a>添加对 Azure 服务总线 SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库包管理器”和“包管理器控制台”。然后，在控制台窗口中键入：
+2. 通过使用 <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 包</a>添加对 Azure 服务总线 SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入：
 
         Install-Package WindowsAzure.ServiceBus
 
@@ -489,4 +489,4 @@ Microsoft 提供了 Azure 服务总线 SDK 用于在.NET 平台上发送通知�
 [Azure 移动服务组件]: http://components.xamarin.com/view/azure-mobile-services/
 [Google Cloud Messaging Component]: http://components.xamarin.com/view/GCMClient/
 
-<!---HONumber=76-->
+<!---HONumber=82-->

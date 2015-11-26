@@ -1,29 +1,26 @@
 <properties 
-	pageTitle="Azure Media Services 概述" 
+	pageTitle="Azure 媒体服务概述和常见方案" 
 	description="本部分提供 Azure Media Services 的概述" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="Juliako" 
+	authors="Juliako,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015"
+<tags
+	ms.service="media-services"
+	ms.date="10/15/2015"
 	wacn.date=""/>
 
-#Azure Media Services 概述
+#Azure 媒体服务概述和常见方案
 
 Microsoft Azure 媒体服务是一个可扩展的基于云的平台，它使开发人员可以构建可缩放的媒体管理和交付应用程序。Media Services 基于 REST API，你可以使用这些 API 安全地上载、存储、编码和打包视频或音频内容，以供点播以及以实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
 可以完全使用 Media Services 构建端到端工作流。也可以选择使用第三方组件来构建工作流的某些组成部分。例如，使用第三方编码器进行编码。然后，使用 Media Services 进行上载、保护、打包和传送。
 
-
-以下海报描绘了 Azure Media Services 的从媒体创建到媒体使用的整个工作流。可从此处下载该海报：[Azure 媒体服务海报](http://www.microsoft.com/download/details.aspx?id=38195)。
-
-![概述][overview]
-
 你可以选择实时流式播放你的内容，或者根据点播情况交付内容。本主题演示了在哪些常见情况下，你会[实时](/documentation/articles/media-services-overview#live_scenarios)交付内容或按[点播](/documentation/articles/media-services-overview#vod_scenarios)交付内容。本主题还提供了其他相关主题的链接。
+
+## SDK 和工具 
 
 若要构建 Media Services 解决方案，你可以使用：
 
@@ -39,13 +36,12 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，它使开�
 - [AMS 实时流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
 - [AMS 按需流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
-
 ##先决条件
 
 若要开始使用 Azure 媒体服务，你应该具备以下条件：
  
-3. 一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](/documentation/articles/azure.microsoft.com)。
-2. Azure 媒体服务帐户。使用 Azure 管理门户、.NET 或 REST API 来创建 Azure 媒体服务帐户。有关详细信息，请参阅[创建帐户](media-services-create-account)。
+3. 一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
+2. Azure 媒体服务帐户。使用 Azure 管理门户、.NET 或 REST API 来创建 Azure 媒体服务帐户。有关详细信息，请参阅[创建帐户](/documentation/articles/media-services-create-account)。
 3. （可选）设置开发环境。为开发环境选择“.NET”或“REST API”。有关详细信息，请参阅[设置环境](/documentation/articles/media-services-dotnet-how-to-use)。 
 
 	此外，请学习如何以编程方式进行[连接](/documentation/articles/media-services-dotnet-connect_programmatically)。
@@ -108,7 +104,7 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，它使开�
 ###提供渐进式下载 
 
 1. 将优质夹层文件上载到资产中。
-1. 编码为单个 MP4。
+1. 编码为单个 MP4 文件。
 1. 通过创建 OnDemand 或 SAS 定位符来发布资产。
 
 	如果使用 OnDemand 定位符，请确保你要从中以渐进方式下载内容的流式处理终结点上至少有一个串流保留单位。
@@ -120,13 +116,13 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，它使开�
 ###另请参阅
 
 - [如何上载内容](/documentation/articles/media-services-manage-content#upload)
-- [如何获取媒体处理器](media-services-get-media-processor)
+- [如何获取媒体处理器](/documentation/articles/media-services-get-media-processor)
 - [如何对内容进行编码](/documentation/articles/media-services-manage-content#encode)
-- [如何监视作业](media-services-portal-check-job-progress)
+- [如何监视作业](/documentation/articles/media-services-portal-check-job-progress)
 - [如何为内容编制索引](/documentation/articles/media-services-manage-content#index)
 - [如何保护内容](/documentation/articles/media-services-manage-content#encrypt)
 - [如何保护发布](/documentation/articles/media-services-manage-content#publish)
-- [如何缩放编码](media-services-portal-encoding-units)
+- [如何缩放编码](/documentation/articles/media-services-portal-encoding-units)
 
 ##<a id="live_scenarios"></a>使用 Azure 媒体服务传送实时流式处理事件
 
@@ -176,7 +172,7 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，它使开�
 
 ![实时工作流][live-overview2]
 
-有关详细信息，请参阅[使用从本地编码器接收多比特率实时流的频道](media-services-manage-channels-overview.md)。
+有关详细信息，请参阅[使用从本地编码器接收多比特率实时流的频道](/documentation/articles/media-services-manage-channels-overview)。
 
 ##使用内容
 
@@ -194,11 +190,11 @@ Media Services 支持与 Azure CDN 集成。有关如何启用 Azure CDN 的信�
 
 也可以通过向媒体服务帐户添加存储帐户来缩放该帐户。每个存储帐户大小限制为 500 TB。若要在默认限制之外扩展存储，可选择将多个存储帐户附加到单个媒体服务帐户。
 
-[本](media-services-how-to-scale)主题链接到相关的主题。
+[本](/documentation/articles/media-services-how-to-scale)主题链接到相关的主题。
 
 ##支持
 
-[Azure 支持](http://azure.microsoft.com/support/options/)为 Azure（包括媒体服务）提供支持选项。
+[Azure 支持](/support/contact/)为 Azure（包括媒体服务）提供支持选项。
 
 ##模式与实践指南
 
@@ -215,7 +211,7 @@ Media Services 支持与 Azure CDN 集成。有关如何启用 Azure CDN 的信�
 - 对于内容保护，我们保证将在至少 99.9% 的时间成功满足密钥请求。
 - 对于索引器，我们将使用编码保留单位在 99.9% 的时间成功处理索引器任务请求。
 
-	有关详细信息，请参阅 [Microsoft Azure SLA](http://azure.microsoft.com/support/legal/sla/)。
+	有关详细信息，请参阅 [Microsoft Azure SLA](/support/legal/sla/)。
 
 <!-- Images -->
 [overview]: ./media/media-services-overview/media-services-overview.png
@@ -224,4 +220,4 @@ Media Services 支持与 Azure CDN 集成。有关如何启用 Azure CDN 的信�
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=76-->
+<!---HONumber=82-->

@@ -7,15 +7,15 @@
 	services="notification-hubs" 
 	editor=""/>
 
-<tags
-	ms.service="notification-hubs"
+<tags 
+ms.service="notification-hubs"
 
 	ms.date="06/16/2015"
 	wacn.date=""/>
 
 #Azure 通知中心 - 通知用户
 
-[AZURE.INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
+[AZURE.INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 
 ##概述
@@ -39,7 +39,7 @@
 
 
 
-[AZURE.INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
+[AZURE.INCLUDE [notification-hubs-aspnet-backend-notifyusers](../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## 更新客户端项目的代码
 
@@ -169,7 +169,7 @@
 
                 try
                 {
-                    await httpClient.PostAsync(POST_URL, new StringContent("\"" + message + "\"",
+                    await httpClient.PostAsync(POST_URL, new StringContent(""" + message + """,
                         System.Text.Encoding.UTF8, "application/json"));
                 }
                 catch (Exception ex)
@@ -365,9 +365,9 @@
 
 
 <!-- URLs. -->
-[通知中心入门]: notification-hubs-windows-store-dotnet-get-started.md
-[安全推送]: notification-hubs-aspnet-backend-windows-dotnet-secure-push.md
-[使用通知中心发送突发新闻]: notification-hubs-windows-store-dotnet-send-breaking-news.md
+[通知中心入门]: notification-hubs-windows-store-dotnet-get-started
+[安全推送]: notification-hubs-aspnet-backend-windows-dotnet-secure-push
+[使用通知中心发送突发新闻]: notification-hubs-windows-store-dotnet-send-breaking-news
 [通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
 
-<!---HONumber=76-->
+<!---HONumber=82-->

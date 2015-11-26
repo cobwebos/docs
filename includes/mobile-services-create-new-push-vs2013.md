@@ -2,7 +2,7 @@
 
 1. 在 Visual Studio 2013 中，打开“解决方案资源管理器”、右键单击 Windows 应用商店应用项目、单击“添加”，然后单击“推送通知...”。 
 
-	![Visual Studio 2013 中的“添加推送通知”向导](../includes/media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013.png)
+	![Visual Studio 2013 中的“添加推送通知”向导](./media/mobile-services-create-new-push-vs2013/mobile-add-push-notifications-vs2013.png)
 
 	这样可以启动“添加推送通知”向导。
 
@@ -25,6 +25,5 @@
 <!-- URLs. -->
 [Get started with Mobile Services]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started/
 [Get started with data]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-data/
-[Import your publishsettings file in Visual Studio 2013]: /zh-cn/documentation/articles/mobile-services-windows-how-to-import-publishsettings/
 
-<!---HONumber=74-->
+<!---HONumber=82-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="如何通过 Ruby 使用表存储 | Windows Azure" 
-	description="了解如何在 Azure 中使用表存储服务。相关代码示例是使用 Ruby API 编写的。" 
+	pageTitle="如何通过 Ruby 使用 Azure 表存储 | Microsoft Azure" 
+	description="了解如何使用 Azure 中的 Azure 表存储。相关代码示例是使用 Ruby API 编写的。"
 	services="storage" 
 	documentationCenter="ruby" 
 	authors="tfitzmac" 
@@ -9,17 +9,17 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="07/29/2015" 
+	ms.date="09/23/2015"
 	wacn.date=""/>
 
 
-# 如何通过 Ruby 使用表存储
+# 如何通过 Ruby 使用 Azure 表存储
 
 [AZURE.INCLUDE [storage-selector-table-include](../includes/storage-selector-table-include.md)]
 
 ## 概述
 
-本指南演示如何使用 Windows Azure 表服务执行常见任务。相关示例是使用 Ruby API 编写的。涉及的方案包括“创建和删除表、在表中插入和查询实体”。
+本指南演示如何使用 Azure 表服务执行常见任务。相关示例是使用 Ruby API 编写的。涉及的方案包括“创建和删除表、在表中插入和查询实体”。
 
 [AZURE.INCLUDE [storage-table-concepts-include](../includes/storage-table-concepts-include.md)]
 
@@ -27,7 +27,7 @@
 
 ## 创建 Ruby 应用程序
 
-创建 Ruby 应用程序。有关说明，请参阅[在 Azure 上创建 Ruby 应用程序](/develop/ruby/tutorials/web-app-with-linux-vm/)。
+有关如何创建 Ruby 应用程序的说明，请参阅[在 Azure 上创建 Ruby 应用程序](/develop/ruby/tutorials/web-app-with-linux-vm/)。
 
 ## 配置应用程序以访问存储
 
@@ -62,7 +62,7 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 4. 在弹出对话框中，将会看到存储帐户名称、主访问密钥和辅助访问密钥。对于访问密钥，你可以使用主访问密钥，也可以使用辅助访问密钥。
 
-## 如何创建表
+## 创建表
 
 使用 **Azure::TableService** 对象可以对表和实体进行操作。若要创建表，请使用 **create\_table()** 方法。以下示例将创建一个表或输出存在的错误。
 
@@ -73,15 +73,15 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 	  puts $!
 	end
 
-## 如何向表中添加实体
+## 将实体添加到表
 
-若要添加实体，应首先创建一个定义了你的实体属性的哈希对象。请注意，对于每个实体，您必须指定 **PartitionKey** 和 **RowKey**。这些值是实体的唯一标识符，并且查询它们比查询其他属性快很多。Azure 存储服务使用 **PartitionKey** 自动将表的实体分发到多个存储节点上。具有相同的 **PartitionKey** 的实体存储在同一个节点上。**RowKey** 是实体在其所属分区内的唯一 ID。
+若要添加实体，应首先创建一个定义了你的实体属性的哈希对象。请注意，对于每个实体，你必须指定 **PartitionKey** 和 **RowKey**。这些值是实体的唯一标识符，并且查询它们比查询其他属性快很多。Azure 存储空间使用 **PartitionKey** 自动将表的实体分发到多个存储节点上。具有相同的 **PartitionKey** 的实体存储在同一个节点上。**RowKey** 是实体在其所属分区内的唯一 ID。
 
 	entity = { "content" => "test entity", 
 	  :PartitionKey => "test-partition-key", :RowKey => "1" }
 	azure_table_service.insert_entity("testtable", entity)
 
-## 如何：更新实体
+## 更新实体
 
 可使用多种方法来更新现有实体：
 
@@ -98,7 +98,7 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 对于 **update\_entity()** 和 **merge\_entity()**，如果待更新的实体不存在，则更新操作将失败。因此，如果您希望存储某个实体而不考虑它是否已存在，则应改用 **insert\_or\_replace\_entity()** 或 **insert\_or\_merge\_entity()**。
 
-## 如何：操作实体组
+## 使用实体组
 
 有时，有必要成批地同时提交多项操作以确保通过服务器进行原子处理。若要完成此操作，首先要创建一个 **Batch** 对象，然后对 **TableService** 使用 **execute\_batch()** 方法。下面的示例演示在一个批次中提交 RowKey 为 2 和 3 的两个实体。请注意，这仅适用于具有相同 PartitionKey 的实体。
 
@@ -110,23 +110,23 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 	end
 	results = azure_table_service.execute_batch(batch)
 
-## 如何：查询实体
+## 查询实体
 
 若要查询表中的实体，请使用 **get\_entity()** 方法并传递表名称 **PartitionKey** 和 **RowKey**。
 
 	result = azure_table_service.get_entity("testtable", "test-partition-key", 
 	  "1")
 
-## 如何：查询实体集
+## 查询实体集
 
 若要查询表中的实体集，请创建一个查询哈希对象并使用 **query\_entities()** 方法。下面的示例演示了如何获取具有相同 **PartitionKey** 的所有实体：
 
 	query = { :filter => "PartitionKey eq 'test-partition-key'" }
 	result, token = azure_table_service.query_entities("testtable", query)
 
-注意，如果结果集太大，一个查询无法全部返回，将会返回一个继续标记，您可以使用该标记检索后续页面。
+> [AZURE.NOTE] 如果结果集太大，一个查询无法全部返回，将会返回一个继续标记，你可以使用该标记检索后续页面。
 
-## 如何：查询实体属性子集
+## 查询一部分实体属性
 
 对表的查询可以只检索实体中的少数几个属性。此方法称为“投影”，可减少带宽并提高查询性能，尤其适用于大型实体。请使用 select 子句并传递你希望显示给客户端的属性的名称。
 
@@ -134,13 +134,13 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 	  :select => ["content"] }
 	result, token = azure_table_service.query_entities("testtable", query)
 
-## 如何：删除实体
+## 删除实体
 
 若要删除实体，请使用 **delete\_entity()** 方法。你需要传入包含该实体的表的名称、实体的 PartitionKey 和 RowKey。
 
 		azure_table_service.delete_entity("testtable", "test-partition-key", "1")
 
-## 如何：删除表
+## 删除表
 
 若要删除表，请使用 **delete\_table()** 方法并传入要删除的表的名称。
 
@@ -148,11 +148,11 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 ## 后续步骤
 
-现在，您已了解有关表存储的基础知识，请按照下面的链接了解更复杂的存储任务：
+若要了解有关更复杂存储任务的详细信息，请访问下面的链接：
 
-- 请参阅 MSDN 参考：[Azure 存储](http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx)
-- 访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
-- 访问 GitHub 上的 [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
+- MSDN 参考：[Azure 存储空间](http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx)
+- [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
+- GitHub 上的 [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
  
 
-<!---HONumber=70-->
+<!---HONumber=82-->

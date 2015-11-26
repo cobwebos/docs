@@ -1,17 +1,17 @@
 <properties
-   pageTitle="使用 Visual Studio 和 C# 创建 Apache Storm 拓扑 | Azure"
+   pageTitle="使用 Visual Studio 和 C# 创建 Apache Storm 拓扑 | Microsoft Azure"
    description="了解如何通过使用 HDInsight Tools for Visual Studio 创建一个简单的单词计数拓扑，来以 C# 语言创建一个 Storm 拓扑。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
    manager="paulettm"
    editor="cgronlun"
-   tags="azure-portal"/>
+	tags="azure-portal"/>
 
 <tags
-   ms.service="hdinsight"
-   ms.date="07/21/2015"
-   wacn.date=""/>
+	ms.service="hdinsight"
+	ms.date="09/23/2015"
+	wacn.date=""/>
 
 # 使用 Hadoop Tools for Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑
 
@@ -23,17 +23,19 @@
 
 -	下列其中一个版本的 Visual Studio
 
-	- 	Visual Studio 2012 <a href="http://www.microsoft.com/zh-CN/download/details.aspx?id=39305" target="_blank">Update 4</a>
+	-	Visual Studio 2012 [Update 4](http://www.microsoft.com/download/details.aspx?id=39305)
 
-	- 	Visual Studio 2013 <a href="http://www.microsoft.com/zh-CN/download/details.aspx?id=44921" target="_blank">Update 4</a> 或 <a href="http://go.microsoft.com/fwlink/?LinkId=517284" target="_blank">Visual Studio 2013 Community</a>
+	-	Visual Studio 2013 [Update 4](http://www.microsoft.com/download/details.aspx?id=44921) 或 [Visual Studio 2013 Community](http://download.microsoft.com/download/7/1/B/71BA74D8-B9A0-4E6C-9159-A8335D54437E/vs_community.exe)
 
-	-	Visual Studio 2015 或 [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
+	-	Visual Studio 2015 或 [Visual Studio 2015 Community](http://download.microsoft.com/download/0/B/C/0BC321A4-013F-479C-84E6-4A2F90B11269/vs_community.exe)
 
-* Azure SDK 2.5.1 或更高版本
+-	Azure SDK 2.5.1 或更高版本
 
-* HDInsight Tools for Visual Studio - 参阅<a href="/documentation/articles/hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">开始使用 HDInsight Tools for Visual Studio</a> 安装并配置 HDInsight Tools for Visual Studio。
+-	HDInsight Tools for Visual Studio - 参阅[开始使用 HDInsight Tools for Visual Studio](/documentation/articles/hdinsight-hadoop-visual-studio-tools-get-started) 安装并配置 HDInsight Tools for Visual Studio。
 
-* Apache Storm on HDInsight 群集：参阅 <a href="/documentation/articles/hdinsight-storm-getting-started/" target="_blank">Apache Storm on HDInsight 入门</a>了解创建群集的步骤
+    > [AZURE.NOTE]Visual Studio Express 不支持 HDInsight Tools for Visual Studio
+
+-	Apache Storm on HDInsight 群集：参阅 [Apache Storm on HDInsight 入门](/documentation/articles/hdinsight-storm-getting-started)了解创建群集的步骤。
 
 	> [AZURE.NOTE]HDInsight Tools for Visual Studio 目前只支持 Storm on HDInsight 版本 3.2 群集。
 
@@ -60,15 +62,15 @@ HDInsight Tools for Visual Studio 提供以下模板：
 
 ##创建 C# 拓扑
 
-1. 如果你尚未安装最新版本的 HDInsight Tools for Visual Studio，请参阅<a href="/documentation/articles/hdinsight-hadoop-visual-studio-tools-get-started/" target="_blank">开始使用 HDInsight Tools for Visual Studio</a>。
+1.	如果你尚未安装最新版本的 HDInsight Tools for Visual Studio，请参阅[开始使用 HDInsight Tools for Visual Studio](/documentation/articles/hdinsight-hadoop-visual-studio-tools-get-started)。
 
-2. 打开 Visual Studio，选择“文件”>“新建”>“项目”。
+2.	打开 Visual Studio，选择“文件”>“新建”>“项目”。
 
-3. 在“新建项目”屏幕中，展开“已安装”>“模板”，然后选择“HDInsight”。从模板列表中，选择“Storm 应用程序”。在屏幕底部，输入 **WordCount** 作为应用程序名称。
+3.	在“新建项目”屏幕中，展开“已安装”>“模板”，然后选择“HDInsight”。从模板列表中，选择“Storm 应用程序”。在屏幕底部，输入 **WordCount** 作为应用程序名称。
 
-	![图像](./media/hdinsight-storm-develop-csharp-visual-studio/new-project.png)
+	![图像](./media/hdinsight-storm-develop-csharp-visual-studio-topology/new-project.png)
 
-4. 创建项目后，你应该会获得以下文件：
+4.	创建项目后，你应该会获得以下文件：
 
 	-	**Program.cs**：定义项目的拓扑。请注意，默认情况下会创建包含一个 Spout 和一个 Bolt 的默认拓扑。
 
@@ -76,7 +78,7 @@ HDInsight Tools for Visual Studio 提供以下模板：
 
 	-	**Bolt.cs**：保留 Spout 所发出数字计数的示例 Bolt。
 
-	在创建项目过程中，将会从 Nuget 下载最新的 <a href="https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/" target="_blank">SCP.NET 包</a>。
+	在创建项目过程中，将会从 NuGet 下载最新的 [SCP.NET 包](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/)。
 
 在以下部分中，你要将此项目修改成基本 WordCount 应用程序。
 
@@ -299,7 +301,7 @@ HDInsight Tools for Visual Studio 提供以下模板：
 
 Spout 和 Bolt 以图形方式排列，用于定义数据在组件之间的流动方式。此拓扑的图形如下：
 
-![组件的排列方式图像](./media/hdinsight-storm-develop-csharp-visual-studio/wordcount-topology.png)
+![组件的排列方式图像](./media/hdinsight-storm-develop-csharp-visual-studio-topology/wordcount-topology.png)
 
 句子从 Spout 发出，并分布到 Splitter Bolt 的实例。Splitter Bolt 将句子分割成多个单词，并将这些单词分布到 Counter Bolt。
 
@@ -467,13 +469,13 @@ SCP.Net 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心�
 
 1.	在“解决方案资源管理器”中，右键单击项目，然后选择“属性”。在项目属性中，将“输出类型”更改为“控制台应用程序”。
 
-	![输出类型](./media/hdinsight-storm-develop-csharp-visual-studio/outputtype.png)
+	![输出类型](./media/hdinsight-storm-develop-csharp-visual-studio-topology/outputtype.png)
 
 	> [AZURE.NOTE]将拓扑部署到群集之前，请记得将“输出类型”更改回“类库”。
 
-2. 在“解决方案资源管理器”中，右键单击项目，然后依次选择“添加”>“新建项”。选择“类”，并输入 **LocalTest.cs** 作为类名称。最后，单击“添加”。
+2.	在“解决方案资源管理器”中，右键单击项目，然后依次选择“添加”>“新建项”。选择“类”，并输入 **LocalTest.cs** 作为类名称。最后，单击“添加”。
 
-3. 打开 **LocalTest.cs**，并在顶部添加以下 **using** 语句：
+3.	打开 **LocalTest.cs**，并在顶部添加以下 **using** 语句：
 
 	```
 	using Microsoft.SCP;
@@ -624,7 +626,7 @@ Context.Logger.Info("Component started");
 
 ##后续步骤
 
-在了解如何使用 HDInsight Tools for Visual Studio 开发和部署 Storm 拓扑后，请了解如何[使用 Storm on HDInsight 从 Azure 事件中心处理事件](hdinsight-storm-develop-csharp-event-hub-topology.md)。
+在了解如何使用 HDInsight Tools for Visual Studio 开发和部署 Storm 拓扑后，请了解如何[使用 Storm on HDInsight 从 Azure 事件中心处理事件](/documentation/articles/hdinsight-storm-develop-csharp-event-hub-topology)。
 
 有关将流数据拆分为多个流的 C# 拓扑示例，请参阅 [C# Storm 示例](https://github.com/Blackmist/csharp-storm-example)。
 
@@ -634,20 +636,20 @@ Context.Logger.Info("Component started");
 
 **Apache Storm on HDInsight**
 
--	[使用 Apache Storm on HDInsight 部署和监视拓扑](hdinsight-storm-deploy-monitor-topology.md)
+-	[使用 Apache Storm on HDInsight 部署和监视拓扑](/documentation/articles/hdinsight-storm-deploy-monitor-topology)
 
--	[Storm on HDInsight 的示例拓扑](hdinsight-storm-example-topology.md)
+-	[Storm on HDInsight 的示例拓扑](/documentation/articles/hdinsight-storm-example-topology)
 
 **Apache HDInsight 上的 Hadoop**
 
-* [将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive/)
+-	[将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive)
 
-* [将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig/)
+-	[将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig)
 
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
+-	[将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce)
 
 **Apache HBase on HDInsight**
 
-* [HBase on HDInsight 入门](/documentation/articles/hdinsight-hbase-get-started/)
+-	[HBase on HDInsight 入门](/documentation/articles/hdinsight-hbase-get-started)
 
-<!---HONumber=71-->
+<!---HONumber=82-->

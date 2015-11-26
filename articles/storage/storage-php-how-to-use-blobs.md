@@ -1,5 +1,5 @@
 <properties
-	pageTitle="如何通过 PHP 使用 Blob | Windows Azure"
+	pageTitle="如何通过 PHP 使用 Blob | Microsoft Azure"
 	description="了解如何使用 Azure Blob 服务上载、列出、下载和删除 Blob。通过 PHP 编写代码示例。"
 	documentationCenter="php"
 	services="storage"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="05/11/2015"
+	ms.date="09/01/2015"
 	wacn.date=""/>
 
 # 如何通过 PHP 使用 Blob 存储
@@ -18,7 +18,7 @@
 
 ## 概述
 
-本指南将演示如何使用 Azure Blob 服务执行常见方案。示例是用 PHP 编写的并使用了 [Azure SDK for PHP][download]。涉及的任务包括**上载**、**列出**、**下载**和**删除** Blob。有关 Blob 的详细信息，请参阅[后续步骤](#NextSteps)部分。
+本指南将演示如何使用 Azure Blob 服务执行常见方案。示例是用 PHP 编写的并使用了 [Azure SDK for PHP][download]。涉及的任务包括**上载**、**列出**、**下载**和**删除** Blob。有关 Blob 的详细信息，请参阅[后续步骤](#next-steps)部分。
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../includes/storage-blob-concepts-include.md)]
 
@@ -291,7 +291,10 @@
 - 参阅位于以下位置的 PHP 块 Blob 示例：<https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php>。
 - 参阅位于以下位置的 PHP 页 Blob 示例：<https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php>
 
-[download]: /zh-cn/documentation/articles/php-download-sdk/
+有关详细信息，另请参阅 [PHP 开发中心](/develop/php/)。
+
+
+[download]: /documentation/articles/php-download-sdk
 [Storing and accessing data in Azure]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
 [container-acl]: http://msdn.microsoft.com/zh-cn/library/azure/dd179391.aspx
 [error-codes]: http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
@@ -300,4 +303,4 @@
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
 
-<!---HONumber=70-->
+<!---HONumber=82-->

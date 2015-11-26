@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="06/16/2015"
+	ms.date="09/24/2015"
 	wacn.date=""/>
 	
 	
@@ -185,7 +185,7 @@ Azure 通知中心可提供用于向移动设备发送推送通知的易于使�
 
 现在，你已了解有关通知中心的基础知识，请单击下面的链接了解更多信息。
 
--   请参阅 MSDN 参考：[Azure 通知中心](http://msdn.microsoft.com/zh-cn/library/windowsazure/jj927170.aspx)。
+-   请参阅 MSDN 参考：[Azure 通知中心][]。
 -   访问 GitHub 上的 [Azure SDK for Node] 存储库。
 
   [Azure SDK for Node]: https://github.com/WindowsAzure/azure-sdk-for-node
@@ -219,4 +219,4 @@ Azure 通知中心可提供用于向移动设备发送推送通知的易于使�
   [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
   [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 
-<!---HONumber=76-->
+<!---HONumber=82-->

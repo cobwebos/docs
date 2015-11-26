@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 PowerShell 部署和管理 Windows Server/客户端的备份 | Windows Azure"
+	pageTitle="使用 PowerShell 部署和管理 Windows Server/客户端的备份 | Microsoft Azure"
 	description="了解如何使用 PowerShell 部署和管理 Azure 备份"
 	services="backup"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="backup"
-	ms.date="08/18/2015"
+	ms.date="10/01/2015"
 	wacn.date=""/>
 
 
@@ -19,6 +19,15 @@
 [AZURE.INCLUDE [arm-getting-setup-powershell](../includes/arm-getting-setup-powershell.md)]
 
 ## 设置和注册
+开始时，请执行以下操作：
+
+1. [下载最新 PowerShell](https://github.com/Azure/azure-powershell/releases)（要求的最低版本：1.0.0）
+2. 通过 **Switch-AzureMode** cmdlet 切换到 *AzureResourceManager* 模式，从而启用 Azure 备份 cmdlet：
+
+```
+PS C:\> Switch-AzureMode AzureResourceManager
+```
+
 使用 PowerShell 可以自动化以下设置和注册任务：
 
 - 创建备份保管库
@@ -28,7 +37,10 @@
 - 加密设置
 
 ### 创建备份保管库
-可以使用 **New-AzureBackupVault** cmdlet 创建新的备份保管库。备份保管库是一种 ARM 资源，因此需要将它放置在资源组中。在权限提升的 Azure PowerShell 控制台中运行以下命令：
+
+> [AZURE.WARNING] 对于第一次使用 Azure 备份的客户，你需要注册用于订阅的 Azure 备份提供程序。可通过运行以下命令来执行此操作：Register-AzureProvider -ProviderNamespace "Microsoft.Backup"
+
+可以使用 **New-AzureRMBackupVault** cmdlet 创建新的备份保管库。备份保管库是一种 ARM 资源，因此需要将它放置在资源组中。在权限提升的 Azure PowerShell 控制台中运行以下命令：
 
 ```
 PS C:\> New-AzureResourceGroup –Name “test-rg” –Region “China North”
@@ -65,7 +77,16 @@ PS C:\> MARSAgentInstaller.exe /?
 
 | 选项 | 详细信息 | 默认 |
 | ---- | ----- | ----- |
-| /q | 静默安装 | - | | /p:"location" | Azure 备份代理的安装文件夹路径。| C:\\Program Files\\Windows Azure Recovery Services Agent | | /s:"location" | Azure 备份代理的快取文件夹路径。| C:\\Program Files\\Windows Azure Recovery Services Agent\\Scratch | | /m | 选择启用 Microsoft Update | - | | /nu | 安装完成后不要检查更新 | - | | /d | 卸载 Microsoft Azure 恢复服务代理 | - | | /ph | 代理主机地址 | - | | /po | 代理主机端口号 | - | | /pu | 代理主机用户名 | - | | /pw | 代理密码 | - |
+| /q | 静默安装 | - |
+| /p:"location" | Azure 备份代理的安装文件夹路径。| C:\\Program Files\\Microsoft Azure Recovery Services Agent |
+| /s:"location" | Azure 备份代理的快取文件夹路径。| C:\\Program Files\\Microsoft Azure Recovery Services Agent\\Scratch |
+| /m | 选择启用 Microsoft Update | - |
+| /nu | 安装完成后不要检查更新 | - |
+| /d | 卸载 Microsoft Azure 恢复服务代理 | - |
+| /ph | 代理主机地址 | - |
+| /po | 代理主机端口号 | - |
+| /pu | 代理主机用户名 | - |
+| /pw | 代理密码 | - |
 
 
 ### 注册到 Azure 备份服务
@@ -97,7 +118,7 @@ Region              : China North
 Machine registration succeeded.
 ```
 
-> [AZURE.IMPORTANT]请勿使用相对路径来指定保管库凭据文件。必须提供绝对路径作为 cmdlet 的输入。
+> [AZURE.IMPORTANT] 请勿使用相对路径来指定保管库凭据文件。必须提供绝对路径作为 cmdlet 的输入。
 
 ### 网络设置
 如果 Windows 计算机通过代理服务器连接到 Internet，则也可以向代理提供代理设置。此示例未使用代理服务器，因此我们要显式清除任何代理相关的信息。
@@ -122,7 +143,7 @@ PS C:\> ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force 
 Server properties updated successfully
 ```
 
-> [AZURE.IMPORTANT]请妥善保管设置好的通行短语，并保证其安全。如果没有此通行短语，你将无法从 Azure 还原数据。
+> [AZURE.IMPORTANT] 请妥善保管设置好的通行短语，并保证其安全。如果没有此通行短语，你将无法从 Azure 还原数据。
 
 ## 备份文件和文件夹
 从 Windows Server 和客户端到 Azure 备份的所有备份由策略控制。原则包含三个部分：策略由三个部分组成：
@@ -164,7 +185,7 @@ BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName :
 PS C:\> $retentionpolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
 
-> [AZURE.NOTE]PowerShell cmdlet 目前不支持设置长期保留策略。可以使用 Azure 备份 UI 控制台设置长期保留策略。
+> [AZURE.NOTE] PowerShell cmdlet 目前不支持设置长期保留策略。可以使用 Azure 备份 UI 控制台设置长期保留策略。
 
 必须使用 cmdlet [Set-OBRetentionPolicy](https://technet.microsoft.com/zh-cn/library/hh770405) 将保留策略与主要策略相关联：
 
@@ -295,14 +316,14 @@ PolicyState     : Valid
 
 ```
 PS C:\> Get-OBPolicy | Remove-OBPolicy
-Windows Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
+Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
 使用 [Set-OBPolicy](https://technet.microsoft.com/zh-cn/library/hh770421) cmdlet 可以提交策略对象。系统将提示你确认。若要跳过确认，请在 cmdlet 中请使用 ```-Confirm:$false``` 标志。
 
 ```
 PS C:\> Set-OBPolicy -Policy $newpolicy
-Windows Azure Backup Do you want to save this backup policy ? [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
+Microsoft Azure Backup Do you want to save this backup policy ? [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s)
 DsList : {DataSource
          DatasourceId:4508156004108672185
@@ -577,4 +598,4 @@ PS C:\> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePa
 - [Azure 备份简介](/documentation/articles/backup-introduction-to-azure-backup)
 - [备份 Windows Server](/documentation/articles/backup-azure-backup-windows-server)
 
-<!---HONumber=69-->
+<!---HONumber=82-->

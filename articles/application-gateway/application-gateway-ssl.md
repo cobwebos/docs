@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="配置应用程序网关以进行 SSL 卸载 | Windows Azure"
+   pageTitle="配置应用程序网关以进行 SSL 卸载 | Microsoft Azure"
    description="本文提供有关在 Azure 应用程序网关上配置 SSL 卸载的说明。"
    documentationCenter="na"
    services="application-gateway"
@@ -8,7 +8,7 @@
    editor="tysonn"/>
 <tags 
    ms.service="application-gateway"
-   ms.date="06/30/2015"
+   ms.date="09/25/2015"
    wacn.date=""/>
 
 # 配置应用程序网关以进行 SSL 卸载
@@ -170,7 +170,7 @@
 
 ## 设置网关配置
 
-接下来，你将设置应用程序网关。可以对配置对象或配置 XML 文件使用 `Set-AzureApplicationGatewayConfig`。
+接下来，你将设置应用程序网关。可以对配置对象或配置 XML 文件使用 `Set-AzureApplicationGatewayConfig` cmdlet。
 
 
 	PS C:\> Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
@@ -225,4 +225,4 @@
 <!--- [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)-->
 - [Azure 流量管理器](/documentation/services/traffic-manager)
 
-<!---HONumber=69-->
+<!---HONumber=82-->

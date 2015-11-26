@@ -31,7 +31,7 @@
 本教程需要的内容如下：
 
 * 在 Windows 8.1 上运行的 Visual Studio 2013。
-* 完成[移动服务入门]或[数据处理入门]教程。
+* 完成[移动服务入门]教程。
 * Microsoft Azure 移动服务 SDK NuGet 包
 * Active Directory 身份验证库 NuGet 包 
 
@@ -158,9 +158,9 @@
             } 
         }
 
-6. 在上面的 `AuthenticateAsync` 方法的代码中，将 **INSERT-AUTHORITY-HERE** 替换为在其中进行应用程序设置的租户的名称，格式应为 https://login.chinacloudapi.cn/tenant-name.onmicrosoft.com 。可以在 [Azure 管理门户]中从 Azure Active Directory 的“域”选项卡复制此值。
+6. 在上面的 `AuthenticateAsync` 方法的代码中，将 **INSERT-AUTHORITY-HERE** 替换为在其中进行应用程序设置的租户的名称，格式应为 https://login.chinacloudapi.cn/tenant-name.onmicrosoft.com。可以在 [Azure 管理门户]中从 Azure Active Directory 的“域”选项卡复制此值。
 
-7. 在上面的 `AuthenticateAsync` 方法的代码中，将 **INSERT-RESOURCE-URI-HERE** 替换为你的移动服务的“应用程序 ID URI”。如果你按照[如何向 Azure Active Directory 注册]主题进行操作，你的应用程序 ID URI 应该类似于 https://todolist.azure-mobile.net/login/aad 。
+7. 在上面的 `AuthenticateAsync` 方法的代码中，将 **INSERT-RESOURCE-URI-HERE** 替换为你的移动服务的“应用程序 ID URI”。如果你按照[如何向 Azure Active Directory 注册]主题进行操作，你的应用程序 ID URI 应该类似于 https://todolist.azure-mobile.net/login/aad。
 
 8. 在上面的 `AuthenticateAsync` 方法的代码中，将 **INSERT-CLIENT-ID-HERE** 替换为你从本机客户端应用程序复制的客户端 ID。
 
@@ -208,8 +208,7 @@
 <!-- URLs. -->
 [如何向 Azure Active Directory 注册]: /documentation/articles/mobile-services-how-to-register-active-directory-authentication/
 [Azure 管理门户]: https://manage.windowsazure.cn/
-[数据处理入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data/
-[移动服务入门]: /documentation/articles/mobile-services-windows-store-get-started/
+[移动服务入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started
 [Windows 开发人员中心仪表板]: http://go.microsoft.com/fwlink/p/?LinkID=266734
 
-<!---HONumber=74-->
+<!---HONumber=82-->

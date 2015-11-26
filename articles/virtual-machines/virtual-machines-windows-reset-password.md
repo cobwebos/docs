@@ -1,34 +1,24 @@
 <properties
-	pageTitle="如何为 Windows 虚拟机重置密码或远程桌面服务"
-	description="使用 Azure 预览门户或 PowerShell 命令快速为 Windows 虚拟机重置本地管理员密码或远程桌面服务。"
+	pageTitle="在 Windows VM 上重置密码或远程桌面 | Microsoft Azure"
+	description="在使用资源管理器部署模型创建的 Windows VM 上重置管理员密码或远程桌面服务。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dsk-2015"
 	manager="timlt"
 	editor=""
-	tags="azure-service-management"/>
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="07/21/2015"
+	ms.date="10/14/2015"
 	wacn.date=""/>
 
-# 如何为 Windows 虚拟机重置密码或远程桌面服务
+# 如何为 Windows VM 重置密码或远程桌面服务
 
-如果你由于忘记了密码或远程桌面服务配置有问题而无法连接到 Windows 虚拟机，可以使用 Azure 预览门户或 VMAccess 扩展重置本地管理员密码或重置远程桌面服务配置。
-
-> [AZURE.NOTE]本文章不适用于在 Azure 资源管理器中创建的虚拟机。
-
-## 预览门户
-
-若要在[门户](https://manage.windows.cn)中重置远程桌面服务，请单击“浏览所有”>“虚拟机(经典)”>“你的 Windows 虚拟机”>“重置远程访问”。将显示以下页。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
 
 
-![](./media/virtual-machines-windows-reset-password/Portal-RDP-Reset-Windows.png)
-
-若要在[预览门户](https://portal.azure.com)中重置本地管理员帐户的名称和密码，请“浏览所有”>“虚拟机(经典)”>“你的 Windows 虚拟机”>“所有设置”>“密码重置”。将显示以下页。
-
-![](./media/virtual-machines-windows-reset-password/Portal-PW-Reset-Windows.png)
+如果你由于忘记了密码或远程桌面服务配置有问题而无法连接到 Windows 虚拟机，可以使用 VMAccess 扩展重置本地管理员密码或重置远程桌面服务配置。
 
 
 ## VMAccess 扩展和 PowerShell
@@ -87,7 +77,7 @@ VMAccess 扩展在虚拟机上运行这两个命令：
 
 	此命令启用允许传入远程桌面流量的内置 Windows 防火墙组，该组使用 TCP 端口 3389。
 
-- **Set-ItemProperty -Path 'HKLM:\\System\\CurrentControlSet\\Control\\Terminal Server' -name "fDenyTSConnections" -Value 0**
+- **Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0**
 
 	此命令将 fDenyTSConnections 注册表值设为 0，以启用远程桌面连接。
 
@@ -96,7 +86,7 @@ VMAccess 扩展在虚拟机上运行这两个命令：
 1.	在诊断程序包中，单击“Microsoft Azure IaaS (Windows)诊断程序包”以创建新的诊断会话。
 2.	在“你遇到 Azure VM 的以下哪些问题?”页上，选择“与 Azure VM 的 RDP 连接(需要重启)”问题。
 
-有关详细信息，请参阅 [Azure IaaS (Windows) 诊断程序包](http://support.microsoft.com/kb/2976864)知识库文章。
+有关详细信息，请参阅 [Microsoft Azure IaaS (Windows) 诊断程序包](http://support.microsoft.com/kb/2976864)知识库文章。
 
 如果你无法运行 Azure IaaS (Windows) 诊断程序包或运行该程序包未解决你的问题，请参阅[对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](/documentation/articles/virtual-machines-troubleshoot-remote-desktop-connections)。
 
@@ -109,4 +99,4 @@ VMAccess 扩展在虚拟机上运行这两个命令：
 
 [对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](/documentation/articles/virtual-machines-troubleshoot-remote-desktop-connections)
 
-<!---HONumber=70-->
+<!---HONumber=82-->

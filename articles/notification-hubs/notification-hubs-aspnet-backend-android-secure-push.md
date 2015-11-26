@@ -15,9 +15,9 @@
 #Azure 通知中心安全推送
 
 > [AZURE.SELECTOR]
-- [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-secure-push.md)
-- [iOS](notification-hubs-aspnet-backend-ios-secure-push.md)
-- [Android](notification-hubs-aspnet-backend-android-secure-push.md)
+- [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-secure-push)
+- [iOS](notification-hubs-aspnet-backend-ios-secure-push)
+- [Android](notification-hubs-aspnet-backend-android-secure-push)
 
 ##概述
 
@@ -40,7 +40,7 @@
 
 > [AZURE.NOTE]本教程假设你已根据[通知中心入门 (Android)](/documentation/articles/notification-hubs-android-get-started) 中所述创建并配置了通知中心。
 
-[AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../includes/notification-hubs-aspnet-backend-securepush.md)]
+[AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../includes/notification-hubs-aspnet-backend-securepush)]
 
 ## 修改 Android 项目
 
@@ -127,4 +127,4 @@
 
 4. 在 Android 应用 UI 中，单击“登录”。然后单击“发送推送”。
 
-<!---HONumber=76-->
+<!---HONumber=82-->

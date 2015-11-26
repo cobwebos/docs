@@ -9,12 +9,8 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="ios"
-	ms.devlang="objective-c"
-	ms.topic="article"
 	ms.date="06/16/2015"
-	ms.author="wesmc"/>
+	wacn.date=""/>
 # 通过使用 ASP.NET 注册推送通知的当前用户
 
 > [AZURE.SELECTOR]
@@ -237,4 +233,4 @@
 [Azure Management Portal]: https://manage.windowsazure.cn/
 [通知中心入门]: /manage/services/notification-hubs/get-started-notification-hubs-ios
 
-<!---HONumber=76-->
+<!---HONumber=82-->

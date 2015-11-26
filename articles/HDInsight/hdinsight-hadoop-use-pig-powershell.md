@@ -1,5 +1,5 @@
 <properties
-   pageTitle="在 HDInsight 中将 Hadoop Pig 与 PowerShell 配合使用 | Azure"
+   pageTitle="在 HDInsight 中将 Hadoop Pig 与 PowerShell 配合使用 | Microsoft Azure"
    description="了解如何使用 Azure PowerShell 将 Pig 作业提交到 HDInsight 上的 Hadoop 群集。"
    services="hdinsight"
    documentationCenter=""
@@ -9,9 +9,9 @@
 	tags="azure-portal"/>
 
 <tags
-   ms.service="hdinsight" 
-   ms.date="07/06/2015"
-   wacn.date="" />
+	ms.service="hdinsight"
+	ms.date="09/23/2015"
+	wacn.date=""/>
 
 #使用 PowerShell 运行 Pig 作业
 
@@ -19,15 +19,15 @@
 
 本文档提供使用 Azure PowerShell 向 HDInsight 群集上的 Hadoop 提交 Pig 作业的示例。Pig 允许你通过使用可为数据转换建模的语言 (Pig Latin) 编写 MapReduce 作业，而无需使用映射和化简函数。
 
-> [AZURE.NOTE]本文档未详细描述示例中使用的 Pig Latin 语句的作用。有关此示例中使用的 Pig Latin 的详细信息，请参阅<a href="/documentation/articles/hdinsight-use-pig/" target="_blank">将 Pig 与 HDInsight 上的 Hadoop 配合使用</a>。
+> [AZURE.NOTE]本文档未详细描述示例中使用的 Pig Latin 语句的作用。有关此示例中使用的 Pig Latin 的详细信息，请参阅[将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig)。
 
 ##<a id="prereq"></a>先决条件
 
 若要完成本文中的步骤，你将需要：
 
-* Azure HDInsight（HDInsight 上的 Hadoop）群集（基于 Windows 或 Linux）
+- **一个 Azure 订阅**。请参阅[获取 Azure 试用版](/pricing/1rmb-trial/)。
 
-* <a href="/documentation/articles/install-configure-powershell/" target="_blank">Azure PowerShell</a>
+- **配备 Azure PowerShell 的工作站**。请参阅[安装和使用 Azure PowerShell](/documentation/articles/install-configure-powershell)。
 
 
 ##<a id="powershell"></a>使用 PowerShell 运行 Pig 作业
@@ -131,12 +131,12 @@ Azure PowerShell 提供 *cmdlet*，可让你在 HDInsight 上远程运行 Pig �
 
 有关 HDInsight 中的 Pig 的一般信息：
 
-* [将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig/)
+* [将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig)
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive/)
+* [将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive)
 
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
+* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce)
 
-<!---HONumber=71-->
+<!---HONumber=82-->

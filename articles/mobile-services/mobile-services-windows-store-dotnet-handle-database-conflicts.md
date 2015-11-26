@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="06/18/2015" 
+	ms.date="10/05/2015" 
 	wacn.date=""/>
 
 # 处理数据库写入冲突
@@ -118,7 +118,7 @@
 
 	> [AZURE.NOTE]使用非类型表时，请通过将 Version 标志添加到表的 SystemProperties 来启用乐观并发。
 	>
-````` 
+	>````` 
 	//Enable optimistic concurrency by retrieving __version
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 `````
@@ -217,36 +217,36 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
   
 6. 通过单击“调试”->“启动调试”在 Visual Studio 中运行应用的第 1 个实例。在第二台计算机的“开始”屏幕上，单击向下箭头以查看“按名称排列的应用程序”。然后单击 **todolist** 应用以运行应用的第 2 个实例。
 
-	应用实例 1	
+	应用实例 1 
 	![][2]
 
-	应用实例 2	
+	应用实例 2 
 	![][2]
 
 
 7. 在应用实例 1 中，将最后一个项目的文本更新为“Test Write 1”，然后单击另一个文本框，以使 `LostFocus` 事件处理程序更新数据库。下面的屏幕快照显示了一个示例。
 	
-	应用实例 1	
+	应用实例 1 
 	![][3]
 
-	应用实例 2	
+	应用实例 2 
 	![][2]
 
 8. 此时，应用程序的第 2 个实例中的相应项目具有该项目的旧版本。在该应用实例中，针对 `text` 属性输入“Test Write 2”。然后单击另一个文本框，以使 `LostFocus` 事件处理程序尝试使用旧的 `_version` 属性更新数据库。
 
-	应用实例 1	
+	应用实例 1 
 	![][4]
 
-	应用实例 2	
+	应用实例 2 
 	![][5]
 
 9. 因为用于更新尝试的 `__version` 值与服务器 `__version` 值不匹配，所以，移动服务 SDK 将引发 `MobileServicePreconditionFailedException`，并且允许应用解决该冲突。若要解决此冲突，可单击“提交本地文本”以提交实例 2 中的值。此外，也可单击“保留服务器文本”以放弃实例 2 中的值，从而保留已提交的应用的实例 1 中的值。
 
-	应用实例 1	
+	应用实例 1 
 	![][4]
 
-	应用实例 2	
-	![][6]
+	应用实例 2 !
+	[][6]
 
 
 
@@ -290,53 +290,53 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 		}   
 5. 在两台计算机上运行 **todolist** 应用。更改实例 2 中最后一项的 TodoItem `text`。然后单击另一个文本框，以使 `LostFocus` 事件处理程序更新数据库。
 
-	应用实例 1	
+	应用实例 1 
 	![][4]
 
-	应用实例 2	
+	应用实例 2 
 	![][5]
 
 6. 在应用程序的实例 1 中，针对最后一个 text 属性输入不同的值。然后单击另一个文本框，以使 `LostFocus` 事件处理程序尝试使用错误的 `__version` 属性更新数据库。
 
-	应用实例 1	
+	应用实例 1 
 	![][13]
 
-	应用实例 2	
+	应用实例 2 
 	![][14]
 
 7. 请注意，由于该项目未标记为“完成”而允许更新，服务器脚本解决了冲突，因此在应用程序中未遇到异常。若要查看更新是否确实成功，请单击实例 2 中的“刷新”以重新查询数据库。
 
-	应用实例 1	
+	应用实例 1 
 	![][15]
 
-	应用实例 2	
+	应用实例 2 
 	![][15]
 
 8. 在实例 1 中，单击复选框以完成最后一个 Todo 项目。
 
-	应用实例 1	
+	应用实例 1 
 	![][16]
 
-	应用实例 2	
+	应用实例 2 
 	![][15]
 
 9. 在实例 2 中，尝试更新最后一个 TodoItem 的文本，触发 `LostFocus` 事件。在对冲突进行响应时，由于该项目已完成，此脚本通过拒绝更新解决了冲突。
 
-	应用实例 1	
+	应用实例 1 
 	![][17]
 
-	应用实例 2	
+	应用实例 2 
 	![][18]
 
 ##后续步骤
 
 本教程演示了在处理移动服务中的数据时，如何让 Windows 应用商店应用程序处理写入冲突。接下来，请考虑完成以下 Windows 应用商店教程之一：
 
-* [向应用程序添加身份验证] 
-  <br/>了解如何对应用程序用户进行身份验证。
+* [向应用程序添加身份验证]
+<br/>了解如何对应用程序用户进行身份验证。
 
-* [向应用程序添加推送通知] 
-  <br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
+* [向应用程序添加推送通知]
+<br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
  
 
 
@@ -382,4 +382,4 @@ todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=271146
 [系统属性]: http://go.microsoft.com/fwlink/?LinkId=331143
 
-<!---HONumber=74-->
+<!---HONumber=82-->

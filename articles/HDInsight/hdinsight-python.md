@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 HDInsight 中将 Python 与 Hive 和 Pig 配合使用 | Azure"
+	pageTitle="在 HDInsight 中将 Python 与 Hive 和 Pig 配合使用 | Microsoft Azure"
 	description="了解如何在 HDInsight（Azure 上的 Hadoop 技术堆栈）中通过 Hive 和 Pig 使用 Python 用户定义的函数 (UDF)。"
 	services="hdinsight"
 	documentationCenter=""
@@ -10,40 +10,30 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="07/06/2015" 
+	ms.date="09/23/2015"
 	wacn.date=""/>
 
-# 在 HDInsight 中将 Python 与 Hive 和 Pig 配合使用
+#在 HDInsight 中将 Python 与 Hive 和 Pig 配合使用
 
 Hive 和 Pig 非常适用于在 HDInsight 中处理数据，但有时你需要一种更通用的语言。Hive 和 Pig 都可让你使用各种编程语言创建用户定义的功能 (UDF)。在本文中，你将了解如何通过 Hive 和 Pig 使用 Python UDF。
 
 > [AZURE.NOTE]本文中的步骤适用于 HDInsight 群集版本 2.1、3.0、3.1 和 3.2。
 
 
-## <a name="python"></a>HDInsight 上的 Python
+##<a name="python"></a>HDInsight 上的 Python
 
 默认情况下，Python2.7 安装在 HDInsight 3.0 和更高版本的群集上。可以将 Hive 与此版本的 Python 配合使用，以进行流式处理（使用 STDOUT/STDIN 在 Hive 和 Python 之间传递数据）。
 
 HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。Pig 无需采用流式处理即可知道如何与 Jython 通信，因此，在使用 Pig 时，Jython 是首选。
 
-### <a name="hivepython"></a>Hive 和 Python
+###<a name="hivepython"></a>Hive 和 Python
 
 可以通过 HiveQL **TRANSFORM** 语句将 Python 用作 Hive 中的 UDF。例如，以下 HiveQL 将调用 **streaming.py** 文件中存储的 Python 脚本。
-
-**基于 Linux 的 HDInsight**
-
-	add file wasb:///streaming.py;
-
-	SELECT TRANSFORM (clientid, devicemake, devicemodel)
-	  USING 'streaming.py' AS
-	  (clientid string, phoneLable string, phoneHash string)
-	FROM hivesampletable
-	ORDER BY clientid LIMIT 50;
 
 **基于 Windows 的 HDInsight**
 
 	add file wasb:///streaming.py;
-	
+
 	SELECT TRANSFORM (clientid, devicemake, devicemodel)
 	  USING 'D:\Python27\python.exe streaming.py' AS
 	  (clientid string, phoneLable string, phoneHash string)
@@ -67,12 +57,12 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。Pig 无
 	import sys
 	import string
 	import hashlib
-	
+
 	while True:
 	  line = sys.stdin.readline()
 	  if not line:
 	    break
-	
+
 	  line = string.strip(line, "\n ")
 	  clientid, devicemake, devicemodel = string.split(line, "\t")
 	  phone_label = devicemake + ' ' + devicemodel
@@ -94,7 +84,7 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。Pig 无
 
 有关如何在 HDInsight 群集上运行此示例的信息，请参阅[运行示例](#running)。
 
-### <a name="pigpython"></a>Pig 和 Python
+###<a name="pigpython"></a>Pig 和 Python
 
 在整个 **GENERATE** 语句中，Python 脚本可用作 Pig 中的 UDF。例如，以下示例使用 **jython.py** 文件中存储的 Python 脚本。
 
@@ -145,32 +135,11 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。Pig 无
 
 当数据返回到 Pig 时，其架构与 **@outputSchema** 语句中的定义一致。
 
-## <a name="running"></a>运行示例
+##<a name="running"></a>运行示例
 
-如果使用的是基于 Linux 的 HDInsight 群集，请使用以下 **SSH** 步骤。如果使用的是基于 Windows 的 HDInsight 群集和 Windows 客户端，请使用 **PowerShell** 步骤。
+如果使用的是基于 Windows 的 HDInsight 群集和 Windows 客户端，请使用 **PowerShell** 步骤。
 
-### SSH
-
-有关使用 SSH 的详细信息，请参阅<a href="/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/" target="_blank">在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用</a>或<a href="/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/" target="_blank">在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用</a>。
-
-1. 使用 Python 示例 [streaming.py](#streamingpy) 和 [jython.py](#jythonpy) 创建开发计算机上的文件的本地副本。
-
-2. 使用 `scp` 将文件复制到你的 HDInsight 群集。例如，下面会将文件复制到名为 **mycluster** 的群集。
-
-		scp streaming.py jython.py myuser@mycluster-ssh.azurehdinsight.cn:
-
-3. 使用 SSH 连接到群集。例如，下面会以用户 **myuser** 的身份连接到名为 **mycluster** 的群集。
-		
-		ssh myuser@mycluster-ssh.azurehdinsight.cn
-
-4. 从 SSH 会话将前面上载的 python 文件添加到群集的 WASB 存储中。
-
-		hadoop fs -copyFromLocal streaming.py /streaming.py
-		hadoop fs -copyFromLocal jython.py /jython.py
-
-在上载文件后，使用以下步骤来运行 Hive 和 Pig 作业。
-
-#### Hive
+####Hive
 
 1. 使用 `hive` 命令来启动 hive shell。在 shell 加载后，你应会看到 `hive>` 提示符。
 
@@ -191,7 +160,7 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。Pig 无
 		100042	Apple iPhone 4.2.x	375ad9a0ddc4351536804f1d5d0ea9b9
 		100042	Apple iPhone 4.2.x	375ad9a0ddc4351536804f1d5d0ea9b9
 
-#### Pig
+####Pig
 
 1. 使用 `pig` 命令来启动该 shell。在 shell 加载后，你应会看到 `grunt>` 提示符。
 
@@ -211,9 +180,9 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。Pig 无
 		((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
 		((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-### PowerShell
+###PowerShell
 
-这些步骤使用 Azure PowerShell。如果尚未在开发计算机上安装并配置 Azure PowerShell，请在使用以下步骤之前，参阅[如何安装和配置 Azure PowerShell](install-configure-powershell)。
+这些步骤使用 Azure PowerShell。如果尚未在开发计算机上安装并配置 Azure PowerShell，请在使用以下步骤之前，参阅[如何安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell)。
 
 1. 使用 Python 示例 [streaming.py](#streamingpy) 和 [jython.py](#jythonpy) 创建开发计算机上的文件的本地副本。
 
@@ -234,12 +203,12 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。Pig 无
 
 	此脚本将检索 HDInsight 群集的信息，然后提取默认存储帐户的名称和密钥，并将文件上载到容器的根目录。
 
-	> [AZURE.NOTE][在 HDInsight 中上载 Hadoop 作业的数据文档](hdinsight-upload-data)中介绍了上载脚本的其他方法。
+	> [AZURE.NOTE][在 HDInsight 中上载 Hadoop 作业的数据文档](/documentation/articles/hdinsight-upload-data)中介绍了上载脚本的其他方法。
 
 上载文件后，使用以下 PowerShell 脚本启动作业。在完成作业时，会将输出写入到 PowerShell 控制台。
 
-#### Hive
-    
+####Hive
+
     # Replace 'YourHDIClusterName' with the name of your cluster
 	$clusterName = YourHDIClusterName
 
@@ -249,9 +218,9 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。Pig 无
 	               "(clientid string, phoneLabel string, phoneHash string) " +
 	             "FROM hivesampletable " +
 	             "ORDER BY clientid LIMIT 50;"
-	
+
 	$jobDefinition = New-AzureHDInsightHiveJobDefinition -Query $HiveQuery -StatusFolder '/hivepython'
-	
+
 	$job = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $jobDefinition
 	Write-Host "Wait for the Hive job to complete ..." -ForegroundColor Green
 	Wait-AzureHDInsightJob -Job $job
@@ -268,7 +237,7 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。Pig 无
 	100042	Apple iPhone 4.2.x	375ad9a0ddc4351536804f1d5d0ea9b9
 	100042	Apple iPhone 4.2.x	375ad9a0ddc4351536804f1d5d0ea9b9
 
-#### Pig
+####Pig
 
 	# Replace 'YourHDIClusterName' with the name of your cluster
 	$clusterName = YourHDIClusterName
@@ -278,9 +247,9 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。Pig 无
 	            "LOG = FILTER LOGS by LINE is not null;" +
 	            "DETAILS = foreach LOG generate myfuncs.create_structure(LINE);" +
 	            "DUMP DETAILS;"
-	
+
 	$jobDefinition = New-AzureHDInsightPigJobDefinition -Query $PigQuery -StatusFolder '/pigpython'
-	
+
 	$job = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $jobDefinition
 	Write-Host "Wait for the Pig job to complete ..." -ForegroundColor Green
 	Wait-AzureHDInsightJob -Job $job
@@ -297,7 +266,7 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。Pig 无
 	((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
 	((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-## <a name="troubleshooting"></a>故障排除
+##<a name="troubleshooting"></a>故障排除
 
 用于运行示例的两个示例 PowerShell 脚本都包含一个带注释的行，该行将显示作业的错误输出。如果你未看到作业的预期输出，请取消注释以下行，并查看错误信息中是否指明了问题。
 
@@ -305,26 +274,21 @@ HDInsight 还包含 Jython，后者是用 Java 编写的 Python 实现。Pig 无
 
 错误信息 (STDERR) 和作业的结果 (STDOUT) 还会记录到群集默认 Blob 容器中的以下位置。
 
-<table>
-<tr>
-<td>对于此作业...</td><td>在 Blob 容器中查看这些文件</td>
-</tr>
-<td>Hive</td><td>/HivePython/stderr</br>/HivePython/stdout</td>
-</tr>
-<td>Pig</td><td>/PigPython/stderr</br>/PigPython/stdout</td>
-</tr>
-</table>
+对于此作业...|在 Blob 容器中查看这些文件
+---|---
+Hive|/HivePython/stderr<p>/HivePython/stdout
+Pig|/PigPython/stderr<p>/PigPython/stdout
 
-## <a name="next"></a>后续步骤
+##<a name="next"></a>后续步骤
 
 如果需要加载未按默认提供的 Python 模块，请参阅[如何将模块部署到 Azure HDInsight](http://blogs.msdn.com/b/benjguin/archive/2014/03/03/how-to-deploy-a-python-module-to-windows-azure-hdinsight.aspx)，以获取有关此操作的示例。
 
 若要了解使用 Pig、Hive 的其他方式以及如何使用 MapReduce，请参阅以下内容。
 
-* [将 Hive 与 HDInsight 配合使用](hdinsight-use-hive)
+* [将 Hive 与 HDInsight 配合使用](/documentation/articles/hdinsight-use-hive)
 
-* [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig)
+* [将 Pig 与 HDInsight 配合使用](/documentation/articles/hdinsight-use-pig)
 
-* [将 MapReduce 与 HDInsight 配合使用](hdinsight-use-mapreduce)
+* [将 MapReduce 与 HDInsight 配合使用](/documentation/articles/hdinsight-use-mapreduce)
 
-<!---HONumber=71-->
+<!---HONumber=82-->

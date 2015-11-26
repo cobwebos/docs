@@ -1,18 +1,18 @@
 <properties
-	pageTitle="Azure 虚拟机备份简介"
+	pageTitle="Azure 虚拟机备份简介 | Microsoft Azure"
 	description="介绍如何使用 Azure 备份服务在 Azure 中备份虚拟机"
 	services="backup"
 	documentationCenter=""
-	authors="aashishr"
+	authors="trinadhk"
 	manager="shreeshd"
 	editor=""/>
 
 <tags
 	ms.service="backup"
-	ms.date="05/26/2015"
+	ms.date="09/09/2015"
 	wacn.date=""/>
 
-# Azure 虚拟机备份 - 简介
+# Azure 虚拟机备份
 
 本部分介绍如何使用 Microsoft Azure 备份来保护 Azure 虚拟机。通过阅读本文，你将会了解：
 
@@ -54,7 +54,7 @@
 
 ![Azure 虚拟机备份体系结构](./media/backup-azure-vms-introduction/vmbackup-architecture.png)
 
->[AZURE.NOTE]Linux 虚拟机只能使用文件一致性备份。
+>[AZURE.NOTE] Linux 虚拟机只能使用文件一致性备份。
 
 ## 计算受保护的实例
 使用 Azure 备份进行备份的 Azure 虚拟机的收费依据 [Azure 备份定价](/home/features/back-up/#price)。受保护的实例计算基于虚拟机的*实际* 大小，即虚拟机中除“资源磁盘”外的所有数据之和。*不是*按连接到虚拟机的每个受支持数据磁盘的最大大小对你收费，而是按存储在数据磁盘中的实际数据收费。与此类似，备份存储空间的收费是根据通过 Azure 存储空间存储的数据容量，即每个恢复点中实际数据之和。
@@ -73,10 +73,11 @@
 完成第一次成功备份后才会计费。存储和受保护的实例也会在此同时开始计费。只要虚拟机包含 *Azure 备份存储的任何备份数据*，就会持续计费。如果保留备份数据，执行“停止保护”操作将不会停止计费。指定的虚拟机只有在停止保护*和*删除全部备份数据后才会停止计费。没有活动的备份作业（已停止保护）时﹐受保护实例大小将根据上次成功备份时的虚拟机大小进行按月计费。
 
 ## 先决条件
-### 1\.备份保管库
+### 1.备份保管库
 若要开始备份 Azure 虚拟机，你需要首先创建备份保管库。保管库是存储所有按时间创建的备份和恢复点的实体。保管库还包含将应用到要备份的虚拟机的备份策略。
 
-下图显示了各种 Azure 备份实体之间的关系：![Azure 备份实体和关系](./media/backup-azure-vms-introduction/vault-policy-vm.png)
+下图显示了各种 Azure 备份实体之间的关系：
+![Azure 备份实体和关系](./media/backup-azure-vms-introduction/vault-policy-vm.png)
 
 ### 创建备份保管库的步骤
 
@@ -86,50 +87,50 @@
 
 3. 在“名称”中，输入一个友好名称以标识此保管库。这必须是每个订阅的唯一名称。
 
-4. 在“区域”中，为保管库选择地理区域。请注意，保管库必须与你要保护的虚拟机位于同一区域中。如果你的虚拟机位于不同的区域中，请在每个区域中创建一个保管库。无需指定存储帐户即可存储备份数据 — 备份保管库和 Azure 备份服务将会自动处理这种情况。![创建备份保管库](./media/backup-azure-vms-introduction/backup_vaultcreate.png)
+4. 在“区域”中，为保管库选择地理区域。请注意，保管库必须与你要保护的虚拟机位于同一区域中。如果你的虚拟机位于不同的区域中，请在每个区域中创建一个保管库。无需指定存储帐户即可存储备份数据 — 备份保管库和 Azure 备份服务将会自动处理这种情况。
+    ![创建备份保管库](./media/backup-azure-vms-introduction/backup_vaultcreate.png)
 
-  	> [AZURE.NOTE]使用 Azure 备份服务的虚拟机备份仅在选定区域受支持。在创建保管库期间，如果你要寻找的区域目前不受支持，则不会在下拉列表中显示它。
+5. 单击“创建保管库”。创建备份保管库可能需要一段时间。可以在门户底部监视状态通知。
+![创建保管库 toast 通知](./media/backup-azure-vms-introduction/creating-vault.png)
 
-5. 单击“创建保管库”。创建备份保管库可能需要一段时间。可以在门户底部监视状态通知。![创建保管库 toast 通知](./media/backup-azure-vms-introduction/creating-vault.png)
+6. 将出现一条消息来确认保管库已成功创建，并且将在“恢复服务”页上将保管库列出为“活动”保管库。确保在创建保管库后立即选择适当的存储冗余选项。阅读有关[在备份保管库中设置存储冗余选项](../backup-azure-backup-create-vault#storage-redundancy-options)的更多内容。
+![备份保管库列表](./media/backup-azure-vms-introduction/backup_vaultslist.png)
 
-6. 将出现一条消息来确认保管库已成功创建，并且将在“恢复服务”页上将保管库列出为“活动”保管库。![备份保管库列表](./media/backup-azure-vms-introduction/backup_vaultslist.png)
+7. 单击备份保管库将转到“快速启动”页，其中会显示 Azure 虚拟机的备份说明。
+![“仪表板”页中的虚拟机备份说明](./media/backup-azure-vms-introduction/vmbackup-instructions.png)
 
-7. 单击备份保管库将转到“快速启动”页，其中会显示 Azure 虚拟机的备份说明。![“仪表板”页中的虚拟机备份说明](./media/backup-azure-vms-introduction/vmbackup-instructions.png)
+    >[AZURE.NOTE]
+    >确保在创建保管库后立即选择适当的存储冗余选项。阅读有关 [在备份保管库中设置存储冗余选项][vault-storage-redundancy] 的更多内容。
 
-    >[AZURE.NOTE]确保在创建保管库后立即选择适当的存储冗余选项。阅读有关 [在备份保管库中设置存储冗余选项][vault-storage-redundancy] 的更多内容。
-
-### 2\.VM 代理
+### 2.VM 代理
 在开始备份 Azure 虚拟机之前，请确保 Azure VM 代理已正确安装到虚拟机上。为了备份虚拟机，Azure 备份服务会将扩展安装到 VM 代理上。由于创建虚拟机时 VM 代理是可选组件，因此需确保选中 VM 代理的复选框，然后才能对虚拟机进行预配。
 
 了解 [VM 代理](https://msdn.microsoft.com/zh-cn/library/dn606311.aspx)以及[如何安装它](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)。
 
->[AZURE.NOTE]如果你打算将虚拟机从本地数据中心迁移到 Azure，请确保在启动迁移过程之前，下载并安装 VM 代理 MSI。这也适用于受到使用 Azure Site Recovery 的 Azure 保护的虚拟机。
+## 限制
 
-## 预览期间的限制
-
-- 不支持备份超过 5 个磁盘的虚拟机。
+- 不支持备份基于 Azure 资源管理器的虚拟机（如 IaaS V2）。
+- 不支持备份超过 16 个数据磁盘的虚拟机。
 - 不支持备份使用“高级”存储空间的虚拟机。
-- 不支持使用多个 NIC 备份虚拟机，或备份负载平衡配置中的虚拟机。
+- 不支持备份使用多个保留 IP 的虚拟机。
+- 不支持备份使用保留 IP 且未定义终结点的虚拟机。
+- 不支持备份使用多个 NIC 的虚拟机。
+- 不支持备份采用负载平衡配置（内部和面向 Internet）的虚拟机。
 - 不支持在恢复过程中替换现有虚拟机。首先删除现有虚拟机以及任何关联的磁盘，然后从备份恢复数据。
-- 不支持备份使用 Azure Site Recovery 还原的虚拟机。
 - 不支持跨区域备份和恢复。
-- 使用 Azure 备份服务的虚拟机备份仅在选定区域受支持。请查看[支持的区域](http://azure.microsoft.com/regions/#services)列表。在创建保管库期间，如果你要寻找的区域目前不受支持，则不会在下拉列表中显示它。
+- Azure 的所有公共区域都支持使用 Azure 备份服务来备份虚拟机。下面是支持区域的[清单](http://azure.microsoft.com/regions/#services)。在创建保管库期间，如果你要寻找的区域目前不受支持，则不会在下拉列表中显示它。
 - 只有特定的操作系统版本才支持使用 Azure 备份服务进行虚拟机备份。
   - **Linux**：[此处](../virtual-machines-linux-endorsed-distributions.md)提供了 Azure 认可的分发版列表。只要虚拟机上装有 VM 代理，其他自带的 Linux 分发版应该也能正常运行。
   - **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
+- 仅支持通过 PowerShell 还原属于多 DC 配置的域控制器 VM。阅读有关[还原多 DC 域控制器](backup-azure-restore-vms#restoring-domain-controller-vms)的详细信息
 
 如果你希望包含某种功能，请[给我们反馈](http://aka.ms/azurebackup_feedback)。
 
 ## 后续步骤
 若要开始虚拟机备份，请学习如何：
 
-- [发现、注册和保护虚拟机](/documentation/articles/backup-azure-vms)
+- [备份虚拟机](backup-azure-vms)
+- [恢复虚拟机](backup-azure-restore-vms)
+- [管理虚拟机备份](backup-azure-manage-vms)
 
-- [恢复虚拟机](/documentation/articles/backup-azure-restore-vms)
-
-+ 监视备份作业
-
-
- 
-
-<!---HONumber=69-->
+<!---HONumber=82-->
