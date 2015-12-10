@@ -4,15 +4,15 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	manager="stevenpo" 
+	editor="curtland"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="06/02/2015" 
+	ms.date="08/24/2015" 
 	wacn.date=""/>
 
-#选择适合自己的多因素安全解决方案
+# 选择适合自己的多因素安全解决方案
 
 因为 Azure Multi-Factor Authentication 的种类繁多，我们必须从几个重点来判断，以便找出最合适的版本。这些重点包括：
 
@@ -83,4 +83,4 @@ MFA 报告 | ● | ●
 * [面向用户](/documentation/articles/multi-factor-authentication-end-user)
 * [MSDN 上的 Azure Multi-Factor Authentication](https://msdn.microsoft.com/zh-cn/library/azure/dn249471.aspx) 
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_1207_2015-->

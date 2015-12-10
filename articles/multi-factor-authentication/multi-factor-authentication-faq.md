@@ -4,12 +4,12 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="swadwha" 
+	manager="stevenpo" 
 	editor="curtand"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="07/02/2015" 
+	ms.date="08/24/2015" 
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 常见问题
@@ -119,7 +119,13 @@
 
 Azure Multi-Factor Authentication 服务通过短信聚合器发送短信。许多因素可能会影响短信传递和接收的可靠性，包括使用的聚合器、目标国家/地区、移动电话运营商和信号强度。因此，在执行双向短信传递时，不保证能够传递短信和接收短信回复。建议尽量使用单向短信而不是双向短信，因为前者更加可靠，并且可以防止由于回复其他国家/地区发来的短信而给用户造成的全球短信费用。
 
-在某些国家，例如美国和加拿大，短信验证比其他国家/地区也更加可靠。建议在使用 Azure Multi-Factor Authentication 时难以可靠接收短信的用户改为选择移动应用程序或电话呼叫的方法。移动应用程序非常有利，因为可以通过蜂窝网络和 Wi-Fi 连接接收移动应用程序通知，并且，即使设备根本没有信号，也可以显示移动应用程序密码。Azure 验证器应用可用于 [Windows Phone](http://www.windowsphone.com/zh-cn/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) 和 [iOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458)。
+在某些国家，例如美国和加拿大，短信验证比其他国家/地区也更加可靠。建议在使用 Azure Multi-Factor Authentication 时难以可靠接收短信的用户改为选择移动应用程序或电话呼叫的方法。移动应用程序非常有利，因为可以通过蜂窝网络和 Wi-Fi 连接接收移动应用程序通知，并且，即使设备根本没有信号，也可以显示移动应用程序密码。Azure 验证器应用可用于 [Windows Phone](http://www.windowsphone.com/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) 和 [iOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458)。
+
+**问：我是否可以在 Azure MFA 服务器上使用硬件令牌？**
+
+如果你正在使用 Azure MFA 服务器，可以导入第三方 OATH TOTP 令牌并将其用于 MFA。目前，我们支持导入 Gemalto 为其令牌生成的早期 PSKC 格式的第三方 OATH TOTP 令牌，并支持导入 CSV 格式的令牌。导入 CSV 格式的令牌时，CSV 文件必须包含序列号、Base32 格式的机密密钥和时间间隔（通常为 30 秒）。
+
+因此，如果 ActiveIdentity 令牌是 TOTP OATH 令牌并且你可以将机密密钥提取到可导入 Azure MFA 服务器的 CSV 文件，则可以使用这些令牌。OATH 令牌可以配合 AD FS、RADIUS（如果客户端系统能够处理访问质询响应）和基于 IIS 窗体的身份验证使用。
 
 
 ## 错误
@@ -141,4 +147,4 @@ Azure Multi-Factor Authentication 服务通过短信聚合器发送短信。许�
 
 此问题的解决方法是，管理员相关操作与非管理员操作使用单独的用户帐户。稍后你可以链接管理员帐户和非管理员帐户的邮箱，以便使用非管理员帐户登录到 Outlook。有关此解决方法的更多详细信息，请参阅 [使管理员能够打开和查看用户邮箱内容](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1)。
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_1207_2015-->

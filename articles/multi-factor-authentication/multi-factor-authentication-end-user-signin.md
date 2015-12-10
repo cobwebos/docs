@@ -13,7 +13,8 @@
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 的登录体验
-以下信息旨在帮助引导你完成登录体验。
+> [AZURE.NOTE]本页提供的文档演示了一个典型的登录体验。有关登录的帮助，请参阅[使用 Azure Multi-Factor Authentication 时遇到问题](multi-factor-authentication-end-user-manage-settings.md)
+
 
 
 ## 你的登录体验是怎样的？
@@ -96,6 +97,4 @@
 
 - 选择一种替代方法并登录。
 
- 
-
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

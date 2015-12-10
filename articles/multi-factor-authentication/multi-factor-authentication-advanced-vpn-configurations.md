@@ -31,7 +31,7 @@ Azure Multi-Factor Authentication 可以与 Citrix NetScaler SSL VPN 设备无�
 [Citrix NetScaler SSL VPN 与 Azure MFA Configuration for LDAP](http://download.microsoft.com/download/2/4/E/24E1E722-72DF-471F-A88A-D1338DB1AF83/Citrix_NS_Azure_MFA_LDAP.docx) | 使用 LDAP 将 Citrix NetScaler SSL VPN 与 Azure MFA 设备无缝集成|
 [Citrix NetScaler SSL VPN 与 Azure MFA Configuration for RADIUS](http://download.microsoft.com/download/1/A/4/1A482764-4A63-45C2-A5EC-2B673ACCDD12/Citrix_NS_Azure_MFA_RADIUS.docx) | 使用 RADIUS 将 Citrix NetScaler SSL VPN 设备与 Azure MFA 无缝集成
 
-##Juniper/Pulse Secure SSL VPN 设备与 Azure Multi-Factor Authentication
+## Juniper/Pulse Secure SSL VPN 设备与 Azure Multi-Factor Authentication
 Azure Multi-Factor Authentication 可以与 Juniper/Pulse Secure SSL VPN 设备无缝集成，以便为 Juniper/Pulse Secure SSL VPN 登录和门户访问提供更高的安全性。可以使用 LDAP 或 RADIUS 协议来实现此目的。选择下列其中一项以下载详细的分步配置指南。
 
 配置指南 | 说明 
@@ -39,4 +39,4 @@ Azure Multi-Factor Authentication 可以与 Juniper/Pulse Secure SSL VPN 设备�
 [Juniper/Pulse Secure SSL VPN 与 Azure MFA Configuration for LDAP](http://download.microsoft.com/download/6/5/8/6587B418-75B1-4FCB-84D4-984BC479309E/JuniperPulse_Azure_MFA_LDAP.docx)| 使用 LDAP 将 Juniper/Pulse Secure SSL VPN 与 Azure MFA 设备无缝集成|
 [Juniper/Pulse Secure SSL VPN 与 Azure MFA Configuration for RADIUS](http://download.microsoft.com/download/7/9/A/79AB3DAD-4799-4379-B1DA-B95ABDF231DC/JuniperPulse_Azure_MFA_RADIUS.docx) | 使用 RADIUS 将 Juniper/Pulse Secure SSL VPN 设备与 Azure MFA 无缝集成
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

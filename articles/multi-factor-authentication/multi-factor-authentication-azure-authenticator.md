@@ -29,7 +29,7 @@
 
 首先，请确保准备好 QR 代码，或者为要添加到应用中的帐户准备好可随时输入的代码和 URL。
 
-> [AZURE.NOTE] 不知道怎样获取 QR 代码？ 请联系技术支持以获得帮助。
+> [AZURE.NOTE]不知道怎样获取 QR 代码？ 请联系技术支持以获得帮助。
 > 
 > 无法使用新应用激活你的帐户？ 请联系技术支持。
 >
@@ -53,8 +53,7 @@
 
 将所有帐户添加到新应用后，请通过手机卸载旧应用。
 
-想知道如何从旧应用中删除个人帐户？
-请点击该帐户。随后会出现“删除”选项。
+想知道如何从旧应用中删除个人帐户？ 请点击该帐户。随后会出现“删除”选项。
 
 ![删除帐户](./media/multi-factor-authentication-azure-authenticator/remove.png)
 
@@ -124,7 +123,9 @@
 若要手动添加非 Azure 帐户，例如 Microsoft 帐户，可以执行以下操作：
 
 
-- 首先，请从与帐户关联的站点获取机密密钥。例如，在 Outlook.com 中转到帐户设置、你的安全设置，然后选择设置身份验证应用。需要选择“我无法扫描条形码以获取机密密钥”。
+- 可以通过扫描 QR 代码或输入机密密钥来手动添加非 Azure 帐户。
+- 如果要手动输入机密密钥，请从与帐户关联的站点获取机密密钥。例如，在 Outlook.com 中转到帐户设置、你的安全设置，然后选择设置身份验证应用。需要选择“我无法扫描条形码以获取机密密钥”。
+- 
 
 ![添加帐户](./media/multi-factor-authentication-azure-authenticator/secretkey.png)
 
@@ -132,11 +133,11 @@
 
 ![添加帐户](./media/multi-factor-authentication-azure-authenticator/addaccount3.png)
 
-- 单击底部的“手动输入”按钮。
+- 扫描 QR 代码，或单击底部的“手动输入”按钮。如果扫描 QR 代码，则会跳过下一步，因为会立即开始激活。
 
 ![添加帐户](./media/multi-factor-authentication-azure-authenticator/scan.png)
 
-- 输入显示条形码的同一页面上所提供的帐户名和机密密钥。此信息将会填入移动应用上的代码和 URL 框中。激活过程随后将会开始。
+- 如果你手动输入机密密钥，请输入显示条形码的同一页面上所提供的帐户名和机密密钥。此信息将会填入移动应用上的代码和 URL 框中。激活过程随后将会开始。
 
 ![添加帐户](./media/multi-factor-authentication-azure-authenticator/manual.png)
 
@@ -159,4 +160,4 @@ iOS 上的 Azure 验证器移动应用支持 Touch ID。Azure Multi-Factor Authe
 
 ![Touch ID](./media/multi-factor-authentication-azure-authenticator/touchid2.png)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->
