@@ -1,5 +1,5 @@
 <properties
-    pageTitle="用于水平分区的弹性查询 | Microsoft Azure"
+    pageTitle="用于分片的弹性数据库查询（水平分区）| Microsoft Azure"
     description="如何对水平分区设置弹性查询"    
     services="sql-database"
     documentationCenter=""  
@@ -11,7 +11,7 @@
     ms.date="10/15/2015"
     wacn.date="" />
 
-# 用于水平分区的弹性查询
+# 用于分片的弹性数据库查询（水平分区）
 
 本文档说明如何为水平分区方案设置弹性数据库查询以及如何执行查询。有关水平分区方案的定义，请参阅[弹性数据库查询概述（预览版）](/documentation/articles/sql-database-elastic-query-overview)。
 
@@ -23,13 +23,13 @@
 
 定义弹性数据库查询的数据库对象依赖于以下 T-SQL 语句，下面将针对水平分区方案对这些语句进行进一步说明：
 
-* [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) 
+* [CREATE MASTER KEY](https://msdn.microsoft.com/zh-cn/library/ms174382.aspx) 
 
-* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
+* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/zh-cn/library/mt270260.aspx)
 
-* [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
+* [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/zh-cn/library/dn935022.aspx)
 
-* [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
+* [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/zh-cn/library/dn935021.aspx)
 
 ### 1\.1 数据库范围的主密钥和凭据 
 
@@ -234,4 +234,4 @@ sp\_execute\_fanout 使用调用参数中提供的分片映射信息在注册到
 <!--Image references-->
 <!--anchors-->
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

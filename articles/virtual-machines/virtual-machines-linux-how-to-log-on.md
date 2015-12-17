@@ -1,11 +1,12 @@
 <properties
-	pageTitle="在 Azure 中登录到运行 Linux 的虚拟机"
+	pageTitle="登录到 Azure 中的 Linux VM |Microsoft Azure"
 	description="了解如何使用安全外壳 (SSH) 客户端登录到运行 Linux 的 Azure 虚拟机。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="squillace"
 	manager="timlt"
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -16,6 +17,8 @@
 
 
 #如何登录到运行 Linux 的虚拟机 #
+
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager deployment model](/documentation/articles/virtual-machines-linux-tutorial-portal-rm)。
 
 对于运行 Linux 操作系统的虚拟机，你可以使用安全外壳 (SSH) 客户端来登录。
 
@@ -49,4 +52,4 @@
 <!-- LINKS -->
 [如何为 Linux 虚拟机重置密码或 SSH]: http://go.microsoft.com/fwlink/p/?LinkId=512138
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

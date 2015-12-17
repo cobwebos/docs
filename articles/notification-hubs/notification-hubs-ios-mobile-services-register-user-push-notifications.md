@@ -117,4 +117,4 @@
 [Azure Management Portal]: https://manage.windowsazure.cn/
 [Get Started with Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
 
-<!---HONumber=76-->
+<!---HONumber=Mooncake_1207_2015-->

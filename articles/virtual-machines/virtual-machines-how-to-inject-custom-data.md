@@ -18,7 +18,8 @@
 
 无论操作系统是 Windows 还是 Linux 分发，在设置 Azure 虚拟机时，将脚本或其他数据注入到 Azure 虚拟机都是非常常见的方案。
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍如何使用经典部署模型创建资源。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
+
 
 本主题介绍如何执行以下操作：
 
@@ -74,8 +75,8 @@
 有关更多详细信息，请参阅[适用于 Ubuntu 的 cloud-init 文档](https://help.ubuntu.com/community/CloudInit)。
 
 <!--Link references-->
-[添加 Azure 角色服务管理 REST API 参考](http://msdn.microsoft.com/library/azure/jj157186.aspx)
+[添加 Azure 角色服务管理 REST API 参考](http://msdn.microsoft.com/zh-cn/library/azure/jj157186.aspx)
 
 [Azure 命令行界面](https://github.com/Azure/azure-sdk-tools-xplat)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

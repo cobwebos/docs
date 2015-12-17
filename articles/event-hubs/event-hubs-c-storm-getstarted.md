@@ -1,5 +1,5 @@
 <properties
-	pageTitle="事件中心入门"
+	pageTitle="通过 C 和 Apache Storm 使用事件中心入门 | Microsoft Azure"
 	description="遵循本教程开始使用 Azure 事件中心，以通过 C 发送事件，并在 Apache Storm 群集中接收这些事件。"
 	services="event-hubs"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="event-hubs"
-	ms.date="07/21/2015"
+	ms.date="09/01/2015"
 	wacn.date=""/>
 
 # 事件中心入门
@@ -107,4 +107,4 @@
 [使用 SCP.NET 和 C# 在 Storm 和 HDInsight 上开发流式数据处理应用程序]: /documentation/articles/hdinsight-storm-develop-csharp-visual-studio-topology
  
 
-<!---HONumber=66-->
+<!---HONumber=Mooncake_1207_2015-->

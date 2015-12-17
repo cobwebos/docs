@@ -6,10 +6,10 @@
  authors="dlepow"
  manager="timlt"
  editor=""
- tags="azure-service-management"/>
+ tags="azure-service-management,hpc-pack"/>
 <tags
 	ms.service="virtual-machines"
-	ms.date="09/28/2015"
+ 	ms.date="09/28/2015"
 	wacn.date=""/>
 
 # 在 Azure VM 中使用应用商店映像创建 HPC Pack 群集的头节点
@@ -38,7 +38,7 @@
 以下是为 HPC Pack 头节点创建 Azure VM 的大致步骤。可以使用各种 Azure 工具在 Azure 经典（服务管理）部署模型中执行这些步骤。
 
 
-1. 如果你打算为头节点 VM 创建 VNet，请参阅[使用 Azure 预览门户创建虚拟网络（经典）](../virtual-networks/virtual-networks-create-vnet-classic-pportal.md)。
+1. 如果你打算为头节点 VM 创建 VNet，请参阅[使用 Azure 门户创建虚拟网络（经典）](../virtual-networks/virtual-networks-create-vnet-classic-pportal.md)。
 
     **注意事项**
 
@@ -54,7 +54,7 @@
 
     * 对于简单的概念验证部署，可以忽略此步骤，稍后将头节点 VM 提升为域控制器。
 
-3. 在 Azure 管理门户或 Azure 预览门户中，通过从 Azure 应用商店中选择 HPC Pack 2012 R2 映像，创建一台经典 VM。（请参阅[此处](/documentation/articles/virtual-machines-windows-tutorial-classic-portal)的管理门户步骤。）
+3. 在 Azure 门户中，通过从 Azure 应用商店中选择 HPC Pack 2012 R2 映像，创建一个经典 VM。（请参阅[此处](/documentation/articles/virtual-machines-windows-tutorial-classic-portal) Azure 门户的相关步骤。）
 
     **注意事项**
 
@@ -98,4 +98,4 @@
 <!--Image references-->
 [headnode]: ./media/virtual-machines-hpcpack-cluster-headnode/headnode.png
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

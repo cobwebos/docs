@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Azure 门户管理 HDInsight 中的 Hadoop 群集 | Azure"
+	pageTitle="使用 Azure 管理门户管理 HDInsight 中的 Hadoop 群集 | Microsoft Azure"
 	description="了解如何管理 HDInsight 服务。创建 HDInsight 群集，打开交互式 JavaScript 控制台，然后打开 Hadoop 命令控制台。"
 	services="hdinsight"
 	documentationCenter=""
@@ -9,17 +9,17 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="08/11/2015"
+	ms.date="11/04/2015"
 	wacn.date=""/>
 
-# 使用 Azure 门户管理 HDInsight 中的 Hadoop 群集
+# 使用 Azure 管理门户管理 HDInsight 中的 Hadoop 群集
 
-使用 [Azure 门户](https://manage.windowsazure.cn)，可以预配 Azure HDInsight 中的 Hadoop 群集、更改 Hadoop 用户密码，以及启用远程桌面协议 (RDP) 以便访问群集上的 Hadoop 命令控制台。
+使用 [Azure 管理门户](https://manage.windowsazure.cn)，可以预配 Azure HDInsight 中的 Hadoop 群集、更改 Hadoop 用户密码，以及启用远程桌面协议 (RDP) 以便访问群集上的 Hadoop 命令控制台。
 
 [AZURE.INCLUDE [hdinsight-azure-portal](../includes/hdinsight-azure-portal.md)]
 
 ## 其他用于管理 HDInsight 的工具
-除了 Azure 门户外，还有其他可用于管理 HDInsight 的工具。
+除了 Azure 管理门户外，还有其他可用于管理 HDInsight 的工具。
 
 - 有关使用 Azure PowerShell 管理 HDInsight 的详细信息，请参阅[使用 Azure PowerShell 管理 HDInsight](/documentation/articles/hdinsight-administer-use-powershell)。
 
@@ -29,13 +29,13 @@
 
 在开始阅读本文前，你必须具有：
 
-- **一个 Azure 订阅**。请参阅[获取 Azure 免费试用版](http://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+- **一个 Azure 订阅**。请参阅[获取 Azure 试用版](/pricing/1rmb-trial/)。
 - **Azure 存储帐户** - HDInsight 群集使用 Azure Blob 存储容器作为默认文件系统。有关 Azure Blob 存储如何提供与 HDInsight 群集的无缝体验的详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](/documentation/articles/hdinsight-use-blob-storage)。有关创建 Azure 存储帐户的详细信息，请参阅[如何创建存储帐户](/documentation/articles/storage-create-storage-account)。
 
 
 ##设置 HDInsight 群集
 
-你可以在 Azure 门户中使用“快速创建”或“自定义创建”选项设置 HDInsight 群集。有关说明，请参阅以下链接：
+你可以在 Azure 管理门户中使用“快速创建”或“自定义创建”选项预配 HDInsight 群集。有关说明，请参阅以下链接：
 
 - [使用“快速创建”设置群集](/documentation/articles/hdinsight-get-started#provision)
 - [使用“自定义创建”设置群集](/documentation/articles/hdinsight-provision-clusters#portal)
@@ -52,7 +52,7 @@ HDInsight 使用各种 Hadoop 组件。有关已获得验证和支持的组件�
 - 一些本机 Java 组件（如 Mahout 和 Cascading）可以在群集上作为 JAR 文件运行。可以通过 Hadoop 作业提交机制将这些 JAR 文件分发到 Azure Blob 存储，并提交到 HDInsight 群集。有关详细信息，请参阅[以编程方式提交 Hadoop 作业](/documentation/articles/hdinsight-submit-hadoop-jobs-programmatically)。
 
 
-	>[AZURE.NOTE]如果你在将 JAR 文件部署到 HDInsight 群集或调用 HDInsight 群集上的 JAR 文件时遇到问题，请联系 [Microsoft 技术支持](http://azure.microsoft.com/support/options/)。
+	>[AZURE.NOTE]如果你在将 JAR 文件部署到 HDInsight 群集或调用 HDInsight 群集上的 JAR 文件时遇到问题，请联系 [Microsoft 技术支持](/support/contact/)。
 
 	> Cascading 不受 HDInsight 支持，因此不符合 Microsoft 技术支持的条件。有关支持的组件的列表，请参阅 [HDInsight 提供的群集版本有哪些新功能？](/documentation/articles/hdinsight-component-versioning)。
 
@@ -64,7 +64,7 @@ HDInsight 群集可以有两个用户帐户。HDInsight 群集用户帐户是在
 
 **更改 HDInsight 群集用户名和密码**
 
-1. 登录到 [Azure 门户](https://manage.windowsazure.cn/)。
+1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn/)。
 2. 单击左窗格中的“HDINSIGHT”。这将显示已部署的 HDInsight 群集的列表。
 3. 单击要重设用户名和密码的 HDInsight 群集。
 4. 在页面顶部，单击“配置”。
@@ -81,7 +81,7 @@ HDInsight 群集可以有两个用户帐户。HDInsight 群集用户帐户是在
 
 **启用远程桌面**
 
-1. 登录到 [Azure 门户](https://manage.windowsazure.cn/)。
+1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn/)。
 2. 单击左窗格中的“HDINSIGHT”。这将显示已部署的 HDInsight 群集的列表。
 3. 单击你要连接到的 HDInsight 群集。
 4. 在页面顶部，单击“配置”。
@@ -91,7 +91,7 @@ HDInsight 群集可以有两个用户帐户。HDInsight 群集用户帐户是在
 	![HDI.CreateRDPUser][image-hdi-create-rpd-user]
 
 
-> [AZURE.NOTE]也可以使用 HDInsight .NET SDK 在群集上启用远程桌面。按以下方式使用 HDInsight 客户端对象上的 **EnableRdp** 方法：**client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**。同样，若要在群集上禁用远程桌面，可以使用 **client.DisableRdp(clustername, location)**。有关这些方法的详细信息，请参阅 [HDInsight .NET SDK 参考](http://go.microsoft.com/fwlink/?LinkId=529017)。这仅适用于在 Windows 上运行的 HDInsight 群集。
+> [AZURE.NOTE]也可以使用 HDInsight .NET SDK 在群集上启用远程桌面。按以下方式使用 HDInsight 客户端对象上的 **EnableRdp** 方法：**client.EnableRdp(clustername, location, "rdpuser", "rdppassword", DateTime.Now.AddDays(6))**。同样，若要在群集上禁用远程桌面，可以使用 **client.DisableRdp(clustername, location)**。有关这些方法的详细信息，请参阅 [HDInsight .NET SDK 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn469975.aspx)。这仅适用于在 Windows 上运行的 HDInsight 群集。
 
 
 
@@ -99,7 +99,7 @@ HDInsight 群集可以有两个用户帐户。HDInsight 群集用户帐户是在
 
 **使用 RDP 连接到群集**
 
-1. 登录到 [Azure 门户](https://manage.windowsazure.cn/)。
+1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn/)。
 2. 单击左窗格中的“HDINSIGHT”。这将显示已部署的 HDInsight 群集的列表。
 3. 单击你要连接到的 HDInsight 群集。
 4. 在页面顶部，单击“配置”。
@@ -111,11 +111,11 @@ HDInsight 群集可以有两个用户帐户。HDInsight 群集用户帐户是在
 
 **创建自签名证书**
 
-1. 创建用来对请求进行身份验证的自签名证书。可以使用 Internet Information Services (IIS) 或 [makecert](http://go.microsoft.com/fwlink/?LinkId=534000) 创建该证书。
+1. 创建用来对请求进行身份验证的自签名证书。可以使用 Internet Information Services (IIS) 或 [makecert]( https://msdn.microsoft.com/zh-cn/library/bfsktky3(v=vs.110).aspx) 创建该证书。
 
 2. 浏览到证书所在的位置，右键单击该证书，单击“安装证书”，然后将证书安装到计算机的个人存储。编辑证书属性，以便为证书指定一个友好名称。
 
-3. 将证书导入 Azure 门户。在门户中，单击页面左下角的“设置”，然后单击“管理证书”。在页面底部，单击“上载”，然后根据说明上载你在前一步骤中创建的 .cer 文件。
+3. 将证书导入 Azure 管理门户。在门户中，单击页面左下角的“设置”，然后单击“管理证书”。在页面底部，单击“上载”，然后按照说明上载你在前一步骤中创建的 .cer 文件。
 
 	![HDI.ClusterCreate.UploadCert][image-hdiclustercreate-uploadcert]
 
@@ -130,24 +130,19 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 - Oozie
 - Templeton
 
-默认情况下，将授权这些服务进行访问。你可以从 Azure 门户撤消/授予访问权限。
+默认情况下，将授权这些服务进行访问。你可以从 Azure 管理门户撤消/授予访问权限。
 
 >[AZURE.NOTE]授予/撤消访问权限时，你将重设群集用户的用户名和密码。
 
 **授予/撤消 HTTP Web 服务访问权限**
 
-1. 登录到 [Azure 门户](https://manage.windowsazure.cn/)。
+1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn/)。
 2. 单击左窗格中的“HDINSIGHT”。这将显示已部署的 HDInsight 群集的列表。
 3. 单击要配置的 HDInsight 群集。
 4. 在页面顶部，单击“配置”。
 5. 单击“HADOOP 服务”旁边的“启用”或“关闭”。
 6. 对于“用户名”和“新密码”，分别输入群集的新用户名和密码。
 7. 单击“保存”。
-
-也可以通过 Azure PowerShell cmdlet 来完成此操作：
-
-- Grant-AzureHDInsightHttpServicesAccess
-- Revoke-AzureHDInsightHttpServicesAccess
 
 请参阅[使用 Azure PowerShell 管理 HDInsight](/documentation/articles/hdinsight-administer-use-powershell)。
 
@@ -157,7 +152,7 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 
 **打开 Hadoop 命令行**
 
-1. 登录到 [Azure 门户](https://manage.windowsazure.cn/)。
+1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn/)。
 2. 单击左窗格中的“HDINSIGHT”。这将显示已部署的 Hadoop 群集的列表。
 3. 单击你要连接到的 HDInsight 群集。
 3. 单击页面顶部的“配置”。
@@ -184,7 +179,7 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 请参阅[缩放 HDInsight 中的 Hadoop 群集](/documentation/articles/hdinsight-hadoop-cluster-scaling)。
 
 ##后续步骤
-在本文中，你学习了如何使用 Azure 门户创建 HDInsight 群集以及如何打开 Hadoop 命令行工具。若要了解更多信息，请参阅下列文章：
+在本文中，你学习了如何使用 Azure 管理门户创建 HDInsight 群集以及如何打开 Hadoop 命令行工具。若要了解更多信息，请参阅下列文章：
 
 * [使用 Azure PowerShell 管理 HDInsight](/documentation/articles/hdinsight-administer-use-powershell)
 * [使用 Azure CLI 管理 HDInsight](/documentation/articles/hdinsight-administer-use-command-line)
@@ -193,10 +188,8 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 * [Azure HDInsight 入门](/documentation/articles/hdinsight-get-started)
 * [Azure HDInsight 包含哪个版本的 Hadoop？](/documentation/articles/hdinsight-component-versioning)
 
-[image-cluster-quickcreate]: ./media/hdinsight-administer-use-management-portal/HDI.QuickCreateCluster.png
-[image-cluster-landing]: ./media/hdinsight-administer-use-management-portal/HDI.ClusterLanding.PNG "群集登录页"
-[image-hdi-create-rpd-user]: ./media/hdinsight-administer-use-management-portal/HDI.CreateRDPUser.png
-[image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal/HDI.HadoopCommandLine.PNG "Hadoop 命令行"
-[image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal/HDI.ClusterCreate.UploadCert.png
+[image-hdi-create-rpd-user]: ./media/hdinsight-administer-use-management-portal-v1/hdi.createrdpuser.png
+[image-hadoopcommandline]: ./media/hdinsight-administer-use-management-portal-v1/hdinsight-hadoop-command-line.png "Hadoop 命令行"
+[image-hdiclustercreate-uploadcert]: ./media/hdinsight-administer-use-management-portal-v1/hdi.clustercreate.uploadcert.png
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_1207_2015-->

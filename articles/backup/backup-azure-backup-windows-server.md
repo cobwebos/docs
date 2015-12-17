@@ -9,7 +9,7 @@
 
 <tags
         ms.service="backup"
-	 ms.date="08/13/2015"
+	 ms.date="10/21/2015"
 	 wacn.date=""/>
 
 # 将 Windows Server 或 Windows 客户端文件和文件夹备份到 Azure
@@ -50,4 +50,4 @@
 - [从 Azure 还原 Windows Server 或 Windows 客户端](/documentation/articles/backup-azure-restore-windows-server)
 - [Azure 备份常见问题](/documentation/articles/backup-azure-backup-faq)
 
-<!---HONumber=76-->
+<!---HONumber=Mooncake_1207_2015-->

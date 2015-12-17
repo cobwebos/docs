@@ -28,91 +28,97 @@
 
     ![][13]
 
-	这样，便会下载、安装 <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost">Azure 服务总线事件中心 - EventProcessorHost NuGet 包</a>并添加对该包的引用，包括其所有依赖项。
+	这样，便会下载、安装 [Azure 服务总线事件中心 — EventProcessorHost NuGet 程序包](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost)并添加对该程序包的引用，包括其所有依赖项。
 
 7. 右键单击 **Receiver** 项目，单击“添加”，然后单击“类”。将新类命名为 **SimpleEventProcessor**，然后单击“确定”以创建该类。
 
 8. 在 SimpleEventProcessor.cs 文件的顶部添加以下语句：
 
-		using Microsoft.ServiceBus.Messaging;
-		using System.Diagnostics;
-		using System.Threading.Tasks;
+	```
+	using Microsoft.ServiceBus.Messaging;
+	using System.Diagnostics;
+	using System.Threading.Tasks;
+	```
 
 	然后，用以下代码替换该类的正文：
 
-		class SimpleEventProcessor : IEventProcessor
+	```
+    class SimpleEventProcessor : IEventProcessor { Stopwatch checkpointStopWatch;
+
+	    async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
 	    {
-	        Stopwatch checkpointStopWatch;
-
-	        async Task IEventProcessor.CloseAsync(PartitionContext context, CloseReason reason)
+	        Console.WriteLine("Processor Shutting Down. Partition '{0}', Reason: '{1}'.", context.Lease.PartitionId, reason);
+	        if (reason == CloseReason.Shutdown)
 	        {
-	            Console.WriteLine("Processor Shutting Down. Partition '{0}', Reason: '{1}'.", context.Lease.PartitionId, reason);
-	            if (reason == CloseReason.Shutdown)
-	            {
-	                await context.CheckpointAsync();
-	            }
-	        }
-
-	        Task IEventProcessor.OpenAsync(PartitionContext context)
-	        {
-	            Console.WriteLine("SimpleEventProcessor initialized.  Partition: '{0}', Offset: '{1}'", context.Lease.PartitionId, context.Lease.Offset);
-	            this.checkpointStopWatch = new Stopwatch();
-	            this.checkpointStopWatch.Start();
-	            return Task.FromResult<object>(null);
-	        }
-
-	        async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
-	        {
-	            foreach (EventData eventData in messages)
-	            {
-	                string data = Encoding.UTF8.GetString(eventData.GetBytes());
-
-	                Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{1}'",
-	                    context.Lease.PartitionId, data));
-	            }
-
-	            //Call checkpoint every 5 minutes, so that worker can resume processing from the 5 minutes back if it restarts.
-	            if (this.checkpointStopWatch.Elapsed > TimeSpan.FromMinutes(5))
-                {
-                    await context.CheckpointAsync();
-                    this.checkpointStopWatch.Restart();
-                }
+	            await context.CheckpointAsync();
 	        }
 	    }
+
+	    Task IEventProcessor.OpenAsync(PartitionContext context)
+	    {
+	        Console.WriteLine("SimpleEventProcessor initialized.  Partition: '{0}', Offset: '{1}'", context.Lease.PartitionId, context.Lease.Offset);
+	        this.checkpointStopWatch = new Stopwatch();
+	        this.checkpointStopWatch.Start();
+	        return Task.FromResult<object>(null);
+	    }
+
+	    async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
+	    {
+	        foreach (EventData eventData in messages)
+	        {
+	            string data = Encoding.UTF8.GetString(eventData.GetBytes());
+
+	            Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{1}'",
+	                context.Lease.PartitionId, data));
+	        }
+
+	        //Call checkpoint every 5 minutes, so that worker can resume processing from the 5 minutes back if it restarts.
+	        if (this.checkpointStopWatch.Elapsed > TimeSpan.FromMinutes(5))
+            {
+                await context.CheckpointAsync();
+                this.checkpointStopWatch.Restart();
+            }
+	    }
+	}
+    ````
 
 	此类将由 **EventProcessorHost** 调用，以处理从事件中心接收的事件。请注意，`SimpleEventProcessor` 类使用秒表以定期对 **EventProcessorHost** 上下文调用检查点方法。这将确保接收方重新启动时将会丢失的处理工作不会超过五分钟。
 
 9. 在 **Program** 类中，在顶部添加以下 `using` 语句：
 
-		using Microsoft.ServiceBus.Messaging;
-		using Microsoft.Threading;
-		using System.Threading.Tasks;
+	```
+	using Microsoft.ServiceBus.Messaging;
+	using Microsoft.Threading;
+	using System.Threading.Tasks;
+	```
 
 	然后，如下所示修改 **Program** 类的 **Main** 方法，替代事件中心名称、连接字符串、存储帐户和你在前一部分中复制的密钥：
 
-        static void Main(string[] args)
-        {
-          string eventHubConnectionString = "{event hub connection string}";
-          string eventHubName = "{event hub name}";
-          string storageAccountName = "{storage account name}";
-          string storageAccountKey = "{storage account key}";
-          string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
-              storageAccountName, storageAccountKey);
+     ```
+	static void Main(string[] args)
+    {
+      string eventHubConnectionString = "{event hub connection string}";
+      string eventHubName = "{event hub name}";
+      string storageAccountName = "{storage account name}";
+      string storageAccountKey = "{storage account key}";
+      string storageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", storageAccountName, storageAccountKey);
 
-          string eventProcessorHostName = Guid.NewGuid().ToString();
-          EventProcessorHost eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName, EventHubConsumerGroup.DefaultGroupName, eventHubConnectionString, storageConnectionString);
-          Console.WriteLine("Registering EventProcessor...");
-          eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>().Wait();
+      string eventProcessorHostName = Guid.NewGuid().ToString();
+      EventProcessorHost eventProcessorHost = new EventProcessorHost(eventProcessorHostName, eventHubName, EventHubConsumerGroup.DefaultGroupName, eventHubConnectionString, storageConnectionString);
+      Console.WriteLine("Registering EventProcessor...");
+      eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>().Wait();
 
-          Console.WriteLine("Receiving. Press enter key to stop worker.");
-          Console.ReadLine();
-          eventProcessorHost.UnregisterEventProcessorAsync().Wait();
-        }
+      Console.WriteLine("Receiving. Press enter key to stop worker.");
+      Console.ReadLine();
+      eventProcessorHost.UnregisterEventProcessorAsync().Wait();
+    }
+	````
 
 > [AZURE.NOTE]本教程使用单个 [EventProcessorHost] 实例。若要增加吞吐量，建议运行多个 [EventProcessorHost] 实例，如[扩大事件处理]示例中所示。在那些情况下，为了对接收到的事件进行负载平衡，各个不同实例会自动相互协调。如果希望多个接收方都各自处理*全部*事件，则必须使用 **ConsumerGroup** 概念。在从不同计算机中接收事件时，根据部署 [EventProcessorHost] 实例的计算机（或角色）来指定该实例的名称可能会很有用。有关这些主题的详细信息，请参阅[事件中心概述]和[事件中心编程指南]主题。
 
 <!-- Links -->
 [事件中心概述]: /documentation/articles/event-hubs-overview
+[事件中心编程指南]: /documentation/articles/event-hubs-programming-guide
 [扩大事件处理]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [经过扩展的事件处理]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [Azure 存储帐户]: /documentation/articles/storage-create-storage-account
@@ -126,8 +132,4 @@
 [13]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp1.png
 [14]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 
-[事件中心编程指南]: /documentation/articles/event-hubs-programming-guide
-[Async Await in Console Apps]: http://blogs.msdn.com/b/pfxteam/archive/2012/01/20/10259049.aspx
-[AsyncPump.cs]: http://blogs.msdn.com/cfs-file.ashx/__key/communityserver-components-postattachments/00-10-25-90-49/AsyncPump_2E00_cs
-
-<!---HONumber=66-->
+<!---HONumber=Mooncake_1207_2015-->

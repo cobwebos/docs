@@ -9,7 +9,7 @@
 
 <tags
          ms.service="backup"
-	 ms.date="08/13/2015"
+	 ms.date="10/21/2015"
 	 wacn.date=""/>
 
 # 将文件还原到 Windows Server 或 Windows 客户端计算机
@@ -112,4 +112,4 @@
 - [备份 Azure 虚拟机](/documentation/articles/backup-azure-vms-introduction)
 - [备份 Microsoft 工作负荷](/documentation/articles/backup-azure-dpm-introduction)
 
-<!---HONumber=76-->
+<!---HONumber=Mooncake_1207_2015-->

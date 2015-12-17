@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="07/14/2015"
+   ms.date="11/16/2015"
    wacn.date=""/>
 
 # 业务连续性常见问题
@@ -38,13 +38,13 @@
 
 ## 6\.如何找出我的数据库的可用还原点？
 
-对于发生用户错误后的恢复 - 当前时间就是最新的可用还原点。若要找出最早的可用还原点，请使用[获取数据库](https://msdn.microsoft.com/zh-CN/library/dn505708.aspx) (*RecoveryPeriodStartDate*) 获取最早的还原点（非异地复制的还原点）。
+对于发生用户错误后的恢复 - 当前时间就是最新的可用还原点。若要找出最早的可用还原点，请使用[获取数据库](https://msdn.microsoft.com/zh-cn/library/dn505708.aspx) (*RecoveryPeriodStartDate*) 获取最早的还原点（非异地复制的还原点）。
 
-对于中断后的恢复 - 使用[获取可恢复数据库](https://msdn.microsoft.com/zh-CN/library/dn800985.aspx) (*LastAvailableBackupDate*) 获取最新的异地复制还原点。
+对于中断后的恢复 - 使用[获取可恢复数据库](https://msdn.microsoft.com/zh-cn/library/dn800985.aspx) (*LastAvailableBackupDate*) 获取最新的异地复制还原点。
 
 ## 7\.如何批量还原服务器中的数据库？
 
-没有任何内置功能用于执行批量还原。你可以使用 [Azure SQL 数据库：完全服务器恢复](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)脚本来完成此任务。
+没有任何内置功能用于执行批量还原。[Azure SQL 数据库：完全恢复服务器](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)脚本是完成此任务的一种方法示例。
 
 ## 8\.标准异地复制与活动异地复制之间有什么差别？
 
@@ -54,6 +54,6 @@
 
 ## 9\.使用标准异地复制或活动异地复制时有多长的复制延迟？
 
-异地复制使用连续复制。因此，可以使用 [sys.dm\_continuous\_copy\_status](https://msdn.microsoft.com/zh-CN/library/azure/dn741329.aspx) 动态管理视图 (DMV) 来获取上次复制时间和其他信息。
+使用 [sys.dm\_geo\_replication\_link\_status](https://msdnstage.redmond.corp.microsoft.com/library/mt575504.aspx) 动态管理视图 (DMV) 可以获取上次复制时间、上次复制延迟和有关复制链接的其他信息。
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_1207_2015-->

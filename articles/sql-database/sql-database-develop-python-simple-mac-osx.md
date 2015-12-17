@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="在 Mac OS 上使用 Python 连接到 SQL Database" 
-	description="演示了一个可用于从 Mac 连接到 Azure SQL Database 的 Python 代码示例。该示例使用 pymssql 驱动程序。"
+	pageTitle="在 Mac OS 上使用 Python 连接到 SQL 数据库" 
+	description="演示了一个可用于从 Mac 连接到 Azure SQL 数据库的 Python 代码示例。该示例使用 pymssql 驱动程序。"
 	services="sql-database" 
 	documentationCenter="" 
 	authors="meet-bhagdev" 
@@ -9,16 +9,18 @@
 
 
 <tags 
-	ms.service="sql-database" ms.date="07/16/2015" wacn.date=""/>
+	ms.service="sql-database"
+	ms.date="10/20/2015" 
+	wacn.date=""/>
 
 
-# 在 Mac OS 上使用 Python 连接到 SQL Database
+# 在 Mac OS 上使用 Python 连接到 SQL 数据库
 
 
 [AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
 
 
-本主题提供以 Python 编写的代码示例。该示例在 Mac 计算机上运行。该示例将使用 **pymssql** 驱动程序连接到 Azure SQL Database。
+本主题提供以 Python 编写的代码示例。该示例在 Mac 计算机上运行。该示例将使用 **pymssql** 驱动程序连接到 Azure SQL 数据库。此外，请将 [Mac 上的 Python 入门](https://www.youtube.com/watch?v=OMpugPTwnTI)视频用作本文档的补充。
 
 
 ## 要求
@@ -51,10 +53,10 @@
 请参阅[入门页](/documentation/articles/sql-database-get-started)，以了解如何创建示例数据库并检索连接字符串。必须根据指南创建 **AdventureWorks 数据库模板**。下面所示的示例只适用于 **AdventureWorks 架构**。
 
 
-## 连接到 SQL Database
+## 连接到 SQL 数据库
 
 
-[Pymssql.connect](http://pymssql.org/en/latest/ref/pymssql.html) 函数用于连接到 SQL Database。
+[Pymssql.connect](http://pymssql.org/en/latest/ref/pymssql.html) 函数用于连接到 SQL 数据库。
 
 	import pymssql
 	conn = pymssql.connect(server='yourserver.database.chinacloudapi.cn', user='yourusername@yourserver', password='yourpassword', database='AdventureWorks')
@@ -62,7 +64,7 @@
 
 ## 执行 SQL SELECT 语句
 
-[Cursor.execute](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.execute) 函数可用于针对 SQL Database 从查询中检索结果集。此函数实际上可接受任何查询，并返回可使用 [cursor.fetchone()](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.fetchone) 循环访问的结果集。
+[Cursor.execute](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.execute) 函数可用于针对 SQL 数据库从查询中检索结果集。此函数实际上可接受任何查询，并返回可使用 [cursor.fetchone()](http://pymssql.org/en/latest/ref/pymssql.html#pymssql.Cursor.fetchone) 循环访问的结果集。
 
 
 	import pymssql
@@ -77,7 +79,7 @@
 
 ## 插入一行，传递参数，然后检索生成的主键
 
-在 SQL Database 中，可以使用 [IDENTITY](https://msdn.microsoft.com/zh-cn/library/ms186775.aspx) 属性和 [SEQUENCE](https://msdn.microsoft.com/zh-cn/library/ff878058.aspx) 对象自动生成[主键](https://msdn.microsoft.com/zh-cn/library/ms179610.aspx)值。
+在 SQL 数据库中，可以使用 [IDENTITY](https://msdn.microsoft.com/zh-cn/library/ms186775.aspx) 属性和 [SEQUENCE](https://msdn.microsoft.com/zh-cn/library/ff878058.aspx) 对象自动生成[主键](https://msdn.microsoft.com/zh-cn/library/ms179610.aspx)值。
 
 
 	import pymssql
@@ -96,11 +98,11 @@
 此代码示例演示了你可以在其中执行以下操作的事务的用法：
 
 
-\-开始一个事务
+-开始一个事务
 
-\-插入一行数据
+-插入一行数据
 
-\-回滚事务以撤消插入
+-回滚事务以撤消插入
 
 
 	import pymssql
@@ -112,4 +114,4 @@
 
  
 
-<!---HONumber=66-->
+<!---HONumber=Mooncake_1207_2015-->

@@ -17,7 +17,8 @@
 Microsoft 云服务提供超大规模的服务和基础结构、企业级的功能，以及许多混合连接选项。客户可以选择通过 Internet 或 ExpressRoute（提供专用网络连接）访问这些服务。Microsoft Azure 平台可让客户无缝地将基础结构扩展到云中并构建多层体系结构。为了补充 Microsoft 的服务，第三方可以提供安全服务和虚拟设备，以启用增强的功能。本白皮书概述了当客户使用通过 ExpressRoute 访问的 Microsoft 云服务以及在 Microsoft Azure 的虚拟网络中创建安全服务时应该考虑的安全和体系结构问题。
 
 ## 快速开始
-以下逻辑图表以具体示例说明了 Microsoft Azure 平台提供的许多安全技术。使用此图表可以快速了解具体需要做好哪些准备。你也可以从头开始阅读本文档以了解许多可用的选项。![安全选项流程图][0]
+以下逻辑图表以具体示例说明了 Microsoft Azure 平台提供的许多安全技术。使用此图表可以快速了解具体需要做好哪些准备。你也可以从头开始阅读本文档以了解许多可用的选项。
+![安全选项流程图][0]
 
 [示例 1 – 构建外围网络以通过 NSG 保护应用程序](#example-1-build-a-simple-dmz-with-nsgs)</br>
 [示例 2 – 创建外围网络以通过防火墙和 NSG 保护应用程序](#example-2-build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs)</br>
@@ -28,7 +29,8 @@ Microsoft 云服务提供超大规模的服务和基础结构、企业级的功�
 未来几个月内，本文档中将会加入有关添加 VNet 到 VNet 连接、高可用性和服务链接的示例。
 
 ## Microsoft 合规性与基础结构保护
-Microsoft 为企业客户所需的合规性方案提供首屈一指的支持。下面是 Azure 取得的部分认证：![Azure 合规性徽章][1]
+Microsoft 为企业客户所需的合规性方案提供首屈一指的支持。下面是 Azure 取得的部分认证：
+![Azure 合规性徽章][1]
 
 有关更多详细信息，请访问：[http://azure.microsoft.com/support/trust-center/compliance/](http://azure.microsoft.com/support/trust-center/compliance/)
 
@@ -463,12 +465,12 @@ UDR 随附 IP 转发功能。这是虚拟设备上的一项设置，使虚拟设
 ## 参考
 ### 有用的网站和文档
 - 使用 ARM 访问 Azure： 
-- 使用 PowerShell 访问 Azure：[/documentation/articles/powershell-install-configure/](/documentation/articles/powershell-install-configure)
+- 使用 PowerShell 访问 Azure：[/documentation/articles/powershell-install-configure/](./powershell-install-configure.md)
 - 虚拟网络文档：[https://azure.microsoft.com/documentation/services/virtual-network/](https://azure.microsoft.com/documentation/services/virtual-network/)
-- 虚拟网络组文档：[/documentation/articles/virtual-networks-nsg/](/documentation/articles/virtual-network/virtual-networks-nsg)
-- 用户定义的路由文档：[/documentation/articles/virtual-networks-udr-overview/](/documentation/articles/virtual-network/virtual-networks-udr-overview)
+- 网络安全组文档：[/documentation/articles/virtual-networks-nsg/](./virtual-network/virtual-networks-nsg.md)
+- 用户定义的路由文档：[/documentation/articles/virtual-networks-udr-overview/](./virtual-network/virtual-networks-udr-overview.md)
 - Azure 虚拟网关：[https://azure.microsoft.com/documentation/services/vpn-gateway/](https://azure.microsoft.com/documentation/services/vpn-gateway/)
-- 站点到站点 VPN：[/documentation/articles/vpn-gateway-site-to-site-create/](/documentation/articles/vpn-gateway-site-to-site-create)
+- 站点到站点 VPN：[/documentation/articles/vpn-gateway-site-to-site-create/](./virtual-network/vpn-gateway-site-to-site-create.md)
 - ExpressRoute 文档（请务必阅读“入门”和“操作指南”部分）：[https://azure.microsoft.com/documentation/services/expressroute/](https://azure.microsoft.com/documentation/services/expressroute/)
 
 <!--Image References-->
@@ -501,4 +503,4 @@ UDR 随附 IP 转发功能。这是虚拟设备上的一项设置，使虚拟设
 [Example7]: ./virtual-network/virtual-networks-vnet2vnet-direct-asm.md
 [Example8]: ./virtual-network/virtual-networks-vnet2vnet-transit-asm.md
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

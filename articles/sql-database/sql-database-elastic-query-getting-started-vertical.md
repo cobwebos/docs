@@ -105,4 +105,4 @@ Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连�
 
 <!--anchors-->
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

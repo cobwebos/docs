@@ -62,7 +62,7 @@
 
    	![][3]
 
-5. 单击刚刚创建的命名空间（通常为 ***notification hub name*-ns**），以打开其仪表板。
+5. 单击刚刚创建的命名空间（通常为***通知中心名称*-ns**），以打开其仪表板。
 
    	![][4]
 
@@ -70,7 +70,7 @@
 
    	![][5]
 
-7. 单击顶部的“配置”选项卡，然后单击 Apple 通知设置中的“上载”按钮，以上载证书指纹。然后选择前面导出的 **.p12** 证书以及证书的密码。确保选择是要使用“生产”（如果要将推送通知发送到从商店购买你的应用程序的用户）还是“沙盒”（在开发期间）推送服务。
+7. 单击顶部的“配置”选项卡，然后单击 Apple 通知设置中的“上载”按钮，以上载证书指纹。然后选择前面导出的 **.p12** 证书以及证书的密码。确保选择是要使用“生产”（如果要将推送通知发送到从应用商店购买你的应用的用户）还是“沙盒”（在开发期间）推送服务。
 
    	![][6]
 
@@ -86,7 +86,7 @@
 
    	![][8]
 
-2. 设置新项目的选项时，请务必使用前面在 Apple 开发人员门户上设置捆绑 ID 时使用的相同**产品名称**和**组织标识符**。
+2. 设置新项目的选项时，请务必使用前面在 Apple 开发门户上设置捆绑 ID 时使用的同一**产品名称**和**组织标识符**。
 
 	![][11]
 
@@ -143,7 +143,7 @@
 		}
 
 
-8. 在同一文件中，如果在应用程序激活时接收通知，则添加以下方法以显示 **UIAlert**：
+8. 在同一文件中，添加以下方法以便在应用处于活动状态时收到通知的情况下显示 **UIAlert**：
 
 
         - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
@@ -156,8 +156,7 @@
 ## 发送通知
 
 
-在 Azure 门户中通过通知中心上的调试选项卡（如以下屏幕中所示）来发送通知，可以在应用中测试通知的接收情况。
-![][30]
+在 Azure 门户中通过通知中心上的调试选项卡（如以下屏幕中所示）来发送通知，可以在应用中测试通知的接收情况。![][30]
 
 [AZURE.INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
@@ -336,7 +335,7 @@
                              delegate:nil delegateQueue:nil];
 
 			// Apple Notification format of the notification message
-		    NSString *json = [NSString stringWithFormat:@"{"aps":{"alert":"%@"}}",
+		    NSString *json = [NSString stringWithFormat:@"{\"aps\":{\"alert\":\"%@\"}}",
 								self.notificationMessage.text];
 
 			// Construct the messages REST endpoint
@@ -380,7 +379,7 @@
 		}
 
 
-8. 在 ViewController.m 中，添加以下委派方法，以支持关闭文本字段的键盘。按住 **Ctrl** 并从文本字段拖到接口设计器中的视图控制器图标，以将视图控制器设为容器委托。
+8. 在 ViewController.m 中，添加以下委派方法，以支持关闭文本字段的键盘。按住 **Ctrl** 并从文本字段拖到接口设计器中的视图控制器图标，以将视图控制器设为容器委派。
 
 		//===[ Implement UITextFieldDelegate methods ]===
 
@@ -391,7 +390,7 @@
 		}
 
 
-9. 在 ViewController.m 中添加以下委托方法，以支持使用 `NSXMLParser` 分析响应。
+9. 在 ViewController.m 中添加以下委派方法，以支持使用 `NSXMLParser` 分析响应。
 
 		//===[ Implement NSXMLParserDelegate methods ]===
 
@@ -434,13 +433,13 @@
 
 
 
-可以在 Apple [本地和推送通知编程指南]中找到所有可能的通知负载。
+可以在 Apple [本地和推送通知编程指南]中查看所有可能的通知负载。
 
 
 
 ##测试应用程序
 
-若要在 iOS 上测试推送通知，必须将应用部署到设备。你无法使用 iOS 模拟器发送 Apple 推送通知。
+若要在 iOS 上测试推送通知，必须将应用部署到设备。不能使用 iOS 模拟器发送 Apple 推送通知。
 
 1. 运行应用并确认注册成功，然后按“确定”。
 
@@ -459,7 +458,7 @@
 
 ##后续步骤
 
-在这个简单的示例中，你已将通知广播到所有 iOS 设备。为了针对特定客户，请参考教程[使用通知中心将通知推送到用户]。如果要按兴趣组划分用户，可以阅读[使用通知中心发送突发新闻]。在[通知中心指南]中了解有关如何使用通知中心的更多信息。
+在这个简单的示例中，你已将通知广播到所有 iOS 设备。若要针对特定客户，请参考教程[使用通知中心向用户推送通知]。如果要按兴趣组划分用户，可以阅读[使用通知中心发送突发新闻]。在[通知中心指南]中了解有关如何使用通知中心的更多信息。
 
 
 
@@ -499,9 +498,9 @@
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-ios-get-started-push
-[使用通知中心将通知推送到用户]: notification-hubs-aspnet-backend-ios-notify-users
+[使用通知中心向用户推送通知]: notification-hubs-aspnet-backend-ios-notify-users
 [使用通知中心发送突发新闻]: notification-hubs-ios-send-breaking-news
 
 [本地和推送通知编程指南]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

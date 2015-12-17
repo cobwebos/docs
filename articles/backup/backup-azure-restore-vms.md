@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="Azure 备份 - 还原虚拟机 | Microsoft Azure"
+	pageTitle="从备份中还原虚拟机 | Microsoft Azure"
 	description="了解如何恢复 Azure 虚拟机"
 	services="backup"
 	documentationCenter=""
@@ -10,10 +10,10 @@
 
 <tags
 	ms.service="backup"
-	ms.date="10/01/2015"
+	ms.date="10/29/2015"
 	wacn.date=""/>
 
-# 还原 Azure 虚拟机
+# 还原 Azure 中的虚拟机
 你可以使用还原操作，通过存储在 Azure 备份保管库中的备份将虚拟机还原到新的 VM。
 
 ## 还原工作流
@@ -29,7 +29,7 @@
 
     ![还原项](./media/backup-azure-restore-vms/restore-item.png)
 
-## 选择恢复点
+### 2.选择恢复点
 
 1. 在“选择恢复点”屏幕中，你可以从最新的恢复点进行恢复，或者从以前的某个时间点进行恢复。向导打开时默认选择的选项是“最新恢复点”。
 
@@ -39,22 +39,24 @@
 
     ![选择日期](./media/backup-azure-restore-vms/select-date.png)
 
-    在你单击日历控件中的日期后，该日可用的恢复点将显示在下面的恢复点表中。“时间”列指示生成快照的时间。“类型”列显示恢复点的[一致性](documentation/articles/backup-azure-vms)。表标题在括号中显示该日期可用的恢复点数目。
+    在你单击日历控件中的日期后，该日可用的恢复点将显示在下面的恢复点表中。“时间”列指示生成快照的时间。“类型”列显示恢复点的[一致性](documentation/articles/backup-azure-vms#consistency-of-recovery-points)。表标题在括号中显示该日期可用的恢复点数目。
 
     ![恢复点](./media/backup-azure-restore-vms/recovery-points.png)
 
 3. 从“恢复点”表中选择恢复点，然后单击“下一步”箭头转到下一个屏幕。
 
-## 指定目标位置
+### 3.指定目标位置
 
 1. 在“选择还原实例”屏幕中，指定有关要将虚拟机还原到何处的详细信息。
 
   - 指定虚拟机名称：在指定的云服务中，虚拟机名称应该是唯一的。如果你打算使用相同的名称替换现有的 VM，请先删除现有的 VM 和数据磁盘，然后从 Azure 备份还原数据。
   - 选择 VM 的云服务：这是创建 VM 的必要步骤。你可以选择使用现有的云服务，或创建新的云服务。
 
-        无论选取怎样的云服务名称，云服务名称都应是全局唯一的。通常，云服务名称与 [cloudservice].cloudapp.net 形式的公用 URL 关联。如果该名称已被使用，Azure 不会允许你创建新的云服务。如果你选择创建新的云服务，它将被提供与虚拟机相同的名称，在这种情况下，选取的 VM 名称应具有充分的唯一性才能应用到关联的云服务。
+        无论选取怎样的云服务名称，云服务名称都应是全局唯一的。通常，云服务名称与 [cloudservice].cloudapp.net 形式的面向公众的 URL 关联。如果该名称已被使用，Azure 不会允许你创建新的云服务。如果你选择创建新的云服务，它将被提供与虚拟机相同的名称，在这种情况下，选取的 VM 名称应具有充分的唯一性才能应用到关联的云服务。
+
 
         我们仅在还原实例详细信息中显示与任何地缘组未关联的云服务和虚拟网络。[了解详细信息](/documentation/articles/virtual-networks-migrate-to-regional-vnet)。
+
 
 2. 选择 VM 的存储帐户：这是创建 VM 的必要步骤。你可以选择与 Azure 备份保管库位于相同区域的现有存储帐户。不支持区域冗余或高级存储类型的存储帐户。
 
@@ -100,7 +102,7 @@ Azure 备份支持对域控制器 (DC) 虚拟机进行备份的方案。但在�
 
 需要解决的难题是，DSRM 模式不存在于 Azure 中。因此若要还原此类 VM，不能使用 Azure 门户。唯一支持的还原机制是使用 PowerShell 进行基于磁盘的还原。
 
->[AZURE.WARNING] 对于多 DC 环境中的域控制器 VM，请勿使用 Azure 门户来还原！ 仅支持基于 PowerShell 的还原
+>[AZURE.WARNING]对于多 DC 环境中的域控制器 VM，请勿使用 Azure 门户来还原！ 仅支持基于 PowerShell 的还原
 
 阅读更多内容，了解 [USN 回退问题](https://technet.microsoft.com/library/dd363553)以及建议的问题解决策略。
 
@@ -108,4 +110,4 @@ Azure 备份支持对域控制器 (DC) 虚拟机进行备份的方案。但在�
 - [排查错误](backup-azure-vms-troubleshoot.md#restore)
 - [管理虚拟机](backup-azure-manage-vms)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

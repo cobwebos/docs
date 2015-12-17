@@ -6,11 +6,11 @@
    authors="Blackmist"
    manager="paulettm"
    editor="cgronlun"
-   tags="azure-portal"/>
+	tags="azure-portal"/>
 
 <tags
 	ms.service="hdinsight"
-	ms.date="09/23/2015"
+	ms.date="11/06/2015"
 	wacn.date=""/>
 
 #使用 Curl 配合 HDInsight 上的 Hadoop 运行 Pig 作业
@@ -20,17 +20,12 @@
 在本文档中，你将学习如何使用 Curl 在 Azure HDInsight 群集上运行 Pig Latin 作业。可以使用 Pig Latin 编程语言来描述应用到输入数据以生成所需输出的转换。
 
 本文档使用 Curl 演示如何使用原始 HTTP 请求来与 HDInsight 交互，以便运行、监视和检索 Pig 作业的结果。若要执行这些操作，需要使用 HDInsight 群集提供的 WebHCat REST API（前称 Templeton）。
-<!-- deleted by customization
-
-> [AZURE.NOTE] If you are already familiar with using Linux-based Hadoop servers, but are new to HDInsight, see [Linux-based HDInsight Tips](/documentation/articles/hdinsight-hadoop-linux-information).
--->
 
 ##<a id="prereq"></a>先决条件
 
 若要完成本文中的步骤，你将需要：
 
 * Azure HDInsight（HDInsight 上的 Hadoop）群集（基于 Windows）
-<!--deleted by customization Linux-based or-->
 
 * [Curl](http://curl.haxx.se/)
 
@@ -40,7 +35,7 @@
 
 > [AZURE.NOTE]使用 Curl 或者与 WebHCat 进行任何其他形式的 REST 通信时，必须提供 HDInsight 群集管理员用户名和密码对请求进行身份验证。此外，还必须使用群集名称作为用来向服务器发送请求的统一资源标识符 (URI) 的一部分。
 >
-> 对本部分中的所有命令，请将 **USERNAME** 替换为在群集上进行身份验证的用户，并将 **PASSWORD** 替换为用户帐户的密码。将 **CLUSTERNAME** 替换为群集名称。
+> 对本部分中的所有命令，请将 **USERNAME** 替换为在群集上进行身份验证群集的用户，并将 **PASSWORD** 替换为用户帐户的密码。将 **CLUSTERNAME** 替换为群集名称。
 >
 > REST API 通过[基本访问身份验证](http://en.wikipedia.org/wiki/Basic_access_authentication)进行保护。你始终应该使用安全 HTTP (HTTPS) 来发出请求，以确保安全地将凭据发送到服务器。
 
@@ -55,9 +50,9 @@
     此命令中使用的参数如下：
 
     * **-u**：用来对请求进行身份验证的用户名和密码。
-    * **-G**：指出这是 GET 请求
+    * **-G**：指示这是 GET 请求
 
-    所有请求的 URL 开头 **https://CLUSTERNAME.azurehdinsight.cn/templeton/v1** 都是一样的。**/status** 路径表示请求是要返回服务器的 WebHCat（也称为 Templeton）状态。
+    所有请求的 URL 开头 ****https://CLUSTERNAME.azurehdinsight.cn/templeton/v1** 都是一样的。路径 **/status** 指示请求是要返回服务器的 WebHCat（也称为 Templeton）状态。
 
 2. 使用以下代码将 Pig Latin 作业提交到群集：
 
@@ -71,7 +66,7 @@
         * **execute**：要执行的 Pig Latin 语句
         * **statusdir**：此作业的状态要写入到的目录
 
-    > [AZURE.NOTE]请注意，在与 Curl 配合使用时，将使用 `+` 字符替换 Pig Latin 语句之间的空格。
+    > [AZURE.NOTE]请注意，在与 Curl 配合使用时，将使用 `+` 字符替换 Pig Latin 语句中的空格。
 
     此命令应会返回可用来检查作业状态的作业 ID，例如：
 
@@ -87,10 +82,9 @@
 
 ##<a id="results"></a>查看结果
 
-在作业的状态更改为 **SUCCEEDED** 后，你可以从 Azure Blob 存储中检索作业的结果。随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中为 **wasb:///example/pigcurl**。此地址会将作业的输出存储在 HDInsight 群集所用的默认存储容器的 **example/pigcurl** 目录中。
+在作业的状态更改为 **SUCCEEDED** 后，你可以从 Azure Blob 存储中检索作业的结果。随查询一起传递的 `statusdir` 参数包含输出文件的位置；在本例中为 ****wasb:///example/pigcurl**。此地址会将作业的输出存储在 HDInsight 群集所用的默认存储容器的 **example/pigcurl** 目录中。
 
 可以使用 [Azure CLI](/documentation/articles/xplat-cli-install) 列出并下载这些文件。例如，若要列出 **example/pigcurl** 中的文件，请使用以下命令：
-<!-- deleted by customization for Mac, Linux and Windows -->
 
 	azure storage blob list <container-name> example/pigcurl
 
@@ -118,4 +112,4 @@
 
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="定义输出 | Microsoft Azure" 
+	pageTitle="定义输出|Microsoft Azure" 
 	description="了解流分析输出" 
 	keywords="大数据分析、云服务、物联网、托管服务、流处理、流分析、流数据"
 	services="stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage" 
@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="10/14/2015" 
+	ms.date="11/12/2015" 
 	wacn.date=""/>
 
 # 了解流分析输出
@@ -101,7 +101,6 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 | 属性名称 | 说明 |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 输出别名 | 该名称是在查询中使用的友好名称，用于将查询输出定向到此事件中心。 |
-| 订阅 | 你可以从自己的订阅中选择一个事件中心，或者提供其他订阅中事件中心的连接信息 |
 | 服务总线命名空间 | 服务总线命名空间是包含一组消息传递实体的容器。当你创建新的事件中心后，你还创建了服务总线命名空间 |
 | 事件中心 | 事件中心输出的名称 |
 | 事件中心策略名称 | 可以在事件中心的“配置”选项卡上创建的共享访问策略。每个共享访问策略都会有名称、所设权限以及访问密钥 |
@@ -111,50 +110,10 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 | 编码 | 对于 CSV 和 JSON，目前只支持 UTF-8 这种编码格式 |
 | 分隔符 | 仅适用于 CSV 序列化。流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。支持的值为逗号、分号、空格、制表符和竖线。 |
 | 格式 | 仅适用于 JSON 类型。分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。数组指定输出将被格式化为 JSON 对象的数组。 |
-## Power BI
-
-[Power BI](https://powerbi.microsoft.com/) 可以用作流分析作业的输出，以便为流分析用户提供丰富的可视化体验。此功能可用于操作仪表板、生成报告以及进行指标驱动型报告。
-
-> [AZURE.NOTE] 目前，Azure 预览门户不支持创建和配置 Power BI 输出。
-
-### 向 Power BI 帐户授权
-
-1.	当 Power BI 被选为 Azure 管理门户中的输出时，会提示你向现有的 Power BI 用户授权或创建新的 Power BI 帐户。  
-
-    ![向 Power BI 用户授权](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)
-
-2.	如果你还没有帐户，请创建一个新帐户，然后单击“立即授权”。将显示如下所示的屏幕。
-
-    ![Azure 帐户的 Power BI](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)
-
-3.	在此步骤中，提供用于授权 Power BI 输出的工作或学校帐户。如果你还没有注册 Power BI，请选择“立即注册”。用于 Power BI 的工作或学校帐户可能不同于你当前登录时所用的 Azure 订阅帐户。
-
-### 配置 Power BI 输出属性
-
-Power BI 帐户身份验证完成后，你可以为自己的 Power BI 输出配置属性。下表列出了属性名称以及配置 Power BI 输出的说明。
-
-| 属性名称 | 说明 |
-|---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 输出别名 | 该名称是在查询中使用的友好名称，用于将查询输出定向到此 PowerBI 输出。 |
-| 数据集名称 | 提供数据集名称，供 Power BI 输出使用。 |
-| 表名称 | 在 Power BI 输出的数据集下提供表名称。目前，流分析作业的 Power BI 输出只能在数据集中设置一个表。 |
-| 组名称 | 为了与其他 Power BI 用户共享数据，请将数据写入组。在你的 Power BI 帐户内选择组，或者如果你不想写入组，请选择“我的工作区”。更新现有组需要对 Power BI 重新进行身份验证。 |
-
-> [AZURE.NOTE] 不要在 Power BI 仪表板中显式创建数据集和表。当作业启动并且开始将输出抽取到 Power BI 中时，会自动填充数据集和表。请注意，如果作业查询没有生成任何结果，则不会创建数据集和表。另请注意，如果 Power BI 已经有一个数据集和表，且与流分析作业中提供的数据集和表名称相同，则会覆盖现有的数据。
-
-### 续订 Power BI 授权
-
-临时限制规定身份验证令牌需要每隔 90 天使用 Power BI 输出对所有作业进行手动刷新。如果作业创建后或上次身份验证后修改了密码，你还需要重新对你的 Power BI 帐户进行身份验证。此问题的症状是没有作业输出，并且操作日志存在“验证用户错误”：
-
-  ![Power BI 刷新令牌错误](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)
-
-要解决此问题，请停止正在运行的作业并转到你的 Power BI 输出。单击“续订授权”链接，并在“上次停止时间”重新启动你的工作以避免数据丢失。
-
-  ![Power BI 续订授权](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)
 
 ## 表存储
 
-[Azure 表存储](./articles/storage-introduction.md)提供了具有高可用性且可大规模伸缩的存储，因此应用程序可以自动伸缩以满足用户需求。表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。Azure 表存储可用于持久地存储数据，方便进行高效的检索。
+[Azure 表存储](./articles/storage-introduction.md)提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。Azure 表存储可用于持久地存储数据，方便进行高效的检索。
 
 下表列出了属性名称和用于创建表输出的属性说明。
 
@@ -166,11 +125,11 @@ Power BI 帐户身份验证完成后，你可以为自己的 Power BI 输出配�
 | 表名称 | 表的名称如果表不存在，则会创建表。 |
 | 分区键 | 包含分区键的输出列的名称。分区键是给某个定表中分区的唯一标识，分区键构成了实体主键的第一部分。分区键是一个最大为 1 KB 的字符串值。 |
 | 行键 | 包含行键的输出列的名称。行键是某个给定分区中实体的唯一标识符。行键构成了实体主键的第二部分。行键是一个最大为 1 KB 的字符串值。 |
-| 批大小 | 批处理操作的记录数。通常情况下，默认值对于大多数作业来说已经足够。若要修改此设置，请参阅[表批处理操作规范](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx)以获取详细信息。 |
+| 批大小 | 批处理操作的记录数。通常情况下，默认值对于大多数作业来说已经足够。若要修改此设置，请参阅[表批处理操作规范](https://msdn.microsoft.com/zh-cn/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx)以获取详细信息。 |
 
 ## 服务总线队列
 
-[服务总线队列](https://msdn.microsoft.com/library/azure/hh367516.aspx)为一个或多个竞争使用方提供先入先出 (FIFO) 消息传递方式。通常情况下，接收方会按照消息添加到队列中的临时顺序来接收并处理消息，并且每条消息仅由一个消息使用方接收并处理。
+[服务总线队列](https://msdn.microsoft.com/zh-cn/library/azure/hh367516.aspx)为一个或多个竞争使用方提供先入先出 (FIFO) 消息传递方式。通常情况下，接收方会按照消息添加到队列中的临时顺序来接收并处理消息，并且每条消息仅由一个消息使用方接收并处理。
 
 下表列出了属性名称和用于创建队列输出的属性说明。
 
@@ -188,7 +147,7 @@ Power BI 帐户身份验证完成后，你可以为自己的 Power BI 输出配�
 
 ## 服务总线主题
 
-服务总线队列提供的是一对一的从发送方到接收方的通信方法，而[服务总线主题](https://msdn.microsoft.com/library/azure/hh367516.aspx)提供的则是一对多形式的通信。
+服务总线队列提供的是一对一的从发送方到接收方的通信方法，而[服务总线主题](https://msdn.microsoft.com/zh-cn/library/azure/hh367516.aspx)提供的则是一对多形式的通信。
 
 下表列出了属性名称和用于创建表输出的属性说明。
 
@@ -203,45 +162,6 @@ Power BI 帐户身份验证完成后，你可以为自己的 Power BI 输出配�
 | 编码 | 如果是 CSV 或 JSON 格式，则必须指定一种编码格式。目前只支持 UTF-8 这种编码格式 |
 | 分隔符 | 仅适用于 CSV 序列化。流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。支持的值为逗号、分号、空格、制表符和竖线。 |
 
-## DocumentDB
-
-[Azure DocumentDB](http://azure.microsoft.com/services/documentdb/) 是完全托管的 NoSQL 文档数据库服务，提供针对无架构数据的查询和事务、可预测且可靠的性能，以及快速开发。
-
-下表列出了用于创建 DocumentDB 输出的属性名称和属性说明。
-
-<table>
-<tbody>
-<tr>
-<td>属性名称</td>
-<td>说明</td>
-</tr>
-<tr>
-<td>帐户名</td>
-<td>DocumentDB 帐户的名称。这也可以是该帐户的终结点。</td>
-</tr>
-<tr>
-<td>帐户密钥</td>
-<td>DocumentDB 帐户的共享访问密钥。</td>
-</tr>
-<tr>
-<td>数据库</td>
-<td>DocumentDB 数据库名称。</td>
-</tr>
-<tr>
-<td>集合名称模式</td>
-<td>要使用的集合的集合名称模式。可以使用可选的 {partition} 令牌（其中分区从 0 开始）构造集合名称格式。<BR>例如以下是有效的输入：<BR>MyCollection{partition}<BR>MyCollection<BR>请注意，集合必须在启动流分析作业之前存在并且不会自动创建。</td>
-</tr>
-<tr>
-<td>分区键</td>
-<td>输出事件中的字段的名称，该字段用于指定跨集合分区输出的键。</td>
-</tr>
-<tr>
-<td>文档 ID</td>
-<td>输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。</td>
-</tr>
-</tbody>
-</table>
-
 
 ## 获取帮助
 如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)
@@ -251,8 +171,8 @@ Power BI 帐户身份验证完成后，你可以为自己的 Power BI 输出配�
 
 - [Azure 流分析入门](/documentation/articles/stream-analytics-get-started)
 - [缩放 Azure 流分析作业](/documentation/articles/stream-analytics-scale-jobs)
-- [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-- [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+- [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
+- [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
@@ -262,4 +182,4 @@ Power BI 帐户身份验证完成后，你可以为自己的 Power BI 输出配�
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

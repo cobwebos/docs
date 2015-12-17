@@ -1,6 +1,6 @@
 <properties
-	pageTitle="从 Azure 门户中创建自定义虚拟机"
-	description="了解如何在 Azure 中创建自定义虚拟机。"
+	pageTitle="创建自定义虚拟机 | Microsoft Azure"
+	description="了解如何从 Azure 门户使用经典部署模型创建自定义虚拟机。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -15,6 +15,11 @@
 
 #如何创建自定义虚拟机
 
+
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
+ 
+
+
 *自定义*虚拟机只意味着你将使用**“从库中”**选项创建虚拟机，因为它提供的配置选项多于**“快速创建”**选项。这些选项包括：
 
 - 将虚拟机连接到虚拟网络。
@@ -27,4 +32,4 @@
 
 [AZURE.INCLUDE [virtual-machines-create-WindowsVM](../includes/virtual-machines-create-windowsvm.md)]
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

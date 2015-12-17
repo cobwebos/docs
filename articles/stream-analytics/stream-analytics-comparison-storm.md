@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="stream-analytics"
-	ms.date="10/13/2015"
+	ms.date="11/06/2015"
 	wacn.date=""/>
 
 # Apache Storm 和 Azure 流分析的比较 #
@@ -120,7 +120,7 @@
                     流分析通过处理的数据量以及流式处理单位的数目（作业每小时运行的）来定价。
                 </p>
                 <p>
-                    <a href="/home/features/stream-analytics/#price">更多定价信息可在此处找到。</a>
+                    <a href="http://azure.microsoft.com/pricing/details/stream-analytics/">更多定价信息可在此处找到。</a>
                 </p>
             </td>
             <td width="246" valign="top">
@@ -128,7 +128,7 @@
                     就 Apache Storm on HDInsight 来说，采购单位是根据群集计算的，而收费则根据群集所运行的时间来计算，与部署的作业无关。
                 </p>
                 <p>
-                    <a href="/home/features/hdinsight/#price">更多定价信息可在此处找到。</a>
+                    <a href="http://azure.microsoft.com/pricing/details/hdinsight/">更多定价信息可在此处找到。</a>
                 </p>
             </td>
         </tr>
@@ -586,4 +586,4 @@
     </tbody>
 </table>
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

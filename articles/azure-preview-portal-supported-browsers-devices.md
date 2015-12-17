@@ -11,7 +11,7 @@
 <tags 
 	ms.service="multiple" 
 	ms.date="07/23/2015" 
-	wa.date=""/>
+	wacn.date=""/>
 
 #支持的浏览器和设备
 Microsoft Azure 门户可在所有最新的台式机和平板电脑与浏览器上运行。
@@ -22,6 +22,7 @@ Microsoft Azure 门户可在所有最新的台式机和平板电脑与浏览器�
 ### 支持的浏览器
 支持以下最新版本的浏览器：
 
+- Edge（最新版本）
 - Internet Explorer（11 和更高版本）
 - Safari（7 和更高版本）
 - Chrome（最新版本）
@@ -29,4 +30,4 @@ Microsoft Azure 门户可在所有最新的台式机和平板电脑与浏览器�
 
 *不支持 Safari 6 和更低版本。如果您在使用 OS X，可以使用 Chrome、Firefox，或升级到 OS X Mavericks 以获取 Safari 7。*
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_1207_2015-->

@@ -34,7 +34,7 @@
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../includes/howto-attach-disk-windows-linux.md)]
 
-有关初始化磁盘的说明，请参阅[如何将数据磁盘附加到 Windows 虚拟机](/zh-cn/documentation/articles/storage-windows-attach-disk/)中的“如何在 Windows Server 中初始化新数据磁盘”。
+有关初始化磁盘的说明，请参阅[如何将数据磁盘附加到 Windows 虚拟机](/documentation/articles/storage-windows-attach-disk)中的“如何在 Windows Server 中初始化新数据磁盘”。
 
 ## 在该虚拟机上安装和运行 MongoDB
 
@@ -47,4 +47,4 @@
 [MongoDB]: http://www.mongodb.org/
 [AzureManagementPortal]: http://manage.windowsazure.cn
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

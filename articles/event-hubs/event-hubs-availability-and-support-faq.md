@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="事件中心可用性和支持常见问题"
-   description="事件中心定价和常见问题。"
+   pageTitle="事件中心可用性和支持 | Microsoft Azure"
+   description="事件中心可用性和支持常见问题。"
    services="event-hubs"
    documentationCenter="na"
    authors="sethmanheim"
@@ -8,14 +8,14 @@
    editor="" />
 <tags 
    ms.service="event-hubs"
-   ms.date="06/09/2015"
+   ms.date="10/07/2015"
    wacn.date="" />
 
 # 事件中心可用性和支持常见问题
 
 事件中心可以大规模引入、保留和处理来自高吞吐量数据源和/或大量设备的数据事件。在与服务总线队列和主题配合时，事件中心可支持物联网方案的永久性命令和控件部署。
 
-本部分介绍可用性信息，并提供一些常见问题的解答。
+本文讨论可用性信息，并解答一些常见问题：
 
 ## 定价信息
 
@@ -91,9 +91,9 @@
 
 ## 后续步骤
 
-若要了解有关事件中心的详细信息，请访问以下主题：
+若要了解有关事件中心的详细信息，请参阅以下文章：
 
-- [事件中心概述]
+- [事件中心概述]。
 - [使用事件中心的完整示例应用程序]。
 - 使用服务总线队列的[队列消息解决方案]。
 
@@ -102,4 +102,4 @@
 [队列消息解决方案]: /documentation/articles/cloud-services-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=66-->
+<!---HONumber=Mooncake_1207_2015-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="事件中心入门"
+	pageTitle="通过 C 和 C# 使用事件中心入门 | Microsoft Azure"
 	description="遵循本教程开始使用 Azure 事件中心，以通过 C 发送事件，并使用 EventProcessorHost 通过 C# 接收事件。"
 	services="event-hubs"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="event-hubs"
-	ms.date="07/21/2015"
+	ms.date="09/01/2015"
 	wacn.date=""/>
 
 # 事件中心入门
@@ -90,6 +90,7 @@
 - [使用事件中心的完整示例应用程序]。
 - [使用事件中心扩大事件处理]示例。
 - 使用服务总线队列的[队列消息解决方案]。
+- [事件中心概述]
 
 <!-- Images. -->
 [1]: ./media/event-hubs-c-ephcs-getstarted/create-event-hub1.png
@@ -112,4 +113,4 @@
 [使用事件中心扩大事件处理]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [队列消息解决方案]: /documentation/articles/service-bus-dotnet-multi-tier-app-using-service-bus-queues
 
-<!---HONumber=66-->
+<!---HONumber=Mooncake_1207_2015-->

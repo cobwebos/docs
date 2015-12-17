@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Windows 上的 PHP 连接到 SQL 数据库 | Windows Azure"
+	pageTitle="使用 Windows 上的 PHP 连接到 SQL 数据库 | Microsoft Azure"
 	description="演示一个示例 PHP 程序，该程序可以从 Windows 客户端连接到 Azure SQL 数据库，并与客户端所需的软件组件建立链接。"
 	services="sql-database"
 	documentationCenter=""
@@ -10,8 +10,8 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="07/20/2015"
-	wacn.date="mebha"/>
+	ms.date="11/03/2015"
+	wacn.date=""/>
 
 
 # 在 Windows上使用 PHP 连接到 SQL 数据库
@@ -176,4 +176,4 @@
 
  
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_1207_2015-->

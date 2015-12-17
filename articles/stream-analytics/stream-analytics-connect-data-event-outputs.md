@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="10/05/2015" 
+	ms.date="11/06/2015" 
 	wacn.date=""/>
 
 # 创建流分析输出
@@ -22,7 +22,7 @@ Azure 流分析提供了七种不同的方法来存储和查看作业输出。SQ
 
 ## 使用 SQL 数据库作为输出 ##
 ---
-可以将 SQL 数据库用作本质上为关系型数据的数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。有关 Azure SQL 数据库的详细信息，请参阅 [Azure SQL 数据库](/documentation/services/sql-database/)。
+可以将 SQL 数据库用作本质上为关系型数据的数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。有关 Azure SQL 数据库的详细信息，请参阅 [Azure SQL 数据库](http://azure.microsoft.com/services/sql-database/)。
 
 ### Parameters ###
 
@@ -61,7 +61,7 @@ Azure 流分析提供了七种不同的方法来存储和查看作业输出。SQ
 
 ## 使用 Blob 存储作为输出 ##
 ---
-如需 Azure Blob 存储及其用法的简介，请参阅文档：[如何使用 Blob](/documentation/articles/storage-dotnet-how-to-use-blobs)。
+如需 Azure Blob 存储及其用法的简介，请参阅文档：[如何使用 Blob](./articles/storage/storage-dotnet-how-to-use-blobs.md)。
 
 ### Parameters ###
 
@@ -85,8 +85,8 @@ Azure 流分析提供了七种不同的方法来存储和查看作业输出。SQ
 ## 使用事件中心作为输出 ##
 ---
 ### 概述 ###
- 
-事件中心是高度可伸缩的事件引入器，通常是最常用的进行流分析数据引入的方法。另外，事件中心可以稳定地处理大量的事件，因此尤其适合作业输出。当流分析作业的输出将要成为另一个流式处理作业的输入时，可以将事件中心用作输出。有关事件中心的更多详细信息，请访问位于[事件中心](/documentation/services/event-hubs/ "事件中心")的门户。
+ 
+事件中心是高度可伸缩的事件引入器，通常是最常用的进行流分析数据引入的方法。另外，事件中心可以稳定地处理大量的事件，因此尤其适合作业输出。当流分析作业的输出将要成为另一个流式处理作业的输入时，可以将事件中心用作输出。有关事件中心的更多详细信息，请访问位于[事件中心](https://azure.microsoft.com/services/event-hubs/ "事件中心")的门户。
  
 ### Parameters ###
 
@@ -125,30 +125,9 @@ Power BI 可以用作流分析作业的输出，以便为流分析用户提供�
 2. 数据集名称 - 提供数据集名称，供 Power BI 输出使用。例如，使用“pbidemo”。
 2. 表名 - 在 Power BI 输出数据集下提供表名。例如，使用“pbidemo”。**目前，流分析作业的 Power BI 输出只能在数据集中设置一个表。**
 
-### 添加 Power BI 作为输出 ###
-
-1.  单击页面顶部的**“输出”**，然后单击**“添加输出”**。选择 Power BI 作为输出选项。
-
-    ![graphic22][graphic22]
-
-2.  将显示如下所示的屏幕。
-
-    ![graphic23][graphic23]
-
-3.  在此步骤中，提供用于授权 Power BI 输出的工作或学校帐户。如果你还没有注册 Power BI，请选择**“立即注册”**。
-4.  接下来，将显示如下所示的屏幕。
-
-    ![graphic24][graphic24]
-
-
->	[AZURE.NOTE] 不应在 Power BI 仪表板中显式创建数据集和表。当作业启动并且开始将输出抽取到 Power BI 中时，会自动填充数据集和表。请注意，如果作业查询没有返回任何结果，则不会创建数据集和表。另请注意，如果 Power BI 已经有一个数据集和表，且与流分析作业中提供的数据集和表名称相同，则会覆盖现有的数据。
-
-*	单击**“确定”**和**“测试连接”**。现在，输出配置已完成。
-
-
 ## 使用 Azure 表存储进行输出 ##
 ---
-表存储提供了具有高可用性且可大规模伸缩的存储，因此应用程序可以自动伸缩以满足用户需求。表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。Azure 表存储可用于持久地存储数据，方便进行高效的检索。有关 Azure 表存储的详细信息，请访问 [Azure 表存储](/documentation/articles/storage-introduction)。
+表存储提供了具有高可用性且可大规模伸缩的存储，因此应用程序可以自动伸缩以满足用户需求。表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。Azure 表存储可用于持久地存储数据，方便进行高效的检索。有关 Azure 表存储的详细信息，请访问 [Azure 表存储](./articles/storage/storage-introduction.md)。
 
 ### Parameters ###
 
@@ -160,8 +139,7 @@ Power BI 可以用作流分析作业的输出，以便为流分析用户提供�
 4. 分区键（必需）。
 5. 行键
 
-若要更好地设计分区键和行键，请参阅下面的文章：
-[为 Azure 表存储设计可扩展分区策略](https://msdn.microsoft.com/zh-cn/library/azure/hh508997.aspx)。
+若要更好地设计分区键和行键，请参阅下面的文章：[为 Azure 表存储设计可扩展分区策略](https://msdn.microsoft.com/zh-cn/library/azure/hh508997.aspx)。
 
 ### 添加 Azure 表存储作为输出 ###
 
@@ -303,4 +281,4 @@ Service Bus 队列提供的是一对一的从发送方到接收方的通信方�
 [graphic37]: ./media/stream-analytics-connect-data-event-outputs/37-stream-analytics-connect-data-event-input-output.png
 [graphic38]: ./media/stream-analytics-connect-data-event-outputs/38-stream-analytics-connect-data-event-input-output.png
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

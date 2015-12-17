@@ -18,7 +18,9 @@
 本文演示如何使用 Azure PowerShell 来备份和恢复 Azure IaaS VM。
 
 ## 概念
-Azure 备份文档中的 [Azure IaaS VM 备份简介](backup-azure-vms-introduction.md)。该文介绍了各种基础知识，包括备份 VM 的原因、先决条件和限制。
+Azure 备份文档中的 [Azure IaaS VM 备份简介](backup-azure-vms-introduction.md)。
+
+> [AZURE.WARNING]在开始之前，请确保你已掌握与[系统必备组件](backup-azure-vms-prepare.md)相关的基础知识（这些必备组件是使用 Azure 备份所必需的），并了解当前 VM 备份解决方案的[限制](backup-azure-vms-prepare.md#limitations)。
 
 为了提高 PowerShell 使用效率，必须了解对象的层次结构以及从何处开始。
 
@@ -45,18 +47,18 @@ PS C:\> Switch-AzureMode AzureResourceManager
 
 ### 创建备份保管库
 
-> [AZURE.WARNING] 对于第一次使用 Azure 备份的客户，你需要注册用于订阅的 Azure 备份提供程序。可通过运行以下命令来执行此操作：Register-AzureProvider -ProviderNamespace "Microsoft.Backup"
+> [AZURE.WARNING]对于第一次使用 Azure 备份的客户，你需要注册用于订阅的 Azure 备份提供程序。可通过运行以下命令来执行此操作：Register-AzureProvider -ProviderNamespace "Microsoft.Backup"
 
 可以使用 **New-AzureRMBackupVault** cmdlet 创建新的备份保管库。备份保管库是一种 ARM 资源，因此需要将它放置在资源组中。在权限提升的 Azure PowerShell 控制台中运行以下命令：
 
 ```
-PS C:\> New-AzureResourceGroup –Name “test-rg” –Region “West US”
+PS C:\> New-AzureRMResourceGroup –Name “test-rg” –Region “West US”
 PS C:\> $backupvault = New-AzureRMBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “West US” –Storage GeoRedundant
 ```
 
 可以使用 **Get-AzureRMBackupVault** cmdlet 获取给定订阅中所有备份保管库的列表。
 
-> [AZURE.NOTE] 可以方便地将备份保管库对象保存到一个变量中。许多 Azure 备份 cmdlet 需要输入保管库对象。
+> [AZURE.NOTE]可以方便地将备份保管库对象保存到一个变量中。许多 Azure 备份 cmdlet 需要输入保管库对象。
 
 
 ### 注册 VM
@@ -81,7 +83,7 @@ Name                      Type               ScheduleType       BackupTime
 DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:00 AM
 ```
 
-> [AZURE.NOTE] PowerShell 中 BackupTime 字段的时区是 UTC。但是，在 Azure 门户中显示备份时间时，时区将会调整为你的本地系统并附带 UTC 时差。
+> [AZURE.NOTE]PowerShell 中 BackupTime 字段的时区是 UTC。但是，在 Azure 门户中显示备份时间时，时区将会调整为你的本地系统并附带 UTC 时差。
 
 一个备份策略至少与一个保留策略相关联。保留策略定义在 Azure 备份中保留恢复点的时限。**New-AzureRMBackupRetentionPolicy** cmdlet 创建的 PowerShell 对象用于存储保留策略信息。这些保留策略对象可以用作 *New-AzureRMBackupProtectionPolicy* cmdlet 的输入，也可以直接用于 *Enable-AzureRMBackupProtection* cmdlet。
 
@@ -116,7 +118,7 @@ WorkloadName    Operation       Status          StartTime              EndTime
 testvm          Backup          InProgress      01-Sep-15 12:24:01 PM  01-Jan-01 12:00:00 AM
 ```
 
-> [AZURE.NOTE] PowerShell 中显示的 StartTime 和 EndTime 字段的时区是 UTC。但是，在 Azure 门户中显示类似信息时，时区将会调整为你的本地系统时钟。
+> [AZURE.NOTE]PowerShell 中显示的 StartTime 和 EndTime 字段的时区是 UTC。但是，在 Azure 门户中显示类似信息时，时区将会调整为你的本地系统时钟。
 
 ### 监视备份作业
 在 Azure 备份中，大多数长时间运行的操作都是作为作业来建模的。这样可以轻松地跟踪相关进度，不必让 Azure 门户始终打开。
@@ -170,7 +172,7 @@ RecoveryPointId    RecoveryPointType  RecoveryPointTime      ContainerName
 
 通过 Azure 门户执行还原操作与通过 Azure PowerShell 执行还原操作存在很大的不同。如果使用 PowerShell，还原操作将在从恢复点还原磁盘和配置信息时停止。它不会创建虚拟机。
 
-> [AZURE.WARNING] Restore-AzureRMBackupItem 不创建 VM。它仅将磁盘还原到指定的存储帐户。这种行为不同于你在 Azure 门户中将会体验到的行为。
+> [AZURE.WARNING]Restore-AzureRMBackupItem 不创建 VM。它仅将磁盘还原到指定的存储帐户。这种行为不同于你在 Azure 门户中将会体验到的行为。
 
 ```
 PS C:\> $restorejob = Restore-AzureRMBackupItem -StorageAccountName "DestAccount" -RecoveryPoint $rp[0]
@@ -302,6 +304,6 @@ for( $i = 1; $i -le $numberofdays; $i++ )
 $DAILYBACKUPSTATS | Out-GridView
 ```
 
-如果你想要为此报告输出添加图表功能，了解通过 TechNet 博客[使用 PowerShell 绘制图表](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx)来了解相关信息
+如果你想要为此报告输出添加图表功能，可通过 TechNet 博客[使用 PowerShell 绘制图表](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx)来了解相关信息
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

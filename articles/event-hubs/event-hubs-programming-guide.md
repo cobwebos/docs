@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="事件中心编程指南"
+   pageTitle="Azure 事件中心编程指南 | Microsoft Azure"
    description="介绍如何使用 Azure.NET SDK 进行 Azure 事件中心编程。"
    services="event-hubs"
    documentationCenter="na"
@@ -8,14 +8,14 @@
    editor="" />
 <tags 
    ms.service="event-hubs"
-   ms.date="07/10/2015"
+   ms.date="09/30/2015"
    wacn.date="" />
 
 # 事件中心编程指南
 
 本主题介绍如何使用 Azure.NET SDK 进行 Azure 事件中心编程。内容假设你对事件中心已有初步的了解。有关事件中心的概念概述，请参阅[事件中心概述](/documentation/articles/event-hubs-overview)。
 
-## 发布事件：事件发布者
+## 事件发布者
 
 将事件发送到事件中心可以使用 HTTP POST 或通过 AMQP 1.0 连接来实现。要选择使用哪种方式取决于要解决的特定方案。AMQP 1.0 连接计量为服务总线中的中转连接计量，对于经常要以较高的消息量和较低的延迟传送消息的方案，适合选择此方式，因为它们提供持久的消息传递通道。
 
@@ -23,7 +23,7 @@
 
 ## 入门
 
-.NET 托管类支持将事件中心用作 Microsoft.ServiceBus.dll 程序集的一部分。引用服务总线 API 以及使用所有服务总线依赖项配置应用程序的最简单方法是下载服务总线 NuGet 包。有关详细信息，请参阅[使用 NuGet 服务总线包](https://msdn.microsoft.com/zh-cn/library/dn741354.aspx)。或者，你也可以在 Visual Studio 中使用 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)。为此，请在[Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)窗口中发出以下命令：
+.NET 托管类支持将事件中心用作 Microsoft.ServiceBus.dll 程序集的一部分。引用服务总线 API 以及使用所有服务总线依赖项配置应用程序的最简单方法是下载服务总线 NuGet 包。有关详细信息，请参阅[使用 NuGet 服务总线包](https://msdn.microsoft.com/zh-cn/library/dn741354.aspx)。或者，你也可以在 Visual Studio 中使用 [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)。为此，请在“Package Manager Console”窗口中发出以下命令[](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)：
 
 ```powershell
 Install-Package WindowsAzure.ServiceBus
@@ -181,4 +181,4 @@ while(receive)
 - [事件中心代码示例](http://code.msdn.microsoft.com/site/search?query=event hub&f[0].Value=event hub&f[0].Type=SearchText&ac=5)
 - [事件处理程序主机 API 参考](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.eventprocessorhost.aspx)
 
-<!---HONumber=66-->
+<!---HONumber=Mooncake_1207_2015-->

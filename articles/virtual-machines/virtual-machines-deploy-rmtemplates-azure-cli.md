@@ -10,17 +10,16 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="09/09/2015"
+	ms.date="11/01/2015"
 	wacn.date=""/>
 
 # 使用 Azure 资源管理器模板和 Azure CLI 部署和管理虚拟机
 
-本文说明如何使用 Azure 资源管理器模板和 Azure CLI 来执行以下常见任务，以便可以部署和管理 Azure 虚拟机。有关可用的其他模板，请参阅 [Azure 快速入门模板](http://azure.microsoft.com/documentation/templates/)和[使用模板的应用程序框架](virtual-machines-app-frameworks.md)。
+本文说明如何使用 Azure 资源管理器模板和 Azure CLI 来执行以下常见任务，以便可以部署和管理 Azure 虚拟机。有关可用的其他模板，请参阅 [Azure 快速入门模板](http://azure.microsoft.com/documentation/templates/)和[使用模板的应用程序框架](/documentation/articles/virtual-machines-app-frameworks)。
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文档介绍在资源管理器部署模型中如何使用模板部署和管理虚拟机。你不能在经典部署模型中使用模板。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。你不能在经典部署模型中使用模板。
 
-
-- [在 Azure 中快速创建虚拟机](#quick-create-a-vm-in-azure)
+- [在 Azure 中快速创建虚拟机](/documentation/articles/#quick-create-a-vm-in-azure)
 - [在 Azure 中从模板部署虚拟机](#deploy-a-vm-in-azure-from-a-template)
 - [从自定义映像创建虚拟机](#create-a-custom-vm-image)
 - [部署使用虚拟网络和负载平衡器的虚拟机](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
@@ -34,7 +33,7 @@
 
 ## 做好准备
 
-在配合 Azure 资源组使用 Azure CLI 之前，请准备好正确的 Azure CLI 版本以及工作或学校帐户。
+必须拥有正确的 Azure CLI 版本和 Azure 帐户，才能将 Azure CLI 与 Azure 资源组配合使用。如果没有 Azure CLI，[请安装](xplat-cli-install)。
 
 ### 将 Azure CLI 版本更新到 0.9.0 或更高
 
@@ -43,7 +42,7 @@
 	azure --version
     0.9.0 (node: 0.10.25)
 
-如果你的版本不是 0.9.0，则需要[安装 Azure CLI](/documentation/articles/xplat-cli-install)，或者使用本机安装程序或者通过在 **npm** 中键入 `npm update -g azure-cli` 进行更新。
+如果你的版本不是 0.9.0 或更高版本，则需要使用某个本机安装程序或者通过在 **npm** 中键入 `npm update -g azure-cli` 进行更新。
 
 你也可以使用以下 [Docker 映像](https://registry.hub.docker.com/u/microsoft/azure-cli/)运行 Docker 容器形式的 Azure CLI。在 Docker 主机上运行以下命令：
 
@@ -51,11 +50,11 @@
 
 ### 设置你的 Azure 帐户和订阅
 
-你可以注册[试用版](/pricing/1rmb-trial/)。
+如果你还没有 Azure 订阅，但是有 MSDN 订阅，则可以激活 [MSDN 订户权益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，或者注册获取[免费试用版](http://azure.microsoft.com/pricing/free-trial/)。
 
-需有一个工作或学校帐户才能使用 Azure 资源管理模板。如果有的话，请键入 `azure login`，输入你的用户名和密码，然后应该可以成功登录。
+现在，键入 `azure login` 并遵循提示来进行 Azure 帐户的交互式登录体验，[以交互方式登录你的 Azure 帐户](/documentation/articles/xplat-cli-connect#use-the-log-in-method)。
 
-> [AZURE.NOTE]如果你没有帐户，你会看到错误消息，指出你需要不同类型的帐户。若要从当前 Azure 帐户创建一个帐户，请参阅[在 Azure Active Directory 中创建工作或学校标识](/documentation/articles/resource-group-create-work-id-from-personal)。
+> [AZURE.NOTE]如果有工作或学校 ID，而且知道尚未启用双因素身份验证，那么，**也**可以使用 `azure login -u` 以及工作或学校 ID，在*没有* 交互式会话的情况下进行登录。如果没有工作或学校 ID，则可以[从 Microsoft 个人帐户创建工作或学校 ID](resource-group-create-work-id-from-personal)，以相同方式进行登录。
 
 你的帐户可能有多个订阅。可以通过键入 `azure account list` 列出订阅，如下所示：
 
@@ -80,15 +79,11 @@
 
 	azure config mode arm
 
-
-
-> [AZURE.NOTE]键入 `azure config mode asm` 可切换回到默认的命令集。
-
 ## 了解 Azure 资源模板和资源组
 
 大多数应用程序是通过不同资源类型的组合（例如，一个或多个 VM 和存储帐户、一个 SQL 数据库、一个虚拟网络或内容交付网络）构建的。默认 Azure 服务管理 API 和 Azure 门户使用基于服务的方法代表这些项。这种方法需要你单独部署和管理各个服务（或查找其他具备相同功能的工具），而不是当作单个逻辑部署单元。
 
-你可以利用 *Azure 资源管理器模板*将这些不同的资源声明为一个逻辑部署单元，然后进行部署和管理。请不要以命令方式告知 Azure 逐一部署命令，而应该在 JSON 文件中描述整个部署 - 所有资源及关联的设置以及部署参数 - 然后告诉 Azure 将这些资源视为一个组进行部署。
+不过，你可以利用 *Azure 资源管理器模板* 将这些不同的资源声明为一个逻辑部署单元，然后进行部署和管理。请不要以命令方式告知 Azure 逐一部署命令，而应该在 JSON 文件中描述整个部署 - 所有资源及关联的设置以及部署参数 - 然后告诉 Azure 将这些资源视为一个组进行部署。
 
 然后，使用 Azure CLI 然后，使用 Azure CLI 资源管理命令执行以下操作，即可管理组的资源整体生命周期：
 
@@ -97,7 +92,7 @@
 - 审核操作。
 - 使用其他元数据标记资源以方便跟踪。
 
-可在 [Azure 资源管理器概述](/documentation/articles/resource-groups-overview)中了解有关 Azure 资源组及其功能的详细信息。如果你想要了解如何创作模板，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
+可在 [Azure 资源管理器概述](/documentation/articles/resource-group-overview)中了解有关 Azure 资源组及其功能的详细信息。如果你想要了解如何创作模板，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
 
 ## <a id="quick-create-a-vm-in-azure"></a>任务：在 Azure 中快速创建 VM
 
@@ -160,26 +155,26 @@
     info:    The [OS, Data] Disk or image configuration requires storage account
     + Retrieving storage accounts
     info:    Could not find any storage accounts in the region "westus", trying to create new one
-    + Creating storage account "cli9fd3fce49e9a9b3d14302" in "chinaeast"
+    + Creating storage account "cli9fd3fce49e9a9b3d14302" in "westus"
     + Looking up the storage account cli9fd3fce49e9a9b3d14302
     + Looking up the NIC "coreo-westu-1430261891570-nic"
     info:    An nic with given name "coreo-westu-1430261891570-nic" not found, creating a new one
-    + Looking up the virtual network "coreo-chinaeast-1430261891570-vnet"              
+    + Looking up the virtual network "coreo-westu-1430261891570-vnet"
     info:    Preparing to create new virtual network and subnet
-    / Creating a new virtual network "coreo-chinaeast-1430261891570-vnet" [address prefix: "10.0.0.0/16"] with subnet "coreo-westu-1430261891570-sne+" [address prefix: "10.0.1.0/24"]
-    + Looking up the virtual network "coreo-chinaeast-1430261891570-vnet"              
-    + Looking up the subnet "coreo-chinaeast-1430261891570-snet" under the virtual network "coreo-westu-1430261891570-vnet"
+    / Creating a new virtual network "coreo-westu-1430261891570-vnet" [address prefix: "10.0.0.0/16"] with subnet "coreo-westu-1430261891570-sne+" [address prefix: "10.0.1.0/24"]
+    + Looking up the virtual network "coreo-westu-1430261891570-vnet"
+    + Looking up the subnet "coreo-westu-1430261891570-snet" under the virtual network "coreo-westu-1430261891570-vnet"
     info:    Found public ip parameters, trying to setup PublicIP profile
-    + Looking up the public ip "coreo-chinaeast-1430261891570-pip"                     
+    + Looking up the public ip "coreo-westu-1430261891570-pip"
     info:    PublicIP with given name "coreo-westu-1430261891570-pip" not found, creating a new one
-    + Creating public ip "coreo-chinaeast-1430261891570-pip"                           
-    + Looking up the public ip "coreo-chinaeast-1430261891570-pip"                     
-    + Creating NIC "coreo-westu-1430261891570-nic"                                 
-    + Looking up the NIC "coreo-chinaeast-1430261891570-nic"                           
-    + Creating VM "coreos"                                                         
-    + Looking up the VM "coreos"                                                   
-    + Looking up the NIC "coreo-chinaeast-1430261891570-nic"                           
-    + Looking up the public ip "coreo-chinaeast-1430261891570-pip"                     
+    + Creating public ip "coreo-westu-1430261891570-pip"
+    + Looking up the public ip "coreo-westu-1430261891570-pip"
+    + Creating NIC "coreo-westu-1430261891570-nic"
+    + Looking up the NIC "coreo-westu-1430261891570-nic"
+    + Creating VM "coreos"
+    + Looking up the VM "coreos"
+    + Looking up the NIC "coreo-westu-1430261891570-nic"
+    + Looking up the public ip "coreo-westu-1430261891570-pip"
     data:    Id                              :/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/coreos-quick/providers/Microsoft.Compute/virtualMachines/coreos
     data:    ProvisioningState               :Succeeded
     data:    Name                            :coreos
@@ -204,7 +199,7 @@
     data:        CreateOption                :FromImage
     data:        Vhd:
     data:          Uri                       :https://cli9fd3fce49e9a9b3d14302.blob.core.chinacloudapi.cn/vhds/cli9fd3fce49e9a9b3d-os-1430261892283.vhd
-    data:    
+    data:
     data:    OS Profile:
     data:      Computer Name                 :coreos
     data:      User Name                     :ops
@@ -407,7 +402,7 @@
             "osDisk": {
                 "name": "osdisk",
                 "vhd": {
-                "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'.vhd')]"
+                "uri": "[concat('http://',parameters('newStorageAccountName'),'.blob.core.chinacloudapi.cn/',variables('vmStorageAccountContainerName'),'/',variables('OSDiskName'),'.vhd')]"
                 },
                 "caching": "ReadWrite",
                 "createOption": "FromImage"
@@ -541,7 +536,7 @@
             },
             "location": {
                 "type": "String",
-                "defaultValue" : "China North"
+                "defaultValue" : "West US"
             },
             "vmSize": {
                 "type": "string",
@@ -709,7 +704,7 @@
     data:
     info:    group create command OK
 
-然后使用 `--template-uri` 选项直接调用模板（或者使用 `--template-file` 选项，使用自己存储在本地中的文件），开始创建部署。请注意，因为模板已指定默认值，所以系统会提示你只输入几项数据。如果将模板部署到几个不同的地方，可能会发现某些名称与默认值冲突（特别是你创建的 DNS 名称）。
+然后使用 `--template-uri` 选项直接调用模板（或者使用 `--template-file` 选项，使用自己保存在本地的文件），开始创建部署。请注意，因为模板已指定默认值，所以系统会提示你只输入几项数据。如果将模板部署到几个不同的地方，可能会发现某些名称与默认值冲突（特别是你创建的 DNS 名称）。
 
     azure group deployment create \
     > --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json \
@@ -749,7 +744,7 @@
     data:    adminPassword                  SecureString  undefined
     data:    osType                         String        linux
     data:    subscriptionId                 String        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-    data:    location                       String        China North                             
+    data:    location                       String        West US
     data:    vmSize                         String        Standard_A2
     data:    publicIPAddressName            String        myPublicIP
     data:    vmName                         String        myVM
@@ -1104,7 +1099,7 @@
 
 ### 步骤 2：使用模板创建部署
 
-使用 `azure group create <location>` 为模板创建资源组。然后，若要在资源组中创建部署，可以使用 `azure group deployment create` 并传递资源组、部署名称，然后根据提示为模板中没有默认值的参数输入相关的值。
+使用 `azure group create <location>` 为模板创建资源组。然后在该资源组中创建部署，方式是使用 `azure group deployment create` 并传递资源组、部署名称，然后根据提示为模板中没有默认值的参数输入相关的值。
 
 
     azure group create lbgroup westus
@@ -1182,7 +1177,7 @@
 
 ## <a id="show-the-log-for-a-resource-group-deployment"></a>任务：显示资源组部署日志
 
-创建或使用模板时，这种情况很常见。可以使用 `azure group log show <groupname>` 调用来显示组的部署日志，它会显示相当多的有用信息，帮助你了解为何发生某些状况，或者为何未发生某些状况。（如需部署故障排除的详细信息以及有关问题的其他详细信息，请参阅[在 Azure 中排查资源组部署问题](/documentation/articles/resource-group-deploy-debug)。）
+创建或使用模板时，这种情况很常见。可以使用 `azure group log show <groupname>` 调用来显示组的部署日志，它会显示相当多的有用信息，帮助你了解为何发生某些状况，或者为何未发生某些状况。（有关部署故障排除的详细信息以及有关问题的其他信息，请参阅[在 Azure 中排查资源组部署问题](/documentation/articles/resource-group-deploy-debug)。）
 
 为了查明特定的失败，你可以使用 **jq** 等工具来更清楚地查明前因后果，例如，你需要更正的单个失败。以下示例使用 **jq** 分析 **lbgroup** 的部署日志，以找出失败的原因。
 
@@ -1198,7 +1193,7 @@
 
 ## <a id="display-information-about-a-virtual-machine"></a>任务：显示有关虚拟机的信息
 
-可以使用 `azure vm show <groupname> <vmname> command` 了解资源组中特定 VM 的相关信息。如果你组中的 VM 超过一个，可能首先需要使用 `azure vm list <groupname>` 列出组中的 VM。
+可以使用 `azure vm show <groupname> <vmname> command` 查看资源组中特定 VM 的相关信息。如果你组中的 VM 超过一个，可能首先需要使用 `azure vm list <groupname>` 列出组中的 VM。
 
     azure vm list zoo
     info:    Executing command vm list
@@ -1236,7 +1231,7 @@
     data:        Caching                     :ReadWrite
     data:        CreateOption                :FromImage
     data:        Vhd:
-    data:          Uri                       :http://zoostorageralph.blob.core.windows.net/vhds/osdisk.vhd
+    data:          Uri                       :http://zoostorageralph.blob.core.chinacloudapi.cn/vhds/osdisk.vhd
     data:
     data:    OS Profile:
     data:      Computer Name                 :myVM1
@@ -1261,7 +1256,7 @@
     info:    vm show command OK
 
 
-> [AZURE.NOTE]如果你想要以编程方式存储和操作控制台命令的输出，可以使用 JSON 分析工具（例如 **[jq](https://github.com/stedolan/jq)** 或 **[jsawk](https://github.com/micha/jsawk)**）或适合任务的语言库。
+> [AZURE.NOTE]如果你想要以编程方式存储和操作控制台命令的输出，可以使用 JSON 分析工具（例如 **[jq](https://github.com/stedolan/jq)** 或 **[jsawk](https://github.com/micha/jsawk)**）或适用于该任务的语言库。
 
 ## <a id="log-on-to-a-linux-based-virtual-machine"></a>任务：登录到基于 Linux 的虚拟机
 
@@ -1273,7 +1268,7 @@
 
     azure vm stop <group name> <virtual machine name>
 
->[AZURE.IMPORTANT]如果该 VM 是虚拟网络中的最后一个 VM，则使用此参数可以保留该虚拟网络的虚拟 IP (VIP)。<br><br>如果你使用 `StayProvisioned` 参数，则仍要支付 VM 的费用。
+>[AZURE.IMPORTANT]如果该 VM 是虚拟网络中的最后一个 VM，则使用此参数可以保留该虚拟网络的虚拟 IP (VIP)。<br><br> 如果使用 `StayProvisioned` 参数，则仍要支付 VM 的费用。
 
 ## <a id="start-a-virtual-machine"></a>任务：启动 VM
 
@@ -1302,4 +1297,4 @@
 
 有关可用的其他模板，请参阅 [Azure 快速入门模板](http://azure.microsoft.com/documentation/templates/)和[使用模板的应用程序框架](/documentation/articles/virtual-machines-app-frameworks)。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

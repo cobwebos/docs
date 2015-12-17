@@ -217,23 +217,18 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。你请求的操作会�
 
 	List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
 
-**使用 SAS 签名的 URI：**
-这是某些 BLOB 文件或 BLOB 容器的 URL，加上一套例如权限和过期日期的参数，再加上使用帐户的 SAS 密钥制成的所有这些内容的签名。Azure 存储 Java SDK 具有丰富的功能，包括创建这种类型的 URI。作为简单的替代，你可以考虑使用 ImportExportE2E 测试类（来自 github 位置），其具有非常基本、精简的签名算法。
+**使用 SAS 签名的 URI：**这是某些 BLOB 文件或 BLOB 容器的 URL，加上一组参数（例如权限和到期日期），再加上使用帐户的 SAS 密钥生成的所有这些内容的签名。Azure 存储 Java SDK 具有丰富的功能，包括创建这种类型的 URI。作为简单的替代，你可以考虑使用 ImportExportE2E 测试类（来自 github 位置），其具有非常基本、精简的签名算法。
 
 ###发送通知
 通知对象只有带有标头的正文，一些实用工具方法可帮助你构建本机和模板通知对象。
 
 * **Windows 应用商店和 Windows Phone 8.1（非 Silverlight）**
 
-	String toast = "<toast><visual><binding template="ToastText01"><text id="1">Hello from Java!</text></binding></visual></toast>"; 
-	Notification n = Notification.createWindowsNotification(toast);
-	hub.sendNotification(n);
+	String toast = "<toast><visual><binding template="ToastText01"><text id="1">Hello from Java!</text></binding></visual></toast>"; Notification n = Notification.createWindowsNotification(toast); hub.sendNotification(n);
 
 * **iOS**
 
-	String alert = "{"aps":{"alert":"Hello from Java!"}}"; 
-	Notification n = Notification.createAppleNotification(alert); 
-	hub.sendNotification(n);
+	String alert = "{"aps":{"alert":"Hello from Java!"}}"; Notification n = Notification.createAppleNotification(alert); hub.sendNotification(n);
 
 * **Android**
 
@@ -243,14 +238,7 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。你请求的操作会�
 
 * **Windows Phone 8.0 和 8.1 Silverlight**
 
-	String toast = "<?xml version="1.0" encoding="utf-8"?>" +
-	"<wp:Notification xmlns:wp="WPNotification">" +
-	"<wp:Toast>" +
-	"<wp:Text1>Hello from Java!</wp:Text1>" +
-	"</wp:Toast> " +
-	"</wp:Notification>";
-	Notification n = Notification.createMpnsNotification(toast);
-	hub.sendNotification(n);
+	String toast = "<?xml version="1.0" encoding="utf-8"?>" + "<wp:Notification xmlns:wp="WPNotification">" + "<wp:Toast>" + "<wp:Text1>Hello from Java!</wp:Text1>" + "</wp:Toast> " + "</wp:Notification>"; Notification n = Notification.createMpnsNotification(toast); hub.sendNotification(n);
 
 * **Kindle Fire**
 
@@ -301,4 +289,4 @@ CreateOrUpdate、Patch 和 Delete 最终与 Get 一致。你请求的操作会�
 [Maven]: http://maven.apache.org/
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

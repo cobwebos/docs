@@ -1,5 +1,5 @@
 <properties
-	pageTitle="事件中心入门"
+	pageTitle="使用 Apache Storm 通过 C# 使用事件中心入门 | Microsoft Azure"
 	description="遵循本教程开始使用 Azure 事件中心，以通过 C# 发送事件，并在 Apache Storm 群集中接收这些事件。"
 	services="event-hubs"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="event-hubs"
-	ms.date="07/21/2015"
+	ms.date="11/05/2015"
 	wacn.date=""/>
 
 # 事件中心入门
@@ -85,9 +85,9 @@
 
 现在，你已生成了一个可以创建事件中心以及发送和接收数据的有效应用程序，接下来请继续学习以下方案：
 
-- [使用事件中心的完整示例应用程序]。
-- [使用事件中心扩大事件处理]示例。
-- 使用服务总线队列的[队列消息解决方案]。
+- [使用事件中心的完整示例应用程序][]。
+- [使用事件中心扩大事件处理][]示例。
+- 使用服务总线队列的[队列消息解决方案][]。
 
 <!-- Images. -->
 [1]: ./media/event-hubs-csharp-storm-getstarted/create-event-hub1.png
@@ -109,4 +109,4 @@
 [队列消息解决方案]: /documentation/articles/service-bus-dotnet-multi-tier-app-using-service-bus-queues
  
 
-<!---HONumber=66-->
+<!---HONumber=Mooncake_1207_2015-->

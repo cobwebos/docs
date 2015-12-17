@@ -32,7 +32,7 @@
 
 ##创建百度帐户
 
-若要使用百度，你必须有一个百度帐户。如果你已有一个帐户，请登录[百度门户]，并跳到下一步骤。否则请参阅以下说明创建百度帐户。
+若要使用百度，你必须有一个百度帐户。如果你已有帐户，请登录[百度门户]，并跳到下一步。否则请参阅以下说明创建百度帐户。
 
 1. 转到[百度门户]并单击“登录”链接。单击“立即注册”以启动帐户注册过程。
 
@@ -116,7 +116,7 @@
 
   	![][15]
 
-8. 成功创建百度云推送项目后，将显示一个页面，其中包含“AppID”、“API 密钥”和“机密密钥”。请记下 API 密钥和机密密钥，因为稍后将要用到。
+8. 成功创建百度云推送项目后，将显示一个页面，其中包含“AppID”、“API 密钥”和“密钥”。请记下 API 密钥和密钥，因为稍后将要用到。
 
   	![][16]
 
@@ -128,11 +128,11 @@
 
 	![][32]
 
-11. 在配置页的“应用包名”字段中添加将在 Android 项目中使用的包名，然后单击“保存设置”
+11. 在配置页的“应用包名”字段中添加将在 Android 项目中使用的包名，然后单击“保存设置”。
 
 	![][33]
 
-你将会看到“保存成功!”消息。
+你将会看到**“保存成功!”**消息。
 
 ##配置通知中心
 
@@ -152,7 +152,7 @@
 
   	![][19]
 
-6. 向下滚动到“百度通知设置”部分，然后输入先前从百度控制台获得的百度云推送项目的 API 密钥和机密密钥。单击“保存”。
+6. 向下滚动到“百度通知设置”部分，然后输入先前从百度控制台获得的百度云推送项目的 API 密钥和密钥。单击“保存”。
 
   	![][20]
 
@@ -184,9 +184,9 @@
 
 5. 下载并解压缩[移动服务 Android SDK]，打开 **notificationhubs** 文件夹，将 **notification-hubs-x.y.jar** 文件复制到 Eclipse 项目的 **libs** 文件夹，并刷新 *libs* 文件夹。
 
-6. 下载并解压缩[百度推送 Android SDK]，打开 **libs** 文件夹，将 **pushservice-x.y.z jar** 文件以及 **armeabi** 和 **mips** 文件夹复制到 Android 应用程序的 **libs** 文件夹。
+6. 下载并解压缩[百度推送 Android SDK]，打开 **libs** 文件夹，然后将 **pushservice-x.y.z** jar 文件以及 **armeabi** 和 **mips** 文件夹复制到 Android 应用程序的 **libs** 文件夹。
 
-7. 打开 Android 项目的 **AndroidManifest.xml**，文件并添加百度 SDK 所需的权限。
+7. 打开 Android 项目的 **AndroidManifest.xml** 文件，并添加百度 SDK 所需的权限。
 
 	    <uses-permission android:name="android.permission.INTERNET" />
 	    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -399,7 +399,7 @@
 
 	![][30]
 
-2. 使用 <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 包</a>添加对 Azure 服务总线 SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入以下内容并按 Enter：
+2. 使用 <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 包</a>添加对 Azure 服务总线 SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库包管理器”和“Package Manager Console”。然后，在控制台窗口中键入以下内容并按 Enter：
 
         Install-Package WindowsAzure.ServiceBus
 
@@ -416,7 +416,7 @@
 			var result = await hub.SendBaiduNativeNotificationAsync(message);
 		}
 
-5. 在 **Main** 方法中添加下列行：
+5. 在 **Main** 方法中添加以下行：
 
          SendNotificationAsync();
 		 Console.ReadLine();
@@ -473,4 +473,4 @@
 [Azure 门户]: https://manage.windowsazure.com/
 [百度门户]: http://www.baidu.com/
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

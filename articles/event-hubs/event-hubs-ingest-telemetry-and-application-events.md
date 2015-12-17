@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="大规模引入遥测数据和应用程序事件" 
+	pageTitle="大规模引入遥测数据和应用程序事件 | Microsoft Azure" 
 	description="了解如何在企业解决方案中大规模引入遥测数据和应用程序事件。" 
 	services="event-hubs,service-bus" 
 	documentationCenter=".net" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="event-hubs" 
-	ms.date="07/02/2015" 
+	ms.date="10/06/2015" 
 	wacn.date=""/>
 
 # 大规模引入遥测数据和应用程序事件
@@ -32,4 +32,4 @@
 - [HDInsight](http://www.windowsazure.cn/documentation/services/hdinsight/)
  
 
-<!---HONumber=66-->
+<!---HONumber=Mooncake_1207_2015-->

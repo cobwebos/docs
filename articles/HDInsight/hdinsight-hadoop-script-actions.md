@@ -1,19 +1,19 @@
-<properties 
-	pageTitle="使用 HDInsight 进行脚本操作开发 | Azure" 
-	description="了解如何使用脚本操作自定义 Hadoop 群集。" 
-	services="hdinsight" 
-	documentationCenter="" 
+<properties
+	pageTitle="使用 HDInsight 进行脚本操作开发 | Microsoft Azure"
+	description="了解如何使用脚本操作自定义 Hadoop 群集。"
+	services="hdinsight"
+	documentationCenter=""
 	tags="azure-portal"
-	authors="mumian" 
-	manager="paulettm" 
+	authors="mumian"
+	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.date="09/03/2015"
+<tags
+	ms.service="hdinsight"
+	ms.date="11/09/2015"
 	wacn.date=""/>
 
-# 为 HDInsight 开发脚本操作脚本 
+# 为 HDInsight 开发脚本操作脚本
 
 了解如何为 HDInsight 编写脚本操作脚本。有关如何使用脚本操作脚本的信息，请参阅[使用脚本操作自定义 HDInsight 群集](/documentation/articles/hdinsight-hadoop-customize-cluster)。
 
@@ -73,7 +73,7 @@
 
 该脚本采用四个参数，即配置文件名称、要修改的属性、要设置的值以及说明。例如：
 
-	hive-site.xml hive.metastore.client.socket.timeout 90
+	hive-site.xml hive.metastore.client.socket.timeout 90 
 
 这些参数会在 hive-site.xml 文件中将 hive.metastore.client.socket.timeout 值设置为 90。默认值为 60 秒。
 
@@ -83,13 +83,13 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装附加组件�
 
 Name | 脚本
 ----- | -----
-**安装 R** | https://hdiconfigactions.blob.core.chinacloudapi.cn/rconfigactionv02/r-installer-v02.ps1。请参阅[在 HDInsight 群集上安装并使用 R][hdinsight-r-scripts]。
-**安装 Solr** | https://hdiconfigactions.blob.core.chinacloudapi.cn/solrconfigactionv01/solr-installer-v01.ps1。请参阅[在 HDInsight 群集上安装并使用 Solr](/documentation/articles/hdinsight-hadoop-solr-install)。
-- **安装 Giraph** | https://hdiconfigactions.blob.core.chinacloudapi.cn/giraphconfigactionv01/giraph-installer-v01.ps1。请参阅[在 HDInsight 群集上安装并使用 Giraph](/documentation/articles/hdinsight-hadoop-giraph-install)。
+**安装 R** | https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1。请参阅[在 HDInsight 群集上安装并使用 R][hdinsight-r-scripts]。
+**安装 Solr** | https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1。请参阅[在 HDInsight 群集上安装并使用 Solr](/documentation/articles/hdinsight-hadoop-solr-install)。
+- **安装 Giraph** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1。请参阅[在 HDInsight 群集上安装并使用 Giraph](/documentation/articles/hdinsight-hadoop-giraph-install)。
 
-脚本操作可以通过 Azure 预览门户、Azure PowerShell 或 HDInsight .NET SDK 来部署。有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]。
+脚本操作可以通过 Azure 管理门户、Azure PowerShell 或 HDInsight .NET SDK 来部署。有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集][hdinsight-cluster-customize]。
 
-> [AZURE.NOTE]示例脚本仅适用于 HDInsight 群集 3.1 或更高版本。有关 HDInsight 群集版本的详细信息，请参阅 [HDInsight 群集版本](../hdinsight-component-versioning/)。
+> [AZURE.NOTE]示例脚本仅适用于 HDInsight 群集 3.1 或更高版本。有关 HDInsight 群集版本的详细信息，请参阅 [HDInsight 群集版本](/documentation/articles/hdinsight-component-versioning)。
 
 
 
@@ -97,10 +97,10 @@ Name | 脚本
 
 ## 自定义脚本的帮助器方法
 
-脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。这些方法在 [https://hdiconfigactions.blob.core.chinacloudapi.cn/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.chinacloudapi.cn/configactionmodulev05/HDInsightUtilities-v05.psm1) 中定义，可以使用以下语法包括在你的脚本中：
+脚本操作帮助器方法是可以在编写自定义脚本时使用的实用工具。这些方法在 [https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1](https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1) 中定义，可以使用以下语法包括在你的脚本中：
 
     # Download config action module from a well-known directory.
-	$CONFIGACTIONURI = "https://hdiconfigactions.blob.core.windows.cn/configactionmodulev05/HDInsightUtilities-v05.psm1";
+	$CONFIGACTIONURI = "https://hdiconfigactions.blob.core.windows.net/configactionmodulev05/HDInsightUtilities-v05.psm1";
 	$CONFIGACTIONMODULE = "C:\apps\dist\HDInsightUtilities.psm1";
 	$webclient = New-Object System.Net.WebClient;
 	$webclient.DownloadFile($CONFIGACTIONURI, $CONFIGACTIONMODULE);
@@ -150,7 +150,7 @@ Name | 脚本
 
 - 提供指向脚本资源的可靠链接
 
-	用户应确保自定义群集过程中使用的所有脚本和其他项目在群集的整个生存期内都必须一直可用，并且这些文件的版本在此期间也不会发生更改。如果需要为群集中的节点重新制作映像，则需要用到这些资源。最佳做法是，下载用户控制的存储帐户中的所有内容并将其存档。这可能是默认存储帐户，也可能是在部署自定义群集时指定的其他任何存储帐户。例如，在文档提供的 R 自定义群集示例中，我们已为此存储帐户中的资源创建了本地副本：https://hdiconfigactions.blob.core.chinacloudapi.cn/。
+	用户应确保自定义群集过程中使用的所有脚本和其他项目在群集的整个生存期内都必须一直可用，并且这些文件的版本在此期间也不会发生更改。如果需要为群集中的节点重新制作映像，则需要用到这些资源。最佳做法是，下载用户控制的存储帐户中的所有内容并将其存档。这可能是默认存储帐户，也可能是在部署自定义群集时指定的其他任何存储帐户。例如，在文档提供的 Spark 和 R 自定义群集示例中，我们已为此存储帐户中的资源创建了本地副本：https://hdiconfigactions.blob.core.windows.net/。
 
 
 - 确保群集自定义脚本是幂等的
@@ -195,9 +195,9 @@ Name | 脚本
 
 在此示例中，你必须确保存储帐户“somestorageaccount”中的容器“somecontainer”可公开访问。否则，该脚本将引发“未找到”异常并失败。
 
-### 将参数传递给 Add-AzureHDInsightScriptAction cmdlet
+### 将参数传递给 Add-AzureRmHDInsightScriptAction cmdlet
 
-若要将多个参数传递给 Add-AzureHDInsightScriptAction cmdlet，你需要将字符串值的格式设置为包含脚本的所有参数。例如：
+若要将多个参数传递给 Add-AzureRmHDInsightScriptAction cmdlet，你需要将字符串值的格式设置为包含脚本的所有参数。例如：
 
 	"-CertifcateUri wasb:///abc.pfx -CertificatePassword 123456 -InstallFolderName MyFolder"
  
@@ -247,23 +247,24 @@ Name | 脚本
 
 本部分概述在本地使用 HDInsight 模拟器进行测试的过程，但是使用 VM 的过程类似。
 
-**安装 HDInsight 模拟器** - 若要在本地运行脚本操作，你必须安装有 HDInsight 模拟器。有关如何安装该模拟器的说明，请参阅 [HDInsight 模拟器入门](/documentation/articles/hdinsight-get-started-emulator/)。
+**安装 HDInsight 模拟器** - 若要在本地运行脚本操作，你必须安装有 HDInsight 模拟器。有关如何安装该模拟器的说明，请参阅 [HDInsight 模拟器入门](/documentation/articles/hdinsight-get-started-emulator)。
 
 **设置 Azure PowerShell 的执行策略** - 打开 Azure PowerShell 并运行（以管理员身份）以下命令，以将执行策略设置为 *LocalMachine* 和 *Unrestricted*：
- 
+
 	Set-ExecutionPolicy Unrestricted –Scope LocalMachine
 
 我们要求此策略不受限制，因为脚本未签名。
 
 **下载脚本操作**，你要将该脚本操作运行到本地目标。以下示例脚本可从以下位置下载：
 
-* **R**。https://hdiconfigactions.blob.core.chinacloudapi.cn/rconfigactionv02/r-installer-v02.ps1
-* **Solr**。https://hdiconfigactions.blob.core.chinacloudapi.cn/solrconfigactionv01/solr-installer-v01.ps1
-* **Giraph**。https://hdiconfigactions.blob.core.chinacloudapi.cn/giraphconfigactionv01/giraph-installer-v01.ps1
+* **R**。https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1
+* **Solr**。https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1
+* **Giraph**。https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1
 
 **运行脚本操作** - 在管理员模式下打开新的 Azure PowerShell 窗口，并从保存 R 安装脚本的本地位置运行这些脚本。
 
-**用法示例** - 当你使用 R 群集时，所需的数据文件可能不存在于 HDInsight 模拟器中。因此，你可能需要将包含数据的相关 .txt 文件上载到 HDFS 中的路径，然后使用该路径访问数据。例如：
+**用法示例**
+- 当你使用 R 群集时，所需的数据文件可能不存在于 HDInsight 模拟器中。因此，你可能需要将包含数据的相关 .txt 文件上载到 HDFS 中的路径，然后使用该路径访问数据。例如：
 
 	val file = sc.textFile("/example/data/gutenberg/davinci.txt")
 
@@ -273,7 +274,7 @@ Name | 脚本
 
 ## 调试自定义脚本
 
-脚本错误日志随同其他输出一起存储在创建群集时为该群集指定的默认存储帐户中。这些日志存储在名为 *u<\\cluster-name-fragment><\\time-stamp>setuplog* 的表中。这些是包含所有节点（头节点和从节点）中的记录的聚合日志，脚本在群集中的这些节点上运行。若要查看日志，一个简单方法是使用 HDInsight Tools for Visual Studio。若要安装这些工具，请参阅[开始使用适用于 HDInsight 的 Visual Studio Hadoop 工具](hdinsight-hadoop-visual-studio-tools-get-started#install-hdinsight-tools-for-visual-studio)
+脚本错误日志随同其他输出一起存储在创建群集时为该群集指定的默认存储帐户中。这些日志存储在名为 *u<\\cluster-name-fragment><\\time-stamp>setuplog* 的表中。这些是包含所有节点（头节点和从节点）中的记录的聚合日志，脚本在群集中的这些节点上运行。若要查看日志，一个简单方法是使用 HDInsight Tools for Visual Studio。若要安装这些工具，请参阅[开始使用适用于 HDInsight 的 Visual Studio Hadoop 工具](/documentation/articles/hdinsight-hadoop-visual-studio-tools-get-started#install-hdinsight-tools-for-visual-studio)
 
 **使用 Visual Studio 查看日志的步骤**
 
@@ -283,7 +284,9 @@ Name | 脚本
 4. 依次展开“存储”、用作默认文件系统的 Azure 存储帐户、“表”，然后双击表名。
 
 
-你还可以远程连接到群集节点，以查看 STDOUT 和 STDERR 中的自定义脚本。每个节点上的日志仅特定于该节点，并记录到 **C:\\HDInsightLogs\\DeploymentAgent.log** 中。这些日志文件会记录自定义脚本中的所有输出。如果执行失败，则描述该情况的输出也将包含在此日志文件中。这些日志中提供的信息应该对调试可能出现的脚本问题有所帮助。
+你还可以远程连接到群集节点，以查看 STDOUT 和 STDERR 中的自定义脚本。每个节点上的日志仅特定于该节点，并记录到 **C:\\HDInsightLogs\\DeploymentAgent.log** 中。这些日志文件会记录自定义脚本中的所有输出。
+
+如果执行失败，则描述该情况的输出也将包含在此日志文件中。这些日志中提供的信息应该对调试可能出现的脚本问题有所帮助。
 
 
 ## 另请参阅
@@ -293,10 +296,12 @@ Name | 脚本
 - [在 HDInsight 群集上安装并使用 Solr](/documentation/articles/hdinsight-hadoop-solr-install)
 - [在 HDInsight 群集上安装并使用 Giraph](/documentation/articles/hdinsight-hadoop-giraph-install)
 
-[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters/
+[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters
 [hdinsight-cluster-customize]: /documentation/articles/hdinsight-hadoop-customize-cluster
-[hdinsight-r-scripts]: /documentation/articles/hdinsight-hadoop-r-scripts/
-[powershell-install-configure]: /documentation/articles/install-configure-powershell/
-[1]: https://msdn.microsoft.com/library/96xafkes(v=vs.110).aspx
+[hdinsight-r-scripts]: /documentation/articles/hdinsight-hadoop-r-scripts
+[powershell-install-configure]: /documentation/articles/install-configure-powershell
 
-<!---HONumber=76-->
+<!--Reference links in article-->
+[1]: https://msdn.microsoft.com/zh-cn/library/96xafkes(v=vs.110).aspx
+
+<!---HONumber=Mooncake_1207_2015-->

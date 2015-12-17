@@ -9,7 +9,7 @@
 以下步骤说明了如何创建新的 ASP.NET WebAPI 后端：
 
 
-> [AZURE.NOTE]**重要提示**：在开始本教程之前，请确保已安装最新版本的 NuGet 包管理器。若要进行检查，请启动 Visual Studio。从“工具”菜单，单击“扩展和更新”。搜索“适用于 Visual Studio 2013 的 NuGet 包管理器”，并且确保拥有版本 2.8.50313.46 或更高版本。否则，请卸载并重新安装 NuGet 程序包管理器。
+> [AZURE.NOTE]**重要提示**：在开始本教程之前，请确保已安装最新版本的 NuGet 程序包管理器。若要进行检查，请启动 Visual Studio。从“工具”菜单，单击“扩展和更新”。搜索“适用于 Visual Studio 2013 的 NuGet 程序包管理器”，并且确保具有版本 2.8.50313.46 或更高版本。否则，请卸载并重新安装 NuGet 程序包管理器。
 > 
 > ![][B4]
 
@@ -24,7 +24,7 @@
 
 	![][B2]
 
-4. 在“配置 Microsoft Azure Web App”对话框中，选择订阅和你已创建的 **App Service 计划**。你也可以选择“创建新的 App Service 计划”，并通过对话框创建一个计划。在本教程中，你不需要使用数据库。选择 App Service 计划后，请单击“确定”以创建项目。
+4. 在“配置 Microsoft Azure Web 应用”对话框中，选择订阅和你已创建的 **App Service 计划**。你也可以选择“创建新的 App Service 计划”，并通过对话框创建一个计划。在本教程中，你不需要使用数据库。选择 App Service 计划后，单击“确定”以创建项目。
 
 	![][B5]
 
@@ -32,13 +32,14 @@
 
 ## 在 WebAPI 后端上对客户端进行身份验证
 
-在本部分，你将为新的后端创建名为 **AuthenticationTestHandler** 新消息处理程序类。此类衍生自 [DelegatingHandler](https://msdn.microsoft.com/library/system.net.http.delegatinghandler.aspx) 并已添加为消息处理程序，以便处理传入后端的所有请求。
+在本部分，你将为新的后端创建名为 **AuthenticationTestHandler** 的新消息处理程序类。此类衍生自 [DelegatingHandler](https://msdn.microsoft.com/library/system.net.http.delegatinghandler.aspx) 并已添加为消息处理程序，以便处理传入后端的所有请求。
 
 
 
-1. 在“解决方案资源管理器”中，右键单击“AppBackend”项目，然后依次单击“添加”和“类”。将新类命名 **AuthenticationTestHandler.cs**，然后单击“添加”以生成该类。通过此类可简单地使用*基本身份验证*对用户进行身份验证。请注意，您的应用可以使用所有身份验证方案。
+1. 在“解决方案资源管理器”中，右键单击“AppBackend”项目，单击“添加”，然后单击“类”。将新类命名为 **AuthenticationTestHandler.cs**，然后单击“添加”以生成该类。通过此类可简单地使用*基本身份验证* 对用户进行身份验证。请注意，您的应用可以使用所有身份验证方案。
 
-2. 在 AuthenticationTestHandler.cs 中，添加以下 `using` 语句：
+2. 
+3. 在 AuthenticationTestHandler.cs 中，添加以下 `using` 语句：
 
         using System.Net.Http;
         using System.Threading;
@@ -48,9 +49,9 @@
 
 3. 在 AuthenticationTestHandler.cs 中，将 `AuthenticationTestHandler` 类定义替换为以下代码。
 
-	当以下三个条件都成立时，此处理程序将授权请求：
+	当以下三个条件都成立时，此处理程序将授权给请求：
 	* 请求包含 *Authorization* 标头。
-	* 请求使用*基本*身份验证。
+	* 请求使用*基本* 身份验证。
 	* 用户名字符串和密码字符串是相同的字符串。
 
 	否则，将会拒绝该请求。这不是真正的身份验证和授权方法。它只是本教程中一个非常简单的示例。
@@ -119,15 +120,15 @@
 
  
 
-1. 在“解决方案资源管理器”中，右键单击“AppBackend”项目，然后单击“管理 NuGet 包”。
+1. 在“解决方案资源管理器”中，右键单击“AppBackend”项目，然后单击“管理 NuGet 程序包”。
 
 2. 在左侧，单击“联机”，然后在“搜索”框中搜索 **Microsoft.Azure.NotificationHubs**。
 
 3. 在结果列表中，单击“Microsoft Azure 通知中心”，然后单击“安装”。完成安装后，关闭“NuGet 程序包管理器”窗口。
 
-	这将使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 包</a>添加对 Azure 通知中心 SDK 的引用。
+	这将使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 程序包</a>添加对 Azure 通知中心 SDK 的引用。
 
-4. 现在，我们要创建新的类文件，用于表示所要发送的不同安全通知。在完整的实现中，这些通知存储在某个数据库中。为简单起见，本教程将这些通知存储在内存中。在解决方案资源管理器中，右键单击“Models”文件夹，单击“添加”，然后单击“类”。将新类命名为 **Notifications.cs**，然后单击“添加”以生成该类。
+4. 现在，我们要创建新的类文件，用于表示所要发送的不同安全通知。在完整的实现中，这些通知存储在某个数据库中。为简单起见，本教程将这些通知存储在内存中。在“解决方案资源管理器”中，右键单击“Models”文件夹，单击“添加”，然后单击“类”。将新类命名为 **Notifications.cs**，然后单击“添加”以生成该类。
 
 	![][B6]
 
@@ -165,7 +166,7 @@
         using System.Threading.Tasks;
         using System.Web;
 
-9. 在 `RegisterController` 类定义中添加以下代码：请注意，在此代码中，我们将为已附加到 HttpContext 的用户添加用户标记。添加的消息筛选器 `AuthenticationTestHandler` 将对该用户进行身份验证并将其附加到 HttpContext。还可以通过添加可选复选框来验证用户是否有权注册以获取请求标记。
+9. 在 `RegisterController` 类定义中添加以下代码。请注意，在此代码中，我们将为已附加到 HttpContext 的用户添加用户标记。添加的消息筛选器 `AuthenticationTestHandler` 将对该用户进行身份验证并将其附加到 HttpContext。还可以通过添加可选复选框来验证用户是否有权注册以获取请求标记。
 
 		private NotificationHubClient hub;
 
@@ -278,7 +279,7 @@
 在本部分，你将添加新的控制器，以便客户端设备使用 ASP.NET WebAPI 后端中的 Azure 通知中心服务管理库根据用户名标记发送通知。
 
 
-1. 创建另一个名为 **NotificationsController** 的新控制器。以你在上一部分中创建 **RegisterController** 的相同方式来创建新控制器。
+1. 创建另一个名为 **NotificationsController** 的新控制器。以你在上一节中创建 **RegisterController** 的相同方式来创建新控制器。
 
 2. 在 NotificationsController.cs 中，添加以下 `using` 语句：
 
@@ -288,7 +289,7 @@
 
 3. 在 **NotificationsController** 类中添加以下方法。
 
-	此代码将会根据平台通知服务 (PNS) `pns` 参数发送相应类型的通知。`to_tag` 的值用于设置消息中的 *username* 标记。此标记必须与活动的通知中心注册的用户名标记相匹配。将从 POST 请求的正文提取通知消息。
+	此代码将会根据平台通知服务 (PNS) `pns` 参数发送相应类型的通知。`to_tag` 的值用于设置消息中的 *username* 标记。此标记必须与活动的通知中心注册的用户名标记相匹配。将从 POST 请求的正文拉取通知消息。
 
         public async Task<HttpResponseMessage> Post(string pns, [FromBody]string message, string to_tag)
         {
@@ -365,4 +366,4 @@
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

@@ -31,7 +31,7 @@
 若要运行 C# 代码示例，你必须拥有：
 
 
-- Azure 帐户和订阅。你可以注册[免费试用版](http://wacn-ppe.chinacloudsites.cn/zh-cn/pricing/1rmb-trial/)。
+- Azure 帐户和订阅。你可以注册[免费试用版](/pricing/1rmb-trial/)。
 
 
 - Azure SQL 数据库服务的 **AdventureWorksLT** 演示数据库。
@@ -41,7 +41,7 @@
 - Visual Studio 2013 Update 4（或更高版本）。Microsoft 现在*免费*提供 Visual Studio Community。
  - [Visual Studio Community，下载](http://www.visualstudio.com/products/visual-studio-community-vs)
  - [Visual Studio 的更多免费选项](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
- - 或者，让本主题中后面的[步骤](#InstallVSForFree)介绍 [Azure 预览门户](http://portal.azure.com/)如何指导你安装 Visual Studio。
+ - 或者，使用本主题中稍后介绍的[步骤](#InstallVSForFree)，在 [Azure 门户](https://manage.windowsazure.cn)中安装 Visual Studio。
 
 
 <a name="InstallVSForFree" id="InstallVSForFree"></a>
@@ -54,13 +54,13 @@
 如果你需要安装 Visual Studio，可以：
 
 - 使用浏览器导航到 Visual Studio 产品网页（该网页提供免费下载及其他选项），免费安装 Visual Studio Community；或者
-- 让 [Azure 预览门户](http://portal.azure.com/)指导你找到下载网页，这将在后面的部分进行介绍。
+- 让 [Azure 门户](https://manage.windowsazure.cn)指导你找到下载网页，这将在后面的部分进行介绍。
 
 
-### 通过 Azure 预览门户安装 Visual Studio
+### 通过 Azure 门户安装 Visual Studio
 
 
-1. 通过 [Azure 预览门户](http://portal.azure.com/)（网址为 http://portal.azure.com/） 登录。
+1. 通过 [Azure 门户](https://manage.windowsazure.cn)（网址为 https://manage.windowsazure.cn )登录。
 
 2. 单击“浏览*全部”>“SQL 数据库”。将打开边栏选项卡搜索数据库。
 
@@ -93,7 +93,7 @@
 在 Visual Studio 中，按照“C#”>“Windows”>“控制台应用程序”的初学者模板创建新项目。
 
 
-1. 单击“文件”>“新建”>“项目”。将显示“****”对话框。
+1. 单击“文件”>“新建”>“项目”。将显示“***”对话框。
 
 2. 在“已安装”下，扩展到 C# 和 Windows，以便“控制台应用程序”选项显示在中间窗格中。
 
@@ -122,7 +122,7 @@
 ## 步骤 4：获取连接字符串
 
 
-使用 [Azure 预览门户](http://portal.azure.com/)复制数据库的连接字符串。
+使用 [Azure 门户](https://manage.windowsazure.cn)复制数据库的连接字符串。
 
 首次使用时，系统会将 Visual Studio 连接到 Azure SQL 数据库的 **AdventureWorksLT** 数据库。
 
@@ -148,7 +148,7 @@
 		<connectionStrings>
 			<clear />
 			<add name="ConnectionString4NoUserIDNoPassword"
-			connectionString="Server=tcp:{your_serverName_here}.database.windows.net,1433; Database={your_databaseName_here}; Connection Timeout=30; Encrypt=True; TrustServerCertificate=False;"
+			connectionString="Server=tcp:{your_serverName_here}.database.chinacloudapi.cn,1433; Database={your_databaseName_here}; Connection Timeout=30; Encrypt=True; TrustServerCertificate=False;"
 			/>
 		</connectionStrings>
 	</configuration>
@@ -311,7 +311,7 @@ namespace ConnectAndQuery_Example
 在将客户端计算机的 IP 地址添加到 SQL 数据库防火墙之前，客户端 C# 程序无法连接到 Azure SQL 数据库。你的程序将失败，并显示简单的错误消息，指出必需的 IP 地址。
 
 
-可以使用 [Azure 预览门户](http://portal.azure.com/)添加该 IP 地址。
+可以使用 [Azure 门户](https://manage.windowsazure.cn)添加该 IP 地址。
 
 
 
@@ -353,4 +353,4 @@ namespace ConnectAndQuery_Example
 
 [50-VSCopyToOutputDirectoryProperty]: ./media/sql-database-connect-query/connqry-vs-appconfig-copytoputputdir-h.png
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

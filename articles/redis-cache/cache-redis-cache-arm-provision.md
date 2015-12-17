@@ -8,8 +8,8 @@
 	editor=""/>
 
 <tags
-	ms.service="app-service"
-	ms.date="10/02/2015"
+	ms.service="cache"
+	ms.date="10/28/2015"
 	wacn.date=""/>
 
 # 使用模板创建 Redis 缓存
@@ -22,7 +22,7 @@
 
 有关完整的模板，请参阅 [Redis 缓存模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)。
 
->[AZURE.NOTE] 用于新[高级层](/documentation/articles/cache-premium-tier-intro)的 ARM 模板即将推出。若要检查最新模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)并搜索 `Redis Cache`。
+>[AZURE.NOTE]用于新[高级层](/documentation/articles/cache-premium-tier-intro)的 ARM 模板即将推出。若要检查最新模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)并搜索 `Redis Cache`。
 
 ## 将部署的内容
 
@@ -34,8 +34,7 @@
 
 ## Parameters
 
-使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。该模板具有一个名为 Parameters 的部分，其中包含所有参数值。
-你应该为随着要部署的项目或要部署到的环境而变化的值定义参数。不要为永远保持不变的值定义参数。每个参数值可在模板中用来定义所部署的资源。
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。该模板具有一个名为 Parameters 的部分，其中包含所有参数值。你应该为随着要部署的项目或要部署到的环境而变化的值定义参数。不要为永远保持不变的值定义参数。每个参数值可在模板中用来定义所部署的资源。
 
 下面介绍模板中的每个参数。
 
@@ -128,4 +127,4 @@ Redics 缓存的位置。为获得最佳性能，请使用要与缓存配合使�
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

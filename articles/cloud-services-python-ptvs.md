@@ -34,9 +34,7 @@ Azure 提供了三种计算模型用于运行应用程序：[Azure App Service �
 
 有关详细信息，请参阅[什么是云服务？]。
 
-> [AZURE.NOTE]*想要构建一个简单的网站？*
-如果你的方案只涉及一个简单的网站前端，请考虑使用 Azure App Service 中的轻型 Web Apps 功能。随着您网站的不断扩大和需求的变化，您可以轻松升级到云服务。请参阅 <a href="/develop/python/">Python 开发人员中心</a>上关于开发 Azure App Service 中的 Web Apps 功能的文章。
-<br />
+> [AZURE.NOTE]*想要构建一个简单的网站？* 如果你的方案只涉及一个简单的网站前端，请考虑使用 Azure App Service 中的轻型 Web Apps 功能。随着您网站的不断扩大和需求的变化，您可以轻松升级到云服务。请参阅 <a href="/develop/python/">Python 开发人员中心</a>上关于开发 Azure App Service 中的 Web Apps 功能的文章。<br />
 
 
 ## 创建项目
@@ -89,7 +87,7 @@ Azure 提供了三种计算模型用于运行应用程序：[Azure App Service �
 
 完成配置设置后，单击**发布**。
 
-某些进度将显示在输出窗口中，然后你将看到“Microsoft Azure 活动日志”窗口。
+某些进度将显示在输出窗口中，然后您将看到“Microsoft Azure 活动日志”窗口。
 
 ![Microsoft Azure 活动日志窗口](./media/cloud-services-python-ptvs/publish-activity-log.png)
 
@@ -112,29 +110,28 @@ Azure 提供了三种计算模型用于运行应用程序：[Azure App Service �
 
 <!--Link references-->
 
-[什么是云服务？]: /documentation/articles/cloud-services-what-is
-[execution model-web sites]: /documentation/articles/fundamentals-application-models/#WebSites
-[execution model-vms]: /documentation/articles/fundamentals-application-models/#VMachine
-[execution model-cloud services]: /documentation/articles/fundamentals-application-models/#CloudServices
+[什么是云服务？]: /manage/services/cloud-services/what-is-a-cloud-service/
+[execution model-web sites]: fundamentals-application-models.md#WebSites
+[execution model-vms]: fundamentals-application-models.md#VMachine
+[execution model-cloud services]: fundamentals-application-models.md#CloudServices
 [Python Developer Center]: /develop/python/
 
-[Blob 服务]: /documentation/articles/storage-python-how-to-use-blob-storage
-[队列服务]: /documentation/articles/storage-python-how-to-use-queue-storage
-[表服务]: /documentation/articles/storage-python-how-to-use-table-storage
-[Service Bus 队列]: /documentation/articles/service-bus-python-how-to-use-queues
-[Service Bus 主题]: /documentation/articles/service-bus-python-how-to-use-topics-subscriptions
+[Blob 服务]: storage-python-how-to-use-blob-storage.md
+[队列服务]: storage-python-how-to-use-queue-storage.md
+[表服务]: storage-python-how-to-use-table-storage.md
+[Service Bus 队列]: service-bus-python-how-to-use-queues.md
+[Service Bus 主题]: service-bus-python-how-to-use-topics-subscriptions.md
 
 
 <!--External Link references-->
 
-[Python Tools for Visual Studio]: http://pytools.codeplex.com
-[Python Tools for Visual Studio Documentation]: http://pytools.codeplex.com/documentation
-[云服务项目]: http://pytools.codeplex.com/wikipage?title=Features%20Cloud%20Project
-
-[Python Tools 2.1 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkId=517189
+[Python Tools for Visual Studio]: http://aka.ms/ptvs
+[Python Tools for Visual Studio Documentation]: http://aka.ms/ptvsdocs
+[云服务项目]: http://go.microsoft.com/fwlink/?LinkId=624028
+[Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Azure SDK Tools for VS 2013]: http://go.microsoft.com/fwlink/?LinkId=323510
-[Azure SDK Tools for VS 2012]: http://go.microsoft.com/fwlink/?LinkId=323511
+[Azure SDK Tools for VS 2015]: http://go.microsoft.com/fwlink/?LinkId=518003
 [Python 2.7（32 位）]: http://go.microsoft.com/fwlink/?LinkId=517190
 [Python 3.4（32 位）]: http://go.microsoft.com/fwlink/?LinkId=517191
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

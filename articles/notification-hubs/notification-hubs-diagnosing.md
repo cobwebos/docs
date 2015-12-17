@@ -7,7 +7,8 @@
 	manager="dwrede" 
 	editor=""/>
 
-<tags ms.service="notification-hubs"
+<tags 
+	ms.service="notification-hubs" 
 
 	ms.date="07/14/2015" 
 	wacn.date=""/>
@@ -233,4 +234,4 @@ Azure 通知中心需要在开发人员的应用程序的环境中对自身进�
 [以编程方式遥测访问]: http://msdn.microsoft.com/zh-cn/library/azure/dn458823.aspx
 [通过 API 示例遥测访问]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_1207_2015-->

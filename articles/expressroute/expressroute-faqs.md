@@ -8,7 +8,7 @@
    editor=""/>
 <tags
    ms.service="expressroute"
-   ms.date="09/02/2015"
+   ms.date="10/20/2015"
    wacn.date=""/>
 
 # ExpressRoute 常见问题
@@ -21,13 +21,13 @@ ExpressRoute 是一项 Azure 服务，允许你在 Microsoft 数据中心与你�
 ExpressRoute 连接不通过公共 Internet，与通过公共 Internet 的典型连接相比，提供更高的安全性、可靠性、速度和一贯较低的延迟。在某些情况下，使用 ExpressRoute 连接在本地设备和 Azure 之间传输数据可以产生显著的成本效益。
 
 ### 可通过 ExpressRoute 支持哪些 Microsoft 云服务？
-ExpressRoute 目前支持大多数 Microsoft Azure 服务。我们即将宣布可通过 ExpressRoute 支持 Office 365 服务。在正式版发布后，请查看最新信息。
+ExpressRoute 目前支持大多数 Microsoft Azure 服务，包括 Office 365。在正式版发布后，请查看最新信息。
 
 ### 哪里提供该服务？
 参阅 [ExpressRoute 合作伙伴和位置](/documentation/articles/expressroute-locations)了解服务上市区域和可用性。
 
 ### 我如果未与 ExpressRoute 运营商合作伙伴之一建立合作伙伴关系，则如何使用 ExpressRoute 连接到 Microsoft？
-你可以将区域运营商和地区以太网连接选择为支持的 Exchange 提供商位置之一。然后，你可以在 EXP 位置与 Microsoft 实现对接。查看 [ExpressRoute 合作伙伴和位置](/documentation/articles/expressroute-locations)的最后一部分，以确定你的网络提供商是否处在任何 Exchange 位置中。然后，你可以从交换提供商订购一条 ExpressRoute 线路以连接到 Azure。
+你可以将区域运营商和地区以太网连接选择为支持的 Exchange 提供商位置之一。然后，你可以在提供商位置与 Microsoft 实现对接。查看 [ExpressRoute 合作伙伴和位置](/documentation/articles/expressroute-locations)的最后一部分，以确定你的服务提供商是否处在任何 Exchange 位置中。然后，你可以通过服务提供商订购一条 ExpressRoute 线路以连接到 Azure。
 
 ### ExpressRoute 的费用是多少？
 有关定价信息，请查看[定价详细信息](/home/features/expressroute/#price)。
@@ -49,6 +49,7 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务。我们即将宣布�
 
 - 与虚拟机和虚拟网络中部署的云服务的连接通过专用对等路径提供支持。
 - 可通过公共对等路径访问 Azure 网站。
+- Office 365 通过 Microsoft 对等路径提供支持。
 - 可通过公共对等路径访问所有其他服务。下面列出了例外情况。
 
 	**不支持以下服务：**
@@ -65,10 +66,7 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务。我们即将宣布�
 ### ExpressRoute 支持的连接速度是多少？
 支持带宽提供：
 
-|**提供商**|**带宽**|
-|---|---|
-|**网络提供商**|10 Mbps、50 Mbps、100 Mbps、500 Mbps、1 Gbps|
-|**Exchange 提供商**|200 Mbps、500 Mbps、1Gbps、10Gbps|
+|50 Mbps, 100 Mbps, 200 Mbps, 500 Mbps, 1Gbps, 2 Gbps,  5 Gbps, 10Gbps|
 
 ### 可以选择哪些服务提供商？
 有关服务提供商和位置的列表，请参阅 [ExpressRoute 合作伙伴和位置](/documentation/articles/expressroute-locations)。
@@ -85,7 +83,7 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务。我们即将宣布�
 如果其中一个交叉连接出现故障，你不会失去连接。冗余连接可用于支持网络负载。另外，你还可以在不同对等位置创建多条线路以获得故障恢复能力。
 
 ### 我是否需要配置这两种链路才能使服务正常工作？
-如果你正在通过 NSP 进行连接，NSP 将负责为你配置冗余链接。如果你所在的位置提供 EXP，则你必须为 EXP 云交换平台配置两条 LAN 链路。如果你从专用数据中心通过单条 WAN 链路连接到 EXP，则需要在 EXP 中终止你自己的路由器上的 WAN 链路，然后为 EXP 云交换平台配置两条 LAN 链路。
+如果你正在通过提供第 3 层服务的合作伙伴进行连接，合作伙伴将负责代表你配置冗余链路。但是，如果你所在的位置已有云交换提供商，则你必须为云交换平台配置两条 LAN 链路。如果你从专用数据中心通过单条 WAN 链路连接到云提供商，则需要终止你自己的路由器上的 WAN 链路，然后为云交换平台配置两条 LAN 链路。
 
 ### 能否使用 ExpressRoute 将我的一个 VLAN 扩展到 Azure？
 否。我们不支持将第 2 层连接扩展到 Azure。
@@ -100,14 +98,10 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务。我们即将宣布�
 基本步骤如下所述。
 
 - 你必须建立一条 ExpressRoute 线路并让服务提供商启用它。
-- 你必须为私有对等互连配置 BGP（如果你使用的是 Exchange 提供商）。
+- 你或提供商必须配置 BGP 对等互连。
 - 你必须将虚拟网络连接到 ExpressRoute 线路。
 
-以下教程将帮助你：
-
-- [通过网络服务提供商配置 ExpressRoute 连接](/documentation/articles/expressroute-configuring-nsps)
-- [通过 Exchange 提供商配置 ExpressRoute 连接](/documentation/articles/expressroute-configuring-exps)
-- [为 ExpressRoute 配置虚拟网络和网关](/documentation/articles/expressroute-configuring-vnet-gateway)
+有关详细信息，请参阅 [ExpressRoute 线路预配工作流和线路状态](/documentation/articles/expressroute-workflows)。
 
 ### 我的 ExpressRoute 线路是否存在连接界限？
 是的。[ExpressRoute 合作伙伴和位置](/documentation/articles/expressroute-locations)页概述了 ExpressRoute 线路的连接界限。一条 ExpressRoute 线路的连接范围限制为单个地缘政治区域。可以通过启用 ExpressRoute 高级功能，将连接扩展为跨地缘政治区域。
@@ -155,8 +149,8 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务。我们即将宣布�
 ### 如果超过 BGP 限制，会发生什么情况？
 BGP 会话将被删除。当前缀计数低于限制后，将重置这些会话。
 
-### ExpressRoute BGP 保持时间是多少？ 是否可以调整它?
-保持时间为 180。Keep-Alive（保持活动）消息每隔 60 秒发送一次。这是 Microsoft 端的固定设置，不能更改。
+### ExpressRoute BGP 保持时间是多少？ 是否可以调整它？
+保持时间为 180。Keep-Alive（保持活动）消息每隔 60 秒发送一次。这些是 Microsoft 端的固定设置，不能更改。
 
 ### 将默认路由 (0.0.0.0/0) 播发到虚拟网络后，我无法激活 Azure VM 上运行的 Windows。我如何解决此问题？
 以下步骤可帮助 Azure 识别激活请求：
@@ -185,25 +179,17 @@ ExpressRoute 高级版包括下面列出的功能集合。
 ### 如果启用 ExpressRoute 高级版，可将多少个 VNet 链接到一条 ExpressRoute 线路？
 下表列出了链接到 ExpressRoute 线路的 VNet 数的更高限制。默认限制为 10。
 
-**针对通过 NSP 创建的线路的限制**
+**线路的限制**
 
 | **线路大小** | **针对默认安装的 VNet 链接数** | **使用 ExpressRoute 高级版时的 VNet 链接数** |
 |--------------|----------------------------------------|-----------------------------------------------|
-| 10 Mbps | 10 | 不支持 |
-| 50 Mbps | 10 | 20 |
-| 100 Mbps | 10 | 25 |
-| 500 Mbps | 10 | 40 |
-| 1Gbps | 10 | 50
-|
-
-
-**针对通过 EXP 创建的线路的限制**
-
-| **线路大小** | **针对默认安装的 VNet 链接数** | **使用 ExpressRoute 高级版时的 VNet 链接数** |
-|--------------|-----------------------------------|------------------------------------------------|
+| 50 Mbps | 10 | 不支持 |
+| 100 Mbps | 10 | 20 |
 | 200 Mbps | 10 | 25 |
 | 500 Mbps | 10 | 40 |
 | 1 Gbps | 10 | 50 |
+| 2 Gbps | 10 | 60 |
+| 5 Gbps | 10 | 75 |
 | 10 Gbps | 10 | 100 |
 
 
@@ -223,29 +209,18 @@ ExpressRoute 高级版包括下面列出的功能集合。
 ### 除了支付 ExpressRoute 高级版费用以外，是否还要支付标准版 ExpressRoute 的费用？
 是的。ExpressRoute 高级版的费用是在 ExpressRoute 线路费用以及连接提供商所收费用的基础之上收取的。
 
-### ExpressRoute 高级版是否同时支持 EXP 和 NSP 模式？
-是的。ExpressRoute 高级版支持通过 EXP 和 NSP 连接的 ExpressRoute 线路。
-
-
 ## ExpressRoute 和 Office 365
 
 ### 如何创建一条 ExpressRoute 线路来连接 Office 365 服务？
 
-1. 请查看 [ExpressRoute 先决条件页](/documentation/articles/expressroute-prerequisites)，以确保满足要求
-2. 请查看 [ExpressRoute 合作伙伴和位置](expressroute-locations)中的服务提供商和位置列表，以确保满足你的连接需求。
+1. 请查看 [ExpressRoute 先决条件页](/documentation/articles/expressroute-prerequisites)，以确保满足要求。
+2. 请查看 [ExpressRoute 合作伙伴和位置](/documentation/articles/expressroute-locations)中的服务提供商和位置列表，以确保满足你的连接需求。
 3. 请查看[针对 Office 365 的网络规划和性能优化](http://aka.ms/tune/)，以规划你的容量要求
 4. 遵照以下工作流中列出的步骤来设置连接。
-
-	- [通过网络服务提供商配置 ExpressRoute 连接](/documentation/articles/expressroute-configuring-nsps)
-	- [通过 Exchange 提供商配置 ExpressRoute 连接](/documentation/articles/expressroute-configuring-exps)
+	[ExpressRoute 线路预配工作流和线路状态](/documentation/articles/expressroute-workflows)。
 
 ### 我的现有 ExpressRoute 线路是否支持连接到 Office 365 服务？
-是的。可以将你的现有 ExpressRoute 线路配置为支持连接到 Office 365 服务。请确保你有足够的容量连接到 Office 365 服务。[针对 Office 365 的网络规划和性能优化](http://aka.ms/tune/)中的内容可帮助你规划连接需求。
-
-以下教程将帮助你：
-
-- [通过网络服务提供商配置 ExpressRoute 连接](/documentation/articles/expressroute-configuring-nsps)
-- [通过 Exchange 提供商配置 ExpressRoute 连接](/documentation/articles/expressroute-configuring-exps)
+是的。可以将你的现有 ExpressRoute 线路配置为支持连接到 Office 365 服务。请确保你有足够的容量连接到 Office 365 服务。[针对 Office 365 的网络规划和性能优化](http://aka.ms/tune/)中的内容可帮助你规划连接需求。另外，请参阅[创建和修改 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-classic)。
 
 ### 通过 ExpressRoute 连接可以访问哪些 Office 365 服务？
 
@@ -276,11 +251,8 @@ ExpressRoute 高级版包括下面列出的功能集合。
 ### 哪些区域支持适用于 Office 365 的 ExpressRoute？
 有关支持 ExpressRoute 的合作伙伴和位置列表，请参阅 [ExpressRoute 合作伙伴和位置](/documentation/articles/expressroute-locations)。
 
-### 是否可以使用 NSP 和 EXP 连接到 Office 365 服务？
-我们支持通过 NSP 和 EXP 连接到 Office 365 服务。有关支持的合作伙伴和位置列表，请参阅 [ExpressRoute 合作伙伴和位置](/documentation/articles/expressroute-locations)。
-
 ### 是否即使为组织配置了 ExpressRoute，也可以通过 Internet 访问 Office 365？
 是的。即使为你的网络配置了 ExpressRoute，也可以通过 Internet 访问 Office 365 服务终结点。如果你所在的位置已配置为通过 ExpressRoute 连接到 Office 365 服务，则你将通过 ExpressRoute 进行连接。
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

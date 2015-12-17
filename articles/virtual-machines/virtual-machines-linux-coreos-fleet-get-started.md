@@ -1,6 +1,6 @@
 <properties
-	pageTitle="在 Azure 上的 CoreOS 上使用 Fleet 入门"
-	description="提供在 Azure 上的 CoreOS Linux 虚拟机上使用 Fleet 和 Docker 的基本示例。"
+	pageTitle="在 CoreOS 上开始使用 Fleet |Microsoft Azure"
+	description="提供使用经典部署模型在 Azure 上创建的 CoreOS Linux 虚拟机上使用 Fleet 和 Docker 的基本示例。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="dlepow"
@@ -14,6 +14,9 @@
 	wacn.date=""/>
 
 # 在 Azure 上的 CoreOS 上使用 Fleet 入门
+
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
+
 
 本文提供两个在 [CoreOS] 虚拟机的群集上使用 [fleet](https://github.com/coreos/fleet) 和 [Docker](https://www.docker.com/) 运行应用程序的快速示例。
 
@@ -148,10 +151,12 @@ fleetctl --tunnel coreos-cluster.chinacloudapp.cn:22 unload apache@{1,2,3}.servi
 
 * 你可以尝试使用 Azure 上的三节点 CoreOS 群集执行更多操作。通过阅读 [Tim Park 的 CoreOS 教程]、[Patrick Chanezon 的 CoreOS 教程]、[Docker] 文档和 [CoreOS 概述]，探索如何创建更复杂的群集、使用 Docker 和创建更有趣的应用程序。
 
+* 若要在 Azure 资源管理器中开始使用 Fleet 和 CoreOS，请尝试此[快速入门模板](https://azure.microsoft.com/documentation/templates/coreos-with-fleet-multivm/)。
+
 * 请参阅 [Azure 上的 Linux 和开源计算]，了解有关在 Azure 中的 Linux VM 上使用开源环境的详细信息。
 
 <!--Link references-->
-[Azure Command-Line Interface (Azure)]: /documentation/articles/xplat-cli
+[Azure Command-Line Interface (Azure)]: ../xplat-cli-install.md
 [CoreOS]: https://coreos.com/
 [CoreOS 概述]: https://coreos.com/using-coreos/
 [CoreOS with Azure]: https://coreos.com/docs/running-coreos/cloud-providers/azure/
@@ -159,12 +164,12 @@ fleetctl --tunnel coreos-cluster.chinacloudapp.cn:22 unload apache@{1,2,3}.servi
 [Patrick Chanezon 的 CoreOS 教程]: https://github.com/chanezon/azure-linux/tree/master/coreos/cloud-init
 [Docker]: http://docker.io
 [YAML]: http://yaml.org/
-[如何在 Azure 上使用 CoreOS]: /documentation/articles/virtual-machines-linux-coreos-how-to
-[配置负载平衡集]: https://msdn.microsoft.com/zh-CN/library/azure/dn655055.aspx
+[如何在 Azure 上使用 CoreOS]: virtual-machines-linux-coreos-how-to.md
+[配置负载平衡集]: ../load-balancer/load-balancer-internet-getstarted.md
 [使用 fleet 启动容器]: https://coreos.com/docs/launching-containers/launching/launching-containers-fleet/
 [单元文件]: https://coreos.com/docs/launching-containers/launching/fleet-unit-files/
 [busybox Docker Hub 映像]: https://registry.hub.docker.com/_/busybox/
 [CoreOS Apache Docker Hub 映像]: https://registry.hub.docker.com/u/coreos/apache/
-[Azure 上的 Linux 和开源计算]: /documentation/articles/virtual-machines-linux-opensource
+[Azure 上的 Linux 和开源计算]: virtual-machines-linux-opensource.md
 
-<!---HONumber=70-->
+<!---HONumber=Mooncake_1207_2015-->

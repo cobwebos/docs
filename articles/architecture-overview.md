@@ -21,12 +21,12 @@
 Microsoft 发布一系列体系结构设计模式，以帮助您编写自己的自定义设计。这些模式都应是简洁的体系结构指南，可以按顺序组合在一起，为如何充分利用 Microsoft Azure 平台提供指导，以满足您组织的业务需求。
 
 
-[概述](/documentation/articles/azure-architectures-cpif-overview) -
-[混合网络](/documentation/articles/azure-architectures-cpif-infrastructure-hybrid-networking) -
-[异地批处理](/documentation/articles/azure-architectures-cpif-foundation-offsite-batch-processing-tier) -
-[多站点数据层](/documentation/articles/azure-architectures-cpif-foundation-multi-site-data-tier) -
-[全局负载平衡的 Web 层](/documentation/articles/azure-architectures-cpif-foundation-global-load-balanced-web-tier) -
-[Azure 搜索层](/documentation/articles/azure-architectures-cpif-foundation-azure-search-tier)
+[概述](../azure-architectures-cpif-overview/) - 
+[混合网络](../azure-architectures-cpif-infrastructure-hybrid-networking/) - 
+[异地批处理](../azure-architectures-cpif-foundation-offsite-batch-processing-tier/) - 
+[多站点数据层](../azure-architectures-cpif-foundation-multi-site-data-tier/) - 
+[全局负载平衡的 Web 层](../azure-architectures-cpif-foundation-global-load-balanced-web-tier/) - 
+[Azure 搜索层](../azure-architectures-cpif-foundation-azure-search-tier/)
  
 每个模式包含
  
@@ -43,7 +43,7 @@ Microsoft 发布一系列体系结构设计模式，以帮助您编写自己的�
 
 
 ##设计模式海报
-Microsoft Patterns and Practices 已发布了[云设计模式](http://msdn.microsoft.com/library/dn568099.aspx)一书，在 MSDN 上可用，也可以 PDF 格式下载。此外还提供了一张可用的大画幅海报，列出了所有的模式。
+Microsoft Patterns and Practices 已发布了[云设计模式](http://msdn.microsoft.com/zh-cn/library/dn568099.aspx)一书，在 MSDN 上可用，也可以 PDF 格式下载。此外还提供了一张可用的大画幅海报，列出了所有的模式。
 
 ![模式与实践云模式海报](./media/architecture-overview/PnPPatternPosterThumb.jpg)
 
@@ -79,8 +79,8 @@ Microsoft 发布了一套高级别的 [体系结构蓝图](http://aka.ms/azbluep
 该模板在本课程外也可用。
 
 - 首先[观看视频培训](http://aka.ms/3dBlueprintTemplateVideo)了解其功能   
-- 下载 [Microsoft 3d Blueprint Visio Template](http://aka.ms/3DBlueprintTemplate)
-- 下载与 3D 模板配合使用的[云和企业符号](#symbol-and-icon-sets)
+- 下载 [3D Blueprint Visio Template](http://aka.ms/3DBlueprintTemplate)
+- 下载与 3D 模板配合使用的[云和企业符号](#drawing-symbol-and-icon-sets) 
 
 提供反馈，或者需要提培训材料无法答复的具体问题，请发邮件至 [CnESymbols@microsoft.com](mailto:CnESymbols@microsoft.com)。可用性是模板的主要目标之一，让我们了解其优点和缺点
 
@@ -109,4 +109,4 @@ Microsoft 发布了几个与体系结构相关的海报/信息图。它们包括
 
 ![Azure 体系结构信息图](./media/architecture-overview/AzureArchInfographicThumb.jpg)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

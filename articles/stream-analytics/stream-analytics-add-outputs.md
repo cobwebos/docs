@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="09/29/2015" 
+	ms.date="11/10/2015" 
 	wacn.date=""/>
 
 # 添加输出
@@ -24,17 +24,11 @@ Azure 流分析作业可以连接到一个或多个输出，其定义了一个�
 
     ![添加输出](./media/stream-analytics-add-outputs/1-stream-analytics-add-outputs.png)
 
-    在 Azure 预览门户中，单击流分析作业中的“输出”磁贴。
-
-    ![Azure 门户添加输出](./media/stream-analytics-add-outputs/5-stream-analytics-add-outputs.png)
-
 2. 指定输出的类型：
 
     ![选择数据类型](./media/stream-analytics-add-outputs/2-stream-analytics-add-outputs.png)
 
-    ![Azure 预览门户选择数据类型](./media/stream-analytics-add-outputs/6-stream-analytics-add-outputs.png)
-
-3. 在“输出别名”框中为该输出提供一个友好名称。此名称以后会用于你的作业查询以引用该输出。
+3. 在“输出别名”框中为该输出提供一个友好的名称。此名称以后会用于你的作业查询以引用该输出。
     
     填充所需连接属性的其余部分以连接到你的输出。这些字段根据输出类型而变化，在此处进行了详细定义。
 
@@ -42,11 +36,9 @@ Azure 流分析作业可以连接到一个或多个输出，其定义了一个�
 
 4. 根据输出类型，你可能需要指定序列化或格式化数据的方式。此处记录了每个输出类型的特定序列化设置。
 
-    填充所需连接属性的其余部分以连接到你的数据源。这些字段根据输入类型和源类型而变化，在[此处](stream-analytics-create-a-job.md)进行了详细定义。
+    填充所需连接属性的其余部分以连接到你的数据源。这些字段根据输入类型和源类型而变化，[此处](/documentation/articles/stream-analytics-create-a-job)进行了详细定义。
 
     ![添加事件中心](./media/stream-analytics-add-outputs/4-stream-analytics-add-outputs.png)
-
-    ![Azure 预览门户添加事件中心](./media/stream-analytics-add-outputs/7-stream-analytics-add-outputs.png)
 
 ## 获取帮助
 如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)
@@ -56,7 +48,7 @@ Azure 流分析作业可以连接到一个或多个输出，其定义了一个�
 - [Azure 流分析简介](/documentation/articles/stream-analytics-introduction)
 - [Azure 流分析入门](/documentation/articles/stream-analytics-get-started)
 - [缩放 Azure 流分析作业](/documentation/articles/stream-analytics-scale-jobs)
-- [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-- [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+- [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
+- [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

@@ -11,18 +11,18 @@
 <tags
 	ms.service="virtual-machines"
 	ms.date="10/05/2015"
-        wacn.date=""/>
+    wacn.date=""/>
 
 # 基本配置测试环境
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model]（virtual-machines-base-configuration-test-environment-resource-manager.md）。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](/documentation/articles/virtual-machines-base-configuration-test-environment-resource-manager)。
 
 本文为你提供在 Azure 虚拟网络中创建基本配置测试环境的分步说明。
 
 可以使用生成的测试环境：
 
 - 进行应用程序开发和测试。
-- 适用于[模拟混合云环境](/documentation/articles/virtual-networks-setup-simulated-hybrid-cloud-environment-testing)。
+- 适用于[模拟混合云环境](../virtual-network/virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)。
 - 对于你自己设计的测试环境，使用其他虚拟机和 Azure 服务对其进行扩展。
 
 基本配置测试环境由名为 TestLab 的仅限云虚拟网络中的公司网络子网组成，它模拟连接到 Internet 的简化专用 Intranet。
@@ -49,7 +49,7 @@
 
 如果你还没有 Azure 帐户，可以在[试用 Azure](/pricing/1rmb-trial/) 中注册一个免费试用版。如果你有 MSDN 订阅，请参阅 [MSDN 订户的 Azure 权益](/pricing/member-offers/msdn-benefits-details/)。
 
-> [AZURE.NOTE]Azure 中的虚拟机在运行时会持续产生货币成本。此成本是针对你的免费试用版本、MSDN 订阅或付费订阅的。有关正在运行的 Azure 虚拟机的成本的详细信息，请参阅[虚拟机定价详细信息](/pricing/details/virtual-machines/)和 [Azure 定价计算器](/pricing/calculator/)。若要控制成本，请参阅[将 Azure 中的测试环境虚拟机的成本降至最低](#costs)。
+> [AZURE.NOTE]Azure 中的虚拟机在运行时会持续产生货币成本。此成本是针对你的免费试用版本、MSDN 订阅或付费订阅的。有关正在运行的 Azure 虚拟机的成本的详细信息，请参阅[虚拟机定价详细信息](http://azure.microsoft.com/pricing/details/virtual-machines/)和 [Azure 定价计算器](http://azure.microsoft.com/pricing/calculator/)。若要控制成本，请参阅[将 Azure 中的测试环境虚拟机的成本降至最低](#costs)。
 
 ## 阶段 1：创建虚拟网络
 
@@ -235,7 +235,7 @@ CLIENT1 在 Contoso Intranet 中充当典型笔记本电脑、平板电脑或台
 2.	在**“CLIENT1 的属性”**中，单击**“IE 增强的安全配置”**旁边的**“启用”**。
 3.	在**“Internet Explorer 增强的安全配置”**中，对**“管理员”**和**“用户”**单击**“关闭”**，然后单击**“确定”**。
 4.	在“开始”屏幕中，单击**“Internet Explorer”**，然后单击**“确定”**。
-5.	在地址栏中，键入 ****http://app1.corp.contoso.com/**，然后按 Enter。你应看到 APP1 的默认 Internet 信息服务网页。
+5.	在地址栏中，键入 **http://app1.corp.contoso.com/**，然后按 Enter。你应看到 APP1 的默认 Internet 信息服务网页。
 6.	在桌面任务栏上，单击“文件资源管理器”图标。
 7.	在地址栏中，键入 **\\\app1\\Files**，然后按 Enter。
 8.	你应看到显示文件共享文件夹的内容的文件夹窗口。
@@ -246,13 +246,13 @@ CLIENT1 在 Contoso Intranet 中充当典型笔记本电脑、平板电脑或台
 
 ![](./media/virtual-machines-base-configuration-test-environment/BC_TLG04.png)
 
-Azure 中的基本配置现已可用于应用程序开发和测试或其他测试环境，如[模拟混合云环境](/documentation/articles/virtual-networks-setup-simulated-hybrid-cloud-environment-testing)。
+Azure 中的基本配置现已可用于应用程序开发和测试或其他测试环境，如[模拟混合云环境](../virtual-network/virtual-networks-setup-simulated-hybrid-cloud-environment-testing.md)。
 
 ## 其他资源
 
 [Azure 测试实验室](http://social.technet.microsoft.com/wiki/contents/articles/24092.azure-test-lab.aspx)
 
-[混合云测试环境](/documentation/articles/virtual-networks-setup-hybrid-cloud-environment-testing)
+[混合云测试环境](../virtual-network/virtual-networks-setup-hybrid-cloud-environment-testing.md)
 
 [使用 Azure 资源管理器的基本配置测试环境](/documentation/articles/virtual-machines-base-configuration-test-environment-resource-manager)
 
@@ -284,4 +284,4 @@ Azure 中的基本配置现已可用于应用程序开发和测试或其他测�
 	Start-AzureVM -ServiceName $serviceName -Name "APP1"
 	Start-AzureVM -ServiceName $serviceName -Name "CLIENT1"
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

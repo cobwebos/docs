@@ -22,24 +22,24 @@
 
 > [AZURE.NOTE]这是早期的软件版本，因此请返回查看是否有关于在 Azure 上使用此软件创建 Docker 容器的大型平衡受控群集的更新，以及查阅 docker swarm 文档以了解其所有功能。
 <!-- -->
-此外，本主题会将 docker 与 swarm 和 Azure CLI 一起使用，*而不*使用 **docker-machine** 以显示不同工具如何协同工作，但又保持独立。**docker-machine** 具有 **--swarm** 开关，让你能够使用 **docker-machine** 直接将节点添加到 swarm 中。有关示例，请参阅 [docker-machine](https://github.com/docker/machine) 文档。如果你错过了针对 Azure VM 运行的 **docker-machine**，请参阅[如何在 Azure 上使用 docker-machine](/documentation/articles/virtual-machines-docker-machine)。
+> 此外，本主题会将 docker 与 swarm 和 Azure CLI 一起使用，*而不*使用 **docker-machine** 以显示不同工具如何协同工作，但又保持独立。**docker-machine** 具有 **--swarm** 开关，让你能够使用 **docker-machine** 直接将节点添加到 swarm 中。有关示例，请参阅 [docker-machine](https://github.com/docker/machine) 文档。如果你错过了针对 Azure VM 运行的 **docker-machine**，请参阅[如何在 Azure 上使用 docker-machine](/documentation/articles/virtual-machines-docker-machine)。
 
 ## 使用 Azure 虚拟机创建 docker 主机
 
 本主题将创建四个 VM，但你可以使用所需的任何数量。调用以下命令，并将 *&lt;password&gt;* 替换为你选择的密码。
 
-    azure vm docker create swarm-master -l "China East" -e 22 $imagename ops <password>
-    azure vm docker create swarm-node-1 -l "China East" -e 22 $imagename ops <password>
-    azure vm docker create swarm-node-2 -l "China East" -e 22 $imagename ops <password>
-    azure vm docker create swarm-node-3 -l "China East" -e 22 $imagename ops <password>
+    azure vm docker create swarm-master -l "East US" -e 22 $imagename ops <password>
+    azure vm docker create swarm-node-1 -l "East US" -e 22 $imagename ops <password>
+    azure vm docker create swarm-node-2 -l "East US" -e 22 $imagename ops <password>
+    azure vm docker create swarm-node-3 -l "East US" -e 22 $imagename ops <password>
 
 完成后，应能够使用 **azure vm list** 查看你的 Azure VM：
 
     $ azure vm list | grep "swarm-[mn]"
-    data:    swarm-master     ReadyRole           China East       swarm-master.chinacloudapp.cn                               100.78.186.65
-    data:    swarm-node-1     ReadyRole           China East       swarm-node-1.chinacloudapp.cn                               100.66.72.126
-    data:    swarm-node-2     ReadyRole           China East       swarm-node-2.chinacloudapp.cn                               100.72.18.47  
-    data:    swarm-node-3     ReadyRole           China East       swarm-node-3.chinacloudapp.cn                               100.78.24.68  
+    data:    swarm-master     ReadyRole           East US       swarm-master.chinacloudapp.cn                               100.78.186.65
+    data:    swarm-node-1     ReadyRole           East US       swarm-node-1.chinacloudapp.cn                               100.66.72.126
+    data:    swarm-node-2     ReadyRole           East US       swarm-node-2.chinacloudapp.cn                               100.72.18.47  
+    data:    swarm-node-3     ReadyRole           East US       swarm-node-3.chinacloudapp.cn                               100.78.24.68  
 
 ## 在 swarm 主 VM 上安装 swarm
 
@@ -63,7 +63,7 @@
 
 > [AZURE.NOTE]只是为了清楚起见，我们将使用本地 docker 安装连接到 Azure 中的 **swarm-master** VM，并指示 **swarm-master** 下载、安装和运行 **create** 命令，该命令会返回群集 ID，稍后我们会将该 ID 用于发现目的。
 <!-- -->
-若要确认此 ID，请运行 `docker -H tcp://`*&lt;hostname&gt;* ` images` 以列出 **swarm-master** 计算机和另一个节点上的容器进程以进行比较（因为我们在运行前一 swarm 命令时使用了 **--rm** 开关，在它完成后将删除该容器，因此使用 **docker ps-a** 不会返回任何内容）。
+>  若要确认此 ID，请运行 `docker -H tcp://`*&lt;hostname&gt;* ` images` 以列出 **swarm-master** 计算机和另一个节点上的容器进程以进行比较（因为我们在运行前一 swarm 命令时使用了 **--rm** 开关，在它完成后将删除该容器，因此使用 **docker ps-a** 不会返回任何内容）。
 
 
         $ docker --tls -H tcp://swarm-master.chinacloudapp.cn:2376 images
@@ -128,11 +128,11 @@
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## 后续步骤
 
-转到 swarm 上运行操作。若要寻找灵感，请参阅 [https://github.com/docker/swarm/](https://github.com/docker/swarm/)。
+转到 swarm 上运行操作。若要寻找灵感，请参阅 [https://github.com/docker/swarm/](https://github.com/docker/swarm/)，或者观看[视频](https://www.youtube.com/watch?v=EC25ARhZ5bI)。
 
 <!-- links -->
 
-[docker-machine-azure]: /documentation/articles/virtual-machines-docker-machine
+[docker-machine-azure]: virtual-machines-docker-machine.md
  
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

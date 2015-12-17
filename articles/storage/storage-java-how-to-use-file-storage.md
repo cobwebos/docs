@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何通过 Java 使用文件存储 | Windows Azure" 
+	pageTitle="如何通过 Java 使用文件存储 | Microsoft Azure" 
 	description="了解如何使用 Azure 文件服务上载、下载、列出和删除文件。用 Java 编写的示例。" 
 	services="storage" 
 	documentationCenter="java" 
@@ -7,10 +7,9 @@
 	manager="wpickett" 
 	editor="jimbe" />
 
-<tags 
-	ms.service="storage" 
+<tags ms.service="storage"
 
-	ms.date="06/03/2015" 
+	ms.date="10/26/2015" 
 	wacn.date=""/>
 
 # 如何通过 Java 使用文件存储
@@ -19,7 +18,7 @@
 
 ## 概述
 
-在本指南中，你将学习如何针对 Windows Azure 文件存储服务执行基本的操作。通过以 Java 编写的示例，你将学习如何创建共享和目录，以及如何上载、列出和删除文件。如果你不熟悉 Windows Azure 的文件存储服务，则若要了解这些示例，你需要学习后续部分的概念。
+在本指南中，你将学习如何针对 Microsoft Azure 文件存储服务执行基本的操作。通过以 Java 编写的示例，你将学习如何创建共享和目录，以及如何上载、列出和删除文件。如果你不熟悉 Microsoft Azure 的文件存储服务，则若要了解这些示例，你需要学习后续部分的概念。
 
 [AZURE.INCLUDE [storage-file-concepts-include](../includes/storage-file-concepts-include.md)]
 
@@ -45,9 +44,10 @@
 	public static final String storageConnectionString = 
 	    "DefaultEndpointsProtocol=http;" + 
 	    "AccountName=your_storage_account_name;" + 
-	    "AccountKey=your_storage_account_key";
+	    "AccountKey=your_storage_account_key;" +
+	    "EndpointSuffix=core.Chinacloudapi.cn";
 
-> [AZURE.NOTE]将 your_storage_account_name 和 your_storage_account_key 替换为你的存储帐户的实际值。
+> [AZURE.NOTE]将 your\_storage\_account\_name 和 your\_storage\_account\_key 替换为你的存储帐户的实际值。
 
 ## 连接到 Azure 存储帐户
 
@@ -218,4 +218,4 @@ Azure 文件存储共享至少包含文件所在的根目录。在本部分，�
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
  
 
-<!---HONumber=67-->
+<!---HONumber=Mooncake_1207_2015-->

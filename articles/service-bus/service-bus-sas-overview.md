@@ -9,11 +9,10 @@
 
 <tags
    ms.service="service-bus"
-
    ms.date="09/04/2015"
    wacn.date=""/>
 
-# 共享访问签名
+# 共享访问签名（可能为英文页面）
 
 *共享访问签名* (SAS) 是服务总线的主要安全机制，包括事件中心、中转消息传送（队列和主题）和中继消息传送。本文介绍共享访问签名、其工作原理以及如何以平台无关的方式使用它们。
 
@@ -252,4 +251,4 @@ AMQP 消息因为具有众多属性而有点复杂，且包含比简单消息更
 
 此[博客文章](http://developers.de/blogs/damir_dobric/archive/2013/10/17/how-to-create-shared-access-signature-for-service-bus.aspx)中介绍了更多关于 C# 和 Java 脚本中的 SAS 的示例。
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_1207_2015-->

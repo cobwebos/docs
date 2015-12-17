@@ -1,79 +1,62 @@
 <properties
-   pageTitle="使用 Azure 资源管理器模板部署应用程序"
-   services="azure-portal"
-   description="使用 Azure 资源管理器向 Azure 部署应用程序模板是一个 JSON 文件，可以从门户、PowerShell、适用于 Mac、Linux 和 Windows 的 Azure 命令行界面以及 REST 使用。"
+   pageTitle="使用资源管理器模板部署资源 | Microsoft Azure"
+   services="azure-resource-manager"
+   description="使用 Azure 资源管理器将资源部署到 Azure。模板是一个 JSON 文件，可以从门户、PowerShell、适用于 Mac、Linux 和 Windows 的 Azure 命令行界面以及 REST 使用。"
    documentationCenter="na"
    authors="tfitzmac"
    manager="wpickett"
    editor=""/>
 
 <tags
-   ms.service="azure-portal"
-   ms.date="04/29/2015"
+   ms.service="azure-resource-manager"
+   ms.date="11/13/2015"
    wacn.date=""/>
 
 # 使用 Azure 资源管理器模板部署应用程序
 
-本主题介绍如何使用 Azure 资源管理器模板向 Azure 部署应用程序。其中将会说明如何使用 Azure PowerShell、Azure CLI、REST API 或 Microsoft Azure 门户部署应用程序。
+本主题介绍如何使用 Azure 资源管理器模板向 Azure 部署应用程序。它将说明如何使用 Azure PowerShell、Azure CLI、REST API 或 Microsoft Azure 门户部署应用程序。
 
-使用 Azure 资源管理器模板，可以通过声明性 JSON 在 Azure 中快速轻松地设置应用程序。在单个 JSON 模板中可以部署多个服务，例如虚拟机、虚拟网络、存储、应用程序服务和数据库。在应用程序生命周期中的每个阶段，你可以使用同一个模板反复、一致地部署应用程序。
-
-为了简化应用程序管理，可以将共享相同生命周期的所有资源组织到单个资源组中。使用资源组可以轻松地将所有相关资源一起部署、更新和删除。在大多数情况下，资源组将映射到单个应用程序或应用程序层（对于大型应用程序）。通过模板部署的资源将驻留在单个资源组中，但可以包含其他资源组中的依赖项。
-
-在资源组中，你可以跟踪部署的执行，以及查看部署状态和执行模板后的输出。
+有关资源管理器的简介，请参阅 [Azure 资源管理器概述](/documentation/articles/resource-group-overview)。若要了解有关创建模板的信息，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
 
 在使用模板部署应用程序时，可以提供参数值来自定义如何创建资源。以内联方式或者在参数文件中指定这些参数的值。
 
-## 概念
-
-- 资源组 - 共享相同生命周期的实体的集合
-- 资源管理器模板 - 用于定义部署目标状态的声明性 JSON 文件
-- 部署 - 用于跟踪模板资源管理器执行情况的操作
-- 参数 - 执行部署的用户提供的值，用于自定义部署的资源
-- 参数文件 - 用于存储参数名称和值的 JSON 文件
-
-## 方案
-
-使用资源管理器模板可以：
-
-- 部署复杂的多层应用程序，如 Microsoft SharePoint。
-- 反复、一致地部署应用程序。
-- 为开发、测试和生产环境提供支持。
-- 查看部署的状态。
-- 使用部署审核日志排查部署错误。
-
-## 使用门户进行部署
-
-你猜会怎样？ 库中的每个应用程序都将得到 Azure 资源管理器模板的支持！ 只需通过门户创建虚拟机、虚拟网络、存储帐户、应用程序服务或数据库，就能享用 Azure 资源管理器的优势，且不用额外地增加工作量。
-
-若要通过门户排查部署问题，请单击“浏览”->“资源组”->“*你的资源组名称*”。在此处，请单击“监视”镜头下的“事件”磁贴。最后，可以选择单个**操作**和**事件**以查看详细信息。
 
 ## 使用 PowerShell 进行部署
 
-如果你以前没有对资源管理器使用过 Azure PowerShell，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](powershell-azure-resource-manager)。
+[AZURE.INCLUDE [powershell-preview-inline-include](../includes/powershell-preview-inline-include.md)]
+
 
 1. 登录到你的 Azure 帐户。提供凭据后，该命令将返回有关你的帐户的信息。
 
+    早于 Azure PowerShell 1.0 预览版：
+
+        PS C:\> Switch-AzureMode AzureResourceManager
+        ...
         PS C:\> Add-AzureAccount
 
         Id                             Type       ...
-        --                             ----
-        someone@example.com            User       ...
+        --                             ----    
+        someone@example.com            User       ...   
 
-2. 如果你有多个订阅，请提供要用于部署的订阅 ID。
+    Azure PowerShell 1.0 预览版：
 
-        PS C:\> Select-AzureSubscription -SubscriptionID <YourSubscriptionId>
+         PS C:\> Login-AzureRmAccount
 
-3. 切换到 Azure 资源管理器模块。
+         Evironment : AzureCloud
+         Account    : someone@example.com
+         ...
 
-        PS C:\> Switch-AzureMode AzureResourceManager
 
-4. 如果目前没有资源组，请创建新的资源组。提供资源组的名称，以及解决方案所需的位置。将返回新资源组的摘要。
+2. 如果你有多个订阅，请使用 **Select-AzureRmSubscription** 命令提供要用于部署的订阅 ID。
 
-        PS C:\> New-AzureResourceGroup -Name ExampleResourceGroup -Location "China North"
+        PS C:\> Select-AzureRmSubscription -SubscriptionID <YourSubscriptionId>
 
+3. 如果目前没有资源组，请使用 **New-AzureRmResourceGroup** 命令创建新的资源组。提供资源组的名称，以及解决方案所需的位置。将返回新资源组的摘要。
+
+        PS C:\> New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West US"
+   
         ResourceGroupName : ExampleResourceGroup
-        Location          : chinanorth
+        Location          : westus
         ProvisioningState : Succeeded
         Tags              :
         Permissions       :
@@ -82,48 +65,52 @@
                     *
         ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
 
-5. 若要为资源组创建新部署，请运行 **New-AzureResourceGroupDeployment** 命令并提供所需的参数。参数包括部署的名称、资源组的名称、所创建模板的路径，以及方案所需的任何其他参数。
-
+5. 若要为资源组创建新部署，请运行 **New-AzureRmResourceGroupDeployment** 命令并提供所需的参数。参数包括部署的名称、资源组的名称、所创建模板的路径，以及方案所需的任何其他参数。
+   
      可以使用以下选项提供参数值：
-
+   
      - 使用内联参数。
 
-            PS C:\> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -myParameterName "parameterValue"
+            PS C:\> New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -myParameterName "parameterValue"
 
      - 使用参数对象。
 
             PS C:\> $parameters = @{"<ParameterName>"="<Parameter Value>"}
-            PS C:\> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterObject $parameters
+            PS C:\> New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterObject $parameters
 
-     - 使用参数文件。有关模板文件的信息，请参阅[参数文件](#parameter-file)。
+     - 使用参数文件。有关模板文件的信息，请参阅[参数文件](./#parameter-file)。
 
-            PS C:\> New-AzureResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterFile <PathOrLinkToParameterFile>
+            PS C:\> New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -TemplateParameterFile <PathOrLinkToParameterFile>
 
      部署资源组后，你将看到部署摘要。
 
-        	DeploymentName    : ExampleDeployment
-        	ResourceGroupName : ExampleResourceGroup
-        	ProvisioningState : Succeeded
-        	Timestamp         : 4/14/2015 7:00:27 PM
-        	Mode              : Incrementa
-        	...
+          DeploymentName    : ExampleDeployment
+          ResourceGroupName : ExampleResourceGroup
+          ProvisioningState : Succeeded
+          Timestamp         : 4/14/2015 7:00:27 PM
+          Mode              : Incremental
+          ...
 
 6. 获取有关部署错误的信息。
 
-        PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed
+        PS C:\> Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -Name ExampleDeployment
 
-7. 获取有关部署错误的详细信息。
+        
+### 视频
 
-        PS C:\> Get-AzureResourceGroupLog -ResourceGroup ExampleResourceGroup -Status Failed -DetailedOutput
+下面是介绍如何在 PowerShell 中使用资源管理器模板的视频演示。
+
+[AZURE.VIDEO deploy-an-application-with-azure-resource-manager-template]
+
 
 ## 使用适用于 Mac、Linux 和 Windows 的 Azure CLI 进行部署
 
-如果你以前没有对资源管理器使用过 Azure CLI，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理配合使用](xplat-cli-azure-resource-manager)。
+如果你以前没有对资源管理器使用过 Azure CLI，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理配合使用](/documentation/articles/xplat-cli-azure-resource-manager)。
 
 1. 登录到你的 Azure 帐户。提供凭据后，该命令将返回你的登录结果。
 
         azure login
-
+  
         ...
         info:    login command OK
 
@@ -134,43 +121,43 @@
 3. 切换到 Azure 资源管理器模块。你将收到新模式确认。
 
         azure config mode arm
-
+   
         info:     New mode is arm
 
 4. 如果目前没有资源组，请创建新的资源组。提供资源组的名称，以及解决方案所需的位置。将返回新资源组的摘要。
 
-        azure group create -n ExampleResourceGroup -l "China North"
-
+        azure group create -n ExampleResourceGroup -l "West US"
+   
         info:    Executing command group create
         + Getting resource group ExampleResourceGroup
         + Creating resource group ExampleResourceGroup
         info:    Created resource group ExampleResourceGroup
         data:    Id:                  /subscriptions/####/resourceGroups/ExampleResourceGroup
         data:    Name:                ExampleResourceGroup
-        data:    Location:            chinanorth
+        data:    Location:            westus
         data:    Provisioning State:  Succeeded
         data:    Tags:
         data:
         info:    group create command OK
 
 5. 若要为资源组创建新部署，请运行以下命令并提供所需的参数。参数包括部署的名称、资源组的名称、所创建模板的路径，以及方案所需的任何其他参数。
-
+   
      可以使用以下选项提供参数值：
 
-     - 使用内联参数和本地模板。
+     - 使用内联参数和本地模板。每个参数采用以下格式：`"ParameterName": { "value": "ParameterValue" }`。以下示例显示带转义符的参数。
 
-             azure group deployment create -f <PathToTemplate> {"ParameterName":"ParameterValue"} -g ExampleResourceGroup -n ExampleDeployment
+             azure group deployment create -f <PathToTemplate> -p "{"ParameterName":{"value":"ParameterValue"}}" -g ExampleResourceGroup -n ExampleDeployment
 
      - 使用内联参数和模板链接。
 
-             azure group deployment create --template-uri <LinkToTemplate> {"ParameterName":"ParameterValue"} -g ExampleResourceGroup -n ExampleDeployment
+             azure group deployment create --template-uri <LinkToTemplate> -p "{"ParameterName":{"value":"ParameterValue"}}" -g ExampleResourceGroup -n ExampleDeployment
 
-     - 使用参数文件。有关模板文件的信息，请参阅[参数文件](#parameter-file)。
-
+     - 使用参数文件。有关模板文件的信息，请参阅[参数文件](./#parameter-file)。
+    
              azure group deployment create -f <PathToTemplate> -e <PathToParameterFile> -g ExampleResourceGroup -n ExampleDeployment
 
      部署资源组后，你将看到部署摘要。
-
+  
            info:    Executing command group deployment create
            + Initializing template configurations and parameters
            + Creating a deployment
@@ -183,7 +170,7 @@
          azure group log show -l ExampleResourceGroup
 
 7. 获取有关部署错误的详细信息。
-
+      
          azure group log show -l -v ExampleResourceGroup
 
 ## 使用 REST API 进行部署
@@ -193,14 +180,14 @@
          PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2015-01-01
            <common headers>
            {
-             "location": "China North",
+             "location": "West US",
              "tags": {
                "tagname1": "tagvalue1"
              }
            }
-
-3. 创建新的资源组部署。提供你的订阅 ID、要部署的资源组的名称、部署的名称以及模板的位置。有关模板文件的信息，请参阅[参数文件](#parameter-file)。有关使用 REST API 创建资源组的详细信息，请参阅[创建模板部署](https://msdn.microsoft.com/zh-cn/library/azure/dn790564.aspx)。
-
+   
+3. 创建新的资源组部署。提供你的订阅 ID、要部署的资源组的名称、部署的名称以及模板的位置。有关模板文件的信息，请参阅[参数文件](./#parameter-file)。有关使用 REST API 创建资源组的详细信息，请参阅[创建模板部署](https://msdn.microsoft.com/zh-cn/library/azure/dn790564.aspx)。
+    
          PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
             <common headers>
             {
@@ -216,11 +203,27 @@
                 }
               }
             }
-
+   
 4. 获取模板部署的状态。有关详细信息，请参阅[获取有关模板部署的信息](https://msdn.microsoft.com/zh-cn/library/azure/dn790565.aspx)。
 
          GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
            <common headers>
+
+## 使用 Visual Studio 进行部署
+
+使用 Visual Studio，可以创建资源组项目，并通过用户界面将其部署到 Azure。可选择要在项目中包括的资源类型，这些资源将自动添加到资源管理器模板中。该项目还提供了用于部署模板的 PowerShell 脚本。
+
+有关将 Visual Studio 用于资源组的简介，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](/documentation/articles/vs-azure-tools-resource-groups-deployment-projects-create-deploy)
+
+## 使用预览门户进行部署
+
+你猜会怎样？ 通过[预览门户](https://manage.windowsazure.cn)创建的每个应用程序均受 Azure 资源管理器模板支持！ 只需通过门户创建虚拟机、虚拟网络、存储帐户、应用程序服务或数据库，就能享用 Azure 资源管理器的优势，且不用额外地增加工作量。
+只需选择“新建”图标，你便可开始通过 Azure 资源管理器部署应用程序。
+
+![新建](./media/resource-group-template-deploy/new.png)
+
+有关将门户与 Azure 资源管理器配合使用的详细信息，请参阅[使用 Azure 预览门户管理 Azure 资源](azure-portal/resource-group-portal.md)。
+
 
 ## 参数文件
 
@@ -237,16 +240,20 @@
                 "value": "DefaultPlan"
             },
             "webSiteLocation": {
-                "value": "China North"
+                "value": "West US"
             }
        }
     }
 
-## 后续步骤
-- [Azure 资源管理器概述](resource-group-overview)
-- [使用 .NET 库和模板部署资源](arm-template-deployment)
-- [创作模板](resource-group-authoring-templates)
-- [模板函数](resource-group-template-functions)
-- [高级模板操作](resource-group-advanced-template)  
+参数文件的大小不能超过 64 KB。
 
-<!---HONumber=61-->
+## 后续步骤
+- 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](/documentation/articles/arm-template-deployment)
+- 有关进一步了解部署应用程序的示例，请参阅[按可预见的方式在 Azure 中预配和部署微服务](app-service-web/app-service-deploy-complex-application-predictably.md)
+- 有关将解决方案部署到不同环境的指南，请参阅 [Microsoft Azure 中的开发和测试环境](/documentation/articles/solution-dev-test-environments-preview-portal)。
+- 若要了解 Azure 资源管理器模板的节，请参阅[创作模板](/documentation/articles/resource-group-authoring-templates)。
+- 有关可在 Azure 资源管理器模板中使用的函数列表，请参阅[模板函数](/documentation/articles/resource-group-template-functions)。
+
+ 
+
+<!---HONumber=Mooncake_1207_2015-->

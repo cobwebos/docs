@@ -88,11 +88,7 @@
 
 
 
-<!-- Links -->
-[Azure Management Portal]: https://manage.windowsazure.cn/
-
-
 <!-- Images -->
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-java1.png
 
-<!---HONumber=66-->
+<!---HONumber=Mooncake_1207_2015-->

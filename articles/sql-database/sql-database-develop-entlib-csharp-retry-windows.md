@@ -63,7 +63,7 @@ Enterprise Library 6 (EntLib60) 是最新版本，并已于 2013 年 4 月发布
  - 在 NuGet 中，搜索 **enterpriselibrary**。
 
 
-- 在“EntLib60 的家庭文档主题”中，找到标记为“下载”的行，然后单击 [Microsoft Enterprise Library 6](http://go.microsoft.com/fwlink/?linkid=290898)，以下载该二进制 .DLL 程序集文件[](http://msdn.microsoft.com/zh-cn/library/dn169621.aspx)。
+- 在“[EntLib60 的家庭文档主题](http://msdn.microsoft.com/zh-cn/library/dn169621.aspx)”中，找到标记为“下载”的行，然后单击 [Microsoft Enterprise Library 6](http://go.microsoft.com/fwlink/?linkid=290898)，以下载该二进制 .DLL 程序集文件。
 
 
 EntLib60 包含若干个 .DLL 程序集文件，这些文件的名称均以相同的前缀 **Microsoft.Practices.EnterpriseLibrary.&#x2a;.dll** 开头，但此代码示例仅关注以下两个程序集：
@@ -251,7 +251,7 @@ SELECT TOP 3
          this.sqlConnectionSB = new C.SqlConnectionStringBuilder();
 
          // Change these values to your values.
-         this.sqlConnectionSB["Server"] = "tcp:myazuresqldbserver.database.windows.net,1433";
+         this.sqlConnectionSB["Server"] = "tcp:myazuresqldbserver.database.chinacloudapi.cn,1433";
          this.sqlConnectionSB["User ID"] = "MyLogin";  // "@yourservername"  as suffix sometimes.
          this.sqlConnectionSB["Password"] = "MyPassword";
          this.sqlConnectionSB["Database"] = "MyDatabase";
@@ -316,4 +316,4 @@ SELECT TOP 3
 
 - [SQL 数据库的客户端快速入门代码示例](/documentation/articles/sql-database-develop-quick-start-client-code-samples)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

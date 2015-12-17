@@ -31,10 +31,11 @@ Azure 一直在不断扩大规模，因此很容易出现过载现象。基本�
 
 本文将使用**不同的组织**来讨论基于类似功能的服务，并调用属于大型服务一部分的重要子服务。
 
-![Azure 组件](./media/fundamentals-introduction-to-azure/AzureComponentsIntroNew780.png) *图：Azure 提供可通过 Internet 访问且在 Azure 数据中心运行的应用程序服务。*
+![Azure 组件](./media/fundamentals-introduction-to-azure/AzureComponentsIntroNew780.png)   
+*图：Azure 提供可通过 Internet 访问且在 Azure 数据中心运行的应用程序服务。*
 
 ## 管理门户
-Azure 的 Web 接口名为[管理门户](http://manage.windowsazure.com)，允许管理员访问和管理大多数但不是所有 Azure 功能。Microsoft 通常会在停用旧版本之前发布新 UI 门户测试版。新版本称为[“Azure 预览门户”](https://portal.azure.com/)。
+Azure 的 Web 界面称为[管理门户](http://manage.windowsazure.cn)，允许管理员访问和管理大多数但不是所有 Azure 功能。Microsoft 通常会在停用旧版本之前发布新 UI 门户测试版。新版本称为 [Azure 预览门户](https://manage.windowsazure.cn)。
 
 通常这两个门户将长时间共同处于活动状态。虽然核心服务均会显示在这两个门户中，但这两个门户并非均提供所有功能。新服务可能首先显示在新门户中，而旧的服务和功能可能仅显示在旧门户中。也就是说，如果您在旧门户中找不到某些内容，请在新门户中查找，反之亦然。
 
@@ -49,7 +50,8 @@ Azure 的 Web 接口名为[管理门户](http://manage.windowsazure.com)，允�
 
 ### Azure 虚拟机
 
-![Azure 虚拟机 ROBBCSIART\_TEST](./media/fundamentals-introduction-to-azure/mscsiart_VirtualMachinesIntroNew_12345.png) *图：Azure 虚拟机为您提供对云中虚拟机实例的完全控制。*
+![Azure 虚拟机 ROBBCSIART\_TEST](./media/fundamentals-introduction-to-azure/mscsiart_VirtualMachinesIntroNew_12345.png)   
+*图：Azure 虚拟机为您提供对云中虚拟机实例的完全控制。*
 
 可以按需创建一个虚拟机（无论是从标准映像还是从你提供的映像），此功能非常有用。这种方法通常称为“基础结构即服务”(IaaS)，即是 Azure 虚拟机模型提供的用途。图 2 显示了虚拟机 (VM) 是如何运行的，以及如何从 VHD 创建虚拟机。
 
@@ -71,7 +73,8 @@ Azure 的 Web 接口名为[管理门户](http://manage.windowsazure.com)，允�
 
 ### Web Apps
 
-![Azure Web Apps ROBBCSIART\_TEST](./media/fundamentals-introduction-to-azure/mscsiart_AzureWebsitesIntroNew_12345.png) *图：Azure Web Apps 在云中运行网站应用程序，无需管理基础的 Web 服务器。*
+![Azure Web Apps ROBBCSIART\_TEST](./media/fundamentals-introduction-to-azure/mscsiart_AzureWebsitesIntroNew_12345.png)   
+*图：Azure Web Apps 在云中运行网站应用程序，无需管理基础的 Web 服务器。*
 
 人们在云中最常做的事情之一是运行网站和 Web 应用程序。虽然 Azure 虚拟机允许此操作，但仍由你负责管理一个或多个 VM 以及基础操作系统。云服务 Web 角色可以执行此操作，但部署和维护它们仍然离不开管理工作。如果你只需要一个由别人代你负责管理工作的网站，该怎么办？
 
@@ -85,7 +88,8 @@ Web Apps 能做到这一点。此计算模型使用 Azure 管理门户以及 API
 Web Apps 旨在使公司、开发人员和 Web 设计机构都能利用它。对于公司而言，它是用于运行现有网站的易于管理、可伸缩、高度安全且高度可用的解决方案。当您需要设置一个网站时，最好是从 Azure Web Apps 开始，当无法找到需要的功能时再转到云服务。请查看“计算”部分的末尾，以搜寻更多可以帮助你在这些选项中进行选择的链接。
 
 ### 云服务
-![Azure 云服务](./media/fundamentals-introduction-to-azure/CloudServicesIntroNew.png) *图：通过 Azure 云服务，可以在平台即服务 (PaaS) 环境中运行高度可缩放的自定义代码*
+![Azure 云服务](./media/fundamentals-introduction-to-azure/CloudServicesIntroNew.png)   
+*图：通过 Azure 云服务，可以在平台即服务 (PaaS) 环境中运行高度可缩放的自定义代码*
 
 假设你要构建一个云应用程序，它可以支持大量并发用户，无需太多管理，且从不出故障。例如，您可能是一家较成熟的软件供应商，您决定通过在云中构建您应用程序之一的某个版本来包含“软件即服务”(SaaS)。或者，您可能是一家初创公司，您创建了一个预计会快速普及的使用者应用程序。如果在 Azure 上构建，应使用哪个执行模型？
 
@@ -102,7 +106,7 @@ Azure Web Apps 允许创建这种 Web 应用程序，但有一些约束。例如
 当您需要对平台进行更多的控制，而这种需要超过了 Azure Web Apps 所能提供的控制，同时您又不想控制基础操作系统时，可以使用云服务进行大规模的向外扩展。
 
 #### 选择计算模型
-[Azure Web Apps、云服务和虚拟机比较](choose-web-site-cloud-service-vm.md)提供了有关如何选择计算模型的更多详细信息。
+[Azure Web Apps、云服务和虚拟机比较](/documentation/articles/choose-web-site-cloud-service-vm)页提供了有关如何选择计算模型的更多详细信息。
 
 
 
@@ -128,7 +132,6 @@ Azure SQL 数据库以前称为 SQL Azure，它提供关系数据库管理系统
 
 但 SQL 数据库在云中不只是一个 DBMS，它还是一个 PaaS 服务。虽然您仍然控制着您的数据以及谁可以访问该数据，但 SQL 数据库负责管理方面的基础工作，例如管理硬件基础架构，并自动保持数据库和操作系统软件处于最新状态。SQL 数据库还提供了高可用性、自动备份和时间点还原功能，并可跨地理区域复制副本。
 
-此外还有一种高级选项，你只需稍微多支付一些费用，即可拥有自己专用的服务器。使用“标准”选项时，数据库在共享硬件上运行，而如果你碰巧在一个特别繁忙的服务器上，这可能会限制你的数据库查询。
 
 **SQL 数据库方案**
 
@@ -150,7 +153,8 @@ Azure SQL 数据库以前称为 SQL Azure，它提供关系数据库管理系统
 
 
 ### Blob
-![Azure 存储 Blob](./media/fundamentals-introduction-to-azure/StorageBlobsIntroNew.png) *图：Azure Blob 提供非结构化的二进制数据。*
+![Azure 存储 Blob](./media/fundamentals-introduction-to-azure/StorageBlobsIntroNew.png)   
+*图：Azure Blob 提供非结构化的二进制数据。*
 
 Azure Blob（同样，“Blob 存储”和“存储 Blob”都是指同一种功能）设计用于存储非结构化二进制数据。像表一样，Blob 也提供廉价的存储，单个 Blob 最大可以为 1TB。Azure 应用程序还可以使用 Azure 驱动器，使得 Blob 可以为 Azure 实例中装入的 Windows 文件系统提供持久存储。该应用程序看到的是普通 Windows 文件，但内容其实存储在 Blob 中。
 
@@ -169,23 +173,24 @@ Blob 存储可用于许多其他的 Azure 功能（包括虚拟机），因此�
 
 **导入/导出方案**
 
-- **大数据迁移** - 如果您有大量的数据（TB 级）需要上载到 Azure，则与通过 Internet 进行传输相比，使用导入/导出服务通常速度更快，价格上也可能更便宜。将数据置于 Blob 中以后，你就可以将其处理成其他形式，例如表存储或 SQL 数据库。
+- **大数据迁移** - 如果你有大量数据（TB 级）需要上载到 Azure，则与通过 Internet 进行传输相比，使用导入/导出服务通常速度更快，价格上也可能更便宜。将数据置于 Blob 中以后，你就可以将其处理成其他形式，例如表存储或 SQL 数据库。
  
-- **存档数据恢复** - 您可以使用导入/导出功能，让 Microsoft 将存储在 Azure Blob 存储中的大量数据传输到您寄送的存储设备中并将该设备寄送回您要求的位置。由于这需要一定的时间，因此不适合进行灾难恢复。它最适用于不需要快速访问的存档数据。
+- **存档数据恢复** - 你可以使用导入/导出功能，让 Microsoft 将存储在 Azure Blob 存储中的大量数据传输到你寄送的存储设备中并将该设备寄送回你要求的位置。由于这需要一定的时间，因此不适合进行灾难恢复。它最适用于不需要快速访问的存档数据。
 
 
 ### 文件服务
-![Azure 文件服务](./media/fundamentals-introduction-to-azure/FileServiceIntroNew.png) *图：Azure 文件服务为云中运行的应用程序提供 SMB \\\server\\share 路径。*
+![Azure 文件服务](./media/fundamentals-introduction-to-azure/FileServiceIntroNew.png)   
+*图：Azure 文件服务为云中运行的应用程序提供 SMB \\\server\\share 路径。*
 
 进行本地部署时，通常会允许通过服务器消息块 (SMB) 协议使用 \\\Server\\share 格式来访问大量的文件存储。Azure 现在提供的一种服务允许你在云中使用该协议。在 Azure 中运行的应用程序可以使用它通过熟悉的文件系统 API（例如 ReadFile 和 WriteFile）在 VM 之间共享文件。此外，还可以通过 REST 界面同时访问这些文件，该界面允许你在也设置了虚拟网络的情况下，从本地访问共享。Azure 文件基于 Blob 服务，因此会继承 Azure 存储空间中内置的可用性、持续性、可伸缩性和地域冗余。
 
 **Azure 文件方案**
 
-- **将现有应用程序迁移到云** - 将本地应用程序迁移到云，以便使用文件共享在应用程序的各部分之间共享数据，这种方式会更容易。每个 VM 都可以连接到文件共享，然后即可读取和写入相关文件，就像针对本地文件共享进行操作一样。
+- **将现有应用迁移到云** - 将本地应用程序迁移到云，以便使用文件共享在应用程序的各部分之间共享数据，这种方式会更容易。每个 VM 都可以连接到文件共享，然后即可读取和写入相关文件，就像针对本地文件共享进行操作一样。
 
-- **共享应用程序设置** - 分布式应用程序的常见模式是将配置文件置于某个中心位置，然后就可以从多个不同的虚拟机访问该中心位置的配置文件。这些配置文件可以存储在 Azure 文件共享中，供所有应用程序实例读取。这些设置也可以通过 REST 界面管理，这样全世界的用户都可以通过该界面访问配置文件。
+- **共享应用程序设置** - 分布式应用程序的常见模式是将配置文件置于某个中心位置，然后就可以从多个不同的虚拟机访问该中心位置中的配置文件。这些配置文件可以存储在 Azure 文件共享中，供所有应用程序实例读取。这些设置也可以通过 REST 界面管理，这样全世界的用户都可以通过该界面访问配置文件。
 
-- **诊断共享** - 您可以保存和共享诊断文件，例如日志、度量值和崩溃转储。允许通过 SMB 和 REST 界面使用这些文件，应用程序就可以使用各种分析工具来处理和分析诊断数据。
+- **诊断共享** - 你可以保存和共享诊断文件，例如日志、指标和故障转储。允许通过 SMB 和 REST 界面使用这些文件，应用程序就可以使用各种分析工具来处理和分析诊断数据。
 
 - **开发/测试/调试** - 开发人员或管理员在云中的虚拟机上工作时，通常需要一套工具或实用程序。在每个虚拟机上安装和分发这些实用程序很费时间。有了 Azure 文件，开发人员或管理员就可以将最喜爱的工具存储在文件共享中，然后即可从任何虚拟机连接到这些工具。
 
@@ -208,7 +213,7 @@ Blob 存储可用于许多其他的 Azure 功能（包括虚拟机），因此�
 
 不过，要使这种方法真正发挥作用，你的用户应该能够像这些应用程序就在你自己的数据中心运行那样对待它们。这正是 Azure 虚拟网络所允许的。使用 VPN 网关设备，管理员可以设置你的本地网络和你部署到 Azure 中的虚拟网络的 VM 之间的虚拟专用网络 (VPN)。因为您将自己的 IP v4 地址分配给云 VM，所以它们看上去就好像在您自己的网络上。你组织中的用户可以访问这些 VM 包含的应用程序，就像这些应用程序在本地运行一样。
 
-有关规划和创建适合您的虚拟网络的详细信息，请参阅[虚拟网络](http://msdn.microsoft.com/library/azure/jj156007.aspx)。
+有关规划和创建适合你的虚拟网络的详细信息，请参阅[虚拟网络](../virtual-network/virtual-networks-overview.md)。
 
 ### Express Route
 
@@ -257,15 +262,35 @@ Visual Studio Online 是一个营销名称，涵盖多种用于在 Azure 中开�
 
 Visual Studio Online 提供负载测试服务。你可以在云中的 VM 上执行在 Visual Studio 中创建的负载测试。你指定需要对其进行负载测试的用户的总数后，Visual Studio Online 就会自动确定需要多少代理，然后就会启动所需的虚拟机并执行你的负载测试。如果你是 MSDN 订户，你可以每月获得数千进行负载测试的免费用户分钟数。
 
-Visual Studio Online 还提供名为 Application Insights 的服务，允许你分析整个应用程序。它提供有关性能以及应用程序使用方式的统计信息。如果您已正在使用 System Center Operations Manager，则还可以挂接到它，并在出现问题时引发警报。+ Visual Studio Online 还通过持续集成生成、看板和虚拟团队聊天室等功能支持敏捷开发。
-	
-此外还提供对敏捷开发的支持，针对持续集成生成、看板和虚拟团队聊天室之类的功能。
+此外，Visual Studio Online 还通过持续集成生成、看板和虚拟团队聊天室之类的功能，提供对敏捷开发的支持。
 
 **Visual Studio Online 方案**
 
 对于需要进行全球协作却没有相关基础结构的公司，Visual Studio Online 是很好的选择。你可以在数分钟内完成设置，可以选择源代码管理系统，可以在当天就开始编写代码并进行构建。团队工具可用于协调和协作，其他工具可用于进行应用程序快速测试和调试所需的分析。
 
 不过，已经有了本地系统的组织可以在 Visual Studio Online 上对新项目进行测试，看效率是否更高。
+
+### Application Insights
+
+![Application Insights](./media/fundamentals-introduction-to-azure/ApplicationInsights.png)
+
+*图：Application Insights 监视实时 web 或设备应用的性能和使用情况。*
+
+你发布应用后，无论它在移动设备、台式机还是 web 浏览器中运行，Application Insights 都会告诉你它的执行情况以及用户正在使用它做什么。它将记录故障数和响应缓慢次数，如果这些数字超过不可接受的阈值，它将提醒你注意并帮助你诊断任何问题。
+
+在你开发新功能时，计划与用户一起来衡量其成功。通过分析使用模式，你将了解哪种功能最适合你的客户，并在每个开发周期中增强你的应用。
+
+尽管它在 Azure 中托管，Application Insights 适用于一系列广泛且不断增加的应用，不论这些应用是在 Azure 上还是在 Azure 外。同时涵盖 J2EE 和 ASP.NET web 应用，以及 iOS、Android、OSX 和 Windows 应用程序。通过使用应用构建的 SDK 发送遥测，以便在 Azure 的 Application Insights 服务中进行分析和显示。
+
+如果你想要更专业的分析，请将遥测流导出到数据库、Power BI 或任何其他工具。
+
+**Application Insights 方案**
+
+你正在开发应用。该应用可能是 Web 应用、设备应用或具有 web 后端的设备应用。
+
+* 在发布你的应用后或在进行负载测试时，优化你的应用的性能。Application Insights 从所有已安装的实例聚合遥测，并向你呈现响应时间、请求和异常计数、依赖项响应时间及其他性能指标的图表。这些图表可帮助你优化应用的性能。如果你需要，可以插入代码以报告更具体的数据。
+* 检测并诊断实时应用中的问题。如果性能指标超过可接受的阈值，你可以通过电子邮件收到警报。你可以调查特定用户会话，例如，查看导致异常的请求。 
+* 跟踪使用情况以评估每个新功能是否成功。在设计新的用户情景时，计划度量使用量，以及用户是否实现了其预期目标。Application Insights 可以提供网页浏览量等基本使用情况数据，并且你可以插入代码以更详细地跟踪用户体验。
 
 ### 自动化
 没有人喜欢浪费时间来反复进行相同的手动过程。Azure 自动化是一种在 Azure 环境中创建、监视、管理和部署资源的方法。
@@ -363,7 +388,7 @@ Azure Mobile Apps 提供了许多有用的功能，可帮助您节约构建移�
 
 通知中心适用于任何后端。您可以使用 Azure Mobile Apps、任何提供程序上运行的云中的自定义后端，或者本地后端。
 
-**通知中心方案**如果您是在编写玩家轮流参加的移动游戏，您可能需要在玩家 1 完成其游戏后通知玩家 2。如果只需要这样的话，您可以直接使用 Mobile Apps。但如果您的游戏有 100,000 位用户，而您需要向每位用户发送时效性很强的免费提供的优惠，则通知中心是更好的选择。
+**通知中心方案** 如果你在编写玩家轮流参加的移动游戏，你可能需要通知玩家 2 玩家 1 已完成其游戏。如果只需要这样的话，您可以直接使用 Mobile Apps。但如果您的游戏有 100,000 位用户，而您需要向每位用户发送时效性很强的免费提供的优惠，则通知中心是更好的选择。
 
 你可以向数百万用户发送突发性新闻、体育活动消息以及产品公告通知，延迟很轻微。企业可以向员工发送全新的时效性很强的通知，例如发送有关潜在销售顾客的通知，这样员工就不必频繁查看电子邮件或其他应用程序以接收通知。你也可以发送进行多因素身份验证所需的一次性密码。
    
@@ -375,11 +400,11 @@ Azure Mobile Apps 提供了许多有用的功能，可帮助您节约构建移�
 
 ### 站点恢复
  
-Azure Site Recovery（以前称为 Hyper-V Recovery Manager）可以帮助你跨站点协调 Hyper-V 映像的复制和恢复，从而保护重要的应用程序。你可以备份到你自己的辅助站点、托管商的网站或使用 Azure，从而避免构建和管理你自己的辅助位置所需的费用和复杂性。Azure 对数据和通信进行加密，你也可以选择为静态数据启用加密。
+Azure Site Recovery（以前称为 Hyper-V 恢复管理器）可以帮助你跨站点协调复制和恢复，从而保护重要的应用程序。站点恢复提供了相关功能以基于 Hyper-V、VMWare 或 SAN 将应用程序保护到你自己的辅助站点、托管商的站点或 Azure，从而避免产生构建和管理自己的辅助位置的费用和复杂性。Azure 对数据和通信进行加密，你也可以选择为静态数据启用加密。
 
 它会持续监视你的服务的运行状况，并帮助你在主数据中心出现站点中断的情况下，自动完成服务的有序恢复。虚拟机可以通过协调一致的方式启动，以便快速恢复服务，即使复杂的多层工作负载也是如此。
 
-Site Recovery 适用于现有的技术，例如 Hyper-V Replica、System Center，以及 SQL Server AlwaysOn。
+Site Recovery 适用于现有的技术，例如 Hyper-V Replica、System Center，以及 SQL Server AlwaysOn。有关更多详细信息，请查看 [Azure Site Recovery 概述](site-recovery/site-recovery-overview.md)。
 
 ### Azure 备份
 ![Azure 备份](./media/fundamentals-introduction-to-azure/AzureBackupIntroNew.png)
@@ -392,7 +417,7 @@ Azure 备份可以将运行 Windows Server 的本地服务器中的数据备份�
 
 **Azure 备份方案**
 
-如果你已在使用 Windows Server 或 System Center，则 Azure 备份是一种很自然的解决方案，可用于备份服务器文件系统、虚拟机以及 SQL Server 数据库。它适用于加密文件、稀疏文件和压缩文件。存在一些限制，因此您应该先[检查 Azure 备份先决条件](http://technet.microsoft.com/library/dn296608.aspx)。
+如果你已在使用 Windows Server 或 System Center，则 Azure 备份是一种很自然的解决方案，可用于备份服务器文件系统、虚拟机以及 SQL Server 数据库。它适用于加密文件、稀疏文件和压缩文件。存在一些限制，因此你应该先[检查 Azure 备份先决条件](http://technet.microsoft.com/library/dn296608.aspx)。
 
 
 
@@ -407,7 +432,7 @@ Azure 备份可以将运行 Windows Server 的本地服务器中的数据备份�
 
 队列很简单：一个应用程序将一条消息放在一个队列中，而该消息最终被另一个应用程序读取。如果你的应用程序只需要这种简单的服务，Azure Queues 可能是最好的选择。
 
-考虑到 Azure 随时间增长而扩展的方式，Azure Storage Queues 和 Service Bus Queues 提供了类似的队列服务。为什么选择其中一种而不选择另外一种？相关原因详见这篇技术文档[<LINK>](http://msdn.microsoft.com/library/azure/hh767287.aspx "Azure 队列和服务总线队列 - 比较与对照")。许多情况下，任何一种都可以使用。
+考虑到 Azure 随时间增长而扩展的方式，Azure Storage Queues 和 Service Bus Queues 提供了类似的队列服务。为什么使用其中一种而不使用另外一种？相关原因详见这篇技术性很强的文章 [<LINK>](http://msdn.microsoft.com/zh-cn/library/azure/hh767287.aspx "Azure 队列和服务总线队列 - 比较与对照")。许多情况下，任何一种都可以使用。
 
 **队列方案**
 
@@ -439,7 +464,8 @@ Service Bus 允许通过其中继服务直接通信，从而为通过防火墙�
 通过 Service Bus 通信的应用程序可能是在某个其他云平台上运行的 Azure 应用程序或软件。但是，也可以是在云外部运行的应用程序。例如，假设有家航空公司在其自己的数据中心内的计算机上实现预订服务。该航空公司需要向一些客户端公开这些服务，包括机场自助售票值机亭、预订代理终端机甚至客户手机。它可以使用 Service Bus 来完成此工作，在各种应用程序之间创建松散耦合的交互。
 
 #### 服务总线主题和订阅
-![Azure 服务总线主题](./media/fundamentals-introduction-to-azure/ServiceBusTopicsSubsIntroNew.png) *图：服务总线主题允许多个应用程序发布消息，而其他订阅了消息的应用程序则可接收符合特定条件的消息。*
+![Azure 服务总线主题](./media/fundamentals-introduction-to-azure/ServiceBusTopicsSubsIntroNew.png)   
+*图：服务总线主题允许多个应用发布消息，而其他订阅了消息的应用程序则可接收符合特定条件的消息。*
 
 Service Bus 提供了名为“主题和订阅”的发布和订阅机制。使用发布和订阅机制，应用程序可以将消息发送给主题，而其他应用程序可以创建对此主题的订阅。这允许在一组应用程序间进行一对多通信，让多个收件人阅读同一消息。
 
@@ -449,7 +475,8 @@ Service Bus 提供了名为“主题和订阅”的发布和订阅机制。使�
   
 
 ### BizTalk 服务
-![BizTalk 服务](./media/fundamentals-introduction-to-azure/BizTalkServicesIntroNew.png) *图：BizTalk 服务提供在云中转换 XML 消息格式的功能。*
+![BizTalk 服务](./media/fundamentals-introduction-to-azure/BizTalkServicesIntroNew.png)   
+*图：BizTalk 服务提供在云中转换 XML 消息格式的功能。*
 
 有时候，你需要连接使用不同消息格式进行通信的系统。即使有共同标准可用，企业也常常会使用不同的数据库架构和 XML 消息格式。你可以使用本地 BizTalk Server 来集成不同的系统，而不必编写大量的自定义代码。Azure BizTalk 服务提供同一类型的服务，不过是在云中。你只需为使用的那部分付费，不需像在本地使用那样担心规模。
  
@@ -464,7 +491,8 @@ Azure 为不需要一直运行的服务提供协助。
 
 ### 计划程序
 
-![Azure 计划程序](./media/fundamentals-introduction-to-azure/SchedulerIntroNew.png) *图：Azure 计划程序提供的方法可用于计划特定时间作业的特定时长。*
+![Azure 计划程序](./media/fundamentals-introduction-to-azure/SchedulerIntroNew.png)   
+*图：Azure 计划程序提供的方法可用于计划特定时间作业的特定时长。*
 
 有时候，应用程序只需在特定时间运行。在 Azure 上，你可以为此类应用程序节省资金，不必让应用程序全天候运行来等待要处理的数据。Azure 计划程序允许您根据时间间隔或日历来计划应用程序的运行时间。它很可靠，即使网络、计算机和数据中心出现故障，也可以验证某个进程是否在运行。你使用计划程序 REST API 来管理这些操作。
 
@@ -490,7 +518,8 @@ Azure 为不需要一直运行的服务提供协助。
 
 ### Azure 缓存
 
-![Azure 缓存](./media/fundamentals-introduction-to-azure/AzureCacheIntroNew.png) **图：Azure 应用程序可以在内存中缓存数据，甚至可以将其散布在多个辅助角色中**
+![Azure 缓存](./media/fundamentals-introduction-to-azure/AzureCacheIntroNew.png)   
+**图：Azure 应用程序可以在内存中缓存数据，甚至可以将其散布在多个辅助角色中**
 
 访问存储在任何 Azure 数据管理服务（SQL 数据库、表或 Blob）中的数据的速度相当快。而访问存储在内存中的数据的速度更快。因此，保留频繁访问的数据的内存中副本可以提高应用程序的性能。可以使用 Azure 内存中 Caching 来做到这一点。
 
@@ -505,7 +534,8 @@ Azure 有很多随着时间的推移而变化的缓存技术。按照引入顺�
 例如，一个多次读取产品目录的应用程序可能从使用这种缓存中受益，因为它可以更快地获得其所需的数据。该技术还支持锁定，因此可用于读/写以及只读数据。只需改变一下配置，ASP.NET 应用程序就可以使用该服务存储会话数据。
 
 ### 内容传送网络
-![Azure CDN](./media/fundamentals-introduction-to-azure/CDNIntroNew.png) **图：可以在世界各地的站点上缓存 Blob 的副本。**
+![Azure CDN](./media/fundamentals-introduction-to-azure/CDNIntroNew.png)   
+**图：可以在世界各地的站点上缓存 Blob 的副本。**
 
 假设你需要存储将由世界各地用户访问的 Blob 数据。例如，该数据或许是最新世界杯比赛的一个视频、驱动程序更新或受欢迎的电子书。在多个 Azure 数据中心存储数据的副本虽然有用，但如果用户太多，或许会供不应求。为获得更好的性能，可以使用 Azure CDN。
 
@@ -520,7 +550,8 @@ CDN 在全球拥有数十个网站，每个网站都可以存储 Azure Blob 的�
 ## 大数据和大计算
 
 ### HDInsight (Hadoop)
-![HDInsight](./media/fundamentals-introduction-to-azure/HDInsightIntroNew.png) **图：HDInsight 帮助完成庞大数据的大容量处理**
+![HDInsight](./media/fundamentals-introduction-to-azure/HDInsightIntroNew.png)   
+**图：HDInsight 可帮助完成庞大数据的大容量处理**
 
 多年以来，大部分数据分析都是针对使用关系 DBMS 建立的数据仓库中存储的关系数据进行的。这种业务分析仍然很重要，会在将来持续很长一段时间。但如果您要分析的数据大到该关系数据库没办法处理， 同时假设该数据不是关系型的，该怎么办？ 例如，数据中心的服务器日志、传感器的历史事件数据等。在这种情况下，您遇到了所谓的大数据问题。你需要另一种方法。
 
@@ -544,7 +575,8 @@ Azure 还为大计算应用程序开发人员和合作伙伴提供一整套计�
 
 ## 媒体
 
-![Azure 媒体服务](./media/fundamentals-introduction-to-azure/MediaServicesIntroNew.png) **图：媒体服务是向全球客户端提供视频和其他媒体的应用程序的平台。**
+![Azure 媒体服务](./media/fundamentals-introduction-to-azure/MediaServicesIntroNew.png)   
+**图：媒体服务是向全球客户端提供视频和其他媒体的应用程序的平台。**
 
 视频构成当今 Internet 流量的一大部分，并且该比例以后将更大。然而，在 Web 上提供视频并不简单。有许多可变因素，例如编码算法和用户屏幕的显示分辨率。视频需求往往还会突然爆发，例如在星期六晚上的高峰期，许多人都决定在这个时候观看在线影片。
 
@@ -571,7 +603,8 @@ Azure Media Services 解决了此问题。它提供了一组云组件，从而�
 
 “软件即服务”的出现正在改变我们创建应用程序的方式。它还改变了我们销售应用程序的方式。由于 SaaS 应用程序位于云中，因此其潜在客户应联机查找解决方案。并且此更改适用于数据和应用程序。为什么人们不寻求通过云来寻找市场上销售的数据集？ Microsoft 通过 [Azure 应用商店](http://datamarket.azure.com/) (Azure Marketplace) 和 [Azure 应用商店](../articles/overview.md) (Azure Store) 解决了这两个问题。
 
-![Azure 商务](./media/fundamentals-introduction-to-azure/CommerceIntroNew.png) **图：Azure 应用商店 (Azure Marketplace) 和 Azure 应用商店 (Azure Store) 使您可以查找和购买 Azure 应用程序和商业数据集，并将它们用作您的 Azure 应用程序的一部分。**
+![Azure 商务](./media/fundamentals-introduction-to-azure/CommerceIntroNew.png)   
+**图：Azure 应用商店 (Azure Marketplace) 和 Azure 应用商店 (Azure Store) 使你可以查找和购买 Azure 应用程序和商业数据集，并将它们用作你的 Azure 应用程序的一部分。**
 
 这二者之间的差异是：应用商店处于 Azure 管理门户之外，而从该门户内部可以访问应用商店。潜在客户可以通过搜索来查找满足其需求的 Azure 应用程序。客户还可以在其中之一中搜索商业数据集，包括人口统计数据、财务数据、地理数据等等。当他们找到喜欢的内容后，可以从供应商处访问它，也可以直接通过应用商店或应用商店 Web 位置进行访问，在某些情况下还可以从管理门户进行访问。应用程序还可以通过应用商店来使用必应搜索 API，从而使它们可以访问 Web 搜索结果。
 
@@ -583,9 +616,9 @@ SendGrid 是 Azure 应用商店中的应用程序，用于发送电子邮件。�
 
 ## 入门
 
-现在，你已了解大体情况，下一步是编写你的第一个 Azure 应用程序。选择您的语言，[获得适当的 SDK](/downloads/)，然后继续下一步。云计算是新的默认计算模式 -- 立即开始。
+现在，你已了解大体情况，下一步是编写你的第一个 Azure 应用程序。选择你的语言，[获取相应的 SDK](/downloads/)，然后继续下一步。云计算是新的默认计算模式 -- 立即开始。
 
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_1207_2015-->

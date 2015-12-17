@@ -1,6 +1,6 @@
 <properties
-	pageTitle="如何通过 .NET 使用队列存储 | Windows Azure"
-	description="了解如何使用 Windows Azure 队列存储创建和删除队列，以及插入、扫视、获取和删除队列消息。"
+	pageTitle="如何通过 .NET 使用队列存储 | Microsoft Azure"
+	description="了解如何使用 Microsoft Azure 队列存储创建和删除队列，以及插入、扫视、获取和删除队列消息。"
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="08/04/2015"
+	ms.date="10/21/2015"
 	wacn.date="tamram"/>
 
 # 如何通过 .NET 使用队列存储
@@ -18,7 +18,7 @@
 
 ## 概述
 
-本指南将演示如何使用 Azure 队列存储服务执行常见方案。示例用 C\# 代码编写，并使用了用于 .NET 的 Azure 存储空间客户端库。介绍的方案包括“插入”、“扫视”、“获取”和“删除”队列消息以及“创建”和“删除”队列。
+本指南将演示如何使用 Azure 队列存储服务执行常见方案。示例用 C\\# 代码编写，并使用了用于 .NET 的 Azure 存储空间客户端库。介绍的方案包括“插入”、“扫视”、“获取”和“删除”队列消息以及“创建”和“删除”队列。
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -33,7 +33,7 @@
 [AZURE.INCLUDE [storage-dotnet-obtain-assembly](../includes/storage-dotnet-obtain-assembly.md)]
 
 ### 命名空间声明
-在你希望以编程方式访问 Azure 存储的任何 C# 文件中，将以下代码命名空间声明添加到文件的顶部：
+在你希望以编程方式访问 Azure 存储空间的任何 C# 文件中，将以下代码命名空间声明添加到文件的顶部：
 
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;
@@ -121,7 +121,7 @@
     CloudQueueMessage message = queue.GetMessage();
     message.SetMessageContent("Updated contents.") ;
     queue.UpdateMessage(message,
-        TimeSpan.FromSeconds(0.0),  // Make it visible immediately.
+        TimeSpan.FromSeconds(60.0),  // Make it visible for another 60 seconds.
         MessageUpdateFields.Content | MessageUpdateFields.Visibility);
 
 ## 取消对下一条消息的排队
@@ -195,7 +195,7 @@
 
 ## 获取队列长度
 
-你可以获取队列中消息的估计数。使用 **FetchAttributes** 方法可请求队列服务检索队列属性，包括消息计数。**ApproximateMethodCount** 属性返回 **FetchAttributes** 方法检索到的最后一个值，而不会调用队列服务。
+你可以获取队列中消息的估计数。使用 **FetchAttributes** 方法可请求队列服务检索队列属性，包括消息计数。**ApproximateMessageCount** 属性返回 **FetchAttributes** 方法检索到的最后一个值，而不会调用队列服务。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -218,7 +218,7 @@
 
 ## 删除队列
 
-若要删除队列及其包含的所有消息，请调用队列对象的 **Delete** 方法。
+若要删除队列及其包含的所有消息，请对队列对象调用 **Delete** 方法。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -259,4 +259,4 @@
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
  
 
-<!---HONumber=70-->
+<!---HONumber=Mooncake_1207_2015-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="09/29/2015" 
+	ms.date="11/06/2015" 
 	wacn.date=""/>
 
 # 添加输入
@@ -25,25 +25,17 @@ Azure 流分析作业可以连接到一个或多个输入，其定义了一个�
 
     ![添加输入](./media/stream-analytics-add-inputs/1-stream-analytics-add-inputs.png)
 
-    在 Azure 预览门户中，单击流分析作业中的“输入”磁贴。
-
-    ![在 Azure 预览门户中添加输入](./media/stream-analytics-add-inputs/7-stream-analytics-add-inputs.png)
-
 2. 指定输入的类型：“数据流”或“引用数据”。
 
     ![添加数据](./media/stream-analytics-add-inputs/2-stream-analytics-add-inputs.png)
-
-    ![在 Azure 预览门户中添加数据](./media/stream-analytics-add-inputs/8-stream-analytics-add-inputs.png)
 
 3. 如果创建一个数据流输入，则为该输入指定源类型。由于目前只支持 Blob 存储，在引用数据创建过程中将会跳过此步骤。
 
     ![添加数据流](./media/stream-analytics-add-inputs/3-stream-analytics-add-inputs.png)
 
-    ![添加数据流预览门户](./media/stream-analytics-add-inputs/9-stream-analytics-add-inputs.png)
-
 4. 在输入别名框中为该输入提供一个友好的名称。此名称以后会用于你的作业查询以引用该输入。
 
-    填充所需连接属性的其余部分以连接到你的数据源。这些字段根据输入类型和源类型而变化，在[此处](stream-analytics-create-a-job.md)进行了详细定义。
+    填充所需连接属性的其余部分以连接到你的数据源。这些字段根据输入类型和源类型而变化，[此处](/documentation/articles/stream-analytics-create-a-job)进行了详细定义。
 
     ![添加事件中心](./media/stream-analytics-add-inputs/4-stream-analytics-add-inputs.png)
 
@@ -53,13 +45,9 @@ Azure 流分析作业可以连接到一个或多个输入，其定义了一个�
 
     ![数据序列化设置](./media/stream-analytics-add-inputs/5-stream-analytics-add-inputs.png)
 
-    ![数据序列化设置 Azure 预览门户](./media/stream-analytics-add-inputs/10-stream-analytics-add-inputs.png)
-
 6. 输入创建完成后，流分析会验证是否可以连接到输入源。你可以在通知中心查看测试连接操作的状态。
 
     ![测试连接](./media/stream-analytics-add-inputs/6-stream-analytics-add-inputs.png)
-
-    ![测试连接 Azure 预览门户](./media/stream-analytics-add-inputs/11-stream-analytics-add-inputs.png)
 
 ## 获取帮助
 如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)
@@ -69,7 +57,7 @@ Azure 流分析作业可以连接到一个或多个输入，其定义了一个�
 - [Azure 流分析简介](/documentation/articles/stream-analytics-introduction)
 - [Azure 流分析入门](/documentation/articles/stream-analytics-get-started)
 - [缩放 Azure 流分析作业](/documentation/articles/stream-analytics-scale-jobs)
-- [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-- [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+- [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
+- [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

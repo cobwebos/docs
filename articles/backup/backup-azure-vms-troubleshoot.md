@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure 虚拟机备份 - 疑难解答 | Microsoft Azure"
-	description="查找有关 Azure 虚拟机备份和还原的疑难解答信息"
+	pageTitle="Azure 虚拟机备份疑难解答 | Microsoft Azure"
+	description="Azure 虚拟机备份和还原疑难解答"
 	services="backup"
 	documentationCenter=""
 	authors="trinadhk"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="backup"
-	ms.date="10/07/2015"
+	ms.date="10/29/2015"
 	wacn.date=""/>
 
 
@@ -127,4 +127,4 @@
 1. 获取要列入允许列表的 [Azure 数据中心 IP](https://msdn.microsoft.com/library/azure/dn175718.aspx)。
 2. 使用 [New-NetRoute](https://technet.microsoft.com/library/hh826148.aspx) cmdlet 取消阻止 IP。在 Azure VM 上提升权限的 PowerShell 窗口中运行此 cmdlet（以管理员身份运行）。
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

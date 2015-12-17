@@ -1,14 +1,14 @@
 <properties
  pageTitle="在 HPC Pack 群集中使用 Linux 计算 VM | Microsoft Azure"
- description="了解如何编写脚本以部署 Azure 中包含运行 Windows Server 的头节点和 Linux 计算节点的 HPC Pack 群集。"
+ description="如何编写脚本以部署 Azure 中包含运行 Windows Server 的头节点和 Linux 计算节点的 HPC Pack 群集。"
  services="virtual-machines"
  documentationCenter=""
  authors="dlepow"
  manager="timlt"
  editor=""
- tags="azure-service-management"/>
+ tags="azure-service-management,hpc-pack"/>
 <tags
-	ms.service="virtual-machines"
+ 	ms.service="virtual-machines"
  	ms.date="09/01/2015"
 	wacn.date=""/>
 
@@ -16,15 +16,18 @@
 
 本文介绍如何使用 Azure PowerShell 脚本在 Azure 中设置 Windows HPC Pack 群集，该群集包含运行 Windows Server 的头节点和运行 CentOS Linux 分发的多个计算节点。我们还会介绍几种将数据文件移到 Linux 计算节点的方法。你可以使用此群集在 Azure 中运行 Linux HPC 工作负荷。
 
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
+
+
 下图在较高级别显示了将创建的 HPC Pack 群集。
 
 ![具有 Linux 节点的 HPC 群集][scenario]
 
 ## 使用 Linux 计算节点部署 HPC Pack 群集
 
-你将使用 Windows HPC Pack IaaS 部署脚本 (**New-HpcIaaSCluster.ps1**) 在 Azure 基础结构服务 (IaaS) 中自动执行群集部署。此 Azure PowerShell 脚本使用 Azure 应用商店中的 HPC Pack VM 映像进行快速部署，并提供一组全面的配置参数使部署轻松且灵活。你可以使用脚本部署 Azure 虚拟网络、存储帐户、云服务、域控制器、可选的单独 SQL Server 数据库服务器、群集头节点、计算节点、代理节点、Azure PaaS（“迸发”）节点和 Linux 计算节点（[HPC Pack 2012 R2 Update 2](https://technet.microsoft.com/zh-cn/library/mt269417.aspx) 中引入的 Linux 支持）。
+你将使用 Microsoft HPC Pack IaaS 部署脚本 (**New-HpcIaaSCluster.ps1**) 在 Azure 基础结构服务 (IaaS) 中自动执行群集部署。此 Azure PowerShell 脚本使用 Azure 应用商店中的 HPC Pack VM 映像进行快速部署，并提供一组全面的配置参数使部署轻松且灵活。脚本可部署 Azure 虚拟网络、存储帐户、云服务、域控制器、可选的单独 SQL Server 数据库服务器、群集头节点、计算节点、代理节点、Azure PaaS（“迸发”）节点和 Linux 计算节点（[HPC Pack 2012 R2 Update 2](https://technet.microsoft.com/library/mt269417.aspx) 中引入的 Linux 支持）。
 
-有关 HPC Pack 群集部署选项的概述，请参阅 [HPC Pack 2012 R2 和 HPC Pack 2012 入门指南](https://technet.microsoft.com/zh-cn/library/jj884144.aspx)。
+有关 HPC Pack 群集部署选项的概述，请参阅 [HPC Pack 2012 R2 和 HPC Pack 2012 入门指南](https://technet.microsoft.com/library/jj884144.aspx)。
 
 ### 先决条件
 
@@ -32,14 +35,14 @@
 
 * **Azure PowerShell** - 在客户端计算机上[安装并配置 Azure PowerShell](/documentation/articles/powershell-install-configure)（版本 0.8.10 或更高版本）。
 
-* **HPC Pack IaaS 部署脚本** - 从 [Microsoft 下载中心](https://www.microsoft.com/zh-cn/download/details.aspx?id=44949)下载并解压缩最新版本的脚本。可以通过运行 `New-HPCIaaSCluster.ps1 –Version` 检查脚本的版本。本文基于版本 4.4.0 或更高版本的脚本。
+* **HPC Pack IaaS 部署脚本** - 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=44949)下载并解压缩最新版本的脚本。可以通过运行 `New-HPCIaaSCluster.ps1 –Version` 检查脚本的版本。本文基于版本 4.4.0 或更高版本的脚本。
 
 * **Azure 订阅** - 你可以使用 Azure 全球或 Azure 中国服务中的订阅。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/)。
 
 * **内核配额** - 你可能需要增加内核配额，尤其是在你选择部署具有多核 VM 大小的多个群集节点时需要。对于本文中的示例，你将至少需要 24 个内核。若要增加配额，可免费[建立联机客户支持请求](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
 
 ### 创建配置文件
-HPC Pack IaaS 部署脚本使用描述 HPC 群集基础结构的 XML 配置文件作为输入。若要部署由一个头节点和 2 个 Linux 计算节点组成的小群集，请将你环境的值代入下面的示例配置文件。有关配置文件的详细信息，请参阅脚本文件夹中的 Manual.rtf 文件或[脚本文档](https://msdn.microsoft.com/zh-cn/library/azure/dn864734.aspx)。
+HPC Pack IaaS 部署脚本使用描述 HPC 群集基础结构的 XML 配置文件作为输入。若要部署由一个头节点和 2 个 Linux 计算节点组成的小群集，请将你环境的值代入下面的示例配置文件。有关配置文件的详细信息，请参阅脚本文件夹中的 Manual.rtf 文件和[使用 HPC Pack IaaS 部署脚本创建 HPC 群集](/documentation/articles/virtual-machines-hpcpack-cluster-powershell-script)。
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -107,14 +110,14 @@ HPC Pack IaaS 部署脚本使用描述 HPC 群集基础结构的 XML 配置文�
 
 * HPC Pack 目前支持计算节点的以下 Linux 分发：Ubuntu Server 14.10、CentOS 6.6、CentOS 7.0 和 SUSE Linux Enterprise Server 12。
 
-* 本文中的示例使用 Azure 应用商店中提供的特定 CentOS 版本来创建群集。如果要使用其他可用映像，请使用 **get-azurevmimage** Azure PowerShell cmdlet 查找所需的映像。例如，若要列出所有 CentOS 7.0 映像，请运行以下命令：```
+* 本文中的示例使用 Azure 应用商店中提供的特定 CentOS 版本来创建群集。如果要使用其他可用映像，请使用 **get-azurevmimage** Azure PowerShell cmdlet 查找所需的映像。例如，若要列出所有 CentOS 7.0 映像，请运行以下命令：
+    ```
     get-azurevmimage | ?{$_.Label -eq "OpenLogic 7.0"}
     ```
 
     找到所需的映像，然后替换配置文件中的 **ImageName** 值。
 
-* 对 A8 和 A9 大小 VM 支持 RDMA 连接的 Linux 映像可用。如果你指定的映像安装并启用了 Linux RDMA 驱动程序，则 HPC Pack IaaS 部署脚本将部署这些驱动程序。例如，为当前 SUSE Linux Enterprise Server 12（已针对应用商店中的高性能计算映像进行优化）指定映像名称 `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708`。
-
+* 对 A8 和 A9 大小 VM 支持 RDMA 连接的 Linux 映像可用。如果你指定的映像安装并启用了 Linux RDMA 驱动程序，则 HPC Pack IaaS 部署脚本将部署这些驱动程序。例如，为当前的 SUSE Linux Enterprise Server 12（已针对市场上的高性能计算映像进行优化）指定映像名称 `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708`。
 
 * 若要在从支持的映像创建的 Linux VM 上启用 Linux RDMA 以运行 MPI 作业，请在群集部署后根据应用程序需求在 Linux 节点上安装并配置特定的 MPI 库。有关如何在 Azure 上的 Linux 节点中使用 RDMA 的详细信息，请参阅[设置 Linux RDMA 群集以运行 MPI 应用程序](/documentation/articles/virtual-machines-linux-cluster-rdma)。
 
@@ -173,30 +176,30 @@ HPC Pack IaaS 部署脚本使用描述 HPC 群集基础结构的 XML 配置文�
 
 ### Azure 文件
 
-[Azure 文件](https://azure.microsoft.com/services/storage/files/)服务使用标准 SMB 2.1 协议公开文件共享。Azure VM 和云服务可通过装载的共享在应用程序组件之间共享文件数据，本地应用程序可通过文件存储 API 来访问共享中的文件数据。有关详细信息，请参阅[如何通过 PowerShell 和 .NET 使用 Azure 文件存储](/documentation/articles/storage-dotnet-how-to-use-files)。
+[Azure 文件](https://azure.microsoft.com/services/storage/files/)服务使用标准 SMB 2.1 协议公开文件共享。Azure VM 和云服务可通过装载的共享在应用程序组件之间共享文件数据，本地应用程序可通过文件存储 API 来访问共享中的文件数据。有关详细信息，请参阅[如何通过 PowerShell 和 .NET 使用 Azure 文件存储](../storage/storage-dotnet-how-to-use-files.md)。
 
 若要创建 Azure 文件共享，请参阅 [Microsoft Azure 文件服务简介](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)中的详细步骤 。若要设置持久性连接，请参阅[将连接保存到 Microsoft Azure 文件中](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)。
 
 在此示例中，我们将在存储帐户 allvhdsje 上创建一个名为 rdma 的 Azure 文件共享。为了在头节点上装载该共享，我们打开命令窗口并输入以下命令：
 
 ```
-> cmdkey /add:allvhdsje.file.core.windows.net /user:allvhdsje /pass:<storageaccountkey>
-> net use Z: \\allvhdje.file.core.windows.net\rdma /persistent:yes
+> cmdkey /add:allvhdsje.file.core.chinacloudapi.cn /user:allvhdsje /pass:<storageaccountkey>
+> net use Z: \\allvhdje.file.core.chinacloudapi.cn\rdma /persistent:yes
 ```
 
 在此示例中，allvhdsje 是存储帐户名称，storageaccountkey 是存储帐户密钥，rdma 是 Azure 文件共享名称。该 Azure 文件共享将装载到头节点的 Z: 上。
 
-若要在 Linux 节点上装载 Azure 文件共享，请在头节点上运行 **clusrun** 命令。**[Clusrun](https://technet.microsoft.com/zh-cn/library/cc947685.aspx)** 是有用的 HPC Pack 工具，用于在多个节点上执行管理任务。（另请参阅本文中的[用于 Linux 节点的 CLusrun](#CLusrun-for-Linux-nodes)。）
+若要在 Linux 节点上装载 Azure 文件共享，请在头节点上运行 **clusrun** 命令。**[Clusrun](https://technet.microsoft.com/library/cc947685.aspx)** 是有用的 HPC Pack 工具，用于在多个节点上执行管理任务。（另请参阅本文中的[用于 Linux 节点的 CLusrun](#CLusrun-for-Linux-nodes)。）
 
 打开 Windows PowerShell 窗口并输入以下命令。
 
 ```
 PS > clusrun /nodegroup:LinuxNodes mkdir -p /rdma
 
-PS > clusrun /nodegroup:LinuxNodes mount -t cifs //allvhdsje.file.core.windows.net/rdma /rdma -o vers=2.1`,username=allvhdsje`,password=<storageaccountkey>'`,dir_mode=0777`,file_mode=0777
+PS > clusrun /nodegroup:LinuxNodes mount -t cifs //allvhdsje.file.core.chinacloudapi.cn/rdma /rdma -o vers=2.1`,username=allvhdsje`,password=<storageaccountkey>'`,dir_mode=0777`,file_mode=0777
 ```
 
-第一个命令在 LinuxNodes 组中的所有节点上创建名为 /rdma 的文件夹。第二个命令将 Azure 文件共享 allvhdsjw.file.core.windows.net/rdma 装载到 /rdma 文件夹上，并将目录和文件模式位设置为 777。在第二个命令中，allvhdsje 是存储帐户名称，storageaccountkey 是存储帐户密钥。
+第一个命令在 LinuxNodes 组中的所有节点上创建名为 /rdma 的文件夹。第二个命令将 Azure 文件共享 allvhdsjw.file.core.chinacloudapi.cn/rdma 装载到 /rdma 文件夹上，并将目录和文件模式位设置为 777。在第二个命令中，allvhdsje 是存储帐户名称，storageaccountkey 是存储帐户密钥。
 
 >[AZURE.NOTE]第二个命令中的 “`” 符号是 PowerShell 的转义符号。“`,” 表示 “,”（逗号字符）是命令的一部分。
 
@@ -215,12 +218,12 @@ PS > clusrun /nodegroup:LinuxNodes mount -t cifs //allvhdsje.file.core.windows.n
 ```
 PS > clusrun /nodegroup:LinuxNodes mkdir -p /openfoam
 
-PS > clusrun /nodegroup:LinuxNodes mount -t cifs //CentOS7RDMA-HN/OpenFOAM /openfoam -o vers=2.1`,username=<username>,password='<password>’,dir_mode=0777`,file_mode=0777
+PS > clusrun /nodegroup:LinuxNodes mount -t cifs //CentOS7RDMA-HN/OpenFOAM /openfoam -o vers=2.1`,username=<username>`,password='<password>'`,dir_mode=0777`,file_mode=0777
 ```
 
-第一个命令在 LinuxNodes 组中的所有节点上创建名为 /openfoam 的文件夹。第二个命令将共享文件夹 //CentOS7RDMA-HN/OpenFOAM 装载到该文件夹上，并将目录和文件模式位设置为 777。该命令中的用户名和密码应是头节点上的用户的用户名和密码。
+第一个命令在 LinuxNodes 组中的所有节点上创建名为 /openfoam 的文件夹。第二个命令将共享文件夹 //CentOS7RDMA-HN/OpenFOAM 装载到该文件夹上，并将目录和文件模式位设置为 777。该命令中的用户名和密码应是头节点上的群集用户的用户名和密码。
 
->[AZURE.NOTE]第二个命令中的 “`” 符号是 PowerShell 的转义符号。“`,” 表示 “,”（逗号）是命令的一部分。
+>[AZURE.NOTE]第二个命令中的 “`” 符号是 PowerShell 的转义符号。“`,” 表示 “,”（逗号字符）是命令的一部分。
 
 
 ### NFS 服务器
@@ -257,7 +260,7 @@ PS > clusrun /nodegroup:LinuxNodes mount CentOS7RDMA-HN:/nfs /nfsshared
 
 * REST API
 
-通过 HPC Pack GUI 工具和 HPC Web 门户将作业提交到 Azure 中的群集的方法与 Windows 计算节点相同。请参阅 [HPC Pack 作业管理器](https://technet.microsoft.com/zh-cn/library/ff919691.aspx)和[如何从本地客户端提交作业](https://msdn.microsoft.com/zh-cn/library/azure/dn689084.aspx)。
+通过 HPC Pack GUI 工具和 HPC Web 门户将作业提交到 Azure 中的群集的方法与 Windows 计算节点相同。请参阅 [HPC Pack 作业管理器](https://technet.microsoft.com/library/ff919691.aspx)和[如何从本地客户端提交作业](https://msdn.microsoft.com/zh-cn/library/azure/dn689084.aspx)。
 
 若要通过 REST API 提交作业，请参阅[在 Microsoft HPC Pack 中通过使用 REST API 创建和提交作业](http://social.technet.microsoft.com/wiki/contents/articles/7737.creating-and-submitting-jobs-by-using-the-rest-api-in-microsoft-hpc-pack-windows-hpc-server.aspx)。若要从 Linux 客户端提交作业，另请参阅 [HPC Pack SDK](https://www.microsoft.com/download/details.aspx?id=47756) 中的 Python 示例。
 
@@ -268,31 +271,30 @@ HPC Pack **clusrun** 工具可用于通过命令窗口或 HPC 群集管理器在
 * 显示群集中所有节点的当前用户名
 
     ```
-> clusrun whoami
-```
+    > clusrun whoami
+    ```
 
-* 在 linuxnodes 组中的所有节点上安装 **gdb** 调试器工具第 i 个 **yum**，然后在 10 分钟后重启这些节点
+* 在 linuxnodes 组中的所有节点上安装 **gdb** 调试器工具第 i 个 **yum**，然后在 10 分钟后重启节点
 
     ```
-> clusrun /nodegroup:linuxnodes yum install gdb –y; shutdown –r 10
-```
+    > clusrun /nodegroup:linuxnodes yum install gdb –y; shutdown –r 10
+    ```
 
-* 创建一个在群集节点上每秒显示 1 到 10 的 shell 脚本，运行该脚本并立即显示每个节点的输出。
+* 创建一个在群集的每个节点上每秒显示 1 到 10 中的一个数字的 shell 脚本，运行该脚本并立即显示节点的输出。
 
     ```
-> clusrun /interleaved echo "for i in {1..10}; do echo \\"\$i\\"; sleep 1; done" ^> script.sh; chmod +x script.sh; ./script.sh```
+    > clusrun /interleaved echo "for i in {1..10}; do echo \\"\$i\\"; sleep 1; done" ^> script.sh; chmod +x script.sh; ./script.sh
+    ```
 
->[AZURE.NOTE]在 clusrun 命令中可能需要使用某些转义符。在命令窗口中使用 ^，在 PowerShell 中使用 ` 来转换特殊字符。例如，在 PowerShell 中，逗号和分号字符必须分别通过 `, 和 `; 进行转换。在命令窗口中这些字符不需要转换。
-
-
-
+>[AZURE.NOTE]在 **clusrun** 命令中可能需要使用某些转义符。如此示例中所示，在命令窗口中使用 ^ 以转义 ">" 符号。
 
 ## 后续步骤
 
-* 使用 **clusrun** 将 Linux 应用程序安装到 Linux 计算节点上并向 HPC Pack 群集提交作业。
+* 尝试在群集上运行 Linux 工作负荷。有关示例，请参阅[在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 NAMD](/documentation/articles/virtual-machines-linux-cluster-hpcpack-namd)。
 
 * 尝试将群集向上扩展为包含更多节点，或部署 [A8 或 A9](/documentation/articles/virtual-machines-a8-a9-a10-a11-specs) 大小计算节点以运行 MPI 工作负荷。
 
+* 尝试 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)，组合 Azure 资源管理器来加快部署 HPC Pack 与大量 Linux 计算节点。
 
 <!--Image references-->
 [scenario]: ./media/virtual-machines-linux-cluster-hpcpack/scenario.png
@@ -308,4 +310,4 @@ HPC Pack **clusrun** 工具可用于通过命令窗口或 HPC 群集管理器在
 [nfsperm]: ./media/virtual-machines-linux-cluster-hpcpack/nfsperm.png
 [nfsmanage]: ./media/virtual-machines-linux-cluster-hpcpack/nfsmanage.png
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

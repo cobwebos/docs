@@ -34,7 +34,7 @@ Azure 平台正在转换。不论你是 Azure 新手还是经验丰富的老手�
 - 在这两种模型中，创建、配置和管理 Azure 资源的方式有所不同。
 - 使用一种部署模型所创建的资源，不一定能与使用不同部署模型创建的资源互操作。例如，使用一种部署模型创建的 Azure 虚拟机只能连接到使用相同部署模型创建的 Azure 虚拟网络。    
 
-每种部署模型的基础是每个资源的应用程序编程接口 (API)。资源管理器部署模型有[资源管理器 API](https://msdn.microsoft.com/library/azure/dn948464.aspx)，经典部署模型有[服务管理 API](https://msdn.microsoft.com/library/azure/ee460799.aspx)。开发人员可以编写代码，以*直接*与这些 API 交互。
+每种部署模型的基础是每个资源的应用程序编程接口 (API)。资源管理器部署模型有[资源管理器 API](https://msdn.microsoft.com/zh-cn/library/azure/dn948464.aspx)，经典部署模型有[服务管理 API](https://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx)。开发人员可以编写代码，以*直接*与这些 API 交互。
 
 但是，IT 专业人员通常在 Web 浏览器中使用图形门户、在 Windows 计算机上使用 Azure PowerShell cmdlet，或在 Windows、OS X 或 Linux 计算机上使用 Azure 命令行界面 (CLI) 来与这些 API *间接*交互。IT 专业人员使用的这三种间接方法都能直接与 API 交互。这意味着 Azure 平台或资源引入新功能时，始终可以先通过 API 直接获取，而在 API 可供使用后通过间接方法获取新资源和功能的支持。
 
@@ -44,12 +44,12 @@ Azure 平台正在转换。不论你是 Azure 新手还是经验丰富的老手�
 Azure 有两个门户：
 
 - **[Azure 门户](https://manage.windowsazure.cn)：**如果你已使用 Azure 一段时间，便已用过此门户。该门户用于创建和配置可支持经典部署模型的旧式 Azure 资源。你无法使用它来创建或配置仅支持资源管理器的资源。 
-- **[Azure 预览门户](http://azure.microsoft.com/overview/preview-portal/)：**如果你使用较新的 Azure 资源，则可能已用过此门户。它可以用于创建和配置某些 Azure 资源。最终你可以用它来创建和配置所有 Azure 资源。对于支持两种部署模型的某些资源，此门户可用于创建和配置使用任何一种部署模型的资源。 
+- **[Azure 门户](http://azure.microsoft.com/overview/preview-portal/)：**如果你使用较新的 Azure 资源，则可能已用过此门户。它可以用于创建和配置某些 Azure 资源。最终你可以用它来创建和配置所有 Azure 资源。对于支持两种部署模型的某些资源，此门户可用于创建和配置使用任何一种部署模型的资源。 
 
 某些资源和功能只可以在其中一个门户中创建和配置。某些资源或功能还不能在任何一个门户中创建或配置，而只能通过 PowerShell 和/或 CLI 进行配置。每种 Azure 资源的文档详述了可用于创建该资源的方法。
 
 ## PowerShell
-通过 [PowerShell](/documentation/articles/powershell-install-configure)，可以使用命令行或编写脚本，从 Windows 计算机创建和配置 Azure 资源。每个 Azure 资源都有相应的[资源管理器 cmdlet](https://msdn.microsoft.com/library/azure/mt125356.aspx) 和/或 [服务管理 cmdlet](https://msdn.microsoft.com/library/azure/dn708504.aspx)。某些资源和功能只能使用 PowerShell 或 CLI 来创建和配置。根据具体的资源，使用资源管理器 PowerShell cmdlet 时，你可以使用两个选项创建和配置 Azure 资源：
+通过 [PowerShell](/documentation/articles/powershell-install-configure)，可以使用命令行或编写脚本，从 Windows 计算机创建和配置 Azure 资源。每个 Azure 资源都有相应的[资源管理器 cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/mt125356.aspx) 和/或[服务管理 cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/dn708504.aspx)。某些资源和功能只能使用 PowerShell 或 CLI 来创建和配置。根据具体的资源，使用资源管理器 PowerShell cmdlet 时，你可以使用两个选项创建和配置 Azure 资源：
 
 - **仅限 PowerShell cmdlet：**可以使用每个资源的 cmdlet 单独创建和配置每个 Azure 资源。你可以从命令行执行此操作，或者在 PowerShell 脚本中包含可存储和设置版本的多个命令。
 
@@ -61,7 +61,7 @@ Azure 有两个门户：
 ## 后续步骤
 
 - 详细了解[资源管理器](/resource-group-overview.md)。
-- 了解如何[设计模板](/best-practices-resource-manager-design-templates/md)。
-- 使用[最佳实践](/documentation/articles/best-practices-resource-manager-examples)
+- 了解如何[设计模板](/best-practices-resource-manager-design-templates.md)。
+- 使用[最佳实践](/best-practices-resource-manager-examples.md)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

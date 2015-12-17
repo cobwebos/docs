@@ -15,7 +15,7 @@
 
 # 使用资源管理器和 PowerShell 创建 Windows VM
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-create-windows-powershell-service-manager.md)。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-vms)。
 
 本主题介绍如何使用 Azure 资源管理器和 PowerShell 快速创建基于 Windows 的 Azure 虚拟机。
 
@@ -77,7 +77,7 @@
 下面是你可能会看到的示例：
 
 	PS C:\> $stName="contosost"
-	PS C:\> $locName="China North"
+	PS C:\> $locName="West US"
 	PS C:\> $rgName="TestRG"
 	PS C:\> New-AzureRmResourceGroup -Name $rgName -Location $locName
 	VERBOSE: 12:45:15 PM - Created resource group 'TestRG' in location 'westus'
@@ -127,10 +127,10 @@
 
 [使用资源管理器模板和 PowerShell 创建 Windows 虚拟机](/documentation/articles/virtual-machines-create-windows-powershell-resource-manager-template-simple)
 
-[使用 PowerShell 和 Azure 服务管理创建 Windows 虚拟机](/documentation/articles/virtual-machines-create-windows-powershell-service-manager)
+[使用 Powershell 和经典部署模型创建 Windows 虚拟机](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-vms)
 
-[虚拟机文档](http://www.windowsazure.cn/documentation/services/virtual-machines/)
+[虚拟机文档](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
 [如何安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

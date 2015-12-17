@@ -6,19 +6,23 @@
  authors="dlepow"
  manager="timlt"
  editor=""
- tags="azure-service-management"/>
+ tags="azure-service-management,hpc-pack"/>
 <tags
-ms.service="virtual-machines"
- ms.date="09/02/2015"
- wacn.date=""/>
+ 	ms.service="virtual-machines"
+ 	ms.date="09/02/2015"
+ 	wacn.date=""/>
 
 # 在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 NAMD
 
 本文介绍如何在 Azure 上部署 Microsoft HPC Pack 群集，以及如何在虚拟群集网络的多个 Linux 计算节点上通过 **charmrun** 运行 [NAMD](http://www.ks.uiuc.edu/Research/namd/) 作业，以计算和直观呈现大型生物分子系统的结构。
 
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
+
+
+
 NAMD（用于纳米级分子动力学程序）是并行分子动力学软件包，设计用于包含数百万个原子的大型生物分子系统（如病毒、细胞结构和大蛋白）的高性能仿真。NAMD 扩展至数百个核心进行典型仿真，扩展至 500,000 个核心进行最大型仿真。
 
-Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行各种大型 HPC 和并行应用程序的功能，包括 MPI 应用程序。从 Microsoft HPC Pack 2012 R2 开始，HPC Pack 还支持在 HPC Pack 群集中部署的 Linux 计算节点 VM 上运行 Linux HPC 应用程序。有关将 Linux 计算节点与 HPC Pack 一起使用的简介，请参阅[Azure 的 HPC Pack 群集中的 Linux 计算节点入门](/documentation/articles/virtual-machines-linux-cluster-hpcpack)。
+Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行各种大型 HPC 和并行应用程序的功能，包括 MPI 应用程序。从 Microsoft HPC Pack 2012 R2 Update 2 开始，HPC Pack 还支持在 HPC Pack 群集中部署的 Linux 计算节点 VM 上运行 Linux HPC 应用程序。有关将 Linux 计算节点与 HPC Pack 一起使用的简介，请参阅 [Azure 的 HPC Pack 群集中的 Linux 计算节点入门](/documentation/articles/virtual-machines-linux-cluster-hpcpack)。
 
 
 ## 先决条件
@@ -50,17 +54,17 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行各种�
         <VMName>CentOS66HN</VMName>
         <ServiceName>MyHPCService</ServiceName>
         <VMSize>Large</VMSize>
-    <EnableRESTAPI />
-    <EnableWebPortal />
-  </HeadNode>
-  <LinuxComputeNodes>
-    <VMNamePattern>CentOS66LN-%00%</VMNamePattern>
-    <ServiceName>MyLnxCNService</ServiceName>
-    <VMSize>Large</VMSize>
-    <NodeCount>4</NodeCount>
-    <ImageName>5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-66-20150325</ImageName>
-  </LinuxComputeNodes>
-</IaaSClusterConfig>
+        <EnableRESTAPI />
+        <EnableWebPortal />
+      </HeadNode>
+      <LinuxComputeNodes>
+        <VMNamePattern>CentOS66LN-%00%</VMNamePattern>
+        <ServiceName>MyLnxCNService</ServiceName>
+        <VMSize>Large</VMSize>
+        <NodeCount>4</NodeCount>
+        <ImageName>5112500ae3b842c8b9c604889f8753c3__OpenLogic-CentOS-66-20150325</ImageName>
+      </LinuxComputeNodes>
+    </IaaSClusterConfig>    
 ```
 
 
@@ -119,7 +123,7 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行各种�
 
 ## 为 Linux 节点设置文件共享
 
-现在，在头节点上对一个文件夹设置标准 SMB 共享，然后在所有 Linux 节点上装载此共享文件夹，就可以支持 Linux 节点使用一个通用路径访问 NAMD 文件。请参阅[Azure 的 HPC Pack 群集中的 Linux 计算节点入门](/documentation/articles/virtual-machines-linux-cluster-hpcpack)中的文件共享选项和步骤。（在本文中，我们建议在头节点上装载一个共享文件夹，因为 CentOS 6.6 Linux 节点目前不支持可提供类似功能的 Azure 文件服务。有关装载 Azure 文件共享的详细信息，请参阅[将连接保存到 Microsoft Azure 文件中](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)。）
+现在，在头节点上对一个文件夹设置标准 SMB 共享，然后在所有 Linux 节点上装载此共享文件夹，就可以支持 Linux 节点使用一个通用路径访问 NAMD 文件。请参阅 [Azure 的 HPC Pack 群集中的 Linux 计算节点入门](/documentation/articles/virtual-machines-linux-cluster-hpcpack)中的文件共享选项和步骤。（在本文中，我们建议在头节点上装载一个共享文件夹，因为 CentOS 6.6 Linux 节点目前不支持可提供类似功能的 Azure 文件服务。有关装载 Azure 文件共享的详细信息，请参阅[将连接保存到 Microsoft Azure 文件中](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)。）
 
 1.	在头节点上创建一个文件夹，然后通过设置读/写权限与所有人共享。在本示例中，\\\CentOS66HN\\Namd 是文件夹的名称，其中 CentOS66HN 是头节点的主机名称。
 
@@ -400,4 +404,4 @@ a8lxTKnZCsRXU1HexqZs+DSc+30tz50bNqLdido/l5B4EJnQP03ciO0=
 [task_details]: ./media/virtual-machines-linux-cluster-hpcpack-namd/task_details.png
 [vmd_view]: ./media/virtual-machines-linux-cluster-hpcpack-namd/vmd_view.png
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

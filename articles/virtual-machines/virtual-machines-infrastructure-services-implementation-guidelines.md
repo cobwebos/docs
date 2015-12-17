@@ -10,10 +10,12 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="07/09/2015"
+	ms.date="10/21/2015"
 	wacn.date=""/>
 
 # Azure 基础结构服务实施准则
+
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-both-include.md)]
 
 Azure 是一个实现开发/测试或概念证明配置的极好平台，因为它只需很少的投资即可测试实现你的解决方案的特定方法。但是，你必须能够将用于开发/测试环境的简便做法与用于全功能生产就绪的 IT 工作负荷实现的更难且更详细的做法区分开来。
 
@@ -21,7 +23,7 @@ Azure 是一个实现开发/测试或概念证明配置的极好平台，因为�
 
 本文改编自 [Azure 实现指导原则](http://blogs.msdn.com/b/thecolorofazure/archive/2014/05/13/azure-implementation-guidelines.aspx)这篇博客文章中的内容。感谢 Santiago Cánepa（Microsoft 应用程序开发经理）和 Hugo Salcedo（Microsoft 应用程序开发经理）提供的原创内容。
 
-> [AZURE.NOTE]地缘组已弃用。此处不介绍其用法。有关详细信息，请参阅[关于区域 VNet 和地缘组](/documentation/articles/virtual-networks-migrate-to-regional-vnet)。
+> [AZURE.NOTE]地缘组已弃用。此处不介绍其用法。有关详细信息，请参阅[关于区域 VNet 和地缘组](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
 
 ## 1\.命名约定
 
@@ -50,11 +52,11 @@ Azure 是一个实现开发/测试或概念证明配置的极好平台，因为�
 方面 | 示例 | 说明
 --- | --- | ---
 环境 | dev、stg、prod | 根据每个环境的用途和名称。
-位置 | usw（中国北部）、use（中国东部) | 根据数据中心的区域或组织的区域。
+位置 | usw（美国西部）、使用（美国东部 2） | 根据数据中心的区域或组织的区域。
 Azure 组件、服务或产品 | Rg 用于资源组，Svc 用于云服务，VNet 用于虚拟网络 | 根据资源提供支持的产品。
 角色 | sql、ora、sp、iis | 根据虚拟机的角色。
 实例 | 01、02、03 等。 | 适用于具有多个实例的资源。例如，云服务中经过负载平衡的 Web 服务器。
-		
+
 建立命名约定时，请确保这些命名约定明确说明要对每种类型的资源使用哪些词缀，以及在哪个位置使用（前缀还是后缀）。
 
 ### 日期
@@ -86,11 +88,11 @@ Azure 组件、服务或产品 | Rg 用于资源组，Svc 用于云服务，VNet
 
 如果使用已包含操作系统的 .vhd 映像文件创建虚拟机，Azure 中的虚拟机名称可能不同于虚拟机的操作系统计算机名称。这种情况可能会增加虚拟机管理难度，因此不建议使用这种方法。分配给 Azure 虚拟机资源的名称可以与分配给该虚拟机的操作系统的计算机名称相同。
 
-我们建议 Azure 虚拟机名称应该与基础 OS 计算机名称相同。因此，请遵循 [Microsoft NetBIOS 计算机命名约定](https://support.microsoft.com/zh-CN/kb/188997)中所述的 NetBIOS 命名规则。
+我们建议 Azure 虚拟机名称应该与基础操作系统计算机名称相同。因此，请遵循 [Microsoft NetBIOS 计算机命名约定](https://support.microsoft.com/kb/188997/)中所述的 NetBIOS 命名规则。
 
 ### 存储帐户名称
 
-存储帐户具有适用于其名称的特殊规则。你只能使用小写字母和数字。有关详细信息，请参阅[创建存储帐户](/documentation/articles/storage-create-storage-account#create-a-storage-account)。此外，存储帐户名称与 core.chinacloudapi.cn 组合在一起应该是一个全局有效的唯一 DNS 名称。例如，如果存储帐户名为 mystorageaccount，则下面生成的 DNS 名称应该是唯一的：
+存储帐户具有适用于其名称的特殊规则。你只能使用小写字母和数字。有关详细信息，请参阅[创建存储帐户](../storage/storage-create-storage-account.md#create-a-storage-account)。此外，存储帐户名称与 core.chinacloudapi.cn 组合在一起应该是一个全局有效的唯一 DNS 名称。例如，如果存储帐户名为 mystorageaccount，则下面生成的 DNS 名称应该是唯一的：
 
 - mystorageaccount.blob.core.chinacloudapi.cn
 - mystorageaccount.table.core.chinacloudapi.cn
@@ -155,7 +157,7 @@ Azure 存储空间是许多 Azure 解决方案不可或缺的组成部分。Azur
 
 Azure 提供两种类型的存储帐户。标准存储帐户可以访问 Blob 存储（用于存储 Azure 虚拟机磁盘）、表存储、队列存储和文件存储。高级存储专为高性能应用程序（例如 AlwaysOn 群集中的 SQL Server）设计，当前仅支持 Azure 虚拟机磁盘。
 
-存储帐户将绑定到可伸缩性目标。要熟悉当前 Azure 存储空间限制，请参阅 [Microsoft Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md#storage-limits)。另请参阅 [Azure 存储空间可伸缩性和性能目标](../storage-scalability-targets.md)。
+存储帐户将绑定到可伸缩性目标。要熟悉当前 Azure 存储空间限制，请参阅 [Microsoft Azure 订阅和服务限制、配额和约束](/documentation/articles/azure-subscription-service-limits#storage-limits)。另请参阅 [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets)。
 
 Azure 使用一个操作系统磁盘、一个临时磁盘和零个或更多可选数据磁盘创建虚拟机。操作系统磁盘和数据磁盘是 Azure 页 blob，而临时磁盘则通过本地方式存储在计算机所在的节点上。这使得临时磁盘不适用于在系统回收过程中必须保留的数据，因为计算机可能会以无提示方式从一个节点迁移到另一个节点，从而丢失该磁盘中的任何数据。不要在临时驱动器上存储任何内容。
 
@@ -198,7 +200,7 @@ Azure 将对可用的数据磁盘量和带宽加以限制，具体取决于虚�
 
 任务：
 
-- 使用命名约定创建存储帐户集。可以使用 Azure 预览门户、Azure 门户或 **New-AzureStorageAccount** PowerShell cmdlet。
+- 使用命名约定创建存储帐户集。可以使用 Azure 门户、Azure 门户或 **New-AzureStorageAccount** PowerShell cmdlet。
 
 ## 4\.云服务
 
@@ -210,7 +212,7 @@ Azure 将对可用的数据磁盘量和带宽加以限制，具体取决于虚�
 
 云服务名称在 IaaS 中尤其重要，因为 Azure 将使用它们作为磁盘的默认命名约定的一部分。云服务名称只能包含字母、数字和连字符。该字段中的第一个和最后一个字符必须是字母或数字。
 
-Azure 将公开云服务名称，因为这些名称会关联到域“cloudapp.net”中的 VIP。为了改善应用程序的用户体验，应根据需要配置虚名称来替换完全限定的云服务名称。这通常使用公共 DNS 中将资源的公共 DNS 名称（例如，www.contoso.com）映射到托管资源的云服务（例如，托管 www.contoso.com 的 Web 服务器的云服务）的 DNS 名称的 CNAME 记录完成。
+Azure 将公开云服务名称，因为这些名称会关联到域“chinacloudapp.cn”中的 VIP。为了改善应用程序的用户体验，应根据需要配置虚名称来替换完全限定的云服务名称。这通常使用公共 DNS 中将资源的公共 DNS 名称（例如，www.contoso.com）映射到托管资源的云服务（例如，托管 www.contoso.com 的 Web 服务器的云服务）的 DNS 名称的 CNAME 记录完成。
 
 此外，用于云服务的命名约定可能需要允许例外，因为云服务名称必须在所有其他 Microsoft Azure 云服务中唯一，而不考虑 Microsoft Azure 租户。
 
@@ -284,7 +286,7 @@ Azure 订阅最多可以支持 200 个云服务。
 - 定义用于虚拟网络的地址空间。
 - 定义子网集和每个子网的地址空间。
 - 对于跨界虚拟网络，定义虚拟网络中的虚拟机需要访问的本地位置的本地网络地址空间集。
-- 使用命名约定创建虚拟网络。可以使用 Azure 预览门户或 Azure 门户。
+- 使用命名约定创建虚拟网络。可以使用 Azure 门户或 Azure 门户。
 
 ## 6\.可用性集
 
@@ -323,7 +325,7 @@ Azure 订阅最多可以支持 200 个云服务。
 任务：
 
 - 使用命名约定定义每个虚拟机名称。
-- 使用 Azure 预览门户、Azure 门户、**New-AzureVM** PowerShell cmdlet、Azure CLI，或使用资源管理器模板创建虚拟机。
+- 使用 Azure 门户、Azure 门户、**New-AzureVM** PowerShell cmdlet、Azure CLI，或使用资源管理器模板创建虚拟机。
 
 ## IT 工作负荷的示例：Contoso 财务分析引擎
 
@@ -371,10 +373,10 @@ Contoso 确定他们需要以下两个存储帐户：
 
 由于该虚拟网络不需要持续连接到 Contoso 本地网络，Contoso 决定选择仅限云的虚拟网络。
 
-他们通过 Azure 预览门户使用以下设置创建了仅限云的虚拟网络：
+他们通过 Azure 门户使用以下设置创建了仅限云的虚拟网络：
 
 - 名称：AZFAE-USE-VN01
-- 位置：中国东部
+- 位置：美国东部 2
 - 虚拟网络地址空间：10.0.0.0/8
 - 第一个子网：
 	- 名称：FrontEnd
@@ -426,7 +428,7 @@ Contoso 决定将以下名称用于其 Azure 虚拟机：
 
 [Microsoft Azure 订阅和服务限制、配额和约束](/documentation/articles/azure-subscription-service-limits#storage-limits)
 
-[虚拟机的大小](/documentation/articles/virtual-machines-size-specs)
+[虚拟机的大小](virtual-machines-size-specs)
 
 [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets)
 
@@ -434,6 +436,6 @@ Contoso 决定将以下名称用于其 Azure 虚拟机：
 
 [数据中心扩展参考体系结构关系图](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
 
-[Azure 资源管理器中的 Azure 计算、网络和存储提供程序](/documentation/articles/virtual-machines-azurerm-versus-azuresm)
+[Azure 资源管理器中的 Azure 计算、网络和存储提供程序](../articles/virtual-machines/virtual-machines-azurerm-versus-azuresm.md)
 
-<!---HONumber=70-->
+<!---HONumber=Mooncake_1207_2015-->

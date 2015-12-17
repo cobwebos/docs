@@ -5,25 +5,28 @@
 	documentationCenter=""
 	authors="kempb"
 	manager="douge"
-	editor=""/>
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
 	ms.date="10/19/2015"
-        wacn.date=""/>
+    wacn.date=""/>
 
 # 使用 Visual Studio 创建用于Web 应用程序的虚拟机
+
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
 
 创建 Azure 的 Web 应用程序项目时，可以在 Azure 中设置虚拟机。可以然后使用其他软件来配置该虚拟机，或将虚拟机用于诊断或调试。
 
 若要在创建 Web 应用程序时创建虚拟机，请执行以下步骤：
 
-1. 在 Visual Studio 中，选择“文件”>“新建”>“项目”>“Web”，然后选择“ASP.NET Web 应用程序”（在“Visual C#”或“Visual Basic”节点下）。
+1. 在 Visual Studio 中，单击“文件”>“新建”>“项目”>“Web”，然后选择“ASP.NET Web 应用程序”（在“Visual C#”或“Visual Basic”节点下）。
 2. 在“新建 ASP.NET 项目”对话框中，选择所需的 Web 应用程序类型，然后在对话框的“Azure”部分（位于右下角）中，确保已选中“在云中托管”复选框（在某些安装中，此复选框标记为“创建远程资源”）。
 
 	![][0]
 
-3. 例如，在 Microsoft Azure 下的下拉列表框中，选择“虚拟机 (v1)”，然后单击“确定”按钮。
+3. 例如，在 Microsoft Azure 下的下拉列表中，选择“虚拟机(v1)”，然后单击“确定”按钮。
 4. 根据系统提示登录到 Azure。将显示“创建虚拟机”对话框。
 
 	![][2]
@@ -38,7 +41,7 @@
 
 	![][3]
 
-12. 设置虚拟机时，系统会在解决方案的 **PublishScripts** 节点中创建发布脚本。发布脚本在 Azure 中运行并设置虚拟机。“输出”窗口将显示状态。脚本将执行以下操作来设置虚拟机：
+12. 预配虚拟机时，系统会在解决方案的 **PublishScripts** 节点中创建发布脚本。发布脚本在 Azure 中运行并设置虚拟机。“输出”窗口将显示状态。脚本将执行以下操作来设置虚拟机：
 
 	* 如果虚拟机尚不存在，则创建虚拟机。
 	* 仅当指定的区域中没有名称以 `devtest` 开头的存储帐户时，才创建具有此名称的存储帐户。
@@ -48,14 +51,14 @@
 
 	![][4]
 
-13. （可选）你可以连接到新的虚拟机。在“服务器资源管理器”中，展开“虚拟机”节点，选择你创建的虚拟机节点，然后在其快捷方式菜单中，选择“使用远程桌面连接”。或者，在“云资源管理器”中，你可以在快捷菜单中选择“在门户中打开”并连接至那里的虚拟机。
+13. （可选）你可以连接到新的虚拟机。在“服务器资源管理器”中，展开“虚拟机”节点，选择你创建的虚拟机节点，然后在其快捷方式菜单中，选择“使用远程桌面连接”。或者，在“云资源管理器”中，你可以在快捷菜单中选择“在门户中打开”并连接到那里的虚拟机。
 
  ![][5]
 
 
 ## 后续步骤
 
-如果你要自定义所创建的发布脚本，请参阅[使用 Windows PowerShell 脚本发布到开发和测试环境](http://msdn.microsoft.com/zh-cn/library/dn642480.aspx)了解更深入的信息。
+如果你要自定义所创建的发布脚本，请阅读[使用 Windows PowerShell 脚本发布到开发和测试环境](http://msdn.microsoft.com/zh-cn/library/dn642480.aspx)了解更深入的信息。
 
 [0]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/CreateVM_NewProject.PNG
 [1]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_SignIn.PNG
@@ -64,4 +67,4 @@
 [4]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/CreateVM_SolutionExplorer.png
 [5]: ./media/virtual-machines-dotnet-create-visual-studio-powershell/VS_Create_VM_Connect.png
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

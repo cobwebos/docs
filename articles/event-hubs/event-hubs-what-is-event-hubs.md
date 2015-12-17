@@ -1,6 +1,6 @@
 <properties
-	pageTitle="什么是 Azure 事件中心？"
-	description="Azure 事件中心的概述。"
+	pageTitle="什么是 Azure 事件中心？| Microsoft Azure"
+	description="Azure 事件中心概述"
 	services="event-hubs"
 	documentationCenter=".net"
 	authors="nberdy"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="event-hubs"
-	ms.date="07/15/2015"
+	ms.date="11/05/2015"
 	wacn.date=""/>
 
 # 什么是 Azure 事件中心？
@@ -41,4 +41,4 @@
 [事件中心教程]: /documentation/articles/service-bus-event-hubs-csharp-ephcs-getstarted
 [使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
 
-<!---HONumber=66-->
+<!---HONumber=Mooncake_1207_2015-->

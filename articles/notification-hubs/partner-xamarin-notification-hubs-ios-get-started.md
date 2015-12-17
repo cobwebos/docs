@@ -26,7 +26,7 @@
 
 本教程需要的内容如下：
 
-+ [XCode 6.0][Install Xcode]
++ [Xcode 6.0][Install Xcode]
 + 支持 iOS 7.0（或更高版本）的设备
 + iOS 开发人员计划成员身份
 + [Xamarin.iOS]
@@ -34,7 +34,7 @@
 
    >[AZURE.NOTE]由于推送通知配置要求，你必须在支持 iOS 的设备（iPhone 或 iPad）而不是在模拟器上部署和测试推送通知。
 
-只有在完成本教程后，才能完成有关 Xamarin.iOS 应用程序通知中心的其他所有教程。
+只有在完成本教程后，才能完成有关 Xamarin.iOS 应用的所有其他通知中心教程。
 
 > [AZURE.IMPORTANT]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fzh-CN%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)。
 
@@ -67,11 +67,11 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 
 若要将推送通知从移动服务发送到 iOS 应用程序，你必须向 Apple 注册应用程序，还要注册推送通知。
 
-1. 如果你尚未注册应用程序，请导航到 Apple 开发人员中心的 <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS 预配门户</a>，使用 Apple ID 登录，单击“Identifiers”（标识符），然后单击“App IDs”（应用程序 ID），最后单击“+”符号以注册新的应用程序。
+1. 如果你尚未注册应用，请导航到 Apple 开发人员中心的 <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS 预配门户</a>，使用 Apple ID 登录，单击“Identifiers”（标识符），然后单击“App IDs”（应用 ID），最后单击“+”符号以注册新应用。
 
    	![][105]
 
-2. 在“Description”（说明）中为应用程序键入一个名称，在“Bundle Identifier”（捆绑标识符）中输入值，在“App Services”（应用程序服务）部分中选中“Push Notifications”（推送通知）选项，然后单击“Continue”（继续）。
+2. 在“Description”（说明）中为应用键入一个名称，在“Bundle Identifier”（捆绑标识符）中输入值，在“App Services”（应用程序服务）部分中选中“Push Notifications”（推送通知）选项，然后单击“Continue”（继续）。
 
    	![][106]
 
@@ -88,7 +88,7 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
    
    	![][110]
 
-	> [AZURE.NOTE]如果你选择提供“Bundle Identifier”（捆绑标识符）值，而不是 MobileServices.Quickstart，则还必须更新 Xcode 项目中的捆绑标识符值。
+	> [AZURE.NOTE]如果你选择提供“Bundle Identifier”（捆绑标识符）值，而不是 **MobileServices.Quickstart**，则还必须更新 Xcode 项目中的捆绑标识符值。
 
 3. 找到你刚刚创建的应用程序 ID，然后单击其行。
 
@@ -120,7 +120,7 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 
   	![][119]
   
-   	随后将会下载签名证书并将其保存到计算机上的 **Downloads** 文件夹。
+   	此时将会下载签名证书并将其保存到计算机上的 **Downloads** 文件夹。
 
   	![][9]
 
@@ -142,11 +142,11 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 
    	![][120]
 
-2. 选择“Development”（开发）下的“iOS App Development”（iOS 应用程序开发）作为预配配置文件类型，然后单击“Continue”（继续）。
+2. 选择“Development”（开发）下的“iOS App Development”（iOS 应用开发）作为预配配置文件类型，然后单击“Continue”（继续）。
 
    	![][121]
 
-3. 从“App ID”（应用程序 ID）下拉列表中选择移动服务快速入门应用程序的应用程序 ID，然后单击“Continue”（继续）。
+3. 从“App ID”（应用 ID）下拉列表中选择移动服务快速入门应用的应用 ID，然后单击“Continue”（继续）。
 
    	![][122]
 
@@ -154,7 +154,7 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 
    	![][123]
 
-5. 选择要用于测试的“Devices”（设备），然后单击“Continue”（继续）。
+5. 选择要用于测试的设备，然后单击“Continue”（继续）。
 
    	![][124]
 
@@ -308,22 +308,22 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
             }
         }
 
-    > [AZURE.NOTE]你可以选择覆盖 **FailedToRegisterForRemoteNotifications()** 来处理无网络连接等情况。
+    > [AZURE.NOTE]你可以选择覆盖 **FailedToRegisterForRemoteNotifications()** 以处理无网络连接等情况。
 
 
 10. 在你的设备上运行应用程序。
 
 ##<a name="send"></a>从后端发送通知
 
-你可以使用通知中心通过 <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST 接口</a>从任意后端发送通知。在本教程中，我们将使用 .NET 控制台应用程序和移动服务来发送通知，通过节点脚本来执行这些操作。
+你可以使用通知中心通过 <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST 接口</a>从任意后端发送通知。在本教程中，我们将使用 .NET 控制台应用和移动服务通过节点脚本来发送通知。
 
-使用 .NET 应用程序发送通知：
+使用 .NET 应用发送通知：
 
 1. 创建新的 Visual C# 控制台应用程序：
 
    	![][213]
 
-2. 通过使用 <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 包</a>添加对 Azure 服务总线 SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库程序包管理器”和“程序包管理器控制台”。然后，在控制台窗口中键入以下内容并按 Enter：
+2. 通过使用 <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 包</a>添加对 Azure 服务总线 SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库包管理器”和“Package Manager Console”。然后，在控制台窗口中键入以下内容并按 Enter：
 
         Install-Package WindowsAzure.ServiceBus
 
@@ -336,7 +336,7 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
         private static async void SendNotificationAsync()
         {
             NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
-            var alert = "{"aps":{"alert":"Hello from .NET!"}}";
+            var alert = "{\"aps\":{\"alert\":\"Hello from .NET!\"}}";
             await hub.SendAppleNativeNotificationAsync(alert);
         }
 
@@ -347,7 +347,7 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 
 5. 按 F5 键以运行应用。你应在设备上收到警报。如果正在使用 Wi-Fi，请确保你的连接有效。
 
-可以在 Apple [本地和推送通知编程指南]中查看所有可能的负载。
+可以在 Apple [本地和推送通知编程指南]中找到所有可能的负载。
 
 若要使用移动服务发送通知，请按[移动服务入门]中的说明操作，然后：
 
@@ -387,7 +387,7 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 
 ## <a name="next-steps"></a>后续步骤
 
-在这个简单的示例中，你已将通知广播到所有 iOS 设备。为了针对特定客户，请参考教程[使用通知中心将通知推送到用户]。如果要按兴趣组划分用户，可以阅读[使用通知中心发送突发新闻]。请在[通知中心指南]和[适用于 iOS 的通知中心操作方法指南]中了解有关如何使用通知中心的详细信息。
+在这个简单的示例中，你已将通知广播到所有 iOS 设备。若要针对特定客户，请参考教程[使用通知中心向用户推送通知]。如果要按兴趣组划分用户，可以阅读[使用通知中心发送突发新闻]。请在[通知中心指南]和[适用于 iOS 的通知中心操作方法指南]中了解有关如何使用通知中心的详细信息。
 
 <!-- Anchors. -->
 [Generate the certificate signing request]: #certificates
@@ -464,7 +464,7 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
-[使用通知中心将通知推送到用户]: /manage/services/notification-hubs/notify-users-aspnet
+[使用通知中心向用户推送通知]: /manage/services/notification-hubs/notify-users-aspnet
 [使用通知中心发送突发新闻]: /manage/services/notification-hubs/breaking-news-dotnet
 
 [本地和推送通知编程指南]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
@@ -475,4 +475,4 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 [Xamarin.iOS]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

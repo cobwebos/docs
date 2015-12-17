@@ -28,12 +28,12 @@
 * 使用 Python 接口发送通知到通知中心 REST API。 
 * 获取 HTTP REST 请求/响应的转储以进行调试/培训。 
 
-请按照你选定的移动平台[入门教程](/documentation/articles/notification-hubs-windows-store-dotnet-get-started)以 Python 实现后端部分。
+你可以按照你选定的移动平台的[入门教程](/documentation/articles/notification-hubs-windows-store-dotnet-get-started)以 Python 实现后端部分。
 
 > [AZURE.NOTE]该示例仅限于发送通知，并不执行任何注册管理操作。
 
 ## 客户端接口
-主要的客户端接口可提供与 [.NET 通知中心 SDK](http://msdn.microsoft.com/zh-cn/library/jj933431.aspx) 中相同的方法。这将允许你直接翻译当前该网站上提供的所有教程和示例，这些内容均来自 Internet 上的社区。
+主要的客户端接口可提供 [.NET 通知中心 SDK](http://msdn.microsoft.com/zh-cn/library/jj933431.aspx) 中提供的相同方法。这将允许你直接翻译当前该网站上提供的所有教程和示例，这些内容均来自 Internet 上的社区。
 
 你可以在 [Python REST 包装器示例]中找到提供的所有代码。
 
@@ -47,7 +47,7 @@
 	hub.send_windows_notification(wns_payload)
 	
 ## 实现
-如果你尚未实现，请按照我们[入门的教程]学至最后一节，其中你必须实现后端。
+如果你尚未实现，请按照我们的[入门教程]学至最后一节，其中你必须实现后端。
 
 有关实现完整 REST 包装器的所有详细信息，请访问 [MSDN](http://msdn.microsoft.com/zh-cn/library/dn530746.aspx)。在本部分中，我们将向你介绍访问通知中心 REST 终结点所需的主要步骤的 Python 实现：
 
@@ -82,8 +82,7 @@
 
 
 ### 创建安全令牌
-有关安全令牌创建的详细信息，请访问[此处](http://msdn.microsoft.com/zh-cn/library/dn495627.aspx)。
-下面的方法必须添加到 **NotificationHub** 类，以根据当前请求的 URL 和提取自连接字符串的凭据创建令牌。
+有关安全令牌创建的详细信息，请访问[此处](http://msdn.microsoft.com/zh-cn/library/dn495627.aspx)。以下方法必须添加到 **NotificationHub** 类，以便根据当前请求的 URI 和提取自连接字符串的凭据创建令牌。
 
 	@staticmethod
     def get_expiry():
@@ -136,7 +135,7 @@
 
 请参阅[通知中心 REST API 文档](http://msdn.microsoft.com/zh-cn/library/dn495827.aspx)和具体的通知平台格式以了解所有可用选项。
 
-具备了此类后，我们现在可以在 **NotificationHub** 类中编写发送通知方法了。
+现在有了此类后，我们便可在 **NotificationHub** 类中编写发送通知方法了。
 
     def make_http_request(self, url, payload, headers):
         parsed_url = urllib.parse.urlparse(url)
@@ -205,7 +204,7 @@
 以上方法将 HTTP POST 请求发送到你通知中心的 /messages 终结点，该请求具有发送通知的正确正文和标头。
 
 ### 使用调试属性启用详细的日志记录
-在初始化通知中心时启用调试属性将写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。我们最近添加了名为[Notification Hubs TestSend 属性](http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx)的属性，其将返回有关通知发送结果的详细信息。若要使用它 - 请使用以下方法进行初始化：
+在初始化通知中心时启用调试属性将写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。我们最近添加了这个称为[通知中心 TestSend 属性](http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx)的属性，它将返回有关通知发送结果的详细信息。若要使用它 - 请使用以下方法进行初始化：
 
 	hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
@@ -214,7 +213,7 @@
 ##<a name="complete-tutorial"></a>完成教程
 现在，你可以通过从 Python 后端发送通知来完成该入门教程。
 
-初始化你的通知中心客户端（按[入门的教程]中所述替换连接字符串和中心名称）：
+初始化你的通知中心客户端（按[入门教程]中所述替换连接字符串和中心名称）：
 
 	hub = NotificationHub("myConnectionString", "myNotificationHubName")
 
@@ -271,8 +270,7 @@
 ## 示例:
 
 ### 启用调试属性
-如果在初始化 NotificationHub 时启用调试标志，你将会看到详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，你可以从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：
-![][1]
+如果在初始化 NotificationHub 时启用调试标志，你将会看到详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，你可以从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：![][1]
 
 你将看到如详细的通知中心结果，例如
 
@@ -329,13 +327,13 @@
 ## 后续步骤
 在本主题中，我们介绍了如何为通知中心创建简单的 Python REST 客户端。从这里你可以：
 
-* 下载完整[Python REST 包装器示例]，其中包含上述所有代码。
+* 下载完整的 [Python REST 包装器示例]，其中包含上述所有代码。
 * 在[突发新闻教程]中继续学习通知中心标记功能
 * 在[本地化新闻教程]中继续学习通知中心模板功能
 
 <!-- URLs -->
 [Python REST 包装器示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[入门的教程]: /documentation/articles/notification-hubs-windows-store-dotnet-get-started
+[入门教程]: /documentation/articles/notification-hubs-windows-store-dotnet-get-started
 [突发新闻教程]: /documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news
 [本地化新闻教程]: /documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news
 
@@ -346,4 +344,4 @@
 [4]: ./media/notification-hubs-python-backend-how-to/SendWithMultipleTags.png
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1207_2015-->

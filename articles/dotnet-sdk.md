@@ -38,18 +38,18 @@ Azure SDK for .NET 将安装以下产品：
 
 ###<a id="vwd"></a>Visual Studio Express for Web
 
-如果您的计算机上没有 Visual Studio，SDK 将安装 [Visual Studio Express for Web](http://www.visualstudio.com/zh-cn/products/visual-studio-express-vs.aspx)。
+如果你的计算机上没有 Visual Studio，SDK 将安装 [Visual Studio Express for Web](http://www.visualstudio.com/products/visual-studio-express-vs.aspx)。
  
 ###<a id="wte"></a>Microsoft ASP.NET 和 Web Tools for Visual Studio
 
 这使你可以使用 Azure 网站：
 
-* [将 Web 项目发布到 Azure 网站](/zh-cn/documentation/articles/web-sites-dotnet-get-started)。
-* [将控制台应用程序项目发布到 Azure WebJobs](/zh-cn/documentation/articles/websites-dotnet-deploy-webjobs)。
-* [在创建新的 Web 项目或发布 Web 项目时创建 Azure 网站和 SQL 数据库资源](/zh-cn/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database)。
+* [将 Web 项目发布到 Azure 网站](/documentation/articles/web-sites-dotnet-get-started)。
+* [将控制台应用程序项目发布到 Azure WebJobs](/documentation/articles/websites-dotnet-deploy-webjobs)。
+* [在创建新的 Web 项目或发布 Web 项目时创建 Azure 网站和 SQL 数据库资源](/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database)。
 * [在创建新网站时创建 PowerShell 部署脚本](http://msdn.microsoft.com/zh-cn/library/dn642480.aspx)。
-* [在服务器资源管理器中管理和故障诊断 Azure 网站](/zh-cn/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/#sitemanagement)。
-* [在调试模式下针对网站和 WebJobs 远程运行](/zh-cn/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio/#remotedebug)。 
+* [在服务器资源管理器中管理和故障诊断 Azure 网站](/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio#sitemanagement)。
+* [在调试模式下针对网站和 WebJobs 远程运行](/documentation/articles/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)。 
 
 >[AZURE.NOTE]无需安装 Azure SDK for .NET 即可使用这些功能；它们还包括在 Visual Studio 更新中。
 
@@ -57,14 +57,14 @@ Azure SDK for .NET 将安装以下产品：
 
 这使您可以使用 Azure 资源，主要是云服务和虚拟机：
 
-* [创建、打开和发布云服务项目](/zh-cn/documentation/articles/cloud-services-dotnet-get-started)。
+* [创建、打开和发布云服务项目](/documentation/articles/cloud-services-dotnet-get-started)。
 * [创建云服务项目的部署包](http://msdn.microsoft.com/zh-cn/library/ff683672.aspx)。
-* [在创建新的 Web 项目时创建 Azure 虚拟机](/zh-cn/documentation/articles/virtual-machines-dotnet-create-visual-studio-powershell)。
+* [在创建新的 Web 项目时创建 Azure 虚拟机](/documentation/articles/virtual-machines-dotnet-create-visual-studio-powershell)。
 * [在创建新的虚拟机时创建 PowerShell 脚本](http://msdn.microsoft.com/zh-cn/library/dn642480.aspx)。
 * [查看和管理 Visual Studio 项目属性窗口中的云服务项目设置](http://msdn.microsoft.com/zh-cn/library/ee405486.aspx)。
 * 在服务器资源管理器中查看和管理[云服务](http://msdn.microsoft.com/zh-cn/library/ff683675.aspx)、[虚拟机](http://msdn.microsoft.com/zh-cn/library/jj131259.aspx)和[服务总线](http://msdn.microsoft.com/zh-cn/library/jj149828.aspx)。 
 * [针对云服务和虚拟机在调试模式下远程运行](http://msdn.microsoft.com/zh-cn/library/ff683670.aspx)。
-* [使用 Azure 资源组部署项自动执行资源预配](https://msdn.microsoft.com/library/dn872471.aspx)
+* [使用 Azure 资源组部署项自动执行资源预配](https://msdn.microsoft.com/zh-cn/library/dn872471.aspx)
 
 ###<a id="auth"></a>Microsoft Azure 创作工具
 
@@ -84,7 +84,7 @@ Azure SDK for .NET 将安装以下产品：
 
 ###<a id="stgtools"></a>Microsoft Azure 存储工具
 
-这将安装命令行工具 [AzCopy](/documentation/articles/storage-use-azcopy)，以便将数据传入和传出 Azure 存储帐户。
+这将安装命令行工具 [AzCopy](http://aka.ms/AzCopy)，可以使用它将数据传入和传出 Azure 存储帐户。
 
 ###<a id="libraries"></a>Microsoft Azure Libraries for .NET
 
@@ -115,9 +115,9 @@ Azure SDK for .NET 将安装以下产品：
 
   	**客户端库的本地副本。** Azure SDK for.NET 将某些 Azure 客户端库的 NuGet 包（如存储空间、服务总线和 Caching）复制到您的计算机上。这些客户端库将自动包括在新的云服务项目中，因此本地的 NuGet 程序包会启用 Visual Studio 来创建项目，即使您未连接到 Internet 也是如此。通常，客户端库的更新频率比 SDK 新版本的发布频率更为频繁，因此 NuGet.org 上的客户端库通常比您所获得的 SDK 更新。
 
-	**包括客户端库的项目模板。** 仅 [Azure 云服务](/zh-cn/documentation/articles/cloud-services-dotnet-get-started/)和 [Azure 移动服务](/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard/)项目模板自动地包括一些客户端库。对于其他库或其他模板，安装您所需的[客户端库 NuGet 包](http://go.microsoft.com/fwlink/?LinkId=510472)。
+	**包括客户端库的项目模板。** 只有 [Azure 云服务](/documentation/articles/cloud-services-dotnet-get-started)和 [Azure 移动服务](/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard)项目模板会自动包含一些客户端库。对于其他库或其他模板，安装您所需的[客户端库 NuGet 包](http://go.microsoft.com/fwlink/?LinkId=510472)。
 
-* [Azure 移动服务项目模板](/zh-cn/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard)。
+* [Azure 移动服务项目模板](/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-leaderboard)。
 
 	移动服务模板仅在 Visual Studio 2013 Update 2 及更高版本中提供。这些模板在 Visual Studio 2012 或更早的版本中不提供，在 Visual Studio 2013 Update 1 或更早的版本中也不提供，即使你安装了 Azure SDK for .NET。
 
@@ -134,7 +134,7 @@ Azure SDK for .NET 将安装以下产品：
 
 如果你想要使用最新工具针对 Azure 进行开发，则最好是安装该 SDK。如果你不愿意安装该 SDK，则在符合以下条件的情况下，你可以这样做：
 
-* 您已安装了最新版的 [Visual Studio 更新](http://www.visualstudio.com/zh-cn/downloads/download-visual-studio-vs#DownloadFamilies_5)。
+* 你已安装了最新的 [Visual Studio 更新](http://www.visualstudio.com/downloads/download-visual-studio-vs#DownloadFamilies_5)。
 * 你的开发仅针对 Azure 网站或移动服务，不针对云服务或虚拟机。
 * 你的应用程序不使用存储，或者它使用存储，但你不需要存储模拟器或 AzCopy 工具。
 
@@ -144,7 +144,7 @@ Azure SDK for .NET 将安装以下产品：
 
 ###<a id="olderversions"></a>哪里可以找到较旧版本的 Azure SDK for .NET？
 
-如需较旧版本，请参阅 [Azure SDK for .NET](/downloads/?sdk=net) 下载页。
+如需较旧版本，请参阅 [Azure SDK for .NET](/downloads/archive-net-downloads/) 下载页。
 
 ###<a id="lifecycle"></a>Azure SDK for .NET 版本的生命周期策略是什么？
 
@@ -172,7 +172,7 @@ Azure SDK for .NET 将安装以下产品：
 
 ##<a id="versions"></a>版本
 
-若要查看哪一个版本是最新版本或者需要下载较旧版本，请参阅 [Azure SDK for .NET 版本历史记录](/downloads/?sdk=net)页。
+若要查看哪一个版本是最新版本或者需要下载较旧版本，请参阅 [Azure SDK for .NET 版本历史记录](/downloads/archive-net-downloads/)页。
 
 ##<a id="resources"></a>资源
 
@@ -180,6 +180,6 @@ Azure SDK for .NET 将安装以下产品：
 
 如需 Azure SDK for .NET 源代码，包括客户端库，请参阅 [GitHub.com/Azure](https://github.com/azure/)。
 
-有关 Azure 客户端库的参考文档，请参阅 [Azure.NET 参考](http://azure.microsoft.com/zh-cn/documentation/api/)。
+有关 Azure 客户端库的参考文档，请参阅 [Azure.NET 参考](/documentation/api/)。
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_1207_2015-->

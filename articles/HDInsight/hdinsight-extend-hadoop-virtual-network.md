@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="09/23/2015"
+	ms.date="10/28/2015"
 	wacn.date=""/>
 
 
@@ -18,10 +18,6 @@
 Azure 虚拟网络可让你扩展 Hadoop 解决方案以合并本地资源（例如 SQL Server），或者在云中资源之间创建安全的专用网络。
 
 > [AZURE.NOTE]HDInsight 不支持基于地缘的 Azure 虚拟网络。在使用 HDInsight 时，你必须使用基于位置的虚拟网络。
-<!-- deleted by customization
->
-> Currently (8/25/2015,) you can only provision one Linux-based HDInsight cluster on an Azure Virtual Network.
--->
 
 ##<a id="whatis"></a>Azure 虚拟网络是什么？
 
@@ -62,12 +58,6 @@ Azure 虚拟网络可让你扩展 Hadoop 解决方案以合并本地资源（例
 > Azure HDInsight 仅支持基于位置的虚拟网络，目前无法处理基于地缘的虚拟网络。
 >
 > 强烈建议为每个群集指定一个子网。
-<!-- deleted by customization
->
-> You cannot use a v1 (Classic,) Azure Virtual Network with Linux-based HDInsight. The Virtual Network must be v2 (Azure Resource Manager,) in order for it to be listed as an option during the HDInsight cluster creation process in the Azure preview portal, or to be usable when creating a cluster from the Azure CLI or Azure PowerShell.
->
-> If you have resources on a v1 network, and you wish to make HDInsight directly accessible to those resources through a virtual network, see [Connecting classic VNets to new VNets](/documentation/articles/virtual-networks-arm-asm-s2s) for information on how to connect a v2 Virtual Network to a v1 Virtual Network. Once this connection is established, you can create the HDInsight cluster in the v2 Virtual Network.
--->
 
 有关如何在虚拟网络中设置 HDInsight 群集的详细信息，请参阅[在 HDInsight 中设置 Hadoop 群集](/documentation/articles/hdinsight-provision-clusters)。
 
@@ -177,4 +167,4 @@ Azure 虚拟网络可让你扩展 Hadoop 解决方案以合并本地资源（例
 
 若要了解有关 Azure 虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](/documentation/articles/virtual-networks-overview)。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->

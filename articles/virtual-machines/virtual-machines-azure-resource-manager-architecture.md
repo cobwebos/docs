@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure 资源管理器体系结构"
+   pageTitle="Azure 资源管理器体系结构 | Microsoft Azure"
    description="了解资源管理器的体系结构和计算、网络、存储资源提供程序之间的关系。"
    services="virtual-machines"
    documentationCenter=""
@@ -15,7 +15,9 @@
 
 # Azure 资源管理器体系结构
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
+
+
 
 本文概括介绍了用于创建基于基础结构的应用程序和工作负荷的服务管理和资源管理器体系结构。
 
@@ -77,4 +79,4 @@
 
 [Azure 资源管理器概述](/documentation/articles/resource-group-overview)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1207_2015-->
