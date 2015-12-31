@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="在 Azure 中部署高可用性业务线应用程序" 
-	description="可以在 Azure 中通过 SQL Server AlwaysOn 可用性组分五个阶段部署基于 web 的高可用性业务线应用程序。" 
+	pageTitle="部署业务线应用程序 | Microsoft Azure" 
+	description="在 Azure 中通过 SQL Server AlwaysOn 可用性组分五个阶段部署基于 web 的高可用性业务线应用程序。" 
 	documentationCenter=""
 	services="virtual-machines" 
 	authors="JoeDavies-MSFT" 
@@ -9,11 +9,13 @@
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines" 
-	ms.date="08/11/2015" 
+	ms.service="virtual-machines"
+	ms.date="11/09/2015" 
 	wacn.date=""/>
 
 # 在 Azure 中部署高可用性业务线应用程序
+
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
 
 本主题包含有关在 Azure 基础结构服务中通过 SQL Server AlwaysOn 可用性组部署仅限 Intranet 的基于web 的高可用性业务线应用程序的分步说明链接。在以下计算机上托管应用程序：
 
@@ -42,9 +44,9 @@
 
 - 如果你是经验丰富的基于 web 的业务线应用程序的实现者，请随意调整阶段 3 到阶段 5 中的说明并生成最适合你的需求的应用程序基础结构。 
 - 如果你已有现有 Azure 混合云实现，请随意调整或跳过阶段 1 和阶段 2 中的说明，以在相应子网上托管新应用程序的虚拟机。
-- 所有服务器都位于 Azure 虚拟网络中的单个子网上。如果要提供等效于子网隔离的附加安全性，则可以使用[网络安全组](/documentation/articles/virtual-networks-nsg)。
+- 所有服务器都位于 Azure 虚拟网络中的单个子网上。如果要提供等效于子网隔离的附加安全性，则可以使用[网络安全组](../virtual-networks/virtual-networks-nsg.md)。
 
-若要构建此配置的开发/测试环境或概念证明，请参阅[在混合云中设置基于 web 的 LOB 应用程序用于测试](/documentation/articles/virtual-networks-setup-lobapp-hybrid-cloud-testing)。
+若要构建此配置的开发/测试环境或概念证明，请参阅[在混合云中设置基于 web 的 LOB 应用程序用于测试](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)。
 
 有关针对 Azure 设计 IT 工作负荷的其他信息，请参阅 [Azure 基础结构服务实现准则](/documentation/articles/virtual-machines-infrastructure-services-implementation-guidelines)。
 
@@ -56,10 +58,10 @@
 
 [业务线应用程序体系结构蓝图](http://msdn.microsoft.com/dn630664)
 
-[在混合云中设置用于测试且基于 Web 的 LOB 应用程序](/documentation/articles/virtual-networks-setup-lobapp-hybrid-cloud-testing)
+[在混合云中设置用于测试且基于 Web 的 LOB 应用程序](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
 
 [Azure 基础结构服务实施准则](/documentation/articles/virtual-machines-infrastructure-services-implementation-guidelines)
 
 [Azure 基础结构服务工作负荷：SharePoint Server 2013 场](/documentation/articles/virtual-machines-workload-intranet-sharepoint-farm)
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_1221_2015-->

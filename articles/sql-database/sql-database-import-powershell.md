@@ -17,15 +17,15 @@
 **单一数据库**
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](/documentation/articles/sql-database-import)
+- [Azure 预览门户](/documentation/articles/sql-database-import)
 - [PowerShell](/documentation/articles/sql-database-import-powershell)
 
 
 本文说明如何使用 PowerShell 通过导入 BACPAC 来创建 Azure SQL 数据库。
 
-BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息，请参阅[数据层应用程序](https://msdn.microsoft.com/library/ee210546.aspx)中的备份包 (.bacpac)。
+BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息，请参阅[数据层应用程序](https://msdn.microsoft.com/zh-cn/library/ee210546.aspx)中的备份包 (.bacpac)。
 
-数据库是使用从 Azure 存储 blob 容器导入的 BACPAC 创建的。如果 Azure 存储中没有 .bacpac 文件，你可以按照[创建和导出 Azure SQL 数据库的 BACPAC](/documentation/articles/sql-database-backup) 中的步骤创建一个。
+数据库是使用从 Azure 存储 blob 容器导入的 BACPAC 创建的。如果 Azure 存储空间中没有 .bacpac 文件，你可以按照[创建和导出 Azure SQL 数据库的 BACPAC](/documentation/articles/sql-database-export-powershell) 中的步骤创建一个。
 
 > [AZURE.NOTE]Azure SQL 数据库会自动为你可以还原的每个用户数据库创建和维护备份。有关详细信息，请参阅[业务连续性概述](/documentation/articles/sql-database-business-continuity)。
 
@@ -36,7 +36,7 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息�
 - 要还原的数据库的 .bacpac 文件 (BACPAC)。BACPAC 需位于 [Azure 存储帐户（经典）](/documentation/articles/storage-create-storage-account)blob 容器中。
 
 
-> [AZURE.IMPORTANT]本文包含最高为 Azure PowerShell 版本 1.0 *但不包括* 1.0 及更高版本的命令。可以使用 **Get-Module azure | format-table version** 命令查看 Azure PowerShell 的版本。
+> [AZURE.IMPORTANT]本文包含的命令适用于最高版本为 1.0（*但不含*）的 Azure PowerShell。可以使用 **Get-Module azure | format-table version** 命令查看 Azure PowerShell 的版本。
 
 
 
@@ -55,7 +55,7 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息�
 
 	Select-AzureSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
 
-成功运行 **Select-AzureSubscription** 后，将返回到 PowerShell 提示符处。如果你有多个订阅，可以运行 **Get-AzureSubscription** 并验证所选择的订阅显示 **IsCurrent: True**。
+成功运行 **Select-AzureSubscription** 后，将返回到 PowerShell 提示符处。如果你有多个订阅，可以运行 **Get-AzureSubscription** 并验证所选择的订阅是否显示 **IsCurrent: True**。
 
 
 ## 设置适合环境的变量
@@ -148,4 +148,4 @@ Blob 名称是你想要从中创建的数据库的现有 .bacpac 文件的名称
 - [灾难恢复练习](/documentation/articles/sql-database-disaster-recovery-drills)
 - [SQL 数据库文档](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

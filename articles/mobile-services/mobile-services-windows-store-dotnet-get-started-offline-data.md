@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="07/23/2015" 
+	ms.date="11/06/2015" 
 	wacn.date=""/>
 
 # 在移动服务中使用脱机数据同步
@@ -32,7 +32,7 @@
 * 完成[移动服务入门]。
 * [Azure 移动服务 SDK 版本 1.3.0（或更高版本）][Mobile Services SDK Nuget]
 * [Azure 移动服务 SQLite Store 版本 1.0.0（或更高版本）][SQLite store nuget]
-* [SQLite for Windows 8.1](www.sqlite.org/downloads)
+* [SQLite for Windows 8.1](http://www.sqlite.org/download.html)
 * 一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。 
 
 ## <a name="enable-offline-app"></a>更新应用程序以支持脱机功能
@@ -59,13 +59,11 @@
 
 3. 在解决方案资源管理器中，右键单击适用于 Windows 8.1 运行时和 Windows Phone 8.1 平台项目的“引用”，并确保存在对位于“扩展”部分的 SQLite 的引用。
 
-    ![][1] 
-    </br>
+    ![][1] </br>
 
     **Windows 8.1 运行时**
 
-    ![][11] 
-    </br>
+    ![][11] </br>
 
     **Windows Phone 8.1**
 
@@ -174,7 +172,7 @@
 
     在此示例中，我们将检索远程 `todoTable` 中的所有记录，但也可以通过传递查询来筛选记录。`PullAsync` 的第一个参数是用于增量同步的查询 ID；增量同步使用 `UpdatedAt` 时间戳以仅获取自上次同步以来修改的记录。查询 ID 应对于你的应用程序中的每个逻辑查询都是唯一的描述性字符串。若选择不要增量同步，请传递 `null` 作为查询 ID。此命令会检索每个请求的操作，这是可能效率低下上的所有记录。
 
-    >[AZURE.NOTE]* 若要从设备本地存储中删除已在移动设备数据库中删除的记录，应启用“软删除”[]。否则，你的应用程序应定期调用 `IMobileServiceSyncTable.PurgeAsync()` 以清除本地存储。
+    >[AZURE.NOTE]* 若要从设备本地存储中删除已在移动设备数据库中删除的记录，应启用[“软删除”]。否则，你的应用程序应定期调用 `IMobileServiceSyncTable.PurgeAsync()` 以清除本地存储。
 
     请注意，推送和请求操作可能会发生 `MobileServicePushFailedException`。由于拉取操作会内部执行推送来确保所有表及所有关系都一致，因此也可能发生该调用。下一篇教程[使用移动服务脱机支持处理冲突]说明了如何处理这些同步相关的异常。
 
@@ -238,7 +236,7 @@
 
 * [使用移动服务脱机支持处理冲突]
 
-* [使用移动服务中的软删除][Soft Delete]
+* [使用移动服务中的软删除](/documentation/articles/mobile-services-using-soft-delete)
 
 <!-- Anchors. -->
 [Update the app to support offline features]: #enable-offline-app
@@ -266,11 +264,10 @@
 [移动服务入门]: /documentation/articles/mobile-services-windows-store-get-started
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkId=394776
 [SQLite for Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkId=397953
-[Soft Delete]: /documentation/articles/mobile-services-using-soft-delete
-[]: /documentation/articles/mobile-services-using-soft-delete
+[“软删除”]: /documentation/articles/mobile-services-using-soft-delete
 
 
 [Mobile Services SDK Nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.0
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

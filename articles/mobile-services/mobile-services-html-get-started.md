@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="10/05/2015"
+	ms.date="11/06/2015"
 	wacn.date=""/>
 
 
@@ -45,7 +45,7 @@
 	你可以使用任何 Web 服务器来托管应用程序，但是这些 Web 服务器必须受下载的脚本支持。
 
 + 支持 HTML5 的 Web 浏览器。
-+ 一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fzh-CN%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F"%20target="_blank)。 
++ 一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F"%20target="_blank)。 
 
 
 ## <a name="create-new-service"></a>创建新的移动服务
@@ -87,7 +87,7 @@
 
 1. 浏览到压缩的项目文件所保存到的位置，在计算机上展开这些文件，然后启动 **server** 子文件夹中的下列命令文件之一。
 
-	+ **launch-windows**（Windows 计算机） 
+	+ **.\\start-iisexpress.ps1**（Windows 计算机）
 	+ **launch-mac.command**（Mac OS X 计算机）
 	+ **launch-linux.sh**（Linux 计算机）
 
@@ -103,7 +103,7 @@
 
    	这样可向在 Azure 中托管的新移动服务发送 POST 请求。来自请求的数据被插入到 TodoItem 表。移动服务返回存储在表中的项，数据显示在应用的第二列中。
 
-	> [AZURE.NOTE]你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 app.js 文件中。
+	> [AZURE.NOTE]你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 page.js 文件中。
 
 4. 返回管理门户，单击“数据”选项卡，然后单击 **TodoItem** 表。
 
@@ -116,11 +116,11 @@
 ## <a name="next-steps"></a>后续步骤
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-* **[向应用程序添加身份验证]**
-了解如何使用标识提供者对应用程序的用户进行身份验证。
+* **[向应用程序添加身份验证]**  
+  了解如何使用标识提供者对应用程序的用户进行身份验证。
 
-* **[移动服务 HTML/JavaScript 操作方法概念性参考]**
-了解有关如何将移动服务与 HTML/JavaScript 配合使用的详细信息
+* **[移动服务 HTML/JavaScript 操作方法概念性参考]**  
+  了解有关如何将移动服务与 HTML/JavaScript 配合使用的详细信息
 
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
@@ -152,4 +152,4 @@
 [移动服务 HTML/JavaScript 操作方法概念性参考]: /zh-cn/documentation/articles/mobile-services-html-how-to-use-client-library
 [Cross-origin resource sharing]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn155871.aspx
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

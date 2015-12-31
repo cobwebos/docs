@@ -6,7 +6,7 @@
 	authors="dsk-2015"
 	manager="timlt"
 	editor=""
-	tags="azure-service-management,azure-resource-manager"/>
+	tags="top-support-issue,azure-service-management,azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
@@ -14,6 +14,8 @@
 	wacn.date=""/>
 
 # 对与基于 Windows 的 Azure 虚拟机的远程桌面连接进行详细故障排除
+
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-both-include.md)]
 
 本文提供复杂远程桌面错误的详细故障排除步骤。
 
@@ -23,7 +25,7 @@
 
 如果你对本文中的任何点需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](http://azure.microsoft.com/support/forums/)上的 Azure 专家。
 
-或者，你也可以提出 Azure 支持事件。转至 [Azure 支持站点](http://azure.microsoft.com/support/options/)并单击“获取支持”。有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](http://azure.microsoft.com/support/faq/)。
+或者，你也可以提出 Azure 支持事件。请转到 [Azure 支持站点](http://azure.microsoft.com/support/options/)并单击“获取支持”。有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](http://azure.microsoft.com/support/faq/)。
 
 
 ## 一般远程桌面错误消息
@@ -86,7 +88,7 @@
 
 ![](./media/virtual-machines-rdp-detailed-troubleshoot/tshootrdp_2.png)
 
-如果没有直接连接到 Internet 的计算机，可以轻松地在其自己的资源组或云服务中创建新的 Azure 虚拟机，然后进行使用。有关详细信息，请参阅[在 Azure 中创建运行 Windows 的虚拟机](/documentation/articles/virtual-machines-windows-tutorial)。测试完成后，请删除资源组或虚拟机以及云服务。
+如果没有直接连接到 Internet 的计算机，可以轻松地在其自己的资源组或云服务中创建新的 Azure 虚拟机，然后进行使用。有关详细信息，请参阅[在 Azure 中创建运行 Windows 的虚拟机](/documentation/articles/virtual-machines-windows-tutorial-classic-portal)。测试完成后，请删除资源组或虚拟机以及云服务。
 
 如果你可以创建与直接连接到 Internet 的计算机的远程桌面连接，请检查你组织的 Intranet 边缘设备中是否有以下项：
 
@@ -125,7 +127,7 @@
 
 ![](./media/virtual-machines-rdp-detailed-troubleshoot/tshootrdp_5.png)
 
-[远程桌面基本故障排除文章](/documentation/articles/virtual-machines-troubleshoot-remote-desktop-connections)介绍如何使用 [Azure IaaS (Windows) 诊断程序包](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)。如果此诊断程序包无法解决针对**与 Azure VM 的 RDP 连接（需要重启）**问题，请按照[本文](/documentation/articles/virtual-machines-windows-reset-password)中的说明在虚拟机上重置“远程桌面服务”服务。这将：
+[远程桌面基本故障排除文章](/documentation/articles/virtual-machines-troubleshoot-remote-desktop-connections)介绍如何使用 [Azure IaaS (Windows) 诊断程序包](https://home.diagnostics.support.microsoft.com/SelfHelp?knowledgebaseArticleFilter=2976864)。如果此诊断程序包无法解决**与 Azure VM 的 RDP 连接（需要重启）**问题，请按照[本文](/documentation/articles/virtual-machines-windows-reset-password)中的说明在虚拟机上重置“远程桌面服务”服务。这将：
 
 - 启用“远程桌面”Windows 防火墙默认规则（TCP 端口 3389）。
 - 通过将 HKLM\\System\\CurrentControlSet\\Control\\Terminal Server\\fDenyTSConnections 注册表值设置为 0，启用远程桌面连接。
@@ -139,7 +141,7 @@
 
 若要更正使用服务管理 API 创建的虚拟机可能存在的这些问题，可以使用 Azure 虚拟机的远程 Azure PowerShell 会话。首先，需要安装虚拟机托管云服务的证书。转到[为 Azure 虚拟机配置安全远程 PowerShell 访问](http://gallery.technet.microsoft.com/scriptcenter/Configures-Secure-Remote-b137f2fe)，并将 **InstallWinRMCertAzureVM.ps1** 脚本文件下载到本地计算机上的文件夹中。
 
-接下来，安装 Azure PowerShell（如果尚未安装）。请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell)。
+接下来，安装 Azure PowerShell（如果尚未安装）。请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。
 
 接下来，打开 Azure PowerShell 命令提示符，并将当前文件夹更改为 **InstallWinRMCertAzureVM.ps1** 脚本文件所在的位置。若要运行 Azure PowerShell 脚本，必须设置正确的执行策略。运行 **Get-ExecutionPolicy** 命令，以确定当前的策略级别。有关设置相应级别的信息，请参阅 [Set-ExecutionPolicy](https://technet.microsoft.com/library/hh849812.aspx)。
 
@@ -195,10 +197,10 @@ PortNumber 属性显示当前端口号。如果需要，可使用此命令将远
 
 [如何为 Windows 虚拟机重置密码或远程桌面服务](/documentation/articles/virtual-machines-windows-reset-password)
 
-[如何安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell)
+[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)
 
 [对于基于 Linux 的 Azure 虚拟机的 Secure Shell (SSH) 连接进行故障排除](/documentation/articles/virtual-machines-troubleshoot-ssh-connections)
 
 [对在 Azure 虚拟机上运行的应用程序的访问进行故障排除](/documentation/articles/virtual-machines-troubleshoot-access-application)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

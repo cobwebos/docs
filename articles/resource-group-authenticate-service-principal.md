@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="10/14/2015"
+   ms.date="10/30/2015"
    wacn.date=""/>
 
 # 通过 Azure 资源管理器对服务主体进行身份验证
@@ -18,10 +18,10 @@
 
 它演示如何使用用户名和密码或证书进行身份验证。
 
-您可以使用适用于 Mac、Linux 和 Windows 的 Azure PowerShell 或 Azure CLI。如果你未安装 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](./powershell-install-configure.md)。如果您未安装 Azure CLI，请参阅[安装和配置 Azure CLI](xplat-cli-install.md)。
+您可以使用适用于 Mac、Linux 和 Windows 的 Azure PowerShell 或 Azure CLI。如果你未安装 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](./powershell-install-configure.md)。如果你未安装 Azure CLI，请参阅[安装和配置 Azure CLI](/documentation/articles/xplat-cli-install)。
 
 ## 概念
-1. Azure Active Directory (AAD) - 云的标识与访问管理服务。有关详细信息，请参阅[什么是 Azure Active Directory](/documentation/articles/active-directory-whatis)
+1. Azure Active Directory (AAD) - 云的标识与访问管理服务。有关详细信息，请参阅[什么是 Azure Active Directory](active-directory/active-directory-whatis.md)
 2. 服务主体 - 目录中需要访问其他资源的应用程序实例。
 3. AD 应用程序 - 向 AAD 标识某个应用程序的目录记录。有关详细信息，请参阅 [Azure AD 中的身份验证基本知识](https://msdn.microsoft.com/zh-cn/library/azure/874839d9-6de6-43aa-9a5c-613b0c93247e#BKMK_Auth)。
 
@@ -76,7 +76,7 @@
 
 3. 向服务主体授予对你的订阅的权限。在此示例中，你将要向服务主体授予读取订阅中所有资源的权限。对于 **ServicePrincipalName** 参数，请提供你在创建应用程序时使用的 **ApplicationId** 或 **IdentifierUris**。有关基于角色的访问控制的详细信息，请参阅[管理和审核对资源的访问权限](/documentation/articles/resource-group-rbac)
 
-        PS C:\> New-AzureRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId
+        PS C:\> New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId
 
 4. 检索在其中创建了角色分配的订阅。稍后将使用此订阅来获取服务主体角色分配所在租户的 **TenantId**。
 
@@ -110,9 +110,9 @@
 
         public static string GetAToken()
         {
-          var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenantId or tenant name}");  
+          var authenticationContext = new AuthenticationContext("https://login.chinacloudapi.cn/{tenantId or tenant name}");  
           var credential = new ClientCredential(clientId: "{application id}", clientSecret: "{application password}");
-          var result = authenticationContext.AcquireToken(resource: "https://management.core.windows.net/", clientCredential:credential);
+          var result = authenticationContext.AcquireToken(resource: "https://management.core.chinacloudapi.cn/", clientCredential:credential);
 
           if (result == null) {
             throw new InvalidOperationException("Failed to obtain the JWT token");
@@ -198,7 +198,7 @@
 
     现在你已在目录中创建服务主体，但未将任何权限或范围分配给服务。需要显式向服务主体授予权限，才能在某个范围执行操作。
 
-5. 向服务主体授予对你的订阅的权限。在此示例中，你将要向服务主体授予读取订阅中所有资源的权限。对于 **ServicePrincipalName** 参数，请提供你在创建应用程序时使用的 **ApplicationId** 或 **IdentifierUris**。有关基于角色的访问控制的详细信息，请参阅[管理和审核对资源的访问权限](azure-portal/resource-group-rbac.md)
+5. 向服务主体授予对你的订阅的权限。在此示例中，你将要向服务主体授予读取订阅中所有资源的权限。对于 **ServicePrincipalName** 参数，请提供你在创建应用程序时使用的 **ApplicationId** 或 **IdentifierUris**。有关基于角色的访问控制的详细信息，请参阅[管理和审核对资源的访问权限](/documentation/articles/resource-group-rbac)
 
         PS C:\> New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId
 
@@ -208,7 +208,7 @@
         var subscriptionId = "<Your Azure SubscriptionId>"; 
         string tenant = "<Tenant id or tenant name>"; 
 
-        var authContext = new AuthenticationContext(string.Format("https://login.windows.net/{0}", tenant)); 
+        var authContext = new AuthenticationContext(string.Format("https://login.chinacloudapi.cn/{0}", tenant)); 
 
         X509Certificate2 cert = null; 
         X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser); 
@@ -226,7 +226,7 @@
         }        
 
         var certCred = new ClientAssertionCertificate(clientId, cert); 
-        var token = authContext.AcquireToken("https://management.core.windows.net/", certCred); 
+        var token = authContext.AcquireToken("https://management.core.chinacloudapi.cn/", certCred); 
         var creds = new TokenCloudCredentials(subscriptionId, token.AccessToken); 
         var client = new ResourceManagementClient(creds); 
         
@@ -277,7 +277,7 @@
 
 5. 若要确定服务主体角色分配所在租户的 **TenantId**，请列出帐户，然后查找输出中的 **TenantId** 属性。
 
-        azure account list
+        azure account list --json
 
 6. 使用作为你的标识的服务主体登录。对于用户名，请使用你在创建应用程序时所用的 **ApplicationId**。对于密码，请使用你在创建帐户时指定的密码。
 
@@ -288,11 +288,11 @@
 ## 后续步骤
   
 - 有关基于角色的访问控制的概述，请参阅[管理和审核对资源的访问权限](/documentation/articles/resource-group-rbac)  
-- 若要了解有关使用服务主体的门户的信息，请参阅[使用 Azure 门户创建新的 Azure 服务主体](/documentation/articles/resource-group-create-service-principal-portal)  
+- 若要了解有关使用服务主体的门户的信息，请参阅[使用 Azure 门户创建新的 Azure 服务主体](./resource-group-create-service-principal-portal.md)  
 - 有关在 Azure 资源管理器中实现安全性的指南，请参阅 [Azure 资源管理器的安全注意事项](/documentation/articles/best-practices-resource-manager-security)
 
 
 <!-- Images. -->
 [1]: ./media/resource-group-authenticate-service-principal/arm-get-credential.png
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

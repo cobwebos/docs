@@ -4,12 +4,12 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn" />
 <tags
-   ms.service="virtual-network"
-   ms.date="09/14/2015"
-   wacn.date="" />
+	ms.service="virtual-network"
+	ms.date="10/29/2015"
+	wacn.date=""/>
 
 # 虚拟网络概述
 
@@ -81,12 +81,12 @@ VNet 为部署到它们的 IaaS VM 和 PaaS 角色的角色实例提供以下服
 
 ## 后续步骤
 
-- [创建 VNet](/documentation/articles/virtual-networks-create-a-vnet) 和子网。
-- [在 VNet 中创建 VM](/documentation/articles/virtual-machines-windows-tutorial)。
+- [创建 VNet](/documentation/articles/virtual-networks-create-vnet-arm-pportal) 和子网。
+- [在 VNet 中创建 VM](/documentation/articles/virtual-machines-windows-tutorial-classic-portal)。
 - 了解 [NSG](/documentation/articles/virtual-networks-nsg)。
 - 了解[负载平衡器](/documentation/articles/load-balancer-overview)。
 - [保留内部 IP 地址](/documentation/articles/virtual-networks-reserved-private-ip)
 - [保留公共 IP 地址](/documentation/articles/virtual-networks-reserved-public-ip)。
 - 了解[用户定义的路由和 IP 转发](/documentation/articles/virtual-networks-udr-overview)。
 
-<!---HONumber=76-->
+<!---HONumber=Mooncake_1221_2015-->

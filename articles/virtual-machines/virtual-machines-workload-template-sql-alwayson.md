@@ -1,6 +1,6 @@
 <properties
 	pageTitle="使用 Azure 资源管理器模板部署 SQL Server AlwaysOn | Microsoft Azure"
-	description="使用资源管理器模板和 Azure 预览门户、Azure PowerShell 或 Azure CLI，轻松部署 5 个支持 SQL Server AlwaysOn 的服务器。"
+	description="使用资源管理器模板和 Azure 门户、Azure PowerShell 或 Azure CLI，轻松部署 5 个支持 SQL Server AlwaysOn 的服务器。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="davidmu1"
@@ -21,7 +21,23 @@
 
 ![](./media/virtual-machines-workload-template-sql-alwayson/five-server-sqlao.png)
 
-可以使用 Azure PowerShell 或 Azure CLI 运行模板。
+可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 运行模板。
+
+## Azure 门户
+
+要使用 Azure 资源管理器模板和 Azure 门户部署此工作负荷，请单击[此处](https://manage.windowsazure.cn#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsql-server-2014-alwayson-dsc%2Fazuredeploy.json)。
+
+![](./media/virtual-machines-workload-template-sql-alwayson/azure-portal-template.png)
+
+1.	在“模板”窗格中，单击“保存”。
+2.	单击“参数”。在“参数”窗格上，输入新值、从允许的值中选择，或者接受默认值，然后单击“确定”。
+3.	如有需要，可单击“订阅”并选择正确的 Azure 订阅。
+4.	单击“资源组”并选择现有的资源组。或者，单击“或新建”为此工作负荷创建新的资源组。
+5.	如有需要，可单击“资源组位置”并选择正确的 Azure 位置。
+6.	如有需要，可单击“法律条款”以查看使用模板的条款条件和协议。
+7.	单击“创建”。
+
+根据具体模板，Azure 可能需花费一些时间生成工作负荷。当模板执行完成时，你的现有或新资源组中将出现一个新的包含 5 个服务器的 SQL Server AlwaysOn。
 
 ## Azure PowerShell
 
@@ -53,7 +69,7 @@
 
 ## Azure CLI
 
-在开始之前，请确保安装了正确版本的 Azure CLI 且已登录，并切换到新的“资源管理器”模式。有关详细信息，请单击[此处](/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli/#getting-ready)。
+在开始之前，请确保安装了正确版本的 Azure CLI 且已登录，并切换到新的“资源管理器”模式。有关详细信息，请单击[此处](/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli#getting-ready)。
 
 首先，创建新的资源组。使用以下命令并指定组名称，以及要向其中部署的 Azure 数据中心位置。
 
@@ -83,8 +99,8 @@
 
 [使用 Azure 资源管理器模板和 Azure CLI 部署和管理虚拟机](/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli)
 
-[虚拟机文档](http://www.windowsazure.cn/documentation/services/virtual-machines/
+[虚拟机文档](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-[如何安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell)
+[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

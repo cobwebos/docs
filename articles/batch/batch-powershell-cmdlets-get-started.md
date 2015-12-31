@@ -17,7 +17,7 @@
 
 有关详细的 cmdlet 语法，请键入 `get-help <Cmdlet_name>`，或参阅 [Azure Batch cmdlet 参考](https://msdn.microsoft.com/zh-cn/library/azure/mt125957.aspx)。
 
-[AZURE.INCLUDE [powershell-preview-include](../../includes/powershell-preview-include.md)]
+[AZURE.INCLUDE [powershell-preview-include](../includes/powershell-preview-include.md)]
 
 ## 先决条件
 
@@ -145,4 +145,4 @@ Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 * [Azure 批处理 cmdlet 参考](https://msdn.microsoft.com/library/azure/mt125957.aspx)
 * [有效地查询 Batch 服务](batch-efficient-list-queries.md)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

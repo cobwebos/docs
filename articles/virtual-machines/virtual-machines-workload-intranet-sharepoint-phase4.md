@@ -1,6 +1,6 @@
 <properties
-	pageTitle="SharePoint Intranet 场工作负荷阶段 4：配置 SharePoint Server"
-	description="在部署仅限 Intranet 的 SharePoint 2013 场的这个第四阶段，你将创建 SharePoint Server 虚拟机和新的 SharePoint 场。"
+	pageTitle="SharePoint Server 2013 场（阶段 4）| Microsoft Azure"
+	description="在 Azure 的 SharePoint Server 2013 场阶段 4 中创建 SharePoint Server 虚拟机和新的 SharePoint 场。"
 	documentationCenter=""
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
@@ -10,10 +10,12 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="07/22/2015"
+	ms.date="10/20/2015"
 	wacn.date=""/>
 
 # SharePoint Intranet 场工作负荷阶段 4：配置 SharePoint Server
+
+[AZURE.INCLUDE [learn-about-deployment-models-classic-include](../includes/learn-about-deployment-models-classic-include.md)]资源管理器部署模型。
 
 在部署仅限 Intranet 的 SharePoint 2013 场（在 Azure 基础结构服务中通过 SQL Server AlwaysOn 可用性组进行）的这个阶段，你将构建出 SharePoint 场的应用程序层和 Web 层，并使用 SharePoint 配置向导创建场。
 
@@ -92,9 +94,11 @@
 
 	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName $vnetName
 
-利用[“使用远程桌面连接登录到虚拟机”过程](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase2#logon)四次（对每个 SharePoint Server 利用一次），使用 [Domain]\\sp\_farm\_db 帐户凭据登录。这些凭据是在[阶段 2：配置域控制器](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase2)中创建的。
+利用[“使用远程桌面连接登录到虚拟机”过程](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase2#logon)四次（对每个 SharePoint Server 利用一次），使用 [Domain]\\sp\_farm\_db 帐户凭据登录。这些凭据是在[阶段 2：配置域控制器](virtual-machines-workload-intranet-sharepoint-phase2)中创建的。
 
 使用[测试连接过程](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase2#testconn)四次（对每个 SharePoint Server 使用一次），测试与你的组织网络上的位置的连接。
+
+> [AZURE.NOTE]SharePoint Server 是从 SharePoint Server 2013 试用版映像中创建而来。对于 SharePoint Server 2013 Standard 版或 Enterprise 版，你需要将安装转换为使用“零售”或“批量许可证”密钥。
 
 ## 配置 SharePoint 场
 
@@ -106,11 +110,11 @@
 4.	在“连接到服务器场”页上，选择“创建新的服务器场”，然后单击“下一步”。
 5.	在“指定配置数据库设置”页上，执行以下操作：
  - 在“数据库服务器”中，键入主数据库服务器的名称。
- - 在“用户名”中，键入 [Domain]**\\sp\_farm\_db**（在[阶段 2：配置域控制器](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase2)中创建的）。前面曾提到 sp\_farm\_db 帐户对数据库服务器具有 sysadmin 权限。
+ - 在“用户名”中，键入 [Domain]**\\sp\_farm\_db**（在[阶段 2：配置域控制器](virtual-machines-workload-intranet-sharepoint-phase2)中创建的）。前面曾提到 sp\_farm\_db 帐户对数据库服务器具有 sysadmin 权限。
  - 在**“密码”**中，键入 sp\_farm\_db 帐户密码。
 6.	单击**“下一步”**。
 7.	在“指定场安全设置”页上，键入通行短语两次。记录通行短语，并将其存储在安全位置以供将来参考。单击**“下一步”**。
-8.	在“配置 SharePoint 管理中心 Web 应用程序”页上，单击“下一步”。
+8.	在“配置 SharePoint 管理中心网站”页上，单击“下一步”。
 9.	此时将显示“完成 SharePoint 产品配置向导”页。单击**“下一步”**。
 10.	此时将显示“配置 SharePoint 产品”页。等到配置过程完成，大约 8 分钟。
 11.	成功配置场后，请单击**“完成”**。此时新的管理网站将启动。
@@ -183,10 +187,10 @@
 
 [具有 SQL Server AlwaysOn 的 SharePoint 信息图](http://go.microsoft.com/fwlink/?LinkId=394788)
 
-[适用于 SharePoint 2013 的 Windows Azure 体系结构](https://technet.microsoft.com/zh-cn/library/dn635309.aspx)
+[适用于 SharePoint 2013 的 Microsoft Azure 体系结构](https://technet.microsoft.com/library/dn635309.aspx)
 
 [Azure 基础结构服务实施准则](/documentation/articles/virtual-machines-infrastructure-services-implementation-guidelines)
 
 [Azure 基础结构服务工作负荷：高可用性业务线应用程序](/documentation/articles/virtual-machines-workload-high-availability-lob-application)
 
-<!---HONumber=70-->
+<!---HONumber=Mooncake_1221_2015-->

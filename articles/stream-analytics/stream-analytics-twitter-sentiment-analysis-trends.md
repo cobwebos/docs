@@ -1,7 +1,7 @@
 <properties
-	pageTitle="使用流分析进行实时 Twitter 观点分析 | Windows Azure"
+	pageTitle="使用流分析进行实时 Twitter 观点分析 | Microsoft Azure"
 	description="了解如何使用流分析进行实时 Twitter 观点分析。在实时仪表板上提供从事件生成到数据的分步指南。"
-	keywords="real-time twitter,sentiment analysis,social media analysis,social media analytics tools"
+	keywords="实时 twitter,观点分析,社交媒体分析,社交媒体分析工具"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="stream-analytics"
-	ms.date="08/19/2015"
+	ms.date="11/06/2015"
 	wacn.date=""/>
 
 
@@ -51,7 +51,7 @@
 
 请按以下步骤设置该应用程序：
 
-1.	[下载 TwitterClient 解决方案](https://github.com/streamanalytics/samples/tree/master/TwitterClient)
+1.	[下载 TwitterClient 解决方案](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClient)
 2.	打开 App.config，然后将 oauth\_consumer\_key、oauth\_consumer\_secret、oauth\_token、oauth\_token\_secret 替换为使用你自己的值的 Twitter 令牌。  
 
 	[生成 OAuth 访问令牌的步骤](https://dev.twitter.com/oauth/overview/application-owner-access-tokens)
@@ -70,7 +70,7 @@
 
 ### 预配流分析作业
 
-1.	在 [Azure 门户](https://manage.windowsazure.com/)中，单击**“新建”**>**“数据服务”**>**“流分析”**>**“快速创建”**。
+1.	在 [Azure 门户](https://manage.windowsazure.cn/)中，单击**“新建”**>**“数据服务”**>**“流分析”**>**“快速创建”**。
 2.	指定以下值，然后单击**“创建流分析作业”**：
 
 	* **作业名称**：输入作业名称。
@@ -88,7 +88,8 @@
 3.	选择**“事件中心”**，然后单击右侧的按钮。
 4.	在第三页中键入或选择以下值：
 
-	* **输入别名**：输入此作业输入的友好名称，例如 TwitterStream。请注意，你需要在后面的查询中使用此名称。**事件中心**：如果你创建的事件中心与流分析作业属于同一订阅，请选择事件中心所在的命名空间。
+	* **输入别名**：输入此作业输入的友好名称，例如 TwitterStream。请注意，你需要在后面的查询中使用此名称。
+	**事件中心**：如果你创建的事件中心与流分析作业属于同一订阅，请选择事件中心所在的命名空间。
 
 		如果你的事件中心属于其他订阅，请选择**“使用其他订阅的事件中心”**，然后手动输入以下项目的相关信息：**Service Bus 命名空间**、**事件中心名称**、**事件中心策略名称**、**事件中心策略密钥**以及**事件中心分区计数**。
 
@@ -220,7 +221,7 @@
 ![社交媒体分析：Power BI 仪表板中的流分析观点分析（观点挖掘）输出。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-output-power-bi.png)
 
 ## 获取支持
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 
 ## 后续步骤
@@ -232,4 +233,4 @@
 - [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
  
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_1221_2015-->

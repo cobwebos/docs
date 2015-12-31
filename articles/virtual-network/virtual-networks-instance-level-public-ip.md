@@ -1,18 +1,18 @@
 <properties 
-   pageTitle="实例级公共 IP (ILPIP)"
+   pageTitle="实例级公共 IP (ILPIP) | Microsoft Azure"
    description="了解 ILPIP (PIP) 以及如何对其进行管理"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn" />
-<tags 
-   ms.service="virtual-network"
-   ms.date="08/10/2015"
-   wacn.date="" />
+<tags
+	ms.service="virtual-network"
+	ms.date="11/11/2015"
+	wacn.date=""/>
 
 # 实例级公共 IP 概述
-实例级公共 IP (ILPIP) 是可直接向 VM 或角色实例而非 VM 或角色实例所在的云服务分配的 IP 地址。它不是用来代替分配给云服务的 VIP（虚拟 IP），而是可以用来直接连接到 VM 或角色实例的其他 IP 地址。
+实例级公共 IP (ILPIP) 是可直接向 VM 或角色实例而非 VM 或角色实例所在的云服务分配的公共 IP 地址。它不是用来代替分配给云服务的 VIP（虚拟 IP），而是可以用来直接连接到 VM 或角色实例的其他 IP 地址。
 
 >[AZURE.NOTE]在过去，ILPIP 称为 PIP，表示公共 IP。
 
@@ -32,16 +32,14 @@
 - **被动 FTP** - 在 VM 上分配 ILPIP 后，你就可以在几乎任何端口上接收流量，而不必打开终结点来接收流量。这样就可以启用与被动 FTP 类似的方案，以便动态选择端口。
 - **出站 IP** - 源自 VM 的出站流量与充当源的 ILPIP 一起出站，这样就可以针对外部实体来唯一地标识 VM。
 
->[AZURE.NOTE]使用保留 ILPIP 可能需要支付额外的 Azure 订阅费用。有关 ILPIP 定价的详细信息，请参阅 [IP 地址定价](/pricing/details/ip-addresses/)。
-
 ## 如何在 VM 创建期间请求 ILPIP
 下面的 PowerShell 脚本将创建名为 *FTPService* 的全新云服务，然后从 Azure 中检索映像，并使用检索到的映像创建名为 *FTPInstance* 的 VM，接着将 VM 设置为使用 ILPIP，最后再将 VM 添加到新服务：
 
-	New-AzureService -ServiceName FTPService -Location "Central US"
+	New-AzureService -ServiceName FTPService -Location "China North"
 	$image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
 	New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageName `
 	| Add-AzureProvisioningConfig -Windows -AdminUsername adminuser -Password MyP@ssw0rd!! `
-	| Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
+	| Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "China North"
 
 ## 如何检索 VM 的 ILPIP 信息
 若要查看使用以上脚本创建的 VM 的 ILPIP 信息，请运行以下 PowerShell 命令，然后观察 *PublicIPAddress* 和 *PublicIPName* 的值：
@@ -120,6 +118,7 @@
 
 [保留 IP](/documentation/articles/virtual-networks-reserved-public-ip)
 
-[保留 IP REST API](https://msdn.microsoft.com/zh-CN/library/azure/dn722420.aspx)
+[保留 IP REST API](https://msdn.microsoft.com/zh-cn/library/azure/dn722420.aspx)
+ 
 
-<!---HONumber=70-->
+<!---HONumber=Mooncake_1221_2015-->

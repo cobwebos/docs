@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="安装弹性数据库作业" 
+	pageTitle="安装弹性数据库作业 | Microsoft Azure" 
 	description="演练如何安装弹性作业功能。" 
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jhubbard" 
-	authors="sidneyh" 
+	authors="ddove" 
 	editor=""/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.date="08/03/2015" 
+	ms.service="sql-database"
+	ms.date="11/04/2015" 
 	wacn.date=""/>
 
 # 安装弹性数据库作业概述
-可以通过 PowerShell 或通过 Azure 门户安装**弹性数据库作业**，不过，仅当你安装了 PowerShell 包时，才能获取使用 PowerShell API 创建和管理作业的权限。此外，PowerShell API 目前提供的功能明显多于门户。有关**弹性数据库作业**的详细信息，请参阅[弹性数据库作业概述](/documentation/articles/sql-database-elastic-jobs-overview)。
+可以通过 PowerShell 或 Azure 门户安装[**弹性数据库作业**](/documentation/articles/sql-database-elastic-jobs-overview)。只有安装了 PowerShell 包，才能获取使用 PowerShell API 创建和管理作业的权限。此外，PowerShell API 目前提供的功能明显多于门户。
 
 如果你从现有的**弹性数据库池**通过门户安装了**弹性数据库作业**，最新的 Powershell 预览包含用于升级现有安装的脚本。强烈建议将安装升级到最新的**弹性数据库作业**组件，以便利用通过 PowerShell API 公开的新功能。
 
@@ -146,7 +146,7 @@
 
 ## 使用门户安装弹性数据库作业组件
 
-[创建弹性数据库池](sql-database-elastic-pool-portal.md)后，你可以安装**弹性数据库作业**组件，以便对弹性数据库池中的每个数据库执行管理任务。与使用**弹性数据库作业** PowerShell API 不同，门户界面目前限制为只能针对现有的池执行。
+[创建弹性数据库池](/documentation/articles/sql-database-elastic-pool-portal)后，你可以安装**弹性数据库作业**组件，以便对弹性数据库池中的每个数据库执行管理任务。与使用**弹性数据库作业** PowerShell API 不同，门户界面目前限制为只能针对现有的池执行。
 
 
 **估计完成时间：**10 分钟。
@@ -158,11 +158,11 @@
 
 	![安装服务][1]
 
-5. 键入数据库管理员的用户名和密码。安装过程中会创建新的 Azure SQL Database 服务器。在新服务器中，创建了一个称为控制数据库的新数据库，用于包含弹性数据库作业的元数据。此处创建的用户名和密码用于登录控制数据库。单独的凭据用于对池中的数据库执行脚本。
+5. 键入数据库管理员的用户名和密码。安装过程中会创建新的 Azure SQL 数据库服务器。在新服务器中，创建了一个称为控制数据库的新数据库，用于包含弹性数据库作业的元数据。此处创建的用户名和密码用于登录控制数据库。单独的凭据用于对池中的数据库执行脚本。
 
 	![创建用户名和密码][2]
 
-6. 单击“确定”按钮。几分钟后，将在新的[资源组](../resource-group-portal.md)中为你创建组件。新资源组已固定到开始面板，如下所示。弹性数据库作业（云服务、SQL Database、 Service Bus 和存储空间）都在该组中创建。
+6. 单击“确定”按钮。几分钟后，将在新的[资源组](/documentation/articles/resource-group-portal)中为你创建组件。新资源组已固定到开始面板，如下所示。弹性数据库作业（云服务、SQL 数据库、 Service Bus 和存储空间）都在该组中创建。
 
 	![开始面板中的资源组][3]
 
@@ -183,4 +183,4 @@
 [4]: ./media/sql-database-elastic-jobs-service-installation/incomplete.png
  
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_1221_2015-->

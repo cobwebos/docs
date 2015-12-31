@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="09/29/2015" 
+	ms.date="11/10/2015" 
 	wacn.date=""/>
 
 # 操作日志
@@ -34,7 +34,7 @@
 
 在 Azure 门户中手动导航到流分析和其他服务的操作日志：
 
-1.	在 **Azure 门户**中单击“[管理服务](https://manage.windowsazure.cn)”。
+1.	在 [Azure 门户 ](https://manage.windowsazure.cn)中单击“管理服务”。
 2.	在“类型”中选择“流分析”，在“服务名称”中选择作业的名称。  
 
   ![选择流分析](./media/stream-analytics-operation-logs/02-stream-analytics-operation-logs.png)
@@ -57,17 +57,17 @@
 
   ![操作详细信息](./media/stream-analytics-operation-logs/05-stream-analytics-operation-logs.png)
 
-如果你需要联系[支持团队](http://azure.microsoft.com/support/options/)或通过 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)向团队提供信息，请注明操作详细信息，尤其是**相关 ID**。
+如果你需要联系[支持团队](http://azure.microsoft.com/support/options/)或通过 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)向团队提供信息，请注明操作详细信息，尤其是**相关 ID**。
 
 ## 获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## 后续步骤
 
 - [Azure 流分析简介](/documentation/articles/stream-analytics-introduction)
 - [Azure 流分析入门](/documentation/articles/stream-analytics-get-started)
 - [缩放 Azure 流分析作业](/documentation/articles/stream-analytics-scale-jobs)
-- [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-- [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+- [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
+- [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

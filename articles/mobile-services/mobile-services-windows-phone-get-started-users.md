@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="07/23/2015" 
+	ms.date="11/02/2015" 
 	wacn.date=""/>
 
 # 向移动服务应用程序添加身份验证
@@ -48,7 +48,7 @@
 
 [AZURE.INCLUDE [mobile-services-windows-phone-authenticate-app-with-token](../includes/mobile-services-windows-phone-authenticate-app-with-token.md)]
 
-## <a name="next-steps"></a>后续步骤
+## <a name="next-steps"> </a>后续步骤
 
 在下一教程[移动服务用户的服务端授权](/documentation/articles/mobile-services-javascript-backend-service-side-authorization)中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。
 
@@ -72,4 +72,4 @@
 [Azure Management Portal]: https://manage.windowsazure.cn/
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

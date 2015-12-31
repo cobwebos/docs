@@ -1,6 +1,6 @@
 <properties
-	pageTitle="创建和管理 SQL 数据库弹性数据库池 | Microsoft Azure"
-	description="创建一个可在一组 Azure SQL 数据库之间共享的资源池。"
+	pageTitle="使用 Azure 预览门户创建 Azure SQL 数据库弹性数据库池 | Microsoft Azure"
+	description="创建一个弹性数据库池，以跨多个 Azure SQL 数据库共享资源。"
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
@@ -9,66 +9,62 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="08/25/2015"
+	ms.date="11/06/2015"
 	wacn.date=""/>
 
 
-# 创建和管理 SQL 数据库弹性数据库池
+
+# 通过 Azure 预览门户创建弹性数据库池
 
 > [AZURE.SELECTOR]
-- [Azure 门户](/documentation/articles/sql-database-elastic-pool-portal)
-- [C#](/documentation/articles/sql-database-client-library)
+- [C#](/documentation/articles/sql-database-elastic-pool-csharp)
 - [PowerShell](/documentation/articles/sql-database-elastic-pool-powershell)
 
-本文介绍如何通过 [Azure 预览门户](https://portal.azure.com)创建弹性数据库池。
+本文介绍如何通过 Azure 预览门户创建[弹性数据库池](/documentation/articles/sql-database-elastic-pool)。
 
-弹性数据库池可以简化大量数据库的创建、维护以及性能和成本的管理流程。
-
-
-> [AZURE.NOTE]弹性数据库池目前为预览版，仅适用于 SQL 数据库 V12 服务器。
+> [AZURE.NOTE]弹性数据库池目前为预览版，仅适用于 SQL 数据库 V12 服务器。如果你有一个 SQL 数据库 V11 服务器，可以通过一个步骤[使用 PowerShell 升级到 V12 并创建池](/documentation/articles/sql-database-upgrade-server)。
 
 
+在开始之前，你需要一个基于 SQL 数据库 V12 服务器的数据库。如果你没有这样的数据库，请参阅[创建首个 Azure SQL 数据库](/documentation/articles/sql-database-get-started)，在不到五分钟的时间内创建一个。或者，如果你已经有 SQL 数据库 V11 服务器，则可以[在门户中升级到 V12](/documentation/articles/sql-database-v12-upgrade)，然后返回来按照这些说明创建一个池。
 
 
-## 先决条件
-
-若要创建弹性数据库池，你需要满足以下条件：
-
-- Azure 订阅！ 如果你需要 Azure 订阅，只需单击本页顶部的“免费试用”，然后再回来完成本文的相关操作即可。
-- Azure SQL 数据库 V12 服务器。如果你没有 V12 服务器，可以遵循本文中的以下步骤创建一个：[创建你的第一个 Azure SQL 数据库](/documentation/articles/sql-database-get-started)。
-
-
-
-## 创建弹性数据库池
+## 步骤 1：将池添加到服务器
 
 通过向服务器添加新池来创建弹性数据库池。可以将多个池添加到一个服务器，但每个池只能有一 (1) 个关联的服务器。此外，你还可以将将服务器上的所有或部分数据库添加到一个池中。
 
 
-1.	选择包含你要添加到池的数据库的 SQL 数据库 V12 服务器。
-2.	通过选择 SQL Server 边栏选项卡顶部的“添加池”来创建池。
+在 [Azure 预览门户](https://ms.portal.azure.com/)中，依次单击“SQL 服务器”、托管需添加到池的数据库的服务器、“添加池”。
 
-   ![创建弹性池][1]
+![将池添加到服务器](./media/sql-database-elastic-pool-portal/elastic-pool-add-pool.png)
 
-## 配置弹性数据库池
+-或-
 
-通过设置定价层、添加数据库和配置池的性能特征来配置池。
+如果你看到一条消息说某个服务器已经有建议的池，则单击该消息即可轻松查看和创建针对服务器的数据库优化的池。有关详细信息，请参阅[建议的弹性数据库池](/documentation/articles/sql-database-elastic-pool-portal#recommended-elastic-database-pools)。
+   
+  
+![创建弹性池][1]
 
-> [AZURE.NOTE]当你选择“添加池”命令时，你必须通过选择“预览版条款”并完成“预览版条款”边栏选项卡来接受预览版条款。每次订阅只需接受条款一次。
+
+“弹性数据库池”边栏选项卡提供的选项可用于选择定价层、添加数据库和配置池的性能特征。
+
+> [AZURE.NOTE]当你第一次选择“添加池”命令时，你需要通过选择“预览版条款”并完成“预览版条款”边栏选项卡来接受预览版条款。每次订阅只需执行此操作一次。
 
    ![配置弹性池][2]
 
-## 配置定价层
+## 步骤 2：选择一个定价层。
 
-弹性数据库池的定价层决定了池中弹性数据库的可用功能、eDTU 数目上限 (DTU MAX)，以及每个数据库的可用存储 (GB)。有关详细信息，请参阅[弹性池和弹性数据库的 eDTU 和存储限制](/documentation/articles/sql-database-elastic-pool-reference#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)。
+该池的定价层决定了池中弹性数据库的可用功能、eDTU 数目上限 (DTU MAX)，以及每个数据库的可用存储 (GB)。有关详细信息，请参阅[服务层](/documentation/articles/sql-database-service-tiers#Service-tiers-for-elastic-database-pools)。
 
 >[AZURE.NOTE]目前，在预览版中，弹性数据库池的定价层在创建之后无法更改。若要更改现有弹性池的定价层，请在所需的定价层中创建新的弹性池，然后将弹性数据库移转到这个新池。
 
    ![定价层][9]
 
 
-## 弹性数据库池定价层建议
+### 定价层建议
 
-SQL 数据库服务将评估使用历史记录，并在比使用单一数据库更符合成本效益时，建议你使用一个或多个弹性数据库池。星号 (![*][10]) 代表根据你的数据库工作负荷建议的定价层。
+SQL 数据库服务将评估使用历史记录，并在比使用单一数据库更符合成本效益时，建议你使用一个或多个弹性数据库池。
+
+星号 (![*][10]) 代表根据你的数据库工作负荷建议的定价层。
 
 如果建议了多个定价层，则表示应该创建多个弹性数据库池。每项建议是使用最适合该池的服务器数据库的唯一子集配置的。
 
@@ -76,7 +72,7 @@ SQL 数据库服务将评估使用历史记录，并在比使用单一数据库�
 
 - 池的定价层（基本、标准或高级）。
 - 适当的池 eDTU 数量。
-- 数据库最小/最大 eDTU 设置。  
+- 弹性数据库最小/最大 eDTU 设置。  
 - 建议的数据库列表。
 
 在建议弹性数据库池时，服务将考虑过去 30 天的遥测数据。被视为弹性数据库池候选项的数据库必须至少存在 7 天。已在弹性数据库池中的数据库不被视为建议的弹性数据库池候选项。
@@ -86,7 +82,7 @@ SQL 数据库服务将评估使用历史记录，并在比使用单一数据库�
 >[AZURE.NOTE]Web 和企业数据库根据其使用历史记录和数据库大小，映射到一个新的基本、标准或高级层。通过映射到新层，为适当的池建议 Web 和企业数据库。
 
 
-### 添加数据库
+## 步骤 3：将数据库添加到池
 
 在任何时候，你都可以选择想要其包含在池中的特定数据库。创建新池时，Azure 会为你建议可以添加到池中的数据库，并将其标记为包含。你可以添加服务器上提供的所有数据库，也可以根据需要选择或清除初始列表中的数据库。
 
@@ -98,7 +94,7 @@ SQL 数据库服务将评估使用历史记录，并在比使用单一数据库�
 - 数据库当前所用的功能必须在池中可用。
 
 
-### 配置性能
+## 步骤 4：调整性能特征
 
 通过设置池以及池中弹性数据库的性能参数，来配置池的性能。请记住，**弹性数据库设置**将应用到池中所有数据库。
 
@@ -112,12 +108,34 @@ SQL 数据库服务将评估使用历史记录，并在比使用单一数据库�
 | **eDTU MIN** - 每个数据库的 eDTU 保障 | 每个数据库的 eDTU 保障是指池中的单一数据库可以确保获得的 eDTU 数。例如，在标准池中，你可以将此保障设置为 0、10、20、50 或 100 个 eDTU，也可以选择不为组中的数据库提供保障 (eDTU MIN=0)。<br> **我应该将每个数据库的 eDTU 保障设置为何值？** <br> 通常，每个数据库的最小 eDTU 保障 (eDTU MIN) 应设置为介于 0 和（[每个数据库的平均使用率]）之间的某个数字。每个数据库的 eDTU 保障是一种全局设置，用于设置池中所有数据库的 eDTU 保障。 |
 | **eDTU MAX** - 单个数据库的 eDTU 最大值 | 单个数据库的 eDTU MAX 是指池中单一数据库可以使用的 eDTU 的最大数目。必须将单个数据库的 eDTU 最大值设置得足够高，否则无法处理数据库可能会遇到的最大突发或峰值情况。你可以将此最大值设置为系统上限，后者取决于池的定价层（高级层为 1000 eDTU）。此最大值的具体大小取决于组中数据库的峰值使用率模式。组可能会碰到某种程度的超量使用情况，因为池通常会假定数据库存在热使用模式和冷使用模式，即所有数据库不会同时达到峰值。<br> **我应该将单个数据库的 eDTU 最大值设置为何值？** <br> 将单个数据库的 eDTU MAX 或 eDTU 最大值设置为（[数据库高峰使用率]）。例如，假设单个数据库的高峰使用率为 50 DTU，在该组的 100 个数据库中，仅有 20% 同时爆发到峰值。如果将单个数据库的 eDTU 最大值设置为 50 eDTU，则可以认为超量 5 倍使用该池是合理的，因此可以将该组的 eDTU 保障 (POOL eDTU) 设置为 1,000 eDTU。此外还需要提到的是，eDTU 最大值不是数据库的资源保障，而是在可能情况下能够达到的 eDTU 上限。 |
 
+## 建议的弹性数据库池
 
-## 将数据库添加到池，以及从池中删除弹性数据库
+浏览到 SQL 数据库 V12 服务器，你可能会看到一条消息说该服务器已有建议的弹性数据库池。
+
+就像弹性数据库池定价层建议一样，建议的池已预先进行了配置，设置了以下内容：
+
+- 池的的定价层。
+- 适当的池 eDTU 数量。
+- 数据库最小/最大 eDTU 设置。  
+- 建议的数据库列表。
+
+### 创建建议的池
+
+1. 单击该消息可以查看建议的池的列表：
+ 
+     ![建议的池][12]
+  
+1. 单击某个池即可查看详细的建议设置。
+2. 直接编辑池名称，然后单击“确定”即可创建池。（建议的池只能在创建后修改。）
+
+    ![建议的池][11]
+
+
+## 在池中添加和删除数据库
 
 创建池后，你可以通过在“添加数据库”页上选择或清除数据库，在池中添加或删除数据库。
 
-*创建池后，你还可以使用 Transact-SQL 在该池中创建新的弹性数据库，以及将现有数据库移入和移出池。有关详细信息，请参阅[弹性数据库池参考 - Transact-SQL](/documentation/articles/sql-database-elastic-pool-reference/#Transact-SQL)。*
+创建池后，你还可以使用 Transact-SQL 在该池中创建新的弹性数据库，以及将数据库移入和移出池。有关详细信息，请参阅[弹性数据库池参考 - Transact-SQL](/documentation/articles/sql-database-elastic-pool-reference#Transact-SQL)。*
 
 
 ## 监视和管理弹性数据库池
@@ -127,7 +145,7 @@ SQL 数据库服务将评估使用历史记录，并在比使用单一数据库�
 创建一个池之后，你可以：
 
 - 选择“配置池”来更改池 eDTU 和单数据库 eDTU 设置。
-- 通过创建弹性作业来选择“创建作业”并管理池中的数据库。弹性作业可以用来根据池中数据库的数目来运行 Transact-SQL 脚本。有关详细信息，请参阅[弹性数据库作业概述](/documentation/articles/sql-database-elastic-jobs-overview)。
+- 通过创建弹性作业来选择“创建作业”并管理池中的数据库。弹性作业可以用来根据池中数据库的数目来运行 Transact-SQL 脚本。有关详细信息，请参阅[弹性数据库作业概述](sql-database-elastic-jobs-overview)。
 - 选择“管理作业”可管理现有弹性作业。
 
 
@@ -176,5 +194,7 @@ SQL 数据库服务将评估使用历史记录，并在比使用单一数据库�
 [8]: ./media/sql-database-elastic-pool-portal/configure-pool.png
 [9]: ./media/sql-database-elastic-pool-portal/pricing-tier.png
 [10]: ./media/sql-database-elastic-pool-portal/star.png
+[11]: ./media/sql-database-elastic-pool-portal/recommended-pool.png
+[12]: ./media/sql-database-elastic-pool-portal/pools-message.png
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_1221_2015-->

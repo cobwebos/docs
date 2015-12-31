@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="详细了解：Azure AD 密码管理 | Windows Azure" 
+	pageTitle="详细了解：Azure AD 密码管理 | Microsoft Azure" 
 	description="有关 Azure AD 密码管理的高级主题，内容包括密码写回的工作原理、密码写回安全性、密码重置门户的工作原理，以及密码重置使用的数据。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="06/08/2015" 
+	ms.date="10/08/2015" 
 	wacn.date=""/>
 
 # 了解有关密码管理的详细信息
@@ -19,7 +19,7 @@
   - [密码写回的工作原理](#how-password-writeback-works)
   - [密码写回支持的方案](#scenarios-supported-for-password-writeback)
   - [密码写回安全模型](#password-writeback-security-model)
-* [**密码重置门户的工作原理。**](#how-does-the-password-reset-portal-work)
+* [**密码重置门户的工作原理**](#how-does-the-password-reset-portal-work)
   - [密码重置使用哪些数据？](#what-data-is-used-by-password-reset)
 
 ## 密码写回概述
@@ -73,7 +73,7 @@
 - **行业标准 TLS** – 云中发生密码重置或更改操作时，我们将采用纯文本密码并用公钥对其进行加密。然后，我们将其置于 HTTPS 消息中，该消息使用 Microsoft 的 SSL 证书通过加密通道发送到服务总线中继。此消息到达服务总线后，你的本地代理将唤醒、使用先前生成的强密码对服务总线进行身份验证、选取加密消息、使用我们生成的私钥对消息进行解密，然后尝试通过 AD DS SetPassword API 设置密码。通过此步骤，我们可以在云中强制实施你的 AD 本地密码策略（复杂性、年龄、历史记录、筛选器等）。
 - **消息过期策略** – 最后，如果由于某种原因而使消息位于服务总线中（因为本地服务关闭），消息则会超时并在几分钟后删除，以便进一步提高安全性。
 
-## 密码重置门户的工作原理。
+## 密码重置门户的工作原理
 当某个用户导航到密码重置门户时，工作流将启动以确定此用户帐户是否有效、此用户所属的组织、此用户密码的管理位置以及用户是否已获许可使用该功能。阅读以下步骤，了解有关密码重置页面背后的逻辑。
 
 1.	用户单击“无法访问你的帐户”链接或直接转到 [https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com)。
@@ -112,7 +112,7 @@
             </td>
             <td>
               <p>
-                <strong>使用/设置位置。</strong>
+                <strong>使用/设置位置</strong>
               </p>
             </td>
             <td>
@@ -175,7 +175,7 @@
               <p>密码重置门户</p>
               <p>注册门户</p>
               <p>设置位置： </p>
-              <p>可从密码重置注册门户或 MFA 注册门户设置 AuthenticationPhone。</p>
+              <p>可从密码重置注册门户或 MFA（多重身份验证）注册门户设置 AuthenticationPhone。</p>
               <p>可从 PowerShell、DirSync、Azure 管理门户和 Office 管理门户设置 MobilePhone</p>
             </td>
             <td>
@@ -198,7 +198,7 @@
               </ul>
               <ul>
                 <li class="unordered">
-										不支持分机号，如果你已指定分机号，我们将在调度电话呼叫前忽略它。<br><br></li>
+										不支持分机号，如果你已指定分机号，我们将在调度电话呼叫前去掉分机号。<br><br></li>
               </ul>
             </td>
           </tr>
@@ -219,7 +219,7 @@
               <p>密码重置门户</p>
               <p>注册门户</p>
               <p>设置位置： </p>
-              <p>可从密码重置注册门户或 MFA 注册门户设置 AuthenticationEmail。</p>
+              <p>可从密码重置注册门户或 MFA（多重身份验证）注册门户设置 AuthenticationEmail。</p>
               <p>可从 PowerShell、Azure 管理门户和 Office 管理门户设置 AlternateEmail</p>
             </td>
             <td>
@@ -267,9 +267,9 @@
 * [密码管理入门](/documentation/articles/active-directory-passwords-getting-started)
 * [自定义密码管理](/documentation/articles/active-directory-passwords-customize)
 * [密码管理最佳实践](/documentation/articles/active-directory-passwords-best-practices)
-* [如何通过密码管理报告获取操作见解](/documentation/articles/active-directory-passwords-get-insights)
+* [如何使用密码管理报告获取 Operational Insights](/documentation/articles/active-directory-passwords-get-insights)
 * [密码管理常见问题](/documentation/articles/active-directory-passwords-faq)
-* [密码管理疑难解答](/documentation/articles/active-directory-passwords-troubleshoot)
+* [排查密码管理问题](/documentation/articles/active-directory-passwords-troubleshoot)
 * [MSDN 上的密码管理](https://msdn.microsoft.com/zh-cn/library/azure/dn510386.aspx)
 
 
@@ -278,4 +278,4 @@
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
  
 
-<!---HONumber=67-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -1,15 +1,15 @@
 <properties 
-   pageTitle="测试流量管理器设置"
+   pageTitle="测试流量管理器设置 | Microsoft Azure"
    description="本文将帮助你测试流量管理器设置"
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
-<tags 
-   ms.service="traffic-manager"
-   ms.date="08/19/2015"
-   wacn.date="" />
+<tags
+	ms.service="traffic-manager"
+	ms.date="11/12/2015"
+	wacn.date=""/>
 
 # 测试流量管理器设置
 
@@ -19,7 +19,7 @@
 
 - **将 DNS TTL 设置得非常低**以便快速传播更改，例如，30 秒。
 - **了解你要测试的配置文件中的 Azure 云服务和网站的 IP 地址**。
-- **使用能够让你将 DNS 名称解析为 IP 地址**并显示该地址的工具。你将查看公司域名是否可以解析为配置文件中的终结点的 IP 地址。解析方式应与流量管理器配置文件中的负载平衡方法一致。如果你的计算机运行的是 Windows，则可以在命令提示符或 Windows PowerShell 提示符下使用 Nslookup.exe 工具。在 Internet 上还可以找到其他公开发布的用于“挖掘”IP 地址的现成工具。
+- **使用能够让你将 DNS 名称解析为 IP 地址**并显示该地址的工具。你将查看公司域名是否可以解析为配置文件中的终结点的 IP 地址。解析方式应与流量管理器配置文件中的流量路由方法一致。如果你的计算机运行的是 Windows，则可以在命令提示符或 Windows PowerShell 提示符下使用 Nslookup.exe 工具。在 Internet 上还可以找到其他公开发布的用于“挖掘”IP 地址的现成工具。
 
 ### 使用 nslookup 检查流量管理器配置文件
 
@@ -57,20 +57,15 @@
 
 你可以使用基于 Web 的免费 DNS 查找和挖掘服务。这些服务中，有些可以从不同位置检查 DNS 名称解析。例如，针对“DNS 查找”执行搜索。另一种做法是使用 Gomez 或 Keynote 等第三方解决方案来确认配置文件是否按预期分配流量。
 
-## 另请参阅
+## 后续步骤
 
-[关于流量管理器流量路由方法](/documentation/articles/traffic-manager-load-balancing-methods)
+[流量管理器性能注意事项](/documentation/articles/traffic-manager-performance-considerations)
 
-[流量管理器 - 禁用、启用或删除配置文件](/documentation/articles/disable-enable-or-delete-a-profile)
+[流量管理器降级状态疑难解答](/documentation/articles/traffic-manager-troubleshooting-degraded)
 
-[流量管理器 - 禁用或启用终结点](/documentation/articles/disable-or-enable-an-endpoint)
 
-[什么是流量管理器？](/documentation/articles/traffic-manager-overview)
 
-[云服务](https://msdn.microsoft.com/zh-CN/library/jj155995.aspx)
 
-[网站](/home/features/web-sites/)
+ 
 
-[流量管理器上的操作（REST API 参考）](https://msdn.microsoft.com/zh-CN/library/hh758255.aspx)
-
-<!---HONumber=71-->
+<!---HONumber=Mooncake_1221_2015-->

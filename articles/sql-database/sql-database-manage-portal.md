@@ -7,7 +7,7 @@
 	manager="jeffreyg" 
 	editor=""/>
 
-<tags
+<tags 
 	ms.service="sql-database" 
 	ms.date="09/11/2015" 
 	wacn.date=""/>
@@ -22,6 +22,8 @@
 - [PowerShell](/documentation/articles/sql-database-command-line-tools)
 
 在 [Azure 管理门户][Management Portal]中，你可以创建、监视和管理 Azure SQL 数据库与服务器。本文重点介绍使用管理门户可以实现的数据库操作。
+
+>[AZURE.NOTE]如果你不熟悉 Azure 管理门户，可观看此[视频教程][Azure Portal Tour]，以便快速了解其常规功能和概念。
 
 ![数据库概述](./media/sql-database-manage-portal/sqldatabase_annotated.png)
 
@@ -64,21 +66,24 @@ Azure 管理门户提供了一系列的通用数据库操作，你可以在数�
 
 
 
-## 其他资源
+##其他资源
 * [SQL 数据库](/documentation/articles/sql-database-technical-overview)   
 * [使用动态管理视图监控 SQL 数据库][]   
 * [Transact-SQL 参考 (SQL 数据库)][]
-
-
+  
+  [Azure Portal Tour]: https://go.microsoft.com/fwlink/?LinkID=522341
   [Management Portal]: https://manage.windowsazure.cn
   [Azure part monitoring]: /documentation/articles/documentdb-monitor-accounts
   [AzureDb management overview]: http://azure.microsoft.com/blog/2014/12/22/client-tooling-updates-for-azure-sql-database/
-  [Introducing SQL Database]: /documentation/services/sql-databases
+  [Introducing SQL Database]: /services/sql-database
   [Database geo-replication]: http://azure.microsoft.com/blog/2014/07/12/spotlight-on-sql-database-active-geo-replication/
-  [Managing Azure SQL Database using SQL Server Management Studio]: /documentation/articles/sql-database-manage-azure-ssms
+  [Managing Azure SQL Database using SQL Server Management Studio]: sql-database-manage-azure-ssms.md
   [使用动态管理视图监控 SQL 数据库]: http://msdn.microsoft.com/zh-cn/library/windowsazure/ff394114.aspx
   [Transact-SQL 参考 (SQL 数据库)]: http://msdn.microsoft.com/zh-cn/library/bb510741(v=sql.120).aspx
-  [AzureDb Auditing]: /documentation/articles/sql-database-auditing-get-started
+  [AzureDb Auditing]: /documentation/articles/sql-database-auditing-get-started/
   [AzureDb datamasking]: /documentation/articles/sql-database-dynamic-data-masking-get-started/
 
-<!---HONumber=74-->
+ 
+ 
+
+<!---HONumber=Mooncake_1221_2015-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/15/2015"
+	ms.date="11/08/2015"
 	wacn.date=""/>
 
 
@@ -109,19 +109,12 @@
 		    return processor;
 		}
 
-<!-- deleted by customization
 
-##Media Services learning paths
-
-You can view AMS learning paths here:
-
-- [AMS Live Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS on Demand Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
--->
+[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
 
 ##另请参阅 
 
 [如何使用媒体编码器标准通过 .NET 来生成缩略图](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes)
 [媒体服务编码概述](/documentation/articles/media-services-encode-asset)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -4,15 +4,12 @@
    services="traffic-manager"
    documentationCenter="na"
    authors="joaoma"
-   manager="adinah"
-   editor="tysonn"/>
+   manager="carmonm"
+   editor="tysonn" />
 <tags
-   ms.service="traffic-manager"
-   ms.date="08/19/2015"
-   wacn.date=""/>
-
-
-
+	ms.service="traffic-manager"
+	ms.date="11/12/2015"
+	wacn.date=""/>
 
 
 
@@ -29,7 +26,7 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 
 在 ARM 中，每个流量管理器配置文件由类型为“TrafficManagerProfiles”、受“Microsoft.Network”资源提供程序管理的 ARM 资源表示。在 REST API 级别，每个配置文件的 URI 如下：
 
-	https://management.windowsazure.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
+	https://manage.windowsazure.cn/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
 
 ## 与 Azure 流量管理器服务管理 API 的比较
 
@@ -50,7 +47,7 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 
 - 	REST API 不支持修补流量管理器配置文件。若要更新配置文件属性，必须对该配置文件执行 GET，然后对修改后的配置文件执行 PUT。
 - 	仅支持“外部”终结点。仍可通过这些终结点将流量管理器用于基于 Azure 的服务，采用这种做法时，将按内部终结点费率来计收这些终结点的费用。（使用外部终结点的唯一负面影响在于，当 Azure 服务被禁用或删除时，系统不会自动禁用或删除这些终结点，而你必须手动禁用或删除这些终结点）。
--	Azure 流量管理器目前无法在 Azure 门户中使用，而只能在经典门户上使用。
+-	Azure 流量管理器目前无法在 Azure 管理门户中使用，而只能在管理门户上使用。
 
 ## 设置 Azure PowerShell
 
@@ -87,7 +84,7 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 ### 步骤 6
 创建资源组（如果要使用现有的资源组，请跳过此步骤）
 
-	PS C:\> New-AzureResourceGroup -Name MyAzureResourceGroup -location "West US"
+	PS C:\> New-AzureResourceGroup -Name MyAzureResourceGroup -location "China North"
 
 Azure 资源管理器要求所有资源组指定一个位置。此位置将用作该资源组中的资源的默认位置。但是，由于所有流量管理器配置文件所有资源都是全局性而不是区域性的，因此，所选的资源组位置不会影响 Azure 流量管理器。
 
@@ -142,7 +139,7 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 可以使用“Add-AzureTrafficManagerEndpointConfig”cmdlet 将终结点添加到流量管理器配置文件：
 
 	PS C:\> $profile = Get-AzureTrafficManagerProfile –Name MyProfile -ResourceGroupName MyAzureResourceGroup
-	PS C:\> Add-AzureTrafficManagerEndpointConfig –EndpointName site1 –TrafficManagerProfile $profile –Type ExternalEndpoints –Target site1.contoso.com –EndpointStatus Enabled –Weight 10 –Priority 1 –EndpointLocation “West US”
+	PS C:\> Add-AzureTrafficManagerEndpointConfig –EndpointName site1 –TrafficManagerProfile $profile –Type ExternalEndpoints –Target site1.contoso.com –EndpointStatus Enabled –Weight 10 –Priority 1 –EndpointLocation “China North”
 	PS C:\> Set-AzureTrafficManagerProfile –TrafficManagerProfile $profile
 
 Add-AzureTrafficManagerEndpointConfig 的参数如下：
@@ -201,10 +198,11 @@ Add-AzureTrafficManagerEndpointConfig 的参数如下：
 	PS C:\> Get-AzureTrafficManagerProfile –Name MyProfile -ResourceGroupName MyAzureResourceGroup | Remove-AzureTrafficManagerProfile [-Force]
 
 
-## 另请参阅
+## 后续步骤
 
-[什么是流量管理器？](/documentation/articles/traffic-manager-overview)
+[流量管理器监视](/documentation/articles/traffic-manager-monitoring)
 
-[Azure cmdlet 入门](https://msdn.microsoft.com/zh-cn/library/jj554332.aspx)
+[流量管理器性能注意事项](/documentation/articles/traffic-manager-performance-considerations)
+ 
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_1221_2015-->

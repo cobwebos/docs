@@ -1,7 +1,7 @@
 <properties
 	pageTitle="扩展流分析作业以增加吞吐量 | Microsoft Azure"
 	description="了解如何通过配置输入分区、细化查询定义和设置作业流式处理单位来扩展流分析作业。"
-	keywords="分析作业, 数据流, 数据流式处理"
+	keywords="分析作业,数据流,数据流式处理"
 	services="stream-analytics"
 	documentationCenter=""
 	authors="jeffstokes72"
@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="stream-analytics"
-	ms.date="09/29/2015"
+	ms.date="11/06/2015"
 	wacn.date=""/>
 
 # 扩展 Azure 流分析作业以增加吞吐量 #
@@ -51,7 +51,7 @@ Azure 流分析作业定义包括输入、查询和输出。输入是作业读�
 
 前面的查询有两步。
 
-> [AZURE.NOTE] 此示例查询将在本文后面部分介绍。
+> [AZURE.NOTE]此示例查询将在本文后面部分介绍。
 
 ### 对步骤进行分区 ###
 
@@ -136,20 +136,23 @@ Azure 流分析作业定义包括输入、查询和输出。输入是作业读�
 
 此查询可以扩展到 24 个流式处理单位。
 
->[AZURE.NOTE] 如果要联接两个流，请确保流是按进行联接的列的分区键分区的，并且两个流中的分区数目是相同的。
+>[AZURE.NOTE]如果要联接两个流，请确保流是按进行联接的列的分区键分区的，并且两个流中的分区数目是相同的。
 
 
 ## 配置流分析作业分区 ##
 
 **调整作业流式处理单位的步骤**
 
-1. 登录到[管理门户](https://manage.windowsazure.com)。
+1. 登录到[管理门户](https://manage.windowsazure.cn)。
 2. 单击左窗格中的**“流分析”**。
 3. 单击想要缩放的流分析作业。
 4. 单击页面顶部的**“缩放”**。
 
 ![Azure 流分析流单位规模][img.stream.analytics.streaming.units.scale]
 
+在 Azure 预览门户中，可以在“设置”下访问缩放设置：
+
+![Azure 预览门户流分析作业配置][img.stream.analytics.preview.portal.settings.scale]
 
 ## 监视作业性能 ##
 
@@ -225,7 +228,7 @@ Azure 流分析作业定义包括输入、查询和输出。输入是作业读�
 ![img.stream.analytics.perfgraph][img.stream.analytics.perfgraph]
 
 ## 获取帮助 ##
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 
 ## 后续步骤 ##
@@ -243,18 +246,19 @@ Azure 流分析作业定义包括输入、查询和输出。输入是作业读�
 [img.stream.analytics.configure.scale]: ./media/stream-analytics-scale-jobs/StreamAnalytics.configure.scale.png
 [img.stream.analytics.perfgraph]: ./media/stream-analytics-scale-jobs/perf.png
 [img.stream.analytics.streaming.units.scale]: ./media/stream-analytics-scale-jobs/StreamAnalyticsStreamingUnitsExample.jpg
+[img.stream.analytics.preview.portal.settings.scale]: ./media/stream-analytics-scale-jobs/StreamAnalyticsPreviewPortalJobSettings.png
 
 <!--Link references-->
 
 [microsoft.support]: http://support.microsoft.com
-[azure.management.portal]: http://manage.windowsazure.com
+[azure.management.portal]: http://manage.windowsazure.cn
 [azure.event.hubs.developer.guide]: http://msdn.microsoft.com/zh-cn/library/azure/dn789972.aspx
 
-[stream.analytics.developer.guide]: /documentation/articles/stream-analytics-developer-guide
-[stream.analytics.introduction]: /documentation/articles/stream-analytics-introduction
-[stream.analytics.get.started]: /documentation/articles/stream-analytics-get-started
+[stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
+[stream.analytics.introduction]: stream-analytics-introduction.md
+[stream.analytics.get.started]: stream-analytics-get-started.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

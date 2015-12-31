@@ -9,30 +9,35 @@
 	tags="azure-service-management" />
 <tags 
 	ms.service="virtual-machines"
-	ms.date="09/16/2015"
+	ms.date="11/13/2015"
 	wacn.date="" />
 
 # 在 Azure 中配置 AlwaysOn 可用性组的外部侦听器
 
 > [AZURE.SELECTOR]
-- [内部侦听器](/documentation/articles/virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener)
-- [外部侦听器](/documentation/articles/virtual-machines-sql-server-configure-public-alwayson-availability-group-listener)
+- [Internal Listener](/documentation/articles/virtual-machines-sql-server-configure-ilb-alwayson-availability-group-listener)
+- [External Listener](/documentation/articles/virtual-machines-sql-server-configure-public-alwayson-availability-group-listener)
 
 本主题说明如何为 AlwaysOn 可用性组配置一个可以通过 Internet 从外部访问的侦听器。这是通过将云服务的**公共虚拟 IP (VIP)** 地址与侦听器关联来实现的。
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍如何使用经典部署模型创建资源。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
+ 
 
-你的可用性组可以仅包含本地副本或 Azure 副本，也可以跨越本地和 Azure 以实现混合配置。Azure 副本可以位于同一区域，也可以跨越使用多个虚拟网络 (VNet) 的多个区域。以下步骤假设你已[配置了一个可用性组](virtual-machines-sql-server-alwayson-availability-groups-gui.md)但是没有配置侦听器。
+你的可用性组可以仅包含本地副本或 Azure 副本，也可以跨越本地和 Azure 以实现混合配置。Azure 副本可以位于同一区域，也可以跨越使用多个虚拟网络 (VNet) 的多个区域。以下步骤假设你已[配置了一个可用性组](/documentation/articles/virtual-machines-sql-server-alwayson-availability-groups-gui)但是没有配置侦听器。
 
-在使用云服务的公共 VIP 地址部署时，请注意对 Azure 中可用性组侦听器的以下限制：
+## 外部侦听器的准则和限制
+
+在使用云服务的公共 VIP 地址部署时，请注意有关 Azure 中可用性组侦听器的以下准则：
 
 - Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2 支持可用性组侦听器。
 
 - 客户端应用程序必须位于与包含你的可用性组 VM 的云服务不同的云服务中。Azure 不支持客户端和服务器位于同一个云服务中的直接服务器返回。
 
-- 每个云服务只支持一个可用性组侦听器，因为该侦听器将配置为使用云服务 VIP 地址。尽管 Azure 现在支持在给定的云服务中创建多个 VIP 地址，但此限制仍然有效。
+- 默认情况下，本文中的步骤说明如何将一个侦听器配置为使用云服务虚拟 IP (VIP) 地址。但是，你可以为云服务保留和创建多个 VIP 地址。这样就可以使用本文中的步骤创建多个侦听器，每个侦听器与不同的 VIP 相关联。有关如何创建多个 VIP 地址的信息，请参阅[每个云服务具有多个 VIP](/documentation/articles/load-balancer-multivip)。
 
 - 如果你要为混合环境创建侦听器，则本地网络必须连接到公共 Internet，还通过 Azure 虚拟网络连接到站点到站点 VPN。位于 Azure 子网中时，只能通过相应云服务的公共 IP 地址来访问该可用性组侦听器。
+
+- 不支持在你在其中也有使用内部负载平衡器 (ILB) 的内部侦听器的同一云服务中创建外部侦听器。
 
 ## 确定侦听器的可访问性
 
@@ -111,7 +116,7 @@
 
 若要从虚拟网络外部访问侦听器，你必须使用外部/公共负载平衡（如本主题中所述）而不是 ILB，因为 ILB 只能在同一 VNet 中进行访问。在连接字符串中指定云服务名称。例如，如果你的云服务名为 *mycloudservice*，则 sqlcmd 语句将如下所示：
 
-	sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
+	sqlcmd -S "mycloudservice.chinacloudapp.cn,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
 与前面的示例不同，现在必须使用 SQL 身份验证，因为调用方无法通过 Internet 使用 Windows 身份验证。有关详细信息，请参阅 [Azure VM 中的 AlwaysOn 可用性组：客户端连接方案](http://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)。使用 SQL 身份验证时，请确保在两个副本上创建相同的登录名。有关排查可用性组登录问题的详细信息，请参阅[如何映射登录或使用包含的 SQL 数据库用户连接到其他副本并映射到可用性数据库](http://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)。
 
@@ -121,4 +126,4 @@
 
 [AZURE.INCLUDE [Listener-Next-Steps](../includes/virtual-machines-ag-listener-next-steps.md)]
 
-<!---HONumber=76-->
+<!---HONumber=Mooncake_1221_2015-->

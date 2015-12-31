@@ -4,39 +4,22 @@
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jeffreyg" 
-	authors="sidneyh" 
-	editor=""/>
+	authors="ddove" 
+	editor="sidneyh"/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.date="07/24/2015" 
+	ms.service="sql-database"
+	ms.date="11/04/2015"
 	wacn.date=""/>
 
-#弹性数据库工具入门
+# 弹性数据库工具入门
 
-按需扩大和缩小容量是云计算应承的重要功能之一。对于数据库应用程序来说，用于构建此类可缩放解决方案的一种重要技术是称为“分片”的模式 - 以物理方式将数据分区到许多具有相同结构的数据库中。但在传统上，构建和管理使用分片的应用程序需要在应用程序的业务逻辑外部编写大量的代码。
-
-弹性数据库工具使用 Azure SQL DB 中的数据库分片，简化了应用程序的创建和管理。这些工具包括弹性数据库客户端库和弹性数据库拆分/合并工具。它们共同实施分片的基础结构方面，因此你可以将重心转移到应用程序的业务逻辑上。
-
-本文介绍开发人员使用弹性数据库客户端库时的体验。
-
-有关弹性数据库工具的工作原理，请参阅[弹性数据库工具概述](/documentation/articles/sql-database-elastic-scale-introduction)。
-
-有关弹性数据库工具的所有主题列表，请参阅[学习路线图](/documentation/articles/sql-database-elastic-scale-documentation-map)
-
-## 弹性数据库示例应用程序
-
-此示例将创建一个简单的分片应用程序，并探讨弹性数据库工具的主要功能。若要下载并运行该应用程序，请遵循下面所示的步骤，或观看视频[弹性缩放 - 入门视频](http://channel9.msdn.com/Blogs/Windows-Azure/Elastic-Scale-with-Azure-SQL-Database-Getting-Started)。
+本文介绍开发人员运行示例应用时的体验。此示例将创建一个简单的分片应用程序，并探讨弹性数据库工具的主要功能。此示例演示[弹性数据库客户端库](/documentation/articles/sql-database-elastic-database-client-library)的功能
 
 ## 先决条件
-若要运行该示例应用，你必须使用 Visual Studio，并且必须有权访问 Azure 上运行的 Azure SQL 数据库。如果你没有 Azure 订阅，请注册[试用订阅](http://azure.microsoft.com/pricing/free-trial/)。
-### Visual Studio 和 Nuget
 
 1. 必须安装 C# 版 Visual Studio 2012 或更高版本。可以从 [Visual Studio 下载](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)页面下载免费版本。
 2. Nuget 2.7 或更高版本。若要获取最新版本，请参阅[安装 NuGet](http://docs.nuget.org/docs/start-here/installing-nuget)
-### 创建 Azure SQL 数据库
-
-* 参阅 [Microsoft Azure SQL 数据库入门](/documentation/articles/sql-database-get-started)。
 
 ## 下载并运行示例应用
 
@@ -74,7 +57,7 @@
 ### 其他弹性缩放操作
 
 1. **拆分现有分片**：拆分分片的功能是通过**拆分/合并工具**提供的。可在以下位置找到有关此服务的详细信息：[拆分/合并工具概述](/documentation/articles/sql-database-elastic-scale-overview-split-and-merge)。
-2. **合并现有分片**：分片合并也是使用**拆分/合并工具**执行的。有关详细信息，请参阅：[拆分/合并工具概述](/documentation/articles/sql-database-elastic-scale-overview-split-and-merge)。   
+2. **合并现有分片**：分片合并也是使用**拆分/合并工具**执行的。有关详细信息，请参阅：[拆分/合并工具概述](sql-database-elastic-scale-overview-split-and-merge)。   
 
 
 ## 成本
@@ -109,5 +92,6 @@
 [2]: ./media/sql-database-elastic-scale-get-started/click-online.png
 [3]: ./media/sql-database-elastic-scale-get-started/click-CSharp.png
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
+ 
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_1221_2015-->

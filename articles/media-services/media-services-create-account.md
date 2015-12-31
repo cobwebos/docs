@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="09/28/2015"
+	ms.date="11/03/2015"
 	wacn.date=""/>
 
 
@@ -31,7 +31,10 @@
 
 -   **媒体服务帐户**。你可以使用你的帐户访问 Azure 中可用的一组基于云的 Media Services。Media Services 帐户不会存储实际媒体内容，而是存储有关你帐户中的媒体内容和媒体处理作业的元数据。创建该帐户时，需要选择一个可用的 Media Services 区域。所选的区域是存储你帐户的元数据记录的数据中心。
 
-    > [AZURE.NOTE]可用媒体服务区域包括：中国北部、<!-- deleted by customization West Europe, China North, -->中国东部<!-- deleted by customization , Southeast Asia, East Asia, Japan West, Japan East-->。Media Services 不使用地缘组。
+    > [AZURE.NOTE]可用媒体服务 (AMS) 区域包括：中国北部、中国东部。Media Services 不使用地缘组。
+    >
+
+
 -   **一个关联的存储帐户**。你的存储帐户是一个与你的 Media Services 帐户关联的 Azure 存储帐户。该存储帐户为媒体文件提供了 Blob 存储，并且必须位于 Media Services 帐户所在的地理区域内。创建 Media Services 帐户时，你可以选择位于同一区域内的现有存储帐户，也可以在同一区域内创建新的存储帐户。如果你删除 Media Services 帐户，相关存储帐户中的 Blob 不会被删除。
 
 <a id="quick">
@@ -62,15 +65,9 @@
 	当你双击帐户名时，默认情况下将显示“快速启动”页。可从此页执行某些管理任务，而这些管理任务也可从该门户的其他页执行。例如，你可以从此页上载视频文件，也可以从“内容”页执行此操作。
 
 	此外，你还可以查看使用 Azure 媒体服务 SDK 完成以下任务的代码：上载、编码和发布视频。你可以单击“编写一些代码”部分下的某个链接，复制代码并在应用程序中使用该代码。
-<!-- deleted by customization
 
-##Media Services learning paths
+[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
 
-You can view AMS learning paths here:
-
-- [AMS Live Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS on Demand Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
--->
 
 ## 后续步骤
 
@@ -90,4 +87,4 @@ You can view AMS learning paths here:
 
   [Azure 管理门户]: http://manage.windowsazure.cn/
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

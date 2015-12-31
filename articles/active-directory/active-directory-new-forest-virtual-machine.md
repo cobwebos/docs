@@ -4,17 +4,16 @@
 	services="active-directory, virtual-network" 
 	documentationCenter="" 
 	authors="markusvi" 
-	manager="TerryLan" 
-	editor="LisaToft"
-	tags="azure-classic-portal"/>
+	manager="stevenpo" 
+	tags=""/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="07/23/2015" 
+	ms.date="10/20/2015" 
 	wacn.date=""/>
 
 
-# 在 Azure 虚拟网络中安装新的 Active Directory 林
+#在 Azure 虚拟网络中安装新的 Active Directory 林
 
 本主题说明如何在 [Azure 虚拟网络](../virtual-network/virtual-networks-overview)上的虚拟机 (VM) 中创建新的 Windows Server Active Directory 环境。在此情况下，Azure 虚拟网络未连接到本地网络。
 
@@ -42,7 +41,7 @@
 
 ## 创建 Azure 虚拟网络
 
-1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
+1. 登录到 Azure 经典门户。
 2. 创建虚拟网络。单击“网络”>“创建虚拟网络”。使用下表中的值来完成向导操作。 
 
 	在此向导页上... | 指定这些值
@@ -59,7 +58,7 @@
 
 若要使用 Windows PowerShell 而不是 UI 创建 VM，请参阅[使用 Azure PowerShell 创建和预配置基于 Windows 的虚拟机](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-vms)
 
-1. 在 Azure 管理门户中，单击“添加”>“计算”>“虚拟机”>“从库中”。使用以下值来完成向导。除非建议或必须使用其他值，否则请接受默认的设置值。
+1. 在经典门户中，单击“添加”>“计算”>“虚拟机”>“从库中”。使用以下值来完成向导。除非建议或必须使用其他值，否则请接受默认的设置值。
 
     在此向导页上... | 指定这些值
 	------------- | -------------
@@ -129,12 +128,10 @@
 -  [设置 Azure VM 静态 IP 地址](http://windowsitpro.com/windows-azure/set-azure-vm-static-ip-address)
 
 -  [如何向 Azure VM 分配静态 IP](http://www.bhargavs.com/index.php/2014/03/13/how-to-assign-static-ip-to-azure-vm/)
+-  [安装新的 Active Directory 林](https://technet.microsoft.com/library/jj574166.aspx)
+-  [介绍 Active Directory 域服务 (AD DS) 虚拟化（级别 100）](https://technet.microsoft.com/library/hh831734.aspx)
 
--  [安装新的 Active Directory 林](http://technet.microsoft.com/zh-cn/library/jj574166.aspx)
-
--  [介绍 Active Directory 域服务 (AD DS) 虚拟化（级别 100）](http://technet.microsoft.com/zh-cn/library/hh831734.aspx)
--  [测试实验室指南：Azure 中的 Windows Server 2012 R2 基本配置](http://www.microsoft.com/zh-CN/download/details.aspx?id=41684)
 <!--Image references-->
 [1]: ./media/active-directory-new-forest-virtual-machine/AD_Forest.png
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

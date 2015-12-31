@@ -1,6 +1,6 @@
 <properties
-	pageTitle="将 BACPAC 导入 Azure SQL 数据库"
-	description="将 BACPAC 导入 Azure SQL 数据库"
+	pageTitle="导入 BACPAC 文件以创建新的 Azure SQL 数据库"
+	description="通过导入现有的 BACPAC 文件创建新的 Azure SQL 数据库。"
 	services="sql-database"
 	documentationCenter=""
 	authors="stevestein"
@@ -9,23 +9,23 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="09/05/2015"
+	ms.date="10/13/2015"
 	wacn.date=""/>
 
 
-# 将 BACPAC 导入 SQL 数据库
+# 导入 BACPAC 文件以创建新的 Azure SQL 数据库
+
 
 **单一数据库**
 
 > [AZURE.SELECTOR]
-- [Azure 预览门户](/documentation/articles/sql-database-import)
 - [PowerShell](/documentation/articles/sql-database-import-powershell)
 
-本文介绍如何使用 [Azure 预览门户](https://portal.azure.com)通过导入 BACPAC 来创建 SQL 数据库。
+本文说明如何使用 [Azure 预览门户](https://portal.azure.com)通过 BACPAC 文件创建新的 Azure SQL 数据库。
 
-BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息，请参阅[数据层应用程序](https://msdn.microsoft.com/library/ee210546.aspx)中的备份包 (.bacpac)。
+BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息，请参阅[数据层应用程序](https://msdn.microsoft.com/zh-cn/library/ee210546.aspx)中的备份包 (.bacpac)。
 
-数据库是使用从 Azure 存储 blob 容器导入的 BACPAC 创建的。如果 Azure 存储中没有 .bacpac 文件，你可以按照[创建和导出 Azure SQL 数据库的 BACPAC](/documentation/articles/sql-database-backup) 中的步骤创建一个。
+数据库是使用从 Azure 存储 blob 容器导入的 BACPAC 创建的。如果 Azure 存储空间中没有 .bacpac 文件，你可以按照[创建和导出 Azure SQL 数据库的 BACPAC](/documentation/articles/sql-database-export) 中的步骤创建一个。
 
 
 > [AZURE.NOTE]Azure SQL 数据库会自动为你可以还原的每个用户数据库创建和维护备份。有关详细信息，请参阅[业务连续性概述](/documentation/articles/sql-database-business-continuity)。
@@ -42,7 +42,7 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息�
 
 打开要导入的数据库的 SQL Server 边栏选项卡：
 
-1.	转到 [Azure 预览门户](https//:portal.azure.com)。
+1.	转到 [Azure 预览门户](https://portal.azure.com)。
 2.	单击“浏览全部”。
 3.	单击“SQL Server”。
 2.	单击要将数据库还原到的服务器。
@@ -73,7 +73,8 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息�
 2.	单击要还原到的服务器。
 3.	在 SQL 服务器边栏选项卡中，单击“导入/导出历史记录”：
 
-    ![导入导出历史记录][5] ![导入导出历史记录][6]
+    ![导入导出历史记录][5]
+    ![导入导出历史记录][6]
 
 
 
@@ -105,4 +106,4 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息�
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_1221_2015-->

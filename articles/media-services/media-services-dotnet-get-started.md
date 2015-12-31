@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/05/2015"
+	ms.date="11/08/2015"
 	wacn.date=""/>
 
 
@@ -18,8 +18,7 @@
 [AZURE.INCLUDE [media-services-selector-get-started](../includes/media-services-selector-get-started.md)]
 
 
->[AZURE.NOTE]
->若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 <a href="/pricing/1rmb-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure 试用</a>。
+>[AZURE.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 <a href="/pricing/1rmb-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure 试用</a>。
 
 本教程将引导你完成使用 Azure Media Services (AMS) SDK for .NET 实施视频点播 (VoD) 内容传送应用程序的步骤。
 
@@ -115,15 +114,14 @@ Media Services 所提供的动态打包可让你以 Media Services 支持的流�
 
 4. 打开 App.config 文件（如果该文件未按默认添加到项目中，请添加）并在该文件中添加 *appSettings* 节。如以下示例中所示设置 Azure Media Services 帐户名和帐户密钥的值。若要获取帐户名和密钥信息，请打开 Azure 管理门户，选择你的媒体服务帐户，然后单击“管理密钥”按钮。
 
-	<configuration>
-	...
-	  <appSettings>
-	    <add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
-	    <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
-	  </appSettings>
-	  
-	</configuration>ion&gt;
-	</code></pre>
+		<configuration>
+		...
+		  <appSettings>
+		    <add key="MediaServicesAccountName" value="Media-Services-Account-Name" />
+		    <add key="MediaServicesAccountKey" value="Media-Services-Account-Key" />
+		  </appSettings>
+		  
+		</configuration>
 
 5. 使用以下代码覆盖位于 Program.cs 文件开头的现有 **using** 语句。
 
@@ -142,7 +140,7 @@ Media Services 所提供的动态打包可让你以 Media Services 支持的流�
 
 ##连接到 Media Services 帐户
 
-使用采用 .NET 的媒体服务时，你必须将 **CloudMediaContext** 类用于大多数媒体服务编程任务：连接到媒体服务帐户；创建、更新、访问和删除以下对象：资产、资产文件、作业、访问策略、定位符等。
+使用采用 .NET 的媒体服务时，你必须将 **CloudMediaContext** 类用于大多数媒体服务编程任务：连接到媒体服务帐户；创建、更新、访问和删除以下对象：资产、资产文件、作业、访问策略、定位符等等。
 
 使用以下代码覆盖默认程序类。该代码演示如何从 App.config 文件中读取连接值，以及如何创建 **CloudMediaContext** 对象以连接到媒体服务。有关连接到媒体服务的详细信息，请参阅[使用用于 .NET 的媒体服务 SDK 连接到媒体服务](http://msdn.microsoft.com/zh-cn/library/azure/jj129571.aspx)。
 
@@ -197,7 +195,7 @@ Media Services 所提供的动态打包可让你以 Media Services 支持的流�
 
 ##创建新资产并上载视频文件
 
-在 Media Services 中，可以将数字文件上载（引入）到资产中。**资产**实体可以包含视频、音频、图像、缩略图集合、图文轨迹和隐藏字幕文件（以及有关这些文件的元数据）。 上载文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。资产中的文件称为**资产文件**。
+在 Media Services 中，可以将数字文件上载（引入）到资产中。**资产**实体可以包含视频、音频、图像、缩略图集合、图文轨迹和隐藏字幕文件（以及有关这些文件的元数据。） 上载文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。资产中的文件称为**资产文件**。
 
 下面定义的 **UploadFile** 方法调用 **CreateFromFile**（在 .NET SDK Extensions 中定义）。**CreateFromFile** 创建指定的源文件所要上载到的新资产。
 
@@ -243,29 +241,29 @@ Media Services 所提供的动态打包可让你以 Media Services 支持的流�
 
 以下代码演示如何提交编码作业。该作业所包含的一项任务会指定要使用 **Azure 媒体编码器**将夹层文件转码成一组自适应比特率 MP4。代码会提交作业，并等待作业完成。
 
-作业完成后，你即可流式处理资产，或渐进式下载转码后所创建的 MP4 文件。
-请注意，你不需要拥有超过 0 个流式处理单位才能渐进式下载 MP4 文件。
+作业完成后，你即可流式处理资产，或渐进式下载转码后所创建的 MP4 文件。请注意，你不需要拥有超过 0 个流式处理单位才能渐进式下载 MP4 文件。
 
 将以下方法添加到 Program 类。
 
 	static public IAsset EncodeToAdaptiveBitrateMP4s(IAsset asset, AssetCreationOptions options)
 	{
-		// Prepare a job with a single task to transcode the specified asset
-        // into a multi-bitrate asset.
-
+	
+	    // Prepare a job with a single task to transcode the specified asset
+	    // into a multi-bitrate asset.
+	
 	    IJob job = _context.Jobs.CreateWithSingleTask(
-	        MediaProcessorNames.AzureMediaEncoder,
-	        MediaEncoderTaskPresetStrings.H264AdaptiveBitrateMP4Set720p,
+	        "Media Encoder Standard",
+	        "H264 Multiple Bitrate 720p",
 	        asset,
 	        "Adaptive Bitrate MP4",
 	        options);
-
-		Console.WriteLine("Submitting transcoding job...");
-
-
+	
+	    Console.WriteLine("Submitting transcoding job...");
+	
+	
 	    // Submit the job and wait until it is completed.
 	    job.Submit();
-
+	
 	    job = job.StartExecutionProgressTask(
 	        j =>
 	        {
@@ -273,11 +271,11 @@ Media Services 所提供的动态打包可让你以 Media Services 支持的流�
 	            Console.WriteLine("Job progress: {0:0.##}%", j.GetOverallProgress());
 	        },
 	        CancellationToken.None).Result;
-
+	
 	    Console.WriteLine("Transcoding job finished.");
-
+	
 	    IAsset outputAsset = job.OutputMediaAssets[0];
-
+	
 	    return outputAsset;
 	}
 
@@ -417,16 +415,8 @@ MPEG DASH
 若要测试渐进式下载，请将 URL 粘贴到浏览器（例如 Internet Explorer、Chrome 或 Safari）中。
 
 
-##后续步骤
-<!-- deleted by customization
+[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
 
-###Media Services learning paths
-
-You can view AMS learning paths here:
-
-- [AMS Live Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS on Demand Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
--->
 
 ### 想要寻找其他内容吗？
 
@@ -440,4 +430,4 @@ You can view AMS learning paths here:
   [Web Platform Installer]: http://go.microsoft.com/fwlink/?linkid=255386
   [Portal]: http://manage.windowsazure.cn/
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

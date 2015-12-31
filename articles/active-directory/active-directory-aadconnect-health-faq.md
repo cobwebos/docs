@@ -58,8 +58,8 @@
 是的。对于正在进行的操作，你可以将 Health 代理配置为使用 HTTP 代理转发出站 http 请求。有关详细信息，请参阅[将 Azure AD Connect Health 代理配置为使用 HTTP 代理](active-directory-aadconnect-health-agent-install-adfs.md#configure-azure-ad-connect-health-agent-to-use-http-proxy)。
 
 如果要在代理注册过程中配置代理，需要修改 Internet Explorer 代理设置。<br>
-打开“Internet Explorer -> 设置 -> Internet 选项 -> 连接 -> LAN 设置”。<br> 
-选择“为 LAN 使用代理服务器”。<br> 
+打开“Internet Explorer -> 设置 -> Internet 选项 -> 连接 -> LAN 设置”。<br>
+选择“为 LAN 使用代理服务器”。<br>
 如果你有不同的针对 HTTP 和 HTTPS/Secure 的代理端口，则请选择“高级”。<br>
 
 
@@ -77,9 +77,9 @@
 
 
 
-**问：我是否需要对 AD FS 应用程序代理服务器或 Web 应用程序代理服务器启用审核？**
+**问：我是否需要对 AD FS 应用程序代理服务器或网站代理服务器启用审核？**
 
-否，不需要对 AD FS 应用程序代理服务器或 Web 应用程序代理服务器启用审核。只需对 AD FS 联合服务器启用审核。
+否，不需要对 AD FS 应用程序代理服务器或网站代理服务器启用审核。只需对 AD FS 联合服务器启用审核。
 
 
 
@@ -97,8 +97,9 @@
 ## 相关链接
 
 * [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health)
-* [适用于 AD FS 的 Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install-adfs)
-* [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs)
+* [Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install)
 * [Azure AD Connect Health 操作](/documentation/articles/active-directory-aadconnect-health-operations)
+* [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs)
+* [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -19,7 +19,7 @@
 [AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
 
 
-[Docker](https://www.docker.com/) 是最常用的虚拟化技术之一，它使用 [Linux 容器](http://en.wikipedia.org/wiki/LXC)而不是虚拟机作为在共享资源上隔离数据和执行计算的方法。可以使用由 [Azure Linux 代理]管理的 Docker VM 扩展，以创建可在 Azure 上为应用程序托管任意数量容器的 Docker VM。
+[Docker](https://www.docker.com/) 是最常用的虚拟化技术之一，它使用 [Linux 容器](http://zh.wikipedia.org/wiki/LXC)而不是虚拟机作为在共享资源上隔离数据和执行计算的方法。可以使用由 [Azure Linux 代理]管理的 Docker VM 扩展，创建可在 Azure 上为应用程序托管任意数量容器的 Docker VM。
 
 > [AZURE.NOTE]本主题介绍如何从 Azure 门户创建 Docker VM。若要了解如何通过命令行创建 Docker VM，请参阅[如何从 Azure 命令行界面 (Azure CLI) 使用 Docker VM 扩展]。若要查看容器及其优点的综合讨论，请参阅 [Docker 高级白板](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard)。
 
@@ -136,11 +136,11 @@ WARNING: No swap limit support
 
 
 <!--Link references-->
-[如何从 Azure 命令行界面 (Azure CLI) 使用 Docker VM 扩展]: /documentation/articles/virtual-machines-docker-with-xplat-cli
-[Azure Linux 代理]: /documentation/articles/virtual-machines-linux-agent-user-guide
-[Link 3 to another azure.microsoft.com documentation topic]: /documentation/articles/storage-whatis-account
+[如何从 Azure 命令行界面 (Azure CLI) 使用 Docker VM 扩展]: /documentation/articles/virtual-machines-docker-with-xplat-cli/
+[Azure Linux 代理]: virtual-machines-linux-agent-user-guide.md
+[Link 3 to another azure.microsoft.com documentation topic]: ../storage-whatis-account.md
 
 [使用 https 运行 Docker]: http://docs.docker.com/articles/https/
 [Docker 用户指南]: https://docs.docker.com/userguide/
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="08/18/2015"
+	ms.date="11/05/2015"
 	wacn.date=""/>
 
 # <a name="getting-started"></a>移动服务入门
@@ -17,7 +17,7 @@
 [AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 &nbsp;
 
->[AZURE.TIP]如果你不熟悉如何使用 Microsoft Azure 进行移动开发，请[开始使用 Azure Mobile Apps](/documentation/articles/app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview) 而不是 Azure 移动服务，因为前者提供[更多的优势](/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services-preview)。
+>[AZURE.TIP]如果你不熟悉如何使用 Microsoft Azure 进行移动开发，请[开始使用 Azure Mobile Apps](/documentation/articles/app-service-mobile-dotnet-backend-xamarin-ios-get-started-preview) 而不是 Azure 移动服务；Mobile Apps 提供[更多的优势](/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services-preview)。
 
 本教程说明如何使用 Azure 移动服务向 Xamarin iOS 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单_待办事项列表_应用程序。要创建的移动服务将使用支持的 .NET 语言，你可以使用 Visual Studio 来提供服务器端业务逻辑和管理移动服务。若要创建允许以 JavaScript 编写服务器端业务逻辑的移动服务，请参阅本主题的 [JavaScript 后端版本]。
 
@@ -95,17 +95,16 @@
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
 * [脱机数据同步入门]
-<br/>了解如何快速开始使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
+  <br/>了解如何快速开始使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
 
 * [身份验证入门]
-<br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
+  <br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
 
 * [推送通知入门]
-<br/>了解如何向应用程序发送一条很基本的推送通知。
+  <br/>了解如何向应用程序发送一条很基本的推送通知。
 
 * [移动服务 .NET 后端故障排除]
-<br/>了解如何诊断和修复移动服务 .NET 后端可能会出现的问题。
-[AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
+  <br/>了解如何诊断和修复移动服务 .NET 后端可能会出现的问题。[AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
 [Getting started with Mobile Services]: #getting-started
@@ -138,4 +137,4 @@
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532&clcid=0x409
 [Xamarin for Windows]: https://go.microsoft.com/fwLink/?LinkID=330242&clcid=0x409
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

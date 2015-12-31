@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="SQL 数据库的 XEvent 事件文件代码 | Microsoft Azure" 
+	pageTitle="SQL 数据库的 XEvent 环形缓冲区代码 | Microsoft Azure" 
 	description="提供一个 Transact-SQL 代码示例，以帮助你快速轻松地在 Azure SQL 数据库中使用环形缓存区目标。" 
 	services="sql-database" 
 	documentationCenter="" 
@@ -10,15 +10,15 @@
 
 
 <tags 
-	ms.service="sql-database" 
-	ms.date="09/30/2015" 
+	ms.service="sql-database"
+	ms.date="10/22/2015" 
 	wacn.date="09/15/2015"/>
 
 
 # SQL 数据库中扩展事件的环形缓冲区目标代码
 
 
-你需要完整的代码示例以最简单快速的方式在测试期间捕获和报告扩展事件的信息。扩展事件数据最简单的目标是[环形缓冲区目标](http://msdn.microsoft.com/library/ff878182.aspx)。
+你需要完整的代码示例以最简单快速的方式在测试期间捕获和报告扩展事件的信息。扩展事件数据最简单的目标是[环形缓冲区目标](http://msdn.microsoft.com/zh-cn/library/ff878182.aspx)。
 
 
 本主题演示了一个 Transact-SQL 代码示例：
@@ -55,7 +55,7 @@
 
 
 - SQL Server Management Studio (ssms.exe) 2015 年 8 月预览版或更高版本。可从以下位置下载最新的 ssms.exe：
- - [主题中的链接。](http://msdn.microsoft.com/library/mt238290.aspx)
+ - [主题中的链接。](http://msdn.microsoft.com/zh-cn/library/mt238290.aspx)
  - [直接指向下载位置的链接。](http://go.microsoft.com/fwlink/?linkid=616025)
  - Microsoft 建议定期更新 ssms.exe。
 
@@ -63,7 +63,7 @@
 ## 代码示例
 
 
-只要稍加修改，就可以在 Azure SQL 数据库或 Microsoft SQL Server 上运行以下环形缓冲区的代码示例。不同之处在于步骤 5 的 FROM 子句中，有些动态管理视图 (DMV) 的名称出现了 '\_database'。例如：
+只要稍加修改，就可以在 Azure SQL 数据库或 Microsoft SQL Server 上运行以下环形缓冲区的代码示例。不同之处在于步骤 5 的 FROM 子句中，有些动态管理视图 (DMV) 的名称出现了节点“\_database”。例如：
 
 - sys.dm\_xe**\_database**\_session\_targets
 - sys.dm\_xe\_session\_targets
@@ -337,7 +337,7 @@ GO
 ```
 
 
-事件会话的定义将会更新，但不会删除。然后可以将环形缓冲区的另一个实例添加事件会话：
+事件会话的定义将会更新，但不会删除。然后可以将环形缓冲区的另一个实例添加到事件会话：
 
 
 ```
@@ -369,8 +369,8 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/zh-cn/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/zh-cn/library/bb630355.aspx)
 -->
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

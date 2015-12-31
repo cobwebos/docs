@@ -1,19 +1,15 @@
 <properties 
-   pageTitle="什么是流量管理器 | Azure"
+   pageTitle="什么是流量管理器 | Microsoft Azure"
    description="本文将帮助你理解什么是流量管理器及其工作方式。"
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
-<tags 
-   ms.service="traffic-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
-   ms.author="joaoma" />
+<tags
+	ms.service="traffic-manager"
+	ms.date="11/12/2015"
+	wacn.date=""/>
 
 # 什么是流量管理器？
 
@@ -53,31 +49,34 @@
 
 **图 2**
 
-1. **将 Azure 云服务、Azure 网站或其他终结点部署到生产环境**。在创建流量管理器配置文件时，必须将其与某个订阅关联。然后，在生产环境中为云服务和“标准”层网站添加属于同一订阅的终结点。如果某一终结点位于过渡环境中而不在 Azure 生产环境中或同一订阅中，则不能将其添加为外部终结点。有关云服务的详细信息，请参阅[云服务](https://msdn.microsoft.com/zh-CN/library/jj155995.aspx)。有关网站的详细信息，请参阅[网站](/home/features/web-sites/)。
+1. **将 Azure 云服务、Azure 网站或其他终结点部署到生产环境**。在创建流量管理器配置文件时，必须将其与某个订阅关联。然后，在生产环境中为云服务和“标准”层网站添加属于同一订阅的终结点。如果某一终结点位于过渡环境中而不在 Azure 生产环境中或同一订阅中，则不能将其添加为外部终结点。有关云服务的详细信息，请参阅[云服务](https://msdn.microsoft.com/zh-CN/library/jj155995.aspx)。有关网站的详细信息，请参阅[网站](/home/features/web-site/)。
 2. **确定流量管理器域的名称**。考虑为域使用带有唯一前缀的名称。域的后半部分（即 trafficmanager.cn）是固定的。有关详细信息，请参阅[最佳实践](#best-practices)。
 3. **确定要使用的监视配置**。无论使用哪种流量路由方法，流量管理器都会监视终结点以确保它们联机。在你配置监视设置之后，流量管理器不会将流量定向到监视系统判定为脱机的终结点，除非它检测到所有终结点均已脱机，或无法检测配置文件中包含的任一终结点的状态。有关监视的详细信息，请参阅[流量管理器监视](/documentation/articles/traffic-manager-monitoring)。
 4. **确定要使用的流量路由方法**。有三种不同的流量路由方法。请花一些时间了解哪种方法最适合你的要求。如果你以后需要更改方法，随时可以更改。另请注意，每种方法都需要稍微不同的配置步骤。有关流量路由方法的信息，请参阅[关于流量管理器流量路由方法](/documentation/articles/traffic-manager-load-balancing-methods)。
 5. **创建配置文件并配置设置**。可以使用 REST API、Windows PowerShell 或管理门户来创建流量管理器配置文件并配置设置。有关详细信息，请参阅[如何配置流量管理器设置](#how-to-configure-traffic-manager-settings)。以下步骤假定你将使用管理门户中的“快速创建”。 
    - **创建流量管理器配置文件** - 若要使用管理门户中的“快速创建”创建配置文件，请参阅[管理流量管理器配置文件](/documentation/articles/traffic-manager-manage-profiles)。
-   - **配置流量路由方法设置** – 在“快速创建”期间，你必须为配置文件选择流量路由方法。在完成“快速创建”步骤之后，可以随时更改此设置。有关配置步骤，请参阅与负载流量路由对应的主题：[配置“性能”流量路由](/documentation/articles/traffic-manager-configure-performance-load-balancing)、[配置“故障转移”流量路由](/documentation/articles/traffic-manager-configure-failover-load-balancing)、[配置“轮循机制”流量路由](/documentation/articles/traffic-manager-configure-round-robin-load-balancing)。>[AZURE.NOTE]“轮循机制”流量路由方法现在支持将网络流量进行加权分布。但是，目前必须使用 REST API 或 Windows PowerShell 配置权重。有关详细信息和示例配置，请参阅 Azure 博客中的 [Azure 流量管理器外部终结点与通过 PowerShell 实施的加权轮循机制](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)。
+   - **配置流量路由方法设置** – 在“快速创建”期间，你必须为配置文件选择流量路由方法。在完成“快速创建”步骤之后，可以随时更改此设置。有关配置步骤，请参阅与流量路由方法对应的主题：[配置“性能”流量路由方法](/documentation/articles/traffic-manager-configure-performance-load-balancing)、[配置“故障转移”流量路由方法](/documentation/articles/traffic-manager-configure-failover-load-balancing)、[配置“轮循机制”流量路由方法](/documentation/articles/traffic-manager-configure-round-robin-load-balancing)。
+   
+   >[AZURE.NOTE]“轮循机制”流量路由方法现在支持将网络流量进行加权分布。但是，目前必须使用 REST API 或 Windows PowerShell 配置权重。有关详细信息和示例配置，请参阅 Azure 博客中的 [Azure 流量管理器外部终结点与通过 PowerShell 实施的加权轮循机制](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)。
 
-   - **配置终结点** – 在“快速创建”期间无法配置终结点。在创建配置文件并指定流量路由方法后，必须让流量管理器知道相应的终结点。有关配置终结点的步骤，请参阅[在流量管理器中管理终结点](/documentation/articles/traffic-manager-endpoints)
+   - **配置终结点** – 在“快速创建”期间未配置终结点。在创建配置文件并指定流量路由方法后，必须让流量管理器知道相应的终结点。有关配置终结点的步骤，请参阅[在流量管理器中管理终结点](/documentation/articles/traffic-manager-endpoints)
 
-   - **配置监视设置** – 在“快速创建”期间无法配置监视设置。在创建配置文件并指定流量路由方法之后，你必须让流量管理器知道要监视什么。有关配置监视的步骤，请参阅[流量管理器监视](/documentation/articles/traffic-manager-monitoring)。
+   - **配置监视设置** – 在“快速创建”期间未配置监视设置。在创建配置文件并指定流量路由方法之后，你必须让流量管理器知道要监视什么。有关配置监视的步骤，请参阅[流量管理器监视](/documentation/articles/traffic-manager-monitoring)。
 6. **测试流量管理器配置文件**。测试你的配置文件和域是否按预期工作。有关如何执行此操作的信息，请参阅[测试流量管理器设置](/documentation/articles/traffic-manager-testing-settings)。
 7. **将公司域名的 DNS 资源记录指向配置文件以使其生效**。有关详细信息，请参阅[将公司 Internet 域指向流量管理器域](/documentation/articles/traffic-manager-point-internet-domain)。
 
-使用图 1 中的示例，更改服务器上的 DNS 资源记录使其包含以下行，以便将公司域名指向流量管理器域名：www.contoso.com IN CNAME contoso.trafficmanager.cn
+使用图 1 中的示例，更改服务器上的 DNS 资源记录使其包含以下行，以便将公司域名指向流量管理器域名：
+	www.contoso.com IN CNAME contoso.trafficmanager.cn
 
 ## 如何配置流量管理器设置
 
 可以使用管理门户、REST API 和 Windows PowerShell cmdlet 来配置流量管理器设置。
 
-虽然并非每个 REST API 元素都在管理门户中可见，但是许多设置使用上述任一方法都可以获得。有关 REST API 用法的详细信息，请参阅[流量管理器上的操作（REST API 参考）](https://msdn.microsoft.com/zh-CN/library/hh758255.aspx)。
+虽然并非每个 REST API 元素都在管理门户中可见，但是许多设置使用上述任一方法都可以获得。有关 REST API 用法的详细信息，请参阅[流量管理器上的操作（REST API 参考）](https://msdn.microsoft.com/zh-cn/library/hh758255.aspx)。
 
-有关用于流量管理器的 Windows PowerShell cmdlet 的详细信息，请参阅 [Azure 流量管理器 Cmdlet](https://msdn.microsoft.com/zh-CN/library/dn690250.aspx)。
+有关用于流量管理器的 Windows PowerShell cmdlet 的详细信息，请参阅 [Azure 流量管理器 Cmdlet](https://msdn.microsoft.com/zh-cn/library/dn690250.aspx)。
 
->[AZURE.NOTE]当前不支持使用管理门户为“轮循机制”流量路由方法和嵌套的配置文件配置外部终结点（类型=“任何”）权重。必须使用 REST（请参阅[创建定义](https://msdn.microsoft.com/zh-CN/library/azure/hh758257.aspx)）或 Windows PowerShell（请参阅 [Add-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/zh-CN/library/azure/dn690257.aspx)）。
+>[AZURE.NOTE]当前不支持使用管理门户为“轮循机制”流量路由方法和嵌套的配置文件配置外部终结点（类型=“任何”）权重。必须使用 REST（请参阅[创建定义](https://msdn.microsoft.com/zh-cn/library/azure/hh758257.aspx)）或 Windows PowerShell（请参阅 [Add-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/zh-cn/library/azure/dn690257.aspx)）。
 
 ### 在管理门户中配置设置
 
@@ -89,12 +88,12 @@
 - **DNS TTL** – DNS 生存时间 (TTL) 值控制客户端本地缓存名称服务器在 Azure 流量管理器 DNS 系统中查询已更新 DNS 条目的频率。
 - **订阅** – 选择你的配置文件将对应于的订阅。请注意，仅当你有多个订阅时，才会显示此选项。
 - **流量路由方法** – 你希望流量管理器用于处理流量路由的方式。
-- **故障转移顺序** – 使用故障转移负载流量路由方法时终结点的顺序。
+- **故障转移顺序** – 使用故障转移流量路由方法时终结点的顺序。
 - **监视** – 监视设置包含协议（HTTP 或 HTTPS）、端口、相对路径和文件名。
 
 ### 通过使用 REST API 配置设置
 
-可以通过使用 REST API 创建和配置流量管理器配置文件。有关详细信息，请参阅[流量管理器上的操作（REST API 参考）](https://msdn.microsoft.com/zh-CN/library/hh758255.aspx)。
+可以通过使用 REST API 创建和配置流量管理器配置文件。有关详细信息，请参阅[流量管理器上的操作（REST API 参考）](https://msdn.microsoft.com/zh-cn/library/hh758255.aspx)。
 
 - **配置文件** – 配置文件包含你创建的域名前缀。每个配置文件都与你的订阅相对应。你可以为每个订阅创建多个配置文件。配置文件名称在管理门户中是可见的。你所创建的、包含在配置文件中的名称被称为你的“流量管理器域”。
 - **定义** – 定义包含策略设置和监视设置。定义与配置文件相对应。每个配置文件只能有一个定义。定义本身在管理门户中不可见，但在管理门户中可以看到定义的许多设置，并可对其进行配置。
@@ -104,7 +103,7 @@
 
 ## 通过使用 Windows PowerShell 配置设置
 
-可以通过使用 Windows PowerShell 创建和配置流量管理器配置文件。有关详细信息，请参阅 [Azure 流量管理器 Cmdlet](https://msdn.microsoft.com/zh-CN/library/dn690250.aspx)。
+可以通过使用 Windows PowerShell 创建和配置流量管理器配置文件。有关详细信息，请参阅 [Azure 流量管理器 Cmdlet](https://msdn.microsoft.com/zh-cn/library/dn690250.aspx)。
 
 ## 最佳实践
 
@@ -132,7 +131,7 @@
 
 ![嵌套流量管理器配置文件的示例](./media/traffic-manager-overview/IC751072.png)
 
-**￼图 3**
+**图 3**
 
 你最多可以嵌套 10 层，并可以为每个配置文件配置不同的流量路由方法。
 
@@ -154,20 +153,20 @@
 
 如果流量管理器将用户定向到具有少数正常运行的终结点的子配置文件，则可能会使这些终结点过载，从而导致性能问题。为了防止出现这种情况，可以为父流量管理器配置文件配置正常运行的终结点数的阈值，以确定该父配置文件的子配置文件中的任何终结点是否均可接收流量。例如，如果要确保在子配置文件内至少有三个正常运行的终结点，可将此阈值设为 3。在图 4 的示例中，你将在顶层流量管理器配置文件中配置此阈值。
 
-若要将流量管理器配置文件添加为终结点并配置最小数量的正常运行终结点，必须使用 REST（请参阅[创建定义](https://msdn.microsoft.com/zh-CN/library/azure/hh758257.aspx)）或 Windows PowerShell（请参阅 [Add-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/zh-CN/library/azure/dn690257.aspx)）。而不能使用管理门户。
+若要将流量管理器配置文件添加为终结点并配置最小数量的正常运行终结点，必须使用 REST（请参阅[创建定义](https://msdn.microsoft.com/zh-cn/library/azure/hh758257.aspx)）或 Windows PowerShell（请参阅 [Add-AzureTrafficManagerEndpoint](https://msdn.microsoft.com/zh-cn/library/azure/dn690257.aspx)）。而不能使用管理门户。
 
 ## 流量管理器图表
 
-如果你需要本主题中的图表作为自己的流量管理器相关演示文稿的 PowerPoint 内容，或者需要按照自己的意图进行修改，请参阅 [MSDN 文档中的流量管理器图表](http://gallery.technet.microsoft.com/Traffic-Manager-figures-in-887e7c99)。
+如果你需要将本主题中的图表作为自己的流量管理器相关演示文稿的 PowerPoint 内容，或者需要按照自己的意图进行修改，请参阅 [MSDN 文档中的流量管理器图表](http://gallery.technet.microsoft.com/Traffic-Manager-figures-in-887e7c99)。
 
-## 另请参阅
+## 后续步骤
 
-[云服务](https://msdn.microsoft.com/zh-CN/library/jj155995.aspx)
+[流量管理器路由方法](/documentation/articles/traffic-manager-routing-methods)
 
-[网站](/home/features/web-sites/)
+[流量管理器监视](/documentation/articles/traffic-manager-monitoring)
 
-[流量管理器上的操作（REST API 参考）](https://msdn.microsoft.com/zh-CN/library/hh758255.aspx)
+[创建配置文件](/documentation/articles/traffic-manager-manage-profiles)
 
-[Azure 流量管理器 Cmdlet](https://msdn.microsoft.com/zh-CN/library/dn690250.aspx)
+[Azure 流量管理器 Cmdlet](https://msdn.microsoft.com/zh-cn/library/dn690250.aspx)
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_1221_2015-->

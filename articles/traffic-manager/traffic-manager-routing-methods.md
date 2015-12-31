@@ -4,12 +4,12 @@
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
-<tags 
-   ms.service="traffic-manager"
-   ms.date="08/19/2015"
-   wacn.date="" />
+<tags
+	ms.service="traffic-manager"
+	ms.date="11/12/2015"
+	wacn.date=""/>
 
 # 流量管理器路由方法
 
@@ -79,9 +79,9 @@
 
 目前，不能使用管理门户来配置加权的流量路由。Azure 支持使用服务管理 REST API 和 Azure PowerShell cmdlet 对此方法进行编程访问。
 
-有关使用 REST API 的信息，请参阅[有关流量管理器的操作（REST API 参考）](http://go.microsoft.com/fwlink/p/?LinkId=313584)。
+有关使用 REST API 的信息，请参阅[有关流量管理器的操作（REST API 参考）](https://msdn.microsoft.com/zh-cn/library/hh758255.aspx)。
 
-有关使用 Azure PowerShell cmdlet 的信息，请参阅 [Azure 流量管理器 Cmdlet](http://go.microsoft.com/fwlink/p/?LinkId=400769)。有关示例配置，请参阅 Azure 博客中的 [Azure 流量管理器外部终结点与通过 PowerShell 实施的加权轮循机制](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)。
+有关使用 Azure PowerShell cmdlet 的信息，请参阅 [Azure 流量管理器 Cmdlet](https://msdn.microsoft.com/zh-cn/library/dn690250.aspx)。有关示例配置，请参阅 Azure 博客中的 [Azure 流量管理器外部终结点与通过 PowerShell 实施的加权轮循机制](http://azure.microsoft.com/blog/2014/06/26/azure-traffic-manager-external-endpoints-and-weighted-round-robin-via-powershell/)。
 
 若要从单个客户端测试配置文件并观察平等的或加权的循环行为，请验证是否能够根据配置文件中的相等值或加权值，将 DNS 名称解析为终结点的不同 IP 地址。测试时，你必须禁用客户端 DNS 缓存或在每次尝试操作之后清除 DNS 缓存，以确保发送新的 DNS 名称查询。
 
@@ -119,18 +119,11 @@
 
 ## 后续步骤
 
-[什么是流量管理器？](/documentation/articles/traffic-manager-overview)
+[流量管理器监视](/documentation/articles/traffic-manager-monitoring)
 
-[关于流量管理器监视](/documentation/articles/traffic-manager-monitoring)
+[创建配置文件](/documentation/articles/traffic-manager-manage-profiles)
 
-[流量管理器上的操作（REST API 参考）](http://go.microsoft.com/fwlink/p/?LinkID=313584)
-
-[云服务](http://go.microsoft.com/fwlink/p/?LinkId=314074)
-
-[网站](http://go.microsoft.com/fwlink/p/?LinkId=393327)
-
-[Azure 流量管理器 Cmdlet](http://go.microsoft.com/fwlink/p/?LinkId=400769)
-
+[添加终结点](/documentation/articles/traffic-manager-endpoints)
  
 
-<!---HONumber=76-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -4,16 +4,12 @@
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
-<tags 
-   ms.service="traffic-manager"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="08/19/2015"
-   ms.author="joaoma" />
+<tags
+	ms.service="traffic-manager"
+	ms.date="11/12/2015"
+	wacn.date=""/>
 
 # 关于流量管理器监视
 
@@ -73,13 +69,15 @@ Azure 流量管理器在管理门户中显示配置文件和终结点服务运�
 **图 1** – 监视序列示例。图中的数字对应于下面带编号的说明。
 
 1. **GET** – 流量管理器监视系统对你在监视设置中指定的路径和文件执行 GET。
-2. **200 OK** – 监视系统预期在 10 秒内会返回一条 HTTP 200 OK 消息。如果收到此响应，则它认为云服务可用。
->[AZURE.NOTE]只有当返回消息为 200 OK 时，流量管理器才会将终结点视为处于联机状态。如果收到非 200 响应，则它将认为终结点不可用，并且将此算作失败的检查。
+2. **200 OK** – 监视系统预期在 10 秒内会返回一条 HTTP 200 OK 消息。如果收到此响应，则它认为云服务可用。 
+
+>[AZURE.NOTE]只有当返回消息为 200 OK 时，流量管理器才会将终结点视为处于联机状态。如果收到非 200 响应，则它将认为终结点不可用，并且将此算作失败的检查。有关对失败的检查进行故障排除的更多详细信息，请参阅 [Azure 流量管理器上的降级状态故障排除](/documentation/articles/traffic-manager-troubleshooting-degraded)。
 
 3. **30 秒间隔检查** – 此检查每 30 秒执行一次。
 4. **云服务不可用** – 云服务变得不可用。在下次执行监视器检查前，流量管理器不会知道。
 5. **尝试访问监视文件（4 次尝试）**– 监视系统执行 GET，但在 10 秒或更短时间内没收到响应。然后它又执行了三次尝试，每隔 30 秒一次。这意味着服务变得不可用时，监视系统最多需要约 1.5 分钟能发现。如果其中一次尝试成功，尝试次数就会重置。如果执行 GET 后返回 200 OK 消息所经历的时间超过了 10 秒，监视系统仍会将其算作失败的检查，不过，图中未显示此行为。
-6. **标记为已降级** – 连续第四次失败之后，监视系统会将不可用的云服务标记为“已降级”。
+6. **标记为已降级** – 连续第四次失败之后，监视系统会将不可用的云服务标记为“已降级”。 
+
 7. **发送到云服务的流量减少** – 流量可能会继续流向不可用的云服务。由于该服务不可用，客户端会遇到失败。客户端和辅助 DNS 服务器已经缓存了不可用云服务 IP 地址的 DNS 记录。它们会继续将公司域的 DNS 名称解析为该服务的 IP 地址。此外，辅助 DNS 服务器可能会继续分发不可用服务的 DNS 信息。随着客户端和辅助 DNS 服务器的更新，发送到不可用服务 IP 地址的流量将会变慢。监视系统继续以 30 秒间隔执行检查。在此示例中，该服务没有响应并保持不可用。
 8. **发送到云服务的流量停止** – 此时，大多数 DNS 服务器和客户端都应更新，并且发送到不可用服务的流量将停止。流量完全停止前的最长时间取决于 TTL 时间。默认 DNS TTL 为 300 秒（5 分钟）。使用此值，客户端在 5 分钟后停止使用该服务。监视系统继续以 30 秒间隔执行检查，云服务没有响应。
 9. **云服务重新联机并接收流量** – 该服务变为可用，但在监视系统执行检查前，流量管理器并不知道。
@@ -106,15 +104,11 @@ Azure 流量管理器在管理门户中显示配置文件和终结点服务运�
 
 ## 另请参阅
 
-[什么是流量管理器？](/documentation/articles/traffic-manager-overview)
+[创建配置文件](/documentation/articles/traffic-manager-manage-profiles)
 
-[关于流量管理器流量路由方法](/documentation/articles/traffic-manager-load-balancing-methods)
-
-[云服务](https://msdn.microsoft.com/zh-CN/library/jj155995.aspx)
-
-[网站](/home/features/web-sites/)
+[添加终结点](/documentation/articles/traffic-manager-endpoints)
 
 [Azure 流量管理器上的降级状态故障排除](/documentation/articles/traffic-manager-troubleshooting-degraded)
  
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_1221_2015-->

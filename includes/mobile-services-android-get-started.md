@@ -39,4 +39,4 @@
 
    	![](./media/mobile-services-android-get-started/mobile-data-browse.png)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

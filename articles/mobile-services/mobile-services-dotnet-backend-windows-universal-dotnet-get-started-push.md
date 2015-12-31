@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="07/21/2015" 
+	ms.date="11/11/2015" 
 	wacn.date=""/>
 
 # 向移动服务应用程序添加推送通知
@@ -32,7 +32,7 @@
  
 &nbsp;&nbsp;7.打开共享的 App.xaml.cs 代码文件，可以看到已在 **OnLaunched** 事件处理程序中添加了对新的 **UploadChannel** 方法的调用。这可确保每次启动应用程序时都尝试注册设备。
 
-&nbsp;&nbsp;8.重复执行前面的步骤为 Windows Phone 应用商店应用项目添加推送通知，然后在共享的 App.xaml.cs 文件中，删除对 **UploadChannel** 的额外调用和剩余的 `#if...#endif` 条件包装器。现在，这两个项目可以共用对 **UploadChannel** 的单一调用。
+&nbsp;&nbsp;8.重复执行前面的步骤为 Windows Phone 应用商店应用项目添加推送通知，然后在共享的 App.xaml.cs 文件中，删除对 **UploadChannel** 和剩余 `#if...#endif` 条件包装的额外调用。现在，这两个项目可以共用对 **UploadChannel** 的单一调用。
 
 > [AZURE.NOTE]此外，你还可以通过将 `#if...#endif` 包装的 [MobileServiceClient](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx) 定义统一为单个解包的定义供这两个版本的应用程序使用来简化生成的代码。
 
@@ -75,19 +75,19 @@
 通过以下主题了解有关移动服务和通知中心的详细信息：
 
 * [将移动服务添加到现有应用程序][Get started with data]
-<br/>了解有关使用移动服务存储和查询数据的详细信息。
+  <br/>了解有关使用移动服务存储和查询数据的详细信息。
 
 * [向应用程序添加身份验证][Get started with authentication]
-<br/>了解如何通过不同帐户类型（使用移动服务）对应用程序的用户进行身份验证。
+  <br/>了解如何通过不同帐户类型（使用移动服务）对应用程序的用户进行身份验证。
 
 * [什么是通知中心？]
- <br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
+  <br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
 
 * [调试通知中心应用程序](http://go.microsoft.com/fwlink/p/?linkid=386630)
-</br>获取有关对通知中心解决方案进行故障排除和调试的指导。
+  </br>获取有关对通知中心解决方案进行故障排除和调试的指导。
 
 * [如何使用适用于 Azure 移动服务的 .NET 客户端]
-<br/>了解有关如何从 C# Windows 应用程序使用移动服务的详细信息。
+  <br/>了解有关如何从 C# Windows 应用程序使用移动服务的详细信息。
 
 <!-- Anchors. -->
 
@@ -108,4 +108,4 @@
 [如何使用适用于 Azure 移动服务的 .NET 客户端]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 [MobileServiceClient]: http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

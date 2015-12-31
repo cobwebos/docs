@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="10/05/2015"
+	ms.date="11/06/2015"
 	wacn.date=""/>
 
 # 移动服务入门
@@ -37,8 +37,7 @@
 
 - Windows Phone：安装 [Visual Studio 2012 Express for Windows Phone](https://go.microsoft.com/fwLink/p/?LinkID=268374)
 - iOS：安装 [Xcode]（需要 v4.4+）
-- Android：[安装 Android 开发人员工具][Android SDK]
-<br/>（适用于 Android 的移动服务 SDK 支持用于 Android 2.2 或更高版本的应用程序。运行快速入门应用程序需要安装 Android 4.2 或更高版本。)
+- Android：[安装 Android 开发人员工具][Android SDK]<br/>（适用于 Android 的移动服务 SDK 支持用于 Android 2.2 或更高版本的应用程序。运行快速入门应用程序需要安装 Android 4.2 或更高版本。)
 
 ## 创建新的移动服务
 
@@ -151,14 +150,14 @@
 ## 后续步骤
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-* **[向应用程序添加身份验证]**
-了解如何使用标识提供者对应用程序的用户进行身份验证。  
+* **[向应用程序添加身份验证]**  
+  了解如何使用标识提供者对应用程序的用户进行身份验证。  
 
-* **[向应用程序添加推送通知](https://msdn.microsoft.com/magazine/dn879353.aspx)**
-了解如何向应用程序注册和发送推送通知。
+* **[向应用程序添加推送通知](https://msdn.microsoft.com/magazine/dn879353.aspx)**  
+  了解如何向应用程序注册和发送推送通知。
 
-* **[移动服务 HTML/JavaScript 操作方法概念性参考](/documentation/articles/mobile-services-html-how-to-use-client-library)**
-了解如何使用 JavaScript 客户端库来访问数据、调用自定义 API 和执行身份验证。
+* **[移动服务 HTML/JavaScript 操作方法概念性参考](/documentation/articles/mobile-services-html-how-to-use-client-library)**  
+  了解如何使用 JavaScript 客户端库来访问数据、调用自定义 API 和执行身份验证。
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
 
@@ -176,4 +175,4 @@
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

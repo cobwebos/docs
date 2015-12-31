@@ -4,13 +4,14 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn"
-   tags="azure-service-management" />
-<tags 
-   ms.service="virtual-network"
-   ms.date="09/14/2015"
-   wacn.date="" />
+   tags="azure-service-management"
+/>
+<tags
+	ms.service="virtual-network"
+	ms.date="10/29/2015"
+	wacn.date=""/>
 
 # 如何在 PowerShell 中创建 NSG（经典）
 
@@ -18,7 +19,7 @@
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-intro-include](../includes/virtual-networks-create-nsg-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../includes/azure-arm-classic-important-include.md)] 本文介绍经典部署模型。你还可以[在资源管理器部署模型中创建 NSG](/documentation/articles/virtual-networks-create-nsg-arm-ps)。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../includes/azure-arm-classic-important-include.md)]本文介绍经典部署模型。你还可以[在资源管理器部署模型中创建 NSG](/documentation/articles/virtual-networks-create-nsg-arm-ps)。
 
 [AZURE.INCLUDE [virtual-networks-create-nsg-scenario-include](../includes/virtual-networks-create-nsg-scenario-include.md)]
 
@@ -27,7 +28,7 @@
 ## 如何为前端子网创建 NSG
 若要基于上述方案创建名为 *NSG-FrontEnd* 的 NSG，请执行下面的步骤：
 
-1. 如果你从未使用过 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](powershell-install-configure)，并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+1. 如果你从未使用过 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)，并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
 
 3. 创建名为 **NSG-FrontEnd** 的网络安全组。
 
@@ -38,7 +39,7 @@
 
 		Name         Location   Label               
 		----         --------   -----               
-		NSG-FrontEnd West US 	Front end subnet NSG
+		NSG-FrontEnd China North 	Front end subnet NSG
 
 
 4. 创建允许从 Internet 访问端口 3389 的安全规则。
@@ -52,7 +53,7 @@
 	预期输出：
 
 		Name     : NSG-FrontEnd
-		Location : Central US
+		Location : China North
 		Label    : Front end subnet NSG
 		Rules    : 
 		           
@@ -90,7 +91,7 @@
 		
 
 		Name     : NSG-FrontEnd
-		Location : Central US
+		Location : China North
 		Label    : Front end subnet NSG
 		Rules    : 
 		           
@@ -127,7 +128,7 @@
 
 		Name        Location   Label              
 		----        --------   -----              
-		NSG-BackEnd West US    Back end subnet NSG
+		NSG-BackEnd China North    Back end subnet NSG
 
 
 4. 创建允许从前端子网访问端口 1433（SQL Server 使用的默认端口）的安全规则。
@@ -136,12 +137,12 @@
 		| Set-AzureNetworkSecurityRule -Name rdp-rule `
 		    -Action Allow -Protocol TCP -Type Inbound -Priority 100 `
 		    -SourceAddressPrefix 192.168.1.0/24  -SourcePortRange '*' `
-		    -DestinationAddressPrefix '*' -DestinationPortRange '3389' 
+		    -DestinationAddressPrefix '*' -DestinationPortRange '1433' 
 
 	预期输出：
 
 		Name     : NSG-BackEnd
-		Location : Central US
+		Location : China North
 		Label    : Back end subnet NSG
 		Rules    : 
 		           
@@ -178,7 +179,7 @@
 	预期输出：
 
 		Name     : NSG-BackEnd
-		Location : Central US
+		Location : China North
 		Label    : Back end subnet NSG
 		Rules    : 
 		           
@@ -205,4 +206,4 @@
 		           OUTBOUND                                                                                                      
 		           DENY ALL OUTBOUND    65500     Deny     *               *             *                *              *   
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -1,6 +1,6 @@
 <properties
 	pageTitle="附加数据磁盘 | Microsoft Azure"
-	description="如何使用资源管理器部署模型在 Azure 预览门户中将新磁盘或现有数据磁盘附加到虚拟机。"
+	description="如何使用资源管理器部署模型在 Azure 门户中将新磁盘或现有数据磁盘附加到 VM。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="cynthn"
@@ -13,11 +13,11 @@
 	ms.date="09/14/2015"
 	wacn.date=""/>
 
-# 如何在 Azure 预览门户中附加数据磁盘
+# 如何在 Azure 门户中附加数据磁盘
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍如何使用资源管理器部署模型创建资源。你还可以使用[经典部署模型](/documentation/articles/storage-windows-attach-disk)创建资源。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](/documentation/articles/storage-windows-attach-disk)。
 
-本文向你介绍如何通过 Azure 预览门户将新磁盘和现有磁盘附加到虚拟机。在开始之前，请查看以下提示：
+本文向你介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到虚拟机。在开始之前，请查看以下提示：
 
 - 虚拟机的大小决定了可以附加多少个磁盘。有关详细信息，请参阅[虚拟机大小](/documentation/articles/virtual-machines-size-specs)。
 - 要使用高级存储，需要使用 DS 系列或 GS 序列虚拟机。可以从高级存储帐户和标准存储帐户通过这些虚拟机使用磁盘。高级存储只在某些区域可用。有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](../storage/storage-premium-storage-preview-portal.md)。
@@ -27,7 +27,7 @@
 
 ## 查找虚拟机
 
-1. 登录[预览门户](https://portal.azure.com)。
+1. 登录到 Azure 门户。
 
 2. 在“中心”菜单上，单击“浏览”。
 
@@ -51,7 +51,7 @@
 
  	![检查磁盘设置](./media/virtual-machines-attach-disk-preview/attach-new.png)
 
-3.	在 Azure 创建磁盘并将磁盘附加到虚拟机之后，新磁盘出现在“数据磁盘”下的虚拟机磁盘设置中。
+3.	在 Azure 创建磁盘并将磁盘附加到虚拟机之后，新磁盘将出现在“数据磁盘”下的虚拟机磁盘设置中。
 
 ## 选项 2：附加现有磁盘
 
@@ -67,9 +67,9 @@
 
 4.	选择 .vhd 文件
 
-5.	在“附加现有磁盘”下，刚刚选择的文件出现在“VHD 文件”中。单击**“确定”**。
+5.	在“附加现有磁盘”下，刚才选择的文件将出现在“VHD 文件”中。单击**“确定”**。
 
-6.	在 Azure 将磁盘附加到虚拟机之后，磁盘出现在“数据磁盘”下的虚拟机磁盘设置中。
+6.	在 Azure 将磁盘附加到虚拟机之后，磁盘将出现在“数据磁盘”下的虚拟机磁盘设置中。
 
 ## 后续步骤
 
@@ -86,4 +86,4 @@
 
 [关于 Azure 存储帐户]: ../storage-whatis-account/
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

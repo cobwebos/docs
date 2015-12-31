@@ -16,21 +16,21 @@
 # 使用 Powershell 和经典部署模型创建 Windows 虚拟机 
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](/documentation/articles/virtual-machines-windows-tutorial)
-- [Azure portal](/documentation/articles/virtual-machines-windows-tutorial-classic-portal)
-- [PowerShell: Resource Manager deployment](/documentation/articles/virtual-machines-deploy-rmtemplates-powershell)
+- [Azure Portal - Windows](/documentation/articles/virtual-machines-windows-tutorial-classic-portal)
+- [Powershell - Windows](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-vms)
+- [PowerShell - Linux](/documentation/articles/virtual-machines-ps-create-preconfigure-linux-vms)
 
 <br>
 
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines-ps-create-preconfigure-windows-resource-manager-vms.md).
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-resource-manager-vms)。
 
 
 这些步骤演示了如何使用构建基块方法自定义一组 Azure PowerShell 命令以创建和预配置基于 Windows 的 Azure 虚拟机。可以使用此过程快速创建用于新的基于 Windows 的虚拟机的命令集并扩展现有部署，或者创建多个命令集以快速构建出自定义开发/测试或 IT 专业环境。
 
 这些步骤采用填空方法来创建 Azure PowerShell 命令集。如果你不熟悉 PowerShell 或只想知道为成功的配置指定什么值，则此方法很有用。高级 PowerShell 用户可以使用命令并将变量（以“$”开头的行）替换为他们自己的值。
 
-有关配置基于 Linux 的虚拟机的配套主题，请参阅[使用 Azure PowerShell 创建和预配置基于 Linux 的虚拟机](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-resource-manager-vms)。
+有关配置基于 Linux 的虚拟机的配套主题，请参阅[使用 Azure PowerShell 创建和预配置基于 Linux 的虚拟机](/documentation/articles/virtual-machines-ps-create-preconfigure-linux-vms)。
 
 
 ## 步骤 1：安装 Azure PowerShell
@@ -111,7 +111,7 @@
 	$domacctdomain="<domain of the account that has permission to add the machine to the domain>"
 	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $domacctdomain -DomainUserName $cred2.GetNetworkCredential().Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domaindns
 
-有关基于 Windows 的虚拟机的其他预配置选项，请参阅 [Add-AzureProvisioningConfig](https://msdn.microsoft.com/zh-CN/library/azure/dn495299.aspx) 中 **Windows** 和 **WindowsDomain** 参数集的语法。
+有关基于 Windows 的虚拟机的其他预配置选项，请参阅 [Add-AzureProvisioningConfig](https://msdn.microsoft.com/zh-cn/library/azure/dn495299.aspx) 中 **Windows** 和 **WindowsDomain** 参数集的语法。
 
 （可选）为虚拟机分配一个特定 IP 地址（称为静态 DIP）。
 
@@ -142,8 +142,8 @@
 	$pubport=<port number of the external port>
 	$endpointname="<name of the endpoint>"
 	$lbsetname="<name of the existing load-balanced set>"
-	$probeprotocol="<Specify one: tcp, udp>"
-	$probeport=<TCP or UDP port number of probe traffic>
+	$probeprotocol="<Specify one: tcp, http>"
+	$probeport=<TCP or HTTP port number of probe traffic>
 	$probepath="<URL path for probe traffic>"
 	$vm1 | Add-AzureEndpoint -Name $endpointname -Protocol $prot -LocalPort $localport -PublicPort $pubport -LBSetName $lbsetname -ProbeProtocol $probeprotocol -ProbePort $probeport -ProbePath $probepath
 
@@ -153,7 +153,7 @@
 
 	New-AzureVM –ServiceName "<short name of the cloud service>" -VMs $vm1
 
-云服务的短名称是 Azure 管理门户的云服务列表中或 Azure 预览版门户的资源组列表中显示的名称。
+云服务的短名称是在 Azure 门户的云服务列表中或 Azure 门户的资源组列表中显示的名称。
 
 选项 2：在现有的云服务和虚拟网络中创建虚拟机。
 
@@ -170,7 +170,7 @@
 如果你要再次创建此虚拟机或类似的虚拟机，则可以：
 
 - 将此命令集保存为 PowerShell 脚本文件 (*.ps1)。
-- 在 Azure 管理门户的“自动化”部分中将此命令集保存为 Azure Automation Runbook。
+- 在 Azure 门户的“自动化”部分中将此命令集保存为 Azure 自动化 Runbook。
 
 ## <a id="examples"></a>示例
 
@@ -253,12 +253,12 @@
 
 ## 其他资源
 
-[虚拟机文档](/services/virtual-machines/)
+[虚拟机文档](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-[Azure 虚拟机常见问题](https://msdn.microsoft.com/zh-CN/library/azure/dn683781.aspx)
+[Azure 虚拟机常见问题](http://msdn.microsoft.com/zh-cn/library/azure/dn683781.aspx)
 
-[Azure 虚拟机概述](https://msdn.microsoft.com/zh-CN/library/azure/jj156143.aspx)
+[Azure 虚拟机概述](http://msdn.microsoft.com/zh-cn/library/azure/jj156143.aspx)
 
 [如何安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

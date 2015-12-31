@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="09/24/2015" 
+	ms.date="11/15/2015" 
 	wacn.date=""/>
 
 # 注册应用程序以使用 Azure Active Directory 帐户登录
@@ -32,7 +32,7 @@
 
 3. 单击“应用程序”>“添加”>“添加我的组织正在开发的应用程序”。
 
-4. 在“添加应用程序向导”中，为应用程序输入“名称”，并单击“Web 应用程序和/或 Web API”类型。
+4. 在“添加应用程序向导”中，为应用程序输入“名称”，并单击“网站和/或 Web API”类型。
 
     ![为 AAD 应用命名](./media/mobile-services-how-to-register-active-directory-authentication/mobile-services-add-app-wizard-1-waad-auth.png)
 
@@ -60,4 +60,4 @@
 <!-- URLs. -->
 [Azure 管理门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

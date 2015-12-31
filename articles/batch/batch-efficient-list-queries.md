@@ -9,7 +9,7 @@
 	tags="azure-resource-manager"/>
 
 <tags
-	ms.service="Batch"
+	ms.service="batch"
 	ms.date="10/12/2015"
 	wacn.date=""/>
 # 有效地查询 Azure Batch 服务
@@ -42,7 +42,7 @@ IPagedEnumerable<CloudTask> completedTasks = batchClient.JobOperations.ListTasks
 在上面的示例方案中，如果作业中存在数以千计的任务，则通常情况下，第二个查询的结果的返回速度将远远快于第一个查询。有关通过 Batch .NET API 列出项时如何使用 ODATADetailLevel 的更多信息如下所示。
 
 > [AZURE.IMPORTANT]
->强烈建议你**始终**将 ODATADetailLevel 提供给 .NET API 列表调用，以确保最大程度地提高应用程序的效率和性能。指定详细程度有助于缩短 Batch 服务响应时间、提高网络利用率，以及最大程度减少客户端应用程序的内存使用量。
+> 强烈建议你**始终**将 ODATADetailLevel 提供给 .NET API 列表调用，以确保最大程度地提高应用程序的效率和性能。指定详细程度有助于缩短 Batch 服务响应时间、提高网络利用率，以及最大程度减少客户端应用程序的内存使用量。
 
 ## 高效查询工具
 
@@ -232,4 +232,4 @@ filter、select 和 expand 字符串中的属性名称*必须*反映其 REST API
 [net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
 [net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

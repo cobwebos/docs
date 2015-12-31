@@ -1,7 +1,7 @@
 >[AZURE.NOTE]若要完成此过程，你必须拥有一个包含已验证电子邮件地址的 Google 帐户。若要新建一个 Google 帐户，请转到 <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a>。
 
 
-1. 导航到 <a href="http://cloud.google.com/console" target="_blank">Google Cloud Console</a> 网站，使用你的 Google 帐户凭据登录，然后单击“创建项目”。
+1. 导航到 [Google Cloud Console](https://console.developers.google.com/project)，使用你的 Google 帐户凭据登录，然后单击“创建项目”。
 
    	![](./media/notification-hubs-android-get-started/mobile-services-google-new-project.png)
 
@@ -17,18 +17,21 @@
 
 	![](./media/notification-hubs-android-get-started/mobile-services-google-enable-GCM.png)
 
-5. 单击“凭据”，然后单击“创建新密钥”
+5. 单击“凭据”，然后单击“添加凭据”->“API 密钥”
+
 
    	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key.png)
 
 6. 在“创建新密钥”中，单击“服务器密钥”。在下一个窗口中，单击“创建”。
 
-   	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key2.png)
+   	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key5.png)
+
+
+   	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key6.png)
 
 7. 记下“API 密钥”值。
 
-   	![](./media/notification-hubs-android-get-started/mobile-services-google-create-server-key3.png)
 
 	接下来，你将使用此 API 密钥值，让 Azure 对 GCM 进行身份验证并代表你的应用程序发送推送通知。
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_1221_2015-->

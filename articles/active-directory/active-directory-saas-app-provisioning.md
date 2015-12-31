@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="07/14/2015"
+   ms.date="09/08/2015"
    wacn.date=""/>
 
 #Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置
@@ -21,7 +21,7 @@ Azure Active Directory (Azure AD) 允许你自动执行创建、维护和删除�
 **以下是此功能操作的一些示例：**
 
 - 在正确的 SaaS 应用中为新人（加入团队时）自动创建新帐户。
-- 人员不可避免离开团队时，将帐户自动从 SaaS 应用中删除。
+- 当人员不可避免离开团队时，从 SaaS 应用中自动停用其帐户。
 - 确保你的 SaaS 应用中的标识基于目录中的更改保持最新。
 - 设置非用户对象，例如组以及支持它们的 SaaS 应用。
 
@@ -80,7 +80,7 @@ Azure AD 通过连接到由每个应用程序供应商所提供的设置终结�
  - 如果用户是最近分配到应用程序并且已在 SaaS 应用中拥有一个帐户，则该帐户将标记为启用，并且如果它们与目录对比已过期，则可能会更新某些用户的属性。
  - 如果已在目录中更改用户的信息（如电话号码、办公地点，等等），则 SaaS 应用程序中也将更新该信息。
 
-有关特性如何在 Azure AD 和 SaaS 应用之间映射的更多详细信息，请参阅[自定义特性映射](https://msdn.microsoft.com/zh-cn/library/azure/dn872469.aspx)一文。
+有关特性如何在 Azure AD 和 SaaS 应用之间映射的更多详细信息，请参阅[自定义特性映射](active-directory-saas-customizing-attribute-mappings)一文。
 
 ##支持自动化用户设置的应用列表
 
@@ -102,4 +102,6 @@ Azure AD 通过连接到由每个应用程序供应商所提供的设置终结�
 
 如需联系 Azure AD 工程团队以请求其他应用程序的设置支持，请通过 [Azure Active Directory 反馈论坛](http://feedback.azure.com/forums/169401-azure-active-directory)提交消息。
 
-<!---HONumber=67-->
+[AZURE.INCLUDE [saas-toc](../includes/active-directory-saas-toc.md)]
+
+<!---HONumber=Mooncake_1221_2015-->

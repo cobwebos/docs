@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="流分析发行说明 | Windows Azure" 
+	pageTitle="流分析发行说明 | Microsoft Azure" 
 	description="流分析通用版说明" 
 	services="stream-analytics" 
 	documentationCenter="" 
@@ -9,10 +9,50 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="08/20/2015" 
+	ms.date="11/12/2015" 
 	wacn.date=""/>
 
 #Microsoft 流分析发行说明
+
+## 流分析 11/12/2015 版说明 ##
+
+此版本包含以下更新。
+
+标题 | 说明
+---|---
+SELECT 的新行为 | 流分析中的 SELECT 已扩展，以允许 * 作为嵌套记录的属性访问器。有关更多信息，请查阅 [http://msdn.microsoft.com/zh-cn/library/mt622759.aspx](http://msdn.microsoft.com/zh-cn/library/mt622759.aspx "复杂数据类型")。
+
+## 流分析 10/22/2015 版说明 ##
+
+此版本包含以下更新。
+
+标题 | 说明
+---|---
+其他查询语言功能 | 流分析通过包括以下功能扩展了查询语言：[ABS](https://msdn.microsoft.com/zh-cn/library/azure/mt574054.aspx)、[CEILING](https://msdn.microsoft.com/zh-cn/library/azure/mt605286.aspx)、[EXP](https://msdn.microsoft.com/zh-cn/library/azure/mt605289.aspx)、[FLOOR](https://msdn.microsoft.com/zh-cn/library/azure/mt605240.aspx)、[POWER](https://msdn.microsoft.com/zh-cn/library/azure/mt605287.aspx)、[SIGN](https://msdn.microsoft.com/zh-cn/library/azure/mt605290.aspx)、[SQUARE](https://msdn.microsoft.com/zh-cn/library/azure/mt605288.aspx) 和 [SQRT](https://msdn.microsoft.com/zh-cn/library/azure/mt605238.aspx)。
+去除了聚合限制 | 此版本去除了在一个查询中最多有 15 个聚合的限制。现在，对每个查询的聚合数没有限制。
+添加了 GROUP BY System.Timestamp 功能 | [GROUP BY](https://msdn.microsoft.com/zh-cn/library/azure/dn835023.aspx) 函数现在允许使用 window\_type 或 [System.Timestamp](https://msdn.microsoft.com/zh-cn/library/azure/mt598501.aspx)。
+添加了 OFFSET 用于翻转窗口和跳跃窗口 | 默认情况下，[翻转](https://msdn.microsoft.com/zh-cn/library/azure/dn835055.aspx)和[跳跃](https://msdn.microsoft.com/zh-cn/library/azure/dn835041.aspx)窗口将根据零点时间 (1/1/0001 12:00:00 AM UTC) 进行调整。新（可选）参数“offsetsize”允许指定自定义偏移量（或调整）。
+
+
+## 流分析 09/29/2015 版说明 ##
+
+此版本包含以下更新。
+
+标题 | 说明
+---|---
+Azure IoT 套件公共预览版 | 流分析包含在 Azure IoT 套件的公共预览版中。
+Azure 预览门户集成 | 除了在 Azure 管理门户中继续存在，流分析现在还集成在 [Azure 预览门户](http://azure.microsoft.com/overview/preview-portal/)中。请注意，预览门户中的流分析功能目前是 Azure 管理门户中提供的功能的子集，不支持浏览器内查询测试、Power BI 输出配置，以及在你可以访问的订阅中浏览到或新建输入和输出资源。
+支持 DocumentDB 输出 | 流分析作业现在可以输出到 [DocumentDB](http://azure.microsoft.com/services/documentdb/)。
+支持 IoT 中心输入 | 流分析作业现在可以采集来自 IoT 中心的数据。
+用于异类事件的 TIMESTAMP BY | 当单个数据流中包含多个其时间戳在不同字段中的事件类型时，你现在可以对表达式使用 [TIMESTAMP BY](http://msdn.microsoft.com/zh-cn/library/mt573293.aspx)，以为每个用例指定不同时间戳字段。
+
+## 流分析 09/10/2015 版说明 ##
+
+此版本包含以下更新。
+
+标题|说明
+---|---
+支持 PowerBI 组|为了实现与其他 Power BI 用户共享数据，流分析作业现在可以写入到 Power BI 帐户中的 [PowerBI 组](/documentation/articles/stream-analytics-define-outputs#power-bi)。
 
 ## 流分析 08/20/2015 版说明 ##
 
@@ -69,15 +109,15 @@ SQL 数据库事件数量限制|使用 SQL 数据库作为输出目标时，如�
 PowerBI 数据集只能包含一个表|PowerBI 不支持在给定数据集中设置多个表。
 
 ## 获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## 后续步骤
 
 - [Azure 流分析简介](/documentation/articles/stream-analytics-introduction)
-- [Azure 流分析入门](/documentation/articles/stream-analytics-get-started)
+- [Azure 流分析入门](/documentation/articles/stream.analytics.get.started)
 - [缩放 Azure 流分析作业](/documentation/articles/stream-analytics-scale-jobs)
 - [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
 - [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
  
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_1221_2015-->

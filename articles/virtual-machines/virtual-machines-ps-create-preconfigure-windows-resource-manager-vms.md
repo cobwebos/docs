@@ -15,7 +15,7 @@
 
 # 使用资源管理器和 Azure PowerShell 创建并配置 Windows 虚拟机
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-machines-ps-create-preconfigure-windows-vms.md).
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-vms)。
 
 以下步骤演示如何构建一组 Azure PowerShell 命令，以创建和配置 Azure 虚拟机。你可以使用此构建基块过程快速创建用于新的基于 Windows 的虚拟机的命令集并扩展现有部署。你还可以使用该过程创建多个命令集以快速构建出自定义开发/测试或 IT 专业环境。
 
@@ -23,26 +23,14 @@
 
 ## 步骤 1：安装 Azure PowerShell
 
-你还必须有 Azure PowerShell 1.0.0 或更高版本。如果你尚未安装和配置 Azure PowerShell，请单击[此处](/documentation/articles/powershell-install-configure)获取相关说明。
-
-可以使用此命令在 Azure PowerShell 提示符下查看已安装的 Azure PowerShell 版本。
-
-	Get-Module azure | format-table version
-
-下面是一个示例。
-
-	Version
-	-------
-	1.0.0
-
-如果你尚未安装 1.0.0 或更高版本，必须使用控件面板中的“程序和功能”删除 Azure PowerShell，然后安装最新的版本。有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。
+[AZURE.INCLUDE [powershell 预览](../includes/powershell-preview-inline-include.md)]
 
 ## 步骤 2：设置订阅
 
 首先，请启动 Azure PowerShell 提示符。
 
 登录到你的帐户。
-	
+
 	Login-AzureRmAccount
 
 使用以下命令获取你的订阅名称。
@@ -102,15 +90,15 @@
 ### 公共域名标签
 
 
-以资源管理器部署模型创建的虚拟机可以使用公共域名标签。该标签只能包含字母、数字和连字符。第一个和最后一个字符必须是字母或数字。
+使用资源管理器部署模型创建的 VM 可以使用公共域名标签。该标签只能包含字母、数字和连字符。第一个和最后一个字符必须是字母或数字。
 
-若要测试所选的域名标签是否全域唯一，请使用这些命令。
+若要测试所选的域名标签是否全局唯一，请使用这些命令。
 
 	$domName="<domain name label to test>"
 	$loc="<short name of an Azure location, for example, for West US, the short name is westus>"
 	Test-AzureRmDnsAvailability -DomainQualifiedName $domName -Location $loc
 
-如果 DNSNameAvailability 为“True”，则表示提供的名称是全域唯一的。
+如果 DNSNameAvailability 为“True”，则表示提供的名称是全局唯一的。
 
 ### 可用性集
 
@@ -126,9 +114,9 @@
 
 	Get-AzureRmAvailabilitySet –ResourceGroupName $rgName | Sort Name | Select Name
 
-### NAT 规则	
-	
-使用入站 NAT 规则可以设置基于资源管理器的虚拟机，允许来自 Internet 的传入流量并将其放入负载平衡集。在这两种情况下，都必须指定负载平衡器实例和其他设置。有关详细信息，请参阅[使用 Azure 资源管理器创建负载平衡器](../load-balancer/load-balancer-arm-powershell.md)。
+### NAT 规则
+
+可以为基于资源管理器的虚拟机配置入站 NAT 规则，以允许来自 Internet 的传入流量并将其放入负载平衡集。在这两种情况下，都必须指定负载平衡器实例和其他设置。有关详细信息，请参阅[使用 Azure 资源管理器创建负载平衡器](../load-balancer/load-balancer-arm-powershell.md)。
 
 使用资源管理器部署模型创建的 VM 需要资源管理器虚拟网络。如果需要，请使用新虚拟机的至少一个子网创建基于资源管理器的新虚拟网络。以下示例显示了名为 **TestNet** 的新虚拟网络，其中包含名为 **frontendSubnet** 和 **backendSubnet** 的两个子网。
 
@@ -147,7 +135,6 @@
 
 打开所选文本编辑器的新实例或 PowerShell 集成脚本环境 (ISE)，并复制以下行以启动你的命令集。指定此新虚拟机的资源组名称、Azure 位置和存储帐户。将引号内的所有内容（包括 < and > 字符）替换为相应的名称。
 
-	Switch-AzureMode AzureResourceManager
 	$rgName="<resource group name>"
 	$locName="<Azure location, such as West US>"
 	$saName="<storage account name>"
@@ -160,7 +147,7 @@
 
 子网索引是此命令显示的子网编号，遵循从左到右的顺序并从 0 开始。
 
-对于以下示例：
+对于此示例：
 
 	PS C:\> Get-AzureRmVirtualNetwork -Name TestNet -ResourceGroupName LOBServers | Select Subnets
 
@@ -212,7 +199,7 @@ frontendSubnet 的子网索引为 0，backendSubnet 的子网索引为 1。
 - 要分配给 NIC 的负载平衡器实例的后端地址池的索引编号。
 - 要分配给 NIC 的入站 NAT 规则的索引编号。
 
-有关如何使用入站 NAT 规则创建负载平衡器实例的信息，请参阅[使用 Azure 资源管理器创建负载平衡器](/documentation/articles/load-balancer-arm-powershell)。
+有关如何使用入站 NAT 规则创建负载平衡器实例的信息，请参阅[使用 Azure 资源管理器创建负载平衡器](../load-balancer/load-balancer-arm-powershell.md)。
 
 将以下几行复制到命令集，并指定所需的名称和索引编号。
 
@@ -223,7 +210,7 @@ frontendSubnet 的子网索引为 0，backendSubnet 的子网索引为 1。
 	$lb=Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgName
 	$nic=New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -Subnet $vnet.Subnets[$subnetIndex].Id -LoadBalancerBackendAddressPool $lb.BackendAddressPools[$bePoolIndex] -LoadBalancerInboundNatRule $lb.InboundNatRules[$natRuleIndex]
 
-$nicName 字符串必须是资源组中唯一的字符串。最佳实践是将虚拟机名称合并在字符串中，例如“LOB07-NIC”。
+$nicName 字符串必须是资源组中唯一的字符串。最佳做法是将虚拟机名称合并在字符串中，例如“LOB07-NIC”。
 
 ### 选项 5：为负载平衡集指定 NIC 名称和负载平衡器实例。
 
@@ -294,7 +281,7 @@ $nicName 字符串必须是资源组中唯一的字符串。最佳实践是将�
 |MicrosoftWindowsServerEssentials | WindowsServerEssentials | WindowsServerEssentials |
 |MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | 2012R2 |
 
-如果未列出你需要的虚拟机映像，请根据[此处](/documentation/articles/resource-groups-vm-searching/#powershell)的说明来确定发布者、产品和 SKU 名称。
+如果未列出你需要的虚拟机映像，请按照[此处](/documentation/articles/resource-groups-vm-searching#powershell)的说明来确定发布者、产品和 SKU 名称。
 
 将这些命令复制到命令集，并填入发布者、产品和 SKU 名称。
 
@@ -318,13 +305,13 @@ $nicName 字符串必须是资源组中唯一的字符串。最佳实践是将�
 
 复查你在步骤 4 中使用文本编辑器或 PowerShell ISE 生成的 Azure PowerShell 命令集。确保指定了所有变量，并且这些变量具有正确的值。另请确保你已删除所有 < and > 字符。
 
-如果你的命令是在文本编辑器中生成的，请将命令集复制到剪贴板，然后右键单击 Azure PowerShell 命令提示符。这将以 PowerShell 命令序列的形式发出命令集，并创建 Azure 虚拟机。或者，可以通过 Azure PowerShell ISE 运行命令集。
+如果你的命令是在文本编辑器中生成的，请将命令集复制到剪贴板，然后右键单击 Azure PowerShell 提示符。这将以 PowerShell 命令序列的形式发出命令集，并创建 Azure 虚拟机。或者，可以通过 Azure PowerShell ISE 运行命令集。
 
 如果你要重复使用这些信息来创建其他 VM，可以将此命令集保存为 PowerShell 脚本文件 (*.ps1)。。
 
 ## 示例
 
-我需要 PowerShell 命令集来为基于 Web 的业务线工作负荷创建其他虚拟机，该工作负荷：
+我需要 PowerShell 命令集来为基于 Web 的业务线工作负荷创建其他虚拟机，该虚拟机：
 
 - 位于现有的 LOBServers 资源组中
 - 使用 Windows Server 2012 R2 Datacenter 映像
@@ -391,6 +378,6 @@ $nicName 字符串必须是资源组中唯一的字符串。最佳实践是将�
 
 [使用资源管理器模板和 PowerShell 创建 Windows 虚拟机](virtual-machines-create-windows-powershell-resource-manager-template-simple)
 
-[如何安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell)
+[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

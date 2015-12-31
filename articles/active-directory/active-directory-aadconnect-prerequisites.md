@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect 的先决条件 | Microsoft Azure"
+   pageTitle="Azure Active Directory Connect 的先决条件 | Microsoft Azure"
    description="将显示在登录页和大多数搜索结果中的文章说明"
    services="active-directory"
    documentationCenter=""
@@ -9,10 +9,10 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="10/13/2015"
+   ms.date="11/16/2015"
    wacn.date=""/>
 
-# Azure AD Connect 的先决条件
+# Azure Active Directory Connect (Azure AD Connect) 的先决条件
 本主题介绍 Azure AD Connect 的先决条件和硬件要求。
 
 ## 安装 Azure AD Connect 之前
@@ -27,15 +27,17 @@
 **本地服务器和环境**
 
 - AD 架构版本与林功能级别必须是 Windows Server 2003 或更高版本。只要符合架构和林级别的要求，域控制器就能运行任何版本。
+- 如果你打算使用**密码写回**功能，必须在 Windows Server 2008（包含最新的 SP）或更高版本上安装域控制器。
 - Azure AD Connect 必须安装在 Windows Server 2008 或更高版本上。如果使用快速设置，此服务器可以是域控制器或成员服务器。如果使用自定义设置，服务器也可以是独立服务器，并且不需要加入域。
-- 如果你打算使用密码同步功能，服务器必须是 Windows Server 2008 R2 SP1 或更高版本。
-- 如果你正在部署 Active Directory 联合身份验证服务，则要安装 AD FS 或 Web 应用程序代理的服务器必须是 Windows Server 2012 R2 或更高版本。必须在这些服务器上启用 Windows 远程管理才能进行远程安装。
+- 不能在 Small Business Server 或 Windows Server Essentials 上安装 Azure AD Connect。该服务器必须使用 Windows Server Standard 或更高版本。
+- 如果你打算使用**密码同步**功能，必须在 Windows Server 2008 R2 SP1 或更高版本上安装该服务器。
+- 如果你正在部署 Active Directory 联合身份验证服务，则要安装 AD FS 或网站代理的服务器必须是 Windows Server 2012 R2 或更高版本。必须在这些服务器上启用 Windows 远程管理才能进行远程安装。
 - Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。默认情况下，将会安装 SQL Server 2012 Express LocalDB（轻量版 SQL Server Express），并在本地计算机上创建服务的服务帐户。SQL Server Express 有 10 GB 的大小限制，允许你管理大约 100000 个对象。如果你需要管理更多的目录对象，则需要将安装过程指向不同版本的 SQL Server。Azure AD Connect 支持从 SQL Server 2008（装有 SP4）到 SQL Server 2014 的各种 Microsoft SQL Server。
 
 **帐户**
 
 - 你要集成的 Azure AD 目录的 Azure AD 全局管理员帐户。
-- 如果使用快速设置，则需要本地 Active Directory 的企业管理员帐户。
+- 如果使用快速设置或者从 DirSync 升级，则需要本地 Active Directory 的企业管理员帐户。
 - 如果使用自定义设置安装路径，[帐户将是 Active Directory](active-directory-aadconnect-accounts-permissions.md)。
 
 **连接**
@@ -55,7 +57,7 @@
 ```
 
 必须在文件底部输入此文本。在此代码中，&lt;PROXYADRESS&gt; 代表实际的代理 IP 地址或主机名。
-- 如果代理限制了可访问的 URL，则必须在代理中打开 [Office 365 URL 和 IP 地址范围](https://support.office.com/zh-CN/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述的 URL。
+- 如果代理限制了可访问的 URL，则必须在代理中打开 [Office 365 URL 和 IP 地址范围](https://support.office.com/zh-cn/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述的 URL。
 
 **其他**
 
@@ -101,7 +103,7 @@ Azure AD Connect 依赖于 PowerShell 和 .Net 4.5.1。请根据 Windows Server 
 | 300,000–600,000 | 1\.6 GHz | 32 GB | 450 GB |
 | 超过 600,000 个 | 1\.6 GHz | 32 GB | 500 GB |
 
-以下是运行 AD FS 或 Web 应用程序服务器的计算机的最低要求：
+以下是运行 AD FS 或网站服务器的计算机的最低要求：
 
 - CPU：双核 1.6 GHz 或更高
 - 内存：2GB 或更高
@@ -111,4 +113,4 @@ Azure AD Connect 依赖于 PowerShell 和 .Net 4.5.1。请根据 Windows Server 
 ## 后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

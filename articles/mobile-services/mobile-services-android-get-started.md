@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="10/08/2015"
+	ms.date="11/05/2015"
 	wacn.date=""/>
 
 # 适用于 Android 的移动服务入门（JavaScript 后端）
@@ -24,7 +24,8 @@
 
 
 
-以下是完成的应用程序的屏幕快照
+以下是完成的应用程序的屏幕快照：
+
 ![](./media/mobile-services-android-get-started/mobile-quickstart-completed-android.png)
 
 ## 先决条件
@@ -72,13 +73,13 @@
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
 * [数据处理入门]
-<br/>了解有关使用移动服务存储和查询数据的详细信息。
+  <br/>了解有关使用移动服务存储和查询数据的详细信息。
 
 * [身份验证入门]
-<br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
+  <br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
 
-* [推送通知入门 ]
-<br/>了解如何向应用程序发送一条很基本的推送通知。
+* [推送通知入门]
+  <br/>了解如何向应用程序发送一条很基本的推送通知。
 
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
@@ -88,9 +89,9 @@
 [Get started (Eclipse)]: /documentation/articles/mobile-services-android-get-started-ec
 [数据处理入门]: /documentation/articles/mobile-services-android-get-started-data
 [身份验证入门]: /documentation/articles/mobile-services-android-get-started-users
-[推送通知入门 ]: /documentation/articles/mobile-services-javascript-backend-android-get-started-push
+[推送通知入门]: /documentation/articles/mobile-services-javascript-backend-android-get-started-push
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
 [Management Portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

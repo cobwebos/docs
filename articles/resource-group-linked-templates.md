@@ -43,7 +43,7 @@
 资源管理器服务必须能够访问链接模板，这意味着，你不能为链接模板指定本地文件或只能在本地网络上使用的文件。只能提供包含 **http** 或 **https** 的 URI 值。一种做法是将链接模板放在存储帐户中并对该项使用 URI，如下所示。
 
     "templateLink": {
-        "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
+        "uri": "http://mystorageaccount.blob.core.chinacloudapi.cn/templates/template.json",
         "contentVersion": "1.0.0.0",
     }
 
@@ -100,10 +100,10 @@
 
 ## 将值传递回链接模板
 
-如果你需要将值从链接模板传递到主模板，则可以在链接模板的**输出**部分创建一个值。有关示例，请参阅[在 Azure 资源管理器模板中共享状态](best-practices-resource-manager-state.md)。
+如果你需要将值从链接模板传递到主模板，则可以在链接模板的**输出**部分创建一个值。有关示例，请参阅[在 Azure 资源管理器模板中共享状态](/documentation/articles/best-practices-resource-manager-state)。
 
 ## 后续步骤
 - [创作模板](./resource-group-authoring-templates.md)
-- [部署模板](azure-portal/resource-group-template-deploy.md)
+- [部署模板](/documentation/articles/resource-group-template-deploy)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

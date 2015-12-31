@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="07/01/2015"
+	ms.date="11/02/2015"
 	wacn.date=""/>
 
 # 在移动服务中使用脱机数据同步
@@ -25,7 +25,7 @@
 * 允许最终用户创建和修改数据，甚至在没有网络访问权限，并支持方案具有很少或没有连接时
 * 跨多个设备同步数据和同一个记录修改由两个设备时检测冲突
 
->[AZURE.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 <a href="http://www.windowsazure.cn/pricing/1rmb-trial target="\_blank">Azure 试用</a>。
+>[AZURE.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 <a href="http://www.windowsazure.cn/pricing/1rmb-trial>Azure 试用</a>。
 >
 > 如果这是你第一次体验移动服务，你应首先完成[移动服务入门]。
 
@@ -43,7 +43,8 @@
 
 ## <a name="review-offline"></a>查看移动服务同步代码
 
-Azure 移动服务脱机同步允许最终用户，当无法访问网络时，与本地数据库交互。若要在你的应用程序中使用这些功能，请将 `MobileServiceClient.SyncContext` 初始化到本地存储。然后，通过 `IMobileServiceSyncTable` 接口引用你的表。本部分将指导完成脱机同步 `QSTodoService.cs` 中的相关代码。
+Azure 移动服务脱机同步允许最终用户在无法访问网络时与本地数据库交互。若要在你的应用程序中使用这些功能，请将 `MobileServiceClient.SyncContext` 初始化到本地存储。然后，通过 `IMobileServiceSyncTable` 接口引用你的表。
+本部分将指导完成脱机同步 `QSTodoService.cs` 中的相关代码。
 
 1. 在 Visual Studio 中，打开你在完成[移动服务入门]教程后创建的项目。打开 `QSTodoService.cs` 文件。
 
@@ -90,7 +91,7 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 
     在此示例中，我们检索远程中的所有记录 `TodoItem` 表中，但它也可能是要作为筛选依据传递查询的记录。`PullAsync()` 的第一个参数是用于增量同步的查询 ID；增量同步使用 `UpdatedAt` 时间戳以仅获取自上次同步以来修改的那些记录。查询 ID 应对于你的应用程序中的每个逻辑查询都是唯一的描述性字符串。若选择不要增量同步，请传递 `null` 作为查询 ID。此命令会检索每个请求的操作，这是可能效率低下上的所有记录。
 
-    >[AZURE.NOTE]若要从设备本地存储区中删除已在移动设备数据库中删除的记录，应启用“软删除”[]。否则，你的应用程序应定期调用 `IMobileServiceSyncTable.PurgeAsync()` 以清除本地存储。
+    >[AZURE.NOTE]若要从设备本地存储区中删除已在移动设备数据库中删除的记录，应启用[“软删除”]。否则，你的应用程序应定期调用 `IMobileServiceSyncTable.PurgeAsync()` 以清除本地存储。
 
     请注意，推送和请求操作可能会发生 `MobileServicePushFailedException`。下一篇教程[使用移动服务脱机支持处理冲突]说明了如何处理这些同步相关的异常。
 
@@ -173,9 +174,9 @@ Azure 移动服务脱机同步允许最终用户，当无法访问网络时，�
 [处理脱机支持的移动服务与冲突]: /documentation/articles/mobile-services-xamarin-ios-handling-conflicts-offline-data/
 [移动服务入门]: /documentation/articles/partner-xamarin-mobile-services-ios-get-started/
 [如何使用适用于 Azure 移动服务的 Xamarin 组件客户端]: /documentation/articles/partner-xamarin-mobile-services-how-to-use-client-library/
-[]: /documentation/articles/mobile-services-using-soft-delete/
+[“软删除”]: /documentation/articles/mobile-services-using-soft-delete/
 
 [Xamarin Studio]: http://xamarin.com/download
 [Xamarin 扩展]: http://xamarin.com/visual-studio
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -16,7 +16,8 @@
 
 #使用远程桌面连接到 Microsoft Azure Linux VM
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍如何使用经典部署模型管理资源。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
+
 
 ##概述
 
@@ -111,4 +112,4 @@ Xrdp 是一个开源 RDP 服务器，支持你从 Windows 计算机通过远程�
 ##下一步
 有关使用 xrdp 的详细信息，请参考[此处](http://www.xrdp.org/)。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

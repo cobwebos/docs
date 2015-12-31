@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="最佳做法：Azure AD 密码管理 |Windows Azure" 
+	pageTitle="最佳实践：Azure AD 密码管理 | Microsoft Azure" 
 	description="有关 Azure Active Directory 中密码管理的部署和使用最佳实践、示例最终用户文档和培训指南。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="06/08/2015" 
+	ms.date="10/08/2015" 
 	wacn.date=""/>
 
 # 部署密码管理并向用户培训其用法
@@ -20,6 +20,7 @@
   * [自行填充身份验证数据的方式](#ways-to-populate-authentication-data)
 * [**组织启用密码重置的最佳方式**](#what-is-the-best-way-to-roll-out-password-reset-for-users)
   * [基于电子邮件的启用方式与示例电子邮件通信](#email-based-rollout)
+  * [为用户创建自己的自定义密码管理门户](#creating-your-own-password-portal)
   * [如何使用强制注册来强制用户在登录时注册](#using-enforced-registration)
   * [如何上载用户帐户的身份验证数据](#uploading-data-yourself)
 * [**示例用户和支持培训材料（即将推出！）**](#sample-training-materials)
@@ -30,7 +31,7 @@
 ### 如何配置帐户
 只有满足以下**所有**条件，用户才能使用密码重置：
 
-1.	必须在目录中启用密码重置。请阅读[让用户重置其 Azure AD 密码](/documentation/articles/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)或[让用户重置或更改其 AD 密码](/documentation/articles/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)，了解如何启用密码重置
+1.	必须在目录中启用密码重置。请阅读[让用户重置其 Azure AD 密码](active-directory-passwords-getting-started.md#enable-users-to-reset-their-azure-ad-passwords)或[让用户重置或更改其 AD 密码](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords)，了解如何启用密码重置
 2.	用户必须获得许可。
  - 云用户必须分配有**任何付费型 Office 365 许可证**，或者 **AAD Basic 许可证**或 **AAD Premium 许可证**。
  - 本地用户（联合或哈希同步）**必须分配有 AAD Premium 许可证**。
@@ -69,6 +70,17 @@
 
 你可以[从此](http://1drv.ms/1xWFtQM)处下载电子邮件模板。
 
+### 创建自己的密码门户
+对于部署密码管理功能的大型客户而言，一种策略是创建用户可在单个位置管理所有与其密码相关的事项的单一“密码门户”。
+
+我们的许多大客户都选择创建根 DNS 条目，例如 https://passwords.contoso.com，其中包含 Azure AD 密码重置门户、密码重置注册门户和密码更改页面的链接。这样，你发出的任何电子邮件通信或传单都可以包含一个容易记住的，让用户在开始使用该服务时随时可以访问的 URL。
+
+为演示此功能，我们创建了一个使用最新响应性 UI 设计模式且能够在所有浏览器和移动设备上运行的简单页面。
+
+  ![][007]
+  
+你可以[在此处下载网站模板](https://github.com/kenhoff/password-reset-page)。我们建议你根据组织的需要自定义徽标和颜色。
+
 ### 使用强制注册
 如果希望你的用户自行注册密码重置，还可以强制他们在登录到访问面板（网址为 [http://myapps.microsoft.com](http://myapps.microsoft.com)）时注册。你可以启用“要求用户在登录到访问面板时注册”选项，从目录的“配置”选项卡启用此选项。
 
@@ -87,11 +99,11 @@
 ### 自行上载数据
 如果要自行上载身份验证数据，用户无需注册密码重置便可重置其密码。只要用户在其帐户上定义的身份验证数据符合你定义的密码重置策略，这些用户便能重置其密码。
 
-要了解可以通过 DirSync 或 Windows PowerShell 设置哪些属性，请参阅[密码重置使用的数据](/documentation/articles/active-directory-passwords-learn-more#what-data-is-used-by-password-reset)。
+要了解可以通过 DirSync 或 Windows PowerShell 设置哪些属性，请参阅[密码重置使用的数据](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset)。
 
-你可以执行以下步骤，通过 [Azure 管理门户](https://manage.windowsazure.cn)上载身份验证数据：
+你可以执行以下步骤，通过 [Azure 管理门户](https://manage.windowsazure.com)上载身份验证数据：
 
-1.	在 [Azure 管理门户](https://manage.windowsazure.cn)的 **Active Directory 扩展**中导航到你的目录。
+1.	在 [Azure 管理门户](https://manage.windowsazure.com)的 **Active Directory 扩展**中导航到你的目录。
 2.	单击“用户”选项卡。
 3.	从列表中选择所需的用户。
 4.	在第一个选项卡上，可找到“备用电子邮件”，它可作为启用密码重置的属性使用。 
@@ -118,9 +130,9 @@
 * [密码管理的工作原理](/documentation/articles/active-directory-passwords-how-it-works)
 * [密码管理入门](/documentation/articles/active-directory-passwords-getting-started)
 * [自定义密码管理](/documentation/articles/active-directory-passwords-customize)
-* [如何通过密码管理报告获取操作见解](/documentation/articles/active-directory-passwords-get-insights)
+* [如何使用密码管理报告获取 Operational Insights](/documentation/articles/active-directory-passwords-get-insights)
 * [密码管理常见问题](/documentation/articles/active-directory-passwords-faq)
-* [密码管理疑难解答](/documentation/articles/active-directory-passwords-troubleshoot)
+* [排查密码管理问题](/documentation/articles/active-directory-passwords-troubleshoot)
 * [了解详细信息](/documentation/articles/active-directory-passwords-learn-more)
 * [MSDN 上的密码管理](https://msdn.microsoft.com/zh-cn/library/azure/dn510386.aspx)
 
@@ -132,6 +144,6 @@
 [004]: ./media/active-directory-passwords-best-practices/004.jpg "Image_004.jpg"
 [005]: ./media/active-directory-passwords-best-practices/005.jpg "Image_005.jpg"
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
- 
+[007]: ./media/active-directory-passwords-best-practices/007.jpg "Image_007.jpg"
 
-<!---HONumber=67-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -24,7 +24,7 @@
 
 可以使用 Azure 预览门户、Azure PowerShell 或 Azure CLI 运行模板。
 
-## Azure 预览门户
+## Azure 门户
 
 要使用资源管理器模板和 Azure 预览门户部署此工作负荷，请单击[此处](https://manage.windowsazure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Factive-directory-new-domain-ha-2-dc%2Fazuredeploy.json)。
 
@@ -102,6 +102,6 @@
 
 [虚拟机文档](http://www.windowsazure.cn/documentation/services/virtual-machines/)
 
-[How to install and configure Azure PowerShell/documentation/articles/install-configure-powershell)
+[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

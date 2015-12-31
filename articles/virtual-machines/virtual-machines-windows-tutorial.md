@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 Azure 预览门户中创建运行 Windows 的虚拟机 | Windows Azure"
+	pageTitle="在 Azure 预览门户中创建运行 Windows 的虚拟机 | Microsoft Azure"
 	description="了解如何使用 Azure 预览门户中的 Azure 应用商店创建运行 Windows 的 Azure 虚拟机"
 	services="virtual-machines"
 	documentationCenter=""
@@ -15,7 +15,7 @@
 # 在 Azure 预览门户中创建运行 Windows 的虚拟机#
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](/documentation/articles/virtual-machines-windows-tutorial)
+- [Azure preview portal](/documentation/articles/virtual-machines-windows-tutorial-classic-portal)
 - [Azure portal](/documentation/articles/virtual-machines-windows-tutorial-classic-portal)
 - [PowerShell: Resource Manager deployment](/documentation/articles/virtual-machines-deploy-rmtemplates-powershell)
 - [PowerShell: Classic deployment](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-vms)
@@ -88,11 +88,11 @@
 
 7. 单击“是”以验证虚拟机的标识。
 
-	您现在可以像使用任何其他服务器一样使用该虚拟机。
+	你现在可以像使用任何其他服务器一样使用该虚拟机。
 
 ## 后续步骤
 
 * 使用 Azure PowerShell 和 Azure CLI 来[查找和选择虚拟机映像](/documentation/articles/resource-groups-vm-searching)。
 * 使用 [Azure 资源管理器](/documentation/articles/virtual-machines-how-to-automate-azure-resource-manager)自动部署和管理虚拟机与工作负荷。
 
-<!---HONumber=70-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -16,15 +16,15 @@
 
  提供的定价层建议将会推荐最适合用于运行现有 Azure SQL 数据库工作负荷的服务层和性能级别。
 
-> [AZURE.NOTE]定价层建议仅适用于 Web 和企业数据库及弹性数据库池，并且只会在 [Azure 门户](https://manage.windowsazure.cn)中提供。
+> [AZURE.NOTE]定价层建议仅适用于 Web 和企业数据库及弹性数据库池，并且只会在 [Azure 预览门户](https://manage.windowsazure.cn)中提供。
 
 
 在执行以下任务期间获取定价层建议：
 
 - [更改 SQL 数据库的服务层和性能级别（定价层）](/documentation/articles/sql-database-scale-up)
 - [将 Azure SQL 服务器升级到 V12](/documentation/articles/sql-database-v12-upgrade)
-- 浏览到 V12 服务器 - 如果你的数据库可以[从弹性数据库池受益](/documentation/articles/sql-database-elastic-pool-portal/#recommended-elastic-database-pools)，服务器边栏选项卡将显示一条消息来指出建议的池。单击该消息可以创建建议的池。
-- [创建弹性数据库池](/documentation/articles/sql-database-elastic-pool/#elastic-database-pool-pricing-tier-recommendations)
+- 浏览到 V12 服务器 - 如果你的数据库可以[从弹性数据库池受益](/documentation/articles/sql-database-elastic-pool-portal#recommended-elastic-database-pools)，服务器边栏选项卡将显示一条消息来指出建议的池。单击该消息可以创建建议的池。
+- [创建弹性数据库池](/documentation/articles/sql-database-elastic-pool#elastic-database-pool-pricing-tier-recommendations)
 
 
 
@@ -32,7 +32,7 @@
 
 ## 概述
 
-SQL 数据库服务会通过评估 SQL 数据库的历史资源使用量，来分析当前的性能和功能要求。此外，会根据数据库大小和启用的[业务连续性](/documentation/articles/sql-database-business-continuity)功能确定可接受的最低服务层。
+SQL 数据库服务会通过评估 SQL 数据库的历史资源使用量，来分析当前的性能和功能要求。此外，会根据数据库大小和启用的[业务连续性](sql-database-business-continuity)功能确定可接受的最低服务层。
 
 服务将分析这些信息，然后推荐最适合用于运行数据库的典型工作负载和保留其当前功能集的服务层与性能级别。
 
@@ -96,4 +96,4 @@ SQL 数据库服务会通过评估 SQL 数据库的历史资源使用量，来�
 
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="07/15/2015"
+   ms.date="11/01/2015"
    wacn.date=""/>
 
 #教程：如何将 Google Apps 与 Azure Active Directory 集成
@@ -60,11 +60,51 @@
 
 	![选择“Azure AD 单一登录”][7]
 
-	> [AZURE.NOTE]若要了解有关不同单一登录选项的详细信息，请[单击此处](https://msdn.microsoft.com/zh-cn/library/azure/dn308588.aspx)
+	> [AZURE.NOTE]若要了解有关不同单一登录选项的详细信息，请[单击此处](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)
 
 3. 在“配置应用设置”页上的“登录 URL”字段中，键入 Google Apps 租户 URL，格式如下：`https://mail.google.com/a/<yourdomain>`
 
 	![键入租户 URL][8]
+
+4. 在“自动配置单一登录”页上，键入 Google Apps 租户的域。然后按“配置”按钮。
+
+	![键入你的域名并按“配置”。](./media/active-directory-saas-google-apps-tutorial/ga-auto-config.png)
+
+	> [AZURE.NOTE]如果想要手动配置单一登录，请参阅[可选步骤：手动配置单一登录](#optional-step-manually-configure-single-sign-on)
+
+5. 登录到你的 Google Apps 管理员帐户。然后单击“允许”，以允许 Azure Active Directory 在你的 Google Apps 订阅中进行配置更改。
+
+	![键入你的域名并按“配置”。](./media/active-directory-saas-google-apps-tutorial/ga-consent.PNG)
+
+6. 等待几秒钟，让 Azure Active Directory 配置你的 Google Apps 租户。完成后，单击“下一步”。
+
+10. 如果想要接收与此单一登录配置维护相关的错误和警告电子邮件通知，请在对话框的最后一页上键入电子邮件地址。
+
+	![键入电子邮件地址。][14]
+
+11. 单击“完成”关闭对话框。要测试配置，请参阅下面名为[将用户分配到 Google Apps](#step-4-assign-users-to-google-apps) 的部分。
+
+##可选步骤：手动配置单一登录
+
+如果你想要手动设置单一登录，请完成以下步骤：
+
+1. 在 Azure AD 中 Google Apps 的“快速启动”页上，单击“配置单一登录”按钮。
+
+	![配置单一登录按钮][6]
+
+2. 将打开一个对话框，其中显示“你希望用户如何登录到 Google Apps？” 选择“Azure AD 单一登录”，然后单击“下一步”。
+
+	![选择“Azure AD 单一登录”][7]
+
+	> [AZURE.NOTE]若要了解有关不同单一登录选项的详细信息，请[单击此处](../active-directory-appssoaccess-whatis/#how-does-single-sign-on-with-azure-active-directory-work)
+
+3. 在“配置应用设置”页上的“登录 URL”字段中，键入 Google Apps 租户 URL，格式如下：`https://mail.google.com/a/<yourdomain>`
+
+	![键入租户 URL][8]
+
+4. 在“自动配置单一登录”页上，选中标有“手动配置此应用程序进行单一登录”的复选框。然后单击“下一步”。
+
+	![选择手动配置。](./media/active-directory-saas-google-apps-tutorial/ga-auto-skip.PNG)
 
 4. 在“在 Google Apps 上配置单一登录”页上，单击“下载证书”，然后将证书文件保存在本地计算机上。
 
@@ -208,11 +248,7 @@
 
 4. 若要测试单一登录设置，打开“访问面板”（网址为 [https://myapps.microsoft.com](https://myapps.microsoft.com/)），然后登录到测试帐户，并单击“Google Apps”。
 
-##另请参阅
-
-- [SaaS 应用程序集成教程列表](/documentation/articles/active-directory-saas-tutorial-list)
-- [Azure AD 中的应用程序访问](https://msdn.microsoft.com/zh-cn/library/azure/dn308590.aspx)
-- [访问面板简介](https://msdn.microsoft.com/zh-cn/library/azure/dn308586.aspx)
+[AZURE.INCLUDE [saas-toc](../../includes/active-directory-saas-toc.md)]
 
 [0]: ./media/active-directory-saas-google-apps-tutorial/azure-active-directory.png
 [1]: ./media/active-directory-saas-google-apps-tutorial/applications-tab.png
@@ -246,4 +282,4 @@
 [29]: ./media/active-directory-saas-google-apps-tutorial/assign-users.png
 [30]: ./media/active-directory-saas-google-apps-tutorial/assign-confirm.png
 
-<!---HONumber=67-->
+<!---HONumber=Mooncake_1221_2015-->

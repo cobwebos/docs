@@ -8,7 +8,7 @@
    editor="tysonn"/>
 <tags 
    ms.service="application-gateway"
-   ms.date="08/07/2015"
+   ms.date="11/10/2015"
    wacn.date=""/>
 
 
@@ -18,9 +18,9 @@
 
 
 > [AZURE.SELECTOR]
-- [Azure 经典模式步骤](/documentation/articles/application-gateway-create-gateway)
-- [资源管理器模式 Powershell 步骤](/documentation/articles/application-gateway-create-gateway-arm)
-- [Azure 资源管理器模板步骤](/documentation/articles/application-gateway-create-gateway-arm-template)
+- [Azure classic steps](/documentation/articles/application-gateway-create-gateway)
+- [Resource Manager Powershell steps](/documentation/articles/application-gateway-create-gateway-arm)
+- [Azure Resource Manager template steps](/documentation/articles/application-gateway-create-gateway-arm-template)
 
 
 <BR>
@@ -29,7 +29,7 @@
 本文将指导你完成创建、配置、启动和删除应用程序网关的步骤。
 
 
->[AZURE.IMPORTANT] 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：资源管理器部署模型和经典部署模型。在使用任何 Azure 资源之前，请确保你了解[部署模型和工具](azure-classic-rm.md)。可以通过单击本文顶部的选项卡来查看不同工具的文档。本文档将说明使用 Azure 资源管理器创建应用程序网关的方式。若要使用经典版本，请转到[使用 PowerShell 创建应用程序网关经典部署](application-gateway-create-gateway.md)。
+>[AZURE.IMPORTANT]在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：资源管理器部署模型和经典部署模型。在使用任何 Azure 资源之前，请确保你了解[部署模型和工具](azure-classic-rm.md)。可以通过单击本文顶部的选项卡来查看不同工具的文档。本文档将说明使用 Azure 资源管理器创建应用程序网关的方式。若要使用经典版本，请转到[使用 PowerShell 创建应用程序网关经典部署](application-gateway-create-gateway.md)。
 
 
 
@@ -113,10 +113,14 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 将地址范围 10.0.0.0/24 分配给用于创建虚拟网络的子网变量
 
 ### 步骤 2	
-	$vnet = New-AzurevirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "China North" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+	$vnet = New-AzurevirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-使用前缀 10.0.0.0/16 和子网 10.0.0.0/24，在中国北部区域的“appw-rg”资源组中创建名为“appgwvnet”的虚拟网络
+使用前缀 10.0.0.0/16 和子网 10.0.0.0/24，在美国西部区域的“appw-rg”资源组中创建名为“appgwvnet”的虚拟网络
+
+### 步骤 3
 	
+	$subnet=$vnet.Subnets[0]
+
 ## 创建前端配置的公共 IP 地址
 
 	$publicip = New-AzurePublicIpAddress -ResourceGroupName appgw-rg -name publicIP01 -location "China North" -AllocationMethod Dynamic
@@ -174,7 +178,7 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 
 配置应用程序网关的实例大小
 
->[AZURE.NOTE] *InstanceCount* 的默认值为 2，最大值为 10。*GatewaySize* 的默认值为 Medium。你可以在 Standard\_Small、Standard\_Medium 和 Standard\_Large 之间进行选择。
+>[AZURE.NOTE]*InstanceCount* 的默认值为 2，最大值为 10。*GatewaySize* 的默认值为 Medium。你可以在 Standard\_Small、Standard\_Medium 和 Standard\_Large 之间进行选择。
 
 ## 使用 New-AzureApplicationGateway 创建应用程序网关
 
@@ -388,7 +392,7 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 
 	
 
->[AZURE.NOTE] 可以使用“-force”开关来抑制删除确认消息
+>[AZURE.NOTE]可以使用“-force”开关来抑制删除确认消息
 >
 
 若要验证是否已删除服务，可以使用 `Get-AzureApplicationGateway` cmdlet。此步骤不是必需的。
@@ -407,7 +411,7 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 
 如需负载平衡选项的其他常规信息，请参阅：
 
-<!--- [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)-->
+<!--- [Azure Load Balancer](/documentation/services/load-balancer/)-->
 - [Azure 流量管理器](/documentation/services/traffic-manager/)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

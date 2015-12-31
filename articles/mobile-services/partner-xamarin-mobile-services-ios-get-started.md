@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="10/06/2015"
+	ms.date="11/05/2015"
 	wacn.date=""/>
 
 # <a name="getting-started"></a>移动服务入门
@@ -95,17 +95,17 @@
 ## 后续步骤
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-* [脱机数据同步入门]
-了解如何快速开始使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
+* [脱机数据同步入门]  
+  了解如何快速开始使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
 
-* [身份验证入门] 
-了解如何使用标识提供程序对应用程序的用户进行身份验证。
+* [身份验证入门]  
+  了解如何使用标识提供程序对应用程序的用户进行身份验证。
 
-* [推送通知入门 ] 
-了解如何向应用程序发送一条很基本的推送通知。
+* [推送通知入门 ]  
+  了解如何向应用程序发送一条很基本的推送通知。
 
-* [如何使用 Azure 移动服务的 Xamarin 组件客户端](/documentation/articles/partner-xamarin-mobile-services-how-to-use-client-library)
-了解如何查询移动服务、处理数据和访问自定义 API。
+* [如何使用 Azure 移动服务的 Xamarin 组件客户端](/documentation/articles/partner-xamarin-mobile-services-how-to-use-client-library)  
+   了解如何查询移动服务、处理数据和访问自定义 API。
   
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
@@ -137,4 +137,4 @@
 
 [Management Portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

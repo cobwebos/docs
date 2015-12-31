@@ -4,12 +4,12 @@
    services="traffic-manager"
    documentationCenter=""
    authors="joaoma"
-   manager="adinah"
+   manager="carmonm"
    editor="tysonn" />
-<tags 
-   ms.service="traffic-manager"
-   ms.date="08/19/2015"
-   wacn.date="" />
+<tags
+	ms.service="traffic-manager"
+	ms.date="11/12/2015"
+	wacn.date=""/>
 
 # 配置轮循机制路由方法
 
@@ -31,21 +31,21 @@
 
 ## 后续步骤
 
-[关于流量管理器流量路由方法](/documentation/articles/traffic-manager-load-balancing-methods)
+
+[将公司 Internet 域指向流量管理器域](/documentation/articles/traffic-manager-point-internet-domain)
+
+[流量管理器路由方法](/documentation/articles/traffic-manager-routing-methods)
+
+[配置故障转移路由方法](/documentation/articles/traffic-manager-configure-failover-routing-method)
+
+[配置性能路由方法](/documentation/articles/traffic-manager-configure-performance-routing-method)
+
+[流量管理器降级状态疑难解答](/documentation/articles/traffic-manager-troubleshooting-degraded)
 
 [流量管理器 - 禁用、启用或删除配置文件](/documentation/articles/disable-enable-or-delete-a-profile)
 
 [流量管理器 - 禁用或启用终结点](/documentation/articles/disable-or-enable-an-endpoint)
 
-[什么是流量管理器？](/documentation/articles/traffic-manager-overview)
-
-[云服务](http://go.microsoft.com/fwlink/?LinkId=314074)
-
-[网站](http://go.microsoft.com/fwlink/p/?LinkId=393327)
-
-[流量管理器上的操作（REST API 参考）](http://go.microsoft.com/fwlink/?LinkId=313584)
-
-[Azure 流量管理器 Cmdlet](http://go.microsoft.com/fwlink/p/?LinkId=400769)
  
 
-<!---HONumber=76-->
+<!---HONumber=Mooncake_1221_2015-->

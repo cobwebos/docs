@@ -25,7 +25,7 @@
 
 ## Azure 预览门户
 
-要使用资源管理器模板和 Azure 预览门户部署此工作负荷，请单击[此处](https://manage.windowsazure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwordpress-single-vm-ubuntu%2Fazuredeploy.json)。
+要使用资源管理器模板和 Azure 预览门户部署此工作负荷，请单击[此处](https://manage.windowsazure.cn#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwordpress-single-vm-ubuntu%2Fazuredeploy.json)。
 
 ![](./media/virtual-machines-workload-template-wordpress/azure-portal-template.png)
 
@@ -69,7 +69,7 @@
 
 ## Azure CLI
 
-在开始之前，请确保安装了正确版本的 Azure CLI 且已登录，并切换到新的“资源管理器”模式。有关详细信息，请单击[此处](/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli/#getting-ready)。
+在开始之前，请确保安装了正确版本的 Azure CLI 且已登录，并切换到新的“资源管理器”模式。有关详细信息，请单击[此处](/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli#getting-ready)。
 
 首先，创建新的资源组。使用以下命令并指定组名称，以及要向其中部署的 Azure 数据中心位置。
 
@@ -98,8 +98,8 @@
 
 [使用 Azure 资源管理器模板和 Azure CLI 部署和管理虚拟机](/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli)
 
-[虚拟机文档](http://www.windowsazure.cn/documentation/services/virtual-machines/)
+[虚拟机文档](http://azure.microsoft.com/documentation/services/virtual-machines/)
 
-[如何安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell)
+[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

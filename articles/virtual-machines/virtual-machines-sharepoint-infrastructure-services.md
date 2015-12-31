@@ -10,12 +10,12 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="09/08/2015"
+	ms.date="10/20/2015"
 	wacn.date=""/>
 
 # Azure 基础结构服务中托管的 SharePoint 场
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍使用资源管理器部署模型或经典部署模型创建资源。
+[AZURE.INCLUDE [learn-about-deployment-models-both-include](../includes/learn-about-deployment-models-both-include.md)]
 
 在 Microsoft Azure 基础结构服务中设置你的第一个或下一个开发/测试或生产 SharePoint 场，在其中你可以利用配置的简便性和相关功能快速扩展场以包括关键功能的新增能力或优化。
 
@@ -23,44 +23,46 @@
 
 ## 基本 SharePoint 开发/测试场
 
-对于使用经典部署模型创建的虚拟机，可使用 Azure 预览门户的 [SharePoint 服务器场](/documentation/articles/virtual-machines-sharepoint-farm-azure-preview)功能来为面向 Internet 的 SharePoint 网站创建基本开发/测试场。
+此自动创建的环境由仅限云的 Azure 虚拟网络中的三个服务器组成：分别是域控制器、SQL Server 和 SharePoint 服务器。
 
-自动创建的环境由仅限云的 Azure 虚拟网络中的三个服务器组成：分别用于域控制器、SQL Server 和 SharePoint 服务器。
+请参阅 Azure 预览门户的 Azure 应用商店中的 [SharePoint 2013 非HA 场](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-nonha/)项。这将为面向 Internet 的 SharePoint 网站创建基本开发/测试场。有关其他详细信息，请参阅[创建 SharePoint 服务器场](/documentation/articles/virtual-machines-sharepoint-farm-azure-preview)。
 
-若要创建与资源管理器部署模型类似的配置，请使用模板。请参阅[部署包含 3 个服务器的 SharePoint 场](/documentation/articles/virtual-machines-workload-template-sharepoint/#deploy-a-three-server-sharepoint-farm)。
+你还可以使用 Azure 资源管理器模板。请参阅[部署包含 3 个服务器的 SharePoint 场](/documentation/articles/virtual-machines-workload-template-sharepoint#deploy-a-three-server-sharepoint-farm)。
+
+> [AZURE.NOTE]Azure 预览门户的 Azure 应用商店中的 **SharePoint 服务器场**项已删除。
 
 ## 高可用性 SharePoint 开发/测试场
 
-对于经典虚拟机，可使用 Azure 预览门户的 [SharePoint 服务器场](/documentation/articles/virtual-machines-sharepoint-farm-azure-preview)功能来为面向 Internet 的 SharePoint 网站创建高可用性 SharePoint 开发/测试场。
+此自动创建的环境由仅限云的 Azure 虚拟网络中的九个服务器组成：两个用于域控制器、三个用于 SQL Server 群集、两个应用程序层 SharePoint 服务器和两个 Web 层 SharePoint 服务器。
 
-在仅限云的 Azure 虚拟网络中自动创建的环境由九个服务器组成：两个用于域控制器、三个用于 SQL Server 群集、两个应用程序层 SharePoint 服务器和两个 Web 层 SharePoint 服务器。
+请参阅 Azure 预览门户的 Azure 应用商店中的 [SharePoint 2013 HA 场](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-ha/)项。这将为面向 Internet 的 SharePoint 网站创建高可用性开发/测试场。有关其他详细信息，请参阅[创建 SharePoint 服务器场](/documentation/articles/virtual-machines-sharepoint-farm-azure-preview)。
 
-若要创建与资源管理器虚拟机类似的配置，请使用模板。请参阅[部署包含 9 个服务器的 SharePoint 场](/documentation/articles/virtual-machines-workload-template-sharepoint/#deploy-a-nine-server-sharepoint-farm)。
+你还可以使用 Azure 资源管理器模板。请参阅[部署包含 9 个服务器的 SharePoint 场](/documentation/articles/virtual-machines-workload-template-sharepoint#deploy-a-nine-server-sharepoint-farm)。
+
+> [AZURE.NOTE]Azure 预览门户的 Azure 应用商店中的 **SharePoint 服务器场**项已删除。
 
 ## 混合云开发/测试场
 
-使用[混合云开发/测试环境中的 SharePoint Intranet 场](/documentation/articles/virtual-networks-setup-sharepoint-hybrid-cloud-testing)，可以创建模拟的混合云配置，以托管简单的两层 SharePoint 场，你可以从 Internet 上你所在位置使用该场测试 Azure 中托管的 Intranet SharePoint 场。
+使用[混合云开发/测试环境中的 SharePoint Intranet 场](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)，可以创建模拟的混合云配置，以托管简单的两层 SharePoint 场，你可以从 Internet 上你所在位置使用该场测试 Azure 中托管的 Intranet SharePoint 场。
 
-此配置使用经典虚拟机。
+此配置使用经典部署模型。
 
 ## 高度可用的 Intranet SharePoint 生产场
 
 借助于[使用 Azure 中的 SQL Server AlwaysOn 可用性组部署 SharePoint 2013](/documentation/articles/virtual-machines-workload-intranet-sharepoint-overview)，你可以在 Azure 中构建出生产就绪的高可用性 Intranet SharePoint Server 2013 场。
 
-此配置使用经典虚拟机。
+此配置使用经典部署模型。
 
 ## 其他资源
 
-有关 Azure 中的 SharePoint 的其他信息和配置，请参阅以下资源：
+[适用于 SharePoint 2013 的 Microsoft Azure 体系结构](https://technet.microsoft.com/library/dn635309.aspx)
 
-- [适用于 SharePoint 2013 的 Microsoft Azure 体系结构](https://technet.microsoft.com/zh-cn/library/dn635309.aspx)
+[在 Microsoft Azure 中使用 SharePoint Server 2013 的 Internet 站点](https://technet.microsoft.com/library/dn635307.aspx)
 
-- [在 Microsoft Azure 中使用 SharePoint Server 2013 的 Internet 站点](https://technet.microsoft.com/zh-cn/library/dn635307.aspx)
+[Microsoft Azure 中的 SharePoint Server 2013 灾难恢复](https://technet.microsoft.com/library/dn635313.aspx)
 
-- [Microsoft Azure 中的 SharePoint Server 2013 灾难恢复](https://technet.microsoft.com/zh-cn/library/dn635313.aspx)
+[使用 Microsoft Azure Active Directory 进行 SharePoint 2013 身份验证](https://technet.microsoft.com/library/dn635311.aspx)
 
-- [使用 Microsoft Azure Active Directory 进行 SharePoint 2013 身份验证](https://technet.microsoft.com/zh-cn/library/dn635311.aspx)
+[在 Microsoft Azure 中部署 Office 365 目录同步 (DirSync)](https://technet.microsoft.com/library/dn635310.aspx)
 
-- [在 Microsoft Azure 中部署 Office 365 目录同步 (DirSync)](https://technet.microsoft.com/zh-cn/library/dn635310.aspx)
-
-<!---HONumber=76-->
+<!---HONumber=Mooncake_1221_2015-->

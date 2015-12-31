@@ -56,7 +56,7 @@
 		<Button Name="ButtonLogin" Click="ButtonLogin_Click" 
                         Visibility="Visible">Sign in</Button>
 
-2. 在 Windows Phone 应用项目中，紧靠在定义“保存”按钮的元素前面添加以下 **Button** 元素：
+6. 在 Windows Phone 应用项目中，紧靠在定义“保存”按钮的元素前面添加以下 **Button** 元素：
 
 		<Button Grid.Row ="1" Grid.Column="1" Name="ButtonLogin" Click="ButtonLogin_Click" 
                         Visibility="Visible" Margin="10, 0, 0, 0">Sign in</Button> 
@@ -90,4 +90,4 @@
 
 9. 右键单击 Windows Phone 应用商店应用项目，单击“设置为启动项目”，然后重复上一步来验证 Windows Phone 应用商店应用是否也正常运行。
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/15/2015"
+	ms.date="11/03/2015"
 	wacn.date=""/>
 
 #使用从本地编码器接收多比特率实时流的频道
@@ -236,11 +236,14 @@ SCTE-35|用来提示广告插入的数字信号系统。下游接收器使用该
 
 ##如何创建从本地编码器接收多比特率实时流的频道
 
-有关本地实时编码器的更多信息，请参阅[将第三方实时编码器与 Azure 媒体服务结合使用](https://msdn.microsoft.com/zh-cn/library/azure/dn783464.aspx)。
+有关本地实时编码器的更多信息，请参阅[将第三方实时编码器与 Azure 媒体服务结合使用](https://azure.microsoft.com/blog/azure-media-services-rtmp-support-and-live-encoders/)。
 
 选择**“门户”**、**.NET**、**REST API** 以了解如何创建和管理频道和节目。
 
 [AZURE.INCLUDE [media-services-selector-manage-channels](../includes/media-services-selector-manage-channels.md)]
+
+
+[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
 
 
 
@@ -255,4 +258,4 @@ SCTE-35|用来提示广告插入的数字信号系统。下游接收器使用该
 [live-overview]: ./media/media-services-manage-channels-overview/media-services-live-streaming-current.png
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

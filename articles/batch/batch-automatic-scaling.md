@@ -15,7 +15,7 @@
 
 # 自动缩放 Azure 批处理池中的计算节点
 
-自动缩放 Azure 批处理池中的计算节点是指动态调整应用程序使用的处理能力。这种调整灵活性节省了时间和资金。若要了解有关计算节点和池的详细信息，请参阅 [Azure 批次技术概述](batch-technical-overview.md)。
+自动缩放 Azure 批处理池中的计算节点是指动态调整应用程序使用的处理能力。这种调整灵活性节省了时间和资金。若要了解有关计算节点和池的详细信息，请参阅 [Azure Batch 基础知识](batch-technical-overview.md)。
 
 如果对池启用了相应的功能并将某个公式与池相关联，则会发生自动缩放。该公式用于确定处理应用程序所需的计算节点数。对定期收集的样本进行操作时，池中可用计算节点的数目会根据关联的公式每 15 分钟调整一次。
 
@@ -154,16 +154,16 @@
 	- minute (00-59)
 	- second (00-59)
 - timeinterval
-	- TimeInterval_Zero
-	- TimeInterval_100ns
-	- TimeInterval_Microsecond
-	- TimeInterval_Millisecond
-	- TimeInterval_Second
-	- TimeInterval_Minute
-	- TimeInterval_Hour
-	- TimeInterval_Day
-	- TimeInterval_Week
-	- TimeInterval_Year
+	- TimeInterval\_Zero
+	- TimeInterval\_100ns
+	- TimeInterval\_Microsecond
+	- TimeInterval\_Millisecond
+	- TimeInterval\_Second
+	- TimeInterval\_Minute
+	- TimeInterval\_Hour
+	- TimeInterval\_Day
+	- TimeInterval\_Week
+	- TimeInterval\_Year
 
 ### 操作
 
@@ -254,87 +254,87 @@
     <th>说明</th>
   </tr>
   <tr>
-    <td>double avg(doubleVecList)</td>
+    <td>double <b>avg</b>(doubleVecList)</td>
     <td>DoubleVecList 中所有值的平均值。</td>
   </tr>
   <tr>
-    <td>double len(doubleVecList)</td>
+    <td>double <b>len</b>(doubleVecList)</td>
     <td>从 doubleVecList 创建的向量的长度。</td>
   <tr>
-    <td>double lg(double)</td>
+    <td>double <b>lg</b>(double)</td>
     <td>对数底数为 2。</td>
   </tr>
   <tr>
-    <td>doubleVec lg(doubleVecList)</td>
+    <td>doubleVec <b>lg</b>(doubleVecList)</td>
     <td>分量对数底数 2。必须为单个 double 参数显式传递 vec(double)，否则将采用 double lg(double) 版本。</td>
   </tr>
   <tr>
-    <td>double ln(double)</td>
+    <td>double <b>ln</b>(double)</td>
     <td>自然对数。</td>
   </tr>
   <tr>
-    <td>doubleVec ln(doubleVecList)</td>
+    <td>doubleVec <b>ln</b>(doubleVecList)</td>
     <td>分量对数底数 2。必须为单个 double 参数显式传递 vec(double)，否则将采用 double lg(double) 版本。</td>
   </tr>
   <tr>
-    <td>double log(double)</td>
+    <td>double <b>log</b>(double)</td>
     <td>对数底数为 10。</td>
   </tr>
   <tr>
-    <td>doubleVec log(doubleVecList)</td>
+    <td>doubleVec <b>log</b>(doubleVecList)</td>
     <td>分量对数底数 10。必须为单个 double 参数显式传递 vec(double)，否则将采用 double log(double) 版本。</td>
   </tr>
   <tr>
-    <td>double max(doubleVecList)</td>
+    <td>double <b>max</b>(doubleVecList)</td>
     <td>doubleVecList 中的最大值。</td>
   </tr>
   <tr>
-    <td>double min(doubleVecList)</td>
+    <td>double <b>min</b>(doubleVecList)</td>
     <td>doubleVecList 中的最小值。</td>
   </tr>
   <tr>
-    <td>double norm(doubleVecList)</td>
+    <td>double <b>norm</b>(doubleVecList)</td>
     <td>从 doubleVecList 创建的向量的二范数。
   </tr>
   <tr>
-    <td>double percentile(doubleVec v, double p)</td>
+    <td>double <b>percentile</b>(doubleVec v, double p)</td>
     <td>向量 v 百分位元素。</td>
   </tr>
   <tr>
-    <td>double rand()</td>
+    <td>double <b>rand</b>()</td>
     <td>介于 0.0 和 1.0 之间的随机值。</td>
   </tr>
   <tr>
-    <td>double range(doubleVecList)</td>
+    <td>double <b>range</b>(doubleVecList)</td>
     <td>doubleVecList 中最小值和最大值之间的差。</td>
   </tr>
   <tr>
-    <td>double std(doubleVecList)</td>
+    <td>double <b>std</b>(doubleVecList)</td>
     <td>doubleVecList 中值的样本标准偏差。</td>
   </tr>
   <tr>
-    <td>stop()</td>
+    <td><b>stop</b>()</td>
     <td>停止自动缩放表达式计算。</td>
   </tr>
   <tr>
-    <td>double sum(doubleVecList)</td>
+    <td>double <b>sum</b>(doubleVecList)</td>
     <td>doubleVecList 的所有组成部分之和。</td>
   </tr>
   <tr>
-    <td>timestamp time(string dateTime="")</td>
+    <td>timestamp <b>time</b>(string dateTime="")</td>
     <td>如果未传递参数，则为当前时间的时间戳；如果传递了参数，则为 dateTime 字符串的时间戳。支持的 dateTime 格式为 W3CDTF 和 RFC1123。</td>
   </tr>
   <tr>
-    <td>double val(doubleVec v, double i)</td>
+    <td>double <b>val</b>(doubleVec v, double i)</td>
     <td>在起始索引为零的向量 v 中，位置 i 处的元素的值。</td>
   </tr>
 </table>
 
 上表中描述的某些函数可以接受列表作为参数。逗号分隔列表为 *double* 和 *doubleVec* 的任意组合。例如：
 
-	doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?
+`doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
-*doubleVecList* 值在计算之前将转换为单个 *doubleVec*。例如，如果 v = [1,2,3]，则调用 avg(v) 等效于调用 avg(1,2,3)，调用 avg(v, 7) 等效于调用 avg(1,2,3,7)。
+*doubleVecList* 值在计算之前将转换为单个 *doubleVec*。例如，如果 `v = [1,2,3]`，则调用 `avg(v)` 等效于调用 `avg(1,2,3)`，调用 `avg(v, 7)` 等效于调用 `avg(1,2,3,7)`。
 
 ### 获取示例数据
 
@@ -355,15 +355,17 @@
   </tr>
   <tr>
     <td>GetSample()</td>
-    <td><p>返回数据样本的向量。例如：</p>
+    <td><p>返回数据样本的向量。
+	<p>一个样本最好包含 30 秒钟的度量值数据。换而言之，将每隔 30 秒获取样本一次，但如下所述，每收集一个样本后并且该样本可供公式使用时，会存在一定的延迟。因此，并非一段指定时间内的所有样本都可用于公式求值。
         <ul>
-          <li><p><b>doubleVec GetSample(double count)</b> - 在最近的样本中指定所需的样本数。</p>
-				  <p>一个样本最好包含 5 秒钟的度量值数据。GetSample(1) 返回最后一个可用样本，但对于像 $CPUPercent 这样的度量值，你不应使用此方法，因为无法知道样本是何时收集的。它可能是最近收集的，也可能由于系统问题而变得很旧。更好使用如下所示的时间间隔。</p></li>
-          <li><p><b>doubleVec GetSample((timestamp | timeinterval) startTime [, double samplePercent])</b> – 指定收集样本数据的时间范围，并选择性地指定必须在请求范围内收集的样本百分比。</p>
-          <p>如果 CPUPercent 历史记录中存在过去十分钟的所在样本，$CPUPercent.GetSample(TimeInterval\_Minute*10) 应返回 200 个样本。如果最后一分钟的历史记录仍不存在，则只返回 180 个样本。</p>
-					<p>$CPUPercent.GetSample(TimeInterval\_Minute*10, 80) 将会成功，$CPUPercent.GetSample(TimeInterval_Minute*10,95) 将会失败。</p></li>
+          <li><p><b>doubleVec GetSample(double count)</b> - 在最近的收集的样本中指定要获取的样本数。</p>
+				  <p>GetSample(1) 返回最后一个可用样本。但对于像 $CPUPercent 这样的度量值，你不应使用此方法，因为无法知道样本是<em>何时</em>收集的 - 它可能是最近收集的，也可能由于系统问题而变得很旧。最好使用如下所示的时间间隔。</p></li>
+          <li><p><b>doubleVec GetSample((timestamp | timeinterval) startTime [, double samplePercent])</b> – 指定收集样本数据的时间范围，并选择性地指定必须在请求时间范围内可用的样本百分比。</p>
+          <p>如果 CPUPercent 历史记录中存在过去十分钟的所在样本，<em>$CPUPercent.GetSample(TimeInterval_Minute * 10)</em> 将返回 20 个样本。如果最后一分钟的历史记录不可用，则只返回 18 个样本，在这种情况下：<br/>
+		  &#160;&#160;&#160;&#160;<em>$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)</em> 将会失败，因为只有 90% 的样本可用；<br/>
+		  &#160;&#160;&#160;&#160;<em>$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)</em> 将会成功。</p></li>
           <li><p><b>doubleVec GetSample((timestamp | timeinterval) startTime, (timestamp | timeinterval) endTime [, double samplePercent])</b> – 指定收集数据的时间范围，包括开始时间和结束时间。</p></li></ul>
-		  <p>请注意，收集样本的时间与将样本提供给公式的时间之间存在延迟；在使用 GetSample 方法时，必须考虑此因素；参见下面的 GetSamplePercent。</td>
+		  <p>如前所述，每收集一个样本后并且该样本可供公式使用时，会存在一定的延迟。在使用 <em>GetSample</em> 方法时，必须考虑这个因素 - 请参阅下面的 <em>GetSamplePercent</em>。</td>
   </tr>
   <tr>
     <td>GetSamplePeriod()</td>
@@ -408,7 +410,7 @@
       <li>$DiskReadOps</li>
       <li>$DiskWriteOps</li>
       <li>$NetworkInBytes</li>
-      <li>$NetworkOutBytes</li></ul></p>
+      <li>$NetworkInBytes</li></ul></p>
  
   </tr>
   <tr>
@@ -460,7 +462,7 @@
 
 > [AZURE.NOTE]如果池是使用上述方法之一创建的，则当你在池创建后设置自动缩放时，将不指定该池的 *targetDedicated* 参数（不能指定）。另请注意，如果你希望手动调整启用自动缩放功能的池的大小（例如，使用 [BatchClient.PoolOperations.ResizePool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.resizepool.aspx) 来调整），则必须先禁用该池的自动缩放功能，然后再调整池的大小。
 
-以下代码段显示了如何创建启用自动缩放功能的 [CloudPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx)，创建时使用 [Batch .NET](https://msdn.microsoft.com/library/azure/mt348682.aspx) 库，其公式将节点的目标数设置为 5（周一）和 1（除周一外的其他时间）。在该段中，“myBatchClient”是正确初始化的 [BatchClient](http://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx) 实例：
+以下代码段显示了如何创建启用自动缩放功能的 [CloudPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx)，创建时使用 [Batch .NET](https://msdn.microsoft.com/library/azure/mt348682.aspx) 库，其公式将节点的目标数设置为 5（周一）和 1（除周一外的其他时间）。在代码段中，“myBatchClient”是正确初始化的 [BatchClient](http://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx) 实例。
 
 		CloudPool pool myBatchClient.PoolOperations.CreatePool("mypool", "3", "small");
 		pool.AutoScaleEnabled = true;
@@ -596,6 +598,32 @@
 		// Keep the nodes active until the tasks finish
 		$NodeDeallocationOption = taskcompletion;
 
+### 示例 4
+
+此示例演示自动缩放公式在初始时间段将池大小设置为一定的节点数目，然后在初始时间段过后，根据正在运行和处于活动状态的任务数目调整池大小。
+
+```
+string now = DateTime.UtcNow.ToString("r");
+string formula = string.Format(@"
+
+	$TargetDedicated = {1};
+	lifespan         = time() - time(""{0}"");
+	span             = TimeInterval_Minute * 60;
+	startup          = TimeInterval_Minute * 10;
+	ratio            = 50;
+
+	$TargetDedicated = (lifespan > startup ? (max($RunningTasks.GetSample(span, ratio), $ActiveTasks.GetSample(span, ratio)) == 0 ? 0 : $TargetDedicated) : {1});
+	", now, 4);
+```
+
+上述代码段中的公式具有以下特征：
+
+- 将初始池大小设置为 4 个节点
+- 在池生命周期的最初 10 分钟内不调整池大小
+- 10 分钟后，获取过去 60 分钟内正在运行和处于活动状态的任务数目的最大值
+  - 如果这两个值均为 0（表示过去 60 分钟没有正在运行或处于活动状态的任务），则池大小将设置为 0
+  - 如果其中一个值大于零，则不进行任何更改
+
 ## 后续步骤
 
 1. 若要完全评估应用程序的效率，你可能需要访问计算节点。若要利用远程访问，必须将一个用户帐户添加到你要访问的节点，并且必须为该节点检索 RDP 文件。
@@ -609,4 +637,4 @@
         * [Get-AzureBatchRDPFile](https://msdn.microsoft.com/library/mt149851.aspx) – 此 PowerShell cmdlet 从指定的计算节点获取 RDP 文件，并将其保存到指定的文件位置或流。
 2.	某些应用程序会生成大量难以处理的数据。解决此问题的方法之一是进行[有效的列表查询](batch-efficient-list-queries.md)。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

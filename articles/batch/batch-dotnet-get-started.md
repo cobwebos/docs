@@ -20,9 +20,9 @@
 
 - 帐户：
 
-	- **Azure 帐户** - 只需几分钟即可创建一个免费试用帐户。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
+	- **Azure 帐户** - 只需几分钟即可创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/)。
 
-	- **批处理帐户** - 请参阅 [Azure 批处理概述](/documentation/articles/batch-technical-overview)中的**批处理帐户**部分。
+	- **Batch 帐户** - 请参阅[创建和管理 Azure Batch 帐户](/documentation/articles/batch-account-create-portal)。
 
 	- **存储帐户** - 请参阅[关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account)的**创建存储帐户**部分。在本教程中，你将在此帐户中创建名为 **testcon1** 的容器。
 
@@ -38,7 +38,7 @@
 
 	2. 在线搜索 **WindowsAzure.Storage**，然后单击“安装”以安装 Azure 存储包和依赖项。
 
-> [AZURE.TIP]本教程使用了[Azure Batch API 基础知识](batch-api-basics.md)中所述的某些核心 Batch 概念，对于 Batch 的新用户，强烈建议阅读该主题。
+> [AZURE.TIP]本教程使用了 [Azure Batch 功能概述](batch-api-basics.md)中所述的某些核心 Batch 概念，对于 Batch 的新用户，强烈建议阅读该主题。
 
 ## 步骤 1：创建并上载支持文件
 
@@ -46,7 +46,7 @@
 
 ### 设置存储连接字符串
 
-1. 打开 GettingStarted 项目的 App.config 文件，然后将 &lt;appSettings&gt; 元素添加到 &lt;configuration&gt;。
+1. 打开 GettingStarted 项目的 App.config 文件，然后将 *&lt;appSettings&gt;* 元素添加到 *&lt;configuration&gt;*。
 
 		<?xml version="1.0" encoding="utf-8" ?>
 		<configuration>
@@ -59,7 +59,7 @@
 
 	- **[account-name]** - 前面创建的存储帐户的名称。
 
-	- **[account-key]** - 存储帐户的主密钥。你可以在 Azure 门户的“存储”页中找到主密钥
+	- **[account-key]** - 存储帐户的主密钥。你可以在 Azure 门户的“存储”页中找到主密钥。
 
 2. 保存 App.config 文件。
 
@@ -97,19 +97,19 @@
 			Console.ReadLine();
 		}
 
-3. 将以下用于调用刚刚添加的方法的代码添加到到 Main 中：
+4. 将以下用于调用刚刚添加的方法的代码添加到到 Main 中：
 
 		CreateStorage();
 
-4. 保存 Program.cs 文件。
+5. 保存 Program.cs 文件。
 
-	> [AZURE.NOTE]在生产环境中，建议你使用共享访问签名。
+	> [AZURE.NOTE]在生产环境中，建议你使用[共享访问签名](https://msdn.microsoft.com/library/azure/ee395415.aspx)。
 
 若要了解有关 Blob 存储的详细信息，请参阅[如何通过 .NET 使用 Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs)
 
 ### 创建处理程序
 
-1. 在解决方案资源管理器中，创建名为 **ProcessTaskData** 的新控制台应用程序项目。
+1. 在“解决方案资源管理器”中，创建名为 **ProcessTaskData** 的新控制台应用程序项目。
 
 2. 在 Visual Studio 中创建项目后，可在“解决方案资源管理器”中右键单击该项目，然后选择“管理 NuGet 包”。在线搜索 **WindowsAzure.Storage**，然后单击“安装”以安装 Azure 存储包和依赖项。
 
@@ -143,35 +143,35 @@
 
 ### 上载数据文件
 
-1. 在 GettingStarted 项目中，创建一个名为 **taskdata1** 的新文本文件，将以下文本复制到其中，然后保存该文件。
+1. 在 GettingStarted 项目中，创建一个名为 **taskdata1.txt** 的新文本文件，将以下文本复制到其中，然后保存该文件。
 
 	当你需要弹性资源来满足业务需求时，可使用 Azure 虚拟机来设置可按需缩放的计算基础结构。可以从库中创建运行 Windows、Linux 和企业应用程序（如 SharePoint 和 SQL Server）的虚拟机。也可以捕获和使用你自己的映像来创建自定义的虚拟机。
 
-2. 创建一个名为 **taskdata2** 的新文本文件，将以下文本复制到其中，然后保存该文件。
+2. 创建一个名为 **taskdata2.txt** 的新文本文件，将以下文本复制到其中，然后保存该文件。
 
 	使用 Azure 云服务快速部署和管理功能强大的应用程序和服务。只需上载应用程序，Azure 将处理部署细节（从设置和负载平衡到运行状况监视）以实现持续可用性。您的应用程序由行业领先的每月 99.95% 的 SLA 提供支持。你只需专注于应用程序而非基础结构。
 
-3. 创建一个名为 **taskdata3** 的新文本文件，将以下文本复制到其中，然后保存该文件。
+3. 创建一个名为 **taskdata3.txt** 的新文本文件，将以下文本复制到其中，然后保存该文件。
 
-	Azure 网站为托管 Web 应用程序提供了可缩放的、可靠的且易于使用的环境。从一系列框架和模板中进行选择，几秒钟就可以创建一个网站。使用任何工具或 OS 以利用 .NET、PHP、Node.js 或 Python 开发网站。从各种源代码管理选项（包括 TFS、GitHub 和 BitBucket）中进行选择，可设置持续集成并像一个团队一样进行开发。利用其他 Azure 托管服务（如存储、CDN 和 SQL 数据库）随时间扩展网站功能。
+	Azure 网站为托管网站提供了可缩放的、可靠的且易于使用的环境。从一系列框架和模板中进行选择，几秒钟就可以创建一个网站。使用任何工具或 OS 以利用 .NET、PHP、Node.js 或 Python 开发网站。从各种源代码管理选项（包括 TFS、GitHub 和 BitBucket）中进行选择，可设置持续集成并像一个团队一样进行开发。利用其他 Azure 托管服务（如存储、CDN 和 SQL 数据库）随时间扩展网站功能。
 
 ### 将文件上载到存储容器
 
-1. 打开 GettingStarted 项目的 Program.cs 文件，然后添加以下用于上载文件的方法：
+1. 打开 **GettingStarted** 项目的 Program.cs 文件，然后添加以下用于上载文件的方法：
 
 		static void CreateFiles()
 		{
-			CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-				ConfigurationManager.AppSettings["StorageConnectionString"]);
-			CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-			CloudBlobContainer container = blobClient.GetContainerReference("testcon1");
+		  CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+			ConfigurationManager.AppSettings["StorageConnectionString"]);
+		  CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+		  CloudBlobContainer container = blobClient.GetContainerReference("testcon1");
 
-			CloudBlockBlob taskData1 = container.GetBlockBlobReference("taskdata1");
-			CloudBlockBlob taskData2 = container.GetBlockBlobReference("taskdata2");
-			CloudBlockBlob taskData3 = container.GetBlockBlobReference("taskdata3");
-			taskData1.UploadFromFile("..\\..\\taskdata1.txt", FileMode.Open);
-			taskData2.UploadFromFile("..\\..\\taskdata2.txt", FileMode.Open);
-			taskData3.UploadFromFile("..\\..\\taskdata3.txt", FileMode.Open);
+		  CloudBlockBlob taskData1 = container.GetBlockBlobReference("taskdata1");
+		  CloudBlockBlob taskData2 = container.GetBlockBlobReference("taskdata2");
+		  CloudBlockBlob taskData3 = container.GetBlockBlobReference("taskdata3");
+		  taskData1.UploadFromFile("..\\..\\taskdata1.txt", FileMode.Open);
+		  taskData2.UploadFromFile("..\\..\\taskdata2.txt", FileMode.Open);
+	  	taskData3.UploadFromFile("..\\..\\taskdata3.txt", FileMode.Open);
 
 			CloudBlockBlob storageassembly = container.GetBlockBlobReference("Microsoft.WindowsAzure.Storage.dll");
 			storageassembly.UploadFromFile("Microsoft.WindowsAzure.Storage.dll", FileMode.Open);
@@ -201,14 +201,14 @@
 
 2. 将以下用于设置凭据以调用 Azure 批处理服务的代码添加到 Main 中：
 
-			BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials("https://[account-name].[region].batch.azure.com", "[account-name]", "[account-key]");
+			BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials("[account-url]", "[account-name]", "[account-key]");
 			BatchClient client = BatchClient.Open(cred);
 
-	将括号中的值替换为与批处理帐户相关联的值，每个值都可以在 [Azure 预览门户](https://portal.azure.com)中找到。若要查找这些值，请登录到 [Azure 预览门户](https://portal.azure.com)并执行以下操作：
+	将括号中的值替换为与你的 Batch 帐户关联的值，每个值都可以在 [Azure 预览门户](https://portal.azure.com)中找到。若要查找这些值，请登录到 [Azure 预览门户](https://portal.azure.com)并执行以下操作：
 
-	- **[account-name]** - 单击“批处理帐户”，然后选择你此前创建的批处理帐户
-	- **[account-url]** - 在批处理帐户边栏选项卡中，单击“属性”>“URL”
-	- **[account-key]** - 在批处理帐户边栏选项卡中，单击“属性”>“密钥”>“主访问密钥”
+	- **[account-name]** - 单击“Batch 帐户”，然后选择你此前创建的 Batch 帐户
+	- **[account-url]** - 在 Batch 帐户边栏选项卡中，单击“属性”>“URL”
+	- **[account-key]** - 在 Batch 帐户边栏选项卡中，单击“属性”>“密钥”>“主访问密钥”
 
 3.	将以下用于创建池的方法添加到 Program 类：
 
@@ -280,7 +280,7 @@
 				Console.WriteLine("Job id: " + job.Id);
 				Console.WriteLine("   Job status: " + job.State);
 			}
-			Console.WriteLine("Press Enter to continue.")
+			Console.WriteLine("Press Enter to continue.");
 			Console.ReadLine();
 		}
 
@@ -300,7 +300,7 @@
 		{
 			CloudJob job = client.JobOperations.GetJob("testjob1");
 			ResourceFile programFile = new ResourceFile(
-				"https://[account-name].blob.azure.com/[]/ProcessTaskData.exe",
+				"https://[account-name].blob.core.windows.net/testcon1/ProcessTaskData.exe",
 				"ProcessTaskData.exe");
       	  ResourceFile assemblyFile = new ResourceFile(
 				"https://[account-name].blob.core.windows.net/testcon1/Microsoft.WindowsAzure.Storage.dll",
@@ -330,7 +330,7 @@
 			{
 				Console.WriteLine("Task " + task.Id + " says:\n" + task.GetNodeFile(Constants.StandardOutFileName).ReadAsString());
 			}
-			Console.WriteLine("Press Enter to continue.")
+			Console.WriteLine("Press Enter to continue.");
 			Console.ReadLine();
 		}
 
@@ -491,4 +491,4 @@
 
 2. 某些应用程序会生成大量难以处理的数据。解决此问题的方法之一是进行[有效的列表查询](/documentation/articles/batch-efficient-list-queries)。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

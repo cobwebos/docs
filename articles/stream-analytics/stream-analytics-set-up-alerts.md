@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="09/29/2015" 
+	ms.date="11/06/2015" 
 	wacn.date=""/>
 
 # 设置警报
@@ -46,7 +46,7 @@
 
 ## 通过操作日志设置警报
 
-1.	在 [Azure 门户](https://manage.windowsazure.com)中的“管理服务”中，转到“警报”选项卡。  
+1.	在 [Azure 门户](https://manage.windowsazure.cn)中的“管理服务”中，转到“警报”选项卡。  
 2.	单击“添加规则”  
 
     ![条件](./media/stream-analytics-set-up-alerts/04-stream-analytics-set-up-alerts.png)
@@ -56,14 +56,14 @@
     ![定义警报](./media/stream-analytics-set-up-alerts/05-stream-analytics-set-up-alerts.png)
 
 ## 获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## 后续步骤
 
 - [Azure 流分析简介](/documentation/articles/stream-analytics-introduction)
 - [Azure 流分析入门](/documentation/articles/stream-analytics-get-started)
 - [缩放 Azure 流分析作业](/documentation/articles/stream-analytics-scale-jobs)
-- [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-- [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+- [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
+- [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

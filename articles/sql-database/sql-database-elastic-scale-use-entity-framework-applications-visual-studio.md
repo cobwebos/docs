@@ -1,20 +1,20 @@
 <properties 
-	pageTitle="将弹性数据库客户端库与实体框架配合使用" 
-	description="弹性数据库客户端简化了缩放，实体框架易于在编码数据库中使用" 
+	pageTitle="将弹性数据库客户端库与实体框架配合使用 | Microsoft Azure" 
+	description="将弹性数据库客户端库和实体框架用于数据库编码" 
 	services="sql-database" 
 	documentationCenter="" 
 	manager="jeffreyg" 
-	authors="sidneyh" 
+	authors="torsteng" 
 	editor=""/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.date="07/24/2015" 
+	ms.service="sql-database"
+	ms.date="11/04/2015" 
 	wacn.date=""/>
 
 # 将弹性数据库客户端库与实体框架配合使用 
  
-你可以将弹性数据库客户端库与 Microsoft 的实体框架 (EF) 配合使用，以构建利用数据库分片的应用程序，方便进行应用程序数据层的向外缩放。此文档介绍与弹性数据库工具的功能集成所需的实体框架应用程序中的更改。重点是使用实体框架的**代码优先**方法撰写[分片映射管理](/documentation/articles/sql-database-elastic-scale-shard-map-management)和[数据相关路由](/documentation/articles/sql-database-elastic-scale-data-dependent-routing)。[EF 的代码优先 – 新数据库](http://msdn.microsoft.com/data/jj193542.aspx)教程在本文档中充当运行示例。本文档附带的示例代码是 Visual Studio 代码示例中弹性数据库工具示例的一部分。
+此文档介绍与[弹性数据库工具](/documentation/articles/sql-database-elastic-scale-introduction)集成所需的实体框架应用程序中的更改。重点是使用实体框架的**代码优先**方法撰写[分片映射管理](/documentation/articles/sql-database-elastic-scale-shard-map-management)和[数据相关路由](/documentation/articles/sql-database-elastic-scale-data-dependent-routing)。[EF 的代码优先 – 新数据库](http://msdn.microsoft.com/data/jj193542.aspx)教程在本文档中充当运行示例。本文档附带的示例代码是 Visual Studio 代码示例中弹性数据库工具示例的一部分。
   
 ## 下载和运行示例代码
 若要下载本文的代码：
@@ -28,7 +28,7 @@
 
     选择名为 **Azure SQL 的弹性数据库工具 – 实体框架集成**的示例。在接受许可证后，该示例将加载。
 
-若要运行该示例，您需要在 Azure SQL Database 中创建三个空数据库：
+若要运行该示例，您需要在 Azure SQL 数据库中创建三个空数据库：
 
 * 分片映射管理器数据库
 * 分片 1 数据库
@@ -277,4 +277,4 @@ MyContext(DbConnection, DbCompiledModel,bool) |ElasticScaleContext(ShardMap, TKe
 [1]: ./media/sql-database-elastic-scale-use-entity-framework-applications-visual-studio/sample.png
  
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_1221_2015-->

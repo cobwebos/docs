@@ -40,16 +40,18 @@
 
 ### Microsoft HPC Pack
 
-HPC Pack 是在 Microsoft Azure 和 Windows Server 技术基础之上构建的 Microsoft 免费 HPC 解决方案。
+HPC Pack 是在 Microsoft Azure 和 Windows Server 技术基础之上构建的 Microsoft 免费 HPC 解决方案，它能够运行 Windows 和 Linux HPC 工作负荷。
 
-* [下载 HPC Pack 2012 R2 Update 2](https://www.microsoft.com/zh-cn/download/details.aspx?id=47755)
+* [下载 HPC Pack 2012 R2 Update 3](https://www.microsoft.com/zh-cn/download/details.aspx?id=49922)
 
 * [文档](https://technet.microsoft.com/zh-cn/library/jj899572.aspx)
 
 
 * [在 Azure 中使用 Microsoft HPC Pack 时的 HPC 群集选项](../virtual-machines/virtual-machines-hpcpack-cluster-options.md)
 
-* [使用 HPC Pack 迸发到 Azure](https://technet.microsoft.com/library/gg481749.aspx)
+* [使用 HPC Pack 迸发到 Azure 辅助角色实例](https://technet.microsoft.com/library/gg481749.aspx)
+
+* [使用 HPC Pack 迸发到 Azure Batch](https://technet.microsoft.com/library/mt612877.aspx)
 
 
 * [Windows HPC 论坛](https://social.microsoft.com/Forums/home?category=windowshpc)
@@ -113,4 +115,4 @@ Azure 提供[不同的大小](/documentation/articles/virtual-machines-size-spec
 * 有关最新通告，请参阅 [Microsoft HPC 和批处理团队博客](http://blogs.technet.com/b/windowshpc/)与 [Azure 博客](http://azure.microsoft.com/blog/tag/hpc/)。
 * 另请参阅 [Batch 中的新增功能](http://azure.microsoft.com/updates/?service=batch)或订阅 [RSS 源](http://azure.microsoft.com/updates/feed/?service=batch)。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -4,13 +4,13 @@
    services="virtual-network"
    documentationCenter=""
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-network"
-	ms.date="10/08/2015"
+	ms.date="10/21/2015"
 	wacn.date=""/>
 
 # 使用 PowerShell 创建虚拟网络
@@ -25,6 +25,8 @@
 
 [AZURE.INCLUDE [azure-ps-prerequisites-include.md](../includes/azure-ps-prerequisites-include.md)]
 
+[AZURE.INCLUDE [powershell-preview-include.md](../includes/powershell-preview-include.md)]
+
 [AZURE.INCLUDE [virtual-networks-create-vnet-arm-ps-include](../includes/virtual-networks-create-vnet-arm-ps-include.md)]
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -8,7 +8,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="09/27/2015"
+	ms.date="10/26/2015"
 	wacn.date=""/>
 
 # 对 Azure 存储空间使用 Azure PowerShell
@@ -129,7 +129,7 @@ Azure PowerShell 是一个模块，提供用于通过 Windows PowerShell 管理 
 ![下载 Blob][Image3]
 
 
-> [AZURE.NOTE] “在 5 分钟内开始使用 Azure 存储空间和 PowerShell”部分提供了有关如何对 Azure 存储空间使用 Azure PowerShell 的简介。有关详细信息和说明，建议你阅读以下部分。
+> [AZURE.NOTE]“在 5 分钟内开始使用 Azure 存储空间和 PowerShell”部分提供了有关如何对 Azure 存储空间使用 Azure PowerShell 的简介。有关详细信息和说明，建议你阅读以下部分。
 
 ## 对 Azure 存储空间使用 Azure PowerShell 的先决条件
 如上所述，你需要一个 Azure 订阅和帐户来运行本指南中指定的 PowerShell cmdlet。
@@ -183,7 +183,7 @@ Azure PowerShell 是一个模块，提供用于通过 Windows PowerShell 管理 
 	    $StorageAccountName = "yourstorageaccount"
 	    New-AzureStorageAccount –StorageAccountName $StorageAccountName -Location $location
 
-> [AZURE.IMPORTANT] 存储帐户的名称在 Azure 中是唯一的，并且必须采用小写。有关命名约定和限制，请参阅[关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account)、[命名和引用容器、Blob 和元数据](http://msdn.microsoft.com/zh-cn/library/azure/dd135715.aspx)。
+> [AZURE.IMPORTANT]存储帐户的名称在 Azure 中是唯一的，并且必须采用小写。有关命名约定和限制，请参阅[关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account)、[命名和引用容器、Blob 和元数据](http://msdn.microsoft.com/zh-cn/library/azure/dd135715.aspx)。
 
 ### 如何设置默认的 Azure 存储帐户
 可以在订阅中设置多个存储帐户。你可以选择其中的一个存储帐户，并将其设置为同一个 PowerShell 会话中所有存储命令的默认存储帐户。这样，你便可以在不显式指定存储上下文的情况下运行 Azure PowerShell 存储命令。
@@ -233,7 +233,7 @@ Azure 存储上下文是 PowerShell 中用于封装存储凭据的对象。运�
 
 现在，你已设置计算机并已了解如何使用 Azure PowerShell 管理订阅和存储帐户。请转到下一部分，了解如何管理 Azure Blob 和 Blob 快照。
 
-## 如何管理 Azure Blob 和 Blob 快照
+## 如何管理 Azure blob
 Azure Blob 存储是用于存储大量非结构化数据（例如文本或二进制数据）的服务，这些数据可通过 HTTP 或 HTTPS 从世界各地进行访问。本部分假设你已熟悉 Azure Blob 存储服务的概念。有关详细信息，请参阅[如何通过 .NET 使用 Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs)和[Blob 服务概念](http://msdn.microsoft.com/zh-cn/library/azure/dd179376.aspx)。
 
 ### 如何创建容器
@@ -242,7 +242,7 @@ Azure 存储空间中的每个 Blob 都必须在容器中。你可以使用 New-
     $StorageContainerName = "yourcontainername"
     New-AzureStorageContainer -Name $StorageContainerName -Permission Off
 
-> [AZURE.NOTE] 有三种级别的匿名读取访问权限：**Off**、**Blob** 和 **Container**。若要防止对 Blob 进行匿名访问，请将 Permission 参数设置为 **Off**。默认情况下，新容器是专用容器，只能由帐户所有者访问。若要允许对 Blob 资源进行匿名公共读取访问，但不允许访问容器元数据或容器中的 Blob 列表，请将 Permission 参数设置为 **Blob**。若要允许对 Blob 资源、容器元数据和容器中的 Blob 列表进行完全公开读取访问，请将 Permission 参数设置为 **Container**。有关详细信息，请参阅[管理对 Azure 存储资源的访问](/documentation/articles/storage-manage-access-to-resources)。
+> [AZURE.NOTE]有三种级别的匿名读取访问权限：**Off**、**Blob** 和 **Container**。若要防止对 Blob 进行匿名访问，请将 Permission 参数设置为 **Off**。默认情况下，新容器是专用容器，只能由帐户所有者访问。若要允许对 Blob 资源进行匿名公共读取访问，但不允许访问容器元数据或容器中的 Blob 列表，请将 Permission 参数设置为 **Blob**。若要允许对 Blob 资源、容器元数据和容器中的 Blob 列表进行完全公开读取访问，请将 Permission 参数设置为 **Container**。有关详细信息，请参阅[管理对 Azure 存储资源的访问](/documentation/articles/storage-manage-access-to-resources)。
 
 ### 如何将 Blob 上载到容器
 Azure Blob 存储支持块 Blob 和页 Blob。有关详细信息，请参阅[了解块 Blob 和页 Blob](http://msdn.microsoft.com/zh-cn/library/azure/ee691964.aspx)。
@@ -596,13 +596,11 @@ Azure 文件存储使用标准 SMB 协议为应用程序提供共享存储。Mic
 有关 Azure 文件存储的详细信息，请参阅[如何在 Windows 中使用 Azure 文件存储](/documentation/articles/storage-dotnet-how-to-use-files)和[文件服务 REST API](http://msdn.microsoft.com/zh-cn/library/azure/dn167006.aspx)。
 
 ## 如何设置和查询存储分析
-可使用 [Azure 存储分析](/documentation/articles/storage-analytics)从 Azure 存储帐户收集度量值，并记录与发送到存储帐户的请求有关的数据。你可以使用存储度量值监视存储帐户的运行状况，并使用存储日志记录诊断和解决与存储帐户有关的问题。
-对于存储服务，默认情况下不启用存储度量值。你可以使用 Azure 管理门户、Windows PowerShell 或以编程方式通过存储 API 启用监视。存储日志记录在服务器端执行，可用于在存储帐户中记录成功和失败请求的相关详细信息。使用这些日志，可以查看针对表、队列和 Blob 的读取、写入和删除操作的详细信息，以及请求失败的原因。
+可使用 [Azure 存储分析](/documentation/articles/storage-analytics)从 Azure 存储帐户收集度量值，并记录与发送到存储帐户的请求有关的数据。你可以使用存储度量值监视存储帐户的运行状况，并使用存储日志记录诊断和解决与存储帐户有关的问题。对于存储服务，默认情况下不启用存储度量值。你可以使用 Azure 管理门户、Windows PowerShell 或以编程方式通过存储 API 启用监视。存储日志记录在服务器端执行，可用于在存储帐户中记录成功和失败请求的相关详细信息。使用这些日志，可以查看针对表、队列和 Blob 的读取、写入和删除操作的详细信息，以及请求失败的原因。
 
 若要了解如何使用 PowerShell 启用和查看存储度量值数据，请参阅[如何使用 PowerShell 启用存储度量值](http://msdn.microsoft.com/zh-cn/library/azure/dn782843.aspx#HowtoenableStorageMetricsusingPowerShell)。
 
-若要了解如何使用 PowerShell 启用和检索存储日志记录数据，请参阅[如何使用 PowerShell 启用存储日志记录](http://msdn.microsoft.com/zh-cn/library/azure/dn782840.aspx#HowtoenableStorageLoggingusingPowerShell)和[查找存储日志记录的日志数据](http://msdn.microsoft.com/zh-cn/library/azure/dn782840.aspx#FindingyourStorageLogginglogdata)。
-有关使用“存储度量值”和“存储日志记录”排查存储问题的详细信息，请参阅[对 Microsoft Azure 存储空间进行监视、诊断和故障排除](/documentation/articles/storage-monitoring-diagnosing-troubleshooting)。
+若要了解如何使用 PowerShell 启用和检索存储日志记录数据，请参阅[如何使用 PowerShell 启用存储日志记录](http://msdn.microsoft.com/zh-cn/library/azure/dn782840.aspx#HowtoenableStorageLoggingusingPowerShell)和[查找存储日志记录的日志数据](http://msdn.microsoft.com/zh-cn/library/azure/dn782840.aspx#FindingyourStorageLogginglogdata)。有关使用“存储度量值”和“存储日志记录”排查存储问题的详细信息，请参阅[对 Microsoft Azure 存储空间进行监视、诊断和故障排除](/documentation/articles/storage-monitoring-diagnosing-troubleshooting)。
 
 ## 如何管理共享访问签名 (SAS) 和存储访问策略
 共享访问签名是对使用 Azure 存储空间的任何应用程序创建安全模型的重要环节。它们用于将存储帐户的受限权限提供给不应具有帐户密钥的客户端。默认情况下，只有存储帐户的所有者可访问该帐户中的 Blob、表和队列。如果服务或应用程序需要向其他客户端提供这些资源但不共享访问密钥，你可以使用三个选项：
@@ -649,8 +647,8 @@ Azure 文件存储使用标准 SMB 协议为应用程序提供共享存储。Mic
     Remove-AzureStorageTableStoredAccessPolicy -Policy $policy -Table $tableName -Context $Ctx
 
 
-## 如何在美国政府部门和 Azure 中国区使用 Azure 存储空间
-Azure 环境的部署独立于 Microsoft Azure，其示例包括[面向美国政府的 Azure Government](http://azure.microsoft.com/features/gov/)、[面向全球 Azure 的 AzureCloud](https://manage.windowsazure.com)，以及[中国 21Vianet 运营的 AzureChinaCloud](http://www.windowsazure.cn/)。你可以为美国政府和 Azure 中国区部署新的 Azure 环境。
+## 如何在 Azure 中国区使用 Azure 存储空间
+Azure 环境的部署独立于 Microsoft Azure，例如[中国 21Vianet 运营的 AzureChinaCloud for Azure](http://www.windowsazure.cn/)。你可以为 Azure 中国区部署新的 Azure 环境。
 
 若要将 Azure 存储空间用于 AzureChinaCloud，需要创建与 AzureChinaCloud 关联的存储上下文。请按照以下步骤开始：
 
@@ -734,4 +732,4 @@ Azure 环境的部署独立于 Microsoft Azure，其示例包括[面向美国政
 [Next Steps]: #next
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

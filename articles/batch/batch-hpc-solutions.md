@@ -1,5 +1,5 @@
 <properties
-   pageTitle="云中的批处理和 HPC 解决方案 | Microsoft Azure"
+   pageTitle="云中的 Batch 和 HPC 解决方案 | Microsoft Azure"
    description="介绍 Azure 中的批处理和高性能计算（大型计算）应用方案和解决方案选项"
    services="batch, virtual-machines, cloud-services"
    documentationCenter=""
@@ -29,7 +29,7 @@ Azure 还为组织和软件供应商提供开发工具与服务，用于构建�
 
 ## 背景：批处理和 HPC 应用程序
 
-与 Web 应用程序和许多业务线应用程序不同，批处理和 HPC 应用程序有确定的开始和结束时间，而且它们可以按照计划运行或按需运行。其中的大多数应用程序可分为两大类：*内在并行*（有时称为“高度并行”，因为它们解决的问题有助于使自身在多个计算机或处理器上并行运行）和*紧密耦合*。有关这些应用程序类型的详细信息，请参阅下表。某些 Azure 解决方案方法更适合一种类型或其他类型。
+与网站和许多业务线应用程序不同，批处理和 HPC 应用程序有确定的开始和结束时间，而且它们可以按照计划运行或按需运行。其中的大多数应用程序可分为两大类：*内在并行*（有时称为“高度并行”，因为它们解决的问题有助于使自身在多个计算机或处理器上并行运行）和*紧密耦合*。有关这些应用程序类型的详细信息，请参阅下表。某些 Azure 解决方案方法更适合一种类型或其他类型。
 
 >[AZURE.NOTE]在批处理和 HPC 解决方案中，应用程序的运行中实例通常称为*作业*，而每个作业可以划分成*任务*。应用程序的群集计算资源通常称为*计算节点*。
 
@@ -48,7 +48,7 @@ Azure 还为组织和软件供应商提供开发工具与服务，用于构建�
 
 * **数据访问** - 企业网络群集内经常使用的数据访问技术（例如 NFS）可能需要云中的特殊配置，或者你可能需要为云采用不同的数据访问做法与模式。
 
-* **数据移动** - 对于处理大量数据的应用程序，需要使用策略将数据移至云存储和计算资源，并可能需要考虑部署高速跨界网络。另外，还要考虑到法律、法规或政策对存储或访问该数据的限制。
+* **数据移动** - 对于处理大量数据的应用程序，需要使用策略将数据移至云存储和计算资源，并可能需要考虑部署高速跨界网络，例如 [Azure ExpressRoute](/services/expressroute/)。另外，还要考虑到法律、法规或政策对存储或访问该数据的限制。
 
 
 * **许可** - 请向供应商咨询有关任何商业应用程序在云中的运行许可或其他限制。并非所有供应商都提供即付即用许可。你可能需要根据自己的解决方案，在云中规划许可服务器，或连接到本地许可服务器。
@@ -90,7 +90,7 @@ Azure 还为组织和软件供应商提供开发工具与服务，用于构建�
 
 Azure 提供一系列的计算、数据、网络和相关服务，你可将其用于大型计算解决方案和工作流。有关其中每项服务的深入指导，请参阅 Azure 服务文档。有关涉及批处理和 HPC 应用程序的一些常见方法，请参阅本文中的[解决方案应用方案](#solution-scenarios)。
 
->[AZURE.NOTE]新服务会定期导入 Azure 平台，可能适用于你的方案。建议仅将预览版服务用于测试或概念认证部署，而不要用于非生产任务负荷。如有疑问，请联系 [Azure 合作伙伴](https://pinpoint.microsoft.com/zh-CN/search?keyword=azure)或者向 **bigcompute@microsoft.com* 发送电子邮件。
+>[AZURE.NOTE]新服务会定期导入 Azure 平台，可能适用于你的方案。建议仅将预览版服务用于测试或概念认证部署，而不要用于非生产任务负荷。如有疑问，请联系 [Azure 合作伙伴](https://pinpoint.microsoft.com/zh-CN/search?keyword=azure)或者向 *bigcompute@microsoft.com* 发送电子邮件。
 
 ### 计算服务
 
@@ -100,9 +100,9 @@ Azure 中的计算服务是大计算解决方案的核心。下表是经常使�
 
 服务 | 说明
 ------------- | -----------
-**[云服务](http://www.windowsazure.cn/documentation/services/cloud-services)**<br/><br/> |• 可以在辅助角色实例中运行大型计算应用程序，辅助角色实例是运行某个 Windows Server 版本的虚拟机并且完全由 Azure 托管<br/><br/>• 可以较低的管理开销支持运行在平台即服务 (PaaS) 模型中的可缩放的可靠应用程序<br/><br/>• 可能需要额外的工具或开发来与现有的本地 HPC 群集解决方案进行集成
-**[虚拟机](http://www.windowsazure.cn/documentation/services/virtual-machines)**<br/><br/> |• 使用 Microsoft Hyper-V 技术提供计算基础结构即服务 (IaaS)<br/><br/>• 使你能够从标准 Windows Server 或 Linux 映像，或者你提供的映像和数据磁盘灵活地设置和管理永久性虚拟机<br/><br/>• 完全在云中运行本地计算群集工具和应用程序
-**[批处理](http://www.windowsazure.cn/documentation/services/batch)**<br/><br/> |• 在完全托管的服务中运行大规模的并行与批处理工作负荷，例如图像渲染及媒体编码和转码<br/><br/>• 针对虚拟机的托管池提供作业计划和自动缩放<br/><br/>• 允许开发人员构建自定义大型计算解决方案或支持云的现有应用程序<br/>
+**[云服务](/documentation/services/cloud-services)**<br/><br/> |• 可以在辅助角色实例中运行大型计算应用程序，辅助角色实例是运行某个 Windows Server 版本的虚拟机并且完全由 Azure 托管<br/><br/>• 可以较低的管理开销支持运行在平台即服务 (PaaS) 模型中的可缩放的可靠应用程序<br/><br/>• 可能需要额外的工具或开发来与现有的本地 HPC 群集解决方案进行集成
+**[虚拟机](/documentation/services/virtual-machines)**<br/><br/> |• 使用 Microsoft Hyper-V 技术提供计算基础结构即服务 (IaaS)<br/><br/>• 使你能够从标准 Windows Server 或 Linux 映像，或者你提供的映像和数据磁盘灵活地设置和管理永久性虚拟机<br/><br/>• 完全在云中运行本地计算群集工具和应用程序
+**[批处理](/documentation/services/batch)**<br/><br/> |• 在完全托管的服务中运行大规模的并行与批处理工作负荷，例如图像渲染及媒体编码和转码<br/><br/>• 针对虚拟机的托管池提供作业计划和自动缩放<br/><br/>• 允许开发人员构建自定义大型计算解决方案或支持云的现有应用程序<br/>
 
 ### 存储服务
 
@@ -166,7 +166,7 @@ Azure 中的计算服务是大计算解决方案的核心。下表是经常使�
 
 **自动化部署** - 若要部署大量 Windows Server 或 Linux VM，可以使用标准或自定义的 VM 映像与 Azure 自动化工具，例如 [Azure 命令行界面](/documentation/articles/xplat-cli)或 [Azure PowerShell](/documentation/articles/powershell-install-configure)。示例包括：
 
-* 若要在 Azure 基础结构服务中部署 HPC Pack 群集，可以从客户端计算机运行灵活的 [Azure PowerShell 脚本](https://msdn.microsoft.com/zh-cn/library/azure/dn864734.aspx)；该脚本使用预装了 HPC Pack 的 Windows Server VM 映像。<1你也可以使用 Azure [快速入门模板](https://azure.microsoft.com/zh-cn/documentation/templates/create-hpc-cluster/)与 Azure PowerShell 或 Azure CLI 来部署 HPC Pack 群集。
+* 若要在 Azure 基础结构服务中部署 HPC Pack 群集，可以从客户端计算机运行灵活的 [Azure PowerShell 脚本](https://msdn.microsoft.com/zh-cn/library/azure/dn864734.aspx)；该脚本使用预装了 HPC Pack 的 Windows Server VM 映像。<1你也可以使用 Azure [快速入门模板](/documentation/templates/create-hpc-cluster/)与 Azure PowerShell 或 Azure CLI 来部署 HPC Pack 群集。
 
 * 可以使用 Azure [快速入门模板](https://azure.microsoft.com/zh-cn/documentation/templates/slurm/)与 Azure PowerShell 或 Azure CLI，来部署运行 [SLURM](https://computing.llnl.gov/linux/slurm/) 开源工作负荷管理器的 Linux 群集。
 
@@ -218,4 +218,4 @@ Azure 中的计算服务是大计算解决方案的核心。下表是经常使�
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

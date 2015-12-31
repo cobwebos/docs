@@ -1,6 +1,6 @@
 <properties
    pageTitle="在 Azure 门户中为 VM 创建 FQDN | Microsoft Azure"
-   description="了解如何在 Azure 预览门户中基于虚拟机为资源管理器创建完全限定域名或 FQDN。"
+   description="了解如何在 Azure 门户中为基于资源管理器的虚拟机创建完全限定域名或 FQDN。"
    services="virtual-machines"
    documentationCenter=""
    authors="dsk-2015"
@@ -15,9 +15,10 @@
 
 # 在 Azure 预览门户中创建完全限定域名
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍如何使用资源管理器部署模型创建 FQDN。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
 
-在 [Azure 预览门户](https://portal.azure.com)中使用“资源管理器”部署模型创建虚拟机时，Azure 预览门户会为虚拟机创建一个公共 IP 资源。可以使用此 IP 地址远程访问虚拟机。但是，默认情况下，Azure 预览门户不会创建[完全限定域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)或 FQDN。记住和使用 FQDN 要比记住和使用 IP 地址容易，本文演示了如何将一个 FQDN 添加到你的虚拟机中。
+
+在 [Azure 门户](https://manage.windowsazure.cn)中使用“资源管理器”部署模型创建虚拟机时，该门户会为虚拟机创建一个公共 IP 资源。可以使用此 IP 地址远程访问虚拟机。但是，默认情况下，Azure 预览门户不会创建[完全限定域名](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)或 FQDN。记住和使用 FQDN 要比记住和使用 IP 地址容易，本文演示了如何将一个 FQDN 添加到你的虚拟机中。
 
 本文假设你已在门户中登录到你的订阅，并使用“资源管理器”创建了一个具有可用映像的虚拟机。虚拟机开始运行后可按照以下步骤操作。
 
@@ -49,4 +50,4 @@
 
     你现在可以使用此 DNS 名称远程连接至虚拟机。例如，连接到完全限定域名为 `testdnslabel.eastus.cloudapp.azure.com` 且用户名为 `adminuser` 的 Linux 虚拟机时，使用 `SSH adminuser@testdnslabel.eastus.cloudapp.azure.com`。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

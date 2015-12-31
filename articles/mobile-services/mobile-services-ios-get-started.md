@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Azure 移动服务开发 iOS 应用程序入门"
+	pageTitle="适用于 iOS 应用的 Azure 移动服务入门 | JavaScript 后端"
 	description="遵照本教程开始使用 Azure 移动服务进行 iOS 开发。"
 	services="mobile-services"
 	documentationCenter="ios"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="10/07/2015"
+	ms.date="11/04/2015"
 	wacn.date=""/>
 
 # <a name="getting-started"></a>移动服务入门
@@ -23,7 +23,7 @@
 
 在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单_待办事项列表_应用程序。要创建的移动服务将为服务器端业务逻辑使用 JavaScript。若要以 .NET 创建包含服务器端业务逻辑的移动服务，请参阅本主题的 [.NET 后端版本]。
 
-> [AZURE.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并获取[免费的移动服务，即使在试用期结束之后仍可继续使用这些服务](/home/features/mobile-services/#price)。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial target="\_blank")。
+> [AZURE.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并获取[免费的移动服务，即使在试用期结束之后仍可继续使用这些服务](/home/features/mobile-services/#price)。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial)。
 
 ## <a name="create-new-service"></a>创建新的移动服务
 
@@ -52,13 +52,13 @@
 了解如何在移动服务中执行其他重要任务：
 
 * [脱机数据同步入门]
-<br/>了解如何使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
+  <br/>了解如何使用脱机数据同步来使应用程序保持较高的响应能力和稳健性。
 
 * [向现有应用程序添加身份验证]
-<br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
+  <br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
 
 * [向现有应用程序添加推送通知]
-<br/>了解如何向应用程序发送一条很基本的推送通知。
+  <br/>了解如何向应用程序发送一条很基本的推送通知。
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
 
@@ -90,4 +90,4 @@
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [.NET 后端版本]: /documentation/articles/mobile-services-dotnet-backend-ios-get-started
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

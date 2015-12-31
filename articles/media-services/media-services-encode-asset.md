@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/15/2015"
+	ms.date="10/29/2015"
 	wacn.date=""/>
 
 #简要介绍并比较 Azure 按需媒体编码器
@@ -31,13 +31,10 @@ Media Services 所提供的动态打包可让你以 Media Services 支持的流�
 
 - **媒体编码器标准版**
 - **Azure Media Encoder** 
-<!-- deleted by customization
-- **Media Encoder Premium Workflow**
--->
 
 本文简要概述了按需媒体编码器，并提供了指向介绍更多详细信息的文章的链接。本主题还提供了编码器的比较。
 
-请注意，默认情况下每个媒体服务帐户同时只能有一个活动的编码任务。你可以保留编码单元，使用它们可以同时运行多个编码任务，你购买的每个编码保留单位对应一个任务。有关信息，请参阅[缩放编码单元](/documentation/articles/media-services-portal-encoding-units)。
+请注意，默认情况下每个媒体服务帐户同时只能有一个活动的编码任务。你可以保留编码单元，使用它们可以同时运行多个编码任务，你购买的每个编码保留单位对应一个任务。有关信息，请参阅[缩放编码单位](/documentation/articles/media-services-portal-encoding-units)。
 
 ##媒体编码器标准版
 
@@ -142,12 +139,9 @@ Azure 媒体编码器使用[此处](https://msdn.microsoft.com/zh-cn/library/azu
 ---|---|---
 **媒体编码器标准版** |编码器|编码任务将根据“编码器”列下输出资产的大小（以 GB 为单位）按[此处][1]指定的费率进行收费。
 **Azure Media Encoder** |编码器|编码任务将根据“编码器”列下输出资产的大小（以 GB 为单位）按[此处][1]指定的费率进行收费。
-<!-- deleted by customization
-**Media Encoder Premium Workflow** |PREMIUM ENCODER|Encoding Tasks will be charged according to the size of the output Asset, in GBytes, at the rate specified [here][1], under the PREMIUM ENCODER column.
--->
 
 
-本部分比较了**媒体编码器标准版**和 **Azure 媒体编码器**<!-- deleted by customization , and **Media Encoder Premium Workflow** -->的编码功能。
+本部分比较了**媒体编码器标准版**和 **Azure 媒体编码器**的编码功能。
 
 
 ###输入容器/文件格式
@@ -166,6 +160,7 @@ AVI（8 位/10 位未压缩）|是|是 |是
 平滑流文件格式 (PIFF 1.3)|是|是|否
 [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/zh-cn/library/windows/desktop/dd692984)|是|否|否
 Matroska/WebM |是|否|否
+QuickTime (.mov) |是|否|否
 
 ###输入视频编解码器
 
@@ -181,6 +176,12 @@ Windows Media 视频/VC-1 |是|是|是
 Canopus HQ/HQX |否|是|否
 Mpeg-4 第 2 部分 |是|否|否
 [Theora](https://en.wikipedia.org/wiki/Theora) |是|否|否
+Apple ProRes 422 |是|否|否
+Apple ProRes 422 LT |是|否|否
+Apple ProRes 422 HQ |是|否|否
+Apple ProRes Proxy|是|否|否
+Apple ProRes 4444 |是|否|否
+Apple ProRes 4444 XQ |是|否|否
 
 ###输入音频编解码器
 
@@ -239,12 +240,13 @@ MP3 (MPEG-1 Audio Layer 3)|否|否|是
 Windows Media 音频|否|是|是
 
 
-##媒体服务学习路径
 
-你可以在此处查看 AMS 学习路径：
 
-- [AMS 实时流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS 按需流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+
+##提供反馈
+
+[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
+
 
 ##相关文章
 
@@ -254,4 +256,4 @@ Windows Media 音频|否|是|是
 <!--Reference links in article-->
 [1]: /home/features/media-services/#price
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

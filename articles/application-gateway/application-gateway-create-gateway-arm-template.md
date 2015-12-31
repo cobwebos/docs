@@ -9,7 +9,7 @@
    editor="tysonn"/>
 <tags 
    ms.service="application-gateway"
-   ms.date="09/21/2015"
+   ms.date="11/10/2015"
    wacn.date=""/>
 
 
@@ -18,10 +18,9 @@
 应用程序网关是第 7 层负载平衡器。它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。应用程序网关具有以下应用程序传递功能：HTTP 负载平衡、基于 Cookie 的会话相关性和 SSL 卸载。
 
 > [AZURE.SELECTOR]
-- [Azure 经典模式 Powershell 步骤](application-gateway-create-gateway.md)
-- [Azure 资源管理器模式 Powershell 步骤](application-gateway-create-gateway-arm.md)
-- [Azure 资源管理器模板步骤](application-gateway-create-gateway-arm-template.md)
-
+- [Azure Classic PowerShell](application-gateway-create-gateway.md)
+- [Azure 资源管理器 PowerShell](application-gateway-create-gateway-arm.md)
+- [Azure 资源管理器模板](application-gateway-create-gateway-arm-template.md)
 
 <BR>
 
@@ -30,7 +29,7 @@
 如果你只是直接从 GitHub 部署 ARM 模板，而不进行任何更改，请跳到“从 github 部署模板”。
 
 
->[AZURE.IMPORTANT] 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：资源管理器部署模型和经典部署模型。在使用任何 Azure 资源之前，请确保你了解[部署模型和工具](azure-classic-rm.md)。可以通过单击本文顶部的选项卡来查看不同工具的文档。本文档将说明使用 Azure 资源管理器创建应用程序网关的方式。若要使用经典版本，请转到[使用 PowerShell 创建应用程序网关经典部署](application-gateway-create-gateway.md)。
+>[AZURE.IMPORTANT]在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：资源管理器部署模型和经典部署模型。在使用任何 Azure 资源之前，请确保你了解[部署模型和工具](azure-classic-rm.md)。可以通过单击本文顶部的选项卡来查看不同工具的文档。本文档将说明使用 Azure 资源管理器创建应用程序网关的方式。若要使用经典版本，请转到[使用 PowerShell 创建应用程序网关经典部署](application-gateway-create-gateway.md)。
 
 
 
@@ -44,7 +43,7 @@
 - 名为 Appgatewaysubnet 且使用 10.0.0.0/28 作为其 CIDR 块的子网；
 - 安装程序 2 先前已针对想要用于为流量进行负载平衡的 Web 服务器设置后端 IP。在此模板示例中，所用的后端 IP 将是 10.0.1.10 和 10.0.1.11
 
->[AZURE.NOTE] 这是适用于此模板的参数。你可以更改规则、侦听程序，以及打开 azuredeploy.json 以自定义模板的 SSL。
+>[AZURE.NOTE]这是适用于此模板的参数。你可以更改规则、侦听程序，以及打开 azuredeploy.json 以自定义模板的 SSL。
 
 
 
@@ -56,7 +55,7 @@
 
 可以从 github 下载用于创建 VNet 和两个子网的现有 ARM 模板，进行任何所需的更改，然后重用该模板。为此，请执行以下步骤。
 
-1. 导航到 https://github.com/Azure/azure-quickstart-templates/blob/master/101-create-applicationgateway-publicip。
+1. 导航到 https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-create-application-gateway/。
 2. 单击 **azuredeploy.json**，然后单击 **RAW**。
 3. 将该文件保存到你计算机上的本地文件夹。
 4. 如果你熟悉 ARM 模板，则跳到步骤 7。
@@ -75,7 +74,7 @@
 	| **backendaddress2** | 第二个 Web 服务器的 IP 地址|
 
 
->[AZURE.IMPORTANT] 在 github 中维护的 ARM 模板可能随着时间的推移发生变化。请确保在使用该模板之前对其进行检查。
+>[AZURE.IMPORTANT]在 github 中维护的 ARM 模板可能随着时间的推移发生变化。请确保在使用该模板之前对其进行检查。
 	
 6. 查看 **resources** 下的内容，并注意以下项：
 
@@ -83,37 +82,35 @@
 	- **name**。资源的名称。请注意使用 **[parameters('applicationGatewayName')]**，这意味着在部署过程中将由用户或参数文件作为输入提供该名称。
 	- **properties**。资源的属性列表。此模板在应用程序网关创建期间，使用虚拟网络与公共 IP 地址。
 
-7. 导航回 https://github.com/Azure/azure-quickstart-templates/blob/master/101-create-applicationgateway-publicip。
+7. 导航回 https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-create-application-gateway/azuredeploy.json。
 8. 单击 **azuredeploy-paremeters.json**，然后单击 **RAW**。
 9. 将该文件保存到你计算机上的本地文件夹。
 10. 打开刚保存的文件并编辑参数的值。使用以下值来部署本方案中所述的应用程序网关。
 
 		{
-		   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-		   "contentVersion": "1.0.0.0",
-		   "parameters": {
-		     "location": {
-		       "value": "East US"
-		     },
-		     "addressPrefix": {
-		      "value": "10.0.0.0/16"
-    		 },
-		     "subnetPrefix": {
-		      "value": "10.0.0.0/24"
-		     },
-		     "skuName": {
-		       "value": "Standard_Small"
-		     },
-		     "capacity": {
-		       "value": 2
-		    },
-		    "backendIpAddress1": {
-		      "value": "10.0.1.10"
-		    },
-		     "backendIpAddress2": {
-		       "value": "10.0.1.11"
-		     }
-		  }
+		  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+		{
+    	"location" : {
+        "value" : "China North"
+    	},
+    	"addressPrefix": {
+        "value": "10.0.0.0/16"
+    	},
+    	"subnetPrefix": {
+        "value": "10.0.0.0/24"
+    	},
+    	"skuName": {
+        "value": "Standard_Small"
+    	},
+    	"capacity": {
+        "value": 2
+    	},
+    	"backendIpAddress1": {
+        "value": "10.0.1.10"
+    	},
+    	"backendIpAddress2": {
+        "value": "10.0.1.11"
+    	}
 		}
 
 11. 保存该文件。你可以使用联机 json 验证工具（例如 [JSlint.com](http://www.jslint.com/)）来测试 Json 模板和参数模板。
@@ -129,7 +126,7 @@
 
 		WARNING: The Switch-AzureMode cmdlet is deprecated and will be removed in a future release.
 
->[AZURE.WARNING] Switch-AzureMode cmdlet 将在不久后弃用。如果弃用，所有资源管理器 cmdlet 都将重命名。
+>[AZURE.WARNING]Switch-AzureMode cmdlet 将在不久后弃用。如果弃用，所有资源管理器 cmdlet 都将重命名。
 	
 3. 如果需要，请使用 `New-AzureResourceGroup` cmdlet 创建新的资源组。在以下示例中，将在美国东部位置创建名为 AppgatewayRG 的新资源组：
 
@@ -236,7 +233,7 @@
 
 
 ### 步骤 1 
-使用“[单击部署应用程序网关](http://azure.microsoft.com/documentation/templates/101-create-applicationgateway-publicip/)”链接将重定向到应用程序网关的门户模板页。
+使用[“单击部署应用程序网关”](/documentation/templates/101-application-gateway-public-ip/)链接将重定向到应用程序网关的门户模板页。
 
 
 ### 步骤 2 
@@ -272,4 +269,4 @@
 - [Azure 负载平衡器](/documentation/services/load-balancer/)
 - [Azure 流量管理器](/documentation/services/traffic-manager/)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

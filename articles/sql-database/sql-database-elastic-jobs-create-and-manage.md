@@ -1,21 +1,21 @@
 <properties
-	pageTitle="创建和管理弹性数据库作业"
+	pageTitle="创建和管理弹性数据库作业 | Microsoft Azure"
 	description="演练如何创建和管理弹性数据库作业。"
 	services="sql-database"
 	documentationCenter=""
 	manager="jhubbard"
-	authors="sidneyh"
+	authors="ddove"
 	editor=""/>
 
 <tags
 	ms.service="sql-database"
-	ms.date="07/21/2015"
+	ms.date="11/04/2015"
 	wacn.date=""/>
 
 # 使用门户创建和管理 SQL 数据库弹性作业（预览版）
 
 > [AZURE.SELECTOR]
-- [Azure portal](/documentation/articles/sql-database-elastic-jobs-create-and-manage)
+- [Azure 门户](/documentation/articles/sql-database-elastic-jobs-create-and-manage)
 - [PowerShell](/documentation/articles/sql-database-elastic-jobs-powershell)
 
 
@@ -111,4 +111,4 @@
 
  
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -1,62 +1,84 @@
 <properties
-	pageTitle="创建在 Azure 中运行 Linux 的虚拟机"
-	description="了解如何使用 Azure 中的映像创建运行 Linux 的 Azure 虚拟机 (VM)。"
+	pageTitle="创建运行 Linux 的虚拟机 | Microsoft Azure"
+	description="了解如何使用 Azure 中的映像和 Azure 命令行界面创建运行 Linux 的 Azure 虚拟机 (VM)。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="squillace"
 	manager="timlt"
 	editor="tysonn"
-	tags="azure-resource-management" />
+	tags="azure-resource-manager" />
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="07/13/2015"
+	ms.date="10/21/2015"
 	wacn.date=""/>
 
 # 创建运行 Linux 的虚拟机
 
 > [AZURE.SELECTOR]
-- [Azure 门户](/documentation/articles/virtual-machines-linux-tutorial-portal-rm)
+- [Azure Portal](/documentation/articles/virtual-machines-linux-tutorial-portal-rm)
 - [Azure CLI](/documentation/articles/virtual-machines-linux-tutorial)
+
+<br>[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
+
 
 通过命令行或门户创建运行 Linux 的 Azure 虚拟机 (VM) 是一项很简单的操作。本教程演示如何使用 Mac、Linux 和 Windows 的 Azure 命令行界面 (Azure CLI) 来快速创建运行在 Azure 中的 Ubuntu Server VM，如何使用 **ssh** 连接到它，以及如何创建和装入新磁盘。（本主题使用 Ubuntu Server VM，不过你也可以[将自己的映像作为模板](/documentation/articles/virtual-machines-linux-create-upload-vhd)来创建 Linux VM。）
 
-<!--[AZURE.INCLUDE [free-trial-note](../includes/free-trial-note.md)]-->
+[AZURE.INCLUDE [free-trial-note](../includes/free-trial-note.md)]
+
+## 视频演练
+
+下面是本教程的演练。
+
+[AZURE.VIDEO building-a-linux-virtual-machine-tutorial]
 
 ## 安装 Azure CLI
 
 第一步是[安装 Azure CLI](/documentation/articles/xplat-cli-install)。
 
-很好。现在，请确保你是处于资源管理模式下，可通过键入 `azure config mode arm` 来验证。
+很好。现在，请确保你是处于资源管理器模式下，可通过键入 `azure config mode arm` 来验证。
 
-太好了。现在，请使用你的工作或学校 ID 登录，先请键入 `azure login`，然后按提示进行操作。
+太好了。现在，通过键入 `azure login` 并遵循提示进行 Azure 帐户的交互式登录体验，来[使用工作或学校 ID 登录](/documentation/articles/xplat-cli-connect#use-the-log-in-method)。
 
-> [AZURE.NOTE]如果你在登录时收到错误，则可能需要[从个人 Microsoft 帐户创建工作或学校 ID](/documentation/articles/resource-group-create-work-id-from-personal)。
+> [AZURE.NOTE]如果有工作或学校 ID，而且知道尚未启用双因素身份验证，则可以使用 `azure login -u` 以及工作或学校 ID，在没有交互式会话的情况下进行登录。如果没有工作或学校 ID，则可以[从 Microsoft 个人帐户创建工作或学校 ID](resource-group-create-work-id-from-personal)。
 
 ## 创建 Azure VM
 
-键入 `azure group create <my-group-name> chinanorth`，将 _&lt;my-group-name&gt;_ 替换为对你来说属于唯一名称的组名（如果你愿意，你可以使用其他区域）。你会看到下面这样的内容：
+键入 `azure group create <my-group-name> westus`，将 _&lt;my-group-name&gt;_ 替换为对你来说属于唯一名称的组名（如果你愿意，你可以使用其他区域）。你会看到下面这样的内容：
 
-	azure group create myuniquegroupname chinanorth
+	azure group create myuniquegroupname westus
 	info:    Executing command group create
 	+ Getting resource group myuniquegroupname
 	+ Creating resource group myuniquegroupname
 	info:    Created resource group myuniquegroupname
 	data:    Id:                  /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myuniquegroupname
 	data:    Name:                myuniquegroupname
-	data:    Location:            chinanorth
+	data:    Location:            westus
 	data:    Provisioning State:  Succeeded
 	data:    Tags:
 	data:
 	info:    group create command OK
 
-现在可以创建你的 VM 了，先键入 `azure vm quick-create`，然后系统会提示你输入余下的参数。使用你刚在上面创建的资源组的名称，而对于 **ImageURN** 值，请使用 `canonical:ubuntuserver:14.04.2-LTS:latest`，这样你的体验看起来将如下所示：
+现在可以创建你的 VM 了，先键入 `azure vm quick-create`，然后系统会提示你输入余下的参数。使用你刚在上面创建的资源组的名称，而对于 **ImageURN** 值，请使用 `canonical:ubuntuserver:14.04.2-LTS:latest`，这样你的体验看起来将如下所示：请注意，`azure vm quick-create` 命令会提示你输入创建、托管以及连接到 Linux VM 所需的基本信息，包括：
+
+- 资源组名称和 VM 名称
+- 部署位置
+- 操作系统类型和映像 URN 字符串
+- 用户名和密码
+
+然后，它将创建托管 VM 所需的基础结构。这包括：
+
+- 用于 VHD 存储和额外磁盘的 Azure 存储帐户
+- VM 的 NIC
+- 包含子网的虚拟网络
+- 公共 IP 地址
+- 子域
 
 	azure vm quick-create
 	info:    Executing command vm quick-create
 	Resource group name: myuniquegroupname
 	Virtual machine name: myuniquevmname
-	Location name: chinanorth
+	Location name: westus
 	Operating system Type [Windows, Linux]: Linux
 	ImageURN (format: "publisherName:offer:skus:version"): canonical:ubuntuserver:14.04.2-LTS:latest
 	User name: ops
@@ -66,8 +88,8 @@
 	info:    Using the VM Size "Standard_D1"
 	info:    The [OS, Data] Disk or image configuration requires storage account
 	+ Retrieving storage accounts
-	info:    Could not find any storage accounts in the region "chinanorth", trying to create new one
-	+ Creating storage account "cli3c0464f24f1bf4f014323" in "chinanorth"
+	info:    Could not find any storage accounts in the region "westus", trying to create new one
+	+ Creating storage account "cli3c0464f24f1bf4f014323" in "westus"
 	+ Looking up the storage account cli3c0464f24f1bf4f014323
 	+ Looking up the NIC "myuni-westu-1432328437727-nic"
 	info:    An nic with given name "myuni-westu-1432328437727-nic" not found, creating a new one
@@ -90,8 +112,8 @@
 	data:    Id                              :/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myuniquegroupname/providers/Microsoft.Compute/virtualMachines/myuniquevmname
 	data:    ProvisioningState               :Succeeded
 	data:    Name                            :myuniquevmname
-	data:    Location                        :chinanorth
-	data:    FQDN                            :myuni-westu-1432328437727-pip.chinanorth.cloudapp.azure.com
+	data:    Location                        :westus
+	data:    FQDN                            :myuni-westu-1432328437727-pip.westus.cloudapp.azure.com
 	data:    Type                            :Microsoft.Compute/virtualMachines
 	data:
 	data:    Hardware Profile:
@@ -126,27 +148,29 @@
 	data:          MAC Address               :00-0D-3A-31-55-31
 	data:          Provisioning State        :Succeeded
 	data:          Name                      :myuni-westu-1432328437727-nic
-	data:          Location                  :chinanorth
+	data:          Location                  :westus
 	data:            Private IP alloc-method :Dynamic
 	data:            Private IP address      :10.0.1.4
 	data:            Public IP address       :191.239.51.1
-	data:            FQDN                    :myuni-westu-1432328437727-pip.chinanorth.cloudapp.azure.com
+	data:            FQDN                    :myuni-westu-1432328437727-pip.westus.cloudapp.azure.com
 	info:    vm quick-create command OK
 
 你的 VM 已启动并运行，正在等待你进行连接。
 
 ## 连接到 VM
 
-对于 Linux VM，通常使用 **ssh** 进行连接。本主题介绍如何使用用户名和密码连接到 VM；若要使用公钥和私钥对与 VM 通信，请参阅[如何在 Azure 上通过 Linux 使用 SSH](/documentation/articles/virtual-machines-linux-use-ssh-key)。
+对于 Linux VM，通常使用 **ssh** 进行连接。
+
+> [AZURE.NOTE]本主题介绍如何使用用户名和密码连接到 VM；若要使用公钥和私钥对与 VM 通信，请参阅[如何在 Azure 上通过 Linux 使用 SSH](/documentation/articles/virtual-machines-linux-use-ssh-key)。你可以通过使用 `azure vm reset-access` 命令完全重置 **SSH** 访问权限、添加或删除用户，或者添加公钥文件以确保安全访问，来修改使用 `azure vm quick-create` 命令创建的 VM 的 **SSH** 连接。为简洁起见，本文对 **SSH** 使用用户名和密码。
 
 如果你不熟悉如何使用 **ssh** 进行连接，请注意，该命令采用以下形式：`ssh <username>@<publicdnsaddress> -p <the ssh port>`。在本示例中，我们使用前一步的用户名和密码，并使用端口 22，该端口是默认的 **ssh** 端口。
 
-	ssh ops@myuni-westu-1432328437727-pip.chinanorth.cloudapp.azure.com -p 22
-	The authenticity of host 'myuni-westu-1432328437727-pip.chinanorth.cloudapp.azure.com (191.239.51.1)' can't be established.
+	ssh ops@myuni-westu-1432328437727-pip.westus.cloudapp.azure.com -p 22
+	The authenticity of host 'myuni-westu-1432328437727-pip.westus.cloudapp.azure.com (191.239.51.1)' can't be established.
 	ECDSA key fingerprint is bx:xx:xx:xx:xx:xx:xx:xx:xx:x:x:x:x:x:x:xx.
 	Are you sure you want to continue connecting (yes/no)? yes
-	Warning: Permanently added 'myuni-westu-1432328437727-pip.chinanorth.cloudapp.azure.com,191.239.51.1' (ECDSA) to the list of known hosts.
-	ops@myuni-westu-1432328437727-pip.chinanorth.cloudapp.azure.com's password:
+	Warning: Permanently added 'myuni-westu-1432328437727-pip.westus.cloudapp.azure.com,191.239.51.1' (ECDSA) to the list of known hosts.
+	ops@myuni-westu-1432328437727-pip.westus.cloudapp.azure.com's password:
 	Welcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.16.0-37-generic x86_64)
 
 	 * Documentation:  https://help.ubuntu.com/
@@ -283,7 +307,7 @@
 
 ## 后续步骤
 
-请记住，即使重新启动 VM，你的新磁盘通常也无法供 VM 使用，除非你将该信息写入 [fstab](http://en.wikipedia.org/wiki/Fstab) 文件。
+请记住，即使重新启动 VM，你的新磁盘通常也无法供 VM 使用，除非你将该信息写入 [fstab](http://zh.wikipedia.org/wiki/Fstab) 文件。如果需要，你可以再添加几个磁盘并[配置 RAID](/documentation/articles/virtual-machines-linux-configure-raid)。
 
 若要了解有关 Azure 上的 Linux 的详细信息，请参阅：
 
@@ -293,9 +317,6 @@
 
 - [使用适用于 Linux 的 Azure CustomScript 扩展部署 LAMP 应用程序](/documentation/articles/virtual-machines-linux-script-lamp)
 
-- [关于 Azure VM 配置设置](http://msdn.microsoft.com/zh-cn/library/azure/dn763935.aspx)
-
 - [Azure 上用于 Linux 的 Docker 虚拟机扩展](/documentation/articles/virtual-machines-docker-vm-extension)
- 
 
-<!---HONumber=70-->
+<!---HONumber=Mooncake_1221_2015-->

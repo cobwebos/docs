@@ -10,23 +10,23 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="09/01/2015"
+	ms.date="11/12/2015"
 	wacn.date=""/>
 
 # Azure 虚拟机中的 SQL Server 概述
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍如何使用经典部署模型创建资源。
-
 ## 入门
 你可以使用各种配置（从单一数据库服务器到多计算机配置）通过 AlwaysOn 可用性组和 Azure 虚拟网络托管 [Azure 虚拟机中的 SQL Server](http://azure.microsoft.com/services/virtual-machines/sql-server/)。
 
->[AZURE.NOTE]在 Azure VM 中运行 SQL Server 是在 Azure 中存储关系数据的一个选项。此外，还可以使用 Azure SQL 数据库服务。有关详细信息，请参阅[了解 Azure SQL 数据库和 Azure VM 中的 SQL Server](/documentation/articles/data-management-azure-sql-database-and-sql-server-iaas)。
+>[AZURE.NOTE]在 Azure VM 中运行 SQL Server 是在 Azure 中存储关系数据的一个选项。此外，还可以使用 Azure SQL 数据库服务。有关详细信息，请参阅[了解 Azure SQL 数据库和 Azure VM 中的 SQL Server](../sql-database/data-management-azure-sql-database-and-sql-server-iaas.md)。
 
-若要在 Azure 中创建 SQL Server 虚拟机，你必须首先获取 Azure 平台订阅。你可以在 [购买选项](http://azure.microsoft.com/pricing/purchase-options/)中购买 Azure 订阅。若要免费试用，请访问 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+若要在 Azure 中创建 SQL Server 虚拟机，你必须首先获取 Azure 平台订阅。你可以在[购买选项](http://azure.microsoft.com/pricing/purchase-options/)中购买 Azure 订阅。若要免费试用，请访问 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### 在单个 VM 上部署 SQL Server 实例
 
 注册订阅后，在 Azure 中部署 SQL Server 虚拟机的最简单方法是[在 Azure 管理门户中预配 SQL Server 计算机库映像](/documentation/articles/virtual-machines-provision-sql-server)。这些映像包括 VM 定价中的 SQL Server 许可。
+
+>[AZURE.NOTE]使用[新门户](https://manage.windowsazure.cn)预配和管理 SQL Server 虚拟机。它默认为使用高级存储，并提供自动修补、自动备份和 AlwaysOn 配置。
 
 下表提供了虚拟机库中提供的 SQL Server 映像的矩阵。
 
@@ -40,13 +40,14 @@
 |SQL Server 2014 SP1|Windows Server 2012 R2|Enterprise、Standard、Web|
 |SQL Server 2016 CTP|Windows Server 2012 R2|计算|
 
->[AZURE.NOTE]用于数据仓库和事务工作负荷的虚拟机库映像（未显示在上面）已弃用并且将很快从库中删除。请使用上表中的标准映像，并按照 [Azure 虚拟机中 SQL Server 的性能最佳实践](/documentation/articles/virtual-machines-sql-server-performance-best-practices)中的建议优化特定工作负荷的性能。
+>[AZURE.NOTE]用于数据仓库和事务工作负荷的虚拟机库映像（未显示在上面）已弃用并且将很快从库中删除。请使用上一个表中的标准映像，并针对特定工作负荷进行性能优化。
 
-除了这些预配置的映像外，你还可以[创建不预装 SQL Server 的 Azure 虚拟机](/documentation/articles/virtual-machines-windows-tutorial)。可以安装你有许可证的 SQL Server 的任何实例。可使用 [Azure 上通过软件保障实现的许可移动性](/pricing/license-mobility/)将许可证迁移到 Azure，以便在 Azure 虚拟机中运行 SQL Server。在这种情况下，你只需为与虚拟机关联的 Azure 计算和存储[成本](/pricing/details/virtual-machines)付费。
+除了这些预配置的映像外，你还可以[创建不预装 SQL Server 的 Azure 虚拟机](/documentation/articles/virtual-machines-windows-tutorial)。可以安装你有许可证的 SQL Server 的任何实例。可使用 [Azure 上通过软件保障实现的许可移动性](http://azure.microsoft.com/pricing/license-mobility/)将许可证迁移到 Azure，以便在 Azure 虚拟机中运行 SQL Server。在这种情况下，你只需为与虚拟机关联的 Azure 计算和存储[成本](http://azure.microsoft.com/pricing/details/virtual-machines)付费。
 
-在这些早期预配和配置阶段，常见的任务包括：
+为了确定 SQL Server 映像的最佳虚拟机配置设置，请查看 [Azure 虚拟机中 SQL Server 的性能最佳实践](/documentation/articles/virtual-machines-sql-server-performance-best-practices)。对于生产工作负荷，**DS3** 是 SQL Server Enterprise 版建议的最小虚拟机大小，**DS2** 是标准版建议的最小虚拟机大小。
 
-- [查看 Azure VM 中 SQL Server 的性能最佳实践](/documentation/articles/virtual-machines-sql-server-performance-best-practices)
+除了查看性能最佳实践外，其他初始任务包括以下项：
+
 - [查看 Azure VM 中 SQL Server 的安全最佳实践](/documentation/articles/virtual-machines-sql-server-security-considerations)
 - [设置连接](/documentation/articles/virtual-machines-sql-server-connectivity)
 
@@ -70,7 +71,7 @@
 ## 备份和还原
 对于本地数据库，Azure 可以充当用于存储 SQL Server 备份文件的辅助数据中心。有关备份与还原选项的概述，请参阅 [Azure 虚拟机中 SQL Server 的备份和还原](/documentation/articles/virtual-machines-sql-server-backup-and-restore)。
 
-[SQL Server 备份到 URL](https://msdn.microsoft.com/zh-cn/library/dn435916.aspx) 将 Azure 备份文件存储在 Azure Blob 存储中。[SQL Server 托管备份](https://msdn.microsoft.com/zh-cn/library/dn449496.aspx)允许你在 Azure 中计划备份和保留期。这些服务可用于本地 SQL Server 实例或 Azure VM 上运行的 SQL Server。Azure VM 还可以利用 SQL Server 的[自动备份](virtual-machines-sql-server-automated-backup.md)和[自动修补](/documentation/articles/virtual-machines-sql-server-automated-patching)。
+[SQL Server 备份到 URL](https://msdn.microsoft.com/zh-cn/library/dn435916.aspx) 将 Azure 备份文件存储在 Azure Blob 存储中。[SQL Server 托管备份](https://msdn.microsoft.com/zh-cn/library/dn449496.aspx)允许你在 Azure 中计划备份和保留期。这些服务可用于本地 SQL Server 实例或 Azure VM 上运行的 SQL Server。Azure VM 还可以利用 SQL Server 的[自动备份](/documentation/articles/virtual-machines-sql-server-automated-backup)和[自动修补](/documentation/articles/virtual-machines-sql-server-automated-patching)。
 
 ## SQL Server VM 映像配置详细信息
 
@@ -107,7 +108,7 @@
 |Data Quality Services|已安装（仅限 SQL Server 2012 或更高版本）|
 |Master Data Services|已安装（仅限 SQL Server 2012 或更高版本）。需要[其他配置和组件](https://msdn.microsoft.com/zh-cn/library/ee633752.aspx)
 |PowerPivot for SharePoint|可用（仅限 SQL Server 2012 或更高版本）。需要其他配置和组件（包括 SharePoint）|
-|分布式重播客户端|可用（仅限 SQL Server 2012 或更高版本），但未安装。请参阅[从平台提供的 SQL Server 映像运行 SQL Server 安装程序](#run-sql-server-setup-from-the-platform-provided-sql-server-image)|
+|分布式重播客户端|可用（仅限 SQL Server 2012 或更高版本），但未安装。请参阅[从平台提供的 SQL Server 映像运行 SQL Server 安装程序](/documentation/articles/#run-sql-server-setup-from-the-platform-provided-sql-server-image)|
 |工具|所有工具，其中包括 SQL Server Management Studio、SQL Server 配置管理器、Business Intelligence Development Studio、SQL Server 安装程序、客户端工具连接、客户端工具 SDK 和 SQL 客户端连接 SDK，以及升级和迁移工具，如数据层应用程序 (DAC)、备份、还原、附加和分离|
 |SQL Server 联机丛书|已安装，但需要使用帮助查看器配置|
 
@@ -118,7 +119,7 @@
 |功能|配置|
 |---|---|
 |实例|包含 SQL Server 数据库引擎的默认（未命名）实例，该实例仅侦听共享内存协议|
-|身份验证|默认情况下，Azure 在 SQL Server 虚拟机安装期间选择 Windows 身份验证。如果你要使用 sa 登录名或要创建新的 SQL Server 帐户，则需要更改身份验证模式。有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的安全注意事项](/documentation/articles/virtual-machines-sql-server-security-considerations)。|
+|身份验证|默认情况下，Azure 在 SQL Server 虚拟机安装期间选择 Windows 身份验证。如果你要使用 sa 登录名或要创建新的 SQL Server 帐户，则需要更改身份验证模式。有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的安全注意事项](virtual-machines-sql-server-security-considerations)。|
 |sysadmin|安装了虚拟机的 Azure 用户最初是 SQL Server sysadmin 固定服务器角色的唯一成员|
 |内存|数据库引擎内存将设置为动态内存配置|
 |已包含数据库身份验证|关闭|
@@ -127,7 +128,7 @@
 
 ### 客户体验改善计划 (CEIP)
 
-[客户体验改善计划 (CEIP)](https://technet.microsoft.com/zh-cn/library/cc730757.aspx) 已启用。可以通过使用“SQL Server 错误和使用情况报告”实用工具来禁用 CEIP。若要启动“SQL Server 错误和使用情况报告”实用工具，请在“开始”菜单上依次单击“所有程序”、Microsoft SQL Server 版本、“配置工具”和“SQL Server 错误和使用情况报告”。如果你不想使用已启用 CEIP 的 SQL Server 实例，则还可以考虑将你自己的虚拟机映像部署到 Azure。 有关详细信息，请参阅[创建和上载包含 Windows Server 操作系统的虚拟硬盘](/documentation/articles/virtual-machines-create-upload-vhd-windows-server)。
+[客户体验改善计划 (CEIP)](https://technet.microsoft.com/library/cc730757.aspx) 已启用。可以通过使用“SQL Server 错误和使用情况报告”实用工具来禁用 CEIP。若要启动“SQL Server 错误和使用情况报告”实用工具，请在“开始”菜单上依次单击“所有程序”、Microsoft SQL Server 版本、“配置工具”和“SQL Server 错误和使用情况报告”。如果你不想使用已启用 CEIP 的 SQL Server 实例，则还可以考虑将你自己的虚拟机映像部署到 Azure。有关详细信息，请参阅[创建和上载包含 Windows Server 操作系统的虚拟硬盘](/documentation/articles/virtual-machines-create-upload-vhd-windows-server)。
 
 ## 从平台提供的 SQL Server 映像运行 SQL Server 安装程序
 
@@ -141,6 +142,6 @@
 - [将数据库迁移到 Azure VM 上的 SQL Server](/documentation/articles/virtual-machines-migrate-onpremises-database)
 - [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](/documentation/articles/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions)
 - [Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略](/documentation/articles/virtual-machines-sql-server-application-patterns-and-development-strategies)
-- [Azure 虚拟机](virtual-machines-about.md) 
+- [Azure 虚拟机](/documentation/articles/virtual-machines-about) 
 
-<!---HONumber=76-->
+<!---HONumber=Mooncake_1221_2015-->

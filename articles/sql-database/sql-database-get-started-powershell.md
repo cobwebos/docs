@@ -9,7 +9,7 @@
 
 <tags
     ms.service="sql-database"
-    ms.date="10/08/2015"
+    ms.date="10/20/2015"
     wacn.date=""/>
 
 # 使用 PowerShell 创建 SQL 数据库
@@ -17,7 +17,7 @@
 **单一数据库**
 
 > [AZURE.SELECTOR]
-- [Azure Preview Portal](/documentation/articles/sql-database-get-started)
+- [Azure 预览门户](/documentation/articles/sql-database-get-started)
 - [C#](/documentation/articles/sql-database-get-started-csharp)
 - [PowerShell](/documentation/articles/sql-database-get-started-powershell)
 
@@ -40,22 +40,22 @@
 
 你必须先建立与 Azure 帐户的访问连接，才能运行以下 cmdlet，并且会出现一个要求你输入凭据的登录屏幕。使用登录 Azure 门户时所用的相同电子邮件和密码。
 
-	Add-AzureAccount
+	Add-AzureRMAccount
 
 成功登录后，你会在屏幕上看到一些信息，其中包括你登录时使用的 ID，以及你有权访问的 Azure 订阅。
 
 
 ### 选择 Azure 订阅
 
-若要选择订阅，你需要提供订阅 ID。你可以从前面的步骤中复制该信息，或者，如果你有多个订阅，你可以运行 **Get-AzureSubscription** cmdlet，然后从结果集中复制所需的订阅信息。获得订阅以后，你可以运行以下 cmdlet：
+若要选择订阅，你需要提供订阅 ID。你可以从前面的步骤中复制该信息，或者，如果你有多个订阅，你可以运行 **Get-AzureRMSubscription** cmdlet，然后从结果集中复制所需的订阅信息。获得订阅以后，你可以运行以下 cmdlet：
 
-	Select-AzureSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
+	Select-AzureRMSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
 
-成功运行 **Select-AzureSubscription** 后，将返回到 PowerShell 提示符处。如果你有多个订阅，可以运行 **Get-AzureSubscription** 并验证要使用的订阅显示 **IsCurrent: True**。
+成功运行 **Select-AzureRMSubscription** 后，将返回到 PowerShell 提示符处。如果你有多个订阅，可以运行 **Get-AzureRMSubscription** 并验证要使用的订阅是否显示 **IsCurrent: True**。
 
 ## 创建资源组、服务器和防火墙规则
 
-现在，你已经有了针对所选 Azure 订阅运行 cmdlet 所需的访问权限，因此下一步是建立一个资源组，使其中包含创建数据库所需的服务器。你可以编辑下一个命令，以便使用所选择的有效位置。运行 **(Get-AzureLocation | where-object {$\_.Name -eq "Microsoft.Sql/servers" }).Locations**，以便获取有效位置的列表。
+现在，你已经有了针对所选 Azure 订阅运行 cmdlet 所需的访问权限，因此下一步是建立一个资源组，使其中包含创建数据库所需的服务器。你可以编辑下一个命令，以便使用所选择的有效位置。运行 **(Get-AzureRMLocation | where-object {$\_.Name -eq "Microsoft.Sql/servers" }).Locations**，以便获取有效位置的列表。
 
 运行以下命令来创建新资源组：
 
@@ -84,7 +84,7 @@ SQL 数据库在 Azure SQL 数据库服务器中创建。运行 **New-AzureRMSql
 
 若要允许其他 Azure 服务访问该服务器，请添加一个防火墙规则并将 tartIpAddress 和 EndIpAddress 都设置为 0.0.0.0。请注意，这会允许来自任何 Azure 订阅的 Azure 流量访问该服务器。
 
-有关详细信息，请参阅 [Azure SQL 数据库防火墙](https://msdn.microsoft.com/library/azure/ee621782.aspx)。
+有关详细信息，请参阅 [Azure SQL 数据库防火墙](/documentation/articles/sql-database-firewall-configure)。
 
 
 ## 创建 SQL 数据库
@@ -116,8 +116,8 @@ SQL 数据库在 Azure SQL 数据库服务器中创建。运行 **New-AzureRMSql
     $DatabasePerfomanceLevel = "S1"
     
     
-    Add-AzureAccount
-    Select-AzureSubscription -SubscriptionId $SubscriptionId
+    Add-AzureRMAccount
+    Select-AzureRMSubscription -SubscriptionId $SubscriptionId
     
     $ResourceGroup = New-AzureRMResourceGroup -Name $ResourceGroupName -Location $Location
     
@@ -140,4 +140,4 @@ SQL 数据库在 Azure SQL 数据库服务器中创建。运行 **New-AzureRMSql
 
 - [Azure SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

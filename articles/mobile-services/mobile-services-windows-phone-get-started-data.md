@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="07/25/2015" 
+	ms.date="11/11/2015" 
 	wacn.date=""/>
 
 
@@ -25,7 +25,7 @@
 
 + Visual Studio 2012 Express for Windows Phone 8，以及 Windows 8 上运行的 [Windows Phone 8 SDK]。若要在完成本教程后创建一个 Windows Phone 8.1 应用程序，您必须使用 Visual Studio 2013 Update 2 或更高版本。 
 
-+ 一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 <a href="/pricing/1rmb-trial/ target="\_blank">Azure 试用</a>。
++ 一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 <a href="/pricing/1rmb-trial/>Azure 试用</a>。
 
 ##<a name="download-app"></a>下载 GetStartedWithData 项目
 
@@ -88,12 +88,12 @@
 
   	这将创建用于访问移动服务的 **MobileServiceClient** 的新实例。
 
-7. 在 MainPage.xaml.cs 文件中，添加或取消注释以下 `using` 语句：
+6. 在 MainPage.cs 文件中，添加或取消注释以下 `using` 语句：
 
        	using Microsoft.WindowsAzure.MobileServices;
 		using Newtonsoft.Json;
 
-8. 在同一个文件中，将 **TodoItem** 类定义替换为以下代码：
+7. 在此 DataModel 文件夹中，将 **TodoItem** 类定义替换为以下代码：
 
         public class TodoItem
         {
@@ -157,13 +157,13 @@
 本教程演示了有关如何使 Windows Phone 8 应用程序处理移动服务中的数据的基础知识。建议你接下来阅读下列其他主题之一：
 
 * [向应用程序添加身份验证](/documentation/articles/mobile-services-windows-phone-get-started-users)
-<br/>了解如何对应用程序用户进行身份验证。
+  <br/>了解如何对应用程序用户进行身份验证。
 
 * [向应用程序添加推送通知](/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push)
-<br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
+  <br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
  
 * [移动服务 C# 操作方法概念性参考 ](/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library)
-<br/>了解有关如何将移动服务与 .NET 一起使用的详细信息。
+  <br/>了解有关如何将移动服务与 .NET 一起使用的详细信息。
  
 <!-- Anchors. -->
 [Download the Windows Phone 8 app project]: #download-app
@@ -189,4 +189,4 @@
 [开发人员代码示例站点]: http://go.microsoft.com/fwlink/p/?LinkId=271146
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

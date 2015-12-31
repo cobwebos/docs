@@ -1,6 +1,6 @@
 <properties
-	pageTitle="SharePoint Intranet 场工作负荷阶段 1：配置 Azure"
-	description="在部署仅限 Intranet 的 SharePoint 2013 场（在 Azure 基础结构服务中通过 SQL Server AlwaysOn 可用性组进行）的这个第一阶段，你将创建 Azure 虚拟网络和其他 Azure 基础结构元素。"
+	pageTitle="SharePoint Server 2013 场（阶段 1）| Microsoft Azure"
+	description="在 Azure 的 SharePoint Server 2013 场阶段 1 中创建虚拟网络和其他 Azure 基础结构元素。"
 	documentationCenter=""
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
@@ -10,12 +10,14 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="07/21/2015"
+	ms.date="10/20/2015"
 	wacn.date=""/>
 
 # SharePoint Intranet 场工作负荷阶段 1：配置 Azure
 
-在部署仅限 Intranet 的 SharePoint 2013 场（在 Azure 基础结构服务中通过 SQL Server AlwaysOn 可用性组进行）的这个阶段，你将构建出 Azure 网络和存储基础结构。你必须在转到[阶段 2](virtual-machines-workload-intranet-sharepoint-phase2) 之前完成此阶段。请参阅[在 Azure 中通过 SQL Server AlwaysOn 可用性组部署 SharePoint](/documentation/articles/virtual-machines-workload-intranet-sharepoint-overview) 以了解所有阶段的相关信息。
+[AZURE.INCLUDE [learn-about-deployment-models-classic-include](../includes/learn-about-deployment-models-classic-include.md)]资源管理器部署模型。
+
+在部署仅限 Intranet 的 SharePoint 2013 场（在 Azure 基础结构服务中通过 SQL Server AlwaysOn 可用性组进行）的这个阶段，你将在 Microsoft Azure 服务管理中构建出 Azure 网络和存储基础结构。你必须在转到[阶段 2](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase2) 之前完成此阶段。请参阅[在 Azure 中通过 SQL Server AlwaysOn 可用性组部署 SharePoint](/documentation/articles/virtual-machines-workload-intranet-sharepoint-overview) 以了解所有阶段的相关信息。
 
 必须使用这些基本网络组件设置 Azure：
 
@@ -74,7 +76,7 @@
 
 若要使用表 V、S、D 和 L 中的设置创建虚拟网络，请使用[使用配置表创建跨界虚拟网络](/documentation/articles/virtual-machines-workload-deploy-vnet-config-tables)中的说明。
 
-> [AZURE.NOTE]此过程将指导你逐步完成创建使用站点到站点 VPN 连接的虚拟网络。有关将 ExpressRoute 用于站点到站点连接的信息，请参阅 [ExpressRoute 技术概述](/documentation/articles/expressroute-introduction)。
+> [AZURE.NOTE]此过程将指导你逐步完成创建使用站点到站点 VPN 连接的虚拟网络。有关将 ExpressRoute 用于站点到站点连接的信息，请参阅 [ExpressRoute 技术概述](../expressroute/expressroute-introduction.md)。
 
 创建 Azure 虚拟网络后，Azure 管理门户将确定以下项：
 
@@ -83,13 +85,13 @@
 
 若要在创建虚拟网络后，在 Azure 管理门户中查看这些项，请单击**“网络”**，单击虚拟网络的名称，然后单击**“仪表板”**菜单选项。
 
-接下来，你将配置虚拟网络网关，以便创建安全的站点到站点 VPN 连接。有关说明，请参阅[在管理门户中配置虚拟网络网关](/documentation/articles/vpn-gateway-configure-vpn-gateway-mp)。
+接下来，你将配置虚拟网络网关，以便创建安全的站点到站点 VPN 连接。有关说明，请参阅[在管理门户中配置虚拟网络网关](../vpn-gateway/vpn-gateway-configure-vpn-gateway-mp.md)。
 
-接下来，在新的虚拟网络与本地 VPN 设备之间创建站点到站点 VPN 连接。有关详细信息，请参阅[在管理门户中配置虚拟网络网关](/documentation/articles/vpn-gateway-configure-vpn-gateway-mp)中的说明。
+接下来，在新的虚拟网络与本地 VPN 设备之间创建站点到站点 VPN 连接。有关详细信息，请参阅[在管理门户中配置虚拟网络网关](../vpn-gateway/vpn-gateway-configure-vpn-gateway-mp.md)中的说明。
 
 接下来，请确保可从你的本地网络访问虚拟网络的地址空间。这通常是通过将与虚拟网络地址空间对应的路由添加到你的 VPN 设备，然后将该路由播发到你的组织网络的其余路由基础结构来完成的。与你的 IT 部门协作来确定执行此操作的方法。
 
-接下来，请按[如何安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell) 中的说明在本地计算机上安装 Azure PowerShell。打开 Azure PowerShell 命令提示符。
+接下来，请按[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure) 中的说明在本地计算机上安装 Azure PowerShell。打开 Azure PowerShell 命令提示符。
 
 首先，使用以下命令选择相应的 Azure 订阅。将引号内的所有内容（包括 < and > 字符）替换为相应的名称。
 
@@ -161,10 +163,10 @@
 
 [具有 SQL Server AlwaysOn 的 SharePoint 信息图](http://go.microsoft.com/fwlink/?LinkId=394788)
 
-[适用于 SharePoint 2013 的 Windows Azure 体系结构](https://technet.microsoft.com/zh-cn/library/dn635309.aspx)
+[适用于 SharePoint 2013 的 Microsoft Azure 体系结构](https://technet.microsoft.com/library/dn635309.aspx)
 
 [Azure 基础结构服务实施准则](/documentation/articles/virtual-machines-infrastructure-services-implementation-guidelines)
 
 [Azure 基础结构服务工作负荷：高可用性业务线应用程序](/documentation/articles/virtual-machines-workload-high-availability-lob-application)
 
-<!---HONumber=70-->
+<!---HONumber=Mooncake_1221_2015-->

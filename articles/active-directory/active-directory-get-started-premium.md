@@ -3,30 +3,29 @@
 	description="本主题介绍如何注册 Azure Active Directory Premium Edition。"
 	services="active-directory"
 	documentationCenter=""
-	authors="MarkusVi"
-	writer="markvi"
+	authors="markusvi"
 	manager="stevenpo" 
 	editor="LisaToft"/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="08/14/2015"
+	ms.date="10/30/2015"
 	wacn.date=""/>
 
 # Azure Active Directory 高级版入门
 
-Azure Active Directory 有三个版本：免费版 (Free)、基本版 (Basic) 和高级版 (Premium)。Azure 或 Office 365 订阅随附了免费版。可以通过 [Microsoft 企业协议](https://www.microsoft.com/zh-CN/licensing/licensing-programs/enterprise.aspx)或[开放批量许可](https://www.microsoft.com/zh-CN/licensing/licensing-programs/open-license.aspx)计划获取基本和高级版。Azure 和 Office 365 订阅者还可以在线购买 Active Directory Premium。[在此处登录](https://portal.office.com/Commerce/Catalog.aspx)进行购买。
+Azure Active Directory 有三个版本：免费版 (Free)、基本版 (Basic) 和高级版 (Premium)。Azure 或 Office 365 订阅随附了免费版。可以通过 [Microsoft 企业协议](https://www.microsoft.com/zh-cn/licensing/licensing-programs/enterprise.aspx)或[开放批量许可](https://www.microsoft.com/zh-cn/licensing/licensing-programs/open-license.aspx)计划获取基本和高级版。Azure 和 Office 365 订阅者还可以在线购买 Active Directory Premium。[在此处登录](https://portal.office.com/Commerce/Catalog.aspx)进行购买。
 
 > [AZURE.NOTE]
-> 在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure Active Directory 高级和基本版。由中国 21Vianet 运营的 Microsoft Azure 服务目前不支持 Azure Active Directory 高级和基本版。有关详细信息，请在 [Azure Active Directory 论坛](http://feedback.azure.com/forums/169401-azure-active-directory)与我们联系。
+在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure Active Directory 高级和基本版。由中国 21Vianet 运营的 Microsoft Azure 服务目前不支持 Azure Active Directory 高级和基本版。有关详细信息，请在 [Azure Active Directory 论坛](http://feedback.azure.com/forums/169401-azure-active-directory)与我们联系。
 
-**企业移动套件**中也包含了 Azure Active Directory Premium。通过企业移动套件，组织能够根据一个许可计划，以经济高效的方式结合使用 Windows Intune、Azure 权限管理和 Active Directory Premium 服务。有关详细信息，请参阅[企业移动套件](https://www.microsoft.com/zh-CN/server-cloud/enterprise-mobility/overview.aspx)网站。
+**企业移动套件**中也包含了 Azure Active Directory Premium。通过企业移动套件，组织能够根据一个许可计划，以经济高效的方式结合使用 Windows Intune、Azure 权限管理和 Active Directory Premium 服务。有关详细信息，请参阅[企业移动套件](https://www.microsoft.com/zh-cn/server-cloud/enterprise-mobility/overview.aspx)网站。
 
 若要立即开始使用 Azure Active Directory Premium 功能，请按照以下步骤操作。这些步骤也适用于 Azure Active Directory 基本版。
 
 ## 步骤 1：注册 Active Directory Premium
 
-若要注册，请参阅[批量许可](http://www.microsoft.com/zh-CN/licensing/how-to-buy/how-to-buy.aspx)网站。
+若要注册，请参阅[批量许可](http://www.microsoft.com/zh-cn/licensing/how-to-buy/how-to-buy.aspx)网站。
 
 ## 步骤 2：激活许可计划
 
@@ -119,4 +118,4 @@ Azure Active Directory 有三个版本：免费版 (Free)、基本版 (Basic) �
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

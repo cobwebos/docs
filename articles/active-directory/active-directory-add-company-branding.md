@@ -3,20 +3,20 @@
 	description="本主题介绍组织如何在它们管理的所有网站和服务上应用一致的外观，使得最终用户在使用这些站点时，不会感到困惑。" 
 	services="active-directory" 
 	documentationCenter="" 
-	authors="MarkusVi"
+	authors="markusvi"
 	manager="stevenpo"
 	editor="LisaToft"/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="08/11/2015"
+	ms.date="10/30/2015" 
 	wacn.date=""/>
 
 # 向“登录”和“访问面板”页添加公司品牌
 
 > [AZURE.NOTE]
-> 
-- 只有在升级到 Azure Active Directory 高级或基本版后，才可以使用公司品牌这一功能。有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions)。
+>
+- 只有在升级到 Azure Active Directory 高级或基本版后，才可以使用公司品牌这一功能。有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
 - 在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure Active Directory 高级和基本版。由中国 21Vianet 运营的 Microsoft Azure 服务目前不支持 Azure Active Directory 高级和基本版。有关详细信息，请在 [Azure Active Directory 论坛](http://feedback.azure.com/forums/169401-azure-active-directory)与我们联系。
 
 许多公司想要在他们管理的所有网站和服务上应用一致的外观，使得最终用户在需要使用这些站点时，不会感到困惑。Azure Active Directory 提供了此功能，它允许你自定义以下面向最终用户的网页的外观，使其包含你公司的徽标和颜色方案：
@@ -35,9 +35,9 @@
 
 ### 用户何时将看到经过品牌打造的登录页？
 
-当用户使用租户特定的 URL（如 https://outlook.com/<i>contoso</i>.com 或 https://mail.<i>contoso</i>.com）（如果你已创建 CNAME）访问服务时，他们将看到经过品牌打造的登录页。
+当用户使用租户特定的 URL（如 https://outlook.com/**contoso**.com 或 https://mail.**contoso**.com ） （如果你已创建 CNAME）访问服务时，他们将看到经过品牌打造的登录页。
 
-如果他们使用非租户特定的 URL（如 https://partner.outlook.cn） 访问服务，则将看到未经品牌打造的登录页。用户输入了其用户 ID 或选择了用户磁贴后，登录页将进行刷新以显示你的品牌。
+如果他们使用非租户特定的 URL（如 https://mail.office365.com ） 访问服务，则将看到未经品牌打造的登录页。用户输入了其用户 ID 或选择了用户磁贴后，登录页将进行刷新以显示你的品牌。
 
 > [AZURE.NOTE]
 > 
@@ -76,7 +76,8 @@
 大图/背景色 | 显示在页面左侧。替换用户要登录到的目标站点通常会显示的图像。在连接的带宽较低或屏幕非常窄时，可能会显示背景色来代替大图。
 登录页文本 | 当你需要在用户使用其工作或学校帐户登录前，向用户传达有用的信息时，此文本将显示在页脚的上方。例如，你可能想要提供技术支持的电话号码或法律声明。
 
-> [AZURE.NOTE]所有元素都是可选的。例如，如果你指定了横幅徽标，但没有指定大图，则“登录”页将显示你的徽标和目标站点的插图（即 Office 365 加利福尼亚州高速公路图像）。
+> [AZURE.NOTE]
+所有元素都是可选的。例如，如果你指定了横幅徽标，但没有指定大图，则“登录”页将显示你的徽标和目标站点的插图（即 Office 365 加利福尼亚州高速公路图像）。
 
 你还可以本地化此页上的所有元素。在配置“默认”的一组自定义元素后，便可以针对不同的区域设置配置其他版本。你还可以混搭各种元素。例如，你可以：
 
@@ -128,7 +129,7 @@
 
 从你的目录中删除公司品牌
 
-1. 在 [Azure 管理门户](https://manage.windowsazure.cn)的“配置”选项卡下，选择“自定义品牌”。
+1. 在 Azure 管理门户的“配置”选项卡下，选择“自定义品牌”。[](https://manage.windowsazure.cn)
 2. 在“自定义品牌”页上，选择“编辑现有品牌设置”，然后转到下一页。
 3. 根据要删除哪些元素，执行以下一项或多项操作：
 	1. 对于“横幅徽标”，单击“删除上载的徽标”复选框。
@@ -181,4 +182,4 @@ Name | 说明 | 约束 | 建议
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

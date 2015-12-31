@@ -43,18 +43,18 @@
 - [Azure SQL 数据库服务](http://azure.microsoft.com/services/sql-database/)。
 
 
-- Microsoft SQL Server 中的[扩展事件](http://msdn.microsoft.com/library/bb630282.aspx)。
+- Microsoft SQL Server 中的[扩展事件](http://msdn.microsoft.com/zh-cn/library/bb630282.aspx)。
  - 有关扩展事件的许多文档都适用于 SQL Server 和 SQL 数据库。
 
 
 当你选择事件文件作为[目标](#AzureXEventsTargets)时，事先熟悉以下产品会很有帮助：
 
 
-- [Azure 存储空间服务](http://azure.microsoft.com/services/storage/)
+- [Azure 存储服务](http://azure.microsoft.com/services/storage/)
 
 
 - PowerShell
- - [对 Azure 存储空间使用 Azure PowerShell](/documentation/articles/storage-powershell-guide-full) - 提供有关 PowerShell 和 Azure 存储空间服务的综合信息。
+ - [对 Azure 存储空间使用 Azure PowerShell](/documentation/articles/storage-powershell-guide-full) - 提供有关 PowerShell 和 Azure 存储服务的综合信息。
 
 
 ## 代码示例
@@ -69,17 +69,17 @@
 
 
 - [SQL 数据库中扩展事件的事件文件目标代码](/documentation/articles/sql-database-xevent-code-event-file)
- - 阶段 1 是 PowerShell，用于创建 Azure 存储空间容器。
- - 阶段 2 是 Transact-SQL，它使用 Azure 存储空间容器。
+ - 阶段 1 是 PowerShell，用于创建 Azure 存储容器。
+ - 阶段 2 是 Transact-SQL，它使用 Azure 存储容器。
 
 
 ## Transact-SQL 的差异
 
 
-- 当你在 SQL Server 上执行 [CREATE EVENT SESSION](http://msdn.microsoft.com/library/bb677289.aspx) 命令时，请使用 **ON SERVER** 子句。但在 SQL 数据库上，应改为使用 **ON DATABASE** 子句。
+- 当你在 SQL Server 上执行 [CREATE EVENT SESSION](http://msdn.microsoft.com/zh-cn/library/bb677289.aspx) 命令时，请使用 **ON SERVER** 子句。但在 SQL 数据库上，应改为使用 **ON DATABASE** 子句。
 
 
-- **ON DATABASE** 子句也适用于 [ALTER EVENT SESSION](http://msdn.microsoft.com/library/bb630368.aspx) 和 [DROP EVENT SESSION](http://msdn.microsoft.com/library/bb630257.aspx) Transact-SQL 命令。
+- **ON DATABASE** 子句也适用于 [ALTER EVENT SESSION](http://msdn.microsoft.com/zh-cn/library/bb630368.aspx) 和 [DROP EVENT SESSION](http://msdn.microsoft.com/zh-cn/library/bb630257.aspx) Transact-SQL 命令。
 
 
 - 最佳实践是在 **CREATE EVENT SESSION** 或 **ALTER EVENT SESSION** 语句中包含 **STARTUP\_STATE = ON** 的事件会话选项。
@@ -89,7 +89,7 @@
 ## 新的目录视图
 
 
-扩展事件功能受多个[目录视图](http://msdn.microsoft.com/library/ms174365.aspx)的支持。目录视图告诉你有关当前数据库中用户创建的事件会话的*元数据或定义*的信息。视图不会返回有关活动事件会话的实例的信息。
+扩展事件功能受多个[目录视图](http://msdn.microsoft.com/zh-cn/library/ms174365.aspx)的支持。目录视图告诉你有关当前数据库中用户创建的事件会话的*元数据或定义*的信息。视图不会返回有关活动事件会话的实例的信息。
 
 
 | 目录<br/>视图的名称 | 说明 |
@@ -104,10 +104,10 @@
 在 Microsoft SQL Server 中，类似目录视图的名称包含 *.server\_* 而不是 *.database\_*。名称模式类似于 **sys.server\_event\_%**。
 
 
-## 新的动态管理视图 [(DMV)](http://msdn.microsoft.com/library/ms188754.aspx)
+## 新的动态管理视图 [(DMV)](http://msdn.microsoft.com/zh-cn/library/ms188754.aspx)
 
 
-Azure SQL 数据库具有支持扩展事件的[动态管理视图 (DMV)](http://msdn.microsoft.com/library/bb677293.aspx)。DMV 告诉你有关*活动*事件会话的信息。
+Azure SQL 数据库具有支持扩展事件的[动态管理视图 (DMV)](http://msdn.microsoft.com/zh-cn/library/bb677293.aspx)。DMV 告诉你有关*活动*事件会话的信息。
 
 
 | DMV 的名称 | 说明 |
@@ -138,7 +138,7 @@ Azure SQL 数据库具有支持扩展事件的[动态管理视图 (DMV)](http://
 
 
 
- <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets">
+ <a name="sqlfindseventsactionstargets" id="sqlfindseventsactionstargets"></a>
 
 ## 查找可用的扩展事件、操作和目标
 
@@ -168,7 +168,7 @@ SELECT
 
 
 
-<a name="AzureXEventsTargets" id="AzureXEventsTargets">
+<a name="AzureXEventsTargets" id="AzureXEventsTargets"></a>
 
 &nbsp;
 
@@ -178,12 +178,12 @@ SELECT
 以下是可以从 SQL 数据库上的事件会话捕获结果的目标：
 
 
-- [环形缓冲区目标](http://msdn.microsoft.com/library/ff878182.aspx) - 在内存中短暂保存事件数据。
-- [事件计数器目标](http://msdn.microsoft.com/library/ff878025.aspx) - 统计在扩展事件会话期间发生的所有事件。
-- [事件文件目标](http://msdn.microsoft.com/library/ff878115.aspx) - 将完整缓冲区写入 Azure 存储空间容器。
+- [环形缓冲区目标](http://msdn.microsoft.com/zh-cn/library/ff878182.aspx) - 在内存中短暂保存事件数据。
+- [事件计数器目标](http://msdn.microsoft.com/zh-cn/library/ff878025.aspx) - 统计在扩展事件会话期间发生的所有事件。
+- [事件文件目标](http://msdn.microsoft.com/zh-cn/library/ff878115.aspx) - 将完整缓冲区写入 Azure 存储容器。
 
 
-[Windows 事件跟踪 (ETW)](http://msdn.microsoft.com/library/ms751538.aspx) API 不适用于 SQL 数据库上的扩展事件。
+[Windows 事件跟踪 (ETW)](http://msdn.microsoft.com/zh-cn/library/ms751538.aspx) API 不适用于 SQL 数据库上的扩展事件。
 
 
 ## 限制
@@ -203,10 +203,10 @@ SELECT
 你必须拥有数据库的**控制**权限才能发出 **CREATE EVENT SESSION** 语句。数据库所有者 (dbo) 拥有**控制**权限。
 
 
-### 存储空间容器授权
+### 存储容器授权
 
 
-针对 Azure 存储空间容器生成的 SAS 令牌必须为权限指定 **rwl**。这会提供以下权限：
+针对 Azure 存储容器生成的 SAS 令牌必须为权限指定 **rwl**。这会提供以下权限：
 
 
 - 读取
@@ -232,7 +232,7 @@ SELECT
 ### 网络延迟
 
 
-**事件文件**目标在将数据保存到 Azure 存储空间 Blob 时可能会遇到网络延迟或故障。SQL 数据库中的其他事件可能会延迟，因为它们要等待网络通信完成。这种延迟可能会导致工作负荷变慢。
+**事件文件**目标在将数据保存到 Azure 存储 Blob 时可能会遇到网络延迟或故障。SQL 数据库中的其他事件可能会延迟，因为它们要等待网络通信完成。这种延迟可能会导致工作负荷变慢。
 
 - 若要缓解这种性能风险，请避免在事件会话定义中将 **EVENT\_RETENTION\_MODE** 选项设为 **NO\_EVENT\_LOSS**。
 
@@ -241,15 +241,15 @@ SELECT
 
 
 - [对 Azure 存储空间使用 Azure PowerShell](/documentation/articles/storage-powershell-guide-full)。
-- [Azure 存储 Cmdlet](http://msdn.microsoft.com/library/dn806401.aspx)
+- [Azure 存储 Cmdlet](http://msdn.microsoft.com/zh-cn/library/dn806401.aspx)
 
 
-- [对 Azure 存储空间使用 Azure PowerShell](/documentation/articles/storage-powershell-guide-full) - 提供有关 PowerShell 和 Azure 存储空间服务的综合信息。
+- [对 Azure 存储空间使用 Azure PowerShell](/documentation/articles/storage-powershell-guide-full) - 提供有关 PowerShell 和 Azure 存储服务的综合信息。
 - [如何通过 .NET 使用 Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs)
 
 
-- [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/library/ms189522.aspx)
-- [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/library/bb677289.aspx)
+- [CREATE CREDENTIAL (Transact-SQL)](http://msdn.microsoft.com/zh-cn/library/ms189522.aspx)
+- [CREATE EVENT SESSION (Transact-SQL)](http://msdn.microsoft.com/zh-cn/library/bb677289.aspx)
 
 
 - [Jonathan Kehayias 撰写的有关 Microsoft SQL Server 中扩展事件的博客文章](http://www.sqlskills.com/blogs/jonathan/category/extended-events/)
@@ -261,8 +261,8 @@ SELECT
 <!--
 ('lock_acquired' event.)
 
-- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/zh-cn/library/bb677357.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/zh-cn/library/bb630355.aspx)
 -->
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

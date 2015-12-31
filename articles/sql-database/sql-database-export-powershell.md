@@ -9,8 +9,7 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="10/13/2015"
-	ms.topic="article"
+	ms.date="10/23/2015"
 	wacn.date=""/>
 
 
@@ -24,9 +23,10 @@
 
 本文说明如何使用 PowerShell 导出 Azure SQL 数据库的 BACPAC。
 
-BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息，请参阅[数据层应用程序](https://msdn.microsoft.com/library/ee210546.aspx)中的备份包 (.bacpac)。
+[BACPAC](https://msdn.microsoft.com/zh-cn/library/ee210546.aspx#Anchor_4) 是包含数据库架构和数据的 .bacpac 文件。BACPAC 的主要用例是将数据库从一个服务器移到另一个服务器、[将本地数据库迁移到云](/documentation/articles/sql-database-cloud-migrate)，以及采用开放格式对现有数据库进行存档。
 
-> [AZURE.NOTE]Azure SQL 数据库会自动为每个用户数据库创建备份。有关详细信息，请参阅[业务连续性概述](/documentation/articles/sql-database-business-continuity)。
+> [AZURE.NOTE]BACPAC 不能用于备份和还原操作。Azure SQL 数据库会自动为每个用户数据库创建备份。有关详细信息，请参阅[业务连续性概述](/documentation/articles/sql-database-business-continuity)。
+
 
 BACPAC 导出到 Azure 存储 blob 容器中，你可以在操作成功完成后进行下载。
 
@@ -55,7 +55,7 @@ BACPAC 导出到 Azure 存储 blob 容器中，你可以在操作成功完成后
 
 	Select-AzureSubscription -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
 
-成功运行 **Select-AzureSubscription** 后，将返回到 PowerShell 提示符处。如果你有多个订阅，可以运行 **Get-AzureSubscription** 并验证要使用的订阅显示 **IsCurrent: True**。
+成功运行 **Select-AzureSubscription** 后，将返回到 PowerShell 提示符处。如果你有多个订阅，可以运行 **Get-AzureSubscription** 并验证要使用的订阅是否显示 **IsCurrent: True**。
 
 
 ## 设置适合特定环境的变量
@@ -65,7 +65,7 @@ BACPAC 导出到 Azure 存储 blob 容器中，你可以在操作成功完成后
 将服务器和数据库名称替换为当前存在于你的帐户中的服务器和数据库。对于 blob 名称，输入将创建的 BACPAC 文件名。输入想要使用的任意 BACPAC 文件名，但必须包括 .bacpac 扩展名。
 
     $ServerName = "servername"
-    $DatabaseName = "nameofdatabasetobackup"
+    $DatabaseName = "nameofdatabasetoexport"
     $BlobName = "filename.bacpac"
 
 在 [Azure 预览门户](https://portal.azure.com)中，浏览到你的存储帐户以获取这些值。你可以单击存储帐户边栏选项卡中的“所有设置”，然后单击“密钥”，找到主访问密钥。
@@ -88,6 +88,9 @@ BACPAC 导出到 Azure 存储 blob 容器中，你可以在操作成功完成后
 ## 导出数据库
 
 此命令会将导出数据库请求提交到服务。根据数据库的大小，导出操作可能需要一些时间才能完成。
+
+> [AZURE.IMPORTANT]若要确保获得事务处理一致性 BACPAC 文件，应首先[创建数据库的副本](/documentation/articles/sql-database-copy-powershell)，然后导出该数据库副本。
+
 
     $exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $SqlCtx -StorageContainer $Container -DatabaseName $DatabaseName -BlobName $BlobName
     
@@ -140,4 +143,4 @@ BACPAC 导出到 Azure 存储 blob 容器中，你可以在操作成功完成后
 - [灾难恢复练习](/documentation/articles/sql-database-disaster-recovery-drills)
 - [SQL 数据库文档](https://azure.microsoft.com/documentation/services/sql-database/)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -4,16 +4,17 @@
    services="traffic-manager"
    documentationCenter=""
    authors="kwill-MSFT"
-   manager="adinah"
+   manager="carmonm"
    editor="joaoma" />
 
-<tags 
-   ms.service="traffic-manager"
-   ms.date="08/19/2015"
-   wacn.date="" />
-# Azure 流量管理器上的降级状态故障排除
-此页面将介绍如何对显示降级状态的 Azure 流量管理器配置文件进行故障排除，并提供了解流量管理器探测器的一些要点。
+<tags
+	ms.service="traffic-manager"
+	ms.date="11/12/2015"
+	wacn.date=""/>
 
+# Azure 流量管理器上的降级状态故障排除
+
+此页面将介绍如何对显示降级状态的 Azure 流量管理器配置文件进行故障排除，并提供了解流量管理器探测器的一些要点。
 
 你已将流量管理器配置文件配置为指向部分 .chinacloudapp.cn 托管服务，几秒钟后你会看到状态为“已降级”。
 
@@ -62,17 +63,17 @@
 ## 后续步骤
 
 
-[关于流量管理器负载平衡方法](/documentation/articles/traffic-manager-load-balancing-methods)
+[关于流量管理器流量路由方法](/documentation/articles/traffic-manager-load-balancing-methods)
 
-[流量管理器概述](/documentation/articles/traffic-manmager-overview)
+[什么是流量管理器](/documentation/articles/traffic-manmager-overview)
 
 [云服务](https://msdn.microsoft.com/zh-cn/library/jj155995.aspx)
 
-[网站](http://www.windowsazure.cn/home/features/web-site/)
+[网站](/home/features/web-site/)
 
 [流量管理器上的操作（REST API 参考）](https://msdn.microsoft.com/zh-cn/library/hh758255.aspx)
 
-[Azure 流量管理器 Cmdlet](http://go.microsoft.com/fwlink/p/?LinkId=400769)
+[Azure 流量管理器 Cmdlet](https://msdn.microsoft.com/zh-cn/library/dn690250.aspx)
  
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_1221_2015-->

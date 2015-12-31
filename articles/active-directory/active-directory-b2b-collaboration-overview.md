@@ -9,12 +9,12 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="09/17/2015"
+   ms.date="10/27/2015"
    wacn.date=""/>
 
-# Azure Active Directory B2B 协作
+# Azure Active Directory (Azure AD) B2B 协作
 
-Azure Active Directory B2B 协作可让你通过合作伙伴管理的标识来访问企业应用程序。你可以通过邀请并授权合作伙伴公司的用户访问你的资源，来创建跨公司关系。由于每家公司只与 Azure Active Directory (Azure AD) 联合一次，并且每位用户都由单个 Azure AD 帐户来表示，因此降低了复杂性。由于当合作伙伴用户从其组织离职时，其访问权限即会吊销，而无法通过内部目录中的成员身份进行意外的访问，因此提高了安全性。对于尚未部署 Azure AD 的业务合作伙伴，B2B 协作简化了注册体验，可以更方便地向业务合作伙伴提供 Azure AD 帐户。
+Azure AD B2B 协作可让你通过合作伙伴管理的标识来访问企业应用程序。你可以通过邀请并授权合作伙伴公司的用户访问你的资源，来创建跨公司关系。由于每家公司只与 Azure Active Directory 联合一次，并且每位用户都由单个 Azure AD 帐户来表示，因此降低了复杂性。由于当合作伙伴用户从其组织离职时，其访问权限即会吊销，而无法通过内部目录中的成员身份进行意外的访问，因此提高了安全性。对于尚未部署 Azure AD 的业务合作伙伴，B2B 协作简化了注册体验，可以更方便地向业务合作伙伴提供 Azure AD 帐户。
 
 -   业务合作伙伴可以使用他们自己的登录凭据，因此你无需管理外部合作伙伴目录，也无需在用户离开合作伙伴组织时删除访问权限。
 
@@ -44,12 +44,12 @@ Azure Active Directory B2B 协作易于配置，各种规模的合作伙伴都�
 
 ## CSV 文件格式
 
-CSV 文件采用以下的格式。
+CSV 文件采用以下的格式。即使未指定一个或多个选项，也要添加所需的所有逗号。
 
-**Email：**受邀用户的电子邮件地址。<br/> 
-**DisplayName：**受邀用户的显示名称（通常是名字和姓氏）。<br/> 
-**InviteAppID：**在电子邮件邀请和接受页面上用于表示品牌的应用程序 ID。<br/> 
-**InviteReplyURL：**在受邀用户接受邀请后，将用户定向到的 URL。这应该是公司特定的 URL（例如 [*contoso.my.salesforce.com*](http://contoso.my.salesforce.com/)）。<br/> 
+**Email：**受邀用户的电子邮件地址。<br/>
+**DisplayName：**受邀用户的显示名称（通常是名字和姓氏）。<br/>
+**InviteAppID：**在电子邮件邀请和接受页面上用于表示品牌的应用程序 ID。<br/>
+**InviteReplyURL：**在受邀用户接受邀请后，将用户定向到的 URL。这应该是公司特定的 URL（例如 [*contoso.my.salesforce.com*](http://contoso.my.salesforce.com/)）。<br/>
 **InviteAppResources：**应用程序可分配给用户的 AppID。可以通过调用 `Get-MsolServicePrincipal | fl DisplayName, AppPrincipalId` 来检索 AppID。<br/>
 **InviteGroupResources：**要将用户添加到的组的 ObjectIDs。可以通过调用 `Get-MsolGroup | fl DisplayName, ObjectId` 来检索 ObjectIDs。<br/>
 **InviteContactUsUrl：**可在电子邮件邀请中添加的“联系我们”URL，方便受邀用户联系你的组织。<br/>
@@ -63,5 +63,15 @@ wharp@contoso.com,Walter Harp,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.
 jsmith@contoso.com,Jeff Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/
 bsmith@contoso.com,Ben Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.microsoft.com/services/active-directory/,,,http://azure.microsoft.com/services/active-directory/
 ```
+## 后续步骤
+在 Azure B2B 协作网站上浏览我们的其他文章
 
-<!---HONumber=79-->
+- [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [工作原理](active-directory-b2b-how-it-works.md)
+- [详细演练](active-directory-b2b-detailed-walkthrough.md)
+- [CSV 文件格式参考](active-directory-b2b-references-csv-file-format.md)
+- [外部用户令牌格式](active-directory-b2b-references-external-user-token-format.md)
+- [外部用户对象属性更改](active-directory-b2b-references-external-user-object-attribute-changes.md)
+- [当前预览版限制](active-directory-b2b-current-preview-limitations.md)
+
+<!---HONumber=Mooncake_1221_2015-->

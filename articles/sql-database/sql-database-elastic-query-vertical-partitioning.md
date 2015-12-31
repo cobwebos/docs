@@ -1,17 +1,17 @@
 <properties
-    pageTitle="用于垂直分区的弹性数据库查询 | Microsoft Azure"
+    pageTitle="适用于跨数据库查询的弹性数据库查询（垂直分区）| Microsoft Azure"
     description="如何在垂直分区上设置跨数据库查询"    
     services="sql-database"
     documentationCenter=""  
     manager="jeffreyg"
-    authors="sidneyh"/>
+    authors="torsteng"/>
 
 <tags
     ms.service="sql-database"
-    ms.date="10/19/2015"
+    ms.date="11/09/2015"
     wacn.date="" />
 
-# 用于垂直分区的弹性数据库查询
+# 适用于跨数据库查询的弹性数据库查询（垂直分区）
 
 本文档说明如何为跨数据库查询方案（垂直分区）设置弹性查询，以及如何执行查询。有关垂直分区方案的定义，请参阅 [Azure SQL 数据库弹性数据库查询概述（预览版）](/documentation/articles/sql-database-elastic-query-overview)。
 
@@ -23,13 +23,13 @@
 
 定义弹性数据库查询的数据库对象依赖于以下 T-SQL 语句，下面将针对垂直分区方案对这些语句进行进一步说明：
 
-* [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx) 
+* [CREATE MASTER KEY](https://msdn.microsoft.com/zh-cn/library/ms174382.aspx) 
 
-* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
+* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/zh-cn/library/mt270260.aspx)
 
-* [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
+* [CREATE/DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/zh-cn/library/dn935022.aspx)
 
-* [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
+* [CREATE/DROP EXTERNAL TABLE](https://msdn.microsoft.com/zh-cn/library/dn935021.aspx)
 
 ### 1\.1 数据库范围的主密钥和凭据 
 
@@ -40,7 +40,7 @@
     SECRET = ‘<password>’
     [;]
     
-或者若要删除，请使用以下语法：
+若要删除凭据：
     
     DROP DATABASE SCOPED CREDENTIAL <credential_name>;  
     DROP MASTER KEY;   
@@ -180,4 +180,4 @@ DATA\_SOURCE 子句定义用于外部表的外部数据源（即，在垂直分�
 <!--Image references-->
 <!--anchors-->
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

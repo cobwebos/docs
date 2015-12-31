@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="10/07/2015"
+   ms.date="10/26/2015"
    wacn.date=""/>
 
 # 了解资源管理器部署和经典部署
@@ -38,11 +38,11 @@
 
 - 通过以下方法之一创建：
 
-  - [预览门户](https://portal.azure.com/)。
+  - [预览门户](https://manage.windowsazure.cn)。
 
         ![preview portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        对于计算、存储和网络资源，你可以选择使用“资源管理器”或“经典”部署。选择“资源管理器”。
+        For Compute, Storage, and Networking resources, you have the option of using either Resourece Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -54,14 +54,14 @@
 
             PS C:\> Get-AzureRmResourceGroupDeployment
 
-  - 适用于 REST 操作的 [Azure 资源管理器 REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx)。
+  - 适用于 REST 操作的 [Azure 资源管理器 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dn790568.aspx)。
   - Azure CLI 命令在 **arm** 模式下运行。
 
             azure config mode arm
 
 - 资源类型的名称中不包括 **(经典)**。下图显示了**存储帐户**类型。
 
-    ![Web 应用](./media/resource-manager-deployment-model/resource-manager-type.png)
+    ![网站](./media/resource-manager-deployment-model/resource-manager-type.png)
 
 ## 经典部署的特性
 
@@ -69,11 +69,11 @@
 
 - 通过以下方法之一创建：
 
-  - [Azure 门户](https://manage.windowsazure.com)
+  - [Azure 门户](https://manage.windowsazure.cn)
 
         ![Azure portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        或者，访问预览门户，并且指定“经典”部署（适用于计算、存储和网络）。
+        Or, the preview portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
@@ -85,9 +85,9 @@
 
             PS C:\> Get-AzureDeployment
 
-  - 适用于 REST 操作的[服务管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx)。
+  - 适用于 REST 操作的[服务管理 REST API](https://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx)。
   - Azure CLI 命令在 **asm** 或默认模式下运行。
-- 资源类型的名称中包括 **(经典)**。下图显示了**存储帐户 (经典)** 类型。
+- 资源类型的名称中包括 **(经典)**。下图显示了**存储帐户(经典)** 类型。
 
     ![经典类型](./media/resource-manager-deployment-model/classic-type.png)
 
@@ -115,7 +115,7 @@
 
 标记使您能够按照逻辑组织您的资源。只有通过资源管理器创建的资源才支持标记。您不能将标记应用到经典资源。
 
-有关在资源管理器中使用标记的详细信息，请参阅[使用标记来组织 Azure 资源](resource-group-using-tags.md)。
+有关在资源管理器中使用标记的详细信息，请参阅[使用标记来组织 Azure 资源](/documentation/articles/resource-group-using-tags)。
 
 ## 部署模型支持的操作
 
@@ -151,6 +151,8 @@
 - 使用资源管理器部署模型部署的虚拟机必须包含在虚拟网络中。
 - 使用经典部署模型部署的虚拟机不一定要包括在虚拟网络中。
 
+如果你可以承受虚拟机停机带来的损失，则可以使用 [ASM2ARM PowerShell 脚本](https://github.com/fullscale180/asm2arm)将虚拟机从经典部署过渡到资源管理器部署。
+
 有关从经典部署转换到资源管理器时的等效 Azure CLI 命令列表，请参阅 [VM 操作的等效资源管理器和服务管理命令](./virtual-machines/xplat-cli-azure-manage-vm-asm-arm.md)。
 
 有关转换计算、存储和网络资源的详细信息，请参阅 [Azure 资源管理器中的 Azure 计算、网络和存储提供程序](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)。
@@ -159,7 +161,7 @@
 
 ## 后续步骤
 
-- 若要了解如何创建声明性部署模板，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)。
-- 若要查看用于部署模板的命令，请参阅[使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy.md)。
+- 若要了解如何创建声明性部署模板，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
+- 若要查看用于部署模板的命令，请参阅[使用 Azure 资源管理器模板部署应用程序](/documentation/articles/resource-group-template-deploy)。
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -145,13 +145,13 @@ PTVS 适用于你现有的 Visual Studio 2013 或 2015 版本的安装。有关�
 
 3. 使用 Git 开发和发布到 Azure 网站
 
-第一个方案使你能够通过 Azure REST API 的 Pythonic 包装来创作利用 Azure PaaS 功能（例如 [Blob 存储][]、[队列存储][]、[表存储][]等）的丰富 Web 应用。这些应用程序的工作方式与在 Windows、Mac 和 Linux 上相同。此外可以从本地开发计算机或在 Azure 上运行的 Linux VM 中使用这些客户端库。
+第一个方案使你能够通过 Azure REST API 的 Pythonic 包装来创作利用 Azure PaaS 功能（例如 [Blob 存储][]、[队列存储][]、[表存储][]等）的丰富网站。这些应用程序的工作方式与在 Windows、Mac 和 Linux 上相同。此外可以从本地开发计算机或在 Azure 上运行的 Linux VM 中使用这些客户端库。
 
 对于 VM 方案，你只需启动所选的 Linux VM（Ubuntu、CentOS、Suse）并运行/管理所需内容。例如，你可以在 Windows/Mac/Linux 计算机上运行 [IPython][] REPL/notebook，并使你的浏览器指向在 Azure 上运行 IPython 引擎的 Linux 或 Windows 多处理器 VM。请参阅 [Azure 上的 IPython Notebook][] 教程，以了解详细信息。
 
 有关如何安装 Linux VM 的信息，请参阅[创建运行 Linux 的虚拟机][]教程。
 
-使用 Git 部署，可以从任何操作系统开发 Python web 应用程序并将其发布到 Azure 网站。当将您的存储库推送到 Azure 时，它将自动创建虚拟环境和 pip 安装所需的包。
+使用 Git 部署，可以从任何操作系统开发 Python 网站并将其发布到 Azure 网站。当将您的存储库推送到 Azure 时，它将自动创建虚拟环境和 pip 安装所需的包。
 
 有关开发和发布 Azure 网站的详细信息，请参阅有关教程：[使用 Django 创建网站][]、[使用 Bottle 创建网站][]和[使用 Flask 创建网站][]。有关使用任何 WSGI 合规框架的更多常规信息，请参阅[使用 Azure 网站配置 Python][]。
 
@@ -167,7 +167,7 @@ PTVS 适用于你现有的 Visual Studio 2013 或 2015 版本的安装。有关�
 * [IPython - Python 的高级 REPL/Notebook][]
 * [Azure 上的 IPython Notebook][]
 * [GitHub 上的 Python Tools for Visual Studio][]
-
+* [Python 开发人员中心](/develop/python/)
 
 [Continuum Analytics Python 分发]: http://continuum.io
 [Enthought Python 分发]: http://www.enthought.com
@@ -181,23 +181,23 @@ PTVS 适用于你现有的 Visual Studio 2013 或 2015 版本的安装。有关�
 [Django 项目 - 成熟的 Web 框架/CMS]: http://www.djangoproject.com
 [IPython - Python 的高级 REPL/Notebook]: http://ipython.org
 [IPython]: http://ipython.org
-[Azure 上的 IPython Notebook]: /documentation/articles/virtual-machines-python-ipython-notebook
-[云服务]: /documentation/articles/cloud-services-python-ptvs.md
-[网站]: /documentation/articles/web-sites-python-ptvs-django-mysql.md
+[Azure 上的 IPython Notebook]: virtual-machines-python-ipython-notebook.md
+[云服务]: cloud-services-python-ptvs.md
+[网站]: web-sites-python-ptvs-django-mysql.md
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
-[Python Tools for Visual Studio on CodePlex]: http://pytools.codeplex.com
+[GitHub 上的 Python Tools for Visual Studio]: https://github.com/microsoft/ptvs
 [Python 包索引]: http://pypi.python.org/pypi
-[Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281&clcid=0x409
-[Microsoft Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?LinkID=516990&clcid=0x409
-[Setting up a Linux VM via the Azure portal]: /documentation/articles/create-and-configure-opensuse-vm-in-portal
-[How to use the Azure Command-Line Interface]: /documentation/articles/crossplat-cmd-tools
-[创建运行 Linux 的虚拟机]: /documentation/articles/virtual-machines-linux-tutorial
-[使用 Django 创建网站]: /documentation/articles/web-sites-python-create-deploy-django-app
-[使用 Bottle 创建网站]: /documentation/articles/web-sites-python-create-deploy-bottle-app
-[使用 Flask 创建网站]: /documentation/articles/web-sites-python-create-deploy-flask-app
-[使用 Azure 网站配置 Python]: /documentation/articles/web-sites-python-configure
-[表存储]: /documentation/articles/storage-python-how-to-use-table-storage
-[队列存储]: /documentation/articles/storage-python-how-to-use-queue-storage
-[Blob 存储]: /documentation/articles/storage-python-how-to-use-blob-storage
+[Microsoft Azure SDK for Python 2.7]: http://go.microsoft.com/fwlink/?LinkId=254281
+[Microsoft Azure SDK for Python 3.4]: http://go.microsoft.com/fwlink/?LinkID=516990
+[Setting up a Linux VM via the Azure portal]: create-and-configure-opensuse-vm-in-portal.md
+[How to use the Azure Command-Line Interface]: crossplat-cmd-tools.md
+[创建运行 Linux 的虚拟机]: virtual-machines-linux-tutorial.md
+[使用 Django 创建网站]: web-sites-python-create-deploy-django-app.md
+[使用 Bottle 创建网站]: web-sites-python-create-deploy-bottle-app.md
+[使用 Flask 创建网站]: web-sites-python-create-deploy-flask-app.md
+[使用 Azure 网站配置 Python]: web-sites-python-configure.md
+[表存储]: storage-python-how-to-use-table-storage.md
+[队列存储]: storage-python-how-to-use-queue-storage.md
+[Blob 存储]: storage-python-how-to-use-blob-storage.md
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

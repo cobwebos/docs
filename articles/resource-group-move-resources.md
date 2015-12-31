@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="azure-resource-manager" 
-	ms.date="10/14/2015" 
+	ms.date="11/13/2015" 
 	wacn.date=""/>
 
 # 将资源移动到新的资源组或订阅中
@@ -24,8 +24,9 @@
 
 1. 您不能更改该资源的位置。移动资源仅能够将其移动到新的资源组。新的资源组可能有不同的位置，但这不会更改该资源的位置。
 2. 目标资源组应仅包含与您在移动的资源共享相同的应用程序生命周期的资源。
-3. 如果您在使用 Azure PowerShell，请确保您使用的是最新版本。**Move-AzureResource** 命令将经常更新。若要更新您的版本，请运行 Microsoft Web 平台安装程序并检查新版本是否可用。有关详细信息，请参阅[如何安装和配置 Azure PowerShell](powershell-install-configure.md)。
+3. 如果您在使用 Azure PowerShell，请确保您使用的是最新版本。**Move-AzureResource** 命令将经常更新。若要更新您的版本，请运行 Microsoft Web 平台安装程序并检查新版本是否可用。有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。
 4. 移动操作可能需要一段时间才能完成，在这个过程中，您的 PowerShell 提示符将处于等待状态，直到操作完成。
+5. 移动资源时，源组和目标组将被锁定，直到移动操作完成。在完成移动之前，将阻止对组执行写入和删除操作。
 
 ## 支持的服务
 
@@ -36,7 +37,7 @@
 - API 管理
 - Azure DocumentDB
 - Azure 搜索
-- Azure Web Apps（存在一些[限制](/documentation/articles/app-service-move-resources)）
+- Azure Web Apps（存在一些[限制](app-service-web/app-service-move-resources.md)）
 - Data Factory
 - 密钥保管库
 - Mobile Engagement
@@ -53,6 +54,7 @@
 
 - 虚拟机
 - 虚拟网络
+- 存储
 
 当使用 Web 应用时，不能仅移动 App Service 计划。若要移动 Web 应用，您的选项包括：
 
@@ -83,23 +85,12 @@
 
     POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version} 
 
-将 **{source-subscription-id}** 和 **{source-resource-group-name}** 替换为当前包含您想要移动的资源的订阅和资源组。将 **2015-01-01** 用于 {api-version}。
-
-在请求中，包括一个能够定义您想要移动的目标资源组和资源的 JSON 对象。
-
-    {
-        "targetResourceGroup": "/subscriptions/{target-subscription-id}/resourceGroups/{target-resource-group-name}", "resources": [
-            "/subscriptions/{source-id}/resourceGroups/{source-group-name}/providers/{provider-namespace}/{type}/{name}",
-            "/subscriptions/{source-id}/resourceGroups/{source-group-name}/providers/{provider-namespace}/{type}/{name}",
-            "/subscriptions/{source-id}/resourceGroups/{source-group-name}/providers/{provider-namespace}/{type}/{name}",
-            "/subscriptions/{source-id}/resourceGroups/{source-group-name}/providers/{provider-namespace}/{type}/{name}"
-        ]
-    }
+在请求正文中，指定目标资源组和要移动的资源。有关移动 REST 操作的详细信息，请参阅[移动资源](https://msdn.microsoft.com/zh-cn/library/azure/mt218710.aspx)。
 
 ## 后续步骤
-- [将 Azure PowerShell 用于资源管理器](/documentation/articles/powershell-azure-resource-manager)
-- [将 Azure CLI 用于资源管理器](/documentation/articles/xplat-cli-azure-resource-manager)
-- [使用 Azure 门户管理资源](/documentation/articles/resource-group-portal)
-- [使用标记来组织资源](/documentation/articles/resource-group-using-tags)
+- [将 Azure PowerShell 用于资源管理器](./powershell-azure-resource-manager.md)
+- [将 Azure CLI 用于资源管理器](./virtual-machines/xplat-cli-azure-resource-manager.md)
+- [使用 Azure 门户管理资源](azure-portal/resource-group-portal.md)
+- [使用标记来组织资源](./resource-group-using-tags.md)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

@@ -29,7 +29,7 @@
 
 为简明起见，我们已分开列出各个代码段，并在本文底部的某个部分中提供了一个示例控制台应用程序，其中结合了所有命令。
 
-适用于 .NET 的 Azure SQL 数据库库提供了基于 [Azure 资源管理器](/documentation/articles/resource-group-overview)的 API，用于包装[基于资源管理器的 SQL 数据库 REST API](https://msdn.microsoft.com/library/azure/mt163571.aspx)。此客户端库遵循基于资源管理器的客户端库的通用模式。资源管理器需要资源组，并要求使用 [Azure Active Directory](https://msdn.microsoft.com/library/azure/mt168838.aspx) (AAD) 进行身份验证。
+适用于 .NET 的 Azure SQL 数据库库提供了基于 [Azure 资源管理器](/documentation/articles/resource-group-overview)的 API，用于包装[基于资源管理器的 SQL 数据库 REST API](https://msdn.microsoft.com/zh-cn/library/azure/mt163571.aspx)。此客户端库遵循基于资源管理器的客户端库的通用模式。资源管理器需要资源组，并要求使用 [Azure Active Directory](https://msdn.microsoft.com/zh-cn/library/azure/mt168838.aspx) (AAD) 进行身份验证。
 
 <br>
 
@@ -56,7 +56,7 @@
 
 首先必须通过设置所需的身份验证，使客户端应用程序能够访问 REST API。
 
-[Azure 资源管理器 REST API](https://msdn.microsoft.com/library/azure/dn948464.aspx) 使用 Azure Active Directory 进行身份验证。
+[Azure 资源管理器 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dn948464.aspx) 使用 Azure Active Directory 进行身份验证。
 
 若要基于当前的用户对客户端应用程序进行身份验证，你必须先将该应用程序注册到与创建了 Azure 资源的订阅关联的 AAD 域中。如果 Azure 订阅是以 Microsoft 帐户而不是工作或学校帐户创建的，则你已经有了默认的 AAD 域。可以在 [Azure 门户](https://manage.windowsazure.cn/)中完成应用程序的注册。
 
@@ -196,7 +196,7 @@ SQL 数据库包含在服务器中。服务器名称在所有 Azure SQL Server �
 
 ## 创建服务器防火墙规则，以允许对服务器进行访问
 
-默认情况下，无法从任何位置连接到服务器。为了连接到服务器或者服务器上的任何数据库，必须定义[防火墙规则](https://msdn.microsoft.com/library/azure/ee621782.aspx)以允许从客户端 IP 地址进行访问。
+默认情况下，无法从任何位置连接到服务器。为了连接到服务器或者服务器上的任何数据库，必须定义[防火墙规则](https://msdn.microsoft.com/zh-cn/library/azure/ee621782.aspx)以允许从客户端 IP 地址进行访问。
 
 以下示例将创建一个规则，用于实现从任何 IP 地址对服务器进行访问。建议你创建适当的 SQL 登录名和密码来保护数据库，并且不要依赖防火墙规则作为防范入侵的主要防御机制。
 
@@ -430,4 +430,4 @@ SQL 数据库包含在服务器中。服务器名称在所有 Azure SQL Server �
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_1221_2015-->

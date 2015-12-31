@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="Azure 基础结构服务工作负荷：高可用性业务线应用程序" 
-	description="了解 Azure 中部署的基于 Web 的业务线应用程序的价值、如何设置开发/测试环境，以及如何部署高可用性生产配置。" 
+	pageTitle="Azure 中的业务线应用程序 | Microsoft Azure" 
+	description="了解 Azure 中的业务线应用程序的价值、设置测试环境，以及部署高可用性配置。" 
 	services="virtual-machines" 
 	documentationCenter="" 
 	authors="JoeDavies-MSFT" 
@@ -9,13 +9,16 @@
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines" 
-	ms.date="08/11/2015" 
+	ms.service="virtual-machines"
+	ms.date="11/09/2015" 
 	wacn.date=""/>
 
 # Azure 基础结构服务工作负荷：高可用性业务线应用程序
 
-在 Windows Azure 中设置你的第一个或下一个仅限 Intranet 的业务线应用程序，并利用配置的简便性和相关功能快速扩展应用程序以包括新增能力。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
+
+
+在 Microsoft Azure 中设置你的第一个或下一个仅限 Intranet 的业务线应用程序，并利用配置的简便性和相关功能快速扩展应用程序以包括新增能力。
  
 借助 Azure 基础结构服务的虚拟机和虚拟网络功能，你可以快速部署并运行可供你组织的用户访问的业务线应用程序。例如，你可以进行此设置。
 
@@ -29,7 +32,7 @@
 
 ## 创建在 Azure 中托管的开发/测试业务线应用程序
 
-跨界虚拟网络通过站点到站点 VPN 或 ExpressRoute 连接与本地网络连接。如果你想要创建开发/测试环境，以模拟通过 VPN 连接访问应用程序并执行远程管理的最终配置和试验，请参阅[在混合云中设置基于 Web 的 LOB 应用程序用于测试](/documentation/articles/virtual-networks-setup-lobapp-hybrid-cloud-testing)。
+跨界虚拟网络通过站点到站点 VPN 或 ExpressRoute 连接与本地网络连接。如果你想要创建开发/测试环境，以模拟通过 VPN 连接访问应用程序并执行远程管理的最终配置和试验，请参阅[在混合云中设置基于 Web 的 LOB 应用程序用于测试](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)。
 
 ![](./media/virtual-machines-workload-high-availability-LOB-application/CreateLOBAppHybridCloud_3.png)
  
@@ -60,6 +63,29 @@ Azure 中的高可用性业务线应用程序的基线代表配置如下所示�
 - 三个可用性集
 - 一个跨界虚拟网络
 - 两个存储帐户
+
+下面是此配置的虚拟机及其默认大小。
+
+项目 | 虚拟机说明 | 库映像 | 默认大小 
+--- | --- | --- | --- 
+1\. | 第一个域控制器 | Windows Server 2012 R2 Datacenter | D1
+2\. | 第二个域控制器 | Windows Server 2012 R2 Datacenter | D1
+3\. | 主数据库服务器 | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | D4
+4\. | 辅助数据库服务器 | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | D4
+5\. | 群集多数节点 | Windows Server 2012 R2 Datacenter | D1
+6\. | 第一个 Web 服务器 | Windows Server 2012 R2 Datacenter | D3
+7\. | 第二个 Web 服务器 | Windows Server 2012 R2 Datacenter | D3
+
+若要计算此配置的估计成本，请参阅 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)。
+
+1. 在“模块”中，单击“计算”，然后单击“虚拟机”相应次以创建包含七个虚拟机的列表。
+2. 对于每个虚拟机，请选择：
+	- 所需的区域
+	- 对于类型，选择 **Windows**
+	- 对于定价层，选择“标准”
+	- 上一个表中的默认大小，或者在**实例大小**中选择所需的大小
+
+> [AZURE.NOTE]Azure 定价计算器不包括运行 SQL Server 2014 Enterprise 的两个虚拟机的 SQL Server 许可证的额外成本。有关详细信息，请参阅[虚拟机定价-SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)。
 
 ### 部署阶段
 
@@ -93,10 +119,10 @@ Azure 中的高可用性业务线应用程序的基线代表配置如下所示�
 
 [业务线应用程序体系结构蓝图](http://msdn.microsoft.com/dn630664)
 
-[在混合云中设置用于测试且基于 Web 的 LOB 应用程序](/documentation/articles/virtual-networks-setup-lobapp-hybrid-cloud-testing)
+[在混合云中设置用于测试且基于 Web 的 LOB 应用程序](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
 
 [Azure 基础结构服务实施准则](/documentation/articles/virtual-machines-infrastructure-services-implementation-guidelines)
 
 [Azure 基础结构服务工作负荷：SharePoint Server 2013 场](/documentation/articles/virtual-machines-workload-intranet-sharepoint-farm)
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_1221_2015-->

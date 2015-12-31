@@ -1,6 +1,6 @@
 <properties 
     pageTitle="迁移到 Azure 高级存储 | Microsoft Azure" 
-    description="迁移到 Azure 高级存储，以便为 Azure 虚拟机上运行的 I/O 密集型工作负荷提供高性能、低延迟磁盘支持。" 
+    description="将现有的虚拟机迁移到 Azure 高级存储。高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负载提供高性能、低延迟的磁盘支持。"
     services="storage" 
     documentationCenter="na" 
     authors="tamram" 
@@ -9,13 +9,19 @@
 
 <tags 
     ms.service="storage" 
-    ms.date="09/23/2015"
+    ms.date="11/04/2015"
     wacn.date=""/>
 
 
 # 迁移到 Azure 高级存储
 
 ## 概述
+
+Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能、低延迟的磁盘支持。在固态硬盘 (SSD) 上使用高级存储存储数据的虚拟机 (VM) 磁盘。可以将应用程序的 VM 磁盘迁移到 Azure 高级存储，以充分利用这些磁盘的速度和性能。
+
+Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具有每个 VM 多达 64 TB 的存储空间。借助高级存储，应用程序对于每个 VM 可以实现 80,000 IOPS（每秒输入/输出操作数）和每秒 2000 MB 的磁盘吞吐量，并且读取操作的延迟非常低。
+
+>[AZURE.NOTE]建议将任何需要高 IOPS 的虚拟机磁盘迁移到 Azure 高级存储，以便你的应用程序实现最佳性能。如果你的磁盘不需要高 IOPS，你可以通过在标准存储（将虚拟机磁盘数据存储在硬盘驱动器 (HDD) 上而不是 SSD 上）中对其进行维护来限制成本。
 
 本指南旨在帮助 Microsoft Azure 高级存储的新用户更好地准备从当前系统到高级存储的平稳转换。本指南讨论了此过程中的三个关键组件：规划迁移到高级存储、将现有虚拟硬盘 (VHD) 迁移到高级存储，以及在高级存储中创建 Azure 虚拟机实例。完成整个迁移过程可能需要在执行本指南中提供的步骤前后执行其他操作。示例包括配置虚拟网络或终结点，或在应用程序本身中进行代码更改。这些操作对于每个应用程序都是唯一的，你应该随本指南中提供的步骤一起来完成这些操作，以便尽可能无缝地进行到高级存储的完全转换。
 
@@ -27,7 +33,7 @@
 
 根据你的方案，执行相关部分中指定的步骤。
 
-## 从 Azure 外部将 VM 迁移到 Azure 高级存储
+## 从其他平台将 VM 迁移到 Azure 高级存储
 
 ### 先决条件
 - 你将需要 Azure 订阅。如果你没有，则可以创建一个月的[试用](/pricing/1rmb-trial/)订阅或访问 [Azure 定价](/pricing/)以获得更多选项。
@@ -57,7 +63,7 @@
 |:--|:---|
 |磁盘容量：35 TB<br />快照容量：10 TB|入站 + 出站最高每秒 50 Gbps|
 
-有关高级存储规范的详细信息，请查看[使用高级存储时的可伸缩性和性能目标](/documentation/articles/storage-premium-storage-preview-portal#scalability-and-performance-targets-whzh-CNing-premium-storage)。
+有关高级存储规范的详细信息，请查看[使用高级存储时的可伸缩性和性能目标](/documentation/articles/storage-premium-storage-preview-portal#scalability-and-performance-targets-when-using-premium-storage)。
 
 #### 附加数据磁盘
 根据你的工作负荷，确定你的 VM 是否需要附加数据磁盘。你可以将多个持久性数据磁盘附加到你的 VM。如有需要，可以跨磁盘条带化，以增加卷的容量与性能。如果你使用[存储空间](https://technet.microsoft.com/zh-CN/library/hh831739.aspx)来条带化高级存储数据磁盘，应该以使用的每个磁盘一个列的方式来配置它。否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。对于 Linux VM，你可以使用 mdadm 实用工具来实现同一目的。有关详细信息，请参阅文章[在 Linux 上配置软件 RAID](/documentation/articles/virtual-machines-linux-configure-raid)。
@@ -238,9 +244,9 @@
 
 复制并保存这个新的 Azure 数据磁盘的名称。在上面的示例中，它是 *DataDisk*。
 
-### 创建 Azure DS 系列 VM  
+### 创建 Azure DS 系列或 GS 系列 VM
 
-注册 OS 映像或 OS 磁盘后，请创建新的 DS 系列 Azure VM 实例。你将使用你注册的操作系统映像或操作系统磁盘名称。从高级存储层选择 VM 类型。在以下示例中，我们将使用 *Standard\_DS2* VM 大小。可以使用相同的步骤创建 GS 系列 VM。
+注册 OS 映像或 OS 磁盘后，请创建新的 DS 系列 GS 系列 VM。你将使用你注册的操作系统映像或操作系统磁盘名称。从高级存储层选择 VM 类型。在以下示例中，我们将使用 *Standard\_DS2* VM 大小。
 
 >[AZURE.NOTE]更新磁盘大小，以确保它满足你的容量、性能要求和可用的 Azure 磁盘大小。
 
@@ -300,15 +306,12 @@
 
 ## 将现有 Azure VM 迁移到 Azure 高级存储
 
-如果你当前有使用标准存储磁盘的 Azure VM，请按照下述过程将该 Azure VM 迁移到高级存储。概括来讲，迁移涉及两个阶段：
-- 将磁盘从标准存储帐户迁移到高级存储帐户 
-- 将 A/D/G 的 VM 大小转换为使用高级存储磁盘所需的 DS 或 GS。
+如果你当前有使用标准存储磁盘的 Azure VM，请按照下述过程将该 Azure VM 迁移到高级存储。概括来讲，迁移涉及两个阶段：- 将磁盘从标准存储帐户迁移到高级存储帐户 - 将 A/D/G 的 VM 大小转换为使用高级存储磁盘所需的 DS 或 GS。
 
 此外，请参阅上一节有关注意事项的内容以了解可以对高级存储执行的各种优化。根据适用于你的应用程序的优化，迁移过程可能归入以下迁移方案之一。
 
 ### 简单迁移
-在此简单方案中，你希望在从标准存储迁移到高级存储时按原样保留你的配置。此处你按原样移动每个磁盘，然后同样转换 VM。
-此方案的优点是迁移轻松；缺点是生成的配置可能未针对最大限度地降低成本进行优化。
+在此简单方案中，你希望在从标准存储迁移到高级存储时按原样保留你的配置。此处你按原样移动每个磁盘，然后同样转换 VM。此方案的优点是迁移轻松；缺点是生成的配置可能未针对最大限度地降低成本进行优化。
 
 #### 准备工作
 1. 确保高级存储在你要迁移到的区域中可用。
@@ -615,4 +618,4 @@
 [2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-2.png
 [3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

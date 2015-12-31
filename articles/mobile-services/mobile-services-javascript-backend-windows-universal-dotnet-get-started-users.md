@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="10/06/2015" 
+	ms.date="11/11/2015" 
 	wacn.date=""/>
 
 # 向通用 Windows 8.1 应用添加身份验证
@@ -76,4 +76,4 @@
 [移动服务 .NET 操作方法概念性参考]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 [Register your Windows Store app package for Microsoft authentication]: /documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->

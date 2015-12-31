@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="10/13/2015"
+	ms.date="11/04/2015"
 	wacn.date=""/>
 
 
@@ -19,7 +19,7 @@ Azure AD Connect 是用于集成本地标识系统（例如 Windows Server Activ
 ![什么是 Azure AD Connect](./media/active-directory-aadconnect/arch.png)
 
 ## 为何使用 Azure AD Connect
-将本地目录与 Azure AD 集成可提供通用标识用于访问云和本地资源，从而提高用户的生产率。通过这种集成，用户和组织可以享受到以下好处：
+将本地目录与 Azure AD 集成后，可以让用户使用通用标识访问位于云中和本地的资源，从而提高他们的生产率。通过这种集成，用户和组织可以享受到以下好处：
 
 - 用户可以使用单个标识来访问本地应用程序和云服务，例如 Office 365。
 
@@ -35,7 +35,7 @@ Azure Active Directory Connect 由三个主要部分组成，分别是同步服�
 <center>![Azure AD Connect 堆栈](./media/active-directory-aadconnect-how-it-works/AADConnectStack2.png) </center>
 
 - 同步 - 此部分由以前包含以前作为 [DirSync 和 Azure AD Sync](/documentation/articles/active-directory-aadconnect-get-started-tools-comparison) 发布的组件和功能组成。此部分负责创建用户和组。它还负责确保本地环境中有关用户和组的信息与云匹配。
-- AD FS - 这是 Azure AD Connect 的可选部分，可用于使用本地 AD FS 基础结构设置混合环境。组织可以使用此部分来解决复杂的部署，包括域加入 SSO、实施 AD 登录策略和智能卡或第三方 MFA 等方案。
+- AD FS - 这是 Azure AD Connect 的可选部分，可用于使用本地 AD FS 基础结构设置混合环境。组织可以使用此部分来解决复杂的部署，包括域加入 SSO、实施 AD 登录策略和智能卡或第三方 MFA（多重身份验证）等方案。
 - 运行状况监视 - Azure AD Connect Health 能够可靠监视 AD FS 服务器，并在 Azure 门户中提供一个中心位置用于查看此活动。有关更多信息，请参阅 [Azure Active Directory Connect Health](/documentation/articles/active-directory-aadconnect-health)。
 
 ## 安装 Azure AD Connect
@@ -149,4 +149,4 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 
  
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_1221_2015-->

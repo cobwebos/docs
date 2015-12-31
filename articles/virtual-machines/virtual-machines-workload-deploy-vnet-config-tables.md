@@ -1,6 +1,6 @@
 <properties
-	pageTitle="使用配置表创建跨界虚拟网络"
-	description="本主题介绍如何使用预先确定的配置表配置跨界虚拟网络。"
+	pageTitle="使用配置表的虚拟网络 | Microsoft Azure"
+	description="了解如何使用预先确定的设置通过配置表中的设置配置跨界 Azure 虚拟网络。"
 	documentationCenter=""
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
@@ -10,10 +10,12 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="07/21/2015"
+	ms.date="10/20/2015"
 	wacn.date=""/>
 
 # 使用配置表创建跨界虚拟网络
+
+[AZURE.INCLUDE [learn-about-deployment-models-classic-include](../includes/learn-about-deployment-models-classic-include.md)]资源管理器部署模型。
 
 本主题将指导你逐步完成使用以前在下列一组配置表中指定的设置创建跨界虚拟网络：
 
@@ -22,15 +24,15 @@
 - 表 D：本地 DNS 服务器
 - 表 L：本地网络的地址前缀
 
-这些表通常在介绍 Azure 中 IT 工作负荷的配置，并涉及跨界虚拟网络的主题中填写。有关示例，请参阅[阶段 1：配置 Azure](virtual-machines-workload-intranet-sharepoint-phase1)。
+这些表通常在介绍 Azure 中 IT 工作负荷的配置，并涉及跨界虚拟网络的主题中填写。有关示例，请参阅[阶段 1：配置 Azure](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase1)。
 
-以下过程参考了这些表中的信息，以指导你完成虚拟网络配置过程。如果你尚未在另一个主题中指定这些表中的设置，但仍要配置跨界虚拟网络，请参阅[配置与 Azure 虚拟网络的跨界站点到站点连接](https://msdn.microsoft.com/zh-CN/library/dn133795.aspx)。
+以下过程参考了这些表中的信息，以指导你完成虚拟网络配置过程。如果你尚未在另一个主题中指定这些表中的设置，但仍要配置跨界虚拟网络，请参阅[配置与 Azure 虚拟网络的跨界站点到站点连接](../vpn-gateway/vpn-gateway-site-to-site-create.md)。
 
 > [AZURE.NOTE]此过程将指导你逐步完成创建使用站点到站点 VPN 连接的虚拟网络。有关将 Azure ExpressRoute 用于站点到站点连接的信息，请参阅 [ExpressRoute 技术概述](../expressroute/expressroute-introduction.md)。
 
 ## 使用配置表设置创建新的跨界 Azure 虚拟网络
 
-1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn/)。
+1. 登录到 [Azure 门户](https://manage.windowsazure.cn/)。
 2. 在任务栏中，单击“新建”>“网络服务”>“虚拟网络”>“自定义创建”。
 3. 在“虚拟网络详细信息”页上，执行以下操作：
 	- 在**“名称”**中，键入表 V 的项目 1 中的名称。
@@ -57,10 +59,10 @@
 
 ## 其他资源
 
-[虚拟网络概述](https://msdn.microsoft.com/zh-CN/library/jj156007.aspx)
+[虚拟网络概述](../virtual-network/virtual-networks-overview.md)
 
-[虚拟网络配置任务](https://msdn.microsoft.com/zh-CN/library/jj156206.aspx)
+[虚拟网络配置任务](../documentation/services/virtual-machines/)
 
-[配置与 Azure 虚拟网络的跨界站点到站点连接](/documentation/articles/vpn-gateway-site-to-site-create)
+[配置与 Azure 虚拟网络的跨界站点到站点连接](../vpn-gateway/vpn-gateway-site-to-site-create.md)
 
-<!---HONumber=70-->
+<!---HONumber=Mooncake_1221_2015-->

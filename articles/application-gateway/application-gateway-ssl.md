@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="配置应用程序网关以进行 SSL 卸载 | Microsoft Azure"
-   description="本文提供有关在 Azure 应用程序网关上配置 SSL 卸载的说明。"
+   pageTitle="使用经典部署配置应用程序网关以进行 SSL 卸载 | Microsoft Azure"
+   description="本文提供有关使用 Azure 经典部署模型创建支持 SSL 卸载的应用程序网关的说明。"
    documentationCenter="na"
    services="application-gateway"
    authors="joaoma"
@@ -8,12 +8,18 @@
    editor="tysonn"/>
 <tags 
    ms.service="application-gateway"
-   ms.date="09/25/2015"
+   ms.date="10/28/2015"
    wacn.date=""/>
+# 使用经典部署模型配置应用程序网关以进行 SSL 卸载 
 
-# 配置应用程序网关以进行 SSL 卸载
+> [AZURE.SELECTOR]
+-[Azure Classic Powershell](application-gateway-ssl.md)
+-[Azure 资源管理器 PowerShell](application-gateway-ssl-arm.md)
 
-可将应用程序网关配置为在网关上终止 SSL 会话，从而避免在 Web 场上执行开销较高的 SSL 解密。SSL 卸载还简化了应用程序的前端服务器设置与管理。
+可将应用程序网关配置为在网关上终止 SSL 会话，以避免 Web 场中发生开销较高的 SSL 解密。SSL 卸载还简化了网站的前端服务器设置与管理。
+
+>[AZURE.IMPORTANT]在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：资源管理器部署模型和经典部署模型。在使用任何 Azure 资源之前，请确保你了解[部署模型和工具](azure-classic-rm.md)。可以通过单击本文顶部的选项卡来查看不同工具的文档。本文档将说明使用 Azure 经典部署模型创建应用程序网关的方式。若要使用 Azure 资源管理器版本，请转到[使用 Azure 资源管理器配置应用程序网关 SSL 卸载](application-gateway-ssl-arm.md)。
+
 
 ## 开始之前
 
@@ -104,8 +110,8 @@
 有效值为：
  
 - **后端服务器池：**后端服务器的 IP 地址列表。列出的 IP 地址应属于 VNet 子网，或者是公共 IP/VIP。 
-- **后端服务器池设置：**每个池具有端口、协议和基于 Cookie 的相关性等设置。这些设置绑定到池，并会应用到池中的所有服务器。
-- **前端端口：**此端口是应用程序网关上打开的公共端口。流量将抵达此端口，然后重定向到后端服务器之一。
+- **后端服务器池设置：**每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。这些设置绑定到池，并会应用到池中的所有服务器。
+- **前端端口：**此端口是应用程序网关上打开的公共端口。客户流量将抵达此端口，然后重定向到后端服务器之一。
 - **侦听器：**侦听器具有前端端口、协议（Http 或 Https，区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。 
 - **规则：**规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。目前仅支持*基本*规则。*基本*规则是一种轮循负载分发模式。
 
@@ -222,7 +228,7 @@
 
 如需负载平衡选项的其他常规信息，请参阅：
 
-<!--- [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)-->
+<!--- [Azure Load Balancer](/documentation/services/load-balancer/)-->
 - [Azure 流量管理器](/documentation/services/traffic-manager)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_1221_2015-->
