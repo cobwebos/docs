@@ -1,5 +1,5 @@
 <properties
-   pageTitle="ExpressRoute 位置 Microsoft Azure"
+   pageTitle="ExpressRoute 位置 | Microsoft Azure"
    description="本文详细说明了服务的上市区域，以及如何连接到 Azure 区域。"
    services="expressroute"
    documentationCenter="na"
@@ -8,7 +8,7 @@
    editor="" />
 <tags
    ms.service="expressroute"
-   ms.date="09/22/2015"
+   ms.date="12/02/2015"
    wacn.date="" />
 
 # ExpressRoute 合作伙伴和对等位置
@@ -123,4 +123,4 @@
 - 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)。
 - 确保符合所有先决条件。请参阅 [ExpressRoute 先决条件](/documentation/articles/expressroute-prerequisites)。
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

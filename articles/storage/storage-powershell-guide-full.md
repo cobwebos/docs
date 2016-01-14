@@ -3,12 +3,12 @@
 	description="了解如何使用 Azure 存储的 Azure PowerShell cmdlet 来创建和管理存储帐户；使用 Blob、表、队列和文件；配置和查询存储分析并创建共享访问签名。"
 	services="storage"
 	documentationCenter="na"
-	authors="tamram" 
-	manager="adinah"/>
+	authors="robinsh" 
+	manager="carmonm"/>
 
 <tags
 	ms.service="storage"
-	ms.date="10/26/2015"
+	ms.date="12/07/2015"
 	wacn.date=""/>
 
 # 对 Azure 存储空间使用 Azure PowerShell
@@ -60,7 +60,7 @@ Azure PowerShell 是一个模块，提供用于通过 Windows PowerShell 管理 
     	$DestinationFolder = "C:\DownloadImages"
 
     	# Add your Azure account to the local PowerShell environment.
-    	Add-AzureAccount
+    	Add-AzureAccount -Environment AzureChinaCloud
 
     	# Set a default Azure subscription.
     	Select-AzureSubscription -SubscriptionName $SubscriptionName –Default
@@ -99,7 +99,7 @@ Azure PowerShell 是一个模块，提供用于通过 Windows PowerShell 管理 
 
 		a.在“Windows PowerShell ISE”中，单击“文件”>“新建”以创建新的脚本文件。将以下脚本复制到新脚本文件，然后单击“调试”>“运行”。以下脚本会先请求你提供 Azure 帐户凭据以将你的 Azure 帐户添加到本地 PowerShell 环境，然后显示已连接到本地 PowerShell 会话的所有订阅。记下你在学习本教程时要使用的订阅名称：
 
-    		Add-AzureAccount
+    		Add-AzureAccount -Environment AzureChinaCloud
        		Get-AzureSubscription | Format-Table SubscriptionName, IsDefault, IsCurrent, CurrentStorageAccountName
 
 
@@ -110,7 +110,6 @@ Azure PowerShell 是一个模块，提供用于通过 Windows PowerShell 管理 
 		<!--c. If you sign in to the [Azure Preview Portal](https://portal.azure.com/), in the Hub menu on the left, click **BROWSE**. Then, click **Everything**, click **Subscriptions**. Copy the name of subscription that you want to use while running the scripts in this guide. See the following screenshot as an example.
 
 		![Azure Preview Portal][Image2]-->
-
 
 	- **$StorageAccountName：**使用脚本中给定的名称，或输入存储帐户的新名称。**重要提示：**在 Azure 中，存储帐户的名称必须是唯一的。它还必须为小写！
 
@@ -145,7 +144,7 @@ Azure PowerShell 是一个模块，提供用于通过 Windows PowerShell 管理 
 
 1.	在 Azure PowerShell 控制台或 Windows PowerShell ISE 中键入以下命令，将你的 Azure 帐户添加到本地 PowerShell 环境：
 
-    `Add-AzureAccount`
+    `Add-AzureAccount -Environment AzureChinaCloud`
 
 2.	在“登录 Microsoft Azure”窗口中，键入与你的帐户关联的电子邮件地址和密码。Azure 将对凭据信息进行身份验证和保存，然后关闭该窗口。
 
@@ -544,9 +543,6 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
     $QueueName = "yourqueuename"
     Remove-AzureStorageQueue –Name $QueueName –Context $Ctx
 
-### 如何管理队列消息
-目前，Azure PowerShell 不直接提供用于管理队列消息的 cmdlet。若要对队列消息执行操作，可以使用[用于 .NET 的 Azure 存储客户端库](http://msdn.microsoft.com/zh-cn/library/azure/wa_storage_30_reference_home.aspx)中提供的类。
-
 #### 如何在队列中插入消息
 若要在现有队列中插入一条消息，请先创建 [Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage](http://msdn.microsoft.com/zh-cn/library/azure/jj732474.aspx) 类的新实例。接下来，调用 [AddMessage](http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.addmessage.aspx) 方法。可从字符串（UTF-8 格式）或字节数组创建 CloudQueueMessage。
 
@@ -732,4 +728,4 @@ Azure 环境的部署独立于 Microsoft Azure，例如[中国 21Vianet 运营�
 [Next Steps]: #next
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

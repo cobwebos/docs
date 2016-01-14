@@ -3,13 +3,13 @@
 	description="了解如何创建简单的 Node.js Web 应用程序并将其部署到 Azure 云服务。"
 	services="cloud-services"
 	documentationCenter="nodejs"
-	authors="MikeWasson"
+	authors="rmcmurray"
 	manager="wpickett"
 	editor=""/>
 
 <tags
 	ms.service="cloud-services"
-	ms.date="08/31/2015"
+	ms.date="11/20/2015"
 	wacn.date=""/>
 
 
@@ -23,7 +23,7 @@
 
 有关云服务以及如何将它们与 Azure 网站和虚拟机进行比较的更多信息，请参阅 [Azure 网站、云服务和虚拟机的比较](/documentation/articles/choose-web-site-cloud-service-vm)。
 
->[AZURE.TIP]想要构建一个简单的网站？ 如果你的方案只涉及一个简单的网站前端，则可以考虑<a href="/documentation/articles/web-sites-nodejs-develop-deploy-mac/">使用轻型 Web 应用</a>。 随着你的 Web 应用的不断扩大和你的需求的变化，你可以轻松升级到云服务。
+>[AZURE.TIP]想要构建一个简单的网站？ 如果你的方案只涉及一个简单的网站前端，则可以考虑<a href="../app-service-web/web-sites-nodejs-develop-deploy-mac.md">使用轻型网站</a>。 随着你的网站的不断扩大和你的需求的变化，你可以轻松升级到云服务。
 
 
 通过学习本教程，你将可以生成一个托管在 Web 角色中的简单 Web 应用程序。你将使用计算模拟器在本地测试你的应用程序，然后使用 PowerShell 命令行工具来部署该应用程序。
@@ -37,7 +37,7 @@
 > [AZURE.NOTE]本教程使用 Azure PowerShell，因此需要在 Windows 上运行。
 
 - 安装和配置 [Azure PowerShell](/documentation/articles/install-configure-powershell)。
-- 下载并安装 [Azure SDK for .NET 2.7](http://www.microsoft.com/zh-CN/download/details.aspx?id=48178)。在安装设置中，选择：
+- 下载并安装 [Azure SDK for .NET 2.7](http://www.microsoft.com/zh-cn/download/details.aspx?id=48178)。在安装设置中，选择：
     - MicrosoftAzureAuthoringTools
     - MicrosoftAzureComputeEmulator
 
@@ -172,7 +172,7 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 
 	![Remove-AzureService 命令的状态](./media/cloud-services-nodejs-develop-deploy-app/node49.png)
 
-	> [AZURE.NOTE]删除服务不会删除最初发布服务时所创建的存储帐户，并且你仍需为使用的存储付费。有关删除存储帐户的详细信息，请参阅[如何从 Azure 订阅中删除存储帐户](http://msdn.microsoft.com/library/windowsazure/hh531562.aspx)。
+	> [AZURE.NOTE]删除服务不会删除最初发布服务时所创建的存储帐户，并且你仍需为使用的存储付费。有关删除存储帐户的详细信息，请参阅[如何从 Azure 订阅中删除存储帐户](http://msdn.microsoft.com/zh-cn/library/windowsazure/hh531562.aspx)。
 
 ## 后续步骤
 
@@ -190,7 +190,8 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 [Internet Explorer displaying the save as dialog for the publishSettings file.]: ./media/cloud-services-nodejs-develop-deploy-app/getting-started-14.png
 
 [The full status output of the Publish-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node20.png
-[How to Delete a Storage Account from an Azure Subscription]: /documentation/articles/storage-manage-storage-account
+[How to Delete a Storage Account from an Azure Subscription]: /documentation/articles/storage-manage-storage-account/
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
+ 
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0104_2016-->

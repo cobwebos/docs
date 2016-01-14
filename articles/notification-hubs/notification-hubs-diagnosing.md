@@ -7,10 +7,9 @@
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="notification-hubs" 
-
-	ms.date="07/14/2015" 
+<tags
+	ms.service="notification-hubs"
+	ms.date="10/27/2015" 
 	wacn.date=""/>
 
 #Azure 通知中心 - 诊断指南
@@ -19,7 +18,8 @@
 
 我们从 Azure 通知中心客户处收到的最常见问题之一是如何找出以下问题的原因：他们看不到从应用程序后端发送的通知显示在客户端设备上，删除通知的位置和原因以及如何修复此类问题。在本文中，我们将查看为什么通知被删除或没有在设备上终止的各种原因。我们还将浏览你可以用来分析和找出根本原因的方法。
 
-首先，理解 Azure 通知中心如何将通知推送到设备很重要。![][0]
+首先，理解 Azure 通知中心如何将通知推送到设备很重要。
+![][0]
 
 在典型的发送通知工作流中，消息是从**应用程序后端**发送到 **Azure 通知中心 (NH)**，这反过来会处理将确定“目标”的已配置标记和标记表达式考虑在内的所有注册，即需要接收推送通知的所有注册。这些注册可以横跨各种受支持的平台 - iOS、Google、Windows、Windows Phone、Kindle 和 Baidu for China Android。建立目标之后，NH 将推送出通知，将通知拆分为多个批量发送到设备平台专用**推送通知服务 (PNS)**（例如，APNS for Apple、GCM for Google 等）。NH 使用各自的 PNS（基于你在配置通知中心页面上的 Azure 门户中设置的凭据）进行身份验证。然后，PNS 会将通知转发到各自的**客户端设备**。这是平台推荐的方式，用以传递推送通知，并且注意通知传递的最后 Leg 在平台 PNS 和设备之间发生。因此，我们有四个主要组件（*客户端*、*应用程序后端*、*Azure 通知中心 (NH)* 和*推送通知服务 (PNS)*）并且这些组件的任意一个都有可能导致通知被删除。可在[通知中心概述]中找到有关此体系结构的更多详细信息。
 
@@ -112,7 +112,7 @@ Azure 通知中心需要在开发人员的应用程序的环境中对自身进�
 
 	![][8]
  
-	> [AZURE.NOTE]编辑注册的 Visual Studio 功能应该只能在开发/测试有限的注册时使用。如果出现批量修复你的注册的需求，可以考虑使用此处[导入/导出注册]（只在标准层可用）描述的导出/导入注册功能
+	> [AZURE.NOTE]编辑注册的 Visual Studio 功能应该只能在开发/测试有限的注册时使用。如果需要批量修复注册，可以考虑使用[导入/导出注册](https://msdn.microsoft.com/library/dn790624.aspx)中所述的导出/导入注册功能
 
 2. **服务总线资源管理器**
 
@@ -142,7 +142,8 @@ Azure 通知中心需要在开发人员的应用程序的环境中对自身进�
 
 **EnableTestSend 属性**
 
-当你通过通知中心发送通知时，起初只要对 NH 排队以进行处理，从而找到它的所有目标，然后最终 NH 将它发送到 PNS。这意味着，当你使用 REST API 或任意客户端 SDK 时，你的发送调用的成功返回只表示消息已成功在通知中心中排队。当 NH 最终准备将消息发送到 PNS 时，它不会深入探索发生了什么情况。如果你的通知没有到达客户端设备，则可能在 NH 尝试将消息传递到 PNS 时出现错误。例如，负载大小超出了 PNS 允许的上限，或者在 NH 中配置的凭据无效等。若要深入分析 PNS 错误，我们引入了一个名为 [EnableTestSend 功能]的属性。当你从门户或 Visual Studio 客户端中发送测试消息时，系统会自动启用此属性，从而允许你查看详细的调试信息。根据 .NET SDK 的示例，你可以通过 API 使用此属性，其现在可用，并且最终将被添加到所有客户端 SDK。若要和 REST 调用一起使用此属性，直接在你的发送调用的末尾附加名为“test”的查询字符串参数。例如：
+当你通过通知中心发送通知时，起初只要对 NH 排队以进行处理，从而找到它的所有目标，然后最终 NH 将它发送到 PNS。这意味着，当你使用 REST API 或任意客户端 SDK 时，你的发送调用的成功返回只表示消息已成功在通知中心中排队。当 NH 最终准备将消息发送到 PNS 时，它不会深入探索发生了什么情况。如果你的通知没有到达客户端设备，则可能在 NH 尝试将消息传递到 PNS 时出现错误。例如，负载大小超出了 PNS 允许的上限，或者在 NH 中配置的凭据无效等。
+若要深入分析 PNS 错误，我们引入了一个名为 [EnableTestSend 功能]的属性。当你从门户或 Visual Studio 客户端中发送测试消息时，系统会自动启用此属性，从而允许你查看详细的调试信息。根据 .NET SDK 的示例，你可以通过 API 使用此属性，其现在可用，并且最终将被添加到所有客户端 SDK。若要和 REST 调用一起使用此属性，直接在你的发送调用的末尾附加名为“test”的查询字符串参数。例如：
 
 	https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
 
@@ -180,9 +181,9 @@ Azure 通知中心需要在开发人员的应用程序的环境中对自身进�
 
 ###查看遥测 
 
-1. **使用 Azure 门户**
+1. **使用 Azure 管理门户**
 
-	通过 Azure 门户，你可以获取有关通知中心上所有活动的快速概述。
+	通过该门户可以获取有关通知中心上所有活动的快速概述。
 	
 	a) 从“仪表板”选项卡上，你可以查看注册、通知以及每个平台的错误的汇总视图。
 	
@@ -224,7 +225,7 @@ Azure 通知中心需要在开发人员的应用程序的环境中对自身进�
 [模板指南]: https://msdn.microsoft.com/zh-cn/library/dn530748.aspx
 [APNS 指南]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW4
 [GCM 指南]: http://developer.android.com/google/gcm/adv.html
-[导入/导出注册]: http://msdn.microsoft.com/zh-cn/library/dn790624.aspx
+[Export/Import Registrations]: http://msdn.microsoft.com/zh-cn/library/dn790624.aspx
 [ServiceBus 资源管理器]: http://msdn.microsoft.com/zh-cn/library/dn530751.aspx
 [ServiceBus 资源管理器代码]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
 [VS 服务器资源管理器概述]: http://msdn.microsoft.com/zh-cn/library/windows/apps/xaml/dn792122.aspx
@@ -234,4 +235,4 @@ Azure 通知中心需要在开发人员的应用程序的环境中对自身进�
 [以编程方式遥测访问]: http://msdn.microsoft.com/zh-cn/library/azure/dn458823.aspx
 [通过 API 示例遥测访问]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

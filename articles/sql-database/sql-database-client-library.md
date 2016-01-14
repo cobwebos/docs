@@ -9,13 +9,13 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="08/25/2015"
+   ms.date="12/01/2015"
    wacn.date=""/>
 
 # 使用 C&#x23; 创建和管理 SQL 数据库
 
 > [AZURE.SELECTOR]
-- [Azure 预览门户](/documentation/articles/sql-database-elastic-pool-portal)
+- [Azure 门户](/documentation/articles/sql-database-elastic-pool-portal)
 - [C#](/documentation/articles/sql-database-client-library)
 - [PowerShell](/documentation/articles/sql-database-elastic-pool-powershell)
 
@@ -51,7 +51,7 @@
 
 [Azure 资源管理器 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dn948464.aspx) 使用 Azure Active Directory 进行身份验证，而不是早期 Azure 服务管理 REST API 使用的证书。
 
-若要基于当前的用户对客户端应用程序进行身份验证，你必须先将该应用程序注册到与创建了 Azure 资源的订阅关联的 AAD 域中。如果 Azure 订阅是以 Microsoft 帐户而不是工作或学校帐户创建的，则你已经有了默认的 AAD 域。可以在[管理门户](https://manage.windowsazure.cn/)中完成应用程序的注册。
+若要基于当前的用户对客户端应用程序进行身份验证，你必须先将该应用程序注册到与创建了 Azure 资源的订阅关联的 AAD 域中。如果 Azure 订阅是以 Microsoft 帐户而不是工作或学校帐户创建的，则你已经有了默认的 AAD 域。可以在[经典门户](https://manage.windowsazure.cn/)中完成应用程序的注册。
 
 若要创建新应用程序并将其注册到正确的 Active Directory 中，请执行以下操作：
 
@@ -101,7 +101,7 @@
 
 代码中需要用到域名。轻松标识正确域名的一种方式是：
 
-1. 转到 [Azure 门户](http://manage.windowsazure.cn)。
+1. 转到 [Azure 门户](https://manage.windowsazure.cn)。
 2. 将鼠标悬停在右上角的名称上，并记下弹出窗口中显示的域。
 
     ![标识域名][3]
@@ -131,7 +131,7 @@
                 + "domain.partner.onmschina.cn" /* Tenant ID or AAD domain */);
 
         AuthenticationResult token = authContext.AcquireToken
-            ("https://manage.windowsazure.cn/"/* the Azure Resource Management endpoint */, 
+            ("https://management.azure.com/"/* the Azure Resource Management endpoint */, 
                 "aa00a0a0-a0a0-0000-0a00-a0a00000a0aa" /* application client ID from AAD*/, 
         new Uri("urn:ietf:wg:oauth:2.0:oob") /* redirect URI */, 
         PromptBehavior.Auto /* with Auto user will not be prompted if an unexpired token is cached */);
@@ -445,7 +445,7 @@ SQL 数据库包含在服务器中。服务器名称在所有 Azure SQL Server �
                 + "domain.partner.onmschina.cn" /* Tenant ID or AAD domain */);
 
             AuthenticationResult token = authContext.AcquireToken
-                ("https://manage.windowsazure.cn/"/* the Azure Resource Management endpoint */, 
+                ("https://management.azure.com/"/* the Azure Resource Management endpoint */, 
                 "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" /* application client ID from AAD*/, 
                 new Uri("urn:ietf:wg:oauth:2.0:oob") /* redirect URI */, 
                 PromptBehavior.Auto /* with Auto user will not be prompted if an unexpired token is cached */);
@@ -460,7 +460,7 @@ SQL 数据库包含在服务器中。服务器名称在所有 Azure SQL Server �
                 + "YOU.partner.onmschina.cn" /* Tenant ID or AAD domain */);
 
             AuthenticationResult token = authContext.AcquireToken(
-                "https://manage.windowsazure.cn/"/* the Azure Resource Management endpoint */,
+                "https://management.azure.com/"/* the Azure Resource Management endpoint */,
                 "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" /* application client ID from AAD*/,
                 userCredential);
 
@@ -794,4 +794,4 @@ SQL 数据库包含在服务器中。服务器名称在所有 Azure SQL Server �
 [8]: ./media/sql-database-client-library/add-application2.png
 [9]: ./media/sql-database-client-library/clientid.png
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0104_2016-->

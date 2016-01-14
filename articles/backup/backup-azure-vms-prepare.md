@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="backup"
-	ms.date="11/02/2015"
+	ms.date="11/17/2015"
 	wacn.date=""/>
 
 # 进行备份 Azure 虚拟机所需的环境准备
-备份 Azure 虚拟机之前，你需要符合这些先决条件才能对环境进行准备。如果你已符合这些条件，则可开始[备份 VM](backup-azure-vms.md)，否则请继续完成下面的步骤，确保你的环境已准备就绪。
+备份 Azure 虚拟机 (VM) 之前，你需要符合这些先决条件才能对环境进行准备。如果已满足这些条件，则可以开始[备份你的 VM](backup-azure-vms.md)。否则请继续完成下面的步骤，确保你的环境已准备就绪。
 
 
 ## 1\.备份保管库
@@ -41,7 +41,7 @@
 
     ![创建保管库 toast 通知](./media/backup-azure-vms-prepare/creating-vault.png)
 
-6. 将出现一条消息来确认保管库已成功创建，并且将在“恢复服务”页上将保管库列出为“活动”保管库。确保在创建保管库后立即选择适当的存储冗余选项。阅读有关[在备份保管库中设置存储冗余选项](backup-configure-vault.md#azure-backup---storage-redundancy-options)的更多内容。
+6. 将出现一条消息来确认保管库已成功创建，并且将在“恢复服务”页上将保管库列出为“活动”保管库。确保在创建保管库后立即选择适当的存储冗余选项。阅读有关[在备份保管库中设置存储冗余选项](/documentation/articles/backup-configure-vault#azure-backup---storage-redundancy-options)的更多内容。
 
     ![备份保管库列表](./media/backup-azure-vms-prepare/backup_vaultslist.png)
 
@@ -55,15 +55,15 @@
 
 ![网络连接](./media/backup-azure-vms-prepare/step2.png)
 
-备份扩展需要连接到 Azure 公共 IP 才能正常运行，因为它需要将命令发送到 Azure 存储终结点 (HTTP URL) 来管理 VM 的快照。没有正常的 Internet 连接，这些来自 VM 的 HTTP 请求就会超时，备份操作就会失败。
+备份扩展需要连接到 Azure 公共 IP 地址才能正常运行，因为它需要将命令发送到 Azure 存储终结点 (HTTP URL) 来管理 VM 的快照。没有正常的 Internet 连接，这些来自 VM 的 HTTP 请求就会超时，备份操作就会失败。
 
 ### NSG 的网络限制
 
-如果你的部署设置了访问限制（例如，通过网络安全组设置了访问限制），则需采取其他步骤来确保到 Azure 备份保管库的备份流量不受影响。
+如果你的部署设置了访问限制（例如，通过网络安全组 (NSG) 设置了访问限制），则需采取其他步骤来确保到备份保管库的备份流量不受影响。
 
 可以通过两种方法来提供备份流量的路径：
 
-1. 将 [Azure 数据中心 IP 范围](http://www.microsoft.com/zh-CN/download/details.aspx?id=41653)加入白名单。
+1. 将 [Azure 数据中心 IP 范围](http://www.microsoft.com/zh-cn/download/details.aspx?id=41653)加入允许列表。
 2. 部署 HTTP 代理以路由流量。
 
 需要在可管理性、精细控制和成本之间进行平衡。
@@ -78,7 +78,7 @@
 
 >[AZURE.NOTE]至于应该使用何种代理软件，我们不提供任何建议。请确保你选取的代理可以进行下述配置步骤。
 
-在以下示例中，需要对应用 VM 进行配置，以便将代理 VM 用于所有绑定到公共 Internet 的 HTTP 流量。需要将代理 VM 配置为允许来自 VNET 中 VM 的传入流量。最后，NSG（也称 *NSG-lockdown*）需要一个新的安全规则，以便允许从代理 VM 流出的出站 Internet 流量。
+在以下示例中，需要对应用 VM 进行配置，以便将代理 VM 用于所有绑定到公共 Internet 的 HTTP 流量。需要将代理 VM 配置为允许来自虚拟网络中 VM 的传入流量。最后，NSG（也称 *NSG-lockdown*）需要一个新的安全规则，以便允许从代理 VM 流出的出站 Internet 流量。
 
 ![NSG 与 HTTP 代理部署图](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
 
@@ -107,21 +107,21 @@ HttpProxy.Port=<proxy port>
 
 **B) 在代理服务器上允许传入连接：**
 
-1. 在代理服务器上打开 Windows 防火墙；右键单击“入站规则”，然后单击“新建规则...”。
+1. 在代理服务器上打开 Windows 防火墙。右键单击“入站规则”，然后单击“新建规则...”。
 
 	![打开防火墙](./media/backup-azure-vms-prepare/firewall-01.png)
 
 	![创建新规则](./media/backup-azure-vms-prepare/firewall-02.png)
-2. 在“新建入站规则向导”中针对“规则类型”选择“自定义”选项，然后单击“下一步”。若要在屏幕中选择“程序”，可先选择“所有程序”，然后单击“下一步”。
+2. 在“新建入站规则向导”中针对“规则类型”选择“自定义”选项，然后单击“下一步”。若要在页面上选择“程序”，可先选择“所有程序”，然后单击“下一步”。
 
-3. 在“协议和端口”屏幕中，请使用下表中的输入，然后单击“下一步”：
+3. 在“协议和端口”页面中，请使用下表中的输入，然后单击“下一步”：
 
 	![创建新规则](./media/backup-azure-vms-prepare/firewall-03.png)
 
 | “输入”字段 | 值 |
 | --- | --- |
 | 协议类型 | TCP |
-| 本地端口 | 在下拉列表中选择“特定端口”，然后在文本框中输入已配置的```<Proxy Port>```。 |
+| 本地端口 | 在下拉列表中选择“特定端口”。在文本框中输入已配置的```<Proxy Port>```。 |
 | 远程端口 | 在下拉列表中选择“所有端口”。 |
 
 至于该向导的其余部分，可一路单击到最后，然后为此规则指定一个名称。
@@ -151,9 +151,9 @@ VM 代理已存在于从 Azure 库创建的 VM 中。但是，从本地数据中
 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
-| 安装 VM 代理 | <li>下载并安装[代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。你需要有管理员权限才能完成安装。<li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，指明已安装代理。 | <li>从 github 安装最新 [Linux 代理](https://github.com/Azure/WALinuxAgent)。你需要有管理员权限才能完成安装。<li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，指明已安装代理。 |
+| 安装 VM 代理 | <li>下载并安装[代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。你需要有管理员权限才能完成安装。<li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，指明已安装代理。 | <li>从 GitHub 安装最新的 [Linux 代理](https://github.com/Azure/WALinuxAgent)。你需要有管理员权限才能完成安装。<li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，指明已安装代理。 |
 | 更新 VM 代理 | 更新 VM 代理与重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。<br><br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 | 按照[更新 Linux VM 代理](../virtual-machines-linux-update-agent.md)上的说明进行操作。<br><br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
-| 验证 VM 代理安装 | <li>导航到 Azure VM 中的 *C:\\WindowsAzure\\Packages* 文件夹。<li>你应会发现 WaAppAgent.exe 文件已存在。<li> 右键单击该文件，转到“属性”，然后选择“详细信息”选项卡。“产品版本”字段应为 2.6.1198.718 或更高 | - |
+| 验证 VM 代理安装 | <li>导航到 Azure VM 中的 *C:\\WindowsAzure\\Packages* 文件夹。<li>你应会发现 WaAppAgent.exe 文件已存在。<li> 右键单击该文件，转到“属性”，然后选择“详细信息”选项卡。“产品版本”字段应为 2.6.1198.718 或更高。| - |
 
 
 了解 [VM 代理](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)以及[如何安装它](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)。
@@ -169,26 +169,27 @@ VM 代理已存在于从 Azure 库创建的 VM 中。但是，从本地数据中
 
 - 不支持备份基于 Azure 资源管理器（即 IaaS V2）的虚拟机。
 - 不支持备份超过 16 个数据磁盘的虚拟机。
-- 不支持备份使用“高级”存储空间的虚拟机。
-- 不支持备份使用多个保留 IP 的虚拟机。
-- 不支持备份使用保留 IP 且未定义终结点的虚拟机。
-- 不支持备份使用多个 NIC 的虚拟机。
-- 不支持备份采用负载平衡配置（内部和面向 Internet）的虚拟机。
+- 不支持备份使用高级存储的虚拟机。
+- 不支持备份使用保留 IP 地址且未定义终结点的虚拟机。
 - 不支持在恢复过程中替换现有虚拟机。首先删除现有虚拟机以及任何关联的磁盘，然后从备份恢复数据。
 - 不支持跨区域备份和恢复。
-- Azure 的所有公共区域都支持使用 Azure 备份服务来备份虚拟机。下面是支持区域的[清单](http://azure.microsoft.com/regions/#services)。在创建保管库期间，如果你要寻找的区域目前不受支持，则不会在下拉列表中显示它。
-- 只有特定的操作系统版本才支持使用 Azure 备份服务进行虚拟机备份。
-  - **Linux**：[此处](../virtual-machines-linux-endorsed-distributions.md)提供了 Azure 认可的分发版列表。只要虚拟机上装有 VM 代理，其他自带的 Linux 分发版应该也能正常运行。
+- Azure 的所有公共区域都支持使用 Azure 备份服务来备份虚拟机（请参阅受支持区域的[清单](http://azure.microsoft.com/regions/#services)）。在创建保管库期间，如果你要寻找的区域目前不受支持，则不会在下拉列表中显示它。
+- 只有特定的操作系统版本才支持使用 Azure 备份服务备份虚拟机。
+  - **Linux**：请参阅 [Azure 认可的分发版列表](../virtual-machines-linux-endorsed-distributions.md)。只要虚拟机上装有 VM 代理，其他自带的 Linux 分发版应该也能正常运行。
   - **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
-- 仅支持通过 PowerShell 还原属于多 DC 配置的域控制器 VM。阅读有关[还原多 DC 域控制器](backup-azure-restore-vms.md#restoring-domain-controller-vms)的详细信息
+- 仅支持通过 PowerShell 还原属于多 DC 配置的域控制器 (DC) VM。阅读有关[还原多 DC 域控制器](backup-azure-restore-vms.md#restoring-domain-controller-vms)的详细信息。
+- 仅支持通过 PowerShell 还原采用以下特殊网络配置的虚拟机。还原操作完成后，在 UI 中使用还原工作流创建的虚拟机将不采用这些网络配置。若要了解详细信息，请参阅[还原采用特殊网络配置的 VM](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations)。
+	- 采用负载平衡器配置的虚拟机（内部和外部）
+	- 使用多个保留 IP 地址的虚拟机
+	- 使用多个网络适配器的虚拟机
 
 ## 有疑问？
 如果你有疑问，或者希望包含某种功能，请[给我们反馈](http://aka.ms/azurebackup_feedback)。
 
 ## 后续步骤
 
-- [计划 VM 备份基础结构](backup-azure-vms-introduction.md)
-- [备份虚拟机](backup-azure-vms.md)
-- [管理虚拟机备份](backup-azure-manage-vms.md)
+- [计划 VM 备份基础结构](/documentation/articles/backup-azure-vms-introduction)
+- [备份虚拟机](/documentation/articles/backup-azure-vms)
+- [管理虚拟机备份](/documentation/articles/backup-azure-manage-vms)
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

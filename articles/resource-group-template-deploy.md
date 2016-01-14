@@ -9,17 +9,32 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="11/13/2015"
+   ms.date="12/08/2015"
    wacn.date=""/>
 
 # 使用 Azure 资源管理器模板部署应用程序
 
-本主题介绍如何使用 Azure 资源管理器模板向 Azure 部署应用程序。它将说明如何使用 Azure PowerShell、Azure CLI、REST API 或 Microsoft Azure 门户部署应用程序。
+本主题介绍如何使用 Azure 资源管理器模板向 Azure 部署应用程序。它将说明如何使用 Azure PowerShell、Azure CLI、REST API 或 Azure 门户部署应用程序。
 
 有关资源管理器的简介，请参阅 [Azure 资源管理器概述](/documentation/articles/resource-group-overview)。若要了解有关创建模板的信息，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
 
 在使用模板部署应用程序时，可以提供参数值来自定义如何创建资源。以内联方式或者在参数文件中指定这些参数的值。
 
+## 增量部署和完整部署
+
+默认情况下，资源管理器会将部署视为对资源组的增量更新。进行增量部署时，资源管理器将会：
+
+- 使资源组中存在的、但未在模板中指定的资源**保留不变**
+- **添加**模板中指定的、但不在资源组中的资源 
+- **不会重新预配**资源组中存在的、与模板中定义的条件相同的资源
+
+你可以通过 Azure PowerShell 或 REST API 指定对资源组进行完整更新。Azure CLI 目前不支持完整部署。进行完整部署时，资源管理器将会：
+
+- **删除**资源组中存在的、但未在模板中指定的资源
+- **添加**模板中指定的、但不在资源组中的资源 
+- **不会重新预配**资源组中存在的、与模板中定义的条件相同的资源
+ 
+可以通过 **Mode** 属性指定部署的类型。
 
 ## 使用 PowerShell 进行部署
 
@@ -28,19 +43,9 @@
 
 1. 登录到你的 Azure 帐户。提供凭据后，该命令将返回有关你的帐户的信息。
 
-    早于 Azure PowerShell 1.0 预览版：
+    Azure PowerShell 1.0：
 
-        PS C:\> Switch-AzureMode AzureResourceManager
-        ...
-        PS C:\> Add-AzureAccount
-
-        Id                             Type       ...
-        --                             ----    
-        someone@example.com            User       ...   
-
-    Azure PowerShell 1.0 预览版：
-
-         PS C:\> Login-AzureRmAccount
+         PS C:\> Login-AzureRmAccount -Environment $(Get-AzureRmEnvironment -Name AzureChinaCloud)
 
          Evironment : AzureCloud
          Account    : someone@example.com
@@ -91,10 +96,18 @@
           Mode              : Incremental
           ...
 
+     若要运行完整部署，请将 **Mode** 设置为 **Complete**。
+
+          PS C:\> New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -Mode Complete
+          Confirm
+          Are you sure you want to use the complete deployment mode? Resources in the resource group 'ExampleResourceGroup' which are not
+          included in the template will be deleted.
+          [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+
 6. 获取有关部署错误的信息。
 
         PS C:\> Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -Name ExampleDeployment
-
+        
         
 ### 视频
 
@@ -186,7 +199,7 @@
              }
            }
    
-3. 创建新的资源组部署。提供你的订阅 ID、要部署的资源组的名称、部署的名称以及模板的位置。有关模板文件的信息，请参阅[参数文件](./#parameter-file)。有关使用 REST API 创建资源组的详细信息，请参阅[创建模板部署](https://msdn.microsoft.com/zh-cn/library/azure/dn790564.aspx)。
+3. 创建新的资源组部署。提供你的订阅 ID、要部署的资源组的名称、部署的名称以及模板的位置。有关模板文件的信息，请参阅[参数文件](./#parameter-file)。有关使用 REST API 创建资源组的详细信息，请参阅[创建模板部署](https://msdn.microsoft.com/zh-cn/library/azure/dn790564.aspx)。若要运行完整部署，请将 **mode** 设置为 **Complete**。
     
          PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
             <common headers>
@@ -215,14 +228,13 @@
 
 有关将 Visual Studio 用于资源组的简介，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](/documentation/articles/vs-azure-tools-resource-groups-deployment-projects-create-deploy)
 
-## 使用预览门户进行部署
+## 使用门户进行部署
 
-你猜会怎样？ 通过[预览门户](https://manage.windowsazure.cn)创建的每个应用程序均受 Azure 资源管理器模板支持！ 只需通过门户创建虚拟机、虚拟网络、存储帐户、应用程序服务或数据库，就能享用 Azure 资源管理器的优势，且不用额外地增加工作量。
-只需选择“新建”图标，你便可开始通过 Azure 资源管理器部署应用程序。
+你猜会怎样？ 通过[预览门户](https://manage.windowsazure.cn)创建的每个应用程序均受 Azure 资源管理器模板支持！ 只需通过门户创建虚拟机、虚拟网络、存储帐户、应用程序服务或数据库，就能享用 Azure 资源管理器的优势，且不用额外地增加工作量。只需选择“新建”图标，你便可开始通过 Azure 资源管理器部署应用程序。
 
 ![新建](./media/resource-group-template-deploy/new.png)
 
-有关将门户与 Azure 资源管理器配合使用的详细信息，请参阅[使用 Azure 预览门户管理 Azure 资源](azure-portal/resource-group-portal.md)。
+有关将门户与 Azure 资源管理器配合使用的详细信息，请参阅[使用 Azure 门户管理 Azure 资源](azure-portal/resource-group-portal.md)。
 
 
 ## 参数文件
@@ -249,11 +261,11 @@
 
 ## 后续步骤
 - 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](/documentation/articles/arm-template-deployment)
-- 有关进一步了解部署应用程序的示例，请参阅[按可预见的方式在 Azure 中预配和部署微服务](app-service-web/app-service-deploy-complex-application-predictably.md)
+- 有关部署应用程序的详细示例，请参阅[按可预见的方式在 Azure 中预配和部署微服务](app-service-web/app-service-deploy-complex-application-predictably.md)
 - 有关将解决方案部署到不同环境的指南，请参阅 [Microsoft Azure 中的开发和测试环境](/documentation/articles/solution-dev-test-environments-preview-portal)。
 - 若要了解 Azure 资源管理器模板的节，请参阅[创作模板](/documentation/articles/resource-group-authoring-templates)。
 - 有关可在 Azure 资源管理器模板中使用的函数列表，请参阅[模板函数](/documentation/articles/resource-group-template-functions)。
 
  
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

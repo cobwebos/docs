@@ -1,10 +1,5 @@
 > [AZURE.SELECTOR]
-- [.NET](/storage-dotnet-how-to-use-files)
-- [Node.js]()
-- [Java](/storage-java-how-to-use-file-storage)
-- [C++]()
-- [PHP]()
-- [Ruby]()
-- [Python]()
+- [.NET](/documentation/articles/storage-dotnet-how-to-use-files)
+- [Java](/documentation/articles/storage-java-how-to-use-file-storage)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

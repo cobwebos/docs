@@ -15,7 +15,7 @@
 
 服务总线示例演示了服务总线（云服务）和 Windows Server 服务总线中的主要功能。本文分类并介绍了可用的示例，每个示例均具有链接。
 
->[AZURE.NOTE] 服务总线示例未安装 SDK。若要获取这些示例，请访问 [Azure SDK 示例页](https://code.msdn.microsoft.com/windowsazure)。
+>[AZURE.NOTE]服务总线示例未安装 SDK。若要获取这些示例，请访问 [Azure SDK 示例页](https://code.msdn.microsoft.com/windowsazure)。
 
 ## 服务总线中转消息传送
 
@@ -25,7 +25,7 @@
 
 ### 获取 Azure 服务总线的连接字符串
 
-1. 登录到 [Azure 门户](http://manage.windowsazure.cn)。
+1. 登录到 [Azure 经典门户](http://manage.windowsazure.cn)。
 
 2. 在左侧列中，单击“服务总线”。
 
@@ -53,7 +53,7 @@
 |---|---|---|---|
 |[入门：使用队列传送消息](http://code.msdn.microsoft.com/Getting-Started-Brokered-aa7a0ac3)|演示如何使用 Microsoft Azure 服务总线发送和接收来自队列的消息。|1\.8|Microsoft Azure 服务总线；Windows Server 服务总线|
 |[入门：使用主题传送消息](http://code.msdn.microsoft.com/Getting-Started-Brokered-614d42e5)|演示如何使用 Microsoft Azure 服务总线发送和接收来自具有多个订阅的主题的消息。|1\.8|Microsoft Azure 服务总线；Windows Server 服务总线|
-|[事件中心入门](http://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097)|演示事件中心的基本功能，例如创建事件中心、将事件发送到事件中心，以及使用 EventProcessor 处理事件。|2\.4|Microsoft Azure 服务总线|
+|[事件中心入门](http://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097)|演示事件中心的基本功能，例如创建事件中心、将事件发送到事件中心，以及使用 EventProcessor 处理事件。|2\.4|Microsoft Azure Service Bus|
 
 ### 探索功能
 
@@ -88,11 +88,11 @@
 
 |示例名称|说明|最低 SDK 版本|可用性|
 |---|---|---|---|
-|[中继消息传送：Azure](http://code.msdn.microsoft.com/Relayed-Messaging-Windows-0d2cede3)|演示如何在 Azure 上运行服务总线客户端和服务。本示例以编程方式配置服务总线。唯一的环境和安全信息存储在配置文件中。|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送身份验证：共享密钥](http://code.msdn.microsoft.com/Relayed-Messaging-92b04c02)|演示如何使用颁发者名称和颁发者密码对服务总线进行身份验证。|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送身份验证：WebNoAuth](http://code.msdn.microsoft.com/Relayed-Messaging-a4f0b831)|演示如何公开不需要客户端用户身份验证的 HTTP 服务。|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送绑定：WebHttp](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-a6477ba0)|演示如何使用 **WebHttpRelayBinding** 绑定返回使用 Web 编程模型的二进制数据。|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送绑定：NetTcp 中继](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-2dec7692)|演示如何使用 **NetTcpRelayBinding** 绑定。|1\.8|Microsoft Azure 服务总线|
+|[中继消息传送：Azure](http://code.msdn.microsoft.com/Relayed-Messaging-Windows-0d2cede3)|演示如何在 Azure 上运行服务总线客户端和服务。本示例以编程方式配置服务总线。唯一的环境和安全信息存储在配置文件中。|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送身份验证：共享密钥](http://code.msdn.microsoft.com/Relayed-Messaging-92b04c02)|演示如何使用颁发者名称和颁发者密码对服务总线进行身份验证。|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送身份验证：WebNoAuth](http://code.msdn.microsoft.com/Relayed-Messaging-a4f0b831)|演示如何公开不需要客户端用户身份验证的 HTTP 服务。|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送绑定：WebHttp](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-a6477ba0)|演示如何使用 **WebHttpRelayBinding** 绑定返回使用 Web 编程模型的二进制数据。|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送绑定：NetTcp 中继](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-2dec7692)|演示如何使用 **NetTcpRelayBinding** 绑定。|1\.8|Microsoft Azure Service Bus|
 
 ### 探索功能
 
@@ -100,16 +100,16 @@
 
 |示例名称|说明|最低 SDK 版本|可用性|
 |---|---|---|---|
-|[中继消息传送身份验证：简单的 WebToken](http://code.msdn.microsoft.com/Relayed-Messaging-32c74392)|演示如何使用简单的 Web 令牌凭据进行服务总线身份验证。该示例类似于 Echo 示例，但具有一些更改。具体而言，此示例在 ServiceHost（服务）和 ChannelFactory （客户端）应用程序中添加了一个动作。|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送：负载平衡](http://code.msdn.microsoft.com/Relayed-Messaging-Load-bd76a9f8)|演示如何使用 Microsoft Azure 服务总线将消息路由到多个接收方。它介绍了通过 **NetTcpRelayBinding** 绑定与客户端进行的简单服务通信的多个实例|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送绑定：Net 事件](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-c0176977)|演示如何使用 Microsoft Azure 服务总线上的 **NetEventRelayBinding** 绑定。|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送绑定：WS2007Http 会话](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-ef1f1fcb)|演示如何使用启用了可靠会话的 **WS2007HttpRelayBinding** 绑定。还演示如何在配置文件中而不是以编程方式指定服务总线凭据。|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送绑定：WS2007Http MsgSecCertificate](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-f29c9da5)|演示如何使用具有消息安全的 **WS2007HttpRelayBinding** 绑定来确保端到端消息安全，并且仍要求客户端对服务总线进行身份验证。|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送：元数据交换](http://code.msdn.microsoft.com/Relayed-Messaging-Metadata-f122312e)|演示如何公开使用中继绑定的元数据终结点。以下中继绑定支持 **MetadataExchange**：**NetTcpRelayBinding**、**NetOnewayRelayBinding**、**BasicHttpRelayBinding** 和 **WS2007HttpRelayBinding**。|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送绑定：NetTcp Direct](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-ca039161)|演示如何将 **NetTcpRelayBinding** 绑定配置为支持“混合”连接模式，这种连接模式首先建立一个中继连接，可能的话，会自动切换到客户端和服务之间的直接连接。|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送绑定：NetTcp MsgSec UserName](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-30542392)|演示如何使用具有消息安全的 **NetTcpRelayBinding** 绑定。|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送绑定：Net Oneway](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-bb5b813a)|演示如何使用 **NetOnewayRelayBinding** 绑定公开和使用服务终结点。|1\.8|Microsoft Azure 服务总线|
-|[中继消息传送绑定：WS2007Http Simple](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-aa4b793a)|演示如何使用 **WS2007HttpRelayBinding** 绑定。演示了不使用安全选项且不需要客户端进行身份验证的简单服务。|1\.8|Microsoft Azure 服务总线|
+|[中继消息传送身份验证：简单的 WebToken](http://code.msdn.microsoft.com/Relayed-Messaging-32c74392)|演示如何使用简单的 Web 令牌凭据进行服务总线身份验证。该示例类似于 Echo 示例，但具有一些更改。具体而言，此示例在 ServiceHost（服务）和 ChannelFactory （客户端）应用程序中添加了一个动作。|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送：负载平衡](http://code.msdn.microsoft.com/Relayed-Messaging-Load-bd76a9f8)|演示如何使用 Microsoft Azure 服务总线将消息路由到多个接收方。它介绍了通过 **NetTcpRelayBinding** 绑定与客户端进行的简单服务通信的多个实例|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送绑定：Net 事件](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-c0176977)|演示如何使用 Microsoft Azure 服务总线上的 **NetEventRelayBinding** 绑定。|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送绑定：WS2007Http 会话](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-ef1f1fcb)|演示如何使用启用了可靠会话的 **WS2007HttpRelayBinding** 绑定。还演示如何在配置文件中而不是以编程方式指定服务总线凭据。|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送绑定：WS2007Http MsgSecCertificate](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-f29c9da5)|演示如何使用具有消息安全的 **WS2007HttpRelayBinding** 绑定来确保端到端消息安全，并且仍要求客户端对服务总线进行身份验证。|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送：元数据交换](http://code.msdn.microsoft.com/Relayed-Messaging-Metadata-f122312e)|演示如何公开使用中继绑定的元数据终结点。以下中继绑定支持 **MetadataExchange**：**NetTcpRelayBinding**、**NetOnewayRelayBinding**、**BasicHttpRelayBinding** 和 **WS2007HttpRelayBinding**。|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送绑定：NetTcp Direct](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-ca039161)|演示如何将 **NetTcpRelayBinding** 绑定配置为支持**混合**连接模式，这种连接模式首先建立一个中继连接，可能的话，会自动切换到客户端和服务之间的直接连接。|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送绑定：NetTcp MsgSec UserName](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-30542392)|演示如何使用具有消息安全的 **NetTcpRelayBinding** 绑定。|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送绑定：Net Oneway](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-bb5b813a)|演示如何使用 **NetOnewayRelayBinding** 绑定公开和使用服务终结点。|1\.8|Microsoft Azure Service Bus|
+|[中继消息传送绑定：WS2007Http Simple](http://code.msdn.microsoft.com/Relayed-Messaging-Bindings-aa4b793a)|演示如何使用 **WS2007HttpRelayBinding** 绑定。演示了不使用安全选项且不需要客户端进行身份验证的简单服务。|1\.8|Microsoft Azure Service Bus|
 
 ## 服务总线参考工具
 
@@ -118,7 +118,7 @@
 |示例名称|说明|最低 SDK 版本|可用性|
 |---|---|---|---|
 |[服务总线资源管理器](http://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)|服务总线资源管理器允许用户连接到服务总线服务命名空间并以一种简单的方式管理消息传送实体。该工具提供了各种高级功能，例如导入/导出功能以及测试消息实体和中继服务的功能。|1\.8|Microsoft Azure 服务总线；Windows Server 服务总线|
-|[授权：SBAzTool](http://code.msdn.microsoft.com/Authorization-SBAzTool-6fd76d93)|此示例演示了如何在 Microsoft Azure Active Directory（也称为访问控制服务或 ACS）中创建和管理服务标识，以便使用服务总线。|不适用|Microsoft Azure 服务总线|
+|[授权：SBAzTool](http://code.msdn.microsoft.com/Authorization-SBAzTool-6fd76d93)|此示例演示了如何在 Microsoft Azure Active Directory（也称为访问控制服务或 ACS）中创建和管理服务标识，以便使用服务总线。|不适用|Microsoft Azure Service Bus|
 
 ## 后续步骤
 
@@ -128,4 +128,4 @@
 - [服务总线体系结构](/documentation/articles/service-bus-architecture)
 - [服务总线基础知识](/documentation/articles/service-bus-fundamentals-hybrid-solutions)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

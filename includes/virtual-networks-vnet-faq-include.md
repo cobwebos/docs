@@ -124,7 +124,7 @@ Azure 会保留每个子网中的某些 IP 地址。子网的第一个和最后�
 
 ### VNet 的 DNS 选项有哪些？
 
-使用“[VM 和角色实例的名称解析](/documentation/articles/virtual-networks-name-resolution-for-vms-and-role-instances)”页的决策表，引导你浏览提供的所有 DNS 选项。
+使用[VM 和角色实例的名称解析](/documentation/articles/virtual-networks-name-resolution-for-vms-and-role-instances)页的决策表，引导你浏览提供的所有 DNS 选项。
 
 ### 是否可以为 VNet 指定 DNS 服务器？
 
@@ -143,7 +143,7 @@ Azure 会保留每个子网中的某些 IP 地址。子网的第一个和最后�
 
 Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。在此服务中，Azure 会注册所有 VM 和角色实例。此服务通过主机名为相同云服务内包含的 VM 和角色实例提供名称解析，并通过 FQDN 为相同 VNet 中的 VM 和角色实例提供名称解析。
 
-> [AZURE.NOTE]此时使用 Azure 提供的 DNS 进行跨租户名称解析时，虚拟网络中的前 100 个云服务具有限制。如果使用自己的 DNS 服务器，此限制则不适用。
+> [AZURE.NOTE] 此时使用 Azure 提供的 DNS 进行跨租户名称解析时，虚拟网络中的前 100 个云服务具有限制。如果使用自己的 DNS 服务器，此限制则不适用。
 
 ### 是否可以基于每个 VM/服务重写 DNS 设置？
 
@@ -193,7 +193,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。在此服�
 
 无变化。IP 地址（公共 VIP 和内部 IP 地址）将留在云服务或 VM 中。
 
-> [AZURE.NOTE]如果只想要关闭 VM，请不要使用管理门户执行此操作。目前，关闭按钮会释放虚拟机。
+> [AZURE.NOTE] 如果只想要关闭 VM，请不要使用管理门户执行此操作。目前，关闭按钮会释放虚拟机。
 
 ### 在无需重新部署的情况下，是否可以将 VM 从一个子网移动到 VNet 中的另一个子网？
 
@@ -205,7 +205,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。在此服�
 
 ### 创建 MAC 后，其地址是否在 VM 中保持不变？
 
-否。VM 的 MAC 地址可以因不同的原因更改。如果 VM 处于停止（释放）状态，如果更改 VM 大小，或者，如果没有主机服务器的服务修复或计划内的维护，MAC 地址则不会保留。
+否，但该地址只会在 VM 处于“已停止(已取消分配)”状态的情况下才会变化。如果更改 VM 大小、重新启动，或者需要进行服务修复或对主机服务器进行计划的维护，则会保留 MAC 地址。
 
 ### 是否可以通过 VNet 中的 VM 连接到 Internet？
 
@@ -257,4 +257,4 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间完�
 
 是的。PowerShell 和命令行工具可用于各种平台。可在[此处](https://msdn.microsoft.com/zh-cn/library/azure/jj152841.aspx)找到更多信息。
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

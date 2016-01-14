@@ -38,8 +38,7 @@
 
 1. 在“解决方案资源管理器”中，右键单击“AppBackend”项目，单击“添加”，然后单击“类”。将新类命名为 **AuthenticationTestHandler.cs**，然后单击“添加”以生成该类。通过此类可简单地使用*基本身份验证* 对用户进行身份验证。请注意，您的应用可以使用所有身份验证方案。
 
-2. 
-3. 在 AuthenticationTestHandler.cs 中，添加以下 `using` 语句：
+2. 在 AuthenticationTestHandler.cs 中，添加以下 `using` 语句：
 
         using System.Net.Http;
         using System.Threading;
@@ -289,7 +288,9 @@
 
 3. 在 **NotificationsController** 类中添加以下方法。
 
-	此代码将会根据平台通知服务 (PNS) `pns` 参数发送相应类型的通知。`to_tag` 的值用于设置消息中的 *username* 标记。此标记必须与活动的通知中心注册的用户名标记相匹配。将从 POST 请求的正文拉取通知消息。
+	此代码将会根据平台通知服务 (PNS) `pns` 参数发送相应类型的通知。`to_tag` 的值用于设置消息中的 *username* 标记。此标记必须与活动的通知中心注册的用户名标记相匹配。将从 POST 请求正文提取通知消息，并根据目标 PNS 将其格式化。
+
+	根据受支持设备用来接收通知的平台通知服务 (PNS)，支持使用不同的格式接收不同的通知。例如，在 Windows 设备上，可以使用其他 PNS 不能直接支持的 [toast 通知和 WNS](https://msdn.microsoft.com/library/windows/apps/br230849.aspx)。因此，后端需要将通知格式化为你打算使用的设备 PNS 所支持的通知。然后，对 [NotificationHubClient 类](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx)使用相应的 send API
 
         public async Task<HttpResponseMessage> Post(string pns, [FromBody]string message, string to_tag)
         {
@@ -334,9 +335,9 @@
         }
 
 
-4. 按 **F5** 以运行应用程序并确保到目前为止操作的准确性。该应用应启动 Web 浏览器，然后显示 ASP.NET 主页。
+4. 按 **F5** 运行应用程序并确保到目前为止操作的准确性。该应用应启动 Web 浏览器，然后显示 ASP.NET 主页。
 
-##发布新的 WebAPI 后端
+## 发布新的 WebAPI 后端
 
 1. 现在，我们将此应用部署到 Azure 网站，以便可以从任意设备访问它。右键单击 **AppBackend** 项目，然后选择“发布”。
 
@@ -366,4 +367,4 @@
 [B16]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users16.PNG
 [B18]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-notify-users18.PNG
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

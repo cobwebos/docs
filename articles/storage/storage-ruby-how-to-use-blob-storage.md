@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="09/01/2015"
+	ms.date="12/16/2015"
 	wacn.date=""/>
 
 
@@ -27,7 +27,7 @@
 
 ## 创建 Ruby 应用程序
 
-创建 Ruby 应用程序。有关说明，请参阅[在 Azure 上创建 Ruby 应用程序](/develop/ruby/tutorials/web-app-with-linux-vm/)。
+创建 Ruby 应用程序。有关说明，请参阅[在 Azure 上创建 Ruby 应用程序](/documentation/articles/virtual-machines-ruby-rails-web-app-linux)。
 
 ## 配置应用程序以访问存储
 
@@ -79,7 +79,7 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 只需修改 <strong>create\_container()</strong> 调用即可传递 **:public\_access\_level** 选项：
 
-	container = azure_blob_service.create_container("test-container", 
+	container = azure_blob_service.create_container("test-container",
 	  :public_access_level => "<public access level>")
 
 
@@ -90,7 +90,7 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 * **容器：**指定对 Blob 的公共读取权限。可以通过匿名请求读取此容器中的 Blob 数据，但容器数据不可用。客户端无法通过匿名请求枚举容器中的 Blob。
 
 另外，还可以通过使用 **set\_container\_acl()** 方法指定公共访问级别来修改容器的公共访问级别。
- 
+
 以下代码示例将更改**容器**的公共访问级别：
 
 	azure_blob_service.set_container_acl('test-container', "container")
@@ -108,8 +108,7 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 ## 列出容器中的 Blob
 
-若要列出容器，请使用 **list\_containers()** 方法。
-若要列出容器中的 Blob，请使用 **list\_blobs()** 方法。
+若要列出容器，请使用 **list\_containers()** 方法。若要列出容器中的 Blob，请使用 **list\_blobs()** 方法。
 
 这将输出帐户的所有容器中的所有 Blog 的 URL。
 
@@ -139,9 +138,8 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 若要了解有关更复杂存储任务的信息，请访问下面的链接：
 
-- MSDN 参考：[Azure 存储空间](http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx)
 - [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
- 
+- [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

@@ -10,11 +10,17 @@
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="10/16/2015" 
-	wacn.date=""/>
+	ms.date="12/17/2015" 
+        wacn.date=""/>
 
 
 # 代码示例：Enterprise Library 6 中用于连接到 SQL 数据库的 C&#x23; 重试逻辑
+
+
+> [AZURE.SELECTOR]
+- [PHP](/documentation/articles/sql-database-develop-php-retry-windows)
+- [C#](/documentation/articles/sql-database-develop-csharp-retry-windows)
+- [C# EntLib6](/documentation/articles/sql-database-develop-entlib-csharp-retry-windows)
 
 
 本主题提供了一个用于演示 Enterprise Library (EntLib) 的完整代码示例。EntLib 简化了与云服务（如 Azure SQL 数据库）进行交互的客户端程序的许多任务。我们的示例重点介绍包括暂时性故障的重试逻辑在内的重要任务。
@@ -25,7 +31,11 @@ EntLib 类旨在区分两种类别的运行时错误：
 - 永远不会自行更正的错误，如拼写错误的服务器名称。
 - 暂时性故障，例如，在 Azure 系统进行负载平衡的情况下，服务器在接受新连接时暂停了几秒钟。
 
+
 Enterprise Library 6 (EntLib60) 是最新版本，并已于 2013 年 4 月发布。
+
+- Microsoft 已向公众发布源代码。
+- Microsoft 没有进一步维护源代码的计划。
 
 
 ## 先决条件
@@ -84,7 +94,7 @@ EntLib 类用于构造其他 EntLib 类。在此代码示例中，构造和使�
  - **ExponentialBackoff** 对象。
  - **SqlDatabaseTransientErrorDetectionStrategy** 对象。
 4. 构造 **ReliableSqlConnection** 对象。输入参数包括：
- - 一个 **字符串** 对象 - 包含服务器名称和其他连接信息。
+ - 一个 **String** 对象 - 包含服务器名称和其他连接信息。
  - **RetryPolicy** 对象。
 5. 调用以通过 **RetryPolicy .ExecuteAction** 方法进行连接。
 6. 调用 **ReliableSqlConnection .CreateCommand** 方法。
@@ -302,7 +312,8 @@ SELECT TOP 3
  - 如果你想要查看源代码，本主题顶部的按钮提供了[下载 EntLib60 源代码](http://go.microsoft.com/fwlink/p/?LinkID=290898)。
 
 
-- Microsoft 提供的 .PDF 格式的免费电子书：[Microsoft Enterprise Library 版本 2 开发人员指南](http://www.microsoft.com/download/details.aspx?id=41145)。
+- Microsoft 提供的 .PDF 格式的免费电子书：
+[Microsoft Enterprise Library 版本 2 开发人员指南](http://www.microsoft.com/zh-cn/download/details.aspx?id=41145)。
 
 
 - [Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling 命名空间](http://msdn.microsoft.com/zh-cn/library/microsoft.practices.enterpriselibrary.transientfaulthandling.aspx)
@@ -316,4 +327,4 @@ SELECT TOP 3
 
 - [SQL 数据库的客户端快速入门代码示例](/documentation/articles/sql-database-develop-quick-start-client-code-samples)
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

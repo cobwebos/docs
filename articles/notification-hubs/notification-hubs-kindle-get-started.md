@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="09/03/2015"
+	ms.date="11/04/2015"
 	wcdn.date=""/>
 # 通知中心入门（Kindle 应用）
 
@@ -112,8 +112,8 @@
 		    android:exported="false" />
 		 
 		<receiver
-		    android:name="[YOUR SERVICE NAME]$Receiver"
-		 
+		    android:name="[YOUR SERVICE NAME]$Receiver" />
+
 		    <!-- This permission ensures that only ADM can send your app registration broadcasts. -->
 		    android:permission="com.amazon.device.messaging.permission.SEND" >
 		 
@@ -180,7 +180,7 @@
 
 	    	NotificationCompat.Builder mBuilder =
 	          	new NotificationCompat.Builder(ctx)
-	          	.setSmallIcon(R.drawable.ic_launcher)
+	          	.setSmallIcon(R.mipmap.ic_launcher)
 	          	.setContentTitle("Notification Hub Demo")
 	          	.setStyle(new NotificationCompat.BigTextStyle()
 	                     .bigText(msg))
@@ -235,10 +235,10 @@
 			   }.execute(null, null, null);
 		}
 
-## 将 API 密钥添加到应用程序
+## 将 API 密钥添加到应用
 
 1. 在 Eclipse 中，在项目的目录资产中创建名为 **api\_key.txt** 的新文件。
-2. 打开该文件，并复制你在 Amazon 开发人员门户中生成的 **API 密钥**。
+2. 打开该文件，并复制你在 Amazon 开发人员门户中生成的 API 密钥。
 
 ## 运行应用程序
 
@@ -276,4 +276,4 @@
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

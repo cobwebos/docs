@@ -3,14 +3,14 @@
 	description="了解如何从 Python 后端使用 Azure 通知中心。" 
 	services="notification-hubs" 
 	documentationCenter="" 
-	authors="ysxu" 
+	authors="wesmc7777"
 	manager="dwrede" 
 	editor=""/>
 
 <tags
-      ms.service="notification-hubs" 
-      ms.date="07/17/2015" 
-      wacn.date="" />
+	ms.service="notification-hubs" 
+	ms.date="11/01/2015" 
+	wacn.date="" />
 
 
 # 如何通过 Python 使用通知中心
@@ -39,6 +39,7 @@
 
 例如，创建客户端：
 
+	isDebug = True
 	hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 	
 发送 Windows toast 通知：
@@ -82,7 +83,8 @@
 
 
 ### 创建安全令牌
-有关安全令牌创建的详细信息，请访问[此处](http://msdn.microsoft.com/zh-cn/library/dn495627.aspx)。以下方法必须添加到 **NotificationHub** 类，以便根据当前请求的 URI 和提取自连接字符串的凭据创建令牌。
+有关安全令牌创建的详细信息，请访问[此处](http://msdn.microsoft.com/zh-cn/library/dn495627.aspx)。
+以下方法必须添加到 **NotificationHub** 类，以便根据当前请求的 URI 和提取自连接字符串的凭据创建令牌。
 
 	@staticmethod
     def get_expiry():
@@ -201,6 +203,48 @@
 
         self.make_http_request(url, payload_to_send, headers)
 
+	def send_apple_notification(self, payload, tags=""):
+        nh = Notification("apple", payload)
+        self.send_notification(nh, tags)
+
+    def send_gcm_notification(self, payload, tags=""):
+        nh = Notification("gcm", payload)
+        self.send_notification(nh, tags)
+
+    def send_adm_notification(self, payload, tags=""):
+        nh = Notification("adm", payload)
+        self.send_notification(nh, tags)
+
+    def send_baidu_notification(self, payload, tags=""):
+        nh = Notification("baidu", payload)
+        self.send_notification(nh, tags)
+
+    def send_mpns_notification(self, payload, tags=""):
+        nh = Notification("windowsphone", payload)
+
+        if "<wp:Toast>" in payload:
+            nh.headers = {'X-WindowsPhone-Target': 'toast', 'X-NotificationClass': '2'}
+        elif "<wp:Tile>" in payload:
+            nh.headers = {'X-WindowsPhone-Target': 'tile', 'X-NotificationClass': '1'}
+
+        self.send_notification(nh, tags)
+
+    def send_windows_notification(self, payload, tags=""):
+        nh = Notification("windows", payload)
+
+        if "<toast>" in payload:
+            nh.headers = {'X-WNS-Type': 'wns/toast'}
+        elif "<tile>" in payload:
+            nh.headers = {'X-WNS-Type': 'wns/tile'}
+        elif "<badge>" in payload:
+            nh.headers = {'X-WNS-Type': 'wns/badge'}
+
+        self.send_notification(nh, tags)
+
+    def send_template_notification(self, properties, tags=""):
+        nh = Notification("template", properties)
+        self.send_notification(nh, tags)
+
 以上方法将 HTTP POST 请求发送到你通知中心的 /messages 终结点，该请求具有发送通知的正确正文和标头。
 
 ### 使用调试属性启用详细的日志记录
@@ -270,7 +314,8 @@
 ## 示例:
 
 ### 启用调试属性
-如果在初始化 NotificationHub 时启用调试标志，你将会看到详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，你可以从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：![][1]
+如果在初始化 NotificationHub 时启用调试标志，你将会看到详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，你可以从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：
+    ![][1]
 
 你将看到如详细的通知中心结果，例如
 
@@ -344,4 +389,4 @@
 [4]: ./media/notification-hubs-python-backend-how-to/SendWithMultipleTags.png
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

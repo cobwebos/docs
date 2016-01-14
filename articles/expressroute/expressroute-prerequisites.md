@@ -1,6 +1,6 @@
 <properties
    pageTitle="采用 ExpressRoute 所要满足的先决条件 | Microsoft Azure"
-   description="本页提供了在订购 Azure ExpressRoute 线路之前需要满足的要求列表"
+   description="本页提供了在订购 Azure ExpressRoute 线路之前需要满足的要求列表。"
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
@@ -54,7 +54,7 @@
 请查看以下资源以获取有关 Office 365 要求的详细信息。
 
 - [针对 Office 365 的网络规划和性能优化](http://aka.ms/tune)
-- [Office 365 网络流量管理](https://msft.spoppe.com/teams/cpub/teams/IW_Admin/modsquad/_layouts/15/WopiFrame.aspx?sourcedoc=%7b23f09224-0668-4476-8627-aaff30931439%7d&action=edit&source=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fteams%2Fcpub%2Fteams%2FIW%5FAdmin%2Fmodsquad%2FSitePages%2FHome%2Easpx)
+- [Office 365 网络流量管理](https://support.office.com/article/Office-365-network-traffic-management-e1da26c6-2d39-4379-af6f-4da213218408)
 - 有关 QoS 要求和配置的详细指导，请参阅 [ExpressRoute 服务质量 (QoS) 要求](/documentation/articles/expressroute-qos)一文。请咨询连接服务提供商，以确定他们是否为你的 VPN 提供多种级别的服务。 
 
 ## 后续步骤
@@ -68,4 +68,4 @@
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

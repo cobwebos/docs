@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="11/04/2015"
+	ms.date="12/01/2015"
 	wacn.date=""/>
 
 # 使用 Azure PowerShell 管理 HDInsight 中的 Hadoop 群集
@@ -26,9 +26,39 @@ Azure PowerShell 是一个功能强大的脚本编写环境，可用于在 Azure
 在开始阅读本文前，你必须具有：
 
 - **一个 Azure 订阅**。请参阅[获取 Azure 试用版](/pricing/1rmb-trial/)。
-- **配备 Azure PowerShell 的工作站**。请参阅[安装和使用 Azure PowerShell](/documentation/articles/install-configure-powershell)。
 
-	> [AZURE.NOTE]本文中提供的 PowerShell 脚本使用 Azure 资源管理器模式。若要确保示例能正常工作，请使用 Microsoft Web 平台安装程序下载最新 Azure PowerShell。
+##安装 Azure PowerShell 1.0 和更高版本
+
+首先，必须卸载 0.9x 版本。
+
+若要检查所安装的 PowerShell 版本，请执行以下操作：
+
+	Get-Module *azure*
+	
+若要卸载旧版本，请运行控制面板中的“程序和功能”。
+
+有两个主要选项用于安装 Azure PowerShell。
+
+- [PowerShell 库](https://www.powershellgallery.com/)。在已提升权限的 PowerShell ISE 或已提升权限的 Windows PowerShell 控制台中运行以下命令：
+
+		# Install the Azure Resource Manager modules from PowerShell Gallery
+		Install-Module AzureRM
+		Install-AzureRM
+		
+		# Install the Azure Service Management module from PowerShell Gallery
+		Install-Module Azure
+		
+		# Import AzureRM modules for the given version manifest in the AzureRM module
+		Import-AzureRM
+		
+		# Import Azure Service Management module
+		Import-Module Azure
+
+	有关详细信息，请参阅 [PowerShell 库](https://www.powershellgallery.com/)。
+
+- [Microsoft Web 平台安装程序 (WebPI)](http://aka.ms/webpi-azps)。如果你已安装 Azure PowerShell 0.9.x，系统将提示你卸载 0.9.x。如果你从 PowerShell 库安装了 Azure PowerShell 模块，安装程序将要求你在安装之前删除该模块，以确保 Azure PowerShell 环境一致。有关说明，请参阅[通过 WebPI 安装 Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)。
+
+WebPI 将每月接收更新。PowerShell 库将持续接收更新。如果你能够熟练地从 PowerShell 库安装，则该库就是在 Azure PowerShell 中获得最新、最完善更新的首要途径。
 
 ##创建群集
 
@@ -67,7 +97,7 @@ HDInsight 群集在 Azure 存储帐户上需要 Azure 资源组和 Blob 容器�
 	# List the keys for a Storage account
 	Get-AzureRmStorageAccountKey -ResourceGroupName <Azure Resource Group Name> -name $storageAccountName <Azure Storage Account Name>
 
-有关使用管理门户获取信息的详细信息，请参阅[关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account)的“查看、复制和重新生成存储访问密钥”一节。
+有关使用门户获取信息的详细信息，请参阅[关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account)的“查看、复制和重新生成存储访问密钥”部分。
 
 **创建 Azure 存储帐户**
 
@@ -153,7 +183,7 @@ Azure PowerShell 无法在 HDInsight 创建过程中创建 Blob 容器。你可�
 
 	可以使用两种方法来完成重新平衡操作：
 
-	* Storm web UI
+	* Storm Web UI
 	* 命令行界面 (CLI) 工具
 
 	有关更多详细信息，请参阅 [Apache Storm 文档](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
@@ -207,7 +237,7 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 
 >[AZURE.NOTE]授予/撤消访问权限时，你将重设群集用户的用户名和密码。
 
-也可以通过管理门户完成此操作。请参阅[使用 Azure 管理门户管理 HDInsight][hdinsight-admin-portal]。
+也可以使用门户完成此操作。请参阅[使用 Azure 管理门户管理 HDInsight][hdinsight-admin-portal]。
 
 ##更新 HTTP 用户凭据
 
@@ -245,7 +275,7 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 
 **提交 Hive 作业**
 
-请参阅[使用 PowerShell 运行 Hive 查询](/documentation/articles/hdinsight-hadoop-use-hive-powershell)。
+请参阅[使用 PowerShell 运行 Hive 查询](/documentation/articles/hdinsight-hadoop-use-hive-powershell)
 
 **提交 Pig 作业**
 
@@ -278,14 +308,14 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 [azure-member-offers]: /pricing/member-offers/
 [azure-trial]: /pricing/1rmb-trial/
 
-[hdinsight-get-started]: /documentation/articles/hdinsight-get-started
+[hdinsight-get-started]: /documentation/articles/hdinsight-hadoop-tutorial-get-started-windows
 [hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters
 [hdinsight-provision-custom-options]: /documentation/articles/hdinsight-provision-clusters#configuration
 [hdinsight-submit-jobs]: /documentation/articles/hdinsight-submit-hadoop-jobs-programmatically
 
 [hdinsight-admin-cli]: /documentation/articles/hdinsight-administer-use-command-line
 [hdinsight-admin-portal]: /documentation/articles/hdinsight-administer-use-management-portal-v1
-[hdinsight-storage]: /documentation/articles/hdinsight-use-blob-storage
+[hdinsight-storage]: /documentation/articles/hdinsight-hadoop-use-blob-storage
 [hdinsight-use-hive]: /documentation/articles/hdinsight-use-hive
 [hdinsight-use-mapreduce]: /documentation/articles/hdinsight-use-mapreduce
 [hdinsight-upload-data]: /documentation/articles/hdinsight-upload-data
@@ -293,8 +323,8 @@ HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样
 
 [hdinsight-powershell-reference]: https://msdn.microsoft.com/zh-cn/library/dn858087.aspx
 
-[powershell-install-configure]: /documentation/articles/install-configure-powershell
+[powershell-install-configure]: /documentation/articles/powershell-install-configure
 
 [image-hdi-ps-provision]: ./media/hdinsight-administer-use-powershell/HDI.PS.Provision.png
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

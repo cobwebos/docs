@@ -9,7 +9,7 @@ editor=""/>
 <tags 
 ms.service="cloud-services" 
 
-ms.date="09/08/2015" 
+ms.date="12/07/2015" 
 wacn.date=""/>
 
 
@@ -26,8 +26,7 @@ wacn.date=""/>
 
 环境变量将信息传递给启动任务，而本地存储可用于从启动任务中传出信息。例如，环境变量可以指定你要安装的程序的路径，并可以将文件写入到本地存储，然后你的角色可以稍后读取这些文件。
 
-启动任务可以将信息和错误记录到 **TEMP** 环境变量指定的目录。在云中运行时，在启动任务期间，**TEMP** 环境变量将解析为 
-*C:\\Resources\\temp\\[guid].[rolename]\\RoleTemp* 目录。
+启动任务可以将信息和错误记录到 **TEMP** 环境变量指定的目录。在云中运行时，在启动任务期间，**TEMP** 环境变量将解析为 *C:\\Resources\\temp\\[guid].[rolename]\\RoleTemp* 目录。
 
 此外，启动任务还可以在重新启动之间执行多次。例如，每次角色回收时都会运行启动任务，但角色回收可能并非始终包括重新启动。应以这样的方式编写启动任务：使其能够多次运行而不会出现问题。
 
@@ -44,7 +43,7 @@ wacn.date=""/>
     - **simple** 任务以同步方式执行（一次一个任务）。
     - **background** 和 **foreground** 任务与启动任务并行，以异步方式启动。  
        
-    > [AZURE.WARNING]在启动过程中的启动任务阶段，IIS 可能未完全配置，因此角色特定的数据可能不可用。需要角色特定的数据的启动任务应使用 [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx)。
+    > [AZURE.WARNING]在启动过程中的启动任务阶段，IIS 可能未完全配置，因此角色特定的数据可能不可用。需要角色特定的数据的启动任务应使用 [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx)。
 
 3. 将启动角色主机进程并在 IIS 中创建站点。
 
@@ -91,31 +90,31 @@ EXIT /B 0
 - 该命令具有可选的命令行参数，用于开始启动任务。
 - 通常它是 .cmd 或 .bat 批处理文件的文件名。
 - 该任务相对于部署的 AppRoot\\Bin 文件夹。在确定任务的路径和文件时不扩展环境变量。如果需要环境扩展，则可以创建用于调用启动任务的小型 .cmd 脚本。
-- 可以是一个启动 [PowerShell 脚本](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)的控制台应用程序或批处理文件。
+- 可以是一个启动 [PowerShell 脚本](/documentation/articles/cloud-services-startup-tasks-common/#create-a-powershell-startup-task)的控制台应用程序或批处理文件。
 
 **executionContext** - 为启动任务指定权限级别。权限级别可以为 limited 或 elevated：
 
-- **limited** 
+- **limited**  
 启动任务以与角色相同的权限运行。当 [Runtime] 元素的 **executionContext** 属性也是 **limited** 时，则使用用户权限。
 
-- **elevated** 
+- **elevated**  
 启动任务以管理员特权运行。这将允许启动任务安装程序、更改 IIS 配置、执行注册表更改和其他管理员级别任务，而不会提高角色本身的权限级别。
 
 > [AZURE.NOTE]启动任务的权限级别不需要与角色本身相同。
 
 **taskType** - 指定启动任务的执行方式。
 
-- **simple** 
+- **simple**  
 任务按照 [ServiceDefinition.csdef] 文件中指定的顺序一次一个地以同步方式执行。当一个 **simple** 启动任务以为零的 **errorlevel** 结束时，将执行下一个 **simple** 启动任务。如果没有更多 **simple** 启动任务要执行，则将启动角色本身。   
 
     > [AZURE.NOTE]如果 **simple** 任务以非零 **errorlevel** 结束，则将阻止该实例。后续 **simple** 启动任务和角色本身将不会启动。
 
     若要确保你的批处理文件以为零的 **errorlevel** 结束，请在在批处理文件进程结束时执行命令 `EXIT /B 0`。
 
-- **background** 
+- **background**  
 任务与角色同时启动，并以异步方式执行。
 
-- **foreground** 
+- **foreground**  
 任务与角色同时启动，并以异步方式执行。**foreground** 任务与 **background** 任务之间的主要区别在于 **foreground** 任务阻止角色回收或关闭，直到任务结束。**background** 任务没有此限制。
 
 ## 环境变量
@@ -126,7 +125,7 @@ EXIT /B 0
 
 静态环境变量使用 [Variable] 元素的 **value** 属性。上面的示例创建了环境变量 **MyVersionNumber**，该变量具有静态值 **1.0.0.0**。另一个示例就是创建 **StagingOrProduction** 环境变量，你可以手动将该变量设置为值 **staging** 或 **production**，以根据 **StagingOrProduction** 环境变量的值执行不同的启动操作。
 
-基于 RoleEnvironment 类的成员的环境变量不使用 [Variable] 元素的 **value** 属性。而是使用具有相应 **xPath** 属性值的 [RoleInstanceValue] 子元素基于 [RoleEnvironment] 类的特定成员创建环境变量。用于访问各种 [RoleEnvironment] 值的 **xPath** 属性的值可以在 [Azure 中的 xPath 值](https://msdn.microsoft.com/library/azure/hh404006.aspx)中找到。
+基于 RoleEnvironment 类的成员的环境变量不使用 [Variable] 元素的 **value** 属性。而是使用具有相应 **xPath** 属性值的 [RoleInstanceValue] 子元素基于 [RoleEnvironment] 类的特定成员创建环境变量。用于访问各种 [RoleEnvironment] 值的 **xPath** 属性的值可以在 [Azure 中的 xPath 值](https://msdn.microsoft.com/zh-cn/library/azure/hh404006.aspx)中找到。
 
 
 
@@ -166,4 +165,4 @@ EXIT /B 0
 [RoleInstanceValue]: https://msdn.microsoft.com/zh-cn/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0104_2016-->

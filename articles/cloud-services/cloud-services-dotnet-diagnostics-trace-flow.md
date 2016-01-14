@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="cloud-services"
-	ms.date="10/17/2015"
+	ms.date="12/15/2015"
 	wacn.date=""/>
 
 
@@ -57,6 +57,8 @@ Trace、Debug 和 TraceSource 都要求你设置“侦听器”来收集和记�
 		</trace>
 	</system.diagnostics>
 	```
+	>[AZURE.IMPORTANT]确保与 Microsoft.WindowsAzure.Diagnostics 程序集建立项目引用。更新上述 xml 中的版本号，以便与引用的 Microsoft.WindowsAzure.Diagnostics 程序集的版本匹配。
+	
 3. 保存 config 文件。
 
 有关侦听器的详细信息，请参阅[跟踪侦听器](https://msdn.microsoft.com/zh-cn/library/4y5y10s7.aspx)。
@@ -74,4 +76,4 @@ Trace、Debug 和 TraceSource 都要求你设置“侦听器”来收集和记�
 3. 添加 Trace 语句，以便捕获有关应用程序状态的信息。可以使用多种方法来来格式化 Trace 语句的输出。有关详细信息，请参阅[如何：向应用程序代码添加 Trace 语句](https://msdn.microsoft.com/zh-cn/library/zd83saa2.aspx)。
 4. 保存源文件。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

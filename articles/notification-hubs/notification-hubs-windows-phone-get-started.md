@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="09/08/2015"
+	ms.date="12/14/2015"
 	wacn.date=""/>
 # Windows Phone 通知中心入门
 
@@ -31,39 +31,22 @@
 
 完成本教程是学习有关 Windows Phone 8 应用的所有其他通知中心教程的先决条件。
 
-> [AZURE.NOTE]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fzh-CN%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-phone-get-started%2F)。
+> [AZURE.NOTE]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-phone-get-started%2F)。
 
 ##创建通知中心
 
-1. 登录到 [Azure 门户]，然后单击屏幕底部的“+新建”。
+[AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-2. 依次单击“应用程序服务”、“服务总线”、“通知中心”和“快速创建”。
+<ol start="7">
+<li><p>单击“配置”选项卡，然后单击“Windows Phone 通知设置”部分中的“启用未经身份验证的推送通知”复选框。<b></b><b></b><b></b></p>
+</li>
+</ol>
 
-   	![][7]
+&emsp;&emsp;![](./media/notification-hubs-windows-phone-get-started/notification-hub-pushauth.png)
 
-3. 键入通知中心的名称，选择所需的区域，然后单击“创建新的通知中心”。
+你的中心现已创建，并已配置为向 Windows Phone 发送未经身份验证的通知。
 
-   	![][8]
-
-4. 单击刚刚创建的命名空间（通常为***通知中心名称*-ns**），然后单击顶部的“配置”选项卡。
-
-   	![][9]
-
-5. 单击顶部的“通知中心”选项卡，然后单击你刚刚创建的通知中心。
-
-   	![][10]
-
-6. 单击底部的“连接信息”。记下两个连接字符串。
-
-   	![][12]
-
-7. 单击“配置”选项卡，然后单击“Windows Phone 通知设置”部分中的“启用未经身份验证的推送通知”复选框。
-
-   	![][15]
-
-你现在已有注册 Windows Phone 8 应用和发送通知所需的连接字符串。
-
-> [AZURE.NOTE]本教程使用未经身份验证模式下的 MPNS。MPNS 未经身份验证的模式对你可以发送到每个通道的通知有一些限制。通知中心支持 [MPNS 身份验证模式](http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx). <!--Refer to [Notification Hubs How-To for Windows Phone 8] for more information on how to use MPNS authenticated mode.-->
+> [AZURE.NOTE]本教程使用未经身份验证模式下的 MPNS。MPNS 未经身份验证的模式对你可以发送到每个通道的通知有一些限制。通知中心支持 [MPNS 身份验证模式](http://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx)，它允许你上载证书。
 
 ##将你的应用程序连接到通知中心
 
@@ -103,10 +86,16 @@
         channel.ChannelUriUpdated += new EventHandler<NotificationChannelUriEventArgs>(async (o, args) =>
         {
             var hub = new NotificationHub("<hub name>", "<connection string>");
-            await hub.RegisterNativeAsync(args.ChannelUri.ToString());
+            var result = await hub.RegisterNativeAsync(args.ChannelUri.ToString());
+
+            System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                MessageBox.Show("Registration :" + result.RegistrationId, "Registered", MessageBoxButton.OK);
+            });
         });
 
-    确保插入你的中心名称以及在前一部分中获取的名为 **DefaultListenSharedAccessSignature** 的连接字符串。此代码从 MPNS 检索应用的通道 URI，然后将该通道 URI 注册到你的通知中心。它还保证每次启动应用程序时都在通知中心注册通道 URI。
+    确保插入你的中心名称以及在前一部分中获取的名为 **DefaultListenSharedAccessSignature** 的连接字符串。
+	此代码从 MPNS 检索应用的通道 URI，然后将该通道 URI 注册到你的通知中心。它还保证每次启动应用程序时都在通知中心注册通道 URI。
 
 	>[AZURE.NOTE]本教程将一个 toast 通知发送到设备。而当你发送磁贴通知时，必须在通道上调用 **BindToShellTile** 方法。若要同时支持 toast 通知和磁贴通知，请同时调用 **BindToShellTile** 和 **BindToShellToast**。
 
@@ -120,6 +109,8 @@
 
 	随后将显示注册消息。
 
+8. 关闭应用。必须关闭应用才能接收 toast 通知。
+
 ##从后端发送通知
 
 你可以使用通知中心通过 <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST 接口</a>从任意后端发送通知。在本教程中，你将使用 .NET 控制台应用程序来发送通知。有关如何从与通知中心集成的 Azure 移动服务后端发送通知的示例，请参阅“移动服务中的推送通知入门”（[.NET 后端](../mobile-services-javascript-backend-windows-phone-get-started-push.md) | [JavaScript 后端](../mobile-services-javascript-backend-windows-phone-get-started-push.md)）。有关如何使用 REST API 发送通知的示例，请参阅“如何通过 Java/PHP 使用通知中心”([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md))。
@@ -130,11 +121,11 @@
 
 	这会将新的 Visual C# 控制台应用程序添加到解决方案。你也可以在单独的解决方案中进行此项操作。
 
-4. 右键单击，然后依次单击“工具”、“库包管理器”和“Package Manager Console”。
+4. 依次单击“工具”、“库包管理器”、“包管理器控制台”。
 
 	这会显示包管理器控制台。
 
-5.  在“Package Manager Console”窗口中，将“默认项目”设置为新的控制台应用程序项目，然后在控制台窗口中执行以下命令：
+5.  在“包管理器控制台”窗口中，将“默认项目”设置为新的控制台应用程序项目，然后在控制台窗口中执行以下命令：
 
         Install-Package Microsoft.Azure.NotificationHubs
 
@@ -150,8 +141,8 @@
         {
             NotificationHubClient hub = NotificationHubClient
 				.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
-            string toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<wp:Notification xmlns:wp=\"WPNotification\">" +
+            string toast = "<?xml version="1.0" encoding="utf-8"?>" +
+                "<wp:Notification xmlns:wp="WPNotification">" +
                    "<wp:Toast>" +
                         "<wp:Text1>Hello from a .NET App!</wp:Text1>" +
                    "</wp:Toast> " +
@@ -176,7 +167,7 @@
 
 ##后续步骤
 
-在这个简单的示例中，你已将通知广播到所有 Windows Phone 8 设备。若要针对特定客户，请参考教程[使用通知中心向用户推送通知]。如果要按兴趣组划分用户，可以阅读[使用通知中心发送突发新闻]。在[通知中心指南]中了解有关如何使用通知中心的更多信息。
+在这个简单的示例中，你已将通知广播到所有 Windows Phone 8 设备。若要针对特定客户，请参考教程[使用通知中心将通知推送到用户]。如果要按兴趣组划分用户，可以阅读[使用通知中心发送突发新闻]。在[通知中心指南]中了解有关如何使用通知中心的更多信息。
 
 
 
@@ -201,15 +192,11 @@
 
 <!-- URLs. -->
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
-[Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
-
-[Azure Management Portal]: https://manage.windowsazure.cn/
 [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
-[Notification Hubs How-To for Windows Phone 8]: tbd!!!
-[MPNS 身份验证模式]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/ff941099(v=vs.105).aspx
-[使用通知中心向用户推送通知]: /manage/services/notification-hubs/notify-users-aspnet
-[使用通知中心发送突发新闻]: /manage/services/notification-hubs/breaking-news-dotnet
+[MPNS authenticated mode]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/ff941099(v=vs.105).aspx
+[使用通知中心将通知推送到用户]: notification-hubs-aspnet-backend-windows-dotnet-notify-users.md
+[使用通知中心发送突发新闻]: notification-hubs-windows-phone-send-breaking-news.md
 [toast 目录]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/jj662938(v=vs.105).aspx
 [磁贴目录]: http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/hh202948(v=vs.105).aspx
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

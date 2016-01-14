@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="11/03/2015"
+	ms.date="12/16/2015"
 	wacn.date=""/>
 
 # 使用 Azure CLI 管理 HDInsight 中的 Hadoop 群集
@@ -19,17 +19,13 @@
 
 了解如何使用 [Azure 命令行界面](/documentation/articles/xplat-cli-install)管理 Azure HDInsight 中的 Hadoop 群集。Azure CLI 是以 Node.js 实现的。可以在支持 Node.js 的任意平台上使用它。
 
-Azure CLI 是开放源代码。在 GitHub 中管理源代码（网址为 <a href= "https://github.com/azure/azure-xplat-cli">https://github.com/azure/azure-xplat-cli</a>）。
-
 本文仅介绍如何将 Azure CLI 与 HDInsight 配合使用。有关如何使用 Azure CLI 的常规指南，请参阅[安装和配置 Azure CLI][azure-command-line-tools]。
-
 
 ##先决条件
 
 在开始阅读本文前，你必须具有：
 
 - **一个 Azure 订阅**。请参阅[获取 Azure 试用版](/pricing/1rmb-trial/)。
-
 - **Azure CLI** - 有关安装和配置信息，请参阅[安装和配置 Azure CLI](/documentation/articles/xplat-cli-install)。
 - 使用以下命令**连接到 Azure**：
 
@@ -41,7 +37,10 @@ Azure CLI 是开放源代码。在 GitHub 中管理源代码（网址为 <a href
 
 		azure config mode arm
 
+若要获得帮助，请使用 **-h** 开关。例如：
 
+	azure hdinsight cluster create -h
+	
 ##创建群集
 
 [AZURE.INCLUDE [provisioningnote](../includes/hdinsight-provisioning.md)]
@@ -68,8 +67,7 @@ Azure CLI 是开放源代码。在 GitHub 中管理源代码（网址为 <a href
 	
 		azure storage account create "<Azure Storage Account Name>" -g "<Resource Group Name>" -l "<Azure Location>" --type LRS
 
-> [AZURE.NOTE]存储帐户必须与 HDInsight 共置于同一数据中心。
-	> 存储帐户类型不能为 ZRS，因为 ZRS 不支持表。
+	> [AZURE.NOTE]存储帐户必须与 HDInsight 共置于同一数据中心。存储帐户类型不能为 ZRS，因为 ZRS 不支持表。
 	
 	如果你已有存储帐户但是不知道帐户名称和帐户密钥，则可以使用以下命令来检索该信息：
 	
@@ -80,64 +78,43 @@ Azure CLI 是开放源代码。在 GitHub 中管理源代码（网址为 <a href
 		-- Lists the keys for a Storage account
 		azure storage account keys list "<Storage Account Name>" -g "<Resource Group Name>"
 
-有关使用 Azure 管理门户获取信息的详细信息，请参阅[创建、管理或删除存储帐户][azure-create-storageaccount]中的“查看、复制和重新生成存储访问密钥”部分。
+	有关使用 Azure 管理门户获取信息的详细信息，请参阅[创建、管理或删除存储帐户][azure-create-storageaccount]中的“查看、复制和重新生成存储访问密钥”部分。
 
 - **(可选)默认 Blob 容器**：如果容器不存在，可使用 **azure hdinsight cluster create** 命令创建它。如果选择预先创建容器，可以使用以下命令：
 
-	azure storage container create --account-name "<Storage Account Name>" --account-key <StorageAccountKey> [ContainerName]
+	azure storage container create --account-name "<Storage Account Name>" --account-key <Storage Account Key> [ContainerName]
 
-准备好存储帐户和 blob 容器后，你就可以创建群集了：
+准备好存储帐户后，你就可以创建群集了：
 
-	azure hdinsight cluster create --clusterName <ClusterName> --storageAccountName "<Storage Account Name>" --storageAccountKey <storageAccountKey> --storageContainer <StorageContainer> --nodes <NumberOfNodes> --location <DataCenterLocation> --username <HDInsightClusterUsername> --clusterPassword <HDInsightClusterPassword>
-
-![HDI.CLIClusterCreation][image-cli-clustercreation]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	azure hdinsight cluster create --resource-group <Resource Group Name> --clusterName <Cluster Name> --location <Location> --osType Windows --version <Cluster Version> --clusterType <Hadoop | HBase | Storm> --storageAccountName <Default Storage Account Name> --storageAccountKey <Storage Account Key> --storageContainer <Default Storage Container> --username <HDInsight Cluster Username> --password <HDInsight Cluster Password> --workerNodeCount <Number of Worker Nodes>
 
 
 ##使用配置文件创建群集
 通常，你创建一个 HDInsight 群集，对其运行作业，然后删除该群集以降低成本。在命令行界面上，你可以选择将配置保存到文件，以便在每次创建群集时可以重用这些配置。
 
-> [AZURE.NOTE]元存储配置不可用于 HBase 群集类型。
+	azure hdinsight config create [options ] <Config File Path> <overwirte>
+	azure hdinsight config add-config-values [options] <Config File Path>
+	azure hdinsight config add-script-action [options] <Config File Path>
 
-	azure hdinsight cluster config create <file>
+示例：创建一个配置文件，其中包含创建群集时要运行的脚本操作。
 
-	azure hdinsight cluster config set <file> --clusterName <ClusterName> --nodes <NumberOfNodes> --location "<DataCenterLocation>" --storageAccountName ""<Storage Account Name>".blob.core.chinacloudapi.cn" --storageAccountKey "<StorageAccountKey>" --storageContainer "<BlobContainerName>" --username "<Username>" --clusterPassword "<UserPassword>"
+	azure hdinsight config create "C:\myFiles\configFile.config"
+	azure hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <Script Action URI> --name myScriptAction --parameters "-param value"
+	azure hdinsight cluster create --configurationPath "C:\myFiles\configFile.config"
 
-	azure hdinsight cluster config storage add <file> --storageAccountName ""<Storage Account Name>".blob.core.chinacloudapi.cn"
-	       --storageAccountKey "<StorageAccountKey>"
+##使用脚本操作创建群集
 
-	azure hdinsight cluster config metastore set <file> --type "hive" --server "<SQLDatabaseName>.database.chinacloudapi.cn"
-	       --database "<HiveDatabaseName>" --user "<Username>" --metastorePassword "<UserPassword>"
+下面是一个示例：
 
-	azure hdinsight cluster config metastore set <file> --type "oozie" --server "<SQLDatabaseName>.database.chinacloudapi.cn"
-	       --database "<OozieDatabaseName>" --user "<SQLUsername>" --metastorePassword "<SQLPassword>"
-
-	azure hdinsight cluster create --config <file>
-
-
-
-![HDI.CLIClusterCreationConfig][image-cli-clustercreation-config]
-
+	azure hdinsight cluster create -g myarmgroup01 -l chinanorth -y Windows --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --workerNodeCount 1 âconfigurationPath "C:\myFiles\configFile.config" myNewCluster01
+	
+有关脚本操作的常规信息，请参阅[使用脚本操作自定义 HDInsight 群集](/documentation/articles/hdinsight-hadoop-customize-cluster)。
 
 ##列出并显示群集详细信息
 使用以下命令来列出和显示群集详细信息：
 
 	azure hdinsight cluster list
-	azure hdinsight cluster show <ClusterName>
+	azure hdinsight cluster show <Cluster Name>
 
 ![HDI.CLIListCluster][image-cli-clusterlisting]
 
@@ -145,13 +122,25 @@ Azure CLI 是开放源代码。在 GitHub 中管理源代码（网址为 <a href
 ##删除群集
 使用以下命令来删除群集：
 
-	azure hdinsight cluster delete <ClusterName>
+	azure hdinsight cluster delete <Cluster Name>
 
 ##缩放群集
 
-若要使用 Azure PowerShell 更改 Hadoop 群集大小，请从客户端计算机运行以下命令：
+若要更改 Hadoop 群集大小，请执行以下操作：
 
-	Set-AzureHDInsightClusterSize -ClusterSizeInNodes <NewSize> -name <clustername>
+	azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
+
+
+## 启用/禁用对群集的 HTTP 访问
+
+	azure hdinsight cluster enable-http-access [options] <Cluster Name> <userName> <password>
+	azure hdinsight cluster disable-http-access [options] <Cluster Name>
+
+## 启用/禁用对群集的 RDP 访问
+
+  	azure hdinsight cluster enable-rdp-access [options] <Cluster Name> <rdpUserName> <rdpPassword> <rdpExpiryDate>
+  	azure hdinsight cluster disable-rdp-access [options] <Cluster Name>
+
 
 ##后续步骤
 在本文中，你已了解如何执行不同的 HDInsight 群集管理任务。若要了解更多信息，请参阅下列文章：
@@ -171,11 +160,11 @@ Azure CLI 是开放源代码。在 GitHub 中管理源代码（网址为 <a href
 
 [hdinsight-admin-portal]: /documentation/articles/hdinsight-administer-use-management-portal-v1
 [hdinsight-admin-powershell]: /documentation/articles/hdinsight-administer-use-powershell
-[hdinsight-get-started]: /documentation/articles/hdinsight-get-started
+[hdinsight-get-started]: /documentation/articles/hdinsight-hadoop-tutorial-get-started-windows
 
 [image-cli-account-download-import]: ./media/hdinsight-administer-use-command-line/HDI.CLIAccountDownloadImport.png
 [image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
 [image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "列出并显示群集"
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

@@ -6,18 +6,18 @@
 	authors="JoeDavies-MSFT"
 	manager="timlt"
 	editor=""
-	tags="azure-service-management"/>
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="10/20/2015"
+	ms.date="12/11/2015"
 	wacn.date=""/>
 
 # SharePoint Intranet 场工作负荷阶段 3：配置 SQL Server 基础结构
 
-[AZURE.INCLUDE [learn-about-deployment-models-classic-include](../includes/learn-about-deployment-models-classic-include.md)]资源管理器部署模型。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
 
-在部署仅限 Intranet 的 SharePoint 2013 场（在 Azure 基础结构服务中通过 SQL Server AlwaysOn 可用性组进行）的这个阶段，你将在服务管理中创建并配置两台 SQL Server 计算机和一台群集多数节点计算机，然后将它们组合成 Windows Server 群集。
+在部署仅限 Intranet 的 SharePoint 2013 场（在 Azure 基础结构服务中通过 SQL Server AlwaysOn 可用性组进行）的这个阶段，你将创建和配置两台 SQL Server 计算机和一台群集多数节点计算机，然后将它们组合成 Windows Server 群集。
 
 你必须在转到[阶段 4](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase4) 之前完成此阶段。请参阅[在 Azure 中通过 SQL Server AlwaysOn 可用性组部署 SharePoint](/documentation/articles/virtual-machines-workload-intranet-sharepoint-overview) 以了解所有阶段的相关信息。
 
@@ -29,73 +29,98 @@
 
 使用以下 PowerShell 命令块为三个服务器创建虚拟机。为变量指定值，并删除 < and > 字符。请注意，此 PowerShell 命令集使用下表中的值：
 
-- 表 M，用于虚拟机。
-- 表 V，用于虚拟网络设置。
-- 表 S，用于子网。
-- 表 A，用于可用性集。
-- 表 C，用于云服务。
+- 表 M，用于虚拟机
+- 表 V，用于虚拟网络设置
+- 表 S，用于子网
+- 表 ST，用于存储帐户
+- 表 A，用于可用性集
 
-回想一下，你在[阶段 2：配置域控制器](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase2)中定义了表 M，在[阶段 1：配置 Azure](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase1) 中定义了表 V、表 S、表 A 和表 C。
+回想一下，你在[阶段 2：配置域控制器](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase2)中定义了表 M，在[阶段 1：配置 Azure](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase1) 中定义了表 V、表 S、表 ST 和表 A。
+
+> [AZURE.NOTE]以下命令集使用 Azure PowerShell 1.0 及更高版本。有关详细信息，请参阅 [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)。
 
 如果已提供所有适当的值，请在 Azure PowerShell 命令提示符下运行生成的块。
 
-	# Create the first SQL server
-	$vmName="<Table M – Item 3 - Virtual machine name column>"
-	$vmSize="<Table M – Item 3 - Minimum size column, specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
-	$availSet="<Table A – Item 2 – Availability set name column>"
 
-	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "SQL Server 2014 RTM Enterprise on Windows Server 2012 R2" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
-	$vm1=New-AzureVMConfig -Name $vmName -InstanceSize $vmSize -ImageName $image -AvailabilitySetName $availSet
-
-	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for the first SQL Server computer."
-	$cred2=Get-Credential –Message "Now type the name and password of an account that has permissions to add this virtual machine to the domain."
-	$ADDomainName="<name of the AD domain that the server is joining (example CORP)>"
-	$domainDNS="<FQDN of the AD domain that the server is joining (example corp.contoso.com)>"
-	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $ADDomainName -DomainUserName $cred2.GetNetworkCredential().Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domainDNS
-
-	$diskSize=<size of the additional data disk in GB>
-	$diskLabel="<the label on the disk>"
-	$lun=<Logical Unit Number (LUN) of the disk>
-	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB $diskSize -DiskLabel $diskLabel -LUN $lun -HostCaching None
-
-	$subnetName="<Table 6 – Item 1 – Subnet name column>"
-	$vm1 | Set-AzureSubnet -SubnetNames $subnetName
-
-	$serviceName="<Table C – Item 2 – Cloud service name column>"
+	# Set up key variables
+	$rgName="<your resource group name>"
+	$locName="<Azure location of your resource group>"
+	$saName="<Table ST – Item 1 – Storage account name column>"
 	$vnetName="<Table V – Item 1 – Value column>"
-	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName $vnetName
-
-	# Create the second SQL server
-	$vmName="<Table M – Item 4 - Virtual machine name column>"
-	$vmSize="<Table M – Item 4 - Minimum size column, specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
-	$vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image -AvailabilitySetName $availSet
-
-	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for the second SQL Server computer."
-	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $ADDomainName -DomainUserName $cred2.GetNetworkCredential().Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domainDNS
-
-	$diskSize=<size of the additional data disk in GB>
+	$avName="<Table A – Item 2 – Availability set name column>"
+	
+	# Create the first SQL Server virtual machine
+	$vmName="<Table M – Item 3 - Virtual machine name column>"
+	$vmSize="<Table M – Item 3 - Minimum size column>"
+	$vnet=Get-AzureRMVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
+	$nic=New-AzureRMNetworkInterface -Name ($vmName +"-NIC") -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[1].Id
+	$avSet=Get-AzureRMAvailabilitySet –Name $avName –ResourceGroupName $rgName 
+	$vm=New-AzureRMVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avset.Id
+	
+	$diskSize=<size of the extra disk for SQL data in GB>
 	$diskLabel="<the label on the disk>"
-	$lun=<Logical Unit Number (LUN) of the disk>
-	$vm1 | Add-AzureDataDisk -CreateNew -DiskSizeInGB $diskSize -DiskLabel $diskLabel -LUN $lun -HostCaching None
-
-	$vm1 | Set-AzureSubnet -SubnetNames $subnetName
-
-	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName $vnetName
-
+	$storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
+	$vhdURI=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/" + $vmName + "-SQLDataDisk.vhd"
+	Add-AzureRMVMDataDisk -VM $vm -Name $diskLabel -DiskSizeInGB $diskSize -VhdUri $vhdURI  -CreateOption empty
+	
+	$cred=Get-Credential -Message "Type the name and password of the local administrator account for the first SQL Server computer." 
+	$vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+	$vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftSQLServer -Offer SQL2014-WS2012R2 -Skus Enterprise -Version "latest"
+	$vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
+	$storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
+	$osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/" + $vmName + "-OSDisk.vhd"
+	$vm=Set-AzureRMVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
+	New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
+	
+	# Create the second SQL Server virtual machine
+	$vmName="<Table M – Item 4 - Virtual machine name column>"
+	$vmSize="<Table M – Item 4 - Minimum size column>"
+	$nic=New-AzureRMNetworkInterface -Name ($vmName +"-NIC") -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[1].Id
+	$vm=New-AzureRMVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avset.Id
+	
+	$diskSize=<size of the extra disk for SQL data in GB>
+	$diskLabel="<the label on the disk>"
+	$vhdURI=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/" + $vmName + "-ADDSDisk.vhd"
+	Add-AzureRMVMDataDisk -VM $vm -Name $diskLabel -DiskSizeInGB $diskSize -VhdUri $vhdURI  -CreateOption empty
+	
+	$cred=Get-Credential -Message "Type the name and password of the local administrator account for the second SQL Server computer." 
+	$vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+	$vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftSQLServer -Offer SQL2014-WS2012R2 -Skus Enterprise -Version "latest"
+	$vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
+	$storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
+	$osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/" + $vmName + "-OSDisk.vhd"
+	$vm=Set-AzureRMVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
+	New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
+	
 	# Create the cluster majority node server
 	$vmName="<Table M – Item 5 - Virtual machine name column>"
-	$vmSize="<Table M – Item 5 - Minimum size column, specify one: Small, Medium, Large, ExtraLarge, A5, A6, A7, A8, A9>"
-	$image= Get-AzureVMImage | where { $_.ImageFamily -eq "Windows Server 2012 R2 Datacenter" } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
-	$vm1=New-AzureVMConfig -Name $vmName -InstanceSize $vmSize -ImageName $image -AvailabilitySetName $availSet
+	$vmSize="<Table M – Item 5 - Minimum size column>"
+	$nic=New-AzureRMNetworkInterface -Name ($vmName +"-NIC") -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[1].Id
+	$vm=New-AzureRMVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avset.Id
+	$cred=Get-Credential -Message "Type the name and password of the local administrator account for the cluster majority node server." 
+	$vm=Set-AzureRMVMOperatingSystem -VM $vm -Windows -ComputerName $vmName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
+	$vm=Set-AzureRMVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
+	$vm=Add-AzureRMVMNetworkInterface -VM $vm -Id $nic.Id
+	$storageAcc=Get-AzureRMStorageAccount -ResourceGroupName $rgName -Name $saName
+	$osDiskUri=$storageAcc.PrimaryEndpoints.Blob.ToString() + "vhds/" + $vmName + "-OSDisk.vhd"
+	$vm=Set-AzureRMVMOSDisk -VM $vm -Name "OSDisk" -VhdUri $osDiskUri -CreateOption fromImage
+	New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
-	$cred1=Get-Credential –Message "Type the name and password of the local administrator account for the cluster majority node server."
-	$vm1 | Add-AzureProvisioningConfig -AdminUsername $cred1.GetNetworkCredential().Username -Password $cred1.GetNetworkCredential().Password -WindowsDomain -Domain $ADDomainName -DomainUserName $cred2.GetNetworkCredential().Username -DomainPassword $cred2.GetNetworkCredential().Password -JoinDomain $domainDNS
-
-	$vm1 | Set-AzureSubnet -SubnetNames $subnetName
-
-	New-AzureVM –ServiceName $serviceName -VMs $vm1 -VNetName $vnetName
+> [AZURE.NOTE]由于这些虚拟机用于 Intranet 应用程序，因此未为它们分配公共 IP 地址或 DNS 域名标签，也未向 Internet 公开。但是，这也意味着你无法从 Azure 门户连接到它们。当你查看虚拟机的属性时，“连接”按钮将不可用。使用虚拟机的专用 IP 地址或 Intranet DNS 名称通过“远程桌面连接”附件或其他远程桌面工具可以连接到虚拟机。
 
 ## 配置 SQL Server 计算机
+
+对于运行 SQL Server 的每个虚拟机，使用所选的远程桌面客户端创建远程桌面连接。使用其 Intranet DNS 或计算机名称和本地管理员帐户的凭据。
+
+对于每个运行 SQL Server 的虚拟机，在 Windows PowerShell 提示符下使用这些命令将它们加入到相应的 AD DS 域。
+
+	$domName="<AD DS domain name to join, such as corp.contoso.com>"
+	Add-Computer -DomainName $domName
+	Restart-Computer
+
+请注意，必须在输入 Add-Computer 命令后提供域帐户凭据。
+
+在这些虚拟机重新启动后，使用具有本地管理员权限的帐户重新连接到它们。
 
 对于每个 SQL Server，执行以下操作：
 
@@ -112,7 +137,6 @@
 4. 使用[测试连接过程](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase2#testconn)测试与你的组织网络上的位置的连接。此过程可确保 DNS 名称解析正常工作（即，已正确为虚拟机配置了虚拟网络中的 DNS 服务器）并且可以从跨界虚拟网络收发数据包。
 
 使用以下过程两次（对每个 SQL Server 使用一次），以将 SQL Server 配置为将 F: 驱动器用于新数据库和用于帐户和权限。
-
 
 1.	在“开始”屏幕上，键入 **SQL Studio**，然后单击 **SQL Server 2014 Management Studio**。
 2.	在**“连接到服务器”**中，单击**“连接”**。
@@ -212,20 +236,6 @@ SQL Server AlwaysOn 可用性组依赖于 Windows Server 的 Windows Server 故�
 
 ## 后续步骤
 
-若要继续配置此工作负荷，请转到[阶段 4：配置 SharePoint Server](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase4)。
+- 若要继续配置此工作负荷，请使用[阶段 4](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase4)。
 
-## 其他资源
-
-[在 Azure 中通过 SQL Server AlwaysOn 可用性组部署 SharePoint](/documentation/articles/virtual-machines-workload-intranet-sharepoint-overview)
-
-[Azure 基础结构服务中托管的 SharePoint 场](/documentation/articles/virtual-machines-sharepoint-infrastructure-services)
-
-[具有 SQL Server AlwaysOn 的 SharePoint 信息图](http://go.microsoft.com/fwlink/?LinkId=394788)
-
-[适用于 SharePoint 2013 的 Microsoft Azure 体系结构](https://technet.microsoft.com/library/dn635309.aspx)
-
-[Azure 基础结构服务实施准则](/documentation/articles/virtual-machines-infrastructure-services-implementation-guidelines)
-
-[Azure 基础结构服务工作负荷：高可用性业务线应用程序](/documentation/articles/virtual-machines-workload-high-availability-lob-application)
-
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

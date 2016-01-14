@@ -3,13 +3,13 @@
 	description="了解如何通过 Python 使用 Azure Blob 服务上载、列出、下载和删除 Blob。"
 	services="storage"
 	documentationCenter="python"
-	authors="huguesv"
+	authors="emgerner-msft"
 	manager="wpickett"
 	editor=""/>
 
 <tags
 	ms.service="storage"
-	ms.date="08/25/2015"
+	ms.date="12/11/2015"
 	wacn.date=""/>
 
 # 如何通过 Python 使用 Azure Blob 存储
@@ -26,7 +26,7 @@
 
 ## 创建容器
 
-> [AZURE.NOTE] 如果你需要安装 Python 或 [Python Azure 包][]，请参阅 [Python 安装指南](/documentation/articles/python-how-to-install)。
+> [AZURE.NOTE]如果您需要安装 Python 或 [Python Azure 包][]，请参阅 [Python 安装指南](/documentation/articles/python-how-to-install)。
 
 使用 **BlobService** 对象可以对容器和 Blob 进行操作。以下代码创建 **BlobService** 对象。在您希望在其中以编程方式访问 Azure 存储空间的任何 Python 文件中，将以下代码添加到文件的顶部附近。
 
@@ -54,7 +54,7 @@
 
 ## 将 Blob 上载到容器中
 
-若要将数据上载到 Blob，请使用 **put\\_block\\_blob\\_from\\_path**、**put\\_block\\_blob\\_from\\_file**、**put\\_block\\_blob\\_from\\_bytes** 或 **put\\_block\\_blob\\_from\\_text** 方法。这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
+若要将数据上载到 Blob，请使用 **put\_block\_blob\_from\_path**、**put\_block\_blob\_from\_file**、**put\_block\_blob\_from\_bytes** 或 **put\_block\_blob\_from\_text** 方法。这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
 
 **put\_block\_blob\_from\_path** 上载指定路径中一个文件的内容，**put\_block\_blob\_from\_file** 上载已打开的文件/流中的内容。**put\_block\_blob\_from\_bytes** 上载一组字节，**put\_block\_blob\_from\_text** 使用使用指定的编码（默认为 UTF-8）上载指定的文本值。
 
@@ -102,13 +102,13 @@
 
 现在，您已了解有关 Blob 存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
 
--   请参阅 MSDN 参考：[在 Azure 中存储和访问数据][]
--   访问 [Azure 存储空间团队博客][]
+- 访问 [Azure 存储空间团队博客][]
+- [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
 有关详细信息，另请参阅 [Python 开发人员中心](/develop/python/)。
-[在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
+
 [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 [Python Azure 包]: https://pypi.python.org/pypi/azure
 [Python Azure 存储空间包]: https://pypi.python.org/pypi/azure-storage
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

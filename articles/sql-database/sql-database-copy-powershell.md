@@ -9,8 +9,8 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="10/16/2015"
-	wacn.date=""/>
+	ms.date="12/01/2015"
+        wacn.date=""/>
 
 
 # 使用 PowerShell 创建 Azure SQL 数据库的副本
@@ -18,6 +18,7 @@
 **单一数据库**
 
 > [AZURE.SELECTOR]
+- [Azure 门户](/documentation/articles/sql-database-copy)
 - [PowerShell](/documentation/articles/sql-database-copy-powershell)
 - [SQL](/documentation/articles/sql-database-copy-transact-sql)
 
@@ -43,7 +44,7 @@
 
 ## 配置你的凭据，然后选择你的订阅
 
-首先必须与 Azure 帐户建立访问连接，因此请启动 PowerShell，然后运行以下 cmdlet。在登录屏幕中，输入登录 Azure 门户时所用的相同电子邮件和密码。
+首先必须与 Azure 帐户建立访问连接，因此请启动 PowerShell，然后运行以下 cmdlet。在登录屏幕中，输入登录 Azure 经典门户时所用的相同电子邮件和密码。
 
 	Add-AzureAccount
 
@@ -139,6 +140,6 @@
 
 - [业务连续性概述](/documentation/articles/sql-database-business-continuity)
 - [灾难恢复练习](/documentation/articles/sql-database-disaster-recovery-drills)
-- [SQL 数据库文档](https://azure.microsoft.com/documentation/services/sql-database/)
+- [SQL 数据库文档](/documentation/services/sql-databases/)
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

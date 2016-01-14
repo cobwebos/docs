@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="06/16/2015"
+	ms.date="12/10/2015"
 	wacn.date=""/>
 
 
@@ -52,19 +52,18 @@ Azure 通知中心提供易用的基础结构，使你能够从任何后端（�
 
 ##推送通知的工作原理
 
-推送通知通过称为_平台通知系统_ (PNS) 的特定于平台的基础结构进行传送。PNS 提供的功能有限（即，不支持广播和个性化设置），并且没有常见界面。例如，若要将通知发送给 Windows 应用商店应用程序，开发人员必须与 WNS（Windows 通知服务）联系，若要将通知发送给 iOS 设备，该开发人员必须与 APNS（Apple 推送通知服务）联系并第二次发送该消息。Azure 通知中心提供通用接口以及其他功能，以帮助支持跨平台推送通知。
+推送通知通过称为 _平台通知系统_ (PNS) 的特定于平台的基础结构进行传送。PNS 提供的功能有限（即，不支持广播和个性化设置），并且没有常见界面。例如，若要将通知发送给 Windows 应用商店应用程序，开发人员必须与 WNS（Windows 通知服务）联系，若要将通知发送给 iOS 设备，该开发人员必须与 APNS（Apple 推送通知服务）联系并第二次发送该消息。Azure 通知中心提供通用接口以及其他功能，以帮助支持跨平台推送通知。
 
 但概括地说，所有平台通知系统都遵循相同的模式：
 
 1.  客户端应用程序与 PNS 联系以检索其_句柄_。句柄类型取决于系统。对于 WNS，它是 URI 或“通知通道”。 对于 APNS，它是令牌。
 2.  客户端应用将此句柄存储在应用_后端_中以供日后使用。对于 WNS，后端通常是云服务。对于 Apple，该系统称为_提供程序_。
 3.  为发送推送通知，应用程序后端使用句柄与 PNS 联系以定位到特定客户端应用程序实例。
-4.  PNS 将通知转发到句柄所指定的设备。
-![][0]
+4.  PNS 将通知转发到句柄所指定的设备。![][0]
 
 ##推送通知的难点
 
-虽然这些系统非常强大，但它们仍为应用程序开发人员留下很多实现常见推送通知方案的工作，例如将推送通知广播或发送给用户。
+虽然这些系统非常强大，但它们仍为应用程序开发人员留下很多实现常见推送通知方案的工作，例如将推送通知广播或发送给细分用户。
 
 推送通知是云服务中最受期待的移动应用程序功能之一。原因是使它们运行所需的基础结构相当复杂，并且该基础结构通常与应用程序的主业务逻辑无关。生成按需推送基础结构面临以下一些问题：
 
@@ -119,6 +118,24 @@ Azure 通知中心提供易用的基础结构，使你能够从任何后端（�
 - **丰富的遥测功能**：可以在门户中或以编程方式使用。
 
 
+##与 App Service Mobile Apps 集成
+
+为了在 Azure 服务之间促成完美且统一的体验，[App Service Mobile Apps] 原生支持使用通知中心来推送通知。[App Service Mobile Apps] 提供面向企业开发人员和系统集成商的高度可缩放、全局可用的移动应用程序平台，该平台向移动开发人员提供一组丰富的功能。
+
+Mobile Apps 开发人员可以借助以下工作流来利用通知中心：
+
+1. 检索设备 PNS 句柄
+2. 通过便利的 Mobile Apps Client SDK 注册 API，使用通知中心注册设备和 [模板]
+    + 请注意，出于安全方面的考虑，Mobile Apps 将在注册中去除所有标记。直接从后端使用通知中心将标记与设备相关联。
+3. 从应用后端使用通知中心发送通知
+
+以下是这种集成为开发人员带来的便利性：
+- **Mobile Apps 客户端 SDK**。 这些多平台 SDK 提供简单的 API 用于注册，然后自动与链接到移动应用的通知中心联系。开发人员不需要通过通知中心凭据进行挖掘，以及使用其他服务。
+	+ SDK 使用经 Mobile Apps 验证的用户 ID 自动标记指定的设备，以启用向用户推送通知的方案。
+	+ SDK 自动使用 Mobile Apps 安装 ID 作为 GUID 来向通知中心注册，省去了开发人员维护多个服务 GUID 的麻烦。
+- **安装模型。** Mobile Apps 使用通知中心的最新推送模型来呈现 JSON 安装中所有与设备关联的推送属性，该模型与推送通知密切合作且易于使用。
+- **灵活性。** 即使是就地集成的，开发人员也始终可以选择直接使用通知中心。
+- **[Azure 门户] 中的集成体验。** Mobile Apps 以可视化方式呈现推送功能，开发人员可以通过 Mobile Apps 轻松使用关联的通知中心。
 
 
 
@@ -141,16 +158,16 @@ Azure 通知中心提供易用的基础结构，使你能够从任何后端（�
   [0]: ./media/notification-hubs-overview/SBPushNotifications1.gif
   [1]: ./media/notification-hubs-overview/SBPushNotifications2.gif
   [客户如何使用通知中心]: /zh-cn/services/notification-hubs
-  [通知中心教程和指南]: /zh-cn/documentation/services/notification-hubs
-  [iOS]: /zh-cn/documentation/articles/notification-hubs-ios-get-started
-  [Android]: /zh-cn/documentation/articles/notification-hubs-android-get-started
-  [Windows Universal]: /zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-get-started
-  [Windows Phone]: /zh-cn/documentation/articles/notification-hubs-windows-phone-get-started
-  [Kindle]: /zh-cn/documentation/articles/notification-hubs-kindle-get-started
-  [Xamarin.iOS]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-ios-get-started
-  [Xamarin.Android]: /zh-cn/documentation/articles/partner-xamarin-notification-hubs-android-get-started
+  [通知中心教程和指南]: /documentation/services/notification-hubs
+  [iOS]: /documentation/articles/notification-hubs-ios-get-started
+  [Android]: /documentation/articles/notification-hubs-android-get-started
+  [Windows Universal]: /documentation/articles/notification-hubs-windows-store-dotnet-get-started
+  [Windows Phone]: /documentation/articles/notification-hubs-windows-phone-get-started
+  [Kindle]: /documentation/articles/notification-hubs-kindle-get-started
+  [Xamarin.iOS]: /documentation/articles/partner-xamarin-notification-hubs-ios-get-started
+  [Xamarin.Android]: /documentation/articles/partner-xamarin-notification-hubs-android-get-started
   [Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/zh-cn/library/microsoft.windowsazure.messaging.notificationhub.aspx
   [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.notifications.aspx
   
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

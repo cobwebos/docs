@@ -1,27 +1,18 @@
 <properties 
 	pageTitle="我的 ASP.NET 5 项目（Visual Studio 连接服务）发生了什么情况？| Microsoft Azure 存储空间"
 	description="介绍在 Visual Studio ASP.NET 5 项目中使用 Visual Studio 连接服务连接到 Azure 存储帐户后会发生什么情况"
-	services="storage" 
-	documentationCenter="" 
-	authors="patshea123" 
-	manager="douge" 
-	editor="tglee"/>
+	services="storage"
+	documentationCenter=""
+	authors="TomArcher"
+	manager="douge"
+	editor=""/>
 
 <tags 
-	ms.service="storage" 
-	ms.date="09/03/2015"
+	ms.service="storage"
+	ms.date="12/16/2015"
 	wacn.date=""/>
 
 # 我的 ASP.NET 5 项目（Visual Studio Azure 存储连接服务）发生了什么情况？
-
-> [AZURE.SELECTOR]
-> - [入门](/documentation/articles/vs-storage-aspnet5-getting-started-blobs)
-> - [发生了什么情况](/documentation/articles/vs-storage-aspnet5-what-happened)
-
-> [AZURE.SELECTOR]
-> - [Blobs](/documentation/articles/vs-storage-aspnet5-getting-started-blobs)
-> - [队列](/documentation/articles/vs-storage-aspnet5-getting-started-queues)
-> - [表](/documentation/articles/vs-storage-aspnet5-getting-started-tables)
 
 ## 已添加引用
 
@@ -45,4 +36,4 @@ Azure 存储 NuGet 包已添加到你的 Visual Studio 项目。
 有关详细信息，请参阅 [ASP.NET 5](http://www.asp.net/vnext)。
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

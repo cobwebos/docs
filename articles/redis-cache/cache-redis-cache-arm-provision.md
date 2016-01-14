@@ -9,28 +9,25 @@
 
 <tags
 	ms.service="cache"
-	ms.date="10/28/2015"
+	ms.date="12/16/2015"
 	wacn.date=""/>
 
 # 使用模板创建 Redis 缓存
 
-在本主题中，你将学习如何创建用于部署 Azure Redis 缓存的 Azure 资源管理器模板。该缓存可以用于现有存储帐户以保存诊断数据。你将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。可将此模板用于自己的部署，或自定义此模板以满足要求。
-
-目前，对订阅的同一区域中的所有缓存共享诊断设置。更新区域中的一个缓存将会影响该区域中的所有其他缓存。
+在本主题中，你将学习如何创建用于部署 Azure Redis 缓存的 Azure 资源管理器模板。你将了解如何定义要部署的资源以及如何定义执行部署时指定的参数。可将此模板用于自己的部署，或自定义此模板以满足要求。
 
 有关创建模板的详细信息，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
 
 有关完整的模板，请参阅 [Redis 缓存模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)。
 
->[AZURE.NOTE]用于新[高级层](/documentation/articles/cache-premium-tier-intro)的 ARM 模板即将推出。若要检查最新模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)并搜索 `Redis Cache`。
+>[AZURE.NOTE]适用于新[高级层](/documentation/articles/cache-premium-tier-intro)的 ARM 模板现已推出。
+>
+>
+>若要检查最新模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)并搜索 `Redis Cache`。
 
 ## 将部署的内容
 
-在此模板中，你将部署 Azure Redis 缓存，以便使用现有存储帐户保存诊断数据。
-
-若要自动运行部署，请单击以下按钮：
-
-![部署到 Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)
+在此模板中，你将部署 Azure Redis 缓存。
 
 ## Parameters
 
@@ -48,33 +45,12 @@ Redics 缓存的位置。为获得最佳性能，请使用要与缓存配合使�
       "type": "string"
     }
 
-### diagnosticsStorageAccountName
-
-要用于诊断的现有存储帐户的名称。
-
-    "diagnosticsStorageAccountName": {
-      "type": "string"
-    }
-
 ### enableNonSslPort
 
 一个布尔值，该值指示是否允许通过非 SSL 端口访问。
 
     "enableNonSslPort": {
       "type": "bool"
-    }
-
-### diagnosticsStatus
-
-一个值，该值指示是否启用诊断。使用 ON 或 OFF。
-
-    "diagnosticsStatus": {
-      "type": "string",
-      "defaultValue": "ON",
-      "allowedValues": [
-            "ON",
-            "OFF"
-        ]
     }
     
 ## 要部署的资源
@@ -98,20 +74,6 @@ Redics 缓存的位置。为获得最佳性能，请使用要与缓存配合使�
         }
       },
         "resources": [
-          {
-            "apiVersion": "2014-04-01",
-            "type": "diagnosticSettings",
-            "name": "service", 
-            "location": "[parameters('redisCacheLocation')]",
-            "dependsOn": [
-              "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
-            ],
-            "properties": {
-              "status": "[parameters('diagnosticsStatus')]",
-              "storageAccountName": "[parameters('diagnosticsStorageAccountName')]",
-              "retention": "30"
-            }
-          }
         ]
     }
 
@@ -121,10 +83,10 @@ Redics 缓存的位置。为获得最佳性能，请使用要与缓存配合使�
 
 ### PowerShell
 
-    New-AzureResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache -redisCacheLocation "China North"
+    New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache -redisCacheLocation "China North"
 
 ### Azure CLI
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

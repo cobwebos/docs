@@ -9,51 +9,56 @@
 
 <tags
 	ms.service="cache"
-	ms.date="10/01/2015"
+	ms.date="12/14/2015"
 	wacn.date=""/>
 
 # 如何为高级 Azure Redis 缓存配置虚拟网络支持
-Azure Redis 缓存具有不同的缓存产品（包括新推出的高级级别，目前为预览版），使缓存大小和功能的选择更加灵活。
+Azure Redis 缓存具有不同的缓存产品（包括新推出的高级层），使缓存大小和功能的选择更加灵活。
 
 Azure Redis 缓存高级层包括群集、暂留和虚拟网络 (VNET) 支持。VNET 是你自己的网络在云中的表示形式。使用 VNET 配置 Azure Redis 缓存实例后，该实例不可公开寻址，而只能从 VNET 中的客户端访问。本文说明如何配置高级 Azure Redis 缓存实例的虚拟网络支持。
 
 有关其他高级缓存功能的信息，请参阅[如何配置高级 Azure Redis 缓存的持久性](/documentation/articles/cache-how-to-premium-persistence)和[如何配置高级 Azure Redis 缓存的群集](/documentation/articles/cache-how-to-premium-clustering)。
 
->[AZURE.NOTE] Azure Redis 缓存高级级别目前处于预览状态。
-
 ## 为何使用 VNET？
 [Azure 虚拟网络 (VNET)](/home/features/networking/) 部署为 Azure Redis 缓存提供增强的安全性，并提供子网、访问控制策略和进一步限制访问 Azure Redis 缓存的其他功能。
 
 ## 虚拟网络支持
-虚拟网络 (VNET) 支持可在创建缓存期间在“新建 Redis 缓存”边栏选项卡中配置。若要创建缓存，首先请登录到 [Azure 预览门户](https://manage.windowsazure.cn)，然后单击“新建”>“数据服务”>“Redis 缓存”。
 
-![创建 Redis 缓存][redis-cache-new-cache-menu]
+在 Microsoft Azure 中国区，只能通过 Azure PowerShell 或 Azure CLI 管理 Redis 缓存
 
-若要配置 VNET 支持，请首先在“选择定价层”边栏选项卡中选择一个“高级”缓存。
 
-![选择你的定价层][redis-cache-premium-pricing-tier]
+[AZURE.INCLUDE [azurerm-azurechinacloud-environment-parameter](../includes/azurerm-azurechinacloud-environment-parameter.md)]
 
-Azure Redis 缓存 VNET 集成在“虚拟网络”边栏选项卡中配置。可以在这里选择现有的经典 VNET。若要使用新的 VNET，请遵循[使用 Azure 预览门户创建虚拟网络（经典）](/documentation/articles/virtual-networks-create-vnet-classic-pportal)中的步骤，然后返回“Redis 缓存虚拟网络”边栏选项卡选择该 VNET。
 
->[AZURE.NOTE] 在高级缓存的预览期内，Azure Redis 缓存将使用经典 VNET。有关创建经典 VNET 的详细信息，请参阅[使用 Azure 预览门户创建虚拟网络（经典）](/documentation/articles/virtual-networks-create-vnet-classic-pportal)。
+使用以下 PowerShell 脚本创建缓存：
 
-![虚拟网络][redis-cache-vnet]
+	$VerbosePreference = "Continue"
 
-单击“虚拟网络”边栏选项卡上的“虚拟网络”，以选择并配置你的 VNET。
+	# Create a new cache with date string to make name unique. 
+	$cacheName = "MovieCache" + $(Get-Date -Format ('ddhhmm')) 
+	$location = "China North"
+	$resourceGroupName = "Default-Web-ChinaNorth"
+	
+	$movieCache = New-AzureRmRedisCache -Location $location -Name $cacheName  -ResourceGroupName $resourceGroupName -Size 6GB -Sku Premium -VirtualNetwork /subscriptions/{subid}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 -Subnet Front -StaticIP 10.10.1.5
 
-![虚拟网络][redis-cache-vnet-select]
-
-单击所需的 VNET 版本将它选中。
-
-![虚拟网络][redis-cache-vnet-subnet]
-
-单击“子网”以选择所需的子网。
-
-![虚拟网络][redis-cache-vnet-ip]
-
-键入所需的“静态 IP 地址”，然后单击“确定”以保存 VNET 配置。如果选择的静态 IP 已被使用，将会显示错误消息。
+**-StaticIP** 参数是可选的。如果选择的静态 IP 已被使用，将会显示错误消息。如果未在此处指定任何 IP，系统会从所选子网中选择一个。
 
 创建缓存后，该缓存只能由同一 VNET 中的客户端访问。
+
+>[AZURE.IMPORTANT]若要在使用 VNET 时访问 Azure Redis 缓存实例，请传递 VNET 中缓存的静态 IP 地址作为第一个参数，并传入包含缓存终结点的 `sslhost` 参数。在以下示例中，静态 IP 地址为 `10.10.1.5`，缓存终结点为 `contoso5.redis.cache.chinacloudapi.cn`。
+
+	private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+	{
+	    return ConnectionMultiplexer.Connect("10.10.1.5,sslhost=contoso5.redis.cache.chinacloudapi.cn,abortConnect=false,ssl=true,password=password");
+	});
+	
+	public static ConnectionMultiplexer Connection
+	{
+	    get
+	    {
+	        return lazyConnection.Value;
+	    }
+	}
 
 ## Azure Redis 缓存 VNET 常见问题
 
@@ -63,6 +68,7 @@ Azure Redis 缓存 VNET 集成在“虚拟网络”边栏选项卡中配置。�
 
 以下列表包含一些常见配置错误，它们可能导致 Azure Redis 缓存无法正常运行。
 
+-	缺少 DNS 访问权限。VNET 中的 Azure Redis 缓存实例在监视过程中需要访问 DNS，并且需要访问缓存的运行时系统。如果缓存实例无法访问 DNS，监视将无法进行，并且缓存无法正常工作。
 -	已阻止客户端用来连接 Redis 的 TCP 端口（例如 6379 或 6380）。
 -	已阻止或拦截来自虚拟网络的传出 HTTPS 流量。Azure Redis 缓存使用了定向到 Azure 服务（尤其是存储空间）的传出 HTTPS 流量。
 -	已阻止 Redis 角色实例 VM 在子网内部相互通信。Redis 角色实例应允许在所用的任何端口上使用 TCP 相互通信，这些端口可能会变化，但至少可以假设为 Redis CSDEF 文件中使用的所有端口。
@@ -99,4 +105,4 @@ Azure Redis 缓存 VNET 集成在“虚拟网络”边栏选项卡中配置。�
 
 [redis-cache-vnet-subnet]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-subnet.png
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

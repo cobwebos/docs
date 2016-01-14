@@ -8,7 +8,7 @@
  editor=""/>
 <tags
  ms.service="scheduler"
- ms.date="07/28/2015"
+ ms.date="12/04/2015"
  wacn.date=""/>
 
 # 计划程序的限制、默认值和错误代码
@@ -55,20 +55,22 @@ API 操作可能还会返回由管理服务定义的其他错误信息。此额�
 
 ## 另请参阅
 
- [计划程序的概念、术语和实体层次结构](/documentation/articles/scheduler-concepts-terms)
+
+ [计划程序是什么？](/documentation/articles/scheduler-intro)
  
- [开始在管理门户中使用计划程序](/documentation/articles/scheduler-get-started-portal)
+ [Azure 计划程序的概念、术语和实体层次结构](/documentation/articles/scheduler-concepts-terms)
+ 
+ [开始在 Azure 门户中使用计划程序](/documentation/articles/scheduler-get-started-portal)
  
  [Azure 计划程序中的计划和计费](/documentation/articles/scheduler-plans-billing)
  
- [如何使用 Azure 计划程序生成复杂的计划和高级重复执行](/documentation/articles/scheduler-advanced-complexity)
+ [Azure 计划程序 REST API 参考](https://msdn.microsoft.com/zh-CN/library/dn528946)
  
- [计划程序 REST API 参考](https://msdn.microsoft.com/zh-CN/library/dn528946)
+ [Azure 计划程序 PowerShell cmdlet 参考](/documentation/articles/scheduler-powershell-reference)
+ [Azure 计划程序高可用性和可靠性](/documentation/articles/scheduler-high-availability-reliability)
  
- [计划程序的高可用性和可靠性](/documentation/articles/scheduler-high-availability-reliability)
- 
- [计划程序出站身份验证](/documentation/articles/scheduler-outbound-authentication)
+ [Azure 计划程序出站身份验证](/documentation/articles/scheduler-outbound-authentication)
 
  
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0104_2016-->

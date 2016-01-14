@@ -55,7 +55,7 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务，包括 Office 365。
 	**不支持以下服务：**
 
 	- CDN
-	- Visual Studio Online Load Testing
+	- Visual Studio Team Services 负载测试
 	- 多重身份验证
 
 ## 数据和连接
@@ -66,7 +66,7 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务，包括 Office 365。
 ### ExpressRoute 支持的连接速度是多少？
 支持带宽提供：
 
-|50 Mbps, 100 Mbps, 200 Mbps, 500 Mbps, 1Gbps, 2 Gbps,  5 Gbps, 10Gbps|
+|50 Mbps, 100 Mbps, 200 Mbps, 500 Mbps, 1Gbps, 2 Gbps, 5 Gbps, 10Gbps|
 
 ### 可以选择哪些服务提供商？
 有关服务提供商和位置的列表，请参阅 [ExpressRoute 合作伙伴和位置](/documentation/articles/expressroute-locations)。
@@ -216,8 +216,7 @@ ExpressRoute 高级版包括下面列出的功能集合。
 1. 请查看 [ExpressRoute 先决条件页](/documentation/articles/expressroute-prerequisites)，以确保满足要求。
 2. 请查看 [ExpressRoute 合作伙伴和位置](/documentation/articles/expressroute-locations)中的服务提供商和位置列表，以确保满足你的连接需求。
 3. 请查看[针对 Office 365 的网络规划和性能优化](http://aka.ms/tune/)，以规划你的容量要求
-4. 遵照以下工作流中列出的步骤来设置连接。
-	[ExpressRoute 线路预配工作流和线路状态](/documentation/articles/expressroute-workflows)。
+4. 遵照以下工作流中列出的步骤来设置连接。[ExpressRoute 线路预配工作流和线路状态](/documentation/articles/expressroute-workflows)。
 
 ### 我的现有 ExpressRoute 线路是否支持连接到 Office 365 服务？
 是的。可以将你的现有 ExpressRoute 线路配置为支持连接到 Office 365 服务。请确保你有足够的容量连接到 Office 365 服务。[针对 Office 365 的网络规划和性能优化](http://aka.ms/tune/)中的内容可帮助你规划连接需求。另外，请参阅[创建和修改 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-classic)。
@@ -255,4 +254,4 @@ ExpressRoute 高级版包括下面列出的功能集合。
 是的。即使为你的网络配置了 ExpressRoute，也可以通过 Internet 访问 Office 365 服务终结点。如果你所在的位置已配置为通过 ExpressRoute 连接到 Office 365 服务，则你将通过 ExpressRoute 进行连接。
  
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

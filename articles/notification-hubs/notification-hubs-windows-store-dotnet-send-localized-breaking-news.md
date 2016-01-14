@@ -8,15 +8,15 @@
 	editor=""/>
 
 <tags
-    ms.service="mobile-services,notification-hubs"
-    ms.date="09/08/2015" 
-    wacn.date=""/>
+	ms.service="notification-hubs"
+	ms.date="12/15/2015" 
+	wacn.date=""/>
 
 # 使用通知中心发送本地化的突发新闻
 
 > [AZURE.SELECTOR]
-- [Windows Store C#](notification-hubs-windows-store-dotnet-send-localized-breaking-news.md)
-- [iOS](notification-hubs-ios-send-localized-breaking-news.md)
+- [Windows 应用商店 C#](/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news)
+- [iOS](/documentation/articles/notification-hubs-ios-send-localized-breaking-news)
 
 ##概述
 
@@ -35,12 +35,14 @@
 
 你必须已完成学习[使用通知中心发送突发新闻]教程并具有可用的代码，因为本教程直接围绕该代码展开论述。
 
-你还需要 Visual Studio 2012。
+你还需要 Visual Studio 2012 或更高版本。
 
 
 ##模板概念
 
-在[使用通知中心发送突发新闻]中，你构建了一个使用**标记**订阅不同新闻类别通知的应用程序。但是，很多应用程序针对多个市场，需要本地化。这意味着通知内容本身必须本地化且传递到正确的设备组。在本主题中，我们将演示如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
+在[使用通知中心发送突发新闻]中，你构建了一个使用**标记**订阅不同新闻类别通知的应用程序。
+但是，很多应用程序针对多个市场，需要本地化。这意味着通知内容本身必须本地化且传递到正确的设备组。
+在本主题中，我们将演示如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
 
 注意：发送本地化的通知的一种方式是创建每个标签的多个版本。例如，要支持英语、法语和汉语，我们需要三种不同的标签用于世界新闻：“world\_en”、“world\_fr”和“world\_ch”。我们然后必须将世界新闻的本地化版本分别发送到这些标签。在本主题中，我们使用模板来避免增生标签和发送多个消息的要求。
 
@@ -52,7 +54,7 @@
 		"News_Mandarin": "..."
 	}
 
-然后我们将确保设备注册到引用正确属性的模板。例如，要接收简单的 toast 消息的 Windows 应用商店应用程序将注册以下模板：
+然后我们将确保设备注册到引用正确属性的模板。例如，要接收简单的 toast 消息的 Windows 应用商店应用将注册以下包含任何相应标记的模板：
 
 	<toast>
 	  <visual>
@@ -64,16 +66,12 @@
 
 
 
-模板是很强大的功能，你可以在[通知中心指南]一文中了解其更多信息。一个模板表达语言的参考是[针对 Windows 应用商店的通知中心操作指南]。
+模板是很强大的功能，你可以在[模板](notification-hubs-templates.md)一文中了解其更多信息。
 
 
 ##应用程序用户界面
 
 我们现在将修改你在[使用通知中心发送突发新闻]主题中创建的“突发新闻”应用，以使用模板发送本地化的突发新闻。
-
-
-为了改编你的客户端应用以接收本地化的消息，你必须使用模板注册替换*本机*注册（即未指定模板的注册）。
-
 
 在 Windows 应用商店应用程序中：
 
@@ -105,29 +103,37 @@
         <ToggleSwitch Header="Technology" Name="TechnologyToggle" Grid.Row="2" Grid.Column="1"/>
         <ToggleSwitch Header="Science" Name="ScienceToggle" Grid.Row="3" Grid.Column="1"/>
         <ToggleSwitch Header="Sports" Name="SportsToggle" Grid.Row="4" Grid.Column="1"/>
-        <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="Button_Click" />
+        <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
 
 ##构建 Windows 应用商店客户端应用程序
 
 1. 在 Notifications 类中，将一个区域设置参数添加到 *StoreCategoriesAndSubscribe* 和 *SubscribeToCateories* 方法。
 
-		public async Task StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
+        public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
         {
             ApplicationData.Current.LocalSettings.Values["categories"] = string.Join(",", categories);
             ApplicationData.Current.LocalSettings.Values["locale"] = locale;
-            await SubscribeToCategories(locale, categories);
+            return await SubscribeToCategories(categories);
         }
 
-        public async Task SubscribeToCategories(string locale, IEnumerable<string> categories)
+        public async Task<Registration> SubscribeToCategories(string locale, IEnumerable<string> categories = null)
         {
             var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
-            var template = String.Format(@"<toast><visual><binding template=""ToastText01""><text id=""1"">$(News_{0})</text></binding></visual></toast>", locale);
 
-            await hub.RegisterTemplateAsync(channel.Uri, template, "newsTemplate", categories);
+            if (categories == null)
+            {
+                categories = RetrieveCategories();
+            }
+
+            // Using a template registration. This makes supporting notifications across other platforms much easier.
+            // Using the localized tags based on locale selected.
+            string templateBodyWNS = String.Format("<toast><visual><binding template="ToastText01"><text id="1">$(News_{0})</text></binding></visual></toast>", locale);
+
+            return await hub.RegisterTemplateAsync(channel.Uri, templateBodyWNS, "localizedWNSTemplateExample", categories);
         }
 
-	请注意，不是调用 *RegisterNativeAsync* 方法，我们调用的是 *RegisterTemplateAsync*：我们将注册特定的通知格式，在其中模板依赖于区域设置。我们还提供模板的名称（“newsTemplate”），因为我们可能要注册多个模板（例如一个用于 toast 通知，一个用于磁贴），需要命名它们以便可以更新或删除它们。
+	请注意，不是调用 *RegisterNativeAsync* 方法，我们调用的是 *RegisterTemplateAsync*：我们将注册特定的通知格式，在其中模板依赖于区域设置。我们还提供模板的名称（“localizedWNSTemplateExample”），因为我们可能要注册多个模板（例如一个用于 toast 通知，一个用于磁贴），需要命名它们以便可以更新或删除它们。
 
 	请注意，如果一个设备使用同一标签注册多个模板，针对该标签的传入消息将导致多个通知发送到设备（每个通知对应一个模板）。当同一逻辑消息必须导致多个可视通知时，此行为很有用，例如在 Windows 应用商店应用程序显示徽章和 toast。
 
@@ -141,7 +147,9 @@
 
 3. 在你的 MainPage.xaml.cs 中，通过检索“区域设置”组合框的当前值并将它提供给对 Notifications 类的调用，更新按钮单击处理程序，如下所示：
 
-		 var locale = (string)Locale.SelectedItem;
+        private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var locale = (string)Locale.SelectedItem;
 
          var categories = new HashSet<string>();
          if (WorldToggle.IsOn) categories.Add("World");
@@ -151,28 +159,39 @@
          if (ScienceToggle.IsOn) categories.Add("Science");
          if (SportsToggle.IsOn) categories.Add("Sports");
 
-         await ((App)Application.Current).Notifications.StoreCategoriesAndSubscribe(locale, categories);
+            var result = await ((App)Application.Current).notifications.StoreCategoriesAndSubscribe(locale,
+				 categories);
 
-         var dialog = new MessageDialog(String .Format("Locale: {0}; Subscribed to: {1}", locale, string.Join(",", categories)));
-         dialog.Commands.Add(new UICommand("OK"));
-         await dialog.ShowAsync();
+            var dialog = new MessageDialog("Locale: " + locale + " Subscribed to: " + 
+				string.Join(",", categories) + " on registration Id: " + result.RegistrationId);
+            dialog.Commands.Add(new UICommand("OK"));
+            await dialog.ShowAsync();
+        }
 
-4. 最后，在 App.xaml.cs 文件中，确保在 OnLaunched 方法中更新对 *Notifications* 单一实例的调用：
 
-		Notifications.SubscribeToCategories(Notifications.RetrieveLocale(), Notifications.RetrieveCategories());
+4. 最后，在 App.xaml.cs 文件中，确保更新 `InitNotificationsAsync` 方法以检索区域设置，并在订阅时使用该区域设置：
 
+        private async void InitNotificationsAsync()
+        {
+            var result = await notifications.SubscribeToCategories(notifications.RetrieveLocale());
+
+            // Displays the registration ID so you know it was successful
+            if (result.RegistrationId != null)
+            {
+                var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
+                dialog.Commands.Add(new UICommand("OK"));
+                await dialog.ShowAsync();
+            }
+        }
 
 ##从后端发送本地化的通知
 
-[AZURE.INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
+[AZURE.INCLUDE [notification-hubs-localized-back-end](../includes/notification-hubs-localized-back-end)]
 
 
 
 
 
-## 后续步骤
-
-有关使用模板的更多信息，请参见[使用通知中心通知用户：ASP.NET]、[使用通知中心通知用户：移动服务]以及[通知中心指南]。一个模板表达语言的参考是[针对 Windows 应用商店的通知中心操作指南]。
 
 <!-- Anchors. -->
 [Template concepts]: #concepts
@@ -183,47 +202,29 @@
 
 <!-- Images. -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- URLs. -->
 [Mobile Service]: /develop/mobile/tutorials/get-started
-[使用通知中心通知用户：ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
-[使用通知中心通知用户：移动服务]: /manage/services/notification-hubs/notify-users
-[使用通知中心发送突发新闻]: /manage/services/notification-hubs/breaking-news-dotnet
+[Notify users with Notification Hubs: ASP.NET]: /documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/
+
+[Notify users with Notification Hubs: Mobile Services]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users/
+
+[使用通知中心发送突发新闻]: /documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+
 
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[Get started with Mobile Services]: /develop/mobile/tutorials/get-started/#create-new-service
-[Get started with data]: /develop/mobile/tutorials/get-started-with-data-dotnet
-[Get started with authentication]: /develop/mobile/tutorials/get-started-with-users-dotnet
-[Get started with push notifications]: /develop/mobile/tutorials/get-started-with-push-dotnet
+[Get started with Mobile Services]: /documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started/#create-new-service
+[Get started with data]: /documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-data/
+[Get started with authentication]: /documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-users/
+[Get started with push notifications]: /documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push/
 [Push notifications to app users]: /develop/mobile/tutorials/push-notifications-to-app-users-dotnet
 [Authorize users with scripts]: /develop/mobile/tutorials/authorize-users-in-scripts-dotnet
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
-[Azure Management Portal]: https://manage.windowsazure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
-[针对 Windows 应用商店的通知中心操作指南]: http://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 
-<!---HONumber=76-->
+<!---HONumber=Mooncake_0104_2016-->

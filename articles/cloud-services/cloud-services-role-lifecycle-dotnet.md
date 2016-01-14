@@ -1,5 +1,5 @@
 <properties 
-pageTitle="使用 .NET 响应云服务的生命周期事件" 
+pageTitle="处理云服务生命周期事件 | Microsoft Azure" 
 description="了解如何在 .NET 中使用云服务角色的生命周期方法" 
 services="cloud-services" 
 documentationCenter=".net" 
@@ -8,7 +8,7 @@ manager="timlt"
 editor=""/>
 <tags 
 ms.service="cloud-services" 
-ms.date="09/08/2015" 
+ms.date="12/07/2015" 
 wacn.date=""/>
 
 # 在 .NET 中自定义 Web 角色或辅助角色的生命周期
@@ -76,4 +76,4 @@ public override bool OnStart()
 ## 后续步骤
 了解如何[创建云服务包](/documentation/articles/cloud-services-model-and-package)。
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0104_2016-->

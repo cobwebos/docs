@@ -7,10 +7,11 @@
 	manager="jeffreyg"
 	editor="monicar"
 	tags="azure-resource-manager" />
+
 <tags
 	ms.service="virtual-machines"
 	ms.date="11/12/2015"
-   wacn.date="" />
+	wacn.date="" />
 
 # Azure 虚拟机中 SQL Server 的自动备份
 
@@ -30,13 +31,13 @@
 |**加密**|启用/禁用（已禁用）|启用或禁用加密。启用加密时，用于还原备份的证书使用相同的命名约定存放在同一 automaticbackup 容器中的指定存储帐户内。如果密码发生更改，将使用该密码生成新证书，但旧证书在备份之前仍会还原。|
 |**密码**|密码文本（无）|加密密钥的密码。仅当启用了加密时才需要此设置。若要还原加密的备份，必须具有创建该备份时使用的正确密码和相关证书。|
 
-## 在门户中配置自动备份
+## 在 Azure 门户中配置自动备份
 
-在创建新的 SQL Server 2014 虚拟机时，可以使用 [Azure 预览门户](http://go.microsoft.com/fwlink/?LinkID=525040&clcid=0x409)配置自动备份。
+在创建新的 SQL Server 2014 虚拟机时，可以使用 Azure 门户配置自动备份。
 
 >[AZURE.NOTE]自动备份依赖 SQL Server IaaS 代理。要安装和配置该代理，必须在目标虚拟机上运行 Azure VM 代理。较新的虚拟机库映像已默认启用此选项，但现有 VM 可能缺少 Azure VM 代理。如果使用你自己的 VM 映像，也需要安装 SQL Server IaaS 代理。有关详细信息，请参阅 [VM 代理和扩展](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/)。
 
-以下门户屏幕截图显示了“可选配置”|“SQL 自动备份”下的这些选项。
+以下 Azure 门户屏幕截图显示了“可选配置”|“SQL 自动备份”下的这些选项。
 
 ![Azure 门户中的 SQL 自动备份配置](./media/virtual-machines-sql-server-automated-backup/IC778483.jpg)
 
@@ -44,7 +45,7 @@
 
 ![Azure 门户中的自动备份配置](./media/virtual-machines-sql-server-automated-backup/IC792133.jpg)
 
->[AZURE.NOTE]当你首次启用自动备份时，Azure 将在后台配置 SQL Server IaaS 代理。在此期间，门户将不会显示自动备份已配置。请等待几分钟，以便安装和配置代理。之后，该门户将反映新的设置。
+>[AZURE.NOTE]当你首次启用自动备份时，Azure 将在后台配置 SQL Server IaaS 代理。在此期间，Azure 门户将不会显示自动备份已配置。请等待几分钟，以便安装和配置代理。之后，Azure 门户将反映新设置。
 
 ## 使用 PowerShell 配置自动备份
 
@@ -110,4 +111,4 @@ Azure 中 SQL Server VM 的一个相关功能是 [Azure 虚拟机中的 SQL Serv
 
 请查看其他[有关在 Azure 虚拟机中运行 SQL Server 的资源](/documentation/articles/virtual-machines-sql-server-infrastructure-services)。
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

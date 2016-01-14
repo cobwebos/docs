@@ -9,8 +9,8 @@
 	tags="azure-resource-manager"/>
 
 <tags 
-	ms.service="virtual-machines"
-	ms.date="11/09/2015" 
+	ms.service="virtual-machines" 
+	ms.date="12/17/2015" 
 	wacn.date=""/>
 
 # 在 Azure 中部署高可用性业务线应用程序
@@ -29,6 +29,41 @@
 ![](./media/virtual-machines-workload-high-availability-LOB-application-overview/workload-lobapp-phase4.png)
  
 至少为每个角色配置两台计算机可确保高可用性。所有虚拟机都位于一个 Azure 位置（也称为区域）。用于特定角色的每个虚拟机组在其自己的可用性集中。
+
+## 材料清单
+
+此基线配置需要以下一组 Azure 服务和组件：
+
+- 七个虚拟机
+- 四个用于域控制器和运行 SQL Server 的虚拟机的额外数据磁盘
+- 三个可用性集
+- 一个跨界虚拟网络
+- 两个存储帐户
+
+下面是此配置的虚拟机及其默认大小。
+
+项目 | 虚拟机说明 | 库映像 | 默认大小 
+--- | --- | --- | --- 
+1\. | 第一个域控制器 | Windows Server 2012 R2 Datacenter | D1
+2\. | 第二个域控制器 | Windows Server 2012 R2 Datacenter | D1
+3\. | 主数据库服务器 | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | D4
+4\. | 辅助数据库服务器 | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | D4
+5\. | 群集多数节点 | Windows Server 2012 R2 Datacenter | D1
+6\. | 第一个 Web 服务器 | Windows Server 2012 R2 Datacenter | D3
+7\. | 第二个 Web 服务器 | Windows Server 2012 R2 Datacenter | D3
+
+若要计算此配置的估计成本，请参阅 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)。
+
+1. 在“模块”中，单击“计算”，然后单击“虚拟机”相应次以创建包含七个虚拟机的列表。
+2. 对于每个虚拟机，请选择：
+	- 所需的区域
+	- 对于类型，选择 **Windows**
+	- 对于定价层，选择“标准”
+	- 上一个表中的默认大小，或者在**实例大小**中选择所需的大小
+
+> [AZURE.NOTE]Azure 定价计算器不包括运行 SQL Server 2014 Enterprise 的两个虚拟机的 SQL Server 许可证的额外成本。有关详细信息，请参阅[虚拟机定价-SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)。
+
+## 部署阶段
 
 部署此配置分为以下几个阶段：
 
@@ -54,14 +89,4 @@
 
 若要开始配置此工作负荷，请转到[阶段 1：配置 Azure](/documentation/articles/virtual-machines-workload-high-availability-LOB-application-phase1)。
 
-## 其他资源
-
-[业务线应用程序体系结构蓝图](http://msdn.microsoft.com/dn630664)
-
-[在混合云中设置用于测试且基于 Web 的 LOB 应用程序](../virtual-network/virtual-networks-setup-lobapp-hybrid-cloud-testing.md)
-
-[Azure 基础结构服务实施准则](/documentation/articles/virtual-machines-infrastructure-services-implementation-guidelines)
-
-[Azure 基础结构服务工作负荷：SharePoint Server 2013 场](/documentation/articles/virtual-machines-workload-intranet-sharepoint-farm)
-
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

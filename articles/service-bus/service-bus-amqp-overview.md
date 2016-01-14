@@ -39,6 +39,8 @@ AMQP 1.0 是一个高效、可靠的线级消息传递协议，可用于构建�
 
 ## AMQP 1.0 是一种标准（带有大写字母“S”）
 
+AMQP 1.0 是一种国际标准，已通过 ISO 和 IEC 的认证，认证编号为 ISO/IEC 19464:2014。
+
 自 2008 年以来，AMQP 1.0 一直由一个由 20 多家公司（包括技术提供商和最终用户企业）组成的核心小组进行开发。在此期间，用户企业提供其实际业务需求，技术供应商则开发该协议来满足这些需求。在整个过程中，供应商参加了研讨会，并在会上协作验证了其实现之间的互操作性。
 
 2011 年 10 月，开发工作提交给结构化信息标准促进组织（Organization for the Advancement of Structured Information Standards，OASIS）内的技术委员会，随后 OASIS AMQP 1.0 标准于 2012 年 10 月发布。在开发该标准期间，以下公司参与了技术委员会的工作：
@@ -101,4 +103,4 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 [在 Azure Linux VM 上安装 Apache Qpid Proton-C]: /documentation/articles/service-bus-amqp-apache
 [适用于 Windows Server 的服务总线中的 AMQP]: https://msdn.microsoft.com/zh-cn/library/dn574799.aspx
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

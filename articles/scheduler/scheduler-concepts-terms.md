@@ -8,7 +8,7 @@
  editor=""/>
 <tags
  ms.service="scheduler"
- ms.date="08/04/2015"
+ ms.date="12/04/2015"
  wacn.date=""/>
 
 # 计划程序的概念、术语和实体层次结构
@@ -129,7 +129,7 @@
 
 “action”是每次执行时调用的操作，并且描述服务调用的类型。操作是将按提供的计划执行的内容。计划程序支持 HTTP 和存储队列操作。
 
-上例中的操作是一个 http 操作。下面是存储队列操作的示例：
+上例中的操作是一个 HTTP 操作。下面是存储队列操作的示例：
 
 	{
 			"type": "storageQueue",
@@ -204,4 +204,4 @@
  [计划程序出站身份验证](/documentation/articles/scheduler-outbound-authentication)
  
 
-<!---HONumber=76-->
+<!---HONumber=Mooncake_0104_2016-->

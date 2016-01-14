@@ -8,7 +8,7 @@
  editor=""/>
 <tags 
  ms.service="scheduler" 
- ms.date="08/04/2015" 
+ ms.date="12/04/2015" 
  wacn.date=""/>
 
 # 如何使用 Azure 计划程序生成复杂的计划和高级循环  
@@ -194,4 +194,4 @@ Azure 计划程序作业中的日期时间引用遵循 [ISO-8601 规范](http://
  
   
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0104_2016-->

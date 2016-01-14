@@ -83,13 +83,13 @@
 
 下一步是创建服务命名空间并获取共享访问签名 (SAS) 密钥。命名空间为每个通过服务总线公开的应用程序提供应用程序边界。创建服务命名空间时，系统将会生成 SAS 密钥。命名空间与 SAS 密钥的组合为服务总线提供了用于验证应用程序访问权限的凭据。
 
-### 使用 Azure 门户设置命名空间
+### 使用 Azure 经典门户设置命名空间
 
-1.  登录到 [Azure 门户][]。
+1.  登录到 [Azure 经典门户][]。
 
-2.  在 Azure 门户的左侧导航窗格中，单击“Service Bus”。
+2.  在门户的左侧导航窗格中，单击“服务总线”。
 
-3.  在 Azure 门户的下方窗格中，单击“创建”。
+3.  在门户的下方窗格中，单击“创建”。
 
     ![][6]
 
@@ -99,7 +99,7 @@
 
 5.  在确保命名空间名称可用后，选择应承载您的命名空间的国家或地区（确保使用在其中部署计算资源的同一国家/地区）。此外，请确保在命名空间“类型”字段中选择“消息”，在“消息层”字段中选择“标准”。
 
-    > [AZURE.IMPORTANT]选取要部署应用程序的**相同区域**。这将为您提供最佳性能。
+    > [AZURE.IMPORTANT]选取要部署应用程序的**相同区域**。这将为你提供最佳性能。
 
 6.  单击“确定”复选标记。系统现已创建您的服务命名空间并已将其启用。您可能需要等待几分钟，因为系统将为您的帐户配置资源。
 
@@ -121,7 +121,7 @@
 
 ## 创建 Web 角色
 
-在本节中，你将生成应用程序的前端。首先，你将创建应用程序显示的各种页面。之后，你将添加代码，以便将项提交到服务总线队列并显示有关队列的状态信息。
+在本部分中，你将生成应用程序的前端。首先，你将创建应用程序显示的各种页面。之后，你将添加代码，以便将项提交到服务总线队列并显示有关队列的状态信息。
 
 ### 创建项目
 
@@ -159,7 +159,7 @@
 
 ### 为你的 Web 角色编写代码
 
-在本节中，你将创建应用程序显示的各种页面。
+在本部分，你将创建应用程序显示的各种页面。
 
 1.  在 Visual Studio 的 OnlineOrder.cs 文件中将现有命名空间定义替换为以下代码：
 
@@ -265,7 +265,7 @@
 
 2.  将类命名为 QueueConnector.cs。单击“添加”以创建类。
 
-3.  现在，将添加可封装连接信息并初始化服务总线队列连接的代码。在 QueueConnector.cs 中添加以下代码，并输入 **Namespace**（你的服务命名空间）和 **yourKey**（前面通过 [Azure 门户][Azure portal]获取的 SAS 密钥）的值。
+3.  现在，将添加可封装连接信息并初始化服务总线队列连接的代码。在 QueueConnector.cs 中添加以下代码，并输入 **Namespace**（你的服务命名空间）和 **yourKey**（前面通过 [Azure 经典门户][]获取的 SAS 密钥）的值。
 
         using System;
         using System.Collections.Generic;
@@ -282,7 +282,7 @@
                 // on every request.
                 public static QueueClient OrdersQueueClient;
 
-                // Obtain these values from the Azure portal.
+                // Obtain these values from the portal.
                 public const string Namespace = "your service bus namespace";
 
                 // The name of your queue.
@@ -485,7 +485,7 @@
 
 3. 你可以分别测试前端和后端，也可以在单独的 Visual Studio 实例中同时运行这二者。
 
-若要了解如何将前端部署到 Azure 网站，请参阅[在 Azure App Service 中创建 ASP.NET Web 应用](/documentation/articles/app-service-web/web-sites-dotnet-get-started)。若要了解如何将后端部署到 Azure 云服务，请参阅[使用存储表、队列和 Blob 的 .NET 多层应用程序][mutitierstorage]。
+若要了解如何将前端部署到 Azure 网站，请参阅[在 Azure App Service 中创建 ASP.NET Web 应用](../app-service-web/web-sites-dotnet-get-started.md)。若要了解如何将后端部署到 Azure 云服务，请参阅[使用存储表、队列和 Blob 的 .NET 多层应用程序][mutitierstorage]。
 
 
   [0]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-01.png
@@ -506,8 +506,7 @@
 
   [EventHubClient]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.eventhubclient.aspx
 
-  [Azure portal]: http://manage.windowsazure.cn
-  [Azure 门户]: http://manage.windowsazure.cn
+  [Azure 经典门户]: http://manage.windowsazure.cn
   [6]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-03.png
   [7]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/sb-queues-04.png
   [8]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-09.png
@@ -536,9 +535,9 @@
   [33]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-4-2-WebPI.png
   [35]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/multi-web-45.png
   [sbmsdn]: http://msdn.microsoft.com/zh-cn/library/azure/ee732537.aspx
-  [sbwacom]: /home/features/identity/
+  [sbwacom]: /home/features/messaging/
   [sbwacomqhowto]: /documentation/articles/service-bus-dotnet-how-to-use-queues
   [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36
   [executionmodels]: /documentation/articles/fundamentals-application-models
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

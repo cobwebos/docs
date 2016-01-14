@@ -8,13 +8,12 @@
    editor="tysonn" />
 <tags 
    ms.service="service-bus"
-
    ms.date="09/11/2015"
    wacn.date="" />
 
 # 服务总线中继消息传送教程
 
-本教程介绍了如何使用服务总线“中继”功能，构建简单的服务总线客户端应用程序和服务。有关介绍如何构建使用服务总线“中转”或异步消息传送功能的应用程序的相应教程，请参阅[服务总线中转消息传送 .NET 教程。](https://msdn.microsoft.com/zh-cn/library/hh367512.aspx)有关使用服务总线[中转消息传送](/documentation/articles/service-bus-messaging-overview/#Brokered-messaging)的类似教程，请参阅[ 服务总线中转消息传送 .NET 教程](https://msdn.microsoft.com/zh-cn/library/hh367512.aspx)。
+本教程介绍了如何使用服务总线“中继”功能，构建简单的服务总线客户端应用程序和服务。有关介绍如何构建使用服务总线“中转”或异步消息传送功能的应用程序的相应教程，请参阅[服务总线中转消息传送 .NET 教程](https://msdn.microsoft.com/zh-cn/library/hh367512.aspx)。有关使用服务总线[中转消息传送](/documentation/articles/service-bus-messaging-overview/#Brokered-messaging)的类似教程，请参阅[服务总线中转消息传送 .NET 教程](https://msdn.microsoft.com/zh-cn/library/hh367512.aspx)。
 
 通过此教程，你可以了解创建服务总线客户端和服务应用程序所需的步骤。正如其 WCF 对应项，服务是公开一个或多个终结点的构造，其中每个终结点都公开一个或多个服务操作。服务的终结点用于指定可在其中找到服务的地址、包含客户端必须与服务进行通信的信息的绑定，以及定义服务向其客户端提供的功能的协定。WCF 和服务总线服务之间的主要区别在于：终结点在云中公开，而不是在本地计算机中公开。
 
@@ -32,11 +31,11 @@
 
 >[AZURE.NOTE]无需针对客户端和服务应用程序使用相同的命名空间。
 
-1. 在 Azure 门户的主窗口中，单击在上一步中创建的服务命名空间的名称。
+1. 在 [Azure 经典门户][] 的主窗口中，单击在上一步中创建的服务命名空间的名称。
 
 2. 单击“配置”以查看服务命名空间的默认共享访问策略。
 
-3. 记下 **RootManageSharedAccessKey** 策略的主密钥，或将其复制到剪贴板上。你将在本教程的后面部分使用此值。
+3. 记下 **RootManageSharedAccessKey** 策略的主键，或将其复制到剪贴板上。你将在本教程的后面部分使用此值。
 
 ## 定义 WCF 服务协定以用于服务总线
 
@@ -145,8 +144,7 @@ namespace Microsoft.ServiceBus.Samples
 
 2. 应用指示服务名称和命名空间属性的 [ServiceBehaviorAttribute](https://msdn.microsoft.com/zh-cn/library/system.servicemodel.servicebehaviorattribute.aspx) 属性.
 
-	```
-	[ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
+	```[ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
 	class EchoService : IEchoContract
 	{
 	}
@@ -216,7 +214,7 @@ namespace Microsoft.ServiceBus.Samples
 	终结点用于定义客户端将在何处查找主机应用程序。接下来，本教程将使用此步骤来创建一个通过服务总线完全公开主机的 URI。绑定声明我们正在将 TCP 用作协议，以与服务总线进行通信。
 
 
-7. 在 `<services>` 元素的正下方，添加以下绑定扩展：
+7. 直接在 `<services>` 元素的后面，添加以下绑定扩展。
  
 	```
 	<extensions>
@@ -271,7 +269,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ### 创建服务总线凭据
 
-1. 向项目添加对 Microsoft.ServiceBus.dll 的引用：请参阅 [使用 NuGet 服务总线包](https://msdn.microsoft.com/zh-cn/library/dn741354.aspx)。
+1. 向项目添加对 Microsoft.ServiceBus.dll 的引用：请参阅[使用 NuGet 服务总线包](https://msdn.microsoft.com/zh-cn/library/dn741354.aspx)。
 
 	>[AZURE.NOTE]使用命令行编译器时，你还必须为程序集提供路径。
 
@@ -290,7 +288,7 @@ namespace Microsoft.ServiceBus.Samples
 	string sasKey = Console.ReadLine();
 	```
 
-	随后将使用 SAS 密钥来访问你的服务总线项目。服务命名空间作为参数传递给 `CreateServiceUri`以创建服务 URI。
+	随后将使用 SAS 密钥来访问你的服务总线项目。服务命名空间作为参数传递给 `CreateServiceUri` 以创建服务 URI。
 
 4. 使用 [TransportClientEndpointBehavior](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.transportclientendpointbehavior.aspx) 对象声明你将使用 SAS 密钥作为凭据类型。在最后一步中添加的代码后直接添加以下代码。
 
@@ -336,13 +334,13 @@ namespace Microsoft.ServiceBus.Samples
 	using Microsoft.ServiceBus.Description;
 	```
 
-4. 返回到 `Main()`中，配置终结点以启用公开访问。
+4. 返回到 `Main()`，配置终结点以启用公开访问。
 
 	```
 	IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
 	```
 
-	此步骤告知服务总线可以通过检查项目的服务总线 ATOM 源公开找到你的应用程序。如果你将 **DiscoveryType** 设置为 **私有**，客户端将仍将能够访问该服务。但是，当搜索服务总线命名空间时不会显示该服务。相反，客户端必须事先知道终结点路径。
+	此步骤告知服务总线可以通过检查项目的服务总线 ATOM 源公开找到你的应用程序。如果你将 **DiscoveryType** 设置为 **private**，客户端将仍将能够访问该服务。但是，当搜索服务总线命名空间时不会显示该服务。相反，客户端必须事先知道终结点路径。
 
 5. 将服务凭据应用到 App.config 文件中定义的服务终结点：
 
@@ -838,5 +836,6 @@ namespace Microsoft.ServiceBus.Samples
 - [服务总线消息传送概述](/documentation/articles/service-bus-messaging-overview)
 - [服务总线基础知识](/documentation/articles/service-bus-fundamentals-hybrid-solutions)
 - [服务总线体系结构](/documentation/articles/service-bus-architecture)
+[Azure 经典门户]: http://manage.windowsazure.cn
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0104_2016-->

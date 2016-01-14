@@ -1,15 +1,16 @@
 <properties 
 	pageTitle="高级存储：适用于 Azure 虚拟机工作负荷的高性能存储 | Microsoft Azure"
 	description="高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负载提供高性能、低延迟的磁盘支持。Azure DS 系列和 GS 系列 VM 支持高级存储。"
-	services="storage" 
-	documentationCenter="" 
-	authors="tamram"
-	manager="carolz"
+	services="storage"
+	documentationCenter=""
+	authors="ms-prkhad"
+	manager=""
 	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
-	ms.date="11/04/2015"
+	
+	ms.date="12/04/2015"
 	wacn.date=""/>
 
 
@@ -22,10 +23,11 @@ Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能
 
 Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具有每个 VM 多达 64 TB 的存储空间。借助高级存储，应用程序对于每个 VM 可以实现 80,000 IOPS（每秒输入/输出操作数）和每秒 2000 MB 的磁盘吞吐量，并且读取操作的延迟非常低。
 
+使用高级存储，Azure 提供的功能可真正将要求苛刻的企业应用程序（如 Dynamics AX、Dynamics CRM、Exchange Server、SharePoint 场和 SAP Business Suite）转移到云。你可以运行各种需要高级存储的一致高性能和低延迟的性能密集型数据库工作负荷，如 SQL Server、Oracle、MongoDB、MySQL、Redis。
+
 >[AZURE.NOTE]建议将任何需要高 IOPS 的虚拟机磁盘迁移到 Azure 高级存储，以便你的应用程序实现最佳性能。如果你的磁盘不需要高 IOPS，你可以通过在标准存储（将虚拟机磁盘数据存储在硬盘驱动器 (HDD) 上而不是 SSD 上）中对其进行维护来限制成本。
 
 若要开始使用 Azure 高级存储，请访问[开始免费试用](/zh-cn/pricing/1rmb-trial/)页。有关将现有的虚拟机迁移到高级存储的信息，请参阅[迁移到 Azure 高级存储](/documentation/articles/storage-migration-to-premium-storage)。
-
 
 ## 有关高级存储的重要事项
 
@@ -33,7 +35,7 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
 - 若要使用高级存储，你必须有一个高级存储帐户。若要了解如何创建高级存储帐户，请参阅[为磁盘创建和使用高级存储帐户](#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)。
 
-- [Microsoft Azure 门户](https://manage.windowsazure.cn)中目前已提供高级存储且可通过以下 SDK 库来访问：[存储 REST API](http://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx) 版本 2014-02-14 或更高版本；[服务管理 REST API](http://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx) 版本 2014-10-01 或更高版本；[Azure PowerShell](/documentation/articles/powershell-install-configure) 版本 0.8.10 或更高版本。
+- 高级存储已在 [Microsoft Azure 门户](https://manage.windowsazure.cn)中提供并可通过以下 SDK 库来访问：[存储 REST API](http://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx) 版本 2014-02-14 或更高版本；[服务管理 REST API](http://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx) 版本 2014-10-01 或更高版本；[Azure PowerShell](/documentation/articles/powershell-install-configure) 版本 0.8.10 或更高版本。
 
 - 有关当前支持高级存储的区域列表，请参阅[已推出 Azure 服务的区域](http://azure.microsoft.com/regions/#services)。
 
@@ -57,10 +59,7 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
 Azure 使用存储帐户作为操作系统和数据磁盘的容器。换句话说，如果你创建 Azure DS 系列或 GS 系列的 VM 并选择 Azure 高级存储帐户，操作系统和数据磁盘会存储在该存储帐户中。
 
-
-有关将现有的虚拟机迁移到高级存储的信息，请参阅[迁移到 Azure 高级存储](/documentation/articles/storage-migration-to-premium-storage)。
-为充分利用高级存储的优点，请先使用帐户类型 *Premium\_LRS* 创建一个高级存储帐户。为此，可以使用 [Microsoft Azure 预览门户](https://manage.windowsazure.cn)、[Azure PowerShell](/documentation/articles/install-configure-powershell) 或[服务管理 REST API](http://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx)。有关分步说明，请参阅[为磁盘创建和使用高级存储帐户](#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)。
-
+有关将现有的虚拟机迁移到高级存储的信息，请参阅[迁移到 Azure 高级存储](/documentation/articles/storage-migration-to-premium-storage)。为充分利用高级存储的优点，请先使用帐户类型 *Premium\_LRS* 创建一个高级存储帐户。为此，可以使用 [Microsoft Azure 预览门户](https://manage.windowsazure.cn)、[Azure PowerShell](/documentation/articles/install-configure-powershell) 或[服务管理 REST API](http://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx)。有关分步说明，请参阅[为磁盘创建和使用高级存储帐户](#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)。
 
 ### 重要说明：
 
@@ -70,7 +69,7 @@ Azure 使用存储帐户作为操作系统和数据磁盘的容器。换句话�
 
 	请注意，这些限制只适用于磁盘流量，而不包括缓存命中和网络流量。VM 网络通信可以使用单独的带宽，这不同于高级存储磁盘的专用带宽。
 	
-	有关 DS 系列和 GS 系列 VM 的最大 IOPS 与吞吐量（带宽）的最新信息，请参阅 [Azure 的虚拟机和云服务大小](/documentation/articles/virtual-machines-size-specs)。若要了解高级存储磁盘及其 IOPS 和吞吐量限制，请参阅本文的[使用高级存储时的缩放性和性能目标](#scalability-and-performance-targets-when-using-premium-storage)部分中的表格。
+	有关 DS 系列和 GS 系列 VM 的最大 IOPS 与吞吐量（带宽）的最新信息，请参阅 [Azure 的虚拟机和云服务大小](/documentation/articles/virtual-machines-size-specs)。若要了解高级存储磁盘及其 IOPS 和吞吐量限制，请参阅本文的[使用高级存储时的可伸缩性和性能目标](#scalability-and-performance-targets-when-using-premium-storage)部分中的表格。
 
 > [AZURE.NOTE]缓存命中数不受到磁盘配置 IOPS/吞吐量的限制。也就是说，当你在 DS 系列或 GS 系列 VM 上使用具有 ReadOnly 缓存设置的数据磁盘时，缓存提供的读取数不受高级存储磁盘限制的约束。因此，如果工作负荷以读取为主，可以从磁盘获得极高的吞吐量。请注意，缓存根据 VM 大小受到 VM 级别不同的 IOPS / 吞吐量的限制。DS 系列 VM 大约有 4000 IOPS，缓存与本地 SSD IO 是每个核心 33 MB/秒。
 
@@ -87,7 +86,7 @@ Azure 使用存储帐户作为操作系统和数据磁盘的容器。换句话�
 	`azure vm disk attach --help`
 
 
-## 使用高级存储时的缩放性和性能目标
+##<a id="scalability-and-performance-targets-when-using-premium-storage"></a> 使用高级存储时的可伸缩性和性能目标
 
 当你为某个高级存储帐户设置磁盘时，其每秒的输入/输出操作次数 (IOPS) 和吞吐量（带宽）取决于磁盘大小。目前有三种类型的高级存储磁盘：P10、P20 和 P30。每种类型各有特定的 IOPS 和吞吐量限制，如下表所示：
 
@@ -200,10 +199,67 @@ Azure 会将磁盘大小映射（向上舍入）至表中指定的最接近高�
 	- 如果你使用的是 **XFS**，请使用装入选项“nobarrier”禁用屏障（要启用屏障，请使用“barrier”）
 
 - 对于缓存设置为“ReadWrite”的高级存储磁盘，应该启用屏障以实现写入持久性。
-- 若要在重新启动 VM 后保留卷标，你必须使用对磁盘的 UUID 引用来更新 /etc/fstab。另请参阅 [如何将数据磁盘附加到 Linux 虚拟机。](/documentation/articles/virtual-machines-linux-how-to-attach-disk)
+- 若要在重新启动 VM 后保留卷标，你必须使用对磁盘的 UUID 引用来更新 /etc/fstab。另请参阅 [如何将数据磁盘附加到 Linux 虚拟机。]/documentation/articles/virtual-machines-linux-how-to-attach-disk)
 
 以下是我们使用高级存储验证过的 Linux 分发版。我们建议将 VM 升级到其中至少一个版本（或更新版本），以改进高级存储的性能和稳定性。此外，某些版本需要最新的 LIS（适用于 Microsoft Azure 的 Linux Integration Services v4.0）。请使用下面提供的链接进行下载和安装。在我们完成其他验证后，将陆续在列表中添加更多映像。请注意，我们的验证表明，性能根据映像而有所不同，并且还取决于工作负荷特征和映像上的设置。不同的映像已针对不同种类的工作负荷进行优化。
-<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;"> <tbody> <tr> <td><strong>分发</strong></td> <td><strong>版本</strong></td> <td><strong>支持的内核</strong></td> <td><strong>支持的映像</strong></td> </tr> <tr> <td rowspan="4"><strong>Ubuntu</strong></td> <td>12.04</td> <td>3.2.0-75.110</td> <td>Ubuntu-12\_04\_5-LTS-amd64-server-20150119-en-us-30GB</td> </tr> <tr> <td>14.04</td> <td>3.13.0-44.73</td> <td>Ubuntu-14\_04\_1-LTS-amd64-server-20150123-en-us-30GB</td> </tr> <tr> <td>14.10</td> <td>3.16.0-29.39</td> <td>Ubuntu-14\_10-amd64-server-20150202-en-us-30GB</td> </tr> <tr> <td>15.04</td> <td>3.19.0-15</td> <td>Ubuntu-15\_04-amd64-server-20150422-en-us-30GB</td> </tr> <tr> <td><strong>SUSE</strong></td> <td>SLES 12</td> <td>3.12.36-38.1</td> <td>suse-sles-12-priority-v20150213<br>suse-sles-12-v20150213</td> </tr> <tr> <td><strong>CoreOS</strong></td> <td>584.0.0</td> <td>3.18.4</td> <td>CoreOS 584.0.0</td> </tr> <tr> <td rowspan="2"><strong>CentOS</strong></td> <td>6.5, 6.6, 6.7, 7.0</td> <td></td> <td> <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> 需要 LIS 4.0 </a> </br> *请参阅以下注释 </td> </tr> <tr> <td>7.1</td> <td>3.10.0-229.1.2.el7</td> <td> <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> 建议使用 LIS 4.0 </a> <br/> *请参阅以下注释 </td> </tr>
+<table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
+<tbody>
+<tr>
+	<td><strong>分发</strong></td>
+	<td><strong>版本</strong></td>
+	<td><strong>支持的内核</strong></td>
+	<td><strong>支持的映像</strong></td>
+</tr>
+<tr>
+	<td rowspan="4"><strong>Ubuntu</strong></td>
+	<td>12.04</td>
+	<td>3.2.0-75.110</td>
+	<td>Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB</td>
+</tr>
+<tr>
+	<td>14.04</td>
+	<td>3.13.0-44.73</td>
+	<td>Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB</td>
+</tr>
+<tr>
+	<td>14.10</td>
+	<td>3.16.0-29.39</td>
+	<td>Ubuntu-14_10-amd64-server-20150202-en-us-30GB</td>
+</tr>
+<tr>
+	<td>15.04</td>
+	<td>3.19.0-15</td>
+	<td>Ubuntu-15_04-amd64-server-20150422-en-us-30GB</td>
+</tr>
+<tr>
+	<td><strong>SUSE</strong></td>
+	<td>SLES 12</td>
+	<td>3.12.36-38.1</td>
+	<td>suse-sles-12-priority-v20150213<br>suse-sles-12-v20150213</td>
+</tr>
+<tr>
+	<td><strong>CoreOS</strong></td>
+	<td>584.0.0</td>
+	<td>3.18.4</td>
+	<td>CoreOS 584.0.0</td>
+</tr>
+<tr>
+	<td rowspan="2"><strong>CentOS</strong></td>
+	<td>6.5, 6.6, 6.7, 7.0</td>
+	<td></td>
+	<td>
+		<a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> 需要 LIS 4.0 </a> </br>
+		*请参阅以下注释
+	</td>
+</tr>
+<tr>
+	<td>7.1</td>
+	<td>3.10.0-229.1.2.el7</td>
+	<td>
+		<a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> 建议使用 LIS 4.0 </a> <br/>
+		*请参阅以下注释
+	</td>
+</tr>
 
 <tr>
 	<td rowspan="2"><strong>Oracle</strong></td>
@@ -216,7 +272,8 @@ Azure 会将磁盘大小映射（向上舍入）至表中指定的最接近高�
 	<td></td>
 	<td>联系支持人员以获取详细信息</td>
 </tr>
-</tbody> </table>
+</tbody>
+</table>
 
 
 ### Openlogic CentOS 的 LIS 驱动程序
@@ -227,6 +284,9 @@ Azure 会将磁盘大小映射（向上舍入）至表中指定的最接近高�
 	sudo yum install microsoft-hyper-v
 
 需要重新启动才能激活新的驱动程序。
+
+
+
 ## 使用高级存储时的定价和计费方式
 使用高级存储时，请注意以下计费方式：
 
@@ -237,9 +297,9 @@ Azure 会将磁盘大小映射（向上舍入）至表中指定的最接近高�
 有关高级存储与 DS 和 GS 系列 VM 定价的详细信息，请参阅：
 
 - [Azure 存储定价](/home/features/storage/#price)
-- [虚拟机定价](/home/features/virtual-machines/)
+- [虚拟机定价](/home/features/virtual-machines#price)
 
-## 为虚拟机器数据磁盘创建和使用高级存储帐户
+##<a id="create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk"></a> 为虚拟机数据磁盘创建和使用高级存储帐户
 本部分演示如何使用 Azure 预览门户、Azure PowerShell 和 Azure 命令行界面 (Azure CLI) 创建高级存储帐户。另外，还演示了高级存储帐户的示例用例：在使用高级存储帐户时创建虚拟机，并将数据磁盘附加到虚拟机。
 
 ### 通过 Azure 预览门户使用高级存储创建 Azure 虚拟机
@@ -248,19 +308,15 @@ Azure 会将磁盘大小映射（向上舍入）至表中指定的最接近高�
 
 1.	登录 [Azure 预览门户](https://manage.windowsazure.cn)。如果你没有订阅，请查看[免费试用](/pricing/1rmb-trial/)优惠产品。
 
-
-    > [AZURE.NOTE]登录 Azure 管理门户时，请在门户右上角单击你的用户帐户名。然后单击“切换到新门户”。
-        
-
 2.	在“中心”菜单上，单击“新建”。
 
 3.	在“新建”下方，单击“全部”。选择“存储、缓存和备份”。在该处单击“存储”，然后单击“创建”。
 
 4.	在“存储帐户”边栏中，键入存储帐户名称。单击“定价层”。在“建议的定价层”边栏选项卡中，单击“浏览所有定价层”。在“选择定价层”边栏中，选择“高级本地冗余”。单击“选择”。请注意，“存储帐户”边栏选项卡在默认情况下会显示“标准-GRS”作为“定价层”。在你单击“选择”后，“定价层”会显示为“高级-LRS”。
-	
+
 	![定价层][Image1]
 
-	
+
 5.	在“存储帐户”边栏选项卡中，保留“资源组”、“订阅”、“位置”和“诊断”的默认值。单击“创建”。
 
 有关在 Azure 环境中的完整演练，请参阅[在 Azure 预览门户中创建运行 Windows 的虚拟机](/documentation/articles/virtual-machines-windows-tutorial-classic-portal-azure-preview)。
@@ -271,7 +327,7 @@ Azure 会将磁盘大小映射（向上舍入）至表中指定的最接近高�
 1. 根据[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure) 中提供的步骤设置 PowerShell 环境。
 2. 启动 PowerShell 控制台，连接到订阅，并在控制台窗口中运行以下 PowerShell cmdlet。如此 PowerShell 语句中所示，当你创建高级存储帐户时，必须将 **Type** 参数指定为 **Premium\_LRS**。
 
-		New-AzureStorageAccount -StorageAccountName "yourpremiumaccount" -Location "China North" -Type "Premium_LRS"
+		New-AzureStorageAccount -StorageAccountName "yourpremiumaccount" -Location "China East" -Type "Premium_LRS"
 
 3. 接下来，请创建新的 DS 系列 VM，并在控制台窗口中运行以下 PowerShell cmdlet 以指定要使用高级存储。可以使用相同的步骤创建 GS 系列 VM。在命令中指定适当的 VM 大小。例如，Standard\_GS2：
 
@@ -279,7 +335,7 @@ Azure 会将磁盘大小映射（向上舍入）至表中指定的最接近高�
     	$adminName = "youradmin"
     	$adminPassword = "yourpassword"
     	$vmName ="yourVM"
-    	$location = "China North"
+    	$location = "China East"
     	$imageName = "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201409.01-en.us-127GB.vhd"
     	$vmSize ="Standard_DS2"
     	$OSDiskPath = "https://" + $storageAccount + ".blob.core.chinacloudapi.cn/vhds/" + $vmName + "_OS_PIO.vhd"
@@ -304,12 +360,12 @@ Azure 会将磁盘大小映射（向上舍入）至表中指定的最接近高�
 #### 创建高级存储帐户
 
 ````
-azure storage account create "premiumtestaccount" -l "west us" --type PLRS
+azure storage account create "premiumtestaccount" -l "China East" --type PLRS
 ````
 
 #### 创建 DS 系列虚拟机
 
-	azure vm create -z "Standard_DS2" -l "west us" -e 22 "premium-test-vm"
+	azure vm create -z "Standard_DS2" -l "China East" -e 22 "premium-test-vm"
 		"b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-en-us-30GB" -u "myusername" -p "passwd@123"
 
 #### 显示有关虚拟机的信息
@@ -327,16 +383,12 @@ azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 ## 后续步骤
 
 [对 Azure 高级存储使用 Blob 服务操作](https://msdn.microsoft.com/zh-cn/library/dn889922.aspx)
-
-- [迁移到 Azure 高级存储](/documentation/articles/storage-migration-to-premium-storage)。[创建运行 Windows 的虚拟机](/documentation/articles/virtual-machines-windows-tutorial-azure-preview)
-
-
-[Azure 的虚拟机和云服务大小](http://msdn.microsoft.com/zh-cn/library/azure/dn197896.aspx)
-
-[存储文档](/documentation/services/storage/)
-
-[MSDN 参考](http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx)
+- [迁移到 Azure 高级存储](/documentation/articles/storage-migration-to-premium-storage)。
+[创建运行 Windows 的虚拟机](/documentation/articles/virtual-machines-windows-tutorial-azure-preview)
+[Azure 的虚拟机和云服务大小](/documentation/articles/virtual-machines-size-specs)
+[存储空间文档](/documentation/services/storage/)
 
 [Image1]: ./media/storage-premium-storage-preview-portal/Azure_pricing_tier.png
+ 
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

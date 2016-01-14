@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="10/19/2015"
+	ms.date="11/17/2015"
 	wacn.date=""/>
 
 # 通知中心入门
@@ -18,7 +18,8 @@
 
 ##概述
 
-本教程演示如何使用 Azure 通知中心将推送通知发送到 iOS 应用程序。你将创建一个空白 Xamarin.iOS 应用，它使用 Apple Push Notification 服务 (APNS) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。[NotificationHubs][GitHub] 应用程序示例中提供了完成的代码。
+本教程演示如何使用 Azure 通知中心将推送通知发送到 iOS 应用程序。
+你将创建一个空白 Xamarin.iOS 应用，它使用 Apple Push Notification 服务 (APNS) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。[NotificationHubs 应用程序][GitHub] 示例中提供了完成的代码。
 
 本教程演示使用通知中心的简单广播方案。
 
@@ -36,181 +37,38 @@
 
 只有在完成本教程后，才能完成有关 Xamarin.iOS 应用的所有其他通知中心教程。
 
-> [AZURE.IMPORTANT]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fzh-CN%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)。
+> [AZURE.IMPORTANT]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)。
 
-Apple Push Notification 服务使用证书来验证你的移动服务。按照以下说明创建必要的证书并将其上载到你的移动服务。有关正式的 APNs 功能文档，请参阅 [Apple Push Notification 服务]。
+[AZURE.INCLUDE [通知中心：启用 Apple 推送通知](../includes/notification-hubs-enable-apple-push-notifications.md)]
 
 
-##<a name="certificates"></a>生成证书签名请求文件
+##配置通知中心
 
-首先，你必须生成证书签名请求 (CSR) 文件，Apple 将使用该文件生成签名证书。
+本部分将引导你使用创建的 **.p12** 推送证书创建新的通知中心并配置 APNS 身份验证。如果你想要使用已创建的通知中心，可以跳到步骤 5。
 
-1. 从 Utilities 文件夹中，运行 Keychain Access 工具。
+[AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-2. 单击“Keychain Access”，展开“Certificate Assistant”（证书助理），然后单击“Request a Certificate from a Certificate Authority”（从证书颁发机构请求证书）。
 
-  	![][5]
+<ol start="7">
+<li>
+<p>单击顶部的“配置”选项卡，然后单击 Apple 通知设置中的“上载”按钮，以上载证书指纹。<b></b><b></b>然后选择前面导出的 <b>.p12</b> 证书以及证书的密码。</p>
+<p>由于此项目用于开发，因此请务必选择“沙箱”模式。<b></b>仅当你想要将推送通知发送给从应用商店购买你应用的用户时，才使用“生产”模式。<b></b></p>
+</li>
+</ol>
+&emsp;&emsp;![](./media/notification-hubs-ios-get-started/notification-hubs-upload-cert.png)
 
-3. 选择你的“User Email Address”（用户电子邮件地址），键入“Common Name”（公用名）和“CA Email Address”（CA 电子邮件地址）值，确保选中“Saved to disk”（保存到磁盘），然后单击“Continue”（继续）。
+&emsp;&emsp;![](./media/notification-hubs-ios-get-started/notification-hubs-configure-ios.png)
 
-  	![][6]
 
-4. 在“Save As”（另存为）中为 CSR 文件键入一个名称，在“Where”（位置）中选择一个位置，然后单击“Save”（保存）。
+你的通知中心现在已配置为使用 APNS，并且你有连接字符串用于注册你的应用程序和发送推送通知。
 
-  	![][7]
 
-  	此操作会将 CSR 文件保存到选定位置。默认位置是桌面。请记住你为此文件选择的位置。
 
-接下来，你将向 Apple 注册你的应用程序、启用推送通知并上载此导出的 CSR 以创建一个推送证书。
 
-##<a name="register"></a>为推送通知注册应用程序
 
-若要将推送通知从移动服务发送到 iOS 应用程序，你必须向 Apple 注册应用程序，还要注册推送通知。
+##将你的应用连接到通知中心
 
-1. 如果你尚未注册应用，请导航到 Apple 开发人员中心的 <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS 预配门户</a>，使用 Apple ID 登录，单击“Identifiers”（标识符），然后单击“App IDs”（应用 ID），最后单击“+”符号以注册新应用。
-
-   	![][105]
-
-2. 在“Description”（说明）中为应用键入一个名称，在“Bundle Identifier”（捆绑标识符）中输入值，在“App Services”（应用程序服务）部分中选中“Push Notifications”（推送通知）选项，然后单击“Continue”（继续）。
-
-   	![][106]
-
-   	![][107]
-
-   	![][108]
-   
-
-	这将生成你的应用程序 ID 并且请求你提交该信息。单击“提交”。
-   
-   	![][109]
-   
-	单击“Submit”（提交）后，你将会看到如下所示的“Registration complete”（注册已完成）屏幕。单击“Done”（完成）。
-   
-   	![][110]
-
-	> [AZURE.NOTE]如果你选择提供“Bundle Identifier”（捆绑标识符）值，而不是 **MobileServices.Quickstart**，则还必须更新 Xcode 项目中的捆绑标识符值。
-
-3. 找到你刚刚创建的应用程序 ID，然后单击其行。
-
-   	![][111]
-   
-	单击应用程序 ID 将显示有关应用程序和应用程序 ID 的详细信息：
-   
-   	![][112]
-   
-   	![][113]
-
-4. 单击“Edit”（编辑），然后滚动到屏幕底部并单击“Development Push SSL Certificate”（开发推送 SSL 证书）部分下的“Create Certificate”（创建证书）。
-
-   	![][114]
-
-	将显示“Add iOS Certificate”（添加 iOS 证书）助手。
-   
-   	![][115]
-
-	> [AZURE.NOTE]本教程使用开发证书。注册生产证书时使用相同的过程。将证书上载至移动服务时，只需确保设置了相同的证书类型即可。
-
-5. 单击“Choose File”（选择文件），浏览到你在第一个任务中创建的 CSR 文件保存到的位置，然后单击“Generate”（生成）。
-
-  	![][116]
-  
-6. 门户创建证书之后，单击“Download”（下载），然后单击“Done”（完成）。
- 
-  	![][118]
-
-  	![][119]
-  
-   	此时将会下载签名证书并将其保存到计算机上的 **Downloads** 文件夹。
-
-  	![][9]
-
-    > [AZURE.NOTE]默认情况下，下载的文件（开发证书）名为 **aps\_development.cer**。
-
-7. 双击下载的推送证书 **aps\_development.cer**。
-
-	将在 Keychain 中安装新证书，如下所示：
-
-   	![][10]
-
-	> [AZURE.NOTE]证书中的名称可能不同，但将以 <strong>Apple Development iOS Push Notification Services:</strong> 作为前缀。
-
-	接下来，你将使用此证书生成一个 .p12 文件，并将其上载到通知中心以通过 APNS 启用推送通知。
-
-##<a name="profile"></a>为应用程序创建配置文件
-
-1. 返回 <a href="http://go.microsoft.com/fwlink/p/?LinkId=272456" target="_blank">iOS 设置门户</a>，选择“Provisioning Profiles”（设置配置文件），选择“All”（全部），然后单击“+”按钮创建一个新的配置文件。这将显示“Add iOS Provisiong Profile”（添加 iOS 预配配置文件）向导。
-
-   	![][120]
-
-2. 选择“Development”（开发）下的“iOS App Development”（iOS 应用开发）作为预配配置文件类型，然后单击“Continue”（继续）。
-
-   	![][121]
-
-3. 从“App ID”（应用 ID）下拉列表中选择移动服务快速入门应用的应用 ID，然后单击“Continue”（继续）。
-
-   	![][122]
-
-4. 在“Select certificates”（选择证书）屏幕中，选择前面创建的证书，然后单击“Continue”（继续）。
-
-   	![][123]
-
-5. 选择要用于测试的设备，然后单击“Continue”（继续）。
-
-   	![][124]
-
-6. 最后，在“Profile Name”（配置文件名称）中为配置文件选择一个名称，单击“Generate”（生成），然后单击“Done”（完成）。
-
-   	![][125]
-   
-   	![][126]
-	
-  	此操作可创建新的配置文件。
-
-7. 在 Xcode 中，打开“Organizer”（组织者）并选择“Devices”（设备）视图，在左窗格的“Library”（库）部分选择“Provisioning Profiles”（预配配置文件），然后导入刚刚创建的预配配置文件。
-
-8. 在左侧，选择你的设备，再次导入该设置配置文件。
-
-9. 在 Keychain Access 中，右键单击新证书，单击“Export”（导出），为证书键入新名称，选择“.p12”格式，然后单击“Save”（保存）。
-
-   	![][18]
-
-  	记下文件名和导出的证书的位置。
-
-这可以确保 Xcode 项目使用新配置文件进行代码签名。接下来，你必须将证书上载至通知中心。
-
-##<a name="configure-hub"></a>配置通知中心
-
-1. 登录到 [Azure 门户]，然后单击屏幕底部的“+新建”。
-
-2. 依次单击“应用程序服务”、“服务总线”、“通知中心”和“快速创建”。
-
-   	![][27]
-
-3. 键入通知中心的名称，选择所需的区域，然后单击“创建新的通知中心”。
-
-   	![][28]
-
-4. 单击刚刚创建的命名空间（通常为***通知中心名称*-ns**），然后单击顶部的“配置”选项卡。
-
-   	![][29]
-
-5. 单击顶部的“通知中心”选项卡，然后单击你刚刚创建的通知中心。
-
-   	![][210]
-
-6. 选择顶部的“配置”选项卡，然后单击 Apple 通知设置对应的“上载”。然后选择前面导出的 **.p12** 证书以及证书的密码。确保选择是要使用“生产”（如果要将推送通知发送到从商店购买你的应用程序的用户）还是“沙盒”（在开发期间）推送服务。
-
-   	![][211]
-
-7. 单击顶部的“仪表板”选项卡，然后单击“连接信息”。记下两个连接字符串。
-
-   	![][212]
-
-你的通知中心现在已配置为使用 APN，并且你有连接字符串用于注册你的应用程序和发送推送通知。
-
-##<a name="connecting-app"></a>将你的应用连接到通知中心
-
-### 创建新项目
+#### 创建新项目
 
 1. 在 Xamarin Studio 中，创建新的 iOS 项目，然后选择“统一 API”>“单视图应用程序”模板。
 
@@ -237,9 +95,17 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert |
-                UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
-            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes);
+            if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
+    			var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
+                       UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
+                       new NSSet ());
+
+			    UIApplication.SharedApplication.RegisterUserNotificationSettings (pushSettings);
+			    UIApplication.SharedApplication.RegisterForRemoteNotifications ();
+			} else {
+			    UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
+			    UIApplication.SharedApplication.RegisterForRemoteNotificationTypes (notificationTypes);
+			}
 
             return true;
         }
@@ -313,30 +179,60 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 
 10. 在你的设备上运行应用程序。
 
-##<a name="send"></a>从后端发送通知
 
-你可以使用通知中心通过 <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST 接口</a>从任意后端发送通知。在本教程中，我们将使用 .NET 控制台应用和移动服务通过节点脚本来发送通知。
+## 发送通知
 
-使用 .NET 应用发送通知：
+
+在 [Azure 经典门户] 中通过通知中心上的调试选项卡（如以下屏幕中所示）来发送通知，可以在应用中测试通知的接收情况。
+
+![](./media/notification-hubs-ios-get-started/notification-hubs-debug-hub-ios.png)
+
+通常，推送通知是在后端服务（例如，移动服务，或者使用兼容库的 ASP.NET）中发送的。如果你的后端没有可用的库，则你也可以使用 REST API 直接发送通知消息。
+
+在本教程中，为了保持内容的简单性，我们只会演示如何在控制台应用程序（而不是后端服务）中，使用通知中心的 .NET SDK 发送通知，以此测试你的客户端应用。建议你接下来学习[使用通知中心向用户推送通知](notification-hubs-aspnet-backend-ios-notify-users.md)教程，以了解如何从 ASP.NET 后端发送通知。不过，可以使用以下方法来发送通知：
+
+* **REST 接口**：可以使用 [REST 接口](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)在任何后端平台上支持通知。
+
+* **Microsoft Azure 通知中心 .NET SDK**：在 Visual Studio 的 Nuget 包管理器中，运行 [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+
+* **Node.js**：[如何通过 Node.js 使用通知中心](notification-hubs-nodejs-how-to-use-notification-hubs.md)。
+
+* **Azure 移动服务**：有关如何从与通知中心集成的 Azure 移动服务后端发送通知的示例，请参阅“移动服务中的推送通知入门”（[.NET 后端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript 后端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)）。
+
+* **Java/PHP**：有关如何使用 REST API 发送通知的示例，请参阅“如何通过 Java/PHP 使用通知中心”([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md))。
+
+
+####（可选）通过 .NET 控制台应用发送通知。
+
+在本部分，你将使用 .NET 控制台应用发送通知
 
 1. 创建新的 Visual C# 控制台应用程序：
 
    	![][213]
 
-2. 通过使用 <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 包</a>添加对 Azure 服务总线 SDK 的引用。在 Visual Studio 主菜单中，依次单击“工具”、“库包管理器”和“Package Manager Console”。然后，在控制台窗口中键入以下内容并按 Enter：
+2. 在 Visual Studio 中，依次单击“工具”、“NuGet 包管理器”和“包管理器控制台”。
 
-        Install-Package WindowsAzure.ServiceBus
+	这会在 Visual Studio 中显示“包管理器控制台”。
 
-2. 打开文件 Program.cs 并添加以下 using 语句：
+3. 在“包管理器控制台”窗口中，将“默认项目”设置为新的控制台应用程序项目，然后在控制台窗口中执行以下命令：
 
-        using Microsoft.ServiceBus.Notifications;
+        Install-Package Microsoft.Azure.NotificationHubs
 
-3. 在 `Program` 类中添加以下方法：
+	这将使用 <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet 包</a>添加对 Azure 通知中心 SDK 的引用。
+
+	![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+
+
+4. 打开文件 Program.cs 并添加以下 `using` 语句：
+
+        using Microsoft.Azure.NotificationHubs;
+
+3. 在 `Program` 类中添加以下方法。
 
         private static async void SendNotificationAsync()
         {
             NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
-            var alert = "{\"aps\":{\"alert\":\"Hello from .NET!\"}}";
+            var alert = "{"aps":{"alert":"Hello from .NET!"}}";
             await hub.SendAppleNativeNotificationAsync(alert);
         }
 
@@ -349,9 +245,14 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 
 可以在 Apple [本地和推送通知编程指南]中找到所有可能的负载。
 
+
+####（可选）从移动服务发送通知
+
+在本部分，我们将使用移动服务通过节点脚本来发送通知。
+
 若要使用移动服务发送通知，请按[移动服务入门]中的说明操作，然后：
 
-1. 登录到 [Azure 门户] 并选择你的移动服务。
+1. 登录到[ Azure 管理门户]并选择你的移动服务。
 
 2. 选择顶部的“计划程序”选项卡。
 
@@ -385,58 +286,12 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 
 6. 单击底部栏上的“运行一次”。你应在设备上收到警报。
 
-## <a name="next-steps"></a>后续步骤
+##后续步骤
 
-在这个简单的示例中，你已将通知广播到所有 iOS 设备。若要针对特定客户，请参考教程[使用通知中心向用户推送通知]。如果要按兴趣组划分用户，可以阅读[使用通知中心发送突发新闻]。请在[通知中心指南]和[适用于 iOS 的通知中心操作方法指南]中了解有关如何使用通知中心的详细信息。
+在这个简单的示例中，你已将通知广播到所有 iOS 设备。若要针对特定客户，请参考教程[使用通知中心将通知推送到用户]。如果要按兴趣组划分用户，可以阅读[使用通知中心发送突发新闻]。请在[通知中心指南]和[适用于 iOS 的通知中心操作方法指南]中了解有关如何使用通知中心的详细信息。
 
-<!-- Anchors. -->
-[Generate the certificate signing request]: #certificates
-[Register your app and enable push notifications]: #register
-[Create a provisioning profile for the app]: #profile
-[Configure your Notification Hub]: #configure-hub
-[Connecting your app to the Notification Hub]: #connecting-app
-[Send notifications from your back-end]: #send
-[Next Steps]: #next-steps
 
 <!-- Images. -->
-[5]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step5.png
-[6]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step6.png
-[7]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step7.png
-
-[9]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step9.png
-[10]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step10.png
-[18]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-step18.png
-[105]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-05.png
-[106]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-06.png
-[107]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-07.png
-[108]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-08.png
-[109]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-09.png
-[110]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-10.png
-[111]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-11.png
-[112]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-12.png
-[113]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-13.png
-[114]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-14.png
-[115]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-15.png
-[116]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-16.png
-
-[118]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-18.png
-[119]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-19.png
-
-[120]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-20.png
-[121]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-21.png
-[122]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-22.png
-[123]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-23.png
-[124]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-24.png
-[125]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-25.png
-[126]: ./media/partner-xamarin-notification-hubs-ios-get-started/mobile-services-ios-push-26.png
-
-[27]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-create-from-portal.png
-[28]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-create-from-portal2.png
-[29]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-select-from-portal.png
-[210]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-select-from-portal2.png
-[211]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-configure-ios.png
-[212]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-connection-strings.png
-
 
 [213]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-create-console-app.png
 
@@ -458,21 +313,21 @@ Apple Push Notification 服务使用证书来验证你的移动服务。按照�
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
 [移动服务入门]: /develop/mobile/tutorials/get-started-xamarin-ios
-[Azure Management Portal]: https://manage.windowsazure.cn/
+[ Azure 管理门户]: https://manage.windowsazure.cn/
 [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
 [适用于 iOS 的通知中心操作方法指南]: http://msdn.microsoft.com/zh-cn/library/jj927168.aspx
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
-[使用通知中心向用户推送通知]: /manage/services/notification-hubs/notify-users-aspnet
+[使用通知中心将通知推送到用户]: /manage/services/notification-hubs/notify-users-aspnet
 [使用通知中心发送突发新闻]: /manage/services/notification-hubs/breaking-news-dotnet
 
 [本地和推送通知编程指南]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
-[Apple Push Notification 服务]: http://go.microsoft.com/fwlink/p/?LinkId=272584
+[Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 
 [Azure 移动服务组件]: http://components.xamarin.com/view/azure-mobile-services/
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Xamarin.iOS]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

@@ -59,7 +59,7 @@ Microsoft 采用行业标准动态路由协议 (BGP)，在本地网络、Azure �
 
 - Microsoft Azure 服务
 - Microsoft Office 365 服务
-- Microsoft CRM Online 服务（即将推出） 
+- Microsoft CRM Online 服务 
  
 你可以访问 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)页，以获取通过 ExpressRoute 支持的服务的详细列表。
 
@@ -105,7 +105,7 @@ Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。�
 - **无限制数据**。ExpressRoute 线路按月计费，所有入站和出站数据传输不收取费用。 
 - **计量数据**。ExpressRoute 线路按月计费。所有入站数据传输免费。出站数据传输按每 GB 数据传输计费。数据传输费率根据区域不同而异。
 - **ExpressRoute 高级版附加组件**。ExpressRoute 高级版是 ExpressRoute 线路上的附加组件。ExpressRoute 高级版附加组件提供以下功能： 
-	- 提高 Azure 公共和 Azure 专用对等互连的路由限制，从4000 路由提升至 10,000 路由。
+	- 提高 Azure 公共和 Azure 专用对等互连的路由限制，从4,000 路由提升至 10,000 路由。
 	- 服务的全球连接。在任何区域（国家/地区云除外）创建的 ExpressRoute 线路都将能够访问位于全球其他区域的资源。例如，创建于欧洲西部的虚拟网络可以通过在硅谷设置的 ExpressRoute 线路进行访问。
 	- 增加了每个 ExpressRoute 线路的 VNet 链接数量，从 10 增加至更大的限制，具体取决于线路的带宽。
 
@@ -120,4 +120,4 @@ Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。�
 	- [配置路由](/documentation/articles/expressroute-howto-routing-classic)
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

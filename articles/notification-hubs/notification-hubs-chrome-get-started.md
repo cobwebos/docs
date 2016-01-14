@@ -7,9 +7,9 @@
 	manager="dwrede"
 	editor=""/>
 <tags 
-    ms.service="notification-hubs" 
-    ms.date="09/03/2015"
-    wacn.date="" />
+	ms.service="notification-hubs" 
+	ms.date="10/20/2015"
+	wacn.date="" />
 
 # 通知中心入门（Chrome 应用）
 
@@ -19,7 +19,7 @@
 
 使用 Chrome 应用通知的主要优点之一是，通知显示在 Google Chrome 浏览器的上下文中。你无需让 Chrome 应用在浏览器中运行或打开（尽管 Chrome 浏览器本身必须正在运行）。此外，你还可以在 Chrome 通知窗口中获得所有通知的合并视图。
 
->[AZURE.NOTE]这不是泛型浏览器内推送通知，而是特定于 Chrome 应用的通知。有关详细信息，请参阅 [Chrome 应用概述]。Chrome 应用以前被称为“封装应用”，与较为简单的“托管应用”不同。请参阅[可安装的 Web Apps]，了解不同之处。Chrome 应用还可以通过 Apache Cordova 在移动设备（Android 和 iOS）上运行。请参阅[移动设备上的 Chrome 应用]，了解详细信息。
+>[AZURE.NOTE]这不是泛型浏览器内推送通知，这是针对 Chrome 应用的通知。有关详细信息，请参阅 [Chrome 应用概述]。Chrome 应用以前被称为“封装应用”，与较为简单的“托管应用”不同。请参阅[可安装的 Web Apps]，了解不同之处。Chrome 应用还可以通过 Apache Cordova 在移动设备（Android 和 iOS）上运行。请参阅[移动设备上的 Chrome 应用]，了解详细信息。
 
 在本教程中，我们将创建一个 Chrome 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。完成本教程后，你将可以向已安装此 Chrome 应用的所有 Chrome 用户广播推送通知。
 
@@ -35,11 +35,11 @@
 
 请务必继续学习“后续步骤”部分中的教程，以了解如何使用通知中心来通知特定用户和设备组。
 
->[AZURE.NOTE]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fzh-CN%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F)。
+>[AZURE.NOTE]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F)。
 
 ##<a id="register"></a>启用 Google Cloud Messaging
 
-1. 导航到 [Google Cloud Console] 网站，使用你的 Google 帐户凭据登录，然后单击“创建项目”按钮。提供相应的**项目名称**，然后单击“创建”按钮。
+1. 导航到 [Google 云控制台] 网站，使用你的 Google 帐户凭据登录，然后单击“创建项目”按钮。提供相应的**项目名称**，然后单击“创建”按钮。
 
    	![][1]
 
@@ -61,13 +61,13 @@
 
 ##<a id="configure-hub"></a>配置通知中心
 
-1. 登录到 [Azure 门户]，然后单击屏幕左下角的“+ 新建”。
+1. 登录到 [Azure 管理门户]，然后单击屏幕左下角的“+ 新建”。
 
 2. 单击“应用程序服务”>“服务总线”>“通知中心”>“快速创建”。键入通知中心的名称，选择所需的区域，然后单击“创建新的通知中心”。
 
    	![][6]
 
-4. 转到你刚刚创建的通知中心。单击托管你的通知中心的命名空间（通常为***通知中心名称*-ns**）。
+4. 转到你刚刚创建的通知中心。单击托管你的通知中心的命名空间（通常为 ***通知中心名称* -ns**）。
 
    	![][7]
 
@@ -363,10 +363,20 @@
 		  }
 		}
 
-	上述脚本具有以下特点：*window.onload* 定义了 UI 上的两个按钮的按钮单击事件。一个按钮在 GCM 中注册，另一个按钮使用在 GCM 中注册后返回的注册 ID 在 Azure 通知中心中注册。*updateLog* 函数定义简单的日志记录函数。*registerWithGCM* 是第一个按钮单击处理程序，它对 GCM 进行 **chrome.gcm.register** 调用以注册此 Chrome 应用实例。*registerCallback* 是回调函数，在上述 GCM 注册调用返回时获得调用。*registerWithNH* 是第二个按钮单击处理程序，可注册到通知中心。它获取用户指定的 **hubName** 和 **connectionString** 并创建通知中心注册 REST API 调用。*splitConnectionString* 和 *generateSaSToken* 是创建 SaS 令牌（必须在所有 REST API 调用中发送）的 JavaScript 实现。有关详细信息，请参阅[基本概念](http://msdn.microsoft.com/library/dn495627.aspx)。*sendNHRegistrationRequest* 是进行 HTTP REST 调用的函数。*registrationPayload* 定义注册 XML 负载。有关详细信息，请参阅[创建注册 NH REST API]。我们使用从 GCM 收到的信息更新其中的注册 ID。*client* 是 **XMLHttpRequest** 的实例，我们使用它来发出 HTTP POST 请求。请注意，我们使用 **sasToken** 更新 **Authorization** 标头。成功完成此次调用将在 Azure 通知中心中注册此 Chrome 应用实例。
+	上述脚本具有以下特点：
+	- *window.onload* 定义了 UI 上的两个按钮的按钮单击事件。一个按钮在 GCM 中注册，另一个按钮使用在 GCM 中注册后返回的注册 ID 在 Azure 通知中心中注册。
+	- *updateLog* 函数定义简单的日志记录函数。
+	- *registerWithGCM* 是第一个按钮单击处理程序，它对 GCM 进行 **chrome.gcm.register** 调用以注册此 Chrome 应用实例。
+	- *registerCallback* 是回调函数，在上述 GCM 注册调用返回时获得调用。
+	- *registerWithNH* 是第二个按钮单击处理程序，可注册到通知中心。它获取用户指定的 **hubName** 和 **connectionString** 并创建通知中心注册 REST API 调用。
+	- *splitConnectionString* 和 *generateSaSToken* 是创建 SaS 令牌（必须在所有 REST API 调用中发送）的 JavaScript 实现。有关详细信息，请参阅[基本概念](http://msdn.microsoft.com/library/dn495627.aspx)。
+	- *sendNHRegistrationRequest* 是进行 HTTP REST 调用的函数。
+	- *registrationPayload* 定义注册 XML 负载。有关详细信息，请参阅[创建注册 NH REST API]。我们使用从 GCM 收到的信息更新其中的注册 ID。
+	- *client* 是 **XMLHttpRequest** 的实例，我们使用它来发出 HTTP POST 请求。请注意，我们使用 **sasToken** 更新 **Authorization** 标头。成功完成此次调用将在 Azure 通知中心中注册此 Chrome 应用实例。
 
 
-你应在此实例的末尾看到文件夹的以下视图：![][21]
+你应在此实例的末尾看到文件夹的以下视图：
+	![][21]
 
 ###设置并测试你的 Chrome 应用
 
@@ -382,7 +392,7 @@
 
    	![][18]
 
-4. 输入你先前从 **Google Cloud Console** 中获取的**项目编号**作为发送器 ID，然后单击“注册到 GCM”。你必须看到“已成功注册到 GCM”消息。
+4. 输入你先前从 **Google 云控制台** 中获取的**项目编号**作为发送器 ID，然后单击“注册到 GCM”。你必须看到“已成功注册到 GCM”消息。
 
    	![][19]
 
@@ -394,7 +404,8 @@
 
 在本教程中，你将使用 .NET 控制台应用程序来发送通知。但是，你可以使用通知中心通过 <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST 接口</a>从任意后端发送通知。
 
-有关如何从与通知中心集成的 Azure 移动服务后端发送通知的示例，请参阅“移动服务中的推送通知入门”（[.NET 后端](../mobile-services-javascript-backend-android-get-started-push.md) | [JavaScript 后端](../mobile-services-javascript-backend-android-get-started-push.md)）。有关如何使用 REST API 发送通知的示例，请参阅“如何通过 Java/PHP/Python 使用通知中心”([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md) | [Python](notification-hubs-python-backend-how-to.md))。
+有关如何从与通知中心集成的 Azure 移动服务后端发送通知的示例，请参阅“移动服务中的推送通知入门”（[.NET 后端](../mobile-services-javascript-backend-android-get-started-push.md) | [JavaScript 后端](../mobile-services-javascript-backend-android-get-started-push.md)）。
+有关如何使用 REST API 发送通知的示例，请参阅“如何通过 Java/PHP/Python 使用通知中心”([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md) | [Python](notification-hubs-python-backend-how-to.md))。
 
 1. 在 Visual Studio 中，从“文件”菜单选择“新建”，然后选择“项目”。在 **Visual C#** 下，单击 **Windows** 和“控制台应用程序”，然后单击“确定”。这将创建一个新的控制台应用程序项目。
 
@@ -402,13 +413,13 @@
 
 3. 在控制台窗口中，执行以下命令：
 
-        Install-Package WindowsAzure.ServiceBus
+        Install-Package Microsoft.Azure.NotificationHubs
 
    	这将使用 <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet 包</a>添加对 Azure 服务总线 SDK 的引用。
 
 4. 打开文件 **Program.cs** 并添加以下 `using` 语句：
 
-        using Microsoft.ServiceBus.Notifications;
+        using Microsoft.Azure.NotificationHubs;
 
 5. 在 **Program** 类中，添加以下方法：
 
@@ -438,7 +449,9 @@
 
 ## <a name="next-steps"></a>后续步骤
 
-在这个简单的示例中，你已将通知广播到你的 Chrome 应用。在[通知中心概述]中，了解有关通知中心的详细信息。若要针对特定用户，请参阅教程 [Azure 通知中心 - 通知用户]。如果要按兴趣组来划分用户，可以阅读 [Azure 通知中心突发新闻]。
+在这个简单的示例中，你已将通知广播到你的 Chrome 应用。
+在[通知中心概述]中，了解有关通知中心的详细信息。
+若要针对特定用户，请参阅教程 [Azure 通知中心 - 通知用户]。如果要按兴趣组来划分用户，可以阅读 [Azure 通知中心突发新闻]。
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-chrome-get-started/GoogleConsoleCreateProject.PNG
@@ -465,8 +478,8 @@
 
 <!-- URLs. -->
 [Chrome 应用通知中心示例]: http://google.com
-[Google Cloud Console]: http://cloud.google.com/console
-[Azure 门户]: https://manage.windowsazure.com/
+[Google 云控制台]: http://cloud.google.com/console
+[Azure 管理门户]: https://manage.windowsazure.com/
 [通知中心概述]: http://msdn.microsoft.com/library/jj927170.aspx
 [Chrome 应用概述]: https://developer.chrome.com/apps/about_apps
 [Chrome 应用 GCM 示例]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
@@ -480,4 +493,4 @@
 [Azure 通知中心突发新闻]: notification-hubs-windows-store-dotnet-send-breaking-news
  
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

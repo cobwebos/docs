@@ -9,18 +9,18 @@
    tags="azure-resource-manager"/>
 <tags
    ms.service="expressroute"
-   ms.date="11/06/2015"
+   ms.date="12/04/2015"
    wacn.date=""/>
 
 # 使用 Azure 资源管理器和 PowerShell 创建和修改 ExpressRoute 线路
 
 > [AZURE.SELECTOR]
-[PowerShell - Classic](/documentation/articles/expressroute-howto-circuit-classic)
-[PowerShell - Resource Manager](/documentation/articles/expressroute-howto-circuit-arm)
+[PowerShell - 经典](/documentation/articles/expressroute-howto-circuit-classic)
+[PowerShell - 资源管理器](/documentation/articles/expressroute-howto-circuit-arm)
 
 本文将指导你执行相关步骤，以便使用 PowerShell cmdlet 和 Azure 资源管理器部署模型创建 ExpressRoute 线路。下面的步骤还将向你显示如何查看状态，以及如何更新、删除和预配 ExpressRoute 线路。
 
-[AZURE.INCLUDE [vpn-gateway-sm-rm](../includes/vpn-gateway-sm-rm-include.md)] 
+[AZURE.INCLUDE [vpn-gateway-sm-rm](../includes/vpn-gateway-sm-rm-include.md)]
 
 ## 配置先决条件
 
@@ -179,7 +179,7 @@
 
 
 
-5. **定期检查服务密钥的状态。**
+6. **定期检查服务密钥的状态。**
 
 	这样，你就知道提供商何时启用了你的线路。配置线路后，*ServiceProviderProvisioningState* 将显示为 *Provisioned*，如下例所示。
 
@@ -209,13 +209,13 @@
 		ServiceKey                       : **************************************
 		Peerings                         : []
 
-6. **创建路由配置。**
+7. **创建路由配置。**
 	
 	如需分步说明，请参阅 [ExpressRoute 线路路由配置（创建和修改线路对等互连）](/documentation/articles/expressroute-howto-routing-arm)页。
 
-7. **将 VNet 链接到 ExpressRoute 线路。**
+8. **将 VNet 链接到 ExpressRoute 线路。**
 
-	接下来，将 VNet 链接到 ExpressRoute 线路。如需分步说明，请参阅[将 ExpressRoute 线路链接到 VNet](/documentation/articles/expressroute-howto-linkvnet-arm)。如需为 ExpressRoute 创建虚拟网络，请参阅[为 ExpressRoute 创建虚拟网络](/documentation/articles/expressroute-howto-createvnet-classic)以获取相关说明。
+	接下来，将 VNet 链接到 ExpressRoute 线路。使用 Azure 资源管理器部署模式时，你可以使用[此模板](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)。我们目前正在致力于 PowerShell 步骤。
 
 ##  获取 ExpressRoute 线路的状态
 
@@ -335,7 +335,7 @@
 
 将已在 Microsoft 一侧估计好线路的大小。你必须联系连接提供商，让他们在那一边根据此更改更新配置。请注意，我们将从现在开始按照已更新的带宽选项为你计费。
 
->[AZURE.IMPORTANT]但是，你无法在不中断的情况下降低 ExpressRoute 线路的带宽。带宽降级需要取消对 ExpressRoute 线路的预配，然后重新预配新的 ExpressRoute 线路。
+>[AZURE.IMPORTANT] 但是，你无法在不中断的情况下降低 ExpressRoute 线路的带宽。带宽降级需要取消对 ExpressRoute 线路的预配，然后重新预配新的 ExpressRoute 线路。
 
 ## 删除和取消预配 ExpressRoute 线路
 
@@ -354,4 +354,4 @@
 - [配置路由](/documentation/articles/expressroute-howto-routing-arm)
 - [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-arm) 
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

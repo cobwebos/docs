@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="backup"
-	ms.date="10/29/2015"
+	ms.date="12/15/2015"
 	wacn.date=""/>
 
 
@@ -28,7 +28,7 @@
 | 备份操作 | 错误详细信息 | 解决方法 |
 | -------- | -------- | -------|
 | 注册 | 附加到虚拟机的数据磁盘数超过了支持的限制 - 请分离此虚拟机上的某些数据磁盘，然后重试操作。Azure 备份最多支持将 16 个数据磁盘附加到 Azure 虚拟机进行备份 | 无 |
-| 注册 | Microsoft Azure 备份遇到内部错误 - 等候几分钟，然后重试操作。如果问题持续出现，请联系 Microsoft 支持。 | 可能因为不支持以下其中一项配置而发生此错误：<ol><li>高级 LRS <li>多重 NIC <li>负载平衡器（内部和面向 Internet）</ol> |
+| 注册 | Microsoft Azure 备份遇到内部错误 - 等候几分钟，然后重试操作。如果问题持续出现，请联系 Microsoft 支持。 | 可能因为不支持以下其中一项配置而发生此错误：<ul><li>Premium LRS </ul> |
 | 注册 | 安装代理操作超时，注册失败 | 检查是否支持虚拟机的操作系统版本。 |
 | 注册 | 命令执行失败 - 此项上正在进行另一项操作。等到前一项操作完成 | 无 |
 | 注册 | 不支持使用虚拟硬盘存储在高级存储上的虚拟机进行备份 | 无 |
@@ -46,8 +46,6 @@
 | 备份 | 扩展安装失败，出现错误“COM+ 无法与 Microsoft 分布式事务处理协调器通信”。 | 这通常意味着到 COM+ 服务未运行。请与 Microsoft 支持部门联系，以获取解决此问题所需的帮助。 |
 | 备份 | 快照操作失败，出现 VSS 操作错误"此驱动器已通过 BitLocker 驱动器加密锁定”。你必须通过控制面板解锁此驱动器。 | 针对 VM 上的所有驱动器关闭 BitLocker，观察 VSS 问题是否得到解决 |
 | 备份 | 不支持使用虚拟硬盘存储在高级存储上的虚拟机进行备份 | 无 |
-| 备份 | 不支持备份具有负载平衡器配置的虚拟机。 | 无<br><br>这适用于内部负载平衡器和面向 Internet 的负载平衡器。|
-| 备份 | 不支持备份具有多个 NIC 的虚拟机。 | 无 |
 | 备份 | 找不到 Azure 虚拟机。 | 当主 VM 已删除，而备份策略仍继续查找用于执行备份的 VM 时，将会发生这种情况。若要修复此错误，请执行以下操作：<ol><li>使用相同的名称和相同的资源组名称 [云服务名称] 重新创建虚拟机，<br>或者<li>禁用对此 VM 的保护，这样就不会创建备份作业</ol> |
 | 备份 | 虚拟机上不存在虚拟机代理 - 请安装所需的系统必备组件和 VM 代理，然后重新启动操作。 | [详细了解](#vm-agent)如何安装 VM 代理以及如何验证 VM 代理安装。 |
 
@@ -63,7 +61,7 @@
 ## 还原
 | 操作 | 错误详细信息 | 解决方法 |
 | -------- | -------- | -------|
-| 还原 | 发生云内部错误，还原失败 | <ol><li>使用 DNS 设置配置了你正在尝试还原的云服务。你可以检查 <br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production" Get-AzureDns -DnsSettings $deployment.DnsSettings<br>如果配置了地址，则表示配置了 DNS 设置。<br> <li>尝试还原的云服务配置了 ReservedIP，且云服务中现有的 VM 处于停止状态。<br>可以使用以下 PowerShell cmdlet 检查云服务是否有保留的 IP：<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName</ol> |
+| 还原 | 发生云内部错误，还原失败 | <ol><li>使用 DNS 设置配置了你正在尝试还原的云服务。你可以检查 <br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production" Get-AzureDns -DnsSettings $deployment.DnsSettings<br>如果配置了地址，则表示配置了 DNS 设置。<br> <li>尝试还原的云服务配置了 ReservedIP，且云服务中现有的 VM 处于停止状态。<br>可以使用以下 PowerShell cmdlet 检查云服务是否有保留的 IP：<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>你正在尝试将具有以下特殊网络配置的虚拟机还原到同一个云服务中。<br>- 虚拟机采用负载平衡器配置（内部和外部）<br>- 虚拟机具有多个保留 IP<br>- 虚拟机具有多个 NIC<br>请在 UI 中选择新的云服务，或者参阅[还原注意事项](backup-azure-restore-vms.md/#restoring-vms-with-special-network-configurations)了解具有特殊网络配置的 VM</ol> |
 | 还原 | 所选 DNS 名称已被使用 - 请指定其他 DNS 名称，然后重试。 | 此处的 DNS 名称是指云服务名称（通常以 .cloudapp.net 结尾）。此名称必须是唯一名称。如果遇到此错误，则需在还原过程中选择其他 VM 名称。<br><br>请注意，此错误仅显示给 Azure 门户用户。通过 PowerShell 进行的还原操作会成功，因为它只还原磁盘，不创建 VM。如果在磁盘还原操作之后显式创建 VM，则会遇到该错误。 |
 | 还原 | 指定的虚拟网络配置不正确 - 请指定其他虚拟网络配置，然后重试。 | 无 |
 | 还原 | 指定的云服务使用的是保留 IP，这不符合要还原的虚拟机的配置 - 请指定其他不使用保留 IP 的云服务，或者选择其他用于还原的恢复点。 | 无 |
@@ -122,9 +120,14 @@
 
 [此处](http://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx)说明了在哪些情况下需要解析公共 Internet 地址。你需要检查 VNET 的 DNS 配置，并确保可以解析 Azure URI。
 
-正确完成名称解析后，还需要提供对 Azure IP 的访问权限。若要取消阻止对 Azure 基础结构的访问，请执行以下步骤：
+正确完成名称解析后，还需要提供对 Azure IP 的访问权限。若要取消阻止对 Azure 基础结构的访问，请执行以下步骤之一：
 
-1. 获取要列入允许列表的 [Azure 数据中心 IP](https://msdn.microsoft.com/library/azure/dn175718.aspx)。
-2. 使用 [New-NetRoute](https://technet.microsoft.com/library/hh826148.aspx) cmdlet 取消阻止 IP。在 Azure VM 上提升权限的 PowerShell 窗口中运行此 cmdlet（以管理员身份运行）。
+1. 将 Azure 数据中心 IP 范围加入允许列表。
+    - 获取要列入允许列表的 [Azure 数据中心 IP](https://www.microsoft.com/download/details.aspx?id=41653)。
+    - 使用 [New-NetRoute](https://technet.microsoft.com/library/hh826148.aspx) cmdlet 取消阻止 IP。在 Azure VM 上提升权限的 PowerShell 窗口中运行此 cmdlet（以管理员身份运行）。
+    - 向 NSG 添加规则（如果已创建规则），以允许访问这些 IP。
+2. 为 HTTP 流量创建路径
+    - 如果你指定了某种网络限制（例如网络安全组），请部署 HTTP 代理服务器来路由流量。可在[此处](backup-azure-vms-prepare.md#2-network-connectivity)找到部署 HTTP 代理服务器的步骤。
+    - 向 NSG 添加规则（如果已创建规则），以允许从 HTTP 代理访问 INTERNET。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

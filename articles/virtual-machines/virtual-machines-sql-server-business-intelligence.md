@@ -9,12 +9,13 @@
 	tags="azure-service-management"/>
 <tags 
 	ms.service="virtual-machines"
-	ms.date="08/19/2015"
+	ms.date="12/11/2015"
 	wacn.date="" />
 
 # Azure 虚拟机中的 SQL Server Business Intelligence
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍如何使用经典部署模型使用资源。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
+ 
  
 Microsoft Azure 虚拟机库包括含有 SQL Server 安装的映像。库映像中支持的 SQL Server 版本是可以安装到本地计算机和虚拟机的相同安装文件。本主题总结了在映像上安装的 SQL Server 商业智能 (BI) 功能和配置虚拟机后所需的配置步骤。本主题还介绍了 BI 功能和最佳实践支持的部署拓扑。
 
@@ -280,7 +281,7 @@ SQL Server 的虚拟机库映像包括安装的 Reporting Services 本机模式�
 	
 	1. 浏览到虚拟机上的报表管理器，然后单击功能区中的“报表生成器”。
 	
-	有关详细信息，请参阅“安装、卸载和支持报表生成器”。[](https://technet.microsoft.com/library/dd207038.aspx)
+	有关详细信息，请参阅[“安装、卸载和支持报表生成器”。](https://technet.microsoft.com/library/dd207038.aspx)
 
 - **SQL Server Data Tools**：VM：SQL Server Data Tools 安装在该虚拟机上并可用于在该虚拟机上创建**报表服务器项目**和报表。SQL Server Data Tools 可以将报表发布到虚拟机上的报表服务器。
 
@@ -384,7 +385,9 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。在虚拟机�
 
 	|端口|类型|说明|
 |---|---|---|
-|**80**|TCP|报表服务器远程访问 (*)。| |**1433**|TCP|SQL Server Management Studio (*)。| |**1434**|UDP|SQL Server Browser。当 VM 加入到域时需要。|
+|**80**|TCP|报表服务器远程访问 (*)。|
+|**1433**|TCP|SQL Server Management Studio (*)。|
+|**1434**|UDP|SQL Server Browser。当 VM 加入到域时需要。|
 |**2382**|TCP|SQL Server Browser。|
 |**2383**|TCP|SQL Server Analysis Services 默认实例和群集命名实例。|
 |**用户定义**|TCP|为您选择的端口号创建一个静态 Analysis Services 命名实例端口，然后在防火墙中解锁该端口号。|
@@ -427,4 +430,4 @@ Analysis Services 的**默认实例**侦听 TCP 端口 **2383**。在虚拟机�
 
 - [使用 PowerShell 管理 Azure SQL 数据库](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0104_2016-->

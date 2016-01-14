@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="09/23/2015"
+	ms.date="12/16/2015"
 	wacn.date=""/>
 
 
@@ -44,7 +44,7 @@
 
 下面的示例演示了如何包括 autoloader 文件并引用 **ServicesBuilder** 类。
 
-> [AZURE.NOTE] 本示例（以及本文中的其他示例）假定您已通过 Composer 安装用于 Azure 的 PHP 客户端库。如果你已手动安装这些库或将其作为 PEAR 包安装，则需要引用 <code>WindowsAzure.php</code> autoloader 文件。
+> [AZURE.NOTE]本示例（以及本文中的其他示例）假定您已通过 Composer 安装用于 Azure 的 PHP 客户端库。如果你已手动安装这些库或将其作为 PEAR 包安装，则需要引用 <code>WindowsAzure.php</code> autoloader 文件。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
@@ -58,7 +58,7 @@
 
 对于访问实时服务：
 
-	DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
+	DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey];EndpointSuffix=core.chinacloudapi.cn
 
 对于访问模拟器存储：
 
@@ -462,13 +462,11 @@
 
 现在，您已了解了 Azure 表服务的基础知识，单击下面的链接可了解有关更复杂的存储任务的详细信息。
 
-- 请参阅 MSDN 参考：[Azure 存储](http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx)
 - 访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 
-有关详细信息，另请参阅 [PHP 开发中心](/develop/php/)。
+有关详细信息，另请参阅 [PHP 开发人员中心](/develop/php/)。
 
 [download]: /documentation/articles/php-download-sdk
-[Storing and accessing data in Azure]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
 [require_once]: http://php.net/require_once
 [table-service-timeouts]: http://msdn.microsoft.com/zh-cn/library/azure/dd894042.aspx
 
@@ -476,4 +474,4 @@
 [filters]: http://msdn.microsoft.com/zh-cn/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/zh-cn/library/azure/dd894038.aspx
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

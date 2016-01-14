@@ -82,7 +82,7 @@
 
 运行 PowerShell cmdlet 删除 ExpressRoute 线路后，你很快就会看到 ExpressRoute 线路处于以下所述状态。
 
-	ServiceProviderProvisioningState : Provisioning
+	ServiceProviderProvisioningState : Provisioned
 	Status                           : Disabling
 
 你必须联系你的连接服务提供商来取消预配 ExpressRoute 线路。**重要说明：**Microsoft 将持续收取线路费用，直到你运行 PowerShell cmdlet 来取消预配线路为止。
@@ -117,4 +117,4 @@ BGP 预配状态可让你知道 Microsoft 边缘是否已启用 BGP 会话。必
 	- [配置路由](/documentation/articles/expressroute-howto-routing-classic)
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

@@ -10,7 +10,7 @@
 />
 <tags
 	ms.service="virtual-network"
-	ms.date="11/12/2015"
+	ms.date="11/20/2015"
 	wacn.date=""/>
 
 # 使用模板部署多 NIC VM
@@ -219,20 +219,11 @@
 
 若要使用 PowerShell 部署下载的模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)，并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
-2. 运行 **Switch-AzureMode** cmdlet 以切换到资源管理器模式，如下所示。
+[AZURE.INCLUDE [powershell-preview-include.md](../includes/powershell-preview-include.md)]
 
-		Switch-AzureMode AzureResourceManager
+3. 运行 **New-AzureRmResourceGroup** cmdlet 以使用模板创建资源组。
 
-	下面是上述命令的预期输出：
-
-		WARNING: The Switch-AzureMode cmdlet is deprecated and will be removed in a future release.
-
-	>[AZURE.WARNING]Switch-AzureMode cmdlet 将在不久后弃用。如果弃用，所有资源管理器 cmdlet 都将重命名。
-
-3. 运行 **New-AzureResourceGroup** cmdlet 以使用模板创建资源组。
-
-		New-AzureResourceGroup -Name IaaSStory-Backend -Location uswest `
+		New-AzureRmResourceGroup -Name IaaSStory-Backend -Location uswest `
 		    -TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.json' `
 		    -TemplateParameterFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/azuredeploy.parameters.json'	
 
@@ -297,4 +288,4 @@
 		data:
 		info:    group create command OK
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

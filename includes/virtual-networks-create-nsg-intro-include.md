@@ -2,4 +2,4 @@
 
 有关 NSG 的详细信息，请访问[什么是 NSG](/documentation/articles/virtual-networks-nsg)。
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

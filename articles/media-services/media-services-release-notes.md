@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="11/03/2015"
+	ms.date="12/09/2015"
 	wacn.date=""/>
 
 
@@ -21,6 +21,9 @@
 
 - [当前已知的问题](#issues)
 - [REST API 版本历史记录](#rest_version_history)
+- [2015 年 12 月版本](#dec_changes_15)
+- [2015 年 11 月版本](#nov_changes_15)
+- [2015 年 10 月版本](#oct_changes_15)
 - [2015 年 9 月版本](#september_changes_15)
 - [2015 年 8 月版本](#august_changes_15)
 - [2015 年 7 月版本](#july_changes_15)
@@ -57,7 +60,7 @@
 REST API 中未提供几种常见的 HTTP 标头。|如果你使用 REST API 来开发媒体服务应用程序，你将发现一些常见的 HTTP 标头字段（包括 CLIENT-REQUEST-ID、REQUEST-ID 和 RETURN-CLIENT-REQUEST-ID）不受支持。未来的更新将增加这些标头。
 使用包含转义字符（例如 %20）的文件名对资产进行编码失败，出现错误：“MediaProcessor: 找不到文件”。|将添加到资产然后进行编码的文件的名称应只能包含字母数字字符和空格。未来的更新将解决该问题。
 Azure 存储空间 SDK 版本 3.x 中的 ListBlobs 方法将失败。|媒体服务基于 [2012-02-12](http://msdn.microsoft.com/zh-cn/library/azure/dn592123.aspx) 版本生成 SAS URL。如果你希望使用 Azure 存储空间 SDK 来列出 BLOB 容器中的 BLOB，请使用 Azure 存储空间 SDK 版本 2.x 中的 [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/zh-cn/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) 方法。Azure 存储空间 SDK 版本 3.x 中的 ListBlobs 方法将失败。
-Media Services 限制机制会限制那些发出过多服务请求的应用程序的资源使用情况。该服务可能返回“服务不可用”(503) HTTP 状态代码。|有关详细信息，请参阅 [Azure 媒体服务错误代码](http://msdn.microsoft.com/zh-cn/library/azure/dn168949.aspx)主题中 503 HTTP 状态代码的说明。
+媒体服务限制机制会限制那些发出过多服务请求的应用程序的资源使用情况。该服务可能返回“服务不可用”(503) HTTP 状态代码。|有关详细信息，请参阅 [Azure 媒体服务错误代码](http://msdn.microsoft.com/zh-cn/library/azure/dn168949.aspx)主题中 503 HTTP 状态代码的说明。
 
 
 ### <a id="dotnet_issues"></a>适用于 .NET 的媒体服务 SDK 存在的问题
@@ -69,6 +72,33 @@ SDK 中的媒体服务对象无法进行序列化，因此无法与 Azure Cachin
 ##<a id="rest_version_history"></a>REST API 版本历史记录
 
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
+
+##<a id="dec_changes_15"></a>2015 年 12 月版本
+
+Azure SDK 团队已发布新版 [Azure SDK for PHP](http://github.com/Azure/azure-sdk-for-php) 程序包，其中包含 Microsoft Azure 媒体服务的更新与新功能。具体而言，适用于 PHP 的 Azure 媒体服务 SDK 现在支持最新的[内容保护](/documentation/articles/media-services-content-protection-overview)功能：在有和没有令牌限制的情况下使用 AES 与 DRM（PlayReady 和 Widevine）动态加密。它还支持缩放[编码单位](/documentation/articles/media-services-dotnet-encoding-units)。
+
+有关详细信息，请参阅：
+
+- [适用于 PHP 的 Microsoft Azure 媒体服务 SDK](http://southworks.com/blog/2015/12/09/new-microsoft-azure-media-services-sdk-for-php-release-available-with-new-features-and-samples/) 博客。
+- 以下[代码示例](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)可帮助你快速入门：
+	- **vodworkflow\_aes.php**：这是一个 PHP 文件，演示如何使用 AES-128 动态加密和密钥传送服务。该文件基于[此文](/documentation/articles/media-services-protect-with-aes128)中所述的 .NET 示例。
+	- **vodworkflow\_aes.php**：这是一个 PHP 文件，演示如何使用 PlayReady 动态加密和许可证传送服务。该文件基于[此文](/documentation/articles/media-services-protect-with-drm)中所述的 .NET 示例。
+	- **scale\_encoding\_units.php**：这是一个 PHP 文件，演示如何缩放编码保留单位。
+
+
+##<a id="nov_changes_15"></a>2015 年 11 月版本
+
+现在，Azure 媒体服务在云中提供 Google Widevine 许可证传送服务。有关更多详细信息，请阅读[此通知博客](http://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)。另请参阅[此教程](/documentation/articles/media-services-protect-with-drm)和 [GitHub 存储库](http://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)。
+
+请注意，Azure 媒体服务提供的 Widevine 许可证传送服务是预览版。有关详细信息，请参阅[此博客](http://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)。
+
+##<a id="oct_changes_15"></a>2015 年 10 月版本
+
+Azure 媒体服务 (AMS) 现已在以下数据中心推出：巴西南部、印度西部、印度南部和印度中部。现在你可以使用 Azure 管理门户[创建媒体服务帐户](/documentation/articles/media-services-create-account#create-a-media-services-account-using-quick-create)，以及执行[此处](/documentation/services/media-services/)所述的各项任务。不过，这些数据中心未启用实时编码。此外，并非所有类型的编码保留单位都可用于这些数据中心。
+
+- 巴西南部：只可以使用标准和基本编码保留单位
+- 印度西部、印度南部和印度中部：只可以使用基本编码保留单位
+
 
 ##<a id="september_changes_15"></a>2015 年 9 月版本 
 
@@ -93,7 +123,7 @@ SDK 中的媒体服务对象无法进行序列化，因此无法与 Azure Cachin
 
 ##<a id="august_changes_15"></a>2015 年 8 月版本
 
-- Azure Media Services SDK for Java V0.8.0 版和新示例现已推出。有关详细信息，请参阅：
+- 用于 Java V0.8.0 版的 Azure 媒体服务 SDK 和新示例现已推出。有关详细信息，请参阅：
 
 	- [博客文章](http://southworks.com/blog/2015/08/25/microsoft-azure-media-services-sdk-for-java-v0-8-0-released-and-new-samples-available/)
 	- [Java 示例存储库](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
@@ -102,7 +132,7 @@ SDK 中的媒体服务对象无法进行序列化，因此无法与 Azure Cachin
 
 ##<a id="july_changes_15"></a>2015 年 7 月版本
 
-- 宣布媒体编码器标准版公开上市。有关详细信息，请参阅[此博客文章](http://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)。
+- 宣布媒体编码器标准版公开上市。有关详细信息，请参阅[此博客文章](http://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 - Azure 媒体服务和播放器的实时标题。有关详细信息，请参阅[此博客文章](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)
 
@@ -199,13 +229,13 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
 - 增加了对密钥传递服务的 CORS 支持。
 - 改进了查询授权策略选项的性能。
 - 在中国数据中心，[密钥传递 URL](http://msdn.microsoft.com/zh-cn/library/azure/ef4dfeeb-48ae-4596-ab28-44d6b36d8769#get_delivery_service_url) 现在是每个客户一份（同其他数据中心一样）。
-- 增加了 HLS 自动目标持续时间。当执行实时流式传输时，HLS 始终是动态打包的。默认情况下，媒体服务根据从实时编码器收到的关键帧间隔 (KeyFrameInterval)（也称图片组 - GOP）自动计算 HLS 段打包比率（每段的片数）。有关详细信息，请参阅[使用 Azure 媒体服务实时流式处理]。
+- 增加了 HLS 自动目标持续时间。当执行实时流式传输时，HLS 始终是动态打包的。默认情况下，媒体服务根据从实时编码器收到的关键帧间隔 (KeyFrameInterval)（也称图片组 - GOP）自动计算 HLS 段打包比率 (FragmentsPerSegment)。有关详细信息，请参阅[使用 Azure 媒体服务实时流式处理]。
  
 ###媒体服务 .NET SDK 更新
 
 - [Azure 媒体服务 .NET SDK](http://www.nuget.org/packages/windowsazure.mediaservices/) 当前版本为 3.1.0.0。
 - 将 .Net SDK 依赖项升级到了 .NET 4.5 Framework。
-- 增加了一个新的 API，使你可以更新编码保留单位。有关详细信息，请参阅[使用 .NET 更新保留单位类型和增加编码保留单位 (RU)](http://msdn.microsoft.com/zh-cn/library/azure/jj129582.aspx)。
+- 增加了一个新的 API，使你可以更新编码保留单位。有关详细信息，请参阅[使用 .NET 更新保留单位类型和增加编码保留单位 (RU)](/documentation/articles/media-services-dotnet-encoding-units)。
 - 增加了对令牌身份验证的 JWT（JSON Web 令牌）支持。有关详细信息，请参阅 [Azure 媒体服务和动态加密中的 JWT 令牌身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。
 - 增加了 PlayReady 许可证模板中 BeginDate 和 ExpirationDate 的相对偏移量。
 
@@ -252,15 +282,15 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
 ### <a id="sept_14_breaking_changes"></a>重大更改
 
 * **原点**重命名为了 [StreamingEndpoint]。
-* 使用“Azure 管理门户”进行编码然后发布 MP4 文件的默认行为发生变化。 
+* 使用“Azure 管理门户”进行编码然后发布 MP4 文件的默认行为发生变化。
 
-	以前，使用管理门户发布单文件 MP4 视频资产时，将创建一个 SAS URL（你可以通过 SAS URL 从 BLOB 存储下载视频）。目前，使用管理门户编码并发行单文件 MP4 视频资产时，生成的 URL 将指向 Azure 媒体服务流式处理终结点。此更改不会影响 MP4 视频，此类视频直接上载到媒体服务，并且不经 Azure 媒体服务编码立即发布。
-	
-	目前，你可以采用如下两个选项来解决该问题。
-	
-	* 启用流式处理单位并使用动态打包将 .mp4 资产流式处理为平滑流式处理演示内容。
-	
-	* 创建一个 SAS URL 以下载（或渐进式播放）.mp4。有关如何创建 SAS 定位符的详细信息，请参阅[交付内容]。
+以前，使用 Azure 管理门户发布单文件 MP4 视频资产时，将创建一个 SAS URL（你可以通过 SAS URL 从 BLOB 存储下载视频）。目前，使用 Azure 管理门户编码并发布单文件 MP4 视频资产时，生成的 URL 将指向 Azure 媒体服务流式处理终结点。此更改不会影响 MP4 视频，此类视频直接上载到媒体服务，并且不经 Azure 媒体服务编码立即发布。
+
+目前，你可以采用如下两个选项来解决该问题。
+
+* 启用流式处理单位并使用动态打包将 .mp4 资产流式处理为平滑流式处理演示内容。
+
+* 创建一个 SAS URL 以下载（或渐进式播放）.mp4。有关如何创建 SAS 定位符的详细信息，请参阅[交付内容]。
 
 
 ### <a id="sept_14_GA_changes"></a>公开上市版本的新增功能/方案
@@ -564,31 +594,31 @@ Azure 媒体服务 .NET SDK 扩展是一组扩展方法和帮助器函数，可�
 [输入元数据]: http://msdn.microsoft.com/zh-cn/library/azure/dn783120.aspx
 [输出元数据]: http://msdn.microsoft.com/zh-cn/library/azure/dn783217.aspx
 [交付内容]: http://msdn.microsoft.com/zh-cn/library/azure/hh973618.aspx
-[使用 Azure 媒体索引器为媒体文件编制索引]: http://msdn.microsoft.com/zh-cn/library/azure/dn783455.aspx
+[使用 Azure 媒体索引器为媒体文件编制索引]: /documentation/articles/media-services-index-content
 [StreamingEndpoint]: http://msdn.microsoft.com/zh-cn/library/azure/dn783468.aspx
 [StreamingEndpont]: http://msdn.microsoft.com/zh-cn/library/azure/dn783468.aspx
-[使用 Azure 媒体服务实时流式处理]: http://msdn.microsoft.com/zh-cn/library/azure/dn783466.aspx
-[使用 AES-128 动态加密和密钥传递服务]: http://msdn.microsoft.com/zh-cn/library/azure/dn783457.aspx
-[使用 PlayReady 动态加密和许可证传递服务]: http://msdn.microsoft.com/zh-cn/library/azure/dn783467.aspx
+[使用 Azure 媒体服务实时流式处理]: /documentation/articles/media-services-manage-channels-overview
+[使用 AES-128 动态加密和密钥传递服务]: /documentation/articles/media-services-protect-with-aes128
+[使用 PlayReady 动态加密和许可证传递服务]: /documentation/articles/media-services-protect-with-drm
 [媒体服务 PlayReady 许可证模板概述]: http://msdn.microsoft.com/zh-cn/library/azure/dn783459.aspx
-[流式处理存储加密内容]: http://msdn.microsoft.com/zh-cn/library/azure/dn783451.aspx
+[流式处理存储加密内容]: /documentation/articles/media-services-dotnet-configure-asset-delivery-policy
 [Azure Management Portal]: https://manage.windowsazure.cn
-[动态打包]: http://msdn.microsoft.com/zh-cn/library/azure/jj889436.aspx
+[动态打包]: /documentation/articles/media-services-dynamic-packaging-overview
 [Nick Drouin 的博客]: http://blog-ndrouin.chinacloudsites.cn/hls-v3-new-old-thing/
-[使用 PlayReady 保护平滑流]: http://msdn.microsoft.com/zh-cn/library/azure/dn189154.aspx
+[使用 PlayReady 保护平滑流]: /documentation/articles/media-services-static-packaging
 [适用于 .NET 的媒体服务 SDK 中的重试逻辑]: http://msdn.microsoft.com/zh-cn/library/azure/dn745650.aspx
 [Grass Valley 宣布通过云对 EDIUS 7 进行流式处理]: http://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
-[控制媒体服务编码器输出文件名]: http://msdn.microsoft.com/zh-cn/library/azure/dn303341.aspx
-[创建覆盖]: http://msdn.microsoft.com/zh-cn/library/azure/dn640496.aspx
-[拼接视频片段]: http://msdn.microsoft.com/zh-cn/library/azure/dn640504.aspx
+[控制媒体服务编码器输出文件名]: /documentation/articles/media-services-azure-media-customize-ame-presets
+[创建覆盖]: /documentation/articles/media-services-azure-media-customize-ame-presets
+[拼接视频片段]: /documentation/articles/media-services-azure-media-customize-ame-presets
 [Azure 媒体服务 .NET SDK 3.0.0.1 和 3.0.0.2 版本]: http://www.gtrifonov.com/2014/02/07/windows-azure-media-services-.net-sdk-3.0.0.2-release/
 [Azure Active Directory 访问控制服务 (ACS)]: http://msdn.microsoft.com/zh-cn/library/hh147631.aspx
-[使用适用于 .NET 的媒体服务 SDK 连接到媒体服务]: http://msdn.microsoft.com/zh-cn/library/azure/jj129571.aspx
+[使用适用于 .NET 的媒体服务 SDK 连接到媒体服务]: /documentation/articles/media-services-dotnet-connect_programmatically
 [Azure 媒体服务 .NET SDK 扩展]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [azure-sdk-tools]: https://github.com/Azure/azure-sdk-tools
 [GitHub]: https://github.com/Azure/azure-sdk-for-media-services
-[跨多个存储帐户管理媒体服务资产]: http://msdn.microsoft.com/zh-cn/library/azure/dn271889.aspx
-[处理媒体服务作业通知]: http://msdn.microsoft.com/zh-cn/library/azure/dn261241.aspx
+[跨多个存储帐户管理媒体服务资产]: /documentation/articles/meda-services-managing-multiple-storage-accounts
+[处理媒体服务作业通知]: /documentation/articles/media-services-check-job-progress#check_progress_with_queues
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

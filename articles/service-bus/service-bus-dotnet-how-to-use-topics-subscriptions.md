@@ -50,7 +50,7 @@
 
 ### 使用云服务时配置连接字符串
 
-该服务配置机制是 Azure 云服务项目特有的，它使你能够从 Azure 管理门户动态更改配置设置，而无需重新部署你的应用程序。例如，向服务定义 (****.csdef**) 文件中添加 `Setting` 标签，如以下示例所示。
+该服务配置机制是 Azure 云服务项目特有的，它使你能够从 [Azure 经典门户][]动态更改配置设置，而无需重新部署你的应用程序。例如，向服务定义 (****.csdef**) 文件中添加 `Setting` 标签，如以下示例所示。
 
 ```
 <ServiceDefinition name="WindowsAzure1">
@@ -79,7 +79,7 @@
 </ServiceConfiguration>
 ```
 
-使用从 Azure 门户检索到的共享访问签名 (SAS) 密钥名称和密钥值，如上一节中所述。
+使用从 Azure 门户检索到的共享访问签名 (SAS) 密钥名称和密钥值，如上一部分中所述。
 
 ### 在使用 Azure 网站或 Azure 虚拟机时配置连接字符串
 
@@ -94,7 +94,7 @@
 </configuration>
 ```
 
-使用从管理门户检索到的 SAS 名称和密钥值，如上一部分中所述。
+使用从 Azure 经典门户检索到的 SAS 名称和密钥值，如上一部分中所述。
 
 ## 创建主题
 
@@ -184,7 +184,7 @@ namespaceManager.CreateSubscription("TestTopic",
    highMessagesFilter);
 ```
 
-同样，下面的示例将创建一个名为 **LowMessages** 的订阅，该订阅包含仅选择 **MessageNumber** 属性小于或等于 3 的消息的 [SqlFilter][]。
+类似地，以下示例创建一个名为 **LowMessages** 的订阅，其 [SqlFilter][] 只选择 **MessageNumber** 属性小于或等于 3 的消息：
 
 ```
 // Create a "LowMessages" filtered subscription.
@@ -214,7 +214,7 @@ TopicClient Client =
 Client.Send(new BrokeredMessage());
 ```
 
-发送到服务总线主题的消息是 [BrokeredMessage](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) 类的实例。[BrokeredMessage](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) 对象包含一组标准属性（如 [Label](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) 和 [TimeToLive](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)）、一个用来保存自定义应用程序特定属性的字典以及大量随机应用程序数据。应用程序可通过将任何可序列化对象传入到 [BrokeredMessage](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) 对象的构造函数中来设置消息的正文，然后将使用适当的 **DataContractSerializer** 序列化对象。或者，也可以提供 **System.IO.Stream**。
+发送到服务总线主题的消息是 [BrokeredMessage](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) 类的实例。[BrokeredMessage](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) 对象包含一组标准属性（如 [Label](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.label.aspx) 和 [TimeToLive](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.timetolive.aspx)）、一个用来保存自定义应用程序特定属性的词典以及大量随机应用程序数据。应用程序可通过将任何可序列化对象传入到 [BrokeredMessage](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx) 对象的构造函数中来设置消息的正文，然后将使用适当的 **DataContractSerializer** 序列化对象。或者，也可以提供 **System.IO.Stream**。
 
 以下示例演示了如何将五条测试消息发送到在前面的代码示例中获取的 **TestTopic** [TopicClient](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.topicclient.aspx) 对象。请注意，每条消息的 [MessageNumber](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.properties.aspx) 属性值因循环迭代而异（这将确定哪些订阅接收它）。
 
@@ -232,13 +232,13 @@ for (int i=0; i<5; i++)
 }
 ```
 
-服务总线主题支持[最大为 256 KB 的消息](/documentation/articles/service-bus-quotas)（标头最大为 64 KB，其中包括标准和自定义应用程序属性）。一个主题中包含的消息数量不受限制，但消息的总大小受限制。此主题大小是在创建时定义的，上限为 5 GB。如果启用了分区，则上限更高。有关详细信息，请参阅[分区消息实体](https://msdn.microsoft.com/zh-cn/library/azure/dn520246.aspx)。
+服务总线主题支持[最大为 256 Kb 的消息](/documentation/articles/service-bus-quotas)（标头最大为 64 Kb，其中包括标准和自定义应用程序属性）。一个主题中包含的消息数量不受限制，但消息的总大小受限制。此主题大小是在创建时定义的，上限为 5 GB。如果启用了分区，则上限更高。有关详细信息，请参阅[分区消息实体](https://msdn.microsoft.com/zh-cn/library/azure/dn520246.aspx)。
 
 ## 如何从订阅接收消息
 
 从订阅接收消息的建议方法是使用 [SubscriptionClient](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) 对象。[SubscriptionClient](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.subscriptionclient.aspx) 对象可在两种不同模式下工作：[ReceiveAndDelete 和 PeekLock](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.receivemode.aspx)。
 
-当使用 **ReceiveAndDelete** 模式时，接收是一个单步操作，即，当服务总线接收订阅中的消息读取请求时，它会将消息标记为“正在使用”并将其返回给应用程序。**ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许出现故障时不处理消息的方案。为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。由于服务总线会将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
+当使用 **ReceiveAndDelete** 模式时，接收是一个单步操作 - 即，当服务总线接收订阅中的消息读取请求时，它会将消息标记为“正在使用”并将其返回给应用程序。**ReceiveAndDelete** 模式是最简单的模式，最适合应用程序允许出现故障时不处理消息的方案。为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。由于服务总线会将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
 
 在 **PeekLock** 模式（这是默认模式）下，接收过程变成了一个两阶段操作，这样就可以支持无法容忍遗漏消息的应用程序。当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。应用程序完成消息处理（或可靠地存储消息以供将来处理）后，它将通过对收到的消息调用 [Complete](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 完成接收过程的第二个阶段。当服务总线发现 **Complete** 调用时，它会将消息标记为“正在使用”并将其从订阅中删除。
 
@@ -313,7 +313,7 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 -   构建向服务总线队列发送消息以及从中接收消息的工作应用程序：[服务总线中转消息传送 .NET 教程][]。
 -   服务总线示例：从 [Azure 示例][]下载，或参阅[概述](/documentation/articles/service-bus-samples)。
 
-  [Azure portal]: http://manage.windowsazure.cn
+  [Azure 经典门户]: http://manage.windowsazure.cn
 
   [7]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/getting-started-multi-tier-13.png
 
@@ -323,4 +323,4 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
   [服务总线中转消息传送 .NET 教程]: /documentation/articles/service-bus-brokered-tutorial-dotnet
   [Azure 示例]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

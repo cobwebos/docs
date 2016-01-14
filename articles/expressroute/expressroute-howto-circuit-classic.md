@@ -9,14 +9,14 @@
    tags="azure-service-management"/>
 <tags
    ms.service="expressroute"
-   ms.date="11/05/2015"
+   ms.date="12/08/2015"
    wacn.date=""/>
 
 # 使用 PowerShell 创建和修改 ExpressRoute 线路
 
 > [AZURE.SELECTOR]
-[PowerShell - Classic](/documentation/articles/expressroute-howto-circuit-classic)
-[PowerShell - Resource Manager](/documentation/articles/expressroute-howto-circuit-arm)
+[PowerShell - 经典](/documentation/articles/expressroute-howto-circuit-classic)
+[PowerShell - 资源管理器](/documentation/articles/expressroute-howto-circuit-arm)
 
 本文将指导你执行相关步骤，以便使用 PowerShell cmdlet 和经典部署模型创建 ExpressRoute 线路。下面的步骤还将向你显示如何查看状态，以及如何更新、删除和预配 ExpressRoute 线路。
 
@@ -104,11 +104,11 @@
 		$ServiceProvider = "Equinix"
 		$Location = "Silicon Valley"
 
-		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Standard
+		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Standard -BillingType MeteredData 
 
 	或者，如果你想要通过高级版外接程序创建 ExpressRoute 线路，则可使用下述示例。请参阅 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)页，了解有关高级版外接程序的更多详细信息。
 
-		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Premium
+		New-AzureDedicatedCircuit -CircuitName $CircuitName -ServiceProviderName $ServiceProvider -Bandwidth $Bandwidth -Location $Location -sku Premium - BillingType MeteredData
 	
 	
 	响应将包含服务密钥。你可以通过运行以下命令获取所有这些参数的详细说明。
@@ -282,7 +282,7 @@
 
 你的线路现已禁用高级版外接程序。
 
->[AZURE.IMPORTANT]如果你使用的资源超出了标准线路允许的范围，此操作可能会失败。
+>[AZURE.IMPORTANT] 如果你使用的资源超出了标准线路允许的范围，此操作可能会失败。
 >
 >- 从高级版降级到标准版之前，你必须确保链接到线路的虚拟机的数目少于 10。否则，你的更新请求会失败，将按高级版费率向你收费。
 - 你必须取消其他地理政治区域的所有虚拟网络的链接。否则，你的更新请求会失败，将按高级版费率向你收费。
@@ -306,7 +306,7 @@
 
 将已在 Microsoft 一侧估计好线路的大小。你必须联系连接提供商，让他们在那一边根据此更改更新配置。请注意，我们将从现在开始按照已更新的带宽选项为你计费。
 
->[AZURE.IMPORTANT]但是，你无法在不中断的情况下降低 ExpressRoute 线路的带宽。带宽降级需要取消对 ExpressRoute 线路的预配，然后重新预配新的 ExpressRoute 线路。
+>[AZURE.IMPORTANT] 但是，你无法在不中断的情况下降低 ExpressRoute 线路的带宽。带宽降级需要取消对 ExpressRoute 线路的预配，然后重新预配新的 ExpressRoute 线路。
 
 ##  删除和取消预配 ExpressRoute 线路
 
@@ -323,6 +323,5 @@
 ## 后续步骤
 
 - [配置路由](/documentation/articles/expressroute-howto-routing-classic)
-- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic) 
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

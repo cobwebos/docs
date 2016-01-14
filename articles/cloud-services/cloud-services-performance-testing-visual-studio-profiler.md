@@ -1,22 +1,22 @@
 <properties 
-	pageTitle="在计算模拟器中本地分析云服务" 
+	pageTitle="在计算模拟器中本地分析云服务 | Microsoft Azure" 
 	services="cloud-services"
 	description="使用 Visual Studio 探查器调查云服务中的性能问题" 
 	documentationCenter=""
-	authors="patshea123" 
+	authors="TomArcher" 
 	manager="douge" 
-	editor="tglee"
+	editor=""
 	tags="" 
 	/>
 
 <tags 
 	ms.service="cloud-services" 
-	ms.date="09/14/2015" 
+	ms.date="12/21/2015" 
 	wacn.date=""/>
 
 # 在 Azure 计算模拟器中使用 Visual Studio 探查器来本地测试云服务的性能
 
-可通过各种工具和技术来测试云服务的性能。在将云服务发布到 Azure 后，可以让 Visual Studio 收集分析数据，然后在本地进行分析，如[分析 Azure 应用程序][1]中所述。也可以使用诊断来跟踪各种性能计数器，如[在 Azure 中使用性能计数器][2]中所述。此外，在将应用程序部署到云之前，您可能需要在计算模拟器中本地分析应用程序。
+可通过各种工具和技术来测试云服务的性能。在将云服务发布到 Azure 后，可以让 Visual Studio 收集分析数据，然后在本地进行分析。也可以使用诊断来跟踪各种性能计数器，如[在 Azure 中使用性能计数器][2]中所述。此外，在将应用程序部署到云之前，您可能需要在计算模拟器中本地分析应用程序。
 
 本文包含了 CPU 采样分析方法，可在模拟器中本地执行该方法。CPU 采样是一种干预性不是很强的分析方法。探查器将按照指定的采样时间间隔拍摄调用堆栈的快照。将收集一段时间内的数据并将其显示在报告中。此分析方法倾向于指示在具有大量计算的应用程序中执行大多数 CPU 工作的位置。这使你能够侧重于应用程序在其上花费最多时间的“热路径”。
 
@@ -164,7 +164,6 @@ Visual Studio 探查器不支持在模拟器中检测 Azure 二进制文件，�
 
 
 
-[1]: http://msdn.microsoft.com/zh-cn/library/azure/hh369930.aspx
 [2]: http://msdn.microsoft.com/zh-cn/library/azure/hh411542.aspx
 [3]: http://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
@@ -180,5 +179,6 @@ Visual Studio 探查器不支持在模拟器中检测 Azure 二进制文件，�
 [15]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally013.png
 [16]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally012.png
 [17]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally08.png
+ 
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0104_2016-->

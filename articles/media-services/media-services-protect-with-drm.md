@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="11/11/2015"
+	ms.date="12/17/2015"
 	wacn.date=""/>
 
 
@@ -18,6 +18,7 @@
 > [AZURE.SELECTOR]
 - [.NET](/documentation/articles/media-services-protect-with-drm)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+- [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 
 Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) 许可证保护的加密 MPEG-DASH 流、平滑流式处理流和 HTTP 实时流式处理 (HLS) 流。它还允许你传送通过 Widevine DRM 许可证加密的 DASH 流。PlayReady 和 Widevine 都是按通用加密 (ISO/IEC 23001-7 CENC) 规范加密的。你可以通过 [AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/)（从版本 3.5.1 开始）或 REST API 来配置 AssetDeliveryConfiguration 以使用 Widevine。
 
@@ -25,7 +26,9 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 
 从媒体服务 .NET SDK 版本 3.5.2 开始，媒体服务还允许你配置 Widevine 许可证模板并获取 Widevine 许可证。
 
-你还可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)有关详细信息，请参阅：与 [castLabs](/documentation/articles/media-services-castlabs-integration) 集成。
+>[AZURE.NOTE]Azure 媒体服务提供的 Widevine 许可证传送服务是预览版。有关详细信息，请参阅[此博客](http://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)。
+
+你还可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。有关详细信息，请参阅：与 [castLabs](/documentation/articles/media-services-castlabs-integration) 集成。
 
 媒体服务支持通过多种方式对发出密钥请求的用户进行授权。内容密钥授权策略可能受到一种或多种授权限制：开放或令牌限制。令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。媒体服务支持采用[简单 Web 令牌](https://msdn.microsoft.com/zh-cn/library/gg185950.aspx#BKMK_2) (SWT) 格式和 [JSON Web 令牌](https://msdn.microsoft.com/zh-cn/library/gg185950.aspx#BKMK_3) (JWT) 格式的令牌。有关详细信息，请参阅“配置内容密钥授权策略”。
 
@@ -62,6 +65,8 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 
 如果你添加或更新资产的传送策略，则必须删除关联的定位符（如果有）并创建新定位符。
 
+使用 Widevine 和 Azure 媒体服务加密时的限制：目前不支持使用多个内容密钥。
+
 ##创建资产并将文件上载到资产
 
 为了对视频进行管理、编码和流式处理，必须首先将内容上载到 Microsoft Azure 媒体服务中。上载完成后，相关内容即安全地存储在云中供后续处理和流式处理。
@@ -70,12 +75,12 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 
 ##将包含文件的资产编码为自适应比特率 MP4 集。
 
-使用动态加密时，你只需创建包含一组多码率 MP4 文件或多码率平滑流源文件的资产。然后，按需流式处理服务器会确保你以选定的协议按清单和分段请求中的指定格式接收流。因此，你只需以单一存储格式存储文件并为其付费，然后 Media Services 服务就会基于客户端的请求构建并提供相应响应。有关详细信息，请参阅[动态打包概述](/documentation/articles/media-services-dynamic-packaging-overview)主题。
+使用动态加密时，你只需创建包含一组多码率 MP4 文件或多码率平滑流源文件的资产。然后，按需流式处理服务器会确保你以选定的协议按清单和分段请求中的指定格式接收流。因此，你只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。有关详细信息，请参阅[动态打包概述](/documentation/articles/media-services-dynamic-packaging-overview)主题。
 
 有关如何编码的说明，请参阅[如何使用媒体编码器标准版对资产进行编码](/documentation/articles/media-services-dotnet-encode-with-media-encoder-standard)。
 	
 
-##<a id="create_contentkey"></a>创建内容密钥并将其与编码资产相关联。
+##<a id="create_contentkey"></a>创建内容密钥并将其与编码资产相关联
 
 在媒体服务中，内容密钥包含用于加密资产的密钥。
 
@@ -84,7 +89,7 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 
 ##<a id="configure_key_auth_policy"></a>配置内容密钥授权策略
 
-Media Services 支持通过多种方式对发出密钥请求的用户进行身份验证。你必须配置内容密钥授权策略，客户端（播放器）必须遵守该策略，才能将密钥传送到客户端。内容密钥授权策略可能受到一种或多种授权限制：开放或令牌限制。
+媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。你必须配置内容密钥授权策略，客户端（播放器）必须遵守该策略，才能将密钥传送到客户端。内容密钥授权策略可能受到一种或多种授权限制：开放或令牌限制。
 
 有关详细信息，请参阅[配置内容密钥授权策略](/documentation/articles/media-services-dotnet-configure-content-key-auth-policy#playready-dynamic-encryption)。
 
@@ -169,7 +174,7 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
 		using Microsoft.WindowsAzure.MediaServices.Client.Widevine;
 		using Newtonsoft.Json;
-
+		
 		namespace DynamicEncryptionWithDRM
 		{
 		    class Program
@@ -248,7 +253,7 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		
 		            // You can use the http://amsplayer.azurewebsites.net/azuremediaplayer.html player to test streams.
 		            // Note that DASH works on IE 11 (via PlayReady), Edge (via PlayReady), Chrome (via Widevine).
-		             
+		
 		            string url = GetStreamingOriginLocator(encodedAsset);
 		            Console.WriteLine("Encrypted DASH URL: {0}/manifest(format=mpd-time-csf)", url);
 		
@@ -290,31 +295,45 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		        }
 		
 		
-		        static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset inputAsset)
+		        static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
 		        {
-		            var encodingPreset = "H264 Adaptive Bitrate MP4 Set 720p";
+		            // Declare a new job.
+		            IJob job = _context.Jobs.Create("Media Encoder Standard Job");
+		            // Get a media processor reference, and pass to it the name of the 
+		            // processor to use for the specific task.
+		            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 		
-		            IJob job = _context.Jobs.Create(String.Format("Encoding into Mp4 {0} to {1}",
-		                                    inputAsset.Name,
-		                                    encodingPreset));
+		            // Create a task with the encoding details, using a string preset.
+		            // In this case "H264 Multiple Bitrate 720p" preset is used.
+		            ITask task = job.Tasks.AddNew("My encoding task",
+		                processor,
+		                "H264 Multiple Bitrate 720p",
+		                TaskOptions.None);
 		
-		            var mediaProcessors =
-		                _context.MediaProcessors.Where(p => p.Name.Contains("Media Encoder")).ToList();
-		
-		            var latestMediaProcessor =
-		                mediaProcessors.OrderBy(mp => new Version(mp.Version)).LastOrDefault();
-		
-		
-		
-		            ITask encodeTask = job.Tasks.AddNew("Encoding", latestMediaProcessor, encodingPreset, TaskOptions.None);
-		            encodeTask.InputAssets.Add(inputAsset);
-		            encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset), AssetCreationOptions.StorageEncrypted);
+		            // Specify the input asset to be encoded.
+		            task.InputAssets.Add(asset);
+		            // Add an output asset to contain the results of the job. 
+		            // This output is specified as AssetCreationOptions.None, which 
+		            // means the output asset is not encrypted. 
+		            task.OutputAssets.AddNew("Output asset",
+		                AssetCreationOptions.None);
 		
 		            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
 		            job.Submit();
 		            job.GetExecutionProgressTask(CancellationToken.None).Wait();
 		
 		            return job.OutputMediaAssets[0];
+		        }
+		
+		        private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+		        {
+		            var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+		            ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+		
+		            if (processor == null)
+		                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+		
+		            return processor;
 		        }
 		
 		
@@ -343,14 +362,14 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		            // and create authorization policy          
 		
 		            List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
-		            {
-		                new ContentKeyAuthorizationPolicyRestriction
-		                {
-		                    Name = "Open",
-		                    KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
-		                    Requirements = null
-		                }
-		            };
+		                    {
+		                        new ContentKeyAuthorizationPolicyRestriction
+		                        {
+		                            Name = "Open",
+		                            KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
+		                            Requirements = null
+		                        }
+		                    };
 		
 		            // Configure PlayReady and Widevine license templates.
 		            string PlayReadyLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
@@ -363,8 +382,8 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		                        restrictions, PlayReadyLicenseTemplate);
 		
 		            IContentKeyAuthorizationPolicyOption WidevinePolicy =
-		                _context.ContentKeyAuthorizationPolicyOptions.Create("", 
-		                    ContentKeyDeliveryType.Widevine, 
+		                _context.ContentKeyAuthorizationPolicyOptions.Create("",
+		                    ContentKeyDeliveryType.Widevine,
 		                    restrictions, WidevineLicenseTemplate);
 		
 		            IContentKeyAuthorizationPolicy contentKeyAuthorizationPolicy = _context.
@@ -385,14 +404,14 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		            string tokenTemplateString = GenerateTokenRequirements();
 		
 		            List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
-		            {
-		                new ContentKeyAuthorizationPolicyRestriction
-		                {
-		                    Name = "Token Authorization Policy",
-		                    KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
-		                    Requirements = tokenTemplateString,
-		                }
-		            };
+		                    {
+		                        new ContentKeyAuthorizationPolicyRestriction
+		                        {
+		                            Name = "Token Authorization Policy",
+		                            KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
+		                            Requirements = tokenTemplateString,
+		                        }
+		                    };
 		
 		            // Configure PlayReady and Widevine license templates.
 		            string PlayReadyLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
@@ -469,7 +488,7 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		            // any restrictions that must be put in place when using a given output.
 		            // For example, if the DigitalVideoOnlyContentRestriction is enabled, 
 		            //then the DRM runtime will only allow the video to be displayed over digital outputs 
-		            //(analog video outputs won’t be allowed to pass the content).
+		            //(analog video outputs won't be allowed to pass the content).
 		
 		            //IMPORTANT: These types of restrictions can be very powerful but can also affect the consumer experience. 
 		            // If the output protections are configured too restrictive, 
@@ -491,13 +510,13 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		                allowed_track_types = AllowedTrackTypes.SD_HD,
 		                content_key_specs = new[]
 		                {
-		                    new ContentKeySpecs
-		                    {
-		                        required_output_protection = new RequiredOutputProtection { hdcp = Hdcp.HDCP_NONE},
-		                        security_level = 1,
-		                        track_type = "SD"
-		                    }
-		                },
+		                            new ContentKeySpecs
+		                            {
+		                                required_output_protection = new RequiredOutputProtection { hdcp = Hdcp.HDCP_NONE},
+		                                security_level = 1,
+		                                track_type = "SD"
+		                            }
+		                        },
 		                policy_overrides = new
 		                {
 		                    can_play = true,
@@ -517,8 +536,8 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		            Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
 		                new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
 		                {
-		                    {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
-		                    {AssetDeliveryPolicyConfigurationKey.WidevineLicenseAcquisitionUrl, widevineURl.ToString()},
+		                            {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
+		                            {AssetDeliveryPolicyConfigurationKey.WidevineLicenseAcquisitionUrl, widevineURl.ToString()},
 		
 		                };
 		
@@ -551,6 +570,7 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		                                         FirstOrDefault();
 		
 		            // Create a 30-day readonly access policy. 
+                	// You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.            
 		            IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
 		                TimeSpan.FromDays(30),
 		                AccessPermissions.Read);
@@ -587,7 +607,6 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 		    }
 		}
 
-
 [AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
 
 
@@ -595,4 +614,6 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 
 [使用 AMS 配置 Widevine 打包](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
 
-<!---HONumber=Mooncake_1221_2015-->
+[特此宣布已在 Azure 媒体服务中推出 Google Widevine 许可证传送服务公共预览版](http://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)
+
+<!---HONumber=Mooncake_0104_2016-->

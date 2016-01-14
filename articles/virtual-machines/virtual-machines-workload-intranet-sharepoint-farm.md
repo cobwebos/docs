@@ -6,24 +6,24 @@
 	authors="JoeDavies-MSFT"
 	manager="timlt"
 	editor=""
-	tags="azure-service-management"/>
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="10/29/2015"
+	ms.date="12/17/2015"
 	wacn.date=""/>
 
 # Azure 基础结构服务工作负荷：Intranet SharePoint 场
 
-[AZURE.INCLUDE [learn-about-deployment-models-classic-include](../includes/learn-about-deployment-models-classic-include.md)]资源管理器部署模型。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
 
 在 Microsoft Azure 中设置你的第一个或下一个 SharePoint 场，并利用配置的简便性和相关功能快速扩展场以包括关键功能的新增能力或优化。许多 SharePoint 场从标准的高度可用的三层配置扩展为可能具有十几个或更多服务器的场，该场针对性能或单独的角色进行了优化，如分布式缓存或搜索。
 
-借助 Azure 基础结构服务的虚拟机和虚拟网络功能，你可以快速部署并运行以透明方式连接到你的本地网络的 SharePoint 场。例如，可以设置以下网络。
+借助 Azure 基础结构服务的虚拟机和虚拟网络功能，你可以快速部署并运行以透明方式连接到你的本地网络的 SharePoint 场。例如，可以设置以下内容：
 
 ![](./media/virtual-machines-workload-intranet-sharepoint-farm/workload-spsqlao.png)
 
-由于 Azure 虚拟网络是你的本地网络的扩展（其中所有正确的命名和通信路由已到位），因此你的用户可以就将像它位于本地数据中心内一样以相同的方式访问它。
+由于 Azure 虚拟网络是你的本地网络的扩展（其中所有正确的命名和通信路由已到位），因此你的用户可以就像它位于本地数据中心内一样以相同的方式访问它。
 
 此配置允许你通过添加新 Azure 虚拟机轻松地扩展 SharePoint 场，其中硬件和维护的持续成本将低于在数据中心中运行等效的场。
 
@@ -40,7 +40,7 @@
 - 仅限云的虚拟网络
 - 跨界虚拟网络
 
-可以使用 [MSDN 订阅](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/)或 [Azure 试用版订阅](http://azure.microsoft.com/pricing/free-trial/)免费创建这些开发/测试环境。
+可以使用 [Visual Studio 订阅](http://azure.microsoft.com/pricing/member-offers/msdn-benefits/)或 [Azure 试用版订阅](/pricing/1rmb-trial/)免费创建这些开发/测试环境。
 
 ### 仅限云的虚拟网络
 
@@ -58,7 +58,7 @@
 
 ## 部署 Azure 中托管的 Intranet SharePoint 场
 
-以下示例显示了正常运行的高可用性 Intranet SharePoint 场的基线代表配置。
+正常运行的高可用性 Intranet SharePoint 场的基线代表配置如下所示：
 
 ![](./media/virtual-machines-workload-intranet-sharepoint-farm/workload-spsqlao.png)
 
@@ -66,58 +66,19 @@
 
 - 在 Web 层、应用程序层和数据库层具有两个服务器的 Intranet SharePoint 场。
 - 在群集中包含两个 SQL Server 和一个多数节点计算机的 SQL Server AlwaysOn 可用性组配置。
-- 具有两个副本域控制器的虚拟网络中的 Azure Active Directory。
+- 本地 Active Directory 域的两个副本域控制器。
 
 若要以信息图形式查看此配置，请参阅[具有 SQL Server AlwaysOn 的 SharePoint](http://go.microsoft.com/fwlink/?LinkId=394788)。
-
-### 材料清单
-
-此基线配置需要以下一组 Azure 服务和组件：
-
-- 九个虚拟机。
-- 四个用于域控制器和 SQL Server 的额外数据磁盘。
-- 三个云服务。
-- 四个可用性集。
-- 一个跨界虚拟网络。
-- 一个存储帐户。
-- 一个 Azure 订阅。
-
-下面是此配置的虚拟机及其默认大小。
-
-项目 | 虚拟机说明 | 库映像 | 默认大小
---- | --- | --- | ---
-1\. | 第一个域控制器 | Windows Server 2012 R2 Datacenter | A2（中）
-2\. | 第二个域控制器 | Windows Server 2012 R2 Datacenter | A2（中）
-3\. | 第一个数据库服务器 | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | A5
-4\. | 第二个数据库服务器 | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | A5
-5\. | 群集多数节点 | Windows Server 2012 R2 Datacenter | A1（小）
-6\. | 第一个 SharePoint 应用程序服务器 | Microsoft SharePoint Server 2013 试用版 - Windows Server 2012 R2 | A4（超大）
-7\. | 第二个 SharePoint 应用程序服务器 | Microsoft SharePoint Server 2013 试用版 - Windows Server 2012 R2 | A4（超大）
-8\. | 第一个 SharePoint Web 服务器 | Microsoft SharePoint Server 2013 试用版 - Windows Server 2012 R2 | A4（超大）
-9\. | 第二个 SharePoint Web 服务器 | Microsoft SharePoint Server 2013 试用版 - Windows Server 2012 R2 | A4（超大）
-
-若要计算此配置的估计成本，请参阅 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)。
-
-1. 在“模块”中，单击“计算”，然后单击“虚拟机”相应次以创建包含九个虚拟机的列表。
-2. 对于每个虚拟机，请选择：
-	- 所需的区域
-	- 对于类型，选择 **Windows**
-	- 对于定价层，选择“标准”
-	- 上一个表中的默认大小，或者在**实例大小**中选择所需的大小
-
-> [AZURE.NOTE]Azure 定价计算器不包括运行 SQL Server 2014 Enterprise 的两个虚拟机的 SQL Server 许可证的额外成本。有关详细信息，请参阅[虚拟机定价-SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)。
-
-### 部署阶段
 
 若要部署此配置，请使用以下过程：
 
 - 阶段 1：配置 Azure。
 
-	使用 Azure 门户和 Azure PowerShell 创建存储帐户、云服务和跨界虚拟网络。有关详细的配置步骤，请参阅[阶段 1](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase1)。
+	使用 Azure PowerShell 创建存储帐户、可用性集和跨界虚拟网络。有关详细的配置步骤，请参阅[阶段 1](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase1)。
 
 - 阶段 2：配置域控制器。
 
-	为虚拟网络配置两个 Azure Active Directory 副本域控制器和 DNS 设置。有关详细的配置步骤，请参阅[阶段 2](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase2)。
+	为虚拟网络配置两个 Active Directory 副本域控制器和 DNS 设置。有关详细的配置步骤，请参阅[阶段 2](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase2)。
 
 - 阶段 3：配置 SQL Server 基础结构。
 
@@ -133,20 +94,8 @@
 
 配置后，你可以按照[适用于 SharePoint 2013 的 Microsoft Azure 体系结构](http://technet.microsoft.com/library/dn635309.aspx)中的指南扩展此 SharePoint 场。
 
-## 其他资源
+## 后续步骤
 
-[在 Azure 中通过 SQL Server AlwaysOn 可用性组部署 SharePoint](/documentation/articles/virtual-machines-workload-deploy-spsqlao-overview)
+- 在深入了解配置之前，获取生产工作负荷的[概述](/documentation/articles/virtual-machines-workload-intranet-sharepoint-overview)。
 
-[在混合云中设置 SharePoint Intranet 场用于测试](../virtual-network/virtual-networks-setup-sharepoint-hybrid-cloud-testing.md)
-
-[适用于 SharePoint 2013 的 Microsoft Azure 体系结构](https://technet.microsoft.com/library/dn635309.aspx)
-
-[具有 SQL Server AlwaysOn 的 SharePoint 信息图](http://go.microsoft.com/fwlink/?LinkId=394788)
-
-[Azure 基础结构服务中托管的 SharePoint 场](/documentation/articles/virtual-machines-sharepoint-infrastructure-services)
-
-[Azure 基础结构服务实施准则](/documentation/articles/virtual-machines-infrastructure-services-implementation-guidelines)
-
-[Azure 基础结构服务工作负荷：高可用性业务线应用程序](/documentation/articles/virtual-machines-workload-high-availability-lob-application)
-
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

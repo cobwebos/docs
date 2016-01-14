@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="10/15/2015" 
+	ms.date="11/19/2015" 
 	wacn.date=""/>
 
 # 将 Azure Multi-Factor Authentication 与 Azure AD 帐户配合使用时的安全最佳实践
@@ -38,7 +38,8 @@
 
 ![Multi-Factor Auth 提供程序](./media/multi-factor-authentication-security-best-practices/authprovider.png)
 
-如果你没有 Azure AD Premium 或 Enterprise Mobility Suite，则在云中采用 Azure MFA 的第一个建议步骤是创建 MFA Auth 提供程序。尽管 MFA 默认可供拥有 Azure Active Directory 的全局管理员使用，但为组织部署 MFA 时，需要将 Multi-Factor Authentication 功能扩展到所有用户，而完成此操作需要 Multi-Factor Auth 提供程序。选择 Auth 提供程序时，需要选择一个目录并注意以下事项：
+如果你没有 Azure AD Premium 或 Enterprise Mobility Suite，则在云中采用 Azure MFA 的第一个建议步骤是创建 MFA Auth 提供程序。尽管 MFA 默认可供拥有 Azure Active Directory 的全局管理员使用，但为组织部署 MFA 时，需要将 Multi-Factor Authentication 功能扩展到所有用户，而完成此操作需要 Multi-Factor Auth 提供程序。 
+选择 Auth 提供程序时，需要选择一个目录并注意以下事项：
 
 - 无需 Azure AD 目录即可创建 Multi-Factor Auth 提供程序。 
 - 如果你想要将 Multi-Factor Authentication扩展到你的所有用户和/或希望全局管理员能够利用管理门户、自定义问候语和报告等功能，则需要将 Multi-Factor Authentication 提供程序与 Azure AD 目录关联。
@@ -56,7 +57,8 @@
 
 ### 可支持性
 
-由于大多数用户习惯只使用密码进行身份验证，因此你的公司必须让所有用户了解此过程。如果用户熟悉该过程，则他们就不会在出现 MFA 相关的小问题时经常呼叫技术支持。但是，在某些情况下，需要暂时禁用 MFA。使用以下指导原则了解如何处理这种情况：
+由于大多数用户习惯只使用密码进行身份验证，因此你的公司必须让所有用户了解此过程。如果用户熟悉该过程，则他们就不会在出现 MFA 相关的小问题时经常呼叫技术支持。 
+但是，在某些情况下，需要暂时禁用 MFA。使用以下指导原则了解如何处理这种情况：
 
 - 确保你的技术支持人员经过培训，可以处理移动应用或电话未收到通知或来电，以及由于上述原因使用户无法登录的情况。他们可以启用“一次性跳过”选项，让用户通过“跳过”Multi-Factor Authentication 来进行身份验证，不过只能跳过一次。跳过是暂时性的，将在指定的秒数后过期。 
 - 如果需要，可以使用 Azure MFA 中的受信任 IP 功能。此功能允许托管或联合租户的管理员跳过对从公司本地 Intranet 登录的用户进行的 Multi-Factor Authentication。这些功能适用于拥有 Azure AD Premium、Enterprise Mobility Suite 或 Azure Multi-Factor Authentication 许可证的 Azure AD 租户。
@@ -66,10 +68,11 @@
 如果你的公司决定利用自己的基础结构来启用 MFA，则需要在本地部署 Azure Multi-factor Authentication 服务器。下图显示了 MFA 服务器的组件：
 
 ![Multi-Factor Auth 提供程序](./media/multi-factor-authentication-security-best-practices/server.png)
-*默认未安装 **已安装但默认未启用
+*默认未安装* 已安装但默认未启用
 
 
-Azure Multi-Factor Authentication 服务器可用于保护 Azure AD 帐户所访问的云资源和本地资源。但是，这只能使用联合身份验证来实现。也就是说，你必须安装 AD FS 并将它与 Azure AD 租户联合。设置 Multi-Factor Authentication 服务器时，请注意以下事项：
+Azure Multi-Factor Authentication 服务器可用于保护 Azure AD 帐户所访问的云资源和本地资源。但是，这只能使用联合身份验证来实现。也就是说，你必须安装 AD FS 并将它与 Azure AD 租户联合。 
+设置 Multi-Factor Authentication 服务器时，请注意以下事项：
 
 - 如果你使用 Active Directory 联合身份验证服务来保护 Azure AD 资源，则第一重身份验证将使用 AD FS 在本地执行，第二重身份验证遵循声明在本地执行。
 - Azure Multi-Factor Authentication 服务器不一定非要安装在 AD FS 联合服务器上，但必须在运行 AD FS 的 Windows Server 2012 R2 上安装适用于 AD FS 的 Multi-Factor Authentication 适配器。你可以将服务器安装在其他计算机上（只要它是受支持的版本），并将 AD FS 适配器单独安装在 AD FS 联合服务器上。有关如何单独安装适配器的说明，请参阅以下过程。
@@ -114,8 +117,8 @@ Azure Multi-Factor Authentication 服务器可用于保护 Azure AD 帐户所访
 ## 其他资源
 尽管本文重点介绍了 Azure MFA 的一些最佳实践，但其他一些资源也可以帮助你规划 MFA 的部署。以下列表提供了在此过程中也许能够帮到你的一些重要文章：
 
-- [Azure Multi-Factor Authentication 中的报告](multi-factor-authentication-manage-reports.md)
-- [Azure Multi-Factor Authentication 的设置体验](multi-factor-authentication-end-user-first-time.md)
-- [Azure Multi-Factor Authentication 常见问题](multi-factor-authentication-faq.md)
+- [Azure Multi-Factor Authentication 中的报告](/documentation/articles/multi-factor-authentication-manage-reports)
+- [Azure Multi-Factor Authentication 的设置体验](/documentation/articles/multi-factor-authentication-end-user-first-time)
+- [Azure Multi-Factor Authentication 常见问题](/documentation/articles/multi-factor-authentication-faq)
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

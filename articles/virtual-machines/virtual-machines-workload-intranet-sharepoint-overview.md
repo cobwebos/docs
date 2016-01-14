@@ -6,18 +6,18 @@
 	authors="JoeDavies-MSFT"
 	manager="timlt"
 	editor=""
-	tags="azure-service-management"/>
+	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="10/20/2015"
+	ms.date="12/17/2015"
 	wacn.date=""/>
 
 # 在 Azure 中通过 SQL Server AlwaysOn 可用性组部署 SharePoint
 
-[AZURE.INCLUDE [learn-about-deployment-models-classic-include](../includes/learn-about-deployment-models-classic-include.md)]资源管理器部署模型。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
 
-本主题包含有关使用经典部署模型通过 SQL Server AlwaysOn 可用性组部署仅限 Intranet 的 SharePoint 2013 场的分步说明的链接。该场包含以下计算机：
+本主题包含有关通过 SQL Server AlwaysOn 可用性组部署仅限 Intranet 的 SharePoint 2013 场的分步说明的链接。该场包含以下计算机：
 
 - 两个 SharePoint Web 服务器
 - 两个 SharePoint 应用程序服务器
@@ -25,11 +25,49 @@
 - 一个群集多数节点服务器
 - 两个域控制器
 
-以下是包含每个服务器的占位符名称的配置：
+这是包含每个服务器的占位符名称的配置。
 
 ![](./media/virtual-machines-workload-intranet-sharepoint-overview/workload-spsqlao_05.png)
 
 为每个角色配置两台计算机可确保高可用性。所有虚拟机都在单个区域中。用于特定角色的每个虚拟机组在其自己的可用性集中。
+
+## 材料清单
+
+此基线配置需要以下一组 Azure 服务和组件：
+
+- 九个虚拟机。
+- 四个用于域控制器和 SQL Server 的额外数据磁盘。
+- 四个可用性集。
+- 一个跨界虚拟网络。
+- 一个存储帐户。
+- 一个 Azure 订阅。
+
+下面是此配置的虚拟机及其默认大小。
+
+项目 | 虚拟机说明 | 库映像 | 默认大小
+--- | --- | --- | ---
+1\. | 第一个域控制器 | Windows Server 2012 R2 Datacenter | A2
+2\. | 第二个域控制器 | Windows Server 2012 R2 Datacenter | A2
+3\. | 第一个数据库服务器 | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | A5
+4\. | 第二个数据库服务器 | Microsoft SQL Server 2014 Enterprise - Windows Server 2012 R2 | A5
+5\. | 群集多数节点 | Windows Server 2012 R2 Datacenter | A1
+6\. | 第一个 SharePoint 应用程序服务器 | Microsoft SharePoint Server 2013 试用版 - Windows Server 2012 R2 | A4
+7\. | 第二个 SharePoint 应用程序服务器 | Microsoft SharePoint Server 2013 试用版 - Windows Server 2012 R2 | A4
+8\. | 第一个 SharePoint Web 服务器 | Microsoft SharePoint Server 2013 试用版 - Windows Server 2012 R2 | A4
+9\. | 第二个 SharePoint Web 服务器 | Microsoft SharePoint Server 2013 试用版 - Windows Server 2012 R2 | A4
+
+若要计算此配置的估计成本，请参阅 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)。
+
+1. 在“模块”中，单击“计算”，然后单击“虚拟机”相应次以创建包含九个虚拟机的列表。
+2. 对于每个虚拟机，请选择：
+	- 所需的区域
+	- 对于类型，选择 **Windows**
+	- 对于定价层，选择“标准”
+	- 上一个表中的默认大小，或者在**实例大小**中选择所需的大小
+
+> [AZURE.NOTE]Azure 定价计算器不包括运行 SQL Server 2014 Enterprise 的两个虚拟机的 SQL Server 许可证的额外成本。有关详细信息，请参阅[虚拟机定价-SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql)。
+
+## 部署阶段
 
 部署此配置分为以下几个阶段：
 
@@ -57,19 +95,6 @@
 
 ## 后续步骤
 
-若要开始配置此工作负荷，请转到[阶段 1：配置 Azure](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase1)。
+- 开始使用[阶段 1](/documentation/articles/virtual-machines-workload-intranet-sharepoint-phase1) 配置此工作负荷。
 
-
-## 其他资源
-
-[具有 SQL Server AlwaysOn 的 SharePoint 信息图](http://go.microsoft.com/fwlink/?LinkId=394788)
-
-[适用于 SharePoint 2013 的 Microsoft Azure 体系结构](https://technet.microsoft.com/library/dn635309.aspx)
-
-[Azure 基础结构服务中托管的 SharePoint 场](/documentation/articles/virtual-machines-sharepoint-infrastructure-services)
-
-[Azure 基础结构服务实施准则](/documentation/articles/virtual-machines-infrastructure-services-implementation-guidelines)
-
-[Azure 基础结构服务工作负荷：高可用性业务线应用程序](/documentation/articles/virtual-machines-workload-high-availability-lob-application)
-
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0104_2016-->

@@ -3,13 +3,13 @@
 	description="了解如何通过 Python 使用表服务来创建和删除表，以及插入和查询表。"
 	services="storage"
 	documentationCenter="python"
-	authors="huguesv"
+	authors="emgerner-msft"
 	manager="wpickett"
 	editor=""/>
 
 <tags
 	ms.service="storage"
-	ms.date="08/25/2015"
+	ms.date="12/11/2015"
 	wacn.date=""/>
 
 
@@ -25,7 +25,7 @@
 
 [AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
-[AZURE.NOTE] 如果你需要安装 Python 或 [Python Azure 包][]，请参阅 [Python 安装指南](/documentation/articles/python-how-to-install)。
+[AZURE.NOTE]如果您需要安装 Python 或 [Python Azure 包][]，请参阅 [Python 安装指南](/documentation/articles/python-how-to-install)。
 
 
 ## 创建表
@@ -107,7 +107,7 @@
 
 以下代码中的查询只返回表中实体的说明。
 
-[AZURE.NOTE] 下面的代码段仅对云存储服务有效。不受存储模拟器支持。
+[AZURE.NOTE]下面的代码段仅对云存储服务有效。不受存储模拟器支持。
 
 	tasks = table_service.query_entities('tasktable', "PartitionKey eq 'tasksSeattle'", 'description')
 	for task in tasks:
@@ -133,9 +133,9 @@
 -   访问 [Azure 存储空间团队博客][]。
 
 有关详细信息，另请参阅 [Python 开发人员中心](/develop/python/)。
-[Azure 存储空间]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
+
 [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 [Python Azure 包]: https://pypi.python.org/pypi/azure
 [Python Azure 存储空间包]: https://pypi.python.org/pypi/azure-storage
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="site-recovery"
-	ms.date="10/12/2015"
+	ms.date="11/18/2015"
 	wacn.date=""/>
 
 #  设置本地 VMM 站点与 Azure 之间的保护
@@ -22,7 +22,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 指南中包括了方案的先决条件并展示了如何设置 Site Recovery 保管库，在源 VMM 服务器上安装 Azure Site Recovery 提供程序，在保管库中注册服务器，添加 Azure 存储帐户，在 Hyper-V 主机服务器上安装 Azure 恢复服务代理，为 VMM 云配置将应用于所有受保护虚拟机的保护设置，然后为这些虚拟机启用保护。最后将测试故障转移以确保一切都正常工作。
 
-如果在设置本方案时遇到问题，请将你的问题发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazucezhchs)。
+如果在设置本方案时遇到问题，请将你的问题发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/zh-cn/home?forum=hypervrecovmgr)。
 
 ## 开始之前
 
@@ -30,7 +30,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 ### Azure 先决条件
 
 - 需要一个 [Microsoft Azure](http://www.windowsazure.cn) 帐户。如果没有，请使用 [1rmb 试用版](http://www.windowsazure.cn/pricing/1rmb-trial/)。此外，你可以阅读 [Azure Site Recovery 管理器定价](/home/features/site-recovery/#home_rec_pri)。
-- 你将需要一个 Azure 存储帐户来存储复制到 Azure 的数据。需要为帐户启用地域复制。该帐户应位于 Azure Site Recovery 服务所在的同一区域，并与同一订阅相关联。若要了解有关设置 Azure 存储的更多信息，请参阅 [Azure 存储空间简介](/documentation/articles/storage-introduction)。
+- 你将需要一个 Azure 存储帐户来存储复制到 Azure 的数据。需要为帐户启用地域复制。该帐户应位于 Azure Site Recovery 服务所在的同一区域，并与同一订阅相关联。若要了解有关设置 Azure 存储空间的更多信息，请参阅 [Azure 存储空间简介](/documentation/articles/storage-introduction)。
 - 你将需要确保你要保护的虚拟机符合 Azure 要求。有关详细信息，请参阅[虚拟机支持](https://msdn.microsoft.com/zh-CN/library/azure/dn469078.aspx#BKMK_E2A)。
 
 ### VMM 先决条件
@@ -43,7 +43,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 - 了解有关设置 VMM 云的更多信息：
 	- 在 [System Center 2012 R2 VMM 中私有云的新增功能](http://go.microsoft.com/fwlink/?LinkId=324952)及 [VMM 2012 和云](http://go.microsoft.com/fwlink/?LinkId=324956)中阅读有关私有 VMM 云的详细信息。 
 	- 了解有关[配置 VMM 云结构](https://msdn.microsoft.com/zh-CN/library/azure/dn469075.aspx#BKMK_Fabric)的更多信息
-	- 在你的云结构元素就位后，通过[在 VMM 中创建私有云](http://technet.microsoft.com/library/jj860425.aspx)和[演练：使用 System Center 2012 SP1 VMM 创建私有云](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)了解有关创建私有云的更多信息。
+	- 在你的云结构元素就位后，通过[在 VMM 中创建私有云](http://technet.microsoft.com/zh-cn/library/jj860425.aspx)和[演练：使用 System Center 2012 SP1 VMM 创建私有云](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)了解有关创建私有云的更多信息。
 
 ### Hyper-V 先决条件
 
@@ -76,14 +76,16 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 1. 从你要注册的 VMM 服务器登录到[管理门户](https://manage.windowsazure.cn)。
 
-2. 依次展开“数据服务”、“恢复服务”，然后单击“站点恢复保管库”。
+
+2. 展开
+3. “数据服务”、“恢复服务”，然后单击“Site Recovery 保管库”。
 
 3. 依次单击“新建”、“快速创建”。
 
 
 4. 在“名称”中，输入一个友好名称以标识此保管库。
 
-5. 在“区域”中，为保管库选择地理区域。<b></b>可用的地理区域包括“东亚”、“西欧”、“华北”、“美国东部”、“北欧”、“东南亚”。
+5. 在“区域”中，为保管库选择地理区域。<b></b>可用地理区域包括中国东部、中国北部。
 6. 单击“创建保管库”。<b></b> 
 
 	![新保管库](./media/site-recovery-vmm-to-azure/ASRE2AVMM_HvVault.png)
@@ -99,7 +101,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 	![“快速启动”图标](./media/site-recovery-vmm-to-azure/ASRE2AVMM_QuickStartIcon.png)
 
-2. 在下拉列表中，选择“本地 Hyper-V 站点与 Microsoft Azure 之间”。
+2. 在下拉列表中，选择“本地 VMM 站点与 Microsoft Azure 之间”。
 3. 在“准备 VMM 服务器”中，单击“生成注册密钥文件”。密钥文件将自动生成并且自生成后在 5 天内有效。如果你不是从 VMM 服务器访问 Azure 门户，则需要将此文件复制到服务器。
 
 	![注册密钥](./media/site-recovery-vmm-to-azure/ASRE2AVMM_RegisterKey.png)
@@ -119,24 +121,24 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 
 1.  安装位置设置为 **<SystemDrive>\\Program Files\\Microsoft System Center 2012 R2\\Virtual Machine Manager\\bin**。单击“安装”按钮，开始安装提供程序。
-![InstallLocation](./media/site-recovery-vmm-to-azure/VMMASRInstallLocationScreen.png)
+	![InstallLocation](./media/site-recovery-vmm-to-azure/VMMASRInstallLocationScreen.png)
 
 
 
 1. 安装提供程序之后，请单击“注册”按钮，以在保管库中注册服务器。
-![InstallComplete](./media/site-recovery-vmm-to-azure/VMMASRInstallComplete.png)
+	![InstallComplete](./media/site-recovery-vmm-to-azure/VMMASRInstallComplete.png)
 
 5. 在“Internet 连接”中，指定在 VMM 服务器上运行的提供程序如何连接到 Internet。选择“使用默认系统代理设置”以使用服务器上配置的默认 Internet 连接设置。<b></b>
 
-	![Internet 设置](./media/site-recovery-vmm-to-azure/VMMASRRegisterProxyDetailsScreen.png) 
+	![Internet 设置](./media/site-recovery-vmm-to-azure/VMMASRRegisterProxyDetailsScreen.png)
 	- 如果希望使用自定义代理，则应当在安装该提供程序之前设置它。当配置自定义代理设置时，会运行测试来检查代理连接。
 	- 如果你确实使用自定义代理，或者你的默认代理要求进行身份验证，则需要输入代理详细信息，包括代理地址和端口。
-	- 应该能够从 VMM 服务器和 Hyper-V 主机访问以下 URL：- 用于连接到 Azure 站点恢复的 URL：
-	*.hypervrecoverymanager.windowsazure.cn 
-	- *.accesscontrol.chinacloudapi.cn 
-	- *.backup.windowsazure.cn 
-	- *.blob.core.chinacloudapi.cn 
-	- *.store.core.chinacloudapi.cn 
+	- 应该能够从 VMM 服务器和 Hyper-V 主机访问以下 URL：
+		- *.hypervrecoverymanager.windowsazure.cn
+		- *.accesscontrol.chinacloudapi.cn
+		- *.backup.windowsazure.cn
+		- *.blob.core.chinacloudapi.cn
+		- *.store.core.chinacloudapi.cn
 	- 允许 [Azure 数据中心 IP 范围](http://go.microsoft.com/fwlink/?LinkId=511094)中所述的 IP 地址和 HTTPS (443) 协议。必须将你打算使用的 Azure 区域以及中国东部的 IP 范围加入允许列表。
 	- 如果你使用自定义代理，则将使用指定的代理凭据自动创建一个 VMM 运行身份帐户 (DRAProxyAccount)。对代理服务器进行配置以便该帐户可以成功通过身份验证。可以在 VMM 控制台中修改 VMM 运行身份帐户设置。若要执行此操作，请打开“设置”工作区，展开“安全性”，单击“运行身份帐户”，然后修改 DRAProxyAccount 的密码。你将需要重新启动 VMM 服务以使此设置生效。
 
@@ -152,29 +154,31 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 8. 在“服务器名称”中，指定一个友好名称以在保管库中标识该 VMM 服务器。在群集配置中，请指定 VMM 群集角色名称。
 
-8. 在“初始云元数据同步”中，选择是否要将 VMM 服务器上所有云的元数据与保管库进行同步。此操作在每个服务器上只需执行一次。如果你不希望同步所有云，可以将此设置保留为未选中状态并在 VMM 控制台中的云属性中分别同步各个云。
-![服务器注册](./media/site-recovery-vmm-to-azure/VMMASRRegisterFriendlyName.png)
+8. 在“初始云元数据同步”中，选择是否要将 VMM 服务器上所有云的元数据与保管库进行同步。此操作在每个服务器上只需执行一次。如果你不希望同步所有云，可以将此设置保留为未选中状态并在 VMM 控制台的云属性中分别同步各个云。
+	![服务器注册](./media/site-recovery-vmm-to-azure/VMMASRRegisterFriendlyName.png)
 
 
 8. 单击“下一步”以完成此过程。注册后，Azure Site Recovery 将检索 VMM 服务器中的元数据。服务器显示在保管库中“服务器”页上的“VMM 服务器”选项卡中。
 
 >[AZURE.NOTE]也可使用以下命令行来安装 Azure Site Recovery 提供程序。此命令可用来将提供程序安装在 Server CORE for Windows Server 2012 R2 上
->
->1. 将提供程序安装文件和注册密钥下载到某个文件夹（例如 C:\\ASR）中
->2. 停止 System Center Virtual Machine Manager 服务
->3. 使用 **Administrator** 权限从命令提示符处执行以下命令，以便提取提供程序安装程序
->
+
+1. 将提供程序安装文件和注册密钥下载到某个文件夹（例如 C:\\ASR）中
+1. 停止 System Center Virtual Machine Manager 服务
+1. 使用 **Administrator** 权限从命令提示符处执行以下命令，以便提取提供程序安装程序
+
     	C:\Windows\System32> CD C:\ASR
     	C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
->4. 执行以下命令以安装提供程序
->
+1. 执行以下命令以安装提供程序
+
 		C:\ASR> setupdr.exe /i
->5. 运行以下命令以注册提供程序
->
+1. 运行以下命令以注册提供程序
+
     	CD C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin
-    	C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>         
- ####命令行安装参数列表####
->
+    	C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>       
+
+  
+#### 命令行安装参数列表
+
  - **/Credentials**：用于指定注册密钥文件所在位置的必需参数  
  - **/FriendlyName**：在 Azure Site Recovery 门户中显示的 Hyper-V 主机服务器名称的必需参数。
  - **/EncryptionEnabled**：仅当你需要在 Azure 中以静止方式为虚拟机加密时，才需要在 VMM 到 Azure 方案中使用这个可选参数。请确保提供的文件名具有 **.pfx** 扩展名。
@@ -257,18 +261,14 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 
 1. 若要启用保护，请在虚拟机所在的云中的“虚拟机”选项卡上单击“启用保护”，然后选择“添加虚拟机”<b></b><b></b><b></b>
-2. 从云中的虚拟机列表中，选择要保护的虚拟机。 
+2. 从云中的虚拟机列表中，选择要保护的虚拟机。
 
 	![启用虚拟机保护](./media/site-recovery-vmm-to-azure/ASRE2AVMM_SelectVM.png)
 
-3. 验证虚拟机属性并根据需要进行修改。
-
-	![验证虚拟机](./media/site-recovery-vmm-to-azure/ASRE2AVMM_EnableVMProps.png)
-
-在“作业”选项卡中跟踪“启用保护”操作的进度，包括初始复制。在“完成保护”作业运行之后，虚拟机就可以进行故障转移了。在启用保护并复制虚拟机后，你将能够在 Azure 中查看它们。
+	在“作业”选项卡中跟踪“启用保护”操作的进度，包括初始复制。在“完成保护”作业运行之后，虚拟机就可以进行故障转移了。在启用保护并复制虚拟机后，你将能够在 Azure 中查看它们。
 
 
-![虚拟机保护作业](./media/site-recovery-vmm-to-azure/ASRE2AVMM_VMJobs.png)
+	![虚拟机保护作业](./media/site-recovery-vmm-to-azure/ASRE2AVMM_VMJobs.png)
 
 3. 验证虚拟机属性并根据需要进行修改。
 
@@ -276,7 +276,16 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 4. 在虚拟机属性的配置选项卡上可以修改以下网络属性。
 
-    1. 目标虚拟机的网络适配器数目 - 目标虚拟机上的网络适配器数目取决于所选虚拟机的大小。目标虚拟机的网络适配器数目是源虚拟机上网络适配器的最小数目和所选虚拟机大小支持的网络适配器的最大数目。  
+
+	1.  目标虚拟机的网络适配器数目 - 网络适配器数目根据你为目标虚拟机指定的大小来确定。查看[虚拟机大小规格](/documentation/articles/virtual-machines-size-specs#size-tables)，了解虚拟机大小所支持的 NIC 数目。 
+
+		当你修改虚拟机的大小并保存设置时，网络适配器的数目会在你下次打开“配置”页时发生变化。目标虚拟机的网络适配器的数目是源虚拟机上的网络适配器的最小数目，也是所选虚拟机大小支持的网络适配器的最大数目。解释如下：
+
+
+		- 如果源计算机上的网络适配器数小于或等于目标计算机大小允许的适配器数，则目标的适配器数将与源相同。
+		- 如果源虚拟机的适配器数大于目标大小允许的数目，则使用目标大小允许的最大数目。
+		- 例如，如果源计算机有两个网络适配器，而目标计算机大小支持四个，则目标计算机将有两个适配器。如果源计算机有两个适配器，但支持的目标大小只支持一个，则目标计算机只有一个适配器。 	
+
 
 	1. 目标虚拟机的网络 - 虚拟机连接的网络取决于源虚拟机网络的网络映射。如果源虚拟机有多个网络适配器，并且源网络已映射到目标上的不同网络，则用户必须选择其中一个目标网络。
 
@@ -285,6 +294,8 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 	1. 目标 IP - 如果源虚拟机的网络适配器设置为使用静态 IP，则用户可以提供目标虚拟机的 IP。用户可以使用此功能在故障转移之后保留源虚拟机的 IP。如果未提供任何 IP，在故障转移时会将任何可用的 IP 提供给网络适配器。如果用户提供的目标 IP 已由 Azure 中运行的其他某个虚拟机使用，则故障转移将会失败。
 
 		![修改网络属性](./media/site-recovery-vmm-to-azure/MultiNic.png)
+
+>[AZURE.NOTE]不支持使用静态 IP 的 Linux 虚拟机。
 
 ## 测试你的部署
 若要测试你的部署，可针对一台虚拟机运行测试故障转移，或者创建一个包括多个虚拟机的恢复计划并针对该计划运行测试故障转移。测试故障转移在隔离的网络中模拟你的故障转移和恢复机制。请注意：
@@ -343,19 +354,19 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 	- 单击“说明”以记录并保存与测试故障转移相关联的任何观测结果。
 
 ## <a id="runtest" name="runtest" href="#runtest"></a>监视活动
-<p>你可以使用“作业”选项卡和“仪表板”来查看和监视由 Azure Site Recovery 保管库执行的主作业，包括为云配置保护、为虚拟机启用和禁用保护、运行故障转移（有计划的、非计划的或测试），以及提交非计划故障转移。</p>
+<p>你可以使用“作业”选项卡和“仪表板”来查看和监视由 Azure Site Recovery 保管库执行的主作业，包括为云配置保护、为虚拟机启用和禁用保护、运行故障转移（计划内的、计划外的或测试），以及提交计划外故障转移。****</p>
 
-<p>从“作业”选项卡中，你可以查看作业，深入了解作业详细信息和错误，运行作业查询以检索符合特定条件的作业，将作业导出到 Excel，以及重新启动失败的作业。<b></b></p>
+<p>从“作业”选项卡中，你可以查看作业、深入了解作业详细信息和错误、运行作业查询以检索符合特定条件的作业、将作业导出到 Excel，以及重新启动失败的作业。**</p>
 
-<p>从“仪表板”中，你可以下载提供程序和代理安装文件的最新版本，获取保管库的配置信息，查看其保护是由保管库管理的虚拟机的数量，查看最近的作业，管理保管库证书，以及重新同步虚拟机。<b></b></p>
+<p>从“仪表板”中，你可以下载提供程序和代理安装文件的最新版本、获取保管库的配置信息、查看其保护是由保管库管理的虚拟机的数量、查看最近的作业、管理保管库证书，以及重新同步虚拟机。**</p>
 
-<p>有关与作业和仪表板交互的详细信息，请参阅<a href="https://msdn.microsoft.com/zh-CN/library/dn788906.aspx">操作和监视指南</a>。</p>
+<p>有关与作业和仪表板交互的详细信息，请参阅<a href="/documentation/articles/site-recovery-manage-registration-and-protection">操作和监视指南</a>。</p>
 
-<h2><a id="next" name="next" href="#next"></a>后续步骤</h2>
+##<a id="next" name="next" href="#next"></a>后续步骤
 <UL>
-<LI>若要在完全的生产环境中规划和部署 Azure Site Recovery，请参阅 <a href="https://msdn.microsoft.com/zh-CN/library/azure/dn469074.aspx">Azure Site Recovery 规划指南</a>和 <a href="https://msdn.microsoft.com/zh-CN/library/sazure/dn168841.aspx">Azure Site Recovery 部署指南</a>。</LI>
+<LI>若要在完全的生产环境中规划和部署 Azure Site Recovery，请参阅 <a href="/documentation/articles/site-recovery-best-practices">Azure Site Recovery 规划指南</a>和 <a href="/documentation/articles/site-recovery-vmm-to-vmm">Azure Site Recovery 部署指南</a>。</LI>
 
 
-<LI>如有问题，请访问 <a href="https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazucezhchs">Azure 恢复服务论坛</a>。</LI></UL>
+<LI>如有问题，请访问 <a href="https://social.msdn.microsoft.com/forums/azure/zh-cn/home?forum=hypervrecovmgr">Azure 恢复服务论坛</a>。</LI></UL>
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->

@@ -4,12 +4,12 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="swadhwa" 
+	manager="stevenpo" 
 	editor="curtand"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="07/02/2015" 
+	ms.date="11/19/2015" 
 	wacn.date=""/>
 
 # 配置 Azure Multi-Factor Authentication
@@ -206,9 +206,7 @@ AZURE AD 租户类型| 可用的受信任 IP 选项
 <li>在“目录”下，单击要设置受信任 IP 的目录。</li>
 <li>在选择的目录上，单击“配置”。</li>
 <li>在“Multi-Factor Authentication”部分中，单击“管理服务设置”。</li>
-<li>在“服务设置”页的“受信任的 IP”下，选择以下任一项：
-<ul>
-<li>对于来自 Intranet 的联合用户发出的请求 – 所有从公司网络登录的联合用户都能使用 AD FS 发出的声明跳过 Multi-Factor Authentication。
+<li>在“服务设置”页的“受信任的 IP”下，选择以下任一项：<ul><li>对于来自 Intranet 的联合用户发出的请求 – 所有从公司网络登录的联合用户都能使用 AD FS 发出的声明跳过 Multi-Factor Authentication。
 
 <li>对于来自特定公共 IP 范围的请求 – 使用 CIDR 表示法在提供的框中输入 IP 地址。例如：xxx.xxx.xxx.0/24 表示 xxx.xxx.xxx.1 – xxx.xxx.xxx.254 范围内的 IP 地址；xxx.xxx.xxx.xxx/32 表示单个 IP 地址。最多可以输入 12 个 IP 地址范围。</li></ul>
 
@@ -238,6 +236,11 @@ AZURE AD 租户类型| 可用的受信任 IP 选项
 - 缓存密码并在本地方案中使用该密码的应用可能会启动失败，因为超出组织 ID 范畴的应用密码是不可识别的。一个示例是 Exchange 电子邮件，这些电子邮件位于本地但存档邮件位于云中。同一密码将无法正常工作。
 - 实际的密码将自动生成，并非由用户提供。这是因为自动生成的密码会使攻击者更难进行猜测，因而更安全。
 - 目前，每个用户有 40 个密码的限制。系统将提示你删除旧应用密码（现有的应用密码之一），以便创建新的应用密码。
+- 对用户的帐户启用多重身份验证后，可以在大多数非浏览器客户端（例如 Outlook 和 Lync）上使用应用密码，但无法通过 Windows PowerShell 等非浏览器应用程序使用应用密码执行管理操作，即使该用户具有管理帐户。请确保使用强密码创建服务帐户以运行 PowerShell 脚本，而不要为该帐户启用多重身份验证。
+
+>[AZURE.WARNING]在客户端与同时与本地和云自动发现终结点通信的混合环境中，应用密码不起作用。
+>
+>请注意，在客户端与同时与本地和云自动发现终结点通信的混合环境中，应用密码不起作用，因为需要使用域密码在本地进行身份验证，使用应用密码在云中进行身份验证。
 
 
 ### 应用密码命名指南
@@ -354,9 +357,8 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 联�
 <li>在选择的目录上，单击“配置”。</li>
 <li>在“Multi-Factor Authentication”部分中，单击“管理服务设置”。</li>
 <li>在“服务设置”页上的“管理用户设备设置”下，选择/取消选择“允许用户通过记住其设备暂停 Multi-Factor Authentication”选项。</li>
-![暂停设备](./media/multi-factor-authentication-manage-users-and-devices/suspend.png)
-<li>设置你希望允许暂停的天数。默认值为 14 天。</li>
+![暂停设备](./media/multi-factor-authentication-manage-users-and-devices/suspend.png) <li>设置你希望允许暂停的天数。默认值为 14 天。</li>
 <li>单击“保存”。</li>
 <li>单击“关闭”。</li>
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0104_2016-->

@@ -10,36 +10,35 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="11/11/2015"
+	ms.date="12/03/2015"
 	wacn.date=""/>
 
 
 #HDInsight 提供的 Hadoop 群集版本有哪些新功能？
 
 ##HDInsight 版本和 Hadoop 组件
-Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。每个版本选项创建 Hortonworks 数据平台 (HDP) 分发的特定版本和该分发内包含的一组组件。下表中逐项列出了与 HDInsight 群集版本关联的组件版本。请注意，Azure HDInsight 使用的默认群集版本当前是 3.1（到 11/7/2014 为止）并基于 HDP 2.1.7。
+Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。每个版本选项创建 Hortonworks 数据平台 (HDP) 分发的特定版本和该分发内包含的一组组件。下表中逐项列出了与 HDInsight 群集版本关联的组件版本。请注意，Azure HDInsight 使用的默认群集版本当前是 3.2（到 12/03/2015 为止）并基于 HDP 2.2。
 
 
-组件|HDInsight 版本 3.2|HDInsight 版本 3.1（默认）|HDInsight 版本 3.0|HDInsight 版本 2.1
+组件|HDInsight 版本 3.3 | HDInsight 版本 3.2（默认）|HDInsight 版本 3.1 |HDInsight 版本 3.0|
 ---|---|---|---|---
-Hortonworks 数据平台|2\.2|2\.1.7|2\.0|1\.3
-Apache Hadoop 和 YARN|2\.6.0|2\.4.0|2\.2.0|1\.2.0
-Apache Tez|0\.5.2|0\.4.0||
-Apache Pig|0\.14.0|0\.12.1|0\.12.0|0\.11.0
-Apache Hive 和 HCatalog|0\.14.0|0\.13.1|0\.12.0|0\.11.0
-Apache HBase |0\.98.4|0\.98.0||
-Apache Sqoop|1\.4.5|1\.4.4|1\.4.4|1\.4.3
-Apache Oozie|4\.1.0|4\.0.0|4\.0.0|3\.3.2
-Apache Zookeeper|3\.4.6|3\.4.5|3\.4.5|
-Apache Storm|0\.9.3|0\.9.1||
-Apache Mahout|0\.9.0|0\.9.0||
-Apache Phoenix|4\.2.0|4\.0.0.2.1.7.0-2162||
-Apache Spark|1\.3.1|||
+Hortonworks 数据平台|2\.3|2\.2|2\.1.7|2\.0|
+Apache Hadoop 和 YARN|2\.7.1|2\.6.0|2\.4.0|2\.2.0|
+Apache Tez|0\.7.0 | 0\.5.2|0\.4.0||
+Apache Pig|0\.15.0|0\.14.0|0\.12.1|0\.12.0|
+Apache Hive 和 HCatalog|1\.2.1|0\.14.0|0\.13.1|0\.12.0|
+Apache HBase |1\.1.1|0\.98.4|0\.98.0||
+Apache Sqoop|1\.4.6|1\.4.5|1\.4.4|1\.4.4|1\.4.3
+Apache Oozie|4\.2.0|4\.1.0|4\.0.0|4\.0.0|
+Apache Zookeeper|3\.4.6|3\.4.6|3\.4.5|3\.4.5|
+Apache Storm|0\.10.0|0\.9.3|0\.9.1||
+Apache Mahout|0\.9.0+|0\.9.0|0\.9.0||
+Apache Phoenix|4\.4.0|4\.2.0|4\.0.0.2.1.7.0-2162||
 
 
 **获取当前组件版本信息**
 
-与 HDInsight 群集版本关联的组件版本可能在将来的 HDInsight 更新中更改。确定可用组件并验证正在使用哪些群集版本的一种方法是使用 Ambari REST API。**GetComponentInformation** 命令可用于检索有关服务组件的信息。有关详细信息，请参阅 [Ambari 文档][ambari-docs]。获取此信息的另一个方法是使用远程桌面登录到群集并直接检查“C:\\apps\\dist”目录的内容。
+与 HDInsight 群集版本关联的组件版本可能在将来的 HDInsight 更新中更改。获取此信息的一种方法是使用远程桌面登录到群集并直接检查“C:\\apps\\dist”目录的内容。
 
 
 **发行说明**
@@ -48,7 +47,7 @@ Apache Spark|1\.3.1|||
 
 ### 创建 HDInsight 群集时选择一个版本
 
-通过 HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 创建群集时，你可以使用“Version”参数选择 HDInsight Hadoop 群集的版本。
+通过 HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 创建群集时，你可以在 Azure 管理门户中使用“可选配置”边栏选项卡上的“版本”下拉列表选择 HDInsight Hadoop 群集的版本。
 
 ##功能特点
 HDInsight 平台的一些突出功能包括：
@@ -66,7 +65,7 @@ HDInsight 平台的一些突出功能包括：
 
 - **Apache Phoenix** - Apache Phoenix 是基于 HBase 的结构化查询语言 (SQL) 查询层。它支持有限的 SQL 查询语言规范子集，包括辅助索引支持。它是以客户端中嵌入的 Java 数据库连接 (JDBC) 驱动程序形式交付，面向 HBase 数据的低延迟查询。Apache Phoenix 将获取 SQL 查询，将它编译成一系列 HBase 扫描和协处理器调用，然后生成正则 JDBC 结果集。Apache Phoenix 是基于 HBase 的关系数据库。它是以客户端中嵌入的 JDBC 驱动程序形式交付，面向 HBase 数据的低延迟查询。Apache Phoenix 将获取 SQL 查询，将它编译成一系列 HBase 扫描，并协调这些扫描的运行来生成正则 JDBC 结果集。
 
-- **群集仪表板** - 部署到 HDInsight 群集中的新 Web 应用程序。用于运行 Hive 查询、检查作业日志以及浏览 Azure Blob 存储。用于访问 Web 应用程序的 URL 是 <*ClusterName*>.azurehdinsight.cn。
+- **群集仪表板** - 部署到 HDInsight 群集中的新网站。用于运行 Hive 查询、检查作业日志以及浏览 Azure Blob 存储。用于访问网站的 URL 是 <*ClusterName*>.azurehdinsight.cn。
 
 - **Microsoft Avro Library** - 此库针对 Microsoft.NET 环境实现 Apache Avro 数据序列化系统。Apache Avro 为序列化提供了一种紧凑的二进制数据交换格式。它使用 JavaScript 对象表示法 (JSON) 定义与语言无关的架构，以支持语言互操作性。以一种语言序列化的数据可以用另一种语言读取。目前支持 C、C++、C#、Java、PHP、Python 和 Ruby。Apache Avro 序列化格式在 Azure HDInsight 中广泛使用，用于表示 Hadoop MapReduce 作业内的复杂数据结构。
 
@@ -78,7 +77,7 @@ HDInsight 平台的一些突出功能包括：
 
 - **Hive 性能** - 使用**优化行纵栏表** (ORC) 格式对 Hive 查询响应时间（最多 40 倍）和数据压缩（最多 80%）的数量级改善。
 
-- **Pig、Sqoop、Oozie、Ambari** - 对 HDInsight 群集版本 3.0 (HDP 2.0/Hadoop 2.2) 进行组件版本升级，以提供 HDInsight 群集版本 2.1 (HDP 1.3/Hadoop 1.2) 的奇偶校验。有关具体细节，请参阅下面的版本表。
+- **Pig、Sqoop、Oozie** - 对 HDInsight 群集版本 3.0 (HDP 2.0/Hadoop 2.2) 进行组件版本升级，以提供 HDInsight 群集版本 2.1 (HDP 1.3/Hadoop 1.2) 的奇偶校验。有关具体细节，请参阅下面的版本表。
 
 - **Mahout** - 这个可缩放的机器学习算法库已预装在 HDInsight 3.1（和更高版本）的 Hadoop 群集上。因此，你无需进行其他任何群集配置，就能运行 Mahout 作业。
 
@@ -93,11 +92,12 @@ HDInsight 平台的一些突出功能包括：
 
 HDInsight 版本|HDP 版本|高可用性|发布日期|在 Azure 管理门户中提供|支持到期日期|弃用日期
 ---|---|---|---|---|---|---
+HDI 3.3|HDP 2.3|是|12/02/2015|是||
 HDI 3.2|HDP 2.2|是|2/18/2015|是||
 HDI 3.1|HDP 2.1|是|6/24/2014|是||
 HDI 3.0|HDP 2.0|是|02/11/2014|是|09/17/2014|06/30/2015
-HDI 2.1|HDP 1.3|是|10/28/2013|否|05/12/2014|05/31/2015
-HDI 1.6|HDP 1.1|否|10/28/2013|否|04/26/2014|05/31/2015
+HDI 2.1|HDP 1.3|是|10/28/2013|是|05/12/2014|05/31/2015
+HDI 1.6|HDP 1.1|否|10/28/2013|是|04/26/2014|05/31/2015
 
 **非默认群集的部署**
 
@@ -106,7 +106,7 @@ HDI 1.6|HDP 1.1|否|10/28/2013|否|04/26/2014|05/31/2015
 SLA 用“支持窗口”来定义。“支持窗口”是指 HDInsight 群集版本受 Microsoft 客户服务和支持部门支持的时间段。如果 HDInsight 群集版本具有早于当前日期的**支持过期日期**，则表示它处于支持窗口外。有关支持的 HDInsight 群集版本的列表，请参见上表。给定 HDInsight 版本 X（一旦提供更新的 X+1 版本）的支持到期日期为按以下公式计算所得时间的较晚者：
 
 - 公式 1：发布 HDInsight 群集版本 X 的日期加 180 天。
-- 公式 2：HDInsight 群集版本 X+1（X 之后的后续版本）在管理门户中可用的日期加 90 天。
+- 公式 2：HDInsight 群集版本 X+1（X 之后的后续版本）在门户中可用的日期加 90 天。
 
 **弃用日期**是在该日期后，不能在 HDInsight 上创建此群集版本的日期。
 
@@ -114,12 +114,16 @@ SLA 用“支持窗口”来定义。“支持窗口”是指 HDInsight 群集�
 
 ## 与 HDInsight 版本相关的 Hortonworks 发行说明##
 
-* HDInsight 群集版本 3.2 使用基于 [Hortonworks 数据平台 2.2][hdp-2-2] 的 Hadoop 分发版。
+* HDInsight 群集版本 3.3 使用基于 [Hortonworks 数据平台 2.3](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html) 的 Hadoop 分发版。
+	* [此处](https://storm.apache.org/2015/11/05/storm0100-released.html)提供了 Apache Storm 发行说明。
+	* [此处](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843)提供了 Apache Hive 发行说明。
 
-	* 特定 Apache 组件的发行说明 - [Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450)、[Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954)、[HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810)、[Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581)、[M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180)、[HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181)、[YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197)、[Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179)、[Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742)、[Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486)、[Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)、[Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620)。
+* HDInsight 群集版本 3.2 使用基于 [Hortonworks 数据平台 2.2][hdp-2-2] 的 Hadoop 分发版。这是使用门户时创建的**默认** Hadoop 群集。
+
+	* 特定 Apache 组件的发行说明 - [Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450)、[Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954)、[HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810)、[Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581)、[M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180)、[HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181)、[YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197)、[Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179)、[Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742)、[Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112)、[Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620)。
 
 
-* HDInsight 群集版本 3.1 使用基于 [Hortonworks 数据平台 2.1.7][hdp-2-1-7] 的 Hadoop 分发版。这是使用 11/7/2014 之后的门户时创建的**默认** Hadoop 群集。创建于 11/7/2014 之前的 HDInsight 3.1 群集基于[ Hortonworks 数据平台 2.1.1][hdp-2-1-1]。
+* HDInsight 群集版本 3.1 使用基于 [Hortonworks 数据平台 2.1.7][hdp-2-1-7] 的 Hadoop 分发版。创建于 11/7/2014 之前的 HDInsight 3.1 群集基于 [Hortonworks 数据平台 2.1.1][hdp-2-1-1]
 
 * HDInsight 群集版本 3.0 使用基于 [Hortonworks 数据平台 2.0][hdp-2-0-8] 的 Hadoop 分发版。
 
@@ -134,7 +138,7 @@ SLA 用“支持窗口”来定义。“支持窗口”是指 HDInsight 群集�
 
 [connect-excel-with-hive-ODBC]: /documentation/articles/hdinsight-connect-excel-hive-ODBC-driver
 
-[hdp-2-2]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.0/HDP_2.2.0_Release_Notes_20141202_version/index.html
+[hdp-2-2]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.0/bk_HDP_RelNotes/content/ch_relnotes_v220.html
 
 [hdp-2-1-7]: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.7-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.7.html
 
@@ -146,8 +150,6 @@ SLA 用“支持窗口”来定义。“支持窗口”是指 HDInsight 群集�
 
 [hdp-1-1-0]: http://docs.hortonworks.com/HDPDocuments/HDP1/HDP-Win-1.1/bk_releasenotes_HDP-Win/content/ch_relnotes-hdp-win-1.1.0_1.html
 
-[ambari-docs]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
-
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0104_2016-->

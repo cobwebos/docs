@@ -40,7 +40,7 @@
 
 如果你选择使用 a.b.c.d/29 来设置对等互连，它将拆分成两个 /30 子网。在以下示例中，我们可以了解 a.b.c.d/29 子网的用法。
 
-a.b.c.d/29 拆分成 a.b.c.d/30 和 a.b.c.d+4/30 并通过预配 API 一路传递到 Microsoft。你将使用 a.b.c.d+1 作为主要 PE 的 VRF IP，而 Microsoft 将使用 a.b.c.d+2 作为主要 MSEE 的 VRF IP。你将使用 a.b.c.d+5 作为辅助 PE 的 VRF IP，而 Microsoft 将使用 a.b.c.d+6 作为辅助 MSEE 的 VRF IP。
+a.b.c.d/29 拆分成 a.b.c.d/30 和 a.b.c.d+4/30 并通过预配 API 一路传递到 Microsoft。你将使用 a.b.c.d+1 作为主要 PE 的 VRF IP，而 Microsoft 将使用 a.b.c.d+2 作为主要 MSEE 的 VRF IP。你将使用 b.c.d+5 作为辅助 PE 的 VRF IP，而 Microsoft 将使用 a.b.c.d+6 作为辅助 MSEE 的 VRF IP。
 
 假设你选择 192.168.100.128/29 来设置专用对等互连。192.168.100.128/29 包括从 192.168.100.128 到 192.168.100.135 的地址，其中：
 
@@ -137,6 +137,8 @@ Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标�
 
 所有 Microsoft 播发的路由都标有适当的社区值。
 
+>[AZURE.IMPORTANT]全局前缀将使用相应的社区值进行标记，并且仅当已启用 ExpressRoute 高级版附加组件时才会播发。
+
 
 除了上述各项，Microsoft 还将根据其所属的服务加上标记及前缀。这只适用于 Microsoft 对等互连。下表提供了服务与 BGP 社区值之间的映射。
 
@@ -144,10 +146,9 @@ Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标�
 |---|---|
 | **Exchange** | 12076:5010 |
 | **SharePoint** | 12076:5020 |
-| **Skype for Business** | 12076:5030 |
+| **Skype For Business** | 12076:5030 |
 | **CRM Online** | 12076:5040 |
 | **其他 Office 365 服务** | 12076:5100 |
-| **全局前缀/任意广播** | 12076:5200 |
 
 
 ### 操作路由首选项
@@ -162,4 +163,4 @@ Microsoft 不遵循你设置的任何 BGP 社区值。你需要为每个对等�
 	- [配置路由](/documentation/articles/expressroute-howto-routing-classic)
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0104_2016-->
