@@ -10,9 +10,8 @@
 
 <tags 
 	ms.service="virtual-machines"
-	ms.date="10/28/2015"
+	ms.date="12/15/2015" 
 	wacn.date=""/>
-
 
 #如何在 Azure 上将 SSH 用于 Linux 和 Mac
 
@@ -20,7 +19,7 @@
 - [Windows](../articles/virtual-machines/virtual-machines-windows-use-ssh-key.md)
 - [Linux/Mac](../articles/virtual-machines/virtual-machines-linux-use-ssh-key.md)
 
-本主题介绍如何在 Linux 和 Mac 上使用 **ssh-keygen** 和 **openssl**，创建和使用 **ssh-rsa** 格式和 **.pem** 格式文件来基于 Linux 保护与 Azure VM 的通信。对于新部署，建议使用资源管理器部署模型创建基于 Linux 的 Azure 虚拟机，并采用 *ssh-rsa* 类型公钥文件或字符串（具体取决于部署客户端）。[预览门户](https://manage.windowsazure.cn)当前仅接受 **ssh-rsa** 格式字符串，无论是进行经典部署还是资源管理器部署。
+本主题介绍如何在 Linux 和 Mac 上使用 **ssh-keygen** 和 **openssl**，创建和使用 **ssh-rsa** 格式和 **.pem** 格式文件来基于 Linux 保护与 Azure VM 的通信。对于新部署，建议使用资源管理器部署模型创建基于 Linux 的 Azure 虚拟机，并采用 *ssh-rsa* 类型公钥文件或字符串（具体取决于部署客户端）。[Azure 门户](https://manage.windowsazure.cn)当前仅接受 **ssh-rsa** 格式字符串，无论是进行经典部署还是资源管理器部署。
 
 > [AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-both-include.md)]若要创建这些类型的文件以便在 Windows 计算机上用于与 Azure 中的 Linux VM 安全地通信，请参阅[在 Windows 上使用 SSH 密钥](/documentation/articles/virtual-machines-windows-use-ssh-key)。
 
@@ -69,9 +68,7 @@ Azure 需要 2048 位的 **ssh-rsa** 格式密钥文件或等效的 .pem 文件�
 
 	如果要从不同的私钥文件创建 .pem 文件，请修改 `-key` 参数。
 
-> [AZURE.NOTE]如果你计划管理使用经典部署模型部署的服务，则可能还要创建 **.cer** 格式的文件来上载到门户，尽管这不涉及 **ssh** 或连接到 Linux VM，但这是本文的主题。若要在 Linux 或 Mac 上创建这些文件，请键入：
-<br />
-> openssl.exe x509 -outform der -in myCert.pem -out myCert.cer
+> [AZURE.NOTE]如果你计划管理使用经典部署模型部署的服务，则可能还要创建 **.cer** 格式的文件来上载到门户，尽管这不涉及 **ssh** 或连接到 Linux VM，但这是本文的主题。若要在 Linux 或 Mac 上创建这些文件，请键入：<br /> openssl.exe x509 -outform der -in myCert.pem -out myCert.cer
 
 将 .pem 文件转换为 DER 编码的 X509 证书文件。
 
@@ -85,7 +82,7 @@ Azure 需要 2048 位的 **ssh-rsa** 格式密钥文件或等效的 .pem 文件�
 
 ### 示例：使用 id\_rsa.pub 文件创建 VM
 
-最常见的用法是以命令方式创建 VM 或上载模板以创建 VM。以下代码示例演示如何通过将公钥文件名（在本示例中，为默认的 `~/.ssh/id_rsa` 文件）传递给 `azure vm create` 命令来在 Azure 中创建新的安全 Linux VM。（其他参数以前已创建。）
+最常见的用法是以命令方式创建 VM 或上载模板以创建 VM。以下代码示例演示如何通过将公钥文件名（在本示例中，为默认的 `~/.ssh/id_rsa.pub` 文件）传递给 `azure vm create` 命令来在 Azure 中创建新的安全 Linux VM。（其他参数以前已创建。）
 
 	azure vm create \
 	--nic-name testnic \
@@ -95,7 +92,7 @@ Azure 需要 2048 位的 **ssh-rsa** 格式密钥文件或等效的 .pem 文件�
 	--storage-account-name computeteststore 
 	--image-urn canonical:UbuntuServer:14.04.3-LTS:latest \
 	--username ops \
-	-ssh-publickey-file ~/.ssh/id_rsa \
+	-ssh-publickey-file ~/.ssh/id_rsa.pub \
 	testrg testvm westeurope linux
 
 下一个示例演示如何将 **ssh-rsa** 格式与资源管理器模板和 Azure CLI 配合使用来创建受字符串形式的 `~/.ssh/id_rsa.pub` 用户名和内容保护的 Ubuntu VM。（在此示例中，将缩短公钥字符串以增加可读性。）
@@ -160,7 +157,7 @@ Azure 需要 2048 位的 **ssh-rsa** 格式密钥文件或等效的 .pem 文件�
 
 ## 连接到 VM
 
-**ssh** 命令使用用户名、计算机的网络地址、连接到该地址的端口以及许多其他特殊变体来登录。（有关 **ssh** 的详细信息，你可以从[此处](https://en.wikipedia.org/wiki/Secure_Shell)开始）
+**ssh** 命令使用用户名、计算机的网络地址、连接到该地址的端口以及许多其他特殊变体来登录。（有关 **ssh** 的详细信息，可参阅这篇[有关 Secure Shell 的文章](https://en.wikipedia.org/wiki/Secure_Shell)）
 
 如果你只是已指定子域和部署位置，则使用资源管理器部署的典型用法可能如下所示：
 
@@ -263,7 +260,7 @@ Azure 需要 2048 位的 **ssh-rsa** 格式密钥文件或等效的 .pem 文件�
 	Are you sure you want to continue connecting (yes/no)? yes
 	Warning: Permanently added 'testpemasm.chinacloudapp.cn,40.83.178.221' (RSA) to the list of known hosts.
 	Saving password to keychain failed
-	Identity added: /Users/rasquill/.ssh/id_rsa (/Users/rasquill/.ssh/id_rsa)
+	Identity added: /Users/user/.ssh/id_rsa.pub (/Users/user/.ssh/id_rsa.pub)
 	Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.19.0-28-generic x86_64)
 
 	* Documentation:  https://help.ubuntu.com/
@@ -297,4 +294,4 @@ Azure 需要 2048 位的 **ssh-rsa** 格式密钥文件或等效的 .pem 文件�
  
 现在，你已连接到 VM，请确保在继续使用所选分发之前对其进行更新。
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

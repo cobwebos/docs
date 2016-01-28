@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="目录集成工具比较" 
+	pageTitle="Azure AD Connect：目录集成工具比较 | Microsoft Azure"
 	description="本页将会提供比较各种目录集成工具的综合表。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -86,4 +86,4 @@
 ## 后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0118_2016-->

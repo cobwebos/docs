@@ -14,6 +14,9 @@
 
 # 将移动服务添加到现有应用程序
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 [AZURE.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
 ##概述
@@ -92,7 +95,7 @@
 * [身份验证入门]
   <br/>了解如何对应用程序用户进行身份验证。
 
-* [推送通知入门]
+* [推送通知入门 ]
   <br/>了解如何向应用程序发送一条很基本的推送通知。
 
 * [移动服务 C# 操作方法概念性参考 ](/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library)
@@ -108,16 +111,15 @@
 [Refine queries with paging]: /documentation/articles/mobile-services-windows-store-dotnet-add-paging-data
 [Get started with Mobile Services]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started
 [身份验证入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users
-[推送通知入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push
+[推送通知入门 ]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push
 
 [Get started with offline data sync]: /documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data
 
-[Azure Management Portal]: https://manage.windowsazure.cn/
-[Management Portal]: https://manage.windowsazure.cn/
+[Azure classic portal]: https://manage.windowsazure.cn/
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkID=510826
 [Mobile Services .NET How-to Conceptual Reference]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 [MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

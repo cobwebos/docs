@@ -1,42 +1,51 @@
+<!-- not suitable for Mooncake -->
+<!-- ? -->
+
 <properties 
-	pageTitle="如何配置 Web 应用的 TLS 相互身份验证" 
-	description="了解如何将 Web 应用配置为在 TLS 上使用客户端证书身份验证。" 
-	services="app-service\web" 
+	pageTitle="如何为网站配置 TLS 相互身份验证" 
+	description="了解如何将网站配置为使用 TLS 客户端证书身份验证。" 
+	services="app-service" 
 	documentationCenter="" 
 	authors="naziml" 
 	manager="wpickett" 
-	editor=""/>
+	editor="jimbe"/>
 
-<tags 
-	ms.service="app-service-web" 
-	ms.date="06/24/2015" 
+<tags
+	ms.service="app-service"
+	ms.date="09/15/2015"
 	wacn.date=""/>
 
-# 如何配置 Web 应用的 TLS 相互身份验证
+# 如何为网站配置 TLS 相互身份验证
 
 ## 概述 ##
-要限制对 Azure Web 应用的访问，可对其启用不同类型的身份验证。当通过 TLS/SSL 进行请求时，执行此操作的其中一种方法是使用客户端证书进行身份验证。这种机制称为 TLS 相互身份验证或客户端证书身份验证，本文将详细介绍如何将 Web 应用设置为使用客户端证书身份验证。
+通过为 Azure 网站启用不同类型的身份验证可以限制对网站的访问。执行此操作的方法之一是在通过 TLS/SSL 发送请求时使用客户端证书进行身份验证。此机制称为 TLS 相互身份验证或客户端证书身份验证，本文将详细说明如何将网站设置为使用客户端证书身份验证。
 
-## 配置 Web 应用以使用客户端证书身份验证 ##
-若要将 Web 应用设置为要求客户端证书，你需要为 Web 应用添加 clientCertEnabled 站点设置并将其设置为 true。门户中的管理体验当前不提供此设置，并且将需要使用 REST API 实现此目的。
+## 将网站设置为使用客户端证书身份验证 ##
+若要将网站设置为要求使用客户端证书，你需要为网站添加 clientCertEnabled 站点设置并将该设置指定为 true。目前无法通过门户中的管理体验进行此设置，你需要使用 REST API 来实现此目的。
 
-可使用 [ARMClient 工具](https://github.com/projectkudu/ARMClient)来简化 REST API 调用的生成。使用该工具登录后将需要发出以下命令：
+你可以使用 [ARMClient 工具](https://github.com/projectkudu/ARMClient)轻松创建 REST API 调用。使用该工具登录之后，需要发出以下命令：
 
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
     
-使用 Web 应用的信息替换 {} 中的所有内容，并使用以下 JSON 内容创建名为 enableclientcert.json 的文件：
+将 {} 中的所有内容替换为网站的信息，并创建包含以下 JSON 内容的 enableclientcert.json 文件：
 
-> { "location": "My Web App Location", "properties": { "clientCertEnabled": true } }
+> {
+>   "location": "My web site Location",   
+>   "properties": 
+>   {  
+>     "clientCertEnabled": true
+>   }
+> }  
 
 
-请确保将“位置”的值更改为你的 Web 应用所在的任意位置，例如美国中北部或美国西部等。
+确保将“location”的值更改为网站所在的位置，例如 China North 或 China East。
 
 
-## 从 Web 应用访问客户端证书 ##
-将 Web 应用配置为使用客户端证书身份验证时，将可通过“X ARR ClientCert”请求标头中的 base64 编码值在应用中获取客户端证书。应用程序可基于此值创建证书，然后将其用于应用程序中的身份验证和授权。
+## 从网站访问客户端证书 ##
+将网站配置为使用客户端证书身份验证后，可以通过“X-ARR-ClientCert”请求标头中的 base64 编码值在应用中使用客户端证书。应用程序可以基于此值创建证书，然后将它用于应用程序中的身份验证和授权。
 
 ## 有关证书验证的特殊注意事项 ##
-发送到应用程序的客户端证书不会通过 Azure Web Apps 平台的任何验证。验证此证书是 Web 应用的责任。以下是 ASP.NET 代码示例，该代码验证证书属性以进行身份验证。
+Azure 网站平台不会针对发送到应用程序的客户端证书进行任何验证。验证此证书是网站的责任。下面是为了进行身份验证而验证证书属性的示例 ASP.NET 代码。
 
     using System;
     using System.Collections.Specialized;
@@ -173,4 +182,4 @@
         }
     }
 
-<!---HONumber=67-->
+<!---HONumber=Mooncake_0118_2016-->

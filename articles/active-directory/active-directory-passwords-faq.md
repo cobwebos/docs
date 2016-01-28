@@ -9,13 +9,13 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="10/08/2015" 
+	ms.date="11/16/2015" 
 	wacn.date=""/>
 
 # 密码管理常见问题
 下面是与密码管理相关的所有方面的一些常见问题。
 
-如果你不知道问题的答案，或者要对所面临的具体问题寻求帮助，你可以参阅以下内容，查看我们是否涵盖了该问题。如果此处未涉及该问题，不用担心！ 你可以随意提出 [Azure AD 论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs)上所未涵盖的问题，我们将尽快予以解答。
+如果你不知道问题的答案，或者要对所面临的具体问题寻求帮助，你可以参阅以下内容，查看我们是否涵盖了该问题。如果此处未涉及该问题，不用担心！ 你可以随意提出 [Azure AD 论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=WindowsAzureAD)上所未涵盖的问题，我们将尽快予以解答。
 
 本“常见问题”主题分为以下几部分：
 
@@ -27,11 +27,11 @@
 ## 密码重置注册
  - **问：我的用户是否可以注册其自己的密码重置数据？**
  
- > **答：**可以。只要已经启用密码重置功能并且用户已获得许可，他们就可以访问“密码重置注册”门户（网址为 http://aka.ms/ssprsetup） 来注册他们用于密码重置的身份验证信息。用户还可以通过以下方式进行注册：转到访问面板 (http://myapps.microsoft.com)， 单击配置文件选项卡，然后单击“注册密码重置”选项。阅读“如何为用户配置密码重置”，了解如何为你的用户配置密码重置。
+ > **答：**可以。只要已经启用密码重置功能并且用户已获得许可，他们就可以访问“密码重置注册”门户（网址为 http://aka.ms/ssprsetup ）来注册他们用于密码重置的身份验证信息。用户还可以通过以下方式进行注册：转到访问面板 (http://myapps.microsoft.com) ，单击配置文件选项卡，然后单击“注册密码重置”选项。阅读“如何为用户配置密码重置”，了解如何为你的用户配置密码重置。
  
  - **问：我能否代表我的用户定义密码重置数据？**
  
- > **答：**可以。你可以使用 DirSync 或 PowerShell 实现此操作，也可以通过 [Azure 管理门户](https://manage.windowsazure.cn)或 Office 管理门户实现。可以通过博客文章“针对 Azure AD MFA（多重身份验证）和密码重置电话号码的改进隐私功能”并阅读“了解密码重置如何使用数据”了解有关此功能的更多信息。
+ > **答：**可以。你可以使用 DirSync 或 PowerShell 实现此操作，也可以通过 [Azure 管理门户](https://manage.windowsazure.cn)或 Office 管理门户实现。可以通过博客文章“针对 Azure AD MFA 和密码重置电话号码的改进隐私功能”并阅读“了解密码重置如何使用数据”了解有关此功能的更多信息。
  
  - **问：我能否从本地同步安全问题数据？**
  
@@ -39,7 +39,7 @@
  
  - **问：我的用户在注册数据时能否选择不让其他用户看到？**
  
- > **答：**可以，当用户使用密码重置注册门户注册数据时，数据将会保存到私有身份验证字段，只有全局管理员和用户自己才能看到这些字段。可以通过博客文章“针对 Azure AD MFA（多重身份验证）和密码重置电话号码的改进隐私功能”并阅读“了解密码重置如何使用数据”了解有关此功能的更多信息。
+ > **答：**可以，当用户使用密码重置注册门户注册数据时，数据将会保存到私有身份验证字段，只有全局管理员和用户自己才能看到这些字段。可以通过博客文章“针对 Azure AD MFA 和密码重置电话号码的改进隐私功能”并阅读“了解密码重置如何使用数据”了解有关此功能的更多信息。
  
  - **问：是否我的用户只有在注册之后才能使用密码重置功能？**
  
@@ -76,7 +76,7 @@
 
  - **问：我如何告知我的用户到何处重置他们的密码？**
  
- > **答：**你可以直接将用户转到 https://passwordreset.microsoftonline.com， 也可以告知他们单击任何学校或工作 ID 登录屏幕中的“无法访问你的帐户”链接。你可以在你的用户能够轻松访问的任何位置随意发布这些链接（或创建指向它们的 URL 重定向）。
+ > **答：**你可以直接将用户转到 https://passwordreset.microsoftonline.com ，也可以告知他们单击任何学校或工作 ID 登录屏幕中的“无法访问你的帐户”链接。你可以在你的用户能够轻松访问的任何位置随意发布这些链接（或创建指向它们的 URL 重定向）。
 
  - **问：我能否在移动设备上使用此页面？**
  
@@ -183,22 +183,21 @@
 
 <br/> <br/> <br/>
 
-**其他资源**
+## 密码重置文档的链接
+以下是所有 Azure AD 密码重置文档页面的链接：
 
-
-* [什么是密码管理](/documentation/articles/active-directory-passwords)
-* [密码管理的工作原理](/documentation/articles/active-directory-passwords-how-it-works)
-* [密码管理入门](/documentation/articles/active-directory-passwords-getting-started)
-* [自定义密码管理](/documentation/articles/active-directory-passwords-customize)
-* [密码管理最佳实践](/documentation/articles/active-directory-passwords-best-practices)
-* [如何使用密码管理报告获取 Operational Insights](/documentation/articles/active-directory-passwords-get-insights)
-* [排查密码管理问题](/documentation/articles/active-directory-passwords-troubleshoot)
-* [了解详细信息](/documentation/articles/active-directory-passwords-learn-more)
-* [MSDN 上的密码管理](https://msdn.microsoft.com/zh-cn/library/azure/dn510386.aspx)
+* [**重置自己的密码**](/documentation/articles/active-directory-passwords-update-your-own-password) - 了解如何以系统用户的身份重置或更改自己的密码
+* [**工作原理**](/documentation/articles/active-directory-passwords-how-it-works) - 了解六个不同的服务组件及其功能
+* [**入门**](/documentation/articles/active-directory-passwords-getting-started) - 了解如何让用户重置及更改云密码或本地密码
+* [**自定义**](/documentation/articles/active-directory-passwords-customize) - 了解如何根据组织的需求自定义服务的外观和行为
+* [**最佳实践**](/documentation/articles/active-directory-passwords-best-practices) - 了解如何快速部署且有效管理组织的密码
+* [**深入分析**](/documentation/articles/active-directory-passwords-get-insights) - 了解集成式报告功能
+* [**故障排除**](/documentation/articles/active-directory-passwords-troubleshoot) - 了解如何快速排查服务的问题
+* [**了解更多**](/documentation/articles/active-directory-passwords-learn-more) - 深入探索服务工作原理的技术细节
 
 
 [001]: ./media/active-directory-passwords-faq/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-faq/002.jpg "Image_002.jpg"
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

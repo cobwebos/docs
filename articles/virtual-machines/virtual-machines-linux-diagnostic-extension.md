@@ -11,7 +11,7 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="07/20/2015"
+		ms.date="12/15/2015"
 	wacn.date=""/>
 
 
@@ -138,6 +138,5 @@ Linux 诊断扩展可利用以下功能帮助用户监视在 Microsoft Azure 上
 
 ## 已知问题
 - 对于 2.0 版，只能通过脚本访问 Rsyslog 信息和客户指定的日志文件。
-- 对于 2.0 版本，如果首先通过脚本启用了 Linux 诊断扩展，那么你无法从 Azure 门户查看数据。如果先从门户启用扩展，那么脚本仍将正常工作。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

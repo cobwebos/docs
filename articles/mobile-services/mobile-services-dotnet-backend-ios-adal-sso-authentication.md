@@ -9,11 +9,14 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="08/18/2015" 
+	ms.date="12/15/2015"
 	wacn.date=""/>
 
 # 使用 Active Directory 身份验证库单一登录对应用程序进行身份验证
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 [AZURE.INCLUDE [mobile-services-selector-adal-sso](../includes/mobile-services-selector-adal-sso.md)]
 
 ##概述
@@ -33,6 +36,7 @@
 
 * XCode 4.5 和 iOS 6.0（或更高版本）
 * 完成[移动服务入门]教程。
+* 完成[注册应用以使用 Azure Active Directory 帐户登录]
 * Microsoft Azure 移动服务 SDK
 * [适用于 iOS 的 Active Directory 身份验证库]
 
@@ -86,7 +90,7 @@
         }
 
 
-6. 在上面的 `loginAndGetData` 方法的代码中，将 **INSERT-AUTHORITY-HERE** 替换为在其中进行应用程序设置的租户的名称，格式应为 https://login.windows.net/tenant-name.onmicrosoft.com。可以在 [Azure 管理门户]中从 Azure Active Directory 的“域”选项卡复制此值。
+6. 在上面的 `loginAndGetData` 方法的代码中，将 **INSERT-AUTHORITY-HERE** 替换为在其中进行应用程序设置的租户的名称，格式应为 https://login.windows.net/tenant-name.onmicrosoft.com。 可以在 [Azure 经典门户]中从 Azure Active Directory 的“域”选项卡复制此值。
 
 7. 在上面的 `loginAndGetData` 方法的代码中，将 **INSERT-RESOURCE-URI-HERE** 替换为你的移动服务的“应用程序 ID URI”。如果你按照[如何向 Azure Active Directory 注册]主题进行操作，你的应用程序 ID URI 应该类似于 https://todolist.azure-mobile.net/login/aad。
 
@@ -111,8 +115,9 @@
 
 <!-- URLs. -->
 [移动服务入门]: /documentation/articles/mobile-services-dotnet-backend-ios-get-started
+[注册应用以使用 Azure Active Directory 帐户登录]: /documentation/articles/mobile-services-how-to-register-active-directory-authentication
 [如何向 Azure Active Directory 注册]: /documentation/articles/mobile-services-how-to-register-active-directory-authentication
-[Azure 管理门户]: https://manage.windowsazure.cn/
+[Azure 经典门户]: https://manage.windowsazure.cn/
 [适用于 iOS 的 Active Directory 身份验证库]: https://github.com/MSOpenTech/azure-activedirectory-library-for-ios
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

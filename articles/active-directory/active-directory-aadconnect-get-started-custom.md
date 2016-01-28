@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure AD Connect 的自定义安装" 
+	pageTitle="Azure AD Connect：自定义安装 | Microsoft Azure"
 	description="本文档详细介绍了 Azure AD Connect 的自定义安装选项。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -45,7 +45,7 @@ SQL Server 名称 | 用于指定 SQL Server 名称和实例名称。如果你已
 
 
 ## 用户登录
-安装所需的组件后，系统会要求你指定用户要使用的单一登录方法。下表提供了可用选项的简短说明。
+安装所需的组件后，系统会要求你指定用户要使用的单一登录方法。下表提供了可用选项的简短说明。有关登录方法的完整说明，请参阅[用户登录](active-directory-aadconnect-user-signin.md)。
 
 ![用户登录](./media/active-directory-aadconnect-get-started-custom/usersignin.png)
 
@@ -85,7 +85,7 @@ SQL Server 名称 | 用于指定 SQL Server 名称和实例名称。如果你已
 ------------- | ------------- |
 [我的用户在所有林中只呈现一次](/documentation/articles/active-directory-aadconnect-topologies#multiple-forests-separate-topologies) | 将所有用户在 Azure AD 中创建为单独的对象。<br> 不会在 Metaverse 中联接对象。
 [邮件属性](/documentation/articles/active-directory-aadconnect-topologies#multiple-forests-full-mesh-with-optional-galsync) | 如果邮件属性在不同的林中具有相同的值，则此选项将联接用户和联系人。当已使用 GALSync 创建了联系人时，建议使用此选项。
-[ObjectSID 和 msExchangeMasterAccountSID](/documentation/articles/active-directory-aadconnect-topologies#multiple-forests-account-resource-forest)|此选项将帐户林中的已启用用户与 Exchange 资源林中的已禁用用户进行联接。这也称为 Exchange 中的链接邮箱。
+[ObjectSID 和 msExchangeMasterAccountSID](active-directory-aadconnect-topologies.md#multiple-forests-account-resource-forest)|此选项将帐户林中的已启用用户与 Exchange 资源林中的已禁用用户进行联接。这也称为 Exchange 中的链接邮箱。如果你只使用 Lync 并且资源林中没有 Exchange，则你也可以使用此选项。
 sAMAccountName 和 MailNickName|此选项根据预期可以在其中找到用户登录 ID 的属性进行联接。
 我自己的属性|此选项允许你选择自己的属性。**限制：**确保选择 Metaverse 中已存在的属性。如果你选择自定义属性，向导将无法完成。
 
@@ -99,7 +99,8 @@ sAMAccountName 和 MailNickName|此选项根据预期可以在其中找到用户
 
 
 ### 根据组同步筛选
-根据组筛选功能可让你执行小型试验，试验中应该只会在 Azure AD 和 Office 365 内创建一小部分对象。若要使用这项功能，请在 Active Directory 中创建一个组，并添加应该以直接成员身份与 Azure AD 同步的用户和组。你稍后可以在此组中添加和删除用户，以维护应该要在 Azure AD 中显示的对象列表。若要使用这项功能，请在自定义路径中查看以下页面：
+根据组筛选功能可让你执行小型试验，试验中应该只会在 Azure AD 和 Office 365 内创建一小部分对象。若要使用这项功能，请在 Active Directory 中创建一个组，并添加应该以直接成员身份与 Azure AD 同步的用户和组。你稍后可以在此组中添加和删除用户，以维护应该要在 Azure AD 中显示的对象列表。
+若要使用这项功能，请在自定义路径中查看以下页面：
 
 ![同步筛选](./media/active-directory-aadconnect-get-started-custom/filter2.png)
 
@@ -145,7 +146,7 @@ Azure AD 应用程序和属性筛选|通过启用 Azure AD 应用程序和属性
 只需单击几下鼠标，请能使用 Azure AD Connect 配置 AD FS。以下是设置之前需要满足的要求。
 
 - 已启用远程管理的、用作联合服务器的 Windows Server 2012 R2 服务器
-- 已启用远程管理的、用作网站代理服务器的 Windows Server 2012 R2 服务器
+- 已启用远程管理的、用作 Web 应用程序代理服务器的 Windows Server 2012 R2 服务器
 - 你想要使用的联合身份验证服务名称（例如 adfs.contoso.com）的 SSL 证书
 
 ### 创建新的 AD FS 场或使用现有的 AD FS 场
@@ -166,21 +167,21 @@ Azure AD 应用程序和属性筛选|通过启用 Azure AD 应用程序和属性
 ![AD FS 服务器](./media/active-directory-aadconnect-get-started-custom/adfs2.png)
 
 
- 
-### 指定网站代理服务器
-在此处输入你要用作网站代理服务器的特定服务器。网站代理服务器部署在你的外围网络中（面向 Extranet），支持来自 Extranet 的身份验证请求。你可以根据容量规划需求添加一个或多个服务器。我们建议安装一台用于测试和试验部署的网站代理服务器，并通过打开 Azure AD Connect 向其他服务器部署网站代理，来部署更多的服务器。我们通常建议使用数量相当的代理服务器，以满足来自 Intranet 的身份验证要求。
+
+### 指定 Web 应用程序代理服务器
+在此处输入你要用作 Web 应用程序代理服务器的特定服务器。Web 应用程序代理服务器部署在你的外围网络中（面向 Extranet），支持来自 Extranet 的身份验证请求。你可以根据容量规划需求添加一个或多个服务器。我们建议安装一台用于测试和试验部署的 Web 应用程序代理服务器，并通过打开 Azure AD Connect 向其他服务器部署 Web 应用程序代理，来部署更多的服务器。我们通常建议使用数量相当的代理服务器，以满足来自 Intranet 的身份验证要求。
 
 
 > [AZURE.NOTE]
 - 如果用于安装 Azure AD Connect 的帐户不是 AD FS 服务器上的本地管理员，则系统会提示你提供具有足够权限的帐户的凭据。
-- 在配置此步骤之前，请确保 Azure AD Connect 服务器与网站代理服务器之间已建立 HTTP/HTTPS 连接。
-- 此外，请确保网站服务器与 AD FS 服务器之间的 HTTP/HTTPS 连接允许通过身份验证请求。
+- 在配置此步骤之前，请确保 Azure AD Connect 服务器与 Web 应用程序代理服务器之间已建立 HTTP/HTTPS 连接。
+- 此外，请确保 Web 应用程序服务器与 AD FS 服务器之间的 HTTP/HTTPS 连接允许通过身份验证请求。
 
 
-![网站](./media/active-directory-aadconnect-get-started-custom/adfs3.png)
- 
+![Web 应用](./media/active-directory-aadconnect-get-started-custom/adfs3.png)
 
-系统将提示你输入凭据，使网站服务器可以创建与 AD FS 服务器的安全连接。这些凭据需是 AD FS 服务器上的本地管理员。
+
+系统将提示你输入凭据，使 Web 应用程序服务器可以创建与 AD FS 服务器的安全连接。这些凭据需是 AD FS 服务器上的本地管理员。
 
 ![代理](./media/active-directory-aadconnect-get-started-custom/adfs4.png)
  
@@ -207,8 +208,8 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 需要完成以下附加任务才能完成联合配置。
 
 - 针对 Intranet（内部 DNS 服务器）和 Extranet（通过域注册机构注册的公共 DNS）设置 AD FS 联合身份验证服务名称（例如 adfs.contoso.com）的 DNS 记录。对于 Intranet 记录，请确保使用 A 记录而不是 CNAME 记录。只有这样，才能从加入域的计算机正常执行 Windows 身份验证。
-- 如果要部署多个 AD FS 服务器或网站代理服务器，请确保配置负载平衡器，以及指向负载平衡器的 AD FS 联合身份验证服务名称（例如 adfs.contoso.com）的 DNS 记录。
-- 如果要将 Windows 集成身份验证用于 Intranet 中使用 Internet Explorer 的浏览器应用程序，请确保已将 AD FS 联合身份验证服务名称（例如 adfs.contoso.com）添加到 IE 中的 Intranet 区域。此配置可以通过组策略进行控制，并可部署到所有已加入域的计算机中。 
+- 如果要部署多个 AD FS 服务器或 Web 应用程序代理服务器，请确保配置负载平衡器，以及指向负载平衡器的 AD FS 联合身份验证服务名称（例如 adfs.contoso.com）的 DNS 记录。
+- 如果要将 Windows 集成身份验证用于 Intranet 中使用 Internet Explorer 的浏览器应用程序，请确保已将 AD FS 联合身份验证服务名称（例如 adfs.contoso.com）添加到 IE 中的 Intranet 区域。此配置可以通过组策略进行控制，并可部署到所有已加入域的计算机中。
 
 
 ### AD FS 服务中的可选配置
@@ -238,14 +239,16 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 
 此外，请执行以下验证步骤：
 
-- 在已加入域的计算机上通过 Intranet 中的 Internet Explorer 验证浏览器登录：连接到 https://myapps.microsoft.com，然后使用你登录的帐户验证登录。
-- 通过 Extranet 中的任何设备验证浏览器登录：在家庭计算机或移动设备上连接到 https://myapps.microsoft.com，然后提供你的登录 ID 和密码凭据。
-- 验证富客户端登录：连接到 https://testconnectivity.microsoft.com，选择“Office 365”选项卡，然后选择“Office 365 单一登录测试”。
+- 在已加入域的计算机上通过 Intranet 中的 Internet Explorer 验证浏览器登录：连接到 https://myapps.microsoft.com ，然后使用你登录的帐户验证登录。
+- 通过 Extranet 中的任何设备验证浏览器登录：在家庭计算机或移动设备上连接到 https://myapps.microsoft.com ，然后提供你的登录 ID 和密码凭据。
+- 验证富客户端登录：连接到 https://testconnectivity.microsoft.com ，选择“Office 365”选项卡，然后选择“Office 365 单一登录测试”。
 
 
 ## 后续步骤
+安装完成后，请注销并再次登录到 Windows，然后即可使用同步服务管理器或同步规则编辑器。
+
 安装 Azure AD Connect 后，可以[验证安装并分配许可证](/documentation/articles/active-directory-aadconnect-whats-next)。
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

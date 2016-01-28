@@ -9,14 +9,14 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="08/25/2015"
+	ms.date="11/30/2015"
 	wacn.date=""/>
 
 # 移动服务中的用户服务端授权
 
-> [AZURE.SELECTOR-LIST (平台 | 后端)]
-- [(任意 | .NET)](/documentation/articles/mobile-services-dotnet-backend-service-side-authorization)
-- [(任意 | Javascript)](/documentation/articles/mobile-services-javascript-backend-service-side-authorization)
+> [AZURE.SELECTOR]
+- [(Any | .NET)](/documentation/articles/mobile-services-dotnet-backend-service-side-authorization)
+- [(Any | Javascript)](/documentation/articles/mobile-services-javascript-backend-service-side-authorization)
 
 本主题说明如何使用服务器端脚本为用户授权。在本教程中，你将在 Azure 移动服务中注册脚本，根据用户 ID 筛选查询，然后只授予用户对其自己数据的访问权限。根据用户 ID 筛选用户的查询结果是最基本的授权形式。根据具体的方案，你可能还需要创建“用户”或“角色”表，以跟踪更详细的用户授权信息，例如，给定的用户有权访问哪些终结点。
 
@@ -24,7 +24,7 @@
 
 ## <a name="register-scripts"></a>注册脚本
 
-1. 登录到 [Azure 管理门户]，单击“移动服务”，然后单击你的移动服务。单击“数据”选项卡，然后单击 **TodoItem** 表。
+1. 登录到 [Azure 经典门户]，单击“移动服务”，然后单击你的移动服务。单击“数据”选项卡，然后单击 **TodoItem** 表。
 
 2. 单击“脚本”，选择“Insert”操作，将现有脚本替换为以下函数，然后单击“保存”。
 
@@ -35,7 +35,7 @@
 
 	在插入之前，此脚本会在项中添加已经过身份验证的用户的用户 ID。
 
-    >[AZURE.NOTE]请确保已启用[“动态架构”](https://msdn.microsoft.com/zh-cn/library/azure/jj193175.aspx)。否则，不会自动添加 *userId* 列。默认情况下，已经为新的移动服务启用了此设置。
+    >[AZURE.NOTE]请确保已启用“动态架构”[](https://msdn.microsoft.com/zh-cn/library/azure/jj193175.aspx)。否则，不会自动添加 *userId* 列。默认情况下，已经为新的移动服务启用了此设置。
 
 3. 同样，请将现有的 **Read** 操作替换为以下函数。此脚本将会筛选返回的 TodoItem 对象，使用户只会收到他们自己的插入项。
 
@@ -61,7 +61,9 @@
 [Windows Push Notifications & Live Connect]: http://go.microsoft.com/fwlink/p/?LinkID=257677
 [Mobile Services server script reference]: /documentation/articles/mobile-services-how-to-use-server-scripts
 [My Apps dashboard]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[向现有移动服务应用添加身份验证]: /documentation/articles/mobile-services-ios-get-started-users
-[Azure 管理门户]: https://manage.windowsazure.cn/
+[向现有移动服务应用添加身份验证]:/documentation/articles/ mobile-services-ios-get-started-users
 
-<!---HONumber=74-->
+[Azure 经典门户]: https://manage.windowsazure.cn/
+ 
+
+<!---HONumber=Mooncake_0118_2016-->

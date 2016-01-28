@@ -10,7 +10,7 @@
 
 <tags
    ms.service="virtual-network"
-   ms.date="08/14/2015"
+   ms.date="12/07/2015"
    wacn.date=""/>
 
 # Azure 部署模型
@@ -44,7 +44,6 @@ Azure 平台正在转换。不论你是 Azure 新手还是经验丰富的老手�
 Azure 有两个门户：
 
 - **[Azure 门户](https://manage.windowsazure.cn)：**如果你已使用 Azure 一段时间，便已用过此门户。该门户用于创建和配置可支持经典部署模型的旧式 Azure 资源。你无法使用它来创建或配置仅支持资源管理器的资源。 
-- **[Azure 门户](http://azure.microsoft.com/overview/preview-portal/)：**如果你使用较新的 Azure 资源，则可能已用过此门户。它可以用于创建和配置某些 Azure 资源。最终你可以用它来创建和配置所有 Azure 资源。对于支持两种部署模型的某些资源，此门户可用于创建和配置使用任何一种部署模型的资源。 
 
 某些资源和功能只可以在其中一个门户中创建和配置。某些资源或功能还不能在任何一个门户中创建或配置，而只能通过 PowerShell 和/或 CLI 进行配置。每种 Azure 资源的文档详述了可用于创建该资源的方法。
 
@@ -64,4 +63,4 @@ Azure 有两个门户：
 - 了解如何[设计模板](/best-practices-resource-manager-design-templates.md)。
 - 使用[最佳实践](/best-practices-resource-manager-examples.md)
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

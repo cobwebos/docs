@@ -8,8 +8,8 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="08/04/2015"
-	wacn.date=""/>
+	ms.date="12/01/2015"
+	wacn.date="" />
 
 # 弹性数据库作业入门
 
@@ -23,9 +23,9 @@ Azure SQL 数据库的弹性数据库作业（预览版）可让你跨多个数�
 
 ## 使用示例应用程序创建分片映射管理器
 
-在此处，你将创建分片映射管理器以及多个分片，然后将数据插入分片。如果你的分片中正好设置了分片数据，则你可以跳过下面的步骤，直接转到下一部分。
+在此处，你将创建分片映射管理器以及多个分片，然后将数据插入分片。如果你的分片中设置了分片数据，则你可以跳过下面的步骤，直接转到下一部分。
 
-1. 生成并运行**弹性数据库工具入门**示例应用程序。一直执行到[下载和运行示例应用](/documentation/articles/sql-database-elastic-scale-get-started#Getting-started-with-elastic-database-tools)部分中的步骤 7。在步骤 7 结束时，你将看到以下命令提示符：
+1. 生成并运行**弹性数据库工具入门**示例应用程序。一直执行到[下载和运行示例应用](/documentation/articles/sql-database-elastic-scale-get-started/#Getting-started-with-elastic-database-tools)部分中的步骤 7。在步骤 7 结束时，你将看到以下命令提示符：
 
 	![命令提示符][1]
 
@@ -272,7 +272,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
  
 ## 取消作业
 
-弹性数据库作业支持取消作业请求。如果弹性数据库作业检测到当前正在执行作业的取消请求，它将尝试停止作业。
+弹性数据库作业支持作业取消请求。如果弹性数据库作业检测到当前正在执行作业的取消请求，它将尝试停止作业。
 
 弹性数据库作业可通过两种不同的方式执行取消：
 
@@ -375,7 +375,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 ## 使用作业触发器创建作业执行计划
 
-以下 PowerShell 脚本可用于创建重复计划。此脚本使用分钟间隔，但是 New-AzureSqlJobSchedule 也支持 -DayInterval、-HourInterval、-MonthInterval 和 -WeekInterval 参数。可以通过传递 -OneTime 来创建仅执行一次的计划。
+以下 PowerShell 脚本可用于创建重复计划。此脚本使用一分钟间隔，但是 New-AzureSqlJobSchedule 也支持 -DayInterval、-HourInterval、-MonthInterval 和 -WeekInterval 参数。可以通过传递 -OneTime 来创建仅执行一次的计划。
 
 创建新计划：
 
@@ -443,4 +443,4 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

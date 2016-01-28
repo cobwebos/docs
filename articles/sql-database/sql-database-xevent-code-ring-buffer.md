@@ -10,9 +10,9 @@
 
 
 <tags 
-	ms.service="sql-database"
+	ms.service="sql-database" 
 	ms.date="10/22/2015" 
-	wacn.date="09/15/2015"/>
+	wacn.date=""/>
 
 
 # SQL 数据库中扩展事件的环形缓冲区目标代码
@@ -47,7 +47,7 @@
 ## 先决条件
 
 
-- Azure 帐户和订阅。你可以注册[免费试用版](http://azure.microsoft.com/pricing/free-trial/)。
+- Azure 帐户和订阅。你可以注册[试用版](/pricing/1rmb-trial)。
 
 
 - 可以在其中创建表的任何数据库。
@@ -373,4 +373,4 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/zh-cn/library/bb630355.aspx)
 -->
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

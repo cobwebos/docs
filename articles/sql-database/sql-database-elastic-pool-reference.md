@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="sql-database"
-	ms.date="10/08/2015" 
+	ms.date="12/01/2015" 
 	wacn.date=""/>
 
 
@@ -28,8 +28,8 @@
 ## 创建和管理弹性数据库池的先决条件
 
 
-- 弹性数据库池只能在 Azure SQL 数据库 V12 服务器中使用。   
-- 只有针对 Azure 资源管理器使用[门户](https://manage.windowsazure.cn)、PowerShell 和 .NET 客户端库（REST API 的包装）才支持创建和管理弹性数据库池；[门户](https://manage.windowsazure.cn/)和服务管理命令不受支持。 
+- 弹性数据库池只能在 Azure SQL 数据库 V12 服务器中使用。若要升级到 V12 并将数据库迁移直接到池中，请参阅[升级到 Azure SQL 数据库 V12](/documentation/articles/sql-database-upgrade-server-powershell)。
+- 只有针对 Azure 资源管理器使用 [Azure 门户](https://manage.windowsazure.cn)、PowerShell 和 .NET 客户端库（REST API 的包装）才支持创建和管理弹性数据库池；[经典门户](https://manage.windowsazure.cn)和服务管理命令不受支持。
 - 此外，还支持使用 Transact-SQL 创建新的弹性数据库，以及将现有数据库移入和移出弹性数据库池。
 
 
@@ -72,7 +72,7 @@
 弹性数据库池是 Microsoft Azure SQL 数据库中“ElasticPool”类型的 Azure 资源管理器资源。
 
 - **命名空间**：Microsoft.Sql/ElasticPool
-- 用于 REST API 调用的**管理终结点**（资源管理器）：https://management.windowsazure.cn
+- 用于 REST API 调用的**管理终结点**（资源管理器）：https://manage.windowsazure.cn
 
 
 
@@ -145,17 +145,16 @@ Azure SQL 数据库 V12 服务器位于资源组中。
 
 有几个 PowerShell cmdlet 和 REST API 命令可用于创建和管理弹性池。有关详细信息和代码示例，请参阅[使用 PowerShell 创建和管理 SQL 数据库弹性数据库池](/documentation/articles/sql-database-elastic-pool-powershell)和[使用 C# 创建和管理 SQL 数据库](/documentation/articles/sql-database-client-library)。
 
-> [AZURE.IMPORTANT]从 Azure PowerShell 1.0 预览版开始，Switch-AzureMode cmdlet 不再可用，并且 Azure ResourceManger 模块中的 cmdlet 已重命名。有关详细信息，请参阅[弃用 Azure PowerShell 中的 Switch-AzureMode](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell)。
 
-| [PowerShell cmdlet](https://msdn.microsoft.com/zh-cn/library/mt163521.aspx) | [REST API 命令](https://msdn.microsoft.com/library/mt163571.aspx) |
+| [PowerShell cmdlet](https://msdn.microsoft.com/zh-cn/library/mt163521.aspx) | [REST API 命令](https://msdn.microsoft.com/zh-cn/library/mt163571.aspx) |
 | :-- | :-- |
-| [New-AzureRMSqlElasticPool](https://msdn.microsoft.com/zh-cn/library/azure/mt619378.aspx) | [创建弹性数据库池](https://msdn.microsoft.com/library/mt163596.aspx) |
-| [Set-AzureRMSqlElasticPool](https://msdn.microsoft.com/zh-cn/library/azure/mt603511.aspx) | [设置弹性数据库池的性能设置](https://msdn.microsoft.com/library/mt163641.aspx) |
-| [Remove-AzureRMSqlElasticPool](https://msdn.microsoft.com/zh-cn/library/azure/mt619355.aspx) | [删除弹性数据库池](https://msdn.microsoft.com/library/mt163672.aspx) |
-| [Get-AzureRMSqlElasticPool](https://msdn.microsoft.com/zh-cn/library/azure/mt603517.aspx) | [获取弹性数据库池及其属性值](https://msdn.microsoft.com/zh-CN/library/mt163646.aspx) |
-| [Get-AzureRMSqlElasticPoolActivity](https://msdn.microsoft.com/zh-cn/library/azure/mt603812.aspx) | [获取弹性数据库池的操作状态](https://msdn.microsoft.com/library/mt163669.aspx) |
-| [Get-AzureRMSqlElasticPoolDatabase](https://msdn.microsoft.com/zh-cn/library/azure/mt619484.aspx) | [获取弹性数据库池中的数据库](https://msdn.microsoft.com/library/mt163646.aspx) |
-| [Get-AzureRMSqlElasticPoolDatabaseActivity]() | [获取将数据库移入和移出池的状态](https://msdn.microsoft.com/zh-cn/library/mt163669.aspx) |
+| [New-AzureRmSqlElasticPool](https://msdn.microsoft.com/zh-cn/library/azure/mt619378.aspx) | [创建弹性数据库池](https://msdn.microsoft.com/zh-cn/library/mt163596.aspx) |
+| [Set-AzureRmSqlElasticPool](https://msdn.microsoft.com/zh-cn/library/azure/mt603511.aspx) | [设置弹性数据库池的性能设置](https://msdn.microsoft.com/zh-cn/library/mt163641.aspx) |
+| [Remove-AzureRmSqlElasticPool](https://msdn.microsoft.com/zh-cn/library/azure/mt619355.aspx) | [删除弹性数据库池](https://msdn.microsoft.com/zh-cn/library/mt163672.aspx) |
+| [Get-AzureRMSqlElasticPool](https://msdn.microsoft.com/zh-cn/library/azure/mt603517.aspx) | [获取弹性数据库池及其属性值](https://msdn.microsoft.com/zh-cn/library/mt163646.aspx) |
+| [Get-AzureRmSqlElasticPoolActivity](https://msdn.microsoft.com/zh-cn/library/azure/mt603812.aspx) | [获取弹性数据库池的操作状态](https://msdn.microsoft.com/zh-cn/library/mt163669.aspx) |
+| [Get-AzureRmSqlElasticPoolDatabase](https://msdn.microsoft.com/zh-cn/library/azure/mt619484.aspx) | [获取弹性数据库池中的数据库](https://msdn.microsoft.com/zh-cn/library/mt163646.aspx) |
+| [Get-AzureRmSqlElasticPoolDatabaseActivity]() | [获取将数据库移入和移出池的状态](https://msdn.microsoft.com/zh-cn/library/mt163669.aspx) |
 
 ## Transact-SQL
 
@@ -163,9 +162,9 @@ Azure SQL 数据库 V12 服务器位于资源组中。
 
 | 任务 | 详细信息 |
 | :-- | :-- |
-| 创建新的弹性数据库（直接在池中创建） | [CREATE DATABASE（Azure SQL 数据库）](https://msdn.microsoft.com/library/dn268335.aspx) |
-| 将现有数据库移入和移出池 | [ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/ms174269.aspx) |
-| 获取池的资源使用情况统计信息 | [sys.elastic\_pool\_resource\_stats（Azure SQL 数据库）](https://msdn.microsoft.com/library/mt280062.aspx) |
+| 创建新的弹性数据库（直接在池中创建） | [CREATE DATABASE（Azure SQL 数据库）](https://msdn.microsoft.com/zh-cn/library/dn268335.aspx) |
+| 将现有数据库移入和移出池 | [ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/zh-cn/library/ms174269.aspx) |
+| 获取池的资源使用情况统计信息 | [sys.elastic\_pool\_resource\_stats（Azure SQL 数据库）](https://msdn.microsoft.com/zh-cn/library/mt280062.aspx) |
 
 
 ## 计费和定价信息
@@ -207,4 +206,4 @@ Azure SQL 数据库 V12 服务器位于资源组中。
 | 40891 | EX\_USER | 每个数据库的 DTU 最小值 (%d) 不能超过每个数据库的 DTU 最大值 (%d)。| 每个数据库的 DTU 最小值；每个数据库的 DTU 最大值。| 尝试将每个数据库的 DTU 最小值设置为高于每个数据库的 DTU 最大值。| 请确保每个数据库的 DTU 最小值不超过每个数据库的 DTU 最大值。|
 | 待定 | EX\_USER | 弹性池中每个数据库的存储大小不能超过“%.*ls”服务层弹性池所允许的最大大小。| 弹性池服务层 | 数据库的最大大小超过弹性池服务层允许的最大大小。| 请将数据库的最大大小设置为处于弹性池服务层允许的最大大小限制范围内。|
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0118_2016-->

@@ -27,7 +27,7 @@
 ```
 
 
-* 在管理门户中单击“移动服务”，然后单击移动服务。单击“仪表板”选项卡，并记下“站点 URL”。然后单击“管理密钥”，并记下“应用程序密钥”。从应用代码访问移动服务时，您需要使用这些值。
+* 在 [Azure 经典门户](https://manage.windowsazure.cn/)中单击“移动服务”，然后单击该移动服务。单击“仪表板”选项卡，并记下“站点 URL”。然后单击“管理密钥”，并记下“应用程序密钥”。从应用代码访问移动服务时，您需要使用这些值。
 
 
 * 在 **TodoService.m** 中找到以下行：
@@ -88,10 +88,11 @@ self.items = [results mutableCopy];
 
 * 找到 **addItem** 方法，并将其正文替换为以下代码。此代码会将一个插入请求发送到移动服务。
 
-        // Insert the item into the TodoItem table and add to the items array on completion
-        [self.table insert:item completion:^(NSDictionary *result, NSError *error) {
-            NSUInteger index = [items count];
-            [(NSMutableArray *)items insertObject:item atIndex:index];
+```
+// Insert the item into the TodoItem table and add to the items array on completion
+[self.table insert:item completion:^(NSDictionary *result, NSError *error) {
+    NSUInteger index = [items count];
+    [(NSMutableArray *)items insertObject:item atIndex:index];
 
             // Let the caller know that we finished
             completion(index);
@@ -145,4 +146,4 @@ self.items = [results mutableCopy];
 }
 ```
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0118_2016-->

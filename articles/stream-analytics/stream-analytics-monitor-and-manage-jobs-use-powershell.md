@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="使用 PowerShell 监视和管理流分析作业 | Microsoft Azure" 
 	description="了解如何使用 Azure PowerShell 和 cmdlet 监视和管理流分析作业。" 
-	keywords="azure powershell,azure powershell cmdlet,powershell 命令"	
+	keywords="azure powershell、azure powershell cmdlet、powershell 命令、powershell 脚本"	
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -10,18 +10,17 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="10/06/2015" 
+	ms.date="12/04/2015" 
 	wacn.date=""/>
 
 
 # 使用 Azure PowerShell cmdlet 监视和管理流分析作业
 
-了解如何使用可执行基本流分析任务的 Azure PowerShell cmdlet 来监视和管理流分析资源。
-
+了解如何使用可执行基本流分析任务的 Azure PowerShell cmdlet 和 PowerShell 脚本来监视和管理流分析资源。
 
 ## 针对流分析运行 Azure PowerShell cmdlet 的先决条件
 
- - 在订阅中创建 Azure 资源组。下面是 Azure PowerShell 脚本示例。有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell)；  
+ - 在订阅中创建 Azure 资源组。下面是 Azure PowerShell 脚本示例。有关 Azure PowerShell 的信息，请参阅[安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)；  
 
 
  		# Log in to your Azure account
@@ -30,9 +29,12 @@
 		# Select the Azure subscription you want to use to create the resource group
 		Select-AzureSubscription -SubscriptionName <subscription name>
  
-		# Create an Azure resource group	
+		# Set the appropriate Azure mode to access Stream Analytics cmdlets
+		Switch-AzureMode AzureResourceManager
+
+		# Optional - Create an Azure resource group	
 			# If Stream Analytics has not been registered to the subscription, remove remark symbol below (#) to run the Register-AzureRMProvider cmdlet to register the provider namespace
-			#Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
+		#Register-AzureProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 
 		# Create an Azure resource group
 		New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
@@ -257,7 +259,7 @@
 此 PowerShell 命令测试 StreamingJob 中输出 Output 的连接状态。
 
 ## 获取支持
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)。
 
 
 ## 后续步骤
@@ -272,18 +274,18 @@
 
 
 [msdn-switch-azuremode]: http://msdn.microsoft.com/zh-cn/library/dn722470.aspx
-[powershell-install]: http://azure.microsoft.com/documentation/articles/install-configure-powershell/
+[powershell-install]: /documentation/articles/powershell-install-configure/
 [msdn-rest-api-create-stream-analytics-job]: https://msdn.microsoft.com/zh-cn/library/dn834994.aspx
 [msdn-rest-api-create-stream-analytics-input]: https://msdn.microsoft.com/zh-cn/library/dn835010.aspx
 [msdn-rest-api-create-stream-analytics-output]: https://msdn.microsoft.com/zh-cn/library/dn835015.aspx
 [msdn-rest-api-create-stream-analytics-transformation]: https://msdn.microsoft.com/zh-cn/library/dn835007.aspx
 
-[stream.analytics.introduction]: /documentation/articles/stream-analytics-introduction
-[stream.analytics.get.started]: /documentation/articles/stream-analytics-get-started
-[stream.analytics.developer.guide]: /documentation/articles/stream-analytics-developer-guide
-[stream.analytics.scale.jobs]: /documentation/articles/stream-analytics-scale-jobs
+[stream.analytics.introduction]: stream-analytics-introduction.md
+[stream.analytics.get.started]: stream-analytics-get-started.md
+[stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
+[stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
  
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0118_2016-->

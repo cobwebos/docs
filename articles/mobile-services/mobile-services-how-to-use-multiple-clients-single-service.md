@@ -1,6 +1,6 @@
 <properties
 	pageTitle="如何在多个客户端上使用单个移动服务后端 | Azure 移动服务"
-	description="了解如何在面向不同移动平台的多个客户端应用程序上使用单个移动服务后端。"
+	description="了解如何在面向不同移动平台的多个客户端应用上使用单个移动服务后端。"
 	services="mobile-services"
 	documentationCenter=""
 	authors="ggailey777"
@@ -8,12 +8,15 @@
 	editor="mollybos"/>
 <tags 
 	ms.service="mobile-services" 
-	ms.date="09/16/2015"
+	ms.date="12/07/2015"
 	wacn.date=""/>
 
 # 通过单个移动服务支持多个设备平台
  
-在移动应用程序开发中使用 Azure 移动服务的主要优势之一在于，能够使用单个后端服务来支持多个客户端平台上的应用程序。移动服务为所有主要设备平台提供了本机客户端库，让你更轻松地使用单个后端服务，通过跨平台开发人员工具开发应用程序。本主题讨论在使用单个移动服务后端时让应用程序运行在多个客户端平台上的注意事项。
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+在移动应用开发中使用 Azure 移动服务的主要优势之一在于，能够使用单个后端服务来支持多个客户端平台上的应用。移动服务为所有主要设备平台提供了本机客户端库，让你更轻松地使用单个后端服务，通过跨平台开发人员工具开发应用程序。本主题讨论在使用单个移动服务后端时让应用程序运行在多个客户端平台上的注意事项。
 
 ##<a id="push"></a>跨平台推送通知
 
@@ -165,4 +168,4 @@
 [Building universal Windows apps for all Windows devices]: http://go.microsoft.com/fwlink/p/?LinkId=509905
 [Universal Windows app project for Azure Mobile Services using MVVM]: http://code.msdn.microsoft.com/Universal-Windows-app-for-db3564de
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

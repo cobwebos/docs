@@ -9,11 +9,14 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="10/01/2015"
+	ms.date="12/06/2015"
 	wacn.date=""/>
 
 # 向移动服务应用程序添加推送通知
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
 
 本主题说明如何使用 Azure 移动服务向 Android 应用程序发送推送通知。在本教程中，你将要使用 Google Cloud Messaging (GCM) 向快速入门项目添加推送通知。完成本教程后，每次插入一条记录时，你的移动服务就会发送一条推送通知。
@@ -71,21 +74,21 @@
 本教程演示了启用 Android 应用程序以便使用移动服务和通知中心发送推送通知的基础知识。建议你接下来完成下一篇教程 [向经过身份验证的用户发送推送通知]，其中说明了如何使用标记来做到只将推送通知从移动服务发送到经过身份验证的用户。
 
 + [将广播通知发送到订户]
-<br/>了解用户如何注册和接收他们感兴趣的类别的推送通知。
+  <br/>了解用户如何注册和接收他们感兴趣的类别的推送通知。
 
 + [将基于模板的通知发送到订户]
-<br/>了解如何使用模板从移动服务发送推送通知，且不会在后端中产生平台特定的负载。
+  <br/>了解如何使用模板从移动服务发送推送通知，且不会在后端中产生平台特定的负载。
 
 通过以下主题了解有关移动服务和通知中心的详细信息：
 
-* [什么是通知中心？] 
-<br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
+* [什么是通知中心？]
+  <br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
 
 * [调试通知中心应用程序](http://go.microsoft.com/fwlink/p/?linkid=386630)
-</br>获取有关对通知中心解决方案进行故障排除和调试的指导。
+  </br>获取有关对通知中心解决方案进行故障排除和调试的指导。
 
 * [如何使用适用于移动服务的 Android 客户端库 ]
-<br/>了解有关如何将移动服务与 Android 一起使用的详细信息。
+  <br/>了解有关如何将移动服务与 Android 一起使用的详细信息。
   
 <!-- Anchors. -->
 
@@ -105,7 +108,6 @@
 <!-- URLs. -->
 [Get started with push notifications (Eclipse)]: /documentation/articles/mobile-services-dotnet-backend-android-get-started-push-ec
 [移动服务入门]: /documentation/articles/mobile-services-dotnet-backend-android-get-started
-[Management Portal]: https://manage.windowsazure.cn/
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 
 [如何使用适用于移动服务的 Android 客户端库 ]: /documentation/articles/mobile-services-android-how-to-use-client-library
@@ -113,6 +115,6 @@
 [什么是通知中心？]: /documentation/articles/notification-hubs-overview
 [将广播通知发送到订户]: /documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news
 [将基于模板的通知发送到订户]: /documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news
-[Azure Management Portal]: https://manage.windowsazure.cn/
+[Azure classic portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

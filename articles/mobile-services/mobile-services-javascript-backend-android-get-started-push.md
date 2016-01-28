@@ -55,7 +55,7 @@
 [AZURE.INCLUDE [mobile-services-android-getting-started-with-push](../includes/mobile-services-android-getting-started-with-push.md)]
 
 
-## 在管理门户中更新已注册的插入脚本
+## 在 Azure 经典门户中更新已注册的插入脚本
 
 [AZURE.INCLUDE [mobile-services-javascript-backend-android-push-insert-script](../includes/mobile-services-javascript-backend-android-push-insert-script.md)]
 
@@ -111,19 +111,19 @@
 通过以下主题了解有关移动服务和通知中心的详细信息：
 
 * [身份验证入门 ]
-<br/>了解如何通过移动服务对使用不同帐户类型的应用程序用户进行身份验证。
+  <br/>了解如何通过移动服务对使用不同帐户类型的应用程序用户进行身份验证。
 
-* [什么是通知中心？] 
-<br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
+* [什么是通知中心？]
+  <br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
 
 * [调试通知中心应用程序](http://go.microsoft.com/fwlink/p/?linkid=386630)
-</br>获取有关对通知中心解决方案进行故障排除和调试的指导。
+  </br>获取有关对通知中心解决方案进行故障排除和调试的指导。
 
 * [如何使用适用于移动服务的 Android 客户端库 ]
-<br/>了解有关如何将移动服务与 Android 一起使用的详细信息。
+  <br/>了解有关如何将移动服务与 Android 一起使用的详细信息。
 
 * [移动服务服务器脚本参考]
-<br/>了解有关如何在移动服务中实施业务逻辑的详细信息。
+  <br/>了解有关如何在移动服务中实施业务逻辑的详细信息。
 
 
 <!-- Anchors. -->
@@ -147,7 +147,7 @@
 [Authorize users with scripts]: /zh-cn/documentation/articles/mobile-services-windows-store-javascript-authorize-users-in-scripts
 [JavaScript and HTML]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-with-push-js
 [设置 Google Play Services SDK]: http://go.microsoft.com/fwlink/?LinkId=389801
-[Azure Management Portal]: https://manage.windowsazure.cn/
+[Azure classic portal]: https://manage.windowsazure.cn/
 [如何使用适用于移动服务的 Android 客户端库 ]: /documentation/articles/mobile-services-android-how-to-use-client-library
 [gcm object]: http://go.microsoft.com/fwlink/p/?LinkId=282645
 
@@ -158,4 +158,4 @@
 [Send broadcast notifications to subscribers]: /documentation/articles/notification-hubs-android-send-breaking-news
 [Send template-based notifications to subscribers]: /documentation/articles/notification-hubs-android-send-localized-breaking-news
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

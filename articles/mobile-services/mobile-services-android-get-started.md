@@ -14,6 +14,9 @@
 
 # 适用于 Android 的移动服务入门（JavaScript 后端）
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 [AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
 
 &nbsp;
@@ -43,11 +46,11 @@
 
 ## 创建新的 Android 应用程序
 
-创建移动服务后，你可以在管理门户中遵照一个简易的快速入门项目来创建新应用程序或修改现有应用程序，以连接到你的移动服务。
+创建移动服务后，你可以在 Azure 经典门户中遵照一个简易的快速入门项目来创建新应用程序或修改现有应用程序，以连接到你的移动服务。
 
 在本部分中，你将要创建一个连接到移动服务的新的 Android 应用程序。
 
-1.  在管理门户中单击“移动服务”，然后单击你刚刚创建的移动服务。
+1.  在 **Azure 经典门户**中单击“移动服务”，然后单击你刚刚创建的移动服务。
 
 2. 在快速入门选项卡中，单击“选择平台”下的“Android”，然后展开“创建新的 Android 应用程序”。
 
@@ -78,7 +81,7 @@
 * [身份验证入门]
   <br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
 
-* [推送通知入门]
+* [推送通知入门 ]
   <br/>了解如何向应用程序发送一条很基本的推送通知。
 
 
@@ -89,9 +92,9 @@
 [Get started (Eclipse)]: /documentation/articles/mobile-services-android-get-started-ec
 [数据处理入门]: /documentation/articles/mobile-services-android-get-started-data
 [身份验证入门]: /documentation/articles/mobile-services-android-get-started-users
-[推送通知入门]: /documentation/articles/mobile-services-javascript-backend-android-get-started-push
+[推送通知入门 ]: /documentation/articles/mobile-services-javascript-backend-android-get-started-push
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
 [Management Portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

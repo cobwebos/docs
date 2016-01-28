@@ -10,7 +10,7 @@
 
 <tags
    ms.service="azure-security"
-   ms.date="09/03/2015"
+   ms.date="12/10/2015"
    wacn.date=""/>
 
 #有关 Microsoft Azure IaaS 上软件更新的最佳实践
@@ -71,7 +71,7 @@
 
 ## 软件更新注意事项
 
-在对企业中所用的软件执行初始审核之后，你应该根据使用的软件更新管理系统，确定设置软件更新管理系统的要求。对于 WSUS，请参阅 [Windows Server Update Services 最佳实践](https://technet.microsoft.com/zh-CN/library/Cc708536)；对于系统中心，请参阅[在 Configuration Manager 中规划软件更新](https://technet.microsoft.com/zh-CN/library/gg712696)。
+在对企业中所用的软件执行初始审核之后，你应该根据使用的软件更新管理系统，确定设置软件更新管理系统的要求。对于 WSUS，请参阅 [Windows Server Update Services 最佳实践](https://technet.microsoft.com/zh-cn/library/Cc708536)；对于系统中心，请参阅[在 Configuration Manager 中规划软件更新](https://technet.microsoft.com/zh-cn/library/gg712696)。
 
 但是，无论使用的解决方案为何，都有一些适用的常规注意事项和最佳实践，后面的部分将会介绍。
 
@@ -83,13 +83,13 @@
 
 -   **创建包含参考计算机的预生产集合**：预生产集合应该包含操作系统版本、业务线软件以及企业中运行的其他软件的代表性配置。
 
-还应该考虑软件更新服务器的位置：位于云上的 Azure IaaS 基础结构中还是在本地。这是一项重要决策，因为你需要评估本地资源与 Azure 基础结构之间的流量。有关如何将本地基础结构连接到 Azure 的详细信息，请阅读[将本地网络连接到 Microsoft Azure 虚拟网络](https://technet.microsoft.com/zh-CN/library/Dn786406.aspx)。
+还应该考虑软件更新服务器的位置：位于云上的 Azure IaaS 基础结构中还是在本地。这是一项重要决策，因为你需要评估本地资源与 Azure 基础结构之间的流量。有关如何将本地基础结构连接到 Azure 的详细信息，请阅读[将本地网络连接到 Microsoft Azure 虚拟网络](https://technet.microsoft.com/zh-cn/library/Dn786406.aspx)。
 
-根据当前的基础结构以及当前使用的软件更新系统，用于确定更新服务器位置的设计选项会有所不同。对于 WSUS，请参阅[在组织中部署 Windows Server Update Services](https://technet.microsoft.com/zh-CN/library/hh852340.aspx)，对于 System Center Configuration Manager，请参阅[在 Configuration Manager 中规划站点和层次结构](https://technet.microsoft.com/zh-CN/library/Gg712681.aspx)。
+根据当前的基础结构以及当前使用的软件更新系统，用于确定更新服务器位置的设计选项会有所不同。对于 WSUS，请参阅[在组织中部署 Windows Server Update Services](https://technet.microsoft.com/zh-cn/library/hh852340.aspx)，对于 System Center Configuration Manager，请参阅[在 Configuration Manager 中规划站点和层次结构](https://technet.microsoft.com/zh-cn/library/Gg712681.aspx)。
 
 ### 备份
 
-定期备份很重要，不只是对软件更新管理平台本身而言，对即将更新的服务器而言也是如此。采用[变更管理过程](https://technet.microsoft.com/zh-CN/library/cc543216.aspx)的组织要求 IT 部门合理解释需要更新服务器的原因、预估的停机时间以及可能的影响。为了确保在更新失败时能采用回滚配置，请务必定期备份系统。
+定期备份很重要，不只是对软件更新管理平台本身而言，对即将更新的服务器而言也是如此。采用[变更管理过程](https://technet.microsoft.com/zh-cn/library/cc543216.aspx)的组织要求 IT 部门合理解释需要更新服务器的原因、预估的停机时间以及可能的影响。为了确保在更新失败时能采用回滚配置，请务必定期备份系统。
 
 Azure IaaS 的某些备份选项包括：
 
@@ -115,4 +115,4 @@ Azure IaaS 的某些备份选项包括：
 
 使用本文中所述的指导原则可以帮助判断适用于 Azure IaaS 中虚拟机软件更新的最佳选项。传统数据中心与 Azure IaaS 之间的软件更新最佳实践有许多相似之处，因此建议评估当前的软件更新策略，以包含 Azure VM 并将本文中的相关最佳实践纳入整个软件更新过程。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="azure-resource-manager"
-	ms.date="08/13/2015"
+	ms.date="12/17/2015"
 	wacn.date=""/>
 
 # 设计 Azure 资源管理器模板的最佳实践
@@ -379,4 +379,4 @@ Redis 只使用单一节点类型，因此你将要创建名为 node-resources.j
 - 至于如何在 Azure 资源管理器中处理安全事项，请参阅 [Azure 资源管理器的安全注意事项](/documentation/articles/best-practices-resource-manager-security)以获取相关建议
 - 若要了解进出模板的状态，请参阅[共享 Azure 资源管理器模板中的状态](/documentation/articles/best-practices-resource-manager-state)。
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0118_2016-->

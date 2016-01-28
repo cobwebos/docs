@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="使用 WebJobs 运行后台任务" 
-	description="了解如何在 Azure Web Apps 中运行后台任务。" 
+	description="了解如何在 Azure 网站中运行后台任务。" 
 	services="app-service" 
 	documentationCenter="" 
 	authors="tdykstra" 
@@ -16,17 +16,11 @@
 
 ## 概述
 
-你可以使用三种方式在 [Azure 网站](/documentation/services/web-sites/) Web 应用的 Web 作业中运行程序或脚本，即：按需、连续或按计划。使用 Web 作业无需支付额外的费用。
+你可以使用三种方式在 [Azure 网站](/documentation/services/web-sites/)网站的 Web 作业中运行程序或脚本，即：按需、连续或按计划。使用 Web 作业无需支付额外的费用。
 
-本文说明如何使用 [Azure 管理门户](https://manage.windowsazure.cn/)来部署 Web 作业。有关如何使用 Visual Studio 或连续交付过程进行部署的信息，请参阅[如何将 Azure Web 作业部署到 Web Apps](/documentation/articles/websites-dotnet-deploy-webjobs)。
+本文说明如何使用 [Azure 管理门户](https://manage.windowsazure.cn)来部署 Web 作业。有关如何使用 Visual Studio 或连续交付过程进行部署的信息，请参阅[如何将 Azure Web 作业部署到网站](/documentation/articles/websites-dotnet-deploy-webjobs)。
 
 Azure WebJobs SDK 简化了许多 Web 作业编程任务。有关详细信息，请参阅[什么是 WebJobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk)。
-<!-- deleted by customization
-
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../includes/app-service-web-to-api-and-mobile.md)] 
-
--->
-<!-- keep by customization: begin -->
 ## 目录 ##
 - [可接受的脚本文件类型](#acceptablefiles)
 - [创建按需运行任务](#CreateOnDemand)
@@ -36,7 +30,7 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。有关详细信息，
 - [查看作业历史记录](#ViewJobHistory)
 - [说明](#WHPNotes)
 - [后续步骤](#NextSteps)
-<!-- keep by customization: end -->
+
 ## <a name="acceptablefiles"></a>可接受的脚本或程序文件类型
 
 接受以下文件类型：
@@ -50,42 +44,6 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。有关详细信息，
 * .jar（使用 java）
 
 ## <a name="CreateOnDemand"></a>在门户中创建按需 Web 作业
-<!-- deleted by customization
-
-1. In the **Web App** blade of the [Azure Management Portal](http://manage.windowsazure.cn), click **All settings > WebJobs** to show the **WebJobs** blade.
-	
-	![WebJob blade](./media/web-sites-create-web-jobs/wjblade.png)
-	
-5. Click **Add**. The **Add WebJob** dialog appears.
-	
-	![Add WebJob blade](./media/web-sites-create-web-jobs/addwjblade.png)
-	
-2. Under **Name**, provide a name for the WebJob. The name must start with a letter or a number and cannot contain any special characters other than "-" and "_".
-	
-4. In the **How to Run** box, choose **Run on Demand**.
-	
-3. In the **File Upload** box, click the folder icon and browse to the zip file that contains your script. The zip file should contain your executable (.exe .cmd .bat .sh .php .py .js) as well as any supporting files needed to run the program or script.
-	
-5. Check **Create** to upload the script to your web app. 
-	
-	The name you specified for the WebJob appears in the list on the **WebJobs** blade.
-	
-6. To run the WebJob, right-click its name in the list and click **Run**.
-	
-	![Run WebJob](./media/web-sites-create-web-jobs/runondemand.png)
-	
-## <a name="CreateContinuous"></a>Create a continuously running WebJob
-
-1. To create a continuously executing WebJob, follow the same steps for creating a WebJob that runs once, but in the **How to Run** box, choose **Continuous**.
-
-2. To start or stop a continuous WebJob, right-click the WebJob in the list and click **Start** or **Stop**.
-	
-> [AZURE.NOTE] If your web app runs on more than one instance, a continuously running WebJob will run on all of your instances. On-demand and scheduled WebJobs run on a single instance selected for load balancing by Microsoft Azure.
-	
-> For Continuous WebJobs to run reliably and on all instances, enable the Always On* configuration setting for the web app otherwise they can stop running when the SCM host site has been idle for too long.
-
--->
-<!-- keep by customization: begin -->
 1. 在“Web 作业”页的命令栏中，单击“添加”。此时将显示“新作业”对话框。
 	
 	![按需运行任务][OnDemandWebJob]
@@ -112,14 +70,15 @@ Azure WebJobs SDK 简化了许多 Web 作业编程任务。有关详细信息，
 	
 2. 若要启动或停止连续运行的任务，请在列表中选择任务，然后在命令栏中单击“启动”或“停止”。
 
-> [AZURE.NOTE]如果你的网站在多个实例上运行，则连续运行的任务将在所有实例上运行。按需运行任务和计划任务在 Microsoft Azure 针对负载平衡所选择的单个实例上运行。
+> [AZURE.NOTE] 如果你的网站在多个实例上运行，则连续运行的任务将在所有实例上运行。按需运行任务和计划任务在 Microsoft Azure 针对负载平衡所选择的单个实例上运行。
 
 > [AZURE.NOTE]
->对于连续运行任务，建议你在“配置”页上为网站启用“始终打开”。Always On 功能（在基本和标准模式下可用）可防止网站被卸载，即使网站已空闲一段时间也是如此。如果你的网站始终处于加载状态，则连续运行的任务可能会更可靠地运行。
-<!-- keep by customization: end -->
-## <a name="CreateScheduled"></a>创建计划的 Web 作业
+> 对于连续运行任务，建议你在“配置”页上为网站启用“始终打开”。Always On 功能（在基本和标准模式下可用）可防止网站被卸载，即使网站已空闲一段时间也是如此。如果你的网站始终处于加载状态，则连续运行的任务可能会更可靠地运行。
+## <a name="CreateScheduled"></a>使用 Azure 计划程序创建计划的 Web 作业
 
-Azure 管理门户不提供创建计划 Web 作业的功能，但在这种功能可用之前，你可以使用[管理门户](http://manage.windowsazure.cn)执行此类操作。
+以下备用技术利用 Azure 计划程序。在这种情况下，Web 作业没有计划的任何直接知识。而是将 Azure 计划程序配置为按计划触发 Web 作业。
+
+Azure 管理门户尚不能创建计划的 Web 作业，但在添加该功能之前，你可以使用[管理门户](http://manage.windowsazure.cn)执行此类操作。
 
 1. 在[管理门户](http://manage.windowsazure.cn)中，转到“Web 作业”页并单击“添加”。
 
@@ -183,9 +142,7 @@ Azure 管理门户不提供创建计划 Web 作业的功能，但在这种功能
 	
 ## <a name="ViewJobHistory"></a>查看作业历史记录
 
-1. 若要查看作业的执行历史记录（包括使用 WebJobs SDK 创建的作业），请单击“Web 作业”边栏选项卡的“日志”列下方的相应链接。（如果需要，你可以使用剪贴板图标将日志文件页的 URL 复制到剪贴板中）
-	
-	![日志链接](./media/web-sites-create-web-jobs/wjbladelogslink.png)
+1. 若要查看作业的执行历史记录（包括使用 WebJobs SDK 创建的作业），请单击“Web 作业”页的“日志”列下方的相应链接。（如果需要，你可以使用剪贴板图标将日志文件页的 URL 复制到剪贴板中）
 		
 2. 单击链接将打开 WebJob 的详细信息页。此页显示了命令运行的名称、它运行的最后时间及其成功或失败状态。在“最近的作业运行”下，单击某个时间以查看更多详细信息。
 	
@@ -210,25 +167,16 @@ Azure 管理门户不提供创建计划 Web 作业的功能，但在这种功能
 
 ## <a name="WHPNotes"></a>说明
 	
-- 如果没有对 scm（部署）站点发出任何请求，并且未在 Azure 中打开 Web 应用的门户，则免费模式下的 Web Apps 可能会在 20 分钟之后超时。对实际网站发出的请求不会对此进行重置。
+- 如果没有对 scm（部署）站点发出任何请求，并且未在 Azure 中打开网站的门户，则免费模式下的网站可能会在 20 分钟之后超时。对实际网站发出的请求不会对此进行重置。
 - 需要对连续作业的代码进行编写，才能使其在无穷循环中运行。
-- 仅当 Web 应用启动后连续作业才能连续运行。
-- 基本和标准模式提供了“始终打开”功能，启用该功能可防止 Web Apps 进入空闲状态。
+- 仅当网站启动后连续作业才能连续运行。
+- 基本和标准模式提供了 Always On 功能，启用该功能可防止网站进入空闲状态。
 - 仅可以调试连续运行 WebJobs。不支持按计划或按需调试 WebJobs。
 
-<!-- deleted by customization
->[AZURE.NOTE] If you want to get started with Azure Websites before signing up for an Azure account, go to [Try Azure Websites](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in Azure Websites. No credit cards required; no commitments.
--->
 
 ## <a name="NextSteps"></a>后续步骤
  
 有关详细信息，请参阅[Azure WebJobs 推荐资源][WebJobsRecommendedResources]。
-<!-- deleted by customization
-
-## What's changed
-* For a guide to the change from Websites to Azure Websites see: [Azure Websites and Its Impact on Existing Azure Services](/documentation/services/web-sites/)
-* For a guide to the change of the Management Portal to the new portal see: [Reference for navigating the preview portal](https://manage.windowsazure.cn/)
--->
 
 [PSonWebJobs]: http://blogs.msdn.com/b/nicktrog/archive/2014/01/22/running-powershell-web-jobs-on-azure-websites.aspx
 [WebJobsRecommendedResources]: /documentation/articles/websites-webjobs-resources/
@@ -258,4 +206,4 @@ Azure 管理门户不提供创建计划 Web 作业的功能，但在这种功能
 [JobActionPageInScheduler]: ./media/web-sites-create-web-jobs/33JobActionPageInScheduler.png
  
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0118_2016-->

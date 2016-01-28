@@ -1,15 +1,15 @@
 <properties 
-	pageTitle="如何通过 Node.js 使用队列存储 | Windows Azure" 
+	pageTitle="如何通过 Node.js 使用队列存储 | Microsoft Azure" 
 	description="了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。相关示例是使用 Node.js 编写的。" 
 	services="storage" 
 	documentationCenter="nodejs" 
-	authors="MikeWasson" 
+	authors="rmcmurray" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags 
 	ms.service="storage" 
-	ms.date="03/11/2015" 
+	ms.date="12/01/2015" 
 	wacn.date=""/>
 
 
@@ -19,7 +19,7 @@
 
 ## 概述
 
-本指南演示如何使用 Windows Azure 队列服务执行常见任务。相关示例是使用 Node.js API 编写的。介绍的方案包括“插入”、“扫视”、“获取”和“删除”队列消息以及“创建”和“删除”队列。
+本指南将演示如何使用 Microsoft Azure 队列服务执行常见方案。相关示例是使用 Node.js API 编写的。介绍的方案包括“插入”、“扫视”、“获取”和“删除”队列消息以及“创建”和“删除”队列。
 
 [AZURE.INCLUDE [storage-queue-concepts-include](../includes/storage-queue-concepts-include.md)]
 
@@ -37,17 +37,18 @@
 
 1.  使用 **PowerShell** (Windows)、**Terminal** (Mac) 或 **Bash** (Unix) 等命令行界面导航到您在其中创建了示例应用程序的文件夹。
 
-2.  在命令窗口中键入 **npm install azure-storage**，这应该产生以下输出：
+2.  在命令窗口中键入 **npm install azure-storage**。该命令的输出类似于以下示例。
 
-        azure-storage@0.1.0 node_modules\azure-storage
+		azure-storage@0.5.0 node_modules\azure-storage
 		+-- extend@1.2.1
 		+-- xmlbuilder@0.4.3
 		+-- mime@1.2.11
+		+-- node-uuid@1.4.3
+		+-- validator@3.22.2
 		+-- underscore@1.4.4
-		+-- validator@3.1.0
-		+-- node-uuid@1.4.1
+		+-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
 		+-- xml2js@0.2.7 (sax@0.5.2)
-		+-- request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
+		+-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
 
 3.  可以手动运行 **ls** 命令来验证是否创建了 **node\_modules** 文件夹。在该文件夹中，您将找到 **azure-storage** 包，其中包含访问存储所需的库。
 
@@ -61,7 +62,7 @@
 
 Azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY 或 AZURE\_STORAGE\_CONNECTION\_STRING 以获取连接到您的 Azure 存储帐户所需的信息。如果未设置这些环境变量，则在调用 **createQueueService** 时必须指定帐户信息。
 
-有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序]
+有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js 网站]
 
 ## 如何：创建队列
 
@@ -112,7 +113,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 	queueSvc.peekMessages('myqueue', function(error, result, response){
 	  if(!error){
-		// Messages peeked
+		// Message text is in messages[0].messagetext
 	  }
 	});
 
@@ -128,11 +129,11 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 2. 删除该消息。
 
-若要取消消息的排队，请使用 **getMessage**。这会使该消息在队列中不可见，因此其他客户端无法处理它。一旦应用程序处理完该消息，即可调用 **deleteMessage** 将其从队列中删除。下面的示例获取了一条消息，然后又将其删除：
+若要取消消息的排队，请使用 **getMessages**。这会使消息在队列中不可见，因此其他客户端无法处理它们。一旦应用程序处理完某个消息，即可调用 **deleteMessage** 将其从队列中删除。下面的示例获取了一条消息，然后又将其删除：
 
 	queueSvc.getMessages('myqueue', function(error, result, response){
       if(!error){
-	    // message dequed
+	    // Message text is in messages[0].messagetext
         var message = result[0];
         queueSvc.deleteMessage('myqueue', message.messageid, message.popreceipt, function(error, response){
 	      if(!error){
@@ -144,8 +145,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 > [AZURE.NOTE] 默认情况下，一条消息只会隐藏 30 秒，然后其他客户端就可以看见它。您可以将 `options.visibilityTimeout` 与 **getMessages** 一起使用，以便指定其他值。
 
-> [AZURE.NOTE]
-> 在队列中没有消息时使用 <b>getMessages</b> 不会返回错误，但也不会返回消息。
+> [AZURE.NOTE] 在队列中没有消息时使用 **getMessages** 不会返回错误，但也不会返回消息。
 
 ## 如何：更改已排队消息的内容
 
@@ -305,7 +305,6 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
 
 现在，您已了解有关队列存储的基础知识，可单击下面的链接来了解更复杂的存储任务。
 
--   请参阅 MSDN 参考：[在 Azure 中存储和访问数据][]。
 -   访问 [Azure 存储空间团队博客][]。
 -   访问 GitHub 上的 [Azure Storage SDK for Node][] 存储库。
 
@@ -314,7 +313,7 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
   [Azure Management Portal]: http://manage.windowsazure.com
   [创建 Node.js 应用程序并将其部署到 Azure 网站]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
   [Node.js Cloud Service with Storage]: /documentation/articles/storage-nodejs-use-table-storage-cloud-service-app
-  [使用存储构建 Node.js Web 应用程序]: /documentation/articles/storage-nodejs-use-table-storage-web-site
+  [使用存储构建 Node.js 网站]: /documentation/articles/storage-nodejs-use-table-storage-web-site
 
   
   [Queue1]: ./media/storage-nodejs-how-to-use-queues/queue1.png
@@ -324,8 +323,7 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
   
   
   [Node.js Cloud Service]: /documentation/articles/cloud-services-nodejs-develop-deploy-app
-  [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
  [ Website with WebMatrix]: /documentation/articles/web-sites-nodejs-use-webmatrix
 
-<!---HONumber=70-->
+<!---HONumber=Mooncake_0118_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="azure-resource-manager"
-	ms.date="08/13/2015"
+	ms.date="12/17/2015"
 	wacn.date=""/>
 
 # 实现模板的最佳做法的上下文示例
@@ -240,7 +240,8 @@
 
 这需要遵循此部分一开始就确定的一大系列的模式。具体说来就是，需要向第三方所使用的服务主体提供对资源组中资源的完全访问权限。
 
-此外，由于对客户进行了限制，因此需向客户那边的用户或小组授予利用此环境所需的相应权限。这可以通过模板来完成，如此部分前面所述。
+此外，由于对客户进行了限制，因此需向客户那边的用户或小组授予利用此环境所需的相应权限。  
+这可以通过模板来完成，如此部分前面所述。
 
 最后，可能需要确保某些资源不会被意外删除。如果属于这种情况，则还应考虑对那些需要此类保护的资源应用资源锁。
 
@@ -250,4 +251,4 @@
 - 至于如何在 Azure 资源管理器中处理安全事项，请参阅 [Azure 资源管理器的安全注意事项](/documentation/articles/best-practices-resource-manager-security)以获取相关建议。
 - 若要了解进出模板的状态，请参阅[共享 Azure 资源管理器模板中的状态](/documentation/articles/best-practices-resource-manager-state)
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0118_2016-->

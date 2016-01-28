@@ -9,10 +9,12 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="11/10/2015"
+	ms.date="12/07/2015"
 	wacn.date=""/>
 
 # 查看访问和使用情况报告
+
+*本文档是 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)的一部分。*
 
 你可以使用 Azure Active Directory 的访问和使用情况报告来监控你所在组织的目录的完整性和安全性。使用此信息，目录管理员可以更好地确定哪里可能存在安全风险，以便制定相应的计划来降低风险。
 
@@ -92,15 +94,7 @@
 ## 异常活动报告
 <p>异常登录活动报告将会标识 Office365、Azure 管理门户、Azure AD 访问面板、Sharepoint Online、Dynamics CRM Online 和其他 Microsoft Online Services 中发生的可疑登录活动。</p>
 <p>所有这些报告（“多次失败后的登录”报告除外）还会标识上述服务中发生的可疑<i>联合</i>登录，不管联合提供程序是什么。</p>
-<p>提供了以下报告：</p><ul>
-<li>[来自未知源的登录](active-directory-reporting-sign-ins-from-unknown-sources.md)。</li>
-<li>[多次失败后的登录](active-directory-reporting-sign-ins-after-multiple-failures.md)。</li>
-<li>[来自多个地理区域的登录](active-directory-reporting-sign-ins-from-multiple-geographies.md)。</li>
-<li>[从具有可疑活动的 IP 地址登录](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)。</li>
-<li>[异常登录活动](active-directory-reporting-irregular-sign-in-activity.md)。</li>
-<li>[从可能受感染的设备登录](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)。</li>
-<li>[具有异常登录活动的用户](active-directory-reporting-users-with-anomalous-sign-in-activity.md)。</li>
-<li>具有已泄漏凭据的用户</li></ul>
+<p>提供了以下报告：</p><ul><li>[来自未知源的登录](active-directory-reporting-sign-ins-from-unknown-sources.md)。</li> <li>[多次失败后的登录](active-directory-reporting-sign-ins-after-multiple-failures.md)。</li> <li>[来自多个地理区域的登录](active-directory-reporting-sign-ins-from-multiple-geographies.md)。</li> <li>[从具有可疑活动的 IP 地址登录](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)。</li> <li>[异常登录活动](active-directory-reporting-irregular-sign-in-activity.md)。</li> <li>[从可能受感染的设备登录](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)。</li> <li>[具有异常登录活动的用户](active-directory-reporting-users-with-anomalous-sign-in-activity.md)。</li> <li>具有已泄漏凭据的用户</li></ul>
 
 
 
@@ -277,4 +271,4 @@
 <!--- [Getting started with Azure Active Directory Premium](active-directory-get-started-premium.md)-->
 - [向“登录”和“访问面板”页添加公司品牌](active-directory-add-company-branding)
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

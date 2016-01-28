@@ -9,16 +9,16 @@
 
 <tags
 	ms.service="storage"
-	ms.date="09/27/2015"
+	ms.date="12/01/2015"
 	wacn.date=""/>
 
 # 监视 Azure 门户中的存储帐户
 
 ## 概述
 
-你可以从 Azure 管理门户监视你的存储帐户。在配置您的存储帐户用于通过门户进行监视时，Azure 存储空间使用[存储分析](http://msdn.microsoft.com/zh-cn/library/azure/hh343270.aspx)跟踪帐户和日志请求数据的指标。
+你可以从 [Azure 管理门户](https://manage.windowsazure.cn)监视你的存储帐户。在配置您的存储帐户用于通过门户进行监视时，Azure 存储空间使用[存储分析](http://msdn.microsoft.com/zh-cn/library/azure/hh343270.aspx)跟踪帐户和日志请求数据的指标。
 
-> [AZURE.NOTE]在 Azure 门户中查看监视数据会产生相关的额外费用。有关详细信息，请参阅<a href="http://msdn.microsoft.com/zh-cn/library/azure/hh360997.aspx">存储分析和计费</a>。<br />
+> [AZURE.NOTE] 在 [Azure管理门户](https://manage.windowsazure.cn)中查看监视数据会产生相关的额外费用。有关详细信息，请参阅<a href="http://msdn.microsoft.com/zh-cn/library/azure/hh360997.aspx">存储分析和计费</a>。<br />
 
 > Azure 文件存储目前支持存储分析指标，但尚不支持日志记录。可以通过 [Azure 管理门户](https://manage.windowsazure.cn)为 Azure 文件存储启用指标。
 
@@ -39,7 +39,7 @@
 
       **最少** - 收集经过汇总的有关 Blob、表和队列服务的入口/出口、可用性、延迟及成功百分比等度量值。
 
-      **详细** – 除最少监视度量值外，在 Azure 存储服务 API 中为每项存储操作收集一组相同的度量值。通过详细监视度量值可对应用程序运行期间出现的问题进行进一步分析。
+      **详细** - 除最少监视度量值外，在 Azure 存储服务 API 中为每项存储操作收集一组相同的度量值。通过详细监视度量值可对应用程序运行期间出现的问题进行进一步分析。
 
       **关闭** - 关闭监视。现有监视数据将一直保留到保留期结束。
 
@@ -51,7 +51,7 @@
 
 在您为存储帐户配置监视之前，不会收集任何监视数据，且仪表板和“监视”页上的度量值图表为空。
 
-在设置监视级别和保留策略后，您可以选择要在 Azure 门户中监视哪些可用度量值，以及要在度量值图表上显示哪些度量值。将在每个监视级别显示一组默认度量值。您可以使用“添加度量值”在度量值列表中添加或删除度量值。
+在设置监视级别和保留策略后，你可以选择要在 [Azure 管理门户](https://manage.windowsazure.cn)中监视哪些可用度量值，以及要在度量值图表上显示哪些度量值。将在每个监视级别显示一组默认度量值。您可以使用“添加度量值”在度量值列表中添加或删除度量值。
 
 度量值存储在存储帐户中的以下 4 个表中：$MetricsTransactionsBlob、$MetricsTransactionsTable、$MetricsTransactionsQueue 和 $MetricsCapacityBlob。有关详细信息，请参阅[关于存储分析度量值](http://msdn.microsoft.com/zh-cn/library/azure/hh343258.aspx)。
 
@@ -96,7 +96,7 @@
 
 	![监视\_详细监视视图](./media/storage-monitor-storage-account/Storage_Monitoring_VerboseDisplay.png)
 
-	> [AZURE.NOTE]在选择度量值时应考虑成本。在刷新监视视图时会产生相关的事务和数据传出费用。有关详细信息，请参阅[存储分析和计费](http://msdn.microsoft.com/zh-cn/library/azure/hh360997.aspx)。
+	> [AZURE.NOTE] 在选择度量值时应考虑成本。在刷新监视视图时会产生相关的事务和数据传出费用。有关详细信息，请参阅[存储分析和计费](http://msdn.microsoft.com/zh-cn/library/azure/hh360997.aspx)。
 
 3. 单击“添加度量值”。
 
@@ -109,7 +109,7 @@
 	![添加度量值滚动条](./media/storage-monitor-storage-account/Storage_AddMetrics_Scrollbar.png)
 
 
-5. 单击度量值旁边的向下箭头，以展开该度量值范围内所包括的操作的列表。选择您要在 Azure 门户中的度量值表中查看的每项操作。
+5. 单击度量值旁边的向下箭头，以展开该度量值范围内所包括的操作的列表。选择要在 [Azure 管理门户](https://manage.windowsazure.cn)的度量值表中查看的每项操作。
 
 	在下图中，“授权错误百分比”度量值已展开。
 
@@ -153,4 +153,4 @@
 
 诊断日志保存在你的存储帐户下名为 $logs 的 Blob 容器中。有关访问 $logs 容器的信息，请参阅[关于存储分析日志记录](http://msdn.microsoft.com/zh-cn/library/azure/hh343262.aspx)。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0118_2016-->

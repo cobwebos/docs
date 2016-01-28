@@ -9,10 +9,15 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="09/15/2015"
+	ms.date="12/07/2015"
 	wacn.date=""/>
 
-# 在源代码管理中存储项目代码
+# 在源代码管理中存储移动服务项目代码
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 > [AZURE.SELECTOR]
 - [.NET backend](/zh-cn/documentation/articles/mobile-services-dotnet-backend-store-code-source-control)
@@ -32,8 +37,7 @@
 
 	安装 Git 所需的步骤因操作系统的不同而异。有关操作系统特定的分发和安装指南，请参阅[安装 Git]。
 
-	> [AZURE.NOTE]
-	在某些操作系统上，命令行和 GUI 版本的 Git 都可用。本文中提供的说明使用命令行版本。
+	> [AZURE.NOTE]在某些操作系统上，命令行和 GUI 版本的 Git 都可用。本文中提供的说明使用命令行版本。
 
 2. 打开一个命令行，例如 **GitBash** (Windows) 或 **Bash** (Unix Shell)。在 OS X 系统上，可以通过 **Terminal** 应用程序访问命令行。
 
@@ -96,4 +100,4 @@
 [Azure Management Portal]: https://manage.windowsazure.cn/
 [如何对 .NET 后端移动服务进行数据模型更改]: /documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

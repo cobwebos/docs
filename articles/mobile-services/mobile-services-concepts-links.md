@@ -1,6 +1,6 @@
 <properties
 	pageTitle="移动服务的概念"
-	description="Azure 门户上的帮助集合中提供的移动服务概念主题的链接。"
+	description="Azure 经典门户上的帮助集合中提供的移动服务概念主题的链接。"
 	services="mobile-services"
 	documentationCenter="na"
 	authors="ggailey777"
@@ -14,11 +14,15 @@
 
 # 移动服务的概念
 
-下面链接的主题提供有关 Microsoft Azure 移动服务的具体行为的信息。Azure 管理门户中也提供了这些主题作为帮助信息。
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+下面链接的主题提供有关 Microsoft Azure 移动服务的具体行为的信息。Azure 经典门户中也提供了这些主题作为帮助信息。
 
 [AZURE.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
-[概述主题](https://msdn.microsoft.com/zh-cn/library/azure/jj193167.aspx)介绍了移动服务的优势，以及可在管理门户中执行的任务。有关移动服务的一般信息以及如何在应用中使用移动服务的示例，请参阅[移动服务教程和资源](/services/mobile-services/)。
+[概述主题](https://msdn.microsoft.com/zh-cn/library/azure/jj193167.aspx)介绍了移动服务的优势，以及可在 Azure 经典门户中执行的任务。有关移动服务的一般信息以及如何在应用中使用移动服务的示例，请参阅[移动服务教程和资源](/documentation/services/mobile-services/)。
 
 ##配置
 以下主题提供有关创建、删除和配置移动服务的信息：
@@ -75,11 +79,11 @@
 - [发送 HTTP 请求](https://msdn.microsoft.com/zh-cn/library/azure/jj631641.aspx) 
 - [为用户授权](https://msdn.microsoft.com/zh-cn/library/azure/jj631637.aspx) 
 - [限制管理员访问权限](https://msdn.microsoft.com/zh-cn/library/azure/jj712649.aspx) 
-- [错误处理](https://msdn.microsoft.com/zh-cn/library/azure/jj631632.aspx)。 
+- [错误处理。](https://msdn.microsoft.com/zh-cn/library/azure/jj631632.aspx) 
 - [快捷键](https://msdn.microsoft.com/zh-cn/library/azure/jj552469.aspx) 
 
 
 
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

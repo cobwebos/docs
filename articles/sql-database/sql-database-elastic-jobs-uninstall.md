@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="08/09/2015" 
+	ms.date="12/01/2015" 
 	wacn.date=""/>
 
 #卸载弹性数据库作业组件
@@ -60,4 +60,4 @@
 [1]: ./media/sql-database-elastic-job-uninstall/
  
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0118_2016-->

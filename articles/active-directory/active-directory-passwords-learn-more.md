@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="10/08/2015" 
+	ms.date="11/16/2015" 
 	wacn.date=""/>
 
 # 了解有关密码管理的详细信息
@@ -21,6 +21,7 @@
   - [密码写回安全模型](#password-writeback-security-model)
 * [**密码重置门户的工作原理**](#how-does-the-password-reset-portal-work)
   - [密码重置使用哪些数据？](#what-data-is-used-by-password-reset)
+  - [如何访问用户的密码重置数据](#how-to-access-password-reset-data-for-your-users)
 
 ## 密码写回概述
 密码写回是一个 [Azure Active Directory Connect](/documentation/articles/active-directory-aadconnect) 组件，Azure Active Directory Premium 的当前订户可以启用和使用该组件。有关详细信息，请参阅 [Azure Active Directory 版本](/documentation/articles/active-directory-editions)。
@@ -175,7 +176,7 @@
               <p>密码重置门户</p>
               <p>注册门户</p>
               <p>设置位置： </p>
-              <p>可从密码重置注册门户或 MFA（多重身份验证）注册门户设置 AuthenticationPhone。</p>
+              <p>可从密码重置注册门户或 MFA 注册门户设置 AuthenticationPhone。</p>
               <p>可从 PowerShell、DirSync、Azure 管理门户和 Office 管理门户设置 MobilePhone</p>
             </td>
             <td>
@@ -219,7 +220,7 @@
               <p>密码重置门户</p>
               <p>注册门户</p>
               <p>设置位置： </p>
-              <p>可从密码重置注册门户或 MFA（多重身份验证）注册门户设置 AuthenticationEmail。</p>
+              <p>可从密码重置注册门户或 MFA 注册门户设置 AuthenticationEmail。</p>
               <p>可从 PowerShell、Azure 管理门户和 Office 管理门户设置 AlternateEmail</p>
             </td>
             <td>
@@ -257,20 +258,117 @@
           </tr>
         </tbody></table>
 
-<br/> <br/> <br/>
+###如何访问用户的密码重置数据
+####可通过同步设置的数据
+可以从本地同步以下字段：
 
-**其他资源**
+* 移动电话
+* 办公电话
 
+####可使用 Azure AD PowerShell 设置的数据
+可以使用 Azure AD PowerShell 和图形 API 访问以下字段：
 
-* [什么是密码管理](/documentation/articles/active-directory-passwords)
-* [密码管理的工作原理](/documentation/articles/active-directory-passwords-how-it-works)
-* [密码管理入门](/documentation/articles/active-directory-passwords-getting-started)
-* [自定义密码管理](/documentation/articles/active-directory-passwords-customize)
-* [密码管理最佳实践](/documentation/articles/active-directory-passwords-best-practices)
-* [如何使用密码管理报告获取 Operational Insights](/documentation/articles/active-directory-passwords-get-insights)
-* [密码管理常见问题](/documentation/articles/active-directory-passwords-faq)
-* [排查密码管理问题](/documentation/articles/active-directory-passwords-troubleshoot)
-* [MSDN 上的密码管理](https://msdn.microsoft.com/zh-cn/library/azure/dn510386.aspx)
+* 备用电子邮件
+* 移动电话
+* 办公电话
+* 身份验证电话
+* 身份验证电子邮件
+
+####只能使用注册 UI 设置的数据
+只能通过 SSPR 注册 UI (https://aka.ms/ssprsetup) 访问以下字段：
+
+* 安全问答
+
+####当用户注册时会发生什么情况？
+当用户注册时，注册页面**始终**设置以下字段：
+
+* 身份验证电话
+* 身份验证电子邮件
+* 安全问答
+
+如果你提供了“移动电话”或“备用电子邮件”的值，用户可以立即使用这些信息重置密码，即使他们尚未注册该服务。此外，用户在首次注册时将看到这些值，并可随意进行修改。但是，成功注册之后，这些值将分别保存在“身份验证电话”和“身份验证电子邮件”字段中。
+
+这可能是解除阻止大量用户使用 SSPR，同时允许他们在整个注册过程中验证此信息的有效方式。
+
+####使用 PowerShell 设置密码重置数据
+可以使用 Azure AD PowerShell 设置以下字段的值。
+
+* 备用电子邮件
+* 移动电话
+* 办公电话
+
+若要开始，首先需要[下载并安装 Azure AD PowerShell 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)。安装后，你可以遵照以下步骤配置每个字段。
+
+#####备用电子邮件
+```
+Connect-MsolService
+Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
+```
+
+#####移动电话
+```
+Connect-MsolService
+Set-MsolUser -UserPrincipalName user@domain.com -MobilePhone "+1 1234567890"
+```
+
+#####办公电话
+```
+Connect-MsolService
+Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 1234567890"
+```
+
+####使用 PowerShell 读取密码重置数据
+可以使用 Azure AD PowerShell 读取以下字段的值。
+
+* 备用电子邮件
+* 移动电话
+* 办公电话
+* 身份验证电话
+* 身份验证电子邮件
+
+若要开始，首先需要[下载并安装 Azure AD PowerShell 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)。安装后，你可以遵照以下步骤配置每个字段。
+
+#####备用电子邮件
+```
+Connect-MsolService
+Get-MsolUser -UserPrincipalName user@domain.com | select AlternateEmailAddresses
+```
+
+#####移动电话
+```
+Connect-MsolService
+Get-MsolUser -UserPrincipalName user@domain.com | select MobilePhone
+```
+
+#####办公电话
+```
+Connect-MsolService
+Get-MsolUser -UserPrincipalName user@domain.com | select PhoneNumber
+```
+
+#####身份验证电话
+```
+Connect-MsolService
+Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select PhoneNumber
+```
+
+#####身份验证电子邮件
+```
+Connect-MsolService
+Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
+```
+
+## 密码重置文档的链接
+以下是所有 Azure AD 密码重置文档页面的链接：
+
+* [**重置自己的密码**](/documentation/articles/active-directory-passwords-update-your-own-password) - 了解如何以系统用户的身份重置或更改自己的密码
+* [**工作原理**](/documentation/articles/active-directory-passwords-how-it-works) - 了解六个不同的服务组件及其功能
+* [**入门**](/documentation/articles/active-directory-passwords-getting-started) - 了解如何让用户重置及更改云密码或本地密码
+* [**自定义**](/documentation/articles/active-directory-passwords-customize) - 了解如何根据组织的需求自定义服务的外观和行为
+* [**最佳实践**](/documentation/articles/active-directory-passwords-best-practices) - 了解如何快速部署且有效管理组织的密码
+* [**深入分析**](/documentation/articles/active-directory-passwords-get-insights) - 了解集成式报告功能
+* [**常见问题**](/documentation/articles/active-directory-passwords-faq) - 获取常见问题的解答
+* [**故障排除**](/documentation/articles/active-directory-passwords-troubleshoot) - 了解如何快速排查服务的问题
 
 
 
@@ -278,4 +376,4 @@
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

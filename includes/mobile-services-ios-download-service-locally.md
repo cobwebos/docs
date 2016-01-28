@@ -1,4 +1,4 @@
-1. 在 [Azure 管理门户]中，单击新建的移动服务或者其云图标选项卡，以转到概述页。
+1. 在 [Azure 经典门户](https://manage.windowsazure.cn/)中，单击新建的移动服务或者其云图标选项卡，以转到概述页。
 
     ![](./media/mobile-services-ios-download-service-locally/mobile-portal-quickstart-ios.png)
 
@@ -15,7 +15,7 @@
 
 5. 向下滚动到“入门”部分底部的标题为“下载你的服务并将其发布到云”的步骤。单击以下屏幕快照中所示的链接，下载你刚刚下载的移动服务的发布配置文件。
 
-    > [AZURE.NOTE]请将该文件保存在安全位置，因为它包含与你的 Azure 帐户相关的敏感信息。在根据本教程后面的内容发布移动服务后，你将要删除此文件。
+    > [AZURE.NOTE] 请将该文件保存在安全位置，因为它包含与你的 Azure 帐户相关的敏感信息。在根据本教程后面的内容发布移动服务后，你将要删除此文件。
 
     ![](./media/mobile-services-ios-download-service-locally/download-publish-profile.png)
 
@@ -24,6 +24,6 @@
 
 
 <!-- URLs. -->
-[Azure 管理门户]: https://manage.windowsazure.cn/
+[Azure Management Portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0118_2016-->

@@ -10,7 +10,7 @@
 
 <tags
    ms.service="best-practice"
-   ms.date="05/13/2015"
+   ms.date="12/17/2015"
    wacn.date=""/>
 
 # API 实现指南
@@ -42,11 +42,11 @@
 	);
 	```
 
-	路由可以是包含文本的泛型，例如 _api_ 和 变量（如 _{controller}_ 和 _{id}_）。基于约定的路由允许路由的某些元素是可选的。Web API 框架通过将请求中的 HTTP 方法与 API 中方法名称的开头部分进行匹配，然后匹配任何可选参数来确定在控制器中调用哪个方法。例如，如果名为 _orders_ 的控制器包含方法 _GetAllOrders()_ 或 _GetOrderByInt(int id)_，则 GET 请求 __http://www.adventure-works.com/api/orders/_ 将定向到方法 _GetAlllOrders()_，而 GET 请求 __http://www.adventure-works.com/api/orders/99_ 则将路由到方法 _GetOrderByInt(int id)_。如果控制器中没有以前缀 Get 开头的匹配方法可用，则 Web API 框架将以“HTTP 405 (不允许的方法)”消息进行答复。此外，路由表中指定的参数 (id) 的名称还必须与 _GetOrderById_ 方法的参数名称相同，否则 Web API 框架将以“HTTP 404 (未找到)”响应进行答复。
+	路由可以是包含文本的泛型，例如 _api_ 和 变量（如 _{controller}_ 和 _{id}_）。基于约定的路由允许路由的某些元素是可选的。Web API 框架通过将请求中的 HTTP 方法与 API 中方法名称的开头部分进行匹配，然后匹配任何可选参数来确定在控制器中调用哪个方法。例如，如果名为 _orders_ 的控制器包含方法 _GetAllOrders()_ 或 _GetOrderByInt(int id)_，则 GET 请求 _http://www.adventure-works.com/api/orders/_ 将定向到方法 _GetAlllOrders()_，而 GET 请求 _http://www.adventure-works.com/api/orders/99_ 则将路由到方法 _GetOrderByInt(int id)_。如果控制器中没有以前缀 Get 开头的匹配方法可用，则 Web API 框架将以“HTTP 405 (不允许的方法)”消息进行答复。此外，路由表中指定的参数 (id) 的名称还必须与 _GetOrderById_ 方法的参数名称相同，否则 Web API 框架将以“HTTP 404 (未找到)”响应进行答复。
 
-	相同的规则也适用于 POST、PUT 和 DELETE HTTP 请求；更新订单 101 的详细信息的 PUT 请求将定向到 URI __http://www.adventure-works.com/api/orders/101_，消息正文将包含订单的新详细信息，并且此信息将作为参数传递给 orders 控制器中名称以前缀 _Put_ 开头的方法（如 _PutOrder_）。
+	相同的规则也适用于 POST、PUT 和 DELETE HTTP 请求；更新订单 101 的详细信息的 PUT 请求将定向到 URI _http://www.adventure-works.com/api/orders/101_，消息正文将包含订单的新详细信息，并且此信息将作为参数传递给 orders 控制器中名称以前缀 _Put_ 开头的方法（如 _PutOrder_）。
 
-	默认路由表不会与引用 REST 样式 Web API 中的子资源的请求匹配，如 __http://www.adventure-works.com/api/customers/1/orders_（查找客户 1 所下的所有订单的详细信息）。若要处理这些情况，可以向路由表添加自定义路由：
+	默认路由表不会与引用 REST 样式 Web API 中的子资源的请求匹配，如 _http://www.adventure-works.com/api/customers/1/orders_（查找客户 1 所下的所有订单的详细信息）。若要处理这些情况，可以向路由表添加自定义路由：
 
 	```C#
 	config.Routes.MapHttpRoute(
@@ -141,7 +141,7 @@
 
 - **考虑在子域中放置 API 的优点和缺点**。
 
-	默认情况下，ASP.NET Web API 将 API 组织到域中的 /api 目录，如 http://www.adventure-works.com/api/orders。 此目录与同一主机公开的任何其他服务位于同一域中。最好将 Web API 拆分到具有 URI（如 http://api.adventure-works.com/orders） 的单独主机上运行的其自己的子域中。这种分离使你可以更有效地对 Web API 进行分隔和缩放，而不会影响 www.adventure-works.com 域中运行的任何其他 Web 应用程序或服务。
+	默认情况下，ASP.NET Web API 将 API 组织到域中的 _/api_ 目录，如 _http://www.adventure-works.com/api/orders_。此目录与同一主机公开的任何其他服务位于同一域中。最好将 Web API 拆分到具有 URI（如 _http://api.adventure-works.com/orders_）的单独主机上运行的其自己的子域中。这种分离使你可以更有效地对 Web API 进行分隔和缩放，而不会影响 _www.adventure-works.com_ 域中运行的任何其他 Web 应用程序或服务。
 
 	但是，将 Web API 放在不同的子域中也可能会带来安全问题。在 _www.adventure-works.com_ 上托管的任何 Web 应用程序或服务调用在其他位置运行的 Web API 可能会违反很多 Web 浏览器的同源策略。在这种情况下，将需要启用主机之间的跨域资源共享 (CORS)。有关详细信息，请参阅 API 安全指南文档。
 
@@ -243,26 +243,26 @@
 	...
 	Content-Length: ...
 	{"CustomerID":2,"CustomerName":"Bert","Links":[
-	  {"Relationship":"self",
-	   "HRef":"http://adventure-works.com/customers/2",
-	   "Action":"GET",
-	   "LinkedResourceMIMETypes":["text/xml","application/json"]},
-	  {"Relationship":"self",
-	   "HRef":"http://adventure-works.com/customers/2",
-	   "Action":"PUT",
-	   "LinkedResourceMIMETypes":["application/x-www-form-urlencoded"]},
-	  {"Relationship":"self",
-	   "HRef":"http://adventure-works.com/customers/2",
-	   "Action":"DELETE",
-	   "LinkedResourceMIMETypes":[]},
-	  {"Relationship":"orders",
-	   "HRef":"http://adventure-works.com/customers/2/orders",
-	   "Action":"GET",
-	   "LinkedResourceMIMETypes":["text/xml","application/json"]},
-	  {"Relationship":"orders",
-	   "HRef":"http://adventure-works.com/customers/2/orders",
-	   "Action":"POST",
-	   "LinkedResourceMIMETypes":["application/x-www-form-urlencoded"]}
+	  {"rel":"self",
+	   "href":"http://adventure-works.com/customers/2",
+	   "action":"GET",
+	   "types":["text/xml","application/json"]},
+	  {"rel":"self",
+	   "href":"http://adventure-works.com/customers/2",
+	   "action":"PUT",
+	   "types":["application/x-www-form-urlencoded"]},
+	  {"rel":"self",
+	   "href":"http://adventure-works.com/customers/2",
+	   "action":"DELETE",
+	   "types":[]},
+	  {"rel":"orders",
+	   "href":"http://adventure-works.com/customers/2/orders",
+	   "action":"GET",
+	   "types":["text/xml","application/json"]},
+	  {"rel":"orders",
+	   "href":"http://adventure-works.com/customers/2/orders",
+	   "action":"POST",
+	   "types":["application/x-www-form-urlencoded"]}
 	]}
 	```
 
@@ -279,10 +279,10 @@
 
 	public class Link
 	{
-    	public string Relationship { get; set; }
-    	public string HRef { get; set; }
+    	public string Rel { get; set; }
+    	public string Href { get; set; }
     	public string Action { get; set; }
-    	public string [] LinkedResourceMIMETypes { get; set; }
+    	public string [] Types { get; set; }
 	}
 	```
 
@@ -290,23 +290,23 @@
 
 	- 返回的对象与链接所描述的对象之间的关系。在此示例中，“self”指示该链接是返回到对象本身的引用（类似于许多面向对象语言中的 `this` 指针），而“orders”则是包含相关订单信息的集合的名称。
 
-	- URI 形式的链接所描述的对象的超链接 (`HRef`)。
+	- URI 形式的链接所描述的对象的超链接 (`Href`)。
 
 	- 可发送到此 URI 的 HTTP 请求的类型 (`Action`)。
 
-	- 应在 HTTP 请求中提供或可在响应中返回的任何数据的格式 (`LinkedResourceMIMETypes`)，具体取决于请求的类型。
+	- 应在 HTTP 请求中提供或可在响应中返回的任何数据的格式 (`Types`)，具体取决于请求的类型。
 
 	HTTP 响应的示例中所示的 HATEOAS 链接指示客户端应用程序可以执行以下操作：
 
-	- 向 URI *http://adventure-works.com/customers/2* 发出 HTTP GET 请求以提取客户的详细信息（再次）。数据可以 XML 或 JSON 格式返回。
+	- 向 URI _http://adventure-works.com/customers/2_ 发出 HTTP GET 请求以提取客户的详细信息（再次）。数据可以 XML 或 JSON 格式返回。
 
-	- 向 URI *http://adventure-works.com/customers/2* 发出 HTTP PUT 请求以修改客户的详细信息。必须在请求消息中以 x-www-form-urlencoded 格式提供新数据。
+	- 向 URI _http://adventure-works.com/customers/2_ 发出 HTTP PUT 请求以修改客户的详细信息。必须在请求消息中以 x-www-form-urlencoded 格式提供新数据。
 
-	- 向 URI *http://adventure-works.com/customers/2* 发出 HTTP DELETE 请求以删除客户。该请求不需要任何其他信息，也不需要在响应消息正文中返回数据。
+	- 向 URI _http://adventure-works.com/customers/2_ 发出 HTTP DELETE 请求以删除客户。该请求不需要任何其他信息，也不需要在响应消息正文中返回数据。
 
-	- 向 URI *http://adventure-works.com/customers/2/orders* 发出 HTTP GET 请求以查找客户的所有订单。数据可以 XML 或 JSON 格式返回。
+	- 向 URI _http://adventure-works.com/customers/2/orders_ 发出 HTTP GET 请求以查找客户的所有订单。数据可以 XML 或 JSON 格式返回。
 
-	- 向 URI *http://adventure-works.com/customers/2/orders* 发出 HTTP PUT 请求以创建此客户的新订单。必须在请求消息中以 x-www-form-urlencoded 格式提供数据。
+	- 向 URI _http://adventure-works.com/customers/2/orders_ 发出 HTTP PUT 请求以创建此客户的新订单。必须在请求消息中以 x-www-form-urlencoded 格式提供数据。
 
 ## 有关处理异常的注意事项
 默认情况下，在 ASP.NET Web API 框架中，如果操作引发未捕获的异常，则框架将返回具有 HTTP 状态代码 500（内部服务器错误）的响应消息。在许多情况下，此简单方法单独使用并不十分有用，并且会导致很难确定异常的原因。因此，你应采用更全面的方法来处理异常，请考虑以下几点：
@@ -402,7 +402,7 @@
 	Cache-Control: max-age=600, private
 	Content-Type: text/json; charset=utf-8
 	Content-Length: ...
-	{"OrderID":2,"ProductID":4,"Quantity":2,"OrderValue":10.00}
+	{"orderID":2,"productID":4,"quantity":2,"orderValue":10.00}
 	```
 
 	在此示例中，Cache-Control 标头指定返回的数据应在 600 秒后过期并且只适用于单个客户端，不能在其他客户端使用的共享缓存中存储（它是_私有_的）。Cache-Control 可以指定 _public_（而不是 _private_），在这种情况下，数据可以存储在共享缓存中，或者它可以指定 _no-store_，在这种情况下，数据**不**能由客户端缓存。下面的代码示例显示如何在响应消息中构造 Cache-Control 标头：
@@ -486,7 +486,7 @@
     		...
 
     		var hashedOrder = order.GetHashCode();
-    		string hashedOrderEtag = String.Format("\"{0}\"", hashedOrder);
+    		string hashedOrderEtag = String.Format(""{0}"", hashedOrder);
     		var eTag = new EntityTagHeaderValue(hashedOrderEtag);
 
     		// Return a response message containing the order and the cache control header
@@ -510,7 +510,7 @@
 	Content-Type: text/json; charset=utf-8
 	ETag: "2147483648"
 	Content-Length: ...
-	{"OrderID":2,"ProductID":4,"Quantity":2,"OrderValue":10.00}
+	{"orderID":2,"productID":4,"quantity":2,"orderValue":10.00}
 	```
 
 	> [AZURE.TIP]出于安全原因，不允许缓存敏感数据或通过经过身份验证 (HTTPS) 的连接返回的数据。
@@ -560,7 +560,7 @@
 
                 // Generate the ETag for the order
                 var hashedOrder = order.GetHashCode();
-                string hashedOrderEtag = String.Format("\"{0}\"", hashedOrder);
+                string hashedOrderEtag = String.Format(""{0}"", hashedOrder);
 
                 // Create the Cache-Control and ETag headers for the response
                 IHttpActionResult response = null;
@@ -642,7 +642,7 @@
 	...
 	Date: Fri, 12 Sep 2014 09:18:37 GMT
 	Content-Length: ...
-	ProductID=3&Quantity=5&OrderValue=250
+	productID=3&quantity=5&orderValue=250
 	```
 
 	- Web API 中的 PUT 操作获取所请求数据的当前 ETag（上面示例中的订单 1），并将其与 If-Match 标头中的值进行比较。
@@ -675,7 +675,7 @@
                 }
 
                 var hashedOrder = orderToUpdate.GetHashCode();
-                string hashedOrderEtag = String.Format("\"{0}\"", hashedOrder);
+                string hashedOrderEtag = String.Format(""{0}"", hashedOrder);
 
                 // Retrieve the If-Match header from the request (if it exists)
                 var matchEtags = Request.Headers.IfMatch;
@@ -701,7 +701,7 @@
                     cacheControlHeader.MaxAge = new TimeSpan(0, 10, 0);
 
                     hashedOrder = order.GetHashCode();
-                    hashedOrderEtag = String.Format("\"{0}\"", hashedOrder);
+                    hashedOrderEtag = String.Format(""{0}"", hashedOrder);
                     var eTag = new EntityTagHeaderValue(hashedOrderEtag);
 
                     var location = new Uri(string.Format("{0}/{1}/{2}", baseUri, Constants.ORDERS, id));
@@ -920,7 +920,7 @@
 	}
 	```
 
-	客户端应用程序可以使用 URI *http://www.adventure-works.com/api/orders?limit=30&offset=50* 发出请求以检索从偏移量 50 开始的 30 个订单。
+	客户端应用程序可以使用 URI _http://www.adventure-works.com/api/orders?limit=30&offset=50_ 发出请求以检索从偏移量 50 开始的 30 个订单。
 
 	> [AZURE.TIP]请避免让客户端应用程序指定的查询字符串导致 URI 超过 2000 个字符。许多 Web 客户端和服务器无法处理这么长的 URI。
 
@@ -1148,4 +1148,4 @@ Microsoft 网站上的 [Application Insights - 开始监视你的应用的运行
 - Microsoft 网站上的[使用单元测试验证代码](https://msdn.microsoft.com/zh-cn/library/dd264975.aspx)页提供了有关使用 Visual Studio 创建和管理单元测试的详细信息。
 - Microsoft 网站上的[在发布前对应用程序运行性能测试](https://msdn.microsoft.com/zh-cn/library/dn250793.aspx)页介绍了如何使用 Visual Studio Ultimate 来创建 Web 性能和负载测试项目。
 
-<!---HONumber=67-->
+<!---HONumber=Mooncake_0118_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="10/21/2015"
+	ms.date="12/04/2015"
 	wacn.date="tamram"/>
 
 # 如何通过 .NET 使用队列存储
@@ -119,7 +119,7 @@
 
 	// Get the message from the queue and update the message contents.
     CloudQueueMessage message = queue.GetMessage();
-    message.SetMessageContent("Updated contents.") ;
+    message.SetMessageContent("Updated contents.");
     queue.UpdateMessage(message,
         TimeSpan.FromSeconds(60.0),  // Make it visible for another 60 seconds.
         MessageUpdateFields.Content | MessageUpdateFields.Visibility);
@@ -240,7 +240,6 @@
 - 查看队列服务参考文档，了解有关可用 API 的完整详细信息：
     - [.NET 存储客户端库参考](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
     - [REST API 参考](http://msdn.microsoft.com/zh-cn/library/azure/dd179355)
-- 通过查看[在 Azure 中存储和访问数据](http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx)了解可以通过 Azure 存储空间执行的更高级任务
 - 了解如何通过使用 [Azure WebJobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk) 简化为使用 Azure 存储空间而写的代码。
 - 查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
     - 使用[表存储](/documentation/articles/storage-dotnet-how-to-use-tables)来存储结构化数据。 
@@ -251,7 +250,6 @@
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [Creating a Azure Project in Visual Studio]: http://msdn.microsoft.com/zh-cn/library/azure/ee405487.aspx
   [CloudStorageAccount]: http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.cloudstorageaccount_methods.aspx
-  [Storing and Accessing Data in Azure]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
   [Configuring Connection Strings]: http://msdn.microsoft.com/zh-cn/library/azure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
@@ -259,4 +257,4 @@
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
  
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

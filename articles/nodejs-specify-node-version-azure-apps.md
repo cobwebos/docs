@@ -1,19 +1,16 @@
 <properties
 	pageTitle="指定 Node.js 版本"
-	description="了解如何指定 Azure 网站和云服务使用的 Node.js 版本" services=""
+	description="了解如何指定 Azure 网站和云服务使用的 Node.js 版本"
+	services=""
 	documentationCenter="nodejs"
-	authors="MikeWasson"
+	authors="rmcmurray"
 	manager="wpickett"
-	editor="mollybos"/>
+	editor=""/>
 
 <tags
 	ms.service="multiple"
-	ms.date="08/31/2015"
+	ms.date="11/20/2015"
 	wacn.date=""/>
-
-
-
-
 
 # 在 Azure 应用程序中指定 Node.js 版本
 
@@ -21,13 +18,7 @@
 
 ##默认版本
 
-由 Azure 提供的 Node.js 版本会不断更新。除非另行指定，否则将使用最新可用版本。当前包括以下版本：
-
-- 4\.x.x：4.0.0
-- 0\.12.x：0.12.6、0.12.3、0.12.2、0.12.0
-- 0\.10.x: 0.10.32、0.10.31、0.10.29、0.10.28、10.26、0.10.24、0.10.21、0.10.18、0.10.5
-- 0\.8.x: 0.8.28、0.8.27、0.8.26、0.8.19、0.8.2
-- 0\.6.x: 0.6.20、0.6.17
+由 Azure 提供的 Node.js 版本会不断更新。除非另行指定，否则将使用最新可用版本。
 
 > [AZURE.NOTE]如果你在 Azure 云服务（Web 角色或辅助角色）中托管应用程序，并且这是你首次部署应用程序，Azure 将尝试使用你在部署环境中所安装的 Node.js 的版本（如果该版本与 Azure 中提供的默认版本之一相匹配）。
 
@@ -102,9 +93,9 @@
 
 有关详细信息，请参阅 [Node.js 开发人员中心](/develop/nodejs/)。
 
-[如何使用适用于 Mac 和 Linux 的 Azure 命令行工具]: xplat-cli-install.md
-[Azure 命令行工具]: xplat-cli-install.md
-[如何使用模块]: nodejs-use-node-modules-azure-apps.md
-[生成和部署 Node.js 网站]: web-sites-nodejs-develop-deploy-mac.md
+[如何使用适用于 Mac 和 Linux 的 Azure 命令行工具]: /documentation/articles/xplat-cli-install
+[Azure 命令行工具]: /documentation/articles/xplat-cli-install
+[如何使用模块]: /documentation/articles/nodejs-use-node-modules-azure-apps
+[生成和部署 Node.js 网站]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

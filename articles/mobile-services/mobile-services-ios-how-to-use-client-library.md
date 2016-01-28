@@ -14,6 +14,9 @@
 
 # 如何使用适用于 Azure 移动服务的 iOS 客户端库
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 [AZURE.INCLUDE [mobile-services-selector-client-library](../includes/mobile-services-selector-client-library.md)]
 
 本指南介绍如何使用 Azure 移动服务 [iOS SDK] 执行常见任务。如果你不熟悉移动服务，请先完成[移动服务快速入门]，以配置你的帐户、创建表，并创建移动服务。
@@ -89,11 +92,11 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" applicatio
 ```
 
 `MSQuery` 可让你控制以下几种查询行为。通过调用 `readWithCompletion` 执行 `MSQuery` 查询，如下一示例中所示。
-* 指定结果的顺序 
-* 限制要返回的字段 
-* 限制要返回的记录数 
-* 指定响应中的总计数 
-* 指定请求中的自定义查询字符串参数 
+* 指定结果的顺序
+* 限制要返回的字段
+* 限制要返回的记录数
+* 指定响应中的总计数
+* 指定请求中的自定义查询字符串参数
 * 应用其他函数
 
 
@@ -244,7 +247,7 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" applicatio
 
 ##<a name="authentication"></a>如何：对用户进行身份验证
 
-Azure 移动服务支持各种标识提供者。有关基本教程，请参阅 [身份验证]。
+Azure 移动服务支持各种标识提供者。有关基本教程，请参阅[身份验证]。
 
 Azure 移动服务支持两种身份验证工作流：
 
@@ -256,7 +259,7 @@ Azure 移动服务支持两种身份验证工作流：
 
 ### 服务器托管登录
 
-以下是可以将服务器托管登录添加到[移动服务快速入门]项目的方式；你可以为其他项目使用类似的代码。有关详细信息，以及要查看端到端示例的运作方式，请参阅 [身份验证]。
+以下是可以将服务器托管登录添加到[移动服务快速入门]项目的方式；你可以为其他项目使用类似的代码。有关详细信息，以及要查看端到端示例的运作方式，请参阅[身份验证]。
 
 [AZURE.INCLUDE [mobile-services-ios-authenticate-app](../includes/mobile-services-ios-authenticate-app.md)]
 
@@ -316,7 +319,7 @@ Azure 移动服务支持两种身份验证工作流：
 [移动服务快速入门]: /documentation/articles/mobile-services-ios-get-started
 [Get started with Mobile Services]: /documentation/articles/mobile-services-ios-get-started
 [Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
-[Get started with authentication]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-with-users-ios
+[身份验证]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
 
 [Handling Expired Tokens]: http://go.microsoft.com/fwlink/p/?LinkId=301955
@@ -331,4 +334,4 @@ Azure 移动服务支持两种身份验证工作流：
 [冲突处理程序]: /documentation/articles/mobile-services-ios-handling-conflicts-offline-data/#add-conflict-handling
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

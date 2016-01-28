@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="09/22/2015"
+   ms.date="12/15/2015"
    wacn.date=""/>
 
 # 使用 DMV 监视工作负荷
@@ -127,7 +127,7 @@ ORDER BY step_index;
 
 ### 步骤 4a：查找 SQL 步骤的执行进度
 
-使用请求 ID 和步骤索引，将 SQL Server 查询分布的相关信息检索为查询中 SQL 步骤的一部分。保存节点 ID 和 SPID。
+使用请求 ID 和步骤索引，将 SQL Server 查询分布的相关信息检索为查询中 SQL 步骤的一部分。保存分发 ID 和 SPID。
 
 ```
 
@@ -145,7 +145,7 @@ WHERE request_id = 'QID33209' AND step_index = 2;
 ```
 
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node. 
--- Replace node_id and spid with values from previous query.
+-- Replace distribution_id and spid with values from previous query.
 
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 
@@ -184,7 +184,8 @@ DBCC PDW_SHOWSPACEUSED("dbo.FactInternetSales");
 ```
 
 
-此查询的结果将显示存储在数据库中每组 60 个分布内的表行数目。为了获得最佳性能，分布式表中的行应该平均分散在所有分布区中。若要了解详细信息，请参阅[表设计][]。
+此查询的结果将显示存储在数据库中每组 60 个分布内的表行数目。为了获得最佳性能，分布式表中的行应该平均分散在所有分布区中。
+若要了解详细信息，请参阅[表设计][]。
 
 
 
@@ -199,4 +200,4 @@ DBCC PDW_SHOWSPACEUSED("dbo.FactInternetSales");
 
 <!--MSDN references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

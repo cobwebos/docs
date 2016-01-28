@@ -9,10 +9,15 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="09/14/2015" 
+	ms.date="12/11/2015"
 	wacn.date=""/>
 
 # 构建使用表存储的 .NET 后端移动服务
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
 
 本主题说明如何将非关系数据存储用于 .NET 后端移动服务。在本教程中，你将要修改移动服务快速入门项目，以使用 Azure 表存储而不是默认的 SQL 数据库数据存储。
 
@@ -30,11 +35,11 @@
 
   	这会将 Azure 存储空间服务支持添加到 .NET 后端移动服务项目。
 
-3. 如果你尚未创建存储帐户，请参阅[如何创建存储帐户](/documentation/articles/storage-create-storage-account)。
+3. 如果你尚未创建你的存储帐户，请参阅[如何创建存储帐户](/documentation/articles/storage-create-storage-account)。
 
-4. 在管理门户中，单击“存储”，单击存储帐户，然后单击“管理密钥”。
+4. 在 [Azure 经典门户]中，单击“存储”，单击存储帐户，然后单击“管理密钥”。
 
-5. 记下**存储帐户名称**和**访问密钥**。
+5. 记下“存储帐户名称”和“访问密钥”。
  
 6. 在移动服务中，单击“配置”选项卡，向下滚动到“连接字符串”并输入新的连接字符串（其“名称”为 `StorageConnectionString`，其“值”为存储帐户连接字符串且格式如下）。
 
@@ -146,9 +151,9 @@
 
 <!-- URLs. -->
 [移动服务入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started
-[Azure Management Portal]: https://manage.windowsazure.cn/
+[Azure 经典门户]: https://manage.windowsazure.cn/
 [What is the Table Service]: /documentation/articles/storage-dotnet-how-to-use-tables/#what-is
 [MongoLab Add-on Page]: /gallery/store/mongolab/mongolab
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

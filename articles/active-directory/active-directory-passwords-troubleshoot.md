@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="10/08/2015" 
+	ms.date="11/16/2015" 
 	wacn.date=""/>
 
 # 如何排查密码管理问题
@@ -694,6 +694,22 @@
                 <li class="unordered">
 										如果你启用了密码筛选器，并且用户选择了不满足筛选条件的密码，则重置或更改操作将失败。<br\><br\></li>
               </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>HR 8023042</p>
+            </td>
+            <td>
+              <p>同步引擎返回了错误：hr = 80230402，消息 = 由于存在使用相同定位点的重复条目，尝试获取对象失败</p>
+            </td>
+            <td>
+              <p>ADSync</p>
+            </td>
+            <td>
+              <p>在多个域中启用同一用户 ID 时会发生此事件。例如，如果你正在同步帐户/资源林，并且每个林中存在并启用了同一个用户 ID，则可能会发生此错误。 </p>
+              <p>如果你使用了不唯一的定位点属性（如别名或 UPN），并且两个用户共享了这同一个定位点属性，则也可能发生此错误。</p>
+              <p>若要解决此问题，请确保你的域中没有任何重复的用户，并且每个用户使用唯一的定位点属性。</p>
             </td>
           </tr>
           <tr>
@@ -1458,18 +1474,17 @@
 
 <br/> <br/> <br/>
 
-**其他资源**
+## 密码重置文档的链接
+以下是所有 Azure AD 密码重置文档页面的链接：
 
-
-* [什么是密码管理](/documentation/articles/active-directory-passwords)
-* [密码管理的工作原理](/documentation/articles/active-directory-passwords-how-it-works)
-* [密码管理入门](/documentation/articles/active-directory-passwords-getting-started)
-* [自定义密码管理](/documentation/articles/active-directory-passwords-customize)
-* [密码管理最佳实践](/documentation/articles/active-directory-passwords-best-practices)
-* [如何使用密码管理报告获取 Operational Insights](/documentation/articles/active-directory-passwords-get-insights)
-* [密码管理常见问题](/documentation/articles/active-directory-passwords-faq)
-* [了解详细信息](/documentation/articles/active-directory-passwords-learn-more)
-* [MSDN 上的密码管理](https://msdn.microsoft.com/zh-cn/library/azure/dn510386.aspx)
+* [**重置自己的密码**](/documentation/articles/active-directory-passwords-update-your-own-password) - 了解如何以系统用户的身份重置或更改自己的密码
+* [**工作原理**](/documentation/articles/active-directory-passwords-how-it-works) - 了解六个不同的服务组件及其功能
+* [**入门**](/documentation/articles/active-directory-passwords-getting-started) - 了解如何让用户重置及更改云密码或本地密码
+* [**自定义**](/documentation/articles/active-directory-passwords-customize) - 了解如何根据组织的需求自定义服务的外观和行为
+* [**最佳实践**](/documentation/articles/active-directory-passwords-best-practices) - 了解如何快速部署且有效管理组织的密码
+* [**深入分析**](/documentation/articles/active-directory-passwords-get-insights) - 了解集成式报告功能
+* [**常见问题**](/documentation/articles/active-directory-passwords-faq) - 获取常见问题的解答
+* [**了解更多**](/documentation/articles/active-directory-passwords-learn-more) - 深入探索服务工作原理的技术细节
 
 
 
@@ -1481,4 +1496,4 @@
 
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

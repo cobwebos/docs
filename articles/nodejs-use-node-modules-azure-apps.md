@@ -1,15 +1,14 @@
-<properties
+<properties 
 	pageTitle="使用 Node.js 模块"
-	description="了解如何在使用 Azure 网站或云服务的同时使用 Node.js 模块。"
-	services=""
-	documentationCenter="nodejs"
-	authors="MikeWasson"
-	manager="wpickett"
-	editor="mollybos"/>
+	description="了解如何在使用 Azure 网站或云服务的同时使用 Node.js 模块。" 
+	services="" 
+	documentationCenter="nodejs" 
+	authors="rmcmurray" 
+	manager="wpickett" 
+	editor=""/>
 
-<tags
-	ms.service="multiple"
-	ms.date="08/31/2015"
+<tags ms.service="multiple" 
+	ms.date="11/20/2015"
 	wacn.date=""/>
 
 
@@ -54,7 +53,8 @@ Azure 网站不支持所有本机模块，并且在编译那要求具有非常�
 
 **package.json** 文件的一个潜在问题是它仅指定顶级依赖项的版本。安装的每个模块不一定会指定它所依赖的模块的版本，所以你最终使用的依赖项链可能与开发过程中使用的不同。
 
-> [AZURE.NOTE]部署到 Azure 网站时，如果 <b>package.json</b> 文件引用本机模块，那么在使用 Git 发布应用程序时您会看到如下错误：
+> [AZURE.NOTE]
+> 部署到 Azure 网站时，如果 <b>package.json</b> 文件引用本机模块，那么在使用 Git 发布应用程序时您会看到如下错误：
 
 >		npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
 
@@ -67,7 +67,8 @@ Azure 网站不支持所有本机模块，并且在编译那要求具有非常�
 
 您的应用程序准备好生产后，便可锁定版本要求，并使用 **npm shrinkwrap** 命令创建 **npm-shrinkwrap.json** 文件。这将使用当前安装在 **node\_modules** 文件夹中的版本，并将这些信息记录到 **npm-shrinkwrap.json** 文件。将应用程序部署到托管环境后，可使用 **npm install** 命令来解析 **npm-shrinkwrap.json** 文件并安装列出的所有依赖项。有关详细信息，请参阅 [npm-install](https://npmjs.org/doc/install.html)。
 
-> [AZURE.NOTE]部署到 Azure 网站时，如果 <b>npm-shrinkwrap.json</b> 文件引用本机模块，那么在使用 Git 发布应用程序时，您会看到如下错误：
+> [AZURE.NOTE]
+> 部署到 Azure 网站时，如果 <b>npm-shrinkwrap.json</b> 文件引用本机模块，那么在使用 Git 发布应用程序时，您会看到如下错误：
 
 >		npm ERR! module-name@0.6.0 install: 'node-gyp configure build'
 
@@ -88,4 +89,4 @@ Azure 网站不支持所有本机模块，并且在编译那要求具有非常�
 [Build and deploy a Node.js application to an Azure Cloud Service]: cloud-services-nodejs-develop-deploy-app.md
 [使用 Kudu 自定义网站部署脚本]: /documentation/videos/custom-web-site-deployment-scripts-with-kudu/
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

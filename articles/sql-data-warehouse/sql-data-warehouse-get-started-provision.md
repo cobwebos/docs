@@ -9,17 +9,13 @@
 	tags="azure-sql-data-warehouse"/>
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="11/19/2015"
+   ms.date="12/15/2015"
    wacn.date=""/>
 
 # 创建 SQL 数据仓库
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](sql-data-warehouse-get-started-provision.md)
+- [Azure Portal](sql-data-warehouse-get-started-provision.md)
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
@@ -30,11 +26,15 @@
 - 创建用于托管数据库的服务器。
 - 创建包含 AdventureWorksDW 示例数据库的数据库。
 
-[AZURE.INCLUDE [free-trial-note](../includes/free-trial-note.md)]
+如果你尝试将现有数据库迁移到 SQL 数据仓库，请参阅[迁移概述](./sql-data-warehouse-get-started-overview-migrate.md)或使用[迁移实用程序](./sql-data-warehouse-migrate-migration-utility.md)。
+
+若要将数据载入 SQL 数据仓库，请参阅[加载操作概述](./sql-data-warehouse-overview-load.md)。
+
+[AZURE.INCLUDE [free-trial-note](../../includes/free-trial-note.md)]
 
 ## 步骤 1：登录并开始操作
 
-1. 登录到 [Azure 预览门户](https://manage.windowsazure.cn)。
+1. 登录到 [Azure 门户](https://manage.windowsazure.cn)。
 
 2. 单击“新建”>“数据 + 存储”>“SQL 数据仓库”。
 
@@ -49,7 +49,12 @@
 
 在 SQL 数据库和 SQL 数据仓库中，每个数据库将分配到一个服务器，每个服务器将分配到一个地理位置。该服务器称为逻辑 SQL 服务器。
 
-> [AZURE.NOTE]<a name="note"></a>逻辑 SQL 服务器：> > + 提供在同一地理位置配置多个数据库的一致方式。> + 不是本地服务器的物理硬件。它是服务软件的一部分。这就是为什么它称为*逻辑服务器*的原因。> + 可以托管多个数据库，且不影响这些数据库的性能。> + 在其名称中使用小写 *s*。SQL 服务器 (SQL **s**erver) 是 Azure 逻辑服务器，而 SQL **S**erver 则是 Microsoft 的本地数据库产品。
+> [AZURE.NOTE]<a name="note"></a>逻辑 SQL 服务器：
+  >
+  > + 提供在同一地理位置配置多个数据库的一致方式。
+  > + 不是本地服务器的物理硬件。它是服务软件的一部分。这就是为什么它称为*逻辑服务器*的原因。
+  > + 可以托管多个数据库，且不影响这些数据库的性能。
+  > + 在其名称中使用小写 *s*。SQL 服务器 (SQL **s**erver) 是 Azure 逻辑服务器，而 SQL **S**erver 则是 Microsoft 的本地数据库产品。
 
 1. 单击“服务器”>“创建新服务器”。该服务器不收取费用。如果你已有想要使用的 V12 逻辑 SQL 服务器，请选择现有的服务器，然后转到下一步骤。 
 
@@ -94,7 +99,7 @@
 
 1. 单击“创建”以创建 SQL 数据仓库数据库。
 
-1. 等待几分钟，数据库将准备就绪。完成后，你应会返回 [Azure 预览门户](https://portal.azure.com)。可以看到，你的 SQL 数据仓库数据库已添加到仪表板中。
+1. 等待几分钟，数据库将准备就绪。完成后，你应会返回 [Azure 门户](https://portal.azure.com)。可以看到，你的 SQL 数据仓库数据库已添加到仪表板中。
 
     ![门户视图](./media/sql-data-warehouse-get-started-provision/database-portal-view.png)
 
@@ -125,4 +130,4 @@
 
 为 SQL 数据仓库创建示例数据库后，你便可以[连接](./sql-data-warehouse-get-started-connect.md)到该数据库。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

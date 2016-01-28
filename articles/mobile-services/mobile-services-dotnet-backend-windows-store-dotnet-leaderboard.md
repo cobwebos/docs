@@ -1,18 +1,21 @@
-<properties 
-	pageTitle="创建具有 .NET 后端的 Windows 应用商店排行榜应用 | Azure 移动服务" 
-	description="了解如何使用 Azure 移动服务构建具有 .NET 后端的 Windows 应用商店排行榜应用。" 
-	documentationCenter="windows" 
-	authors="MikeWasson" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="创建具有 .NET 后端的 Windows 应用商店排行榜应用 | Azure 移动服务"
+	description="了解如何使用 Azure 移动服务构建具有 .NET 后端的 Windows 应用商店排行榜应用。"
+	documentationCenter="windows"
+	authors="rmcmurray"
+	manager="wpickett"
+	editor="jimbe"
 	services="mobile-services"/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="09/24/2015" 
+	ms.date="11/19/2015"
 	wacn.date=""/>
 
 # 使用 Azure 移动服务 .NET 后端创建排行榜应用程序
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 
 本教程将说明如何使用具有 .NET 后端的 Azure 移动服务生成 Windows 应用商店应用程序。Azure 移动服务提供可缩放且安全的后端，具有内置身份验证、监视、推送通知和其他功能，以及用来生成移动应用程序的跨平台客户端库。移动服务的 .NET 后端基于 [ASP.NET Web API](http://asp.net/web-api)，可为 .NET 开发人员提供创建 REST API 的绝佳途径。
 
@@ -314,7 +317,8 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 
 	[Route("api/score")]
 
-也可以将方法放入单独的控制器中。没有哪种方法特别好，具体取决于你想要如何组织代码。若要深入了解 **[Route]** 属性，请参阅 [Web API 中的属性路由](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)。
+也可以将方法放入单独的控制器中。没有哪种方法特别好，具体取决于你想要如何组织代码。
+若要深入了解 **[Route]** 属性，请参阅 [Web API 中的属性路由](http://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2)。
 
 ## 创建 Windows 应用商店应用程序
 
@@ -584,7 +588,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 
 ## 添加 MobileServiceClient 实例
 
-打开 App.xaml.cs 文件并将 **MobileServiceClient** 实例添加到 `App` 类。
+打开 *App.xaml.cs* 文件并将 **MobileServiceClient** 实例添加到 `App` 类。
 
 	// New code:
 	using Microsoft.WindowsAzure.MobileServices;
@@ -681,7 +685,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 - 服务的 URL
 - 应用程序密钥
 
-你可以从 Azure 管理门户获取这两项。在管理门户中单击“移动服务”，然后单击移动服务。仪表板选项卡上列出了服务 URL。若要获取应用程序密钥，请单击“管理密钥”。
+你可以从 Azure 经典门户获取这两项信息。在门户中单击“移动服务”，然后单击该移动服务。仪表板选项卡上列出了服务 URL。若要获取应用程序密钥，请单击“管理密钥”。
 
 ![][16]
  
@@ -756,4 +760,4 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 [添加推送通知]: /documentation/articles/notification-hubs-windows-store-dotnet-get-started
 [身份验证入门]: /documentation/articles/mobile-services-windows-store-dotnet-get-started-users
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

@@ -9,12 +9,12 @@
  tags="azure-service-management,hpc-pack"/>
 <tags
  	ms.service="virtual-machines"
- 	ms.date="09/02/2015"
+	ms.date="12/02/2015"
  	wacn.date=""/>
 
 # 在 Azure 中的 Linux 计算节点上使用 Microsoft HPC Pack 运行 NAMD
 
-本文介绍如何在 Azure 上部署 Microsoft HPC Pack 群集，以及如何在虚拟群集网络的多个 Linux 计算节点上通过 **charmrun** 运行 [NAMD](http://www.ks.uiuc.edu/Research/namd/) 作业，以计算和直观呈现大型生物分子系统的结构。
+本文介绍如何在使用多个 Linux 计算节点的 Azure 上部署 Microsoft HPC Pack 群集，以及如何通过 **charmrun** 运行 [NAMD](http://www.ks.uiuc.edu/Research/namd/) 作业，以计算和直观呈现大型生物分子系统的结构。
 
 [AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
 
@@ -22,7 +22,7 @@
 
 NAMD（用于纳米级分子动力学程序）是并行分子动力学软件包，设计用于包含数百万个原子的大型生物分子系统（如病毒、细胞结构和大蛋白）的高性能仿真。NAMD 扩展至数百个核心进行典型仿真，扩展至 500,000 个核心进行最大型仿真。
 
-Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行各种大型 HPC 和并行应用程序的功能，包括 MPI 应用程序。从 Microsoft HPC Pack 2012 R2 Update 2 开始，HPC Pack 还支持在 HPC Pack 群集中部署的 Linux 计算节点 VM 上运行 Linux HPC 应用程序。有关将 Linux 计算节点与 HPC Pack 一起使用的简介，请参阅 [Azure 的 HPC Pack 群集中的 Linux 计算节点入门](/documentation/articles/virtual-machines-linux-cluster-hpcpack)。
+Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行各种大型 HPC 和并行应用程序的功能，包括 MPI 应用程序。从 Microsoft HPC Pack 2012 R2 Update 2 开始，HPC Pack 还支持在 HPC Pack 群集中部署的 Linux 计算节点 VM 上运行 Linux HPC 应用程序。如需简介，请参阅 [Azure 的 HPC Pack 群集中的 Linux 计算节点入门](/documentation/articles/virtual-machines-linux-cluster-hpcpack)。
 
 
 ## 先决条件
@@ -100,16 +100,16 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行各种�
 
 2. 使用 Windows Server 标准程序，在群集的 Active Directory 域中创建一个域用户帐户。例如，在头节点上使用 Active Directory 用户和计算机工具。本文中的示例假设你创建了一个名为 hpclab\\hpcuser 域用户。
 
-2.	创建一个名为 C:\\cred.xml 的文件，将 RSA 密钥数据复制到此文件中。你可以在本文末尾的附录中找到一个此文件的示例。
+2.	创建一个名为 C:\\cred.xml 的文件，将 RSA 密钥数据复制到此文件中。你可以在本文末尾的示例文件中找到一个示例。
 
     ```
     <ExtendedData>
-      <PrivateKey>Copy the contents of private key here</PrivateKey>
-      <PublicKey>Copy the contents of public key here</PublicKey>
+        <PrivateKey>Copy the contents of private key here</PrivateKey>
+        <PublicKey>Copy the contents of public key here</PublicKey>
     </ExtendedData>
     ```
 
-3.	打开“命令”窗口，输入以下命令，为 hpclab\\hpcuser 帐户设置凭据数据。使用 **extendeddata** 参数传递你为关键数据创建的 C:\\cred.xml 文件的名称。
+3.	打开命令提示符，输入以下命令，为 hpclab\\hpcuser 帐户设置凭据数据。使用 **extendeddata** 参数传递你为关键数据创建的 C:\\cred.xml 文件的名称。
 
     ```
     hpccred setcreds /extendeddata:c:\cred.xml /user:hpclab\hpcuser /password:<UserPassword>
@@ -132,9 +132,9 @@ Microsoft HPC Pack 可提供在 Microsoft Azure 虚拟机群集上运行各种�
 2.	打开 Windows PowerShell 窗口并运行以下命令来装载共享文件夹。
 
     ```
-    PS > clusrun /nodegroup:LinuxNodes mkdir -p /namd2
+    clusrun /nodegroup:LinuxNodes mkdir -p /namd2
 
-    PS > clusrun /nodegroup:LinuxNodes mount -t cifs //CentOS66HN/Namd/namd2 /namd2 -o vers=2.1`,username=<username>`,password='<password>'`,dir_mode=0777`,file_mode=0777
+    clusrun /nodegroup:LinuxNodes mount -t cifs //CentOS66HN/Namd/namd2 /namd2 -o vers=2.1`,username=<username>`,password='<password>'`,dir_mode=0777`,file_mode=0777
     ```
 
 第一个命令在 LinuxNodes 组中的所有节点上创建名为 /namd2 的文件夹。第二个命令将共享文件夹 //CentOS66HN/Namd/namd2 装载到该文件夹上，并将 dir\_mode 和 file\_mode 位设置为 777。该命令中的*用户名*和*密码*应是头节点上的用户的凭据。
@@ -178,7 +178,7 @@ host CENTOS66LN-03 ++cpus 2
 ```
 ### 创建 nodelist 文件的 Bash 脚本
 
-使用你选择的文本编辑器，在包含 NAMD 程序文件的文件夹中创建以下 Bash 脚本并将其命名为 hpccharmrun.sh。在本文的附录中有此文件的完整示例。此 Bash 脚本执行以下任务。
+使用你选择的文本编辑器，在包含 NAMD 程序文件的文件夹中创建以下 Bash 脚本并将其命名为 hpccharmrun.sh。完整示例位于本文末尾的示例文件中。此 Bash 脚本执行以下任务。
 
 >[AZURE.TIP]将你的脚本保存为带有 Linux 换行（仅 LF，而不是 CR LF）的文本文件。这可确保其在 Linux 节点上正常运行。
 
@@ -304,7 +304,7 @@ host CENTOS66LN-03 ++cpus 2
 
     ![作业结果][vmd_view]
 
-## 附录
+## 示例文件
 
 ### 示例 hpccharmrun.sh 脚本
 
@@ -404,4 +404,4 @@ a8lxTKnZCsRXU1HexqZs+DSc+30tz50bNqLdido/l5B4EJnQP03ciO0=
 [task_details]: ./media/virtual-machines-linux-cluster-hpcpack-namd/task_details.png
 [vmd_view]: ./media/virtual-machines-linux-cluster-hpcpack-namd/vmd_view.png
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="11/11/2015"
+	ms.date="12/01/2015"
 	wacn.date=""/>
 
 
@@ -33,13 +33,13 @@
 
 [AZURE.INCLUDE [storage-dotnet-obtain-assembly](../includes/storage-dotnet-obtain-assembly.md)]
 
-###命名空间声明
+### 命名空间声明
 在你希望在其中以编程方式访问 Azure 存储空间的任何 C# 文件中，将以下命名空间声明添加到文件的顶部：
 
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;
-	using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.Blob;
 
 确保你引用 `Microsoft.WindowsAzure.Storage.dll` 程序集。
 
@@ -62,7 +62,7 @@
     // Create the blob client.
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Retrieve a reference to a container. 
+    // Retrieve a reference to a container.
     CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
     // Create the container if it doesn't already exist.
@@ -334,11 +334,11 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 
 ## 后续步骤
 
-现在，你已了解 blob 存储的基础知识，可单击下面的链接了解详细信息。
+现在，你已了解 Blob 存储的基础知识，可单击下面的链接了解详细信息。
 
 ### Blob 存储参考文档
 
-- [.NET 存储客户端库参考](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+- [.NET 存储客户端库参考](https://msdn.microsoft.com/zh-cn/library/mt347887.aspx)
 - [REST API 参考](http://msdn.microsoft.com/zh-cn/library/azure/dd179355)
 
 ### 其他功能指南
@@ -346,6 +346,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 - [开始使用适用于 .NET 的表存储](/documentation/articles/storage-dotnet-how-to-use-tables)
 - [开始使用适用于 .NET 的队列存储](/documentation/articles/storage-dotnet-how-to-use-queues)
 - [开始使用适用于 .NET 的文件存储](/documentation/articles/storage-dotnet-how-to-use-files)
+- [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 - [使用 SQL 数据库存储关系数据](/documentation/articles/sql-database/articles/sql-database-dotnet-how-to-use)
 - [如何通过 WebJobs SDK 使用 Azure Blob 存储](/documentation/articles/app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to)
 
@@ -355,11 +356,10 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
   [Blob8]: ./media/storage-dotnet-how-to-use-blobs/blob8.png
   [Blob9]: ./media/storage-dotnet-how-to-use-blobs/blob9.png
 
-  [Azure Storage]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
   [Configuring Connection Strings]: http://msdn.microsoft.com/zh-cn/library/azure/ee758697.aspx
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
  
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

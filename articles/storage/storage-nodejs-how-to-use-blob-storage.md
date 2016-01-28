@@ -1,15 +1,15 @@
 <properties 
 	pageTitle="如何通过 Node.js 使用 Blob 存储 | Microsoft Azure" 
 	description="了解如何使用 Azure Blob 服务上载、下载、列出和删除 Blob 内容。示例用 Node.js 编写。"
-	services="storage" 
-	documentationCenter="nodejs" 
-	authors="MikeWasson" 
-	manager="wpickett" 
+	services="storage"
+	documentationCenter="nodejs"
+	authors="rmcmurray"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
 	ms.service="storage" 
-	ms.date="09/01/2015"
+	ms.date="12/01/2015"
 	wacn.date=""/>
 
 
@@ -28,7 +28,7 @@
 
 ## 创建 Node.js 应用程序
 
-有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站]、[Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell）或[使用 WebMatrix 构建 Web 应用]。
+有关创建 Node.js 应用程序的说明，请参阅 [创建 Node.js 应用程序并将其部署到 Azure 网站]、[Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell）或[使用 WebMatrix 构建网站]。
 
 ## 配置应用程序以访问存储
 
@@ -59,11 +59,11 @@
 
     var azure = require('azure-storage');
 
-## 设置 Azure 存储连接
+## 设置 Azure 存储空间连接
 
 Azure 模块将读取环境变量 `AZURE_STORAGE_ACCOUNT`、`AZURE_STORAGE_ACCESS_KEY` 或 `AZURE_STORAGE_CONNECTION_STRING`，以便获取连接到 Azure 存储帐户所需的信息。如果未设置这些环境变量，则在调用 **createBlobService** 时必须指定帐户信息。
 
-有关在管理门户中为 Azure Web 应用设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序]。
+有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js 网站]
 
 ## 创建容器
 
@@ -79,15 +79,15 @@ Azure 模块将读取环境变量 `AZURE_STORAGE_ACCOUNT`、`AZURE_STORAGE_ACCES
 
 	blobSvc.createContainerIfNotExists('mycontainer', function(error, result, response){
       if(!error){
-        // Container exists and allows 
-        // anonymous read access to blob 
+        // Container exists and allows
+        // anonymous read access to blob
         // content and metadata within this container
       }
 	});
 
 如果该容器是新建的，则 `result` 为 true。如果容器已存在，`result` 将为 false。`response` 将包含有关操作的信息，包括容器的 [ETag](http://zh.wikipedia.org/wiki/HTTP_ETag) 信息。
 
-###容器安全性
+### 容器安全性
 
 默认情况下，新容器是私有的，不能匿名访问。若要使容器公开，以便能够对其进行匿名访问，可将容器的访问级别设置为“Blob”或“容器”。
 
@@ -197,7 +197,7 @@ Blob 可以基于块，也可以基于页。块 Blob 可以让你更高效地上
 
 若要从 Blob 下载数据，可使用以下方法：
 
-* **getBlobToFile** - 将 Blob 内容写入文件
+* **getBlobToLocalFile** - 将 Blob 内容写入文件
 
 * **getBlobToStream** - 将 Blob 内容写入流
 
@@ -254,7 +254,7 @@ Blob 可以基于块，也可以基于页。块 Blob 可以让你更高效地上
 
 如果值已修改，则表明在你获得 ETag 值后，其他客户端或实例已修改该 Blob 或容器。
 
-### Lease
+### 租约
 
 新的租约可使用 **acquireLease** 方法获取，只需指定你希望获取其租约的 Blob 或容器即可。例如，以下代码将获取 **myblob** 的租约。
 
@@ -284,7 +284,7 @@ Blob 可以基于块，也可以基于页。块 Blob 可以让你更高效地上
 	var expiryDate = new Date(startDate);
 	expiryDate.setMinutes(startDate.getMinutes() + 100);
 	startDate.setMinutes(startDate.getMinutes() - 100);
-	    
+
 	var sharedAccessPolicy = {
 	  AccessPolicy: {
 	    Permissions: azure.BlobUtilities.SharedAccessPermissions.READ,
@@ -292,7 +292,7 @@ Blob 可以基于块，也可以基于页。块 Blob 可以让你更高效地上
 	    Expiry: expiryDate
 	  },
 	};
-	
+
 	var blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', 'myblob', sharedAccessPolicy);
 	var host = blobSvc.host;
 
@@ -357,22 +357,21 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
 有关详细信息，请参阅以下资源。
 
 -   [Azure Storage SDK for Node API 参考][]
--   MSDN 参考：[在 Azure 中存储和访问数据][]
 -   [Azure 存储团队博客][]
 -   GitHub 上的 [Azure Storage SDK for Node][] 存储库
 -   [Node.js 开发人员中心](/develop/nodejs/)
+-   [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
-[创建 Node.js 应用程序并将其部署到 Azure 网站]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
+[Create and deploy a Node.js application to an Azure Web Site]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
 [Node.js Cloud Service with Storage]: /documentation/articles/storage-nodejs-use-table-storage-cloud-service-app
-[使用存储构建 Node.js Web 应用程序]: /documentation/articles/storage-nodejs-use-table-storage-web-site
-[使用 WebMatrix 构建 Web 应用]: /documentation/articles/web-sites-nodejs-use-webmatrix
+[使用存储构建 Node.js 网站]: /documentation/articles/storage-nodejs-use-table-storage-web-site
+[使用 WebMatrix 构建网站]: /documentation/articles/web-sites-nodejs-use-webmatrix
 [using the REST API]: http://msdn.microsoft.com/zh-cn/library/azure/hh264518.aspx
 [Azure Management Portal]: http://manage.windowsazure.com
 [Node.js Cloud Service]: /documentation/articles/cloud-services-nodejs-develop-deploy-app
-[在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node API 参考]: http://dl.windowsazure.com/nodestoragedocs/index.html
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

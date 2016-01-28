@@ -8,17 +8,17 @@
 	editor=""/>
 
 <tags 
-	ms.service="sql-database"
+	ms.service="sql-database" 
 	ms.date="11/04/2015" 
 	wacn.date=""/>
 
 # 安装弹性数据库作业概述
-可以通过 PowerShell 或 Azure 门户安装[**弹性数据库作业**](/documentation/articles/sql-database-elastic-jobs-overview)。只有安装了 PowerShell 包，才能获取使用 PowerShell API 创建和管理作业的权限。此外，PowerShell API 目前提供的功能明显多于门户。
+可以通过 PowerShell 或 Azure 经典门户安装[**弹性数据库作业**](/documentation/articles/sql-database-elastic-jobs-overview)。只有安装了 PowerShell 包，才能获取使用 PowerShell API 创建和管理作业的权限。此外，PowerShell API 目前提供的功能明显多于门户。
 
 如果你从现有的**弹性数据库池**通过门户安装了**弹性数据库作业**，最新的 Powershell 预览包含用于升级现有安装的脚本。强烈建议将安装升级到最新的**弹性数据库作业**组件，以便利用通过 PowerShell API 公开的新功能。
 
 ## 先决条件
-* Azure 订阅。如需免费试用，请参阅[试用](/pricing/1rmb-trial/)。
+* Azure 订阅。若要获取试用版，请参阅[试用](/pricing/1rmb-trial)。
 * Azure PowerShell 版本为 0.8.16 或以上。通过 [Web 平台安装程序](http://go.microsoft.com/fwlink/p/?linkid=320376)安装最新版本 (0.9.5)。有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。
 * [NuGet 命令行实用程序](https://nuget.org/nuget.exe)用于安装弹性数据库作业包。有关详细信息，请参阅 http://docs.nuget.org/docs/start-here/installing-nuget。
 
@@ -45,7 +45,7 @@
 
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-2.	执行.\\InstallElasticDatabaseJobs.ps1 PowerShell 脚本，并提供其所请求的变量的值。此脚本将根据[弹性数据库作业组件和定价](sql-database-elastic-jobs-overview/#components-and-pricing)中所述创建组件，并将 Azure 云服务配置为适当使用依赖组件。
+2.	执行.\\InstallElasticDatabaseJobs.ps1 PowerShell 脚本，并提供其所请求的变量的值。此脚本将根据[弹性数据库作业组件和定价](/documentation/articles/sql-database-elastic-jobs-overview/#components-and-pricing)中所述创建组件，并将 Azure 云服务配置为适当使用依赖组件。
 
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1 
 		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
@@ -80,13 +80,13 @@
 </tr>
 	<tr>
 	<td>ServiceVmSize</td>
-	<td>提供在云服务中使用的 VM 大小。此参数默认为 A0。接受参数值 A0/A1/A2/A3，这会导致辅助角色分别使用 ExtraSmall/Small/Medium/Large 大小。有关辅助角色大小的详细信息，请参阅 [弹性数据库作业组件和定价](sql-database-elastic-jobs-overview/#components-and-pricing)。</td>
+	<td>提供在云服务中使用的 VM 大小。此参数默认为 A0。接受参数值 A0/A1/A2/A3，这会导致辅助角色分别使用 ExtraSmall/Small/Medium/Large 大小。有关辅助角色大小的详细信息，请参阅 [弹性数据库作业组件和定价](/documentation/articles/sql-database-elastic-jobs-overview/#components-and-pricing)。</td>
 </tr>
 
 </tr>
 	<tr>
 	<td>SqlServerDatabaseSlo</td>
-	<td>提供标准版的服务级别目标。此参数默认为 S0。接受参数值 S0/S1/S2/S3，这会导致 Azure SQL 数据库使用各自的 SLO。有关 SQL 数据库 SLO 的详细信息，请参阅 [弹性数据库作业组件和定价](sql-database-elastic-jobs-overview/#components-and-pricing)。</td>
+	<td>提供标准版的服务级别目标。此参数默认为 S0。接受参数值 S0/S1/S2/S3，这会导致 Azure SQL 数据库使用各自的 SLO。有关 SQL 数据库 SLO 的详细信息，请参阅 [弹性数据库作业组件和定价](/documentation/articles/sql-database-elastic-jobs-overview/#components-and-pricing)。</td>
 </tr>
 
 </tr>
@@ -139,7 +139,7 @@
 
 	<tr>
 	<td>ServiceVmSize</td>
-	<td>提供在云服务中使用的 VM 大小。此参数默认为 A0。接受参数值 A0/A1/A2/A3，这会导致辅助角色分别使用 ExtraSmall/Small/Medium/Large 大小。有关辅助角色大小的详细信息，请参阅 [弹性数据库作业组件和定价](sql-database-elastic-jobs-overview/#components-and-pricing)。</td>
+	<td>提供在云服务中使用的 VM 大小。此参数默认为 A0。接受参数值 A0/A1/A2/A3，这会导致辅助角色分别使用 ExtraSmall/Small/Medium/Large 大小。有关辅助角色大小的详细信息，请参阅 [弹性数据库作业组件和定价](/documentation/articles/sql-database-elastic-jobs-overview/#components-and-pricing)。</td>
 </tr>
 
 </table>
@@ -170,11 +170,12 @@
 
 	![部署仍在进行][4]
 
-如果需要卸载，请删除资源组。请参阅[如何卸载弹性数据库作业组件](sql-database-elastic-jobs-uninstall.md)。
+如果需要卸载，请删除资源组。请参阅[如何卸载弹性数据库作业组件](/documentation/articles/sql-database-elastic-jobs-uninstall)。
 
 ## 后续步骤
 
-确保已在组中的每个数据库上创建对脚本具有适当权限的凭据。有关详细信息，请[参阅如何将用户添加到数据库组中的所有数据库](/documentation/articles/sql-database-elastic-jobs-add-logins-to-dbs)。请参阅[创建和管理弹性数据库作业](/documentation/articles/sql-database-elastic-jobs-create-and-manage)入门主题。
+确保已在组中的每个数据库上创建对脚本具有适当权限的凭据。有关详细信息，请[参阅如何将用户添加到数据库组中的所有数据库](/documentation/articles/sql-database-elastic-jobs-add-logins-to-dbs)。
+请参阅[创建和管理弹性数据库作业](/documentation/articles/sql-database-elastic-jobs-create-and-manage)入门主题。
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-jobs-service-installation/screen-1.png
@@ -183,4 +184,4 @@
 [4]: ./media/sql-database-elastic-jobs-service-installation/incomplete.png
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

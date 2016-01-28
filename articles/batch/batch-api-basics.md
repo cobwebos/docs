@@ -1,15 +1,15 @@
 <properties
-	pageTitle="Azure Batch API 基础知识 | Microsoft Azure"
-	description="从开发的角度了解 Batch 服务及其 API 的基本概念。"
-	services="batch" 
-	documentationCenter=".net" 
-	authors="yidingzhou" 
-	manager="timlt" 
+	pageTitle="Azure Batch 功能概述 | Microsoft Azure"
+	description="从开发的角度了解 Batch 服务的功能及其 API。"
+	services="batch"
+	documentationCenter=".net"
+	authors="yidingzhou"
+	manager="timlt"
 	editor=""/>
 
 <tags 
 	ms.service="batch" 
-	ms.date="10/15/2015"
+	ms.date="11/19/2015"
 	wacn.date=""/>
 	
 <!--The next line, with one pound sign at the beginning, is the page title-->
@@ -17,7 +17,7 @@
 
 本文提供 Azure Batch 服务的核心 API 功能的基本概述。无论是使用 [Batch REST][batch_rest_api] 还是 [Batch .NET][batch_net_api] API 来开发分布式计算解决方案，你都要使用下面讨论的许多实体和功能。
 
-> [AZURE.TIP]有关 Batch 的更高级技术概述，请参阅 [Azure Batch 技术概述](batch-technical-overview.md)。
+> [AZURE.TIP]有关 Batch 的更高级技术概述，请参阅 [Azure Batch 基础知识](batch-technical-overview.md)。
 
 ## <a name="workflow"></a>Batch 服务的工作流
 
@@ -237,7 +237,8 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 
 有关自动缩放应用程序的详细信息，请参阅[自动缩放 Azure Batch 池中的计算节点](batch-automatic-scaling.md)。
 
-> [AZURE.TIP]虽然通常不需要这样做，但你可以指定要从池中删除的单个节点。例如，如果怀疑某个节点不太可靠，则可以从池中删除该节点，以防止向它分配其他任务。
+> [AZURE.TIP]
+ 虽然通常不需要这样做，但你可以指定要从池中删除的单个节点。例如，如果怀疑某个节点不太可靠，则可以从池中删除该节点，以防止向它分配其他任务。
 
 ## <a name="cert"></a>证书的安全性
 
@@ -351,4 +352,4 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 [rest_update_job]: https://msdn.microsoft.com/library/azure/dn820162.aspx
 [rest_rdp]: https://msdn.microsoft.com/library/azure/dn820120.aspx
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

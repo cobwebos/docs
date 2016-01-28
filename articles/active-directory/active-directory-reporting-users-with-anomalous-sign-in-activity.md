@@ -9,15 +9,13 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="07/13/2015"
+	ms.date="08/17/2015"
 	wacn.date=""/>
 
 # 具有异常登录活动的用户
+这是一份聚合报告，其中合并了以下报告中的可疑登录：<ul><li>来自未知源的登录</li> <li>多次失败后的登录</li> <li>来自多个地理区域的登录</li> <li>从具有可疑活动的 IP 地址登录</li> <li>来自可能受感染设备的登录</li> <li>异常登录活动</li> </ul>
 
-| 说明 | 报告位置 |
-| :-------------     | :-------        |
-| <p>当你想查看已标识为异常登录活动的所有用户帐户时，使用此报表。此报表包含来自所有其他异常活动报表的数据。来自此报表的结果将显示有关用户、登录事件被标识为异常的原因、日期和时间的详细信息，以及事件的其他相关信息。</p> | “目录”>“报告”选项卡 |
 
 ![具有异常登录活动的用户](./media/active-directory-reporting-users-with-anomalous-sign-in-activity/usersWithAnomalousSignInActivity.PNG)
 
-<!---HONumber=67-->
+<!---HONumber=Mooncake_0118_2016-->

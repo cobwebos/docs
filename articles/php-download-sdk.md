@@ -2,14 +2,14 @@
 	pageTitle="下载 Azure SDK for PHP"
 	description="了解如何下载和安装 Azure SDK for PHP。"
 	documentationCenter="php"
-	services=""
+	services="app-service\web"
 	authors="tfitzmac"
 	manager="wpickett"
 	editor=""/>
 
 <tags
-	ms.service="multiple"
-	ms.date="08/31/2015"
+	ms.service="app-service-web"
+	ms.date="12/16/2015"
 	wacn.date=""/>
 
 #下载 Azure SDK for PHP
@@ -27,8 +27,7 @@ Azure SDK for PHP 包括允许你针对 Azure 开发、部署和管理 PHP 应�
 
 本主题中的说明假定您已安装 [PHP][install-php]。
 
-> [AZURE.NOTE]
-> 若要使用 Azure 的 PHP 客户端库，您必须安装 PHP 5.3 或更高版本。
+> [AZURE.NOTE]若要使用 Azure 的 PHP 客户端库，您必须安装 PHP 5.3 或更高版本。
 
 ##Azure 的 PHP 客户端库
 
@@ -41,10 +40,9 @@ Azure 的 PHP 客户端库提供了一个用于从任何操作系统访问 Azure
 1. [安装 Git][install-git]。
 
 
-	> [AZURE.NOTE]
-	> 在 Windows 上，您还需要向您的 PATH 环境变量添加 Git 可执行文件。
+	> [AZURE.NOTE]在 Windows 上，您还需要向您的 PATH 环境变量添加 Git 可执行文件。
 
-2. 在您的项目的根目录中创建一个名为 **composer.json** 的文件并向其添加以下代码：
+2. 在你的项目的根目录中创建一个名为 **composer.json** 的文件并向其添加以下代码：
 
         {
             "repositories": [
@@ -128,4 +126,4 @@ Azure CLI 是一组用于部署和管理 Azure 服务（例如 Azure 网站和 A
 [php-sdk-github]: http://go.microsoft.com/fwlink/?LinkId=252719
 [install-git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

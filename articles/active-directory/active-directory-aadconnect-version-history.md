@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="11/03/2015"
+   ms.date="12/02/2015"
    wacn.date=""/>
 
 # Azure AD Connect：版本发布历史记录
@@ -22,6 +22,16 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 
 - 有关应用更新时所需的权限，请参阅[帐户和权限](active-directory-aadconnect-accounts-permissions.md#upgrade)
 - [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)
+
+## 1\.0.9131.0
+发布日期：2015 年 12 月
+
+**已解决的问题：**
+
+- 更改 AD DS 中的密码时，密码同步可能不会正常工作，但设置密码时可以正常工作。
+- 如果你设置了代理服务器，在安装期间或在配置页上运行升级时，向 Azure AD 进行身份验证可能会失败。
+- 如果你不是 SQL 中的 SA，从装有完整 SQL 服务器的旧版 Azure AD Connect 更新将会失败。
+- 从装有远程 SQL 服务器的旧版 Azure AD Connect 更新时，将显示错误消息“无法访问 ADSync SQL 数据库”。
 
 ## 1\.0.9125.0
 发布日期：2015 年 11 月
@@ -193,6 +203,6 @@ Azure Active Directory 团队会定期更新 Azure AD Sync 的新特性和功能
 **Azure AD Sync 的初始版本。**
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

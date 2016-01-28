@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="10/08/2015" 
+	ms.date="11/16/2015" 
 	wacn.date=""/>
 
 # 部署密码管理并向用户培训其用法
@@ -44,12 +44,14 @@
 关于如何为你所在组织中的用户指定用于密码重置的数据，你有几种选择。
 
 - 在 [Azure 管理门户](https://manage.windowsazure.cn)或 [Office 365 管理门户](https://portal.partner.microsoftonline.cn)中编辑用户
-- 使用 AADSync 将用户属性从本地 Active Directory 域同步到 Azure AD
-- 使用 Windows PowerShell 编辑用户属性
+- 使用 Azure AD Sync 将用户属性从本地 Active Directory 域同步到 Azure AD
+- [遵循此处所述的步骤](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users)使用 Windows PowerShell 编辑用户属性。
 - 通过将用户引导至位于 [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) 的注册门户，使用户能够注册其自己的数据
-- 要求用户在登录到位于 [http://myapps.microsoft.com](http://myapps.microsoft.com) 的访问面板时注册以进行密码重置，方法是将“要求用户注册”SSPR 配置选项设置为“是”。
+- 通过将“[要求用户在登录时注册?](active-directory-passwords-customize.md#require-users-to-register-when-signing-in)”配置选项设置为“是”，要求用户在登录其 Azure AD 帐户时注册密码重置。
 
-用户无需针对密码重置注册，系统便能正常工作。例如，如果你的现有电话号码位于本地目录中，则可以在 Azure AD 中同步它们，我们将自动使用它们进行密码重置。
+用户无需针对密码重置注册，系统便能正常工作。例如，如果你的现有手机号码或办公电话号码位于本地目录中，则可以在 Azure AD 中同步它们，我们将自动使用它们进行密码重置。
+
+你也可以阅读[密码重置使用数据的方式](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset)和[如何使用 PowerShell 填充单个身份验证字段](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users)。
 
 ## 为用户启用密码重置的最佳方式是什么？
 密码重置的常规启用步骤如下：
@@ -73,7 +75,7 @@
 ### 创建自己的密码门户
 对于部署密码管理功能的大型客户而言，一种策略是创建用户可在单个位置管理所有与其密码相关的事项的单一“密码门户”。
 
-我们的许多大客户都选择创建根 DNS 条目，例如 https://passwords.contoso.com，其中包含 Azure AD 密码重置门户、密码重置注册门户和密码更改页面的链接。这样，你发出的任何电子邮件通信或传单都可以包含一个容易记住的，让用户在开始使用该服务时随时可以访问的 URL。
+我们的许多大客户都选择创建根 DNS 条目，例如 https://passwords.contoso.com ，其中包含 Azure AD 密码重置门户、密码重置注册门户和密码更改页面的链接。这样，你发出的任何电子邮件通信或传单都可以包含一个容易记住的，让用户在开始使用该服务时随时可以访问的 URL。
 
 为演示此功能，我们创建了一个使用最新响应性 UI 设计模式且能够在所有浏览器和移动设备上运行的简单页面。
 
@@ -92,7 +94,7 @@
 
   ![][003]
 
-单击“立即验证”可将用户带到**密码重置注册门户**（网址为 [http://aka.ms/ssprsetup）](http://aka.ms/ssprsetup)并要求他们注册。单击**取消**按钮或关闭窗口可撤消采用此方法进行的注册，但如果用户未注册，则在每次登录时，系统都会提醒用户。
+单击“立即验证”可将用户带到**密码重置注册门户**（网址为 [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)）并要求他们注册。单击**取消**按钮或关闭窗口可撤消采用此方法进行的注册，但如果用户未注册，则在每次登录时，系统都会提醒用户。
 
   ![][004]
 
@@ -117,24 +119,25 @@
 
 若要了解如何使用上述每个属性，请参阅[密码重置使用的数据](/documentation/articles/active-directory-passwords-learn-more#what-data-is-used-by-password-reset)。
 
+请参阅[如何从 PowerShell 访问用户的密码重置数据](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users)，以了解如何使用 PowerShell 读取和设置此数据。
+
 ## 示例培训材料
 我们正在准备示例培训材料，以帮助你的 IT 部门和用户快速了解如何部署及使用密码重置。敬请期待！
 
 
 <br/> <br/> <br/>
 
-**其他资源**
+## 密码重置文档的链接
+以下是所有 Azure AD 密码重置文档页面的链接：
 
-
-* [什么是密码管理](/documentation/articles/active-directory-passwords)
-* [密码管理的工作原理](/documentation/articles/active-directory-passwords-how-it-works)
-* [密码管理入门](/documentation/articles/active-directory-passwords-getting-started)
-* [自定义密码管理](/documentation/articles/active-directory-passwords-customize)
-* [如何使用密码管理报告获取 Operational Insights](/documentation/articles/active-directory-passwords-get-insights)
-* [密码管理常见问题](/documentation/articles/active-directory-passwords-faq)
-* [排查密码管理问题](/documentation/articles/active-directory-passwords-troubleshoot)
-* [了解详细信息](/documentation/articles/active-directory-passwords-learn-more)
-* [MSDN 上的密码管理](https://msdn.microsoft.com/zh-cn/library/azure/dn510386.aspx)
+* [**重置自己的密码**](active-directory-passwords-update-your-own-password.md) - 了解如何以系统用户的身份重置或更改自己的密码
+* [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
+* [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置及更改云密码或本地密码
+* [**自定义**](active-directory-passwords-customize.md) - 了解如何根据组织的需求自定义服务的外观和行为
+* [**深入分析**](active-directory-passwords-get-insights.md) - 了解集成式报告功能
+* [**常见问题**](active-directory-passwords-faq.md) - 获取常见问题的解答
+* [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何快速排查服务的问题
+* [**了解更多**](active-directory-passwords-learn-more.md) - 深入探索服务工作原理的技术细节
 
 
 
@@ -146,4 +149,4 @@
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-best-practices/007.jpg "Image_007.jpg"
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

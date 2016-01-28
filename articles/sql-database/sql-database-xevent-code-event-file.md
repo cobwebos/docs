@@ -11,8 +11,8 @@
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="09/30/2015" 
-	wacn.date="09/15/2015"/>
+	ms.date="12/09/2015" 
+	wacn.date=""/>
 
 
 # SQL 数据库中扩展事件的事件文件目标代码
@@ -21,13 +21,13 @@
 你需要一个完整的代码示例来可靠捕获和报告扩展事件的信息。
 
 
-在 Microsoft SQL Server 中，[事件文件目标](http://msdn.microsoft.com/library/ff878115.aspx)用于将事件输出存储在本地硬盘驱动器文件中。但是，此类文件并不适用于 Azure SQL 数据库。我们改为使用 Azure 存储空间服务来支持事件文件目标。
+在 Microsoft SQL Server 中，[事件文件目标](http://msdn.microsoft.com/zh-cn/library/ff878115.aspx)用于将事件输出存储在本地硬盘驱动器文件中。但是，此类文件并不适用于 Azure SQL 数据库。我们改为使用 Azure 存储空间服务来支持事件文件目标。
 
 
 本主题演示了一个两阶段代码示例：
 
 
-- PowerShell：用于在云中创建 Azure 存储空间容器
+- PowerShell：用于在云中创建 Azure 存储空间容器。
 
 - Transact-SQL：
  - 将 Azure 存储空间容器分配到事件文件目标。
@@ -37,7 +37,7 @@
 ## 先决条件
 
 
-- Azure 帐户和订阅。你可以注册[免费试用版](http://azure.microsoft.com/pricing/free-trial/)。
+- Azure 帐户和订阅。你可以注册[试用版](/pricing/1rmb-trial)。
 
 
 - 可以在其中创建表的任何数据库。
@@ -45,7 +45,7 @@
 
 
 - SQL Server Management Studio (ssms.exe) 2015 年 8 月预览版或更高版本。可从以下位置下载最新的 ssms.exe：
- - 标题为[下载 SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx) 的主题。
+ - 标题为[下载 SQL Server Management Studio](http://msdn.microsoft.com/zh-cn/library/mt238290.aspx) 的主题。
  - [直接指向下载位置的链接。](http://go.microsoft.com/fwlink/?linkid=616025)
  - Microsoft 建议定期更新 ssms.exe。在某些情况下，ssms.exe 将每个月更新。
 
@@ -108,7 +108,7 @@ $policySasStartTime  = '2015-08-01'
 
 
 $storageAccountName     = 'gmstorageaccountxevent'
-$storageAccountLocation = 'West US'
+$storageAccountLocation = 'China North'
 $contextName            = 'gmcontext'
 $containerName          = 'gmcontainerxevent'
 $policySasToken      = 'gmpolicysastoken'
@@ -327,7 +327,7 @@ GO
 ------  Create credential (your Azure Storage container must already exist).
 
 
-IF EXISTS
+IF NOT EXISTS
 	(SELECT * FROM sys.symmetric_keys
 		WHERE symmetric_key_id = 101)
 BEGIN
@@ -582,7 +582,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 有关 Azure 存储空间服务中帐户和容器的详细信息，请参阅：
 
-- [如何通过 .NET 使用 Blob 存储](storage-dotnet-how-to-use-blobs.md/)
+- [如何通过 .NET 使用 Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs)
 - [命名和引用容器、Blob 与元数据](http://msdn.microsoft.com/zh-cn/library/azure/dd135715.aspx)
 - [使用根容器](http://msdn.microsoft.com/zh-cn/library/azure/ee395424.aspx)
 
@@ -593,4 +593,4 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

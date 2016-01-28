@@ -9,11 +9,14 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="09/15/2015" 
+	ms.date="12/07/2015"
 	wacn.date=""/>
 
 # 在源代码管理中存储移动服务项目代码
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 > [AZURE.SELECTOR]
 - [.NET backend](/documentation/articles/mobile-services-dotnet-backend-store-code-source-control)
 - [Javascript backend](/documentation/articles/mobile-services-store-scripts-source-control)
@@ -32,8 +35,7 @@
 
 	安装 Git 所需的步骤因操作系统的不同而异。有关操作系统特定的分发和安装指南，请参阅[安装 Git]。
 
-	> [AZURE.NOTE]
-	在某些操作系统上，命令行和 GUI 版本的 Git 都可用。本文中提供的说明使用命令行版本。
+	> [AZURE.NOTE]在某些操作系统上，命令行和 GUI 版本的 Git 都可用。本文中提供的说明使用命令行版本。
 
 2. 打开一个命令行，例如 **GitBash** (Windows) 或 **Bash** (Unix Shell)。在 OS X 系统上，可以通过 **Terminal** 应用程序访问命令行。
 
@@ -90,7 +92,7 @@
 	
 	您应该会看到一系列命令，指出已将提交的内容部署到移动服务。
 
-6. 返回到管理门户，单击“数据”选项卡，单击“TodoItem”表，单击“脚本”，然后选择“插入”操作。可以看到，显示的插入操作脚本与您刚刚上载到存储库的 JavaScript 代码相同。
+6. 返回 [Azure 经典门户]，单击“数据”选项卡，单击“TodoItem”表，单击“脚本”，然后选择“插入”操作。可以看到，显示的插入操作脚本与您刚刚上载到存储库的 JavaScript 代码相同。
 
 ##<a name="use-npm"></a>在服务器脚本中利用共享代码和 Node.js 模块
 
@@ -127,8 +129,7 @@
 
 完成本教程后，你便知道了如何在源代码管理中存储脚本。我们建议您了解有关如何使用服务器脚本和自定义 API 的详细信息：
 
-+ [在移动服务中使用服务器脚本]
-<br/>说明如何使用服务器脚本、作业计划程序和自定义 API。
++ [在移动服务中使用服务器脚本]<br/>说明如何使用服务器脚本、作业计划程序和自定义 API。
 
 <!-- Anchors. -->
 [Enable source control in your mobile service]: #enable-source-control
@@ -147,8 +148,8 @@
 [安装 Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [移动服务入门]: /documentation/articles/mobile-services-ios-get-started
 [在移动服务中使用服务器脚本]: /documentation/articles/mobile-services-how-to-use-server-scripts
-[Azure Management Portal]: https://manage.windowsazure.cn/
+[Azure 经典门户]: https://manage.windowsazure.cn/
 [模块]: http://nodejs.org/api/modules.html
 [node-uuid]: https://npmjs.org/package/node-uuid
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

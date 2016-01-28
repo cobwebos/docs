@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="10/08/2015" 
+	ms.date="11/16/2015" 
 	wacn.date=""/>
 
 # 密码管理入门
@@ -182,7 +182,7 @@
   
 - 已安装了 Azure AD 同步工具，并已准备好 AD 环境，可随时同步到云。有关详细信息，请参阅[在云中使用本地标识基础结构](active-directory-aadconnect.md)。
 
-  >[AZURE.NOTE]测试密码写回之前，请确保完成完整导入，并在本地 AD 与 Azure AD 之间完全同步
+  >[AZURE.NOTE]测试密码写回之前，请确保完成完整导入，并在 Azure AD Connect 中从本地 AD 与 Azure AD 执行完全同步。
 
 - 如果使用 Azure AD Sync 或 Azure AD Connect，则需要打开 **TCP 443** 出站端口（在某些情况下需要打开 **TCP 9350-9354**）。有关详细信息，请参阅[步骤 3：配置防火墙](#step-3-configure-your-firewall)。不再支持对此方案使用 DirSync。如果你仍在使用 DirSync，请升级到最新版本的 Azure AD Connect，然后再部署密码写回。
 
@@ -302,18 +302,17 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 
 <br/> <br/> <br/>
 
-**其他资源**
+## 密码重置文档的链接
+以下是所有 Azure AD 密码重置文档页面的链接：
 
-
-* [什么是密码管理](/documentation/articles/active-directory-passwords)
-* [密码管理的工作原理](/documentation/articles/active-directory-passwords-how-it-works)
-* [自定义密码管理](/documentation/articles/active-directory-passwords-customize)
-* [密码管理最佳实践](/documentation/articles/active-directory-passwords-best-practices)
-* [如何使用密码管理报告获取 Operational Insights](/documentation/articles/active-directory-passwords-get-insights)
-* [密码管理常见问题](/documentation/articles/active-directory-passwords-faq)
-* [排查密码管理问题](/documentation/articles/active-directory-passwords-troubleshoot)
-* [了解详细信息](/documentation/articles/active-directory-passwords-learn-more)
-* [MSDN 上的密码管理](https://msdn.microsoft.com/zh-cn/library/azure/dn510386.aspx)
+* [**重置自己的密码**](/documentation/articles/active-directory-passwords-update-your-own-password) - 了解如何以系统用户的身份重置或更改自己的密码
+* [**工作原理**](/documentation/articles/active-directory-passwords-how-it-works) - 了解六个不同的服务组件及其功能
+* [**自定义**](/documentation/articles/active-directory-passwords-customize) - 了解如何根据组织的需求自定义服务的外观和行为
+* [**最佳实践**](/documentation/articles/active-directory-passwords-best-practices) - 了解如何快速部署且有效管理组织的密码
+* [**深入分析**](/documentation/articles/active-directory-passwords-get-insights) - 了解集成式报告功能
+* [**常见问题**](/documentation/articles/active-directory-passwords-faq) - 获取常见问题的解答
+* [**故障排除**](/documentation/articles/active-directory-passwords-troubleshoot) - 了解如何快速排查服务的问题
+* [**了解更多**](/documentation/articles/active-directory-passwords-learn-more) - 深入探索服务工作原理的技术细节
 
 
 
@@ -350,4 +349,4 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 [032]: ./media/active-directory-passwords-getting-started/032.jpg "Image_032.jpg"
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

@@ -12,12 +12,14 @@
    <tags
       ms.service="active-directory"
 
-      ms.date="08/24/2015"
+      ms.date="11/17/2015"
       wacn.date=""/>
 
 # Azure AD 图形 API 快速入门
 
 Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 Azure AD 的编程访问权限。应用程序可以使用图形 API 对目录数据和对象执行创建、读取、更新和删除 (CRUD) 操作。例如，可以使用图形 API 来创建新用户、查看或更新用户的属性、更改用户的密码、检查基于角色的访问的组成员身份、禁用或删除用户。有关图形 API 功能和应用方案的详细信息，请参阅 [Azure AD 图形 API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) 和 [Azure AD 图形 API 先决条件](https://msdn.microsoft.com/library/azure/hh974464.aspx)。
+
+> [AZURE.IMPORTANT]也可以通过 [Microsoft Graph](https://graph.microsoft.io/) 访问 Azure AD 图形 API 功能。Microsoft Graph 是统一的 API，其中包含 Outlook、OneDrive、OneNote、Planner 和 Office Graph 等其他 Microsoft 服务中的 API，可通过单个终结点和单个访问令牌进行访问。
 
 ## 如何构造图形 API URL
 
@@ -33,11 +35,11 @@ Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 
 为图形 API 发布了以下版本。
 
 * Beta 版
-* 1.5 版
+* 1\.5 版
 * 2013-11-08 版
 * 2013-04-05 版
 
-可以在 api-version 查询参数中指定图形 API 请求的版本。对于版本 1.5，可以使用数字版本值：api-version=1.5。对于早期版本，可使用遵循 YYYY-MM-DD 格式的的日期字符串；例如，api-version=2013-11-08。对于预览功能，可使用字符串“beta”；例如，api-version=beta。有关图形 API 版本之间的差异的详细信息，请参阅 [Azure AD 图形 API 版本控制](https://msdn.microsoft.com/library/azure/dn835125.aspx)。
+可以在 api-version 查询参数中指定图形 API 请求的版本。对于版本 1.5，可以使用数字版本值：api-version=1.5。对于早期版本，可使用遵循 YYYY-MM-DD 格式的的日期字符串；例如，api-version=2013-11-08。对于预览功能，可使用字符串“beta”；例如，api-version=beta。有关图形 API 版本之间的差异的详细信息，请参阅 [Azure AD 图形 API 版本控制](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning)。
 
 ## 图形 API 元数据
 
@@ -87,7 +89,7 @@ Azure Active Directory (AD) 图形 API 通过 OData REST API 终结点提供对 
 **编写和运行查询**：请完成以下步骤。
 
 1. 打开 Fiddler Web 调试器并切换到“编辑器”选项卡。
-2. 由于你要创建新的安全组，因此请从下拉菜单中选择“发布”作为 HTTP 方法。有关对组对象的操作和权限的详细信息，请参阅 [Azure AD Graph REST API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)中的[组](https://msdn.microsoft.com/library/azure/hh974486.aspx)。
+2. 由于你要创建新的安全组，因此请从下拉菜单中选择“发布”作为 HTTP 方法。有关对组对象的操作和权限的详细信息，请参阅 [Azure AD Graph REST API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)中的[组](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#GroupEntity)。
 3. 在“发布”旁边的字段中，键入以下内容作为请求 URL：`https://graph.windows.net/mytenantdomain/groups?api-version=1.5`。
 
     > [AZURE.NOTE]必须将 mytenantdomain 替换为你自己的 Azure AD 目录的域名。
@@ -113,7 +115,7 @@ Content-Type: application/json
         }
 ```
 
-    有关创建组的详细信息，请参阅[创建组](https://msdn.microsoft.com/library/azure/dn151614.aspx)。
+    有关创建组的详细信息，请参阅[创建组](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#CreateGroup)。
 
 有关 Graph 公开的 Azure AD 实体和类型的详细信息，以及有关可以使用 Graph 对它们执行的操作的信息，请参阅 [Azure AD Graph REST API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)。
 
@@ -121,4 +123,4 @@ Content-Type: application/json
 
 了解有关 [Azure AD 图形 API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) 的详细信息。
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0118_2016-->

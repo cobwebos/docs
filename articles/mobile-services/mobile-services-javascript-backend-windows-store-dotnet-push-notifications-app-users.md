@@ -91,6 +91,6 @@
 [向应用程序添加身份验证]: /documentation/articles/mobile-services-windows-store-dotnet-get-started-users
 [向应用程序添加推送通知]: /documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push
 
-[Azure Management Portal]: https://manage.windowsazure.cn/
+[Azure classic portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

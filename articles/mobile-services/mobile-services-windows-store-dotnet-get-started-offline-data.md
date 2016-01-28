@@ -14,13 +14,16 @@
 
 # 在移动服务中使用脱机数据同步
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 [AZURE.INCLUDE [mobile-services-selector-offline](../includes/mobile-services-selector-offline.md)]
 
 本教程说明如何使用 Azure 移动服务向通用 Windows 应用商店应用程序添加脱机支持。脱机支持将允许您在应用程序脱机的情况下与本地数据库交互。应用程序与后端数据库联机后，将使用脱机功能同步本地更改。
 
 
 
-在本教程中，你将更新[移动服务入门]教程中的通用应用项目，以支持 Azure 移动服务的脱机功能。随后，你将在断开连接的脱机情况下添加数据，将这些项目同步到联机数据库，然后登录到 Azure 管理门户，查看在运行应用程序时对数据所做的更改。
+在本教程中，你将更新[移动服务入门]教程中的通用应用项目，以支持 Azure 移动服务的脱机功能。随后，你将在断开连接的脱机情况下添加数据，将这些项目同步到联机数据库，然后登录到 [Azure 经典门户]，查看在运行应用程序时对数据所做的更改。
 
 >[AZURE.NOTE]本教程旨在帮助你更好地了解如何使用移动服务通过 Azure 在 Windows 应用商店应用程序中存储和检索数据。如果这是你第一次体验移动服务，则应先完成[移动服务入门]教程。
 
@@ -172,7 +175,7 @@
 
     在此示例中，我们将检索远程 `todoTable` 中的所有记录，但也可以通过传递查询来筛选记录。`PullAsync` 的第一个参数是用于增量同步的查询 ID；增量同步使用 `UpdatedAt` 时间戳以仅获取自上次同步以来修改的记录。查询 ID 应对于你的应用程序中的每个逻辑查询都是唯一的描述性字符串。若选择不要增量同步，请传递 `null` 作为查询 ID。此命令会检索每个请求的操作，这是可能效率低下上的所有记录。
 
-    >[AZURE.NOTE]* 若要从设备本地存储中删除已在移动设备数据库中删除的记录，应启用[“软删除”]。否则，你的应用程序应定期调用 `IMobileServiceSyncTable.PurgeAsync()` 以清除本地存储。
+    >[AZURE.NOTE]* 若要从设备本地存储中删除已在移动设备数据库中删除的记录，应启用“软删除”[]。否则，你的应用程序应定期调用 `IMobileServiceSyncTable.PurgeAsync()` 以清除本地存储。
 
     请注意，推送和请求操作可能会发生 `MobileServicePushFailedException`。由于拉取操作会内部执行推送来确保所有表及所有关系都一致，因此也可能发生该调用。下一篇教程[使用移动服务脱机支持处理冲突]说明了如何处理这些同步相关的异常。
 
@@ -205,7 +208,7 @@
 
 2. 按 **F5** 键重新生成并运行应用。请注意，数据看上去与脱机情况下相同，即使应用程序现已连接到移动服务。这是因为此应用程序始终使用指向本地存储区的 `IMobileServiceSyncTable`。
 
-3. 登录到 Microsoft Azure 管理门户，查看你的移动服务数据库。如果你的服务将 JavaScript 后端用于移动服务，则可以通过移动服务的“数据”选项卡来游览数据。
+3. 登录到 [Azure 经典门户]，查看你的移动服务数据库。如果你的服务将 JavaScript 后端用于移动服务，则可以通过移动服务的“数据”选项卡来游览数据。
 
     如果将 .NET 后端用于移动服务，请在 Visual Studio 中，转到“服务器资源管理器”->“Azure”->“SQL 数据库”。右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”。
 
@@ -236,7 +239,7 @@
 
 * [使用移动服务脱机支持处理冲突]
 
-* [使用移动服务中的软删除](/documentation/articles/mobile-services-using-soft-delete)
+* [使用移动服务中的软删除][Soft Delete]
 
 <!-- Anchors. -->
 [Update the app to support offline features]: #enable-offline-app
@@ -264,10 +267,12 @@
 [移动服务入门]: /documentation/articles/mobile-services-windows-store-get-started
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkId=394776
 [SQLite for Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkId=397953
-[“软删除”]: /documentation/articles/mobile-services-using-soft-delete
+[Soft Delete]: /documentation/articles/mobile-services-using-soft-delete
+[]: /documentation/articles/mobile-services-using-soft-delete
 
 
 [Mobile Services SDK Nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.0
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
+[Azure 经典门户]: https://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

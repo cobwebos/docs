@@ -1,5 +1,5 @@
 <properties
-	pageTitle="如何使用 Azure 存储执行 SQL Server 备份和还原 | Microsoft Azure"
+	pageTitle="如何使用 Azure 存储空间执行 SQL Server 备份和还原 | Microsoft Azure"
 	description="将 SQL Server 和 SQL 数据库备份到 Azure 存储空间。介绍了将 SQL 数据库备份到 Azure 存储空间的好处，以及需要哪些 SQL Server 和 Azure 存储空间组件"
 	services="sql-database, virtual-machines"
 	documentationCenter=""
@@ -24,7 +24,7 @@ SQL Server 2012 SP1 CU2 中发布了可将 SQL Server 备份写入 Azure Blob �
 
 存储管理、存储故障产生的风险、访问场外存储以及对设备进行配置是一些普遍存在的备份难题。本地数据库实例和 Azure 虚拟机数据库实例都存在这些难题。下面列出了使用 Azure Blob 存储服务存储进行 SQL Server 备份的一些主要优点：
 
-* 灵活、可靠且无限制的场外存储：在 Azure blob 中存储你的备份是一种方便、灵活且易于访问的场外选项。为 SQL Server 备份创建场外存储就像修改现有脚本/作业以使用 **BACKUP TO URL** 语法一样简单。场外存储通常应当远离生产数据库位置，以防止某个灾难可能同时影响场外和生产数据库位置。通过选择[异地复制 Azure blob](../storage/storage-redundancy.md)，你可以在发生可能影响整个地区的灾难时进一步加强保护。 
+* 灵活、可靠且无限制的场外存储：在 Azure blob 中存储你的备份是一种方便、灵活且易于访问的场外选项。为 SQL Server 备份创建场外存储就像修改现有脚本/作业以使用 **BACKUP TO URL** 语法一样简单。场外存储通常应当远离生产数据库位置，以防止某个灾难可能同时影响场外和生产数据库位置。通过选择[异地复制 Azure blob](/documentation/articles/storage-redundancy)，你可以在发生可能影响整个地区的灾难时进一步加强保护。 
 * 备份存档：在对备份进行存档时，Azure Blob 存储服务提供了可替代常用磁带存储方式的更好方式。选择磁带存储时可能需要将数据实际运输到场外设施，并且需要采取一些介质保护措施。在 Azure Blob 存储中存储备份可提供即时、具有高可用性且持久的存档方式。
 * 无硬件管理开销：使用 Azure 服务没有硬件管理开销。Azure 服务可管理硬件并提供地域冗余复制和硬件故障防护。
 * 当前，对于在 Azure 虚拟机中运行的 SQL Server 实例，可以通过创建附加磁盘来备份到 Azure Blob 存储服务。不过，你只能将有限数量的磁盘附加到用于备份的 Azure 虚拟机。对特大实例的限制为 16 个磁盘；对较小实例的磁盘限制数更少。通过启用直接备份到 Azure blob，你可以访问几乎无限的存储。
@@ -40,15 +40,18 @@ SQL Server 2012 SP1 CU2 中发布了可将 SQL Server 备份写入 Azure Blob �
 
 ## Azure Blob 存储服务组件
 
-* 存储帐户：存储帐户是所有存储服务的起点。若要访问 Azure Blob 存储服务，请先创建一个 Azure 存储帐户。有关 Azure Blob 存储服务的详细信息，请参阅[如何使用 Azure Blob 存储服务](http://azure.microsoft.com/develop/net/how-to-guides/blob-storage/)
+* 存储帐户：存储帐户是所有存储服务的起点。若要访问 Azure Blob 存储服务，请先创建一个 Azure 存储帐户。有关 Azure Blob 存储服务的详细信息，请参阅[如何使用 Azure Blob 存储服务](/documentation/articles/storage-dotnet-how-to-use-blobs)
 
 * 容器：容器提供一组 Blob 集，并且可存储无限数量的 Blob。若要将 SQL Server 备份写入到 Azure Blob 服务，你必须至少创建一个根容器。
 
-* Blob：任何类型和大小的文件。使用以下 URL 格式可访问 Blob：`https://<storage account>.blob.core.chinacloudapi.cn/<container>/<blob>` 有关页 Blob 的详细信息，请参阅[了解块 Blob 和页 Blob](http://msdn.microsoft.com/zh-cn/library/azure/ee691964.aspx)
+* Blob：任何类型和大小的文件。使用以下 URL 格式可访问 Blob：`https://<storage account>.blob.core.chinacloudapi.cn/<container>/<blob>`
+有关页 Blob 的详细信息，请参阅[了解块 Blob 和页 Blob](http://msdn.microsoft.com/zh-cn/library/azure/ee691964.aspx)
 
 ## SQL Server 组件
 
-* URL：URL 指定到唯一备份文件的统一资源标识符 (URI)。URL 用于提供 SQL Server 备份文件的位置和名称。URL 必须指向实际 blob，而不是仅指向容器。如果 blob 不存在，则会创建一个。如果指定了现有 blob，除非指定了 > WITH FORMAT 选项，否则 BACKUP 将失败。下面是你将在 BACKUP 命令中指定的 URL 示例：**`http[s]://ACCOUNTNAME.Blob.core.chinacloudapi.cn/<CONTAINER>/<FILENAME.bak>`
+* URL：URL 指定到唯一备份文件的统一资源标识符 (URI)。URL 用于提供 SQL Server 备份文件的位置和名称。URL 必须指向实际 blob，而不是仅指向容器。如果 blob 不存在，则会创建一个。如果指定了现有 blob，除非指定了 > WITH FORMAT 选项，否则 BACKUP 将失败。
+下面是你将在 BACKUP 命令中指定的 URL 示例：
+**`http[s]://ACCOUNTNAME.Blob.core.chinacloudapi.cn/<CONTAINER>/<FILENAME.bak>`
 
 <b>注意：</b>HTTPS 不是必需的，但建议使用它。
 <b>重要提示</b>
@@ -70,4 +73,4 @@ SQL Server 2012 SP1 CU2 中发布了可将 SQL Server 备份写入 Azure Blob �
 
 [备份和还原最佳实践（Azure Blob 存储服务）](http://go.microsoft.com/fwlink/?LinkId=272394)
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

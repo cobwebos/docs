@@ -9,13 +9,13 @@
    tags="azure-resource-manager,azure-service-management"/>
 
 <tags
-	ms.service="azure-resource-manager"
-	ms.date="08/25/2015"
+	ms.service="virtual-machines"
+	ms.date="12/01/2015"
 	wacn.date=""/>
 
 # Azure 资源管理器体系结构
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] 经典部署模型。
 
 
 
@@ -79,4 +79,4 @@
 
 [Azure 资源管理器概述](/documentation/articles/resource-group-overview)
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/09/2015" 
+	ms.date="11/16/2015" 
 	wacn.date=""/>
 
 # 使用移动服务将图像上载到 Azure Blob 存储
@@ -34,7 +34,7 @@
 
 本教程基于移动服务快速入门。在开始本教程之前，必须先[完成移动服务入门]。
 
-##在管理门户中更新已注册的插入脚本
+##在 Azure 经典门户中更新已注册的插入脚本
 
 [AZURE.INCLUDE [mobile-services-configure-blob-storage](../includes/mobile-services-configure-blob-storage.md)]
 
@@ -83,4 +83,4 @@
 [App settings]: http://msdn.microsoft.com/zh-cn/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

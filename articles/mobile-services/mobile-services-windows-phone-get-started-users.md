@@ -14,6 +14,9 @@
 
 # 向移动服务应用程序添加身份验证
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 [AZURE.INCLUDE [mobile-services-selector-get-started-users-legacy](../includes/mobile-services-selector-get-started-users-legacy.md)]
 
 ##概述
@@ -48,7 +51,7 @@
 
 [AZURE.INCLUDE [mobile-services-windows-phone-authenticate-app-with-token](../includes/mobile-services-windows-phone-authenticate-app-with-token.md)]
 
-## <a name="next-steps"> </a>后续步骤
+## <a name="next-steps"></a>后续步骤
 
 在下一教程[移动服务用户的服务端授权](/documentation/articles/mobile-services-javascript-backend-service-side-authorization)中，你将使用移动服务基于已进行身份验证的用户提供的用户 ID 值来筛选移动服务返回的数据。
 
@@ -69,7 +72,7 @@
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [将移动服务添加到现有应用程序]: /documentation/articles/mobile-services-windows-phone-get-started-data
 [Authorize users with scripts]: /documentation/articles/mobile-services-windows-phone-authorize-users-in-scripts
-[Azure Management Portal]: https://manage.windowsazure.cn/
+[Azure classic portal]: https://manage.windowsazure.cn/
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

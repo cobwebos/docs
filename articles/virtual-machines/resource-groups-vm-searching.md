@@ -1,6 +1,6 @@
 <properties
-   pageTitle="使用 PowerShell 和 Azure CLI 来浏览和选择 Azure 虚拟机映像"
-   description="了解在使用资源管理器创建 Azure 虚拟机时如何确定映像的确定发布者、产品和 SKU。"
+   pageTitle="导航和选择 VM 映像 | Microsoft Azure"
+   description="了解在使用资源管理器部署模型创建 Azure 虚拟机时如何确定映像的确定发布者、产品和 SKU。"
    services="virtual-machines"
    documentationCenter=""
    authors="squillace"
@@ -11,12 +11,15 @@
 
 <tags
    ms.service="virtual-machines"
-   ms.date="08/25/2015"
+   ms.date="12/08/2015"
    wacn.date=""/>
 
 # 使用 Windows PowerShell 和 Azure CLI 来浏览和选择 Azure 虚拟机映像
 
-> [AZURE.NOTE]当你在本主题中搜索虚拟机映像时，你在 [Azure 资源管理器模式](/documentation/articles/resource-group-overview.md)下，使用最近安装的适用于 Mac、Linux 和 Windows 的 Azure 命令行接口，或者使用 Windows PowerShell。使用 Azure CLI 时，键入 `azure config mode arm` 即可进入该模式。使用 PowerShell 时，请键入 `Switch-AzureMode AzureResourceManager`。有关完整的更新和配置详细信息，请参阅[将 Azure CLI 与资源管理器配合使用](xplat-cli-azure-resource-manager.md)和[将 Azure PowerShell 与 Azure 资源管理器配合使用](/documentation/articles/powershell-azure-resource-manager.md)。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] 经典部署模型。
+
+
+
 
 ## 常用映像表
 
@@ -44,6 +47,8 @@
 
 
 ## Azure CLI
+
+> [AZURE.NOTE] 本文介绍如何使用最近安装的 Azure CLI 或 Azure PowerShell 来导航和选择虚拟机映像。首先，你必须切换到资源管理器模式。使用 Azure CLI 时，键入 `azure config mode arm` 即可进入该模式。
 
 查找要与 `azure vm quick-create` 配合使用的映像或创建资源组模板文件的最简单且最快速方式是调用 `azure vm image list` 命令，并传递位置、发布者名称（不区分大小写！）和提供产品（如果你知道该产品）。例如，如果你知道“Canonical”是“UbuntuServer”产品的发布者，则以下列表只是简短的示例（许多列表相当长）。
 
@@ -136,6 +141,11 @@
 
 
 ## PowerShell
+
+使用 PowerShell 时，请键入 `Switch-AzureMode AzureResourceManager`。有关完整的更新和配置详细信息，请参阅[将 Azure CLI 与资源管理器配合使用](xplat-cli-azure-resource-manager.md)和[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
+
+> [AZURE.NOTE] 在版本高于 1.0 的 Azure PowerShell 模块中，已删除 `Switch-AzureMode` cmdlet。如果使用 1.0 或更高版本，请将以下命令中的 `Azure` 部分替换为 `AzureRm`。如果使用低于 1.0 版本的 Azure PowerShell 模块，请使用以下命令，但必须先执行 `Switch-AzureMode AzureResourceManager`。
+
 
 使用 Azure 资源管理器创建新的虚拟机时，在某些情况下，你需要使用以下映像属性组合来指定映像：
 
@@ -232,4 +242,4 @@
 [yah]: http://search.yahoo.com/
 [msn]: http://search.msn.com/
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0118_2016-->

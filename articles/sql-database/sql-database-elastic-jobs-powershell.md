@@ -6,14 +6,14 @@
 	authors="ddove"/>
 
 <tags 
-	ms.service="sql-database"
+	ms.service="sql-database" 
 	ms.date="11/03/2015" 
-	wacn.date=""/>
+	wacn.date="" />
 
 # 使用 PowerShell 创建和管理 SQL 数据库弹性数据库作业（预览版）
 
 > [AZURE.SELECTOR]
-- [Azure 门户](/documentation/articles/sql-database-elastic-jobs-create-and-manage)
+- [Azure 经典门户](/documentation/articles/sql-database-elastic-jobs-create-and-manage)
 - [PowerShell](/documentation/articles/sql-database-elastic-jobs-powershell)
 
 
@@ -21,7 +21,7 @@
 使用适用于**弹性数据库作业**的 PowerShell API（预览版），可以定义要针对哪组数据库执行哪些脚本。本文说明如何使用 PowerShell cmdlet 创建和管理**弹性数据库作业**。请参阅[弹性作业概述](/documentation/articles/sql-database-elastic-jobs-overview)。
 
 ## 先决条件
-* Azure 订阅。如需免费试用，请参阅[免费试用一个月](/pricing/free-trial/)。
+* Azure 订阅。若要获取试用版，请参阅[试用](/pricing/1rmb-trial)。
 * 使用弹性数据库工具创建的一组数据库。请参阅[弹性数据库工具入门](/documentation/articles/sql-database-elastic-scale-get-started)。
 * Azure PowerShell。有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。
 * **弹性数据库作业** PowerShell 包：请参阅[安装弹性数据库作业](/documentation/articles/sql-database-elastic-jobs-service-installation)
@@ -32,7 +32,7 @@
 
 	Select-AzureSubscription -SubscriptionId {SubscriptionID}
 
-建议使用 [PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) 针对弹性数据库作业开发和执行 PowerShell 脚本。
+建议使用 [PowerShell ISE](https://technet.microsoft.com/zh-cn/library/dd315244.aspx) 针对弹性数据库作业开发和执行 PowerShell 脚本。
 
 ## 弹性数据库作业对象
 
@@ -205,7 +205,7 @@
 
 数据库凭据可以插入密码已加密的作业*控制数据库*。必须存储凭据，使作业可以在稍后执行（使用作业计划）。
  
-加密是通过创建为安装脚本一部分的证书来进行的。安装脚本创建证书并将其上载到 Azure 云服务，以解密已存储的加密密码。Azure 云服务稍后在作业*控制数据库* 内存储公钥，让 PowerShell API 或 Azure 门户界面加密提供的密码，而不需要在本地安装证书。
+加密是通过创建为安装脚本一部分的证书来进行的。安装脚本创建证书并将其上载到 Azure 云服务，以解密已存储的加密密码。Azure 云服务稍后在作业*控制数据库* 内存储公钥，让 PowerShell API 或 Azure 经典门户界面加密提供的密码，而不需要在本地安装证书。
  
 凭据密码经过加密后，无法供只能通过只读方式访问弹性数据库作业对象的用户访问。不过，具有弹性数据库作业对象读-写访问权限的恶意用户可能会提取密码。凭据设计为跨作业执行重复使用。在建立连接时，凭据将传递到目标数据库。适用于每个凭据的目标数据库目前并没有受到限制，因此恶意用户可以针对自己所控制的数据库来添加数据库目标。然后，该用户可以启动一个针对该数据库的作业，从而获取凭据的密码。
 
@@ -216,7 +216,7 @@
 
 ### 跨数据库创建执行作业所需的加密凭据
 
-创建新的加密凭据时，[**Get-Credential cmdlet**](https://technet.microsoft.com/library/hh849815.aspx) 会提示用户输入可以传递给 [**New-AzureSqlJobCredential cmdlet**](https://msdn.microsoft.com/zh-cn/library/mt346063.aspx) 的用户名和密码。
+创建新的加密凭据时，[**Get-Credential cmdlet**](https://technet.microsoft.com/zh-cn/library/hh849815.aspx) 会提示用户输入可以传递给 [**New-AzureSqlJobCredential cmdlet**](https://msdn.microsoft.com/zh-cn/library/mt346063.aspx) 的用户名和密码。
 
 	$credentialName = "{Credential Name}"
 	$databaseCredential = Get-Credential
@@ -238,13 +238,13 @@
 
 本示例将创建分片映射管理器以及多个分片，然后将数据插入分片。
 
-1. 生成并运行**弹性数据库工具入门**示例应用程序。一直执行到[下载和运行示例应用](/documentation/articles/sql-database-elastic-scale-get-started#Getting-started-with-elastic-database-tools)部分中的步骤 7。在步骤 7 结束时，你将看到以下命令提示符：
+1. 生成并运行**弹性数据库工具入门**示例应用程序。一直执行到[下载和运行示例应用](/documentation/articles/sql-database-elastic-scale-get-started/#Getting-started-with-elastic-database-tools)部分中的步骤 7。在步骤 7 结束时，你将看到以下命令提示符：
 
 	![命令提示符][1]
 
 2.  在命令窗口中键入“1”，然后按 **Enter**。这会创建分片映射管理器，并将两个分片添加到服务器。然后键入“3”并按 **Enter**；重复该操作四次。这会在你的分片中插入示例数据行。
   
-3.  [Azure 预览门户](https://portal.azure.com)应会在 v12 服务器中显示三个新的数据库：
+3.  [Azure 门户](https://manage.windowsazure.cn)应会在 v12 服务器中显示三个新的数据库：
 
 	![Visual Studio 确认][2]
 
@@ -260,7 +260,7 @@
 
 ## 创建 T-SQL 脚本用于跨数据库执行
 
-创建要执行的 T-SQL 脚本时，强烈建议将其构建为[幂等](https://en.wikipedia.org/wiki/Idempotence)模式，以便灵活地应对各种故障。每当执行发生失败时，不论失败的分类，弹性数据库作业将重试执行脚本。
+创建要执行的 T-SQL 脚本时，强烈建议将其构建为[幂等](https://zh.wikipedia.org/wiki/Idempotence)模式，以便灵活地应对各种故障。每当执行发生失败时，不论失败的分类，弹性数据库作业将重试执行脚本。
 
 使用 [**New-AzureSqlJobContent cmdlet**](https://msdn.microsoft.com/zh-cn/library/mt346085.aspx) 创建并保存执行脚本，然后设置 **-ContentName** 和 **-CommandText** 参数。
 
@@ -690,4 +690,4 @@
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

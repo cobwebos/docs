@@ -10,21 +10,20 @@
 
 <tags
    ms.service="virtual-machines"
-   ms.date="09/01/2015"
+   ms.date="12/08/2015"
    wacn.date=""/>
 
 # 在 Azure Active Directory 中创建工作或学校标识
 
-如果你创建了个人 Azure 帐户或者具有个人 MSDN 订阅并且创建了 Azure 帐户来充分利用 MSDN Azure 信用额度 -- 你使用 *Microsoft 帐户*标识来创建。Azure 的许多强大功能 - [资源组模板](/documentation/articles/resource-group-overview)就是一个例子 - 需要有工作或学校帐户（由 Azure Active Directory 管理的标识）才能运行。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-both-include.md)]
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-include.md)]本文介绍了如何创建资源管理器部署模型和典型部署模型所需的 AAD 标识。
+如果你创建了个人 Azure 帐户或者具有个人 MSDN 订阅并且创建了 Azure 帐户来充分利用 MSDN Azure 信用额度 -- 你使用 *Microsoft 帐户* 标识来创建。Azure 的许多强大功能 - [资源组模板](../resource-group-overview.md)就是一个例子 - 需要有工作或学校帐户（由 Azure Active Directory 管理的标识）才能运行。你可以遵循以下说明创建新的工作帐户或学校帐户，因为在个人 Azure 帐户方面，最有利的特点之一是，这种帐户附带了一个默认 Azure Active Directory 域，使用该域可以创建新的工作或学校帐户，以用于需要这种帐户的 Azure 功能。
 
+此外，利用最近所做的更改，你可以使用[此处](/documentation/articles/xplat-cli-connect)所述的 `azure login` 交互式登录方法，通过任何类型的 Azure 帐户管理你的订阅。你可以使用该机制，也可以遵循后面的说明。
 
-在个人 Azure 帐户方面，最有利的特点之一是，这种帐户附带了一个默认 Azure Active Directory 域，使用该域可以创建新的工作或学校帐户，以用于需要这种帐户的 Azure 功能。
+> [AZURE.NOTE] 如果管理员为你提供了用户名和密码，则你很有可能已经获得了一个工作或学校 ID（有时也称为 *组织 ID* ）。如果是这样，你可以立即开始使用你的 Azure 帐户来访问需要此类 ID 的 Azure 资源。如果你发现自己无法使用这些资源，可能需要返回到本主题以寻求帮助。有关其他详细信息，请参阅[可用于登录的帐户](https://msdn.microsoft.com/zh-cn/library/azure/dn629581.aspx#BKMK_SignInAccounts)和 [Azure 订阅与 Azure AD 的关联方式](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir)。
 
-> [AZURE.NOTE]如果管理员为你提供了用户名和密码，则你很有可能已经获得了一个工作或学校 ID（有时也称为*组织 ID*）。如果是这样，你可以立即开始使用你的 Azure 帐户来访问需要此类 ID 的 Azure 资源。如果你发现自己无法使用这些资源，可能需要返回到本主题以寻求帮助。有关其他详细信息，请参阅[可用于登录的帐户](https://msdn.microsoft.com/zh-cn/library/azure/dn629581.aspx#BKMK_SignInAccounts)和 [Azure 订阅与 Azure AD 的关联方式](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir)。
-
-步骤非常简单。你需要在 Azure 门户中找到登录的标识，发现你的默认 Azure Active Directory 域，然后将一个新用户作为 Azure 协同管理员添加到该域。
+步骤非常简单。你需要在 Azure 经典门户中找到登录的标识，发现你的默认 Azure Active Directory 域，然后将一个新用户作为 Azure 协同管理员添加到该域。
 
 ## 在 Azure 门户中找到默认目录
 
@@ -58,7 +57,7 @@
 
 ![](./media/resource-group-create-work-id-from-personal/addingauserwithdirectorydropdown.png)
 
-为 Ahmet 输入更多信息，请确保选择相应的“角色”值。使用“全局管理员”可以轻松地让一切正常运行，但如果你可以使用权限更低的角色，则我们建议你这样做。本示例使用“用户”角色。（在[此处](https://msdn.microsoft.com/zh-cn/library/azure/dn468213.aspx#BKMK_1)了解有关这些角色的详细信息。） 除非你要对操作中的每个日志使用多重身份验证，否则不要启用多重身份验证。完成后，单击下一步箭头。
+为 Ahmet 输入更多信息，请确保选择相应的“角色”值。使用“全局管理员”可以轻松地让一切正常运行，但如果你可以使用权限更低的角色，则我们建议你这样做。本示例使用“用户”角色。（在[按角色列出的管理员权限](https://msdn.microsoft.com/zh-cn/library/azure/dn468213.aspx#BKMK_1)中了解详细信息。） 除非你要对操作中的每个日志使用多重身份验证，否则不要启用多重身份验证。完成后，单击下一步箭头。
 
 ![](./media/resource-group-create-work-id-from-personal/userprofileuseradmin.png)
 
@@ -111,7 +110,7 @@
 
 现在，可以借助新的 Azure Active Directory 标识来使用 [Azure 资源组模板](/documentation/articles/xplat-cli-azure-resource-manager)。
 
-     azure login
+     azure login -e AzureChinaCloud -u <username> -p <password>
     info:    Executing command login
     warn:    Please note that currently you can login only via Microsoft organizational account or service principal. For instructions on how to set them up, please read http://aka.ms/Dhf67j.
     Username: ahmet@aztrainpassxxxxxoutlook.partner.onmschina.cn
@@ -140,4 +139,4 @@
     data:
     info:    group create command OK
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0118_2016-->

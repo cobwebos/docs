@@ -1,7 +1,7 @@
 <properties
 	pageTitle="配合使用 Azure CLI 和资源管理器 | Microsoft Azure"
 	description="了解如何使用适用于 Mac、Linux 和 Windows 的 Azure CLI，在 Azure 资源管理器模式下管理 Azure 资源。"
-	services="virtual-machines,mobile-services,cloud-services"
+	services="virtual-machines,virtual-network,mobile-services,cloud-services"
 	documentationCenter=""
 	authors="dlepow"
 	manager="timlt"
@@ -10,14 +10,14 @@
 
 <tags
 	ms.service="multiple"
-	ms.date="10/07/2015"
+	ms.date="11/18/2015"
 	wacn.date="" />
 
 # 将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理器配合使用
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](/documentation/articles/virtual-machines-command-line-tools)
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [经典部署模型](/documentation/articles/virtual-machines-command-line-tools)
 
-本文介绍如何在 Azure 资源管理器模式下使用 Azure 命令行接口 (Azure CLI)，在 Mac、Linux 和 Windows 计算机的命令行中创建、管理和删除服务。你可以配合使用 Azure SDK 的各种库及 Azure PowerShell 来执行与使用 Azure 预览门户相同的任务。
+本文介绍如何在 Azure 资源管理器模式下使用 Azure 命令行接口 (Azure CLI)，在 Mac、Linux 和 Windows 计算机的命令行中创建、管理和删除服务。你可以使用 Azure SDK 的各种库、Azure PowerShell 和 Azure 门户执行许多相同的任务。
 
 Azure 资源管理器可让你创建一组资源 - 虚拟机、网站、数据库等 - 作为单个可部署单元。然后，可以通过一个协调的操作为应用程序部署、更新或删除所有资源。在部署的 JSON 模板中描述组资源，然后，可以针对不同的环境（如测试、过渡和生产）使用该模板。
 
@@ -31,26 +31,26 @@ Azure 资源管理器可让你创建一组资源 - 虚拟机、网站、数据�
 
 ## 命令性和声明性方法
 
-与 [Azure 服务管理模式](/documentation/articles/virtual-machines-command-line-tools)一样，Azure CLI 的 **arm** 模式可提供命令让你在命令行上强制创建资源。例如，如果键入 `azure group create <groupname> <location>`，则会要求 Azure 创建资源组；如果键入 `azure group deployment create <resourcegroup> <deploymentname>`，则会指示 Azure 创建包含任意项数的部署，并将其放在组中。由于每种类型的资源都有强制命令，你可以将这些命令链接在一起，以创建相当复杂的部署。
+与 [Azure 服务管理模式](/documentation/articles/virtual-machines-command-line-tools)一样，Azure CLI 的资源管理器模式可提供命令让你在命令行上强制创建资源。例如，如果键入 `azure group create <groupname> <location>`，则会要求 Azure 创建资源组；如果键入 `azure group deployment create <resourcegroup> <deploymentname>`，则会指示 Azure 创建包含任意项数的部署，并将其放在组中。由于每种类型的资源都有强制命令，你可以将这些命令链接在一起，以创建相当复杂的部署。
 
-但是，使用用于描述资源组的资源组_模板_是一种强大得多的声明性方法，它允许你针对（几乎）任何目的自动完成包含（几乎）任意数量的资源的复杂部署。使用模板时，唯一的强制性命令是单一部署。有关模板、资源和资源组的一般概述，请参阅 [Azure 资源组概述](resource-groups-overview)。
+但是，使用用于描述资源组的资源组_模板_是一种强大得多的声明性方法，它允许你针对（几乎）任何目的自动完成包含（几乎）任意数量的资源的复杂部署。使用模板时，唯一的强制性命令是单一部署。有关模板、资源和资源组的一般概述，请参阅 [Azure 资源组概述](/documentation/articles/resource-group-overview)。
 
 ##用法要求
 
 对配合使用资源管理器模式和 Azure CLI 的设置要求如下：
 
-- 一个 Azure 帐户（[在此处获取免费试用版](/pricing/1rmb-trial/)）
+- 一个 Azure 帐户（[在此处获取试用版](/pricing/1rmb-trial/)）
 - [安装 Azure CLI](/documentation/articles/xplat-cli-install)
-- [配置 Azure CLI](/documentation/articles/xplat-cli-connect) 以使用 Azure Active Directory 标识或服务主体
+
 
 获取帐户并安装 Azure CLI 后，你必须
 
+- [配置 Azure CLI](/documentation/articles/xplat-cli-connect) 以使用工作或学校帐户或 Microsoft 帐户标识
 - 通过键入 `azure config mode arm` 切换到资源管理器模式。
-- 出现提示时，通过键入 `azure login` 并使用你的工作或学校标识登录到 Azure 帐户
 
 
-## azure account：管理帐户信息和发布设置
-该工具使用你的 Azure 订阅信息连接到你的帐户。可以从 Azure 门户中的发布设置文件中获取此信息，如下所述。可以导入发布设置文件作为永久性本地配置设置，该工具会将此设置用于后续操作。你只需导入你的发布设置一次。
+## azure account：管理你的帐户信息
+该工具使用你的 Azure 订阅信息连接到你的帐户。
 
 **列出导入的订阅**
 
@@ -942,8 +942,8 @@ Azure 资源管理器可让你创建一组资源 - 虚拟机、网站、数据�
  	-l, --lb-name <lb-name>                the name of the load balancer
  	-s, --subscription <subscription>      the subscription identifier
 
-<BR> 
-        network lb address-pool delete [选项] <resource-group> <lb-name> <name>
+<BR>
+	network lb address-pool delete [选项] <resource-group> <lb-name> <name>
 
 从负载平衡器中删除后端 IP 池范围资源。
 
@@ -1249,21 +1249,24 @@ Azure 资源管理器可让你创建一组资源 - 虚拟机、网站、数据�
 
 
 参数选项：
-	-h、--help：输出用法信息；
-	-v、--verbose：使用详细输出；
-	--json：使用 json 输出；
-	-g、--resource-group <resource-group> 资源组的名称；
-	-n、--name <name> 公共 IP 的名称；
-	-l、--location <location> 位置；
-	-d、--domain-name-label <domain-name-label> 
-	域名标签。这会将 DNS 设置为 <domain-name-label>.<location>.chinacloudapp.cn 
-	-a, --allocation-method <allocation-method> 分配方法 [Static][Dynamic] 
-	-i, --idletimeout <idletimeout> 空闲超时（以分钟为单位）；
-	-f、--reverse-fqdn <reverse-fqdn> 反向 FQDN；
-	-t、--tags <tags>
-	 标记列表。可以是多个。采用“名称=值”格式。名称是必需的，值是可选的。例如，-t tag1=value1;tag2 
-	 -s, --subscription <subscription> 订阅标识符 
- <br>
+
+	-h, --help                                   output usage information
+	-v, --verbose                                use verbose output
+	--json                                       use json output
+	-g, --resource-group <resource-group>        the name of the resource group
+	-n, --name <name>                            the name of the public ip
+	-l, --location <location>                    the location
+	-d, --domain-name-label <domain-name-label>  the domain name label.
+	This set DNS to <domain-name-label>.<location>.chinacloudapp.cn
+	-a, --allocation-method <allocation-method>  the allocation method [Static][Dynamic]
+	-i, --idletimeout <idletimeout>              the idle timeout in minutes
+	-f, --reverse-fqdn <reverse-fqdn>            the reverse fqdn
+	-t, --tags <tags>                            the list of tags.
+	Can be multiple. In the format of "name=value".
+	Name is required and value is optional.
+	For example, -t tag1=value1;tag2
+	-s, --subscription <subscription>            the subscription identifier
+<br>
 
 	network public-ip set [options] <resource-group> <name>
 更新现有的公共 IP 资源的属性。在以下示例中，我们已将公共 IP 地址从动态更改为静态。
@@ -1305,8 +1308,9 @@ Azure 资源管理器可让你创建一组资源 - 虚拟机、网站、数据�
 	-s, --subscription <subscription>            the subscription identifier
 
 <br>
-        network public-ip list [选项] <resource-group>
- 列出资源组中的所有公共 IP 资源。
+
+	network public-ip list [options] <resource-group>
+列出资源组中的所有公共 IP 资源。
 
 	azure network public-ip list -g myresourcegroup
 
@@ -1326,9 +1330,10 @@ Azure 资源管理器可让你创建一组资源 - 虚拟机、网站、数据�
 	--json                                 use json output
 	-g, --resource-group <resource-group>  the name of the resource group
 	-s, --subscription <subscription>      the subscription identifier
-<BR> 
-         network public-ip show [选项] <resource-group> <name>
-	 显示资源组中公共 IP 资源的公共 IP 属性。
+<BR>
+
+	network public-ip show [options] <resource-group> <name>
+显示资源组中公共 IP 资源的公共 IP 属性。 
 
 	azure network public-ip show -g myresourcegroup -n mytestpublicip
 
@@ -1684,9 +1689,9 @@ Azure 资源管理器可让你创建一组资源 - 虚拟机、网站、数据�
 
 	vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>
 
-**列出资源组中的虚拟机**
+**列出帐户中的虚拟机**
 
-	vm list [options] <resource-group>
+	vm list [options]
 
 **获取资源组中的一个虚拟机**
 
@@ -1720,7 +1725,7 @@ Azure 资源管理器可让你创建一组资源 - 虚拟机、网站、数据�
 
 	vm capture [options] <resource-group> <name> <vhd-name-prefix>
 
-**将虚拟机的状态设置为通用化**
+**将 VM 的状态设置为通用化**
 
 	vm generalize [options] <resource-group> <name>
 
@@ -1758,4 +1763,123 @@ Azure 资源管理器可让你创建一组资源 - 虚拟机、网站、数据�
 	vm image list-skus [options] <location> <publisher> <offer>
 	vm image list [options] <location> <publisher> [offer] [sku]
 
-<!---HONumber=79-->
+## azure hdinsight：用于管理 HDInsight 群集的命令
+
+**用于创建群集配置文件或在其中添加信息的命令**
+
+	hdinsight config create [options] <configFilePath> <overwrite>
+	hdinsight config add-config-values [options] <configFilePath>
+	hdinsight config add-script-action [options] <configFilePath>
+
+示例：创建一个配置文件，其中包含创建群集时要运行的脚本操作。
+
+	hdinsight config create "C:\myFiles\configFile.config"
+	hdinsight config add-script-action --configFilePath "C:\myFiles\configFile.config" --nodeType HeadNode --uri <scriptActionURI> --name myScriptAction --parameters "-param value"
+
+**用于在资源组中创建群集的命令**
+
+	hdinsight cluster create [options] <clusterName>
+	 
+示例：在 Linux 群集上创建 Storm
+
+	azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Storm --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 myNewCluster01
+	
+	info:    Executing command hdinsight cluster create
+	+ Submitting the request to create cluster...
+	info:    hdinsight cluster create command OK
+
+示例：使用脚本操作创建群集
+
+	azure hdinsight cluster create -g myarmgroup -l westus -y Linux --clusterType Hadoop --version 3.2 --defaultStorageAccountName mystorageaccount --defaultStorageAccountKey <defaultStorageAccountKey> --defaultStorageContainer mycontainer --userName admin --password <clusterPassword> --sshUserName sshuser --sshPassword <sshPassword> --workerNodeCount 1 –configurationPath "C:\myFiles\configFile.config" myNewCluster01
+	
+	info:    Executing command hdinsight cluster create
+	+ Submitting the request to create cluster...
+	info:    hdinsight cluster create command OK
+	
+参数选项：
+
+	-h, --help                                                 output usage information
+	-v, --verbose                                              use verbose output
+	-vv                                                        more verbose with debug output
+	--json                                                     use json output
+	-g --resource-group <resource-group>                       The name of the resource group
+	-c, --clusterName <clusterName>                            HDInsight cluster name
+	-l, --location <location>                                  Data center location for the cluster
+	-y, --osType <osType>                                      HDInsight cluster operating system
+	'Windows' or 'Linux'
+	--version <version>                                        HDInsight cluster version
+	--clusterType <clusterType>                                HDInsight cluster type.
+	Hadoop | HBase | Spark | Storm
+	--defaultStorageAccountName <storageAccountName>           Storage account url to use for default HDInsight storage
+	--defaultStorageAccountKey <storageAccountKey>             Key to the storage account to use for default HDInsight storage
+	--defaultStorageContainer <storageContainer>               Container in the storage account to use for HDInsight default storage
+	--headNodeSize <headNodeSize>                              (Optional) Head node size for the cluster
+	--workerNodeCount <workerNodeCount>                        Number of worker nodes to use for the cluster
+	--workerNodeSize <workerNodeSize>                          (Optional) Worker node size for the cluster)
+	--zookeeperNodeSize <zookeeperNodeSize>                    (Optional) Zookeeper node size for the cluster
+	--userName <userName>                                      Cluster username
+	--password <password>                                      Cluster password
+	--sshUserName <sshUserName>                                SSH username (only for Linux clusters)
+	--sshPassword <sshPassword>                                SSH password (only for Linux clusters)
+	--sshPublicKey <sshPublicKey>                              SSH public key (only for Linux clusters)
+	--rdpUserName <rdpUserName>                                RDP username (only for Windows clusters)
+	--rdpPassword <rdpPassword>                                RDP password (only for Windows clusters)
+	--rdpAccessExpiry <rdpAccessExpiry>                        RDP access expiry.
+	For example 12/12/2015 (only for Windows clusters)
+	--virtualNetworkId <virtualNetworkId>                      (Optional) Virtual network ID for the cluster. 
+	Value is a GUID for Windows cluster and ARM resource ID for Linux cluster)
+	--subnetName <subnetName>                                  (Optional) Subnet for the cluster
+	--additionalStorageAccounts <additionalStorageAccounts>    (Optional) Additional storage accounts.
+	Can be multiple.
+	In the format of 'accountName#accountKey'.
+	For example, --additionalStorageAccounts "acc1#key1;acc2#key2"
+	--hiveMetastoreServerName <hiveMetastoreServerName>        (Optional) SQL Server name for the external metastore for Hive
+	--hiveMetastoreDatabaseName <hiveMetastoreDatabaseName>    (Optional) Database name for the external metastore for Hive
+	--hiveMetastoreUserName <hiveMetastoreUserName>            (Optional) Database username for the external metastore for Hive
+	--hiveMetastorePassword <hiveMetastorePassword>            (Optional) Database password for the external metastore for Hive
+	--oozieMetastoreServerName <oozieMetastoreServerName>      (Optional) SQL Server name for the external metastore for Oozie
+	--oozieMetastoreDatabaseName <oozieMetastoreDatabaseName>  (Optional) Database name for the external metastore for Oozie
+	--oozieMetastoreUserName <oozieMetastoreUserName>          (Optional) Database username for the external metastore for Oozie
+	--oozieMetastorePassword <oozieMetastorePassword>          (Optional) Database password for the external metastore for Oozie
+	--configurationPath <configurationPath>                    (Optional) HDInsight cluster configuration file path
+	-s, --subscription <id>                                    The subscription id
+	--tags <tags>                                              Tags to set to the cluster.
+	Can be multiple.
+	In the format of 'name=value'.
+	Name is required and value is optional.
+	For example, --tags tag1=value1;tag2
+
+
+**用于删除群集的命令**
+
+	hdinsight cluster delete [options] <clusterName>
+
+**用于显示群集详细信息的命令**
+
+	hdinsight cluster show [options] <clusterName>
+
+**用于（在特定资源组中，如已提供）列出所有群集的命令**
+
+	hdinsight cluster list [options]
+
+**用于调整群集大小的命令**
+
+	hdinsight cluster resize [options] <clusterName> <targetInstanceCount>
+
+**用于对群集启用 HTTP 访问的命令**
+
+	hdinsight cluster enable-http-access [options] <clusterName> <userName> <password>
+
+**用于对群集禁用 HTTP 访问的命令**
+
+	hdinsight cluster disable-http-access [options] <clusterName>
+
+**用于对群集启用 RDP 访问的命令**
+
+	hdinsight cluster enable-rdp-access [options] <clusterName> <rdpUserName> <rdpPassword> <rdpExpiryDate>
+
+**用于对群集禁用 HTTP 访问的命令**
+
+	hdinsight cluster disable-rdp-access [options] <clusterName>
+
+<!---HONumber=Mooncake_0118_2016-->

@@ -9,7 +9,6 @@
 
 <tags
    ms.service="sql-data-warehouse"
-
    ms.date="11/05/2015"
    wacn.date=""/>
 
@@ -50,7 +49,7 @@
 
 ## 数据操作语言 (DML) 语句
 
-- [删除](https://msdn.microsoft.com/library/ms189835.aspx)
+- [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)
 - [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)
 - [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)
 
@@ -59,7 +58,7 @@
 - [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
 - [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/ms174283.aspx)
 - DBCC SHRINKLOG
-- DBCC PDW\_SHOWEXECUTIONPLAN
+- [DBCC PDW\_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
 - DBCC PDW\_SHOWPARTITIONSTATS
 - DBCC PDW\_SHOWSPACEUSED
 - [DBCC SHOW\_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)
@@ -70,7 +69,8 @@
 - [WITH common\_table\_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 - [EXCEPT 和 INTERSECT](https://msdn.microsoft.com/library/ms188055.aspx)
 - EXPLAIN
-- [从](https://msdn.microsoft.com/library/ms177634.aspx)
+- [FROM](https://msdn.microsoft.com/library/ms177634.aspx)
+- [使用 PIVOT 和 UNPIVOT](https://msdn.microsoft.com/library/ms177410.aspx)
 - [GROUP BY](https://msdn.microsoft.com/library/ms177673.aspx)
 - [HAVING](https://msdn.microsoft.com/library/ms180199.aspx)
 - [ORDER BY](https://msdn.microsoft.com/library/ms188385.aspx)
@@ -125,4 +125,4 @@
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

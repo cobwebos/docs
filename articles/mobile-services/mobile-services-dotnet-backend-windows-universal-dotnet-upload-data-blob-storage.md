@@ -1,10 +1,10 @@
-<properties 
-	pageTitle="将图像从通用 Windows 应用上载到 Azure Blob 存储 |Azure 移动服务" 
-	description="了解如何使用 .NET 后端移动服务将图像上载到 Azure Blob 存储和从通用 Windows 应用访问图像。" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	services="mobile-services,storage" 
-	manager="dwrede" 
+<properties
+	pageTitle="将图像从通用 Windows 应用上载到 Azure Blob 存储 | Microsoft Azure"
+	description="了解如何使用 .NET 后端移动服务将图像上载到 Azure Blob 存储和从通用 Windows 应用访问图像。"
+	documentationCenter="windows"
+	authors="ggailey777"
+	services="mobile-services,storage"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
@@ -14,6 +14,9 @@
 
 # 使用移动服务将图像上载到 Azure 存储空间
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 [AZURE.INCLUDE [mobile-services-selector-upload-data-blob-storage](../includes/mobile-services-selector-upload-data-blob-storage.md)]
 
 ##概述
@@ -66,4 +69,4 @@
 [How To Create a Storage Account]: /documentation/articles/storage-create-storage-account
 [Azure Storage Client library for Store apps]: http://go.microsoft.com/fwlink/p/?LinkId=276866
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0118_2016-->

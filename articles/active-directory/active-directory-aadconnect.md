@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="将本地标识与 Azure Active Directory 集成 | Microsoft Azure" 
+	pageTitle="Azure AD Connect：将本地标识与 Azure Active Directory 集成 | Microsoft Azure" 
 	description="本页介绍 Azure AD Connect 是什么，以及为何要使用它。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="11/04/2015"
+	ms.date="12/02/2015"
 	wacn.date=""/>
 
 
@@ -35,7 +35,7 @@ Azure Active Directory Connect 由三个主要部分组成，分别是同步服�
 <center>![Azure AD Connect 堆栈](./media/active-directory-aadconnect-how-it-works/AADConnectStack2.png) </center>
 
 - 同步 - 此部分由以前包含以前作为 [DirSync 和 Azure AD Sync](/documentation/articles/active-directory-aadconnect-get-started-tools-comparison) 发布的组件和功能组成。此部分负责创建用户和组。它还负责确保本地环境中有关用户和组的信息与云匹配。
-- AD FS - 这是 Azure AD Connect 的可选部分，可用于使用本地 AD FS 基础结构设置混合环境。组织可以使用此部分来解决复杂的部署，包括域加入 SSO、实施 AD 登录策略和智能卡或第三方 MFA（多重身份验证）等方案。
+- AD FS - 这是 Azure AD Connect 的可选部分，可用于使用本地 AD FS 基础结构设置混合环境。组织可以使用此部分来解决复杂的部署，包括域加入 SSO、实施 AD 登录策略和智能卡或第三方 MFA 等方案。
 - 运行状况监视 - Azure AD Connect Health 能够可靠监视 AD FS 服务器，并在 Azure 门户中提供一个中心位置用于查看此活动。有关更多信息，请参阅 [Azure Active Directory Connect Health](/documentation/articles/active-directory-aadconnect-health)。
 
 ## 安装 Azure AD Connect
@@ -45,6 +45,7 @@ Azure Active Directory Connect 由三个主要部分组成，分别是同步服�
 
 | 解决方案 | 方案 |
 | ----- | ----- |
+| 开始之前 | <li>[Azure AD Connect：硬件和先决条件](active-directory-aadconnect-prerequisites.md)</li> |
 | [快速设置](/documentation/articles/active-directory-aadconnect-get-started-express) | <li>适用于单林 AD 的推荐默认选项。</li> <li>使用密码同步以同一密码进行用户登录。</li>
 | [自定义设置](/documentation/articles/active-directory-aadconnect-get-started-custom) | <li>有多个林时使用。支持许多[本地拓扑](/documentation/articles/active-directory-aadconnect-topologies)。</li> <li>自定义登录选项，例如用于联合身份验证的 ADFS，或使用第三方标识提供者。</li> <li>自定义同步功能，例如筛选和写回。</li>
 | [从 DirSync 升级](/documentation/articles/active-directory-aadconnect-dirsync-upgrade-get-started) | <li>如果你有已在运行的现有 DirSync 服务器。</li>
@@ -57,7 +58,6 @@ Azure Active Directory Connect 由三个主要部分组成，分别是同步服�
 
 | 主题 | |
 | --------- | --------- |
-| 硬件和先决条件 | [Azure AD Connect：硬件和先决条件](/documentation/articles/active-directory-aadconnect-prerequisites) |
 | 下载 Azure AD Connect | [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771) |
 | 使用快速设置安装 | [Azure AD Connect 的快速安装](/documentation/articles/active-directory-aadconnect-get-started-express) |
 | 使用自定义设置安装 | [Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom) |
@@ -74,6 +74,7 @@ Azure Active Directory Connect 由三个主要部分组成，分别是同步服�
 | 设计概念 | [Azure AD Connect 设计概念](/documentation/articles/active-directory-aadconnect-design-concepts) |
 | 用于安装的帐户 | [有关 Azure AD Connect 凭据和权限的更多信息](/documentation/articles/active-directory-aadconnect-accounts-permissions) |
 | 操作规划 | [Azure AD Connect 同步：操作任务和注意事项](/documentation/articles/active-directory-aadconnectsync-operations) |
+| 用户登录选项 | [Azure AD Connect 用户登录选项](active-directory-aadconnect-user-signin.md) |
 
 ## 配置功能
 Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能。在某些情况下，有些功能可能需要在特定方案和拓扑中进行其他配置。
@@ -103,7 +104,7 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 
 如果你以前没有用过同步拓扑，请先了解[技术概念](/documentation/articles/active-directory-aadconnect-technical-concepts)中所述的基本概念和术语。Azure AD Connect 是在 MIIS2003、ILM2007 和 FIM2010 基础上演进而来的。即使有些功能相同，但改变的部分也有很多。
 
-配置假设配置中可能存在多个林。在这些拓扑中，用户对象可能表示为另一个林中的联系人。用户还可能在另一个资源林中具有链接的邮箱。[用户和联系人](/documentation/articles/active-directory-aadconnectsync-understanding-users-and-contacts)中介绍了默认配置的行为。
+[默认配置](active-directory-aadconnectsync-understanding-default-configuration.md)假设配置中可能存在多个林。在这些拓扑中，用户对象可能表示为另一个林中的联系人。用户还可能在另一个资源林中具有链接的邮箱。[用户和联系人](active-directory-aadconnectsync-understanding-users-and-contacts.md)中介绍了默认配置的行为。
 
 同步的配置模型称为[声明性预配](/documentation/articles/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions)。高级属性流程使用[函数](/documentation/articles/active-directory-aadconnectsync-functions-reference)来表示属性转换。你可以使用 Azure AD Connect 随附的工具来检查整个配置。如果需要对配置进行更改，请确保遵循[最佳实践](/documentation/articles/active-directory-aadconnectsync-best-practices-changing-default-configuration)，因为当有新版本可用时，可以更轻松地采用这些版本。
 
@@ -112,6 +113,7 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 | 主题 | |
 | --------- | --------- |
 | 技术概念 | [Azure AD Connect 同步：技术概念](/documentation/articles/active-directory-aadconnect-technical-concepts) |
+| 了解默认配置 | [Azure AD Connect 同步：了解默认配置](active-directory-aadconnectsync-understanding-default-configuration.md) |
 | 了解用户和联系人 | [Azure AD Connect 同步：了解用户和联系人](/documentation/articles/active-directory-aadconnectsync-understanding-users-and-contacts) |
 | 声明性预配 | [Azure AD Connect Sync：了解声明性设置表达式](/documentation/articles/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions) |
 | 声明性预配函数参考 | [Azure AD Connect 同步：函数参考](/documentation/articles/active-directory-aadconnectsync-functions-reference) |
@@ -134,19 +136,4 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 
 有关将本地目录扩展到云的 Ignite 2015 演示文稿。
 
-
-
-[使用单一登录的多林目录同步方案](https://msdn.microsoft.com/library/azure/dn510976.aspx) - 将多个目录与 Azure AD 集成。
-
-[Azure AD Connect Health](active-directory-aadconnect-health) - 监视本地 AD FS 基础结构的运行状况。
-
-[Azure AD Connect 常见问题](active-directory-aadconnect-faq) - 关于 Azure AD Connect 的常见问题解答。
-
-
-
-
-
-
- 
-
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

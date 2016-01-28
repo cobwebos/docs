@@ -15,6 +15,9 @@
 
 # 将移动服务添加到现有应用程序
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 [AZURE.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
 
 ##概述
@@ -47,7 +50,7 @@
 
    	可以看到，保存的文本已显示在下面的列表中。
 
-##<a name="create-service"></a>在管理门户中创建新的移动服务
+##<a name="create-service"></a>在 Azure 经典门户中创建新的移动服务
 
 [AZURE.INCLUDE [mobile-services-create-new-service-data](../includes/mobile-services-create-new-service-data.md)]
 
@@ -67,7 +70,7 @@
 
   	这会将移动服务客户端库添加到项目。
 
-3. 在管理门户中单击“移动服务”，然后单击你刚刚创建的移动服务。
+3. 在 [Azure 经典门户]中单击“移动服务”，然后单击你刚刚创建的移动服务。
 
 4. 单击“仪表板”选项卡并记下“站点 URL”中的值，然后单击“管理密钥”并记下“应用程序密钥”中的值。
 
@@ -142,7 +145,7 @@
 
    	此时会将一个新项作为 insert 发送到移动服务。
 
-3. 在[管理门户]中单击“移动服务”，然后单击你的移动服务。
+3. 在 [Azure 经典门户]中，单击“移动服务”，然后单击你的移动服务。
 
 4. 单击“数据”选项卡，然后单击“浏览”。
 
@@ -156,13 +159,13 @@
 
 本教程演示了有关如何使 Windows Phone 8 应用程序处理移动服务中的数据的基础知识。建议你接下来阅读下列其他主题之一：
 
-* [向应用程序添加身份验证](/documentation/articles/mobile-services-windows-phone-get-started-users)
+* [向应用程序添加身份验证](/documentation/articles/mobile-services-windows-phone-get-started-users) 
   <br/>了解如何对应用程序用户进行身份验证。
 
-* [向应用程序添加推送通知](/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push)
+* [向应用程序添加推送通知](/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push) 
   <br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
  
-* [移动服务 C# 操作方法概念性参考 ](/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library)
+* [移动服务 C# 操作方法概念性参考 ](/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library) 
   <br/>了解有关如何将移动服务与 .NET 一起使用的详细信息。
  
 <!-- Anchors. -->
@@ -181,12 +184,11 @@
 
 <!-- URLs. -->
 
-[Azure Management Portal]: https://manage.windowsazure.cn/
-[管理门户]: https://manage.windowsazure.cn/
+[Azure 经典门户]: https://manage.windowsazure.cn/
 [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=271146
 [开发人员代码示例站点]: http://go.microsoft.com/fwlink/p/?LinkId=271146
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

@@ -39,7 +39,7 @@
 
 可在 [Azure 门户](https://manage.windowsazure.cn)中查看 Batch 帐户配额。
 
-1. 在预览门户中，单击“Batch 帐户”，然后单击你的 Batch 帐户的名称。
+1. 在管理门户中，单击“Batch 帐户”，然后单击你的 Batch 帐户的名称。
 
 2. 在帐户边栏选项卡中，单击“设置”>“属性”。
 
@@ -91,4 +91,4 @@ Azure 支持人员将与你联系。完成请求最长需要 2 个工作日。
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

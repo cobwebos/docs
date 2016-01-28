@@ -39,7 +39,7 @@
 	var MobileServiceClient = WindowsAzure.MobileServiceClient;
     var client = new MobileServiceClient('AppUrl', 'AppKey');
 
-必须将占位符 `AppUrl` 替换为移动服务的应用程序 URL，将 `AppKey` 替换为你从 [Azure 门户](http://manage.windowsazure.cn/)获取的应用程序密钥。
+必须将占位符 `AppUrl` 替换为移动服务的应用程序 URL，将 `AppKey` 替换为你从 [Azure 经典门户](http://manage.windowsazure.cn/)获取的应用程序密钥。
 
 >[AZURE.IMPORTANT]应用程序密钥用于针对移动服务筛选出随机请求，将随应用程序一起分发。由于此密钥未加密，因此不能被认为是安全的。为确保安全访问你的移动服务数据，你必须改为在允许用户访问前对用户进行身份验证。有关详细信息，请参阅[如何：对用户进行身份验证](#authentication)。
 
@@ -62,7 +62,7 @@
 	    alert("Error: " + err);
 	});
 
-通过在 Query 对象中添加调用 `where` 并传递一个对象作为参数，我们可以指示移动服务仅返回 `complete` 列包含 `false` 值的行。另外，请查看以下请求 URI，可以看出，我们正在修改查询字符串本身：
+通过在 Query 对象中调用 `where` 并传递一个对象作为参数，我们可以指示移动服务仅返回 `complete` 列包含 `false` 值的行。另外，请查看以下请求 URI，可以看出，我们正在修改查询字符串本身：
 
 	GET /tables/todoitem?$filter=(complete+eq+false) HTTP/1.1
 
@@ -160,8 +160,7 @@
 
 以下代码演示了如何通过在查询中包含 `orderBy` 或 `orderByDescending` 函数来为数据排序。该代码将返回 `todoItemTable` 中的项，这些项已按 `text` 字段的升序排序。默认情况下，服务器只返回前 50 个元素。
 
-> [AZURE.NOTE]默认情况下，将使用服务器驱动的页大小来防止返回所有元素。这可以防止对大型数据集发出的默认请求对服务造成负面影响。 
-你可以根据下一节中所述，通过调用 `take` 来增加返回的项数。`todoItemTable` 是对前面创建的移动服务表的引用。
+> [AZURE.NOTE]默认情况下，将使用服务器驱动的页大小来防止返回所有元素。这可以防止对大型数据集发出的默认请求对服务造成负面影响。你可以根据下一节中所述，通过调用 `take` 来增加返回的项数。`todoItemTable` 是对前面创建的移动服务表的引用。
 
 	var ascendingSortedTable = todoItemTable.orderBy("text").read().done(function (results) {
 	   alert(JSON.stringify(results));
@@ -622,7 +621,7 @@ In some cases, the call to the login method can be avoided after the first time 
 
 ##<a name="hostnames"></a>如何：使用跨域资源共享
 
-若要控制允许与移动服务交互以及向其发送请求的网站，请确保将用于托管移动服务的网站主机名添加到跨域资源共享 (CORS) 允许列表。对于 JavaScript 后端移动服务，可以在 [Azure 管理门户](https://manage.windowsazure.com)的“配置”选项卡中配置允许列表。你可以根据需要使用通配符。默认情况下，新的移动服务将指示浏览器只能允许来自 `localhost` 的访问，跨域资源共享 (CORS) 允许外部主机名上的浏览器中运行的 JavaScript 代码与移动服务交互。对于 WinJS 应用程序，不需要使用此配置。
+若要控制允许与移动服务交互以及向其发送请求的网站，请确保将用于托管移动服务的网站主机名添加到跨域资源共享 (CORS) 允许列表。对于 JavaScript 后端移动服务，可以在 [Azure 经典门户](https://manage.windowsazure.cn)的“配置”选项卡中配置允许列表。你可以根据需要使用通配符。默认情况下，新的移动服务将指示浏览器只能允许来自 `localhost` 的访问，跨域资源共享 (CORS) 允许外部主机名上的浏览器中运行的 JavaScript 代码与移动服务交互。对于 WinJS 应用程序，不需要使用此配置。
 
 <!-- Anchors. -->
 [What is Mobile Services]: #what-is
@@ -663,4 +662,4 @@ In some cases, the call to the login method can be avoided after the first time 
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [OData 系统查询选项参考]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

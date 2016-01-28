@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="09/01/2015"
+	ms.date="12/01/2015"
 	wacn.date=""/>
 
 
@@ -24,9 +24,9 @@
 
 本主题中的代码示例假定您已有 Node.js 应用程序。有关在 Azure 中创建 Node.js 应用程序的信息，请参阅以下任何主题：
 
-- [构建 Node.js 网站并部署到 Azure](创建 Node.js 应用程序并将其部署到 Azure 网站)
-- [使用 WebMatrix 构建 Node.js 网站并部署到 Azure](使用 WebMatrix 构建 Node.js 应用程序并将其部署到 Azure)
-- [构建 Node.js 应用程序并将其部署到 Azure 云服务](Node.js 云服务)（使用 Windows PowerShell）
+- [构建 Node.js 网站并将其部署到 Azure](创建 Node.js 应用程序并将其部署到 Azure 网站)
+- [使用 WebMatrix 构建 Node.js 网站并将其部署到 Azure](使用 WebMatrix 构建 Node.js 应用程序并将其部署到 Azure)
+- [构建 Node.js 应用程序并将其部署到 Azure 云服务](Node.js 云服务) (使用 Windows PowerShell)
 
 
 [AZURE.INCLUDE [storage-table-concepts-include](../includes/storage-table-concepts-include.md)]
@@ -63,11 +63,11 @@
 
     var azure = require('azure-storage');
 
-## 设置 Azure 存储连接
+## 设置 Azure 存储空间连接
 
 Azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY 或 AZURE\_STORAGE\_CONNECTION\_STRING 以获取连接到您的 Azure 存储帐户所需的信息。如果未设置这些环境变量，则必须在调用 **TableService** 时指定帐户信息。
 
-有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js Web 应用程序]
+有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js 网站]
 
 ## 创建表
 
@@ -95,7 +95,7 @@ Azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_AC
 
 		function (returnObject, finalCallback, next)
 
-在此回调中并且在处理 returnObject（来自对服务器请求的响应）后，回调需要调用 next（如果它存在以便继续处理其他筛选器）或只调用 finalCallback 以便结束服务调用。
+在此回调中并且在处理 returnObject（来自对服务器请求的响应）后，回调需要调用 next（如果它存在，以便继续处理其他筛选器）或只调用 finalCallback 以便结束服务调用。
 
 Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。以下代码将创建使用 **ExponentialRetryPolicyFilter** 的 **TableService** 对象:
 
@@ -114,7 +114,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 下面是如何定义实体的示例。请注意，**dueDate** 被定义为一种类型的 **Edm.DateTime**。可以选择性地指定类型。如果未指定类型，系统会进行推断。
 
-	var task = { 
+	var task = {
 	  PartitionKey: {'_':'hometasks'},
 	  RowKey: {'_': '1'},
 	  description: {'_':'take out the trash'},
@@ -172,11 +172,11 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
     });
 
 > [AZURE.NOTE] 默认情况下，更新某个实体时，不会查看要更新的数据是否曾被其他进程更新过。若要支持并发更新，请执行以下步骤：
-> 
+>
 > 1. 获取要更新的对象的 ETag。对于任何实体相关操作，该 ETag 将在 `response` 中返回，并且可通过 `response['.metadata'].etag` 检索。
-> 
+>
 > 2. 对某个实体执行更新操作时，请将以前检索的 ETag 信息添加到新的实体。例如：
-> 
+>
 >     `entity2['.metadata'].etag = currentEtag;`
 >    
 > 3. 执行更新操作。如果实体在您检索 ETag 值后已被修改，例如被应用程序的其他实例修改，则会返回一条 `error`，指出未满足请求中指定的更新条件。
@@ -191,13 +191,13 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
  下面的示例演示了在一个批次中提交两个实体：
 
-    var task1 = { 
+    var task1 = {
 	  PartitionKey: {'_':'hometasks'},
 	  RowKey: {'_': '1'},
 	  description: {'_':'Take out the trash'},
 	  dueDate: {'_':new Date(2015, 6, 20)}
 	};
-	var task2 = { 
+	var task2 = {
 	  PartitionKey: {'_':'hometasks'},
 	  RowKey: {'_': '2'},
 	  description: {'_':'Wash the dishes'},
@@ -205,7 +205,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 	};
 
 	var batch = new azure.TableBatch();
-	
+
 	batch.insertEntity(task1, {echoContent: true});
 	batch.insertEntity(task2, {echoContent: true});
 
@@ -272,7 +272,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 	  }
 	});
 
-如果成功，`result.entries` 将包含与查询匹配的一组实体。如果查询无法返回所有实体，`result.continuationToken` 就不会是 *null*，因此可用作 **queryEntities** 的第三个参数来检索更多结果。对于初始查询，请为第三个参数使用 *null*。
+如果成功，`result.entries` 将包含与查询匹配的一组实体。如果查询无法返回所有实体，`result.continuationToken` 就不会是 *null* ，因此可用作 **queryEntities** 的第三个参数来检索更多结果。对于初始查询，请为第三个参数使用 *null* 。
 
 ### 查询一部分实体属性
 
@@ -287,7 +287,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 可以使用实体的分区键和行键删除实体。在本例中，**task1** 对象包含要删除的实体的 **RowKey** 和 **PartitionKey** 值。然后，该对象被传递给 **deleteEntity** 方法。
 
-	var task = { 
+	var task = {
 	  PartitionKey: {'_':'hometasks'},
 	  RowKey: {'_': '1'}
 	};
@@ -337,7 +337,7 @@ dc.table.queryEntities(tableName,
     });
 ```
 
-如果你检查 `continuationToken` 对象，你会发现如 `nextPartitionKey`、`nextRowKey` 和 `targetLocation` 等属性可用于循环访问所有结果。
+如果你检查 `continuationToken` 对象，你会发现 `nextPartitionKey`、`nextRowKey` 和 `targetLocation` 等属性可用于循环访问所有结果。
 
 在 GitHub 上的 Azure 存储 Node.js 存储库中还有一个继续样本。查找 `examples/samples/continuationsample.js`。
 
@@ -353,7 +353,7 @@ dc.table.queryEntities(tableName,
 	var expiryDate = new Date(startDate);
 	expiryDate.setMinutes(startDate.getMinutes() + 100);
 	startDate.setMinutes(startDate.getMinutes() - 100);
-		
+
 	var sharedAccessPolicy = {
 	  AccessPolicy: {
 	    Permissions: azure.TableUtilities.SharedAccessPermissions.QUERY,
@@ -372,7 +372,7 @@ dc.table.queryEntities(tableName,
 	var sharedTableService = azure.createTableServiceWithSas(host, tableSAS);
 	var query = azure.TableQuery()
 	  .where('PartitionKey eq ?', 'hometasks');
-		
+
 	sharedTableService.queryEntities(query, null, function(error, result, response) {
 	  if(!error) {
 		// result contains the entities
@@ -428,8 +428,7 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
 
 有关详细信息，请参阅以下资源。
 
--   MSDN 参考：[在 Azure 中存储和访问数据][]。
--   [Azure 存储空间团队博客][]。
+-   [Azure 存储团队博客][]。
 -   GitHub 上的 [Azure Storage SDK for Node][] 存储库。
 -   [Node.js 开发人员中心](/develop/nodejs/)
 
@@ -439,12 +438,10 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
   [Azure Management Portal]: http://manage.windowsazure.cn
 
   [Node.js Cloud Service]: /documentation/articles/cloud-services-nodejs-develop-deploy-app
-  [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-  [Visit the Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
+  [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
   [ Website with WebMatrix]: /documentation/articles/web-sites-nodejs-use-webmatrix
   [Node.js Cloud Service with Storage]: /documentation/articles/storage-nodejs-use-table-storage-cloud-service-app
-  [使用存储构建 Node.js Web 应用程序]: /documentation/articles/storage-nodejs-use-table-storage-web-site
+  [使用存储构建 Node.js 网站]: /documentation/articles/storage-nodejs-use-table-storage-web-site
   [Create and deploy a Node.js application to an Azure  Website]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
-  [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

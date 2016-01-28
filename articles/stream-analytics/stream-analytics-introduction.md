@@ -1,7 +1,7 @@
 <properties 
 	pageTitle="流分析简介 | Microsoft Azure" 
-	description="了解 Azure 流分析，这是一种完全托管的云服务，可以帮助你分析物联网 (IoT) 实时提供的流式数据。" 
-	keywords="大数据分析、云服务、物联网、托管服务、流处理、流分析、流数据"
+	description="了解流分析，这是一种托管的服务，可以帮助你分析物联网 (IoT) 实时提供的流式数据。" 
+	keywords="分析即服务、托管服务、流处理、流式分析、什么是流分析"
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -10,11 +10,11 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="11/06/2015" 
+	ms.date="12/04/2015" 
 	wacn.date=""/>
 
 
-# 什么是 Azure 流分析？
+# 什么是流分析？
 
 Azure 流分析 (ASA) 是一种完全托管的、经济高效的实时事件处理引擎，帮助开启来自数据的深入见解。通过流分析，可以针对设备、传感器、网站、社交媒体、应用程序、基础设施系统等的数据流，轻松地设置实时分析计算。
 
@@ -26,7 +26,7 @@ Azure 流分析 (ASA) 是一种完全托管的、经济高效的实时事件处�
 在现今这个时代，每天都有大量的数据在缆线上高速流动。那些能够实时处理这种流式数据并采取相应行动的组织可以极大地改进效率，让自己在市场中始终处于卓尔不群的地位。各行各业都可以找到进行实时流式分析的方案：由金融服务公司提供的个性化实时股票交易分析和提醒；实时检测欺诈行为；数据和身份保护服务；对物理对象（物联网，简称 IoT）中嵌入的传感器和激励器所生成的数据进行可靠的引入和分析；Web 点击流分析；当客户体验在某个时间范围内出现下降的趋势时，客户关系管理 (CRM) 应用程序会进行提醒。为了在竞争激烈的现代商业环境中获得成功，企业需要寻找最灵活、最可靠且最经济有效的方式来执行此类实时事件流数据分析。
 
 ## 主要功能和优点
--   **易用性：**流分析支持简单的声明性查询模型，用于描述各种转换。为了优化易用性，流分析使用 SQL 变量，不再需要客户处理在技术上复杂的流处理系统。使用浏览器内查询编辑器中的[流分析查询语言](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)，通过 intelli-sense auto-complete 可以帮助你便捷地实现时序查询，包括临时联接、开窗聚合、临时筛选器，以及其他常见的运算（例如联接、聚合、投影和筛选）。此外，依据示例数据文件进行浏览器内查询测试还可实现快速、迭代的开发。  
+-   **易用性：**流分析支持简单的声明性查询模型，用于描述各种转换。为了优化易用性，流分析使用 SQL 变量，不再需要客户处理在技术上复杂的流处理系统。使用浏览器内查询编辑器中的[流分析查询语言](https://msdn.microsoft.com/library/azure/dn834998.aspx)，通过 intelli-sense auto-complete 可以帮助你便捷地实现时序查询，包括临时联接、开窗聚合、临时筛选器，以及其他常见的运算（例如联接、聚合、投影和筛选）。此外，依据示例数据文件进行浏览器内查询测试还可实现快速、迭代的开发。  
 
 -   **可伸缩性：**流分析具有很强的事件吞吐量处理能力，最大吞吐量为 1GB/秒。与 [Azure 事件中心](http://azure.microsoft.com/services/event-hubs/)集成以后，该解决方案就可以每秒引入数百万来自已连接设备、点击流、日志文件等的事件。为此，流分析利用了事件中心的分区功能，每个分区产生的吞吐量为 1MB/秒。用户可以在查询定义中将计算分成多个逻辑步骤，每个步骤都可以进一步细分，以提高可伸缩性。
 
@@ -39,7 +39,7 @@ Azure 流分析 (ASA) 是一种完全托管的、经济高效的实时事件处�
 -   **连接性：**流分析会直接连接到 Azure 事件中心以引入流，并会连接到 Azure Blob 服务以引入历史数据。结果可以从流分析写入 Azure 存储 Blob 或表、Azure SQL 数据库、事件中心、Azure 服务总线主题或队列和 Power BI，然后从中可以对结果进行可视化，用工作流进行进一步处理，通过 [Azure HDInsight](http://azure.microsoft.com/services/hdinsight/) 用于批量分析或者作为一系列事件再次处理。使用事件中心时，可以将多个流分析与其他数据源和处理引擎组合在一起，而不会失去计算的流处理本质。
 
 ## 获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## 后续步骤
 我们已经向你介绍了流分析，这是一种托管服务，适用于对物联网的数据进行流式分析。若要了解有关此服务的详细信息，请参阅：
@@ -49,4 +49,4 @@ Azure 流分析 (ASA) 是一种完全托管的、经济高效的实时事件处�
 - [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
 - [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0118_2016-->

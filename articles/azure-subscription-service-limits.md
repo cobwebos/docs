@@ -9,12 +9,8 @@
 
 <tags
 	ms.service="multiple"
-	ms.workload="multiple"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="11/10/2015"
-	ms.author="jroth"/>
+	ms.date="12/03/2015"
+	wacn.date=""/>
 
 # Azure 订阅和服务限制、配额和约束
 
@@ -119,19 +115,27 @@
 
 ### 存储限制
 
-#### 标准存储限制
+有关存储帐户限制的详细信息，请参阅 [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets)。
+
+#### 存储服务限制
 
 [AZURE.INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-有关存储帐户限制的详细信息，请参阅 [Azure 存储空间可伸缩性和性能目标](../articles/storage/storage-scalability-targets.md)。
+#### 虚拟机磁盘限制 
 
+[AZURE.INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-#### 高级存储限制
+有关其他详细信息，请参阅[虚拟机大小](/documentation/articles/virtual-machines-size-specs)。
 
-[AZURE.INCLUDE [azure-storage-limits-premium-storage](../includes/azure-storage-limits-premium-storage.md)]
+**标准存储帐户**
 
+[AZURE.INCLUDE [azure-storage-limits-vm-disks-standard](../includes/azure-storage-limits-vm-disks-standard.md)]
 
-#### 存储限制- Azure 资源管理器
+**高级存储帐户**
+
+[AZURE.INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
+
+#### 存储资源提供程序限制
 
 [AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
@@ -142,7 +146,7 @@
 
 
 ### App Service 限制
-以下 App Service 限制包括网站、Mobile Apps、API Apps 和 Logic Apps 的限制。
+以下 App Service 限制包括 Web Apps、Mobile Apps、API Apps 和 Logic Apps 的限制。
 
 [AZURE.INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
@@ -172,9 +176,17 @@
 
 ### 搜索限制
 
-[AZURE.INCLUDE [azure-search-limits](../includes/azure-search-limits.md)]
+定价层决定了搜索服务的容量和限制。
 
-有关 Azure 搜索限制的其他详细信息，请参阅[限制和约束](https://msdn.microsoft.com/zh-cn/library/azure/dn798934.aspx)。
+####标准层级
+
+[AZURE.INCLUDE [azure-search-limits-standard](../includes/azure-search-limits-standard.md)]
+
+####共享层（多租户服务的一部分，免费提供给 Azure 订阅者使用）
+
+[AZURE.INCLUDE [azure-search-limits-free](../includes/azure-search-limits-free.md)]
+
+若要了解有关密钥限制、副本分区组合、请求、响应以及如何为不同工作负荷实现高可用性的详细信息，请参阅 [Azure 搜索中的服务限制](search/search-limits-quotas-capacity.md)。
 
 ### 媒体服务限制
 
@@ -265,4 +277,4 @@
 
 [Azure 的虚拟机和云服务大小](http://msdn.microsoft.com/zh-cn/library/azure/dn197896.aspx)
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

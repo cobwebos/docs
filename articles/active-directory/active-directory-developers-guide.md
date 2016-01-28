@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="10/16/2015"
+   ms.date="12/10/2015"
    wacn.date=""/>
 
 
@@ -25,9 +25,10 @@
 
 3. [将应用程序与 Azure Active Directory 集成](active-directory-integrating-applications)：了解如何从 Azure Active Directory 添加、更新和删除应用程序，以及有关集成应用的品牌准则。
 
-4. [Azure Active Directory 图形 API](active-directory-graph-api)：使用 Azure Active Directory 图形 API 通过 REST API 终结点以编程方式访问 Azure AD。
+4. [Azure Active Directory 图形 API](active-directory-graph-api.md)：使用 Azure Active Directory 图形 API 通过 REST API 终结点以编程方式访问 Azure AD。请注意，也可通过 [Microsoft Graph](https://graph.microsoft.io/) 访问 Azure AD 图形 API。Microsoft Graph 是统一的 API，可让你通过单个 REST API 终结点和单个访问令牌访问多个 Microsoft 云服务 API。
 
-5. [Azure Active Directory 身份验证库](active-directory-authentication-libraries)：使用 Azure 身份验证库轻松对用户进行身份验证以获取访问令牌。
+5. [Azure Active Directory 身份验证库](active-directory-authentication-libraries.md)：使用适用于 [.NET](https://msdn.microsoft.com/library/azure/mt417579.aspx)、[JavaScript](https://github.com/AzureAD/azure-activedirectory-library-for-js)、[Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc)、[Android](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/o) 和[其他语言](active-directory-authentication-libraries.md)的 Azure 身份验证库轻松对用户进行身份验证以获取访问令牌。
+
 
 ## 入门
 
@@ -39,11 +40,11 @@
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:
 |[iOS](active-directory-devquickstarts-ios.md)|[Android](active-directory-devquickstarts-android)|[.NET](active-directory-devquickstarts-dotnet.md)|[Windows Phone](active-directory-devquickstarts-windowsphone)|[Windows 应用商店](active-directory-devquickstarts-windowsstore)|[Xamarin](active-directory-devquickstarts-xamarin)|[Cordova](active-directory-devquickstarts-cordova)
 
-### Web 应用程序快速入门指南
+### 网站快速入门指南
 
-|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet)|[![Javascript](./media/active-directory-developers-guide/javascript.png)](active-directory-devquickstarts-angular)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs)
-|:--:|:--:|:--:|
-|[.NET](active-directory-devquickstarts-webapp-dotnet.md)|[Javascript](active-directory-devquickstarts-angular)|[Node.js](active-directory-devquickstarts-openidconnect-nodejs)
+|[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md)|[![Java](./media/active-directory-developers-guide/java.png)](active-directory-devquickstarts-webapp-java.md)|[![Javascript](./media/active-directory-developers-guide/javascript.png)](active-directory-devquickstarts-angular.md)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs.md)
+|:--:|:--:|:--:|:--:|
+|[.NET](active-directory-devquickstarts-webapp-dotnet.md)|[Java](active-directory-devquickstarts-webapp-java.md)|[Javascript](active-directory-devquickstarts-angular.md)|[Node.js](active-directory-devquickstarts-openidconnect-nodejs.md)
 
 ### Web API 快速入门指南
 
@@ -66,7 +67,7 @@
 - [列出 Azure Active Directory 应用程序库中的应用程序](active-directory-app-gallery-listing)
 - [了解 Azure Active Directory 应用程序清单](active-directory-application-manifest)
 - [使用 Office 365 API 创建应用](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
-- [将适用于 Office 365 的 Web 应用提交到卖家仪表板](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
+- [将适用于 Office 365 的网站提交到卖家仪表板](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
 - [预览：如何构建可以使用个人帐户和工作或学校帐户来登录用户的应用](active-directory-appmodel-v2-overview.md)
 - [预览：如何构建可以注册和登录使用者的应用](active-directory-b2c-overview.md)
 
@@ -74,14 +75,14 @@
 
 以下文章提供了有关 REST 和身份验证库 API、协议、错误、代码示例和终结点的基础参考信息。
 
-### 支持
+###  支持
 - [已标记问题](http://stackoverflow.com/questions/tagged/azure-active-directory)：通过搜索标记 [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) 和 [adal](http://stackoverflow.com/questions/tagged/adal) 查找有关堆栈溢出的 Azure Active Directory 解决方案。
 
 ### 代码
 
 - [Azure Active Directory 开放源代码库](http://github.com/AzureAD)：查找库源代码的最简单方法是使用我们的[库列表](active-directory-authentication-libraries.md)。
 
-- [Azure Active Directory 示例](http://github.com/AzureADSamples)：浏览示例列表的最简单办法是使用[代码示例的索引](active-directory-code-samples.md)。
+- [Azure Active Directory 示例](https://github.com/azure-samples?query=active-directory)：浏览示例列表的最简单办法是使用[代码示例的索引](active-directory-code-samples.md)。
 
 
 #### Graph API
@@ -90,13 +91,16 @@
 
 - **[Graph API 权限作用域](https://msdn.microsoft.com/zh-cn/library/Azure/Ad/Graph/api/graph-api-permission-scopes)**：用于控制应用程序必须对租户中目录数据具有的访问权限的 OAuth 2.0 权限作用域。
 
+### 身份验证库
 
-#### 身份验证协议
+- [.NET](https://msdn.microsoft.com/library/azure/mt417579.aspx)：.NET 身份验证库文档。
+
+### 身份验证协议
 
 - **[SAML 2.0 协议参考](https://msdn.microsoft.com/zh-cn/library/azure/dn195591.aspx)**：SAML 2.0 协议使应用程序能够为其用户提供单一登录体验。
 
 
-- **[OAuth 2.0 协议参考](https://msdn.microsoft.com/zh-cn/library/azure/dn645545.aspx)**：OAuth 2.0 协议使你能够授权访问 Azure AD 租户中的 Web 应用程序和 Web API。
+- **[OAuth 2.0 协议参考](https://msdn.microsoft.com/zh-cn/library/azure/dn645545.aspx)**：OAuth 2.0 协议使你能够授权访问 Azure AD 租户中的网站和 Web API。
 
 
 - **[OpenID Connect 1.0 协议参考](https://msdn.microsoft.com/zh-cn/library/azure/dn645541.aspx)**：OpenID Connect 1.0 协议扩展了 OAuth 2.0，使其能够用作身份验证协议。
@@ -116,4 +120,4 @@
 
 - [Twitter 上的 Azure Active Directory](https://twitter.com/azuread)：以 140 个或更少的字符发布的 Azure Active Directory 公告。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0118_2016-->

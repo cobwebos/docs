@@ -9,15 +9,29 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="10/08/2015" 
+	ms.date="11/16/2015" 
 	wacn.date=""/>
 
 # 自定义密码管理以符合组织的需求
 为了尽可能地向用户提供最佳体验，我们建议你了解并试用你可以使用的所有密码管理配置选项。事实上，你可以转到 [Azure 管理门户](https://manage.windowsazure.cn)的“Active Directory 扩展”中的配置选项卡，立即开始探索。本主题将引导你从 [Azure 管理门户](https://manage.windowsazure.cn)中目录的“配置”选项卡，完成管理员可以进行的不同密码管理自定义，包括：
 
-- [**自定义密码管理外观**](#password-managment-look-and-feel)
-- [**自定义用户密码管理行为**](#password-management-behavior)
-- [**自定义密码管理通知**](#password-management-notifications)
+| 主题 | |
+| --------- | --------- |
+| 如何启用或禁用密码重置？ | [设置：为用户启用了密码重置](#users-enabled-for-password-reset) |
+| 如何将密码重置的范围限定为一组特定的用户？ | [将密码重置限定于特定用户](#restrict-access-to-password-reset) |
+| 如何更改支持的身份验证方法？ | [设置：用户可用的身份验证方法](#authentication-methods-available-to-users) |
+| 如何更改所需身份验证方法的数量？ | [设置：所需身份验证方法的数量](#number-of-authentication-methods-required) |
+| 如何设置自定义安全提问？ | [设置：自定义安全提问](#custom-security-questions) |
+| 如何设置预先编写的本地化安全提问？ | [设置：基于知识的安全提问](#knowledge-based-security-questions) |
+| 如何更改所需的安全提问数？ | [设置：注册或重置的安全提问数](#number-of-questions-required-to-register) |
+| 如何强制用户在登录时注册？ | [基于强制注册的密码重置推广](#require-users-to-register-when-signing-in) |
+| 如何强制用户定期重新确认注册？ | [设置：用户必须在几天后重新确认其身份验证数据](#number-of-days-before-users-must-confirm-their-contact-data) |
+| 如何自定义用户联系管理员的方式？ | [设置：自定义“联系管理员”链接](#customize-the-contact-your-administrator-link) |
+| 如何让用户直接解锁 AD 帐户而不必重置密码？ | [设置：让用户直接解锁 AD 帐户而不必重置密码](#allow-users-to-unlock-accounts-without-resetting-their-password) |
+| 如何为用户启用密码重置通知？ | [设置：在用户的密码重置时通知用户](#notify-users-and-admins-when-their-own-password-has-been-reset) |
+| 如何为管理员启用密码重置通知？ | [设置：在管理员重置其密码时通知其他管理员](#notify-admins-when-other-admins-reset-their-own-passwords) |
+| 如何自定义密码重置的外观？ | [设置：公司名称、品牌和徽标](#password-managment-look-and-feel) |
+
 
 ## 密码管理外观
 下表说明了每个控件对注册密码重置并重置密码的用户体验有何影响。你可以在 [Azure 管理门户](https://manage.windowsazure.cn)中目录的“配置”选项卡的“目录属性”部分下配置这些选项。
@@ -42,7 +56,9 @@
             </tr>
             <tr>
               <td>
-                <p>目录名称</p>
+                <div id="directory-name">
+                  <p>目录名称</p>
+                </div>
               </td>
               <td>
                 <p>确定用户或管理员可以在密码重置电子邮件通信中看到的组织名称</p>
@@ -68,7 +84,9 @@
             </tr>
             <tr>
               <td>
-                <p>登录并访问面板页面外观</p>
+                <div id="sign-in-and-access-panel-page-appearance">
+                  <p>登录并访问面板页面外观</p>
+                </div>
               </td>
               <td>
                 <p>确定访问密码重置页面的用户是否能看到 Microsoft 徽标或你自己的自定义徽标。此配置项还会将你的品牌添加到访问面板和登录页中。</p>
@@ -130,7 +148,9 @@
             </tr>
             <tr>
               <td>
-                <p>可进行密码重置的用户</p>
+                <div id="users-enabled-for-password-reset">
+                  <p>可进行密码重置的用户</p>
+                </div>
               </td>
               <td>
                 <p>确定用户是否可在此目录中进行密码重置。</p>
@@ -162,7 +182,9 @@
             </tr>
             <tr>
               <td>
-                <p>限制对密码重置的访问</p>
+                <div id="restrict-access-to-password-reset">
+                  <p>限制对密码重置的访问</p>
+                </div>
               </td>
               <td>
                 <p>确定是否只允许一组特定用户使用密码重置。（仅当“可进行密码重置的用户”设置为“是”时可见）<strong></strong><strong></strong>。</p>
@@ -190,7 +212,9 @@
             </tr>
             <tr>
               <td>
-                <p>可以执行密码重置的组</p>
+                <div id="group-that-can-perform-password-reset">
+                  <p>可以执行密码重置的组</p>
+                </div>
               </td>
               <td>
                 <p>确定允许哪些最终用户组使用密码重置。</p>
@@ -227,7 +251,9 @@
             </tr>
             <tr>
               <td>
-                <p>用户可使用的身份验证方法</p>
+                <div id="authentication-methods-available-to-users">
+                  <p>用户可使用的身份验证方法</p>
+                </div>
               </td>
               <td>
                 <p>确定允许用户用于重置其密码的质询。</p>
@@ -291,7 +317,9 @@
             </tr>
             <tr>
               <td>
-                <p>所需身份验证方法的数量</p>
+                <div id="number-of-authentication-methods-required">
+                  <p>所需身份验证方法的数量</p>
+                </div>
               </td>
               <td>
                 <p>确定为重置他或她的密码用户必须通过的可用身份验证方法数量的下限。</p>
@@ -328,7 +356,9 @@
             </tr>
             <tr>
               <td>
-                <p>注册所需的问题数量</p>
+                <div id="number-of-questions-required-to-register">
+                  <p>注册所需的问题数量</p>
+                </div>
               </td>
               <td>
                 <p>确定用户在注册安全问题选项时必须回答的问题数量的下限。</p>
@@ -357,7 +387,9 @@
             </tr>
             <tr>
               <td>
-                <p>重置所需的问题数量 </p>
+                <div id="number-of-questions-required-to-reset">
+                  <p>重置所需的问题数量 </p>
+                </div>
               </td>
               <td>
                 <p>确定用户在重置密码时必须回答的问题数量下限。</p>
@@ -389,7 +421,9 @@
             </tr>
             <tr>
               <td>
-                <p>基于知识的安全提问</p>
+                <div id="knowledge-based-security-questions">
+                  <p>基于知识的安全提问</p>
+                </div>
               </td>
               <td>
                 <p>定义用户在注册密码重置以及重置他们的密码时可以选择的预先编写的安全问题。</p>
@@ -438,7 +472,9 @@
             </tr>
             <tr>
               <td>
-                <p>自定义安全提问</p>
+                <div id="custom-security-questions">
+                  <p>自定义安全提问</p>
+                </div>
               </td>
               <td>
                 <p>定义用户在注册密码重置以及重置他们的密码时可以选择的安全问题。</p>
@@ -489,13 +525,22 @@
             </tr>
             <tr>
               <td>
-                <p>登录到访问面板时要求用户注册？</p>
+                <div id="require-users-to-register-when-signing-in">
+                  <p>要求用户登录时注册？</p>
+                </div>
                 <p>
                   
                 </p>
               </td>
               <td>
-                <p>确定在下次登录到访问面板时是否要求用户注册联系人数据以进行密码重置。</p>
+                <p>确定在下次登录时是否要求用户注册联系人数据以进行密码重置。 
+                </p>
+                <p>此功能适用于使用工作或学校帐户的任何登录页面。此类页面包括所有 Office 365、Azure 管理门户、访问面板和任何使用 Azure AD 登录的联合或自定义开发应用程序。
+                </p>
+                <p>
+                  
+                </p>
+                <p>强制注册只适用于启用了密码重置的用户，因此，如果你已使用“限制访问密码重置”功能并将密码重置的范围限定为一组特定的用户，则只有该组中的用户需要在登录时注册密码重置。</p>
                 <p>
                   
                 </p>
@@ -530,7 +575,9 @@
             </tr>
             <tr>
               <td>
-                <p>用户必须确认其联系人数据前的天数</p>
+                <div id="number-of-days-before-users-must-confirm-their-contact-data">
+                  <p>用户必须确认其联系人数据前的天数</p>
+                </div>
               </td>
               <td>
                 <p>启用“要求用户注册”时，此设置将确定用户必须再次确认其数据前可经过的时间段<strong></strong>。</p>
@@ -564,7 +611,9 @@
             </tr>
             <tr>
               <td>
-                <p>自定义“联系你的管理员”链接？</p>
+                <div id="customize-the-contact-your-administrator-link">
+                  <p>自定义“联系你的管理员”链接？</p>
+                </div>
               </td>
               <td>
                 <p>控制发生错误时或用户对指向自定义 URL 或电子邮件地址的操作等待太长时间时是否在密码重置门户上显示“联系你的管理员”链接（显示在左边）。</p>
@@ -608,7 +657,9 @@
             </tr>
             <tr>
               <td>
-                <p>自定义电子邮件地址或 URL</p>
+                <div id="custom-email-address-or-URL">
+                  <p>自定义电子邮件地址或 URL</p>
+                </div>
               </td>
               <td>
                 <p>控制“联系你的管理员”链接所指向的电子邮件地址或 URL<strong></strong>。</p>
@@ -640,14 +691,16 @@
             </tr>
             <tr>
               <td>
-                <p>将密码写回到本地目录</p>
+                <div id="write-back-passwords-to-on-premises-directory">
+                  <p>将密码写回到本地目录</p>
+                </div>
               </td>
               <td>
                 <p>控制是否为此目录启用密码写回功能，如果启用写回，该项将指示本地写回服务的状态。</p>
                 <p>
                   
                 </p>
-                <p>如果你由于中断原因希望临时禁用该服务，这会很有用。</p>
+                <p>如果你想要暂时禁用服务而不重新配置 Azure AD Connect，此设置将很有用。</p>
               </td>
               <td>
                 <p>
@@ -684,6 +737,41 @@
                 </ul>
               </td>
             </tr>
+             <tr>
+              <td>
+                <div id="allow-users-to-unlock-accounts-without-resetting-their-password">
+                  <p>允许用户在不重置密码的情况下解锁帐户</p>
+                </div>
+              </td>
+              <td>
+              
+              <p>指定是否应为浏览密码重置门户的用户提供选项，让他们在不重置密码的情况下解锁本地 Active Directory 帐户。默认情况下，Azure AD 在执行密码重置时始终会解锁帐户，此设置可让你区分这两项操作。</p>
+              
+              <p>如果设置为“是”，将提供用户重置其密码以解锁帐户的选项，或者在不重置密码的情况下解锁的选项。</p>
+              
+              <p>如果设置为“否”，用户只能同时执行密码重置和帐户解锁的操作。</p>
+
+              </td>
+              <td>
+                <p>
+                  <strong>注意：</strong>
+                </p>
+                <ul>
+                  <li class="unordered">
+												若要使用此功能，必须安装 2015 年 8 月或更高版本的 Azure AD Connect（v.1.0.8667.0 或更高版本）。<br><br><a href="http://www.microsoft.com/download/details.aspx?id=47594">单击此处下载最新版本的 Azure AD Connect。</a></li>
+                        
+                  <li class="unordered">
+                    <strong>注意：</strong>若要测试此功能，需要启用密码写回，并使用源自本地（例如联合或密码同步的用户）的帐户，并且有一个已锁定的帐户。非本地并且没有锁定帐户的用户将看不到解锁其帐户的选项。</li>
+                </ul>
+                <p>
+                  <strong>密码重置门户：</strong>
+                </p>
+                <ul>
+                  <li class="unordered">
+												启用此选项后，当本地帐户被锁定的用户打开密码重置门户时，将提供他（她）在不重置密码的情况下解锁其帐户的选项。<br><br>请注意，如果你使用密码写回，则密码重置时帐户就已自动解锁，此选项只是区分这些操作。<br><br>如果你发现许多技术支持来电都是帐户解锁请求，则启用此选项特别有用。</li>
+                </ul>
+              </td>
+            </tr>
           </tbody></table>
 
 ## 密码管理通知
@@ -709,7 +797,9 @@
             </tr>
             <tr>
               <td>
-                <p>当其他管理员重置自己的密码时通知管理员</p>
+                <div id="notify-admins-when-other-admins-reset-their-own-passwords">
+                  <p>当其他管理员重置自己的密码时通知管理员</p>
+                </div>
               </td>
               <td>
                 <p>确定当其他任何类型的管理员重置他或她自己的密码时，是否通过向所有全球管理员的主电子邮件地址发送电子邮件来通知他们。</p>
@@ -737,7 +827,9 @@
             </tr>
             <tr>
               <td>
-                <p>当用户和管理员自己的密码已被重置时通知他们</p>
+                <div id="notify-users-and-admins-when-their-own-password-has-been-reset">
+                  <p>当用户和管理员自己的密码已被重置时通知他们</p>
+                </div>
               </td>
               <td>
                 <p>确定其密码被重置的最终用户或管理员是否将收到通知其密码已被重置的电子邮件通知。</p>
@@ -761,17 +853,19 @@
 
 <br/> <br/> <br/>
 
-**其他资源**
+## 密码重置文档的链接
+以下是所有 Azure AD 密码重置文档页面的链接：
+
+* [**重置自己的密码**](active-directory-passwords-update-your-own-password.md) - 了解如何以系统用户的身份重置或更改自己的密码
+* [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
+* [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置及更改云密码或本地密码
+* [**最佳实践**](active-directory-passwords-best-practices.md) - 了解如何快速部署且有效管理组织的密码
+* [**深入分析**](active-directory-passwords-get-insights.md) - 了解集成式报告功能
+* [**常见问题**](active-directory-passwords-faq.md) - 获取常见问题的解答
+* [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何快速排查服务的问题
+* [**了解更多**](active-directory-passwords-learn-more.md) - 深入探索服务工作原理的技术细节
 
 
-* [什么是密码管理](/documentation/articles/active-directory-passwords)
-* [密码管理的工作原理](/documentation/articles/active-directory-passwords-how-it-works)
-* [密码管理入门](/documentation/articles/active-directory-passwords-getting-started)
-* [密码管理最佳实践](/documentation/articles/active-directory-passwords-best-practices)
-* [如何使用密码管理报告获取 Operational Insights](/documentation/articles/active-directory-passwords-get-insights)
-* [密码管理常见问题](/documentation/articles/active-directory-passwords-faq)
-* [排查密码管理问题](/documentation/articles/active-directory-passwords-troubleshoot)
-* [了解详细信息](/documentation/articles/active-directory-passwords-learn-more)
-* [MSDN 上的密码管理](https://msdn.microsoft.com/zh-cn/library/azure/dn510386.aspx) 
+[001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

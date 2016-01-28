@@ -9,12 +9,12 @@
 <tags
    ms.service="active-directory"
 
-   ms.date="08/25/2015"
+   ms.date="11/24/2015"
    wacn.date="" />
 
 # 将应用程序与 Azure Active Directory 集成
 
-[AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide)]
+[AZURE.INCLUDE [active-directory-devguide](../includes/active-directory-devguide)]
 
 企业开发人员和软件即服务 (SaaS) 提供商可以开发能够与 Azure Active Directory (Azure AD) 集成的商业云服务或业务线应用程序，以针对其服务提供安全的登录和授权。若要将应用程序或服务与 Azure AD 进行集成，开发人员必须首先使用 Azure 管理门户向 Azure AD 注册关于其应用程序的详细信息。
 
@@ -78,7 +78,7 @@
 
     ![用户同意体验](./media/active-directory-integrating-applications/userconsent.png)
 
-1. 用户授予许可后，授权代码将返回到你的应用程序，应用程序可凭此获取访问令牌和刷新令牌。有关此流程的详细信息，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios)主题中的[从 Web 应用程序到 Web API](active-directory-authentication-scenarios.md#web-application-to-web-api) 部分。
+1. 用户授予许可后，授权代码将返回到你的应用程序，应用程序可凭此获取访问令牌和刷新令牌。有关此流程的详细信息，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)主题中的[从 Web 应用程序到 Web API](active-directory-authentication-scenarios.md#web-application-to-web-api) 部分。
 
 ### 访问其他应用程序中的 Web API
 
@@ -122,7 +122,7 @@
 
 		"oauth2Permissions": [
 		{
-			"adminConsentDescription": "Allow the application full access to the Todo List service on behalf of the signed-in user",
+			"adminConsentDescription": "Allow the application full access to the Todo List service on behalf of the signed-in 	user",
 			"adminConsentDisplayName": "Have full access to the Todo List service",
 			"id": "b69ee3c9-c40d-4f2a-ac80-961cd1534e40",
 			"isEnabled": true,
@@ -222,8 +222,7 @@ Web 应用程序可为用户提供注册体验。如果你确实提供注册体�
 1. 登录到 Azure 管理门户。
 1. 在左侧菜单中单击“Active Directory”图标，然后单击所需的目录。
 1. 在顶部菜单中，单击“应用程序”，然后单击要配置的应用程序。“快速启动”页将显示单一登录信息和其他配置信息。
-1. 在命令栏中单击“管理清单”按钮，然后选择“下载清单”。
-打开 JSON 应用程序清单文件并将 "oauth2AllowImplicitFlow" 值设为“true”。默认情况下，它是“false”。
+1. 在命令栏中单击“管理清单”按钮，然后选择“下载清单”。打开 JSON 应用程序清单文件并将 "oauth2AllowImplicitFlow" 值设为“true”。默认情况下，它是“false”。
 
        "oauth2AllowImplicitFlow": true,
 
@@ -349,4 +348,4 @@ Web 应用程序可为用户提供注册体验。如果你确实提供注册体�
 
 - 访问 [Active Directory 开发人员指南](active-directory-developer's guide)
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0118_2016-->

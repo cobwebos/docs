@@ -14,6 +14,9 @@
 
 # 向经过身份验证的用户发送推送通知
 
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
 [AZURE.INCLUDE [mobile-services-selector-push-users](../includes/mobile-services-selector-push-users.md)]
 
 ##概述
@@ -26,9 +29,11 @@
 
 在开始本教程之前，必须已完成以下移动服务教程：
 
-+ [身份验证入门]向 TodoList 示例应用添加登录要求。
++ [身份验证入门]  
+向 TodoList 示例应用添加登录要求。
 
-+ [推送通知入门]配置 TodoList 示例应用，以使用通知中心发送推送通知。
++ [推送通知入门]  
+配置 TodoList 示例应用，以使用通知中心发送推送通知。
 
 完成这两篇教程后，你可以防止未经身份验证的用户从你的移动服务注册推送通知。
 
@@ -58,6 +63,6 @@
 [Get started with push notifications]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push
 [推送通知入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push
 
-[Azure Management Portal]: https://manage.windowsazure.cn/
+[Azure classic portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0118_2016-->

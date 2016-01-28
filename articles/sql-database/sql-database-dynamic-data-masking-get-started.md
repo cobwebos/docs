@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL 数据库动态数据屏蔽入门（Azure 预览门户）"
-   description="如何开始在 Azure 预览门户中使用 SQL 数据库动态数据屏蔽"
+   pageTitle="SQL 数据库动态数据屏蔽入门（Azure 门户）"
+   description="如何开始在 Azure 门户中使用 SQL 数据库动态数据屏蔽"
    services="sql-database"
    documentationCenter=""
    authors="ronitr"
@@ -12,10 +12,11 @@
    ms.date="10/20/2015"
    wacn.date=""/>
 
-# SQL 数据库动态数据屏蔽入门（Azure 预览门户）
+
+# SQL 数据库动态数据屏蔽入门（Azure 门户）
 
 > [AZURE.SELECTOR]
-- [动态数据屏蔽 - Azure 门户](/documentation/articles/sql-database-dynamic-data-masking-get-started-portal)
+- [动态数据屏蔽入门 - Azure 经典门户](/documentation/articles/sql-database-dynamic-data-masking-get-started-portal)
 
 ## 概述
 
@@ -27,7 +28,7 @@ SQL 数据库动态数据屏蔽通过向无特权用户屏蔽敏感数据来控�
 
 ## SQL 数据库动态数据屏蔽基础知识
 
-你将通过在 SQL 数据库配置边栏选项卡或设置边栏选项卡中选择“动态数据屏蔽”操作，在 Azure 预览门户中设置动态数据屏蔽策略。
+你将通过在 SQL 数据库配置边栏选项卡或设置边栏选项卡中选择“动态数据屏蔽”操作，在 Azure 门户中设置动态数据屏蔽策略。
 
 
 ### 动态数据屏蔽权限
@@ -57,9 +58,9 @@ Azure 数据库管理员、服务器管理员或安全主管角色可以配置�
 
 DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段，可以考虑对这些字段进行屏蔽。在门户的“动态数据屏蔽”边栏选项卡中，你会看到针对你的数据库建议的列。你只需针对一个或多个列单击“添加屏蔽”，然后单击“保存”，即可对这些字段应用屏蔽。
 
-## 使用 Azure 预览门户为数据库设置动态数据屏蔽
+## 使用 Azure 门户为数据库设置动态数据屏蔽
 
-1. 启动 Azure 预览门户 ([https://portal.azure.com](https://portal.azure.com))。
+1. 启动 Azure 门户 ([https://manage.windowsazure.cn](https://manage.windowsazure.cn))。
 
 2. 导航到你要屏蔽的敏感数据所在数据库的设置边栏选项卡。
 
@@ -91,7 +92,7 @@ DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段�
 
     ![导航窗格](./media/sql-database-dynamic-data-masking-get-started/8_ddm_excluded_users.png)
 
-	>[AZURE.TIP]若要使应用程序层向应用程序特权用户显示敏感数据，请添加应用程序查询数据库时需要使用的 SQL 用户或 AAD 标识。强烈建议在此列表中包含最少量的特权用户，以最大程度地降低泄露敏感数据的风险。
+	>[AZURE.TIP] 若要使应用程序层向应用程序特权用户显示敏感数据，请添加应用程序查询数据库时需要使用的 SQL 用户或 AAD 标识。强烈建议在此列表中包含最少量的特权用户，以最大程度地降低泄露敏感数据的风险。
 
 10. 在数据屏蔽配置边栏选项卡中单击“保存”，以保存新的或更新的屏蔽策略。
 
@@ -102,6 +103,6 @@ DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段�
 
 ## 使用 REST API 为数据库设置动态数据屏蔽
 
-请参阅[对 Azure SQL 数据库的操作](https://msdn.microsoft.com/zh-cn/library/dn505719.aspx)。
+请参阅 [对 Azure SQL 数据库的操作](https://msdn.microsoft.com/zh-cn/library/dn505719.aspx)。
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

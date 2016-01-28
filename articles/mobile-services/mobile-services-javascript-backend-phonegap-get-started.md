@@ -47,7 +47,7 @@
 
 在本部分中，你将要创建一个连接到移动服务的新的 PhoneGap 应用程序。
 
-1.  在管理门户中单击“移动服务”，然后单击你刚刚创建的移动服务。
+1.  在 [Azure 经典门户]中单击“移动服务”，然后单击你刚刚创建的移动服务。
 
 2. 在快速启动选项卡中，单击“选择平台”下的“PhoneGap”，然后展开“创建新的 PhoneGap 应用程序”。
 
@@ -108,7 +108,7 @@
 
 	> [AZURE.IMPORTANT]如果使用 PhoneGap 工具重新生成主项目，将会覆盖对此平台项目所做的更改。请根据以下部分中所述，在项目的 www 根目录中进行更改。
 
-4. 返回到管理门户，单击“数据”选项卡，然后单击“TodoItem”表。
+4. 返回 [Azure 经典门户]，单击“数据”选项卡，然后单击“TodoItem”表。
 
 	![](./media/mobile-services-javascript-backend-phonegap-get-started/mobile-data-tab.png)
 
@@ -171,8 +171,8 @@
 <!-- URLs. -->
 [向应用程序添加身份验证]: /documentation/articles/mobile-services-html-get-started-users
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
-[Management Portal]: https://manage.windowsazure.cn/
+[Azure 经典门户]: https://manage.windowsazure.cn/
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->

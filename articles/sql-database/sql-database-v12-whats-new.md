@@ -9,7 +9,7 @@
 
 
 <tags 
-	ms.service="sql-database"
+	ms.service="sql-database" 
 	ms.date="11/11/2015" 
 	wacn.date=""/>
 
@@ -128,7 +128,7 @@ V12 提供大幅提高的恢复点目标 (RPO) 与预计恢复时间 (ERT)：
 执行以下操作可以轻松判断你是否在早期版本的 SQL 数据库服务上运行数据库或逻辑服务器：
 
 
-1. 转到 [Azure 管理门户](https://manage.windowsazure.cn)。
+1. 转到 [Azure 门户](http://manage.windowsazure.cn)。
 2. 单击“浏览”。
 3. 单击“SQL Server”。
 4. 服务器或数据库旁边的图标会告知实情：
@@ -155,6 +155,4 @@ V12 数据库只能托管在 V12 逻辑服务器上。V12 服务器只能托管 
 - 2015 年 7 月 31，所有区域都已发布正式版 (GA)。
 - V12 已于 2014 年 12 月发布，但仅以预览版提供。
 
-[Microsoft Azure 预览版补充使用条款](http://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0118_2016-->
