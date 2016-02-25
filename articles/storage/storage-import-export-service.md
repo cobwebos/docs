@@ -9,13 +9,11 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="12/04/2015" 
+	ms.date="12/22/2015"
 	wacn.date=""/>
 
 
 # 使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中
-
-[AZURE.INCLUDE [storage-selector-portal-import-export-service](../includes/storage-selector-portal-import-export-service.md)]
 
 ## 概述
 
@@ -25,7 +23,7 @@
 
 你可以通过以下两种方式中的一种创建和管理导入和导出作业：
 
-- 通过使用 Azure 管理门户 (https://manage.windowsazure.cn)。
+- 通过使用 Azure 管理门户(https://manage.windowsazure.cn )。
 - 通过使用服务的 REST 接口。
 
 本文概述了该导入/导出服务并且说明了如何通过[管理门户](https://manage.windowsazure.cn)来使用该导入/导出服务。有关 REST API 的信息，请参阅 [Azure 导入/导出服务 REST API 参考](http://msdn.microsoft.com/zh-cn/library/dn529096.aspx)。
@@ -50,11 +48,11 @@
 1.	**订阅和存储帐户：**你必须已拥有 Azure 订阅以及一个或多个存储帐户，才能使用导入/导出服务。每个作业只能用于将数据传输到一个存储帐户或者从一个存储帐户传输数据。换言之，一个作业不能跨多个存储帐户。有关创建新存储帐户的信息，请参阅[如何创建存储帐户](/documentation/articles/storage-create-storage-account)。
 2.	**硬盘驱动器：**只支持将 3.5 英寸 SATA II/III 内部硬盘驱动器用于导入/导出服务。支持容量最高为 6 TB 的硬盘驱动器。对于导入作业，将处理驱动器上的第一个数据卷。该数据卷必须使用 NTFS 进行格式化。你可以使用外部 SATA II/III USB 适配器在外部将 SATA II/III 磁盘连接到大多数计算机。
 3.	**BitLocker 加密：**必须使用 BitLocker 通过用数字密码保护的加密密钥对硬盘驱动器上存储的所有数据进行加密。
-4.	**Blob 存储目标：**可以将数据上载到块 Blob 和页 Blob 或者从块 Blob 和页 Blob 下载数据。 
+4.	**Blob 存储目标：**可以将数据上载到块 Blob 和页 Blob 或者从块 Blob 和页 Blob 下载数据。
 5.	**作业数：**对于每个存储帐户，一个客户最多可以有 20 个处于活动状态的作业。
 6.	**作业的最大大小：**作业的大小由使用的硬盘驱动器的容量以及可在一个存储帐户中存储的最大数据量确定。每个作业可以包含不超过 10 个硬盘驱动器。
 
-  >[AZURE.IMPORTANT] 此服务不支持内置 USB 适配器附带的外部硬盘驱动器。请不要准备外部 HDD。外包装内的磁盘也不能用于导入数据。请使用 3.5 英寸 SATA II/III **内部**硬盘驱动器。如果无法将 SATA 磁盘直接连接到计算机，请使用外部 SATA 转 USB 适配器。请参阅“常见问题”部分中建议的适配器列表。
+  > [AZURE.IMPORTANT] 此服务不支持内置 USB 适配器附带的外部硬盘驱动器。请不要准备外部 HDD。外包装内的磁盘也不能用于导入数据。请使用 3.5 英寸 SATA II/III **内部**硬盘驱动器。如果无法将 SATA 磁盘直接连接到计算机，请使用外部 SATA 转 USB 适配器。请参阅“常见问题”部分中建议的适配器列表。
 
 ## 在管理门户中创建导入作业##
 
@@ -62,25 +60,27 @@
 
 ### 准备驱动器
 
-在创建导入作业前，使用 Microsoft Azure 导入/导出工具准备你的驱动器。有关使用 Microsoft Azure 导入/导出工具的更多详细信息，请参阅 [Microsoft Azure 导入/导出工具参考](http://msdn.microsoft.com/zh-cn/library/dn529096.aspx)。你可以以独立软件包的方式下载 [Microsoft Azure 导入/导出工具](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)。
-  
+在创建导入作业前，使用 Microsoft Azure 导入/导出工具准备你的驱动器。有关使用 Microsoft Azure 导入/导出工具的更多详细信息，请参阅 [Microsoft Azure 导入/导出工具参考](http://msdn.microsoft.com/zh-cn/library/dn529096.aspx)。你可以以独立程序包的方式下载 [Microsoft Azure 导入/导出工具](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)。
+
 若要准备你的驱动器，请按照以下三个步骤执行：
 
 1.	确定要导入的数据，以及将需要的驱动器的数量。
-2.	确定 Azure Blob 服务中用于你的数据的目标 Blob。
+2.	确定 Blob 存储中用于你的数据的目标 Blob。
 3.	使用 Microsoft Azure 导入/导出工具将你的数据复制到一个或多个硬盘驱动器。
 
 对于每个驱动器，在准备它时，Microsoft Azure 导入/导出工具会生成一个 *驱动器日记* 文件。该驱动器日志文件存储于你的本地计算机上，而不是存储于驱动器本身。你在创建导入作业时将上载该日志文件。驱动器日志文件将包含驱动器 ID 和 BitLocker 密钥，以及与驱动器有关的其他信息。
 
 ### 创建导入作业
 
-1.	在准备好你的驱动器后，在[管理门户](https://manage.windowsazure.cn)中导航到你的存储帐户，并且查看仪表板。在“速览”下，单击“创建导入作业”。 
- 
+1.	在准备好你的驱动器后，在[管理门户](https://manage.windowsazure.cn)中导航到你的存储帐户，并查看仪表板。在“速览”下，单击“创建导入作业”。 
+
 2.	在向导的步骤 1 中，指示你已准备好了驱动器并且具有可用的驱动器日志文件。
- 
+
 3.	在步骤 2 中，提供负责该导入作业的人员的联系信息。如果你希望保存导入作业的详细日志数据，则选中“将详细日志保存在我的‘waimportexport’Blob 容器中”选项。
 
 4.	在步骤 3 中，上载你在驱动器准备步骤中获取的驱动器日志文件。你需要为已准备好的每个驱动器上载一个文件。
+
+	![创建导入作业 - 步骤 3][import-job-03]
 
 5.	在步骤 4 中，输入导入作业的描述性名称。请注意，你输入的名称只能包含小写字母、数字、连字符和下划线，必须以字母开头并且不得包含空格。在作业进行中以及在作业完成后，你将使用所选名称来跟踪作业。
 
@@ -93,7 +93,7 @@
 	如果你还没有跟踪号码，请选择“我将在发运我的包裹后提供此导入作业的发运信息”，然后完成导入过程。
 
 7. 若要在发送你的包裹后输入你的跟踪号码，请在[管理门户](https://manage.windowsazure.cn)中返回到你的存储帐户的“导入/导出”页面，从列表中选择你的作业并选择“装运信息”。在向导中导航并在步骤 2 中输入你的跟踪号码。
-	
+
 	如果在创建作业后的 2 周内未更新跟踪号，该作业将会过期。
 
 	如果作业处于“正在创建”、“正在发运”或“正在传送”状态，则你还可以在向导的第 2 步中更新你的承运人帐号。一旦作业处于“正在打包”状态，你将无法更新该作业的承运人帐号。
@@ -102,11 +102,13 @@
 
 创建导出作业以便通知导入/导出服务你要将一个或多个空驱动器运送到数据中心；这样，数据可以从你的存储帐户导出到驱动器，然后将驱动器运送给你。
 
-1. 	若要创建导出作业，请导航到[管理门户](https://manage.windowsazure.cn)中的存储帐户，并且查看仪表板。在“速览”下，单击“创建导出作业”，并继续完成向导。
+1. 	若要创建导出作业，请导航到[管理门户](https://manage.windowsazure.cn)中的存储帐户，并查看仪表板。在“速览”下，单击“创建导出作业”，并继续完成向导。
 
 2. 	在步骤 2 中，提供负责该导出作业的人员的联系信息。如果你希望保存导出作业的详细日志数据，则选中“将详细日志保存在我的‘waimportexport’Blob 容器中”选项。
 
 3.	在步骤 3 中，指定要从你的存储帐户导出到空驱动器中的 Blob 数据。你可以选择导出该存储帐户中的所有 Blob 数据，也可以指定要导出的 Blob 或 Blob 组。
+
+	![创建导出作业 - 步骤 3][export-job-03]
 
 	- 若要指定要导出的 Blob，请使用“等于”选择器，并指定该 Blob 的相对路径，以容器名称开头。使用 *$root* 指定根容器。
 	- 若要指定以某一前缀开头的所有 Blob，请使用“开头为”选择器，并指定前缀，以正斜杠“/”开头。该前缀可以是容器名称的前缀、完整容器名称或者后跟 Blob 名称前缀的完整容器名称。
@@ -134,8 +136,8 @@
 
 	如果你还没有跟踪号码，请选择“我将在发运我的包裹后提供此导出作业的发运信息”，然后完成导出过程。
 
-6. 若要在发送你的包裹后输入你的跟踪号码，请在管理门户中返回到你的存储帐户的“导入/导出”页面，从列表中选择你的作业并选择“装运信息”。[](https://manage.windowsazure.cn)在向导中导航并在步骤 2 中输入你的跟踪号码。
-	
+6. 若要在发送你的包裹后输入你的跟踪号码，请在[管理门户](https://manage.windowsazure.cn)中返回到你的存储帐户的“导入/导出”页面，从列表中选择你的作业并选择“装运信息”。在向导中导航并在步骤 2 中输入你的跟踪号码。
+
 	如果在创建作业后的 2 周内未更新跟踪号，该作业将会过期。
 
 	如果作业处于“正在创建”、“正在发运”或“正在传送”状态，则你还可以在向导的第 2 步中更新你的承运人帐号。一旦作业处于“正在打包”状态，你将无法更新该作业的承运人帐号。
@@ -161,6 +163,8 @@
 
 对于导出作业，你可以查看和复制该服务为你的驱动器生成的 BitLocker 密钥，以便你可以在从 Azure 数据中心接收驱动器后对你的导出数据进行解密。导航到[管理门户](https://manage.windowsazure.cn)中的存储帐户，然后单击“导入/导出”选项卡。从列表中选择你的导出作业，然后单击“查看密钥”按钮。BitLocker 密钥随即出现，如下所示：
 
+![查看导出作业的 BitLocker 密钥][export-job-bitlocker-keys]
+
 ## 常见问题 ##
 
 ### 常规
@@ -172,13 +176,13 @@
 **导入或导出我的数据将会用多长时间？**
 
 - 该时间将是装运磁盘所用的时间，外加要复制的每 TB 的数据几小时。
- 
+
 **支持哪些接口类型？**
 
 - 导入/导出服务支持 3.5 英寸 SATA II/III 内部硬盘驱动器磁盘 (HDD)。你可以在装运前使用以下转换器将 USB 中的设备数据传输到 SATA：
 	- Anker 68UPSATAA-02BU
 	- Anker 68UPSHHDS-BU
-	- Startech SATADOCK22UE 
+	- Startech SATADOCK22UE
 
 > [AZURE.NOTE] 如果你有上方没有列出的转换器，则在购买受支持的转换器之前，可以尝试使用你的转换器运行 Microsoft Azure 导入/导出工具来准备驱动器并看看它是否工作。
 
@@ -213,8 +217,9 @@
 **是否要在返还驱动器前将驱动器格式化？**
 
 - 不需要。所有驱动器都必须是准备了 BitLocker 的。
- 
-**在创建导出作业时是否需要执行任何磁盘准备操作？** - 不需要，但建议执行一些预先检查。使用 Azure 导入/导出工具的 [PreviewExport](https://msdn.microsoft.com/zh-cn/library/azure/dn722414.aspx) 命令检查所需的磁盘数。它可以根据你要使用的驱动器大小，帮助你预览所选 Blob 的驱动器使用情况。此外，请检查你是否可以读取/写入要为导出作业传送的硬盘驱动器。
+
+**在创建导出作业时是否需要执行任何磁盘准备操作？**
+- 不需要，但建议执行一些预先检查。使用 Azure 导入/导出工具的 [PreviewExport](https://msdn.microsoft.com/zh-cn/library/azure/dn722414.aspx) 命令检查所需的磁盘数。它可以根据你要使用的驱动器大小，帮助你预览所选 Blob 的驱动器使用情况。此外，请检查你是否可以读取/写入要为导出作业传送的硬盘驱动器。
 
 ### 装运
 
@@ -252,14 +257,13 @@
 
 - 请仅发运你的硬盘驱动器。不要包括电源线或 USB 电缆之类的物品。
 
-
 ## 另请参阅
 
 [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
-[import-job-03]: ./media/storage-import-export-service/import-job-03.png
-[export-job-03]: ./media/storage-import-export-service/export-job-03.png
-[export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
- 
 
-<!---HONumber=Mooncake_0118_2016-->
+[import-job-03]: ./media/storage-import-export-service-classic-portal/import-job-03.png
+[export-job-03]: ./media/storage-import-export-service-classic-portal/export-job-03.png
+[export-job-bitlocker-keys]: ./media/storage-import-export-service-classic-portal/export-job-bitlocker-keys.png
+
+<!---HONumber=Mooncake_0215_2016-->

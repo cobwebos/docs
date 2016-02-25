@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="multiple" 
 	ms.devlang="Java" 
 	ms.topic="article" 
-	ms.date="11/30/2015" 
+	ms.date="01/09/2016" 
 	ms.author="robmcm"/>
 
 # 下载 Azure SDK for Java #
@@ -49,50 +49,50 @@
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-management</artifactId>
-        <version>0.7.0</version>
+        <version>n.n.n</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-management-compute</artifactId>
-        <version>0.7.0</version>
+        <version>n.n.n</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-management-network</artifactId>
-        <version>0.7.0</version>
+        <version>n.n.n</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-management-sql</artifactId>
-        <version>0.7.0</version>
+        <version>n.n.n</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-management-storage</artifactId>
-        <version>0.7.0</version>
+        <version>n.n.n</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-management-websites</artifactId>
-        <version>0.7.0</version>
+        <version>n.n.n</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-media</artifactId>
-        <version>0.6.0</version>
+        <version>n.n.n</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-servicebus</artifactId>
-        <version>0.7.0</version>
+        <version>n.n.n</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-serviceruntime</artifactId>
-        <version>0.6.0</version>
+        <version>n.n.n</version>
     </dependency>
 
-**注意：**在上述示例中的每个 `<version>` 元素中，将此示例中的版本号替换为有效版本号，可从 [Maven 上的 Azure 库存储库][]获取此版本号。
+**注意：**在上述示例中的每个 `<version>` 元素中，将此示例中的“n.n.n”占位符替换为有效版本号，可从 [Maven 上的 Azure 库存储库][]获取此版本号。
 
 ## 安装 Azure Toolkit for Eclipse ##
 
@@ -135,4 +135,4 @@ Azure Toolkit for Eclipse 使用最新版本的 Azure SDK。可使用 Web 平台
 [zip-download]: http://go.microsoft.com/fwlink/?LinkId=690320
 [Azure Toolkit for Eclipse 的新增功能]: http://go.microsoft.com/fwlink/?LinkId=690333
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

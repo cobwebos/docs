@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Azure 媒体服务概述和常见方案" 
-	description="本部分提供 Azure Media Services 的概述" 
+	description="本部分提供 Azure 媒体服务的概述" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako,anilmur" 
@@ -9,32 +9,27 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/15/2015"
+	ms.date="01/14/2016"
 	wacn.date=""/>
 
 #Azure 媒体服务概述和常见方案
 
-Microsoft Azure 媒体服务是一个可扩展的基于云的平台，它使开发人员可以构建可缩放的媒体管理和交付应用程序。Media Services 基于 REST API，你可以使用这些 API 安全地上载、存储、编码和打包视频或音频内容，以供点播以及以实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
+Microsoft Azure 媒体服务是一个可扩展的基于云的平台，它使开发人员可以构建可缩放的媒体管理和交付应用程序。媒体服务基于 REST API，你可以使用这些 API 安全地上载、存储、编码和打包视频或音频内容，以供点播以及以实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
-可以完全使用 Media Services 构建端到端工作流。也可以选择使用第三方组件来构建工作流的某些组成部分。例如，使用第三方编码器进行编码。然后，使用 Media Services 进行上载、保护、打包和传送。
+可以完全使用媒体服务构建端到端工作流。也可以选择使用第三方组件来构建工作流的某些组成部分。例如，使用第三方编码器进行编码。然后，使用媒体服务进行上载、保护、打包和传送。
 
 你可以选择实时流式播放你的内容，或者根据点播情况交付内容。本主题演示了在哪些常见情况下，你会[实时](/documentation/articles/media-services-overview#live_scenarios)交付内容或按[点播](/documentation/articles/media-services-overview#vod_scenarios)交付内容。本主题还提供了其他相关主题的链接。
 
 ## SDK 和工具 
 
-若要构建 Media Services 解决方案，你可以使用：
+若要构建媒体服务解决方案，你可以使用：
 
-- [Media Services REST API](https://msdn.microsoft.com/zh-cn/library/azure/hh973617.aspx)
-- 以下可用客户端 SDK 之一：[适用于 .NET Azure 媒体服务 SDK](https://github.com/Azure/azure-sdk-for-media-services)、[适用于 Java 的 Azure SDK](https://github.com/Azure/azure-sdk-for-java)、[适用于 Node.js 的 Azure 媒体服务](https://github.com/fritzy/node-azure-media)、[Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)
+- [媒体服务 REST API](https://msdn.microsoft.com/zh-cn/library/azure/hh973617.aspx)
+- 可用的客户端 SDK 之一： 
+	- [适用于 .NET 的 Azure 媒体服务 SDK](https://github.com/Azure/azure-sdk-for-media-services)、 
+	- [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)、[Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)、 
+	- [适用于 Node.js 的 Azure 媒体服务](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js)（这是 Node.js SDK 的非 Microsoft 版本。它由社区维护，当前未包括所有的 AMS API）。 
 - 现有工具：[Azure 管理门户](http://manage.windowsazure.cn/)或 [Azure-Media-Services-Explorer](https://github.com/Azure/Azure-Media-Services-Explorer)。
-
-
-##媒体服务学习路径
-
-你可以在此处查看 AMS 学习路径：
-
-- [AMS 实时流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS 按需流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
 
 ##先决条件
 
@@ -149,10 +144,10 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，它使开�
 **频道**表示用于处理实时流内容的管道。当前，频道可以通过以下方式接收实时输入流：
 
 
-- 本地实时编码器（采用以下格式之一：RTP (MPEG-TS)、RTMP 或平滑流式处理 （分片 MP4））将单比特率流发送至能够使用媒体服务执行实时编码的频道。然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。收到请求时，Media Services 会将该流传递给客户。
+- 本地实时编码器（采用以下格式之一：RTP (MPEG-TS)、RTMP 或平滑流式处理 （分片 MP4））将单比特率流发送至能够使用媒体服务执行实时编码的频道。然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。收到请求时，媒体服务会将该流传递给客户。
 
 	使用媒体服务对实时流进行编码的功能处于**预览**状态。
-- 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（分片 MP4）发送到频道。可以使用以下输出多比特率平滑流的实时编码器：Elemental、Envivio、Cisco。以下实时编码器输出 RTMP：Adobe Flash Live、Telestream Wirecast 和 Tricaster 转码器。引入流将通过**频道**，而不会进行任何进一步处理。你的实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。收到请求时，Media Services 会将该流传递给客户。
+- 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（分片 MP4）发送到频道。可以使用以下输出多比特率平滑流的实时编码器：Elemental、Envivio、Cisco。以下实时编码器输出 RTMP：Adobe Flash Live、Telestream Wirecast 和 Tricaster 转码器。引入流将通过**频道**，而不会进行任何进一步处理。你的实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。收到请求时，媒体服务会将该流传递给客户。
 
 
 ###使用能够通过 Azure 媒体服务执行实时编码的频道
@@ -176,15 +171,15 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，它使开�
 
 ##使用内容
 
-Azure Media Services 提供你所需的工具，以便你创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。以下主题提供了可用来开发自己的客户端应用程序（这些应用程序使用媒体服务中的流媒体）的 SDK 和播放器框架的链接。
+Azure 媒体服务提供你所需的工具，以便你创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。以下主题提供了可用来开发自己的客户端应用程序（这些应用程序使用媒体服务中的流媒体）的 SDK 和播放器框架的链接。
 
 [开发视频播放器应用程序](/documentation/articles/media-services-develop-video-players)
 
 ##启用 Azure CDN
 
-Media Services 支持与 Azure CDN 集成。有关如何启用 Azure CDN 的信息，请参阅[如何在 Media Services 帐户中管理流式处理终结点](/documentation/articles/media-services-manage-origins#enable_cdn)。
+媒体服务支持与 Azure CDN 集成。有关如何启用 Azure CDN 的信息，请参阅[如何在媒体服务帐户中管理流式处理终结点](/documentation/articles/media-services-manage-origins#enable_cdn)。
 
-##缩放 Media Services 帐户
+##缩放媒体服务帐户
 
 通过指定要为帐户预配的**串流保留单位**和**编码保留单位**的数量，可以缩放**媒体服务**。
 
@@ -220,4 +215,4 @@ Media Services 支持与 Azure CDN 集成。有关如何启用 Azure CDN 的信�
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0215_2016-->

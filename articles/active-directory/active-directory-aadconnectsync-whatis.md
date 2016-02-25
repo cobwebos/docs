@@ -7,15 +7,16 @@
 	manager="swadhwa"
 	editor=""/>
 
-<tags ms.service="active-directory"
+<tags
+	ms.service="active-directory"
 
-	ms.date="07/27/2015"
+	ms.date="01/04/2016"
 	wacn.date=""/>
 
 
-# Azure AD Connect Sync：自定义同步选项
+# Azure AD Connect 同步：理解和自定义同步
 
-Azure Active Directory Connect Synchronization Services (Azure AD Connect Sync) 是 Azure AD Connect 的一个主要组件，负责与本地环境和云中 Azure AD 之间同步标识数据相关的所有操作。从同步角度来看，Azure AD Connect Sync 是 DirSync、Azure AD Sync 和 Forefront Identity Manager 的后继版本，同时配置了 Active Directory 连接器。
+Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azure AD Connect 的一个主要组件，负责与本地环境和云中 Azure AD 之间同步标识数据相关的所有操作。从同步角度来看，Azure AD Connect 同步是 DirSync、Azure AD Sync 和 Forefront Identity Manager 的后继版本，同时配置了 Azure Active Directory 连接器。
 
 <center>![Azure AD Connect Sync](./media/active-directory-aadconnectsync-whatis/sync01.png) </center>
 
@@ -25,12 +26,14 @@ Azure Active Directory Connect Synchronization Services (Azure AD Connect Sync) 
 接下来要做什么？：
 
 - 有关技术概念的概述，请参阅[技术概念](active-directory-aadconnectsync-technical-concepts.md)。
-- 有关 Azure AD Connect Sync 所支持的多林方案的概述，请参阅[多林方案概述](active-directory-aadconnectsync-scenario-overview.md)。
+- 有关 Azure AD Connect 同步支持的拓扑和方案概述，请参阅 [Azure AD Connect 的拓扑](active-directory-aadconnect-topologies.md)。
 - 如果你想要了解如何实现筛选，请参阅[配置筛选](active-directory-aadconnectsync-configure-filtering.md)。
 - 如果你想要了解有关密码同步的详细信息，请参阅[实现密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)。
-- 如果你想要了解有关 Azure AD Connect Sync 中的用户和联系人的详细信息，请参阅[了解用户和联系人](active-directory-aadconnectsync-understanding-users-and-contacts.md)。
-- 如果你想要更改默认配置，请参阅 [active-directory-aadconnectsync-best-practices-changing-default-configuration](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
-- 如果你想要探索同步到 Azure AD 的属性，请参阅 [active-directory-aadconnectsync-attributes-synchronized](active-directory-aadconnectsync-attributes-synchronized.md)
+- 如果想要了解 Azure AD Connect 同步中的默认配置，请参阅[了解默认配置](active-directory-aadconnectsync-understanding-default-configuration.md)。
+- 如果你想要了解有关 Azure AD Connect 同步中的用户和联系人的详细信息，请参阅[了解用户和联系人](active-directory-aadconnectsync-understanding-users-and-contacts.md)。
+- 如果想要更改默认配置，请参阅[更改默认配置的最佳实践](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
+- 如果想要了解有关如何操作同步服务器的详细信息，请参阅[操作任务和注意事项](active-directory-aadconnectsync-operations.md)
+- 如果想要了解同步到 Azure AD 的属性，请参阅[同步到 Azure Active Directory 的属性](active-directory-aadconnectsync-attributes-synchronized.md)
 - 如果你想要了解有关声明性设置的详细信息，请参阅[了解声明性设置表达式](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)
 - 若要探索声明性设置函数，请参阅[函数引用](active-directory-aadconnectsync-functions-reference.md)
 
@@ -39,9 +42,6 @@ Azure Active Directory Connect Synchronization Services (Azure AD Connect Sync) 
 
 ## 其他资源
 
-* [以组织身份注册 Azure](/documentation/articles/sign-up-organization)
+* [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
 
- 
-<!--Image references-->
-
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0215_2016-->

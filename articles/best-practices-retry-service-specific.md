@@ -10,7 +10,7 @@
 
 <tags
    ms.service="best-practice"
-   ms.date="04/28/2015"
+   ms.date="12/28/2015"
    wacn.date=""/>
 
 # 重试服务指南
@@ -27,7 +27,7 @@
 
 | **服务** | **重试功能** | **策略配置** | **范围** | **遥测功能** |
 |---------------------------------------|-----------------------------------------|------------------------------|--------------------------------------------------|------------------------
-| **[AzureStorage](#azure-storage-retry-guidelines)** | 客户端原生 | 编程 | 客户端؜ ؜ ؜ 和各项操作 | TraceSource |
+| **[AzureStorage](#azure-storage-retry-guidelines)** | 客户端原生 | 编程 | 客户端 和各项操作 | TraceSource |
 | **[使用 Entity Framework 的 SQL 数据库](#sql-database-using-entity-framework-6-retry-guidelines)** | 客户端原生 | 编程 | 每个应用域均为全局 | 无 |
 | **[使用 ADO.NET 的 SQL 数据库](#sql-database-using-ado-net-retry-guidelines)** | Topaz* | 声明性和编程 | 各个语句或代码块 | “自定义” |
 | **[服务总线](#service-bus-retry-guidelines)** | 客户端原生 | 编程 | 命名空间管理器、消息工厂和客户端 | ETW |
@@ -35,9 +35,9 @@
 | **[DocumentDB](#documentdb-pre-release-retry-guidelines)** | 服务原生 | 不可配置 | 全局 | TraceSource |
 | **[搜索](#search-retry-guidelines)** | Topaz*（使用自定义检测策略） | 声明性和编程 | 代码块 | “自定义” |
 | **[Active Directory](#azure-active-directory-retry-guidelines)** | Topaz*（使用自定义检测策略） | 声明性和编程 | 代码块 | “自定义” |
-**Topaz 是<a href="http://msdn.microsoft.com/library/dn440719.aspx">企业库 6.0</a> 中包含的临时故障处理应用程序块的易记名称。对于大多数类型的服务，您可以结合使用自定义检测策略和 Topaz，如本指南所述。本指南末尾的[临时故障处理应用程序块 (Topaz) 策略](#transient-fault-handling-application-block-topaz-strategies)部分中介绍了 Topaz 默认策略。请注意，临时故障处理应用程序块现在是一个开放源代码框架，不受 Microsoft 直接支持。
+*Topaz 是<a href="http://msdn.microsoft.com/library/dn440719.aspx">企业库 6.0</a> 中包含的临时故障处理应用程序块的易记名称。对于大多数类型的服务，您可以结合使用自定义检测策略和 Topaz，如本指南所述。本指南末尾的[临时故障处理应用程序块 (Topaz) 策略](#transient-fault-handling-application-block-topaz-strategies)部分中介绍了 Topaz 默认策略。请注意，临时故障处理应用程序块现在是一个开放源代码框架，不受 Microsoft 直接支持。
 
-> [AZURE.NOTE]对于大多数 Azure 内置重试机制，目前尚无方法针对不同类型的错误或异常（不局限于重试策略功能）应用不同的重试策略。因此，根据指南，最好在编写时配置可提供最佳平均性能和可用性的策略。微调策略的一种方法是分析日志文件，以确定发生的临时故障的类型。例如，如果大部分错误都与网络连接问题相关，那么您可以立即尝试重试，而不是等待很长一段时间才进行首次重试。
+> [AZURE.NOTE] 对于大多数 Azure 内置重试机制，目前尚无方法针对不同类型的错误或异常（不局限于重试策略功能）应用不同的重试策略。因此，根据指南，最好在编写时配置可提供最佳平均性能和可用性的策略。微调策略的一种方法是分析日志文件，以确定发生的临时故障的类型。例如，如果大部分错误都与网络连接问题相关，那么您可以立即尝试重试，而不是等待很长一段时间才进行首次重试。
 
 ## Azure 存储空间重试指南
 
@@ -298,7 +298,7 @@ public class BloggingContextConfiguration : DbConfiguration
 | 交互式、UI<br />或前台 | 2 秒 | 指数 | MaxRetryCount<br />MaxDelay | 3<br />750 毫秒 | 第 1 次尝试 - 延迟 0 秒<br />第 2 次尝试 - 延迟 750 毫秒<br />第 3 次尝试 - 延迟 750 毫秒 |
 | 后台<br />或批处理 | 30 秒 | 指数 | MaxRetryCount<br />MaxDelay | 5<br />12 秒 | 第 1 次尝试 - 延迟 0 秒<br />第 2 次尝试 - 延迟约 1 秒<br />第 3 次尝试 - 延迟约 3 秒<br />第 4 次尝试 - 延迟约 7 秒<br />第 5 次尝试 - 延迟 12 秒 |
 
-> [AZURE.NOTE]端到端延迟目标假设采用服务连接的默认超时。如果您指定更长的连接超时，则每次重试尝试都会将端到端延迟延长这一附加时间。
+> [AZURE.NOTE] 端到端延迟目标假设采用服务连接的默认超时。如果您指定更长的连接超时，则每次重试尝试都会将端到端延迟延长这一附加时间。
 
 ## 示例（使用 Entity Framework 6 的 SQL 数据库）
 
@@ -425,7 +425,7 @@ RetryManager.SetDefault(new RetryManager(
 | 交互式、UI<br />或前台 | 2 秒 | FixedInterval | 重试计数<br />重试间隔<br />首次快速重试 | 3<br />500 毫秒<br />true | 第 1 次尝试 - 延迟 0 秒<br />第 2 次尝试 - 延迟 500 毫秒<br />第 3 次尝试 - 延迟 500 毫秒 |
 | 后台<br />或批处理 | 30 秒 | ExponentialBackoff | 重试计数<br />最小回退<br />最大回退<br />增量回退<br />首次快速重试 | 5<br />0 秒<br />60 秒<br />2 秒<br />false | 第 1 次尝试 - 延迟 0 秒<br />第 2 次尝试 - 延迟约 2 秒<br />第 3 次尝试 - 延迟约 6 秒<br />第 4 次尝试 - 延迟约 14 秒<br />第 5 次尝试 - 延迟约 30 秒 |
 
-> [AZURE.NOTE]端到端延迟目标假设采用服务连接的默认超时。如果您指定更长的连接超时，则每次重试尝试都会将端到端延迟延长这一附加时间。
+> [AZURE.NOTE] 端到端延迟目标假设采用服务连接的默认超时。如果您指定更长的连接超时，则每次重试尝试都会将端到端延迟延长这一附加时间。
 
 ### 示例（使用 ADO.NET 的 SQL 数据库）
 
@@ -721,7 +721,7 @@ var conn = ConnectionMultiplexer.Connect("redis0:6380,redis1:6380,connectRetry=3
 |----------------------|-----------------------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 配置选项 | ConnectRetry<br /><br />ConnectTimeout<br /><br />SyncTimeout | 3<br /><br />最长 5000 毫秒，外加 SyncTimeout<br />1000 | 初始连接操作期间，连接尝试的重复次数。<br />连接操作的超时（以毫秒为单位）。不是重试尝试之间的延迟。<br />同步操作时间（以毫秒为单位）。 |
 
-> [AZURE.NOTE]SyncTimeout 对操作的端到端延迟有推高效果。不过，通常情况下，不建议使用同步操作。有关详细信息，请参阅[管道和多路复用器](http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/PipelinesMultiplexers.md)。
+> [AZURE.NOTE] SyncTimeout 对操作的端到端延迟有推高效果。不过，通常情况下，不建议使用同步操作。有关详细信息，请参阅[管道和多路复用器](http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/PipelinesMultiplexers.md)。
 
 ## 重试使用指南
 
@@ -1117,4 +1117,4 @@ var result = await policy.ExecuteAsync(() => authContext.AcquireTokenAsync(resou
 | **线性（固定间隔）** | retryCount<br />retryInterval<br />fastFirstRetry<br /> | 10<br />1 秒<br />true | 重试尝试次数。<br />重试之间延迟。<br />是否立即进行首次重试尝试。 |
 有关使用临时故障处理应用程序块的示例，请参阅本指南中前面与使用 ADO.NET 的 Azure SQL 数据库和 Azure Active Directory 有关的示例部分。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0215_2016-->

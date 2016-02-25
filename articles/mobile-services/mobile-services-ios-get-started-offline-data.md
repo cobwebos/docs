@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="10/01/2015"
+	ms.date="01/12/2016"
 	wacn.date=""/>
 
 # 移动服务中的脱机数据同步入门
@@ -29,7 +29,7 @@
 * 跨多个设备同步数据
 * 在两个设备修改同一条记录时检测冲突
 
-> [AZURE.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并获取[免费的移动服务，即使在试用期结束之后仍可继续使用这些服务](/home/features/mobile-services/#price)。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/ target="\_blank")。
+> [AZURE.NOTE] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并获取[免费的移动服务，即使在试用期结束之后仍可继续使用这些服务](/home/features/mobile-services/#price)。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/ target="\_blank")。
 
 本教程是在[移动服务快速入门教程]的基础之上制作的，所以必须先完成该教程。首先，让我们回顾“快速入门”中与脱机同步相关的代码。
 
@@ -62,13 +62,13 @@ Azure 移动服务脱机同步允许最终用户在无法访问网络时与本�
 
 ```
       -(void)syncData:(QSCompletionBlock)completion
-        {
+      {
           // push all changes in the sync context, then pull new data
           [self.client.syncContext pushWithCompletion:^(NSError *error) {
               [self logErrorIfNotNil:error];
               [self pullData:completion];
           }];
-        }
+      }
 
 ```
 
@@ -78,7 +78,7 @@ Azure 移动服务脱机同步允许最终用户在无法访问网络时与本�
 
 ```
       -(void)pullData:(QSCompletionBlock)completion
-        {
+      {
           MSQuery *query = [self.syncTable query];
 
           // Pulls data from the remote server into the local table.
@@ -90,13 +90,13 @@ Azure 移动服务脱机同步允许最终用户在无法访问网络时与本�
               // Let the caller know that we have finished
               if (completion != nil) {
                   dispatch_async(dispatch_get_main_queue(), completion);
-        }
+              }
           }];
-        }
+      }
 ```
 
 
->[AZURE.NOTE]若要从设备本地存储区中删除已在移动设备数据库中删除的记录，应启用“软删除”[]。否则，你的应用程序应定期调用 `MSSyncTable.purgeWithQuery` 以清除本地存储。
+>[AZURE.NOTE] 若要从设备本地存储区中删除已在移动设备数据库中删除的记录，应启用“[软删除]”。否则，你的应用程序应定期调用 `MSSyncTable.purgeWithQuery` 以清除本地存储。
 
 
 * 在 **QSTodoService.m** 中，`addItem` 和 `completeItem` 方法会在修改数据后调用 `syncData`。在 **QSTodoListViewController.m** 中，`refresh` 方法也会调用 `syncData`，使 UI 在每次刷新和启动时（`init` 调用 `refresh`）显示最新数据。
@@ -114,7 +114,7 @@ Azure 移动服务脱机同步允许最终用户在无法访问网络时与本�
       * MS\_TableConfig：用于跟踪所有提取操作最后一次同步操作的上次更新时间
       * TodoItem：用于储存 todo 项。系统列 **ms\_createdAt**、**ms\_updatedAt** 和 **ms\_version** 是可选的系统属性。
 
->[AZURE.NOTE]移动服务 SDK 会保留以“**`ms_`**”开头的列名称。请不要在系统列以外的项中使用此前缀。否则，列名称会在使用远程服务时被修改。
+>[AZURE.NOTE] 移动服务 SDK 会保留以“**`ms_`**”开头的列名称。请不要在系统列以外的项中使用此前缀。否则，列名称会在使用远程服务时被修改。
 
 - 使用脱机同步功能时，必须先定义系统表，如下所示。
 
@@ -124,10 +124,10 @@ Azure 移动服务脱机同步允许最终用户在无法访问网络时与本�
 
     | 属性 | 类型 |
     |-------------- |   ------    |
-    | ID（必需） | Integer 64 |
-    | itemId | String |
+    | ID（必需） | 64 位整数 |
+    | itemId | 字符串 |
     | properties | 二进制数据 |
-    | table | String |
+    | table | 字符串 |
     | tableKind | 16 位整数 |
 
     #### MS\_TableOperationErrors
@@ -135,7 +135,7 @@ Azure 移动服务脱机同步允许最终用户在无法访问网络时与本�
     | 属性 | 类型 |
     |-------------- | ----------  |
     | ID（必需） | 字符串 |
-    | operationId | Integer 64 |
+    | operationId | 64 位整数 |
     | 属性 | 二进制数据 |
     | tableKind | 16 位整数 |
 
@@ -144,21 +144,21 @@ Azure 移动服务脱机同步允许最终用户在无法访问网络时与本�
 
     | 属性 | 类型 |
     |-------------- | ----------  |
-    | ID（必需） | String |
-    | key | String |
+    | ID（必需） | 字符串 |
+    | key | 字符串 |
     | keyType | 64 位整数 |
-    | table | String |
-    | value | String |
+    | table | 字符串 |
+    | value | 字符串 |
 
     ### 数据表
 
     #### TodoItem
 
-    | 属性 | 类型 | 注意 | 
+    | 属性 | 类型 | 注意 |
     |-------------- |  ------ | -------------------------------------------------------|
-    | ID（必需） | String | 远程存储中的主键（必需） |
+    | ID（必需） | 字符串 | 远程存储中的主键（必需） |
     | complete | 布尔 | todo 项字段 |
-    | text | String | todo 项字段 |
+    | text | 字符串 | todo 项字段 |
     | ms\_createdAt | 日期 | （可选）映射到 \_\_createdAt 系统属性 |
     | ms\_updatedAt | 日期 |（可选）映射到 \_\_updatedAt 系统属性 |
     | ms\_version | 字符串 |（可选）用于检测冲突，映射到 \_\_version |
@@ -184,7 +184,7 @@ Azure 移动服务脱机同步允许最终用户在无法访问网络时与本�
 ```
         if (completion != nil) {
             dispatch_async(dispatch_get_main_queue(), completion);
-                }
+        }
 ```
 
 ## <a name="test-app"></a>测试应用程序
@@ -264,7 +264,7 @@ Azure 移动服务脱机同步允许最终用户在无法访问网络时与本�
 [Get started with Mobile Services]: /documentation/articles/mobile-services-ios-get-started
 [使用移动服务脱机支持处理冲突]: /documentation/articles/mobile-services-ios-handling-conflicts-offline-data
 [Soft Delete]: /documentation/articles/mobile-services-using-soft-delete
-[]: /documentation/articles/mobile-services-using-soft-delete
+[软删除]: /documentation/articles/mobile-services-using-soft-delete
 
 [云覆盖：Azure 移动服务中的脱机同步]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Aazure Friday：Azure 移动服务中支持脱机的应用]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
@@ -272,4 +272,4 @@ Azure 移动服务脱机同步允许最终用户在无法访问网络时与本�
 [移动服务快速入门教程]: /documentation/articles/mobile-services-ios-get-started
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0215_2016-->

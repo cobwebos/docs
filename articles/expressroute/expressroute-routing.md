@@ -66,7 +66,6 @@ a.b.c.d/29 拆分成 a.b.c.d/30 和 a.b.c.d+4/30 并通过预配 API 一路传�
 - [RIPE NCC](https://www.ripe.net/)
 - [RADB](http://www.radb.net/)
 - [ALTDB](http://altdb.net/)
-- [LEVEL3](http://rr.Level3.net/)
 
 
 ## 动态路由交换
@@ -137,7 +136,7 @@ Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标�
 
 所有 Microsoft 播发的路由都标有适当的社区值。
 
->[AZURE.IMPORTANT]全局前缀将使用相应的社区值进行标记，并且仅当已启用 ExpressRoute 高级版附加组件时才会播发。
+>[AZURE.IMPORTANT] 全局前缀将使用相应的社区值进行标记，并且仅当已启用 ExpressRoute 高级版附加组件时才会播发。
 
 
 除了上述各项，Microsoft 还将根据其所属的服务加上标记及前缀。这只适用于 Microsoft 对等互连。下表提供了服务与 BGP 社区值之间的映射。
@@ -163,4 +162,4 @@ Microsoft 不遵循你设置的任何 BGP 社区值。你需要为每个对等�
 	- [配置路由](/documentation/articles/expressroute-howto-routing-classic)
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

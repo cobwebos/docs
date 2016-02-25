@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="cloud-services" 
-	ms.date="08/02/2015" 
+	ms.date="11/16/2015" 
 	wacn.date=""/>
 
 
@@ -154,12 +154,12 @@
 ## <a id="nextsteps"></a>后续步骤
 提供此代码是为了演示在 Azure 上的 ASP.NET Web 角色中使用 Twilio 的基本功能。在生产中部署到 Azure 之前，你可能希望添加更多错误处理功能或其他功能。例如：
 
-* 您可以使用 Azure Blob 存储或 Azure SQL 数据库实例存储电话号码和呼叫文本，而不使用 Web 窗体。有关在 Azure 中使用 Blob 的信息，请参阅[如何在 .NET 中使用 Azure Blob 存储服务][howto_blob_storage_dotnet]。有关使用 SQL 数据库的信息，请参阅[如何在 .NET 应用程序中使用 Azure SQL 数据库][howto_sql_azure_dotnet]。
+* 你可以使用 Azure Blob 存储或 Azure SQL 数据库实例存储电话号码和呼叫文本，而不使用 Web 窗体。有关在 Azure 中使用 Blob 的信息，请参阅[如何在 .NET 中使用 Azure Blob 存储服务][howto_blob_storage_dotnet]。有关使用 SQL 数据库的信息，请参阅[如何在 .NET 应用程序中使用 Azure SQL 数据库][howto_sql_azure_dotnet]。
 * 你可以使用 RoleEnvironment.getConfigurationSettings 从部署的配置设置中检索 Twilio 帐户 ID 和身份验证令牌，而不是在窗体中对这些值进行硬编码。有关 RoleEnvironment 类的信息，请参阅 [Microsoft.WindowsAzure.ServiceRuntime 命名空间][azure_runtime_ref_dotnet]。
 * 阅读 [https://www.twilio.com/docs/security][twilio_docs_security] 上的 Twilio 安全准则。
 * 在 [https://www.twilio.com/docs][twilio_docs] 上了解有关 Twilio 的详细信息。
 
-##<a name="seealso"></a>另请参阅
+## <a name="seealso"></a>另请参阅
 * [如何在 Azure 中使用 Twilio 实现语音和短信功能](/documentation/articles/twilio-dotnet-how-to-use-for-voice-sms)
 
 [twilio_pricing]: http://www.twilio.com/pricing
@@ -188,4 +188,4 @@
 
 [azure_runtime_ref_dotnet]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0215_2016-->

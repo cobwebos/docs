@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="10/01/2015"
+	ms.date="01/12/2016"
 	wacn.date=""/>
 
 # 如何使用适用于 Azure 移动服务的 iOS 客户端库
@@ -21,7 +21,7 @@
 
 本指南介绍如何使用 Azure 移动服务 [iOS SDK] 执行常见任务。如果你不熟悉移动服务，请先完成[移动服务快速入门]，以配置你的帐户、创建表，并创建移动服务。
 
-> [AZURE.NOTE]本指南使用最新的 [iOS 移动服务 SDK](https://go.microsoft.com/fwLink/?LinkID=266533&clcid=0x409)。如果你的项目使用旧版 SDK，请先升级 Xcode 中的框架。
+> [AZURE.NOTE] 本指南使用最新的 [iOS 移动服务 SDK](https://go.microsoft.com/fwLink/?LinkID=266533&clcid=0x409)。如果你的项目使用旧版 SDK，请先升级 Xcode 中的框架。
 
 [AZURE.INCLUDE [mobile-services-concepts](../includes/mobile-services-concepts.md)]
 
@@ -52,13 +52,13 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" applicatio
 ```
 [table readWithCompletion:^(MSQueryResult *result, NSError *error) {
 		if(error) { // error is nil if no error occured
-			NSLog(@"ERROR %@", error);
+				NSLog(@"ERROR %@", error);
 		} else {
 				for(NSDictionary *item in result.items) { // items is NSArray of records that match query
-				NSLog(@"Todo Item: %@", [item objectForKey:@"text"]);
-			}
+						NSLog(@"Todo Item: %@", [item objectForKey:@"text"]);
+				}
 		}
-	}];
+}];
 ```
 
 ##<a name="filtering"></a>如何：筛选器返回的数据
@@ -69,17 +69,17 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" applicatio
 
 ```
 // Create a predicate that finds items where complete is false
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
+NSPredicate * predicate = [NSPredicate predicateWithFormat:@"complete == NO"];
 // Query the TodoItem table and update the items property with the results from the service
 [table readWithPredicate:predicate completion:^(MSQueryResult *result, NSError *error) {
 		if(error) {
-			NSLog(@"ERROR %@", error);
+				NSLog(@"ERROR %@", error);
 		} else {
 				for(NSDictionary *item in result.items) {
-				NSLog(@"Todo Item: %@", [item objectForKey:@"text"]);
-			}
+						NSLog(@"Todo Item: %@", [item objectForKey:@"text"]);
+				}
 		}
-	}];
+}];
 ```
 
 ##<a name="query-object"></a>如何：使用 MSQuery
@@ -115,7 +115,7 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" applicatio
 						NSLog(@"Todo Item: %@", [item objectForKey:@"text"]);
 				}
 		}
-	}];
+}];
 ```
 
 ## <a name="paging"></a>如何：使用 MSQuery 在页中返回数据
@@ -141,24 +141,24 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" applicatio
 {
     MSQuery *query = [self.table query];
 
-		query.includeTotalCount = YES;
+    query.includeTotalCount = YES;
     query.fetchLimit = 5;
-		query.fetchOffset = self.loadedItems.count;
+    query.fetchOffset = self.loadedItems.count;
 
 
     [query readWithCompletion:^(MSQueryResult *result, NSError *error) {
-			if(!error) {
-				// Add the items to our local copy
+        if(!error) {
+            // Add the items to our local copy
             [self.loadedItems addObjectsFromArray:result.items];
 
             // Set a flag to keep track if there are any additional records we need to load
             self.moreResults = (self.loadedItems.count <= result.totalCount);
-			}
-		}];
-	}
+        }
+    }];
+}
 
 ```
- 
+
 ## <a name="selecting"></a><a name="parameters"></a>如何：使用 MSQuery 限制字段和展开查询字符串参数
 
 若要限制在查询中返回的字段，请在 **selectFields** 属性中指定字段的名称。这样，便只会返回文本和已完成的字段：
@@ -186,13 +186,13 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl" applicatio
 	NSDictionary *newItem = @{@"id": @"custom-id", @"text": @"my new item", @"complete" : @NO};
 	[self.table insert:newItem completion:^(NSDictionary *result, NSError *error) {
 		// The result contains the new item that was inserted,
-		// depending on your server scripts it may have additional or modified 
+		// depending on your server scripts it may have additional or modified
 		// data compared to what was passed to the server.
 		if(error) {
 				NSLog(@"ERROR %@", error);
 		} else {
 						NSLog(@"Todo Item: %@", [result objectForKey:@"text"]);
-	}
+		}
 	}];
 ```
 
@@ -254,7 +254,7 @@ Azure 移动服务支持两种身份验证工作流：
 - **服务器托管登录**：Azure 移动服务将代表应用程序管理登录过程。它会显示提供者特定的登录页，并使用选择的提供者进行身份验证。
 
 - **客户端托管登录**：_应用程序_必须从标识提供者请求令牌，然后将此令牌提供给 Azure 移动服务以进行身份验证。
-		
+
 当身份验证成功时，你将获得具有用户 ID 值和身份验证令牌的用户对象。若要使用此用户 ID 来授权用户，请参阅[服务器端授权]。若要将表访问权限限制给已经过身份验证的用户，请参阅[权限]。
 
 ### 服务器托管登录
@@ -334,4 +334,4 @@ Azure 移动服务支持两种身份验证工作流：
 [冲突处理程序]: /documentation/articles/mobile-services-ios-handling-conflicts-offline-data/#add-conflict-handling
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0215_2016-->

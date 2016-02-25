@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="在 Azure 网站中备份网站" 
-	description="了解如何在 Azure 网站中创建网站的备份。" 
+	pageTitle="在 Azure 中备份 Web 应用" 
+	description="了解如何在 Azure 中创建 Web 应用的备份。" 
 	services="app-service" 
 	documentationCenter="" 
 	authors="cephalin" 
@@ -9,15 +9,15 @@
 
 <tags
 	ms.service="app-service"
-	ms.date="12/10/2015"
+	ms.date="01/07/2015"
 	wacn.date=""/>
 
-# 在 Azure 网站中备份网站
+# 在 Azure 中备份 Web 应用
 
 
-利用 [Azure 网站](/documentation/services/web-sites/)中的备份和还原功能，你可以轻松地手动或自动创建网站备份。你可以将网站还原到以前的状态，或者基于原始应用的备份之一创建新网站。
+利用 [Azure Web Apps](/documentation/services/web-sites/) 中的备份和还原功能，可以轻松地手动或自动创建 Web 应用备份。你可以将 Web 应用还原到以前的状态，或者基于原始应用的备份之一创建新的 Web 应用。 
 
-有关从备份中还原 Azure 网站的信息，请参阅[还原网站](/documentation/articles/web-sites-restore)。
+有关从备份中还原 Azure Web 应用的信息，请参阅[还原 Web 应用](/documentation/articles/web-sites-restore)。
 ##本文内容
 
 - [备份的内容](#whatsbackedup)
@@ -31,10 +31,10 @@
 
 <a name="whatsbackedup"></a>
 ## 备份的内容 
-网站可以备份以下信息：
+Web Apps 可以备份以下信息：
 
-* 网站配置
-* 网站文件内容
+* Web 应用配置
+* Web 应用文件内容
 * 任何连接到你的应用的 Azure SQL 数据库或 MySQL 数据库（你可以选择备份中要包括哪些数据库）
 
 此信息会备份到你指定的 Azure 存储帐户和容器。
@@ -44,14 +44,13 @@
 <a name="requirements"></a>
 ## 要求和限制
 
-* 备份和还原功能要求 App Service 计划位于“标准”层中。有关缩放 App Service 计划以使用更高层的详细信息，请参阅[在 Azure 网站中缩放网站](/documentation/articles/web-sites-scale)。
+* 备份和还原功能要求 App Service 计划位于“标准”层中。有关缩放 App Service 计划以使用更高层的详细信息，请参阅[在 Azure 中缩放 Web 应用](/documentation/articles/web-sites-scale)。 
 
-* 备份和还原功能要求 Azure 存储帐户和容器与要备份的网站必须同属一个订阅。如果你还没有存储帐户，可以创建一个，方法是：单击 Azure 管理门户左窗格中的“存储”按钮（网格图标），然后选择底部命令栏中的“新建”。有关 Azure 存储帐户的详细信息，请参阅本文结尾处的[链接](#moreaboutstorage)。
+* 备份和还原功能要求 Azure 存储帐户和容器必须与要备份的 Web 应用同属一个订阅。如果你还没有存储帐户，可以创建一个，方法是：单击 Azure 管理门户左窗格中的“存储”按钮（网格图标），然后选择底部命令栏中的“新建”。有关 Azure 存储帐户的详细信息，请参阅本文结尾处的[链接](#moreaboutstorage)。
 
 * 备份和还原功能最多支持 10GB 的网站和数据库内容。如果因有效负载超出此限制备份功能无法继续执行，将指示错误。
 
-<a name="manualbackup"></a>
-## 创建手动备份
+##<a name="manualbackup" id="create-a-manual-backup"></a> 创建手动备份
 1. 在网站的 Azure 管理门户中，选择“备份”选项卡。
 	
 	![“备份”页面][ChooseBackupsPage]
@@ -74,7 +73,7 @@
 	
 	![备份进度消息][BackupProgress]
 	
-你可以随时进行手动备份。在预览期间，每 24 小时内的手动备份不能超过 2 个（此限制可能会变更）。
+你可以随时进行手动备份。在预览期间，每 24 小时内的手动备份不能超过 2 个（此限制可能会更改）。  
 <a name="automatedbackups"></a>
 ## 配置自动执行的备份
 1. 在“备份”页上，将“自动化的备份”设置为“打开”。
@@ -113,25 +112,25 @@
 <a name="notes"></a>
 ## 说明
 
-* 请确保在网站的“设置”中的“网站设置”边栏选项卡中为你的每个数据库正确设置连接字符串，这样备份和还原功能才会包括这些数据库。
+* 一定要在 Web 应用的“设置”中的“Web 应用设置”边栏选项卡中为你的每个数据库正确设置连接字符串，这样备份和还原功能才会包括这些数据库。
 
 
 <a name="partialbackups"></a>
-## 仅备份网站的一部分
+## 备份只是 Web 应用的一部分
 
-有时你不想备份网站中的所有内容。以下是一些示例：
+有时你不想备份 Web 应用中的所有内容。以下是一些示例：
 
--	你[设置每周备份](/documentation/articles/web-sites-backup#configure-automated-backups)网站，其中包含永远不会更改的静态内容，例如旧的博客文章或图像。
--	网站的内容超过 10GB（这是一次可以备份的最大数量）。
+-	你[设置每周备份](/documentation/articles/web-sites-backup#configure-automated-backups) Web 应用，其中包含永远不会更改的静态内容，例如旧的博客文章或映像。
+-	Web 应用的内容超过 10GB（这是一次可以备份的最大数量）。
 -	你不想备份日志文件。
 
 使用部分备份可以精确地选择想要备份的文件。
 
 ### 从备份中排除文件
 
-若要从备份中排除文件和文件夹，在网站的 wwwroot 文件夹中创建 `_backup.filter` 文件，并指定要在该处排除的文件和文件夹列表。通过 [Kudu 控制台](https://github.com/projectkudu/kudu/wiki/Kudu-console)，即可轻松访问它。
+若要从备份中排除文件和文件夹，在 Web 应用的 wwwroot 文件夹中创建 `_backup.filter` 文件，并指定想要在这里排除的文件和文件夹列表。通过 [Kudu 控制台](https://github.com/projectkudu/kudu/wiki/Kudu-console)，即可轻松访问它。
 
-假设你的网站中包含永远不会更改的历年的日志文件和静态图像。你已有包括旧图像的网站的完整备份。现在你想要每天都备份网站，但不想为存储永远不会更改的日志文件或静态图像文件支付费用。
+假设你的 Web 应用中包含永远不会更改的历年的日志文件和静态映像。你已有包括旧映像的 Web 应用的完整备份。现在你想要每天都备份 Web 应用，但不想为永远不会更改的存储日志文件或静态映像文件支付费用。
 
 ![日志文件夹][LogsFolder]
 ![映像文件夹][ImagesFolder]
@@ -146,15 +145,15 @@
 		D:\home\site\wwwroot\Images\2014
 		D:\home\site\wwwroot\Images\brand.png
 
-	> [AZURE.NOTE] 最后一行说明了你可以排除单个文件以及文件夹。
+	[AZURE.NOTE] 最后一行说明了你可以排除单个文件以及文件夹。
 
 2. 创建名为 `_backup.filter` 的文件并将上述列表放在文件中，但请删除 `D:\home`。每行列出一个目录或文件。文件的内容应为：
 
-    \\site\\wwwroot\\Logs
-    \\LogFiles
-    \\site\\wwwroot\\Images\\2013
-    \\site\\wwwroot\\Images\\2014
-    \\site\\wwwroot\\Images\\brand.png
+    \site\wwwroot\Logs
+    \LogFiles
+    \site\wwwroot\Images\2013
+    \site\wwwroot\Images\2014
+    \site\wwwroot\Images\brand.png
 
 3. 使用 [ftp](/documentation/articles/web-sites-deploy#ftp) 或任何其他方法将此文件上载到站点的 `D:\home\site\wwwroot` 目录。如果你愿意，则可以直接在 `http://{yourapp}.scm.chinacloudsites.cn/DebugConsole` 中创建文件并在那里插入内容。
 
@@ -170,15 +169,15 @@
 
 ## 如何存储备份
 
-对网站进行一个或多个备份后，则会在你的存储帐户的“容器”边栏选项卡中看到这些备份以及你的网站。在存储帐户中，每个备份都由一个 .zip 文件和一个 .xml 文件组成，前者包含备份数据，后者包含 .zip 文件内容的清单。如果你想要在无需实际执行网站还原的情况下访问备份，则可以解压缩并浏览这些文件。
+对 Web 应用进行一个或多个备份后，则会在你的存储帐户的“容器”边栏选项卡中看到该备份以及你的 Web 应用。在存储帐户中，每个备份都由一个 .zip 文件和一个 .xml 文件组成，前者包含备份数据，后者包含 .zip 文件内容的清单。如果你想要在无需实际执行 Web 应用还原的情况下访问备份，则可以解压缩并浏览这些文件。
 
-网站的数据库备份存储在 .zip 文件的根目录中。对于 SQL 数据库，这是 BACPAC 文件（无文件扩展名），并且可以导入。若要基于 BACPAC 导出创建新的 SQL 数据库，请参阅[导入 BACPAC 文件以创建新的用户数据库](http://technet.microsoft.com/zh-cn/library/hh710052.aspx)。
+Web 应用的数据库备份存储在 .zip 文件的根目录中。对于 SQL 数据库，这是 BACPAC 文件（无文件扩展名），并且可以导入。若要基于 BACPAC 导出创建新的 SQL 数据库，请参阅[导入 BACPAC 文件以创建新的用户数据库](http://technet.microsoft.com/zh-cn/library/hh710052.aspx)。
 
 > [AZURE.WARNING] 改动“websitebackups”容器中的任何文件都会导致备份无效，进而无法还原。
 
 <a name="nextsteps"></a>
 ## 后续步骤
-有关从备份中还原网站的信息，请参阅[在 Azure 网站中还原网站](/documentation/articles/web-sites-restore)。
+有关从备份中还原 Web 应用的信息，请参阅[在 Azure 中还原 Web 应用](/documentation/articles/web-sites-restore)。你还可以使用 REST API 备份和还原 Azure Web Apps（请参阅[使用 REST 备份和还原 Azure Web Apps](/documentation/articles/websites-csm-backup)）。
 
 若要开始使用 Azure，请参阅 [Microsoft Azure 试用版](/pricing/1rmb-trial/)。
 
@@ -199,4 +198,4 @@
 [GhostUpgradeWarning]: ./media/web-sites-backup/13GhostUpgradeWarning.png
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0215_2016-->

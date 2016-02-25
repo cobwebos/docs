@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="azure-resource-manager" 
-	ms.date="12/18/2015" 
+	ms.date="01/04/2016" 
 	wacn.date=""/>
 
 # 将资源移动到新的资源组或订阅中
@@ -106,4 +106,4 @@
 - [使用 Azure 门户管理资源](/documentation/articles/resource-group-portal)
 - [使用标记来组织资源](/documentation/articles/resource-group-using-tags)
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

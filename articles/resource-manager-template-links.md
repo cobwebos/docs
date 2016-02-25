@@ -1,6 +1,6 @@
 <properties
    pageTitle="用于链接资源的资源管理器模板 | Microsoft Azure"
-   description="显示用于在相关资源之间创建链接的资源管理器模板架构。"
+   description="介绍用于通过模板在相关资源之间部署链接的资源管理器架构。"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -9,10 +9,10 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="10/31/2015"
+   ms.date="01/04/2016"
    wacn.date=""/>
 
-# 资源链接 - 模板架构
+# 资源链接模板架构
 
 在两个资源之间创建链接。该链接将应用于称为源资源的资源。链接中的第二个资源称为目标资源。
 
@@ -50,7 +50,7 @@
 
 | Name | 类型 | 必选 | 允许的值 | 说明 |
 | ------- | ---- | ---------------- | -------- | ----------- |
-| tagetId | 字符串 | 是 | | 要链接到的目标资源的标识符。 |
+| targetId | 字符串 | 是 | | 要链接到的目标资源的标识符。 |
 | 说明 | 字符串 | 否 | 512 个字符 | 该锁的说明。 |
 
 
@@ -71,18 +71,18 @@
 以下示例将只读锁应用于 Web 应用。
 
     {
-	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-	"contentVersion": "1.0.0.0",
-	"parameters": {
-		"hostingPlanName": {
-      			"type": "string"
-   		}
-	},
-	"variables": {
-		"siteName": "[concat('site',uniqueString(resourceGroup().id))]"
-	},
-	"resources": [
-	    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "hostingPlanName": {
+                "type": "string"
+            }
+        },
+        "variables": {
+            "siteName": "[concat('site',uniqueString(resourceGroup().id))]"
+        },
+        "resources": [
+            {
                 "apiVersion": "2015-08-01",
                 "type": "Microsoft.Web/serverfarms",
                 "name": "[parameters('hostingPlanName')]",
@@ -96,17 +96,17 @@
                     "numberOfWorkers": 1
                 }
             },
-	    {
+            {
                 "apiVersion": "2015-08-01",
                 "name": "[variables('siteName')]",
                 "type": "Microsoft.Web/sites",
                 "location": "[resourceGroup().location]",
-	        "dependsOn": [ "[parameters('hostingPlanName')]" ],
+                "dependsOn": [ "[parameters('hostingPlanName')]" ],
                 "properties": {
                     "serverFarmId": "[parameters('hostingPlanName')]"
                 }
-	    },
-	    {
+            },
+            {
                 "type": "Microsoft.Web/sites/providers/links",
                 "apiVersion": "2015-01-01",
                 "name": "[concat(variables('siteName'),'/Microsoft.Resources/SiteToStorage')]",
@@ -116,13 +116,24 @@
                     "notes": "This web site uses the storage account to store user information."
                 }
     	    }
-	],
-	"outputs": {}
+        ],
+        "outputs": {}
     }
+
+## 快速入门模板
+
+以下快速入门模板将使用链接部署资源。
+
+- [使用逻辑应用发出队列警报](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
+- [使用逻辑应用发出 Slack 警报](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
+- [使用现有网关预配 API 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-app-gateway-existing)
+- [使用新网关预配 API 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-app-gateway-new)
+- [使用模板创建逻辑应用和 API 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-api-app-create)
+- [触发警报时发送文本消息的逻辑应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
 
 
 ## 后续步骤
 
 - 有关模板结构的信息，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0215_2016-->

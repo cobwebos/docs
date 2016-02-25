@@ -3,27 +3,27 @@
 	description="在 Azure 上使用 Linux 虚拟机设置和托管基于 Ruby on Rails 的网站。"
 	services="virtual-machines"
 	documentationCenter="ruby"
-	authors="MikeWasson"
+	authors="rmcmurray"
 	manager="wpickett"
 	editor=""
 	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="06/09/2015"
+	ms.date="01/09/2016"
 	wacn.date=""/>
 
 
 
 
 
-#Azure VM 上的 Ruby on Rails 网站
+#Azure 虚拟机上的 Ruby on Rails Web 应用程序
 
 本教程介绍如何在 Azure 中使用 Linux 虚拟机托管 Ruby on Rails 网站。
 
 本教程使用 Ubuntu Server 14.04 LTS 进行了验证。如果你使用不同 Linux 分发，则可能需要修改安装 Rails 的步骤。
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]
 
 
 ## 创建 Azure VM
@@ -171,4 +171,4 @@
 
 [new-endpoint1]: ./media/virtual-machines-ruby-rails-web-app-linux/newendpoint1.png
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0215_2016-->

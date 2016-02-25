@@ -1,21 +1,21 @@
 
 <properties 
-  pageTitle="Azure 存储复制 | Microsoft Azure" 
-  description="复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。" 
-  services="storage" 
-  documentationCenter="" 
-  authors="tamram" 
-  manager="adinah" 
+  pageTitle="Azure 存储空间复制 | Microsoft Azure" 
+  description="复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。" 
+  services="storage" 
+  documentationCenter="" 
+  authors="tamram" 
+  manager="adinah" 
   editor=""/>
 
 <tags 
-  ms.service="storage" 
-  ms.date="10/20/2015" 
+  ms.service="storage" 
+  ms.date="01/05/2016" 
   wacn.date=""/>
 
-# Azure 存储复制
+# Azure 存储空间复制
 
-始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性，并且即使在遇到临时硬件故障时也符合 [Azure 存储 SLA 要求](http://azure.microsoft.com/support/legal/sla/)。
+始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性，并且即使在遇到临时硬件故障时也符合 [Azure 存储空间 SLA](http://azure.microsoft.com/support/legal/sla/) 要求。
 
 创建存储帐户时，必须选择以下复制选项之一：
 
@@ -27,7 +27,7 @@
 下表简要概述了 LRS、ZRS、GRS 和 RA-GRS 之间的差异，而后续章节将详细介绍每种类型的复制。
 
 
-|复制策略|LRS|ZRS|GRS|RA-GRS 
+|复制策略|LRS|ZRS|GRS|RA-GRS
 |--------------------|---|---|---|------
 |数据在多个设施之间进行复制。|否|是|是|是|
 |可以从辅助位置和主位置读取数据。|否|否|否|是
@@ -52,24 +52,24 @@
 区域冗余存储 (ZRS) 在两到三个设施之间复制数据（在单个区域内或两个区域之间），提供比 LRS 更高的持久性。如果你的存储帐户启用了 ZRS，即使其中一个设施出现故障，你的数据也能持久保存。
 
 
->[AZURE.NOTE]ZRS 当前仅适用于块 blob，并且仅在版本 2014-02-14 和更高版本中受支持。请注意，在创建存储帐户并选择区域冗余复制后，你无法将其转换为使用任何其他类型的复制，反之亦然。
+>[AZURE.NOTE]  ZRS 当前仅适用于块 blob，并且仅在版本 2014-02-14 和更高版本中受支持。请注意，在创建存储帐户并选择区域冗余复制后，你无法将其转换为使用任何其他类型的复制，反之亦然。
 
 
-## 异地冗余存储 
+## 异地冗余存储
 
 异地冗余存储 (GRS) 将数据复制到距主区域数百英里以外的辅助区域。如果你的存储帐户启用了 GRS，则即使遇到区域完全停电或导致主区域不可恢复的灾难，你的数据也能持久保存。
 
 对于启用了 GRS 的存储帐户，更新将首先提交到主区域，并在主区域复制三次。然后，更新将复制到辅助区域（也是复制三次），并且是在不同的容错域和升级域之间复制。
 
- 
-> [AZURE.NOTE]使用 GRS 时，写入数据请求将异步复制到辅助区域。请务必注意，选择 GRS 不会影响针对主区域发出的请求的延迟。但是，由于异步复制涉及延迟，遇到区域性灾难时，如果无法将数据从主区域中恢复，则尚未复制到辅助区域的更改可能会丢失。
- 
+
+> [AZURE.NOTE] 使用 GRS 时，写入数据请求将异步复制到辅助区域。请务必注意，选择 GRS 不会影响针对主区域发出的请求的延迟。但是，由于异步复制涉及延迟，遇到区域性灾难时，如果无法将数据从主区域中恢复，则尚未复制到辅助区域的更改可能会丢失。
+
 创建存储帐户时，可以为帐户选择主区域。辅助区域是根据主区域确定的且无法更改。下表显示了配对的主要区域和次要区域。
 
-|主要 |辅助        
+|主要 |辅助
 | ---------------   |----------------
 |中国北部 |中国东部
-|中国东部 |中国北部 
+|中国东部 |中国北部
  
 ## 读取访问异地冗余存储
 
@@ -85,4 +85,4 @@
 - [Azure 存储 SOSP 论文](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)  
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0215_2016-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="用于存储的资源管理器模板 | Microsoft Azure"
-   description="说明存储帐户的资源管理器架构。"
+   description="介绍用于通过模板部署存储帐户的资源管理器架构。"
    services="azure-resource-manager,storage"
    documentationCenter="na"
    authors="tfitzmac"
@@ -9,10 +9,10 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="10/25/2015"
+   ms.date="01/04/2016"
    wacn.date=""/>
 
-# 存储帐户 - 模板架构
+# 存储帐户模板架构
 
 创建存储帐户。
 
@@ -74,9 +74,22 @@
 	    "outputs": {}
     }
 
+## 快速入门模板
+
+有许多快速入门模板包含存储帐户。以下模板演示了一些常见方案：
+
+- [创建标准存储帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create)
+- [简单部署 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
+- [简单部署 Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
+- [创建 CDN 配置文件，以及创建使用存储帐户作为来源的 CDN 终结点](https://github.com/Azure/azure-quickstart-templates/tree/master/201-cdn-with-storage-account)
+- [使用 Powershell DSC 扩展创建包含 9 个 VM 的高可用性 SharePoint 场](https://github.com/Azure/azure-quickstart-templates/tree/master/sharepoint-server-farm-ha)
+- [简单部署已启用 WAD 的 5 节点安全 Service Fabric 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)
+- [从 Windows 映像创建包含 4 个空数据磁盘的虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk)
+
+
 ## 后续步骤
 
 - 有关存储的常规信息，请参阅 [Microsoft Azure 存储空间简介](./storage/storage-introduction.md)。
 - 有关在虚拟机中使用新存储帐户的示例模板，请参阅[部署简单的 Linux VM](https://azure.microsoft.com/documentation/templates/101-simple-linux-vm/) 或[部署简单的 Windows VM](https://azure.microsoft.com/documentation/templates/101-simple-windows-vm/)。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0215_2016-->

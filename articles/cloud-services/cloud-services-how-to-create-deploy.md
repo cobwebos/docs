@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="cloud-services"
-	ms.date="12/07/2015"
+	ms.date="01/15/2016"
 	wacn.date=""/>
 
 
@@ -18,14 +18,14 @@
 # 如何创建和部署云服务
 
 > [AZURE.SELECTOR]
-- [Azure 经典门户](/documentation/articles/cloud-services-how-to-create-deploy)
-- [Azure 门户](/documentation/articles/cloud-services-how-to-create-deploy-portal)
+- [Azure portal](/documentation/articles/cloud-services-how-to-create-deploy-portal)
+- [Azure classic portal](/documentation/articles/cloud-services-how-to-create-deploy)
 
 Azure 经典门户为你提供两种创建和部署云服务的方法：“快速创建”和“自定义创建”。
 
 本主题介绍如何使用“快速创建”方法创建新的云服务，然后使用“上载”在 Azure 中上载和部署云服务包。使用此方法时，Azure 经典门户在你进行操作时将提供方便的链接供你完成所有要求。如果你在创建云服务后已准备好对其进行部署，则可以使用“自定义创建”同时执行这两项操作。
 
-> [AZURE.NOTE]如果你计划从 Visual Studio Team Services (VSTS) 发布云服务，请使用“快速创建”，然后从“快速启动”或仪表板设置 VSTS 发布。有关详细信息，请参阅[使用 Visual Studio Team Services 向 Azure 持续传送项目][TFSTutorialForCloudService]，或查看“快速启动”页的帮助。
+> [AZURE.NOTE] 如果你计划从 Visual Studio Team Services (VSTS) 发布云服务，请使用“快速创建”，然后从“快速启动”或仪表板设置 VSTS 发布。有关详细信息，请参阅[使用 Visual Studio Team Services 向 Azure 持续传送项目][TFSTutorialForCloudService]，或查看“快速启动”页的帮助。
 
 ## 概念
 要将应用程序部署为 Azure 中的云服务，需要以下三个组件：
@@ -42,7 +42,7 @@ Azure 经典门户为你提供两种创建和部署云服务的方法：“快�
 你可以通过[此处](/documentation/articles/cloud-services-model-and-package)了解有关这些内容以及如何创建包的详细信息。
 
 ## 准备应用程序
-在可以部署云服务之前，必须根据你的应用程序代码创建云服务包 (.cspkg)，并创建云服务配置文件 (.cscfg)。Azure SDK 提供了用于准备这些必需的部署文件的工具。你可以从 [Azure 下载](/downloads/)页安装 SDK，并使用你选择用于开发应用程序代码的语言。
+在可以部署云服务之前，必须根据你的应用程序代码创建云服务包 (.cspkg)，并创建云服务配置文件 (.cscfg)。Azure SDK 提供了用于准备这些必需的部署文件的工具。你可以从 [Azure 下载](/downloads)页安装 SDK，并使用你选择用于开发应用程序代码的语言。
 
 在你导出服务包之前，三种云服务功能需要特殊的配置：
 
@@ -56,7 +56,7 @@ Azure 经典门户为你提供两种创建和部署云服务的方法：“快�
 
 ## 开始之前
 
-- 如果你尚未安装 Azure SDK，请单击“安装 Azure SDK”以打开[ Azure 下载页](/downloads/)，然后下载你选择用于开发代码的相应语言的 SDK。（你也可以稍后执行此操作。）
+- 如果你尚未安装 Azure SDK，请单击“安装 Azure SDK”以打开[ Azure 下载页](/downloads)，然后下载你选择用于开发代码的相应语言的 SDK。（你也可以稍后执行此操作。）
 
 - 如果任何角色实例需要证书，请创建这些证书。云服务需要带有私钥的 .pfx 文件。你可以在创建和部署云服务时[将这些证书上载到 Azure](/documentation/articles/cloud-services-configure-ssl-certificate/#step-3-upload-a-certificate)。
 
@@ -65,7 +65,7 @@ Azure 经典门户为你提供两种创建和部署云服务的方法：“快�
 
 ## 如何：使用“快速创建”创建云服务
 
-1. 在 [Azure 经典门户](http://manage.windowsazure.cn/)中，单击“新建”>“计算”>“云服务”>“快速创建”。
+1. 在 [Azure 经典门户](http://manage.windowsazure.cn)中，单击“新建”>“计算”>“云服务”>“快速创建”。
 
 	![云服务\_快速创建](./media/cloud-services-how-to-create-deploy/CloudServices_QuickCreate.png)
 
@@ -86,7 +86,7 @@ Azure 经典门户为你提供两种创建和部署云服务的方法：“快�
 
 ## 如何：为云服务上载证书
 
-1. 在 [Azure 经典门户](http://manage.windowsazure.cn/)中单击“云服务”，单击云服务的名称，然后单击“证书”。
+1. 在 [Azure 经典门户](http://manage.windowsazure.cn)中单击“云服务”，单击云服务的名称，然后单击“证书”。
 
 	![云服务\_快速创建](./media/cloud-services-how-to-create-deploy/CloudServices_EmptyDashboard.png)
 
@@ -107,7 +107,7 @@ Azure 经典门户为你提供两种创建和部署云服务的方法：“快�
 
 ## 如何：部署云服务
 
-1. 在 [Azure 经典门户](http://manage.windowsazure.cn/)中单击“云服务”，单击云服务的名称，然后单击“仪表板”。
+1. 在 [Azure 经典门户](http://manage.windowsazure.cn)中单击“云服务”，单击云服务的名称，然后单击“仪表板”。
 
 2. 单击“上载新的生产部署”或“上载”。
 
@@ -119,7 +119,7 @@ Azure 经典门户为你提供两种创建和部署云服务的方法：“快�
 
 5. 如果云服务将包括只具有一个实例的任何角色，请选中“即使一个或多个角色包含单个实例也进行部署”复选框以使部署继续进行。
 
-    如果每个角色至少具有两个实例，那么 Azure 在维护和服务更新期间只能保证他人可访问云服务的概率是 99.95%。如果需要，你可以在部署云服务后，在“缩放”页上添加其他角色实例。有关详细信息，请参阅[服务级别协议](/support/legal/sla/)。
+    如果每个角色至少具有两个实例，那么 Azure 在维护和服务更新期间只能保证他人可访问云服务的概率是 99.95%。如果需要，你可以在部署云服务后，在“缩放”页上添加其他角色实例。有关详细信息，请参阅[服务级别协议](/support/legal/sla)。
 
 6. 单击“确定”（复选标记）以开始云服务部署。
 
@@ -140,13 +140,13 @@ Azure 经典门户为你提供两种创建和部署云服务的方法：“快�
     ![云服务\_速览](./media/cloud-services-how-to-create-deploy/CloudServices_QuickGlance.png)
 
 
-[TFSTutorialForCloudService]: /documentation/articles/cloud-services-continuous-delivery-use-vso/
+[TFSTutorialForCloudService]: /documentation/articles/cloud-services-continuous-delivery-use-vso
  
 ## 后续步骤
 
 * [云服务的常规配置](/documentation/articles/cloud-services-how-to-configure)。
-* [配置自定义域名](/documentation/articles/cloud-services-custom-domain-name)
+* 配置 [自定义域名](/documentation/articles/cloud-services-custom-domain-name)。
 * [管理云服务](/documentation/articles/cloud-services-how-to-manage)。
 * 配置 [SSL 证书](/documentation/articles/cloud-services-configure-ssl-certificate)。
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

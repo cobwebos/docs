@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="11/20/2015" 
+	ms.date="01/11/2016" 
 	wacn.date="" />
 
 # 什么是 Azure 多因素身份验证？
@@ -33,7 +33,7 @@ Azure Multi-Factor Authentication 可帮助保护对数据和应用程序的访�
 
 <center>[AZURE.VIDEO multi-factor-authentication-overview]</center>
 
-##为何使用 Azure Multi-Factor Authentication？
+## 为何使用 Azure Multi-Factor Authentication？
 
 与以往相比，联网的用户越来越长。通过智能手机、平板电脑、笔记本电脑和台式个人电脑，人们可以使用各种不同的选项随时连接网络和保持联系。人们可以从任何位置访问他们的帐户与应用程序，这意味着，他们可以提高工作效率并为客户提供更好的服务。
 
@@ -118,20 +118,20 @@ MFA SDK| | | *
 
 ## 如何获取 Azure Multi-Factor Authentication
 
-Azure Multi-Factor Authentication 随附在 Azure Active Directory Premium 和企业移动套件中。如果你已拥有上述产品，则也就有了 Azure Multi-Factor Authentication。
+如果你想要获取 Azure Multi-Factor Authentication 提供的完整功能，而不只是针对 Office 365 用户和 Azure 管理员提供的功能，可以使用多个选项：
 
-如果你是 Office 365 用户或 Azure 订户，并想要充分利用 Azure Multi-Factor Authentication 提供的其他功能，请继续阅读其他部分。
+1.	购买 Azure Multi-Factor Authentication 许可证并将其分配给用户。
+2.	购买随附了 Azure Multi-Factor Authentication 的许可证（例如 Azure Active Directory Premium、Enterprise Mobility Suite 或 Enterprise Cloud Suite）并将其分配给用户。
+3.	在 Azure 订阅中创建 Azure Multi-Factor Authentication 提供程序。如果你还没有 Azure 订阅，可以注册 Azure 试用版订阅。在试用过期之前，需要将试用订阅转换为正常订阅。
 
-如果你没有上述任何产品并想要使用 Azure Multi-Factor Authentication，首先你需要一个 Azure 订阅或 [Azure 试用版订阅](http://azure.microsoft.com/pricing/free-trial/)。
-
-使用 Azure Multi-Factor Authentication 时有两个计费选项：
+使用 Azure Multi-Factor Authentication 提供程序时，可根据两种使用模式针对 Azure 订阅计费：
 
 - **按用户**。通常适用于想要为固定数目的、需要定期进行身份验证的员工启用 Multi-Factor Authentication 的企业。
 - **按身份验证**。通常适用于想要为大量的、不定期需要身份验证的外部用户启用 Multi-Factor Authentication 的企业。
 
 有关价格详细信息，请参阅 [Azure MFA 定价](http://azure.microsoft.com/pricing/details/multi-factor-authentication/)。
 
-请选择最适合你组织的模式。接下来，若要开始使用，请参阅[入门](multi-factor-authentication-get-started.md)
+选择最适合你的组织的按用户或按使用量模式。接下来，若要开始使用，请参阅[入门](multi-factor-authentication-get-started.md)
 
 ## 选择适合自己的多因素安全解决方案
 
@@ -199,4 +199,4 @@ MFA 报告 | ● | ●
 
 <center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

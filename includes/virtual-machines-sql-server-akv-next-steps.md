@@ -91,8 +91,8 @@
 	CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
 ## 其他资源
-有关如何使用这些加密功能的详细信息，请参阅[将 EKM 用于 SQL Server 加密功能](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)。
+有关如何使用这些加密功能的详细信息，请参阅[将 EKM 用于 SQL Server 加密功能](https://msdn.microsoft.com/zh-cn/library/dn198405.aspx#UsesOfEKM)。
 
-请注意，本文中的步骤假定你已经具有在 Azure 虚拟机上运行的 SQL Server。如果没有，请参阅[在 Azure 中预配 SQL Server 虚拟机](../articles/virtual-machines/virtual-machines-provision-sql-server.md)。有关在 Azure VM 中运行 SQL Server 的其他指南，请参阅 [Azure 虚拟机上的 SQL Server 概述](../articles/virtual-machines/virtual-machines-sql-server-infrastructure-services.md)。
+请注意，本文中的步骤假定你已经具有在 Azure 虚拟机上运行的 SQL Server。如果没有，请参阅[在 Azure 中预配 SQL Server 虚拟机](/documentation/articles/virtual-machines-provision-sql-server)。有关在 Azure VM 中运行 SQL Server 的其他指南，请参阅 [Azure 虚拟机上的 SQL Server 概述](/documentation/articles/virtual-machines-sql-server-infrastructure-services)。
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

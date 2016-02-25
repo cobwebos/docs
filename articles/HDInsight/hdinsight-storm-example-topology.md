@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="09/23/2015"
+	ms.date="01/15/2016"
 	wacn.date=""/>
 
 # Apache Storm on HDInsight 的示例 Storm 拓扑和组件
@@ -19,6 +19,7 @@
 
 | 说明 | 演示 | 语言/框架 |
 |:--------------------------------------------------------------------------------------------------------|:-----------------------------------------------------|:---------------------------|
+| [从 Apache Storm 写入 Azure Data Lake 存储](/documentation/articles/hdinsight-storm-write-data-lake-store) | 写入 Azure Data Lake 存储 | Java |
 | [事件中心 Spout 和 Bolt 源](https://github.com/apache/storm/tree/master/external/storm-eventhubs) | 事件中心 Spout 和 Bolt 的源 | Java |
 | [为 Apache Storm on HDInsight 开发基于 Java 的拓扑][5797064f] | Maven | Java |
 | [使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑][16fce2d1] | HDInsight Tools for Visual Studio | C#、Java |
@@ -40,7 +41,7 @@
 
 * [了解如何使用 Storm on HDInsight 部署和管理 Storm 拓扑][6eb0d3b8]
 
-  [2b8c3488]: /documentation/articles/hdinsight-storm-getting-started "了解如何创建 Storm on HDInsight 群集，以及如何使用 Storm 仪表板来部署示例拓扑。"
+  [2b8c3488]: /documentation/articles/hdinsight-apache-storm-tutorial-get-started "了解如何创建 Storm on HDInsight 群集，以及如何使用 Storm 仪表板来部署示例拓扑。"
   [6eb0d3b8]: /documentation/articles/hdinsight-storm-deploy-monitor-topology "了解如何使用基于 Web 的 Storm 仪表板和 Storm UI 或 HDInsight Tools for Visual Studio 来部署和管理拓扑。"
   [16fce2d1]: /documentation/articles/hdinsight-storm-develop-csharp-visual-studio-topology "了解如何使用 HDInsight Tools for Visual Studio 创建 C# Storm 拓扑。"
   [5797064f]: /documentation/articles/hdinsight-storm-develop-java-topology "了解如何通过创建一个基本的单词计数拓扑，使用 Maven 以 Java 语言创建 Storm 拓扑。"
@@ -54,4 +55,4 @@
   [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "此项目包含用来与各种 Azure 服务（例如事件中心、DocumentDB 和 SQL 数据库）进行交互的 spout、bolt 和拓扑的模板。"
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0215_2016-->

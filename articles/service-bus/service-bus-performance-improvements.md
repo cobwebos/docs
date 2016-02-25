@@ -1,15 +1,14 @@
 <properties 
-   pageTitle="使用服务总线提高性能的最佳做法 |Microsoft Azure"
+   pageTitle="使用服务总线提高性能的最佳实践 | Microsoft Azure"
    description="介绍如何使用 Azure 服务总线在交换中转消息时优化性能。"
    services="service-bus"
    documentationCenter="na"
    authors="sethmanheim"
    manager="timlt"
-   editor="tysonn" />
+   editor="tysonn" /> 
 <tags 
    ms.service="service-bus"
-
-   ms.date="09/18/2015"
+   ms.date="12/28/2015"
    wacn.date="" />
 
 # 使用服务总线中转消息传送改进性能的最佳实践
@@ -139,7 +138,7 @@ namespaceManager.CreateTopic(td);
 
 ## 使用分区队列或主题
 
-在内部，服务总线使用相同的节点和消息存储来处理和存储消息传递实体（队列或主题）的所有消息。另一方面，分区的队列或主题被分布在多个节点和消息存储上。分区的队列和主题不仅生成比常规队列和主题更高的吞吐量，还表现出极高的可用性。若要生成分区的实体，则如以下示例所示，将 [EnablePartitioning][] 属性设置为 **true**。有关分区的实体的详细信息，请参阅[分区消息实体][]。
+在内部，服务总线使用相同的节点和消息存储来处理和存储消息传递实体（队列或主题）的所有消息。另一方面，分区的队列或主题被分布在多个节点和消息存储上。分区的队列和主题不仅生成比常规队列和主题更高的吞吐量，还表现出极高的可用性。若要生成分区的实体，则如以下示例所示，将 [EnablePartitioning][] 属性设置为 **true**。有关分区实体的详细信息，请参阅[分区消息实体][]。
 
 ```
 // Create partitioned queue.
@@ -285,7 +284,7 @@ namespaceManager.CreateQueue(qd);
   [SubscriptionClient.PrefetchCount]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.subscriptionclient.prefetchcount.aspx
   [ForcePersistence]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.forcepersistence.aspx
   [EnablePartitioning]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queuedescription.enablepartitioning.aspx
-  [分区消息实体]: /documentation/articles/service-bus-partitioning.md
+  [分区消息实体]: service-bus-partitioning.md
   
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0215_2016-->

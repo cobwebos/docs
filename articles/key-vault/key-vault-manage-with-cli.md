@@ -9,18 +9,18 @@
 
 <tags
 	ms.service="key-vault"
-	ms.date="09/22/2015"
+	ms.date="01/08/2016"
 	wacn.date=""/>
 
 # 使用 CLI 管理密钥保管库 #
-在大多数区域中提供了 Azure 密钥保管库。有关详细信息，请参阅[密钥保管库定价页](/pricing/details/key-vault/)。
+在大多数区域中提供了 Azure 密钥保管库。有关详细信息，请参阅[密钥保管库定价页](/home/features/key-vault/#price)。
 
 ## 介绍  
 本教程将会帮助你开始使用 Azure 密钥保管库在 Azure 中创建强化容器（保管库），以存储和管理 Azure 中的加密密钥和机密。本教程将引导你完成使用 Azure 跨平台命令行接口创建包含密钥或密码（稍后可用于 Azure 应用程序）的保管库程序。然后，将会说明应用程序后续如何使用该密钥或密码。
 
 **估计完成时间：**20 分钟。
 
->[AZURE.NOTE]本教程未说明如何编写其中一个步骤所包括的 Azure 应用程序，但说明了如何授权应用程序使用密钥保管库中的密钥或机密。
+>[AZURE.NOTE]  本教程未说明如何编写其中一个步骤所包括的 Azure 应用程序，但说明了如何授权应用程序使用密钥保管库中的密钥或机密。
 >
 >目前，无法在 Azure 门户中配置 Azure 密钥保管库。请改用这些跨平台命令行接口说明。或者，有关 Azure PowerShell 说明，请参阅[此对应教程](/documentation/articles/key-vault-get-started)。
 
@@ -64,7 +64,7 @@
 
     azure login
 
->[AZURE.NOTE]login 方法仅适用于组织帐户。组织帐户是指受组织管理、并在组织的 Azure Active Directory 租户中定义的用户。
+>[AZURE.NOTE]  login 方法仅适用于组织帐户。组织帐户是指受组织管理、并在组织的 Azure Active Directory 租户中定义的用户。
 
 
 如果您当前没有组织帐户，且已使用 Microsoft 帐户登录到 Azure 订阅，则您可以按照以下步骤轻松地创建一个组织帐户。
@@ -98,7 +98,7 @@
 
 使用 Azure 资源管理器时，会在资源组中创建所有相关资源。在本教程中，我们将创建新资源组“ContosoResourceGroup”。
 
-    azure group create 'ContosoResourceGroup' 'East Asia'
+    azure group create 'ContosoResourceGroup' 'China East'
 
 第一个参数是资源组名称，第二个参数是位置。对于位置，请使用命令 `azure location list` 来了解如何针对本示例中的位置指定替代位置。如需更多信息，请键入：`azure help location`
 
@@ -108,14 +108,14 @@
 
 使用 `azure keyvault create` 命令来创建密钥保管库。此脚本包含三个必需参数：资源组名称、密钥保管库名称和地理位置。
 
-例如，如果使用的保管库名称为 ContosoKeyVault，资源组名称为 ContosoResourceGroup，位置为亚洲东部，请键入：
+例如，如果使用的保管库名称为 ContosoKeyVault，资源组名称为 ContosoResourceGroup，位置为中国东部，请键入：
 
-    azure keyvault create --vault-name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --location 'East Asia'
+    azure keyvault create --vault-name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --location 'China East'
 
 此命令的输出会显示你刚刚创建的密钥保管库的属性。两个最重要的属性是：
 
 - **名称**：在本示例中为 ContosoKeyVault。你将在其他密钥保管库 cmdlet 中使用此名称。
-- **vaultUri**：在本示例中为 https://contosokeyvault.vault.azure.net。通过其 REST API 使用保管库的应用程序必须使用此 URI。
+- **vaultUri**：在本示例中为 https://contosokeyvault.vault.chinacloudapi.cn。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 你的 Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。而且没有其他人有此授权。
 
@@ -130,13 +130,13 @@
 
     azure keyvault key import --vaultName 'ContosoKeyVault' --key-name 'ContosoFirstKey' --pem-file './softkey.pem' --password 'PaSSWORD' --destination software
 
-现在，你可以通过使用密钥的 URI，引用已创建或上载到 Azure 密钥保管库的密钥。使用 ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** 可始终获取当前版本，而使用 ****https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** 可获取此特定版本。
+现在，你可以通过使用密钥的 URI，引用已创建或上载到 Azure 密钥保管库的密钥。使用 **https://ContosoKeyVault.vault.chinacloudapi.cn/keys/ContosoFirstKey** 可始终获取当前版本，而使用 **https://ContosoKeyVault.vault.chinacloudapi.cn/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** 可获取此特定版本。
 
 若要将名为 SQLPassword 且其 Azure 密钥保管库的值为 Pa$$w0rd 的机密添加到保管库，请键入以下内容：
 
     azure keyvault secret set --vault-name 'ContosoKeyVault' --secret-name 'SQLPassword' --value 'Pa$$w0rd'
 
-现在，你可以通过使用密码的 URI，引用已添加到 Azure 密钥保管库的此密码。使用 ****https://ContosoVault.vault.azure.net/secrets/SQLPassword** 可始终获取当前版本，而使用 ****https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** 可获取此特定版本。
+现在，你可以通过使用密码的 URI，引用已添加到 Azure 密钥保管库的此密码。使用 **https://ContosoVault.vault.chinacloudapi.cn/secrets/SQLPassword** 可始终获取当前版本，而使用 **https://ContosoVault.vault.chinacloudapi.cn/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d** 可获取此特定版本。
 
 让我们查看一下刚刚创建的密钥或机密：
 
@@ -149,7 +149,7 @@
 此步骤通常由开发人员在独立的计算机上完成。这并非 Azure 密钥保管库的特有状况，在此列出是为了让过程完整。
 
 
->[AZURE.IMPORTANT]若要完成本教程，你的帐户、保管库以及将在本步骤中注册的应用程序全都必须位于相同的 Azure 目录中。
+>[AZURE.IMPORTANT] 若要完成本教程，你的帐户、保管库以及将在本步骤中注册的应用程序全都必须位于相同的 Azure 目录中。
 
 使用密钥保管库的应用程序必须使用 Azure Active Directory 的令牌进行身份验证。为此，应用程序的所有者首先必须在其 Azure Active Directory 中注册该应用程序。注册结束后，应用程序所有者将获得以下值：
 
@@ -166,7 +166,7 @@
 3. 单击“应用程序”。如果你的目录中尚未添加任何应用程序，则此页只会显示“添加应用程序”链接。单击该链接，或者单击命令栏上的“添加”。
 4.	在“添加应用程序”向导的“要执行什么操作?”页面上，单击“添加我的组织正在开发的应用程序”。
 5.	在“向我们说明你的应用程序”页上，指定应用程序名称，然后选择“WEB 应用程序和/或 WEB API”（默认值）。单击“下一步”图标。
-6.	在“应用程序属性”页上，为你的 Web 应用程序指定“登录 URL”和“应用程序ID URI”。如果你的应用程序没有这些值，可以在此步骤中虚构这些值（例如，可以在两个框中指定 http://test1.contoso.com）。这些网站是否存在并不重要；重要的是目录中每个应用程序的应用程序 ID URI 都不相同。目录会使用此字符串来识别你的应用程序。
+6.	在“应用程序属性”页上，为你的 Web 应用程序指定“登录 URL”和“应用程序ID URI”。如果你的应用程序没有这些值，可以在此步骤中虚构这些值（例如，可以在两个框中指定 http://test1.contoso.com） 。这些网站是否存在并不重要；重要的是目录中每个应用程序的应用程序 ID URI 都不相同。目录会使用此字符串来识别你的应用程序。
 7.	单击“完成”图标以保存向导中的更改。
 8.	在“快速启动”页上，单击“映配置”。
 9.	滚动到“密钥”部分，选择持续时间，然后单击“保存”。页面将会刷新，随后显示密钥值。你必须使用此密钥值和“客户端 ID”值来配置应用程序。（有关此配置的说明仅适用于特定的应用程序。）
@@ -228,4 +228,4 @@
 
 有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](/documentation/articles/key-vault-developers-guide)。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0215_2016-->

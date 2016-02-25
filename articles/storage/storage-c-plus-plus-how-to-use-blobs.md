@@ -9,7 +9,7 @@
 
 <tags 
     ms.service="storage" 
-	ms.date="09/23/2015" 
+    ms.date="01/05/2016"
     wacn.date=""/>
 
 # 如何通过 C++ 使用 Blob 存储  
@@ -17,9 +17,9 @@
 [AZURE.INCLUDE [storage-selector-blob-include](../includes/storage-selector-blob-include.md)]
 
 ## 概述
-本指南将演示如何使用 Azure Blob 存储服务执行常见方案。示例用 C++ 编写，并使用[适用于 C++ 的 Azure 存储空间客户端库](https://github.com/Azure/azure-storage-cpp/blob/v1.0.0/README.md)。涉及的任务包括**上载**、**列出**、**下载**和**删除** Blob。
+本指南将演示如何使用 Azure Blob 存储服务执行常见方案。示例用 C++ 编写，并使用[适用于 C++ 的 Azure 存储空间客户端库](https://github.com/Azure/azure-storage-cpp/blob/v1.0.0/README.md)。涉及的任务包括**上载**、**列出**、**下载**和**删除** Blob。  
 
->[AZURE.NOTE]本指南主要面向适用于 C++ 的 Azure 存储空间客户端库 1.0.0 版及更高版本。建议的版本是存储空间客户端库 1.0.0，它可以通过 [NuGet](http://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/Azure/azure-storage-cpp) 获得。
+>[AZURE.NOTE] 本指南主要面向适用于 C++ 的 Azure 存储空间客户端库 1.0.0 版及更高版本。建议的版本是存储空间客户端库 1.0.0，它可以通过 [NuGet](http://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/Azure/azure-storage-cpp) 获得。
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../includes/storage-blob-concepts-include.md)]
 [AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
@@ -43,12 +43,12 @@
 	#include "was/blob.h"
 
 ## 设置 Azure 存储连接字符串
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 *AccountName* 和 *AccountKey* 值使用管理门户中列出的存储帐户的名称和存储帐户的存储访问密钥。有关存储帐户和访问密钥的信息，请参阅[关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account)。此示例演示如何声明一个静态字段以保存连接字符串：
+Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并使用[管理门户](https://manage.windowsazure.cn)中列出的存储帐户的存储帐户名称和存储访问密钥作为 *AccountName* 和 *AccountKey* 值。有关存储帐户和访问密钥的信息，请参阅[关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account)。此示例演示如何声明一个静态字段以保存连接字符串：
 
 	// Define the connection-string with your values.
-	const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
+	const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key;EndpointSuffix=core.chinacloudapi.cn"));
 
-若要在本地 Windows 计算机中测试您的应用程序，可以使用随 [Azure SDK](/downloads/) 一起安装的 Microsoft Azure [存储模拟器](https://msdn.microsoft.com/zh-cn/library/azure/hh403989.aspx)。存储模拟器是一种用于模拟本地开发计算机上 Azure 中可用的 Blob、队列和表服务的实用程序。以下示例演示如何声明一个静态字段以将连接字符串保存到你的本地存储模拟器：
+若要在本地 Windows 计算机中测试你的应用程序，可以使用随 [Azure SDK](/downloads/) 一起安装的 Microsoft Azure [存储模拟器](https://msdn.microsoft.com/zh-cn/library/azure/hh403989.aspx)。存储模拟器是一种用于模拟本地开发计算机上 Azure 中可用的 Blob、队列和表服务的实用程序。以下示例演示如何声明一个静态字段以将连接字符串保存到你的本地存储模拟器：
 
 	// Define the connection-string with Azure Storage Emulator.
 	const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
@@ -74,7 +74,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 
 此示例演示如何创建一个容器（如果该容器不存在）：
 
-	try 
+	try
 	{
 		// Retrieve storage account from connection string.
 		azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -185,12 +185,11 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 
 	std::ofstream outfile("DownloadBlobFile.txt", std::ofstream::binary);
 	std::vector<unsigned char>& data = buffer.collection();
-		
+
 	outfile.write((char *)&data[0], buffer.size());
 	outfile.close();  
 
-或者，可以使用 **download\_to\_file** 方法将 Blob 的内容下载到文件。
-此外，也可以使用 **download\_text** 方法以文本字符串形式下载 Blob 的内容。
+或者，可以使用 **download\_to\_file** 方法将 Blob 的内容下载到文件。此外，也可以使用 **download\_text** 方法以文本字符串形式下载 Blob 的内容。
 
 	// Retrieve storage account from connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -233,5 +232,6 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 -	[使用 C++ 列出 Azure 存储资源](/documentation/articles/storage-c-plus-plus-enumeration)
 -	[适用于 C++ 的存储空间客户端库参考](http://azure.github.io/azure-storage-cpp)
 -	[Azure 存档文档](/documentation/services/storage/)
+- [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0215_2016-->

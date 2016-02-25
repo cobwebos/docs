@@ -5,11 +5,10 @@
    documentationCenter="na"
    authors="sethmanheim"
    manager="timlt"
-   editor="tysonn" />
+   editor="tysonn" /> 
 <tags 
    ms.service="service-bus"
-
-   ms.date="09/18/2015"
+   ms.date="12/28/2015"
    wacn.date="" />
 
 # 使用自动转发链接服务总线实体
@@ -66,4 +65,4 @@ namespaceManager.CreateSubscription(srcSubscription));
   [1]: ./media/service-bus-auto-forwarding/IC628632.gif
   [分区消息传送实体]: /documentation/articles/service-bus-partitioning
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0215_2016-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="11/20/2015" 
+	ms.date="01/11/2016" 
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 常见问题
@@ -35,11 +35,7 @@
 
 [Microsoft Azure Multi-Factor Authentication 服务器 (Phone Factor) 客户支持](https://support.microsoft.com/oas/default.aspx?prid=14947)
 
-- 使用此链接可联系 Microsoft 支持专业人员。我们将询问几个问题，以帮助确定有哪些支持选项。支持选项可能包括电子邮件、在线提交或电话支持。 
-
-[有关 Microsoft Azure Multi-Factor Authentication 服务器 (Phone Factor) 的一般咨询](http://azure.microsoft.com/services/multi-factor-authentication)
-
-- 若要深入了解 Microsoft Azure Multi-Factor Authentication 服务器 (Phone Factor)，或者有关于如何购买产品及其他可用支持选项的疑问，请访问我们的网站，或者向 [pfsales@microsoft.com](mailto:pfsales@microsoft.com) 发送电子邮件。 
+- 使用此链接可联系 Microsoft 支持专业人员。我们将询问几个问题，以帮助确定有哪些支持选项。支持选项可能包括电子邮件、在线提交或电话支持。
 
 
 
@@ -73,26 +69,55 @@
 
 **问：如何对使用 Azure Multi-Factor Authentication 的组织计费？**
 
-在 Azure 管理门户中创建 Multi-Factor Auth Provider 时，选择“按用户”或“按身份验证”计费/使用模式。这是基于消耗量并针对组织的 Azure 订阅计费的资源，就像虚拟机、网站等都是针对订阅计费。
+Azure Multi-Factor Authentication 可使用按用户计费选项或按身份验证计费选项作为单独的服务提供，也可与 Azure Active Directory Premium、Enterprise Mobility Suite 和 Enterprise Cloud Suite 捆绑提供。独立服务根据消费基础针对 Azure 承诺用量每月计费的模式提供，或者作为可通过 Microsoft 企业协议、开放批量许可计划、云解决方案提供商计划和直接作为基于每年用户的模式提供。
+
+>[AZURE.IMPORTANT]
+澳大利亚区域向在澳大利亚或新西兰拥有业务存在的客户提供。
+
+计费模式 | 价格
+------------- | ------------- |
+基于用户使用量（Azure 资金承诺）| 每月 $1.40（无限制的身份验证）
+基于身份验证使用量（Azure 资金承诺）|每 10 次身份验证 $1.40
+基于用户的年度许可证（直接）|每月 $1.40（无限制的身份验证）
+基于用户的年度许可证（批量许可）|请与你的[企业协议](https://www.microsoft.com/licensing/licensing-programs/enterprise.aspx)代表联系。
 
 **问：“按用户”计费模式的收费是以启用 Multi-Factor Authentication 的用户数目还是执行身份验证的用户数目为基础？**
 
 计费以启用 Multi-Factor Authentication 的用户数目为基础。
 
+**问：Multi-Factor Authentication 如何计费？**
+
+使用基于用户使用量或基于身份验证使用量的计费/使用模式时，管理员可在 Microsoft Azure 经典门户中创建 Multi-Factor Auth 提供程序时选择使用类型。这是针对组织的 Azure 订阅计费的资源，就像虚拟机、网站等一样。使用许可证模式时，需要购买 Azure Multi-Factor Authentication 许可证，然后分配给用户，就像 Office 365 及其他订阅产品一样。
+
+**问：是否有可供管理员使用的免费 Azure Multi-Factor Authentication 版本？**
+
+如果基于使用量的 Azure Multi-Factor Auth 提供程序尚未链接到对应的 Azure Active Directory，我们向 Azure 全局管理员免费提供一组称为“MFA for Azure Admins”的 Azure Multi-Factor Authentication 功能子集。使用 Multi-Factor Auth 提供程序将目录中启用 MFA 的所有管理员和用户升级为完整版本的 Azure Multi-Factor Authentication。
+
+**问：是否有可供 Office 365 用户使用的免费 Azure Multi-Factor Authentication 版本？**
+
+如果基于使用量的 Azure Multi-Factor Auth 提供程序尚未链接到相对应的 Azure Active Directory，我们向已分配 O365 许可证的用户免费提供一组称为“MFA for Office 365”的 Azure Multi-Factor Authentication 功能子集。使用 Multi-Factor Auth 提供程序将目录中启用 MFA 的所有管理员和用户升级为完整版本的 Azure Multi-Factor Authentication。
+
+**问：可以随时在“基于用户使用量”和“基于身份验证使用量”计费模式之间切换吗？**
+
+计费模式是在资源创建期间选定的，资源一旦配置完毕，就无法再更改。不过，可以创建一个新的 Multi-Factor Authentication 资源来取代原来的资源。请注意，用户设置和配置选项不能转移到新资源。
+
+**问：可以随时在使用量计费和许可证模式之间切换吗？**
+
+你可以随时购买 Azure Multi-Factor Authentication、Azure Active Directory Premium、Enterprise Mobility Suite 和 Enterprise Cloud Suite 许可证。对已有基于用户 Azure Multi-Factor Auth 提供程序的目录添加许可证时，基于消费的计费将减少所拥有的许可证数量。如果启用 MFA 的所有用户都已分配有许可证，管理员可以删除 Azure Multi-Factor Auth 提供程序。组织不能混用基于身份验证的使用量计费与许可证模式。当基于身份验证的 Multi-Factor Auth 提供程序链接到目录时，则无论组织是否拥有任何许可证，都会对其收取所有 MFA 验证请求的费用。
+
+**问：我的组织是否必须使用并同步标识才能使用 Azure Multi-Factor Authentication？**
+
+使用基于使用量的计费模式时，不需要 Azure Active Directory。你可以视需要将 Multi-Factor Authentication 提供链接到目录。未链接到目录时，组织可以在本地使用 Azure Multi-Factor Authentication 服务器或 SDK。当使用许可证模式时，需要 Azure Active Directory，因为许可证在购买后将添加到目录并分配给目录中的用户。
+
+
 ## 可用性
+**问：我为何无法使用启用了 MFA 的帐户访问 Azure 计费门户或 Office 365？**
+
+可以使用面向 Azure 管理员的 Azure Multi-Factor Authentication 来保护对 Azure 管理门户的访问。但是，在该门户上使用的登录协议与终结点不同于显示 Azure 对帐单的 Azure 帐户门户和 Office 365 所用的协议与终结点。因此，当前不支持已启用 MFA 的帐户登录到这些产品和门户。我们正在努力迁移这些产品和门户，以便它们使用与 Azure 管理门户相同的协议和终结点。我们将在 2016 年第 1 季度迁移 Azure 帐户门户。Office 365 的迁移时间稍长一些。到时，启用多重身份验证的任何帐户只能访问 Azure 管理门户，如果尝试登录其他位置，将会看到错误。
 
 **问：如果我没有接到回复来电，或忘了接电话，该怎么办？**
 
 如果先前已配置备用电话，请在登录页出现提示时选择该电话，然后再试一次。如果没有配置其他方法，请联系管理员并请求他们更新分配给主要电话（移动或办公）的号码。
-
-**问：我已删除用户的管理员角色，但忘了禁用 Multi-Factor Authentication，而现在它未显示在列表中，该如何删除这项功能？**
-
-- 根据你使用的门户，在左窗格中单击“用户”或“用户和组”。
-- 选中你要编辑的用户旁边的复选框，然后单击“编辑”或“编辑”图标。
-- 单击“设置”，在“分配角色”下选择“是”，并将用户添加回到以前的管理员角色。
-- 转到 Multi-Factor Authentication 页。该帐户现在应会显示在页面上的列表中。 
-- 遵循上述步骤，禁用帐户的 Multi-Factor Authentication。 
-- 此时，你便可以从管理员角色中删除该帐户。
 
 
 **问：我是一名管理员，如果某个用户联系我，但我的帐户已被锁定，我该怎么办？**
@@ -111,7 +136,7 @@
 有关创建应用密码的信息，请参阅[有关使用应用密码的帮助](/documentation/articles/multi-factor-authentication-end-user-app-passwords)
 
 
->[AZURE.NOTE]适用于 Office 2013 客户端的现代身份验证
+>[AZURE.NOTE] 适用于 Office 2013 客户端的现代身份验证
 >
 > Office 2013 客户端（包括 Outlook）现在支持新的身份验证协议，并且可以启用对 Multi-Factor Authentication 的支持。这意味着一旦启用后，就不需要对 Office 2013 客户端使用应用密码。有关详细信息，请参阅 [Office 2013 现代身份验证公共预览版发布声明](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
 
@@ -127,10 +152,13 @@ Azure Multi-Factor Authentication 服务通过短信聚合器发送短信。许�
 
 因此，如果 ActiveIdentity 令牌是 TOTP OATH 令牌并且你可以将机密密钥提取到可导入 Azure MFA 服务器的 CSV 文件，则可以使用这些令牌。OATH 令牌可以配合 AD FS、RADIUS（如果客户端系统能够处理访问质询响应）和基于 IIS 窗体的身份验证使用。
 
+**问：可以使用 Azure MFA 服务器来保护终端服务吗？**
 
-**问：我为何无法使用启用了 MFA 的帐户访问 Azure 计费门户或 Office 365？**
+可以，但如果使用 Windows Server 2012 R2 或更高版本，则只能使用 RD 网关来实现此目的。
 
-可以使用面向 Azure 管理员的 Azure Multi-Factor Authentication 来保护对 Azure 管理门户的访问。但是，在该门户上使用的登录协议与终结点不同于显示 Azure 对帐单的 Azure 帐户门户和 Office 365 所用的协议与终结点。因此，当前不支持已启用 MFA 的帐户登录到这些产品和门户。我们正在努力迁移这些产品和门户，以便它们使用与 Azure 管理门户相同的协议和终结点。我们将在 2016 年第 1 季度迁移 Azure 帐户门户。Office 365 的迁移时间稍长一些。到时，启用多重身份验证的任何帐户只能访问 Azure 管理门户，如果尝试登录其他位置，将会看到错误。
+由于发生了一些安全方面的更改，Azure MFA 服务器连接到 Windows Server 2012 和旧版上 LSA 安全包的方式不再适用于 Windows Server 2012 R2。Windows 2012 或旧版上的终端机服务版本也是如此，你可以直接遵循[使用 Windows 身份验证保护应用程序](multi-factor-authentication-get-started-server-windows.md#to-secure-an-application-with-windows-authentication-use-the-following-procedure)
+
+但是，如果要使用 Windows Server 2012 R2，则需要一个 RD 网关。
 
 ## 错误
 
@@ -142,10 +170,13 @@ Azure Multi-Factor Authentication 服务通过短信聚合器发送短信。许�
 - 从移动应用程序中删除现有帐户。
 - 单击“配置”，然后按照说明重新配置移动应用程序。
 
+
+
+
 **当我尝试使用非浏览器应用程序登录时，显示 0x800434D4L 错误，该怎么办？**
 
 目前，附加安全性验证只能用于可通过浏览器访问的应用程序/服务。安装在本地计算机上的非浏览器应用程序（也称为富客户端应用程序，例如 Windows Powershell）将无法使用附加安全性验证所需的帐户。在这种情况下，你可能会看到应用程序生成错误 0x800434D4L。
 
 此问题的解决方法是，管理员相关操作与非管理员操作使用单独的用户帐户。稍后你可以链接管理员帐户和非管理员帐户的邮箱，以便使用非管理员帐户登录到 Outlook。有关此解决方法的更多详细信息，请参阅 [使管理员能够打开和查看用户邮箱内容](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1)。
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0215_2016-->

@@ -10,7 +10,7 @@
 
 <tags
    ms.service="best-practice"
-   ms.date="04/28/2015"
+   ms.date="12/22/2015"
    wacn.date=""/>
 
 # 有关重试的一般性指南
@@ -111,4 +111,4 @@
 * [补偿事务模式](http://msdn.microsoft.com/zh-cn/library/dn589804.aspx)
 * [幂等模式](http://blog.jonathanoliver.com/2010/04/idempotency-patterns/)
 
-<!---HONumber=67-->
+<!---HONumber=Mooncake_0215_2016-->

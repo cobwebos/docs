@@ -4,18 +4,20 @@
     services="sql-database"
     documentationCenter=""  
     manager="jeffreyg"
-    authors="sidneyh"/>
+    authors="torsteng"/>
 
 <tags
     ms.service="sql-database"
-    ms.date="10/15/2015"
+    ms.date="01/06/2016"
     wacn.date="" />
 
 # 用于分片的弹性数据库查询（水平分区）
 
 本文档说明如何为水平分区方案设置弹性数据库查询以及如何执行查询。有关水平分区方案的定义，请参阅[弹性数据库查询概述（预览版）](/documentation/articles/sql-database-elastic-query-overview)。
 
-该功能是 Azure SQL [数据库弹性数据库功能集](/documentation/articles/sql-database-elastic-scale)的一部分。
+![跨分片进行查询][1]
+
+该功能是 Azure SQL [数据库弹性数据库功能集](/documentation/articles/sql-database-elastic-scale-introduction)的一部分。
  
 ## 创建数据库对象
 
@@ -46,7 +48,7 @@
     DROP MASTER KEY;   
 
  
-**注意** 请确保 *< username>* 中不包括任何“@servername”后缀。
+**注意** 请确保 *< username>* 中不包括任何 *“@servername”* 后缀。
 
 ### 1\.2 外部数据源
 
@@ -232,6 +234,7 @@ sp\_execute\_fanout 使用调用参数中提供的分片映射信息在注册到
 
 
 <!--Image references-->
+[1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0215_2016-->

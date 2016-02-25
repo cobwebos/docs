@@ -5,10 +5,9 @@
    documentationCenter="na"
    authors="sethmanheim"
    manager="timlt"
-   editor="tysonn" />
+   editor="tysonn" /> 
 <tags 
    ms.service="service-bus"
-
    ms.date="09/18/2015"
    wacn.date="" />
 
@@ -64,7 +63,7 @@
 
 [使用服务总线中转消息进行异地复制][]示例演示了消息传送实体的主动复制。
 
-> [AZURE.NOTE]主动复制方法将使操作数加倍，因此这种方法可能导致成本上升。
+> [AZURE.NOTE] 主动复制方法将使操作数加倍，因此这种方法可能导致成本上升。
 
 ## 被动复制
 
@@ -106,4 +105,4 @@
   [Azure SQL 数据库业务连续性]: https://msdn.microsoft.com/zh-cn/library/azure/hh852669.aspx
   [Azure 业务连续性技术指南]: https://msdn.microsoft.com/zh-cn/library/azure/hh873027.aspx
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0215_2016-->

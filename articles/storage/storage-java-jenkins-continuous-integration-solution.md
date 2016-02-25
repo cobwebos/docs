@@ -5,20 +5,18 @@
 	documentationCenter="java" 
 	authors="rmcmurray" 
 	manager="wpickett" 
-	editor="jimbe" 
-	scriptId="" 
-	videoId=""/>
+	editor=""/>
 
 <tags 
 	ms.service="storage" 
-	ms.date="10/12/2015" 
+	ms.date="01/09/2016" 
 	wacn.date=""/>
 
 # 将 Azure 存储空间用于 Jenkins 持续集成解决方案
 
 ## 概述
 
-下列信息演示了如何将 Azure Blob 服务用作 Jenkins 持续集成 (CI) 解决方案创建的生成项目的存储库，或者用作要在生成过程中使用的可下载文件的源。在以下情况中你将会发现这一做法很有用：你在敏捷开发环境进行编码（使用 Java 或其他语言），生成是基于持续集成运行的并且你需要一个适用于生成项目的存储库，以便（举例来说）你能与其他组织成员、你的客户共享生成项目或维护存档。另一种情况是，当你的生成作业本身需要其他文件时，例如需要下载依赖项作为生成输入的一部分时。
+下列信息演示了如何将 Blob 存储用作 Jenkins 持续集成 (CI) 解决方案创建的生成项目的存储库，或者用作要在生成过程中使用的可下载文件的源。在以下情况中你将会发现这一做法很有用：你在敏捷开发环境进行编码（使用 Java 或其他语言），生成是基于持续集成运行的并且你需要一个适用于生成项目的存储库，以便（举例来说）你能与其他组织成员、你的客户共享生成项目或维护存档。另一种情况是，当你的生成作业本身需要其他文件时，例如需要下载依赖项作为生成输入的一部分时。
 
 在本教程中，你将使用 Microsoft 提供的适用于 Jenkins CI 的 Azure 存储插件。
 
@@ -69,7 +67,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
 1. 在 Jenkins 仪表板中，单击“管理 Jenkins”。
 2. 在“管理 Jenkins”页中，单击“管理插件”。
 3. 单击“可用”选项卡。
-4. 在“项目上载程序”部分，选中“Microsoft Azure 存储插件”。
+4. 在“项目上载程序”部分中，选中“Microsoft Azure 存储插件”。
 5. 单击“安装而不重新启动”或“立即下载并在重新启动后安装”。
 6. 重新启动 Jenkins。
 
@@ -121,7 +119,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
     4. 单击“容器”。
     5. 单击名为 **myjob** 的容器，该名称是你创建 Jenkins 作业时分配的作业名称的小写形式。在 Azure 存储空间中，容器名称和 Blob 名称都是小写的（并且区分大小写）。在名为 **myjob** 的容器的 Blob 列表中，你应该能看到 **hello.txt** 和 **date.txt**。复制这两项中任一项的 URL 并在浏览器中打开。你将看到已作为生成项目上载的文本文件。
 
-每个作业只能创建一个用来将项目上载到 Azure Blob 存储的生成后操作。请注意，用来将项目上载到 Azure Blob 存储的单个生成后操作可以在“要上载的项目列表”中使用分号作为分隔符指定不同的文件（包括通配符）和文件路径。例如，如果你的 Jenkins 生成在你的工作空间的 **build** 文件夹中生成了 JAR 文件和 TXT 文件，并且你希望将这两者都上载到 Azure Blob 存储，请使用以下项作为“要上载的项目列表”值：**build/*.jar;build/*.txt**。你还可以使用双冒号语法指定要在 Blob 名称内使用的路径。例如，如果你希望在 Blob 路径中使用 **binaries** 以上载 JAR 并在 Blob 路径中使用 **notices** 以上载 TXT 文件，请使用以下项作为“要上载的项目列表”值：**build/*.jar::binaries;build/*.txt::notices**。
+每个作业只能创建一个用来将项目上载到 Azure Blob 存储的生成后操作。请注意，用来将项目上载到 Azure Blob 存储的单个生成后操作可以在“要上载的项目列表”中使用分号作为分隔符指定不同的文件（包括通配符）和文件路径。例如，如果你的 Jenkins 生成在你的工作空间的 **build** 文件夹中生成了 JAR 文件和 TXT 文件，并且你希望将这两者都上载到 Azure Blob 存储，请使用以下项作为“要上载的项目列表”值：**build/\*.jar;build/\*.txt**。你还可以使用双冒号语法指定要在 Blob 名称内使用的路径。例如，如果你希望在 Blob 路径中使用 **binaries** 以上载 JAR 并在 Blob 路径中使用 **notices** 以上载 TXT 文件，请使用以下项作为“要上载的项目列表”值：**build/\*.jar::binaries;build/\*.txt::notices**。
 
 ## 如何创建从 Azure Blob 存储进行下载的生成步骤 ##
 
@@ -130,7 +128,7 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
 1. 在作业配置的“生成”部分中，单击“添加生成步骤”并选择“从 Azure Blob 存储下载”。
 2. 对于“存储帐户名称”，选择要使用的存储帐户。
 3. 对于“容器名称”，指定包含你要下载的 Blob 的容器的名称。你可以使用环境变量。
-4. 对于“Blob 名称”，指定 Blob 名称。你可以使用环境变量。另外，在指定 Blob 名称的初始字母后，你可以使用星号作为通配符。例如，**project*** 将指定其名称以 **project** 开头的所有 Blob。
+4. 对于“Blob 名称”，指定 Blob 名称。你可以使用环境变量。另外，在指定 Blob 名称的初始字母后，你可以使用星号作为通配符。例如，**project\*** 将指定其名称以 **project** 开头的所有 Blob。
 5. [可选]对于“下载路径”，指定 Jenkins 计算机上你希望将文件从 Azure Blob 存储下载到其中的路径。也可以使用环境变量。（如果你没有为“下载路径”提供值，则 Azure Blob 存储中的文件将被下载到作业的工作空间中。）
 
 如果你还希望从 Azure Blob 存储下载其他项，可以创建其他生成步骤。
@@ -150,14 +148,14 @@ Jenkins 通过允许开发人员轻松地集成其代码更改以及自动和频
     
     （以上格式适用于公共 Azure 云。如果你在使用其他 Azure 云，请使用 Azure 管理门户中的终结点来确定你的 URL 终结点。）
 
-    在以上格式中，`storageaccount` 表示存储帐户的名称，`container_name` 表示容器的名称，而 `blob_name` 表示 Blob 的名称。在容器名称中，你可具有多个由正斜杠 ** /** 分隔的路径。本教程的示例容器名称为 **MyJob**，**${BUILD\_ID}/${BUILD\_NUMBER}** 用于通用虚拟路径，从而导致 Blob 具有以下格式的 URL：
+    在以上格式中，`storageaccount` 表示存储帐户的名称，`container_name` 表示容器的名称，而 `blob_name` 表示 Blob 的名称。在容器名称中，你可具有多个由正斜杠 **/** 分隔的路径。本教程的示例容器名称为 **MyJob**，**${BUILD\_ID}/${BUILD\_NUMBER}** 用于通用虚拟路径，从而导致 Blob 具有以下格式的 URL：
 
     `http://example.blob.core.chinacloudapi.cn/myjob/2014-04-14_23-57-00/1/hello.txt`
 
 ## 后续步骤
 
-  [如何创建存储帐户]: http://go.microsoft.com/fwlink/?LinkId=279823
+  [如何创建存储帐户]: /documentation/articles/storage-create-storage-account
   [Jenkins 概览]: https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins
  
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0215_2016-->

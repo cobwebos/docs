@@ -9,19 +9,12 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="09/17/2015" 
+	ms.date="01/05/2016"
 	wacn.date=""/>
 
 # 使用“连接服务”添加 Azure 移动服务后，我的 Visual Studio .NET 项目发生了什么情况？
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
-
-&nbsp;
-
-
-> [AZURE.SELECTOR]
-> - [入门](/documentation/articles/vs-mobile-services-dotnet-getting-started)
-> - [What Happened](/documentation/articles/vs-mobile-services-dotnet-what-happened)
 
 ## 已添加引用
 
@@ -31,7 +24,7 @@ Azure 移动服务 NuGet 包已添加到您的项目。因此，下面的 .NET �
 - **Microsoft.WindowsAzure.Mobile.Ext**
 - **Newtonsoft.Json**
 - **System.Net.Http.Extensions**
-- **System.Net.Http.Primitives** 
+- **System.Net.Http.Primitives**
 
 ## 移动服务的连接字符串值
 
@@ -44,4 +37,4 @@ Azure 移动服务 NuGet 包已添加到您的项目。因此，下面的 .NET �
 
 [详细了解移动服务](/documentation/services/mobile-services/)
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0215_2016-->

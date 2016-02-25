@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="存储简介 | Microsoft Azure" 
+	pageTitle="存储空间简介 | Microsoft Azure" 
 	description="Microsoft Azure 存储空间概述。" 
 	services="storage" 
 	documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="10/07/2015" 
+	ms.date="01/05/2016" 
 	wacn.date=""/>
 
 # Microsoft Azure 存储空间简介
@@ -51,7 +51,7 @@ Azure 存储帐户是一个安全的帐户，它向你授予对 Azure 存储空�
 - 标准存储帐户包括 Blob、表、队列和文件存储。
 - 高级存储帐户当前仅支持 Azure 虚拟机磁盘。
 
-你必须具有 Azure 订阅（这是允许你访问各种 Azure 服务的计划），然后才能创建存储帐户。[通过单个订阅，你最多可以创建 100 个唯一的命名存储帐户。](/documentation/articles/azure-subscription-service-limits) 请参阅[存储定价详细信息](/pricing/details/storage/)，了解有关批量定价的信息。
+你必须具有 Azure 订阅（这是允许你访问各种 Azure 服务的计划），然后才能创建存储帐户。[通过单个订阅，你最多可以创建 100 个唯一的命名存储帐户。](/documentation/articles/azure-subscription-service-limits) 请参阅[存储定价详细信息](/home/features/storage#price)，了解有关批量定价的信息。
 
 你可以从[试用版](/pricing/1rmb-trial/)开始使用 Azure。一旦决定购买某个计划，你可以从各种[购买选项](/pricing/purchase-options/)进行选择。如果你是 [MSDN 订户](/pricing/member-offers/msdn-benefits-details/)，则可以获得免费的月度信用，你可以将其用于各种 Azure 服务，包括 Azure 存储空间。
 
@@ -59,7 +59,7 @@ Azure 存储帐户是一个安全的帐户，它向你授予对 Azure 存储空�
 
 标准存储帐户可以访问 Blob 存储、表存储、队列存储和文件存储：
 
-- **Blob 存储**用于存储文件数据。Blob 可以是任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。 
+- **Blob 存储**用于存储文件数据。Blob 可以是任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。Blob 存储有时称为对象存储。 
 - **表存储**用于存储结构化数据集。表存储是一个 NoSQL“键-属性”数据存储，可以用于实现快速开发以及快速访问大量数据。
 - **队列存储**为云服务的各个组件之间的工作流处理和通信提供可靠的消息传送。
 - **文件存储**使用标准 SMB 协议为旧版应用程序提供共享存储。Azure 虚拟机和云服务可通过装载的共享在应用程序组件之间共享文件数据，本地应用程序可通过文件服务 REST API 来访问共享中的文件数据。 
@@ -75,6 +75,7 @@ Azure 存储帐户是一个安全的帐户，它向你授予对 Azure 存储空�
 ### 高级存储帐户
 
 Azure 高级存储帐户当前仅支持 Azure 虚拟机磁盘。有关 Azure 高级存储的详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](/documentation/articles/storage-premium-storage-preview-portal)。
+
 [AZURE.INCLUDE [storage-versions-include](../includes/storage-versions-include.md)]
 
 ## Blob 存储
@@ -148,9 +149,9 @@ Azure 文件存储提供了基于云的 SMB 文件共享，这样你可以将依
 
 根据以下四个因素向使用 Azure 存储空间的客户收费：使用的存储容量、选择的复制选项、对服务发出的请求数，以及数据流出量。
 
-存储容量指的是存储帐户中用来存储数据的配额。对数据进行简单存储时，其成本取决于存储的数据量和数据复制方式。针对 Azure 存储空间的每个读取和写入操作还将针对服务发出一个请求。数据流出量是指从某个 Microsoft Azure 区域传出的数据。当不在同一区域中的应用程序访问你的存储帐户中的数据时，无论该应用程序是云服务还是某个其他类型的应用程序，都将会针对数据流出量向你收费。（对于 Microsoft Azure 服务，你可以采取措施将数据和服务通过分组分到相同的数据中心内，从而降低或避免进程和数据流出量费用。）
+存储容量指的是存储帐户中用来存储数据的配额。对数据进行简单存储时，其成本取决于存储的数据量和数据复制方式。针对 Azure 存储空间的每个读取和写入操作还将针对服务发出一个请求。数据流出量是指从某个 Microsoft Azure 区域传出的数据。当不在同一区域中的应用程序访问你的存储帐户中的数据时，无论该应用程序是云服务还是某个其他类型的应用程序，都将会针对数据流出量向你收费。（对于 Microsoft Azure 服务，你可以采取措施将数据和服务分组到同一数据中心内，从而降低或避免处理和数据流出量费用。）
 
-[存储定价详细信息](/pricing/details/storage)页提供了针对存储容量、复制和事务的详细定价信息。[数据传输定价详细信息](/pricing/details/data-transfers/)提供了针对数据流出量的详细定价信息。你可以使用 [Azure 存储空间定价计算器](/pricing/calculator/?scenario=data-management)来帮助估算成本。
+[存储定价详细信息](/home/features/storage#price)页提供了针对存储容量、复制和事务的详细定价信息。[数据传输定价详细信息](/pricing/details/data-transfers/)提供了针对数据流出量的详细定价信息。你可以使用 [Azure 存储空间定价计算器](/pricing/calculator/?scenario=data-management)来帮助估算成本。
 
 ## 针对存储进行开发
 
@@ -202,9 +203,9 @@ Azure 存储空间通过一个 [REST API](http://msdn.microsoft.com/zh-cn/librar
 ### 面向 Java/Android 开发人员
 
 - [Java 客户端库参考](http://dl.windowsazure.com/storage/javadoc/)
-- [如何通过 Java/Android 使用 Blob 存储](../storage-java-how-to-use-blob-storage/)
-- [如何通过 Java/Android 使用表存储](../storage-java-how-to-use-table-storage/)
-- [如何通过 Java/Android 使用队列存储](../storage-java-how-to-use-queue-storage/)
+- [如何通过 Java/Android 使用 Blob 存储](/documentation/articles/storage-java-how-to-use-blob-storage)
+- [如何通过 Java/Android 使用表存储](/documentation/articles/storage-java-how-to-use-table-storage)
+- [如何通过 Java/Android 使用队列存储](/documentation/articles/storage-java-how-to-use-queue-storage)
 
 ### 面向 Node.js 开发人员
 
@@ -231,4 +232,4 @@ Azure 存储空间通过一个 [REST API](http://msdn.microsoft.com/zh-cn/librar
 - [如何通过 Python 使用队列存储](/documentation/articles/storage-python-how-to-use-queue-storage)
  
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0215_2016-->

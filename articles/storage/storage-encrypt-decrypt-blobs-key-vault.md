@@ -9,13 +9,13 @@
 
 <tags
    ms.service="storage"
-   ms.date="06/17/2015"
+   ms.date="01/06/2016"
    wacn.date=""/>
 
 # 在 Microsoft Azure 存储空间中使用 Azure 密钥保管库加密和解密 blob
 
 ## 介绍
- 
+
 本教程介绍如何结合使用客户端存储加密与 Azure 密钥保管库。其中将引导您完成如何在控制台应用程序中使用这些技术加密和解密 blob。
 
 **估计完成时间：**20 分钟。
@@ -31,7 +31,7 @@
 
 - Azure 存储帐户
 - Visual Studio 2013 或更高版本
-- Azure PowerShell 
+- Azure PowerShell
 
 
 ## 客户端加密概述
@@ -65,13 +65,13 @@
 
 在 Package Manager Console 中添加必要的 Nuget 包。
 
-	Install-Package WindowsAzure.Storage 
+	Install-Package WindowsAzure.Storage
 
 	// This is the latest stable release for ADAL.
 	Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
 
-	Install-Package Microsoft.Azure.KeyVault 
-	Install-Package Microsoft.Azure.KeyVault.Extensions 
+	Install-Package Microsoft.Azure.KeyVault
+	Install-Package Microsoft.Azure.KeyVault.Extensions
 
 
 将 AppSettings 添加到 App.Config。
@@ -104,13 +104,13 @@
 	{
 	    var authContext = new AuthenticationContext(authority);
 	    ClientCredential clientCred = new ClientCredential(
-	        ConfigurationManager.AppSettings["clientId"], 
+	        ConfigurationManager.AppSettings["clientId"],
 	        ConfigurationManager.AppSettings["clientSecret"]);
 		AuthenticationResult result = await authContext.AcquireTokenAsync(resource, clientCred);
-	
+
 	    if (result == null)
 	        throw new InvalidOperationException("Failed to obtain the JWT token");
-	
+
 	    return result.AccessToken;
 	}
 
@@ -144,14 +144,14 @@
 ## 加密 blob 和上载
 添加以下代码以加密 blob 并将其上载到 Azure 存储帐户。使用的 **ResolveKeyAsync** 方法会返回 IKey。
 
-	
+
 	// Retrieve the key that you created previously.
 	// The IKey that is returned here is an RsaKey.
 	// Remember that we used the names contosokeyvault and testrsakey1.
     var rsa = cloudResolver.ResolveKeyAsync("https://contosokeyvault.vault.chinacloudapi.cn/keys/TestRSAKey1", CancellationToken.None).GetAwaiter().GetResult();
 
 
-	// Now you simply use the RSA key to encrypt by setting it in the BlobEncryptionPolicy. 
+	// Now you simply use the RSA key to encrypt by setting it in the BlobEncryptionPolicy.
 	BlobEncryptionPolicy policy = new BlobEncryptionPolicy(rsa, null);
 	BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
 
@@ -198,9 +198,9 @@ RSA 密钥的私钥则保留在密钥保管库中，因此，为了进行解密�
 - SymmetricKey 中的密钥应采用 Base64 编码。
 - 用作 SymmetricKey 的密钥保管库密钥需要在密钥保管库中具有“application/octet-stream”内容类型。
 
-以下是使用 PowerShell 在密钥保管库中创建可用作 SymmetricKey 的密钥的示例。
+以下是使用 PowerShell 在密钥保管库中创建可用作 SymmetricKey 的密钥的示例。注意：硬编码值 $key 仅用于演示目的。在你自己的代码中需要生成此密钥。
 
-	// Here we are making a 128-bit key so we have 16 characters. 
+	// Here we are making a 128-bit key so we have 16 characters.
 	// 	The characters are in the ASCII range of UTF8 so they are
 	//	each 1 byte. 16 x 8 = 128.
 	$key = "qwertyuiopasdfgh"
@@ -231,4 +231,4 @@ RSA 密钥的私钥则保留在密钥保管库中，因此，为了进行解密�
 <!--Image references-->
 [1]: ./media/storage-encrypt-decrypt-blobs-key-vault/blobmetadata.png
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0215_2016-->

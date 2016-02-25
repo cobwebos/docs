@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="07/21/2015" 
+	ms.date="01/11/2016" 
 	wacn.date=""/>
 
 # 将多重身份验证构建到自定义应用程序中 (SDK)
@@ -54,7 +54,7 @@ Multi-Factor Authentication SDK 的 API 结构相当简单。你可使用 Multi-
 3. 双击 Azure AD 的实例。
 4. 在顶部单击“配置”
 5. 在“Multi-Factor Authentication”下选择“管理服务设置” ![下载](./media/multi-factor-authentication-sdk/download2.png)
-6. 在“服务设置”页上的屏幕底部单击“转到门户”。![下载](./media/multi-factor-authentication-sdk/download3.png)
+6. 在“服务设置”页上的屏幕底部单击“转到门户”。![下载](./media/multi-factor-authentication-sdk/download3a.png)
 7. 此时将打开一个新页面。在左下方单击“SDK”。
 8. 选择所需的语言，然后单击一个关联的下载链接。
 9. 保存下载的内容。
@@ -66,8 +66,8 @@ Multi-Factor Authentication SDK 的 API 结构相当简单。你可使用 Multi-
 - Multi-Factor Authentication 的**源文件**
 - 用来与 Multi-Factor Authentication 服务通信的**客户端证书**
 - 证书的**私钥**
-- **调用结果**。 调用结果代码列表。若要打开此文件，请使用支持文本格式的应用程序，例如 WordPad。使用调用结果代码可测试 Multi-Factor Authentication 在应用程序中的实现及进行故障排除。它们不是身份验证状态代码。
-- **示例**。 Multi-Factor Authentication 的基本工作实现的示例代码。
+- **调用结果。** 调用结果代码列表。若要打开此文件，请使用支持文本格式的应用程序，例如 WordPad。使用调用结果代码可测试 Multi-Factor Authentication 在应用程序中的实现及进行故障排除。它们不是身份验证状态代码。
+- **示例。** Multi-Factor Authentication 的基本工作实现的示例代码。
 
 
 >[AZURE.WARNING]客户端证书是专门为你生成的唯一私有证书。请不要共享或丢失此文件。它是确保你与 Multi-Factor Authentication 服务的通信安全性的关键所在。
@@ -87,7 +87,7 @@ Multi-Factor Authentication SDK 的 API 结构相当简单。你可使用 Multi-
 
 服务器端代码在步骤 2 中添加了标准模式身份验证。它创建一个 PfAuthParams 对象，带有标准模式验证必需的参数：用户名、电话号码、模式及客户端证书路径 (CertFilePath)，这是每个调用所必需的。有关 PfAuthParams 中的所有参数的演示，请参阅 SDK 中的示例文件。
 
-接下来，代码将 PfAuthParams 对象传递给 pf_authenticate() 函数。返回值指示身份验证成功或失败。out 参数 callStatus 和 errorID 包含其他调用结果信息。调用结果代码记录在 SDK 中的调用结果文件中。
+接下来，代码将 PfAuthParams 对象传递给 pf\_authenticate() 函数。返回值指示身份验证成功或失败。out 参数 callStatus 和 errorID 包含其他调用结果信息。调用结果代码记录在 SDK 中的调用结果文件中。
 
 最小实现只需编写几行代码。但在生产代码中，你会包括更加复杂的错误处理、其他数据库代码和增强型用户体验。
 
@@ -129,7 +129,7 @@ Multi-Factor Authentication SDK 的 API 结构相当简单。你可使用 Multi-
 
 ### 服务器端代码
 
-在以下服务器端代码中，Multi-Factor Authentication 在步骤 2 中配置和运行。标准模式 (MODE_STANDARD) 是用户通过按 # 键响应的电话呼叫。
+在以下服务器端代码中，Multi-Factor Authentication 在步骤 2 中配置和运行。标准模式 (MODE\_STANDARD) 是用户通过按 # 键响应的电话呼叫。
 
 	using System;
 	using System.Collections.Generic;
@@ -166,7 +166,7 @@ Multi-Factor Authentication SDK 的 API 结构相当简单。你可使用 Multi-
 	            // NOTE: This file contains the private key for the client
 	            // certificate. It must be stored with appropriate file 
 	            // permissions.
-	            pfAuthParams.CertFilePath = "c:\cert_key.p12";
+	            pfAuthParams.CertFilePath = "c:\\cert_key.p12";
 	
 	            // Perform phone-based authentication
 	            int callStatus;
@@ -187,4 +187,4 @@ Multi-Factor Authentication SDK 的 API 结构相当简单。你可使用 Multi-
 	    }
 	}
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0215_2016-->

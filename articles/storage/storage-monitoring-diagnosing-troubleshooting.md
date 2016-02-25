@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="12/01/2015"
+	ms.date="01/12/2016"
 	wacn.date=""/>
 
 # 监视、诊断和排查 Microsoft Azure 存储空间问题 
@@ -81,7 +81,7 @@
 - 为你提供必要的过程和工具来帮助你确定应用程序中的问题是否与 Azure 存储空间有关。
 - 为你提供用于解决与 Azure 存储空间相关的问题的可操作指南。
 
-### <a name="how-this-guide-is-organized">本指南的组织方式</a>
+### <a name="how-this-guide-is-organized"></a>本指南的组织方式
 
 “[监视存储服务]”一节介绍如何使用 Azure 存储分析度量值（存储度量值）监视 Azure 存储服务的运行状况和性能。
 
@@ -665,7 +665,10 @@ Timestamp|操作|结果|容器名称|客户端请求 ID
 
 **PercentSuccess** 度量值根据操作的 HTTP 状态代码捕获已成功的操作的百分比。状态代码为 2XX 的操作将计为成功，而状态代码在 3XX、4XX 和 5XX 范围内的操作将计为失败并降低 **PercentSucess** 度量值。在服务器端存储日志文件中，这些操作将使用事务状态 **ClientOtherErrors** 进行记录。
 
-请务必注意，这些操作已成功完成，因此不会影响其他度量值，如可用性。成功执行但可能会导致失败的 HTTP 状态代码的一些操作示例包括：**ResourceNotFound**（未找到 404），例如，从针对不存在的 blob 的 GET 请求。- **ResouceAlreadyExists**（冲突 409），例如，从已存在该资源的 **CreateIfNotExist**。- **ConditionNotMet**（未修改 304），例如，从条件运算 （例如当客户端发送 **ETag** 值和一个 HTTP **None-If-match** 标头以仅在它自上次操作以来已更新时请求映像）。
+请务必注意，这些操作已成功完成，因此不会影响其他度量值，如可用性。成功执行但可能会导致失败的 HTTP 状态代码的一些操作示例包括：
+- **ResourceNotFound**（未找到 404），例如，从针对不存在的 blob 的 GET 请求。
+- **ResouceAlreadyExists**（冲突 409），例如，从已存在该资源的 **CreateIfNotExist**。
+- **ConditionNotMet**（未修改 304），例如，从条件运算 （例如当客户端发送 **ETag** 值和一个 HTTP **None-If-match** 标头以仅在它自上次操作以来已更新时请求映像）。
 
 可以在<a href="http://msdn.microsoft.com/zh-cn/library/azure/dd179357.aspx" target="_blank">常见的 REST API 错误代码</a>页上找到存储服务返回的常见 REST API 错误代码的列表。
 
@@ -780,7 +783,7 @@ WireShark 将在 **packetlist** 窗口中突出显示存在的任何错误。您
 
 ![][7]
 
-您还可以选择查看 TCP 数据（如果应用程序层看到该数据），方法是右键单击 TCP 数据，然后选择“跟踪 TCP 流”。当你不使用捕获筛选器捕获转储时，此方法特别有用。有关详细信息，请参阅“此处”。<a href="http://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html" target="_blank"></a>
+您还可以选择查看 TCP 数据（如果应用程序层看到该数据），方法是右键单击 TCP 数据，然后选择“跟踪 TCP 流”。当你不使用捕获筛选器捕获转储时，此方法特别有用。有关详细信息，请参阅“<a href="http://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html" target="_blank">此处</a>”。
 
 ![][8]
 
@@ -820,7 +823,7 @@ Microsoft Message Analyzer 中内置的“Web 代理”跟踪基于 Fiddler；�
 
 ### <a name="appendix-4"></a>附录 4：使用 Excel 查看度量值和日志数据
 
-使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。但是，您需要基于“<a href="http://msdn.microsoft.com/zh-cn/library/azure/hh343259.aspx" target="_blank">存储分析日志格式</a>”和“<a href="http://msdn.microsoft.com/zh-cn/library/azure/hh343264.aspx "target="_blank">存储分析度量表架构</a>”中的信息添加相应的列标题。"
+使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。但是，您需要基于“<a href="http://msdn.microsoft.com/zh-cn/library/azure/hh343259.aspx" target="_blank">存储分析日志格式</a>”和<a href="http://msdn.microsoft.com/zh-cn/library/azure/hh343264.aspx" target="_blank">“存储分析度量表架构</a>”中的信息添加相应的列标题。
 
 若要将存储日志记录数据导入 Excel（从 Blob 存储下载后），请执行以下操作：
 
@@ -912,4 +915,4 @@ Microsoft Message Analyzer 中内置的“Web 代理”跟踪基于 Fiddler；�
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0215_2016-->

@@ -1,3 +1,5 @@
+<!-- not suitable for Mooncake -->
+
 <properties
 	pageTitle="使用脚本操作自定义 HDInsight 群集 | Microsoft Azure"
 	description="了解如何使用脚本操作自定义 HDInsight 群集。"
@@ -10,12 +12,12 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="11/13/2015"
+	ms.date="12/30/2015"
 	wacn.date=""/>
 
-# 使用脚本操作自定义 HDInsight 群集 (Windows)
+# 使用脚本操作自定义基于 Windows 的 HDInsight 群集
 
-[AZURE.INCLUDE [usescriptaction-selector](../includes/hdinsight-selector-use-script-action.md)]
+[AZURE.INCLUDE [选择器](../includes/hdinsight-create-windows-cluster-selector.md)]
 
 在创建群集的过程中，可以使用**脚本操作**来调用[自定义脚本](/documentation/articles/hdinsight-hadoop-script-actions)，以便在群集上安装其他软件。
 
@@ -29,7 +31,7 @@
 
 当脚本运行时，群集进入 **ClusterCustomization** 阶段。在此阶段，脚本在系统管理员帐户下，以并行方式在群集中所有指定的节点上运行，而在节点上提供完全的系统管理员权限。
 
-> [AZURE.NOTE]因为你在 **ClusterCustomization** 阶段中于群集节点上拥有系统管理员权限，所以你可以使用脚本来运行作业，例如停止和启动服务，包括 Hadoop 相关服务。因此，在脚本中，你必须在脚本完成运行之前，确定 Ambari 服务及其他 Hadoop 相关服务已启动并且正在运行。这些服务必须在群集创建时，成功地确定群集的运行状况和状态。如果你更改群集上的任何影响这些服务的配置，必须使用所提供的帮助器函数。有关帮助器函数的详细信息，请参阅[为 HDInsight 开发脚本操作脚本][hdinsight-write-script]。
+> [AZURE.NOTE] 因为你在 **ClusterCustomization** 阶段中于群集节点上拥有系统管理员权限，所以你可以使用脚本来运行作业，例如停止和启动服务，包括 Hadoop 相关服务。因此，在脚本中，你必须在脚本完成运行之前，确定 Ambari 服务及其他 Hadoop 相关服务已启动并且正在运行。这些服务必须在群集创建时，成功地确定群集的运行状况和状态。如果你更改群集上的任何影响这些服务的配置，必须使用所提供的帮助器函数。有关帮助器函数的详细信息，请参阅[为 HDInsight 开发脚本操作脚本][hdinsight-write-script]。
 
 脚本的输出以及错误日志文件存储在你为群集指定的默认存储帐户中。这些日志存储在名为 **u<\\cluster-name-fragment><\\time-stamp>setuplog** 的表中。这是从群集中所有节点上（头节点和辅助节点）运行的脚本聚合的日志文件。
 
@@ -39,9 +41,9 @@ HDInsight 提供了多个脚本用于在 HDInsight 群集上安装以下组件�
 
 Name | 脚本
 ----- | -----
-**安装 R** | https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1。请参阅 [在 HDInsight 群集上安装并使用 R][hdinsight-install-r]。
-**安装 Solr** | https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1。请参阅 [在 HDInsight 群集上安装并使用 Solr](/documentation/articles/hdinsight-hadoop-solr-install)。
-- **安装 Giraph** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1。请参阅 [在 HDInsight 群集上安装并使用 Giraph](/documentation/articles/hdinsight-hadoop-giraph-install)。
+**安装 R** | https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1。 请参阅[在 HDInsight 群集上安装并使用 R][hdinsight-install-r]。
+**安装 Solr** | https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1。 请参阅[在 HDInsight 群集上安装并使用 Solr](/documentation/articles/hdinsight-hadoop-solr-install-v1)。
+- **安装 Giraph** | https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1。 请参阅[在 HDInsight 群集上安装并使用 Giraph](/documentation/articles/hdinsight-hadoop-giraph-install)。
 
 
 
@@ -49,10 +51,10 @@ Name | 脚本
 
 **通过 Azure 管理门户**
 
-1. 根据[使用自定义选项设置群集](/documentation/articles/hdinsight-provision-clusters#portal)中的说明，使用“自定义创建”选项开始设置群集。 
+1. 根据[使用自定义选项设置群集](/documentation/articles/hdinsight-provision-clusters-v1#portal)中的说明，使用“自定义创建”选项开始设置群集。 
 2. 在向导的“脚本操作”页上，单击“添加脚本操作”，以提供有关脚本操作的详细信息，如下所示：
 
-	![使用脚本操作自定义群集](./media/hdinsight-hadoop-customize-cluster/HDI.CustomProvision.Page6.png "使用脚本操作自定义群集")
+	![使用脚本操作自定义群集](./media/hdinsight-hadoop-customize-cluster-v1/HDI.CustomProvision.Page6.png "使用脚本操作自定义群集")
 
 	<table border='1'>
 		<tr><th>属性</th><th>值</th></tr>
@@ -65,195 +67,60 @@ Name | 脚本
 		<tr><td>Parameters</td>
 			<td>根据脚本的需要，指定参数。</td></tr>
 	</table>
-
+	
 	按 ENTER 可添加多个脚本操作，以在群集上安装多个组件。
 
 3. 单击“选择”可保存脚本操作配置并继续执行群集创建。
 
 ##<a name="call_scripts_using_powershell"></a>使用 Azure PowerShell 调用脚本
 
-以下 PowerShell 脚本演示如何在基于 Windows 的 HDInsight 群集上安装 Spark。
+使用 Azure PowerShell 命令来运行单个脚本操作或多个脚本操作。你可以使用 **<a href = "http://msdn.microsoft.com/zh-cn/library/dn858088.aspx" target="_blank">Add-AzureHDInsightScriptAction</a>** cmdlet 调用自定义脚本。若要使用这些 cmdlet，你必须已安装并设置 Azure PowerShell。有关配置工作站以运行适用于 HDInsight 的 Azure Powershell cmdlet 的信息，请参阅[安装和配置 Azure PowerShell][powershell-install-configure]。
 
-	# Provide values for these variables
-	$subscriptionID = "<Azure Suscription ID>" # After "Login-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
+使用以下 Azure PowerShell 命令可以在部署 HDInsight 群集时运行单个脚本操作：
 
-	$nameToken = "<Enter A Name Token>"  # The token is use to create Azure service names.
-	$namePrefix = $nameToken.ToLower() + (Get-Date -Format "MMdd")
-	
-	$resourceGroupName = $namePrefix + "rg"
-	$location = "EAST US 2" # used for creating resource group, storage account, and HDInsight cluster.
-	
-	$hdinsightClusterName = $namePrefix + "spark"
-	$httpUserName = "admin"
-	$httpPassword = "Pass@word111"
-	
-	$defaultStorageAccountName = "$namePrefix" + "store"
-	$defaultBlobContainerName = $hdinsightClusterName
-	
-	#############################################################
-	# Connect to Azure
-	#############################################################
-	
-	Try{
-		Get-AzureRmSubscription
-	}
-	Catch{
-		Login-AzureRmAccount
-	}
-	Select-AzureRmSubscription -SubscriptionId $subscriptionID
-	
-	#############################################################
-	# Prepare the dependent components
-	#############################################################
-	
-	# Create resource group
-	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-	
-	# Create storage account
-	New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName -Location $location -Type Standard_LRS
-	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName |  %{ $_.Key1 }
-	$defaultStorageAccountContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $storageAccountKey  
-	New-AzureStorageContainer -Name $defaultBlobContainerName -Context $defaultStorageAccountContext
-	
-	#############################################################
-	# Create cluster with Spark
-	#############################################################
-	
-	# Specify the configuration options
-	$config = New-AzureRmHDInsightClusterConfig `
-				-DefaultStorageAccountName "$defaultStorageAccountName.blob.core.chinacloudapi.cn" `
-				-DefaultStorageAccountKey $defaultStorageAccountKey 
-				
-	
-	# Add a script action to the cluster configuration
-	$config = Add-AzureRmHDInsightScriptAction `
-				-Config $config `
-				-Name "Install Spark" `
-				-NodeType HeadNode `
-				-Uri https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1 `
-	
-	# Start creating a cluster with Spark installed
-	New-AzureRmHDInsightCluster `
-			-ResourceGroupName $resourceGroupName `
-			-ClusterName $hdinsightClusterName `
-			-Location $location `
-			-ClusterSizeInNodes 2 `
-			-ClusterType Hadoop `
-			-OSType Windows `
-			-DefaultStorageContainer $defaultBlobContainerName `
-			-Config $config
+	$config = New-AzureHDInsightClusterConfig -ClusterSizeInNodes 4
 
+	$config = Add-AzureHDInsightScriptAction -Config $config -Name MyScriptActionName -Uri http://uri.to/scriptaction.ps1 -Parameters MyScriptActionParameter -ClusterRoleCollection HeadNode,DataNode
 
-若要安装其他软件，需要替换脚本中的脚本文件：
+	New-AzureHDInsightCluster -Config $config
 
+使用以下 Azure PowerShell 命令可以在部署 HDInsight 群集时运行多个脚本操作：
 
-出现提示时，请输入群集的凭据。创建群集可能需要几分钟时间。
+	$config = New-AzureHDInsightClusterConfig -ClusterSizeInNodes 4
+
+	$config = Add-AzureHDInsightScriptAction -Config $config -Name MyScriptActionName1 -Uri http://uri.to/scriptaction1.ps1 -Parameters MyScriptAction1Parameters -ClusterRoleCollection HeadNode,DataNode | Add-AzureHDInsightScriptAction -Config $config -Name MyScriptActionName2 -Uri http://uri.to/scriptaction2.ps1 -Parameters MyScriptAction2Parameters -ClusterRoleCollection HeadNode
+
+	New-AzureHDInsightCluster -Config $config
 
 ## 使用 .NET SDK 调用脚本 
 
-以下示例演示如何在基于 Windows 的 HDInsight 群集上安装 Spark。若要安装其他软件，需要替换代码中的脚本文件。
+HDInsight .NET SDK 提供了 <a href="http://msdn.microsoft.com/zh-cn/library/microsoft.windowsazure.management.hdinsight.clusterprovisioning.data.scriptaction.aspx" target="_blank">ScriptAction</a> 类用于调用自定义脚本。使用 HDInsight .NET SDK：
 
-**创建包含 Spark 的 HDInsight 群集**
+1. 创建一个 Visual Studio 应用程序，然后从 Nuget 安装 SDK。在“工具”菜单中，单击“Nuget Package Manager”，然后单击“Package Manager Console”。在控制台中运行下列命令以安装程序包：
 
-1. 在 Visual Studio 中创建 C# 控制台应用程序。
-2. 通过 Nuget 包管理器控制台运行以下命令。
+		Install-Package Microsoft.WindowsAzure.Management.HDInsight
 
-		Install-Package Microsoft.Azure.Management.HDInsight -Pre
-		Install-Package Microsoft.Azure.Common.Authentication -Pre
+2. 使用 SDK 创建群集。有关说明，请参阅[使用 .NET SDK 设置 HDInsight 群集](/documentation/articles/hdinsight-provision-clusters-v1#sdk)。
 
-2. 在 Program.cs 文件中使用以下 using 语句：
+3. 使用 **ScriptAction** 类调用自定义脚本，如下所示：
 
-		using System;
-		using System.Security;
-		using Microsoft.Azure.Management.HDInsight;
-		using Microsoft.Azure.Management.HDInsight.Models;
 		
-		using Microsoft.Azure;
-		using Microsoft.Azure.Common.Authentication;
-		using Microsoft.Azure.Common.Authentication.Factories;
-		using Microsoft.Azure.Common.Authentication.Models;
+		var clusterInfo = new ClusterCreateParameters()
+		{
+			// Provide the cluster information, like
+			// name, Storage account, credentials,
+			// cluster size, and version		    
+			...
+			...
+		};
 
-3. 将类中的代码替换为以下内容：
-
-        private static HDInsightManagementClient _hdiManagementClient;
-
-        private static Guid SubscriptionId = new Guid("<YourAzureSubscriptionID>");
-        private const string ResourceGroupName = "<ExistingAzureResourceGroupName>";
-        private const string NewClusterName = "<NewAzureHDInsightClusterName>";
-        private const int NewClusterNumNodes = <NumberOfClusterNodes>;
-        private const string NewClusterLocation = "China East";
-        private const string NewClusterVersion = "3.2";
-        private const string ExistingStorageName = "<ExistingAzureStorageAccountName>";
-        private const string ExistingStorageKey = "<ExistingAzureStorageAccountKey>";
-        private const string ExistingContainer = "<ExistingAzureBlobStorageContainer>";
-        private const HDInsightClusterType NewClusterType = HDInsightClusterType.Hadoop;
-        private const OSType NewClusterOSType = OSType.Windows;
-        private const string NewClusterUsername = "<HttpUserName>";
-        private const string NewClusterPassword = "<HttpUserPassword>";
-
-        static void Main(string[] args)
-        {
-            System.Console.WriteLine("Running");
-
-            var tokenCreds = GetTokenCloudCredentials();
-            var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
-
-            _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
-
-            CreateCluster();
-
-        }
-
-        private static void CreateCluster()
-        {
-            var parameters = new ClusterCreateParameters
-            {
-                ClusterSizeInNodes = NewClusterNumNodes,
-                Location = NewClusterLocation,
-                ClusterType = NewClusterType,
-                OSType = NewClusterOSType,
-                Version = NewClusterVersion,
-
-                DefaultStorageAccountName = ExistingStorageName,
-                DefaultStorageAccountKey = ExistingStorageKey,
-                DefaultStorageContainer = ExistingContainer,
-
-                UserName = NewClusterUsername,
-                Password = NewClusterPassword,
-            };
-
-            ScriptAction sparkScriptAction = new ScriptAction("Install Spark",
-                new Uri("https://hdiconfigactions.blob.core.windows.net/sparkconfigactionv03/spark-installer-v03.ps1"), "");
-
-            parameters.ScriptActions.Add(ClusterNodeType.HeadNode, new System.Collections.Generic.List<ScriptAction> { sparkScriptAction });
-            parameters.ScriptActions.Add(ClusterNodeType.WorkerNode, new System.Collections.Generic.List<ScriptAction> { sparkScriptAction });
-
-            _hdiManagementClient.Clusters.Create(ResourceGroupName, NewClusterName, parameters);
-        }
-
-
-        public static SubscriptionCloudCredentials GetTokenCloudCredentials(string username = null, SecureString password = null)
-        {
-            var authFactory = new AuthenticationFactory();
-
-            var account = new AzureAccount { Type = AzureAccount.AccountType.User };
-
-            if (username != null && password != null)
-                account.Id = username;
-
-            var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
-
-            var accessToken =
-                authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto)
-                    .AccessToken;
-
-            return new TokenCloudCredentials(accessToken);
-        }
-
-        public static SubscriptionCloudCredentials GetSubscriptionCloudCredentials(SubscriptionCloudCredentials creds, Guid subId)
-        {
-            return new TokenCloudCredentials(subId.ToString(), ((TokenCloudCredentials)creds).Token);
-        }
+		// Add the script action to install Spark
+		clusterInfo.ConfigActions.Add(new ScriptAction(
+	  		"MyScriptActionName", // Name of the config action
+	  		new ClusterNodeType[] { ClusterNodeType.HeadNode }, // List of nodes to install the component on
+	  		new Uri("http://uri.to/scriptaction.ps1"), // Location of the script to install the component
+	  		"MyScriptActionParameter" //Parameters, if any, required by the script
+		));
 
 4. 按 **F5** 运行应用程序。
 
@@ -268,7 +135,7 @@ HDInsight 服务中有两种类型的开放源代码组件：
 
 完全支持内置组件，Microsoft 支持部门将帮助你找出并解决与这些组件相关的问题。
 
-> [AZURE.WARNING]完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助你找出并解决与这些组件相关的问题。
+> [AZURE.WARNING] 完全支持通过 HDInsight 群集提供的组件，Microsoft 支持部门将帮助你找出并解决与这些组件相关的问题。
 >
 > 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。这可能导致问题解决，或要求你参与可用的开放源代码技术渠道，在该处可找到该技术的深入专业知识。有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/zh-cn/home?forum=hdinsight)、[http://stackoverflow.com](http://stackoverflow.com)。此外，Apache 项目在 [http://apache.org](http://apache.org) 上提供了项目站点，例如 [Hadoop](http://hadoop.apache.org/)。
 
@@ -288,15 +155,15 @@ HDInsight 服务提供多种方式来使用自定义组件。不论在群集上�
 - [在 HDInsight 中创建 Hadoop 群集][hdinsight-provision-cluster]说明了如何使用其他自定义选项来创建 HDInsight 群集。
 - [为 HDInsight 开发脚本操作脚本][hdinsight-write-script]
 - [在 HDInsight 群集上安装并使用 R][hdinsight-install-r]
-- [在 HDInsight 群集上安装并使用 Solr](/documentation/articles/hdinsight-hadoop-solr-install)
+- [在 HDInsight 群集上安装并使用 Solr](/documentation/articles/hdinsight-hadoop-solr-install-v1)
 - [在 HDInsight 群集上安装并使用 Giraph](/documentation/articles/hdinsight-hadoop-giraph-install)
 
 [hdinsight-install-r]: /documentation/articles/hdinsight-hadoop-r-scripts
 [hdinsight-write-script]: /documentation/articles/hdinsight-hadoop-script-actions
-[hdinsight-provision-cluster]: /documentation/articles/hdinsight-provision-clusters
+[hdinsight-provision-cluster]: /documentation/articles/hdinsight-provision-clusters-v1
 [powershell-install-configure]: /documentation/articles/powershell-install-configure
 
 
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "群集创建过程中的阶段"
+[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-v1/HDI-Cluster-state.png "群集创建过程中的阶段"
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

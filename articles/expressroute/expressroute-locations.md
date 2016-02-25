@@ -4,11 +4,11 @@
    services="expressroute"
    documentationCenter="na"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags
    ms.service="expressroute"
-   ms.date="12/02/2015"
+   ms.date="01/15/2015"
    wacn.date="" />
 
 # ExpressRoute 合作伙伴和对等位置
@@ -40,6 +40,7 @@
 |**地缘政治区域**|**Azure 区域**|**ExpressRoute 位置**|
 |---|---|---|---|
 |**美国政府云**|美国政府|爱荷华州、弗吉尼亚州|芝加哥市阿什本|
+|**中国云**|中国北部、中国东部|北京、上海|
 
 
 标准 ExpressRoute SKU 不支持跨地缘政治区域的连接。你需要启用 ExpressRoute 高级版附加组件才能支持全球连接。不支持连接到国家/地区云环境。如有需要，请联系连接服务提供商。
@@ -89,6 +90,13 @@
 | **[Level 3 Communications - IPVPN](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** | 即将推出 | 不支持 | 芝加哥、华盛顿特区 |
 | **[Verizon](http://news.verizonenterprise.com/2014/04/secure-cloud-interconnect-solutions-enterprise/)** | 支持 | 不支持 | 芝加哥、华盛顿特区 |
 
+#### 中国云
+
+| **服务提供商** |**Microsoft Azure** | **Office 365** | **位置** |
+|-----------------------|--------------------|----------------|---------------|
+| **中国电信** | 支持 | 不支持 | 北京、上海+|
+若要了解详细信息，请参阅[位于中国的 ExpressRoute](http://www.windowsazure.cn/home/features/expressroute/)。
+
 ## 通过未列出的服务提供商建立连接
 
 如果前面部分中未列出你的连接服务提供商，你仍可以建立连接。
@@ -123,4 +131,4 @@
 - 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)。
 - 确保符合所有先决条件。请参阅 [ExpressRoute 先决条件](/documentation/articles/expressroute-prerequisites)。
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

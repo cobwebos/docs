@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="Microsoft Azure 存储空间的使用 .NET 客户端加密 | Microsoft Azure" 
-	description="用于 .NET 的 Azure 存储空间客户端库提供对客户端加密的支持并与 Azure 密钥保管库集成。客户端加密为您的 Azure 存储空间应用程序提供最高安全性，因为服务永远无法获得您的访问密钥。客户端加密可用于 Blob、队列和表。" 
+	description="用于 .NET 的 Azure 存储客户端库支持客户端加密以及与 Azure 密钥保管库集成以实现 Azure 存储空间应用程序的最佳安全性。"
 	services="storage" 
 	documentationCenter=".net" 
 	authors="tamram" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="10/07/2015" 
+	ms.date="01/05/2016"
 	wacn.date=""/>
 
 
@@ -20,6 +20,7 @@
 ## 概述
 
 [用于 .NET 的 Azure 存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)支持在上载到 Azure 存储空间之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。此库还支持与 Azure [密钥保管库](/documentation/services/key-vault)集成，以便管理存储帐户密钥。
+
 有关使用 Java 的客户端加密，请参阅 [Microsoft Azure 存储空间的使用 Java 客户端加密](/documentation/articles/storage-client-side-encryption-java)。
 
 ## 通过信封技术加密和解密
@@ -32,8 +33,8 @@
 
 1. Azure 存储客户端库生成内容加密密钥 (CEK)，这是一次性使用对称密钥。
 2. 使用此 CEK 对用户数据进行加密。
-3. 然后，使用密钥加密密钥 (KEK) 对此 CEK 进行包装（加密）。KEK 由密钥标识符标识，可以是非对称密钥对或对称密钥，还可以在本地托管或存储在 Azure 密钥保管库中。 
-	
+3. 然后，使用密钥加密密钥 (KEK) 对此 CEK 进行包装（加密）。KEK 由密钥标识符标识，可以是非对称密钥对或对称密钥，还可以在本地托管或存储在 Azure 密钥保管库中。
+
 	存储客户端库本身永远无法访问 KEK。该库调用密钥保管库提供的密钥包装算法。用户可以根据需要选择使用自定义提供程序进行密钥包装/解包。
 
 4. 然后，将已加密的数据上载到 Azure 存储服务。已包装的密钥以及一些附加加密元数据要么存储为元数据（在 Blob 上），要么以内插值替换已加密的数据（消息队列和表实体）。
@@ -57,7 +58,7 @@
 
 在加密过程中，客户端库将生成 16 字节的随机初始化向量 (IV) 和 32 字节的随机内容加密密钥 (CEK) 并将使用此信息对 Blob 数据执行信封加密。然后，已包装的 CEK 和一些附加加密元数据将与服务上的已加密 Blob 一起存储为 Blob 元数据。
 
-> [AZURE.WARNING]如果您要针对 Blob 编辑或上载自己的元数据，需要确保此元数据已保留。如果您在没有此元数据的情况下上载新元数据，则已包装的 CEK、IV 和其他元数据将丢失，而 Blob 内容将永远无法再检索。
+> [AZURE.WARNING] 如果您要针对 Blob 编辑或上载自己的元数据，需要确保此元数据已保留。如果您在没有此元数据的情况下上载新元数据，则已包装的 CEK、IV 和其他元数据将丢失，而 Blob 内容将永远无法再检索。
 
 下载已加密的 Blob 需要使用 **DownloadTo***/**BlobReadStream** 便捷方法检索整个 Blob 的内容。将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
 
@@ -79,7 +80,7 @@
 
 客户端库支持对插入和替换操作的实体属性进行加密。
 
->[AZURE.NOTE]当前不支持合并。由于属性的子集可能以前已使用不同的密钥加密，因此只合并新属性和更新元数据将导致数据丢失。合并需要进行额外的服务调用以从服务中读取预先存在的实体，或者需要为属性使用一个新密钥，由于性能方面的原因，这两种方案都不适用。
+>[AZURE.NOTE] 当前不支持合并。由于属性的子集可能以前已使用不同的密钥加密，因此只合并新属性和更新元数据将导致数据丢失。合并需要进行额外的服务调用以从服务中读取预先存在的实体，或者需要为属性使用一个新密钥，由于性能方面的原因，这两种方案都不适用。
 
 表数据加密的工作方式如下：
 
@@ -126,7 +127,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 仅在用于 .NET 的存储空间客户端库中提供加密支持。Windows Phone 和 Windows 运行时当前不支持加密。
 
->[AZURE.IMPORTANT]使用客户端加密时，请注意以下要点：
+>[AZURE.IMPORTANT] 使用客户端加密时，请注意以下要点：
 >
 >- 读取或写入到已加密的 Blob 时，请使用完整 Blob 上载命令和范围/完整 Blob 下载命令。避免使用协议操作（如“放置块”、“放置块列表”、“写入页”、“清除页”或“追加块”）写入到已加密的 Blob，否则可能会损坏已加密的 Blob 并使其不可读。
 >- 对于表，存在类似的约束。请注意，不要在未更新加密元数据的情况下更新已加密的属性。
@@ -155,16 +156,16 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 	// Create the IKey used for encryption.
  	RsaKey key = new RsaKey("private:key1" /* key identifier */);
-  
+
  	// Create the encryption policy to be used for upload and download.
  	BlobEncryptionPolicy policy = new BlobEncryptionPolicy(key, null);
-  
+
  	// Set the encryption policy on the request options.
  	BlobRequestOptions options = new BlobRequestOptions() { EncryptionPolicy = policy };
-  
+
  	// Upload the encrypted contents to the blob.
  	blob.UploadFromStream(stream, size, null, options, null);
-  
+
  	// Download and decrypt the encrypted contents from the blob.
  	MemoryStream outputStream = new MemoryStream();
  	blob.DownloadToStream(outputStream, null, options, null);
@@ -176,14 +177,14 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 	// Create the IKey used for encryption.
  	RsaKey key = new RsaKey("private:key1" /* key identifier */);
-  
+
  	// Create the encryption policy to be used for upload and download.
  	QueueEncryptionPolicy policy = new QueueEncryptionPolicy(key, null);
-  
+
  	// Add message
  	QueueRequestOptions options = new QueueRequestOptions() { EncryptionPolicy = policy };
  	queue.AddMessage(message, null, null, options, null);
-  
+
  	// Retrieve message
  	CloudQueueMessage retrMessage = queue.GetMessage(null, options, null);
 
@@ -196,12 +197,12 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 	// Create the IKey used for encryption.
  	RsaKey key = new RsaKey("private:key1" /* key identifier */);
-  
+
  	// Create the encryption policy to be used for upload and download.
  	TableEncryptionPolicy policy = new TableEncryptionPolicy(key, null);
-  
- 	TableRequestOptions options = new TableRequestOptions() 
- 	{ 
+
+ 	TableRequestOptions options = new TableRequestOptions()
+ 	{
     	EncryptionResolver = (pk, rk, propName) =>
      	{
         	if (propName == "foo")
@@ -212,17 +213,17 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
      	},
      	EncryptionPolicy = policy
  	};
-  
+
  	// Insert Entity
  	currentTable.Execute(TableOperation.Insert(ent), options, null);
-  
+
  	// Retrieve Entity
  	// No need to specify an encryption resolver for retrieve
- 	TableRequestOptions retrieveOptions = new TableRequestOptions() 
+ 	TableRequestOptions retrieveOptions = new TableRequestOptions()
  	{
     	EncryptionPolicy = policy
  	};
-  
+
  	TableOperation operation = TableOperation.Retrieve(ent.PartitionKey, ent.RowKey);
  	TableResult result = currentTable.Execute(operation, retrieveOptions, null);
 
@@ -239,9 +240,9 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 ## 后续步骤
 
-下载[用于 .NET 的 Azure 存储空间客户端库 NuGet 程序包](http://www.nuget.org/packages/WindowsAzure.Storage/5.0.0) 
-从 GitHub 下载 [用于 .NET 的 Azure 存储空间客户端库源代码](https://github.com/Azure/azure-storage-net) 
-下载 Azure 密钥保管库 NuGet [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/) 和 [Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) 程序包 
-查看 [Azure 密钥保管库文档](/documentation/articles/key-vault-whatis)
+下载[用于 .NET 的 Azure 存储空间客户端库 NuGet 程序包](http://www.nuget.org/packages/WindowsAzure.Storage/5.0.0)
+从 GitHub 下载 [用于 .NET 的 Azure 存储空间客户端库源代码](https://github.com/Azure/azure-storage-net)
+下载 Azure 密钥保管库 NuGet [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/) 和 [Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) 程序包  
+查看 [Azure 密钥保管库文档](/documentation/articles/key-vault-whatis) 
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0215_2016-->

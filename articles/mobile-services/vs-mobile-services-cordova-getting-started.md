@@ -1,27 +1,20 @@
-<properties 
-	pageTitle="Cordova 移动服务项目（Visual Studio 连接服务）入门" 
-	description="描述使用 Visual Studio 连接服务将 Cordova 项目连接到 Azure 移动服务后可以执行的前几个步骤。" 
-	services="mobile-services" 
-	documentationCenter="" 
+<properties
+	pageTitle="Cordova 移动服务项目（Visual Studio 连接服务）入门 | Microsoft Azure"
+	description="描述使用 Visual Studio 连接服务将 Cordova 项目连接到 Azure 移动服务后可以执行的前几个步骤。"
+	services="mobile-services"
+	documentationCenter=""
 	authors="TomArcher"
 	manager="douge" 
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="09/17/2015" 
+	ms.date="01/05/2016"
 	wacn.date=""/>
 
 # 移动服务入门（Cordova 项目）
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
-
-&nbsp;
-
-
-> [AZURE.SELECTOR]
-> - [入门](/documentation/articles/vs-mobile-services-cordova-getting-started)
-> - [What Happened](/documentation/articles/vs-mobile-services-cordova-what-happened)
 
 ##前几个步骤
 为了跟踪这些代码，您需要首先执行的步骤取决于您连接的移动服务类型。
@@ -30,19 +23,17 @@
 
 - 如果你使用的是 .NET 后端移动服务，那么 Visual Studio 为你创建的默认项目模板中已经有一个 TodoItem 表，但你需要将其发布到 Azure。发布方法：在解决方案资源管理器中打开移动服务项目的上下文菜单，然后选择**发布 Web**。接受默认设置，然后选择**发布**。
 
-
-
 ##创建对表的引用
 
 以下代码将获取对表（包含 TodoItem 数据）的引用，您可以将该引用用于后续操作以便读取和更新数据表。在您创建移动服务时，将自动创建 TodoItem 表。
 
-var todoTable = mobileServiceClient.getTable('TodoItem');
+    var todoTable = mobileServiceClient.getTable('TodoItem');
 
 要使这些示例工作，表的权限必须设置为**具有应用程序密钥的任何人**。稍后，您可以设置身份验证。请参阅[身份验证入门](/documentation/articles/mobile-services-html-get-started-users)。
 
 ##向表中添加项
 
-将新的项目插入数据表。ID（类型字符串的 GUID）将自动创建为新行的主密钥。对返回的 [**Promise**](https://msdn.microsoft.com/zh-cn/library/dn802826.aspx)对象调用 [done] 方法以获取插入对象的副本并处理任何错误。
+将新的项目插入数据表。ID（类型字符串的 GUID）将自动创建为新行的主密钥。对返回的 [Promise](https://msdn.microsoft.com/zh-cn/library/dn802826.aspx) 对象调用 **done** 方法以获取插入对象的副本并处理任何错误。
 
     function TodoItem(text) {
         this.text = text;
@@ -78,7 +69,7 @@ var todoTable = mobileServiceClient.getTable('TodoItem');
 
 ##更新表项
 
-更新数据表中的行。在此代码中，当移动服务响应时，将从列表中删除项目。对返回的 [**Promise**](https://msdn.microsoft.com/zh-cn/library/dn802826.aspx)对象调用 [done] 方法以获取插入对象的副本并处理任何错误。
+更新数据表中的行。在此代码中，当移动服务响应时，将从列表中删除项目。对返回的 [Promise](https://msdn.microsoft.com/zh-cn/library/dn802826.aspx) 对象调用 **done** 方法以获取插入对象的副本并处理任何错误。
 
     todoTable.update(todoItem).done(function (item) {
         // Update a local collection of items.
@@ -87,7 +78,7 @@ var todoTable = mobileServiceClient.getTable('TodoItem');
 
 ##删除表项
 
-使用 **del** 方法删除数据表中的行。对返回的 [**Promise**](https://msdn.microsoft.com/zh-cn/library/dn802826.aspx) 对象调用 [done] 方法以获取插入对象的副本并处理任何错误。
+使用 **del** 方法删除数据表中的行。对返回的 [Promise](https://msdn.microsoft.com/zh-cn/library/dn802826.aspx) 对象调用 **done** 方法以获取插入对象的副本并处理任何错误。
 
     todoTable.del(todoItem).done(function (item) {
         items.splice(items.indexOf(todoItem), 1);
@@ -95,4 +86,4 @@ var todoTable = mobileServiceClient.getTable('TodoItem');
 
 [详细了解移动服务](/documentation/services/mobile-services)
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0215_2016-->

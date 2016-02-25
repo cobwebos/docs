@@ -9,17 +9,17 @@
    tags="azure-service-management"/>
 <tags 
    ms.service="expressroute"
-   ms.date="12/09/2015"
+   ms.date="01/07/2015"
    wacn.date="" />
 
 # 将虚拟网络链接到 ExpressRoute 线路
 
 > [AZURE.SELECTOR]
-- [PowerShell - 经典](/documentation/articles/expressroute-howto-linkvnet-classic)
-- [PowerShell - 资源管理器](/documentation/articles/expressroute-howto-linkvnet-arm)
-- [模板 - 资源管理器](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)
+- [PowerShell - Classic](/documentation/articles/expressroute-howto-linkvnet-classic)
+- [PowerShell - Resource Manager] (/documentation/articles/expressroute-howto-linkvnet-arm)
+- [Template - Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)
 
-本文概述了如何将虚拟网络 (VNet) 链接到 ExpressRoute 线路。虚拟网络可以在同一个订阅中，也可以属于另一个订阅。本文适用于使用经典部署模型部署的 VNet。如果你想要链接使用 Azure 资源管理器部署方法部署的虚拟网络，可使用模板来完成此操作。查看上面的选项卡可导航到该模板。
+本文概述了如何将虚拟网络 (VNet) 链接到 ExpressRoute 线路。虚拟网络可以在同一个订阅中，也可以属于另一个订阅。本文适用于使用资源管理器部署模型部署的 VNet。如果你想要链接使用经典部署模型部署的虚拟网络，请参阅[将虚拟网络链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)。
 
 [AZURE.INCLUDE [vpn-gateway-sm-rm](../includes/vpn-gateway-sm-rm-include.md)]
 
@@ -48,15 +48,15 @@
 
 可以在多个订阅之间共享一个 ExpressRoute 线路。下图是在多个订阅之间共享 ExpressRoute 线路的简单示意图。大型云中的每个较小云用于表示属于组织中不同部门的订阅。组织内的每个部门可以使用自己的订阅部署其服务，但可以共享单个 ExpressRoute 线路以连接回本地网络。单个部门（在此示例中为 IT 部门）可以拥有 ExpressRoute 线路。组织内的其他订阅可以使用 ExpressRoute 线路。
 
->[AZURE.NOTE]专用线路的连接和带宽费用将应用于 ExpressRoute 线路所有者。所有虚拟网络共享相同的带宽。
+>[AZURE.NOTE] 专用线路的连接和带宽费用将应用于 ExpressRoute 线路所有者。所有虚拟网络共享相同的带宽。
 
 ![跨订阅连接](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
 ### 管理
 
-*线路所有者* 是 ExpressRoute 线路资源的已授权超级用户。线路所有者可以创建可供*线路用户*兑现的授权。 *线路用户* 是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。 *线路用户* 可以兑现授权（每个虚拟网络需要一个授权）。
+*线路所有者*是 ExpressRoute 线路资源的已授权超级用户。线路所有者可以创建可供*线路用户*兑现的授权。*线路用户*是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。*线路用户*可以兑现授权（每个虚拟网络需要一个授权）。
 
-*线路所有者* 有权随时修改和撤消授权。撤消授权将导致从撤消其访问权限的订阅中删除所有链路连接。
+*线路所有者*有权随时修改和撤消授权。撤消授权将导致从撤消其访问权限的订阅中删除所有链路连接。
 
 ### 线路所有者操作 
 
@@ -133,4 +133,4 @@
 
 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)。
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

@@ -5,12 +5,12 @@
 	documentationCenter=""
 	authors="danielsollondon"
 	manager="jeffreyg"
-   editor="monicar"    
-   tags="azure-service-management"/>
+	editor="monicar"    
+	tags="azure-service-management"/>
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="10/02/2015"
+	ms.date="01/06/2015"
 	wacn.date=""/>
 
 # 将 Azure 高级存储用于虚拟机上的 SQL Server
@@ -18,12 +18,12 @@
 
 ## 概述
 
-[Azure 高级存储](/documentation/articles/storage-premium-storage-preview-portal)是下一代提供低延迟和高吞吐量 IO 的存储。它最适用于关键 IO 密集型工作负荷，例如 IaaS [虚拟机](http://azure.microsoft.com/services/virtual-machines/)上的 SQL Server。
+[Azure 高级存储](/documentation/articles/storage-premium-storage-preview-portal)是下一代提供低延迟和高吞吐量 IO 的存储。它最适用于关键 IO 密集型工作负荷，例如 IaaS [虚拟机](/home/features/virtual-machines/)上的 SQL Server。
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)]资源管理器模型。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)] 资源管理器模型。
  
 
-本文提供迁移运行 SQL Server 的虚拟机以使用高级存储的规划和指南。这包括 Azure 基础结构（网络、存储）以及来宾 Windows VM 步骤。[附录](/documentation/articles/#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)中的示例显示如何移动较大的 VM 以通过 PowerShell 利用改进的本地 SSD 存储的完整全面的端到端迁移。
+本文提供迁移运行 SQL Server 的虚拟机以使用高级存储的规划和指南。这包括 Azure 基础结构（网络、存储）以及来宾 Windows VM 步骤。[附录](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)中的示例显示如何移动较大的 VM 以通过 PowerShell 利用改进的本地 SSD 存储的完整全面的端到端迁移。
 
 请务必了解将 Azure 高级存储用于 IAAS VM 上的 SQL Server 的端到端过程。这包括：
 
@@ -33,7 +33,7 @@
 - 可能的迁移方法。
 - 演示迁移现有 AlwaysOn 实现的 Azure、Windows 和 SQL Server 步骤的完整端到端示例。
 
-有关 Azure 虚拟机中的 SQL Server 的更多背景信息，请参阅 [Azure 虚拟机中的 SQL Server](virtual-machines-sql-server-infrastructure-services)。
+有关 Azure 虚拟机中的 SQL Server 的更多背景信息，请参阅 [Azure 虚拟机中的 SQL Server](/documentation/articles/virtual-machines-sql-server-infrastructure-services)。
 
 **作者：**Daniel Sol
 **技术审阅人员：**Luis Carlos Vargas Herring、Sanjay Mishra、Pravin Mital、Juergen Thomas、Gonzalo Ruiz。
@@ -50,7 +50,7 @@
 
 在新的云服务中创建 VM 时，只能将 DS* VM 用于高级存储。如果你在 Azure 中使用 SQL Server AlwaysOn，则 AlwaysOn 侦听器将引用与云服务关联的 Azure 内部或外部负载平衡器 IP 地址。本文重点介绍如何在此方案中迁移，同时保持可用性。
 
-> [AZURE.NOTE]DS* 系列必须是部署到新的云服务的第一个 VM。
+> [AZURE.NOTE] DS* 系列必须是部署到新的云服务的第一个 VM。
 
 ### 区域 VNET
 
@@ -99,7 +99,7 @@
 
 ### Windows 存储空间
 
-你可以像使用以前的标准存储一样使用 [Windows 存储空间](https://technet.microsoft.com/library/hh831739.aspx)，这将允许你迁移已在利用存储空间的 VM。[附录](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)中的示例（步骤 9 及前面的步骤）演示了提取并导入附加了多个 VHD 的 VM 的 Powershell 代码。
+你可以像使用以前的标准存储一样使用 [Windows 存储空间](https://technet.microsoft.com/zh-cn/library/hh831739.aspx)，这将允许你迁移已在利用存储空间的 VM。[附录](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)中的示例（步骤 9 及前面的步骤）演示了提取并导入附加了多个 VHD 的 VM 的 Powershell 代码。
 
 存储池已用于标准 Azure 存储帐户以提高吞吐量并减少延迟。在使用新部署的高级存储测试存储池时，你可能会发现价值，但这样做会为存储设置添加额外的复杂性。
 
@@ -107,7 +107,7 @@
 
 因为针对附加 VHD 有不同的缓存设置建议，你可能会决定将 VHD 复制到高级存储帐户。但是，当你将它们重新附加到新的 DS 系列 VM 时，可能需要变更缓存设置。当你对 SQL 数据文件和日志文件使用单独的 VHD（而不是同时包含这两种文件的单个 VHD）时，应用高级存储建议的缓存设置将更为简单。
 
-> [AZURE.NOTE]如果你在同一卷上有 SQL Server 数据和日志文件，则所选的缓存选项将取决于你的数据库工作负荷的 IO 访问模式。只有测试可演示哪个缓存选项最适用于这种情况。
+> [AZURE.NOTE] 如果你在同一卷上有 SQL Server 数据和日志文件，则所选的缓存选项将取决于你的数据库工作负荷的 IO 访问模式。只有测试可演示哪个缓存选项最适用于这种情况。
 
 但是，如果你使用的是由多个 VHD 构成的 Windows 存储空间，则你将需要查看原始脚本，以确定哪些附加 VHD 在哪个特定池中，这样便可以为每个磁盘相应地设置缓存设置。
 
@@ -128,7 +128,7 @@
 	![VirtualDiskProperties][3]
 
 1. 此处的 LUN 号是对你在将 VHD 附加到 VM 时指定的 LUN 号的引用。
-1. 对于 Microsoft 虚拟磁盘，转到**“详细信息”**选项卡，然后在**“属性”**列表中转到**“驱动程序键”**。在**“值”**中，注意**“偏移量”**，该项在下面的屏幕截图中为 0002。0002 表示存储池引用的 PhysicalDisk2。
+1. 对于 Microsoft 虚拟磁盘，转到“详细信息”选项卡，然后在“属性”列表中转到“驱动程序键”。在**“值”**中，注意**“偏移量”**，该项在下面的屏幕截图中为 0002。0002 表示存储池引用的 PhysicalDisk2。
 
 	![VirtualDiskPropertyDetails][4]
 
@@ -156,7 +156,7 @@
 
 第一个示例演示如何利用现有 Azure 库映像。第二个示例演示如何使用你在现有标准存储帐户中拥有的自定义 VM 映像。
 
-> [AZURE.NOTE]这些示例假定你已创建区域 VNET。
+> [AZURE.NOTE] 这些示例假定你已创建区域 VNET。
 
 ### 使用库映像创建带高级存储的新 VM
 
@@ -187,15 +187,15 @@
     #check exisitng reserved VIP
     Get-AzureReservedIP
     
-    $reservedVIPName = “sqlcloudVIP” 
-    New-AzureReservedIP –ReservedIPName $reservedVIPName –Label $reservedVIPName –Location $location 
+    $reservedVIPName = "sqlcloudVIP" 
+    New-AzureReservedIP -ReservedIPName $reservedVIPName -Label $reservedVIPName -Location $location 
 
 #### 步骤 4：创建 VM 容器
     #Generate storage keys for later 
     $xiostorage = Get-AzureStorageKey -StorageAccountName $newxiostorageaccountname 
     
     ##Generate storage acc contexts 
-    $xioContext = New-AzureStorageContext –StorageAccountName $newxiostorageaccountname -StorageAccountKey $xiostorage.Primary   
+    $xioContext = New-AzureStorageContext -StorageAccountName $newxiostorageaccountname -StorageAccountKey $xiostorage.Primary   
     
     #Create container
     $containerName = 'vhds'
@@ -237,14 +237,14 @@
     $vmConfigsl = New-AzureVMConfig -Name $vmName -InstanceSize $newInstanceSize -ImageName $image  -AvailabilitySetName $availabilitySet  ` | Add-AzureProvisioningConfig -Windows ` -AdminUserName $userName -Password $pass | Set-AzureSubnet -SubnetNames $subnet | Set-AzureStaticVNetIP -IPAddress $ipaddr
     
     #Add Data and Log Disks to VM Config
-    #Note the size specified ‘-DiskSizeInGB 1023’, this will attach 2 x P30 Premium Storage Disk Type
+    #Note the size specified '-DiskSizeInGB 1023', this will attach 2 x P30 Premium Storage Disk Type
     #Utilising the Premium Storage enabled Storage account
     
     $vmConfigsl | Add-AzureDataDisk -CreateNew -DiskSizeInGB 1023 -LUN 0 -HostCaching "ReadOnly"  -DiskLabel "DataDisk1" -MediaLocation "https://$newxiostorageaccountname.blob.core.chinacloudapi.cn/vhds/$vmName-data1.vhd"
     $vmConfigsl | Add-AzureDataDisk -CreateNew -DiskSizeInGB 1023 -LUN 1 -HostCaching "None"  -DiskLabel "logDisk1" -MediaLocation "https://$newxiostorageaccountname.blob.core.chinacloudapi.cn/vhds/$vmName-log1.vhd"
     
     #Create VM
-    $vmConfigsl  | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet ## Optional (-ReservedIPName $reservedVIPName)  
+    $vmConfigsl  | New-AzureVM -ServiceName $destcloudsvc -VNetName $vnet ## Optional (-ReservedIPName $reservedVIPName)  
     
     #Add RDP Endpoint
     $EndpointNameRDPInt = "3389"
@@ -285,11 +285,11 @@
     $xiostorage = Get-AzureStorageKey -StorageAccountName $newxiostorageaccountname
     
     #Set up contexts for the storage accounts:
-    $origContext = New-AzureStorageContext  –StorageAccountName $origstorageaccountname -StorageAccountKey $originalstorage.Primary
-    $destContext = New-AzureStorageContext  –StorageAccountName $newxiostorageaccountname -StorageAccountKey $xiostorage.Primary  
+    $origContext = New-AzureStorageContext  -StorageAccountName $origstorageaccountname -StorageAccountKey $originalstorage.Primary
+    $destContext = New-AzureStorageContext  -StorageAccountName $newxiostorageaccountname -StorageAccountKey $xiostorage.Primary  
  
 #### 步骤 4：在存储帐户之间复制 Blob
-    #Get Image VHD from Portal
+    #Get Image VHD 
     $myImageVHD = "dansoldonorsql2k14-os-2015-04-15.vhd"
     $containerName = 'vhds'
     
@@ -307,7 +307,7 @@
     
     Add-AzureVMImage -ImageName $newimageName -MediaLocation $imageMediaLocation
  
-> [AZURE.NOTE]你可能会发现即使状态报告为成功，你也仍会收到磁盘租约错误。在这种情况下，请等待大约 10 分钟。
+> [AZURE.NOTE] 你可能会发现即使状态报告为成功，你也仍会收到磁盘租约错误。在这种情况下，请等待大约 10 分钟。
 
 #### 步骤 7：生成 VM
 在此处你将基于映像生成 VM 并附加两个高级存储 VHD：
@@ -330,7 +330,7 @@
     
     #Machine User Credentials
     $userName = "myadmin"
-    $pass = "theM)stC0mplexP@ssw0rd!”
+    $pass = "theM)stC0mplexP@ssw0rd!"
      
     
     #Create VM Config
@@ -341,24 +341,24 @@
      
     
     
-    $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet 
+    $vmConfigsl2 | New-AzureVM -ServiceName $destcloudsvc -VNetName $vnet 
 
 ## 未使用 AlwaysOn 可用性组的现有部署
 
-> [AZURE.NOTE]对于现有部署，请首先参阅本主题的[先决条件](#prerequisites-for-premium-storage)部分。
+> [AZURE.NOTE] 对于现有部署，请首先参阅本主题的[先决条件](#prerequisites-for-premium-storage)部分。
 
 未使用 AlwaysOn 可用性组的 SQL Server 部署和使用这些组的 SQL Server 部署有不同的注意事项。如果你未使用 AlwaysOn 并且有现有的独立 SQL Server，则可以通过使用新的云服务和存储帐户升级到高级存储。请考虑以下选项：
 
 - **创建新的 SQL Server VM**。你可以创建使用高级存储帐户的新 SQL Server VM，如“新建部署”中所述。然后备份并还原 SQL Server 配置和用户数据库。将需要更新应用程序以引用新的 SQL Server（如果正在从内部或外部访问它）。你将需要复制所有“数据库外”对象，就像执行并排 (SxS) SQL Server 迁移一样。这包括登录名、证书和链接服务器等对象。
 - **迁移现有 SQL Server VM**。这将需要使 SQL Server VM 脱机，然后将其传输到新的云服务，包括将其所有附加 VHD 复制到高级存储帐户。当 VM 联机时，应用程序将像以前一样引用服务器主机名。请注意，现有磁盘的大小会影响性能特性。例如，400 GB 磁盘将向上舍入到 P20。如果你知道你不需要该磁盘性能，则可以将 VM 重新创建为 DS 系列 VM，并附加具有所需大小/性能指标的高级存储 VHD。然后，可以分离并重新附加 SQL DB 文件。
 
-> [AZURE.NOTE]复制 VHD 磁盘时应注意大小，取决于大小意味着这些磁盘将归入什么高级存储磁盘类型，此类型将确定磁盘性能指标。Azure 将向上舍入到最接近的磁盘大小，因此，如果你有一个 400GB 磁盘，则此磁盘将向上舍入到 P20。根据操作系统 VHD 的现有 IO 要求，你可能不需要将此 VHD 迁移到高级存储帐户。
+> [AZURE.NOTE] 复制 VHD 磁盘时应注意大小，取决于大小意味着这些磁盘将归入什么高级存储磁盘类型，此类型将确定磁盘性能指标。Azure 将向上舍入到最接近的磁盘大小，因此，如果你有一个 400GB 磁盘，则此磁盘将向上舍入到 P20。根据操作系统 VHD 的现有 IO 要求，你可能不需要将此 VHD 迁移到高级存储帐户。
 
 如果从外部访问你的 SQL Server，则云服务 VIP 将更改。你还将需要更新终结点、ACL 和 DNS 设置。
 
 ## 使用 AlwaysOn 可用性组的现有部署
 
-> [AZURE.NOTE]对于现有部署，请首先参阅本主题的[先决条件](#prerequisites-for-premium-storage)部分。
+> [AZURE.NOTE] 对于现有部署，请首先参阅本主题的[先决条件](#prerequisites-for-premium-storage)部分。
 
 在本部分开始，我们将了解 AlwaysOn 如何与 Azure 网络交互。然后，我们会将迁移细分为两种方案：可以容忍停机一段时间的迁移和必须实现最短停机时间的迁移。
 
@@ -368,7 +368,7 @@
 
 在 Microsoft Azure 中，只能将一个 IP 地址分配给 VM 上的 NIC，因此，为了实现与本地相同的抽象层，Azure 将利用分配给内部/外部负载平衡器 (ILB/ELB) 的 IP 地址。在服务器间共享的 IP 资源将设置为与 ILB/ELB 相同的 IP。此 IP 在 DNS 中发布，客户端流量将通过 ILB/ELB 传递到主 SQL Server 副本。ILB/ELB 知道哪个 SQL Server 为主，因为它使用探测器来探测 AlwaysOn IP 资源。在前面的示例中，它会探测包含 ELB/ILB 引用的终结点的每个节点，做出响应的则是主 SQL Server。
 
-> [AZURE.NOTE]ILB 和 ELB 都分配给特定 Azure 云服务，因此 Azure 中的任何云迁移都很可能意味着负载平衡器 IP 将更改。
+> [AZURE.NOTE] ILB 和 ELB 都分配给特定 Azure 云服务，因此 Azure 中的任何云迁移都很可能意味着负载平衡器 IP 将更改。
 
 ### 迁移可以允许停机一段时间的 AlwaysOn 部署
 
@@ -392,14 +392,14 @@
 
 ![DeploymentUseAlwaysOn2][7]
 
-> [AZURE.NOTE]运行验证前，你应停止使用存储池的 SQL Server 的所有实例。
+> [AZURE.NOTE] 运行验证前，你应停止使用存储池的 SQL Server 的所有实例。
 ##### 大致步骤
 
 1. 在使用附加高级存储的新云服务中创建两个新的 SQL Server。
 1. 使用 **NORECOVERY** 复制完整备份并进行还原。
 1. 复制“用户数据库外”依赖对象，例如登录名等。
 1. 新建内部负载平衡器 (ILB) 或使用外部负载平衡器 (ELB)，然后在这两个新节点上设置负载平衡终结点。
-> [AZURE.NOTE]继续下一步之前，检查所有节点的终结点配置是否正确
+> [AZURE.NOTE] 继续下一步之前，检查所有节点的终结点配置是否正确
 
 1. 禁止用户/应用程序访问 SQL Server（如果使用存储池）。
 1. 停止所有节点上的 SQL Server 引擎服务（如果使用存储池）。
@@ -465,7 +465,7 @@
 - 你的客户端重新连接可能会延迟，具体取决于你的客户端/DNS 配置。
 - 如果你选择将 AlwaysOn 群集组脱机来换出 IP 地址，则会增加停机时间。可以通过对添加的 IP 地址资源使用 OR 依赖关系和可能的所有者来避免出现这种情况。请参阅[附录](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
 
-> [AZURE.NOTE]如果你想让添加的节点作为 AlwaysOn 故障转移伙伴参与其中，则需要为 Azure 终结点添加对负载平衡集的引用。当你通过运行 **Add-AzureEndpoint** 命令来执行此操作时，当前连接将保持打开，但在更新负载平衡器之前，将无法与侦听器建立新连接。在测试时，看到此现像持续 90 到 120 秒，应该对此进行测试。
+> [AZURE.NOTE] 如果你想让添加的节点作为 AlwaysOn 故障转移伙伴参与其中，则需要为 Azure 终结点添加对负载平衡集的引用。当你通过运行 **Add-AzureEndpoint** 命令来执行此操作时，当前连接将保持打开，但在更新负载平衡器之前，将无法与侦听器建立新连接。在测试时，看到此现像持续 90 到 120 秒，应该对此进行测试。
 
 ##### 优点
 
@@ -497,7 +497,7 @@
 	- 将 AlwaysOn 组脱机并使用新的 ILB/ELB IP 地址更新 AlwaysOn 侦听器。 
 	- 或者通过 PowerShell 将新云服务 ILB/ELB 的 IP 地址资源添加到 Windows 群集。然后，将 IP 地址资源的可能所有者设置为已迁移节点 SQL2，并在网络名称中将此项设置为 OR 依赖关系。请参阅[附录](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)的“在同一子网中添加 IP 地址资源”部分。
 - 检查客户端的 DNS 配置/传播。
-- 迁移 SQL1 VM，并完成步骤 2-4。
+- 迁移 SQL1 VM，并完成步骤 2 - 4。
 - 如果使用步骤 5ii，则将 SQL1 添加为已添加的 IP 地址资源的可能所有者
 - 测试故障转移。
 
@@ -509,7 +509,8 @@
 
 ##### 停机时间点
 
-停机时间包含故障转移到备用 DC 并返回的时间。它还取决于你的客户端/DNS 配置，并且你的客户端重新连接可能会延迟。请考虑以下混合 AlwaysOn 配置的示例：
+停机时间包含故障转移到备用 DC 并返回的时间。它还取决于你的客户端/DNS 配置，并且你的客户端重新连接可能会延迟。
+请考虑以下混合 AlwaysOn 配置的示例：
 
 ![MultiSite1][9]
 
@@ -588,8 +589,8 @@
     $xiostorage = Get-AzureStorageKey -StorageAccountName $newxiostorageaccountname
     
     #Generate storage acc contexts
-    $origContext = New-AzureStorageContext  –StorageAccountName $origstorageaccountname -StorageAccountKey $originalstorage.Primary
-    $xioContext = New-AzureStorageContext  –StorageAccountName $newxiostorageaccountname -StorageAccountKey $xiostorage.Primary  
+    $origContext = New-AzureStorageContext  -StorageAccountName $origstorageaccountname -StorageAccountKey $originalstorage.Primary
+    $xioContext = New-AzureStorageContext  -StorageAccountName $newxiostorageaccountname -StorageAccountKey $xiostorage.Primary  
     
     #Set up subscription and default storage account
     Set-AzureSubscription -SubscriptionName $mysubscription -CurrentStorageAccount $origstorageaccountname
@@ -650,7 +651,7 @@
 
 在后面的迁移步骤中，你将需要使用引用负载平衡器的已更新 IP 地址更新 AlwaysOn 侦听器，这将涉及删除和添加 IP 地址资源。更新 IP 之后，你需要确保已在 DNS 区域中更新新的 IP 地址并且客户端将更新其本地 DNS 缓存。
 
-如果你的客户端驻留在不同网络段，并引用不同的 DNS 服务器，则你需要考虑在迁移期间将发生哪些与 DNS 区域传送相关的事件，因为应用程序重新连接时间将至少受到侦听器的任何新 IP 地址的区域传送时间的约束。如果你在此处受到时间约束，则应与 Windows 团队讨论并测试强制增量区域传送，同时还应将 DNS 主机记录设为较小的生存时间 (TTL)，以使客户端更新。有关详细信息，请参阅[增量区域传送](https://technet.microsoft.com/library/cc958973.aspx)和 [Start-DnsServerZoneTransfer](https://technet.microsoft.com/library/jj649917.aspx)。
+如果你的客户端驻留在不同网络段，并引用不同的 DNS 服务器，则你需要考虑在迁移期间将发生哪些与 DNS 区域传送相关的事件，因为应用程序重新连接时间将至少受到侦听器的任何新 IP 地址的区域传送时间的约束。如果你在此处受到时间约束，则应与 Windows 团队讨论并测试强制增量区域传送，同时还应将 DNS 主机记录设为较小的生存时间 (TTL)，以使客户端更新。有关详细信息，请参阅[增量区域传送](https://technet.microsoft.com/zh-cn/library/cc958973.aspx)和 [Start-DnsServerZoneTransfer](https://technet.microsoft.com/zh-cn/library/jj649917.aspx)。
 
 默认情况下，与 Azure 中 AlwaysOn 的侦听器关联的 DNS 记录的 TTL 为 1200 秒。如果你在迁移期间受时间约束，你可能希望减少此时间，以确保客户端使用侦听器更新后的 IP 地址更新其 DNS。你可以通过转储 VNN 的配置来查看并修改该配置：
 
@@ -711,7 +712,7 @@
     ##Building Existing Data Disk Configuration
     $file = "C:\Azure Storage Testing\mydiskconfig_$vmNameToMigrate.csv"
     $datadisks = @(Get-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate | Get-AzureDataDisk )
-    Add-Content $file “lun, vhdname, hostcaching, disklabel, diskName”
+    Add-Content $file "lun, vhdname, hostcaching, disklabel, diskName"
     foreach ($disk in $datadisks)
     {
       $vhdname = $disk.MediaLink.AbsolutePath -creplace  "/vhds/"
@@ -851,7 +852,7 @@
     }
     
     #Create VM
-    $vmConfig  | New-AzureVM –ServiceName $destcloudsvc –Location $location -VNetName $vnet ## Optional (-ReservedIPName $reservedVIPName)
+    $vmConfig  | New-AzureVM -ServiceName $destcloudsvc -Location $location -VNetName $vnet ## Optional (-ReservedIPName $reservedVIPName)
  
 #### 步骤 13：在新的云服务上创建 ILB，添加负载平衡终结点和 ACL
     #Check for existing ILB
@@ -860,14 +861,14 @@
     $ilb="sqlIntIlbDest"
     $subnet = "SQL"
     $IP="192.168.0.25"
-    Add-AzureInternalLoadBalancer -ServiceName $destcloudsvc -InternalLoadBalancerName $ilb –SubnetName $subnet –StaticVNetIPAddress $IP
+    Add-AzureInternalLoadBalancer -ServiceName $destcloudsvc -InternalLoadBalancerName $ilb -SubnetName $subnet -StaticVNetIPAddress $IP
     
     #Endpoints
     $epname="sqlIntEP"
     $prot="tcp"
     $locport=1433
     $pubport=1433
-    Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEndpoint -Name $epname -Protocol $prot -LocalPort $locport -PublicPort $pubport -ProbePort 59999 -ProbeIntervalInSeconds 5 -ProbeTimeoutInSeconds 11  -ProbeProtocol "TCP" -InternalLoadBalancerName $ilb -LBSetName $ilb -DirectServerReturn $true | Update-AzureVM
+    Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate  | Add-AzureEndpoint -Name $epname -Protocol $prot -LocalPort $locport -PublicPort $pubport -ProbePort 59999 -ProbeIntervalInSeconds 5 -ProbeTimeoutInSeconds 11  -ProbeProtocol "TCP" -InternalLoadBalancerName $ilb -LBSetName $ilb -DirectServerReturn $true | Update-AzureVM
     
     #SET Azure ACLs or Network Security Groups & Windows FWs 
      
@@ -875,7 +876,7 @@
     
     ####WAIT FOR FULL AlwaysOn RESYNCRONISATION!!!!!!!!!#####
 
-####步骤 14：更新 AlwaysOn 
+#### 步骤 14：更新 AlwaysOn 
     #Code to be executed on a Cluster Node
     $ClusterNetworkNameAmsterdam = "Cluster Network 2" # the azure cluster subnet network name
     $newCloudServiceIPAmsterdam = "192.168.0.25" # IP address of your cloud service 
@@ -925,7 +926,7 @@
     #Building Existing Data Disk Configuration
     $file = "C:\Azure Storage Testing\mydiskconfig_$vmNameToMigrate.csv"
     $datadisks = @(Get-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate | Get-AzureDataDisk )
-    Add-Content $file “lun, vhdname, hostcaching, disklabel, diskName”
+    Add-Content $file "lun, vhdname, hostcaching, disklabel, diskName"
     foreach ($disk in $datadisks)
     {
       $vhdname = $disk.MediaLink.AbsolutePath -creplace  "/vhds/"
@@ -977,7 +978,7 @@
     $xiostoragenode2 = Get-AzureStorageKey -StorageAccountName $newxiostorageaccountnamenode2
     
     #Generate storage acc contexts
-    $xioContextnode2 = New-AzureStorageContext  –StorageAccountName $newxiostorageaccountnamenode2 -StorageAccountKey $xiostoragenode2.Primary  
+    $xioContextnode2 = New-AzureStorageContext  -StorageAccountName $newxiostorageaccountnamenode2 -StorageAccountKey $xiostoragenode2.Primary  
     
     #Set up subscription and default storage account
     Set-AzureSubscription -SubscriptionName $mysubscription -CurrentStorageAccount $newxiostorageaccountnamenode2
@@ -1016,7 +1017,6 @@
      
     
 你可以检查所有 VHD 的 VHD 复制状态：
-	ForEach ($disk in $diskobjects) { $lun = $disk.Lun $vhdname = $disk.vhdname $cacheoption = $disk.HostCaching $disklabel = $disk.DiskLabel $diskName = $disk.DiskName
     ForEach ($disk in $diskobjects)
        {
        $lun = $disk.Lun
@@ -1034,8 +1034,8 @@
 等到所有这些状态都记录为成功。
 
 如需单个 blob 的信息：
-	#Check induvidual blob status
-	Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContextnode2
+    #Check induvidual blob status
+    Get-AzureStorageBlobCopyState -Blob "danRegSvcAms-dansqlams1-2014-07-03.vhd" -Container $containerName -Context $xioContextnode2
 
 #### 步骤 21：注册操作系统磁盘
     #change storage account to the new XIO storage account
@@ -1079,7 +1079,7 @@
     }
     
     #Create VM
-    $vmConfig  | New-AzureVM –ServiceName $destcloudsvc –Location $location -VNetName $vnet -Verbose
+    $vmConfig  | New-AzureVM -ServiceName $destcloudsvc -Location $location -VNetName $vnet -Verbose
 
 #### 步骤 22：添加负载平衡终结点和 ACL
     #Endpoints
@@ -1087,10 +1087,10 @@
     $prot="tcp"
     $locport=1433
     $pubport=1433
-    Get-AzureVM –ServiceName $destcloudsvc –Name $vmNameToMigrate  | Add-AzureEndpoint -Name $epname -Protocol $prot -LocalPort $locport -PublicPort $pubport -ProbePort 59999 -ProbeIntervalInSeconds 5 -ProbeTimeoutInSeconds 11  -ProbeProtocol "TCP" -InternalLoadBalancerName $ilb -LBSetName $ilb -DirectServerReturn $true | Update-AzureVM
+    Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate  | Add-AzureEndpoint -Name $epname -Protocol $prot -LocalPort $locport -PublicPort $pubport -ProbePort 59999 -ProbeIntervalInSeconds 5 -ProbeTimeoutInSeconds 11  -ProbeProtocol "TCP" -InternalLoadBalancerName $ilb -LBSetName $ilb -DirectServerReturn $true | Update-AzureVM
     
     
-    #STOP!!! CHECK in portal or Machine Endpoints through powershell that these Endpoints are created!
+    #STOP!!! CHECK in the Azure Management Portal or Machine Endpoints through powershell that these Endpoints are created!
     
     #SET ACLs or Azure Network Security Groups & Windows FWs 
      
@@ -1125,7 +1125,7 @@
 
 ## 其他资源
 - [Azure 高级存储](/documentation/articles/storage-premium-storage-preview-portal)
-- [虚拟机](http://azure.microsoft.com/services/virtual-machines/)
+- [虚拟机](/home/features/virtual-machines/)
 - [Azure 虚拟机中的 SQL Server](/documentation/articles/virtual-machines-sql-server-infrastructure-services)
 
 <!-- IMAGES -->
@@ -1156,4 +1156,4 @@
 [25]: ./media/virtual-machines-sql-server-use-premium-storage/10_Appendix_15.png
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0215_2016-->

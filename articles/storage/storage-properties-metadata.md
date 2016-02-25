@@ -1,16 +1,16 @@
 
 <properties 
-  pageTitle="在 Azure 存储空间中设置和检索对象的属性和元数据 | Microsoft Azure" 
-  description="在 Azure 存储空间中存储对象的自定义元数据，并设置和检索系统属性。" 
-  services="storage" 
-  documentationCenter="" 
-  authors="tamram" 
-  manager="adinah" 
+  pageTitle="在 Azure 存储空间中设置和检索对象的属性和元数据 | Microsoft Azure" 
+  description="在 Azure 存储空间中存储对象的自定义元数据，并设置和检索系统属性。" 
+  services="storage" 
+  documentationCenter="" 
+  authors="tamram" 
+  manager="adinah" 
   editor=""/>
 
 <tags 
-  ms.service="storage" 
-  ms.date="10/26/2015" 
+  ms.service="storage" 
+  ms.date="01/05/2016" 
   wacn.date=""/>
 
 
@@ -26,7 +26,7 @@ Azure 存储中的对象支持系统属性和用户定义的元数据，除了�
 
 检索资源的属性和元数据值的过程分为两步。在可以读取这些值之前，你必须通过调用 **FetchAttributes** 方法显式获取它们。
 
-> [AZURE.IMPORTANT]不会填充存储资源的属性和元数据值，除非调用 **FetchAttributes** 方法之一。
+> [AZURE.IMPORTANT] 不会填充存储资源的属性和元数据值，除非调用 **FetchAttributes** 方法之一。
 
 ## 设置和检索属性
 
@@ -95,4 +95,4 @@ Azure 存储中的对象支持系统属性和用户定义的元数据，除了�
 - [适用于 .NET 的 Azure 存储空间客户端库参考](http://msdn.microsoft.com/zh-cn/library/azure/wa_storage_30_reference_home.aspx)
 - [适用于 .NET 的 Azure 存储空间客户端库包](https://www.nuget.org/packages/WindowsAzure.Storage/) 
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0215_2016-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="08/08/2015" 
+	ms.date="12/24/2015"
 	wacn.date=""/>
 
 # 向移动服务应用程序添加推送通知
@@ -21,4 +21,4 @@
 
 [AZURE.INCLUDE [mobile-services-content-not-ready](../includes/mobile-services-content-not-ready.md)]
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0215_2016-->

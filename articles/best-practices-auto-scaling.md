@@ -10,7 +10,7 @@
 
 <tags
    ms.service="best-practice"
-   ms.date="04/28/2015"
+   ms.date="01/04/2016"
    wacn.date=""/>
 
 # 自动缩放指南
@@ -53,8 +53,8 @@
 ## Azure 解决方案中的自动缩放
 可以使用多个选项为 Azure 解决方案配置自动缩放：
 
-- **Azure 自动缩放**。此功能支持基于计划的最常见缩放方案，并可以选择性地支持基于运行时度量值（例如处理器利用率、队列长度，或内置和自定义的计数器）触发的缩放操作。你可以使用 Azure 管理门户快速轻松地配置解决方案的简单自动缩放策略，还可以使用 Azure 监视服务管理库，以更精细的控制度配置自动缩放规则。有关详细信息，请参阅 [Azure 监视服务管理库](#the-azure-monitoring-services-management-library)部分。
-- 基于诊断、监视和 Azure 服务管理功能的**自定义解决方案**。例如，你可以使用 Azure 诊断、自定义代码或[System Center Management Pack for Azure](http://www.microsoft.com/download/details.aspx?id=38414) 来持续监视应用程序的性能，并使用 [Azure 服务管理 REST API](http://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx)、[Microsoft Azure 管理库](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Libraries)或[自动缩放应用程序块](http://msdn.microsoft.com/zh-cn/library/hh680892%28v=pandp.50%29.aspx)来向外和向内缩放。用于触发缩放操作的度量值可以是任何内置或自定义的计数器，或者是在应用程序中实施的其他检测。但是，自定义解决方案并不容易实施，只应在前述方法都无法满足要求时才加以考虑。请注意，自动缩放应用程序块是一个开放源代码框架，不受 Microsoft 的直接支持。
+- **Azure 自动缩放**。此功能支持基于计划的最常见缩放方案，并可以选择性地支持基于运行时度量值（例如处理器利用率、队列长度，或内置和自定义的计数器）触发的缩放操作。你可以使用 Azure 管理门户快速轻松地配置解决方案的简单自动缩放策略。若要进行更精细的控制，你可以使用 [Azure 服务管理 REST API](https://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx) 或 [Azure 资源管理器 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dn790568.aspx)。[Azure 监视服务管理库](http://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring)和 [Microsoft Insights 库](https://www.nuget.org/packages/Microsoft.Azure.Insights/)（预览版）是可让你从不同的资源收集度量值以及利用 REST API 执行自动缩放的 SDK。对于不支持 Azure 资源管理器的资源，或者当你使用云服务时，可以使用服务管理 REST API 进行自动缩放。在其他所有情况下，建议使用 Azure 资源管理器 (ARM) 进行自动缩放。
+- **自定义解决方案**根据应用程序和 Azure 的管理功能进行检测。例如，你可以将 Azure 诊断或应用程序中的其他检测方法与自定义代码配合使用，以持续监视和导出应用程序的度量值。你可以让处理这些度量值的自定义规则使用服务管理或资源管理器 REST API 来触发自动缩放。用于触发缩放操作的度量值可以是任何内置或自定义的计数器，或者是在应用程序中实施的其他检测。但是，自定义解决方案并不容易实施，只应在前述方法都无法满足要求时才加以考虑。[自动缩放应用程序块](http://msdn.microsoft.com/zh-cn/library/hh680892%28v=pandp.50%29.aspx)利用了这种方法。
 - **第三方服务**（例如 [Paraleap AzureWatch](http://www.paraleap.com/AzureWatch)）可让你使根据计划、服务负载和系统性能指标、自定义规则以及不同规则类型的组合来缩放解决方案。
 
 选择要采用哪种自动缩放解决方案时，请注意以下几点：
@@ -74,7 +74,7 @@ Azure 自动缩放可让你配置解决方案的向外缩放和向内缩放选�
 - 自动缩放策略结合了计划的缩放和基于度量值的缩放。你可以为服务指定两种规则，使应用程序同时根据计划和负载变化响应做出缩放。
 - 你应该配置 Azure 自动缩放规则，然后监视应用程序在一段时间内的性能。如果需要，请使用这种监视的结果来调整系统的缩放方式。但请记住，自动缩放不是即时起效的过程 — 它需要时间来对度量值（例如平均 CPU 利用率超过或低于指定的阈值）做出反应。
 - 使用基于测得触发器属性（例如 CPU 使用量或队列长度）的检测机制的自动缩放规则使用一段时间内的聚合值而不是即时值来触发自动缩放操作。默认情况下，聚合是值的平均值。这可以防止系统反应太快，或导致快速震荡。这还可以使自动启动的新实例顺利进入运行模式，避免当新实例正在启动时，又发生其他自动缩放操作。对于云服务和虚拟机，聚合的默认期限为 45 分钟，度量值需要经过这段时间后才为了响应需求高峰而触发自动缩放。可以使用 SDK 更改聚合期限，但请注意，低于 25 分钟可能导致不可预测的结果（有关详细信息，请参阅[使用 Azure 监视服务管理库根据 CPU 百分比自动缩放云服务](http://rickrainey.com/2013/12/15/auto-scaling-cloud-services-on-cpu-percentage-with-the-windows-azure-monitoring-services-management-library/)）。对于 Azure 网站，平均期限要短得多，这样便可以在平均触发测量值更改约五分钟后提供新实例。
-- 如果使用 SDK 而不是 Web 门户配置自动缩放，则可以指定更详细的计划，在执行该计划期间，规则将处于活动状态。你还可以创建自己的度量值，并将其与自动缩放规则中的现有度量值一起使用，或单独使用。例如，你可能希望使用替代计数器（例如每秒请求数或平均内存可用性）或使用自定义计数器来计算特定的业务进程。有关详细信息，请参阅 [Azure 监视服务管理库](#the-azure-monitoring-services-management-library)部分。
+- 如果使用 SDK 而不是 Web 门户配置自动缩放，则可以指定更详细的计划，在执行该计划期间，规则将处于活动状态。你还可以创建自己的度量值，并将其与自动缩放规则中的现有度量值一起使用，或单独使用。例如，你可能希望使用替代计数器（例如每秒请求数或平均内存可用性）或使用自定义计数器来计算特定的业务进程。
 - 自动缩放 Azure 虚拟机时，必须部署相当于允许自动缩放启动的最大数的虚拟机实例数。这些实例必须属于同一个可用性集。虚拟机自动缩放机制不会创建或删除虚拟机的实例；而你配置的自动缩放规则将启动和停止相应数目的实例。有关详细信息，请参阅[自动缩放运行 Web 角色、辅助角色或虚拟机的应用程序](/documentation/articles/cloud-services-how-to-scale#autoscale)。
 - 如果无法启动新的实例，则原因可能是已达到订阅的最大值（例如，使用虚拟机服务时的核心数上限），或者在启动期间发生错误，而门户可能显示自动缩放操作成功。但是，门户中显示的后续 **ChangeDeploymentConfiguration** 事件只显示已请求服务启动，而不会有任何事件指示是否已成功完成。
 - 在 Azure 自动缩放中，可以使用 Web 门户 UI 将 SQL 数据库实例和队列等资源链接到计算服务实例。这样，你便可以更轻松地访问每个链接资源的各个手动和自动缩放配置选项。有关详细信息，请参阅“如何管理云服务”页中的[如何：将资源链接到云服务](/documentation/articles/cloud-services-how-to-manage#linkresources)，以及[如何缩放应用程序](/documentation/articles/cloud-services-how-to-scale)页。
@@ -85,31 +85,6 @@ Azure 自动缩放可让你配置解决方案的向外缩放和向内缩放选�
 
 <a name="the-azure-monitoring-services-management-library"></a>
 
-### Azure 监视服务管理库
-你可以使用服务管理 API 以更精细的控制度来配置 Azure 自动缩放，以及访问无法通过 Web 门户获得的功能。此 API 可以 REST Web API 的形式直接访问，或通过 Azure 监视服务管理库进行访问。
-
-可以通过指定云服务角色、虚拟机可用性集、Azure 网站（作为 Web 空间中的服务器场），或 Azure 移动服务的自动缩放配置文件来配置 Azure 自动缩放。每个配置文件的目标可以多达 20 个，分别指示：
-
-- 应用时机（使用循环或固定日期间隔），
-- 允许的实例数（最小值、最大值和默认数目）
-- 生效的自动缩放规则
-
-使用 Web 门户可以配置一组固定的配置文件，主要用于区分日间/夜间以及工作日/周末配置文件，配合一对基于 CPU 利用率或队列长度的缩放规则。如果改用服务管理 API，你可以为配置文件配置更精细的适用日期，并最多指定 10 个规则，其中包含基于 Azure 监视服务可用的任何度量值的触发器。
-
-自动缩放规则包含一个用于指示何时应用规则的触发器，以及指示要对目标配置执行的更改的缩放操作。在编写本文时，唯一支持的操作是增加或减少实例计数。
-
-自动缩放规则的触发器基于可用度量值。将会根据自动缩放配置中的定义，从相应的源定期采样所配置度量值的值。评估每个活动配置文件的规则时，触发器上指定的度量值将及时跨实例聚合（如果适用），此聚合值将与阈值进行比较，以指示是否要应用规则。将计算基于时间的有效聚合值的平均值（默认值）、最小值、最大值、最终值、合计值和计数。将计算基于实例的有效聚合值的平均值（默认值）、最小值和最大值。
-
-触发器可用的度量值为 Azure 存储空间和服务总线队列长度、Azure 诊断发布的标准性能计数器以及每个角色或虚拟机发布的任何自定义性能计数器。在云服务解决方案中，针对服务处理非默认提供的性能计数器时，必须将 UI 中的监视级别设置从“最小”更改为“详细”。
-
-有关详细信息，请参阅：
-
-- 监视 SDK [类库](http://msdn.microsoft.com/zh-cn/library/azure/dn510414.aspx)
-- [如何配置性能计数器](http://msdn.microsoft.com/zh-cn/library/azure/dn535595.aspx)
-- [自动缩放的相关操作](http://msdn.microsoft.com/zh-cn/library/azure/dn510374.aspx)
-- [添加自动缩放设置](http://msdn.microsoft.com/zh-cn/library/azure/dn510372.aspx)
-- [使用 Azure 监视服务管理库根据 CPU 百分比自动缩放云服务](http://rickrainey.com/2013/12/15/auto-scaling-cloud-services-on-cpu-percentage-with-the-windows-azure-monitoring-services-management-library/)
-- [如何使用 Azure 监视服务管理库创建自动缩放规则](http://blogs.msdn.com/b/cie/archive/2014/02/20/how-to-use-windows-azure-monitoring-services-management-library-to-create-an-autoscale-rule.aspx)
 
 ## 相关模式和指南
 实施自动缩放时，以下模式和指南也可能与你的方案相关：
@@ -125,8 +100,9 @@ Azure 自动缩放可让你配置解决方案的向外缩放和向内缩放选�
 - [缩放链接的资源](/documentation/articles/cloud-services-how-to-scale#scalelink)
 - [Azure 监视服务管理库](http://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring)
 - [Azure 服务管理 REST API](http://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx)
+- [Azure 资源管理器 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dn790568.aspx)
+- [Microsoft Insights 库](https://www.nuget.org/packages/Microsoft.Azure.Insights/)
 - [自动缩放的相关操作](http://msdn.microsoft.com/zh-cn/library/azure/dn510374.aspx)
 - [Microsoft.WindowsAzure.Management.Monitoring.Autoscale 命名空间](http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.management.monitoring.autoscale.aspx)
-- MSDN 上的[自动缩放应用程序块](http://msdn.microsoft.com/zh-cn/library/hh680892%28v=pandp.50%29.aspx)文档和重要方案。
 
-<!---HONumber=67-->
+<!---HONumber=Mooncake_0215_2016-->

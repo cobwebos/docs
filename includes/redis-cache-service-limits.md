@@ -1,6 +1,6 @@
 | 资源 | 限制 |
 |---------------------------------------------|----------------------------------------|
-| 缓存大小 | 530 GB |
+| 缓存大小 | 530 GB（有关详细信息，[请联系我们](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)） |
 | 数据库 | 16 |
 | 连接的最大客户端数 | 40,000 |
 | Redis 缓存副本（用于高可用性） | 1 |
@@ -12,4 +12,4 @@
 
 由于 Azure Redis 缓存实例的配置和管理是由 Microsoft 执行的，因此 Azure Redis 缓存不一定支持所有的 Redis 命令。有关详细信息，请参阅 [Azure Redis 缓存不支持的 Redis 命令](/documentation/articles/cache-configure#redis-commands-not-supported-in-azure-redis-cache)。
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

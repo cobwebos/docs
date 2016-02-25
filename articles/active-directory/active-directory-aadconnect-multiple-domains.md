@@ -9,12 +9,13 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="12/02/2015"
+	ms.date="01/11/2016"
 	wacn.date=""/>
 
 #多域支持
 
-许多人都很好奇如何使用联合配置多个顶级 Office 365 或 Azure AD 域和子域。尽管大多数配置都可以通过简单直接的方式完成，但由于有些事情是在幕后进行的，因此你应该了解一些提示与技巧，以避免发生以下问题
+许多人都想知道如何使用联合配置多个顶级 Office 365 或 Azure AD 域和子域。
+尽管大多数配置都可以通过简单直接的方式完成，但由于有些事情是在幕后进行的，因此你应该了解一些提示与技巧，以避免发生以下问题
 
 - 尝试为联合配置其他域时出现的错误消息
 - 在为联合配置多个顶级域后，子域中的用户无法登录
@@ -22,7 +23,7 @@
 ## 多个顶级域
 我将引导你完成示例组织 contoso.com 的设置，该组织想要添加名为 fabrikam.com 的附加域。
 
-假设在本地系统中，我已将 AD FS 的联合服务名称配置为 fs.jenfield.com。
+假设在本地系统中，我已将 AD FS 的联合服务名称配置为 fs.contoso100.com。
 
 当我首次注册 Office 365 或 Azure AD 时，选择将 contoso.com 配置为我的第一个登录域。我可以通过使用 New-MsolFederatedDomain 的 Azure AD Connect 或 Azure AD Powershell 来实现此目的。
 
@@ -30,8 +31,8 @@
 
 | 属性名称 | 值 | 说明|
 | ----- | ----- | -----|
-|IssuerURI | http://fs.jenfield.com/adfs/services/trust|虽然它看起来像是个 URL，但此属性其实只是本地身份验证系统的名称，因此路径不需要解析为任何项目。默认情况下，Azure AD 在本地 AD FS 配置中将其设置为联合身份验证服务标识符的值。
-|PassiveClientSignInUrl|https://fs.jenfield.com/adfs/ls/|This是被动登录请求要发送到的位置，它将解析为我的实际 AD FS 系统。实际上有多个“*Url”属性，但我们只需查看演示此属性与 URI 之间差异（例如 IssuerURI）的示例。
+|IssuerURI | http://fs.contoso100.com/adfs/services/trust|虽然它看起来像是个 URL，但此属性其实只是本地身份验证系统的名称，因此路径不需要解析为任何项目。默认情况下，Azure AD 在本地 AD FS 配置中将其设置为联合身份验证服务标识符的值。
+|PassiveClientSignInUrl|https://fs.contoso100.com/adfs/ls/|This是被动登录请求要发送到的位置，它将解析为我的实际 AD FS 系统。实际上有多个“*Url”属性，但我们只需查看演示此属性与 URI 之间差异（例如 IssuerURI）的示例。
 
 现在，假设我添加了第二个域 fabrikam.com。同样，我可以再次运行 Azure AD Connect 向导或通过 PowerShell 完成此操作。
 
@@ -47,13 +48,13 @@
 
 - DomainName: fabrikam.com
 - IssuerURI: http://fabrikam.com/adfs/services/trust 
-- PassiveClientSignInUrl: https://fs.jenfield.com/adfs/ls/ 
+- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/ 
 
-请注意，根据我的域为 IssuerURI 设置一个值后，唯一的终结点 url 值仍然配置为指向我在 fs.jenfield.com 上的联合身份验证服务，就像原始 contoso.com 域一样。因此，所有域仍指向相同的 AD FS 系统。
+请注意，根据我的域为 IssuerURI 设置一个值后，唯一的终结点 url 值仍然配置为指向我在 fs.contoso100.com 上的联合身份验证服务，就像原始 contoso.com 域一样。因此，所有域仍指向相同的 AD FS 系统。
 
 SupportMultipleDomain 的另一个作用是确保 AD FS 系统在针对 Azure AD 颁发的令牌中包含正确的颁发者值。它通过使用用户 upn 的域部分并将其设置为 issuerURI 中的域，例如 https://{upn，来实现此目的。因此，在 Azure AD 或 Office 365 上进行身份验证期间，将使用用户令牌中的 Issuer 元素来查找 Azure AD 中的域。如果找不到匹配项，身份验证将会失败。
 
-例如，如果用户的 UPN 是 johndoe@fabrikam.com，AD FS 颁发的令牌中的 Issuer 元素将设置为 http://fabrikam.com/adfs/services/trust 。这将与 Azure AD 配置匹配，并且身份验证会成功。
+例如，如果用户的 UPN 是 johndoe@fabrikam.com，AD FS 颁发的令牌中的 Issuer 元素将设置为 http://fabrikam.com/adfs/services/trust。这将与 Azure AD 配置匹配，并且身份验证会成功。
 
 以下是实现此逻辑的自定义声明规则：
 
@@ -72,10 +73,10 @@ SupportMultipleDomain 的另一个作用是确保 AD FS 系统在针对 Azure AD
 
 - DomainName: contoso.com
 - IssuerURI: http://contoso.com/adfs/services/trust 
-- PassiveClientSignInUrl: https://fs.jenfield.com/adfs/ls/ 
+- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/ 
 - DomainName: fabrikam.com
 - IssuerURI: http://fabrikam.com/adfs/services/trust 
-- PassiveClientSignInUrl: https://fs.jenfield.com/adfs/ls/ 
+- PassiveClientSignInUrl: https://fs.contoso100.com/adfs/ls/ 
 
 用户从 contoso.com 联合登录后，fabrikam.com 域现在可正常工作。现在只剩下一个问题：用户在子域中登录。
 
@@ -89,4 +90,4 @@ Azure AD 实施的标准规则将包含颁发者的令牌生成为 http://sub.co
 
 总而言之，你可以将多个具有不同名称的域以及子域全部联合到同一 AD FS 服务器，只需执行几个额外的步骤，即可确保为所有用户正确设置 Issuer 值。
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0215_2016-->

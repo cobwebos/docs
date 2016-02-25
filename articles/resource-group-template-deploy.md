@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="12/08/2015"
+   ms.date="12/23/2015"
    wacn.date=""/>
 
 # 使用 Azure 资源管理器模板部署应用程序
@@ -34,7 +34,7 @@
 - **添加**模板中指定的、但不在资源组中的资源 
 - **不会重新预配**资源组中存在的、与模板中定义的条件相同的资源
  
-可以通过 **Mode** 属性指定部署的类型。
+你可以通过 **Mode** 属性指定部署的类型，如以下 PowerShell 和 REST API 示例中所示。
 
 ## 使用 PowerShell 进行部署
 
@@ -70,7 +70,7 @@
                     *
         ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
 
-5. 若要为资源组创建新部署，请运行 **New-AzureRmResourceGroupDeployment** 命令并提供所需的参数。参数包括部署的名称、资源组的名称、所创建模板的路径，以及方案所需的任何其他参数。
+5. 若要为资源组创建新部署，请运行 **New-AzureRmResourceGroupDeployment** 命令并提供所需的参数。参数包括部署的名称、资源组的名称、所创建模板的路径，以及方案所需的任何其他参数。未指定 **Mode** 参数，意味着将使用默认值 **Incremental**。
    
      可以使用以下选项提供参数值：
    
@@ -96,9 +96,9 @@
           Mode              : Incremental
           ...
 
-     若要运行完整部署，请将 **Mode** 设置为 **Complete**。
+     若要运行完整部署，请将 **Mode** 设置为 **Complete**。请注意，系统会要求你确认使用 Complete 模式，这可能需要删除资源。
 
-          PS C:\> New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> -Mode Complete
+          PS C:\> New-AzureRmResourceGroupDeployment -Name ExampleDeployment -Mode Complete -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate> 
           Confirm
           Are you sure you want to use the complete deployment mode? Resources in the resource group 'ExampleResourceGroup' which are not
           included in the template will be deleted.
@@ -199,7 +199,7 @@
              }
            }
    
-3. 创建新的资源组部署。提供你的订阅 ID、要部署的资源组的名称、部署的名称以及模板的位置。有关模板文件的信息，请参阅[参数文件](./#parameter-file)。有关使用 REST API 创建资源组的详细信息，请参阅[创建模板部署](https://msdn.microsoft.com/zh-cn/library/azure/dn790564.aspx)。若要运行完整部署，请将 **mode** 设置为 **Complete**。
+3. 创建新的资源组部署。提供你的订阅 ID、要部署的资源组的名称、部署的名称以及模板的位置。有关模板文件的信息，请参阅[参数文件](./#parameter-file)。有关使用 REST API 创建资源组的详细信息，请参阅[创建模板部署](https://msdn.microsoft.com/zh-cn/library/azure/dn790564.aspx)。请注意，**mode** 设置为 **Incremental**。若要运行完整部署，请将 **mode** 设置为 **Complete**。
     
          PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
             <common headers>
@@ -268,4 +268,4 @@
 
  
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

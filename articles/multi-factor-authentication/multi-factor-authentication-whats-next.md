@@ -9,12 +9,19 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="11/19/2015" 
+	ms.date="01/11/2016" 
 	wacn.date=""/>
 
 # 配置 Azure Multi-Factor Authentication
 
 在启动并运行 Azure Multi-Factor Authentication 后，可以参考以下文章来对其进行管理。该文章涵盖各种主题，可让你充分利用 Azure Multi-Factor Authentication。请注意，并非所有版本的 Azure Multi-Factor Authentication 都提供这些功能。
+
+以下某些功能的配置可在 Azure Multi-Factor Authentication 管理门户中找到。可以通过两种不同的方式访问此门户，这两种方式都是通过 Azure 门户进行的。第一种方式是管理 Multi-Factor Auth 提供程序（如果使用基于使用量的 MFA）。第二种方式是通过 MFA 服务设置。第二个选项需要 Multi-Factor Auth 提供程序或 Azure MFA、Azure AD Premium 或 Enterprise Mobility Suite 许可证。
+
+若要通过 Azure Multi-Factor Auth 提供程序访问 MFA 管理门户，请以管理员身份登录 Azure 门户，然后选择“Active Directory”选项。单击“Multi-Factor Auth 提供程序”选项卡，然后单击底部的“管理”按钮。
+
+若要通过“MFA 服务设置”页访问 MFA 管理门户，请以管理员身份登录 Azure 门户，然后选择“Active Directory”选项。单击你的目录，然后单击“配置”选项卡。在“Multi-Factor Authentication”部分下，单击“管理服务设置”。在“MFA 服务设置”页底部，单击“转到门户”链接。
+
 
 功能| 说明| 涵盖的内容
 :------------- | :------------- | :------------- | 
@@ -34,16 +41,17 @@
 
 ### 设置和配置欺诈警报
 
+1.	登录到 http://azure.microsoft.com
+2.	根据此页顶部的说明导航到 MFA 管理门户。
+3.	在 Azure Multi-Factor Authentication 管理门户中，单击“配置”部分下面的“设置”。
+4.	在“设置”页的“欺诈警报”部分下，选中“允许用户提交欺诈警报”复选框。
+5.	如果你希望在报告欺诈时阻止用户，则勾选“报告欺诈时阻止用户”。
+6.	在“用于在初始问候期间报告欺诈的代码”下的框中输入可以在呼叫验证期间使用的数字代码。如果用户输入此代码加上 #（而不是只输入 # 号），则随后会报告欺诈警报。 
+7.	在底部单击“保存”。
 
-1. 登录到 [http://www.windowsazure.cn](http://www.windowsazure.cn)
-2. 在左侧选择“Active Directory”。
-3. 在顶部选择“Multi-Factor Auth 提供程序”。此时将显示 Multi-Factor Auth 提供程序列表。
-4. 如果你有多个Multi-Factor Auth 提供程序，请选择你要在其上启用欺诈警报的提供程序，然后单击页底部的“管理”。如果你只有一个 Multi-Factor Auth 提供程序，则直接单击“管理”。此时将打开 Azure Multi-Factor Authentication 管理门户。
-5. 在 Azure Multi-Factor Authentication 管理门户上，单击左侧的“设置”。
-6. 在“欺诈警报”部分下，勾选“允许用户提交欺诈警报”。
-7. 如果你希望在报告欺诈时阻止用户，则勾选“报告欺诈时阻止用户”。
-8. 在“用于在初始问候期间报告欺诈的代码”下的框中输入可以在呼叫验证期间使用的数字代码。如果用户输入此代码（而非 # 号），则随后会报告欺诈警报。
-9. 在底部单击“保存”。
+>[AZURE.NOTE]
+Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。如果你使用的代码不是 0，则需要根据相应的说明记录并上载你自己的自定义问候语音。
+
 
 <center>![Cloud](./media/multi-factor-authentication-whats-next/fraud.png)</center>
 
@@ -51,18 +59,21 @@
 可通过两种途径来报告欺诈警报。通过移动应用程序或电话。
 
 ### 使用移动应用报告欺诈警报
-<ol>
-<li>当验证发送到你的手机时，单击该验证即会启动 Multi-Factor Authentication 应用。</li>
-<li>若要报告欺诈行为，请单击“取消并报告欺诈行为”。此时会弹出一个框，其中显示“你组织的 IT</li> 支持人员将会收到通知”。单击“报告欺诈行为”。
-<li>在该应用上，单击“关闭”。</li></ol>
+
+
+
+1. 当验证发送到你的手机时，单击该验证即会启动 Multi-Factor Authentication 应用。
+2. 若要报告欺诈行为，请单击“取消并报告欺诈行为”。此时会弹出一个框，其中显示“你组织的 IT 支持人员将会收到通知”。 
+3. 单击“报告欺诈行为”。
+4. 在该应用上，单击“关闭”。
 
 <center>![Cloud](./media/multi-factor-authentication-whats-next/report1.png)</center>
 
 ### 使用电话报告欺诈行为
-<ol>
-<li>当验证电话打进你的电话时，请接听。</li>
-<li>若要报告欺诈，请输入已配置为与通过电话报告欺诈相对应的代码，然后输入 # 号。此时将通知你，已提交了欺诈警报。</li>
-<li>结束通话。</li></ol>
+
+1. 当验证电话打进你的电话时，请接听。</li>
+2. 若要报告欺诈，请输入已配置为与通过电话报告欺诈相对应的代码，然后输入 # 号。此时将通知你，已提交了欺诈警报。
+3. 结束通话。
 
 ### 查看欺诈报告
 
@@ -80,21 +91,17 @@
 
 ### 创建一次性跳过
 
-<ol>
-<li>登录到 [http://www.windowsazure.cn](http://www.windowsazure.cn)</li>
-<li>在左侧选择“Active Directory”。</li>
-<li>在顶部选择“Multi-Factor Auth 提供程序”。此时将显示 Multi-Factor Auth 提供程序列表。</li>
-<li>如果你有多个 Multi-Factor Auth 提供程序，请选择与需要为其创建一次性跳过的用户目录关联的提供程序，然后单击页底部的“管理”。如果你只有一个 Multi-Factor Auth 提供程序，则直接单击“管理”。此时将打开 Azure Multi-Factor Authentication 管理门户。</li>
-<li>在 Azure Multi-Factor Authentication 管理门户上，单击左侧“用户管理”下的“设置”。</li>
+1.	登录到 http://azure.microsoft.com
+2.	根据此页顶部的说明导航到 MFA 管理门户。
+3.	在 Azure Multi-Factor Authentication 管理门户中，如果在左侧看到租户或 Azure MFA 提供程序的名称旁边有一个 +，则单击 + 可查看不同的 MFA 服务器复制组以及 Azure 默认组。单击相应的组。
+4.	在“用户管理”下面，单击“一次性跳过”。
+![云](./media/multi-factor-authentication-whats-next/create1.png)
+5.	在“一次性跳过”页上，单击“新建一次性跳过”。
+6.	输入用户的用户名、“跳过”将存在的秒数、跳过的原因，然后单击“跳过”。
+![云](./media/multi-factor-authentication-whats-next/create2.png)
+7.	此时，用户必须在一次性跳过过期之前登录。
 
-<center>![Cloud](./media/multi-factor-authentication-whats-next/create1.png)</center>
 
-<li>在“一次性跳过”页上，单击“新建一次性跳过”。</li>
-<li>输入用户的用户名、“跳过”将存在的秒数、跳过的原因，然后单击“跳过”。</li>
-
-<center>![Cloud](./media/multi-factor-authentication-whats-next/create2.png)</center>
-
-<li>此时，用户必须在一次性跳过过期之前登录。</li>
 
 ### 查看一次性跳过报告
 
@@ -121,59 +128,43 @@
 
 
 ### 在 Azure Multi-Factor Authentication 中设置自定义语音消息
-<ol>
-<li>使用支持的文件格式之一创建自定义语音消息。参阅下面的“自定义语音消息建议”。</li>
-<li>登录到 [http://www.windowsazure.cn](http://www.windowsazure.cn)</li>
-<li>在左侧选择“Active Directory”。</li>
-<li>在顶部选择“Multi-Factor Auth 提供程序”。此时将显示 Multi-Factor Auth 提供程序列表。</li>
-<li>如果你有多个 Multi-Factor Auth 提供程序，请选择要在其上配置自定义语音消息的 Multi-Factor Auth 提供程序，然后单击页底部的“管理”。如果你只有一个 Multi-Factor Auth 提供程序，则直接单击“管理”。此时将打开 Azure Multi-Factor Authentication 管理门户。</li>
-<li>在 Azure Multi-Factor Authentication 管理门户上，单击左侧的“语音消息”。</li>
+1.	使用支持的文件格式之一创建自定义语音消息。
+2.	登录到 http://azure.microsoft.com
+3.	根据此页顶部的说明导航到 MFA 管理门户。
+4.	在 Azure Multi-Factor Authentication 管理门户中，单击“配置”部分下面的“语音消息”。
+5.	在“语音消息”部分下，单击“新建语音消息”。
+![云](./media/multi-factor-authentication-whats-next/custom1.png)
+6.	在“配置: 新建语音消息”页上，单击“管理声音文件”。
+![云](./media/multi-factor-authentication-whats-next/custom2.png)
+7.	在“配置: 声音文件”页上，单击“上载声音文件”。
+![云](./media/multi-factor-authentication-whats-next/custom3.png)
+8.	在“配置: 上载声音文件”页上，单击“浏览”，然后导航到你的语音消息，单击“打开”。
+![云](./media/multi-factor-authentication-whats-next/custom4.png)
+9.	添加说明，然后单击“上载”。
+10.	完成此操作后，你将看到一条消息，指示已成功上载文件。
+11.	在左侧，单击“语音消息”。
+12.	在“语音消息”部分下，单击“新建语音消息”。
+13.	从“语言”下拉列表中选择语言。
+14.	如果此消息用于特定应用程序，请在“应用程序”框中指定该应用程序。
+15.	从“消息类型”中，选择将使用我们的新建自定义消息重写的消息类型。
+16.	从“声音文件”下拉列表中选择你的声音文件。
+17.	单击“创建”。你将看到一条消息，指示已成功创建语音消息。
+![云](./media/multi-factor-authentication-whats-next/custom5.png)</center>
 
-<center>![Cloud](./media/multi-factor-authentication-whats-next/custom1.png)</center>
-
-<li>在“语音消息”部分下，单击“新建语音消息”。</li>
-
-<center>![Cloud](./media/multi-factor-authentication-whats-next/custom2.png)</center>
-
-<li>在“配置: 新建语音消息”页上，单击“管理声音文件”。</li>
-
-<center>![Cloud](./media/multi-factor-authentication-whats-next/custom3.png)</center>
-
-<li>在“配置: 声音文件”页上，单击“上载声音文件”。</li>
-
-<center>![Cloud](./media/multi-factor-authentication-whats-next/custom4.png)</center>
-
-<li>在“配置: 上载声音文件”页上，单击“浏览”，然后导航到你的语音消息，单击“打开”。</li>
-<li>添加说明，然后单击“上载”。</li>
-<li>完成此操作后，你将看到一条消息，指示已成功上载文件。</li>
-<li>在左侧，单击“语音消息”。</li>
-<li>在“语音消息”部分下，单击“新建语音消息”。</li>
-<li>从“语言”下拉列表中选择语言。</li>
-<li>如果此消息用于特定应用程序，请在“应用程序”框中指定该应用程序。</li>
-<li>从“消息类型”中，选择将使用我们的新建自定义消息重写的消息类型。</li>
-<li>从“声音文件”下拉列表中选择你的声音文件。</li>
-<li>单击“创建”。你将看到一条消息，指示已成功创建语音消息。</li>
-
-<center>![Cloud](./media/multi-factor-authentication-whats-next/custom5.png)</center>
 
 
 ## Azure Multi-Factor Authentication 中的缓存
 
-使用缓存可以设置一段特定的时间，使后续的身份验证尝试自动成功。如果用户在这段时间进行身份验证，便不需要等待电话或短信。
-
+使用缓存可以设置一段特定的时间，使后续的身份验证尝试自动成功。缓存主要应用场合是当第一个请求仍在进行时，本地系统（例如 VPN）发送多个验证请求。这样，后续请求将在用户成功验证后自动成功完成。请注意，缓存并非用于登录
 
 
 ### 在 Azure Multi-Factor Authentication 中设置缓存
-<ol>
 
-1. 登录到 [http://www.windowsazure.cn](http://www.windowsazure.cn)
-2. 在左侧选择“Active Directory”。
-3. 在顶部选择“Multi-Factor Auth 提供程序”。此时将显示 Multi-Factor Auth 提供程序列表。
-4. 如果你有多个Multi-Factor Auth 提供程序，请选择你要在其上启用欺诈警报的提供程序，然后单击页底部的“管理”。如果你只有一个 Multi-Factor Auth 提供程序，则直接单击“管理”。此时将打开 Azure Multi-Factor Authentication 管理门户。
-5. 在 Azure Multi-Factor Authentication 管理门户上，单击左侧的“缓存”。
-6. 在“配置缓存”页上，单击“新建缓存”。
-7. 选择缓存类型和缓存秒数。单击“创建”。
-
+1.	登录到 http://azure.microsoft.com
+2.	根据此页顶部的说明导航到 MFA 管理门户。
+3.	在 Azure Multi-Factor Authentication 管理门户中，单击“配置”部分下面的“缓存”。
+4.	在“配置缓存”页上，单击“新建缓存”。
+5.	选择缓存类型和缓存秒数。单击“创建”。
 
 <center>![Cloud](./media/multi-factor-authentication-whats-next/cache.png)</center>
 
@@ -199,30 +190,35 @@ AZURE AD 租户类型| 可用的受信任 IP 选项
 
 ### 启用受信任的 IP
 
+1. 登录到 Azure 管理门户。
+2. 在左侧单击“Active Directory”。
+3. 在“目录”下，单击要设置受信任 IP 的目录。
+4. 在选择的目录上，单击“配置”。
+5. 在“Multi-Factor Authentication”部分中，单击“管理服务设置”。
+6. 在“服务设置”页的“受信任的 IP”下，选择以下任一项：
+
+	- 对于来自 Intranet 的联合用户发出的请求 – 所有从公司网络登录的联合用户都能使用 AD FS 发出的声明跳过 Multi-Factor Authentication。 
+	- 对于来自特定公共 IP 范围的请求 – 使用 CIDR 表示法在提供的框中输入 IP 地址。例如：xxx.xxx.xxx.0/24 表示 xxx.xxx.xxx.1 – xxx.xxx.xxx.254 范围内的 IP 地址；xxx.xxx.xxx.xxx/32 表示单个 IP 地址。最多可以输入 12 个 IP 地址范围。
+
+7. 单击“保存”。
+8. 应用更新后，单击“关闭”。
+
+
+
+![云](./media/multi-factor-authentication-whats-next/trustedips2.png)
+
+
+
  
-<ol>
-<li>登录到 Azure 管理门户。</li>
-<li>在左侧单击“Active Directory”。</li>
-<li>在“目录”下，单击要设置受信任 IP 的目录。</li>
-<li>在选择的目录上，单击“配置”。</li>
-<li>在“Multi-Factor Authentication”部分中，单击“管理服务设置”。</li>
-<li>在“服务设置”页的“受信任的 IP”下，选择以下任一项：<ul><li>对于来自 Intranet 的联合用户发出的请求 – 所有从公司网络登录的联合用户都能使用 AD FS 发出的声明跳过 Multi-Factor Authentication。
-
-<li>对于来自特定公共 IP 范围的请求 – 使用 CIDR 表示法在提供的框中输入 IP 地址。例如：xxx.xxx.xxx.0/24 表示 xxx.xxx.xxx.1 – xxx.xxx.xxx.254 范围内的 IP 地址；xxx.xxx.xxx.xxx/32 表示单个 IP 地址。最多可以输入 12 个 IP 地址范围。</li></ul>
-
-
-<center>![Cloud](./media/multi-factor-authentication-whats-next/trustedips.png)</center>
-
-
-<li>单击“保存”。</li>
-<li>应用更新后，单击“关闭”。</li>
 ## 应用密码
 
 在 Office 2010 或更低版本和 Apple Mail 等某些应用中，无法使用 Multi-Factor Authentication。若要使用这些应用，你需要使用“应用密码”来替换传统密码。应用密码可让应用程序跳过 Multi-Factor Authentication 并继续工作。
 
->[AZURE.NOTE]适用于 Office 2013 客户端的现代身份验证
+>[AZURE.NOTE] 适用于 Office 2013 客户端的现代身份验证
 >
 > Office 2013 客户端（包括 Outlook）现在支持新的身份验证协议，并且可以启用对 Multi-Factor Authentication 的支持。这意味着一旦启用后，就不需要对 Office 2013 客户端使用应用密码。有关详细信息，请参阅 [Office 2013 现代身份验证公共预览版发布声明](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
+
+
 
 ### 有关应用密码的重要事项
 
@@ -238,7 +234,7 @@ AZURE AD 租户类型| 可用的受信任 IP 选项
 - 目前，每个用户有 40 个密码的限制。系统将提示你删除旧应用密码（现有的应用密码之一），以便创建新的应用密码。
 - 对用户的帐户启用多重身份验证后，可以在大多数非浏览器客户端（例如 Outlook 和 Lync）上使用应用密码，但无法通过 Windows PowerShell 等非浏览器应用程序使用应用密码执行管理操作，即使该用户具有管理帐户。请确保使用强密码创建服务帐户以运行 PowerShell 脚本，而不要为该帐户启用多重身份验证。
 
->[AZURE.WARNING]在客户端与同时与本地和云自动发现终结点通信的混合环境中，应用密码不起作用。
+>[AZURE.WARNING]  在客户端与同时与本地和云自动发现终结点通信的混合环境中，应用密码不起作用。
 >
 >请注意，在客户端与同时与本地和云自动发现终结点通信的混合环境中，应用密码不起作用，因为需要使用域密码在本地进行身份验证，使用应用密码在云中进行身份验证。
 
@@ -346,7 +342,7 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 联�
 - 如果你的公司帐户受到安全威胁
 - 如果记住的设备丢失或被盗
 
-> [AZURE.NOTE]此功能通过浏览器 Cookie 缓存方式实现。如果你没有启用浏览器 Cookie，则此功能无法实现。
+> [AZURE.NOTE] 此功能通过浏览器 Cookie 缓存方式实现。如果你没有启用浏览器 Cookie，则此功能无法实现。
 
 ### 如何启用/禁用和设置暂停对已记住设备的 MFA
 
@@ -357,8 +353,9 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 联�
 <li>在选择的目录上，单击“配置”。</li>
 <li>在“Multi-Factor Authentication”部分中，单击“管理服务设置”。</li>
 <li>在“服务设置”页上的“管理用户设备设置”下，选择/取消选择“允许用户通过记住其设备暂停 Multi-Factor Authentication”选项。</li>
-![暂停设备](./media/multi-factor-authentication-manage-users-and-devices/suspend.png) <li>设置你希望允许暂停的天数。默认值为 14 天。</li>
+![暂停设备](./media/multi-factor-authentication-manage-users-and-devices/suspend.png)
+<li>设置你希望允许暂停的天数。默认值为 14 天。</li>
 <li>单击“保存”。</li>
 <li>单击“关闭”。</li>
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="创建 Blob 的快照" 
-	description="有关创建 Azure 存储 Blob 快照的操作方法指南" 
+	pageTitle="创建 blob 的只读快照 | Microsoft Azure"
+	description="了解如何在指定时刻及时创建 blob 的快照以备份 blob 数据。了解如何对快照计费，以及如何使用快照来最大程度地减少容量费用。"
 	services="storage" 
 	documentationCenter="" 
 	authors="tamram" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="05/27/2015" 
+	ms.date="01/07/2016"
 	wacn.date=""/>
 
 # 创建 Blob 快照
@@ -26,7 +26,7 @@ Blob 的快照与从中创建快照的基本 Blob 具有相同的名称，但后
 
 任何与基本 Blob 关联的租约都不会影响快照。无法获取快照上的租约。
 
-## 复制快照 
+## 复制快照
 
 涉及 Blob 和快照的复制操作遵循以下规则：
 
@@ -38,11 +38,11 @@ Blob 的快照与从中创建快照的基本 Blob 具有相同的名称，但后
 
 - 创建块 Blob 的快照时，也会将该 Blob 的已提交块列表复制到快照。不会复制任何未提交的块。
 
-## 指定访问条件 
+## 指定访问条件
 
-你可指定访问条件，以便仅在符合某条件时创建快照。若要指定访问条件，请使用 AccessCondition 属性。如果不符合指定条件，则不会创建快照，并且 Blob 服务会返回状态代码 HTTPStatusCode.PreconditionFailed。
+你可指定访问条件，以便仅在符合某条件时创建快照。若要指定访问条件，请使用 **AccessCondition** 属性。如果不符合指定条件，则不会创建快照，并且 Blob 服务会返回状态代码 HTTPStatusCode.PreconditionFailed。
 
-## 删除快照 
+## 删除快照
 
 不能删除具有快照的 Blob，除非也删除这些快照。可单独删除快照，也可指示存储服务在删除源 Blob 时删除所有快照。如果你尝试删除仍包含快照的 Blob，则将收到错误。
 
@@ -51,20 +51,20 @@ Blob 的快照与从中创建快照的基本 Blob 具有相同的名称，但后
 
 - 高级存储帐户中每个页 Blob 的快照数限制为 100。如果超出该限制，快照 Blob 操作将返回错误代码 409 (**SnapshotCountExceeded**)。
 
-- 可以每隔十分钟拍摄高级存储帐户中页 Blob 的快照一次。如果超出该速率，快照 Blob 操作将返回错误代码 409 (**SnaphotOperationRateExceeded**)。
+- 可以每隔十分钟创建高级存储帐户中页 Blob 的快照一次。如果超出该速率，快照 Blob 操作将返回错误代码 409 (**SnaphotOperationRateExceeded**)。
 
-- 不支持通过“获取 Blob”读取通过高级存储帐户中页 Blob 的快照。对高级存储帐户中的快照调用“获取 Blob”将返回错误代码 400 (**InvalidOperation**)。但是，支持针对快照调用“获取 Blob 属性”和“获取 Blob 元数据”。
+- 不支持通过“获取 Blob”读取高级存储帐户中页 Blob 的快照。对高级存储帐户中的快照调用“获取 Blob”将返回错误代码 400 (**InvalidOperation**)。但是，支持针对快照调用“获取 Blob 属性”和“获取 Blob 元数据”。
 
-- 若要读取快照，你可以使用“复制 Blob”操作将快照复制到帐户中的另一个页 Blob。复制操作的目标 Blob 不能包含任何现有快照。如果目标 Blob 确实包含快照，则“复制 Blob”将返回错误代码 409 (**SnapshotsPresent**)。
+- 若要读取快照，你可以使用“复制 Blob”操作将快照复制到帐户中的另一个页 Blob。复制操作的目标 Blob 不能包含任何现有快照。如果目标 Blob 确实包含快照，则“复制 Blob”操作将返回错误代码 409 (**SnapshotsPresent**)。
 
-## 返回快照的绝对 URI 
+## 返回快照的绝对 URI
 
 此 C# 代码示例创建一个新的快照并写出主位置的绝对 URI。
 
     //Create the blob service client object.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-    
+
     //Get a reference to a container.
     CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
     container.CreateIfNotExists();
@@ -89,7 +89,7 @@ Blob 的快照与从中创建快照的基本 Blob 具有相同的名称，但后
 
 - 在替换块 Blob 中的某个块后，会将该块作为唯一块进行收费。即使该块具有的块 ID 和数据与它在快照中所具有的 ID 和数据相同也是如此。重新提交块后，它将偏离它在任何快照中的对应部分，并且你将就其数据支付费用。对于使用相同的数据更新的页 Blob 中的页面，也是如此。
 
-- 通过调用 UploadFile、UploadText、UploadStream 或 UploadByteArray 方法替换块 Blob 可替换该 Blob 中的所有块。如果你具有与该 Blob 关联的快照，则基本 Blob 和快照中的所有块现在将发生偏离，并且你需为这两个 Blob 中的所有块支付费用。即使基本 Blob 和快照中的数据保持相同也是如此。
+- 通过调用 **UploadFile**、**UploadText**、**UploadStream** 或 **UploadByteArray** 方法替换块 Blob 可替换该 Blob 中的所有块。如果你有与该 Blob 关联的快照，则基本 Blob 和快照中的所有块现在将发生偏离，并且你需为这两个 Blob 中的所有块支付费用。即使基本 Blob 和快照中的数据保持相同也是如此。
 
 - Azure BLOB 服务无法确定这两个块是否包含相同的数据。每个上载和提交的块均被视为唯一的快，即使它具有相同的数据和块 ID 也是如此。由于唯一的块会产生费用，因此考虑到更新具有快照的 Blob 将导致产生其他唯一块和额外费用这一点很重要。
 
@@ -97,7 +97,7 @@ Blob 的快照与从中创建快照的基本 Blob 具有相同的名称，但后
 
 > - 除非你的应用程序设计需要保留与 Blob 关联的快照，否则请在更新 Blob 时删除并重新创建这些快照，即使你使用相同的数据进行更新也是如此。通过删除并重新创建 Blob 的快照，可以确保 Blob 和快照不会发生偏离。
 
-> - 如果要保留 Blob 的快照，请避免调用 UploadFile、UploadText、UploadStream 或 UploadByteArray 来更新 Blob，因为这些方法将替换 Blob 中的所有块。相反，请使用 PutBlock 和 PutBlockList 方法更新尽可能少的块。
+> - 如果要保留 Blob 的快照，请避免调用 **UploadFile**、**UploadText**、**UploadStream** 或 **UploadByteArray** 来更新 Blob，因为这些方法将替换 Blob 中的所有块。相反，请使用 **PutBlock** 和 **PutBlockList** 方法更新尽可能少的块。
 
 
 ### 快照计费方案
@@ -105,7 +105,7 @@ Blob 的快照与从中创建快照的基本 Blob 具有相同的名称，但后
 
 下列方案说明了块 Blob 及其快照将如何产生费用。
 
-在方案 1 中，基本 Blob 自拍摄快照后未进行更新，因此仅唯一块 1、2、3 会产生费用。
+在方案 1 中，基本 Blob 自创建快照后未进行更新，因此仅唯一块 1、2、3 会产生费用。
 
 ![Azure 存储资源](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-1.png)
 
@@ -114,11 +114,11 @@ Blob 的快照与从中创建快照的基本 Blob 具有相同的名称，但后
 ![Azure 存储资源](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-2.png)
 
 在方案 3 中，已更新基本 Blob，但未更新快照。块 3 已替换为基础 Blob 中的块 4，但快照仍反映块 3。因此，帐户需要为四个块支付费用。
- 
+
 ![Azure 存储资源](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-3.png)
 
-在方案 4 中，已完全更新基本 Blob，并且其中不包含任何原始块。因此，帐户需要为所有八个唯一块支付费用。如果你使用如 UploadFile、UploadText、UploadFromStream 或 UploadByteArray 之类的更新方法，则会出现此情况，因为这些方法将替换 Blob 的所有内容。
+在方案 4 中，已完全更新基本 Blob，并且其中不包含任何原始块。因此，帐户需要为所有八个唯一块支付费用。如果你使用如 **UploadFile**、**UploadText**、**UploadFromStream** 或 **UploadByteArray** 之类的更新方法，则会出现此情况，因为这些方法将替换 Blob 的所有内容。
 
 ![Azure 存储资源](./media/storage-blob-snapshots/storage-blob-snapshots-billing-scenario-4.png)
 
-<!---HONumber=70-->
+<!---HONumber=Mooncake_0215_2016-->

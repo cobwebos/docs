@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="09/22/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # SQL 数据仓库中的动态 SQL
@@ -27,6 +27,7 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 
 如果字符串较短，则可以像平时一样使用 [sp\_executesql][]。
 
+> [AZURE.NOTE] 作为动态 SQL 执行的语句仍将遵循所有 TSQL 验证规则。
 
 ## 后续步骤
 有关更多开发技巧，请参阅[开发概述][]。
@@ -37,8 +38,8 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 [开发概述]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[sp\_executesql]: https://msdn.microsoft.com/zh-CN/library/ms188001.aspx
+[sp\_executesql]: https://msdn.microsoft.com/zh-cn/library/ms188001.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0215_2016-->

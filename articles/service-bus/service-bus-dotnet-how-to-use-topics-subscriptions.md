@@ -79,7 +79,7 @@
 </ServiceConfiguration>
 ```
 
-使用从 Azure 门户检索到的共享访问签名 (SAS) 密钥名称和密钥值，如上一部分中所述。
+使用从 Azure 经典门户检索到的共享访问签名 (SAS) 密钥名称和密钥值，如上一部分中所述。
 
 ### 在使用 Azure 网站或 Azure 虚拟机时配置连接字符串
 
@@ -143,7 +143,7 @@ if (!namespaceManager.TopicExists("TestTopic"))
 }
 ```
 
-> [AZURE.NOTE]你可以对 [NamespaceManager](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.namespacemanager.aspx) 对象使用 [TopicExists](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx) 方法来检查具有指定名称的主题在某个命名空间中是否已存在。
+> [AZURE.NOTE] 你可以对 [NamespaceManager](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.namespacemanager.aspx) 对象使用 [TopicExists](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.namespacemanager.topicexists.aspx) 方法来检查具有指定名称的主题在某个命名空间中是否已存在。
 
 ## 创建订阅
 
@@ -200,7 +200,7 @@ namespaceManager.CreateSubscription("TestTopic",
 
 ## 将消息发送到主题
 
-为向服务总线主题发送消息，你的应用程序需使用连接字符串创建 [`TopicClient`](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.topicclient.aspx) 对象。
+若要向服务总线主题发送消息，你的应用程序需要使用连接字符串创建 [TopicClient](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.topicclient.aspx) 对象。
 
 以下代码演示了如何使用 [`CreateFromConnectionString`](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.topicclient.createfromconnectionstring.aspx) API 调用为以前创建的 **TestTopic** 主题创建 [TopicClient](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.topicclient.aspx) 对象。
 
@@ -323,4 +323,4 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
   [服务总线中转消息传送 .NET 教程]: /documentation/articles/service-bus-brokered-tutorial-dotnet
   [Azure 示例]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0215_2016-->

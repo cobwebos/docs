@@ -4,12 +4,12 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="swadhwa" 
+	manager="stevenpo" 
 	editor="curtand"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="07/02/2015" 
+	ms.date="01/11/2016" 
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 中的报告
@@ -29,11 +29,12 @@ Name| 说明
 
 ## 查看报告
 
-1. 登录到 [http://www.windowsazure.cn](http://www.windowsazure.cn)
-2. 在左侧选择“Active Directory”。
-3. 在顶部选择“Multi-Factor Auth 提供程序”。此时将显示 Multi-Factor Auth 提供程序列表。
-4. 如果你有多个 Multi-Factor Auth 提供程序，请选择要查看“欺诈警报”报告的 Multi-Factor Auth 提供程序，然后单击页底部的“管理”。如果你只有一个 Multi-Factor Auth 提供程序，则直接单击“管理”。此时将打开 Azure Multi-Factor Authentication 管理门户。
-5. 在 Azure Multi-Factor Authentication 管理门户上，单击左侧的“查看报告”。在这里，你可以选择上述报告。
+1.	登录到 http://azure.microsoft.com
+2.	在左侧选择“Active Directory”。
+3.	选择以下选项之一：
+	- **选项 1**：单击“Multi-Factor Auth 提供程序”选项卡。选择你的 MFA 提供程序，然后在底部单击“管理”按钮。
+	- **选项 2**：选择你的目录，然后单击“配置”选项卡。在“Multi-Factor Authentication”部分下，单击“管理服务设置”。在“MFA 服务设置”页底部，单击“转到门户”链接。
+4.	Azure Multi-Factor Authentication 管理门户上的左侧导航栏中会显示“查看报告”部分。在这里，你可以选择上述报告。
 
 
  
@@ -46,4 +47,4 @@ Name| 说明
 * [MSDN 上的 Azure Multi-Factor Authentication](https://msdn.microsoft.com/zh-cn/library/azure/dn249471.aspx)
  
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0215_2016-->
