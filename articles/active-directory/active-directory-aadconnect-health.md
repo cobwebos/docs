@@ -121,4 +121,4 @@ Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结�
 * [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0118_2016--->
