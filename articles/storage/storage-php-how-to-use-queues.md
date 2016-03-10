@@ -380,4 +380,4 @@
 [require_once]: http://www.php.net/manual/en/function.require-once.php
 [Azure Management Portal]: http://manage.windowsazure.com/
 
-<!---HONumber=Mooncake_0104_2016-->
+<!----HONumber=Mooncake_0104_2016-->

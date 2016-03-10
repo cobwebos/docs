@@ -411,4 +411,4 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 -	[Azure 存储空间文档](http://azure.microsoft.com/documentation/services/storage/)
  
 
-<!---HONumber=Mooncake_0215_2016-->
+<!----HONumber=Mooncake_0215_2016-->

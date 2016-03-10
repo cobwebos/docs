@@ -393,4 +393,4 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 [Azure 存储客户端 SDK 参考]: http://dl.windowsazure.com/storage/javadoc/
 [Azure 存储 REST API]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
-<!--HONumber=41-->
+<!---HONumber=41-->

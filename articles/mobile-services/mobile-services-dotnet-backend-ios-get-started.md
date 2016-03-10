@@ -104,4 +104,4 @@
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [JavaScript 后端版本]: /documentation/articles/mobile-services-ios-get-started
 
-<!---HONumber=Mooncake_0118_2016-->
+<!----HONumber=Mooncake_0118_2016-->

@@ -162,4 +162,4 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 * 查看 MSDN 参考：[在 Azure 中存储和访问数据](http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx)
 * 访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 * 访问 [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) repository on GitHub
-<!--HONumber=41-->
+<!---HONumber=41-->

@@ -530,4 +530,4 @@ Azure 提供可以从 Django 应用程序方便地使用的数据库服务。从
 [Python Tools for Visual Studio 文档]: http://aka.ms/ptvsdocs
 [Django 文档]: https://www.djangoproject.com/
 
-<!---HONumber=76-->
+<!----HONumber=76-->

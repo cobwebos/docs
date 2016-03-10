@@ -93,4 +93,4 @@
 [XCode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [.NET 后端版本]: /documentation/articles/mobile-services-dotnet-backend-ios-get-started
 
-<!---HONumber=Mooncake_0118_2016-->
+<!----HONumber=Mooncake_0118_2016-->

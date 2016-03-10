@@ -194,4 +194,4 @@ Node.js 应用在 **server.js** 文件中定义，该文件位于 Web 角色（�
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
  
 
-<!---HONumber=Mooncake_0215_2016-->
+<!----HONumber=Mooncake_0215_2016-->

@@ -476,4 +476,4 @@ Microsoft.WindowsAzure.CloudConfigurationManager 命名空间，则可以使用 
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [空间]: http://nuget.org/packages/System.Spatial/5.0.2
-<!--HONumber=41-->
+<!---HONumber=41-->

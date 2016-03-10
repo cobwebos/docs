@@ -360,4 +360,4 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
  [使用 WebMatrix 构建网站]: /zh-cn/documentation/articles/web-sites-nodejs-use-webmatrix/
-<!--HONumber=41-->
+<!---HONumber=41-->

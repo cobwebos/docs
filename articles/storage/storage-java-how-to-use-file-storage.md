@@ -220,4 +220,4 @@ Azure 文件存储共享至少包含文件所在的根目录。在本部分，�
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
  
 
-<!---HONumber=Mooncake_0215_2016-->
+<!----HONumber=Mooncake_0215_2016-->

@@ -564,4 +564,4 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 [Azure 存储 REST API]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 [博客文章]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-<!--HONumber=41-->
+<!---HONumber=41-->

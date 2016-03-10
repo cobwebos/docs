@@ -777,4 +777,4 @@ https://{webappname}.scm.chinacloudsites.cn/azurejobs/#/functions
 
 有关详细信息，请参阅[Azure Web 作业文档资源](/documentation/articles/websites-webjobs-resources/)。
 
-<!---HONumber=Mooncake_0118_2016-->
+<!----HONumber=Mooncake_0118_2016-->

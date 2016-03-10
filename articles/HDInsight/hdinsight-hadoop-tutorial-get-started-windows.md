@@ -233,4 +233,4 @@ HDInsight 群集提供包括入门库的查询控制台以直接从门户运行�
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=Mooncake_0104_2016-->
+<!----HONumber=Mooncake_0104_2016-->

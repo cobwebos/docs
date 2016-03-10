@@ -138,4 +138,4 @@
 [Python Azure 包]: https://pypi.python.org/pypi/azure
 [Python Azure 存储空间包]: https://pypi.python.org/pypi/azure-storage
 
-<!---HONumber=Mooncake_0104_2016-->
+<!----HONumber=Mooncake_0104_2016-->

@@ -276,4 +276,4 @@ Microsoft 还提供了 HDInsight Emulator for Azure（以前称作 *Microsoft HD
 [image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.GettingStarted.PowerQuery.ImportData2.png
  
 
-<!---HONumber=71-->
+<!----HONumber=71-->

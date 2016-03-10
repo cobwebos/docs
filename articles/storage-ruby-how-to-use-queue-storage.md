@@ -157,4 +157,4 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 - 访问 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) repository on GitHub
 
 有关本文中讨论的 Azure 队列服务与 [如何使用 Service Bus 队列](/zh-cn/develop/ruby/how-to-guides/service-bus-queues/) 一文中讨论的 Azure Service Bus 队列的比较，请参阅 [Azure 队列和 Azure Service Bus 队列 - 比较与对照](http://msdn.microsoft.com/zh-cn/library/azure/hh767287.aspx)
-<!--HONumber=41-->
+<!---HONumber=41-->

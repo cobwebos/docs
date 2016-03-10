@@ -153,4 +153,4 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 - [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub 上的 [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 
-<!---HONumber=Mooncake_0104_2016-->
+<!----HONumber=Mooncake_0104_2016-->

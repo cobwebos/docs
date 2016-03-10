@@ -330,4 +330,4 @@
 [Xamarin.iOS]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
 
-<!---HONumber=Mooncake_0104_2016-->
+<!----HONumber=Mooncake_0104_2016-->

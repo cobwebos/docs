@@ -326,4 +326,4 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
  [ Website with WebMatrix]: /documentation/articles/web-sites-nodejs-use-webmatrix
 
-<!---HONumber=Mooncake_0118_2016-->
+<!----HONumber=Mooncake_0118_2016-->

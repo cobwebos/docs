@@ -384,4 +384,4 @@ For 访问模拟器存储：
 [require_once]: http://www.php.net/manual/en/function.require-once.php
 [Azure 管理门户]: http://manage.windowsazure.cn/
 [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
-<!--HONumber=41-->
+<!---HONumber=41-->
