@@ -448,4 +448,4 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
   [使用存储构建 Node.js 云服务]: /zh-cn/documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
   [使用存储构建 Node.js Web 应用程序]: /zh-cn/documentation/articles/storage-nodejs-use-table-storage-web-site/
   [创建 Node.js 应用程序并将其部署到 Azure 网站]: /zh-cn/documentation/articles/web-sites-nodejs-develop-deploy-mac/
-<!--HONumber=41-->
+<!---HONumber=41-->

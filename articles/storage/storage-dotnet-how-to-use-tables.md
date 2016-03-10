@@ -436,4 +436,4 @@
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=Mooncake_0215_2016-->
+<!----HONumber=Mooncake_0215_2016-->

@@ -128,4 +128,4 @@ API 编写的。涉及的方案包括**插入**、**扫视**、
   [如何：删除队列]: #delete-queue
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
-<!--HONumber=41-->
+<!---HONumber=41-->

@@ -478,4 +478,4 @@ TableRestProxy 类提供了用于插入实体的两个替代方法：insertOrMer
 [table-data-model]: http://msdn.microsoft.com/zh-cn/library/azure/dd179338.aspx
 [filters]: http://msdn.microsoft.com/zh-cn/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/zh-cn/library/azure/dd894038.aspx
-<!--HONumber=41-->
+<!---HONumber=41-->

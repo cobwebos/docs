@@ -543,4 +543,4 @@ Azure 存储空间分析现在支持用于文件存储的指标。使用指标�
 - [将连接保存到 Microsoft Azure 文件中](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 - [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
-<!---HONumber=Mooncake_0215_2016-->
+<!----HONumber=Mooncake_0215_2016-->

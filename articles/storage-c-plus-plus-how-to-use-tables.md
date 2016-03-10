@@ -405,4 +405,4 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 -	[Azure 存储空间 MSDN 参考](https://msdn.microsoft.com/zh-CN/library/azure/gg433040.aspx)
 -	[Azure 存储空间文档](/documentation/services/storage/)
 
-<!--HONumber=53-->
+<!---HONumber=53-->

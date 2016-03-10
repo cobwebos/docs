@@ -389,4 +389,4 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 [Azure 存储 REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=Mooncake_0118_2016-->
+<!----HONumber=Mooncake_0118_2016-->

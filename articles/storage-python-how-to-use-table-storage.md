@@ -157,4 +157,4 @@ RowKey 是实体在其所属分区内的唯一 ID。
   [如何：删除表]: #delete-table
   [在 Azure 中存储和访问数据]: http://msdn.microsoft.com/zh-cn/library/azure/gg433040.aspx
   [访问 Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
-<!--HONumber=41-->
+<!---HONumber=41-->

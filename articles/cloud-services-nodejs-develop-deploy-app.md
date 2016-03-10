@@ -215,4 +215,4 @@ Azure 计算模拟器是 Azure SDK 所安装的工具之一，你可以使用此
 [Publish-AzureService 命令的完整状态输出]: ./media/cloud-services-nodejs-develop-deploy-app/node20.png
 [如何从 Azure 订阅中删除存储帐户]: /zh-cn/documentation/articles/storage-manage-storage-account/
 [powershell-menu]: ./media/cloud-services-nodejs-develop-deploy-app/azure-powershell-start.png
-<!--HONumber=39-->
+<!---HONumber=39-->
