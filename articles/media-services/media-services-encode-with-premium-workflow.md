@@ -1,18 +1,20 @@
+<!-- not suitable for Mooncake -->
+
 <properties 
 	pageTitle="使用 Media Encoder Premium Workflow 进行高级编码" 
-	description="了解如何使用 Media Encoder Premium Workflow 进行编码。代码示例用 C# 编写且使用 Media Services SDK for .NET。" 
+	description="了解如何使用 Media Encoder Premium Workflow 进行编码。代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="08/11/2015" 
+<tags
+	ms.service="media-services"
+	ms.date="02/03/2016" 
 	wacn.date=""/>
 
-#使用 Media Encoder Premium Workflow（公共预览版）进行高级编码
+#使用 Media Encoder Premium Workflow 进行高级编码
 
 **请注意**，本主题中所述的 Media Encoder Premium Workflow 媒体处理器在中国不可用。
 
@@ -22,22 +24,22 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 以下主题概述了与**媒体编码器高级工作流**相关的详细信息：
 
-- [媒体编码器高级工作流支持的格式](/zh-cn/documentation/articles/media-services-premium-workflow-encoder-formats) – 介绍**媒体编码器高级工作流**支持的文件格式和编解码器。
+- [媒体编码器高级工作流支持的格式](/documentation/articles/media-services-premium-workflow-encoder-formats) - 介绍**媒体编码器高级工作流**支持的文件格式和编解码器。
 
-- [比较编码器](/zh-cn/documentation/articles/media-services-encode-asset#compare_encoders)部分比较了**媒体编码器高级工作流**和 **Azure 媒体编码器**的编码功能。
+- [比较编码器](/documentation/articles/media-services-encode-asset#compare_encoders)部分比较了**媒体编码器高级工作流**、**媒体编码器标准**和 **Azure 媒体编码器**的编码功能。
 
 本主题演示如何在**媒体编码器高级工作流**中使用 .NET 进行编码。
 
-**媒体编码器高级工作流**的编码任务需要一个名为“工作流文件”的独立配置文件。这些文件的扩展名为 .workflow，是使用[工作流设计器](media-services-workflow-designer.md)工具创建的。
+**媒体编码器高级工作流**的编码任务需要一个名为“工作流文件”的独立配置文件。这些文件的扩展名为 .workflow，是使用[工作流设计器](/documentation/articles/media-services-workflow-designer)工具创建的。
 
 ##编码
 
-**媒体编码器高级工作流**的编码任务需要一个名为“工作流文件”的独立配置文件。这些文件的扩展名为 .workflow，是使用[工作流设计器](/zh-cn/documentation/articles/media-services-workflow-designer)工具创建的。
+**媒体编码器高级工作流**的编码任务需要一个名为“工作流文件”的独立配置文件。这些文件的扩展名为 .workflow，是使用[工作流设计器](/documentation/articles/media-services-workflow-designer)工具创建的。
 
 
 你也可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认的工作流文件该文件夹还包含这些文件的相关说明。
 
-需要将工作流文件作为资产上载到 Media Services 帐户，并且应将此资产传递给编码任务。
+需要将工作流文件作为资产上载到媒体服务帐户，并且应将此资产传递给编码任务。
 
 以下示例演示了如何使用**媒体编码器高级工作流**进行编码。
 
@@ -46,7 +48,9 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 1. 创建资产并上载工作流文件。 
 2. 创建资产并上载源媒体文件。
 3. 获取“Media Encoder Premium Workflow”媒体处理器。
-4. 创建作业和任务。
+4. 创建作业和任务。 
+
+	在大多数情况下，该任务的配置字符串为空（如以下示例中所示）。在某些高级方案中（要求你动态设置运行时属性），你需要为编码任务提供 XML 字符串。此类方案的示例包括：创建一个覆盖层、并行或依序媒体拼接、字幕。
 5. 向该任务添加输入资产。
 	
 	a.第 1 个 – 工作流资产。
@@ -57,7 +61,7 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 6. 提交编码作业。
 
-下面是一个完整示例。有关如何为媒体服务 .NET 开发进行设置的信息，请参阅[使用 .NET 进行媒体服务开发](/zh-cn/documentation/articles/media-services-dotnet-how-to-use)。
+下面是一个完整示例。有关如何为媒体服务 .NET 开发进行设置的信息，请参阅[使用 .NET 进行媒体服务开发](/documentation/articles/media-services-dotnet-how-to-use)。
 
 
  	using System; 
@@ -260,8 +264,13 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 	}
 
 
-##已知问题
 
-如果输入视频不包含隐藏式字幕，输出资产仍将包含一个空的 TTML 文件。
+##媒体服务学习路径
 
-<!---HONumber=71-->
+[AZURE.INCLUDE [media-services-learning-paths-include](../includes/media-services-learning-paths-include.md)]
+
+##提供反馈
+
+[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
+
+<!---HONumber=Mooncake_0307_2016-->

@@ -9,11 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="09/30/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # 将 Azure 流分析与 SQL 数据仓库配合使用
@@ -96,4 +92,4 @@ Azure 流分析是一种完全托管的服务，可以在云中通过流式数�
 <!--Other Web references-->
 [Azure Stream Analytics documentation]: /documentation/services/stream-analytics/
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

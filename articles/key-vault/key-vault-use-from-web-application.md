@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="key-vault" 
-	ms.date="09/16/2015" 
+	ms.date="01/29/2016" 
 	wacn.date=""/>
 
 # 从 Web 应用程序使用 Azure 密钥保管库 #
@@ -30,22 +30,22 @@
 - 已在 Azure Active Directory 中注册的、有权访问你的密钥保管库的 Web 应用程序的客户端 ID 和客户端密码
 - Web 应用程序。我们将演示针对 Azure 中作为 Web 应用程序部署的 ASP.NET MVC 应用程序的步骤。 
 
-> [AZURE.NOTE]你必须已完成 [Azure 密钥保管库入门](/documentation/articles/key-vault-get-started)中列出的适用于本教程的步骤，以便获取 Web 应用程序的机密、客户端 ID 和客户端密钥的 URI。
+> [AZURE.NOTE] 你必须已完成 [Azure 密钥保管库入门](/documentation/articles/key-vault-get-started)中列出的适用于本教程的步骤，以便获取 Web 应用程序的机密、客户端 ID 和客户端密钥的 URI。
 
 要访问密钥保管库的 Web 应用程序已在 Azure Active Directory 中注册，因此有权访问你的密钥保管库。如果这不是这样，请返回入门教程中的“注册应用程序”，并重复列出的步骤。
 
-本教程面向 Web 开发人员，他们已经了解有关在 Azure 上创建 Web 应用程序的基本知识。有关 Azure Web Apps 的详细信息，请参阅 [Web Apps 概述](/documentation/articles/app-service-web-overview)。
+本教程面向 Web 开发人员，他们已经了解有关在 Azure 上创建 Web 应用程序的基本知识。有关 Azure Web Apps 的详细信息，请参阅 [Web Apps 概述](/home/features/web-site/)。
 
 
 
 ## <a id="packages"></a>添加 NuGet 包 ##
-需要在 Web 应用程序上安装三个包。
+需要在 Web 应用程序上安装两个包。
 
 - Active Directory 身份验证库 - 包含用来与 Azure Active Directory 交互以及管理用户标识的方法
 - Azure 密钥保管库库 - 包含用来与 Azure 密钥保管库交互的方法
 
 
-可以在 Package Manager Console 中使用 Install-Package 命令安装所有这三个包。
+可以在 Package Manager Console 中使用 Install-Package 命令安装这两个包。
 
 	// this is currently the latest stable version of ADAL
 	Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
@@ -93,7 +93,7 @@
 	    return result.AccessToken;
     }
 
-> [AZURE.NOTE]使用客户端 ID 和客户端密码是对 Azure AD 应用程序进行身份验证的最简单方法。并且在 web 应用程序中使用它可以实现职责分离，并更好地控制密钥管理。但它不依赖于将客户端密码放入配置设置中，对于某些人来说这可能就像将要保护的机密放入配置设置中一样具有风险。有关如何使用客户端 ID 和证书（而不是客户端 ID 和客户端密码）对 Azure AD 应用程序进行身份验证的讨论，请参阅下文。
+> [AZURE.NOTE] 使用客户端 ID 和客户端密码是对 Azure AD 应用程序进行身份验证的最简单方法。并且在 web 应用程序中使用它可以实现职责分离，并更好地控制密钥管理。但它不依赖于将客户端密码放入配置设置中，对于某些人来说这可能就像将要保护的机密放入配置设置中一样具有风险。有关如何使用客户端 ID 和证书（而不是客户端 ID 和客户端密码）对 Azure AD 应用程序进行身份验证的讨论，请参阅下文。
 
 
 
@@ -112,12 +112,6 @@
 	//I put a variable in a Utils class to hold the secret for general  application use. 
     Utils.EncryptSecret = sec;
 
-
-
-## <a id="portalsettings"></a>在 Azure 门户中添加应用程序设置（可选） ##
-如果你有一个 Azure Web 应用程序，则现在可以在 Azure 门户中添加 AppSettings 的实际值。如果这样做，实际值不会出现在 web.config 中，而是通过门户受到保护，你在门户中拥有不同的访问控制功能。这些值将取代为你在 web.config 中输入的值。请确保名称相同。
-
-![Azure 门户中显示的应用程序设置][1]
 
 
 ## 使用证书（而不是客户端密码）进行身份验证 
@@ -226,7 +220,7 @@
 
 **将证书添加到 Web 应用** 将证书添加到 Web 应用是一个简单的分为两步的过程。首先，转到 Azure 门户并导航到你的 Web 应用。在你的 Web 应用的“设置”边栏选项卡中，单击“自定义域和 SSL”所对应的条目。在打开的边栏选项卡中，你将能够上载上面创建的证书 KVWebApp.pfx，请确保记住 pfx 的密码。
 
-![将证书添加到 Azure 门户中的 Web 应用][2]
+
 
 
 你需要执行的最后一项操作是将应用程序设置添加到 Web 应用中，该设置名为 WEBSITE\_LOAD\_CERTIFICATES，值为 *。这将确保加载所有证书。如果你只想加载已上载的证书，则可以输入这些证书的指纹的逗号分隔列表。
@@ -246,4 +240,4 @@
 [2]: ./media/key-vault-use-from-web-application/PortalAddCertificate.png
  
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

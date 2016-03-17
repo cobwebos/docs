@@ -1,21 +1,21 @@
 <properties 
 	pageTitle="如何使用 .NET 检查作业进度" 
-	description="了解如何使用事件处理程序代码来跟踪作业进度并发送状态更新。代码示例用 C# 编写且使用 Media Services SDK for .NET。" 
+	description="了解如何使用事件处理程序代码来跟踪作业进度并发送状态更新。代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015"   
+<tags
+	ms.service="media-services"
+	ms.date="02/03/2016"    
 	wacn.date=""/>
 
 #如何：检查作业进度
 
 > [AZURE.SELECTOR]
-- [Portal](/documentation/articles/media-services-portal-check-job-progress)
+- [门户](/documentation/articles/media-services-portal-check-job-progress)
 - [.NET](/documentation/articles/media-services-check-job-progress)
 - [REST](/documentation/articles/media-services-rest-check-job-progress)
 
@@ -114,10 +114,10 @@ Microsoft Azure 媒体服务可以在处理媒体作业时向 [Azure 队列存�
 
 在开发使用 Azure 存储队列的媒体服务应用程序时，请注意以下几点。
 
-- 队列服务不保证按照先进先出 (FIFO) 的顺序传递消息。有关详细信息，请参阅 [Azure 队列和 Azure 服务总线队列比较与对照](https://msdn.microsoft.com/library/azure/hh767287.aspx)。
+- 队列服务不保证按照先进先出 (FIFO) 的顺序传递消息。有关详细信息，请参阅 [Azure 队列和 Azure 服务总线队列比较与对照](https://msdn.microsoft.com/zh-cn/library/azure/hh767287.aspx)。
 - Azure 存储队列不是推送服务；你必须轮询队列。 
-- 可以有任意数目的队列。有关详细信息，请参阅[队列服务 REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)。
-- Azure 存储队列存在一些限制，有关具体的说明，请参阅以下文章：[Azure 队列和 Azure 服务总线队列比较与对照](https://msdn.microsoft.com/library/azure/hh767287.aspx)。
+- 可以有任意数目的队列。有关详细信息，请参阅[队列服务 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dd179363.aspx)。
+- Azure 存储队列存在一些限制，有关具体的说明，请参阅以下文章：[Azure 队列和 Azure 服务总线队列比较与对照](https://msdn.microsoft.com/zh-cn/library/azure/hh767287.aspx)。
 
 ###代码示例
 
@@ -137,7 +137,7 @@ Microsoft Azure 媒体服务可以在处理媒体作业时向 [Azure 队列存�
 
 >[AZURE.NOTE]监视作业状态的建议方法是侦听通知消息，如以下示例所示。
 >
->或者，你可以使用 **IJob.State** 属性检查作业状态。请注意，在 **IJob** 的状态设置为“已完成”之前，你可能会先收到一条指出作业已完成的通知消息。**IJob.State** 属性在延迟片刻之后将反映正确的状态。
+>或者，你可以使用 **IJob.State** 属性检查作业状态。请注意，在 **IJob** 的状态尚未设置为“已完成”之前，你可能会先收到一条指出作业已完成的通知消息。**IJob.State** 属性在延迟片刻之后将反映正确的状态。
 
 	
 	using System;
@@ -251,7 +251,6 @@ Microsoft Azure 媒体服务可以在处理媒体作业时向 [Azure 队列存�
 	        }
 	 
 	
-	        // Upload a video file, and encode to Smooth Streaming format
 	        public static IJob SubmitEncodingJobWithNotificationEndPoint(string inputMediaFilePath)
 	        {
 	            // Declare a new job.
@@ -266,9 +265,9 @@ Microsoft Azure 媒体服务可以在处理媒体作业时向 [Azure 队列存�
 	            IMediaProcessor processor = GetLatestMediaProcessorByName("Azure Media Encoder");
 	
 	            // Create a task with the conversion details, using a configuration file. 
-	            ITask task = job.Tasks.AddNew("My Mp4 to Smooth Task",
+	            ITask task = job.Tasks.AddNew("My encoding Task",
 	                processor,
-	                "H264 Smooth Streaming 720p",
+	                "H264 Multiple Bitrate 720p",
 	                Microsoft.WindowsAzure.MediaServices.Client.TaskOptions.None);
 	
 	            // Specify the input asset to be encoded.
@@ -424,6 +423,5 @@ Microsoft Azure 媒体服务可以在处理媒体作业时向 [Azure 队列存�
 	job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected 
 	State: Finished
 	
- 
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0307_2016-->

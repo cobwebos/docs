@@ -10,14 +10,14 @@
 
 <tags
 	ms.service="backup"
-	ms.date="11/17/2015"
+	ms.date="01/22/2016"
 	wacn.date=""/>
 
 
 # 备份 Azure 虚拟机
 本文提供了备份现有 Azure 虚拟机 (VM)，以根据公司的备份和灾难恢复策略来保护这些 VM 的过程。
 
-首先，在备份 Azure 虚拟机之前，需要注意一些事项。如果你尚未这样做，请完成[先决条件](backup-azure-vms-prepare.md)部分，在环境中做好 VM 备份的准备，然后再继续。
+首先，在备份 Azure 虚拟机之前，需要注意一些事项。如果你尚未这样做，请完成[先决条件](backup-azure-vms-prepare.md)部分，对环境进行 VM 备份准备，然后再继续。
 
 有关其他信息，请参阅[在 Azure 中规划 VM 备份基础结构](backup-azure-vms-introduction.md)和 [Azure 虚拟机](https://azure.microsoft.com/documentation/services/virtual-machines/)。
 
@@ -25,7 +25,7 @@
 
 ![备份 Azure IaaS VM 的三个步骤](./media/backup-azure-vms/3-steps-for-backup.png)
 
->[AZURE.NOTE]备份虚拟机是在本地完成的过程。你不能将一个区域的虚拟机备份到另一个区域的备份保管库。因此，对于每个需要备份 VM 的 Azure 区域，需要在该区域中至少创建一个备份保管库。
+>[AZURE.NOTE] 备份虚拟机是在本地完成的过程。你不能将一个区域的虚拟机备份到另一个区域的备份保管库。因此，对于每个需要备份 VM 的 Azure 区域，需要在该区域中至少创建一个备份保管库。
 
 ## 步骤 1 - 发现 Azure 虚拟机
 发现过程应始终作为第一步来运行，这样是为了确保标识任何添加到订阅的新虚拟机。该过程将在 Azure 上查询订阅中的虚拟机列表和其他信息，例如云服务名称、区域等。
@@ -61,7 +61,7 @@
 
 4. 在“注册项”快捷菜单中，选择你要注册的虚拟机。如果存在两个或两个以上的同名虚拟机，请使用云服务来区别它们。
 
-    >[AZURE.TIP]可以一次注册多个虚拟机。
+    >[AZURE.TIP] 可以一次注册多个虚拟机。
 
     为每一个选定的虚拟机创建一个作业。
 
@@ -93,7 +93,7 @@
 
     如果存在两个以上的同名虚拟机，请使用云服务来区别虚拟机。
 
-    >[AZURE.TIP]你可以一次保护多个虚拟机。
+    >[AZURE.TIP] 你可以一次保护多个虚拟机。
 
     ![配置批量保护](./media/backup-azure-vms/protect-at-scale.png)
 
@@ -103,7 +103,7 @@
 
     ![使用新策略进行保护](./media/backup-azure-vms/policy-schedule.png)
 
-    >[AZURE.NOTE]备份策略包括计划备份的保留期方案。如果选择现有的备份策略，则不能修改下一步的保留期选项。
+    >[AZURE.NOTE] 备份策略包括计划备份的保留期方案。如果选择现有的备份策略，则不能修改下一步的保留期选项。
 
 5. 选择要与备份关联的“保留期范围”。
 
@@ -127,7 +127,7 @@
     ![配置保护作业](./media/backup-azure-vms/protect-configureprotection.png)
 
 ## 初始备份
-使用策略保护虚拟机后，虚拟机将会出现在“受保护的项”选项卡下，其状态为“受保护 - (等待初始备份)”。默认情况下，第一个计划的备份是*初始备份*。
+使用策略保护虚拟机后，虚拟机将会出现在“受保护的项”选项卡下，其状态为“受保护 - (等待初始备份)”。默认情况下，第一个计划的备份是 *初始备份* 。
 
 若要在配置保护后立即触发初始备份，请执行以下操作：
 
@@ -139,7 +139,7 @@
 
 ![备份进行中](./media/backup-azure-vms/protect-inprogress.png)
 
->[AZURE.NOTE]在执行备份操作的过程中，Azure 备份服务将向虚拟机中的备份扩展发出一条命令，以刷新所有写入并取得一致的快照。
+>[AZURE.NOTE] 在执行备份操作的过程中，Azure 备份服务将向虚拟机中的备份扩展发出一条命令，以刷新所有写入并取得一致的快照。
 
 完成初始备份后，“受保护的项”选项卡中的虚拟机状态将显示为“受保护”。
 
@@ -160,4 +160,4 @@
 - [管理和监视你的虚拟机](/documentation/articles/backup-azure-manage-vms)
 - [恢复虚拟机](/documentation/articles/backup-azure-restore-vms)
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

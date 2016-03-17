@@ -5,11 +5,11 @@
    documentationCenter="NA"
    authors="sahaj08"
    manager="barbkess"
-   editor="jrowlandjones"/>
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="11/19/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 
@@ -49,7 +49,7 @@ SELECT * FROM [ext].[CarSensor_Data]
 
 ```
 
-> [AZURE.NOTE]对外部表的查询可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。这表示外部数据包含*脏*记录。如果实际数据类型/列数目不匹配外部表的列定义，或数据不匹配指定的外部文件格式，则会将数据记录视为脏记录。若要解决此问题，请确保外部表和外部文件格式定义正确，并且外部数据符合这些定义。如果外部数据记录的子集是脏的，你可以通过使用 CREATE EXTERNAL TABLE DDL 中的拒绝选项，选择拒绝这些查询记录。
+> [AZURE.NOTE] 对外部表的查询可能因“查询已中止 -- 从外部源读取时已达最大拒绝阈值”错误而失败。这表示外部数据包含*脏*记录。如果实际数据类型/列数目不匹配外部表的列定义，或数据不匹配指定的外部文件格式，则会将数据记录视为脏记录。若要解决此问题，请确保外部表和外部文件格式定义正确，并且外部数据符合这些定义。如果外部数据记录的子集是脏的，你可以通过使用 CREATE EXTERNAL TABLE DDL 中的拒绝选项，选择拒绝这些查询记录。
 
 
 ## 从 Azure Blob 存储加载数据
@@ -177,7 +177,7 @@ $write.Dispose()
 
 <!--Article references-->
 [Load data with bcp]: sql-data-warehouse-load-with-bcp.md
-[使用 PolyBase 加载数据]: sql-data-warehouse-load-with-polybase.md
+[使用 PolyBase 加载数据]: sql-data-warehouse-get-started-load-with-polybase.md
 [solution partners]: sql-data-warehouse-solution-partners.md
 [development overview]: sql-data-warehouse-overview-develop.md
 [统计信息]: sql-data-warehouse-develop-statistics.md
@@ -206,4 +206,4 @@ $write.Dispose()
 [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

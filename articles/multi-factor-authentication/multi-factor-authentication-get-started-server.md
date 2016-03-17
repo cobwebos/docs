@@ -1,7 +1,8 @@
 <properties 
 	pageTitle="Azure Multi-Factor Authentication 服务器入门" 
 	description="这是与 Azure Multi-Factor Authentication 相关的页面，介绍如何开始使用 Azure MFA 服务器。" 
-	services="multi-factor-authentication" 
+	services="multi-factor-authentication"
+	keywords="身份验证服务器, azure multi factor authentication 应用激活页, 身份验证服务器下载" 
 	documentationCenter="" 
 	authors="billmath" 
 	manager="stevenpo" 
@@ -9,7 +10,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="08/24/2015" 
+	ms.date="01/25/2016" 
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 服务器入门
@@ -19,15 +20,14 @@
 
 <center>![Cloud](./media/multi-factor-authentication-get-started-server/server2.png)</center>
 
-既然我们已经确定了是否使用本地 Multi-Factor Authentication，那么我们就开始下一步吧。本页介绍如何全新安装服务器，以及在本地 Active Directory 上对它进行设置。如果已安装 Phonefactor 服务器，并正在寻求实现此目标的方法，请参阅“升级到 Azure Mult-Factor Authentication 服务器”；如果你正在寻找有关只安装 Web 服务的信息，请参阅“部署 Azure Multi-Factor Authentication 服务器移动应用 Web 服务”。
-
+既然我们已经确定了是否使用本地 Multi-Factor Authentication，那么我们就开始下一步吧。本页介绍如何全新安装服务器，以及在本地 Active Directory 上对它进行设置。如果已安装 PhoneFactor 服务器，并正在寻求升级的方法，请参阅[升级到 Azure Mult-Factor Authentication 服务器](multi-factor-authentication-get-started-server-upgrade.md)；如果你正在寻找有关只安装 Web 服务的信息，请参阅[部署 Azure Multi-Factor Authentication 服务器移动应用 Web 服务](multi-factor-authentication-get-started-server-webservice.md)。
 
 
 ## 下载 Azure Multi-Factor Authentication 服务器
 
 
 
-可以使用两种不同的方法下载 Azure Multi-Factor Authentication 服务器。两种方法都是通过 Azure 门户进行的。第一种方法是直接管理 Multi-Factor Auth 提供程序。第二种方法是通过服务设置。第二个选项需要 Multi-Factor Auth 提供程序或 Azure AD Premium 许可证。
+可以使用两种不同的方法下载 Azure Multi-Factor Authentication 服务器。两种方法都是通过 Azure 门户进行的。第一种方法是直接管理 Multi-Factor Auth 提供程序。第二种方法是通过服务设置。第二个选项需要 Multi-Factor Auth 提供程序或 Azure MFA、Azure AD Premium 或企业移动套件许可证。
 
 
 ### 从 Azure 门户下载 Azure Multi-Factor Authentication 服务器
@@ -37,8 +37,10 @@
 2. 在左侧选择“Active Directory”。
 3. 在“Active Directory”页的顶部，单击“Multi-Factor Auth 提供程序”
 4. 在底部单击“管理”
-5. 此时将打开一个新页面。单击“下载”。![下载](./media/multi-factor-authentication-sdk/download.png)
-6. 在“生成激活凭据”上方，单击“下载”。![下载](./media/multi-factor-authentication-get-started-server/download4.png)
+5. 此时将打开一个新页面。单击“下载”。
+![下载](./media/multi-factor-authentication-sdk/download.png)
+6. 在“生成激活凭据”上方，单击“下载”。
+![下载](./media/multi-factor-authentication-get-started-server/download4.png)
 7. 保存下载的内容。
 
 
@@ -49,9 +51,11 @@
 1. 以管理员身份登录到 Azure 门户。
 2. 在左侧选择“Active Directory”。
 3. 双击 Azure AD 的实例。
-4. 在顶部单击“配置” ![下载](./media/multi-factor-authentication-sdk/download2.png)
+4. 在顶部单击“配置”
+![下载](./media/multi-factor-authentication-sdk/download2.png)
 5. 在“Multi-Factor Authentication”下选择“管理服务设置”
-6. 在“服务设置”页上的屏幕底部单击“转到门户”。![下载](./media/multi-factor-authentication-sdk/download3.png)
+6. 在“服务设置”页上的屏幕底部单击“转到门户”。
+![下载](./media/multi-factor-authentication-get-started-server/servicesettings.png)
 7. 此时将打开一个新页面。单击“下载”。
 8. 在“生成激活凭据”上方，单击“下载”。
 9. 保存下载的内容。
@@ -112,7 +116,7 @@ IP 子网|网络掩码|IP 范围
 
 
 
-## 从 Active Directory 导入用户
+##从 Active Directory 导入用户
 
 安装并配置服务器后，你可以快速地将用户导入 Azure MFA 服务器。
 
@@ -182,4 +186,4 @@ IP 子网|网络掩码|IP 范围
 [与 Windows Server Active Directory 同步](/documentation/articles/multi-factor-authentication-get-started-server-dirint)|有关在 Active Directory 与 Azure MFA 服务器之间设置和配置同步的信息。
 [部署 Azure Multi-Factor Authentication 服务器移动应用 Web 服务](/documentation/articles/multi-factor-authentication-get-started-server-webservice)|有关设置和配置 Azure MFA 服务器 Web 服务的信息。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

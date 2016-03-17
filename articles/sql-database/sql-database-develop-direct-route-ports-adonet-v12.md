@@ -4,13 +4,13 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="MightyPen"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor="" />
 
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="09/15/2015" 
+	ms.date="02/05/2016" 
 	wacn.date=""/>
 
 
@@ -110,4 +110,10 @@
 
 - [连接到 SQL 数据库：链接、最佳实践和设计准则](/documentation/articles/sql-database-connect-central-recommendations)
 
-<!---HONumber=74-->
+
+- [Azure SQL 数据库防火墙](/documentation/articles/sql-database-firewall-configure)
+
+
+- [如何：在 SQL 数据库上配置防火墙设置](/documentation/articles/sql-database-configure-firewall-settings)
+
+<!---HONumber=Mooncake_0307_2016-->

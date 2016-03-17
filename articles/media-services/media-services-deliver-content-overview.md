@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="将内容传送到客户概述" 
-	description="本主题概述了在使用 Azure Media Services 传送内容时涉及到的操作。" 
+	description="本主题概述了在使用 Azure 媒体服务传送内容时涉及到的操作。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="09/27/2015"
+	ms.date="02/03/2016"
 	wacn.date=""/>
 
 
@@ -35,24 +35,24 @@
 
 ##筛选器和动态清单
 
-媒体服务可让你为资产定义筛选器。这些筛选器是服务器端规则，可让你的客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。通过按客户请求创建的**动态清单**可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
+媒体服务可让你为资产定义筛选器。这些筛选器是服务器端规则，可让你的客户选择运行如下操作：只播放一段视频（而非播放完整视频），或只指定客户设备可以处理的一部分音频和视频再现内容（而非与该资产相关的所有再现内容）。通过按客户请求创建的 **动态清单** 可以实现对资产进行这种筛选，并基于指定的筛选器流式传输视频。
 
 有关详细信息，请参阅[筛选器和动态清单](/documentation/articles/media-services-dynamic-manifest-overview)。
 
 ##定位符
 
-若要为用户提供一个可用来流式传输内容或下载内容的 URL，你首先需要通过创建定位符来“发布”资产。定位符提供访问资产中包含的文件的入口点。Media Services 支持两种类型的定位符：
+若要为用户提供一个可用来流式传输内容或下载内容的 URL，你首先需要通过创建定位符来“发布”资产。定位符提供访问资产中包含的文件的入口点。媒体服务支持两种类型的定位符：
 
 - 用于流媒体（例如 MPEG DASH、HLS 或平滑流）或逐进式下载文件的 **OnDemandOrigin** 定位符。
 -  用于将媒体文件下载到本地计算机的 **SAS**（访问签名）URL 定位符。 
 
-**访问策略**用于定义客户端可以访问给定资产的权限（如读取、写入和列出）和持续时间。请注意，创建 OrDemandOrigin 定位符时，不应使用列表权限 (AccessPermissions.List)。
+**访问策略** 用于定义客户端可以访问给定资产的权限（如读取、写入和列出）和持续时间。请注意，创建 OrDemandOrigin 定位符时，不应使用列表权限 (AccessPermissions.List)。
 
 定位符附带过期日期。当你使用门户发布资产时，将会创建过期日期在 100 年后的定位符。
 
->[AZURE.NOTE]如果你使用门户在 2015 年 3 月之前创建了定位符，则会创建过期日期在两年后的定位符。
+>[AZURE.NOTE] 如果你使用门户在 2015 年 3 月之前创建了定位符，则会创建过期日期在两年后的定位符。
 
-若要更新定位符的过期日期，请使用 [REST](http://msdn.microsoft.com/zh-cn/library/azure/hh974308.aspx#update_a_locator) 或 [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API。请注意，当你更新 SAS 定位符的过期日期时，URL 会发生变化。
+若要更新定位符的过期日期，请使用 [REST](http://msdn.microsoft.com/zh-cn/library/azure/hh974308.aspx#update_a_locator) 或 [.NET] (https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mediaservices.client.ilocator.update(v=azure.10).aspx) API。请注意，当你更新 SAS 定位符的过期日期时，URL 会发生变化。
  
 定位符不用于管理按用户的访问控制。要为不同用户提供不同的访问权限，请使用数字权限管理 (DRM) 解决方案。有关详细信息，请参阅[保护媒体](http://msdn.microsoft.com/zh-cn/library/azure/dn282272.aspx)。
 
@@ -100,7 +100,7 @@
 
 	http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
 
-有关详细信息，请参阅[此](http://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support)博客。
+有关详细信息，请参阅[此博客](http://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support)。
 
 
 **平滑流格式**
@@ -128,20 +128,20 @@
 
 ##动态打包
 
-Media Services 所提供的动态打包可让你以 Media Services 支持的流格式（MPEG DASH、HLS、Smooth Streaming、HDS）传送自适应比特率 MP4 或平滑流编码内容，而无须重新打包成这些流格式。
+媒体服务所提供的动态打包可让你以媒体服务支持的流格式（MPEG DASH、HLS、Smooth Streaming、HDS）传送自适应比特率 MP4 或平滑流编码内容，而无须重新打包成这些流格式。
 
 若要使用动态打包，必须执行下列操作：
 
 - 将夹层（源）文件编码成一组自适应比特率 MP4 文件或自适应比特率平滑流文件。
 - 针对你要传送内容的流式处理终结点，获取至少一个按需流式处理单位。有关详细信息，请参阅[如何缩放按需流式处理保留单位](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。 
 
-通过动态打包，你只需要存储及支付一种存储格式的文件，Media Services 将会根据客户端的要求创建并提供适当的响应。
+通过动态打包，你只需要存储及支付一种存储格式的文件，媒体服务将会根据客户端的要求创建并提供适当的响应。
 
 请注意，除了能够使用动态打包功能以外，点播流保留单元也为你提供可购买的专用流出容量（以 200 Mbps 为增量来购买）。默认情况下，点播流在共享实例模型中配置，该模型的服务器资源（例如计算机、出口容量等）与所有其他用户共享。若要增加按需流式处理吞吐量，建议购买按需流式处理保留单位。
 
 ##渐进式下载 
 
-渐进式下载可让你在下载完整个文件之前开始播放媒体。你无法渐进式下载 .ism*（ismv、isma、ismt、ismc）文件。
+渐进式下载可让你在下载完整个文件之前开始播放媒体。你无法渐进式下载 .ism\*（ismv、isma、ismt、ismc）文件。
 
 若要渐进式下载内容，请使用 OnDemandOrigin 类型的定位符。以下示例演示了基于 OnDemandOrigin 类型的定位符的 URL：
 
@@ -169,22 +169,13 @@ Media Services 所提供的动态打包可让你以 Media Services 支持的流�
 
 ##流式处理终结点
 
-**流式处理终结点**表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容传送网络 (CDN) 以进一步分发。流式传输终结点服务的出站流可以是实时流，也可以是你的媒体服务帐户中的视频点播资产。此外，还可以通过调整流式传输保留单元来控制流式处理终结点服务处理不断增长的带宽需求的能力。你至少应该为生产环境中的应用程序分配一个保留单元。有关详细信息，请参阅[如何缩放媒体服务](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
+**流式处理终结点** 表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容传送网络 (CDN) 以进一步分发。流式传输终结点服务的出站流可以是实时流，也可以是你的媒体服务帐户中的视频点播资产。此外，还可以通过调整流式传输保留单元来控制流式处理终结点服务处理不断增长的带宽需求的能力。你至少应该为生产环境中的应用程序分配一个保留单元。有关详细信息，请参阅[如何缩放媒体服务](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
 
-<!-- deleted by customization
-
-##Media Services learning paths
-
-You can view AMS learning paths here:
-
-- [AMS Live Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS on Demand Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
--->
 
 
 ##相关主题
 
-[轮转存储密钥后更新 Media Services 定位符](/documentation/articles/media-services-roll-storage-access-keys)
+[轮转存储密钥后更新媒体服务定位符](/documentation/articles/media-services-roll-storage-access-keys)
  
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0307_2016-->

@@ -1,20 +1,22 @@
 
 <properties
 	pageTitle="从备份中还原虚拟机 | Microsoft Azure"
-	description="了解如何恢复 Azure 虚拟机"
+	description="了解如何从恢复点还原 Azure 虚拟机"
 	services="backup"
 	documentationCenter=""
 	authors="trinadhk"
 	manager="shreeshd"
-	editor=""/>
+	editor=""
+	keywords="还原备份; 如何还原; 恢复点;"/>
 
 <tags
 	ms.service="backup"
-	ms.date="10/29/2015"
+	ms.date="01/22/2016"
 	wacn.date=""/>
 
 # 还原 Azure 中的虚拟机
-你可以使用还原操作，通过存储在 Azure 备份保管库中的备份将虚拟机还原到新的 VM。
+
+执行以下步骤，通过存储在 Azure 备份保管库中的备份将虚拟机还原到新的 VM。
 
 ## 还原工作流
 ### 1\.选择要还原的项
@@ -39,7 +41,7 @@
 
     ![选择日期](./media/backup-azure-restore-vms/select-date.png)
 
-    在你单击日历控件中的日期后，该日可用的恢复点将显示在下面的恢复点表中。“时间”列指示生成快照的时间。“类型”列显示恢复点的[一致性](documentation/articles/backup-azure-vms#consistency-of-recovery-points)。表标题在括号中显示该日期可用的恢复点数目。
+    在你单击日历控件中的日期后，该日可用的恢复点将显示在下面的恢复点表中。“时间”列指示生成快照的时间。“类型”列显示恢复点的[一致性](/documentation/articles/backup-azure-vms#consistency-of-recovery-points)。表标题在括号中显示该日期可用的恢复点数目。
 
     ![恢复点](./media/backup-azure-restore-vms/recovery-points.png)
 
@@ -100,7 +102,7 @@ Azure 备份支持对域控制器 (DC) 虚拟机进行备份的方案。但在�
 
 需要解决的难题是，DSRM 模式不存在于 Azure 中。因此若要还原此类 VM，不能使用 Azure 门户。唯一支持的还原机制是使用 PowerShell 进行基于磁盘的还原。
 
->[AZURE.WARNING]对于多 DC 环境中的域控制器 VM，请勿使用 Azure 门户来还原！ 仅支持基于 PowerShell 的还原
+>[AZURE.WARNING] 对于多 DC 环境中的域控制器 VM，请勿使用 Azure 门户来还原！仅支持基于 PowerShell 的还原
 
 阅读更多内容，了解 [USN 回退问题](https://technet.microsoft.com/library/dd363553)以及建议的问题解决策略。
 
@@ -113,7 +115,7 @@ Azure 备份支持备份虚拟机的以下特殊网络配置。
 
 还原这些配置时，必须注意以下事项。
 
->[AZURE.TIP]还原后，请使用基于 PowerShell 的还原流程来重新创建 VM 的特殊网络配置。
+>[AZURE.TIP] 还原后，请使用基于 PowerShell 的还原流程来重新创建 VM 的特殊网络配置。
 
 ### 从 UI 还原：
 从 UI 还原时，请**始终选择新的云服务**。请注意，由于门户在执行还原流程时只接受强制参数，因此使用 UI 还原的 VM 将会丢失它们拥有的特殊网络配置。也就是说，还原后的 VM 将会是普通的 VM，而没有负载平衡器配置、多个 NIC 或多个保留 IP。
@@ -123,17 +125,17 @@ PowerShell 能够只从备份还原 VM 磁盘，而不建立虚拟机。当还�
 
 若要在还原磁盘后完全重新创建虚拟机，请执行以下步骤：
 
-1. 使用 [Azure 备份 PowerShell](../backup-azure-vms-automation.md#restore-an-azure-vm) 从备份保管库还原磁盘
+1. 使用 [Azure 备份 PowerShell](/documentation/articles/backup-azure-vms-automation#restore-an-azure-vm) 从备份保管库还原磁盘
 
 2. 使用 PowerShell cmdlet 创建负载平衡器/多个 NIC/多个保留 IP 所需的 VM 配置，并使用该配置创建具有所需配置的 VM。
-	- 使用[内部负载平衡器](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)在云服务中创建 VM
-	- 创建 VM 以连接到[面向 Internet 的负载平衡器](https://azure.microsoft.com/zh-cn/documentation/articles/load-balancer-internet-getstarted)
-	- 创建具有[多个 NIC](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics) 的 VM
-	- 具有[多个保留 IP](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/) 的 VM
+	- 使用[内部负载平衡器](/documentation/articles/load-balancer-internal-getstarted/)在云服务中创建 VM
+	- 创建 VM 以连接到[面向 Internet 的负载平衡器](/documentation/articles/load-balancer-internet-getstarted)
+	- 创建具有[多个 NIC](/documentation/articles/virtual-networks-multiple-nics) 的 VM
+	- 具有[多个保留 IP](/documentation/articles/virtual-networks-reserved-public-ip/) 的 VM
   
 
 ## 后续步骤
-- [排查错误](backup-azure-vms-troubleshoot.md#restore)
-- [管理虚拟机](backup-azure-manage-vms)
+- [排查错误](/documentation/articles/backup-azure-vms-troubleshoot#restore)
+- [管理虚拟机](/documentation/articles/backup-azure-manage-vms)
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

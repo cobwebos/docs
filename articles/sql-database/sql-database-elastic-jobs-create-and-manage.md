@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="11/04/2015"
+	ms.date="02/11/2016"
 	wacn.date=""/>
 
 # 使用门户创建和管理 SQL 数据库弹性作业（预览版）
@@ -19,7 +19,7 @@
 - [PowerShell](/documentation/articles/sql-database-elastic-jobs-powershell)
 
 
-使用**弹性数据库作业**，可以通过执行架构更改、凭据管理、引用数据更新、性能数据收集或租户（客户）遥测数据收集等管理操作，来轻松可靠地管理一组数据库。目前可以通过 Azure 门户和 PowerShell cmdlet 使用弹性数据库作业。但是，它在 Azure 门户中的功能被缩减，仅限针对[弹性数据库池（预览版）](/documentation/articles/sql-database-elastic-pool)中的所有数据库执行。若要访问其他功能并针对包含自定义集合或分片集（使用[弹性数据库客户端库](/documentation/articles/sql-database-elastic-scale-introduction)创建）的一组数据库执行脚本，请参阅[使用 PowerShell 创建和管理作业](/documentation/articles/sql-database-elastic-jobs-powershell)。有关作业的详细信息，请参阅[弹性数据库作业概述](/documentation/articles/sql-database-elastic-jobs-overview)。
+使用**弹性数据库作业**，可以通过执行架构更改、凭据管理、引用数据更新、性能数据收集或租户（客户）遥测数据收集等管理操作，来简化多组数据库的管理。目前可以通过 Azure 门户和 PowerShell cmdlet 使用弹性数据库作业。但是，它在 Azure 门户中的功能被缩减，仅限针对[弹性数据库池（预览版）](/documentation/articles/sql-database-elastic-pool)中的所有数据库执行。若要访问其他功能并针对包含自定义集合或分片集（使用[弹性数据库客户端库](/documentation/articles/sql-database-elastic-scale-introduction)创建）的一组数据库执行脚本，请参阅[使用 PowerShell 创建和管理作业](/documentation/articles/sql-database-elastic-jobs-powershell)。有关作业的详细信息，请参阅[弹性数据库作业概述](/documentation/articles/sql-database-elastic-jobs-overview)。
 
 ## 先决条件
 
@@ -111,4 +111,4 @@
 
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0307_2016-->

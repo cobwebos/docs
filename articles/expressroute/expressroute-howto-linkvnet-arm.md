@@ -9,7 +9,7 @@
    tags="azure-service-management"/>
 <tags 
    ms.service="expressroute"
-   ms.date="01/07/2015"
+   ms.date="01/16/2016"
    wacn.date="" />
 
 # 将虚拟网络链接到 ExpressRoute 线路
@@ -27,7 +27,6 @@
 
 - 你将需要最新版本的 Azure PowerShell 模块（版本 1.0 或更高版本）。 
 - 在开始配置之前，请务必查看[先决条件](/documentation/articles/expressroute-prerequisites)页、[路由要求](/documentation/articles/expressroute-routing)页和[工作流](/documentation/articles/expressroute-workflows)页。
-- 你必须有一个活动的 ExpressRoute 线路。在继续下一步之前，请按说明[创建 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-classic)，并通过连接提供商启用该线路。ExpressRoute 线路必须处于已预配和已启用状态，你才能运行下述 cmdlet。
 - 你必须有一个活动的 ExpressRoute 线路。 
 	- 请按说明[创建 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-arm)，并通过连接提供商启用该线路。 
 	- 请确保为线路配置 Azure 专用对等互连。如需路由说明，请参阅[配置路由](/documentation/articles/expressroute-howto-routing-arm)一文。 
@@ -133,4 +132,4 @@
 
 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)。
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0307_2016-->

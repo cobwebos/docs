@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="backup" 
-	ms.date="10/29/2015"
+	ms.date="01/25/2016"
 	wacn.date=""/>
 
 
@@ -55,7 +55,7 @@
 
     ![创建备份作业](./media/backup-azure-manage-vms/creating-job.png)
 
-    >[AZURE.NOTE]若要查看与虚拟机关联的策略，请向下钻取到“受保护的项”页中的虚拟机，然后转到“备份策略”选项卡。
+    >[AZURE.NOTE] 若要查看与虚拟机关联的策略，请向下钻取到“受保护的项”页中的虚拟机，然后转到“备份策略”选项卡。
 
 3. 创建作业后，可以单击 Toast 栏中的“查看作业”按钮，以在“作业”页中查看相应的作业。
 
@@ -69,7 +69,7 @@
 - 保留 Azure 备份保管库中与虚拟机关联的备份数据
 - 删除与虚拟机关联的备份数据
 
-如果你已选择保留与虚拟机关联的备份数据，则可使用该备份数据来还原虚拟机。有关此类虚拟机的定价详细信息，请单击[此处](http://www.windowsazure.cn/home/features/back-up/#price)。
+如果你已选择保留与虚拟机关联的备份数据，则可使用该备份数据来还原虚拟机。有关此类虚拟机的定价详细信息，请单击[此处](/home/features/back-up/#price)。
 
 若要停止保护虚拟机，请执行以下操作：
 
@@ -108,7 +108,7 @@
 
   ![重新保护 VM](./media/backup-azure-manage-vms/reprotected-status.png)
 
->[AZURE.NOTE]重新保护虚拟机时，你可以选择一个不同的策略，而不是最初用于保护虚拟机的策略。
+>[AZURE.NOTE] 重新保护虚拟机时，你可以选择一个不同的策略，而不是最初用于保护虚拟机的策略。
 
 ## 取消注册虚拟机
 
@@ -157,7 +157,7 @@
 
 ![仪表板](./media/backup-azure-manage-vms/dashboard-protectedvms.png)
 
->[AZURE.NOTE]仪表板中的值每 24 小时刷新一次。
+>[AZURE.NOTE] 仪表板中的值每 24 小时刷新一次。
 
 ## 审核操作
 可以通过 Azure 备份来查看客户触发的备份操作的“操作日志”，因此可以轻松地确切了解针对备份保管库执行了哪些管理操作。通过操作日志，可以针对备份操作进行很好的事后总结和审核。
@@ -251,6 +251,6 @@ PS C:\> Add-AlertRule -Operator GreaterThanOrEqual -Threshold 1 -ResourceId '/su
 
 ## 后续步骤
 
-- [还原 Azure VM](backup-azure-restore-vms)
+- [还原 Azure VM](/documentation/articles/backup-azure-restore-vms)
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

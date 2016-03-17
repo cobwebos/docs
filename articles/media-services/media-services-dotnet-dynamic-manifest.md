@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/18/2015"
+	ms.date="02/03/2016"
 	wacn.date=""/>
 
 
@@ -130,19 +130,10 @@
 	http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f, filter=MyFilter)
 
 
-<!-- deleted by customization
-
-##Media Services learning paths
-
-You can view AMS learning paths here:
-
-- [AMS Live Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS on Demand Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
--->
 
 ##另请参阅 
 
 [动态清单概述](/documentation/articles/media-services-dynamic-manifest-overview)
  
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0307_2016-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.date="10/06/2015" 
+	ms.date="01/26/2016" 
 	wacn.date=""/>
 
 # 启用跨云和本地的混合应用程序
@@ -41,4 +41,4 @@
 - [移动服务](/home/features/mobile-services/)
 - [云服务](/home/features/cloud-services/) 
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0307_2016-->

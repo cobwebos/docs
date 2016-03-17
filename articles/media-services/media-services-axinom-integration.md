@@ -1,6 +1,8 @@
+<!-- not suitable for Mooncake -->
+
 <properties 
 	pageTitle="使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务" 
-	description="本文介绍如何使用 Azure Media Services (AMS) 传送 AMS 使用 PlayReady 和 Widevine DRM 动态加密的流。PlayReady 许可证来自媒体服务 PlayReady 许可证服务器，而 Widevine 许可证则由 Axinom 许可证服务器传送。" 
+	description="本文介绍如何使用 Azure 媒体服务(AMS) 传送 AMS 使用 PlayReady 和 Widevine DRM 动态加密的流。PlayReady 许可证来自媒体服务 PlayReady 许可证服务器，而 Widevine 许可证则由 Axinom 许可证服务器传送。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="willzhan,Mingfeiy,rajputam,Juliako" 
@@ -9,7 +11,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/15/2015"
+	ms.date="02/03/2016"  
 	wacn.date=""/>
 
 #使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务  
@@ -22,7 +24,7 @@
 
 Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细信息，请参阅 [Mingfei 的博客](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)）。此外，Azure Media Player (AMP) 还添加了 Widevine 支持（有关详细信息，请参阅 [AMP 文档](http://amp.azure.net/libs/amp/latest/docs/)）。这是在配备了 MSE 和 EME 的现代浏览器上流式处理受 CENC 保护的 DASH 内容方面的一项重要成就，该保护是通过 multi-native-DRM（PlayReady 和 Widevine）来完成的。
 
->[AZURE.NOTE]目前，媒体服务不提供 Widevine 许可证服务器。你可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。
+从媒体服务 .NET SDK 版本 3.5.2 开始，媒体服务允许你配置 Widevine 许可证模板并获取 Widevine 许可证。你还可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/)、[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。
 
 本文介绍如何集成和测试由 Axinom 管理的 Widevine 许可证服务器。具体而言，本文涵盖：
 
@@ -52,9 +54,7 @@ Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细�
 
 ##Azure Media Player 准备
 
-AMP v1.4.0 支持播放使用 PlayReady 和 Widevine DRM 进行动态打包的 AMS 内容。
-如果 Widevine 许可证服务器不需要令牌身份验证，则不需执行任何其他操作即可测试受 Widevine 保护的 DASH 内容。例如，AMP 团队提供了一个简单的[示例](http://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevine_notoken.html)，在该示例中，你可以看到它可以运行在使用 PlayReady 的 Edge 和 IE11 中以及使用 Widevine 的 Chrome 中。
-Axinom 提供的 Widevine 许可证服务器要求 JWT 令牌身份验证。需要通过 HTTP 标头“X-AxDRM-Message”提交带许可证请求的 JWT 令牌。为此，你需要在设置源之前在承载 AMP 的 Web 页中添加以下 javascript：
+AMP v1.4.0 支持播放使用 PlayReady 和 Widevine DRM 进行动态打包的 AMS 内容。如果 Widevine 许可证服务器不需要令牌身份验证，则不需执行任何其他操作即可测试受 Widevine 保护的 DASH 内容。例如，AMP 团队提供了一个简单的[示例](http://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevine_notoken.html)，在该示例中，你可以看到它可以运行在使用 PlayReady 的 Edge 和 IE11 中以及使用 Widevine 的 Chrome 中。Axinom 提供的 Widevine 许可证服务器要求 JWT 令牌身份验证。需要通过 HTTP 标头“X-AxDRM-Message”提交带许可证请求的 JWT 令牌。为此，你需要在设置源之前在承载 AMP 的 Web 页中添加以下 javascript：
 
 	<script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
 
@@ -194,15 +194,17 @@ Axinom Widevine 许可证服务器
 Widevine 许可证获取 URL|必须用于配置资产传送策略，以便进行 DASH 流式处理（参见[此](/documentation/articles/media-services-axinom-integration#content-protection)部分）。
 内容密钥 ID|必须包括，作为 JWT 令牌的授权消息声明值的一部分（参见[此](/documentation/articles/media-services-axinom-integration#jwt-token-generation)部分）。 
 
+
 ##媒体服务学习路径
 
-你可以在此处查看 AMS 学习路径：
+[AZURE.INCLUDE [media-services-learning-paths-include](../includes/media-services-learning-paths-include.md)]
 
-- [AMS 实时流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS 按需流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##提供反馈
+
+[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
 
 ###致谢 
 
 我们诚挚地向以下人员表达谢意，是他们协助完成了本文档的写作工作：Kristjan Jõgi（来自 Axinom）、Mingfei Yan 和 Amit Rajput。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0307_2016-->

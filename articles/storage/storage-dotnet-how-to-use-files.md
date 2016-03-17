@@ -1,6 +1,6 @@
 <properties
-			pageTitle="如何通过 Windows 使用 Azure 文件 | Microsoft Azure"
-    		description="按照此分步教程中的说明，在云中创建 Azure 文件共享。管理文件共享内容，并从 Azure 虚拟机 (VM) 或本地应用程序装载文件共享。"
+			pageTitle="在 Windows 上开始使用 Azure 文件存储 | Microsoft Azure"
+    		description="使用 Azure 文件存储在云中存储文件数据和从 Azure 虚拟机 (VM) 或从运行 Windows 的本地应用程序装载你的云文件共享。"
             services="storage"
             documentationCenter=".net"
             authors="tamram"
@@ -8,26 +8,24 @@
             editor="" />
 
 <tags ms.service="storage"
-      ms.date="01/12/2015"
+      ms.date="02/03/2016"
       wacn.date="" />
 
-# 如何通过 Windows 使用 Azure 文件存储
+# 在 Windows 上开始使用 Azure 文件存储
 
 [AZURE.INCLUDE [storage-selector-file-include](../includes/storage-selector-file-include.md)]
 
 ## 概述
 
-Azure 文件存储使用标准[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/zh-cn/library/windows/desktop/aa365233.aspx)在云中提供文件共享。该存储现已正式推出并同时支持 SMB 2.1 和 SMB 3.0。
+Azure 文件存储是一种使用标准[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/zh-cn/library/windows/desktop/aa365233.aspx)在云中提供文件共享的服务。支持 SMB 2.1 和 SMB 3.0。通过 Azure 文件存储，你可以将依赖文件共享的旧版应用程序快速迁移到 Azure 且无成本高昂的重写。在 Azure 虚拟机或云服务中或者从本地客户端运行的应用程序可以在云中装载文件共享，就像桌面应用程序装载典型的 SMB 共享一样。之后，任意数量的应用程序组件可以装载并同时访问文件存储共享。
 
-你可以使用[管理门户](https://manage.windowsazure.cn)、Azure 存储空间 PowerShell cmdlet、Azure 存储空间客户端库或 Azure 存储空间 REST API 来创建 Azure 文件共享。此外，由于这些文件共享是 SMB 共享，因此你还可以通过标准的和熟悉的文件系统 API 来访问它们。
+由于文件存储共享是标准的 SMB 文件共享，在 Azure 中运行的应用程序可以通过文件系统 I/O API 访问共享中的数据。因此，开发人员可以利用其现有代码和技术迁移现有应用程序。IT 专业人员在管理 Azure 应用程序的过程中，可以使用 PowerShell cmdlet 来创建、装载和管理文件存储共享。
 
-在 Azure 中运行的应用程序可以轻松地从 Azure 虚拟机装载文件共享。由于文件存储已正式推出，你还可以从支持 SMB 3.0 的本地客户端（例如，本地笔记本电脑、台式机和服务器）装载文件共享。
-
-文件存储基于与 Blob、表和队列存储相同的技术构建，因此它能够充分利用 Azure 存储平台内置的现有可用性、持久性、可伸缩性和异地冗余。
+你可以使用 Azure 存储空间 PowerShell cmdlet、Azure 存储空间客户端库或 Azure 存储空间 REST API 来创建 Azure 文件共享。此外，由于这些文件共享是 SMB 共享，因此你还可以通过标准的和熟悉的文件系统 API 来访问它们。
 
 有关通过 Linux 使用文件存储的信息，请参阅[如何通过 Linux 使用 Azure 文件存储](/documentation/articles/storage-how-to-use-files-linux)。
 
-有关文件存储的可伸缩性和性能目标的信息，请参阅 [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets#scalability-targets-for-standard-storage-accounts)。
+有关文件存储的可伸缩性和性能目标的信息，请参阅 [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets#scalability-targets-for-blobs-queues-tables-and-files)。
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -73,9 +71,9 @@ The [Azure preview portal](https://ms.portal.azure.com/) provides a user interfa
 
 ### 为存储帐户和密钥创建上下文
 
-现在，将创建存储帐户上下文。该上下文封装了存储帐户名称和帐户密钥。有关从[管理门户](https://manage.windowsazure.cn)复制帐户密钥的说明，请参阅[查看、复制和重新生成存储访问密钥](/documentation/articles/storage-create-storage-account#view-copy-and-regenerate-storage-access-keys)。
+现在，将创建存储帐户上下文。该上下文封装了存储帐户名称和帐户密钥。有关从[管理门户](https://manage.windowsazure.cn)复制帐户密钥的说明，请参阅[查看和复制存储访问密钥](/documentation/articles/storage-create-storage-account#view-and-copy-storage-access-keys)。
 
-请将下面示例中的 `storage-account-name` 和 `storage-account-key` 替换为你的帐户名称和密钥：
+请将下面示例中的 `storage-account-name` 和 `storage-account-key` 替换为你的存储帐户名称和密钥。
 
 	# create a context for account and key
 	$ctx=New-AzureStorageContext storage-account-name storage-account-key
@@ -354,13 +352,13 @@ The [Azure preview portal](https://ms.portal.azure.com/) provides a user interfa
         Console.WriteLine(fileSas.DownloadText());
     }
 
-有关创建和使用共享访问签名的更多信息，请参阅[共享访问签名：了解 SAS 模型](/documentation/articles/storage-dotnet-shared-access-signature-part-1)和[创建 SAS 并将 SAS 用于 Blob 服务](/documentation/articles/storage-dotnet-shared-access-signature-part-2)。
+有关创建和使用共享访问签名的更多信息，请参阅[共享访问签名：了解 SAS 模型](/documentation/articles/storage-dotnet-shared-access-signature-part-1)和[创建 SAS 并将 SAS 用于 Blob 存储](/documentation/articles/storage-dotnet-shared-access-signature-part-2)。
 
 ### 复制文件
 
 从 Azure 存储空间客户端库的 5.x 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。在后续部分中，我们将演示如何以编程方式执行这些复制操作。
 
-还可以使用 AzCopy 将一个文件复制到另一个文件或将一个 Blob 复制到一个文件，反之亦然。请参阅[如何将 AzCopy 与 Microsoft Azure 存储空间一起使用](/documentation/articles/storage-use-azcopy#copy-files-in-azure-file-storage-with-azcopy-preview-version-only)，以了解有关使用 AzCopy 复制文件的详细信息。
+还可以使用 AzCopy 将一个文件复制到另一个文件或将一个 Blob 复制到一个文件，反之亦然。请参阅[如何将 AzCopy 与 Microsoft Azure 存储空间一起使用](/documentation/articles/storage-use-azcopy#copy-files-in-azure-file-storage-with-azcopy)以了解有关用 AzCopy 复制文件的详细信息。
 
 > [AZURE.NOTE] 如果将一个 Blob 复制到一个文件，或将一个文件复制到一个 Blob，必须使用共享访问签名 (SAS) 对源对象进行身份验证，即使你在同一存储帐户内进行复制。
 
@@ -522,7 +520,6 @@ Azure 存储空间分析现在支持用于文件存储的指标。使用指标�
 ### 概念性文章
 
 - [如何通过 Linux 使用 Azure 文件存储](/documentation/articles/storage-how-to-use-files-linux)
-- [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
 ### 文件存储的工具支持
 
@@ -537,10 +534,9 @@ Azure 存储空间分析现在支持用于文件存储的指标。使用指标�
 
 ### 博客文章
 
-- [Azure 文件存储现已正式发布](/zh-cn/blog)
-- [深入了解 Azure 文件存储](/home/features/storage) 
+- [Azure 文件存储现已正式发布](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+- [Azure 文件存储内部](https://azure.microsoft.com/blog/inside-azure-file-storage/) 
 - [Microsoft Azure 文件服务简介](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [将连接保存到 Microsoft Azure 文件中](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
-- [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
-<!----HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0307_2016-->

@@ -1,19 +1,21 @@
 <properties
 	pageTitle="进行备份 Azure 虚拟机所需的环境准备 | Microsoft Azure"
-	description="确保进行备份 Azure 虚拟机所需的环境准备"
+	description="确保对环境进行准备，以便在 Azure 中备份虚拟机"
 	services="backup"
 	documentationCenter=""
 	authors="Jim-Parker"
 	manager="jwhit"
-	editor=""/>
+	editor=""
+	keywords="备份; 正在备份;"/>
 
 <tags
 	ms.service="backup"
-	ms.date="11/17/2015"
+	ms.date="01/22/2016"
 	wacn.date=""/>
 
 # 进行备份 Azure 虚拟机所需的环境准备
-备份 Azure 虚拟机 (VM) 之前，你需要符合这些先决条件才能对环境进行准备。如果已满足这些条件，则可以开始[备份你的 VM](backup-azure-vms.md)。否则请继续完成下面的步骤，确保你的环境已准备就绪。
+
+备份 Azure 虚拟机 (VM) 之前，你需要符合这些先决条件。如果你已经对环境进行了备份准备，则可开始[备份 VM](backup-azure-vms.md)。否则请继续完成下面的步骤，确保你的环境已准备就绪。
 
 
 ## 1\.备份保管库
@@ -76,7 +78,7 @@
 ### 使用 HTTP 代理进行 VM 备份
 对 VM 进行备份时，会使用 HTTPS API 将快照管理命令从备份扩展发送到 Azure 存储空间。此流量必须通过代理从扩展进行路由，因为只会将代理配置为允许访问公共 Internet。
 
->[AZURE.NOTE]至于应该使用何种代理软件，我们不提供任何建议。请确保你选取的代理可以进行下述配置步骤。
+>[AZURE.NOTE] 至于应该使用何种代理软件，我们不提供任何建议。请确保你选取的代理可以进行下述配置步骤。
 
 在以下示例中，需要对应用 VM 进行配置，以便将代理 VM 用于所有绑定到公共 Internet 的 HTTP 流量。需要将代理 VM 配置为允许来自虚拟网络中 VM 的传入流量。最后，NSG（也称 *NSG-lockdown*）需要一个新的安全规则，以便允许从代理 VM 流出的出站 Internet 流量。
 
@@ -192,4 +194,4 @@ VM 代理已存在于从 Azure 库创建的 VM 中。但是，从本地数据中
 - [备份虚拟机](/documentation/articles/backup-azure-vms)
 - [管理虚拟机备份](/documentation/articles/backup-azure-manage-vms)
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

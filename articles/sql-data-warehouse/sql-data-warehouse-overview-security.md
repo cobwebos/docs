@@ -9,8 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-
-   ms.date="10/15/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # 保护 SQL 数据仓库中的数据库
@@ -69,7 +68,7 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 - 精细[权限][]可让你控制可以对数据库中单个列、表、视图、过程和其他对象执行的操作。
 - [存储过程][]可用于限制可对数据库执行的操作。
 
-从 Azure 管理门户或使用 Azure 资源管理器 API 管理数据库和逻辑服务器的操作将会根据你的门户用户帐户的角色分配进行控制。有关此主题的详细信息，请参阅 [Azure 预览门户中基于角色的访问控制][]。
+从 Azure 管理门户或使用 Azure 资源管理器 API 管理数据库和逻辑服务器的操作将会根据你的门户用户帐户的角色分配进行控制。有关此主题的详细信息，请参阅 [Azure 预览管理门户中基于角色的访问控制][]。
 
 
 
@@ -84,7 +83,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 ```
 
-你也可以通过 [Azure 门户][]中的数据库设置启用透明数据加密。
+你也可以通过 [Azure 管理门户][] 中的数据库设置启用透明数据加密。
 
 
 
@@ -111,9 +110,9 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 [存储过程]: https://msdn.microsoft.com/library/ms190782.aspx
 [透明数据加密]: http://go.microsoft.com/fwlink/?LinkId=526242
 [SQL 数据库审核入门]: sql-database-auditing-get-started.md
-[Azure 门户]: https://manage.windowsazure.cn
+[Azure 管理门户]: https://manage.windowsazure.cn
 
 <!--Other Web references-->
-[Azure 预览门户中基于角色的访问控制]: /documentation/articles/role-based-access-control-configure.aspx
+[Azure 预览管理门户中基于角色的访问控制]: /documentation/articles/role-based-access-control-configure.aspx
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

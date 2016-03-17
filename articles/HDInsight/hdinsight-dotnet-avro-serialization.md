@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="10/29/2015"
+	ms.date="02/04/2015"
 	wacn.date=""/>
 
 
@@ -26,7 +26,7 @@
 Avro 系统中的对象的序列化表示形式由两部分组成：架构和实际值。Avro 架构使用 JSON 描述已序列化数据的与语言无关的数据模型。它与数据的二进制表示形式并排显示。将架构与二进制表示形式分离，使写入每个对象时没有针对值的开销，从而实现快速序列化和较小的表示形式。
 
 ##<a name="hadoopScenario"></a>Hadoop 应用场景
-Apache Avro 序列化格式广泛应用于 Azure HDInsight 及其他 Apache Hadoop 环境中。Avro 提供了简便的方法来表示 Hadoop MapReduce 作业内的复杂数据结构。Avro 文件（Avro 对象容器文件）格式已设计为支持分布式 MapReduce 编程模型。实现分布的关键是文件必须是“可拆分的”，也就是说，用户可以在文件中随机设置一个点，然后即可从某一特定块开始读取。
+Apache Avro 序列化格式广泛应用于 Azure HDInsight 及其他 Apache Hadoop 环境中。Avro 提供了简便的方法来表示 Hadoop MapReduce 作业内的复杂数据结构。Avro 文件（Avro 对象容器文件）格式已设计为支持分布式 MapReduce 编程模型。实现分布的关键功能是文件是“可拆分的”，也就是说，用户可以在文件中搜寻任一点，然后即可从某一特定块开始读取。
 
 ##<a name="serializationMAL"></a>Microsoft Avro Library 中的序列化
 .NET Library for Avro 支持通过两种方式序列化对象：
@@ -37,14 +37,16 @@ Apache Avro 序列化格式广泛应用于 Azure HDInsight 及其他 Apache Hado
 当流的写入器和读取器都知道数据架构时，可以发送没有架构的数据。在未使用 Avro 对象容器文件的情况下，架构将存储在文件中。可以指定其他参数，例如用于数据压缩的编解码器。这些情况将在下面的代码示例中进一步详述和说明。
 
 
-##<a name="prerequisites"></a>Microsoft Avro Library 必备组件
+##<a name="prerequisites"></a> 安装 Avro Library
+
+以下是安装此库之前所需具备的先决条件：
 
 - <a href="http://www.microsoft.com/download/details.aspx?id=17851" target="_blank">Microsoft .NET Framework 4</a>
 - <a href="http://james.newtonking.com/json" target="_blank">Newtonsoft Json.NET</a>（6.0.4 或更高版本）
 
 请注意，Newtonsoft.Json.dll 依赖项已随着 Microsoft Avro Library 的安装自动下载。下一部分将提供此操作的相关过程。
 
-##<a name="installation"></a>Microsoft Avro Library 安装
+
 Microsoft Avro Library 以 NuGet 包发行，你可以使用以下过程在 Visual Studio 中安装 NuGet 程序包：
 
 1. 选择“项目”选项卡->“管理 NuGet 包...”
@@ -55,11 +57,10 @@ Microsoft Avro Library 以 NuGet 包发行，你可以使用以下过程在 Visu
 
 你可能需要浏览 <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro Library 主页</a>以阅读最新的发行说明。
 
-##<a name="sourceCode"></a>Microsoft Avro Library 源代码
 
 <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro Library 主页</a>中提供了 Microsoft Avro Library 源代码。
 
-##<a name="compiling"></a>使用 Microsoft Avro Library 编译架构
+##<a name="compiling"></a>使用 Avro Library 编译架构
 
 Microsoft Avro Library 包含代码生成实用工具，可让你自动根据先前定义的 JSON 架构来创建 C# 类型。代码生成实用工具不是以二进制可执行文件的形式分发的，但你可使用以下过程轻松生成：
 
@@ -86,7 +87,7 @@ Microsoft Avro Library 包含代码生成实用工具，可让你自动根据先
 
     Microsoft.Hadoop.Avro.Tools codegen /i:C:\SDK\src\Microsoft.Hadoop.Avro.Tools\SampleJSON\SampleJSONSchema.avsc /o:. /nf:my.own.nspace
 
-##<a name="samples"></a>Microsoft Avro Library 示例指南
+##<a name="samples"></a> 示例
 本主题中提供的六个示例演示了 Microsoft Avro Library 所支持的不同方案。Microsoft Avro Library 设计为可处理任何流。在这些示例中，为保持简单性和一致性，是使用内存流（而不是文件流或数据库）来操作数据的。在生产环境中所采取的方法将取决于实际的方案要求、数据源和卷、性能限制及其他因素。
 
 前两个示例显示如何使用反射和通用记录将数据序列化到内存流缓冲区，以及如何进行反序列化。这两个方案假设在读取器和写入器之间共享架构。
@@ -515,14 +516,14 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("The following exception was thrown during creation and writing to the file \"{0}\"", path);
+                        Console.WriteLine("The following exception was thrown during creation and writing to the file "{0}"", path);
                         Console.WriteLine(e.Message);
                         return false;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Can not create file \"{0}\". File already exists", path);
+                    Console.WriteLine("Can not create file "{0}". File already exists", path);
                     return false;
 
                 }
@@ -541,7 +542,7 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("The following exception was thrown during reading from the file \"{0}\"", path);
+                    Console.WriteLine("The following exception was thrown during reading from the file "{0}"", path);
                     Console.WriteLine(e.Message);
                     return false;
                 }
@@ -558,13 +559,13 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("The following exception was thrown during deleting the file \"{0}\"", path);
+                        Console.WriteLine("The following exception was thrown during deleting the file "{0}"", path);
                         Console.WriteLine(e.Message);
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Can not delete file \"{0}\". File does not exist", path);
+                    Console.WriteLine("Can not delete file "{0}". File does not exist", path);
                 }
             }
 
@@ -776,14 +777,14 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("The following exception was thrown during creation and writing to the file \"{0}\"", path);
+                        Console.WriteLine("The following exception was thrown during creation and writing to the file "{0}"", path);
                         Console.WriteLine(e.Message);
                         return false;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Can not create file \"{0}\". File already exists", path);
+                    Console.WriteLine("Can not create file "{0}". File already exists", path);
                     return false;
 
                 }
@@ -802,7 +803,7 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("The following exception was thrown during reading from the file \"{0}\"", path);
+                    Console.WriteLine("The following exception was thrown during reading from the file "{0}"", path);
                     Console.WriteLine(e.Message);
                     return false;
                 }
@@ -819,13 +820,13 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("The following exception was thrown during deleting the file \"{0}\"", path);
+                        Console.WriteLine("The following exception was thrown during deleting the file "{0}"", path);
                         Console.WriteLine(e.Message);
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Can not delete file \"{0}\". File does not exist", path);
+                    Console.WriteLine("Can not delete file "{0}". File does not exist", path);
                 }
             }
 
@@ -1277,14 +1278,14 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("The following exception was thrown during creation and writing to the file \"{0}\"", path);
+                        Console.WriteLine("The following exception was thrown during creation and writing to the file "{0}"", path);
                         Console.WriteLine(e.Message);
                         return false;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Can not create file \"{0}\". File already exists", path);
+                    Console.WriteLine("Can not create file "{0}". File already exists", path);
                     return false;
 
                 }
@@ -1303,7 +1304,7 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("The following exception was thrown during reading from the file \"{0}\"", path);
+                    Console.WriteLine("The following exception was thrown during reading from the file "{0}"", path);
                     Console.WriteLine(e.Message);
                     return false;
                 }
@@ -1320,13 +1321,13 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine("The following exception was thrown during deleting the file \"{0}\"", path);
+                        Console.WriteLine("The following exception was thrown during deleting the file "{0}"", path);
                         Console.WriteLine(e.Message);
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Can not delete file \"{0}\". File does not exist", path);
+                    Console.WriteLine("Can not delete file "{0}". File does not exist", path);
                 }
             }
             #endregion
@@ -1396,10 +1397,7 @@ Microsoft Avro Library 可以使用反射从要序列化的 C# 对象的数据�
 
     AvroHDISample clean
 
-
-
-
 [deflate-100]: http://msdn.microsoft.com/zh-cn/library/system.io.compression.deflatestream(v=vs.100).aspx
 [deflate-110]: http://msdn.microsoft.com/zh-cn/library/system.io.compression.deflatestream(v=vs.110).aspx
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

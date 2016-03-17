@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="使用 .NET 将文件上载到 Media Services 帐户" 
-	description="了解如何通过创建和上载资产将媒体内容加入 Media Services。" 
+	pageTitle="使用 .NET 将文件上载到媒体服务帐户" 
+	description="了解如何通过创建和上载资产将媒体内容加入媒体服务。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
@@ -9,16 +9,16 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/17/2015"
+ 	ms.date="02/03/2016"  
 	wacn.date=""/>
 
 
 
-#使用 .NET 将文件上载到 Media Services 帐户
+#使用 .NET 将文件上载到媒体服务帐户
 
 [AZURE.INCLUDE [media-services-selector-upload-files](../includes/media-services-selector-upload-files.md)]
 
-在 Media Services 中，可以将数字文件上载（引入）到资产中。**资产**实体可以包含视频、音频、图像、缩略图集合、图文轨迹和隐藏字幕文件（以及有关这些文件的元数据。） 上载文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。
+在媒体服务中，可以将数字文件上载（引入）到资产中。**资产**实体可以包含视频、音频、图像、缩略图集合、图文轨迹和隐藏字幕文件（以及有关这些文件的元数据。） 上载文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。
 
 资产中的文件称为**资产文件**。**AssetFile** 实例和实际媒体文件是两个不同的对象。AssetFile 实例包含有关媒体文件的元数据，而媒体文件包含实际媒体内容。
 
@@ -35,11 +35,11 @@
 
 如果指定使用 **CommonEncrypted** 选项或 **EnvelopeEncypted** 选项加密资产，则需要将资产关联到 **ContentKey**。有关详细信息，请参阅[如何创建 ContentKey](/documentation/articles/media-services-dotnet-create-contentkey)。
 
-如果指定使用 **StorageEncrypted** 选项加密资产，Media Services SDK for .NET 将为资产创建 **StorateEncrypted** **ContentKey**。
+如果指定使用 **StorageEncrypted** 选项加密资产，适用于 .NET 的媒体服务 SDK 将为资产创建 **StorateEncrypted** **ContentKey**。
 
->[AZURE.NOTE]构建流内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.chinacloudapi.cn/{GUID}/{IAssetFile.Name}/streamingParameters.）。出于这个原因，不允许使用百分号编码。**Name** 属性的值不能含有任何以下保留的[百分号编码字符](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。此外，文件扩展名中只能含有一个“.”。
+>[AZURE.NOTE]构建流内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.chinacloudapi.cn/{GUID}/{IAssetFile.Name}/streamingParameters.）。出于这个原因，不允许使用百分号编码。**Name** 属性的值不能含有任何以下保留的[百分号编码字符](http://zh.wikipedia.org/wiki/百分号编码#.E4.BF.9D.E7.95.99.E5.AD.97.E7.AC.A6.E7.9A.84.E7.99.BE.E5.88.86.E5.8F.B7.E7.BC.96.E7.A0.81)：!*'();:@&=+$,/?%#"。此外，文件扩展名中只能含有一个“.”。
 
-本主题说明如何使用 Media Services .NET SDK 以及 Media Services .NET SDK Extensions 将文件上载到 Media Services 资产中。
+本主题说明如何使用媒体服务.NET SDK 以及媒体服务.NET SDK 扩展将文件上载到媒体服务资产中。
 
  
 ## 使用媒体服务 .NET SDK 上载单个文件 
@@ -50,7 +50,7 @@
 - 创建要与资产关联的 AssetFile 实例。
 - 创建用于定义权限以及资产访问持续时间的 AccessPolicy 实例。
 - 创建用于提供资产访问权限的 Locator 实例。
-- 将单个媒体文件上载到 Media Services。 
+- 将单个媒体文件上载到媒体服务。 
 
 		
 		static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
@@ -104,7 +104,7 @@
  	
 - 	使用 **UploadAsync** 方法将文件上载到媒体服务中。
  	
->[AZURE.NOTE]使用 UploadAsync 方法可确保调用不会阻塞并且文件并行上载。
+>[AZURE.NOTE] 使用 UploadAsync 方法可确保调用不会阻塞并且文件并行上载。
  	
  	
         static public IAsset CreateAssetAndUploadMultipleFiles(AssetCreationOptions assetCreationOptions, string folderPath)
@@ -269,9 +269,9 @@
 	
 
 
-##使用 .NET SDK Extensions 上载文件 
+##使用 .NET SDK 扩展上载文件 
 
-以下示例演示如何使用 .NET SDK Extensions 上载单个文件。在此情况下，将使用 **CreateFromFile** 方法，但也可以使用异步版本 (**CreateFromFileAsync**)。**CreateFromFile** 方法可让你指定文件名、加密选项和回调，以报告文件的上载进度。
+以下示例演示如何使用 .NET SDK 扩展上载单个文件。在此情况下，将使用 **CreateFromFile** 方法，但也可以使用异步版本 (**CreateFromFileAsync**)。**CreateFromFile** 方法可让你指定文件名、加密选项和回调，以报告文件的上载进度。
 
 
 	static public IAsset UploadFile(string fileName, AssetCreationOptions options)
@@ -294,15 +294,6 @@
 
 	var asset = UploadFile(@"C:\VideoFiles\BigBuckBunny.mp4", AssetCreationOptions.StorageEncrypted);
 
-<!-- deleted by customization
-
-##Media Services learning paths
-
-You can view AMS learning paths here:
-
-- [AMS Live Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS on Demand Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
--->
 
 
 
@@ -310,5 +301,6 @@ You can view AMS learning paths here:
 将资产上载到媒体服务后，请转到[如何获取媒体处理器][]主题。
 
 [如何获取媒体处理器]: /documentation/articles/media-services-get-media-processor
+ 
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0307_2016-->

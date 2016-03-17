@@ -1,20 +1,20 @@
 <properties 
 	pageTitle="下载媒体资产" 
-	description="了解如何将资产下载到计算机。代码示例用 C# 编写且使用 Media Services SDK for .NET。" 
+	description="了解如何将资产下载到计算机。代码示例用 C# 编写且使用 适用于 .NET 的媒体服务 SDK。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015" 
+<tags
+	ms.service="media-services"
+	ms.date="02/03/2016"
 	wacn.date=""/>
 
 #如何：通过下载交付资产
 
-本主题介绍已上载到 Media Services 的媒体资产的交付选项。你可以采用众多的应用程序方案来交付 Media Services 内容。你可以下载媒体资产，或使用定位器访问媒体资产。你可以将媒体内容发送到其他应用程序或其他内容提供商。为了提高性能和可缩放性，你还可以使用内容传送网络 (CDN) 来传送内容。
+本主题介绍已上载到媒体服务的媒体资产的交付选项。你可以采用众多的应用程序方案来交付媒体服务内容。你可以下载媒体资产，或使用定位器访问媒体资产。你可以将媒体内容发送到其他应用程序或其他内容提供商。为了提高性能和可缩放性，你还可以使用内容传送网络 (CDN) 来传送内容。
 
 此示例演示如何将媒体资产从媒体服务下载到本地计算机。该代码将按作业 ID 查询与媒体服务帐户关联的作业，并访问其 **OutputMediaAssets** 集合（运行作业后生成的、包含一个或多个输出媒体资产的集）。此示例演示如何通过作业下载输出媒体资产，但你可以运用相同的方法来下载其他资产。
 
@@ -43,7 +43,7 @@
 	        ParallelTransferThreadCount = 20
 	    };
 	
-	    var downloadTasks = new List&lt;Task&gt;();
+	    var downloadTasks = new List<Task>();
 	    foreach (IAssetFile outputFile in outputAsset.AssetFiles)
 	    {
 	        // Use the following event handler to check download progress.
@@ -67,9 +67,11 @@
 	{
 	    Console.WriteLine(string.Format("{0} % download progress. ", e.Progress));
 	}
+
+
    
 ##另请参阅 
 
 [交付流内容](/documentation/articles/media-services-deliver-streaming-content)
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0307_2016-->

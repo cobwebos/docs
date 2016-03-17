@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="service-bus"
-	ms.date="10/07/2015"
+	ms.date="01/26/2016"
 	wacn.date=""/>
 
 
@@ -27,7 +27,7 @@
 
 ## 后续步骤
 
-有关服务总线中继的更多详细信息，请参阅以下主题。
+有关服务总线中继的深入详细信息，请参阅以下主题。
 
 - [Azure 服务总线体系结构概述](/documentation/articles/service-bus-fundamentals-hybrid-solutions)
 
@@ -35,4 +35,4 @@
 
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0307_2016-->

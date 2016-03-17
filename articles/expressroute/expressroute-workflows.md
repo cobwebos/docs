@@ -8,7 +8,7 @@
    editor="" />
 <tags
    ms.service="expressroute"
-   ms.date="10/12/2015"
+   ms.date="01/21/2016"
    wacn.date=""/>
 
 # ExpressRoute 线路预配工作流和线路状态
@@ -30,12 +30,12 @@
 	-  启用 Azure 公共对等互连 - 如果你想要连接到托管在公共 IP 地址上的 Azure 服务，则必须启用 Azure 公共对等互连。如果你已选择为 Azure 专用对等互连启用默认路由并想要访问 Azure 资源，则必须执行上述操作。
 	-  启用 Microsoft 对等互连 - 只有启用此对等互连才能访问 Office 365 和 CRM 联机服务。 
 	
-	>[AZURE.IMPORTANT]若要启用 Microsoft 对等互连，请确保同时启用 Azure 公共对等互连以访问 Azure AD。必须确保使用独立的代理/边缘，而不是用于 Internet 的 代理/边缘来连接 Microsoft。对 ExpressRoute 和 Internet 使用相同的边缘会导致路由不对称，并造成网络连接中断。
+	>[AZURE.IMPORTANT] 必须确保使用独立的代理/边缘，而不是用于 Internet 的 代理/边缘来连接 Microsoft。对 ExpressRoute 和 Internet 使用相同的边缘会导致路由不对称，并造成网络连接中断。
 
 
 	![](./media/expressroute-workflows/expressroute-routing-workflow.png)
 
-5. 将虚拟网络链接到 ExpressRoute 线路 - 可以将虚拟网络链接到 ExpressRoute 线路。请按照说明[将 VNet 链接](/documentation/articles/expressroute-howto-linkvnets-classic)到你的线路。这些 VNet 可以位于 ExpressRoute 线路所在的同一 Azure 订阅中，也可以位于不同的订阅中。
+5. 将虚拟网络链接到 ExpressRoute 线路 - 可以将虚拟网络链接到 ExpressRoute 线路。请按照说明[将 VNet 链接](/documentation/articles/expressroute-howto-linkvnet-arm)到你的线路。这些 VNet 可以位于 ExpressRoute 线路所在的同一 Azure 订阅中，也可以位于不同的订阅中。
 
 
 ## ExpressRoute 线路预配状态
@@ -106,15 +106,15 @@ BGP 预配状态可让你知道 Microsoft 边缘是否已启用 BGP 会话。必
 
 如果播发的公共前缀状态设置为*需要验证*状态，则不会启用 BGP 会话，因为播发的前缀不符合任何路由注册表中的 AS 编号。
 
->[AZURE.IMPORTANT]如果播发的公共前缀状态是*手动验证*状态，则你必须向 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证，并提供拥有播发 IP 地址的证明以及相关的自治系统编号。
+>[AZURE.IMPORTANT] 如果播发的公共前缀状态是*手动验证*状态，则你必须向 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证，并提供拥有播发 IP 地址的证明以及相关的自治系统编号。
 
 
 ## 后续步骤
 
 - 配置 ExpressRoute 连接。
 
-	- [创建 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-classic)
-	- [配置路由](/documentation/articles/expressroute-howto-routing-classic)
-	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
+	- [创建 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-arm)
+	- [配置路由](/documentation/articles/expressroute-howto-routing-arm)
+	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-arm)
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

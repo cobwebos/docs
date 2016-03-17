@@ -9,23 +9,22 @@
 
 <tags 
 	ms.service="batch" 
-	ms.date="11/19/2015"
+	ms.date="01/21/2016"
 	wacn.date=""/>
 	
-<!--The next line, with one pound sign at the beginning, is the page title-->
 # Azure Batch 功能概述
 
 本文提供 Azure Batch 服务的核心 API 功能的基本概述。无论是使用 [Batch REST][batch_rest_api] 还是 [Batch .NET][batch_net_api] API 来开发分布式计算解决方案，你都要使用下面讨论的许多实体和功能。
 
-> [AZURE.TIP]有关 Batch 的更高级技术概述，请参阅 [Azure Batch 基础知识](batch-technical-overview.md)。
+> [AZURE.TIP] 有关 Batch 的更高级技术概述，请参阅 [Azure Batch 基础知识](/documentation/articles/batch-technical-overview)。
 
 ## <a name="workflow"></a>Batch 服务的工作流
 
 在 Batch 服务中开发的几乎所有分布式计算方案都会使用以下典型高级工作流：
 
-1. 将你要在分布式计算方案中使用的*数据文件*上载到 [Azure 存储][azure_storage]帐户。这些文件必须在存储帐户中，Batch 服务才能够访问它们。当任务运行时，会将这些文件下载到[计算节点](#computenode)。
+1. 将你要在分布式计算方案中使用的 *数据文件* 上载到 [Azure 存储][azure_storage]帐户。这些文件必须在存储帐户中，Batch 服务才能够访问它们。当任务运行时，会将这些文件下载到[计算节点](#computenode)。
 
-2. 将相关*二进制文件*上载到你的存储帐户。这些二进制文件包含任务运行的程序及其任何依赖组件。还必须从存储帐户访问这些文件，使任务可将它们下载到计算节点。
+2. 将相关 *二进制文件* 上载到你的存储帐户。这些二进制文件包含任务运行的程序及其任何依赖组件。还必须从存储帐户访问这些文件，使任务可将它们下载到计算节点。
 
 3. 创建计算节点的[池](#pool)。可以在创建池时指定要使用的[计算节点大小][cloud_service_sizes]，运行任务时，将为它分配此池中的节点。
 
@@ -35,7 +34,7 @@
 
 6. 监视作业进度并检索结果。
 
-> [AZURE.NOTE]你需要通过一个 [Batch 帐户](batch-account-create-portal.md)来使用 Batch 服务，几乎所有的解决方案都使用 [Azure 存储][azure_storage]帐户来进行文件存储和检索。
+> [AZURE.NOTE] 你需要通过一个 [Batch 帐户](batch-account-create-portal.md)来使用 Batch 服务，几乎所有的解决方案都使用 [Azure 存储][azure_storage]帐户来进行文件存储和检索。
 
 在以下部分中，你将了解上述工作流中提到的每个资源，以及其他可实现分布式计算方案的许多 Batch 功能。
 
@@ -59,11 +58,13 @@
 
 	- [作业准备和释放任务](#jobpreprelease)
 
+	- [多实例任务](#multiinstance)
+
 - [JobSchedule](#jobschedule)
 
 ### <a name="account"></a>帐户
 
-批处理帐户是批处理服务中唯一标识的实体。所有处理都与一个 Batch 帐户相关联。当你使用 Batch 服务执行操作时，需要同时用到帐户名和帐户密钥。若要创建 Batch 帐户，请查看[在 Azure 预览门户中创建和管理 Azure Batch 帐户](batch-account-create-portal.md)。
+批处理帐户是批处理服务中唯一标识的实体。所有处理都与一个 Batch 帐户相关联。当你使用 Batch 服务执行操作时，需要同时用到帐户名和帐户密钥。若要创建 Batch 帐户，请查看[在 Azure 门户中创建和管理 Azure Batch 帐户](batch-account-create-portal.md)。
 
 ### <a name="computenode"></a>计算节点
 
@@ -94,7 +95,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层；Batch 池提供大�
 	- 可为池配置所有[云服务节点大小][cloud_service_sizes]，但 A0 除外。
 
 - 在节点上运行的**操作系统系列**和**版本**
-	- 与云服务中的辅助角色一样，*OS 系列*和 *OS 版本*也是可以指定的（有关辅助角色的详细信息，请参阅 *Azure 提供的计算托管选项*中的[介绍云服务][about_cloud_services]）。
+	- 与云服务中的辅助角色一样， *OS 系列* 和 *OS 版本* 也是可以指定的（有关辅助角色的详细信息，请参阅 *Azure 提供的计算托管选项* 中的[介绍云服务][about_cloud_services]）。
 	- 操作系统系列还确定了要与操作系统一起安装哪些版本的 .NET。
 	- 与辅助角色一样，对于 OS 版本，建议指定 `*`，使节点可自动升级，而无需采取措施来适应新的版本。选择特定操作系统版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。验证后，便可以更新池的操作系统版本并安装新的操作系统映像 – 所有正在运行的任务将会中断并重新排队。
 
@@ -113,7 +114,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层；Batch 池提供大�
 	- 在大多数情况下，任务将独立运行而无需互相通信，但在某些应用程序中，任务必须相互通信。
 
 - 池中节点的**启动任务**
-	- 可以指定每当计算节点加入池和节点重新启动时要执行的*启动任务*。此任务通常用于安装在节点上运行的任务所使用的应用程序。
+	- 可以指定每当计算节点加入池和节点重新启动时要执行的 *启动任务*。此任务通常用于安装在节点上运行的任务所使用的应用程序。
 
 ### <a name="job"></a>作业
 
@@ -146,6 +147,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层；Batch 池提供大�
 - [作业管理器任务](#jobmanagertask)
 
 - [作业准备和释放任务](#jobmanagertask)
+- [多实例任务](#multiinstance)
 
 #### <a name="starttask"></a>启动任务
 
@@ -186,6 +188,18 @@ Batch 提供作业准备任务用于预先设置作业的执行，并提供作�
 
 有关作业准备和释放任务的详细信息，请参阅[在 Azure Batch 计算节点上运行作业准备和完成任务](batch-job-prep-release.md)。
 
+#### <a name="multiinstance"></a>多实例任务
+
+[多实例任务][rest_multiinstance]是经过配置后可以在多个计算节点上同时运行的任务。通过多实例任务，你可以启用消息传递接口 (MPI) 等高性能计算方案，此类方案需要将一组计算节点分配到一起来处理单个工作负荷。
+
+在 Batch 中，你可以通过为常规[任务](#task)指定多实例设置来创建多实例任务。这些设置包括：执行任务的计算节点的数目、主任务的命令行（“应用程序命令”）、协调命令，以及每个任务的通用资源文件的列表。
+
+将使用多实例设置的任务提交给作业时，Batch 服务会执行以下操作：
+
+1. 自动创建一个主任务和足够的子任务，它们会在你指定了总数的节点上同时执行。然后，Batch 会安排这些任务在节点上执行，这些节点会首先下载你指定的通用资源文件。
+2. 在通用资源文件下载完以后，主任务和子任务就会执行协调命令。此协调命令通常会启动一个后台服务（例如 [MS-MPI][msmpi] 的 `smpd.exe`），并验证节点是否已准备好处理节点间消息。
+3. 当主任务和所有子任务成功完成协调命令以后，将仅由主任务执行任务的命令行（“应用程序命令”），该主任务通常会启动一个自定义的支持 MPI 的应用程序来处理你在节点上的工作负荷。例如，在 Windows MPI 方案中，你通常会使用应用程序命令通过 [MS-MPI][msmpi] 的 `mpiexec.exe` 来执行支持 MPI 的应用程序。
+
 ### <a name="jobschedule"></a>计划的作业
 
 作业计划可让你在 Batch 服务中创建周期性作业。作业计划指定何时要运行作业，并包含要运行的作业的规范。作业计划允许指定计划的持续时间（计划的持续时间和生效时间），以及在该时间段创建作业的频率。
@@ -213,11 +227,11 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 
 在设计 Azure Batch 解决方案时，你必须做出有关如何及何时创建池，以及这些池中的计算节点可用性要保持多久的设计决策。
 
-在极端情况下，可以在提交作业为每个作业创建一个池，并在任务完成执行后立即删除节点。这可以最大程度地提高利用率，因为仅当绝对必要时才会分配节点，并且在节点空闲时会立即将其关闭。这意味着作业必须等待分配节点，不过，你必须注意，在任务单独可用、已分配并且启动任务已完成时，会立即将任务安排给节点。Batch *不会*在等到池中的所有节点都可用后才分配任务，因此可确保最大程度地利用所有节点。
+在极端情况下，可以在提交作业为每个作业创建一个池，并在任务完成执行后立即删除节点。这可以最大程度地提高利用率，因为仅当绝对必要时才会分配节点，并且在节点空闲时会立即将其关闭。这意味着作业必须等待分配节点，不过，你必须注意，在任务单独可用、已分配并且启动任务已完成时，会立即将任务安排给节点。Batch *不会* 在等到池中的所有节点都可用后才分配任务，因此可确保最大程度地利用所有节点。
 
 在另一种极端情况下，如果最高优先级是让作业立即启动，则你可以预先创建池，并使其节点在提交作业之前可用。在此情况下，作业任务可以立即启动，但节点可能会保持空闲状态以等待分配任务。
 
-通常用于处理可变但持续存在的负载的组合方法是创建一个池用于容纳提交的多个作业，但同时根据作业负载向上或向下缩放节点数目（请参阅下面的*缩放应用程序*）。可以根据当前负载被动执行此操作，或者在负载可预测时主动执行此操作。
+通常用于处理可变但持续存在的负载的组合方法是创建一个池用于容纳提交的多个作业，但同时根据作业负载向上或向下缩放节点数目（请参阅下面的 *缩放应用程序* ）。可以根据当前负载被动执行此操作，或者在负载可预测时主动执行此操作。
 
 ## <a name="scaling"></a>缩放应用程序
 
@@ -279,7 +293,7 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 | `AZ_BATCH_TASK_ID` | 当前任务的 ID。 |
 | `AZ_BATCH_TASK_WORKING_DIR` | 节点上的任务工作目录的完整路径。 |
 
->[AZURE.NOTE]无法覆盖上述任何系统定义的变量 - 它们是只读的。
+>[AZURE.NOTE] 无法覆盖上述任何系统定义的变量 - 它们是只读的。
 
 ## <a name="errorhandling"></a>错误处理
 
@@ -296,15 +310,15 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 	- 对于应用程序失败，可以将 Batch 配置为自动重试任务，并最多重试指定的次数。
 - **约束失败**
 	- 可以设置一个约束来指定作业或任务的最大执行持续期间，即 *maxWallClockTime*。此约束可用于终止“挂起的”任务。
-	- 如果超出了最长时间，则将任务标记为*已完成*，但退出代码将设置为 `0xC000013A`，*schedulingError* 字段将标记为 `{ category:"ServerError", code="TaskEnded"}`。
+	- 如果超出了最长时间，则将任务标记为 *已完成* ，但退出代码将设置为 `0xC000013A`，*schedulingError* 字段将标记为 `{ category:"ServerError", code="TaskEnded"}`。
 
 ### 调试应用程序失败
 
 在执行过程中，应用程序可以生成诊断输出，这些信息可用于排查问题。如前面的[文件和目录](#files)中所述，Batch 服务会将 stdout 和 stderr 输出发送到计算节点上的任务目录中的 `stdout.txt` 和 `stderr.txt` 文件。在 Batch .NET API 中使用 [ComputeNode.GetNodeFile][net_getfile_node] 和 [CloudTask.GetNodeFile][net_getfile_task]，可以检索这些文件和其他文件来进行故障排除。
 
-使用*远程桌面*登录到计算节点后，可以执行更广泛的调试。你可以[从节点获取远程桌面协议文件][rest_rdp] (Batch REST API) 或使用 [ComputeNode.GetRDPFile][net_rdp] 方法 (Batch .NET API) 来进行远程登录。
+使用 *远程桌面* 登录到计算节点后，可以执行更广泛的调试。你可以[从节点获取远程桌面协议文件][rest_rdp] (Batch REST API) 或使用 [ComputeNode.GetRDPFile][net_rdp] 方法 (Batch .NET API) 来进行远程登录。
 
->[AZURE.NOTE]若要通过 RDP 连接到某个节点，必须先在该节点上创建一个用户。在 Batch REST API 中[将用户帐户添加到节点][rest_create_user]，或使用 Batch .NET 中的 [ComputeNode.CreateComputeNodeUser][net_create_user] 方法。
+>[AZURE.NOTE] 若要通过 RDP 连接到某个节点，必须先在该节点上创建一个用户。在 Batch REST API 中[将用户帐户添加到节点][rest_create_user]，或使用 Batch .NET 中的 [ComputeNode.CreateComputeNodeUser][net_create_user] 方法。
 
 ### 应对任务失败或中断
 
@@ -330,6 +344,7 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [batch_explorer_project]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [cloud_service_sizes]: https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/
+[msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
 
 [batch_net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [net_cloudjob_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobmanagertask.aspx
@@ -340,6 +355,7 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 [net_create_user]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.createcomputenodeuser.aspx
 [net_getfile_node]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.getnodefile.aspx
 [net_getfile_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.getnodefile.aspx
+[net_multiinstancesettings]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.multiinstancesettings.aspx
 [net_rdp]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.getrdpfile.aspx
 
 [batch_rest_api]: https://msdn.microsoft.com/library/azure/Dn820158.aspx
@@ -349,7 +365,9 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 [rest_add_task]: https://msdn.microsoft.com/library/azure/dn820105.aspx
 [rest_create_user]: https://msdn.microsoft.com/library/azure/dn820137.aspx
 [rest_get_task_info]: https://msdn.microsoft.com/library/azure/dn820133.aspx
+[rest_multiinstance]: https://msdn.microsoft.com/zh-cn/library/azure/mt637905.aspx
+[rest_multiinstancesettings]: https://msdn.microsoft.com/library/azure/dn820105.aspx#multiInstanceSettings
 [rest_update_job]: https://msdn.microsoft.com/library/azure/dn820162.aspx
 [rest_rdp]: https://msdn.microsoft.com/library/azure/dn820120.aspx
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0307_2016-->

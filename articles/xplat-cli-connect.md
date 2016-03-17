@@ -10,15 +10,13 @@
 
 <tags
 	ms.service="multiple"
-	ms.date="10/30/2015"
+	ms.date="12/29/2015"
 	wacn.date=""/>
 
 # 从 Azure 命令行界面 (Azure CLI) 连接到 Azure 订阅
 
 Azure CLI 是一组开源且跨平台的命令，可以用于 Azure 平台。本文介绍如何通过 Azure CLI 连接到 Azure 订阅以使用所有 CLI 命令。如果你尚未安装 CLI，请参阅[安装 Azure CLI](/documentation/articles/xplat-cli-install)。
 
-
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-both-include.md)]
 
 
 通过 Azure CLI 有两种方式可以连接到你的订阅：
@@ -31,7 +29,7 @@ Azure CLI 是一组开源且跨平台的命令，可以用于 Azure 平台。本
 
 如果你没有 Azure 帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][free-trial]。
 
->[AZURE.NOTE]如果你使用的是早于版本 0.9.10 的 Azure CLI 版本，则只能将 `azure login` 命令用于工作或学校帐户标识，对于 Microsoft 帐户标识不起作用。但是，使用 Azure CLI 版本 0.9.10 及更高版本，你可以通过交互式 `azure login` 命令使用任何标识登录到你的帐户。
+>[AZURE.NOTE] 如果你使用的是早于版本 0.9.10 的 Azure CLI 版本，则只能将 `azure login` 命令用于工作或学校帐户标识，对于 Microsoft 帐户标识不起作用。但是，使用 Azure CLI 版本 0.9.10 及更高版本，你可以通过交互式 `azure login` 命令使用任何标识登录到你的帐户。
 >
 CLI 版本 0.9.9 及更高版本支持多重身份验证。
 
@@ -44,7 +42,7 @@ CLI 版本 0.9.9 及更高版本支持多重身份验证。
 - 工作或学校帐户标识（需要多重身份验证）或
 - Microsoft 帐户标识（如果你想要访问资源管理器部署模式功能）
 
-> [AZURE.NOTE]在这两种情况下，都将使用 Azure Active Directory 进行身份验证和授权。如果你使用 Microsoft 帐户标识，登录过程将访问你的 Azure Active Directory 默认域。（如果你注册了免费试用版，你可能未意识到 Azure Active Directory 为你的帐户创建了默认域。）
+> [AZURE.NOTE]  在这两种情况下，都将使用 Azure Active Directory 进行身份验证和授权。如果你使用 Microsoft 帐户标识，登录过程将访问你的 Azure Active Directory 默认域。（如果你注册了免费试用版，你可能未意识到 Azure Active Directory 为你的帐户创建了默认域。）
 
 以交互方式登录非常简单：键入 `azure login` 并按照提示进行操作，如下所示：
 
@@ -52,8 +50,7 @@ CLI 版本 0.9.9 及更高版本支持多重身份验证。
 	info:    Executing command login
 	info:    To sign in, use a web browser to open the page http://aka.ms/devicelogin. Enter the code XXXXXXXXX to authenticate. If you're signing in as an Azure AD application, use the --username and --password parameters.
 
-复制上面提供给你的代码，并打开浏览器访问 http://aka.ms/devicelogin。
-输入代码，然后系统会提示你为要使用的标识输入用户名和密码。该过程完成后，命令行解释器将完成登录过程。它的外观可能如下：
+复制上面提供给你的代码，并打开浏览器访问 http://aka.ms/devicelogin。输入代码，然后系统会提示你为要使用的标识输入用户名和密码。该过程完成后，命令行解释器将完成登录过程。它的外观可能如下：
 
 	info:    Added subscription Visual Studio Ultimate with MSDN
 	info:    Added subscription Azure Free Trial
@@ -64,7 +61,7 @@ CLI 版本 0.9.9 及更高版本支持多重身份验证。
 ## 使用非交互式登录（使用工作或学校帐户）
 
 
-非交互式登录方法仅适用于工作或学校帐户，也称为*组织帐户*。此帐户由你的组织管理，并在组织的 Azure Active Directory 中定义。你可以[创建组织帐户](#create-an-organizational-account)（如果你没有），也可以[基于 Microsoft 帐户 ID 创建工作或学校 ID](./virtual-machines/resource-group-create-work-id-from-personal.md)。这需要在 `azure login` 命令中指定用户名或用户名和密码，如下所示：
+非交互式登录方法仅适用于工作或学校帐户，也称为 *组织帐户* 。此帐户由你的组织管理，并在组织的 Azure Active Directory 中定义。你可以[创建组织帐户](#create-an-organizational-account)（如果你没有），也可以[基于 Microsoft 帐户 ID 创建工作或学校 ID](./virtual-machines/resource-group-create-work-id-from-personal.md)。这需要在 `azure login` 命令中指定用户名或用户名和密码，如下所示：
 
 	azure login -u ahmet@contoso.partner.onmschina.cn
 	info:    Executing command login
@@ -120,7 +117,7 @@ CLI 版本 0.9.9 及更高版本支持多重身份验证。
 
 这会将默认订阅更改为 Azure-sub-2。
 
-> [AZURE.NOTE]更改默认订阅将会立即生效，并且是全局更改；新的 Azure CLI 命令（无论是从同一命令行实例还是其他实例运行的）将使用新的默认订阅。
+> [AZURE.NOTE] 更改默认订阅将会立即生效，并且是全局更改；新的 Azure CLI 命令（无论是从同一命令行实例还是其他实例运行的）将使用新的默认订阅。
 
 如果要将非默认订阅用于 Azure CLI，但不想更改当前默认订阅，则可以将 `--subscription` 选项用于命令并提供要用于此操作的订阅名称。
 
@@ -155,4 +152,4 @@ CLI 版本 0.9.9 及更高版本支持多重身份验证。
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: xplat-cli-azure-resource-manager.md
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0307_2016-->

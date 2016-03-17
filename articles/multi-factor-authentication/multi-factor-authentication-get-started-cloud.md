@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="01/11/2016" 
+	ms.date="02/09/2016" 
 	wacn.date=""/>
 
 # 云中的 Azure Multi-Factor Authentication 入门
@@ -60,6 +60,7 @@
 5. 单击“创建”后，将创建 Multi-Factor Authentication 提供程序，此时你会看到以下消息：已成功创建 Multi-Factor Authentication 提供程序。单击“确定”。
 
 <center>![Cloud](./media/multi-factor-authentication-get-started-cloud/provider.png)</center>
+	 
 ## 向用户分配 Azure MFA、Azure AD Premium 或 Enterprise Mobility 许可证
 
 如果你已购买 Azure MFA、Azure AD Premium 或 Enterprise Mobility Suite 许可证，则不需要创建 Multi-Factor Auth 提供程序。你只需将许可证分配给用户，然后就可以开始为用户启用 MFA。
@@ -71,7 +72,8 @@
 2. 在左侧选择“Active Directory”。
 3. 在“Active Directory”页上，双击要分配许可证的用户所在的目录。
 4. 在“目录”页的顶部，选择“许可证”。
-5. 在“许可证”页上，选择“Multi-Factor Authentication”、“Active Directory Premium”或“Enterprise Mobility Suite”，然后单击“分配”。![云](./media/multi-factor-authentication-get-started-cloud/license2.png)
+5. 在“许可证”页上，选择“Multi-Factor Authentication”、“Active Directory Premium”或“Enterprise Mobility Suite”，然后单击“分配”。
+![云](./media/multi-factor-authentication-get-started-cloud/license2.png)
 6. 在对话框中，选择要向其分配许可证的用户或组，然后单击复选标记图标以保存更改。
 
 
@@ -151,4 +153,4 @@ Enabled |用户已加入 Multi-Factor Authentication。|否。它们将继续工
 ## 后续步骤
 在云中设置 Multi-Factor Authentication 后，接下来可以转到[配置 Azure Multi-Factor Authentication](/documentation/articles/multi-factor-authentication-whats-next) 以继续执行后续步骤。 你可以在其中了解有关报告、欺诈警报、自定义语音消息，以及 Azure Multi-Factor Authentication 提供的所有功能的信息。
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0307_2016-->

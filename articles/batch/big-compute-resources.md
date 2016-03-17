@@ -1,6 +1,6 @@
 <properties
-   pageTitle="大型计算：用于批处理和高性能计算 (HPC) 的技术资源 | Microsoft Azure"
-   description="列出了旨在帮助你在 Azure 中运行大规模并行、批处理和 HPC 工作负荷的技术资源。"
+   pageTitle="批处理和 HPC 工作负荷在云中的资源 | Microsoft Azure"
+   description="列出了旨在帮助你在 Azure 中运行大规模并行批处理和高性能计算 (HPC) 工作负荷的技术资源。"
    services="batch, cloud-services, virtual-machines"
    documentationCenter=""
    authors="dlepow"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="multiple"
-   ms.date="09/29/2015"
+   ms.date="01/26/2016"
    wacn.date=""/>
 
 # Azure 中的大型计算：用于批处理和高性能计算 (HPC) 的技术资源
@@ -22,9 +22,9 @@
 * [Batch 和 HPC 解决方案](batch-hpc-solutions.md)
 
 
-## Azure 批处理
+## Azure Batch
 
-[Batch ](/documentation/services/batch/) 是一种平台服务，可让你轻松地在应用程序中启用云功能和运行作业，而无需设置和管理群集与作业计划程序。使用 SDK 可将不同语言的客户端应用与 Azure Batch 集成相集成，将数据迁移到 Azure，以及生成作业运行管道。
+[Batch](/documentation/services/batch/) 是一种平台服务，可让你轻松地在应用程序中启用云功能和运行作业，而无需设置和管理群集与作业计划程序。使用 SDK 可将不同语言的客户端应用与 Azure Batch 集成相集成，将数据迁移到 Azure，以及生成作业运行管道。
 
 * [文档](/documentation/services/batch/)
 
@@ -58,7 +58,7 @@ HPC Pack 是在 Microsoft Azure 和 Windows Server 技术基础之上构建的 M
 
 ### Linux 和 OSS 群集解决方案
 
-结合开放源代码工具使用这些 Azure 快速入门模板来部署 Linux HPC 群集。
+使用这些 Azure 模板来部署 Linux HPC 群集。
 
 * [运转 SLURM 群集](http://azure.microsoft.com/documentation/templates/slurm/)和[博客文章](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx)
 
@@ -78,15 +78,15 @@ HPC Pack 是在 Microsoft Azure 和 Windows Server 技术基础之上构建的 M
 
 ## 计算密集型实例
 
-Azure 提供[不同的大小](/documentation/articles/virtual-machines-size-specs)，包括计算密集型的 [A8、A9、A10 和 A11 实例](/documentation/articles/virtual-machines-a8-a9-a10-a11-specs)，用于运行 Linux 和 Windows HPC 工作负荷。
+Azure 提供一[系列大小](/documentation/articles/virtual-machines-size-specs)，包括能够连接到后端 RDMA 网络的计算密集型 [A8 和 A9](/documentation/articles/virtual-machines-a8-a9-a10-a11-specs) 实例，以运行 Linux 和 Windows HPC 工作负荷。
 
 * [设置 Linux RDMA 群集以运行 MPI 应用程序](/documentation/articles/virtual-machines-linux-cluster-rdma)
 
-* [通过 Microsoft HPC Pack 设置 Windows RDMA 群集以运行 MPI 应用程序](../virtual-machines/virtual-machines-windows-hpcpack-cluster-rdma.md)
+* [通过 Microsoft HPC Pack 设置 Windows RDMA 群集以运行 MPI 应用程序](/documentation/articles/virtual-machines-windows-hpcpack-cluster-rdma)
 
 ## 体系结构蓝图
 
-* Microsoft Azure Batch 和 Azure 数据工厂：大规模数据处理体系结构（[PDF](http://go.microsoft.com/fwlink/?linkid=717686) 和[文章](../data-factory/data-factory-data-processing-using-batch.md)）演示了数据工厂如何协调数据的移动和处理，以及 Azure Batch 如何并行处理数据。
+* [HPC 和数据的业务流程使用 Azure Batch 和 Azure 数据工厂](http://go.microsoft.com/fwlink/?linkid=717686) (PDF) 
 
 ## 示例和演示
 
@@ -106,11 +106,25 @@ Azure 提供[不同的大小](/documentation/articles/virtual-machines-size-spec
 
 * [媒体服务](/documentation/services/media-services/)
 
+## 客户案例
 
+* [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222)
+
+* [Milliman](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=14967)
+
+* [ANEO](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=4168)
+
+* [d3View](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088)
+
+* [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
+
+* [路德维格癌症研究所](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5830)
+
+* [Microsoft Research](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=15634)
 
 ## 后续步骤
 
-* 有关最新通告，请参阅 [Microsoft HPC 和批处理团队博客](http://blogs.technet.com/b/windowshpc/)与 [Azure 博客](http://azure.microsoft.com/blog/tag/hpc/)。
-* 另请参阅 [Batch 中的新增功能](http://azure.microsoft.com/updates/?service=batch)或订阅 [RSS 源](http://azure.microsoft.com/updates/feed/?service=batch)。
+* 有关最新通告，请参阅 [Microsoft HPC 和批处理团队博客](http://blogs.technet.com/b/windowshpc/)与 [Azure 博客](/blog/tag/hpc/)。
+* 另请参阅 [Batch 中的新增功能](/updates/?service=batch)或订阅 [RSS 源](/updates/feed/?service=batch)。
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0307_2016-->

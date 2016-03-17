@@ -8,7 +8,7 @@
    editor=""/>
 <tags 
    ms.service="expressroute"
-   ms.date="09/22/2015"
+   ms.date="01/16/2016"
    wacn.date=""/>
 
 # ExpressRoute 技术概述
@@ -51,7 +51,7 @@ Microsoft 采用行业标准动态路由协议 (BGP)，在本地网络、Azure �
 
 ### 冗余
 
-每个 ExpressRoute 线路有两道连接，用于从连接服务提供商/你的网络边缘连接到两个 Microsoft 企业边缘路由器 (MSEE)。Microsoft 要求从连接服务提供商/你的一端建立双重 BGP 连接 – 各自连接到每个 MSEE。你可以选择不要在你的一端部署冗余设备/以太网路线。但是，连接服务提供商会使用冗余设备，确保以冗余方式将你的连接移交给 Microsoft。冗余的第 3 层连接配置是 Microsoft [SLA](http://azure.microsoft.com/support/legal/sla/) 生效的条件。
+每个 ExpressRoute 线路有两道连接，用于从连接服务提供商/你的网络边缘连接到两个 Microsoft 企业边缘路由器 (MSEE)。Microsoft 要求从连接服务提供商/你的一端建立双重 BGP 连接 – 各自连接到每个 MSEE。你可以选择不要在你的一端部署冗余设备/以太网路线。但是，连接服务提供商会使用冗余设备，确保以冗余方式将你的连接移交给 Microsoft。冗余的第 3 层连接配置是 Microsoft [SLA](https://azure.microsoft.com/support/legal/sla/) 生效的条件。
 
 ### 与 Microsoft 云服务建立连接
 
@@ -120,4 +120,4 @@ Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。�
 	- [配置路由](/documentation/articles/expressroute-howto-routing-classic)
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

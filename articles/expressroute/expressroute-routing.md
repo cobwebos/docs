@@ -4,11 +4,11 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags
    ms.service="expressroute"
-   ms.date="10/06/2015"
+   ms.date="02/08/2016"
    wacn.date=""/>
 
 
@@ -18,7 +18,7 @@
 
 有关需要在设置后才能建立连接的路由会话的说明，请参阅[线路和路由域](/documentation/articles/expressroute-circuit-peerings)一文。
 
-**注意：**Microsoft 不支持任何高可用性配置的路由器冗余协议（如 HSRP 和 VRRP）。我们依赖每个对等互连的一组冗余 BGP 会话来获得高可用性。
+**注意：** Microsoft 不支持任何高可用性配置的路由器冗余协议（如 HSRP 和 VRRP）。我们依赖每个对等互连的一组冗余 BGP 会话来获得高可用性。
 
 ## 对等互连的 IP 地址
 
@@ -34,7 +34,7 @@
  - 如果使用 /29 子网，它将拆分成两个 /30 子网。 
 	 - 第一个 /30 子网用于主链路，第二个 /30 子网用于辅助链路。
 	 - 对于每个 /30 子网，必须在路由器上使用 /30 子网的第一个 IP 地址。Microsoft 使用 /30 子网的第二个 IP 地址来设置 BGP 会话。
-	 - 只有设置了两个 BGP 会话，我们的[可用性 SLA](http://azure.microsoft.com/support/legal/sla/) 才有效。  
+	 - 只有设置了两个 BGP 会话，我们的[可用性 SLA](https://azure.microsoft.com/support/legal/sla/) 才有效。  
 
 #### 专用对等互连示例
 
@@ -63,7 +63,7 @@ a.b.c.d/29 拆分成 a.b.c.d/30 和 a.b.c.d+4/30 并通过预配 API 一路传�
 - [APNIC](https://www.apnic.net/)
 - [AFRINIC](https://www.afrinic.net/)
 - [LACNIC](http://www.lacnic.net/)
-- [RIPE NCC](https://www.ripe.net/)
+- [RIPENCC](https://www.ripe.net/)
 - [RADB](http://www.radb.net/)
 - [ALTDB](http://altdb.net/)
 
@@ -97,9 +97,9 @@ ExpressRoute 不能配置为传输路由器。你必须依赖连接服务提供�
  - 已启用 Azure 公共对等互连，以将流量路由到公共终结点
  - 已使用用户定义的路由，为需要 Internet 连接的每个子网建立 Internet 连接。
 
-**注意：**播发默认路由会中断 Windows 和其他 VM 许可证激活。请按照[此处](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)的说明来解决此问题。
+**注意：** 播发默认路由会中断 Windows 和其他 VM 许可证激活。请按照[此处](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)的说明来解决此问题。
 
-## BGP 社区支持
+## BGP 社区支持（即将推出）
 
 本部分概述如何配合 ExpressRoute 使用 BGP 社区。Microsoft 将播发公共和 Microsoft 对等互连路径中的路由并为路由标记适当的社区值。下面将会介绍这种方案的理由以及有关社区值的详细信息。但是，Microsoft 不遵循向 Microsoft 播发的路由的任何标记社区值。
 
@@ -115,24 +115,31 @@ Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标�
 
 | **地缘政治区域** | **Microsoft Azure 区域（同样适用于 Office 365）** | **BGP 社区值** |
 |---|---|---|
-| **美国** |	美国东部 | 12076:3004 |
-| | 美国东部 2 | 12076:3005 |
-| | 美国西部 | 12076:3006 |
-| | 美国中部 | 12076:3009 |
-| | 美国中北部 | 12076:3007 |
-| | 美国中南部 | 12076:3008 |
-| **南美洲** | 巴西南部 | 12076:3014 |
-| **欧洲** | 欧洲北部 | 12076:3003 |
-| | 欧洲西部 | 12076:3002 |
-| **亚太区** | 东亚 | 12076:3010 |
-| | 亚洲东南部 | 12076:3011 |
-| **日本** | 日本东部 | 12076:3012 |
-| | 日本西部 | 12076:3013 |
-| **澳大利亚** | 澳大利亚东部 | 12076:3015 |
-| | 澳大利亚东南部 | 12076:3016 |
-| **印度** | 印度南部 | 12076:3019 |
-| | 印度西部 | 12076:3018 |
-| | 印度中部 | 12076:3017 |
+| **北美** | | |
+| | 美国东部 | 12076:51004 |
+| | 美国东部 2 | 12076:51005 |
+| | 美国西部 | 12076:51006 |
+| | 美国中北部 | 12076:51007 |
+| | 美国中南部 | 12076:51008 |
+| | 美国中部 | 12076:51009 |
+| **南美洲** | | |
+| | 巴西南部 | 12076:51014 |
+| **欧洲** | | |
+| | 欧洲北部 | 12076:51003 |
+| | 欧洲西部 | 12076:51002 |
+| **亚太区** | | |
+| | 东亚 | 12076:51010 |
+| | 亚洲东南部 | 12076:51011 |
+| **日本** | | |
+| | 日本东部 | 12076:51012 |
+| | 日本西部 | 12076:51013 |
+| **澳大利亚** | | | 
+| | 澳大利亚东部 | 12076:51015 |
+| | 澳大利亚东南部 | 12076:51016 |
+| **印度** | | |
+| | 印度南部 | 12076:51019 |
+| | 印度西部 | 12076:51018 |
+| | 印度中部 | 12076:51017 |
 
 所有 Microsoft 播发的路由都标有适当的社区值。
 
@@ -158,8 +165,8 @@ Microsoft 不遵循你设置的任何 BGP 社区值。你需要为每个对等�
 
 - 配置 ExpressRoute 连接。
 
-	- [创建 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-classic)
-	- [配置路由](/documentation/articles/expressroute-howto-routing-classic)
-	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
+	- [创建经典部署模型的 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-classic)或[使用 Azure 资源管理器创建和修改 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-arm)
+	- [为经典部署模型配置路由](/documentation/articles/expressroute-howto-routing-classic)或[为资源管理器部署模型配置路由](/documentation/articles/expressroute-howto-routing-arm)
+	- [将经典 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)或[将资源管理器 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-arm)
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0307_2016-->

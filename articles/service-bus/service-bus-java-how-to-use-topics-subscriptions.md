@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="service-bus"
-	ms.date="10/07/2015"
+	ms.date="01/26/2016"
 	wacn.date=""/>
 
 
@@ -234,4 +234,4 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [SqlFilter.SqlExpression]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
   [BrokeredMessage]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

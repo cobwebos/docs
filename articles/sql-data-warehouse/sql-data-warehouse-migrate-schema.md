@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="09/22/2015"
+   ms.date="01/19/2016"
    wacn.date=""/>
 
 # 将架构迁移到 SQL 数据仓库#
@@ -111,7 +111,7 @@ OR  y.[is_user_defined] = 1
 - **table**，转换成暂时表
 - **timestamp**，修改代码以使用 datetime2 和 `CURRENT_TIMESTAMP` 函数。请注意，不能使用 current\_timestamp 作为默认约束，因为值不会自动更新。如果需要从 timestamp 类型化列迁移 rowversion 值，请对 NOT NULL 或 NULL 行版本值使用 binary(8) 或 varbinary(8)。
 - **varchar(max)**，而要使用 varchar(8000) 或更小，以改善性能
-- **uniqueidentifier**，而要使用 varbinary(8)
+- **uniqueidentifier**，而要根据你的值的输入格式（二进制或字符）使用 varbinary (16) 或 varchar(36)。如果输入格式是基于字符，则存在优化的可能。通过将字符转换为二进制格式，可以减少超过 50% 的列存储。在超大型表中这种优化很有利。
 - **用户定义的类型**，尽可能转换回本机类型
 - **xml**，而要使用 varchar(8000) 或更小，以改善性能。根据需要在列之间拆分
 
@@ -119,7 +119,7 @@ OR  y.[is_user_defined] = 1
 
 - 默认约束仅支持文本和常量。不支持非确定性表达式或函数，例如 `GETDATE()` 或 `CURRENT_TIMESTAMP`。
 
-> [AZURE.NOTE]定义表，使最大可能的行大小（包括可变长度列的完整长度）不超过 32,767 个字节。虽然定义的行可以包含超过此数据的可变长度数据，但数据将无法插入表。此外，还请限制可变长度列的大小，以便运行查询时有更大的吞吐量。
+> [AZURE.NOTE] 定义表，使最大可能的行大小（包括可变长度列的完整长度）不超过 32,767 个字节。虽然定义的行可以包含超过此数据的可变长度数据，但数据将无法插入表。此外，还请限制可变长度列的大小，以便运行查询时有更大的吞吐量。
 
 ## 后续步骤
 成功将数据库架构迁移到 SQL 数据仓库后，可以继续阅读下列文章之一：
@@ -132,13 +132,13 @@ OR  y.[is_user_defined] = 1
 <!--Image references-->
 
 <!--Article references-->
-[迁移代码]: sql-data-warehouse-migrate-code.md
-[迁移数据]: sql-data-warehouse-migrate-data.md
-[开发概述]: sql-data-warehouse-overview-develop.md
+[迁移代码]: /documentation/articles/sql-data-warehouse-migrate-code
+[迁移数据]: /documentation/articles/sql-data-warehouse-migrate-data
+[开发概述]: /documentation/articles/sql-data-warehouse-overview-develop
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

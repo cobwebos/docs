@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="batch"
-	ms.date="11/10/2015"
+	ms.date="01/28/2016"
 	wacn.date=""/>
 
 # 使用 Batch Management .NET 管理 Azure Batch 帐户和配额
@@ -135,9 +135,17 @@ Azure 本身使用 Azure AD 来对其客户、服务管理员和组织用户进�
 
 查看 GitHub 上的 [AccountManagment][acct_mgmt_sample] 示例项目，以了解 Batch Management .NET 库的操作实践。此控制台应用程序将显示 [BatchManagementClient][net_mgmt_client] 和 [ResourceManagementClient][resman_client] 的创建与使用方式。此外，还演示了两个客户端所需的 Azure [Active Directory 身份验证库][aad_adal] (ADAL) 使用方式。
 
-> [AZURE.IMPORTANT] 若要成功运行该示例应用程序，你必须先使用 Azure 门户将它注册到 Azure AD。请查看[将应用程序与 Azure Active Directory 集成][aad_integrate]中的“添加应用程序”。然后，遵循本文中步骤在你自己的帐户中注册示例应用程序。
+若要成功运行该示例应用程序，你必须先使用 Azure 门户将它注册到 Azure AD。请查看[将应用程序与 Azure Active Directory 集成][aad_integrate]中的“添加应用程序”。然后，遵循本文中步骤在自己帐户的“默认目录”中注册示例应用程序。确保选择“本机客户端应用程序”作为应用程序类型，但可以指定任何有效的 URI（例如 `http://myaccountmanagementsample`）作为“重定向 URI”--不需要是真实的终结点。
 
-该示例应用程序演示了以下操作：
+添加应用程序以后，请在门户的应用程序设置中将“以组织形式访问 Azure 服务管理”权限委派给 *Microsoft Azure 服务管理 API* 应用程序：
+
+![Azure 门户中的应用程序权限][2]
+
+根据上述说明添加应用程序以后，请使用应用程序的重定向 URI 和客户端 ID 更新 [AccountManagment][acct_mgmt_sample] 示例项目中的 `Program.cs`。可在应用程序的“配置”选项卡中查找这些值：
+
+![Azure 门户中的应用程序配置][3]
+
+[AccountManagment][acct_mgmt_sample] 示例应用程序演示了以下操作：
 
 1. 使用 [ADAL][aad_adal] 从 Azure AD 获取安全令牌。如果用户尚未登录，系统将提示其输入 Azure 凭据。
 2. 使用从 Azure AD 获取的安全令牌创建 [SubscriptionClient][resman_subclient]，以便在 Azure 中查询与帐户关联的订阅列表。如果找到多个订阅，将允许用户选择其中一个。
@@ -187,5 +195,7 @@ Azure 本身使用 Azure AD 来对其客户、服务管理员和组织用户进�
 [resman_overview]: ../resource-group-overview.md
 
 [1]: ./media/batch-management-dotnet/portal-01.png
+[2]: ./media/batch-management-dotnet/portal-02.png
+[3]: ./media/batch-management-dotnet/portal-03.png
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0307_2016-->

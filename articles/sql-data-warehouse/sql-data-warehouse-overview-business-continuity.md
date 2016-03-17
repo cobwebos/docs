@@ -9,8 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-
-   ms.date="09/22/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 
@@ -61,18 +60,18 @@
 <!--Image references-->
 
 <!--Article references-->
-[business continuity overview]: ../sql-database/sql-database-business-continuity.md
-[Finalize a recovered database]: ../sql-database/sql-database-recovered-finalize.md
-[Azure 存储冗余选项]: storage-redundancy/#read-access-geo-redundant-storage-ra-grs.md
-[SQL 数据库业务连续性概述]: ../sql-database/sql-database-business-continuity.md
-[在发生用户错误后恢复]: sql-data-warehouse-business-continuity-recover-from-user-error.md
+[business continuity overview]: /documentation/articles/sql-database-business-continuity.md
+[Finalize a recovered database]: /documentation/articles/sql-database-recovered-finalize.md
+[Azure 存储冗余选项]: /documentation/articles/storage-redundancy/#read-access-geo-redundant-storage-ra-grs
+[SQL 数据库业务连续性概述]: /documentation/articles/sql-database-business-continuity
+[在发生用户错误后恢复]: /documentation/articles/sql-data-warehouse-business-continuity-recover-from-user-error
 
 <!--MSDN references-->
-[Create database restore request]: http://msdn.microsoft.com/library/azure/dn509571.aspx
-[Database operation status]: http://msdn.microsoft.com/library/azure/dn720371.aspx
-[Get restorable dropped database]: http://msdn.microsoft.com/library/azure/dn509574.aspx
-[List restorable dropped databases]: http://msdn.microsoft.com/library/azure/dn509562.aspx
+[Create database restore request]: http://msdn.microsoft.com/zh-cn/library/azure/dn509571.aspx
+[Database operation status]: http://msdn.microsoft.com/zh-cn/library/azure/dn720371.aspx
+[Get restorable dropped database]: http://msdn.microsoft.com/zh-cn/library/azure/dn509574.aspx
+[List restorable dropped databases]: http://msdn.microsoft.com/zh-cn/library/azure/dn509562.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

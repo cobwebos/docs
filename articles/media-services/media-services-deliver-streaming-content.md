@@ -1,15 +1,15 @@
 <properties 
-	pageTitle="如何从 Media Services 传送流内容" 
-	description="了解如何创建用于生成流 URL 的定位符。代码示例用 C# 编写且使用 Media Services SDK for .NET。" 
+	pageTitle="如何从媒体服务传送流内容" 
+	description="了解如何创建用于生成流 URL 的定位符。代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。" 
 	authors="juliako" 
 	manager="dwrede" 
 	editor="" 
 	services="media-services" 
 	documentationCenter=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015" 
+<tags
+	ms.service="media-services"
+	ms.date="02/03/2016"
 	wacn.date=""/>
 
 
@@ -22,7 +22,7 @@
 
 ##概述
 
-你可以通过创建 OnDemand 流式处理定位符并生成流 URL 来流式传输自适应比特率 MP4 集。[对资产进行编码](media-services-encode-asset)主题说明了如何编码成自适应比特率 MP4 集。
+你可以通过创建 OnDemand 流式处理定位符并生成流 URL 来流式传输自适应比特率 MP4 集。[对资产进行编码](/documentation/articles/media-services-encode-asset)主题说明了如何编码成自适应比特率 MP4 集。
 
 >[AZURE.NOTE]如果内容已加密，则在创建定位符之前配置资产传送策略（如[本](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy)主题中所述）。
 
@@ -50,6 +50,7 @@
 	{
 	
 	    // Create a 30-day readonly access policy. 
+      	// You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.
 	    IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
 	        TimeSpan.FromDays(30),
 	        AccessPermissions.Read);
@@ -152,9 +153,11 @@
 	Console.WriteLine(smoothStreamingUri);
 	Console.WriteLine(hlsUri);
 	Console.WriteLine(mpegDashUri);
- 
+
+
+
 ##另请参阅
 
-[下载资产](/documentation/articles/media-services-deliver-asset-download)
+[下载资产](/documentation/articles/media-services-deliver-asset-download) [配置资产传送策略](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy)
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0307_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/21/2015"
+ 	ms.date="02/03/2016"  
 	wacn.date=""/>
 
 #Azure 媒体服务分片 MP4 实时引入规范
@@ -33,7 +33,7 @@
 ![image1][image1]
 
 
-##3\.位流格式 – ISO 14496-12 分片 MP4
+##3\.位流格式 - ISO 14496-12 分片 MP4
 
 本文档所述的实时流引入的有线格式基于 [ISO-14496-12]。有关分片 MP4 格式、视频点播和实时流引入的详细说明，请参阅 [[MS SSTR]] (http://msdn.microsoft.com/zh-cn/library/ff469518.aspx)。
 
@@ -50,7 +50,7 @@
 7. MP4 片段持续期间应该大约在 2 到 6 秒之间。
 8. 应该以递增顺序送达 MP4 片段时间戳和索引（TrackFragmentExtendedHeaderBox fragment\_absolute\_time 和 fragment\_index）。尽管 Azure 媒体服务在复制片段方面很有弹性，但是其根据媒体时间轴将片段重新排序的功能非常有限。
 
-##4\.协议格式 – HTTP
+##4\.协议格式 - HTTP
 
 Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行的标准 HTTP POST 请求，将以分片 MP4 格式打包的编码媒体数据传输到服务。每个 HTTP POST 发送完整的分片 MP4 位流（“流”），其开头为标头框（‘ftyp’、“实时服务器清单框”及 ‘moov’ 框），后接一系列片段（‘moof’ 与 ‘mdat’ 框）。有关 HTTP POST 请求的 URL 语法，请参阅 [1] 中的第 9.2 部分。以下是 POST URL 的示例：
 
@@ -80,9 +80,9 @@ Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行
 
 客户想要创建实时流演播，其中包含以下音频/视频比特率：
 
-视频 – 3000kbps、1500kbps、750kbps
+视频 - 3000kbps、1500kbps、750kbps
 
-音频 – 128 kbps
+音频 - 128 kbps
 
 ###选项 1：在一个流中包含所有轨迹
 
@@ -210,4 +210,4 @@ Microsoft Azure 媒体服务的 ISO 分片 MP4 实时引入使用长时间运行
 
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0307_2016-->

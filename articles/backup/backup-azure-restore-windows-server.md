@@ -3,13 +3,13 @@
    description="了解如何从 Windows Server 或 Windows 客户端还原。"
    services="backup"
    documentationCenter=""
-   authors="aashishr"
+   authors="Jim-Parker"
    manager="jwhit"
    editor=""/>
 
 <tags
          ms.service="backup"
-	 ms.date="10/21/2015"
+	 ms.date="01/25/2016"
 	 wacn.date=""/>
 
 # 将文件还原到 Windows Server 或 Windows 客户端计算机
@@ -67,7 +67,7 @@
 - *目标计算机* – 要将数据恢复到的计算机。
 - *示例保管库* – *源计算机*和*目标计算机*注册到的备份保管库。<br/>
 
-> [AZURE.NOTE]从一台计算机创建的备份无法在运行更低版本操作系统的计算机上还原。例如，如果备份是从 Windows 7 计算机创建的，它可以在 Windows 8 或更高版本的计算机上还原。但是，如果反过来则无法还原。
+> [AZURE.NOTE] 从一台计算机创建的备份无法在运行更低版本操作系统的计算机上还原。例如，如果备份是从 Windows 7 计算机创建的，它可以在 Windows 8 或更高版本的计算机上还原。但是，如果反过来则无法还原。
 
 1. 在“目标计算机”中打开“Microsoft Azure 备份”管理单元。
 2. 确保“目标计算机”和“源计算机”已还原到同一个备份保管库。
@@ -112,4 +112,4 @@
 - [备份 Azure 虚拟机](/documentation/articles/backup-azure-vms-introduction)
 - [备份 Microsoft 工作负荷](/documentation/articles/backup-azure-dpm-introduction)
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

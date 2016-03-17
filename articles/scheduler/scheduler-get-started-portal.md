@@ -8,7 +8,7 @@
  editor=""/>
 <tags
  ms.service="scheduler"
- ms.date="12/04/2015"
+ ms.date="02/12/2016"
  wacn.date=""/>
 
 # 在管理门户中开始使用计划程序
@@ -35,7 +35,7 @@
 
 5.  单击箭头键以创建作业集合并转到下一阶段 – 创建作业。
 
-6.  让我们来创建一个作业，这只需要使用 GET 请求访问 http://www.microsoft.com/ 。在“作业操作”屏幕中，为请求的表单字段定义以下值：
+6.  让我们来创建一个作业，这只需要使用 GET 请求访问 http://www.microsoft.com/。在“作业操作”屏幕中，为请求的表单字段定义以下值：
 
     1.  **名称：**` getmicrosoft`  
 
@@ -256,4 +256,4 @@ Azure 计划程序基于几个条件实施配额。本节列出了配额阈值�
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

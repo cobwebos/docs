@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.date="10/06/2015" 
+	ms.date="01/26/2016" 
 	wacn.date=""/>
 
 # 如何使用 Service Bus 队列
@@ -28,12 +28,11 @@
 
 若要使用 Azure 服务总线，请下载并使用 Node.js Azure 包。此包包括一组用来与服务总线 REST 服务通信的库。
 
-
 ### 使用 Node 包管理器 (NPM) 可获取该程序包
 
-1.  使用 **Windows PowerShell for Node.js** 命令窗口导航到你在其中创建了示例应用程序的 **c:\\node\\sbqueues\\WebRole1** 文件夹。
+1. 使用 **Windows PowerShell for Node.js** 命令窗口导航到你在其中创建了示例应用程序的 **c:\\node\\sbqueues\\WebRole1** 文件夹。
 
-2.  在命令窗口中键入 **npm install azure**，这应该产生类似如下的输出：
+2. 在命令窗口中键入 **npm install azure**，这应该产生类似如下的输出：
 
 	```
 	azure@0.7.5 node_modules\azure
@@ -49,7 +48,7 @@
 		└── request@2.21.0 (json-stringify-safe@4.0.0, forever-agent@0.5.0, aws-sign@0.3.0, tunnel-agent@0.3.0, oauth-sign@0.3.0, qs@0.6.5, cookie-jar@0.3.0, node-uuid@1.4.0, http-signature@0.9.11, form-data@0.0.8, hawk@0.13.1)
 	```
 
-3.  可以手动运行 **ls** 命令来验证是否创建了 **node\_modules** 文件夹。在该文件夹中，找到 **azure** 包，其中包含访问服务总线队列所需的库。
+3. 可以手动运行 **ls** 命令来验证是否创建了 **node\_modules** 文件夹。在该文件夹中，找到 **azure** 包，其中包含访问服务总线队列所需的库。
 
 ### 导入模块
 
@@ -59,7 +58,7 @@
 var azure = require('azure');
 ```
 
-### 设置 Azure Service Bus 连接
+### 设置 Azure 服务总线连接
 
 Azure 模块将读取环境变量 AZURE\_SERVICEBUS\_NAMESPACE 和 AZURE\_SERVICEBUS\_ACCESS\_KEY 以获取连接到服务总线所需的信息。如果未设置这些环境变量，则在调用 **createServiceBusService** 时必须指定帐户信息。
 
@@ -100,7 +99,7 @@ serviceBusService.createQueueIfNotExists('myqueue', queueOptions, function(error
 });
 ```
 
-###筛选器
+### 筛选器
 
 可选的筛选操作可应用于使用 **ServiceBusService** 执行的操作。筛选操作可包括日志记录、自动重试等。筛选器是实现具有签名的方法的对象：
 
@@ -198,4 +197,4 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [使用存储构建 Node.js Web 应用程序]: /documentation/articles/storage-nodejs-how-to-use-table-storage
   [Azure 队列和服务总线队列]: /documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted/#capacity-and-quotas
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

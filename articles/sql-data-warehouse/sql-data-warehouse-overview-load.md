@@ -5,12 +5,11 @@
    documentationCenter="NA"
    authors="lodipalm"
    manager="barbkess"
-   editor="jrowlandjones"/>
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-
-   ms.date="11/04/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # 将数据载入 SQL 数据仓库
@@ -34,7 +33,7 @@ SQL 数据仓库提供许多选项用于加载数据，包括：
 
 在以下部分中，我们将深入探讨每个步骤并提供过程示例。
 
-> [AZURE.NOTE]从 SQL Server 等系统移动数据之前，建议参阅文档网站上的[迁移架构][]和[迁移代码][]文章。
+> [AZURE.NOTE] 从 SQL Server 等系统移动数据之前，建议参阅文档网站上的[迁移架构][]和[迁移代码][]文章。
 
 ## 使用 BCP 导出文件
 
@@ -59,7 +58,7 @@ Get-Content <input_file_name> -Encoding Unicode | Set-Content <output_file_name>
 
 以下步骤详细说明如何使用 AZCopy 将数据从本地移入 Azure 存储帐户。如果你在同一区域没有 Azure 存储帐户，可以遵循 [Azure 存储空间文档][]创建一个。还可以从不同区域中的存储帐户加载数据，但在此情况下，性能不是最佳的。
 
-> [AZURE.NOTE]本文档假设你已安装的 AZCopy 命令行实用程序，而且能够使用 Powershell 运行它。如果不是这样，请遵循 [AZCopy 安装说明][]。
+> [AZURE.NOTE] 本文档假设你已安装的 AZCopy 命令行实用程序，而且能够使用 Powershell 运行它。如果不是这样，请遵循 [AZCopy 安装说明][]。
 
 现在，已提供一组使用 BCP 创建的文件，因此 AzCopy 只需从 Azure powershell 或通过运行 powershell 脚本来运行。在更高的级别中，运行 AZCopy 所需的提示将采用以下格式：
 
@@ -148,7 +147,8 @@ WITH
 CREATE TABLE <Table Name> 
 WITH 
 (
-	CLUSTERED COLUMNSTORE INDEX
+	CLUSTERED COLUMNSTORE INDEX,
+	DISTRIBUTION = <HASH(<Column Name>)>/<ROUND_ROBIN>
 )
 AS 
 SELECT  * 
@@ -177,7 +177,7 @@ create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
 
 <!--Article references-->
 [Load data with bcp]: sql-data-warehouse-load-with-bcp.md
-[使用 PolyBase 加载数据]: sql-data-warehouse-load-with-polybase.md
+[使用 PolyBase 加载数据]: sql-data-warehouse-get-started-load-with-polybase.md
 [solution partners]: sql-data-warehouse-solution-partners.md
 [开发概述]: sql-data-warehouse-overview-develop.md
 [迁移架构]: sql-data-warehouse-migrate-schema.md
@@ -192,9 +192,9 @@ create statistics [<another name>] on [<Table Name>] ([<Another Column Name>]);
 
 <!--Other Web references-->
 [AZCopy 安装说明]: /documentation/articles/storage-use-azcopy/
-[适用于 SQL Server 的 Microsoft 命令行实用程序]: http://www.microsoft.com/zh-CN/download/details.aspx?id=36433
+[适用于 SQL Server 的 Microsoft 命令行实用程序]: http://www.microsoft.com/zh-cn/download/details.aspx?id=36433
 [导入/导出]: /documentation/articles/storage-import-export-service/
 [Azure 存储空间文档]: h/documentation/articles/storage-create-storage-account/
 [ExpressRoute 文档]: /documentation/services/expressroute/
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

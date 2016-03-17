@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="12/17/2015"
+	ms.date="02/03/2016"
 	wacn.date=""/>
 
 #使用 .NET SDK 配置资产传送策略
@@ -336,4 +336,4 @@ Azure 媒体服务还允许你添加 Widevine 加密。以下示例演示将 Pla
         WidevineLicenseAcquisitionUrl
     }
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

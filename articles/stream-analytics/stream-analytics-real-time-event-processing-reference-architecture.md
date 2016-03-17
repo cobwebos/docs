@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="stream-analytics"
-	ms.date="12/04/2015" 
+	ms.date="02/04/2016" 
 	wacn.date=""/>
 
 # 参考体系结构：使用 Microsoft Azure 流分析进行实时事件处理
@@ -37,13 +37,13 @@ Microsoft Azure 提供了各种类别的分析技术，支持一系列不同的�
 	- 呈现/消耗层
 - 结束语
 
-**作者：**Charles Feddersen，Microsoft Corporation Data Insights 卓越中心解决方案体系结构部门
+**作者：** Charles Feddersen，Microsoft Corporation Data Insights 卓越中心解决方案体系结构部门
 
-**发布时间：**2015 年 1 月
+**发布时间：** 2015 年 1 月
 
-**修订版：**1.0
+**修订版：** 1.0
 
-**下载：**[使用 Microsoft Azure 流分析进行实时事件处理](http://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
+**下载：** [使用 Microsoft Azure 流分析进行实时事件处理](http://download.microsoft.com/download/6/2/3/623924DE-B083-4561-9624-C1AB62B5F82B/real-time-event-processing-with-microsoft-azure-stream-analytics.pdf)
 
 
 ## 获取帮助
@@ -59,4 +59,4 @@ Microsoft Azure 提供了各种类别的分析技术，支持一系列不同的�
 
  
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

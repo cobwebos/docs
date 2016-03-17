@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.date="10/08/2015" 
+	ms.date="01/26/2016" 
 	wacn.date=""/>
 
 # 如何使用服务总线主题和订阅
@@ -59,7 +59,7 @@ bus_service.create_topic('mytopic', topic_options)
 
 主题订阅也是使用 **ServiceBusService** 对象创建的。订阅已命名，并且具有一个限制传递到订阅的虚拟队列的消息集的可选筛选器。
 
-> [AZURE.NOTE]订阅是永久性的，除非删除它们或删除订阅它们的主题，否则订阅将一直存在。
+> [AZURE.NOTE] 订阅是永久性的，除非删除它们或删除订阅它们的主题，否则订阅将一直存在。
 
 ### 创建具有默认 (MatchAll) 筛选器的订阅
 
@@ -77,7 +77,7 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 
 可以使用 **ServiceBusService** 对象的 **create\_rule** 方法向订阅中添加筛选器。此方法允许你向现有订阅中添加新筛选器。
 
-> [AZURE.NOTE]由于默认筛选器会自动应用到所有新订阅，因此，你必须首先删除默认筛选器，否则 **MatchAll** 会替代你可能指定的任何其他筛选器。可以使用 **ServiceBusService** 对象的 **delete\_rule** 方法删除默认规则。
+> [AZURE.NOTE] 由于默认筛选器会自动应用到所有新订阅，因此，你必须首先删除默认筛选器，否则 **MatchAll** 会替代你可能指定的任何其他筛选器。可以使用 **ServiceBusService** 对象的 **delete\_rule** 方法删除默认规则。
 
 以下示例创建了一个名为 `HighMessages` 的订阅（带有只选择自定义 **messagenumber** 属性大于 3 的消息的 **SqlFilter**）：
 
@@ -178,4 +178,4 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 [SqlFilter.SqlExpression]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [Azure 队列和服务总线队列]: /documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted/#capacity-and-quotas
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

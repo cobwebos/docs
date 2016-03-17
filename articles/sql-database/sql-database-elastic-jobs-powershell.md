@@ -1,13 +1,14 @@
 <properties 
 	pageTitle="使用 PowerShell 创建和管理弹性数据库作业" 
 	description="使用 PowerShell 管理 Azure SQL 数据库池" 
-	services="sql-database" documentationCenter=""  
+	services="sql-database"
+	documentationCenter=""  
 	manager="jeffreyg" 
 	authors="ddove"/>
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="11/03/2015" 
+	ms.date="02/02/2016" 
 	wacn.date="" />
 
 # 使用 PowerShell 创建和管理 SQL 数据库弹性数据库作业（预览版）
@@ -529,7 +530,7 @@
 
 ### 将数据库添加到自定义数据库集合目标
 
-若要将数据库添加到特定的自定义集合，请使用 [**Add-AzureSqlJobChildTarget**](https://msdn.microsoft.comlibrary/mt346064.aspx) cmdlet。
+若要将数据库添加到特定的自定义集合，请使用 [**Add-AzureSqlJobChildTarget**](https://msdn.microsoft.com/zh-cn/library/mt346064.aspx) cmdlet。
 
 	$serverName = "{Database Server Name}"
 	$databaseName = "{Database Name}"
@@ -690,4 +691,4 @@
 [2]: ./media/sql-database-elastic-jobs-powershell/portal.png
 <!--anchors-->
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0307_2016-->

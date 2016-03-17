@@ -1,6 +1,6 @@
 <properties
-   pageTitle="有关 Actor 类型序列化的 Reliable Actors 说明"
-   description="讨论了定义可序列化类的基本要求，这些类可用于定义 Service Fabric Reliable Actor 状态和接口"
+   pageTitle="有关执行组件类型序列化的 Reliable Actors 说明 | Microsoft Azure"
+   description="讨论了定义可序列化类的基本要求，这些类可用于定义 Service Fabric Reliable Actors 的状态和接口"
    services="service-fabric"
    documentationCenter=".net"
    authors="clca"
@@ -9,16 +9,17 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="08/11/2015"
+   ms.date="11/13/2015"
    wacn.date=""/>
 
 # 有关 Service Fabric Reliable Actors 类型序列化的说明
 
-有几个需要注意的重要事项，当定义 Actor 的接口和状态时：类型需要为数据协定可序列化。可以在 [MSDN](https://msdn.microsoft.com/library/ms731923.aspx) 上找到有关数据协定的详细信息。
+定义执行组件的接口和状态时，你应该牢记一些重要方面。类型必须是数据协定可序列化。可以在 [MSDN](https://msdn.microsoft.com/zh-cn/library/ms731923.aspx) 上找到有关数据协定的详细信息。
 
-## Actor 接口中使用的类型
+## 执行组件接口类型
 
-所有方法的参数和 [Actor 接口](/documentation/articles/service-fabric-reliable-actors-introduction#actors)中定义的每个方法返回的任务的结果类型需要为数据协定可序列化。这同样适用于 [Actor 事件接口](/documentation/articles/service-fabric-reliable-actors-events#actor-events)中定义的方法的参数。（Actor 事件接口方法始终返回 void）。例如，如果 `IVoiceMail` 接口将方法定义为：
+所有方法的参数和[执行组件接口](/documentation/articles/service-fabric-reliable-actors-introduction#actors)中定义的每个方法返回的任务的结果类型必须为数据协定可序列化。这同样适用于[执行组件事件接口](/documentation/articles/service-fabric-reliable-actors-events#actor-events)中定义的方法的参数。（执行组件事件接口方法始终返回 void）。
+例如，如果 `IVoiceMail` 接口将方法定义为：
 
 ```csharp
 
@@ -26,7 +27,7 @@ Task<List<Voicemail>> GetMessagesAsync();
 
 ```
 
-`List<T>` 是已为数据协定可序列化的标准 .NET 类型。 `Voicemail` 类型必须是数据协定可序列化。
+`List<T>` 是已为数据协定可序列化的标准 .NET 类型。`Voicemail` 类型也必须是数据协定可序列化。
 
 ```csharp
 
@@ -45,19 +46,19 @@ public class Voicemail
 
 ```
 
-## Actor 状态类
+## 执行组件状态类
 
-Actor 状态必须为数据协定可序列化。例如，如果我们有如下所示的 Actor 类定义：
+执行组件的状态必须为数据协定可序列化。例如，执行组件类定义可类似于以下内容：
 
 ```csharp
 
-public class VoiceMailActor : Actor<VoicemailBox>, IVoiceMail
+public class VoiceMailActor : StatefulActor<VoicemailBox>, IVoiceMail
 {
 ...
 
 ```
 
-状态类将使用类和分别用 DataContract 和 DataMember 属性标注的其成员进行定义。
+此状态类将使用此类进行定义，其成员将分别用 **DataContract** 和 **DataMember** 属性进行标注。
 
 ```csharp
 
@@ -78,4 +79,4 @@ public class VoicemailBox
 
 ```
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0307_2016-->

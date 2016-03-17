@@ -1,6 +1,6 @@
 ## 什么是队列存储？
 
-Azure 队列存储是一项可存储大量消息的服务，用户可以通过经验证的呼叫，使用 HTTP 或 HTTPS 从世界任何地方访问这些消息。一条队列消息的大小可达 64 KB，一个队列中可以包含数百万条消息，直至达到存储帐户的总容量限值。存储帐户可以容纳高达 500 TB 的 Blob、队列和表数据。有关存储帐户容量的详细信息，请参阅 [Azure 存储空间可伸缩性和性能目标](http://msdn.microsoft.com/library/azure/dn249410.aspx)。
+Azure 队列存储是一项可存储大量消息的服务，用户可以通过经验证的呼叫，使用 HTTP 或 HTTPS 从世界任何地方访问这些消息。一条队列消息的大小可达 64 KB，一个队列中可以包含数百万条消息，直至达到存储帐户的总容量限值。存储帐户可以容纳高达 500 TB 的 Blob、队列和表数据。有关存储帐户容量的详细信息，请参阅 [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets)。
 
 队列存储的常见用途包括：
 
@@ -20,10 +20,10 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 		
 	http://myaccount.queue.core.chinacloudapi.cn/imagesToDownload
 
--存储帐户：对 Azure 存储空间的所有访问都要通过存储帐户来完成。有关存储帐户容量的详细信息，请参阅 [Azure 存储空间可伸缩性和性能目标](http://msdn.microsoft.com/zh-cn/library/azure/dn249410.aspx)。
+-存储帐户：对 Azure 存储空间的所有访问都要通过存储帐户来完成。有关存储帐户容量的详细信息，请参阅 [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets)。
 
 - 队列：一个队列包含一组消息。所有消息必须位于相应的队列中。
 
 - 消息：一条消息（不管采用何种格式）的最大大小为 64 KB。
 
-<!----HONumber=70-->
+<!---HONumber=Mooncake_0307_2016-->

@@ -9,8 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-
-   ms.date="11/23/2015"
+   ms.date="01/08/2016"
    wacn.date=""/>
 
 # 性能和缩放性概述
@@ -24,7 +23,7 @@ SQL 数据仓库是基于云的分布式数据库平台，其设计目的是在�
 
 在预览期，我们将会根据这些目标持续努力，并争取在正式版 (GA) 发布之前实现这些目标。
 
->[AZURE.NOTE]以下部分介绍公共预览版推出时 Azure SQL 数据仓库服务的情况。随着该服务在推出正式版之前逐渐增强，在预览期内，这些信息将不断更新。
+>[AZURE.NOTE] 以下部分介绍公共预览版推出时 Azure SQL 数据仓库服务的情况。随着该服务在推出正式版之前逐渐增强，在预览期内，这些信息将不断更新。
 
 ## 数据保护
 SQL 数据仓库使用异地冗余 Blob，将所有数据存储在 Azure 存储空间中。将在本地 Azure 区域维护数据的三个同步副本，确保在发生局部故障（例如存储驱动器故障）时能够保证提供透明的数据保护。此外，还会在远程 Azure 区域维护三个异步副本，以确保在发生区域性故障时能够保证提供数据保护（灾难恢复）。将局部和远程区域配对可以保持可接受的同步延迟（例如在美国东部和西部）。
@@ -63,15 +62,15 @@ SQL 数据仓库引入了数据仓库单位 (DWU) 作为许多节点的聚合计
 
 <!--Article references-->
 
-[性能和缩放性]: sql-data-warehouse-performance-scale.md
-[并发模型]: sql-data-warehouse-develop-concurrency.md
-[设计表]: sql-data-warehouse-develop-table-design.md
-[为表选择哈希分布键]: sql-data-warehouse-develop-hash-distribution-key
-[用于改善性能的统计信息]: sql-data-warehouse-develop-statistics.md
-[开发概述]: sql-data-warehouse-overview-develop.md
+[性能和缩放性]: /documentation/articles/sql-data-warehouse-performance-scale
+[并发模型]: /documentation/articles/sql-data-warehouse-develop-concurrency
+[设计表]: /documentation/articles/sql-data-warehouse-develop-table-design
+[为表选择哈希分布键]: /documentation/articles/sql-data-warehouse-develop-hash-distribution-key
+[用于改善性能的统计信息]: /documentation/articles/sql-data-warehouse-develop-statistics
+[开发概述]: /documentation/articles/sql-data-warehouse-overview-develop
 
 <!--MSDN references-->
 
 <!--Other web references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

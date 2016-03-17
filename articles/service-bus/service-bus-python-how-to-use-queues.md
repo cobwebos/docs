@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.date="10/08/2015" 
+	ms.date="02/08/2016" 
 	wacn.date=""/>
 
 
@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
-> [AZURE.NOTE]若要安装 Python 或 [Python Azure 包][]，请参阅 [Python 安装指南](/documentation/articles/python-how-to-install)。
+> [AZURE.NOTE] 若要安装 Python 或 [Python Azure 包][]，请参阅 [Python 安装指南](/documentation/articles/python-how-to-install)。
 
 ## 创建队列
 
@@ -111,4 +111,4 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 [Azure 队列和服务总线队列]: /documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted/#capacity-and-quotas
  
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

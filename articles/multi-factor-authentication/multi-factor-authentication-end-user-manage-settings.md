@@ -1,7 +1,8 @@
 <properties 
 	pageTitle="使用 Azure Multi-Factor Authentication 时遇到问题 | Microsoft Azure" 
 	description="本文档向用户提供有关如何解决 Azure Multi-Factor Authentication 问题的信息。" 
-	services="multi-factor-authentication" 
+	services="multi-factor-authentication"
+	keywords = "multifactor authentication 客户端, 身份验证问题, 相关性 ID"
 	documentationCenter="" 
 	authors="billmath" 
 	manager="stevenpo" 
@@ -9,7 +10,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="12/10/2015" 
+	ms.date="01/25/2016" 
 	wacn.date=""/>
 # 使用 Azure Multi-Factor Authentication 时遇到问题
 >[AZURE.IMPORTANT]
@@ -88,8 +89,10 @@
 1. 登录到 [Office 365 门户](https://login.microsoftonline.com/)。
 2. 在右上角选择小组件并选择“Office 365 设置”。
 3. 单击“其他安全性验证”。
-4. 在右侧，单击“更新用于帐户安全性的电话号码”链接。![O365](./media/multi-factor-authentication-end-user-manage/o365a.png)
-5. 随后你将转到可以更改设置的页面。![O365](./media/multi-factor-authentication-end-user-manage/o365b.png)
+4. 在右侧，单击“更新用于帐户安全性的电话号码”链接。
+![O365](./media/multi-factor-authentication-end-user-manage/o365a.png)
+5. 随后你将转到可以更改设置的页面。
+![O365](./media/multi-factor-authentication-end-user-manage/o365b.png)
 
 
 ### 使用 Myapps 门户更改设置
@@ -100,7 +103,8 @@
 
 1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)	
 2. 在顶部选择配置文件。
-3. 选择“其他安全性验证”。![Myapps](./media/multi-factor-authentication-end-user-manage/myapps1.png)
+3. 选择“其他安全性验证”。
+![Myapps](./media/multi-factor-authentication-end-user-manage/myapps1.png)
 4. 随后你将转到可以更改设置的页面。
 
 ![验证](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
@@ -114,8 +118,10 @@
 
 1. 登录到 Azure 门户。
 2. 在 Azure 门户的顶部，单击你的用户名。此时将显示一个下拉框。
-3. 在下拉框中，选择“其他安全性验证”。![Azure](./media/multi-factor-authentication-end-user-manage/azure1.png)
-4. 随后你将转到可以更改设置的页面。![验证](./media/multi-factor-authentication-end-user-manage-azure/proofup.png)
+3. 在下拉框中，选择“其他安全性验证”。
+![Azure](./media/multi-factor-authentication-end-user-manage/azure1.png)
+4. 随后你将转到可以更改设置的页面。
+![验证](./media/multi-factor-authentication-end-user-manage-azure/proofup.png)
 
 ##我换了手机，想要更改我的电话号码
 
@@ -160,7 +166,7 @@
 如果先前已配置备用电话，建议你在登录页出现提示时选择该电话，然后再试一次。如果你未配置其他方法，请与管理员联系并让他们清除你的设置，这样，当你下次登录时，系统将提示你再次[设置多重身份验证](multi-factor-authentication-manage-users-and-devices.md#require-selected-users-to-provide-contact-methods-again)。
 
 ##应用密码不起作用
-首先，请确保正确输入应用密码。如果仍然无法解决问题，请尝试登录并[创建新的应用密码](multi-factor-authentication-end-user-app-passwords)。如果还是不起作用，请与管理员联系并让他们[删除现有应用密码](multi-factor-authentication-manage-users-and-devices.md#delete-users-existing-app-passwords)，然后请新建一个应用密码并使用该密码。
+首先，请确保正确输入应用密码。如果仍然无法解决问题，请尝试登录并[创建新的应用密码](/documentation/articles/multi-factor-authentication-end-user-app-passwords)。如果还是不起作用，请与管理员联系并让他们[删除现有应用密码](/documentation/articles/multi-factor-authentication-manage-users-and-devices#delete-users-existing-app-passwords)，然后请新建一个应用密码并使用该密码。
 
 ##如何从旧设备清理 Azure 验证器并将其迁移到新设备？
 当你从设备上卸载应用或者在设备上刷机时，不会在后端删除激活信息。你应该使用[转移到新设备](multi-factor-authentication-azure-authenticator.md#how-to-move-to-the-new-azure-authenticator-app)中所述的步骤。
@@ -172,4 +178,4 @@
 
 最后，请务必在此页面上留下一些详细的意见反馈，好让我们更新此页面，并通过提供更多的信息来持续改进此页面。
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

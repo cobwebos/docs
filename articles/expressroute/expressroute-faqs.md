@@ -8,7 +8,7 @@
    editor=""/>
 <tags
    ms.service="expressroute"
-   ms.date="10/20/2015"
+   ms.date="02/09/2016"
    wacn.date=""/>
 
 # ExpressRoute 常见问题
@@ -112,7 +112,7 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务，包括 Office 365。
 ### 我有多个包含虚拟网络的 Azure 订阅。能否将不同订阅中的虚拟网络连接到单个 ExpressRoute 线路？
 是的。最多可以授权其他 10 个 Azure 订阅使用单条 ExpressRoute 线路。可以通过启用 ExpressRoute 高级功能来提高此限制。
 
-有关详细信息，请参阅[在多个订阅之间共享 ExpressRoute 线路](/documentation/articles/expressroute-share-circuit)。
+有关详细信息，请参阅[在多个订阅之间共享 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-arm)。
 
 ### 连接到同一线路的虚拟网络相互隔离吗？
 不能。连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，从路由角度看不是相互隔离的。如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
@@ -167,91 +167,4 @@ BGP 会话将被删除。当前缀计数低于限制后，将重置这些会话�
 ### 如何更改 ExpressRoute 线路的带宽？
 你可以使用“更新专用线路 API”和 PowerShell cmdlet 来更新 ExpressRoute 线路的带宽。
 
-## ExpressRoute 高级版
-
-### 什么是 ExpressRoute 高级版？
-ExpressRoute 高级版包括下面列出的功能集合。
-
- - 对于公共对等互连和专用对等互连，将路由表限制从 4000 个路由提升为 10,000 个路由。
- - 增加了可连接到 ExpressRoute 线路的 VNet 数量（默认数量为 10 个）。有关详细信息，请参阅下表。
- - 通过 Microsoft 核心网络建立全局连接。现在，你可以将一个地缘政治区域中 VNet 链接到另一个区域中的 ExpressRoute 线路。**示例：**可以将欧洲西部创建的 VNet 链接到硅谷创建的 ExpressRoute 线路。
-
-### 如果启用 ExpressRoute 高级版，可将多少个 VNet 链接到一条 ExpressRoute 线路？
-下表列出了链接到 ExpressRoute 线路的 VNet 数的更高限制。默认限制为 10。
-
-**线路的限制**
-
-| **线路大小** | **针对默认安装的 VNet 链接数** | **使用 ExpressRoute 高级版时的 VNet 链接数** |
-|--------------|----------------------------------------|-----------------------------------------------|
-| 50 Mbps | 10 | 不支持 |
-| 100 Mbps | 10 | 20 |
-| 200 Mbps | 10 | 25 |
-| 500 Mbps | 10 | 40 |
-| 1 Gbps | 10 | 50 |
-| 2 Gbps | 10 | 60 |
-| 5 Gbps | 10 | 75 |
-| 10 Gbps | 10 | 100 |
-
-
-
-### 如何启用 ExpressRoute 高级版？
-在启用相应的功能后，将启用 ExpressRoute 高级功能；可以通过更新线路状态关闭高级功能。可以在创建线路时启用 ExpressRoute 高级版，或者通过调用“更新专用线路 API”/PowerShell cmdlet 来启用 ExpressRoute 高级版。
-
-### 如何禁用 ExpressRoute 高级版？
-你可以通过调用“更新专用线路 API”/PowerShell cmdlet 来禁用 ExpressRoute 高级版。在禁用 ExpressRoute 高级版之前，必须确保调整连接需求以满足默认限制。如果你的利用率级别超出了默认限制，我们将拒绝 ExpressRoute 禁用请求。
-
-### 我是否可以从高级功能集选择所需的功能？
-不可以。你无法选择所需的功能。如果你启用 ExpressRoute 高级版，我们会启用所有功能。
-
-### ExpressRoute 高级版的费用是多少？
-有关费用，请参阅[定价详细信息](/home/features/expressroute/#price)。
-
-### 除了支付 ExpressRoute 高级版费用以外，是否还要支付标准版 ExpressRoute 的费用？
-是的。ExpressRoute 高级版的费用是在 ExpressRoute 线路费用以及连接提供商所收费用的基础之上收取的。
-
-## ExpressRoute 和 Office 365
-
-### 如何创建一条 ExpressRoute 线路来连接 Office 365 服务？
-
-1. 请查看 [ExpressRoute 先决条件页](/documentation/articles/expressroute-prerequisites)，以确保满足要求。
-2. 请查看 [ExpressRoute 合作伙伴和位置](/documentation/articles/expressroute-locations)中的服务提供商和位置列表，以确保满足你的连接需求。
-3. 请查看[针对 Office 365 的网络规划和性能优化](http://aka.ms/tune/)，以规划你的容量要求
-4. 遵照以下工作流中列出的步骤来设置连接。[ExpressRoute 线路预配工作流和线路状态](/documentation/articles/expressroute-workflows)。
-
-### 我的现有 ExpressRoute 线路是否支持连接到 Office 365 服务？
-是的。可以将你的现有 ExpressRoute 线路配置为支持连接到 Office 365 服务。请确保你有足够的容量连接到 Office 365 服务。[针对 Office 365 的网络规划和性能优化](http://aka.ms/tune/)中的内容可帮助你规划连接需求。另外，请参阅[创建和修改 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-classic)。
-
-### 通过 ExpressRoute 连接可以访问哪些 Office 365 服务？
-
-**支持以下 Office 365 服务：**
-
-- Exchange Online 和 Exchange Online Protection
-- SharePoint Online
-- Skype for Business Online
-- Office Online
-- Azure AD 和 Azure AD Sync
-- Office 365 Video
-- Power BI
-- Delve
-- Project Online
-
-**不支持以下 Office 365 服务：**
-
-- Yammer
-- Office 365 ProPlus 客户端下载
-- 本地标识提供程序登录
-- 中国的 Office 365（由 21 Vianet 运营）服务
-
-可以通过 Internet 连接到这些服务。
-
-### 适用于 Office 365 的 ExpressRoute 费用是多少？
-通过 ExpressRoute 连接到 Office 365 不会产生额外的收费。[定价详细信息页](/home/features/expressroute/#price)提供了有关 ExpressRoute 费用的详细信息。
-
-### 哪些区域支持适用于 Office 365 的 ExpressRoute？
-有关支持 ExpressRoute 的合作伙伴和位置列表，请参阅 [ExpressRoute 合作伙伴和位置](/documentation/articles/expressroute-locations)。
-
-### 是否即使为组织配置了 ExpressRoute，也可以通过 Internet 访问 Office 365？
-是的。即使为你的网络配置了 ExpressRoute，也可以通过 Internet 访问 Office 365 服务终结点。如果你所在的位置已配置为通过 ExpressRoute 连接到 Office 365 服务，则你将通过 ExpressRoute 进行连接。
- 
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

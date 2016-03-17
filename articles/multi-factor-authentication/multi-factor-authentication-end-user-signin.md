@@ -1,6 +1,7 @@
 <properties 
 	pageTitle="使用 Azure Multi-Factor Authentication 时的 Azure MFA 登录体验" 
-	description="本页将会提供有关可在哪个位置查看 Azure MFA 支持的各种登录方法的指导。" 
+	description="本页将会提供有关可在哪个位置查看 Azure MFA 支持的各种登录方法的指导。"
+	keywords="用户身份验证, 登录体验, 使用手机登录, 使用办公电话登录" 
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
@@ -9,11 +10,11 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="10/15/2015" 
+	ms.date="01/25/2016" 
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 的登录体验
-> [AZURE.NOTE]本页提供的文档演示了一个典型的登录体验。有关登录的帮助，请参阅[使用 Azure Multi-Factor Authentication 时遇到问题](multi-factor-authentication-end-user-manage-settings.md)
+> [AZURE.NOTE]  本页提供的以下文档演示了一个典型的登录体验。有关登录的帮助，请参阅[使用 Azure Multi-Factor Authentication 时遇到问题](/documentation/articles/multi-factor-authentication-end-user-manage-settings)
 
 
 
@@ -97,4 +98,6 @@
 
 - 选择一种替代方法并登录。
 
-<!---HONumber=Mooncake_1207_2015-->
+ 
+
+<!---HONumber=Mooncake_0307_2016-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.date="10/07/2015" 
+	ms.date="02/08/2016" 
 	wacn.date=""/>
 
 
@@ -126,7 +126,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 主题订阅也是使用 **ServiceBusService** 对象创建的。订阅已命名，并且具有一个限制传递到订阅的虚拟队列的消息集的可选筛选器。
 
-> [AZURE.NOTE]订阅是永久性的，并且除非删除它或删除与之相关的主题，否则订阅将一直存在。如果你的应用程序包含创建订阅的逻辑，则它应首先使用 **getSubscription** 方法检查该订阅是否已经存在。
+> [AZURE.NOTE] 订阅是永久性的，并且除非删除它或删除与之相关的主题，否则订阅将一直存在。如果你的应用程序包含创建订阅的逻辑，则它应首先使用 **getSubscription** 方法检查该订阅是否已经存在。
 
 ### 创建具有默认 (MatchAll) 筛选器的订阅
 
@@ -148,7 +148,7 @@ serviceBusService.createSubscription('MyTopic','AllMessages',function(error){
 
 可以使用 **ServiceBusService** 对象的 **createRule** 方法向订阅中添加筛选器。此方法允许你向现有订阅中添加新筛选器。
 
-> [AZURE.NOTE]由于默认筛选器会自动应用到所有新订阅，因此，你必须首先删除默认筛选器，否则 **MatchAll** 会替代你可能指定的任何其他筛选器。可以使用 **ServiceBusService** 对象的 **deleteRule** 方法删除默认规则。
+> [AZURE.NOTE] 由于默认筛选器会自动应用到所有新订阅，因此，你必须首先删除默认筛选器，否则 **MatchAll** 会替代你可能指定的任何其他筛选器。可以使用 **ServiceBusService** 对象的 **deleteRule** 方法删除默认规则。
 
 以下示例创建了一个名为 `HighMessages` 的订阅（带有只选择自定义 **messagenumber** 属性大于 3 的消息的 **SqlFilter**）：
 
@@ -324,4 +324,4 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [使用存储构建 Node.js Web 应用程序]: /documentation/articles/cloud-services/storage-nodejs-use-table-storage-cloud-service-app
  
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

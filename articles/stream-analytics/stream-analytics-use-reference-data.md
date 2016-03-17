@@ -10,16 +10,16 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="12/04/2015" 
+	ms.date="02/04/2016" 
 	wacn.date=""/>
 
 # 在流分析的输入流中使用引用数据或查找表
 
-引用数据（也称为查找表）是一个静态的或本质上缓慢变化的有限数据集，用于执行查找或与你的数据流相关联。为了在 Azure 流分析作业中利用引用数据，你通常会在查询中使用[引用数据联合](https://msdn.microsoft.com/library/azure/dn949258.aspx)。流分析使用 Azure Blob 存储作为引用数据的存储层，并且通过 Azure 数据工厂，可以从[基于云和本地的任意数量的数据存储区](./articles/data-factory-data-movement-activities.md)将引用数据转换和/或复制到 Azure Blob 存储，以用作引用数据。引用数据建模为 blob 序列（在输入配置中定义），这些 blob 按blob 名称中指定的日期/时间顺序升序排列。它**仅**支持使用**大于**序列中最后一个 blob 指定的日期/时间的日期/时间添加到序列的末尾。
+引用数据（也称为查找表）是一个静态的或本质上缓慢变化的有限数据集，用于执行查找或与你的数据流相关联。为了在 Azure 流分析作业中利用引用数据，你通常会在查询中使用[引用数据联合](https://msdn.microsoft.com/library/azure/dn949258.aspx)。流分析使用 Azure Blob 存储作为引用数据的存储层，并且通过 Azure 数据工厂，可以从[基于云和本地的任意数量的数据存储区](./articles/data-factory-data-movement-activities.md)将引用数据转换和/或复制到 Azure Blob 存储，以用作引用数据。引用数据建模为 blob 序列（在输入配置中定义），这些 blob 按blob 名称中指定的日期/时间顺序升序排列。它 **仅** 支持使用 **大于** 序列中最后一个 blob 指定的日期/时间的日期/时间添加到序列的末尾。
 
 ## 配置引用数据
 
-若要配置引用数据，首先需要创建一个属于**引用数据**类型的输入。下表介绍你在根据属性说明创建引用数据输入时需要提供的每个属性：
+若要配置引用数据，首先需要创建一个属于 **引用数据** 类型的输入。下表介绍你在根据属性说明创建引用数据输入时需要提供的每个属性：
 
 <table>
 <tbody>
@@ -70,13 +70,13 @@
 
 如果你的引用数据是缓慢变化的数据集，则使用 {date} 和 {time} 令牌在输入配置中指定路径模式即可实现对刷新引用数据的支持。流分析将根据此路径模式选取引用数据定义。例如，使用 ````"/sample/{date}/{time}/products.csv"```` 模式时，日期格式为“YYYY-MM-DD”，时间格式为“HH:mm”，这是告诉流分析在 2015 年 4 月 16 日下午 5:30（UTC 时区）提取更新的 blob ````"/sample/2015-04-16/17:30/products.csv"````。
 
-> [AZURE.NOTE]当前，流分析作业仅在计算机时间与 blob 名称中的编码时间一致时查找 blob 刷新。例如，作业将查找 2015 年 4 月 16 日 UTC 时区下午 5:30 与下午 5:30:59.9 的 /sample/2015-04-16/17:30/products.csv。当计算机时钟到达下午 5:31 时，流分析作业会停止查找 /sample/2015-04-16/17:30/products.csv，开始查找 /sample/2015-04-16/17:31/products.csv。这种情况的一个例外是，当作业需要按时重新处理数据时或第一次启动作业时。开始时，作业查找的是在指定的作业开始时间之前生成的最新 blob。这样做是为了确保在作业开始时存在非空的引用数据集。如果找不到此类数据集，则作业会失败，将向用户显示一个诊断通知。
+> [AZURE.NOTE] 当前，流分析作业仅在计算机时间与 blob 名称中的编码时间一致时查找 blob 刷新。例如，作业将查找 2015 年 4 月 16 日 UTC 时区下午 5:30 与下午 5:30:59.9 的 /sample/2015-04-16/17:30/products.csv。当计算机时钟到达下午 5:31 时，流分析作业会停止查找 /sample/2015-04-16/17:30/products.csv，开始查找 /sample/2015-04-16/17:31/products.csv。这种情况的一个例外是，当作业需要按时重新处理数据时或第一次启动作业时。开始时，作业查找的是在指定的作业开始时间之前生成的最新 blob。这样做是为了确保在作业开始时存在非空的引用数据集。如果找不到此类数据集，则作业会失败，将向用户显示一个诊断通知。
 
-[Azure 数据工厂](http://azure.microsoft.com/documentation/services/data-factory/)可用来安排这样的任务：创建流分析更新引用数据定义所需的已更新 blob。数据工厂是一项基于云的数据集成服务，可对数据移动和转换进行安排并使其实现自动化。数据工厂支持[连接到大量基于云和本地的数据存储](./articles/data-factory-data-movement-activities.md)以及按你指定的定期计划轻松地移动数据。有关如何将数据工厂管道设置为生成按预定义计划刷新的流分析引用数据的详细信息和分步指导，请查看此 [GitHub 示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs)。
+[Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)可用来安排这样的任务：创建流分析更新引用数据定义所需的已更新 blob。数据工厂是一项基于云的数据集成服务，可对数据移动和转换进行安排并使其实现自动化。数据工厂支持[连接到大量基于云和本地的数据存储](./articles/data-factory-data-movement-activities.md)以及按你指定的定期计划轻松地移动数据。有关如何将数据工厂管道设置为生成按预定义计划刷新的流分析引用数据的详细信息和分步指导，请查看此 [GitHub 示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs)。
 
 ## 有关刷新引用数据的提示 ##
 
-1. 覆盖引用数据 blob 不会导致流分析重新加载 blob，并且在某些情况下，它可能会导致作业失败。更改引用数据的建议方法是使用作业输入中定义的相同容器和路径模式添加新的 blob，并且使用的日期/时间**大于**序列中最后一个 blob 指定的日期/时间。
+1. 覆盖引用数据 blob 不会导致流分析重新加载 blob，并且在某些情况下，它可能会导致作业失败。更改引用数据的建议方法是使用作业输入中定义的相同容器和路径模式添加新的 blob，并且使用的日期/时间 **大于** 序列中最后一个 blob 指定的日期/时间。
 2.	引用数据 blob 并不按 blob 的“上次修改”时间排序，而是按 blob 名称中使用 {date} 和 {time} 替换项指定的日期和时间排序。
 3.	有时，作业必须按时返回，因此不能变更或删除引用数据 blob。
 
@@ -99,4 +99,4 @@
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

@@ -4,12 +4,12 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
 <tags
    ms.service="expressroute"
-   ms.date="11/12/2015"
+   ms.date="02/04/2016"
    wacn.date=""/>
 
 # 使用 Azure 资源管理器和 PowerShell 创建和修改 ExpressRoute 线路的路由
@@ -18,17 +18,17 @@
 [PowerShell - Classic](/documentation/articles/expressroute-howto-routing-classic)
 [PowerShell - Resource Manager](/documentation/articles/expressroute-howto-routing-arm)
 
-本文将指导你执行相关步骤，以便使用 PowerShell cmdlet 和 Azure 资源管理器部署模型创建和管理 ExpressRoute 线路的路由配置。下面的步骤还将说明如何查看状态，以及如何更新、删除和取消预配 ExpressRoute 线路的对等互连。
+本文将指导你执行相关步骤，以便使用 PowerShell cmdlet 和 Azure 资源管理器部署模型创建和管理 ExpressRoute 线路的路由配置。下面的步骤还将说明如何查看状态，以及如何更新、删除和取消预配 ExpressRoute 线路的对等互连。如果要使用 **经典** 部署模型创建或修改 ExpressRoute 线路的路由，请参阅[使用经典部署模型创建和修改 ExpressRoute 线路的路由](/documentation/articles/expressroute-howto-routing-classic)。
 
-[AZURE.INCLUDE [vpn-gateway-sm-rm](../includes/vpn-gateway-sm-rm-include.md)] 
+[AZURE.INCLUDE [vpn-gateway-sm-rm](../includes/vpn-gateway-sm-rm-include.md)]
 
 ## 配置先决条件
 
 - 你将需要最新版本的 Azure PowerShell 模块（版本 1.0 或更高版本）。 
 - 在开始配置之前，请务必查看[先决条件](/documentation/articles/expressroute-prerequisites)页、[路由要求](/documentation/articles/expressroute-routing)页和[工作流](/documentation/articles/expressroute-workflows)页。
-- 你必须有一个活动的 ExpressRoute 线路。在继续下一步之前，请按说明[创建 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-classic)，并通过连接提供商启用该线路。ExpressRoute 线路必须处于已预配和已启用状态，你才能运行下述 cmdlet。
+- 你必须有一个活动的 ExpressRoute 线路。在继续下一步之前，请按说明[创建 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-arm)，并通过连接提供商启用该线路。ExpressRoute 线路必须处于已预配和已启用状态，你才能运行下述 cmdlet。
 
->[AZURE.IMPORTANT]这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。如果你的服务提供商提供第 3 层托管服务（通常是 IPVPN，如 MPLS），则连接服务提供商将为你设置和管理路由。在此情况下，你无法创建或管理对等互连。
+>[AZURE.IMPORTANT] 这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。如果你的服务提供商提供第 3 层托管服务（通常是 IPVPN，如 MPLS），则连接服务提供商将为你设置和管理路由。在此情况下，你无法创建或管理对等互连。
 
 你可以为 ExpressRoute 线路配置一到三个对等互连（Azure 专用、Azure 公共和 Microsoft）。可以按照所选的任意顺序配置对等互连。但是，你必须确保一次只完成一个对等互连的配置。
 
@@ -46,7 +46,7 @@
 
 		Install-AzureRM
 
-	导入已知语义版本范围内的所有 AzureRM.* 模块
+	导入已知语义版本范围内的所有 AzureRM.\* 模块
 
 		Import-AzureRM
 
@@ -107,7 +107,7 @@
 	- 辅助链路的 /30 子网。它不能是保留给虚拟网络使用的任何地址空间的一部分。
 	- 用于建立此对等互连的有效 VLAN ID。请确保线路中没有其他对等互连使用同一个 VLAN ID。
 	- 对等互连的 AS 编号。可以使用 2 字节和 4 字节 AS 编号。可以将专用 AS 编号用于此对等互连。请务必不要使用 65515。
-	- MD5 哈希（如果选择使用）。**这是可选的**。
+	- MD5 哈希（如果选择使用）。 **这是可选的**。
 	
 	可以运行以下 cmdlet 来为线路配置 Azure 专用对等互连。
 
@@ -121,7 +121,7 @@
 
 		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-	>[AZURE.IMPORTANT]请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
+	>[AZURE.IMPORTANT] 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
 
 ### 获取 Azure 专用对等互连详细信息
 
@@ -145,7 +145,7 @@
 
 可以运行以下 cmdlet 来删除对等互连配置。
 
->[AZURE.WARNING]运行此 cmdlet 之前，必须确保已从 ExpressRoute 线路取消链接所有虚拟网络。
+>[AZURE.WARNING] 运行此 cmdlet 之前，必须确保已从 ExpressRoute 线路取消链接所有虚拟网络。
 
 	Remove-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt
 	Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
@@ -166,7 +166,7 @@
 
 		Install-AzureRM
 
-	导入已知语义版本范围内的所有 AzureRM.* 模块
+	导入已知语义版本范围内的所有 AzureRM.\* 模块
 
 		Import-AzureRM
 
@@ -226,7 +226,7 @@
 	- 辅助链路的 /30 子网。这必须是有效的公共 IPv4 前缀。
 	- 用于建立此对等互连的有效 VLAN ID。请确保线路中没有其他对等互连使用同一个 VLAN ID。
 	- 对等互连的 AS 编号。可以使用 2 字节和 4 字节 AS 编号。必须将公共 AS 编号用于此对等互连。
-	- MD5 哈希（如果选择使用）。**这是可选的**。
+	- MD5 哈希（如果选择使用）。 **这是可选的**。
 	
 	可以运行以下 cmdlet 来为线路配置 Azure 专用对等互连
 
@@ -241,7 +241,7 @@
 		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 
-	>[AZURE.IMPORTANT]请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
+	>[AZURE.IMPORTANT] 请确保将 AS 编号指定为对等互连 ASN 而不是客户 ASN。
 
 ### 获取 Azure 公共对等互连详细信息
 
@@ -283,7 +283,7 @@
 
 		Install-AzureRM
 
-	导入已知语义版本范围内的所有 AzureRM.* 模块
+	导入已知语义版本范围内的所有 AzureRM.\* 模块
 
 		Import-AzureRM
 
@@ -343,13 +343,13 @@
 	- 用于建立此对等互连的有效 VLAN ID。请确保线路中没有其他对等互连使用同一个 VLAN ID。
 	- 对等互连的 AS 编号。可以使用 2 字节和 4 字节 AS 编号。只能使用公共 AS 编号。你必须拥有该 AS 编号。
 	- 播发的前缀：你必须提供要通过 BGP 会话播发的所有前缀列表。只接受公共 IP 地址前缀。如果你打算发送一组前缀，可以发送逗号分隔列表。这些前缀必须已在 RIR/IRR 中为你注册。
-	- 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，你可以指定它们要注册到的 AS 编号。**这是可选的**。
+	- 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，你可以指定它们要注册到的 AS 编号。 **这是可选的**。
 	- 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
-	- MD5 哈希（如果选择使用）。**这是可选的。**
+	- MD5 哈希（如果选择使用）。 **这是可选的。**
 	
 	可以运行以下 cmdlet 来为线路配置 Microsoft 对等互连
 
-		Add-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -Circuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MircosoftConfigAdvertisedPublicPrefixes "123.1.0.0/24" -MircosoftConfigCustomerAsn 23 -MircosoftConfigRoutingRegistryName "ARIN"
+		Add-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -Circuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "123.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
 
 		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
@@ -367,7 +367,7 @@
 
 可以使用以下 cmdlet 来更新配置的任何部分。
 
-		Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -Circuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MircosoftConfigAdvertisedPublicPrefixes "124.1.0.0/24" -MircosoftConfigCustomerAsn 23 -MircosoftConfigRoutingRegistryName "ARIN"
+		Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -Circuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "124.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
 
 		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 		
@@ -382,8 +382,7 @@
 
 ## 后续步骤
 
-下一步，将 VNet 链接到 ExpressRoute 线路。使用 Azure 资源管理器部署模式时，你可以使用[此模板](https://github.com/Azure/azure-quickstart-templates/tree/ecad62c231848ace2fbdc36cbe3dc04a96edd58c/301-expressroute-circuit-vnet-connection)。我们目前正在致力于 PowerShell 步骤。
-
+下一步，[将 VNet 链接到 ExpressRoute 线路](expressroute-howto-circuit-armexpressroute-howto-linkvnet-arm)。
 
 -  有关 ExpressRoute 工作流的详细信息，请参阅 [ExpressRoute 工作流](/documentation/articles/expressroute-workflows)。
 
@@ -391,4 +390,4 @@
 
 -  有关使用虚拟网络的详细信息，请参阅[虚拟网络概述](/documentation/articles/virtual-networks-overview)。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

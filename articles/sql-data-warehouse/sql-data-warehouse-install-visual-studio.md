@@ -9,11 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="10/21/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # 安装适用于 SQL 数据仓库的 Visual Studio 2015 和/或 SSDT
@@ -30,7 +26,7 @@
 若要安装 Visual Studio 2015，请执行以下操作：
 
 1. 从 Visual Studio Team Services [下载 Visual Studio 2015](https://www.visualstudio.com/downloads)。 
-2. 按照 MSDN 上的[安装 Visual Studio](https://msdn.microsoft.com/library/e2h7fzkw.aspx)指南安装，并选择默认配置。
+2. 按照 MSDN 上的[安装 Visual Studio](https://msdn.microsoft.com/zh-cn/library/e2h7fzkw.aspx)指南安装，并选择默认配置。
 
 ## 步骤 2：下载并安装最新的 SQL Server Data Tools (SSDT) 
 
@@ -38,15 +34,15 @@
 
 若要安装最新版本的 SSDT，请执行以下操作：
 
-1. [下载 SQL Server Data Tools Preview](https://msdn.microsoft.com/library/mt204009.aspx)（适用于 Visual Studio 2013 或 2015）。
+1. [下载 SQL Server Data Tools Preview](https://msdn.microsoft.com/zh-cn/library/mt204009.aspx)（适用于 Visual Studio 2013 或 2015）。
 2. 按照下载站点上的说明安装。
 
 ## 后续步骤
 
-安装最新版本的 SSDT 后，便可以[连接](./sql-data-warehouse-get-started-connect.md)到你的数据库。
+安装最新版本的 SSDT 后，便可以[连接](/documentation/articles/sql-data-warehouse-get-started-connect)到你的数据库。
 
 <!--Anchors-->
 
 <!--Image references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

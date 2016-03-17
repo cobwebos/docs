@@ -1,7 +1,7 @@
 <a name="tellmecs">
 ## 告诉我有关云服务的信息
 
-云服务是平台即服务 (PaaS) 的一个例子。与[应用程序服务](/documentation/articles/app-service-web-overview)一样，这种技术旨在支持可缩放、可靠且经济节省的应用程序。同样，与[应用程序服务](/documentation/articles/app-service-web-overview)一样，云服务也托管在 VM 中，不过，在 VM 上对云服务的控制力度更大。你可以在云服务 VM 上安装自己的软件，还可以远程接入这些 VM。
+云服务是平台即服务 (PaaS) 的一个例子。与 [App Service](/documentation/articles/app-service-web-overview) 一样，这种技术旨在支持可缩放、可靠且经济节省的应用程序。正如 App Service，云服务也托管在 VM 中，不过，在 VM 上对云服务的控制力度更大。你可以在云服务 VM 上安装自己的软件，还可以远程接入这些 VM。
 
 ![cs\_diagram](./media/cloud-services-choose-me-content/diagram.png)
 
@@ -14,7 +14,7 @@
 * **Web 角色**运行随 Web 应用程序一起自动部署到 IIS 中的 Windows Server。
 * **辅助角色**运行不带 IIS 的 Windows Server。
 
-例如，一个简单的应用程序可能只使用一个 Web 角色，而一个稍复杂的应用程序可能使用一个 Web 角色来处理来自用户的传入请求，然后将那些请求创建的工作传递给辅助角色进行处理。（此通信可能使用 [Service Bus](/documentation/articles/fundamentals-service-bus-hybrid-solutions) 或 [Azure 队列](/documentation/articles/storage-introduction)。）
+例如，一个简单的应用程序可能只使用一个 Web 角色，而一个稍复杂的应用程序可能使用一个 Web 角色来处理来自用户的传入请求，然后将那些请求创建的工作传递给辅助角色进行处理。（此通信可能使用 [Service Bus](/documentation/articles/service-bus-fundamentals-hybrid-solutions) 或 [Azure 队列](/documentation/articles/storage-introduction)。）
 
 如上图所示，一个应用程序中的所有 VM 都在同一云服务中运行。因此，用户通过单个公用 IP 地址访问应用程序，而请求会自动在应用程序的 VM 上实现负载平衡。该平台将采用一种能够避免单点硬件故障的方式在云服务应用程序中[缩放和部署](/documentation/articles/cloud-services-how-to-scale) VM。
 
@@ -28,6 +28,6 @@
 ## 监视
 云服务还提供监视功能。和 Azure 虚拟机一样，它将检测到发生故障的物理服务器，并在新的计算机上重新启动原先在该服务器上运行的 VM。云服务不仅检测硬件故障，还检测发生故障的 VM 和应用程序。与虚拟机不同，它在每个 Web 角色和辅助角色中都存在有代理，因此它能够在发生故障时启动新的 VM 和应用程序实例。
 
-云服务的 PaaS 特性还具有其他含义。其中一个最重要的含义是，应编写基于此技术构建的应用程序以在任何 Web 角色或辅助角色实例出现故障时正确运行。要实现这一目标，云服务应用程序不应该在它自己的 VM 的文件系统中维持状态。与使用 Azure 虚拟机创建的 VM 不同，对云服务 VM 所做的写入不是持久的；这与虚拟机数据磁盘完全不同。相反，云服务应用程序应将所有状态明确写入 SQL Database、blob、表或其他某种外部存储中。以这种方式构建应用程序会使它们更易于扩展、抵抗故障的能力更强，这是云服务的两个重要目标。
+云服务的 PaaS 特性还具有其他含义。其中一个最重要的含义是，应编写基于此技术构建的应用程序以在任何 Web 角色或辅助角色实例出现故障时正确运行。要实现这一目标，云服务应用程序不应该在它自己的 VM 的文件系统中维持状态。与使用 Azure 虚拟机创建的 VM 不同，对云服务 VM 所做的写入不是持久的；这与虚拟机数据磁盘完全不同。相反，云服务应用程序应将所有状态明确写入 SQL 数据库、blob、表或其他某种外部存储中。以这种方式构建应用程序会使它们更易于扩展、抵抗故障的能力更强，这是云服务的两个重要目标。
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0307_2016-->

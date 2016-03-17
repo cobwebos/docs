@@ -4,12 +4,12 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"/>
 <tags
    ms.service="expressroute"
-   ms.date="12/08/2015"
+   ms.date="02/04/2016"
    wacn.date=""/>
 
 # 使用 PowerShell 创建和修改 ExpressRoute 线路
@@ -18,7 +18,7 @@
 [PowerShell - 经典](/documentation/articles/expressroute-howto-circuit-classic)
 [PowerShell - 资源管理器](/documentation/articles/expressroute-howto-circuit-arm)
 
-本文将指导你执行相关步骤，以便使用 PowerShell cmdlet 和经典部署模型创建 ExpressRoute 线路。下面的步骤还将向你显示如何查看状态，以及如何更新、删除和预配 ExpressRoute 线路。
+本文将指导你执行相关步骤，以便使用 PowerShell cmdlet 和 **经典** 部署模型创建 ExpressRoute 线路。下面的步骤还将向你显示如何查看状态，以及如何更新、删除和预配 ExpressRoute 线路。如果要使用 **资源管理器** 部署模型创建和修改 ExpressRoute 线路，请参阅[使用资源管理器部署模型创建和修改 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-arm)。
 
 [AZURE.INCLUDE [vpn-gateway-sm-rm](../includes/vpn-gateway-sm-rm-include.md)]
 
@@ -39,7 +39,7 @@
 
 2. **获取支持的提供商、位置和带宽的列表。**
 
-	在创建 ExpressRoute 线路之前，你需要连接提供商、支持的位置和带宽选项的列表。PowerShell cmdlet *Get-AzureDedicatedCircuitServiceProvider* 会返回此信息，你将在后续步骤中使用此信息。
+	在创建 ExpressRoute 线路之前，你需要连接提供商、支持的位置和带宽选项的列表。PowerShell cmdlet *Get-AzureDedicatedCircuitServiceProvider* 会返回此信息，你将在后续步骤中使用此信息。当你运行该 cmdlet 时，结果将类似于下面的示例。
 
 		PS C:\> Get-AzureDedicatedCircuitServiceProvider
 
@@ -193,7 +193,7 @@
 
 8. **将 VNet 链接到 ExpressRoute 线路。**
 
-	接下来，将 VNet 链接到 ExpressRoute 线路。如需分步说明，请参阅[将 ExpressRoute 线路链接到 VNet](/documentation/articles/expressroute-howto-linkvnet-classic)。如需为 ExpressRoute 创建虚拟网络，请参阅[为 ExpressRoute 创建虚拟网络](/documentation/articles/expressroute-howto-createvnet-classic)以获取相关说明。
+	接下来，将 VNet 链接到 ExpressRoute 线路。如需分步说明，请参阅[将 ExpressRoute 线路链接到 VNet](/documentation/articles/expressroute-howto-linkvnet-classic)。如需使用经典部署模型为 ExpressRoute 创建虚拟网络，请参阅 [为 ExpressRoute 创建 VNet](/documentation/articles/expressroute-howto-vnet-portal-classic) 以获取相关说明。
 
 ##  获取 ExpressRoute 线路的状态
 
@@ -316,12 +316,12 @@
 
 请注意，必须取消所有虚拟网络与 ExpressRoute 的链接，此操作才能成功。如果此操作失败，请查看你是否有虚拟网络链接到了此线路。
 
-如果启用了 ExpressRoute 线路服务提供商预配状态，则状态将从启用转为*禁用*。你必须通过服务提供商在他们那一侧取消对线路的预配。在服务提供商取消对线路的预配并向我们发送通知之前，我们会继续保留资源并向你收费。
+如果启用了 ExpressRoute 线路服务提供商预配状态，则状态将从启用转为 *禁用*。你必须通过服务提供商在他们那一侧取消对线路的预配。在服务提供商取消对线路的预配并向我们发送通知之前，我们会继续保留资源并向你收费。
 
-如果在你运行上述 cmdlet 之前，服务提供商已取消对线路的预配（服务提供商预配状态已设置为*未预配*），我们会取消对线路的预配，并停止向你收费。
+如果在你运行上述 cmdlet 之前，服务提供商已取消对线路的预配（服务提供商预配状态已设置为 *未预配*），我们会取消对线路的预配，并停止向你收费。
 
 ## 后续步骤
 
 - [配置路由](/documentation/articles/expressroute-howto-routing-classic)
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

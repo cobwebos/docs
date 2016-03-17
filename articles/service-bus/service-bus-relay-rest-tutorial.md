@@ -23,7 +23,7 @@
 
 ### 创建服务命名空间并获取 SAS 密钥
 
-1. 若要在 [Azure 经典门户][] 中创建服务命名空间，请遵循[如何：创建或修改服务总线服务命名空间中的步骤](https://msdn.microsoft.com/zh-cn/library/hh690931.aspx)。
+1. 若要创建服务命名空间，请访问 [Azure 经典门户][]。单击左侧的“服务总线”，然后单击“创建”。为你的命名空间键入一个名称，然后单击复选标记。
 
 2. 在门户的主窗口中，单击在上一步中创建的服务命名空间的名称。
 
@@ -579,4 +579,4 @@ namespace Microsoft.ServiceBus.Samples
 - [如何使用服务总线中继服务](/documentation/articles/service-bus-dotnet-how-to-use-relay)
 [Azure 经典门户]: http://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

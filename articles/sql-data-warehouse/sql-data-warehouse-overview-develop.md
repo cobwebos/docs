@@ -1,5 +1,5 @@
 <properties
-   pageTitle="SQL 数据仓库开发的设计决策和编程技术 | Microsoft Azure"
+   pageTitle="SQL 数据仓库开发的设计决策和编码技术 | Microsoft Azure"
    description="SQL 数据仓库的开发概念、设计决策、建议和编程技术。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -9,8 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-
-   ms.date="09/22/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # SQL 数据仓库的设计决策和编程技术
@@ -50,30 +49,30 @@
 <!--Image references-->
 
 <!--Article references-->
-[并发]: sql-data-warehouse-develop-concurrency.md
-[连接]: sql-data-warehouse-develop-connections.md
-[CTAS]: sql-data-warehouse-develop-ctas.md
-[动态 SQL]: sql-data-warehouse-develop-dynamic-sql.md
-[Group By 选项]: sql-data-warehouse-develop-group-by-options.md
-[哈希分布键]: sql-data-warehouse-develop-hash-distribution-key.md
-[标签]: sql-data-warehouse-develop-label.md
-[循环]: sql-data-warehouse-develop-loops.md
-[透视数据]: sql-data-warehouse-develop-pivot-unpivot.md
-[重命名对象]: sql-data-warehouse-develop-rename.md
-[统计信息]: sql-data-warehouse-develop-statistics.md
-[存储过程]: sql-data-warehouse-develop-stored-procedures.md
-[表设计]: sql-data-warehouse-develop-table-design.md
-[表分区]: sql-data-warehouse-develop-table-partitions.md
-[临时表]: sql-data-warehouse-develop-temporary-tables.md
-[事务]: sql-data-warehouse-develop-transactions.md
-[用户定义的架构]: sql-data-warehouse-develop-user-defined-schemas.md
-[变量赋值]: sql-data-warehouse-develop-variable-assignment.md
-[视图]: sql-data-warehouse-develop-views.md
+[并发]: /documentation/articles/sql-data-warehouse-develop-concurrency
+[连接]: /documentation/articles/sql-data-warehouse-develop-connections
+[CTAS]: /documentation/articles/sql-data-warehouse-develop-ctas
+[动态 SQL]: /documentation/articles/sql-data-warehouse-develop-dynamic-sql
+[Group By 选项]: /documentation/articles/sql-data-warehouse-develop-group-by-options
+[哈希分布键]: /documentation/articles/sql-data-warehouse-develop-hash-distribution-key
+[标签]: /documentation/articles/sql-data-warehouse-develop-label
+[循环]: /documentation/articles/sql-data-warehouse-develop-loops
+[透视数据]: /documentation/articles/sql-data-warehouse-develop-pivot-unpivot
+[重命名对象]: /documentation/articles/sql-data-warehouse-develop-rename
+[统计信息]: /documentation/articles/sql-data-warehouse-develop-statistics
+[存储过程]: /documentation/articles/sql-data-warehouse-develop-stored-procedures
+[表设计]: /documentation/articles/sql-data-warehouse-develop-table-design
+[表分区]: /documentation/articles/sql-data-warehouse-develop-table-partitions
+[临时表]: /documentation/articles/sql-data-warehouse-develop-temporary-tables
+[事务]: /documentation/articles/sql-data-warehouse-develop-transactions
+[用户定义的架构]: /documentation/articles/sql-data-warehouse-develop-user-defined-schemas
+[变量赋值]: /documentation/articles/sql-data-warehouse-develop-variable-assignment
+[视图]: /documentation/articles/sql-data-warehouse-develop-views
 
-[Transact-SQL 参考]: sql-data-warehouse-overview-reference.md
+[Transact-SQL 参考]: /documentation/articles/sql-data-warehouse-overview-reference
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

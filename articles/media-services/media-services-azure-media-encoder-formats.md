@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/15/2015"
+	ms.date="02/03/2016"  
 	wacn.date=""/>
 
 #Azure Media Encoder 格式和编解码器
@@ -23,7 +23,7 @@
 ---|---
 3GPP、3GPP2（.3gp、.3g2、.3gp2） |是
 高级系统格式 (ASF) (.asf) |是
-高级视频编码高清晰 (AVCHD) [ MPEG-2 传输流 ] (.mts, .m2ts)	|是
+高级视频编码高清晰 (AVCHD) [MPEG-2 传输流] (.mts, .m2ts)|是
 音频视频交错 (AVI) (.avi) |是
 数码摄录机 MPEG-2 (MOD) (.mod) |是
 DVD 传输流 (TS) 文件 (.ts) |是
@@ -41,8 +41,8 @@ MPEG-4 有声读物 (.m4b)|是
 WAVE 文件 (.wav)|是
 Windows Media 音频 (.wma)|是
 Adobe® Flash® F4V |否		
-MXF/SMPTE 377M |受限制 
-GXF |否		 
+MXF/SMPTE 377M |受限制
+GXF |否		
 [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/zh-cn/library/windows/desktop/dd692984)|否
 Matroska/WebM |否
 
@@ -63,7 +63,7 @@ MPEG-1（包含 MPEG-PS） |是
 Windows Media 视频/VC-1 |是
 Canopus HQ/HQX |是
 MPEG-4 v2（Simple Visual Profile 和 Advanced Simple Profile） |是
-[Theora](https://en.wikipedia.org/wiki/Theora) |否
+[Theora](https://zh.wikipedia.org/wiki/Theora) |否
 VC-1（Simple、Main 和 Advanced Profile） |是
 Windows Media 视频（Simple、Main 和 Advanced Profile） |是
 DV（DVC、DVHD、DVSD、DVSL） |是
@@ -83,8 +83,8 @@ MPEG Layer 2|是|是|是
 MP3 (MPEG-1 Audio Layer 3)|是
 Windows Media Audio 9（Windows Media Audio Standard、Windows Media Audio Professional 和 Windows Media Audio Lossless） |是
 WAV/PCM|是
-[FLAC](https://en.wikipedia.org/wiki/FLAC)|否
-[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |否
+[FLAC](https://zh.wikipedia.org/wiki/FLAC)|否
+[Opus](https://zh.wikipedia.org/wiki/Opus_codec) |否
 [Vorbis](https://en.wikipedia.org/wiki/Vorbis)|否
 
 
@@ -114,7 +114,7 @@ MP4 (* .mp4)|H.264（High、Main 和 Baseline Profile）|AAC-LC、HE-AAC v1、HE
 
 ##<a id="uncompressed"></a>支持的未压缩视频格式 
 
-Azure Media Services 为导入未压缩的视频数据提供支持。
+Azure 媒体服务为导入未压缩的视频数据提供支持。
 
 下面是支持的未压缩格式的部分列表。
 
@@ -130,14 +130,4 @@ YUV 211 格式数据|打包的 YUV 格式。每隔一个像素取一个 Y 样本
 Cirrus Logic Jr YUV 411 格式|每个 Y、U 和 V 样本小于 8 位的 Cirrus Logic Jr YUV 411 格式。每隔一像素取一个 Y 样本，每一行上每隔三个水平像素取一个 U 和 V 样本；对每个垂直行采样。
 Indeo 生成的 YVU9 格式|Indeo 生成的 YVU9 格式包含有关与上一帧的差别的附加信息。每个像素 9.5 位，但报告 9 位。
 
-<!-- deleted by customization
-
-##Media Services learning paths
-
-You can view AMS learning paths here:
-
-- [AMS Live Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS on Demand Streaming Workflow](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
--->
-
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0307_2016-->

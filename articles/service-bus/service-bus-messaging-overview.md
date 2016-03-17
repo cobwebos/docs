@@ -52,4 +52,4 @@ Azure 服务总线消息传送是一项可靠的信息传送服务。此服务�
 
 - [如何使用服务总线主题](/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions)
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0307_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="service-bus"
-	ms.date="10/07/2015"
+	ms.date="02/08/2016"
 	wacn.date=""/>
 
 # 使用 PowerShell 管理服务总线
@@ -22,9 +22,9 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于在 Azure 中�
 
 在开始阅读本文前，你必须具有：
 
-- Azure 订阅。Azure 是基于订阅的平台。有关获取订阅的详细信息，请参阅[购买选项]、[成员优惠]或[免费试用]。
+- Azure 订阅。Azure 是基于订阅的平台。有关获取订阅的详细信息，请参阅[购买选项][]、[成员优惠][]或[免费试用][]。
 
-- 配备 Azure PowerShell 的计算机。有关说明，请参阅[安装和配置 Azure PowerShell]。
+- 配备 Azure PowerShell 的计算机。有关说明，请参阅[安装和配置 Azure PowerShell][]。
 
 - 大致了解 PowerShell 脚本、NuGet 包和 .NET Framework。
 
@@ -58,7 +58,6 @@ catch [System.Exception]
 {
     Write-Error("Could not add the Microsoft.ServiceBus.dll assembly to the script. Make sure you build the solution before running the provisioning script.")
 }
-
 ```
 
 ## 设置 Service Bus 命名空间
@@ -169,7 +168,7 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 [购买选项]: http://azure.microsoft.com/zh-cn/pricing/purchase-options/
 [成员优惠]: http://azure.microsoft.com/zh-cn/pricing/member-offers/
 [免费试用]: /pricing/1rmb-trial/
-[安装和配置 Azure PowerShell]: /documentation/articles/install-configure-powershell
+[安装和配置 Azure PowerShell]: /documentation/articles/powershell-install-configure
 [服务总线 NuGet 包]: http://www.nuget.org/packages/WindowsAzure.ServiceBus/
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/zh-cn/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/zh-cn/library/azure/dn495165.aspx
@@ -177,4 +176,4 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 [适用于服务总线的 .NET API]: https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.aspx
 [NamespaceManager]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.namespacemanager.aspx
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0307_2016-->

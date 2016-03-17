@@ -1,19 +1,19 @@
 <properties 
-	pageTitle="什么是 Azure Multi-Factor Authentication？" 
-	description="Azure Multi-Factor Authentication 是要求使用多种方式（而不仅仅是用户名和密码）对你的身份进行验证的一种方法。它为用户登录和事务提供了额外的安全层。" 
-	keywords="MFA 简介, mfa 概述"
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="什么是 Azure Multi-Factor Authentication？| Microsoft Azure"
+	description="本主题说明什么是 Multifactor Authentication (MFA)、为何使用 MFA，以及有关 Multifactor Authentication 客户端和不同方法和可用版本的详细信息。Azure Multi-Factor Authentication 是要求使用多种方式（而不仅仅是用户名和密码）对你的身份进行验证的一种方法。它为用户登录和事务提供了额外的安全层。"
+	keywords="MFA 简介, mfa 概述, 什么是 mfa"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtland"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="01/11/2016" 
+	ms.date="01/25/2016"
 	wacn.date="" />
 
-# 什么是 Azure 多因素身份验证？
+# 什么是 Azure Multi-Factor Authentication？
 Multi-Factor Authentication (MFA) 是需要使用多个验证方法的身份验证方法，为用户登录和事务额外提供一层重要的安全保障。它需要以下验证方法中的两种或更多种来进行工作：
 
 - 你知道的某样东西（通常为密码）
@@ -33,7 +33,7 @@ Azure Multi-Factor Authentication 可帮助保护对数据和应用程序的访�
 
 <center>[AZURE.VIDEO multi-factor-authentication-overview]</center>
 
-## 为何使用 Azure Multi-Factor Authentication？
+##为何使用 Azure Multi-Factor Authentication？
 
 与以往相比，联网的用户越来越长。通过智能手机、平板电脑、笔记本电脑和台式个人电脑，人们可以使用各种不同的选项随时连接网络和保持联系。人们可以从任何位置访问他们的帐户与应用程序，这意味着，他们可以提高工作效率并为客户提供更好的服务。
 
@@ -87,9 +87,9 @@ Azure Multi-Factor Authentication 有三个不同的版本。下表较详细地�
 
 版本 | 说明 
 ------------- | ------------- |
-适用于 Office 365 的多因素身份验证 | 此版本专门与 Office 365 应用程序配合使用，可以从 Office 365 门户进行管理。因此，管理员现在可以借助 Multi-Factor Authentication 来保护其 Office 365 资源。Office 365 订阅随附了此版本。
-面向 Azure 管理员的多因素身份验证 | 适用于 Office 365 的多因素身份验证功能的相同子集将免费提供给所有 Azure 管理员使用。Azure 订阅的每个管理员帐户现在可以通过启用这项核心 Multi-Factor Authentication 功能来获得更多的保护。因此，如果某个管理员想要访问 Azure 门户以创建 VM 和网站以及管理存储、移动服务或任何其他 Azure 服务，则可在其管理员帐户中添加多因素身份验证。
-Azure 多因素身份验证 | Multi-Factor Authentication 提供最丰富的功能集。它通过 Azure 管理门户、高级报告及支持一系列本地和云应用程序来提供其他配置选项。Azure Multi-Factor Authentication 随附在 Azure Active Directory Premium 中。
+适用于 Office 365 的 Multi-Factor Authentication | 此版本专门与 Office 365 应用程序配合使用，可以从 Office 365 门户进行管理。因此，管理员现在可以借助 Multi-Factor Authentication 来保护其 Office 365 资源。Office 365 订阅随附了此版本。
+面向 Azure 管理员的 Multi-Factor Authentication | 适用于 Office 365 的 Multi-Factor Authentication 功能的相同子集将免费提供给所有 Azure 管理员使用。Azure 订阅的每个管理员帐户现在可以通过启用这项核心 Multi-Factor Authentication 功能来获得更多的保护。因此，如果某个管理员想要访问 Azure 门户以创建 VM 和网站以及管理存储、移动服务或任何其他 Azure 服务，则可在其管理员帐户中添加多因素身份验证。
+Azure Multi-Factor Authentication | Multi-Factor Authentication 提供最丰富的功能集。它通过 Azure 管理门户、高级报告及支持一系列本地和云应用程序来提供其他配置选项。Azure Multi-Factor Authentication 随附在 Azure Active Directory Premium 中。
 
 ## 版本功能比较
 下表提供了 Azure Multi-Factor Authentication 各版本中可用的功能列表。
@@ -129,7 +129,7 @@ MFA SDK| | | *
 - **按用户**。通常适用于想要为固定数目的、需要定期进行身份验证的员工启用 Multi-Factor Authentication 的企业。
 - **按身份验证**。通常适用于想要为大量的、不定期需要身份验证的外部用户启用 Multi-Factor Authentication 的企业。
 
-有关价格详细信息，请参阅 [Azure MFA 定价](http://azure.microsoft.com/pricing/details/multi-factor-authentication/)。
+有关价格详细信息，请参阅 [Azure MFA 定价](/pricing/1rmb-trial/)。
 
 选择最适合你的组织的按用户或按使用量模式。接下来，若要开始使用，请参阅[入门](multi-factor-authentication-get-started.md)
 
@@ -197,6 +197,6 @@ MFA 报告 | ● | ●
 
 在确定是要使用云 Multi-Factor Authentication 还是本地 MFA 服务器后，接下来可以开始设置并使用 Azure Multi-Factor Authentication。**选择代表你的方案的图标！**
 
-<center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
+<center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](/documentation/articles/multi-factor-authentication-get-started-cloud) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0307_2016-->

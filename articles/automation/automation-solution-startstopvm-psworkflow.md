@@ -6,10 +6,10 @@
 	authors="bwren"
 	manager="stevenka"
 	editor="tysonn" />
-<tags
+<tags 
 	ms.service="automation"
-	ms.date="09/25/2015"
-	wacn.date=""/>
+	ms.date="01/27/2016"
+	wacn.date="" />
 
 # Azure 自动化解决方案 - 启动和停止虚拟机
 
@@ -31,7 +31,6 @@
 | Stop-AzureVMs | [停止 Azure 经典 VM](https://gallery.technet.microsoft.com/Stop-Azure-Classic-VMs-7a4ae43e) | PowerShell 工作流 | 停止自动化帐户中的所有虚拟机，或者停止所有具有特定服务名称的虚拟机。 |
 
 
-[AZURE.INCLUDE [automation-azurechinacloud-environment-parameter](../includes/automation-azurechinacloud-environment-parameter.md)]
 ## 安装解决方案
 
 ### 1\.安装 Runbook
@@ -130,8 +129,7 @@ Runbook 需要以下资产，你必须创建这些资产并在其中填充适当
 	$SubId = Get-AutomationVariable -Name $AzureSubscriptionIdAssetName
     $null = Select-AzureSubscription -SubscriptionId $SubId -ErrorAction Stop
 
-后续的行设置将要用于剩余 Runbook 的[凭据](/documentation/articles/automation-configuring#configuring-authentication-to-azure-resources)和 Azure 订阅。
-首先，我们使用 **Get-AutomationPSCredential** 来获取用于存储凭据的资产，这些凭据具有相应的访问权限，可用于启动和停止 Azure 订阅中的虚拟机。**Add-AzureAccount** 然后就会使用此资产来设置凭据。该输出已分配给一个虚拟变量，因此不会包括在 Runbook 输出中。
+后续的行设置将要用于剩余 Runbook 的[凭据](/documentation/articles/automation-configuring/#configuring-authentication-to-azure-resources)和 Azure 订阅。首先，我们使用 **Get-AutomationPSCredential** 来获取用于存储凭据的资产，这些凭据具有相应的访问权限，可用于启动和停止 Azure 订阅中的虚拟机。**Add-AzureAccount** 然后就会使用此资产来设置凭据。该输出已分配给一个虚拟变量，因此不会包括在 Runbook 输出中。
 
 然后会使用 **Get-AutomationVariable** 来检索包含订阅 ID 的变量资产，并使用 **Select-AzureSubscription** 来设置订阅。
 
@@ -186,4 +184,4 @@ Runbook 需要以下资产，你必须创建这些资产并在其中填充适当
 - [Azure 自动化中的子 Runbook](/documentation/articles/automation-child-runbooks) 
 - [Azure 自动化中的 Runbook 输出和消息](/documentation/articles/automation-runbook-output-and-messages)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0307_2016-->

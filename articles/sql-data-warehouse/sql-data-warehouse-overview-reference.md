@@ -9,8 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-
-   ms.date="09/22/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # SQL 数据仓库参考主题
@@ -36,4 +35,4 @@
 
 <!--MSDN references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0307_2016-->

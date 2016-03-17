@@ -1,19 +1,19 @@
 <properties 
 	pageTitle="如何缩放媒体服务" 
-	description="了解如何通过指定要为帐户设置的“按需流式处理保留单位”和“编码保留单位”数，缩放 Media Services 。" 
+	description="了解如何通过指定要为帐户设置的“按需流式处理保留单位”和“编码保留单位”数，缩放媒体服务。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015"   
+<tags
+	ms.service="media-services"
+ 	ms.date="02/03/2016"  
 	wacn.date=""/>
 
 
-#如何缩放 Media Services  
+#如何缩放媒体服务  
 
 ##概述
 
@@ -39,8 +39,4 @@
 
 有关详细信息，请参阅[跨多个存储帐户管理媒体服务资产](https://msdn.microsoft.com/zh-cn/library/azure/dn271889.aspx)和[使用 Azure 存储空间](https://msdn.microsoft.com/zh-cn/library/azure/dn767951.aspx)。
 
-
-
- 
-
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0307_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric 应用程序部署"
+   pageTitle="Service Fabric 应用程序部署 | Microsoft Azure"
    description="如何在 Service Fabric 中部署和删除应用程序"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,24 +9,24 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="06/03/2015"
+   ms.date="12/10/2015"
    wacn.date=""/>
 
 # 部署应用程序
 
-[打包应用程序类型后][10]，就可以部署到 Service Fabric 群集中。部署涉及以下三个步骤：
+[打包应用程序类型后][10]，就可以部署到 Azure Service Fabric 群集中。部署涉及以下三个步骤：
 
 1. 上载应用程序包
 2. 注册应用程序类型
 3. 创建应用程序实例
 
->[AZURE.NOTE]如果使用 Visual Studio 来部署和调试本地开发群集上的应用程序，则将通过调用在应用程序项目的脚本文件夹中找到的 PowerShell 脚本自动处理如下所述的全部步骤。本文提供有关这些脚本正在执行什么操作的背景，以便你可以在 Visual Studio 外部执行相同的操作。
+>[AZURE.NOTE] 如果使用 Visual Studio 来部署和调试本地开发群集上的应用程序，则将通过在应用程序项目的 Scripts 文件夹中找到的 PowerShell 脚本自动处理如下所述的全部步骤。本文提供有关这些脚本正在执行什么操作的背景，以便你可以在 Visual Studio 外部执行相同的操作。
 
 ## 上载应用程序包
 
-上载应用程序包，将其放在内部 Service Fabric 组件可以访问并且可以通过 PowerShell 执行的位置。在本文中，运行任何 PowerShell 命令之前，始终通过使用 **Connect-ServiceFabricCluster** 首先连接到 Service Fabric 群集而开始。
+上载应用程序包会将其放在一个可由内部 Service Fabric 组件访问的位置。你可以使用 PowerShell 执行上载。在运行本文中的任何 PowerShell 命令之前，请始终先使用 **Connect-ServiceFabricCluster** 连接到 Service Fabric 群集。
 
-假设你有一个名为 *MyApplicationType* 的文件夹，它包含必要的应用程序清单、服务清单和代码/配置/数据包，则使用 **Copy-ServiceFabricApplicationPackage** 命令将上载此包。例如：
+假设你有一个名为 *MyApplicationType* 的文件夹，其中包含必要的应用程序清单、服务清单以及代码/配置/数据包。**Copy-ServiceFabricApplicationPackage** 命令会上载包。例如：
 
 ~~~
 PS D:\temp> dir
@@ -78,13 +78,13 @@ DefaultParameters      : {}
 PS D:\temp>
 ~~~
 
-**Register-ServiceFabricApplicationType** 命令将仅在系统成功复制应用程序包后返回。此操作花费的时间取决于应用程序包的内容。**-TimeoutSec** 参数可用于根据需要提供更长的超时（默认超时为 60 秒）。
+**Register-ServiceFabricApplicationType** 命令将仅在系统成功复制应用程序包后返回。此操作花费的时间取决于应用程序包的内容。如有需要，**-TimeoutSec** 参数可用来提供较长的超时时间。（默认超时值为 60 秒。）
 
 **Get-ServiceFabricApplicationType** 命令将列出已成功注册的所有应用程序类型版本。
 
 ## 创建应用程序
 
-可以使用已使用 **New-ServiceFabricApplication** 命令成功注册的任何应用程序类型版本实例化应用程序。每个应用程序的名称必须以 *fabric:* 方案开头，并且对每个应用程序实例是唯一的。如果目标应用程序类型的应用程序清单中定义有任何默认服务，则此时将还创建那些服务。
+可以使用已通过 **New-ServiceFabricApplication** 命令成功注册的任何应用程序类型版本来实例化应用程序。每个应用程序的名称必须以 *fabric:* 方案开头，并且对每个应用程序实例是唯一的。如果目标应用程序类型的应用程序清单中定义有任何默认服务，则此时将还创建那些服务。
 
 ~~~
 PS D:\temp> New-ServiceFabricApplication fabric:/MyApp MyApplicationType AppManifestVersion1
@@ -124,7 +124,7 @@ PS D:\temp>
 
 ## 删除应用程序
 
-当不再需要某个应用程序实例时，可以使用 **Remove-ServiceFabricApplicatio** 命令将其永久删除。这也将自动删除属于该应用程序的所有服务，永久删除所有服务状态。此操作无法撤消，并且无法恢复应用程序状态。
+当不再需要某个应用程序实例时，可以使用 **Remove-ServiceFabricApplication** 命令将其永久删除。此命令也将自动删除属于该应用程序的所有服务，永久删除所有服务状态。此操作无法撤消，并且无法恢复应用程序状态。
 
 ~~~
 PS D:\temp> Remove-ServiceFabricApplication fabric:/MyApp
@@ -138,7 +138,7 @@ PS D:\temp> Get-ServiceFabricApplication
 PS D:\temp>
 ~~~
 
-当不再需要应用程序类型的某个特定版本时，应使用 **Unregister-ServiceFabricApplicationType** 命令将其注销。注销未使用的类型将在映像存储区释放该类型的应用程序包内容使用的存储空间。只要没有针对其实例化的应用程序或引用它的挂起应用程序升级，就可以注销应用程序类型。
+当不再需要应用程序类型的某个特定版本时，应使用 **Unregister-ServiceFabricApplicationType** 命令将其注销。注销未使用的类型将在映像存储中释放该类型的应用程序包内容使用的存储空间。只要没有针对其实例化的应用程序或引用它的挂起应用程序升级，就可以注销应用程序类型。
 
 ~~~
 PS D:\temp> Get-ServiceFabricApplicationType
@@ -177,12 +177,11 @@ PS D:\temp>
 TODO [Upgrade applications][11]
 -->
 
-
 ## 故障排除
 
 ### Copy-ServiceFabricApplicationPackage 请求 ImageStoreConnectionString
 
-Service Fabric SDK 环境应该已经设置了正确的默认设置。但如果需要，所有命令的 ImageStoreConnectionString 都应与 Service Fabric 群集正在使用的值相匹配，可以在使用 **Get-ServiceFabricClusterManifest** 命令检索的群集清单中找到该群集：
+Service Fabric SDK 环境应该已经设置了正确的默认设置。若有需要，所有命令的 ImageStoreConnectionString 都应匹配 Service Fabric 群集正在使用的值。你可以在通过 **Get-ServiceFabricClusterManifest** 命令检索到的群集清单中找到此值：
 
 ~~~
 PS D:\temp> Copy-ServiceFabricApplicationPackage .\MyApplicationType
@@ -214,7 +213,7 @@ PS D:\temp>
 
 [Service Fabric 运行状况简介](/documentation/articles/service-fabric-health-introduction)
 
-[对 Service Fabric 进行诊断和故障排除](/documentation/articles/service-fabric-diagnose-monitor-your-service-index)
+[对 Service Fabric 进行诊断和故障排除](/documentation/articles/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally)
 
 [在 Service Fabric 中对应用程序建模](/documentation/articles/service-fabric-application-model)
 
@@ -223,4 +222,4 @@ PS D:\temp>
 [11]: /documentation/articles/service-fabric-application-upgrade
  
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0307_2016-->

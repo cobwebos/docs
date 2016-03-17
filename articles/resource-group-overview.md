@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="01/15/2016"
+   ms.date="02/02/2016"
    wacn.date=""/>
 
 # Azure 资源管理器概述
@@ -130,4 +130,4 @@ Azure 资源管理器支持跨域资源共享 (CORS)。使用 CORS 时，你可�
 - 若要了解可以在模板中使用的函数，请参阅[模板函数](./resource-group-template-functions.md)
 - 有关如何设计你的模板的指南，请参阅[设计 Azure 资源管理器模板的最佳实践](/documentation/articles/best-practices-resource-manager-design-templates)
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0307_2016-->

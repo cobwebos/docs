@@ -4,12 +4,12 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="TwoUnder"
-   manager=""
+   manager="barbkess"
    editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="12/11/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # 故障排除
@@ -86,4 +86,4 @@ WHERE
 
 <!--Other web references-->
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0307_2016-->
