@@ -97,4 +97,4 @@
 
 [Management Portal]: https://manage.windowsazure.cn/
 
-<!----HONumber=Mooncake_0118_2016-->
+<!------HONumber=Mooncake_0118_2016-->
