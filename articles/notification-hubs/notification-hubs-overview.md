@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="12/10/2015"
+	ms.date="02/11/2016"
 	wacn.date=""/>
 
 
@@ -52,7 +52,7 @@ Azure 通知中心提供易用的基础结构，使你能够从任何后端（�
 
 ##推送通知的工作原理
 
-推送通知通过称为 _平台通知系统_ (PNS) 的特定于平台的基础结构进行传送。PNS 提供的功能有限（即，不支持广播和个性化设置），并且没有常见界面。例如，若要将通知发送给 Windows 应用商店应用程序，开发人员必须与 WNS（Windows 通知服务）联系，若要将通知发送给 iOS 设备，该开发人员必须与 APNS（Apple 推送通知服务）联系并第二次发送该消息。Azure 通知中心提供通用接口以及其他功能，以帮助支持跨平台推送通知。
+推送通知通过称为_平台通知系统_ (PNS) 的特定于平台的基础结构进行传送。PNS 提供的功能有限（即，不支持广播和个性化设置），并且没有常见界面。例如，若要将通知发送给 Windows 应用商店应用程序，开发人员必须与 WNS（Windows 通知服务）联系，若要将通知发送给 iOS 设备，该开发人员必须与 APNS（Apple 推送通知服务）联系并第二次发送该消息。Azure 通知中心提供通用接口以及其他功能，以帮助支持跨平台推送通知。
 
 但概括地说，所有平台通知系统都遵循相同的模式：
 
@@ -109,7 +109,7 @@ Azure 通知中心提供易用的基础结构，使你能够从任何后端（�
 
 	- *分段*：推送到由标记表达式定义的复杂段（例如，纽约市属于美国北部人群的设备）。
 
-	每台设备在将其句柄发送到通知中心时，都可以指定一个或多个_标记_。有关[标记](http://msdn.microsoft.com/library/azure/dn530749.aspx)的详细信息。无需预设置或处理标记。标记提供了一种用于将通知发送给用户或兴趣组的简单方法。由于标记可以包含任何特定于应用程序的标识符（例如用户 ID 或组 ID），因此，使用它们将使应用程序后端不必再存储和管理设备句柄。
+	每台设备在将其句柄发送到通知中心时，都可以指定一个或多个_标记_。有关[标记]的详细信息。无需预设置或处理标记。标记提供了一种用于将通知发送给用户或兴趣组的简单方法。由于标记可以包含任何特定于应用程序的标识符（例如用户 ID 或组 ID），因此，使用它们将使应用程序后端不必再存储和管理设备句柄。
 
 - **个性化**：每个设备都可以有一个或多个模板，以实现按设备本地化和个性化设置，而不会影响后端代码。
 
@@ -125,17 +125,16 @@ Azure 通知中心提供易用的基础结构，使你能够从任何后端（�
 Mobile Apps 开发人员可以借助以下工作流来利用通知中心：
 
 1. 检索设备 PNS 句柄
-2. 通过便利的 Mobile Apps Client SDK 注册 API，使用通知中心注册设备和 [模板]
+2. 通过便利的 Mobile Apps Client SDK 注册 API，使用通知中心注册设备和[模板]
     + 请注意，出于安全方面的考虑，Mobile Apps 将在注册中去除所有标记。直接从后端使用通知中心将标记与设备相关联。
 3. 从应用后端使用通知中心发送通知
 
 以下是这种集成为开发人员带来的便利性：
 - **Mobile Apps 客户端 SDK**。 这些多平台 SDK 提供简单的 API 用于注册，然后自动与链接到移动应用的通知中心联系。开发人员不需要通过通知中心凭据进行挖掘，以及使用其他服务。
-	+ SDK 使用经 Mobile Apps 验证的用户 ID 自动标记指定的设备，以启用向用户推送通知的方案。
-	+ SDK 自动使用 Mobile Apps 安装 ID 作为 GUID 来向通知中心注册，省去了开发人员维护多个服务 GUID 的麻烦。
+    + SDK 使用经 Mobile Apps 验证的用户 ID 自动标记指定的设备，以启用向用户推送通知的方案。
+    + SDK 自动使用 Mobile Apps 安装 ID 作为 GUID 来向通知中心注册，省去了开发人员维护多个服务 GUID 的麻烦。
 - **安装模型。** Mobile Apps 使用通知中心的最新推送模型来呈现 JSON 安装中所有与设备关联的推送属性，该模型与推送通知密切合作且易于使用。
 - **灵活性。** 即使是就地集成的，开发人员也始终可以选择直接使用通知中心。
-- **[Azure 门户] 中的集成体验。** Mobile Apps 以可视化方式呈现推送功能，开发人员可以通过 Mobile Apps 轻松使用关联的通知中心。
 
 
 
@@ -155,8 +154,8 @@ Mobile Apps 开发人员可以借助以下工作流来利用通知中心：
 + [Microsoft.ServiceBus.Notifications] 
 
 
-  [0]: ./media/notification-hubs-overview/SBPushNotifications1.gif
-  [1]: ./media/notification-hubs-overview/SBPushNotifications2.gif
+  [0]: ./media/notification-hubs-overview/registration-diagram.png
+  [1]: ./media/notification-hubs-overview/notification-hub-diagram.png
   [客户如何使用通知中心]: /zh-cn/services/notification-hubs
   [通知中心教程和指南]: /documentation/services/notification-hubs
   [iOS]: /documentation/articles/notification-hubs-ios-get-started
@@ -168,6 +167,9 @@ Mobile Apps 开发人员可以借助以下工作流来利用通知中心：
   [Xamarin.Android]: /documentation/articles/partner-xamarin-notification-hubs-android-get-started
   [Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/zh-cn/library/microsoft.windowsazure.messaging.notificationhub.aspx
   [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.notifications.aspx
-  
+  [App Service Mobile Apps]: https://azure.microsoft.com/zh-cn/documentation/articles/app-service-mobile-value-prop/
+  [模板]: /documentation/articles/notification-hubs-templates
 
-<!---HONumber=Mooncake_0104_2016-->
+  [标记]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)
+
+<!---HONumber=Mooncake_0314_2016-->

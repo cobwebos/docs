@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="11/06/2015"
+	ms.date="02/10/2016"
 	wacn.date=""/>
 
 # 移动服务入门
@@ -45,7 +45,7 @@
 
 5. 在“下载并运行应用”下，选择应用的语言，然后单击“下载”。
 
-  	随即将会下载已连接到移动服务的示例*待办事项列表*应用程序的项目。将压缩的项目文件保存到本地计算机，并记下保存位置。
+  	随即将会下载已连接到移动服务的示例 *待办事项列表* 应用程序的项目。将压缩的项目文件保存到本地计算机，并记下保存位置。
 
 ## 运行 Windows 应用程序
 
@@ -73,10 +73,10 @@
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
-[Getting started with Mobile Services]: #getting-started
-[Create a new mobile service]: #create-new-service
-[Define the mobile service instance]: #define-mobile-service-instance
-[Next Steps]: #next-steps
+[Getting started with Mobile Services]:#getting-started
+[Create a new mobile service]:#create-new-service
+[Define the mobile service instance]:#define-mobile-service-instance
+[Next Steps]:#next-steps
 
 <!-- Images. -->
 
@@ -85,4 +85,4 @@
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure 经典门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

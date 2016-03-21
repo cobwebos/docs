@@ -50,7 +50,7 @@ CLI 版本 0.9.9 及更高版本支持多重身份验证。
 	info:    Executing command login
 	info:    To sign in, use a web browser to open the page http://aka.ms/devicelogin. Enter the code XXXXXXXXX to authenticate. If you're signing in as an Azure AD application, use the --username and --password parameters.
 
-复制上面提供给你的代码，并打开浏览器访问 http://aka.ms/devicelogin。输入代码，然后系统会提示你为要使用的标识输入用户名和密码。该过程完成后，命令行解释器将完成登录过程。它的外观可能如下：
+复制上面提供给你的代码，并打开浏览器访问 http://aka.ms/devicelogin。 输入代码，然后系统会提示你为要使用的标识输入用户名和密码。该过程完成后，命令行解释器将完成登录过程。它的外观可能如下：
 
 	info:    Added subscription Visual Studio Ultimate with MSDN
 	info:    Added subscription Azure Free Trial
@@ -61,7 +61,7 @@ CLI 版本 0.9.9 及更高版本支持多重身份验证。
 ## 使用非交互式登录（使用工作或学校帐户）
 
 
-非交互式登录方法仅适用于工作或学校帐户，也称为 *组织帐户* 。此帐户由你的组织管理，并在组织的 Azure Active Directory 中定义。你可以[创建组织帐户](#create-an-organizational-account)（如果你没有），也可以[基于 Microsoft 帐户 ID 创建工作或学校 ID](./virtual-machines/resource-group-create-work-id-from-personal.md)。这需要在 `azure login` 命令中指定用户名或用户名和密码，如下所示：
+非交互式登录方法仅适用于工作或学校帐户，也称为*组织帐户*。此帐户由你的组织管理，并在组织的 Azure Active Directory 中定义。你可以[创建组织帐户](#create-an-organizational-account)（如果你没有），也可以[基于 Microsoft 帐户 ID 创建工作或学校 ID](./virtual-machines/resource-group-create-work-id-from-personal.md)。这需要在 `azure login` 命令中指定用户名或用户名和密码，如下所示：
 
 	azure login -u ahmet@contoso.partner.onmschina.cn
 	info:    Executing command login
@@ -72,7 +72,7 @@ CLI 版本 0.9.9 及更高版本支持多重身份验证。
 
 在系统提示时输入你的密码。
 
-	If this is your first time logging in with these credentials, you are asked to verify that you wish to cache an authentication token. This prompt also occurs if you have previously used the `azure logout` command (described below). To bypass this prompt for automation scenarios, run `azure login` with the `-q` parameter.
+如果这是你首次使用这些凭据登录，系统将要求你确认是否希望缓存身份验证令牌。如果你以前使用了 `azure logout` 命令（下面进行说明），也会出现此提示。若要为自动化方案避开此提示，请运行带有 `-q` 参数的 `azure login`。
 
 * **若要注销**，请使用以下命令：
 
@@ -90,9 +90,9 @@ CLI 版本 0.9.9 及更高版本支持多重身份验证。
 
 这将会打开默认浏览器，并提示你登录到 [Azure 门户][portal]。登录后，将下载 `.publishsettings` 文件。记下此文件的保存位置。
 
-	> [AZURE.NOTE] If your account is associated with multiple Azure Active Directory tenants, you may be prompted to select which Active Directory you wish to download a publish settings file for.
-	>
-	> Once selected using the download page, or by visiting the Azure portal, the selected Active Directory becomes the default used by the portal and download page. Once a default has been established, you will see the text '__click here to return to the selection page__' at the top of the download page. Use the provided link to return to the selection page.
+> [AZURE.NOTE] 如果你的帐户与多个 Azure Active Directory 租户关联，系统将提示你选择要为哪个 Active Directory 下载发布设置文件。
+>
+> 使用下载页面进行选择或通过访问 Azure 门户进行选择之后，所选的 Active Directory 将成为门户和下载页面使用的默认值。 设立默认值之后，你将在下载页面的顶部看到文本“若要返回选择页面，请单击此处”。使用提供的链接返回选择页面。
 
 * **若要导入发布设置文件**，请运行以下命令：
 
@@ -152,4 +152,4 @@ CLI 版本 0.9.9 及更高版本支持多重身份验证。
 [cliasm]: virtual-machines/virtual-machines-command-line-tools.md
 [cliarm]: xplat-cli-azure-resource-manager.md
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0314_2016-->

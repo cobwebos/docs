@@ -3,7 +3,7 @@
 	description="如何在 Visual Studio 中的 JavaScript 项目内开始使用 Azure 移动服务" 
 	services="mobile-services" 
 	documentationCenter="" 
-	authors="TomArcher" 
+	authors="mlhoop" 
 	manager="douge" 
 	editor=""/>
 
@@ -66,7 +66,7 @@
 
 ##更新条目
 
-更新数据表中的行。在此示例中，*todoItem* 是更新的项目，而 *item* 是从移动服务中返回的同一项目。移动服务响应时，本地 todoItems 列表中的项目将使用 [splice](http://msdn.microsoft.com/library/windows/apps/Hh700810.aspx) 方法进行更新。对返回的 [Promise](https://msdn.microsoft.com/zh-cn/library/dn802826.aspx) 对象调用 **done** 方法以获取插入对象的副本并处理任何错误。
+更新数据表中的行。在此示例中，*todoItem* 是更新的项目，而 *item* 是从移动服务中返回的同一项目。移动服务响应时，本地 todoItems 列表中的项目将使用 [splice](http://msdn.microsoft.com/library/windows/apps/Hh700810.aspx) 方法进行更新。对返回的 [Promise](https://msdn.microsoft.com/zh-cn/library/dn802826.aspx) 对象调用  **done** 方法以获取插入对象的副本并处理任何错误。
 
         todoTable.update(todoItem).done(function (item) {
             todoItems.splice(todoItems.indexOf(item), 1, item);
@@ -84,4 +84,4 @@
 
 [详细了解移动服务](/documentation/services/mobile-services)
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0314_2016-->

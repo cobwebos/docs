@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="通过使用 Visual Studio 连接服务将移动服务添加到 Javascript 应用时会发生什么情况" 
+	pageTitle="通过使用 Visual Studio 连接服务将移动服务添加到 Javascript 应用时会发生什么情况 | Azure" 
 	description="描述 Visual Studio 中的 Azure 移动服务项目发生了什么情况" 
 	services="mobile-services" 
 	documentationCenter="" 
-	authors="TomArcher" 
+	authors="mlhoop" 
 	manager="douge" 
 	editor=""/>
 
@@ -34,4 +34,4 @@
 
  
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0314_2016-->

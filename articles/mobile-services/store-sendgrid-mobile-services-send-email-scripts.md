@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用 SendGrid 发送电子邮件 | Microsoft Azure" 
+	pageTitle="使用 SendGrid 发送电子邮件 | Azure" 
 	description="了解如何使用 SendGrid 服务从 Azure 移动服务应用程序发送电子邮件。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -89,7 +89,7 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 
 	- **_from-address_**：用于发送电子邮件的地址。可考虑使用属于你组织的已注册域地址。
 
-     >[AZURE.NOTE]如果你没有注册的域，则可以使用移动服务的域，其格式为 *notifications@_your-mobile-service_.azure-mobile.net*。但是，将忽略发送至你的移动服务域的消息。
+     > [AZURE.NOTE] 如果你没有注册的域，则可以使用移动服务的域，其格式为 *notifications@_your-mobile-service_.azure-mobile.net*。但是，将忽略发送至你的移动服务域的消息。
 
 6. 单击“保存”按钮。你现在已配置了一个脚本，每当将记录插入 **TodoItem** 表时都会发送电子邮件。
 
@@ -113,8 +113,10 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 
 现在，你已了解结合使用 SendGrid 电子邮件服务和移动服务是多么简单，单击下面的链接可了解有关 SendGrid 的详细信息。
 
--   SendGrid API 文档：<https://sendgrid.com/docs>
--   面向 Azure 客户的 SendGrid 特惠产品/服务：<https://sendgrid.com/windowsazure.html>
+-   SendGrid API 文档：
+    <https://sendgrid.com/docs>
+-   面向 Azure 客户的 SendGrid 特惠产品/服务：
+    <https://sendgrid.com/windowsazure.html>
 
 <!-- Anchors. -->
 [创建 SendGrid 帐户]: #sign-up
@@ -137,4 +139,4 @@ SendGrid 是一项[基于云的电子邮件服务]，该服务提供了可靠的
 
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/15/2015"
+	ms.date="01/28/2016"  
 	wacn.date=""/>
 
 #媒体编码器标准格式和编解码器
@@ -61,7 +61,7 @@ MPEG-1 |是
 VC-1/WMV9 |是 
 Canopus HQ/HQX |否 
 Mpeg-4 第 2 部分 |是 
-[Theora](https://en.wikipedia.org/wiki/Theora) |是 
+[Theora](https://zh.wikipedia.org/wiki/Theora) |是 
 YUV420（未压缩或夹层） |是
 Apple ProRes 422 |是
 Apple ProRes 422 LT |是
@@ -81,8 +81,8 @@ MPEG Layer 2|是
 MP3 (MPEG-1 Audio Layer 3)|是 
 Windows Media 音频|是 
 WAV/PCM|是 
-[FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|是 
-[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |是 
+[FLAC](https://zh.wikipedia.org/wiki/FLAC)</a>|是 
+[Opus](https://zh.wikipedia.org/wiki/Opus_codec) |是 
 [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|是 
 AMR（自适应多速率）|是
 AES（SMPTE 331M 和 302M、AES3-2003） |否 
@@ -98,7 +98,7 @@ Dolby® Digital Plus (E-AC3) |否
 
 文件格式|视频编解码器|音频编解码器
 ---|---|---
-MP4<br/><br/>（包括多码率 MP4 容器） |H.264（High、Main 和 Baseline Profile）|AAC-LC、HE-AAC v1、HE-AAC v2 
+MP4<br/><br/>（包括多比特率 MP4 容器） |H.264（High、Main 和 Baseline Profile）|AAC-LC、HE-AAC v1、HE-AAC v2 
 MPEG2-TS |H.264（High、Main 和 Baseline Profile）|AAC-LC、HE-AAC v1、HE-AAC v2 
 
 
@@ -108,4 +108,4 @@ MPEG2-TS |H.264（High、Main 和 Baseline Profile）|AAC-LC、HE-AAC v1、HE-AA
 
 [如何使用媒体编码器标准版进行编码](/documentation/articles/media-services-dotnet-encode-with-media-encoder-standard)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0314_2016-->

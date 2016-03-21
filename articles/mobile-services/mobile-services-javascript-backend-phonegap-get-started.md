@@ -1,5 +1,5 @@
 <properties
-	pageTitle="适用于 PhoneGap/cordova 应用的 Azure 移动服务入门 | Microsoft Azure"
+	pageTitle="使用 Azure 移动服务开发 PhoneGap/cordova 应用入门 | Azure"
 	description="请按照本教程中的说明操作，开始使用用于 PhoneGap 开发的 Azure 移动服务（面向 iOS、, Android 和 Windows Phone）。"
 	services="mobile-services"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="11/06/2015"
+	ms.date="02/10/2016"
 	wacn.date=""/>
 
 # 移动服务入门
@@ -37,7 +37,8 @@
 
 - Windows Phone：安装 [Visual Studio 2012 Express for Windows Phone](https://go.microsoft.com/fwLink/p/?LinkID=268374)
 - iOS：安装 [Xcode]（需要 v4.4+）
-- Android：[安装 Android 开发人员工具][Android SDK]<br/>（适用于 Android 的移动服务 SDK 支持用于 Android 2.2 或更高版本的应用程序。运行快速入门应用程序需要安装 Android 4.2 或更高版本。)
+- Android：[安装 Android 开发人员工具][Android SDK]
+	<br/>（适用于 Android 的移动服务 SDK 支持用于 Android 2.2 或更高版本的应用程序。运行快速入门应用程序需要安装 Android 4.2 或更高版本。)
 
 ## 创建新的移动服务
 
@@ -106,7 +107,7 @@
 
 	这样可向在 Azure 中托管的新移动服务发送 POST 请求。来自请求的数据将插入到 **TodoItem** 表。移动服务返回存储在表中的项，数据显示在列表中。
 
-	> [AZURE.IMPORTANT]如果使用 PhoneGap 工具重新生成主项目，将会覆盖对此平台项目所做的更改。请根据以下部分中所述，在项目的 www 根目录中进行更改。
+	> [AZURE.IMPORTANT] 如果使用 PhoneGap 工具重新生成主项目，将会覆盖对此平台项目所做的更改。请根据以下部分中所述，在项目的 www 根目录中进行更改。
 
 4. 返回 [Azure 经典门户]，单击“数据”选项卡，然后单击“TodoItem”表。
 
@@ -175,4 +176,4 @@
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

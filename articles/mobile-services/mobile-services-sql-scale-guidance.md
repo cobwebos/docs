@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="缩放 Azure SQL 数据库支持的移动服务 | Microsoft Azure" 
+	pageTitle="缩放 Azure SQL 数据库支持的移动服务 | Azure" 
 	description="了解如何诊断和修复 SQL 数据库支持的移动服务中的可扩展性问题" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -83,8 +83,10 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
 
 请尽早考虑以下其他缓解步骤：
 
-- **优化数据库。** 优化数据库通常可以降低数据库利用率，并避免扩展到更高的服务层。 
-- **考虑服务体系结构。** 随着时间的推移，您的服务负载通常分布不均，但包含高需求“峰值”。如果不纵向扩展数据库应对峰值，并让数据库在低需求期间保持低利用率，通常可以调整服务体系结构，以避免出现此类峰值，或在不对数据库造成干扰的情况下处理峰值情况。
+- **优化数据库。**
+优化数据库通常可以降低数据库利用率，并避免扩展到更高的服务层。 
+- **考虑服务体系结构。**
+随着时间的推移，您的服务负载通常分布不均，但包含高需求“峰值”。如果不纵向扩展数据库应对峰值，并让数据库在低需求期间保持低利用率，通常可以调整服务体系结构，以避免出现此类峰值，或在不对数据库造成干扰的情况下处理峰值情况。
 
 本文余下部分将介绍自定义指南，以帮助实施这些缓解措施。
 
@@ -97,9 +99,9 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
 2. 确保如上节所述显示相关指标。
 3. 选择你希望为其设置警报的指标，然后选择“添加规则”
     ![Azure 管理门户 - SQL 警报][PortalSqlAddAlert]
-4. 提供警报名称及描述!
-    [Azure 管理门户-SQL 警报名称和说明][PortalSqlAddAlert2]
-5. 指定用于警报阈值的值。请考虑使用 **80%**，以便有时间做出反应。此外，请务必指定你主动监控的电子邮箱地址。 
+4. 提供警报名称及描述
+    ![Azure 管理门户-SQL 警报名称和说明][PortalSqlAddAlert2]
+5. 指定用于警报阈值的值。请考虑使用 **80%**，以便有时间做出反应。此外，请务必指定你主动监控的电子邮箱地址。
     ![Azure 管理门户 - SQL 警报阈值和电子邮件][PortalSqlAddAlert3]
 
 有关诊断 SQL 问题的详细信息，请参阅本文末尾的[高级诊断](#AdvancedDiagnosing)。
@@ -163,7 +165,7 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
         public bool Complete { get; set; }
     }
 		 
-更多有关索引的详细信息，请参阅[实体框架中的索引批注][]。有关优化索引的更多提示，请参阅本文末尾的“高级索引”[](#AdvancedIndexing)。
+更多有关索引的详细信息，请参阅[实体框架中的索引批注][]。有关优化索引的更多提示，请参阅本文末尾的“高级索引”(#AdvancedIndexing)。
 
 <a name="Schema"></a>
 ## 架构设计
@@ -178,7 +180,7 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
 
 查询数据库时要考虑的以下指南：
 
-- **始终在数据库中执行联接操作。** 你经常需要合并来自两个或更多表的记录，且这些要合并的记录共享相同的字段（称为*联接*）。此操作涉及到同时从两个表中提取所有实体，然后循环访问所有实体，因此，如果未正确执行此操作，可能会降低效率。此类操作最好在数据库中执行，但有时却很容易误由客户端执行，或者在移动服务代码中执行。
+- **始终在数据库中执行联接操作。** 你经常需要合并来自两个或更多表的记录，且这些要合并的记录共享相同的字段（称为 *联接*）。此操作涉及到同时从两个表中提取所有实体，然后循环访问所有实体，因此，如果未正确执行此操作，可能会降低效率。此类操作最好在数据库中执行，但有时却很容易误由客户端执行，或者在移动服务代码中执行。
     - 请不要在应用程序代码中执行联接
     - 请不要在移动服务代码中执行联接。在使用 JavaScript 后端时，请注意，[table 对象](http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554210.aspx)不处理联接。请务必直接使用 [mssql 对象](http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554212.aspx)，以确保在数据库中执行联接。有关详细信息，请参阅[联接关系表](/documentation/articles/mobile-services-how-to-use-server-scripts/#joins)。如果使用 .NET 后端，并且通过 LINQ 查询，实体框架将在数据库级别自动处理联接。
 - **实现分页。** 查询数据库有时可能会导致大量记录返回到客户端。为了尽可能减少操作的大小和延迟，请考虑实现分页。
@@ -218,26 +220,26 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 6. 记下“连接到数据库”部分中的服务器地址，例如：*mcml4otbb9.database.windows.net*。
 
 #### SQL Server Management Studio
-1. 导航到“SQL Server 版本 - Express”[](http://www.microsoft.com/zh-cn/server-cloud/products/sql-server-editions/sql-server-express.aspx)
+1. 导航到[“SQL Server 版本 - Express”](http://www.microsoft.com/zh-cn/server-cloud/products/sql-server-editions/sql-server-express.aspx)
 2. 找到“SQL Server Management Studio”部分，然后选择下方的“下载”按钮。
 3. 完成安装步骤，直到成功运行该应用：
 
     ![SQL Server Management Studio][SSMS]
 
 4. 在“连接到服务器”对话框中输入以下值
-    - 服务器名称：*前面获取的服务器地址*
-    - 身份验证：*SQL Server 身份验证*
-    - 登录名：*创建服务器时选择的登录名*
-    - 密码：*创建服务器时选择的密码*
+    - 服务器名称： *前面获取的服务器地址*
+    - 身份验证： *SQL Server 身份验证*
+    - 登录名： *创建服务器时选择的登录名*
+    - 密码： *创建服务器时选择的密码*
 5. 立即连接。
 
 #### SQL 数据库管理门户
 1. 在数据库的“Azure SQL 数据库”选项卡上，选择“管理”按钮 
 2. 输入下列值对连接进行配置
-    - 服务器：*应预设为正确值*
-    - 数据库：*保留空白*
-    - 用户名：*创建服务器时选择的登录名*
-    - 密码：*创建服务器时选择的密码*
+    - 服务器： *应预设为正确值*
+    - 数据库： *保留空白*
+    - 用户名： *创建服务器时选择的登录名*
+    - 密码： *创建服务器时选择的密码*
 3. 立即连接。
 
     ![Azure 经典门户 - SQL 数据库][PortalSqlManagement]
@@ -262,14 +264,15 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 #### 高级指标
 
 
-如果使用基础层、标准层和高级层，管理门户可随时提供部分指标。无论你使用哪种层，都可以通过 **[sys.resource\\_stats](http://msdn.microsoft.com/zh-cn/library/dn269979.aspx)** 管理视图轻松获取所有度量值。请考虑下列查询：
+如果使用基础层、标准层和高级层，管理门户可随时提供部分指标。无论你使用哪种层，都可以通过 **[sys.resource_stats](http://msdn.microsoft.com/zh-cn/library/dn269979.aspx)** 管理视图轻松获取所有度量值。请考虑下列查询：
 
     SELECT TOP 10 * 
     FROM sys.resource_stats 
     WHERE database_name = 'todoitem_db' 
     ORDER BY start_time DESC
 
-> [AZURE.NOTE]请在你服务器的 **master** 数据库上执行此查询，因为只有该数据库显示 **sys.resource\_stats** 视图。
+> [AZURE.NOTE] 
+请在你服务器的 **master** 数据库上执行此查询，因为只有该数据库显示 **sys.resource\_stats** 视图。
 
 结果将会包含以下有用的度量值：CPU（层限制百分比）、存储 (MB)、物理数据读取（层限制百分比）、日志写入（层限制百分比）、内存（层限制百分比）、工作线程计数、会话计数等。
 
@@ -282,8 +285,8 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
     and event_type like 'throttling%'
     order by start_time desc
 
-> [AZURE.NOTE]
-> 请在服务器的 **master** 数据库上执行此查询，**sys.event\_log** 视图只会出现在该数据库上。
+> [AZURE.NOTE] 
+请在服务器的 **master** 数据库上执行此查询，**sys.event\_log** 视图只会出现在该数据库上。
 
 <a name="AdvancedIndexing" ></a>
 ### 高级索引
@@ -296,8 +299,8 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 
 若要提供真实类比：请考虑使用书本或技术手册。每页的内容为一条记录，页码为聚集索引，书背后的主题索引为非聚集索引。主题索引的每个条目指向聚集索引，页码。
 
-> [AZURE.NOTE]
-> 默认情况下，Azure 移动服务的 JavaScript 后端将 **\_createdAt** 设置为聚集索引。如果你要删除这列，或想要不同的聚集索引，请务必遵循以下[聚集索引设计指南](#ClusteredIndexes)。在.NET 后端，类 `EntityData` 会使用批注 `[Index(IsClustered = true)]` 将 `CreatedAt` 定义为聚集索引。
+> [AZURE.NOTE] 
+默认情况下，Azure 移动服务的 JavaScript 后端将 **\_createdAt** 设置为聚集索引。如果你要删除这列，或想要不同的聚集索引，请务必遵循以下[聚集索引设计指南](#ClusteredIndexes)。在.NET 后端，类 `EntityData` 会使用批注 `[Index(IsClustered = true)]` 将 `CreatedAt` 定义为聚集索引。
 
 <a name="ClusteredIndexes"></a>
 #### 聚集索引设计指南
@@ -478,4 +481,4 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 <!-- BLOG LINKS -->
 [键的开销]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

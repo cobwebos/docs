@@ -9,15 +9,21 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="09/14/2015"
+	ms.date="02/11/2016"
 	wacn.date=""/>
 
 # 在移动服务中计划定期作业 
 
-<div class="dev-center-tutorial-subselector">
-	<a href="/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks/" title=".NET 后端">.NET 后端</a> | <a href="/documentation/articles/mobile-services-schedule-recurring-tasks/"  title="JavaScript 后端" class="current">JavaScript 后端</a>
-</div>
-本主题说明如何使用管理门户中的作业计划程序功能来定义服务器脚本代码，该代码将基于你定义的计划执行。在此情况下，脚本将定期检查远程服务（在本主题中为 Twitter），并在新表中存储结果。可以计划的其他一些定期任务包括：
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+
+&nbsp;
+
+
+> [AZURE.SELECTOR]
+- [.NET backend](/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks)
+- [Javascript backend](/documentation/articles/mobile-services-schedule-recurring-tasks)
+
+本主题说明如何使用 Azure 经典门户中的作业计划程序功能来定义服务器脚本代码，该代码将基于你定义的计划执行。在此情况下，脚本将定期检查远程服务（在本主题中为 Twitter），并在新表中存储结果。可以计划的其他一些定期任务包括：
 
 + 存档旧的或重复的数据记录。
 + 请求和存储外部数据，例如推文、RSS 条目和位置信息。
@@ -33,7 +39,7 @@
 
 接下来，你需要创建一个用于存储推文的新表。
 
-1. 在管理门户中，单击移动服务的“数据”选项卡，然后单击“+创建”。
+2. 在 [Azure 经典门户]中，单击移动服务的“数据”选项卡，然后单击“+创建”。
 
 2. 在“表名”中键入 _Updates_，然后单击勾选按钮。
 
@@ -127,7 +133,7 @@
 
    	此脚本将使用存储的凭据调用 Twitter 查询 API，以请求包含哈希标记 `#mobileservices` 的最新推文。在表中存储结果之前，将从结果中删除重复的推文和回复。
 
-    >[AZURE.NOTE]此示例假设每次按计划运行期间只会在表中插入少量的行。如果在一个循环中插入许多的行，那么，在免费版本级别上运行时可能会耗尽连接。在此情况下，你应该分批执行插入。有关详细信息，请参阅[如何：执行批量插入](mobile-services-how-to-use-server-scripts#bulk-inserts)。
+    >[AZURE.NOTE]此示例假设每次按计划运行期间只会在表中插入少量的行。如果在一个循环中插入许多的行，那么，在免费版本级别上运行时可能会耗尽连接。在此情况下，你应该分批执行插入。有关详细信息，请参阅[如何：执行批量插入](/documentation/articles/mobile-services-how-to-use-server-scripts/#bulk-inserts)。
 
 4. 单击“运行一次”以测试脚本。
 
@@ -143,7 +149,8 @@
 
 ## <a name="nextsteps"></a>另请参阅
 
-* [移动服务服务器脚本参考 ]<br/>了解有关注册和使用服务器脚本的详细信息。
+* [移动服务服务器脚本参考 ]
+  <br/>了解有关注册和使用服务器脚本的详细信息。
 
 <!-- Anchors. -->
 [Register for Twitter access and store credentials]: #get-oauth-credentials
@@ -156,9 +163,9 @@
 <!-- URLs. -->
 [移动服务服务器脚本参考 ]: /documentation/articles/mobile-services-how-to-use-server-scripts/
 [windowsazure.cn]: http://www.windowsazure.cn/
-[Azure Management Portal]: https://manage.windowsazure.cn/
+[Azure 经典门户]: https://manage.windowsazure.cn/
 [Register your apps for Twitter login with Mobile Services]: /documentation/articles/mobile-services-how-to-register-twitter-authentication
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [App settings]: http://msdn.microsoft.com/zh-cn/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0314_2016-->

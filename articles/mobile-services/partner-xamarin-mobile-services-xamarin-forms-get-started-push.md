@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="10/05/2015"
+	ms.date="01/22/2016"
 	wacn.date=""/>
 
 # 向 Xamarin.Forms 应用添加推送通知
@@ -49,7 +49,7 @@
 
 为了能够在新移动服务中存储应用程序数据，必须先创建一个新表。
 
-1. 在 **Azure 经典门户**中单击“移动服务”，然后单击你刚刚创建的移动服务。
+1. 在 **Azure 经典门户** 中单击“移动服务”，然后单击你刚刚创建的移动服务。
 
 2. 单击“数据”选项卡，然后单击“+创建”。
 
@@ -63,7 +63,7 @@
 
   	这将创建一个新的设置了默认权限的存储表 **TodoItem**，这意味着任何应用程序用户均可访问和更改该表中的数据。
 
-    > [AZURE.NOTE]移动服务快速入门中使用了相同的表名。但是，每个表是在特定于给定移动服务的架构中创建的。这是为了防止当多个移动服务使用同一数据库时发生数据冲突。
+    > [AZURE.NOTE] 移动服务快速入门中使用了相同的表名。但是，每个表是在特定于给定移动服务的架构中创建的。这是为了防止当多个移动服务使用同一数据库时发生数据冲突。
 
 4. 单击新的 **TodoItem** 表，然后验证是否不存在任何数据行。
 
@@ -71,7 +71,7 @@
 
   	这是对移动服务中的表的最低要求。
 
-    > [AZURE.NOTE]如果在移动服务中启用了动态架构，则通过插入或更新操作向移动服务发送 JSON 对象时，将自动创建新列。
+    > [AZURE.NOTE] 如果在移动服务中启用了动态架构，则通过插入或更新操作向移动服务发送 JSON 对象时，将自动创建新列。
 
 现在，您可以将新移动服务用作应用的数据存储。
 
@@ -88,7 +88,7 @@
 
 你将使用 Apple 推送通知服务 (APNS) 向 iOS 应用添加推送通知。你将需要有效的 Google 帐户和 [Google Cloud Messaging 客户端组件]。
 
->[AZURE.IMPORTANT]由于 Apple 推送通知服务 (APNS) 要求，你必须在支持 iOS 的设备（iPhone 或 iPad），而不是在模拟器上部署和测试推送通知。
+>[AZURE.IMPORTANT] 由于 Apple 推送通知服务 (APNS) 要求，你必须在支持 iOS 的设备（iPhone 或 iPad），而不是在模拟器上部署和测试推送通知。
 
 APNS 使用证书对你的移动服务进行身份验证。按照以下说明创建必要的证书并将其上载到你的移动服务。有关正式的 APNS 功能文档，请参阅 [Apple 推送通知服务]。
 
@@ -156,15 +156,15 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 6. 门户创建证书之后，请单击“Download”（下载）按钮，然后单击“Done”（完成）。
 
-    ![][111]
+    ![][111]  
 
     随后将会下载签名证书并将其保存到计算机上的 Downloads 文件夹。
 
     ![][9]
 
-    注意：默认情况下，下载的文件（开发证书）名为 <strong>aps\_development.cer</strong>。
+    注意：默认情况下，下载的文件（开发证书）名为 <strong>aps_development.cer</strong>。
 
-7. 双击下载的推送证书 **aps\_development.cer**。
+7. 双击下载的推送证书 **aps_development.cer**。
 
     将在 Keychain 中安装新证书，如下所示：
 
@@ -224,7 +224,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
     此时将显示“上载证书”对话框。
 
-4. 单击“文件”，选择导出的 .p12 证书文件，输入密码，确保已选择正确的“模式”，单击勾选图标，然后单击“保存”。
+4. 单击“文件“，选择导出的 .p12 证书文件，输入“密码“，确保已选择正确的“模式”，单击勾选图标，然后单击“保存”。
 
     ![][20]
 
@@ -358,13 +358,13 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
     这将会注册一个新的插入脚本，该脚本将推送通知（插入的文本）发送到插入请求中提供的设备。
 
-   >[AZURE.NOTE]此脚本将延迟发送通知，使你有足够的时间关闭应用程序以接收 toast 通知。
+   >[AZURE.NOTE] 此脚本将延迟发送通知，使你有足够的时间关闭应用程序以接收 toast 通知。
 
 ### <a name="test"></a>在应用程序中测试推送通知
 
 1. 在支持 iOS 的设备中按“运行”按钮以生成项目并启动应用程序，然后单击“确定”接受推送通知
 
-   >[AZURE.NOTE]你必须显式接受来自应用程序的推送通知。此请求只会在首次运行应用程序时出现。
+   >[AZURE.NOTE] 你必须显式接受来自应用程序的推送通知。此请求只会在首次运行应用程序时出现。
 
 2. 在应用中，单击“添加”按钮，添加任务标题，然后单击“保存”按钮。 
 
@@ -387,7 +387,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 ###<a id="update-scripts"></a>更新已注册的插入脚本以发送通知
 
->[AZURE.NOTE]以下步骤说明了如何在 Azure 经典门户中，更新已注册到 TodoItem 表上的插入操作的脚本。你也可以在 Visual Studio 的“服务器资源管理器”的“Azure”节点中直接访问和编辑此移动服务脚本。
+>[AZURE.NOTE] 以下步骤说明了如何在 Azure 经典门户中，更新已注册到 TodoItem 表上的插入操作的脚本。你也可以在 Visual Studio 的“服务器资源管理器”的“Azure”节点中直接访问和编辑此移动服务脚本。
 
 在 [Azure 经典门户]中，单击“数据”选项卡，然后单击“TodoItem”表。
 
@@ -429,7 +429,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
     这将会注册一个新的插入脚本，该脚本将推送通知（插入的文本）发送到插入请求中提供的设备。
 
-   >[AZURE.NOTE]此脚本将延迟发送通知，使你有足够的时间关闭应用程序以接收 toast 通知。
+   >[AZURE.NOTE] 此脚本将延迟发送通知，使你有足够的时间关闭应用程序以接收 toast 通知。
 
 
 ###<a id="configure-app"></a>为推送通知配置现有项目
@@ -518,7 +518,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 	>[AZURE.NOTE]**GcmServiceBase** 类实现 **OnRegistered()**、**OnUnRegistered()**、**OnMessage()** 和 **OnError()** 方法。必须在 **GcmService** 类中重写这些方法。
 
-6. 将以下代码添加到 **GcmService** 类，以便重写 **OnRegistered **事件处理程序。
+6. 将以下代码添加到 **GcmService** 类，以便重写 **OnRegistered** 事件处理程序。
 
         protected override void OnRegistered(Context context, string registrationId)
         {
@@ -538,7 +538,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
         {
             try
             {
-                const string template = "{"data":{"message":"$(message)"}}";
+                const string template = "{\"data\":{\"message\":\"$(message)\"}}";
 
                 await push.RegisterTemplateAsync(RegistrationID, template, "mytemplate", tags);
             }
@@ -612,6 +612,10 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
         }
 
 8. 为项目编译所需的 **OnUnRegistered()** 和 **OnError()** 添加以下方法重写。
+		protected override void OnUnRegistered(Context context, string registrationId)
+		{
+			Log.Error("GcmService", "Unregistered RegisterationId : " + registrationId);
+		}
 
         protected override void OnError(Context context, string errorId)
         {
@@ -624,7 +628,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 当你在模拟器中运行此应用程序时，请确保使用支持 Google API 的 Android 虚拟设备 (AVD)。
 
-> [AZURE.IMPORTANT]为了接收推送通知，你必须在 Android 虚拟设备上设置 Google 帐户（方法如下：在模拟器中，导航到“设置”，然后单击“添加帐户”）。此外，请确保模拟器已连接到 Internet。
+> [AZURE.IMPORTANT] 为了接收推送通知，你必须在 Android 虚拟设备上设置 Google 帐户（方法如下：在模拟器中，导航到“设置”，然后单击“添加帐户”）。此外，请确保模拟器已连接到 Internet。
 
 1. 从“工具”中，单击“打开 Android 模拟器管理器”，选择你的设备，然后单击“编辑”。
     
@@ -677,8 +681,8 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
                    // Register for notifications using the new channel
                     const string template =
-                    "<?xml version="1.0" encoding="utf-8"?><wp:Notification " +
-                    "xmlns:wp="WPNotification"><wp:Toast><wp:Text1>$(message)</wp:Text1></wp:Toast></wp:Notification>";
+                    "<?xml version=\"1.0\" encoding=\"utf-8\"?><wp:Notification " +
+                    "xmlns:wp=\"WPNotification\"><wp:Toast><wp:Text1>$(message)</wp:Text1></wp:Toast></wp:Notification>";
 
                     await client.GetPush()
                         .RegisterTemplateAsync(CurrentChannel.ChannelUri.ToString(), template, "mytemplate");
@@ -689,7 +693,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 	>[AZURE.NOTE]在本教程中，移动服务将向设备发送一条 toast 通知。而当你发送磁贴通知时，必须在通道上调用 **BindToShellTile** 方法。
 
-3. 在 App.xaml.cs 中 **Application\_Launching** 事件处理程序的顶部，添加对新的 **AcquirePushChannel** 方法的以下调用：
+3. 在 App.xaml.cs 中 **Application_Launching** 事件处理程序的顶部，添加对新的 **AcquirePushChannel** 方法的以下调用：
 
         AcquirePushChannel();
 
@@ -697,7 +701,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 4. 按 **F5** 键以运行应用。将显示包含注册密钥的弹出式对话框。
   
-5.	在解决方案资源管理器中，展开“属性”，打开 WMAppManifest.xml 文件，单击“功能”选项卡并确保选中 **ID\_\_\_CAP\_\_\_PUSH\_NOTIFICATION** 功能。
+5.	在解决方案资源管理器中，展开“属性”，打开 WMAppManifest.xml 文件，单击“功能”选项卡并确保选中 **ID___CAP___PUSH_NOTIFICATION** 功能。
 
    	![在 VS 中启用通知](./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-app-enable-push-wp8.png)
 
@@ -757,7 +761,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 1. 在 Visual Studio 中，按 F5 键运行应用程序。
 
-    >[AZURE.NOTE]在 Windows Phone 模拟器测试时，你可能会遇到 401 错误“未授权的 RegistrationAuthorizationException”。由于 Windows Phone 模拟器时钟与主机电脑时钟的同步问题，在调用 `RegisterNativeAsync()` 期间可能会出现此错误。这可能会导致安全令牌被拒绝。若要解决此问题，只需在模拟器中手动设置时钟，然后再开始测试。
+    >[AZURE.NOTE] 在 Windows Phone 模拟器测试时，你可能会遇到 401 错误“未授权的 RegistrationAuthorizationException”。由于 Windows Phone 模拟器时钟与主机电脑时钟的同步问题，在调用 `RegisterNativeAsync()` 期间可能会出现此错误。这可能会导致安全令牌被拒绝。若要解决此问题，只需在模拟器中手动设置时钟，然后再开始测试。
 
 2. 在应用中，创建具有标题 **Hello push** 的新任务，然后立即单击“开始”按钮，或者单击“后退”按钮以退出应用。
 
@@ -816,14 +820,14 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 [116]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-16.png
 [117]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-17.png
 
-[120]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-20.png
-[121]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-21.png
-[122]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-22.png
-[123]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-data-tab-empty.png
-[124]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-create-todoitem-table.png
-[125]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/notification-hub-create-android-app7.png
-[126]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/notification-hub-create-android-app8.png
-[127]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/notification-area-received.png
+[120]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-20.png
+[121]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-21.png
+[122]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-22.png
+[123]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-data-tab-empty.png
+[124]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-create-todoitem-table.png
+[125]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/notification-hub-create-android-app7.png
+[126]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/notification-hub-create-android-app8.png
+[127]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/notification-area-received.png
 
 
 [Xamarin.iOS Studio]: http://xamarin.com/platform
@@ -846,4 +850,4 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 [已完成的 Xamarin.Forms Azure 推送通知示例]: https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithPushXamarinForms
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

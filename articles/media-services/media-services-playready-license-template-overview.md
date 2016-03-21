@@ -7,9 +7,9 @@
 	services="media-services" 
 	documentationCenter=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015"
+<tags
+	ms.service="media-services"
+ 	ms.date="02/03/2016"  
 	wacn.date=""/>
 
 #媒体服务 PlayReady 许可证模板概述
@@ -46,7 +46,7 @@ XML 符合 PlayReady 许可证模板 XML 架构部分中定义的 PlayReady 许�
 
 媒体服务还可定义一组可用于序列化到 XML 和从 XML 反序列化的 .NET 类。有关主类的描述，请参阅用于配置许可证模板的[媒体服务 .NET 类](/documentation/articles/media-services-playready-license-template-overview#classes)。
 
-有关使用 .NET 类来配置 PlayReady 许可证模板的端到端示例，请参阅[使用 PlayReady 动态加密和许可证传送服务](https://msdn.microsoft.com/zh-cn/library/azure/dn783467.aspx)。
+有关使用 .NET 类来配置 PlayReady 许可证模板的端到端示例，请参阅[使用 PlayReady 动态加密和许可证传送服务](/documentation/articles/media-services-protect-with-drm)。
 
 ##<a id="classes"></a>用于配置许可证模板的媒体服务 .NET 类
 
@@ -72,7 +72,7 @@ XML 符合 PlayReady 许可证模板 XML 架构部分中定义的 PlayReady 许�
 
 >[AZURE.IMPORTANT]这些限制类型可以非常强大，但也会影响使用者体验。如果输出保护配置了太多限制，内容可能会无法在某些客户端上播放。有关详细信息，请参阅 PlayReady 符合性规则文档。
 
-有关 Silverlight 支持的保护级别的示例，请参阅：[Silverlight 支持的输出保护](http://go.microsoft.com/fwlink/?LinkId=617318)。
+有关 Silverlight 支持的保护级别的示例，请参阅：[Silverlight 支持的输出保护](https://msdn.microsoft.com/zh-cn/library/cc838192(v=VS.95).aspx#Silverlight_Support_for_Output_Protection).
 
 ##<a id="schema"></a>PlayReady 许可证模板 XML 架构
 	
@@ -297,4 +297,4 @@ XML 符合 PlayReady 许可证模板 XML 架构部分中定义的 PlayReady 许�
 	  <xs:element name="ScmsRestriction" nillable="true" type="tns:ScmsRestriction" />
 	</xs:schema>
 
-<!---HONumber=76-->
+<!---HONumber=Mooncake_0314_2016-->

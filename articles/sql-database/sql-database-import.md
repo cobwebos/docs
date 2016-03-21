@@ -1,5 +1,5 @@
 <properties
-	pageTitle="导入 BACPAC 文件以创建新的 Azure SQL 数据库"
+	pageTitle="导入 BACPAC 文件以创建新的 Azure SQL 数据库 | Azure"
 	description="通过导入现有的 BACPAC 文件创建新的 Azure SQL 数据库。"
 	services="sql-database"
 	documentationCenter=""
@@ -9,8 +9,8 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="12/17/2015"
-	wacn.date=""/>
+	ms.date="01/20/2016"
+	wacn.date=""
 
 
 # 导入 BACPAC 文件以创建新的 Azure SQL 数据库
@@ -36,7 +36,7 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息�
 
 要从 .bacpac 导入 SQL 数据库，你需要以下各项：
 
-- Azure 订阅。如果你需要 Azure 订阅，只需单击本页顶部的“免费试用”，然后再回来完成本文的相关操作即可。
+- Azure 订阅。如果你需要 Azure 订阅，只需单击本页顶部的“试用”，然后再回来完成本文的相关操作即可。
 - Azure SQL 数据库 V12 服务器。如果你没有 V12 服务器，可以遵循本文中的以下步骤创建一个：[创建你的第一个 Azure SQL 数据库](/documentation/articles/sql-database-get-started)。
 - 要导入的数据库的 .bacpac 文件位于 [Azure 存储帐户（经典）](/documentation/articles/storage-create-storage-account)blob 容器中。
 
@@ -92,7 +92,7 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息�
 
 ## 后续步骤
 
-- [使用 SQL Server Management Studio (SSMS) 进行连接](/documentation/articles/sql-database-connect-to-database)
+- [使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例 T-SQL 查询](/documentation/articles/sql-database-connect-query-ssms)
 
 
 
@@ -109,4 +109,4 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。有关详细信息�
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

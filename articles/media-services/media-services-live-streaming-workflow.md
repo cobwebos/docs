@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="09/28/2015"
+ 	ms.date="02/03/2016"  
 	wacn.date=""/>
 
 
-#使用 Azure Media Services 传递实时流式处理事件
+#使用 Azure 媒体服务传递实时流式处理事件
 
 ##概述
 
@@ -40,9 +40,9 @@
 **频道**表示用于处理实时流内容的管道。当前，频道可以通过以下方式接收实时输入流：
 
 
-- 本地实时编码器（采用以下格式之一：RTP (MPEG-TS)、RTMP 或平滑流式处理 （分片 MP4））将单比特率流发送至能够使用媒体服务执行实时编码的频道。然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。收到请求时，Media Services 会将该流传递给客户。
+- 本地实时编码器（采用以下格式之一：RTP (MPEG-TS)、RTMP 或平滑流式处理 （分片 MP4））将单比特率流发送至能够使用媒体服务执行实时编码的频道。然后，频道将对传入的单比特率流执行实时编码，使之转换为多比特率（自适应）视频流。收到请求时，媒体服务会将该流传递给客户。
 
-- 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（分片 MP4）发送到频道。可以使用以下输出多比特率平滑流的实时编码器：Elemental、Envivio、Cisco。以下实时编码器输出 RTMP：Adobe Flash Live、Telestream Wirecast 和 Tricaster 转码器。引入流将通过**频道**，而不会进行任何进一步处理。你的实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。收到请求时，Media Services 会将该流传递给客户。
+- 本地实时编码器将多比特率 **RTMP** 或**平滑流式处理**（分片 MP4）发送到频道。可以使用以下输出多比特率平滑流的实时编码器：Elemental、Envivio、Cisco。以下实时编码器输出 RTMP：Adobe Flash Live、Telestream Wirecast 和 Tricaster 转码器。引入流将通过**频道**，而不会进行任何进一步处理。你的实时编码器也可将单比特率流发送到并未启用实时编码的频道，并不建议这样做。收到请求时，媒体服务会将该流传递给客户。
 
 
 ##使用能够通过 Azure 媒体服务执行实时编码的频道
@@ -67,7 +67,7 @@
 
 ##相关主题
 
-[Media Services 概念](/documentation/articles/media-services-concepts)
+[媒体服务概念](/documentation/articles/media-services-concepts)
 
 [Azure 媒体服务分片 MP4 实时引入规范](/documentation/articles/media-services-fmp4-live-ingest-overview)
 
@@ -80,4 +80,4 @@
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0314_2016-->

@@ -28,7 +28,7 @@ Azure 资源管理器通过资源管理锁提供对资源限制操作的功能�
 
 ## 谁可以在组织中创建或删除锁
 
-若要创建或删除管理锁，你必须有权访问 **Microsoft.Authorization/\*** 或 **Microsoft.Authorization/locks/\*** 操作。在内置角色中，只有**所有者**和**用户访问管理员**有权执行这些操作。有关分配访问控制的详细信息，请参阅 [Azure 基于角色的访问控制](./active-directory/role-based-access-control-configure.md)。
+若要创建或删除管理锁，你必须有权访问 **Microsoft.Authorization/*** 或 **Microsoft.Authorization/locks/*** 操作。在内置角色中，只有**所有者**和**用户访问管理员**有权执行这些操作。有关分配访问控制的详细信息，请参阅 [Azure 基于角色的访问控制](./active-directory/role-based-access-control-configure.md)。
 
 ## 在模板上创建锁
 
@@ -98,4 +98,4 @@ Azure PowerShell 提供了其他用于使用锁的命令，如 **Set-AzureRmReso
 - 若要更改资源位于哪个资源组，请参阅[将资源移到新的资源组](/documentation/articles/resource-group-move-resources)
 - 你可以使用自定义策略对订阅应用限制和约定。有关详细信息，请参阅[使用策略来管理资源和控制访问](/documentation/articles/resource-manager-policy)。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0314_2016-->

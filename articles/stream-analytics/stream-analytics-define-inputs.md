@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="11/23/2015"
+	ms.date="02/04/2016"
 	wacn.date=""/>
 # 数据连接：了解从事件到流分析的数据流输入
 
@@ -69,7 +69,7 @@ FROM Input
 ````
 ## 创建 Blob 存储数据流输入
 
-对于需要将大量非结构化数据存储在云中的情况，Blob 存储提供了一种经济高效且可伸缩的解决方案。通常情况下，可以将 [Blob 存储](http://azure.microsoft.com/services/storage/blobs/)中的数据视为“静态”数据，但这些数据可以作为数据流由流分析进行处理。流分析使用 Blob 存储输入的一种常见情况是进行日志处理，即首先从某个系统捕获遥测数据，然后根据需要对这些数据进行分析和处理以提取有意义的数据。
+对于需要将大量非结构化数据存储在云中的情况，Blob 存储提供了一种经济高效且可伸缩的解决方案。通常情况下，可以将 [Blob 存储](/services/storage/blobs/)中的数据视为“静态”数据，但这些数据可以作为数据流由流分析进行处理。流分析使用 Blob 存储输入的一种常见情况是进行日志处理，即首先从某个系统捕获遥测数据，然后根据需要对这些数据进行分析和处理以提取有意义的数据。
 
 需要注意的是，流分析中 Blob 存储事件的默认时间戳是上次修改 blob 的时间戳，即 *isBlobLastModifiedUtcTime*。若要在事件负载中使用时间戳以流方式处理数据，必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx) 关键字。
 
@@ -164,4 +164,4 @@ FROM Input
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

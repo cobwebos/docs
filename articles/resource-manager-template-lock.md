@@ -38,17 +38,17 @@
 
 下表描述了需要在架构中设置的值。
 
-| 名称 | 类型 | 必选 | 允许的值 | 说明 |
+| Name | 类型 | 必选 | 允许的值 | 说明 |
 | ---- | ---- | -------- | ---------------- | ----------- |
 | type | 枚举 | 是 | 对于资源：<br />**{namespace}/{type}/providers/locks**<br /><br />对于资源组：<br />**Microsoft.Authorization/locks** | 要创建的资源类型。 |
 | apiVersion | 枚举 | 是 | **2015-01-01** | 要用于创建该资源的 API 版本。 |  
 | name | 字符串 | 是 | 对于资源：<br />**{resouce}/Microsoft.Authorization/{lockname}**<br /><br />对于资源组：<br />**{lockname}**<br /><br />最多为 64 个字符<br />不能包含 <、>、%、&、? 或任何控制字符。| 一个值，同时指定要锁定的资源和锁的名称。|
 | dependsOn | 数组 | 否 | 资源名称或资源唯一标识符的逗号分隔列表。| 此锁所依赖的资源的集合。如果要锁定的资源部署在同一模板中，请在此元素中包含该资源名称以确保该资源先部署。|
-| properties | 对象 | 是 |（下面显示）| 一个对象，用于标识锁的类型，以及有关锁的说明。| 
+| 属性 | 对象 | 是 |（下面显示）| 一个对象，用于标识锁的类型，以及有关锁的说明。| 
 
 ### 属性对象
 
-| 名称 | 类型 | 必选 | 允许的值 | 说明 |
+| Name | 类型 | 必选 | 允许的值 | 说明 |
 | ------- | ---- | ---------------- | -------- | ----------- |
 | 级别 | 枚举 | 是 | **CannotDelete** | 要应用于作用域的锁的类型。CanNotDelete 允许修改，但阻止删除。 |
 | 说明 | 字符串 | 否 | 512 个字符 | 该锁的说明。 |
@@ -131,4 +131,4 @@
 - 有关模板结构的信息，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
 - 有关锁的详细信息，请参阅[使用 Azure 资源管理器锁定资源](/documentation/articles/resource-group-lock-resources)。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0314_2016-->

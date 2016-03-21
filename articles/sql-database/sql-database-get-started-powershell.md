@@ -10,7 +10,7 @@
 
 <tags
     ms.service="sql-database"
-    ms.date="12/01/2015"
+    ms.date="01/20/2016"
     wacn.date=""/>
 
 # 使用 PowerShell cmdlet 创建新的 SQL 数据库并执行常见的数据库设置任务 
@@ -28,7 +28,7 @@
 
 若要运行 PowerShell cmdlet，需要已安装并运行 Azure PowerShell。有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。
 
-- 如果你需要 Azure 订阅，只需单击本页顶部的“免费试用”，然后再回来完成本文的相关操作即可。
+- 如果你需要 Azure 订阅，只需单击本页顶部的“试用”，然后再回来完成本文的相关操作即可。
 
 
 ## 配置你的凭据，然后选择你的订阅
@@ -37,7 +37,7 @@
 
 你必须先建立与 Azure 帐户的访问连接，才能运行以下 cmdlet，并且会出现一个要求你输入凭据的登录屏幕。使用登录 Azure 门户时所用的相同电子邮件和密码。
 
-	Add-AzureRmAccount
+	Add-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 成功登录后，你会在屏幕上看到一些信息，其中包括你登录时使用的 ID，以及你有权访问的 Azure 订阅。
 
@@ -113,7 +113,7 @@ SQL 数据库在 Azure SQL 数据库服务器中创建。运行 **New-AzureRmSql
     $DatabasePerfomanceLevel = "S1"
     
     
-    Add-AzureRmAccount
+    Add-AzureRmAccount -EnvironmentName AzureChinaCloud
     Select-AzureRmSubscription -SubscriptionId $SubscriptionId
     
     $ResourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
@@ -131,11 +131,11 @@ SQL 数据库在 Azure SQL 数据库服务器中创建。运行 **New-AzureRmSql
 ## 后续步骤
 创建新的 SQL 数据库并执行基本的数据库设置任务后，可以执行以下操作：
 
-- [使用 SQL Server Management Studio (SSMS) 进行连接](/documentation/articles/sql-database-connect-to-database)
+- [使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例 T-SQL 查询](/documentation/articles/sql-database-connect-query-ssms)
 
 
 ## 其他资源
 
 - [Azure SQL 数据库](/documentation/services/sql-databases)
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

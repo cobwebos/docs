@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/05/2015" 
+	ms.date="02/10/2016"
 	wacn.date=""/>
 
 # <a name="getting-started"></a>移动服务入门
@@ -23,7 +23,7 @@
 
 [AZURE.INCLUDE [mobile-services-hero-slug](../includes/mobile-services-hero-slug.md)]
 
-本教程说明如何使用 Azure 移动服务向 Xamarin.Android 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单*待办事项列表*应用程序。
+本教程说明如何使用 Azure 移动服务向 Xamarin.Android 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单 *待办事项列表* 应用程序。
 
 
 
@@ -35,7 +35,7 @@
 
 下载的快速入门项目包含适用于 Xamarin.Android 的 Azure 移动服务组件。尽管此项目面向 Android 4.2 或更高版本，但移动服务 SDK 只需要 Android 2.2 或更高版本。
 
-> [AZURE.IMPORTANT]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial)。
+> [AZURE.IMPORTANT] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial)。
 
 ## <a name="create-new-service"></a>创建新的移动服务
 
@@ -73,7 +73,7 @@
 
 3. 按“运行”按钮生成项目并启动应用程序。系统将要求你选择模拟器或已连接的 USB 设备。
 
-	> [AZURE.NOTE]若要在 Android 模拟器中运行项目，必须至少定义一个 Android 虚拟设备 (AVD)。使用 AVD 管理器创建和管理这些设备。
+	> [AZURE.NOTE] 若要在 Android 模拟器中运行项目，必须至少定义一个 Android 虚拟设备 (AVD)。使用 AVD 管理器创建和管理这些设备。
 
 4. 在应用程序中键入有意义的文本（例如 _Complete the tutorial_），然后单击“添加”。
 
@@ -81,7 +81,8 @@
 
 	这样可向在 Azure 中托管的新移动服务发送 POST 请求。来自请求的数据被插入到 TodoItem 表。移动服务返回存储在表中的项，数据显示在列表中。
 
-	> [AZURE.NOTE]你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 ToDoActivity.cs C# 文件中。
+	> [AZURE.NOTE] 
+   	> 你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 ToDoActivity.cs C# 文件中。
 
 6. 返回 [Azure 经典门户]，单击“数据”选项卡，然后单击“TodoItems”表。
 
@@ -100,19 +101,18 @@
 * [身份验证入门]  
   了解如何使用标识提供程序对应用程序的用户进行身份验证。
 
-* [推送通知入门 ]  
+* [推送通知入门 ]   
   了解如何向应用程序发送一条很基本的推送通知。
 
-* [如何使用 Azure 移动服务的 Xamarin 组件客户端](/documentation/articles/partner-xamarin-mobile-services-how-to-use-client-library)  
-  了解如何查询移动服务、处理数据和访问自定义 API。
+
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
-[Getting started with Mobile Services]: #getting-started
-[Create a new mobile service]: #create-new-service
-[Define the mobile service instance]: #define-mobile-service-instance
-[Next Steps]: #next-steps
+[Getting started with Mobile Services]:#getting-started
+[Create a new mobile service]:#create-new-service
+[Define the mobile service instance]:#define-mobile-service-instance
+[Next Steps]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/partner-xamarin-mobile-services-android-get-started/mobile-quickstart-completed-android.png
@@ -140,4 +140,4 @@
 [WindowsAzure.com]: http://www.windowsazure.com/
 [Azure 经典门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

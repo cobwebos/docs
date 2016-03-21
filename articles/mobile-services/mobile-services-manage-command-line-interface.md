@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="在命令行管理移动服务 | Microsoft Azure" 
+	pageTitle="通过命令行管理移动服务 | Azure" 
 	description="了解如何使用命令行工具创建、 部署和管理您的 Azure 移动服务。" 
 	services="mobile-services" 
 	documentationCenter="Mobile" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/02/2015" 
+	ms.date="01/27/2016"
 	wacn.date=""/>
 
 # 使用命令行工具自动操作移动服务 
@@ -73,7 +73,7 @@
 
 ##如何列出订阅中的现有移动服务
 
-> [AZURE.NOTE]CLI 中与“list”和“script”相关的命令只适用于 JavaScript 后端。
+> [AZURE.NOTE] CLI 中与“list”和“script”相关的命令只适用于 JavaScript 后端。
 
 以下命令将返回 Azure 订阅中所有移动服务的列表：
 
@@ -89,7 +89,7 @@
 
 如果包含 `-a` 和 `-q` 参数的话，此命令还会删除该移动服务使用的 SQL 数据库和服务器且不显示任何提示。
 
-> [AZURE.NOTE]如果不随 <code>-a</code> 或 <code>-d</code> 一起指定 <code>-q</code> 参数，则执行将会暂停，并且系统会提示你针对 SQL 数据库选择删除选项。仅当没有其他任何服务使用该数据库或服务器时，才能使用 <code>-a</code> 参数；否则，请使用 <code>-d</code> 参数，以便只删除属于要删除的移动服务的数据。
+> [AZURE.NOTE] 如果不随 <code>-a</code> 或 <code>-d</code> 一起指定 <code>-q</code> 参数，则执行将会暂停，并且系统会提示你针对 SQL 数据库选择删除选项。仅当没有其他任何服务使用该数据库或服务器时，才能使用 <code>-a</code> 参数；否则，请使用 <code>-d</code> 参数，以便只删除属于要删除的移动服务的数据。
 
 ##如何在移动服务中创建表
 
@@ -106,7 +106,7 @@
 下面显示了脚本权限值与 [Azure 经典门户]中的权限值的对照表。
 
 |脚本值|门户值|
-|========|========|
+|------|------|
 |`public`|每个人|
 |`application`（默认值）|拥有应用程序密钥的任何人|
 |`user`|仅限经过身份验证的用户|
@@ -186,4 +186,4 @@
 [reference-docs]: /documentation/articles/virtual-machines-command-line-tools/#Commands_to_manage_mobile_services
 [如何安装适用于 Mac 和 Linux 的 Azure 命令行工具]: /zh-cn/documentation/articles/xplat-cli
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

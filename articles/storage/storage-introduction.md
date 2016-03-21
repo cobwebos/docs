@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="存储空间简介 | Microsoft Azure" 
-	description="Microsoft Azure 存储空间概述。" 
+	pageTitle="存储简介 | Microsoft Azure" 
+	description="Microsoft 的云中在线数据存储 - Azure 存储空间的概述。了解如何在应用程序中使用最佳的云存储解决方案。"
 	services="storage" 
 	documentationCenter="" 
 	authors="tamram" 
@@ -9,24 +9,24 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="01/05/2016" 
+	ms.date="01/22/2016"
 	wacn.date=""/>
 
 # Microsoft Azure 存储空间简介
 
 ## 概述
 
-本文面向开发人员、IT 专业人员和业务决策者深入介绍了 Microsoft Azure 存储空间。通过阅读本文，你将会了解：
+Azure 存储空间是依赖于持续性、可用性和可缩放性来满足客户需求的现代应用程序的云存储解决方案。通过阅读本文章，开发人员、IT 专业人员和业务决策人可以了解：
 
 - 什么是 Azure 存储空间，以及如何在你的云、移动、服务器和桌面应用程序中利用它
-- 你可以使用 Azure 存储服务存储什么类型的数据：Blob、表、队列和文件存储
+- 使用 Azure 存储空间服务可以存储哪种数据：Blob（对象）数据、NoSQL 表数据、队列消息和文件共享。
 - 在 Azure 存储空间中如何管理对你的数据的访问
-- 如何通过冗余和复制保护你的 Azure 存储数据 
+- 如何通过冗余和复制保护你的 Azure 存储数据
 - 接下来要到何处去构建你的第一个 Azure 存储应用程序
 
 若要快速开始使用 Azure 存储空间，请参阅[在 5 分钟内开始使用 Azure Blob、表和队列](/documentation/articles/storage-getting-started-guide)
 
-如果你正在寻找对存储空间的高级别快速概述，请查看这里；如果你要了解产品特定概述，请参阅 Azure Blob、Azure 表、Azure 队列和 Azure 文件。
+有关可配合 Azure 存储空间使用的工具、库和其他资源的详细信息，请参阅下面的[后续步骤](#next-steps)。
 
 ## 什么是 Azure 存储空间？
 
@@ -53,16 +53,16 @@ Azure 存储帐户是一个安全的帐户，它向你授予对 Azure 存储空�
 
 你必须具有 Azure 订阅（这是允许你访问各种 Azure 服务的计划），然后才能创建存储帐户。[通过单个订阅，你最多可以创建 100 个唯一的命名存储帐户。](/documentation/articles/azure-subscription-service-limits) 请参阅[存储定价详细信息](/home/features/storage#price)，了解有关批量定价的信息。
 
-你可以从[试用版](/pricing/1rmb-trial/)开始使用 Azure。一旦决定购买某个计划，你可以从各种[购买选项](/pricing/purchase-options/)进行选择。如果你是 [MSDN 订户](/pricing/member-offers/msdn-benefits-details/)，则可以获得免费的月度信用，你可以将其用于各种 Azure 服务，包括 Azure 存储空间。
+你可以从[试用版](/pricing/1rmb-trial/)开始使用 Azure。一旦决定购买某个计划，你可以从各种[购买选项](/pricing/purchase-options/)进行选择。
 
 ### 标准存储帐户
 
 标准存储帐户可以访问 Blob 存储、表存储、队列存储和文件存储：
 
-- **Blob 存储**用于存储文件数据。Blob 可以是任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。Blob 存储有时称为对象存储。 
+- **Blob 存储**用于存储文件数据。Blob 可以是任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。Blob 存储有时称为对象存储。
 - **表存储**用于存储结构化数据集。表存储是一个 NoSQL“键-属性”数据存储，可以用于实现快速开发以及快速访问大量数据。
 - **队列存储**为云服务的各个组件之间的工作流处理和通信提供可靠的消息传送。
-- **文件存储**使用标准 SMB 协议为旧版应用程序提供共享存储。Azure 虚拟机和云服务可通过装载的共享在应用程序组件之间共享文件数据，本地应用程序可通过文件服务 REST API 来访问共享中的文件数据。 
+- **文件存储**使用标准 SMB 协议为旧版应用程序提供共享存储。Azure 虚拟机和云服务可通过装载的共享在应用程序组件之间共享文件数据，本地应用程序可通过文件服务 REST API 来访问共享中的文件数据。
 
 每个标准存储帐户可以容纳高达 500 TB 混合的 Blob、队列、表和文件数据。有关标准存储帐户容量的详细信息，请参阅 [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets)。
 
@@ -82,7 +82,7 @@ Azure 高级存储帐户当前仅支持 Azure 虚拟机磁盘。有关 Azure 高
 
 对于有大量非结构化数据要存储在云中的用户，Blob 存储提供了一种经济高效且可伸缩的解决方案。你可以使用 Blob 存储来存储如下内容：
 
-- 文档 
+- 文档
 - 社交数据，例如照片、视频、音乐和博客
 - 文件、计算机、数据库和设备的备份
 - Web 应用程序的图像和文本
@@ -149,7 +149,7 @@ Azure 文件存储提供了基于云的 SMB 文件共享，这样你可以将依
 
 根据以下四个因素向使用 Azure 存储空间的客户收费：使用的存储容量、选择的复制选项、对服务发出的请求数，以及数据流出量。
 
-存储容量指的是存储帐户中用来存储数据的配额。对数据进行简单存储时，其成本取决于存储的数据量和数据复制方式。针对 Azure 存储空间的每个读取和写入操作还将针对服务发出一个请求。数据流出量是指从某个 Microsoft Azure 区域传出的数据。当不在同一区域中的应用程序访问你的存储帐户中的数据时，无论该应用程序是云服务还是某个其他类型的应用程序，都将会针对数据流出量向你收费。（对于 Microsoft Azure 服务，你可以采取措施将数据和服务分组到同一数据中心内，从而降低或避免处理和数据流出量费用。）
+存储容量指的是存储帐户中用来存储数据的配额。对数据进行简单存储时，其成本取决于存储的数据量和数据复制方式。针对 Azure 存储空间的每个读取和写入操作还将针对服务发出一个请求。数据流出量是指从某个 Microsoft Azure 区域传出的数据。当不在同一区域中的应用程序访问你的存储帐户中的数据时，无论该应用程序是云服务还是某个其他类型的应用程序，都将会针对数据流出量向你收费。（对于 Microsoft Azure 服务，你可以采取措施将数据和服务通过分组分到相同的数据中心内，从而降低或避免进程和数据流出量费用。）
 
 [存储定价详细信息](/home/features/storage#price)页提供了针对存储容量、复制和事务的详细定价信息。[数据传输定价详细信息](/pricing/details/data-transfers/)提供了针对数据流出量的详细定价信息。你可以使用 [Azure 存储空间定价计算器](/pricing/calculator/?scenario=data-management)来帮助估算成本。
 
@@ -232,4 +232,4 @@ Azure 存储空间通过一个 [REST API](http://msdn.microsoft.com/zh-cn/librar
 - [如何通过 Python 使用队列存储](/documentation/articles/storage-python-how-to-use-queue-storage)
  
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0314_2016-->

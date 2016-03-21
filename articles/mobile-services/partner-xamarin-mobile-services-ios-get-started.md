@@ -1,5 +1,5 @@
 <properties
-	pageTitle="用于 Xamarin iOS 应用的移动服务入门 | Microsoft Azure"
+	pageTitle="用于 Xamarin iOS 应用程序的移动服务入门 | Azure"
 	description="按照本教程进行操作，开始使用 Azure 移动服务进行 Xamarin iOS 开发。"
 	services="mobile-services"
 	documentationCenter="xamarin"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="11/05/2015"
+	ms.date="02/10/2016"
 	wacn.date=""/>
 
 # <a name="getting-started"></a>移动服务入门
@@ -22,7 +22,7 @@
 
 [AZURE.INCLUDE [mobile-services-hero-slug](../includes/mobile-services-hero-slug.md)]
 
-本教程说明如何使用 Azure 移动服务向 Xamarin.iOS 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单*待办事项列表*应用程序。
+本教程说明如何使用 Azure 移动服务向 Xamarin.iOS 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单 *待办事项列表* 应用程序。
 
 如果你更愿意观看视频，下面的视频片段提供了与本教程相同的步骤。
 
@@ -36,7 +36,7 @@
 
 完成本教程需要 XCode 和 [Xamarin Studio] for OS X 或用于 Windows 上的 Visual Studio 的 Xamarin Visual Studio 插件。该示例将在 iOS 5.0 和更高版本上运行。
 
-> [AZURE.IMPORTANT]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial)。
+> [AZURE.IMPORTANT] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial)。
 
 ## <a name="create-new-service"></a>创建新的移动服务
 
@@ -64,7 +64,7 @@
 
 5. 在“下载并运行应用程序”下面单击“下载”。
 
-	随即将会下载示例_待办事项列表_应用程序的项目，该应用程序已连接到移动服务，并引用 Xamarin.iOS 的 Azure 移动服务组件。将压缩的项目文件保存到本地计算机，并记下保存位置。
+	随即将会下载示例 _待办事项列表_ 应用程序的项目，该应用程序已连接到移动服务，并引用 Xamarin.iOS 的 Azure 移动服务组件。将压缩的项目文件保存到本地计算机，并记下保存位置。
 
 ## 运行新的 Xamarin.iOS 应用程序
 
@@ -84,7 +84,7 @@
 
 	这样可向在 Azure 中托管的新移动服务发送 POST 请求。来自请求的数据被插入到 TodoItem 表。移动服务返回存储在表中的项，数据显示在列表中。
 
-	> [AZURE.NOTE]你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 TodoService.cs C# 文件中。
+	> [AZURE.NOTE] 你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 TodoService.cs C# 文件中。
 
 4. 返回 [Azure 经典门户]，单击“数据”选项卡，然后单击“TodoItems”表。
 
@@ -107,16 +107,16 @@
 * [推送通知入门 ]  
   了解如何向应用程序发送一条很基本的推送通知。
 
-* [如何使用 Azure 移动服务的 Xamarin 组件客户端](/documentation/articles/partner-xamarin-mobile-services-how-to-use-client-library)了解如何查询移动服务、处理数据和访问自定义 API。
-  
+
+
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
-[Getting started with Mobile Services]: #getting-started
-[Create a new mobile service]: #create-new-service
-[Define the mobile service instance]: #define-mobile-service-instance
-[Next Steps]: #next-steps
+[Getting started with Mobile Services]:#getting-started
+[Create a new mobile service]:#create-new-service
+[Define the mobile service instance]:#define-mobile-service-instance
+[Next Steps]:#next-steps
 
 <!-- Images. -->
 [0]: ./media/partner-xamarin-mobile-services-ios-get-started/mobile-quickstart-completed-ios.png
@@ -139,4 +139,4 @@
 
 [Azure 经典门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

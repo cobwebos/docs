@@ -1,5 +1,5 @@
 <properties
-	pageTitle="弹性数据库查询入门 | Microsoft Azure"
+	pageTitle="用于分片的弹性查询（水平分区）入门 | Microsoft Azure"
 	description="如何使用跨数据库数据库查询"
 	services="sql-database"
 	documentationCenter=""  
@@ -8,12 +8,12 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="10/15/2015"
+	ms.date="01/22/2016"
 	wacn.date="" />
 
-# 跨数据库查询入门
+# 用于分片的弹性查询（水平分区）入门
 
-Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连接点运行跨多个数据库的 T-SQL 查询。有关弹性数据库查询功能的详细信息，请参阅[功能概述页](sql-database-elastic-query-overview.md)。
+Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连接点运行跨多个数据库的 T-SQL 查询。有关弹性数据库查询功能的详细信息，请参阅[功能概述页](/documentation/articles/sql-database-elastic-query-overview)。
 
 本主题对[弹性数据库工具入门](/documentation/articles/sql-database-elastic-scale-get-started)中的示例做了延伸。完成时，你将会：了解如何配置和使用 Azure SQL 数据库执行跨多个相关数据库的查询。
 ## 先决条件
@@ -29,7 +29,7 @@ Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连�
 	![命令提示符][1]
 
 2.  在命令窗口中键入“1”，然后按 **Enter**。这会创建分片映射管理器，并将两个分片添加到服务器。然后键入“3”并按 **Enter**；重复该操作四次。这会在你的分片中插入示例数据行。
-3.  [Azure 预览门户](https://manage.windowsazure.cn)应会在 v12 服务器中显示三个新的数据库：
+3.  [Azure 门户](https://manage.windowsazure.cn)应会在 v12 服务器中显示三个新的数据库：
 
 	![Visual Studio 确认][2]
 
@@ -39,12 +39,12 @@ Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连�
 
 ## 创建弹性查询数据库
 
-1. 打开 [Azure 预览门户](https://manage.windowsazure.cn)并登录。
-2. 在与分片设置相同的服务器中创建新的 Azure SQL 数据库。将数据库命名为“ElasticDBQuery”。 对于定价层，必须选择一个高级产品。弹性数据库查询目前只能在高级层上使用。
+1. 打开 [Azure 门户](https://manage.windowsazure.cn)并登录。
+2. 在与分片设置相同的服务器中创建新的 Azure SQL 数据库。将数据库命名为“ElasticDBQuery”。
 
 	![Azure 门户和定价层][3]
 
-	注意：你可以使用现有的高级数据库。如果这样做，该数据库不能是你想要对其运行查询的某一个分片。此数据库将用于为弹性数据库查询创建元数据对象。
+	注意：你可以使用现有的数据库。如果这样做，该数据库不能是你想要对其运行查询的某一个分片。此数据库将用于为弹性数据库查询创建元数据对象。
 
 
 ## 创建数据库对象
@@ -123,9 +123,9 @@ Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连�
 现在，你可以使用 Excel 的强大数据可视化功能。你可以使用包含服务器名称、数据库名称和凭据的连接字符串，将 BI 和数据集成工具连接到弹性查询数据库。请确保支持将 SQL Server 用作工具的数据源。你可以引用弹性查询数据库和外部表，就如同使用工具连接的任何其他 SQL Server 数据库和 SQL Server 表一样。
 
 ### 成本
-使用弹性数据库查询功能不会产生额外的费用。但是，目前此功能只能在用作终结点的高级数据库上使用，但分片可以是任何服务层。
+使用弹性数据库查询功能不会产生额外的费用。
 
-有关价格信息，请参阅 [SQL 数据库定价详细信息](http://www.windowsazure.cn/home/features/sql-database/#price)。
+有关价格信息，请参阅 [SQL 数据库定价详细信息](/home/features/sql-database/#price)。
 
 
 [AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
@@ -138,4 +138,4 @@ Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连�
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0314_2016-->

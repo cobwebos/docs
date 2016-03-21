@@ -40,7 +40,7 @@
 
         ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
-        对于计算、存储和网络资源，你可以选择使用资源管理器或经典部署。选择“资源管理器”。
+        For Compute, Storage, and Networking resources, you have the option of using either Resource Manager or Classic deployment. Select **Resource Manager**.
 
         ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
@@ -89,7 +89,7 @@
 
         ![Azure portal](./media/resource-manager-deployment-model/azure-portal.png)
 
-        或者，访问门户并指定“经典”部署（对于计算、存储和网络）。
+        Or, the portal and you specify **Classic** deployment (for Compute, Storage, and Networking).
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
@@ -184,4 +184,4 @@
 - 若要了解如何创建声明性部署模板，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
 - 若要查看用于部署模板的命令，请参阅[使用 Azure 资源管理器模板部署应用程序](/documentation/articles/resource-group-template-deploy)。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0314_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Reliable Services API 提供的基于 WCF 的通信堆栈"
-   description="本文介绍 Reliable Services API 提供的基于 WCF 的通信堆栈。"
+   pageTitle="Reliable Services WCF 通信堆栈 | Microsoft Azure"
+   description="Service Fabric 中的内置 WCF 通信堆栈为 Service Services 提供客户端到服务的 WCF 通信。"
    services="service-fabric"
    documentationCenter=".net"
    authors="BharatNarasimman"
@@ -9,28 +9,26 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="08/27/2015"
+   ms.date="11/17/2015"
    wacn.date=""/>
 
 # Reliable Services 基于 WCF 的通信堆栈
-Reliable services 框架使服务作者能够决定他们要用于其服务的通信堆栈。他们可以通过从 [`CreateCommunicationListener`](/documentation/articles/service-fabric-reliable-service-communication) 方法返回的 `ICommunicationListener` 插入所选择的通信堆栈。该框架为要使用基于 WCF 的通信的服务作者提供了通信堆栈的基于 WCF 的实现。
+Reliable services 框架使服务创作者能够选择他们要用于其服务的通信堆栈。他们可以通过从 [CreateServiceReplicaListeners 或 CreateServiceInstanceListeners](/documentation/articles/service-fabric-reliable-service-communication) 方法返回的 **ICommunicationListener**，来插入所选的通信堆栈。对于想要使用基于 Windows Communication Foundation (WCF) 的通信的服务创作者，该框架提供了基于 WCF 的通信堆栈实现。
 
 ## WCF 通信侦听器
-特定于 WCF 的 `ICommunicationListener` 实现由 `WcfCommunicationListener` 类提供。
+特定于 WCF 的 **ICommunicationListener** 实现由 **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** 类提供。
 
 ```csharp
 
-public WcfCommunicationListener(
-    Type communicationInterfaceType,
-    Type communicationImplementationType);
-
-protected override ICommunicationListener CreateCommunicationListener()
-    {
-        WcfCommunicationListener communicationListener = new WcfCommunicationListener(typeof(ICalculator), this)
+protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
+{
+    // TODO: If your service needs to handle user requests, return a list of ServiceReplicaListeners here.
+    return new[] { new ServiceReplicaListener(parameters =>
+        new WcfCommunicationListener(ServiceInitializationParameters,typeof(ICalculator), this)
         {
             //
             // The name of the endpoint configured in the ServiceManifest under the Endpoints section
-            // which identifies the endpoint that the wcf servicehost should listen on.
+            // that identifies the endpoint that the WCF ServiceHost should listen on.
             //
             EndpointResourceName = "ServiceEndpoint",
 
@@ -38,15 +36,14 @@ protected override ICommunicationListener CreateCommunicationListener()
             // Populate the binding information that you want the service to use.
             //
             Binding = this.CreateListenBinding()
-        };
-
-        return communicationListener;
-    }
+        }
+    )};
+}
 
 ```
 
 ## 为 WCF 通信堆栈编写客户端
-为编写客户端以便使用 WCF 与服务进行通信，该框架提供了 `WcfClientCommunicationFactory`，这是特定于 WCF 的 [`ClientCommunicationFactoryBase`](/documentation/articles/service-fabric-reliable-service-communication) 实现。
+为编写客户端以便使用 WCF 与服务进行通信，该框架提供了 **WcfClientCommunicationFactory**，这是特定于 WCF 的 [ClientCommunicationFactoryBase](service-fabric-reliable-service-communication.md) 实现。
 
 ```csharp
 
@@ -59,7 +56,7 @@ public WcfCommunicationClientFactory(
 
 ```
 
-可以从 `WcfCommunicationClientFactory` 创建的 `WcfCommunicationClient` 访问 WCF 通信通道
+可以从 **WcfCommunicationClientFactory** 创建的 **WcfCommunicationClient** 访问 WCF 通信通道。
 
 ```csharp
 
@@ -71,7 +68,7 @@ public class WcfCommunicationClient<TChannel> : ICommunicationClient where TChan
 
 ```
 
-客户端代码可以将 `WcfCommunicationClientFactory` 与 `ServicePartitionClient` 一起使用来确定服务终结点并与服务进行通信。
+客户端代码可以使用 **WcfCommunicationClientFactory** 以及 **ServicePartitionClient** 来确定服务终结点，并与服务通信。
 
 ```csharp
 
@@ -89,11 +86,11 @@ var clientFactory = new WcfCommunicationClientFactory<ICalculator>(
     serviceResolver,// ServicePartitionResolver
     binding,        // Client binding
     null,           // Callback object
-    null);          // donot retry Exception types
+    null);          // do not retry Exception types
 
 
 //
-// Create a client for communicating with the calc service which has been created with
+// Create a client for communicating with the calc service that has been created with the
 // Singleton partition scheme.
 //
 var calculatorServicePartitionClient = new ServicePartitionClient<WcfCommunicationClient<ICalculator>>(
@@ -106,8 +103,11 @@ var calculatorServicePartitionClient = new ServicePartitionClient<WcfCommunicati
 var result = calculatorServicePartitionClient.InvokeWithRetryAsync(
     client => client.Channel.AddAsync(2, 3)).Result;
 
-
 ```
- 
 
-<!---HONumber=74-->
+## 后续步骤
+* [使用 Reliable Services 远程控制执行远程过程调用](/documentation/articles/service-fabric-reliable-services-communication-remoting)
+
+* [Reliable Services 中使用 OWIN 的 Web API](/documentation/articles/service-fabric-reliable-services-communication-webapi)
+
+<!---HONumber=Mooncake_0314_2016-->

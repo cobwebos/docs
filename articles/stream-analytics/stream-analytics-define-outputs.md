@@ -8,9 +8,9 @@
 	manager="paulettm"
 	editor="cgronlun"/>
 
-<tags 
-	ms.service="stream-analytics" 
-	ms.date="12/01/2015"
+<tags
+	ms.service="stream-analytics"
+	ms.date="02/04/2016"
 	wacn.date=""/>
 # 使流分析数据转换输出输出到分析工具和数据存储选项
 
@@ -181,4 +181,4 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="12/03/2015"
+	ms.date="02/11/2016"
 	wacn.date=""/>
 
 # 向移动服务应用程序添加推送通知
@@ -30,7 +30,7 @@
 + [Xamarin.iOS Studio]
 + [Azure 移动服务组件]
 
->[AZURE.IMPORTANT]根据 APNS 的要求，你必须在支持 iOS 的设备（iPhone 或 iPad）而不是在模拟器上部署和测试推送通知。
+>[AZURE.IMPORTANT] 根据 APNS 的要求，你必须在支持 iOS 的设备（iPhone 或 iPad）而不是在模拟器上部署和测试推送通知。
 
 APNS 使用证书对你的移动服务进行身份验证。按照以下说明创建必要的证书并将其上载到你的移动服务。有关正式的 APNS 功能文档，请参阅 [Apple 推送通知服务]。
 
@@ -82,11 +82,11 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
    
    	单击应用程序 ID 会显示有关应用程序和应用程序 ID 的详细信息。单击“设置”按钮。
    
-   	![][107]
+   	![][107] 
    
 4. 滚动到屏幕底部并单击“Development Push SSL Certificate”（开发推送 SSL 证书 ）部分下的“Create Certificate...”（创建证书...）按钮。
 
-   	![][108]
+   	![][108] 
 
    	将显示“Add iOS Certificate”（添加 iOS 证书）助手。
    
@@ -98,15 +98,15 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
   
 6. 门户创建证书之后，请单击“Download”（下载）按钮，然后单击“Done”（完成）。
  
-  	![][111]
+  	![][111]  
 
    	随后将会下载签名证书并将其保存到计算机上的 Downloads 文件夹。
 
-  	![][9]
+  	![][9] 
 
     注意：默认情况下，下载的文件（开发证书）名为 <strong>aps\_development.cer</strong>。
 
-7. 双击下载的推送证书 **aps\_development.cer**。
+7. 双击下载的推送证书 **aps_development.cer**。
 
    	将在 Keychain 中安装新证书，如下所示：
 
@@ -164,9 +164,9 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
    	此时将显示“上载证书”对话框。
 
-4. 单击“文件”，选择导出的 .p12 证书文件，输入密码，确保已选择正确的“模式”，单击勾选图标，然后单击“保存”。
+4. 单击“文件”，选择导出的 .p12 证书文件，输入“密码”，确保已选择正确的“模式”，单击勾选图标，然后单击“保存”。
 
-   	![][20]
+   	![][20] 
 
 现在，你的移动服务已配置为使用 APNS。
 
@@ -304,7 +304,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
    	这将会注册一个新的插入脚本，该脚本使用[apns 对象]将推送通知（插入的文本）发送到插入请求中提供的设备。
 
-   >[AZURE.NOTE]此脚本将延迟发送通知，使你有足够的时间关闭应用程序以接收 toast 通知。
+   >[AZURE.NOTE] 此脚本将延迟发送通知，使你有足够的时间关闭应用程序以接收 toast 通知。
 
 ## <a name="test"></a>在应用程序中测试推送通知
 
@@ -312,7 +312,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
   	![][23]
 
-   >[AZURE.NOTE]你必须显式接受来自应用程序的推送通知。此请求只会在首次运行应用程序时出现。
+   >[AZURE.NOTE] 你必须显式接受来自应用程序的推送通知。此请求只会在首次运行应用程序时出现。
 
 2. 在应用中键入有意义的文本（例如 _A new Mobile Services task_），然后单击加号 (**+**) 图标。
 
@@ -377,9 +377,9 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 [116]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-16.png
 [117]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-17.png
 
-[120]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-20.png
-[121]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-21.png
-[122]: ./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-22.png
+[120]:./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-20.png
+[121]:./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-21.png
+[122]:./media/partner-xamarin-mobile-services-ios-get-started-push/mobile-services-ios-push-22.png
 
 [Xamarin.iOS Studio]: http://xamarin.com/platform
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
@@ -397,4 +397,4 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 [completed example project]: http://go.microsoft.com/fwlink/p/?LinkId=331303
 [Xamarin.iOS]: http://xamarin.com/download
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

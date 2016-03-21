@@ -7,9 +7,9 @@
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015" 
+<tags
+	ms.service="media-services"
+ 	ms.date="02/03/2016"  
 	wacn.date=""/>
 
 
@@ -24,14 +24,14 @@
 
 本主题介绍了如何使用 **Azure 管理门户**配置内容密钥授权策略。以后，可以使用该密钥来动态加密你的内容。请注意，当前你可以加密以下流格式：HLS、MPEG DASH 和平滑流式处理。无法加密 HDS 流格式或渐进式下载。
  
-当播放器请求已设置为动态加密的流时，Media Services 将使用配置的密钥通过 AES 或 PlayReady 加密来动态加密你的内容。为了解密流，播放器将从密钥传送服务请求密钥。为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
+当播放器请求已设置为动态加密的流时，媒体服务将使用配置的密钥通过 AES 或 PlayReady 加密来动态加密你的内容。为了解密流，播放器将从密钥传送服务请求密钥。为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
 
 如果你打算创建多个内容密钥，或者想要指定除媒体服务密钥传送服务以外的**密钥\\许可证传送服务** URL，请使用媒体服务 .NET SDK 或 REST API。
 
-[使用 Media Services .NET SDK 配置内容密钥授权策略](/documentation/articles/media-services-dotnet-configure-content-key-auth-policy/)
+[使用适用于 .NET 的媒体服务 SDK 配置内容密钥授权策略](/documentation/articles/media-services-dotnet-configure-content-key-auth-policy)
 
-[使用 Media Services REST API 配置内容密钥授权策略](/documentation/articles/media-services-rest-configure-content-key-auth-policy/)
+[使用媒体服务 REST API 配置内容密钥授权策略](/documentation/articles/media-services-rest-configure-content-key-auth-policy)
 
 ###请注意以下事项：
 
@@ -44,7 +44,7 @@
 
 若要配置密钥授权策略，请选择“内容保护”页。
 	
-Media Services 支持通过多种方式对发出密钥请求的用户进行身份验证。内容密钥授权策略可能且受到**开放**、**令牌**或 **IP** 授权限制（可以使用 REST 或 .NET SDK 配置 **IP**）。
+媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。内容密钥授权策略可能且受到**开放**、**令牌**或 **IP** 授权限制（可以使用 REST 或 .NET SDK 配置 **IP**）。
 
 ###开放限制
 
@@ -58,9 +58,9 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 
 **令牌**限制策略必须附带由“安全令牌服务”(STS) 颁发的令牌。媒体服务支持采用简单的“Web 令牌”([SWT](https://msdn.microsoft.com/zh-cn/library/gg185950.aspx#BKMK_2)) 格式和“JSON Web 令牌”(JWT) 格式的令牌。有关信息，请参阅 [JWT 令牌身份验证](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)。
 
-媒体服务不提供 **安全令牌服务**。你可以创建自定义 STS 或利用 Microsoft Azure ACS 来颁发令牌。必须将 STS 配置为创建令牌，该令牌使用指定密钥以及你在令牌限制配置中指定的颁发声明进行签名。如果令牌有效，而且令牌中的声明与为内容密钥配置的声明相匹配，则 Media Services 密钥传送服务会将加密密钥返回到客户端。有关详细信息，请参阅[使用 Azure ACS 颁发令牌](http://mingfeiy.com/acs-with-key-services)。
+媒体服务不提供 **安全令牌服务**。你可以创建自定义 STS 或利用 Microsoft Azure ACS 来颁发令牌。必须将 STS 配置为创建令牌，该令牌使用指定密钥以及你在令牌限制配置中指定的颁发声明进行签名。如果令牌有效，而且令牌中的声明与为内容密钥配置的声明相匹配，则媒体服务密钥传送服务会将加密密钥返回到客户端。有关详细信息，请参阅[使用 Azure ACS 颁发令牌](http://mingfeiy.com/acs-with-key-services)。
 
-在配置“令牌”限制策略时，必须设置“验证密钥”、“颁发者”和“受众”的值。主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。Media Services 密钥交付服务将验证令牌中的这些值是否与模板中的值匹配。
+在配置“令牌”限制策略时，必须设置“验证密钥”、“颁发者”和“受众”的值。主验证密钥包含用来为令牌签名的密钥，颁发者是颁发令牌的安全令牌服务。受众（有时称为范围）描述该令牌的意图，或者令牌授权访问的资源。媒体服务密钥交付服务将验证令牌中的这些值是否与模板中的值匹配。
 
 ###PlayReady
 
@@ -78,7 +78,9 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 	  </LicenseTemplates>
 	</PlayReadyLicenseResponseTemplate>
 
-你可以单击“导入策略 xml”按钮，然后提供符合[此处](https://msdn.microsoft.com/zh-cn/library/azure/dn783459.aspx)定义的 XML 架构的另一个 XML。
+你可以单击“导入策略 xml”按钮，然后提供符合[此处](/documentation/articles/media-services-playready-license-template-overview)定义的 XML 架构的另一个 XML。
+
+
 
 ##后续步骤
 现在已经配置了内容密钥的授权策略，请转到[如何：使用 Azure 管理门户启用加密](/documentation/articles/media-services-manage-content#encrypt)主题。
@@ -87,4 +89,6 @@ Media Services 支持通过多种方式对发出密钥请求的用户进行身�
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
 
-<!---HONumber=76-->
+ 
+
+<!---HONumber=Mooncake_0314_2016-->

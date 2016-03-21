@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="身份验证入门 (Windows Phone) | Microsoft Azure" 
+	pageTitle="身份验证入门 (Windows Phone) | Azure" 
 	description="了解如何使用移动服务通过提供各种标识提供程序（包括 Google、Facebook、Twitter 和 Microsoft）对 Windows Phone 应用程序的用户进行身份验证。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/02/2015" 
+	ms.date="01/25/2016"
 	wacn.date=""/>
 
 # 向移动服务应用程序添加身份验证
@@ -30,16 +30,16 @@
 
 ##<a name="register"></a>注册应用程序以进行身份验证并配置移动服务
 
-[AZURE.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)]
+[AZURE.INCLUDE [mobile-services-register-authentication](../includes/mobile-services-register-authentication.md)] 
 
 ##<a name="permissions"></a>将权限限制给已经过身份验证的用户
 
-[AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)]
+[AZURE.INCLUDE [mobile-services-restrict-permissions-javascript-backend](../includes/mobile-services-restrict-permissions-javascript-backend.md)] 
 
 
-&nbsp;&nbsp;3.在 Visual Studio 2012 Express for Windows Phone 中，打开在完成教程[将移动服务添加到现有应用](mobile-services-windows-phone-get-started-data.md)时创建的项目。
+&nbsp;&nbsp;3. 在 Visual Studio 中，打开在完成教程[将移动服务添加到现有应用](mobile-services-windows-phone-get-started-data.md)时创建的项目。
 
-&nbsp;&nbsp;4.按 F5 键运行这个基于快速入门的应用程序；验证启动该应用程序后，是否会引发状态代码为 401（“未授权”）的未处理异常。发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 *TodoItem* 表现在要求身份验证。
+&nbsp;&nbsp;4. 按 F5 键运行这个基于快速入门的应用程序；验证启动该应用程序后，是否会引发状态代码为 401（“未授权”）的未处理异常。发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 *TodoItem* 表现在要求身份验证。
 
 接下来，你需要更新应用程序，以便在从移动服务请求资源之前对用户进行身份验证。
 
@@ -49,7 +49,7 @@
 
 ##<a name="tokens"></a>在客户端上存储授权令牌
 
-[AZURE.INCLUDE [mobile-services-windows-phone-authenticate-app-with-token](../includes/mobile-services-windows-phone-authenticate-app-with-token.md)]
+[AZURE.INCLUDE [mobile-services-windows-phone-authenticate-app-with-token](../includes/mobile-services-windows-phone-authenticate-app-with-token.md)] 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -59,7 +59,7 @@
 [Register your app for authentication and configure Mobile Services]: #register
 [Restrict table permissions to authenticated users]: #permissions
 [Add authentication to the app]: #add-authentication
-[Next Steps]: #next-steps
+[Next Steps]:#next-steps
 
 <!-- Images. -->
 [1]: ./media/mobile-services-wp8-get-started-users/mobile-services-selection.png
@@ -72,7 +72,6 @@
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [将移动服务添加到现有应用程序]: /documentation/articles/mobile-services-windows-phone-get-started-data
 [Authorize users with scripts]: /documentation/articles/mobile-services-windows-phone-authorize-users-in-scripts
-[Azure classic portal]: https://manage.windowsazure.cn/
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

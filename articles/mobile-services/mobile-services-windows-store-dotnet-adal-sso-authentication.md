@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Active Directory 身份验证库单一登录对应用进行身份验证（Windows 应用商店）| Microsoft Azure"
+	pageTitle="使用 Active Directory 身份验证库单一登录对应用进行身份验证（Windows 应用商店）| Azure"
 	description="了解如何在 Windows 应用商店应用程序中使用 ADAL 对用户进行单一登录身份验证。"
 	documentationCenter="windows"
 	authors="wesmc7777"
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="08/18/2015" 
+	ms.date="01/14/2016"
 	wacn.date=""/>
 
 # 使用 Active Directory 身份验证库单一登录对应用程序进行身份验证
@@ -26,7 +26,7 @@
 若要能够对用户进行身份验证，必须向 Azure Active Directory (AAD) 注册你的应用程序。此过程分为两个步骤。首先，你必须注册你的移动服务，并公开其上的权限。其次，你必须注册你的 Windows 应用商店应用程序，并授予它对这些权限的访问权限
 
 
->[AZURE.NOTE]本教程旨在帮助你更好地了解如何通过移动服务，使用[客户端定向的登录操作](http://msdn.microsoft.com/zh-cn/library/azure/jj710106.aspx)对 Windows 应用商店应用进行单一登录 Azure Active Directory 身份验证。如果这是你第一次体验移动服务，请先完成[移动服务入门]教程。
+>[AZURE.NOTE] 本教程旨在帮助你更好地了解如何通过移动服务，使用[客户端定向的登录操作](http://msdn.microsoft.com/zh-cn/library/azure/jj710106.aspx)对 Windows 应用商店应用进行单一登录 Azure Active Directory 身份验证。如果这是你第一次体验移动服务，请先完成[移动服务入门]教程。
 
 
 ##先决条件
@@ -70,21 +70,14 @@
 
     ![][3]
 
-2. 然后单击“服务”
+2. 然后单击应用管理“>应用标识”，然后复制页面中的包 SID。
 
     ![][4]
 
-3. 然后单击“Live 服务站点”。
 
-    ![][5]
+###创建本机应用程序注册
 
-4. 从页面顶部复制程序包 SID。
-
-    ![][6]
-
-### 创建本机应用程序注册
-
-1. 在 [Azure 经典门户]中浏览到“Active Directory”，然后单击你的目录。
+1. 在[经典门户]中浏览到“Active Directory”，然后单击你的目录。
 
     ![][7]
 
@@ -124,7 +117,7 @@
 
 [AZURE.INCLUDE [mobile-services-dotnet-adal-install-nuget](../includes/mobile-services-dotnet-adal-install-nuget.md)]
 
-4. 在 Visual Studio 的“解决方案资源管理器”窗口中，打开 MainPage.xaml.cs 文件，并添加以下 using 语句。
+4. 在 Visual Studio 的“解决方案资源管理器”窗口中，打开 MainPage.cs 文件，并添加以下 using 语句。
 
         using Windows.UI.Popups;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -211,7 +204,8 @@
 <!-- URLs. -->
 [如何向 Azure Active Directory 注册]: /documentation/articles/mobile-services-how-to-register-active-directory-authentication/
 [Azure 经典门户]: https://manage.windowsazure.com/
+[经典门户]: https://manage.windowsazure.cn/
 [移动服务入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started
 [Windows 开发人员中心仪表板]: http://go.microsoft.com/fwlink/p/?LinkID=266734
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

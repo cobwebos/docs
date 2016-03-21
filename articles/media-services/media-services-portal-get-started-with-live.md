@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/15/2015"
+	ms.date="01/31/2016"  
 	wacn.date=""/>
 
 
@@ -26,23 +26,23 @@
 3.  创建通道。
 1.  配置实时编码器，并将实时流引入通道（此步骤将使用 Wirecast）。
 1.  创建节目（和资产）。
-1.  发布资产并获取流 URL。  
+1.  发布资产并获取流 URL。
 1.  播放内容。
 2.  清理。
 
 ## 先决条件
 以下是完成本教程所需具备的条件。
 
-- 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
-- 一个 Media Services 帐户。若要创建 Media Services 帐户，请参阅[创建帐户](/documentation/articles/media-services-create-account)。
+- 若要完成本教程，你需要一个 Azure 帐户。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/?WT.mc_id=A261C142F)。 
+- 一个媒体服务帐户。若要创建媒体服务帐户，请参阅[创建帐户](/documentation/articles/media-services-create-account)。
 - 可以发送多比特率实时流的摄像头和编码器。
 
 
 ## 使用 Azure 管理门户配置流式处理终结点
 
-使用 Azure Media Services 时最常见的方案之一是将自适应比特率流传送至你的客户端。通过自适应比特率流式处理，客户端可以在视频显示时，根据当前网络带宽、CPU 利用率和其他因素，切换至较高或较低的比特率流。Media Services 支持以下自适应比特率流式处理技术：HTTP 实时流式处理 (HLS)、平滑流式处理、MPEG DASH 和 HDS（仅适用于 Adobe PrimeTime/Access 许可证持有人）。
+使用 Azure 媒体服务时最常见的方案之一是将自适应比特率流传送至你的客户端。通过自适应比特率流式处理，客户端可以在视频显示时，根据当前网络带宽、CPU 利用率和其他因素，切换至较高或较低的比特率流。媒体服务支持以下自适应比特率流式处理技术：HTTP 实时流式处理 (HLS)、平滑流式处理、MPEG DASH 和 HDS（仅适用于 Adobe PrimeTime/Access 许可证持有人）。
 
-使用实时流时，本地实时编码器（在本例中为 Wirecast）会将多比特率实时流引入你的通道。当用户请求流时，Media Services 会使用动态打包将源流重新打包成自适应比特率流（HLS、DASH 或平滑流）。
+使用实时流时，本地实时编码器（在本例中为 Wirecast）会将多比特率实时流引入你的通道。当用户请求流时，媒体服务会使用动态打包将源流重新打包成自适应比特率流（HLS、DASH 或平滑流）。
 
 若要利用动态打包，你需要获取计划从中传送内容的*流式处理终结点*的至少一个流式处理单元。
 
@@ -54,15 +54,15 @@
 
 3. 若要指定流式处理单元数，请选择“缩放”选项卡并移动“保留容量”滑块。
 
-	![“缩放”页](./media/media-services-portal-get-started-with-live/media-services-origin-scale.png)
+![“缩放”页](./media/media-services-portal-get-started-with-live/media-services-origin-scale.png)
 
 4. 单击“保存”按钮保存更改。
 
-	分配所有新的单元大约需要 20 分钟才能完成。
+分配所有新的单元大约需要 20 分钟才能完成。
 
-	>[AZURE.NOTE]当前，将流式处理单位的任何正值设置回“无”可将流式处理功能禁用最多 1 小时。
-	>
-	> 为 24 小时期间指定的最大单位数将用于计算成本。有关定价详细信息，请参阅 [Media Services 定价详细信息](/home/features/media-services/#price)。
+>[AZURE.NOTE] 当前，将流式处理单位的任何正值设置回“无”可将流式处理功能禁用最多 1 小时。
+>
+> 为 24 小时期间指定的最大单位数将用于计算成本。有关定价详细信息，请参阅 [媒体服务定价详细信息](/home/features/media-services/#price)。
 
 
 ## 创建通道
@@ -88,11 +88,11 @@
 
 ## 配置实时编码器并引入实时流
 
->[AZURE.NOTE]此步骤需要上一步中提到的通道引入 URL。
+>[AZURE.NOTE] 此步骤需要上一步中提到的通道引入 URL。
 
 有关如何配置 Wirecast 并开始引入流的详细信息，请参阅 [Wirecast 配置](http://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)。
 
->[AZURE.NOTE]如果出于任何原因停止了编码器，然后需要重新启动它，则应先重置通道，方法是在 Azure 管理门户中单击“重置”命令。
+>[AZURE.NOTE] 如果出于任何原因停止了编码器，然后需要重新启动它，则应先重置通道，方法是在 Azure 管理门户中单击“重置”命令。
 
 
 ## 创建和管理节目
@@ -125,25 +125,25 @@
 
 1. 在“频道”页上，单击“添加”以添加新节目。
 
-	在“创建新节目”页上，指定节目名称、资产名称、存档时段和加密选项。
+在“创建新节目”页上，指定节目名称、资产名称、存档时段和加密选项。
 
-	![createprogram](./media/media-services-portal-get-started-with-live/media-services-create-program.png)
+![createprogram](./media/media-services-portal-get-started-with-live/media-services-create-program.png)
 
-	如果选择“立即发布此节目”，则会创建发布 URL。
+如果选择“立即发布此节目”，则会创建发布 URL。
 
-	在准备好流式传输节目时，可以单击“启动”。
+在准备好流式传输节目时，可以单击“启动”。
 
-	启动节目后，你可以单击“播放”开始播放内容。
+启动节目后，你可以单击“播放”开始播放内容。
 
-	![createdprogram](./media/media-services-portal-get-started-with-live/media-services-created-program.png)
+![createdprogram](./media/media-services-portal-get-started-with-live/media-services-created-program.png)
 
 2. 或者，可以使用快捷方式或单击“频道”页上的“开始流式传输”按钮。这将会创建资产、节目和流定位符。
 
-	节目命名为 DefaultProgram，存档时段设置为 1 小时。
+节目命名为 DefaultProgram，存档时段设置为 1 小时。
 
-	你可以从“频道”页播放发布的节目。
+你可以从“频道”页播放发布的节目。
 
-	![channelpublish](./media/media-services-portal-get-started-with-live/media-services-channel-play.png)
+![channelpublish](./media/media-services-portal-get-started-with-live/media-services-channel-play.png)
 
 
 如果你在“频道”页上单击“停止流式传输”，将会停止并删除默认节目。资源仍在那里，并且你可以从**“内容”**页发布或取消发布它。
@@ -155,7 +155,7 @@
 
 ## 播放内容
 
-若要为用户提供一个可用来流式传输内容的 URL，你首先需要通过创建定位符（当你使用 Azure 管理门户发布资产时，系统已经为你创建了定位符）来*发布*资产（如上一部分中所述）。定位符提供对资产中所含文件的访问权限。
+若要为用户提供一个可用来流式传输内容的 URL，你首先需要通过创建定位符（当你使用 Azure 管理门户发布资产时，系统已经为你创建了定位符）来发布资产（如上一部分中所述）。定位符提供对资产中所含文件的访问权限。
 
 根据你要用来播放内容的流式处理协议，你可能需要修改从频道\\节目的**“发布 URL”**链接获取的 URL。
 
@@ -163,15 +163,15 @@
 
 默认情况下，流 URL 采用以下格式，你可以用它来播放平滑流资产。
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.chinacloudapi.cn/{locator ID}/{filename}.ism/Manifest
+{流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.chinacloudapi.cn/{定位符 ID}/{文件名}.ism/Manifest
 
 若要生成 HLS 流 URL，请将 (format=m3u8-aapl) 附加到 URL。
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.chinacloudapi.cn/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+{流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.chinacloudapi.cn/{定位符 ID}/{文件名}.ism/Manifest(format=m3u8-aapl)
 
 若要生成 MPEG DASH 流 URL，请将 (format=mpd-time-csf) 追加到 URL。
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.chinacloudapi.cn/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+{流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.chinacloudapi.cn/{定位符 ID}/{文件名}.ism/Manifest(format=mpd-time-csf)
 
 有关传送内容的详细信息，请参阅[传送内容](/documentation/articles/media-services-deliver-content-overview)。
 
@@ -201,4 +201,4 @@
 
 <!-- Images -->
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0314_2016-->

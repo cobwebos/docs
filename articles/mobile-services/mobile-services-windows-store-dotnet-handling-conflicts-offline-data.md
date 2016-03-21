@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="在通用 Windows 应用中处理与脱机数据的冲突 | Microsoft Azure" 
+	pageTitle="在通用 Windows 应用中处理与脱机数据的冲突 | Azure" 
 	description="了解在通用 Windows 应用程序中同步脱机数据时如何使用 Azure 移动服务处理冲突" 
 	documentationCenter="windows" 
 	authors="wesmc7777" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/12/2015" 
+	ms.date="02/11/2016"
 	wacn.date=""/>
 
 
@@ -46,9 +46,9 @@
 
 2. 如果尚未安装[脱机数据入门]教程中所述的适用于 Windows 8.1 和 Windows Phone 8.1 的 SQLite，请安装这两个运行时。
 
-3. 在 Visual Studio 2013 中，打开 *mobile-services-samples\\TodoOffline\\WindowsUniversal\\TodoOffline-Universal.sln* 解决方案文件。按 **F5** 键重新生成并运行项目。验证是否还原了 NuGet 包以及是否正确设置了引用。
+3. 在 Visual Studio 2013 中，打开 *mobile-services-samples\TodoOffline\WindowsUniversal\TodoOffline-Universal.sln* 解决方案文件。按 **F5** 键重新生成并运行项目。验证是否还原了 NuGet 包以及是否正确设置了引用。
 
-    >[AZURE.NOTE]可能需要删除对 SQLite 运行时的任何旧引用，并将其替换为已更新的引用（如[脱机数据入门]教程中所述）。
+    >[AZURE.NOTE] 可能需要删除对 SQLite 运行时的任何旧引用，并将其替换为已更新的引用（如[脱机数据入门]教程中所述）。
 
 4. 在应用中，在“插入 TodoItem”中键入一些文本，然后单击“保存”将某些 todo 项添加到本地存储中。然后关闭应用程序。
 
@@ -79,7 +79,7 @@
 
 在实际情况中，当一个应用程序将更新推送到数据库中的一条记录，然后另一个应用程序尝试使用该记录中过时的版本字段将更新推送到同一条记录时，会发生同步冲突。如[脱机数据入门]中所述，要支持脱机同步功能需要版本系统属性。通过每次数据库更新检查此版本信息。如果应用的实例尝试使用过时版本更新记录，则将发生冲突，并且会在应用中捕获为 `MobileServicePreconditionFailedException`。如果应用未捕获 `MobileServicePreconditionFailedException`，则最终将引发 `MobileServicePushFailedException`，描述遇到了多少同步错误。
 
->[AZURE.NOTE]若要通过脱机数据同步支持同步已删除的记录，应启用“软删除”[](/documentation/articles/mobile-services-using-soft-delete)。否则，必须手动删除本地存储中的记录，或者调用 `IMobileServiceSyncTable::PurgeAsync()` 以清除本地存储。
+>[AZURE.NOTE] 若要通过脱机数据同步支持同步已删除的记录，应启用“软删除”[](/documentation/articles/mobile-services-using-soft-delete)。否则，必须手动删除本地存储中的记录，或者调用 `IMobileServiceSyncTable::PurgeAsync()` 以清除本地存储。
 
 
 下面的步骤演示使用示例同时运行 Windows Phone 8.1 和 Windows 应用商店 8.1 客户端以引发冲突并解决冲突。
@@ -161,4 +161,4 @@
 [移动服务示例 GitHub 存储库]: http://go.microsoft.com/fwlink/?LinkId=512865
 [Todo 脱机移动服务示例]: http://go.microsoft.com/fwlink/?LinkId=512866
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用移动服务中的软删除（Windows 应用商店）| Microsoft Azure" 
+	pageTitle="使用移动服务中的软删除（Windows 应用商店）| Azure" 
 	description="了解如何在你的应用程序中使用 Azure 移动服务软删除功能" 
 	documentationCenter="" 
 	authors="wesmc7777" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="12/07/2015"
+	ms.date="02/11/2016"
 	wacn.date=""/>
 
 # 使用移动服务中的软删除
@@ -30,7 +30,8 @@
 
 * 使用[移动服务的脱机数据同步]时，客户端 SDK 会自动查询已删除的记录，并将其从本地数据库中删除。如果不启用软删除，你需要在后端编写附加代码，以便客户端 SDK 知道要从本地存储中清除哪些记录。否则，客户端本地存储和后端将在这些已删除的记录方面发生不一致，而你必须调用客户端方法 `PurgeAsync()` 来清除本地存储。
 * 某些应用程序具有一项业务要求，即永远不以物理方式删除数据，或仅在已审核后删除数据。软删除功能在该场景中非常有用。
-* 软删除可被用于实施“取消删除”功能，以便可以恢复意外删除的数据。但是，软删除的记录会占用数据库中的空间，因此你应该考虑创建一个计划的作业定期硬删除软删除的记录。有关示例，请参阅 [在 .NET 后端使用软删除] 和 [在 JavaScript 后端使用软删除]。客户端代码也应定期调用 `PurgeAsync()`，以便这些硬删除的记录不会保留在设备的本地数据存储中。
+* 软删除可被用于实施“取消删除”功能，以便可以恢复意外删除的数据。
+但是，软删除的记录会占用数据库中的空间，因此你应该考虑创建一个计划的作业定期硬删除软删除的记录。有关示例，请参阅[在 .NET 后端使用软删除](#using-with-dotnet)和[在 JavaScript 后端使用软删除](#using-with-javascript)。客户端代码也应定期调用 `PurgeAsync()`，以便这些硬删除的记录不会保留在设备的本地数据存储中。
 
 
 
@@ -107,7 +108,7 @@
 
 
 
-##在 JavaScript 后端使用软删除
+## <a name="using-with-javascript"></a>在 JavaScript 后端使用软删除
 
 你可以借助 JavaScript 后端移动服务，使用表脚本来添加关于软删除的逻辑。
 
@@ -159,4 +160,4 @@
 [移动服务的脱机数据同步]: /documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data
 [Azure 经典门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

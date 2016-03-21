@@ -3,7 +3,7 @@
 	description="描述使用 Visual Studio 连接服务添加 Azure 移动服务后，Azure Cordova 项目发生了什么情况" 
 	services="mobile-services" 
 	documentationCenter="na" 
-	authors="TomArcher" 
+	authors="mlhoop" 
 	manager="douge" 
 	editor=""/>
 
@@ -31,4 +31,4 @@
 
 [详细了解移动服务](/documentation/services/mobile-services)
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0314_2016-->

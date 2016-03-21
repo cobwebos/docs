@@ -1,5 +1,5 @@
 <properties
-   pageTitle="资源管理器支持的服务、区域、架构和版本 | Microsoft Azure"
+   pageTitle="Resource Manager 支持的服务、区域、架构和版本 | Microsoft Azure"
    description="介绍支持资源管理器的资源提供程序及其架构和可用 API 版本，以及可托管资源的区域。"
    services="azure-resource-manager"
    documentationCenter="na"
@@ -81,7 +81,7 @@ Azure 资源管理器为你提供了一种新的方式来部署和管理构成�
 
 | 服务 | 已启用资源管理器 | REST API | 架构 | 快速入门模板 |
 | ------- | -------  | -------- | ------ | ------ |
-| 数据工厂 | 是 | [数据工厂 REST](https://msdn.microsoft.com/zh-cn/library/azure/dn906738.aspx) | | [Microsoft.DataFactory](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DataFactory%22&type=Code) |
+| Data Factory | 是 | [数据工厂 REST](https://msdn.microsoft.com/zh-cn/library/azure/dn906738.aspx) | | [Microsoft.DataFactory](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DataFactory%22&type=Code) |
 | 数据湖分析 | 是 | | | |
 | 数据湖存储 | 是 | | | |
 | HDInsights | 是 | [HDInsights REST](https://msdn.microsoft.com/zh-cn/library/azure/mt622197.aspx) | | [Microsoft.HDInsight](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.HDInsight%22&type=Code) |
@@ -95,7 +95,7 @@ Azure 资源管理器为你提供了一种新的方式来部署和管理构成�
 | ------- | ------- | -------- | ------ | ------ |
 | 事件中心 | 是 | [事件中心 REST](https://msdn.microsoft.com/zh-cn/library/azure/dn790674.aspx) | | [Microsoft.EventHub](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.EventHub%22&type=Code) |
 | IoTHubs | 是 | [IoT 中心 REST](https://msdn.microsoft.com/zh-cn/library/azure/mt589014.aspx) | | [Microsoft.Devices](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Devices%22&type=Code) |
-| 通知中心 | 是 | [通知中心 REST](https://msdn.microsoft.com/zh-cn/library/azure/dn495827.aspx) | [2015-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-04-01/Microsoft.NotificationHubs.json) | [Microsoft.NotificationHubs](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.NotificationHubs%22&type=Code) |
+| 通知中心 | 是 | [Notification Hub REST](https://msdn.microsoft.com/zh-cn/library/azure/dn495827.aspx) | [2015-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-04-01/Microsoft.NotificationHubs.json) | [Microsoft.NotificationHubs](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.NotificationHubs%22&type=Code) |
 
 ## 媒体和 CDN
 
@@ -116,7 +116,7 @@ Azure 资源管理器为你提供了一种新的方式来部署和管理构成�
 
 ## 标识和访问管理 
 
-Azure Active Directory 可以使用资源管理器来为订阅启用基于角色的访问控制。有关使用基于角色的访问控制和 Active Directory 的信息，请参阅 [Azure 基于角色的访问控制](./active-directory/role-based-access-control-configure.md)。
+Azure Active Directory 可以使用 Resource Manager 来为订阅启用基于角色的访问控制。有关使用基于角色的访问控制和 Active Directory 的信息，请参阅 [Azure 基于角色的访问控制](./active-directory/role-based-access-control-configure.md)。
 
 ## 开发人员服务 
 
@@ -263,4 +263,4 @@ Azure Active Directory 可以使用资源管理器来为订阅启用基于角色
 - 若要了解如何创建资源管理器模板，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
 - 若要了解如何部署资源，请参阅[使用 Azure 资源管理器模板部署应用程序](/documentation/articles/resource-group-template-deploy)。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0314_2016-->

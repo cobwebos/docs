@@ -1,15 +1,17 @@
+<!-- not suitable for Mooncake -->
+
 <properties 
 	pageTitle="Media Encoder Premium Workflow 格式和编解码器" 
 	description="本主题概述 Media Encoder Premium Workflow 的格式和编解码器" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako" 
+	authors="juliako,anilmur" 
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015" 
+<tags
+	ms.service="media-services"
+	ms.date="02/03/2016"  
 	wacn.date=""/>
 
 #Media Encoder Premium Workflow 格式和编解码器
@@ -117,10 +119,19 @@
 1. SRT 字幕文件
 1. DVB 字幕流
 
-注意：不一定支持通过 Azure Media Services 中的流式传输来传送上述所有输出格式。
+注意：不一定支持通过 Azure 媒体服务中的流式传输来传送上述所有输出格式。
 
 ##已知问题
 
 如果输入视频不包含隐藏式字幕，输出资产仍将包含一个空的 TTML 文件。
 
-<!---HONumber=76-->
+
+##媒体服务学习路径
+
+[AZURE.INCLUDE [media-services-learning-paths-include](../includes/media-services-learning-paths-include.md)]
+
+##提供反馈
+
+[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
+
+<!---HONumber=Mooncake_0314_2016-->

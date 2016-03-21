@@ -9,16 +9,16 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="10/27/2015"
+	ms.date="01/19/2016"
 	wacn.date=""/>
 
 
-# Azure SQL 数据同步入门（预览版）
+#Azure SQL 数据同步入门（预览版）
 在本教程中，你将了解使用 Azure 经典门户的 Azure SQL 数据同步的基础知识。
 
 本教程假定你之前未使用过 SQL Server 和 Azure SQL 数据库。在本教程中，你将创建一个完全配置且按既定计划同步的混合（SQL Server 和 SQL 数据库实例）同步组。
 
-> [AZURE.NOTE] Azure SQL 数据同步的完整技术文档集以前放置在 MSDN 中，现在则是单个的 .pdf，可以在[此处](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)下载。
+> [AZURE.NOTE] 有关 Azure SQL 数据同步的完整技术文档集以前位于 MSDN 中，现在以 .pdf 文件提供。可从[此处](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)下载。
 
 ## 步骤 1：连接到 Azure SQL 数据库
 
@@ -199,4 +199,4 @@
 
  
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0314_2016-->

@@ -8,8 +8,8 @@
     editor=""/>
 
 <tags 
-    ms.service="sql-database"
-    ms.date="11/04/2015" 
+    ms.service="sql-database" 
+    ms.date="02/01/2016" 
     wacn.date=""/>
 
 # 弹性数据库工具词汇表
@@ -21,7 +21,7 @@ Azure SQL 数据库的[弹性数据库工具](/documentation/articles/sql-databa
 
 **数据库**：Azure SQL 数据库。
 
-**数据相关的路由**：使应用程序能够连接到给定了特定分片键的分片的功能。与**多分片查询**进行比较。
+**数据相关的路由**：使应用程序能够连接到给定了特定分片键的分片的功能。请参阅[数据相关的路由](/documentation/articles/sql-database-elastic-scale-data-dependent-routing)。与[多分片查询](/documentation/articles/sql-database-elastic-scale-multishard-querying)进行比较。
 
 **全局分片映射**：**分片集**内分片键及其各自分片之间的映射。全局分片映射存储在**分片映射管理器**中。与**局部分片映射**进行比较。
 
@@ -78,4 +78,4 @@ Azure SQL 数据库的[弹性数据库工具](/documentation/articles/sql-databa
 [3]: ./media/sql-database-elastic-scale-glossary/h_versus_vert.png
  
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0314_2016-->

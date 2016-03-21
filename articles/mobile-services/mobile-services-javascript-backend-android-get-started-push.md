@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="推送通知入门 (Android JavaScript) | Microsoft Azure"
+	pageTitle="推送通知入门 (Android JavaScript) | Azure"
 	description="了解如何使用 Azure 移动服务向 Android JavaScript 应用程序发送推送通知。"
 	services="mobile-services, notification-hubs"
 	documentationCenter="android"
@@ -11,7 +11,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="10/06/2015"
+	ms.date="01/20/2016"
 	wacn.date=""/>
 
 
@@ -110,27 +110,22 @@
 
 通过以下主题了解有关移动服务和通知中心的详细信息：
 
-* [身份验证入门 ]
-  <br/>了解如何通过移动服务对使用不同帐户类型的应用程序用户进行身份验证。
+* [身份验证入门 ]<br/>了解如何通过移动服务对使用不同帐户类型的应用程序用户进行身份验证。
 
-* [什么是通知中心？]
-  <br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
+* [什么是通知中心？] <br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
 
-* [调试通知中心应用程序](http://go.microsoft.com/fwlink/p/?linkid=386630)
-  </br>获取有关对通知中心解决方案进行故障排除和调试的指导。
+* [调试通知中心应用程序](http://go.microsoft.com/fwlink/p/?linkid=386630)</br>获取有关对通知中心解决方案进行故障排除和调试的指导。
 
-* [如何使用适用于移动服务的 Android 客户端库 ]
-  <br/>了解有关如何将移动服务与 Android 一起使用的详细信息。
+* [如何使用适用于移动服务的 Android 客户端库 ]<br/>了解有关如何将移动服务与 Android 一起使用的详细信息。
 
-* [移动服务服务器脚本参考]
-  <br/>了解有关如何在移动服务中实施业务逻辑的详细信息。
+* [移动服务服务器脚本参考]<br/>了解有关如何在移动服务中实施业务逻辑的详细信息。
 
 
 <!-- Anchors. -->
 [Register your app for push notifications and configure Mobile Services]: #register
 [Update the generated push notification code]: #update-scripts
 [Insert data to receive notifications]: #test
-[Next Steps]: #next-steps
+[Next Steps]:#next-steps
 
 <!-- Images. -->
 [13]: ./media/mobile-services-windows-store-javascript-get-started-push/mobile-quickstart-push1.png
@@ -158,4 +153,4 @@
 [Send broadcast notifications to subscribers]: /documentation/articles/notification-hubs-android-send-breaking-news
 [Send template-based notifications to subscribers]: /documentation/articles/notification-hubs-android-send-localized-breaking-news
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

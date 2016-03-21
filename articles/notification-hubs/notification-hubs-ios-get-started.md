@@ -33,16 +33,16 @@
 
 本教程需要的内容如下：
 
-+ [移动服务 iOS SDK]
-+ [Xcode 6][Install Xcode]
++ [移动服务 iOS SDK 版本 1.2.4]
++ [Xcode 7][Install Xcode]
 + 支持 iOS 8（或更高版本）的设备
 + iOS 开发人员计划成员身份
 
-   >[AZURE.NOTE]由于推送通知配置要求，你必须在支持 iOS 的设备（iPhone 或 iPad）而不是在 iOS 模拟器上部署和测试推送通知。
+   > [AZURE.NOTE] 由于推送通知配置要求，你必须在支持 iOS 的设备（iPhone 或 iPad）而不是在 iOS 模拟器上部署和测试推送通知。
 
 完成本教程是学习有关 iOS 应用的所有其他通知中心教程的先决条件。
 
-> [AZURE.NOTE]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started)。
+> [AZURE.NOTE] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started)。
 
 [AZURE.INCLUDE [通知中心：启用 Apple 推送通知](../includes/notification-hubs-enable-apple-push-notifications)]
 
@@ -84,11 +84,11 @@
 
 4. 下载[移动服务 iOS SDK 版本 1.2.4]，然后将文件解压缩。在 Xcode 中，右键单击你的项目，然后单击“将文件添加到”选项，将 **WindowsAzureMessaging.framework** 文件夹添加到 Xcode 项目。选择“需要时复制项”，然后单击“添加”。
 
-	>[AZURE.NOTE]通知中心 SDK 目前不支持 Xcode 7 上的 Bitcode。你必须在项目的“构建选项”中将“启用 Bitcode”设置为“否”。
+	>[AZURE.NOTE] 通知中心 SDK 目前不支持 Xcode 7 上的 Bitcode。你必须在项目的“构建选项”中将“启用 Bitcode”设置为“否”。
 
    	![][10]
 
-5. 将新的标头文件添加到名为 **HubInfo.h** 的项目。此文件将保存通知中心的常量。添加以下定义，然后将字符串文本占位符替换为你的*中心名称*以及前面记下的 *DefaultListenSharedAccessSignature*。
+5. 将新的标头文件添加到名为 **HubInfo.h** 的项目。此文件将保存通知中心的常量。添加以下定义，然后将字符串文本占位符替换为你的 *中心名称* 以及前面记下的 *DefaultListenSharedAccessSignature*。
 
 		#ifndef HubInfo_h
 		#define HubInfo_h
@@ -320,7 +320,7 @@
 		}
 
 
-8. 按住 Ctrl 并从“发送通知”按钮拖到 ViewController.m，为 **Touch Down** 添加名为 **SendNotificationMessage** 的操作。使用以下代码更新方法，以使用 REST API 发送通知。
+8. 按住 Ctrl 并从“发送通知”按钮拖到 ViewController.m，为 Touch Down 事件添加名为 SendNotificationMessage 的操作。使用以下代码更新方法，以使用 REST API 发送通知。
 
 		- (IBAction)SendNotificationMessage:(id)sender
 		{
@@ -432,7 +432,7 @@
 11. 生成项目并确认没有错误。
 
 
-> [AZURE.NOTE]如果在 Xcode7 中遇到有关 Bitcode 支持的生成错误，应该在 Xcode 中将“生成设置”->“启用 Bitcode”(ENABLE\_BITCODE) 更改为“否”。通知中心 SDK 目前不支持 Bitcode。
+> [AZURE.NOTE] 如果在 Xcode7 中遇到有关 Bitcode 支持的生成错误，应该在 Xcode 中将“生成设置”->“启用 Bitcode”(ENABLE\_BITCODE) 更改为“否”。通知中心 SDK 目前不支持 Bitcode。
 
 可以在 Apple [本地和推送通知编程指南]中查看所有可能的通知负载。
 
@@ -486,7 +486,7 @@
 
 <!-- URLs. -->
 [移动服务 iOS SDK 版本 1.2.4]: http://aka.ms/kymw2g
-[移动服务 iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
+[Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
@@ -503,4 +503,4 @@
 
 [本地和推送通知编程指南]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0314_2016-->

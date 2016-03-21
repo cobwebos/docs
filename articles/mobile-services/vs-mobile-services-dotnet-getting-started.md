@@ -3,7 +3,7 @@
 	description="如何在 Visual Studio .NET 项目中开始使用 Azure 移动服务"
 	services="mobile-services"
 	documentationCenter=""
-	authors="TomArcher"
+	authors="mlhoop"
 	manager="douge"
 	editor=""/>
 
@@ -79,4 +79,4 @@
 
 [详细了解移动服务](/documentation/services/mobile-services)
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0314_2016-->

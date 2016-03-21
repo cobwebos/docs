@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="11/30/2015"
+	ms.date="02/11/2016"
 	wacn.date=""/>
 
 # 向移动服务应用程序添加身份验证
@@ -71,7 +71,7 @@
             }
         }
 
-	> [AZURE.NOTE]如果使用的标识提供程序不是 Microsoft 帐户，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：_Facebook_、_Twitter_、_Google_ 或 _WindowsAzureActiveDirectory_。
+	> [AZURE.NOTE] 如果使用的标识提供程序不是 Microsoft 帐户，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：_Facebook_、_Twitter_、_Google_ 或 _WindowsAzureActiveDirectory_。
 
 3. 从 **ToDoService** 构造函数将对 **ToDoItem** 表的请求移到名为 **CreateTable** 的新方法中：
 
@@ -95,12 +95,12 @@
         {
             base.ViewDidAppear(animated);
 
-            if (QSToDoService.DefaultService.User == null)
+            if (QSTodoService.DefaultService.User == null)
             {
-                await QSToDoService.DefaultService.LoginAndGetData(this);
+                await QSTodoService.DefaultService.LoginAndGetData(this);
             }
 
-            if (QSToDoService.DefaultService.User == null)
+            if (QSTodoService.DefaultService.User == null)
             {
                 // TODO:: show error
                 return;
@@ -126,7 +126,7 @@
 [注册应用程序以进行身份验证并配置移动服务]: #register
 [将表权限限制给已经过身份验证的用户]: #permissions
 [向应用程序添加身份验证]: #add-authentication
-[Next Steps]: #next-steps
+[Next Steps]:#next-steps
 
 <!-- Images. -->
 [4]: ./media/partner-xamarin-mobile-services-ios-get-started-users/mobile-services-selection.png
@@ -146,8 +146,7 @@
 [Get started with push notifications]: /documentation/articles/partner-xamarin-mobile-services-ios-get-started-push
 [使用脚本为用户授权]: /documentation/articles/mobile-services-javascript-backend-service-side-authorization
 
-[Azure classic Portal]: https://manage.windowsazure.cn/
 [已完成的示例项目]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 [Xamarin.iOS]: http://xamarin.com/download
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

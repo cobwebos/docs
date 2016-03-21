@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="在通用 Windows 应用中使用脱机数据 | Microsoft Azure" 
+	pageTitle="在通用 Windows 应用中使用脱机数据 | Azure" 
 	description="了解如何在通用 Windows 应用中使用 Azure 移动服务缓存和同步脱机数据" 
 	documentationCenter="mobile-services" 
 	authors="lindydonna" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/06/2015" 
+	ms.date="02/11/2016"
 	wacn.date=""/>
 
 # 在移动服务中使用脱机数据同步
@@ -25,7 +25,7 @@
 
 在本教程中，你将更新[移动服务入门]教程中的通用应用项目，以支持 Azure 移动服务的脱机功能。随后，你将在断开连接的脱机情况下添加数据，将这些项目同步到联机数据库，然后登录到 [Azure 经典门户]，查看在运行应用程序时对数据所做的更改。
 
->[AZURE.NOTE]本教程旨在帮助你更好地了解如何使用移动服务通过 Azure 在 Windows 应用商店应用程序中存储和检索数据。如果这是你第一次体验移动服务，则应先完成[移动服务入门]教程。
+>[AZURE.NOTE] 本教程旨在帮助你更好地了解如何使用移动服务通过 Azure 在 Windows 应用商店应用程序中存储和检索数据。如果这是你第一次体验移动服务，则应先完成[移动服务入门]教程。
 
 ##先决条件 
 
@@ -42,31 +42,33 @@
 
 当你的移动服务处于脱机情况时，可使用 Azure 移动服务脱机功能与本地数据库交互。若要在你的应用中使用这些功能，请将 `MobileServiceClient.SyncContext` 初始化到本地存储。然后，通过 `IMobileServiceSyncTable` 接口引用你的表。在本教程中，我们要将 SQLite 用于本地存储。
 
->[AZURE.NOTE]你可以跳过此部分，直接从移动服务的 GitHub 示例存储库中获取已有脱机支持的示例项目。启用了脱机支持的示例项目位于此处：[TodoList 脱机示例]。
+>[AZURE.NOTE] 你可以跳过此部分，直接从移动服务的 GitHub 示例存储库中获取已有脱机支持的示例项目。启用了脱机支持的示例项目位于此处：[TodoList 脱机示例]。
 
 1. 安装适用于 Windows 8.1 和 Windows Phone 8.1 的 SQLite 运行时。 
 
     * **Windows 8.1 运行时：**安装 [SQLite for Windows 8.1]。
-    * **Windows Phone 8.1：**安装 [SQLite for Windows Phone 8.1]。
+    * **Windows Phone 8.1：** 安装 [SQLite for Windows Phone 8.1]。
 
-    >[AZURE.NOTE]如果你使用的是 Internet Explorer，则单击用于安装 SQLite 的链接可能会提示你下载 .zip 文件形式的 .vsix。使用 .vsix 扩展名而不是 .zip 将文件保存到硬盘上的某一位置。在 Windows 资源管理器中双击 .vsix 文件以运行安装程序。
+    >[AZURE.NOTE] 如果你使用的是 Internet Explorer，则单击用于安装 SQLite 的链接可能会提示你下载 .zip 文件形式的 .vsix。使用 .vsix 扩展名而不是 .zip 将文件保存到硬盘上的某一位置。在 Windows 资源管理器中双击 .vsix 文件以运行安装程序。
 
 2. 在 Visual Studio 中，打开在[移动服务入门]教程中完成的项目。安装适用于 Windows 8.1 运行时和 Windows Phone 8.1 项目的 **WindowsAzure.MobileServices.SQLiteStore** NuGet 包。
 
-    * **Windows 8.1：**在解决方案资源管理器中，右键单击 Windows 8.1 项目，然后单击“管理 Nuget 包”以运行 NuGet 包管理器。搜索 **SQLiteStore** 以安装 `WindowsAzure.MobileServices.SQLiteStore` 包。
-    * **Windows Phone 8.1：**右键单击 Windows Phone 8.1 项目，然后单击“管理 Nuget 包”以运行 NuGet 包管理器。搜索 **SQLiteStore** 以安装 `WindowsAzure.MobileServices.SQLiteStore` 包。
+    * **Windows 8.1** 在解决方案资源管理器中，右键单击 Windows 8.1 项目，然后单击“管理 Nuget 包”以运行 NuGet 包管理器。搜索 **SQLiteStore** 以安装 `WindowsAzure.MobileServices.SQLiteStore` 包。
+    * **Windows Phone 8.1：** 右键单击 Windows Phone 8.1 项目，然后单击“管理 Nuget 包”以运行 NuGet 包管理器。搜索 **SQLiteStore** 以安装 `WindowsAzure.MobileServices.SQLiteStore` 包。
 
-    >[AZURE.NOTE]如果安装过程中创建了对较旧版本的 SQLite 的引用，可以直接删除该重复引用。
+    >[AZURE.NOTE] 如果安装过程中创建了对较旧版本的 SQLite 的引用，可以直接删除该重复引用。
 
     ![][2]
 
 3. 在解决方案资源管理器中，右键单击适用于 Windows 8.1 运行时和 Windows Phone 8.1 平台项目的“引用”，并确保存在对位于“扩展”部分的 SQLite 的引用。
 
-    ![][1] </br>
+    ![][1]
+    </br>
 
     **Windows 8.1 运行时**
 
-    ![][11] </br>
+    ![][11]
+    </br>
 
     **Windows Phone 8.1**
 
@@ -175,7 +177,7 @@
 
     在此示例中，我们将检索远程 `todoTable` 中的所有记录，但也可以通过传递查询来筛选记录。`PullAsync` 的第一个参数是用于增量同步的查询 ID；增量同步使用 `UpdatedAt` 时间戳以仅获取自上次同步以来修改的记录。查询 ID 应对于你的应用程序中的每个逻辑查询都是唯一的描述性字符串。若选择不要增量同步，请传递 `null` 作为查询 ID。此命令会检索每个请求的操作，这是可能效率低下上的所有记录。
 
-    >[AZURE.NOTE]* 若要从设备本地存储中删除已在移动设备数据库中删除的记录，应启用“软删除”[]。否则，你的应用程序应定期调用 `IMobileServiceSyncTable.PurgeAsync()` 以清除本地存储。
+    >[AZURE.NOTE] * 若要从设备本地存储中删除已在移动设备数据库中删除的记录，应启用[“软删除”]。否则，你的应用程序应定期调用 `IMobileServiceSyncTable.PurgeAsync()` 以清除本地存储。
 
     请注意，推送和请求操作可能会发生 `MobileServicePushFailedException`。由于拉取操作会内部执行推送来确保所有表及所有关系都一致，因此也可能发生该调用。下一篇教程[使用移动服务脱机支持处理冲突]说明了如何处理这些同步相关的异常。
 
@@ -228,7 +230,7 @@
 
 6. 再次按“刷新”按钮，这将导致调用 `SyncAsync`。`SyncAsync` 同时调用推送和拉取，但在本例中，我们可能已删除了对 `PushAsync` 的调用。这是因为“拉取时始终先执行推送操作”。这是为了确保本地存储中的所有表以及关系都保持一致。
 
-    ![][10]
+    ![][10] 
   
 
 ##摘要
@@ -245,7 +247,7 @@
 [Update the app to support offline features]: #enable-offline-app
 [Update the sync behavior of the app]: #update-sync
 [Update the app to reconnect your mobile service]: #update-online-app
-[Next Steps]: #next-steps
+[Next Steps]:#next-steps
 
 <!-- Images -->
 [1]: ./media/mobile-services-windows-store-dotnet-get-started-offline-data/mobile-services-add-reference-sqlite-dialog.png
@@ -268,11 +270,11 @@
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkId=394776
 [SQLite for Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkId=397953
 [Soft Delete]: /documentation/articles/mobile-services-using-soft-delete
-[]: /documentation/articles/mobile-services-using-soft-delete
+[“软删除”]: /documentation/articles/mobile-services-using-soft-delete
 
 
 [Mobile Services SDK Nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices/1.3.0
 [SQLite store nuget]: http://www.nuget.org/packages/WindowsAzure.MobileServices.SQLiteStore/1.0.0
 [Azure 经典门户]: https://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0314_2016-->

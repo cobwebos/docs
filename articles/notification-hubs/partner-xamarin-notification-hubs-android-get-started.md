@@ -1,7 +1,7 @@
 <properties
 	pageTitle="通知中心入门（Xamarin.Android 应用）| Microsoft Azure"
 	description="在本教程中，你将了解如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。"
-	authors="ysxu"
+	authors="wesmc7777"
 	manager="dwrede"
 	editor=""
 	services="notification-hubs"
@@ -43,7 +43,7 @@
 
 完成本教程是学习有关 Xamarin.Android 应用的所有其他通知中心教程的先决条件。
 
-> [AZURE.IMPORTANT]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F)。
+> [AZURE.IMPORTANT] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F)。
 
 ##<a name="register"></a>启用 Google Cloud Messaging
 
@@ -82,7 +82,7 @@
 
 	确保你的“包名称”的第一个字母为小写形式。
 
-	> [AZURE.IMPORTANT]包名称的第一个字母必须为小写形式。否则，在为以下的推送通知注册 **BroadcastReceiver** 和 **IntentFilter** 时，将收到应用程序清单错误。
+	> [AZURE.IMPORTANT] 包名称的第一个字母必须为小写形式。否则，在为以下的推送通知注册 **BroadcastReceiver** 和 **IntentFilter** 时，将收到应用程序清单错误。
 
    	![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub--xamarin-android-app-options.png)
 
@@ -136,7 +136,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 		private void RegisterWithGCM()
 		{
-			// Check to ensure everything's setup right
+			// Check to ensure everything's set up right
 			GcmClient.CheckDevice(this);
 			GcmClient.CheckManifest(this);
 
@@ -159,14 +159,14 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 			// Get your button from the layout resource,
 			// and attach an event to it
 			Button button = FindViewById<Button> (Resource.Id.myButton);
-			
+
 			RegisterWithGCM();
 		}
 
 
 4. 创建新类 **MyBroadcastReceiver**。
 
-	> [AZURE.NOTE]下面，我们将演练如何从头开始创建 **BroadcastReceiver** 类。但是，可以使用一种快捷方法来替代手动创建 **MyBroadcastReceiver.cs**：引用 [NotificationHubs 示例][GitHub]随附的 Xamarin.Android 项目中的 **GcmService.cs** 文件。也可以从复制 **GcmService.cs** 并更改类名称着手。
+	> [AZURE.NOTE] 下面，我们将演练如何从头开始创建 **BroadcastReceiver** 类。但是，可以使用一种快捷方法来替代手动创建 **MyBroadcastReceiver.cs**：引用 [NotificationHubs 示例][GitHub]随附的 Xamarin.Android 项目中的 **GcmService.cs** 文件。也可以从复制 **GcmService.cs** 并更改类名称着手。
 
 5. 将以下 using 语句添加到 **MyBroadcastReceiver.cs**（引用前面添加的组件和程序集）：
 
@@ -245,7 +245,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 			}
 
 			//var tags = new List<string>() { "falcons" }; // create tags if you want
-			var tags = new List<string>() {}; 
+			var tags = new List<string>() {};
 
 			try
 			{
@@ -257,7 +257,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 			}
 		}
 
-	> [AZURE.NOTE]在上述 **OnRegistered()** 代码中，你应注意可指定标签来注册特定消息传送通道。
+	> [AZURE.NOTE] 在上述 **OnRegistered()** 代码中，你应注意可指定标签来注册特定消息传送通道。
 
 10. 在 **PushHandlerService** 中使用以下代码重写 **OnMessage** 方法：
 
@@ -274,11 +274,11 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 			}
 
 			string messageText = intent.Extras.GetString("message");
-			if (!string.IsNullOrEmpty (messageText)) 
+			if (!string.IsNullOrEmpty (messageText))
 			{
 				createNotification ("New hub message!", messageText);
-			} 
-			else 
+			}
+			else
 			{
 				createNotification ("Unknown message details", msg.ToString ());
 			}
@@ -286,7 +286,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 11. 将以下 **createNotification** 和 **dialogNotify** 方法添加到 **PushHandlerService**，以便在收到通知时告诉用户。
 
-	>[AZURE.NOTE]Android 5.0 版与更新版本中的通知设计与以前的版本有极大的不同。如果在 Android 5.0 或更高版本上测试，需要运行应用才能收到通知。有关详细信息，请参阅 [Android 通知](http://go.microsoft.com/fwlink/?LinkId=615880)。
+	>[AZURE.NOTE] Android 5.0 版与更新版本中的通知设计与以前的版本有极大的不同。如果在 Android 5.0 或更高版本上测试，需要运行应用才能收到通知。有关详细信息，请参阅 [Android 通知](http://go.microsoft.com/fwlink/?LinkId=615880)。
 
         void createNotification(string title, string desc)
         {
@@ -354,9 +354,9 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 如果在模拟器中运行此应用，请确保使用支持 Google API 的 Android 虚拟设备 (AVD)。
 
-> [AZURE.IMPORTANT]为了接收推送通知，你必须在 Android 虚拟设备上设置 Google 帐户。（在模拟器中，导航到“设置”，然后单击“添加帐户”）。 此外，请确保模拟器已连接到 Internet。
+> [AZURE.IMPORTANT] 为了接收推送通知，你必须在 Android 虚拟设备上设置 Google 帐户。（在模拟器中，导航到“设置”，然后单击“添加帐户”）。 此外，请确保模拟器已连接到 Internet。
 
->[AZURE.NOTE]Android 5.0 版与更新版本中的通知设计与以前的版本有极大的不同。有关详细信息，请参阅 [Android 通知](http://go.microsoft.com/fwlink/?LinkId=615880)。
+>[AZURE.NOTE] Android 5.0 版与更新版本中的通知设计与以前的版本有极大的不同。有关详细信息，请参阅 [Android 通知](http://go.microsoft.com/fwlink/?LinkId=615880)。
 
 
 1. 从“工具”中，单击“打开 Android 模拟器管理器”，选择你的设备，然后单击“编辑”。
@@ -518,4 +518,4 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 [Google Cloud Messaging 客户端组件]: http://components.xamarin.com/view/GCMClient/
 [Azure 消息传送组件]: http://components.xamarin.com/view/azure-messaging
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0314_2016-->
