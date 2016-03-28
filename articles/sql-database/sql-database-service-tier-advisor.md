@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="12/01/2015"
+   ms.date="02/08/2015"
    wacn.date=""/>
 
 # SQL 数据库定价层建议
@@ -52,7 +52,7 @@ SQL 数据库服务会通过评估 SQL 数据库的历史资源使用量，来�
 
 ## 获取定价层建议
 
-可以通过选择现有的 Web 或企业数据库并单击“定价层”磁贴来获取定价层建议。（当你[将 Azure SQL 服务器升级到 V12](/documentation/articles/sql-database-v12-upgrade) 时，也可以获取定价层建议。）
+可以通过选择现有的 Web 或企业数据库并单击“所有设置”和“定价层(规模 DTU)”来获取定价层建议。（当你[将 Azure SQL 服务器升级到 V12](/documentation/articles/sql-database-v12-upgrade) 时，也可以获取定价层建议。）
 
 1. 登录到 [Azure 门户](https://manage.windowsazure.cn)。
 2. 单击“浏览”>“SQL 数据库”。
@@ -60,12 +60,10 @@ SQL 数据库服务会通过评估 SQL 数据库的历史资源使用量，来�
 
     ![选择数据库][1]
 
-5. 在数据库边栏选项卡中，选择“定价层”磁贴。
-
-    ![定价层][2]
+5. 在数据库边栏选项卡上，选择“所有设置”，然后选择“定价层(规模 DTU)”。
 
 
-7. 单击“定价层”磁贴后，你将会看到“建议的定价层”边栏选项卡，你可以在其中单击建议的层，然后单击“选择”按钮切换到该层。
+7. 此时会打开“建议的定价层”，你可以在其中单击建议的层，然后单击“选择”按钮切换到该层。
 
     ![注册预览版][4]
 
@@ -77,7 +75,7 @@ SQL 数据库服务会通过评估 SQL 数据库的历史资源使用量，来�
 
 ## 摘要
 
-定价层建议提供自动化体验，可以收集每个 SQL 数据库的遥测数据，并根据数据库的实际性能需求和功能要求推荐最佳的服务层/性能级别组合。在数据库边栏选项卡上单击“定价层”磁贴可查看定价层建议。
+定价层建议提供自动化体验，可以收集每个 SQL 数据库的遥测数据，并根据数据库的实际性能需求和功能要求推荐最佳的服务层/性能级别组合。在“设置”边栏选项卡上，单击“定价层(规模 DTU)”以查看针对 Web 和企业数据库的定价层建议。
 
 
 
@@ -88,12 +86,10 @@ SQL 数据库服务会通过评估 SQL 数据库的历史资源使用量，来�
 
 <!--Image references-->
 [1]: ./media/sql-database-service-tier-advisor/select-database.png
-[2]: ./media/sql-database-service-tier-advisor/pricing-tier.png
-[3]: ./media/sql-database-service-tier-advisor/preview-sign-up.png
 [4]: ./media/sql-database-service-tier-advisor/choose-pricing-tier.png
 [5]: ./media/sql-database-service-tier-advisor/usage-details.png
 
 
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

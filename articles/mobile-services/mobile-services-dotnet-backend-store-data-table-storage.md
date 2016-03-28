@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="12/11/2015"
+	ms.date="02/05/2016"
 	wacn.date=""/>
 
 # 构建使用表存储的 .NET 后端移动服务
@@ -155,5 +155,4 @@
 [What is the Table Service]: /documentation/articles/storage-dotnet-how-to-use-tables/#what-is
 [MongoLab Add-on Page]: /gallery/store/mongolab/mongolab
  
-
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

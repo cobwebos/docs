@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="10/05/2015"
+	ms.date="01/20/2016"
 	wacn.date=""/>
 
 # 向移动服务 Android 应用添加身份验证（JavaScript 后端）
@@ -94,4 +94,5 @@
 [移动服务入门]: /documentation/articles/mobile-services-android-get-started
 [使用脚本为用户授权]: /documentation/articles/mobile-services-javascript-backend-service-side-authorization/
 
-<!---HONumber=Mooncake_0118_2016-->
+
+<!---HONumber=Mooncake_0321_2016-->

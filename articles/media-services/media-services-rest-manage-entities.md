@@ -8,9 +8,9 @@
 	services="media-services" 
 	documentationCenter=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015"
+<tags
+	ms.service="media-services"
+ 	ms.date="02/11/2016"  
 	wacn.date=""/>
 
 #使用 REST API 管理媒体服务实体
@@ -23,12 +23,13 @@ Microsoft Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服
 
 - 添加实体 
 - 查询实体 
+- 枚举大型实体集合
 - 更新实体 
 - 删除实体 
 
->[AZURE.NOTE]使用 Media Services REST API 时，需注意以下事项：
+>[AZURE.NOTE] 使用媒体服务 REST API 时，需注意以下事项：
 >
->访问 Media Services 中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use)。
+>访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use)。
 
 >在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。必须按[使用 REST API 连接到媒体服务](/documentation/articles/media-services-rest-connect_programmatically)中所述对新的 URI 执行后续调用。
 
@@ -108,6 +109,20 @@ Microsoft Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服
 
 >[AZURE.NOTE]媒体服务不支持 $expand 操作以及“LINQ 注意事项（WCF 数据服务）”中所述的不受支持的 LINQ 方法。
 
+##枚举大型实体集合
+
+查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。使用 **skip** 和 **top** 来枚举大型实体集合。
+
+以下示例说明如何使用 **skip** 和 **top** 来跳过前 2000 个作业并获取后 1000 个作业。
+
+	GET https://media.chinacloudapi.cn/api/Jobs()?$skip=2000&$top=1000 HTTP/1.1
+	Content-Type: application/json;odata=verbose
+	Accept: application/json;odata=verbose
+	DataServiceVersion: 3.0
+	MaxDataServiceVersion: 3.0
+	x-ms-version: 2.11
+	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
+	Host: media.chinacloudapi.cn
 
 ##更新实体
 
@@ -144,4 +159,6 @@ Microsoft Azure 媒体服务是一项以 OData v3 为基础的基于 REST 的服
 	Host: media.chinacloudapi.cn
 	Content-Length: 0
 
-<!---HONumber=76-->
+
+
+<!---HONumber=Mooncake_0321_2016-->

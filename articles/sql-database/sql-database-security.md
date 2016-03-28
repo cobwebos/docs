@@ -5,11 +5,11 @@
    documentationCenter=""
    authors="tmullaney"
    manager="jeffreyg"
-   editor=""/>
+   editor="jeffreyg"/>
 
 <tags
    ms.service="sql-database"
-   ms.date="10/21/2015"
+   ms.date="01/22/2016"
    wacn.date=""/>
 
 
@@ -23,9 +23,9 @@
 
 连接安全性是指如何使用防火墙规则和连接加密来限制和保护数据库连接。
 
-服务器和数据库使用防火墙规则来拒绝源自未明确列入白名单的 IP 地址的连接企图。若要允许应用程序或客户端计算机的公共 IP 地址尝试连接到新数据库，你必须先使用 Azure 管理门户、REST API 或 PowerShell 创建服务器级防火墙规则。作为最佳实践，应该尽量通过服务器防火墙来限制允许的 IP 地址范围。有关详细信息，请参阅 [Azure SQL 数据库防火墙](https://msdn.microsoft.com/zh-cn/library/ee621782)。
+服务器和数据库使用防火墙规则来拒绝源自未明确列入白名单的 IP 地址的连接企图。若要允许应用程序或客户端计算机的公共 IP 地址尝试连接到新数据库，你必须先使用 Azure 经典门户、REST API 或 PowerShell 创建服务器级防火墙规则。作为最佳实践，应该尽量通过服务器防火墙来限制允许的 IP 地址范围。有关详细信息，请参阅 [Azure SQL 数据库防火墙](/documentation/articles/sql-database-firewall-configure)。
 
-在与数据库相互“传输”数据时，与 Azure SQL 数据库建立的所有连接都需要经过加密 (SSL/TLS)。必须在应用程序连接字符串中指定用于加密连接的参数，而*不要*信任服务器证书（服务器证书用于将连接字符串复制到 Azure 管理门户外部），否则，连接将不会验证服务器的身份，并且容易受到“中间人”攻击。例如，对于 ADO.NET 驱动程序，这些连接字符串参数为 **Encrypt=True** 和 **TrustServerCertificate=False**。有关详细信息，请参阅 [Azure SQL 数据库连接加密和证书验证](https://msdn.microsoft.com/zh-cn/library/azure/ff394108#encryption)。
+在与数据库相互“传输”数据时，与 Azure SQL 数据库建立的所有连接都需要经过加密 (SSL/TLS)。必须在应用程序连接字符串中指定用于加密连接的参数，而不要信任服务器证书（服务器证书用于将连接字符串复制到 Azure 经典门户外部），否则，连接将不会验证服务器的身份，并且容易受到“中间人”攻击。例如，对于 ADO.NET 驱动程序，这些连接字符串参数为 **Encrypt=True** 和 **TrustServerCertificate=False**。有关详细信息，请参阅 [Azure SQL 数据库连接加密和证书验证](/documentation/articles/sql-database-security-guidelines)。
 
 
 ## 身份验证
@@ -73,7 +73,7 @@ ALTER ROLE db_datawriter ADD MEMBER ApplicationUser; -- allows ApplicationUser t
 * [数据屏蔽](/documentation/articles/sql-database-dynamic-data-masking-get-started)可用于限制敏感数据的公开。
 * [存储过程](https://msdn.microsoft.com/zh-cn/library/ms190782)可用于限制可对数据库执行的操作。
 
-从 Azure 管理门户或使用 Azure 资源管理器 API 管理数据库和逻辑服务器的操作将会根据你的门户用户帐户的角色分配进行控制。有关此主题的详细信息，请参阅 [Azure 预览门户中基于角色的访问控制](/documentation/articles/role-based-access-control-configure)。
+从 Azure 经典门户或使用 Azure Resource Manager API 管理数据库和逻辑服务器的操作将会根据你的门户用户帐户的角色分配进行控制。有关此主题的详细信息，请参阅 [Azure 门户中基于角色的访问控制](/documentation/articles/role-based-access-control-configure)。
 
 
 ## 加密
@@ -100,6 +100,6 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 ## 合规性
 
-除了上述可帮助应用程序符合各项安全法规要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。有关详细信息，请参阅 [Microsoft Azure 信任中心](http://azure.microsoft.com/support/trust-center/)，你可以在其中找到 [SQL 数据库法规认证](http://azure.microsoft.com/support/trust-center/services/)的最新列表。
+除了上述可帮助应用程序符合各项安全法规要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。有关详细信息，请参阅 [Microsoft Azure 信任中心](/support/trust-center)，你可以在其中找到 [SQL 数据库法规认证](/support/trust-center/compliance)的最新列表。
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0321_2016-->

@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="09/22/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # SQL 数据仓库中的 Group By 选项
@@ -17,8 +17,8 @@
 [GROUP BY] 子句可用于将数据聚合成摘要行集。它还具有一些扩展其功能的选项，但这些选项需要经过处理，因为 Azure SQL 数据仓库不直接支持这些选项。
 
 这些选项为：
-- GROUP BY with ROLLUP
-- GROUPING SETS
+- GROUP BY with ROLLUP 
+- GROUPING SETS 
 - GROUP BY with CUBE
 
 ## Rollup 和 grouping sets 选项
@@ -40,7 +40,7 @@ GROUP BY ROLLUP (
 ```
 
 我们已通过使用 ROLLUP 请求以下聚合：
-- Country and Region
+- Country and Region 
 - Country
 - Grand Total
 
@@ -182,9 +182,10 @@ ORDER BY 1,2,3
 [开发概述]: sql-data-warehouse-overview-develop.md
 
 <!--MSDN references-->
-[GROUP BY]: https://msdn.microsoft.com/zh-CN/library/ms177673.aspx
+[GROUP BY]: https://msdn.microsoft.com/zh-cn/library/ms177673.aspx
 
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+
+<!---HONumber=Mooncake_0321_2016-->

@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="09/23/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # 发生用户错误后在 SQL 数据仓库中恢复数据库
@@ -128,8 +128,8 @@ Get-AzureSqlDatabaseOperation –ServerName "<YourServerName>" –OperationGuid 
 [数据库操作状态]: http://msdn.microsoft.com/library/azure/dn720371.aspx
 [获取可还原的已删除数据库]: http://msdn.microsoft.com/library/azure/dn509574.aspx
 [列出可还原的已删除数据库]: http://msdn.microsoft.com/library/azure/dn509562.aspx
-[Start-AzureSqlDatabaseRestore]: https://msdn.microsoft.com/zh-CN/library/dn720218.aspx
+[Start-AzureSqlDatabaseRestore]: https://msdn.microsoft.com/zh-cn/library/dn720218.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="event-hubs"
-	ms.date="11/05/2015"
+	ms.date="01/26/2016"
 	wacn.date=""/>
 
 # 什么是 Azure 事件中心？
@@ -35,10 +35,9 @@
 - [事件中心概述](/documentation/articles/event-hubs-overview)
 - [事件中心编程指南](/documentation/articles/event-hubs-programming-guide)
 - [事件中心可用性和支持常见问题](/documentation/articles/event-hubs-availability-and-support-faq)
-- 使用[事件中心教程]入门。
-- [使用事件中心的完整示例应用程序]。
+- 使用[事件中心教程]入门
+- [使用事件中心的完整示例应用程序]
 
-[事件中心教程]: /documentation/articles/service-bus-event-hubs-csharp-ephcs-getstarted
+[事件中心教程]: /documentation/articles/hdinsight-apache-storm-tutorial-get-started
 [使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
-
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

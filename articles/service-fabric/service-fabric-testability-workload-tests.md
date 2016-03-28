@@ -1,6 +1,6 @@
 <properties
-   pageTitle="自定义测试方案"
-   description="如何针对常规/非常规故障强化你的服务"
+   pageTitle="自定义测试方案 | Microsoft Azure"
+   description="如何针对常规/非常规故障强化你的服务。"
    services="service-fabric"
    documentationCenter=".net"
    authors="anmolah"
@@ -9,17 +9,21 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="08/05/2015"
+   ms.date="01/27/2016"
    wacn.date=""/>
 
 # 在服务工作负荷期间模拟故障
 
-随可测试性功能提供的方案让开发人员不用再担心如何处理单个故障。然而也存在一些方案，可能需要客户端工作负荷与故障有明显的交错。客户端工作负荷与故障的交错确保在发生故障时，服务实际在执行某些操作。考虑到可测试性功能提供的控制等级，这些交错应该在精确的工作负荷执行点进行。这种在应用程序的不同状态下引入故障可以找出 bug 并提高质量。
+Azure Service Fabric 中的可测试性方案可让开发人员不用再担心如何处理单个故障。然而也存在一些方案，可能需要客户端工作负荷与故障有明显的交错。客户端工作负荷与故障的交错确保在发生故障时，服务实际在执行某些操作。考虑到可测试性功能提供的控制等级，这些交错应该在精确的工作负荷执行点进行。这种在应用程序的不同状态下引入故障可以找出 bug 并提高质量。
 
 ## 自定义方案示例
 此测试显示一种方案，其中业务工作负荷与[常规故障和非常规故障](/documentation/articles/service-fabric-testability-actions#graceful-vs-ungraceful-fault-actions)交错出现。为了获得最佳结果，故障应在服务操作或计算的中间引入。
 
-让我们来了解一个显示了四个工作负荷 A、B、C、D 的服务示例。每个负荷对应一组工作流程，可以是计算、存储或者二者的混合。为简单起见，我们将对示例中的工作负荷进行抽象化。在此示例中执行的不同故障如下：+ RestartNode：非常规故障，用于模拟计算机的重新启动 + RestartDeployedCodePackage：非常规故障，用于模拟服务主机进程崩溃 + RemoveReplica：常规故障，用于模拟副本删除 + MovePrimary：常规故障，用于模拟 Service Fabric 负载平衡器触发的副本移动
+让我们来了解一个显示了四个工作负荷 A、B、C、D 的服务示例。每个负荷对应一组工作流程，可以是计算、存储或者二者的混合。为简单起见，我们将对示例中的工作负荷进行抽象化。在此示例中执行的不同故障如下：
+  + RestartNode：非常规故障，用于模拟计算机的重新启动
+  + RestartDeployedCodePackage：非常规故障，用于模拟服务主机进程崩溃
+  + RemoveReplica：常规故障，用于模拟副本删除
+  + MovePrimary：常规故障，用于模拟 Service Fabric 负载平衡器触发的副本移动
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
@@ -35,7 +39,7 @@ class Test
 {
     public static int Main(string[] args)
     {
-        // Replace these strings with the actual version for your cluster and appliction.
+        // Replace these strings with the actual version for your cluster and application.
         string clusterConnection = "localhost:19000";
         Uri applicationName = new Uri("fabric:/samples/PersistentToDoListApp");
         Uri serviceName = new Uri("fabric:/samples/PersistentToDoListApp/PersistentToDoListService");
@@ -80,33 +84,33 @@ class Test
 
     public static async Task RunTestAsync(string clusterConnection, Uri applicationName, Uri serviceName)
     {
-        // Create FabricClient with connection & security information here.
+        // Create FabricClient with connection and security information here.
         FabricClient fabricClient = new FabricClient(clusterConnection);
-        // Maximum time to wait for a service to stabilize
+        // Maximum time to wait for a service to stabilize.
         TimeSpan maxServiceStabilizationTime = TimeSpan.FromSeconds(120);
 
-        // How many loops of faults you want to execute
+        // How many loops of faults you want to execute.
         uint testLoopCount = 20;
         Random random = new Random();
 
         for (var i = 0; i < testLoopCount; ++i)
         {
             var workload = SelectRandomValue<ServiceWorkloads>(random);
-            // Start workload and while it is running go and induce some fault
+            // Start the workload.
             var workloadTask = RunWorkloadAsync(workload);
 
-            // While task is executing induce faults into the service. It can be ungraceful faults like
-            // RestartNode and RestartDeployedCodePackage or graceful faults like RemoveReplica or MovePrimary
+            // While the task is running, induce faults into the service. They can be ungraceful faults like
+            // RestartNode and RestartDeployedCodePackage or graceful faults like RemoveReplica or MovePrimary.
             var fault = SelectRandomValue<ServiceFabricFaults>(random);
 
-            // Create a replica selector which will select a Primary replica from the given service to test
+            // Create a replica selector, which will select a primary replica from the given service to test.
             var replicaSelector = ReplicaSelector.PrimaryOf(PartitionSelector.RandomOf(serviceName));
-            // Run the selected random fault
+            // Run the selected random fault.
             await RunFaultAsync(applicationName, fault, replicaSelector, fabricClient);
             // Validate the health and stability of the service.
             await fabricClient.ServiceManager.ValidateServiceAsync(serviceName, maxServiceStabilizationTime);
 
-            // Wait for the workload to complete successfully
+            // Wait for the workload to finish successfully.
             await workloadTask;
         }
     }
@@ -133,10 +137,10 @@ class Test
     private static Task RunWorkloadAsync(ServiceWorkloads workload)
     {
         throw new NotImplementedException();
-        // This is where you trigger and complete your service workload
-        // Please note the faults induced while your service workload is running will
-        // fault the Primary service hence you will need to reconnect to complete or check
-        // the status of the workload
+        // This is where you trigger and complete your service workload.
+        // Note that the faults induced while your service workload is running will
+        // fault the primary service. Hence, you will need to reconnect to complete or check
+        // the status of the workload.
     }
 
     private static T SelectRandomValue<T>(Random random)
@@ -147,6 +151,5 @@ class Test
     }
 }
 ```
- 
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0321_2016-->

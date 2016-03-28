@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="如何创建媒体处理器 | Microsoft Azure" 
-	description="了解如何创建一个媒体处理器组件用来为 Azure Media Services 编码、转换格式、加密或解密媒体内容。" 
+	description="了解如何创建一个媒体处理器组件用来为 Azure 媒体服务编码、转换格式、加密或解密媒体内容。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="09/28/2015"
+	ms.date="02/14/2016" 
 	wacn.date=""/>
 
 
@@ -22,7 +22,7 @@
 
 ##概述
 
-在 Media Services 中，媒体处理器是完成特定处理任务（例如，对媒体内容进行编码、格式转换、加密或解密）的组件。通常，当你创建一个任务以便对媒体内容进行编码、加密或格式转换时，就需要创建一个媒体处理器。
+在媒体服务中，媒体处理器是完成特定处理任务（例如，对媒体内容进行编码、格式转换、加密或解密）的组件。通常，当你创建一个任务以便对媒体内容进行编码、加密或格式转换时，就需要创建一个媒体处理器。
 
 下表提供了每个可用媒体处理器的名称和说明。
 
@@ -39,9 +39,9 @@ Microsoft Azure Media Encryptor|让你使用 PlayReady 保护加密媒体资产�
 
 ##获取 MediaProcessor
 
->[AZURE.NOTE]使用 Media Services REST API 时，需注意以下事项：
+>[AZURE.NOTE] 使用媒体服务 REST API 时，需注意以下事项：
 >
->访问 Media Services 中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use)。
+>访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use)。
 
 >在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。必须根据[使用 REST API 连接到媒体服务](/documentation/articles/media-services-rest-connect_programmatically)中所述对新的 URI 执行后续调用。
 
@@ -90,4 +90,4 @@ Microsoft Azure Media Encryptor|让你使用 PlayReady 保护加密媒体资产�
 [Task Preset Strings for the Azure Media Encoder]: http://msdn.microsoft.com/zh-cn/library/jj129582.aspx
 [How to: Connect to Media Services Programmatically]: /documentation/articles/media-services-rest-connect_programmatically
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0321_2016-->

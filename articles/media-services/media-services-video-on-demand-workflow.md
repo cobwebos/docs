@@ -7,9 +7,9 @@
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/07/2015"   
+<tags
+	ms.service="media-services"
+ 	ms.date="02/03/2016"  
 	wacn.date=""/>
 
 
@@ -17,11 +17,12 @@
 
 ##概述
 
-本主题介绍典型 Azure Media Services (AMS) 视频点播工作流的步骤。每个步骤都链接到相关的主题。对于可以使用不同技术实现的任务，将提供相应的按钮链接到所选的技术（例如，.NET 或 REST）。
+本主题介绍典型 Azure 媒体服务(AMS) 视频点播工作流的步骤。每个步骤都链接到相关的主题。对于可以使用不同技术实现的任务，将提供相应的按钮链接到所选的技术（例如，.NET 或 REST）。
 
-请注意，你可以将 Media Services 与现有工具和过程相集成。例如，在现场为内容编码，再将其上载到媒体服务以转码为多种格式，然后通过 Azure CDN 或第三方 CDN 交付内容。
+请注意，你可以将媒体服务与现有工具和过程相集成。例如，在现场为内容编码，再将其上载到媒体服务以转码为多种格式，然后通过 Azure CDN 或第三方 CDN 交付内容。
 
-下图显示了参与视频点播工作流的主要媒体服务平台部分。![VoD 工作流][vod-overview]
+下图显示了参与视频点播工作流的主要媒体服务平台部分。
+![VoD 工作流][vod-overview]
 
 ##<a id="vod_scenarios"></a>常见方案：按需交付媒体
 
@@ -86,7 +87,8 @@
 有关与按需交付内容相关的概念，请参阅[媒体服务概念](/documentation/articles/media-services-concepts)。
 
 
+
 [vod-overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
  
 
-<!---HONumber=76-->
+<!---HONumber=Mooncake_0321_2016-->

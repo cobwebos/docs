@@ -1,23 +1,23 @@
 <properties 
-                pageTitle="了解 Azure 中的资源访问权限" 
-                description="本主题介绍有关使用订阅管理员在整个 Azure 门户中控制资源访问权限的概念。" 
-                services="active-directory" 
-                documentationCenter="" 
-                authors="markusvi" 
-                manager="stevenpo" 
-                editor=""/>
+	pageTitle="了解 Azure 中的资源访问权限" 
+        description="本主题介绍有关使用订阅管理员在整个 Azure 门户中控制资源访问权限的概念。" 
+        services="active-directory" 
+        documentationCenter="" 
+        authors="markusvi" 
+        manager="stevenpo" 
+        editor=""/>
 
 <tags 
-                ms.service="active-directory" 
+	ms.service="active-directory" 
 
-                ms.date="10/30/2015" 
-                wacn.date=""/>
+    	ms.date="02/11/2016"
+        wacn.date=""/>
 
 
 # 了解 Azure 中的资源访问权限
 
 
-> [AZURE.NOTE]本主题介绍有关使用订阅管理员在整个 Azure 门户中控制资源访问权限的概念。作为替代方法，Azure 预览门户提供了[基于角色的访问控制](/documentation/articles/role-based-access-control-configure)，以便可以更准确地管理 Azure 资源。
+> [AZURE.NOTE] 本主题介绍有关使用订阅管理员在整个 Azure 门户中控制资源访问权限的概念。作为替代方法，Azure 预览门户提供了[基于角色的访问控制](/documentation/articles/role-based-access-control-configure)，以便可以更准确地管理 Azure 资源。
 
 2013 年 10 月，Azure 管理门户和服务管理 API 与 Azure Active Directory 相集成，这样，就打下了坚实的基础让用户可以改进管理 Azure 资源访问的体验。Azure Active Directory 已经提供了出色的功能，例如用户管理、本地目录同步、多重身份验证和应用程序访问控制。自然，这些功能也可用于全面管理 Azure 资源。
 
@@ -34,7 +34,7 @@ Azure 中的访问控制首先体现在计费方面。Azure 帐户的所有者�
 
 
 
-> [AZURE.NOTE]使用公司或学校帐户登录的用户不可以使用 Azure 管理门户中的“编辑目录”命令，因为这些帐户只能登录到其所属的目录。
+> [AZURE.NOTE] 使用公司或学校帐户登录的用户不可以使用 Azure 管理门户中的“编辑目录”命令，因为这些帐户只能登录到其所属的目录。
 
 <br><br>![简单用户登录流程][3]
 
@@ -53,6 +53,14 @@ Azure 中的访问控制首先体现在计费方面。Azure 帐户的所有者�
 
 由于这种单一的订阅目录视图所导致的结果，诸如在订阅之间移动资源的操作可能会更难以实现。若要执行资源传输，务必首先使用“设置”中“订阅”页上的“编辑目录”命令将订阅与相同目录关联。
 
+## 后续步骤
+
+- 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅[如何添加或更改 Azure 管理员角色](../billing-add-change-azure-subscription-administrator.md)
+
+- 有关 Azure Active Directory 如何与你的 Azure 订阅相关联的信息，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式](active-directory-how-subscriptions-associated directory.md)
+
+- 有关如何在 Azure AD 中分配角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)
+
 
 
 <!--Image references-->
@@ -61,4 +69,4 @@ Azure 中的访问控制首先体现在计费方面。Azure 帐户的所有者�
 [3]: ./media/active-directory-understanding-resource-access/IC707933.png
 [4]: ./media/active-directory-understanding-resource-access/IC707934.png
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

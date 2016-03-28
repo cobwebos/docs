@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="12/07/2015"
+	ms.date="02/07/2016"
 	wacn.date=""/>
 
 # 如何对 .NET 后端移动服务进行数据模型更改
@@ -64,15 +64,15 @@ Code First 迁移使用快照方法来生成代码，执行这些代码会对数
 
 1. 在 Visual Studio 的解决方案资源管理器中，右键单击移动服务项目，然后单击“设为启动项目”。
  
-2. 在“工具”菜单中，展开“NuGet Package Manager”，然后单击“Package Manager Console”。
+2. 在“工具”菜单中，展开“NuGet 程序包管理器”，然后单击“程序包管理器控制台”。
 
-	此时会显示 Package Manager Console，你可以使用它来管理 Code First 迁移。
+	此时会显示程序包管理器控制台，你可以使用它来管理代码优先迁移。
 
-3. 在 Package Manager Console 中运行以下命令：
+3. 在程序包管理器控制台中运行以下命令：
 
 		PM> Enable-Migrations
 
-	这将为你的项目启用 Code First 迁移。
+	这将为你的项目启用代码优先迁移。
 
 4. 在控制台中运行以下命令：
 
@@ -98,7 +98,7 @@ Code First 迁移使用快照方法来生成代码，执行这些代码会对数
  
 	此时，数据库已与数据模型同步。如果你提供了种子数据，可以通过依次单击“试用”、“GET 表/todoitem”、“试用此项”和“发送”来验证该数据。有关详细信息，请参阅[在迁移中设定数据种子]。
 
-8.   现在，对数据模型进行更改（例如，向 TodoItem 类型添加一个新的 UserId 属性），重新生成项目，然后在 Package Manager 中运行以下命令：
+8.   现在，对数据模型进行更改（例如，向 TodoItem 类型添加一个新的 UserId 属性），重新生成项目，然后在程序包管理器中运行以下命令：
 
 		PM> Add-Migration NewUserId
                                                                
@@ -111,10 +111,6 @@ Code First 迁移使用快照方法来生成代码，执行这些代码会对数
 10. 将移动服务重新发布到 Azure，然后运行客户端应用程序以访问数据，并验证是否可以加载数据且不出错。
 
 13. （可选）在 [Azure 经典门户]中选择你的移动服务，然后单击“配置”>“SQL 数据库”。随后你将导航到移动服务数据库的 SQL 数据库页。
-
-	![][0]
-
-	随后你将导航到移动服务数据库的 SQL 数据库页。
 
 14. （可选）单击“管理”，登录到 SQL 数据库服务器，然后单击“设计”并验证是否已在 Azure 中进行架构更改。
 
@@ -181,4 +177,4 @@ Code First 迁移使用快照方法来生成代码，执行这些代码会对数
 [EntityData]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobile.service.entitydata.aspx
 [DbSet<T>]: https://msdn.microsoft.com/zh-cn/library/azure/gg696460.aspx
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

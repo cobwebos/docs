@@ -13,7 +13,7 @@
 
 # Azure 队列和服务总线队列 - 比较与对照
 
-本文分析 Microsoft Azure 目前提供的以下两种队列类型之间的差异和相似性：Azure 队列和服务总线队列。通过使用该信息，您可以比较和对照这两种技术，并可以明智地决定哪种解决方案最符合您的需要。
+本文分析 Microsoft Azure 目前提供的以下两种队列类型之间的不同点和相似点：Azure 队列和服务总线队列。通过使用该信息，您可以比较和对照这两种技术，并可以明智地决定哪种解决方案最符合您的需要。
 
 ## 介绍
 
@@ -90,8 +90,8 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 |推送样式 API|**否**|**是**<br/><br/>[OnMessage](https://msdn.microsoft.com/zh-cn/library/azure/jj908682.aspx)和**OnMessage 会话** .NET API。|
 |接收模式|**扫视与租赁**|**扫视与锁定**<br/><br/>**接收与删除**|
 |独占访问模式|**基于租赁**|**基于锁定**|
-|租赁/锁定持续时间|**30 秒（默认值）**<br/><br/>**7 天7 天（最大值）（你可以使用 [UpdateMessage](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.updatemessage.aspx) API 来续订或释放消息租赁。）|**60 秒（默认值）**<br/><br/>你可以使用 [RenewLock](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.brokeredmessage.renewlock.aspx) API 续订消息锁。|
-|租赁/锁定精度|**消息级别**<br/><br/>（每条消息可以具有不同的超时值，你可以在处理消息时，根据需要使用 [UpdateMessage](https://msdn.microsoft.com/zh-cn/library/microsoft.windowsazure.storage.queue.cloudqueue.updatemessage.aspx) API 来更新超时值）|**队列级别**<br/><br/>（每个队列都具有一个适用于其中所有消息的锁定精度，但是你可以使用 [RenewLock](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.brokeredmessage.renewlock.aspx) API 续订该锁。）|
+|租赁/锁定持续时间|**30 秒（默认值）**<br/><br/>**7 天7 天（最大值）**（你可以使用 [UpdateMessage](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.updatemessage.aspx) API 来续订或释放消息租赁。）|**60 秒（默认值）**<br/><br/>你可以使用 [RenewLock](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.brokeredmessage.renewlock.aspx) API 续订消息锁。|
+|租赁/锁定精度|**消息级别**<br/><br/>（每条消息可以具有不同的超时值，你可以在处理消息时，根据需要使用 [UpdateMessage](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.updatemessage.aspx) API 来更新超时值）|**队列级别**<br/><br/>（每个队列都具有一个适用于其中所有消息的锁定精度，但是你可以使用 [RenewLock](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.brokeredmessage.renewlock.aspx) API 续订该锁。）|
 |成批接收|**是**<br/><br/>（在检索消息时显式指定消息计数，最多可达 32 条消息）|**是**<br/><br/>（隐式启用预提取属性或通过使用事务显式启用）|
 |成批发送|**否**|**是**<br/><br/>（通过使用事务或客户端批处理）|
 
@@ -138,7 +138,7 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 |就地更新|**是**|**是**|
 |服务器端事务日志|**是**|**否**|
 |存储度量值|**是**<br/><br/>**分钟度量值**：提供可用性、TPS、API 调用计数、错误计数等指标的实时度量值，所有这些值都是实时的（每分钟进行汇总，并在生产过程中发生后几分钟之内报告）。有关详细信息，请参阅[关于存储分析度量值](https://msdn.microsoft.com/zh-cn/library/azure/hh343258.aspx)。|**是**<br/><br/>（通过调用 [GetQueues](https://msdn.microsoft.com/zh-cn/library/azure/hh293128.aspx) 进行大容量查询）|
-|状态管理|**否**|**是**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)、[Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)、[Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)、[Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)|
+|状态管理|**否**|**是**<br/><br/>[Microsoft.ServiceBus.Messaging.EntityStatus.Active](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.entitystatus.aspx)、 [Microsoft.ServiceBus.Messaging.EntityStatus.Disabled](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.entitystatus.aspx)、 [Microsoft.ServiceBus.Messaging.EntityStatus.SendDisabled](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.entitystatus.aspx)、 [Microsoft.ServiceBus.Messaging.EntityStatus.ReceiveDisabled](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.entitystatus.aspx)|
 |消息自动转发|**否**|**是**|
 |清除队列函数|**是**|**否**|
 |消息组|**否**|**是**<br/><br/>（通过使用消息传送会话）|
@@ -200,8 +200,7 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 |比较条件|Azure 队列|Service Bus 队列|
 |---|---|---|
 |管理协议|**基于 HTTP/HTTPS 的 REST**|**基于 HTTPS 的 REST**|
-|运行时协议|**基于 HTTP/HTTPS 的 REST**|**基于 HTTPS 的 REST**<br/><br/>**AMQP 1.0 标准（具有 TLS 的 TCP）**|
-|.NET 托管 API|**是**<br/><br/>（.NET 托管存储客户端 API）|**是**<br/><br/>（.NET 托管的中转消息传送 API）|
+|运行时协议|**基于 HTTP/HTTPS 的 REST**|**基于 HTTPS 的 REST**<br/><br/>**AMQP 1.0 标准（具有 TLS 的 TCP）**| |.NET 托管 API|**是**<br/><br/>（.NET 托管存储客户端 API）|**是**<br/><br/>（.NET 托管的中转消息传送 API）|
 |本机 C++|**是**|**否**|
 |Java API|**是**|**是**|
 |PHP API|**是**|**是**|
@@ -285,7 +284,7 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 
 - 在支持长轮询的情况下，在需要低延迟传递时，使用服务总线队列可达到经济高效的结果。
 
->[AZURE.NOTE]所有成本随时会变化。上表反映在本文截稿时的当前价格，不包括任何当前可用的促销特价。有关 Azure 的最新价格信息，请参阅 [Azure 定价](http://www.windowsazure.cn/pricing/overview/)页。有关服务总线价格的详细信息，请参阅[服务总线定价](http://www.windowsazure.cn/home/features/messaging/#price)。
+>[AZURE.NOTE] 所有成本随时会变化。上表反映在本文截稿时的当前价格，不包括任何当前可用的促销特价。有关 Azure 的最新价格信息，请参阅 [Azure 定价](http://www.windowsazure.cn/pricing/overview/)页。有关服务总线价格的详细信息，请参阅[服务总线定价](http://www.windowsazure.cn/home/features/messaging/#price)。
 
 ## 结束语
 
@@ -310,5 +309,4 @@ Azure 队列和服务总线队列都是 Azure 目前提供的消息队列服务�
 
 [Azure 经典门户]: http://manage.windowsazure.cn
  
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0321_2016-->

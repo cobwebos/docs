@@ -20,7 +20,7 @@
 
 ## 什么是 Azure 自动化？
 
-[Azure 自动化](http://azure.microsoft.com/services/automation/)是用于通过流程自动化简化云管理的一项 Azure 服务。使用 Azure 自动化可以自动完成那些人工操作、经常重复、长时间运行且易出错的任务，从而改善组织的可靠性、效率和价值生成时间。
+[Azure 自动化](https://azure.microsoft.com/services/automation/)是用于通过流程自动化简化云管理的一项 Azure 服务。使用 Azure 自动化可以自动完成那些人工操作、经常重复、长时间运行且易出错的任务，从而改善组织的可靠性、效率和价值生成时间。
 
 Azure 自动化提供了具有高可靠性和高可用性的工作流执行引擎，该引擎可以根据你的需求进行扩展。在 Azure 自动化中，流程可以手动、通过第三方系统或按计划的间隔启动，使任务能够完全根据需求进行。
 
@@ -34,10 +34,9 @@ Azure 自动化提供了具有高可靠性和高可用性的工作流执行引�
 
 ## 后续步骤
 
-在了解 Azure 自动化以及如何使用它来管理 Azure Service Bus 的基础知识后，请使用以下链接了解有关 Azure 自动化的更多信息。
+在了解 Azure 自动化 以及如何使用它来管理 Azure Service Bus 的基础知识后，请使用以下链接了解有关 Azure 自动化的更多信息。
 
-* 请参阅 Azure 自动化 [入门教程](/documentation/articles/automation-create-runbook-from-samples)
+* 请参阅 Azure 自动化[入门教程](/documentation/articles/automation-create-runbook-from-samples)
 * 请参阅文章[使用 PowerShell 管理服务总线](/documentation/articles/service-bus-powershell-how-to-provision)
  
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0321_2016-->

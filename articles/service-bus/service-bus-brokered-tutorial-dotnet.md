@@ -27,7 +27,7 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 
 ### 创建服务命名空间并获取 SAS 密钥
 
-1. 若要创建服务命名空间，请遵循[如何：创建或修改服务总线服务命名空间](https://msdn.microsoft.com/library/azure/hh690931.aspx)中概述的步骤。
+1. 若要创建服务命名空间，请访问 [Azure 经典门户][]。单击左侧的“服务总线”，然后单击“创建”。为你的命名空间键入一个名称，然后单击复选标记。
 
 1. 在 [Azure 经典门户][]的主窗口中，单击在上一步中创建的命名空间的名称。
 
@@ -106,7 +106,7 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 	        privatestatic List<BrokeredMessage> MessageList;
 	```
 
-2. 在 `Main()` 之外，定义 `ParseCSV()` 方法，用于解析 Data.csv 中的消息列表并将消息加载到 [DataTable](https://msdn.microsoft.com/library/azure/system.data.datatable.aspx) 表，如下所示。该方法将返回 **DataTable** 对象。
+2. 在 `Main()` 之外，定义 `ParseCSV()` 方法，用于解析 Data.csv 中的消息列表并将消息加载到 [DataTable](https://msdn.microsoft.com/zh-cn/library/azure/system.data.datatable.aspx) 表，如下所示。该方法将返回 **DataTable** 对象。
 
 	```
 	static DataTable ParseCSVFile()
@@ -201,11 +201,13 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 	    publicclass Program
 	    {
 	
-	        privatestatic DataTable issues;
-	        privatestatic List<BrokeredMessage> MessageList; 
-	        // Add these variablesprivatestaticstring ServiceNamespace;
-	        privatestaticstring sasKeyName = "RootManageSharedAccessKey";
-	        privatestaticstring sasKeyValue;
+	        private static DataTable issues;
+	        private static List<BrokeredMessage> MessageList; 
+
+	        // Add these variables
+			private static string ServiceNamespace;
+	        private static string sasKeyName = "RootManageSharedAccessKey";
+	        private static string sasKeyValue;
 	        …
 	```
 
@@ -215,11 +217,11 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 	static void CollectUserInput()
 	{
 	    // User service namespace
-	    Console.Write("Please enter the service namespace to use: ");
+	    Console.Write("Please enter the namespace to use: ");
 	    ServiceNamespace = Console.ReadLine();
 	
 	    // Issuer key
-	    Console.Write("Please enter the SAS key to use: ");
+	    Console.Write("Enter the SAS key to use: ");
 	    sasKeyValue = Console.ReadLine();
 	}
 	```
@@ -243,10 +245,6 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 
 在 Visual Studio 的“生成”菜单中，单击“生成解决方案”或按 F6 以确认到目前为止工作的准确性。
 
-创建管理凭据
-
-这是服务总线消息传送功能教程中的第二步。在此步骤中，你可以定义将用于创建共享访问签名 (SAS) 凭据（用于授权应用程序）的管理操作。
-
 ## 创建管理凭据
 
 在此步骤中，你可以定义将用于创建共享访问签名 (SAS) 凭据（用于授权应用程序）的管理操作。
@@ -263,7 +261,7 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 	}
 	```
 
-2. 下一步是使用 [TokenProvider](https://msdn.microsoft.com/library/azure/microsoft.servicebus.tokenprovider.aspx) 对象创建 SAS 凭据。此创建方法用于接受在 `CollectUserInput()` 方法中获取的 SAS 密钥名称和值。将以下代码添加到 `Queue()` 方法中：
+2. 下一步是使用 [TokenProvider](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.tokenprovider.aspx) 对象创建 SAS 凭据。此创建方法用于接受在 `CollectUserInput()` 方法中获取的 SAS 密钥名称和值。将以下代码添加到 `Queue()` 方法中：
 
 	```
 	staticvoid Queue()
@@ -274,7 +272,7 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 	```
 ### 创建命名空间管理器
 
-1. 创建新的命名空间管理对象，以包含在在上一步中获得的命名空间名称和管理凭据的 URI 作为参数。直接在上一步中添加的代码之下添加以下代码：
+1. 使用 URI 创建新的命名空间管理对象，此 URI 包含在上一步中获得的作为参数的命名空间名称和管理凭据。直接在上一步中添加的代码之下添加以下代码：
 	
 	```
 	NamespaceManager namespaceClient = new NamespaceManager(ServiceBusEnvironment.CreateServiceUri("sb", <namespaceName>, string.Empty), credentials);
@@ -451,7 +449,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ### 结束 `Queue()` 方法并清理资源
 
-在前面的代码之下直接添加以下代码，以清理消息工厂和队列资源：
+在前面的代码后面直接添加以下代码，以清除消息工厂对象和队列资源：
 
 	```
 	factory.Close();
@@ -638,7 +636,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ## 后续步骤
 
-本教程介绍了如何使用服务总线中转消息传送功能构建服务总线客户端应用程序和服务。有关使用服务总线[中继消息传送](service-bus-messaging-overview.md/#Relayed-messaging)的类似教程，请参阅[服务总线中继消息传送教程](service-bus-relay-tutorial.md)。
+本教程介绍了如何使用服务总线中转消息传送功能构建服务总线客户端应用程序和服务。有关使用服务总线[中继消息传送](/documentation/articles/service-bus-messaging-overview/#Relayed-messaging)的类似教程，请参阅[服务总线中继消息传送教程](/documentation/articles/service-bus-relay-tutorial)。
 
 若要了解有关[服务总线](/home/features/messaging)的详细信息，请参阅以下主题。
 
@@ -647,5 +645,4 @@ namespace Microsoft.ServiceBus.Samples
 - [服务总线体系结构](/documentation/articles/service-bus-architecture)
 
 [Azure 经典门户]: http://manage.windowsazure.cn
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0321_2016-->

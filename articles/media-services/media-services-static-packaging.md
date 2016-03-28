@@ -7,21 +7,21 @@
 	manager="dwrede" 
 	editor=""/>
 
-<tags 
-	ms.service="media-services" 
-	ms.date="09/10/2015"   
+<tags
+	ms.service="media-services"
+	ms.date="02/14/2016"   
 	wacn.date=""/>
 
 
 # 使用 Azure 媒体包装器完成静态打包任务
 
->[AZURE.NOTE]Microsoft Azure 媒体包装器和 Microsoft Azure 媒体加密器的使用期限将于 2016 年 3 月 1 日到期。到时，这些组件将不再可用。格式转换和加密功能将通过动态打包和动态加密提供。
+>[AZURE.NOTE]Microsoft Azure 媒体包装器和 Microsoft Azure 媒体加密器的使用期限已延长到 2017 年 3 月 1 日。在此日期之前，这些处理器的功能将添加到媒体编码器标准 (MES) 中。客户将收到有关如何迁移工作流以将作业发送到 MES 的指示。格式转换和加密功能也可通过动态打包和动态加密提供。
 
 ## 概述
 
 要通过 Internet 传送数字视频，你必须对媒体进行压缩。数字视频文件相当大，可能因过大而无法通过 Internet 传送或者无法在你客户的设备上正常显示。编码是压缩视频和音频以便你的客户能够查看媒体的过程。视频经过编码后即可放入不同的文件容器中。将编码后的媒体放入容器这一过程称为打包。以 MP4 文件为例，你可以使用 Azure 媒体包装器将其转换为平滑流式处理或 HLS 内容。有关详细信息，请参阅[编码与打包](http://blog-ndrouin.chinacloudsites.cn/streaming-media-terminology-explained/)。
 
-媒体服务支持动态和静态打包。使用静态打包时，需要以客户要求的各种格式创建内容副本。使用动态打包，你只需要创建一个包含一组自适应比特率 MP4 或平滑流文件的资产。然后，按需流式处理服务器会确保你的用户以选定的协议按清单或分段请求中的指定格式接收流。因此，你只需以单一存储格式存储文件并为其付费，然后 Media Services 服务就会基于客户端的请求构建并提供相应响应。
+媒体服务支持动态和静态打包。使用静态打包时，需要以客户要求的各种格式创建内容副本。使用动态打包，你只需要创建一个包含一组自适应比特率 MP4 或平滑流文件的资产。然后，按需流式处理服务器会确保你的用户以选定的协议按清单或分段请求中的指定格式接收流。因此，你只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。
 
 >[AZURE.NOTE]建议使用[动态打包](/documentation/articles/media-services-dynamic-packaging-overview)。
 
@@ -50,7 +50,7 @@
 	<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 	<smil xmlns="http://www.w3.org/2001/SMIL20/Language">
 	  <head>
-	<!-- Tells the server that these input files are MP4s – specific to Dynamic Packaging -->
+	<!-- Tells the server that these input files are MP4s - specific to Dynamic Packaging -->
 	    <meta name="formats" content="mp4" /> 
 	  </head>
 	  <body>
@@ -162,7 +162,7 @@
 	
 	            // Get the SDK extension method to  get a reference to the Azure Media Packager.
 	            IMediaProcessor processor = _context.MediaProcessors.GetLatestMediaProcessorByName(
-	                MediaProcessorNames.AzureMediaPackager);
+	                MediaProcessorNames.WindowsAzureMediaPackager);
 	
 	            // Create a task with the conversion details, using the configuration data. 
 	            ITask task = job.Tasks.AddNew("Mp4 Validation Task",
@@ -335,7 +335,7 @@
 	            IAsset outputAsset = CreateSmoothStreamEncryptedWithPlayReady(clearSmoothStreamAsset);
 	
 	
-	            // You can use the http://smf.chinacloudapp.cn/healthmonitor player 
+	            // You can use the http://smf.cloudapp.net/healthmonitor player 
 	            // to test the smoothStreamURL URL.
 	            string smoothStreamURL = outputAsset.GetSmoothStreamingUri().ToString();
 	            Console.WriteLine("Smooth Streaming URL:");
@@ -594,7 +594,7 @@
 	            // Note that the configuration defined in MediaEncryptor_PlayReadyProtection.xml
 	            // is using keySeedValue. It is recommended that you do this only for testing 
 	            // and not in production. For more information, see 
-	            // http://msdn.microsoft.com/library/windowsazure/dn189154.aspx.
+	            // http://www.windowsazure.cn/documentation/articles/media-services-static-packaging.
 	            //
 	            string configPlayReady = File.ReadAllText(Path.Combine(_configurationXMLFiles,
 	                                        @"MediaEncryptor_PlayReadyProtection.xml"));
@@ -685,7 +685,7 @@
 
 ## 通过静态加密使用 AES-128 来保护 HLSv3
 
-如果你要使用 AES-128 加密 HLS，可以选择使用动态加密（推荐选项）或静态加密（如本部分所述）。如果你决定使用动态加密，请参阅[使用 AES-128 动态加密和密钥传递服务](media-services-protect-with-aes128)。
+如果你要使用 AES-128 加密 HLS，可以选择使用动态加密（推荐选项）或静态加密（如本部分所述）。如果你决定使用动态加密，请参阅[使用 AES-128 动态加密和密钥传递服务](/documentation/articles/media-services-protect-with-aes128)。
 
 >[AZURE.NOTE]若要将内容转换为 HLS，必须先将内容转换/编码为平滑流。此外，对于使用 AES 加密的 HLS，请确保在 MediaPackager\_SmoothToHLS.xml 文件中设置以下属性：将加密属性设置为 true，将密钥值和 keyuri 值设置为指向身份验证\\授权服务器。媒体服务将创建密钥文件，并将其放置在资产容器中。你应该将 /asset-containerguid/*.key 文件复制到服务器（或创建你自己的密钥文件），然后从资产容器中删除 *.key 文件。
 
@@ -964,13 +964,13 @@
 
 如果你想要通过 PlayReady 来保护你的内容，则可选择使用[动态加密](/documentation/articles/media-services-protect-with-drm)（推荐选项）或静态加密（如本部分所述）。
 
->[AZURE.NOTE]若要使用 PlayReady 保护你的内容，必须先将内容转换/编码为平滑流格式。
+>[AZURE.NOTE] 若要使用 PlayReady 保护你的内容，必须先将内容转换/编码为平滑流格式。
 
 本部分的示例将夹层文件（在本例中为 MP4）编码为多比特率 MP4 文件。然后，它将 MP4 打包为平滑流，并使用 PlayReady 对平滑流进行加密。若要生成使用 PlayReady 加密的 HTTP 实时流 (HLS)，需要将 PlayReady 平滑流资产打包成 HLS。本主题演示如何执行所有这些步骤。
 
 媒体服务现在提供有用于传送 Microsoft PlayReady 许可证的服务。本文中的示例显示如何配置媒体服务 PlayReady 许可证传送服务（请参见以下代码中定义的 **ConfigureLicenseDeliveryService** 方法）。
 
-确保更新以下代码，以便指向输入 MP4 文件所在的文件夹，并指向 MediaPackager\_MP4ToSmooth.xml、MediaPackager\_SmoothToHLS.xml 和 MediaEncryptor\_PlayReadyProtection.xml 文件所在的位置。MediaPackager\_MP4ToSmooth.xml 和 MediaPackager\_SmoothToHLS.xml在 [Azure 媒体包装器的任务预设](http://msdn.microsoft.com/zh-cn/library/azure/hh973635.aspx)中定义，MediaEncryptor\_PlayReadyProtection.xml 在 [Azure 媒体加密器的任务预设](http://msdn.microsoft.com/zh-cn/library/azure/hh973610.aspx)主题中定义。
+确保更新以下代码，以便指向输入 MP4 文件所在的文件夹，并指向 MediaPackager\_MP4ToSmooth.xml、MediaPackager\_SmoothToHLS.xml 和 MediaEncryptor\_PlayReadyProtection.xml 文件所在的位置。MediaPackager\_MP4ToSmooth.xml 和 MediaPackager\_SmoothToHLS.xml 在 [Azure 媒体包装器的任务预设](http://msdn.microsoft.com/zh-cn/library/azure/hh973635.aspx)中定义，MediaEncryptor\_PlayReadyProtection.xml 在 [Azure 媒体加密器的任务预设](http://msdn.microsoft.com/zh-cn/library/azure/hh973610.aspx)主题中定义。
 	
 	using System;
 	using System.Collections.Generic;
@@ -1344,7 +1344,7 @@
 	            // Note that the configuration defined in MediaEncryptor_PlayReadyProtection.xml
 	            // is using keySeedValue. It is recommended that you do this only for testing 
 	            // and not in production. For more information, see 
-	            // http://msdn.microsoft.com/library/windowsazure/dn189154.aspx.
+	            // http://www.windowsazure.cn/documentation/articles/media-services-static-packaging.
 	            //
 	            string configPlayReady = File.ReadAllText(Path.Combine(_configurationXMLFiles,
 	                                        @"MediaEncryptor_PlayReadyProtection.xml"));
@@ -1435,11 +1435,5 @@
 	    }
 	}
 
-##媒体服务学习路径
 
-你可以在此处查看 AMS 学习路径：
-
-- [AMS 实时流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS 按需流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
-
-<!---HONumber=76-->
+<!---HONumber=Mooncake_0321_2016-->

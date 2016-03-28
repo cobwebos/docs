@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用媒体服务 REST API 创建筛选器" 
+	pageTitle="使用 Azure 媒体服务 REST API 创建筛选器" 
 	description="本主题介绍如何创建筛选器，以便客户端能够使用它们来流式传输流的特定部分。媒体服务将创建动态清单来存档此选择性流。"
 	services="media-services" 
 	documentationCenter="" 
@@ -9,10 +9,10 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/18/2015"
+ 	ms.date="02/03/2016"  
 	wacn.date=""/>
 
-#使用媒体服务 REST API 创建筛选器
+#使用 Azure 媒体服务 REST API 创建筛选器
 
 > [AZURE.SELECTOR]
 - [.NET](/documentation/articles/media-services-dotnet-dynamic-manifest)
@@ -36,9 +36,9 @@
 
 
 
->[AZURE.NOTE]使用 Media Services REST API 时，需注意以下事项：
+>[AZURE.NOTE] 使用媒体服务 REST API 时，需注意以下事项：
 >
->访问 Media Services 中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use)。
+>访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use)。
 
 >在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。必须根据[使用 REST API 连接到媒体服务](/documentation/articles/media-services-rest-connect_programmatically)中所述对新的 URI 执行后续调用。
 
@@ -361,4 +361,4 @@
 
  
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0321_2016-->

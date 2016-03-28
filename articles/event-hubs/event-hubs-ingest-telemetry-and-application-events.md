@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="event-hubs" 
-	ms.date="10/06/2015" 
+	ms.date="01/26/2016" 
 	wacn.date=""/>
 
 # 大规模引入遥测数据和应用程序事件
@@ -28,8 +28,8 @@
 - [事件中心代码示例](https://code.msdn.microsoft.com/windowsazure/site/search?query=event%20hubs&f%5B0%5D.Value=event%20hubs&f%5B0%5D.Type=SearchText&ac=5)
  
 ## 相关服务
-- [Azure 存储空间](http://www.windowsazure.cn/documentation/services/storage/)
-- [HDInsight](http://www.windowsazure.cn/documentation/services/hdinsight/)
+- [服务总线](/services/service-bus/)
+- [Azure 存储空间](/services/storage/)
+- [HDInsight](/services/hdinsight/)
  
-
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

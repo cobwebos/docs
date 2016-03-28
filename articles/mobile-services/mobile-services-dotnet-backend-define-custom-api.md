@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="12/07/2015"
+	ms.date="02/07/2016"
 	wacn.date=""/>
 
 
@@ -21,8 +21,8 @@
 
 
 > [AZURE.SELECTOR]
-- [JavaScript backend](/documentation/articles/mobile-services-javascript-backend-define-custom-api)
-- [.NET backend](/documentation/articles/mobile-services-dotnet-backend-define-custom-api)
+- [JavaScript 后端](/documentation/articles/mobile-services-javascript-backend-define-custom-api)
+- [.NET 后端](/documentation/articles/mobile-services-dotnet-backend-define-custom-api)
 
 本主题说明如何在 .NET 后端移动服务中定义自定义 API 终结点。自定义 API 可让你定义具有服务器功能的自定义终结点，但此功能不会映射到插入、更新、删除或读取操作。使用自定义 API 能够以更大的力度控制消息，包括 HTTP 标头和正文格式。
 
@@ -37,4 +37,5 @@
 
 <!-- URLs. -->
 
-<!---HONumber=Mooncake_0118_2016-->
+
+<!---HONumber=Mooncake_0321_2016-->

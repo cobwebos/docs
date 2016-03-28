@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="向通用 Windows 8.1 应用添加身份验证 | Microsoft Azure" 
+	pageTitle="向通用 Windows 8.1 应用添加身份验证 | Azure" 
 	description="了解如何使用移动服务通过提供各种标识提供者（包括 Google、Facebook、Twitter 和 Microsoft）对通用 Windows 8.1 应用的用户进行身份验证。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -25,7 +25,7 @@
 
 本教程基于移动服务快速入门。此外，还必须先完成[移动服务入门]或[将移动服务添加到现有应用程序](/documentation/articles/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-data)教程。
 
->[AZURE.NOTE]本教程演示了如何对 Windows 应用商店和 Windows Phone 应用商店 8.1 应用中的用户使用服务器导向的身份验证。有关客户端导向的身份验证的信息，请参阅[通过 Google、 Microsoft 和 Facebook SDK 登录 Azure 移动服务](http://azure.microsoft.com/blog/2014/10/27/logging-in-with-google-microsoft-and-facebook-sdks-to-azure-mobile-services/)。
+>[AZURE.NOTE]本教程演示了如何对 Windows 应用商店和 Windows Phone 应用商店 8.1 应用中的用户使用服务器导向的身份验证。有关客户端导向的身份验证的信息，请参阅[通过 Google、 Microsoft 和 Facebook SDK 登录 Azure 移动服务](https://azure.microsoft.com/blog/2014/10/27/logging-in-with-google-microsoft-and-facebook-sdks-to-azure-mobile-services/)。
 
 ##<a name="register"></a>注册应用程序以进行身份验证并配置移动服务
 
@@ -51,7 +51,7 @@
 
 ##<a name="add-authentication"></a>向应用程序添加身份验证
 
-[AZURE.INCLUDE [mobile-services-windows-universal-dotnet-authenticate-app](../includes/mobile-services-windows-universal-dotnet-authenticate-app.md)]
+[AZURE.INCLUDE [mobile-windows-universal-dotnet-authenticate-app](../../includes/mobile-windows-universal-dotnet-authenticate-app.md)]
 
 >[AZURE.NOTE]如果已将 Windows 应用商店应用程序包信息注册到移动服务，则应该为 *useSingleSignOn* 参数提供 **true** 值以调用 <a href="http://go.microsoft.com/fwlink/p/?LinkId=311594" target="_blank">LoginAsync</a> 方法。如果不这样做，你的用户将继续显示登录提示每次调用 login 方法。
 
@@ -70,7 +70,7 @@
 
 ##另请参阅
 
-+ [增强的用户功能](http://azure.microsoft.com/blog/2014/10/02/custom-login-scopes-single-sign-on-new-asp-net-web-api-updates-to-the-azure-mobile-services-net-backend/)<br/>
++ [增强的用户功能](https://azure.microsoft.com/blog/2014/10/02/custom-login-scopes-single-sign-on-new-asp-net-web-api-updates-to-the-azure-mobile-services-net-backend/)<br/>
 你可以通过在 .NET 后端调用 **ServiceUser.GetIdentitiesAsync()** 方法，来获取标识提供者在你的移动服务中保留的其他用户数据。 
 
 + [移动服务 .NET 操作方法概念性参考]<br/>了解有关如何将移动服务与 .NET 客户端配合使用的详细信息。
@@ -99,4 +99,4 @@
 [移动服务 .NET 操作方法概念性参考]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 [Register your Windows Store app package for Microsoft authentication]: /documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="自定义身份验证入门 | Microsoft Azure" 
+	pageTitle="自定义身份验证入门 | Azure" 
 	description="了解如何使用用户名和密码对用户进行身份验证。" 
 	documentationCenter="Mobile" 
 	authors="mattchenderson" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="12/28/2015"
+	ms.date="02/07/2016"
 	wacn.date=""/>
 
 # 自定义身份验证入门
@@ -53,7 +53,7 @@
 
         public DbSet<Account> Accounts { get; set; }
 
-	>[AZURE.NOTE]本教程中的代码段使用 `todoContext` 作为上下文名称。你必须更新项目上下文的代码段。 
+	>[AZURE.NOTE]本教程中的代码段使用 `todoContext` 作为上下文名称。你必须更新项目上下文的代码段。
         &nbsp;
 	接下来，请设置安全功能以处理此数据。
  
@@ -422,5 +422,4 @@
 [ClaimsIdentity]: https://msdn.microsoft.com/zh-cn/library/system.security.claims.claimsidentity(v=vs.110).aspx
 [ProviderCredentials]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobile.service.security.providercredentials.aspx
  
-
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0321_2016-->

@@ -81,11 +81,12 @@
 
     ![][5]
 
-4.  在“添加新命名空间”对话框中，输入命名空间名称。系统会立即检查该名称是否可用。![][6]
+4.  在“添加新命名空间”对话框中，输入命名空间名称。系统会立即检查该名称是否可用。
+    ![][6]
 
 5.  在确保命名空间名称可用后，选择应承载您的命名空间的国家或地区（确保使用在其中部署计算资源的同一国家/地区）。
 
-    > [AZURE.IMPORTANT]选取要选择用于部署应用程序的*相同区域*。这将为您提供最佳性能。
+    > [AZURE.IMPORTANT] 选取要选择用于部署应用程序的相同区域。这将为您提供最佳性能。
 
 6.	将对话框中的其他字段保留为其默认值（“消息传送”和“标准”层），然后单击复选标记。系统现已创建命名空间并已将其启用。您可能需要等待几分钟，因为系统将为您的帐户配置资源。
 
@@ -140,7 +141,7 @@
 
     ![][12]
 
-7.  如果你已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。否则，请访问 [NuGet][]，然后单击“[安装 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)”。按照提示操作以安装 NuGet 包管理器，然后重新启动 Visual Studio。
+7.  如果你已为 Visual Studio 安装 NuGet 包管理器，请跳到下一步骤。否则，请访问 [NuGet][]，然后单击[“安装 NuGet”](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)。按照提示操作以安装 NuGet 包管理器，然后重新启动 Visual Studio。
 
 8.  在解决方案资源管理器中，右键单击“引用”，然后单击“管理 NuGet 包”。
 
@@ -246,7 +247,7 @@
             }
         }
 
-15. 在解决方案资源管理器中，双击“App.config”文件以在 Visual Studio 编辑器中将其打开。将 **&lt;system.ServiceModel&gt;** 的内容替换为以下 XML 代码。确保将 *yourServiceNamespace* 替换为你的服务命名空间的名称，并将 *yourKey* 替换为之前从 Azure 经典门户中检索到的 SAS 密钥：
+15. 在解决方案资源管理器中，双击“App.config”文件以在 Visual Studio 编辑器中将其打开。将 **&lt;system.ServiceModel&gt;** 的内容替换为以下 XML 代码。确保将 yourServiceNamespace 替换为你的服务命名空间的名称，并将 yourKey 替换为之前从 Azure 经典门户中检索到的 SAS 密钥：
 
         <system.serviceModel>
           <extensions>
@@ -402,7 +403,7 @@
 
 ## 准备好将应用程序部署到 Azure
 
-你可以将应用程序部署到 Azure 云服务或 Azure 网站。若要详细了解网站和云服务之间的差异，请参阅 [Azure 执行模型][executionmodels]。若要了解如何将应用程序部署到 Azure 网站，请参阅[将 ASP.NET Web 应用程序部署到 Azure 网站](http://azure.microsoft.com/develop/net/tutorials/get-started/)。本部分包含有关如何将应用程序部署到 Azure 云服务的详细步骤。
+你可以将应用程序部署到 Azure 云服务或 Azure 网站。若要详细了解网站和云服务之间的差异，请参阅 [Azure 执行模型][executionmodels]。若要了解如何将应用程序部署到 Azure 网站，请参阅[将 ASP.NET Web 应用程序部署到 Azure 网站](https://azure.microsoft.com/develop/net/tutorials/get-started/)。本部分包含有关如何将应用程序部署到 Azure 云服务的详细步骤。
 
 若要将应用程序部署到云服务，需要在解决方案中添加一个云服务项目部署项目。该部署项目包含在云中正常运行应用程序所需的配置信息。
 
@@ -434,7 +435,7 @@
 
 	![][24]
 
-6.  现在，在 Visual Studio 编辑器中打开 **HomeController.cs** 文件，并将命名空间定义替换为以下代码。确保将 *yourServiceNamespace* 替换为你的服务命名空间的名称，并将 *yourKey* 替换为你的 SAS 密钥。这将使客户端能够调用本地服务，并返回调用的结果。
+6.  现在，在 Visual Studio 编辑器中打开 **HomeController.cs** 文件，并将命名空间定义替换为以下代码。确保将 yourServiceNamespace 替换为你的服务命名空间的名称，并将 yourKey 替换为你的 SAS 密钥。这将使客户端能够调用本地服务，并返回调用的结果。
 
             namespace ProductsWeb.Controllers
             {
@@ -517,8 +518,7 @@
 
 6. 在最后一页上，单击“发布”以开始部署过程。
 
-    ![][34] 
-此过程需要大约 5-7 分钟时间。由于这是你首次发布，因此 Azure 会依次执行以下操作以便公开应用程序：预配一台虚拟机 (VM)，执行安全强化，在 VM 上创建一个 Web 角色以承载应用程序，将代码部署到该 Web 角色以及配置负载平衡器和网络。
+    ![][34] 此过程需要大约 5-7 分钟时间。由于这是你首次发布，因此 Azure 会依次执行以下操作以便公开应用程序：预配一台虚拟机 (VM)，执行安全强化，在 VM 上创建一个 Web 角色以承载应用程序，将代码部署到该 Web 角色以及配置负载平衡器和网络。
 
 7. 当发布正在进行时，你可以在“Azure 活动日志”窗口中监视活动，该窗口通常位于 Visual Studio 或 Visual Web Developer 的底部。
 
@@ -611,4 +611,4 @@ Azure 将按使用的服务器小时数对 Web 角色实例计费。你的应用
   [sbwacomqhowto]: /documentation/articles/service-bus-dotnet-how-to-use-queues
   [executionmodels]: /documentation/articles/fundamentals-application-models
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0321_2016-->

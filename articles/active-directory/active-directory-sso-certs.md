@@ -4,12 +4,12 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="liviodlc"
-	manager="terrylan"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
 	ms.service="active-directory"
-	ms.date="09/29/2015"
+	ms.date="02/09/2016"
 	wacn.date=""/>
 
 #在 Azure Active Directory 中管理用于联合单一登录的证书
@@ -68,10 +68,14 @@
 
 	- 在 Azure AD 中，选中对话框底部的确认复选框以启用新证书，然后单击“下一步”以提交。
 
-	> [AZURE.IMPORTANT]完成这两个步骤中的任何一个时，会禁用单一登录到应用，但完成第二个步骤后会再次启用。因此，为了最大程度地减少停机时间，请准备好在较短的间隔时间内完成这两个步骤。
+	> [AZURE.IMPORTANT] 完成这两个步骤中的任何一个时，会禁用单一登录到应用，但完成第二个步骤后会再次启用。因此，为了最大程度地减少停机时间，请准备好在较短的间隔时间内完成这两个步骤。
 
 	![下载然后上载证书](./media/active-directory-sso-certs/renew-config-app.PNG)
 
-[AZURE.INCLUDE [saas-toc](../includes/active-directory-saas-toc.md)]
+## 相关文章
 
-<!---HONumber=Mooncake_1221_2015-->
+- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+- [Azure Active Directory 的应用程序访问与单一登录](active-directory-appssoaccess-whatis.md)
+- [排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md)
+
+<!---HONumber=Mooncake_0321_2016-->

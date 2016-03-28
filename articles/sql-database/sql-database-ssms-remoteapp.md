@@ -1,15 +1,14 @@
 <properties 
 	pageTitle="在 Azure RemoteApp 中使用 SQL Server Management Studio 连接到 SQL 数据库 | Microsoft Azure" 
-	description="通过本教程学习在连接到 SQL 数据库时，如何在 Azure RemoteApp 中使用 SQL Server Management Studio 来提高安全性和性能" 
+	description="通过本教程了解如何在连接到 SQL 数据库时使用 Azure RemoteApp 中的 SQL Server Management Studio 进行安全和性能操作"
 	services="sql-database" 
-	documentationCenter="" 
+	documentationCenter=""
 	authors="adhurwit" 
-	manager=""
-	tags=""//>
+	manager=""/>
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="11/20/2015" 
+	ms.date="01/20/2016" 
 	wacn.date=""/>
 
 # 在 Azure RemoteApp 中使用 SQL Server Management Studio 连接到 SQL 数据库
@@ -54,12 +53,11 @@ Azure RemoteApp 是 Azure 中的 RDS 服务，用于交付应用程序。你可�
 
 ### 2\.从 SQL Express 安装 SSMS
 
-转到新的 VM，导航到此下载页面：
-[Microsoft® SQL Server® 2014 Express](http://www.microsoft.com/zh-cn/download/details.aspx?id=42299)
+转到新的 VM，导航到此下载页面：[Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/zh-cn/download/details.aspx?id=42299)
 
 有一个仅下载 SSMS 的选项。下载后，请进入安装目录，然后运行安装程序以安装 SSMS。
 
-你还需安装 SQL Server 2014 Service Pack 1。可以在此处下载：[Microsoft SQL Server 2014 Service Pack 1 (SP1)](http://www.microsoft.com/zh-cn/download/details.aspx?id=46694)
+你还需安装 SQL Server 2014 Service Pack 1。可以在此处下载：[Microsoft SQL Server 2014 Service Pack 1 (SP1)](https://www.microsoft.com/zh-cn/download/details.aspx?id=46694)
 
 SQL Server 2014 Service Pack 1 包括的基本功能适用于 Azure SQL 数据库。
 
@@ -141,7 +139,7 @@ sysprep 在完成后会关闭 VM。
 
 完成所有上述步骤以后，你就能够运行 Azure RemoteApp 客户端并使用分配的用户登录。你会看到作为应用程序之一显示的 SSMS，并可根据需要来运行它，就像它是安装在你的计算机上且具有 Azure SQL Server 访问权限一样。
 
-有关如何连接到 SQL 数据库的详细信息，请参阅[使用 SQL Server Management Studio (SSMS) 进行连接](/documentation/articles/sql-database-connect-to-database)
+有关如何连接到 SQL 数据库的详细信息，请参阅[使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例性的 T-SQL 查询](/documentation/articles/sql-database-connect-query-ssms)。
 
 
 这就是本文的全部内容。请尽情享受其中的乐趣！
@@ -156,4 +154,4 @@ sysprep 在完成后会关闭 VM。
 [5]: ./media/sql-database-ssms-remoteapp/publish.png
 [6]: ./media/sql-database-ssms-remoteapp/user.png
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0321_2016-->

@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="09/28/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
  
@@ -51,10 +51,10 @@ RENAME OBJECT DimDate_New TO DimDate;
 SQL 数据仓库中的视图只是元数据。
 
 因此无法使用以下选项：
-- 	没有架构绑定选项
-- 	无法通过视图更新基表
-- 	无法基于临时表创建视图
-- 	不支持 EXPAND / NOEXPAND 提示
+- 	没有架构绑定选项 
+- 	无法通过视图更新基表 
+- 	无法基于临时表创建视图 
+- 	不支持 EXPAND / NOEXPAND 提示 
 - 	SQL 数据仓库中没有已编制索引的视图
 
 
@@ -70,4 +70,6 @@ SQL 数据仓库中的视图只是元数据。
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+
+
+<!---HONumber=Mooncake_0321_2016-->

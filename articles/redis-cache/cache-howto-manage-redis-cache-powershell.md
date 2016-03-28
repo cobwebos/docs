@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Azure PowerShell 管理 Azure Redis 缓存 | Microsoft Azure"
+	pageTitle="使用 Azure PowerShell 管理 Azure Redis 缓存 | Azure"
 	description="了解如何使用 Azure PowerShell 对 Azure Redis 缓存执行管理任务。"
 	services="redis-cache"
 	documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="cache"
-	ms.date="12/16/2015"
+	ms.date="02/05/2016"
 	wacn.date=""/>
 
 # 使用 Azure PowerShell 管理 Azure Redis 缓存
@@ -20,7 +20,7 @@
 
 本主题说明如何执行创建、更新和缩放 Azure Redis 缓存实例等常见任务、如何重新生成访问密钥，以及如何查看有关缓存的信息。有关 Azure Redis 缓存 PowerShell cmdlet 的完整列表，请参阅 [Azure Redis 缓存 cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/mt634513.aspx)。
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](#classic) 本文后面所述的。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](#classic) 本文后面所述的 。
 
 ## 先决条件
 
@@ -32,11 +32,11 @@
 
 首先，必须使用以下命令登录到 Azure。
 
-	$china = Get-AzureRmEnvironment -Name AzureChinaCloud; Login-AzureRmAccount -Environment $china
+	$china = Get-AzureRmEnvironment -Name AzureChinaCloud; Login-AzureRmAccount -Environment $china 
 
 [AZURE.INCLUDE [azurerm-azurechinacloud-environment-parameter](../includes/azurerm-azurechinacloud-environment-parameter.md)]
 
-在 Microsoft Azure 登录对话框中指定 Azure 帐户的电子邮件地址及其密码。
+在 Azure 登录对话框中指定 Azure 帐户的电子邮件地址及其密码。
 
 接下来，如果你有多个 Azure 订阅，则需要设置你的 Azure 订阅。若要查看当前订阅的列表，请运行以下命令。
 
@@ -57,6 +57,23 @@
 例如，若要获取有关 `New-AzureRmRedisCache` cmdlet 的帮助，请键入：
 
 	Get-Help New-AzureRmRedisCache -Detailed
+
+### 连接到 Azure 中国云
+
+若要连接到 Azure 中国云，请使用以下命令之一。
+
+	Add-AzureRMAccount -EnvironmentName AzureChinaCloud
+
+或
+
+	Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
+
+若要在 Azure 中国云中创建缓存，请使用以下位置之一。
+
+-	中国东部
+-	中国北部
+
+有关 Azure 中国云的详细信息，请参阅[中国 21Vianet 运营的 AzureChinaCloud for Azure](http://www.windowsazure.cn/)。
 
 ## Azure Redis 缓存 PowerShell 使用的属性
 
@@ -142,7 +159,7 @@
 	
 	    -VirtualNetwork <String>
 	        The exact ARM resource ID of the virtual network to deploy the redis cache in. Example format:
-	        /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1
+	        /subscriptions/{subid}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicNetwork/VirtualNetworks/{vnetName}
 	
 	    -Subnet <String>
 	        Required when deploying a redis cache inside an existing Azure Virtual Network.
@@ -166,7 +183,7 @@
 
 	New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "China North" -Sku Premium -Size P1 -ShardCount 3
 
-若要指定 `RedisConfiuration` 参数的值，请以键/值对的方式将值括在 `{}` 内，例如 `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}`。以下示例将创建标准 1 GB 缓存，其包含 `allkeys-random` maxmemory 策略，以及使用 `KEA` 配置的 keyspace 通知。有关详细信息，请参阅 [Keyspace 通知（高级设置）](/documentation/articles/cache-configure#keyspace-notifications-advanced-settings)以及 [Maxmemory-policy 和 maxmemory-reserved](/documentation/articles/cache-configure#maxmemory-policy-and-maxmemory-reserved)。
+若要指定 `RedisConfiuration` 参数的值，请以键/值对的方式将值括在 `{}` 内，例如 `@{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}`。以下示例将创建标准 1 GB 缓存，其包含 `allkeys-random` maxmemory 策略，以及使用 `KEA` 配置的 keyspace 通知。
 
 	New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "China North" -RedisConfiguration @{"maxmemory-policy" = "allkeys-random", "notify-keyspace-events" = "KEA"}
 
@@ -241,7 +258,7 @@
 
 修改 `Size`、`Sku` 或 `ShardCount` 属性时，可以使用 `Set-AzureRmRedisCache` 来缩放 Azure Redis 缓存实例。
 
->[AZURE.NOTE]你可以扩展到不同定价层，但有以下限制。
+>[AZURE.NOTE] 你可以扩展到不同定价层，但有以下限制。
 >
 >-	不能向上缩放到**高级**缓存，或者从此层向下缩放。
 >-	不能从**标准**缓存缩放到**基本**缓存。
@@ -504,10 +521,10 @@
 	Are you sure you want to remove redis cache 'myCache'?
 	[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 
-<a name="classic"></a>
+<a name="classic">
 ## 使用 PowerShell 经典部署模型管理 Azure Redis 缓存实例
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](/documentation/articles/cache-howto-manage-redis-cache-powershell)本文开头介绍的。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)] [资源管理器模型](/documentation/articles/cache-howto-manage-redis-cache-powershell) 本文开头介绍的 。
 
 以下脚本演示了如何使用经典部署模型创建、更新和删除 Azure Redis 缓存。
 		
@@ -516,7 +533,7 @@
     	# Create a new cache with date string to make name unique.
 		$cacheName = "MovieCache" + $(Get-Date -Format ('ddhhmm'))
 		$location = "China North"
-		$resourceGroupName = "Default-Web-WestUS"
+		$resourceGroupName = "Default-Web-ChinaNorth"
 		
 		$movieCache = New-AzureRedisCache -Location $location -Name $cacheName  -ResourceGroupName $resourceGroupName -Size 250MB -Sku Basic
 		
@@ -558,8 +575,8 @@
 
 - [MSDN 上的 Azure Redis 缓存 cmdlet 文档](https://msdn.microsoft.com/zh-cn/library/azure/mt634513.aspx)
 - [Azure 资源管理器 Cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/mt125356.aspx)：了解如何在 AzureResourceManager 模块中使用这些 cmdlet。
-- [Azure 博客](http://blogs.msdn.com/windowsazure)：了解 Azure 中的新功能。
+- [Azure 博客](/blog/)：了解 Azure 中的新功能。
 - [Windows PowerShell 博客](http://blogs.msdn.com/powershell)：了解 Windows PowerShell 中的新功能。
 - [“你好，脚本编写专家！” 博客](http://blogs.technet.com/b/heyscriptingguy/)：从 Windows PowerShell 社区获取实用提示和技巧。
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0321_2016-->

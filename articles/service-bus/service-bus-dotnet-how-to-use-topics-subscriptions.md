@@ -9,7 +9,7 @@
 
 <tags
     ms.service="service-bus"
-    ms.date="10/15/2015"
+    ms.date="01/26/2016"
     wacn.date=""/>
 
 # 如何使用服务总线主题和订阅
@@ -28,7 +28,7 @@
 
 ## 获取服务总线 NuGet 包
 
-服务总线 NuGet 包是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。利用 NuGet Visual Studio 扩展，可以轻松地在 Visual Studio 和 Visual Studio Express 中安装和更新库和工具。服务总线 NuGet 包是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。
+[服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。使用 NuGet Visual Studio 扩展可以轻松地在 Visual Studio 和 Visual Studio Express 中安装和更新库和工具，以便获取服务总线 API 并为应用程序配置所有服务总线依赖项。
 
 要在你的应用程序中安装 NuGet 包，请执行以下操作：
 
@@ -50,7 +50,7 @@
 
 ### 使用云服务时配置连接字符串
 
-该服务配置机制是 Azure 云服务项目特有的，它使你能够从 [Azure 经典门户][]动态更改配置设置，而无需重新部署你的应用程序。例如，向服务定义 (****.csdef**) 文件中添加 `Setting` 标签，如以下示例所示。
+该服务配置机制是 Azure 云服务项目特有的，它使你能够从 [Azure 经典门户][]动态更改配置设置，而无需重新部署你的应用程序。例如，向服务定义 (*.csdef) 文件中添加 `Setting` 标签，如以下示例所示。
 
 ```
 <ServiceDefinition name="WindowsAzure1">
@@ -79,7 +79,7 @@
 </ServiceConfiguration>
 ```
 
-使用从 Azure 经典门户检索到的共享访问签名 (SAS) 密钥名称和密钥值，如上一部分中所述。
+使用从门户检索到的共享访问签名 (SAS) 密钥名称和密钥值，如上一部分中所述。
 
 ### 在使用 Azure 网站或 Azure 虚拟机时配置连接字符串
 
@@ -94,7 +94,7 @@
 </configuration>
 ```
 
-使用从 Azure 经典门户检索到的 SAS 名称和密钥值，如上一部分中所述。
+使用从 [Azure 经典门户][]检索到的 SAS 名称和密钥值，如上一部分中所述。
 
 ## 创建主题
 
@@ -232,7 +232,7 @@ for (int i=0; i<5; i++)
 }
 ```
 
-服务总线主题支持[最大为 256 Kb 的消息](/documentation/articles/service-bus-quotas)（标头最大为 64 Kb，其中包括标准和自定义应用程序属性）。一个主题中包含的消息数量不受限制，但消息的总大小受限制。此主题大小是在创建时定义的，上限为 5 GB。如果启用了分区，则上限更高。有关详细信息，请参阅[分区消息实体](https://msdn.microsoft.com/zh-cn/library/azure/dn520246.aspx)。
+服务总线主题支持[最大为 256 Kb 的消息](/documentation/articles/service-bus-quotas)（标头最大为 64 Kb，其中包括标准和自定义应用程序属性）。一个主题中包含的消息数量不受限制，但消息的总大小受限制。此主题大小是在创建时定义的，上限为 5 GB。如果启用了分区，则上限更高。有关详细信息，请参阅[分区消息实体](/documentation/articles/service-bus-partitioning)。
 
 ## 如何从订阅接收消息
 
@@ -279,7 +279,7 @@ Client.OnMessage((message) =>
 }, options);
 ```
 
-此示例使用 [OnMessageOptions](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx) 对象配置 [OnMessage](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) 回调。将 [AutoComplete](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) 设置为 **false** 以允许手动控制何时对收到的消息调用 [Complete](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx)。将 [AutoRenewTimeout](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) 设置为 1 分钟，这会导致客户端最多等待消息一分钟，然后调用会超时并且客户端将发出新的调用以检查是否有消息。此属性值会减少客户端无法检索消息时产生的应计费调用次数。
+此示例使用 [OnMessageOptions](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.onmessageoptions.aspx) 对象配置 [OnMessage](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.subscriptionclient.onmessage.aspx) 回调。将 [AutoComplete](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.onmessageoptions.autocomplete.aspx) 设置为 **false** 以允许手动控制何时对收到的消息调用 [Complete](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx)。将 [AutoRenewTimeout](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.onmessageoptions.autorenewtimeout.aspx) 设置为 1 分钟，这会使客户端最多等待一分钟就会终止自动续订功能，并且客户端会发起新的调用以检查是否有消息。此属性值会减少客户端无法检索消息时产生的应计费调用次数。
 
 ## 如何处理应用程序崩溃和不可读消息
 
@@ -308,7 +308,7 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
 
 现在，您已了解有关 Service Bus 主题和订阅的基础知识，单击下面的链接可了解更多信息。
 
--   请参阅[队列、主题和订阅][]。
+-   [队列、主题和订阅][]。
 -   [SqlFilter][] 的 API 参考。
 -   构建向服务总线队列发送消息以及从中接收消息的工作应用程序：[服务总线中转消息传送 .NET 教程][]。
 -   服务总线示例：从 [Azure 示例][]下载，或参阅[概述](/documentation/articles/service-bus-samples)。
@@ -323,4 +323,4 @@ namespaceManager.DeleteSubscription("TestTopic", "HighMessages");
   [服务总线中转消息传送 .NET 教程]: /documentation/articles/service-bus-brokered-tutorial-dotnet
   [Azure 示例]: https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=2
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0321_2016-->

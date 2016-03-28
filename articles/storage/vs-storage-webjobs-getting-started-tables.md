@@ -7,9 +7,10 @@
 	manager="douge"
 	editor=""/>
 
-<tags 
+<tags
 	ms.service="storage"
-	ms.date="12/16/2015"
+
+	ms.date="01/30/2016"
 	wacn.date=""/>
 
 # Azure 存储入门（Azure WebJob 项目）
@@ -150,5 +151,4 @@ Azure 表存储服务使用户可以存储大量结构化数据。该服务是�
 
 本文章提供了代码示例，演示如何处理用于操作 Azure 表的常见方案。有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 推荐资源](/documentation/articles/websites-webjobs-resources)。
  
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0321_2016-->

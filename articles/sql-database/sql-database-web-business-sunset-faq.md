@@ -1,4 +1,4 @@
-<properties 
+<properties
    pageTitle="Azure SQL 数据库 Web 和 Business Edition 版停用常见问题 | Microsoft Azure"
    description="了解 Azure SQL Web 和企业数据库何时停用，并了解新服务层的特性和功能。"
    services="sql-database"
@@ -6,10 +6,10 @@
    authors="stevestein"
    manager="jeffreyg"
    editor="monicar" />
-<tags 
+<tags
    ms.service="sql-database"
-   ms.date="09/30/2015"
-   wacn.date="09/15/2015" />
+   ms.date="12/01/2015"
+   wacn.date="" />
 
 # Web 和 Business Edition 停用常见问题
 
@@ -19,15 +19,15 @@ Azure SQL Web 和企业数据库现已停用。基本、标准、高级和弹性
 
 **获取定价层建议：**
 
-- [使用 Azure 门户升级到 SQL 数据库 V12](/documentation/articles/sql-database-v12-upgrade)
-- [使用 PowerShell 升级到 SQL 数据库 V12](/documentation/articles/sql-database-upgrade-server)
+- [使用 Azure 门户升级到 SQL 数据库 V12](/documentation/articles/sql-database-upgrade-server-portal)
+- [使用 PowerShell 升级到 SQL 数据库 V12](/documentation/articles/sql-database-upgrade-server-powershell)
 - [更改 Web 或企业数据库的定价层](/documentation/articles/sql-database-service-tier-advisor)
- 
 
 
-## 为何 Azure 管理门户显示我的 Web 和 Business Edition 数据库已停用？
 
-由于 Web 和 Business Edition 数据库在 2015 年 9 月后将不可用，因此管理门户将 Web 和企业数据库标记为“已停用”。你仍可以像平时一样设置和管理 Web 与企业数据库，“已停用”标签只是提醒你，最好为新数据库使用基本、标准或高级服务层。“已停用”标签还旨在提醒你应该将所有 Web 和企业数据库升级到标准、基本和高级服务层。有关将现有 Web 或企业数据库升级到新服务层的详细信息，请参阅[将 SQL 数据库 Web/企业数据库升级到新服务层](/documentation/articles/sql-database-upgrade-new-service-tiers)。
+## 为何 Azure 门户显示我的 Web 和 Business Edition 数据库已停用？
+
+由于 Web 和 Business Edition 数据库在 2015 年 9 月后将不可用，因此门户将 Web 和企业数据库标记为“已停用”。你仍可以像平时一样设置和管理 Web 与企业数据库，“已停用”标签只是提醒你，最好为新数据库使用基本、标准或高级服务层。“已停用”标签还旨在提醒你应该将所有 Web 和企业数据库升级到标准、基本和高级服务层。有关将现有 Web 或企业数据库升级到新服务层的详细信息，请参阅[将 SQL 数据库 Web/企业数据库升级到新服务层](/documentation/articles/sql-database-upgrade-new-service-tiers)。
 
 ## 最好是将我的现有 Web 或企业数据库升级到哪个新服务层？
 
@@ -41,7 +41,7 @@ Azure SQL Web 和企业数据库现已停用。基本、标准、高级和弹性
 
 ## 我可以在哪里了解有关新服务层的详细信息？
 
-有关新服务层和性能模型的详细信息，请参阅[服务层](/documentation/articles/sql-database-service-tiers)。有关新服务层的详细定价信息，请参阅 [SQL 数据库定价](http://azure.microsoft.com/pricing/details/sql-database/)。
+有关新服务层和性能模型的详细信息，请参阅[服务层](/documentation/articles/sql-database-service-tiers)。有关新服务层的详细定价信息，请参阅 [SQL 数据库定价](/home/features/sql-database/#price)。
 
 ## 基本、标准和高级版中将不会提供哪些特性或功能？
 
@@ -51,15 +51,17 @@ Azure SQL Web 和企业数据库现已停用。基本、标准、高级和弹性
 
 ## 基本、标准和高级版如何改进我的计费体验？
 
-基本、标准和高级版 Azure SQL 数据库按小时计费，在 24 小时内，你可以扩展或收缩每个数据库 4 次。我们将会根据你为每个小时选择的最高服务层和性能级别，以固定的费率向你计费。此外，帐单中会细分性能级别（例如：“基本”、“S1”和“P2”），让你更轻松地查看在单个月份中每个性能级别使用数据库天数/小时数。Web 和企业数据库仍然根据数据库大小，使用数据库单元进行计费。请访问 [SQL 数据库定价页](http://azure.microsoft.com/pricing/details/sql-database/)，以了解有关新服务层的定价及其差异的详细信息。
+基本、标准和高级版 Azure SQL 数据库按小时计费，在 24 小时内，你可以扩展或收缩每个数据库 4 次。我们将会根据你为每个小时选择的最高服务层和性能级别，以固定的费率向你计费。此外，帐单中会细分性能级别（例如：“基本”、“S1”和“P2”），让你更轻松地查看在单个月份中每个性能级别使用数据库天数/小时数。Web 和企业数据库仍然根据数据库大小，使用数据库单元进行计费。请访问 [SQL 数据库定价页](/home/features/sql-database/#price)，以了解有关新服务层的定价及其差异的详细信息。
 
 
 ## 另请参阅
 
-[Azure SQL 数据库](https://azure.microsoft.com/documentation/services/sql-database/)
+[Azure SQL 数据库](/documentation/services/sql-databases)
+
+[Web 版和企业版定价](/home/features/sql-database/#price/web-business)
 
 [服务层](/documentation/articles/sql-database-service-tiers)
 
 [将 SQL 数据库 Web/企业数据库升级到新服务层](/documentation/articles/sql-database-upgrade-new-service-tiers)
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0321_2016-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="12/07/2015"
+	ms.date="02/07/2016"
 	wacn.date=""/>
 
 # 配置本地 Web 服务器以允许连接到本地移动服务 
@@ -23,4 +23,5 @@
 
 [AZURE.INCLUDE [mobile-services-how-to-configure-iis-express](../includes/mobile-services-how-to-configure-iis-express.md)]
 
-<!---HONumber=Mooncake_0118_2016-->
+
+<!---HONumber=Mooncake_0321_2016-->

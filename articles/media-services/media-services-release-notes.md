@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="12/09/2015"
+	ms.date="02/11/2016"
 	wacn.date=""/>
 
 
@@ -17,10 +17,11 @@
 
 这些发行说明汇总了与以前版本相比的变更之处和已知的问题。
 
->[AZURE.NOTE]我们希望能够倾听客户的心声，并致力于解决对客户造成影响的问题。若要报告问题或提出问题，请将问题发布到 [Azure 媒体服务 MSDN 论坛]中。
+>[AZURE.NOTE] 我们希望能够倾听客户的心声，并致力于解决对客户造成影响的问题。若要报告问题或提出问题，请将问题发布到 [Azure 媒体服务 MSDN 论坛]中。
 
 - [当前已知的问题](#issues)
 - [REST API 版本历史记录](#rest_version_history)
+- [2016 年 1 月版本](#jan_changes_16)
 - [2015 年 12 月版本](#dec_changes_15)
 - [2015 年 11 月版本](#nov_changes_15)
 - [2015 年 10 月版本](#oct_changes_15)
@@ -61,6 +62,7 @@ REST API 中未提供几种常见的 HTTP 标头。|如果你使用 REST API 来
 使用包含转义字符（例如 %20）的文件名对资产进行编码失败，出现错误：“MediaProcessor: 找不到文件”。|将添加到资产然后进行编码的文件的名称应只能包含字母数字字符和空格。未来的更新将解决该问题。
 Azure 存储空间 SDK 版本 3.x 中的 ListBlobs 方法将失败。|媒体服务基于 [2012-02-12](http://msdn.microsoft.com/zh-cn/library/azure/dn592123.aspx) 版本生成 SAS URL。如果你希望使用 Azure 存储空间 SDK 来列出 BLOB 容器中的 BLOB，请使用 Azure 存储空间 SDK 版本 2.x 中的 [CloudBlobContainer.ListBlobs](http://msdn.microsoft.com/zh-cn/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobs.aspx) 方法。Azure 存储空间 SDK 版本 3.x 中的 ListBlobs 方法将失败。
 媒体服务限制机制会限制那些发出过多服务请求的应用程序的资源使用情况。该服务可能返回“服务不可用”(503) HTTP 状态代码。|有关详细信息，请参阅 [Azure 媒体服务错误代码](http://msdn.microsoft.com/zh-cn/library/azure/dn168949.aspx)主题中 503 HTTP 状态代码的说明。
+查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 | 你需要使用[此 .NET 示例](/documentation/articles/media-services-dotnet-manage-entities#enumerating-through-large-collections-of-entities)和[此 REST API 示例](/documentation/articles/media-services-rest-manage-entities#enumerating-through-large-collections-of-entities)中所述的 **Skip** 和 **Take** (.NET)/ **top** (REST)。 
 
 
 ### <a id="dotnet_issues"></a>适用于 .NET 的媒体服务 SDK 存在的问题
@@ -72,6 +74,13 @@ SDK 中的媒体服务对象无法进行序列化，因此无法与 Azure Cachin
 ##<a id="rest_version_history"></a>REST API 版本历史记录
 
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
+
+
+##<a id="jan_changes_16"></a>2016 年 1 月版本
+
+编码保留单位已重命名，以减少与编码器名称的混淆。
+
+基本、标准和高级编码保留单位已分别重命名为 S1、S2 和 S3 保留单位。目前使用基本编码保留单位的客户在 Azure 门户（和帐单中）将看到 S1 的标签，标准和高级客户将分别看到 S2 和 S3 的标签。
 
 ##<a id="dec_changes_15"></a>2015 年 12 月版本
 
@@ -132,8 +141,9 @@ Azure 媒体服务 (AMS) 现已在以下数据中心推出：巴西南部、印�
 
 ##<a id="july_changes_15"></a>2015 年 7 月版本
 
-- 宣布媒体编码器标准版公开上市。有关详细信息，请参阅[此博客文章](http://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
+- 宣布媒体编码器标准版公开上市。有关详细信息，请参阅[此博客文章](http://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)。
 
+	媒体编码器标准版使用[本](https://msdn.microsoft.com/zh-cn/library/azure/mt269960.aspx)部分中所述的预设值。注意，当使用预设值进行 4K 编码时，应获取“高级版”保留单位类型。有关详细信息，请参阅[如何缩放编码](/documentation/articles/media-services-portal-encoding-units)。
 - Azure 媒体服务和播放器的实时标题。有关详细信息，请参阅[此博客文章](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)
 
 ###媒体服务 .NET SDK 更新
@@ -165,19 +175,19 @@ Azure 媒体服务 .NET SDK 当前版本为 3.3.0.0。此版本中增加了以�
 
 - [使用媒体服务进行实时编码的预览](/documentation/articles/media-services-manage-live-encoder-enabled-channels)
 - [动态清单](/documentation/articles/media-services-dynamic-manifest-overview)
-- [Azure 媒体 Hyperlapse 媒体处理器的预览](http://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
+- [Azure 媒体 Hyperlapse 媒体处理器的预览](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
 
 ##<a id="april_changes_15"></a>2015 年 4 月版本
 
 ###媒体服务一般更新
 
-- [宣布推出 Azure 媒体播放器](http://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/)。
+- [宣布推出 Azure 媒体播放器](https://azure.microsoft.com/blog/2015/04/15/announcing-azure-media-player/)。
 - 自媒体服务 REST 2.10 起，频道被配置为插入 RTMP 协议，并使用主要和辅助插入 URL 进行创建。有关详细信息，请参阅[频道插入配置](/documentation/articles/media-services-manage-channels-overview#channel_input)
 - Azure 媒体索引器更新
 	- 支持西班牙语
 	- 新增配置 XML 格式
 	
-	有关详细信息，请参阅[此博客](http://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/)。
+	有关详细信息，请参阅[此博客](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/)。
 ###媒体服务 .NET SDK 更新
 
 Azure 媒体服务 .NET SDK 当前版本为 3.2.0.0。
@@ -195,7 +205,7 @@ Azure 媒体服务 .NET SDK 当前版本为 3.2.0.0。
 
 ### 媒体服务一般更新
 
-- 媒体服务现在提供 Azure CDN 集成。为了支持集成，将 **CdnEnabled** 属性添加到了 **StreamingEndpoint**。**CdnEnabled** 可用于版本 2.9 以上的 REST API（有关详细信息，请参阅 [StreamingEndpoint](https://msdn.microsoft.com/zh-cn/library/azure/dn783468.aspx)）。**CdnEnabled** 可用于版本 3.1.0.2 以上的 NET SDK（有关详细信息，请参阅 [StreamingEndpoint](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint(v=azure.10).aspx))。
+- 媒体服务现在提供 Azure CDN 集成。为了支持集成，将 **CdnEnabled** 属性添加到了 **StreamingEndpoint**。**CdnEnabled** 可用于版本 2.9 以上的 REST API（有关详细信息，请参阅 [StreamingEndpoint](https://msdn.microsoft.com/zh-cn/library/azure/dn783468.aspx)）。**CdnEnabled** 可用于版本 3.1.0.2 以上的 NET SDK（有关详细信息，请参阅 [StreamingEndpoint](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint/(v=azure.10/).aspx))。
  
 
 
@@ -209,7 +219,7 @@ Azure 媒体服务 .NET SDK 当前版本为 3.2.0.0。
 
 ### 媒体服务一般更新
 
-宣布采用动态加密的内容保护公开上市 (GA)。有关详细信息，请参阅 [Azure 媒体服务采用公开上市的 DRM 技术增强流式处理的安全性](http://azure.microsoft.com/blog/2015/01/29/azure-media-services-enhances-streaming-security-with-general-availability-of-drm-technology/)。
+宣布采用动态加密的内容保护公开上市 (GA)。有关详细信息，请参阅 [Azure 媒体服务采用公开上市的 DRM 技术增强流式处理的安全性](https://azure.microsoft.com/blog/2015/01/29/azure-media-services-enhances-streaming-security-with-general-availability-of-drm-technology/)。
 
 ###媒体服务 .NET SDK 更新
 
@@ -224,12 +234,12 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
 
 ###媒体服务一般更新
 
-- Azure 媒体索引器处理器增加了一些更新和新功能。有关详细信息，请参阅 [Azure 媒体索引器版本 1.1.6.7 发行说明](http://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/)。
+- Azure 媒体索引器处理器增加了一些更新和新功能。有关详细信息，请参阅 [Azure 媒体索引器版本 1.1.6.7 发行说明](https://azure.microsoft.com/blog/2014/12/03/azure-media-indexer-version-1-1-6-7-release-notes/)。
 - 增加了一个新的 REST API，使你可以更新编码保留单位：[EncodingReservedUnitType with REST](http://msdn.microsoft.com/zh-cn/library/azure/dn859236.aspx)。
 - 增加了对密钥传递服务的 CORS 支持。
 - 改进了查询授权策略选项的性能。
 - 在中国数据中心，[密钥传递 URL](http://msdn.microsoft.com/zh-cn/library/azure/ef4dfeeb-48ae-4596-ab28-44d6b36d8769#get_delivery_service_url) 现在是每个客户一份（同其他数据中心一样）。
-- 增加了 HLS 自动目标持续时间。当执行实时流式传输时，HLS 始终是动态打包的。默认情况下，媒体服务根据从实时编码器收到的关键帧间隔 (KeyFrameInterval)（也称图片组 - GOP）自动计算 HLS 段打包比率 (FragmentsPerSegment)。有关详细信息，请参阅[使用 Azure 媒体服务实时流式处理]。
+- 增加了 HLS 自动目标持续时间。当执行实时流式传输时，HLS 始终是动态打包的。默认情况下，媒体服务根据从实时编码器收到的关键帧间隔 (KeyFrameInterval)（也称图片组 - GOP）自动计算 HLS 段打包比率（每段的片数）。有关详细信息，请参阅[使用 Azure 媒体服务实时流式处理]。
  
 ###媒体服务 .NET SDK 更新
 
@@ -401,7 +411,7 @@ Azure 媒体服务 .NET SDK 当前版本为 3.1.0.1。
 
 ### <a name="dec_13_donnet_changes"></a>Azure 媒体服务 .NET SDK 3.0.0.0
 
->[AZURE.NOTE]3.0.x.x 版本与 2.4.x.x 版本不向后兼容。
+>[AZURE.NOTE] 3.0.x.x 版本与 2.4.x.x 版本不向后兼容。
 
 媒体服务 SDK 当前的最新版本为 3.0.0.0。你可以从 Nuget 下载最新程序包或从 [GitHub] 获取资料。
 
@@ -621,4 +631,4 @@ Azure 媒体服务 .NET SDK 扩展是一组扩展方法和帮助器函数，可�
 [处理媒体服务作业通知]: /documentation/articles/media-services-check-job-progress#check_progress_with_queues
  
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0321_2016-->

@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="10/20/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 
@@ -50,7 +50,7 @@
 
 <!--Article references-->
 [迁移文档]: http://www.windowsazure.cn/documentation/articles/sql-data-warehouse-overview-migrate/
-[开发]: http://www.windowsazure.cn//zh-CN/documentation/articles/sql-data-warehouse-overview-develop/
+[开发]: http://www.windowsazure.cn/zh-cn/documentation/articles/sql-data-warehouse-overview-develop/
 [此处]: https://migrhoststorage.blob.core.windows.net/sqldwsample/DataWarehouseMigrationUtility.zip
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

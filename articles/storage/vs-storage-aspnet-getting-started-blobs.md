@@ -9,7 +9,8 @@
 
 <tags
 	ms.service="storage"
-	ms.date="12/16/2015"
+	
+	ms.date="01/30/2016"
 	wacn.date=""/>
 
 # 开始使用 blob 存储和 Visual Studio 连接服务 (ASP.NET)
@@ -46,7 +47,7 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
 		CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
 		   CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
 
-    > [AZURE.NOTE]在接下来的部分中，将在代码的前面使用先前的全部代码。
+    > [AZURE.NOTE] 在接下来的部分中，将在代码的前面使用先前的全部代码。
 
 3. 获取 **CloudBlobClient** 对象，以引用存储帐户中的现有容器。
 
@@ -56,7 +57,7 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
         // Get a reference to a container named “mycontainer.”
         CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-> [AZURE.NOTE]在 ASP.NET 5 中执行调出 Azure 存储的一些 API 是异步的。有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](http://msdn.microsoft.com/zh-cn/library/hh191443.aspx)。
+> [AZURE.NOTE] 在 ASP.NET 5 中执行调出 Azure 存储的一些 API 是异步的。有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](http://msdn.microsoft.com/zh-cn/library/hh191443.aspx)。
 
 
 ## 使用代码创建 blob 容器
@@ -233,4 +234,5 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=Mooncake_0104_2016-->
+
+<!---HONumber=Mooncake_0321_2016-->

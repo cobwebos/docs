@@ -1,25 +1,22 @@
-<properties 
-	pageTitle="在 Azure 移动服务中计划定期作业" 
-	description="使用 Azure 移动服务计划程序来计划移动应用程序的作业。" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="在 .NET 后端移动服务中安排后端任务 | Azure"
+	description="使用 Azure 移动服务中的计划程序来定义按计划运行的 .NET 后端作业。"
+	services="mobile-services"
+	documentationCenter=""
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="07/21/2015" 
+	ms.date="02/07/2016"
 	wacn.date=""/>
 
 # 在移动服务中计划定期作业 
 
-> [AZURE.SELECTOR-LIST (Platform | Backend)]
-- [(Any | .NET)](/zh-cn/documentation/articles/mobile-services-dotnet-backend-schedule-recurring-tasks)
-- [(Any | Javascript)](/zh-cn/documentation/articles/mobile-services-schedule-recurring-tasks)
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
 
- 
-本主题说明如何使用管理门户中的作业计划程序功能来定义服务器脚本代码，该代码将基于你定义的计划执行。在此情况下，脚本将定期检查远程服务（在本主题中为 Twitter），并在新表中存储结果。可以计划的其他一些定期任务包括：
+本主题说明如何使用 Azure 经典门户中的作业计划程序功能来定义服务器脚本代码，该代码将基于你定义的计划执行。在此情况下，脚本将定期检查远程服务（在本主题中为 Twitter），并在新表中存储结果。可以计划的其他一些定期任务包括：
 
 + 存档旧的或重复的数据记录。
 + 请求和存储外部数据，例如推文、RSS 条目和位置信息。
@@ -90,7 +87,7 @@
 
 	服务使用首次访问 DbSet 时在数据库中创建的 Updates 表来存储推文数据。
 
-	>[AZURE.NOTE]使用默认数据库初始值设定项时，只要实体框架在代码优先模型定义中检测到数据模型更改，它就会删除并重新创建数据库。若要进行此数据模型更改并维护数据库中的现有数据，必须使用代码优先迁移。不能为 Azure 中的 SQL 数据库使用默认的初始值设定项。有关更多信息，请参阅[如何使用代码优先迁移来更新数据模型](/documentation/articles/mobile-services-dotnet-backend-use-code-first-migrations)。
+	>[AZURE.NOTE] 使用默认数据库初始值设定项时，只要实体框架在代码优先模型定义中检测到数据模型更改，它就会删除并重新创建数据库。若要进行此数据模型更改并维护数据库中的现有数据，必须使用代码优先迁移。不能为 Azure 中的 SQL 数据库使用默认的初始值设定项。有关更多信息，请参阅[如何使用代码优先迁移来更新数据模型](/documentation/articles/mobile-services-dotnet-backend-use-code-first-migrations)。
 
 接下来，请创建计划的作业，用于访问 Twitter 并在新的 Updates 表中存储推文数据。
 
@@ -98,7 +95,7 @@
 
 1. 展开 ScheduledJobs 文件夹并打开 SampleJob.cs 项目文件。
 
-	此类继承自 **ScheduledJob**，表示可在 Azure 管理门户中计划的、按固定计划或按需运行的作业。
+	此类继承自 **ScheduledJob**，表示可在 Azure 经典门户中计划的、按固定计划或按需运行的作业。
 
 2. 将 SampleJob.cs 的内容替换为以下代码：
  
@@ -243,8 +240,8 @@
 
 3. 将移动服务项目重新发布到 Azure。
 
-4. 在 [Azure 管理门户]中单击“移动服务”，然后单击你的应用程序。
- 
+4. 在 [Azure 经典门户]中，单击“移动服务”，然后单击你的应用。
+
 2. 单击“计划程序”选项卡，然后单击“+创建”。
 
     >[AZURE.NOTE]如果在<em>免费</em>版本级别中运行你的移动服务，你一次只能运行一个计划的作业。在付费版本级别中，一次最多可以运行 10 个计划的作业。
@@ -261,11 +258,11 @@
 
 	>[AZURE.NOTE]仍可使用 POST 请求来启动计划的作业。但是，系统默认向用户授权，也就是说，该请求的标头中必须包含应用程序密钥。
 
-4. （可选）在 [Azure 管理门户]中，单击与你的移动服务关联的数据库对应的“管理”。
+4. （可选）在 [Azure 经典门户]中，单击与移动服务关联的数据库对应的“管理”。
 
     ![][6]
 
-5. 在管理门户中，执行一个查询以查看应用程序所做的更改。你的查询应类似于以下查询，不过，请使用你的移动服务名称作为架构名称，而不要使用 `todolist`。
+5. 在 Azure 经典门户中，执行查询以查看应用所做的更改。你的查询应类似于以下查询，不过，请使用你的移动服务名称作为架构名称，而不要使用 `todolist`。
 
         SELECT * FROM [todolist].[Updates]
 
@@ -292,10 +289,10 @@
 [9]: ./media/mobile-services-dotnet-backend-schedule-recurring-tasks/mobile-service-try-this-out.png
 
 <!-- URLs. -->
-[Azure 管理门户]: https://manage.windowsazure.cn/
+[Azure 经典门户]: https://manage.windowsazure.cn/
 [Register your apps for Twitter login with Mobile Services]: /documentation/articles/mobile-services-how-to-register-twitter-authentication
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [App settings]: http://msdn.microsoft.com/zh-cn/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
 [LINQ to Twitter CodePlex 项目]: http://linqtotwitter.codeplex.com/
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0321_2016-->

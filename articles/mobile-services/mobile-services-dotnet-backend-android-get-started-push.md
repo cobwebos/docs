@@ -1,5 +1,5 @@
 <properties
-	pageTitle="推送入门 (Android) | Microsoft Azure"
+	pageTitle="推送入门 (Android) | Azure"
 	description="了解如何使用 Azure 移动服务将推送通知发送到 Android .Net 应用程序。"
 	services="mobile-services, notification-hubs"
 	documentationCenter="android"
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="12/06/2015"
+	ms.date="02/07/2016"
 	wacn.date=""/>
 
 # 向移动服务应用程序添加推送通知
@@ -74,10 +74,10 @@
 本教程演示了启用 Android 应用程序以便使用移动服务和通知中心发送推送通知的基础知识。建议你接下来完成下一篇教程 [向经过身份验证的用户发送推送通知]，其中说明了如何使用标记来做到只将推送通知从移动服务发送到经过身份验证的用户。
 
 + [将广播通知发送到订户]
-  <br/>了解用户如何注册和接收他们感兴趣的类别的推送通知。
+	<br/>了解用户如何注册和接收他们感兴趣的类别的推送通知。
 
 + [将基于模板的通知发送到订户]
-  <br/>了解如何使用模板从移动服务发送推送通知，且不会在后端中产生平台特定的负载。
+	<br/>了解如何使用模板从移动服务发送推送通知，且不会在后端中产生平台特定的负载。
 
 通过以下主题了解有关移动服务和通知中心的详细信息：
 
@@ -115,6 +115,5 @@
 [什么是通知中心？]: /documentation/articles/notification-hubs-overview
 [将广播通知发送到订户]: /documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news
 [将基于模板的通知发送到订户]: /documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news
-[Azure classic portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

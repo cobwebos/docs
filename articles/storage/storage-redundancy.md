@@ -1,17 +1,17 @@
 
 <properties 
-  pageTitle="Azure 存储空间复制 | Microsoft Azure" 
-  description="复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。" 
-  services="storage" 
-  documentationCenter="" 
-  authors="tamram" 
-  manager="adinah" 
-  editor=""/>
+  pageTitle="Azure 存储复制 | Microsoft Azure" 
+  description="复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。" 
+  services="storage" 
+  documentationCenter="" 
+  authors="tamram" 
+  manager="adinah" 
+  editor=""/>
 
-<tags 
-  ms.service="storage" 
-  ms.date="01/05/2016" 
-  wacn.date=""/>
+<tags 
+  ms.service="storage" 
+  ms.date="01/22/2016" 
+  wacn.date=""/>
 
 # Azure 存储空间复制
 
@@ -69,7 +69,7 @@
 |主要 |辅助
 | ---------------   |----------------
 |中国北部 |中国东部
-|中国东部 |中国北部
+|中国东部 |中国北部 
  
 ## 读取访问异地冗余存储
 
@@ -84,5 +84,4 @@
 - [使用 RA-GRS 的 Microsoft Azure 存储模拟器 3.1](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/08/microsoft-azure-storage-emulator-3-1-with-ra-grs.aspx)
 - [Azure 存储 SOSP 论文](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)  
  
-
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0321_2016-->

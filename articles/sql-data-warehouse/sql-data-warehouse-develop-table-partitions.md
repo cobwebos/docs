@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="09/28/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # SQL 数据仓库中的表分区
@@ -105,7 +105,7 @@ AND     rp.[name]    = 'SloDWPool'
 ;
 ```
 
-> [AZURE.NOTE]尽量避免将分区大小调整超过超大型资源类所提供的内存授予。如果分区成长超过此数据，就冒着内存压力的风险，进而导致比较不理想的压缩。
+> [AZURE.NOTE] 尽量避免将分区大小调整超过超大型资源类所提供的内存授予。如果分区成长超过此数据，就冒着内存压力的风险，进而导致比较不理想的压缩。
 
 ## 分区切换
 若要切换两个表间的分区，必须确定分区对齐其各自的边界，而且表定义匹配。检查约束不适用于强制表中的值范围，源表必须包含与目标表相同的分区边界。如果情况不是如此，则分区切换将失败，因为分区元数据不会同步。
@@ -146,7 +146,7 @@ VALUES (1,20000101,1,1,1,1,1,1);
 CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSales(OrderDateKey);
 ```
 
-> [AZURE.NOTE]通过创建统计信息对象，我们可以确保表元数据更加准确。如果我们省略了创建统计信息，SQL 数据仓库将使用默认值。有关统计信息的详细信息，请参阅[统计信息][]。
+> [AZURE.NOTE] 通过创建统计信息对象，我们可以确保表元数据更加准确。如果我们省略了创建统计信息，SQL 数据仓库将使用默认值。有关统计信息的详细信息，请参阅[统计信息][]。
 
 然后，我们可以利用 `sys.partitions` 目录视图查询行计数：
 
@@ -171,7 +171,8 @@ WHERE t.[name] = 'FactInternetSales'
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-消息 35346，级别 15，状态 1，行 44: ALTER PARTITION 语句的 SPLIT 子句失败，因为分区不为空。仅当表上存在列存储索引时，才可以拆分空分区。请考虑在发出 ALTER PARTITION 语句前禁用列存储索引，然后在 ALTER PARTITION 完成后重建列存储索引。
+消息 35346，级别 15，状态 1，行 44:
+ALTER PARTITION 语句的 SPLIT 子句失败，因为分区不为空。仅当表上存在列存储索引时，才可以拆分空分区。请考虑在发出 ALTER PARTITION 语句前禁用列存储索引，然后在 ALTER PARTITION 完成后重建列存储索引。
 
 但是，我们可以使用 `CTAS` 创建新表以保存数据。
 
@@ -308,7 +309,7 @@ DROP TABLE #partitions;
 
 使用这种方法时，源代码管理中的代码将保持静态，允许动态的分区边界值，并不断地与仓库一起演进。
 
->[AZURE.NOTE]相比于 SQL Server，分区切换有一些差异。请务必阅读[迁移代码][]，以深入了解此主题。
+>[AZURE.NOTE] 相比于 SQL Server，分区切换有一些差异。请务必阅读[迁移代码][]，以深入了解此主题。
 
 
 ## 后续步骤
@@ -329,4 +330,5 @@ DROP TABLE #partitions;
 
 <!-- Other web references -->
 
-<!---HONumber=Mooncake_1207_2015-->
+
+<!---HONumber=Mooncake_0321_2016-->

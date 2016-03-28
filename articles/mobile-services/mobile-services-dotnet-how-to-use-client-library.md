@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用移动服务托管客户端库 (Windows | Xamarin) | Microsoft Azure"
+	pageTitle="使用移动服务托管客户端库 (Windows | Xamarin) | Azure"
 	description="了解如何在 Windows 和 Xamarin 应用中使用 Azure 移动服务的 .NET 客户端。"
 	services="mobile-services"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="11/02/2015" 
+	ms.date="01/28/2016"
 	wacn.date=""/>
 
 # 如何使用 Azure 移动服务的托管客户端库
@@ -80,7 +80,7 @@
 - [选择特定的列]
 - [按 ID 查找数据]
 
->[AZURE.NOTE]将强制使用服务器驱动的页大小来防止返回所有行。这可以防止对大型数据集发出的默认请求对服务造成负面影响。若要返回 50 个以上的行，请根据[在页中返回数据]所述使用 `Take` 方法。
+>[AZURE.NOTE] 将强制使用服务器驱动的页大小来防止返回所有行。这可以防止对大型数据集发出的默认请求对服务造成负面影响。若要返回 50 个以上的行，请根据[在页中返回数据]所述使用 `Take` 方法。
 
 ### <a name="filtering"></a>如何筛选返回的数据
 
@@ -205,7 +205,7 @@
 
 ##<a name="inserting"></a>如何在移动服务中插入数据
 
-> [AZURE.NOTE]如果你想要对某个类型执行插入、查找、删除或更新操作，则需要创建一个名为 **Id** 的成员。正因如此，示例类 **TodoItem** 包含了一个名为 **Id** 的成员。更新和删除操作中始终必须存在一个有效的 ID 值。
+> [AZURE.NOTE] 如果你想要对某个类型执行插入、查找、删除或更新操作，则需要创建一个名为 **Id** 的成员。正因如此，示例类 **TodoItem** 包含了一个名为 **Id** 的成员。更新和删除操作中始终必须存在一个有效的 ID 值。
 
 以下代码演示了如何在表中插入新行。参数包含要作为 .NET 对象插入的数据。
 
@@ -763,4 +763,4 @@ Windows 支持使用定期通知（提取通知）更新动态磁贴。启用定
 [Azure 移动服务客户端 SDK 中的自定义 API]: http://blogs.msdn.com/b/carlosfigueira/archive/2013/06/19/custom-api-in-azure-mobile-services-client-sdks.aspx
 [InvokeApiAsync]: http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.invokeapiasync.aspx
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

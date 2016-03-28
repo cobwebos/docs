@@ -9,13 +9,13 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="08/31/2015"
+   ms.date="12/04/2015"
    wacn.date=""/>
 
 # 可测试性操作
-为了模拟一个不可靠的基础结构，Service Fabric 向开发人员提供众多方式来模拟各种现实世界故障和状态转换。这些方式被称为可测试操作。这些操作属于低级别 API，导致具体的故障注入、状态转换或验证。结合使用这些操作，服务开发人员可以为你的服务编写全面的测试方案。
+为了模拟一个不可靠的基础结构，Azure Service Fabric 向开发人员提供众多方式来模拟各种现实世界故障和状态转换。这些方式被称为可测试操作。这些操作属于低级别 API，导致具体的故障注入、状态转换或验证。结合使用这些操作，服务开发人员可以为你的服务编写全面的测试方案。
 
-Service Fabric 提供某些由这些操作组成的常见现成测试方案。强烈建议使用这些内置方案，这些方案经过精心挑选，用于测试常见状态转换和故障案例。但是，当你希望添加尚未包含在内置方案中的方案时，或者需要为你的应用程序量身订做一个方案时，可以使用这些操作来创建自定义测试方案。
+Service Fabric 提供某些由这些操作组成的常见测试方案。强烈建议使用这些内置方案，这些方案经过精心挑选，用于测试常见状态转换和故障案例。但是，当你希望添加尚未包含在内置方案中的方案时，或者需要为你的应用程序量身订做一个方案时，可以使用这些操作来创建自定义测试方案。
 
 System.Fabric.Testability.dll 程序集包含了这些操作的 C# 实现。Microsoft.ServiceFabric.Testability.Powershell.dll 程序集包含了可测试性 PowerShell 模块。作为运行时安装的一部分，安装了 ServiceFabricTestability PowerShell 模块以便使用。
 
@@ -30,7 +30,7 @@ System.Fabric.Testability.dll 程序集包含了这些操作的 C# 实现。Micr
 
 ## 可测试性操作列表
 
-| 操作 | 说明 | 托管 API | Powershell Cmdlet | 常规/非常规故障 |
+| 操作 | 说明 | 托管 API | PowerShell cmdlet | 常规/非常规故障 |
 |---------|-------------|-------------|-------------------|------------------------------|
 |CleanTestState| 在测试驱动器非正常关闭时从群集删除所有测试状态。 | CleanTestStateAsync | Remove-ServiceFabricTestState | 不适用 |
 | InvokeDataLoss | 将数据丢失引入到服务分区。 | InvokeDataLossAsync | Invoke-ServiceFabricPartitionDataLoss | 常规 |
@@ -47,9 +47,9 @@ System.Fabric.Testability.dll 程序集包含了这些操作的 C# 实现。Micr
 | ValidateApplication | 验证一个应用程序内所有 Service Fabric 服务的可用性和运行状况，通常在将某些故障引入系统之后。 | ValidateApplicationAsync | Test-ServiceFabricApplication | 不适用 |
 | ValidateService | 验证一个 Service Fabric 服务的可用性和运行状况，通常在将某些故障引入系统之后。 | ValidateServiceAsync | Test-ServiceFabricService | 不适用 |
 
-## 使用 Powershell 运行可测试性操作
+## 使用 PowerShell 运行可测试性操作
 
-本教程向你说明如何使用 PowerShell 运行可测试性操作。你将了解如何针对本地（也称为“单机”）群集或 Azure 群集运行可测试性操作。Microsoft.Fabric.Testability.Powershell.dll - 可测试性 PowerShell 模块 - 在你安装 Microsoft Service Fabric MSI 时自动安装；并且该模块在你打开一个 PowerShell 提示符时自动加载。
+本教程说明如何使用 PowerShell 运行可测试性操作。你将了解如何针对本地（也称为“单机”）群集或 Azure 群集运行可测试性操作。Microsoft.Fabric.Testability.Powershell.dll - 可测试性 PowerShell 模块 - 在你安装 Microsoft Service Fabric MSI 时自动安装。该模块在你打开一个 PowerShell 提示符时自动加载。
 
 教程章节：
 
@@ -64,7 +64,7 @@ System.Fabric.Testability.dll 程序集包含了这些操作的 C# 实现。Micr
 Restart-ServiceFabricNode -NodeName Node1 -CompletionMode DoNotVerify
 ```
 
-在这里，操作 **Restart-ServiceFabricNode** 在一个名为“Node1”的节点上运行，并且完成模式指定不应该验证实际上是否成功执行了重新启动操作；将完成模式指定为“Verify”（验证）会让其验证实际是否成功执行了重新启动操作。除了按其名称直接指定节点以外，还可以通过分区键和副本类型指定节点，如下所示：
+在这里，操作 **Restart-ServiceFabricNode** 在一个名为“Node1”的节点上运行。完成模式指定不应该验证实际上是否成功执行了重新启动操作。将完成模式指定为“Verify”会让其验证实际是否成功执行了重新启动操作。除了按其名称直接指定节点以外，还可以通过分区键和副本类型指定节点，如下所示：
 
 ```powershell
 Restart-ServiceFabricNode -ReplicaKindPrimary  -PartitionKindNamed -PartitionKey Partition3 -CompletionMode Verify
@@ -79,37 +79,40 @@ Connect-ServiceFabricCluster $connection
 Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 ```
 
-应使用 **Restart-ServiceFabricNode** 来重新启动群集中的一个 Service Fabric 节点。这将终止会重新启动驻留在该节点上的所有系统服务和用户服务副本的 Fabric.exe 进程。使用此 API 来测试你的服务有助于沿故障转移恢复路径发现 Bug。它帮助模拟群集中的节点故障。
+应使用 **Restart-ServiceFabricNode** 来重新启动群集中的一个 Service Fabric 节点。这将停止会重新启动驻留在该节点上的所有系统服务和用户服务副本的 Fabric.exe 进程。使用此 API 来测试你的服务有助于沿故障转移恢复路径发现 Bug。它帮助模拟群集中的节点故障。
 
-以下屏幕快照显示操作中的 **Restart-ServiceFabricNode** 可操作性命令。
+以下屏幕截图显示操作中的 **Restart-ServiceFabricNode** 可测试性命令。
 
-![](media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
+![](./media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
-第一个 *Get-ServiceFabricNode*（来自 ServiceFabric PowerShell 模块的一个 cmdlet）显示本地群集有五个节点：Node.1 至 Node.5；然后，在节点 Node.4 上执行可测试性操作 (cmdlet) **Restart-ServiceFabricNode** 之后，我们看到节点的正常运行时间已被重置。
+第一个 **Get-ServiceFabricNode**（来自 Service Fabric PowerShell 模块的一个 cmdlet）显示本地群集有五个节点：Node.1 至 Node.5。在名为 Node.4 的节点上执行可测试性操作 (cmdlet) **Restart-ServiceFabricNode** 之后，我们看到节点的正常运行时间已被重置。
 
 ### 针对 Azure 群集运行一个操作
 
-针对 Azure 群集运行一个可测试性操作（使用 PowerShell）与针对本地群集运行一个操作类似；唯一的区别在于：在能够运行操作之前，不是连接到本地群集，而是需要首先连接到 Azure 群集。
+针对 Azure 群集运行一个可测试性操作（使用 PowerShell）与针对本地群集运行一个操作类似。唯一的区别在于：在能够运行操作之前，不是连接到本地群集，而是需要首先连接到 Azure 群集。
 
-## 使用 C 运行可测试性操作# 
+## 使用 C 运行可测试性操作#
 
-若要使用 C# 运行可测试性操作，首先你需要使用 FabricClient 连接到群集。然后获取运行该操作所需的参数。可用不同的参数来运行相同的操作。请看一看 RestartServiceFabricNode 操作，运行该操作的方式之一是在群集中使用节点信息（节点名称和节点实例 ID）。
+若要使用 C# 运行可测试性操作，首先你需要使用 FabricClient 连接到群集。然后获取运行该操作所需的参数。可用不同的参数来运行相同的操作。
+请看一看 RestartServiceFabricNode 操作，运行该操作的方式之一是在群集中使用节点信息（节点名称和节点实例 ID）。
 
 ```csharp
 RestartNodeAsync(nodeName, nodeInstanceId, completeMode, operationTimeout, CancellationToken.None)
 ```
 
-几个参数的说明：
+参数说明：
 
-**CompleteMode** - 完成模式指定不应该验证实际上是否成功执行了重新启动操作；将完成模式指定为“Verify”（验证）会让其验证实际是否成功执行了重新启动操作。**OperationTimeout** - 设置在引发 TimeoutException 异常之前等待操作完成的时间量。**CancellationToken** - 允许取消挂起调用。
+- **CompleteMode** 指定不应该验证实际上是否成功执行了重新启动操作的模式。将完成模式指定为“Verify”会让其验证实际是否成功执行了重新启动操作。  
+- **OperationTimeout** 设置在引发 TimeoutException 异常之前等待操作完成的时间量。
+- **CancellationToken** 允许取消挂起调用。
 
 除了按其名称直接指定节点以外，还可以通过分区键和副本类型指定节点。
 
-有关更多信息，请参阅[分区选择器和副本选择器](#partition_replica_selector)。
+有关更多信息，请参阅 [PartitionSelector 和 ReplicaSelector](#partition_replica_selector)。
 
 
 ```csharp
-// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
+// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -132,10 +135,10 @@ class Test
         Console.WriteLine("Starting RestartNode test");
         try
         {
-            //RestartNode using the replicaSelector
+            //Restart the node by using ReplicaSelector
             RestartNodeAsync(clusterConnection, serviceName).Wait();
 
-            //Another way to Restart Node using Nodename and NodeInstanceID.
+            //Another way to restart node is by using nodeName and nodeInstanceId
             RestartNodeAsync(clusterConnection, nodeName, nodeInstanceId).Wait();
         }
         catch (AggregateException exAgg)
@@ -160,26 +163,26 @@ class Test
         PartitionSelector randomPartitionSelector = PartitionSelector.RandomOf(serviceName);
         ReplicaSelector primaryofReplicaSelector = ReplicaSelector.PrimaryOf(randomPartitionSelector);
 
-        // Create FabricClient with connection & security information here.
+        // Create FabricClient with connection and security information here
         FabricClient fabricclient = new FabricClient(clusterConnection);
         await fabricclient.ClusterManager.RestartNodeAsync(primaryofReplicaSelector, CompletionMode.Verify);
     }
 
     static async Task RestartNodeAsync(string clusterConnection, string nodeName, BigInteger nodeInstanceId)
     {
-        // Create FabricClient with connection & security information here.
+        // Create FabricClient with connection and security information here
         FabricClient fabricclient = new FabricClient(clusterConnection);
         await fabricclient.ClusterManager.RestartNodeAsync(nodeName, nodeInstanceId, CompletionMode.Verify);
     }
 }
 ```
 
-## 分区选择器和副本选择器
+## PartitionSelector 和 ReplicaSelector
 
-### 分区选择器
+### PartitionSelector
 PartitionSelector 是在可测试性中运用的一个帮助程序，用于选择在其上执行任何可测试性操作的具体分区。如果事先知道分区 ID，则它可用于选择具体分区。或者，你可以提供分区键，操作将在内部解析分区 ID。你还可以选择一个随机分区。
 
-为此，创建 PartitionSelector 对象，使用 Select* 方法之一选择分区，然后在 PartitionSelector 对象中将其传递给需要它的 API。如果未选择任何选项，则默认为随机分区。
+若要使用此帮助器，请创建 PartitionSelector 对象，并使用 Select* 方法之一选择分区。然后在 PartitionSelector 对象中将其传递给需要它的 API。如果未选择任何选项，则默认为随机分区。
 
 ```csharp
 Uri serviceName = new Uri("fabric:/samples/InMemoryToDoListApp/InMemoryToDoListService");
@@ -187,39 +190,40 @@ Guid partitionIdGuid = new Guid("8fb7ebcc-56ee-4862-9cc0-7c6421e68829");
 string partitionName = "Partition1";
 Int64 partitionKeyUniformInt64 = 1;
 
-// Select Random partition
+// Select a random partition
 PartitionSelector randomPartitionSelector = PartitionSelector.RandomOf(serviceName);
 
-// Select partition based on Id
+// Select a partition based on ID
 PartitionSelector partitionSelectorById = PartitionSelector.PartitionIdOf(serviceName, partitionIdGuid);
 
-// Select partition based on name
+// Select a partition based on name
 PartitionSelector namedPartitionSelector = PartitionSelector.PartitionKeyOf(serviceName, partitionName);
 
-// Select partition based on partition key
+// Select a partition based on partition key
 PartitionSelector uniformIntPartitionSelector = PartitionSelector.PartitionKeyOf(serviceName, partitionKeyUniformInt64);
 ```
 
-### 副本选择器
-ReplicaSelector 是在可测试性中运用的一个帮助程序，用于帮助选择在其上执行任何可测试性操作的副本。如果事先知道副本 ID，则它可用于选择具体副本。此外，你可以选择主副本也可以选择随机辅助副本。ReplicaSelector 派生于 PartitionSelector，因此你需要同时选择要在其上执行可测试性操作的副本和分区。
+### ReplicaSelector
+ReplicaSelector 是在可测试性中运用的一个帮助程序，用于帮助选择在其上执行任何可测试性操作的副本。如果事先知道副本 ID，则它可用于选择具体副本。此外，你可以选择主副本，也可以选择随机辅助副本。ReplicaSelector 派生于 PartitionSelector，因此你需要同时选择要在其上执行可测试性操作的副本和分区。
 
-为此，创建一个 ReplicaSelector 对象，并设置副本的分区的选择方式。然后，你可以将它传递给需要它的 API。如果未选择任何选项，则默认为随机副本和随机分区。
+若要使用此帮助器，请创建一个 ReplicaSelector 对象，并设置副本的分区的选择方式。然后，你可以将它传递给需要它的 API。如果未选择任何选项，则默认为随机副本和随机分区。
 
 Guid partitionIdGuid = new Guid("8fb7ebcc-56ee-4862-9cc0-7c6421e68829");
 PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf(serviceName, partitionIdGuid);
 long replicaId = 130559876481875498;
 
+
 ```csharp
-// Select Random replica
+// Select a random replica
 ReplicaSelector randomReplicaSelector = ReplicaSelector.RandomOf(partitionSelector);
 
-// Select primary replica
+// Select the primary replica
 ReplicaSelector primaryReplicaSelector = ReplicaSelector.PrimaryOf(partitionSelector);
 
-// Select replica by Id
+// Select the replica by ID
 ReplicaSelector replicaByIdSelector = ReplicaSelector.ReplicaIdOf(partitionSelector, replicaId);
 
-// Select random secondary replica
+// Select a random secondary replica
 ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(partitionSelector);
 ```
 
@@ -231,4 +235,4 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
    - [服务到服务通信失败](/documentation/articles/service-fabric-testability-scenarios-service-communication)
  
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0321_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="12/06/2015"
+	ms.date="02/07/2016"
 	wacn.date=""/>
 
 # 将脱机数据同步添加到 Android 移动服务应用
@@ -35,9 +35,9 @@
 
 ## 更新应用以支持脱机同步
 
-借助脱机同步，可从*同步表*读取和写入（使用 *IMobileServiceSyncTable* 接口），该表是设备上 **SQLite** 数据库的一部分。
+借助脱机同步，可从同步表读取和写入（使用 *IMobileServiceSyncTable* 接口），该表是设备上 **SQLite** 数据库的一部分。
 
-若要在设备与 Azure 移动服务之间推送和拉取更改，你可以使用*同步上下文* (*MobileServiceClient.SyncContext*)，该上下文借助本地存储数据时所用的本地数据库进行初始化。
+若要在设备与 Azure 移动服务之间推送和拉取更改，你可以使用同步上下文(*MobileServiceClient.SyncContext*)，该上下文借助本地存储数据时所用的本地数据库进行初始化。
 
 1. 通过将此代码添加到 *AndroidManifest.xml* 文件来添加可检查网络连接的权限：
 
@@ -173,7 +173,7 @@
 One thing which is important to point out: if there are pending changes in the local store, a pull operation will first push those changes to the server (so that if there are changes in the same row, the push operation will fail and the application has an opportunity to handle the conflicts appropriately). That means that the push call in the code above isn’t necessarily required, but I think it’s always a good practice to be explicit about what the code is doing.
 -->
 
-1. 将设备或模拟器置于*飞行模式*中。这将创建脱机方案。
+1. 将设备或模拟器置于飞行模式中。这将创建脱机方案。
 
 2. 添加一些 *ToDo* 项或将一些项标记为“完成”。退出设备或模拟器（或强制关闭应用），然后重新启动。验证所做更改是否保存在设备上，因为本地 SQL Light 存储已保存这些更改。
 
@@ -219,4 +219,4 @@ One thing which is important to point out: if there are pending changes in the l
 
 [移动服务快速入门教程]: /documentation/articles/mobile-services-android-get-started
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

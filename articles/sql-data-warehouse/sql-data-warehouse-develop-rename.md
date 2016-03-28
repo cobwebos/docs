@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="11/05/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # 在 SQL 数据仓库中重命名
@@ -49,4 +49,4 @@ ALTER SCHEMA dbo TRANSFER OBJECT::product.item;
 <!--Article references-->
 [开发概述]: sql-data-warehouse-overview-develop.md
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

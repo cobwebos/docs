@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="10/05/2015"
+	ms.date="01/20/2016"
 	wacn.date=""/>
 
 # 将移动服务添加到现有 Android 应用（JavaScript 后端）
@@ -103,7 +103,7 @@
 完成数据处理系列教程后，请尝试学习以下其他 Android 教程：
 
 * [身份验证入门]
-  <br/>了解如何对应用程序用户进行身份验证。
+	<br/>了解如何对应用程序用户进行身份验证。
 
 * [推送通知入门]
   <br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
@@ -139,4 +139,4 @@
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkID=282122
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

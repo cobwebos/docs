@@ -21,7 +21,7 @@
 
 ### 创建命名空间并获取共享密钥
 
-1. 有关如何创建服务命名空间的完整信息，请参阅[管理服务总线服务命名空间](https://msdn.microsoft.com/zh-cn/library/azure/hh690928.aspx)部分中的[如何：创建或修改服务总线服务命名空间](https://msdn.microsoft.com/zh-cn/library/azure/hh690931.aspx)主题。
+1. 若要创建服务命名空间，请访问 [Azure 经典门户][]。单击左侧的“服务总线”，然后单击“创建”。为你的命名空间键入一个名称，然后单击复选标记。
 
 1. 在 [Azure 经典门户][] 的主窗口中，单击在上一步中创建的命名空间的名称。
 
@@ -624,8 +624,9 @@ namespace Microsoft.ServiceBus.Samples
 请参阅以下文章以了解更多信息：
 
 - [服务总线消息传送概述](/documentation/articles/service-bus-messaging-overview)
-- [Azure 服务总线基础知识](/documentation/articles/fundamentals-service-bus-hybrid-solutions)
+- [Azure 服务总线基础知识](/documentation/articles/service-bus-fundamentals-hybrid-solutions)
 - [服务总线中继 REST 教程](/documentation/articles/service-bus-relay-rest-tutorial)
 [Azure 经典门户]: http://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_0104_2016-->
+
+<!---HONumber=Mooncake_0321_2016-->

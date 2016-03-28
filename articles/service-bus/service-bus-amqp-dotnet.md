@@ -8,7 +8,7 @@
    editor="tysonn" /> 
 <tags 
    ms.service="service-bus"
-   ms.date="10/15/2015"
+   ms.date="01/26/2016"
    wacn.date="" />
 
 # 使用 AMQP 1.0 通过 .NET 使用服务总线
@@ -17,7 +17,7 @@
 
 ## 下载服务总线 SDK
 
-AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。可以从 [NuGet][] 下载最新的 SDK。
+AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。可以从 [NuGet][] 下载最新的服务总线位。
 
 ## 将 .NET 应用程序配置为使用 AMQP 1.0
 
@@ -164,6 +164,7 @@ AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。可以从 [
 准备好了解详细信息？ 请访问以下链接：
 
 - [服务总线 AMQP 概述]
+- [针对服务总线分区队列和主题的 AMQP 1.0 支持]
 - [适用于 Windows Server 的服务总线中的 AMQP]
 
   [如何使用服务总线队列]: /documentation/articles/service-bus-dotnet-how-to-use-queues
@@ -196,6 +197,6 @@ AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。可以从 [
 
 [Azure 经典门户]: http://manage.windowsazure.cn
 [服务总线 AMQP 概述]: /documentation/articles/service-bus-amqp-overview
+[针对服务总线分区队列和主题的 AMQP 1.0 支持]: /documentation/articles/service-bus-partitioned-queues-and-topics-amqp-overview
 [适用于 Windows Server 的服务总线中的 AMQP]: https://msdn.microsoft.com/zh-cn/library/dn574799.aspx
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0321_2016-->

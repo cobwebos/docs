@@ -4,12 +4,12 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="twounder"
-   manager=""
+   manager="barbkess"
    editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="10/20/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # 使用 Visual Studio 进行连接和查询
@@ -86,5 +86,4 @@
 [2]: ./media/sql-data-warehouse-get-started-connect-query/open-ssdt.png
 [3]: ./media/sql-data-warehouse-get-started-connect-query/connection-dialog.png
 [4]: ./media/sql-data-warehouse-get-started-connect-query/new-query.png
-
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

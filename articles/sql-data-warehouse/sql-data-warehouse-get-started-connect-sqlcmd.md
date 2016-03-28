@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="10/20/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # 使用 SQLCMD 进行连接和查询
@@ -26,13 +26,13 @@
 
 ## 先决条件
 
-+ [sqlcmd.exe](https://msdn.microsoft.com/library/azure/ms162773.aspx) - 若要下载 sqlcmd.exe，请参阅[适用于 SQL Server 的 Microsoft 命令行实用程序 11](http://www.microsoft.com/zh-CN/download/details.aspx?id=36433)。
++ [sqlcmd.exe](https://msdn.microsoft.com/library/azure/ms162773.aspx) - 若要下载 sqlcmd.exe，请参阅[适用于 SQL Server 的 Microsoft 命令行实用程序 11](http://www.microsoft.com/zh-cn/download/details.aspx?id=36433)。
 
 ## 获取完全限定的 Azure SQL 服务器名称
 
-若要连接到数据库，你需要服务器的完整名称 (****servername**.database.chinacloudapi.cn*)，该名称中包含要连接到的数据库。
+若要连接到数据库，你需要服务器的完整名称 (***servername**.database.chinacloudapi.cn*)，该名称中包含要连接到的数据库。
 
-1. 转到 [Azure 预览门户](https://manage.windowsazure.cn)。
+1. 转到 [Azure 管理门户](https://manage.windowsazure.cn)。
 2. 浏览到要连接到的数据库。
 3. 找出完整的服务器名称（我们将在下面的步骤中使用此名称）：
 
@@ -79,4 +79,4 @@ C:\>sqlcmd -S <Server Name>.database.windows.net -d <Database> -U <User> -P <Pas
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

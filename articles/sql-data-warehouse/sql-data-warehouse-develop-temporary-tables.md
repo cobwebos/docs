@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="10/19/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # SQL 数据仓库中的临时表
@@ -120,7 +120,7 @@ DROP TABLE #stats_ddl;
 
 在某些情况下，还可以使用这种方法来取代内联和多语句函数。
 
-> [AZURE.NOTE]此外，你还可以扩展此解决方案。举例来说，如果你只想要更新单个表，则只需筛选 #stats\_ddl 表
+> [AZURE.NOTE] 此外，你还可以扩展此解决方案。举例来说，如果你只想要更新单个表，则只需筛选 #stats\_ddl 表
 
 ## 临时表的限制
 SQL 数据仓库在实现临时表时确实会施加一些限制。
@@ -143,4 +143,4 @@ SQL 数据仓库在实现临时表时确实会施加一些限制。
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

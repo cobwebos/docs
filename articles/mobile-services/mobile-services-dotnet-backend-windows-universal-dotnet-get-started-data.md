@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="将移动服务添加到现有的通用 Windows 应用商店应用 | Microsoft Azure" 
+	pageTitle="将移动服务添加到现有的通用 Windows 应用商店应用 | Azure" 
 	description="了解如何开始使用移动服务来利用 Windows 应用商店应用程序中的数据。" 
 	services="mobile-services" 
 	documentationCenter="windows" 
@@ -34,7 +34,7 @@
 若要完成本教程，您需要以下各项：
 
 * 有效的 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
-* <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio 2013</a> Update 3 或更高版本。 
+* <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio 2013</a> (Update 3 或更高版本)。 
 
 ##下载 GetStartedWithData 项目
 
@@ -95,7 +95,7 @@
 * [身份验证入门]
   <br/>了解如何对应用程序用户进行身份验证。
 
-* [推送通知入门 ]
+* [推送通知入门]
   <br/>了解如何向应用程序发送一条很基本的推送通知。
 
 * [移动服务 C# 操作方法概念性参考 ](/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library)
@@ -111,15 +111,13 @@
 [Refine queries with paging]: /documentation/articles/mobile-services-windows-store-dotnet-add-paging-data
 [Get started with Mobile Services]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started
 [身份验证入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users
-[推送通知入门 ]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push
+[推送通知入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push
 
 [Get started with offline data sync]: /documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data
 
-[Azure classic portal]: https://manage.windowsazure.cn/
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkId=257545
 [Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkID=510826
 [Mobile Services .NET How-to Conceptual Reference]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 [MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
  
-
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

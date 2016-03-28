@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="服务总线 和 Python 与 AMQP 1.0 | Microsoft Azure"
-   description="使用 AMQP 通过 Python 使用服务总线。"
+   pageTitle="服务总线和集成了 AMQP 1.0 的 Python | Microsoft Azure"
+   description="使用集成了 AMQP 的 Python 中的服务总线。"
    services="service-bus"
    documentationCenter="na"
    authors="sethmanheim"
@@ -8,10 +8,10 @@
    editor="tysonn" /> 
 <tags 
    ms.service="service-bus"
-   ms.date="10/07/2015"
+   ms.date="02/08/2016"
    wacn.date="" />
 
-# 使用 AMQP 1.0 通过 Python 使用服务总线
+# 使用集成了 AMQP 1.0 的 Python 中的服务总线。
 
 [AZURE.INCLUDE [service-bus-selector-amqp](../includes/service-bus-selector-amqp.md)]
 
@@ -138,24 +138,24 @@ if message.properties != None:
 
 | .NET 属性类型 | Python 属性类型 | 说明 |
 |--------------------|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte | int | - | 
-| sbyte | int | - | 
-| char | char | Proton-Python 类 | 
-| short | int | - | 
-| ushort | int | - | 
-| int | int | - | 
-| uint | int | - | 
-| long | int | - | 
-| ulong | long | Proton-Python 类 | 
-| float | float | - | 
-| double | float | - | 
-| decimal | String | Proton 目前不支持 Decimal。| 
-| bool | bool | - | 
-| Guid | uuid | Proton-Python 类 | 
-| string | string | - | 
-| DateTime | timestamp | Proton-Python 类 | 
-| DateTimeOffset | DescribedType |映射到 AMQP 类型的 DateTimeOffset.UtcTicks：<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> | 
-| TimeSpan | DescribedType | 映射到 AMQP 类型的 Timespan.Ticks：<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> | 
+| byte | int | - |
+| sbyte | int | - |
+| char | char | Proton-Python 类 |
+| short | int | - |
+| ushort | int | - |
+| int | int | - |
+| uint | int | - |
+| long | int | - |
+| ulong | long | Proton-Python 类 |
+| float | float | - |
+| double | float | - |
+| decimal | String | Proton 目前不支持 Decimal。|
+| bool | bool | - |
+| Guid | uuid | Proton-Python 类 |
+| string | string | - |
+| DateTime | timestamp | Proton-Python 类 |
+| DateTimeOffset | DescribedType | 映射到 AMQP 类型的 DateTimeOffset.UtcTicks：<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
+| TimeSpan | DescribedType | 映射到 AMQP 类型的 Timespan.Ticks：<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> |
 | Uri | DescribedType | 映射到 AMQP 类型的 Uri.AbsoluteUri：<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
 
 ### 标准属性
@@ -169,34 +169,35 @@ if message.properties != None:
 | durable | 不适用 | 服务总线仅支持持久消息。 |
 | priority | 不适用 | 服务总线仅支持单一消息优先级。 |
 | Ttl | Message.TimeToLive | 转换，Proton-Python TTL 以毫秒为单位定义。 |
-| first\_acquirer | 不适用 | - | 
-| delivery\_count | 不适用 | - | 
-| Id | Message.MessageID | - | 
-| user\_id | 不适用 | - | 
-| address | Message.To | - | 
+| first\_acquirer | 不适用 | - |
+| delivery\_count | 不适用 | - |
+| Id | Message.MessageID | - |
+| user\_id | 不适用 | - |
+| address | Message.To | - |
 | subject | Message.Label | - |
-| reply\_to | Message.ReplyTo | - | 
-| correlation\_id | Message.CorrelationID | - | 
-| content\_type | Message.ContentType | - 
-| content\_encoding | 不适用 | - | | expiry\_time | 不适用 | - | 
-| creation\_time | 不适用 | - | 
-| group\_id | Message.SessionId | - | 
-| group\_sequence | 不适用 | - | 
-| reply\_to\_group\_id | Message.ReplyToSessionId | - | 
+| reply\_to | Message.ReplyTo | - |
+| correlation\_id | Message.CorrelationID | - |
+| content\_type | Message.ContentType | - |
+| content\_encoding | 不适用 | - |
+| expiry\_time | 不适用 | - |
+| creation\_time | 不适用 | - |
+| group\_id | Message.SessionId | - |
+| group\_sequence | 不适用 | - |
+| reply\_to\_group\_id | Message.ReplyToSessionId | - |
 | format | 不适用 | - |
 
 | 服务总线 .NET | Proton | 说明 |
 |-------------------------|------------------------------|-----------------------------------------------------------|
-| ContentType | Message.content\_type | - | 
-| CorrelationId | Message.correlation\_id | - | 
-| EnqueuedTimeUtc | 不适用 | - | 
-| Label | Message.subject | - | 
-| MessageId | Message.id | - | 
-| ReplyTo | Message.reply\_to | - | 
-| ReplyToSessionId | Message.reply\_to\_group\_id | - | 
-| ScheduledEnqueueTimeUtc | 不适用 | - | 
-| SessionId | Message.group\_id | - | 
-| TimeToLive | Message.ttl | 转换，Proton-Python TTL 以毫秒为单位定义。| 
+| ContentType | Message.content\_type | - |
+| CorrelationId | Message.correlation\_id | - |
+| EnqueuedTimeUtc | 不适用 | - |
+| Label | Message.subject | - |
+| MessageId | Message.id | - |
+| ReplyTo | Message.reply\_to | - |
+| ReplyToSessionId | Message.reply\_to\_group\_id | - |
+| ScheduledEnqueueTimeUtc | 不适用 | - |
+| SessionId | Message.group\_id | - |
+| TimeToLive | Message.ttl | 转换，Proton-Python TTL 以毫秒为单位定义。|
 | To | Message.address | - |
 
 ## 后续步骤
@@ -211,4 +212,4 @@ if message.properties != None:
 
 [服务总线 AMQP 概述]: /documentation/articles/service-bus-amqp-overview
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0321_2016-->

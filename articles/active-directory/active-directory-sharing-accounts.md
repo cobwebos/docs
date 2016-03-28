@@ -9,7 +9,7 @@
 
  <tags
 	ms.service="active-directory"
- 	ms.date="10/16/2015"  
+ 	ms.date="02/09/2016"  
  	wacn.date=""/>
 
 # 使用 Azure AD 共享帐户
@@ -50,21 +50,22 @@ Azure AD 支持任何 Enterprise Mobility Suite (EMS)、高级或基本许可用
 - 自定义密码应用
 - [应用使用情况仪表板/报告](/documentation/articles/active-directory-passwords-get-insights)
 - 最终用户访问门户
-- [应用代理](/documentation/articles/active-directory-application-proxy-get-started)
-
+- [应用代理](active-directory-application-proxy-get-started.md)
+- [Active Directory 应用商店](https://azure.microsoft.com/marketplace/active-directory/all/)
 
 ## 共享帐户
 若要使用 Azure AD 来共享帐户，你需要：
 
 - 将应用程序配置为使用密码单一登录 (SSO)
 - 使用[基于组的分配](/documentation/articles/active-directory-accessmanagement-group-saasapps)，并选择输入共享凭据的选项
-- 可选：在某些应用程序（例如 Facebook、Twitter 或 LinkedIn）中，你可以启用 [Azure AD 自动轮换密码](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx)的选项。
+- 可选：在某些应用程序（例如 Facebook、Twitter 或 LinkedIn）中，你可以启用 [Azure AD 自动轮换密码](http://blogs.technet.com/b/ad/archive/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview.aspx)的选项
 
-你还可以使用 Multi-Factor Authentication (MFA) 提高共享帐户的安全性（了解有关[使用 Azure AD 保护应用程序](/documentation/articles/multi-factor-authentication-get-started)的信息），并可以使用 [Azure AD 自助](/documentation/articles/active-directory-accessmanagement-self-service-group-management)组管理来委派有关谁有权访问应用程序的管理权。
+你还可以使用 Multi-Factor Authentication (MFA) 提高共享帐户的安全性（了解有关[使用 Azure AD 保护应用程序](/documentation/articles/multi-factor-authentication-get-started)的信息），并可以使用 [Azure AD 自助服务](/documentation/articles/active-directory-accessmanagement-self-service-group-management)组管理来委派有关谁有权访问应用程序的管理权。
 
 ## 相关文章
 
-- [使用条件性访问保护应用](/documentation/articles/active-directory-conditional-access)
-- [自助组管理/SSAA](/documentation/articles/active-directory-accessmanagement-self-service-group-management)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+- [使用条件性访问保护应用](active-directory-conditional-access.md)
+- [自助组管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

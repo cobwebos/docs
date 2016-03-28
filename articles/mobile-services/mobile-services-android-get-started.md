@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/05/2015"
+	ms.date="02/05/2016"
 	wacn.date=""/>
 
 # 适用于 Android 的移动服务入门（JavaScript 后端）
@@ -37,7 +37,7 @@
 
 下载的快速入门项目包含适用于 Android 的 Azure 移动服务 SDK。
 
-> [AZURE.IMPORTANT]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
+> [AZURE.IMPORTANT] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
 
 
 ## 创建新的移动服务
@@ -95,6 +95,5 @@
 [推送通知入门 ]: /documentation/articles/mobile-services-javascript-backend-android-get-started-push
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
-[Management Portal]: https://manage.windowsazure.cn/
 
-<!------HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

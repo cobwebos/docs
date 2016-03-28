@@ -8,14 +8,14 @@
    editor="" />
 <tags 
    ms.service="event-hubs"
-   ms.date="10/14/2015"
+   ms.date="01/26/2016"
    wacn.date="" />
 
 # 事件中心 API 概述
 
 本文汇总了一些重要的事件中心 .NET 客户端 API。有两个类别：管理 API 和运行时 API。运行时 API 包括发送和接收消息所需的全部操作。使用管理操作，你可以通过创建、更新和删除实体来管理事件中心实体状态。
 
-监视方案跨越了管理操作和运行时操作。有关 .NET API 的详细参考文档，请参阅 [.NET 类库](https://msdn.microsoft.com/zh-cn/library/azure/mt419900.aspx)和 [EventProcessorHost API](https://msdn.microsoft.com/zh-cn/library/azure/mt445521.aspx) 参考。
+监视方案跨越了管理操作和运行时操作。有关 .NET API 的详细参考文档，请参阅[服务总线 .NET](https://msdn.microsoft.com/zh-cn/library/azure/mt419900.aspx) 和 [EventProcessorHost API](https://msdn.microsoft.com/zh-cn/library/azure/mt445521.aspx) 参考。
 
 ## 管理 API
 
@@ -80,11 +80,11 @@ await client.SendAsync(data);
 ### 创建使用者
 
 ```
-// Create the Event Hub client
+// Create the Event Hubs client
 EventHubClient eventHubClient = EventHubClient.Create(EventHubName);
 
-// Get the default subscriber group
-EventHubSubscriberGroup defaultSubscriberGroup = eventHubClient.GetDefaultSubscriberGroup();
+// Get the default consumer group
+EventHubConsumerGroup defaultConsumerGroup = eventHubClient.GetDefaultConsumerGroup();
 
 // All messages
 EventHubReceiver consumer = await defaultConsumerGroup.CreateReceiverAsync(shardId: index);
@@ -116,6 +116,7 @@ msg = UnicodeEncoding.UTF8.GetString(info);
 ```
 // Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
 // Use the EventData.Offset value for checkpointing yourself, this value is unique per partition.
+
 string eventHubConnectionString = System.Configuration.ConfigurationManager.AppSettings["Microsoft.ServiceBus.ConnectionString"];
 string blobConnectionString = System.Configuration.ConfigurationManager.AppSettings["AzureStorageConnectionString"]; // Required for checkpoint/state
 
@@ -127,7 +128,7 @@ EventProcessorHost host = new EventProcessorHost(WorkerName, EventHubName, defau
 host.UnregisterEventProcessorAsync().Wait();   
 ```
 
-[IEventProcessor](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.ieventprocessor.aspx) 接口定义如下：
+[IEventProcessor](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.ieventprocessor.aspx) 接口定义如下：
 
 ```
 public class SimpleEventProcessor : IEventProcessor
@@ -184,4 +185,4 @@ public class SimpleEventProcessor : IEventProcessor
 - [服务总线和事件中心 .NET API 参考](https://msdn.microsoft.com/zh-cn/library/azure/mt419900.aspx)
 - [事件处理程序主机 API 参考](https://msdn.microsoft.com/zh-cn/library/azure/mt445521.aspx)
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

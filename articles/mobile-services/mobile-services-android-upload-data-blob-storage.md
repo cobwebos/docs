@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="10/05/2015"
+	ms.date="01/21/2016"
 	wacn.date=""/>
 
 # 从 Android 设备将图像上载到 Azure 存储空间
@@ -421,4 +421,4 @@
 [App settings]: http://msdn.microsoft.com/zh-cn/library/windowsazure/b6bb7d2d-35ae-47eb-a03f-6ee393e170f7
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

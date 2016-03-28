@@ -1,7 +1,8 @@
 <properties 
 	pageTitle="在 Azure 虚拟网络中安装 Active Directory 林" 
 	description="本教程介绍如何在 Azure 虚拟网络上的虚拟机 (VM) 中创建新的 Active Directory 林。" 
-	services="active-directory, virtual-network" 
+	services="active-directory, virtual-network"
+    	keywords="active directory 虚拟机, 安装 active directory 林, azure active directory 视频"
 	documentationCenter="" 
 	authors="markusvi" 
 	manager="stevenpo" 
@@ -9,7 +10,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="01/05/2016" 
+	ms.date="01/25/2016" 
 	wacn.date=""/>
 
 
@@ -27,7 +28,8 @@
 
 在此案例中，外部用户需要访问在添加域的服务器上运行的应用程序。运行应用程序服务器的 VM 及运行域控制器的 VM 安装在 Azure 虚拟网络中其自身的云服务内。它们还会包含在可用性集内以提高容错能力。
 
-![][1]
+![Azure 虚拟网络中虚拟机上的 Active Directory 林][1]
+
 ## 在 Azure 上安装与在本地安装有什么不同？
 
 在 Azure 上安装域控制器与在本地安装域控制器并没有太大的不同。下表列出了主要差别。
@@ -135,4 +137,4 @@
 <!--Image references-->
 [1]: ./media/active-directory-new-forest-virtual-machine/AD_Forest.png
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0321_2016-->

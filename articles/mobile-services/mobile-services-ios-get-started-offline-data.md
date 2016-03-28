@@ -1,5 +1,5 @@
 <properties
-	pageTitle="移动服务中的脱机数据同步入门 (iOS) | Microsoft Azure"
+	pageTitle="移动服务中的脱机数据同步入门 (iOS) | Azure"
 	description="了解如何在 iOS 应用程序中使用 Azure 移动服务缓存和同步脱机数据"
 	documentationCenter="ios"
 	authors="krisragh"
@@ -96,7 +96,7 @@ Azure 移动服务脱机同步允许最终用户在无法访问网络时与本�
 ```
 
 
->[AZURE.NOTE] 若要从设备本地存储区中删除已在移动设备数据库中删除的记录，应启用“[软删除]”。否则，你的应用程序应定期调用 `MSSyncTable.purgeWithQuery` 以清除本地存储。
+>[AZURE.NOTE] 若要从设备本地存储区中删除已在移动设备数据库中删除的记录，应启用“软删除”[]。否则，你的应用程序应定期调用 `MSSyncTable.purgeWithQuery` 以清除本地存储。
 
 
 * 在 **QSTodoService.m** 中，`addItem` 和 `completeItem` 方法会在修改数据后调用 `syncData`。在 **QSTodoListViewController.m** 中，`refresh` 方法也会调用 `syncData`，使 UI 在每次刷新和启动时（`init` 调用 `refresh`）显示最新数据。
@@ -264,12 +264,11 @@ Azure 移动服务脱机同步允许最终用户在无法访问网络时与本�
 [Get started with Mobile Services]: /documentation/articles/mobile-services-ios-get-started
 [使用移动服务脱机支持处理冲突]: /documentation/articles/mobile-services-ios-handling-conflicts-offline-data
 [Soft Delete]: /documentation/articles/mobile-services-using-soft-delete
-[软删除]: /documentation/articles/mobile-services-using-soft-delete
+[]: /documentation/articles/mobile-services-using-soft-delete
 
 [云覆盖：Azure 移动服务中的脱机同步]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Aazure Friday：Azure 移动服务中支持脱机的应用]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
 [移动服务快速入门教程]: /documentation/articles/mobile-services-ios-get-started
  
-
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0321_2016-->

@@ -9,12 +9,12 @@
 
 <tags 
 	ms.service="sql-data-warehouse" 
-	ms.date="10/21/2015" 
+	ms.date="01/07/2016" 
 	wacn.date=""/>
  
 # 透明数据加密 (TDE) 入门
 > [AZURE.SELECTOR]
-- [Azure Portal](sql-data-warehouse-encryption-tde.md)
+- [Azure 门户](sql-data-warehouse-encryption-tde.md)
 - [TSQL](sql-data-warehouse-encryption-tde-tsql.md)
 
 Azure SQL 数据仓库透明数据加密 (TDE) 无需更改应用程序，即可对静止的数据库、关联的备份和事务日志执行实时加密和解密，帮助防止恶意活动的威胁。
@@ -62,11 +62,11 @@ FROM
 
  
 <!--Anchors-->
-[透明数据加密 (TDE)]: https://msdn.microsoft.com/zh-CN/library/bb934049.aspx
+[透明数据加密 (TDE)]: https://msdn.microsoft.com/zh-cn/library/bb934049.aspx
 
 
 <!--Image references-->
 
 <!--Link references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

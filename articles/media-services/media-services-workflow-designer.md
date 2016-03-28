@@ -11,7 +11,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="10/15/2015"
+	ms.date="02/03/2016"  
 	wacn.date=""/>
 
 
@@ -19,10 +19,16 @@
 
 ##概述
 
-**工作流设计器**是一个 Windows 桌面工具，可用于设计和构建自定义工作流，以使用**媒体编码器高级工作流**进行编码。
+**工作流设计器**是一个 Windows 桌面工具，可用于设计和构建自定义工作流，以使用**媒体编码器高级工作流**进行编码。借助工作流设计器工具的强大功能，你可以设计和创建将在**媒体编码器高级**中运行的复杂工作流。
 
+根据输入源文件的属性，工作流可以包含客户决策逻辑和分支。你可以创建具有可重写属性与动态值的工作流，让即使最复杂的编码任务也能在云中轻松重复及自定义。
 
-你还可以使用此工具来修改[现有的工作流](/documentation/articles/media-services-workflow-designer#existing_workflows)。
+你可以创建的工作流示例包括：
+
+- 基于决策的工作流，该类工作流将检查要解析的源内容，并且仅编码所需的输出跟踪。这有助于消除因无意中增加源内容而生成的多余跟踪。
+- 可使用多个输入文件来支持标题、覆盖和拼结在一起的内容。 
+
+你还可以使用此工具来修改任何[已发布工作流](/documentation/articles/media-services-workflow-designer#existing_workflows)。
 
 >[AZURE.NOTE]若要获取工作流设计器工具的副本，请联系 mepd@microsoft.com。
 
@@ -31,7 +37,7 @@
 
 ##<a id="existing_workflows"></a>修改现有工作流
 
-可以使用设计器工具修改默认工作流文件。可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认工作流文件。该文件夹还包含这些文件的相关说明。
+可以使用设计器工具修改默认的[已发布工作流](/documentation/articles/media-services-workflow-designer#existing_workflows)。可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认工作流文件。该文件夹还包含这些文件的相关说明。
 
 以下视频演示如何使用设计器。
 
@@ -69,14 +75,17 @@
 
 ##媒体服务学习路径
 
-你可以在此处查看 AMS 学习路径：
+[AZURE.INCLUDE [media-services-learning-paths-include](../includes/media-services-learning-paths-include.md)]
 
-- [AMS 实时流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-- [AMS 按需流式处理工作流](http://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+##提供反馈
 
+[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
+
+
+如果你需要支持或对在工作流设计器工具中创建自定义工作流有疑问，请发送电子邮件到 mepd@microsoft.com。
 
 ##另请参阅
 
 [Azure 高级编码器工作流设计器培训视频](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0321_2016-->

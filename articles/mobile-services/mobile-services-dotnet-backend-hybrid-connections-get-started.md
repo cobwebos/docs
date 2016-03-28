@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="12/11/2015"
+	ms.date="02/07/2016"
 	wacn.date=""/>
 
   
@@ -125,7 +125,7 @@
 ##另请参阅##
  
 + [混合连接网站](http://azure.microsoft.com/zh-cn/services/biztalk-services/)
-+ [混合连接概述](/documentation/articles/integration-hybrid-connection-overview
++ [混合连接概述](/documentation/articles/integration-hybrid-connection-overview)
 + [BizTalk 服务：“仪表板”、“监视”、“缩放”、“配置”和“混合连接”选项卡](/documentation/articles/biztalk-dashboard-monitor-scale-tabs)
 + [如何对 .NET 后端移动服务进行数据模型更改](/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations)
 
@@ -135,4 +135,5 @@
 [Azure 经典门户]: http://manage.windowsazure.cn
 [移动服务入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started
 
-<!---HONumber=Mooncake_0118_2016-->
+
+<!---HONumber=Mooncake_0321_2016-->

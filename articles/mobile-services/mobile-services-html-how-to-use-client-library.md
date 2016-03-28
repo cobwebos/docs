@@ -1,5 +1,5 @@
 <properties
-	pageTitle="如何使用 HTML 客户端 | Microsoft Azure"
+	pageTitle="如何使用 HTML 客户端 | Azure"
 	description="了解如何使用适用于 Azure 移动服务的 HTML 客户端。"
 	services="mobile-services"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="10/23/2015"
+	ms.date="01/26/2016"
 	wacn.date=""/>
 
 # 如何使用适用于 Azure 移动服务的 HTML/JavaScript 客户端
@@ -160,7 +160,8 @@
 
 以下代码演示了如何通过在查询中包含 `orderBy` 或 `orderByDescending` 函数来为数据排序。该代码将返回 `todoItemTable` 中的项，这些项已按 `text` 字段的升序排序。默认情况下，服务器只返回前 50 个元素。
 
-> [AZURE.NOTE]默认情况下，将使用服务器驱动的页大小来防止返回所有元素。这可以防止对大型数据集发出的默认请求对服务造成负面影响。你可以根据下一节中所述，通过调用 `take` 来增加返回的项数。`todoItemTable` 是对前面创建的移动服务表的引用。
+> [AZURE.NOTE] 默认情况下，将使用服务器驱动的页大小来防止返回所有元素。这可以防止对大型数据集发出的默认请求对服务造成负面影响。
+你可以根据下一节中所述，通过调用 `take` 来增加返回的项数。`todoItemTable` 是对前面创建的移动服务表的引用。
 
 	var ascendingSortedTable = todoItemTable.orderBy("text").read().done(function (results) {
 	   alert(JSON.stringify(results));
@@ -384,7 +385,7 @@
 
 移动服务支持使用各种外部标识提供者对应用程序用户进行身份验证和授权，这些提供者包括：Facebook、Google、Microsoft 帐户和 Twitter。你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。你还可以在服务器脚本中使用已经过身份验证的用户的标识来实施授权规则。有关详细信息，请参阅 [身份验证入门] 教程。
 
->[AZURE.NOTE]在 PhoneGap 或 Cordova 应用程序中使用身份验证时，还必须向项目中添加以下插件：
+>[AZURE.NOTE] 在 PhoneGap 或 Cordova 应用程序中使用身份验证时，还必须向项目中添加以下插件：
 >
 >+ https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git
 >+ https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git
@@ -662,4 +663,4 @@ In some cases, the call to the login method can be avoided after the first time 
 [ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [OData 系统查询选项参考]: http://go.microsoft.com/fwlink/p/?LinkId=444502
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

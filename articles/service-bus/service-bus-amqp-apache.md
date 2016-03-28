@@ -8,7 +8,7 @@
    editor="tysonn" /> 
 <tags 
    ms.service="service-bus"
-   ms.date="10/07/2015"
+   ms.date="01/26/2016"
    wacn.date="" />
 
 # 在 Azure Linux VM 上安装 Apache Qpid Proton-C
@@ -100,7 +100,7 @@
 
 准备好了解详细信息？ 请访问以下链接：
 
-- [服务总线 AMQP 概述]
+- [服务总线 AMQP 概述][]
 
 [服务总线 AMQP 概述]: /documentation/articles/service-bus-amqp-overview
 [0]: ./media/service-bus-amqp-apache/amqp-apache-1.png
@@ -110,4 +110,6 @@
 
 [Azure 经典门户]: http://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_0104_2016-->
+
+
+<!---HONumber=Mooncake_0321_2016-->

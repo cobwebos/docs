@@ -8,7 +8,7 @@
    editor="" />
 <tags 
    ms.service="event-hubs"
-   ms.date="10/07/2015"
+   ms.date="01/26/2016"
    wacn.date="" />
 
 # 事件中心身份验证和安全模型概述
@@ -27,13 +27,13 @@
 
 为每个设备分配一个唯一令牌，该令牌将上载到该设备。生成令牌后，每个唯一令牌将授予对不同唯一发布者的访问权限。拥有令牌的设备只能向一个发布者发送消息，但不能向其他发布者发送消息。如果多个设备共享同一令牌，则其中每个设备将共享一个发布者。
 
-可为设备配置令牌用于授予对事件中心的直接访问权限，但不建议这样做。持有此类令牌的任何设备都可以直接将消息发送到该事件中心内。此类设备将不会受到限制。此外，无法将设备列入方块列表，使其无法该事件中心发送消息。
+可为设备配置令牌用于授予对事件中心的直接访问权限，但不建议这样做。持有此令牌的任何设备都可以直接将消息发送到该事件中心内。此类设备将不会受到限制。此外，无法将设备列入方块列表，使其无法该事件中心发送消息。
 
 所有令牌使用 SAS 密钥进行签名。通常，所有令牌使用同一密钥进行签名。设备不知道该密钥；这可以防止设备生成令牌。
 
 ### 创建 SAS 密钥
 
-创建命名空间时，服务总线将生成名为 **RootManageSharedAccessKey** 的 256 位 SAS 密钥。此密钥授予对命名空间的发送、侦听和管理权限。你可以创建其他密钥。建议你生成一个密钥用于授予对特定事件中心的发送权限。本主题的余下内容假设你已将此密钥命名为 `EventHubSendKey`。
+创建命名空间时，服务总线将生成名为 **RootManageSharedAccessKey** 的 256 位 SAS 密钥。此密钥授予对命名空间的发送、侦听和管理权限。你可以创建其他密钥。建议你生成一个密钥用于授予对特定事件中心的发送权限。建议你生成一个密钥用于授予对特定事件中心的发送权限。本主题的余下内容假设你已将此密钥命名为 `EventHubSendKey`。
 
 在创建事件中心时，以下示例将创建一个仅限发送的密钥：
 
@@ -46,7 +46,7 @@ Uri uri = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, string.
 TokenProvider td = TokenProvider.CreateSharedAccessSignatureTokenProvider(namespaceManageKeyName, namespaceManageKey);
 NamespaceManager nm = new NamespaceManager(namespaceUri, namespaceManageTokenProvider);
 
-// Create Event Hub with a SAS rule that allows sending to that Event Hub.
+// Create Event hub with a SAS rule that allows sending to that Event hub
 EventHubDescription ed = new EventHubDescription("MY_EVENT_HUB") { PartitionCount = 32 };
 string eventHubSendKeyName = "EventHubSendKey";
 string eventHubSendKey = SharedAccessAuthorizationRule.GenerateRandomKey();
@@ -150,4 +150,4 @@ ACS 支持通过多种方法创建服务标识、信赖方和规则，但最简�
 [队列消息解决方案]: /documentation/articles/service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues
  
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

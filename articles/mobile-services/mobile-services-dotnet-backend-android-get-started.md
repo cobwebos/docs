@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/05/2015"
+	ms.date="02/05/2016"
 	wacn.date=""/>
 
 
@@ -34,7 +34,7 @@
 
 下载的快速入门项目包含适用于 Android 的移动服务 SDK。
 
-> [AZURE.IMPORTANT]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
+> [AZURE.IMPORTANT] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
 
 
 ## <a name="create-new-service"></a>创建新的移动服务
@@ -129,4 +129,4 @@
 
 [Azure 经典门户]: https://manage.windowsazure.cn/
 
-<!-----HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

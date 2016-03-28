@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="在发生灾难时恢复移动服务 | Microsoft Azure"
+	pageTitle="在发生灾难时恢复移动服务 | Azure"
 	description="了解在发生灾难时如何恢复移动服务。" 
 	services="mobile-services" 
 	documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/30/2015"
+	ms.date="02/07/2016"
 	wacn.date=""/>
 
 # 在发生灾难时恢复移动服务
@@ -64,9 +64,9 @@
 
 4. 现在，你可以使用辅助服务来恢复主服务。
 
-	> [AZURE.IMPORTANT]除了迁移文件以外，迁移命令还会将主服务的主机名更新为指向辅助服务，因此客户端应用程序不需要更新。但是，主机名解析为新服务最长需要 30 分钟时间。因此，建议只在灾难恢复方案中使用迁移命令。
+	> [AZURE.IMPORTANT] 除了迁移文件以外，迁移命令还会将主服务的主机名更新为指向辅助服务，因此客户端应用程序不需要更新。但是，主机名解析为新服务最长需要 30 分钟时间。因此，建议只在灾难恢复方案中使用迁移命令。
 
-	> [AZURE.IMPORTANT]当你执行此步骤中的命令时，将会删除辅助服务，以便能够使用它的容量来恢复主服务。我们建议你在运行该命令之前备份脚本和设置（如果你想要保留的话）。
+	> [AZURE.IMPORTANT] 当你执行此步骤中的命令时，将会删除辅助服务，以便能够使用它的容量来恢复主服务。我们建议你在运行该命令之前备份脚本和设置（如果你想要保留的话）。
 
    准备就绪后，执行以下命令：
 
@@ -79,7 +79,7 @@
 		info:    Migration complete. It may take 30 minutes for DNS to resolve to the migrated site.
 		info:    mobile migrate command OK
 
-    > [AZURE.NOTE] It may take a few minutes after the command completes until you can see the changes in the Azure classic portal.
+    > [AZURE.NOTE] 完成该命令后，可能需要经过几分钟时间，你才能在 Azure 经典门户中看到更改。
 
 5. 验证是否已正确恢复所有脚本，方法是将其与源代码管理中的原件进行比较。大多数情况下，脚本会自动恢复且不会丢失数据，但如果你发现存在差异，可以手动恢复该脚本。
 
@@ -117,4 +117,4 @@
 [Azure 服务仪表板]: /zh-cn/support/service-dashboard/
 [使用 Azure CLI 自动操作移动服务]: /documentation/articles/mobile-services-manage-command-line-interface
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

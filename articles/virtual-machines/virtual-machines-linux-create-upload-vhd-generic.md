@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="10/05/2015"
+	ms.date="01/22/2016"
 	wacn.date=""/>
 
 # <a id="nonendorsed"> </a>有关未认可分发的信息 #
@@ -18,19 +18,21 @@
 [AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-both-include.md)]
 
 
-**重要提示**：仅当使用某个[认可的分发](virtual-machines-../linux-endorsed-distributions.md)时，Azure 平台 SLA 才适用于运行 Linux 操作系统的虚拟机。在 Azure 平台映像库中提供的所有 Linux 分发都是具有所需配置的认可的分发。
+**重要提示**：仅当使用某个[认可的分发](/documentation/articles/virtual-machines-linux-endorsed-distributions)时，Azure 平台 SLA 才适用于运行 Linux 操作系统的虚拟机。在 Azure 平台映像库中提供的所有 Linux 分发都是具有所需配置的认可的分发。
 
-- [Azure 上的 Linux - 认可的分发](virtual-machines-../linux-endorsed-distributions.md)
-- [Microsoft Azure 中对 Linux 映像的支持](http://support2.microsoft.com/kb/2941892)
+- [Azure 上的 Linux - 认可的分发](/documentation/articles/virtual-machines-linux-endorsed-distributions)
+- [Azure 中对 Linux 映像的支持](http://support2.microsoft.com/kb/2941892)
 
 所有正在 Azure 上运行的分发都需要满足多个先决条件才能在平台上正常运行。本文并未涵盖所有信息，因为每个分发都是不同的；即使你满足以下所有条件，你也可能仍需显著调整你的 Linux 系统以确保其在平台上正常运行。
 
-正是出于这个原因，建议你如果可能，从某个我们的 [Azure 上的 Linux - 认可的分发](/documentation/articles/linux-endorsed-distributions)开始操作。以下文章将指导你完成如何准备 Azure 上支持的各种认可的 Linux 分发：
+正是出于这个原因，建议你如果可能，从某个我们的 [Azure 上的 Linux - 认可的分发](/documentation/articles/virtual-machines-linux-endorsed-distributions)开始操作。以下文章将指导你完成如何准备 Azure 上支持的各种认可的 Linux 分发：
 
 - **[基于 CentOS 的分发](/documentation/articles/virtual-machines-linux-create-upload-vhd-centos)**
+- **[Debian Linux](/documentation/articles/virtual-machines-linux-create-upload-vhd-debian)**
 - **[Oracle Linux](/documentation/articles/virtual-machines-linux-create-upload-vhd-oracle)**
+- **[Red Hat Enterprise Linux](/documentation/articles/virtual-machines-linux-create-upload-vhd-redhat)**
 - **[SLES 和 openSUSE](/documentation/articles/virtual-machines-linux-create-upload-vhd-suse)**
-- **[Ubuntu](virtual-machines-linux-create-upload-vhd-ubuntu)**
+- **[Ubuntu](/documentation/articles/virtual-machines-linux-create-upload-vhd-ubuntu)**
 
 本文的其余部分将重点介绍有关在 Azure 上运行 Linux 分发的一般准则。
 
@@ -68,11 +70,11 @@
 
 Azure 上的 VHD 映像必须已将虚拟大小调整为 1MB。通常情况下，使用 Hyper-V 创建的 VHD 应已正确调整。如果未正确调整 VHD，则在你尝试基于 VHD 创建*映像*时，可能会收到如下错误消息：
 
-	"The VHD http://<mystorageaccount>.blob.core.chinacloudapi.cn/vhds/MyLinuxVM.vhd has an unsupported virtual size of 21475270656 bytes. The size must be a whole number (in MBs).”
+	"The VHD http://<mystorageaccount>.blob.core.chinacloudapi.cn/vhds/MyLinuxVM.vhd has an unsupported virtual size of 21475270656 bytes. The size must be a whole number (in MBs)." 
 
-若要修正此问题，可使用 Hyper-V 管理器控制台或 [Resize-VHD](http://technet.microsoft.com/library/hh848535.aspx) Powershell cmdlet 调整 VM 大小。如果你未在 Windows 环境中运行，则建议使用 qemu-img 转换（如果需要）并调整 VHD 大小。
+若要修正此问题，可使用 Hyper-V 管理器控制台或 [Resize-VHD](http://technet.microsoft.com/zh-cn/library/hh848535.aspx) Powershell cmdlet 调整 VM 大小。如果你未在 Windows 环境中运行，则建议使用 qemu-img 转换（如果需要）并调整 VHD 大小。
 
-> [AZURE.NOTE]qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。我们会在即将发布的 qemu-img 版本中解决此问题。现在建议使用 qemu-img 版本 2.2.0 或较低版本。参考：https://bugs.launchpad.net/qemu/+bug/1490611
+> [AZURE.NOTE] qemu-img 版本（>=2.2.1）中有一个已知 bug，会导致 VHD 格式不正确。我们会在即将发布的 qemu-img 版本中解决此问题。现在建议使用 qemu-img 版本 2.2.0 或较低版本。参考：https://bugs.launchpad.net/qemu/+bug/1490611
 
 
  1. 直接使用工具（如 `qemu-img` 或 `vbox-manage`）调整 VHD 大小可能会生成无法启动的 VHD。因此，建议先将 VHD 转换为 RAW 磁盘映像。如果已将 VM 映像创建为 RAW 磁盘映像（对于 KVM 等某些虚拟机监控程序，这是默认设置），则可以跳过此步骤：
@@ -103,9 +105,9 @@ Azure 上的 VHD 映像必须已将虚拟大小调整为 1MB。通常情况下�
 
 ## Linux 内核要求 ##
 
-Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游 Linux 内核。包括最新 Linux 内核版本（即 3.x）在内的许多分发已提供这些驱动程序，或以其他方式为其内核提供了这些驱动程序的向后移植版本。这些驱动程序会不断地在上游内核中使用新的修补程序和功能进行更新，因此，如果可能，请运行[认可的分发](/documentation/articles/linux-endorsed-distributions)以包含这些修补程序和更新。
+Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游 Linux 内核。包括最新 Linux 内核版本（即 3.x）在内的许多分发已提供这些驱动程序，或以其他方式为其内核提供了这些驱动程序的向后移植版本。这些驱动程序会不断地在上游内核中使用新的修补程序和功能进行更新，因此，如果可能，请运行[认可的分发](/documentation/articles/virtual-machines-linux-endorsed-distributions)以包含这些修补程序和更新。
 
-如果你正在运行 Red Hat Enterprise Linux 版本 **6.0-6.3** 的一个变体，则需要为 Hyper-V 安装最新的 LIS 驱动程序。可[在此处](http://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)找到这些驱动程序。从 RHEL **6.4+**（和派生产品）开始，LIS 驱动程序已包含在内核中，因此，无需其他安装包即在 Azure 上运行这些系统。
+如果你正在运行 Red Hat Enterprise Linux 版本 **6.0-6.3** 的一个变体，则需要为 Hyper-V 安装最新的 LIS 驱动程序。可[在此处](http://www.microsoft.com/zh-cn/download/search.aspx?q=linux%20integration%20services)找到这些驱动程序。从 RHEL **6.4+**（和派生产品）开始，LIS 驱动程序已包含在内核中，因此，无需其他安装包即在 Azure 上运行这些系统。
 
 如果需要自定义内核，建议使用较新的内核版本（即 **3.8+**）。对于这些分发或维护自己的内核的供应商，将需要执行一些操作，以便定期将 LIS 驱动程序从上游内核向后移植到自定义内核。即使你已运行相对较新的内核版本，也强烈建议你跟踪 LIS 驱动程序中的任何上游修复，并根据需要向后移植这些修复。LIS 驱动程序源文件的位置可在 Linux 内核源树中的 [MAINTAINER](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) 文件中找到：
 
@@ -168,7 +170,7 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
 
 - 不要在操作系统磁盘上创建交换空间
 
-	Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。请注意，本地资源磁盘是*临时*磁盘，并可能在取消设置虚拟机时被清空。在安装 Azure Linux 代理（请参见前一步骤）后，相应地在 /etc/waagent.conf 中修改以下参数：
+	Azure Linux 代理可使用在 Azure 上设置后附加到虚拟机的本地资源磁盘自动配置交换空间。请注意，本地资源磁盘是临时磁盘，并可能在取消设置虚拟机时被清空。在安装 Azure Linux 代理（请参见前一步骤）后，相应地在 /etc/waagent.conf 中修改以下参数：
 
 		ResourceDisk.Format=y
 		ResourceDisk.Filesystem=ext4
@@ -189,4 +191,4 @@ Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序会直接影响上游
 
 - 然后，需要关闭虚拟机并将 VHD 上载到 Azure。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

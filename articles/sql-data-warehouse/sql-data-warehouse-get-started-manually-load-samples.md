@@ -9,11 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="11/02/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 #将示例数据载入 SQL 数据仓库
@@ -84,4 +80,4 @@ SQL 数据仓库几乎支持 SQL Server 所能支持的所有 T-SQL 构造。[�
 <!--Other Web references-->
 [适用于 SQL 数据仓库的 Adventure Works 示例脚本]: https://migrhoststorage.blob.core.windows.net/sqldwsample/AdventureWorksSQLDW2012.zip
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

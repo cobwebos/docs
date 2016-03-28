@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="服务总线 和 PHP 与 AMQP 1.0 | Microsoft Azure"
+   pageTitle="服务总线和 PHP 与 AMQP 1.0 | Microsoft Azure"
    description="使用 AMQP 通过 PHP 使用服务总线。"
    services="service-bus"
    documentationCenter="na"
@@ -8,7 +8,7 @@
    editor="tysonn" /> 
 <tags 
    ms.service="service-bus"
-   ms.date="10/07/2015"
+   ms.date="01/26/2016"
    wacn.date="" />
 
 # 使用 AMQP 1.0 通过 PHP 使用服务总线
@@ -21,7 +21,7 @@ Proton-PHP 是绑定到 Proton-C 的 PHP 语言；也就是说，Proton-PHP 是�
 
 你可以从 [http://qpid.apache.org/download.html](http://qpid.apache.org/download.html) 下载 Proton-C 及其关联的绑定（包括 PHP）。此下载采用源代码格式。若要生成代码，请按照已下载的程序包中包含的说明操作。
 
-> [AZURE.IMPORTANT]在撰写本文时，Proton-C 中的 SSL 支持仅适用于 Linux 操作系统。由于 Azure 服务总线需要使用 SSL，目前，Proton-C（及语言绑定）只能用于从 Linux 访问服务总线。对 Windows 上的 SSL 启用 Proton-C 的开发工作正在进行中，因此请经常返回查看是否有更新。
+> [AZURE.IMPORTANT] 在撰写本文时，Proton-C 中的 SSL 支持仅适用于 Linux 操作系统。由于 Azure 服务总线需要使用 SSL，目前，Proton-C（及语言绑定）只能用于从 Linux 访问服务总线。对 Windows 上的 SSL 启用 Proton-C 的开发工作正在进行中，因此请经常返回查看是否有更新。
 
 ## 通过 PHP 使用服务总线队列、主题和订阅
 
@@ -62,13 +62,13 @@ if($messenger->incoming())
 $messenger->stop();
 ```
 
-## 在 .NET 和 Proton-PHP 之间进行消息传递
+## 在 .NET 和 Proton-PHP 之间进行消息传送
 
 ### 应用程序属性
 
 #### ProtonPHP 到服务总线 .NET API
 
-Proton-PHP 消息支持以下类型的应用程序属性：**integer**、**double**、**Boolean**、**string** 和 **object**。以下 PHP 代码显示如何使用上述每种属性类型在消息上设置属性。
+Proton-PHP 消息支持以下类型的应用程序属性：**integer**、**double**、**Boolean**、**string** 和 **object**。以下 PHP 代码演示如何使用上述每种属性类型在消息上设置属性。
 
 ```
 $message->properties["TestInt"] = 1;    
@@ -108,7 +108,7 @@ Console.WriteLine();
 | double | double |
 | 布尔值 | bool |
 | 字符串 | 字符串 |
-| object | 对象 |
+| 对象 | 对象 |
 
 #### 服务总线 .NET API 到 PHP
 
@@ -152,25 +152,24 @@ if ($message->properties != null)
 
 | .NET 属性类型 | PHP 属性类型 | 说明 |
 |--------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| byte | integer | - 
-| sbyte | integer | - 
-| char | Char | Proton-PHP 类 | 
-| short | integer | - 
-| ushort | integer | - 
-| int | integer | - 
-| uint | Integer | - 
-| long | integer | - 
-| ulong | integer | - 
-| float | double | - 
-| double | double | - 
-| decimal | string | 目前 Proton 不支持 Decimal。| 
-| bool | boolean | - 
-| Guid | UUID | Proton-PHP 类 | 
-| string | string | - 
-| DateTime | integer | - 
-| DateTimeOffset | DescribedType | 映射到 AMQP 类型的 DateTimeOffset.UtcTicks：<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> 
-| TimeSpan | DescribedType | 映射到 AMQP 类型的 Timespan.Ticks：<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> 
-| Uri | DescribedType | 映射到 AMQP 类型的 Uri.AbsoluteUri：<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
+| byte | integer | - |
+| sbyte | integer | - |
+| char | Char | Proton-PHP class |
+| short | integer | - |
+| ushort | integer | - |
+| int | integer | - |
+| uint | Integer | - |
+| long | integer | - |
+| ulong | integer | - |
+| float | double | - |
+| double | double | - |
+| decimal | string | Proton 目前不支持 Decimal。|
+| bool | boolean | - |
+| Guid | UUID | Proton-PHP 类 | | string | string | - |
+| DateTime | integer | - |
+| DateTimeOffset | DescribedType | 映射到 AMQP 类型的 DateTimeOffset.UtcTicks：<type name="datetime-offset" class=restricted source="long"> <descriptor name="com.microsoft:datetime-offset" /></type> |
+| TimeSpan | DescribedType | 映射到 AMQP 类型的 Timespan.Ticks：<type name="timespan" class=restricted source="long"> <descriptor name="com.microsoft:timespan" /></type> |
+| Uri | DescribedType | 映射到 AMQP 类型的 Uri.AbsoluteUri：<type name="uri" class=restricted source="string"> <descriptor name="com.microsoft:uri" /></type> |
 
 ### 标准属性
 
@@ -181,20 +180,20 @@ if ($message->properties != null)
 | Durable | 不适用 | 服务总线仅支持持久消息。 |
 | Priority | 不适用 | 服务总线仅支持单一消息优先级。 |
 | Ttl | Message.TimeToLive | 转换，Proton-PHP TTL 以毫秒为单位定义。 |
-| first\_acquirer | - | - | 
-| delivery\_count | - | - | 
-| Id | Message.Id | - | 
-| user\_id | - | - | 
-| Address | Message.To | - | 
-| Subject | Message.Label | - | 
-| reply\_to | Message.ReplyTo | - | 
-| correlation\_id | Message.CorrelationId | - | 
+| first\_acquirer | - | - |
+| delivery\_count | - | - |
+| Id | Message.Id | - |
+| user\_id | - | - |
+| Address | Message.To | - |
+| Subject | Message.Label | - |
+| reply\_to | Message.ReplyTo | - |
+| correlation\_id | Message.CorrelationId | - |
 | content\_type | Message.ContentType | - |
 | content\_encoding | 不适用 | - |
-| expiry\_time | Message.ExpiresAtUTC | - | 
+| expiry\_time | Message.ExpiresAtUTC | - |
 | creation\_time | 不适用 | - |
-| group\_id | Message.SessionId | - | 
-| group\_sequence | - | 
+| group\_id | Message.SessionId | - |
+| group\_sequence | - | - |
 | reply\_to\_group\_id | Message.ReplyToSessionId | - |
 | Format | 不适用 | - |
 
@@ -202,16 +201,16 @@ if ($message->properties != null)
 
 | 服务总线 .NET | Proton-PHP | 说明 |
 |-------------------------|--------------------------------------------------------|--------------------------------------------------------|
-| ContentType | Message->content\_type | - | 
-| CorrelationId | Message->correlation\_id | - | 
-| EnqueuedTimeUtc | Message->annotations[x-opt-enqueued-time] | - | 
-| Label | Message->subject | - | 
-| MessageId | Message->id | - | 
-| ReplyTo | Message->reply\_to | - | 
-| ReplyToSessionId | Message->reply\_to\_group\_id | - | 
-| ScheduledEnqueueTimeUtc | Message->annotations [“x-opt-scheduled-enqueue-time”] | - | 
-| SessionId | Message->group\_id | - | 
-| TimeToLive | Message->ttl | 转换，Proton-PHP TTL 以毫秒为单位定义。| 
+| ContentType | Message->content\_type | - |
+| CorrelationId | Message->correlation\_id | - |
+| EnqueuedTimeUtc | Message->annotations[x-opt-enqueued-time] | - |
+| Label | Message->subject | - |
+| MessageId | Message->id | - |
+| ReplyTo | Message->reply\_to | - |
+| ReplyToSessionId | Message->reply\_to\_group\_id | - |
+| ScheduledEnqueueTimeUtc | Message->annotations ["x-opt-scheduled-enqueue-time"] | - |
+| SessionId | Message->group\_id | - |
+| TimeToLive | Message->ttl | 转换，Proton-PHP TTL 以毫秒为单位定义。|
 | To | Message->address | - |
 
 ## 后续步骤
@@ -228,4 +227,4 @@ if ($message->properties != null)
 
 [服务总线 AMQP 概述]: /documentation/articles/service-bus-amqp-overview
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0321_2016-->

@@ -10,7 +10,7 @@
 <tags
 	ms.service="active-directory"
 
-	ms.date="12/14/2015"
+	ms.date="02/09/2016"
 	wacn.date=""/>
 
 #Azure Active Directory 的自助应用程序访问和委派管理
@@ -24,7 +24,7 @@
 * 设置用户是否需要经过审批才能够自我分配对应用程序的访问
 * 设置谁应该审批请求以及管理对每个应用程序的访问
 
-本文将介绍如何：
+现在，[Azure Active Directory 应用程序库](https://azure.microsoft.com/marketplace/active-directory/all/)中所有预先集成的应用程序，以及支持联合或基于密码的单一登录的自定义应用程序（包括 Salesforce、Dropbox、Google Apps 等应用程序）都支持此功能。本文将介绍如何：
 
 * 为最终用户配置自助应用程序访问，包括配置可选的审批工作流 
 * 将特定应用程序的访问管理权限委派给组织中最适当的人员，使他们能够使用 Azure AD 访问面板来审批访问请求，直接将访问权限分配给选定的用户，或者（可选）在配置基于密码的单一登录时设置用于访问应用程序的凭据
@@ -98,9 +98,12 @@
 
 * **用户使用我管理的单个帐户自动登录** - 这是一种特殊方案，适用于所有分配的用户有权使用单个共享帐户进行访问的情况。此选项的最常见用例就是社交媒体应用程序，其中，组织有单个“公司”帐户，多个用户需要对该帐户进行更新。这也相当于[管理员管理凭据](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)的密码 SSO 方案。不过，选择此选项后，系统将提示审批人输入单个共享帐户的用户名和密码。完成后，所有分配的用户在单击 Azure AD 访问面板或 Office 365 中的应用程序时，将使用此帐户登录。
 
+##其他资源
+- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+
 <!--Image references-->
 [1]: ./media/active-directory-self-service-application-access/ssaa_admin.PNG
 [2]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app.PNG
 [3]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app_config.PNG
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

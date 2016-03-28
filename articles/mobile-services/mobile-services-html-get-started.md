@@ -1,5 +1,5 @@
 <properties
-	pageTitle="适用于 HTML/JavaScript 应用的 Azure 移动服务入门 | Microsoft Azure"
+	pageTitle="适用于 HTML/JavaScript 应用的 Azure 移动服务入门 | Azure"
 	description="按照本教程进行操作，开始使用 Azure 移动服务进行 HTML 开发。"
 	services="mobile-services"
 	documentationCenter=""
@@ -22,7 +22,7 @@
 
 ##概述 
 
-本教程说明如何使用 Azure 移动服务向 HTML 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单*待办事项列表*应用程序。你可以观看本教程的以下视频版本。
+本教程说明如何使用 Azure 移动服务向 HTML 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单待办事项列表应用程序。你可以观看本教程的以下视频版本。
 
 > [AZURE.VIDEO mobile-get-started-html]
  
@@ -45,7 +45,7 @@
 	你可以使用任何 Web 服务器来托管应用程序，但是这些 Web 服务器必须受下载的脚本支持。
 
 + 支持 HTML5 的 Web 浏览器。
-+ 一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F"%20target="_blank)。 
++ 一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started-html%2F"%20target="_blank)。 
 
 
 ## <a name="create-new-service"></a>创建新的移动服务
@@ -79,7 +79,7 @@
 
   	![][9]
 
-	> [AZURE.IMPORTANT]如果将快速入门应用程序部署到除 localhost 以外的 Web 服务器，则必须将该 Web 服务器的主机名添加到“允许来自主机名的请求”列表。有关详细信息，请参阅[跨域资源共享](http://msdn.microsoft.com/zh-cn/library/windowsazure/dn155871.aspx"%20target="_blank)。
+	> [AZURE.IMPORTANT] 如果将快速入门应用程序部署到除 localhost 以外的 Web 服务器，则必须将该 Web 服务器的主机名添加到“允许来自主机名的请求”列表。有关详细信息，请参阅[跨域资源共享](http://msdn.microsoft.com/zh-cn/library/windowsazure/dn155871.aspx)。
 
 ## 托管和运行 HTML 应用程序
 
@@ -91,19 +91,19 @@
 	+ **launch-mac.command**（Mac OS X 计算机）
 	+ **launch-linux.sh**（Linux 计算机）
 
-	> [AZURE.NOTE]在 Windows 计算机上，当 PowerShell 要求你确认是否要运行脚本时，请键入 `R`。你的 Web 浏览器可能会警告你不要运行该脚本，因为它是从 Internet 下载的。如果出现此警告，你必须请求浏览器继续加载该脚本。
+	> [AZURE.NOTE] 在 Windows 计算机上，当 PowerShell 要求你确认是否要运行脚本时，请键入 `R`。你的 Web 浏览器可能会警告你不要运行该脚本，因为它是从 Internet 下载的。如果出现此警告，你必须请求浏览器继续加载该脚本。
 
 	随后将在本地计算机上启动用于托管新应用程序的 Web 服务器。
 
 2. 在 Web 浏览器中打开 URL <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> 以启动该应用程序。
 
-3. 在应用程序中的“输入新任务”中键入有意义的文本（例如 _Complete the tutorial_），然后单击“添加”。
+3. 在应用程序中的“输入新任务”中键入有意义的文本（例如 _完成教程_），然后单击“添加”。
 
    	![][10]
 
    	这样可向在 Azure 中托管的新移动服务发送 POST 请求。来自请求的数据被插入到 TodoItem 表。移动服务返回存储在表中的项，数据显示在应用的第二列中。
 
-	> [AZURE.NOTE]你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 page.js 文件中。
+	> [AZURE.NOTE] 你可以查看访问你的移动服务以查询和插入数据的代码，这些代码在 page.js 文件中。
 
 4. 返回 [Azure 经典门户]，单击“数据”选项卡，然后单击“TodoItems”表。
 
@@ -152,4 +152,4 @@
 [移动服务 HTML/JavaScript 操作方法概念性参考]: /zh-cn/documentation/articles/mobile-services-html-how-to-use-client-library
 [Cross-origin resource sharing]: http://msdn.microsoft.com/zh-cn/library/windowsazure/dn155871.aspx
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0321_2016-->

@@ -8,7 +8,7 @@
    editor="" />
 <tags 
    ms.service="event-hubs"
-   ms.date="10/07/2015"
+   ms.date="01/26/2016"
    wacn.date="" />
 
 # 事件中心可用性和支持常见问题
@@ -19,11 +19,11 @@
 
 ## 定价信息
 
-有关事件中心定价的信息，请参阅[事件中心定价详细信息](/pricing/details/event-hubs)。
+有关事件中心定价的完整信息，请参阅[事件中心定价详细信息](/pricing/details/event-hubs)。
 
 ## 事件中心入口事件是怎样计算的？
 
-发送到事件中心的每个事件都统计为一条可计费消息。*入口事件*定义为小于等于 64KB 的数据单位。任何小于等于 64KB 的事件均被视为一个计费事件。如果该事件大于 64KB，则根据事件大小按 64KB 的倍数来计算计费事件的数量。例如，发送到事件中心的 8 KB 事件按一个事件计费，而发送到事件中心的 96 KB 的消息则按两个事件计费。
+发送到事件中心的每个事件都统计为一条可计费消息。入口事件定义为小于等于 64KB 的数据单位。任何小于等于 64KB 的事件均被视为一个计费事件。如果该事件大于 64KB，则根据事件大小按 64KB 的倍数来计算计费事件的数量。例如，发送到事件中心的 8 KB 事件按一个事件计费，而发送到事件中心的 96 KB 的消息则按两个事件计费。
 
 从事件中心耗用的事件，以及管理操作和控制调用（例如检查点），不统计为计费入口事件，但会累计，上限为吞吐量单元限额。
 
@@ -73,7 +73,7 @@
 
 ## 事件中心基本和标准这两种服务层有什么不同？
 
-事件中心标准层提供的功能要超出事件中心基本层以及某些竞争对手系统的功能。这些功能包括：超过 24 小时的保留期，能够使用一个 AMQP 连接将命令发送到大量设备而延迟为次秒级，并且能够从那些设备将遥测发送到事件中心。请参考 [定价详细信息]（[事件中心定价详细信息](/pricing/details/event-hubs)）以了解功能列表。
+事件中心标准层提供的功能要超出事件中心基本层以及某些竞争对手系统的功能。这些功能包括：超过 24 小时的保留期，能够使用一个 AMQP 连接将命令发送到大量设备而延迟为次秒级，并且能够从那些设备将遥测发送到事件中心。有关功能列表，请参阅[事件中心定价详细信息](/home/features/event-hubs/#price)。
 
 ## 上市地区
 
@@ -99,7 +99,6 @@
 
 [事件中心概述]: /documentation/articles/event-hubs-overview
 [使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
-[队列消息解决方案]: /documentation/articles/cloud-services-dotnet-multi-tier-app-using-service-bus-queues.md
+[队列消息解决方案]: /documentation/articles/cloud-services-dotnet-multi-tier-app-using-service-bus-queues
  
-
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

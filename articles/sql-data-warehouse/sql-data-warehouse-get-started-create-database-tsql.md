@@ -10,13 +10,13 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="10/21/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # 使用 Transact-SQL (TSQL) 创建 SQL 数据仓库数据库
 
 > [AZURE.SELECTOR]
-- [Azure preview portal](sql-data-warehouse-get-started-provision.md)
+- [Azure 管理门户](sql-data-warehouse-get-started-provision.md)
 - [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
 - [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 
@@ -28,7 +28,7 @@
 
 - Azure 订阅。如果你需要 Azure 订阅，只需单击本页顶部的“免费试用”，然后再回来完成本文的相关操作即可。
 - Visual Studio。如需 Visual Studio 的免费副本，请参阅 [Visual Studio 下载](https://www.visualstudio.com/downloads/download-visual-studio-vs)页。
-- 一个 V12 逻辑服务器。你将需要使用 V12 SQL 服务器来创建 SQL 数据仓库。如果你没有 V12 逻辑 SQL 服务器，[Azure 预览门户教程][]说明了如何创建一个这样的服务器。
+- 一个 V12 逻辑服务器。你将需要使用 V12 SQL 服务器来创建 SQL 数据仓库。如果你没有 V12 逻辑 SQL 服务器，[Azure 管理门户教程][]说明了如何创建一个这样的服务器。
 
 ## 使用 Visual Studio 创建数据库
 
@@ -49,7 +49,7 @@ SERVICE\_OBJECTIVE 指示启动实例时使用的 DWU 数目，接受以下值�
 ## 后续步骤
 完成预配 SQL 数据仓库之后，你可以[加载示例数据][]或了解如何[开发][]、[加载][]，或[迁移][]数据。
 
-[Azure 预览门户教程]: ./sql-data-warehouse-get-started-provision.md
+[Azure 管理门户教程]: ./sql-data-warehouse-get-started-provision.md
 [连接和查询]: ./sql-data-warehouse-get-started-connect.md
 [迁移]: ./sql-data-warehouse-overview-migrate.md
 [开发]: ./sql-data-warehouse-overview-develop.md
@@ -57,4 +57,4 @@ SERVICE\_OBJECTIVE 指示启动实例时使用的 DWU 数目，接受以下值�
 [加载示例数据]: ./sql-data-warehouse-get-started-manually-load-samples.md
 [定价页]: /pricing/details/sql-data-warehouse/
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->

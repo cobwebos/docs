@@ -1,4 +1,4 @@
-下表列出了特定于服务总线消息的配额信息。此表包含事件中心限制，但有关事件中心的更多具体信息，请参阅[事件中心定价](http://azure.microsoft.com/pricing/details/event-hubs/)。有关服务总线的定价及其他配额的信息，请参阅[服务总线定价](http://azure.microsoft.com/pricing/details/service-bus/)概述。
+下表列出了特定于服务总线消息的配额信息。此表包含事件中心限制，但有关事件中心的更多具体信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。有关服务总线的定价及其他配额的信息，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)概述。
 
 |配额名称|范围|类型|超出时的行为|值|
 |---|---|---|---|---|
@@ -25,5 +25,4 @@
 |SQL 筛选器/操作的大小|系统范围|静态|系统将拒绝创建更多筛选器的后续请求，且调用代码将收到异常。|筛选器条件字符串的最大长度：1024 (1K)。<br /><br />规则操作字符串的最大长度：1024 (1K)。<br /><br />每个规则操作的最大表达式数：32。|
 
 [Azure 经典门户]: http://manage.windowsazure.cn
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0321_2016-->

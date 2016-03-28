@@ -1,5 +1,5 @@
 <properties
-   pageTitle="排除本地群集安装的故障"
+   pageTitle="对本地 Service Fabric 群集设置进行故障排除 | Microsoft Azure"
    description="本文就本地开发群集的故障介绍一些建议"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,12 +9,12 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="07/09/2015"
+   ms.date="01/08/2016"
    wacn.date=""/>
 
 # 排除本地开发群集安装的故障
 
-如果你在与本地开发群集交互时遇到问题，请查看以下建议以获得可能的解决方案。
+如果你在与本地 Azure Service Fabric 开发群集交互时遇到问题，请查看以下建议以获得可能的解决方案。
 
 ## 群集安装失败
 
@@ -33,19 +33,29 @@
 
 #### 解决方案
 
-关闭当前 Powershell 窗口，然后以管理员身份启动一个新的 Powershell 窗口。现在应能成功运行该脚本。
+关闭当前 PowerShell 窗口，然后以管理员身份打开一个新的 PowerShell 窗口。现在应能成功运行该脚本。
 
 ## 群集连接失败
+
+### Azure PowerShell 不能识别 Service Fabric PowerShell cmdlet
+
+#### 问题
+
+如果你尝试运行任何 Service Fabric PowerShell cmdlet（例如，在 Azure PowerShell 窗口中运行 `Connect-ServiceFabricCluster`），该操作将会失败，指出无法识别该 cmdlet。发生这种失败的原因是 Azure PowerShell 使用 32 位版本的 Windows PowerShell（即使在 64 位操作系统版本中），而 Service Fabric cmdlet 只能在 64 位环境中工作。
+
+#### 解决方案
+
+始终直接从 Windows PowerShell 运行 Service Fabric cmdlet。
 
 ### 类型初始化异常
 
 #### 问题
 
-当在 PowerShell 或 Service Fabric 资源管理器中连接到群集时，你看到了针对 System.Fabric.Common.AppTrac 的 TypeInitializationException 错误。
+当你在 PowerShell 中连接到群集时，你将看到针对 System.Fabric.Common.AppTrace 的 TypeInitializationException 错误。
 
 #### 解决方案
 
-在安装期间未正确设置路径变量。请注销 Windows 然后重新登录。这将完全刷新你的路径。
+在安装期间未正确设置路径变量。请从 Windows 注销并重新登录。这将完全刷新你的路径。
 
 ### 群集连接失败，并显示“对象已关闭”
 
@@ -62,13 +72,13 @@
 
 #### 解决方案
 
-关闭当前 Powershell 窗口，然后以管理员身份启动一个新的 Powershell 窗口。现在应能成功连接。
+关闭当前 PowerShell 窗口，然后以管理员身份打开一个新的 PowerShell 窗口。现在应能成功连接。
 
-### FabricConnectionDeniedException
+### 结构连接被拒绝异常
 
 #### 问题
 
-当从 Visual Studio 调试时，系统出现 FabricConnectionDeniedException 错误。
+从 Visual Studio 调试时，系统出现 FabricConnectionDeniedException 错误。
 
 #### 解决方案
 
@@ -82,4 +92,4 @@
 - [使用系统运行状况报告了解群集并排除故障](/documentation/articles/service-fabric-understand-and-troubleshoot-with-system-health-reports)
 - [使用 Service Fabric 资源管理器可视化群集](/documentation/articles/service-fabric-visualizing-your-cluster)
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0321_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="10/20/2015" 
+	ms.date="01/09/2016"
 	wacn.date=""/>
 
 # 移动服务的概念
@@ -79,11 +79,14 @@
 - [发送 HTTP 请求](https://msdn.microsoft.com/zh-cn/library/azure/jj631641.aspx) 
 - [为用户授权](https://msdn.microsoft.com/zh-cn/library/azure/jj631637.aspx) 
 - [限制管理员访问权限](https://msdn.microsoft.com/zh-cn/library/azure/jj712649.aspx) 
-- [错误处理。](https://msdn.microsoft.com/zh-cn/library/azure/jj631632.aspx) 
+- [错误处理](https://msdn.microsoft.com/zh-cn/library/azure/jj631632.aspx) 
 - [快捷键](https://msdn.microsoft.com/zh-cn/library/azure/jj552469.aspx) 
 
 
 
  
 
-<!---HONumber=Mooncake_0118_2016-->
+
+
+
+<!---HONumber=Mooncake_0321_2016-->

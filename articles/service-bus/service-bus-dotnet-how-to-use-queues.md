@@ -9,7 +9,7 @@
 
 <tags
     ms.service="service-bus"
-    ms.date="10/07/2015"
+    ms.date="01/26/2016"
     wacn.date=""/>
 
 # 如何使用 Service Bus 队列
@@ -22,13 +22,9 @@
 
 [AZURE.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
-## 配置应用程序以使用 Service Bus
-
-在您创建使用 Service Bus 的应用程序时，必须添加对 Service Bus 程序集的引用并包括相应的命名空间。
-
 ## 添加服务总线 NuGet 包
 
-服务总线 **NuGet** 包是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。利用 NuGet Visual Studio 扩展，可以轻松地在 Visual Studio 和 Visual Studio Express 中安装和更新库和工具。服务总线 NuGet 包是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。
+[服务总线 **NuGet** 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。利用 NuGet Visual Studio 扩展，可以轻松地在 Visual Studio 和 Visual Studio Express 中安装和更新库和工具。服务总线 NuGet 包是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。
 
 要在你的应用程序中安装 NuGet 包，请执行以下操作：
 
@@ -142,7 +138,7 @@ if (!namespaceManager.QueueExists("TestQueue"))
 }
 ```
 
-> [AZURE.NOTE]你可以对 [NamespaceManager][] 对象使用 [QueueExists](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.namespacemanager.queueexists.aspx) 方法，以检查具有指定名称的队列是否已存在于某个服务命名空间中。
+> [AZURE.NOTE] 你可以对 [NamespaceManager][] 对象使用 [QueueExists](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.namespacemanager.queueexists.aspx) 方法，以检查具有指定名称的队列是否已存在于某个服务命名空间中。
 
 ## 向队列发送消息
 
@@ -179,7 +175,7 @@ for (int i=0; i<5; i++)
 }
 ```
 
-服务总线队列支持[最大为 256 Kb 的消息](/documentation/articles/service-bus-quotas)（标头最大为 64 KB，其中包括标准和自定义应用程序属性）。一个队列可包含的消息数不受限制，但消息的总大小受限。此队列大小是在创建时定义的，上限为 5 GB。如果启用了分区，则上限更高。有关详细信息，请参阅[分区消息实体](/documentation/articles/service-bus-partitioning)。
+服务总线队列支持[最大为 256 Kb 的消息](/documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted/#capacity-and-quotas)（标头最大为 64 KB，其中包括标准和自定义应用程序属性）。一个队列可包含的消息数不受限制，但消息的总大小受限。此队列大小是在创建时定义的，上限为 5 GB。如果启用了分区，则上限更高。有关详细信息，请参阅[分区消息实体](/documentation/articles/service-bus-partitioning)。
 
 ## 如何从队列接收消息
 
@@ -254,5 +250,4 @@ Client.OnMessage((message) =>
   [BrokeredMessage]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
   [QueueClient]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queueclient.aspx
   [Complete]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0321_2016-->

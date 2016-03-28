@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="09/26/2015"
+   ms.date="01/07/2016"
    wacn.date=""/>
 
 # 管理 SQL 数据仓库中的统计信息
@@ -32,7 +32,7 @@
 ## 为何需要统计信息？
 如果没有正确的统计信息，你将无法获得 SQL 数据仓库预期提供的性能。表和列没有 SQL 数据仓库自动生成的统计信息，因此需要你自行创建。在创建表时创建统计信息，然后在填入统计信息后予以更新是个不错的主意。
 
-> [AZURE.NOTE]如果使用 SQL Server，你可以依赖 SQL Server 根据需要为你创建和更新单列统计信息。SQL 数据仓库在这方面有所不同。由于数据是分布式的，因此 SQL 数据仓库不会自动聚合所有分布式数据的统计信息。它只在创建和更新统计信息时生成聚合统计信息。
+> [AZURE.NOTE] 如果使用 SQL Server，你可以依赖 SQL Server 根据需要为你创建和更新单列统计信息。SQL 数据仓库在这方面有所不同。由于数据是分布式的，因此 SQL 数据仓库不会自动聚合所有分布式数据的统计信息。它只在创建和更新统计信息时生成聚合统计信息。
 
 ## 何时创建统计信息
 一组一致的最新统计信息是 SQL 数据仓库的重要部分。因此，请务必在设计表的过程中创建统计信息。
@@ -42,7 +42,7 @@
 仅当列位于复合 Join 或 Group By 子句中时，查询优化器才使用多列统计信息。复合筛选条件目前并不会受益于多列统计信息。
 
 开始进行 SQL 数据仓库开发时，实施以下模式是个不错的主意：
-- 对每个表上的每个列创建单列统计信息
+- 对每个表上的每个列创建单列统计信息 
 - 对 Join 和 Group By 子句中查询所用的列创建多列统计信息。
 
 在确定如何查询数据后，你可以修改此模型 - 尤其是在表的范围很广时。有关更高级的方法，请参阅 [实施统计信息管理](## 实施统计信息管理) 部分。
@@ -72,7 +72,7 @@
 - 考虑较不经常更新静态分布列。
 - 请记住，每个统计信息对象是连续更新的。仅实现 `UPDATE STATISTICS <TABLE_NAME>` 可能不太理想 - 尤其是对包含许多统计信息对象的宽型表而言。
 
-> [AZURE.NOTE]有关 [递增键] 的详细信息，请参阅 SQL Server 2014 基数估计模型白皮书。
+> [AZURE.NOTE] 有关 [递增键] 的详细信息，请参阅 SQL Server 2014 基数估计模型白皮书。
 
 有关更多说明，请参阅 MSDN 上的[基数估计][]。
 
@@ -132,7 +132,7 @@ CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH SAMPLE = 50 PERCENT;
 CREATE STATISTICS stats_col1 ON table1(col1) WHERE col1 > '2000101' AND col1 < '20001231';
 ```
 
-> [AZURE.NOTE]若要让查询优化器在选择分布式查询计划时考虑使用筛选的统计信息，查询必须符合统计信息对象的定义。使用上述示例，查询的 where 子句需要指定介于 2000101 和 20001231 之间的 col1 值。
+> [AZURE.NOTE] 若要让查询优化器在选择分布式查询计划时考虑使用筛选的统计信息，查询必须符合统计信息对象的定义。使用上述示例，查询的 where 子句需要指定介于 2000101 和 20001231 之间的 col1 值。
 
 ### E.使用所有选项创建单列统计信息
 
@@ -148,7 +148,7 @@ CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < 
 
 若要创建多列统计信息，只需使用上述示例，但要指定更多的列。
 
-> [AZURE.NOTE]用于估计查询结果中行数的直方图只适用于统计信息对象定义中所列的第一个列。
+> [AZURE.NOTE] 用于估计查询结果中行数的直方图只适用于统计信息对象定义中所列的第一个列。
 
 在此示例中，直方图位于 *product\_category*。跨列统计信息是根据 *product\_category* 和 *product\_sub\_category* 计算的：
 
@@ -312,7 +312,7 @@ UPDATE STATISTICS dbo.table1;
 
 此语句很容易使用。只要记住，这会更新表中的所有统计信息，因此执行的工作可能会超过所需的数量。如果性能不是一个考虑因素，这绝对是保证拥有最新统计信息的最简单、最全面的操作方式。
 
-> [AZURE.NOTE]更新表中的所有统计信息时，SQL 数据仓库将执行扫描，以针对每个统计信息进行表采样。如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
+> [AZURE.NOTE] 更新表中的所有统计信息时，SQL 数据仓库将执行扫描，以针对每个统计信息进行表采样。如果表很大、包含许多列和许多统计信息，则根据需要更新各项统计信息可能比较有效率。
 
 有关 `UPDATE STATISTICS` 过程的实现，请参阅[临时表]一文。实现方法与上述 `CREATE STATISTICS` 过程略有不同，但最终结果相同。
 
@@ -379,7 +379,7 @@ JOIN    sys.types           AS ty ON    co.[user_type_id]   = ty.[user_type_id]
 JOIN    sys.tables          AS tb ON  co.[object_id]        = tb.[object_id]
 JOIN    sys.schemas         AS sm ON  tb.[schema_id]        = sm.[schema_id]
 WHERE   1=1 
-AND     sts.[user_created] = 1
+AND     st.[user_created] = 1
 ;
 ```
 
@@ -457,4 +457,4 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 [sys.table\_types]: https://msdn.microsoft.com/library/bb510623.aspx
 [更新统计信息]: https://msdn.microsoft.com/library/ms187348.aspx
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0321_2016-->
