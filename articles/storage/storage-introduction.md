@@ -232,4 +232,4 @@ Azure 存储空间通过一个 [REST API](http://msdn.microsoft.com/zh-cn/librar
 - [如何通过 Python 使用队列存储](/documentation/articles/storage-python-how-to-use-queue-storage)
  
 
-<!---HONumber=Mooncake_0314_2016-->
+<!----HONumber=Mooncake_0314_2016-->

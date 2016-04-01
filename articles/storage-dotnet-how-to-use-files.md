@@ -262,4 +262,4 @@ Azure 文件存储目前发布了预览版。若要请求访问预览版，请�
 
 [files-concepts]: ./media/storage-dotnet-how-to-use-files/files-concepts.png
 
-<!---HONumber=41-->
+<!----HONumber=41-->

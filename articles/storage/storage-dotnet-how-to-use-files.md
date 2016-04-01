@@ -539,4 +539,4 @@ Azure 存储空间分析现在支持用于文件存储的指标。使用指标�
 - [Microsoft Azure 文件服务简介](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 - [将连接保存到 Microsoft Azure 文件中](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!----HONumber=Mooncake_0307_2016-->
