@@ -189,4 +189,4 @@ Azure 存储空间通过一个 [REST API](http://msdn.microsoft.com/library/wind
 - [如何通过 Python 使用 Blob 存储](../storage-python-how-to-use-blob-storage/)
 - [如何通过 Python 使用表存储](../storage-python-how-to-use-table-storage/)
 - [如何通过 Python 使用队列存储](../storage-python-how-to-use-queue-storage/)
-<!--HONumber=41-->
+<!---HONumber=41-->
