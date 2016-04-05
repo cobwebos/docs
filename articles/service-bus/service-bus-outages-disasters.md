@@ -51,7 +51,7 @@
 
 ## 保护队列和主题免受数据中心中断或灾难的影响
 
-为了在使用中转消息传送时实现针对数据中心中断的恢复，服务总线支持两种方法：*主动*和*被动*复制。对于每一种方法，如果必须在数据中心中断的情况下仍可访问给定的队列或主题，你可以将其创建在两个命名空间中。两个实体可以具有相同的名称。例如，可在 **contosoPrimary.servicebus.windows.net/myQueue** 下访问主要队列，而在 **contosoSecondary.servicebus.windows.net/myQueue** 下访问其辅助副本。
+为了在使用中转消息传送时实现针对数据中心中断的恢复，服务总线支持两种方法：主动和被动复制。对于每一种方法，如果必须在数据中心中断的情况下仍可访问给定的队列或主题，你可以将其创建在两个命名空间中。两个实体可以具有相同的名称。例如，可在 **contosoPrimary.servicebus.windows.net/myQueue** 下访问主要队列，而在 **contosoSecondary.servicebus.windows.net/myQueue** 下访问其辅助副本。
 
 如果应用程序不需要发送方到接收方的持续通信，则该应用程序可实施一个用于防止消息丢失的持久客户端队列，从而保护发送方免受任何暂时性服务总线故障的影响。
 
@@ -87,6 +87,8 @@
 
 当服务总线实体不可用时，持久客户端队列将保存消息顺序并保护客户端应用程序免受异常影响。可将它用于简单的分布式事务。
 
+> [AZURE.NOTE] 此示例在基础结构即服务 (IaaS) 方案中正常工作，在这些方案中，本地磁盘或 MSMQ 的磁盘映射到存储帐户，并且消息使用 MSMQ 可靠地存储。此示例不适合平台即服务 (PaaS) 方案，例如云服务和 Web 应用程序。
+
 ## 后续步骤
 
 若要了解有关灾难恢复的详细信息，请参阅这些文章：
@@ -105,4 +107,4 @@
   [Azure SQL 数据库业务连续性]: /documentation/articles//sql-database-business-continuity
   [Azure 业务连续性技术指南]: https://msdn.microsoft.com/library/azure/hh873027.aspx
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0328_2016-->

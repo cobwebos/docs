@@ -1,5 +1,5 @@
 <properties
-   pageTitle="发生用户错误后在 SQL 数据仓库中恢复数据库 | Microsoft Azure"
+   pageTitle="发生用户错误后在 SQL 数据仓库中恢复数据库 | Azure"
    description="发生用户错误后在 SQL 数据仓库中恢复数据库的步骤。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    wacn.date=""/>
 
 # 发生用户错误后在 SQL 数据仓库中恢复数据库
@@ -21,16 +21,18 @@ SQL 数据仓库提供两个核心功能，用于在发生导致意外数据损�
 
 使用这两项功能可以还原到同一服务器上的新数据库。
 
+有两种不同的 API 支持 SQL 数据仓库数据库还原：Azure PowerShell 和 REST API。可以使用其中任何一种方法访问 SQL 数据仓库还原功能。
+
 ## 恢复实时数据库
-当用户错误造成意外的数据修改时，你可以在保留期内将数据库还原到任一还原点。实时数据库的数据库快照每 8 小时创建一次，并会保留 7 天。
+当用户错误造成意外的数据修改时，你可以在保留期内将数据库还原到任一还原点。实时数据库的数据库快照至少每 8 小时创建一次，并会保留 7 天。
 
 ### PowerShell
 
-使用 Azure PowerShell 以编程方式执行数据库还原。若要下载 Azure PowerShell 模块，请运行 [Microsoft Web 平台安装程序](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)。
+使用 Azure PowerShell 以编程方式执行数据库还原。若要下载 Azure PowerShell 模块，请运行 [Microsoft Web 平台安装程序](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)。可以通过运行 Get-Module -ListAvailable -Name Azure 来检查你的版本。本文基于 Microsoft Azure PowerShell 版本 1.0.4。
 
 若要还原数据库，请使用 [Start-AzureSqlDatabaseRestore][] cmdlet。
 
-1. 打开 Microsoft Azure PowerShell。
+1. 打开 Windows PowerShell。
 2. 连接到你的 Azure 帐户，并列出与你的帐户关联的所有订阅。
 3. 选择包含要还原的数据库的订阅。
 4. 列出数据库的还原点（需要 Azure 资源管理模式）。
@@ -40,23 +42,26 @@ SQL 数据仓库提供两个核心功能，用于在发生导致意外数据损�
 
 ```
 
-Add-AzureAccount
-Get-AzureSubscription
-Select-AzureSubscription -SubscriptionName "<Subscription_name>"
+Login-AzureRmAccount
+Get-AzureRmSubscription
+Select-AzureRmSubscription -SubscriptionName "<Subscription_name>"
 
-# List database restore points
-Switch-AzureMode AzureResourceManager
-Get-AzureSqlDatabaseRestorePoints -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>" -ResourceGroupName "<YourResourceGroupName>"
+# List the last 10 database restore points
+((Get-AzureRMSqlDatabaseRestorePoints -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>" -ResourceGroupName "<YourResourceGroupName>").RestorePointCreationDate)[-10 .. -1]
+
+	# Or for all restore points
+	Get-AzureRmSqlDatabaseRestorePoints -ServerName "<YourServerName>" -DatabaseName "<YourDatabaseName>" -ResourceGroupName "<YourResourceGroupName>"
 
 # Pick desired restore point using RestorePointCreationDate
 $PointInTime = "<RestorePointCreationDate>"
 
-# Get the specific database to restore
-Switch-AzureMode AzureServiceManagement
-$Database = Get-AzureSqlDatabase -ServerName "<YourServerName>" –DatabaseName "<YourDatabaseName>"
+# Get the specific database name to restore
+(Get-AzureRmSqlDatabase -ServerName "<YourServerName>" -ResourceGroupName "<YourResourceGroupName>").DatabaseName | where {$_ -ne "master" }
+#or
+Get-AzureRmSqlDatabase -ServerName "<YourServerName>" –ResourceGroupName "<YourResourceGroupName>"
 
 # Restore database
-$RestoreRequest = Start-AzureSqlDatabaseRestore -SourceServerName "<YourServerName>" -SourceDatabase $Database -TargetDatabaseName "<NewDatabaseName>" -PointInTime $PointInTime
+$RestoreRequest = Start-AzureSqlDatabaseRestore -SourceServerName "<YourServerName>" -SourceDatabaseName "<YourDatabaseName>" -TargetDatabaseName "<NewDatabaseName>" -PointInTime $PointInTime
 
 # Monitor progress of restore operation
 Get-AzureSqlDatabaseOperation -ServerName "<YourServerName>" –OperationGuid $RestoreRequest.RequestID
@@ -132,4 +137,4 @@ Get-AzureSqlDatabaseOperation –ServerName "<YourServerName>" –OperationGuid 
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0328_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="使用 Azure PowerShell 和 Azure 资源管理器通过 Azure 来保护服务器 | Microsoft Azure"
-	description="在 Azure 中通过使用 PowerShell 和 Azure 资源管理器的 Azure Site Recovery 自动实现对服务器的保护。"
+	pageTitle="配合使用 Azure PowerShell 和 Azure Resource Manager 通过 Azure 来保护服务器 | Azure"
+	description="在 Azure 中通过使用 PowerShell 和 Azure Resource Manager 的 Azure Site Recovery 自动实现对服务器的保护。"
 	services="site-recovery"
 	documentationCenter=""
 	authors="bsiva"
@@ -9,10 +9,15 @@
 
 <tags
 	ms.service="site-recovery"
-	ms.date="12/09/2015"
-	wacn.date=""/>
+	ms.date="03/16/2016"
+	ms.author="bsiva"/>
 
-# 使用 PowerShell 和 Azure 资源管理器的 Azure Site Recovery。
+# 使用 PowerShell 和 Azure Resource Manager 在本地 Hyper-V 虚拟机与 Azure 之间复制。
+
+> [AZURE.SELECTOR]
+- [Azure 经典门户](/documentation/articles/site-recovery-hyper-v-site-to-azure)
+- [PowerShell - 资源管理器](/documentation/articles/site-recovery-deploy-with-powershell-resource-manager)
+
 
 
 ## 概述
@@ -25,10 +30,10 @@ Azure Site Recovery(ASR) PowerShell cmdlet 在 Azure PowerShell for ARM 中提�
 
 本文通过示例介绍如何使用 Windows PowerShell® 及 ARM 来部署 Azure Site Recovery，以便配置和安排对 Azure 的服务器保护。本文所用示例演示了如何通过联合使用Azure PowerShell 和 ARM 对 Hyper-V 主机上的虚拟机进行保护，以及如何将这些虚拟机故障转移和恢复到 Azure。
 
-> [AZURE.NOTE]Azure Site Recovery PowerShell cmdlet 目前允许你配置 VMM 站点到 VMM 站点方案、VMM 站点到 Azure 方案以及 Hyper-V 站点到 Azure 方案。很快会增加对其他 ASR 方案的支持。
+> [AZURE.NOTE] Azure Site Recovery PowerShell cmdlet 目前允许你配置 VMM 站点到 VMM 站点方案、VMM 站点到 Azure 方案以及 Hyper-V 站点到 Azure 方案。很快会增加对其他 ASR 方案的支持。
 
-你无需是一名 PowerShell 专家就可以使用本文章，但是本文假定你理解诸如模块、cmdlet 和会话等基本概念。有关 Windows PowerShell 的更多信息，请参阅 [Windows PowerShell 入门](http://technet.microsoft.com/zh-cn/library/hh857337.aspx)。
-- 了解有关[将 Azure PowerShell 和 Azure 资源管理器配合使用](/documentation/articles/powershell-azure-resource-manager)的更多信息。
+你无需是一名 PowerShell 专家就可以使用本文章，但是本文假定你理解诸如模块、cmdlet 和会话等基本概念。有关 Windows PowerShell 的详细信息，请参阅 [Windows PowerShell 入门](http://technet.microsoft.com/zh-cn/library/hh857337.aspx)。
+- 阅读有关[将 Azure PowerShell 与 Azure Resource Manager 配合使用](/documentation/articles/powershell-azure-resource-manager)的更多信息。
 
 
 ## 主要功能
@@ -40,7 +45,7 @@ Azure Site Recovery(ASR) PowerShell cmdlet 在 Azure PowerShell for ARM 中提�
 
 确保已满足以下先决条件：
 
-- 需要一个 [Microsoft Azure](http://www.windowsazure.cn/) 帐户。你可以从[免费试用版](/pricing/1rmb-trial/)开始。此外，你可以阅读 [Azure Site Recovery Manager 定价](/home/features/site-recovery/#price)。
+- 需要一个 [Microsoft Azure](https://azure.cn/) 帐户。你可以从[免费试用版](/pricing/1rmb-trial/)开始。此外，你可以阅读 [Azure Site Recovery Manager 定价](/home/features/site-recovery/#price)。
 - 你将需要 Azure PowerShell 1.0。有关此版本及其安装方法的信息，请参阅 [Azure PowerShell 1.0](/documentation/articles/powershell-install-configure)。
 - 你将需要安装 [AzureRM.SiteRecovery](https://www.powershellgallery.com/packages/AzureRM.SiteRecovery/) 和 [AzureRM.RecoveryServices](https://www.powershellgallery.com/packages/AzureRM.RecoveryServices/) 模块。你可以从 [PowerShell 库](https://www.powershellgallery.com/)获取这些模块的最新版本
 
@@ -84,7 +89,7 @@ Azure Site Recovery(ASR) PowerShell cmdlet 在 Azure PowerShell for ARM 中提�
 
 		Register-AzureRmProviderFeature -FeatureName betaAccess -ProviderNamespace Microsoft.RecoveryServices
 
-	>[AZURE.TIP]成功完成以上命令以后，可能需要长达一小时的时间才能启用对订阅中恢复服务提供程序的访问权限。尝试使用 `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices` 命令注册订阅中的恢复服务提供程序可能会中途失败。如果发生这种情况，请等待一个小时，然后重试。
+	>[AZURE.TIP] 成功完成以上命令以后，可能需要长达一小时的时间才能启用对订阅中恢复服务提供程序的访问权限。尝试使用 `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices` 命令注册订阅中的恢复服务提供程序可能会中途失败。如果发生这种情况，请等待一个小时，然后重试。
 
 	启用对订阅中恢复服务提供程序的访问权限以后，即可执行以下命令，以便注册订阅中的提供程序
 
@@ -110,7 +115,7 @@ Azure Site Recovery(ASR) PowerShell cmdlet 在 Azure PowerShell for ARM 中提�
 
 	你可以使用 `Get-AzureRmRecoveryServicesVault` cmdlet 检索现有保管库的列表。
 
-> [AZURE.NOTE]如果你希望在通过经典门户或 Azure 服务管理 PowerShell 模块创建的 ASR 保管库上执行操作，则可使用 `Get-AzureRmSiteRecoveryVault` cmdlet 检索此类保管库的列表。建议所有新操作都创建新的恢复服务保管库。你此前创建的 Site Recovery 保管库将继续受到支持，但不会有最新功能。
+> [AZURE.NOTE] 如果你希望在通过经典门户或 Azure 服务管理 PowerShell 模块创建的 ASR 保管库上执行操作，则可使用 `Get-AzureRmSiteRecoveryVault` cmdlet 检索此类保管库的列表。建议所有新操作都创建新的恢复服务保管库。你此前创建的 Site Recovery 保管库将继续受到支持，但不会有最新功能。
 
 ## 步骤 3：生成保管库注册密钥
 
@@ -161,7 +166,7 @@ Azure Site Recovery(ASR) PowerShell cmdlet 在 Azure PowerShell for ARM 中提�
 
 	检查返回的作业，确保复制策略创建成功。
 
-	>[AZURE.IMPORTANT]指定的存储帐户应与恢复服务保管库处于同一 Azure 区域，并且应已启用异地复制。
+	>[AZURE.IMPORTANT] 指定的存储帐户应与恢复服务保管库处于同一 Azure 区域，并且应已启用异地复制。
 	>
 	> - 如果指定的恢复存储帐户的类型为 Azure 存储空间（经典），则在对受保护计算机进行故障转移时，会将该计算机恢复为 Azure IaaS（经典）
 	> - 如果指定的恢复存储帐户的类型为 Azure 存储空间 (ARM)，则在对受保护计算机进行故障转移时，会将该计算机恢复为 Azure IaaS (ARM)
@@ -189,7 +194,7 @@ Azure Site Recovery(ASR) PowerShell cmdlet 在 Azure PowerShell for ARM 中提�
 		$Ostype = "Windows"                                 # "Windows" or "Linux"
 		$DRjob = Set-AzureRmSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity -Policy $Policy -Protection Enable -RecoveryAzureStorageAccountId $storageaccountID  -OS $OStype -OSDiskName $protectionEntity.Disks[0].Name
 
-	>[AZURE.IMPORTANT]指定的存储帐户应与恢复服务保管库处于同一 Azure 区域，并且应已启用异地复制。
+	>[AZURE.IMPORTANT] 指定的存储帐户应与恢复服务保管库处于同一 Azure 区域，并且应已启用异地复制。
 	>
 	> - 如果指定的恢复存储帐户的类型为 Azure 存储空间（经典），则在对受保护计算机进行故障转移时，会将该计算机恢复为 Azure IaaS（经典）
 	> - 如果指定的恢复存储帐户的类型为 Azure 存储空间 (ARM)，则在对受保护计算机进行故障转移时，会将该计算机恢复为 Azure IaaS (ARM)
@@ -258,4 +263,4 @@ Azure Site Recovery(ASR) PowerShell cmdlet 在 Azure PowerShell for ARM 中提�
 
     	$TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0328_2016-->

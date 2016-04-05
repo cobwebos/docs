@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Azure 诊断跟踪云服务应用程序中的流 | Microsoft Azure"
+	pageTitle="使用 Azure 诊断跟踪云服务应用程序中的流 | Azure"
 	description="将跟踪消息添加到 Azure 应用程序中，以协作进行调试、性能度量、监视、流量分析等。"
 	services="cloud-services"
 	documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="cloud-services"
-	ms.date="12/15/2015"
+	ms.date="02/20/2016"
 	wacn.date=""/>
 
 
@@ -31,7 +31,7 @@
 
 Trace、Debug 和 TraceSource 都要求你设置“侦听器”来收集和记录已发送的消息。侦听器将收集、存储和路由跟踪消息。它们会将跟踪输出传输到适当的目标，如日志、窗口或文本文件。Azure 诊断使用 [DiagnosticMonitorTraceListener](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitortracelistener.aspx) 类。
 
-完成以下过程之前，必须初始化 Azure 诊断监视器。若要执行此操作，请参阅[在 Microsoft Azure 中启用诊断](/documentation/articles/cloud-services-dotnet-diagnostics)。
+完成以下过程之前，必须初始化 Azure 诊断监视器。若要执行此操作，请参阅[在 Azure 中启用诊断](/documentation/articles/cloud-services-dotnet-diagnostics)。
 
 请注意，如果你使用的模板是 Visual Studio 提供的，则会自动为你添加侦听器的配置。
 
@@ -39,7 +39,7 @@ Trace、Debug 和 TraceSource 都要求你设置“侦听器”来收集和记�
 ### 添加跟踪侦听器
 
 1. 打开针对你的角色的 web.config 或 app.config 文件。
-2. 将以下代码添加到文件：
+2. 将以下代码添加到文件。更改 Version 属性，以使用你引用的程序集的版本号。除非有所更新，否则程序集的版本不一定随着每个 Azure SDK 发行版发生变化。
 
 	```
 	<system.diagnostics>
@@ -47,7 +47,7 @@ Trace、Debug 和 TraceSource 都要求你设置“侦听器”来收集和记�
 			<listeners>
 				<add type="Microsoft.WindowsAzure.Diagnostics.DiagnosticMonitorTraceListener,
 		          Microsoft.WindowsAzure.Diagnostics,
-		          Version=1.0.0.0,
+		          Version=2.8.0.0,
 		          Culture=neutral,
 		          PublicKeyToken=31bf3856ad364e35"
 		          name="AzureDiagnostics">
@@ -57,8 +57,8 @@ Trace、Debug 和 TraceSource 都要求你设置“侦听器”来收集和记�
 		</trace>
 	</system.diagnostics>
 	```
-	>[AZURE.IMPORTANT]确保与 Microsoft.WindowsAzure.Diagnostics 程序集建立项目引用。更新上述 xml 中的版本号，以便与引用的 Microsoft.WindowsAzure.Diagnostics 程序集的版本匹配。
-	
+	>[AZURE.IMPORTANT] 确保与 Microsoft.WindowsAzure.Diagnostics 程序集建立项目引用。更新上述 xml 中的版本号，以便与引用的 Microsoft.WindowsAzure.Diagnostics 程序集的版本匹配。
+
 3. 保存 config 文件。
 
 有关侦听器的详细信息，请参阅[跟踪侦听器](https://msdn.microsoft.com/zh-cn/library/4y5y10s7.aspx)。
@@ -76,4 +76,4 @@ Trace、Debug 和 TraceSource 都要求你设置“侦听器”来收集和记�
 3. 添加 Trace 语句，以便捕获有关应用程序状态的信息。可以使用多种方法来来格式化 Trace 语句的输出。有关详细信息，请参阅[如何：向应用程序代码添加 Trace 语句](https://msdn.microsoft.com/zh-cn/library/zd83saa2.aspx)。
 4. 保存源文件。
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0328_2016-->

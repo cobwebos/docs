@@ -9,8 +9,8 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="12/01/2015"
-	wacn.date=""/>
+	ms.date="02/23/2016"
+	wacn.date=""
 
 
 # 创建和导出 Azure SQL 数据库的 BACPAC
@@ -32,9 +32,9 @@ BACPAC 导出到 Azure 存储 blob 容器中，你可以在操作成功完成后
 
 若要完成本文，你需要以下各项：
 
-- Azure 订阅。如果你需要 Azure 订阅，只需单击本页顶部的“免费试用”，然后再回来完成本文的相关操作即可。
+- Azure 订阅。如果你需要 Azure 订阅，只需单击本页顶部的“免费帐户”，然后再回来完成本文的相关操作即可。
 - Azure SQL 数据库。如果你没有 SQL 数据库，请按照[创建你的第一个 Azure SQL 数据库](/documentation/articles/sql-database-get-started)文章中的步骤创建一个。
-- 具有 blob 容器的 [Azure 存储帐户](/documentation/articles/storage-create-storage-account)可存储 BACPAC。目前的存储帐户必须使用经典部署模型，因此在创建存储帐户时请选择“经典”。 
+- 具有 blob 容器的 [Azure 存储帐户](/documentation/articles/storage-create-storage-account)可存储 BACPAC。
 
 
 ## 导出数据库
@@ -100,4 +100,4 @@ BACPAC 导出到 Azure 存储 blob 容器中，你可以在操作成功完成后
 [4]: ./media/sql-database-export/export-status.png
 [5]: ./media/sql-database-export/bacpac-details.png
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0328_2016-->

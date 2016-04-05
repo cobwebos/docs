@@ -7,10 +7,7 @@
 	manager="dwrede"
 	editor=""/>
 
-<tags
-	ms.service="media-services"
-	ms.date="02/02/2016" 
-	wacn.date=""/>
+<tags ms.service="media-services" ms.date="03/18/2016"" wacn.date=""/>
 
 
 #使用 PlayReady 和/或 Widevine DRM 动态通用加密
@@ -35,6 +32,11 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 开发应用程序以传送受多个 DRM（例如 PlayReady 和 Widevine）保护的媒体的开发人员可以参考本主题。本主题介绍如何使用授权策略来配置 PlayReady 许可证传送服务，确保只有经过授权的客户端才能接收 PlayReady 或 Widevine 许可证。此外，还介绍如何通过 DASH 使用 PlayReady 或 Widevine DRM 进行动态加密。
 
 >[AZURE.NOTE]若要开始使用动态加密，你必须首先获取至少一个缩放单位（也称为流式处理单位）。有关详细信息，请参阅[如何缩放媒体服务](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
+
+
+##下载示例
+
+可以从[此处](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)下载本文所述的示例。
 
 ##配置动态通用加密和 DRM 许可证传送服务
 
@@ -305,45 +307,31 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 		        }
 		
 		
-		        static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
+		        static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset inputAsset)
 		        {
-		            // Declare a new job.
-		            IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-		            // Get a media processor reference, and pass to it the name of the 
-		            // processor to use for the specific task.
-		            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
+		            var encodingPreset = "H264 Adaptive Bitrate MP4 Set 720p";
 		
-		            // Create a task with the encoding details, using a string preset.
-		            // In this case "H264 Multiple Bitrate 720p" preset is used.
-		            ITask task = job.Tasks.AddNew("My encoding task",
-		                processor,
-		                "H264 Multiple Bitrate 720p",
-		                TaskOptions.None);
+		            IJob job = _context.Jobs.Create(String.Format("Encoding into Mp4 {0} to {1}",
+		                                    inputAsset.Name,
+		                                    encodingPreset));
 		
-		            // Specify the input asset to be encoded.
-		            task.InputAssets.Add(asset);
-		            // Add an output asset to contain the results of the job. 
-		            // This output is specified as AssetCreationOptions.None, which 
-		            // means the output asset is not encrypted. 
-		            task.OutputAssets.AddNew("Output asset",
-		                AssetCreationOptions.None);
+		            var mediaProcessors =
+		                _context.MediaProcessors.Where(p => p.Name.Contains("Media Encoder")).ToList();
+		
+		            var latestMediaProcessor =
+		                mediaProcessors.OrderBy(mp => new Version(mp.Version)).LastOrDefault();
+		
+		
+		
+		            ITask encodeTask = job.Tasks.AddNew("Encoding", latestMediaProcessor, encodingPreset, TaskOptions.None);
+		            encodeTask.InputAssets.Add(inputAsset);
+		            encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset), AssetCreationOptions.StorageEncrypted);
 		
 		            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
 		            job.Submit();
 		            job.GetExecutionProgressTask(CancellationToken.None).Wait();
 		
 		            return job.OutputMediaAssets[0];
-		        }
-		
-		        private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-		        {
-		            var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-		            ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-		
-		            if (processor == null)
-		                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-		
-		            return processor;
 		        }
 		
 		
@@ -372,14 +360,14 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 		            // and create authorization policy          
 		
 		            List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
-		                    {
-		                        new ContentKeyAuthorizationPolicyRestriction
-		                        {
-		                            Name = "Open",
-		                            KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
-		                            Requirements = null
-		                        }
-		                    };
+		            {
+		                new ContentKeyAuthorizationPolicyRestriction
+		                {
+		                    Name = "Open",
+		                    KeyRestrictionType = (int)ContentKeyRestrictionType.Open,
+		                    Requirements = null
+		                }
+		            };
 		
 		            // Configure PlayReady and Widevine license templates.
 		            string PlayReadyLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
@@ -392,8 +380,8 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 		                        restrictions, PlayReadyLicenseTemplate);
 		
 		            IContentKeyAuthorizationPolicyOption WidevinePolicy =
-		                _context.ContentKeyAuthorizationPolicyOptions.Create("",
-		                    ContentKeyDeliveryType.Widevine,
+		                _context.ContentKeyAuthorizationPolicyOptions.Create("", 
+		                    ContentKeyDeliveryType.Widevine, 
 		                    restrictions, WidevineLicenseTemplate);
 		
 		            IContentKeyAuthorizationPolicy contentKeyAuthorizationPolicy = _context.
@@ -414,14 +402,14 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 		            string tokenTemplateString = GenerateTokenRequirements();
 		
 		            List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
-		                    {
-		                        new ContentKeyAuthorizationPolicyRestriction
-		                        {
-		                            Name = "Token Authorization Policy",
-		                            KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
-		                            Requirements = tokenTemplateString,
-		                        }
-		                    };
+		            {
+		                new ContentKeyAuthorizationPolicyRestriction
+		                {
+		                    Name = "Token Authorization Policy",
+		                    KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
+		                    Requirements = tokenTemplateString,
+		                }
+		            };
 		
 		            // Configure PlayReady and Widevine license templates.
 		            string PlayReadyLicenseTemplate = ConfigurePlayReadyLicenseTemplate();
@@ -520,13 +508,13 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 		                allowed_track_types = AllowedTrackTypes.SD_HD,
 		                content_key_specs = new[]
 		                {
-		                            new ContentKeySpecs
-		                            {
-		                                required_output_protection = new RequiredOutputProtection { hdcp = Hdcp.HDCP_NONE},
-		                                security_level = 1,
-		                                track_type = "SD"
-		                            }
-		                        },
+		                    new ContentKeySpecs
+		                    {
+		                        required_output_protection = new RequiredOutputProtection { hdcp = Hdcp.HDCP_NONE},
+		                        security_level = 1,
+		                        track_type = "SD"
+		                    }
+		                },
 		                policy_overrides = new
 		                {
 		                    can_play = true,
@@ -541,13 +529,26 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 		
 		        static public void CreateAssetDeliveryPolicy(IAsset asset, IContentKey key)
 		        {
+		            // Get the PlayReady license service URL.
 		            Uri acquisitionUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.PlayReadyLicense);
-		            Uri widevineURl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.Widevine);
+			    
+			        // GetKeyDeliveryUrl for Widevine attaches the KID to the URL.
+			        // For example: https://amsaccount1.keydelivery.mediaservices.chinacloudapi.cn/Widevine/?KID=268a6dcb-18c8-4648-8c95-f46429e4927c.  
+			        // The WidevineBaseLicenseAcquisitionUrl (used below) also tells Dynamaic Encryption 
+			        // to append /? KID =< keyId > to the end of the url when creating the manifest.
+			        // As a result Widevine license aquisition URL will have KID appended twice, 
+			        // so we need to remove the KID that in the URL when we call GetKeyDeliveryUrl.
+			
+		            Uri widevineUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.Widevine);
+		            UriBuilder uriBuilder = new UriBuilder(widevineUrl);
+		            uriBuilder.Query = String.Empty;
+		            widevineUrl = uriBuilder.Uri;
+		
 		            Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
 		                new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
 		                {
-		                            {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
-		                            {AssetDeliveryPolicyConfigurationKey.WidevineLicenseAcquisitionUrl, widevineURl.ToString()},
+		                    {AssetDeliveryPolicyConfigurationKey.PlayReadyLicenseAcquisitionUrl, acquisitionUrl.ToString()},
+		                    {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl, widevineUrl.ToString()}
 		
 		                };
 		
@@ -562,7 +563,6 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 		            asset.DeliveryPolicies.Add(assetDeliveryPolicy);
 		
 		        }
-		
 		
 		        /// <summary>
 		        /// Gets the streaming origin locator.
@@ -580,7 +580,6 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 		                                         FirstOrDefault();
 		
 		            // Create a 30-day readonly access policy. 
-                	// You cannot create a streaming locator using an AccessPolicy that includes write or delete permissions.            
 		            IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
 		                TimeSpan.FromDays(30),
 		                AccessPermissions.Read);
@@ -628,4 +627,4 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 
 [特此宣布已在 Azure 媒体服务中推出 Google Widevine 许可证传送服务](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0328_2016-->

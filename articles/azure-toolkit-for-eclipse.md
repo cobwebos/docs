@@ -13,7 +13,7 @@
     ms.tgt_pltfrm="multiple"
     ms.devlang="Java"
     ms.topic="article"
-    ms.date="01/09/2016" 
+    ms.date="03/07/2016" 
     ms.author="robmcm"/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694271.aspx -->
@@ -28,46 +28,47 @@
 
 以下文章可帮助你着手使用 Azure Toolkit for Eclipse：
 
-* [Azure Toolkit for Eclipse 的新增功能][]
-* [安装 Azure Toolkit for Eclipse][]
-* [在 Eclipse 中为 Azure 创建 Hello World 应用程序][]
-* [在 Eclipse 中显示 Package for Azure Libraries for Java 的 Javadoc 内容][]
+* [Azure Toolkit for Eclipse 的新增功能]
+* [安装 Azure Toolkit for Eclipse]
+* [在 Eclipse 中为 Azure 创建 Hello World 应用程序]
+* [在 Eclipse 中创建 Azure 的 Hello World Web 应用]
+* [在 Eclipse 中显示 Package for Azure Libraries for Java 的 Javadoc 内容]
 
 ## 配置 Azure 项目设置 ##
 
 以下文章说明了如何使用 Azure Toolkit for Eclipse 来配置 Azure 项目的设置：
 
-* [Azure 项目属性][]
-* [Azure 角色属性][]
-* [Azure 服务终结点][]
-* [Azure 存储帐户列表][]
-* [启用会话相关性][]
-* [在 Eclipse 中为 Azure 部署启用远程访问][]
+* [Azure 项目属性]
+* [Azure 角色属性]
+* [Azure 服务终结点]
+* [Azure 存储帐户列表]
+* [启用会话相关性]
+* [在 Eclipse 中为 Azure 部署启用远程访问]
 
 ## 使用 Azure Toolkit for Eclipse ##
 
 以下文章演示了如何使用 Azure Toolkit for Eclipse 将 Azure 功能添加到 Java 项目：
 
-* [如何使用并置缓存][]
-* [如何使用专用缓存][]
-* [实施大型部署][]
-* [在 JSP 中使用 Azure 服务运行时库][]
-* [在 Eclipse 中调试 Azure 应用程序][]
-* [SSL 卸载][]
-* [如何使用 SSL 卸载][]
-* [如何使用会话相关性来维护会话数据][]
-* [如何使用 Eclipse 在 Azure Access Control 服务上对 Web 用户进行身份验证][]
-* [如何将 Azure 中的 JMS with AMQP 1.0 与 Eclipse 配合使用][]
+* [如何使用并置缓存]
+* [如何使用专用缓存]
+* [实施大型部署]
+* [在 JSP 中使用 Azure 服务运行时库]
+* [在 Eclipse 中调试 Azure 应用程序]
+* [SSL 卸载]
+* [如何使用 SSL 卸载]
+* [如何使用会话相关性来维护会话数据]
+* [如何使用 Eclipse 在 Azure Access Control 服务上对 Web 用户进行身份验证]
+* [如何将 Azure 中的 JMS with AMQP 1.0 与 Eclipse 配合使用]
 
 ## 另请参阅 ##
 
-[安装 Azure Toolkit for Eclipse][]
+[安装 Azure Toolkit for Eclipse]
 
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序][]
+[在 Eclipse 中为 Azure 创建 Hello World 应用程序]
 
-[Azure Toolkit for Eclipse 的新增功能][]
+[Azure Toolkit for Eclipse 的新增功能]
 
-有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心][]。
+有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]。
 
 <!-- URL List -->
 
@@ -77,6 +78,7 @@
 [Azure 服务终结点]: http://go.microsoft.com/fwlink/?LinkID=699526
 [Azure 存储帐户列表]: http://go.microsoft.com/fwlink/?LinkID=699528
 [在 Eclipse 中为 Azure 创建 Hello World 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699533
+[在 Eclipse 中创建 Azure 的 Hello World Web 应用]: /documentation/articles/create-a-hello-world-web-app-for-azure-in-eclipse
 [在 Eclipse 中调试 Azure 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699535
 [实施大型部署]: http://go.microsoft.com/fwlink/?LinkID=699536
 [在 Eclipse 中显示 Package for Azure Libraries for Java 的 Javadoc 内容]: http://go.microsoft.com/fwlink/?LinkID=699537
@@ -93,4 +95,4 @@
 [在 JSP 中使用 Azure 服务运行时库]: http://go.microsoft.com/fwlink/?LinkID=699551
 [Azure Toolkit for Eclipse 的新增功能]: http://go.microsoft.com/fwlink/?LinkID=699552
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0328_2016-->

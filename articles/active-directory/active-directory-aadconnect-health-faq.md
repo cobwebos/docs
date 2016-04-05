@@ -1,15 +1,15 @@
-<properties 
-	pageTitle="Azure AD Connect Health 常见问题" 
-	description="此常见问题回答了关于 Azure AD Connect Health 的问题。其中涵盖了服务使用方面的问题，包括计费模式、功能、限制和支持。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+<properties
+	pageTitle="Azure AD Connect Health 常见问题"
+	description="此常见问题回答了关于 Azure AD Connect Health 的问题。其中涵盖了服务使用方面的问题，包括计费模式、功能、限制和支持。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="10/15/2015"
+	ms.date="03/21/2016"
 	wacn.date=""/>
 
 
@@ -38,6 +38,7 @@
 - CPU 占用率：增加约 1%
 - 内存消耗：最多为系统总内存的 10%
 - 网络带宽使用量：约 1 MB/1000 ADFS 请求
+
 >[AZURE.NOTE]如果代理无法与 Azure 通信，则代理会按照定义的上限将数据存储在本地。当代理达到该限制时，如果仍无法将数据上载到服务，新的 ADFS 事务将会根据“最近向其提供的服务最少”这一标准覆盖任何“缓存”的事务。
 
 - AD Health 代理的本地缓存存储：约 20 MB
@@ -55,14 +56,12 @@
 
 **问：Azure AD Connect Health Services 是否通过直通型 http 代理进行工作？**
 
-是的。对于正在进行的操作，你可以将 Health 代理配置为使用 HTTP 代理转发出站 http 请求。有关详细信息，请参阅[将 Azure AD Connect Health 代理配置为使用 HTTP 代理](active-directory-aadconnect-health-agent-install-adfs.md#configure-azure-ad-connect-health-agent-to-use-http-proxy)。
+是的。对于正在进行的操作，你可以将 Health 代理配置为使用 HTTP 代理转发出站 http 请求。有关详细信息，请参阅[将 Azure AD Connect Health 代理配置为使用 HTTP 代理](active-directory-aadconnect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)。
 
 如果要在代理注册过程中配置代理，需要修改 Internet Explorer 代理设置。<br>
 打开“Internet Explorer -> 设置 -> Internet 选项 -> 连接 -> LAN 设置”。<br>
 选择“为 LAN 使用代理服务器”。<br>
 如果你有不同的针对 HTTP 和 HTTPS/Secure 的代理端口，则请选择“高级”。<br>
-
-
 
 
 **问：Azure AD Connect Health Services 在连接到 Http 代理时是否支持基本身份验证？**
@@ -71,15 +70,13 @@
 
 
 
-
-
 ## 操作问题
 
 
 
-**问：我是否需要对 AD FS 应用程序代理服务器或网站代理服务器启用审核？**
+**问：我是否需要对 AD FS 应用程序代理服务器或 Web 应用程序代理服务器启用审核？**
 
-否，不需要对 AD FS 应用程序代理服务器或网站代理服务器启用审核。只需对 AD FS 联合服务器启用审核。
+否，不需要对 AD FS 应用程序代理服务器或 Web 应用程序代理服务器启用审核。只需对 AD FS 联合服务器启用审核。
 
 
 
@@ -94,6 +91,12 @@
 
 需要打开 TCP/UDP 端口 80、443 和 5671，才能让 Azure AD Connect Health 代理与 Azure AD Health 服务终结点进行通信。
 
+
+**问：Azure AD Connect Health 门户中为何有两个同名的服务器？**
+
+当你从某个服务器中删除代理时，该服务器不会自动从 Azure AD Connect 门户中删除。因此，如果你手动从服务器中删除代理或删除服务器本身，需要从 Azure AD Connect Health 门户中手动删除该服务器条目。有关详细信息，请参阅[删除服务器或服务实例](/documentation/articles/active-directory-aadconnect-health-operations#delete-a-server-or-service-instance)。
+此外，如果你重建了服务器的映像或者创建了具有相同详细信息（如计算机名称）的新服务器，但没有从 Azure AD Connect Health 门户中删除原有服务器，而是在新服务器上安装了代理，则你现在将看到两个服务器条目。在这种情况下，你应手动删除属于原有服务器的条目。此条目中的数据通常已过时。
+
 ## 相关链接
 
 * [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health)
@@ -101,5 +104,6 @@
 * [Azure AD Connect Health 操作](/documentation/articles/active-directory-aadconnect-health-operations)
 * [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs)
 * [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync)
+* [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history)
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0328_2016-->

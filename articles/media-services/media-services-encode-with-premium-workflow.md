@@ -11,7 +11,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="02/03/2016" 
+	ms.date="02/25/2016" 
 	wacn.date=""/>
 
 #使用 Media Encoder Premium Workflow 进行高级编码
@@ -273,4 +273,4 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 [AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0328_2016-->

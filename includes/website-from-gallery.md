@@ -1,89 +1,93 @@
-库提供了由 Microsoft、第三方公司和开源软件计划开发的各种流行 Web 应用程序。除了用于连接 Azure 管理门户的浏览器，从库中创建的 Web 应用程序不要求安装其他任何软件。 
+<!-- not suitable for Mooncake -->
+
+Azure 库提供了由 Microsoft、第三方公司和开源软件计划开发的各种流行 Web 应用。从 Azure 库中创建的 Web 应用不要求安装任何软件，只需通过浏览器连接到 [Azure 预览门户](https://manage.windowsazure.cn/)即可。
 
 在本教程中，您将学习：
 
-- 如何通过库创建新网站。
+- 如何通过 Azure 库创建新的 Web 应用。
 
-- 如何通过 Azure 门户部署网站。
+- 如何通过 Azure 预览门户部署 Web 应用。
  
-您将构建一个使用默认模板的 WordPress 博客。下图展示了完整的应用程序：
+您将构建一个使用默认模板的 WordPress 博客。下图演示了完整的应用程序：
 
 
-![Wordpress blog][13]
+![Wordpress 博客][13]
 
-<div class="dev-callout"><strong>注意</strong>
-<p>要完成本教程，您需要一个 Azure 帐户。只需几分钟即可创建一个免费试用帐户。有关详细信息，请参阅<a href="http://www.windowsazure.cn/zh-cn/develop/php/tutorials/create-a-windows-azure-account/" target="_blank">创建 Azure 帐户</a>。</p>
-</div>
-<br />
+>[AZURE.NOTE] 如果想要在注册 Azure 帐户之前开始使用 Azure，请转到[试用 Azure Web 应用](https://tryappservice.azure.com/)，你可以在 Azure 中立即创建一个生存期较短的入门 Web 应用。你不需要使用信用卡，也不需要做出承诺。
 
-## 在门户中创建网站
+## 在门户中创建 Web 应用
 
-1. 登录到 [Azure 管理门户 ](http://manage.windowsazure.cn)。
+1. 登录到 Azure 预览门户。
 
-2. 单击仪表板左下角的**新建**图标。
+2. 可以通过单击“应用商店”图标，打开 Azure 库：
+
+    ![应用商店图标][marketplace]
+
+    或通过单击仪表板右上方的“新建”图标并选择列表底部的“应用商店”。
 	
-	![Create New][5]
-
-3. 单击**网站**图标，然后单击**从库中**。
+    ![新建][5]
 	
-	![Create From Gallery][6]
+3. 选择“Web + 移动”。搜索 **WordPress**，然后单击 **WordPress** 图标。
 
-4. 在列表中找到并单击 WordPress 图标，然后单击**下一步**。
+	![列表中的 WordPress][7]
 	
-	![WordPress from list][7]
+5. 阅读完 WordPress 应用的说明后，选择“创建”。
 
-5. 在**配置应用**页上，为所有字段输入或选择值：
+6. 单击“Web 应用”，并提供用于配置 Web 应用所需的值。
 	
-  - 输入选择的 URL 名称	
-  - 在**数据库**字段中使**新建 MySQL 数据库**保留选定状态
-  - 选择离您最近的区域
+    ![配置应用][8]
 
-	![configure your app][8]
+7. 单击“数据库”，并提供用于配置 MySQL 数据库所需的值。
 
-6. 然后单击**下一步**。
+    ![配置数据库][database]
 
-7. 在**创建新数据库**页上，您可以为新的 MySQL 数据库指定名称或者使用默认名称。选择离您最近的区域作为托管位置。选中屏幕底部的框以同意 ClearDB 针对托管 MySQL 数据库的使用条款。然后，单击复选框以完成网站创建。 
+8. 提供新资源组的名称。
+
+    ![设置资源组][groupname]
+
+8. 如有必要，单击“订阅”，并指定要使用的订阅。
+
+7. 完成定义 Web 应用后，请单击“创建”，并等待创建新的 Web 应用。
+
+   创建应用后，你将看到包含 Web 应用和数据库的资源组。
+
+   ![显示组][resourcegroup]
+
+## 启动和管理你的 WordPress Web 应用
 	
-	![create database][9]
+1. 单击新的 Web 应用以查看有关你的应用的详细信息。
 
-单击**完成**后，Azure 将启动构建和部署操作。在构建和部署网站的过程中，"网站"页的底部会显示这些操作的状态。执行所有操作后，网站成功部署时，将显示一条最终状态消息。
+    ![启动仪表板][10]
 
-## 启动和管理您的 WordPress 网站
+2. 在“基本功能”页上，单击“浏览”或 **Url** 下方的链接可打开 Web 应用的欢迎页面。
 
-1. 在**网站**页上单击您的新站点以打开该站点的仪表板。
+    ![网站 URL][browse]
 
-	![launch dashboard][10]
+3. 如果还未安装 WordPress，请输入 WordPress 所需的正确配置信息，然后单击“安装 WordPress”以完成配置并打开 Web 应用的登录页面。
 
-2. 在**仪表板**管理页上，向下滚动并在**站点 URL** 下单击左侧的链接以打开站点的"欢迎"页。
+4. 单击“登录”并输入你的凭据。
 
-	![site URL][11] 
+5. 你将拥有一个新的 WordPress Web 应用，它看起来类似以下 Web 应用。
 
-3. 输入 WordPress 所需的正确配置信息，然后单击**安装 WordPress** 以完成配置并打开网站的登录页。
-
-	![login to WordPress][12]
-
-4. 通过在**欢迎**页上输入指定的用户名和密码来登录到新的 WordPress 网站。
-
-5. 您将拥有一个新的 WordPress 网站，它看起来类似以下网站。  
-
-	![your WordPress site][13]
+	![你的 WordPress 网站][13]
 
 
 
 
 
 
-[5]: ./media/website-from-gallery/wordpressgallery-01.png
+[5]: ./media/website-from-gallery/start-marketplace.png
 [6]: ./media/website-from-gallery/wordpressgallery-02.png
-[7]: ./media/website-from-gallery/wordpressgallery-03.png
-[8]: ./media/website-from-gallery/wordpressgallery-04.png
+[7]: ./media/website-from-gallery/search-web-app.png
+[8]: ./media/website-from-gallery/set-web-app.png
 [9]: ./media/website-from-gallery/wordpressgallery-05.png
-[10]: ./media/website-from-gallery/wordpressgallery-06.png
-[11]: ./media/website-from-gallery/wordpressgallery-07.png
-[12]: ./media/website-from-gallery/wordpressgallery-08.png
+[10]: ./media/website-from-gallery/select-web.png
 [13]: ./media/website-from-gallery/wordpressgallery-09.png
+[webapps]: ./media/website-from-gallery/selectwebapps.png
+[database]: ./media/website-from-gallery/set-db.png
+[resourcegroup]: ./media/website-from-gallery/show-rg.png
+[browse]: ./media/website-from-gallery/browse-web.png
+[marketplace]: ./media/website-from-gallery/marketplace-icon.png
+[groupname]: ./media/website-from-gallery/set-rg.png
 
-
-
-
-
+<!---HONumber=Mooncake_0328_2016-->

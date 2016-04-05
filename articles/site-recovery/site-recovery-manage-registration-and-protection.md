@@ -1,6 +1,6 @@
 <properties
-	pageTitle="管理注册和保护" 
-	description="Azure Site Recovery 可以协调位于本地服务器中的虚拟机到 Azure 或辅助数据中心的复制、故障转移和恢复。参考本文从 Site Recovery 保管库中注销服务器，以及对虚拟机和物理服务器禁用保护。" 
+	pageTitle="删除服务器并禁用保护 | Azure" 
+	description="本文介绍如何从 Site Recovery 保管库中注销服务器，以及如何禁用虚拟机和物理服务器的保护。" 
 	services="site-recovery" 
 	documentationCenter="" 
 	authors="rayne-wiselman" 
@@ -9,12 +9,18 @@
 
 <tags 
 	ms.service="site-recovery" 
-	ms.date="10/07/2015" 
+	ms.date="02/22/2016" 
 	wacn.date=""/>
 
-# 管理注册和保护
+# 删除服务器并禁用保护
 
-本文说明如何从 Site Recovery 保管库中取消注册服务器，以及如何禁用 Site Recovery 保护的虚拟机保护。如果在阅读本文后有任何问题，请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上发布你的问题。
+Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略，因为它可以协调虚拟机和物理服务器的复制、故障转移和恢复。虚拟机可复制到 Azure 中，也可复制到本地数据中心中。如需快速概览，请阅读[什么是 Azure Site Recovery？](/documentation/articles/site-recovery-overview)
+
+## 概述
+
+本文说明如何从 Site Recovery 保管库中取消注册服务器，以及如何禁用 Site Recovery 保护的虚拟机保护。
+
+请将任何评论或问题发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=hypervrecovmgr)。
 
 ## 取消注册 VMM 服务器
 
@@ -181,7 +187,6 @@
 	    $replicationService = Get-WmiObject -Namespace "root\virtualization\v2"  -Query "Select * From Msvm_ReplicationService"  -computername $hostName
 	    $replicationService.RemoveReplicationRelationship($vm.__PATH)
 
-
 ### 手动清理保护设置（在 Hyper-V 站点与 Azure 之间）
 
 1. 在源 Hyper-V 主机服务器上，使用此脚本删除虚拟机的复制。将 SQLVM1 替换为你的虚拟机名称。
@@ -200,28 +205,15 @@
 1. 在云属性的“虚拟机”选项卡中选择虚拟机，然后选择“删除”。
 2. 在“删除虚拟机”中选择下列选项之一：
 
-	- 禁用保护(用于恢复深化和重设卷大小) — 如果您已经执行了以下操作，则将只能查看和启用此选项：
-		- 调整了虚拟机卷的大小 — 当您调整卷大小时，虚拟机将进入临界状态。如果发生这种情况请选择此选项。它将禁用保护，同时保留 Azure 中的恢复点。在重新启用对虚拟机的保护时，调整过大小的卷的数据将被传输到 Azure。
-		- 运行故障转移 — 在您已通过运行从本地 VMware 虚拟机或物理服务器故障转移到 Azure 以测试环境后，选择此选项以开始再次保护您的本地虚拟机。此选项会禁用每个虚拟机，然后您将需要重新启用对它们的保护。请注意：
+	- **禁用保护(用于恢复深化和重设卷大小)** — 如果您已经执行了以下操作，则将只能查看和启用此选项：
+		- **调整了虚拟机卷的大小** — 当您调整卷大小时，虚拟机将进入临界状态。如果发生这种情况请选择此选项。它将禁用保护，同时保留 Azure 中的恢复点。在重新启用对虚拟机的保护时，调整过大小的卷的数据将被传输到 Azure。
+		- **运行故障转移** — 在您已通过运行从本地 VMware 虚拟机或物理服务器故障转移到 Azure 以测试环境后，选择此选项以开始再次保护您的本地虚拟机。此选项会禁用每个虚拟机，然后您将需要重新启用对它们的保护。请注意：
 			- 禁用虚拟机的此项设置不会影响 Azure 中的副本虚拟机。
 			- 您不能从虚拟机卸载移动服务。
 	
-	- 禁用保护 — 如果您启用并保存此选项，虚拟机将不再受 Site Recovery 的保护。系统将自动清理虚拟机的保护设置。
-	- 从保管库删除 — 如果您选择此选项，将只从 Site Recovery 保管库中删除虚拟机。不会影响虚拟机的本地保护设置。若要删除计算机上的设置以及从 Azure 订阅中删除虚拟机，您需要通过卸载移动服务来清理设置。![删除选项](./media/site-recovery-manage-registration-and-protection/RegistrationProtection_RemoveVM.png)
+	- **禁用保护** — 如果您启用并保存此选项，虚拟机将不再受 Site Recovery 的保护。系统将自动清理虚拟机的保护设置。
+	- **从保管库删除** — 如果您选择此选项，将只从 Site Recovery 保管库中删除虚拟机。不会影响虚拟机的本地保护设置。若要删除计算机上的设置并从 Azure 订阅中删除虚拟机，则需要通过卸载移动服务来清理设置。
+	
+		![删除选项](./media/site-recovery-manage-registration-and-protection/remove-vm.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0328_2016-->

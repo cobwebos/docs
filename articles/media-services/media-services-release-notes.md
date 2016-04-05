@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="02/11/2016"
+ 	ms.date="03/01/2016"
 	wacn.date=""/>
 
 
@@ -21,6 +21,7 @@
 
 - [当前已知的问题](#issues)
 - [REST API 版本历史记录](#rest_version_history)
+- [2016 年 2 月版本](#feb_changes16)
 - [2016 年 1 月版本](#jan_changes_16)
 - [2015 年 12 月版本](#dec_changes_15)
 - [2015 年 11 月版本](#nov_changes_15)
@@ -75,6 +76,16 @@ SDK 中的媒体服务对象无法进行序列化，因此无法与 Azure Cachin
 
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
 
+##<a id="feb_changes16"></a>2016 年 2 月版本
+
+适用于 .NET 的 Azure 媒体服务 SDK 最新版本 (3.5.3) 包含 Widevine 相关的 bug 修复程序。该问题是：无法对 Widevine 加密的多个资产重复使用 AssetDeliveryPolicy。为了修复此 bug，SDK 中添加了以下属性：  **WidevineBaseLicenseAcquisitionUrl**。
+	
+	Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+	    new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+	{
+	    {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
+	    
+	};
 
 ##<a id="jan_changes_16"></a>2016 年 1 月版本
 
@@ -205,7 +216,8 @@ Azure 媒体服务 .NET SDK 当前版本为 3.2.0.0。
 
 ### 媒体服务一般更新
 
-- 媒体服务现在提供 Azure CDN 集成。为了支持集成，将 **CdnEnabled** 属性添加到了 **StreamingEndpoint**。**CdnEnabled** 可用于版本 2.9 以上的 REST API（有关详细信息，请参阅 [StreamingEndpoint](https://msdn.microsoft.com/zh-cn/library/azure/dn783468.aspx)）。**CdnEnabled** 可用于版本 3.1.0.2 以上的 NET SDK（有关详细信息，请参阅 [StreamingEndpoint](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint/(v=azure.10/).aspx))。
+- 媒体服务现在提供 Azure CDN 集成。为了支持集成，将 **CdnEnabled** 属性添加到了 **StreamingEndpoint**。**CdnEnabled** 可用于版本 2.9 以上的 REST API（有关详细信息，请参阅 [StreamingEndpoint](https://msdn.microsoft.com/zh-cn/library/azure/dn783468.aspx)）。**CdnEnabled** 可用于版本 3.1.0.2 以上的 NET SDK（有关详细信息，请参阅 [StreamingEndpoint](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mediaservices.client.istreamingendpoint(v=azure.10).aspx))。
+- 宣布推出**媒体编码器高级版工作流**。有关详细信息，请参阅[在 Azure 媒体服务中引入高级版编码](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)。
  
 
 
@@ -631,4 +643,4 @@ Azure 媒体服务 .NET SDK 扩展是一组扩展方法和帮助器函数，可�
 [处理媒体服务作业通知]: /documentation/articles/media-services-check-job-progress#check_progress_with_queues
  
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0328_2016-->

@@ -1,6 +1,3 @@
-<!-- not suitable for Mooncake -->
-<!-- ? -->
-
 <properties 
 	pageTitle="如何为 Web 应用配置 TLS 相互身份验证" 
 	description="了解如何将 Web 应用配置为使用 TLS 客户端证书身份验证。" 
@@ -12,37 +9,41 @@
 
 <tags
 	ms.service="app-service"
-	ms.date="12/17/2015"
-	wacn.date=""/>
+	ms.date="02/27/2016"
+	wacn.date=""/>	
 
 # 如何为 Web 应用配置 TLS 相互身份验证
 
 ## 概述 ##
 通过为 Azure Web 应用启用不同类型的身份验证可以限制对网站的访问。执行此操作的方法之一是在通过 TLS/SSL 发送请求时使用客户端证书进行身份验证。此机制称为 TLS 相互身份验证或客户端证书身份验证，本文将详细说明如何将 Web 应用设置为使用客户端证书身份验证。
 
+> **注意：**如果你通过 HTTP 而不是 HTTPS 访问你的站点，你将不会收到任何客户端证书。因此，如果应用程序需要客户端证书，则你不应允许通过 HTTP 对应用程序发出请求。
+
 ## 将 Web 应用配置为使用客户端证书身份验证 ##
 若要将 Web 应用设置为要求使用客户端证书，你需要为 Web 应用添加 clientCertEnabled 站点设置并将该设置指定为 true。目前无法通过门户中的管理体验进行此设置，你需要使用 REST API 来实现此目的。
 
 你可以使用 [ARMClient 工具](https://github.com/projectkudu/ARMClient)轻松创建 REST API 调用。使用该工具登录之后，需要发出以下命令：
 
+>[AZURE.NOTE] 使用 `ARMClient.exe login [environment name]` 登录时，`[environment name]` 应为 `MOONCAKE`。换而言之，用于登录 Azure 中国区的命令为 `ARMClient.exe login MOONCAKE`。
+
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
     
 将 {} 中的所有内容替换为 Web 应用的信息，并创建包含以下 JSON 内容的 enableclientcert.json 文件：
 
-> {
->   "location": "My Web App Location",   
->   "properties": 
->   {  
->     "clientCertEnabled": true
->   }
-> }  
+	{
+		"location": "My Web App Location",   
+		"properties": 
+		{  
+			"clientCertEnabled": true
+		}
+	}  
 
 
 确保将“location”的值更改为 Web 应用所在的位置，例如 China North 或 China East。
 
 
 ## 从 Web 应用访问客户端证书 ##
-将 Web 应用配置为使用客户端证书身份验证后，可以通过“X-ARR-ClientCert”请求标头中的 base64 编码值在应用中使用客户端证书。应用程序可以基于此值创建证书，然后将它用于应用程序中的身份验证和授权。
+如果你要使用 ASP.NET 并将应用程序配置为使用客户端证书身份验证，可通过 **HttpRequest.ClientCertificate** 属性使用证书。对于其他应用程序堆栈，可以通过“X-ARR-ClientCert”请求标头中的 base64 编码值在应用中使用客户端证书。应用程序可以基于此值创建证书，然后将它用于应用程序中的身份验证和授权。
 
 ## 有关证书验证的特殊注意事项 ##
 Azure Web Apps 平台不会针对发送到应用程序的客户端证书进行任何验证。验证此证书是 Web 应用的责任。下面是为了进行身份验证而验证证书属性的示例 ASP.NET 代码。
@@ -124,7 +125,7 @@ Azure Web Apps 平台不会针对发送到应用程序的客户端证书进行�
                 if (certificate == null || !String.IsNullOrEmpty(errorString)) return false;
                 
                 // 1. Check time validity of certificate
-                if (DateTime.Compare(DateTime.Now, certificate.NotBefore) < 0 && DateTime.Compare(DateTime.Now, certificate.NotAfter) > 0) return false;
+                if (DateTime.Compare(DateTime.Now, certificate.NotBefore) < 0 || DateTime.Compare(DateTime.Now, certificate.NotAfter) > 0) return false;
                 
                 // 2. Check subject name of certificate
                 bool foundSubject = false;
@@ -181,5 +182,4 @@ Azure Web Apps 平台不会针对发送到应用程序的客户端证书进行�
             }
         }
     }
-
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0328_2016-->

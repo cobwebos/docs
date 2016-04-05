@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="如何使用 Azure Media Encoder 对资产进行编码" 
-	description="了解如何使用 Azure Media Encoder 为媒体服务上的媒体内容编码。代码示例使用 REST API。" 
+	pageTitle="如何使用媒体编码器标准版对资产进行编码" 
+	description="了解如何使用媒体编码器标准版为媒体服务上的媒体内容编码。代码示例使用 REST API。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="01/28/2016" 
+	ms.date="03/01/2016" 
 	wacn.date=""/>
 
 
-#如何使用 Azure Media Encoder 对资产进行编码
+#如何使用媒体编码器标准版对资产进行编码
 
 
 > [AZURE.SELECTOR]
@@ -24,8 +24,7 @@
 ##概述
 要通过 Internet 传送数字视频，你必须对媒体进行压缩。数字视频文件相当大，可能因过大而无法通过 Internet 传送或者无法在你客户的设备上正常显示。编码是压缩视频和音频以便你的客户能够查看媒体的过程。
 
-编码作业是媒体服务中最常见的处理操作之一。可通过创建编码作业将媒体文件从一种编码转换为另一种编码。进行编码时，可以使用媒体服务内置的 Media Encoder。你也可以使用媒体服务合作伙伴提供的编码器；可通过 Azure 应用商店获取第三方编码器。可以使用为编码器定义的预设字符串或预设配置文件来指定编码任务的详细信息。若要查看可用预设的类型，请参阅 [Azure 媒体服务的任务预设](https://msdn.microsoft.com/zh-cn/library/azure/dn619392.aspx)。如果你使用了第三方编码器，则应[验证你的文件](https://msdn.microsoft.com/zh-cn/library/azure/dn750842.aspx)。
-
+编码作业是媒体服务中最常见的处理操作之一。可通过创建编码作业将媒体文件从一种编码转换为另一种编码。编码时，可以使用媒体服务的内置编码器（媒体编码器标准版）。你也可以使用媒体服务合作伙伴提供的编码器；可通过 Azure 应用商店获取第三方编码器。可以使用为编码器定义的预设字符串或预设配置文件来指定编码任务的详细信息。若要查看可用预设的类型，请参阅[媒体编码器标准版的任务预设](http://msdn.microsoft.com/zh-cn/library/mt269960)。
 
 每个作业可以有一个或多个任务，具体因要完成的处理类型而异。REST API 允许你通过以下两种方式之一创建作业及相关任务：
 
@@ -47,9 +46,10 @@
 >访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use)。
 
 >在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。必须按[使用 REST API 连接到媒体服务](/documentation/articles/media-services-rest-connect_programmatically)中所述对新的 URI 执行后续调用。
+>
+>使用 JSON 并指定在请求中使用 **\_\_metadata** 关键字（例如，为了引用某个链接对象）时，必须将 Accept 标头设置为 [JSON 详细格式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)：Accept: application/json;odata=verbose。
 
-
-以下示例说明了如何使用一个任务集来创建和发布一个作业，从而以特定分辨率和质量来编码某个视频。使用 Azure 媒体编码器编码时，可以使用[此处](https://msdn.microsoft.com/zh-cn/library/azure/dn619389.aspx)指定的任务配置预设。
+以下示例说明了如何使用一个任务集来创建和发布一个作业，从而以特定分辨率和质量来编码某个视频。使用媒体编码器标准版编码时，可以使用[此处](http://msdn.microsoft.com/zh-cn/library/mt269960)指定的任务配置预设。
 	
 请求：
 
@@ -93,7 +93,7 @@
 
 ##创建包含连锁任务的作业
 
-在许多应用程序方案中，开发人员希望创建一系列处理任务。在媒体服务中，可以创建一系列连锁任务。每个任务执行不同的处理步骤，并且可以使用不同的媒体处理器。连锁任务可以将资产从一个任务转给另一个任务，从而对资产执行线性序列的任务。但是，在作业中执行的任务不需要处于序列中。创建连锁任务时，连锁 **ITask**对象在单个 **IJob** 对象中创建。
+在许多应用程序方案中，开发人员希望创建一系列处理任务。在媒体服务中，可以创建一系列连锁任务。每个任务执行不同的处理步骤，并且可以使用不同的媒体处理器。连锁任务可以将资产从一个任务转给另一个任务，从而对资产执行线性序列的任务。但是，在作业中执行的任务不需要处于序列中。创建连锁任务时，连锁 **ITask** 对象在单个 **IJob** 对象中创建。
 
 >[AZURE.NOTE] 每个作业当前有 30 个任务的限制。如果需要链接超过 30 个的任务，请创建多个作业以包含任务。
 
@@ -205,7 +205,7 @@
 
 使用一组常用任务处理多个资产时，JobTemplate 可用于指定默认任务预设、任务顺序等。
 
-以下示例演示如何使用以内联方式定义的 TaskTemplate 创建 JobTemplate。TaskTemplate 将 Azure 媒体编码器用作 MediaProcessor 来编码资产文件；但是，也可使用其他 Mediaprocessor。
+以下示例演示如何使用以内联方式定义的 TaskTemplate 创建 JobTemplate。TaskTemplate 将媒体编码器标准版用作 MediaProcessor 来编码资产文件；但是，也可使用其他 Mediaprocessor。
 
 
 	POST https://media.chinacloudapi.cn/API/JobTemplates HTTP/1.1
@@ -263,4 +263,4 @@
 ##另请参阅
 
 [获取媒体处理器](/documentation/articles/media-services-rest-get-media-processor)
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0328_2016-->

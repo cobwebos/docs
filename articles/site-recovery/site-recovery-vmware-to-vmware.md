@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="设置本地 VMware 站点之间的保护" 
-	description="参考本文使用 Azure Site Recovery 来配置两个 VMware 站点之间的保护。" 
+	pageTitle="将本地 VMware 虚拟机或物理服务器复制到辅助站点 | Azure"
+	description="按照本文可使用 Azure Site Recovery 将 VMware VM 或 Windows/Linux 物理服务器复制到辅助站点。"
 	services="site-recovery" 
 	documentationCenter="" 
 	authors="rayne-wiselman" 
@@ -9,21 +9,21 @@
 
 <tags 
 	ms.service="site-recovery" 
-	ms.date="12/03/2015"
+	ms.date="02/16/2016"
 	wacn.date=""/>
 
 
-# 设置本地 VMware 站点之间的保护
+# 将本地 VMware 虚拟机或物理服务器复制到辅助站点
 
 
-##概述
+## 概述
 
 Azure Site Recovery 中的 InMage Scout 在本地 VMware 站点之间提供实时复制。InMage Scout 已随附在 Azure Site Recovery 服务订阅中。
 
 
 ## 先决条件
 
-- **Azure 帐户** — 你需要一个 [Microsoft Azure](http://www.windowsazure.cn/) 帐户。你可以从[试用版](/pricing/1rmb-trial)开始。
+- **Azure 帐户** — 你需要一个 [Microsoft Azure](https://azure.cn/) 帐户。可以从[试用版](/pricing/1rmb-trial)开始。[详细了解](/home/features/site-recovery/) Site Recovery 定价。
 
 
 ## 步骤 1：创建保管库
@@ -32,7 +32,7 @@ Azure Site Recovery 中的 InMage Scout 在本地 VMware 站点之间提供实�
 2. 单击“数据服务”>“恢复服务”>“Site Recovery 保管库”。
 3. 单击“新建”>“快速创建”。
 4. 在“名称”中，输入一个友好名称以标识此保管库。
-5. 在“区域”中，为保管库选择地理区域。若要查看受支持的区域，请参阅 [Azure Site Recovery 价格详细信息](/home/features/site-recovery/#price)中的“地域可用性”。
+5. 在“区域”中，为保管库选择地理区域。若要查看受支持的区域，请参阅 Azure Site Recovery 价格详细信息中的“地域可用性”[](/home/features/site-recovery/#price)。
 
 检查状态栏以确认保管库已成功创建。保管库将以“活动”形式列在主要的“恢复服务”页上。
 
@@ -85,7 +85,7 @@ Azure Site Recovery 中的 InMage Scout 在本地 VMware 站点之间提供实�
 
 ### ASR Scout 8.0.1 Update 03Dec15
 
-Update 03-Dec-15 中的修复包括：
+更新 03-Dec-15 中的修复包括：
 
 - **配置服务器** — 修复了在 Site Recovery 中注册配置服务器时妨碍 31 天免费计量功能正常使用的问题。
 - **统一代理** — 修复了主目标的 Update 1 中的问题，该问题导致从版本 8.0 升级到 8.0.1 时，更新无法安装在主目标服务器上。
@@ -121,9 +121,9 @@ Update 03-Dec-15 中的修复包括：
 	-  在 vContinuum 向导中保护 MSCS 虚拟机期间，单击磁盘视图中的“详细信息”会自动取消选择磁盘。
 	- 在执行 P2V 方案期间，所需的 HP 服务（例如 CIMnotify、CqMgHost）不会在恢复虚拟机中变为“手动”，因而导致引导时间延长。
 	- 当主目标服务器上的磁盘数超过 26 个时，受保护的 Linux 虚拟机发生故障。
-	
+
 ## 后续步骤
 
 请在 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/zh-cn/home?forum=hypervrecovmgr)上发布你的任何问题。
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0328_2016-->

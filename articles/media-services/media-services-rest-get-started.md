@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="01/28/2016" 
+ 	ms.date="03/01/2016" 
 	wacn.date=""/>
 
 #开始使用 REST API 按需传送内容
@@ -77,12 +77,9 @@
 以下步骤描述了在使用媒体服务 REST API 连接到媒体服务时运用的最常见工作流：
 
 1. 获取访问令牌。 
-2. 连接到媒体服务 URI。 
-	
-	>[AZURE.NOTE]
-	在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。你必须对这个新 URI 进行后续调用。
-	> 
-	> 你还可能会收到包含 ODATA API 元数据说明的 HTTP/1.1 200 响应。
+2. 连接到媒体服务 URI。  
+
+	请记住，在成功连接到 https://media.chinacloudapi.cn 之后， 你将接收到指定另一个媒体服务 URI 的 301 重定向。你必须对这个新 URI 进行后续调用。你还可能会收到包含 ODATA API 元数据说明的 HTTP/1.1 200 响应。
 3. 将后续 API 调用发布到新的 URL。 
 	
 	例如，如果在尝试连接后收到以下消息：
@@ -153,9 +150,9 @@
 
 媒体服务的根 URI 为 https://media.chinacloudapi.cn/。 你最初应连接到此 URI，如果在响应中收到“301 重定向”，则应随后调用新 URI。此外，请勿在请求中使用任何自动重定向/跟踪逻辑。HTTP 谓词和请求正文将不会转发到新 URI。
 
-请注意，用于上载和下载资产文件的根 URI 为 https://yourstorageaccount.blob.core.chinacloudapi.cn/ ，其中的存储帐户名为你在媒体服务帐户设置期间使用的同一帐户名。
+请注意，用于上载和下载资产文件的根 URI 为 https://yourstorageaccount.blob.core.chinacloudapi.cn/， 其中的存储帐户名为你在媒体服务帐户设置期间使用的同一帐户名。
 
-以下示例演示了对媒体服务根 URI 发出的 HTTP 请求 (https://media.chinacloudapi.cn/) 。该请求将在响应中获取 301 重定向。后续请求使用新的 URI (https://wamsbayclus001rest-hs.chinacloudapp.cn/api/) 。
+以下示例演示了对媒体服务根 URI 发出的 HTTP 请求 (https://media.chinacloudapi.cn/))。 该请求将在响应中获取 301 重定向。后续请求使用新的 URI (https://wamsbayclus001rest-hs.chinacloudapp.cn/api/))。
 
 **HTTP 请求**：
 	
@@ -223,7 +220,7 @@
 - **None** = **0** - 不使用加密。请注意，使用此选项时，你的内容在传送过程中或静态存储过程中都不会受到保护。如果计划使用渐进式下载交付 MP4，则使用此选项。 
 - **StorageEncrypted** = **1** - 使用 AES-256 位加密在本地加密明文内容，然后将其上载到 Azure 存储空间中以加密形式静态存储相关内容。受存储加密保护的资产将在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上载为新的输出资产前重新加密。存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
 - **CommonEncryptionProtected** = **2** - 上载经过常用加密或 PlayReady DRM 加密并受其保护的内容（例如，受 PlayReady DRM 保护的平滑流）时使用此选项。
-- **EnvelopeEncryptionProtected** = **4** — 如果要上载使用 AES 加密的 HLS，请使用此选项。请注意，Transform Manager 必须已对文件进行编码和加密。
+- **EnvelopeEncryptionProtected** = **4** – 如果要上载使用 AES 加密的 HLS，请使用此选项。请注意，Transform Manager 必须已对文件进行编码和加密。
 
 ### 创建资产
 
@@ -364,7 +361,7 @@
 	
 	{"Name":"NewUploadPolicy", "DurationInMinutes":"440", "Permissions":"2"} 
 
-**HTTP 请求**
+**HTTP 响应**
 
 	If successful, the following response is returned:
 	
@@ -496,7 +493,8 @@ SAS URL 采用以下格式：
 
 **HTTP 响应**
 
-如果成功，将返回以下响应：HTTP/1.1 204 无内容
+如果成功，将返回以下响应：
+	HTTP/1.1 204 无内容
 
 ## 删除定位符和 AccessPolicy 
 
@@ -547,7 +545,7 @@ SAS URL 采用以下格式：
 
 若要使用动态打包，必须执行下列操作：
 
-- 针对你要传送内容的流式处理终结点，获取至少一个流式处理单位（如本部分中所述）。
+- 针对你要传送内容的**流式处理终结点**，获取至少一个流式处理单位（如本部分中所述）。
 - 将夹层（源）文件编码或转换成一组自适应比特率 MP4 文件或自适应比特率平滑流文件（本教程稍后将演示编码步骤），  
 
 通过动态打包，你只需要存储及支付一种存储格式的文件，媒体服务将会根据客户端的要求创建并提供适当的响应。
@@ -679,7 +677,7 @@ SAS URL 采用以下格式：
 
 **HTTP 请求**
 
-	GET https://wamsbayclus001rest-hs.chinacloudapp.cn/api/MediaProcessors()?$filter=Name%20eq%20'Azure%20Media%20Encoder' HTTP/1.1
+	GET https://wamsbayclus001rest-hs.chinacloudapp.cn/api/MediaProcessors()?$filter=Name%20eq%20'Media%20Encoder%20Standard' HTTP/1.1
 	DataServiceVersion: 1.0;NetFx
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json
@@ -709,8 +707,8 @@ SAS URL 采用以下格式：
 	   "value":[  
 	      {  
 	         "Id":"nb:mpid:UUID:ff4df607-d419-42f0-bc17-a481b1331e56",
-	         "Description":"Azure Media Encoder",
-	         "Name":"Azure Media Encoder",
+	         "Description":"Media Encoder Standard",
+	         "Name":"Media Encoder Standard",
 	         "Sku":"",
 	         "Vendor":"Microsoft",
 	         "Version":"1.1"
@@ -722,7 +720,7 @@ SAS URL 采用以下格式：
 
 每个作业可以有一个或多个任务，具体因要完成的处理类型而异。REST API 允许你通过以下两种方式之一创建作业及相关任务：可以通过作业实体上的任务导航属性以内联方式定义任务，或通过 OData 批处理来定义任务。媒体服务 SDK 使用批处理，但为了确保本主题中代码示例的可读性，将以内联方式定义任务。有关批处理的信息，请参阅[开放数据协议 (OData) 批处理](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)。
 
-以下示例说明了如何使用一个任务集来创建和发布一个作业，从而以特定分辨率和质量来编码某个视频。以下文档部分包含 Azure 媒体处理器支持的所有[任务预设](http://msdn.microsoft.com/zh-cn/library/azure/dn619392.aspx)的列表。
+以下示例说明了如何使用一个任务集来创建和发布一个作业，从而以特定分辨率和质量来编码某个视频。以下文档部分包含媒体编码器标准版处理器支持的所有[任务预设](http://msdn.microsoft.com/zh-cn/library/mt269960)的列表。
 
 **HTTP 请求**
 	
@@ -1189,9 +1187,6 @@ MPEG DASH 的流 URL 采用以下格式：
 
 如果本主题不包含你所期待的内容、缺少某些内容，或在其他方面不符合你的需求，请使用下面的 Disqus 会话向我们提供反馈。
 
-##其他资源
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-101-Get-your-video-online-now-">Azure 媒体服务 101 - 立即在线获取你的视频！</a>
-- <a href="http://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-102-Dynamic-Packaging-and-Mobile-Devices">Azure 媒体服务 102 - 动态打包和移动设备</a>
 
 
 
@@ -1201,4 +1196,4 @@ MPEG DASH 的流 URL 采用以下格式：
 
 
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0328_2016-->

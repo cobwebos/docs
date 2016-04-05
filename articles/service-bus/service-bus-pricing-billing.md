@@ -1,21 +1,21 @@
 <properties 
-   pageTitle="服务总线定价和计费 | Microsoft Azure"
-   description="服务总线定价结构概述。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="tysonn" />
+    pageTitle="服务总线定价和计费|Microsoft Azure"
+    description="服务总线定价结构概述。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
    ms.service="service-bus"
-   ms.date="12/28/2015"
+    ms.date="03/16/2016"
    wacn.date="" />
 
 # 服务总线定价和计费
 
 服务总线推出基本、标准和[高级](/documentation/articles/service-bus-premium-messaging)三种层级。你可以为你创建的每个服务总线服务命名空间选择一个服务层，所选的服务层可应用于在该命名空间中创建的所有队列、主题/订阅、中继和事件中心。
 
->[AZURE.NOTE] 有关当前服务总线定价详细信息，请参阅[服务总线定价常见问题](/documentation/articles/service-bus-pricing-faq)。
+>[AZURE.NOTE] 有关当前服务总线定价的详细信息，请参阅 [Azure 服务总线定价页](/pricing/details/service-bus/)和[服务总线定价常见问题](/documentation/articles/service-bus-pricing-faq)。
 
 服务总线使用以下两种测定仪用于队列和主题/订阅：
 
@@ -25,7 +25,7 @@
 
 **标准**层引入了分级定价用于队列和主题/订阅执行的操作，在达到最高使用率级别时可享受 80%的基于卷的折扣。此外，每个月只需支付 10 美元的标准层基础费用，便可执行最多 1250 万个操作，无任何其他费用。
 
-**高级**层在 CPU 和内存层提供了资源隔离，以便每个客户工作负荷以隔离方式运行。此资源容器称为*消息传送单元*。每个高级命名空间至少会分配一个消息传送单元。你可以为每个服务总线高级命名空间购买 1、2 或 4 个消息传送单元。单一工作负荷或实体可以跨多个消息传送单元，尽管计费以 24 小时或每天的费率收取，但仍然可以随意更改消息传送单元数。从而为基于服务总线的解决方案提供可预测和稳定的性能。此性能不仅更易于预测和实现，而且速度更快。Azure 服务总线高级消息传送以在 Azure 事件中心引入的存储引擎为基础。使用高级消息传送，峰值性能比标准层快得多。
+**高级**层在 CPU 和内存层提供了资源隔离，以便每个客户工作负荷以隔离方式运行。此资源容器称为消息传送单元。每个高级命名空间至少会分配一个消息传送单元。你可以为每个服务总线高级命名空间购买 1、2 或 4 个消息传送单元。单一工作负荷或实体可以跨多个消息传送单元，尽管计费以 24 小时或每天的费率收取，但仍然可以随意更改消息传送单元数。从而为基于服务总线的解决方案提供可预测和稳定的性能。此性能不仅更易于预测和实现，而且速度更快。Azure 服务总线高级消息传送以在 Azure 事件中心引入的存储引擎为基础。使用高级消息传送，峰值性能比标准层快得多。
 
 请注意，每个 Azure 订阅每月仅需支付一次标准基础费用。这意味着在你创建了一个标准或高级层级的服务总线命名空间后，你将能够在同一 Azure 订阅下创建任意数目的标准或高级层级命名空间，而不会产生附加的基础费用。
 
@@ -81,7 +81,7 @@
 
 ## 中转连接
 
-*中转连接*允许客户的使用模式涉及针对队列、主题/订阅或事件中心的大量“永久连接”发送方/接收方。永久连接的发送方/接收方是使用具有非零接收超时（例如，HTTP 长轮询）的 AMQP 或 HTTP 连接的那些。具有立即超时的 HTTP 发送方和接收方不会生成中转连接。
+中转连接允许客户的使用模式涉及针对队列、主题/订阅或事件中心的大量“永久连接”发送方/接收方。永久连接的发送方/接收方是使用具有非零接收超时（例如，HTTP 长轮询）的 AMQP 或 HTTP 连接的那些。具有立即超时的 HTTP 发送方和接收方不会生成中转连接。
 
 以前，队列和主题/订阅限制为每个 URL 100 个并发连接。当前的计费方案中删除了针对队列和主题/订阅的每个 URL 限制，并根据服务总线命名空间和 Azure 订阅级别的中转连接实现配额和计量。
 
@@ -141,8 +141,9 @@
 
 ## 后续步骤
 
-有关服务总线定价的详细信息，请参阅[服务总线定价常见问题](/documentation/articles/service-bus-pricing-faq)。
+- 有关服务总线定价的更多详细信息，请参阅 [Azure 服务总线定价页](/pricing/details/service-bus/)。
 
-[Azure 经典门户]: http://manage.windowsazure.cn
+- 有关服务总线定价和计费的一些常见问题，请参阅[服务总线定价常见问题](/documentation/articles/service-bus-pricing-faq)。
 
-<!---HONumber=Mooncake_0215_2016-->
+[Azure 经典门户]: http://manage.windowsazure.com
+<!---HONumber=Mooncake_0328_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/11/2016"  
+ 	ms.date="03/01/2016"  
 	wacn.date=""/>
 
 
@@ -23,11 +23,25 @@ Microsoft Azure 媒体服务是一项服务，该服务接受基于 OData 的 HT
 
 使用 REST 时需考虑下列事项：
 
+- 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。你需要使用[此 .NET 示例](/documentation/articles/media-services-dotnet-manage-entities#enumerating-through-large-collections-of-entities)和[此 REST API 示例](/documentation/articles/media-services-rest-manage-entities#enumerating-through-large-collections-of-entities)中所述的 Skip 和 Take (.NET)/ top (REST)。 
 
-- 如果使用 JSON，则必须将 Accept 标头设置为 [JSON 详细格式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)。Odata 并不了解请求中的 \_\_metadata 属性，除非你将它设置为 verbose。
+- 使用 JSON 并指定在请求中使用 **\_\_metadata** 关键字（例如，为了引用某个链接对象）时，必须将 Accept 标头设置为 [JSON 详细格式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)（参阅以下示例）。Odata 并不了解请求中的 **\_\_metadata** 属性，除非你将它设置为 verbose。
 
-	**Accept**: application/json;odata=verbose
-- 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。你需要使用[此 .NET 示例](/documentation/articles/media-services-dotnet-manage-entities#enumerating-through-large-collections-of-entities)和[此 REST API 示例](/documentation/articles/media-services-rest-manage-entities#enumerating-through-large-collections-of-entities)中所述的 **Skip** 和 **Take** (.NET)/ **top** (REST)。 
+		POST https://media.chinacloudapi.cn/API/Jobs HTTP/1.1
+		Content-Type: application/json;odata=verbose
+		Accept: application/json;odata=verbose
+		DataServiceVersion: 3.0
+		MaxDataServiceVersion: 3.0
+		x-ms-version: 2.11
+		Authorization: Bearer <token> 
+		Host: media.windows.net
+		
+		{
+			"Name" : "NewTestJob", 
+			"InputMediaAssets" : 
+				[{"__metadata" : {"uri" : "https://media.chinacloudapi.cn/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
+		. . . 
+		
 
 ## 媒体服务支持的标准 HTTP 请求标头
 
@@ -105,4 +119,4 @@ HEAD|为 GET 响应返回对象的元数据。
 
  
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0328_2016-->

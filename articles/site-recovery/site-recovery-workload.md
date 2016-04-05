@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="site-recovery" 
-	ms.date="12/01/2015" 
+	ms.date="03/18/2016" 
 	wacn.date=""/>
 
 # 可以通过 Azure Site Recovery 保护哪些工作负荷？
@@ -35,30 +35,30 @@ Site Recovery 集成 Microsoft 应用程序，其中包括 SharePoint、Exchange
 
 Site Recovery 复制技术与虚拟机中运行的任何应用程序兼容。另外，我们还与应用程序产品团队合作展开更多测试，以进一步支持每个应用。
 
-**工作负荷** | <p>**复制 Hyper-V VM**</p> <p>**（到辅助站点）**</p> | <p>**复制 Hyper-V VM**</p> <p>**（到 Azure）**</p> | <p>**复制 VMware VM**</p> <p>**（到辅助站点）**</p> | <p>**复制 VMware VM**</p><p>**（到 Azure）****</p>
+**工作负载** | <p>**复制 Hyper-V VM**</p> <p>**（到辅助站点）**</p> | <p>**复制 Hyper-V VM**</p> <p>**（到 Azure）**</p> | <p>**复制 VMware VM**</p> <p>**（到辅助站点）**</p> | <p>**复制 VMware VM**</p><p>**（到 Azure）****</p>
 ---|---|---|---|---
 Active Directory、DNS | Y | Y | Y | Y 
-Web 应用（IIS、SQL） | Y | Y | Y | Y
+Web Apps（IIS、SQL） | Y | Y | Y | Y
 SCOM | Y | Y | Y | Y
 Sharepoint | Y | Y | Y | Y
-<p>SAP</p><p>将非群集 SAP 站点复制到 Azure</p> | Y（Microsoft 已测试）| Y（Microsoft 已测试）| Y（Microsoft 已测试）| Y（Microsoft 已测试）
-Exchange（非 DAG）| Y | 即将支持 | Y | Y
-远程桌面/VDI | Y | Y | Y | N/A
-<p>Linux</p> <p>（操作系统和应用）</p> | Y（Microsoft 已测试）| Y（Microsoft 已测试）| Y（Microsoft 已测试）| Y（Microsoft 已测试）
+<p>SAP</p><p>将非群集 SAP 站点复制到 Azure</p> | Y（Microsoft 已测试） | Y（Microsoft 已测试） | Y（Microsoft 已测试） | Y（Microsoft 已测试）
+Exchange（非 DAG） | Y | 即将支持 | Y | Y
+远程桌面/VDI | Y | Y | Y | 不适用 
+<p>Linux</p> <p>（操作系统和应用程序）</p> | Y（Microsoft 已测试） | Y（Microsoft 已测试） | Y（Microsoft 已测试） | Y（Microsoft 已测试） 
 Dynamics AX | Y | Y | Y | Y
 Dynamics CRM | Y | 即将支持 | Y | 即将支持
-Oracle | Y（Microsoft 已测试）| Y（Microsoft 已测试）| Y（Microsoft 已测试）| Y（Microsoft 已测试）
+Oracle | Y（Microsoft 已测试） | Y（Microsoft 已测试） | Y（Microsoft 已测试） | Y（Microsoft 已测试）
 Windows 文件服务器 | Y | Y | Y | Y
 
-##保护 Active Directory 和 DNS
+##Active Directory 和 DNS
 
 所有企业应用程序，例如 SharePoint, Dynamics AX 和 SAP，都依赖于 Active Directory 和 DNS 基础结构。在恢复工作负荷和应用之前，你将需要保护和恢复这些作为 BCDR 解决方案一部分的基础结构组件。
 
 使用 Site Recovery，你可以为 Active Directory 和 DNS 创建一个完整的自动化灾难恢复计划。例如，如果你要将 Active Directory 用于主站点中的多个应用程序（如 SharePoint 和 SAP），而且希望故障转移整个站点，则可先使用恢复计划故障转移 Active Directory，然后再使用特定于应用程序的恢复计划故障转移依赖于 Active Directory 的应用程序。
 
-[了解详细信息](http://aka.ms/asr-ad)
+[了解详细信息](/documentation/articles/site-recovery-active-directory)
 
-##保护 SQL Server
+##SQL Server
 
 SQL Server 是本地数据中心许多业务应用程序的数据服务基础。Site Recovery 和 SQL Server HA/DR 技术互为补充，可以一起用于为多层企业应用程序提供端到端保护。Site Recovery 为 SQL Server 环境提供以下优势：
 
@@ -68,9 +68,9 @@ SQL Server 是本地数据中心许多业务应用程序的数据服务基础。
 - 在出现高峰负载时使用 Azure Site Recovery 向上扩展 SQL Server，让这些负载“迸发”到 Azure 中更大型的 IaaS 虚拟机中。
 - 使用 Azure Site Recovery，在 Azure 或辅助站点中测试 SQL Server。可以使用测试性故障转移进行分析和数据合规性检查，而不影响生产环境。
 
-[了解详细信息](http://aka.ms/asr-sql)
+[了解详细信息](/documentation/articles/site-recovery-sql)
 
-##保护 SharePoint
+##SharePoint
 
 Azure Site Recovery 可帮助你保护 SharePoint 部署。使用 Site Recovery 可以：
 
@@ -79,10 +79,10 @@ Azure Site Recovery 可帮助你保护 SharePoint 部署。使用 Site Recovery 
 - 按照副本环境的需要创建一个与生产类似的副本来进行测试和调试，从而简化 SharePoint 应用程序的开发与测试。
 - 使用 Site Recovery 将 SharePoint 部署迁移到 Azure，从而简化从本地到云的过渡过程。
 
-[了解详细信息](http://aka.ms/asr-sharepoint)
+[了解详细信息](https://gallery.technet.microsoft.com/SharePoint-DR-Solution-f6b4aeae)
 
 
-## 保护 Dynamics AX
+##Dynamics AX
 
 Azure Site Recovery 可以帮助你保护 Dynamics AX ERP 解决方案：
 
@@ -90,24 +90,24 @@ Azure Site Recovery 可以帮助你保护 Dynamics AX ERP 解决方案：
 - 使用 Site Recovery 将 Dynamics AX 部署迁移到 Azure，从而简化从本地到云的迁移过程。
 - 通过按需创建一个与生产类似的副本来进行测试和调试，简化 Dynamics AX 应用程序的开发与测试。
 
-[了解详细信息](http://aka.ms/asr-dynamics)
+[了解详细信息](https://gallery.technet.microsoft.com/Dynamics-AX-DR-Solution-b2a76281)
 
-## 保护 RDS 
+##RDS 
 远程桌面服务允许虚拟桌面基础结构 (VDI)、基于会话的桌面和应用程序，让用户能够在任何地方工作。使用 Site Recovery，你可以启用托管或非托管池虚拟桌面到辅助站点以及远程应用程序和会话到辅助站点或 Azure 的保护。
 
-[了解详细信息](http://aka.ms/asr-rds)
+[了解详细信息](https://gallery.technet.microsoft.com/Remote-Desktop-DR-Solution-bdf6ddcb)
 
 
-## 保护 Exchange
+##Exchange
 
 Microsoft Exchange 包括内置的对高可用性和灾难恢复的支持。Exchange DAG 和 Azure Site Recovery 可以协同工作。
 
 - 在企业中进行 Exchange 灾难恢复时，Exchange DAG 是建议的解决方案。Site Recovery 中的恢复计划可以包含 DAG，以便跨站点协调 DAG 故障转移。
 - 对于小型部署，例如单服务器或非群集服务器，Site Recovery 可以实施保护并进行目标为 Azure 或辅助站点的故障转移。
 
-[了解详细信息](http://aka.ms/asr-exchange)
+[了解详细信息](https://gallery.technet.microsoft.com/Exchange-DR-Solution-using-11a7dcb6)
 
-## 保护 SAP
+##SAP
 
 使用 Site Recovery 来保护 SAP 部署：
 
@@ -117,4 +117,4 @@ Microsoft Exchange 包括内置的对高可用性和灾难恢复的支持。Exch
 
 [了解详细信息](http://aka.ms/asr-sap)
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0328_2016-->

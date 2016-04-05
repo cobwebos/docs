@@ -1,15 +1,15 @@
 <properties
-	pageTitle="弹性数据库拆分/合并工具教程 | Microsoft Azure"
+	pageTitle="弹性数据库拆分/合并工具教程 | Azure"
 	description="使用弹性数据库工具进行拆分与合并"
 	services="sql-database"  
 	documentationCenter=""
 	authors="sidneyh"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor=""/>
 
 <tags
 	ms.service="sql-database"
-	ms.date="12/01/2015"
+	ms.date="02/23/2016"
 	wacn.date="" />
 
 # 弹性数据库拆分/合并工具教程
@@ -38,9 +38,9 @@
 
 ### 拆分/合并服务配置
 
-1. 在你下载拆分/合并组件的文件夹中，创建“SplitMergeService.cspkg”随附的“ServiceConfiguration.Template.cscfg”文件的副本，并将其命名为“ServiceConfiguration.cscfg”。
+1. 在你下载拆分/合并程序集的文件夹中，创建 **SplitMergeService.cspkg** 随附的 **ServiceConfiguration.Template.cscfg** 文件的副本，并将其重命名为 **ServiceConfiguration.cscfg**。
 
-2. 在您喜欢的文本编辑器中打开 ServiceConfiguration.cscfg。我们建议使用 Visual Studio，因为它将验证输入（例如，证书指纹的格式）。
+2. 在文本编辑器（如 Visual Studio）中打开 **ServiceConfiguration.cscfg**，它会验证输入内容（例如，证书指纹的格式）。
 
 3. 创建新的数据库或选择现有的数据库，以将其用作拆分/合并操作的状态数据库并检索该数据库的连接字符串。
 
@@ -330,4 +330,4 @@
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0328_2016-->

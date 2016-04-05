@@ -1,5 +1,5 @@
 <properties
-	pageTitle="业务连续性和灾难恢复 (BCDR)：Azure 配对区域 | Microsoft Azure"
+	pageTitle="业务连续性和灾难恢复 (BCDR)：Azure 配对区域 | Azure"
 	description="Azure 区域对可在数据中心发生故障期间使应用程序保持复原能力。"
 	services="site-recovery"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
     ms.service="backup"
-    ms.date="01/12/2016"
+    ms.date="03/20/2016"
     wacn.date=""/>
 
 # 业务连续性和灾难恢复 (BCDR)：Azure 配对区域
@@ -76,4 +76,4 @@ Azure 在世界各地的多个地理位置运营。Azure 地理位置是至少�
 ![9Orange](./media/best-practices-availability-paired-regions/9Orange.png)
 **数据驻留** – 一个区域驻留在与其配对区域相同的地理位置（巴西南部除外），以符合税务和执法管辖范围方面的数据驻留要求。
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0328_2016-->

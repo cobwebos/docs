@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="02/03/2016"   
+	ms.date="03/02/2016"   
 	wacn.date=""/>
 
 #使用 NewTek TriCaster 编码器发送单比特率实时流
@@ -23,6 +23,9 @@
 本主题说明了如何配置 [NewTek TriCaster](http://newtek.com/products/tricaster-40.html) 实时编码器，以便将单比特率流发送到 AMS 频道进行实时编码。有关详细信息，请参阅[使用能够通过 Azure 媒体服务执行实时编码的频道](/documentation/articles/media-services-manage-live-encoder-enabled-channels)。
 
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。此工具仅在 Windows 电脑上运行。如果你使用的是 Mac 或 Linux，则可使用 Azure 管理门户创建[频道](/documentation/articles/media-services-portal-creating-live-encoder-enabled-channel#create-a-channel)和[节目](/documentation/articles/media-services-portal-creating-live-encoder-enabled-channel#create-and-manage-a-program)。
+
+>[AZURE.NOTE]使用 Tricaster 将贡献源发送到已启用实时编码的 AMS 通道时，如果你使用了 Tricaster 的某些功能（例如，在源之间快速剪切，或者切入/切出静态图像），则你的实时事件可能会出现视频/音频抖动。AMS 团队正在努力解决这些问题，在此之前，不建议你使用这些功能。
+
 
 ##先决条件
 
@@ -48,8 +51,7 @@
 
 确保选中“立即启动新频道”。
 
-3. 单击“创建频道”。
-![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster2.png)
+3. 单击“创建频道”。![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster2.png)
 
 >[AZURE.NOTE] 启动频道可能需要长达 20 分钟的时间。
 
@@ -116,8 +118,7 @@
 
 	![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster11.png)
 
->[AZURE.IMPORTANT] 在单击“流”之前，**必须**确保频道已就绪。 
->另外，请确保不要让频道在没有一个输入/贡献源的情况下处于就绪状态的时间超出 15 分钟。
+>[AZURE.IMPORTANT] 在单击“流”之前，**必须**确保频道已就绪。另外，请确保不要让频道在没有一个输入/贡献源的情况下处于就绪状态的时间超出 15 分钟。
 
 ##测试播放
   
@@ -151,4 +152,5 @@
 
 请参阅[故障排除](/documentation/articles/media-services-troubleshooting-live-streaming)主题以获取相关指导。
 
-<!---HONumber=Mooncake_0307_2016-->
+
+<!---HONumber=Mooncake_0328_2016-->

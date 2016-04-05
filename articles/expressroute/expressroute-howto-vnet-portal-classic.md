@@ -1,25 +1,31 @@
 <properties
    pageTitle="为 ExpressRoute 配置虚拟网络和网关 | Microsoft Azure"
-   description="本文将指导你完成为 ExpressRoute 设置虚拟网络 (VNet)"
+   description="本文指导你使用经典部署模型为 ExpressRoute 设置虚拟网络 (VNet)。"
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-service-management"/>
 
 <tags 
    ms.service="expressroute"
-   ms.date="01/16/2016"
+   ms.date="03/08/2016"
    wacn.date=""/>
 
-# 为 ExpressRoute 配置虚拟网络
+# 在经典门户中为 ExpressRoute 配置虚拟网络
 
-这些步骤将指导你通过经典部署模型和服务管理配置用于 ExpressRoute 的虚拟网络和网关。目前，我们尚未制作有关使用资源管理器部署模型为 ExpressRoute 配置 VNet 的文档。如果我们发布了相关的文章，我们将添加其链接。
+本文中的步骤将指导你通过经典部署模型和经典门户配置用于 ExpressRoute 的虚拟网络和网关。
 
->[AZURE.IMPORTANT] 请务必了解 Azure 当前使用两种部署模型：资源管理器和经典部署模型。在开始你的配置之前，请确保你了解部署模型和工具。有关部署模型的信息，请参阅 [Azure 部署模型](/documentation/articles/azure-classic-rm)
+有关 Resource Manager 部署模型的说明，请参阅以下文章，其中将会指导你[使用 PowerShell 创建虚拟网络](/documentation/articles//virtual-networks-create-vnet-arm-ps)，以及[将 VPN 网关添加到 ExpressRoute 的 Resource Manager VNet](/documentation/articles/expressroute-howto-add-gateway-resource-manager)。
 
-1. 登录到 **Azure 经典门户**。
+**关于 Azure 部署模型**
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../includes/vpn-gateway-classic-rm-include.md)]
+
+## 配置 VNet 和网关
+
+1. 登录到 [Azure 经典门户](http://manage.windowsazure.cn)。
 
 2. 在屏幕左下角，单击“新建”。在导航窗格中，单击“网络服务”，然后单击“虚拟网络”。单击“自定义创建”以启动配置向导。
 
@@ -32,7 +38,7 @@
 
 	- **DNS 服务器** - 输入 DNS 服务器名称和 IP 地址，或从下拉列表中选择一个以前注册的 DNS 服务器。此设置不创建 DNS 服务器，但可以指定要用于对此虚拟网络进行名称解析的 DNS 服务器。
 	- **配置站点到站点 VPN** - 选中“配置站点到站点 VPN”复选框。
-	- **选择 ExpressRoute** - 选中“使用 ExpressRoute”复选框。仅当你在上一步中选中了***“配置站点到站点 VPN”***，才会显示此选项。
+	- **选择 ExpressRoute** - 选中“使用 ExpressRoute”复选框。仅当你在上一步中选中了**“配置站点到站点 VPN”**，才会显示此选项。
 	- **本地网络** - 本地网络表示你的物理本地位置。你可以选择以前创建的本地网络，也可以创建一个新的本地网络。
 
 	如果选择现有的本地网络，请跳过步骤 5。
@@ -47,7 +53,7 @@
 
 	- **地址空间** - 包括起始 IP 和地址计数。请验证你指定的地址空间不与本地网络的任一个地址空间相重叠。
 	- **添加子网** - 包括起始 IP 和地址计数。附加的子网不是必需的，但你可能需要为具有动态 IP 地址 (DIP) 的 VM 创建一个单独的子网。或者你可能需要在子网中拥有与 PaaS 实例分开的 VM。
-	- **添加网关子网** - 单击此项可添加网关子网。网关子网仅用于此虚拟网络网关，并且是此配置必需的。***重要说明：***ExpressRoute 的网关子网前缀必须是 /28 或更小值（/27、/26 等）。
+	- 添加网关子网 - 单击此项可添加网关子网。网关子网仅用于此虚拟网络网关，并且是此配置必需的。**重要说明：** ExpressRoute 的网关子网前缀必须是 /28 或更小值（/27、/26 等）。
 
 7. 单击页面底部的复选标记，此时将开始创建虚拟网络。创建完成后，在 Azure 经典门户的“网络”页上，你将看到“状态”下面列出了“已创建”。
 
@@ -66,4 +72,5 @@
 
  
 
-<!---HONumber=Mooncake_0307_2016-->
+
+<!---HONumber=Mooncake_0328_2016-->

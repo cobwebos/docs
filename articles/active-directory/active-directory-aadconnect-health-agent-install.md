@@ -3,26 +3,38 @@
 	description="本页与 Azure AD Connect Health 相关，介绍如何安装用于 AD FS 和同步的代理。"
 	services="active-directory"
 	documentationCenter=""
-	authors="billmath"
+	authors="karavar"
 	manager="stevenpo"
-	editor="curtand"/>
+	editor="karavar"/>
 
 <tags
 	ms.service="active-directory"
 
-	ms.date="10/15/2015"
+
+
+
+	ms.date="03/21/2016"
 	wacn.date=""/>
-
-
-无法使用“Netsh WinHttp set ProxyServerAddress”
 
 
 
 # Azure AD Connect Health 代理安装 
 
-本文档将指导你在服务器上安装和配置用于 AD FS 和同步的 Azure AD Connect Health 代理。
+本文档将指导你安装和配置 Azure AD Connect Health 代理。可以从[此处](/documentation/articles/active-directory-aadconnect-health#download-and-install-azure-ad-connect-health-agent)下载代理。
 
->[AZURE.NOTE]请记住在查看 Azure AD Connect Health 实例中的任何 AD FS 数据之前，你将需要在目标服务器上安装 Azure AD Connect Health 代理。请务必在安装代理之前，满足[此处](active-directory-aadconnect-health.md#requirements)所述的要求。可以从[此处](http://go.microsoft.com/fwlink/?LinkID=518973)下载该代理。
+## 	要求
+下表是使用 Azure AD Connect Health 的要求列表。
+
+| 要求 | 说明|
+| ----------- | ---------- |
+|Azure AD Premium| Azure AD Connect Health 是 Azure AD Premium 的一个功能，它需要与 Azure AD Premium 配合使用。</br></br>有关详细信息，请参阅 [Azure AD Premium 入门](active-directory-get-started-premium.md)。</br>若要开始 30 天免费试用，请参阅[开始试用](https://azure.microsoft.com/trial/get-started-active-directory/)。|
+|你必须是 Azure AD 的全局管理员才能开始使用 Azure AD Connect Health|默认情况下，只有全局管理员才能安装和配置运行状况代理、访问信息，以及在 Azure AD Connect Health 中执行任何操作。有关更多信息，请参阅[管理 Azure AD 目录](active-directory-administer.md)。<br><br>使用基于角色的访问控制可以允许组织中的其他用户访问 Azure AD Connect Health。有关详细信息，请参阅 [Azure AD Connect Health 的基于角色的访问控制](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control)。</br></br>重要说明：在安装代理时使用的帐户必须是工作帐户或学校帐户，而不能是 Microsoft 帐户。有关详细信息，请参阅[以组织身份注册 Azure](sign-up-organization.md)
+|Azure AD Connect Health 代理已安装在每台目标服务器上| Azure AD Connect Health 要求在目标服务器上安装代理，以提供可在门户中查看的数据。</br></br>例如，若要在 AD FS 本地基础结构上获取数据，代理必须安装在 AD FS 服务器、AD FS 代理服务器和 Web 应用程序代理服务器上。</br></br>重要说明：在安装代理时使用的帐户必须是工作帐户或学校帐户，而不能是 Microsoft 帐户。有关详细信息，请参阅[以组织身份注册 Azure](sign-up-organization.md)|
+|Azure 服务终结点的出站连接|在安装期间和运行时，代理需要连接到下面列出的 Azure AD Connect Health 服务终结点。如果你阻止了出站连接，请确保在允许列表中添加以下项：</br></br><li>&#42;.blob.core.windows.net </li><li>&#42;.queue.core.windows.net</li><li>adhsprodwus.servicebus.windows.net - Port: 5671 </li><li>https://management.azure.com </li><li>https://s1.adhybridhealth.azure.com/</li><li>https://policykeyservice.dc.ad.msft.net/</li><li>https://login.windows.net</li><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li> |
+|运行代理的服务器上的防火墙端口。| 为了使代理能够与 Azure AD Health 服务终结点通信，代理要求打开以下防火墙端口。</br></br><li>TCP/UDP 端口 443</li><li>TCP/UDP 端口 5671</li>
+|如果启用了 IE 增强安全性，请允许以下网站|如果在要安装代理的服务器上启用了 IE 增强安全性，则必须允许以下网站。</br></br><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li><li>https://login.windows.net</li><li>Azure Active Directory 信任的组织联合服务器。例如：https://sts.contoso.com</li>
+
+
 
 
 ## 安装适用于 AD FS 的 Azure AD Connect Health 代理
@@ -41,7 +53,7 @@
 
 登录后，将继续 PowerShell。完成后你可以关闭 PowerShell，配置已完成。
 
-此时，应自动启动服务且代理将在此时监视和收集数据。请注意如果未满足已在前面几节中所述的所有先决条件，你将在 PowerShell 窗口看到警告。请务必在安装代理之前，满足[此处](active-directory-aadconnect-health.md#requirements)所述的要求。以下屏幕截图是这些错误的一个示例。
+此时，应自动启动服务且代理将在此时监视和收集数据。请注意如果未满足已在前面几节中所述的所有先决条件，你将在 PowerShell 窗口看到警告。请务必在安装代理之前，满足[此处](/documentation/articles/active-directory-aadconnect-health-agent-install#requirements)所述的要求。以下屏幕截图是这些错误的一个示例。
 
 ![验证 Azure AD Connect Health](./media/active-directory-aadconnect-health-requirements/install4.png)
 
@@ -69,7 +81,7 @@
 
 ### 为 AD FS 启用审核
 
-若要通过使用情况分析功能收集和分析数据，必须向 Azure AD Connect Health 代理提供 AD FS 审核日志中的信息。默认情况下未启用这些日志。这仅适用于 AD FS 联合服务器。不需在 AD FS 代理服务器或网站代理服务器上启用审核。请通过以下步骤启用 AD FS 审核并查找 AD FS 审核日志。
+若要通过使用情况分析功能收集和分析数据，必须向 Azure AD Connect Health 代理提供 AD FS 审核日志中的信息。默认情况下未启用这些日志。这仅适用于 AD FS 联合服务器。不需在 AD FS 代理服务器或 Web 应用程序代理服务器上启用审核。请通过以下步骤启用 AD FS 审核并查找 AD FS 审核日志。
 
 #### 启用 AD FS 2.0 审核的步骤
 
@@ -109,7 +121,7 @@
 
 ![AD FS 审核日志](./media/active-directory-aadconnect-health-requirements/adfsaudit.png)
 
-> [AZURE.WARNING]如果你的组策略正在禁用 AD FS 审核，则 Azure AD Connect Health 代理将不能收集信息。请确保没有可能正在禁用审核的组策略。
+> [AZURE.WARNING] 如果你的组策略正在禁用 AD FS 审核，则 Azure AD Connect Health 代理将不能收集信息。请确保没有可能正在禁用审核的组策略。
 
 [//]: # "代理的代理配置部分开头"
 
@@ -118,13 +130,31 @@
 
 若要验证代理是否已安装，打开服务并检查以下方面。如果你完成了配置，这些服务应运行。否则，配置完成之前它们将无法启动。
 
-- Azure AD Connect Health AadSync Insights 服务
-- Azure AD Connect Health AadSync 监视服务
- 
+- Azure AD Connect Health Sync Insights 服务
+- Azure AD Connect Health Sync 监视服务
+
 ![验证用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/services.png)
 
->[Azure.NOTE]请记住，Azure AD Connect Health 需要与 Azure AD Premium 配合使用。如果你没有 Azure AD Premium，则无法在 Azure 门户中完成配置。有关详细信息，请参阅[此处](active-directory-aadconnect-health.md#requirements)所述的要求。
+>[Azure.NOTE] 请记住，Azure AD Connect Health 需要与 Azure AD Premium 配合使用。如果你没有 Azure AD Premium，则无法在 Azure 门户中完成配置。有关详细信息，请参阅[此处](/documentation/articles/active-directory-aadconnect-health-agent-install#requirements)所述的要求。
 
+
+## 手动注册用于同步的 Azure AD Connect Health
+如果用于同步的 Azure AD Connect Health 代理在成功安装 Azure AD Connect 后注册失败，可以使用以下 PowerShell 命令来手动注册代理。
+
+>[AZURE.IMPORTANT] 只有代理在安装 Azure AD Connect 之后注册失败时，才需要使用此 PowerShell 命令。
+
+只有 Health 代理注册失败（即使在成功安装及设置 Azure AD Connect 之后）时，才需要以下 PowerShell 命令。在这种情况下，只有在代理成功注册之后，Azure AD Connect Health 服务才会启动。
+
+可以使用以下 PowerShell 命令，手动注册用于同步的 Azure AD Connect Health 代理：
+
+`Register-AzureADConnectHealthSyncAgent -AttributeFiltering $false -StagingMode $false`
+
+此命令采用以下参数：
+
+- AttributeFiltering：$true（默认值）- 如果 Azure AD Connect 未同步默认属性集，且已自定义为使用筛选的属性集。否则为 $false。
+- StagingMode：$false（默认值）- 如果 Azure AD Connect 服务器不处于暂存模式。如果服务器已配置为处于暂存模式，则为 $true。
+
+当系统提示进行身份验证时，你应该使用用于配置 Azure AD Connect 的同一全局管理员帐户（例如 admin@domain.onmicrosoft.com）。
 
 
 
@@ -132,14 +162,14 @@
 你可以将 Azure AD Connect Health 代理配置为使用 HTTP 代理。
 
 >[AZURE.NOTE]
-- 无法使用“Netsh WinHttp set ProxyServerAddress”，因为代理使用 System.Net 而不是 Microsoft Windows HTTP 服务发出 Web 请求。
+- 无法使用“Netsh WinHttp set ProxyServerAddress”，因为代理使用 System.Net（而不是 Microsoft Windows HTTP 服务）发出 Web 请求。
 - 配置的 Http 代理地址将用于传递加密的 Https 消息。
 - 不支持经过身份验证的代理（使用 HTTPBasic）。
 
 ### 更改 Health 代理的代理配置
 可以使用以下选项将 Azure AD Connect Health 代理配置为使用 HTTP 代理。
 
->[AZURE.NOTE]必须重新启动 Azure AD Connect Health 代理服务才能更新代理设置。运行以下命令：<br>
+>[AZURE.NOTE] 必须重新启动 Azure AD Connect Health 代理服务才能更新代理设置。运行以下命令：<br>
     Restart-Service AdHealth*
 
 #### 导入现有的代理设置
@@ -159,7 +189,7 @@
 
 	Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 
-示例：*Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver:443*
+示例：Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver:443
 
 - “地址”可以是 DNS 可解析的服务器名称或 IPv4 地址
 - 可以省略“端口”。如果省略端口，则会选择 443 作为默认端口。
@@ -176,15 +206,32 @@
 	Get-AzureAdConnectHealthProxySettings
 
 
-[//]: # "代理的代理配置部分结尾"
+## 测试与 Azure AD Connect Health 服务的连接
+问题可能会导致 Azure AD Connect Health 代理与 Azure AD Connect Health 服务连接断开。这些问题包括网络问题、权限问题或其他各种原因。
+
+如果代理无法将数据发送给 Azure AD Connect Health 服务达 2 小时以上，你将看到指出“运行状况服务数据不是最新数据。”的警报。 如果发生这种情况，你可以从代理发生问题的计算机运行以下 PowerShell 命令，以测试 Azure AD Connect Health 代理是否能够将数据上载到 Azure AD Connect Health 服务。
+
+    Test-AzureADConnectHealthConnectivity -Role Adfs
+
+role 参数目前可接受以下值：
+
+- Adfs
+- 同步
+
+可以在命令中使用 -ShowResults 标志来查看详细日志。使用以下示例：
+
+    Test-AzureADConnectHealthConnectivity -Role Sync -ShowResult
+
+>[AZURE.NOTE]若要使用连接工具，必须先完成代理注册。如果无法完成代理注册，请确保符合 Azure AD Connect Health 的所有[要求](active-directory-aadconnect-health-agent-install.md#requirements)。默认情况下，此连接测试将在代理注册期间执行。
+
 
 
 ## 相关链接
 
-* [Azure AD Connect Health](active-directory-aadconnect-health.md)
-* [Azure AD Connect Health 操作](active-directory-aadconnect-health-operations.md)
-* [在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)
-* [使用用于同步的 Azure AD Connect Health](active-directory-aadconnect-health-sync.md)
-* [Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq.md)
+* [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health)
+* [Azure AD Connect Health 操作](/documentation/articles/active-directory-aadconnect-health-operations)
+* [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs)
+* [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync)
+* [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0328_2016-->

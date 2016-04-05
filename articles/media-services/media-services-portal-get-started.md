@@ -1,5 +1,5 @@
 <properties
-	pageTitle="开始使用 Azure 管理门户按需传送内容 | Microsoft Azure"
+	pageTitle="开始使用 Azure 管理门户按需传送内容 | Azure"
 	description="本教程将引导你完成使用 Azure 媒体服务和 Azure 管理门户实施视频点播 (VoD) 内容传送应用程序的步骤。"
 	services="media-services"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="02/03/2016"
+	ms.date="02/25/2016"
 	wacn.date=""/>
 
 
@@ -138,7 +138,7 @@
 本部分介绍通过 Azure 管理门户使用 Azure 媒体编码器为内容编码时可以执行的步骤。
 
 1.  选择要编码的文件。如果此文件类型支持编码，则“内容”页底部将启用“处理”按钮。
-4. 在“处理”对话框中，选择“Azure 媒体编码器”处理器。
+4. 在“处理”对话框中，选择“Azure 媒体编码器”处理器。****
 5. 选择其中一个“编码配置”。
 
 	![Process2][process2]
@@ -233,4 +233,4 @@ Azure 管理门户提供了可用于测试视频的内容播放器。
 [encrypt]: ./media/media-services-manage-content/media-services-encrypt-content.png
 [AMSPlayer]: ./media/media-services-portal-get-started/media-services-portal-player.png
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0328_2016-->

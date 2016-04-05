@@ -118,7 +118,7 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务，包括 Office 365。
 不能。连接到同一 ExpressRoute 线路的所有虚拟网络都属于同一路由域，从路由角度看不是相互隔离的。如果需要路由隔离，则需要创建单独的 ExpressRoute 线路。
 
 ### 能否将一个虚拟网络连接到多条 ExpressRoute 线路？
-是的。可以将一个虚拟网络最多链接到 4 条 ExpressRoute 线路。必须通过 4 个不同的位置订购这些线路。
+是的。可以将一个虚拟网络最多链接到 4 条 ExpressRoute 线路。必须通过 4 个不同的 [ExpressRoute 位置](/documentation/articles/expressroute-locations)订购这些线路。
 
 ### 能否从连接到 ExpressRoute 线路的虚拟网络访问 Internet？
 是的。如果你尚未通过 BGP 会话公布默认路由 (0.0.0.0/0) 或 Internet 路由前缀，你将能够从连接到 ExpressRoute 线路的虚拟网络连接到 Internet。
@@ -139,7 +139,7 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务，包括 Office 365。
 你必须建立一条 ExpressRoute 线路并为公共对等互连配置路由。
 
 ### 对于我可以公布的路由数有限制吗？
-是的。对于专用对等互连和公共对等互连，我们最多接受 4000 个路由前缀。如果启用 ExpressRoute 高级功能，可以将此限制提高为 10,000 个路由。
+是的。对于专用对等互连，我们最多接受 4000 个路由前缀；对于公共对等互连和 Microsoft 对等互连，各接受 200 个。如果启用 ExpressRoute 高级功能，可以将专用对等互连的此限制提高为 10,000 个路由。
 
 ### 对于我可以通过 BGP 会话公布的 IP 范围有限制吗？
 通过 BGP 公布的前缀必须为 /29 或更大（/28 到 /8）。
@@ -167,4 +167,5 @@ BGP 会话将被删除。当前缀计数低于限制后，将重置这些会话�
 ### 如何更改 ExpressRoute 线路的带宽？
 你可以使用“更新专用线路 API”和 PowerShell cmdlet 来更新 ExpressRoute 线路的带宽。
 
-<!---HONumber=Mooncake_0307_2016-->
+
+<!---HONumber=Mooncake_0328_2016-->

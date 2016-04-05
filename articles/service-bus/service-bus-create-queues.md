@@ -8,7 +8,7 @@
    editor="tysonn" />
 <tags 
    ms.service="service-bus"
-   ms.date="12/28/2015"
+    ms.date="03/16/2016"
    wacn.date="" />
 
 # 创建使用服务总线队列的应用程序
@@ -19,7 +19,7 @@
 
 ![Service-Bus-Queues-Img1](./media/service-bus-create-queues/IC657161.gif)
 
-每个 POS 终端通过将消息发送到 **DataCollectionQueue** 来报告其销售数据。这些消息将保留在此队列中，直到库存管理系统检索到它们。此模式通常称为*异步消息传送*，因为 POS 终端无需等待库存管理系统的回应即可继续进行处理。
+每个 POS 终端通过将消息发送到 **DataCollectionQueue** 来报告其销售数据。这些消息将保留在此队列中，直到库存管理系统检索到它们。此模式通常称为异步消息传送，因为 POS 终端无需等待库存管理系统的回应即可继续进行处理。
 
 ## 为什么要使用队列？
 
@@ -27,7 +27,7 @@
 
 ### 暂时分离
 
-使用异步消息传送模式，创建方和使用方不需要在同一时间联机。消息传送基础结构可靠地存储消息，直到使用方准备好接收它们。这将允许分布式应用程序的组件断开连接，例如，为进行维护而自动断开，或因组件故障断开连接，而不会影响整个系统。此外，使用方应用程序可能只需在一天的特定时段内联机。例如，在此零售方案中，库存管理系统可能只需要在营业日结束后进入联机状态。
+使用异步消息传送模式，创建方和使用方不需要在同一时间联机。消息传送基础结构可靠地存储消息，直到使用方准备好接收它们。这意味着分布式应用程序的组件可以断开连接，例如，为进行维护而自动断开，或因组件故障断开连接，而不会影响整个系统。此外，使用方应用程序可能只需在一天的特定时段内联机。例如，在此零售方案中，库存管理系统可能只需要在营业日结束后进入联机状态。
 
 ### 负载分级
 
@@ -55,11 +55,11 @@
 
 ### 创建服务命名空间
 
-拥有订阅后，即可创建新命名空间。必须为新命名空间指定在所有服务总线帐户之间唯一的名称。每个命名空间都可充当一组服务总线实体的容器。有关详细信息，请参阅[如何：创建或修改服务总线服务命名空间](https://msdn.microsoft.com/library/azure/hh690931.aspx)。
+拥有订阅后，即可创建新命名空间。请为新命名空间指定在所有服务总线帐户中唯一的名称。每个命名空间都可充当一组服务总线实体的作用域容器。
 
 ### 安装 NuGet 包
 
-若要使用服务总线服务命名空间，应用程序必须引用服务总线程序集，特别是 Microsoft.ServiceBus.dll。你可以在 Microsoft Azure SDK 的一部分中找到此程序集，也可在 [Azure SDK 下载页](/downloads/)下载。但是，服务总线 NuGet 包是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。有关使用 NuGet 和服务总线包的详细信息，请参阅[使用 NuGet 服务总线包](https://msdn.microsoft.com/zh-cn/library/dn741354.aspx)。
+若要使用服务总线命名空间，应用程序必须引用服务总线程序集，特别是 Microsoft.ServiceBus.dll。你可以在 Microsoft Azure SDK 的一部分中找到此程序集，也可在 [Azure SDK 下载页](/downloads/)下载。但是，[服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单方法。
 
 ### 创建队列
 
@@ -113,7 +113,7 @@ sender.Send(bm);
 
 可能会出现另外两种结果。第一种，如果应用程序出于某种原因无法处理消息，它可以对收到的消息调用 [Abandon](https://msdn.microsoft.com/library/azure/hh181837.aspx)（而不是 [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx)）。这将引起服务总线解锁消息，使得同一个使用方或其他竞争使用方能够重新接收它。第二种，存在与锁定关联的超时，如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），服务总线将解锁该消息并使它可再次被接收。
 
-请注意，如果应用程序在处理消息之后，但在发出 [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。这通常称为*至少一次*处理。这表示每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。如果方案不容许重复处理，则应用程序中需要用于检测重复的其他逻辑。可以根据消息的 [MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) 属性实现此要求。在多次传送尝试中，此属性的值将保持不变。这称为*仅一次*处理。
+请注意，如果应用程序在处理消息之后，但在发出 [Complete](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx) 请求之前发生崩溃，则在应用程序重新启动时会将该消息重新传送给它。这通常称为至少一次处理。这表示每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。如果方案不容许重复处理，则应用程序中需要用于检测重复的其他逻辑。可以根据消息的 [MessageId](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.brokeredmessage.messageid.aspx) 属性实现此要求。在多次传送尝试中，此属性的值将保持不变。这称为仅一次处理。
 
 此处显示的代码使用 **PeekLock** 模式接收和处理消息，如果未显式提供 [ReceiveMode](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.receivemode.aspx) 值，则这是默认设置。
 
@@ -154,6 +154,5 @@ catch (Exception e)
 
 ## 后续步骤
 
-了解了有关队列的基础知识，即可参阅[创建使用服务总线主题和订阅的应用程序](service-bus-create-topics-subscriptions.md)，使用服务总线中转消息传送的发布/订阅功能继续这一讨论。
-
-<!---HONumber=Mooncake_0215_2016-->
+了解了队列的基础知识后，请参阅[创建使用服务总线主题和订阅的应用程序](service-bus-create-topics-subscriptions.md)，以使用服务总线主题和订阅的发布/订阅功能继续这一讨论。
+<!---HONumber=Mooncake_0328_2016-->

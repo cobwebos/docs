@@ -9,14 +9,14 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="09/28/2015"
+	ms.date="02/17/2016"
 	wacn.date=""/>
 
 
 
-# 如何使用适用于 Adobe Open Source Media Framework 的 Microsoft 平滑流式处理插件 #
+# 如何使用适用于 Adobe Open Source Media Framework 的 Microsoft 平滑流式处理插件
 
-##概述 ##
+##概述
 
 
 适用于 Open Source Media Framework 2.0 的 Microsoft 平滑流式处理插件 (SS for OSMF) 扩展了 OSMF 的默认功能，并在新的和现有的 OSMF 播放器中添加了 Microsoft 平滑流式处理内容播放功能。该插件还为 Strobe Media Playback (SMP) 添加了平滑流式处理播放功能。
@@ -199,8 +199,7 @@ package
 以下代码段演示如何动态加载 SS for OSMF 插件以及如何使用 OSMF MediaFactory 类播放基本视频。在包含 SS for OSMF 代码之前，如果要使用 FILE 协议进行加载，请将“MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf”动态插件复制到项目文件夹；如果要进行 HTTP 加载，请将该插件复制到 Web 服务器下。不需要在项目引用中包含“MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc”。
 
 ```
-package 
-{
+package {
 	
 	import flash.display.*;
 	import org.osmf.media.*;
@@ -331,8 +330,8 @@ package
 	}
 }
 ```
-
 ##Strobe Media Playback 与 SS OSMF 动态插件
+
 适用于 OSMF 的平滑流式处理动态插件与 [Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html) 兼容。你可以使用 SS for OSMF 插件向 SMP 添加平滑流式处理内容播放功能。为此，请在进行 HTTP 加载时，使用以下步骤将“MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf”复制到 Web 服务器下：
 
 1.	浏览 [Strobe Media Playback 设置页](http://osmf.org/dev/2.0gm/setup.html)。 
@@ -400,4 +399,4 @@ package
 
 [适用于 OSMF 的 Microsoft 自适应流式处理插件更新](http://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0328_2016-->

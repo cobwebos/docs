@@ -1,5 +1,5 @@
 <properties
-   pageTitle="在 Azure 诊断中使用性能计数器 | Microsoft Azure"
+   pageTitle="在 Azure 诊断中使用性能计数器 | Azure"
    description="使用 Azure 云服务或虚拟机中的性能计数器来查找瓶颈和优化性能。"
    services="cloud-services"
    documentationCenter=".net"
@@ -8,7 +8,7 @@
    editor="tysonn" />
 <tags
    ms.service="cloud-services"
-   ms.date="09/25/2015"
+   ms.date="02/29/2016"
    wacn.date="" />
 
 # 在 Azure 应用程序中创建和使用性能计数器
@@ -17,21 +17,21 @@
 
 还可以收集适用于 Windows Server、IIS 和 ASP.NET 的性能计数器，并可将其用于确定 Azure Web 角色、辅助角色和虚拟机的运行状况。还可以创建和使用自定义性能计数器。
 
-你可以检查性能计数器数据 
-1.直接在应用程序主机上进行，使用远程桌面访问性能计数器工具 
-2.通过 System Center Operations Manager 使用 Azure Management Pack 来进行 
-3.使用其他监视工具来访问传输到 Azure 存储空间的诊断数据。有关详细信息，请参阅[在 Azure 存储空间中存储和查看诊断数据](https://msdn.microsoft.com/zh-cn/library/azure/hh411534.aspx)。
+你可以检查性能计数器数据
+1. 直接在应用程序主机上进行，使用远程桌面访问性能计数器工具
+2. 通过 System Center Operations Manager 使用 Azure Management Pack 来进行
+3. 使用其他监视工具来访问传输到 Azure 存储空间的诊断数据。有关详细信息，请参阅[在 Azure 存储空间中存储和查看诊断数据](https://msdn.microsoft.com/zh-cn/library/azure/hh411534.aspx)。  
 
-有关在 [Azure 管理门户](http://manage.azure.cn/)中监视应用程序性能的详细信息，请参阅[如何监视云服务](https://www.azure.com/manage/services/cloud-services/how-to-monitor-a-cloud-service/)。
+有关在 [Azure 经典门户](http://manage.windowsazure.cn)中监视应用程序性能的详细信息，请参阅[如何监视云服务](https://www.azure.com/manage/services/cloud-services/how-to-monitor-a-cloud-service)。
 
-有关创建日志记录和跟踪策略以及使用诊断和其他技术排查问题及优化 Azure 应用程序的其他深入指南，请参阅[有关开发 Azure 应用程序的问题排查最佳实践](https://msdn.microsoft.com/zh-ch/library/azure/hh771389.aspx)。
+有关创建日志记录和跟踪策略以及使用诊断和其他技术排查问题及优化 Azure 应用程序的其他深入指南，请参阅[有关开发 Azure 应用程序的问题排查最佳实践](https://msdn.microsoft.com/zh-cn/library/azure/hh771389.aspx)。
 
 
 ## 启用性能计数器监视
 
 默认情况下不启用性能计数器。你的应用程序或启动任务必须修改默认诊断代理配置，使之包括特定的性能计数器，以便根据需要对每个角色实例进行监视。
 
-### 适用于 Microsoft Azure 的性能计数器
+### 适用于 Azure 的性能计数器
 
 Azure 提供了一部分适用于 Windows Server、IIS 和 ASP.NET 堆栈的性能计数器。下表列出了一些特别适用于 Azure 应用程序的性能计数器。
 
@@ -52,34 +52,34 @@ Azure 提供了一部分适用于 Windows Server、IIS 和 ASP.NET 堆栈的性�
 |ASP.NET v4.0.30319 |拒绝的请求 |ASP.NET 性能计数器|
 |内存 |可用兆字节数 |内存性能计数器|
 |内存 |提交的字节数 |内存性能计数器|
-|Processor(_Total) |处理器时间百分比 |ASP.NET 性能计数器| 
-|TCPv4 |连接失败 |TCP 对象| 
-|TCPv4 |已建立的连接 |TCP 对象| 
-|TCPv4 |重置的连接 |TCP 对象| 
-|TCPv4 |发送的段数/秒 |TCP 对象| 
-|Network Interface(*) |接收的字节数/秒 |网络接口对象| 
-|Network Interface(*) |发送的字节数/秒 |网络接口对象| 
-|Network Interface(Microsoft Virtual Machine Bus Network Adapter _2)|接收的字节数/秒|网络接口对象| 
-|Network Interface(Microsoft Virtual Machine Bus Network Adapter _2)|发送的字节数/秒|网络接口对象| 
-|Network Interface(Microsoft Virtual Machine Bus Network Adapter _2)|总字节数/秒|网络接口对象|
+|Processor(\_Total) |处理器时间百分比 |ASP.NET 性能计数器|
+|TCPv4 |连接失败 |TCP 对象|
+|TCPv4 |已建立的连接 |TCP 对象|
+|TCPv4 |重置的连接 |TCP 对象|
+|TCPv4 |发送的段数/秒 |TCP 对象|
+|Network Interface(*) |接收的字节数/秒 |网络接口对象|
+|Network Interface(*) |发送的字节数/秒 |网络接口对象|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|接收的字节数/秒|网络接口对象|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|发送的字节数/秒|网络接口对象|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|总字节数/秒|网络接口对象|
 
 ## 创建自定义性能计数器并将其添加到应用程序中
 
 Azure 支持针对 Web 角色和辅助角色创建和修改自定义性能计数器。这些计数器可用于跟踪和监视特定于应用程序的行为。你可以使用提升的权限通过启动任务、Web 角色或辅助角色创建和删除自定义性能计数器类别和说明符。
 
->[AZURE.NOTE]用于更改自定义性能计数器的代码必须具有提升的权限才能运行。如果代码位于 Web 角色或辅助角色中，则该角色必须在 ServiceDefinition.csdef 文件中包括标记 <Runtime executionContext="elevated" /> 才能使角色正常初始化。
+>[AZURE.NOTE] 用于更改自定义性能计数器的代码必须具有提升的权限才能运行。如果代码位于 Web 角色或辅助角色中，则该角色必须在 ServiceDefinition.csdef 文件中包括标记 <Runtime executionContext="elevated" /> 才能使角色正常初始化。
 
 你可以使用诊断代理将自定义性能计数器数据发送到 Azure 存储空间。
 
-标准性能计数器数据通过 Azure 流程生成。必须由 Web 角色或辅助角色应用程序创建自定义性能计数器数据。请参阅[性能计数器类型](https://msdn.microsoft.com/zh-cn/library/z573042h.aspx)，了解可以存储在自定义性能计数器中的数据的类型。请参阅[性能计数器示例](http://code.msdn.microsoft.com/azure/)，以获取在 Web 角色中创建和设置自定义性能计数器数据的示例。
+标准性能计数器数据通过 Azure 流程生成。必须由 Web 角色或辅助角色应用程序创建自定义性能计数器数据。请参阅[性能计数器类型](https://msdn.microsoft.com/zh-cn/library/z573042h.aspx)，了解可以存储在自定义性能计数器中的数据的类型。请参阅[性能计数器示例](http://code.msdn.microsoft.com/azure)，以获取在 Web 角色中创建和设置自定义性能计数器数据的示例。
 
 ## 存储和查看性能计数器数据
 
 Azure 缓存性能计数器数据和其他诊断信息。此数据适用于在角色实例正运行时进行远程监视，使用远程桌面访问权限来查看性能监视器之类的工具。若要保留角色实例以外的数据，必须通过诊断代理将数据传输到 Azure 存储空间。缓存的性能计数器数据的大小限制可以在诊断代理中配置，也可以将其配置为针对所有诊断数据的共享限制的一部分。有关如何设置缓冲区大小的详细信息，请参阅 [OverallQuotaInMB](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitorconfiguration.overallquotainmb.aspx) 和 [DirectoriesBufferConfiguration](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.diagnostics.directoriesbufferconfiguration.aspx)。请参阅[在 Azure 存储空间中存储和查看诊断数据](https://msdn.microsoft.com/zh-cn/library/azure/hh411534.aspx)，大致了解如何通过设置诊断代理将数据传输到存储帐户中。
 
-每个配置的性能计数器实例均按指定的采样率进行记录，采样的数据则通过计划的传输请求或按需传输请求传输到存储帐户中。可以将自动传输安排为每分钟一次。通过诊断代理传输的性能计数器数据存储在存储帐户的 WADPerformanceCountersTable 表中。该表可以通过标准的 Azure 存储 API 方法进行访问和查询。请参阅 [Microsoft Azure 性能计数器示例](http://code.msdn.microsoft.com/Windows-Azure-PerformanceCo-7d80ebf9)，以获取通过 WADPerformanceCountersTable 表查询和显示性能计数器数据的示例。
+每个配置的性能计数器实例均按指定的采样率进行记录，采样的数据则通过计划的传输请求或按需传输请求传输到存储帐户中。可以将自动传输安排为每分钟一次。通过诊断代理传输的性能计数器数据存储在存储帐户的 WADPerformanceCountersTable 表中。该表可以通过标准的 Azure 存储 API 方法进行访问和查询。请参阅 [Azure 性能计数器示例](http://code.msdn.microsoft.com/Windows-Azure-PerformanceCo-7d80ebf9)，以获取通过 WADPerformanceCountersTable 表查询和显示性能计数器数据的示例。
 
->[AZURE.NOTE]根据诊断代理传输频率和队列延迟情况，存储帐户中的最新性能计数器数据可能已过时数分钟。
+>[AZURE.NOTE] 根据诊断代理传输频率和队列延迟情况，存储帐户中的最新性能计数器数据可能已过时数分钟。
 
 ## 使用诊断配置文件启用性能计数器
 
@@ -91,7 +91,7 @@ Azure 缓存性能计数器数据和其他诊断信息。此数据适用于在�
 
 ## 步骤 1：通过性能计数器收集和存储数据
 
-在将诊断文件添加到 Visual Studio 解决方案中后，你可以在 Azure 应用程序中配置性能计数器数据的收集和存储。通过将性能计数器添加到诊断文件可做到这一点。首先在实例中收集诊断数据（包括性能计数器）。随后该数据将保留到 Azure 表服务中的 WADPerformanceCountersTable 表中，因此你还需要指定应用程序中的存储帐户。如果在计算模拟器中本地测试应用程序，则也可在存储模拟器中本地存储诊断数据。你必须先转到 [Azure 管理门户](http://manage.windowsazure.cn/)并创建存储帐户，然后才能存储诊断数据。最佳做法是将存储帐户置于与 Azure 应用程序相同的地理位置，从而消除外部宽带成本并减少延迟。
+在将诊断文件添加到 Visual Studio 解决方案中后，你可以在 Azure 应用程序中配置性能计数器数据的收集和存储。通过将性能计数器添加到诊断文件可做到这一点。首先在实例中收集诊断数据（包括性能计数器）。随后该数据将保留到 Azure 表服务中的 WADPerformanceCountersTable 表中，因此你还需要指定应用程序中的存储帐户。如果在计算模拟器中本地测试应用程序，则也可在存储模拟器中本地存储诊断数据。你必须先转到 [Azure 经典门户](http://manage.windowsazure.cn)并创建存储帐户，然后才能存储诊断数据。最佳做法是将存储帐户置于与 Azure 应用程序相同的地理位置，从而消除外部宽带成本并减少延迟。
 
 ### 将性能计数器添加到诊断文件
 
@@ -116,10 +116,10 @@ Azure 缓存性能计数器数据和其他诊断信息。此数据适用于在�
        <PerformanceCounterConfiguration counterSpecifier="\Process(WaWorkerHost)\Thread Count" sampleRate="PT30S" />
     -->
 
-       <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Interop(_Global_)\# of marshalling" sampleRate="PT30S" />
+       <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Interop(_Global_)# of marshalling" sampleRate="PT30S" />
        <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Loading(_Global_)\% Time Loading" sampleRate="PT30S" />
        <PerformanceCounterConfiguration counterSpecifier="\.NET CLR LocksAndThreads(_Global_)\Contention Rate / sec" sampleRate="PT30S" />
-       <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Memory(_Global_)\# Bytes in all Heaps" sampleRate="PT30S" />
+       <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Memory(_Global_)# Bytes in all Heaps" sampleRate="PT30S" />
        <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Networking(_Global_)\Connections Established" sampleRate="PT30S" />
        <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Remoting(_Global_)\Remote Calls/sec" sampleRate="PT30S" />
        <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Jit(_Global_)\% Time in Jit" sampleRate="PT30S" />
@@ -140,11 +140,11 @@ counterSpecifier 属性指定要收集的性能计数器。sampleRate 属性指�
 
 对于 Azure SDK 2.5，可在 diagnostics.wadcfgx 文件中指定存储帐户。
 
->[AZURE.NOTE]这些说明仅适用于 Azure SDK 2.4 及更低版本。对于 Azure SDK 2.5，可在 diagnostics.wadcfgx 文件中指定存储帐户。
+>[AZURE.NOTE] 这些说明仅适用于 Azure SDK 2.4 及更低版本。对于 Azure SDK 2.5，可在 diagnostics.wadcfgx 文件中指定存储帐户。
 
 设置连接字符串：
 
-1. 使用常用文本编辑器打开 ServiceConfiguration.Cloud.cscfg 文件并为存储设置连接字符串。将在管理门户的存储帐户仪表板的“管理密钥”下找到 *AccountName* 和 *AccountKey* 值。
+1. 使用常用文本编辑器打开 ServiceConfiguration.Cloud.cscfg 文件并为存储设置连接字符串。将在 Azure 经典门户的存储帐户仪表板的“管理密钥”下找到 AccountName 和 AccountKey 值。
 
     ```
     <ConfigurationSettings>
@@ -175,7 +175,7 @@ Azure 诊断代理会在启动后一分钟刷新 .wadcfg 文件中的性能计�
 2. 将 Runtime 元素添加到 WebRole 或 WorkerRole 元素可允许使用提升的权限执行：
 
     ```
-    <RuntimeexecutionContext="elevated"/>
+    <runtime executioncontext="elevated"/>
     ```
 3. 保存文件。
 4. 打开诊断文件（在 SDK 2.4 及更低版本中为 diagnostics.wadcfg，在 SDK 2.5 及更高版本中为 diagnostics.wadcfgx），将以下代码添加到 DiagnosticMonitorConfiguration 中： 
@@ -237,9 +237,9 @@ Azure 诊断代理会在启动后一分钟刷新 .wadcfg 文件中的性能计�
 
 ## 步骤 3：查询性能计数器数据
 
-在应用程序部署完成并运行后，诊断监视器将开始收集性能计数器并将该数据保存到 Azure 存储空间。你使用 Cerebrata 提供的工具（例如 Visual Studio 中的服务器资源管理器、[Azure 存储资源管理器](http://azurestorageexplorer.codeplex.com/)或 [Azure 诊断管理器](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx)）查看 WADPerformanceCountersTable 表中的性能计数器数据。你还可以使用 [C#](/documentation/articles/storage/storage-dotnet-how-to-use-tables)、[Java](/documentation/articles/storage/storage-java-how-to-use-table-storage)、[Node.js](/documentation/articles/storage/storage-nodejs-how-to-use-table-storage)、[Python](/documentation/articles/storage/storage-python-how-to-use-table-storage)、[Ruby](/documentation/articles/storage/storage-ruby-how-to-use-table-storage) 或 [PHP](/documentation/articles/storage/storage-php-how-to-use-table-storage) 以编程方式查询表服务。
+在应用程序部署完成并运行后，诊断监视器将开始收集性能计数器并将该数据保存到 Azure 存储空间。你使用 Cerebrata 提供的工具（例如 Visual Studio 中的服务器资源管理器、[Azure 存储资源管理器](http://azurestorageexplorer.codeplex.com)或 [Azure 诊断管理器](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx)）查看 WADPerformanceCountersTable 表中的性能计数器数据。你还可以使用 [C#](/documentation/articles/storage-dotnet-how-to-use-tables)、[Java](/documentation/articles/storage-java-how-to-use-table-storage)、[Node.js](/documentation/articles/storage-nodejs-how-to-use-table-storage)、[Python](/documentation/articles/storage-python-how-to-use-table-storage)、[Ruby](/documentation/articles/storage-ruby-how-to-use-table-storage) 或 [PHP](/documentation/articles/storage-php-how-to-use-table-storage) 以编程方式查询表服务。
 
-以下 C# 示例显示针对 WADPerformanceCountersTable 表的简单查询并将诊断数据保存到 CSV 文件中。将性能计数器保存到 CSV 文件后，你可以使用 Microsoft Excel 中的图形功能或使用其他一些工具来使数据可视化。请务必添加对 Microsoft.WindowsAzure.Storage.dll（它包含在 2012 年 10 月版的 Azure SDK for .NET 和更高版本中）的引用。程序集安装在 %Program Files%\\Microsoft SDKs\\Microsoft Azure.NET SDK\\version-num\\ref\\ 目录中。
+以下 C# 示例显示针对 WADPerformanceCountersTable 表的简单查询并将诊断数据保存到 CSV 文件中。将性能计数器保存到 CSV 文件后，你可以使用 Microsoft Excel 中的图形功能或使用其他一些工具来使数据可视化。请务必添加对 Microsoft.WindowsAzure.Storage.dll（它包含在 2012 年 10 月版的 Azure SDK for .NET 和更高版本中）的引用。程序集安装在 %Program Files%\\Microsoft SDKs\\Azure.NET SDK\\version-num\\ref\\ 目录中。
 
 ```
     using Microsoft.WindowsAzure.Storage;
@@ -247,8 +247,8 @@ Azure 诊断代理会在启动后一分钟刷新 .wadcfg 文件中的性能计�
     using Microsoft.WindowsAzure.Storage.Table;
     ...
 
-    // Get the connection string. When using Microsoft Azure Cloud Services, it is recommended
-    // you store your connection string using the Microsoft Azure service configuration
+    // Get the connection string. When using Azure Cloud Services, it is recommended
+    // you store your connection string using the Azure service configuration
     // system (*.csdef and *.cscfg files). You can you use the CloudConfigurationManager type
     // to retrieve your storage connection string.  If you're not using Cloud Services, it's
     // recommended that you store the connection string in your web.config or app.config file.
@@ -314,11 +314,6 @@ Azure 诊断代理会在启动后一分钟刷新 .wadcfg 文件中的性能计�
 
 
 ## 后续步骤
+[查看有关 Azure 诊断的其他文章](/documentation/articles/azure-diagnostics)
 
-现在，你已了解收集性能计数器的基础知识，单击下面的链接可了解如何实现更复杂的故障排除方案。
-
-[有关开发 Azure 应用程序的问题排查最佳实践](https://msdn.microsoft.com/zh-cn/library/azure/hh771389.aspx)
-
-[如何监视云服务](/documentation/articles/how-to-monitor-a-cloud-service)
-
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0328_2016-->
