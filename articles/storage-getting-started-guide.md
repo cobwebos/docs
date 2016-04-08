@@ -112,4 +112,4 @@
 [Image1]: ./media/storage-getting-started-guide/QuickStart.png
 
 
-<!--HONumber=50-->
+<!---HONumber=50-->
