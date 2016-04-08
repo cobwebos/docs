@@ -169,4 +169,4 @@ Azure 存储帐户授予你访问 Azure 存储空间中的 Azure Blob、队列�
 - 访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)。
 - [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!----HONumber=Mooncake_0307_2016-->
