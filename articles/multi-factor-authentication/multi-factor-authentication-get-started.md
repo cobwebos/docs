@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="11/19/2015" 
+	ms.date="03/03/2016" 
 	wacn.date=""/>
 
 #选择适合自己的多因素安全解决方案
@@ -62,26 +62,22 @@ Azure AD 和使用 DirSync、Azure AD Sync、Azure AD Connect 的本地 AD - 包
 将双向短信用作第二个因素 | | ● 
 将硬件令牌用作第二个因素 | | ● 
 不支持 MFA 的客户端的应用密码 | ● |  
-管理员控制身份验证方法 | | ● 
+管理员控制身份验证方法 | （公共预览版） | ● 
 PIN 模式 | | ●
 欺诈警报 | ● | ●
 MFA 报告 | ● | ● 
-一次性跳过 | ● | ● 
+一次性跳过 | | ● 
 通话的自定义问候语 | ● | ● 
 可自定义的来电者 ID | ● | ● 
 受信任的 IP | ● | ● 
-暂停对已记住的设备进行 MFA（公共预览版） | ● |  
+记住受信任的设备的 MFA（公共预览版） | ● |  
 条件性访问 | ● | ● 
-缓存 | ● | ● 
+缓存 | | ● 
 
 在确定是要使用云 Multi-Factor Authentication 还是本地 MFA 服务器后，接下来可以开始设置并使用 Azure Multi-Factor Authentication。**选择代表你的方案的图标！**
 
-<center>
+<center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
 
 
-
-[![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160;
-</center>
-
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="12/02/2015"
+    ms.date="02/12/2016"
    wacn.date=""/>
 
 # Azure AD Connect 的拓扑
@@ -59,7 +59,7 @@ Azure AD Connect 向导提供如何合并用户的多个选项，因此即使不
 4.	如果你有链接的邮箱，则在不同的林中还有另一个帐户用于登录。
 
 如果你的环境不符合这些假设，将发生以下情况：
--	如果有一个以上的活动帐户或一个以上的邮箱，同步引擎将选择其中一个并忽略其他的帐户或邮箱。
+-	如果你有多个活动帐户或多个邮箱，同步引擎将选择其中一个并忽略其他的帐户或邮箱。
 -	如果你有链接的邮箱但没有其他帐户，则这些帐户不会导出到 Azure AD，并且用户将不是任何组的成员。在 DirSync 中，链接的邮箱显示为普通邮箱，这是有意的行为，目的是更好地支持多林方案。
 
 ### 多个林，多个同步服务器连接到单个 Azure AD 目录
@@ -74,8 +74,7 @@ Azure AD Connect 向导提供如何合并用户的多个选项，因此即使不
 
 ![MultiForestSeperateTopologies](./media/active-directory-aadconnect-topologies/MultiForestSeperateTopologies.png)
 
-在此环境中，本地的所有林都被视为单独的实体，并且没有用户出现在任何其他林中。
-每个林都有其自己的 Exchange 组织，并且林之间没有任何 GALSync。合并/收购之后或在其中每个业务单位在相互隔离的情况下运营的组织中，可能出现这种情况。在 Azure AD 中，这些林将在相同的组织中并与统一 GAL 一起出现。
+在此环境中，本地的所有林都被视为单独的实体，并且没有用户出现在任何其他林中。每个林都有其自己的 Exchange 组织，并且林之间没有任何 GALSync。合并/收购之后或在其中每个业务单位在相互隔离的情况下运营的组织中，可能出现这种情况。在 Azure AD 中，这些林将在相同的组织中并与统一 GAL 一起出现。
 在此图中，每个林中的每个对象会在 metaverse 中出现一次，并在目标 Azure AD 目录中聚合。
 
 ### 多个林 – 匹配用户
@@ -112,8 +111,8 @@ FSP 可在 ADDS 中用来代表安全组中来自其他林的成员。同步引�
 
 | 工作负载 | |
 | --------- | --------- |
-| Exchange Online |	如果有多个本地 Exchange 组织（即 Exchange 已部署到多个林），则必须使用 Exchange 2013 SP1 或更高版本。可以在此找到详细信息：[包含多个 Active Directory 林的混合部署](https://technet.microsoft.com/zh-cn/library/jj873754.aspx) |
-| Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。可以在此找到支持的拓扑的详细信息：[Skype for Business Server 2015 的环境要求](https://technet.microsoft.com/zh-cn/library/dn933910.aspx) |
+| Exchange Online |	如果有多个本地 Exchange 组织（即 Exchange 已部署到多个林），则必须使用 Exchange 2013 SP1 或更高版本。可以在此找到详细信息：[包含多个 Active Directory 林的混合部署](https://technet.microsoft.com/en-us/library/jj873754.aspx) |
+| Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。可以在此找到支持的拓扑的详细信息：[Skype for Business Server 2015 的环境要求](https://technet.microsoft.com/en-us/library/dn933910.aspx) |
 
 ## 暂存服务器
 ![StagingServer](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)
@@ -127,8 +126,7 @@ Azure AD Connect 支持以“暂存模式”安装第二个服务器。使用此
 如果想要在不同的数据中心拥有多个备份，也可以配置多个暂存服务器。
 
 ## 多个 Azure AD 目录
-Microsoft 建议组织在 Azure AD 中部署单个目录。
-在打算使用多个 Azure AD 目录之前，请参阅以下主题，其中介绍了可让你使用单个目录的常见方案。
+Microsoft 建议组织在 Azure AD 中部署单个目录。在打算使用多个 Azure AD 目录之前，请参阅以下主题，其中介绍了可让你使用单个目录的常见方案。
 
 | 主题 | |
 | --------- | --------- |
@@ -173,4 +171,4 @@ Azure AD 目录在设计上是隔离的。它不支持将 Azure AD Connect 同�
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0405_2016-->

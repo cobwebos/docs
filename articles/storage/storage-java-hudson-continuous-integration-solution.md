@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="01/09/2016" 
+	ms.date="02/21/2016" 
 	wacn.date=""/>
 
 # 将 Azure 存储空间用于 Hudson 持续集成解决方案
@@ -24,7 +24,7 @@
 
 Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频繁地生成版本，实现了软件项目的持续集成，因此提高了开发人员的工作效率。生成是版本控制的，并且可将生成项目上载到不同存储库中。本文将演示如何将 Azure Blob 存储用作生成项目的存储库。它还将演示如何从 Azure Blob 存储下载依赖项。
 
-有关 Hudson 的更多信息，请访问 [Hudson 概览][]。
+有关 Hudson 的更多信息，请访问 [Hudson 概览](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)。
 
 ## 使用 Blob 服务的好处 ##
 
@@ -56,9 +56,9 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 
         虽然典型 Hudson CI 解决方案将设置为作为一个服务运行，但在本教程中，通过命令行运行 Hudson war 就足够了。
 
-- 一个 Azure 帐户。注册 Azure 帐户的位置位于 <http://www.windowsazure.cn>。
+- 一个 Azure 帐户。注册 Azure 帐户的位置位于 <https://www.azure.cn>。
 
-- 一个 Azure 存储帐户。如果你还没有存储帐户，则可使用[如何创建存储帐户][]中的步骤创建一个。
+- 一个 Azure 存储帐户。如果你还没有存储帐户，则可使用[创建存储帐户](/documentation/articles/storage-create-storage-account#create-a-storage-account)中的步骤创建一个存储帐户。
 
 - 建议熟悉 Hudson CI 解决方案（但不是必需的），因为以下内容将使用一个基本示例向你演示使用 Blob 服务作为 Hudson CI 生成项目的存储库时所需的步骤。
 
@@ -103,7 +103,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
         date /t > date.txt
         time /t >> date.txt
 
-5. 在作业配置的“生成后操作”部分，单击“将项目上载到 Microsoft Azure Blob 存储”。
+5. 在作业配置的“后期生成操作”部分，单击“将项目上载到 Microsoft Azure Blob 存储”。
 6. 对于“存储帐户名称”，选择要使用的存储帐户。
 7. 对于“容器名称”，请指定容器名称。（如果上载生成项目时不存在该容器，则将创建该容器。） 你可使用环境变量，因此在此示例中，请输入 **${JOB\_NAME}** 作为容器名称。
 
@@ -111,7 +111,7 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 
     在你为“执行 Windows 批处理命令”输入脚本的“命令”部分下方，有一个指向 Hudson 所识别环境变量的链接。单击此链接可了解环境变量名称和说明。请注意，不允许将包含特殊字符的环境变量（如 **BUILD\_URL** 环境变量）用作容器名称或通用虚拟路径。
 
-8. 对于此示例，请单击“默认将新容器设为公开的”。（如果要使用私有容器，你将需要创建共享访问签名以允许访问。这超出了本文的范围。你可在[创建共享访问签名](http://msdn.microsoft.com/zh-cn/library/azure/jj721951.aspx)中了解有关共享访问签名的详细信息。）
+8. 对于此示例，请单击“默认将新容器设为公开的”。（如果要使用私有容器，你将需要创建共享访问签名以允许访问。这超出了本文的范围。你可以在此[共享访问签名：了解 SAS 模型](/documentation/articles/storage-dotnet-shared-access-signature-part-1)中了解有关共享访问签名的详细信息。）
 9. [可选]如果你希望在上载生成项目之前清除容器的内容，请单击“在上载前清除容器”（如果你不希望清除容器的内容，则使该复选框保持未选中状态）。
 10. 对于“要上载的项目列表”，请输入 **text/*.txt**。
 11. 对于“已上载项目的通用虚拟路径”，输入 **${BUILD\_ID}/${BUILD\_NUMBER}**。
@@ -146,20 +146,24 @@ Hudson 通过允许开发人员轻松地集成其代码更改以及自动和频�
 
 - **存储帐户**：对 Azure 存储空间的所有访问都通过存储帐户完成。存储帐户是访问 blob 的最高级别的命名空间。一个帐户可以包含无限个容器，只要这些容器的总大小不超过 100 TB 即可。
 - **容器**：一个容器包含一组 blob 集。所有 blob 必须位于相应的容器中。一个帐户可以包含无限个容器。一个容器可以存储无限个 Blob。
-- **Blob**：任何类型和大小的文件。可将两类 Blob 存储到 Azure 存储空间中：块 Blob 和页 Blob。大部分文件都是块 blob。单个块 Blob 最大可以为 200 GB。本教程使用的是块 Blob。另一种 Blob 类型为页 Blob，其大小可以达 1 TB，在对文件中的一系列字节进行频繁修改时，这种 Blob 类型更加高效。有关 Blob 的更多信息，请参阅[了解块 Blob 和页 Blob](http://msdn.microsoft.com/zh-cn/library/azure/ee691964.aspx)。
+- **Blob**：任何类型和大小的文件。可将两类 Blob 存储到 Azure 存储空间中：块 Blob 和页 Blob。大部分文件都是块 blob。单个块 Blob 最大可以为 200 GB。本教程使用的是块 Blob。另一种 Blob 类型为页 Blob，其大小可以达 1 TB，在对文件中的一系列字节进行频繁修改时，这种 Blob 类型更加高效。有关 Blob 的更多信息，请参阅[了解块 Blob、追加 Blob 和页 Blob](http://msdn.microsoft.com/zh-cn/library/azure/ee691964.aspx)。
 - **URL 格式**：可使用以下 URL 格式对 Blob 寻址：
 
     `http://storageaccount.blob.core.chinacloudapi.cn/container_name/blob_name`
     
     （以上格式适用于公共 Azure 云。如果你在使用其他 Azure 云，请使用 Azure 管理门户中的终结点来确定你的 URL 终结点。）
 
-    在以上格式中，`storageaccount` 表示存储帐户的名称，`container_name` 表示容器的名称，而 `blob_name` 表示 Blob 的名称。在容器名称中，你可具有多个由正斜杠 **/** 分隔的路径。本教程的示例容器名称为 **MyJob**，**${BUILD\_ID}/${BUILD\_NUMBER}** 用于通用虚拟路径，从而导致 Blob 具有以下格式的 URL：
+    在以上格式中，`storageaccount` 表示存储帐户的名称，`container_name` 表示容器的名称，而 `blob_name` 表示 Blob 的名称。在容器名称中，你可具有多个由正斜杠 ** /** 分隔的路径。本教程的示例容器名称为 **MyJob**，**${BUILD\_ID}/${BUILD\_NUMBER}** 用于通用虚拟路径，从而导致 Blob 具有以下格式的 URL：
 
     `http://example.blob.core.chinacloudapi.cn/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## 后续步骤
 
-  [如何创建存储帐户]: /documentation/articles/storage-create-storage-account
-  [Hudson 概览]: http://wiki.eclipse.org/Hudson-ci/Meet_Hudson
+- [Hudson 简介](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+- [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
+- [Azure 存储客户端 SDK 参考](http://azure.github.io/azure-storage-java/)
+- [Azure 存储空间服务 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx)
+- [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 
-<!---HONumber=Mooncake_0215_2016-->
+有关详细信息，请参阅 [Java 开发人员中心](/develop/java/)。
+<!---HONumber=Mooncake_0405_2016-->

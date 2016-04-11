@@ -41,7 +41,7 @@
 New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 ```
 
-然后，在资源组中创建新的 Batch 帐户，此时还应该为 <*account\_name*> 指定帐户名，以及批处理服务可用的位置。帐户创建可能需要几分钟才能完成。例如：
+然后，在资源组中创建新的 Batch 帐户，此时还应该为 \<account\_name> 指定帐户名，以及批处理服务可用的位置。帐户创建可能需要几分钟才能完成。例如：
 
 ```
 New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName MyBatchResourceGroup
@@ -94,7 +94,7 @@ $context = Get-AzureRmBatchAccountKeys -AccountName <account_name>
 ## 创建和修改 Batch 资源
 使用 cmdlet（例如 **New-AzureBatchPool**、**New-AzureBatchJob** 和 **New-AzureBatchTask**）在 Batch 帐户下创建资源。可以使用相应的 **Get-** 和 **Set-** cmdlet 来更新现有资源的属性，以及使用 **Remove-** cmdlet 来删除 Batch 帐户下的资源。
 
-例如，以下 cmdlet 可创建新的 Batch 池，该池在配置后可以使用包含系列 3 最新操作系统版本 (Windows Server 2012) 映像的小型虚拟机，计算节点的目标数由自动缩放公式而定。在本示例中，公式为 $TargetDedicated=3，表示池中的计算节点数最多为 3。**BatchContext** 参数将先前定义的变量 *$context* 指定为 BatchAccountContext 对象。
+例如，以下 cmdlet 可创建新的 Batch 池，该池在配置后可以使用包含系列 3 最新操作系统版本 (Windows Server 2012) 映像的小型虚拟机，计算节点的目标数由自动缩放公式而定。在本示例中，公式为 $TargetDedicated=3，表示池中的计算节点数最多为 3。**BatchContext** 参数将先前定义的变量 $context 指定为 BatchAccountContext 对象。
 
 ```
 New-AzureBatchPool -Id "MyAutoScalePool" -VirtualMachineSize "Small" -OSFamily "3" -TargetOSVersion "*" -AutoScaleFormula '$TargetDedicated=3;' -BatchContext $Context
@@ -108,7 +108,7 @@ New-AzureBatchPool -Id "MyAutoScalePool" -VirtualMachineSize "Small" -OSFamily "
 
 ### 查询数据
 
-例如，使用 **Get-AzureBatchPools** 可查找池。假设你已将 BatchAccountContext 对象存储在 *$context* 中，则默认情况下，此 cmdlet 将查询帐户下的所有池：
+例如，使用 **Get-AzureBatchPools** 可查找池。假设你已将 BatchAccountContext 对象存储在 $context 中，则默认情况下，此 cmdlet 将查询帐户下的所有池：
 
 ```
 Get-AzureBatchPool -BatchContext $context
@@ -161,4 +161,4 @@ Get-AzureBatchJob -BatchContext $context | Get-AzureBatchTask -BatchContext $con
 * [Azure 批处理 cmdlet 参考](https://msdn.microsoft.com/library/azure/mt125957.aspx)
 * [有效地查询 Batch 服务](batch-efficient-list-queries.md)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -106,4 +106,4 @@
 * [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync)
 * [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history)
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0405_2016-->

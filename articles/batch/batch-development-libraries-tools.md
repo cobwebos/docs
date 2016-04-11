@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure 批处理开发库和工具 | Microsoft Azure"
+	pageTitle="Azure Batch 开发库和工具 | Microsoft Azure"
 	description="获取开发 Azure 批处理应用程序时所需的库和工具"
 	services="batch"
 	documentationCenter=""
@@ -41,5 +41,4 @@
 [Batch]: #batch
 [Batch Apps]: #batch-apps
 [Additional resources]: #additional-resources
-
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0405_2016-->

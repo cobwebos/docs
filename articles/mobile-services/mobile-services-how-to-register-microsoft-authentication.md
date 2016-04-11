@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/30/2015" 
+	ms.date="02/25/2016" 
 	wacn.date=""/>
 
 # 注册应用程序以使用 Microsoft 帐户进行身份验证
@@ -25,7 +25,7 @@
 
 ##在 Windows 开发人员中心注册 Windows 应用商店应用程序
 
-首先必须在 Windows 开发人员中心注册 Windows 应用商店应用程序。
+首先必须在 Windows 开发人员中心注册 Windows 应用商店应用程序。通过注册，Windows 应用将能够使用单一登录行为。
 
 >[AZURE.NOTE]Windows Phone 8、Windows Phone 8.1 Silverlight 和非 Windows 应用程序可以跳过本部分。
 
@@ -42,14 +42,18 @@
 6. 回到新应用的“Windows 开发人员中心”页，单击“服务”>“推送通知”。
 
 7. 在“推送通知”页中，在“Windows 推送通知服务(WNS)和 Microsoft Azure 移动服务”下面单击“Live Services 站点”。
+ 
+	此时将显示应用的 Microsoft 帐户应用设置页。
 
-此时将显示应用程序的 Microsoft 帐户页。接下来，你将获得身份验证凭据，Azure 需要使用这些凭据来对你的应用进行 Microsoft 身份验证。
+8. 记下“程序包 SID”值。可以将此 SID 保存在 Azure 门户以便为你的 Windows 应用启用单一登录和推送通知。
+
+接下来，你会从下一部分中的步骤 4 开始，为你的 Windows 应用配置 Microsoft 帐户身份验证。
 
 ## 配置你的 Microsoft 帐户注册，然后连接到移动服务
 
-本部分中的第一个步骤只适用于 Windows Phone 8、Windows Phone 8.1 Silverlight 以及非 Windows 应用商店应用程序。对于这些应用程序，你也可以忽略包安全性标识符 (SID)，因为该标识符只适用于 Windows 应用商店应用程序。
+如果你已在上一部分中注册了 Windows 应用，则可以跳到步骤 2。
 
-1. 对于非 Windows 应用商店应用程序，请导航到 Microsoft 帐户开发人员中心的[“我的应用程序”](http://go.microsoft.com/fwlink/p/?LinkId=262039)页，使用你的 Microsoft 帐户登录（如果需要），单击“创建应用程序”，键入**应用程序名称**，然后单击“我接受”。
+1. 对于非 Windows 应用商店应用程序，请导航到 Microsoft 帐户开发人员中心的“[我的应用程序](http://go.microsoft.com/fwlink/p/?LinkId=262039)”页，使用你的 Microsoft 帐户登录（如果需要），单击“创建应用程序”，键入**应用程序名称**，然后单击“我接受”。
 
    	这将会通过 Microsoft 帐户为你保留应用程序名称，并显示应用程序的 Microsoft 帐户页。
 
@@ -68,7 +72,7 @@
    	![Microsoft 帐户应用程序设置](./media/mobile-services-how-to-register-microsoft-authentication/mobile-services-win8-app-push-auth.png)
 	
 	
-    > [AZURE.NOTE]客户端密钥是一个非常重要的安全凭据。请勿与任何人分享客户端密钥或将密钥随应用程序分发。只有 Windows 应用商店应用程序注册才能看到“包 SID”字段。
+    > [AZURE.NOTE] 客户端密钥是一个非常重要的安全凭据。请勿与任何人分享客户端密钥或将密钥随应用程序分发。只有 Windows 应用商店应用程序注册才能看到“包 SID”字段。
 
 4. 在 [Azure 经典门户]中，单击移动服务的“标识”选项卡，输入从标识提供者获取的客户端 ID、客户端机密和包 SID，然后单击“保存”。
 
@@ -87,4 +91,4 @@
 
 [Azure 经典门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0405_2016-->

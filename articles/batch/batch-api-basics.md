@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="batch" 
-	ms.date="01/21/2016"
+	ms.date="03/11/2016"
 	wacn.date=""/>
 	
 # Azure Batch 功能概述
@@ -22,9 +22,9 @@
 
 在 Batch 服务中开发的几乎所有分布式计算方案都会使用以下典型高级工作流：
 
-1. 将你要在分布式计算方案中使用的 *数据文件* 上载到 [Azure 存储][azure_storage]帐户。这些文件必须在存储帐户中，Batch 服务才能够访问它们。当任务运行时，会将这些文件下载到[计算节点](#computenode)。
+1. 将你要在分布式计算方案中使用的数据文件上载到 [Azure 存储][azure_storage]帐户。这些文件必须在存储帐户中，Batch 服务才能够访问它们。当任务运行时，会将这些文件下载到[计算节点](#computenode)。
 
-2. 将相关 *二进制文件* 上载到你的存储帐户。这些二进制文件包含任务运行的程序及其任何依赖组件。还必须从存储帐户访问这些文件，使任务可将它们下载到计算节点。
+2. 将相关二进制文件上载到你的存储帐户。这些二进制文件包含任务运行的程序及其任何依赖组件。还必须从存储帐户访问这些文件，使任务可将它们下载到计算节点。
 
 3. 创建计算节点的[池](#pool)。可以在创建池时指定要使用的[计算节点大小][cloud_service_sizes]，运行任务时，将为它分配此池中的节点。
 
@@ -40,27 +40,20 @@
 
 ## <a name="resource"></a>Batch 服务的资源
 
-使用 Azure Batch 服务时，你可以利用以下资源：
+当你使用 Batch 时，可以使用以下多种资源：其中有些资源（如帐户、计算节点、池、作业和任务）都可用于所有 Batch 解决方案。其他资源（如作业计划和应用程序包）都很有用，但为可选功能。
 
 - [帐户](#account)
-
 - [计算节点](#computenode)
-
 - [池](#pool)
-
 - [作业](#job)
-
 - [任务](#task)
-
 	- [启动任务](#starttask)
-
 	- [作业管理器任务](#jobmanagertask)
-
 	- [作业准备和释放任务](#jobpreprelease)
-
 	- [多实例任务](#multiinstance)
-
-- [JobSchedule](#jobschedule)
+    - [任务依赖项](#taskdep)
+- [作业计划](#jobschedule)
+- [应用程序包](#appkg)
 
 ### <a name="account"></a>帐户
 
@@ -95,7 +88,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层；Batch 池提供大�
 	- 可为池配置所有[云服务节点大小][cloud_service_sizes]，但 A0 除外。
 
 - 在节点上运行的**操作系统系列**和**版本**
-	- 与云服务中的辅助角色一样， *OS 系列* 和 *OS 版本* 也是可以指定的（有关辅助角色的详细信息，请参阅 *Azure 提供的计算托管选项* 中的[介绍云服务][about_cloud_services]）。
+	- 与云服务中的辅助角色一样，OS系列和OS版本也是可以指定的（有关辅助角色的详细信息，请参阅 Azure 提供的计算托管选项中的[介绍云服务][about_cloud_services]）。
 	- 操作系统系列还确定了要与操作系统一起安装哪些版本的 .NET。
 	- 与辅助角色一样，对于 OS 版本，建议指定 `*`，使节点可自动升级，而无需采取措施来适应新的版本。选择特定操作系统版本的主要用例是在允许更新版本之前执行向后兼容测试，以确保保持应用程序兼容性。验证后，便可以更新池的操作系统版本并安装新的操作系统映像 – 所有正在运行的任务将会中断并重新排队。
 
@@ -114,7 +107,7 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层；Batch 池提供大�
 	- 在大多数情况下，任务将独立运行而无需互相通信，但在某些应用程序中，任务必须相互通信。
 
 - 池中节点的**启动任务**
-	- 可以指定每当计算节点加入池和节点重新启动时要执行的 *启动任务*。此任务通常用于安装在节点上运行的任务所使用的应用程序。
+	- 可以指定每当计算节点加入池和节点重新启动时要执行的启动任务。此任务通常用于安装在节点上运行的任务所使用的应用程序。
 
 ### <a name="job"></a>作业
 
@@ -143,11 +136,10 @@ Azure Batch 池构建在核心 Azure 计算平台的顶层；Batch 池提供大�
 除了可以定义在节点上运行计算的任务以外，Batch 服务还提供以下特殊任务：
 
 - [启动任务](#starttask)
-
 - [作业管理器任务](#jobmanagertask)
-
 - [作业准备和释放任务](#jobmanagertask)
 - [多实例任务](#multiinstance)
+- [任务依赖项](#taskdep)
 
 #### <a name="starttask"></a>启动任务
 
@@ -190,19 +182,33 @@ Batch 提供作业准备任务用于预先设置作业的执行，并提供作�
 
 #### <a name="multiinstance"></a>多实例任务
 
-[多实例任务][rest_multiinstance]是经过配置后可以在多个计算节点上同时运行的任务。通过多实例任务，你可以启用消息传递接口 (MPI) 等高性能计算方案，此类方案需要将一组计算节点分配到一起来处理单个工作负荷。
+[多实例任务](/documentation/articles/batch-mpi)是经过配置后可以在多个计算节点上同时运行的任务。通过多实例任务，你可以启用消息传递接口 (MPI) 等高性能计算方案，此类方案需要将一组计算节点分配到一起来处理单个工作负荷。
 
-在 Batch 中，你可以通过为常规[任务](#task)指定多实例设置来创建多实例任务。这些设置包括：执行任务的计算节点的数目、主任务的命令行（“应用程序命令”）、协调命令，以及每个任务的通用资源文件的列表。
+有关在 Batch 中使用 Batch .NET 库运行 MPI 作业的详细介绍，请参阅[在 Azure Batch 中使用多实例任务来执行消息传递接口 (MPI) 应用程序](batch-mpi.md)。
 
-将使用多实例设置的任务提交给作业时，Batch 服务会执行以下操作：
+#### <a name="taskdep"></a>任务依赖性
 
-1. 自动创建一个主任务和足够的子任务，它们会在你指定了总数的节点上同时执行。然后，Batch 会安排这些任务在节点上执行，这些节点会首先下载你指定的通用资源文件。
-2. 在通用资源文件下载完以后，主任务和子任务就会执行协调命令。此协调命令通常会启动一个后台服务（例如 [MS-MPI][msmpi] 的 `smpd.exe`），并验证节点是否已准备好处理节点间消息。
-3. 当主任务和所有子任务成功完成协调命令以后，将仅由主任务执行任务的命令行（“应用程序命令”），该主任务通常会启动一个自定义的支持 MPI 的应用程序来处理你在节点上的工作负荷。例如，在 Windows MPI 方案中，你通常会使用应用程序命令通过 [MS-MPI][msmpi] 的 `mpiexec.exe` 来执行支持 MPI 的应用程序。
+顾名思义，任务依赖性可让你在执行某个任务之前，指定该任务与其他任务的依赖性。此功能提供以下情况的支持：“下游”任务取用“上游”任务的输出，或当上游任务执行下游任务所需的某种初始化时。若要使用此功能，必须先在 Batch 作业中启用任务依赖性。然后，针对每个依赖于另一个任务（或其他许多任务）的任务，指定该任务依赖的任务。
+
+使用任务依赖性，可以配置如下所述的方案：
+
+* taskB 依赖于 taskA（直到 taskA 完成，才开始执行 taskB）
+* taskC 同时依赖于 taskA 和 taskB
+* taskD 在执行前依赖于某个范围的任务，例如任务 1 到 10
+
+请查看 [azure-batch-samples][github_samples] GitHub 存储库中的 [TaskDependencies][github_sample_taskdeps] 代码示例。你将在其中了解如何使用 [Batch .NET][batch_net_api] 库配置依赖于其他任务的任务。
 
 ### <a name="jobschedule"></a>计划的作业
 
 作业计划可让你在 Batch 服务中创建周期性作业。作业计划指定何时要运行作业，并包含要运行的作业的规范。作业计划允许指定计划的持续时间（计划的持续时间和生效时间），以及在该时间段创建作业的频率。
+
+### <a name="appkg"></a>应用程序包
+
+[应用程序包](batch-application-packages.md)功能可为池中的计算节点提供简单的应用程序管理和部署能力。通过应用程序包，可以轻松上载及管理多个版本的工作执行应用程序（包括二进制文件和支持文件），然后将一或多个这种类型的应用程序自动部署到池中的计算节点。
+
+Batch 能在后台处理使用 Azure 存储空间将应用程序包安全存储及部署到计算节点的详细信息，因此可以简化代码和管理开销。
+
+若要了解应用程序包功能的详细信息，请参阅[使用 Azure Batch 应用程序包部署应用程序](batch-application-packages.md)。
 
 ## <a name="files"></a>文件和目录
 
@@ -218,7 +224,7 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 
 - **启动** - 启动任务使用此位置做为它的工作目录。由批处理服务下载用来运行启动任务的所有文件也存储在此目录下。在节点上，可以通过 `%AZ_BATCH_NODE_START_DIR%` 环境变量来访问启动目录。启动任务可以创建、读取、更新和删除此目录下的文件，启动任务可以使用此目录来配置操作系统。
 
-- **任务** -为节点上运行的每个任务创建一个目录，可通过 `%AZ_BATCH_TASK_DIR%` 访问该目录。在每个任务目录中，Batch 服务将创建由 `%AZ_BATCH_TASK_WORKING_DIR%` 环境变量指定唯一路径的任务目录 (`wd`)。此目录提供对任务的读/写访问权限。任务可以创建、读取、更新和删除此目录下的文件，此目录根据任务指定的 *RetentionTime* 约束而保留。
+- **任务** -为节点上运行的每个任务创建一个目录，可通过 `%AZ_BATCH_TASK_DIR%` 访问该目录。在每个任务目录中，Batch 服务将创建由 `%AZ_BATCH_TASK_WORKING_DIR%` 环境变量指定唯一路径的任务目录 (`wd`)。此目录提供对任务的读/写访问权限。任务可以创建、读取、更新和删除此目录下的文件，此目录根据任务指定的RetentionTime约束而保留。
   - `stdout.txt` 和 `stderr.txt` - 在任务执行期间，会将这些文件写入任务文件夹。
 
 从池中删除节点时，也会删除节点上存储的所有文件。
@@ -227,19 +233,19 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 
 在设计 Azure Batch 解决方案时，你必须做出有关如何及何时创建池，以及这些池中的计算节点可用性要保持多久的设计决策。
 
-在极端情况下，可以在提交作业为每个作业创建一个池，并在任务完成执行后立即删除节点。这可以最大程度地提高利用率，因为仅当绝对必要时才会分配节点，并且在节点空闲时会立即将其关闭。这意味着作业必须等待分配节点，不过，你必须注意，在任务单独可用、已分配并且启动任务已完成时，会立即将任务安排给节点。Batch *不会* 在等到池中的所有节点都可用后才分配任务，因此可确保最大程度地利用所有节点。
+在极端情况下，可以在提交作业为每个作业创建一个池，并在任务完成执行后立即删除节点。这可以最大程度地提高利用率，因为仅当绝对必要时才会分配节点，并且在节点空闲时会立即将其关闭。这意味着作业必须等待分配节点，不过，你必须注意，在任务单独可用、已分配并且启动任务已完成时，会立即将任务安排给节点。Batch *不会*在等到池中的所有节点都可用后才分配任务，因此可确保最大程度地利用所有节点。
 
 在另一种极端情况下，如果最高优先级是让作业立即启动，则你可以预先创建池，并使其节点在提交作业之前可用。在此情况下，作业任务可以立即启动，但节点可能会保持空闲状态以等待分配任务。
 
-通常用于处理可变但持续存在的负载的组合方法是创建一个池用于容纳提交的多个作业，但同时根据作业负载向上或向下缩放节点数目（请参阅下面的 *缩放应用程序* ）。可以根据当前负载被动执行此操作，或者在负载可预测时主动执行此操作。
+通常用于处理可变但持续存在的负载的组合方法是创建一个池用于容纳提交的多个作业，但同时根据作业负载向上或向下缩放节点数目（请参阅下面的缩放应用程序）。可以根据当前负载被动执行此操作，或者在负载可预测时主动执行此操作。
 
 ## <a name="scaling"></a>缩放应用程序
 
-通过[自动缩放](batch-automatic-scaling.md)，你的应用程序可以轻松地自动放大或缩小，以配合所需的计算。你可以根据当前的工作负荷和资源用量统计信息动态调整池中的节点数，以便只使用所需的资源来降低运行应用程序的总体成本。你可以在创建池时指定缩放设置，也可以随时更新配置。
+通过[自动缩放](batch-automatic-scaling.md)功能，你可以让 Batch 服务根据计算方案的当前工作负荷和资源使用状况动态缩放池中的计算节点数目。这样，便可做到只使用所需资源并可释放不需要的资源，因而能够降低运行应用程序的整体成本。可以在创建池时为其指定自动缩放设置或是稍后再启用自动缩放，此外也可以更新已启用自动缩放功能的池上的缩放设置。
 
-在自动减少节点数目时，必须考虑当前正在运行的任务。指定一个取消分配策略用于确定正在运行的任务是否已停止，以立即删除节点，立即在删除节点之前是否允许任务完成。在作业结束时将节点的目标数目设置为零但允许运行中的任务完成可以最大程度地提高利用率。
+为池指定**自动缩放公式**即可执行自动缩放。Batch 服务使用此公式来确定池中下一个缩放间隔（可以指定的间隔）的目标节点数目。
 
-可以通过指定一组缩放公式来实现应用程序自动缩放。这些公式用于确定在下一个缩放间隔内，池中的节点数目。例如，也许某个作业需要提交大量计划执行的任务。你可以将缩放公式分配到池，以根据当前的挂起任务数和这些任务的完成率来调整池的大小（节点数目）。Batch 服务将定期评估公式，并根据工作负荷来调整池的大小。
+例如，也许某个作业需要提交大量计划执行的任务。你可以将缩放公式分配到池，以根据当前的挂起任务数和这些任务的完成率来调整池中的节点数目。Batch 服务将定期评估公式，并根据工作负荷和公式设置来调整池的大小。
 
 缩放公式可以基于以下度量值：
 
@@ -249,10 +255,11 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 
 - **任务度量值** - 根据任务的状态，例如“活动”、“挂起”和“已完成”。
 
-有关自动缩放应用程序的详细信息，请参阅[自动缩放 Azure Batch 池中的计算节点](batch-automatic-scaling.md)。
+当自动缩放减少池中的计算节点数目时，必须考虑当前正在运行的任务。为了配合这一点，公式中可以包含节点取消分配策略设置，以指定是否立即停止正在运行的任务，或允许先完成再从池中删除节点。
 
-> [AZURE.TIP]
- 虽然通常不需要这样做，但你可以指定要从池中删除的单个节点。例如，如果怀疑某个节点不太可靠，则可以从池中删除该节点，以防止向它分配其他任务。
+> [AZURE.TIP] 若要获得最大的计算资源使用率，请将节点的目标数目设置成在作业结束时降为零，但允许正在运行的任务完成。
+
+有关自动缩放应用程序的详细信息，请参阅[自动缩放 Azure Batch 池中的计算节点](batch-automatic-scaling.md)。
 
 ## <a name="cert"></a>证书的安全性
 
@@ -309,14 +316,14 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 	- 任务命令行指定的进程也可能会失败。如果任务执行的进程返回非零退出代码，则将该进程视为失败。
 	- 对于应用程序失败，可以将 Batch 配置为自动重试任务，并最多重试指定的次数。
 - **约束失败**
-	- 可以设置一个约束来指定作业或任务的最大执行持续期间，即 *maxWallClockTime*。此约束可用于终止“挂起的”任务。
-	- 如果超出了最长时间，则将任务标记为 *已完成* ，但退出代码将设置为 `0xC000013A`，*schedulingError* 字段将标记为 `{ category:"ServerError", code="TaskEnded"}`。
+	- 可以设置一个约束来指定作业或任务的最大执行持续期间，即maxWallClockTime。此约束可用于终止“挂起的”任务。
+	- 如果超出了最长时间，则将任务标记为已完成，但退出代码将设置为 `0xC000013A`，schedulingError字段将标记为 `{ category:"ServerError", code="TaskEnded"}`。
 
 ### 调试应用程序失败
 
 在执行过程中，应用程序可以生成诊断输出，这些信息可用于排查问题。如前面的[文件和目录](#files)中所述，Batch 服务会将 stdout 和 stderr 输出发送到计算节点上的任务目录中的 `stdout.txt` 和 `stderr.txt` 文件。在 Batch .NET API 中使用 [ComputeNode.GetNodeFile][net_getfile_node] 和 [CloudTask.GetNodeFile][net_getfile_task]，可以检索这些文件和其他文件来进行故障排除。
 
-使用 *远程桌面* 登录到计算节点后，可以执行更广泛的调试。你可以[从节点获取远程桌面协议文件][rest_rdp] (Batch REST API) 或使用 [ComputeNode.GetRDPFile][net_rdp] 方法 (Batch .NET API) 来进行远程登录。
+使用远程桌面登录到计算节点后，可以执行更广泛的调试。你可以[从节点获取远程桌面协议文件][rest_rdp] (Batch REST API) 或使用 [ComputeNode.GetRDPFile][net_rdp] 方法 (Batch .NET API) 来进行远程登录。
 
 >[AZURE.NOTE] 若要通过 RDP 连接到某个节点，必须先在该节点上创建一个用户。在 Batch REST API 中[将用户帐户添加到节点][rest_create_user]，或使用 Batch .NET 中的 [ComputeNode.CreateComputeNodeUser][net_create_user] 方法。
 
@@ -326,9 +333,27 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 
 间歇性的问题也有可能会导致任务挂起，或者花费很长时间才能完成执行。可为任务设置最长执行时间，如果超过此时间，Batch 会中断任务应用程序。
 
-### 应对“可疑的”节点
+### 对“不良的”计算节点进行故障排除
 
-池中的每个节点都有一个唯一 ID，运行任务的节点包含在任务元数据中。如果任务在特定的节点上失败，Batch 客户端应用程序可以检测到这种情况，并从池中删除可疑的节点。如果在删除节点时该节点上有任何正在运行的任务，则这些任务将自动重新排队，以便在其他节点上执行。
+在部分任务失败的情况下，Batch 客户端应用程序或服务可以检查失败任务的元数据来找出行为异常的节点。池中的每个节点都有一个唯一 ID，运行任务的节点包含在任务元数据中。一旦找到，你就可以采取以下几种措施：
+
+- **重新启动节点** ([REST][rest_reboot] | [.NET][net_reboot])
+
+	重新启动节点有时可以清除潜在的问题，例如进程停滞或崩溃。请注意，如果池使用启动任务或作业使用作业准备任务，节点重新启动时将执行这些任务。
+
+- **重置映像节点** ([REST][rest_reimage] | [.NET][net_reimage])
+
+	这会在节点上重新安装操作系统。和重新启动节点一样，在重置映像节点后，便重新执行启动任务和作业准备任务。
+
+- **从池中删除节点** ([REST][rest_remove] | [.NET][net_remove])
+
+	有时必须从池中完全删除节点。
+
+- **禁用节点上的任务计划** ([REST][rest_offline] | [.NET][net_offline])
+
+	这实际上是使节点“脱机”，以便不再收到任何分配的任务，但允许节点继续运行并保留在池中。这可让你执行进一步的调查以了解失败原因，却又会不丢失失败任务的数据，并且不让节点造成额外的任务失败。例如，你可以禁用节点上的任务计划，然后从远程登录以检查节点的事件日志，或执行其他故障排除操作。完成调查后，可以启用任务计划（[REST][rest_online]、[.NET][net_online]）使节点重新联机，或者执行上述其他操作。
+
+> [AZURE.IMPORTANT] 可以使用上述各个操作（重新启动、重置映像、删除、禁用任务计划），指定当执行操作时要如何处理节点上当前正在运行的任务。例如，当你禁用具有 Batch .NET 客户端库的节点上的任务计划时，可以指定 [DisableComputeNodeSchedulingOption][net_offline_option] 枚举值，以指定是要“终止”运行中的任务、将任务“重新排队”以在其他节点上计划，还是允许执行中的任务先完成再执行作业 (TaskCompletion)。
 
 ## 后续步骤
 
@@ -345,6 +370,8 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 [batch_explorer_project]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [cloud_service_sizes]: https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/
 [msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
+[github_samples]: https://github.com/Azure/azure-batch-samples
+[github_sample_taskdeps]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
 
 [batch_net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [net_cloudjob_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobmanagertask.aspx
@@ -357,6 +384,12 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 [net_getfile_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.getnodefile.aspx
 [net_multiinstancesettings]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.multiinstancesettings.aspx
 [net_rdp]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.getrdpfile.aspx
+[net_reboot]: https://msdn.microsoft.com/library/azure/mt631495.aspx
+[net_reimage]: https://msdn.microsoft.com/library/azure/mt631496.aspx
+[net_remove]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.removefrompoolasync.aspx
+[net_offline]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.disableschedulingasync.aspx
+[net_online]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenode.enableschedulingasync.aspx
+[net_offline_option]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.common.disablecomputenodeschedulingoption.aspx
 
 [batch_rest_api]: https://msdn.microsoft.com/library/azure/Dn820158.aspx
 [rest_add_job]: https://msdn.microsoft.com/library/azure/mt282178.aspx
@@ -365,9 +398,14 @@ Batch 服务在节点上公开文件系统的一部分作为“根目录”。 �
 [rest_add_task]: https://msdn.microsoft.com/library/azure/dn820105.aspx
 [rest_create_user]: https://msdn.microsoft.com/library/azure/dn820137.aspx
 [rest_get_task_info]: https://msdn.microsoft.com/library/azure/dn820133.aspx
-[rest_multiinstance]: https://msdn.microsoft.com/zh-cn/library/azure/mt637905.aspx
+[rest_multiinstance]: https://msdn.microsoft.com/library/azure/mt637905.aspx
 [rest_multiinstancesettings]: https://msdn.microsoft.com/library/azure/dn820105.aspx#multiInstanceSettings
 [rest_update_job]: https://msdn.microsoft.com/library/azure/dn820162.aspx
 [rest_rdp]: https://msdn.microsoft.com/library/azure/dn820120.aspx
+[rest_reboot]: https://msdn.microsoft.com/library/azure/dn820171.aspx
+[rest_reimage]: https://msdn.microsoft.com/library/azure/dn820157.aspx
+[rest_remove]: https://msdn.microsoft.com/library/azure/dn820194.aspx
+[rest_offline]: https://msdn.microsoft.com/library/azure/mt637904.aspx
+[rest_online]: https://msdn.microsoft.com/library/azure/mt637907.aspx
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

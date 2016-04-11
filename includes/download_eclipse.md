@@ -19,5 +19,4 @@
 [Azure Toolkit for Eclipse 的新增功能]: http://go.microsoft.com/fwlink/?LinkId=690333
 
 [Web 平台安装程序 (WebPI)]: http://go.microsoft.com/fwlink/?LinkID=252838
-
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -30,7 +30,7 @@
 
 以下示例说明了并行执行任务的好处。假设你的任务应用程序具有特定的 CPU 和内存要求，根据该要求，节点大小为 Standard\_D1 很合适。但若要在所需时间内执行作业，则需使用 1,000 个这样的节点。
 
-如果不使用 Standard\_D1 节点（有 1 个 CPU 核心），则可使用每个节点 16 核的 Standard\_D14 节点，同时允许并行执行任务。因此，在这种情况下，可以使用 *1/16 数目的节点*，即只需使用 63 个节点，不需使用 1,000 个节点。如果每个节点都需要大型应用程序文件或引用数据，这会大大缩短作业执行时间并提高效率。
+如果不使用 Standard\_D1 节点（有 1 个 CPU 核心），则可使用每个节点 16 核的 Standard\_D14 节点，同时允许并行执行任务。因此，在这种情况下，可以使用 1/16 数目的节点，即只需使用 63 个节点，不需使用 1,000 个节点。如果每个节点都需要大型应用程序文件或引用数据，这会大大缩短作业执行时间并提高效率。
 
 ## 允许并行执行任务
 
@@ -102,22 +102,22 @@ Duration: 00:08:48.2423500
 
 第二次运行示例应用程序时，显示作业持续时间显著缩短。这是因为该池已被配置为每个节点四个任务，因此可以并行执行任务，使得作业可以在大约四分之一的时间内完成。
 
-> [AZURE.NOTE] 上述摘要中的作业持续时间不包括创建池的时间。上述每个作业都提交到此前已创建的池，这些池的计算节点在提交时处于 *空闲* 状态。
+> [AZURE.NOTE] 上述摘要中的作业持续时间不包括创建池的时间。上述每个作业都提交到此前已创建的池，这些池的计算节点在提交时处于*空闲* 状态。
 
 ## Batch 资源管理器热度地图
 
-[Azure Batch 资源管理器][batch_explorer]是 Azure Batch [示例应用程序][github_samples]之一，包含 *热度地图* 功能，提供任务执行可视化。执行 [ParallelTasks][parallel_tasks_sample] 示例应用程序时，可以使用“热图”功能来轻松可视化每个节点上并行任务的执行。
+[Azure Batch 资源管理器][batch_explorer]是 Azure Batch [示例应用程序][github_samples]之一，包含*热度地图* 功能，提供任务执行可视化。执行 [ParallelTasks][parallel_tasks_sample] 示例应用程序时，可以使用“热图”功能来轻松可视化每个节点上并行任务的执行。
 
 ![Batch 资源管理器热度地图][1]
 
-*Batch 资源管理器热图，其中显示了包含四个节点的池，每个节点当前正在执行四个任务*
+Batch 资源管理器热图，其中显示了包含四个节点的池，每个节点当前正在执行四个任务
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
 [batch_explorer]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
 [cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [enable_autoscaling]: https://msdn.microsoft.com/library/azure/dn820173.aspx
-[fill_type]: https://msdn.microsoft.com/zh-cn/library/microsoft.azure.batch.common.computenodefilltype.aspx
+[fill_type]: https://msdn.microsoft.com/en-us/library/microsoft.azure.batch.common.computenodefilltype.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [maxtasks_net]: http://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.maxtaskspercomputenode.aspx
 [maxtasks_rest]: https://msdn.microsoft.com/library/azure/dn820174.aspx
@@ -127,4 +127,4 @@ Duration: 00:08:48.2423500
 
 [1]: ./media/batch-parallel-node-tasks\heat_map.png
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

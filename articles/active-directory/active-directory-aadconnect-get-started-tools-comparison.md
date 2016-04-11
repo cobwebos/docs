@@ -9,20 +9,22 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="10/13/2015"
+	ms.date="01/21/2016"
 	wacn.date=""/>
 
 # 目录集成工具比较
 
 过去数年以来，集成工具已得到发展和演进。本文档旨在帮助提供这些工具的合并视图，并比较每个工具提供的功能。
 
->[AZURE.NOTE]Azure AD Connect 整合了以前作为 DirSync 和 AAD Sync 发布的组件和功能。这些工具不再单独发布，将来所做的改进将包含在 Azure AD Connect 更新中，因此你始终知道从何处获取最新功能。
+>[AZURE.NOTE] Azure AD Connect 整合了以前作为 DirSync 和 AAD Sync 发布的组件和功能。这些工具不再单独发布，将来所做的改进将包含在 Azure AD Connect 更新中，因此你始终知道从何处获取最新功能。
 >
 >目前仍支持 Dirsync，但以后会弃用它。弃用后，只会对其提供短暂的支持。这段短暂的时间过后，将不再提供对 Dirsync 的支持。
 
 每个表中的代号解释如下。
 
-● = 现已发布</br> FR = 未来版本</br> PP = 公共预览版本</br>
+● = 现已发布</br>
+FR = 未来版本</br>
+PP = 公共预览版本</br>
 
 
 ## 本地到云的同步
@@ -86,4 +88,4 @@
 ## 后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0405_2016-->

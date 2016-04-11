@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="01/24/2016"
+	ms.date="02/24/2016"
 	wacn.date=""/>
 
 # Microsoft Azure 存储空间的使用 Java 客户端加密   
@@ -17,7 +17,7 @@
 [AZURE.INCLUDE [storage-selector-client-side-encryption-include](../includes/storage-selector-client-side-encryption-include.md)]
 
 ## 概述  
-[用于 Java 的 Azure 存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)支持在上载到 Azure 存储空间之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。此库还支持与 [Azure 密钥保管库](/documentation/services/key-vault)集成，以便管理存储帐户密钥。
+[用于 Java 的 Azure 存储空间客户端库](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)支持在上载到 Azure 存储空间之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。此库还支持与 [Azure 密钥保管库](/home/features/key-vault)集成，以便管理存储帐户密钥。
 
 ## 通过信封技术加密和解密    
 加密和解密的过程遵循信封技术。
@@ -29,8 +29,7 @@
 
 2.	使用此 CEK 对用户数据进行加密。
 
-3.	然后，使用密钥加密密钥 (KEK) 对此 CEK 进行包装（加密）。KEK 由密钥标识符标识，可以是非对称密钥对或对称密钥，还可以在本地托管或存储在 Azure 密钥保管库中。  
-存储客户端库本身永远无法访问 KEK。该库调用密钥保管库提供的密钥包装算法。用户可以根据需要选择使用自定义提供程序进行密钥包装/解包。  
+3.	然后，使用密钥加密密钥 (KEK) 对此 CEK 进行包装（加密）。KEK 由密钥标识符标识，可以是非对称密钥对或对称密钥，还可以在本地托管或存储在 Azure 密钥保管库中。存储客户端库本身永远无法访问 KEK。该库调用密钥保管库提供的密钥包装算法。用户可以根据需要选择使用自定义提供程序进行密钥包装/解包。
 
 4.	然后，将已加密的数据上载到 Azure 存储服务。已包装的密钥以及一些附加加密元数据要么存储为元数据（在 Blob 上），要么以内插值替换已加密的数据（消息队列和表实体）。
 
@@ -111,10 +110,9 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 1.	脱机创建一个机密并将其上载到密钥保管库。  
 
-2.	使用机密的基标识符作为参数来解析机密的当前版本进行加密，并在本地缓存此信息。使用 CachingKeyResolver 进行缓存；用户不需要实现自己的缓存逻辑。  
+2.	使用机密的基标识符作为参数来解析机密的当前版本进行加密，并在本地缓存此信息。使用 CachingKeyResolver 进行缓存；用户不需要实现自己的缓存逻辑。
 
-3.	创建加密策略时，使用缓存解析程序作为输入。
-有关密钥保管库用法的详细信息，请查看加密代码示例。<fix URL>  
+3.	创建加密策略时，使用缓存解析程序作为输入。有关密钥保管库用法的详细信息，请查看加密代码示例。<fix URL>
 
 ## 最佳实践  
 仅在用于 Java 的存储空间客户端库中提供加密支持。
@@ -236,9 +234,11 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 ## 后续步骤  
 
-- 下载[适用于 Java 的 Azure 存储客户端库 Maven 程序包](https://github.com/Azure/azure-storage-java)  
+- 下载[适用于 Java 的 Azure 存储客户端库 Maven 程序包](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
 - 从 GitHub 下载[适用于 Java 的 Azure 存储客户端库源代码](https://github.com/Azure/azure-storage-java)   
-- 下载 Azure 密钥保管库 Maven [核心](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[客户端](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)和[扩展](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)包
+- 下载适用于 Java 的 Azure 密钥保管库 Maven 程序包：
+	- [核心](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core)程序包
+	- [客户端](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault)程序包
 - 访问 [Azure 密钥保管库文档](/documentation/articles/key-vault-whatis)  
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -17,7 +17,7 @@
 
 通过在 Azure Batch 中使用自动缩放，你可以在执行作业时在 Batch 池中动态添加或删除计算节点，从而自动调整应用程序所使用的处理能力。这种自动调整可以节省时间和资金。
 
-你可以通过将 *自动缩放公式* 与池相关联（例如，使用 [Batch .NET](batch-dotnet-get-started.md) 库中的 [PoolOperations.EnableAutoScale][net_enableautoscale] 方法），对计算节点池启用自动缩放。然后，Batch 服务将使用此公式来确定执行工作负荷所需的计算节点数目。池中的计算节点数（对应于定期收集的服务度量数据样本）会根据关联的公式按可配置的间隔进行调整。
+你可以通过将自动缩放公式与池相关联（例如，使用 [Batch .NET](batch-dotnet-get-started.md) 库中的 [PoolOperations.EnableAutoScale][net_enableautoscale] 方法），对计算节点池启用自动缩放。然后，Batch 服务将使用此公式来确定执行工作负荷所需的计算节点数目。池中的计算节点数（对应于定期收集的服务度量数据样本）会根据关联的公式按可配置的间隔进行调整。
 
 可以在创建池时启用自动缩放，也可以对现有池启用该功能。你还可以更改已启用“自动缩放”功能的池的现有公式。Batch 可让你在将公式分配给池之前先评估公式，以及监视自动缩放运行的状态。
 
@@ -53,7 +53,7 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
 
 可以在自动缩放公式中使用系统定义的变量和用户定义的变量。在上述两行示例公式中，`$TargetDedicated` 是系统定义的变量，而 `$averageActiveTaskCount` 是用户定义的变量。下表显示了 Batch 服务定义的读写和只读变量。
 
-可以*获取*和*设置*这些**系统定义变量**的值，以管理池中计算节点的数目：
+可以获取和设置这些**系统定义变量**的值，以管理池中计算节点的数目：
 
 <table>
   <tr>
@@ -77,7 +77,7 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
    </tr>
 </table>
 
-*获取*这些**系统定义变量**的值即可根据 Batch 服务中的度量值进行调整：
+获取这些**系统定义变量**的值即可根据 Batch 服务中的度量值进行调整：
 
 <table>
   <tr>
@@ -149,7 +149,7 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
   </tr>
 </table>
 
-> [AZURE.TIP] 上面所示的只读系统定义变量是可提供各种方法来访问相互关联数据的*对象*。有关详细信息，请参阅下面的[获取样本数据](#getsampledata)。
+> [AZURE.TIP] 上面所示的只读系统定义变量是可提供各种方法来访问相互关联数据的对象。有关详细信息，请参阅下面的[获取样本数据](#getsampledata)。
 
 ## 类型
 
@@ -158,7 +158,7 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
 - double
 - doubleVec
 - doubleVecList
-- string
+- 字符串
 - timestamp--timestamp 是包含以下成员的复合结构：
 	- year
 	- month (1-12)
@@ -344,11 +344,11 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
   </tr>
 </table>
 
-上表中描述的某些函数可以接受列表作为参数。逗号分隔列表为 *double* 和 *doubleVec* 的任意组合。例如：
+上表中描述的某些函数可以接受列表作为参数。逗号分隔列表为double和doubleVec的任意组合。例如：
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
-*doubleVecList* 值在计算之前将转换为单个 *doubleVec*。例如，如果 `v = [1,2,3]`，则调用 `avg(v)` 相当于调用 `avg(1,2,3)`。调用 `avg(v, 7)` 相当于调用 `avg(1,2,3,7)`。
+doubleVecList值在计算之前将转换为单个 doubleVec。例如，如果 `v = [1,2,3]`，则调用 `avg(v)` 相当于调用 `avg(1,2,3)`。调用 `avg(v, 7)` 相当于调用 `avg(1,2,3,7)`。
 
 ## <a name="getsampledata"></a>获取样本数据
 
@@ -401,11 +401,11 @@ $TargetDedicated = min(10, $averageActiveTaskCount);
 
 **示例**
 
-Batch 服务定期获取任务和资源度量值的*样本*，使其可供自动缩放公式使用。这些样本每 30 秒由 Batch 服务记录一次。但是，通常有一些滞后，以致记录样本的时间与样本可供自动缩放公式使用（与读取）的时间之间存在延迟。此外，由于各种因素（例如网络或其他基础结构问题），可能无法记录特定间隔的样本，从而导致样本“遗漏”。
+Batch 服务定期获取任务和资源度量值的样本，使其可供自动缩放公式使用。这些样本每 30 秒由 Batch 服务记录一次。但是，通常有一些滞后，以致记录样本的时间与样本可供自动缩放公式使用（与读取）的时间之间存在延迟。此外，由于各种因素（例如网络或其他基础结构问题），可能无法记录特定间隔的样本，从而导致样本“遗漏”。
 
 **样本百分比**
 
-将 `samplePercent` 传递到 `GetSample()` 方法，或调用 `GetSamplePercent()` 方法时，“percent”是指 Batch 服务*可能*记录的样本总数与自动缩放公式实际*可用*的样本数目之间的比较。
+将 `samplePercent` 传递到 `GetSample()` 方法，或调用 `GetSamplePercent()` 方法时，“percent”是指 Batch 服务可能记录的样本总数与自动缩放公式实际可用的样本数目之间的比较。
 
 让我们以 10 分钟的时间跨度为例。由于每隔 30 秒记录样本一次，因此在 10 分钟的时间跨度内，Batch 服务所记录的样本总数将达到 20 个（每分钟 2 个）。但是，由于报告机制固有的延迟，或者 Azure 基础结构出现的其他一些问题，可能只有 15 个样本可供自动缩放公式读取。这意味着，在这 10 分钟的期间内，记录的样本总数只有 **75%** 实际可供公式使用。
 
@@ -423,13 +423,13 @@ Batch 评估上述代码行后，会以值的向量形式返回样本范围。�
 
 收集样本向量后，便可使用 `min()`、`max()` 和 `avg()` 等函数从所收集的范围派生有意义的值。
 
-为了提高安全性，如果特定时间段可用的样本数小于特定百分比，你可以强制公式求值*失败*。强制公式求值失败会指示 Batch 在无法提供指定百分比的样本数时停止进一步的公式求值--不更改池大小。若要指定求值成功所需的样本百分比，请将其指定为 `GetSample()` 的第三个参数。下面指定要求 75% 的样本：
+为了提高安全性，如果特定时间段可用的样本数小于特定百分比，你可以强制公式求值失败。强制公式求值失败会指示 Batch 在无法提供指定百分比的样本数时停止进一步的公式求值--不更改池大小。若要指定求值成功所需的样本百分比，请将其指定为 `GetSample()` 的第三个参数。下面指定要求 75% 的样本：
 
 `runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * TimeInterval_Second, 75);`
 
 此外，由于先前提到的样本可用性延迟问题，请务必记得指定回查开始时间早于一分钟的时间范围。这是由于样本需要花大约一分钟的时间才能传播到整个系统，因此通常无法使用 `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` 范围内的样本。同样地，可以使用 `GetSample()` 百分比参数来强制实施特定样本百分比要求。
 
-> [AZURE.IMPORTANT] **强烈建议****不要*只*依赖于自动缩放公式中的 `GetSample(1)`**。这是因为，`GetSample(1)` 基本上只是向 Batch 服务表明：“不论多久以前获取最后一个样本，请将它提供给我。” 由于它只是单个样本，而且可能是较旧的样本，因此可能无法代表最近任务或资源状态的全貌。如果使用 `GetSample(1)`，请确保它是更大语句的一部分，而不是公式所依赖的唯一数据点。
+> [AZURE.IMPORTANT] **强烈建议****不要只依赖于自动缩放公式中的 `GetSample(1)`**。这是因为，`GetSample(1)` 基本上只是向 Batch 服务表明：“不论多久以前获取最后一个样本，请将它提供给我。” 由于它只是单个样本，而且可能是较旧的样本，因此可能无法代表最近任务或资源状态的全貌。如果使用 `GetSample(1)`，请确保它是更大语句的一部分，而不是公式所依赖的唯一数据点。
 
 ## 度量值
 
@@ -512,7 +512,7 @@ $TargetDedicated = min(400, $TotalNodes)
 - [BatchClient.PoolOperations.CreatePool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx)--在调用此 .NET 方法创建池后，将设置池的 [CloudPool.AutoScaleEnabled](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscaleenabled.aspx) 属性和 [CloudPool.AutoScaleFormula](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.autoscaleformula.aspx) 属性，以启用自动缩放。
 - [将池添加到帐户](https://msdn.microsoft.com/library/azure/dn820174.aspx)--创建池后，此 REST API 请求中使用的 enableAutoScale 和 autoScaleFormula 元素将为池设置自动缩放。
 
-> [AZURE.IMPORTANT] 如果你使用上述方法之一创建了支持自动缩放的池，则**不得**指定该池的 *targetDedicated* 参数。另请注意，如果你希望手动调整启用自动缩放功能的池的大小（例如，使用 [BatchClient.PoolOperations.ResizePool][net_poolops_resizepool] 来调整），则必须先**禁用**该池的自动缩放功能，然后再调整池的大小。
+> [AZURE.IMPORTANT] 如果你使用上述方法之一创建了支持自动缩放的池，则**不得**指定该池的targetDedicated参数。另请注意，如果你希望手动调整启用自动缩放功能的池的大小（例如，使用 [BatchClient.PoolOperations.ResizePool][net_poolops_resizepool] 来调整），则必须先**禁用**该池的自动缩放功能，然后再调整池的大小。
 
 下面的代码段演示如何通过 [Batch .NET][net_api] 库创建启用自动缩放的池 ([CloudPool][net_cloudpool])。该池的自动缩放公式在星期一将节点的目标数设置为 5，在每星期的其他日子将该目标数设置为 1。此外，自动缩放间隔设置为 30 分钟（请参阅下面的[自动缩放间隔](#interval)）。在本文的此部分与其他 C# 代码段中，“myBatchClient”是适当初始化的 [BatchClient][net_batchclient] 实例。
 
@@ -537,14 +537,14 @@ pool.Commit();
 
 ## 创建池后启用自动缩放
 
-如果你使用 *targetDedicated* 参数设置了包含指定计算节点数的池，则以后可以更新现有池以自动缩放。可以通过以下方法之一实现此目的：
+如果你使用targetDedicated参数设置了包含指定计算节点数的池，则以后可以更新现有池以自动缩放。可以通过以下方法之一实现此目的：
 
 - [BatchClient.PoolOperations.EnableAutoScale][net_enableautoscale]--此 .NET 方法需要现有池的 ID 和自动缩放公式才能应用到池。
 - [允许对池进行自动缩放][rest_enableautoscale]--此 REST API 请求要求 URI 中存在现有池的 ID，以及请求正文中存在自动缩放公式。
 
-> [AZURE.NOTE] 如果某个值是在创建池时为 *targetDedicated* 参数指定的，则会在评估自动缩放公式时忽略该值。
+> [AZURE.NOTE] 如果某个值是在创建池时为targetDedicated参数指定的，则会在评估自动缩放公式时忽略该值。
 
-此代码段演示了如何在现有池上通过 [Batch .NET][net_api] 库启用自动缩放功能。请注意，针对现有池启用公式和更新公式使用相同的方法。因此，如果已启用自动缩放功能，则此方法会针对指定池*更新* 公式。该代码段假设“mypool”是现有池 ([CloudPool][net_cloudpool]) 的 ID。
+此代码段演示了如何在现有池上通过 [Batch .NET][net_api] 库启用自动缩放功能。请注意，针对现有池启用公式和更新公式使用相同的方法。因此，如果已启用自动缩放功能，则此方法会针对指定池更新公式。该代码段假设“mypool”是现有池 ([CloudPool][net_cloudpool]) 的 ID。
 
 		 // Define the autoscaling formula. In this snippet, the  formula sets the target number of nodes to 5 on
 		 // Mondays, and 1 on every other day of the week
@@ -559,7 +559,7 @@ pool.Commit();
 在应用程序中使用公式之前，最好先对它进行评估。评估公式时，可以针对现有池对公式进行“测试性运行”。执行此操作时，可通过以下方式：
 
 - [BatchClient.PoolOperations.EvaluateAutoScale](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.evaluateautoscale.aspx) 或 [BatchClient.PoolOperations.EvaluateAutoScaleAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.evaluateautoscaleasync.aspx)--这些 .NET 方法需要现有池的 ID，并需要包含自动缩放公式的字符串。调用的结果将包含在 [AutoScaleEvaluation](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.autoscaleevaluation.aspx) 类的实例中。
-- [对自动缩放公式求值](https://msdn.microsoft.com/library/azure/dn820183.aspx)--在此 REST API 请求中，池 ID 在 URI 中指定。自动缩放公式在请求正文的 *autoScaleFormula* 元素中指定。操作的响应包含任何可能与该公式相关的错误信息。
+- [对自动缩放公式求值](https://msdn.microsoft.com/library/azure/dn820183.aspx)--在此 REST API 请求中，池 ID 在 URI 中指定。自动缩放公式在请求正文的autoScaleFormula元素中指定。操作的响应包含任何可能与该公式相关的错误信息。
 
 > [AZURE.NOTE] 若要评估某个自动缩放公式，你必须先通过有效的公式对池启用了自动缩放功能。
 
@@ -722,7 +722,7 @@ string formula = string.Format(@"
 
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_autoscaleformula]: https://msdn.microsoft.com/library/azure/dn820173.aspx
-[rest_autoscaleinterval]: https://msdn.microsoft.com/zh-cn/library/azure/dn820173.aspx
+[rest_autoscaleinterval]: https://msdn.microsoft.com/en-us/library/azure/dn820173.aspx
 [rest_enableautoscale]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

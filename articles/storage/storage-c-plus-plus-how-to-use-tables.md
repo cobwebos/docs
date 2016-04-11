@@ -9,7 +9,7 @@
 
 <tags 
     ms.service="storage" 
-    ms.date="01/05/2016"
+    ms.date="02/17/2016"
     wacn.date=""/>
 
 # 如何通过 C++ 使用表存储
@@ -17,16 +17,16 @@
 [AZURE.INCLUDE [storage-selector-table-include](../includes/storage-selector-table-include.md)]
 
 ## 概述  
-本指南将演示如何使用 Azure 表存储服务执行常见方案。示例用 C++ 编写，并使用[适用于 C++ 的 Azure 存储空间客户端库](https://github.com/Azure/azure-storage-cpp/blob/v1.0.0/README.md)。涉及的方案包括**创建和删除表**，以及**使用表实体**。
+本指南将演示如何使用 Azure 表存储服务执行常见方案。示例用 C++ 编写，并使用[适用于 C++ 的 Azure 存储空间客户端库](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)。涉及的方案包括**创建和删除表**，以及**使用表实体**。
 
->[AZURE.NOTE] 本指南主要面向适用于 C++ 的 Azure 存储空间客户端库 1.0.0 版及更高版本。建议的版本是存储空间客户端库 1.0.0，它可以通过 [NuGet](http://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/) 获得。
+>[AZURE.NOTE] 本指南主要面向适用于 C++ 的 Azure 存储空间客户端库 1.0.0 版及更高版本。建议的版本是存储空间客户端库 2.2.0，它可以通过 [NuGet](http://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/Azure/azure-storage-cpp/) 获得。
 
 [AZURE.INCLUDE [storage-table-concepts-include](../includes/storage-table-concepts-include.md)]
 [AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
 
 ## 创建 C++ 应用程序  
-在本指南中，你将使用存储功能，这些功能可以在 C++ 应用程序中运行。为此，你将需要安装适用于 C++ 的 Azure 存储客户端库，并在你的 Azure 订阅中创建 Azure 存储帐户。  
+在本指南中，你将使用存储功能，这些功能可以在 C++ 应用程序中运行。为此，你将需要安装适用于 C++ 的 Azure 存储客户端库，并在你的 Azure 订阅中创建 Azure 存储帐户。
 
 若要安装适用于 C++ 的 Azure 存储客户端库，你可以使用以下方法：
 
@@ -411,4 +411,4 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 -	[Azure 存储空间文档](http://azure.microsoft.com/documentation/services/storage/)
  
 
-<!----HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0405_2016-->

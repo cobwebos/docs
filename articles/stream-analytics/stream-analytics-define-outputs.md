@@ -1,16 +1,16 @@
 <properties
-	pageTitle="数据转换输出：针对存储、分析的选项 | Microsoft Azure"
+	pageTitle="数据转换输出：针对存储、分析的选项 | Azure"
 	description="了解如何使流分析数据转换输出输出到数据存储选项。另外，请使用 Power BI 来获取分析结果。"
 	keywords="数据转换、分析结果、数据存储选项"
 	services="stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage"
-	documentationCenter=""
+	documentationCenter="" 
 	authors="jeffstokes72"
 	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags
 	ms.service="stream-analytics"
-	ms.date="02/04/2016"
+	ms.date="03/16/2016"
 	wacn.date=""/>
 # 使流分析数据转换输出输出到分析工具和数据存储选项
 
@@ -19,9 +19,10 @@
 为了启用多种应用程序模式，Azure 流分析提供了不同的选项来存储输出和查看分析结果。这样可以轻松地查看作业输出，并可灵活地使用和存储作业输出，以便进行数据仓库操作和其他操作。必须先存在作业中配置的输出，然后才能启动作业并开始事件的流动。例如，如果你使用 Blob 存储作为输出，该作业将不会自动创建存储帐户。在启动 ASA 作业之前，需要由用户创建该存储帐户。
 
 
-## SQL 数据库 ##
 
-可以将 [Azure SQL 数据库](http://azure.microsoft.com/services/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。流分析作业将写入到 Azure SQL 数据库的现有表中。请注意表架构必须与字段及其正从作业输出的类型完全匹配。下表列出了属性名称和用于创建 SQL 数据库输出的属性说明。
+## SQL 数据库
+
+可以将 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)用作本质上为关系型数据的输出，也可以将其用于所依赖的内容在关系数据库中托管的应用程序。流分析作业将写入到 Azure SQL 数据库的现有表中。请注意表架构必须与字段及其正从作业输出的类型完全匹配。[Azure SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)也可以通过 SQL 数据库输出选项指定为输出（此项为预览功能）。下表列出了属性名称和用于创建 SQL 数据库输出的属性说明。
 
 | 属性名称 | 说明 |
 |---------------|-------------|
@@ -32,9 +33,9 @@
 | 密码 | 用于连接到数据库的密码 |
 | 表 | 将写入输出的表名称。表名称区分大小写，并且该表架构应与字段数量以及作业输出正在生成的字段类型完全匹配。 |
 
-## Blob 存储 ##
+## Blob 存储
 
-Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在云中存储大量非结构化数据。如需 Azure Blob 存储及其用法的简介，请参阅文档：[如何使用 Blob](./articles/storage-dotnet-how-to-use-blobs.md)。
+Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在云中存储大量非结构化数据。如需 Azure Blob 存储及其用法的简介，请参阅文档：[如何使用 Blob](/documentation/articles/storage-dotnet-how-to-use-blobs)。
 
 下表列出了属性名称和用于创建 blob 输出的属性说明。
 
@@ -112,7 +113,7 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 
 ## 表存储
 
-[Azure 表存储](./articles/storage-introduction.md)提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。Azure 表存储可用于持久地存储数据，方便进行高效的检索。
+[Azure 表存储](/documentation/articles/storage-introduction)提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。Azure 表存储可用于持久地存储数据，方便进行高效的检索。
 
 下表列出了属性名称和用于创建表输出的属性说明。
 
@@ -174,11 +175,11 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 - [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
 <!--Link references-->
-[stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md
-[stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
-[stream.analytics.introduction]: stream-analytics-introduction.md
-[stream.analytics.get.started]: stream-analytics-get-started.md
+[stream.analytics.developer.guide]: /documentation/articles/stream-analytics-developer-guide
+[stream.analytics.scale.jobs]: /documentation/articles/stream-analytics-scale-jobs
+[stream.analytics.introduction]: /documentation/articles/stream-analytics-introduction
+[stream.analytics.get.started]: /documentation/articles/stream-analytics-get-started
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0405_2016-->

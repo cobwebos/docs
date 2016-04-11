@@ -13,12 +13,12 @@
 	wacn.date=""/>
 
 # 通过快速设置开始使用 Azure AD Connect
-以下文档将会帮助你开始使用 Azure Active Directory Connect。本文档说明如何使用 Azure AD Connect 的快速安装。  
+以下文档将会帮助你开始使用 Azure Active Directory Connect。本文档说明如何使用 Azure AD Connect 的快速安装。
 
 ## 相关文档
 如果你尚未阅读有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的文档，下表提供了相关主题的链接。开始安装之前，需要完成以粗体显示的前两个主题。
 
-| 主题 |  |
+| 主题 | |
 | --------- | --------- |
 | **下载 Azure AD Connect** | [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771) |
 | **硬件和先决条件** | [Azure AD Connect：硬件和先决条件](/documentation/articles/active-directory-aadconnect-prerequisites) |
@@ -40,7 +40,7 @@
 3. 在“欢迎”屏幕上，选中同意许可条款对应的框，然后单击“继续”。
 4. 在“快速设置”屏幕上，单击“使用快速设置”。
 ![欢迎使用 Azure AD Connect](./media/active-directory-aadconnect-get-started-express/express.png)
-5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的 Azure 全局管理员用户名和密码。单击**“下一步”**。
+5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的 Azure 全局管理员用户名和密码。单击“下一步”。
 ![连接到 AAD](./media/active-directory-aadconnect-get-started-express/connectaad.png)
 如果你收到错误消息并且出现了连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
 6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。单击“下一步”。
@@ -61,4 +61,4 @@
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0405_2016-->

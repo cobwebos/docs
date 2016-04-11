@@ -3,13 +3,13 @@
 	description="说明如何在 Azure AD Connect Sync 中配置筛选。"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="andkjell"
 	manager="stevenpo"
 	editor=""/>
 
 <tags
 	ms.service="active-directory"
-	ms.date="01/08/2016"
+	ms.date="02/16/2016"
 	wacn.date=""/>
 
 
@@ -72,6 +72,10 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。如果 Azure AD
 ## 基于域的筛选
 本部分为你提供配置域筛选器需要执行的步骤。如果安装 Azure AD Connect 之后在林中添加或删除域，则也必须更新筛选配置。
 
+更改基于域的筛选的首选方法是运行安装向导并更改[域和 OU 筛选](/documentation/articles/active-directory-aadconnect-get-started-custom#domain-and-ou-filtering)。使用安装向导可以自动执行本主题中所述的所有任务。
+
+仅当你出于某种原因而无法运行安装向导时，才遵循以下步骤。
+
 基于域的筛选配置包括以下步骤：
 
 - [选择应包含在同步操作中的域](#select-domains-to-be-synchronized)。
@@ -81,8 +85,8 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。如果 Azure AD
 ### 选择要同步的域
 **若要设置域筛选器，请执行以下步骤：**
 
-1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
-2. 从开始菜单启动“同步服务”。
+1. 通过使用属于 ADSyncAdmins 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
+2. 从“开始”菜单启动“同步服务”。
 3. 选择“连接器”，然后在“连接器”列表中选择类型为“Active Directory 域服务”的连接器。从“操作”中选择“属性”。  
 ![连接器属性](./media/active-directory-aadconnectsync-configure-filtering/connectorproperties.png)  
 4. 单击“配置目录分区”。
@@ -107,7 +111,7 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。如果 Azure AD
 - 增量同步
 - 导出
 
-针对上述五个配置文件，请对每个**添加的**域执行以下步骤：
+针对上述五个配置文件，请对每个添加的域执行以下步骤：
 
 1. 选择运行配置文件，然后单击“新步骤”。
 2. 在“配置步骤”页上的“类型”下拉列表中，选择与你要配置的配置文件同名的步骤类型。然后单击“下一步”。  
@@ -116,7 +120,7 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。如果 Azure AD
 ![连接器运行配置文件](./media/active-directory-aadconnectsync-configure-filtering/runprofilesnewstep2.png)  
 4. 若要关闭“配置运行配置文件”对话框，请单击“完成”。
 
-针对上述五个配置文件，请对每个**删除的**域执行以下步骤：
+针对上述五个配置文件，请对每个删除的域执行以下步骤：
 
 1. 选择运行配置文件。
 2. 如果“分区”属性的“值”为 GUID，请选择运行步骤并单击“删除步骤”。  
@@ -129,10 +133,14 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。如果 Azure AD
 - 若要完成配置设置，请参阅[应用并验证更改](#apply-and-verify-changes)。
 
 ## 基于组织单位的筛选
+更改基于 OU 的筛选的首选方法是运行安装向导并更改[域和 OU 筛选](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)。使用安装向导可以自动执行本主题中所述的所有任务。
+
+仅当你出于某种原因而无法运行安装向导时，才遵循以下步骤。
+
 **若要配置基于组织单元的筛选，请执行以下步骤：**
 
-1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
-2. 从开始菜单启动“同步服务”。
+1. 通过使用属于 ADSyncAdmins 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
+2. 从“开始”菜单启动“同步服务”。
 3. 选择“连接器”，然后在“连接器”列表中选择类型为“Active Directory 域服务”的连接器。从“操作”中选择“属性”。  
 ![连接器属性](./media/active-directory-aadconnectsync-configure-filtering/connectorproperties.png)  
 4. 单击“配置目录分区”，选择你想要配置的域，然后单击的域“容器”。
@@ -154,30 +162,30 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。如果 Azure AD
 筛选可以应用于从 Active Directory 到 Metaverse 的[入站](#inbound-filtering)传输和从 Metaverse 到 Azure AD 的[出站](#outbound-filtering)传输。建议对入站传输应用筛选，因为这样做最容易进行维护。仅当需要先要从多个林加入对象再进行评估时，才使用出站筛选。
 
 ### 入站筛选
-基于入站的筛选利用默认配置，其中，传入 AAD 的对象必须未将 Metaverse 属性 cloudFiltered 设置为要同步的值。如果这个属性的值设置为 **True**，则不会同步对象。根据设计，此值不应设为 **False**。若要确保其他规则能够提供值，这个属性只应具有 **True** 或 **NULL**（不存在）值。
+基于入站的筛选利用默认配置，其中，传入 AAD 的对象必须未将 Metaverse 属性 cloudFiltered 设置为要同步的值。如果这个属性的值设置为 True，则不会同步对象。根据设计，此值不应设为 False。若要确保其他规则能够提供值，这个属性只应具有 True 或 NULL（不存在）值。
 
 在入站筛选中，我们将使用**范围**的能力来决定哪些对象应该或不应该同步。你可以在此处根据组织的要求进行调整。范围模块提供**组**和**子句**，以决定是否应在范围内包含同步规则。一个**组**包含一个或多个**子句**。多个子句之间使用逻辑 AND，多个组之间使用逻辑 OR。
 
 让我们看看以下示例：  
 ![范围](./media/active-directory-aadconnectsync-configure-filtering/scope.png)
-这应该写为 **(department = IT) OR (department = Sales AND c = US)**。
+这应该写为 (department = IT) OR (department = Sales AND c = US)。
 
 在以下示例和步骤中，我们以用户对象为例，但可以将此例子应用到所有对象类型。
 
 在下面的示例中，所用的优先级值从 500 开始。这可以确保这些值在现有规则（较低的优先级、较高的数字值）之后进行评估。
 
 #### 负筛选：“不同步这些项目”
-在下面的示例中，我们将筛选出（不同步）其中 **extensionAttribute15** 具有值 **NoSync** 的所有用户。
+在下面的示例中，我们将筛选出（不同步）其中 extensionAttribute15 具有值 NoSync 的所有用户。
 
-1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
+1. 通过使用属于 ADSyncAdmins 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
 2. 从开始菜单启动“同步规则编辑器”。
 3. 确保选择了“入站”，然后单击“添加新规则”。
-4. 为规则指定一个描述性名称，如“ *In from AD – User DoNotSyncFilter* ”。选择正确的林，选择“用户”作为“CS 对象类型”，并选择“人员”作为“MV 对象类型”。对于“链接类型”，请选择“加入”，在“优先类型”中，选择另一个同步规则当前未使用的值（例如 500），然后单击“下一步”。  
+4. 为规则指定一个描述性名称，如“In from AD – User DoNotSyncFilter”。选择正确的林，选择“用户”作为“CS 对象类型”，并选择“人员”作为“MV 对象类型”。对于“链接类型”，请选择“联接”，在优先级类型中，选择当前未由其他同步规则使用的值（例如 500），然后单击“下一步”。  
 ![入站 1 说明](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)  
-5. 在“范围筛选器”中，单击“添加组”，单击“添加子句”，然后在属性中选择“ExtensionAttribute15”。确保运算符设置为“等于”，并在值框中键入值 **NoSync**。单击“下一步”。  
+5. 在“范围筛选器”中，单击“添加组”，单击“添加子句”，然后在属性中选择“ExtensionAttribute15”。确保运算符设置为“等于”，并在值框中键入值 NoSync。单击“下一步”。  
 ![入站 2 范围](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)  
 6. 将“联接”规则留空，然后单击“下一步”。
-7. 单击“添加转换”，为“FlowType”选择“Constant”，选择目标属性“cloudFiltered”，然后在源文本框中键入 **True**。单击“添加”保存规则。  
+7. 单击“添加转换”，为“FlowType”选择“Constant”，选择目标属性“cloudFiltered”，然后在源文本框中键入 True。单击“添加”保存规则。  
 ![入站 3 转换](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)
 8. 若要完成配置设置，请参阅[应用并验证更改](#apply-and-verify-changes)。
 
@@ -186,27 +194,27 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。如果 Azure AD
 
 正筛选选项需要两个同步规则。一个（或多个）要有所要同步的对象的正确范围，另一个则是全方位同步规则，后者将用来筛选出尚未标识为属于应同步对象的所有对象。
 
-在以下示例中，我们只同步部门属性值为 **Sales** 的用户对象。
+在以下示例中，我们只同步部门属性值为 Sales 的用户对象。
 
-1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
+1. 通过使用属于 ADSyncAdmins 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
 2. 从开始菜单启动“同步规则编辑器”。
 3. 确保选择了“入站”，然后单击“添加新规则”。
-4. 为规则指定一个描述性名称，如“ *In from AD – User Sales sync* ”。选择正确的林，选择“用户”作为“CS 对象类型”，并选择“人员”作为“MV 对象类型”。对于“链接类型”，请选择“加入”，在“优先类型”中，选择另一个同步规则当前未使用的值（例如 501），然后单击“下一步”。  
+4. 为规则指定一个描述性名称，如“In from AD – User Sales sync”。选择正确的林，选择“用户”作为“CS 对象类型”，并选择“人员”作为“MV 对象类型”。对于“链接类型”，请选择“联接”，在优先级类型中，选择当前未由其他同步规则使用的值（例如 501），然后单击“下一步”。  
 ![入站 4 说明](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)  
-5. 在“范围筛选器”中，单击“添加组”，单击“添加子句”，然后在属性中选择“department”。确保运算符设置为“等于”，并在值框中键入值 **Sales**。单击“下一步”。  
+5. 在“范围筛选器”中，单击“添加组”，单击“添加子句”，然后在属性中选择“department”。确保运算符设置为“等于”，并在值框中键入值 Sales。单击“下一步”。  
 ![入站 5 范围](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)  
 6. 将“联接”规则留空，然后单击“下一步”。
-7. 单击“添加转换”，为“FlowType”选择“Constant”，选择目标属性“cloudFiltered”，然后在源文本框中键入 **False**。单击“添加”保存规则。  
+7. 单击“添加转换”，为“FlowType”选择“Constant”，选择目标属性“cloudFiltered”，然后在源文本框中键入 False。单击“添加”保存规则。  
 ![入站 6 转换](./media/active-directory-aadconnectsync-configure-filtering/inbound6.png)  
 这是一种特殊情况，在此我们将 cloudFiltered 显式设置为 False。
 
 	我们现在必须创建全方位同步规则。
 
-8. 为规则指定一个描述性名称，如“ *In from AD – User Catch-all filter* ”。选择正确的林，选择“用户”作为“CS 对象类型”，并选择“人员”作为“MV 对象类型”。对于“链接类型”，请选择“加入”，然后在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 600）。我们选择了高于先前同步规则的优先顺序值（较低优先顺序），但同时也预留了一些空间，以便可以在稍后想要开始同步其他部门时添加其他筛选同步规则。单击“下一步”。  
+8. 为规则指定一个描述性名称，如“In from AD – User Catch-all filter”。选择正确的林，选择“用户”作为“CS 对象类型”，并选择“人员”作为“MV 对象类型”。对于“链接类型”，请选择“加入”，然后在“优先顺序”中，键入当前未由其他同步规则使用的值（例如 600）。我们选择了高于先前同步规则的优先顺序值（较低优先顺序），但同时也预留了一些空间，以便可以在稍后想要开始同步其他部门时添加其他筛选同步规则。单击“下一步”。  
 ![入站 7 说明](./media/active-directory-aadconnectsync-configure-filtering/inbound7.png)
 9. 让“范围筛选器”保留空白，然后单击“下一步”。空白筛选器表示规则应该应用到所有对象。
 10. 将“联接”规则留空，然后单击“下一步”。
-11. 单击“添加转换”，为“FlowType”选择“Constant”，选择目标属性“cloudFiltered”，然后在源文本框中键入 **True**。单击“添加”保存规则。  
+11. 单击“添加转换”，为“FlowType”选择“Constant”，选择目标属性“cloudFiltered”，然后在源文本框中键入 True。单击“添加”保存规则。  
 ![入站 3 转换](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)  
 12. 若要完成配置设置，请参阅[应用并验证更改](#apply-and-verify-changes)。
 
@@ -217,13 +225,13 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。如果 Azure AD
 
 在此示例中，我们会更改筛选，以便只同步 mail 和 userPrincipalName 均以 @contoso.com 结尾的用户：
 
-1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
+1. 通过使用属于 ADSyncAdmins 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
 2. 从开始菜单启动“同步规则编辑器”。
 3. 在“规则类型”下，单击“出站”。
-4. 查找名为 **Out to AAD – User Join SOAInAD** 的规则。单击“编辑”。
+4. 查找名为“Out to AAD – User Join SOAInAD”的规则。单击“编辑”。
 5. 在弹出窗口中，回答“是”以创建规则的副本。
 6. 在“说明”页上，将优先顺序更改为某个尚未使用的值，例如 50。
-7. 单击左侧导航上的“范围筛选器”。单击“添加子句”，在“属性”中，选择“mail”，在“运算符”中，选择“ENDSWITH”，并在值中键入 **@contoso.com**。单击“添加子句”，在“属性”中，选择“userPrincipalName”，在“运算符”中，选择“ENDSWITH”，并在值中键入 **@contoso.com**。
+7. 单击左侧导航上的“范围筛选器”。单击“添加子句”，在“属性”中，选择“mail”，在“运算符”中，选择“ENDSWITH”，并在值中键入 @contoso.com。单击“添加子句”，在“属性”中，选择“userPrincipalName”，在“运算符”中，选择“ENDSWITH”，并在值中键入 @contoso.com。
 8. 单击“保存”。
 9. 若要完成配置设置，请参阅[应用并验证更改](#apply-and-verify-changes)。
 
@@ -236,7 +244,7 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。如果 Azure AD
 
 执行以下步骤：
 
-1. 从开始菜单启动“同步服务”。
+1. 从“开始”菜单启动“同步服务”。
 2. 选择“连接器”，然后在“连接器”列表中选择前面进行了配置更改的连接器。从“操作”中选择“运行”。  
 ![连接器运行](./media/active-directory-aadconnectsync-configure-filtering/connectorrun.png)  
 3. 在“运行配置文件”中，选择上一部分中所述的操作。如果需要运行两项操作，请在完成第一项操作后再运行第二项操作（所选连接器的“状态”列为“空闲”）。
@@ -254,16 +262,16 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。如果 Azure AD
 
 1. 选择“连接器”，然后在“连接器”列表中选择“Azure AD 连接器”。从“操作”中选择“运行”。
 2. 在“运行配置文件”中，选择“导出”。
-3. 如果配置更改将会删除许多对象，且数目超过配置的阈值（默认为 500），则在导出时你会看到错误。如果看到了错误，则需要暂时禁用[防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)功能。
+3. 如果配置更改将会删除许多对象，且数目超过配置的阈值（默认为 500），则在导出时你会看到错误。如果看到了错误，则需要暂时禁用[防止意外删除](/documentation/articles/active-directory-aadconnectsync-feature-prevent-accidental-deletes)功能。
 
 现在，需要再次启用计划程序。
 
 1. 从开始菜单启动“任务计划程序”。
-2. 在“任务计划程序库”正下方找到名为“Azure AD Sync 计划程序”的任务，单击右键，然后选择“启用”。
+2. 在“任务计划程序库”正下方找到名为“Azure AD 同步计划程序”的任务，单击右键，然后选择“启用”。
 
 ## 后续步骤
-了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。
+了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="用于 Xamarin iOS 应用程序的移动服务入门 | Azure"
+	pageTitle="用于 Xamarin iOS 应用的移动服务入门 | Microsoft Azure"
 	description="按照本教程进行操作，开始使用 Azure 移动服务进行 Xamarin iOS 开发。"
 	services="mobile-services"
 	documentationCenter="xamarin"
@@ -9,20 +9,16 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="02/10/2016"
+	ms.date="03/16/2016"
 	wacn.date=""/>
 
 # <a name="getting-started"></a>移动服务入门
+[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]&nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对等 Mobile Apps 版本，请参阅[创建 Xamarin.iOS 应用](/documentation/articles/app-service-mobile-xamarin-ios-get-started)。
 
-&nbsp;
-[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
-&nbsp;
-
-[AZURE.INCLUDE [mobile-services-hero-slug](../includes/mobile-services-hero-slug.md)]
-
-本教程说明如何使用 Azure 移动服务向 Xamarin.iOS 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单 *待办事项列表* 应用程序。
+本教程说明如何使用 Azure 移动服务向 Xamarin.iOS 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单待办事项列表应用程序。
 
 如果你更愿意观看视频，下面的视频片段提供了与本教程相同的步骤。
 
@@ -64,7 +60,7 @@
 
 5. 在“下载并运行应用程序”下面单击“下载”。
 
-	随即将会下载示例 _待办事项列表_ 应用程序的项目，该应用程序已连接到移动服务，并引用 Xamarin.iOS 的 Azure 移动服务组件。将压缩的项目文件保存到本地计算机，并记下保存位置。
+	随即将会下载示例待办事项列表应用程序的项目，该应用程序已连接到移动服务，并引用 Xamarin.iOS 的 Azure 移动服务组件。将压缩的项目文件保存到本地计算机，并记下保存位置。
 
 ## 运行新的 Xamarin.iOS 应用程序
 
@@ -78,7 +74,7 @@
 
 2. 按“运行”按钮以生成项目，并在 iPhone 模拟器中启动应用，这是此项目的默认设置。
 
-3. 在应用中键入有意义的文本（例如 _Complete the tutorial_），然后单击加号 (**+**) 图标。
+3. 在应用中键入有意义的文本（例如 Complete the tutorial），然后单击加号 (**+**) 图标。
 
 	![][10]
 
@@ -113,10 +109,10 @@
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
 
 <!-- Anchors. -->
-[Getting started with Mobile Services]:#getting-started
-[Create a new mobile service]:#create-new-service
-[Define the mobile service instance]:#define-mobile-service-instance
-[Next Steps]:#next-steps
+[Getting started with Mobile Services]: #getting-started
+[Create a new mobile service]: #create-new-service
+[Define the mobile service instance]: #define-mobile-service-instance
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 [0]: ./media/partner-xamarin-mobile-services-ios-get-started/mobile-quickstart-completed-ios.png
@@ -139,4 +135,4 @@
 
 [Azure 经典门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0405_2016-->

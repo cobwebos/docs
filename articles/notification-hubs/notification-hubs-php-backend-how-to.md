@@ -9,7 +9,7 @@
 
 <tags 
      ms.service="notification-hubs"
-	ms.date="11/01/2015" 
+	ms.date="02/29/2016" 
      wacn.date="" />
 
 # 如何通过 PHP 使用通知中心
@@ -83,7 +83,8 @@
 
 
 ### 创建安全令牌
-有关安全令牌创建的详细信息，请访问[此处](http://msdn.microsoft.com/zh-cn/library/dn495627.aspx)。以下方法必须添加到 **NotificationHub** 类，以便根据当前请求的 URI 和提取自连接字符串的凭据创建令牌。
+有关安全令牌创建的详细信息，请访问[此处](http://msdn.microsoft.com/zh-cn/library/dn495627.aspx)。
+以下方法必须添加到 **NotificationHub** 类，以便根据当前请求的 URI 和提取自连接字符串的凭据创建令牌。
 
 	private function generateSasToken($uri) {
 		$targetUri = strtolower(rawurlencode(strtolower($uri)));
@@ -247,4 +248,4 @@
 [PHP REST 包装器示例]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [入门教程]: /documentation/articles/notification-hubs-ios-get-started
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -1,0 +1,13 @@
+- [Azure Privileged Identity Management 入门](../articles/active-directory/active-directory-privileged-identity-management-getting-started.md)
+- [Azure PIM 中的角色](../articles/active-directory/active-directory-privileged-identity-management-roles.md)
+- [安全向导](../articles/active-directory/active-directory-privileged-identity-management-security-wizard.md)
+- [如何添加或删除用户角色](../articles/active-directory/active-directory-privileged-identity-management-how-to-add-role-to-user.md)
+- [如何激活或停用角色](../articles/active-directory/active-directory-privileged-identity-management-how-to-activate-role.md)
+- [如何更改或查看角色的默认激活设置](../articles/active-directory/active-directory-privileged-identity-management-how-to-change-default-settings.md)
+- [如何配置安全警报](../articles/active-directory/active-directory-privileged-identity-management-how-to-configure-security-alerts.md)
+- [如何启动安全审阅](../articles/active-directory/active-directory-privileged-identity-management-how-to-start-security-review.md)
+- [如何执行安全审阅](../articles/active-directory/active-directory-privileged-identity-management-how-to-perform-security-review.md)
+- [如何要求 MFA](../articles/active-directory/active-directory-privileged-identity-management-how-to-require-mfa.md)
+- [如何使用审核日志](../articles/active-directory/active-directory-privileged-identity-management-how-to-use-audit-log.md)
+
+<!---HONumber=Mooncake_0405_2016-->

@@ -1,5 +1,7 @@
+<!-- need to be customized -->
+
 <properties
-	pageTitle="在 HDInsight 中使用 Hadoop Sqoop | Microsoft Azure"
+	pageTitle="在 HDInsight 中使用 Hadoop Sqoop | Azure"
 	description="学习如何从工作站使用 Azure PowerShell 在 Hadoop 群集和 Azure SQL 数据库之间运行 Sqoop 导入和导出。"
 	editor="cgronlun"
 	manager="paulettm"
@@ -10,7 +12,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="12/01/2015"
+	ms.date="03/03/2016"
 	wacn.date=""/>
 
 #将 Sqoop 与 HDInsight 中的 Hadoop 配合使用 (Windows)
@@ -23,8 +25,7 @@
 
 [Sqoop][sqoop-user-guide-1.4.4] 是一种为在 Hadoop 群集和关系数据库之间传输数据而设计的工具。可以使用此工具将数据从关系数据库管理系统 (RDBMS)（如 SQL Server、MySQL 或 Oracle）中导入到 Hadoop 分布式文件系统 (HDFS)，在 Hadoop 中使用 MapReduce 或 Hive 转换数据，然后回过来将数据导出到 RDBMS。在本教程中，你要为你的关系数据库使用 SQL Server 数据库。
 
-有关 HDInsight 群集上支持的 Sqoop 版本，
-请参阅 [HDInsight 提供的群集版本有哪些新功能？][hdinsight-versions]。
+有关 HDInsight 群集上支持的 Sqoop 版本，请参阅 [HDInsight 提供的群集版本有哪些新功能？][hdinsight-versions]。
 
 ###<a name="prerequisites"></a>先决条件
 
@@ -32,28 +33,6 @@
 
 - **配备 Azure PowerShell 的工作站**。请参阅[安装 Azure PowerShell 1.0 和更高版本](/documentation/articles/hdinsight-administer-use-powershell#install-azure-powershell-10-and-greater)。
 
-如果选择使用现有的 Azure SQL 数据库或 Microsoft SQL Server
-
-- **Azure SQL 数据库**：你必须为 Azure SQL 数据库服务器配置防火墙规则以允许从你的工作站进行访问。有关创建 Azure SQL 数据库和配置防火墙的说明，请参阅 [Azure SQL 数据库入门][sqldatabase-get-started]。 
-
-	> [AZURE.NOTE]默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。如果禁用了此防火墙设置，则必须从 Azure 管理门户启用它。有关创建 Azure SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL 数据库][sqldatabase-create-configue]。
-
-- **SQL Server**：如果你的 HDInsight 群集与 SQL Server 位于 Azure 中的同一虚拟网络，你可以使用本文中的步骤对 SQL Server 数据库执行数据导入和导出操作。
-
-	> [AZURE.NOTE]HDInsight 仅支持基于位置的虚拟网络，并且当前不适用于基于地缘组的虚拟网络。
-
-	* 若要创建和配置虚拟网络，请参阅[虚拟网络配置任务](/home/features/virtual-machines/)。
-
-		* 在数据中心使用 SQL Server 时，必须将虚拟网络配置为*站点到站点*或*点到站点*。
-
-			> [AZURE.NOTE]对于**点到站点**虚拟网络，SQL Server 必须运行 Azure 虚拟网络配置的“仪表板”中提供的 VPN 客户端配置应用程序。
-
-		* 当你在 Azure 虚拟机上使用 SQL Server 时，如果托管 SQL Server 的虚拟机是 HDInsight 所在虚拟网络的成员，则可以使用任何虚拟网络配置。
-
-	* 若要在虚拟网络上预配 HDInsight 群集，请参阅[使用自定义选项在 HDInsight 中预配 Hadoop 群集](/documentation/articles/hdinsight-provision-clusters)
-
-	> [AZURE.NOTE]SQL Server 还必须允许身份验证。必须使用 SQL Server 登录名来完成此文章中的步骤。
-	
 ##了解方案
 
 HDInsight 群集带有某些示例数据。你将会使用以下两个示例：
@@ -71,9 +50,243 @@ HDInsight 群集带有某些示例数据。你将会使用以下两个示例：
 
 	/tutorials/usesqoop/importeddata
 
+## 创建群集和 SQL 数据库
+
+在 [Azure 管理门户](https://manage.windowsazure.cn)上创建 SQL 数据库。
+
+1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
+2. 单击“新建”>“数据服务”>“Sql 数据库”>“自定义创建”。
+3. 为数据库输入名称，并为数据库选择“服务层”、“性能级别”、“排序规则”和“服务器”。
+4. 如果选择为数据库创建新的 SQL 数据库服务器，请单击“下一步”。如果选择现有服务，请确保它满足[以下条件](#sql_server_condition)，然后单击“完成”。
+5. 输入登录用户名和密码，然后为 SQL Server 选择区域（如果选择创建新服务器）。
+
+> [AZURE.NOTE] SQl Server 的资源组名称是“Default-Sql-chinaeast”或“Default-Sql-chinanorth”，具体取决于 SQL Server 的区域。
+
+在 [Azure 管理门户](https://manage.windowsazure.cn)上创建群集。
+
+1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
+2. 单击“新建”>“数据服务”>“HDInsight”>“Hadoop”。
+3. 为群集输入名称、HTTP 密码，然后选择“群集大小”和“存储帐户”。
+4. 单击“创建 HDINSIGHT 群集”。
+
+如果选择使用现有的 Azure SQL 数据库或 Microsoft SQL Server
+
+- **Azure SQL 数据库**：你必须为 Azure SQL 数据库服务器配置防火墙规则以允许从你的工作站进行访问。有关创建 Azure SQL 数据库和配置防火墙的说明，请参阅 [Azure SQL 数据库入门][sqldatabase-get-started]。 
+
+    > [AZURE.NOTE] 默认情况下，可以从 Azure HDInsight 这样的 Azure 服务连接 Azure SQL 数据库。如果禁用了此防火墙设置，则必须从 Azure 管理门户启用它。有关创建 Azure SQL 数据库和配置防火墙规则的说明，请参阅[创建和配置 SQL 数据库][sqldatabase-create-configue]。
+
+<a name="sql_server_condition"></a>
+- **SQL Server**：如果你的 HDInsight 群集与 SQL Server 位于 Azure 中的同一虚拟网络，你可以使用本文中的步骤对 SQL Server 数据库执行数据导入和导出操作。
+
+    > [AZURE.NOTE] HDInsight 仅支持基于位置的虚拟网络，并且当前不适用于基于地缘组的虚拟网络。
+
+    * 若要创建和配置虚拟网络，请参阅[虚拟网络配置任务](/home/features/virtual-machines/)。
+
+        * 在数据中心使用 SQL Server 时，必须将虚拟网络配置为站点到站点或点到站点。
+
+            > [AZURE.NOTE] 对于**点到站点**虚拟网络，SQL Server 必须运行 Azure 虚拟网络配置的“仪表板”中提供的 VPN 客户端配置应用程序。
+
+        * 当你在 Azure 虚拟机上使用 SQL Server 时，如果托管 SQL Server 的虚拟机是 HDInsight 所在虚拟网络的成员，则可以使用任何虚拟网络配置。
+
+    * 若要在虚拟网络上创建 HDInsight 群集，请参阅[使用自定义选项在 HDInsight 中创建 Hadoop 群集](/documentation/articles/hdinsight-provision-clusters-v1)
+
+    > [AZURE.NOTE] SQL Server 还必须允许身份验证。必须使用 SQL Server 登录名来完成此文章中的步骤。
+	
+
 ## 使用 PowerShell 运行 Sqoop
 
-本部分中的 PowerShell 示例将执行以下步骤：
+下面的 PowerShell 脚本预处理源文件，并将它导出到 Azure SQL 数据库：
+
+    $hdinsightClusterName = "<HDInsightClusterName>"
+
+    $httpUserName = "admin"
+    $httpPassword = "<Password>"
+
+    $defaultStorageAccountName = $hdinsightClusterName + "store"
+    $defaultBlobContainerName = $hdinsightClusterName
+
+
+    $sqlDatabaseServerName = $hdinsightClusterName + "dbserver"
+    $sqlDatabaseName = $hdinsightClusterName + "db"
+    $sqlDatabaseLogin = "sqluser"
+    $sqlDatabasePassword = "<Password>"
+
+    #region - Connect to Azure subscription
+    Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+    try{Get-AzureSubscription}
+    catch{Add-AzureAccount -Environment AzureChinaCloud}
+    #endregion
+        
+    #region - pre-process the source file
+        
+    Write-Host "`nPreprocessing the source file ..." -ForegroundColor Green
+        
+    # This procedure creates a new file with $destBlobName
+    $sourceBlobName = "example/data/sample.log"
+    $destBlobName = "tutorials/usesqoop/data/sample.log"
+        
+    # Define the connection string
+    $defaultStorageAccountKey = Get-AzureStorageKey `
+                                    -StorageAccountName $defaultStorageAccountName |  %{ $_.primary }
+    $storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$defaultStorageAccountName;AccountKey=$defaultStorageAccountKey"
+        
+    # Create block blob objects referencing the source and destination blob.
+    $storageAccount = [Microsoft.WindowsAzure.Storage.CloudStorageAccount]::Parse($storageConnectionString)
+    $storageClient = $storageAccount.CreateCloudBlobClient();
+    $storageContainer = $storageClient.GetContainerReference($defaultBlobContainerName)
+    $sourceBlob = $storageContainer.GetBlockBlobReference($sourceBlobName)
+    $destBlob = $storageContainer.GetBlockBlobReference($destBlobName)
+        
+    # Define a MemoryStream and a StreamReader for reading from the source file
+    $stream = New-Object System.IO.MemoryStream
+    $stream = $sourceBlob.OpenRead()
+    $sReader = New-Object System.IO.StreamReader($stream)
+        
+    # Define a MemoryStream and a StreamWriter for writing into the destination file
+    $memStream = New-Object System.IO.MemoryStream
+    $writeStream = New-Object System.IO.StreamWriter $memStream
+        
+    # Pre-process the source blob
+    $exString = "java.lang.Exception:"
+    while(-Not $sReader.EndOfStream){
+        $line = $sReader.ReadLine()
+        $split = $line.Split(" ")
+        
+        # remove the "java.lang.Exception" from the first element of the array
+        # for example: java.lang.Exception: 2012-02-03 19:11:02 SampleClass8 [WARN] problem finding id 153454612
+        if ($split[0] -eq $exString){
+            #create a new ArrayList to remove $split[0]
+            $newArray = [System.Collections.ArrayList] $split
+            $newArray.Remove($exString)
+        
+            # update $split and $line
+            $split = $newArray
+            $line = $newArray -join(" ")
+        }
+        
+        # remove the lines that has less than 7 elements
+        if ($split.count -ge 7){
+            write-host $line
+            $writeStream.WriteLine($line)
+        }
+    }
+        
+    # Write to the destination blob
+    $writeStream.Flush()
+    $memStream.Seek(0, "Begin")
+    $destBlob.UploadFromStream($memStream)
+        
+    #endregion
+        
+    #region - export the log file from the cluster to the SQL database
+        
+    Write-Host "Exporting the log file ..." -ForegroundColor Green
+
+    $pw = ConvertTo-SecureString -String $httpPassword -AsPlainText -Force
+    $httpCredential = New-Object System.Management.Automation.PSCredential($httpUserName,$pw)
+        
+    # Connection string for Azure SQL Database.
+    # Comment if using SQL Server
+    $connectionString = "jdbc:sqlserver://$sqlDatabaseServerName.database.chinacloudapi.cn;user=$sqlDatabaseLogin@$sqlDatabaseServerName;password=$sqlDatabasePassword;database=$sqlDatabaseName"
+    # Connection string for SQL Server.
+    # Uncomment if using SQL Server.
+    #$connectionString = "jdbc:sqlserver://$sqlDatabaseServerName;user=$sqlDatabaseLogin;password=$sqlDatabasePassword;database=$sqlDatabaseName"
+        
+    $tableName_log4j = "log4jlogs"
+    $exportDir_log4j = "/tutorials/usesqoop/data"
+        
+    # Submit a Sqoop job
+    $sqoopDef = New-AzureHDInsightSqoopJobDefinition `
+        -Command "export --connect $connectionString --table $tableName_log4j --export-dir $exportDir_log4j --input-fields-terminated-by ' ' -m 1"
+
+    $sqoopJob = Start-AzureHDInsightJob `
+                    -Cluster $hdinsightClusterName `
+                    -Credential $httpCredential `
+                    -JobDefinition $sqoopDef #-Debug -Verbose
+
+    Wait-AzureHDInsightJob `
+        -Cluster $hdinsightClusterName `
+        -Credential $httpCredential `
+        -JobId $sqoopJob.JobId
+        
+    Write-Host "Standard Error" -BackgroundColor Green
+    Get-AzureHDInsightJobOutput -Cluster $hdinsightClusterName -JobId $sqoopJob.JobId -StandardError
+    Write-Host "Standard Output" -BackgroundColor Green
+    Get-AzureHDInsightJobOutput -Cluster $hdinsightClusterName -JobId $sqoopJob.JobId -StandardOutput
+    #endregion
+
+## 使用 .NET SDK 运行 Sqoop
+
+在本部分中，你将创建一个 C# 控制台应用程序，以便将 hivesampletable 导出到在本教程前面创建的 SQL 数据库表。
+
+**提交 Sqoop 作业**
+
+1. 在 Visual Studio 包管理器控制台中，运行以下 Nuget 命令将包导入。
+
+		Install-Package Microsoft.Azure.Management.HDInsight.Job -Pre
+2. 在 Program.cs 文件中使用以下 using 语句：
+
+		using System;
+		using Microsoft.Azure.Management.HDInsight.Job;
+		using Microsoft.Azure.Management.HDInsight.Job.Models;
+		using Hyak.Common;
+3. 将以下代码添加到 Main() 函数中。有关使用 HDInsight .NET SDK 的常规信息，请参阅[以编程方式提交 Hadoop 作业][hdinsight-submit-jobs]。
+
+		var ExistingClusterName = "<HDInsightClusterName>";
+		var ExistingClusterUri = ExistingClusterName + ".azurehdinsight.cn";
+		var ExistingClusterUsername = "<HDInsightClusterHttpUsername>";
+		var ExistingClusterPassword = "<HDInsightClusterHttpUserPassword>";
+		
+		var sqlDatabaseServerName = "<AzureSQLDatabaseServerName>";
+		var sqlDatabaseLogin = "<AzureSQLDatabaseLogin>";
+		var sqlDatabaseLoginPassword = "<AzureSQLDatabaseLoginPassword>";
+		var sqlDatabaseDatabaseName = "<AzureSQLDatabaseDatabaseName>";
+		
+		var sqlDatabaseTableName = "log4jlogs";
+		var exportDir = "/hive/warehouse/hivesampletable";
+
+		var cmdExport = @"export";
+		// Connection string for using Azure SQL Database.
+		// Comment if using SQL Server
+		cmdExport = cmdExport + @" --connect 'jdbc:sqlserver://" + sqlDatabaseServerName + ".database.chinacloudapi.cn;user=" + sqlDatabaseLogin + "@" + sqlDatabaseServerName + ";password=" + sqlDatabaseLoginPassword + ";database=" + sqlDatabaseDatabaseName +"'"; 
+		// Connection string for using SQL Server.
+		// Uncomment if using SQL Server
+		//cmdExport = cmdExport + @" --connect jdbc:sqlserver://" + sqlDatabaseServerName + ";user=" + sqlDatabaseLogin + ";password=" + sqlDatabaseLoginPassword + ";database=" + sqlDatabaseDatabaseName;
+		cmdExport = cmdExport + @" --table " + sqlDatabaseTableName;
+		cmdExport = cmdExport + @" --export-dir " + exportDir;
+		cmdExport = cmdExport + @" --input-fields-terminated-by \0x20 -m 1";
+		
+		HDInsightJobManagementClient _hdiJobManagementClient;
+		var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
+		_hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
+
+		var parameters = new SqoopJobSubmissionParameters
+		{
+		    Command = cmdExport
+		};
+		
+		System.Console.WriteLine("Submitting the Sqoop job to the cluster...");
+		var response = _hdiJobManagementClient.JobManagement.SubmitSqoopJob(parameters);
+		System.Console.WriteLine("Validating that the response is as expected...");
+		System.Console.WriteLine("Response status code is " + response.StatusCode);
+		System.Console.WriteLine("Validating the response object...");
+		System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
+		Console.WriteLine("Press ENTER to continue ...");
+		Console.ReadLine();
+4. 按 **F5** 运行程序。 
+
+##后续步骤
+
+现在你已经学习了如何使用 Sqoop。若要了解更多信息，请参阅以下文章：
+
+- [将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]：在 Oozie 工作流中使用 Sqoop 操作。
+- [使用 HDInsight 分析航班延误数据][hdinsight-analyze-flight-data]：使用 Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库。
+- [将数据上载到 HDInsight][hdinsight-upload-data]：了解将数据上载到 HDInsight/Azure Blob 存储的其他方法。
+
+
+## 附录 A - PowerShell 示例
+
+PowerShell 示例将执行以下步骤：
 
 1. 连接到 Azure。
 2. 创建 Azure 资源组。有关详细信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](/documentation/articles/powershell-azure-resource-manager)
@@ -124,17 +337,17 @@ HDInsight 群集带有某些示例数据。你将会使用以下两个示例：
 
 	源文件为 tutorials/usesqoop/data/sample.log。数据导出到的表的名称为 log4jlogs。
 	
-	> [AZURE.NOTE]除了连接字符串信息，此节中的步骤还应适用于 Azure SQL 数据库或 SQL Server。这些步骤已使用以下配置测试过：
+	> [AZURE.NOTE] 除了连接字符串信息，此节中的步骤还应适用于 Azure SQL 数据库或 SQL Server。这些步骤已使用以下配置测试过：
 	>
 	> * **Azure 虚拟网络点到站点配置**：虚拟网络已将 HDInsight 群集连接到专用数据中心的 SQL Server。有关详细信息，请参阅[在管理门户中配置点到站点 VPN](/documentation/articles/vpn-gateway-point-to-site-create)。
-	> * **Azure HDInsight 3.1**：有关在虚拟网络上创建群集的信息，请参阅[在 HDInsight 中使用自定义选项预配 Hadoop 群集](/documentation/articles/hdinsight-provision-clusters)。
+	> * **Azure HDInsight 3.1**：有关在虚拟网络上创建群集的信息，请参阅[使用自定义选项在 HDInsight 中创建 Hadoop 群集](/documentation/articles/hdinsight-provision-clusters-v1)。
 	> * **SQL Server 2014**：已配置为允许身份验证和运行 VPN 客户端配置包，可以安全地连接到虚拟网络。
 
 7. 将 Hive 表导出到 Azure SQL 数据库。
 
 8. 将 mobiledata 表导入 HDInsight 群集。
 
-	若要检查修改后的数据文件，可以使用预览门户、Azure 存储资源管理器工具或 Azure PowerShell。[HDInsight 入门][hdinsight-get-started]中有一个关于使用 Azure PowerShell 下载文件并显示文件内容的代码示例。
+	若要检查修改后的数据文件，可以使用 Azure 管理门户、Azure 存储资源管理器工具或 Azure PowerShell。[HDInsight 入门][hdinsight-get-started]中有一个关于使用 Azure PowerShell 下载文件并显示文件内容的代码示例。
 
 
 ### PowerShell 示例
@@ -211,7 +424,10 @@ HDInsight 群集带有某些示例数据。你将会使用以下两个示例：
 	#region - Connect to Azure subscription
 	Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
 	try{Get-AzureRmContext}
-	catch{Login-AzureRmAccount}
+	catch{Login-AzureRmAccount -EnvironmentName AzureChinaCloud}
+
+    try{Get-AzureSubscription}
+	catch{Add-AzureAccount -Environment AzureChinaCloud}
 	#endregion
 	
 	#region - Create Azure resouce group
@@ -314,16 +530,14 @@ HDInsight 群集带有某些示例数据。你将会使用以下两个示例：
 	Write-Host "Creating the HDInsight cluster and the dependent services ..." -ForegroundColor Green
 	
 	# Create the default storage account
-	New-AzureRmStorageAccount `
-		-ResourceGroupName $resourceGroupName `
-		-Name $defaultStorageAccountName `
+	New-AzureStorageAccount `
+		-StorageAccountName $defaultStorageAccountName `
 		-Location $location `
 		-Type Standard_LRS
 	
 	# Create the default Blob container
-	$defaultStorageAccountKey = Get-AzureRmStorageAccountKey `
-									-ResourceGroupName $resourceGroupName `
-									-Name $defaultStorageAccountName |  %{ $_.Key1 }
+	$defaultStorageAccountKey = Get-AzureStorageAccountKey `
+									-StorageAccountName $defaultStorageAccountName |  %{ $_.primary }
 	$defaultStorageAccountContext = New-AzureStorageContext `
 										-StorageAccountName $defaultStorageAccountName `
 										-StorageAccountKey $defaultStorageAccountKey 
@@ -335,20 +549,19 @@ HDInsight 群集带有某些示例数据。你将会使用以下两个示例：
 	$pw = ConvertTo-SecureString -String $httpPassword -AsPlainText -Force
 	$httpCredential = New-Object System.Management.Automation.PSCredential($httpUserName,$pw)
 	
-	New-AzureRmHDInsightCluster `
-		-ResourceGroupName $resourceGroupName `
-		-ClusterName $HDInsightClusterName `
+	New-AzureHDInsightCluster `
+		-Name $HDInsightClusterName `
 		-Location $location `
 		-ClusterType Hadoop `
 		-OSType Windows `
 		-ClusterSizeInNodes 2 `
-		-HttpCredential $httpCredential `
+		-Credential $httpCredential `
 		-DefaultStorageAccountName "$defaultStorageAccountName.blob.core.chinacloudapi.cn" `
 		-DefaultStorageAccountKey $defaultStorageAccountKey `
-		-DefaultStorageContainer $defaultBlobContainerName 
+		-DefaultStorageContainerName $defaultBlobContainerName 
 	
 	# Validate the cluster
-	Get-AzureRmHDInsightCluster -ClusterName $hdinsightClusterName
+	Get-AzureHDInsightCluster -Name $hdinsightClusterName
 	#endregion
 	
 	#region - pre-process the source file
@@ -426,22 +639,21 @@ HDInsight 群集带有某些示例数据。你将会使用以下两个示例：
 	$exportDir_log4j = "/tutorials/usesqoop/data"
 	
 	# Submit a Sqoop job
-	$sqoopDef = New-AzureRmHDInsightSqoopJobDefinition `
+	$sqoopDef = New-AzureHDInsightSqoopJobDefinition `
 		-Command "export --connect $connectionString --table $tableName_log4j --export-dir $exportDir_log4j --input-fields-terminated-by \0x20 -m 1"
-	$sqoopJob = Start-AzureRmHDInsightJob `
-					-ClusterName $hdinsightClusterName `
-					-HttpCredential $httpCredential `
+	$sqoopJob = Start-AzureHDInsightJob `
+					-Cluster $hdinsightClusterName `
+					-Credential $httpCredential `
 					-JobDefinition $sqoopDef #-Debug -Verbose
-	Wait-AzureRmHDInsightJob `
-		-ResourceGroupName $resourceGroupName `
-		-ClusterName $hdinsightClusterName `
-		-HttpCredential $httpCredential `
+	Wait-AzureHDInsightJob `
+		-Cluster $hdinsightClusterName `
+		-Credential $httpCredential `
 		-JobId $sqoopJob.JobId
 	
 	Write-Host "Standard Error" -BackgroundColor Green
-	Get-AzureRmHDInsightJobOutput -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -HttpCredential $httpCredential -JobId $sqoopJob.JobId -DisplayOutputType StandardError
+	Get-AzureHDInsightJobOutput -Cluster $hdinsightClusterName -JobId $sqoopJob.JobId -StandardError
 	Write-Host "Standard Output" -BackgroundColor Green
-	Get-AzureRmHDInsightJobOutput -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -HttpCredential $httpCredential -JobId $sqoopJob.JobId -DisplayOutputType StandardOutput
+	Get-AzureHDInsightJobOutput -Cluster $hdinsightClusterName -JobId $sqoopJob.JobId -StandardOutput
 	
 	#endregion
 	
@@ -450,40 +662,29 @@ HDInsight 群集带有某些示例数据。你将会使用以下两个示例：
 	$tableName_mobile = "mobiledata"
 	$exportDir_mobile = "/hive/warehouse/hivesampletable"
 	
-	$sqoopDef = New-AzureRmHDInsightSqoopJobDefinition `
+	$sqoopDef = New-AzureHDInsightSqoopJobDefinition `
 		-Command "export --connect $connectionString --table $tableName_mobile --export-dir $exportDir_mobile --fields-terminated-by \t -m 1"
-	$sqoopJob = Start-AzureRmHDInsightJob `
-					-ClusterName $hdinsightClusterName `
-					-HttpCredential $httpCredential `
+	$sqoopJob = Start-AzureHDInsightJob `
+					-Cluster $hdinsightClusterName `
+					-Credential $httpCredential `
 					-JobDefinition $sqoopDef #-Debug -Verbose
 	
-	Wait-AzureRmHDInsightJob `
-		-ResourceGroupName $resourceGroupName `
-		-ClusterName $hdinsightClusterName `
-		-HttpCredential $httpCredential `
+	Wait-AzureHDInsightJob `
+		-Cluster $hdinsightClusterName `
+		-Credential $httpCredential `
 		-JobId $sqoopJob.JobId
 	
 	Write-Host "Standard Error" -BackgroundColor Green
-	Get-AzureRmHDInsightJobOutput `
-		-ResourceGroupName $resourceGroupName `
-		-ClusterName $hdinsightClusterName `
-		-DefaultStorageAccountName $defaultStorageAccountName `
-		-DefaultStorageAccountKey $defaultStorageAccountKey `
-		-DefaultContainer $defaultBlobContainerName `
-		-HttpCredential $httpCredential `
+	Get-AzureHDInsightJobOutput `
+		-Cluster $hdinsightClusterName `
 		-JobId $sqoopJob.JobId `
-		-DisplayOutputType StandardError
+		-StandardError
 	
 	Write-Host "Standard Output" -BackgroundColor Green
-	Get-AzureRmHDInsightJobOutput `
-		-ResourceGroupName $resourceGroupName `
-		-ClusterName $hdinsightClusterName `
-		-DefaultStorageAccountName $defaultStorageAccountName `
-		-DefaultStorageAccountKey $defaultStorageAccountKey `
-		-DefaultContainer $defaultBlobContainerName `
-		-HttpCredential $httpCredential `
+	Get-AzureHDInsightJobOutput `
+		-Cluster $hdinsightClusterName `
 		-JobId $sqoopJob.JobId `
-		-DisplayOutputType StandardOutput
+		-StandardOutput
 	
 	#endregion
 	
@@ -491,121 +692,40 @@ HDInsight 群集带有某些示例数据。你将会使用以下两个示例：
 	
 	$targetDir_mobile = "/tutorials/usesqoop/importeddata/"
 	
-	$sqoopDef = New-AzureRmHDInsightSqoopJobDefinition `
+	$sqoopDef = New-AzureHDInsightSqoopJobDefinition `
 		-Command "import --connect $connectionString --table $tableName_mobile --target-dir $targetDir_mobile --fields-terminated-by \t --lines-terminated-by \n -m 1"
 	
-	$sqoopJob = Start-AzureRmHDInsightJob `
-					-ClusterName $hdinsightClusterName `
-					-HttpCredential $httpCredential `
+	$sqoopJob = Start-AzureHDInsightJob `
+					-Cluster $hdinsightClusterName `
+					-Credential $httpCredential `
 					-JobDefinition $sqoopDef #-Debug -Verbose
 	
-	Wait-AzureRmHDInsightJob `
-		-ResourceGroupName $resourceGroupName `
-		-ClusterName $hdinsightClusterName `
-		-HttpCredential $httpCredential `
+	Wait-AzureHDInsightJob `
+		-Cluster $hdinsightClusterName `
+		-Credential $httpCredential `
 		-JobId $sqoopJob.JobId
 	
 	Write-Host "Standard Error" -BackgroundColor Green
-	Get-AzureRmHDInsightJobOutput `
-		-ResourceGroupName $resourceGroupName `
-		-ClusterName $hdinsightClusterName `
-		-DefaultStorageAccountName $defaultStorageAccountName `
-		-DefaultStorageAccountKey $defaultStorageAccountKey `
-		-DefaultContainer $defaultBlobContainerName `
-		-HttpCredential $httpCredential `
+	Get-AzureHDInsightJobOutput `
+		-Cluster $hdinsightClusterName `
 		-JobId $sqoopJob.JobId `
-		-DisplayOutputType StandardError
+		-StandardError
 	
 	Write-Host "Standard Output" -BackgroundColor Green
-	Get-AzureRmHDInsightJobOutput `
-		-ResourceGroupName $resourceGroupName `
-		-ClusterName $hdinsightClusterName `
-		-DefaultStorageAccountName $defaultStorageAccountName `
-		-DefaultStorageAccountKey $defaultStorageAccountKey `
-		-DefaultContainer $defaultBlobContainerName `
-		-HttpCredential $httpCredential `
+	Get-AzureHDInsightJobOutput `
+		-Cluster $hdinsightClusterName `
 		-JobId $sqoopJob.JobId `
-		-DisplayOutputType StandardOutput
+		-StandardOutput
 	
 	#endregion
 
-## 使用 .NET SDK 运行 Sqoop
 
-在本部分中，你将创建一个 C# 控制台应用程序，以便将 hivesampletable 导出到在本教程前面创建的 SQL 数据库表。
-
-**提交 Sqoop 作业**
-
-1. 在 Visual Studio 包管理器控制台中，运行以下 Nuget 命令将包导入。
-
-		Install-Package Microsoft.Azure.Management.HDInsight.Job -Pre
-2. 在 Program.cs 文件中使用以下 using 语句：
-
-		using System;
-		using Microsoft.Azure.Management.HDInsight.Job;
-		using Microsoft.Azure.Management.HDInsight.Job.Models;
-		using Hyak.Common;
-3. 将以下代码添加到 Main() 函数中。有关使用 HDInsight .NET SDK 的常规信息，请参阅[以编程方式提交 Hadoop 作业][hdinsight-submit-jobs]。
-
-		var ExistingClusterName = "<HDInsightClusterName>";
-		var ExistingClusterUri = ExistingClusterName + ".azurehdinsight.cn";
-		var ExistingClusterUsername = "<HDInsightClusterHttpUsername>";
-		var ExistingClusterPassword = "<HDInsightClusterHttpUserPassword>";
-		
-		var sqlDatabaseServerName = "<AzureSQLDatabaseServerName>";
-		var sqlDatabaseLogin = "<AzureSQLDatabaseLogin>";
-		var sqlDatabaseLoginPassword = "<AzureSQLDatabaseLoginPassword>";
-		var sqlDatabaseDatabaseName = "<AzureSQLDatabaseDatabaseName>";
-		
-		var sqlDatabaseTableName = "log4jlogs";
-		var exportDir = "/hive/warehouse/hivesampletable";
-
-		var cmdExport = @"export";
-		// Connection string for using Azure SQL Database.
-		// Comment if using SQL Server
-		cmdExport = cmdExport + @" --connect 'jdbc:sqlserver://" + sqlDatabaseServerName + ".database.chinacloudapi.cn;user=" + sqlDatabaseLogin + "@" + sqlDatabaseServerName + ";password=" + sqlDatabaseLoginPassword + ";database=" + sqlDatabaseDatabaseName +"'"; 
-		// Connection string for using SQL Server.
-		// Uncomment if using SQL Server
-		//cmdExport = cmdExport + @" --connect jdbc:sqlserver://" + sqlDatabaseServerName + ";user=" + sqlDatabaseLogin + ";password=" + sqlDatabaseLoginPassword + ";database=" + sqlDatabaseDatabaseName;
-		cmdExport = cmdExport + @" --table " + sqlDatabaseTableName;
-		cmdExport = cmdExport + @" --export-dir " + exportDir;
-		cmdExport = cmdExport + @" --input-fields-terminated-by \0x20 -m 1";
-		
-		HDInsightJobManagementClient _hdiJobManagementClient;
-		var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
-		_hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
-
-		var parameters = new SqoopJobSubmissionParameters
-		{
-		    UserName = ExistingClusterUsername,
-		    Command = cmdExport
-		};
-		
-		System.Console.WriteLine("Submitting the Sqoop job to the cluster...");
-		var response = _hdiJobManagementClient.JobManagement.SubmitSqoopJob(parameters);
-		System.Console.WriteLine("Validating that the response is as expected...");
-		System.Console.WriteLine("Response status code is " + response.StatusCode);
-		System.Console.WriteLine("Validating the response object...");
-		System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
-		Console.WriteLine("Press ENTER to continue ...");
-		Console.ReadLine();
-4. 按 **F5** 运行程序。 
-
-
-
-
-##后续步骤
-
-现在你已经学习了如何使用 Sqoop。若要了解更多信息，请参阅以下文章：
-
-- [将 Oozie 与 HDInsight 配合使用][hdinsight-use-oozie]：在 Oozie 工作流中使用 Sqoop 操作。
-- [使用 HDInsight 分析航班延误数据][hdinsight-analyze-flight-data]：使用 Hive 分析航班延误数据，然后使用 Sqoop 将数据导出到 Azure SQL 数据库。
-- [将数据上载到 HDInsight][hdinsight-upload-data]：了解将数据上载到 HDInsight/Azure Blob 存储的其他方法。
 
 [azure-management-portal]: https://manage.windowsazure.cn/
 
-[hdinsight-versions]: /documentation/articles/hdinsight-component-versioning
-[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters
-[hdinsight-get-started]: /documentation/articles/hdinsight-hadoop-tutorial-get-started-windows
+[hdinsight-versions]: /documentation/articles/hdinsight-component-versioning-v1
+[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters-v1
+[hdinsight-get-started]: /documentation/articles/hdinsight-hadoop-linux-tutorial-get-started
 [hdinsight-storage]: /documentation/articles/hdinsight-hadoop-use-blob-storage
 [hdinsight-analyze-flight-data]: /documentation/articles/hdinsight-analyze-flight-delay-data
 [hdinsight-use-oozie]: /documentation/articles/hdinsight-use-oozie
@@ -621,4 +741,4 @@ HDInsight 群集带有某些示例数据。你将会使用以下两个示例：
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs" 
-	ms.date="11/01/2015" 
+	ms.date="02/29/2016" 
 	wacn.date="" />
 
 
@@ -18,9 +18,9 @@
 		
 如 MSDN 主题[通知中心 REST API](http://msdn.microsoft.com/library/dn223264.aspx) 中所述，你可以使用通知中心 REST 接口从 Java/PHP/Python/Ruby 后端访问所有通知中心功能。
 
-> [AZURE.NOTE]这是在 Python 中实现通知发送的示例引用实现，不是官方支持的通知中心 Python SDK。
+> [AZURE.NOTE] 这是在 Python 中实现通知发送的示例引用实现，不是官方支持的通知中心 Python SDK。
 
-> [AZURE.NOTE]此示例使用 Python 3.4 编写。
+> [AZURE.NOTE] 此示例使用 Python 3.4 编写。
 
 本主题中，我们将向你介绍如何：
 
@@ -30,7 +30,7 @@
 
 你可以按照你选定的移动平台的[入门教程](/documentation/articles/notification-hubs-windows-store-dotnet-get-started)以 Python 实现后端部分。
 
-> [AZURE.NOTE]该示例仅限于发送通知，并不执行任何注册管理操作。
+> [AZURE.NOTE] 该示例仅限于发送通知，并不执行任何注册管理操作。
 
 ## 客户端接口
 主要的客户端接口可提供 [.NET 通知中心 SDK](http://msdn.microsoft.com/zh-cn/library/jj933431.aspx) 中提供的相同方法。这将允许你直接翻译当前该网站上提供的所有教程和示例，这些内容均来自 Internet 上的社区。
@@ -248,7 +248,9 @@
 以上方法将 HTTP POST 请求发送到你通知中心的 /messages 终结点，该请求具有发送通知的正确正文和标头。
 
 ### 使用调试属性启用详细的日志记录
-在初始化通知中心时启用调试属性将写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。我们最近添加了这个称为[通知中心 TestSend 属性](http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx)的属性，它将返回有关通知发送结果的详细信息。若要使用它 - 请使用以下方法进行初始化：
+在初始化通知中心时启用调试属性将写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。 
+我们最近添加了这个称为[通知中心 TestSend 属性](http://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx)的属性，它将返回有关通知发送结果的详细信息。 
+若要使用它 - 请使用以下方法进行初始化：
 
 	hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
@@ -314,8 +316,7 @@
 ## 示例:
 
 ### 启用调试属性
-如果在初始化 NotificationHub 时启用调试标志，你将会看到详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，你可以从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：
-    ![][1]
+如果在初始化 NotificationHub 时启用调试标志，你将会看到详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，你可以从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：![][1]
 
 你将看到如详细的通知中心结果，例如
 
@@ -388,5 +389,4 @@
 [3]: ./media/notification-hubs-python-backend-how-to/SendWithOneTag.png
 [4]: ./media/notification-hubs-python-backend-how-to/SendWithMultipleTags.png
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -32,7 +32,8 @@ Azure AD Connect 向导提供权限要求相异的两种不同路径：
 连接到 AD DS | 本地 Active Directory 凭据 | Active Directory 中企业管理员 (EA) 组的成员| 将用作本地 AD 连接器帐户，也就是说，正是该帐户读取和写入用于同步的目录信息。
 不可用|运行向导的用户的登录凭据| 本地服务器的管理员|向导将创建 AD 帐户，该帐户将用作本地计算机上的同步服务登录帐户。
 
-<br> <br>
+<br>
+<br>
 
 
 ## 收集的凭据，以及这些凭据在自定义设置中的用途
@@ -44,13 +45,14 @@ Azure AD Connect 向导提供权限要求相异的两种不同路径：
 连接到 Azure AD|Azure AD 目录凭据| Azure AD 中的全局管理员角色|向导将创建 AD 帐户，该帐户将用作本地计算机上的同步服务登录帐户。
 连接你的目录|要连接到 Azure AD 的每个林的本地 Active Directory 凭据 |<li>向导所需的最低权限级别是域用户。</li> <li>但是，指定的帐户必须拥有目标方案所需的权限。</li><li>如果你想要为 Azure AD 配置密码同步，请确保为此帐户分配以下权限：- 复制目录更改 - 复制所有目录更改</li><li>如果你想要配置同步，以将信息从 Azure AD“写回”本地 AD，请确保该帐户对要写回的目录对象和属性拥有写入权限。</li> <li>如果你想要为登录配置 AD FS，请确保你为 AD FS 服务器所在的林提供的 AD 凭据拥有域管理员权限。</li><li>请参阅下表针对你的方案列出的其他要求。</li>|<li>这是将用于本地 AD 管理代理 (MA) 帐户的帐户。它将用于读取和写入本地 AD 中正在进行同步操作的对象和属性。</li>
 AD FS 服务器|对于列表中的每个服务器，如果运行向导的用户的登录凭据权限不足，因而无法连接，则向导将会收集凭据|域管理员|安装和配置 AD FS 服务器角色。|
-Web 应用程序代理服务器 |对于列表中的每个服务器，如果运行向导的用户的登录凭据权限不足，因而无法连接，则向导将会收集凭据|目标计算机上的本地管理员。|安装和配置 WAP 服务器角色。
+网站代理服务器 |对于列表中的每个服务器，如果运行向导的用户的登录凭据权限不足，因而无法连接，则向导将会收集凭据|目标计算机上的本地管理员。|安装和配置 WAP 服务器角色。
 代理信任凭据 |联合身份验证服务信任凭据（代理用来注册 FS 信任证书的凭据） |作为 AD FS 服务器本地管理员的域帐户|初始注册 FS WAP 信任证书
 “AD FS 服务帐户”页上的“使用域用户帐户选项”|AD 用户帐户凭据|域用户|提供了其凭据的 AD 用户帐户将用作 AD FS 服务的登录帐户。
 
 
 
-<br> <br>
+<br>
+<br>
 ## 特定方案所需的权限
 
 方案 |权限
@@ -62,7 +64,8 @@ Exchange 混合部署|参阅 [Office 365 Exchange 混合 AAD 同步写回属性�
 单一登录和 AD FS| 联合服务器所在的域中的域管理员权限。
 SQL Server 权限|Azure AD Connect Sync 服务帐户需要 SQL 中的 dbo 权限。这些权限是在安装 Azure AD Connect 过程中设置的，不允许对其进行更改。
 
-<br> <br>
+<br>
+<br>
 ## Azure AD Connect 创建的帐户的汇总。
 
 
@@ -86,5 +89,4 @@ AD FS：GMSA 帐户 (aadcsvc$)|域用户|FS 服务登录帐户
 * [Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom)
 * [MSDN 上的 Azure AD Connect](/documentation/articles/active-directory-aadconnect)
  
-
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0405_2016-->

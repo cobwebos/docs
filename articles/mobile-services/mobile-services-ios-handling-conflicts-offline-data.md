@@ -3,36 +3,37 @@
 	description="了解在 iOS 应用程序中同步脱机数据时如何使用 Azure 移动服务处理冲突" 
 	documentationCenter="ios" 
 	authors="krisragh" 
-	manager="dwrede" 
+	manager="erikre"
 	editor="" 
 	services="mobile-services"/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="12/16/2015"
+	ms.date="03/09/2016"
 	wacn.date=""/>
 
 
 # 使用移动服务中的脱机数据处理冲突
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+[AZURE.INCLUDE [mobile-services-selector-offline-conflicts](../includes/mobile-services-selector-offline-conflicts.md)]
 
 &nbsp;
-[AZURE.INCLUDE [mobile-services-selector-offline-conflicts](../includes/mobile-services-selector-offline-conflicts.md)]
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
 
 本主题演示在使用 Azure 移动服务的脱机功能时如何同步数据和处理冲突。本教程基于[脱机数据入门]教程编写。
 
->[AZURE.NOTE]若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 <a href="http://www.windowsazure.cn/pricing/1rmb-trial/?WT.mc_id=AE564AB28" target="_blank">Azure 试用</a>。
+>[AZURE.NOTE] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 <a href="http://www.windowsazure.cn/pricing/1rmb-trial/?WT.mc_id=AE564AB28" target="_blank">Azure 试用</a>。
 
 
 ## 下载 iOS 项目
 
 对于本教程，从 Github 下载[已更新的 Xcode 项目](https://github.com/Azure/mobile-services-samples/tree/master/TodoOffline/iOS)。我们已使用[脱机数据入门]教程末尾提供的 Xcode 项目作为起点，然后对其进行更新以允许编辑项目。我们还添加了支持的类和方法，以便我们可以在下一节中添加冲突处理程序。
 
-在本教程结束时，如果你在两个手机上运行此应用，请在两个手机上本地更改同一项，并将更改推送回服务器，你将允许每个手机的用户选择要保留哪个版本：
-  * 保留客户端版本（这将覆盖服务器上的版本），
-  * 保留服务器版本（这将更新客户端本地表）或者
-  * 上述两个版本都不保留（取消推送并使操作处于挂起状态）。
+在本教程结尾处，如果你在两个手机上运行此应用，在这两个手机上本地更改相同项目，并将更改推送回服务器，则会允许每个手机上的用户选择要保留的版本：
+  * 保留客户端版本（这会覆盖服务器上的版本），
+  * 保留服务器版本（这会更新客户端本地表），或者
+  * 两个版本都不保留（取消推送，让操作挂起）。
 
 现在，让我们添加冲突处理程序以启用此功能。
 
@@ -141,5 +142,4 @@
 [脱机数据入门]: /documentation/articles/mobile-services-ios-get-started-offline-data
 [Get started with Mobile Services]: /documentation/articles/mobile-services-ios-get-started
  
-
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0405_2016-->

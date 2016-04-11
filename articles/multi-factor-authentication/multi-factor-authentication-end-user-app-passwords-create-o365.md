@@ -9,12 +9,12 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="11/19/2015" 
+	ms.date="02/16/2016" 
 	wacn.date=""/>
 
-# 在 Office 365 门户中创建或删除 Azure 多重身份验证的应用密码
+# 在 Office 365 门户中创建或删除 Azure Multi-Factor Authentication 的应用密码
 
-如果你在 Office 365 上使用 Multi-Factor Authentication，则需要通过 Office 365 门户创建应用密码。
+如果你在 Office 365 上使用多重身份验证，则需要通过 Office 365 门户创建和删除应用密码。
 
 ## 在 Office 365 门户中创建应用密码
 --------------------------------------------------------------------------------
@@ -64,4 +64,7 @@
 <li>将弹出一个对话框，要求你确认删除。</li>
 <li>单击“是”。</li>
 
-<!---HONumber=Mooncake_0104_2016-->
+
+
+ 
+<!---HONumber=Mooncake_0405_2016-->

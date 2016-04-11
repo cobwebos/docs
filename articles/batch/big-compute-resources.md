@@ -22,9 +22,9 @@
 * [Batch 和 HPC 解决方案](batch-hpc-solutions.md)
 
 
-## Azure Batch
+## Azure 批处理
 
-[Batch](/documentation/services/batch/) 是一种平台服务，可让你轻松地在应用程序中启用云功能和运行作业，而无需设置和管理群集与作业计划程序。使用 SDK 可将不同语言的客户端应用与 Azure Batch 集成相集成，将数据迁移到 Azure，以及生成作业运行管道。
+[Batch ](/documentation/services/batch/) 是一种平台服务，可让你轻松地在应用程序中启用云功能和运行作业，而无需设置和管理群集与作业计划程序。使用 SDK 可将不同语言的客户端应用与 Azure Batch 集成相集成，将数据迁移到 Azure，以及生成作业运行管道。
 
 * [文档](/documentation/services/batch/)
 
@@ -42,7 +42,7 @@
 
 HPC Pack 是在 Microsoft Azure 和 Windows Server 技术基础之上构建的 Microsoft 免费 HPC 解决方案，它能够运行 Windows 和 Linux HPC 工作负荷。
 
-* [下载 HPC Pack 2012 R2 Update 3](https://www.microsoft.com/zh-cn/download/details.aspx?id=49922)
+* [下载 HPC Pack 2012 R2 Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=49922)
 
 * [文档](https://technet.microsoft.com/zh-cn/library/jj899572.aspx)
 
@@ -94,11 +94,11 @@ Azure 提供一[系列大小](/documentation/articles/virtual-machines-size-spec
 
 ## 相关的 Azure 服务
 
-* [数据工厂](http://azure.microsoft.com/documentation/services/data-factory/)
+* [Data Factory](/documentation/services/data-factory/)
 
-* [机器学习](http://azure.microsoft.com/documentation/services/machine-learning/)
+* [机器学习](/documentation/services/machine-learning/)
 
-* [HDInsight](http://azure.microsoft.com/documentation/services/hdinsight/)
+* [HDInsight](/documentation/services/hdinsight/)
 
 * [虚拟机](/documentation/services/virtual-machines/)
 
@@ -108,23 +108,32 @@ Azure 提供一[系列大小](/documentation/articles/virtual-machines-size-spec
 
 ## 客户案例
 
-* [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222)
 
-* [Milliman](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=14967)
-
-* [ANEO](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=4168)
+* [ANEO](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=4168) 
 
 * [d3View](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=22088)
-
-* [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
 
 * [路德维格癌症研究所](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5830)
 
 * [Microsoft Research](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=15634)
+
+* [Milliman](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=14967)
+
+* [Mitsubishi UFJ Securities International](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=26266)
+
+* [Schlumberger](http://azure.microsoft.com/blog/big-compute-for-large-engineering-simulations)
+
+* [Towers Watson](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18222)
+
+
+
+
+
+
 
 ## 后续步骤
 
 * 有关最新通告，请参阅 [Microsoft HPC 和批处理团队博客](http://blogs.technet.com/b/windowshpc/)与 [Azure 博客](/blog/tag/hpc/)。
 * 另请参阅 [Batch 中的新增功能](/updates/?service=batch)或订阅 [RSS 源](/updates/feed/?service=batch)。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

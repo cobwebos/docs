@@ -4,24 +4,26 @@
 	services="mobile-services"
 	documentationCenter="ios"
 	authors="krisragh"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
 	ms.service="mobile-services"
-	ms.date="01/12/2016"
+	ms.date="03/09/2016"
 	wacn.date=""/>
 
 # 向现有应用程序添加身份验证
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
 &nbsp;
-[AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对应的 Mobile Apps 版本，请参阅[向 iOS 应用添加身份验证](/documentation/articles/app-service-mobile-ios-get-started-users)。
 
 在本教程中，你将要使用支持的标识提供者向[移动服务快速入门教程]项目添加身份验证。
 
-建议你先完成[移动服务快速入门教程]。或者，只需从 [Azure 经典门户]下载快速启动 iOS 项目：单击“移动服务”> 你的移动服务 > 左上角的云登录名 > iOS >“创建新的 iOS 应用”>“下载并运行应用”>“Objective-C”>“下载”。如果尚未创建 TodoItem 表，在单击“下载”之前，请记住单击“创建 TodoItem 表”。
+建议你先完成[移动服务快速入门教程]。或者，只需从 [Azure 经典门户]下载快速启动 iOS 项目：单击“移动服务”> 你的移动服务 > 左上角的云登录名 > “iOS” >“创建新的 iOS 应用”>“下载并运行应用”>“Objective-C”>“下载”。如果尚未创建 TodoItem 表，在单击“下载”之前，请记住单击“创建 TodoItem 表”。
 
 ##<a name="register"></a>注册应用程序以进行身份验证
 
@@ -83,4 +85,4 @@
 
 [Azure 经典门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0405_2016-->

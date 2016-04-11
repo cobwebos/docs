@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="01/24/2016"
+	ms.date="02/14/2016"
 	wacn.date="tamram"/>
 
 # 通过 .NET 开始使用 Azure 队列存储
@@ -47,7 +47,7 @@ Azure 队列存储是一种在云中提供消息传递队列的服务。在设�
 
 ## 创建队列
 
-利用 **CloudQueueClient** 对象，可以获取队列的引用对象。以下代码将创建 **CloudQueueClient** 对象。本指南中的所有代码都使用存储在 Azure 应用程序的服务配置中的存储连接字符串。还可采用其他方法创建 **CloudStorageAccount** 对象。有关详细信息，请参阅 [CloudStorageAccount][] 文档。
+利用 **CloudQueueClient** 对象，可以获取队列的引用对象。以下代码将创建 **CloudQueueClient** 对象。本指南中的所有代码都使用存储在 Azure 应用程序的服务配置中的存储连接字符串。还可采用其他方法创建 **CloudStorageAccount** 对象。有关详细信息，请参阅 [CloudStorageAccount](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.storage.cloudstorageaccount_methods.aspx) 文档。
 
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -107,7 +107,7 @@ Azure 队列存储是一种在云中提供消息传递队列的服务。在设�
 
 ## 更改已排队消息的内容
 
-你可以更改队列中现有消息的内容。如果消息表示工作任务，则你可以使用此功能来更新该工作任务的状态。以下代码使用新内容更新队列消息，并将可见性超时设置为再延长 60 秒。这将保存与消息关联的工作的状态，并额外为客户端提供一分钟的时间来继续处理消息。可使用此方法跟踪队列消息上的多步骤工作流，即使处理步骤因硬件或软件故障而失败，也无需从头开始操作。通常，你还可以保留重试计数，如果某条消息的重试次数超过 *n* ，你将删除此消息。这可避免每次处理某条消息时都触发应用程序错误。
+你可以更改队列中现有消息的内容。如果消息表示工作任务，则你可以使用此功能来更新该工作任务的状态。以下代码使用新内容更新队列消息，并将可见性超时设置为再延长 60 秒。这将保存与消息关联的工作的状态，并额外为客户端提供一分钟的时间来继续处理消息。可使用此方法跟踪队列消息上的多步骤工作流，即使处理步骤因硬件或软件故障而失败，也无需从头开始操作。通常，你还可以保留重试计数，如果某条消息的重试次数超过 *n*，你将删除此消息。这可避免每次处理某条消息时都触发应用程序错误。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -251,12 +251,10 @@ Azure 队列存储是一种在云中提供消息传递队列的服务。在设�
   [Download and install the Azure SDK for .NET]: /develop/net/
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [Creating a Azure Project in Visual Studio]: http://msdn.microsoft.com/zh-cn/library/azure/ee405487.aspx
-  [CloudStorageAccount]: http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.cloudstorageaccount_methods.aspx
   [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Configuring Connection Strings]: http://msdn.microsoft.com/zh-cn/library/azure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
  
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

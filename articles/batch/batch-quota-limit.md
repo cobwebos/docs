@@ -10,7 +10,7 @@
 <tags
 	ms.service="batch"
 
-	ms.date="01/26/2016"
+	ms.date="03/11/2016"
 	wacn.date=""/>
 
 
@@ -34,13 +34,18 @@
 ## 其他限制
 资源|最大限制
 ---|---
-每个计算节点的任务数|4 x 节点核心数
+每个计算节点的任务数 | 4 x 节点核心数
+每个 Batch 帐户的应用程序数 | 20
+每个应用程序的应用程序包数 | 40
+应用程序包大小（每个） | 约 195 GB<sup>1</sup>
+
+<sup>1</sup> 最大的块 Blob 大小的 Azure 存储空间限制
 
 ## 查看 Batch 配额
 
 可在 [Azure 门户](https://manage.windowsazure.cn)中查看 Batch 帐户配额。
 
-1. 在管理门户中，单击“Batch 帐户”，然后单击你的 Batch 帐户的名称。
+1. 在门户中，单击“Batch 帐户”，然后单击你的 Batch 帐户的名称。
 
 2. 在帐户边栏选项卡中，单击“设置”>“属性”。
 
@@ -50,7 +55,7 @@
 
 ## 增加配额
 
-在 Azure 门户中使用以下步骤请求增加配额（也可以在 [Azure 经典门户](http://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)中请求增加）。
+在 Azure 门户中使用以下步骤请求增加配额（也可以在 [Azure 经典门户](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)中请求增加）。
 
 1. 在门户的仪表板中，单击“帮助 + 支持”。
 
@@ -74,7 +79,7 @@
 
 	b.在“详细信息”中，列出要在特定帐户中更改的配额和所需的新限制。
 
-	单击**“下一步”**。
+	单击“下一步”。
 
 5. 在“联系信息”边栏选项卡中输入你的详细联系信息，然后单击“下一步”。
 
@@ -88,8 +93,8 @@ Azure 支持人员将与你联系。完成请求最长需要 2 个工作日。
 
 * [Azure Batch 功能概述](batch-api-basics.md)
 
-* [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)
+* [Azure 订阅和服务限制、配额和约束](/documentation/articles/azure-subscription-service-limits)
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

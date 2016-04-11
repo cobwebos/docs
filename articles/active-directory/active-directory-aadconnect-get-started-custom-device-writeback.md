@@ -4,12 +4,12 @@
 	services="active-directory" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="msStevenPo" 
+	manager="StevenPo"
 	editor="curtand"/>
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="12/18/2015"
+	ms.date="01/21/2016"
 	wacn.date=""/>
 
 # 在 Azure AD Connect 中启用设备写回
@@ -20,11 +20,11 @@
 
 这可以提供额外的安全性，确保只有受信任的设备才能访问应用程序。有关条件性访问的详细信息，请参阅[使用条件性访问管理风险](active-directory-conditional-access.md)和[使用 Azure Active Directory Device Registration 设置本地的条件性访问](https://msdn.microsoft.com/library/azure/dn788908.aspx)。
 
->[AZURE.NOTE]设备写回需要 Azure AD Premium 订阅。
+>[AZURE.NOTE] 设备写回需要 Azure AD Premium 订阅。
 
 。
 
->[AZURE.IMPORTANT]设备必须位于用户所在的同一个林中。由于设备必须写回到单个林，此功能当前不支持具有多个用户林的部署。
+>[AZURE.IMPORTANT] 设备必须位于用户所在的同一个林中。由于设备必须写回到单个林，此功能当前不支持具有多个用户林的部署。
 
 ## 第 1 部分：安装 Azure AD Connect
 1. 使用自定义或快速设置安装 Azure AD Connect。建议在启用设备写回之前，首先让所有用户和组成功完成同步。
@@ -71,7 +71,6 @@
 4.	在向导中完成安装，不需要更改其他配置。如果需要，请参阅 [Azure AD Connect 的自定义安装](active-directory-aadconnect-get-started-custom.md)。
 
 
-
 ## 启用条件性访问
 [使用 Azure Active Directory Device Registration 设置本地条件性访问](https://msdn.microsoft.com/library/azure/dn788908.aspx)中提供了有关启用此方案的详细说明。
 
@@ -102,7 +101,7 @@
 	- 转到“连接到 Active Directory 林”。检查此屏幕上指定的域和用户名是否与提供给脚本的帐户匹配。
 ![连接器帐户](./media/active-directory-aadconnect-get-started-custom-device-writeback/connectoraccount.png)
 
-验证 Active Directory 中的配置：
+在 Active Directory 中验证配置：
 - 检查设备注册服务是否位于配置命名上下文下面的以下位置：(CN=DeviceRegistrationService,CN=Device Registration Services,CN=Device Registration Configuration,CN=Services,CN=Configuration)。
 
 ![Troubleshoot1](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot1.png)
@@ -126,10 +125,10 @@
 ![Troubleshoot6](./media/active-directory-aadconnect-get-started-custom-device-writeback/troubleshoot6.png)
 
 ## 其他信息
-- [使用条件性访问管理风险](active-directory-conditional-access.md)
+- [使用条件性访问管理风险](/documentation/articles/active-directory-conditional-access)
 - [使用 Azure Active Directory Device Registration 设置本地条件性访问](https://msdn.microsoft.com/library/azure/dn788908.aspx)
 
 ## 后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0405_2016-->

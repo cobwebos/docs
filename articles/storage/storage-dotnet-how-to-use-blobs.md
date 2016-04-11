@@ -1,6 +1,6 @@
 <properties
 	pageTitle="通过 .NET 开始使用 Azure Blob 存储 | Microsoft Azure"
-	description="使用 Azure Blob（对象）存储在云中存储文件数据。立即开始简单的 Blob 存储操作，包括创建容器并上载、下载、列出和删除 blob 内容。"
+	description="使用 Azure Blob 存储（对象存储）在云中存储文件数据。立即开始简单的 Blob 存储操作，包括创建容器并上载、下载、列出和删除 blob 内容。"
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="01/22/2016"
+	ms.date="02/25/2016"
 	wacn.date=""/>
 
 
@@ -19,9 +19,21 @@
 
 ## 概述
 
-Azure Blob 存储是在云中存储文件数据的服务。Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。Blob 存储有时称为对象存储。
+Azure Blob 存储是在云中存储文件数据的服务。Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。Blob 存储也称为对象存储。
 
-本教程演示如何针对使用 Azure Blob 存储一些常见情形编写 .NET 代码。涉及的任务包括上载、列出、下载和删除 Blob。完成本教程中仅仅只需一小时。
+### 关于本教程
+
+本教程演示如何针对使用 Azure Blob 存储一些常见情形编写 .NET 代码。涉及的任务包括上载、列出、下载和删除 Blob。
+
+**估计完成时间：**45 分钟
+
+**先决条件：**
+
+- [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
+- [适用于 .NET 的 Azure 存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
+- [适用于 .NET 的 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
+- [Azure 存储帐户](/documentation/articles/storage-create-storage-account#create-a-storage-account)。
+
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -364,5 +376,4 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
  
-
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

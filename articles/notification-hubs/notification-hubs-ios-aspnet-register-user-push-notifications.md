@@ -9,12 +9,12 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="06/16/2015"
+	ms.date="12/16/2015"
 	wacn.date=""/>
 # 通过使用 ASP.NET 注册推送通知的当前用户
 
 > [AZURE.SELECTOR]
-- [Windows Store C#](/documentation/articles/notification-hubs-windows-store-aspnet-register-user-push-notifications)
+- [Windows 应用商店 C#](/documentation/articles/notification-hubs-windows-store-aspnet-register-user-push-notifications)
 - [iOS](/documentation/articles/notification-hubs-ios-aspnet-register-user-push-notifications)
 
 
@@ -106,7 +106,7 @@
 
 	这为请求设置设备标记。
 
-	> [AZURE.NOTE]此时，此方法中不应有任何其他代码。如果你已调用在完成[通知中心入门](/manage/services/notification-hubs/get-started-notification-hubs-ios/%20target="_blank")教程的学习时添加的 **registerNativeWithDeviceToken** 方法，必须注释掉或删除该调用。
+	> [AZURE.NOTE] 此时，此方法中不应有任何其他代码。如果你已调用在完成[通知中心入门](/documentation/articles/notification-hubs-ios-get-started)教程的学习时添加的 **registerNativeWithDeviceToken** 方法，必须注释掉或删除该调用。
 
 10.	在 PushToUserAppDelegate.m 文件中，添加以下处理程序方法：
 	
@@ -233,4 +233,4 @@
 [Azure Management Portal]: https://manage.windowsazure.cn/
 [通知中心入门]: /manage/services/notification-hubs/get-started-notification-hubs-ios
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -1,5 +1,7 @@
+<!-- not suitable for Mooncake -->
+
 <properties
-   pageTitle="在 HDInsight 中将 Hadoop Pig 与 .NET 配合使用 | Microsoft Azure"
+   pageTitle="在 HDInsight 中将 Hadoop Pig 与 .NET 配合使用 | Azure"
    description="了解如何使用 .NET SDK for Hadoop 将 Pig 作业提交到 HDInsight 上的 Hadoop。"
    services="hdinsight"
    documentationCenter=".net"
@@ -10,7 +12,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="10/02/2015"
+	ms.date="02/05/2016"
 	wacn.date=""/>
 
 #使用 HDInsight 中的 .NET SDK for Hadoop 运行 Pig 作业
@@ -20,10 +22,8 @@
 本文档提供使用 .NET SDK for Hadoop 将 Pig 作业提交到 HDInsight 上的 Hadoop 群集的示例。
 
 HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsight 群集的操作。Pig 可让你通过为一系列数据转换建模，来创建 MapReduce 操作。你将学习如何使用基本 C# 应用程序将 Pig 作业提交到 HDInsight 群集。
-<!-- deleted by customization
 
 [AZURE.INCLUDE [azure-portal](../includes/hdinsight-azure-portal.md)]
--->
 
 * [使用 HDInsight 中的 .NET SDK for Hadoop 运行 Pig 作业](/documentation/articles/hdinsight-hadoop-use-pig-dotnet-sdk-v1)
 
@@ -31,8 +31,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 若要完成本文中的步骤，你将需要：
 
-* Azure HDInsight（HDInsight 上的 Hadoop）群集
-<!-- deleted by customization (either Windows or Linux-based) -->
+* Azure HDInsight（HDInsight 上的 Hadoop）群集（基于 Windows 或 Linux）
 
 * Visual Studio 2012、2013 或 2015
 
@@ -42,27 +41,18 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 有关如何执行此操作的说明，请参阅[创建自签名证书](/documentation/articles/hdinsight-administer-use-management-portal-v1/#cert)。
 
-> [AZURE.NOTE]创建证书时，请务必记下使用的友好名称供以后使用。
+> [AZURE.NOTE] 创建证书时，请务必记下使用的友好名称供以后使用。
 
 ##<a id="subscriptionid"></a>查找你的订阅 ID
 
 每个 Azure 订阅都是以 GUID 值（称为订阅 ID）标识的。请使用以下步骤来查找此值。
-<!-- deleted by customization
 
-1. Visit the [Azure preview portal][preview-portal].
+1. 访问 [Azure 管理门户][preview-portal]。
 
-2. From the bar on the left of the portal, select __BROWSE ALL__, then select __Subscriptions__ from the __Browse__ blade.
+2. 从门户左侧的栏中，选择“浏览全部”，然后从“浏览”边栏选项卡中选择“订阅”。
 
-3. In the information presented on the __Subscriptions__ blade, find the subscription you wish to use and note the value in the **Subscription ID** column.
+3. 在“订阅”边栏选项卡上显示的信息中，找到你要使用的订阅，并记下“订阅 ID”列中的值。
 
--->
-<!-- keep by customization: begin -->
-1. 访问 <a href="https://manage.windowsazure.cn/" target="_blank">Azure 管理控制台</a>。
-
-2. 在门户左侧的栏中，选择“设置”。
-
-3. 在页面右侧显示的信息中，找到你要使用的订阅，并记下“订阅 ID”列中的值。
-<!-- keep by customization: end -->
 保存该订阅 ID，因为稍后你要用到它。
 
 ##<a id="create"></a>创建应用程序
@@ -72,23 +62,23 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 3. 对于新项目，请键入或选择以下值。
 
 	<table>
-<tr>
-<th>属性</th>
-<th>值</th>
-</tr>
-<tr>
-<th>类别</th>
-<th>模板/Visual C#/Windows</th>
-</tr>
-<tr>
-<th>模板</th>
-<th>控制台应用程序</th>
-</tr>
-<tr>
-<th>Name</th>
-<th>SubmitPigJob</th>
-</tr>
-</table>
+	<tr>
+	<th>属性</th>
+	<th>值</th>
+	</tr>
+	<tr>
+	<th>类别</th>
+	<th>模板/Visual C#/Windows</th>
+	</tr>
+	<tr>
+	<th>模板</th>
+	<th>控制台应用程序</th>
+	</tr>
+	<tr>
+	<th>名称</th>
+	<th>SubmitPigJob</th>
+	</tr>
+	</table>
 4. 单击“确定”以创建该项目。
 5. 从“工具”菜单中选择“库包管理器”或“Nuget 包管理器”，然后选择“包管理器控制台”。
 6. 在控制台中运行以下命令，以安装 .NET SDK 包。
@@ -97,54 +87,53 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 7. 在“解决方案资源管理器”中，双击 **Program.cs** 将其打开。将现有代码替换为以下内容。
 
-		using System;
-		using Microsoft.Azure.Management.HDInsight.Job;
-		using Microsoft.Azure.Management.HDInsight.Job.Models;
-		using Hyak.Common;
-		
-		namespace HDInsightSubmitPigJobsDotNet
-		{
-		    class Program
-		    {
-		        static void Main(string[] args)
-		        {
-					var ExistingClusterName = "<HDInsightClusterName>";
-					var ExistingClusterUri = ExistingClusterName + ".azurehdinsight.cn";
-					var ExistingClusterUsername = "<HDInsightClusterHttpUsername>";
-					var ExistingClusterPassword = "<HDInsightClusterHttpUserPassword>";
-		
-		            // The Pig Latin statements to run
-		            string queryString = "LOGS = LOAD 'wasb:///example/data/sample.log';" +
-		                "LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;" +
-		                "FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;" +
-		                "GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;" +
-		                "FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;" +
-		                "RESULT = order FREQUENCIES by COUNT desc;" +
-		                "DUMP RESULT;";
-		
-		
-		            HDInsightJobManagementClient _hdiJobManagementClient;
-		            var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
-		            _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
-		
-		            // Define the Pig job
-		            var parameters = new PigJobSubmissionParameters()
-		            {
-		                UserName = ExistingClusterUsername,
-		                Query = queryString,
-		            };
-		
-		            System.Console.WriteLine("Submitting the Sqoop job to the cluster...");
-		            var response = _hdiJobManagementClient.JobManagement.SubmitPigJob(parameters);
-		            System.Console.WriteLine("Validating that the response is as expected...");
-		            System.Console.WriteLine("Response status code is " + response.StatusCode);
-		            System.Console.WriteLine("Validating the response object...");
-		            System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
-		            Console.WriteLine("Press ENTER to continue ...");
-		            Console.ReadLine();
-		        }
-		    }
-		}
+        using System;
+        using Microsoft.Azure.Management.HDInsight.Job;
+        using Microsoft.Azure.Management.HDInsight.Job.Models;
+        using Hyak.Common;
+        
+        namespace HDInsightSubmitPigJobsDotNet
+        {
+            class Program
+            {
+                static void Main(string[] args)
+                {
+                    var ExistingClusterName = "<HDInsightClusterName>";
+                    var ExistingClusterUri = ExistingClusterName + ".azurehdinsight.cn";
+                    var ExistingClusterUsername = "<HDInsightClusterHttpUsername>";
+                    var ExistingClusterPassword = "<HDInsightClusterHttpUserPassword>";
+        
+                    // The Pig Latin statements to run
+                    string queryString = "LOGS = LOAD 'wasb:///example/data/sample.log';" +
+                        "LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;" +
+                        "FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;" +
+                        "GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;" +
+                        "FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;" +
+                        "RESULT = order FREQUENCIES by COUNT desc;" +
+                        "DUMP RESULT;";
+        
+        
+                    HDInsightJobManagementClient _hdiJobManagementClient;
+                    var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
+                    _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
+        
+                    // Define the Pig job
+                    var parameters = new PigJobSubmissionParameters()
+                    {
+                        Query = queryString,
+                    };
+        
+                    System.Console.WriteLine("Submitting the Pig job to the cluster...");
+                    var response = _hdiJobManagementClient.JobManagement.SubmitPigJob(parameters);
+                    System.Console.WriteLine("Validating that the response is as expected...");
+                    System.Console.WriteLine("Response status code is " + response.StatusCode);
+                    System.Console.WriteLine("Validating the response object...");
+                    System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
+                    Console.WriteLine("Press ENTER to continue ...");
+                    Console.ReadLine();
+                }
+            }
+        }
 
 7. 按 **F5** 启动应用程序。
 8. 按 **ENTER** 退出应用程序。
@@ -165,5 +154,4 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce)
 [preview-portal]: https://manage.windowsazure.cn/
-
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0405_2016-->

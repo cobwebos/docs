@@ -1,5 +1,7 @@
+<!-- not suitable for Mooncake -->
+
 <properties
-   pageTitle="Hadoop 教程：Windows 上的 Hadoop 入门 | Microsoft Azure"
+   pageTitle="Hadoop 教程：Windows 上的 Hadoop 入门 | Azure"
    description="HDInsight 中的 Hadoop 入门。学习如何在 Windows 上创建 Hadoop 群集、对数据运行 Hive 查询，以及在 Excel 中分析输出。"
    keywords="hadoop 教程,windows 上的 hadoop,hadoop 群集,了解 hadoop, hive 查询"
    services="hdinsight"
@@ -11,19 +13,33 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="11/13/2015"
+	ms.date="03/07/2016"
 	wacn.date=""/>
 
 
 # Hadoop 教程：在 Windows 上开始使用 HDInsight 中的 Hadoop
 
+> [AZURE.SELECTOR]
+- [基于 Windows](/documentation/articles/hdinsight-hadoop-tutorial-get-started-windows-v1)
+- [基于 Linux](/documentation/articles/hdinsight-hadoop-linux-tutorial-get-started)
+
 为了帮助你了解并开始使用 Windows 上的 HDInsight，本教程说明了如何对 Hadoop 群集中的非结构化数据运行 Hive 查询，然后在 Microsoft Excel 中分析结果。
+
+>[AZURE.NOTE] 此文档中的信息特定于基于 Windows 的 HDInsight 群集。有关基于 Linux 的群集的信息，请参阅 [Hadoop 教程：在 HDInsight 中使用基于 Linux 的 Hadoop 入门](/documentation/articles/hdinsight-hadoop-linux-tutorial-get-started)。
 
 假设你具有一个大型非结构化数据集，想要对其运行 Hive 查询以提取一些有意义的信息。这正是你在本教程中要实现的目标。下面说明了如何实现此目标：
 
    ![Hadoop 教程：创建帐户；创建 Hadoop 群集；提交 Hive 查询；在 Excel 中分析数据。][image-hdi-getstarted-flow]
 
-Microsoft 还提供了 HDInsight Emulator for Azure（以前称作 *Microsoft HDInsight 开发者预览版*），与 Azure HDInsight 的通用版本结合使用。Emulator 针对开发人员方案，仅支持单节点部署。有关如何使用 HDInsight Emulator 的信息，请参阅 [HDInsight Emulator 入门][hdinsight-emulator]。
+观看本教程的演示视频，以了解 HDInsight 上的 Hadoop：
+
+![第一份 Hadoop 教程的视频：在 Hadoop 群集上提交 Hive 查询，然后在 Excel 中分析结果。][img-hdi-getstarted-video]
+
+**[观看 YouTube 上的 HDInsight Hadoop 教程](https://www.youtube.com/watch?v=Y4aNjnoeaHA&list=PLDrz-Fkcb9WWdY-Yp6D4fTC1ll_3lU-QS)**
+
+Microsoft 还提供了 HDInsight Emulator for Azure（以前称作 Microsoft HDInsight 开发者预览版），与 Azure HDInsight 的通用版本结合使用。Emulator 针对开发人员方案，仅支持单节点部署。有关如何使用 HDInsight Emulator 的信息，请参阅 [HDInsight Emulator 入门][hdinsight-emulator]。
+
+[AZURE.INCLUDE [delete-cluster-warning](../includes/hdinsight-delete-cluster-warning.md)]
 
 ### 先决条件
 
@@ -34,45 +50,48 @@ Microsoft 还提供了 HDInsight Emulator for Azure（以前称作 *Microsoft HD
 
 ##创建 Hadoop 群集
 
-当你创建群集时，便会创建包含 Hadoop 和相关应用程序的 Azure 计算资源。在本部分，你将创建一个 HDInsight 版本 3.2 群集。也可以为其他版本创建 Hadoop 群集。有关说明，请参阅[使用自定义选项创建 HDInsight 群集][hdinsight-provision]。有关 HDInsight 版本及其 SLA 的信息，请参阅 [HDInsight 组件版本](/documentation/articles/hdinsight-component-versioning)。
+当你创建群集时，便会创建包含 Hadoop 和相关应用程序的 Azure 计算资源。在本部分，你将创建一个 HDInsight 版本 3.2 群集。也可以为其他版本创建 Hadoop 群集。有关说明，请参阅[使用自定义选项创建 HDInsight 群集][hdinsight-provision]。有关 HDInsight 版本及其 SLA 的信息，请参阅 [HDInsight 组件版本](/documentation/articles/hdinsight-component-versioning-v1)。
 
 
 **创建 Hadoop 群集**
 
-1. 登录到 [Azure 管理门户][azure-management-portal]。
+1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn/)。
+2. 单击“新建”，单击“数据分析”，然后单击“HDInsight”。该门户将打开“新建 HDInsight 群集”边栏选项卡。
 
-2. 单击左窗格中的“HDInsight”以便列出你的帐户中群集的状态。在下面的屏幕快照中，没有现有的 HDInsight 群集。
+    ![在 Azure 管理门户中创建新群集](./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.CreateCluster.1.png "在 Azure 管理门户中创建新群集")
 
-	![HDInsight 群集在 Azure 管理门户中的状态。][image-hdi-clusterstatus]
+3. 输入或选择以下项：
 
-3. 单击左下角的“新建”，然后依次单击“数据服务”、“HDInsight”和“Hadoop”。
+	![输入群集名称和类型](./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.CreateCluster.2.png "输入群集名称和类型")
+	
+	|字段名称| 值|
+	|----------|------|
+	|群集名称| 用于标识群集的唯一名称|
+	|群集类型| 对于本教程，选择“Hadoop”。 |
+	|群集操作系统| 对于本教程，选择“Windows Server 2012 R2 Datacenter”。|
+	|HDInsight 版本| 对于本教程，选择最新版本。|
+	|订阅| 选择将用于此群集的 Azure 订阅。|
+	|资源组 | 选择现有 Azure 资源组或创建新的资源组。基本 HDInsight 群集包含群集及其默认存储帐户。为便于管理，可以将这两者分组到一个资源组。|
+	|凭据| 输入群集登录用户名和密码。基于 Windows 的群集可以有 2 个用户帐户。群集用户（或 HTTP 用户）用于管理群集和提交作业。可以选择创建远程桌面 (RDP) 用户帐户，用于远程连接到群集。如果你选择启用远程桌面，则将创建 RDP 用户帐户。|
+	|数据源| 单击“新建”以创建新的默认 Azure 存储帐户。使用群集名称作为默认容器名称。每个 HDInsight 群集都在 Azure 存储帐户中有一个默认 Blob 容器。默认 Azure 存储帐户的位置确定 HDInsight 群集的位置。|
+	|节点定价层| 对于本教程，将 1 个或 2 个工作节点用于默认工作节点和头节点定价层。|
+	|可选配置| 跳过此部分。|
 
-	![在 HDInsight 中创建 Hadoop 群集。][image-hdi-quickcreatecluster]
+9. 在“新建 HDInsight 群集”边栏选项卡上，确保选中“固定到启动板”，然后单击“创建”。这将创建群集，并将其磁贴添加到 Azure 管理门户的启动板。该图标指示正在创建群集，完成创建后，将改为显示 HDInsight 图标。
 
-4. 输入或选择下列值：
+	| 在创建过程中 | 创建完成 |
+	| ------------------ | --------------------- |
+	| ![在启动板上创建指示器](./media/hdinsight-hadoop-tutorial-get-started-windows-v1/provisioning.png) | ![已创建群集磁贴](./media/hdinsight-hadoop-tutorial-get-started-windows-v1/provisioned.png) |
 
-	<table border="1">
-	<tr><th>Name</th><th>值</th></tr>
-	<tr><td>群集名称</td><td>群集的名称。</td></tr>
-	<tr><td>群集大小</td><td>要部署的数据节点的数目。默认值为 4。但是，下拉列表中还提供了使用 1 或 2 个数据节点的选项。可以使用“自定义创建”选项指定任意数量的群集节点<strong></strong>。提供了有关各种群集大小的计帐费率的定价详细信息。单击下拉框正上方的 <strong>?</strong> 符号并访问弹出框上的链接。</td></tr>
-	<tr><td>密码</td><td><i>admin</i> 帐户的密码。如果使用的不是“自定义创建”选项，则指定群集用户名“admin”<strong></strong>。请注意，这不是设置群集所在的 VM 的 Windows Administrator 帐户。帐户名称可以通过使用“自定义创建”向导来更改<strong></strong>。</td></tr>
-	<tr><td>存储帐户</td><td>从下拉框中选择你所创建的存储帐户。<br/>
+	> [AZURE.NOTE] 创建群集需要一些时间，通常约 15 分钟左右。使用启动板上的磁贴或页面左侧的“通知”项检查创建过程。
 
-	选择存储帐户后，就不能更改它。如果删除了存储帐户，则群集将不再可用。HDInsight 群集与存储帐户位于同一数据中心中。
-	</td></tr>
-	</table>
+10. 创建完成后，在启动板中单击群集磁贴，以启动群集边栏选项卡。
 
-	保留群集名称的副本。本教程后面的步骤中将会用到它。
-
-
-5. 单击“创建 HDINSIGHT 群集”。完成设置后，状态列将显示“正在运行”。
-
-	>[AZURE.NOTE]上述过程通过 HDInsight 版本 3.1 来创建 Hadoop 群集。若要使用其他版本创建群集，请使用门户中的“自定义”创建方法，或使用 Azure PowerShell。有关各版本之间的差异的信息，请参阅 [HDInsight 提供的群集版本有哪些新功能？][hdinsight-versions]。有关使用“自定义创建”选项的信息，请参阅[使用自定义选项设置 HDInsight 群集][hdinsight-provision]。
 
 ## 从门户运行 Hive 查询
 现在，你的 HDInsight 群集已创建完毕，下一步是运行 Hive 作业以查询示例 Hive 表。我们将使用 HDInsight 群集随附的 *hivesampletable*。该表包含有关移动设备制造商、平台和型号的数据。对此表运行 Hive 查询可按特定制造商检索移动设备的数据。
 
-> [AZURE.NOTE]HDInsight Tools for Visual Studio 随附了 Azure SDK for .NET 2.5 或更高版本。使用 Visual Studio 中的工具可以连接到 HDInsight 群集、创建 Hive 表和运行 Hive 查询。有关详细信息，请参阅 [HDInsight Hadoop Tools for Visual Studio 入门][1]。
+> [AZURE.NOTE] HDInsight Tools for Visual Studio 随附了 Azure SDK for .NET 2.5 或更高版本。使用 Visual Studio 中的工具可以连接到 HDInsight 群集、创建 Hive 表和运行 Hive 查询。有关详细信息，请参阅 [HDInsight Hadoop Tools for Visual Studio 入门][1]。
 
 **从群集仪表板运行 Hive 作业**
 
@@ -86,7 +105,7 @@ Microsoft 还提供了 HDInsight Emulator for Azure（以前称作 *Microsoft HD
 
 	页面顶部有多个选项卡。默认选项卡为“Hive 编辑器”，而其他选项卡为“作业历史记录”和“文件浏览器”。使用仪表板可以提交 Hive 查询、检查 Hadoop 作业日志，以及浏览 WASB 文件。
 
-	> [AZURE.NOTE]请注意，网页的 URL 为 *&lt;群集名称&gt;.azurehdinsight.cn*。因此，如果不从门户打开仪表板，也可以在 Web 浏览器中使用 URL 打开仪表板。
+	> [AZURE.NOTE] 请注意，网页的 URL 为 *&lt;群集名称&gt;.azurehdinsight.cn*。因此，如果不从门户打开仪表板，也可以在 Web 浏览器中使用 URL 打开仪表板。
 
 6. 在“Hive 编辑器”选项卡上，为“查询名称”输入 **HTC20**。查询名称为作业标题。在查询窗格中，按下图所示输入 Hive 查询：
 
@@ -150,7 +169,7 @@ HDInsight 群集提供包括入门库的查询控制台以直接从门户运行�
  
 2. 在新的边栏选项卡中，单击“仪表板”。出现提示时，输入群集的管理员用户名和密码。
 
-	![启动群集仪表板](./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.Cluster.Dashboard.png "启动群集仪表板")
+	![启动群集仪表板](./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.Cluster.Dashboard.png "启动群集仪表板")
  
 3. 从打开的网页中，单击“入门库”选项卡，然后在“使用示例数据的解决方案”类别下，单击要运行的示例。按照网页上的说明完成示例。下表列出了几个示例，并提供了有关每个示例的作用的详细信息。
 
@@ -158,8 +177,11 @@ HDInsight 群集提供包括入门库的查询控制台以直接从门户运行�
 ------ | ---------------
 [传感器数据分析][hdinsight-sensor-data-sample] | 了解如何使用 HDInsight 处理加热、通风和空调 (HVAC) 系统产生的历史数据，以识别无法可靠地保持设定温度的系统
 [网站日志分析][hdinsight-weblogs-sample] | 了解如何使用 HDInsight 分析网站日志文件，以了解一天中从外部网站对该网站的访问次数，以及用户遇到的网站错误汇总
+[Twitter 趋势分析](/documentation/articles/hdinsight-analyze-twitter-data) | 了解如何使用 HDInsight 分析 Twitter 中的趋势。
 
+##删除群集
 
+[AZURE.INCLUDE [delete-cluster-warning](../includes/hdinsight-delete-cluster-warning.md)]
 
 ##后续步骤
 在本 Hadoop 教程中，你已学习如何在 Windows 上的HDInsight 中创建 Hadoop 群集、如何对数据运行 Hive 查询，以及如何将结果导入到 Excel 中，在 Excel 中，可以使用商业智能工具进一步处理结果以及以图形方式显示结果。若要了解更多信息，请参阅以下教程：
@@ -179,10 +201,10 @@ HDInsight 群集提供包括入门库的查询控制台以直接从门户运行�
 
 [1]: /documentation/articles/hdinsight-hadoop-visual-studio-tools-get-started
 
-[hdinsight-versions]: /documentation/articles/hdinsight-component-versioning
+[hdinsight-versions]: /documentation/articles/hdinsight-component-versioning-v1
 
 
-[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters
+[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters-v1
 [hdinsight-admin-powershell]: /documentation/articles/hdinsight-administer-use-powershell
 [hdinsight-upload-data]: /documentation/articles/hdinsight-upload-data
 [hdinsight-use-mapreduce]: /documentation/articles/hdinsight-use-mapreduce
@@ -207,30 +229,29 @@ HDInsight 群集提供包括入门库的查询控制台以直接从门户运行�
 [apache-hive]: https://cwiki.apache.org/confluence/display/Hive/Home%3bjsessionid=AF5B37E667D7DBA633313BB2280C9072
 [apache-mapreduce]: http://wiki.apache.org/hadoop/MapReduce
 [apache-hdfs]: http://hadoop.apache.org/docs/r1.0.4/hdfs_design.html
-[hdinsight-hbase-custom-provision]: /documentation/articles/hdinsight-hbase-tutorial-get-started
+[hdinsight-hbase-custom-provision]: /documentation/articles/hdinsight-hbase-tutorial-get-started-v1
 
 
 [powershell-download]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
 [powershell-install-configure]: /documentation/articles/powershell-install-configure
-[powershell-open]: /documentation/articles/powershell-install-configure#Install
+[powershell-open]: /documentation/articles/powershell-install-configure#step-1-install
 
 
-[img-hdi-dashboard]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.png
-[img-hdi-dashboard-query-select]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.query.select.png
-[img-hdi-dashboard-query-select-result]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.query.select.result.png
-[img-hdi-dashboard-query-select-result-output]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.query.select.result.output.png
-[img-hdi-dashboard-query-browse-output]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.dashboard.query.browse.output.png
+[img-hdi-dashboard]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.dashboard.png
+[img-hdi-dashboard-query-select]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.dashboard.query.select.png
+[img-hdi-dashboard-query-select-result]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.dashboard.query.select.result.png
+[img-hdi-dashboard-query-select-result-output]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.dashboard.query.select.result.output.png
+[img-hdi-dashboard-query-browse-output]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.dashboard.query.browse.output.png
 
-[img-hdi-getstarted-video]: ./media/hdinsight-hadoop-tutorial-get-started-windows/hdi-get-started-video.png
+[img-hdi-getstarted-video]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/hdi-get-started-video.png
 
 
-[image-hdi-storageaccount-quickcreate]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.StorageAccount.QuickCreate.png
-[image-hdi-clusterstatus]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.ClusterStatus.png
-[image-hdi-quickcreatecluster]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.QuickCreateCluster.png
-[image-hdi-getstarted-flow]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GetStartedFlow.png
+[image-hdi-storageaccount-quickcreate]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.StorageAccount.QuickCreate.png
+[image-hdi-clusterstatus]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.ClusterStatus.png
+[image-hdi-quickcreatecluster]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.QuickCreateCluster.png
+[image-hdi-getstarted-flow]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.GetStartedFlow.png
 
-[image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData.png
-[image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows/HDI.GettingStarted.PowerQuery.ImportData2.png
- 
+[image-hdi-gettingstarted-powerquery-importdata]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.GettingStarted.PowerQuery.ImportData.png
+[image-hdi-gettingstarted-powerquery-importdata2]: ./media/hdinsight-hadoop-tutorial-get-started-windows-v1/HDI.GettingStarted.PowerQuery.ImportData2.png
 
-<!----HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="11/04/2015"
+	ms.date="02/29/2016"
 	wcdn.date=""/>
 # 通知中心入门（Kindle 应用）
 
@@ -17,7 +17,8 @@
 
 ##概述
 
-本教程演示如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。你将创建一个空白 Kindle 应用，它使用 Amazon Device Messaging (ADM) 接收推送通知。
+本教程演示如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。
+你将创建一个空白 Kindle 应用，它使用 Amazon Device Messaging (ADM) 接收推送通知。
 
 ##先决条件
 
@@ -69,7 +70,7 @@
 
 ## 设置应用程序
 
-> [AZURE.NOTE]创建应用程序时，请至少使用 API 级别 17。
+> [AZURE.NOTE] 创建应用程序时，请至少使用 API 级别 17。
 
 将 ADM 库添加到你的 Eclipse 项目：
 
@@ -246,7 +247,7 @@
 2. 在模拟器中，从顶部往下轻扫，单击“设置”，然后单击“我的帐户”并使用有效的 Amazon 帐户注册。
 3. 在 Eclipse 中运行应用程序。
 
-> [AZURE.NOTE]如果出现了问题，请检查模拟器（或设备）的时间。时间值必须准确。若要更改 Kindle 模拟器的时间，可以从 Android SDK platform-tools 目录运行以下命令：
+> [AZURE.NOTE] 如果出现了问题，请检查模拟器（或设备）的时间。时间值必须准确。若要更改 Kindle 模拟器的时间，可以从 Android SDK platform-tools 目录运行以下命令：
 
 		adb shell  date -s "yyyymmdd.hhmmss"
 
@@ -275,5 +276,4 @@
 [5]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-cmd-window.png
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="01/07/2016"
+	ms.date="02/19/2016"
 	wacn.date=""/>
 
 # 对 Azure 存储服务的跨域资源共享 (CORS) 支持
@@ -74,7 +74,7 @@ CORS 规则在服务级别设置，因此你需要分别为每个服务（Blob�
 
 - **MaxAgeInSeconds**：浏览器应缓存预检 OPTIONS 请求的最长时间。
 
-Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元素指定带前缀的标头。若要允许某个标头类别，可以为该类别指定一个通用前缀。例如，如果指定 *x-ms-meta** 作为带前缀的标头，将会建立一条与所有以 x-ms-meta 开头的标头相匹配的规则。
+Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元素指定带前缀的标头。若要允许某个标头类别，可以为该类别指定一个通用前缀。例如，如果指定*x-ms-meta** 作为带前缀的标头，将会建立一条与所有以 x-ms-meta 开头的标头相匹配的规则。
 
 以下限制适用于 CORS 规则：
 
@@ -147,7 +147,7 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 
 ## 了解如何设置 Vary 标头
 
-*Vary* 标头是一个由一组请求标头字段组成的标准 HTTP/1.1 标头，这些字段可告知浏览器或用户代理服务器选择用于处理该请求的条件。 *Vary* 标头主要用于代理、浏览器和 CDN 缓存，它们使用该标头来确定应如何缓存响应。有关详细信息，请参阅 [Vary 标头](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)的规范。
+*Vary* 标头是一个由一组请求标头字段组成的标准 HTTP/1.1 标头，这些字段可告知浏览器或用户代理服务器选择用于处理该请求的条件。*Vary* 标头主要用于代理、浏览器和 CDN 缓存，它们使用该标头来确定应如何缓存响应。有关详细信息，请参阅 [Vary 标头](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)的规范。
 
 当浏览器或其他用户代理缓存 CORS 请求的响应时，源域将作为允许的来源缓存。如果第二个域在缓存处于活动时对存储资源发出相同请求，用户代理将会检索缓存的源域。由于第二个域与缓存的域不匹配，因此原本应该成功的请求将会失败。在某些情况下，Azure 存储空间会将 Vary 标头设置为 **Origin**，以便在发出请求的域不同于缓存的来源时，指示用户代理将后续 CORS 请求发送到服务。
 
@@ -191,4 +191,4 @@ Azure 存储服务支持为 **AllowedHeaders** 和 **ExposedHeaders** 两个元�
 
 [W3C 跨域资源共享规范](http://www.w3.org/TR/cors/)
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0405_2016-->

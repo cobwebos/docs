@@ -14,10 +14,12 @@
 
 # 向移动服务应用程序添加身份验证
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
 &nbsp;
-[AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对等 Mobile Apps 版本，请参阅[向 Xamarin.iOS 应用添加身份验证](/documentation/articles/app-service-mobile-xamarin-ios-get-started-users)。
 
 本主题说明如何通过应用程序对 Azure 移动服务中的用户进行身份验证。在本教程中，你将要使用移动服务支持的标识提供程序向快速入门项目添加身份验证。在移动服务成功完成身份验证和授权后，将显示用户 ID 值。
 
@@ -45,7 +47,7 @@
 
 2. 在 iPhone 模拟器中按“运行”按钮以生成项目并启动应用程序；验证启动该应用程序后，是否会引发状态代码为 401（“未授权”）的未处理异常。
    
-   	发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 _TodoItem_ 表现在要求身份验证。
+   	发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 TodoItem 表现在要求身份验证。
 
 接下来，你需要更新应用程序，以便在从移动服务请求资源之前对用户进行身份验证。
 
@@ -71,7 +73,7 @@
             }
         }
 
-	> [AZURE.NOTE] 如果使用的标识提供程序不是 Microsoft 帐户，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：_Facebook_、_Twitter_、_Google_ 或 _WindowsAzureActiveDirectory_。
+	> [AZURE.NOTE] 如果使用的标识提供程序不是 Microsoft 帐户，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：Facebook、Twitter、Google 或 WindowsAzureActiveDirectory。
 
 3. 从 **ToDoService** 构造函数将对 **ToDoItem** 表的请求移到名为 **CreateTable** 的新方法中：
 
@@ -126,7 +128,7 @@
 [注册应用程序以进行身份验证并配置移动服务]: #register
 [将表权限限制给已经过身份验证的用户]: #permissions
 [向应用程序添加身份验证]: #add-authentication
-[Next Steps]:#next-steps
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 [4]: ./media/partner-xamarin-mobile-services-ios-get-started-users/mobile-services-selection.png
@@ -149,4 +151,4 @@
 [已完成的示例项目]: http://go.microsoft.com/fwlink/p/?LinkId=331328
 [Xamarin.iOS]: http://xamarin.com/download
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0405_2016-->

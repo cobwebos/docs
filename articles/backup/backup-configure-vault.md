@@ -10,13 +10,13 @@
 
 <tags
 	ms.service="backup"
-	ms.date="02/05/2016"
+	ms.date="02/23/2016"
 	wacn.date=""/>
 
 # 进行环境准备，以便将 Windows 计算机备份到 Azure
 本文列出了你在进行环境准备时需要完成的事项，方便你将 Windows 计算机备份到 Azure。
 
-| 步骤 | Name | 详细信息 |
+| 步骤 | 名称 | 详细信息 |
 | :------: | ---- | ------- |
 | 1 | [创建保管库](#create-a-backup-vault) | 在 [Azure 备份管理门户](http://manage.windowsazure.com)中创建一个保管库 |
 | 2 | [下载保管库凭据](#download-the-vault-credential-file) | 下载保管库凭据，以便将 Windows 计算机注册到备份保管库 |
@@ -34,7 +34,7 @@
 
 1. 登录到[管理门户](https://manage.windowsazure.cn/)
 
-2. 单击**“新建”**>**“数据服务”**>**“恢复服务”**->**“备份保管库”**，然后选择**“快速创建”**。
+2. 单击“新建”>“数据服务”>“恢复服务”->“备份保管库”，然后选择“快速创建”。
 
     ![创建保管库](./media/backup-configure-vault/createvault1.png)
 
@@ -48,12 +48,35 @@
 
     ![创建保管库](./media/backup-configure-vault/creatingvault1.png)
 
-    在创建备份保管库后，将显示一条消息通知你已成功创建保管库。还会在恢复服务的资源中将该保管库列为“活动”。
+    在创建备份保管库后，将显示一条消息通知你已成功创建保管库。该保管库还会在恢复服务的资源中列出为“活动”。
+
     ![创建保管库状态](./media/backup-configure-vault/backupvaultstatus1.png)
 
-> [AZURE.IMPORTANT] 确定存储冗余选项的最佳时机是在创建保管库之后，并且是在将任何计算机注册到保管库之前。将某个项注册到保管库后，存储冗余选项将会锁定且不能修改。
->
-> **在此[概述](backup-azure-storage-redundancy-options.md)中详细了解如何选择存储冗余选项。**
+    >[AZURE.IMPORTANT] 确定存储冗余选项的最佳时机是在创建保管库之后，并且是在将任何计算机注册到保管库之前。将某个项注册到保管库后，存储冗余选项将会锁定且不能修改。
+
+4. 选择“存储冗余”选项。
+
+    如果你要使用 Azure 作为主要备份存储终结点（例如，你要从 Windows Server 备份到 Azure），应考虑选择（默认的）[异地冗余存储](../storage/storage-redundancy.md#geo-redundant-storage)选项。
+
+    如果使用 Azure 作为第三级备份存储终结点（例如，你正在使用 SCDPM 在本地创建本地备份复制，使用 Azure 满足长期数据保留需求），应考虑选择[本地冗余存储](../storage/storage-redundancy.md#locally-redundant-storage)。这可以降低在 Azure 中存储数据的成本，但提供的数据持久性更低，不过，对于第三级副本是可接受的。
+
+    请在此[概述](../storage/storage-redundancy.md)中深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项。
+
+    a.单击刚刚创建的保管库。
+
+    b.在“快速启动”页面上，选择“配置”。
+
+    ![配置保管库状态](./media/backup-try-azure-backup-in-10-mins/configure-vault.png)
+
+    c.选择适当的存储冗余选项。
+
+    如果已选择“本地冗余”，则需要单击“保存”，因为“异地冗余”是默认选项。
+
+    ![GRS](./media/backup-try-azure-backup-in-10-mins/geo-redundant.png)
+
+    d.单击左侧导航窗格中的“恢复服务”，以返回到“恢复服务”的资源列表。
+
+    ![选择备份保管库](./media/backup-try-azure-backup-in-10-mins/rs-left-nav.png)
 
 ## 下载保管库凭据文件
 在本地服务器（Windows 客户端、Windows Server 或 Data Protection Manager 服务器）将数据备份到 Azure 之前，需要使用备份保管库对服务器进行身份验证。身份验证是使用“保管库凭据”实现的。保管库凭据文件是通过安全通道从 Azure 门户下载的，而 Azure 备份服务并不了解证书的私钥，该私钥不保存在门户或服务中。
@@ -97,7 +120,7 @@
 
     ![保存代理](./media/backup-configure-vault/agent.png)
 
-4. *MARSagentinstaller.exe* 下载完以后，单击“运行”（或双击保存位置中的 **MARSAgentInstaller.exe**）。选择代理所需的安装文件夹和缓存文件夹，然后单击“下一步”。
+4. MARSagentinstaller.exe 下载完以后，单击“运行”（或双击保存位置中的 MARSAgentInstaller.exe）。选择代理所需的安装文件夹和缓存文件夹，然后单击“下一步”。
 
     指定的缓存位置必须至少有备份数据的 5% 的可用空间。
 
@@ -137,4 +160,4 @@
 - 如果仍有疑问，请查看 [Azure 备份常见问题](/documentation/articles/backup-azure-backup-faq)。
 - 访问 [Azure 备份论坛](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

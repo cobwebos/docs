@@ -9,14 +9,19 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="01/12/2016"
+	ms.date="03/09/2016"
 	wacn.date=""/>
 
 # 向 iOS 应用程序和 JavaScript 后端添加推送通知
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
 
-本教程说明将推送通知发送到[快速入门项目](/documentation/articles/mobile-services-ios-get-started)，这样，每次插入一条记录时，你的移动服务就会发送一条推送通知。你必须先完成[移动服务入门]教程。
+&nbsp;
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对应的 Mobile Apps 版本，请参阅[向 iOS 应用程序添加推送通知](/documentation/articles/app-service-mobile-ios-get-started-push)。
+
+本教程说明将推送通知发送到[快速入门项目](mobile-services-ios-get-started.md)，这样，每次插入一条记录时，你的移动服务就会发送一条推送通知。你必须先完成[移动服务入门]教程。
 
 > [AZURE.NOTE] [IOS 模拟器不支持推送通知](https://developer.apple.com/zh-cn/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)，因此你必须使用物理 iOS 设备。你还需要付费注册 [Apple 开发人员计划成员身份](https://developer.apple.com/programs/ios/)。
 
@@ -106,7 +111,7 @@
 [Azure 经典门户]: https://manage.windowsazure.cn/
 [apns 对象]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
-[Mobile Services server script reference]: /zh-cn/documentation/articles/mobile-services-how-to-use-server-scripts/
+[Mobile Services server script reference]: http://go.microsoft.com/fwlink/?LinkId=262293
 
 [Send push notifications to authenticated users]: /documentation/articles/mobile-services-javascript-backend-ios-push-notifications-app-users
 [What are Notification Hubs?]: /documentation/articles/notification-hubs-overview
@@ -114,4 +119,5 @@
 [Send template-based notifications to subscribers]: /documentation/articles/notification-hubs-ios-send-localized-breaking-news
 [Mobile Services Objective-C how-to conceptual reference]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 
-<!---HONumber=Mooncake_0215_2016-->
+
+<!---HONumber=Mooncake_0405_2016-->

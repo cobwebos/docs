@@ -10,11 +10,11 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="12/16/2015" 
+	ms.date="03/08/2016"
 	wacn.date=""/>
 
 # 使用用于同步的 Azure AD Connect Health
-以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect 同步。有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅[在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)。
+以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect 同步。有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅[在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs)。
 
 ![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/sync.png)
 
@@ -24,6 +24,17 @@
 选择警报后，将获取到额外信息、可用于解决警报的方法步骤以及其他文档的链接。
 
 ![Azure AD Connect 同步错误](./media/active-directory-aadconnect-health-sync/alert.png)
+
+### 警报的受限评估
+如果 Azure AD Connect 未使用默认配置（例如，如果属性筛选已从默认配置更改为自定义配置），则 Azure AD Connect Health 代理将不会上载与 Azure AD Connect 相关的错误事件。
+
+这会限制服务对警报进行评估。你将在服务的 Azure 门户中看到一条指示这种状态的横幅消息。
+
+![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/banner.png)
+
+你可以通过单击“设置”并允许 Azure AD Connect Health 代理上载所有错误日志，来改变这种状态。
+
+![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/banner2.png)
 
 ## 深入了解同步
 用于同步的 Azure AD Connect Health 最新版本添加了以下新功能：
@@ -50,5 +61,6 @@
 * [Azure AD Connect Health 操作](/documentation/articles/active-directory-aadconnect-health-operations)
 * [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs)
 * [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
+* [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history)
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0405_2016-->

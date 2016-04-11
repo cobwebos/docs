@@ -1,7 +1,7 @@
 <!-- not suitable for Mooncake -->
 
  <properties 
-	pageTitle="使用适用于 IntelliJ IDEA 的 HDInsight 插件创建 Spark Scala 应用程序 | Microsoft Azure" 
+	pageTitle="使用适用于 IntelliJ IDEA 的 HDInsight 插件创建 Spark Scala 应用程序 | Azure" 
 	description="了解如何创建要在 HDInsight Spark 群集中运行的独立 Spark 应用程序。" 
 	services="hdinsight" 
 	documentationCenter="" 
@@ -12,7 +12,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="02/05/2016"
+	ms.date="03/03/2016"
 	wacn.date=""/>
 
 
@@ -53,7 +53,9 @@
 
 1. 如果你已回到 IntelliJ IDEA 欢迎屏幕，请单击“配置”，然后再单击“插件”。
 
-2. 在下一屏幕中，单击左下角的“浏览存储库”。在打开的“浏览存储库”对话框中，搜索 **HDInsight**，选择 **Microsoft Azure HDInsight Tools for IntelliJ**，然后单击“安装”。
+2. 在下一屏幕中，单击左下角的“浏览存储库”。在打开的“浏览存储库”对话框中，搜索“HDInsight”，选择“Azure HDInsight Tools for IntelliJ (预览版)”，然后单击“安装”。
+
+	![安装 HDInsight 插件](./media/hdinsight-apache-spark-intellij-tool-plugin/install-hdinsight-plugin.png)
 
 3. 出现提示时，请单击“重新启动 IntelliJ IDEA”按钮以重新启动 IDE。
 
@@ -63,13 +65,11 @@
 
 	![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
-	* 在左窗格中，选择 **HDInsight**。
+	* 在左窗格中，选择“HDInsight”。
 	* 在右窗格中，选择“Spark on HDInsight (Scala)”。
-	* 单击**“下一步”**。
+	* 单击“下一步”。
 
 2. 在下一窗口中，提供项目详细信息。
-
-	![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-project-details.png)
 
 	* 提供项目名称和项目位置。
 	* 对于**项目 SDK**，请确保提供大于 7 的 Java 版本。
@@ -78,12 +78,15 @@
 		![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-version.png)
 
 	* 对于 **Spark SDK**，请从[此处](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)下载并使用该 SDK。
+
+		![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-project-details.png)
+
 	* 单击“完成”。
 
 3. 定义项目结构，以便创建最终将包含在群集中运行的代码的项目（打包 jar）。
 
 	1. 在“文件”菜单中，单击“项目结构”。
-	2. 在“项目结构”对话框中，单击“项目”，然后单击加号。在弹出的对话框中，单击 **JAR**，然后单击“空”。
+	2. 在“项目结构”对话框中，单击“项目”，然后单击加号。在弹出的对话框中，单击“JAR”，然后单击“清空”。
 
 		![创建 JAR](./media/hdinsight-apache-spark-intellij-tool-plugin/create-jar-1.png)
 
@@ -95,7 +98,7 @@
 
 4. 添加应用程序源代码。
 
-	1. 在**项目资源管理器**中，右键单击 **src**，指向“新建”，然后单击“Scala 类”。
+	1. 在“项目资源管理器”中，右键单击“src”，指向“新建”，然后单击“Scala 类”。
 
 		![添加源代码](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-scala-code.png)
 
@@ -126,7 +129,7 @@
 
 5. 在 HDInsight Spark 群集中运行该应用程序。
 
-	1. 在**项目资源管理器**中，右键单击项目名称，然后选择“将 Spark 应用程序提交到 HDInsight”。
+	1. 在“项目资源管理器”中，右键单击项目名称，然后选择“将 Spark 应用程序提交到 HDInsight”。
 
 		![提交 Spark 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
 
@@ -134,7 +137,7 @@
 
 		![提交 Spark 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
 
-		* 对于“Spark 群集(仅限 Linux)”，选择你要在其上运行应用程序的 HDInsight Spark 群集。
+		* 对于“Spark 群集(仅限 Linux)”，选择要在其上运行应用程序的 HDInsight Spark 群集。
 
 		* “生成项目”下拉列表应列出你在前面的步骤中指定的 JAR 名称。
 
@@ -169,17 +172,17 @@
 
 ### 访问 Spark 历史记录服务器
 
-1. 在 **HDInsight 资源管理器**中，右键单击 Spark 群集名称，然后选择“打开 Spark 历史记录 UI”。出现提示时，输入群集的管理员凭据。在预配群集时，你必须已指定这些凭据。
+1. 在“HDInsight 资源管理器”中，右键单击 Spark 群集名称，然后选择“打开 Spark 历史记录 UI”。出现提示时，输入群集的管理员凭据。在预配群集时，你必须已指定这些凭据。
 
 2. 在“Spark 历史记录服务器”仪表板中，你可以使用应用程序名称查找刚运行完的应用程序。在上面的代码中，你使用 `val conf = new SparkConf().setAppName("MyClusterApp")` 设置应用程序名称。因此，Spark 应用程序名称为 **MyClusterApp**。
 
 ### 启动 Ambari 门户
 
-在 **HDInsight 资源管理器**中，右键单击 Spark 群集名称，然后选择“打开群集管理门户(Ambari)”。出现提示时，输入群集的管理员凭据。在预配群集时，你必须已指定这些凭据。
+在“HDInsight 资源管理器”中，右键单击 Spark 群集名称，然后选择“打开群集管理门户(Ambari)”。出现提示时，输入群集的管理员凭据。在预配群集时，你必须已指定这些凭据。
 
 ### 管理 Azure 订阅
 
-默认情况下，HDInsight 插件将列出你的所有 Azure 订阅中的 Spark 群集。如果需要，可以指定你想要访问其群集的订阅。在 **HDInsight 资源管理器**中，右键单击 **HDInsight** 根节点，然后单击“管理订阅”。在对话框中，清除你不想访问的订阅所对应的复选框，然后单击“关闭”。如果你想要从 Azure 订阅注销，还可以单击“注销”。
+默认情况下，HDInsight 插件将列出你的所有 Azure 订阅中的 Spark 群集。如果需要，可以指定你想要访问其群集的订阅。在“HDInsight 资源管理器”中，右键单击“HDInsight”根节点，然后单击“管理订阅”。在对话框中，清除你不想访问的订阅所对应的复选框，然后单击“关闭”。如果你想要从 Azure 订阅注销，还可以单击“注销”。
 
 
 ## 本地运行 Spark Scala 应用程序
@@ -196,13 +199,11 @@
 
 	![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
-	* 在左窗格中，选择 **HDInsight**。
+	* 在左窗格中，选择“HDInsight”。
 	* 在右窗格中，选择“Spark on HDInsight (Scala)”。
 	* 单击**“下一步”**。
 
 2. 在下一窗口中，提供项目详细信息。
-
-	![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-local-project-details.png)
 
 	* 提供项目名称和项目位置。
 	* 对于**项目 SDK**，请确保提供大于 7 的 Java 版本。
@@ -213,10 +214,12 @@
 	* 对于 **Spark SDK**，请从[此处](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)下载并使用该 SDK。
 	* 单击“完成”。
 
+		![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-scala-local-project-details.png)
+
 3. 定义项目结构，以便创建最终将包含在群集中运行的代码的项目（打包 jar）。
 
 	1. 在“文件”菜单中，单击“项目结构”。
-	2. 在“项目结构”对话框中，单击“项目”，然后单击加号。在弹出的对话框中，单击 **JAR**，然后单击“空”。
+	2. 在“项目结构”对话框中，单击“项目”，然后单击加号。在弹出的对话框中，单击“JAR”，然后单击“清空”。
 
 		![创建 JAR](./media/hdinsight-apache-spark-intellij-tool-plugin/create-jar-1.png)
 
@@ -228,7 +231,7 @@
 
 4. 添加应用程序源代码。
 
-	1. 在**项目资源管理器**中，右键单击 **src**，指向“新建”，然后单击“Scala 类”。
+	1. 在“项目资源管理器”中，右键单击“src”，指向“新建”，然后单击“Scala 类”。
 
 		![添加源代码](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-local-scala-code.png)
 
@@ -315,4 +318,4 @@
 
 * [管理 Azure HDInsight 中 Apache Spark 群集的资源](/documentation/articles/hdinsight-apache-spark-resource-manager)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

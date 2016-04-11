@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage" 
-	ms.date="01/11/2016"
+	ms.date="02/22/2016"
 	wacn.date=""/>
 
 # 如何在 Hudson 连续集成中使用 Azure Slave 插件
@@ -38,7 +38,7 @@
 * 你的订阅 ID
 * 用于你的订阅的管理证书
 
-可以在你的订阅配置文件中找到这些信息。如果你没有你的订阅配置文件副本，则可以从[此处](https://manage.windowsazure.cn/publishsettings/Index?SchemaVersion=2.0)下载。以下是订阅配置文件的一个示例。
+可以在你的[订阅配置文件](https://manage.windowsazure.cn/publishsettings/Index?SchemaVersion=2.0)中找到这些信息。以下是订阅配置文件的一个示例。
 
 	<?xml version="1.0" encoding="utf-8"?>
 		<PublishData>
@@ -56,7 +56,7 @@
 1. 在 Hudson 仪表板中，单击“管理 Hudson”。
 2. 单击“配置系统”。
 3. 向下滚动页面以找到“云”部分。
-4. 单击“添加新云”>“Microsoft Azure”。
+4. 单击“添加新的云”> Microsoft Azure。
 
 	![添加新的云](./media/azure-slave-plugin-for-hudson/hudson-setup-addcloud.png)
 
@@ -141,7 +141,7 @@
 6. 选择“节点和标签菜单”，然后选择 **linux**（在上一部分中创建虚拟机模板时，我们指定了此标签）。
 
 7. 在“构建”部分，单击“添加构建步骤”，然后选择“执行 shell”。
-8. 编辑以下脚本，用相应的值代替（your GitHub account name）、（your project name）和 (your project directory），然后将编辑后的脚本粘贴到出现的文本区域中。
+8. 编辑以下脚本，用相应的值代替（你的 github 帐户名称）、（你的项目名称）和（你的项目目录），然后将编辑后的脚本粘贴到出现的文本区域中。
 
 
 		# Clone from git repo
@@ -164,4 +164,4 @@
 
 之后，Hudson 将使用在上一部分中创建的模板创建一个从属节点，并执行你在此任务的构建步骤中指定的脚本。
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -58,7 +58,7 @@ Azure Active Directory Connect 由三个主要部分组成，分别是同步服�
 
 ### Azure AD Connect 安装后续步骤
 
-| 主题 |  |
+| 主题 | |
 | --------- | --------- |
 | 下载 Azure AD Connect | [下载 Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771) |
 | 使用快速设置安装 | [Azure AD Connect 的快速安装](/documentation/articles/active-directory-aadconnect-get-started-express) |
@@ -70,7 +70,7 @@ Azure Active Directory Connect 由三个主要部分组成，分别是同步服�
 
 你还要预先了解[操作](/documentation/articles/active-directory-aadconnectsync-operations)注意事项。你可能要部署一台待机服务器，以便在发生[灾难](active-directory-aadconnectsync-operations#disaster-recovery)时轻松故障转移。如果你要频繁进行配置更改，则应该计划部署一台[暂存模式](/documentation/articles/active-directory-aadconnectsync-operations#staging-mode)服务器。
 
-| 主题 |  |
+| 主题 | |
 | --------- | --------- |
 | 支持的拓扑 | [Azure AD Connect 的拓扑](/documentation/articles/active-directory-aadconnect-topologies) |
 | 设计概念 | [Azure AD Connect 设计概念](/documentation/articles/active-directory-aadconnect-design-concepts) |
@@ -95,7 +95,7 @@ Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能
 
 ### 功能配置后续步骤
 
-| 主题 |  |
+| 主题 | |
 | --------- | --------- |
 | 配置筛选 | [Azure AD Connect 同步：配置筛选](/documentation/articles/active-directory-aadconnectsync-configure-filtering) |
 | 密码同步 | [Azure AD Connect 同步：实现密码同步](/documentation/articles/active-directory-aadconnectsync-implement-password-synchronization) |
@@ -115,18 +115,18 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 
 ### Azure AD Connect 同步自定义后续步骤
 
-| 主题 |  |
+| 主题 | |
 | --------- | --------- |
 | 所有 Azure AD Connect 同步文章 | [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis) |
 | 技术概念 | [Azure AD Connect 同步：技术概念](/documentation/articles/active-directory-aadconnect-technical-concepts) |
 | 了解默认配置 | [Azure AD Connect 同步：了解默认配置](/documentation/articles/active-directory-aadconnectsync-understanding-default-configuration) |
 | 了解用户和联系人 | [Azure AD Connect 同步：了解用户和联系人](/documentation/articles/active-directory-aadconnectsync-understanding-users-and-contacts) |
-| 声明性预配 | [Azure AD Connect 同步：了解声明性设置表达式](/documentation/articles/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions) |
+| 声明性预配 | [Azure AD Connect Sync：了解声明性设置表达式](/documentation/articles/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions) |
 | 更改默认配置 | [更改默认配置的最佳做法](/documentation/articles/active-directory-aadconnectsync-best-practices-changing-default-configuration) |
 
 ## 详细信息和参考
 
-| 主题 |  |
+| 主题 | |
 | --------- | --------- |
 | 版本历史记录 | [版本历史记录](/documentation/articles/active-directory-aadconnect-version-history) |
 | 比较 DirSync、Azure ADSync 和 Azure AD Connect | [目录集成工具比较](/documentation/articles/active-directory-aadconnect-get-started-tools-comparison) |
@@ -142,4 +142,4 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 有关将本地目录扩展到云的 Ignite 2015 演示文稿。
 
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -1,23 +1,24 @@
-<properties 
-	pageTitle="向通用 Windows 8.1 应用添加身份验证 | Azure" 
-	description="了解如何使用移动服务通过提供各种标识提供者（包括 Google、Facebook、Twitter 和 Microsoft）对通用 Windows 8.1 应用的用户进行身份验证。" 
-	services="mobile-services" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="向通用 Windows 8.1 应用添加身份验证 | Microsoft Azure"
+	description="了解如何使用移动服务通过提供各种标识提供者（包括 Google、Facebook、Twitter 和 Microsoft）对通用 Windows 8.1 应用的用户进行身份验证。"
+	services="mobile-services"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="erikre"
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/23/2015"
+	ms.date="03/06/2016"
 	wacn.date=""/>
 
-# 向移动服务应用程序添加身份验证 
-
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+# 向移动服务应用程序添加身份验证
+[AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
 &nbsp;
-[AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对应的 Mobile Apps 版本，请参阅[向 Windows 应用添加身份验证](/documentation/articles/app-service-mobile-windows-store-dotnet-get-started-users)。
 
 ## 概述
 
@@ -45,7 +46,7 @@
 
 &nbsp;&nbsp;8.按 F5 键运行该 Windows 应用商店应用程序；验证启动该应用程序后，是否会引发状态代码为 401（“未授权”）的未处理异常。
    
-发生此异常的原因是应用尝试以未经身份验证的用户身份访问移动服务，但 *TodoItem* 表现在要求身份验证。
+&nbsp;&nbsp;发生此异常的原因是应用尝试以未经身份验证的用户身份访问移动服务，但 TodoItem 表现在要求身份验证。
 
 接下来，你需要更新应用程序，以便在从移动服务请求资源之前对用户进行身份验证。
 
@@ -53,7 +54,7 @@
 
 [AZURE.INCLUDE [mobile-windows-universal-dotnet-authenticate-app](../../includes/mobile-windows-universal-dotnet-authenticate-app.md)]
 
->[AZURE.NOTE]如果已将 Windows 应用商店应用程序包信息注册到移动服务，则应该为 *useSingleSignOn* 参数提供 **true** 值以调用 <a href="http://go.microsoft.com/fwlink/p/?LinkId=311594" target="_blank">LoginAsync</a> 方法。如果不这样做，你的用户将继续显示登录提示每次调用 login 方法。
+>[AZURE.NOTE]如果已将 Windows 应用商店应用程序包信息注册到移动服务，则应该为 useSingleSignOn 参数提供 **true** 值以调用 <a href="http://go.microsoft.com/fwlink/p/?LinkId=311594" target="_blank">LoginAsync</a> 方法。如果不这样做，你的用户将继续显示登录提示每次调用 login 方法。
 
 ##<a name="tokens"></a>在客户端上存储授权令牌
 
@@ -99,4 +100,4 @@
 [移动服务 .NET 操作方法概念性参考]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 [Register your Windows Store app package for Microsoft authentication]: /documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0405_2016-->

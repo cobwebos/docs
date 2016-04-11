@@ -96,6 +96,6 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 5.	运行 Update-MSOLFederatedDomain –DomainName <domain>。此 cmdlet 会将 AD FS 中的设置更新到云服务中，并配置两者之间的信任关系。
 
 >[AZURE.NOTE] 如果你需要支持多个顶级域（例如 contoso.com 和 fabrikam.com），则必须将 SupportMultipleDomain 开关用于任何 cmdlet。有关详细信息，请参阅“支持多个顶级域”。
-最后，请确保所有 Web 应用程序代理服务器都通过 [Windows Server May 2014](http://support.microsoft.com/kb/2955164) 汇总进行了更新，否则代理可能无法使用新证书自行进行更新，导致服务中断。
+最后，请确保所有 Web 应用程序代理服务器都通过 [Windows Server 2014 年 5 月](http://support.microsoft.com/kb/2955164) 汇总进行了更新，否则代理可能无法使用新证书自行进行更新，导致服务中断。
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0405_2016-->

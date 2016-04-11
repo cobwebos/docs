@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="12/01/2015" 
+	ms.date="02/29/2016"
 	wacn.date=""/>
 
 # 如何通过 Java 使用 Blob 存储
@@ -42,7 +42,7 @@
 
 ## 设置 Azure 存储连接字符串
 
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 *AccountName* 和 *AccountKey* 值使用[管理门户](https://manage.windowsazure.cn)中列出的存储帐户的名称和存储帐户的主访问密钥。下面的示例演示如何声明一个静态字段以保存连接字符串。
+Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 AccountName 和 AccountKey 值使用[管理门户](https://manage.windowsazure.cn)中列出的存储帐户的名称和存储帐户的主访问密钥。下面的示例演示如何声明一个静态字段以保存连接字符串。
 
     // Define the connection-string with your values
     public static final String storageConnectionString =
@@ -51,7 +51,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
         "AccountKey=your_storage_account_key;" +
 	"EndpointSuffix=core.chinacloudapi.cn";
 
-在 Microsoft Azure 的角色中运行的应用程序中，此字符串可存储在服务配置文件 *ServiceConfiguration.cscfg* 中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。下面的示例从服务配置文件中名为 *StorageConnectionString* 的 **Setting** 元素获取连接字符串。
+在 Microsoft Azure 的角色中运行的应用程序中，此字符串可存储在服务配置文件 ServiceConfiguration.cscfg 中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。下面的示例从服务配置文件中名为 StorageConnectionString 的 **Setting** 元素获取连接字符串。
 
     // Retrieve storage account from connection-string.
     String storageConnectionString =
@@ -265,4 +265,4 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 [Azure 存储 REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0405_2016-->

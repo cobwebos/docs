@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="backup"
-	ms.date="01/09/2016"
+	ms.date="01/28/2016"
 	wacn.date=""/>
 
 
@@ -69,7 +69,7 @@
 | 还原 | 备份保管库和目标存储帐户位于两个不同的区域 - 请确保在还原操作中指定的存储帐户与备份保管库位于相同的 Azure 区域。 | 无 |
 | 还原 | 不支持为还原操作指定的存储帐户 - 仅支持具有本地冗余或地域冗余复制设置的“基本/标准”存储帐户。请选择支持的存储帐户 | 无 |
 | 还原 | 针对还原操作指定的存储帐户类型不处于在线状态 - 请确保在还原操作中指定的存储帐户处于在线状态 | 在 Azure 存储空间中出现暂时性错误或断电时，可能会发生这种情况。请选择另一个存储帐户。 |
-| 还原 | 已达到资源组配额限制 - 请从预览门户中删除某些资源组，或者与 Azure 支持部门联系，请求他们提高限制。 | 无 |
+| 还原 | 已达到资源组配额限制 - 请从 Azure 门户中删除某些资源组，或者与 Azure 支持部门联系，请求他们提高限制。 | 无 |
 | 还原 | 所选子网不存在 - 请选择已存在的子网 | 无 |
 
 
@@ -102,20 +102,19 @@
 
 对于 Linux VM：
 
-- 按照[更新 Linux VM 代理](../virtual-machines-linux-update-agent.md)上的说明进行操作。 
+- 按照[更新 Linux VM 代理](/documentation/articles/virtual-machines-linux-update-agent)上的说明进行操作。 
 
 
 ### 验证 VM 代理安装
 如何检查 Windows VM 上的 VM 代理版本：
 
-1. 登录 Azure 虚拟机并导航到 *C:\\WindowsAzure\\Packages* 文件夹。你应会发现 WaAppAgent.exe 文件已存在。
+1. 登录 Azure 虚拟机并导航到 C:\\WindowsAzure\\Packages 文件夹。你应会发现 WaAppAgent.exe 文件已存在。
 2. 右键单击该文件，转到“属性”，然后选择“详细信息”选项卡。“产品版本”字段应为 2.6.1198.718 或更高
 
 ## 排查 VM 快照问题
 VM 备份依赖于向底层存储发出快照命令。如果无法访问存储或者快照任务执行延迟，则备份可能会失败。以下因素可能会导致快照任务失败。
 
-1. 使用 NSG 阻止对存储进行网络访问<br>
-	详细了解如何使用 IP 允许列表或通过代理服务器对存储[启用网络访问](backup-azure-vms-prepare.md#2-network-connectivity)。
+1. 使用 NSG 阻止对存储进行网络访问<br>详细了解如何使用 IP 允许列表或通过代理服务器对存储[启用网络访问](backup-azure-vms-prepare.md#2-network-connectivity)。
 2.  配置了 SQL Server 备份的 VM 造成快照任务延迟<br>
 	默认情况下，VM 备份将在 Windows VM 上发出 VSS 完整备份命令。在运行 SQL Server 且已配置 SQL Server 备份的 VM 上，这可能会造成快照执行延迟。如果由于快照问题而导致备份失败，请设置以下注册表项。
 
@@ -151,7 +150,6 @@ VM 备份依赖于向底层存储发出快照命令。如果无法访问存储�
     - 如果你指定了某种网络限制（例如网络安全组），请部署 HTTP 代理服务器来路由流量。可在[此处](backup-azure-vms-prepare.md#2-network-connectivity)找到部署 HTTP 代理服务器的步骤。
     - 向 NSG 添加规则（如果已创建规则），以允许从 HTTP 代理访问 INTERNET。
 
->[AZURE.NOTE] 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。如果需要静态专用 IP 地址，你应该通过平台配置该 IP。VM 内的 DHCP 选项应保持启用。
-可在[此处](virtual-networks-reserved-private-ip.md)获取有关设置静态内部专用 IP 的详细信息。
+>[AZURE.NOTE] 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。如果需要静态专用 IP 地址，你应该通过平台配置该 IP。VM 内的 DHCP 选项应保持启用。查看有关[设置静态内部专用 IP](/documentation/articles/virtual-networks-reserved-private-ip) 的详细信息。
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0405_2016-->

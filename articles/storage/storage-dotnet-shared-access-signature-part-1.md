@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="11/16/2015" 
+	ms.date="02/14/2016"
 	wacn.date=""/>
 
 
@@ -46,8 +46,6 @@ SAS 通常适用于用户需要在你的存储帐户中读取和写入其数据�
 - 当你将一个 Blob 复制到驻留在不同存储帐户中的另一个 Blob 时，必须使用 SAS 对源 Blob 进行身份验证。使用版本 2015-04-05，你还可以选择使用 SAS 对目标 blob 进行身份验证。
 - 当你将一个文件复制到驻留在不同存储帐户中的另一个文件时，必须使用 SAS 对源文件进行身份验证。使用版本 2015-04-05，你还可以选择使用 SAS 对目标文件进行身份验证。
 - 当你将一个 Blob 复制到一个文件，或将一个文件复制到一个 Blob 时，必须使用 SAS 对源对象进行身份验证，即使源对象和目标对象驻留在同一存储帐户中。
-
->[AZURE.NOTE] 当前只有 Blob 和文件服务才支持帐户 SAS。在不久的将来，表和队列服务将支持它。
 
 ## 共享访问签名的类型
 
@@ -96,7 +94,7 @@ Azure 存储空间的版本 2015-04-05 引入了一种新的共享访问签名�
 
 	https://myaccount.blob.core.chinacloudapi.cn/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 
-Name|SAS 部分|说明
+名称|SAS 部分|说明
 ---|---|---
 Blob URI|https://myaccount.blob.core.chinacloudapi.cn/sascontainer/sasblob.txt | Blob 的地址。请注意，强烈建议使用 HTTPS。
 存储服务版本|sv=2015-04-05|对于存储服务版本 2012-02-12 和更高版本，此参数指示要使用的版本。
@@ -112,7 +110,7 @@ IP 范围|sip=168.1.5.60-168.1.5.70|将从中接受请求的 IP 地址范围。
 
 	https://myaccount.blob.core.chinacloudapi.cn/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
 
-Name|SAS 部分|说明
+名称|SAS 部分|说明
 ---|---|---
 资源 URI|https://myaccount.blob.core.chinacloudapi.cn/?restype=service&comp=properties|The Blob 服务终结点，包含用于获取服务属性（使用 GET 调用时）或设置服务属性（使用 SET 调用时）的参数。
 服务|ss=bf|该 SAS 适用于 Blob 和文件服务
@@ -146,7 +144,7 @@ Name|SAS 部分|说明
 
 若要运行这些示例，需下载和引用以下包：
 
-- [Azure .NET 存储客户端库](http://www.nuget.org/packages/WindowsAzure.Storage)，6.x 或更高版本（以便使用帐户 SAS）。
+- [适用于 .NET 的 Azure 存储客户端库](http://www.nuget.org/packages/WindowsAzure.Storage) 6.x 或更高版本（以便使用帐户 SAS）。
 - [Azure 配置管理器](http://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) 
 
 ### 示例：帐户 SAS
@@ -308,15 +306,15 @@ Name|SAS 部分|说明
 
 ## 后续步骤 ##
 
-- [共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 服务](/documentation/articles/storage-dotnet-shared-access-signature-part-2)
-- [如何通过 Windows 使用 Azure 文件存储](/documentation/articles/storage-dotnet-how-to-use-files)
-- [管理对 Azure 存储资源的访问](/documentation/articles/storage-manage-access-to-resources)
+- [共享访问签名，第 2 部分：创建 SAS 并将 SAS 用于 Blob 存储](/documentation/articles/storage-dotnet-shared-access-signature-part-2)
+- [在 Windows 上开始使用 Azure 文件存储](/documentation/articles/storage-dotnet-how-to-use-files)
+- [管理对容器和 blob 的匿名读取访问](/documentation/articles/storage-manage-access-to-resources)
 - [使用共享的访问签名委托访问](http://msdn.microsoft.com/zh-cn/library/azure/ee395415.aspx)
-- [表和队列 SAS 介绍](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
+- [介绍表和队列 SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
 [sas-storage-fe-proxy-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-fe-proxy-service.png
 [sas-storage-provider-service]: ./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png
 
 
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0405_2016-->

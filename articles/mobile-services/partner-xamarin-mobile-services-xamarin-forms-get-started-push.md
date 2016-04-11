@@ -9,15 +9,17 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="01/22/2016"
+	ms.date="03/18/2016"
 	wacn.date=""/>
 
 # 向 Xamarin.Forms 应用添加推送通知
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
 
 &nbsp;
-[AZURE.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对等 Mobile Apps 版本，请参阅[向 Xamarin.Forms 应用添加推送通知](/documentation/articles/app-service-mobile-xamarin-forms-get-started-push)。
 
 ##概述
 
@@ -49,7 +51,7 @@
 
 为了能够在新移动服务中存储应用程序数据，必须先创建一个新表。
 
-1. 在 **Azure 经典门户** 中单击“移动服务”，然后单击你刚刚创建的移动服务。
+1. 在 Azure 经典门户中单击“移动服务”，然后单击你刚刚创建的移动服务。
 
 2. 单击“数据”选项卡，然后单击“+创建”。
 
@@ -57,7 +59,7 @@
 
    	此时将显示“创建新表”对话框。
 
-3. 在“表名”中键入 _TodoItem_，然后单击勾选按钮。
+3. 在“表名”中键入 TodoItem，然后单击勾选按钮。
 
     ![][124]
 
@@ -156,15 +158,15 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 6. 门户创建证书之后，请单击“Download”（下载）按钮，然后单击“Done”（完成）。
 
-    ![][111]  
+    ![][111]
 
     随后将会下载签名证书并将其保存到计算机上的 Downloads 文件夹。
 
     ![][9]
 
-    注意：默认情况下，下载的文件（开发证书）名为 <strong>aps_development.cer</strong>。
+    注意：默认情况下，下载的文件（开发证书）名为 <strong>aps\_development.cer</strong>。
 
-7. 双击下载的推送证书 **aps_development.cer**。
+7. 双击下载的推送证书 **aps\_development.cer**。
 
     将在 Keychain 中安装新证书，如下所示：
 
@@ -224,7 +226,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
     此时将显示“上载证书”对话框。
 
-4. 单击“文件“，选择导出的 .p12 证书文件，输入“密码“，确保已选择正确的“模式”，单击勾选图标，然后单击“保存”。
+4. 单击“文件”，选择导出的 .p12 证书文件，输入“密码”，确保已选择正确的“模式”，单击勾选图标，然后单击“保存”。
 
     ![][20]
 
@@ -285,7 +287,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
             _deviceToken = _deviceToken.Trim('<', '>').Replace(" ", "");
 
             // Get Mobile Services client
-            MobileServiceClient client = todoItemManager.GetClient;
+            MobileServiceClient client = todoItemManager.GetClient();
 
             // Register for push with Mobile Services
             IEnumerable<string> tag = new List<string>() { "uniqueTag" };
@@ -297,7 +299,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
             var push = client.GetPush();
 
-            push.RegisterTemplateAsync(_deviceToken, template, expiryDate, "myTemplate", tag)
+            push.RegisterTemplateAsync(_deviceToken, template, expiryDate, "myTemplate", tag);
         }
 
 3. 在 **AppDelegate** 中，重写 **ReceivedRemoteNotification** 事件：
@@ -538,7 +540,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
         {
             try
             {
-                const string template = "{\"data\":{\"message\":\"$(message)\"}}";
+                const string template = "{"data":{"message":"$(message)"}}";
 
                 await push.RegisterTemplateAsync(RegistrationID, template, "mytemplate", tags);
             }
@@ -640,7 +642,7 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 3. 在顶部工具栏中，单击“运行”，然后选择你的应用。这将启动模拟器并运行该应用程序。
 
-  应用将从 GCM 检索 *registrationId* 并注册到通知中心。
+  应用将从 GCM 检索 registrationId 并注册到通知中心。
 
 4. 在应用中，添加新的任务。
 
@@ -681,8 +683,8 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
                    // Register for notifications using the new channel
                     const string template =
-                    "<?xml version=\"1.0\" encoding=\"utf-8\"?><wp:Notification " +
-                    "xmlns:wp=\"WPNotification\"><wp:Toast><wp:Text1>$(message)</wp:Text1></wp:Toast></wp:Notification>";
+                    "<?xml version="1.0" encoding="utf-8"?><wp:Notification " +
+                    "xmlns:wp="WPNotification"><wp:Toast><wp:Text1>$(message)</wp:Text1></wp:Toast></wp:Notification>";
 
                     await client.GetPush()
                         .RegisterTemplateAsync(CurrentChannel.ChannelUri.ToString(), template, "mytemplate");
@@ -693,15 +695,15 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 
 	>[AZURE.NOTE]在本教程中，移动服务将向设备发送一条 toast 通知。而当你发送磁贴通知时，必须在通道上调用 **BindToShellTile** 方法。
 
-3. 在 App.xaml.cs 中 **Application_Launching** 事件处理程序的顶部，添加对新的 **AcquirePushChannel** 方法的以下调用：
+3. 在 App.xaml.cs 中 **Application\_Launching** 事件处理程序的顶部，添加对新的 **AcquirePushChannel** 方法的以下调用：
 
         AcquirePushChannel();
 
 	这可以确保每次加载页时都会请求注册。在应用程序中，你可能只需要定期执行此注册以确保注册是最新的。
 
-4. 按 **F5** 键以运行应用。将显示包含注册密钥的弹出式对话框。
-  
-5.	在解决方案资源管理器中，展开“属性”，打开 WMAppManifest.xml 文件，单击“功能”选项卡并确保选中 **ID___CAP___PUSH_NOTIFICATION** 功能。
+5. 按 **F5** 键以运行应用。将显示包含注册密钥的弹出式对话框。
+
+6.	在解决方案资源管理器中，展开“属性”，打开 WMAppManifest.xml 文件，单击“功能”选项卡并确保选中 **ID\_CAP\_PUSH\_NOTIFICATION** 功能。
 
    	![在 VS 中启用通知](./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-app-enable-push-wp8.png)
 
@@ -820,14 +822,14 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 [116]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-16.png
 [117]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-17.png
 
-[120]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-20.png
-[121]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-21.png
-[122]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-22.png
-[123]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-data-tab-empty.png
-[124]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-create-todoitem-table.png
-[125]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/notification-hub-create-android-app7.png
-[126]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/notification-hub-create-android-app8.png
-[127]:./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/notification-area-received.png
+[120]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-20.png
+[121]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-21.png
+[122]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-services-ios-push-22.png
+[123]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-data-tab-empty.png
+[124]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/mobile-create-todoitem-table.png
+[125]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/notification-hub-create-android-app7.png
+[126]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/notification-hub-create-android-app8.png
+[127]: ./media/partner-xamarin-mobile-services-xamarin-forms-get-started-push/notification-area-received.png
 
 
 [Xamarin.iOS Studio]: http://xamarin.com/platform
@@ -849,5 +851,4 @@ APNS 使用证书对你的移动服务进行身份验证。按照以下说明创
 [Xamarin.Forms Azure 推送通知初学者示例]: https://github.com/Azure/mobile-services-samples/tree/master/TodoListXamarinForms
 [已完成的 Xamarin.Forms Azure 推送通知示例]: https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithPushXamarinForms
  
-
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0405_2016-->

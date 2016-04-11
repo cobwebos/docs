@@ -27,7 +27,7 @@
 + [移动服务 Android SDK]
 + [百度推送 Android SDK]
 
->[AZURE.NOTE]若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)。
+>[AZURE.NOTE] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)。
 
 
 ##创建百度帐户
@@ -452,7 +452,7 @@
 
 若要使用模拟器测试此应用，请在 Eclipse 顶部工具栏中，单击“运行”，然后选择你的应用。这将启动模拟器，然后加载并运行该应用。
 
-该应用将从百度推送通知服务检索“userId”和“channelId”，并注册到通知中心。
+该应用将从百度推送通知服务检索 “userId” 和 “channelId”，并注册到通知中心。
 
 若要发送测试通知，可以使用 Azure 经典门户的调试选项卡。如果你为 Visual Studio 生成了 .NET 控制台应用程序，只需在 Visual Studio 中按 F5 键以运行该应用程序。该应用程序将发送一条通知，该通知显示在设备或模拟器的顶部通知区域。
 
@@ -495,7 +495,7 @@
 <!-- URLs. -->
 [移动服务 Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [百度推送 Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
-[Azure 管理门户]: https://manage.windowsazure.com/
+[Azure Classic Portal]: https://manage.windowsazure.cn/
 [百度门户]: http://www.baidu.com/
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0405_2016-->

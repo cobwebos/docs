@@ -3,8 +3,8 @@
    description="了解 Azure 备份如何让你使用 Azure 导入/导出服务离线发送数据。本文介绍如何使用 Azure 导入导出服务来脱机设定初始备份数据的种子。"
    services="backup"
    documentationCenter=""
-   authors="Jim-Parker"
-   manager="jwhit"
+   authors="nkolli1"
+   manager="shivamg"
    editor=""/>
 <tags
    ms.service="backup"
@@ -38,8 +38,7 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 
     ![ImportScreen](./media/backup-azure-backup-import-export/importscreen.png)
 
-    SCDPM 中的对应屏幕如下所示。<br/>
-    ![DPM 导入屏幕](./media/backup-azure-backup-import-export/dpmoffline.png)
+    SCDPM 中的对应屏幕如下所示。<br/>![DPM 导入屏幕](./media/backup-azure-backup-import-export/dpmoffline.png)
 
     其中：
 
@@ -61,7 +60,7 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 
     ![立即进行 DPM 备份](./media/backup-azure-backup-import-export/dpmbackupnow.png)
 
-    操作完成后，将在临时位置创建 *.AIBBlob* 和 *.BaseBlob* 文件。
+    操作完成后，将在临时位置创建 .AIBBlob 和 .BaseBlob 文件。
 
     ![输出](./media/backup-azure-backup-import-export/opbackupnow.png)
 
@@ -69,22 +68,22 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 
 1. 将 [Microsoft Azure 导入/导出工具](http://go.microsoft.com/fwlink/?linkid=301900&clcid=0x409)下载到“复制计算机”。确保可从你打算运行下一个命令集的计算机访问的临时位置（在上一步）。如果需要，请在复制计算机可以与源计算机相同。
 
-2. 解压缩 *WAImportExport.zip* 文件。运行 *WAImportExport* 工具，它将格式化 SATA 驱动器，将备份数据写入到 SATA 驱动器并对其进行加密。在运行以下命令之前请确保在计算机上启用了 BitLocker。<br/>
+2. 解压缩 WAImportExport.zip 文件。运行 WAImportExport 工具，它将格式化 SATA 驱动器，将备份数据写入到 SATA 驱动器并对其进行加密。在运行以下命令之前请确保在计算机上启用了 BitLocker。<br/>
 
-    *.\WAImportExport.exe PrepImport /j:<*JournalFile*>.jrn /id: <*SessionId*> /sk:<*StorageAccountKey*> /BlobType:**PageBlob** /t:<*TargetDriveLetter*> /format /encrypt /srcdir:<*staging location*> /dstdir: <*DestinationBlobVirtualDirectory*>/*
+    *.\\WAImportExport.exe PrepImport /j:<*JournalFile*>.jrn /id: <*SessionId*> /sk:<*StorageAccountKey*> /BlobType:**PageBlob** /t:<*TargetDriveLetter*> /format /encrypt /srcdir:<*staging location*> /dstdir: <*DestinationBlobVirtualDirectory*>/*
 
 
 | 参数 | 说明
 |-------------|-------------|
 | /j:<*JournalFile*>| 日志文件的路径。每个驱动器必须正好有一个日志文件。请注意，日志文件不得驻留在目标驱动器上。日志文件的扩展名是 .jrn，并作为运行此命令的一部分创建。|
 |/id:<*SessionId*> | 会话 ID 标识“复制会话”。它用于确保准确恢复中断的复制会话。复制会话中复制的文件将存储在以目标驱动器上的会话 ID 命名的目录中。|
-| /sk:<*StorageAccountKey*> | 将数据导入到的存储帐户的帐户密钥。 |
+| /sk:<*StorageAccountKey*> | 将数据导入到的存储帐户的帐户密钥。此密钥应与创建备份策略/保护组期间输入的密钥相同。|
 | /BlobType | 指定 **PageBlob**，仅当指定 PageBlob 选项时，此工作流才会成功。这不是默认选项，并应在此命令中所述。 |
 |/t:<*TargetDriveLetter*> | 当前复制会话的目标硬盘驱动器的驱动器号（不带尾随冒号）。|
 |/format | 在需要格式化驱动器时指定此参数；否则，请将其忽略。在对驱动器进行格式化之前，该工具将提示你通过控制台进行确认。若不希望显示该确认，请指定 /silentmode 参数。|
 |/encrypt | 在尚未使用 BitLocker 对驱动器进行加密但需要使用此工具进行加密时，指定此参数。如果已使用 BitLocker 对驱动器进行加密，则忽略此参数并指定 /bk 参数，同时还提供现有 BitLocker 密钥。如果指定 /format 参数，则还必须指定 /encrypt 参数。 |
-|/srcdir:<*SourceDirectory*> | 包含要复制到目标驱动器中的文件的源目录。目录路径必须是绝对路径（而非相对路径）。|
-|/dstdir:<*DestinationBlobVirtualDirectory*> | Microsoft Azure 存储帐户中的目标虚拟目录的路径。在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。请记住，容器名称必须是小写的。|
+|/srcdir:<*SourceDirectory*> | 包含要复制到目标驱动器中的文件的源目录。请确保此处指定的目录名称是完整路径（而不是相对路径）。|
+|/dstdir:<*DestinationBlobVirtualDirectory*> | Microsoft Azure 存储帐户中的目标虚拟目录的路径。在指定目标虚拟目录或 Blob 时，请确保使用有效的容器名称。请记住，容器名称必须是小写的。此容器名称应与创建备份策略/保护组期间输入的名称相同|
 
   > [AZURE.NOTE] 捕获整个工作流的信息的 WAImportExport 文件夹中创建日志文件。在 Azure 门户中创建导入作业时，将需要此文件。
 
@@ -115,4 +114,4 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 - 如有 Azure 导入/导出工作流方面的任何问题，请参阅此[文章](/documentation/articles/storage-import-export-service)。
 - 如有工作流方面的任何问题，请参阅 Azure 备份[常见问题](/documentation/articles/backup-azure-backup-faq)的“脱机备份”部分
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0405_2016-->

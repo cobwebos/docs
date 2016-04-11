@@ -18,7 +18,8 @@
 
 ##概述
 
-本教程演示如何使用 Azure 通知中心将推送通知发送到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用程序。如果你要以 Windows Phone 8.1 Silverlight 为目标，请参阅 [Windows Phone](notification-hubs-windows-phone-get-started.md) 版本。在本教程中，你将创建一个空白 Windows 应用商店应用，它使用 Windows 推送通知服务 (WNS) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。
+本教程演示如何使用 Azure 通知中心将推送通知发送到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用程序。如果你要以 Windows Phone 8.1 Silverlight 为目标，请参阅 [Windows Phone](notification-hubs-windows-phone-get-started.md) 版本。
+在本教程中，你将创建一个空白 Windows 应用商店应用，它使用 Windows 推送通知服务 (WNS) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。
 
 
 ## 开始之前
@@ -36,7 +37,7 @@
 
 + 有效的 Windows 应用商店帐户
 
-+ 一个有效的 Azure 帐户<br/>如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F)。
++ 一个有效的 Azure 帐户<br/>如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F)。
 
 完成本教程是学习有关 Windows 应用商店应用程序的所有其他通知中心教程的先决条件。
 
@@ -73,7 +74,7 @@
 
 7. （可选）对 Windows Phone 应用商店应用项目重复步骤 4-6。
 
-8. 返回新应用的“Windows 开发人员中心”页，单击“服务”，单击“推送通知”，然后在“Windows 推送通知服务(WNS)和 Microsoft Azure 移动服务”下面单击“Live 服务站点”。[](http://go.microsoft.com/fwlink/p/?LinkID=266582)
+8. 返回新应用的“[Windows 开发人员中心](http://go.microsoft.com/fwlink/p/?LinkID=266582)”页，单击“服务”，单击“推送通知”，然后在“Windows 推送通知服务(WNS)和 Microsoft Azure 移动服务”下面单击“Live 服务站点”。
 
    	![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-win8-app-live-services.png)
 
@@ -82,11 +83,11 @@
    	![][6]
 
  	> [AZURE.WARNING]
- 	> 客户端密钥和程序包 SID 是重要的安全凭据。请勿将这些值告知任何人或随你的应用程序分发它们。
+	客户端密钥和程序包 SID 是重要的安全凭据。请勿将这些值告知任何人或随你的应用程序分发它们。
 
 ##配置通知中心
 
-[AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
+[AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../includes/notification-hubs-portal-create-new-hub.md)]
 
 <ol start="7">
 <li><p>选择顶部的“配置”选项卡，输入你在前一部分中从 WNS 获取的“客户端密码”和“包 SID”值，然后单击“保存”。<b></b><b></b><b></b><b></b></p>
@@ -179,7 +180,7 @@
 
 * **Microsoft Azure 通知中心 .NET SDK**：在 Visual Studio 的 Nuget 包管理器中，运行 [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
-* **Node.js**：[如何通过 Node.js 使用通知中心](notification-hubs-nodejs-how-to-use-notification-hubs.md)。
+* **Node.js**：[如何通过 Node.js 使用通知中心](/documentation/articles/notification-hubs-nodejs-how-to-use-notification-hubs.md)。
 
 * **Azure 移动服务**：有关如何从与通知中心集成的 Azure 移动服务后端发送通知的示例，请参阅“移动服务中的推送通知入门”（[.NET 后端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript 后端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)）。
 
@@ -270,6 +271,8 @@
 
 <!-- URLs. -->
 [Azure 管理门户]: https://manage.windowsazure.cn/
+[Azure 经典门户]: https://manage.windowsazure.cn
+
 [通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
 
 [使用通知中心向用户推送通知]: /documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users
@@ -280,4 +283,4 @@
 [锁屏提醒]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
  
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0405_2016-->

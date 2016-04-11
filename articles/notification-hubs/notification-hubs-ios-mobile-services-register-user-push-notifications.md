@@ -9,13 +9,13 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="07/28/2015" 
+	ms.date="11/01/2015" 
 	wacn.date=""/>
 
 # 通过使用移动服务注册推送通知的当前用户
 
 > [AZURE.SELECTOR]
-[Windows Store C#](/documentation/articles/notification-hubs-windows-store-mobile-services-register-user-push-notifications)
+[Windows 应用商店 C#](/documentation/articles/notification-hubs-windows-store-mobile-services-register-user-push-notifications)
 [iOS](/documentation/articles/notification-hubs-ios-mobile-services-register-user-push-notifications)
 
 本主题说明在 Azure 移动服务执行注册时如何请求向 Azure 通知中心注册推送通知。本主题是对教程[使用通知中心通知用户]的扩展。你必须在该教程中已完成创建经过身份验证的移动服务所需的步骤。有关通知用户方案的详细信息，请参阅[使用通知中心通知用户]。
@@ -53,7 +53,7 @@
 
 	这会更新 **deviceToken** 属性。
 
-	> [AZURE.NOTE]此时，此方法中不应有任何其他代码。如果你已调用在完成[通知中心入门](/manage/services/notification-hubs/get-started-notification-hubs-ios/"%20target="_blank")教程的学习时添加的 **registerNativeWithDeviceToken** 方法，必须注释掉或删除该调用。
+	> [AZURE.NOTE] 此时，此方法中不应有任何其他代码。如果你已调用在完成[通知中心入门](/manage/services/notification-hubs/get-started-notification-hubs-ios/"%20target="_blank")教程的学习时添加的 **registerNativeWithDeviceToken** 方法，必须注释掉或删除该调用。
 
 5.  （可选）在 QSAppDelegate.m 文件中，添加以下处理程序方法：
 
@@ -101,7 +101,7 @@
 			    }];
 			}
 
-	> [AZURE.NOTE]这可以确保每次加载页时都会请求注册。在应用程序中，你可能只需要定期执行此注册以确保注册是最新的。
+	> [AZURE.NOTE] 这可以确保每次加载页时都会请求注册。在应用程序中，你可能只需要定期执行此注册以确保注册是最新的。
 	
 现在客户端应用程序已更新，请返回到[使用通知中心通知用户]并更新移动服务以使用通知中心发送通知。
 
@@ -114,7 +114,6 @@
 [使用通知中心通知用户]: /manage/services/notification-hubs/notify-users
 [身份验证入门]: /develop/mobile/tutorials/get-started-with-users-ios/
 
-[Azure Management Portal]: https://manage.windowsazure.cn/
 [Get Started with Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0405_2016-->

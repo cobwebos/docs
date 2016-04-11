@@ -14,10 +14,12 @@
 
 # 移动服务中的身份验证入门
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
 
 &nbsp;
-[AZURE.INCLUDE [mobile-services-selector-get-started-users](../includes/mobile-services-selector-get-started-users.md)]
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对等 Mobile Apps 版本，请参阅[向 Xamarin.Android 应用添加身份验证](/documentation/articles/app-service-mobile-xamarin-android-get-started-users)。
 
 本主题说明如何通过应用程序对 Azure 移动服务中的用户进行身份验证。在本教程中，你将要使用移动服务支持的标识提供程序向快速入门项目添加身份验证。在移动服务成功完成身份验证和授权后，将显示用户 ID 值。
 
@@ -42,7 +44,7 @@
 <ol start="6">
 <li><p>在 Visual Studio 或 Xamarin Studio 中，运行设备或模拟器中的客户端项目。验证在应用程序启动后是否引发状态代码为 401（“未授权”）的未处理异常。</p>
    
-   	<p>发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 <em>TodoItem</em> 表现在要求身份验证。</p></li>
+   	<p>发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 TodoItem 表现在要求身份验证。</p></li>
 </ol>
 
 接下来，你需要更新应用程序，以便在从移动服务请求资源之前对用户进行身份验证。
@@ -70,7 +72,7 @@
 
     这将会创建一个用于处理身份验证过程的新方法。将使用 Facebook 登录对用户进行身份验证。此时将出现一个对话框，其中显示了已经过身份验证的用户的 ID。
 
-    > [AZURE.NOTE]如果使用的标识提供程序不是 Facebook，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：_MicrosoftAccount_、_Twitter_、_Google_ 或 _WindowsAzureActiveDirectory_。
+    > [AZURE.NOTE] 如果使用的标识提供程序不是 Facebook，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：MicrosoftAccount、Twitter、Google 或 WindowsAzureActiveDirectory。
 
 3. 在 **OnCreate** 方法中，在实例化 `MobileServiceClient` 对象的代码后面添加以下代码行。
 
@@ -88,6 +90,7 @@
 
 In the next tutorial, [Service-side authorization of Mobile Services users][Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. 
  -->
+ 
 <!-- Anchors. -->
 [注册应用程序以进行身份验证并配置移动服务]: #register
 [将表权限限制给已经过身份验证的用户]: #permissions
@@ -107,4 +110,4 @@ In the next tutorial, [Service-side authorization of Mobile Services users][Auth
 
 [Azure Management Portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0405_2016-->

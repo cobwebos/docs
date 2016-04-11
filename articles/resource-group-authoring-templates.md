@@ -1,6 +1,6 @@
 <properties
-   pageTitle="创作 Azure 资源管理器模板"
-   description="使用声明性 JSON 语法创建 Azure 资源管理器模板，以将应用程序部署到 Azure。"
+   pageTitle="创作 Azure Resource Manager 模板"
+   description="使用声明性 JSON 语法创建 Azure Resource Manager 模板，以将应用程序部署到 Azure。"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -9,13 +9,14 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="01/05/2016"
+   ms.date="02/17/2016"
    wacn.date=""/>
 
 # 创作 Azure 资源管理器模板
 
 Azure 应用程序通常需要多种资源的组合（例如数据库服务器、数据库或网站）来达到所需的目标。你无需单独部署和管理每个资源，而可以创建一个 Azure 资源管理器模板，以单个协调操作为应用程序部署和设置所有资源。在模板中，定义应用程序所需的资源，并指定部署参数以针对不同的环境输入值。模板中包含可用于构造部署值的 JSON 和表达式。本主题介绍了该模板的部分。
 
+Visual Studio 提供了工具来帮助你创建模板。有关使用 Visual Studio 处理模板的详细信息，请参阅[通过 Visual Studio 创建和部署 Azure 资源组](/documentation/articles/vs-azure-tools-resource-groups-deployment-projects-create-deploy)。
 
 您必须将您的模版大小限制为 1 MB 以内，每个参数文件大小限制为 64 KB 以内。已完成对迭代资源定义和变量值和参数值的扩展后，1 MB 的限制将适用于该模板的最终状态。
 
@@ -36,7 +37,7 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
 
 可以在执行期间提供参数值，以改变模板部署的结果。下面的 [Parameters](#parameters) 部分介绍了如何执行此操作。
 
-可以在 [Outputs](#outputs) 节中从部署返回值。
+可以在 [Outputs](#outputs) 节中返回部署的值。
 
 ## 模板格式
 
@@ -126,6 +127,8 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
 
 若要将某个参数指定为可选，请将其 defaultValue 指定为空字符串。
 
+如果你指定的参数名称与部署模板命令中的参数之一匹配（例如，在模板中包括名为 **ResourceGroupName** 的参数，这与 [New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/zh-cn/library/azure/mt679003.aspx) cmdlet 中的 **ResourceGroupName** 参数相同），系统将提示你为后缀为 **FromTemplate** 的参数（例如 **ResourceGroupNameFromTemplate**）提供值。通常，不应将参数命名为与用于部署操作的参数的名称相同以避免这种混乱。
+
 >[AZURE.NOTE] 所有密码、密钥和其他机密信息应使用 **secureString** 类型。部署资源后，无法读取使用 secureString 类型的模板参数。
 
 以下示例演示如何定义参数：
@@ -163,6 +166,8 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
           "minValue": 1
        }
     }
+
+有关如何在部署过程中输入参数值，请参阅[使用 Azure Resource Manager 模板部署应用程序](/documentation/articles/resource-group-template-deploy/#parameter-file)。
 
 ## 变量
 
@@ -214,8 +219,8 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
          }
        },
        "currentEnvironmentSettings": "[variables('environmentSettings')[parameters('environmentName')]]",
-       "instancesSize": "[variables('currentEnvironmentSettings').instancesSize",
-       "instancesCount": "[variables('currentEnvironmentSettings').instancesCount"
+       "instancesSize": "[variables('currentEnvironmentSettings').instancesSize]",
+       "instancesCount": "[variables('currentEnvironmentSettings').instancesCount]"
     }
 
 ## 资源
@@ -252,7 +257,7 @@ Azure 应用程序通常需要多种资源的组合（例如数据库服务器�
 | 注释 | 否 | 用于描述模板中资源的注释
 | dependsOn | 否 | 正在定义的资源所依赖的资源。将会评估资源之间的依赖关系，并按资源的依赖顺序来部署资源。如果资源不相互依赖，则会尝试并行部署资源。该值可以是资源名称或资源唯一标识符的逗号分隔列表。
 | properties | 否 | 特定于资源的配置设置。properties 的值与你在创建资源时，在 REST API 操作（PUT 方法）的请求正文中提供的值完全相同。有关资源架构文档或 REST API 的链接，请参阅[资源管理器提供程序、区域、API 版本和架构](resource-manager-supported-services.md)。
-| 资源 | 否 | 依赖于所定义的资源的子资源。只能提供父资源的架构允许的资源类型。子资源类型的完整名称包含父资源的名称，例如 **Microsoft.Web/sites/extensions**。对父资源的依赖性不是隐式的；你必须显式定义该依赖性。 
+| 资源 | 否 | 依赖于所定义的资源的子资源。只能提供父资源的架构允许的资源类型。子资源类型的完全限定名称包含父资源类型，例如 **Microsoft.Web/sites/extensions**。对父资源的依赖性不是隐式的；你必须显式定义该依赖性。 
 
 
 如果资源名称不是唯一的，你可以使用 **resourceId** 帮助器函数（下面将会介绍）获取任何资源的唯一标识符。
@@ -465,4 +470,4 @@ resources 节包含要部署的资源数组。在每个资源内，还可以定�
 - 有关部署应用程序的详细示例，请参阅[按可预见的方式在 Azure 中预配和部署微服务](app-service-web/app-service-deploy-complex-application-predictably.md)
 - 若要查看可用架构，请参阅 [Azure 资源管理器架构](https://github.com/Azure/azure-resource-manager-schemas)
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0405_2016-->

@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="推送通知入门 (Android JavaScript) | Azure"
+	pageTitle="推送通知入门 (Android JavaScript) | Microsoft Azure"
 	description="了解如何使用 Azure 移动服务向 Android JavaScript 应用程序发送推送通知。"
 	services="mobile-services, notification-hubs"
 	documentationCenter="android"
@@ -19,6 +19,11 @@
 
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
 
+&nbsp;
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对应的 Mobile Apps 版本，请参阅[向 Android 应用程序添加推送通知](/documentation/articles/app-service-mobile-android-get-started-push)。
+
 ## 摘要
 
 本主题说明如何使用 Azure 移动服务将推送通知发送到使用 Google Cloud Messaging（“GCM”）的 Android 应用程序。你将要向本教程必需的快速入门项目添加推送通知。推送通知是使用移动服务随附的 Azure 通知中心启用的。完成本教程后，每次插入一条记录时，你的移动服务就会发送一条推送通知。
@@ -28,7 +33,7 @@
 [AZURE.INCLUDE [mobile-services-android-prerequisites](../includes/mobile-services-android-prerequisites.md)]
 
 ## 代码示例
-若要查看完成的源代码，请转到[此处](https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithPush)。
+若要查看完整的源代码，请转到[此处](https://github.com/Azure/mobile-services-samples/tree/master/GettingStartedWithPush)。
 
 ## 启用 Google Cloud Messaging
 
@@ -82,7 +87,7 @@
 
 1. 在“运行”菜单项中，单击“运行应用程序”以启动应用程序。
 
-2. 在应用程序中键入有意义的文本（例如 _A new Mobile Services task_），然后单击“添加”按钮。
+2. 在应用程序中键入有意义的文本（例如 A new Mobile Services task），然后单击“添加”按钮。
 
   	![](./media/mobile-services-javascript-backend-android-get-started-push/mobile-quickstart-push1-android.png)
 
@@ -110,22 +115,27 @@
 
 通过以下主题了解有关移动服务和通知中心的详细信息：
 
-* [身份验证入门 ]<br/>了解如何通过移动服务对使用不同帐户类型的应用程序用户进行身份验证。
+* [身份验证入门 ]
+  <br/>了解如何通过移动服务对使用不同帐户类型的应用程序用户进行身份验证。
 
-* [什么是通知中心？] <br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
+* [什么是通知中心？]
+  <br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
 
-* [调试通知中心应用程序](http://go.microsoft.com/fwlink/p/?linkid=386630)</br>获取有关对通知中心解决方案进行故障排除和调试的指导。
+* [调试通知中心应用程序](http://go.microsoft.com/fwlink/p/?linkid=386630)
+  </br>获取有关对通知中心解决方案进行故障排除和调试的指导。
 
-* [如何使用适用于移动服务的 Android 客户端库 ]<br/>了解有关如何将移动服务与 Android 一起使用的详细信息。
+* [如何使用适用于移动服务的 Android 客户端库 ]
+  <br/>了解有关如何将移动服务与 Android 一起使用的详细信息。
 
-* [移动服务服务器脚本参考]<br/>了解有关如何在移动服务中实施业务逻辑的详细信息。
+* [移动服务服务器脚本参考]
+  <br/>了解有关如何在移动服务中实施业务逻辑的详细信息。
 
 
 <!-- Anchors. -->
 [Register your app for push notifications and configure Mobile Services]: #register
 [Update the generated push notification code]: #update-scripts
 [Insert data to receive notifications]: #test
-[Next Steps]:#next-steps
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 [13]: ./media/mobile-services-windows-store-javascript-get-started-push/mobile-quickstart-push1.png
@@ -146,11 +156,9 @@
 [如何使用适用于移动服务的 Android 客户端库 ]: /documentation/articles/mobile-services-android-how-to-use-client-library
 [gcm object]: http://go.microsoft.com/fwlink/p/?LinkId=282645
 
-[移动服务服务器脚本参考]: /documentation/articles/mobile-services-how-to-use-server-scripts
+[移动服务服务器脚本参考]: http://go.microsoft.com/fwlink/?LinkId=262293
+[什么是通知中心？]: ../notification-hubs-overview.md
+[Send broadcast notifications to subscribers]: ../notification-hubs-android-send-breaking-news.md
+[Send template-based notifications to subscribers]: ../notification-hubs-android-send-localized-breaking-news.md
 
-
-[什么是通知中心？]: /documentation/articles/notification-hubs-overview
-[Send broadcast notifications to subscribers]: /documentation/articles/notification-hubs-android-send-breaking-news
-[Send template-based notifications to subscribers]: /documentation/articles/notification-hubs-android-send-localized-breaking-news
-
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0405_2016-->
