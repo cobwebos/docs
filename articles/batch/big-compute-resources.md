@@ -42,7 +42,7 @@
 
 HPC Pack 是在 Microsoft Azure 和 Windows Server 技术基础之上构建的 Microsoft 免费 HPC 解决方案，它能够运行 Windows 和 Linux HPC 工作负荷。
 
-* [下载 HPC Pack 2012 R2 Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=49922)
+* [下载 HPC Pack 2012 R2 Update 3](https://www.microsoft.com/zh-cn/download/details.aspx?id=49922)
 
 * [文档](https://technet.microsoft.com/zh-cn/library/jj899572.aspx)
 

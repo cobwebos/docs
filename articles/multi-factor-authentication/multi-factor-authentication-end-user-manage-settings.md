@@ -29,7 +29,7 @@
 - [我找不到问题的解答](#i-didn't-find-an-answer-to-my-problem)
 
 ##相关性 ID 错误
-如果你已尝试过以下故障排除步骤，但仍遇到问题，请将问题发布到 [Azure AD 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)、[搜索 Microsoft 知识库 (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport) 或者[与支持人员联系](https://support.microsoft.com/en-us)，我们将尽快解答你的问题。
+如果你已尝试过以下故障排除步骤，但仍遇到问题，请将问题发布到 [Azure AD 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)、[搜索 Microsoft 知识库 (KB)](https://www.microsoft.com/zh-cn/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport) 或者[与支持人员联系](https://support.microsoft.com/zh-cn)，我们将尽快解答你的问题。
 
 与支持人员联系时，建议你包含以下信息：
 
@@ -166,7 +166,7 @@
 当你从设备上卸载应用或者在设备上刷机时，不会在后端删除激活信息。你应该使用[转移到新设备](multi-factor-authentication-azure-authenticator.md#how-to-move-to-the-new-azure-authenticator-app)中所述的步骤。
 
 ##我找不到问题的解答
-如果在此页面上找不到问题的解答，你可以将问题发布到 [Azure AD 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)、[搜索 Microsoft 知识库 (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport) 或[联系支持人员](https://support.microsoft.com/en-us)。
+如果在此页面上找不到问题的解答，你可以将问题发布到 [Azure AD 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)、[搜索 Microsoft 知识库 (KB)](https://www.microsoft.com/zh-cn/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport) 或[联系支持人员](https://support.microsoft.com/zh-cn)。
 
 此外，你可以联系管理员或为你设置多重身份验证的人员，看看他们是否可以提供帮助。
 

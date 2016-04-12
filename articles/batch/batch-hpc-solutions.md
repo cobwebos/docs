@@ -90,7 +90,7 @@ Azure 还为开发人员和合作伙伴提供一整套功能、体系结构选�
 
 下面是有关计算、数据、网络和相关服务的详细信息，你可以将它们组合用于大型计算解决方案和工作流。有关 Azure 服务的深入指导，请参阅 Azure 服务[文档](https://azure.microsoft.com/documentation/)。本文前面的[方案](#scenarios)仅显示了这些服务的部分使用方法。
 
->[AZURE.NOTE] Azure 会定期推出新的服务，这些服务可能适用于你的方案。如有疑问，请联系 [Azure 合作伙伴](https://pinpoint.microsoft.com/en-US/search?keyword=azure)或者向bigcompute@microsoft.com发送电子邮件。
+>[AZURE.NOTE] Azure 会定期推出新的服务，这些服务可能适用于你的方案。如有疑问，请联系 [Azure 合作伙伴](https://pinpoint.microsoft.com/zh-cn/search?keyword=azure)或者向bigcompute@microsoft.com发送电子邮件。
 
 ### 计算服务
 

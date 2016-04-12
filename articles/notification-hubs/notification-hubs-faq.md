@@ -193,7 +193,7 @@ Azure 通知中心支持在 [Azure 经典门户]中查看遥测数据。你可�
 [注册信息导出/导入]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.cn
 [完整的示例]: https://github.com/Azure/azure-notificationhubs-samples
-[Azure Mobile Apps]: https://azure.microsoft.com/en-us/services/app-service/mobile/
-[App Service 定价]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[Azure Mobile Apps]: https://azure.microsoft.com/zh-cn/services/app-service/mobile/
+[App Service 定价]: https://azure.microsoft.com/zh-cn/pricing/details/app-service/
 
 <!---HONumber=Mooncake_0405_2016-->

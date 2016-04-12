@@ -92,7 +92,7 @@
 
 可以通过两种方法来提供备份流量的路径：
 
-1. 将 [Azure 数据中心 IP 范围](http://www.microsoft.com/en-us/download/details.aspx?id=41653)加入允许列表。
+1. 将 [Azure 数据中心 IP 范围](http://www.microsoft.com/zh-cn/download/details.aspx?id=41653)加入允许列表。
 2. 部署 HTTP 代理以路由流量。
 
 需要在可管理性、精细控制和成本之间进行平衡。

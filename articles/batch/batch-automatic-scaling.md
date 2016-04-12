@@ -722,7 +722,7 @@ string formula = string.Format(@"
 
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_autoscaleformula]: https://msdn.microsoft.com/library/azure/dn820173.aspx
-[rest_autoscaleinterval]: https://msdn.microsoft.com/en-us/library/azure/dn820173.aspx
+[rest_autoscaleinterval]: https://msdn.microsoft.com/zh-cn/library/azure/dn820173.aspx
 [rest_enableautoscale]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 
 <!---HONumber=Mooncake_0405_2016-->
