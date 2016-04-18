@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="11/16/2015"
+	ms.date="03/16/2016"
 	wacn.date=""/>
 
 
@@ -68,7 +68,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 **密码过期策略**
 
-如果用户属于密码同步的范围，云帐户密码则设置为“永不过期”。这意味着用户的密码可能在本地环境中过期，但他们可以使用这个过期的密码继续登录到云服务。
+如果用户属于密码同步的范围，云帐户密码则设置为“永不过期”。这意味着用户的密码可能在本地环境中过期，但在下一个密码同步周期内，他们可以使用新密码继续登录到云服务。
 
 云密码将在下次用户在本地环境中更改密码时更新。
 
@@ -89,7 +89,7 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 如果在安装 Azure AD Connect 时使用了快速设置，则已按默认启用密码同步。
 
 如果在安装 Azure AD Connect 时使用了自定义设置，则必须在用户登录页上启用密码同步。
-![usersignin](./media/active-directory-aadsync-implement-password-synchronization/usersignin.png)
+![usersignin](./media/active-directory-aadconnectsync-implement-password-synchronization/usersignin.png)
 
 如果选择使用“使用 AD FS 进行联合身份验证”，则可以选择性地启用密码同步作为在 AD FS 基础结构发生故障时的备用身份验证方式。如果你打算使用 Azure AD 域服务，也可以启用密码同步。
 
@@ -115,13 +115,17 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 启动“同步服务管理器”，打开“连接器”，选择用户所在的 Active Directory 连接器，选择“搜索连接器空间”，然后找到你要查找的用户。
 
-![csuser](./media/active-directory-aadsync-implement-password-synchronization/cspasswordsync.png)
+![csuser](./media/active-directory-aadconnectsync-implement-password-synchronization/cspasswordsync.png)
 
 在“用户”上，选择“沿袭”选项卡，并确保至少有一个同步规则的“密码同步”显示为 **True**。使用默认配置时，这是名为 **In from AD - User AccountEnabled** 的同步规则。
 
+此外，你应该在 Azure AD 连接器空间中通过 Metaverse [跟踪用户](active-directory-aadconnectsync-service-manager-ui-connectors.md#follow-an-object-and-its-data-through-the-system)，并确保同样存在一个“密码同步”设置为 **True** 的出站规则。在默认配置中，这是名为 **Out to AAD - User Join** 的同步规则。
+
+![csuser2](./media/active-directory-aadconnectsync-implement-password-synchronization/cspasswordsync2.png)
+
 若要查看对象的密码同步详细信息，请单击此页面底部的“日志...”按钮。这会在此页面中显示过去一周用户的密码同步状态的历史视图。
 
-![对象日志](./media/active-directory-aadsync-implement-password-synchronization/csobjectlog.png)
+![对象日志](./media/active-directory-aadconnectsync-implement-password-synchronization/csobjectlog.png)
 
 状态列可能包含以下值，其中也会指出问题以及为何未同步密码。
 
@@ -158,4 +162,5 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 * [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis)
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=Mooncake_0215_2016-->
+
+<!---HONumber=Mooncake_0411_2016-->

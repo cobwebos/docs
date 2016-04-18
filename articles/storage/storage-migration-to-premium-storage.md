@@ -8,8 +8,8 @@
     editor=""/>
 
 <tags 
-    ms.service="storage" 
-    ms.date="12/04/2015"
+    ms.service="storage"
+    ms.date="02/19/2016"
     wacn.date=""/>
 
 
@@ -23,7 +23,7 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
 >[AZURE.NOTE] 建议将任何需要高 IOPS 的虚拟机磁盘迁移到 Azure 高级存储，以便你的应用程序实现最佳性能。如果你的磁盘不需要高 IOPS，你可以通过在标准存储（将虚拟机磁盘数据存储在硬盘驱动器 (HDD) 上而不是 SSD 上）中对其进行维护来限制成本。
 
-本指南旨在帮助 Microsoft Azure 高级存储的新用户更好地准备从当前系统到高级存储的平稳转换。本指南讨论了此过程中的三个关键组件：规划迁移到高级存储、将现有虚拟硬盘 (VHD) 迁移到高级存储，以及在高级存储中创建 Azure 虚拟机实例。
+本指南旨在帮助 Azure 高级存储的新用户更好地准备从当前系统到高级存储的平稳转换。本指南讨论了此过程中的三个关键组件：规划迁移到高级存储、将现有虚拟硬盘 (VHD) 迁移到高级存储，以及在高级存储中创建 Azure 虚拟机实例。
 
 完成整个迁移过程可能需要在执行本指南中提供的步骤前后执行其他操作。示例包括配置虚拟网络或终结点，或在应用程序本身中进行代码更改。这些操作对于每个应用程序都是唯一的，你应该随本指南中提供的步骤一起来完成这些操作，以便尽可能无缝地进行到高级存储的完全转换。
 
@@ -31,7 +31,7 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
 本指南分为两个部分，介绍了以下两种迁移方案：
 
-- [从 Azure 外部将 VM 迁移到 Azure 高级存储](#migrating-vms-from-outside-azure-to-azure-premium-storage)。
+- [从其他平台将 VM 迁移到 Azure 高级存储](#migrating-vms-from-other-platforms-to-azure-premium-storage)。
 - [将现有 Azure VM 迁移到 Azure 高级存储](#migrating-existing-azure-vms-to-azure-premium-storage)。
 
 根据你的方案，执行相关部分中指定的步骤。
@@ -40,8 +40,8 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
 ### 先决条件
 - 你将需要 Azure 订阅。如果你没有，则可以创建一个月的[试用](/pricing/1rmb-trial/)订阅或访问 [Azure 定价](/pricing/)以获得更多选项。
-- 若要执行 PowerShell cmdlet，你将需要 Microsoft Azure PowerShell 模块。请参阅 [Microsoft Azure 下载](/downloads/)以下载该模块。
-- 当你计划使用在高级存储上运行的 Azure VM 时，你需要使用 DS 系列或 GS 系列 VM。你可以将标准和高级存储磁盘用于 DS 系列 VM。在将来更多 VM 类型将提供高级存储磁盘。有关所有可用 Azure VM 磁盘类型和大小的详细信息，请参阅 [Azure 的虚拟机和云服务大小](https://msdn.microsoft.com/zh-CN/library/azure/dn197896.aspx)。
+- 若要执行 PowerShell cmdlet，你将需要 Microsoft Azure PowerShell 模块。若要下载该模块，请参阅 [Microsoft Azure 下载](/downloads/)。
+- 当你计划使用在高级存储上运行的 Azure VM 时，你需要使用 DS 系列或 GS 系列 VM。你可以将标准和高级存储磁盘用于 DS 系列 VM。在将来更多 VM 类型将提供高级存储磁盘。有关所有可用 Azure VM 磁盘类型和大小的详细信息，请参阅[虚拟机大小](/documentation/articles/virtual-machines-size-specs)和[云服务大小](/documentation/articles/cloud-services-sizes-specs)。
 
 ### 注意事项
 
@@ -66,7 +66,7 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 |:--|:---|
 |磁盘容量：35 TB<br />快照容量：10 TB|入站 + 出站最高每秒 50 Gbps|
 
-有关高级存储规范的详细信息，请查看[使用高级存储时的可伸缩性和性能目标](/documentation/articles/storage-premium-storage-preview-portal#scalability-and-performance-targets-when-using-premium-storage)。
+有关高级存储规范的详细信息，请查看[使用高级存储时的可伸缩性和性能目标](/documentation/articles/storage-premium-storage#scalability-and-performance-targets-when-using-premium-storage)。
 
 #### 附加数据磁盘
 根据你的工作负荷，确定你的 VM 是否需要附加数据磁盘。你可以将多个持久性数据磁盘附加到你的 VM。如有需要，可以跨磁盘条带化，以增加卷的容量与性能。如果你使用[存储空间](https://technet.microsoft.com/zh-CN/library/hh831739.aspx)来条带化高级存储数据磁盘，应该以使用的每个磁盘一个列的方式来配置它。否则，条带化卷的整体性能可能会低于预期，因为磁盘之间的通信分配不平均。对于 Linux VM，你可以使用 mdadm 实用工具来实现同一目的。有关详细信息，请参阅文章[在 Linux 上配置软件 RAID](/documentation/articles/virtual-machines-linux-configure-raid)。
@@ -75,7 +75,7 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 默认情况下，所有高级数据磁盘的磁盘缓存策略都是“只读的”，所有附加到 VM 的高级操作系统都是“读写的”。为使应用程序的 IO 达到最佳性能，建议使用此配置设置。对于频繁写入或只写的磁盘（例如 SQL Server 日志文件），禁用磁盘缓存可获得更佳的应用程序性能。可以使用[管理门户](https://manage.windowsazure.cn)或 *Set-AzureDataDisk* cmdlet 的 *-HostCaching* 参数更新现有数据磁盘的缓存设置。
 
 #### 位置
-选择 Azure 高级存储可用的位置。有关可用位置的最新信息，请参阅[需要了解的有关高级存储的重要事项](/documentation/articles/storage-premium-storage-preview-portal#important-things-to-know-about-premium-storage)。与存储 VM 的磁盘的存储帐户位于同一区域中的 VM 与它们在单独的区域中时相比，将提供更优异的性能。
+选择 Azure 高级存储可用的位置。与存储 VM 的磁盘的存储帐户位于同一区域中的 VM 与它们在单独的区域中时相比，将提供更优异的性能。
 
 #### 其他 Azure VM 配置设置
 
@@ -95,11 +95,11 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
 - Azure 订阅、存储帐户以及你将在其中复制 VHD 的存储帐户中的容器。请注意，目标存储帐户可以是标准或高级存储帐户，具体取决于你的需求。
 - 用于通用化 VHD 的工具（如果你计划从中创建多个 VM 实例）。例如，sysprep for Windows 或 virt-sysprep for Ubuntu。
-- 用于将 VHD 文件上载到存储帐户的工具。例如，[AzCopy](/documentation/articles/storage-use-azcopy) 或 [Azure 存储资源管理器](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)。本指南介绍使用 AzCopy 工具复制 VHD 的步骤。 
+- 用于将 VHD 文件上载到存储帐户的工具。请参阅[使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)或者使用 [Azure 存储资源管理器](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)。本指南介绍使用 AzCopy 工具复制 VHD 的步骤。 
 
 > [AZURE.NOTE] 为了获得最佳性能，请从与目标存储帐户位于同一区域的 Azure VM 运行上述工具之一。如果从其他区域中的 Azure VM 复制 VHD，性能可能会下降。
 >
-> 若要在带宽有限的情况下复制大量数据，可以考虑将硬盘驱动器运送到 Azure 数据中心，以便使用 [Microsoft Azure 导入/导出服务](/documentation/articles/storage-import-export-service)来传输数据。使用 Azure 导入/导出服务可以仅将数据复制到标准存储帐户。当数据传入标准存储帐户后，可以使用[复制 Blob API](https://msdn.microsoft.com/zh-cn/library/azure/dd894037.aspx) 或 AzCopy 将数据传输到高级存储帐户。
+> 若要在带宽有限的情况下复制大量数据，可以考虑将硬盘驱动器传送到 Azure 数据中心，以便使用 Azure 导入/导出服务来传输数据。使用 Azure 导入/导出服务可以仅将数据复制到标准存储帐户。当数据传入标准存储帐户后，可以使用[复制 Blob API](https://msdn.microsoft.com/zh-cn/library/azure/dd894037.aspx) 或 AzCopy 将数据传输到高级存储帐户。
 >
 > 请注意，Microsoft Azure 仅支持固定大小的 VHD 文件。不支持 VHDX 文件或动态 VHD。如果你有动态 VHD，可以使用 [Convert-VHD](http://technet.microsoft.com/zh-cn/library/hh848454.aspx) cmdlet 将其转换为固定大小。
 
@@ -111,7 +111,7 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
 如果你要上载将用于创建多个泛型 Azure 虚拟机实例的 VHD，必须先使用 sysprep 实用工具通用化 VHD。这适用于本地或云中的 VHD。Sysprep 将从 VHD 中删除任何计算机特定的信息。
 
->[AZURE.IMPORTANT] 通用化 VM 之前，请先创建其快照或进行备份。运行 sysprep 会删除 VM 实例。按照以下步骤对 Windows OS VHD 运行 sysprep 命令。请注意，运行 Sysprep 命令时将要求你关闭虚拟机。有关 Sysprep 的详细信息，请参阅 [Sysprep 概述](http://technet.microsoft.com/zh-cn/library/hh825209.aspx)或 [Sysprep 技术参考](http://technet.microsoft.com/zh-cn/library/cc766049(v=ws.10).aspx)。
+>[AZURE.IMPORTANT] 通用化 VM 之前，请先创建其快照或进行备份。运行 sysprep 会删除 VM 实例。按照以下步骤对 Windows OS VHD 运行 sysprep 命令。请注意，运行 Sysprep 命令时将要求你关闭虚拟机。有关 Sysprep 的详细信息，请参阅 [Sysprep 概述](http://technet.microsoft.com/zh-cn/library/hh825209.aspx)或 [Sysprep 技术参考](http://technet.microsoft.com/zh-cn/library/cc766049.aspx)。
 
 1. 以管理员身份打开“命令提示符”窗口。
 2. 输入以下命令打开 Sysprep：
@@ -193,7 +193,7 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
  - **/BlobType: page：**指定目标是页 Blob。
  - **/Pattern: *&lt;file-name&gt;：***指定要复制的 VHD 文件名。
 
-有关使用 AzCopy 工具的详细信息，请参阅 [AzCopy 命令行实用工具入门](/documentation/articles/storage-use-azcopy)。
+有关使用 AzCopy 工具的详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)。
 
 ### 使用 PowerShell 复制 VHD
 还可以使用 PowerShell cmdlet Start-AzureStorageBlobCopy 复制 VHD 文件。在 Azure PowerShell 上使用以下命令复制 VHD。将 <> 中的值替换为你的源和目标存储帐户中的相应值。若要使用此命令，必须在目标存储帐户中有名为 vhds 的容器。如果该容器不存在，则应在运行此命令之前创建一个。
@@ -208,9 +208,9 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 你也可以使用以下方法之一将 VHD 上载到你的存储帐户：
 
 - [Azure 存储复制 Blob API](https://msdn.microsoft.com/zh-CN/library/azure/dd894037.aspx)
-- [Azure 导入/导出服务](https://msdn.microsoft.com/zh-CN/library/dn529096.aspx)
+- [存储导入/导出服务 REST API 参考](https://msdn.microsoft.com/zh-CN/library/dn529096.aspx)
 
->[AZURE.NOTE]导入/导出可用于只复制到标准存储帐户。你将需要使用 AzCopy 等工具从标准存储复制到高级存储帐户。
+>[AZURE.NOTE] 导入/导出可用于只复制到标准存储帐户。你将需要使用 AzCopy 等工具从标准存储复制到高级存储帐户。
 
 ## 使用高级存储创建 Azure VM
 
@@ -226,7 +226,7 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
 	Add-AzureVMImage -ImageName "OSImageName" -MediaLocation "https://storageaccount.blob.core.chinacloudapi.cn/vhdcontainer/osimage.vhd" -OS Windows
 
-复制并保存这个新的 Azure VM 映像的名称。在上面的示例中，它是 *OSImageName* 。
+复制并保存这个新的 Azure VM 映像的名称。在上面的示例中，它是 *OSImageName*。
 
 #### 用于创建单个 Azure VM 实例的唯一操作系统 VHD
 
@@ -296,7 +296,7 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
 最后，如果你已注册数据磁盘 VHD，请将它们附加到新的 DS 系列或 GS 系列 Azure VM。
 
-使用以下 PowerShell cmdlet 将数据磁盘附加到新的 VM，并指定缓存策略。在以下示例中，缓存策略设为 *ReadOnly* 。
+使用以下 PowerShell cmdlet 将数据磁盘附加到新的 VM，并指定缓存策略。在以下示例中，缓存策略设为 *ReadOnly*。
 
 	$vm = Get-AzureVM -ServiceName $serviceName -Name $vmName
 
@@ -308,12 +308,15 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
 ## 将现有 Azure VM 迁移到 Azure 高级存储
 
-如果你当前有使用标准存储磁盘的 Azure VM，请按照下述过程将该 Azure VM 迁移到高级存储。概括来讲，迁移涉及两个阶段：- 将磁盘从标准存储帐户迁移到高级存储帐户 - 将 A/D/G 的 VM 大小转换为使用高级存储磁盘所需的 DS 或 GS。
+如果你当前有使用标准存储磁盘的 Azure VM，请按照下述过程将该 Azure VM 迁移到高级存储。位于高层次的迁移包括两个阶段：
+-	将磁盘从标准存储帐户迁移到高级存储帐户
+-	将 VM 大小从 A/D/G 转换为使用高级存储磁盘所需的 DS 或 GS。
 
 此外，请参阅上一节有关注意事项的内容以了解可以对高级存储执行的各种优化。根据适用于你的应用程序的优化，迁移过程可能归入以下迁移方案之一。
 
 ### 简单迁移
-在此简单方案中，你希望在从标准存储迁移到高级存储时按原样保留你的配置。此处你按原样移动每个磁盘，然后同样转换 VM。此方案的优点是迁移轻松；缺点是生成的配置可能未针对最大限度地降低成本进行优化。
+在此简单方案中，你希望在从标准存储迁移到高级存储时按原样保留你的配置。此处你按原样移动每个磁盘，然后同样转换 VM。
+此方案的优点是迁移轻松；缺点是生成的配置可能未针对最大限度地降低成本进行优化。
 
 #### 准备工作
 1. 确保高级存储在你要迁移到的区域中可用。
@@ -333,10 +336,12 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 3.	验证复制是否完成。等待，直到所有磁盘均已复制。复制所有磁盘后，你便可以继续执行后续步骤，以创建新的 VM。
 4.	使用你在高级存储帐户中复制的 OS 磁盘 VHD blob 创建新的 OS 磁盘。可以使用“Add-AzureDisk”PowerShell cmdlet 来执行此操作。
 
-    示例脚本：Add-AzureDisk -DiskName "NewOSDisk1" -MediaLocation "https://newpremiumstorageaccount.blob.core.chinacloudapi.cn/vhds/MyOSDisk.vhd" -OS "Windows"
+    示例脚本：
+          Add-AzureDisk -DiskName "NewOSDisk1" -MediaLocation "https://newpremiumstorageaccount.blob.core.chinacloudapi.cn/vhds/MyOSDisk.vhd" -OS "Windows"
 5. 接下来，使用上面的 OS 磁盘和数据磁盘创建 DS 系列 VM（或 GS 系列）。
 
-    用于创建新的云服务并在该服务中创建新 VM 的脚本示例：New-AzureService -ServiceName “NewServiceName” -Location “中国东部"
+    用于创建新的云服务并在该服务中创建新 VM 的脚本示例：
+        New-AzureService -ServiceName “NewServiceName” -Location “中国东部"
 
         New-AzureVMConfig -Name "NewDSVMName" -InstanceSize "Standard_DS2" -DiskName "NewOSDisk1" | Add-AzureProvisioningConfig -Windows | Add-AzureDataDisk -LUN 0 -DiskLabel "DataDisk1" -ImportFrom -MediaLocation "https://newpremiumstorageaccount.blob.core.chinacloudapi.cn/vhds/Disk1.vhd" | Add-AzureDataDisk -LUN 1 -DiskLabel "DataDisk2" -ImportFrom -MediaLocation https://newpremiumstorageaccount.blob.core.chinacloudapi.cn/vhds/Disk2.vhd | New-AzureVM -ServiceName "NewServiceName" –Location “China East”
 
@@ -371,8 +376,8 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
     .Link
     To find more information about how to set up Azure PowerShell, refer to the following links.
-    http://windowsazure.cn/documentation/articles/powershell-install-configure/
-    http://windowsazure.cn/documentation/articles/storage-powershell-guide-full/
+    https://www.azure.cn/documentation/articles/powershell-install-configure/
+    https://www.azure.cn/documentation/articles/storage-powershell-guide-full/
     http://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/
 
     #>
@@ -462,7 +467,7 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
     }
     else
     {
-        Write-Host "[ERROR] - There is no valid azure subscription found in PowerShell. Please refer to this article http://windowsazure.cn/documentation/articles/powershell-install-configure/ to connect an azure subscription. Exiting." -ForegroundColor Red
+        Write-Host "[ERROR] - There is no valid azure subscription found in PowerShell. Please refer to this article https://www.azure.cn/documentation/articles/powershell-install-configure/ to connect an azure subscription. Exiting." -ForegroundColor Red
         Exit
     }
 
@@ -639,7 +644,8 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
     New-AzureVM -ServiceName $DestServiceName -VMs $vm -Location $Location
 
 ### 优化
-可以对当前 VM 配置进行专门自定义，使其很好地适用于标准磁盘。例如，通过使用带区卷中的多个磁盘来提高性能。由于高级存储磁盘提供更好的性能，因此你将能够通过减少磁盘数量来优化成本。例如，你的应用程序可能需要具有 2000 IOPS 的卷，因此你可能要使用 4 个标准存储磁盘带区集以获取 4 x 500 = 2000 IOPS。使用高级存储磁盘，单个 512 GB 的磁盘将能够提供 2300 IOPS。因此，不用在高级存储上单独使用 4 个磁盘，你可能可以通过使用单个磁盘来优化成本。此类优化需要根据具体情况进行处理，并且需要在迁移后执行自定义步骤。另请注意，此过程可能并不适用于依赖设置中定义的磁盘布局的数据库和应用程序。
+可以对当前 VM 配置进行专门自定义，使其很好地适用于标准磁盘。例如，通过使用带区卷中的多个磁盘来提高性能。由于高级存储磁盘提供更好的性能，因此你将能够通过减少磁盘数量来优化成本。例如，你的应用程序可能需要具有 2000 IOPS 的卷，因此你可能要使用 4 个标准存储磁盘带区集以获取 4 x 500 = 2000 IOPS。使用高级存储磁盘，单个 512 GB 的磁盘将能够提供 2300 IOPS。因此，不用在高级存储上单独使用 4 个磁盘，你可能可以通过使用单个磁盘来优化成本。
+此类优化需要根据具体情况进行处理，并且需要在迁移后执行自定义步骤。另请注意，此过程可能并不适用于依赖设置中定义的磁盘布局的数据库和应用程序。
 
 #### 准备工作
 1.	按前面部分中所述完成简单迁移。在迁移后将在新的 VM 上执行优化。
@@ -658,7 +664,7 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
 有关虚拟机迁移的特定方案，请参阅以下资源：
 
-- [在存储帐户之间迁移 Azure 虚拟机](http://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
+- [在存储帐户之间迁移 Azure 虚拟机](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
 - [创建 Windows Server VHD 并将其上载到 Azure。](/documentation/articles/virtual-machines-create-upload-vhd-windows-server)  
 - [创建并上载包含 Linux 操作系统的虚拟硬盘](/documentation/articles/virtual-machines-linux-create-upload-vhd)  
 - [将虚拟机从 Amazon AWS 迁移到 Microsoft Azure](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)  
@@ -667,10 +673,10 @@ Azure VM 支持附加多个高级存储磁盘，使你的应用程序可以具�
 
 - [Azure 存储空间](/documentation/services/storage/)   
 - [Azure 虚拟机](/documentation/services/virtual-machines/)  
-- [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](/documentation/articles/storage-premium-storage-preview-portal)  
+- [高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](/documentation/articles/storage-premium-storage)  
 
 [1]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-2.png
 [3]: ./media/storage-migration-to-premium-storage/migration-to-premium-storage-3.png
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0411_2016-->

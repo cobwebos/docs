@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="12/16/2015"
+	ms.date="02/17/2016"
 	wacn.date=""/>
 
 
@@ -27,7 +27,7 @@
 
 ## 创建 Ruby 应用程序
 
-有关如何创建 Ruby 应用程序的说明，请参阅[在 Azure 中创建 Ruby 应用程序](/documentation/articles/virtual-machines-ruby-rails-web-app-linux)。
+有关如何创建 Ruby 应用程序的说明，请参阅 [Azure VM 上的 Ruby on Rails Web 应用程序](/documentation/articles/virtual-machines-ruby-rails-web-app-linux)。
 
 ## 配置应用程序以访问存储
 
@@ -52,15 +52,21 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 	Azure.config.storage_account_name = "<your azure storage account>"
 	Azure.config.storage_access_key = "<your azure storage access key>"
 
-获取这些值：
+从 Azure 门户中的经典或 ARM 存储帐户中获取这些值：
 
-1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn/)。
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
+2. 导航到要使用的存储帐户。
+3. 在右侧的“设置”边栏选项卡中，单击“访问密钥”。
+4. 在出现的“访问密钥”边栏选项卡中，将看到访问密钥 1 和访问密钥 2。你可以使用其中任意一个。 
+5. 单击复制图标以将键复制到剪贴板。 
 
-2. 导航到你的存储帐户。
+从经典门户中的经典存储帐户中获取这些值：
 
-3. 单击导航窗格底部的“管理密钥”。
-
-4. 在弹出对话框中，将会看到存储帐户名称、主访问密钥和辅助访问密钥。对于访问密钥，你可以使用主访问密钥，也可以使用辅助访问密钥。
+1. 登录到[经典门户](https://manage.windowsazure.cn)。
+2. 导航到要使用的存储帐户。
+3. 单击导航窗格底部的“管理访问密钥”。
+4. 在弹出对话框中，将会看到存储帐户名称、主访问密钥和辅助访问密钥。对于访问密钥，您可以使用主访问密钥，也可以使用辅助访问密钥。 
+5. 单击复制图标以将键复制到剪贴板。
 
 ## 创建表
 
@@ -124,7 +130,7 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 	query = { :filter => "PartitionKey eq 'test-partition-key'" }
 	result, token = azure_table_service.query_entities("testtable", query)
 
-> [AZURE.NOTE]如果结果集太大，一个查询无法全部返回，将会返回一个继续标记，你可以使用该标记检索后续页面。
+> [AZURE.NOTE] 如果结果集太大，一个查询无法全部返回，将会返回一个继续标记，你可以使用该标记检索后续页面。
 
 ## 查询一部分实体属性
 
@@ -153,4 +159,4 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 - [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub 上的 [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 
-<!----HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0411_2016-->

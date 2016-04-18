@@ -15,11 +15,13 @@
 
 # 如何使用适用于移动服务的 Android 客户端库
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
-
-&nbsp;
 [AZURE.INCLUDE [mobile-services-selector-client-library](../includes/mobile-services-selector-client-library.md)]
 
+&nbsp;
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对应的 Mobile Apps 版本，请参阅[如何将 Android 客户端库用于 Mobile Apps](/documentation/articles/app-service-mobile-android-how-to-use-client-library)。
+ 
 本指南说明如何使用适用于 Azure 移动服务的 Android 客户端执行常见任务。所述的任务包括：查询数据；插入、更新和删除数据；对用户进行身份验证；处理错误；自定义客户端。
 
 如果你移动服务的新手，应该先完成[移动服务入门]教程。成功完成该教程可确保你会安装 Android Studio；该软件可帮助你配置帐户并创建第一个移动服务，安装支持 Android 2.2 或更高版本的移动服务 SDK，但我们建议你针对 Android 4.2 或更高版本进行生成。
@@ -30,7 +32,7 @@
 
 ##<a name="setup"></a>安装与先决条件
 
-假设你已创建一个移动服务和一个表。有关详细信息，请参阅[创建表](https://msdn.microsoft.com/zh-cn/library/azure/jj193162.aspx)。在本主题使用的代码中，我们假设表的名称为 *ToDoItem*，其中包含以下列：
+假设你已创建一个移动服务和一个表。有关详细信息，请参阅[创建表](http://go.microsoft.com/fwlink/p/?LinkId=298592)。在本主题使用的代码中，我们假设表的名称为 *ToDoItem*，其中包含以下列：
 
 - ID
 - text
@@ -58,7 +60,7 @@
 
 ##<a name="instantiating"></a>如何创建表引用
 
-在移动服务中查询或修改数据的最简单方法就是使用类型化编程模型，因为 Java 是强类型化语言（稍后我们将会介绍非类型化模型）。在客户端和移动服务之间发送数据时，此模型使用 [gson](http://go.microsoft.com/fwlink/p/?LinkId=290801) 库提供对 JSON 的无缝序列化和反序列化：开发人员无需执行任何操作，该框架将处理一切。
+在移动服务中查询或修改数据的最简单方法就是使用“类型化编程模型”，因为 Java 是强类型化语言（稍后我们将会介绍“非类型化”模型）。在客户端和移动服务之间发送数据时，此模型使用 [gson](http://go.microsoft.com/fwlink/p/?LinkId=290801) 库提供对 JSON 的无缝序列化和反序列化：开发人员无需执行任何操作，该框架将处理一切。
 
 查询或修改数据所要执行的第一项操作就是通过对 [**MobileServiceClient**](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html) 调用 **getTable** 方法来创建一个 [MobileServiceTable](http://go.microsoft.com/fwlink/p/?LinkId=296835) 对象。下面是此方法的两个重载：
 
@@ -147,7 +149,7 @@
 
 执行这些操作便足以将数字和字符串字段与特定值进行比较。不过，你还可以执行其他许多操作。
 
-例如，你可以按日期筛选。你可以比较整个日期字段，或者使用 [**year**](http://go.microsoft.com/fwlink/p/?LinkId=298467)、[**month**](http://go.microsoft.com/fwlink/p/?LinkId=298468)、[**day**](http://go.microsoft.com/fwlink/p/?LinkId=298469)、[**hour**](http://go.microsoft.com/fwlink/p/?LinkId=298470)、[**minute**](http://go.microsoft.com/fwlink/p/?LinkId=298471) 和 [**second**](http://go.microsoft.com/fwlink/p/?LinkId=298472) 等方法比较日期的一部分。以下代码片段将会针对 *截止日期* 等于 2013 的项添加一个筛选器。
+例如，你可以按日期筛选。你可以比较整个日期字段，或者使用 [**year**](http://go.microsoft.com/fwlink/p/?LinkId=298467)、[**month**](http://go.microsoft.com/fwlink/p/?LinkId=298468)、[**day**](http://go.microsoft.com/fwlink/p/?LinkId=298469)、[**hour**](http://go.microsoft.com/fwlink/p/?LinkId=298470)、[**minute**](http://go.microsoft.com/fwlink/p/?LinkId=298471) 和 [**second**](http://go.microsoft.com/fwlink/p/?LinkId=298472) 等方法比较日期的一部分。以下代码片段将会针对“截止日期”等于 2013 的项添加一个筛选器。
 
 		mToDoTable.where().year("due").eq(2013).execute().get();
 
@@ -659,7 +661,7 @@
 
 移动服务支持使用各种外部标识提供者对应用用户进行身份验证和授权，这些提供者包括：Microsoft 帐户和 Azure Active Directory。你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。你还可以在后端中使用已经过身份验证的用户的标识来实施授权规则。有关详细信息，请参阅[身份验证入门](/documentation/articles/mobile-services-android-get-started-users/)。
 
-支持两种身份验证流:服务器流和客户端流。服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。客户端流依赖于提供者和设备特定的 SDK，因此允许与设备特定的功能（例如单一登录）进行更深入的集成。
+支持两种身份验证流: “服务器”流和“客户端”流。服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。客户端流依赖于提供者和设备特定的 SDK，因此允许与设备特定的功能（例如单一登录）进行更深入的集成。
 
 在应用程序中启用身份验证需要执行以下三个步骤：
 
@@ -783,7 +785,7 @@
 	}
 
 
-如果令牌过期会发生什么情况呢？ 在这种情况下，如果你尝试使用它来建立连接，将会收到401 未授权响应。此时，用户必须登录以获取新令牌。使用筛选器可以截获对移动服务的调用以及来自移动服务的响应，因此不需要在应用程序中调用移动服务的每个位置编写代码来处理这种情况。此时，筛选器代码将测试 401 响应，根据需要触发登录进程，然后恢复生成 401 响应的请求。
+如果令牌过期会发生什么情况呢？ 在这种情况下，如果你尝试使用它来建立连接，将会收到“401 未授权”响应。此时，用户必须登录以获取新令牌。使用筛选器可以截获对移动服务的调用以及来自移动服务的响应，因此不需要在应用程序中调用移动服务的每个位置编写代码来处理这种情况。此时，筛选器代码将测试 401 响应，根据需要触发登录进程，然后恢复生成 401 响应的请求。
 
 
 ##<a name="customizing"></a>如何自定义客户端
@@ -933,4 +935,4 @@
 [移动服务快速入门]: /documentation/articles/mobile-services-android-get-started
 [ASCII 控制代码 C0 和 C1]: http://zh.wikipedia.org/wiki/Data_link_escape_character#C1_set
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0411_2016-->

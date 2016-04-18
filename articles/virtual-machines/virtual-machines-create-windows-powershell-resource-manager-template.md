@@ -1,6 +1,8 @@
+<!-- not suitable for Mooncake -->
+
 <properties
-	pageTitle="使用模板创建 VM | Microsoft Azure"
-	description="将资源管理器模板与 Azure PowerShell 或 Azure CLI 配合使用，以轻松创建新的 Windows 虚拟机。"
+	pageTitle="使用模板创建 VM | Azure"
+	description="将 Resource Manager 模板与 PowerShell 配合使用，以轻松创建新的 Windows 虚拟机。"
 	services="virtual-machines"
 	documentationCenter=""
 	authors="davidmu1"
@@ -10,10 +12,21 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="10/08/2015"
+	ms.date="01/07/2016"
 	wacn.date=""/>
 
 # 使用资源管理器模板创建 Windows 虚拟机
+
+> [AZURE.SELECTOR]
+- [门户 - Windows](/documentation/articles/virtual-machines-windows-tutorial-classic-portal)
+- [PowerShell](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-resource-manager-vms)
+- [PowerShell - 模板](/documentation/articles/virtual-machines-create-windows-powershell-resource-manager-template)
+- [门户 - Linux](/documentation/articles/virtual-machines-linux-tutorial-portal-rm)
+- [CLI](/documentation/articles/virtual-machines-linux-tutorial)
+
+<br>
+
+
 
 [AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。你无法使用经典部署模型创建此资源。
 
@@ -216,7 +229,7 @@
 	$RGName="<resource group name>"
 	$locName="<Azure location, such as China North>"
 	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
-	New-AzureRmResourceGroup –Name $RGName –Location $locName
+	New-AzureRmResourceGroup -Name $RGName -Location $locName
 	New-AzureRmResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
 当你运行 **New-AzureRmResourceGroupDeployment** 命令时，系统会提示你提供 JSON 文件的“parameters”节中的参数值。指定所有参数值后，命令会创建资源组和虚拟机。
@@ -227,7 +240,7 @@
 	$RGName="TestRG"
 	$locname="China North"
 	$templateURI="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-windows-vm/azuredeploy.json"
-	New-AzureRmResourceGroup –Name $RGName –Location $locName
+	New-AzureRmResourceGroup -Name $RGName -Location $locName
 	New-AzureRmResourceGroupDeployment -Name $deployName -ResourceGroupName $RGName -TemplateUri $templateURI
 
 你将看到类似于下面的内容：
@@ -270,18 +283,8 @@
 
 现在，你已在新的资源组中创建了名为 MyWindowsVM 的新 Windows 虚拟机。
 
-## 其他资源
+## 后续步骤
 
-[Azure 资源管理器中的 Azure 计算、网络和存储提供程序](/documentation/articles/virtual-machines-azurerm-versus-azuresm)
+查看[使用 Azure Resource Manager 和 PowerShell 管理虚拟机](/documentation/articles/virtual-machines-deploy-rmtemplates-powershell)，了解如何管理刚创建的虚拟机。
 
-[Azure 资源管理器概述](/documentation/articles/resource-group-overview)
-
-[使用 Azure 资源管理器和 PowerShell 创建 Windows 虚拟机](/documentation/articles/virtual-machines-create-windows-powershell-resource-manager)
-
-[使用 PowerShell 和 Azure 服务管理器创建 Windows 虚拟机](/documentation/articles/virtual-machines-create-windows-powershell-service-manager)
-
-[虚拟机文档](/documentation/services/virtual-machines/)
-
-[如何安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell)
-
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0411_2016-->

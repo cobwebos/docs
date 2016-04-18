@@ -1,8 +1,8 @@
 <!-- not suitable for Mooncake -->
 
 <properties
-	pageTitle="Web 应用克隆"
-	description="了解如何将 Web 应用克隆到新的 Web 应用。"
+	pageTitle="使用 PowerShell 克隆 Web 应用"
+	description="了解如何使用 PowerShell 将 Web 应用克隆到新的 Web 应用。"
 	services="app-service\web"
 	documentationCenter=""
 	authors="ahmedelnably"
@@ -14,9 +14,9 @@
 	ms.date="01/13/2016"
 	wacn.date=""/>
 
-# Azure Web 应用克隆 #
+# 使用 PowerShell 克隆 Azure Web 应用#
 
-在发行的 Microsoft Azure PowerShell 版本 1.1.0 中，为 New-AzureRMWebApp 添加了新选项，可让用户将现有的 Web 应用克隆到不同区域或相同区域中新建的应用。这样，客户就可以快速轻松地跨不同区域部署许多应用。
+在发行的 Azure PowerShell 版本 1.1.0 中，为 New-AzureRMWebApp 添加了新选项，可让用户将现有的 Web 应用克隆到不同区域或相同区域中新建的应用。这样，客户就可以跨不同区域部署许多应用。
 
 应用克隆目前仅支持高级层 App Service 计划。新功能使用与 Web Apps 备份功能相同的限制，具体请参阅[在 Azure 中备份 Web 应用](/documentation/articles/web-sites-backup)。
 
@@ -33,7 +33,7 @@
 
 若要创建新的 App Service 计划，我们可以按以下示例中所示使用 New-AzureRmAppServicePlan 命令
 
-	New-AzureRmAppServicePlan -Location "China East" -ResourceGroupName DestinationAzureResourceGroup -Name NewAppServicePlan
+	New-AzureRmAppServicePlan -Location "China East" -ResourceGroupName DestinationAzureResourceGroup -Name NewAppServicePlan -Tier Premium
 
 使用 New-AzureRmWebApp 命令，我们可以在中国北部区域创建新的 Web 应用，并将它连接到现有的高级层 App Service 计划，而且我们可以使用相同的资源组作为源 Web 应用，或定义新的资源组，如下所示：
 
@@ -75,7 +75,7 @@
 
 ## 在克隆应用时配置流量管理器 ##
 
-通过在创建新 Web 应用时配置流量管理器，同时从现有应用克隆，你可以选择将这两个 Web 应用连接到新的流量管理器配置文件或现有配置文件 - 请注意，仅支持 ARM 版本的流量管理器。
+创建多区域 Web 应用并配置 Azure 流量管理器以将流量路由到所有这些 Web 应用是一种确保客户应用高可用性的重要方案，当克隆现有的 Web 应用时，你可以选择将两个 Web 应用连接到新的流量管理器配置文件或现有的配置文件 — 请注意，仅支持 ARM 版本的流量管理器。
 
 ### 在克隆应用时创建新的流量管理器配置文件 ###
 
@@ -107,9 +107,10 @@
 
 
 ### 参考 ###
+- [使用 Azure 门户克隆 Web 应用](/documentation/articles/app-service-web-app-cloning-portal)
 - [在 Azure 中备份 Web 应用](/documentation/articles/web-sites-backup)
 - [Azure 流量管理器预览版对 Azure 资源管理器的支持](../../articles/traffic-manager/traffic-manager-powershell-arm.md)
 - [Azure 环境简介](/documentation/articles/app-service-app-service-environment-intro)
 - [将 Azure PowerShell 与 Azure 资源管理器配合使用](/documentation/articles/powershell-azure-resource-manager)
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0411_2016-->

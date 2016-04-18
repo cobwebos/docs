@@ -1,5 +1,7 @@
+<!-- not suitable for Mooncake -->
+
 <properties
-	pageTitle="使用模板部署和管理 VM | Microsoft Azure"
+	pageTitle="使用模板部署和管理 VM | Azure"
 	description="使用资源管理器模板和 Azure CLI，为 Azure 虚拟机部署和管理最常用的配置。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -15,11 +17,15 @@
 
 # 使用 Azure 资源管理器模板和 Azure CLI 部署和管理虚拟机
 
-本文说明如何使用 Azure 资源管理器模板和 Azure CLI 来执行以下常见任务，以便可以部署和管理 Azure 虚拟机。有关可用的其他模板，请参阅 [Azure 快速入门模板](http://azure.microsoft.com/documentation/templates/)和[使用模板的应用程序框架](/documentation/articles/virtual-machines-app-frameworks)。
+> [AZURE.SELECTOR]
+- [PowerShell](/documentation/articles/virtual-machines-deploy-rmtemplates-powershell)
+- [CLI](/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli)
+
+本文说明如何使用 Azure 资源管理器模板和 Azure CLI 来执行以下常见任务，以便可以部署和管理 Azure 虚拟机。有关可用的其他模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)和[使用模板的应用程序框架](/documentation/articles/virtual-machines-app-frameworks)。
 
 [AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。你不能在经典部署模型中使用模板。
 
-- [在 Azure 中快速创建虚拟机](/documentation/articles/#quick-create-a-vm-in-azure)
+- [在 Azure 中快速创建虚拟机](#quick-create-a-vm-in-azure)
 - [在 Azure 中从模板部署虚拟机](#deploy-a-vm-in-azure-from-a-template)
 - [从自定义映像创建虚拟机](#create-a-custom-vm-image)
 - [部署使用虚拟网络和负载平衡器的虚拟机](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
@@ -33,7 +39,7 @@
 
 ## 做好准备
 
-必须拥有正确的 Azure CLI 版本和 Azure 帐户，才能将 Azure CLI 与 Azure 资源组配合使用。如果没有 Azure CLI，[请安装](xplat-cli-install)。
+必须拥有正确的 Azure CLI 版本和 Azure 帐户，才能将 Azure CLI 与 Azure 资源组配合使用。如果没有 Azure CLI，[请安装](/documentation/articles/xplat-cli-install)。
 
 ### 将 Azure CLI 版本更新到 0.9.0 或更高
 
@@ -50,11 +56,11 @@
 
 ### 设置你的 Azure 帐户和订阅
 
-如果你还没有 Azure 订阅，但是有 MSDN 订阅，则可以激活 [MSDN 订户权益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，或者注册获取[免费试用版](http://azure.microsoft.com/pricing/free-trial/)。
+如果你还没有 Azure 订阅，但是有 MSDN 订阅，则可以激活 [MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，你也可以注册[试用版](/pricing/1rmb-trial/)。
 
 现在，键入 `azure login` 并遵循提示来进行 Azure 帐户的交互式登录体验，[以交互方式登录你的 Azure 帐户](/documentation/articles/xplat-cli-connect#use-the-log-in-method)。
 
-> [AZURE.NOTE]如果有工作或学校 ID，而且知道尚未启用双因素身份验证，那么，**也**可以使用 `azure login -u` 以及工作或学校 ID，在*没有* 交互式会话的情况下进行登录。如果没有工作或学校 ID，则可以[从 Microsoft 个人帐户创建工作或学校 ID](resource-group-create-work-id-from-personal)，以相同方式进行登录。
+> [AZURE.NOTE] 如果有工作或学校 ID，而且知道尚未启用双因素身份验证，那么，**也**可以使用 `azure login -u` 以及工作或学校 ID，在“没有” 交互式会话的情况下进行登录。如果没有工作或学校 ID，则可以[从 Microsoft 个人帐户创建工作或学校 ID](/documentation/articles/resource-group-create-work-id-from-personal)，以相同方式进行登录。
 
 你的帐户可能有多个订阅。可以通过键入 `azure account list` 列出订阅，如下所示：
 
@@ -81,9 +87,9 @@
 
 ## 了解 Azure 资源模板和资源组
 
-大多数应用程序是通过不同资源类型的组合（例如，一个或多个 VM 和存储帐户、一个 SQL 数据库、一个虚拟网络或内容交付网络）构建的。默认 Azure 服务管理 API 和 Azure 门户使用基于服务的方法代表这些项。这种方法需要你单独部署和管理各个服务（或查找其他具备相同功能的工具），而不是当作单个逻辑部署单元。
+大多数应用程序是通过不同资源类型的组合（例如，一个或多个 VM 和存储帐户、一个 SQL 数据库、一个虚拟网络或内容交付网络）构建的。默认 Azure 服务管理 API 和 Azure 经典门户使用基于服务的方法代表这些项。这种方法需要你单独部署和管理各个服务（或查找其他具备相同功能的工具），而不是当作单个逻辑部署单元。
 
-不过，你可以利用 *Azure 资源管理器模板* 将这些不同的资源声明为一个逻辑部署单元，然后进行部署和管理。请不要以命令方式告知 Azure 逐一部署命令，而应该在 JSON 文件中描述整个部署 - 所有资源及关联的设置以及部署参数 - 然后告诉 Azure 将这些资源视为一个组进行部署。
+不过，你可以利用 “Azure 资源管理器模板” 将这些不同的资源声明为一个逻辑部署单元，然后进行部署和管理。请不要以命令方式告知 Azure 逐一部署命令，而应该在 JSON 文件中描述整个部署 - 所有资源及关联的设置以及部署参数 - 然后告诉 Azure 将这些资源视为一个组进行部署。
 
 然后，使用 Azure CLI 然后，使用 Azure CLI 资源管理命令执行以下操作，即可管理组的资源整体生命周期：
 
@@ -100,14 +106,14 @@
 
 首先，创建资源组。
 
-    azure group create coreos-quick westus
+    azure group create coreos-quick chinanorth
     info:    Executing command group create
     + Getting resource group coreos-quick
     + Creating resource group coreos-quick
     info:    Created resource group coreos-quick
     data:    Id:                  /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/coreos-quick
     data:    Name:                coreos-quick
-    data:    Location:            westus
+    data:    Location:            chinanorth
     data:    Provisioning State:  Succeeded
     data:    Tags:
     data:
@@ -116,7 +122,7 @@
 
 其次，你需要一个映像。若要使用 Azure CLI 查找映像，请参阅[使用 PowerShell 和 Azure CLI 来浏览和选择 Azure 虚拟机映像](/documentation/articles/resource-groups-vm-searching)。不过，本文只列出了以下常用映像的简短列表。我们将使用 CoreOS 的 Stable 映像来完成这个快速创建过程。
 
-> [AZURE.NOTE]对于 ComputeImageVersion，你也可以简单地在模板语言和 Azure CLI 中提供“latest”作为参数。这样，你无需修改脚本或模板，就始终都能使用映像的最新修补版本。如下所示。
+> [AZURE.NOTE] 对于 ComputeImageVersion，你也可以简单地在模板语言和 Azure CLI 中提供“latest”作为参数。这样，你无需修改脚本或模板，就始终都能使用映像的最新修补版本。如下所示。
 
 | PublisherName | 产品 | SKU | 版本 |
 |:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
@@ -144,7 +150,7 @@
     info:    Executing command vm quick-create
     Resource group name: coreos-quick
     Virtual machine name: coreos
-    Location name: westus
+    Location name: chinanorth
     Operating system Type [Windows, Linux]: linux
     ImageURN (format: "publisherName:offer:skus:version"): coreos:coreos:stable:latest
     User name: ops
@@ -154,8 +160,8 @@
     info:    Using the VM Size "Standard_A1"
     info:    The [OS, Data] Disk or image configuration requires storage account
     + Retrieving storage accounts
-    info:    Could not find any storage accounts in the region "westus", trying to create new one
-    + Creating storage account "cli9fd3fce49e9a9b3d14302" in "westus"
+    info:    Could not find any storage accounts in the region "chinanorth", trying to create new one
+    + Creating storage account "cli9fd3fce49e9a9b3d14302" in "chinanorth"
     + Looking up the storage account cli9fd3fce49e9a9b3d14302
     + Looking up the NIC "coreo-westu-1430261891570-nic"
     info:    An nic with given name "coreo-westu-1430261891570-nic" not found, creating a new one
@@ -178,8 +184,8 @@
     data:    Id                              :/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/coreos-quick/providers/Microsoft.Compute/virtualMachines/coreos
     data:    ProvisioningState               :Succeeded
     data:    Name                            :coreos
-    data:    Location                        :westus
-    data:    FQDN                            :coreo-westu-1430261891570-pip.westus.cloudapp.azure.com
+    data:    Location                        :chinanorth
+    data:    FQDN                            :coreo-westu-1430261891570-pip.chinanorth.chinacloudapp.cn
     data:    Type                            :Microsoft.Compute/virtualMachines
     data:
     data:    Hardware Profile:
@@ -214,11 +220,11 @@
     data:          MAC Address               :00-0D-3A-30-72-E3
     data:          Provisioning State        :Succeeded
     data:          Name                      :coreo-westu-1430261891570-nic
-    data:          Location                  :westus
+    data:          Location                  :chinanorth
     data:            Private IP alloc-method :Dynamic
     data:            Private IP address      :10.0.1.4
     data:            Public IP address       :104.40.24.124
-    data:            FQDN                    :coreo-westu-1430261891570-pip.westus.cloudapp.azure.com
+    data:            FQDN                    :coreo-westu-1430261891570-pip.chinanorth.chinacloudapp.cn
     info:    vm quick-create command OK
 
 无论身在何处，新的 VM 就在你的身边。
@@ -287,7 +293,7 @@
         }
     },
     "variables": {
-        "location": "West US",
+        "location": "China North",
         "imagePublisher": "Canonical",
         "imageOffer": "UbuntuServer",
         "OSDiskName": "osdiskforlinuxsimple",
@@ -427,14 +433,14 @@
 
 若要创建资源组，请键入 `azure group create <group name> <location>` 和要使用的组的名称，以及要部署到的数据中心位置。此过程很快就能完成：
 
-    azure group create myResourceGroup westus
+    azure group create myResourceGroup chinanorth
     info:    Executing command group create
     + Getting resource group myResourceGroup
     + Creating resource group myResourceGroup
     info:    Created resource group myResourceGroup
     data:    Id:                  /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup
     data:    Name:                myResourceGroup
-    data:    Location:            westus
+    data:    Location:            chinanorth
     data:    Provisioning State:  Succeeded
     data:    Tags:
     data:
@@ -536,7 +542,7 @@
             },
             "location": {
                 "type": "String",
-                "defaultValue" : "West US"
+                "defaultValue" : "China North"
             },
             "vmSize": {
                 "type": "string",
@@ -691,14 +697,14 @@
 
 现在你已准备好使用 .vhd 创建新的虚拟机。使用 `azure group create <location>` 创建一个要部署到的组：
 
-    azure group create myResourceGroupUser eastus
+    azure group create myResourceGroupUser chinaeast
     info:    Executing command group create
     + Getting resource group myResourceGroupUser
     + Creating resource group myResourceGroupUser
     info:    Created resource group myResourceGroupUser
     data:    Id:                  /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroupUser
     data:    Name:                myResourceGroupUser
-    data:    Location:            eastus
+    data:    Location:            chinaeast
     data:    Provisioning State:  Succeeded
     data:    Tags:
     data:
@@ -744,7 +750,7 @@
     data:    adminPassword                  SecureString  undefined
     data:    osType                         String        linux
     data:    subscriptionId                 String        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-    data:    location                       String        West US
+    data:    location                       String        China North
     data:    vmSize                         String        Standard_A2
     data:    publicIPAddressName            String        myPublicIP
     data:    vmName                         String        myVM
@@ -763,7 +769,7 @@
 
 ### 步骤 1：检查 JSON 文件中的模板
 
-以下是模板的 JSON 文件内容。如果你需要最新的版本，可以在[此处](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json)找到。此主题使用 `--template-uri` 开关来调用模板，不过你也可以使用 `--template-file` 开关来传递本地版本。
+以下是模板的 JSON 文件内容。如果你需要最新版本，可查阅 [Github repository for templates（Github 模板存储库）](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json)。此主题使用 `--template-uri` 开关来调用模板，不过你也可以使用 `--template-file` 开关来传递本地版本。
 
 
     {
@@ -1102,14 +1108,14 @@
 使用 `azure group create <location>` 为模板创建资源组。然后在该资源组中创建部署，方式是使用 `azure group deployment create` 并传递资源组、部署名称，然后根据提示为模板中没有默认值的参数输入相关的值。
 
 
-    azure group create lbgroup westus
+    azure group create lbgroup chinanorth
     info:    Executing command group create
     + Getting resource group lbgroup
     + Creating resource group lbgroup
     info:    Created resource group lbgroup
     data:    Id:                  /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lbgroup
     data:    Name:                lbgroup
-    data:    Location:            westus
+    data:    Location:            chinanorth
     data:    Provisioning State:  Succeeded
     data:    Tags:
     data:
@@ -1124,7 +1130,7 @@
     > newdeployment
     info:    Executing command group deployment create
     info:    Supply values for the following parameters
-    location: westus
+    location: chinanorth
     newStorageAccountName: storagename
     adminUsername: ops
     adminPassword: password
@@ -1146,7 +1152,7 @@
     data:    ContentVersion     : 1.0.0.0
     data:    Name                   Type          Value
     data:    ---------------------  ------------  ----------------------
-    data:    location               String        westus
+    data:    location               String        chinanorth
     data:    newStorageAccountName  String        storagename
     data:    adminUsername          String        ops
     data:    adminPassword          SecureString  undefined
@@ -1163,7 +1169,7 @@
     data:    vmSize                 String        Standard_A1
     info:    group deployment create command OK
 
-请注意，此模板部署的是 Windows Server 映像；但是，它可以轻松地替换为任何 Linux 映像。想要使用多个 Swarm 管理器创建一个 Docker 群集吗？ [你可以做到](http://azure.microsoft.com/documentation/templates/docker-swarm-cluster/)。
+请注意，此模板部署的是 Windows Server 映像；但是，它可以轻松地替换为任何 Linux 映像。想要使用多个 Swarm 管理器创建一个 Docker 群集吗？ [你可以做到](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/)。
 
 ## <a id="remove-a-resource-group"></a>任务：删除资源组
 
@@ -1200,8 +1206,8 @@
     + Getting virtual machines
     data:    Name   ProvisioningState  Location  Size
     data:    -----  -----------------  --------  -----------
-    data:    myVM0  Succeeded          westus    Standard_A1
-    data:    myVM1  Failed             westus    Standard_A1
+    data:    myVM0  Succeeded          chinanorth    Standard_A1
+    data:    myVM1  Failed             chinanorth    Standard_A1
 
 然后，查找 myVM1：
 
@@ -1212,7 +1218,7 @@
     data:    Id                              :/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/zoo/providers/Microsoft.Compute/virtualMachines/myVM1
     data:    ProvisioningState               :Failed
     data:    Name                            :myVM1
-    data:    Location                        :westus
+    data:    Location                        :chinanorth
     data:    Type                            :Microsoft.Compute/virtualMachines
     data:
     data:    Hardware Profile:
@@ -1247,7 +1253,7 @@
     data:          Primary                   :false
     data:          Provisioning State        :Succeeded
     data:          Name                      :nic1
-    data:          Location                  :westus
+    data:          Location                  :chinanorth
     data:            Private IP alloc-method :Dynamic
     data:            Private IP address      :10.0.0.5
     data:
@@ -1256,7 +1262,7 @@
     info:    vm show command OK
 
 
-> [AZURE.NOTE]如果你想要以编程方式存储和操作控制台命令的输出，可以使用 JSON 分析工具（例如 **[jq](https://github.com/stedolan/jq)** 或 **[jsawk](https://github.com/micha/jsawk)**）或适用于该任务的语言库。
+> [AZURE.NOTE] 如果你想要以编程方式存储和操作控制台命令的输出，可以使用 JSON 分析工具（例如 **[jq](https://github.com/stedolan/jq)** 或 **[jsawk](https://github.com/micha/jsawk)**）或适合任务的语言库。
 
 ## <a id="log-on-to-a-linux-based-virtual-machine"></a>任务：登录到基于 Linux 的虚拟机
 
@@ -1268,7 +1274,7 @@
 
     azure vm stop <group name> <virtual machine name>
 
->[AZURE.IMPORTANT]如果该 VM 是虚拟网络中的最后一个 VM，则使用此参数可以保留该虚拟网络的虚拟 IP (VIP)。<br><br> 如果使用 `StayProvisioned` 参数，则仍要支付 VM 的费用。
+>[AZURE.IMPORTANT] 如果该 VM 是虚拟网络中的最后一个 VM，则使用此参数可以保留该虚拟网络的虚拟 IP (VIP)。<br><br> 如果使用 `StayProvisioned` 参数，则仍要支付 VM 的费用。
 
 ## <a id="start-a-virtual-machine"></a>任务：启动 VM
 
@@ -1295,6 +1301,6 @@
 
 有关 Azure CLI 用法和 **arm** 模式的更多示例，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 用于 Azure 资源管理器](/documentation/articles/xplat-cli-azure-resource-manager)。若要了解有关 Azure 资源及其概念的详细信息，请参阅 [Azure 资源管理器概述](/documentation/articles/resource-group-overview)。
 
-有关可用的其他模板，请参阅 [Azure 快速入门模板](http://azure.microsoft.com/documentation/templates/)和[使用模板的应用程序框架](/documentation/articles/virtual-machines-app-frameworks)。
+有关可用的其他模板，请参阅 [Azure 快速入门模板](https://azure.microsoft.com/documentation/templates/)和[使用模板的应用程序框架](/documentation/articles/virtual-machines-app-frameworks)。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0411_2016-->

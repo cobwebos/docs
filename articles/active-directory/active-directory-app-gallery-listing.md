@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="09/17/2015"
+   ms.date="02/19/2016"
    wacn.date=""/>
 
 
@@ -36,15 +36,15 @@
 * 提供以下信息：
 
 > 公司名称：
->
+> 
 > 公司网站：
->
+> 
 > 应用程序名称：
->
+> 
 > 应用程序说明（限制为 256 个字符）：
->
+> 
 > 应用程序网站（参考性）：
->
+> 
 > 应用程序技术支持网站或联系信息：
 > 
 > 应用程序的客户端 ID，在 https://manage.windowsazure.com 上的应用程序详细信息中显示：
@@ -84,13 +84,13 @@
 > 应用程序技术支持网站或联系信息：
 > 
 > 客户注册和/或购买应用程序时所用的应用程序注册 URL：
->
-> 选择应用程序所要列入到的最多三个类别（有关可用类别，请参阅 [Azure Active Directory 应用商店](http://go.microsoft.com/fwlink/?LinkId=327881)）：
->
+> 
+> 选择应用程序所要列入到的最多三个类别（有关可用类别，请参阅 [Azure Active Directory 应用商店](https://azure.microsoft.com/marketplace/active-directory/)）：
+> 
 > 附加应用程序小图标（PNG 文件，45 x 45 像素，实色背景）：
 >
 > 附加应用程序大图标（PNG 文件，215 x 215 像素，实色背景）：
 >
 > 附加应用程序徽标（PNG 文件，150 x 122 像素，透明背景色）：
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0411_2016-->

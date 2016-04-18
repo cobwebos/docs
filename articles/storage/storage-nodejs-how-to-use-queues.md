@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="12/01/2015" 
+	ms.date="02/17/2016"
 	wacn.date=""/>
 
 
@@ -19,7 +19,7 @@
 
 ## 概述
 
-本指南将演示如何使用 Microsoft Azure 队列服务执行常见方案。相关示例是使用 Node.js API 编写的。介绍的方案包括“插入”、“扫视”、“获取”和“删除”队列消息以及“创建”和“删除”队列。
+本指南演示如何使用 Microsoft Azure 队列服务执行常见任务。相关示例是使用 Node.js API 编写的。介绍的方案包括“插入”、“扫视”、“获取”和“删除”队列消息以及“创建”和“删除”队列。
 
 [AZURE.INCLUDE [storage-queue-concepts-include](../includes/storage-queue-concepts-include.md)]
 
@@ -27,7 +27,7 @@
 
 ## 创建 Node.js 应用程序
 
-创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站]、[Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell）或“使用 WebMatrix 构建网站”。
+创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[在 Azure App Service 中创建 Node.js Web 应用]，使用 Windows PowerShell [生成 Node.js 应用程序并将其部署到 Azure 云服务]，或 [使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]。
 
 ## 配置应用程序以访问存储
 
@@ -62,7 +62,7 @@
 
 Azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY 或 AZURE\_STORAGE\_CONNECTION\_STRING 以获取连接到您的 Azure 存储帐户所需的信息。如果未设置这些环境变量，则在调用 **createQueueService** 时必须指定帐户信息。
 
-有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js 网站]
+有关在 [Azure 门户](https://portal.azure.cn)中为 Azure 网站设置环境变量的示例，请参阅[使用 Azure 表服务的 Node.js Web 应用]。
 
 ## 如何：创建队列
 
@@ -145,7 +145,8 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 > [AZURE.NOTE] 默认情况下，一条消息只会隐藏 30 秒，然后其他客户端就可以看见它。您可以将 `options.visibilityTimeout` 与 **getMessages** 一起使用，以便指定其他值。
 
-> [AZURE.NOTE] 在队列中没有消息时使用 **getMessages** 不会返回错误，但也不会返回消息。
+> [AZURE.NOTE]
+在队列中没有消息时使用 **getMessages** 不会返回错误，但也不会返回消息。
 
 ## 如何：更改已排队消息的内容
 
@@ -288,8 +289,8 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
 	queueSvc.getQueueAcl('myqueue', function(error, result, response) {
       if(!error){
 		//push the new policy into signedIdentifiers
-		result.signedIdentifiers.push(sharedAccessPolicy);
-		queueSvc.setQueueAcl('myqueue', result, function(error, result, response){
+		result.signedIdentifiers = result.signedIdentifiers.concat(sharedAccessPolicy);
+		queueSvc.setQueueAcl('myqueue', result.signedIdentifiers, function(error, result, response){
 	  	  if(!error){
 	    	// ACL set
 	  	  }
@@ -310,10 +311,10 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
 
   [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
   [using the REST API]: http://msdn.microsoft.com/zh-cn/library/azure/hh264518.aspx
-  [Azure Management Portal]: http://manage.windowsazure.com
-  [创建 Node.js 应用程序并将其部署到 Azure 网站]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
+  [Azure Portal]: https://portal.azure.cn
+  [在 Azure App Service 中创建 Node.js Web 应用]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
   [Node.js Cloud Service with Storage]: /documentation/articles/storage-nodejs-use-table-storage-cloud-service-app
-  [使用存储构建 Node.js 网站]: /documentation/articles/storage-nodejs-use-table-storage-web-site
+  [使用 Azure 表服务的 Node.js Web 应用]: /documentation/articles/storage-nodejs-use-table-storage-web-site
 
   
   [Queue1]: ./media/storage-nodejs-how-to-use-queues/queue1.png
@@ -326,4 +327,4 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
  [ Website with WebMatrix]: /documentation/articles/web-sites-nodejs-use-webmatrix
 
-<!----HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0411_2016-->

@@ -1,5 +1,7 @@
+<!-- not suitable for Mooncake -->
+
 <properties
-	pageTitle="创建 Windows VM | Microsoft Azure"
+	pageTitle="创建 Microsoft VM | Azure"
 	description="使用 Azure PowerShell 和资源管理器模板轻松创建新的 Windows 虚拟机。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -10,12 +12,12 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="10/08/2015"
+	ms.date="01/05/2016"
 	wacn.date=""/>
 
 # 使用资源管理器和 PowerShell 创建 Windows VM
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-vms)。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
 
 本主题介绍如何使用 Azure 资源管理器和 PowerShell 快速创建基于 Windows 的 Azure 虚拟机。
 
@@ -31,7 +33,7 @@
 
 	Login-AzureRmAccount
 
-在 Microsoft Azure 登录对话框中指定 Azure 帐户的电子邮件地址及其密码。
+在 Azure 登录对话框中指定 Azure 帐户的电子邮件地址及其密码。
 
 接下来，如果你有多个 Azure 订阅，则需要设置你的 Azure 订阅。若要查看当前订阅的列表，请运行以下命令。
 
@@ -40,7 +42,7 @@
 现在，请将引号内的所有内容（包括 < and > 字符）替换为正确的订阅名称，然后运行以下命令。
 
 	$subscrName="<subscription name>"
-	Select-AzureRmSubscription -SubscriptionName $subscrName –Current
+	Select-AzureRmSubscription -SubscriptionName $subscrName -Current
 
 接下来，需要创建存储帐户。必须选择只包含小写字母和数字的唯一名称。你可以使用此命令测试存储帐户名称的唯一性。
 
@@ -77,14 +79,14 @@
 下面是你可能会看到的示例：
 
 	PS C:\> $stName="contosost"
-	PS C:\> $locName="West US"
+	PS C:\> $locName="China North"
 	PS C:\> $rgName="TestRG"
 	PS C:\> New-AzureRmResourceGroup -Name $rgName -Location $locName
-	VERBOSE: 12:45:15 PM - Created resource group 'TestRG' in location 'westus'
+	VERBOSE: 12:45:15 PM - Created resource group 'TestRG' in location 'chinanorth'
 
 
 	ResourceGroupName : TestRG
-	Location          : westus
+	Location          : chinanorth
 	ProvisioningState : Succeeded
 	Tags              :
 	Permissions       :
@@ -119,18 +121,8 @@
 	RequestId           : 98c7b4fb-b26e-4a58-b17a-b0983d896aae
 	StatusCode          : OK
 
-## 其他资源
+## 后续步骤
 
-[Azure 资源管理器中的 Azure 计算、网络和存储提供程序](/documentation/articles/virtual-machines-azurerm-versus-azuresm)
+查看[使用 Azure Resource Manager 和 PowerShell 管理虚拟机](/documentation/articles/virtual-machines-deploy-rmtemplates-powershell)，了解如何管理刚创建的虚拟机。
 
-[Azure 资源管理器概述](/documentation/articles/resource-group-overview)
-
-[使用资源管理器模板和 PowerShell 创建 Windows 虚拟机](/documentation/articles/virtual-machines-create-windows-powershell-resource-manager-template-simple)
-
-[使用 Powershell 和经典部署模型创建 Windows 虚拟机](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-vms)
-
-[虚拟机文档](http://azure.microsoft.com/documentation/services/virtual-machines/)
-
-[如何安装和配置 Azure PowerShell](/documentation/articles/install-configure-powershell)
-
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0411_2016-->

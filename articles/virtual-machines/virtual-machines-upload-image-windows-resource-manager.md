@@ -1,7 +1,7 @@
 <!-- not suitable for Mooncake -->
 
 <properties
-	pageTitle="上载 Windows VHD 用于资源管理器 | Microsoft Azure"
+	pageTitle="上载 Windows VHD 用于资源管理器 | Azure"
 	description="了解如何上载基于 Windows 的虚拟机映像以用于资源管理器部署模型。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -15,12 +15,12 @@
 	ms.date="02/05/2016"
 	wacn.date=""/>
 
-# 将 Windows VM 映像上载到 Microsoft Azure 以进行资源管理器部署
+# 将 Windows VM 映像上载到 Azure 以进行资源管理器部署
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [经典部署模型](/documentation/articles/virtual-machines-create-upload-vhd-windows-server)。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](/documentation/articles/virtual-machines-create-upload-vhd-windows-server)。
 
 
-本文介绍如何使用基于 Windows 的操作系统上载虚拟硬盘 (VHD)，因此可以通过它使用资源管理器部署模型创建新的 Windows 虚拟机。有关 Microsoft Azure 中的磁盘和 VHD 的更多详细信息，请参阅[关于虚拟机的磁盘和 VHD](/documentation/articles/virtual-machines-disks-vhds)。
+本文介绍如何使用基于 Windows 的操作系统上载虚拟硬盘 (VHD)，因此可以通过它使用资源管理器部署模型创建新的 Windows 虚拟机。有关 Azure 中的磁盘和 VHD 的更多详细信息，请参阅[关于虚拟机的磁盘和 VHD](/documentation/articles/virtual-machines-disks-vhds)。
 
 
 
@@ -30,16 +30,16 @@
 
 1. **Azure 订阅** - 如果你没有，请[免费建立一个 Azure 帐户](/pricing/1rmb-trial/?WT.mc_id=A261C142F)。获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，你仍可以保留帐户和使用免费的 Azure 服务（如网站）。你的信用卡不会付费，除非你显式更改设置。你还可以[激活 MSDN 订户权益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。MSDN 订阅每月为你提供可用来试用付费版 Azure 服务的信用额度。
 
-2. **Microsoft Azure PowerShell 1.0.x** - 确保你已安装了 Microsoft Azure PowerShell 版本 1.0.x。如果你还没有安装它，请阅读[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。我们建议使用版本 1.0 及更高版本，因为新的资源管理器功能将不会添加到旧的 PowerShell 版本中。阅读 [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) 可进一步了解有关版本之间的区别。
+2. **Azure PowerShell 1.0.x** - 确保你已安装了 Azure PowerShell 版本 1.0.x。如果你还没有安装它，请阅读[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。我们建议使用版本 1.0 及更高版本，因为新的资源管理器功能将不会添加到旧的 PowerShell 版本中。阅读 [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/) 可进一步了解有关版本之间的区别。
 
-3. **运行 Windows 操作系统的虚拟机** - 有许多工具可在本地创建虚拟机。例如，你可以使用 Hyper-V 管理器创建虚拟机和安装操作系统。有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](http://technet.microsoft.com/zh-cn/library/hh846766.aspx)。有关支持哪些 Windows 操作系统的详细信息，请参阅[支持 Microsoft Azure 虚拟机的 Microsoft 服务器软件](https://support.microsoft.com/kb/2721672)。
+3. **运行 Windows 操作系统的虚拟机** - 有许多工具可在本地创建虚拟机。例如，你可以使用 Hyper-V 管理器创建虚拟机和安装操作系统。有关说明，请参阅[安装 Hyper-V 角色和配置虚拟机](http://technet.microsoft.com/zh-cn/library/hh846766.aspx)。有关支持哪些 Windows 操作系统的详细信息，请参阅 [Microsoft 服务器软件支持 Microsoft Azure 的虚拟机](https://support.microsoft.com/kb/2721672)。
 
 
 ## 请确保 VM 具有正确的文件格式
 
-Microsoft Azure 只能接受以 VHD 文件格式保存的[第 1 代虚拟机](http://blogs.technet.com/b/ausoemteam/archive/2015/04/21/deciding-when-to-use-generation-1-or-generation-2-virtual-machines-with-hyper-v.aspx)的映像。必须修复 VHD 大小使之是整数个 MB。VHD 允许的最大大小为 1023 GB。
+Azure 只能接受以 VHD 文件格式保存的[第 1 代虚拟机](http://blogs.technet.com/b/ausoemteam/archive/2015/04/21/deciding-when-to-use-generation-1-or-generation-2-virtual-machines-with-hyper-v.aspx)的映像。必须修复 VHD 大小使之是整数个 MB。VHD 允许的最大大小为 1023 GB。
 
-- Hyper-V 管理器通常以 VHDX 格式保存 VM 映像，而 Microsoft Azure 不支持该格式。可使用 Hyper-V 或 [Convert-VHD PowerShell cmdlet](http://technet.microsoft.com/zh-cn/library/hh848454.aspx) 将其转换为 VHD 格式。有关使用 PowerShell 的步骤，请阅读 [将 Hyper-V .vhdx 转换为 .vhd 文件格式](https://blogs.technet.microsoft.com/cbernier/2013/08/29/converting-hyper-v-vhdx-to-vhd-file-formats-for-use-in-windows-azure/)。或者在 Hyper-V 中，选择左侧的本地计算机，然后在它上方的菜单中，单击“操作”>“编辑磁盘...”。通过单击“下一步”在屏幕之间导航并输入以下选项：VHDX 文件的路径 >“转换”>“VHD”>“固定大小”> 新的 VHD 文件的路径。单击“完成”以关闭。
+- Hyper-V 管理器通常以 VHDX 格式保存 VM 映像，而 Azure 不支持该格式。可使用 Hyper-V 或 [Convert-VHD PowerShell cmdlet](http://technet.microsoft.com/zh-cn/library/hh848454.aspx) 将其转换为 VHD 格式。有关使用 PowerShell 的步骤，请阅读 [将 Hyper-V .vhdx 转换为 .vhd 文件格式](https://blogs.technet.microsoft.com/cbernier/2013/08/29/converting-hyper-v-vhdx-to-vhd-file-formats-for-use-in-windows-azure/)。或者在 Hyper-V 中，选择左侧的本地计算机，然后在它上方的菜单中，单击“操作”>“编辑磁盘...”。通过单击“下一步”在屏幕之间导航并输入以下选项：VHDX 文件的路径 >“转换”>“VHD”>“固定大小”> 新的 VHD 文件的路径。单击“完成”以关闭。
 
 - 如果你有 [VMDK 文件格式](https://en.wikipedia.org/wiki/VMDK)的 Windows VM 映像，可以使用 [Microsoft 虚拟机转换器](https://www.microsoft.com/download/details.aspx?id=42497)将其转换为 VHD 格式。有关详细信息，请阅读博客[如何将 VMWare VMDK 转换为 Hyper-V VHD](http://blogs.msdn.com/b/timomta/archive/2015/06/11/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd.aspx)。
 
@@ -69,7 +69,7 @@ Microsoft Azure 只能接受以 VHD 文件格式保存的[第 1 代虚拟机](ht
 
 ### 使用门户
 
-1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
 2. 单击“浏览”>“存储帐户”。
 
@@ -153,10 +153,10 @@ Microsoft Azure 只能接受以 VHD 文件格式保存的[第 1 代虚拟机](ht
 		Add-AzureRmVhd -ResourceGroupName YourResourceGroup -Destination "<StorageAccountURL>/<BlobContainer>/<TargetVHDName>.vhd" -LocalFilePath <LocalPathOfVHDFile>
 
 	其中：
-	- StorageAccountURL 是存储帐户的 URL。它通常采用此格式：`https://YourStorageAccountName.blob.core.chinacloudapi.cn`。请注意，你需要使用现有或新的存储帐户的名称来替代 YourStorageAccountName。
-	- BlobContainer 是要存储映像的 blob 容器。如果该 cmdlet 未找到具有此名称的现有 blob 容器，它将创建一个新的 blob 容器。
-	- -TargetVHDName 是你要将映像保存为的名称。
-	- LocalPathOfVHDFile 是本地计算机上的 .vhd 文件的完整路径和名称。
+	- **StorageAccountURL** 是存储帐户的 URL。它通常采用此格式：`https://YourStorageAccountName.blob.core.chinacloudapi.cn`。请注意，你需要使用现有或新的存储帐户的名称来替代 **YourStorageAccountName**。
+	- **BlobContainer** 是要存储映像的 blob 容器。如果该 cmdlet 未找到具有此名称的现有 blob 容器，它将为你创建一个新的。
+	- **TargetVHDName** 是你想要将映像保存为的名称。
+	- **LocalPathOfVHDFile** 是 .vhd 文件在本地计算机上的完整路径和名称。
 
 	`Add-AzureRmVhd` 执行成功将如下所示：
 
@@ -246,7 +246,7 @@ Microsoft Azure 只能接受以 VHD 文件格式保存的[第 1 代虚拟机](ht
 		--------- ------------------- ---------- ------------
 		                         True         OK OK
 
-你应通过以下任一方式查看新创建的 VM：在 [Azure 管理门户](https://manage.windowsazure.cn)的“浏览”>“虚拟机”下查看，或者使用以下 PowerShell 命令查看：
+你应该在 [Azure 门户](https://portal.azure.cn)的“浏览”>“虚拟机”下查看新创建的 VM，或者使用以下 PowerShell 命令进行查看：
 
 	$vmList = Get-AzureRmVM -ResourceGroupName $rgName
 	$vmList.Name
@@ -256,4 +256,4 @@ Microsoft Azure 只能接受以 VHD 文件格式保存的[第 1 代虚拟机](ht
 
 若要使用 Azure PowerShell 管理新虚拟机，请阅读[使用 Azure Resource Manager 和 PowerShell 管理虚拟机](/documentation/articles/virtual-machines-deploy-rmtemplates-powershell)。
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0411_2016-->

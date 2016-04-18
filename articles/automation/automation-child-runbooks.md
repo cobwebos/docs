@@ -1,14 +1,14 @@
 <properties 
-   pageTitle="Azure 自动化中的子 Runbook | Microsoft Azure"
+   pageTitle="Azure 自动化中的子 Runbook | Azure"
    description="介绍从 Azure 自动化中的一个 Runbook 启动另一个 Runbook 并在它们之间共享信息的不同方法。"
    services="automation"
    documentationCenter=""
-   authors="bwren"
+   authors="mgoedtel"
    manager="stevenka"
    editor="tysonn" />
 <tags 
    ms.service="automation"
-   ms.date="02/09/2016"
+   ms.date="02/23/2016"
    wacn.date="" />
 
 # Azure 自动化中的子 Runbook
@@ -36,6 +36,12 @@
 
 	$vm = Get-AzureVM –ServiceName "MyVM" –Name "MyVM"
 	$output = Test-ChildRunbook –VM $vm –RepeatCount 2 –Restart $true
+
+下面是使用 PowerShell Runbook 作为子项的同一示例。
+
+	$vm = Get-AzureVM –ServiceName "MyVM" –Name "MyVM"
+	$output = .\Test-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
+
 
 ##  使用 cmdlet 启动子 Runbook
 
@@ -82,4 +88,4 @@
 - [在 Azure 自动化中启动 Runbook](/documentation/articles/automation-starting-a-runbook)
 - [Azure 自动化中的 Runbook 输出和消息](/documentation/articles/automation-runbook-output-and-messages)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0411_2016-->

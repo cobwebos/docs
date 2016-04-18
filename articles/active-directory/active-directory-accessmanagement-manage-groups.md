@@ -1,7 +1,6 @@
 <properties
-
 	pageTitle="在 Azure Active Directory 中管理安全组 | Microsoft Azure"
-	description="如何创建和管理安全组以使用 Azure Active Directory 管理 Azure 资源访问。"
+	description="如何创建和管理安全组，以便使用 Azure Active Directory 管理 Azure 资源访问权限。"
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
@@ -70,5 +69,4 @@ Azure Active Directory (Azure AD) 的主要功能之一是管理对资源的访�
 * [什么是 Azure Active Directory？](active-directory-whatis.md)
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
-
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0411_2016-->

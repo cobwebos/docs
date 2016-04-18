@@ -1,6 +1,6 @@
 
 <properties
-   pageTitle="Azure AD 的身份验证方案"
+   pageTitle="Azure AD 的身份验证方案 | Microsoft Azure"
    description="Azure Active Directory (AAD) 的五个最常见身份验证方案概述"
    services="active-directory"
    documentationCenter="dev-center-name"
@@ -10,7 +10,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="09/17/2015"
+   ms.date="02/09/2016"
    wacn.date=""/>
 
 # Azure AD 的身份验证方案
@@ -19,9 +19,7 @@ Azure Active Directory (Azure AD) 通过以下方式简化了对开发人员的�
 
 - [Azure AD 中的身份验证基本知识](#basics-of-authentication-in-azure-ad)
 
-
 - [Azure AD 安全令牌中的声明](#claims-in-azure-ad-security-tokens)
-
 
 - [在 Azure AD 中注册应用程序的基本知识](#basics-of-registering-an-application-in-azure-ad)
 
@@ -58,15 +56,15 @@ Azure Active Directory (Azure AD) 通过以下方式简化了对开发人员的�
 - 开发人员可以使用开源 Azure AD 身份验证库为你处理协议细节，方便你进行身份验证。有关详细信息，请参阅 [Azure Active Directory 身份验证库](active-directory-authentication-libraries)。
 
 
-• 在用户通过身份验证后，应用程序必须对用户的安全令牌进行验证以确保身份验证对于目标方是成功的。开发人员可以使用所提供的身份验证库来处理 Azure AD 提供的令牌的验证，包括 JSON Web 令牌 (JWT) 或 SAML 2.0。如果希望手动执行验证，请参阅 [JWT 令牌处理程序] (https://msdn.microsoft.com/zh-cn/library/dn205065(v=vs.110).aspx) 文档。
+• 在用户通过身份验证后，应用程序必须对用户的安全令牌进行验证以确保身份验证对于目标方是成功的。开发人员可以使用所提供的身份验证库来处理 Azure AD 提供的令牌的验证，包括 JSON Web 令牌 (JWT) 或 SAML 2.0。如果希望手动执行验证，请参阅 [JWT Token Handler](https://msdn.microsoft.com/library/dn205065.aspx)（JWT 令牌处理程序）文档。
 
 
-> [AZURE.IMPORTANT]Azure AD 使用公钥加密对令牌进行签名以及验证它们是否有效。应用程序必须实施必要的逻辑才能确保始终使用最新密钥进行更新，此方面的详细信息，请参阅有关 [Azure AD 中签名密钥滚动更新的重要信息](https://msdn.microsoft.com/zh-cn/library/azure/dn641920.aspx)。
+> [AZURE.IMPORTANT] Azure AD 使用公钥加密对令牌进行签名以及验证它们是否有效。应用程序必须实施必要的逻辑才能确保始终使用最新密钥进行更新，此方面的详细信息，请参阅有关 [Azure AD 中签名密钥滚动更新的重要信息](https://msdn.microsoft.com/zh-cn/library/azure/dn641920.aspx)。
 
 
 • 身份验证过程的请求和响应流是由所使用的身份验证协议（例如 OAuth 2.0、OpenID Connect、WS-Federation 或 SAML 2.0）决定的。[Azure Active Directory 身份验证协议](active-directory-authentication-protocols)主题和下面的部分中更详细地讨论了这些协议。
 
-> [AZURE.NOTE]Azure AD 支持 OAuth 2.0 和 OpenID Connect 标准，这些标准广泛使用持有者令牌，包括表示为 JWT 的持有者令牌。持有者令牌是一种轻型安全令牌，它授予对受保护资源的“持有者”访问权限。从这个意义上来说，“持有者”是可以提供令牌的任何一方。虽然某一方必须首先通过 Azure AD 的身份验证才能收到持有者令牌，但如果不采取必要的步骤在传输过程和存储中对令牌进行保护，令牌可能会被意外的某一方拦截并使用。虽然某些安全令牌具有内置机制来防止未经授权方使用它们，但是持有者令牌没有这一机制，因此必须在安全的通道（例如传输层安全 (HTTPS)）中进行传输。如果持有者令牌以明文传输，则恶意方可以利用中间人攻击来获得令牌并使用它来对受保护资源进行未经授权的访问。当存储或缓存持有者令牌供以后使用时，也应遵循同样的安全原则。请始终确保你的应用程序以安全的方式传输和存储持有者令牌。有关持有者令牌的更多安全注意事项，请参阅 [RFC 6750 第 5 部分](http://tools.ietf.org/html/rfc6750)。
+> [AZURE.NOTE] Azure AD 支持 OAuth 2.0 和 OpenID Connect 标准，这些标准广泛使用持有者令牌，包括表示为 JWT 的持有者令牌。持有者令牌是一种轻型安全令牌，它授予对受保护资源的“持有者”访问权限。从这个意义上来说，“持有者”是可以提供令牌的任何一方。虽然某一方必须首先通过 Azure AD 的身份验证才能收到持有者令牌，但如果不采取必要的步骤在传输过程和存储中对令牌进行保护，令牌可能会被意外的某一方拦截并使用。虽然某些安全令牌具有内置机制来防止未经授权方使用它们，但是持有者令牌没有这一机制，因此必须在安全的通道（例如传输层安全 (HTTPS)）中进行传输。如果持有者令牌以明文传输，则恶意方可以利用中间人攻击来获得令牌并使用它来对受保护资源进行未经授权的访问。当存储或缓存持有者令牌供以后使用时，也应遵循同样的安全原则。请始终确保你的应用程序以安全的方式传输和存储持有者令牌。有关持有者令牌的更多安全注意事项，请参阅 [RFC 6750 第 5 部分](http://tools.ietf.org/html/rfc6750)。
 
 
 现在你已概要了解了基本知识，请阅读下面几部分来了解在 Azure AD 中如何进行设置，以及 Azure AD 支持的常见方案。
@@ -290,7 +288,7 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 6. 当访问令牌过期时，客户端应用程序将收到一个错误，指出用户需要重新进行身份验证。如果应用程序具有有效的刷新令牌，则可以使用它来获取新的访问令牌，系统不会提示用户重新登录。如果刷新令牌过期，则应用程序将再次需要以交互方式对用户进行身份验证。
 
 
-> [AZURE.NOTE]Azure AD 颁发的刷新令牌可以用来访问多个资源。例如，如果你的某个客户端应用程序有权调用两个 Web API，则同样可以使用刷新令牌来获取其他 Web API 的访问令牌。
+> [AZURE.NOTE] Azure AD 颁发的刷新令牌可以用来访问多个资源。例如，如果你的某个客户端应用程序有权调用两个 Web API，则同样可以使用刷新令牌来获取其他 Web API 的访问令牌。
 
 
 #### 代码示例
@@ -320,9 +318,11 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 ### Web 应用程序到 Web API
 
 
-本部分介绍了需要从 Web API 获取资源的 Web 应用程序。在此方案中，Web 应用程序可以使用两种标识类型进行身份验证并调用 Web API：应用程序标识或委托用户标识。对于应用程序标识类型，此方案使用 OAuth 2.0 客户端凭据授予作为应用程序进行身份验证并访问 Web API。当使用应用程序标识时，Web API 只能检测到 Web 应用程序在调用它，因为 Web API 不会收到关于用户的任何信息。如果应用程序收到关于用户的信息，则该信息将通过应用程序协议发送，并且 Azure AD 不会对其进行签名。Web API 相信 Web 应用程序已对用户进行了身份验证。因此，此模式称为受信任的子系统。
+本部分介绍了需要从 Web API 获取资源的 Web 应用程序。在此方案中，Web 应用程序可以使用两种标识类型进行身份验证并调用 Web API：应用程序标识或委托用户标识。
 
-对于委托用户标识类型，此方案可以通过两种方式完成：OpenID Connect 和带有机密客户端的 OAuth 2.0 代码授权。Web 应用程序为用户获取访问令牌，该令牌将向 Web API 证明用户已成功通过了 Web 应用程序的身份验证并且 Web 应用程序能够获取委托用户标识来调用 Web API。然后会在请求中将此访问令牌发送到 Web API，后者对用户进行授权并返回所需的资源。
+应用程序标识：此方案使用 OAuth 2.0 客户端凭据授予作为应用程序进行身份验证并访问 Web API。当使用应用程序标识时，Web API 只能检测到 Web 应用程序在调用它，因为 Web API 不会收到关于用户的任何信息。如果应用程序收到关于用户的信息，则该信息将通过应用程序协议发送，并且 Azure AD 不会对其进行签名。Web API 相信 Web 应用程序已对用户进行了身份验证。因此，此模式称为受信任的子系统。
+
+委派的用户标识：此方案可以通过两种方式完成：OpenID Connect 和带有机密客户端的 OAuth 2.0 代码授权。Web 应用程序为用户获取访问令牌，该令牌将向 Web API 证明用户已成功通过了 Web 应用程序的身份验证并且 Web 应用程序能够获取委托用户标识来调用 Web API。然后会在请求中将此访问令牌发送到 Web API，后者对用户进行授权并返回所需的资源。
 
 #### 图表
 
@@ -465,4 +465,4 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 
 [Azure AD 中的 OAuth 2.0](https://msdn.microsoft.com/zh-cn/library/azure/dn645545.aspx)
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0411_2016-->

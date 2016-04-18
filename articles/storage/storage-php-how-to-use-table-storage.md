@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="12/16/2015"
+	ms.date="02/17/2016"
 	wacn.date=""/>
 
 
@@ -19,7 +19,7 @@
 
 ## 概述
 
-本指南演示如何使用 Azure 表服务执行常见任务。示例是用 PHP 编写的并使用了 [Azure SDK for PHP][download]。所涉及的任务包括“创建和删除表以及在表中插入、删除和查询实体”。有关 Azure 表服务的详细信息，请参阅[后续步骤](#NextSteps)部分。
+本指南演示如何使用 Azure 表服务执行常见任务。示例是用 PHP 编写的并使用了 [Azure SDK for PHP][download]。所涉及的任务包括“创建和删除表以及在表中插入、删除和查询实体”。有关 Azure 表服务的详细信息，请参阅[后续步骤](#next-steps)部分。
 
 [AZURE.INCLUDE [storage-table-concepts-include](../includes/storage-table-concepts-include.md)]
 
@@ -44,7 +44,7 @@
 
 下面的示例演示了如何包括 autoloader 文件并引用 **ServicesBuilder** 类。
 
-> [AZURE.NOTE]本示例（以及本文中的其他示例）假定您已通过 Composer 安装用于 Azure 的 PHP 客户端库。如果你已手动安装这些库或将其作为 PEAR 包安装，则需要引用 <code>WindowsAzure.php</code> autoloader 文件。
+> [AZURE.NOTE] 本示例（以及本文中的其他示例）假定您已通过 Composer 安装用于 Azure 的 PHP 客户端库。如果你已手动安装这些库或将其作为 PEAR 包安装，则需要引用 <code>WindowsAzure.php</code> autoloader 文件。
 
 	require_once 'vendor\autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
@@ -246,7 +246,7 @@
 
 ## 检索分区中的一部分实体
 
-可以使用上一示例中使用的同一模式来检索分区中的部分实体。您检索的部分实体将由您使用的筛选器确定（有关详细信息，请参阅[查询表和实体][filters]）。下面的示例演示如何使用筛选器检索具有特定的 `Location` 和早于指定日期 `DueDate` 的所有实体。
+可以使用上一示例中使用的同一模式来检索分区中的部分实体。你检索的部分实体将由你使用的筛选器确定（有关详细信息，请参阅[查询表和实体][filters]）。下面的示例演示如何使用筛选器检索具有特定的 `Location` 和早于指定日期 `DueDate` 的所有实体。
 
 	require_once 'vendor\autoload.php';
 
@@ -474,4 +474,4 @@
 [filters]: http://msdn.microsoft.com/zh-cn/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/zh-cn/library/azure/dd894038.aspx
 
-<!----HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0411_2016-->

@@ -27,7 +27,8 @@ Azure 门户允许你灵活地在 Azure Active Directory (Azure AD) 中设置高
 - 二进制运算符
 - 右侧常量
 
-完整的高级规则如下所示：(leftParameter binaryOperator "RightConstant")，其中，左括号和右括号是整个二进制表达式所必需的，双引号是右侧常量所必需的，左侧参数的语法为 user.property。一个高级规则可能包含由 -and、-or 和 -not 逻辑运算符分隔的多个二进制表达式。下面是正确构造的高级规则的示例：
+完整的高级规则如下所示：(leftParameter binaryOperator "RightConstant")，其中，左括号和右括号是整个二进制表达式所必需的，双引号是右侧常量所必需的，左侧参数的语法为 user.property。
+一个高级规则可能包含由 -and、-or 和 -not 逻辑运算符分隔的多个二进制表达式。下面是正确构造的高级规则的示例：
 
 - (user.department -eq "Sales") -or (user.department -eq "Marketing")
 - (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
@@ -36,7 +37,7 @@ Azure 门户允许你灵活地在 Azure Active Directory (Azure AD) 中设置高
 
 高级规则正文的总长度不能超过 2048 个字符。
 > [AZURE.NOTE]
->字符串和正则表达式运算不区分大小写。你还可以执行 Null 检查，使用 $null 作为常量，例如 user.department -eq $null。
+字符串和正则表达式运算不区分大小写。你还可以执行 Null 检查，使用 $null 作为常量，例如 user.department -eq $null。
 应该使用 ` 字符来转义包含引号 " 的字符串，例如，user.department -eq "Sa`"les"。
 
 ##支持的表达式规则运算符
@@ -189,4 +190,4 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0411_2016-->

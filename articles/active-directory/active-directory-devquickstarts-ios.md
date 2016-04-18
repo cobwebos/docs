@@ -9,14 +9,14 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="07/17/2015"
+	ms.date="10/13/2015"
 	wacn.date=""/>
 
 # 将 Azure AD 集成到 iOS 应用程序中
 
-[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../../includes/active-directory-devquickstarts-switcher)]
+[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../includes/active-directory-devquickstarts-switcher)]
 
-[AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide)]
+[AZURE.INCLUDE [active-directory-devguide](../includes/active-directory-devguide)]
 
 对于需要访问受保护资源的 iOS 客户端，Azure AD 提供 Active Directory 身份验证库 (ADAL)。在本质上，ADAL 的唯一用途就是方便应用程序获取访问令牌。为了演示这种简便性，我们生成了一个 Objective C 待办事项列表应用程序，其中包括：
 
@@ -44,7 +44,7 @@
 - 	**aap-scheme** - 已在 XCode 项目中注册。它是其他应用程序与你联系的方式。可以在 Info.plist -> URL types -> URL Identifier 下找到此信息。如果尚未配置一个或多个方案，则你应该创建一个。
 - 	**bundle-id** - 这是在 XCode 项目设置中“identity”下可找到的捆绑标识符。
 	
-此快速入门代码的示例为：******msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
+此快速入门代码的示例为：***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
 ## *2.注册 DirectorySearcher 应用程序*
 若要让应用程序获取令牌，首先需要在 Azure AD 租户中注册该应用程序，并授予它访问 Azure AD Graph API 的权限：
@@ -61,7 +61,7 @@
 
 ## *3.安装并配置 ADAL*
 将应用程序注册到 Azure AD 后，可以安装 ADAL 并编写标识相关的代码。为了使 ADAL 能够与 Azure AD 通信，需要为 ADAL 提供一些有关应用程序的注册信息。
-- 	首先，使用 Cocapods 将 ADAL 添加到 DirectorySearcher 项目。
+-	首先，使用 Cocapods 将 ADAL 添加到 DirectorySearcher 项目。
 
 ```
 $ vi Podfile
@@ -221,5 +221,4 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 [使用 Azure AD 保护 Node.js Web API >>](../active-directory-devquickstarts-webapi-nodejst)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources)]
-
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0411_2016-->

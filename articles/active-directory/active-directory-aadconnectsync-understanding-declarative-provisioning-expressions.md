@@ -4,24 +4,23 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="swadhwa"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
 	ms.service="active-directory"
-	ms.date="11/10/2015"
+	ms.date="02/16/2016"
 	wacn.date=""/>
 
 
 # Azure AD Connect 同步：了解声明性预配表达式
-
 Azure AD Connect 同步构建在声明性预配的基础之上。该声明性预配是在 Forefront Identity Manager 2010 中首次引入的。利用该设置，你可以在无需编写编译代码的情况下，实现完整的标识集成业务逻辑。
 
 声明性设置的一个重要组成部分是属性流中使用的表达式语言。所用的语言是 Microsoft® Visual Basic® for Applications (VBA) 的子集。Microsoft Office 中使用了这种语言，具有 VBScript 经验的用户都认识该语言。声明性设置表达式语言只使用函数，不属于结构化语言；它不提供任何方法或语句。函数将嵌套在表达式程序流中。
 
 有关详细信息，请参阅[欢迎使用适用于 Office 2013 的 Visual Basic 应用程序语言参考](https://msdn.microsoft.com/library/gg264383.aspx)。
 
-属性属于强类型。需要单值字符串属性的函数不接受多值或不同类型的属性。它也区分大小写。函数名称和属性名称都必须具有正确的大小写，否则会引发错误
+属性属于强类型。函数只接受正确类型的属性。它也区分大小写。函数名称和属性名称都必须具有正确的大小写，否则会引发错误
 
 ## 语言定义和标识符
 
@@ -61,7 +60,7 @@ Active Directory 连接器为入站同步规则提供以下参数：
 
 使用用户所在域的 netbios 名称填充 Metaverse 属性域的示例：
 
-`domain <- %Domain.Netbios%`
+`domain` <- `%Domain.Netbios%`
 
 ### 运算符
 
@@ -73,7 +72,7 @@ Active Directory 连接器为入站同步规则提供以下参数：
 - **逻辑**：&&（和）、||（或）
 - **计算顺序**：( )
 
-运算符从左到右进行求值，并具有相同的求值优先级。也就是说，*（乘号）不会在 -（减号）之前求值。2*(5+3) 与 2*5+3 不同。如果从左到右的求值顺序不适当，可以使用括号 () 来更改求值顺序。
+运算符从左到右进行求值，并具有相同的求值优先级。也就是说，\*（乘号）不会在 -（减号）之前求值。2\*(5+3) 与 2\*5+3 不同。如果从左到右的求值顺序不适当，可以使用括号 () 来更改求值顺序。
 
 ## 常见方案
 
@@ -81,13 +80,13 @@ Active Directory 连接器为入站同步规则提供以下参数：
 
 字符串属性在默认情况下设置为可编制索引，并且最大长度为 448 个字符。如果你正在使用其中可能包含更多字符的字符串属性，则请确保属性流中包括以下内容：
 
-`attributeName <- Left([attributeName],448)`
+`attributeName` <- `Left([attributeName],448)`
 
 ### 更改 userPrincipalSuffix
 
-Active Directory 中的 userPrincipalName 属性并非始终被用户知晓，并且可能不适合作为登录名 ID。Azure AD Connect 同步安装向导允许选择不同的属性，例如 mail。但在某些情况下，必须计算该属性。例如：公司 Contoso 具有两个 Azure AD 目录，一个用于生产，另一个用于测试。他们希望测试租户中的用户只能更改登录 ID 中的后缀。
+Active Directory 中的 userPrincipalName 属性并非始终被用户知晓，并且可能不适合作为登录 ID。Azure AD Connect 同步安装向导允许选择不同的属性，例如 mail。但在某些情况下，必须计算该属性。例如：公司 Contoso 具有两个 Azure AD 目录，一个用于生产，另一个用于测试。他们希望测试租户中的用户只能更改登录 ID 中的后缀。
 
-`userPrincipalName <- Word([userPrincipalName],1,"@") & "@contosotest.com"`
+`userPrincipalName` <- `Word([userPrincipalName],1,"@") & "@contosotest.com"`
 
 在此表达式中，我们首先使用左侧所有内容 @-sign (Word)，并与固定字符串连接。
 
@@ -95,7 +94,7 @@ Active Directory 中的 userPrincipalName 属性并非始终被用户知晓，�
 
 Active Directory 中的某些属性在架构中是多值，不过它们在 Active Directory 用户和计算机中看上去是单值。一个示例就是说明属性。
 
-`description <- IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`
+`description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`
 
 在此表达式中，如果属性具有值，我们会使用属性中的第一项 (Item)，删除前导空格和尾随空格 (Trim)，然后保留字符串中的前 448 个字符（左）。
 
@@ -107,9 +106,7 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
 
 对于出站同步规则，有两个不同的常量可以使用：NULL 和 IgnoreThisFlow。两个常量均指示属性流没有要提供的内容，但不同之处是当其他规则都没有要提供的任何内容时会发生的情况。如果已连接目录中存在现有值，NULL 则会在删除它的属性上暂存删除，而 IgnoreThisFlow 则会保留现有值。
 
-
-
-#### ImportedValue
+### ImportedValue
 
 函数 ImportedValues 不同于其他所有函数，因为属性名称必须放在引号内，而不是括在方括号中：ImportedValue(“proxyAddresses”)。
 
@@ -117,7 +114,7 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
 
 可以从 Exchange 的现成同步规则 In from AD – User Common 中找到这种示例。其中，在混合 Exchange 中，如果已确认已成功导出由 Exchange Online 添加的值，则应该只同步该值：
 
-`proxyAddresses <- RemoveDuplicates(Trim(ImportedValues("proxyAddresses")))`
+`proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValues("proxyAddresses")))`
 
 有关函数的完整列表，请参阅 [Azure AD Connect Sync：函数引用](/documentation/articles/active-directory-aadconnectsync-functions-reference)
 
@@ -129,4 +126,4 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
  
 <!--Image references-->
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0411_2016-->

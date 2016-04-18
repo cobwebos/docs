@@ -1,21 +1,25 @@
-<properties 
-	pageTitle="向通用 Windows 8.1 应用添加推送通知 | Microsoft Azure" 
-	description="了解如何从 .NET 后端移动服务使用 Azure 通知中心向通用 Windows 8.1 应用发送推送通知。" 
-	services="mobile-services,notification-hubs" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="向通用 Windows 8.1 应用添加推送通知 | Microsoft Azure"
+	description="了解如何从 .NET 后端移动服务使用 Azure 通知中心向通用 Windows 8.1 应用发送推送通知。"
+	services="mobile-services,notification-hubs"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="erikre"
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/11/2015" 
+	ms.date="03/05/2016"
 	wacn.date=""/>
 
 # 向移动服务应用程序添加推送通知
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
 [AZURE.INCLUDE [mobile-services-selector-get-started-push](../includes/mobile-services-selector-get-started-push.md)]
+
+&nbsp;
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对应的 Mobile Apps 版本，请参阅[向 Windows 应用程序添加推送通知](/documentation/articles/app-service-mobile-windows-store-dotnet-get-started-push)。
 
 ##概述
 本主题说明如何结合使用 Azure 移动服务和 .NET 后端向通用 Windows 应用程序发送推送通知。在本教程中，你将在通用 Windows 应用程序项目中使用 Azure 通知中心来启用推送通知。完成后，每当在 TodoList 表中插入一条记录时，移动服务都会从 .NET 后端向所有已注册的 Windows 应用商店和 Windows Phone 应用商店应用程序发送一条推送通知。创建的通知中心可在移动服务中任意使用，可独立于移动服务进行管理，并可供其他应用程序和服务使用。
@@ -23,7 +27,7 @@
 若要完成本教程，您需要以下各项：
 
 * 有效的 [Microsoft 应用商店帐户](http://go.microsoft.com/fwlink/p/?LinkId=280045)。
-* <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio Community 2013</a>。 
+* [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934)。
 
 ##<a id="register"></a>为推送通知注册应用程序
 
@@ -35,7 +39,7 @@
 
 &nbsp;&nbsp;8.重复执行前面的步骤为 Windows Phone 应用商店应用项目添加推送通知，然后在共享的 App.xaml.cs 文件中，删除对 **UploadChannel** 和剩余 `#if...#endif` 条件包装的额外调用。现在，这两个项目可以共用对 **UploadChannel** 的单一调用。
 
-> [AZURE.NOTE]此外，你还可以通过将 `#if...#endif` 包装的 [MobileServiceClient](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx) 定义统一为单个解包的定义供这两个版本的应用程序使用来简化生成的代码。
+> [AZURE.NOTE] 此外，你还可以通过将 `#if...#endif` 包装的 [MobileServiceClient](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx) 定义统一为单个解包的定义供这两个版本的应用程序使用来简化生成的代码。
 
 现在可以在应用程序中启用推送通知，你必须更新移动服务以发送推送通知。
 
@@ -81,7 +85,7 @@
 * [向应用程序添加身份验证][Get started with authentication]
   <br/>了解如何通过不同帐户类型（使用移动服务）对应用程序的用户进行身份验证。
 
-* [什么是通知中心？]
+* [什么是通知中心？] 
   <br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
 
 * [调试通知中心应用程序](http://go.microsoft.com/fwlink/p/?linkid=386630)
@@ -109,4 +113,4 @@
 [如何使用适用于 Azure 移动服务的 .NET 客户端]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 [MobileServiceClient]: http://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.aspx
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0411_2016-->

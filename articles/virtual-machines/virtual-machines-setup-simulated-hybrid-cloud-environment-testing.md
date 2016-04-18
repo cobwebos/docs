@@ -1,7 +1,7 @@
 <!-- not suitable for Mooncake -->
 
 <properties 
-	pageTitle="模拟的混合云测试环境 | Microsoft Azure" 
+	pageTitle="模拟的混合云测试环境 | Azure" 
 	description="使用两个 Azure 虚拟网络和 VNet 到 VNet 连接创建模拟的混合云环境，以便进行 IT 专业人员测试或开发测试。" 
 	services="virtual-network" 
 	documentationCenter="" 
@@ -17,9 +17,9 @@
 
 # 设置用于测试的模拟混合云环境
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [经典部署模型](/documentation/articles/virtual-networks-setup-simulated-hybrid-cloud-environment-testing)。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](/documentation/articles/virtual-networks-setup-simulated-hybrid-cloud-environment-testing)。
 
-本文将指导你通过两个独立的 Azure 虚拟网络，逐步使用Microsoft Azure 创建用于测试的模拟混合云环境。当你没有直接的 Internet 连接和可用的公共 IP 地址时，可使用此配置作为[设置用于测试的混合云环境](/documentation/articles/virtual-networks-setup-hybrid-cloud-environment-testing)的替代方法。这是生成的配置。
+本文将指导你逐步使用 Azure 创建模拟混合云环境，以便使用两个独立的 Azure 虚拟网络进行测试。当你没有直接的 Internet 连接和可用的公共 IP 地址时，可使用此配置作为[设置用于测试的混合云环境](/documentation/articles/virtual-networks-setup-hybrid-cloud-environment-testing)的替代方法。这是生成的配置。
 
 ![](./media/virtual-machines-setup-simulated-hybrid-cloud-environment-testing/CreateSimHybridCloud_4.png)
 
@@ -88,7 +88,7 @@
 
 请注意，新网关可能需要 20 分钟或更长的时间才能完成。
 
-在本地计算机上的 Azure 管理门户中，使用 CORP\\User1 凭据连接到 DC1。若要配置 CORP 域，以便计算机和用户使用其本地域控制器进行身份验证，请从管理员级 Windows PowerShell 命令提示符运行这些命令。
+在本地计算机上的 Azure 门户中，使用 CORP\\User1 凭据连接到 DC1。若要配置 CORP 域，以便计算机和用户使用其本地域控制器进行身份验证，请从管理员级 Windows PowerShell 命令提示符运行这些命令。
 
 	New-ADReplicationSite -Name "TestLab" 
 	New-ADReplicationSite -Name "TestVNET"
@@ -139,7 +139,7 @@
 	New-AzureRmVirtualNetworkGatewayConnection -Name TestLab_to_TestVNET -ResourceGroupName $rgName -VirtualNetworkGateway1 $gwTestLab -VirtualNetworkGateway2 $gwTestVNET -Location $locName -ConnectionType Vnet2Vnet -SharedKey $sharedKey
 	New-AzureRmVirtualNetworkGatewayConnection -Name TestVNET_to_TestLab -ResourceGroupName $rgName -VirtualNetworkGateway1 $gwTestVNET -VirtualNetworkGateway2 $gwTestLab -Location $locName -ConnectionType Vnet2Vnet -SharedKey $sharedKey
 
-几分钟后，连接应建立完毕。请注意，此时 Azure 管理门户还不会显示使用 Azure Resource Manager 创建的网关和连接。
+几分钟后，连接应建立完毕。请注意，此时 Azure 门户还不会显示使用 Azure Resource Manager 创建的网关和连接。
 
 这是你当前的配置。
 
@@ -167,7 +167,7 @@
 	$vm=Set-AzureRMVMOSDisk -VM $vm -Name DC2-TestVNET-OSDisk -VhdUri $osDiskUri -CreateOption fromImage
 	New-AzureRMVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
-接下来，从 Azure 管理门户登录到新的 DC2 虚拟机。
+接下来，从 Azure 门户登录到新的 DC2 虚拟机。
 
 接下来，配置 Windows 防火墙规则，以允许进行基本的连接测试所需的流量。在 DC2 上的管理员级 Windows PowerShell 命令提示符下运行这些命令。
 
@@ -198,7 +198,7 @@
 
 由于 TestVNET 虚拟网络有自己的 DNS 服务器 (DC2)，因此必须将 TestVNET 虚拟网络配置为使用此 DNS 服务器。
 
-1.	在 Azure 管理门户的左窗格中，单击虚拟网络图标，然后单击“TestVNET”。
+1.	在 Azure 门户的左窗格中，单击虚拟网络图标，然后单击“TestVNET”。
 2.	在“设置”选项卡中，单击“DNS 服务器”。
 3.	在“主 DNS 服务器”中，键入“192.168.0.4”以替换 10.0.0.4。
 4.	单击“保存”。
@@ -213,4 +213,4 @@
 
 - 向 TestVNET 子网（例如运行 Microsoft SQL Server 的子网）[添加新虚拟机](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-resource-manager-vms)。
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0411_2016-->

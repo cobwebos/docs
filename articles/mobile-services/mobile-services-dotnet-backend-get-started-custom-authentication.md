@@ -1,10 +1,10 @@
-<properties 
-	pageTitle="自定义身份验证入门 | Azure" 
-	description="了解如何使用用户名和密码对用户进行身份验证。" 
-	documentationCenter="Mobile" 
-	authors="mattchenderson" 
-	manager="dwrede" 
-	editor="" 
+<properties
+	pageTitle="自定义身份验证入门 | Microsoft Azure"
+	description="了解如何使用用户名和密码对用户进行身份验证。"
+	documentationCenter="Mobile"
+	authors="mattchenderson"
+	manager="dwrede"
+	editor=""
 	services="mobile-services"/>
 
 <tags 
@@ -15,8 +15,7 @@
 # 自定义身份验证入门
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
-
-&nbsp;
+> 有关本主题的对应的 Mobile Apps 版本，请参阅[如何：将自定义身份验证用于应用程序](/documentation/articles/app-service-mobile-dotnet-backend-how-to-use-server-sdk/#custom-auth)。
 
 
 ## 概述
@@ -422,4 +421,4 @@
 [ClaimsIdentity]: https://msdn.microsoft.com/zh-cn/library/system.security.claims.claimsidentity(v=vs.110).aspx
 [ProviderCredentials]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mobile.service.security.providercredentials.aspx
  
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0411_2016-->

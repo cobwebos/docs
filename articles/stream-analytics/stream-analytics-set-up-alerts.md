@@ -1,7 +1,7 @@
 <properties 
-	pageTitle="流分析警报 | Microsoft Azure" 
+	pageTitle="为流分析中的查询设置警报 | Azure" 
 	description="了解流分析警报" 
-	keywords="大数据分析、云服务中、物联网、托管服务、流处理、流分析、流数据"
+	keywords="设置警报"
 	services="stream-analytics" 
 	documentationCenter="" 
 	authors="jeffstokes72" 
@@ -10,18 +10,19 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="11/06/2015" 
+	ms.date="03/18/2016" 
 	wacn.date=""/>
 
-# 设置警报
 
-## “监视”页
+# 为 Azure 流分析作业设置警报
 
-可以设置一条规则，在指标达到指定条件时触发警报。
+## 简介：监视页
+
+可以设置警报，以便在指标达到指定的条件时触发警报。
 
 例如，“如果最近 15 分钟的输出事件数 <100，则向电子邮件 ID：xyz@company.com” 发送电子邮件通知”。
 
-可以通过门户依据度量值设置规则，也可以依据操作日志数据[通过编程方式](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)进行配置。
+可以通过门户对指标设置规则，也可以依据操作日志数据[通过编程方式](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a)进行配置。
 
 ## 通过 Azure 门户设置警报
 
@@ -30,7 +31,7 @@
 1.	流分析作业的“监视”选项卡  
 2.	管理服务中的“操作日志”  
 
-## 通过门户中作业的“监视”选项卡设置警报
+## 通过门户中作业的“监视”页设置警报
 
 1.	在“监视”选项卡中选择指标，再单击仪表板底部的“添加规则”按钮，然后设置你的规则。  
 
@@ -56,7 +57,7 @@
     ![定义警报](./media/stream-analytics-set-up-alerts/05-stream-analytics-set-up-alerts.png)
 
 ## 获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=AzureStreamAnalytics)
 
 ## 后续步骤
 
@@ -66,4 +67,4 @@
 - [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
 - [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0411_2016-->

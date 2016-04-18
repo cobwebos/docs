@@ -1,7 +1,7 @@
 <!-- not suitable for Mooncake -->
 
 <properties
-	pageTitle="在 Resource Manager 中捕获 Windows VM | Microsoft Azure"
+	pageTitle="在资源管理器中捕获 Windows VM | Azure"
 	description="了解如何捕获使用 Azure Resource Manager 部署模型创建的、基于 Windows 的 Azure 虚拟机 (VM) 的映像。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -18,7 +18,7 @@
 
 # 如何在 Resource Manager 部署模型中捕获 Windows 虚拟机
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [经典部署模型](/documentation/articles/virtual-machines-capture-image-windows-server)。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](/documentation/articles/virtual-machines-capture-image-windows-server)。
 
 
 本文演示如何使用 Azure PowerShell 来捕获运行 Windows 的 Azure 虚拟机，以便用它来创建其他虚拟机。此映像包括操作系统磁盘和附加到虚拟机的数据磁盘。它不包括创建 Windows VM 所需的虚拟网络资源，因此你需要在创建另一个使用此映像的虚拟机之前，先设置好这些资源。还需对此映像进行准备，使之成为[通用化的 Windows 映像](https://technet.microsoft.com/zh-cn/library/hh824938.aspx)。
@@ -26,14 +26,14 @@
 
 ## 先决条件
 
-这些步骤假定你已使用 Resource Manager 部署模型创建了 Azure 虚拟机并配置了操作系统，包括附加任何数据磁盘和完成其他自定义事项（如安装应用程序）。如果你尚未完成此操作，请阅读[如何使用 Resource Manager 和 PowerShell 创建 Windows VM](/documentation/articles/virtual-machines-create-windows-powershell-resource-manager)。你可以同样轻松地使用 [Azure 管理门户](https://manage.windowsazure.cn)创建 Windows 虚拟机。阅读[如何在 Azure 管理门户中创建 Windows 虚拟机](/documentation/articles/virtual-machines-windows-tutorial-classic-portal)。
+这些步骤假定你已使用 Resource Manager 部署模型创建了 Azure 虚拟机并配置了操作系统，包括附加任何数据磁盘和完成其他自定义事项（如安装应用程序）。如果你尚未完成此操作，请阅读[如何使用 Resource Manager 和 PowerShell 创建 Windows VM](/documentation/articles/virtual-machines-create-windows-powershell-resource-manager)。你可以同样轻松地使用 [Azure 门户](https://portal.azure.cn)创建 Windows 虚拟机。请阅读[如何在 Azure 门户中创建 Windows 虚拟机](/documentation/articles/virtual-machines-windows-tutorial-classic-portal)。
 
 
 ## 准备要进行映像捕获的 VM
 
 本部分说明如何使 Windows 虚拟机通用化。在通用化过程中，将删除你在各个位置的所有个人帐户信息。当你要使用此 VM 映像快速部署类似的虚拟机时，通常需要执行此操作。
 
-1. 登录到 Windows 虚拟机。在 [Azure 管理门户](https://manage.windowsazure.cn)中，导航至“浏览”>“虚拟机”> 你的 Windows 虚拟机 >“连接”。
+1. 登录到 Windows 虚拟机。在 [Azure 门户](https://portal.azure.cn)中，导航至“浏览”>“虚拟机”> 你的 Windows 虚拟机 >“连接”。
 
 2. 以管理员身份打开“命令提示符”窗口。
 
@@ -49,7 +49,7 @@
 
 	![运行 Sysprep](./media/virtual-machines-windows-capture-image-resource-manager/SysprepGeneral.png)
 
-5.	Sysprep 关闭虚拟机。它在 Azure 管理门户中的状态变为“已停止”。
+5.	Sysprep 关闭虚拟机。它在 Azure 门户中的状态将变为“已停止”。
 
 
 </br>
@@ -81,11 +81,9 @@
 
 		Stop-AzureRmVM -ResourceGroupName YourResourceGroup -Name YourWindowsVM
 
-	你会看到，Azure 管理门户中该 VM 的“状态”已从“已停止”变为“已停止(已解除分配)”。
+	你会看到，Azure 门户中该 VM 的“状态”已从“已停止”变为“已停止(已解除分配)”。
 
-	>[AZURE.TIP] 你还可以在 PowerShell 中查找虚拟机的状态，方法是使用：</br> 
-	`$vm = Get-AzureRmVM -ResourceGroupName YourResourceGroup -Name YourWindowsVM -status`</br>
-	`$vm.Statuses`</br> “DisplayStatus”字段对应于 Azure 管理门户中显示的“状态”。
+	>[AZURE.TIP] 你还可以在 PowerShell 中查找虚拟机的状态，方法是使用：</br> `$vm = Get-AzureRmVM -ResourceGroupName YourResourceGroup -Name YourWindowsVM -status`</br> `$vm.Statuses`</br> “DisplayStatus”字段对应于 Azure 门户中显示的“状态”。
 
 4. 接下来，你需要将虚拟机的状态设置为“通用化”。请注意，你需要执行此步骤，因为 Azure 无法理解上述通用化步骤 (`sysprep`) 的执行方式。
 
@@ -138,7 +136,7 @@
 
 	![资源浏览器捕获](./media/virtual-machines-windows-capture-image-resource-manager/ArmExplorerCaptureAction.png)
 
-	单击“捕获”操作按钮以捕获虚拟机的映像。此时会创建映像的全新 VHD 以及 JSON 模板文件，这些目前都无法通过资源浏览器或 [Azure 管理门户](https://manage.windowsazure.cn)来访问。
+	单击“捕获”操作按钮以捕获虚拟机的映像。此时会创建映像的全新 VHD 以及 JSON 模板文件，这些目前都无法通过资源浏览器或 [Azure 门户](https://portal.azure.cn)来访问。
 
 9. 若要访问这个新的映像 VHD 和模板，请下载并安装管理存储资源所需的 Azure 工具，即 [Azure 存储资源管理器](http://storageexplorer.com/)。将在计算机本地安装 Azure 存储资源管理器。
 
@@ -201,7 +199,7 @@
 	#Create the new VM
 	New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $vm
 
-你应该在 [Azure 管理门户](https://manage.windowsazure.cn)的“浏览”>“虚拟机”下查看新创建的 VM，或者使用以下 PowerShell 命令进行查看：
+你应该在 [Azure 门户](https://portal.azure.cn)的“浏览”>“虚拟机”下查看新创建的 VM，或者使用以下 PowerShell 命令进行查看：
 
 	$vmList = Get-AzureRmVM -ResourceGroupName $rgName
 	$vmList.Name
@@ -211,4 +209,4 @@
 
 若要使用 Azure PowerShell 管理新虚拟机，请阅读[使用 Azure Resource Manager 和 PowerShell 管理虚拟机](/documentation/articles/virtual-machines-deploy-rmtemplates-powershell)。
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0411_2016-->

@@ -1,683 +1,605 @@
+<!-- not suitable for Mooncake -->
+
 <properties
-	pageTitle="自动缩放虚拟机缩放集 | Microsoft Azure"
-	description="开始创建和管理你的第一个 Azure 虚拟机缩放集"
+	pageTitle="自动缩放虚拟机缩放集 | Azure"
+	description="开始使用 Azure PowerShell 创建和管理你的第一个 Azure 虚拟机缩放集"
 	services="virtual-machines"
 	documentationCenter=""
-	authors="gbowerman"
+	authors="davidmu1"
 	manager="timlt"
 	editor=""
 	tags="azure-resource-manager"/>
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="11/11/2015"
+	ms.date="01/05/2016"
 	wacn.date=""/>
 
 # 自动缩放虚拟机缩放集中的虚拟机
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](/documentation/articles/virtual-machines-create-windows-powershell-service-manager)。
-
-
-本文档是一个快速指南，可指导你在公共预览期间开始创建和管理你的第一个 Azure 虚拟机缩放集。
-
-本指南假定你已熟悉如何使用 Azure 资源管理器 (ARM) 模板来部署虚拟机和 VNET 等 Azure 资源。如果尚不熟悉，请使用“资源”部分中的前 3 个链接大致了解资源管理器。
-
-## 什么是 VM 缩放集，为什么要使用它们？
-
-VM 缩放集是一种 Azure 计算资源，可用于部署和管理一组相同的 VM。
-
-VM 缩放集中的所有 VM 均采用相同的配置，专用于支持真正的自动缩放，而无需对 VM 进行预配，这有助于简化生成面向大计算、大数据、容器化工作负荷以及需要扩大和缩小计算资源的任何应用程序的大规模服务。缩放操作在容错域和更新域中隐式平衡。有关 VM 缩放集的简介，请参阅最近的 [Azure 博客通知](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview)。
-
-## 创建和使用 VM 缩放集
-
-可以使用 JSON 模板和 REST 调用定义和部署 VM 缩放集，就像定义和部署单个 Azure 资源管理器 VM 一样。因此，可以使用任何标准的 Azure 资源管理器部署方法，并且本文档将带你了解一些示例。
-
-特定 VMSS 集成区域（例如脚本和编程语言中的强制性命令支持）以及完整门户集成正在开发过程中，将在预览期间分阶段发布。
-
-## 使用 Azure 门户部署和管理 VM 缩放集
-
-最初，你不能在 Azure 门户中从头开始创建 VM 缩放集。门户支持的开发工作仍在进行中，在此工作的第一阶段，你只能在门户中看到已创建的缩放集，并且将必须使用模板/脚本方法来创建它们。在所有情况下，假定“门户”表示新的 Azure 门户：[https://manage.windowsazure.cn](https://manage.windowsazure.cn)。
-
-但是，你可以利用门户部署模板的能力来部署任何资源，包括缩放集。部署简单缩放集的一种简单方法是使用以下形式的链接：
-
-_https://manage.windowsazure.cn#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>_
-
-可以在此处的 Azure 快速入门模板 GitHub 存储库中找到一组 VM 缩放集的示例模板：[https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) - 查找标题中含有 _vmss_ 的模板。
-
-这些模板的自述文件中包含一个以下形式的按钮，使用该按钮可链接到门户部署功能。
-
-若要部署缩放集，请单击该按钮，然后填写门户中所需的任何参数。注意：如果你不确定某个资源是否支持大写或大小写混合，则更为安全的做法是始终使用小写参数值。
-
-**在门户/资源管理器中监视 VM 缩放集资源**
-
-部署缩放集后，门户中将显示其基本视图，但最初在预览期间它不会显示详细的属性，也不允许你向下钻取在 VM 缩放集中运行的 VM。
-
-在完整的门户集成就位之前，建议你使用 **Azure 资源管理器** ([https://resources.azure.com](https://resources.azure.com)) 来查看 VM 缩放集。VM 缩放集是 Microsoft.Compute 下的资源，因此，你可以通过在此站点中展开以下链接来查看它们：
-
-订阅 -> 你的订阅 -> resourceGroups -> 提供程序 -> Microsoft.Compute -> virtualMachineScaleSets -> 你的 VM 缩放集 -> 等等
-
-## 使用 PowerShell 部署和管理 VM 缩放集
-
-你可以使用任何当前的 Azure PowerShell 版本部署 VMSS 模板和查询资源。
-
-**重要说明：**下面显示的示例适用于 [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0-pre/)，它们使用 _AzureRm_ 作为许多命令的前缀。如果正在使用早期版本的 PowerShell（如 0.9.8 或更低版本），请从示例命令中删除“**Rm**”。这些示例还假定你已在 PowerShell 环境中建立与 Azure 的登录连接 (_Login-AzureRmAccount_)。
-
-示例:
-
-&#35; **创建资源组**
-
-New-AzureRmResourcegroup -name myrg -location 'Southeast Asia'
-
-&#35; **创建包含两个 VM 的 VM 缩放集**
-
-New-AzureRmResourceGroupDeployment -name dep1 -vmSSName myvmss -instanceCount 3 -ResourceGroupName myrg -TemplateUri [https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-linux-nat/azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-linux-nat/azuredeploy.json)
-
-系统将提示你提供缺少的任何参数（如此示例中的位置、用户名和密码）。
-
-&#35; **获取 VM 缩放集详细信息**
-
-Get-AzureRmResource -name myvmss -ResourceGroupName myrg -ResourceType Microsoft.Compute/virtualMachineScaleSets -ApiVersion 2015-06-15
-
-&#35; 或者获取有关管道传输的更多详细信息 | ConvertTo-Json -Depth 10
-
-& #35;或者获取有关向命令添加 –debug 的更多详细信息。
-
-&#35; 扩大或缩小
-
-New-AzureRmResourceGroupDeployment -name dep2 -vmSSName myvmss -instanceCount 2 -ResourceGroupName myrg –TemplateUri [https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-scale-in-or-out/azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-scale-in-or-out/azuredeploy.json)
-
-&#35; **删除缩放集**
-
-&#35; 简单：删除整个资源组以及其中的所有内容：
-
-Remove-AzureRmResourceGroup -Name myrg
-
-&#35; 精确：删除特定资源：
-
-Remove-AzureRmResource -Name myvmss -ResourceGroupName myrg -ApiVersion 2015-06-15 -ResourceType Microsoft.Compute/virtualMachineScaleSets
-
-### 缩放集的强制性 PowerShell 命令
-
-即将推出的 Azure PowerShell 版本将包含一套强制性命令，可用于在不使用模板的情况下创建和管理 VM 缩放集。可在此处获得此版本的预览版：[https://github.com/AzureRT/azure-powershell/releases](https://github.com/AzureRT/azure-powershell/releases)。可在此处找到有关如何使用强制性 API 的示例：
-
-[https://github.com/huangpf/azure-powershell/blob/vmss/src/ResourceManager/Compute/Commands.Compute.Test/ScenarioTests/VirtualMachineScaleSetTests.ps1](https://github.com/huangpf/azure-powershell/blob/vmss/src/ResourceManager/Compute/Commands.Compute.Test/ScenarioTests/VirtualMachineScaleSetTests.ps1)
-
-## 使用 Azure CLI 部署和管理 VM 缩放集
-
-你可以使用任何当前的 Azure CLI 版本部署 VMSS 模板和查询资源。
-
-最简单的 CLI 安装方法是从 Docker 容器中进行安装。有关安装信息，请参阅：[https://azure.microsoft.com/blog/run-azure-cli-as-a-docker-container-avoid-installation-and-setup/](https://azure.microsoft.com/blog/run-azure-cli-as-a-docker-container-avoid-installation-and-setup/)
-
-有关使用 CLI 的信息，请参阅：[/documentation/articles/xplat-cli/](/documentation/articles/xplat-cli/)
-
-### VM 缩放集 CLI 示例
-
-&#35; **创建资源组**
-
-azure group create myrg "Southeast Asia"
-
-&#35; **创建 VM 缩放集**
-
-azure group deployment create -g myrg -n dep2 --template-uri [https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-linux-nat/azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-linux-nat/azuredeploy.json)
-
-&#35; 这将动态要求提供形参，或者可以将它们指定为实参
-
-&#35; **获取缩放集详细信息**
-
-azure resource show -n vmssname -r Microsoft.Compute/virtualMachineScaleSets -o 2015-06-15 -g myrg
-
-&#35; 或者获取更多详细信息：
-
-azure resource show –n vmssname –r Microsoft.Compute/virtualMachineScaleSets –o 2015-06-15 –g myrg –json –vv
-
-即将推出的 Azure CLI 版本将包含一些强制性命令，可用于在不使用模板的情况下部署和管理 VM 缩放集，并对 VM 缩放集中的 VM 执行操作。你可以在此处跟踪此版本：[https://github.com/AzureRT/azure-xplat-cli/releases/](https://github.com/AzureRT/azure-xplat-cli/releases/)
-
-## VM 缩放集模板
-
-本部分演示了一个用于创建 VM 缩放集的简单 Azure 模板，并将该模板与用于创建单实例虚拟机的模板进行比较。此外，此处还对 VM 缩放集进行了简单的视频分析：[https://channel9.msdn.com/Blogs/Windows-Azure/VM-Scale-Set-Template-Dissection/player](https://channel9.msdn.com/Blogs/Windows-Azure/VM-Scale-Set-Template-Dissection/player)
-
-### 模板剖析
-
-让我们从一个创建由 Ubuntu 虚拟机组成的 VM 缩放集的简单模板开始，并将其分解为若干组件。此示例还创建了 VM 缩放集所依赖的资源，如 VNET 和存储帐户等。此示例的所在位置为：[https://raw.githubusercontent.com/gbowerman/azure-myriad/master/vmss-ubuntu-vnet-storage.json](https://raw.githubusercontent.com/gbowerman/azure-myriad/master/vmss-ubuntu-vnet-storage.json) - 请注意，对于此“hello world”示例，没有可用于从 VNET外部直接连接到 VM 缩放集中的 VM 的方法，因为向 VM 分配的是内部 IP 地址。请参阅“方案”部分和 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates)中的示例，了解使用负载平衡器或跳转盒从外部进行连接的方法。
-
-### 模板标头。
-
-指定架构和内容版本：
-
-{
-
-   "$schema": "http://schema.management.azure.com/schemas/2015-01-01-preview/deploymentTemplate.json",
-
-   "contentVersion": "1.0.0.0",
-
-### Parameters
-
-与任何 Azure 资源管理器 (ARM) 模板一样，本部分定义在部署时指定的参数，在本示例中这包括 VM 缩放集的名称、开始时的 VM 实例数、创建存储帐户使用的唯一字符串（为存储帐户等对象输入值时，始终使用小写，除非你知道如何处理大小写）。
-
-````
- "parameters": {
-
-    "vmSSName": {
-
-      "type": "string",
-
-      "metadata": {
-
-        "description": "Scale Set name, also used in this template as a base for naming resources (hence limited less than 10 characters)."
-
-      },
-
-      "maxLength": 10
-
-    },
-
-    "instanceCount": {
-
-      "type": "int",
-
-      "metadata": {
-
-        "description": "Number of VM instances"
-
-      },
-
-      "maxValue": 100
-
-    },
-
-    "adminUsername": {
-
-      "type": "string",
-
-      "metadata": {
-
-        "description": "Admin username on all VMs."
-
-      }
-
-    },
-
-    "adminPassword": {
-
-      "type": "securestring",
-
-      "metadata": {
-
-        "description": "Admin password on all VMs."
-
-      }
-
-    }
-
-  },
-````
-
-### 变量
-
-一个标准 ARM 模板组件，用于定义你稍后将在模板中引用的变量。在本示例中，我们将使用变量来定义想要使用的操作系统、某些网络配置详细信息，以及存储设置和存储位置。对于位置，我们将使用 _location()_ 函数来从部署该位置的资源组中进行选取。
-
-请注意，为存储帐户前缀定义了一组唯一字符串。有关说明，请参阅“存储”部分。
-
-````
-  "variables": {
-
-    "apiVersion": "2015-06-15",
-
-    "newStorageAccountSuffix": "[concat(parameters('vmssName'), 'sa')]",
-
-    "uniqueStringArray": [
-
-      "[concat(uniqueString(concat(resourceGroup().id, deployment().name, variables('newStorageAccountSuffix'), '0')))]",
-
-      "[concat(uniqueString(concat(resourceGroup().id, deployment().name, variables('newStorageAccountSuffix'), '1')))]",
-
-      "[concat(uniqueString(concat(resourceGroup().id, deployment().name, variables('newStorageAccountSuffix'), '2')))]",
-
-      "[concat(uniqueString(concat(resourceGroup().id, deployment().name, variables('newStorageAccountSuffix'), '3')))]",
-
-      "[concat(uniqueString(concat(resourceGroup().id, deployment().name, variables('newStorageAccountSuffix'), '4')))]"
-
-    ],
-
-    "vmSize": "Standard\_A1",
-
-    "vhdContainerName": "[concat(parameters('vmssName'), 'vhd')]",
-
-    "osDiskName": "[concat(parameters('vmssName'), 'osdisk')]",
-
-    "virtualNetworkName": "[concat(parameters('vmssName'), 'vnet')]",
-
-    "subnetName": "[concat(parameters('vmssName'), 'subnet')]",
-
-    "nicName": "[concat(parameters('vmssName'), 'nic')]",
-
-    "ipConfigName": "[concat(parameters('vmssName'), 'ipconfig')]",
-
-    "addressPrefix": "10.0.0.0/16",
-
-    "subnetPrefix": "10.0.0.0/24",
-
-    "storageAccountType": "Standard_LRS",
-
-    "location": "[resourceGroup().location]",
-
-    "osType": {
-
-      "publisher": "Canonical",
-
-      "offer": "UbuntuServer",
-
-      "sku": "15.10",
-
-      "version": "latest"
-
-    },
-
-    "imageReference": "[variables('osType')]"
-
-  },
-````
-
-### 资源
-
-在本部分中，对每种资源类型进行了定义。
-
-````
-   "resources": [
-````
-
-
-**存储。** 创建 VM 缩放集时，指定一组存储帐户。然后，将在每个帐户间平均分配 VM 实例的 OS 磁盘。以后，VM 缩放集将切换为使用托管磁盘方法，是用该方法时，无需管理存储帐户，而是只需将存储属性作为缩放集定义的一部分进行描述。现在，你将需要提前创建所需数目的帐户。我们建议你创建 5 个存储帐户，这将轻松支持缩放集中的多达 100 个 VM（当前最大数目）。
-
-创建一组存储帐户后，这些帐户将分布在存储戳中的分区内，分配方案取决于存储帐户名称的第一个字母。因此，为了获得最佳性能，建议你在创建每个存储帐户时以字母表中的不同字母开头。可以进行手动命名，也可以像此示例中一样，使用 uniqueString() 函数提供伪随机分布：
-
-````
-    {
-
-      "type": "Microsoft.Storage/storageAccounts",
-
-      "name": "[concat(variables('uniqueStringArray')[copyIndex()], variables('newStorageAccountSuffix'))]",
-
-      "location": "[variables('location')]",
-
-      "apiVersion": "[variables('apiVersion')]",
-
-      "copy": {
-
-        "name": "storageLoop",
-
-        "count": 5
-
-      },
-
-      "properties": {
-
-        "accountType": "[variables('storageAccountType')]"
-
-      }
-
-    },
-````
-
-**虚拟网络。** 创建 VNET。请注意，你可以在同一 VNET 中具有多个缩放集以及单个 VM。
-
-````
-    {
-
-      "type": "Microsoft.Network/virtualNetworks",
-
-      "name": "[variables('virtualNetworkName')]",
-
-      "location": "[variables('location')]",
-
-      "apiVersion": "[variables('apiVersion')]",
-
-      "properties": {
-
-        "addressSpace": {
-
-          "addressPrefixes": [
-
-            "[variables('addressPrefix')]"
-
-          ]
-
-        },
-
-        "subnets": [
-
-          {
-
-            "name": "[variables('subnetName')]",
-
-            "properties": {
-
-              "addressPrefix": "[variables('subnetPrefix')]"
-
-            }
-
-          }
-
-        ]
-
-      }
-
-    },
-````
-
-### virtualMachineScaleSets 资源
-
-在许多方面，_virtualMachineScaleSets_ 资源就像 _virtualMachines_ 资源一样。它们都由 Microsoft.Compute 资源提供程序提供，并且属于相同的级别。主要的差异是你将提供一个 _capacity_ 值来表明创建的 VM 数，并且你在此处定义的内容适用于 VM 缩放集中的所有 VM。
-
-请注意 _dependsOn_ 部分如何引用上文中创建的存储帐户和 VNET，以及 capacity 部分如何引用 _instanceCount_ 参数。
-
-````
-    {
-
-      "type": "Microsoft.Compute/virtualMachineScaleSets",
-
-      "name": "[parameters('vmssName')]",
-
-      "location": "[variables('location')]",
-
-      "apiVersion": "[variables('apiVersion')]",
-
+> [AZURE.SELECTOR]
+- [Azure CLI](/documentation/articles/virtual-machines-vmss-walkthrough-cli)
+- [Azure PowerShell](/documentation/articles/virtual-machines-vmss-walkthrough)
+
+<br>
+
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
+
+使用虚拟机缩放集可以轻松地将相同的虚拟机作为集来进行部署和管理。缩放集为超大规模应用程序提供高度可缩放且可自定义的计算层，并且它们支持 Windows 平台映像、Linux 平台映像、自定义映像和扩展。有关缩放集的详细信息，请参阅[虚拟机缩放集](/documentation/articles/virtual-machines-vmss-overview)。
+
+本教程演示如何创建 Windows 虚拟机的虚拟机缩放集，并自动缩放集中的虚拟机。为此，将使用 Azure PowerShell 创建 Azure Resource Manager 模板并部署它。有关模板的详细信息，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
+
+在本教程中生成的模板非常类似于可在模板库中找到的模板。若要了解详细信息，请参阅 [Deploy a simple VM Scale Set with Windows VMs and a Jumpbox（使用 Windows VM 和 Jumpbox 部署简单的 VM 缩放集）](https://azure.microsoft.com/documentation/templates/201-vmss-windows-jumpbox/)。
+
+[AZURE.INCLUDE [powershell-preview-inline-include](../includes/powershell-preview-inline-include.md)]
+
+[AZURE.INCLUDE [virtual-machines-vmss-preview-ps](../includes/virtual-machines-vmss-preview-ps-include.md)]
+
+## 步骤 1：创建资源组和存储帐户
+
+1. “登录到 Azure”。打开 Azure PowerShell 窗口并运行 “Login-AzureRmAccount”。
+
+2. “创建资源组” - 所有资源都必须部署到资源组。对于本教程，将资源组命名为 “vmsstestrg1”。请参阅 [New-AzureRmResourceGroup](https://msdn.microsoft.com/zh-cn/library/mt603739.aspx)。
+
+3. “将存储帐户部署到新的资源组” - 本教程使用多个存储帐户来实现虚拟机缩放集。使用 [New-AzureRmStorageAccount](https://msdn.microsoft.com/zh-cn/library/mt607148.aspx) 创建名为 “vmsstestsa” 的存储帐户。让 Azure PowerShell 窗口保持打开状态以便完成本教程中的后续步骤。
+
+## 步骤 2：创建模板
+借助 Azure Resource Manager 模板，你可以使用资源和关联部署参数的 JSON 描述来统一部署和管理 Azure 资源。
+
+1. 在你常用的文本编辑器中，创建文件 C:\\VMSSTemplate.json 并添加初始 JSON 结构，以支持模板。
+
+	```
+	{
+		"$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/VM.json",
+		"contentVersion": "1.0.0.0",
+		"parameters": {
+		}
+		"variables": {
+		}
+		"resources": [
+		]
+	}
+	```
+
+2. 参数并不总是必需的，但它们有助于简化模板管理。它们提供了为模板指定值的方法，描述了值的类型、所需的默认值，有时还描述参数的允许值。
+
+	将这些参数添加到已添加到模板中的参数父元素下：
+
+	- 用于访问缩放集中虚拟机的 jumpbox 虚拟机的名称。
+	- 存储模板的存储帐户名称。
+	- 最初在缩放集中创建的虚拟机实例数。
+	- 虚拟机上的管理员帐户的名称和密码。
+	- 在资源组中创建的资源的前缀。
+
+
+	```
+	"vmName": {
+		"type": "string"
+	},
+	"vmSSName": {
+		"type": "string"
+	},
+	"instanceCount": {
+		"type": "string"
+	},
+	"adminUsername": {
+		"type": "string"
+	},
+	"adminPassword": {
+		"type": "securestring"
+	},
+	"resourcePrefix": {
+		"type": "string"
+	}
+	```
+
+3. 可以在模板中使用变量指定可能经常发生变化的值或需要通过组合参数值创建的值。
+
+	将这些变量添加到已添加到模板中的变量父元素下：
+
+	- 网络接口所用的 DNS 名称。
+	- 在缩放集中使用的虚拟机大小。有关虚拟机大小的详细信息，请参阅[虚拟机的大小](/documentation/articles/virtual-machines-size-specs)。
+	- 用于定义将在缩放集中虚拟机上运行的操作系统的平台映像信息。有关选择映像的详细信息，请参阅[使用 Windows PowerShell 和 Azure CLI 来浏览和选择 Azure 虚拟机映像](/documentation/articles/resource-groups-vm-searching)。
+	- 虚拟网络和子网的 IP 地址名称和前缀。
+	- 虚拟网络、负载平衡器和网络接口的名称和标识符。
+	- 与缩放集中虚拟机关联的帐户的存储帐户名称。
+	- 已安装在虚拟机上的诊断扩展的设置。有关诊断扩展的详细信息，请参阅[使用 Azure Resource Manager 模板创建具有监视和诊断功能的 Windows 虚拟机](/documentation/articles/virtual-machines-extensions-diagnostics-windows-template)。
+
+	```
+	"apiVersion": "2015-06-15"
+	"dnsName1": "[concat(parameters('resourcePrefix'),'dn1')] ",
+	"dnsName2": "[concat(parameters('resourcePrefix'),'dn2')] ",
+	"vmSize": "Standard_A0",
+	"imagePublisher": "MicrosoftWindowsServer",
+	"imageOffer": "WindowsServer",
+	"imageVersion": "2012-R2-Datacenter",
+	"addressPrefix": "10.0.0.0/16",
+	"subnetName": "Subnet",
+	"subnetPrefix": "10.0.0.0/24",
+	"publicIP1": "[concat(parameters('resourcePrefix'),'ip1')]",
+	"publicIP2": "[concat(parameters('resourcePrefix'),'ip2')]",
+	"loadBalancerName": "[concat(parameters('resourcePrefix'),'lb1')]",
+	"virtualNetworkName": "[concat(parameters('resourcePrefix'),'vn1')]",
+	"nicName1": "[concat(parameters('resourcePrefix'),'nc1')]",
+	"nicName2": "[concat(parameters('resourcePrefix'),'nc2')]",
+	"vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
+	"publicIPAddressID1": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIP1'))]",
+	"publicIPAddressID2": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIP2'))]",
+	"lbID": "[resourceId('Microsoft.Network/loadBalancers',variables('loadBalancerName'))]",
+	"nicId": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName2'))]",
+	"frontEndIPConfigID": "[concat(variables('lbID'),'/frontendIPConfigurations/loadBalancerFrontEnd')]",
+	"storageAccountType": "Standard_LRS",
+	"storageAccountSuffix": [ "a", "g", "m", "s", "y" ],
+	"diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'saa')]",
+	"accountid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/', resourceGroup().name,'/providers/','Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
+	"wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB="4096" xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter="Error"/> <WindowsEventLog scheduledTransferPeriod="PT1M" > <DataSource name="Application!*[System[(Level = 1 or Level = 2)]]" /> <DataSource name="Security!*[System[(Level = 1 or Level = 2)]]" /> <DataSource name="System!*[System[(Level = 1 or Level = 2)]]" /></WindowsEventLog>",
+	"wadperfcounter": "<PerformanceCounters scheduledTransferPeriod="PT1M"><PerformanceCounterConfiguration counterSpecifier="\\Processor(_Total)\\% Processor Time" sampleRate="PT15S" unit="Percent"><annotation displayName="CPU utilization" locale="en-us"/></PerformanceCounterConfiguration>",
+	"wadcfgxstart": "[concat(variables('wadlogs'),variables('wadperfcounter'),'<Metrics resourceId="')]",
+	"wadmetricsresourceid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name ,'/providers/','Microsoft.Compute/virtualMachineScaleSets/',parameters('vmssName'))]",
+	"wadcfgxend": "[concat('"><MetricAggregation scheduledTransferPeriod="PT1H"/><MetricAggregation scheduledTransferPeriod="PT1M"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
+	```
+
+4. 在本教程中，你将部署以下资源和扩展：
+
+ - Microsoft.Storage/storageAccounts
+ - Microsoft.Network/virtualNetworks
+ - Microsoft.Network/publicIPAddresses
+ - Microsoft.Network/loadBalancers
+ - Microsoft.Network/networkInterfaces
+ - Microsoft.Compute/virtualMachines
+ - Microsoft.Compute/virtualMachineScaleSets
+ - Microsoft.Insights.VMDiagnosticsSettings
+ - Microsoft.Insights/autoscaleSettings
+
+	有关资源管理器资源的详细信息，请参阅 [Azure Resource Manager 中的 Azure 计算、网络和存储提供程序](/documentation/articles/virtual-machines-azurerm-versus-azuresm)。
+
+	将存储帐户资源添加到已添加到模板中的资源父元素下。此模板使用一个循环来创建建议的 5 个存储帐户，其中将存储操作系统磁盘和诊断数据。这组帐户可在一个缩放集中最多支持 100 个虚拟机，这是当前的最大值。每个存储帐户通过将变量中定义的字母指示符与模板的参数中提供的后缀组合来命名。
+
+	```
+	{
+		"type": "Microsoft.Storage/storageAccounts",
+		"name": "[concat(variables('resourcePrefix'), parameters('storageAccountSuffix')[copyIndex()])]",
+		"apiVersion": "2015-05-01-preview",
+		"copy": {
+			"name": "storageLoop",
+			"count": 5
+		},
+		"location": "[resourceGroup().location]",
+		"properties": {
+			"accountType": "[variables('storageAccountType')]"
+		}
+	},
+	```
+
+5. 添加虚拟网络资源。有关详细信息，请参阅[网络资源提供程序](/documentation/articles/resource-groups-networking)。
+
+	```
+	{
+		"apiVersion": "[variables('apiVersion')]",
+		"type": "Microsoft.Network/virtualNetworks",
+		"name": "[variables('virtualNetworkName')]",
+		"location": "[resourceGroup().location]",
+		"properties": {
+			"addressSpace": {
+				"addressPrefixes": [
+					"[variables('addressPrefix')]"
+				]
+			},
+			"subnets": [
+				{
+					"name": "[variables('subnetName')]",
+					"properties": {
+						"addressPrefix": "[variables('subnetPrefix')]"
+					}
+				}
+			]
+		}
+	},
+	```
+
+6. 添加负载平衡器和网络接口所使用的公共 IP 地址资源。
+
+	```
+	{
+		"apiVersion": "[variables('apiVersion')]",
+		"type": "Microsoft.Network/publicIPAddresses",
+		"name": "[variables('publicIP1')]",
+		"location": "[resourceGroup().location]",
+		"properties": {
+			"publicIPAllocationMethod": "Dynamic",
+			"dnsSettings": {
+				"domainNameLabel": "[variables('dnsName1')]"
+			}
+		}
+	},
+	{
+		"apiVersion": "[variables('apiVersion')]",
+		"type": "Microsoft.Network/publicIPAddresses",
+		"name": "[variables('publicIP2')]",
+		"location": "[resourceGroup().location]",
+		"properties": {
+			"publicIPAllocationMethod": "Dynamic",
+			"dnsSettings": {
+				"domainNameLabel": "[variables('dnsName2')]"
+			}
+		}
+	},
+	```
+
+7. 添加缩放集使用的负载平衡器资源。有关详细信息，请参阅 [Azure Resource Manager 对负载平衡器的支持](/documentation/articles/load-balancer-arm)。
+
+	```
+	{
+		"apiVersion": "[variables('apiVersion')]",
+		"name": "[variables('loadBalancerName')]",
+		"type": "Microsoft.Network/loadBalancers",
+		"location": "[resourceGroup().location]",
+		"dependsOn": [
+			"[concat('Microsoft.Network/publicIPAddresses/', variables('publicIP1'))]"
+		],
+		"properties": {
+			"frontendIPConfigurations": [
+				{
+					"name": "loadBalancerFrontEnd",
+					"properties": {
+						"publicIPAddress": {
+							"id": "[variables('publicIPAddressID1')]"
+						}
+					}
+				}
+			],
+			"backendAddressPools": [
+				{
+					"name": "bepool1"
+				}
+			],
+			"inboundNatPools": [
+				{
+					"name": "natpool1",
+					"properties": {
+						"frontendIPConfiguration": {
+							"id": "[variables('frontEndIPConfigID')]"
+						},
+						"protocol": "tcp",
+						"frontendPortRangeStart": 50000,
+						"frontendPortRangeEnd": 50500,
+						"backendPort": 3389
+					}
+				}
+			]
+		}
+	},
+	```
+
+8. 添加 jumpbox 虚拟机使用的网络接口资源。由于虚拟机缩放集中的虚拟机不可使用公共 IP 地址直接访问，因此将在缩放集所在的同一虚拟网络中创建 jumpbox 虚拟机，并使用它来远程访问集中的虚拟机。
+
+
+	```
+	{
+		"apiVersion": "2015-05-01-preview",
+		"type": "Microsoft.Network/networkInterfaces",
+		"name": "[variables('nicName1')]",
+		"location": "[resourceGroup().location]",
+		"dependsOn": [
+			"[concat('Microsoft.Network/publicIPAddresses/', variables('publicIP2'))]",
+			"[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+		],
+		"properties": {
+			"ipConfigurations": [
+				{
+					"name": "ipconfig1",
+					"properties": {
+						"privateIPAllocationMethod": "Dynamic",
+						"publicIPAddress": {
+							"id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIP2'))]"
+						},
+						"subnet": {
+							"id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/virtualNetworks/',variables('virtualNetworkName'),'/subnets/',variables('subnetName'))]"
+						}
+					}
+				}
+			]
+		}
+	},
+	```
+
+
+9. 在缩放集所在的同一网络中添加虚拟机。
+
+	```
+	{
+		"apiVersion": "2015-05-01-preview",
+		"type": "Microsoft.Compute/virtualMachines",
+		"name": "[parameters('vmName')]",
+		"location": "[resourceGroup().location]",
       "dependsOn": [
-
-        "[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray')[0], variables('newStorageAccountSuffix'))]",
-
-        "[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray')[1], variables('newStorageAccountSuffix'))]",
-
-        "[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray')[2], variables('newStorageAccountSuffix'))]",
-
-        "[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray')[3], variables('newStorageAccountSuffix'))]",
-
-        "[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStringArray')[4], variables('newStorageAccountSuffix'))]",
-
-        "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
-
-      ],
-
-      "sku": {
-
-        "name": "[variables('vmSize')]",
-
-        "tier": "Standard",
-
-        "capacity": "[parameters('instanceCount')]"
-
-      },
-````
-
-**属性**
-
-VM 缩放集具有 upgradePolicy 设置。将来的版本将支持切分更新（例如每次更改 VM 20% 配置），但是目前，upgradePolicy 可设置为“手动”或“自动”。“手动”意味着如果你更改了模板并重新部署，则仅当创建了新 VM 或更新了扩展时（例如，增大了 _capacity_ 时），所做的更改才会生效。“自动”意味着完全更新所有 VM，将重启所有内容。“手动”通常是更安全的方法。可以删除单独的 VM，然后根据需要重新部署以逐步更新。
-
-````
-      "properties": {
-
-         "upgradePolicy": {
-
-         "mode": "Manual"
-
-        },
-````
-
-**属性->virtualMachineProfile**
-
-此处，可将上面创建的存储帐户引用为 VM 的容器。无需预先创建实际的容器，只需创建帐户。
-
-````
-        "virtualMachineProfile": {
-
-          "storageProfile": {
-
-            "osDisk": {
-
-              "vhdContainers": [
-
-                "[concat('https://', variables('uniqueStringArray')[0], variables('newStorageAccountSuffix'), '.blob.core.chinacloudapi.cn/', variables('vhdContainerName'))]",
-
-                "[concat('https://', variables('uniqueStringArray')[1], variables('newStorageAccountSuffix'), '.blob.core.chinacloudapi.cn/', variables('vhdContainerName'))]",
-
-                "[concat('https://', variables('uniqueStringArray')[2], variables('newStorageAccountSuffix'), '.blob.core.chinacloudapi.cn/', variables('vhdContainerName'))]",
-
-                "[concat('https://', variables('uniqueStringArray')[3], variables('newStorageAccountSuffix'), '.blob.core.chinacloudapi.cn/', variables('vhdContainerName'))]",
-
-                "[concat('https://', variables('uniqueStringArray')[4], variables('newStorageAccountSuffix'), '.blob.core.chinacloudapi.cn/', variables('vhdContainerName'))]"
-
-              ],
-
-              "name": "[variables('osDiskName')]",
-
-              "caching": "ReadOnly",
-
-              "createOption": "FromImage"
-
-            },
-
-            "imageReference": "[variables('imageReference')]"
-
-          },
-````
-
-**属性->osProfile**
-
-VM 缩放集与单独的 VM 的一个不同之处是计算机名是一个前缀。创建 VM 缩放集内的 VM 实例时，将使用以下形式的名称：myvm\_0 和 myvm\_1 等。
-
-````
-          "osProfile": {
-
-            "computerNamePrefix": "[parameters('vmSSName')]",
-
-            "adminUsername": "[parameters('adminUsername')]",
-
-            "adminPassword": "[parameters('adminPassword')]"
-
-          },
-````
-
-**属性->networkProfile**
-
-为 VMSS 定义网络配置文件时，请记住 NIC 配置和 IP 配置都具有一个名称。NIC 配置具有“_主_”设置，并且子网 ID 向后引用上文中作为 VNET 的一部分创建的子网资源。
-
-````
-          "networkProfile": {
-
-            "networkInterfaceConfigurations": [
-
-              {
-
-                "name": "[variables('nicName')]",
-
-                "properties": {
-
-                  "primary": "true",
-
-                  "ipConfigurations": [
-
-                    {
-
-                      "name": "[variables('ipConfigName')]",
-
-                      "properties": {
-
-                        "subnet": {
-
-                          "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'), '/subnets/', variables('subnetName'))]"
-
-                        }
-
-                      }
-
-                    }
-
-                  ]
-
-                }
-
-              }
-
-            ]
-
-          }
-````
-
-**属性->extensionProfile**
-
-上面的简单示例不需要扩展配置文件。你可以在此模板中看到一个使用了扩展配置文件的示例，它使用 CustomScript 扩展部署 Apache 和 PHP：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) - 请注意，此示例中的网络 IP 属性还引用了负载平衡器。“VM 缩放集方案”部分中将对负载平衡器进行更详细的描述。
-
-## VM 缩放集方案
-
-本部分以一些典型的 VM 缩放集方案和示例模板为基础。虽然这些方案现在需要模板，但将来其中一些方案将集成到门户中。此外，某些高级 Azure 服务（如 Batch、Service Fabric、Azure 容器服务）也将使用这些方案
-
-## 通过 RDP/SSH 连接到VM 缩放集实例
-
-VM 是在 VNET 中创建的，并且没有为其中单独的 VM 分配公共 IP 地址。这是一件好事，因为你通常不希望承担为计算网格中的所有无状态资源分配单独的 IP 地址而产生支出和管理开销，并且你可以轻松地从 VNET 中的其他资源（包括负载平衡器或独立虚拟机等具有公共 IP 地址的资源）连接到这些 VM。
-
-下面描述了两种连接到 VMSS VM 简单方法：
-
-### 使用 NAT 规则连接到 VM
-
-可以创建一个公共 IP 地址，并将其分配给负载平衡器，然后定义一个入站 NAT 规则，用于将 IP 地址上的端口映射到 VM 缩放集中的 VM 上的端口。例如
-
-Public IP->Port 50000 -> vmss\_0->Port 22
-Public IP->Port 50001 -> vmss\_1->Port 22
-Public IP->Port 50002-> vmss_2->Port 22
-
-下面的示例创建了一个 VM 缩放集，该缩放集使用 NAT 规则，通过单个公共 IP 实现与缩放集中每个 VM 的 SSH 连接：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat)
-
-下面的示例使用 RDP 和 Windows 实现相同的目的：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-nat)
-
-### 使用“跳转盒”连接到 VM
-
-如果在同一个 VNET 中创建一个 VM 缩放集和一个独立 VM，则该独立 VM 和 VMSS VM 能够使用其由 VNET/子网定义的内部 IP 地址彼此连接。
-
-如果创建一个公共 IP 地址并将其分配给独立 VM，则可以通过 RDP 或 SSH 连接到该独立 VM，然后从该虚拟机连接到 VMSS 实例。此时你可能会发现，与使用其默认配置中的公共 IP 地址的简单独立 VM 相比，简单的 VM 缩放集本质上更安全。
-
-作为此方法的一个示例，此模板创建了一个简单的 Mesos 群集，其中包含一个独立的主 VM，用于管理由 VM 组成的基于 VM 缩放集的群集：[https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json)
-
-## VM 缩放集实例的轮循机制负载平衡
-
-如果你想要使用“轮循机制”方法向 VM 的计算群集交付工作，则可以使用负载平衡规则对 Azure 负载平衡器进行相应的配置。你还可以定义探测，通过使用指定的协议、间隔和请求路径对端口执行 ping 操作来验证应用程序是否正在运行。
-
-下面的示例创建由在 IIS Web 服务器上运行的 VM 组成的 VM 缩放集，并使用负载平衡器来平衡每个 VM 接收的负载。它还使用 HTTP 协议对每个 VM 上的特定 URL 执行 ping 操作：[https://github.com/gbowerman/azure-myriad/blob/master/vmss-win-iis-vnet-storage-lb.json](https://github.com/gbowerman/azure-myriad/blob/master/vmss-win-iis-vnet-storage-lb.json) -查看 Microsoft.Network/loadBalancers 资源类型以及 virtualMachineScaleSet 中的 networkProfile 和 extensionProfile。
-
-## 使用 Azure 自动缩放的 VM 缩放集实例
-
-如果你想要根据 CPU/内存/磁盘使用情况或其他事件改变 VM 缩放集的实例计数 (_capacity_)，可使用 Microsoft.Insights 资源提供程序提供的一组丰富的自动缩放设置。可在 Insights REST 文档中查看有关可用设置的内容：[https://msdn.microsoft.com/zh-cn/library/azure/dn931953.aspx](https://msdn.microsoft.com/zh-cn/library/azure/dn931953.aspx)。
-
-Insights 自动缩放与 VM 缩放集直接集成。若要进行设置，请定义 Microsoft.Insights/autoscaleSettings 资源类型，此类型具有向后引用缩放集的 _targetResourceUri_ 和 _metricResourceUri_。定义缩放集时，请包括 _extensionProfile_，用于在 Windows 上安装 Azure 诊断代理 (WAD) 或在 Linux 上安装 Linux 诊断扩展 (LDE)。下面是一个 Linux 示例，该示例在平均 CPU 使用率 > 50% 的情况下，在 5 分钟的采样期间内，以 1 分钟的时间粒度添加 VM，直至达到预定义限制：
-
-[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale)。
-
-以后，VM 缩放集的自动缩放也将直接与 Azure 门户集成。
-
-## 在 PaaS 群集管理器中将 VM 缩放集部署为计算群集
-
-有时会将 VM 缩放集描述为下一代的辅助角色。这是有效的描述，但也可能导致将缩放集功能与 PaaS v1 辅助角色功能混淆。
-
-在某种意义上，VM 缩放集提供真正的“辅助角色”或辅助角色资源，并在此资源中提供独立于平台/运行时且集成到 Azure 资源管理器 IaaS 中的可自定义通用计算资源。
-
-PaaS v1 辅助角色虽然在平台/运行时支持方面受到限制（仅 Windows 平台映像），但它也包括多项服务，如 VIP 交换，可配置升级设置，以及_尚未_在 VM 缩放集中提供，或者将由 Service Fabric 等其他更高级别 PaaS 服务提供的特定于运行时/应用部署的设置。考虑到这一点，你可以将 VM 缩放集视为支持 PaaS 的基础结构。即，生成 Service Fabric 等 PaaS 解决方案或 Mesos 等群集管理器时，可以在将 VM 缩放集作为可缩放计算层的基础上进行生成。
-
-下面的示例演示 Mesos 群集，它在同一 VNET 中将 VM 缩放集部署为一个独立 VM。独立 VM 是一个 Mesos 主机，而 VM 缩放集表示一组从属节点：[https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json](https://github.com/gbowerman/azure-myriad/blob/master/mesos-vmss-simple-cluster.json)。[Azure 容器服务](https://azure.microsoft.com/blog/azure-container-service-now-and-the-future/)的将来版本将基于 VM 缩放集部署更多复杂/强化版本。
-
-## 扩大和缩小 VM
-
-要增加或减少 VM 缩放集中的虚拟机数目，只需更改 _capacity_ 属性并重新部署模板。这种简单性可让你在想要定义 Azure 自动缩放不支持的自定义缩放事件时轻松编写自己的自定义缩放层。
-
-如果要重新部署模板以更改容量，则可以定义只包括 SKU 和已更新容量的更小模板。以下是一个相关示例：[https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-scale-in-or-out/azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-linux-nat/azuredeploy.json)。
-
-## VM 缩放集性能和缩放指南
-
-- 在公共预览期间，不要一次在多个 VM 缩放集中创建超过 500 个 VM。将来会增加此限制。
-- 为每个存储帐户规划不超过 40 个 VM。
-- 使存储帐户名称的第一个字母尽可能的彼此不同。[Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/)中的示例 VMSS 模板举例说明如何执行此操作。
-- 如果使用自定义 VM，请为单个存储帐户中的每个 VM 缩放集规划不超过 40 VM。你将需要预先将映像复制到存储帐户，然后才能开始进行 VM 缩放集部署。有关详细信息，请参阅 FAQ。
-- 为每个 VNET 规划不超过 2048 个 VM。将来会增加此限制。
-- 可创建的 VM 数目受到任何区域中计算核心配额的限制。即使你对用于云服务或 IaaS v1 的核心已具有较高的限制，也仍可能需要联系客户支持才可增加计算配额限制。要查询你的配额，可运行以下 Azure CLI 命令：_azure vm list-usage_，和以下 PowerShell 命令：_Get-AzureRmVMUsage_（如果使用的 PowerShell 版本低于 1.0，则使用 _Get-AzureVMUsage_）。
-
-
-## VM 缩放集 FAQ
-
-**问：VM 缩放集中可以有多少台 VM？**
-
-A.如果使用可分布在多个存储帐户中的平台映像，则可以有 100 台。如果使用自定义映像，则最多可以有 40 台，因为在预览期间，自定义映像限于单个存储帐户。
-
-**对于 VM 缩放集还存在哪些其他资源限制？**
-
-A.现有的 Azure 服务限制适用：[/documentation/articles/azure-subscription-service-limits/](/documentation/articles/azure-subscription-service-limits/)
-
-在预览期间，你还仅可在每个区域的多个缩放集中创建不超过 500 台 VM。
-
-**问：VM 缩放集内是否支持数据磁盘？**
-
-A.在首次发行时不支持。可用于存储数据的选项包括：
-
-- Azure 文件（SMB 共享驱动器）
-
-- OS 驱动器
-
-- 临时驱动器（本地，不受 Azure 存储的支持）
-
-- 外部数据服务（如远程 DB、Azure 表、Azure blob）
-
-**问：哪些 Azure 区域支持 VMSS？**
-
-A.支持 Azure 资源管理器的任何区域均支持 VM 缩放集。
-
-**问：如何使用自定义映像创建 VMSS？**
-
-A.将 vhdContainers 属性留空，例如：
-
-````
-"storageProfile": {
-   "osDisk": {
-      "name": "vmssosdisk",
-      "caching": "ReadOnly",
-      "createOption": "FromImage",
-      "image": {
-         "uri": [https://mycustomimage.blob.core.chinacloudapi.cn/system/Microsoft.Compute/Images/mytemplates/template-osDisk.vhd](https://mycustomimage.blob.core.chinacloudapi.cn/system/Microsoft.Compute/Images/mytemplates/template-osDisk.vhd)
-     },
-     "osType": "Windows"
-  }
-},
-````
-
-**问：如果我将 VMSS 容量从 20 减少到 15，将删除哪些 VM？**
-
-A.将删除最后（索引最大的）5 台 VM。
-
-**问：如果我再将容量从 15 增加到 18，又将发生什么情况？**
-
-如果将容量增加到 18，将创建索引为 15、16 和 17 的 VM。在这两种情况下，FD 与 UD 中的 VM 都是平衡的。
-
-**问：在一个 VM 缩放集中使用多个扩展时，是否可以强制规定一个执行序列？**
-
-A.不能直接规定，但对于 customScript 扩展，你的脚本可以等待另一个扩展完成（例如，通过监视扩展日志 - 请参阅 [https://github.com/Azure/azure-quickstart-templates/blob/master/201-vmss-lapstack-autoscale/install\_lap.sh](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vmss-lapstack-autoscale/install_lap.sh)）。
-
-**问：VM 缩放集展是否可与 Azure 可用性集配合使用？**
-
-A.是的。缩放集是含有 3 个 FD 和 5 个 UD 的隐式可用性集。无需在 virtualMachineProfile 下进行任何配置。在将来的版本中，缩放集可能跨多个租户，但目前一个缩放集只是单个可用性集。
-
-## 后续步骤
-
-在 VM 缩放集的预览期间，文档功能将不断发展，并且将开发门户和自动缩放等更多集成功能。
-
-你的反馈非常重要，可帮助我们构建满足你的需求的服务。请让我们知道有用的内容、无用的内容和需要改进的内容。你可将反馈发送到 [vmssfeedback@microsoft.com](mailto:vmssfeedback@microsoft.com)。
-
-## 资源
-
-| **主题** | **链接** |
-| --- | --- |
-| Azure 资源管理器概述 | [/documentation/articles/resource-group-overview/](/documentation/articles/resource-group-overview/) |
-| Azure 资源管理器模板 | [/documentation/articles/resource-group-authoring-templates/](/documentation/articles/resource-group-authoring-templates/) |
-| Azure 资源管理器模板函数 | [/documentation/articles/resource-group-template-functions/](/documentation/articles/resource-group-template-functions/) |
-| 示例模板 (github) | [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) |
-| VM 缩放集 REST API 指南 | [https://msdn.microsoft.com/zh-cn/library/mt589023.aspx](https://msdn.microsoft.com/zh-cn/library/mt589023.aspx) |
-| VM 缩放集视频 | [https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/) [https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman) [https://channel9.msdn.com/Blogs/Windows-Azure/VM-Scale-Set-Template-Dissection/player](https://channel9.msdn.com/Blogs/Windows-Azure/VM-Scale-Set-Template-Dissection/player) |
-| 自动缩放设置 (MSDN) | [https://msdn.microsoft.com/zh-cn/library/azure/dn931953.aspx](https://msdn.microsoft.com/zh-cn/library/azure/dn931953.aspx) |
-| Azure 中的资源组部署故障排除 | [/documentation/articles/resource-group-deploy-debug/](/documentation/articles/resource-group-deploy-debug/) |
-
-<!---HONumber=Mooncake_1207_2015-->
+			"[concat('Microsoft.Network/networkInterfaces/', variables('nicName1'))]"
+		],
+		"properties": {
+			"hardwareProfile": {
+				"vmSize": "[variables('vmSize')]"
+			},
+			"osProfile": {
+				"computername": "[parameters('vmName')]",
+				"adminUsername": "[parameters('adminUsername')]",
+				"adminPassword": "[parameters('adminPassword')]"
+			},
+			"storageProfile": {
+				"imageReference": {
+					"publisher": "[variables('imagePublisher')]",
+					"offer": "[variables('imageOffer')]",
+					"sku": "[variables('imageVersion')]",
+					"version": "latest"
+				},
+				"osDisk": {
+					"name": "osdisk1",
+					"vhd": {
+						"uri":  "[concat('https://',parameters('resourcePrefix'),'saa.blob.core.chinacloudapi.cn/vhds/',parameters('resourcePrefix'),'osdisk1.vhd')]"
+					},
+					"caching": "ReadWrite",
+					"createOption": "FromImage"
+				}
+			},
+			"networkProfile": {
+				"networkInterfaces": [
+					{
+						"id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName1'))]"
+					}
+				]
+			}
+		}
+	},
+	```
+
+10.	添加虚拟机缩放集，并指定将在缩放集中的所有虚拟机上安装的诊断扩展。此资源的许多设置都与虚拟机资源相似。他们的主要区别是：
+
+	- **capacity** - 指定应在缩放集中初始化多少个虚拟机。通过指定 instanceCount 参数的值来设置此值。
+
+	- **upgradePolicy** - 指定如何对缩放集中的虚拟机进行更新。手动指定在重新部署模板时，模板中的更新仅影响新虚拟机。自动指定将更新并重新启动缩放集中的所有虚拟机。
+
+	在所有存储帐户都根据 dependsOn 元素的指定创建之前，将不会创建虚拟机缩放集。
+
+	```
+	{
+		"type": "Microsoft.Compute/virtualMachineScaleSets",
+		"apiVersion": "[variables('apiVersion')]",
+		"name": "[parameters('vmSSName')]",
+		"location": "[resourceGroup().location]",
+		"dependsOn": [
+			"storageLoop",
+			"[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+			"[concat('Microsoft.Network/loadBalancers/', variables('loadBalancerName'))]"
+		],
+		"sku": {
+			"name": "[variables('vmSize')]",
+			"tier": "Standard",
+			"capacity": "[parameters('instanceCount')]"
+		},
+		"properties": {
+			"upgradePolicy": {
+				"mode": "Manual"
+			},
+			"virtualMachineProfile": {
+				"storageProfile": {
+					"osDisk": {
+						"vhdContainers": [
+							"[concat('https://', parameters('resourcePrefix'), 'saa.blob.core.chinacloudapi.cn/vmss')]",
+							"[concat('https://', parameters('resourcePrefix'), 'sag.blob.core.chinacloudapi.cn/vmss')]",
+							"[concat('https://', parameters('resourcePrefix'), 'sam.blob.core.chinacloudapi.cn/vmss')]",
+							"[concat('https://', parameters('resourcePrefix'), 'sas.blob.core.chinacloudapi.cn/vmss')]",
+							"[concat('https://', parameters('resourcePrefix'), 'say.blob.core.chinacloudapi.cn/vmss')]"
+						],
+						"name": "vmssosdisk",
+						"caching": "ReadOnly",
+						"createOption": "FromImage"
+					},
+					"imageReference": {
+						"publisher": "[variables('imagePublisher')]",
+						"offer": "[variables('imageOffer')]",
+						"sku": "[variables('imageVersion')]",
+						"version": "latest"
+					}
+				},
+				"osProfile": {
+					"computerNamePrefix": "[parameters('vmSSName')]",
+					"adminUsername": "[parameters('adminUsername')]",
+					"adminPassword": "[parameters('adminPassword')]"
+				},
+				"networkProfile": {
+					"networkInterfaceConfigurations": [
+						{
+							"name": "[variables('nicName2')]",
+							"properties": {
+								"primary": "true",
+								"ipConfigurations": [
+									{
+										"name": "ip1",
+										"properties": {
+											"subnet": {
+												"id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/virtualNetworks/',variables('virtualNetworkName'),'/subnets/',variables('subnetName'))]"
+											},
+											"loadBalancerBackendAddressPools": [
+												{
+													"id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/loadBalancers/',variables('loadBalancerName'),'/backendAddressPools/bepool1')]"
+												}
+											],
+											"loadBalancerInboundNatPools": [
+												{
+													"id": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Network/loadBalancers/',variables('loadBalancerName'),'/inboundNatPools/natpool1')]"
+												}
+											]
+										}
+									}
+								]
+							}
+						}
+					]
+				},
+				"extensionProfile": {
+					"extensions": [
+						{
+							"name": "Microsoft.Insights.VMDiagnosticsSettings",
+							"properties": {
+								"publisher": "Microsoft.Azure.Diagnostics",
+								"type": "IaaSDiagnostics",
+								"typeHandlerVersion": "1.5",
+								"autoUpgradeMinorVersion": true,
+								"settings": {
+									"xmlCfg": "[base64(concat(variables('wadcfgxstart'),variables('wadmetricsresourceid'),variables('wadcfgxend')))]",
+									"storageAccount": "[variables('diagnosticsStorageAccountName')]"
+								},
+								"protectedSettings": {
+									"storageAccountName": "[variables('diagnosticsStorageAccountName')]",
+									"storageAccountKey": "[listkeys(variables('accountid'), variables('apiVersion')).key1]",
+									"storageAccountEndPoint": "https://core.chinacloudapi.cn"
+								}
+							}
+						}
+					]
+				}
+			}
+		}
+	},
+	```
+
+11.	添加 autoscaleSettings 资源以定义缩放集如何根据集中虚拟机上的处理器使用率进行调整。对于本教程，以下是重要值：
+
+ - **metricName** - 这与我们在 wadperfcounter 变量中定义的性能计数器相同。使用该变量，诊断扩展可收集 **Processor(\_Total)\\% Processor Time** 计数器。
+ - **metricResourceUri** - 这是虚拟机缩放集的资源标识符。
+ - **timeGrain** - 这是收集的指标的粒度。在此模板中，它设置为 1 分钟。
+ - **statistic** - 这可确定如何组合指标以调节自动缩放操作。可能的值包括：Average、Min、Max。在此模板中，我们要查找缩放集中虚拟机的平均总 CPU 使用率。
+ - **timeWindow** - 这是收集实例数据的时间范围。它必须介于 5 分钟和 12 个小时之间。
+ - **timeAggregation** - 这可确定应如何随着时间的推移组合收集的数据。默认值为 Average。可能的值包括：Average、Minimum、Maximum、Last、Total、Count。
+ - **operator** - 这是用于比较指标数据和阈值的运算符。可能的值包括：Equals、NotEquals、GreaterThan、GreaterThanOrEqual、LessThan、LessThanOrEqual。
+ - **threshold** - 这是将触发缩放操作的值。在此模板中，当缩放集中的虚拟机的平均 CPU 使用率超过 50% 时，会将虚拟机添加到缩放集。
+ - **direction** - 这可确定在达到阈值时执行的操作。可能的值为 Increase 或 Decrease。在此模板中，如果在定义的时间窗口中阈值超过 50%，则将增加缩放集中的虚拟机数。
+ - **type** - 这是应发生的操作类型，此属性必须设置为 ChangeCount。
+ - **value** - 这是已在缩放集中添加或删除的虚拟机数。此值必须大于或等于 1。默认值为 1。在此模板中，当达到该阈值时，缩放集中的虚拟机数将递增 1。
+ - **cooldown** - 这是在上次缩放操作后，在下次操作发生之前要等待的时间量。此值必须介于 1 分钟和 1 周之间。
+
+	```
+	{
+		"type": "Microsoft.Insights/autoscaleSettings",
+		"apiVersion": "2015-04-01",
+		"name": "[concat(parameters('resourcePrefix'),'as1')]",
+		"location": "[resourceGroup().location]",
+		"dependsOn": [
+			"[concat('Microsoft.Compute/virtualMachineScaleSets/',parameters('vmSSName'))]"
+		],
+		"properties": {
+			"enabled": true,
+			"name": "[concat(parameters('resourcePrefix'),'as1')]",
+			"profiles": [
+				{
+					"name": "Profile1",
+					"capacity": {
+						"minimum": "1",
+						"maximum": "10",
+						"default": "1"
+					},
+					"rules": [
+						{
+							"metricTrigger": {
+								"metricName": "\\Processor(_Total)\\% Processor Time",
+								"metricNamespace": "",
+								"metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Compute/virtualMachineScaleSets/',parameters('vmSSName'))]",
+								"timeGrain": "PT1M",
+								"statistic": "Average",
+								"timeWindow": "PT5M",
+								"timeAggregation": "Average",
+								"operator": "GreaterThan",
+								"threshold": 50.0
+							},
+							"scaleAction": {
+								"direction": "Increase",
+								"type": "ChangeCount",
+								"value": "1",
+								"cooldown": "PT5M"
+							}
+						}
+					]
+				}
+			],
+			"targetResourceUri": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/', resourceGroup().name,'/providers/Microsoft.Compute/virtualMachineScaleSets/',parameters('vmSSName'))]"
+		}
+	}
+	```
+
+12.	保存模板文件。
+
+## 步骤 3：将模板上载到存储空间
+
+只要你知道在步骤 1 中创建的存储帐户的帐户名称和主密钥，就可以从 Azure PowerShell 窗口上载模板。
+
+1.	在 Azure PowerShell 窗口中，设置变量以指定在步骤 1 中部署的存储帐户的名称。
+
+		$StorageAccountName = "vmstestsa"
+
+2.	设置用于指定存储帐户的主密钥的变量。
+
+		$StorageAccountKey = "<primary-account-key>"
+
+	可以通过在 Azure 门户中查看存储帐户资源时单击密钥图标来获取此密钥。
+
+3.	创建用于使用存储帐户验证操作的存储帐户上下文对象。
+
+		$ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+
+4.	创建新的模板容器，可以在其中存储你创建的模板。
+
+		$ContainerName = "templates"
+		New-AzureStorageContainer -Name $ContainerName -Context $ctx  -Permission Blob
+
+5.	将模板文件上载到新容器。
+
+		$BlobName = "VMSSTemplate.json"
+		$fileName = "C:" + $BlobName
+		Set-AzureStorageBlobContent -File $fileName -Container $ContainerName -Blob  $BlobName -Context $ctx
+
+## 步骤 4：部署模板
+
+创建模板后，便可以开始部署资源了。使用以下命令启动相关进程：
+
+		New-AzureRmResourceGroupDeployment -Name "vmsstestdp1" -ResourceGroupName "vmsstestrg1" -TemplateUri "https://vmsstestsa.blob.core.chinacloudapi.cn/templates/VMSSTemplate.json"
+
+当你按 Enter 时，系统将提示你为所指定的变量提供值。提供以下值：
+
+	vmName: vmsstestvm1
+	vmSSName: vmsstest1
+	instanceCount: 5
+	adminUserName: vmadmin1
+	adminPassword: VMpass1
+	resourcePrefix: vmsstest
+
+成功部署所有资源应大约需要 15 分钟。
+
+>[AZURE.NOTE]你还可以利用门户的功能来部署资源。为此，请使用以下链接：https://portal.azure.cn/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>
+
+## 步骤 5：监视资源
+
+你可以使用以下方法获取有关虚拟机缩放集的一些信息：
+
+ - Azure 门户 - 当前使用门户可以获取有限数量的信息。
+ - [Azure 资源浏览器](https://resources.azure.com/) - 要浏览缩放集的当前状态，这是最好的工具。遵循此路径，你应该看到所创建的缩放集的实例视图：
+
+		subscriptions > {your subscription} > resourceGroups > vmsstestrg1 > providers > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
+
+ - Azure PowerShell - 使用此命令可获取一些信息：
+
+		Get-AzureRmResource -name vmsstest1 -ResourceGroupName vmsstestrg1 -ResourceType Microsoft.Compute/virtualMachineScaleSets -ApiVersion 2015-06-15
+
+ - 就像连接任何其他虚拟机一样连接到 jumpbox 虚拟机，然后可以远程访问缩放集中的虚拟机，以监视单个进程。
+
+>[AZURE.NOTE]用于获取有关缩放集的信息的完整 REST API 可在[虚拟机扩展集](https://msdn.microsoft.com/zh-cn/library/mt589023.aspx)中找到
+
+## 步骤 6：删除资源
+
+由于你需要为 Azure 中使用的资源付费，因此，删除不再需要的资源总是一种良好的做法。你不需要从资源组中分别删除每个资源，而是可以删除资源组，这样就会自动删除它包含的所有资源。
+
+	Remove-AzureRmResourceGroup -Name vmsstestrg1
+
+如果要保留资源组，可以仅删除缩放集。
+
+	Remove-AzureRmResource -Name vmsstest1 -ResourceGroupName vmsstestrg1 -ApiVersion 2015-06-15 -ResourceType Microsoft.Compute/virtualMachineScaleSets
+
+<!---HONumber=Mooncake_0411_2016-->

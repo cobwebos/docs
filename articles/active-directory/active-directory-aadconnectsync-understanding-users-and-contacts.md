@@ -4,35 +4,28 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
-	manager="swadhwa"
+	manager="stevenpo"
 	editor=""/>
 
 <tags
 	ms.service="active-directory"
-
-	ms.date="11/09/2015"
+	ms.date="02/16/2016"
 	wacn.date=""/>
 
 
 # Azure AD Connect 同步：了解用户和联系人
 
-有几个不同的原因导致你会有多个 Active Directory 林，并且还有几个不同的部署拓扑。常见的模型包括合并和收购之后的帐户-资源部署和 GAL 同步的林。但即使有纯模型，混合模型也是常见的模型。Azure AD Connect Sync 中的默认配置不会假定任何特定模型，但具体取决于安装指南中如何选择用户匹配，可以观察到不同的行为。
+有几个不同的原因导致你会有多个 Active Directory 林，并且还有几个不同的部署拓扑。常见的模型包括合并和收购之后的帐户-资源部署和 GAL 同步的林。但即使有纯模型，混合模型也是常见的模型。Azure AD Connect 同步中的默认配置不会假定任何特定模型，但具体取决于安装指南中如何选择用户匹配，可以观察到不同的行为。
 
 在本主题中，我们将讨论默认配置在某些拓扑中的行为方式。我们将讨论配置，并且同步规则编辑器可用于查看配置。
 
 有几个配置假定的一般规则：
 
 - 不管按什么顺序从源 Active Directory 导入，最终结果始终相同。
-- 有效帐户会始终提供登录信息，包括 **userPrincipalName** 和 **sourceAnchor**。
+- 活动帐户会始终提供登录信息，包括 **userPrincipalName** 和 **sourceAnchor**。
 - 如果找不到活动的帐户，已禁用帐户会提供 userPrincipalName 和 sourceAnchor，除非该帐户为已链接邮箱。
 - 具有已链接邮箱的帐户永远不会用于 userPrincipalName 和 sourceAnchor。据推测，更高版本中将会找到有效帐户。
 - 可能为 Azure AD 设置联系人对象，作为联系人或用户。在处理完所有源 Active Directory 林之前，你确实不会知道。
-
-
-
-
-
-
 
 ## 联系人
 
@@ -45,10 +38,6 @@
 
 如果你有用户表示为联系人的拓扑，请确保你的选择匹配安装指南中 mail 属性上的用户。如果选择另一个选项，则会具有依赖于顺序的配置。联系人对象始终会联接 mail 属性，但如果安装指南中选择了此选项，则用户对象只会联接 mail 属性。如果在用户对象之前已导入联系人对象，那么具有相同 mail 属性的 metaverse 中可能最终会有两个不同的对象。在导出到 Azure AD 期间，会引发错误。此行为是设计使然，并且会指示错误数据或者在安装过程中未正确标识拓扑。
 
-
-
-
-
 ## 已禁用帐户
 
 已禁用帐户也会同步到 Azure AD。已禁用帐户在 Exchange 中表示资源是很常见的，例如会议室。例外情况是具有已链接邮箱的用户；如前文所述，这些用户永远不会将帐户设置到 Azure AD。
@@ -57,9 +46,7 @@
 
 ## 更改 sourceAnchor
 
-当对象已导出到 Azure AD 时，则不再允许更改 sourceAnchor。当已导出对象时，则采用 Azure AD 接受的 **sourceAnchor** 值设置 metaverse 属性 **cloudSourceAnchor**。如果更改了 **sourceAnchor**，且不匹配 **cloudSourceAnchor**，规则 ** Out to AAD – User Join** 则会引发错误 **sourceAnchor 属性已更改**。在这种情况下，必须更正配置或数据，以便相同的 sourceAnchor 再次在 metaverse 中出现，然后才能再次同步对象。
-
-
+当对象已导出到 Azure AD 时，则不再允许更改 sourceAnchor。当已导出对象时，则采用 Azure AD 接受的 **sourceAnchor** 值设置 metaverse 属性 **cloudSourceAnchor**。如果更改了 **sourceAnchor**，且不匹配 **cloudSourceAnchor**，规则 **Out to AAD – User Join** 将引发错误“sourceAnchor 属性已更改”。在这种情况下，必须更正配置或数据，以便相同的 sourceAnchor 再次在 metaverse 中出现，然后才能再次同步对象。
 
 ## 其他资源
 
@@ -69,4 +56,4 @@
  
 <!--Image references-->
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0411_2016-->

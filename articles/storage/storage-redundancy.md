@@ -2,20 +2,20 @@
 <properties 
   pageTitle="Azure 存储复制 | Microsoft Azure" 
   description="复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。" 
-  services="storage" 
-  documentationCenter="" 
+  services="storage"  
+  documentationCenter=""  
   authors="tamram" 
   manager="adinah" 
   editor=""/>
 
 <tags 
   ms.service="storage" 
-  ms.date="01/22/2016" 
+  ms.date="02/17/2016" 
   wacn.date=""/>
 
 # Azure 存储空间复制
 
-始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性，并且即使在遇到临时硬件故障时也符合 [Azure 存储空间 SLA](http://azure.microsoft.com/support/legal/sla/) 要求。
+始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性，并且即使在遇到临时硬件故障时也符合 [Azure 存储空间 SLA](/support/sla/storage) 要求。
 
 创建存储帐户时，必须选择以下复制选项之一：
 
@@ -27,11 +27,11 @@
 下表简要概述了 LRS、ZRS、GRS 和 RA-GRS 之间的差异，而后续章节将详细介绍每种类型的复制。
 
 
-|复制策略|LRS|ZRS|GRS|RA-GRS
-|--------------------|---|---|---|------
-|数据在多个设施之间进行复制。|否|是|是|是|
-|可以从辅助位置和主位置读取数据。|否|否|否|是
-|在单独的节点上维护的数据副本数。|3|3|6|6
+| 复制策略 | LRS | GRS | RA-GRS |
+|:-----------------------------------------------------------------------------------|:----|:----|:-------|
+| 数据在多个设施之间进行复制。 | 否 | 是 | 是 |
+| 可以从辅助位置和主位置读取数据。 | 否 | 否 | 是 |
+| 在单独的节点上维护的数据副本数。 | 3 | 6 | 6 |
 
 
 ## 本地冗余存储
@@ -47,12 +47,6 @@
 - 如果应用程序具有自己的异地复制策略，则可能不需要 GRS。
 
 
-## 区域冗余存储
-
-区域冗余存储 (ZRS) 在两到三个设施之间复制数据（在单个区域内或两个区域之间），提供比 LRS 更高的持久性。如果你的存储帐户启用了 ZRS，即使其中一个设施出现故障，你的数据也能持久保存。
-
-
->[AZURE.NOTE]  ZRS 当前仅适用于块 blob，并且仅在版本 2014-02-14 和更高版本中受支持。请注意，在创建存储帐户并选择区域冗余复制后，你无法将其转换为使用任何其他类型的复制，反之亦然。
 
 
 ## 异地冗余存储
@@ -79,9 +73,10 @@
 
 ## 后续步骤
 
+- [关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account)
 - [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets) 
 - [Microsoft Azure 存储冗余选项和读取访问异地冗余存储](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)  
 - [使用 RA-GRS 的 Microsoft Azure 存储模拟器 3.1](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/08/microsoft-azure-storage-emulator-3-1-with-ra-grs.aspx)
-- [Azure 存储 SOSP 论文](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)  
+- [SOSP 论文 - Azure 存储空间：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)  
  
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0411_2016-->

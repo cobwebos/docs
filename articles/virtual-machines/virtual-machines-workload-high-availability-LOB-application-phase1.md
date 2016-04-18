@@ -1,5 +1,7 @@
+<!-- not suitable for Mooncake -->
+
 <properties 
-	pageTitle="业务线应用程序（阶段 1）| Microsoft Azure" 
+	pageTitle="业务线应用程序（阶段 1）| Azure" 
 	description="在 Azure 的业务线应用程序阶段 1 中创建虚拟网络和其他 Azure 基础结构元素。" 
 	documentationCenter=""
 	services="virtual-machines" 
@@ -8,9 +10,9 @@
 	editor=""
 	tags="azure-resource-manager"/>
 
-<tags 
+<tags
 	ms.service="virtual-machines"
-	ms.date="10/20/2015" 
+	ms.date="01/21/2016"
 	wacn.date=""/>
 
 # 业务线应用程序工作负荷阶段 1：配置 Azure
@@ -58,14 +60,14 @@
 
 **表 S：虚拟网络中的子网**
 
-> [AZURE.NOTE]为简单起见，此预定义的体系结构使用单个子网。如果要覆盖一组流量筛选器来模拟子网隔离，则可以使用 Azure [网络安全组](/documentation/articles/virtual-networks-nsg)。
+> [AZURE.NOTE] 为简单起见，此预定义的体系结构使用单个子网。如果要覆盖一组流量筛选器来模拟子网隔离，则可以使用 Azure [网络安全组](/documentation/articles/virtual-networks-nsg)。
 
 对于你最初在虚拟网络中设置域控制器时要使用的两个本地 DNS 服务器，填写表 D。为每个 DNS 服务器提供一个友好名称和单个 IP 地址。此友好名称无需与 DNS 服务器的主机名或计算机名称相匹配。请注意，列出了两个空白条目，但你可以添加更多。与你的 IT 部门协作来确定此列表。
 
-项目 | DNS 服务器的友好名称 | DNS 服务器 IP 地址 
---- | --- | ---
-1\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-2\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ 
+项目 | DNS 服务器 IP 地址 
+--- | ---
+1\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+2\. | \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ 
 
 **表 D：本地 DNS 服务器**
 
@@ -81,26 +83,32 @@
 
 **表 L：本地网络的地址前缀**
 
-> [AZURE.NOTE]本文包含 Azure PowerShell Preview 1.0 的命令。若要在 Azure PowerShell 0.9.8 和之前版本中运行这些命令，请在执行任何命令之前，先将“-AzureRM”的所有实例替换为“-Azure”，并添加 **Switch-AzureMode AzureResourceManager** 命令。有关详细信息，请参阅 [Azure PowerShell 1.0 预览版](https://azure.microsoft.com/blog/azps-1-0-pre/)。
+首先，请启动 Azure PowerShell 提示符。
 
-打开 Azure PowerShell 提示符。
+> [AZURE.NOTE] 以下命令集使用 Azure PowerShell 1.0 及更高版本。有关详细信息，请参阅 [Azure PowerShell 1.0](https://azure.microsoft.com/blog/azps-1-0/)。
 
-接下来，为业务线应用程序创建新资源组。
+首先，启动 Azure PowerShell 提示符，并登录到你的帐户。
 
-若要确定唯一的资源组名称，可使用以下命令列出现有的资源组。
+	Login-AzureRMAccount
+
+使用以下命令获取你的订阅名称。
+
+	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
+
+设置你的 Azure 订阅。将引号内的所有内容（包括 < and > 字符）替换为相应的名称。
+
+	$subscr="<subscription name>"
+	Get-AzureRmSubscription -SubscriptionName $subscr | Select-AzureRmSubscription
+
+接下来，为业务线应用程序创建新资源组。若要确定唯一的资源组名称，可使用以下命令列出现有的资源组。
 
 	Get-AzureRMResourceGroup | Sort ResourceGroupName | Select ResourceGroupName
-
-若要列出可在其中创建基于资源管理器的虚拟机的 Azure 位置，可使用以下命令。
-
-	$loc=Get-AzureLocation | where { $_.Name –eq "Microsoft.Compute/virtualMachines" }
-	$loc.Locations
 
 使用以下命令创建新的资源组。
 
 	$rgName="<resource group name>"
 	$locName="<an Azure location, such as China North>"
-	New-AzureResourceGroup -Name $rgName -Location $locName
+	New-AzureRMResourceGroup -Name $rgName -Location $locName
 
 基于资源管理器的虚拟机需要一个基于资源管理器的存储帐户。
 
@@ -115,37 +123,37 @@
 
 必须为每个存储帐户选择只包含小写字母和数字的全局唯一名称。可以使用以下命令列出现有的存储帐户。
 
-	Get-AzureRMStorageAccount | Sort Name | Select Name
+	Get-AzureRMStorageAccount | Sort StorageAccountName | Select StorageAccountName
 
 若要创建第一个存储帐户，请运行以下命令。
 
 	$rgName="<your new resource group name>"
 	$locName="<the location of your new resource group>"
-	$saName="<Table ST – Item 1 - Storage account name column>"
-	New-AzureRMStorageAccount -Name $saName -ResourceGroupName $rgName –Type Premium_LRS -Location $locName
+	$saName="<Table ST - Item 1 - Storage account name column>"
+	New-AzureRMStorageAccount -Name $saName -ResourceGroupName $rgName -Type Premium_LRS -Location $locName
 
 若要创建第二个存储帐户，请运行以下命令。
 
-	$saName="<Table ST – Item 2 - Storage account name column>"
-	New-AzureRMStorageAccount -Name $saName -ResourceGroupName $rgName –Type Standard_LRS -Location $locName
+	$saName="<Table ST - Item 2 - Storage account name column>"
+	New-AzureRMStorageAccount -Name $saName -ResourceGroupName $rgName -Type Standard_LRS -Location $locName
 
 接下来，你将创建托管业务线应用程序的 Azure 虚拟网络。
 
 	$rgName="<name of your new resource group>"
 	$locName="<Azure location of the new resource group>"
-	$vnetName="<Table V – Item 1 – Value column>"
-	$vnetAddrPrefix="<Table V – Item 5 – Value column>"
-	$lobSubnetName="<Table S – Item 2 – Subnet name column>"
-	$lobSubnetPrefix="<Table S – Item 2 – Subnet address space column>"
-	$gwSubnetPrefix="<Table S – Item 1 – Subnet address space column>"
-	$dnsServers=@( "<Table D – Item 1 – DNS server IP address column>", "<Table D – Item 2 – DNS server IP address column>" )
+	$vnetName="<Table V - Item 1 - Value column>"
+	$vnetAddrPrefix="<Table V - Item 5 - Value column>"
+	$lobSubnetName="<Table S - Item 2 - Subnet name column>"
+	$lobSubnetPrefix="<Table S - Item 2 - Subnet address space column>"
+	$gwSubnetPrefix="<Table S - Item 1 - Subnet address space column>"
+	$dnsServers=@( "<Table D - Item 1 - DNS server IP address column>", "<Table D - Item 2 - DNS server IP address column>" )
 	$gwSubnet=New-AzureRMVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix $gwSubnetPrefix
 	$lobSubnet=New-AzureRMVirtualNetworkSubnetConfig -Name $lobSubnetName -AddressPrefix $lobSubnetPrefix
 	New-AzureRMVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $locName -AddressPrefix $vnetAddrPrefix -Subnet $gwSubnet,$lobSubnet -DNSServer $dnsServers
 
 接下来，使用以下命令创建用于站点到站点 VPN 连接的网关。
 
-	$vnetName="<Table V – Item 1 – Value column>"
+	$vnetName="<Table V - Item 1 - Value column>"
 	$vnet=Get-AzureRMVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
 	
 	# Attach a virtual network gateway to a public IP address and the gateway subnet
@@ -161,21 +169,21 @@
 	
 	# Create the gateway for the local network
 	$localGatewayName="LOBAppLocalNetGateway"
-	$localGatewayIP="<Table V – Item 4 – Value column>"
+	$localGatewayIP="<Table V - Item 4 - Value column>"
 	$localNetworkPrefix=@( <comma-separated, double-quote enclosed list of the local network address prefixes from Table L, example: "10.1.0.0/24", "10.2.0.0/24"> )
 	$localGateway=New-AzureRMLocalNetworkGateway -Name $localGatewayName -ResourceGroupName $rgName -Location $locName -GatewayIpAddress $localGatewayIP -AddressPrefix $localNetworkPrefix
 	
 	# Define the Azure virtual network VPN connection
 	$vnetConnectionName="LOBAppS2SConnection"
-	$vnetConnectionKey="<Table V – Item 8 – Value column>"
+	$vnetConnectionKey="<Table V - Item 8 - Value column>"
 	$vnetConnection=New-AzureRMVirtualNetworkGatewayConnection -Name $vnetConnectionName -ResourceGroupName $rgName -Location $locName -ConnectionType IPsec -SharedKey $vnetConnectionKey -VirtualNetworkGateway1 $vnetGateway -LocalNetworkGateway2 $localGateway
 
-接下来，配置用于连接到 Azure VPN 网关的本地 VPN 设备。有关详细信息，请参阅[配置 VPN 设备](../virtual-networks/vpn-gateway-configure-vpn-gateway-mp.md#configure-your-vpn-device)。
+接下来，配置用于连接到 Azure VPN 网关的本地 VPN 设备。有关详细信息，请参阅[配置 VPN 设备](/documentation/articles/vpn-gateway-configure-vpn-gateway-mp#configure-your-vpn-device)。
 
 若要配置本地 VPN 设备，需要以下项：
 
-- 虚拟网络的 Azure VPN 网关的公共 IPv4 地址（从 **Get-AzureRMPublicIpAddress -Name $publicGatewayVipName -ResourceGroupName $rgName** 命令的显示获得）
-- 站点到站点 VPN 连接的 IPsec 预共享密钥（表 V - 项 8 - 值列）
+- 虚拟网络的 Azure VPN 网关的公共 IPv4 地址（从 **Get-AzureRMPublicIpAddress -Name $publicGatewayVipName -ResourceGroupName $rgName** 命令的显示获得）。
+- 站点到站点 VPN 连接的 IPsec 预共享密钥（表 V - 项目 8 -“值”列）。
 
 接下来，请确保可从你的本地网络访问虚拟网络的地址空间。这通常是通过将与虚拟网络地址空间对应的路由添加到你的 VPN 设备，然后将该路由播发到你的组织网络的其余路由基础结构来完成的。与你的 IT 部门协作来确定执行此操作的方法。
 
@@ -195,12 +203,12 @@
 
 	$rgName="<your new resource group name>"
 	$locName="<the Azure location for your new resource group>"
-	$avName="<Table A – Item 1 – Availability set name column>"
-	New-AzureRMAvailabilitySet –Name $avName –ResourceGroupName $rgName -Location $locName
-	$avName="<Table A – Item 2 – Availability set name column>"
-	New-AzureRMAvailabilitySet –Name $avName –ResourceGroupName $rgName -Location $locName
-	$avName="<Table A – Item 3 – Availability set name column>"
-	New-AzureRMAvailabilitySet –Name $avName –ResourceGroupName $rgName -Location $locName
+	$avName="<Table A - Item 1 - Availability set name column>"
+	New-AzureRMAvailabilitySet -Name $avName -ResourceGroupName $rgName -Location $locName
+	$avName="<Table A - Item 2 - Availability set name column>"
+	New-AzureRMAvailabilitySet -Name $avName -ResourceGroupName $rgName -Location $locName
+	$avName="<Table A - Item 3 - Availability set name column>"
+	New-AzureRMAvailabilitySet -Name $avName -ResourceGroupName $rgName -Location $locName
 
 这是成功完成此阶段后生成的配置。
 
@@ -208,18 +216,7 @@
 
 ## 后续步骤
 
-若要继续配置此工作负荷，请转到[阶段 2：配置域控制器](/documentation/articles/virtual-machines-workload-high-availability-LOB-application-phase2)。
+- 若要继续配置此工作负荷，请使用[阶段 2](/documentation/articles/virtual-machines-workload-high-availability-LOB-application-phase2)。
 
-## 其他资源
 
-[在 Azure 中部署高可用性业务线应用程序](/documentation/articles/virtual-machines-workload-high-availability-LOB-application-overview)
-
-[业务线应用程序体系结构蓝图](http://msdn.microsoft.com/dn630664)
-
-[在混合云中设置用于测试且基于 Web 的 LOB 应用程序](/documentation/articles/virtual-networks-setup-lobapp-hybrid-cloud-testing)
-
-[Azure 基础结构服务实施准则](/documentation/articles/virtual-machines-infrastructure-services-implementation-guidelines)
-
-[Azure 基础结构服务工作负荷：SharePoint Server 2013 场](/documentation/articles/virtual-machines-workload-intranet-sharepoint-farm)
-
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0411_2016-->

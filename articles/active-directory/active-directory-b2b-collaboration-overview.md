@@ -1,15 +1,15 @@
 <properties
-   pageTitle="Azure Active Directory 企业到企业 (B2B) 协作"
+   pageTitle="Azure Active Directory B2B 协作 | Microsoft Azure"
    description="Azure Active Directory B2B 协作可让业务合作伙伴访问你的企业应用程序，合作伙伴的每个用户将由单个 Azure AD 帐户表示"
    services="active-directory"
    documentationCenter=""
    authors="curtand"
-   manager="msStevenPo"
+   manager="stevenpo"
    editor=""/>
 
 <tags
    ms.service="active-directory"
-   ms.date="10/27/2015"
+   ms.date="02/09/2016"
    wacn.date=""/>
 
 # Azure Active Directory (Azure AD) B2B 协作
@@ -38,7 +38,7 @@ Azure Active Directory B2B 协作易于配置，各种规模的合作伙伴都�
 
 4. 登录之后，用户将重定向到与他们共享的应用。
 
-目前不支持邀请消费者电子邮件地址（例如，gmail 或 [*comcast.net*](http://comcast.net/)）。
+目前不支持邀请消费者电子邮件地址（例如，gmail 或 [comcast.net](http://comcast.net/)）。
 
 有关 B2B 协作工作原理的详细信息，请观看[此视频](http://aka.ms/aadshowb2b)。
 
@@ -46,10 +46,10 @@ Azure Active Directory B2B 协作易于配置，各种规模的合作伙伴都�
 
 CSV 文件采用以下的格式。即使未指定一个或多个选项，也要添加所需的所有逗号。
 
-**Email：**受邀用户的电子邮件地址。<br/>
-**DisplayName：**受邀用户的显示名称（通常是名字和姓氏）。<br/>
-**InviteAppID：**在电子邮件邀请和接受页面上用于表示品牌的应用程序 ID。<br/>
-**InviteReplyURL：**在受邀用户接受邀请后，将用户定向到的 URL。这应该是公司特定的 URL（例如 [*contoso.my.salesforce.com*](http://contoso.my.salesforce.com/)）。<br/>
+**Email：**受邀用户的电子邮件地址。<br/> 
+**DisplayName：**受邀用户的显示名称（通常是名字和姓氏）。<br/> 
+**InviteAppID：**在电子邮件邀请和接受页面上用于表示品牌的应用程序 ID。<br/> 
+**InviteReplyURL：**在受邀用户接受邀请后，将用户定向到的 URL。这应该是公司特定的 URL（例如 [contoso.my.salesforce.com](http://contoso.my.salesforce.com/)）。如果未指定此可选字段，将生成邀请方公司的访问面板 URL（此 URL 的格式为 `https://account.activedirectory.windowsazure.com/applications/default.aspx?tenantId=<TenantID>`）。<br/> 
 **InviteAppResources：**应用程序可分配给用户的 AppID。可以通过调用 `Get-MsolServicePrincipal | fl DisplayName, AppPrincipalId` 来检索 AppID。<br/>
 **InviteGroupResources：**要将用户添加到的组的 ObjectIDs。可以通过调用 `Get-MsolGroup | fl DisplayName, ObjectId` 来检索 ObjectIDs。<br/>
 **InviteContactUsUrl：**可在电子邮件邀请中添加的“联系我们”URL，方便受邀用户联系你的组织。<br/>
@@ -73,5 +73,6 @@ bsmith@contoso.com,Ben Smith,cd3ed3de-93ee-400b-8b19-b61ef44a0f29,http://azure.m
 - [外部用户令牌格式](active-directory-b2b-references-external-user-token-format.md)
 - [外部用户对象属性更改](active-directory-b2b-references-external-user-object-attribute-changes.md)
 - [当前预览版限制](active-directory-b2b-current-preview-limitations.md)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0411_2016-->

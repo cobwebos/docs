@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="为云服务配置 SSL（预览门户）| Microsoft Azure" 
-	description="了解如何为 Web 角色指定 HTTPS 终结点以及如何上载 SSL 证书来保护您的应用程序。这些示例使用 Azure 预览门户。" 
+	pageTitle="为云服务配置 SSL | Microsoft Azure" 
+	description="了解如何为 Web 角色指定 HTTPS 终结点以及如何上载 SSL 证书来保护您的应用程序。这些示例使用 Azure 门户。" 
 	services="cloud-services" 
 	documentationCenter=".net" 
 	authors="Thraka" 
@@ -8,27 +8,32 @@
 	editor=""/>
 
 <tags 
-	ms.service="cloud-services"  
-	ms.date="09/22/2015"
-	wacn.date=""/>
+	ms.service="cloud-services" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="01/15/2016"
+	ms.author="adegeo"/>
+
 
 
 
 # 在 Azure 中为应用程序配置 SSL
 
 > [AZURE.SELECTOR]
-- [Azure Portal](/documentation/articles/cloud-services-configure-ssl-certificate)
-- [Azure Portal](/documentation/articles/cloud-services-configure-ssl-certificate-portal)
+- [Azure 门户](cloud-services-configure-ssl-certificate-portal.md)
+- [Azure 经典门户](cloud-services-configure-ssl-certificate.md)
 
 安全套接字层 (SSL) 加密是用于保护通过 Internet 发送的数据的最常见方法。此常见任务讨论了如何为 Web 角色指定 HTTPS 终结点以及如何上载 SSL 证书来保护你的应用程序。
 
-> [AZURE.NOTE]本任务中的过程适用于 Azure 云服务；对于网站，请参阅[为 Azure 网站配置 SSL 证书](/documentation/articles/web-sites-configure-ssl-certificate)。
+> [AZURE.NOTE] 本任务中的过程适用于 Azure 云服务；对于应用程序服务，请参阅[此文章](../app-service-web/web-sites-configure-ssl-certificate.md)。
 
 此任务将使用生产部署；本主题的末尾提供了有关如何使用过渡部署的信息。
 
-如果尚未创建云服务，请首先阅读[本信息](/documentation/articles/cloud-services-how-to-create-deploy-portal)。
+如果尚未创建云服务，请首先阅读[本信息](cloud-services-how-to-create-deploy-portal.md)。
 
-[AZURE.INCLUDE [websites-cloud-services-css-guided-walkthrough](../includes/websites-cloud-services-css-guided-walkthrough.md)]
+[AZURE.INCLUDE [websites-cloud-services-css-guided-walkthrough](../../includes/websites-cloud-services-css-guided-walkthrough.md)]
 
 ## 步骤 1：获取 SSL 证书
 
@@ -38,10 +43,10 @@
 
 -   证书必须包含私钥。
 -   必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
--   证书的使用者名称必须与用于访问云服务的域匹配。你无法从证书颁发机构 (CA) 处获取针对 cloudapp.net 域的 SSL 证书。你必须获取在访问服务时要使用的自定义域名。在从 CA 处请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。例如，如果自定义域名为 **contoso.com**，则将要从 CA 处请求用于 ****.contoso.com** 或 **www.contoso.com** 的证书。
+-   证书的使用者名称必须与用于访问云服务的域匹配。你无法从证书颁发机构 (CA) 处获取针对 cloudapp.net 域的 SSL 证书。你必须获取在访问服务时要使用的自定义域名。在从 CA 处请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。例如，如果自定义域名为 **contoso.com**，则将要从 CA 处请求用于 **.contoso.com** 或 **www.contoso.com** 的证书。
 -   该证书必须使用至少 2048 位加密。
 
-出于测试目的，可以[创建](/documentation/articles/cloud-services-certs-create)并使用自签名证书。自签名证书不通过 CA 进行身份验证并可使用 cloudapp.net 域作为网站 URL。例如，以下任务使用其公用名 (CN) 为 **sslexample.cloudapp.net** 的自签名证书。
+出于测试目的，可以[创建](cloud-services-certs-create.md)并使用自签名证书。自签名证书不通过 CA 进行身份验证并可使用 cloudapp.net 域作为网站 URL。例如，以下任务使用其公用名 (CN) 为 **sslexample.cloudapp.net** 的自签名证书。
 
 接下来，你必须在服务定义和服务配置文件中包含有关此证书的信息。
 
@@ -57,14 +62,22 @@
             <Certificates>
                 <Certificate name="SampleCertificate" 
 							 storeLocation="LocalMachine" 
-                    		 storeName="CA" />
+                    		 storeName="CA"
+                             permissionLevel="limitedOrElevated" />
             </Certificates>
         ...
         </WebRole>
 
-    **Certificates** 节定义了我们的证书的名称、其位置及其所在存储的名称。我们已选择将此证书存储到 CA（证书颁发机构）存储中，但你也可以选择其他选项。有关详细信息，请参阅 [如何将证书与服务关联][]。
+    **Certificates** 节定义了我们的证书的名称、其位置及其所在存储的名称。
+    
+    权限（`permisionLevel` 属性）可以设置为以下值之一：
 
-2.  在你的服务定义文件中，在** Endpoints** 节中添加 **InputEndpoint** 元素以启用 HTTPS：
+    | 权限值 | 说明 |
+    | ----------------  | ----------- |
+    | limitedOrElevated | **（默认）**所有角色进程都可以访问该私钥。 |
+    | 提升的 | 仅提升的进程可以访问该私钥。|
+
+2.  在你的服务定义文件中，在 **Endpoints** 节中添加 **InputEndpoint** 元素以启用 HTTPS：
 
         <WebRole name="CertificateTesting" vmsize="Small">
         ...
@@ -91,7 +104,7 @@
 
     对服务定义文件进行的所有必需更改已完成，但您仍需要将证书信息添加到服务配置文件中。
 
-4.  在你的服务配置文件 (CSCFG) ServiceConfiguration.Cloud.cscfg 中，在** Role** 节中添加 **Certificates **节，并将下面显示的示例指纹值替换为你的证书的指纹值：
+4.  在你的服务配置文件 (CSCFG) ServiceConfiguration.Cloud.cscfg 中，在 **Role** 节中添加 **Certificates** 节，并将下面显示的示例指纹值替换为你的证书的指纹值：
 
         <Role name="Deployment">
         ...
@@ -140,20 +153,19 @@
 
 2.  在 Web 浏览器中，修改链接以使用 **https** 而不是 **http**，然后访问该页。
 
-    >[AZURE.NOTE]如果您使用的是自签名证书，则当您浏览到与自签名证书关联的 HTTPS 终结点时，浏览器中将显示一个证书错误。使用由受信任的证书颁发机构签名的证书可避免此问题；同时，您可以忽略此错误。（另一个选项是将自签名证书添加到用户的受信任证书颁发机构证书存储中。）
+    >[AZURE.NOTE] 如果您使用的是自签名证书，则当您浏览到与自签名证书关联的 HTTPS 终结点时，浏览器中将显示一个证书错误。使用由受信任的证书颁发机构签名的证书可避免此问题；同时，您可以忽略此错误。（另一个选项是将自签名证书添加到用户的受信任证书颁发机构证书存储中。）
 
     ![站点预览](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
-    >[AZURE.TIP]若要对过渡部署而非生产部署使用 SSL，你首先需要确定用于过渡部署的 URL。一旦部署了你的云服务后，过渡环境的 URL 由**部署 ID** GUID 决定，其格式为：`https://deployment-id.cloudapp.net/`
+    >[AZURE.TIP] 若要对过渡部署而非生产部署使用 SSL，你首先需要确定用于过渡部署的 URL。一旦部署了你的云服务后，过渡环境的 URL 由**部署 ID** GUID 决定，其格式为：`https://deployment-id.cloudapp.net/`
       
     >创建一个证书，该证书具有与基于 GUID 的 URL 相同的公用名 (CN)（例如，**328187776e774ceda8fc57609d404462.cloudapp.net**），再使用门户将该证书添加到过渡云服务，将该证书的信息添加到你的 CSDEF 和 CSCFG 文件，重新打包你的应用程序，然后更新过渡部署以使用新的包和 CSCFG 文件。
 
-[Azure Portal]: https://manage.windowsazure.cn
 ## 后续步骤
 
-* [云服务的常规配置](/documentation/articles/cloud-services-how-to-configure-portal)。
-* 了解如何[部署云服务](/documentation/articles/cloud-services-how-to-create-deploy-portal)。
-* 配置[自定义域名](/documentation/articles/cloud-services-custom-domain-name-portal)。
-* [管理云服务](/documentation/articles/cloud-services-how-to-manage-portal)。
+* [云服务的常规配置](cloud-services-how-to-configure-portal.md)。
+* 了解如何[部署云服务](cloud-services-how-to-create-deploy-portal.md)。
+* 配置[自定义域名](cloud-services-custom-domain-name-portal.md)。
+* [管理云服务](cloud-services-how-to-manage-portal.md)。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0411_2016-->

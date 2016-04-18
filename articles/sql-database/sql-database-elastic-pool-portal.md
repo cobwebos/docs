@@ -10,26 +10,30 @@
 
 <tags
 	ms.service="sql-database"
+	ms.devlang="NA"
 	ms.date="02/12/2016"
-	wacn.date=""/>
+	ms.author="sidneyh"
+	ms.workload="data-management"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="NA"/>
 
 
 # 在 Azure 门户中为 SQL 数据库创建可缩放的弹性数据库池
 
 > [AZURE.SELECTOR]
-- [Azure 门户](/documentation/articles/sql-database-elastic-pool-portal)
-- [C#](/documentation/articles/sql-database-elastic-pool-csharp)
-- [PowerShell](/documentation/articles/sql-database-elastic-pool-powershell)
+- [Azure 门户](sql-database-elastic-pool-portal.md)
+- [C#](sql-database-elastic-pool-csharp.md)
+- [PowerShell](sql-database-elastic-pool-powershell.md)
 
-本文介绍如何使用 Azure 门户创建可缩放的[弹性数据库池](/documentation/articles/sql-database-elastic-pool)。包含弹性数据库池的 SQL 数据库配置简化了对多个数据库进行的管理和资源共享。
+本文介绍如何使用 Azure 门户创建可缩放的[弹性数据库池](sql-database-elastic-pool.md)。包含弹性数据库池的 SQL 数据库配置简化了对多个数据库进行的管理和资源共享。
 
-> [AZURE.NOTE] 弹性数据库池目前为预览版，仅适用于 SQL 数据库 V12 服务器。如果你有一个 SQL 数据库 V11 服务器，可以通过一个步骤[使用 PowerShell 升级到 V12 并创建池](/documentation/articles/sql-database-upgrade-server-powershell)。
+> [AZURE.NOTE] 弹性数据库池目前为预览版，仅适用于 SQL 数据库 V12 服务器。如果你有一个 SQL 数据库 V11 服务器，可以通过一个步骤[使用 PowerShell 升级到 V12 并创建池](sql-database-upgrade-server-powershell.md)。
 
 
 ## 先决条件
 
-* SQL 数据库 V12 服务器上的数据库。如果你没有这样的数据库，请参阅[创建首个 Azure SQL 数据库](/documentation/articles/sql-database-get-started)，在不到五分钟的时间内创建一个。 
-* 或者，如果你已经有 SQL 数据库 V11 服务器，则可以[在门户中升级到 V12](/documentation/articles/sql-database-v12-plan-prepare-upgrade)，然后返回来按照这些说明创建一个池。
+* SQL 数据库 V12 服务器上的数据库。如果你没有这样的数据库，请参阅[创建首个 Azure SQL 数据库](sql-database-get-started.md)，在不到五分钟的时间内创建一个。 
+* 或者，如果你已经有 SQL 数据库 V11 服务器，则可以[在门户中升级到 V12](sql-database-v12-plan-prepare-upgrade.md)，然后返回来按照这些说明创建一个池。
 
 
 ## 步骤 1：创建新池
@@ -37,10 +41,18 @@
 通过向服务器添加新池来创建弹性数据库池。可以将多个池添加到服务器，但不能将数据库从不同的服务器添加到同一个池中。
 
 
-1. 在 [Azure 门户](http://manage.windowsazure.cn)中，单击“SQL 服务器”。
+1. 在 [Azure 门户](http://portal.azure.com/)中，单击“SQL 服务器”。
 2. 选择包含你要添加到池的数据库的服务器。
 3. 单击“新建池”（或者如果你看到一条消息说已经有建议的池，则单击该消息即可轻松查看和创建针对服务器的数据库优化的池。有关建议的详细信息如下所示。
+
+
+    ![将池添加到服务器](./media/sql-database-elastic-pool-portal/new-pool.png)
+
+
 4. 在“弹性数据库池”边栏选项卡上，可以保留默认名称，也可以键入新池的名称。
+
+    ![配置弹性池](./media/sql-database-elastic-pool-portal/configure-elastic-pool.png)
+
 
 ### 建议的弹性数据库池
 
@@ -49,6 +61,8 @@
 ### 为什么我会收到建议？
 
 SQL 数据库服务将评估使用情况历史记录，并在比使用单一数据库更符合成本效益时，建议你使用一个或多个弹性数据库池。
+
+![建议的池](./media/sql-database-elastic-pool-portal/recommended-pool.png)
 
 每项建议是使用最适合该池的服务器数据库的唯一子集配置的。
 
@@ -73,7 +87,7 @@ SQL 数据库服务将评估使用情况历史记录，并在比使用单一数�
 
 ## 步骤 2：选择一个定价层。
 
-该池的定价层决定了池中弹性数据库的可用功能、eDTU 数目上限 (DTU MAX)，以及每个数据库的可用存储 (GB)。有关详细信息，请参阅[服务层](/documentation/articles/sql-database-service-tiers/#Service-tiers-for-elastic-database-pools)。
+该池的定价层决定了池中弹性数据库的可用功能、eDTU 数目上限 (DTU MAX)，以及每个数据库的可用存储 (GB)。有关详细信息，请参阅[服务层](sql-database-service-tiers.md#Service-tiers-for-elastic-database-pools)。
 
 >[AZURE.NOTE] 目前，在预览版中，弹性数据库池的定价层在创建之后无法更改。若要更改现有弹性池的定价层，请在所需的定价层中创建新的弹性池，然后将弹性数据库移转到这个新池。
 
@@ -90,6 +104,8 @@ SQL 数据库服务将评估使用情况历史记录，并在比使用单一数�
 1. 在池的创建过程中，单击“配置池”边栏选项卡上的“添加数据库”。
 2. 选择你要添加到池的数据库：
 
+    ![添加数据库](./media/sql-database-elastic-pool-portal/add-databases.png)
+
     当你选择要添加到池的数据库时，必须满足以下条件：
 
     - 该池必须为数据库留出足够的空间（不能已经包含最大数目的数据库）。更具体地说，若要满足每个数据库的 eDTU 保障，该池必须具有足够的可用 eDTU。例如，如果一个组的 eDTU 保障为 400，且每个数据库的 eDTU 保障为 10，则池中允许的最大数据库数目为 40（400 eDTU/每个 DB 10 个 eDTU 保障 = 40 最大数据库数目）。
@@ -97,7 +113,11 @@ SQL 数据库服务将评估使用情况历史记录，并在比使用单一数�
 
 ### 动态建议
 
-将数据库添加到池中后，将基于所选数据库的历史使用情况动态地生成建议。这些建议将显示在 eDTU 和容量 (GB) 使用情况图表中以及在“配置池”边栏选项卡顶部的建议横幅中。这些建议旨在帮助你创建针对特定数据库进行了优化的池。
+将数据库添加到池中后，将基于所选数据库的历史使用情况动态地生成建议。这些建议将显示在 eDTU 和 GB 使用情况图表中以及在“配置池”边栏选项卡顶部的建议横幅中。这些建议旨在帮助你创建针对特定数据库进行了优化的池。
+
+
+ ![动态建议](./media/sql-database-elastic-pool-portal/dynamic-recommendation.png)
+
 
 ## 步骤 4：设置池的性能特征
 
@@ -105,7 +125,7 @@ SQL 数据库服务将评估使用情况历史记录，并在比使用单一数�
 
  ![配置弹性池](./media/sql-database-elastic-pool-portal/configure-performance.png)
 
-你可以设置三个参数来定义池的性能，即池的 eDTU 保障，以及池中弹性数据库的 eDTU MIN 和 eDTU MAX。下表描述了每个参数，并提供了一些设置方面的指导。有关特定的可用值设置，请参阅[弹性数据库池参考](/documentation/articles/sql-database-elastic-pool-reference)。
+你可以设置三个参数来定义池的性能，即池的 eDTU 保障，以及池中弹性数据库的 eDTU MIN 和 eDTU MAX。下表描述了每个参数，并提供了一些设置方面的指导。有关特定的可用值设置，请参阅[弹性数据库池参考](sql-database-elastic-pool-reference.md)。
 
 | 性能参数 | 说明 |
 | :--- | :--- |
@@ -116,7 +136,7 @@ SQL 数据库服务将评估使用情况历史记录，并在比使用单一数�
 
 ## 对池添加和删除数据库
 
-创建池后，你可以通过在“弹性数据库”页上添加或删除数据库，在池中添加或删除现有数据库（浏览到你的池，然后在“基本组件”中单击“弹性数据库”）。
+创建池后，你可以通过在“弹性数据库”页上（浏览到你的池，然后在“基本组件”中单击“弹性数据库”）添加或删除数据库，在池中添加或删除现有数据库。
 
 - 单击“添加数据库”以打开可以添加到池中的数据库列表。
 
@@ -124,11 +144,18 @@ SQL 数据库服务将评估使用情况历史记录，并在比使用单一数�
 
 - 选择你想要从池中删除的数据库，然后单击“删除数据库”。
 
+![建议的池](./media/sql-database-elastic-pool-portal/add-remove-databases.png)
+
 ## 在池中创建新数据库
 
 通过浏览到所需的池并单击“创建数据库”在池中创建新数据库。
 
 系统已经为正确的服务器和池配置了 SQL 数据库，因此请输入名称并选择数据库选项，然后单击“确定”创建新数据库：
+
+
+   ![创建弹性数据库](./media/sql-database-elastic-pool-portal/create-database.png)
+
+
 
 ## 监视和管理弹性数据库池
 
@@ -137,30 +164,38 @@ SQL 数据库服务将评估使用情况历史记录，并在比使用单一数�
 创建一个池之后，你可以：
 
 - 选择“配置池”来更改池 eDTU 和单数据库 eDTU 设置。
-- 通过创建弹性作业来选择“创建作业”并管理池中的数据库。弹性作业可以用来根据池中数据库的数目来运行 Transact-SQL 脚本。有关详细信息，请参阅[弹性数据库作业概述](/documentation/articles/sql-database-elastic-jobs-overview)。
+- 通过创建弹性作业来选择“创建作业”并管理池中的数据库。弹性作业可以用来根据池中数据库的数目来运行 Transact-SQL 脚本。有关详细信息，请参阅[弹性数据库作业概述](sql-database-elastic-jobs-overview.md)。
 - 选择“管理作业”可管理现有弹性作业。
 - 单击“创建数据库”以在池中创建新数据库。
 - 单击池设置链接，调整每个池的 eDTU 和容量 (GB)
 - 单击数据库链接以对池添加或删除数据库。
 - 单击数据库设置链接来针对池中的弹性数据库调整最小和最大的 eDTU。 
 
+![监视弹性池](./media/sql-database-elastic-pool-portal/pool-tasks.png)
+
+
 当你选择现有池时，你可以查看池的资源使用率。单击“资源使用率”图表可以打开“度量值”边栏选项卡，你可以在其中自定义图表和设置警报。
 
 ![监视弹性池][4]
+![资源利用率][6]
 
 单击“编辑图表”可以添加参数，这样你就可以轻松地查看池的遥测数据。
 
+
+![编辑图表][7]
+
+
 ## 后续步骤
-创建后弹性数据库池后，可以通过创建弹性作业来管理池中的数据库。弹性作业可以用来根据池中数据库的数目来运行 Transact-SQL 脚本。有关详细信息，请参阅[弹性数据库作业概述](/documentation/articles/sql-database-elastic-jobs-overview)。
+创建后弹性数据库池后，可以通过创建弹性作业来管理池中的数据库。弹性作业可以用来根据池中数据库的数目来运行 Transact-SQL 脚本。有关详细信息，请参阅[弹性数据库作业概述](sql-database-elastic-jobs-overview.md)。
 
 
 
 ## 其他资源
 
-- [SQL 数据库弹性池](/documentation/articles/sql-database-elastic-pool)
-- [使用 PowerShell 创建 SQL 数据库弹性池](/documentation/articles/sql-database-elastic-pool-powershell)
-- [使用 C# 创建和管理 SQL 数据库](/documentation/articles/sql-database-client-library)
-- [弹性数据库参考](/documentation/articles/sql-database-elastic-pool-reference)
+- [SQL 数据库弹性池](sql-database-elastic-pool.md)
+- [使用 PowerShell 创建 SQL 数据库弹性池](sql-database-elastic-pool-powershell.md)
+- [使用 C# 创建和管理 SQL 数据库](sql-database-client-library.md)
+- [弹性数据库参考](sql-database-elastic-pool-reference.md)
 
 
 <!--Image references-->
@@ -169,4 +204,5 @@ SQL 数据库服务将评估使用情况历史记录，并在比使用单一数�
 [7]: ./media/sql-database-elastic-pool-portal/edit-chart.png
 [10]: ./media/sql-database-elastic-pool-portal/star.png
 
-<!---HONumber=Mooncake_0307_2016-->
+
+<!---HONumber=Mooncake_0411_2016-->

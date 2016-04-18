@@ -1,34 +1,35 @@
 <properties
-	pageTitle="在 Azure 中使用 Git 和 Visual Studio Online 进行连续交付" 
-	description="了解如何将 Visual Studio Online 团队项目配置为使用 Git 自动生成并部署到 Azure App Service 或云服务中的 Web 应用功能。"
+	pageTitle="在 Azure 中使用 Git 和 Visual Studio Team Services 进行持续交付 | Microsoft Azure" 
+	description="了解如何将 Visual Studio Team Services 团队项目配置为使用 Git 自动生成并部署到 Azure App Service 或云服务中的 Web 应用功能。"
 	services="cloud-services"
 	documentationCenter=".net"
-	authors="kempb"
+	authors="TomArcher"
 	manager="douge"
 	editor=""/>
 
-<tags 
-	ms.service="cloud-services" 
-	ms.date="09/02/2015"
-	wacn.date=""/>
+<tags
+	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="01/30/2016"
+	ms.author="tarcher"/>
+
+# 使用 Visual Studio Team Services 和 Git 向 Azure 持续交付
+
+可以使用 Visual Studio Team Services 团队项目为你的源代码托管 Git 存储库，并在将提交推送到存储库时自动生成并部署到 Azure Web 应用或云服务。
+
+您将需要安装 Visual Studio 2013 和 Azure SDK。如果你尚未安装 Visual Studio 2013，请在 [www.visualstudio.com](http://www.visualstudio.com) 上选择“免费试用”链接以下载该软件。从[此处](http://go.microsoft.com/fwlink/?LinkId=239540)安装 Azure SDK。
 
 
+> [AZURE.NOTE] 你需要使用一个 Visual Studio Team Services 帐户来完成本教程：你可以[免费建立一个 Visual Studio Team Services 帐户](http://go.microsoft.com/fwlink/p/?LinkId=512979)。
 
-
-# 使用 Visual Studio Online 和 Git 向 Azure 持续传送项目
-
-可以使用 Visual Studio Online 团队项目为你的源代码托管 Git 存储库，并在将提交推送到存储库时自动生成并部署到 Azure 网站或云服务。
-
-您将需要安装 Visual Studio 2013 和 Azure SDK。如果你尚未安装 Visual Studio 2013，请在 [www.visualstudio.com](http://www.visualstudio.com) 上选择“免费试用”链接以下载该软件。从[此处](/downloads/)安装 Azure SDK。
-
-
-> [AZURE.NOTE]你需要使用一个 Visual Studio Online 帐户来完成本教程：你可以[免费建立一个 Visual Studio Online 帐户](http://go.microsoft.com/fwlink/p/?LinkId=512979)。
-
-若要使用 Visual Studio Online 将云服务设置为自动生成并部署到 Azure，请执行下列步骤：
+若要使用 Visual Studio Team Services 将云服务设置为自动生成并部署到 Azure，请执行下列步骤：
 
 ## 步骤 1：创建 Git 存储库
 
-1. 如果还没有 Visual Studio Online 帐户，则可以在[此处](http://go.microsoft.com/fwlink/?LinkId=397665)获取一个。创建团队项目时，请选择 Git 作为源代码管理系统。按照说明将 Visual Studio 连接到你的团队项目。
+1. 如果还没有 Visual Studio Team Services 帐户，则可以在[此处](http://go.microsoft.com/fwlink/?LinkId=397665)获取一个。创建团队项目时，请选择 Git 作为源代码管理系统。按照说明将 Visual Studio 连接到你的团队项目。
 
 2. 在团队资源管理器中，选择“克隆此存储库”链接。
 
@@ -42,13 +43,13 @@
 
 	![][4]
 
-2. 你可以通过执行本演练中的步骤来部署 Web 应用或云服务（Azure 应用程序）。创建新的 Azure 云服务项目或新的 ASP.NET MVC 项目。请确保该项目面向 .NET Framework 4 或更高版本。如果要创建云服务项目，请添加一个 ASP.NET MVC Web 角色和一个辅助角色。如果要创建 Web 应用，请选择 **ASP.NET Web 应用程序**项目模板，然后选择 **MVC**。有关详细信息，请参阅[在 Azure App Service 中创建 ASP.NET Web 应用](../web-sites-dotnet-get-started.md)。
+2. 你可以通过执行本演练中的步骤来部署 Web 应用或云服务（Azure 应用程序）。创建新的 Azure 云服务项目或新的 ASP.NET MVC 项目。请确保该项目面向 .NET Framework 4 或更高版本。如果要创建云服务项目，请添加一个 ASP.NET MVC Web 角色和一个辅助角色。如果要创建 Web 应用，请选择 **ASP.NET Web 应用程序**项目模板，然后选择 **MVC**。有关详细信息，请参阅[在 Azure App Service 中创建 ASP.NET Web 应用](/app-service-web/web-sites-dotnet-get-started.md)。
 
 3. 打开解决方案的快捷菜单，然后选择“提交”。
 
 	![][7]
 
-4. 如果这是您首次在 Visual Studio Online 中使用 Git，则需要提供一些信息，以在 Git 中对自己进行标识。在**团队资源管理器**的“挂起更改”区域中，输入你的用户名和电子邮件地址。输入提交注释，然后选择“提交”按钮。
+4. 如果这是你首次在 Visual Studio Team Services 中使用 Git，则需要提供一些信息，以在 Git 中对自己进行标识。在**团队资源管理器**的“挂起更改”区域中，输入你的用户名和电子邮件地址。输入提交注释，然后选择“提交”按钮。
 
 	![][8]
 
@@ -58,23 +59,27 @@
 
 ## 步骤 3：将项目连接到 Azure
 
-1. 现在，已在 Visual Studio Online 的 Git 存储库中包含某些源代码，可以将您的 git 存储库连接到 Azure。在 Azure 门户中，选择云服务或网站，或通过选择左下角的 + 图标并依次选择“云服务”或“网站”和“快速创建”来创建新的云服务或网站[](http://manage.windowsazure.cn)。<br.> ![][9]
+1. 现在，已在 Visual Studio Team Services 的 Git 存储库中包含某些源代码，可以将你的 git 存储库连接到 Azure。在 [Azure 经典门户](http://manage.windowsazure.com)中选择你的云服务或 Web 应用，或通过选择左下角的 + 图标，再选择“云服务”或“Web 应用”，然后选择“快速创建”来创建新的云服务或 Web 应用。
 
-2. 对于云服务，选择“使用 Visual Studio Online 设置发布”链接。对于网站，选择“从源代码管理设置部署”链接。<br/> ![][10]
+	![][9]
 
-3. 在向导中，在文本框中键入 Visual Studio Online 帐户的名称，然后选择“立即授权”链接。系统可能会要求你登录。
+3. 对于云服务，选择“使用 Visual Studio Team Services 设置发布”链接。对于 Web 应用，请选择“从源代码管理设置部署”链接。
+
+	![][10]
+
+2. 在向导中，在文本框中键入 Visual Studio Team Services 帐户的名称，然后选择“立即授权”链接。系统可能会要求你登录。
 
 	![][11]
 
-4. 在“连接请求”弹出对话框中，选择“接受”以授予 Azure 在 Visual Studio Online 中配置团队项目的权限。
+3. 在“连接请求”弹出对话框中，选择“接受”以授予 Azure 在 Visual Studio Team Services 中配置团队项目的权限。
 
 	![][12]
 
-5. 授权成功后，将显示一个包含一系列 Visual Studio Online 团队项目的下拉列表。选择在之前的步骤中创建的团队项目的名称，然后选择向导的复选标记按钮。
+4. 授权成功后，将显示一个包含 Visual Studio Team Services 团队项目的下拉列表。选择在之前的步骤中创建的团队项目的名称，然后选择向导的复选标记按钮。
 
 	![][13]
 
-	下次您将提交推送到存储库时，Visual Studio Online 将生成并将您的项目部署到 Azure。
+	下次你将提交推送到存储库时，Visual Studio Team Services 将生成并将你的项目部署到 Azure。
 
 ## 步骤 4：触发重新生成和重新部署项目
 
@@ -96,7 +101,7 @@
 
 	![][38]
 
-6. 选择“推送”链接，将你的提交推送到 Visual Studio Online 中的存储库。（你也可以使用“同步”按钮将你的提交复制到存储库。区别在于“同步”还从存储库中提取最新的更改。）
+6. 选择“推送”链接，将你的提交推送到 Visual Studio Team Services 中的存储库。（你也可以使用“同步”按钮将你的提交复制到存储库。区别在于“同步”还从存储库中提取最新的更改。）
 
 	![][39]
 
@@ -118,15 +123,15 @@
 
 	![][25]
 
-11. 在“触发器”选项卡中，你将看到生成定义已设置为默认情况下在每次签入时生成。（对于云服务，Visual Studio Online 生成并自动将主分支部署到过渡环境。您仍必须执行一个手动步骤，以部署到实时网站。对于没有过渡环境的 Web 应用，将直接在实时站点中部署主分支。
+11. 在“触发器”选项卡中，你将看到生成定义已设置为默认情况下在每次签入时生成。（对于云服务，Visual Studio Team Services 生成并自动将主分支部署到过渡环境。您仍必须执行一个手动步骤，以部署到实时网站。对于没有过渡环境的 Web 应用，将直接在实时站点中部署主分支。
 
 	![][26]
 
-12. 在“进程”选项卡中，你会看到部署环境已设置为云服务或 Web 应用的名称。
+1. 在“进程”选项卡中，你会看到部署环境已设置为云服务或 Web 应用的名称。
 
 	![][27]
 
-13. 如果你需要与默认值不同的值，请指定属性的值。Azure 发布的属性在“部署”部分中，并且你可能还需要设置 MSBuild 参数。例如，在云服务项目中，若要指定“云”以外的服务配置，请将 MSbuild 参数设置为 `/p:TargetProfile=[YourProfile]`，其中 *[YourProfile]* 将一个服务配置文件匹配如 ServiceConfiguration.*YourProfile*.cscfg 这样的名称。
+1. 如果你需要与默认值不同的值，请指定属性的值。Azure 发布的属性在“部署”部分中，并且你可能还需要设置 MSBuild 参数。例如，在云服务项目中，若要指定“云”以外的服务配置，请将 MSbuild 参数设置为 `/p:TargetProfile=[YourProfile]`，其中 *[YourProfile]* 将一个服务配置文件匹配如 ServiceConfiguration.*YourProfile*.cscfg 这样的名称。
 
 	下表显示了 **Deployment** 节中提供的属性：
 
@@ -139,16 +144,19 @@
 	|Sharepoint 部署环境|与服务名称相同。|
 	|Azure 部署环境|Web 应用或云服务的名称|
 
-14. 此时，你的生成应已成功完成。
-![][28]
+1. 此时，您的生成应已成功完成。
 
-15. 如果双击生成名称，则 Visual Studio 将显示“生成摘要”，其中包括来自关联的单元测试项目的任何测试结果。
-![][29]
+	![][28]
 
-16. 在 [Azure 门户](http://manage.windowsazure.cn)中，可以在选定过渡环境后在“部署”选项卡上查看关联的部署。
-![][30]
+1. 如果双击生成名称，则 Visual Studio 将显示“生成摘要”，其中包括来自关联的单元测试项目的任何测试结果。
 
-17.	浏览到你的站点的 URL。对于 Web 应用，只需选择门户中的“浏览”按钮。对于云服务，选择“仪表板”页面的“速览”部分中的 URL，其显示过渡环境。
+	![][29]
+
+1. 在 [Azure 经典门户](http://manage.windowsazure.com)中，可以在选定过渡环境后在“部署”选项卡上查看关联的部署。
+
+	![][30]
+
+1.	浏览到你的站点的 URL。对于 Web 应用，只需选择门户中的“浏览”按钮。对于云服务，选择“仪表板”页面的“速览”部分中的 URL，其显示过渡环境。
 
 	默认情况下，来自云服务的持续集成的部署将发布到过渡环境。可以通过将“备用云服务环境”属性设置为“生产”来改变此情况。这里显示了站点 URL 在云服务仪表板页上的位置。
 
@@ -158,21 +166,23 @@
 
 	![][32]
 
-18.	如果对项目进行其他更改，则将触发更多生成，并且将累积多个部署。标记为“活动”的最新项目。
+1.	如果对项目进行其他更改，则将触发更多生成，并且将累积多个部署。标记为“活动”的最新项目。
 
 	![][33]
 
 ## 步骤 5：重新部署以前的生成
 
-此步骤是可选的。在 Azure 管理门户中，选择以前的部署并选择“重新部署”可使站点退回以前的签入。请注意，这将在 TFS 中触发新的生成，并在部署历史记录中创建新的条目。
+此步骤是可选的。在 Azure 经典门户中，选择以前的部署并选择“重新部署”可使站点退回以前的签入。请注意，这将在 TFS 中触发新的生成，并在部署历史记录中创建新的条目。
 
 ![][34]
 
 ## 步骤 6：更改生产部署
 
- 准备就绪后，可以在管理门户中选择“交换”将过渡环境提升为生产环境。新部署的过渡环境将提升为生产环境，而之前的生产环境（如果有）将变成过渡环境。虽然生产环境和过渡环境的活动部署可能会不同，但最新生成的部署历史记录都是相同的，不管是哪一种环境。<br/> ![][35]
+准备就绪后，可以在 Azure 经典门户中选择“交换”将过渡环境提升为生产环境。新部署的过渡环境将提升为生产环境，而之前的生产环境（如果有）将变成过渡环境。虽然生产环境和过渡环境的活动部署可能会不同，但最新生成的部署历史记录都是相同的，不管是哪一种环境。
 
-## 步骤 6：从工作分支进行部署。
+![][35]
+
+## 步骤 7：从工作分支进行部署。
 
 使用 Git 时，您通常在工作分支中进行更改，当您的开发达到完成状态时，将集成到主分支。在一个项目的开发阶段，您需要生成并将工作分支部署到 Azure。
 
@@ -185,7 +195,8 @@
 	![][41]
 
 3. 输入分支的名称，如“working”，然后选择“创建分支”。这将创建一个新的本地分支。
-![][42]
+
+	![][42]
 
 4. 发布该分支。选择“取消发布的分支”中的分支名称，然后选择“发布”。
 
@@ -197,21 +208,23 @@
 
 	![][47]
 
-8. 指定你创建的分支，例如 refs/heads/working。
-![][48]
+8. 指定您创建的分支，例如 refs/heads/working。
+
+	![][48]
 
 9. 在代码中进行更改，打开已更改的文件的快捷菜单，然后选择“提交”。
 
 	![][43]
 
-10. 选择“未同步提交”链接，然后选择“同步”按钮或“推送”链接，将更改复制到 Visual Studio Online 中的工作分支的副本。
-![][45]
+10. 选择“未同步提交”链接，然后选择“同步”按钮或“推送”链接，将更改复制到 Visual Studio Team Services 中的工作分支的副本。
+
+	![][45]
 
 11. 导航到“生成”视图并查找刚刚为工作分支触发的生成。
 
 ## 后续步骤
 
-若要了解有关将 Git 与 Visual Studio Online 配合使用的更多技巧，请参阅[使用 Visual Studio 在 Git 中开发和共享你的代码](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)；有关使用不受 Visual Studio Online 管理的 Git 存储库发布到 Azure 的信息，请参阅[在 Azure App Service 中使用 GIT 进行连续部署](../web-sites-publish-source-control.md)。有关 Visual Studio Online 的详细信息，请参阅 [Visual Studio Online](http://go.microsoft.com/fwlink/?LinkId=253861)。
+若要了解有关将 Git 与 Visual Studio Team Services 配合使用的更多技巧，请参阅 [Develop and share your code in Git using Visual Studio](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)（使用 Visual Studio 在 Git 中开发和共享你的代码）；有关使用不受 Visual Studio Team Services 管理的 Git 存储库发布到 Azure 的信息，请参阅 [Continuous deployment using GIT in Azure App Service](/app-service-web/web-sites-publish-source-control.md)（在 Azure App Service 中使用 GIT 进行持续部署）。有关 Visual Studio Team Services 的详细信息，请参阅 [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861)。
 
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateTeamProjectInGit.PNG
@@ -259,4 +272,4 @@
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0411_2016-->

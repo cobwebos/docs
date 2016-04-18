@@ -6,8 +6,7 @@
 	documentationCenter=""
   	authors="curtand"
 	manager="stevenpo"
-	editor=""
-	/>
+	editor=""/>
 
 <tags 
 	ms.service="active-directory" 
@@ -47,4 +46,4 @@
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0411_2016-->

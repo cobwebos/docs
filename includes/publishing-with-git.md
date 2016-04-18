@@ -242,11 +242,11 @@ Web Apps 支持用各种编程语言创建的应用程序。对于此示例，�
 
 * **不具有 Windows 的二进制分发的本机模块**：
 
-	* npm ERR! \`cmd "/c" "node-gyp rebuild"\` failed with 1
+	* npm ERR! `cmd "/c" "node-gyp rebuild"` failed with 1
 
 		或者
 
-	* npm ERR! [modulename@version] preinstall: \`make || gmake\`
+	* npm ERR! [modulename@version] preinstall: `make || gmake`
 
 
 ## 其他资源
@@ -282,4 +282,4 @@ Web Apps 支持用各种编程语言创建的应用程序。对于此示例，�
 [Using Dropbox to Share Git Repositories]: https://gist.github.com/trey/2722927
 [Continuous delivery to Azure using Visual Studio Team Services]: /documentation/articles/cloud-services-continuous-delivery-use-vso/
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0411_2016-->

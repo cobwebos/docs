@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="在 Azure 中创建连接到虚拟机上运行的 MongoDB 的 Web 应用" 
-	description="本教程介绍如何使用 Git 将 ASP.NET 应用部署到连接至Azure 虚拟机上 MongoDB 的 Azure App Service。"
+	description="本教程介绍如何使用 Git 将 ASP.NET 应用部署到连接至 Azure 虚拟机上 MongoDB 的 Azure Web 应用。"
 	tags="azure-portal" 
 	services="app-service\web, virtual-machines" 
 	documentationCenter=".net" 
@@ -8,56 +8,43 @@
 	manager="wpickett" 
 	editor=""/>
 
-<tags 
-	ms.service="app-service-web" 
-	ms.date="08/11/2015" 
+<tags
+	ms.service="app-service-web"
+	ms.date="02/29/2016"
 	wacn.date=""/>
 
 
 # 在 Azure 中创建连接到虚拟机上运行的 MongoDB 的 Web 应用
 
-使用 Git，你可以将 ASP.NET 应用程序部署到 Azure Web 应用。在本教程中，你将构建一个简单的前端 ASP.NET MVC 任务列表应用程序，该程序将连接至在 Azure 内的虚拟机中运行的 MongoDB 数据库。[MongoDB][MongoDB] 是一个受欢迎的开源、高性能 NoSQL 数据库。在开发计算机上运行并测试了该 ASP.NET 应用程序后，可使用 Git 将其上载至 Azure 网站。
-
-[WACOM.INCLUDE [create-account-and-websites-and-vms-note](../includes/create-account-and-websites-and-vms-note.md)]
+使用 Git，你可以将 ASP.NET 应用程序部署到 Azure Web Apps。在本教程中，你将构建一个简单的前端 ASP.NET MVC 任务列表应用程序，该程序将连接至在 Azure 内的虚拟机中运行的 MongoDB 数据库。[MongoDB][MongoDB] 是一个受欢迎的开源、高性能 NoSQL 数据库。在开发计算机上运行并测试了该 ASP.NET 应用程序后，可使用 Git 将其上载至 Azure Web Apps。
 
 
-
-##概述##
-
-在本教程中你将：
-
-- [创建虚拟机和安装 MongoDB](#virtualmachine)
-- [在开发计算机上开发并运行 My Task List ASP.NET 应用程序](#createapp)
-- [创建 Azure 网站](#createwebsite)
-- [使用 Git 将 ASP.NET 应用程序部署到网站](#deployapp)
-
-
-##背景知识##
+## 背景知识 ##
 
 以下知识对于学习本教程有用但非必需：
 
 * MongoDB 的 C# 驱动程序。有关针对 MongoDB 开发 C# 应用程序的更多信息，请参阅 [MongoDB CSharp 语言中心][MongoC#LangCenter]。 
 * ASP .NET Web 应用程序框架。可通过 [ASP.net 网站][ASP.NET]进行全面了解。
-* ASP .NET MVC Web 应用程序框架。可通过 [ASP.NET MVC 网站][MVCWebSite] 进行全面了解。
+* ASP .NET MVC Web 应用程序框架。可通过 [ASP.NET MVC 网站][MVCWebSite]进行全面了解。
 * Azure。你可以先阅读 [Azure][WindowsAzure] 上的文章。
 
 ## 先决条件 ##
 
 - [Visual Studio Express 2013 for Web][VSEWeb] 或 [Visual Studio 2013][VSUlt]
-- [Azure SDK for .NET](http://go.microsoft.com/fwlink/p/?linkid=323510&clcid=0x409)
-- 有效的 Microsoft Azure 订阅
+- [Azure SDK for .NET](https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2013AzurePack.appids)
+- 一个有效的 Azure 订阅
 
-[AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
+[AZURE.INCLUDE [create-account-and-websites-note](../includes/create-account-and-websites-note.md)]
 
 <a id="virtualmachine"></a>
 ## 创建虚拟机和安装 MongoDB ##
 
 本教程假定你已在 Azure 中创建了一个虚拟机。创建虚拟机后，你需要在该虚拟机上安装 MongoDB：
 
-* 若要创建 Windows 虚拟机并安装 MongoDB，请参阅 [在 Azure 中，在运行 Windows Server 的虚拟机上安装 MongoDB][InstallMongoOnWindowsVM]。
-* 或者，若要创建 Linux 虚拟机并安装 MongoDB，请参阅 [在 Azure 中，在运行 CentOS 的虚拟机上安装 MongoDB][InstallMongoOnCentOSLinuxVM]。
+* 若要创建 Windows 虚拟机并安装 MongoDB，请参阅[在 Azure 中运行 Windows Server 的虚拟机上安装 MongoDB][InstallMongoOnWindowsVM]。
 
-在 Azure 中创建虚拟机并安装 MongoDB 后，请务必记住该虚拟机的 DNS 名称（例如“testlinuxvm.cloudapp.net”）以及你在终结点中指定的 MongoDB 的外部端口。本教程后面的步骤中将会用到此信息。
+
+在 Azure 中创建虚拟机并安装 MongoDB 后，请务必记住该虚拟机的 DNS 名称（例如“testlinuxvm.chinacloudapp.cn”）以及你在终结点中指定的 MongoDB 的外部端口。本教程后面的步骤中将会用到此信息。
 
 <a id="createapp"></a>
 ## 创建应用程序 ##
@@ -72,19 +59,20 @@
 
 	![新建项目对话框][NewProjectMyTaskListApp]
 
-1. 在“新建 ASP.NET 项目”对话框中，选择“MVC”，然后单击“确定”。
+1. 在“新建 ASP.NET 项目”对话框中，选择“MVC”，然后单击“确定”。确保取消选中“在云中托管”，然后单击“确定”。
 
-	![选择 MVC 模板][VS2013SelectMVCTemplate]
+	如果尚未创建 Web 应用，请转到 [Azure 管理门户](https://manage.windowsazure.cn)创建一个。然后，在 Web 应用“仪表板”中的“速览”下，单击“发布配置文件”。
 
-项目完成后，将显示由模板创建的默认页。
+2. 右键单击你的解决方案，然后单击“发布…”
 
-![默认的 ASP.NET MVC 应用程序][VS2013DefaultMVCApplication]
+1. 单击“导入”，选择之前下载的“发布配置文件”，然后单击“确定”。
 
 1. 单击“发布”。
 
 	![](./media/web-sites-dotnet-store-data-mongodb-vm/VSPublishWeb.png)
 
 	将默认的 ASP.NET 应用程序发布到 Azure Web Apps 后，将在浏览器中启动该应用程序。
+
 ## 安装 MongoDB C# 驱动程序
 
 MongoDB 通过驱动程序为 C# 应用程序提供客户端支持，你需要在本地开发计算机上安装此驱动程序。C# 驱动程序通过 NuGet 提供。
@@ -143,7 +131,7 @@ MongoDB C# 驱动程序现已安装。对 **MongoDB.Bson**、**MongoDB.Driver** 
 	}
 
 ## 添加数据访问层 ##
-在“解决方案资源管理器”中，右键单击“MyTaskListApp”项目并选择**添加**一个名为 *DAL* 的**新文件夹**。右键单击“DAL”文件夹并选择**添加**一个新**类**。将该类文件命名为 *Dal.cs*。在 *Dal.cs* 中，将现有代码替换为以下代码：
+在“解决方案资源管理器”中，右键单击“MyTaskListApp”项目并选择**添加**一个名为 “DAL” 的**新文件夹**。右键单击 *DAL* 文件夹并选择**添加**一个新**类**。将该类文件命名为 *Dal.cs*。在 *Dal.cs* 中，将现有代码替换为以下代码：
 
 	using System;
 	using System.Collections.Generic;
@@ -151,7 +139,9 @@ MongoDB C# 驱动程序现已安装。对 **MongoDB.Bson**、**MongoDB.Driver** 
 	using System.Web;
 	using MyTaskListApp.Models;
 	using MongoDB.Driver;
+	using MongoDB.Bson;
 	using System.Configuration;
+	
 	
 	namespace MyTaskListApp
 	{
@@ -161,42 +151,42 @@ MongoDB C# 驱动程序现已安装。对 **MongoDB.Bson**、**MongoDB.Driver** 
 	        private bool disposed = false;
 	
 	        // To do: update the connection string with the DNS name
-			// or IP address of your server. 
-			//For example, "mongodb://testlinux.chinacloudapp.cn"
-	        private string connectionString = "mongodb://<vm-dns-name>";
+	        // or IP address of your server. 
+	        //For example, "mongodb://testlinux.chinacloudapp.cn"
+	        private string connectionString = "mongodb://mongodbsrv20151211.chinacloudapp.cn";
 	
 	        // This sample uses a database named "Tasks" and a 
-			//collection named "TasksList".  The database and collection 
-			//will be automatically created if they don't already exist.
+	        //collection named "TasksList".  The database and collection 
+	        //will be automatically created if they don't already exist.
 	        private string dbName = "Tasks";
 	        private string collectionName = "TasksList";
 	
 	        // Default constructor.        
 	        public Dal()
 	        {
-	        }        
+	        }
 	
 	        // Gets all Task items from the MongoDB server.        
 	        public List<MyTask> GetAllTasks()
 	        {
 	            try
 	            {
-	                MongoCollection<MyTask> collection = GetTasksCollection();
-	                return collection.FindAll().ToList<MyTask>();
+	                var collection = GetTasksCollection();
+	                return collection.Find(new BsonDocument()).ToList();
 	            }
 	            catch (MongoConnectionException)
 	            {
-	                return new List<MyTask >();
+	                return new List<MyTask>();
 	            }
 	        }
 	
 	        // Creates a Task and inserts it into the collection in MongoDB.
 	        public void CreateTask(MyTask task)
 	        {
-	            MongoCollection<MyTask> collection = GetTasksCollectionForEdit();
+	            var collection = GetTasksCollectionForEdit();
 	            try
 	            {
-	                collection.Insert(task, SafeMode.True);
+	                collection.InsertOne(task);
 	            }
 	            catch (MongoCommandException ex)
 	            {
@@ -204,19 +194,19 @@ MongoDB C# 驱动程序现已安装。对 **MongoDB.Bson**、**MongoDB.Driver** 
 	            }
 	        }
 	
-	        private MongoCollection<MyTask> GetTasksCollection()
+	        private IMongoCollection<MyTask> GetTasksCollection()
 	        {
-	            MongoServer server = MongoServer.Create(connectionString);
-	            MongoDatabase database = server[dbName];
-	            MongoCollection<MyTask> todoTaskCollection = database.GetCollection<MyTask>(collectionName);
+	            MongoClient client = new MongoClient(connectionString);
+	            var database = client.GetDatabase(dbName);
+	            var todoTaskCollection = database.GetCollection<MyTask>(collectionName);
 	            return todoTaskCollection;
 	        }
 	
-	        private MongoCollection<MyTask> GetTasksCollectionForEdit()
+	        private IMongoCollection<MyTask> GetTasksCollectionForEdit()
 	        {
-	            MongoServer server = MongoServer.Create(connectionString);
-	            MongoDatabase database = server[dbName];
-	            MongoCollection<MyTask> todoTaskCollection = database.GetCollection<MyTask>(collectionName);
+	            MongoClient client = new MongoClient(connectionString);
+	            var database = client.GetDatabase(dbName);
+	            var todoTaskCollection = database.GetCollection<MyTask>(collectionName);
 	            return todoTaskCollection;
 	        }
 	
@@ -371,7 +361,7 @@ MongoDB C# 驱动程序现已安装。对 **MongoDB.Bson**、**MongoDB.Driver** 
 	<div>  @Html.Partial("Create", new MyTaskListApp.Models.MyTask())</div>
 
 
-若要增加创建新任务的功能，右键单击“Views\\Home\\”文件夹并选择*添加*一个**视图**。将该视图命名为 *Create*。将此代码替换为以下代码：
+若要增加创建新任务的功能，右键单击“Views\\Home\\”文件夹并选择 **添加** 一个 **视图** 。将该视图命名为 *Create*。将此代码替换为以下代码：
 
 	@model MyTaskListApp.Models.MyTask
 	
@@ -425,7 +415,7 @@ MongoDB C# 驱动程序现已安装。对 **MongoDB.Bson**、**MongoDB.Driver** 
 
 将 `<vm-dns-name>` 替换为运行 MongoDB 的虚拟机（在本教程的[创建虚拟机并安装 MongoDB][] 步骤中创建）的 DNS 名。若要查找虚拟机的 DNS 名，请转到 Azure 管理门户，选择“虚拟机”并找到“DNS 名”。
 
-如果虚拟机的 DNS 名是“testlinuxvm.cloudapp.net”而 MongoDB 在默认端口 27017 进行侦听，连接字符串代码行将如下所示：
+如果虚拟机的 DNS 名是“testlinuxvm.chinacloudapp.cn”而 MongoDB 在默认端口 27017 进行侦听，连接字符串代码行将如下所示：
 
 	private string connectionString = "mongodb://testlinuxvm.chinacloudapp.cn";
 
@@ -441,12 +431,11 @@ MongoDB C# 驱动程序现已安装。对 **MongoDB.Bson**、**MongoDB.Driver** 
 
 ![My Task List 应用程序][TaskListAppBlank]
 
-<h2>将 ASP.NET 应用程序部署到 Azure 网站</h2>
+## 发布到 Azure Web Apps
 
 在本部分中，你将创建一个网站并使用 Git 部署 My Task List ASP.NET 应用程序。
 
-<a id="createwebsite"></a>
-###创建 Azure 网站###
+###<a id="createwebsite"></a>创建 Azure 网站###
 本部分中，你将创建一个 Azure 网站。
 
 1. 打开 Web 浏览器并浏览至 [Azure 管理门户][AzurePortal]。使用您的 Azure 帐户进行登录。 
@@ -461,8 +450,7 @@ MongoDB C# 驱动程序现已安装。对 **MongoDB.Bson**、**MongoDB.Driver** 
 
 ![WAWSDashboardMyTaskListApp][WAWSDashboardMyTaskListApp]
 
-<a id="deployapp"></a>
-###使用 Git 将 ASP.NET 应用程序部署到网站
+###<a id="deployapp"></a>使用 Git 将 ASP.NET 应用程序部署到网站
 在本部分中，你将使用 Git 部署 My Task List 应用程序。
 
 1. 在“网站”中单击你的网站名称，然后单击“仪表板”。在右侧的“速览”下，单击“从源代码管理设置部署”。
@@ -483,28 +471,28 @@ MongoDB C# 驱动程序现已安装。对 **MongoDB.Bson**、**MongoDB.Driver** 
 	![部署完成][Image11]
 
 9. 你的 Azure 网站现已可用。查看你的站点的“仪表板”页面，找到“站点 URL”字段以确定站点的 URL。按照本教程的步骤执行，你的站点的 URL 应该是：http://mytasklistapp.chinacloudsites.cn。
-
-##摘要##
+## 摘要 ##
 
 现在，你已将 ASP.NET 应用程序成功部署到 Azure Web Apps。查看 Web 应用：
 
-1. 登录到 Azure 门户。
+1. 登录到 Azure 管理门户。
 2. 单击“Web Apps”。 
 3. 在“Web Apps”列表中选择你的 Web 应用。
 
 有关针对 MongoDB 开发 C# 应用程序的详细信息，请参阅 [CSharp 语言中心][MongoC#LangCenter]。
+ 
 
 <!-- HYPERLINKS -->
 
 [AzurePortal]: http://manage.windowsazure.cn
 [WindowsAzure]: http://www.windowsazure.cn
 [MongoC#LangCenter]: http://docs.mongodb.org/ecosystem/drivers/csharp/
-[MVC Website]: http://www.asp.net/mvc
+[MVCWebSite]: http://www.asp.net/mvc
 [ASP.NET]: http://www.asp.net/
 [MongoConnectionStrings]: http://www.mongodb.org/display/DOCS/Connections
 [MongoDB]: http://www.mongodb.org
-
-[VSEWeb]: http://www.visualstudio.com/zh-cn/downloads/download-visual-studio-vs
+[InstallMongoOnWindowsVM]: /documentation/articles/virtual-machines-install-mongodb-windows-server
+[VSEWeb]: http://www.visualstudio.com/zh-cn/downloads/download-visual-studio-vs#d-2013-express
 [VSUlt]: http://www.visualstudio.com/zh-cn/downloads/download-visual-studio-vs
 
 <!-- IMAGES -->
@@ -532,4 +520,4 @@ MongoDB C# 驱动程序现已安装。对 **MongoDB.Bson**、**MongoDB.Driver** 
 [Create an Azure web site]: #createwebsite
 [Deploy the ASP.NET application to the web site using Git]: #deployapp
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0411_2016-->

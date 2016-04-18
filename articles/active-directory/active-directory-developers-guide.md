@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="12/10/2015"
+   ms.date="01/06/2016"
    wacn.date=""/>
 
 
@@ -40,7 +40,7 @@
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:
 |[iOS](active-directory-devquickstarts-ios.md)|[Android](active-directory-devquickstarts-android)|[.NET](active-directory-devquickstarts-dotnet.md)|[Windows Phone](active-directory-devquickstarts-windowsphone)|[Windows 应用商店](active-directory-devquickstarts-windowsstore)|[Xamarin](active-directory-devquickstarts-xamarin)|[Cordova](active-directory-devquickstarts-cordova)
 
-### 网站快速入门指南
+### Web 应用程序快速入门指南
 
 |[![.NET](./media/active-directory-developers-guide/net.png)](active-directory-devquickstarts-webapp-dotnet.md)|[![Java](./media/active-directory-developers-guide/java.png)](active-directory-devquickstarts-webapp-java.md)|[![Javascript](./media/active-directory-developers-guide/javascript.png)](active-directory-devquickstarts-angular.md)|[![Node.js](./media/active-directory-developers-guide/nodejs.png)](active-directory-devquickstarts-openidconnect-nodejs.md)
 |:--:|:--:|:--:|:--:|
@@ -67,7 +67,7 @@
 - [列出 Azure Active Directory 应用程序库中的应用程序](active-directory-app-gallery-listing)
 - [了解 Azure Active Directory 应用程序清单](active-directory-application-manifest)
 - [使用 Office 365 API 创建应用](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
-- [将适用于 Office 365 的网站提交到卖家仪表板](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
+- [将适用于 Office 365 的 Web 应用提交到卖家仪表板](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
 - [预览：如何构建可以使用个人帐户和工作或学校帐户来登录用户的应用](active-directory-appmodel-v2-overview.md)
 - [预览：如何构建可以注册和登录使用者的应用](active-directory-b2c-overview.md)
 
@@ -85,11 +85,11 @@
 - [Azure Active Directory 示例](https://github.com/azure-samples?query=active-directory)：浏览示例列表的最简单办法是使用[代码示例的索引](active-directory-code-samples.md)。
 
 
-#### Graph API
+### Graph API
 
-- **[Graph API 参考](https://msdn.microsoft.com/zh-cn/library/azure/hh974476.aspx)**：Azure Active Directory Graph API 的 REST 参考。[查看新的交互式 Graph API 参考体验](https://msdn.microsoft.com/zh-cn/library/Azure/Ad/Graph/api/api-catalog)。
+- [图形 API 参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)：Azure Active Directory 图形 API 的 REST 参考。[查看交互式图形 API 参考体验](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)。
 
-- **[Graph API 权限作用域](https://msdn.microsoft.com/zh-cn/library/Azure/Ad/Graph/api/graph-api-permission-scopes)**：用于控制应用程序必须对租户中目录数据具有的访问权限的 OAuth 2.0 权限作用域。
+- [图形 API 权限范围](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)：用于控制应用对租户中目录数据的访问权限的 OAuth 2.0 权限范围。
 
 ### 身份验证库
 
@@ -100,15 +100,15 @@
 - **[SAML 2.0 协议参考](https://msdn.microsoft.com/zh-cn/library/azure/dn195591.aspx)**：SAML 2.0 协议使应用程序能够为其用户提供单一登录体验。
 
 
-- **[OAuth 2.0 协议参考](https://msdn.microsoft.com/zh-cn/library/azure/dn645545.aspx)**：OAuth 2.0 协议使你能够授权访问 Azure AD 租户中的网站和 Web API。
+- [OAuth 2.0 协议参考](https://msdn.microsoft.com/library/azure/dn645545.aspx)：可以使用 OAuth 2.0 协议授权访问 Azure Active Directory 租户中的 Web 应用程序和 Web API。
 
 
-- **[OpenID Connect 1.0 协议参考](https://msdn.microsoft.com/zh-cn/library/azure/dn645541.aspx)**：OpenID Connect 1.0 协议扩展了 OAuth 2.0，使其能够用作身份验证协议。
+- [OpenID Connect 1.0 协议参考](https://msdn.microsoft.com/library/azure/dn645541.aspx)：OpenID Connect 1.0 协议扩展了 OAuth 2.0，使其能够用作身份验证协议。
 
 
-- **[WS-Federation 1.2 协议参考](https://msdn.microsoft.com/zh-cn/library/azure/dn903702.aspx)**：Web 服务联合身份验证版本 1.2 规范中指定的 WS-Federation 1.2 协议。
+- [WS 联合身份验证 1.2 协议参考](https://msdn.microsoft.com/library/azure/dn903702.aspx)：Web Services 联合身份验证版本 1.2 规范中指定了 WS 联合身份验证 1.2 协议。
 
-- **[支持的安全令牌和声明](active-directory-token-and-claims)**：该指南可帮助你了解和评估 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 令牌中的声明。
+- [支持的令牌和声明类型](active-directory-token-and-claims.md)：你可以通过本指南来了解和评估 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 令牌中的声明。
 
 ## 社交
 
@@ -120,4 +120,4 @@
 
 - [Twitter 上的 Azure Active Directory](https://twitter.com/azuread)：以 140 个或更少的字符发布的 Azure Active Directory 公告。
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0411_2016-->

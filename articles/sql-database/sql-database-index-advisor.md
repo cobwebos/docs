@@ -9,8 +9,12 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="01/23/2015"
-   wacn.date=""/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="data-management" 
+   ms.date="01/23/2016"
+   ms.author="sstein"/>
 
 # SQL 数据库索引顾问
 
@@ -20,7 +24,7 @@ Azure SQL 数据库索引顾问为你的现有 SQL 数据库提供索引建议�
 
 - 建议创建哪些索引（建议仅适用于非群集索引）。
 - 建议删除哪些索引（删除索引建议功能为预览版，目前仅适用于重复的索引）。
-- 允许你选择在没有用户交互的情况下自动应用索引建议。（自动化建议要求[查询存储](https://msdn.microsoft.com/zh-cn/library/dn817826.aspx)已启用且正处于运行状态。）
+- 允许你选择在没有用户交互的情况下自动应用索引建议。（自动化建议要求[查询存储](https://msdn.microsoft.com/library/dn817826.aspx)已启用且正处于运行状态。）
 - 自动回退对性能有负面影响的建议。 
 
 
@@ -29,7 +33,7 @@ Azure SQL 数据库索引顾问为你的现有 SQL 数据库提供索引建议�
 
 ### 权限
 
-若要查看和创建索引建议，需要 Azure 中正确的[基于角色的访问控制](/documentation/articles/role-based-access-control-configure)权限。
+若要查看和创建索引建议，需要 Azure 中正确的[基于角色的访问控制](../active-directory/role-based-access-control-configure.md)权限。
 
 - 查看建议需要“读者”、“SQL DB 参与者”权限。
 - 执行任何操作（如创建或删除索引、取消创建索引）需要“所有者”、“SQL DB 参与者”权限。
@@ -41,7 +45,7 @@ Azure SQL 数据库索引顾问为你的现有 SQL 数据库提供索引建议�
 
 查看索引建议的步骤：
 
-1. 登录到 [Azure 门户](https://manage.windowsazure.cn)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 单击“浏览”>“SQL 数据库”，然后选择数据库。
 5. 单击“所有设置”>“索引顾问”查看适用于所选数据库的“索引建议”。
 
@@ -117,7 +121,7 @@ Azure SQL 数据库索引顾问为你的现有 SQL 数据库提供索引建议�
 
 选择任意建议，然后单击“查看脚本”。针对数据库运行此脚本以手动应用建议。
 
-不通过该服务监视和验证手动执行的索引的性能影响，因此建议你在创建后监视这些索引以验证它们是否提供性能提升，并调整或删除它们（如有必要）。有关创建索引的详细信息，请参阅[创建索引 (Transact-SQL)](https://msdn.microsoft.com/zh-cn/library/ms188783.aspx)。
+不通过该服务监视和验证手动执行的索引的性能影响，因此建议你在创建后监视这些索引以验证它们是否提供性能提升，并调整或删除它们（如有必要）。有关创建索引的详细信息，请参阅[创建索引 (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx)。
 
 
 ### 取消创建索引
@@ -160,7 +164,7 @@ Azure SQL 数据库索引顾问为你的现有 SQL 数据库提供索引建议�
 
 ## 监视索引建议的性能影响
 
-成功实施建议后，可单击“索引详细信息”边栏选项卡上的“Query Insights”以打开 [Query Performance Insights](/documentation/articles/sql-database-query-performance)，然后查看排位靠前的查询的性能影响。
+成功实施建议后，可单击“索引详细信息”边栏选项卡上的“Query Insights”以打开 [Query Performance Insights](sql-database-query-performance.md)，然后查看排位靠前的查询的性能影响。
 
 ![监视性能影响](./media/sql-database-index-advisor/query-insights.png)
 
@@ -175,4 +179,9 @@ Azure SQL 数据库索引顾问为你的现有 SQL 数据库提供索引建议�
 
 监视索引建议并继续应用它们以优化性能。数据库工作负荷是动态的，并且不断地更改。索引顾问将继续监视和建议可能提高数据库性能的索引。
 
-<!---HONumber=Mooncake_0321_2016-->
+
+
+
+
+
+<!---HONumber=Mooncake_0411_2016-->

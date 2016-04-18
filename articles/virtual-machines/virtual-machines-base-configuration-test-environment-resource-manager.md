@@ -1,6 +1,8 @@
+<!-- not suitable for Mooncake -->
+
 <properties
 	pageTitle="使用 Azure 资源管理器的基本配置测试环境"
-	description="了解如何在使用资源管理器的 Microsoft Azure 中创建模拟简化 Intranet 的简单开发/测试环境。"
+	description="了解如何在使用 Resource Manager 的 Azure 中创建模拟简化 Intranet 的简单开发/测试环境。"
 	documentationCenter=""
 	services="virtual-machines"
 	authors="JoeDavies-MSFT"
@@ -10,14 +12,14 @@
 
 <tags
 	ms.service="virtual-machines"
-	ms.date="12/11/2015"
+	ms.date="01/21/2016"
 	wacn.date=""/>
 
 # 使用 Azure 资源管理器的基本配置测试环境
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [经典部署模型](/documentation/articles/virtual-machines-base-configuration-test-environment)。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](/documentation/articles/virtual-machines-base-configuration-test-environment)。
 
-本文为你提供在 Microsoft Azure 虚拟网络中使用资源管理器中创建的虚拟机创建基本配置测试环境的分步说明。
+本文为你提供在 Azure 虚拟网络中使用 Resource Manager 中创建的虚拟机创建基本配置测试环境的分步说明。
 
 可以使用生成的测试环境：
 
@@ -46,9 +48,9 @@
 3.	配置 APP1。
 4.	配置 CLIENT1。
 
-如果你还没有 Azure 帐户，可以在[试用 Azure](http://azure.microsoft.com/pricing/free-trial/) 中注册一个免费试用版。如果你有 MSDN 订阅，请参阅 [MSDN 订户的 Azure 权益](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
+如果你还没有 Azure 帐户，可以在[试用 Azure](/pricing/1rmb-trial/) 中注册一个试用版。如果你有 MSDN 订阅，请参阅 [MSDN 订户的 Azure 权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
 
-> [AZURE.NOTE] Azure 中的虚拟机在运行时会持续产生货币成本。此成本是针对你的免费试用版本、MSDN 订阅或付费订阅的。有关正在运行的 Azure 虚拟机的成本的详细信息，请参阅[虚拟机定价详细信息](http://azure.microsoft.com/pricing/details/virtual-machines/)和 [Azure 定价计算器](http://azure.microsoft.com/pricing/calculator/)。若要控制成本，请参阅[将 Azure 中的测试环境虚拟机的成本降至最低](#costs)。
+> [AZURE.NOTE] Azure 中的虚拟机在运行时会持续产生货币成本。此成本是针对你的试用、MSDN 订阅或付费订阅进行计费的。有关正在运行的 Azure 虚拟机的成本的详细信息，请参阅[虚拟机定价详细信息](/home/features/virtual-machines/#price)和 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)。若要控制成本，请参阅[将 Azure 中的测试环境虚拟机的成本降至最低](#costs)。
 
 ## 阶段 1：创建虚拟网络
 
@@ -58,7 +60,7 @@
 
 登录到你的帐户。
 
-	Login-AzureRMAccount $(Get-AzureRmEnvironment -Name AzureChinaCloud)
+	Login-AzureRMAccount
 
 使用以下命令获取你的订阅名称。
 
@@ -67,7 +69,7 @@
 设置你的 Azure 订阅。将引号内的所有内容（包括 < and > 字符）替换为相应的名称。
 
 	$subscr="<subscription name>"
-	Get-AzureRmSubscription –SubscriptionName $subscr | Select-AzureRmSubscription
+	Get-AzureRmSubscription -SubscriptionName $subscr | Select-AzureRmSubscription
 
 接下来，为基本配置测试实验室创建新的资源组。若要确定唯一的资源组名称，可使用以下命令列出现有的资源组。
 
@@ -76,7 +78,7 @@
 使用以下命令创建新的资源组。将引号内的所有内容（包括 < and > 字符）替换为相应的名称。
 
 	$rgName="<resource group name>"
-	$locName="<location name, such as West US>"
+	$locName="<location name, such as China North>"
 	New-AzureRMResourceGroup -Name $rgName -Location $locName
 
 基于资源管理器的虚拟机需要一个基于资源管理器的存储帐户。必须为存储帐户选择只包含小写字母和数字的全局唯一名称。可以使用以下命令列出现有的存储帐户。
@@ -88,14 +90,14 @@
 	$rgName="<your new resource group name>"
 	$locName="<the location of your new resource group>"
 	$saName="<storage account name>"
-	New-AzureRMStorageAccount -Name $saName -ResourceGroupName $rgName –Type Standard_LRS -Location $locName
+	New-AzureRMStorageAccount -Name $saName -ResourceGroupName $rgName -Type Standard_LRS -Location $locName
 
 接下来，你可以创建将托管基本配置的公司网络子网的 TestLab Azure 虚拟网络。
 
 	$rgName="<name of your new resource group>"
-	$locName="<Azure location name, such as West US>"
+	$locName="<Azure location name, such as China North>"
 	$corpnetSubnet=New-AzureRMVirtualNetworkSubnetConfig -Name Corpnet -AddressPrefix 10.0.0.0/24
-	New-AzureRMVirtualNetwork -Name TestLab -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/8 -Subnet $corpnetSubnet –DNSServer 10.0.0.4
+	New-AzureRMVirtualNetwork -Name TestLab -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/8 -Subnet $corpnetSubnet -DNSServer 10.0.0.4
 
 这是你当前的配置。
 
@@ -108,7 +110,7 @@ DC1 是 corp.contoso.com Active Directory 域服务 (AD DS) 域的域控制器�
 首先，填写资源组的名称、Azure 位置和存储帐户名称，并在本地计算机上的 Azure PowerShell 命令提示符下运行这些命令以为 DC1 创建 Azure 虚拟机。
 
 	$rgName="<resource group name>"
-	$locName="<Azure location, such as West US>"
+	$locName="<Azure location, such as China North>"
 	$saName="<storage account name>"
 	$vnet=Get-AzureRMVirtualNetwork -Name TestLab -ResourceGroupName $rgName
 	$pip = New-AzureRMPublicIpAddress -Name DC1-NIC -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
@@ -128,49 +130,54 @@ DC1 是 corp.contoso.com Active Directory 域服务 (AD DS) 域的域控制器�
 接下来，连接到 DC1 虚拟机。
 
 1.	在 Azure 门户中单击“虚拟机”，然后单击“DC1”虚拟机。  
-2.	在 **DC1** 窗格中，单击**“连接”**。
+2.	在 “DC1” 窗格中，单击“连接”。
 3.	出现提示时，打开 DC1.rdp 下载文件。
-4.	遇到远程桌面连接消息框提示时，单击**“连接”**。
+4.	遇到远程桌面连接消息框提示时，单击“连接”。
 5.	当系统提示你输入凭据时，请使用以下凭据：
 - 名称：**DC1\**[本地管理员帐户名称]
 - 密码：[本地管理员帐户密码]
-6.	当系统使用引用证书的远程桌面连接消息框提示你时，单击**“是”**。
+6.	当系统使用引用证书的远程桌面连接消息框提示你时，单击“是”。
 
 接下来，将额外的数据磁盘添加为驱动器盘符为 F: 的新卷。
 
-1.	在服务器管理器的左窗格中，单击**“文件和存储服务”**，然后单击**“磁盘”**。
+1.	在服务器管理器的左窗格中，单击“文件和存储服务”，然后单击“磁盘”。
 2.	在内容窗格的“磁盘”组中，单击“磁盘 2”（其“分区”设置为“未知”）。
-3.	单击**“任务”**，然后单击**“新建卷”**。
-4.	在新建卷向导的“开始之前”页上，单击**“下一步”**。
+3.	单击“任务”，然后单击“新建卷”。
+4.	在新建卷向导的“开始之前”页上，单击“下一步”。
 5.	在“选择服务器和磁盘”页上，单击“磁盘 2”，然后单击“下一步”。出现提示时，单击“确定”。
-6.	在“指定卷的大小”页上，单击**“下一步”**。
-7.	在“分配到驱动器号或文件夹”页上，单击**“下一步”**。
-8.	在“选择文件系统设置”页上，单击**“下一步”**。
-9.	在“确认选择”页上，单击**“创建”**。
-10.	完成后，单击**“关闭”**。
+6.	在“指定卷的大小”页上，单击“下一步”。
+7.	在“分配到驱动器号或文件夹”页上，单击“下一步”。
+8.	在“选择文件系统设置”页上，单击“下一步”。
+9.	在“确认选择”页上，单击“创建”。
+10.	完成后，单击“关闭”。
 
 接下来，将 DC1 配置为 corp.contoso.com 域的域控制器和 DNS 服务器。在管理员级 Windows PowerShell 命令提示符下运行这些命令。
 
 	Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 	Install-ADDSForest -DomainName corp.contoso.com -DatabasePath "F:\NTDS" -SysvolPath "F:\SYSVOL" -LogPath "F:\Logs"
 
+请注意，这些命令可能需要几分钟才能完成。
+
 在 DC1 重启后，重新连接到 DC1 虚拟机。
 
 1.	在 Azure 门户中单击“虚拟机”，然后单击“DC1”虚拟机。
-2.	在“DC1”窗格中，单击**“连接”**。
-3.	当系统提示你打开 DC1.rdp 时，单击**“打开”**。
-4.	遇到远程桌面连接消息框提示时，单击**“连接”**。
+2.	在“DC1”窗格中，单击“连接”。
+3.	当系统提示你打开 DC1.rdp 时，单击“打开”。
+4.	遇到远程桌面连接消息框提示时，单击“连接”。
 5.	当系统提示你输入凭据时，请使用以下凭据：
 - 名称：**CORP\**[本地管理员帐户名称]
 - 密码：[本地管理员帐户密码]
-6.	当引用证书的远程桌面连接消息框提示你时，单击**“是”**。
+6.	当引用证书的远程桌面连接消息框提示你时，单击“是”。
 
-接下来，在 Active Directory 中创建登录到 CORP 域成员计算机时将使用的用户帐户。在管理员级别的 Windows PowerShell 命令提示符下，一次一个地运行这些命令。
+接下来，在 Active Directory 中创建登录到 CORP 域成员计算机时将使用的用户帐户。在管理员级 Windows PowerShell 命令提示符下运行此命令。
 
 	New-ADUser -SamAccountName User1 -AccountPassword (read-host "Set user password" -assecurestring) -name "User1" -enabled $true -PasswordNeverExpires $true -ChangePasswordAtLogon $false
-	Add-ADPrincipalGroupMembership -Identity "CN=User1,CN=Users,DC=corp,DC=contoso,DC=com" -MemberOf "CN=Enterprise Admins,CN=Users,DC=corp,DC=contoso,DC=com","CN=Domain Admins,CN=Users,DC=corp,DC=contoso,DC=com"
 
-请注意，第一个命令将产生提供 User1 帐户密码的提示。由于此帐户将用于所有 CORP 域成员计算机的远程桌面连接，请选择一个强密码。若要检查其强度，请参阅[密码检查器：使用强密码](https://www.microsoft.com/security/pc-security/password-checker.aspx)。记录 User1 帐户密码，并将其存储在安全位置。
+请注意，此命令会提示你提供 User1 帐户密码。由于此帐户将用于所有 CORP 域成员计算机的远程桌面连接，请选择一个强密码。若要检查其强度，请参阅[密码检查器：使用强密码](https://www.microsoft.com/security/pc-security/password-checker.aspx)。记录 User1 帐户密码，并将其存储在安全位置。
+
+接下来，将新的 User1 帐户配置为企业管理员。在管理员级 Windows PowerShell 命令提示符下运行此命令。
+
+	Add-ADPrincipalGroupMembership -Identity "CN=User1,CN=Users,DC=corp,DC=contoso,DC=com" -MemberOf "CN=Enterprise Admins,CN=Users,DC=corp,DC=contoso,DC=com","CN=Domain Admins,CN=Users,DC=corp,DC=contoso,DC=com"
 
 关闭与 DC1 的远程桌面会话，然后使用 CORP\\User1 帐户重新连接。
 
@@ -189,7 +196,7 @@ APP1 提供 Web 服务和文件共享服务。
 首先，填写资源组的名称、Azure 位置和存储帐户名称，并在本地计算机上的 Azure PowerShell 命令提示符下运行这些命令以为 APP1 创建 Azure 虚拟机。
 
 	$rgName="<resource group name>"
-	$locName="<Azure location, such as West US>"
+	$locName="<Azure location, such as China North>"
 	$saName="<storage account name>"
 	$vnet=Get-AzureRMVirtualNetwork -Name TestLab -ResourceGroupName $rgName
 	$pip = New-AzureRMPublicIpAddress -Name APP1-NIC -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
@@ -219,7 +226,7 @@ APP1 提供 Web 服务和文件共享服务。
 
 接下来，在 Windows PowerShell 命令提示符下使用此命令将 APP1 设为 Web 服务器。
 
-	Install-WindowsFeature Web-WebServer –IncludeManagementTools
+	Install-WindowsFeature Web-WebServer -IncludeManagementTools
 
 接下来，使用以下命令在 APP1 上的文件夹中创建共享文件夹和文本文件。
 
@@ -235,10 +242,12 @@ APP1 提供 Web 服务和文件共享服务。
 
 CLIENT1 在 Contoso Intranet 中充当典型笔记本电脑、平板电脑或台式计算机。
 
+> [AZURE.NOTE] 以下命令集创建运行 Windows Server 2012 R2 Datacenter 的 CLIENT1，所有类型的 Azure 订阅都可以执行此操作。如果你有一个基于 MSDN 的 Azure 订阅，则可使用 [Azure 门户](/documentation/articles/virtual-machines-windows-tutorial-classic-portal)创建运行 Windows 10、Windows 8 或 Windows 7的 CLIENT1。
+
 首先，填写资源组的名称、Azure 位置和存储帐户名称，并在本地计算机上的 Azure PowerShell 命令提示符下运行这些命令以为 CLIENT1 创建 Azure 虚拟机。
 
 	$rgName="<resource group name>"
-	$locName="<Azure location, such as West US>"
+	$locName="<Azure location, such as China North>"
 	$saName="<storage account name>"
 	$vnet=Get-AzureRMVirtualNetwork -Name TestLab -ResourceGroupName $rgName
 	$pip = New-AzureRMPublicIpAddress -Name CLIENT1-NIC -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
@@ -268,16 +277,16 @@ CLIENT1 在 Contoso Intranet 中充当典型笔记本电脑、平板电脑或台
 
 接下来，验证是否可以从 CLIENT1 访问 APP1 上的 Web 资源和文件共享资源。
 
-1.	在服务器管理器的树窗格中，单击**“本地服务器”**。
-2.	在**“CLIENT1 的属性”**中，单击**“IE 增强的安全配置”**旁边的**“启用”**。
-3.	在**“Internet Explorer 增强的安全配置”**中，对**“管理员”**和**“用户”**单击**“关闭”**，然后单击**“确定”**。
-4.	在“开始”屏幕中，单击**“Internet Explorer”**，然后单击**“确定”**。
-5.	在地址栏中，键入 **http://app1.corp.contoso.com/**，然后按 Enter。你应看到 APP1 的默认 Internet 信息服务网页。
+1.	在服务器管理器的树窗格中，单击“本地服务器”。
+2.	在“CLIENT1 的属性”中，单击“IE 增强的安全配置”旁边的“启用”。
+3.	在“Internet Explorer 增强的安全配置”中，对“管理员”和“用户”单击“关闭”，然后单击“确定”。
+4.	在“开始”屏幕中，单击“Internet Explorer”，然后单击“确定”。
+5.	在地址栏中，键入 “http://app1.corp.contoso.com/”， 然后按 Enter。你应看到 APP1 的默认 Internet 信息服务网页。
 6.	在桌面任务栏上，单击“文件资源管理器”图标。
-7.	在地址栏中，键入 **\\\app1\\Files**，然后按 Enter。
+7.	在地址栏中，键入 “\\\app1\\Files”，然后按 Enter。
 8.	你应看到显示文件共享文件夹的内容的文件夹窗口。
-9.	在**“文件”**共享文件夹窗口中，双击 **Example.txt** 文件。你应看到 Example.txt 文件的内容。
-10.	关闭**“example.txt - 记事本”**和**“文件”**共享文件夹窗口。
+9.	在“文件”共享文件夹窗口中，双击 “Example.txt” 文件。你应看到 Example.txt 文件的内容。
+10.	关闭“example.txt - 记事本”和“文件”共享文件夹窗口。
 
 这是你的最后配置。
 
@@ -287,7 +296,7 @@ Azure 中的基本配置现已可用于应用程序开发和测试或其他测�
 
 ## 后续步骤
 
-- 以此为基础构建[模拟的混合云测试环境](/documentation/articles/virtual-networks-setup-simulated-hybrid-cloud-environment-testing)。
+- 向 Corpnet 子网（例如运行 Microsoft SQL Server 的子网）[添加新虚拟机](/documentation/articles/virtual-machines-ps-create-preconfigure-windows-resource-manager-vms)。
 
 
 ## <a id="costs"></a>将 Azure 中的测试环境虚拟机的成本降至最低
@@ -317,4 +326,4 @@ Azure 中的基本配置现已可用于应用程序开发和测试或其他测�
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "APP1"
 	Start-AzureRMVM -ResourceGroupName $rgName -Name "CLIENT1"
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0411_2016-->

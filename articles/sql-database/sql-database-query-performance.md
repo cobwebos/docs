@@ -9,8 +9,12 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="02/03/2015"
-   wacn.date=""/>
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="data-management" 
+   ms.date="02/03/2016"
+   ms.author="sstein"/>
 
 # Azure SQL 数据库 Query Performance Insight
 
@@ -21,15 +25,16 @@
 - 排名靠前的 CPU 消耗查询，经过优化后可能会改善性能。 
 - 可以向下钻取查询的详细信息。
 
+
 ## 先决条件
 
 - Query Performance Insight 仅适用于 Azure SQL 数据库 V12。
-- Query Performance Insight 要求在数据库中运行[查询存储](https://msdn.microsoft.com/zh-cn/library/dn817826.aspx)。如果尚未运行查询存储，门户将提示你打开查询存储。
+- Query Performance Insight 要求在数据库中运行[查询存储](https://msdn.microsoft.com/library/dn817826.aspx)。如果尚未运行查询存储，门户将提示你打开查询存储。
 
  
 ## 权限
 
-需有以下[基于角色的访问控制](/documentation/articles/role-based-access-control-configure)权限才能使用 Query Performance Insight：
+需有以下[基于角色的访问控制](../active-directory/role-based-access-control-configure.md)权限才能使用 Query Performance Insight：
 
 - 查看排名靠前的资源消耗查询和图表时，需有“读取者”、“所有者”、“参与者”、“SQL DB 参与者”或“SQL Server 参与者”权限。 
 - 查看查询文本时，需有“所有者”、“参与者”、“SQL DB 参与者”或“SQL Server 参与者”权限。
@@ -43,7 +48,7 @@ Query Performance Insight 很容易使用：
 - 查看排名靠前的资源消耗查询列表。 
 - 选择单个查询以查看其详细信息。
 - 单击“设置”以自定义数据的显示方式，或显示不同的时间段。
-- 打开[索引顾问](/documentation/articles/sql-database-index-advisor)并检查是否有任何建议。
+- 打开[索引顾问](sql-database-index-advisor.md)并检查是否有任何建议。
 
 
 
@@ -53,7 +58,7 @@ Query Performance Insight 很容易使用：
 
 ## 查看 DTU 消耗量靠前的查询
 
-在[门户](http://manage.windowsazure.cn)中执行以下操作：
+在[门户](http://portal.azure.com)中执行以下操作：
 
 1. 浏览到 SQL 数据库并单击“Query Performance Insight”。 
 
@@ -156,7 +161,7 @@ Query Performance Insight 可帮助你了解查询工作负荷的影响，以及
 
 数据库工作负荷是动态的，并且不断地更改。监视查询并继续微调以优化性能。
 
-如需改善 SQL 数据库性能的其他建议，请单击“Query Performance Insight”边栏选项卡上的“索引顾问”。[](/documentation/articles/sql-database-index-advisor)
+如需改善 SQL 数据库性能的其他建议，请单击“Query Performance Insight”边栏选项卡上的“[索引顾问](sql-database-index-advisor.md)”。
 
 ![索引顾问](./media/sql-database-query-performance/ia.png)
 
@@ -166,4 +171,7 @@ Query Performance Insight 可帮助你了解查询工作负荷的影响，以及
 [2]: ./media/sql-database-query-performance/top-queries.png
 [3]: ./media/sql-database-query-performance/query-details.png
 
-<!---HONumber=Mooncake_0321_2016-->
+
+
+
+<!---HONumber=Mooncake_0411_2016-->

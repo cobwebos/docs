@@ -1,15 +1,15 @@
-<properties 
-	pageTitle="向“登录”和“访问面板”页添加公司品牌" 
-	description="本主题介绍组织如何在它们管理的所有网站和服务上应用一致的外观，使得最终用户在使用这些站点时，不会感到困惑。" 
-	services="active-directory" 
-	documentationCenter="" 
+<properties
+	pageTitle="向“登录”和“访问面板”页添加公司品牌"
+	description="本主题介绍组织如何在它们管理的所有网站和服务上应用一致的外观，使得最终用户在使用这些站点时，不会感到困惑。"
+	services="active-directory"
+	documentationCenter=""
 	authors="markusvi"
 	manager="stevenpo"
-	editor="LisaToft"/>
+	editor=""/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="10/30/2015" 
+	ms.date="02/12/2016" 
 	wacn.date=""/>
 
 # 向“登录”和“访问面板”页添加公司品牌
@@ -17,7 +17,7 @@
 > [AZURE.NOTE]
 >
 - 只有在升级到 Azure Active Directory 高级或基本版后，才可以使用公司品牌这一功能。有关详细信息，请参阅 [Azure Active Directory 版本](active-directory-editions.md)。
-- 在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure Active Directory 高级和基本版。由中国 21Vianet 运营的 Microsoft Azure 服务目前不支持 Azure Active Directory 高级和基本版。有关详细信息，请在 [Azure Active Directory 论坛](http://feedback.azure.com/forums/169401-azure-active-directory)与我们联系。
+- 在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure Active Directory 高级和基本版。由中国 21Vianet 运营的 Microsoft Azure 服务目前不支持 Azure Active Directory 高级和基本版。有关详细信息，请在 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
 
 许多公司想要在他们管理的所有网站和服务上应用一致的外观，使得最终用户在需要使用这些站点时，不会感到困惑。Azure Active Directory 提供了此功能，它允许你自定义以下面向最终用户的网页的外观，使其包含你公司的徽标和颜色方案：
 
@@ -35,9 +35,9 @@
 
 ### 用户何时将看到经过品牌打造的登录页？
 
-当用户使用租户特定的 URL（如 https://outlook.com/**contoso**.com 或 https://mail.**contoso**.com ） （如果你已创建 CNAME）访问服务时，他们将看到经过品牌打造的登录页。
+当用户使用租户特定的 URL（如 https://outlook.com/**contoso**.com 或 https://mail.**contoso**.com ）（如果你已创建 CNAME）访问服务时，他们将看到经过品牌打造的登录页。
 
-如果他们使用非租户特定的 URL（如 https://mail.office365.com ） 访问服务，则将看到未经品牌打造的登录页。用户输入了其用户 ID 或选择了用户磁贴后，登录页将进行刷新以显示你的品牌。
+如果他们使用非租户特定的 URL（如 https://mail.office365.com ）访问服务，则将看到未经品牌打造的登录页。用户输入了其用户 ID 或选择了用户磁贴后，登录页将进行刷新以显示你的品牌。
 
 > [AZURE.NOTE]
 > 
@@ -48,19 +48,19 @@
 
 如果你要在此页上显示你公司的品牌、颜色和其他可自定义元素，请参阅下图以了解两种体验之间的差异。
 
-此示例显示了在自定义*之前*，当用户从台式机尝试登录时，在 Office 365“登录”页上看到的内容：
+此示例显示了在自定义之前，当用户从台式机尝试登录时，在 Office 365“登录”页上看到的内容：
 
 ![][1]
 
-这是在自定义*之后*，同一用户看到的内容：
+这是在自定义之后，同一用户看到的内容：
 
 ![][2]
 
-此示例显示了在自定义*之前*，当用户从移动设备尝试登录时，在 Office 365“登录”页上看到的内容：
+此示例显示了在自定义之前，当用户从移动设备尝试登录时，在 Office 365“登录”页上看到的内容：
 
 ![][3]
 
-这是在自定义*之后*，同一用户看到的内容：
+这是在自定义之后，同一用户看到的内容：
 
 ![][4]
 
@@ -129,7 +129,7 @@
 
 从你的目录中删除公司品牌
 
-1. 在 Azure 管理门户的“配置”选项卡下，选择“自定义品牌”。[](https://manage.windowsazure.cn)
+1. 在 [Azure 管理门户](https://manage.windowsazure.cn)的“配置”选项卡下，选择“自定义品牌”。
 2. 在“自定义品牌”页上，选择“编辑现有品牌设置”，然后转到下一页。
 3. 根据要删除哪些元素，执行以下一项或多项操作：
 	1. 对于“横幅徽标”，单击“删除上载的徽标”复选框。
@@ -139,11 +139,12 @@
     5. 对于“登录页插图”，单击“删除插图”复选框。
     6. 对于“登录页背景色”，清除所有文本。
 4. 单击“保存”按钮以删除这些元素。
-5. 如有必要，请再次单击“自定义品牌”，然后对需要删除的所有特定于语言的品牌重复这些步骤。当你单击“自定义品牌”并看到未配置任何现有设置的“自定义默认品牌”表单时，所有品牌设置均已删除。
+5. 如有必要，请再次单击“自定义品牌”，然后对需要删除的所有特定于语言的品牌重复这些步骤。
+    当你单击“自定义品牌”并看到未配置任何现有设置的“自定义默认品牌”表单时，所有品牌设置均已删除。
 
 ## 测试和示例
 
-我们建议你在生产环境中进行更改之前，先使用测试租户进行试验。验证是否已应用你的品牌的最简单方法是，打开 InPrivate 或 Incognito 浏览器会话，然后访问 https://outlook.com/contoso.com，并将 contoso.com 替换为你自定义的域。请注意，此方法也适用于类似 contoso.onmicrosoft.com 的域。
+我们建议你在生产环境中进行更改之前，先使用测试租户进行试验。验证是否已应用你的品牌的最简单方法是，打开 InPrivate 或 Incognito 浏览器会话，然后访问 https://outlook.com/contoso.com ，并将 contoso.com 替换为你自定义的域。请注意，此方法也适用于类似 contoso.onmicrosoft.com 的域。
 
 为了帮助你创建有效的自定义设置，我们自定义了以下两个虚构的登录页：
 
@@ -156,7 +157,7 @@
 
 Azure AD 中的某些可自定义的元素具有多个用例。公司徽标可在每个目录上配置一次并在“登录”和“访问面板”页上使用，而某些可自定义的元素只特定于“登录”页。下表提供了不同的可自定义元素的详细信息。
 
-Name | 说明 | 约束 | 建议
+名称 | 说明 | 约束 | 建议
 	------------- | ------------- | ------------- | -------------
 横幅徽标 | 横幅徽标将显示在“登录”页和“访问”面板上。 | <p>JPG 或 PNG</p><p>60x280 像素</p><p>10 KB</p> | <p>使用你组织的完整徽标（包括象形图和标识）</p><p>使其高度保持在 30 像素以下，以免在移动设备上产生滚动条</p><p>使其大小保持在 4 KB 以下</p><p>使用透明的 PNG（不要想当然地认为“登录”页的背景始终为白色）</p>
 磁贴徽标 | （目前未在“登录”页中使用）在将来，可能会使用此文本替换不同体验位置的通用“工作或学校帐户”象形图。 | <p>JPG 或 PNG</p><p>120x120 像素</p><p>10 KB</p> | <p>使其保持简单（没有小文本），因为可能会将此图像的大小调整至 50%
@@ -182,4 +183,5 @@ Name | 说明 | 约束 | 建议
 [7]: ./media/active-directory-add-company-branding/SignInPage_aftercustomization_croppedtop.png
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 
-<!---HONumber=Mooncake_1221_2015-->
+
+<!---HONumber=Mooncake_0411_2016-->

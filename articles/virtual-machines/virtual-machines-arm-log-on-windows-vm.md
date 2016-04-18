@@ -1,5 +1,5 @@
 <properties
-	pageTitle="登录到 Windows VM | Microsoft Azure"
+	pageTitle="登录到 Microsoft VM | Azure"
 	description="使用 Azure 管理门户登录到使用 Resource Manager 部署模型创建的 Windows 虚拟机。"
 	services="virtual-machines"
 	documentationCenter=""
@@ -42,9 +42,9 @@
 	
 6. 在“Windows 安全性”窗口中，键入虚拟机上帐户的凭据，然后单击“确定”。
 
- 	在大多数情况下，凭据是创建虚拟机时指定的本地帐户用户名和密码。域是虚拟机的名称，输入格式为“*vmname&#92;username**”。
+ 	在大多数情况下，凭据是创建虚拟机时指定的本地帐户用户名和密码。域是虚拟机的名称，输入格式为“vmname&#92;username”。
 	
-	如果虚拟机属于你的组织的一个域，请确保用户名包含该域的名称，格式为“*Domain&#92;Username*”。该帐户需要属于管理员组或已被授予 VM 的远程访问权限。
+	如果虚拟机属于你的组织的一个域，请确保用户名包含该域的名称，格式为“Domain&#92;Username”。该帐户需要属于管理员组或已被授予 VM 的远程访问权限。
 	
 	如果虚拟机是域控制器，则键入该域的域管理员帐户的用户名和密码。
 
@@ -56,4 +56,6 @@
 
 如果你在尝试连接时遇到故障，请参阅[解决远程桌面连接到基于 Windows 的 Azure 虚拟机的问题](/documentation/articles/virtual-machines-troubleshoot-remote-desktop-connections)
 
-<!---HONumber=Mooncake_0314_2016-->
+
+
+<!---HONumber=Mooncake_0411_2016-->

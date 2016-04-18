@@ -11,38 +11,23 @@ As of circa 2015-09-04, the following topics might include this include:
 
 ## Server-level firewall rules
 
-### Manage server-level firewall rules through the new Azure portal
+### Add a server-level firewall rule through the new Azure portal
 -->
 
 
 1. 登录到 [Azure 门户](http://manage.windowsazure.cn/)（网址为 http://manage.windowsazure.cn/）。
 
-2. 在左侧的横幅中，单击“浏览全部”。此时会显示“浏览”边栏选项卡。
-
 3. 滚动并单击“SQL Server”。此时会显示“SQL Server”边栏选项卡。
 
+4. 单击服务器所对应的行。此时会显示服务器的边栏选项卡。
 
+5. 在服务器边栏选项卡上单击“设置”。此时会显示“设置”边栏选项卡。
 
-4. 为方便起见，可单击以前的“浏览”边栏选项卡上的最小化控件。
+6. 单击“防火墙”。此时会显示“防火墙设置”边栏选项卡。
 
-5. 在筛选器文本框中，开始键入你的服务器的名称。此时会显示你的行。
+7. 单击“添加客户端 IP”以添加客户端计算机的 IP 地址。门户将为你的规则构造名称。或者，你可以键入一个名称，并为你要启用的范围提供下限和上限 IP 地址值。为方便起见，可以让下限值以 **.0** 结尾，让上限值以 **.255** 结尾。
 
-6. 单击服务器所对应的行。此时会显示服务器的边栏选项卡。
-
-7. 在服务器边栏选项卡上单击“设置”。此时会显示“设置”边栏选项卡。
-
-8. 单击“防火墙”。此时会显示“防火墙设置”边栏选项卡。
-
-
-
-9. 单击“添加客户端 IP”。在第一个文本框中键入新规则的名称。
-
-10. 键入你想要启用的范围的下限和上限 IP 地址值。
- - 为方便起见，可以让下限值以 **.0** 结尾，让上限值以 **.255** 结尾。 
-
-
-
-11. 单击“保存”。
+8. 单击“保存”。
 
 
 
@@ -63,4 +48,4 @@ These includes/ files are a sequenced set, but you can pick and choose:
 ? ../includes/sql-database-include-ip-address-*.md
 -->
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0411_2016-->

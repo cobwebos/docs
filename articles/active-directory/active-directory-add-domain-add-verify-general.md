@@ -9,7 +9,6 @@
 
 <tags
 	ms.service="active-directory"
-
 	ms.date="02/05/2016"
 	wacn.date=""/>
 
@@ -49,7 +48,7 @@
 
 7.  选中“我计划配置此域为使用本地 Active Directory 进行单点登录”复选框。
 
-8.  单击**“添加”**。
+8.  单击“添加”。
 
 ## 添加不会联合的自定义域名
 
@@ -81,7 +80,7 @@
 
 如果你已向域名注册机构注册了域，则所需的 DNS 记录已存在。
 
-如果已添加自定义域但尚未对其进行验证，该域的状态显示为“未验证”。
+如果已添加自定义域但尚未对其进行验证，该域的状态显示为**“未验证”**。
 
 ## 验证不会与本地目录联合的自定义域名
 在域注册机构成功通过 DNS 系统添加针对域创建的任何记录之后，请执行以下操作：
@@ -100,7 +99,7 @@
 
 ## 验证自定义域是否已与本地目录联合
 
-1.  下载并运行 Azure AD Connect。Azure AD Connect 工具将[提示你添加提供给你的 DNS 条目](active-directory-aadconnect-get-started-custom.md#select-the-azure-ad-domain-that-you-wish-to-federate)。
+1.  下载并运行 Azure AD Connect。Azure AD Connect 工具将[提示你添加提供给你的 DNS 条目](active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation)。
 
 ## 三级域名
 
@@ -122,4 +121,4 @@
 - [更改自定义域名的 DNS 注册机构](active-directory-add-domain-change-registrar.md)
 - [在 Azure Active Directory 中删除自定义域名](active-directory-add-domain-delete-domain.md)
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0411_2016-->

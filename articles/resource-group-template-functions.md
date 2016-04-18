@@ -1,5 +1,5 @@
 <properties
-   pageTitle="资源管理器模板函数 | Microsoft Azure"
+   pageTitle="Resource Manager 模板函数 | Azure"
    description="介绍在 Azure 资源管理器模板中检索值、处理字符串和数字以及检索部署信息时所用的函数。"
    services="azure-resource-manager"
    documentationCenter="na"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="01/15/2016"
+   ms.date="02/22/2016"
    wacn.date=""/>
 
 # Azure 资源管理器模板函数
@@ -32,7 +32,7 @@
 - [sub](#sub)
 
 
-<a id="add" /></a>
+<a id="add" />
 ### 添加
 
 **add(operand1, operand2)**
@@ -45,7 +45,7 @@
 | operand2 | 是 | 要使用的第二个操作数。
 
 
-<a id="copyindex" /></a>
+<a id="copyindex" />
 ### copyIndex
 
 **copyIndex(offset)**
@@ -55,7 +55,7 @@
 此函数始终配合 **copy** 对象使用。有关使用 **copyIndex** 的示例，请参阅[在 Azure 资源管理器中创建多个资源实例](resource-group-create-multiple.md)。
 
 
-<a id="div" /></a>
+<a id="div" />
 ### div
 
 **div(operand1, operand2)**
@@ -68,7 +68,7 @@
 | operand2 | 是 | 除数，不得为 0。
 
 
-<a id="int" /></a>
+<a id="int" />
 ### int
 
 **int(valueToConvert)**
@@ -89,7 +89,7 @@
     }
 
 
-<a id="length" /></a>
+<a id="length" />
 ### length
 
 **length(array 或 string)**
@@ -113,7 +113,7 @@
     }
 
 
-<a id="mod" /></a>
+<a id="mod" />
 ### mod
 
 **mod(operand1, operand2)**
@@ -127,7 +127,7 @@
 
 
 
-<a id="mul" /></a>
+<a id="mul" />
 ### mul
 
 **mul(operand1, operand2)**
@@ -140,7 +140,7 @@
 | operand2 | 是 | 要使用的第二个操作数。
 
 
-<a id="sub" /></a>
+<a id="sub" />
 ### sub
 
 **sub(operand1, operand2)**
@@ -172,7 +172,7 @@
 
 若要获取字符串或数组中的字符数，请参阅 [length](#length)。
 
-<a id="base64" /></a>
+<a id="base64" />
 ### base64
 
 **base64 (inputString)**
@@ -190,7 +190,7 @@
       "authorizationHeader": "[concat('Basic ', base64(variables('usernameAndPassword')))]"
     }
 
-<a id="concat" /></a>
+<a id="concat" />
 ### concat
 
 **concat (arg1, arg2, arg3, ...)**
@@ -221,7 +221,7 @@
      }
         
 
-<a id="padleft" /></a>
+<a id="padleft" />
 ### padLeft
 
 **padLeft(stringToPad, totalLength, paddingCharacter)**
@@ -243,7 +243,7 @@
         "paddedAppName": "[padLeft(parameters('appName'),10,'0')]"
     }
 
-<a id="replace" /></a>
+<a id="replace" />
 ### replace
 
 **replace(originalString, oldCharacter, newCharacter)**
@@ -265,7 +265,7 @@
         "newidentifier": "[replace(parameters('identifier'),'-','')]"
     }
 
-<a id="split" /></a>
+<a id="split" />
 ### split
 
 **split(inputString, delimiter)**
@@ -287,7 +287,7 @@
         "stringPieces": "[split(parameters('inputString'), ',')]"
     }
 
-<a id="string" /></a>
+<a id="string" />
 ### 字符串
 
 **string(valueToConvert)**
@@ -307,7 +307,7 @@
         "stringValue": "[string(parameters('appId'))]"
     }
 
-<a id="substring" /></a>
+<a id="substring" />
 ### substring
 
 **substring(stringToParse, startIndex, length)**
@@ -329,7 +329,7 @@
         "prefix": "[substring(parameters('inputString'), 0, 3)]"
     }
 
-<a id="tolower" /></a>
+<a id="tolower" />
 ### toLower
 
 **toLower(stringToChange)**
@@ -349,7 +349,7 @@
         "lowerCaseAppName": "[toLower(parameters('appName'))]"
     }
 
-<a id="toupper" /></a>
+<a id="toupper" />
 ### toUpper
 
 **toUpper(stringToChange)**
@@ -369,7 +369,7 @@
         "upperCaseAppName": "[toUpper(parameters('appName'))]"
     }
 
-<a id="trim" /></a>
+<a id="trim" />
 ### trim
 
 **trim (stringToTrim)**
@@ -389,7 +389,7 @@
         "trimAppName": "[trim(parameters('appName'))]"
     }
 
-<a id="uniquestring" /></a>
+<a id="uniquestring" />
 ### uniqueString
 
 **uniqueString (stringForCreatingUniqueString, ...)**
@@ -424,7 +424,7 @@
         "type": "Microsoft.Storage/storageAccounts", 
         ...
 
-<a id="uri" /></a>
+<a id="uri" />
 ### uri
 
 **uri (baseUri, relativeUri)**
@@ -462,7 +462,7 @@
 
 若要从资源、资源组或订阅获取值，请参阅[资源函数](#resource-functions)。
 
-<a id="deployment" /></a>
+<a id="deployment" />
 ### 部署
 
 **deployment()**
@@ -508,7 +508,7 @@
     }  
 
 
-<a id="parameters" /></a>
+<a id="parameters" />
 ### 参数
 
 **parameters (parameterName)**
@@ -535,7 +535,7 @@
        }
     ]
 
-<a id="variables" /></a>
+<a id="variables" />
 ### variables
 
 **variables (variableName)**
@@ -553,24 +553,25 @@
 资源管理器提供以下用于获取资源值的函数：
 
 - [listkeys](#listkeys)
+- [list*](#list)
 - [providers](#providers)
 - [reference](#reference)
 - [resourceGroup](#resourcegroup)
 - [resourceId](#resourceid)
 - [订阅](#subscription)
 
-若要从参数、变量或当前部署获取值，请参阅[部署值函数](#deployment-value-functions)。
+若要从参数、变量或当前部署获取值，请参阅 [Deployment value functions（部署值函数）](#deployment-value-functions)。
 
-<a id="listkeys" /></a>
+<a id="listkeys" />
 ### listKeys
 
 **listKeys (resourceName or resourceIdentifier, apiVersion)**
 
-返回存储帐户的密钥。可以使用 [resourceId 函数](./#resourceid)或使用格式 **providerNamespace/resourceType/resourceName** 指定 resourceId。可以使用该函数来获取 primaryKey 和 secondaryKey。
+返回支持 listKeys 操作的任何资源类型的键。可以使用 [resourceId 函数](#resourceid)或使用格式 **providerNamespace/resourceType/resourceName** 指定 resourceId。可以使用该函数来获取 primaryKey 和 secondaryKey。
   
 | 参数 | 必选 | 说明
 | :--------------------------------: | :------: | :----------
-| resourceName 或 resourceIdentifier | 是 | 存储帐户的唯一标识符。
+| resourceName 或 resourceIdentifier | 是 | 资源的唯一标识符。
 | apiVersion | 是 | 资源运行时状态的 API 版本。
 
 以下示例演示了如何从 outputs 节中的存储帐户返回密钥。
@@ -582,7 +583,20 @@
       } 
     } 
 
-<a id="providers" /></a>
+<a id="list" />
+### list*
+
+**list* (resourceName or resourceIdentifier, apiVersion)**
+
+以 **list** 开头的任何操作都可用作模板中的函数。这包括如上所示的 **listKeys**，但也包括 **list**、**listAdminKeys** 和 **listStatus** 等操作。调用函数时，请使用该函数的实际名称而不要使用 list*。若要确定哪些资源类型具有列表操作，请使用以下 PowerShell 命令。
+
+    PS C:\> Get-AzureRmProviderOperation -OperationSearchString *  | where {$_.Operation -like "*list*"} | FT Operation
+
+或者，使用 Azure CLI 来检索列表。以下示例将检索 **apiapps** 的所有操作，并使用 JSON 实用工具 [jq](http://stedolan.github.io/jq/download/) 来筛选出列表操作。
+
+    azure provider operations show --operationSearchString */apiapps/* --json | jq ".[] | select (.operation | contains("list"))"
+
+<a id="providers" />
 ### providers
 
 **providers (providerNamespace, [resourceType])**
@@ -611,7 +625,7 @@
 	    }
     }
 
-<a id="reference" /></a>
+<a id="reference" />
 ### reference
 
 **reference (resourceName or resourceIdentifier, [apiVersion])**
@@ -625,7 +639,8 @@
 
 **reference** 函数从运行时状态派生其值，因此不能在 variables 节中使用。可以在模板的 outputs 节中使用它。
 
-如果在相同的模板内设置了引用的资源，则可使用 reference 函数来隐式声明一个资源依赖于另一个资源。另外，不需要使用 **dependsOn** 属性。只有当引用的资源已完成部署后，才会对函数求值。
+如果在相同的模板内设置了引用的资源，则可使用 reference 函数来隐式声明一个资源依赖于另一个资源。另外，不需要使用 **dependsOn** 属性。
+只有当引用的资源已完成部署后，才会对函数求值。
 
 以下示例引用同一模板中部署的存储帐户。
 
@@ -672,7 +687,7 @@
 		}
 	}
 
-<a id="resourcegroup" /></a>
+<a id="resourcegroup" />
 ### resourceGroup
 
 **resourceGroup()**
@@ -697,7 +712,7 @@
        }
     ]
 
-<a id="resourceid" /></a>
+<a id="resourceid" />
 ### resourceId
 
 **resourceId ([resourceGroupName], resourceType, resourceName1, [resourceName2]...)**
@@ -761,7 +776,7 @@
       }]
     }
 
-<a id="subscription" /></a>
+<a id="subscription" />
 ### 订阅
 
 **subscription()**
@@ -769,8 +784,9 @@
 将使用以下格式返回有关订阅的详细信息。
 
     {
-        "id": "/subscriptions/#####"
-        "subscriptionId": "#####"
+        "id": "/subscriptions/#####",
+        "subscriptionId": "#####",
+        "tenantId": "#####"
     }
 
 以下示例演示了在 outputs 节中调用的 subscription 函数。
@@ -789,4 +805,5 @@
 - 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](/documentation/articles/resource-group-create-multiple)
 - 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](/documentation/articles/resource-group-template-deploy)
 
-<!---HONumber=Mooncake_0215_2016-->
+
+<!---HONumber=Mooncake_0411_2016-->

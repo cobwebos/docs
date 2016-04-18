@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Azure Active Directory 的应用程序访问与单一登录是什么？| Microsoft Azure"
-	description="使用 Azure Active Directory 启用单一登录，以访问完成业务所需的全部 SaaS 和网站。"
+	description="使用 Azure Active Directory 启用单一登录，以访问完成业务所需的全部 SaaS 和 Web 应用程序。"
 	services="active-directory"
 	documentationCenter=""
 	authors="asmalser-msft"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="09/28/2015"
+	ms.date="02/09/2016"
 	wacn.date=""/>
 
 #Azure Active Directory 的应用程序访问与单一登录是什么？
@@ -76,7 +76,7 @@ Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协�
 
 对于基于密码的 SSO，最终用户的浏览器可以是：
 
-- Windows 7 或更高版本上的 Internet Explorer 8、9 和 10（另请参阅 [IE 扩展部署指南](active-directory-saas-ie-group-policy.md)）
+- Windows 7 或更高版本上的 Internet Explorer 8、9、10 和 11（另请参阅 [IE Extension Deployment Guide](active-directory-saas-ie-group-policy.md)（IE 扩展部署指南））
 - Chrome -- 在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上
 - Firefox 26.0 或更高版本 -- 在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上
 
@@ -126,7 +126,7 @@ Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协�
   * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)
 
-*	**请求应用集成** - 使用 [Azure AD 反馈论坛](http://feedback.azure.com/forums/169401-azure-active-directory)请求所需应用程序的支持。
+*	**请求应用集成** - 使用 [Azure AD 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)请求所需应用程序的支持。
 
 ###使用 Azure 管理门户
 
@@ -163,7 +163,7 @@ Azure AD 提供多种可自定义的方式来向组织中的用户部署应用�
 
 ###Azure AD 访问面板
 
-https://myapps.microsoft.com 上的访问面板是一个基于 Web 的门户，它允许在 Azure Active Directory 中拥有组织帐户的最终用户查看和启动 Azure AD 管理员已向他们授予其访问权限的基于云的应用程序。如果你是使用 [Azure Active Directory Premium](/home/features/identity/#price) 的最终用户，则还可以通过访问面板利用自助服务组管理功能。
+https://myapps.microsoft.com 上的访问面板是一个基于 Web 的门户，它允许在 Azure Active Directory 中拥有组织帐户的最终用户查看和启动 Azure AD 管理员已向他们授予其访问权限的基于云的应用程序。如果你是使用 [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) 的最终用户，则还可以通过访问面板利用自助服务组管理功能。
 
 ![][3]
 
@@ -205,7 +205,13 @@ https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05
 
 这些链接使用与访问面板和 Office 365 相同的访问控制机制，只有在 Azure 管理门户中已分配到应用程序的用户或组能够成功通过身份验证。不过，任何未经授权的用户都会看到一条消息说明他们未获得访问权限，并会获得一个加载访问面板的链接用于查看他们有权访问的应用程序。
 
-[AZURE.INCLUDE [saas-toc](../includes/active-directory-saas-toc.md)]
+##相关文章
+
+- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
+- [使用 Cloud App Discovery 查找未经认可的云应用程序](active-directory-cloudappdiscovery-whatis.md)
+- [Introduction to Managing Access to Apps](active-directory-managing-access-to-apps.md)（管理对应用的访问简介）
+- [比较 Azure AD 中用于管理外部标识的功能](active-directory-b2b-compare-external-identities.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-appssoaccess-whatis/onlineappgallery.png
@@ -215,4 +221,4 @@ https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0411_2016-->

@@ -10,7 +10,7 @@
 <tags
 	ms.service="active-directory"
 
-	ms.date="02/11/2016"
+	ms.date="02/16/2016"
 	wacn.date=""/>
 
 #有关 Azure Active Directory 中应用程序管理的文章索引
@@ -29,6 +29,18 @@
 | Azure AD 中与启用单一登录、定义有权访问应用程序的人员，以及用户如何启动应用程序相关的各种功能概述 | [Azure Active Directory 中的应用程序访问和单一登录](active-directory-appssoaccess-whatis.md) |
 | 探讨将应用程序集成到 Azure AD 时所涉及的不同步骤 | [将 Azure Active Directory 与应用程序集成](active-directory-integrating-applications-getting-started.md)<br /><br />[启用 SaaS 应用程序的单一登录](active-directory-sso-integrate-saas-apps.md)<br /><br />[管理对应用程序的访问](active-directory-managing-access-to-apps.md) |
 | 如何在 Azure AD 中表示应用程序的技术说明 | [如何以及为何将应用程序添加到 Azure AD](active-directory-how-applications-are-added.md) |
+
+##疑难解答文章
+
+本部分提供相关疑难解答指南的快速访问链接。可以在本页的余下部分找到有关每个功能区的详细信息。
+
+| 功能区 | |
+| :---: | --- |
+| 联合单一登录 | [排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md) |
+| 基于密码的单一登录 | [Internet Explorer 访问面板扩展故障排除](active-directory-saas-ie-troubleshooting.md) |
+| 应用程序代理 | [应用代理故障排除指南](active-directory-application-proxy-troubleshoot.md) |
+| 本地 AD 与 Azure AD 之间的单一登录 | [密码同步疑难解答](active-directory-aadconnectsync-implement-password-synchronization.md#managing-password-synchronization)<br /><br />[密码写回疑难解答](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) | 
+| 动态组成员身份 | [动态组成员身份疑难解答](active-directory-accessmanagement-troubleshooting.md) |
 
 ##单一登录 (SSO)
 
@@ -84,7 +96,9 @@
 | :---: | --- |
 | Azure AD Connect 中提供的单一登录选项概述，以及管理混合环境的相关信息 | [Azure AD Connect 中的用户登录选项](active-directory-aadconnect-user-signin.md) |
 | 同时使用本地 Active Directory 和 Azure Active Directory 管理环境的一般指导 | [Azure AD 混合标识设计注意事项](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md) |
-| 有关使用密码同步启用 SSO，以及将密码写回与 Azure AD 自助密码重置配合使用的指导 | [使用 Azure AD Connect 实现密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)<br /><br />[Azure AD 中的密码管理入门](active-directory-passwords-getting-started.md) |
+| 有关使用密码同步启用 SSO 的指导 | [使用 Azure AD Connect 实现密码同步](active-directory-aadconnectsync-implement-password-synchronization.md)<br /><br />[密码同步疑难解答](https://support.microsoft.com/zh-cn/kb/2855271) |
+| 有关使用密码写回启用 SSO 的指导 | [Azure AD 中的密码管理入门](active-directory-passwords-getting-started.md)<br /><br />[密码写回疑难解答](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| 有关使用第三方标识提供者启用 SSO 的指导 | [可用于启用单一登录的兼容第三方标识提供者列表](https://aka.ms/ssoproviders) | 
 | Windows 10 用户如何通过 Azure AD Join 享受单一登录的优点 | [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-overview.md) |
 
 Azure AD Connect 适用于[所有版本的 Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)。Azure AD 自助密码重置适用于 [Azure AD 基本版](https://azure.microsoft.com/pricing/details/active-directory/)和 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)。对本地 AD 进行密码写回是一项 [Azure AD 高级版](https://azure.microsoft.com/pricing/details/active-directory/)功能。
@@ -210,5 +224,4 @@ Azure Active Directory 提供多个报告和警报，以帮助你监视组织对
 [Azure Active Directory 域服务](https://azure.microsoft.com/services/active-directory-ds/)
 
 [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/)
-
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0411_2016-->

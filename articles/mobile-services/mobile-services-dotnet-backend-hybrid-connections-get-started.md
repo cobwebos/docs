@@ -9,15 +9,14 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="02/07/2016"
+	ms.date="03/05/2016"
 	wacn.date=""/>
 
   
 # 使用混合连接从 Azure 移动服务连接到本地 SQL Server 
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
-
-&nbsp;
+> 有关本主题的对应的 Mobile Apps 版本，请参阅 [在 Azure App Service 中使用混合连接访问本地资源](/documentation/articles/web-sites-hybrid-connection-get-started)。
 
 当企业在过渡到云环境时，可能无法立即就将所有资产迁移到 Azure。使用混合连接，Azure 移动服务可以安全地连接到本地资产。这样，移动客户端便可以使用 Azure 访问你的本地数据。支持的资产包括静态 TCP 端口上运行的任何资源，例如 Microsoft SQL Server、MySQL、HTTP Web API 和大多数自定义 Web 服务。混合连接使用共享访问签名 (SAS) 授权，确保从移动服务和本地混合连接管理器到混合连接的连接安全。有关详细信息，请参阅[混合连接概述](/documentation/articles/integration-hybrid-connection-overview)。
 
@@ -28,7 +27,7 @@
 
 本教程要求做好以下准备：
 
-- **现有的 .NET 后端移动服务**<br/>遵循[移动服务入门]教程，从 [Azure 经典门户]创建和下载新的 .NET 后端移动服务。
+- **现有的 .NET 后端移动服务** <br/>遵循[移动服务入门]教程，从 [Azure 经典门户]创建和下载新的 .NET 后端移动服务。
 
 [AZURE.INCLUDE [hybrid-connections-prerequisites](../includes/hybrid-connections-prerequisites.md)]
 
@@ -125,15 +124,16 @@
 ##另请参阅##
  
 + [混合连接网站](http://azure.microsoft.com/zh-cn/services/biztalk-services/)
-+ [混合连接概述](/documentation/articles/integration-hybrid-connection-overview)
++ [混合连接概述](/documentation/articles/integration-hybrid-connection-overview
 + [BizTalk 服务：“仪表板”、“监视”、“缩放”、“配置”和“混合连接”选项卡](/documentation/articles/biztalk-dashboard-monitor-scale-tabs)
 + [如何对 .NET 后端移动服务进行数据模型更改](/documentation/articles/mobile-services-dotnet-backend-how-to-use-code-first-migrations)
 
 <!-- IMAGES -->
+ 
 
 <!-- Links -->
 [Azure 经典门户]: http://manage.windowsazure.cn
 [移动服务入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started
 
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0411_2016-->

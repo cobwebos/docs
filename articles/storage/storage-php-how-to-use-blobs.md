@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="02/08/2016"
+	ms.date="02/17/2016"
 	wacn.date=""/>
 
 # 如何通过 PHP 使用 Blob 存储
@@ -38,7 +38,7 @@
 
 若要使用 Azure Blob 服务 API，您需要：
 
-1. 使用 [require\_once][require_once] 语句引用 autoloader 文件，并
+1. 使用 [require\_once] 语句引用 autoloader 文件，并
 2. 引用可使用的所有类。
 
 下面的示例演示了如何包括 autoloader 文件并引用 **ServicesBuilder** 类。
@@ -57,7 +57,7 @@
 
 对于访问实时服务：
 
-	DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
+	DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey];EndpointSuffix=core.chinacloudapi.cn
 
 访问存储模拟器：
 
@@ -287,8 +287,8 @@
 现在，您已了解了 Azure Blob 服务的基础知识，单击下面的链接可了解有关更复杂的存储任务的详细信息。
 
 - 访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
-- 参阅位于以下位置的 PHP 块 Blob 示例：<https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php>。
-- 参阅位于以下位置的 PHP 页 Blob 示例：<https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php>
+- 参阅 [PHP 块 Blob 示例](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php)。
+- 参阅 [PHP 页 Blob 示例](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php)。
 - [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
  
 有关详细信息，另请参阅 [PHP 开发人员中心](/develop/php/)。
@@ -298,8 +298,8 @@
 [container-acl]: http://msdn.microsoft.com/zh-cn/library/azure/dd179391.aspx
 [error-codes]: http://msdn.microsoft.com/zh-cn/library/azure/dd179439.aspx
 [file_get_contents]: http://php.net/file_get_contents
-[require_once]: http://php.net/require_once
+[require\_once]: http://php.net/require_once
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0411_2016-->

@@ -1,23 +1,25 @@
-<properties 
-	pageTitle="将移动服务添加到现有的通用 Windows 应用商店应用 | Azure" 
-	description="了解如何开始使用移动服务来利用 Windows 应用商店应用程序中的数据。" 
-	services="mobile-services" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="将移动服务添加到现有的通用 Windows 应用商店应用 | Microsoft Azure"
+	description="了解如何开始使用移动服务来利用 Windows 应用商店应用程序中的数据。"
+	services="mobile-services"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="11/10/2015" 
+	ms.date="03/07/2016"
 	wacn.date=""/>
 
 # 将移动服务添加到现有应用程序
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
-
-&nbsp;
 [AZURE.INCLUDE [mobile-services-selector-get-started-data](../includes/mobile-services-selector-get-started-data.md)]
+ 
+&nbsp;
+
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对应的 Mobile Apps 版本，请参阅[如何将托管客户端库用于 Azure Mobile Apps](/documentation/articles/app-service-mobile-dotnet-how-to-use-client-library)。
 
 ##概述
 
@@ -27,14 +29,12 @@
 
 >[AZURE.NOTE]本主题说明如何使用 Visual Studio Professional 2013 Update 3 中的工具将新的移动服务连接到通用 Windows 应用程序。你可以使用相同的步骤将移动服务连接到 Windows 应用商店或 Windows Phone 应用商店 8.1 应用程序。若要将移动服务连接到 Windows Phone 8.0 或 Windows Phone Silverlight 8.1 应用程序，请参阅[针对 Windows Phone 的数据处理入门](/documentation/articles/mobile-services-dotnet-backend-windows-phone-get-started-data)。
 
-> 如果你无法升级到 Visual Studio Professional 2013 Update 3，或者你要手动将移动服务项目添加到 Windows 应用商店应用程序解决方案，请参阅本主题的[此版本](/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-data)。
-
 ##先决条件
 
 若要完成本教程，您需要以下各项：
 
 * 有效的 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
-* <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio 2013</a> (Update 3 或更高版本)。 
+* <a href="https://go.microsoft.com/fwLink/p/?LinkID=391934" target="_blank">Visual Studio 2013</a> Update 3 或更高版本。 
 
 ##下载 GetStartedWithData 项目
 
@@ -95,7 +95,7 @@
 * [身份验证入门]
   <br/>了解如何对应用程序用户进行身份验证。
 
-* [推送通知入门]
+* [推送通知入门 ]
   <br/>了解如何向应用程序发送一条很基本的推送通知。
 
 * [移动服务 C# 操作方法概念性参考 ](/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library)
@@ -111,7 +111,7 @@
 [Refine queries with paging]: /documentation/articles/mobile-services-windows-store-dotnet-add-paging-data
 [Get started with Mobile Services]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started
 [身份验证入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users
-[推送通知入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push
+[推送通知入门 ]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-push
 
 [Get started with offline data sync]: /documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data
 
@@ -120,4 +120,4 @@
 [Mobile Services .NET How-to Conceptual Reference]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 [MobileServiceClient class]: http://go.microsoft.com/fwlink/p/?LinkId=302030
  
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0411_2016-->

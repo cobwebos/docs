@@ -1,5 +1,5 @@
 <properties
-   pageTitle="使用资源管理器模板部署资源 | Microsoft Azure"
+   pageTitle="使用资源管理器模板部署资源 | Azure"
    services="azure-resource-manager"
    description="使用 Azure 资源管理器将资源部署到 Azure。模板是一个 JSON 文件，可以从门户、PowerShell、适用于 Mac、Linux 和 Windows 的 Azure 命令行界面以及 REST 使用。"
    documentationCenter="na"
@@ -9,16 +9,16 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="02/02/2016"
+   ms.date="02/17/2016"
    wacn.date=""/>
 
-# 使用 Azure 资源管理器模板部署应用程序
+# 使用 Azure Resource Manager 模板部署资源组
 
-本主题介绍如何使用 Azure 资源管理器模板向 Azure 部署应用程序。它将说明如何使用 Azure PowerShell、Azure CLI、REST API 或 Azure 门户部署应用程序。
+本主题介绍如何使用 Azure Resource Manager 模板向 Azure 部署资源。其中将说明如何使用 Azure PowerShell、Azure CLI、REST API 或 Azure 门户部署资源。
 
 有关资源管理器的简介，请参阅 [Azure 资源管理器概述](/documentation/articles/resource-group-overview)。若要了解有关创建模板的信息，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
 
-在使用模板部署应用程序时，可以提供参数值来自定义如何创建资源。以内联方式或者在参数文件中指定这些参数的值。
+在使用模板部署应用程序定义时，可以提供参数值来自定义如何创建资源。以内联方式或者在参数文件中指定这些参数的值。
 
 ## 增量部署和完整部署
 
@@ -103,6 +103,8 @@
           Are you sure you want to use the complete deployment mode? Resources in the resource group 'ExampleResourceGroup' which are not
           included in the template will be deleted.
           [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+
+     如果模板包括名称与部署模板命令中的参数之一匹配的参数（例如，在模板中包括名为 **ResourceGroupName** 的参数，这与 [New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) cmdlet 中的 **ResourceGroupName** 参数相同），系统将提示你为后缀为 **FromTemplate** 的参数（例如 **ResourceGroupNameFromTemplate**）提供值。通常，不应将参数命名为与用于部署操作的参数的名称相同以避免这种混乱。
 
 6. 获取有关部署错误的信息。
 
@@ -230,7 +232,8 @@
 
 ## 使用门户进行部署
 
-你猜会怎样？ 通过[预览门户](https://manage.windowsazure.cn)创建的每个应用程序均受 Azure 资源管理器模板支持！ 只需通过门户创建虚拟机、虚拟网络、存储帐户、应用程序服务或数据库，就能享用 Azure 资源管理器的优势，且不用额外地增加工作量。只需选择“新建”图标，你便可开始通过 Azure 资源管理器部署应用程序。
+你猜会怎样？ 通过 [Azure 门户](https://manage.windowsazure.cn)创建的每个应用程序均受 Azure Resource Manager 模板支持！ 只需通过门户创建虚拟机、虚拟网络、存储帐户、应用程序服务或数据库，就能享用 Azure 资源管理器的优势，且不用额外地增加工作量。 
+只需选择“新建”图标，你便可开始通过 Azure 资源管理器部署应用程序。
 
 ![新建](./media/resource-group-template-deploy/new.png)
 
@@ -267,7 +270,8 @@
 
 参数文件的大小不能超过 64 KB。
 
-有关如何在模板中定义参数，请参阅[创作模板](../resource-group-authoring-templates/#parameters)。有关用于传递安全值的 KeyVault 引用的详细信息，请参阅[在部署期间传递安全值](/documentation/articles/resource-manager-keyvault-parameter)
+有关如何在模板中定义参数，请参阅 [Authoring templates（创作模板](../resource-group-authoring-templates/#parameters)）。
+有关用于传递安全值的 KeyVault 引用的详细信息，请参阅 [Pass secure values during deployment（在部署期间传递安全值）](/documentation/articles/resource-manager-keyvault-parameter)
 
 ## 后续步骤
 - 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](/documentation/articles/arm-template-deployment)
@@ -278,4 +282,4 @@
 
  
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0411_2016-->

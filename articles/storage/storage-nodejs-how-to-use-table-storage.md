@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何通过 Node.js 使用表存储 | Microsoft Azure" 
+	pageTitle="如何通过 Node.js 使用 Azure 表存储 | Microsoft Azure" 
 	description="了解如何使用 Azure 表存储。代码示例使用 Node.js API 编写。" 
 	services="storage" 
 	documentationCenter="nodejs" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="12/01/2015"
+	ms.date="02/17/2016"
 	wacn.date=""/>
 
 
@@ -24,9 +24,9 @@
 
 本主题中的代码示例假定您已有 Node.js 应用程序。有关在 Azure 中创建 Node.js 应用程序的信息，请参阅以下任何主题：
 
-- [构建 Node.js 网站并将其部署到 Azure](创建 Node.js 应用程序并将其部署到 Azure 网站)
-- [使用 WebMatrix 构建 Node.js 网站并将其部署到 Azure](使用 WebMatrix 构建 Node.js 应用程序并将其部署到 Azure)
-- [构建 Node.js 应用程序并将其部署到 Azure 云服务](Node.js 云服务) (使用 Windows PowerShell)
+- [在 Azure App Service 中创建 Node.js Web 应用](/documentation/articles/web-sites-nodejs-develop-deploy-mac)
+- [使用 WebMatrix 构建 Node.js Web 应用并将其部署到 Azure](/documentation/articles/web-sites-nodejs-use-webmatrix)
+- [生成 Node.js 应用程序并将其部署到 Azure 云服务](/documentation/articles/cloud-services-nodejs-develop-deploy-app)（使用 Windows PowerShell）
 
 
 [AZURE.INCLUDE [storage-table-concepts-include](../includes/storage-table-concepts-include.md)]
@@ -67,7 +67,7 @@
 
 Azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_ACCESS\_KEY 或 AZURE\_STORAGE\_CONNECTION\_STRING 以获取连接到您的 Azure 存储帐户所需的信息。如果未设置这些环境变量，则必须在调用 **TableService** 时指定帐户信息。
 
-有关在管理门户中为 Azure 网站设置环境变量的示例，请参阅[使用存储构建 Node.js 网站]
+有关在 [Azure 门户](https://portal.azure.cn)中为 Azure 网站设置环境变量的示例，请参阅[使用 Azure 表服务的 Node.js Web 应用]。
 
 ## 创建表
 
@@ -272,11 +272,12 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 	  }
 	});
 
-如果成功，`result.entries` 将包含与查询匹配的一组实体。如果查询无法返回所有实体，`result.continuationToken` 就不会是 *null* ，因此可用作 **queryEntities** 的第三个参数来检索更多结果。对于初始查询，请为第三个参数使用 *null* 。
+如果成功，`result.entries` 将包含与查询匹配的一组实体。如果查询无法返回所有实体，`result.continuationToken` 就不会是 *null*，因此可用作 **queryEntities** 的第三个参数来检索更多结果。对于初始查询，第三个参数请使用 *null*。
 
 ### 查询一部分实体属性
 
-对表的查询可以只检索实体中的少数几个字段。这可以减少带宽并提高查询性能，尤其适用于大型实体。使用 **select** 子句并传递要返回的字段的名称。例如，下面的查询将只返回 **description** 和 **dueDate** 字段。
+对表的查询可以只检索实体中的少数几个字段。
+这可以减少带宽并提高查询性能，尤其适用于大型实体。使用 **select** 子句并传递要返回的字段的名称。例如，下面的查询将只返回 **description** 和 **dueDate** 字段。
 
 	var query = new azure.TableQuery()
 	  .select(['description', 'dueDate'])
@@ -406,7 +407,7 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
 	  }
 	];
 
-以下示例获取 **hometasks** 表的当前 ACL，然后使用 **setTableAcl** 添加新策略。此方法具有以下用途：
+下面的示例获取 **hometasks** 表的当前 ACL，然后使用 **setTableAcl** 添加新策略。此方法具有以下用途：
 
 	tableSvc.getTableAcl('hometasks', function(error, result, response) {
       if(!error){
@@ -428,20 +429,20 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
 
 有关详细信息，请参阅以下资源。
 
--   [Azure 存储团队博客][]。
+-   [Azure 存储空间团队博客][]。
 -   GitHub 上的 [Azure Storage SDK for Node][] 存储库。
 -   [Node.js 开发人员中心](/develop/nodejs/)
 
   [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
   [OData.org]: http://www.odata.org/
   [using the REST API]: http://msdn.microsoft.com/zh-cn/library/azure/hh264518.aspx
-  [Azure Management Portal]: http://manage.windowsazure.cn
+  [Azure Portal]: portal.azure.cn
 
   [Node.js Cloud Service]: /documentation/articles/cloud-services-nodejs-develop-deploy-app
-  [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
+  [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
   [ Website with WebMatrix]: /documentation/articles/web-sites-nodejs-use-webmatrix
   [Node.js Cloud Service with Storage]: /documentation/articles/storage-nodejs-use-table-storage-cloud-service-app
-  [使用存储构建 Node.js 网站]: /documentation/articles/storage-nodejs-use-table-storage-web-site
-  [Create and deploy a Node.js application to an Azure  Website]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
+  [使用 Azure 表服务的 Node.js Web 应用]: /documentation/articles/storage-nodejs-use-table-storage-web-site
+  [Create and deploy a Node.js application to an Azure website]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
 
-<!----HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0411_2016-->
