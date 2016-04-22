@@ -292,4 +292,4 @@
 [sql-database-editions]: http://msdn.microsoft.com/zh-cn/library/azure/ee621788.aspx
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0118_2016--->
