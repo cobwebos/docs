@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric 服务分区 | Microsoft Azure"
+   pageTitle="Service Fabric 服务分区 | Azure"
    description="介绍如何对 Service Fabric 服务进行分区"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="11/17/2015"
+   ms.date="03/15/2016"
    wacn.date=""/>
 # Service Fabric Reliable Services 分区
 本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions) 上获取。
@@ -61,13 +61,11 @@
 为避免出现这种情况，从分区的角度来看，你应做两件事：
 
 - 尝试对状态进行分区，以便状态在所有分区间均匀分布。
-- [从服务的每个副本报告指标](/documentation/articles/service-fabric-resource-balancer-dynamic-load-reporting)。Service Fabric 提供了对服务报告指标（如内存量或记录数）的功能。根据报告的指标，Service Fabric 会检测到某些分区处理的负载高于其他分区，并通过将副本移动到更合适的节点来重新平衡群集。
+- 从服务的每个副本报告负载。（有关操作方法的信息，请查看这篇有关[指标和负载](/documentation/articles/service-fabric-cluster-resource-manager-metrics)的文章）。Service Fabric 可以报告服务消耗的负载，例如内存量或记录数。根据报告的指标，Service Fabric 会检测到某些分区处理的负载高于其他分区，并通过将副本移动到更合适的节点来重新平衡群集，以便在整体上不会有节点过载。
 
 有时，无法知道将处于给定分区中的数据量。因此，常规建议是执行以下两种操作：首先是采用在分区间均匀分布数据的分区策略，其次是报告负载。第一种方法可防止投票示例中描述的情况，而第二种方法可帮助随时间推移而消除访问或负载的中的临时差异。
 
-分区规划的另一个方面是选择开始时要采用的正确分区数。
-从 Service Fabric 角度来看，你可以毫无阻碍地在一开始便使用比针对方案所预期的分区更多的分区。
-事实上，采用最大数量的分区是一种有效方法。
+分区规划的另一个方面是选择开始时要采用的正确分区数。从 Service Fabric 角度来看，你可以毫无阻碍地在一开始便使用比针对方案所预期的分区更多的分区。事实上，采用最大数量的分区是一种有效方法。
 
 在极少数情况下，你可能最终需要比最初选择更多的分区。因为无法在事后更改分区计数，所以需要应用一些高级分区方法，如创建相同服务类型的新服务实例。还需要实现某种可基于客户端代码必须维护的客户端知识，将请求路由到正确服务实例的客户端逻辑。
 
@@ -111,14 +109,13 @@ Service Fabric 提供了三个分区方案可供选择：
 ## 构建具有多个分区的有状态服务
 我们来创建具有多个分区的第一个可靠有状态服务。在此示例中，你会构建一个非常简单的应用程序，在其中你要将以相同字母开头的所有姓氏存储在相同分区中。
 
-编写任何代码之前，需要考虑分区和分区键。需要 26 个分区（字母表中的每个字母各一个分区），但是低键和高键是怎样的呢？
-因为我们确实是对每个字母使用一个分区，所以可以使用 0 作为低键，使用 25 作为高键，因为每个字母都是自己的键。
+编写任何代码之前，需要考虑分区和分区键。需要 26 个分区（字母表中的每个字母各一个分区），但是低键和高键是怎样的呢？ 因为我们确实是对每个字母使用一个分区，所以可以使用 0 作为低键，使用 25 作为高键，因为每个字母都是自己的键。
 
 
 >[AZURE.NOTE] 这是简化方案，因为在现实情况下分布是不均匀的。以字母“S”或“M”开头的姓氏比以“X”或“Y”开头的姓氏更常见。
 
 
-1. 打开 **Visual Studio** >“文件”>“新建”>“项目”。
+1. 打开 Visual Studio >“文件”>“新建”>“项目”。
 2. 在“新建项目”对话框中，选择 Service Fabric 应用程序。
 3. 将项目命名为“AlphabetPartitions”。
 4. 在“创建服务”对话框中，选择“有状态”服务并将它称为“Alphabet.Processing”，如下图所示。
@@ -153,8 +150,7 @@ Service Fabric 提供了三个分区方案可供选择：
 
     >[AZURE.NOTE] 对于此示例，我们假定你使用一个简单 HttpCommunicationListener。有关 Reliable Service 通信的详细信息，请参阅 [Reliable Service 通信模型](service-fabric-reliable-services-communication.md)。
 
-8. 副本所侦听的 URL 的建议模式是以下格式：`{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`。
-    因此，你要将通信侦听器配置为侦听正确的终结点以及使用此模式。
+8. 副本所侦听的 URL 的建议模式是以下格式：`{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`。因此，你要将通信侦听器配置为侦听正确的终结点以及使用此模式。
 
     可以在同一台计算机上承载此服务的多个副本，因此此地址需要是副本独有的。这就是 URL 中包含分区 ID 和副本 ID 的原因。HttpListener 可以在同一端口上侦听多个地址，只要 URL 前缀是唯一的。
 
@@ -183,8 +179,7 @@ Service Fabric 提供了三个分区方案可供选择：
     }
     ```
 
-    此外，值得注意的是发布的 URL 与侦听 URL 前缀略有不同。
-    该侦听 URL 提供给 HttpListener。发布的 URL 是发布到 Service Fabric 命名服务（用于服务发现）的 URL。客户端会通过该发现服务请求此地址。客户端获取的地址需要具有节点的实际 IP 或 FQDN 才能连接。因此需要将“+”替换为节点的 IP 或 FQDN，如上所示。
+    此外，值得注意的是发布的 URL 与侦听 URL 前缀略有不同。该侦听 URL 提供给 HttpListener。发布的 URL 是发布到 Service Fabric 命名服务（用于服务发现）的 URL。客户端会通过该发现服务请求此地址。客户端获取的地址需要具有节点的实际 IP 或 FQDN 才能连接。因此需要将“+”替换为节点的 IP 或 FQDN，如上所示。
     
 9. 最后一步是将处理逻辑添加到服务，如下所示。
 
@@ -316,8 +311,7 @@ Service Fabric 提供了三个分区方案可供选择：
     int partitionKey = Char.ToUpper(firstLetterOfLastName) - 'A';
     ```
 
-    请记住，对于此示例，我们在使用 26 个分区，其中每个分区有一个分区键。
-    接下来，我们通过对 `servicePartitionResolver` 对象使用 `ResolveAsync` 方法，来获取此键的服务分区 `partition`。`servicePartitionResolver` 定义为
+    请记住，对于此示例，我们在使用 26 个分区，其中每个分区有一个分区键。接下来，我们通过对 `servicePartitionResolver` 对象使用 `ResolveAsync` 方法，来获取此键的服务分区 `partition`。`servicePartitionResolver` 定义为
 
     ```CSharp
     private static readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
@@ -374,4 +368,4 @@ Service Fabric 提供了三个分区方案可供选择：
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0418_2016-->

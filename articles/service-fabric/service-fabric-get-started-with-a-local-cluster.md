@@ -1,5 +1,5 @@
 <properties
-   pageTitle="在本地群集上部署和升级应用入门 | Microsoft Azure"
+   pageTitle="在本地群集上部署和升级应用入门 | Azure"
    description="设置本地 Service Fabric 群集，在其中部署现有的应用程序，然后升级该应用程序。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="11/20/2015"
+   ms.date="02/26/2016"
    wacn.date=""/>
 
 # 在本地群集上部署和升级应用程序入门
@@ -113,15 +113,19 @@ Service Fabric SDK 包含一组丰富的框架以及用于创建应用程序的�
 
 3. 最后，看看 WordCountService 的分区列表：
 
+    ```powershell
+    Get-ServiceFabricPartition 'fabric:/WordCount/WordCountService'
+    ```
+
     ![在 PowerShell 中查看服务分区][ps-getsfpartitions]
 
     刚使用的命令集（例如所有的 Service Fabric PowerShell 命令）可用于任何你可以连接的群集（本地或远程）。
 
-    若要以更直观的方式来与群集交互，可以在浏览器中导航到 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)，以使用基于 Web 的 Service Fabric 资源管理器工具。
+    若要以更直观的方式来与群集交互，可以在浏览器中导航到 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)，以使用基于 Web 的 Service Fabric Explorer 工具。
 
     ![在 Service Fabric 资源管理器中查看应用程序详细信息][sfx-service-overview]
 
-    > [AZURE.NOTE] 要了解有关 Service Fabric 资源管理器的详细信息，请参阅[使用 Service Fabric 资源管理器可视化群集](/documentation/articles/service-fabric-visualizing-your-cluster)。
+    > [AZURE.NOTE] 要了解有关 Service Fabric Explorer 的详细信息，请参阅[使用 Service Fabric Explorer 可视化群集](/documentation/articles/service-fabric-visualizing-your-cluster)。
 
 ## 升级应用程序
 Service Fabric 在应用程序推出于群集时监视其运行状况，从而提供无需停机的升级。让我们对 WordCount 应用程序执行简单的升级。
@@ -161,8 +165,8 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
     ![在浏览器中查看应用程序的新版本][deployed-app-ui-v2]
 
 ## 后续步骤
-- 现在，你已部署并升级某些预先构建的应用程序，接下来可以[尝试在 Visual Studio 中创建你自己的应用程序](/documentation/articles/service-fabric-create-your-first-application-in-visual-studio)。
-- 本文中所述的在本地群集上执行的所有操作也可以在 [Azure 群集](/documentation/articles/service-fabric-cluster-creation-via-portal)上执行。
+- 现在，你已部署并升级某些预先生成的应用程序，接下来可以[尝试在 Visual Studio 中生成你自己的应用程序](/documentation/articles/service-fabric-create-your-first-application-in-visual-studio)。
+- 也可以对 [Azure 群集](/documentation/articles/service-fabric-cluster-creation-via-portal)执行本文中所述的对本地群集执行的所有操作。
 - 本文中执行的升级非常简单。若要深入了解 Service Fabric 升级的功能和灵活性，请参阅[升级文档](/documentation/articles/service-fabric-application-upgrade)。
 
 <!-- Images -->
@@ -182,4 +186,4 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0418_2016-->

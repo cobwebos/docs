@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="应用程序方案和设计 | Microsoft Azure"
+   pageTitle="应用程序方案和设计 | Azure"
    description="Service Fabric 中云应用程序的类别概述。介绍使用有状态服务和无状态服务的应用程序设计。"
    services="service-fabric" 
    documentationCenter=".net" 
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="11/30/2015"
+   ms.date="02/12/2016"
    wacn.date=""/>
 
 # Service Fabric 应用程序方案
@@ -18,9 +18,9 @@ Azure Service Fabric 提供了一个可靠而灵活的平台，使你能够编�
 
 Azure 中的 Service Fabric 平台非常适合以下类别的应用程序和服务：
 
-- **高度可用的服务**：Service Fabric 服务提供极快速的故障转移。Service Fabric 允许你创建多个辅助服务副本。节点、进程或单独的服务因硬件故障或其他故障而不可用时，其中一个辅助副本会立即提升为主副本，几乎不会对客户服务造成任何损失。
+- **高度可用的服务**：Service Fabric 服务通过创建多个辅助服务副本提供快速的故障转移。节点、进程或单独的服务因硬件或其他故障而不可用时，其中一个辅助副本会提升为主副本，将对服务的损失降到最低。
 
-- **可缩放的服务**：可对单独的服务进行分区，以允许在群集范围内扩大状态。此外，还可以动态创建并删除单独的服务。服务可以快速简单地从几个节点上的几个实例向扩大到多个节点上的数千个实例，然后立即再次减少，具体取决于你的资源需求。可以使用 Service Fabric 来生层这些服务并管理其整个生命周期。
+- **可缩放的服务**：可对单独的服务进行分区，以允许在群集范围内扩大状态。此外，还可以动态创建并删除单独的服务。服务可以快速简单地从几个节点上的几个实例向扩大到多个节点上的数千个实例，然后再次减少，具体取决于你的资源需求。可以使用 Service Fabric 来生层这些服务并管理其整个生命周期。
 
 - **非静态数据计算**：Service Fabric 使你能够生成数据、输入/输出并计算密集型有状态应用程序。Service Fabric 允许在应用程序中共置处理（计算）和数据。通常，当你的应用程序需要访问数据时，通常会存在与外部数据缓存或存储层关联的网络延迟。使用 Service Fabric 有状态服务可消除这种延迟，从而提高读取和写入性能。例如，假设你有一个应用程序为要求往返时间小于 100 毫秒的客户执行近实时建议选择。与必须从远程存储中提取所需数据的标准实现模型相比，Service Fabric 服务（其中的建议选择计算与数据和规则共置）的延迟和性能特征向用户提供一种响应体验。
 
@@ -64,4 +64,4 @@ Azure 中的 Service Fabric 平台非常适合以下类别的应用程序和服�
 [Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.jpg
 [Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.jpg
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0418_2016-->

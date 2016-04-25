@@ -1,5 +1,5 @@
 <properties
-   pageTitle="可测试性操作 | Microsoft Azure"
+   pageTitle="可测试性操作 | Azure"
    description="本文介绍了 Microsoft Azure Service Fabric 中的可测试性操作。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,15 +9,15 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="12/04/2015"
+   ms.date="03/14/2016"
    wacn.date=""/>
 
 # 可测试性操作
-为了模拟一个不可靠的基础结构，Azure Service Fabric 向开发人员提供众多方式来模拟各种现实世界故障和状态转换。这些方式被称为可测试操作。这些操作属于低级别 API，导致具体的故障注入、状态转换或验证。结合使用这些操作，服务开发人员可以为你的服务编写全面的测试方案。
+为了模拟一个不可靠的基础结构，Azure Service Fabric 向你（即开发人员）提供众多方式来模拟各种现实世界故障和状态转换。这些方式被称为可测试操作。这些操作属于低级别 API，导致具体的故障注入、状态转换或验证。结合使用这些操作，你可以为你的服务编写全面的测试方案。
 
 Service Fabric 提供某些由这些操作组成的常见测试方案。强烈建议使用这些内置方案，这些方案经过精心挑选，用于测试常见状态转换和故障案例。但是，当你希望添加尚未包含在内置方案中的方案时，或者需要为你的应用程序量身订做一个方案时，可以使用这些操作来创建自定义测试方案。
 
-System.Fabric.Testability.dll 程序集包含了这些操作的 C# 实现。Microsoft.ServiceFabric.Testability.Powershell.dll 程序集包含了可测试性 PowerShell 模块。作为运行时安装的一部分，安装了 ServiceFabricTestability PowerShell 模块以便使用。
+System.Fabric.dll 程序集包含了这些操作的 C# 实现。Microsoft.ServiceFabric.Powershell.dll 程序集包含了 System Fabric PowerShell 模块。作为运行时安装的一部分，安装了 ServiceFabric PowerShell 模块以便易于使用。
 
 ## 常规故障与非常规故障操作
 可测试性操作分为两个主要的类型：
@@ -49,7 +49,7 @@ System.Fabric.Testability.dll 程序集包含了这些操作的 C# 实现。Micr
 
 ## 使用 PowerShell 运行可测试性操作
 
-本教程说明如何使用 PowerShell 运行可测试性操作。你将了解如何针对本地（也称为“单机”）群集或 Azure 群集运行可测试性操作。Microsoft.Fabric.Testability.Powershell.dll - 可测试性 PowerShell 模块 - 在你安装 Microsoft Service Fabric MSI 时自动安装。该模块在你打开一个 PowerShell 提示符时自动加载。
+本教程说明如何使用 PowerShell 运行可测试性操作。你将了解如何针对本地（也称为“单机”）群集或 Azure 群集运行可测试性操作。Microsoft.Fabric.Powershell.dll（Service Fabric PowerShell 模块）在你安装 Microsoft Service Fabric MSI 时自动安装。该模块在你打开一个 PowerShell 提示符时自动加载。
 
 教程章节：
 
@@ -64,7 +64,7 @@ System.Fabric.Testability.dll 程序集包含了这些操作的 C# 实现。Micr
 Restart-ServiceFabricNode -NodeName Node1 -CompletionMode DoNotVerify
 ```
 
-在这里，操作 **Restart-ServiceFabricNode** 在一个名为“Node1”的节点上运行。完成模式指定不应该验证实际上是否成功执行了重新启动操作。将完成模式指定为“Verify”会让其验证实际是否成功执行了重新启动操作。除了按其名称直接指定节点以外，还可以通过分区键和副本类型指定节点，如下所示：
+在这里，操作 **Restart-ServiceFabricNode** 在一个名为“Node1”的节点上运行。完成模式指定不应该验证实际上是否成功执行了重启节点操作。将完成模式指定为“Verify”会让其验证实际是否成功执行了重新启动操作。除了按其名称直接指定节点以外，还可以通过分区键和副本类型指定节点，如下所示：
 
 ```powershell
 Restart-ServiceFabricNode -ReplicaKindPrimary  -PartitionKindNamed -PartitionKey Partition3 -CompletionMode Verify
@@ -81,11 +81,11 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 应使用 **Restart-ServiceFabricNode** 来重新启动群集中的一个 Service Fabric 节点。这将停止会重新启动驻留在该节点上的所有系统服务和用户服务副本的 Fabric.exe 进程。使用此 API 来测试你的服务有助于沿故障转移恢复路径发现 Bug。它帮助模拟群集中的节点故障。
 
-以下屏幕截图显示操作中的 **Restart-ServiceFabricNode** 可测试性命令。
+以下屏幕截图显示操作中的 Restart-ServiceFabricNode 可测试性命令。
 
 ![](./media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
-第一个 **Get-ServiceFabricNode**（来自 Service Fabric PowerShell 模块的一个 cmdlet）显示本地群集有五个节点：Node.1 至 Node.5。在名为 Node.4 的节点上执行可测试性操作 (cmdlet) **Restart-ServiceFabricNode** 之后，我们看到节点的正常运行时间已被重置。
+第一个 Get-ServiceFabricNode（来自 Service Fabric PowerShell 模块的一个 cmdlet）显示本地群集有五个节点：Node.1 至 Node.5。在名为 Node.4 的节点上执行可测试性操作 (cmdlet) Restart-ServiceFabricNode 之后，我们看到节点的正常运行时间已被重置。
 
 ### 针对 Azure 群集运行一个操作
 
@@ -93,8 +93,7 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 ## 使用 C 运行可测试性操作#
 
-若要使用 C# 运行可测试性操作，首先你需要使用 FabricClient 连接到群集。然后获取运行该操作所需的参数。可用不同的参数来运行相同的操作。
-请看一看 RestartServiceFabricNode 操作，运行该操作的方式之一是在群集中使用节点信息（节点名称和节点实例 ID）。
+若要使用 C# 运行可测试性操作，首先你需要使用 FabricClient 连接到群集。然后获取运行该操作所需的参数。可用不同的参数来运行相同的操作。请看一看 RestartServiceFabricNode 操作，运行该操作的方式之一是在群集中使用节点信息（节点名称和节点实例 ID）。
 
 ```csharp
 RestartNodeAsync(nodeName, nodeInstanceId, completeMode, operationTimeout, CancellationToken.None)
@@ -165,14 +164,14 @@ class Test
 
         // Create FabricClient with connection and security information here
         FabricClient fabricclient = new FabricClient(clusterConnection);
-        await fabricclient.ClusterManager.RestartNodeAsync(primaryofReplicaSelector, CompletionMode.Verify);
+        await fabricclient.FaultManager.RestartNodeAsync(primaryofReplicaSelector, CompletionMode.Verify);
     }
 
     static async Task RestartNodeAsync(string clusterConnection, string nodeName, BigInteger nodeInstanceId)
     {
         // Create FabricClient with connection and security information here
         FabricClient fabricclient = new FabricClient(clusterConnection);
-        await fabricclient.ClusterManager.RestartNodeAsync(nodeName, nodeInstanceId, CompletionMode.Verify);
+        await fabricclient.FaultManager.RestartNodeAsync(nodeName, nodeInstanceId, CompletionMode.Verify);
     }
 }
 ```
@@ -208,12 +207,11 @@ ReplicaSelector 是在可测试性中运用的一个帮助程序，用于帮助�
 
 若要使用此帮助器，请创建一个 ReplicaSelector 对象，并设置副本的分区的选择方式。然后，你可以将它传递给需要它的 API。如果未选择任何选项，则默认为随机副本和随机分区。
 
+```csharp
 Guid partitionIdGuid = new Guid("8fb7ebcc-56ee-4862-9cc0-7c6421e68829");
 PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf(serviceName, partitionIdGuid);
 long replicaId = 130559876481875498;
 
-
-```csharp
 // Select a random replica
 ReplicaSelector randomReplicaSelector = ReplicaSelector.RandomOf(partitionSelector);
 
@@ -234,5 +232,4 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
    - [在服务工作负荷期间模拟故障](/documentation/articles/service-fabric-testability-workload-tests)
    - [服务到服务通信失败](/documentation/articles/service-fabric-testability-scenarios-service-communication)
  
-
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0418_2016-->

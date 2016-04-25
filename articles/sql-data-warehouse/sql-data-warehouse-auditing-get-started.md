@@ -1,25 +1,25 @@
-<properties 
-   pageTitle="SQL 数据仓库数据库审核入门 | Microsoft Azure" 
-   description="SQL 数据仓库数据库审核入门" 
-   services="sql-data-warehouse" 
-   documentationCenter="" 
-   authors="twounder" 
-   manager="barbkess" 
+<properties
+   pageTitle="SQL 数据仓库数据库审核入门 | Azure"
+   description="SQL 数据仓库数据库审核入门"
+   services="sql-data-warehouse"
+   documentationCenter=""
+   authors="twounder"
+   manager="barbkess"
    editor=""/>
 
-<tags 
-   ms.service="sql-data-warehouse" 
-   ms.date="01/07/2016" 
+<tags
+   ms.service="sql-data-warehouse"
+   ms.date="03/03/2016" 
    wacn.date=""/>
- 
-# SQL 数据仓库数据库审核入门 
+
+# SQL 数据仓库数据库审核入门
 Azure SQL 数据仓库审核可以跟踪数据库事件，并将审核的事件写入 Azure 存储帐户中的审核日志。
 
 审核可帮助你一直保持遵从法规、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
 审核工具有助于遵从法规标准，但不能保证遵从法规。有关可帮助你遵从标准的 Azure 计划的详细信息，请参阅 <a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Azure 信任中心</a>。
 
-+ [数据库审核基础知识] 
++ [数据库审核基础知识]
 + [为数据库设置审核]
 + [分析审核日志和报告]
 
@@ -62,7 +62,7 @@ SQL 数据仓库数据库审核可让你：
 	![][1]
 
 3. 在审核配置边栏选项卡中，首先取消选中“从服务器继承审核设置”复选框。这样，你便可以指定特定数据库的设置。
-	
+
 	![][2]
 
 4. 接下来，通过单击“打开”按钮启用审核。
@@ -98,22 +98,22 @@ SQL 数据仓库数据库审核可让你：
 
 
 ##<a id="subheading-4">生产环境中的用法实践</a>
-本部分中的说明与以上屏幕截图相关。可以使用任一 <a href= "https://manage.windowsazure.cn/" target="_bank">Azure 管理器门户</a>。
- 
+本部分中的说明与以上屏幕截图相关。可以使用 <a href="https://portal.azure.cn" target="_blank">Azure 门户</a>或 <a href= "https://manage.windowsazure.cn/" target="_bank">Azure 管理门户</a>。
+
 
 ##<a id="subheading-5"></a>重新生成存储密钥
 
 在生产环境中，你可能会定期刷新存储密钥。刷新密钥时，你需要重新保存策略。过程如下：
 
 
-1. 在审核配置边栏选项卡中（如以上有关设置审核的部分中所述），将“存储访问密钥”从 *主* 切换为 *辅助* ，然后单击“保存”。
+1. 在审核配置边栏选项卡中（如以上有关设置审核的部分中所述），将“存储访问密钥”从“主”切换为“辅助”，然后单击“保存”。
 ![][4]
-2. 转到存储配置边栏选项卡，并**重新生成** *主访问密钥*。
+2. 转到存储配置边栏选项卡，并**重新生成**主访问密钥。
 
-3. 返回审核配置边栏选项卡，将“存储访问密钥”从 *辅助* 切换为 *主* ，然后按“保存”。
+3. 返回审核配置边栏选项卡，将“存储访问密钥”从“辅助”切换为“主”，然后按“保存”。
 
-4. 返回存储 UI 并**重新生成** *辅助访问密钥*（为下一个密钥刷新周期做好准备）。
-  
+4. 返回存储 UI 并**重新生成**辅助访问密钥（为下一个密钥刷新周期做好准备）。
+
 ##<a id="subheading-6"></a>自动化
 可以使用多个 PowerShell cmdlet 来配置 Azure SQL 数据库中的审核。若要访问审核 cmdlet，你必须以 Azure 资源管理器模式运行 PowerShell。
 
@@ -138,4 +138,4 @@ SQL 数据仓库数据库审核可让你：
 
 <!--Link references-->
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0418_2016-->

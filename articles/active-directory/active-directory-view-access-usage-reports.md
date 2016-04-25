@@ -1,27 +1,27 @@
-<properties 
-	pageTitle="查看访问和使用情况报告" 
+<properties
+	pageTitle="查看访问和使用情况报告 | Microsoft Azure"
 	description="说明如何查看访问和使用情况报告，以深入分析组织目录的完整性和安全性。"
-	services="active-directory" 
-	documentationCenter="" 
-	authors="kenhoff"
+	services="active-directory"
+	documentationCenter=""
+	authors="dhanyahk"
 	manager="stevenpo"
 	editor="LisaToft"/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="12/07/2015"
+	ms.date="03/07/2016"
 	wacn.date=""/>
 
 # 查看访问和使用情况报告
 
-*本文档是 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)的一部分。*
+本文档是 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)的一部分。
 
 你可以使用 Azure Active Directory 的访问和使用情况报告来监控你所在组织的目录的完整性和安全性。使用此信息，目录管理员可以更好地确定哪里可能存在安全风险，以便制定相应的计划来降低风险。
 
 在 Azure 管理门户中，报告按以下方式分类：
 
-- 异常报告 - 包含我们发现存在异常的登录事件。我们的目标是让你知道这项活动并使你能够就事件是否可疑做出决定。 
-- 集成应用程序报告 - 就你所在的组织如何使用云应用程序提供见解。Azure Active Directory 提供与数千个云应用程序的集成。 
+- 异常报告 - 包含我们发现存在异常的登录事件。我们的目标是让你知道这项活动并使你能够就事件是否可疑做出决定。
+- 集成应用程序报告 - 就你所在的组织如何使用云应用程序提供见解。Azure Active Directory 提供与数千个云应用程序的集成。
 - 错误报告 - 指示在为外部应用程序设置帐户时可能发生的错误。
 - 用户特定的报告 - 显示特定用户的设备/登录活动数据。
 - 活动日志 - 包含过去 24 小时、过去 7 天或过去 30 天内的所有已审核事件的记录，以及组活动更改记录、密码重置和注册活动记录。
@@ -29,7 +29,7 @@
 > [AZURE.NOTE]
 >
 - 仅当你已启用 [Azure Active Directory Premium](active-directory-get-started-premium.md) 时，一些高级异常报告和资源使用情况报告才可用。高级报告可帮助你提高访问安全性、应对潜在威胁以及获得对设备访问和应用程序使用情况进行分析。
-- 在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure Active Directory 高级和基本版。由中国 21Vianet 运营的 Microsoft Azure 服务目前不支持 Azure Active Directory 高级和基本版。有关详细信息，请在 [Azure Active Directory 论坛](http://feedback.azure.com/forums/169401-azure-active-directory)与我们联系。
+- 在中国，使用 Azure Active Directory 全球实例的客户可以使用 Azure Active Directory 高级和基本版。由中国 21Vianet 运营的 Microsoft Azure 服务目前不支持 Azure Active Directory 高级和基本版。有关详细信息，请在 [Azure Active Directory 论坛](https://feedback.azure.com/forums/169401-azure-active-directory/)与我们联系。
 
 ## 报告
 
@@ -94,7 +94,15 @@
 ## 异常活动报告
 <p>异常登录活动报告将会标识 Office365、Azure 管理门户、Azure AD 访问面板、Sharepoint Online、Dynamics CRM Online 和其他 Microsoft Online Services 中发生的可疑登录活动。</p>
 <p>所有这些报告（“多次失败后的登录”报告除外）还会标识上述服务中发生的可疑<i>联合</i>登录，不管联合提供程序是什么。</p>
-<p>提供了以下报告：</p><ul><li>[来自未知源的登录](active-directory-reporting-sign-ins-from-unknown-sources.md)。</li> <li>[多次失败后的登录](active-directory-reporting-sign-ins-after-multiple-failures.md)。</li> <li>[来自多个地理区域的登录](active-directory-reporting-sign-ins-from-multiple-geographies.md)。</li> <li>[从具有可疑活动的 IP 地址登录](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)。</li> <li>[异常登录活动](active-directory-reporting-irregular-sign-in-activity.md)。</li> <li>[从可能受感染的设备登录](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)。</li> <li>[具有异常登录活动的用户](active-directory-reporting-users-with-anomalous-sign-in-activity.md)。</li> <li>具有已泄漏凭据的用户</li></ul>
+<p>可以使用以下报告：</p><ul>
+<li>[来自未知源的登录](active-directory-reporting-sign-ins-from-unknown-sources.md)。</li>
+<li>[多次失败后的登录](active-directory-reporting-sign-ins-after-multiple-failures.md)。</li>
+<li>[来自多个地理位置的登录](active-directory-reporting-sign-ins-from-multiple-geographies.md)。</li>
+<li>[来自具有可疑活动的 IP 地址的登录](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)。</li>
+<li>[异常登录活动](active-directory-reporting-irregular-sign-in-activity.md)。</li>
+<li>[来自可能受感染的设备的登录](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)。</li>
+<li>[具有异常登录活动的用户](active-directory-reporting-users-with-anomalous-sign-in-activity.md)。</li>
+<li>具有已泄漏凭据的用户</li></ul>
 
 
 
@@ -157,7 +165,7 @@
 | :-------------     | :-------        |
 | 当你要查看目录中所有 SaaS 应用程序的使用情况时，可使用此报告。此报告基于用户在访问面板中单击应用程序的次数。 | “目录”>“报告”选项卡 |
 
-此报告包含目录有权访问的_所有_应用程序（包括预先集成的 Microsoft 应用程序）的登录。
+此报告包含目录有权访问的所有应用程序（包括预先集成的 Microsoft 应用程序）的登录。
 
 预先集成的 Microsoft 应用程序包括 Office 365、Sharepoint、Azure 管理门户，等等。
 
@@ -216,8 +224,8 @@
 | ----------------------								| ---------		|
 | 登录[访问面板](http://myapps.microsoft.com/) | 是 |
 | 登录 [Azure 管理门户](https://manage.windowsazure.cn/) | 是 |
-| 登录 [Microsoft Azure 门户](https://manage.windowsazure.cn/) | 是 |
-| 登录 [Office 365 门户](https://login.partner.microsoftonline.cn) | 是 |
+| 登录 [Microsoft Azure 门户](https://portal.azure.cn/) | 是 |
+| 登录 [Office 365 门户](http://portal.office.com/) | 是 |
 | 登录本机应用程序，例如 Outlook（参阅以下例外情况） | 是 |
 | 通过访问面板登录联合/设置的应用程序，例如 Salesforce | 是 |
 | 通过访问面板登录基于密码的应用程序，例如 Twitter | 是 |
@@ -245,15 +253,17 @@
 
 ## 查看或下载报告
 
-1. 在 Azure 管理门户中，单击“Active Directory”，单击组织目录的名称，然后单击“报告”。
+1. 在 Azure 经典门户中，依次单击“Active Directory”、你所在组织的目录的名称和“报告”。
 2. 在“报告”页面上，单击你要查看和/或下载的报告。
-    > [AZURE.NOTE]如果这是你第一次使用 Azure Active Directory 的报告功能，你将看到一条“选择加入”的消息。如果同意，请单击复选标记图标以继续。
+
+    > [AZURE.NOTE] 如果这是你第一次使用 Azure Active Directory 的报告功能，你将看到一条“选择加入”的消息。如果同意，请单击复选标记图标以继续。
+
 3. 单击“间隔”旁边的下拉菜单，然后从以下时间范围选择其中一个作为生成此报告应使用的时间间隔：
     - 过去 24 小时
     - 过去 7 天
     - 过去 30 天
 4. 单击复选标记图标以运行报告。
-	- Azure 管理门户中最多会显示 1000 个事件。
+	- Azure 经典门户中可显示多达 1000 个事件。
 5. 如果适用，请单击“下载”将报告下载到逗号分隔值 (CSV) 格式的压缩文件中，以便脱机查看或进行存档。
 	- 下载的文件中最多包含 75,000 个事件。
 	- 有关更多数据，请查看 [Azure AD Reporting API](active-directory-reporting-api-getting-started.md)。
@@ -271,4 +281,4 @@
 <!--- [Getting started with Azure Active Directory Premium](active-directory-get-started-premium.md)-->
 - [向“登录”和“访问面板”页添加公司品牌](active-directory-add-company-branding)
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

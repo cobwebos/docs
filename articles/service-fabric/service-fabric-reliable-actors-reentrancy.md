@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Reliable Actors 可重入性 | Microsoft Azure"
+   pageTitle="Reliable Actors 可重入性 | Azure"
    description="Service Fabric Reliable Actors 的可重入性简介"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,14 +9,14 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="11/14/2015"
+   ms.date="02/19/2016"
    wacn.date=""/>
 
 
 # Reliable Actors 可重入性
-默认情况下，Fabric Actors 运行时允许逻辑调用基于上下文的可重入性。这使参与者在处于相同调用上下文链中时可重入。例如，如果执行组件 A 将消息发送给执行组件 B，而后者将消息发送给执行组件 C。在处理消息的过程中，如果执行组件 C 调用执行组件 A，则允许消息可重入。属于不同调用上下文的任何其他消息会在执行组件 A 上受阻，直到它完成处理。
+默认情况下，Fabric 执行组件运行时允许逻辑调用基于上下文的可重入性。这使执行组件在处于相同调用上下文链中时可重入。例如，如果执行组件 A 将消息发送给执行组件 B，而后者将消息发送给执行组件 C。在处理消息的过程中，如果执行组件 C 调用执行组件 A，则允许消息可重入。属于不同调用上下文的任何其他消息会在执行组件 A 上受阻，直到它完成处理。
 
-要禁止逻辑调用基于上下文的可重入性的参与者可以通过使用 `ReentrantAttribute(ReentrancyMode.Disallowed)` 修饰执行组件类来禁用它。
+要禁止逻辑调用基于上下文的可重入性的执行组件可以通过使用 `ReentrantAttribute(ReentrancyMode.Disallowed)` 修饰执行组件类来禁用它。
 
 ```csharp
 public enum ReentrancyMode
@@ -36,4 +36,4 @@ class VoicemailBoxActor : StatefulActor<VoicemailBox>, IVoicemailBoxActor
 }
 ```
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0418_2016-->

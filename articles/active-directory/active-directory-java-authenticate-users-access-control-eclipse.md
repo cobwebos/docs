@@ -2,14 +2,14 @@
 	pageTitle="如何使用访问控制 (Java) | Microsoft Azure" 
 	description="了解如何在 Azure 中以 Java 开发和使用访问控制。" 
 	services="active-directory" 
-	documentationCenter="java" 
-	authors="rmcmurray" 
-	manager="wpickett" 
-	editor="jimbe"/>
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
+	editor="" />
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="10/12/2015" 
+    ms.date="03/04/2016" 
 	wacn.date=""/>
 
 # 如何使用 Eclipse 在 Azure Access Control 服务上对 Web 用户进行身份验证
@@ -17,7 +17,7 @@
 本指南将说明如何在 Azure Toolkit for Eclipse 中使用 Azure 访问控制服务 (ACS)。有关 ACS 的详细信息，请参阅[后续步骤](#next_steps)部分。
 
 > [AZURE.NOTE]
-> Azure 访问服务控制筛选器是一个社区技术预览版。作为预发行软件，Microsoft 不会为它提供正式支持。
+Azure 访问服务控制筛选器是一个社区技术预览版。作为预发行软件，Microsoft 不会为它提供正式支持。
 
 ## 什么是 ACS？
 
@@ -33,7 +33,7 @@ ACS 具有以下可用功能：
 
 有关 ACS 的详细信息，请参阅[访问控制服务 2.0][]。
 
-## <a name="concepts"></a>概念
+## 概念
 
 Azure ACS 在基于声明的标识的主体的基础上构建，它是一种创建针对本地运行或在云中运行的应用程序的身份验证机制的一致性方法。通常，应用程序和服务可使用基于声明的标识来获取所需的有关其组织内、其他组织内以及 Internet 上的用户的标识信息。
 
@@ -41,7 +41,7 @@ Azure ACS 在基于声明的标识的主体的基础上构建，它是一种创�
 
 **客户端** - 在本操作方法指南的上下文中，这是一个尝试获取对你的 Web 应用程序的访问权的浏览器。
 
-**信赖方 (RP) 应用程序** - RP 应用程序是一个将身份验证外包给外部权威机构的网站或服务。用标识行话来说，RP 信任该权威机构。本指南说明如何将您的应用程序配置为信任 ACS。
+**信赖方 (RP) 应用程序** — RP 应用程序是一个将身份验证外包给外部权威机构的网站或服务。用标识行话来说，RP 信任该权威机构。本指南说明如何将您的应用程序配置为信任 ACS。
 
 **令牌** - 令牌是一个安全数据集合，它通常会在对用户进行身份验证成功后颁发。它包含一组*声明*（经过身份验证的用户的属性）。声明可表示用户名、用户所属角色的标识符、用户年龄等。令牌通常已进行数字签名，这意味着始终能够找到令牌的颁发者，并且其内容无法篡改。用户可通过提供由 RP 应用程序信任的颁发机构颁发的有效令牌来获取对 RP 应用程序的访问权限。
 
@@ -72,12 +72,12 @@ Azure ACS 在基于声明的标识的主体的基础上构建，它是一种创�
 - Java 开发人员工具包 (JDK) 1.6 版或更高版本。
 - Eclipse IDE for Java EE Developers, Indigo 或更高版本。可以从 <http://www.eclipse.org/downloads/> 下载。 
 - 分发基于 Java 的 Web 服务器或应用程序服务器，例如 Apache Tomcat、GlassFish、JBoss 应用程序服务器或 Jetty。
-- Azure 订阅，可以从 </pricing/overview/> 获取。
+- Azure 订阅，可以从 <http://www.microsoft.com/windowsazure/offers/> 获取。
 - Azure Toolkit for Eclipse 2014 年 4 月版或更高版本。有关详细信息，请参阅[安装 Azure Toolkit for Eclipse](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)。
 - 要用于应用程序的 X.509 证书。你将需要此证书的公用证书 (.cer) 格式版和个人信息交换 (.PFX) 格式版。（本教程后面将介绍用于创建此证书的选项）。
-- 熟悉[在 Eclipse 中创建 Azure 的 Hello World 应用程序](http://msdn.microsoft.com/zh-cn/library/azure/hh690944.aspx)中介绍的 Azure 计算模拟器和部署技术。
+- 熟悉[在 Eclipse 中创建 Azure 的 Hello World 应用程序](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)中介绍的 Azure 计算模拟器和部署技术。
 
-## <a name="create-namespace"></a>创建 ACS 命名空间
+## 创建 ACS 命名空间
 
 若要开始在 Azure 中使用访问控制服务 (ACS)，必须创建一个 ACS 命名空间。该命名空间提供了一个唯一范围，用于从应用程序中对 ACS 资源进行寻址。
 
@@ -91,7 +91,7 @@ Azure ACS 在基于声明的标识的主体的基础上构建，它是一种创�
 
 Azure 将创建并激活该命名空间。请等到新命名空间的状态变为“活动”，然后再继续操作。
 
-## <a name="add-IP"></a>添加标识提供者
+## 添加标识提供程序
 
 在此任务中，您将添加与 RP 应用程序一起使用的 IP 来进行身份验证。出于演示目的，此任务将说明如何将 Windows Live 作为 IP 添加，但您可使用 ACS 管理门户中列出的任何 IP。
 
@@ -140,7 +140,7 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。紧接着，�
 3.  在“添加令牌签名证书或密钥”页上：
     1. 在“用于”部分中，单击“信赖方应用程序”并选择“Azure Web App”（你之前已将其设置为信赖方应用程序的名称）。
     2. 在“类型”部分中，选择“X.509 证书”。
-    3. 在“证书”部分中，单击“浏览”按钮并导航到要使用的 X.509 证书文件。这将为 .PFX 文件。选择此文件，单击“打开”，然后在“密码”文本框中输入证书密码。请注意，出于测试目的，你可以使用自签名证书。若要创建自签名证书，请使用“ACS 筛选器库”对话框（后面将介绍）中的“新建”按钮，或使用 Azure Starter Kit for Java 的 [项目网站] 中的 **encutil.exe** 实用程序。
+    3. 在“证书”部分中，单击“浏览”按钮并导航到要使用的 X.509 证书文件。这将为 .PFX 文件。选择此文件，单击“打开”，然后在“密码”文本框中输入证书密码。请注意，出于测试目的，你可以使用自签名证书。若要创建自签名证书，请使用“ACS 筛选器库”对话框（后面将介绍）中的“新建”按钮，或使用 Azure Starter Kit for Java 的[项目网站][]中的 **encutil.exe** 实用工具。
     4. 确保选中“设为主”。你的“添加令牌签名证书或密钥”页应与下图中所示类似。
         ![添加令牌签名证书][add_token_signing_cert]
     5. 单击“保存”保存设置并关闭“添加令牌签名证书或密钥”页。
@@ -168,7 +168,7 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。紧接着，�
 
     ![为 ACS 示例添加 JSP 文件][add_jsp_file_acs]
 
-    单击**“下一步”**。
+    单击“下一步”。
 
 4. 在“选择 JSP 模板”对话框中，选择“新建 JSP 文件 (html)”，然后单击“完成”。
 5. 在 Eclipse 中打开 index.jsp 文件后，添加文本以便在现有 `<body>` 元素中显示 **Hello ACS World!**。更新后的 `<body>` 内容应与下图中所示类似：
@@ -205,10 +205,10 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。紧接着，�
 
 1. 在 Eclipse 的项目资源管理器中，右键单击“MyACSHelloWorld”，单击“Azure”，然后单击“适用于 Azure 的包”。
 2. 对于“项目名称”，请键入 **MyAzureACSProject**，然后单击“下一步”。
-3. 选择一个 JDK 和一个应用程序服务器。（[在 Eclipse 中创建 Azure 的 Hello World 应用程序](http://msdn.microsoft.com/zh-cn/library/azure/hh690944.aspx)教程中将详细介绍这些步骤）。
+3. 选择一个 JDK 和一个应用程序服务器。（[在 Eclipse 中创建 Azure 的 Hello World 应用程序](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)教程中将详细介绍这些步骤）。
 4. 单击“完成”。
 5. 单击“在 Azure 模拟器中运行”按钮。
-6. 当你的 Java 网站在计算模拟器中启动后，请关闭浏览器的所有实例（以便任何当前浏览器会话不会妨碍你的 ACS 登录测试）。
+6. 当你的 Java Web 应用程序在计算模拟器中启动后，请关闭浏览器的所有实例（以便任何当前浏览器会话不会妨碍你的 ACS 登录测试）。
 7. 通过在浏览器中打开 <http://localhost:8080/MyACSHelloWorld/>（如果已选中“需要 HTTPS 连接”，则打开 <https://localhost:8080/MyACSHelloWorld/>）来运行你的应用程序。系统将提示你输入 Windows Live ID 登录名，随后你将被定向到为你的信赖方应用程序指定的返回 URL。
 99.  查看完你的应用程序后，请单击“重置 Azure 模拟器”按钮。
 
@@ -286,12 +286,12 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。紧接着，�
 [Deploy to the compute emulator]: #deploy_compute_emulator
 [Deploy to Azure]: #deploy_azure
 [Next steps]: #next_steps
-[project  Website]: http://wastarterkit4java.codeplex.com/releases/view/61026
-[如何查看 Azure 访问控制服务返回的 SAML]: documentation/articles/active-directory-java-view-saml-returned-by-access-control/
-[访问控制服务 2.0]: http://msdn.microsoft.com/zh-cn/library/hh147631.aspx
-[Windows Identity Foundation]: http://www.microsoft.com/zh-cn/download/details.aspx?id=17331
-[Windows Identity Foundation SDK]: http://www.microsoft.com/zh-cn/download/details.aspx?id=4451
-[Azure 管理门户]: https://manage.windowsazure.cn
+[项目网站]: http://wastarterkit4java.codeplex.com/releases/view/61026
+[如何查看 Azure 访问控制服务返回的 SAML]: /zh-cn/develop/java/how-to-guides/view-saml-returned-by-acs/
+[访问控制服务 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
+[Windows Identity Foundation]: http://www.microsoft.com/download/en/details.aspx?id=17331
+[Windows Identity Foundation SDK]: http://www.microsoft.com/download/en/details.aspx?id=4451
+[Azure 管理门户]: https://manage.windowsazure.com
 [acs_flow]: ./media/active-directory-java-authenticate-users-access-control-eclipse/ACSFlow.png
 
 <!-- Eclipse-specific -->
@@ -308,4 +308,4 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。紧接着，�
 [create_acs_hello_world]: ./media/active-directory-java-authenticate-users-access-control-eclipse/CreateACSHelloWorld.png
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

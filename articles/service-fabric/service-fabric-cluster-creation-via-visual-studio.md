@@ -1,5 +1,5 @@
 <properties
-   pageTitle="使用 Visual Studio 设置 Service Fabric 群集 | Microsoft Azure"
+   pageTitle="使用 Visual Studio 设置 Service Fabric 群集 | Azure"
    description="介绍如何在 Visual Studio 中使用 Azure 资源组项目创建的 Azure Resource Manager (ARM) 模板来设置 Azure Service Fabric 群集"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="11/13/2015"
+   ms.date="03/11/2016"
    wacn.date=""/>
 
 # 使用 Visual Studio 设置 Service Fabric 群集
@@ -31,61 +31,65 @@
 选择“Service Fabric 群集”模板，然后再次点击“确定”。现在已创建项目与 Resource Manager 模板。
 
 ## 准备用于部署的模板
-在部署模板以创建群集之前，必须提供所需的模板参数值。这些参数值从 `ServiceFabricCluster.param.dev.json` 文件读取，该文件位于资源组项目的 `Templates` 文件夹中。打开该文件并提供以下值：
+在部署模板以创建群集之前，必须提供所需的模板参数值。这些参数值从 `ServiceFabricCluster.parameters.json` 文件读取，该文件位于资源组项目的 `Templates` 文件夹中。打开该文件并提供以下值：
 
 |参数名称 |说明|
 |-----------------------  |--------------------------|
 |clusterLocation |要将 Service Fabric 群集放置到的 **Azure 区域**的名称。例如“East US”。|
-|clusterName |模板要创建的 Service Fabric 群集的域名系统 (DNS) 名称。<br /><br />例如，如果将此参数设置为 `myBigCluster`，并将 `clusterLocation` 参数设置为 East US，则群集的名称为 `myBigCluster.eastus.cloudapp.azure.com`。|
 |certificateThumbprint |用于保护群集的证书的指纹。|
-|sourceVaultValue |存储用于保护群集的证书的密钥保管库的*资源 ID*。|
+|sourceVaultResourceId |存储用于保护群集的证书的密钥保管库的资源 ID。|
 |certificateUrlValue |群集安全证书的 URL。|
 
-Visual Studio Service Fabric Resource Manager 模板将创建一个受证书保护的安全群集。此证书以最后三个模板参数标识（`certificateThumbprint`、`sourceVaultValue` 和 `certificateUrlValue`），并且必须在 **Azure 密钥保管库**中存在。有关如何创建群集安全证书的详细信息，请参阅[如何使用证书保护 Service Fabric 群集](/documentation/articles/service-fabric-cluster-security)一文。
+Visual Studio Service Fabric Resource Manager 模板将创建一个受证书保护的安全群集。此证书以最后三个模板参数标识（`certificateThumbprint`、`sourceVaultValue` 和 `certificateUrlValue`），并且必须在 **Azure 密钥保管库**中存在。有关如何创建群集安全证书的详细信息，请参阅[如何使用证书保护 Service Fabric 群集](/documentation/articles/service-fabric-cluster-security#secure-a-service-fabric-cluster-by-using-certificates)一文。
+
+## 可选：更改群集名称
+每个 Service Fabric 群集都有一个名称。在 Azure 中创建结构群集时，群集名称（连同 Azure 区域）确定了群集的域名系统 (DNS) 名称。例如，如果将群集命名为 `myBigCluster`，将 `clusterLocation` 参数设置为 East US，则群集的 DNS 名称将是 `myBigCluster.eastus.cloudapp.azure.com`。
+
+默认情况下，系统会自动生成群集名称，并在“群集”前缀后面附加一个随机后缀，使该名称唯一。这样便可以轻松使用模板作为**持续集成** (CI) 系统的一部分。如果想要为群集使用特定的名称，有效的方法之一是将 Resource Manager 模板文件 (`ServiceFabricCluster.json`) 中的 `clusterName` 变量的值设置为所选的名称。该名称是该文件中定义的第一个变量。
 
 ## 可选：添加公共应用程序端口
 在部署模板之前，你还可能想要更改群集的公共应用程序端口。默认情况下，模板只打开两个公共 TCP 端口（80 和 8081）。如果应用程序需要更多端口，请修改模板中的 Azure 负载平衡器定义。此定义存储在主模板文件 (`SecureFabricCluster.json`) 中。打开该文件并搜索 `loadBalancedAppPort`。你将注意到每个端口与三个项目关联：
 
-1. 一个模板参数，用于定义端口的 TCP 端口值：
+1. 一个模板变量，用于定义端口的 TCP 端口值：
+
 	```json
-	"loadBalancedAppPort1": {
-	    "type": "int",
-	    "defaultValue": 80
-	}
+	"loadBalancedAppPort1": "80"
 	```
 
-2. 一个*探测*，用于定义 Azure 负载平衡器在故障转移到另一个节点之前，尝试使用特定 Service Fabric 节点的频率和时间长短。探测是负载平衡器资源的一部分。下面是第一个默认应用程序端口的探测定义：
+2. 一个探测，用于定义 Azure 负载平衡器在故障转移到另一个节点之前，尝试使用特定 Service Fabric 节点的频率和时间长短。探测是负载平衡器资源的一部分。下面是第一个默认应用程序端口的探测定义：
+
 	```json
 	{
         "name": "AppPortProbe1",
         "properties": {
             "intervalInSeconds": 5,
             "numberOfProbes": 2,
-            "port": "[parameters('loadBalancedAppPort1')]",
-            "protocol": "tcp"
+            "port": "[variables('loadBalancedAppPort1')]",
+            "protocol": "Tcp"
         }
     }
 	```
 
-3. 一个*负载平衡规则*，用于将端口和探测绑定在一起，并在一组 Service Fabric 群集节点之间实现负载平衡：
-	```json
+3. 一个负载平衡规则，用于将端口和探测绑定在一起，并在一组 Service Fabric 群集节点之间实现负载平衡：
+
+    ```json
 	{
 	    "name": "AppPortLBRule1",
 	    "properties": {
 	        "backendAddressPool": {
 	            "id": "[variables('lbPoolID0')]"
 	        },
-	        "backendPort": "[parameters('loadBalancedAppPort1')]",
+	        "backendPort": "[variables('loadBalancedAppPort1')]",
 	        "enableFloatingIP": false,
 	        "frontendIPConfiguration": {
 	            "id": "[variables('lbIPConfig0')]"
 	        },
-	        "frontendPort": "[parameters('loadBalancedAppPort1')]",
+	        "frontendPort": "[variables('loadBalancedAppPort1')]",
 	        "idleTimeoutInMinutes": 5,
 	        "probe": {
 	            "id": "[concat(variables('lbID0'),'/probes/AppPortProbe1')]"
 	        },
-	        "protocol": "tcp"
+	        "protocol": "Tcp"
 	    }
 	}
     ```
@@ -101,12 +105,14 @@ Visual Studio Service Fabric Resource Manager 模板将创建一个受证书保�
 按“部署”按钮后，Visual Studio 将提示你确认模板参数值。点击“保存”按钮。有一个参数没有持久值：群集的管理帐户密码。当 Visual Studio 提示你提供密码值时，你需要提供密码。
 
 >[AZURE.NOTE] 如果以前从未使用 PowerShell 从当前你正在使用的计算机管理 Azure，则你需要完成少量的几个步骤。
->1.运行 [`Set-ExecutionPolicy`](https://technet.microsoft.com/zh-cn/library/hh849812.aspx) 命令启用 PowerShell 脚本。开发计算机通常可接受“不受限制的”策略。
->2.确定是否允许从 Azure PowerShell 命令收集诊断数据，并根据需要运行 [`Enable-AzureRmDataCollection`](https://msdn.microsoft.com/zh-cn/library/mt619303.aspx) 或 [`Disable-AzureRmDataCollection`](https://msdn.microsoft.com/zh-cn/library/mt619236.aspx)。如果你使用的是 Azure PowerShell 版本 0.9.8 或更低版本，这些命令分别名为 `Enable-AzureDataCollection` 和 `Discable-AzureDataCollection`。这可以避免在模板部署期间不必要地出现提示。
+>1. 运行 [`Set-ExecutionPolicy`](https://technet.microsoft.com/zh-cn/library/hh849812.aspx) 命令启用 PowerShell 脚本。开发计算机通常可接受“不受限制的”策略。
+>2. 确定是否允许从 Azure PowerShell 命令收集诊断数据，并根据需要运行 [`Enable-AzureRmDataCollection`](https://msdn.microsoft.com/zh-cn/library/mt619303.aspx) 或 [`Disable-AzureRmDataCollection`](https://msdn.microsoft.com/zh-cn/library/mt619236.aspx)。这可以避免在模板部署期间不必要地出现提示。
 
 可以在 Visual Studio 的“输出”窗口中监视部署过程的进度。一旦完成模板部署，新群集即可供使用！
 
-如果发生任何错误，请转到[管理门户](https://manage.windowsazure.cn/)并查看**通知**。失败的资源组部署会在“通知”中留下详细的诊断信息。
+如果出现任何错误，请转到 [Azure 门户](https://portal.azure.cn/)并打开你已部署到的资源组。单击“所有设置”，然后在设置边栏选项卡上单击“部署”。失败的资源组部署会在“通知”中留下详细的诊断信息。
+
+>[AZURE.NOTE] Service Fabric 群集需要有一定数量的节点可随时启动，以保持可用性和状态 - 称为“维持仲裁”。因此，除非你已事先执行[状态的完整备份](/documentation/articles/service-fabric-reliable-services-backup-restore)，否则关闭群集中的所有计算机通常是不安全的做法。
 
 ## 后续步骤
 - [了解如何使用 Azure 门户设置 Service Fabric 群集](/documentation/articles/service-fabric-cluster-creation-via-portal)
@@ -117,4 +123,4 @@ Visual Studio Service Fabric Resource Manager 模板将创建一个受证书保�
 [2]: ./media/service-fabric-cluster-creation-via-visual-studio/selecting-azure-template.png
 [3]: ./media/service-fabric-cluster-creation-via-visual-studio/deploy-to-azure.png
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0418_2016-->

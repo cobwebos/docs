@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Service Fabric Reliable Services 配置概述 | Microsoft Azure"
+   pageTitle="Azure Service Fabric Reliable Services 配置概述 | Azure"
    description="了解如何在 Azure Service Fabric 中配置有状态 Reliable Services。"
    services="Service-Fabric"
    documentationCenter=".net"
@@ -9,19 +9,18 @@
 
 <tags
    ms.service="Service-Fabric"
-   ms.date="01/26/2016"
+   ms.date="02/29/2016"
    wacn.date=""/>
 
 # 配置有状态 Reliable Services
 可以通过使用配置包（配置）或服务实现（代码）来修改有状态 Reliable Services 的默认配置。
 
-+ **配置** - 通过为应用程序中每个服务更改 Microsoft Visual Studio 包根目录下的 Config 文件夹中生成的 Settings.xml 文件，可以使用配置包来完成配置。
-+ **代码** - 通过重写 StatefulService.CreateReliableStateManager 并使用 ReliableStateManagerConfiguration 对象和相应的选项集创建 ReliableStateManager，可以使用代码来完成配置。
++ 配置 - 通过为应用程序中每个服务更改 Microsoft Visual Studio 包根目录下的 Config 文件夹中生成的 Settings.xml 文件，可以使用配置包来完成配置。
++ 代码 - 通过重写 StatefulService.CreateReliableStateManager 并使用 ReliableStateManagerConfiguration 对象和相应的选项集创建 ReliableStateManager，可以使用代码来完成配置。
 
 默认情况下，Azure Service Fabric 运行时在 Settings.xml 文件中查找预定义的节名称，并在创建基础运行时组件时使用这些配置值。
 
->[AZURE.NOTE] 请**不要**删除 Visual Studio 解决方案中生成的 Settings.xml 文件中的以下配置的节名称，除非你打算通过代码配置你的服务。
-配置 ReliableStateManager 时，重命名配置包名称或节名称需要进行代码更改。
+>[AZURE.NOTE] 请不要删除 Visual Studio 解决方案中生成的 Settings.xml 文件中的以下配置的节名称，除非你打算通过代码配置你的服务。配置 ReliableStateManager 时，重命名配置包名称或节名称需要进行代码更改。
 
 
 ## 复制器安全配置
@@ -34,8 +33,7 @@ ReplicatorSecurityConfig
 
 
 ## 复制器配置
-复制器配置用于配置通过在本地复制和保持状态，负责使有状态 Reliable Service 的状态高度可靠的复制器。
-默认配置由 Visual Studio 模板生成，并应已足够。本部分介绍了可用于调整复制器的其他配置。
+复制器配置用于配置通过在本地复制和保持状态，负责使有状态 Reliable Service 的状态高度可靠的复制器。默认配置由 Visual Studio 模板生成，并应已足够。本部分介绍了可用于调整复制器的其他配置。
 
 ### 默认节名称
 ReplicatorConfig
@@ -44,13 +42,13 @@ ReplicatorConfig
 
 
 ### 配置名称
-|名称|计价单位|默认值|备注|
+|Name|计价单位|默认值|备注|
 |----|----|-------------|-------|
 |BatchAcknowledgementInterval|秒|0\.05|收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。为在此间隔内处理的操作发送的任何其他确认都作为响应发送。|
 |ReplicatorEndpoint|不适用|无默认值--必选参数|主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。这应该引用服务清单中的 TCP 资源终结点。若要了解有关在服务清单中定义终结点资源的更多信息，请参阅[服务清单资源](/documentation/articles/service-fabric-service-manifest-resources)。 |
 |MaxPrimaryReplicationQueueSize|操作的数量|8192|主要队列中的操作的最大数目。主复制器接收到来自所有辅助复制器的确认之后，将释放一个操作。此值必须大于 64 和 2 的幂。|
 |MaxSecondaryReplicationQueueSize|操作的数量|16384|辅助队列中的操作的最大数目。将在使操作的状态在暂留期间高度可用后释放该操作。此值必须大于 64 和 2 的幂。|
-|CheckpointThresholdInMB|MB|200|创建状态检查点后的日志文件空间量。|
+|CheckpointThresholdInMB|MB|50|创建状态检查点后的日志文件空间量。|
 |MaxRecordSizeInKB|KB|1024|复制器可以在日志中写入的最大记录大小。此值必须是 4 的倍数，且大于 16。|
 |OptimizeLogForLowerDiskUsage|布尔|是|为 true 时会配置日志，以便使用 NTFS 稀疏文件创建副本的专用日志文件。这会降低文件的实际磁盘空间使用率。为 false 时，会使用固定分配创建文件，这可提供最佳写入性能。|
 |MaxRecordSizeInKB|KB|1024|复制器可以在日志中写入的最大记录大小。此值必须是 4 的倍数，且大于 16。|
@@ -95,8 +93,7 @@ protected override IReliableStateManager CreateReliableStateManager()
 
 
 ## 备注
-BatchAcknowledgementInterval 控制复制延迟。“0”值导致可能的最低延迟，但代价是牺牲吞吐量（因为必须发送和处理更多的确认消息，每个包含较少的确认）。
-BatchAcknowledgementInterval 的值越大，整体复制吞吐量就越高，但代价是导致更高的操作延迟。这直接转换为事务提交的延迟。
+BatchAcknowledgementInterval 控制复制延迟。“0”值导致可能的最低延迟，但代价是牺牲吞吐量（因为必须发送和处理更多的确认消息，每个包含较少的确认）。BatchAcknowledgementInterval 的值越大，整体复制吞吐量就越高，但代价是导致更高的操作延迟。这直接转换为事务提交的延迟。
 
 CheckpointThresholdInMB 的值控制复制器可以用于将状态信息存储在副本的专用日志文件中的磁盘空间量。将此值提高到大于默认值可以在将副本添加到集时缩短重新配置的时间。这是因为日志中会提供更多的操作历史记录，从而发生部分状态传输。在崩溃后，这可能会延长副本恢复时间。
 
@@ -106,4 +103,4 @@ MaxRecordSizeInKB 设置用于定义可由复制器写入日志文件的记录�
 
 SharedLogId 和 SharedLogPath 设置始终一起使用，使服务可以使用与节点的默认共享日志不同的共享日志。为获得最佳效率，应让尽可能多的服务指定相同共享日志。共享日志文件应置于仅用于共享日志文件的磁盘上，以便减少磁头运动争用。我们预期此值只在极少数情况下需要更改。
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0418_2016-->

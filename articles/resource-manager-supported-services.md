@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Resource Manager 支持的服务、区域、架构和版本 | Microsoft Azure"
+   pageTitle="资源管理器支持的服务、区域、架构和版本 | Azure"
    description="介绍支持资源管理器的资源提供程序及其架构和可用 API 版本，以及可托管资源的区域。"
    services="azure-resource-manager"
    documentationCenter="na"
@@ -9,18 +9,18 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="01/23/2016"
+   ms.date="03/01/2016"
    wacn.date=""/>
 
 # 资源管理器提供程序、区域、 API 版本和架构
 
-Azure 资源管理器为你提供了一种新的方式来部署和管理构成应用程序的服务。大多数（但并非所有）服务都支持资源管理器，有些服务仅部分支持资源管理器。Microsoft 将为每个服务启用资源管理器，这对于未来的解决方案而言很重要，但在全面提供支持之前，你需要了解每个服务的当前支持状态。本主题提供支持 Azure 资源管理器的资源提供程序列表。
+Azure Resource Manager 为你提供了一种新的方式来部署和管理构成应用程序的服务。大多数（但并非所有）服务都支持资源管理器，有些服务仅部分支持资源管理器。Microsoft 将为每个服务启用资源管理器，这对于未来的解决方案而言很重要，但在全面提供支持之前，你需要了解每个服务的当前支持状态。本主题提供支持 Azure 资源管理器的资源提供程序列表。
 
 部署资源时，你还需要知道哪些区域支持这些资源，以及哪些 API 版本可用于资源。[支持的区域](#supported-regions)部分说明了如何找出哪些区域支持你的订阅和资源。[支持的 API 版本](#supported-api-versions)部分说明了如何判断可以使用哪些 API 版本。
 
 若要查看 Azure 门户和经典门户支持哪些服务，请参阅 [Azure 门户可用性图表](/features/azure-portal/availability/)。若要查看哪些服务支持移动资源，请参阅[将资源移到新的资源组或订阅](/documentation/articles/resource-group-move-resources)。
 
-下表列出哪些服务可通过资源管理器支持部署和管理，哪些则不可以。“快速入门模板”列中的链接向指定资源提供程序的 Azure 快速入门模板存储库发送查询。快速入门模板中经常会添加和更新数据。即使特定的服务存在链接，也并不一定代表查询将从存储库返回模板。
+下表列出哪些服务可通过资源管理器支持部署和管理，哪些则不可以。**“快速入门模板”**列中的链接向指定资源提供程序的 Azure 快速入门模板存储库发送查询。快速入门模板中经常会添加和更新数据。即使特定的服务存在链接，也并不一定代表查询将从存储库返回模板。
 
 
 ## 计算
@@ -37,7 +37,7 @@ Azure 资源管理器为你提供了一种新的方式来部署和管理构成�
 
 虚拟机（经典）是指已通过经典部署模型部署的资源，而不是通过资源管理器部署模型部署的资源。一般而言，这些资源不支持资源管理器操作，但已启用某些操作。有关这些部署模型的详细信息，请参阅[了解资源管理器部署和经典部署](resource-manager-deployment-model.md)。
 
-云服务（经典）与其他经典资源配合使用；但是，经典资源不能充分利用所有的 Resource Manager 功能，并且不太适合用于将来的解决方案。应该考虑将你的应用程序基础结构更改为使用 Microsoft.Compute、Microsoft.Storage 和 Microsoft.Network 命名空间中的资源。
+云服务（经典）与其他经典资源配合使用；但是，经典资源不能充分利用所有的资源管理器功能，并且不太适合用于将来的解决方案。应该考虑将你的应用程序基础结构更改为使用 Microsoft.Compute、Microsoft.Storage 和 Microsoft.Network 命名空间中的资源。
 
 
 ## 联网
@@ -81,7 +81,7 @@ Azure 资源管理器为你提供了一种新的方式来部署和管理构成�
 
 | 服务 | 已启用资源管理器 | REST API | 架构 | 快速入门模板 |
 | ------- | -------  | -------- | ------ | ------ |
-| Data Factory | 是 | [数据工厂 REST](https://msdn.microsoft.com/zh-cn/library/azure/dn906738.aspx) | | [Microsoft.DataFactory](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DataFactory%22&type=Code) |
+| 数据工厂 | 是 | [数据工厂 REST](https://msdn.microsoft.com/zh-cn/library/azure/dn906738.aspx) | | [Microsoft.DataFactory](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.DataFactory%22&type=Code) |
 | 数据湖分析 | 是 | | | |
 | 数据湖存储 | 是 | | | |
 | HDInsights | 是 | [HDInsights REST](https://msdn.microsoft.com/zh-cn/library/azure/mt622197.aspx) | | [Microsoft.HDInsight](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.HDInsight%22&type=Code) |
@@ -95,7 +95,7 @@ Azure 资源管理器为你提供了一种新的方式来部署和管理构成�
 | ------- | ------- | -------- | ------ | ------ |
 | 事件中心 | 是 | [事件中心 REST](https://msdn.microsoft.com/zh-cn/library/azure/dn790674.aspx) | | [Microsoft.EventHub](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.EventHub%22&type=Code) |
 | IoTHubs | 是 | [IoT 中心 REST](https://msdn.microsoft.com/zh-cn/library/azure/mt589014.aspx) | | [Microsoft.Devices](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.Devices%22&type=Code) |
-| 通知中心 | 是 | [Notification Hub REST](https://msdn.microsoft.com/zh-cn/library/azure/dn495827.aspx) | [2015-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-04-01/Microsoft.NotificationHubs.json) | [Microsoft.NotificationHubs](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.NotificationHubs%22&type=Code) |
+| 通知中心 | 是 | [通知中心 REST](https://msdn.microsoft.com/zh-cn/library/azure/dn495827.aspx) | [2015-04-01](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-04-01/Microsoft.NotificationHubs.json) | [Microsoft.NotificationHubs](https://github.com/Azure/azure-quickstart-templates/search?utf8=%E2%9C%93&q=%22Microsoft.NotificationHubs%22&type=Code) |
 
 ## 媒体和 CDN
 
@@ -179,11 +179,34 @@ Azure Active Directory 可以使用 Resource Manager 来为订阅启用基于角
     sites/slots/extensions          {Brazil South, East Asia, East US, Japan East...} {20...
     ...
     
+若要注册资源提供程序，请提供命名空间：
+
+    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ApiManagement
+
 ### Azure CLI
 
-可以使用以下命令将资源提供程序的信息保存到文件。
+以下示例演示如何获取所有可用的资源提供程序。
+
+    azure provider list
+    
+输出结果将会类似于：
+
+    info:    Executing command provider list
+    + Getting ARM registered providers
+    data:    Namespace                        Registered
+    data:    -------------------------------  -------------
+    data:    Microsoft.ApiManagement          Unregistered
+    data:    Microsoft.AppService             Registered
+    data:    Microsoft.Authorization          Registered
+    ...
+
+可以使用以下命令将特定资源提供程序的信息保存到文件。
 
     azure provider show Microsoft.Web -vv --json > c:\temp.json
+
+若要注册资源提供程序，请提供命名空间：
+
+    azure provider register -n Microsoft.ServiceBus
 
 ## 支持的区域
 
@@ -260,7 +283,7 @@ Azure Active Directory 可以使用 Resource Manager 来为订阅启用基于角
 
 ## 后续步骤
 
-- 若要了解如何创建资源管理器模板，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)。
-- 若要了解如何部署资源，请参阅[使用 Azure 资源管理器模板部署应用程序](/documentation/articles/resource-group-template-deploy)。
+- 若要了解如何创建资源管理器模板，请参阅[创作 Azure Resource Manager 模板](/documentation/articles/resource-group-authoring-templates)。
+- 若要了解如何部署资源，请参阅[使用 Azure Resource Manager 模板部署应用程序](/documentation/articles/resource-group-template-deploy)。
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0418_2016-->

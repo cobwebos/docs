@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="11/16/2015" 
+	ms.date="02/16/2016" 
 	wacn.date=""/>
 
 # 如何使用密码管理报告获取 Operational Insights
@@ -168,4 +168,4 @@
 [003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

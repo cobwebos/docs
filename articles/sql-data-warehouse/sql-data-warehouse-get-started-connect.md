@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="02/01/2016"
+   ms.date="03/03/2016"
    wacn.date=""/>
 
 # 使用 Visual Studio 连接到 SQL 数据仓库
@@ -27,11 +27,11 @@
 
 ## 步骤 1：查找完全限定的 Azure SQL 服务器名称
 
-你的数据库与 Azure SQL 服务器相关联。若要连接到你的数据库，需要服务器的完全限定名称 (**servername**.chinacloudapi.cn*)。
+你的数据库与 Azure SQL 服务器相关联。若要连接到你的数据库，需要服务器的完全限定名称 (**servername**.chinacloudapi.cn)。
 
 若要查找完全限定的服务器名称，请执行以下操作。
 
-1. 转到 [Azure 预览门户](https://manage.windowsazure.cn/)。
+1. 转到 [Azure 门户](https://portal.azure.cn)。
 2. 单击“SQL 数据库”，然后单击想要连接的数据库。本示例使用 AdventureWorksDW 示例数据库。
 3. 找到完整的服务器名称。
 
@@ -41,7 +41,7 @@
 
 1. 打开 Visual Studio。
 2. 打开 SQL Server 对象资源管理器。为此，请选择“视图”>“SQL Server 对象资源管理器”。
- 
+
     ![SQL Server 对象资源管理器][2]
 
 3. 单击“添加 SQL Server”图标。
@@ -52,7 +52,7 @@
 
     ![连接到服务器][4]
 
-    - **服务器名称**。输入我们前面找到的*服务器名称*。
+    - **服务器名称**。输入我们前面找到的服务器名称。
     - **身份验证**。选择“SQL Server 身份验证”。
     - **登录名**和**密码**。输入 Azure SQL 数据库的登录名和密码。
     - 单击“连接”。
@@ -66,7 +66,7 @@
 
 现在，我们已连接到服务器，接下来继续编写查询。
 
-1. 在 SQL Server 对象资源管理器中右键单击你的数据库。 
+1. 在 SQL Server 对象资源管理器中右键单击你的数据库。
 
 2. 选择“新建查询”。此时将打开一个新的查询窗口。
 
@@ -90,7 +90,7 @@
 
 既然你可以执行连接和查询，接下来请尝试[使用 PowerBI 可视化数据][]。
 
-[使用 PowerBI 可视化数据]: ./sql-data-warehouse-get-started-visualize-with-power-bi.md
+[使用 PowerBI 可视化数据]: /documentation/articles/sql-data-warehouse-get-started-visualize-with-power-bi
 
 
 <!--Image references-->
@@ -103,4 +103,4 @@
 [6]: ./media/sql-data-warehouse-get-started-connect/new-query2.png
 [7]: ./media/sql-data-warehouse-get-started-connect/run-query.png
 [8]: ./media/sql-data-warehouse-get-started-connect/query-results.png
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0418_2016-->

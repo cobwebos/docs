@@ -1,5 +1,5 @@
 <properties
-   pageTitle="基于 REST 的应用程序生命周期示例 | Microsoft Azure"
+   pageTitle="基于 REST 的应用程序生命周期示例 | Azure"
    description="一个 Microsoft Azure Service Fabric 示例，通过使用 Service Fabric REST 接口来显示应用程序生命周期。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="12/07/2015"
+   ms.date="03/03/2016"
    wacn.date=""/>
 
 # 基于 REST 的应用程序生命周期示例
@@ -36,7 +36,7 @@
 
 ## 先决条件
 
-
+本示例使用 [WordCount 示例](http://aka.ms/servicefabricsamples)（可在“入门”示例中找到）。必须首先生成 WordCount 示例，然后将两个应用程序包复制到映像存储。
 
 |文件夹|说明|
 |------|-----------|
@@ -47,7 +47,7 @@
 
 1. 将 **C:\\ServiceFabricSamples\\Services\\WordCount\\WordCount\\pkg\\Debug** 复制到 **C:\\Temp\\WordCount**。这将创建 WordCount 应用程序包。
 2. 将 C:\\Temp\\WordCount 复制到 **C:\\Temp\\WordCountUpgrade**。这将创建 **WordCountUpgrade 应用程序**包。
-3. 在一个文本编辑器中打开 **C:\\Temp\\WordCountUpgrade\\ApplicationManifest.xml**。
+3. 在文本编辑器中打开 **C:\\Temp\\WordCountUpgrade\\ApplicationManifest.xml**。
 4. 在 **ApplicationManifest** 元素中，将 **ApplicationTypeVersion** 属性改为 **"1.1.0"**。这将更新应用程序的版本号。
 5. 保存更改后的 ApplicationManifest.xml 文件。
 6. 以管理员身份运行以下 PowerShell 脚本，将应用程序复制到映像存储：
@@ -705,4 +705,4 @@ namespace ServiceFabricRestCaller
 
 [Service Fabric 应用程序生命周期](/documentation/articles/service-fabric-application-lifecycle)
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0418_2016-->

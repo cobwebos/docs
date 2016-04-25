@@ -1,7 +1,7 @@
 
 <!--preview portal-->
 <properties
-   pageTitle="从 Azure 门户创建 Service Fabric 群集 | Microsoft Azure"
+   pageTitle="从 Azure 门户创建 Service Fabric 群集 | Azure"
    description="从 Azure 门户创建 Service Fabric 群集。"
    services="service-fabric"
    documentationCenter=".net"
@@ -11,7 +11,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="01/29/2016"
+   ms.date="02/12/2016"
    wacn.date=""/>
 
 
@@ -22,14 +22,13 @@
 
 ## 创建群集
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
 2. 单击“+ 新建”添加新的资源模板。在“全部”下面的“应用商店”中搜索你的模板，该模板名为“Service Fabric 群集”。
 
     a.单击顶层的“应用商店”。
 
-    b.单击“全部”下面的“Fabric”，然后按 Enter。有时自动筛选器无法工作，因此请务必按 Enter。
-    ![在 Azure 门户上搜索 Service Fabric 群集模板的屏幕截图。][SearchforServiceFabricClusterTemplate]
+    b.单击“全部”下面的“Fabric”，然后按 Enter。有时自动筛选器无法工作，因此请务必按 Enter。![在 Azure 门户上搜索 Service Fabric 群集模板的屏幕截图。][SearchforServiceFabricClusterTemplate]
 
 3. 从列表中选择“Service Fabric 群集”。
 
@@ -78,11 +77,11 @@
 
 ## 配置安全性
 
-目前，Service Fabric 只支持通过 X509 证书保护群集。在开始此过程之前，必须先将证书上载到密钥保管库。有关如何执行此操作的详细信息，请参阅 [Service Fabric 群集安全性](service-fabric-cluster-security.md)。
+目前，Service Fabric 只支持通过 X509 证书保护群集。在开始此过程之前，必须先将证书上载到密钥保管库。有关如何执行此操作的详细信息，请参阅 [Service Fabric cluster security（Service Fabric 群集安全性）](/documentation/articles/service-fabric-cluster-security)。
 
 保护群集的选项是可选的，但强烈建议这样做。如果选择不保护群集，请将“安全模式”切换为“无”。
 
-有关安全注意事项和说明的文档，请参阅 [Service Fabric 群集安全性](service-fabric-cluster-security.md)。
+有关安全注意事项和说明的文档，请参阅 [Service Fabric cluster security（Service Fabric 群集安全性）](/documentation/articles/service-fabric-cluster-security)。
 
 ![Azure 门户上安全配置的屏幕截图。][SecurityConfigs]
 
@@ -118,7 +117,9 @@
 3. 现在仪表板将显示群集的详细信息，包括群集的公共 IP 地址。将鼠标光标移到“群集公共 IP 地址”上会显示剪贴板，单击它可以复制该 IP 地址。
   ![仪表板中群集详细信息的屏幕截图。][ClusterDashboard]
 
-  群集仪表板边栏选项卡上的“节点监视器”部分显示运行正常和不正常的 VM 的数目。若要了解有关群集运行状况的详细信息，请参阅 [Service Fabric 运行状况模型简介](service-fabric-health-introduction.md)。
+  群集仪表板边栏选项卡上的“节点监视器”部分显示运行正常和不正常的 VM 的数目。若要了解有关群集运行状况的详细信息，请参阅 [Service Fabric health model introduction（Service Fabric 运行状况模型简介）](/documentation/articles/service-fabric-health-introduction)。
+
+>[AZURE.NOTE] Service Fabric 群集需要有一定数量的节点可随时启动，以保持可用性和状态 - 称为“维持仲裁”。因此，除非你已事先执行[状态的完整备份](/documentation/articles/service-fabric-reliable-services-backup-restore)，否则关闭群集中的所有计算机通常是不安全的做法。
 
 ## 连接到群集并部署应用程序
 
@@ -189,11 +190,16 @@
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
+## 通过 RDP 访问虚拟机缩放集 (VMSS) 实例或群集节点 
+
+每次在群集中指定 NodeTypes，都会设置 VMSS。有关详细信息，请参阅 [How to RDP into your VMSS instance（如何通过 RDP 访问 VMSS 实例）](/documentation/articles/service-fabric-cluster-nodetypes)。
+
 ## 后续步骤
 
-- [在 Visual Studio 中管理 Service Fabric 应用程序](service-fabric-manage-application-in-visual-studio.md)
-- [Service Fabric 群集安全性](service-fabric-cluster-security.md)
-- [Service Fabric 运行状况模型简介](service-fabric-health-introduction.md)
+- [在 Visual Studio 中管理 Service Fabric 应用程序](/documentation/articles/service-fabric-manage-application-in-visual-studio)
+- [Service Fabric 群集安全性](/documentation/articles/service-fabric-cluster-security)
+- [Service Fabric 运行状况模型简介](/documentation/articles/service-fabric-health-introduction)
+- [如何通过 RDP 访问 VMSS 实例](/documentation/articles/service-fabric-cluster-nodetypes)
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png
@@ -207,4 +213,4 @@
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0418_2016-->

@@ -28,7 +28,7 @@
 
 ### 哪些服务可以与 VNet 共同使用？
 
-VNet 可以与各种不同的 Azure 服务共同使用，例如云服务 (PaaS)、虚拟机和网站。但是，有几个 VNet 不支持的服务。请检查你想要使用的特定服务，并验证是否兼容。
+VNet 可以与各种不同的 Azure 服务共同使用，例如云服务 (PaaS)、虚拟机和 Web Apps。但是，有几个 VNet 不支持的服务。请检查你想要使用的特定服务，并验证是否兼容。
 
 ### 没有跨界连接的情况下是否可以使用 VNet？
 
@@ -40,9 +40,11 @@ VNet 可以与各种不同的 Azure 服务共同使用，例如云服务 (PaaS)�
 
 可以使用以下工具创建或配置虚拟网络：
 
-- 可以使用管理门户。请参阅[如何管理虚拟网络 (VNet) 属性](/documentation/articles/virtual-networks-settings)。
+- Azure 管理门户。
 
-- 可以使用网络配置文件 (netcfg)。请参阅[使用网络配置文件配置虚拟网络](/documentation/articles/virtual-networks-using-network-configuration-file)。
+- 网络配置文件 (netcfg)。请参阅[使用网络配置文件配置虚拟网络](/documentation/articles/virtual-networks-using-network-configuration-file)。
+- PowerShell。
+- Azure CLI。 
 
 ### 在我的 VNet 中可以使用哪些地址范围？
 
@@ -118,13 +120,13 @@ Azure 会保留每个子网中的某些 IP 地址。子网的第一个和最后�
 
 ### 是否可以将 VNet 连接到 Azure 中的另一个 VNet？
 
-是的。可以使用 REST API 或 Windows PowerShell 创建 VNet 到 VNet 通信。请参阅[配置 VNet 到 VNet 连接](/documentation/articles/virtual-networks-configure-vnet-to-vnet-connection)。
+是的。可以使用 REST API 或 Windows PowerShell 创建 VNet 到 VNet 通信。
 
 ## 名称解析 (DNS)
 
 ### VNet 的 DNS 选项有哪些？
 
-使用[VM 和角色实例的名称解析](/documentation/articles/virtual-networks-name-resolution-for-vms-and-role-instances)页的决策表，引导你浏览提供的所有 DNS 选项。
+使用[“VM 和角色实例的名称解析”](/documentation/articles/virtual-networks-name-resolution-for-vms-and-role-instances)页的决策表，引导你浏览提供的所有 DNS 选项。
 
 ### 是否可以为 VNet 指定 DNS 服务器？
 
@@ -173,7 +175,7 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。在此服�
 
 - **内部 IP 地址 -** 如果将 VM 部署到 VNet，该 VM 从您指定的内部 IP 地址池接收内部 IP 地址。VM 使用内部 IP 地址在 VNet 内进行通信。虽然 Azure 分配动态内部 IP 地址，但你可以为你的 VM 请求静态地址。若要了解有关静态内部 IP 地址的详细信息，请访问[如何设置静态内部 IP](/documentation/articles/virtual-networks-reserved-private-ip)。
 
-- **VIP -** 你的 VM 还与 VIP 相关联，不过永远不会将 VIP 直接分配到 该 VM。VIP 是可以分配到云服务的公共 IP 地址。还可以为云服务保留 VIP。请参阅[保留的公用 IP](/documentation/articles/virtual-networks-reserved-public-ip)。
+- **VIP -** 你的 VM 还与 VIP 相关联，不过永远不会将 VIP 直接分配到 该 VM。VIP 是可以分配到云服务的公共 IP 地址。还可以为云服务保留 VIP。
 
 - **ILPIP -** 还可以配置实例层级公共 IP 地址 (ILPIP)。ILPIP 是直接与 VM 相关联，而非云服务。若要了解有关 ILPIP 的详细信息，请访问[实例层级公共 IP 概述](/documentation/articles/virtual-networks-instance-level-public-ip)。
 
@@ -217,10 +219,6 @@ Azure 提供的 DNS 是由 Microsoft 提供的多租户 DNS 服务。在此服�
 
 只能在 VNet 中使用计算服务。计算服务仅限于云服务（Web 和辅助角色）和 VM。
 
-- [将 VNet 集成和混合连接用于网站](http://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)
-
-- [将网站与 Azure 虚拟网络集成](/documentation/articles/web-sites-integrate-with-vnet)
-
 ### 是否可以在 VNet 中部署云服务与 Web 和辅助角色 (PaaS)？
 
 是的。可以在 VNet 中部署 PaaS 服务。
@@ -257,4 +255,4 @@ VNet 相互之间以及与 Azure 基础结构中托管的其他服务之间完�
 
 是的。PowerShell 和命令行工具可用于各种平台。可在[此处](https://msdn.microsoft.com/zh-cn/library/azure/jj152841.aspx)找到更多信息。
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0418_2016-->

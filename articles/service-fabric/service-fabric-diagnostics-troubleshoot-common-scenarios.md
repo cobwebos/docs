@@ -1,6 +1,6 @@
 <properties
-   pageTitle="排查常见问题 | Microsoft Azure"
-   description="在 Microsoft Azure Service Fabric 上部署服务时遇到的最常见问题。"
+   pageTitle="排查常见问题 | Azure"
+   description="在 Azure Service Fabric 上部署服务时遇到的最常见问题。"
    services="service-fabric"
    documentationCenter=".net"
    authors="mattrowmsft"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="11/10/2015"
+   ms.date="02/12/2016"
    wacn.date=""/>
 
 
@@ -42,4 +42,4 @@
 * [Reliable Actors 诊断](/documentation/articles/service-fabric-reliable-actors-diagnostics)
 * [Reliable Services 诊断](/documentation/articles/service-fabric-reliable-services-diagnostics)
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0418_2016-->

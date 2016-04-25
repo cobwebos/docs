@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Reliable Service 备份和还原 | Microsoft Azure"
+   pageTitle="Reliable Services 备份和还原 | Azure"
    description="Service Fabric Reliable Service 备份和还原的概念文档"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="01/25/2016"
+   ms.date="03/03/2016"
    wacn.date=""/>
 
 # 备份和还原 Reliable Services
@@ -18,7 +18,7 @@ Azure Service Fabric 是一个高可用性平台，用于复制多个节点中�
 
 例如，在以下情况下，服务可能要备份数据：
 
-* 永久失去运行指定分区的整个 Service Fabric 群集或所有节点。例如，当状态不是异地复制的，整个群集位于一个数据中心中，并且整个数据中心出现故障时可能发生此种情况。
+* 永久失去运行指定分区的整个 Service Fabric 群集或所有节点。
 
 * 状态被意外删除或受损而引起管理错误。例如，当具有足够权限的管理员错误地删除了服务时可能发生此情况。
 
@@ -154,4 +154,4 @@ protected override async Task<bool> OnDataLossAsync(CancellationToken cancellati
 
 **RestoreAsync** 首先删除调用它的主副本中的所有现有状态。之后，可靠性状态管理器创建备份文件夹中存在的所有可靠对象。接下来，指示可靠对象从备份文件夹中的它们的检查点还原。最后，可靠性状态管理器从备份文件夹中的日志记录中恢复其自己的状态，并执行恢复。作为恢复过程的一部分，将对可靠对象重播从“起始点”开始的操作，该起始点已提交备份文件夹中的日志记录。此步骤可以确保恢复的状态是一致的。
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0418_2016-->

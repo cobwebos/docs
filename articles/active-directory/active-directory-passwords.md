@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="什么是 Azure AD 密码管理 | Microsoft Azure"
+	pageTitle="Azure AD 密码重置 | Microsoft Azure"
 	description="介绍 Azure AD 中的密码管理功能，包括密码重置、更改、密码管理报告，以及将密码写回到本地 Active Directory。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -9,13 +9,13 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="11/16/2015" 
+	ms.date="02/16/2016" 
 	wacn.date=""/>
 
-# 从任意位置管理密码
+
 # 用户和管理员的 Azure AD 密码重置
 
-  >[AZURE.IMPORTANT]你是因为想要重置 Azure 或 O365 密码而来到这里吗？ 如果是这样，请[跳到此部分](#users-how-to-manage-your-own-password)。
+  >[AZURE.IMPORTANT] 你是因为想要重置 Azure 或 O365 密码而来到这里吗？ 如果是这样，请[跳到此部分](#users-how-to-manage-your-own-password)。
   
 利用自助服务降低成本和节省人力，一直以来都是世界各地 IT 部门追求的主要目标。事实上，市场中充斥着各种产品，让你能够从云或本地管理本地组、密码或用户配置文件。独树一帜的 Azure AD 提供一些现今市场上最容易使用且最强大的自助服务功能。
 
@@ -58,7 +58,7 @@
 
 - **自助密码更改**：可让最终用户或管理员就可以更改过期的或未过期的密码，而无需请求管理员或帮助台提供支持。
 - **自助密码重置**：最终用户或管理员可以自行重置密码，而无需请求管理员或帮助台提供支持。自助密码重置功能需要 Azure AD 高级或基本版。有关详细信息，请参阅“Azure Active Directory 版本”。
-- **管理员启动的密码重置**：管理员可以通过 [Azure 管理门户](https://manage.windowsazure.cn)重置某个最终用户的或其他管理员的密码。
+- **管理员启动的密码重置**：管理员可以通过 [Azure 管理门户](https://manage.windowsazure.com)重置某个最终用户的或其他管理员的密码。
 - **密码管理活动报告**：管理员可以深入了解发生在其组织中的密码重置和注册活动。 
 - **密码写回**：从云管理本地密码，因此，所有上述方案都可以由经过联合身份验证的或密码同步的用户本人或其代表来执行。密码写回功能需要 Azure AD Premium。有关详细信息，请参阅“Azure AD Premium 入门”。
 
@@ -248,4 +248,4 @@ Azure AD 密码重置根据用户使用的订阅提供 3 个级别：
 * [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何快速排查服务的问题
 * [**了解更多**](active-directory-passwords-learn-more.md) - 深入探索服务工作原理的技术细节
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

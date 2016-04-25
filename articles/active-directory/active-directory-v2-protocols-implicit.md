@@ -1,6 +1,6 @@
 <properties
-	pageTitle="应用程序模型 v2.0 隐式流 | Microsoft Azure"
-	description="使用单页面应用隐式流的 Azure AD 实现构建 Web 应用程序。"
+	pageTitle="Azure AD v2.0 隐式流 | Microsoft Azure"
+	description="使用单页面应用隐式流的 Azure AD v2.0 实现构建 Web 应用程序。"
 	services="active-directory"
 	documentationCenter=""
 	authors="dstrockis"
@@ -10,14 +10,14 @@
 <tags
 	ms.service="active-directory"
 
-	ms.date="01/11/2016"
+	ms.date="02/20/2016"
 	wacn.date=""/>
 
 # v2.0 协议 - 使用隐式流的 SPA
 使用 v2.0 终结点，你可以让具有 Microsoft 的个人和工作/学校帐户的用户登录单一页面应用。主要在浏览器上运行的单一页面和其他 JavaScript 应用程序在身份验证时面临一些有趣的挑战：
 
 - 这些应用程序的安全特征与传统的基于服务器的 Web 应用程序大不相同。
-- 由于各种安全原因，许多授权服务器与标识提供者不支持 CORS 请求。
+- 许多授权服务器与标识提供者不支持 CORS 请求。
 - 重定向离开应用程序的完整网页浏览器变得对用户经验特别有侵略性。
 
 对于这些应用程序（AngularJS、Ember.js、React.js 等），Azure AD 支持 OAuth 2.0 隐式授权流。有关隐式流的说明，请参阅 [OAuth 2.0 规范](http://tools.ietf.org/html/rfc6749#section-4.2)。其主要优点是它可让应用程序从 Azure AD 获取令牌，无需要执行后端服务器凭据交换。这可让应用登录用户、维护会话，并获取客户端 JavaScript 代码中所有其他 Web API 的令牌。使用隐式流时有几个重要的安全注意事项 - 特别是关于[客户端](http://tools.ietf.org/html/rfc6749#section-10.3)和[用户模拟](http://tools.ietf.org/html/rfc6749#section-10.3)。
@@ -27,19 +27,39 @@
 但是，如果你不想要使用单一页面应用程序中的库，而是自行发送协议消息，请遵循下面的常规步骤。
 
 > [AZURE.NOTE]
-	此信息适用于 2.0 版应用模型的公共预览版。有关如何集成通常可用的 Azure AD 服务的说明，请参阅 [Azure Active Directory 开发人员指南](/documentation/articles/active-directory-developers-guide)。
+	v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
+    
+## 协议图
+整个隐式登录流如下所示 - 下面将详细描述每个步骤。
+
+![OpenId Connect Swimlanes](../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
 ## 发送登录请求
 
 若要一开始将用户登录应用程序，可以发送 [OpenID Connect](/documentation/articles/active-directory-v2-protocols-oidc) 授权请求，以及从 v2.0 终结点获取 `id_token`：
 
 ```
+// Line breaks for legibility only
+
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&response_type=id_token+token
+&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+&scope=openid%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&response_mode=fragment
+&state=12345
+&nonce=678910
+```
+
+> [AZURE.TIP] 请尝试将以下请求粘贴到浏览器中！
+
+```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token+token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910
 ```
-> [AZURE.TIP] 请尝试将此请求粘贴到浏览器中！
 
 | 参数 | | 说明 |
 | ----------------------- | ------------------------------- | --------------- |
+| tenant | 必填 | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。允许的值为 `common`、`organizations`、`consumers` 和租户标识符。有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | client\_id | 必填 | 注册门户 ([apps.dev.microsoft.com](https://apps.dev.microsoft.com)) 分配给应用的应用程序 ID。 |
 | response\_type | 必填 | 必须包含 OpenID Connect 登录的 `id_token`。也可以包含 response\_type `token`。此处使用 `token`，让 app 能够立即从授权终结点接收访问令牌，而无需要向授权终结点发出第二次请求。如果使用 `token` response\_type，`scope` 参数必须包含范围，以指出要对哪个资源发出令牌。 |
 | redirect\_uri | 建议 | 应用程序的 redirect\_uri，应用程序可在此发送及接收身份验证响应。其必须完全符合在门户中注册的其中一个 redirect\_uris，否则必须是编码的 url。 |
@@ -56,6 +76,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de7
 用户经过身份验证并同意后，v2.0 终结点将使用 `response_mode` 参数中指定的方法，将响应返回到位于指定所在 `redirect_uri` 的应用程序。
 
 #### 成功的响应
+
 使用 `response_mode=fragment` 和 `response_type=id_token+token` 的成功响应如下所示（包含换行符以方便阅读）：
 
 ```
@@ -76,7 +97,6 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | 作用域 | 如果 `response_type` 包含 `token` 则加入。表示 access\_token 的有效范围。 |
 | id\_token | 应用程序请求的 id\_token。可以使用 id\_token 验证用户的标识，并以用户身份开始会话。有关 Id\_token 及其内容的详细信息，请参阅 [v2.0 终结点令牌参考](active-directory-v2-tokens.md)。 |
 | state | 如果请求中包含状态参数，响应中就应该出现相同的值。应用程序应该验证请求和响应中的状态值是否完全相同。 |
-| id\_token\_expires\_in | id 令牌的有效期（以秒为单位）。 |
 
 
 #### 错误响应
@@ -111,18 +131,33 @@ error=access_denied
 
 ## 获取访问令牌
 
-将用户注册到单一页面应用后，接下来可以获取访问令牌以调用受到 Azure AD 保护的 Web API，例如 [Microsoft Graph](https://graph.microsoft.io)。在正常的 OpenID Connect/OAuth 流中，可以通过对 v2.0 `/token` 终结点进行请求来实现此目的。但是，v2.0 终结点不支持 CORS 请求，因此进行 AJAX 调用以获取和刷新令牌是不可能的。相反，你可以在隐藏的 iframe 中使用隐式流，以获取其他 Web API 的新令牌：
+将用户注册到单一页面应用后，接下来可以获取访问令牌以调用受到 Azure AD 保护的 Web API，例如 [Microsoft Graph](https://graph.microsoft.io)。即使你已使用 `token` response\_type 收到令牌，也仍可以使用此方法获取其他资源的令牌，而无需再次将用户重定向到登录页。
 
 在正常的 OpenID Connect/OAuth 流中，可以通过对 v2.0 `/token` 终结点进行请求来实现此目的。但是，v2.0 终结点不支持 CORS 请求，因此进行 AJAX 调用以获取和刷新令牌是不可能的。相反，你可以在隐藏的 iframe 中使用隐式流，以获取其他 Web API 的新令牌：
+
+```
+// Line breaks for legibility only
+
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&response_type=token
+&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment
+&state=12345&nonce=678910
+&prompt=none
+&domain_hint=organizations
+&login_hint=myuser@mycompany.com
+```
+
+> [AZURE.TIP] 请尝试将以下请求粘贴到浏览器中！（如果希望成功，请先修改 domain\_hint 和 login\_hint 值）
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&domain_hint=organizations&login_hint=myuser@mycompany.com
 ```
 
-> [AZURE.TIP] 请尝试将此请求粘贴到浏览器中！（如果希望成功，请先修改 domain\_hint 和 login\_hint 值）
-
 | 参数 | | 说明 |
 | ----------------------- | ------------------------------- | --------------- |
+| tenant | 必填 | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。允许的值为 `common`、`organizations`、`consumers` 和租户标识符。有关详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | client\_id | 必填 | 注册门户 ([apps.dev.microsoft.com](https://apps.dev.microsoft.com)) 分配给应用的应用程序 ID。 |
 | response\_type | 必填 | 必须包含 OpenID Connect 登录的 `id_token`。还可以包含其他 response\_types，例如 `code`。 |
 | redirect\_uri | 建议 | 应用程序的 redirect\_uri，应用程序可在此发送及接收身份验证响应。其必须完全符合在门户中注册的其中一个 redirect\_uris，否则必须是编码的 url。 |
@@ -179,7 +214,8 @@ error=user_authentication_required
 
 ## 发送注销请求
 
-v2.0 应用程序模型预览版目前不支持 OpenIdConnect `end_session_endpoint`。这意味着应用程序无法向 v2.0 终结点发送请求，因而无法结束用户会话并清除 v2.0 终结点设置的 Cookie。若要将用户注销，应用只需结束自身的用户会话，并完整地将用户会话留给 v2.0 终结点即可。下次用户尝试登录时，将看到列出其活动登录帐户的“选择帐户”页面。在该页面上，用户可以选择注销任一帐户，结束 v2.0 终结点的会话。
+v2.0 终结点目前不支持 OpenIdConnect `end_session_endpoint`。这意味着应用程序无法向 v2.0 终结点发送请求，因而无法结束用户会话并清除 v2.0 终结点设置的 Cookie。
+若要将用户注销，应用只需结束自身的用户会话，并完整地将用户会话留给 v2.0 终结点即可。下次用户尝试登录时，将看到列出其活动登录帐户的“选择帐户”页面。在该页面上，用户可以选择注销任一帐户，结束 v2.0 终结点的会话。
 
 <!--
 
@@ -198,4 +234,4 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 -->
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0418_2016-->

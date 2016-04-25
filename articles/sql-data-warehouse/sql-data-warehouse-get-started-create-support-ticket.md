@@ -1,16 +1,16 @@
 <properties
-    pageTitle="创建 SQL 数据仓库的支持票证 | Microsoft Azure"
-    description="如何在 SQL 数据仓库中创建支持票证。"
-    services="sql-data-warehouse"
-    documentationCenter="NA"
-    authors="sahaj08"
-    manager="barbkess"
-    editor=""/>
+   pageTitle="创建 SQL 数据仓库的支持票证 | Azure"
+   description="如何在 SQL 数据仓库中创建支持票证。"
+   services="sql-data-warehouse"
+   documentationCenter="NA"
+   authors="sahaj08"
+   manager="barbkess"
+   editor=""/>
 
 <tags
-    ms.service="sql-data-warehouse"
-    ms.date="10/20/2015"
-    wacn.date=""/>
+   ms.service="sql-data-warehouse"
+   ms.date="03/03/2016"
+   wacn.date=""/>
 
 # 创建 SQL 数据仓库的支持票证
  本文说明如何创建 SQL 数据仓库的支持票证。
@@ -18,7 +18,7 @@
 
 ## 如何创建支持票证
 
-1. 打开 [Azure 门户][]。 
+1. 打开 [Azure 门户][]。
 2. 在“主页”屏幕上，单击“帮助 + 支持”磁贴。
 
     ![帮助 + 支持](./media/sql-data-warehouse-get-started-create-support-ticket/help-support.png)
@@ -74,10 +74,10 @@
 
 <!-- External links -->
 
-[Azure 门户]: https://manage.windowsazure.cn
+[Azure 门户]: https://portal.azure.cn/
 [Azure 支持计划]: http://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
 [Microsoft Premier 在线门户]: https://premier.microsoft.com/
 [堆栈溢出]: http://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL 数据仓库 MSDN 论坛]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0418_2016-->

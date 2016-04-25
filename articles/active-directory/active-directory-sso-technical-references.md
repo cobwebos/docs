@@ -88,4 +88,4 @@
 | 概述 | [访问面板简介](/documentation/articles/active-directory-saas-access-panel-introduction) |
 | 操作说明 | [Azure Active Directory 访问面板 - EMS](http://blogs.msdn.com/b/haddy_el-haggan_blog/archive/2015/04/02/azure-active-directory-access-panel-ems.aspx)<br><br>[与 Azure Active Directory 集成](/documentation/articles/active-directory-how-to-integrate) |
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

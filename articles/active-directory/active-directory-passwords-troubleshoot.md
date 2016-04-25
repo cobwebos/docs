@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="11/16/2015" 
+	ms.date="02/16/2016" 
 	wacn.date=""/>
 
 # 如何排查密码管理问题
@@ -24,7 +24,7 @@
   - [密码写回事件日志错误代码](#password-writeback-event-log-error-codes)
   - [密码写回连接的问题](#troubleshoot-password-writeback-connectivity)
 
-如果你已尝试过以下故障排除步骤，但仍遇到问题，请将问题发布到 [Azure AD 论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=windowsazurezhchs)，或者与支持人员联系，我们将尽快解答你的问题。
+如果你已尝试过以下故障排除步骤，但仍遇到问题，请将问题发布到 [Azure AD 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)，或者与支持人员联系，我们将尽快解答你的问题。
 
 ## 你需要帮助时应包含的信息
 
@@ -368,11 +368,11 @@
               <p>我们实施了一种自动扼制机制来阻止用户在短时间内过多地尝试重置其密码。此错误发生在以下情况下：</p>
               <ol class="ordered">
                 <li>
-										用户在一小时内 5 次尝试验证某个电话号码。<br\><br\></li>
+										用户在一小时内 5 次尝试验证某个电话号码。&lt;br>&lt;br></li>
                 <li>
-										用户在一小时内 5 次尝试使用安全问题入口。<br\><br\></li>
+										用户在一小时内 5 次尝试使用安全问题入口。&lt;br>&lt;br></li>
                 <li>
-										用户在一小时内 5 次尝试为同一用户帐户重置密码。<br\><br\></li>
+										用户在一小时内 5 次尝试为同一用户帐户重置密码。&lt;br>&lt;br></li>
               </ol>
               <p>若要解决此问题，请指示用户自最后一次尝试后等待 24 小时，然后用户将能够重置其密码。</p>
             </td>
@@ -553,11 +553,11 @@
               <p>这是 Azure AD Connect 的已发行版本中的一个已知 bug，在以下情况下会出现：</p>
               <ol class="ordered">
                 <li>
-										你使用凭据为租户 abc.com（已验证的域）配置 Azure AD Connect。这将导致创建名为 "abc.com - AAD" 的 AAD 连接器。<br\><br\></li>
+										你使用凭据为租户 abc.com（已验证的域）配置 Azure AD Connect。这将导致创建名为 "abc.com - AAD" 的 AAD 连接器。&lt;br>&lt;br></li>
                 <li>
-										然后，你将连接器的 AAD 凭据（使用旧的同步 UI）更改为 （注意，它是同一租户但不同的域名）。<br\><br\></li>
+										然后，你将连接器的 AAD 凭据（使用旧的同步 UI）更改为 （注意，它是同一租户但不同的域名）。&lt;br>&lt;br></li>
                 <li>
-										现在，你尝试启用/禁用密码写回。向导将使用凭据将连接器的名称构造为“abc.onmicrosoft.com - AAD”并将其传递给密码写回 cmdlet。此操作将会失败，因为没有使用此名称创建的连接器。<br\><br\></li>
+										现在，你尝试启用/禁用密码写回。向导将使用凭据将连接器的名称构造为“abc.onmicrosoft.com - AAD”并将其传递给密码写回 cmdlet。此操作将会失败，因为没有使用此名称创建的连接器。&lt;br>&lt;br></li>
               </ol>
               <p>此问题在我们的最新内部版本中已修复。如果你具有较早的内部版本，一个解决方法是使用 powershell cmdlet 来启用/禁用该功能。有关如何执行此操作的详细信息，请参阅<a href="/documentation/articles/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords">如何启用/禁用密码写回</a>中的“步骤 2：在 Directory Sync 计算机上启用密码写回并配置防火墙规则”。</p>
             </td>
@@ -1412,6 +1412,7 @@
             </td>
           </tr>
         </tbody></table>
+		
 ## 排查密码写回连接问题
 
 如果遇到 Azure AD Sync 密码写回组件的服务中断，可以使用以下快速步骤来解决此问题：
@@ -1496,4 +1497,4 @@
 
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

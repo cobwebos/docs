@@ -1,6 +1,6 @@
 <properties
-   pageTitle="在 Windows Server 和 Linux 上使用 Azure Service Fabric 随地部署 | Microsoft Azure"
-   description="Service Fabric 群集会在 Windows Server 和 Linux 上运行，这意味着你将能够在可以运行 Windows Server 和 Linux 的任何位置部署和承载 Service Fabric 应用程序。"
+   pageTitle="在 Windows Server 和 Linux 上使用 Azure Service Fabric 随地部署 | Azure"
+   description="Service Fabric 群集会在 Windows Server 或 Linux 上运行，这意味着你将能够在可以运行 Windows Server 和 Linux 的任何位置部署和承载 Service Fabric 应用程序。"
    services="service-fabric"
    documentationCenter=".net"
    authors="kunalds"
@@ -9,11 +9,11 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="11/19/2015"
+   ms.date="02/10/2016"
    wacn.date=""/>
 
 # 使用 Service Fabric 在 Windows Server 和 Linux 上进行“随地部署”
-随着添加了“随地部署”，Azure Service Fabric 允许在运行 Windows Server 或 Linux 的任何 VM 或计算机上创建 Service Fabric 群集。这意味着你能够在具有一组相互连接的 Windows Server 或 Linux 计算机的任何环境（无论是本地环境还是云提供商所提供的）中部署和运行 Service Fabric 应用程序。
+随着添加了“随地部署”，Azure Service Fabric 允许在运行 Windows Server 或 Linux 的任何 VM 或计算机上创建 Service Fabric 群集。这意味着你能够在具有一组相互连接的 Windows Server 或 Linux 计算机的任何环境（无论是本地环境还是任何云提供商所提供的）中部署和运行 Service Fabric 应用程序。
 
  Service Fabric 提供了一个安装程序包以供你创建 Service Fabric 群集。随地部署功能的一个主要优点是在使用 Service Fabric 构建应用程序时不存在供应商锁定，因为是由你选择这些应用程序的运行位置。此功能还会使你有更大的潜能实现更广泛的客户群，因为客户对于想要在其中运行你的应用程序的环境可能具有不同的要求。例如，医疗保健和金融行业中的客户的需求可能与汽车或旅行行业中的客户不同。
 
@@ -21,6 +21,7 @@
 
 ## 支持的操作系统
 你将能够在运行以下这些操作系统的 VM 或计算机上创建群集：
+* Windows Server 2012
 * Windows Server 2012 R2
 * Windows Server 2016
 * Linux
@@ -31,7 +32,7 @@
 * Java
 
 ## 群集创建和配置
-Service Fabric 会提供安装程序包，可从 Microsoft 下载中心进行下载。下载了此包之后，你便需要对配置文件进行更改，以指定群集的设置。编辑了群集设置之后，你会运行安装程序脚本，该脚本会创建跨群集设置中指定的计算机的群集。
+Service Fabric 提供可以下载的设置包。下载了此包之后，你便需要对配置文件进行更改，以指定群集的设置。编辑了群集设置之后，你会运行安装程序脚本，该脚本会创建跨群集设置中指定的计算机的群集。
 
 我们在 2016 年第 1 季度发布此功能的预览时，会共享安装过程的确切详细信息。
 
@@ -51,7 +52,8 @@ Service Fabric 会提供安装程序包，可从 Microsoft 下载中心进行下
 
 * **Azure 门户：**Azure 门户使群集易于创建和管理。
 * **Azure Resource Manager：**使用 Azure Resource Manager 可以单元的形式方便地管理群集使用的所有资源，并简化了成本跟踪和计费。
+* **Azure 资源：**Service Fabric 群集是一种 ARM 资源，你可以像在 Azure 中处理其他 ARM 资源一样为它建模。
 * **诊断：**在 Azure 中，我们提供与 Azure 诊断和操作见解的集成。
 * **自动缩放：**对于 Azure 上的群集，我们提供内置自动缩放功能。在使用随地部署功能的其他环境中，你必须构建自己的自动缩放功能或使用 Service Fabric 为缩放群集而公开的 API 来手动缩放。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0418_2016-->

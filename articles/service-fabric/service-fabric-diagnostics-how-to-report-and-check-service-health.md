@@ -1,5 +1,5 @@
 <properties
-   pageTitle="使用 Azure Service Fabric 报告和检查运行状况 | Microsoft Azure"
+   pageTitle="使用 Azure Service Fabric 报告和检查运行状况 | Azure"
    description="了解如何通过服务代码发送运行状况报告，并使用 Azure Service Fabric 提供的运行状况监视工具来检查服务的运行状况。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="11/05/2015"
+   ms.date="02/12/2016"
    wacn.date=""/>
 
 
@@ -19,7 +19,7 @@
 本文将通过一个示例指导你完成将运行状况报告添加到服务的过程，并说明如何使用 Service Fabric 提供的工具来检查运行状况。本文旨在快速介绍 Service Fabric 中的运行状况监视功能。有关更多详细信息，可以从本文末尾的链接开始，阅读一系列有关运行状况的深入文章。
 
 ## 先决条件
-必须安装以下软件：
+必须已安装以下软件：
    * Visual Studio 2015
    * Service Fabric SDK
 
@@ -42,8 +42,7 @@
 
   ![Service Fabric 资源管理器中运行状况正常的应用程序](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/sfx-healthy-app.png)
 
-6. 也可以使用 PowerShell 来检查运行状况。可以使用 ```Get-ServiceFabricApplicationHealth``` 来检查应用程序的运行状况，使用 ```Get-ServiceFabricServiceHealth``` 来检查服务运行状况。PowerShell 中针对同一应用程序的运行状况报告如下所示。
-![PowerShell 中运行状况正常的应用程序](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
+6. 也可以使用 PowerShell 来检查运行状况。可以使用 ```Get-ServiceFabricApplicationHealth``` 来检查应用程序的运行状况，使用 ```Get-ServiceFabricServiceHealth``` 来检查服务运行状况。PowerShell 中针对同一应用程序的运行状况报告如下所示。![PowerShell 中运行状况正常的应用程序](./media/service-fabric-diagnostics-how-to-report-and-check-service-health/ps-healthy-app-report.png)
 
 ## 将自定义运行状况事件添加到服务代码
 Service Fabric Visual Studio 项目模板包含示例代码。以下步骤说明如何从服务代码报告自定义运行状况事件。此类报告会自动显示在 Service Fabric 提供的标准运行状况监视工具中，例如 Service Fabric 资源管理器、Azure 门户运行状况视图以及 PowerShell。
@@ -61,7 +60,7 @@ Service Fabric Visual Studio 项目模板包含示例代码。以下步骤说明
     using System.Fabric;
     ```
 
-4. 接下来，查找 *RunAsync* 方法中的调用 `myDictionary.TryGetValueAsync`。你可以看到，这会返回保存当前计数器值的 `result`，因为此应用程序中的关键逻辑是使计数保持运行。如果这是一个实际的应用程序，并且缺少结果即意味着失败，那么，你可以在运行状况管理器中报告该状况。
+4. 接下来，查找 RunAsync 方法中的调用 `myDictionary.TryGetValueAsync`。你可以看到，这会返回保存当前计数器值的 `result`，因为此应用程序中的关键逻辑是使计数保持运行。如果这是一个实际的应用程序，并且缺少结果即意味着失败，那么，你可以在运行状况管理器中报告该状况。
 5. 若要报告代表失败的缺少结果运行状况事件，请在 `myDictionary.TryGetValueAsync` 调用后面添加以下代码。我们将以 `StatefulServiceReplicaHealthReport` 的形式报告该事件，因为这是有状态服务报告的事件。传入报告事件的 PartitionId 和 ReplicaId 可帮助你在某个运行状况监视工具中查看此报告时识别此报告的源。由于部署的有状态服务可能存在多个分区，而每个分区又可能有多个副本，因此这些参数非常重要。`HealthInformation` 参数存储所要报告的运行状况问题的相关信息。请将此命名空间添加到 **Stateful1.cs** 文件。
 
     ```csharp
@@ -109,4 +108,4 @@ Service Fabric Visual Studio 项目模板包含示例代码。以下步骤说明
 ## 后续步骤
 [深入了解 Service Fabric 运行状况](/documentation/articles/service-fabric-health-introduction)
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0418_2016-->

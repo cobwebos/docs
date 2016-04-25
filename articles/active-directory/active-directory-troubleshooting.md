@@ -51,4 +51,4 @@
 
 ![屏幕截图：Active Directory 不可用](./media/active-directory-troubleshooting/not-available.png)
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

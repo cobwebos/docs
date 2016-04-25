@@ -131,4 +131,4 @@
 - [使用 Azure 门户管理资源](/documentation/articles/resource-group-portal)
 - [使用标记来组织资源](/documentation/articles/resource-group-using-tags)
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0418_2016-->

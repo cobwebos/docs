@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="12/01/2015"
+	ms.date="01/05/2016"
 	wacn.date=""/>
 
 # Azure 订阅与 Azure Active Directory 的关联方式
@@ -31,7 +31,7 @@ Microsoft 运行的使用者标识系统 | Microsoft 运行的企业标识系统
 例如，下面这个具有 Microsoft 帐户的用户想要登录 Azure 管理门户。
 
 > [AZURE.NOTE]
-> 若要登录到 Azure 管理门户，msmith@hotmail.com 必须拥有 Azure 订阅。该帐户必须是服务管理员，或者订阅的协同管理员。
+若要登录到 Azure 管理门户，msmith@hotmail.com 必须拥有 Azure 订阅。该帐户必须是服务管理员，或者订阅的协同管理员。
 
 ![][1]
 
@@ -85,7 +85,7 @@ Azure AD 提供一组不同的管理角色，用于管理目录和标识相关�
 
 ![][3]
 
-你有两个同名的用户帐户，一个在 Azure AD 中，而另一个在 Microsoft 使用者帐户系统中。应该选取与要使用的 Azure 订阅关联的帐户。如果出现错误，指明此用户不存在订阅，则可能是你选择了错误的选项。请注销后重试。有关可能会阻止登录的错误的详细信息，请参阅[在管理门户中排查“我们找不到任何与你的帐户关联的订阅”错误](https://social.msdn.microsoft.com/Forums/en-US/f952f398-f700-41a1-8729-be49599dd7e2/troubleshooting-we-were-unable-to-find-any-subscriptions-associated-with-your-account-errors-in?forum=windowsazuremanagement)。
+你有两个同名的用户帐户，一个在 Azure AD 中，而另一个在 Microsoft 使用者帐户系统中。应该选取与要使用的 Azure 订阅关联的帐户。如果出现错误，指明此用户不存在订阅，则可能是你选择了错误的选项。请注销后重试。有关可能会阻止登录的错误的详细信息，请参阅[在管理门户中排查“我们找不到任何与你的帐户关联的订阅”错误](https://social.msdn.microsoft.com/Forums/zh-cn/f952f398-f700-41a1-8729-be49599dd7e2/troubleshooting-we-were-unable-to-find-any-subscriptions-associated-with-your-account-errors-in?forum=windowsazuremanagement)。
 
 ## 在 Azure 中管理 Office 365 订阅的目录
 
@@ -102,12 +102,12 @@ Azure AD 提供一组不同的管理角色，用于管理目录和标识相关�
 若要在管理门户中管理这两个目录，请完成以下步骤。
 
 > [AZURE.NOTE]
-> 只有当用户使用 Microsoft 帐户登录时才能完成这些步骤。如果用户是使用工作或学校帐户登录的，则“使用现有目录”选项不可用，因为工作或学校帐户只能通过其主目录（也就是存储着工作或学校帐户的目录，该目录归工作单位或学校拥有）进行身份验证。
+只有当用户使用 Microsoft 帐户登录时才能完成这些步骤。如果用户是使用工作或学校帐户登录的，则“使用现有目录”选项不可用，因为工作或学校帐户只能通过其主目录（也就是存储着工作或学校帐户的目录，该目录归工作单位或学校拥有）进行身份验证。
 
 1. 使用你的 Microsoft 帐户登录到管理门户。
 2. 单击“新建”>“应用程序服务”>“Active Directory”>“目录”>“自定义创建”。
 3. 单击“使用现有目录”并选中“已准备好立即注销”，然后单击复选标记以完成操作。
-4. 使用作为工作或学校目录全局管理员的帐户登录到管理门户。
+4. 使用对工作或学校目录具有全局管理员权限的帐户登录到 Azure 经典门户。
 5. 当系统提示“是否要将 Contoso 目录用于 Azure?”时，单击“继续”。
 6. 单击“立即注销”。
 7. 使用你的 Microsoft 帐户重新登录到管理门户。这两个目录将显示在“Active Directory”扩展中。
@@ -122,4 +122,5 @@ Azure AD 提供一组不同的管理角色，用于管理目录和标识相关�
 [2]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_OrgAccountSubscription.png
 [3]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_SignInDisambiguation.PNG
 
-<!---HONumber=Mooncake_0118_2016-->
+
+<!---HONumber=Mooncake_0418_2016-->

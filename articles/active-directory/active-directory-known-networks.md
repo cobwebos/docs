@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="09/03/2015" 
+	ms.date="02/18/2016" 
 	wacn.date=""/>
 
 # 已知网络
@@ -17,7 +17,7 @@
 
 你可以使用 Azure Active Directory 的访问和使用情况报告来监控你所在组织的目录的完整性和安全性。使用此信息，目录管理员可以更好地确定哪里可能存在安全风险，以便制定相应的计划来降低风险。
 
-“*从多个地理区域登录*”和“*从具有可疑活动的 IP 地址登录*”可能会错误地报告你组织实际拥有的标志 IP 地址。
+“从多个地理区域登录”和“从具有可疑活动的 IP 地址登录”可能会错误地报告你组织实际拥有的标志 IP 地址。
 
 例如，在以下情况时可能会发生这种问题：
 
@@ -52,4 +52,4 @@
 * [从具有可疑活动的 IP 地址登录](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity)
 * [来自多个地理区域的登录](active-directory-reporting-sign-ins-from-multiple-geographies)
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0418_2016-->

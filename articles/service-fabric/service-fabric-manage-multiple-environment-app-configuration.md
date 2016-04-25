@@ -1,5 +1,5 @@
 <properties
-   pageTitle="在 Service Fabric 中管理多个环境 | Microsoft Azure"
+   pageTitle="在 Service Fabric 中管理多个环境 | Azure"
    description="Service Fabric 应用程序可以在规模为一台计算机到数千台计算机的群集上运行。在某些情况下，你需要以不同的方式针对各种环境配置你的应用程序。本文介绍如何为每个环境定义不同的应用程序参数。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="11/25/2015"
+   ms.date="03/08/2016"
    wacn.date=""/>
 
 # 管理多个环境的应用程序参数
@@ -118,11 +118,11 @@ Service Fabric 应用程序项目可以包含一个或多个应用程序参数�
 
 ## 后续步骤
 
-若要深入了解本主题中所述的某些核心概念，请参阅 [Service Fabric 技术概述](windowsazure.comservice-fabric-technical-overview)。有关 Visual Studio 中其他可用应用程序管理功能的信息，请参阅[在 Visual Studio 中管理 Service Fabric 应用程序](windowsazure.comservice-fabric-manage-application-in-visual-studio)。
+若要深入了解本主题中所述的某些核心概念，请参阅 [Service Fabric 技术概述](/documentation/articles/service-fabric-technical-overview)。有关 Visual Studio 中其他可用应用管理功能的信息，请参阅[在 Visual Studio 中管理 Service Fabric 应用程序](/documentation/articles/service-fabric-manage-application-in-visual-studio)。
 
 <!-- Image references -->
 
 [publishdialog]: ./media/service-fabric-manage-multiple-environment-app-configuration/publish-dialog-choose-app-config.png
 [app-parameters-solution-explorer]: ./media/service-fabric-manage-multiple-environment-app-configuration/app-parameters-in-solution-explorer.png
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0418_2016-->

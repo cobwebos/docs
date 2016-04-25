@@ -120,4 +120,4 @@ Azure AD 提供预先集成的报告和监控功能，使你能够知道谁有�
 
 若要开始将应用程序与 Azure AD 集成，请参阅[将 Azure Active Directory 与应用程序集成入门指南](active-directory-integrating-applications-getting-started.md)。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0418_2016-->

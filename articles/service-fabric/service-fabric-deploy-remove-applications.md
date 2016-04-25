@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric 应用程序部署 | Microsoft Azure"
+   pageTitle="Service Fabric 应用程序部署 | Azure"
    description="如何在 Service Fabric 中部署和删除应用程序"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="12/10/2015"
+   ms.date="03/08/2016"
    wacn.date=""/>
 
 # 部署应用程序
@@ -26,7 +26,7 @@
 
 上载应用程序包会将其放在一个可由内部 Service Fabric 组件访问的位置。你可以使用 PowerShell 执行上载。在运行本文中的任何 PowerShell 命令之前，请始终先使用 **Connect-ServiceFabricCluster** 连接到 Service Fabric 群集。
 
-假设你有一个名为 *MyApplicationType* 的文件夹，其中包含必要的应用程序清单、服务清单以及代码/配置/数据包。**Copy-ServiceFabricApplicationPackage** 命令会上载包。例如：
+假设你有一个名为 MyApplicationType 的文件夹，其中包含必要的应用程序清单、服务清单以及代码/配置/数据包。**Copy-ServiceFabricApplicationPackage** 命令会上载包。例如：
 
 ~~~
 PS D:\temp> dir
@@ -55,7 +55,7 @@ D:\TEMP\MYAPPLICATIONTYPE
     └───MyData
             init.dat
 
-PS D:\temp> Copy-ServiceFabricApplicationPackage MyApplicationType
+PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath MyApplicationType -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest))
 Copy application package succeeded
 
 PS D:\temp>
@@ -84,7 +84,7 @@ PS D:\temp>
 
 ## 创建应用程序
 
-可以使用已通过 **New-ServiceFabricApplication** 命令成功注册的任何应用程序类型版本来实例化应用程序。每个应用程序的名称必须以 *fabric:* 方案开头，并且对每个应用程序实例是唯一的。如果目标应用程序类型的应用程序清单中定义有任何默认服务，则此时将还创建那些服务。
+可以使用已通过 **New-ServiceFabricApplication** 命令成功注册的任何应用程序类型版本来实例化应用程序。每个应用程序的名称必须以 fabric: 方案开头，并且对每个应用程序实例是唯一的。如果目标应用程序类型的应用程序清单中定义有任何默认服务，则此时将还创建那些服务。
 
 ~~~
 PS D:\temp> New-ServiceFabricApplication fabric:/MyApp MyApplicationType AppManifestVersion1
@@ -222,4 +222,4 @@ PS D:\temp>
 [11]: /documentation/articles/service-fabric-application-upgrade
  
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0418_2016-->

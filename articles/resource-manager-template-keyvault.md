@@ -1,6 +1,6 @@
 <properties
-   pageTitle="密钥保管库的 Resource Manager 模板 | Microsoft Azure"
-   description="介绍用于通过模板部署密钥保管库的 Resource Manager 架构。"
+   pageTitle="密钥保管库的资源管理器模板 | Azure"
+   description="介绍用于通过模板部署密钥保管库的资源管理器架构。"
    services="azure-resource-manager,key-vault"
    documentationCenter="na"
    authors="tfitzmac"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="01/04/2016"
+   ms.date="02/23/2016"
    wacn.date=""/>
 
 # 密钥保管库模板架构
@@ -61,7 +61,7 @@
 | name | 字符串 | 是 | | 要创建的密钥保管库的名称。该名称必须在全 Azure 中唯一。请考虑在你的命名约定中使用 [uniqueString](/documentation/articles/resource-group-template-functions#uniquestring) 函数，如下面的示例所示。 |
 | location | 字符串 | 是 | 若要确定有效的区域，请参阅[支持的区域](/documentation/articles/resource-manager-supported-services#supported-regions)。 | 托管密钥保管库的区域。 |
 | properties | 对象 | 是 | （[如下所示](#properties)） | 一个对象，用于指定要创建的密钥保管库的类型。 |
-| resources | 数组 | 否 | [密钥保管库机密](/documentation/articles/resource-manager-template-keyvault-secret) | 密钥保管库的子资源。 |
+| 资源 | 数组 | 否 | [密钥保管库机密](/documentation/articles/resource-manager-template-keyvault-secret) | 密钥保管库的子资源。 |
 
 <a id="properties" />
 ### 属性对象
@@ -69,7 +69,7 @@
 | 名称 | 类型 | 必选 | 允许的值 | 说明 |
 | ---- | ---- | -------- | ---------------- | ----------- |
 | enabledForDeployment | 布尔值 | 否 | **true** 或 **false** | 指定是否已为虚拟机或 Service Fabric 部署启用了保管库。 |
-| enabledForTemplateDeployment | 布尔值 | 否 | **true** 或 **false** | 指定是否在 Resource Manager 模板部署中启用了保管库。有关详细信息，请参阅[在部署期间传递安全值](/documentation/articles/resource-manager-keyvault-parameter) |
+| enabledForTemplateDeployment | 布尔值 | 否 | **true** 或 **false** | 指定是否在资源管理器模板部署中启用了保管库。有关详细信息，请参阅[在部署期间传递安全值](/documentation/articles/resource-manager-keyvault-parameter) |
 | enabledForVolumeEncryption | 布尔值 | 否 | **true** 或 **false** | 指定是否为卷加密启用了保管库。 |
 | tenantId | 字符串 | 是 | 全局唯一标识符 | 订阅的租户标识符。可以使用 **Get-AzureRMSubscription** PowerShell cmdlet 检索该值。 |
 | accessPolicies | 数组 | 是 | （[如下所示](#accesspolicies)） | 最多包含 16 个对象的数组，指定用户或服务主体的权限。 |
@@ -82,14 +82,14 @@
 | ---- | ---- | -------- | ---------------- | ----------- |
 | tenantId | 字符串 | 是 | 全局唯一标识符 | 包含此访问策略中 **objectId** 的 Azure Active Directory 租户的租户标识符 |
 | objectId | 字符串 | 是 | 全局唯一标识符 | 将有权访问保管库的 AAD 用户或服务主体的对象标识符。可以通过 **Get-AzureRMADUser** 或 **Get-AzureRMADServicePrincipal** cmdlet 检索该值。 |
-| permissions | 对象 | 是 | （[如下所示](#permissions)） | 向 Active Directory 对象授予的对此保管库的权限。 |
+| 权限 | 对象 | 是 | （[如下所示](#permissions)） | 向 Active Directory 对象授予的对此保管库的权限。 |
 
 <a id="permissions" />
 ### properties.accessPolicies.permissions 对象
 
 | 名称 | 类型 | 必选 | 允许的值 | 说明 |
 | ---- | ---- | -------- | ---------------- | ----------- |
-| keys | 数组 | 是 | 以下值的逗号分隔列表：<br />**all**<br />**backup**<br />**create**<br />**decrypt**<br />**delete**<br />**encrypt**<br />**get**<br />**import**<br />**list**<br />**restore**<br />**sign**<br />**unwrapkey**<br/>**update**<br />**verify**<br />**wrapkey** | 向此 Active Directory 对象授予的，对此保管库中密钥的权限。必须将此值指定为允许值的数组。 |
+| 密钥 | 数组 | 是 | 以下值的逗号分隔列表：<br />**all**<br />**backup**<br />**create**<br />**decrypt**<br />**delete**<br />**encrypt**<br />**get**<br />**import**<br />**list**<br />**restore**<br />**sign**<br />**unwrapkey**<br/>**update**<br />**verify**<br />**wrapkey** | 向此 Active Directory 对象授予的，对此保管库中密钥的权限。必须将此值指定为允许值的数组。 |
 | secrets | 数组 | 是 | 以下值的逗号分隔列表：<br />**all**<br />**delete**<br />**get**<br />**list**<br />**set** | 向此 Active Directory 对象授予的，对此保管库中机密的权限。必须将此值指定为允许值的数组。 |
 
 <a id="sku" />
@@ -219,7 +219,6 @@
                 "type": "secrets",
                 "name": "[parameters('secretName')]",
                 "apiVersion": "2015-06-01",
-                "tags": { "displayName": "secret" },
                 "properties": {
                     "value": "[parameters('secretValue')]"
                 },
@@ -242,4 +241,5 @@
 - 有关密钥保管库的一般信息，请参阅 [Azure 密钥保管库入门](/documentation/articles/key-vault-get-started)。
 - 有关在部署模板时引用密钥保管库机密的示例，请参阅[在部署期间传递安全值](/documentation/articles/resource-manager-keyvault-parameter)。
 
-<!---HONumber=Mooncake_0307_2016-->
+
+<!---HONumber=Mooncake_0418_2016-->

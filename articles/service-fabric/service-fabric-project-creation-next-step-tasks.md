@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric 项目创建后续步骤 | Microsoft Azure"
+   pageTitle="Service Fabric 项目创建后续步骤 | Azure"
    description="本文包含针对 Service Fabric 执行的一组核心开发任务的链接"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="12/06/2015"
+   ms.date="03/08/2016"
    wacn.date=""/>
 
 # Service Fabric 应用程序和后续步骤
@@ -27,9 +27,9 @@
 
 - 两个应用程序参数文件（本地和云），可用于维护环境特定的应用程序配置，例如，要为服务创建的分区数目。
 
-- 部署脚本，可用于从命令行部署应用程序，或者通过自动持续集成管道部署应用程序。
+- 可使用部署脚本从命令行部署应用程序，或者通过自动持续集成和部署管道来部署应用程序。
 
-- 用于描述应用程序的应用程序清单。
+- 用于描述应用程序的应用程序清单。可以在 ApplicationPackageRoot 文件夹下查找清单。
 
 ### Reliable Services
 当你添加新的可靠服务时，Visual Studio 会将一个服务项目添加到你的解决方案。该服务项目中包含从 `StatelessService` 或 `StatefulService`（具体取决于所选的类型）扩展的类。
@@ -44,7 +44,7 @@
 ### ASP.NET 5
 在 Service Fabric 应用程序中使用的 ASP.NET 5 模板与针对独立创建的 ASP.NET 5 项目提供的模板几乎完全相同。唯一的差别是：
 
-- 项目包含一个 **PackageRoot** 文件夹，用于存储 ServiceManifest 文件及数据和配置包。
+- 项目包含一个 PackageRoot 文件夹，用于存储 ServiceManifest 文件及数据和配置包。
 
 - 项目引用另一个 NuGet 包 (Microsoft.ServiceFabric.AspNet.Hosting)，该包充当 .NET 执行环境 (DNX) 与 Service Fabric 之间的桥梁。
 
@@ -82,4 +82,4 @@ Service Fabric 支持单独对应用程序中的独立服务进行版本控制�
 [reliable-services-webapi]: /documentation/articles/service-fabric-reliable-services-communication-webapi
 [app-upgrade-tutorial]: /documentation/articles/service-fabric-application-upgrade-tutorial
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0418_2016-->

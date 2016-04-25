@@ -9,7 +9,7 @@
 
  <tags
   ms.service="active-directory"
-  ms.date="12/08/2015"
+  ms.date="02/09/2016"
   wacn.date=""/>
 
 
@@ -40,9 +40,9 @@
 使用 Azure AD 可将 Salesforce 等应用程序预先配置为支持单一登录 (SSO) 和自动化预配。配置应用程序后，管理员可以执行一次性的操作来创建和分配相应的组。在本示例中，管理员可以执行以下分配：
 
 - 可以定义基于属性的组，以自动代表营销和销售团队的所有成员使用部门或角色之类的属性：
-    - 营销组的所有成员都被分配到 Salesforce 中的“营销”角色。
-    - 销售组的所有成员都被分配到 Salesforce 中的“销售”角色。进一步细分可以使用代表分配到不同 Salesforce 角色的区域销售团队的多个组。
-- 若要启用例外机制，可为每个角色创建自助组。例如，可以将“Salesforce 营销例外”组创建为自助组。该组可以分配到 Salesforce 营销角色，而营销领导团队可成为所有者。营销领导团队的成员可以添加或删除用户、设置加入策略甚至批准或拒绝单个用户的加入请求。信息工作者只需有相应的经验，而无需经过专门的所有者或成员培训就能做到这一点。
+    - 为营销组的所有成员分配 Salesforce 中的“营销”角色
+    - 为销售组的所有成员分配 Salesforce 中的“销售”角色。进一步细化可以使用代表分配有不同 Salesforce 角色的区域销售团队的多个组。
+- 若要启用例外机制，可为每个角色创建自助组。例如，可以将“Salesforce 营销例外”组创建为自助服务组。可以为该组分配 Salesforce 营销角色，而营销领导团队可成为所有者。营销领导团队的成员可以添加或删除用户、设置加入策略甚至批准或拒绝单个用户的加入请求。信息工作者只需有相应的经验，而无需经过专门的所有者或成员培训就能做到这一点。
 
 在此情况下，所有分配的用户将自动预配到 Salesforce，因为当他们添加到不同组时，他们的角色分配会在 Salesforce 中更新。用户可以通过 Microsoft 应用程序访问面板、Office Web 客户端甚至通过浏览到其组织的 Salesforce 登录页来发现和访问 Salesforce。管理员可以使用 Azure AD 报告轻松查看使用情况和分配状态。
 
@@ -64,7 +64,8 @@
 
 ## 可以从何处了解详细信息？
 
+- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 - [使用条件性访问保护应用](active-directory-conditional-access.md)
 - [自助组管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

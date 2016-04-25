@@ -232,8 +232,7 @@
 
 ## 使用门户进行部署
 
-你猜会怎样？ 通过 [Azure 门户](https://manage.windowsazure.cn)创建的每个应用程序均受 Azure Resource Manager 模板支持！ 只需通过门户创建虚拟机、虚拟网络、存储帐户、应用程序服务或数据库，就能享用 Azure 资源管理器的优势，且不用额外地增加工作量。 
-只需选择“新建”图标，你便可开始通过 Azure 资源管理器部署应用程序。
+你猜会怎样？ 通过 [Azure 门户](https://manage.windowsazure.cn)创建的每个应用程序均受 Azure Resource Manager 模板支持！ 只需通过门户创建虚拟机、虚拟网络、存储帐户、应用程序服务或数据库，就能享用 Azure 资源管理器的优势，且不用额外地增加工作量。只需选择“新建”图标，你便可开始通过 Azure 资源管理器部署应用程序。
 
 ![新建](./media/resource-group-template-deploy/new.png)
 
@@ -270,8 +269,7 @@
 
 参数文件的大小不能超过 64 KB。
 
-有关如何在模板中定义参数，请参阅 [Authoring templates（创作模板](../resource-group-authoring-templates/#parameters)）。
-有关用于传递安全值的 KeyVault 引用的详细信息，请参阅 [Pass secure values during deployment（在部署期间传递安全值）](/documentation/articles/resource-manager-keyvault-parameter)
+有关如何在模板中定义参数，请参阅 [Authoring templates（创作模板）](../resource-group-authoring-templates/#parameters)。有关用于传递安全值的 KeyVault 引用的详细信息，请参阅 [Pass secure values during deployment（在部署期间传递安全值）](/documentation/articles/resource-manager-keyvault-parameter)
 
 ## 后续步骤
 - 有关通过 .NET 客户端库部署资源的示例，请参阅[使用 .NET 库和模板部署资源](/documentation/articles/arm-template-deployment)
@@ -282,4 +280,4 @@
 
  
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0418_2016-->

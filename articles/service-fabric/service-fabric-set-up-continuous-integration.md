@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric 的持续集成 | Microsoft Azure"
+   pageTitle="Service Fabric 的持续集成 | Azure"
    description="大致了解如何使用 Visual Studio Team Services (VSTS) 为 Service Fabric 应用程序设置持续集成。"
    services="service-fabric"
    documentationCenter="na"
@@ -8,7 +8,7 @@
    editor="" />
 <tags
    ms.service="multiple"
-   ms.date="01/27/2015"
+   ms.date="01/27/2016"
    wacn.date="" />
 
 # 使用 Visual Studio Team Services (VSTS) 为 Service Fabric 应用程序设置持续集成
@@ -130,11 +130,27 @@
 
 如果你已经配置计算机（或打算提供你自己的计算机），请在所选计算机上安装 [Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)。
 
+如果还没有计算机，可以使用预安装的 Visual Studio 2015 快速设置 Azure 虚拟机 (VM)。为此，请按以下步骤操作：
 
+1. 登录到 [Azure 门户](https://portal.azure.cn)。
+
+2. 选择屏幕左上角的“新建”命令。
+
+3. 选择“应用商店”。
+
+4. 搜索 “Visual Studio 2015”。
+
+5. 选择“计算”>“虚拟机”>“从库中”。
+
+6. 选择映像 “Visual Studio Enterprise 2015 Update 1 With Azure SDK 2.8 on Windows Server 2012 R2”。
+
+    >[AZURE.NOTE] Azure SDK 不是必需组件，但是当前没有任何可用的且仅安装有 Visual Studio 2015 的映像。
+
+7.	按照对话框中的说明创建 VM。
 
 ### 安装 Service Fabric SDK
 
-在你的计算机上安装 [Service Fabric SDK](/home/features/service-fabric)。
+在计算机上安装 [Service Fabric SDK](/home/features/service-fabric)。
 
 ### 安装 Azure PowerShell
 
@@ -142,9 +158,9 @@
 
 ### 使用本地服务帐户注册 Azure PowerShell 模块
 
->[AZURE.NOTE] 在启动生成代理之前执行此操作，否则它不会接受新的环境变量。
+>[AZURE.NOTE] 在启动生成代理*之前*执行此操作，否则它不会接受新的环境变量。
 
-1. 按下 Win + R，然后键入 **regedit** 并按 Enter。
+1. 按下 Win + R，然后键入 “regedit” 并按 Enter。
 
 2. 右键单击节点 `HKEY_Users\.Default\Environment`，然后选择“新建”>“可扩展字符串值”。
 
@@ -167,7 +183,7 @@
 
     a.打开 Windows 控制面板。右键单击“开始”按钮并选择“控制面板”。
 
-    b.搜索**证书**。
+    b.搜索“证书”。
 
     c.选择“管理工具”>“管理计算机证书”。
 
@@ -195,25 +211,25 @@
 
     c.从控制面板中选择“代理池”选项卡。
 
-    d.选择“下载代理”以下载 agent.zip 文件。
+    d.选择“下载代理”下载 agent.zip 文件。
 
     e.将 agent.zip 复制到先前创建的生成计算机。
 
     f.将 agent.zip 解压缩到生成计算机上的 `C:\agent`（或任何具有短路径的位置）。
 
-    >[AZURE.NOTE] 如果你打算构建 ASP.NET 5 Web 服务，建议为此文件夹选择可能的最短名称，以免在部署期间遇到 **PathTooLongExceptions** 错误。
+        >[AZURE.NOTE] If you plan on building ASP.NET 5 Web Services, it's recommended that you  choose the shortest name possible for this folder to avoid running into **PathTooLongExceptions** errors during deployment.
 
 2.	在管理员命令提示符下，运行 `C:\agent\ConfigureAgent.cmd`。该脚本会提示你输入以下参数：
 
 |参数|值|
 |---|---|
-|代理名称|接受默认值，`Agent-[machine name]`。|
-|TFS Url|将 URL 输入到你的团队项目，如 `https://[your-VSTS-account-name].visualstudio.com`。|
+|代理名称|接受默认值 `Agent-[machine name]`。|
+|TFS Url|输入团队项目的 URL，如 `https://[your-VSTS-account-name].visualstudio.com`。|
 |代理池|输入代理池的名称。（如果尚未创建代理池，则接受默认值。）|
 |工作文件夹|接受默认值。生成代理将在此文件夹中实际生成你的应用程序。注意：如果你打算构建 ASP.NET 5 Web 服务，建议为此文件夹选择可能的最短名称，以免在部署期间遇到 PathTooLongExceptions 错误。|
-|安装为 Windows 服务？|默认值是 N。请将值更改为 **Y**。|
-|用于运行服务的用户帐户|接受默认值，`NT AUTHORITY\LocalService`。|
-|是否取消配置现有代理？|接受默认值，**N**。|
+|安装为 Windows 服务？|默认值是 N。将该值更改为 **Y**。|
+|用于运行服务的用户帐户|接受默认值 `NT AUTHORITY\LocalService`。|
+|是否取消配置现有代理？|接受默认值 **N**。|
 
 3.  系统将提示你输入凭据。输入有权访问你的团队项目的 Microsoft 帐户的凭据。
 
@@ -234,7 +250,7 @@
 
 ### 将持续集成脚本添加到应用程序的源代码管理
 
-1.	将 [ServiceFabricContinuousIntegrationScripts.zip](https://gallery.technet.microsoft.com/Set-up-continuous-f8b251f6) 解压缩到到你的计算机上的任何文件夹。将 `Powershell\Automation` 的内容复制到源代码管理中的任何文件夹。
+1.	将 [ServiceFabricContinuousIntegrationScripts.zip](https://gallery.technet.microsoft.com/Set-up-continuous-f8b251f6) 解压缩到你计算机上的任何文件夹。将 `Powershell\Automation` 的内容复制到源代码管理器中的任何文件夹。
 
 2.	签入生成的文件。
 
@@ -272,20 +288,20 @@
 |ServiceFabricClusterLocation|与密钥保管库的位置匹配的任何名称。|||
 |ServiceFabricClusterAdminPassword|所需的任意名称。|X||
 |ServiceFabricClusterResourceGroupTemplateFilePath|`<path/to/extracted/automation/scripts/ArmTemplate-Full-3xVM-Secure.json>`|||
-|ServiceFabricPublishProfilePath|`<path/to/your/publish/profiles/MyPublishProfile.xml>`注意：将忽略发布配置文件中的连接终结点。改为使用临时群集的连接终结点。|||
+|ServiceFabricPublishProfilePath|`<path/to/your/publish/profiles/MyPublishProfile.xml>`，注意：将忽略发布配置文件中的连接终结点。改为使用临时群集的连接终结点。|||
 |ServiceFabricDeploymentScriptPath|`<path/to/Deploy-FabricApplication.ps1>`|||
-|ServiceFabricApplicationProjectPath|`<path/to/your/fabric/application/project/folder>` 它应是包含 .sfproj 文件的文件夹。||||
+|ServiceFabricApplicationProjectPath|`<path/to/your/fabric/application/project/folder>`，它应是包含 .sfproj 文件的文件夹。||||
 
 3.  保存生成定义并为其命名。（稍后可根据需要更改此名称。）
 
 ### 添加“生成”步骤。
-@<Author GitHub alias> – 请检查对你的文章的复制编辑，解决我在注释中输入的任何问题，并让我了解我是否在任何位置更改了技术含义。
+@<Author GitHub alias> – 请检查对你的文章的复制编辑，解决我在注释中输入的任何问题，并让我知道我是否在任何位置更改了技术含义。
 
 1.	在“生成”选项卡上，选择“添加生成步骤...”命令。
 
 2.	选择“生成”>“MSBuild”。
 
-3.	选择生成步骤的名称旁边的铅笔图标，并将其重命名为“生成”。
+3.	选择生成步骤名称旁边的铅笔图标，并将其重命名为“生成”。
 
 4.	选择“解决方案”字段旁边的“...”按钮，然后选择你的 .sln 文件。
 
@@ -303,7 +319,7 @@
 
 2.	选择“生成”>“MSBuild”。
 
-3.	选择生成步骤的名称旁边的铅笔图标并将其重命名为“包”。
+3.	选择生成步骤名称旁边的铅笔图标并将其重命名为“包”。
 
 4.	选择“解决方案”字段旁边的“…”按钮，并选择应用程序项目的 .sfproj 文件。
 
@@ -311,7 +327,7 @@
 
 6.	输入 `$(BuildConfiguration)` 作为“配置”。
 
-7.	输入 `/t:Package`作为“MSBuild 参数”。
+7.	输入 `/t:Package` 作为“MSBuild 参数”。
 
 8.	清除“还原 NuGet 包”复选框（如果尚未清除）。
 
@@ -325,7 +341,7 @@
 
 2.	选择“实用程序”>“PowerShell”。
 
-3.	选择生成步骤的名称旁边的铅笔图标并将其重命名为“删除群集资源组”。
+3.	选择生成步骤名称旁边的铅笔图标并将其重命名为“删除群集资源组”。
 
 4.	选择“脚本文件名”旁边的“...”命令。导航到你解压缩自动化脚本的位置，然后选择“Remove-ClusterResourceGroup.ps1”。
 
@@ -339,7 +355,7 @@
 
 2.	选择“实用程序”>“PowerShell”。
 
-3.	选择生成步骤的名称旁边的铅笔图标并将其重命名为“设置并部署到安全群集”。
+3.	选择生成步骤名称旁边的铅笔图标并将其重命名为“设置并部署到安全群集”。
 
 4.	选择“脚本文件名”旁边的“...”按钮。导航到你解压缩自动化脚本的位置，然后选择“ProvisionAndDeploy-SecureCluster.ps1”。
 
@@ -357,7 +373,7 @@
 
 2.	选择“实用程序”>“PowerShell”。
 
-3.	选择生成步骤的名称旁边的铅笔图标并将其重命名为“删除群集资源组”。
+3.	选择生成步骤名称旁边的铅笔图标并将其重命名为“删除群集资源组”。
 
 4.	选择“脚本文件名”旁边的“...”按钮。导航到你解压缩自动化脚本的位置，然后选择“RemoveClusterResourceGroup.ps1”。
 
@@ -380,7 +396,7 @@
 
 2.	按照[这些说明](/documentation/articles/service-fabric-visualstudio-configure-upgrade)配置发布配置文件，以支持应用程序升级。
 
-3.	将“设置并部署到安全群集”步骤替换为直接调用 Deploy-FabricApplication.ps1（并将其传递给你的发布配置文件）的步骤。
+3.	将“设置并部署到安全群集”步骤替换为直接调用 Deploy-FabricApplication.ps1（并将其传递到发布配置文件）的步骤。
 
 4.	从你的生成定义中删除两个“删除群集资源组”生成步骤。
 
@@ -392,4 +408,4 @@
 - [部署生成代理](https://msdn.microsoft.com/zh-cn/Library/vs/alm/Build/agents/windows)
 - [创建和配置生成定义](https://msdn.microsoft.com/zh-cn/Library/vs/alm/Build/vs/define-build)
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0418_2016-->

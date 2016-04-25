@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="11/16/2015" 
+	ms.date="02/16/2016" 
 	wacn.date=""/>
 
 # 部署密码管理并向用户培训其用法
@@ -94,7 +94,7 @@
 
   ![][003]
 
-单击“立即验证”可将用户带到**密码重置注册门户**（网址为 [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)）并要求他们注册。单击**取消**按钮或关闭窗口可撤消采用此方法进行的注册，但如果用户未注册，则在每次登录时，系统都会提醒用户。
+单击“立即验证”可将用户带到**密码重置注册门户**（网址为 [http://aka.ms/ssprsetup）](http://aka.ms/ssprsetup)并要求他们注册。单击**取消**按钮或关闭窗口可撤消采用此方法进行的注册，但如果用户未注册，则在每次登录时，系统都会提醒用户。
 
   ![][004]
 
@@ -149,4 +149,4 @@
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-best-practices/007.jpg "Image_007.jpg"
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

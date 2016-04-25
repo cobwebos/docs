@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用资源管理器执行审核操作 | Microsoft Azure" 
+	pageTitle="使用资源管理器执行审核操作 | Azure" 
 	description="使用资源管理器中的审核日志查看用户操作和错误。显示 PowerShell、Azure CLI 和 REST。" 
 	services="azure-resource-manager" 
 	documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="azure-resource-manager" 
-	ms.date="10/27/2015" 
+	ms.date="12/02/2015" 
 	wacn.date=""/>
 
 # 使用资源管理器执行审核操作
@@ -29,7 +29,7 @@
 
 [AZURE.INCLUDE [powershell-preview-inline-include](../includes/powershell-preview-inline-include.md)]
 
-若要检索日志条目，请运行 **Get-AzureRmLog** 命令（如果 PowerShell 版本低于 1.0 预览版，则运行 **Get-AzureResourceGroupLog**）。你可以提供附加参数来筛选条目列表。
+若要检索日志条目，请运行 **Get-AzureRmLog** 命令（如果 PowerShell 版本低于 1.0，则运行 **Get-AzureResourceGroupLog**）。你可以提供附加参数来筛选条目列表。
 
 以下示例演示了如何使用审核日志来调查在解决方案生存期内执行的操作。你可以查看此操作的发生时间以及请求者。开始日期和结束日期以日期格式指定。
 
@@ -140,9 +140,9 @@
 
 可用于处理审核日志的 REST 操作属于 [Insights REST API](https://msdn.microsoft.com/zh-cn/library/azure/dn931943.aspx)。若要检索审核日志事件，请参阅[列出订阅中的管理事件](https://msdn.microsoft.com/zh-cn/library/azure/dn931934.aspx)。
 
-## 预览门户
+## 门户
 
-你还可以通过预览门户查看已记录的操作。选择审核日志边栏选项卡即可。
+你还可以通过门户查看已记录的操作。选择审核日志边栏选项卡即可。
 
 ![选择审核日志](./media/resource-group-audit/select-audit.png)
 
@@ -154,8 +154,8 @@
 
 ## 后续步骤
 
-- 若要了解如何设置安全策略，请参阅[管理对资源的访问权限](/documentation/articles/resource-group-rbac)。
-- 若要了解如何向服务主体授予访问权限，请参阅[使用 Azure 资源管理器对服务主体进行身份验证](/documentation/articles/resource-group-authenticate-service-principal)。
-- 若要了解如何操作所有用户的资源，请参阅[使用 Azure 资源管理器锁定资源](/documentation/articles/resource-group-lock-resources)。
+- 若要了解如何设置安全策略，请参阅 [Azure 基于角色的访问控制](/documentation/articles/role-based-access-control-configure)。
+- 若要了解如何向服务主体授予访问权限，请参阅[使用 Azure Resource Manager 对服务主体进行身份验证](/documentation/articles/resource-group-authenticate-service-principal)。
+- 若要了解如何操作所有用户的资源，请参阅[使用 Azure Resource Manager 锁定资源](/documentation/articles/resource-group-lock-resources)。
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0418_2016-->

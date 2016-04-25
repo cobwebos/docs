@@ -9,32 +9,21 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="12/09/2015"
+	ms.date="02/20/2016"
 	wacn.date=""/>
 
-# 应用程序模型 v2.0 预览版：从 .NET Web 应用调用 Web API
+# 从 .NET Web 应用调用 API
+
+通过 v2.0 终结点，可以快速地将身份验证添加 Web 应用和 Web API，同时支持个人 Microsoft 帐户以及工作或学校帐户。此外，我们将构建一个借助 Microsoft OWIN 中间件使用 OpenID Connect 将用户登录的 MVC Web 应用。该 Web 应用程序将获取受 OAuth 2.0 保护的 Web API 的 OAuth 2.0 访问令牌，用于创建、读取和删除给定用户的“待办事项列表”。
 
 > [AZURE.NOTE]
-	此信息适用于 v2.0 终结点公共预览版。有关如何集成通常可用的 Azure AD 服务的说明，请参阅 [Azure Active Directory 开发人员指南](/documentation/articles/active-directory-developers-guide)。
+	v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
 
-通过 v2.0 应用程序模型，可以快速地将身份验证添加 Web 应用和 Web API，同时支持个人 Microsoft 帐户以及工作或学校帐户。我们将在此处构建一个 MVC Web 应用：
+本教程着重介绍如何通过 ADAL 来获取和使用 Web 应用中的访问令牌，在[此处](active-directory-v2-flows.md#web-apps)可找到完整介绍。你可能必须先了解如何[将基本登录添加到 Web 应用](active-directory-v2-devquickstarts-dotnet-web.md)，或者如何[正确保护 Web API](active-directory-v2-devquickstarts-dotnet-api.md)。
 
-- 借助 Microsoft OWIN 中间件，使用 OpenID Connect 将用户登录。
-- 使用 ADAL 获取 Web API 的 OAuth 2.0 访问令牌。
-- 创建、读取和删除用户“待办事项列表”中的项目，该列表托管在 Web API 上并受 OAuth 2.0 的保护。
+## 下载示例代码
 
-本教程着重介绍如何获取和使用 Web 应用中的访问令牌，在[此处](/documentation/articles/active-directory-v2-flows#web-apps)可找到完整介绍。你可能必须先了解如何[将基本登录添加到 Web 应用](/documentation/articles/active-directory-v2-devquickstarts-dotnet-web)，或者如何[正确保护 Web API](/documentation/articles/active-directory-v2-devquickstarts-dotnet-api)。
-
-从客户端调用待办事项列表 Web API 的基本步骤如下：
-
-1. 注册应用程序
-2. 使用 OpenID Connect 将用户登录到 Web 应用
-3. 在用户登录时使用 ADAL 获取访问令牌
-4. 使用访问令牌调用待办事项列表 Web API。
-
-本教程的代码[在 GitHub 上](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet)维护。
-
-若要遵照该代码，你可以[下载 .zip 格式应用骨架](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/skeleton.zip)，或克隆该骨架：
+本教程的代码[在 GitHub 上](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet)维护。若要遵照该代码，你可以[下载 .zip 格式应用骨架](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/skeleton.zip)，或克隆该骨架：
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet.git```
 
@@ -42,26 +31,17 @@
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet.git```
 
-## 1\.注册应用程序
+## 注册应用程序
 在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) 中创建新的应用程序，或遵循以下[详细步骤](active-directory-v2-app-registration.md)。请确保：
 
 - 复制分配给应用程序的**应用程序 ID**，因为稍后将要用到。
-- 创建**密码**类型的**应用程序机密**，并复制其值以备后用。
+- 创建**密码**类型的**应用机密**，并复制其值以备后用。
 - 为应用程序添加 **Web** 平台。
 - 输入正确的**重定向 URI**。重定向 URI 向 Azure AD 指示身份验证响应应定向到的位置，本教程的默认值为 `https://localhost:44326/`。
 
 
-## 2\.使用 OpenID Connect 将用户登录
-在这里，我们要将 OWIN 中间件配置为使用 [OpenID Connect 身份验证协议](/documentation/articles/active-directory-v2-protocols#openid-connect-sign-in-flow)。OWIN 将用于发出登录和注销请求、管理用户的会话、获取有关用户的信息，等等。
-
--	首先，打开位于 `TodoList-WebApp` 项目根目录中的 `web.config` 文件，并在 `<appSettings>` 节中输入应用程序的配置值。
-    -	`ida:ClientId` 是在注册门户中分配给应用程序的**应用程序 ID**。
-	- `ida:ClientSecret` 是在注册门户中创建的**应用程序机密**。
-    -	`ida:RedirectUri` 是在门户中输入的**重定向 URI**。
-- 打开位于 `TodoList-Service` 项目根目录中的 `web.config` 文件，并将 `ida:Audience` 替换为上述相同的**应用程序 ID**。
-
-
--	现在，使用包管理器控制台将 OWIN 中间件 NuGet 包添加到 `TodoList-WebApp` 项目。
+## 安装 OWIN
+使用包管理器控制台将 OWIN 中间件 NuGet 包添加到 `TodoList-WebApp` 项目。OWIN 中间件将用于发出登录和注销请求、管理用户的会话、获取有关用户的信息，等等。
 
 ```
 PM> Install-Package Microsoft.Owin.Security.OpenIdConnect -ProjectName TodoList-WebApp
@@ -69,7 +49,17 @@ PM> Install-Package Microsoft.Owin.Security.Cookies -ProjectName TodoList-WebApp
 PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoList-WebApp
 ```
 
--	打开文件 `App_Start\Startup.Auth.cs` 并为上述库添加 `using` 语句。
+## 登录用户
+现在，我们要将 OWIN 中间件配置为使用 [OpenID Connect 身份验证协议](active-directory-v2-protocols.md#openid-connect-sign-in-flow)。
+
+-	打开位于 `TodoList-WebApp` 项目根目录中的 `web.config` 文件，并在 `<appSettings>` 节中输入应用程序的配置值。
+    -	`ida:ClientId` 是在注册门户中为应用分配的**应用程序 ID**。
+	- `ida:ClientSecret` 是在注册门户中创建的**应用机密**。
+    -	`ida:RedirectUri` 是在门户中输入的**重定向 URI**。
+- 打开位于 `TodoList-Service` 项目根目录中的 `web.config` 文件，并将 `ida:Audience` 替换为上述相同的**应用程序 ID**。
+
+
+- 打开文件 `App_Start\Startup.Auth.cs` 并为上述库添加 `using` 语句。
 - 在同一个文件中，实现 `ConfigureAuth(...)` 方法。在 `OpenIDConnectAuthenticationOptions` 中提供的参数将充当应用程序与 Azure AD 通信时使用的坐标。
 
 ```C#
@@ -83,12 +73,12 @@ public void ConfigureAuth(IAppBuilder app)
         new OpenIdConnectAuthenticationOptions
         {
 
-					// The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0
+					// The `Authority` represents the v2.0 endpoint - https://login.microsoftonline.com/common/v2.0 
 					// The `Scope` describes the permissions that your app will need.  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/
 					// In a real application you could use issuer validation for additional checks, like making sure the user's organization has signed up for your app, for instance.
 
 					ClientId = clientId,
-					Authority = String.Format(CultureInfo.InvariantCulture, aadInstance, "common", "/v2.0"),
+					Authority = String.Format(CultureInfo.InvariantCulture, aadInstance, "common", "/v2.0 "),
 					Scope = "openid email profile offline_access",
 					RedirectUri = redirectUri,
 					PostLogoutRedirectUri = redirectUri,
@@ -116,8 +106,8 @@ public void ConfigureAuth(IAppBuilder app)
 - 首先，安装 ADAL 预览版：
 
 ```PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory -ProjectName TodoList-WebApp -IncludePrerelease```
-- 将另一个 `using` 语句添加到 ADAL 的 `App_Start\Startup.Auth.cs` 文件。
-- 现在添加新的方法，即 `OnAuthorizationCodeReceived` 事件处理程序。此处理程序将使用 ADAL 获取待办事项列表 API 的访问令牌，并将 ADAL 令牌缓存中的令牌存储起来以供稍后使用：
+- 在 `App_Start\Startup.Auth.cs` 文件中为 ADAL 添加另一个 `using` 语句。
+- 现在添加一个新方法，即 `OnAuthorizationCodeReceived` 事件处理程序。此处理程序将使用 ADAL 获取待办事项列表 API 的访问令牌，并将 ADAL 令牌缓存中的令牌存储起来以供稍后使用：
 
 ```C#
 private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
@@ -139,7 +129,7 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 <!-- TODO: Token Cache article -->
 
 
-## 4\.调用待办事项列表 Web API
+## 4\.调用 Web API
 现在可以实际使用在步骤 3 中获取的 access\_token。打开 Web 应用的 `Controllers\TodoListController.cs` 文件，此文件可向待办事项列表 API 发出所有 CRUD 请求。
 
 - 此处可再次使用 ADAL，从 ADAL 缓存检索 access\_tokens。首先，将 ADAL 的 `using` 语句添加到此文件。
@@ -199,8 +189,8 @@ catch (AdalException ee)
 
 ## 后续步骤
 
-有关其他资源，请查看：
-- [应用程序模型 v2.0 预览版 >>](/documentation/articles/active-directory-appmodel-v2-overview)
-- [StackOverflow“adal”标记 >>](http://stackoverflow.com/questions/tagged/adal)
+有关更多资源，请查看：
+- [应用模型 v2.0 预览版 >>](/documentation/articles/active-directory-appmodel-v2-overview)
+- [堆栈溢出“adal”标记 >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0418_2016-->

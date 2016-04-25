@@ -1,5 +1,5 @@
 <properties
-   pageTitle="入门：连接到 Azure SQL 数据仓库 | Microsoft Azure"
+   pageTitle="入门：连接到 Azure SQL 数据仓库 | Azure"
    description="开始连接到 SQL 数据仓库并运行一些查询。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="01/07/2016"
+   ms.date="03/03/2016"
    wacn.date=""/>
 
 # 使用 Visual Studio 进行连接和查询
@@ -30,9 +30,9 @@
 
 ## 获取完全限定的 Azure SQL 服务器名称
 
-若要连接到数据库，你需要服务器的完整名称 (****servername**.database.chinacloudapi.cn*)，该名称中包含要连接到的数据库。
+若要连接到数据库，你需要服务器的完整名称 (**servername**.database.chinacloudapi.cn)，该名称中包含要连接到的数据库。
 
-1. 转到 [Azure 预览门户](https://manage.windowsazure.cn)。
+1. 转到 [Azure 门户](https://portal.azure.cn)。
 2. 浏览到要连接到的数据库。
 3. 找出完整的服务器名称（我们将在下面的步骤中使用此名称）：
 
@@ -42,14 +42,14 @@
 
 1. 打开 Visual Studio。
 2. 从“视图”菜单打开“SQL Server 对象资源管理器”
- 
+
 ![][2]
 
 3. 单击“添加 SQL Server”按钮
 
 ![][3]
 
-4. 输入我们在前面捕获的*服务器名称*
+4. 输入我们在前面捕获的服务器名称
 5. 在“身份验证”列表中，选择“SQL Server 身份验证”。
 6. 输入你创建 SQL 数据库服务器时指定的“登录名”和“密码”，然后单击“连接”。
 
@@ -77,7 +77,7 @@
 
 既然你可以执行连接和查询，接下来请尝试[使用 PowerBI 进行连接][]。
 
-[使用 PowerBI 进行连接]: ./sql-data-warehouse-integrate-power-bi.md
+[使用 PowerBI 进行连接]: /documentation/articles/sql-data-warehouse-integrate-power-bi
 
 
 <!--Image references-->
@@ -86,4 +86,4 @@
 [2]: ./media/sql-data-warehouse-get-started-connect-query/open-ssdt.png
 [3]: ./media/sql-data-warehouse-get-started-connect-query/connection-dialog.png
 [4]: ./media/sql-data-warehouse-get-started-connect-query/new-query.png
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0418_2016-->

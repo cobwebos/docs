@@ -1,19 +1,21 @@
+<!-- not suitable for Mooncake -->
+
 <properties 
-   pageTitle="在资源管理器中使用模板控制路由和使用虚拟设备 | Microsoft Azure"
-   description="了解如何在 Azure 中使用模板控制路由和使用虚拟设备"
+   pageTitle="在 Resource Manager 中通过模板控制路由和使用虚拟设备 | Azure"
+   description="了解如何在 Azure Resource Manager 中通过模板控制路由和使用虚拟设备"
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-resource-manager"
 />
 <tags
 	ms.service="virtual-network"
-	ms.date="10/08/2015"
+	ms.date="02/23/2016"
 	wacn.date=""/>
 
-#使用模板创建用户定义的路由 (UDR)
+#在 Resource Manager 中使用模板创建用户定义的路由 (UDR)
 
 [AZURE.INCLUDE [virtual-network-create-udr-arm-selectors-include.md](../includes/virtual-network-create-udr-arm-selectors-include.md)]
 
@@ -27,7 +29,7 @@
 
 你可以查看和下载[示例模板](https://github.com/telmosampaio/azure-templates/tree/master/IaaS-NSG-UDR)。
 
-下面的部分说明基于上述方案在 azuredeploy-vnet-nsg-udr.json 文件中定义前端 UDR。
+下面的部分说明如何基于上述方案在 **azuredeploy-vnet-nsg-udr.json** 文件中定义前端 UDR。
 
 	"apiVersion": "2015-06-15",
 	"type": "Microsoft.Network/routeTables",
@@ -110,18 +112,24 @@
 
 若要使用 PowerShell 部署下载的 ARM 模板，请执行以下步骤。
 
+[AZURE.INCLUDE [powershell-preview-include.md](../includes/powershell-preview-include.md)]
+
 1. 如果你从未使用过 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)，并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
 
-3. 运行 **New-AzureRMResourceGroup** cmdlet 以使用模板创建资源组。
+2. 运行 `New-AzureRmResourceGroup` cmdlet 以创建资源组。
 
-		New-AzureRMResourceGroup -Name TestRG -Location westus `
-		    -TemplateFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json' `
-		    -TemplateParameterFile 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json'	
+		New-AzureRmResourceGroup -Name TestRG -Location chinanorth
+
+3. 运行 `New-AzureRmResourceGroupDeployment` cmdlet 以部署该模板。
+
+		New-AzureRmResourceGroupDeployment -Name DeployUDR -ResourceGroupName TestRG `
+		    -TemplateUri https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json `
+		    -TemplateParameterUri https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.parameters.json	    	
 
 	预期输出：
 
 		ResourceGroupName : TestRG
-		Location          : westus
+		Location          : chinanorth
 		ProvisioningState : Succeeded
 		Tags              : 
 		Permissions       : 
@@ -132,40 +140,40 @@
 		Resources         : 
 		                    Name                Type                                     Location
 		                    ==================  =======================================  ========
-		                    ASFW                Microsoft.Compute/availabilitySets       westus  
-		                    ASSQL               Microsoft.Compute/availabilitySets       westus  
-		                    ASWEB               Microsoft.Compute/availabilitySets       westus  
-		                    FW1                 Microsoft.Compute/virtualMachines        westus  
-		                    SQL1                Microsoft.Compute/virtualMachines        westus  
-		                    SQL2                Microsoft.Compute/virtualMachines        westus  
-		                    WEB1                Microsoft.Compute/virtualMachines        westus  
-		                    WEB2                Microsoft.Compute/virtualMachines        westus  
-		                    NICFW1              Microsoft.Network/networkInterfaces      westus  
-		                    NICSQL1             Microsoft.Network/networkInterfaces      westus  
-		                    NICSQL2             Microsoft.Network/networkInterfaces      westus  
-		                    NICWEB1             Microsoft.Network/networkInterfaces      westus  
-		                    NICWEB2             Microsoft.Network/networkInterfaces      westus  
-		                    NSG-BackEnd         Microsoft.Network/networkSecurityGroups  westus  
-		                    NSG-FrontEnd        Microsoft.Network/networkSecurityGroups  westus  
-		                    PIPFW1              Microsoft.Network/publicIPAddresses      westus  
-		                    PIPSQL1             Microsoft.Network/publicIPAddresses      westus  
-		                    PIPSQL2             Microsoft.Network/publicIPAddresses      westus  
-		                    PIPWEB1             Microsoft.Network/publicIPAddresses      westus  
-		                    PIPWEB2             Microsoft.Network/publicIPAddresses      westus  
-		                    UDR-BackEnd         Microsoft.Network/routeTables            westus  
-		                    UDR-FrontEnd        Microsoft.Network/routeTables            westus  
-		                    TestVNet            Microsoft.Network/virtualNetworks        westus  
-		                    testvnetstorageprm  Microsoft.Storage/storageAccounts        westus  
-		                    testvnetstoragestd  Microsoft.Storage/storageAccounts        westus  
+		                    ASFW                Microsoft.Compute/availabilitySets       chinanorth  
+		                    ASSQL               Microsoft.Compute/availabilitySets       chinanorth  
+		                    ASWEB               Microsoft.Compute/availabilitySets       chinanorth  
+		                    FW1                 Microsoft.Compute/virtualMachines        chinanorth  
+		                    SQL1                Microsoft.Compute/virtualMachines        chinanorth  
+		                    SQL2                Microsoft.Compute/virtualMachines        chinanorth  
+		                    WEB1                Microsoft.Compute/virtualMachines        chinanorth  
+		                    WEB2                Microsoft.Compute/virtualMachines        chinanorth  
+		                    NICFW1              Microsoft.Network/networkInterfaces      chinanorth  
+		                    NICSQL1             Microsoft.Network/networkInterfaces      chinanorth  
+		                    NICSQL2             Microsoft.Network/networkInterfaces      chinanorth  
+		                    NICWEB1             Microsoft.Network/networkInterfaces      chinanorth  
+		                    NICWEB2             Microsoft.Network/networkInterfaces      chinanorth  
+		                    NSG-BackEnd         Microsoft.Network/networkSecurityGroups  chinanorth  
+		                    NSG-FrontEnd        Microsoft.Network/networkSecurityGroups  chinanorth  
+		                    PIPFW1              Microsoft.Network/publicIPAddresses      chinanorth  
+		                    PIPSQL1             Microsoft.Network/publicIPAddresses      chinanorth  
+		                    PIPSQL2             Microsoft.Network/publicIPAddresses      chinanorth  
+		                    PIPWEB1             Microsoft.Network/publicIPAddresses      chinanorth  
+		                    PIPWEB2             Microsoft.Network/publicIPAddresses      chinanorth  
+		                    UDR-BackEnd         Microsoft.Network/routeTables            chinanorth  
+		                    UDR-FrontEnd        Microsoft.Network/routeTables            chinanorth  
+		                    TestVNet            Microsoft.Network/virtualNetworks        chinanorth  
+		                    testvnetstorageprm  Microsoft.Storage/storageAccounts        chinanorth  
+		                    testvnetstoragestd  Microsoft.Storage/storageAccounts        chinanorth  
 		                    
-		ResourceId        : /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/TestRG
+		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
 
 ## 使用 Azure CLI 部署 ARM 模板
 
 若要使用 Azure CLI 部署 ARM 模板，请执行下列步骤。
 
-1. 如果你从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](/documentation/articles/xplat-cli)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
-2. 运行 **azure config mode** 命令以切换到资源管理器模式，如下所示。
+1. 如果你从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](/documentation/articles/xplat-cli-install)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+2. 运行 `azure config mode` 命令以切换到 Resource Manager 模式，如下所示。
 
 		azure config mode arm
 
@@ -193,7 +201,7 @@
 
 4. 运行 **azure group create** cmdlet 以使用你在前面下载并修改的模板和参数文件部署新 VNet。在输出后显示的列表说明了所用的参数。
 
-		azure group create -n TestRG -l westus --template-uri 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json' -e 'c:\udr\azuredeploy.parameters.json'
+		azure group create -n TestRG -l chinanorth --template-uri 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/IaaS-NSG-UDR/azuredeploy.json' -e 'c:\udr\azuredeploy.parameters.json'
 
 	预期输出：
 
@@ -206,7 +214,7 @@
 		info:    Created template deployment "azuredeploy"
 		data:    Id:                  /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
 		data:    Name:                TestRG
-		data:    Location:            westus
+		data:    Location:            chinanorth
 		data:    Provisioning State:  Succeeded
 		data:    Tags: null
 		data:    
@@ -223,7 +231,7 @@
 		info:    Listing resources for the group
 		data:    Id:                  /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG
 		data:    Name:                TestRG
-		data:    Location:            westus
+		data:    Location:            chinanorth
 		data:    Provisioning State:  Succeeded
 		data:    Tags: null
 		data:    Resources:
@@ -231,151 +239,151 @@
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Compute/availabilitySets/ASFW
 		data:      Name    : ASFW
 		data:      Type    : availabilitySets
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=AvailabilitySet - DMZ
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Compute/availabilitySets/ASSQL
 		data:      Name    : ASSQL
 		data:      Type    : availabilitySets
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=AvailabilitySet - SQL
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Compute/availabilitySets/ASWEB
 		data:      Name    : ASWEB
 		data:      Type    : availabilitySets
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=AvailabilitySet - Web
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Compute/virtualMachines/FW1
 		data:      Name    : FW1
 		data:      Type    : virtualMachines
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=VMs - DMZ
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Compute/virtualMachines/SQL1
 		data:      Name    : SQL1
 		data:      Type    : virtualMachines
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=VMs - SQL
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Compute/virtualMachines/SQL2
 		data:      Name    : SQL2
 		data:      Type    : virtualMachines
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=VMs - SQL
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Compute/virtualMachines/WEB1
 		data:      Name    : WEB1
 		data:      Type    : virtualMachines
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=VMs - Web
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Compute/virtualMachines/WEB2
 		data:      Name    : WEB2
 		data:      Type    : virtualMachines
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=VMs - Web
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICFW1
 		data:      Name    : NICFW1
 		data:      Type    : networkInterfaces
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=NetworkInterfaces - DMZ
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICSQL1
 		data:      Name    : NICSQL1
 		data:      Type    : networkInterfaces
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=NetworkInterfaces - SQL
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICSQL2
 		data:      Name    : NICSQL2
 		data:      Type    : networkInterfaces
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=NetworkInterfaces - SQL
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICWEB1
 		data:      Name    : NICWEB1
 		data:      Type    : networkInterfaces
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=NetworkInterfaces - Web
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkInterfaces/NICWEB2
 		data:      Name    : NICWEB2
 		data:      Type    : networkInterfaces
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=NetworkInterfaces - Web
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd
 		data:      Name    : NSG-BackEnd
 		data:      Type    : networkSecurityGroups
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=NSG - Front End
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd
 		data:      Name    : NSG-FrontEnd
 		data:      Type    : networkSecurityGroups
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=NSG - Remote Access
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/PIPFW1
 		data:      Name    : PIPFW1
 		data:      Type    : publicIPAddresses
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=PublicIPAddresses - DMZ
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/PIPSQL1
 		data:      Name    : PIPSQL1
 		data:      Type    : publicIPAddresses
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=PublicIPAddresses - SQL
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/PIPSQL2
 		data:      Name    : PIPSQL2
 		data:      Type    : publicIPAddresses
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=PublicIPAddresses - SQL
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/PIPWEB1
 		data:      Name    : PIPWEB1
 		data:      Type    : publicIPAddresses
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=PublicIPAddresses - Web
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/PIPWEB2
 		data:      Name    : PIPWEB2
 		data:      Type    : publicIPAddresses
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=PublicIPAddresses - Web
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd
 		data:      Name    : UDR-BackEnd
 		data:      Type    : routeTables
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=Route Table - Back End
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-FrontEnd
 		data:      Name    : UDR-FrontEnd
 		data:      Type    : routeTables
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=UDR - FrontEnd
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet
 		data:      Name    : TestVNet
 		data:      Type    : virtualNetworks
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=VNet
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/testvnetstorageprm
 		data:      Name    : testvnetstorageprm
 		data:      Type    : storageAccounts
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=Storage Account - Premium
 		data:    
 		data:      Id      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Storage/storageAccounts/testvnetstoragestd
 		data:      Name    : testvnetstoragestd
 		data:      Type    : storageAccounts
-		data:      Location: westus
+		data:      Location: chinanorth
 		data:      Tags    : displayName=Storage Account - Simple
 		data:    
 		data:    Permissions:
@@ -384,6 +392,6 @@
 		data:    
 		info:    group show command OK
 
->[AZURE.TIP]如果看不到所有资源，运行 **azure group deployment show** 命令以确保部署的设置状态是*成功*。
+>[AZURE.TIP] 如果看不到所有资源，可运行 `azure group deployment show` 命令以确保部署的预配状态为“成功”。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0418_2016-->

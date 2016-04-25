@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Reliable Actors 事件 | Microsoft Azure"
+   pageTitle="Reliable Actors 事件 | Azure"
    description="Service Fabric Reliable Actors 的事件简介。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="11/14/2015"
+   ms.date="02/19/2016"
    wacn.date=""/>
 
 
@@ -68,4 +68,4 @@ var ev = GetEvent<IGameEvents>();
 ev.GameScoreUpdated(Id.GetGuidId(), State.Status.Score);
 ```
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0418_2016-->

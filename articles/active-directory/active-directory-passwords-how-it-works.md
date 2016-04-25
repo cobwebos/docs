@@ -9,17 +9,17 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="11/16/2015" 
+	ms.date="02/16/2016" 
 	wacn.date=""/>
 
 # 密码管理的工作原理
 Azure Active Directory 中的密码管理包含如下所述的几个逻辑组件。请单击每个链接以了解有关该组件的详细信息。
 
-- [**密码管理配置门户**](#password-management-configuration-portal) – 管理员可以通过导航到 [Azure 管理门户](https://manage.windowsazure.cn)中其目录的“配置”选项卡来控制如何在其租户中管理密码的不同方面。
+- [**密码管理配置门户**](#password-management-configuration-portal) – 管理员可以通过导航到 [Azure 管理门户](https://manage.windowsazure.com)中其目录的“配置”选项卡来控制如何在其租户中管理密码的不同方面。
 - [**用户注册门户**](#user-registration-portal) – 用户可以通过此网络门户自行注册以进行密码重置。
 - [**用户密码重置门户**](#user-password-reset-portal) – 用户可以使用一系列符合管理员控制的密码重置策略的质询来重置其自己的密码
 - [**用户密码更改门户**](#user-password-change-portal) – 用户可以通过使用此网络门户输入旧密码并选择一个新密码来随时更改其自己的密码
-- [**密码管理报告**](#password-management-reports) – 管理员可以通过导航到 [Azure 管理门户](https://manage.windowsazure.cn)中其目录的“报告”选项卡的“活动报告”部分来查看和分析其租户中的密码重置和注册活动
+- [**密码管理报告**](#password-management-reports) – 管理员可以通过导航到 [Azure 管理门户](https://manage.windowsazure.com)中其目录的“报告”选项卡的“活动报告”部分来查看和分析其租户中的密码重置和注册活动
 - [**Azure AD Connect 的密码写回组件**](#password-writeback-component-of-azure-ad-connect) - 管理员可以选择在安装 Azure AD Connect 时启用“密码写回”功能，以便从云中管理联合或密码同步用户的密码。
 
 ## 密码管理配置门户
@@ -118,4 +118,4 @@ Azure Active Directory 中的密码管理包含如下所述的几个逻辑组件
 [007]: ./media/active-directory-passwords-how-it-works/007.jpg "Image_007.jpg"
  
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Reliable Actors 框架中的多态性技术 | Microsoft Azure"
+   pageTitle="Reliable Actors 框架中的多态性技术 | Azure"
    description="在 Reliable Actors 框架中构建 .NET 接口和类型的层次结构，以便重用功能和 API 定义。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="12/01/2015"
+   ms.date="03/08/2016"
    wacn.date=""/>
 
 # Reliable Actors 框架中的多态性技术
@@ -25,7 +25,7 @@ Reliable Actors 框架要求至少定义一个要由执行组件类型实现的�
 
 ## 类型
 
-你还可以创建执行组件类型的层次结构，这些类型派生自由平台提供的 Actor 基类。对于有状态执行组件，你同样可以创建状态类型的层次结构。对于形状，你可能具有一个状态类型为 `ShapeState` 的 `Shape` 基类型。
+你还可以创建执行组件类型的层次结构，这些类型派生自由平台提供的执行组件基类。对于有状态执行组件，你同样可以创建状态类型的层次结构。对于形状，你可能具有一个状态类型为 `ShapeState` 的 `Shape` 基类型。
 
     public abstract class Shape : Actor<ShapeState>, IShape
     {
@@ -74,4 +74,4 @@ Reliable Actors 框架要求至少定义一个要由执行组件类型实现的�
 
 [shapes-interface-hierarchy]: ./media/service-fabric-reliable-actors-polymorphism/Shapes-Interface-Hierarchy.png
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0418_2016-->

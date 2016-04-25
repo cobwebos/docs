@@ -1,6 +1,6 @@
 <properties
 	pageTitle="Microsoft Azure 门户概述"
-	description="了解如何使用 Microsoft Azure 门户。"
+	description="了解如何使用 Azure 门户。"
 	services=""
 	documentationCenter=""
 	authors="davidwrede"
@@ -9,16 +9,16 @@
 
 <tags
 	ms.service="na"
-	ms.date="04/28/2015"
+	ms.date="12/16/2015"
 	wacn.date=""/>
 
 # Microsoft Azure 门户概述
 
-Microsoft Azure 门户是一个中心位置，你可以在其中预配和管理 Azure 资源。借助本教程，您将熟悉预览门户以及如何使用它的一些关键功能：
-- **综合应用商店**：您可以浏览 Microsoft 和其他供应商提供的数千可供购买和/或预配的产品。
-- **统一且可缩放的浏览体验**：您可以轻松查找所需的资源，并执行各种管理操作。
-- **一致的管理页面**（或边栏选项卡）：您可以通过一致的方式公开设置、操作、计费信息、运行状况监视和使用量数据等，从而管理 Azure 的各种服务。
-- **个性体验**：您可以创建自定义的开始屏幕，显示您在登录时随时想要查看的信息。您还可以自定义包含磁贴的任意管理边栏选项卡。
+Microsoft Azure 门户是一个中心位置，你可以在其中预配和管理 Azure 资源。本教程将帮助你熟悉此门户，并且向你介绍如何使用以下一些关键功能：
+- **综合应用商店**，你可以在其中浏览数千个来自 Microsoft 和其他供应商的应用，你可以购买这些应用和/或对其进行设置。
+- **统一且可升级的浏览体验**，使你轻松查找你关注的资源并执行各种管理操作。
+- **一致的管理页面**（或边栏选项卡），以一致的方式显示设置、操作、计费信息、运行状况监视和使用情况数据等等，使你能够管理 Azure 的各种服务。
+- **个性化体验**，你可以创建自定义的开始屏幕，其中显示当你登录时想要看见的信息。您还可以自定义包含磁贴的任意管理边栏选项卡。
 
  ![熟悉 Azure 门户 UI][UIOrientation]
 
@@ -32,7 +32,7 @@ Azure 应用商店提供数千商品，您可以在一个位置集中创建商�
 
 1.	Windows Server 2012 是一种特色类别，因此您可以从计算类别中选择它。  
 2.	在表单上填写一些基本输入信息。
-3.	单击“创建”。此时，系统会立即开始预配您的 VM。
+3.	单击“创建”。此时，系统会立即开始预配你的 VM。
 
 当您的资源已完成创建时，通知中心会向您发出提醒，并且管理边栏选项卡也会打开（您稍后始终可以浏览资源）。
 
@@ -76,16 +76,16 @@ Azure 会为您的资源预配置边栏选项卡，但这些边栏选项卡上�
 
 ## 摘要
 
-让我们回顾一下本教程的内容：
-- 您学习了如何注册和获取订阅，以及如何浏览门户
-- 您熟悉了门户 UI，并学习了如何创建和浏览资源
-- 您学习了如何创建和浏览资源
-- 您了解了结构或管理边栏选项卡，并学习了如何一致地管理不同类型的资源
-- 您学习了如何自定义门户，主要显示您关注的信息
-- 您学习了如何使用基于角色的访问 (RBAC) 控制资源访问权限
-- 您学习了如何获取帮助和支持
+让我们回顾一下你在本教程中学习的内容：
+- 你学习了如何注册、获取订阅，并浏览到门户
+- 你通过门户 UI 进行导航，学习了如何创建和浏览资源
+- 你学习了如何创建资源和浏览资源
+- 你学习了结构或管理边栏选项卡，以及如何统一管理不同类型的资源
+- 你学习了如何自定义门户，以便将你关心的信息置于前面或中心位置
+- 你学习了如何使用基于角色的访问 (RBAC) 控制对资源的访问
+- 你学习了如何获得帮助和支持
 
-Microsoft Azure 门户大大简化了在云中构建和管理应用程序的工作。请参阅[管理博客](http://azure.microsoft.com/blog/topics/management/)，了解最新动态，因为我们一直坚持[聆听反馈](http://feedback.azure.com/forums/223579-azure-preview-portal)并做出改进。有关所有 Azure 更新，您还可以访问 [ScottGu 的博客](http://weblogs.asp.net/scottgu)。
+Microsoft Azure 门户大大简化了在云中构建和管理应用程序的工作。请参阅[管理博客](https://azure.microsoft.com/blog/topics/management/)，了解最新动态，因为我们一直坚持[聆听反馈](https://feedback.azure.com/forums/223579-azure-preview-portal/)并做出改进。有关所有 Azure 更新，您还可以访问 [ScottGu 的博客](http://weblogs.asp.net/scottgu)。
 
 [UIOrientation]: ./media/azure-portal-how-to-use/azure_portal_1.png
 [PortalCategories]: ./media/azure-portal-how-to-use/azure_portal_2.png
@@ -94,4 +94,4 @@ Microsoft Azure 门户大大简化了在云中构建和管理应用程序的工�
 [CustomizeBlades]: ./media/azure-portal-how-to-use/azure_portal_5.png
 [HelpSupport]: ./media/azure-portal-how-to-use/azure_portal_6.png
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0418_2016-->

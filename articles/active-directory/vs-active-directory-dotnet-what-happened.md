@@ -1,11 +1,11 @@
 <properties 
 	pageTitle="我的 MVC 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况 | Microsoft Azure"
 	description="描述一下，当你使用 Visual Studio 连接服务连接到 Azure AD 时，你的 MVC 项目会发生什么情况"
-	services="active-directory" 
+	services="active-directory"
 	documentationCenter="na"
-	authors="patshea123" 
-	manager="douge" 
-	editor="tglee"/>
+	authors="TomArcher"
+	manager="douge"
+	editor=""/>
   
 <tags 
 	ms.service="active-directory" 
@@ -15,8 +15,8 @@
 # 我的 MVC 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况？
 
 > [AZURE.SELECTOR]
-> - [入门](vs-active-directory-dotnet-getting-started)
-> - [发生了什么情况](vs-active-directory-dotnet-what-happened)
+> - [入门](/documentation/articles/vs-active-directory-dotnet-getting-started)
+> - [发生了什么情况](/documentation/articles/vs-active-directory-dotnet-what-happened)
 
 
 
@@ -163,9 +163,8 @@ NuGet 包引用已删除，文件已删除和备份。根据你的项目的状�
 
 
 ###你的 Azure Active Directory 应用已更新
-你的 Azure Active Directory 应用已更新为包括“读取目录数据”权限，并已创建一个附加密钥，该密钥随后已用作 **web.config** 文件中的 *ida:ClientSecret*。
+你的 Azure Active Directory 应用已更新为包括读取目录数据权限，并已创建一个附加密钥，该密钥随后已用作 **Web.config** 文件中的 ida:ClientSecret。
 
 [详细了解 Azure Active Directory](/documentation/services/identity/)
  
-
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

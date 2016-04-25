@@ -27,7 +27,7 @@
 - 要使所有人都能访问新的应用程序，需要向他们分发凭据。
 - 每个共享的应用程序可能都需要唯一的一组共享凭据，而用户必须记住多组凭据。如果用户必须记住许多凭据，他们将采取有风险的做法（例如写下密码），因此增加了风险。
 - 你不知道谁有权访问应用程序。
-- 你不知道谁*访问了*应用程序。
+- 你不知道谁访问了应用程序。
 - 当你需要删除某个应用程序的访问权限时，必须更新凭据，并将凭据重新分发给需要访问该应用程序的所有人。
 
 ## Azure Active Directory 帐户共享
@@ -68,4 +68,4 @@ Azure AD 支持任何 Enterprise Mobility Suite (EMS)、高级或基本许可用
 - [使用条件性访问保护应用](active-directory-conditional-access.md)
 - [自助组管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0418_2016-->

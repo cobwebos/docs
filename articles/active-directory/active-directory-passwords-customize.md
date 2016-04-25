@@ -9,11 +9,11 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="11/16/2015" 
+	ms.date="02/16/2016" 
 	wacn.date=""/>
 
 # 自定义密码管理以符合组织的需求
-为了尽可能地向用户提供最佳体验，我们建议你了解并试用你可以使用的所有密码管理配置选项。事实上，你可以转到 [Azure 管理门户](https://manage.windowsazure.cn)的“Active Directory 扩展”中的配置选项卡，立即开始探索。本主题将引导你从 [Azure 管理门户](https://manage.windowsazure.cn)中目录的“配置”选项卡，完成管理员可以进行的不同密码管理自定义，包括：
+为了尽可能地向用户提供最佳体验，我们建议你了解并试用你可以使用的所有密码管理配置选项。事实上，你可以转到 [Azure 管理门户](https://manage.windowsazure.com)的“Active Directory 扩展”中的配置选项卡，立即开始探索。本主题将引导你从 [Azure 管理门户](https://manage.windowsazure.com)中目录的“配置”选项卡，完成管理员可以进行的不同密码管理自定义，包括：
 
 | 主题 | |
 | --------- | --------- |
@@ -34,7 +34,7 @@
 
 
 ## 密码管理外观
-下表说明了每个控件对注册密码重置并重置密码的用户体验有何影响。你可以在 [Azure 管理门户](https://manage.windowsazure.cn)中目录的“配置”选项卡的“目录属性”部分下配置这些选项。
+下表说明了每个控件对注册密码重置并重置密码的用户体验有何影响。你可以在 [Azure 管理门户](https://manage.windowsazure.com)中目录的“配置”选项卡的“目录属性”部分下配置这些选项。
 
 <table>
             <tbody><tr>
@@ -93,7 +93,7 @@
                 <p>
                   
                 </p>
-                <p>如需了解有关租户品牌和自定义功能的详细信息，请参阅<a href="https://technet.microsoft.com/zh-cn/library/dn532270.aspx">向“登录”和“访问面板”页添加公司品牌</a>。</p>
+                <p>如需了解有关租户品牌和自定义功能的详细信息，请参阅<a href="https://technet.microsoft.com/library/dn532270.aspx">向“登录”和“访问面板”页添加公司品牌</a>。</p>
               </td>
               <td>
                 <p>
@@ -124,9 +124,9 @@
           </tbody></table>
 
 ## 密码管理行为
-下表说明了每个控件对注册密码重置并重置密码的用户体验有何影响。可以在 [Azure 管理门户](https://manage.windowsazure.cn)中目录的“配置”选项卡的“用户密码重置策略”部分下配置这些选项。
+下表说明了每个控件对注册密码重置并重置密码的用户体验有何影响。可以在 [Azure 管理门户](https://manage.windowsazure.com)中目录的“配置”选项卡的“用户密码重置策略”部分下配置这些选项。
 
-> [AZURE.NOTE]你所使用的管理员帐户必须分配了 AAD Premium 许可证才能看到这些策略控件。<br><br>这些策略控件仅适用于重置密码的最终用户，而不是管理员。**Microsoft 为管理员指定了默认的备用电子邮件和/或移动电话策略，这些策略无法更改。**
+> [AZURE.NOTE] 你所使用的管理员帐户必须分配了 AAD Premium 许可证才能看到这些策略控件。<br><br>这些策略控件仅适用于重置密码的最终用户，而不是管理员。**Microsoft 为管理员指定了默认的备用电子邮件和/或移动电话策略，这些策略无法更改。**
 
 <table>
             <tbody><tr>
@@ -868,4 +868,4 @@
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

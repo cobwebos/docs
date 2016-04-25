@@ -1,5 +1,5 @@
 <properties
-   pageTitle="扩展或缩减 Service Fabric 群集 | Microsoft Azure"
+   pageTitle="扩展或缩减 Service Fabric 群集 | Azure"
    description="根据要求通过添加或删除虚拟机节点来扩展或缩减 Service Fabric 群集。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="01/29/2016"
+   ms.date="02/12/2016"
    wacn.date=""/>
 
 
@@ -25,7 +25,7 @@
 
 如果群集包含多个节点类型，你必须在特定节点类型中添加或删除 VM。方法如下：
 
-1. 登录到[管理门户](https://manage.windowsazure.cn/)。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
 2. 导航到“Service Fabric 群集”。
  ![Azure 门户中的 Service Fabric 群集页。][BrowseServiceFabricClusterResource]
@@ -60,6 +60,8 @@
 
     d.单击“删除”图标删除该 VM。
 
+>[AZURE.NOTE] Service Fabric 群集需要有一定数量的节点可随时启动，以保持可用性和状态 - 称为“维持仲裁”。因此，除非你已事先执行[状态的完整备份](/documentation/articles/service-fabric-reliable-services-backup-restore)，否则关闭群集中的所有计算机通常是不安全的做法。
+
 ## 自动缩放 Service Fabric 群集
 
 Service Fabric 群集目前不支持自动缩放。不久之后，群集将构建在虚拟机缩放集的基础之上，到时你便可以使用自动缩放功能，其行为与云服务的自动缩放行为类似。
@@ -76,4 +78,4 @@ Service Fabric 群集目前不支持自动缩放。不久之后，群集将构�
 <!--Image references-->
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0418_2016-->

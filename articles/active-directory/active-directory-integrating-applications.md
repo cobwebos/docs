@@ -345,4 +345,4 @@ Web 应用程序可为用户提供注册体验。如果你确实提供注册体�
 
 - 访问 [Active Directory 开发人员指南](active-directory-developer's guide)
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0418_2016-->

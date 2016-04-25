@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="08/14/2015" 
+	ms.date="02/09/2016"
 	wacn.date="" />
 
 
@@ -18,7 +18,7 @@
 Azure Active Directory (Azure AD) 是综合性的标识和访问管理解决方案，它提供一套稳健的功能来管理对本地和云应用程序及资源（包括诸如 Office 365 的 Microsoft 联机服务和众多非 Microsoft SaaS 应用程序）的安全访问。
 
 
-> [AZURE.NOTE]若要使用 Azure Active Directory，你需要一个 Azure 帐户。如果你没有帐户，可以[注册免费的 Azure 帐户](http://azure.microsoft.com/pricing/free-trial/)。
+> [AZURE.NOTE] 若要使用 Azure Active Directory，你需要一个 Azure 帐户。如果你没有帐户，可以[注册免费的 Azure 帐户](http://azure.microsoft.com/pricing/free-trial/)。
 
 
 Azure Active Directory 的主要功能之一是管理对资源的访问。这些资源可以是目录的一部分（例如，用于通过目录中的角色管理对象的权限）、目录外部的资源（例如 SaaS 应用程序、Azure 服务以及 SharePoint 站点）或者本地资源。可通过 4 种方式向用户分配资源访问权限：
@@ -88,8 +88,10 @@ Azure Active Directory 访问管理解决方案的核心是安全组。使用安
 
 * [什么是 Azure Active Directory？](active-directory-whatis.md)
 
+* [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+
 * [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
 
 * [适用于组的图形 API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric 中的 Reliable Actors | Microsoft Azure"
+   pageTitle="Service Fabric 上的 Reliable Actors | Azure"
    description="描述 Reliable Actors 如何使用 Service Fabric 平台的功能，其中涵盖从执行组件开发人员的角度来看的一些概念。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,12 +9,12 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="11/13/2015"
+   ms.date="03/15/2016"
    wacn.date=""/>
 
 # Reliable Actors 如何使用 Service Fabric 平台
 
-执行组件使用 Azure Service Fabric 应用程序模型来管理应用程序生命周期。每种执行组件类型都映射到一个 Service Fabric [服务类型](/documentation/articles/service-fabric-application-model#describe-a-service)。参与者代码会[打包](/documentation/articles/service-fabric-application-model#package-an-application)为 Service Fabric 应用程序并[部署](/documentation/articles/service-fabric-deploy-remove-applications#deploy-an-application)到群集。
+执行组件使用 Azure Service Fabric 应用程序模型来管理应用程序生命周期。每种执行组件类型都映射到一个 Service Fabric [服务类型](/documentation/articles/service-fabric-application-model#describe-a-service)。执行组件代码会[打包](/documentation/articles/service-fabric-application-model#package-an-application)为 Service Fabric 应用程序并[部署](/documentation/articles/service-fabric-deploy-remove-applications#deploy-an-application)到群集。
 
 ## 执行组件的示例应用程序模型概念
 
@@ -95,13 +95,13 @@
 
 应用程序的后续管理（即升级和最终删除）也使用 Service Fabric 应用程序管理机制执行。有关详细信息，请参阅关于[应用程序模型](/documentation/articles/service-fabric-application-model)、[应用程序部署和删除](/documentation/articles/service-fabric-deploy-remove-applications)和[应用程序升级](/documentation/articles/service-fabric-application-upgrade)的主题。
 
-## 参与者服务的可伸缩性
-群集管理员可以在群集中创建每种服务类型的一个或多个参与者服务。其中每个参与者服务可以具有一个或多个分区（类似于任何其他 Service Fabric 服务）。由于能够创建某种服务类型（可映射到参与者类型）的多个服务以及能够为某个服务创建多个分区，因此参与者应用程序可进行伸缩。有关详细信息，请参阅关于[可伸缩性](/documentation/articles/service-fabric-concepts-scalability)的文章。
+## 执行组件服务的可伸缩性
+群集管理员可以在群集中创建每种服务类型的一个或多个执行组件服务。其中每个执行组件服务可以具有一个或多个分区（类似于任何其他 Service Fabric 服务）。由于能够创建某种服务类型（可映射到执行组件类型）的多个服务以及能够为某个服务创建多个分区，因此执行组件应用程序可进行伸缩。有关详细信息，请参阅关于[可伸缩性](/documentation/articles/service-fabric-concepts-scalability)的文章。
 
-> [AZURE.NOTE] 无状态参与者服务要求[实例](/documentation/articles/service-fabric-availability-services#availability-of-service-fabric-stateless-services)数为 1。不支持在一个分区中具有无状态参与者服务的多个实例。因此，无状态参与者服务没有用于增加实例数以实现可伸缩性的选项。它们必须使用[可伸缩性文章](/documentation/articles/service-fabric-concepts-scalability)中所述的可伸缩性选项。
+> [AZURE.NOTE] 无状态执行组件服务要求[实例](/documentation/articles/service-fabric-availability-services#availability-of-service-fabric-stateless-services)数为 1。不支持在一个分区中具有无状态执行组件服务的多个实例。因此，无状态执行组件服务没有用于增加实例数以实现可伸缩性的选项。它们必须使用[可伸缩性文章](/documentation/articles/service-fabric-concepts-scalability)中所述的可伸缩性选项。
 
-## 针对参与者的 Service Fabric 分区概念
-执行组件的 ID 会映射到执行组件服务的分区。参与者在其参与者 ID 映射到的分区中进行创建。创建参与者时，执行组件运行时会写入 [EventSource 事件](/documentation/articles/service-fabric-reliable-actors-diagnostics#eventsource-events)，该事件指示在其中创建参与者的分区。下面是此事件的一个示例，它指示在服务 `fabric:/VoicemailBoxAdvancedApplication/VoicemailBoxActorService`、应用程序 `fabric:/VoicemailBoxAdvancedApplication` 的分区 `b6afef61-be9a-4492-8358-8f473e5d2487` 中创建 ID 为 `-5349766044453424161` 的参与者。
+## 针对执行组件的 Service Fabric 分区概念
+执行组件的 ID 会映射到执行组件服务的分区。执行组件在其执行组件 ID 映射到的分区中进行创建。创建执行组件时，执行组件运行时会写入 [EventSource 事件](/documentation/articles/service-fabric-reliable-actors-diagnostics#eventsource-events)，该事件指示在其中创建执行组件的分区。下面是此事件的一个示例，它指示在服务 `fabric:/VoicemailBoxAdvancedApplication/VoicemailBoxActorService`、应用程序 `fabric:/VoicemailBoxAdvancedApplication` 的分区 `b6afef61-be9a-4492-8358-8f473e5d2487` 中创建 ID 为 `-5349766044453424161` 的执行组件。
 
     {
       "Timestamp": "2015-04-26T10:12:20.2485941-07:00",
@@ -141,7 +141,7 @@ ID 为 `-4952641569324299627` 的另一个执行组件在相同服务的不同�
 
 > [AZURE.NOTE] 为简洁起见，省略了以上事件的某些字段。
 
-分区 ID 可以用于获取有关分区的其他信息。例如，[Service Fabric 资源管理器](/documentation/articles/service-fabric-visualizing-your-cluster)工具可以用于查看有关分区以及它所属的服务和应用程序的信息。下面的屏幕截图显示有关分区 `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a` 的信息，该分区包含了上面示例中 ID 为 `-4952641569324299627` 的参与者。
+分区 ID 可以用于获取有关分区的其他信息。例如，[Service Fabric 资源管理器](/documentation/articles/service-fabric-visualizing-your-cluster)工具可以用于查看有关分区以及它所属的服务和应用程序的信息。下面的屏幕截图显示有关分区 `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a` 的信息，该分区包含了上面示例中 ID 为 `-4952641569324299627` 的执行组件。
 
 ![有关 Service Fabric 资源管理器中的分区的信息][3]
 
@@ -168,13 +168,12 @@ public void ActorMessage(StatefulActorBase actor, string message, params object[
 }
 ```
 
-### 针对无状态参与者的 Service Fabric 分区概念
-无状态参与者在 Service Fabric 无状态服务的分区中进行创建。参与者 ID 用于确定在其下创建参与者的分区。
-无状态参与者服务的[实例](/documentation/articles/service-fabric-availability-services#availability-of-service-fabric-stateless-services)数必须是 1。不支持将实例数更改为任何其他值。因此，参与者在分区中的单个服务实例内进行创建。
+### 针对无状态执行组件的 Service Fabric 分区概念
+无状态执行组件在 Service Fabric 无状态服务的分区中进行创建。执行组件 ID 用于确定在其下创建执行组件的分区。无状态执行组件服务的[实例](/documentation/articles/service-fabric-availability-services#availability-of-service-fabric-stateless-services)数必须是 1。不支持将实例数更改为任何其他值。因此，执行组件在分区中的单个服务实例内进行创建。
 
-> [AZURE.TIP] Fabric Actors 运行时发出一些[与无状态参与者实例相关的事件](/documentation/articles/service-fabric-reliable-actors-diagnostics#events-related-to-stateless-actor-instances)。它们可用于进行诊断和性能监视。
+> [AZURE.TIP] Fabric 执行组件运行时发出一些[与无状态执行组件实例相关的事件](/documentation/articles/service-fabric-reliable-actors-diagnostics#events-related-to-stateless-actor-instances)。它们可用于进行诊断和性能监视。
 
-创建无状态参与者时，执行组件运行时会写入 [EventSource 事件](/documentation/articles/service-fabric-reliable-actors-diagnostics#eventsource-events)，该事件指示在其中创建参与者的分区和实例。下面是此事件的一个示例。它表示在服务 `fabric:/HelloWorldApplication/HelloWorldActorService`、应用程序 `fabric:/HelloWorldApplication` 的分区 `8c828833-ccf1-4e21-b99d-03b14d4face3` 的实例 `130745709600495974` 中创建 ID 为 `abc` 的执行组件。
+创建无状态执行组件时，执行组件运行时会写入 [EventSource 事件](/documentation/articles/service-fabric-reliable-actors-diagnostics#eventsource-events)，该事件指示在其中创建执行组件的分区和实例。下面是此事件的一个示例。它表示在服务 `fabric:/HelloWorldApplication/HelloWorldActorService`、应用程序 `fabric:/HelloWorldApplication` 的分区 `8c828833-ccf1-4e21-b99d-03b14d4face3` 的实例 `130745709600495974` 中创建 ID 为 `abc` 的执行组件。
 
     {
       "Timestamp": "2015-04-26T18:17:46.1453113-07:00",
@@ -195,17 +194,17 @@ public void ActorMessage(StatefulActorBase actor, string message, params object[
 
 > [AZURE.NOTE] 为简洁起见，省略了以上事件的某些字段。
 
-### 针对有状态参与者的 Service Fabric 分区概念
-有状态参与者在 Service Fabric 有状态服务的分区中进行创建。参与者 ID 用于确定在其下创建参与者的分区。服务的每个分区可以具有一个或多个放置在群集中不同节点上的[副本](/documentation/articles/service-fabric-availability-services#availability-of-service-fabric-stateful-services)。具有多个副本可为参与者状态提供可靠性。Azure Resource Manager 根据群集中的可用故障和升级域优化放置。相同分区的两个副本绝不会放置在相同节点上。执行组件始终在其执行组件 ID 映射到的分区的主副本中进行创建。
+### 针对有状态执行组件的 Service Fabric 分区概念
+有状态执行组件在 Service Fabric 有状态服务的分区中进行创建。执行组件 ID 用于确定在其下创建执行组件的分区。服务的每个分区可以具有一个或多个放置在群集中不同节点上的[副本](/documentation/articles/service-fabric-availability-services#availability-of-service-fabric-stateful-services)。具有多个副本可为执行组件状态提供可靠性。Azure Resource Manager 根据群集中的可用故障和升级域优化放置。相同分区的两个副本绝不会放置在相同节点上。执行组件始终在其执行组件 ID 映射到的分区的主副本中进行创建。
 
-> [AZURE.TIP] Fabric Actors 运行时发出一些[与有状态参与者副本相关的事件](/documentation/articles/service-fabric-reliable-actors-diagnostics#events-related-to-stateful-actor-replicas)。它们可用于进行诊断和性能监视。
+> [AZURE.TIP] Fabric 执行组件运行时发出一些[与有状态执行组件副本相关的事件](/documentation/articles/service-fabric-reliable-actors-diagnostics#events-related-to-stateful-actor-replicas)。它们可用于进行诊断和性能监视。
 
-回想一下，在[前面介绍的 VoiceMailBoxActor 示例中](#service-fabric-partition-concepts-for-actors)，ID 为 `-4952641569324299627` 的参与者是在分区 `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a` 中进行创建的。该示例中的 EventSource 事件还指示参与者在该分区的副本 `130745418574851853` 中进行创建。这是创建执行组件时该分区的主副本。下面的 Service Fabric 资源管理器屏幕截图确认了这一点。
+回想一下，在[前面介绍的 VoiceMailBoxActor 示例中](#service-fabric-partition-concepts-for-actors)，ID 为 `-4952641569324299627` 的执行组件是在分区 `5405d449-2da6-4d9a-ad75-0ec7d65d1a2a` 中进行创建的。该示例中的 EventSource 事件还指示执行组件在该分区的副本 `130745418574851853` 中进行创建。这是创建执行组件时该分区的主副本。下面的 Service Fabric 资源管理器屏幕截图确认了这一点。
 
 ![Service Fabric 资源管理器中的主副本][4]
 
-## 参与者状态提供程序选择
-执行组件运行时中包含一些默认执行组件状态提供程序。若要为参与者服务选择相应的状态提供程序，需要了解状态提供程序如何使用基础 Service Fabric 平台功能使参与者状态高度可用。
+## 执行组件状态提供程序选择
+执行组件运行时中包含一些默认执行组件状态提供程序。若要为执行组件服务选择相应的状态提供程序，需要了解状态提供程序如何使用基础 Service Fabric 平台功能使执行组件状态高度可用。
 
 默认情况下，有状态执行组件使用键值存储的执行组件状态提供程序。此状态提供程序以 Service Fabric 平台提供的分布式键值存储为基础构建。此状态在托管主[副本](/documentation/articles/service-fabric-availability-services#availability-of-service-fabric-stateful-services)的节点的本地磁盘上永久保存。此状态也在托管辅助副本的节点的本地磁盘上复制并永久保存。仅当副本的仲裁已将状态提交到其本地磁盘时才能完成状态保存。键值存储具有高级功能，可检测不一致性（如错误进度）并自动更正它们。
 
@@ -239,4 +238,4 @@ public class VoicemailBoxActor : StatefulActor<VoicemailBox>, IVoicemailBoxActor
 [3]: ./media/service-fabric-reliable-actors-platform/actor-partition-info.png
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0418_2016-->

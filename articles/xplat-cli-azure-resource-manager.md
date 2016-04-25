@@ -1,5 +1,6 @@
+
 <properties
-	pageTitle="将 Azure CLI 与资源管理器配合使用 | Microsoft Azure"
+	pageTitle="将 Azure CLI 与资源管理器配合使用 | Azure"
 	description="使用适用于 Mac、Linux 和 Windows 的 Azure CLI 将多个资源部署为资源组。"
 	editor=""
 	manager="timlt"
@@ -9,10 +10,10 @@
 
 <tags
 	ms.service="azure-resource-manager"
-	ms.date="10/26/2015"
+	ms.date="01/19/2016"
 	wacn.date=""/>
 
-# 将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理器配合使用
+# 将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用
 
 > [AZURE.SELECTOR]
 - [Azure CLI](/documentation/articles/xplat-cli-azure-resource-manager)
@@ -20,39 +21,39 @@
 
 
 
-本文介绍如何在 Azure 资源管理器模式下，使用适用于 Mac、Linux 和 Windows 的 Azure 命令行界面 (CLI) 创建和管理 Azure 资源。
+本文介绍如何在 Azure Resource Manager 模式下，使用适用于 Mac、Linux 和 Windows 的 Azure 命令行界面 (CLI) 创建和管理 Azure 资源。
 
->[AZURE.NOTE]若要使用命令行来创建和管理 Azure 资源，你必须有一个 Azure 帐户（[在此处免费试用](http://azure.microsoft.com/pricing/free-trial/)）。你还需要[安装 Azure CLI](/documentation/articles/xplat-cli-install)，并[登录以使用与你帐户关联的 Azure 资源](/documentation/articles/xplat-cli-connect)。如果已做好了这些准备，你便可以开始了。
+>[AZURE.NOTE] 若要使用命令行来创建和管理 Azure 资源，你必须有一个 Azure 帐户（[在此处免费试用](http://azure.microsoft.com/pricing/free-trial/)）。你还需要[安装 Azure CLI](/documentation/articles/xplat-cli-install)，并[登录以使用与你帐户关联的 Azure 资源](/documentation/articles/xplat-cli-connect)。如果已做好了这些准备，你便可以开始了。
 
 ## Azure 资源
 
-使用 Azure 资源管理器可将一组_资源_（用户管理的实体，例如虚拟机、数据库服务器、数据库或网站）作为单个逻辑单位或_资源组_来进行创建和管理。
+使用 Azure Resource Manager 可将一组_资源_（用户管理的实体，例如虚拟机、数据库服务器、数据库或网站）作为单个逻辑单位或_资源组_来进行创建和管理。
 
-Azure 资源管理器的一个优点是，可以_声明_方式创建 Azure 资源：在 JSON *模板*中描述可部署资源组的结构和关系。模板确定相关参数，这些参数可以在运行命令时以内联方式填充，或存储在单独的 JSON azuredeploy-parameters.json 文件中。这样您只需提供不同参数，即可使用同一模板轻松地创建新资源。例如，创建网站的模板将包含站点名称参数、网站所在区域的参数以及其他常见设置的参数。
+Azure Resource Manager 的其中一个优点是，可采用_声明性_方式创建 Azure 资源：在 JSON 模板中描述一组可部署资源的结构和关系。模板确定相关参数，这些参数可以在运行命令时以内联方式填充，或存储在单独的 JSON azuredeploy-parameters.json 文件中。这样您只需提供不同参数，即可使用同一模板轻松地创建新资源。例如，创建网站的模板将包含站点名称参数、网站所在区域的参数以及其他常见设置的参数。
 
-使用模板修改或创建组时，将创建_部署_，随后将其应用于该组。有关 Azure 资源管理器的详细信息，请参阅 [Azure 资源管理器概述](/documentation/articles/resource-group-overview)。
+使用模板修改或创建组时，将创建_部署_，随后将其应用于该组。有关 Azure Resource Manager 的详细信息，请参阅 [Azure Resource Manager 概述](/documentation/articles/resource-group-overview)。
 
-创建部署后，你可以在命令行中以命令方式管理各个资源，就像在经典的（服务管理）部署模型中可以做到的一样。例如，使用 Azure 资源管理器 CLI 命令来启动、停止或删除资源（如 [Azure 资源管理器虚拟机](../virtual-machines/virtual-machines-deploy-rmtemplates-azure-cli.md)）。
+创建部署后，你可以在命令行中以命令方式管理各个资源，就像在经典的（服务管理）部署模型中可以做到的一样。例如，使用 Azure Resource Manager CLI 命令来启动、停止或删除资源（如 [Azure Resource Manager 虚拟机](/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli)）。
 
 ## 身份验证
 
-若要通过 Azure CLI 使用 Azure 资源管理器，你需要使用工作或学校帐户（组织帐户）或 Microsoft 帐户（从 CLI 版本 0.9.10 开始）向 Microsoft Azure 进行身份验证。在此模式下，使用通过 .publishsettings 文件安装的证书进行身份验证不起作用。
+若要通过 Azure CLI 使用 Azure Resource Manager，你需要使用工作或学校帐户（组织帐户）或 Microsoft 帐户（从 CLI 版本 0.9.10 开始）向 Microsoft Azure 进行身份验证。在此模式下，使用通过 .publishsettings 文件安装的证书进行身份验证不起作用。
 
 有关向 Microsoft Azure 进行身份验证的详细信息，请参阅[从 Azure CLI 连接到 Azure 订阅](/documentation/articles/xplat-cli-connect)。
 
->[AZURE.NOTE]当你使用由 Azure Active Directory 管理的工作或学校帐户时，你还可以使用 Azure 基于角色的访问控制 (RBAC) 来管理 Azure 资源的访问和使用。有关详细信息，请参阅[管理和审核对资源的访问权限](/documentation/articles/resource-group-rbac)。
+>[AZURE.NOTE] 当你使用由 Azure Active Directory 管理的工作或学校帐户时，你还可以使用 Azure 基于角色的访问控制 (RBAC) 来管理 Azure 资源的访问和使用。有关详细信息，请参阅[Azure 基于角色的访问控制](/documentation/articles/role-based-access-control-configure)。
 
-## 设置 Azure 资源管理器模式
+## 设置 Azure Resource Manager 模式
 
-由于默认情况下未启用 Azure 资源管理器模式，因此需要使用以下命令来启用 Azure CLI 资源管理器命令。
+由于默认情况下未启用 Azure Resource Manager 模式，因此需要使用以下命令来启用 Azure CLI 资源管理器命令。
 
 	azure config mode arm
 
->[AZURE.NOTE]Azure 资源管理器模式与 Azure 服务管理模式互斥。即在一种模式下创建的资源不能从另一种模式进行管理。
+>[AZURE.NOTE] Azure Resource Manager 模式与 Azure 服务管理模式互斥。即在一种模式下创建的资源不能从另一种模式进行管理。
 
 ## 查找位置
 
-大多数 Azure 资源管理器命令需要有可用于创建或查找资源的有效位置。可以使用以下命令来查找不同 Azure 资源的所有可用位置。
+大多数 Azure Resource Manager 命令需要有可用于创建或查找资源的有效位置。可以使用以下命令来查找不同 Azure 资源的所有可用位置。
 
 	azure location list
 
@@ -60,11 +61,11 @@ Azure 资源管理器的一个优点是，可以_声明_方式创建 Azure 资�
 
 ## 创建资源组
 
-资源组是网络、存储和其他资源的逻辑分组。Azure 资源管理器模式中的几乎所有命令都需要资源组。例如，你可以使用以下命令创建名为 _testRG_ 的资源组。
+资源组是网络、存储和其他资源的逻辑分组。Azure Resource Manager 模式中的几乎所有命令都需要资源组。例如，你可以使用以下命令创建名为 _testRG_ 的资源组。
 
 	azure group create -n "testRG" -l "West US"
 
-在此之后，你可以开始将资源添加到此组中，然后使用此组来配置资源（如新的虚拟机）。
+你将在稍后使用模板启动 Ubuntu VM 时部署到此“testRG”资源组。创建资源组后，可以添加资源，如虚拟机、虚拟网络或存储器。
 
 
 ## 使用资源组模板
@@ -73,50 +74,54 @@ Azure 资源管理器的一个优点是，可以_声明_方式创建 Azure 资�
 
 使用模板时，你可以[创建自己的模板](/documentation/articles/resource-group-authoring-templates)，或者使用[模板库](https://azure.microsoft.com/documentation/templates/)中的某个模板，这些模板也在 [GitHub](https://github.com/Azure/azure-quickstart-templates) 中提供。
 
-创建新模板超出本文的范围，因此首先，让我们使用 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-linux-vm) 中提供的 _101-simple-vm-from-image_ 模板。默认情况下，这将在新的虚拟网络（包含美国西部区域中的单个子网）中创建单个 Ubuntu 4.04.2-LTS 虚拟机。只需指定以下少数参数即可使用此模板：
+创建新模板不在本文讨论的范围之内，因此我们可以从使用[模板库](https://azure.microsoft.com/documentation/templates/101-vm-simple-linux/)中提供的 _101-simple-vm-from-image_ 模板开始。默认情况下，这将在新的虚拟网络（包含美国西部区域中的单个子网）中创建单个 Ubuntu 14.04.2-LTS 虚拟机。只需指定以下少数参数即可使用此模板：
 
-* 唯一的存储帐户名称
-* VM 的管理员用户名
-* 密码
-* VM 的域名
+* VM 的管理员用户名为 `adminUsername`
+* 密码为 `adminPassword`
+* VM 的域名为 `dnsLabelPrefix`
 
->[AZURE.TIP]这些步骤只演示了在 Azure CLI 中使用 VM 模板的一种方式。有关其他示例，请参阅[使用 Azure 资源管理器模板和 Azure CLI 部署和管理虚拟机](../virtual-machines/virtual-machines-deploy-rmtemplates-azure-cli.md)。
+>[AZURE.TIP] 这些步骤只演示了在 Azure CLI 中使用 VM 模板的一种方式。有关其他示例，请参阅[使用 Azure Resource Manager 模板和 Azure CLI 部署和管理虚拟机](/documentation/articles/virtual-machines-deploy-rmtemplates-azure-cli)。
 
-1. 从 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-linux-vm) 将文件 azuredeploy.json 和 azuredeploy.parameters.json 下载到本地计算机上的工作文件夹。
+1. 点击“了解关于 GitHub 的更多信息”链接以从 GitHub 将 azuredeploy.json 和 azuredeploy.parameters.json 文件下载到本地计算上的工作文件夹。（请务必选择 GitHub 中每个文件的_原始_格式。）
 
 2. 在文本编辑器中打开 azuredeploy.parameters.json 文件，然后输入适合你环境的参数值（将 **ubuntuOSVersion** 值保持不变）。
 
-		{
-	  	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-	  	"contentVersion": "1.0.0.0",
-	  	"parameters": {
-		    "newStorageAccountName": {
-		      "value": "MyStorageAccount"
-		    },
-		    "adminUsername": {
-		      "value": "MyUserName"
-		    },
-		    "adminPassword": {
-		      "value": "MyPassword"
-		    },
-		    "dnsNameForPublicIP": {
-		      "value": "MyDomainName"
-		    },
-		    "ubuntuOSVersion": {
-		      "value": "14.04.2-LTS"
-		    }
-		  }
-		}
+	```
+			{
+			  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+			  "contentVersion": "1.0.0.0",
+			  "parameters": {
+			    "adminUsername": {
+			      "value": "azureUser"
+			    },
+			    "adminPassword": {
+			      "value": "GEN-PASSWORD"
+			    },
+			    "dnsLabelPrefix": {
+			      "value": "GEN-UNIQUE"
+			    },
+			    "ubuntuOSVersion": {
+			      "value": "14.04.2-LTS"
+			    }
+			  }
+			}
 
-3. 保存 azuredeploy.parameters.json 文件后，请使用以下命令基于模板创建新的资源组。`-e` 选项指定你在上一步中修改的 azuredeploy.parameters.json 文件。将 *testRG* 替换为你要使用的组名，将 *testDeploy* 替换为所选的部署名称。位置应与你在模板参数文件中指定的位置相同。
+	```
+3.  修改完部署参数后，将 Ubuntu VM 部署到之前创建的资源组中。为该部署选择一个名称，然后使用以下命令来启动它。
 
-		azure group create "testRG" "West US" -f azuredeploy.json -d "testDeploy" -e azuredeploy.parameters.json
+	```
+	azure group deployment create -f azuredeploy.json -e azuredeploy.parameters.json testRG testRGdeploy
+	```
+
+	此示例创建名为 _testRGDeploy_ 的部署，它被部署到资源组 _testRG_ 中。`-e` 选项指定你在上一步中修改的 azuredeploy.parameters.json 文件。`-f` 选项指定 azuredeploy.json 模板文件。
 
 	在上载部署之后，但在将部署应用于组中的资源之前，此命令将返回 OK。
 
 4. 要检查部署的状态，请使用以下命令。
 
-		azure group deployment show "testRG" "testDeploy"
+	```
+	azure group deployment show "testRG" "testRGDeploy"
+	```
 
 	**ProvisioningState** 将显示部署的状态。
 
@@ -140,7 +145,7 @@ Azure 资源管理器的一个优点是，可以_声明_方式创建 Azure 资�
 		data:    ubuntuOSVersion        String        14.04.2-LTS
 		info:    group deployment show command OK
 
-	>[AZURE.NOTE]如果你发现配置不正确，且需要停止长时间运行的部署，请使用以下命令。
+	>[AZURE.NOTE] 如果你发现配置不正确，且需要停止长时间运行的部署，请使用以下命令。
 	>
 	> `azure group deployment stop "testRG" "testDeploy"`
 	>
@@ -156,16 +161,16 @@ Azure 资源管理器的一个优点是，可以_声明_方式创建 Azure 资�
 
 你还可以直接使用 [GitHub](https://github.com/Azure/azure-quickstart-templates) 中的模板，而不用将模板下载到计算机。为此，请通过在命令中使用 **--template-url** 选项将模板的 URL 传递给 azuredeploy.json 文件。若要获取该 URL，请在 GitHub 上以 _raw_ 模式打开 azuredeploy.json，并复制在浏览器的地址栏中显示的 URL。然后，可以直接使用此 URL 通过类似于以下内容的命令创建部署。
 
-	azure group deployment create "testDeploy" -g "testResourceGroup" --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json
+	azure group deployment create "testDeploy" testResourceGroup --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json
 系统将提示你输入必需的模板参数。
 
-> [AZURE.NOTE]请务必以 _raw_ 模式打开 JSON 模板。浏览器地址栏中显示的 URL 与常规模式下显示的 URL 不同。在 GitHub 上查看文件时，若要以 _raw_ 模式打开文件，请单击右上角的“原始”。
+> [AZURE.NOTE] 请务必以 _raw_ 模式打开 JSON 模板。浏览器地址栏中显示的 URL 与常规模式下显示的 URL 不同。在 GitHub 上查看文件时，若要以 _raw_ 模式打开文件，请单击右上角的“原始”。
 
 ## 使用资源
 
 尽管模板可用于声明组范围内的配置更改，但有时您只需要使用特定资源。你可以使用 `azure resource` 命令来实现此目的。
 
-> [AZURE.NOTE]使用除 `list` 命令以外的 `azure resource` 命令时，你必须使用 `-o` 参数指定你使用的资源的 API 版本。如果你不确定要使用的 API 版本，请查阅模板文件并查找资源的 **apiVersion** 字段。
+> [AZURE.NOTE] 使用除 `list` 命令以外的 `azure resource` 命令时，你必须使用 `-o` 参数指定你使用的资源的 API 版本。如果你不确定要使用的 API 版本，请查阅模板文件并查找资源的 **apiVersion** 字段。
 
 1. 要列出组中的所有资源，请使用以下命令。
 
@@ -183,7 +188,7 @@ Azure 资源管理器的一个优点是，可以_声明_方式创建 Azure 资�
 
 		azure resource show "testRG" "MyUbuntuVM" Microsoft.Compute/virtualMachines -o "2015-06-15" --json
 
-	>[AZURE.NOTE]你可以通过使用 &gt; 字符将输出传输到文件，将 JSON 数据保存到文件。例如：
+	>[AZURE.NOTE] 你可以通过使用 &gt; 字符将输出传输到文件，将 JSON 数据保存到文件。例如：
 	>
 	> `azure resource show "testRG" "MyUbuntuVM" Microsoft.Compute/virtualMachines -o "2015-06-15" --json > myfile.json`
 
@@ -199,11 +204,11 @@ Azure 资源管理器的一个优点是，可以_声明_方式创建 Azure 资�
 
 ## 后续步骤
 
-* 有关将 Azure 资源管理器与 Azure PowerShell 配合使用的信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](/documentation/articles/powershell-azure-resource-manager)。
-* 有关从 Azure 门户使用 Azure 资源管理器的信息，请参阅[使用资源组管理 Azure 资源][psrm]。
+* 有关将 Azure Resource Manager 与 Azure PowerShell 配合使用的信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](/documentation/articles/powershell-azure-resource-manager)。
+* 有关从 Azure 门户使用 Azure Resource Manager 的信息，请参阅[使用资源组管理 Azure 资源][psrm]。
 
 [signuporg]: http://www.windowsazure.cn/documentation/articles/sign-up-organization/
 [adtenant]: http://technet.microsoft.com/library/jj573650#createAzureTenant
 [psrm]: http://go.microsoft.com/fwlink/?LinkId=394760
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0418_2016-->

@@ -112,7 +112,7 @@ Azure 将创建并激活该命名空间。
 
 1. 在“名称”中键入 **MvcACS**，然后单击“确定”。
 1. 在下一个对话框中，选择“Internet 应用程序”，然后单击“确定”。
-1. 编辑 *Views\\Shared\_LoginPartial.cshtml* 文件，并将内容替换为下列代码：
+1. 编辑 Views\\Shared\_LoginPartial.cshtml 文件，并将内容替换为下列代码：
 
         @if (Request.IsAuthenticated)
         {
@@ -172,7 +172,7 @@ Azure 将创建并激活该命名空间。
 
 	![][18]
 
-6.	单击“对称密钥”，再单击“显示密钥”，然后复制密钥值。然后，单击取消退出“编辑管理客户端”页面而不进行任何更改。
+6.	单击“对称密钥”，再单击“显示密钥”，然后复制密钥值。然后，单击“取消”退出“编辑管理客户端”页面而不进行任何更改。
 
 	![][19]
 
@@ -202,11 +202,11 @@ Azure 将创建并激活该命名空间。
 
 在本节中，我们将修改应用程序以查看 ACS 发送的声明。身份验证和访问工具已创建一个将 IP 中的所有声明传递给应用程序的规则组。请注意，不同的标识提供程序会发送不同的声明。
 
-1. 打开 *Controllers\\HomeController.cs* 文件。为 **System.Threading** 添加 **using** 语句：
+1. 打开 Controllers\\HomeController.cs 文件。为 **System.Threading** 添加 **using** 语句：
 
  	using System.Threading;
 
-1. 在 HomeController 类中，添加 *Claims* 方法：
+1. 在 HomeController 类中，添加 Claims 方法：
 
     public ActionResult Claims()
     {
@@ -217,13 +217,13 @@ Azure 将创建并激活该命名空间。
         return View();
     }
 
-1. 右键单击 *Claims* 方法，然后选择“添加视图”。
+1. 右键单击 Claims 方法，然后选择“添加视图”。
 
 ![][66]
 
 1. 单击**“添加”**。
 
-1. 将 *Views\\Home\\Claims.cshtml* 文件的内容替换为下列代码：
+1. 将 Views\\Home\\Claims.cshtml 文件的内容替换为下列代码：
 
         @{
             ViewBag.Title = "Claims";
@@ -273,7 +273,7 @@ Azure 将创建并激活该命名空间。
         }
         </table>
 
-1. 运行应用程序并导航到 *Claims* 方法：
+1. 运行应用程序并导航到 Claims 方法：
 
 ![][666]
 
@@ -399,4 +399,4 @@ Visual Studio 中的身份验证和访问工具会自动将您的应用程序与
   [19]: ./media/active-directory-dotnet-how-to-use-access-control/acsShowKey.png
   [20]: ./media/active-directory-dotnet-how-to-use-access-control/acsConfigAcsNamespace2.png
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0418_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="如何使用 Azure 诊断和 Azure Operational Insights 收集日志 | Microsoft Azure"
+   pageTitle="如何使用 Azure 诊断和 Azure Operational Insights 收集日志 | Azure"
    description="本文介绍如何将 Azure 诊断和 Azure Operational Insights 设置为从在 Azure 中运行的 Service Fabric 群集收集日志。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="10/20/2015"
+   ms.date="02/12/2016"
    wacn.date=""/>
 
 
@@ -48,7 +48,7 @@ Operational Insights 根据存储日志的存储表的名称，识别从 Service
 ### 使用 Azure Resource Manager 在创建群集过程中部署诊断扩展
 若要使用 Resource Manager 创建群集，需要在创建群集之前，将诊断配置 JSON 添加到整个 Resource Manager 模板。我们将在 Resource Manager 模板示例中提供包含五个 VM 的群集 Resource Manager 模板，并在演示 Resource Manager 模板示例的过程中添加诊断配置。你可以在 Azure 示例库中的以下位置找到该示例：[包含五节点群集的诊断 Resource Manager 模板示例](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-cluster-5-node-1-nodetype-wad)。
 
-若要查看 Resource Manager 模板中的诊断设置，请搜索“WadCfg”。 若要使用此模板创建群集，只要按上述链接提供的“部署到 Azure”按钮即可。
+若要查看 Resource Manager 模板中的诊断设置，请搜索 **WadCfg**。 若要使用此模板创建群集，只要按上述链接提供的“部署到 Azure”按钮即可。
 或者，也可以下载 Resource Manager 示例，进行更改，然后在 Azure PowerShell 窗口中输入 `New-AzureResourceGroupDeployment` 命令，使用修改后的模板创建群集。请参阅以下信息获取需要传入命令的参数。
 
 此外，在调用此部署命令之前，可能需要进行一些设置，包括添加 Azure 帐户 (`Add-AzureAccount`)、选择订阅 (`Select-AzureSubscription`)、切换到 Resource Manager 模式 (`Switch-AzureMode AzureResourceManager`)，以及创建资源组（如果尚未创建）(`New-AzureResourceGroup`)。
@@ -59,8 +59,7 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
 ```
 
 ### <a name="deploywadarm"></a>将诊断扩展部署到现有群集
-如果现有的群集上未部署诊断，可以使用以下步骤来添加。
-使用 JSON WadConfigUpdate.json 和 WadConfigUpdateParams.json 创建两个文件。
+如果现有的群集上未部署诊断，可以使用以下步骤来添加。使用 JSON WadConfigUpdate.json 和 WadConfigUpdateParams.json 创建两个文件。
 
 ##### WadConfigUpdate.json
 
@@ -123,7 +122,7 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
                 }
             }
     },
-                    "StorageAccount": "[parameters('applicationDiagnosticsStorageAccountNamee')]"
+                    "StorageAccount": "[parameters('applicationDiagnosticsStorageAccountName')]"
                 },
                 "protectedSettings": {
                     "storageAccountName": "[parameters('applicationDiagnosticsStorageAccountName')]",
@@ -328,4 +327,4 @@ if ($existingConfig) {
 ## 后续步骤
 查看针对 [Reliable Actors](/documentation/articles/service-fabric-reliable-actors-diagnostics) 和 [Reliable Services](/documentation/articles/service-fabric-reliable-services-diagnostics) 发出的诊断事件，以更详细地了解排查问题时应该调查哪些事件。
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0418_2016-->
