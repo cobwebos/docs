@@ -147,4 +147,4 @@ Azure 针对某些常见的身份验证要求提供周全的解决方案，所�
 - [访问本地资源](/documentation/articles/web-sites-hybrid-connection-get-started)
 - [了解 Azure 的工作原理](/documentation/articles/app-service-how-works-readme)
 
-<!---HONumber=Mooncake_0328_2016--->
+<!----HONumber=Mooncake_0328_2016--->
