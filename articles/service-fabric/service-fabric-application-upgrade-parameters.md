@@ -1,6 +1,6 @@
 
 <properties
-   pageTitle="应用程序升级：升级参数 | Microsoft Azure"
+   pageTitle="应用程序升级：升级参数 | Azure"
    description="介绍与升级 Service Fabric 应用程序相关的参数，包括要执行的运行状况检查，以及用于自动撤消升级的策略。"
    services="service-fabric"
    documentationCenter=".net"
@@ -10,7 +10,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/09/2016"
+   ms.date="04/14/2016"
    wacn.date=""/>
 
 
@@ -32,7 +32,7 @@
 | HealthCheckStableDurationSec | 在转到下一个升级域或完成升级之前，为了验证应用程序是否稳定而要等待的持续时间（以秒为单位）。此等待持续时间用于防止在执行了运行状况检查后，未检测到运行状况更改。默认值为 0 秒，应该针对应用程序相应地自定义该值。 |
 | UpgradeDomainTimeoutSec | 升级单个升级域的最长时间（以秒为单位）。如果达到了此超时，则升级将停止，并将执行 UpgradeFailureAction 所指定的操作。默认值为 never（无期限），应该针对应用程序相应地自定义该值。 |
 | UpgradeTimeout | 应用于整个升级的超时（以秒为单位）。如果达到了此超时，则升级将停止，并将触发 UpgradeFailureAction。默认值为 never（无期限），应该针对应用程序相应地自定义该值。 |
-| UpgradeHealthCheckInterval | 检查运行状况的频率。_群集__清单_的 ClusterManager 节中指定了参数（无法使用 upgrade cmdlet 指定此参数）。 默认值为 60 秒。 |
+| UpgradeHealthCheckInterval | 检查运行状况的频率。群集清单的 ClusterManager 节中指定了参数（无法使用 upgrade cmdlet 指定此参数）。 默认值为 60 秒。 |
 
 
 
@@ -77,4 +77,4 @@ MaxPercentUnhealthyServices、MaxPercentUnhealthyPartitionsPerService 和 MaxPer
 参考[对应用程序升级进行故障排除](/documentation/articles/service-fabric-application-upgrade-troubleshooting)中的步骤来解决应用程序升级时的常见问题。
  
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0425_2016-->

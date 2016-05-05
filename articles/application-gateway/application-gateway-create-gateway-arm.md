@@ -1,5 +1,5 @@
 <properties
-   pageTitle="使用 Azure Resource Manager 创建、启动或删除应用程序网关 | Microsoft Azure"
+   pageTitle="使用 Azure Resource Manager 创建、启动或删除应用程序网关 | Azure"
    description="本页提供有关使用 Azure Resource Manager 创建、配置、启动和删除 Azure 应用程序网关的说明"
    documentationCenter="na"
    services="application-gateway"
@@ -8,8 +8,8 @@
    editor="tysonn"/>
 <tags
    ms.service="application-gateway"
-   ms.date="01/21/2016"
-   wacn.date=""/>
+   ms.date="04/05/2016"
+   wacn.date="04/20/2016"/>
 
 
 # 使用 Azure Resource Manager 创建、启动或删除应用程序网关
@@ -20,7 +20,7 @@ Azure 应用程序网关是第 7 层负载平衡器。它在不同服务器之�
 > [AZURE.SELECTOR]
 - [Azure 经典 PowerShell 步骤](/documentation/articles/application-gateway-create-gateway)
 - [Azure Resource Manager PowerShell](/documentation/articles/application-gateway-create-gateway-arm)
-- [Azure Resource Manager 模板 ](/documentation/articles/application-gateway-create-gateway-arm-template)
+- [Azure Resource Manager 模板](/documentation/articles/application-gateway-create-gateway-arm-template)
 
 
 <BR>
@@ -29,7 +29,7 @@ Azure 应用程序网关是第 7 层负载平衡器。它在不同服务器之�
 本文将指导你完成创建、配置、启动和删除应用程序网关的步骤。
 
 
->[AZURE.IMPORTANT] 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：资源管理器部署模型和经典部署模型。在使用任何 Azure 资源之前，请确保你了解[部署模型和工具](/documentation/articles/azure-classic-rm)。可以通过单击本文顶部的选项卡来查看不同工具的文档。本文档将介绍如何使用 Azure Resource Manager 创建应用程序网关。若要使用经典版本，请转到[使用 PowerShell 创建应用程序网关经典部署](/documentation/articles/application-gateway-create-gateway)。
+>[AZURE.IMPORTANT] 在使用 Azure 资源之前，请务必了解 Azure 当前使用两种部署模型：Resource Manager 部署模型和经典部署模型。在使用任何 Azure 资源之前，请确保你了解[部署模型和工具](/documentation/articles/azure-classic-rm)。可以通过单击本文顶部的选项卡来查看不同工具的文档。本文档将介绍如何使用 Azure Resource Manager 创建应用程序网关。若要使用经典版本，请转到[使用 PowerShell 创建应用程序网关经典部署](/documentation/articles/application-gateway-create-gateway)。
 
 
 
@@ -46,7 +46,7 @@ Azure 应用程序网关是第 7 层负载平衡器。它在不同服务器之�
 - **后端服务器池设置：**每个池都有一些设置，例如端口、协议和基于 Cookie 的关联性。这些设置绑定到池，并会应用到池中的所有服务器。
 - **前端端口：**此端口是应用程序网关上打开的公共端口。流量将抵达此端口，然后重定向到后端服务器之一。
 - **侦听器：**侦听器具有前端端口、协议（Http 或 Https，区分大小写）和 SSL 证书名称（如果要配置 SSL 卸载）。
-- **规则：**规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。目前仅支持*基本*规则。*基本*规则是一种轮循负载分发模式。
+- **规则：**规则将会绑定侦听器和后端服务器池，并定义当流量抵达特定侦听器时应定向到的后端服务器池。 
 
 
 
@@ -54,12 +54,12 @@ Azure 应用程序网关是第 7 层负载平衡器。它在不同服务器之�
 
 使用 Azure 经典门户和 Azure Resource Manager 的差别在于创建应用程序网关的顺序和需要配置的项。
 
-使用资源管理器，组成应用程序网关的所有项都将分开配置，然后放在一起创建应用程序网关资源。
+使用 Resource Manager，组成应用程序网关的所有项都将分开配置，然后放在一起创建应用程序网关资源。
 
 
 以下是创建应用程序网关所需执行的步骤：
 
-1. 创建资源管理器的资源组。
+1. 创建 Resource Manager 的资源组。
 2. 创建应用程序网关的虚拟网络、子网和公共 IP。
 3. 创建应用程序网关配置对象。
 4. 创建应用程序网关资源。
@@ -67,32 +67,24 @@ Azure 应用程序网关是第 7 层负载平衡器。它在不同服务器之�
 
 ## 创建资源管理器的资源组
 
-确保使用最新版本的 Azure PowerShell。[将 Windows PowerShell 与资源管理器配合使用](/documentation/articles/powershell-azure-resource-manager)中提供了详细信息。
+确保使用最新版本的 Azure PowerShell。[将 Windows PowerShell 与 Resource Manager 配合使用](/documentation/articles/powershell-azure-resource-manager)中提供了详细信息。
 
 ### 步骤 1
-
+登录到 Azure。
 		Login-AzureRmAccount -EnvironmentName AzureChinaCloud
 
-
-
+系统将提示你使用凭据进行身份验证。<BR>
 ### 步骤 2
-
 检查该帐户的订阅。
 
 		Get-AzureRmSubscription
 
-系统将提示你使用凭据进行身份验证。<BR>
-
 ### 步骤 3
-
 选择要使用的 Azure 订阅。<BR>
-
 
 		Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 
-
 ### 步骤 4
-
 创建新的资源组（如果要使用现有的资源组，请跳过此步骤）。
 
     New-AzureRmResourceGroup -Name appgw-rg -location "China North"
@@ -101,14 +93,13 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 
 在上面的示例中，我们在位置“中国北部”创建了名为“appgw-RG”的资源组。
 
-
 >[AZURE.NOTE] 如果你需要为应用程序网关配置自定义探测，请参阅[使用 PowerShell 创建带自定义探测的应用程序网关](/documentation/articles/application-gateway-create-probe-ps)。有关详细信息，请查看[自定义探测和运行状况监视](/documentation/articles/application-gateway-probe-overview)。
 
 
 
 ## 为应用程序网关创建虚拟网络和子网
 
-以下示例演示如何使用资源管理器创建虚拟网络。
+以下示例演示如何使用 Resource Manager 创建虚拟网络。
 
 ### 步骤 1
 
@@ -170,7 +161,6 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 
 	$fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 
-
 ### 步骤 5
 
 创建名为“fipconfig01”的前端 IP 配置，并将公共 IP 地址与前端 IP 配置相关联。
@@ -196,7 +186,7 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 
 	$sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
->[AZURE.NOTE]  *InstanceCount* 的默认值为 2，最大值为 10。*GatewaySize* 的默认值为 Medium。你可以在 Standard\_Small、Standard\_Medium 和 Standard\_Large 之间进行选择。
+>[AZURE.NOTE]  InstanceCount 的默认值为 2，最大值为 10。GatewaySize 的默认值为 Medium。你可以在 Standard\_Small、Standard\_Medium 和 Standard\_Large 之间进行选择。
 
 ## 使用 New-AzureRmApplicationGateway 创建应用程序网关
 
@@ -253,4 +243,4 @@ Azure 资源管理器要求所有资源组指定一个位置。此位置将用�
 <!--- [Azure Load Balancer](/documentation/services/load-balancer/)-->
 - [Azure 流量管理器](/documentation/services/traffic-manager)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0425_2016-->

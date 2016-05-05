@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Resource Manager 模板演练 | Microsoft Azure"
+   pageTitle="Resource Manager 模板演练 | Azure"
    description="用于预配基本 Azure IaaS 体系结构的 Resource Manager 模板的分步演练。"
    services="azure-resource-manager"
    documentationCenter="na"
@@ -9,16 +9,12 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.devlang="na"
-   ms.topic="get-started-article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
    ms.date="03/14/2016"
-   ms.author="navale;tomfitz"/>
+   wacn.date=""/>
    
 # Resource Manager 模板演练
 
-本主题将逐步引导你完成创建 Resource Manager 模板的步骤。本文假设你熟悉想要部署的 Azure 服务，但不熟悉如何在模板中呈现该基础结构。你将在[快速入门库](https://github.com/Azure/azure-quickstart-templates)中创建基于[包含负载平衡器和负载平衡规则模板的 2 个 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules) 的模板，但你学到的技巧可运用到任何需要创建的模板。
+本主题将逐步引导你完成创建 Resource Manager 模板的步骤。你将在[快速入门库](https://github.com/Azure/azure-quickstart-templates)中创建基于[包含负载平衡器和负载平衡规则模板的 2 个 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules) 的模板。你学到的技巧可运用到任何需要创建的模板。
 
 让我们来看一下通用体系结构：
 
@@ -30,7 +26,7 @@
 
 你已确定要将此体系结构部署到 Azure，并且想要使用 Resource Manager 模板，因此可以在其他时间轻松重新部署此体系结构；不过，你不确定如何创建该模板。本主题将帮助你了解要放在模板中的内容。
 
-创建模板时，你可以使用任何类型的编辑器。Visual Studio 提供了可简化模板开发的工具，但你不需要 Visual Studio 即可完成本教程。有关使用 Visual Studio 创建 Web 应用和 SQL 数据库部署的教程，请参阅 [Creating and deploying Azure resource groups through Visual Studio（通过 Visual Studio 创建和部署 Azure 资源组）](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
+创建模板时，你可以使用任何类型的编辑器。Visual Studio 提供了可简化模板开发的工具，但你不需要 Visual Studio 即可完成本教程。有关使用 Visual Studio 创建 Web 应用和 SQL 数据库部署的教程，请参阅 [Creating and deploying Azure resource groups through Visual Studio（通过 Visual Studio 创建和部署 Azure 资源组）](/documentation/articles/vs-azure-tools-resource-groups-deployment-projects-create-deploy)。
 
 ## 创建 Resource Manager 模板
 
@@ -89,7 +85,7 @@
 
 为 **type** 指定的值同时包含资源提供程序和资源类型。在可用性集中，资源提供程序为 **Microsoft.Compute**，资源类型为 **availabilitySets**。可通过运行以下 PowerShell 命令获取可用的资源提供程序列表：
 
-    PS C:\> Get-AzureRmResourceProvider -ListAvailable
+    Get-AzureRmResourceProvider -ListAvailable
 
 或者，如果你使用 Azure CLI，可以运行以下命令：
 
@@ -103,7 +99,7 @@
 
 若要查看特定提供程序的资源类型，请运行以下 PowerShell 命令：
 
-    PS C:\> (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
+    (Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute).ResourceTypes
 
 或者，在 Azure CLI 中，以下命令将以 JSON 格式返回可用的类型，并将它保存到文件中。
 
@@ -133,7 +129,7 @@
 
 现在，让我们看看如何确定 **apiVersion**。指定的值完全匹配创建资源时所要使用的 REST API 版本。因此，你可以查看该资源类型的 REST API 文档。或者，可以对特定类型运行以下 PowerShell 命令。
 
-    PS C:\> ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Network).ResourceTypes | Where-Object ResourceTypeName -eq publicIPAddresses).ApiVersions
+    ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Network).ResourceTypes | Where-Object ResourceTypeName -eq publicIPAddresses).ApiVersions
 
 这将返回以下值：
 
@@ -146,7 +142,7 @@
 创建新模板时，请选择最新的 API 版本。
 
 ## 虚拟网络和子网
-创建具有一个子网的虚拟网络。有关要设置的所有属性，请查看 [REST API for virtual networks（虚拟网络的 REST API）](https://msdn.microsoft.com/library/azure/mt163661.aspx)。
+创建具有一个子网的虚拟网络。有关要设置的所有属性，请查看 [REST API for virtual networks（虚拟网络的 REST API）](https://msdn.microsoft.com/zh-cn/library/azure/mt163661.aspx)。
 
 ```json
 {
@@ -267,7 +263,7 @@
 ## 网络接口
 你将创建 2 个网络接口，每个 VM 各用一个。可以使用 [copyIndex()](resource-group-create-multiple.md) 函数来迭代复制循环（称为 nicLoop），并创建 `numberOfInstances` 变量中定义的网络接口个数，而不必包含重复的网络接口项。
 网络接口取决于虚拟网络和负载平衡器的创建。它使用创建虚拟网络时所定义的子网，以及负载平衡器 ID 来配置负载平衡器地址池和入站 NAT 规则。
-有关所有属性，请查看 [REST API for network interfaces（网络接口的 REST API）](https://msdn.microsoft.com/library/azure/mt163668.aspx)。
+有关所有属性，请查看 [REST API for network interfaces（网络接口的 REST API）](https://msdn.microsoft.com/zh-cn/library/azure/mt163668.aspx)。
 
 ```json
 {
@@ -314,7 +310,7 @@
 VM 的创建取决于存储帐户、网络接口和可用性集。如 `storageProfile` 属性中的定义，将从应用商店映像创建此 VM - `imageReference` 用于定义映像发布者、产品、SKU 和版本。
 最后，配置诊断配置文件以启用 VM 的诊断。
 
-若要查找应用商店映像的相关属性，请参考 [VM searching（VM 搜索）](./virtual-machines/resource-groups-vm-searching.md)一文。
+若要查找应用商店映像的相关属性，请遵循[select Linux virtual machine images（选择 Linux 虚拟机映像）](/documentation/articles/virtual-machines/virtual-machines-linux-cli-ps-findimage)或 [select Windows virtual machine images（选择 Windows 虚拟机映像）](/documentation/articles/virtual-machines/virtual-machines-windows-cli-ps-findimage)文章。
 对于第三方供应商提供的映像，必须指定名为 `plan` 的另一个属性。从快速入门库的[此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic)中可找到示例。
 
 
@@ -505,8 +501,7 @@ VM 的创建取决于存储帐户、网络接口和可用性集。如 `storagePr
 
 创建模板后，便可以开始部署。
 
-- 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates（创作 Azure Resource Manager 模板）](resource-group-authoring-templates.md)。
-- 若要了解如何部署模板，请参阅 [Deploy a Resource Group with Azure Resource Manager template（使用 Azure Resource Manager 模板部署资源组）](resource-group-template-deploy.md)。
+- 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates（创作 Azure Resource Manager 模板）](/documentation/articles/resource-group-authoring-templates)。
+- 若要了解如何部署模板，请参阅 [Deploy a Resource Group with Azure Resource Manager template（使用 Azure Resource Manager 模板部署资源组）](/documentation/articles/resource-group-template-deploy)
 
-
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0425_2016-->

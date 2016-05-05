@@ -9,10 +9,10 @@
 
 <tags
      ms.service="iot-hub"
-     ms.date="02/12/2016"
+     ms.date="04/07/2016"
      wacn.date=""/>
 
-# 使用 Powershell 创建 IoT 中心
+# 使用 PowerShell 创建 IoT 中心
 
 [AZURE.INCLUDE [iot-hub-resource-manager-selector](../includes/iot-hub-resource-manager-selector.md)]
 
@@ -54,7 +54,7 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 
 使用 JSON 模板在资源组中创建新的 IoT 中心。还可以使用模板更改现有的 IoT 中心。
 
-1. 使用文本编辑器创建名为 **template.json** 的 ARM 模板，并指定以下资源定义来创建新的标准 IoT 中心。本示例在**美国东部**区域添加 IoT 中心，并使用 **2016-02-03** API 版本。此模板还要求你在名为 **hubName** 的参数中传入 IoT 中心名称。
+1. 使用文本编辑器创建名为 **template.json** 的 ARM 模板，并指定以下资源定义来创建新的标准 IoT 中心。此示例将**美国东部**区域添加 IoT 中心，在事件中心兼容的终结点上创建两个使用者组（**cg1** 和 **cg2**），并使用 **2016-02-03** API 版本。此模板还要求你在名为 **hubName** 的参数中传入 IoT 中心名称。
 
     ```
     {
@@ -79,6 +79,22 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
         "properties": {
           "location": "East US"
         }
+      },
+      {
+        "apiVersion": "2016-02-03",
+        "type": "Microsoft.Devices/IotHubs/eventhubEndpoints/ConsumerGroups",
+        "name": "[concat(parameters('hubName'), '/events/cg1')]",
+        "dependsOn": [
+          "[concat('Microsoft.Devices/Iothubs/', parameters('hubName'))]"
+        ]
+      },
+      {
+        "apiVersion": "2016-02-03",
+        "type": "Microsoft.Devices/IotHubs/eventhubEndpoints/ConsumerGroups",
+        "name": "[concat(parameters('hubName'), '/events/cg2')]",
+        "dependsOn": [
+          "[concat('Microsoft.Devices/Iothubs/', parameters('hubName'))]"
+        ]
       }
       ],
       "outputs": {
@@ -92,7 +108,7 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 
 2. 将模板文件保存在你的本地计算机上。本示例假设将它保存在名为 **c:\\templates** 的文件夹中。
 
-3. 运行以下命令部署新的 IoT 中心，并传递 IoT 中心的名称作为参数。在本示例中，IoT 中心的名称为 **myiothub**：
+3. 运行以下命令部署新的 IoT 中心，并传递 IoT 中心的名称作为参数。在此示例中，IoT 中心的名称为 **myiothub**（请注意此名称必须全局唯一）：
 
     ```
     New-AzureRmResourceGroupDeployment -ResourceGroupName MyIoTRG1 -TemplateFile C:\templates\template.json -hubName myiothub
@@ -118,4 +134,4 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 [lnk-rest-api]: https://msdn.microsoft.com/zh-cn/library/mt589014.aspx
 [lnk-azure-rm-overview]: /documentation/articles/resource-group-overview
 [lnk-powershell-arm]: /documentation/articles/powershell-azure-resource-manager
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0425_2016-->

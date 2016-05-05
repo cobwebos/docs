@@ -1,5 +1,5 @@
 <properties
-   pageTitle="在 Visual Studio 中创建你的第一个 Service Fabric 应用程序 | Microsoft Azure"
+   pageTitle="在 Visual Studio 中创建你的第一个 Service Fabric 应用程序 | Azure"
    description="使用 Visual Studio 创建、部署和调试 Service Fabric 应用程序"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="01/11/2016"
+   ms.date="03/27/2016"
    wacn.date=""/>
 
 # 在 Visual Studio 中创建你的第一个 Azure Service Fabric 应用程序
@@ -50,7 +50,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 	- **脚本**：包括用于部署/升级应用程序的 PowerShell 脚本。此脚本由 Visual Studio 在幕后使用，可以在命令行直接调用。
 
-	- **应用程序定义**：包括应用程序清单以及定义应用程序并使你可以专门为给定环境配置它的关联应用程序参数文件。
+	- **应用程序定义**：包括 ApplicationPackageRoot 下的应用程序清单以及 ApplicationParameters 下的用于定义应用程序并使你可以专门为给定环境配置它的关联应用程序参数文件。
 
     有关服务项目的内容概述，请参阅 [Reliable Services 入门](/documentation/articles/service-fabric-reliable-services-quick-start)。
 
@@ -72,7 +72,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 	对于有状态服务模板，消息只显示在 MyStatefulService.cs 的 `RunAsync` 方法中递增的计数器值。
 
-3. 展开事件之一可查看更多详细信息，包括运行代码的节点。在此例中，它是节点 2，不过在你的计算机上可能会有所不同。
+3. 展开事件之一可查看更多详细信息，包括运行代码的节点。在此例中，它是 \_Node\_2，不过在你的计算机上可能会有所不同。
 
 	![诊断事件查看器详细信息][6]
 
@@ -92,7 +92,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 6. 在左窗格中，展开“群集”>“节点”，然后查找运行代码的节点。
 
-7. 单击“操作”>“停用(重新启动)”以模拟计算机重新启动。
+7. 单击“操作”>“停用(重新启动)”以模拟计算机重新启动。（请注意，你也可以在左窗格中的节点列表视图内的上下文菜单中通过选择三个点来执行此操作。）
 
 	![在 Service Fabric 资源管理器中停止节点][sfx-stop-node]
 
@@ -106,17 +106,24 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
   结束之前，请务必记住该本地群集非常真实。即使在你停止调试器并关闭 Visual Studio 之后，应用程序也会在后台继续保持运行。根据应用的性质，此后台活动可能会占用计算机上的大量资源。可通过几个选项对此进行管理：
 
-  1. 要移除单个应用程序及其所有数据，请在 Service Fabric 资源管理器中使用“移除应用程序”操作。
+  1. 若要删除单个应用程序及其所有数据，请在 Service Fabric Explorer 的“操作”菜单或者左窗格中的应用程序列表视图内，使用“删除应用程序”操作。
+  
+    ![在 Service Fabric Explorer 中删除应用程序][sfe-delete-application]
+    
+  2. 从群集中删除该应用程序后，你可以针对该应用程序选择“取消预配类型”，这将从群集的映像存储中删除该应用程序的包，包括其代码和配置。
+  3. 若要关闭群集，但保留应用程序数据和跟踪，请在系统托盘应用中单击“停止本地群集”。
 
-  2. 要关闭群集，但保留应用程序数据和跟踪，请在系统托盘应用中单击“停止群集”。
-
-  3. 要完全删除群集，请在系统托盘应用中单击“移除群集”。请注意，此选项会导致下次在 Visual Studio 中按 F5 时部署较慢。仅当在一段时间内不想使用本地群集时，或者当需要回收资源时，才使用此选项。
+  4. 要完全删除群集，请在系统托盘应用中单击“删除本地群集”。请注意，此选项会导致下次在 Visual Studio 中按 F5 时部署较慢。仅当在一段时间内不想使用本地群集时，或者当需要回收资源时，才使用此选项。
 
 
 
 ## 后续步骤
 
-- [参阅如何使用 Web 服务前端向 Internet 服务公开服务](/documentation/articles/service-fabric-add-a-web-frontend)
+<!--
+Temporarily removing this link because we have removed the ASP.NET template.
+
+ - [See how you can expose your services to the Internet with a web service front end](/documentation/articles/service-fabric-add-a-web-frontend)
+-->
 - [了解如何在 Azure 中创建群集](/documentation/articles/service-fabric-cluster-creation-via-portal)
 - [了解有关 Reliable Services 的详细信息](/documentation/articles/service-fabric-reliable-services-quick-start)
 - [尝试使用 Reliable Actors 编程模型创建服务](/documentation/articles/service-fabric-reliable-actors-get-started)
@@ -133,5 +140,6 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 [sfx-stop-node]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-deactivate-node.png
 [systray-launch-sfx]: ./media/service-fabric-create-your-first-application-in-visual-studio/launch-sfx.png
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
+[sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0425_2016-->

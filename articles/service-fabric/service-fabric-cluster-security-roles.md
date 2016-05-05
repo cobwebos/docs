@@ -1,6 +1,6 @@
 
 <properties
-   pageTitle="Service Fabric 群集安全性：客户端角色 | Microsoft Azure"
+   pageTitle="Service Fabric 群集安全性：客户端角色 | Azure"
    description="本文介绍两个客户端角色以及提供给这些角色的权限。"
    services="service-fabric"
    documentationCenter=".net"
@@ -10,7 +10,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/09/2016"
+   ms.date="04/14/2016"
    wacn.date=""/>
 
 
@@ -108,4 +108,4 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 
 [创建 Service Fabric 群集](/documentation/articles/service-fabric-cluster-creation-via-portal)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0425_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="为应用程序创建 Web 前端 | Microsoft Azure"
+   pageTitle="为应用程序创建 Web 前端 | Azure"
    description="使用 ASP.NET 5 Web API 项目和服务间通信，通过 ServiceProxy 将 Service Fabric 应用程序公开到 Web。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,11 +9,13 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="01/19/2016"
+   ms.date="04/05/2016"
    wacn.date=""/>
 
 
 # 构建应用程序的 Web 服务前端
+
+>[AZURE.WARNING] 由于 ASP.NET Core RC2 有所更改，本文中的内容目前不太准确，因为参考的项目模板已从 SDK 中删除。发布 ASP.NET Core RC2 后，本文将会更新。在此期间，你可以使用 [Get started: Service Fabric Web API services with OWIN self-hosting（入门：Service Fabric Web API 服务与 OWIN 自托管）](/documentation/articles/service-fabric-reliable-services-communication-webapi) 中所述的无状态 Web API 模板。
 
 默认情况下，Azure Service Fabric 服务不提供用于访问 Web 的公共接口。若要向 HTTP 客户端公开应用程序的功能，需要创建一个 Web 项目作为入口点，然后从该处与单个服务进行通信。
 
@@ -57,7 +59,7 @@ ASP.NET 5 是轻量跨平台的 Web 开发框架，可用于创建现代 Web UI 
 
 ## 连接服务
 
-在如何与 Reliable Services 通信方面，Service Fabric 提供十足的弹性。在单个应用程序中，你可能拥有可通过 TCP 访问的服务、可通过 HTTP REST API 访问的其他服务，并且还有其他可通过 Web 套接字访问的服务。有关可用选项和相关权衡取舍的背景信息，请参阅[与服务通信](/documentation/articles/service-fabric-connect-and-communicate-with-services)。在本教程中，我们将遵循下列其中一种更简单的方法并使用 SDK 中提供的 `ServiceProxy`/`ServiceRemotingListener` 类。
+在如何与 Reliable Services 通信方面，Service Fabric 提供十足的弹性。在单个应用程序中，你可能拥有可通过 TCP 访问的服务、可通过 HTTP REST API 访问的其他服务，并且还有其他可通过 Web 套接字访问的服务。有关可用选项和相关权衡取舍的背景信息，请参阅 [Communicating with services（与服务通信）](/documentation/articles/service-fabric-connect-and-communicate-with-services)。 在本教程中，我们将遵循下列其中一种更简单的方法并使用 SDK 中提供的 `ServiceProxy`/`ServiceRemotingListener` 类。
 
 在 `ServiceProxy` 方法（模仿远程过程调用或 RPC）中，定义一个接口以用作服务的公共约定。然后使用该接口生成代理类，以便与服务交互。
 
@@ -185,7 +187,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
     第一行代码是关键代码。若要创建有状态服务的 ICounter Proxy，必须提供两项信息：分区 ID 和服务名称。
 
-    可以使用分区根据定义的键（例如客户 ID 或邮政编码）将有状态服务的状态划分为不同的桶，以此调整有状态服务。在我们的简单应用程序中，有状态服务只有一个分区，所以键并不重要。提供的任何键将导致分区相同。若要深入了解分区服务，请参阅[如何为 Service Fabric Reliable Services 分区](/documentation/articles/service-fabric-concepts-partitioning)。
+    可以使用分区根据定义的键（例如客户 ID 或邮政编码）将有状态服务的状态划分为不同的桶，以此调整有状态服务。在我们的简单应用程序中，有状态服务只有一个分区，所以键并不重要。提供的任何键将导致分区相同。若要深入了解分区服务，请参阅 [How to partition Service Fabric Reliable Services（如何为 Service Fabric Reliable Services 分区）](/documentation/articles/service-fabric-concepts-partitioning)。
 
     服务名称是 fabric:/&lt;应用程序名称&gt;/&lt;服务名称&gt; 格式的 URI。
 
@@ -214,7 +216,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 相比之下，当你在本地运行 Web 服务时，必须确保服务只有一个实例正在运行。否则，正在同一路径和端口上侦听的多个进程将发生冲突。因此，本地部署的 Web 服务实例计数应设置为“1”。
 
-若要了解如何针对不同环境配置不同的值，请参阅[管理多个环境的应用程序参数](/documentation/articles/service-fabric-manage-multiple-environment-app-configuration)。
+若要了解如何针对不同环境配置不同的值，请参阅 [Managing application parameters for multiple environments（管理多个环境的应用程序参数）](/documentation/articles/service-fabric-manage-multiple-environment-app-configuration)。
 
 ## 后续步骤
 
@@ -233,4 +235,4 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0425_2016-->

@@ -1,15 +1,16 @@
 <properties 
-   pageTitle="关于 Azure 虚拟网络的站点到站点 VPN 网关连接的 VPN 设备 | Microsoft Azure"
+   pageTitle="关于 Azure 虚拟网络的站点到站点 VPN 网关连接的 VPN 设备 | Azure"
    description="了解用于 S2S VPN 网关连接的 VPN 设备和 IPsec 参数。站点到站点连接可以用于混合配置。本文包含指向配置说明以及 VPN 网关设备示例的链接。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
-   manager="carolz"
-   editor="" />
+   manager="carmonm"
+   editor=""
+  tags="azure-resource-manager, azure-service-management"/>
 <tags 
    ms.service="vpn-gateway"
-   ms.date="12/14/2015"
-   wacn.date="" />
+   ms.date="03/15/2016"
+   wacn.date="04/19/2016" />
 
 # 关于站点到站点 VPN 网关连接的 VPN 设备
 
@@ -34,28 +35,28 @@
 
 
 | **供应商** | **设备系列** | **最低操作系统版本** | **基于策略** | **基于路由** |
-|---------------------------------|----------------------------------------------------------|----------------------------------------------------|-------------------------|---------------------------------------------------------|
+|---------------------------------|----------------------------------------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Allied Telesis | AR 系列 VPN 路由器 | 2\.9.2 | 即将支持 | 不兼容 |
-| Barracuda Networks, Inc. | Barracuda NG Firewall | Barracuda NG Firewall 5.4.3 | [Barracuda NG Firewall](https://techlib.barracuda.com/display/BNGV54/How%20to%20Configure%20an%20IPsec%20Site-to-Site%20VPN%20to%20a%20Windows%20Azure%20VPN%20Gateway)| 不兼容 |
-| Barracuda Networks, Inc. | Barracuda Firewall | Barracuda Firewall 6.5 | [Barracuda Firewall](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) | 不兼容 |
+| Barracuda Networks, Inc. | Barracuda NextGen Firewall F-series | 基于策略：5.4.3，基于路由：6.2.0 | [配置说明](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) | [配置说明](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
+| Barracuda Networks, Inc. | Barracuda NextGen Firewall X-series | Barracuda Firewall 6.5 | [Barracuda Firewall](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) | 不兼容 |
 | Brocade | Vyatta 5400 vRouter | Virtual Router 6.6R3 GA | [配置说明](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) | 不兼容 |
 | 检查点 | 安全网关 | R75.40、R75.40VS | [配置说明](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) | [配置说明](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco | ASA | 8\.3 | [Cisco 示例](http://go.microsoft.com/fwlink/p/?LinkID=717348) | 不兼容 |
-| Cisco | ASR | IOS 15.1（基于策略）、IOS 15.2（基于路由） | [Cisco 示例](http://go.microsoft.com/fwlink/p/?LinkID=717348) | [Cisco 示例](http://go.microsoft.com/fwlink/p/?LinkID=717348) |
-| Cisco | ISR | IOS 15.0（基于策略）、IOS 15.1（基于路由） | [Cisco 示例](http://go.microsoft.com/fwlink/p/?LinkID=717348) | [Cisco 示例](http://go.microsoft.com/fwlink/p/?LinkID=717348) |
+| Cisco | ASA | 8\.3 | [Cisco 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) | 不兼容 |
+| Cisco | ASR | IOS 15.1（基于策略）、IOS 15.2（基于路由） | [Cisco 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) | [Cisco 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
+| Cisco | ISR | IOS 15.0（基于策略）、IOS 15.1（基于路由） | [Cisco 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) | [Cisco 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix | CloudBridge MPX 设备或 VPX 虚拟设备 | 不适用 | [集成说明](https://www.citrix.com/welcome.html?resource=%2Fdownloads%2Fcloudbridge%2Fbetas-and-tech-previews%2Fcloudbridge-azure-integration) | 不兼容 |
 | Dell SonicWALL | TZ 系列、NSA 系列、SuperMassive 系列、E 类 NSA 系列 | SonicOS 5.8.x、[SonicOS 5.9.x](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=850)、[SonicOS 6.x](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide/supported-platforms?ParentProduct=646) | [说明 - SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [说明 - SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) | [说明 - SonicOS 6.2](http://documents.software.dell.com/sonicos/6.2/microsoft-azure-configuration-guide?ParentProduct=646) [说明 - SonicOS 5.9](http://documents.software.dell.com/sonicos/5.9/microsoft-azure-configuration-guide?ParentProduct=850) |
 | F5 | BIG-IP 系列 | 不适用 | [配置说明](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) | 不兼容 |
 | Fortinet | FortiGate | FortiOS 5.0.7 | [配置说明](http://docs.fortinet.com/fortigate/admin-guides) | [配置说明](http://docs.fortinet.com/fortigate/admin-guides) |
 | Internet Initiative Japan (IIJ) | SEIL 系列 | SEIL/X 4.60、SEIL/B1 4.60、SEIL/x86 3.20 | [配置说明](http://www.iij.ad.jp/biz/seil/ConfigAzureSEILVPN.pdf) | 不兼容 |
-| Juniper | SRX | JunOS 10.2（基于策略）、JunOS 11.4（基于路由） | [Juniper 示例](http://go.microsoft.com/fwlink/p/?LinkId=717760) | [Juniper 示例](http://go.microsoft.com/fwlink/p/?LinkId=717760) |
-| Juniper | J 系列 | JunOS 10.4r9（基于策略）、JunOS 11.4（基于路由） | [Juniper 示例](http://go.microsoft.com/fwlink/p/?LinkId=717760) | [Juniper 示例](http://go.microsoft.com/fwlink/p/?LinkId=717760) |
-| Juniper | ISG | ScreenOS 6.3（基于策略和基于路由） | [Juniper 示例](http://go.microsoft.com/fwlink/p/?LinkId=717760) | [Juniper 示例](http://go.microsoft.com/fwlink/p/?LinkId=717760) |
-| Juniper | SSG | ScreenOS 6.2（基于策略和基于路由） | [Juniper 示例](http://go.microsoft.com/fwlink/p/?LinkId=717760) | [Juniper 示例](http://go.microsoft.com/fwlink/p/?LinkId=717760) |
+| Juniper | SRX | JunOS 10.2（基于策略）、JunOS 11.4（基于路由） | [Juniper 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) | [Juniper 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SRX) |
+| Juniper | J 系列 | JunOS 10.4r9（基于策略）、JunOS 11.4（基于路由） | [Juniper 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) | [Juniper 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/JSeries) |
+| Juniper | ISG | ScreenOS 6.3（基于策略和基于路由） | [Juniper 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) | [Juniper 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/ISG) |
+| Juniper | SSG | ScreenOS 6.2（基于策略和基于路由） | [Juniper 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) | [Juniper 示例](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Juniper/Current/SSG) |
 | Microsoft | 路由和远程访问服务 | Windows Server 2012 | 不兼容 | [Microsoft 示例](http://go.microsoft.com/fwlink/p/?LinkId=717761) |
 | Openswan | Openswan | 2\.6.32 | （即将支持） | 不兼容 |
-| Palo Alto Networks | 运行 PAN-OS 5.0 或更高版本的所有设备 | PAN-OS 5x 或更高版本 | [Palo Alto Networks](https://support.paloaltonetworks.com/) | 不兼容 |
-| Watchguard | 全部 | Fireware XTM v11.x | [配置说明](http://customers.watchguard.com/articles/Article/Configure-a-VPN-connection-to-a-Windows-Azure-virtual-network/) | 不兼容 |
+| Palo Alto Networks | 运行 PAN-OS 5.0 或更高版本的所有设备 | PAN-OS 5x 或更高版本 | [Palo Alto Networks](https://support.paloaltonetworks.com) | 不兼容 |
+| Watchguard | 全部 | Fireware XTM v11.x | [配置说明](http://customers.watchguard.com/articles/Article/Configure-a-VPN-connection-to-a-Windows-Azure-virtual-network) | 不兼容 |
 
 
 ## 非验证的 VPN 设备
@@ -70,7 +71,7 @@
 **编辑示例的步骤：**
 
 1. 使用记事本打开示例。 
-1. 搜索所有 <*text*> 字符串并将其替换为与你的环境相关的值。请确保包含 < and >。指定名称时，你选择的名称应是唯一的。如果命令无效，请查看你的设备制造商文档。
+1. 搜索所有 \<text\> 字符串并将其替换为与你的环境相关的值。请确保包含 < and >。指定名称时，你选择的名称应是唯一的。如果命令无效，请查看你的设备制造商文档。
 
 | **示例文本** | **更改为** |
 |----------------------------------|----------------------------------------------------------------------------------------------------------------------|
@@ -90,6 +91,8 @@
 
 ## IPsec 参数
 
+>[AZURE.NOTE] 尽管 Azure VPN 网关支持下面列出的值，但你目前无法从 Azure VPN 网关中选择或指定特定的组合。你必须从本地 VPN 设备指定任何约束。
+
 ### IKE 阶段 1 设置
 
 | **属性** | **基于策略** | **基于路由的标准或高性能 VPN 网关** |
@@ -98,21 +101,21 @@
 | Diffie-Hellman 组 | 组 2（1024 位） | 组 2（1024 位） |
 | 身份验证方法 | 预共享密钥 | 预共享密钥 |
 | 加密算法 | AES256 AES128 3DES | AES256 3DES |
-| 哈希算法 | SHA1(SHA128) | SHA1(SHA128) |
-| 阶段 1 安全关联 (SA) 生命周期（时间） | 28,800 秒 | 28,800 秒 |
+| 哈希算法 | SHA1(SHA128) | SHA1(SHA128)、SHA2(SHA256) |
+| 阶段 1 安全关联 (SA) 生命周期（时间） | 28,800 秒 | 10,800 秒 |
 
 
 ### IKE 阶段 2 设置
 
-| **属性**                                                             | **基于策略**                 | **基于路由的标准或高性能 VPN 网关**   |
+| **属性** | **基于策略** | **基于路由的标准或高性能 VPN 网关** |
 |--------------------------------------------------------------------------|------------------------------------------------|--------------------------------------------------------------------|
-| SDK 版本                                                              | IKEv1                                          | IKEv2                                                              |
-| 哈希算法                                                        | SHA1(SHA128)                                   | SHA1(SHA128)                                                       |
-| 阶段 2 安全关联 (SA) 生命周期（时间）                        | 3,600 秒                                  | -                                                                  |
-| 阶段 2 安全关联 (SA) 生命周期（吞吐量）                  | 102,400,000 KB                                 | -                                                                  |
-| IPsec SA 加密和身份验证产品（按偏好顺序列出）| 1.ESP-AES256 2.ESP-AES128 3.ESP-3DES 4.N/A | 请参阅*基于路由的网关 IPsec 安全关联 (SA) 产品*（见下）|
-| 完全向前保密 (PFS)                                            | 否                                             | 是 (DH Group1)                                                    |
-| 对等体存活检测                                                      | 不支持                                  | 支持                                                          |
+| SDK 版本 | IKEv1 | IKEv2 |
+| 哈希算法 | SHA1(SHA128) | SHA1(SHA128) |
+| 阶段 2 安全关联 (SA) 生命周期（时间） | 3,600 秒 | 3,600 秒 |
+| 阶段 2 安全关联 (SA) 生命周期（吞吐量）| 102,400,000 KB | - |
+| IPsec SA 加密和身份验证产品（按偏好顺序列出）| 1.ESP-AES256 2.ESP-AES128 3.ESP-3DES 4.N/A | 请参阅基于路由的网关 IPsec 安全关联 (SA) 产品（见下）|
+| 完全向前保密 (PFS) | 否 | 是 (DH Group1, 2, 5, 14, 24) |
+| 对等体存活检测 | 不支持 | 支持 |
 
 ### 基于路由的网关 IPsec 安全关联 (SA) 产品
 
@@ -136,12 +139,18 @@
 | 14 | AH MD5（具有 ESP DES null HMAC），不建议生命周期 | AH MD5（具有 ESP DES MD5），无生命周期 |
 | 15 | AH SHA1（具有 ESP DES SHA1），无生命周期 | ESP SHA，无生命周期 |
 | 16 | AH MD5（具有 ESP DES MD5），无生命周期 | ESP MD5，无生命周期 |
-| 17                                                | -                                                            | AH SHA，无生命周期                                         |
-| 18                                                | -                                                            | AH MD5，无生命周期                                         |
+| 17 | - | AH SHA，无生命周期|
+| 18 | - | AH MD5，无生命周期 |
 
 
-- 你可以对基于路由的高性能 VPN 网关指定 IPsec ESP NULL 加密。这适用于 Azure 网络中的 VNet 到 VNet 连接。 
+
+- 你可以对基于路由的高性能 VPN 网关指定 IPsec ESP NULL 加密。基于 Null 的加密不对传输中的数据提供保护，仅应在需要最大吞吐量和最小延迟时才使用。客户端可以在 VNet 到 VNet 通信方案中选择使用此方法，或者要在解决方案中的其他位置应用加密时使用此方法。
 
 - adk 要通过 Internet 建立跨界连接，请使用默认的 Azure VPN 网关设置以及上表中列出的加密和哈希算法，以确保关键通信的安全性。
 
-<!---HONumber=Mooncake_0104_2016-->
+
+
+
+
+
+<!---HONumber=Mooncake_0425_2016-->

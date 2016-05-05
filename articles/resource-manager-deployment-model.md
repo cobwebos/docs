@@ -1,5 +1,5 @@
 <properties
-   pageTitle="了解资源管理器与经典部署模型之间的差异"
+   pageTitle="Resource Manager 和经典部署 | Azure"
    description="介绍资源管理器部署模型与经典（或服务管理）部署模型之间的差异。"
    services="azure-resource-manager"
    documentationCenter="na"
@@ -9,26 +9,20 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="01/22/2016"
+   ms.date="03/23/2016"
    wacn.date=""/>
 
-# 了解资源管理器部署和经典部署
+# Azure Resource Manager 与经典部署：了解部署模型和资源的状态
 
-资源管理器部署模型提供了一种新的方式来部署和管理构成应用程序的服务。这一新模型包含与经典部署模型的重要差异，这两个模型彼此之间并不完全兼容。若要简化资源部署和管理，Microsoft 建议您为新资源使用资源管理器，如果可能，请通过资源管理器重新部署现有资源。
+在本主题中，你将了解 Azure Resource Manager 和经典部署模型、资源的状态，以及为何要使用不同的模型来部署资源。Resource Manager 部署模型包含与经典部署模型的重要差异，这两个模型彼此之间并不完全兼容。若要简化资源部署和管理，Microsoft 建议您为新资源使用资源管理器，如果可能，请通过资源管理器重新部署现有资源。
 
-您也可能知道经典部署模型就是服务管理模型。
-
-本主题介绍了这两个模型之间的差异，以及从经典模型转换到资源管理器时可能遇到的一些问题。它提供了模型的概述，但并未详细介绍各项服务之间的差异。
-
-许多资源可同时在经典模型和资源管理器中正常运行，不会出现问题。即使是在经典模型中创建的，这些资源也能完全支持资源管理器。您可以在无需任何顾虑或额外努力的情况下转换到资源管理器。
-
-但是，由于模型之间的体系结构差异，一些资源提供程序会提供两个版本的资源（一个用于经典模型，一个用于资源管理器）。区分两个模型的资源提供程序包括：
+对于大多数资源，你可以过渡到 Resource Manager 而不会出现任何问题。但是，由于模型之间的体系结构差异，一些资源提供程序会提供两个版本的资源（一个用于经典模型，一个用于资源管理器）。区分两个模型的资源提供程序包括：
 
 - **计算** - 对虚拟机和可选可用性集的实例提供支持。
 - **存储** - 对所需的存储帐户提供支持，存储帐户存储虚拟机的 VHD，包括其操作系统和其附加的数据磁盘。
 - **网络** - 对所需的 NIC、虚拟机 IP 地址和虚拟网络内的子网及可选的负载平衡器、负载平衡器 IP 地址和网络安全组提供支持。
 
-对于这些资源类型，您必须知道使用的是哪个版本，因为支持的操作会有所不同。有关转换计算、存储和网络资源的详细信息，请参阅 [Azure Resource Manager 中的 Azure 计算、网络和存储提供程序](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)。
+对于这些资源类型，您必须知道使用的是哪个版本，因为支持的操作会有所不同。若要了解应使用哪种模型来部署资源，让我们回顾这两个模型。
 
 ## 资源管理器的特性
 
@@ -36,23 +30,19 @@
 
 - 通过以下方法之一创建：
 
-  - [Azure 门户](https://portal.azure.cn/)。
+  - [Azure 门户](https://manage.windowsazure.cn/)。
 
-        ![Azure 门户](./media/resource-manager-deployment-model/preview-portal.png)
+        ![Azure portal](./media/resource-manager-deployment-model/preview-portal.png)
 
         对于计算、存储和网络资源，你可以选择使用资源管理器或经典部署。选择“资源管理器”。
 
-        ![资源管理器部署](./media/resource-manager-deployment-model/select-resource-manager.png)
+        ![Resource Manager deployment](./media/resource-manager-deployment-model/select-resource-manager.png)
 
-  - 对于低于 1.0 的 Azure PowerShell 版本，命令将在 **AzureResourceManager** 模式下运行。
+  - 对于 Azure PowerShell，请使用命令的 Resource Manager 版本。这些命令采用 Verb-AzureRmNoun 格式，如下所示。
 
-            PS C:\> Switch-AzureMode -Name AzureResourceManager
+            Get-AzureRmResourceGroupDeployment
 
-  - 对于 Azure PowerShell 1.0，请使用命令的资源管理器版本。这些命令采用 *Verb-AzureRmNoun* 格式，如下所示。
-
-            PS C:\> Get-AzureRmResourceGroupDeployment
-
-  - 适用于 REST 操作的 [Azure Resource Manager REST API](https://msdn.microsoft.com/zh-cn/library/azure/dn790568.aspx)。
+  - 适用于 REST 操作的 [Azure 资源管理器 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dn790568.aspx)。
   - Azure CLI 命令在 **arm** 模式下运行。
 
             azure config mode arm
@@ -61,7 +51,7 @@
 
     ![Web 应用](./media/resource-manager-deployment-model/resource-manager-type.png)
 
-下图中所示的应用程序显示了如何在单个资源组中包含通过资源管理器部署的资源。
+下图中所示的应用程序显示了如何在单个资源组中包含通过 Resource Manager 部署的资源。
 
   ![](./media/virtual-machines-azure-resource-manager-architecture/arm_arch3.png)
 
@@ -74,6 +64,8 @@
 - 负载平衡器实例引用后端 IP 地址池，包括虚拟机的 NIC（可选），引用负载平衡器的公共或专用 IP 地址（可选）。
 
 ## 经典部署的特性
+
+您也可能知道经典部署模型就是服务管理模型。
 
 在 Azure 服务管理中，宿主虚拟机的计算、存储或网络资源由以下各项提供：
 
@@ -93,13 +85,9 @@
 
         ![Classic deployment](./media/resource-manager-deployment-model/select-classic.png)
 
-  - 对于低于 1.0 的 Azure PowerShell 版本，命令在 **AzureServiceManagement** 模式下运行（这是默认模式，因此，如果不特意切换到 AzureResourceManager，则会在 AzureServiceManagement 模式下运行）。
+  - 对于 Azure PowerShell，请使用命令的服务管理版本。这些命令采用 Verb-AzureNoun 格式，如下所示。
 
-            PS C:\> Switch-AzureMode -Name AzureServiceManagement
-
-  - 对于 Azure PowerShell 1.0，请使用命令的服务管理版本。这些命令采用 *Verb-AzureNoun* 格式，如下所示。
-
-            PS C:\> Get-AzureDeployment
+            Get-AzureDeployment
 
   - 适用于 REST 操作的[服务管理 REST API](https://msdn.microsoft.com/zh-cn/library/azure/ee460799.aspx)。
   - Azure CLI 命令在 **asm** 或默认模式下运行。
@@ -125,7 +113,7 @@
 - 您可以将标记应用到资源，以按照逻辑组织订阅中的所有资源。
 
 
-在资源管理器之前，通过经典部署创建的每个资源不存在于资源组中。当添加资源管理器时，所有资源都追溯性地添加到默认资源组。如果你现在通过经典部署创建资源，资源将自动在该服务的默认资源组中创建，即使在部署时未指定该资源组也是如此。但是，仅存在于资源组内并不意味着资源已转换为资源管理器模型。对于虚拟机、存储空间和虚拟网络，如果资源是通过经典部署创建的，则你必须继续通过经典操作对其进行操作。
+在资源管理器之前，通过经典部署创建的每个资源不存在于资源组中。当添加资源管理器时，所有资源都追溯性地添加到默认资源组。如果你现在通过经典部署创建资源，资源将自动在该服务的默认资源组中创建，即使在部署时未指定该资源组也是如此。但是，仅存在于资源组内并不意味着资源已转换为 Resource Manager 模型。对于虚拟机、存储空间和虚拟网络，如果资源是通过经典部署创建的，则你必须继续通过经典操作对其进行操作。
 
 您可以将资源移到不同的资源组，并将新资源添加到现有的资源组。因此，您的资源组可以包含通过资源管理器和经典部署创建的混合资源。此资源组合会产生意外的结果，因为资源不支持相同的操作。
 
@@ -139,10 +127,12 @@
 
 ## 部署模型支持的操作
 
-在经典部署模型中创建的资源不支持资源管理器操作。在某些情况下，资源管理器命令可以检索通过经典部署创建的资源的相关信息，或者可以执行管理任务，例如将经典资源移动到另一个资源组，但这些情况下，并不意味着该类型支持资源管理器操作。例如，假定您有一个资源组包含通过资源管理器和经典模型创建的虚拟机。如果您运行以下 PowerShell 命令，您将看到所有虚拟机：
+在经典部署模型中创建的资源不支持资源管理器操作。在某些情况下，资源管理器命令可以检索通过经典部署创建的资源的相关信息，或者可以执行管理任务，例如将经典资源移动到另一个资源组，但这些情况下，并不意味着该类型支持资源管理器操作。例如，假定您有一个资源组包含通过资源管理器和经典模型创建的虚拟机。如果运行以下 PowerShell 命令：
 
-    PS C:\> Get-AzureRmResourceGroup -Name ExampleGroup
-    ...
+    Get-AzureRmResourceGroup -Name ExampleGroup
+
+将返回所有虚拟机：
+
     Resources :
      Name                 Type                                          Location
      ================     ============================================  ========
@@ -151,10 +141,12 @@
      ExampleResourceVM    Microsoft.Compute/virtualMachines             eastus
     ...
 
-但是，如果运行 Get-AzureRmVM 命令，则只能获取通过资源管理器创建的虚拟机。
+但是，如果运行 **Get-AzureRmVM** 命令：
 
-    PS C:\> Get-AzureRmVM -ResourceGroupName ExampleGroup
-    ...
+    Get-AzureRmVM -ResourceGroupName ExampleGroup
+
+只会获取使用 Resource Manager 创建的虚拟机。
+
     Id       : /subscriptions/xxxx/resourceGroups/ExampleGroup/providers/Microsoft.Compute/virtualMachines/ExampleResourceVM
     Name     : ExampleResourceVM
     ...
@@ -173,15 +165,14 @@
 
 如果你可以承受虚拟机停机带来的损失，则可以使用 [ASM2ARM PowerShell 脚本](https://github.com/fullscale180/asm2arm)将虚拟机从经典部署过渡到资源管理器部署。
 
-有关从经典部署转换到资源管理器时的等效 Azure CLI 命令列表，请参阅 [VM 操作的等效资源管理器和服务管理命令](./virtual-machines/xplat-cli-azure-manage-vm-asm-arm.md)。
+有关转换计算、存储和网络资源的详细信息，请参阅 [Azure 资源管理器中的 Azure 计算、网络和存储提供程序](/documentation/articles/virtual-machines-windows-compare-deployment-models)。
 
-有关转换计算、存储和网络资源的详细信息，请参阅 [Azure Resource Manager 中的 Azure 计算、网络和存储提供程序](./virtual-machines/virtual-machines-azurerm-versus-azuresm.md)。
-
-若要了解如何从不同部署模型连接虚拟网络，请参阅[将经典 VNet 连接到新 VNet](./virtual-network/virtual-networks-arm-asm-s2s.md)。
+若要了解如何从不同部署模型连接虚拟网络，请参阅[将经典 VNet 连接到新 VNet](/documentation/articles/virtual-networks-arm-asm-s2s)。
 
 ## 后续步骤
 
-- 若要了解如何创建声明性部署模板，请参阅[创作 Azure Resource Manager 模板](/documentation/articles/resource-group-authoring-templates)。
-- 若要查看用于部署模板的命令，请参阅[使用 Azure Resource Manager 模板部署应用程序](/documentation/articles/resource-group-template-deploy)。
+- 若要演练如何创建用于定义虚拟机、存储帐户和虚拟网络的模板，请参阅 [Resource Manager template walkthrough（Resource Manager 模板演练）](/documentation/articles/resource-manager-template-walkthrough)。
+- 若要了解 Resource Manager 模板的结构，请参阅 [Authoring Azure Resource Manager templates（创作 Azure Resource Manager 模板）](/documentation/articles/resource-group-authoring-templates)。
+- 若要查看用于部署模板的命令，请参阅[使用 Azure 资源管理器模板部署应用程序](/documentation/articles/resource-group-template-deploy)。
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0425_2016-->

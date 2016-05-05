@@ -1,5 +1,5 @@
 <properties
-   pageTitle="应用程序升级：高级主题 | Microsoft Azure"
+   pageTitle="应用程序升级：高级主题 | Azure"
    description="本文介绍了与升级 Service Fabric 应用程序有关的一些高级主题。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,10 +9,16 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/04/2016"
+   ms.date="04/14/2016"
    wacn.date=""/>
 
 # Service Fabric 应用程序升级：高级主题
+
+## 在升级应用程序期间添加或删除服务
+
+如果将新服务添加到已部署的应用程序，并将其作为升级项发布，则该新服务将添加到部署的应用程序（同时，升级不会影响到已属于应用程序一部分的任何服务）。但是，若要激活新服务，必须启动已添加的服务的实例（使用 `New-ServiceFabricService` cmdlet）。
+
+还可以在升级期间从应用程序中删除服务，但是，在继续升级之前，用户需要确保服务（要在升级期间删除的服务）的所有当前实例已停止（使用 `Remove-ServiceFabricService` cmdlet）。
 
 ## 手动升级模式
 
@@ -43,16 +49,50 @@ Service Fabric 应用程序可以通过预配一个完整且独立的应用程�
 
 * 当你的部署系统直接从应用程序生成过程产生生成布局时，首选差异包。在这种情况下，即使未对代码进行任何更改，新生成的程序集也将具有不同的校验和。使用完整的应用程序包需要你更新所有代码包上的版本。使用差异包时，你只提供更改的文件和其中的版本已更改的清单文件。
 
+如果应用程序是使用 Visual Studio 升级的，将自动发布差异包。如果你想要手动创建差异包（例如，为了使用 PowerShell 升级），则应更新应用程序和服务清单，而只包含最终应用程序包中更改的包。
+
+例如，让我们从以下应用程序开始（为便于理解，这里提供了版本号）：
+
+```text
+app1       	1.0.0
+  service1 	1.0.0
+    code   	1.0.0
+    config 	1.0.0
+  service2 	1.0.0
+    code   	1.0.0
+    config 	1.0.0
+```
+
+现在，假设你只想要使用 PowerShell 和差异包来更新 service1 的代码包。现在，更新的应用程序将如下所示：
+
+```text
+app1       	2.0.0      <-- new version
+  service1 	2.0.0      <-- new version
+    code   	2.0.0      <-- new version
+    config 	1.0.0
+  service2 	1.0.0
+    code   	1.0.0
+    config 	1.0.0
+```
+
+在本例中，你已将应用程序清单更新为 2.0.0，并更新了 service1 的服务清单以反映代码包更新。应用程序包的文件夹结构将如下所示：
+
+```text
+app1/
+  service1/
+    code/
+```
+
 ## 后续步骤
 
-[使用 Visual Studio 升级应用程序](/documentation/articles/service-fabric-application-upgrade-tutorial)将逐步指导你使用 Visual Studio 进行应用程序升级。
+[Uprading your Application Using Visual Studio（使用 Visual Studio 升级应用程序）](/documentation/articles/service-fabric-application-upgrade-tutorial) 将逐步指导你使用 Visual Studio 进行应用程序升级。
 
-[使用 PowerShell 升级应用程序](/documentation/articles/service-fabric-application-upgrade-tutorial-powershell)将逐步指导你使用 PowerShell 进行应用程序升级。
+[Uprading your Application Using Powershell（使用 PowerShell 升级应用程序）](/documentation/articles/service-fabric-application-upgrade-tutorial-powershell) 将逐步指导你使用 PowerShell 进行应用程序升级。
 使用[升级参数](/documentation/articles/service-fabric-application-upgrade-parameters)来控制应用程序的升级方式。
 
-了解如何使用[数据序列化](/documentation/articles/service-fabric-application-upgrade-data-serialization)，使应用程序在升级后保持兼容。
+了解如何使用[数据序列化](/documentation/articles/service-fabric-application-upgrade-data-serialization)，使应用程序在升级后保持兼容
 
-参考[对应用程序升级进行故障排除](/documentation/articles/service-fabric-application-upgrade-troubleshooting)中的步骤来解决应用程序升级时的常见问题。
+参考 [Troubleshooting Application Upgrades（对应用程序升级进行故障排除）](/documentation/articles/service-fabric-application-upgrade-troubleshooting) 中的步骤来解决应用程序升级时的常见问题。
  
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0425_2016-->

@@ -5,12 +5,12 @@
 	services="stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage"
 	documentationCenter="" 
 	authors="jeffstokes72"
-	manager="paulettm"
+	manager="paulettm" 
 	editor="cgronlun"/>
 
 <tags
 	ms.service="stream-analytics"
-	ms.date="03/16/2016"
+	ms.date="04/15/2016"
 	wacn.date=""/>
 # 使流分析数据转换输出输出到分析工具和数据存储选项
 
@@ -182,4 +182,4 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0425_2016-->

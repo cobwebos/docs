@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/26/2016"
+   ms.date="04/12/2016"
    wacn.date=""/>
 
 # 在本地群集上部署和升级应用程序入门
@@ -80,7 +80,7 @@ Service Fabric SDK 包含一组丰富的框架以及用于创建应用程序的�
 
     ![将应用程序部署到本地群集][deploy-app-to-local-cluster]
 
-7. 若要应用程序的运行情况，请启动浏览器并导航到 [http://localhost:8081/wordcount/index](http://localhost:8081/wordcount/index)。您应看到与下面类似的内容：
+7. 若要应用程序的运行情况，请启动浏览器并导航到 [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html)。您应看到与下面类似的内容：
 
     ![已部署的应用程序 UI][deployed-app-ui]
 
@@ -144,11 +144,11 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
 
     ![在 PowerShell 中查看升级进度][ps-appupgradeprogress]
 
-3. 当升级正在进行时，你可能发现从 Service Fabric 资源管理器监视其状态会更加轻松。启动浏览器窗口并导航到 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。单击左侧树中的“应用程序”，然后选择“正在进行的升级”。
+3. 当升级正在进行时，你可能发现从 Service Fabric 资源管理器监视其状态会更加轻松。启动浏览器窗口并导航到 [http://localhost:19080/Explorer](http://localhost:19080/Explorer)。展开左侧树中的“应用程序”，然后选择“WordCount”，最后选择“fabric:/WordCount”。在“基本信息”选项卡中，随着群集升级域的不断升级，你可以看到升级状态。
 
     ![在 Service Fabric 资源管理器中查看升级进度][sfx-upgradeprogress]
 
-    请注意，“升级进度”指示器表示群集升级域中的升级状态。随着每个域不断升级，系统将执行运行状况检查，以确保应用程序行为正常。
+    随着每个域不断升级，系统将执行运行状况检查，以确保应用程序行为正常。
 
 4. 如果对 fabric:/WordCount 应用程序包含的服务集重新运行以前的查询，你会注意到，虽然 WordCountService 的版本已更改，但 WordCountWebService 的版本维持不变：
 
@@ -186,4 +186,4 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0425_2016-->

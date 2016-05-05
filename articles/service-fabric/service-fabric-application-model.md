@@ -1,15 +1,15 @@
 <properties
-    pageTitle="Service Fabric 应用程序模型 | Microsoft Azure"
-    description="如何在 Service Fabric 中对应用程序建模"
-    services="service-fabric"
-    documentationCenter=".net"
-    authors="alexwun"
-    manager="timlt"
-    editor="mani-ramaswamy"/>
+   pageTitle="Service Fabric 应用程序模型 | Microsoft Azure"
+   description="如何在 Service Fabric 中建模和描述应用程序。"
+   services="service-fabric"
+   documentationCenter=".net"
+   authors="seanmck"
+   manager="timlt"
+   editor="mani-ramaswamy"/>
 
 <tags
     ms.service="service-fabric"
-   ms.date="12/30/2015"   
+   ms.date="04/05/2016"   
     wacn.date=""/>
 
 # 在 Service Fabric 中对应用程序建模
@@ -74,11 +74,11 @@
 
 **ServiceTypes** 声明清单中的 **CodePackages** 支持哪些服务类型。当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。生成的进程应在运行时注册所支持的服务类型。请注意，在清单级别而不是代码包级别声明服务类型。因此，当存在多个代码包时，每当系统查找任何一种声明的服务类型时，它们都将被激活。
 
-**SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 *LocalSystem* 帐户）相同的凭据先于任何其他入口点运行。**EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。提供单独的设置入口点可避免长时间使用高特权运行服务主机。由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。如果总是终止或出现故障，则将监视并重启所产生的过程（再次从 **SetupEntryPoint** 开始）。
+**SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 LocalSystem 帐户）相同的凭据先于任何其他入口点运行。**EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。提供单独的设置入口点可避免长时间使用高特权运行服务主机。由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。如果总是终止或出现故障，则将监视并重启所产生的过程（再次从 **SetupEntryPoint** 开始）。
 
 **DataPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含进程将在运行时使用的静态数据。
 
-**ConfigPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含 *Settings.xml* 文件。此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。升级期间，如果仅更改了 **ConfigPackage** **版本**，则不重启正在运行的进程。相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。下面是 *Settings.xml* 文件的一个示例：
+**ConfigPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含 Settings.xml 文件。此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。升级期间，如果仅更改了 **ConfigPackage** **版本**，则不重启正在运行的进程。相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。下面是 Settings.xml 文件的一个示例：
 
 ~~~
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -203,7 +203,7 @@ Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
 ~~~
 
-此错误显示代码包中缺少服务清单 **SetupEntryPoint** 中引用的 *MySetup.bat* 文件。添加缺少的文件后，应用程序验证通过：
+此错误显示代码包中缺少服务清单 **SetupEntryPoint** 中引用的 MySetup.bat 文件。添加缺少的文件后，应用程序验证通过：
 
 ~~~
 PS D:\temp> tree /f .\MyApplicationType
@@ -250,4 +250,4 @@ PS D:\temp>
 [11]: /documentation/articles/service-fabric-manage-multiple-environment-app-configuration
 [12]: /documentation/articles/service-fabric-application-runas-security
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0425_2016-->

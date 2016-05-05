@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric 应用升级教程 | Microsoft Azure"
+   pageTitle="Service Fabric 应用升级教程 | Azure"
    description="本文逐步指导你使用 Visual Studio 部署 Service Fabric 应用程序、更改代码以及推出升级版本。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
     ms.service="service-fabric"
-   ms.date="02/04/2016"
+   ms.date="04/14/2016"
     wacn.date=""/>
 
 
@@ -17,7 +17,7 @@
 
 # 使用 Visual Studio 进行 Service Fabric 应用程序升级的教程
 
-Azure Service Fabric 确保只升级已更改的服务，并在整个升级过程中监视应用程序的运行状况，从而可以简化云应用程序的升级过程。它还能在应用程序发生任何问题时自动回滚到旧版本。Service Fabric 应用程序升级造成的*停机时间为零*，因为可以在不停机的情况下升级应用程序。本教程介绍如何从 Visual Studio 完成简单的滚动升级。
+Azure Service Fabric 确保只升级已更改的服务，并在整个升级过程中监视应用程序的运行状况，从而可以简化云应用程序的升级过程。它还能在应用程序发生任何问题时自动回滚到旧版本。Service Fabric 应用程序升级造成的停机时间为零，因为可以在不停机的情况下升级应用程序。本教程介绍如何从 Visual Studio 完成简单的滚动升级。
 
 
 ## 步骤 1：构建和发布可视对象示例
@@ -60,7 +60,7 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 
 现在，随着应用程序不断升级，你可以使用 Service Fabric 资源管理器来监视应用程序（使用应用程序下的“正在进行升级”选项卡）。
 
-几分钟后，所有更新域应已升级（已完成），Visual Studio 输出窗口应该也会指出升级已完成。此外，你应会发现，浏览器窗口中的*所有*可视对象现在都在旋转！
+几分钟后，所有更新域应已升级（已完成），Visual Studio 输出窗口应该也会指出升级已完成。此外，你应会发现，浏览器窗口中的所有可视对象现在都在旋转！
 
 你可以尝试通过更改版本来练习本文所述的操作：从版本 2.0.0 升级到版本 3.0.0，或者从版本 2.0.0 降级到版本 1.0.0。尝试使用超时和运行状况策略，以加深熟悉程度。当你部署到 Azure 群集时，所用的参数将不同于部署到本地群集时所用的参数；建议你保守地设置超时。
 
@@ -84,4 +84,4 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 [image3]: ./media/service-fabric-application-upgrade-tutorial/upgrade5.png
 [image4]: ./media/service-fabric-application-upgrade-tutorial/upgrade6.png
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0425_2016-->

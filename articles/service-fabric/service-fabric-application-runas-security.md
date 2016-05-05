@@ -1,5 +1,5 @@
 <properties
-   pageTitle="了解 Service Fabric 应用程序 RunAs 安全策略 | Microsoft Azure"
+   pageTitle="了解 Service Fabric 应用程序 RunAs 安全性策略 | Azure"
    description="有关如何使用系统帐户和本地安全帐户运行 Service Fabric 应用程序概述，包括应用程序在启动之前，需要在其中执行某些特权操作的 SetupEntry 点"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/12/2016"
+   ms.date="03/24/2016"
    wacn.date=""/>
 
 # RunAs：使用不同的安全权限运行 Service Fabric 应用程序
@@ -23,7 +23,7 @@ Azure Service Fabric 能够保护群集中以不同用户帐户（名为 **RunAs
 
 ## 为 SetupEntryPoint 设置 RunAs 策略
 
-如[应用程序模型](/documentation/articles/service-fabric-application-model)中所述，**SetupEntryPoint** 是特权入口点，以与 Service Fabric 相同的凭据（通常是 *NetworkService* 帐户）先于任何其他入口点运行。由 **EntryPoint** 指定的可执行文件通常是长时间运行的服务主机，因此具有单独的安装入口点，不必长时间运行具有高特权的服务主机可执行文件。由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。如果总是终止或出现故障，则将监视并重启所产生的过程（再次从 **SetupEntryPoint** 开始）。
+如[应用程序模型](/documentation/articles/service-fabric-application-model)中所述，**SetupEntryPoint** 是特权入口点，以与 Service Fabric 相同的凭据（通常是 NetworkService 帐户）先于任何其他入口点运行。由 **EntryPoint** 指定的可执行文件通常是长时间运行的服务主机，因此具有单独的安装入口点，不必长时间运行具有高特权的服务主机可执行文件。由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。如果总是终止或出现故障，则将监视并重启所产生的过程（再次从 **SetupEntryPoint** 开始）。
 
 下面是一个简单的服务清单示例，其中显示服务的 SetupEntryPoint 和主要 EntryPoint。
 
@@ -106,7 +106,7 @@ PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ~~~
 
-接下来，记下已在 Service Fabric 资源管理器中部署并启动服务的节点名称，例如“节点 1”。接下来，导航到应用程序实例工作文件夹，找到显示 **TestVariable** 值的 out.txt 文件。例如，如果此服务已部署到节点 2，则你可以转到 **MyApplicationType** 的此路径：
+接下来，记下已在 Service Fabric 资源管理器中部署并启动服务的节点名称，例如“节点 2”。接下来，导航到应用程序实例工作文件夹，找到显示 **TestVariable** 值的 out.txt 文件。例如，如果此服务已部署到节点 2，则你可以转到 **MyApplicationType** 的此路径：
 
 ~~~
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
@@ -135,6 +135,7 @@ C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 
 ##  从 SetupEntryPoint 启动 PowerShell 命令
 若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 **PowerShell.exe**。首先，将 PowerShell 文件添加到服务项目（例如 **MySetup.ps1**）。请记得设置“如果较新则复制”属性，使该文件也包含在服务包中。以下示例显示的示例批处理文件可启动名为 MySetup.ps1 的 PowerShell 文件，用于设置名为 **TestVariable** 的系统环境变量。
+
 
 MySetup.bat 可启动 PowerShell 文件。
 
@@ -345,4 +346,4 @@ Echo "Test console redirection which writes to the application log folder on the
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0425_2016-->

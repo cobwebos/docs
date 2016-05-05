@@ -1,23 +1,36 @@
-<properties pageTitle="为 Microsoft Azure VPN 网关配置强制隧道 | Microsoft Azure" description="如果你的虚拟网络具有跨界 VPN 网关，你可以将全部 Internet 绑定流量重定向或强制返回到本地位置。" services="vpn-gateway" documentationCenter="na" authors="cherylmc" manager="carolz" editor="" />
-<tags  
+<properties 
+   pageTitle="使用 PowerShell 为 VPN 网关配置强制隧道 | Azure"
+   description="如果你的经典部署模型虚拟网络具有跨界 VPN 网关，你可以将全部 Internet 绑定流量重定向或“强制”返回到本地位置。"
+   services="vpn-gateway"
+   documentationCenter="na"
+   authors="cherylmc"
+   manager="carmonm"
+   editor=""
+   tags="azure-service-management"/>
+<tags 
    ms.service="vpn-gateway"
-   ms.date="08/20/2015"
-   wacn.date="" />
+   ms.date="02/24/2016"
+   wacn.date="04/19/2016" />
 
-# 配置强制隧道
+# 使用经典部署模型为 VPN 网关配置强制隧道
+
+> [AZURE.SELECTOR]
+- [PowerShell - 服务管理](/documentation/articles/vpn-gateway-about-forced-tunneling)
+- [PowerShell - 资源管理器](/documentation/articles/vpn-gateway-forced-tunneling-rm)
 
 借助强制隧道，您可以通过站点到站点 VPN 隧道，将全部 Internet 绑定流量重定向或“强制”返回到本地位置，以进行检查和审核。这是很多企业 IT 策略的关键安全要求。没有强制隧道，来自 Azure 中虚拟机的 Internet 绑定流量会始终通过 Azure 网络基础设施直接连接到 Internet。没有该选项，您无法对流量进行检查或审核。未经授权的 Internet 访问可能会导致信息泄漏或其他类型的安全漏洞。
 
-下图说明了强制隧道的工作方式。
 
-![强制隧道](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
+[AZURE.INCLUDE [vpn-gateway-forcedtunnel](../includes/vpn-gateway-table-forcedtunnel-include.md)]
 
-在上面的示例中，前端子网没有使用强制隧道。前端子网中的工作负载可以继续直接接受并响应来自 Internet 的客户请求。中间层和后端子网会使用强制隧道。任何从这两个子网到 Internet 的出站连接将通过一个 S2S VPN 隧道重定向或强制返回到本地站点。这样，在继续支持所需的多层服务体系结构的同时，您可以限制并检查来自虚拟机或 Azure 云服务的 Internet 访问。如果在虚拟网络中没有面向 Internet 的工作负载，您还可以选择在整个虚拟网络应用强制隧道连接。
+
+**关于 Azure 部署模型**
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../includes/vpn-gateway-classic-rm-include.md)]
 
 ## 要求和注意事项
 
 在 Azure 中，通过虚拟网络用户定义路由配置强制隧道。将流量重定向到本地站点，这是 Azure VPN 网关的默认路由。以下部分列出了 Azure 虚拟网络路由和路由表的当前限制：
-
 
 
 -  每个虚拟网络子网具有内置的系统路由表。系统路由表具有下面的 3 组路由：
@@ -29,20 +42,44 @@
 	- **默认路由：**直接路由到 Internet。请注意，如果要将数据包发送到不包含在前面两个路由中的专用 IP 地址，数据包将被删除。
 
 
-
 -  在发布的用户定义路由中，您可以创建路由表来添加默认路由，然后将路由表关联到虚拟网络子网，在这些子网启用强制隧道。
 
-- 强制隧道必须关联到具有动态路由 VPN 网关的 VNet，不能是静态网关。您需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
+- 您需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
 
-- 请注意，ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。有关详细信息，请参阅 [ExpressRoute 文档](https://azure.microsoft.com/documentation/services/expressroute/)。
+- 强制隧道必须关联到具有动态路由 VPN 网关的 VNet，不能是静态网关。
+ 
+- ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。有关详细信息，请参阅 [ExpressRoute 文档](/documentation/services/expressroute)。
+
+
 
 ## 配置概述
 
-以下过程将帮助你为虚拟网络指定强制隧道。配置步骤与下面的虚拟网络 netcfg 文件示例相对应。
+在下面的示例中，前端子网没有使用强制隧道。前端子网中的工作负载可以继续直接接受并响应来自 Internet 的客户请求。中间层和后端子网会使用强制隧道。
 
-在本示例中，虚拟网络“MultiTier-VNet”具有 3 个子网：*前端*、*中间层*和*后端*子网，具有 4 个跨界连接：一个 *DefaultSiteHQ* 和 3 个*分支*。以下过程步骤将 *DefaultSiteHQ* 设置为使用强制隧道的默认站点连接，并将*中间层*和*后端*子网配置为使用强制隧道。
+任何从这两个子网到 Internet 的出站连接将通过一个 S2S VPN 隧道重定向或强制返回到本地站点。这样，在继续支持所需的多层服务体系结构的同时，你可以限制并检查来自虚拟机或 Azure 云服务的 Internet 访问。如果在虚拟网络中没有面向 Internet 的工作负载，您还可以选择在整个虚拟网络应用强制隧道连接。
 
-	<VirtualNetworkSite name="MultiTier-VNet" Location="North Europe">
+
+![强制隧道](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
+
+
+
+## 开始之前
+
+在开始配置之前，请确认具有以下各项。
+
+- Azure 订阅。如果你还没有 Azure 订阅，你可以注册一个[试用版](/pricing/1rmb-trial)。
+
+- 已配置虚拟网络。
+
+- 使用 Web 平台安装程序的 Azure PowerShell cmdlet 最新版本。可以从[下载页面](/downloads)的“Windows PowerShell”部分下载并安装最新版本。
+
+## 配置强制隧道
+
+以下过程将帮助你为虚拟网络指定强制隧道。配置步骤对应于下面的虚拟网络网络配置文件 (netcfg) 示例。
+
+
+
+	<VirtualNetworkSite name="MultiTier-VNet" Location="China North">
      <AddressSpace>
       <AddressPrefix>10.1.0.0/16</AddressPrefix>
         </AddressSpace>
@@ -78,21 +115,12 @@
       </VirtualNetworkSite>
 	</VirtualNetworkSite>
 
-### 先决条件
+在本示例中，虚拟网络“MultiTier-VNet”具有 3 个子网：前端、中间层和后端子网，具有 4 个跨界连接：一个 DefaultSiteHQ 和 3 个分支。以下过程步骤将 DefaultSiteHQ 设置为使用强制隧道的默认站点连接，并将中间层和后端子网配置为使用强制隧道。
 
-- Azure 订阅
-
-- 已配置虚拟网络。
-
-- 使用 Web 平台安装程序的 Azure PowerShell cmdlet 最新版本。可以从[下载页面](http://azure.microsoft.com/downloads/)的“Windows PowerShell”部分下载并安装最新版本。
-
-## 配置强制隧道
-
-使用以下过程配置强制隧道。
 
 1. 创建一个路由表。使用以下 cmdlet 创建路由表。
 
-		New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "North Europe"
+		New-AzureRouteTable –Name "MyRouteTable" –Label "Routing Table for Forced Tunneling" –Location "China North"
 
 1. 将默认路由添加到路由表中。
 
@@ -143,8 +171,10 @@
 
 	Remove-AzureVnetGatewayDefaultSites -VNetName <virtualNetworkName>
 
-## 后续步骤
 
-有关保护网络流量的信息。参阅[什么是网络安全组](../virtual-network/virtual-networks-nsg.md)。
 
-<!---HONumber=71-->
+
+
+
+
+<!---HONumber=Mooncake_0425_2016-->

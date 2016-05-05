@@ -1,5 +1,5 @@
 <properties
-   pageTitle="设置开发环境 | Microsoft Azure"
+   pageTitle="设置开发环境 | Azure"
    description="安装运行时、SDK 和工具并创建本地开发群集。完成此设置后，你就可以开始生成应用程序。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/09/2016"
+   ms.date="03/26/2016"
    wacn.date=""/>
 
 # 准备开发环境
@@ -17,29 +17,21 @@
 
 ## 先决条件
 ### 支持的操作系统版本
-支持以下操作系统版本：
+支持使用以下操作系统版本进行开发：
 
+- Windows 7
 - Windows 8/Windows 8.1
 - Windows Server 2012 R2
 - Windows 10
 
-### Visual Studio 2015
-
-适用于 Service Fabric 的工具取决于 Visual Studio 2015，你可以在 [Visual Studio 网站][2]上找到。
-
-> [AZURE.NOTE] 如果未运行其中一个支持的 OS 版本或不想在计算机上安装 Visual Studio 2015，则可以在预安装 Windows Server 2012 R2 和 Visual Studio 2015 的情况下设置 Azure 虚拟机。你可以使用 Azure 虚拟机库中的映像来执行这项操作。
-
 ## 安装运行时、SDK 和工具
 
-Web 平台安装程序会执行 Service Fabric 组件的安装。请按照这些说明安装：
+Web 平台安装程序为 Service Fabric 开发提供三种配置：
 
-1. 使用 Web 平台安装程序[下载 SDK][3]。
+- [安装适用于 Visual Studio 2015 的 Service Fabric 运行时、SDK 和工具][full-bundle-vs2015]
+- [安装适用于 Visual Studio "15" 预览版的 Service Fabric 运行时、SDK 和工具][full-bundle-dev15]
+- [仅安装 Service Fabric 运行时和 SDK（不安装 Visual Studio 工具）][core-sdk]
 
-2. 单击“安装”开始安装过程。
-
-3. 查看并接受 EULA。
-
-将自动继续进行安装。
 
 ## 启用 PowerShell 脚本执行
 
@@ -58,8 +50,10 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 - [使用 Service Fabric 资源管理器可视化群集](/documentation/articles/service-fabric-visualizing-your-cluster)
 
-[1]: /documentation/services/service-fabric "Service Fabric 活动页"
-[2]: https://www.visualstudio.com/downloads/download-visual-studio-vs "VS RC"
-[3]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric "WebPI 链接"
+[1]: /home/features/service-fabric "Service Fabric 活动页"
+[2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
+[full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI 链接"
+[full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI 链接"
+[core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK "Core SDK WebPI 链接"
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0425_2016-->

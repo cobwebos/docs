@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用流分析中的操作和服务日志 | Microsoft Azure" 
+	pageTitle="使用流分析中的操作和服务日志进行调试 | Azure" 
 	description="如何使用流分析操作日志" 
 	keywords="服务日志"
 	services="stream-analytics" 
@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="02/04/2016" 
+	ms.date="03/18/2016" 
 	wacn.date=""/>
 
 # 使用服务和操作日志调试流分析作业
@@ -34,10 +34,20 @@
 
 在 Azure 门户中手动导航到流分析和其他服务的操作日志：
 
-1.	在 **Azure 门户** 中单击“管理服务”[](https://manage.windowsazure.cn)。
+1.	在 [Azure 门户](https://manage.windowsazure.cn)中单击“管理服务”。
 2.	在“类型”中选择“流分析”，在“服务名称”中选择作业的名称。  
 
   ![选择流分析](./media/stream-analytics-operation-logs/02-stream-analytics-operation-logs.png)
+
+## 在 Azure 门户中查找审核日志 ##
+
+若要在 Azure 门户中查找流分析作业的操作日志，请单击“浏览”，然后选择“审核日志”。
+
+  ![Azure 门户 - 选择流分析](./media/stream-analytics-operation-logs/06-stream-analytics-operation-logs.png)
+
+此时将打开一个边栏选项卡，其中显示了订阅中所有资源在过去 7 天内的事件。你可以通过单击“筛选器”命令进行筛选，以查看特定类型或时间范围的事件。
+
+  ![Azure 门户 - 选择流分析](./media/stream-analytics-operation-logs/07-stream-analytics-operation-logs.png)
 
 ## 获取日志详细信息
 
@@ -47,20 +57,32 @@
 
   ![选择详细信息](./media/stream-analytics-operation-logs/03-stream-analytics-operation-logs.png)
 
+在 Azure 门户中，单击一个日志条目可查看它包含的详细事件。
+
+  ![Azure 门户 - 选择详细信息](./media/stream-analytics-operation-logs/08-stream-analytics-operation-logs.png)
+
+在这里，你可以通过单击事件来打开“详细信息”边栏选项卡。
+
+  ![Azure 门户 - 选择详细信息](./media/stream-analytics-operation-logs/09-stream-analytics-operation-logs.png)
+
 ## 调试失败的作业
 
 在 Azure 管理门户中，单击“搜索”图标并键入“failed”。这样，系统将显示包含失败状态的所有日志。
 
   ![调试失败的作业](./media/stream-analytics-operation-logs/04-stream-analytics-operation-logs.png)
 
+在 Azure 门户中，你可以按消息级别进行筛选，以查看“关键”事件。
+
+  ![Azure 门户调试](./media/stream-analytics-operation-logs/10-stream-analytics-operation-logs.png)
+
 你可以选择任何一个失败，并单击“详细信息”以查看有关错误的更多信息。某些错误消息还提供有关如何解决此问题的信息。
 
   ![操作详细信息](./media/stream-analytics-operation-logs/05-stream-analytics-operation-logs.png)
 
-如果你需要联系[支持团队](http://azure.microsoft.com/support/options/)或通过 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)向团队提供信息，请注明操作详细信息，尤其是 **相关 ID**。
+如果你需要联系[支持团队](/support/options/)或通过 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/zh-CN/home?forum=AzureStreamAnalytics)向团队提供信息，请注明操作详细信息，尤其是**相关 ID**。
 
 ## 获取帮助
-如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=AzureStreamAnalytics)
 
 ## 后续步骤
 
@@ -70,4 +92,4 @@
 - [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
 - [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0425_2016-->

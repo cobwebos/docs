@@ -57,7 +57,7 @@
     using Newtonsoft.Json;
     ```
     
-7. 在 Program.cs 中，将占位符值替换为以下静态变量。在本教程前面的介绍中，你已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。**Resource group name** 是创建 IoT 中心时要使用的资源组名称，可以是现有的资源组或新资源组。**IoT Hub name** 是要创建的 IoT 中心的名称，例如 **MyIoTHub**。**Deployment name** 是部署的名称，例如 **Deployment\_01**。
+7. 在 Program.cs 中，将占位符值替换为以下静态变量。在本教程前面的介绍中，你已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。**Resource group name** 是创建 IoT 中心时要使用的资源组名称，可以是现有的资源组或新资源组。**IoT 中心名称**是要创建的 IoT 中心的名称，例如 **MyIoTHub**（请注意此名称必须全局唯一）。**Deployment name** 是部署的名称，例如 **Deployment\_01**。
 
     ```
     static string applicationId = "{Your ApplicationId}";
@@ -178,5 +178,4 @@
 [lnk-powershell-install]: /documentation/articles/powershell-install-configure
 [lnk-rest-api]: https://msdn.microsoft.com/zh-cn/library/mt589014.aspx
 [lnk-azure-rm-overview]: /documentation/articles/resource-group-overview
-
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0425_2016-->

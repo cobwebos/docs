@@ -1,20 +1,16 @@
 <properties 
-   pageTitle="使用资源管理器为 VPN 网关配置强制隧道 | Microsoft Azure"
-   description="如果你的虚拟网络具有跨界 VPN 网关，你可以将全部 Internet 绑定流量重定向或强制返回到本地位置。本文适用于资源管理器部署模型。"
+   pageTitle="使用 Resource Manager 为 VPN 网关配置强制隧道 | Azure"
+   description="如果你的虚拟网络具有跨界 VPN 网关，你可以将全部 Internet 绑定流量重定向或“强制”返回到本地位置。本文适用于 Resource Manager 部署模型。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
 <tags 
    ms.service="vpn-gateway"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="11/17/2015"
-   ms.author="cherylmc" />
+   ms.date="04/12/2016"
+   wacn.date="04/19/2016" />
 
 # 使用 PowerShell 和 Azure 资源管理器配置强制隧道
 
@@ -22,9 +18,16 @@
 - [PowerShell - 服务管理](/documentation/articles/vpn-gateway-about-forced-tunneling)
 - [PowerShell - 资源管理器](/documentation/articles/vpn-gateway-forced-tunneling-rm)
 
-本文适用于通过 Azure 资源管理器部署模型创建的 VNet 和 VPN 网关。如果你想要为通过服务管理（也称为经典部署模型）创建的 VNet 配置强制隧道，请参阅[配置强制隧道](/documentation/articles/vpn-gateway-about-forced-tunneling)。
+本文适用于通过 Azure 资源管理器部署模型创建的 VNet 和 VPN 网关。
 
-[AZURE.INCLUDE [vpn-gateway-sm-rm](../includes/vpn-gateway-sm-rm-include.md)]
+**关于 Azure 部署模型**
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../includes/vpn-gateway-classic-rm-include.md)]
+
+**强制隧道的部署模型和工具**
+
+[AZURE.INCLUDE [vpn-gateway-table-forced-tunneling](../includes/vpn-gateway-table-forcedtunnel-include.md)]
+
 
 ## 关于强制隧道
 
@@ -52,7 +55,7 @@
 
 - 强制隧道必须关联到具有基于路由的 VPN 网关的 VNet。您需要在连接到虚拟网络的跨界本地站点中，设置一个“默认站点”。
 
-- 请注意，ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。有关详细信息，请参阅 [ExpressRoute 文档](/documentation/services/expressroute/)。
+- 请注意，ExpressRoute 强制隧道不是通过此机制配置的，而是通过 ExpressRoute BGP 对等会话播发默认路由来启用的。有关详细信息，请参阅 [ExpressRoute 文档](/documentation/services/expressroute)。
 
 ## 配置强制隧道
 
@@ -60,24 +63,23 @@
 
 下面的过程将帮助你创建资源组和 VNet。然后，你将创建 VPN 网关，并配置强制隧道。
 
-在本示例中，虚拟网络“MultiTier-VNet”具有 3 个子网：*前端*、*中间层*和*后端*子网，具有 4 个跨界连接：一个 *DefaultSiteHQ* 和 3 个*分支*。以下过程步骤将 *DefaultSiteHQ* 设置为使用强制隧道的默认站点连接，并将*中间层*和*后端*子网配置为使用强制隧道。
+在本示例中，虚拟网络“MultiTier-VNet”具有 3 个子网：前端、中间层和后端子网，具有 4 个跨界连接：一个 DefaultSiteHQ 和 3 个分支。以下过程步骤将 DefaultSiteHQ 设置为使用强制隧道的默认站点连接，并将中间层和后端子网配置为使用强制隧道。
 
 	
 ### 开始之前
 
 在开始配置之前，请确认你具有以下各项。
 
-- Azure 订阅。如果你还没有 Azure 订阅，可以激活 [MSDN 订户权益](https://azure.microsoft.com/zh-cn/pricing/member-offers/msdn-benefits-details/)或注册获取[免费试用版](/pricing/1rmb-trial/)。
+- Azure 订阅。如果你还没有 Azure 订阅，你可以注册一个[免费试用版](/pricing/1rmb-trial)。
 
-- Azure PowerShell cmdlet（1.0 或更高版本）。可以从[下载页面](/downloads/)的“Windows PowerShell”部分下载并安装此版本。本文档是针对 PowerShell 1.0 或更高版本撰写的。更早的版本中不存在此配置的必需 cmdlet。
+- 你需要安装最新版本的 Azure Resource Manager PowerShell cmdlet（1.0 或更高）。有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。
 
-- 如果你不熟悉 Azure 资源管理器和 PowerShell 的使用，请参阅[此文](/documentation/articles/powershell-azure-resource-manager)以获取详细信息。
 
 ### 配置步骤
 
 1. 在 PowerShell 控制台中，登录到你的 Azure 帐户。该 cmdlet 将提示你提供 Azure 帐户的登录凭据。登录后它会下载你的帐户设置，以便这些信息可供 Azure PowerShell 使用。
 
-		Login-AzureRmAccount 
+		Login-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 2. 获取 Azure 订阅的列表。
 
@@ -85,7 +87,7 @@
 
 2. 指定要使用的订阅。
 
-		Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+		Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 		
 3. 创建资源组。
 
@@ -144,4 +146,7 @@
 		Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
 		
 
-<!---HONumber=Mooncake_0104_2016-->
+
+
+
+<!---HONumber=Mooncake_0425_2016-->

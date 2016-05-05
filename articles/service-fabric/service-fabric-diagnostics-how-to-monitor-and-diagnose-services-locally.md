@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/04/2016"
+   ms.date="03/30/2016"
    wacn.date=""/>
 
 
@@ -29,9 +29,7 @@
 
 Service Fabric 发出 ETW 事件以帮助应用程序开发人员了解平台中发生的情况。如果你还没有这么做，请继续遵循[在 Visual Studio 中创建第一个应用程序](/documentation/articles/service-fabric-create-your-first-application-in-visual-studio)中的步骤。此信息将帮助你启动应用程序，并运行可显示跟踪消息的诊断事件查看器。
 
-1. 如果“诊断事件”窗口不自动显示，请转到 Visual Studio 中的“服务器资源管理器”选项卡，右键单击“Service Fabric 群集”，然后在上下文菜单中选择“查看诊断事件”。
-
-  ![打开 Visual Studio 诊断事件查看器](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/ServerExViewDiagEvents.png)
+1. 如果诊断事件窗口未自动显示，请在 Visual Studio 中转到“视图”选项卡上，选择“其他窗口”，然后选择“诊断事件查看器”。
 
 2. 每个事件都有标准元数据信息，它将告诉你事件来自的节点、应用程序和服务。你也可以使用事件窗口顶端的“筛选事件”框来筛选事件列表。例如，你可以根据“节点名称”或“服务名称”进行筛选。 而当你查看事件详细信息时，你也可以使用事件窗口顶端的“暂停”按钮来暂停，稍后再继续，而不会丢失任何事件。
 
@@ -45,7 +43,7 @@ Service Fabric Visual Studio 项目模板包含示例代码。该代码演示如
 1. 对 `RunAsync` 方法中 `ServiceEventSource.Current.ServiceMessage` 的调用显示了应用程序代码中的自定义 ETW 跟踪的一个示例。
 2. 在 **ServiceEventSource.cs** 文件中，你会找到 `ServiceEventSource.ServiceMessage` 方法的重载，由于性能方面的原因，应该将其用于高频率事件。
 
-对于从**执行组件模板**（无状态或有状态）创建的项目：
+对于从**Actor 模板**（无状态或有状态）创建的项目：
 
 1. 打开 **"ProjectName".cs** 文件，其中，ProjectName 是为你的 Visual Studio 项目选择的名称。  
 2. 在 DoWorkAsync 方法中查找代码 `ActorEventSource.Current.ActorMessage(this, "Doing Work");`。这是根据应用程序代码编写的自定义 ETW 跟踪的一个示例。  
@@ -55,7 +53,7 @@ Service Fabric Visual Studio 项目模板包含示例代码。该代码演示如
 
 ## 后续步骤
 你添加到上述应用程序用于进行本地诊断的相同跟踪代码将与工具一起工作，在 Azure 群集上运行应用程序时，你可以使用这些工具查看这些事件。请查看以下文章，其中介绍了不同的工具选项，以及如何设置这些选项。
-* [Collecting logs from a Service Fabric cluster in Azure Diagnostics and Operational Insights（在 Azure 诊断和 Operational Insights 中从 Service Fabric 群集收集日志）](/documentation/articles/service-fabric-diagnostics-how-to-setup-wad-operational-insights)
+* [如何使用 Azure 诊断收集日志](/documentation/articles/service-fabric-diagnostics-how-to-setup-wad-operational-insights)
 * [Using ElasticSearch as a Service Fabric application trace store（将 ElasticSearch 用作 Service Fabric 应用程序跟踪存储）](/documentation/articles/service-fabric-diagnostic-how-to-use-elasticsearch)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0425_2016-->

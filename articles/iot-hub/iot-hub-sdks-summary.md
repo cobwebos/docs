@@ -9,7 +9,7 @@
 
 <tags
  ms.service="iot-hub"
- ms.date="01/04/2016"
+ ms.date="04/05/2016"
  wacn.date=""/>
 
 # IoT 中心 SDK
@@ -26,36 +26,35 @@ Microsoft Azure IoT 设备 SDK 包含的代码可帮助构建连接到 Azure IoT
 - [适用于 .NET 的 Azure IoT 设备 SDK][]
 - [适用于 Java 的 Azure IoT 设备 SDK][]
 - [适用于 Node.js 的 Azure IoT 设备 SDK][]
+- [适用于 Python 2.7 的 Microsoft Azure IoT 设备 SDK][]
 
 ### 操作系统平台和硬件兼容性
 
-本[文档][OS Platforms and hardware compatibility]介绍设备 SDK 与不同 OS 平台的兼容性，以及 [Microsoft Azure IoT 认证计划][]中包含的特定设备配置。
+有关与特定硬件设备兼容性的详细信息，请参阅以下文章：
+
+- [OS 平台和硬件与设备 SDK 的兼容性][OS Platforms and hardware compatibility]
+- [Microsoft Azure IoT 认证计划][]
 
 ## IoT 中心服务 SDK
 
 Microsoft Azure IoT 服务 SDK 包含的代码可帮助构建直接与 IoT 中心进行交互以管理设备和安全性的应用程序。
 
-以下 IoT 服务 SDK 可以从 GitHub 进行下载：
+可从 GitHub 下载以下 IoT 服务 SDK：
 
 - [适用于 Node.js 的 Azure IoT 服务 SDK][]
 - [适用于 Java 的 Azure IoT 服务 SDK][]
 
 ## 联机 API 参考文档
 
-下面是 Azure IoT 设备库的联机 API 参考文档的链接列表：
+下面是 Azure IoT 设备和服务库的联机 API 参考文档的链接列表：
 
 - [物联网 (IoT) .NET][]
+- [IoT 中心 REST][]
 - [适用于 C 的 Microsoft Azure IoT 设备 SDK][]
 - [适用于 Java 的 Microsoft Azure IoT 设备 SDK][]
 - [适用于 Java 的 Microsoft Azure IoT 服务 SDK][]
 - [适用于 Node.js 的 Microsoft Azure IoT 设备 SDK][]
 - [适用于 Node.js 的 Microsoft Azure IoT 服务 SDK][]
-
-下面是 Azure IoT 服务库的联机 API 参考文档的链接列表：
-
-- [物联网 (IoT) .NET][]
-- [IoT 中心 REST][]
-
 
 [Microsoft Azure IoT SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
 [适用于 C 的 Azure IoT 设备 SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/c/readme.md
@@ -64,14 +63,16 @@ Microsoft Azure IoT 服务 SDK 包含的代码可帮助构建直接与 IoT 中�
 [适用于 Java 的 Azure IoT 服务 SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/java/service/readme.md
 [适用于 Node.js 的 Azure IoT 设备 SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/node/device/readme.md
 [适用于 Node.js 的 Azure IoT 服务 SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/node/service/README.md
-[OS Platforms and hardware compatibility]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md
-[Microsoft Azure IoT 认证计划]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/tested_configurations.md#certified
+[适用于 Python 2.7 的 Microsoft Azure IoT 设备 SDK]: https://github.com/Azure/azure-iot-sdks/blob/master/python/device/readme.md
+[OS Platforms and hardware compatibility]: /documentation/articles/iot-hub-tested-configurations
+[Microsoft Azure IoT 认证计划]: /documentation/articles/iot-hub-tested-configurations/#microsoft-azure-certified-for-iot
 
 [物联网 (IoT) .NET]: https://msdn.microsoft.com/zh-cn/library/mt488521.aspx
 [适用于 C 的 Microsoft Azure IoT 设备 SDK]: http://azure.github.io/azure-iot-sdks/c/api_reference/index.html
 [适用于 Java 的 Microsoft Azure IoT 设备 SDK]: http://azure.github.io/azure-iot-sdks/java/device/api_reference/index.html
-[适用于 Node.js 的 Microsoft Azure IoT 设备 SDK]: http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iot-device/1.0.0/index.html
+[适用于 Node.js 的 Microsoft Azure IoT 设备 SDK]: http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iot-device/1.0.3/index.html
 [IoT 中心 REST]: https://msdn.microsoft.com/zh-cn/library/mt548492.aspx
 [适用于 Java 的 Microsoft Azure IoT 服务 SDK]: http://azure.github.io/azure-iot-sdks/java/service/api_reference/index.html
-[适用于 Node.js 的 Microsoft Azure IoT 服务 SDK]: http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iothub/1.0.0/index.html
-<!---HONumber=Mooncake_0321_2016-->
+[适用于 Node.js 的 Microsoft Azure IoT 服务 SDK]: http://azure.github.io/azure-iot-sdks/node/api_reference/azure-iothub/1.0.3/index.html
+
+<!---HONumber=Mooncake_0425_2016-->

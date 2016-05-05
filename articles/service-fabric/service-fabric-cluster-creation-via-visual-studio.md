@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/11/2016"
+   ms.date="04/04/2016"
    wacn.date=""/>
 
 # 使用 Visual Studio 设置 Service Fabric 群集
@@ -35,7 +35,6 @@
 
 |参数名称 |说明|
 |-----------------------  |--------------------------|
-|clusterLocation |要将 Service Fabric 群集放置到的 **Azure 区域**的名称。例如“East US”。|
 |certificateThumbprint |用于保护群集的证书的指纹。|
 |sourceVaultResourceId |存储用于保护群集的证书的密钥保管库的资源 ID。|
 |certificateUrlValue |群集安全证书的 URL。|
@@ -123,4 +122,4 @@ Visual Studio Service Fabric Resource Manager 模板将创建一个受证书保�
 [2]: ./media/service-fabric-cluster-creation-via-visual-studio/selecting-azure-template.png
 [3]: ./media/service-fabric-cluster-creation-via-visual-studio/deploy-to-azure.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0425_2016-->

@@ -1,15 +1,15 @@
 <properties
-   pageTitle="SQL 数据仓库的弹性性能与缩放性 | Microsoft Azure"
+   pageTitle="SQL 数据仓库的弹性性能与缩放性 | Azure"
    description="了解 SQL 数据仓库的弹性，介绍如何使用数据仓库单位来向上或向下缩放计算资源。提供了代码示例。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="TwoUnder"
+   authors="barbkess"
    manager="barbkess"
    editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="03/03/2016"
+   ms.date="03/29/2016"
    wacn.date=""/>
 
 # SQL 数据仓库的弹性性能与缩放性
@@ -32,21 +32,21 @@ Microsoft 在幕后执行许多性能基准测试，以判断需要多少硬件�
 ## 向上和向下缩放计算资源
 不管使用哪种云存储，借助 SQL 数据仓库的弹性，你可以使用数据仓库单位 (DWU) 的可调缩放性扩大、收缩或暂停计算容量。这样你就可以将计算能力弹性调整为最适合业务的计算能力。
 
-若要提升计算能力，可以使用 Azure 管理门户中的缩放滑块将更多 DWU 添加到服务。你还可以通过 T-SQL、REST API 或 Powershell cmdlet 来添加 DWU。尽管向上和向下缩放计算能力会取消所有运行中或已排队的活动，但此操作可在几秒内完成，使你能够以更大或更小的计算能力继续操作。
+若要提升计算能力，可以使用 Azure 管理门户中的缩放滑块将更多 DWU 添加到服务。你还可以通过 T-SQL、REST API 或 Azure Powershell cmdlet 来添加 DWU。尽管向上和向下缩放计算能力会取消所有运行中或已排队的活动，但此操作可在几秒内完成，使你能够以更大或更小的计算能力继续操作。
 
 在 [Azure 管理门户][]中，可以单击 SQL 数据仓库页面顶部的“缩放”图标，然后使用滑块增加或减少应用到数据仓库的 DWU 数量，然后单击“保存”。如果你想要以编程方式更改缩放级别，以下 T-SQL 代码演示了如何针对 SQL 数据仓库调整 DWU 分配：
 
-```
+```sql
 ALTER DATABASE MySQLDW
 MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 ;
 ```
 请注意，应该针对逻辑服务器而不是 SQL 数据仓库实例本身运行此 T-SQL。
 
-也可以使用以下代码通过 Powershell 实现相同的结果：
+也可以通过导入 AzureRM.Sql 模块并使用以下代码，在 Azure Powershell 中实现相同的结果：
 
-```
-Set-AzureSQLDatabase -DatabaseName "MySQLDW" -ServerName "MyServer.database.windows.net" -ServiceObjective "DW1000"
+```Powershell
+Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer.database.windows.net" -RequestedServiceObjectiveName "DW1000"
 ```
 
 ## 暂停计算资源
@@ -58,22 +58,25 @@ SQL 数据仓库的独到之处就是能够根据需要暂停和恢复计算。�
 
 可以通过 [Azure 管理门户][]的 REST API 或 Powershell 来暂停和恢复计算。暂停取消所有运行中或已排队的活动；要继续使用时，可在几秒内恢复计算资源。
 
-以下代码演示如何使用 PowerShell 执行暂停：
+若要使用 Azure Powershell 暂停和继续服务，首先需要按如下所示导入 AzureRM.Sql 模块：
 
-```
-Suspend-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName
-"Server01" –DatabaseName "Database02"
-```
-
-使用 PowerShell 还可轻松恢复服务：
-
-```
-Resume-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+```Powershell
+Import-Module AzureRM.Sql
 ```
 
-有关如何使用 PowerShell 的详细信息，请参阅[在 SQL 数据仓库中使用 PowerShell cmdlet 和 REST API][]。
+以下代码演示如何使用 Azure PowerShell 执行暂停：
 
+```Powershell
+Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+```
 
+使用 Azure PowerShell 还可轻松恢复服务：
+
+```Powershell
+Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Server01" –DatabaseName "Database02"
+```
+
+有关如何使用 Azure PowerShell 的详细信息，请参阅 [Using PowerShell cmdlets and REST APIs with SQL Data Warehouse（在 SQL 数据仓库中使用 PowerShell cmdlet 和 REST API）][]。
 
 ## 后续步骤
 有关性能概述，请参阅[性能概述][]。
@@ -82,7 +85,7 @@ Resume-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Se
 
 <!--Article references-->
 [性能概述]: /documentation/articles/sql-data-warehouse-overview-performance
-[在 SQL 数据仓库中使用 PowerShell cmdlet 和 REST API]: /documentation/articles/sql-data-warehouse-reference-powershell-cmdlets
+[Using PowerShell cmdlets and REST APIs with SQL Data Warehouse（在 SQL 数据仓库中使用 PowerShell cmdlet 和 REST API）]: /documentation/articles/sql-data-warehouse-reference-powershell-cmdlets
 
 <!--MSDN references-->
 
@@ -91,4 +94,4 @@ Resume-AzureSqlDatabase –ResourceGroupName "ResourceGroup11" –ServerName "Se
 
 [Azure 管理门户]: https://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0425_2016-->

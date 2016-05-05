@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="12/07/2015"
+   ms.date="04/04/2016"
    wacn.date=""/>
 
 # 将已链接的模版与 Azure 资源管理器配合使用
@@ -109,7 +109,7 @@
 如果你需要将值从链接模板传递到主模板，则可以在链接模板的**输出**部分创建一个值。有关示例，请参阅[在 Azure 资源管理器模板中共享状态](/documentation/articles/best-practices-resource-manager-state)。
 
 ## 后续步骤
-- [创作模板](./resource-group-authoring-templates.md)
-- [部署模板](/documentation/articles/resource-group-template-deploy)
+- 若要了解如何为资源定义部署顺序，请参阅 [Defining dependencies in Azure Resource Manager templates（在 Azure Resource Manager 模板中定义依赖关系）](/documentation/articles/resource-group-define-dependencies)
+- 若要了解如何定义一个资源但要创建其多个实例，请参阅 [Create multiple instances of resources in Azure Resource Manager（在 Azure Resource Manager 中创建多个资源实例）](/documentation/articles/resource-group-create-multiple)
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0425_2016-->

@@ -9,12 +9,12 @@
 
 <tags
 	ms.service="service-fabric"
-	ms.date="03/02/2016"
+	ms.date="04/15/2016"
 	wacn.date=""/>
 
 # 使用 PowerShell 自动化应用程序生命周期
 
-可以对 [Service Fabric 应用程序生命周期](/documentation/articles/service-fabric-application-lifecycle)的许多层面进行自动化。本文说明如何使用 PowerShell 来自动完成部署、升级、删除和测试 Azure Service Fabric 应用程序的常见任务。
+可以对 [Service Fabric 应用程序生命周期](/documentation/articles/service-fabric-application-lifecycle)的许多层面进行自动化。本文说明如何使用 PowerShell 来自动完成部署、升级、删除和测试 Azure Service Fabric 应用程序的常见任务。还提供了用于应用管理的托管和 HTTP API，有关详细信息，请参阅[应用生命周期](/documentation/articles/service-fabric-application-lifecycle)。
 
 ## 先决条件
 在进一步讨论文章中的任务之前，请务必：
@@ -31,7 +31,7 @@
 在生成并打包应用程序（或下载应用程序包）之后，可以将应用程序部署到本地 Service Fabric 群集中。部署过程包括上载应用程序包、注册应用程序类型，以及创建应用程序实例。使用本部分中的说明将新应用程序部署到群集。
 
 ### 步骤 1：上载应用程序包
-将应用程序包上载到映像存储会将其放在一个可由内部 Service Fabric 组件访问的位置。应用程序包包含所需的应用程序清单、服务清单，以及用于创建应用程序和服务实例的代码、配置和数据包。[**Copy-ServiceFabricApplicationPackage**](https://msdn.microsoft.com/zh-cn/library/azure/mt125905.aspx) 命令将上传包。例如：
+将应用程序包上载到映像存储会将其放在一个可由内部 Service Fabric 组件访问的位置。应用程序包包含所需的应用程序清单、服务清单，以及用于创建应用程序和服务实例的代码、配置和数据包。[**Copy-ServiceFabricApplicationPackage**](https://msdn.microsoft.com/zh-cn/library/azure/mt125905.aspx) 命令会上载包。例如：
 
 ```powershell
 Copy-ServiceFabricApplicationPackage C:\Temp\WordCount\ -ImageStoreConnectionString file:C:\SfDevCluster\Data\ImageStoreShare -ApplicationPackagePathInImageStore WordCount
@@ -87,7 +87,7 @@ Register-ServiceFabricApplicationType WordCountV2
 ```
 
 ### 步骤 3：开始升级
-可将各种升级参数、超时和运行状况标准应用到应用程序升级。若要了解详细信息，请参阅[应用程序升级参数](/documentation/articles/service-fabric-application-upgrade-parameters)和[升级过程](/documentation/articles/service-fabric-application-upgrade)文档。所有服务和实例在升级之后都应该“运行正常”。将 **HealthCheckStableDuration** 设置为 60 秒（这样该服务在进行下一个升级域的升级之前将至少保持 20 秒的运行状况正常）。同时，请将 **UpgradeDomainTimeout** 设置为 1200 秒，将 **UpgradeTimeout** 设置为 3000 秒。最后，将 **UpgradeFailureAction** 设置为 **rollback**，以便在升级期间遇到任何错误时，请求 Service Fabric 将应用程序回滚到前一版本。
+可将各种升级参数、超时和运行状况标准应用到应用程序升级。若要了解详细信息，请参阅[应用程序升级参数](/documentation/articles/service-fabric-application-upgrade-parameters)和[升级过程](/documentation/articles/service-fabric-application-upgrade)文档。所有服务和实例在升级之后都应该运行正常。将 **HealthCheckStableDuration** 设置为 60 秒（这样该服务在进行下一个升级域的升级之前将至少保持 20 秒的运行状况正常）。同时，请将 **UpgradeDomainTimeout** 设置为 1200 秒，将 **UpgradeTimeout** 设置为 3000 秒。最后，将 **UpgradeFailureAction** 设置为 **rollback**，以便在升级期间遇到任何错误时，请求 Service Fabric 将应用程序回滚到前一版本。
 
 现在你可以使用 [**Start-ServiceFabricApplicationUpgrade**](https://msdn.microsoft.com/zh-cn/library/azure/mt125975.aspx) cmdlet 开始升级应用程序：
 
@@ -169,4 +169,4 @@ Remove-ServiceFabricApplicationPackage -ImageStoreConnectionString file:C:\SfDev
 
 [Azure Service Fabric 可测试性 cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/mt125844.aspx)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0425_2016-->

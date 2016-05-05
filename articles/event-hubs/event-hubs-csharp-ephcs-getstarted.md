@@ -40,7 +40,7 @@
 
    	![][2]
 
-4. 单击你刚创建的命名空间（通常为 ***事件中心名称*-ns**）。
+4. 单击你刚创建的命名空间（通常为 **事件中心名称-ns**）。
 
    	![][3]
 
@@ -103,5 +103,4 @@
 [使用事件中心扩大事件处理]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-45f43fc3
 [队列消息解决方案]: /documentation/articles/service-bus-dotnet-multi-tier-app-using-service-bus-queues
  
-
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0425_2016-->

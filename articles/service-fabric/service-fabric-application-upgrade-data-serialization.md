@@ -1,5 +1,5 @@
 <properties
-   pageTitle="应用程序升级：数据序列化 | Microsoft Azure"
+   pageTitle="应用程序升级：数据序列化 | Azure"
    description="介绍有关数据序列化的最佳实践，以及数据序列化如何影响应用程序滚动升级。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
     ms.service="service-fabric"
-   ms.date="02/04/2016"
+   ms.date="04/14/2016"
     wacn.date=""/>
 
 
@@ -20,7 +20,7 @@
 
 ## 数据格式由哪些部分构成？
 
-在 Azure Service Fabric 中，保留和复制的数据来自于你的 C# 类。对于使用 [Reliable Collections](/documentation/articles/service-fabric-reliable-services-reliable-collections) 的应用程序，它是可靠词典和队列中的对象。对于使用 [Reliable Actors](service-fabric-reliable-actors-introduction.md) 应用程序，它是执行组件的备用状态。这些 C# 类必须可序列化，以进行保留和复制。因此，数据格式由已序列化的字段和属性及其序列化方式定义。例如，在 `IReliableDictionary<int, MyClass>` 中，数据是一个序列化的 `int` 和一个序列化的 `MyClass`。
+在 Azure Service Fabric 中，保留和复制的数据来自于你的 C# 类。对于使用 [Reliable Collections](/documentation/articles/service-fabric-reliable-services-reliable-collections) 的应用程序，它是可靠词典和队列中的对象。对于使用 [Reliable Actors](/documentation/articles/service-fabric-reliable-actors-introduction) 应用程序，它是执行组件的备用状态。这些 C# 类必须可序列化，以进行保留和复制。因此，数据格式由已序列化的字段和属性及其序列化方式定义。例如，在 `IReliableDictionary<int, MyClass>` 中，数据是一个序列化的 `int` 和一个序列化的 `MyClass`。
 
 ### 导致数据格式更改的代码更改
 
@@ -33,12 +33,12 @@
 
 ### 用作默认序列化程序的数据约定
 
-序列化程序通常负责读取数据并将其反其序列化到当前版本中，即使该数据位于较旧或*较新*版本中。默认序列化程序是[数据协定序列化程序](https://msdn.microsoft.com/zh-cn/library/ms733127.aspx)，它具有定义完善的版本控制规则。Reliable Collections 允许替代序列化程序，但 Reliable Actors 目前不允许。数据序列化程序在启用滚动升级中扮演着重要的角色。数据协定序列化程序是建议用于 Service Fabric 应用程序的序列化程序。
+序列化程序通常负责读取数据并将其反其序列化到当前版本中，即使该数据位于较旧或较新版本中。默认序列化程序是[数据协定序列化程序](https://msdn.microsoft.com/zh-cn/library/ms733127.aspx)，它具有定义完善的版本控制规则。Reliable Collections 允许替代序列化程序，但 Reliable Actors 目前不允许。数据序列化程序在启用滚动升级中扮演着重要的角色。数据协定序列化程序是建议用于 Service Fabric 应用程序的序列化程序。
 
 
 ## 数据格式如何影响滚动升级
 
-滚动升级期间，主要在两种情景下序列化程序可能会遇到较旧的数据版本或*较新*的数据版本：
+滚动升级期间，主要在两种情景下序列化程序可能会遇到较旧的数据版本或较新的数据版本：
 
 1. 节点升级并启动备份后，新的序列化程序将会加载旧版本保留到磁盘的数据。
 2. 滚动升级期间，群集中将混合新旧版本的代码。由于副本可能放置在不同的升级域中，并且副本会相互发送数据，因此新和/或旧版本的序列化程序可能会遇到新和/或旧版本的数据。
@@ -62,4 +62,4 @@
 
 参考[对应用程序升级进行故障排除](/documentation/articles/service-fabric-application-upgrade-troubleshooting)中的步骤来解决应用程序升级时的常见问题。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0425_2016-->

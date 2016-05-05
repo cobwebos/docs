@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure 资源管理器概述 | Microsoft Azure"
+   pageTitle="Azure Resource Manager 概述 | Azure"
    description="介绍如何使用 Azure 资源管理器在 Azure 上部署和管理资源以及对其进行访问控制。"
    services="azure-resource-manager"
    documentationCenter="na"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="02/02/2016"
+   ms.date="04/11/2016"
    wacn.date=""/>
 
 # Azure 资源管理器概述
@@ -75,15 +75,17 @@
 
 从应用商店创建解决方案时，该解决方案将自动包含部署模板。你无需从头开始创建模板，因为你可以从解决方案的模板着手，并根据你的特定需求自定义该模板。
 
+可以通过将资源组的当前状态导出到模板或查看特定部署所用的模板，来检索现有资源组的模板。[Using the Azure Portal to deploy and manage your Azure resources（使用 Azure 门户来部署和管理 Azure 资源）](/documentation/articles/resource-group-portal)中说明了这两种做法。
+
 最后，该模板将成为应用程序源代码的一部分。你可以将它签入源代码存储库，并随着应用程序的发展更新该模板。你可以通过 Visual Studio 编辑模板。
 
 有关定义模板的详细信息，请参阅[创作 Azure 资源管理器模板](./resource-group-authoring-templates.md)。
 
-有关使用模板进行部署的信息，请参阅[使用 Azure 资源管理器模板部署应用程序](/documentation/articles/resource-group-template-deploy)。
+有关创建模板的分步说明，请参阅 [Resource Manager Template Walkthrough（Resource Manager 模板演练）](/documentation/articles/resource-manager-template-walkthrough)。
 
 有关如何构建你的模板的指南，请参阅[设计 Azure 资源管理器模板的最佳实践](/documentation/articles/best-practices-resource-manager-design-templates)。
 
-有关将解决方案部署到不同环境的指南，请参阅 [Microsoft Azure 中的开发和测试环境](/documentation/articles/solution-dev-test-environments-preview-portal)。
+有关将解决方案部署到不同环境的指南，请参阅 [Microsoft Azure 中的开发和测试环境](/documentation/articles/solution-dev-test-environments)。
 
 ## 标记
 
@@ -115,11 +117,11 @@
 
 有关 PowerShell 的信息，请参阅[将 Azure PowerShell 用于资源管理器](/documentation/articles/powershell-azure-resource-manager)和 [Azure 资源管理器 Cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/dn757692.aspx)。
 
-有关 Azure CLI 的信息，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理配合使用](./virtual-machines/xplat-cli-azure-resource-manager.md)。
+有关 Azure CLI 的信息，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理配合使用](/documentation/articles/xplat-cli-azure-resource-manager)。
 
-有关 REST API 的信息，请参阅 [Azure 资源管理器 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn790568.aspx)。
+有关 REST API 的信息，请参阅 [Azure 资源管理器 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn790568.aspx)。若要查看已部署的资源的 REST 操作，请参阅 [Use Azure Resource Explorer to view and modify resources（使用 Azure 资源浏览器来查看和修改资源）](/documentation/articles/resource-manager-resource-explorer)。
 
-有关使用门户的信息，请参阅[使用 Azure 门户管理 Azure 资源](azure-portal/resource-group-portal.md)。
+有关使用门户的信息，请参阅[使用 Azure 门户管理 Azure 资源](/documentation/articles/resource-group-portal)。
 
 Azure 资源管理器支持跨域资源共享 (CORS)。使用 CORS 时，你可以从驻留在不同域中的 Web 应用程序调用资源管理器 REST API 或 Azure 服务 REST API。如果不支持 CORS，Web 浏览器将阻止一个域中的应用访问另一个域中的资源。资源管理器为所有具有有效身份验证凭据的请求启用 CORS。
 
@@ -130,4 +132,4 @@ Azure 资源管理器支持跨域资源共享 (CORS)。使用 CORS 时，你可�
 - 若要了解可以在模板中使用的函数，请参阅[模板函数](./resource-group-template-functions.md)
 - 有关如何设计你的模板的指南，请参阅[设计 Azure 资源管理器模板的最佳实践](/documentation/articles/best-practices-resource-manager-design-templates)
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0425_2016-->

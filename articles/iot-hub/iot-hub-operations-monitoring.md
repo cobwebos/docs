@@ -31,7 +31,7 @@ IoT 中心监视四种类别的事件：
 
     ![][1]
 
-3. 选择要监视的监视类别，然后单击“保存”。可以从“监视设置”中所列的、与事件中心兼容的终结点读取事件。
+3. 选择要监视的监视类别，然后单击“保存”。可以从“监视设置”中所列的、与事件中心兼容的终结点读取事件。IoT 中心终结点称为 `messages/operationsmonitoringevents`。
 
     ![][2]
 
@@ -135,4 +135,4 @@ IoT 中心监视四种类别的事件：
 [lnk-scaling]: /documentation/articles/iot-hub-scaling
 [lnk-dr]: /documentation/articles/iot-hub-ha-dr
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0425_2016-->
