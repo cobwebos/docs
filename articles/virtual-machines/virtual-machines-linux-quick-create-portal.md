@@ -74,4 +74,4 @@ ahmetL@fedora$ ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
 
 这些文章可帮助你开始构建 Azure 基础结构，并介绍多种专属和开源基础结构部署、配置与协调工具。
 
-<!---HONumber=Mooncake_0425_2016-->
+<!----HONumber=Mooncake_0425_2016-->
