@@ -1,5 +1,5 @@
 <properties
-   pageTitle="可测试性：服务通信 | Microsoft Azure"
+   pageTitle="可测试性：服务通信 | Azure"
    description="服务到服务通信是 Service Fabric 应用程序的关键集成点。本文讨论设计注意事项和测试技术。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="08/25/2015"
+   ms.date="03/25/2016"
    wacn.date=""/>
 
 # Service Fabric 可测试性方案：服务通信
@@ -77,15 +77,15 @@
 
 使用 Service Fabric 中的可测试性工具可以注入一个引入仲裁丢失的故障作为测试。尽管这种情况很少见，但是取决于有状态服务的客户端和服务准备好处理无法向有状态服务进行写请求的情形非常重要。有状态服务本身知晓这种可能性并且能够以得当的方式将其告知调用方也非常重要。
 
-可以使用 **Invoke-ServiceFabricPartitionQuorumLoss PowerShell cmdlet** 引入仲裁丢失：
+可以使用 **Invoke-ServiceFabricPartitionQuorumLoss** PowerShell cmdlet 引入仲裁丢失：
 
 ```powershell
 
-PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/MyService -QuorumLossMode PartialQuorumLoss -QuorumLossDurationInSeconds 20
+PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/MyService -QuorumLossMode QuorumReplicas -QuorumLossDurationInSeconds 20
 
 ```
 
-在本示例中，我们将 `QuorumLossMode` 设置为 `PartialQuorumLoss` 以指出我们希望引入仲裁丢失而不关闭所有副本。这样就仍然能够进行读操作。若要测试整个分区不可用的情形，可将此开关设置为 `FullQuorumLoss`。
+在本示例中，我们将 `QuorumLossMode` 设置为 `QuorumReplicas` 以指出我们希望引入仲裁丢失而不关闭所有副本。这样就仍然能够进行读操作。若要测试整个分区不可用的情形，可将此开关设置为 `AllReplicas`。
 
 ## 后续步骤
 
@@ -93,4 +93,4 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 [了解有关可测试性方案的详细信息](/documentation/articles/service-fabric-testability-scenarios)
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0503_2016-->

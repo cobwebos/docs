@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/19/2016"
+   ms.date="03/25/2016"
    wacn.date=""/>
 
 
@@ -34,7 +34,6 @@ public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
 {
     Task UpdateGameStatus(GameStatus status);
 
-    [Readonly]
     Task<string> GetGameScore();
 }
 ```
@@ -56,7 +55,8 @@ class GameEventsHandler : IGameEvents
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
                     new ActorId(Guid.Parse(arg)), ApplicationName);
-proxy.SubscribeAsync(new GameEventsHandler()).Wait();
+                    
+await proxy.SubscribeAsync<IGameEvents>(new GameEventsHandler());
 ```
 
 如果发生故障转移，执行组件可能会故障转移到不同的进程或节点。执行组件代理管理活动的订阅，并自动重新订阅它们。你可以通过 `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API 控制重新订阅的间隔。若要取消订阅，请使用 `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API。
@@ -65,7 +65,13 @@ proxy.SubscribeAsync(new GameEventsHandler()).Wait();
 
 ```csharp
 var ev = GetEvent<IGameEvents>();
-ev.GameScoreUpdated(Id.GetGuidId(), State.Status.Score);
+ev.GameScoreUpdated(Id.GetGuidId(), score);
 ```
 
-<!---HONumber=Mooncake_0418_2016-->
+## 后续步骤
+ - [执行组件可重入性](/documentation/articles/service-fabric-reliable-actors-reentrancy)
+ - [执行组件诊断和性能监视](/documentation/articles/service-fabric-reliable-actors-diagnostics)
+ - [执行组件 API 参考文档](https://msdn.microsoft.com/zh-cn/library/azure/dn971626.aspx)
+ - [代码示例](https://github.com/Azure/servicefabric-samples)
+
+<!---HONumber=Mooncake_0503_2016-->

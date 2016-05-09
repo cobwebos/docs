@@ -1,5 +1,5 @@
 <properties
-   pageTitle="使用 Service Fabric 资源管理器可视化群集 | Microsoft Azure"
+   pageTitle="使用 Service Fabric Explorer 可视化群集 | Azure"
    description="Service Fabric 资源管理器是一个用于检验和管理 Microsoft Azure Service Fabric 群集中的云应用程序和节点的 Web 工具。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="01/13/2016"
+   ms.date="04/05/2016"
    wacn.date=""/>
 
 # 使用 Service Fabric 资源管理器可视化群集
@@ -59,6 +59,8 @@ Service Fabric 资源管理器提供用于对群集中的节点、应用程序�
 例如，若要删除某个应用程序实例，只需从左侧树中选择该应用程序，然后选择“操作”>“删除应用程序”。
 
 ![在 Service Fabric 资源管理器中删除应用程序][sfx-delete-application]
+
+>[AZURE.TIP] 通过单击每个元素旁边的省略号，可以从树视图中执行相同的操作。
 
 下表列出了可对每个实体执行的操作：
 
@@ -110,4 +112,4 @@ Azure 门户的群集基本信息窗格中也提供了完整 URL。
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0503_2016-->

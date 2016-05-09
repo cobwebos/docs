@@ -1,5 +1,5 @@
 <properties
-   pageTitle="混沌测试和故障转移测试 | Microsoft Azure"
+   pageTitle="混沌和故障转移测试 | Azure"
    description="使用 Service Fabric 混沌测试和故障转移测试方案来引发故障，然后验证服务的可靠性。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,13 +9,13 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/03/2016"
+   ms.date="03/25/2016"
    wacn.date=""/>
 
 # 可测试性方案
 大型分布式系统，例如云基础结构，在本质上都是不可靠的。Azure Service Fabric 使开发人员能够编写出可以在不可靠基础结构上运行的服务。若要编写高质量的服务，开发人员需要能够引入这种不可靠的基础结构来测试其服务的稳定性。
 
-Service Fabric 使开发人员能够引入故障操作，在存在故障情况下测试服务。然而，定向模拟故障只能做到这种程度。若要进一步测试，可以使用 Service Fabric 中的测试方案：混沌测试和故障转移测试。这些方案在整个群集模拟连续交叉出现的故障，包括常规故障和非常规故障，时间跨度很长。为测试配置故障率和故障类型后，它就可以作为一个客户端工具运行，通过 C# API 或 PowerShell 在群集和服务中生成故障。
+故障分析服务使开发人员能够引入故障操作，在存在故障的情况下测试服务。然而，定向模拟故障只能做到这种程度。若要进一步测试，可以使用 Service Fabric 中的测试方案：混沌测试和故障转移测试。这些方案在整个群集模拟连续交叉出现的故障，包括常规故障和非常规故障，时间跨度很长。为测试配置故障率和故障类型后，就可以通过 C# API 或 PowerShell 启动该测试，以在群集和服务中生成故障。
 
 ## 混沌测试
 混沌方案跨整个 Service Fabric 群集生成故障。一般而言，该方案将几个月或几年经历的故障压缩到几小时。各种交叉故障的组合并具有高故障率，能够找出很有可能被忽视的极端状况。这会使服务的代码质量得到显著提高。
@@ -45,11 +45,8 @@ Service Fabric 使开发人员能够引入故障操作，在存在故障情况�
 C# 示例
 
 ```csharp
-// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
-
 using System;
 using System.Fabric;
-using System.Fabric.Testability;
 using System.Fabric.Testability.Scenario;
 using System.Threading;
 using System.Threading.Tasks;
@@ -156,14 +153,12 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
  - **WaitTimeBetweenFaults**：每次故障和验证循环之间等待的时间量。
 
 ### 如何运行故障转移测试
-C# 示例
+
+**C#**
 
 ```csharp
-// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
-
 using System;
 using System.Fabric;
-using System.Fabric.Testability;
 using System.Fabric.Testability.Scenario;
 using System.Threading;
 using System.Threading.Tasks;
@@ -219,11 +214,11 @@ class Test
         // scenarioParameters.WaitTimeBetweenFaults = TimeSpan.FromSeconds(10);
 
         // Create the scenario class and execute it asynchronously.
-        FailoverTestScenario chaosScenario = new FailoverTestScenario(fabricClient, scenarioParameters);
+        FailoverTestScenario failoverScenario = new FailoverTestScenario(fabricClient, scenarioParameters);
 
         try
         {
-            await chaosScenario.ExecuteAsync(CancellationToken.None);
+            await failoverScenario.ExecuteAsync(CancellationToken.None);
         }
         catch (AggregateException ae)
         {
@@ -234,7 +229,7 @@ class Test
 ```
 
 
-PowerShell
+**PowerShell**
 
 ```powershell
 $connection = "localhost:19000"
@@ -248,4 +243,4 @@ Connect-ServiceFabricCluster $connection
 Invoke-ServiceFabricFailoverTestScenario -TimeToRunMinute $timeToRun -MaxServiceStabilizationTimeoutSec $maxStabilizationTimeSecs -WaitTimeBetweenFaultsSec $waitTimeBetweenFaultsSec -ServiceName $serviceName -PartitionKindSingleton
 ```
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0503_2016-->

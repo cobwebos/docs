@@ -1,5 +1,5 @@
 <properties
-   pageTitle="指定 Service Fabric 服务终结点 | Microsoft Azure"
+   pageTitle="指定 Service Fabric 服务终结点 | Azure"
    description="如何在服务清单中描述终结点资源，包括如何设置 HTTPS 终结点"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="01/26/2016"
+   ms.date="04/14/2016"
    wacn.date=""/>
 
 # 在服务清单中指定资源
@@ -86,9 +86,9 @@ HTTP 终结点由 Service Fabric 自动建立 ACL。
 
 ## 示例：指定用于你的服务的 HTTPS 终结点
 
-HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进行加密。若要在你的 Service Fabric 服务上启用此功能，当你定义服务时，请在服务清单的“资源”->“终结点”->“终结点”部分中指定协议，如上针对终结点 *ServiceEndpoint3* 的部分中所示。
+HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进行加密。若要在你的 Service Fabric 服务上启用此功能，当你定义服务时，请在服务清单的“资源”->“终结点”->“终结点”部分中指定协议，如上针对终结点 ServiceEndpoint3 的部分中所示。
 
->[AZURE.NOTE] 不能在应用程序升级期间更改 service¡¯s 协议，因为这将是一项重大更改。
+>[AZURE.NOTE] 不能在应用程序升级期间更改服务的协议，因为这将是一项重大更改。
 
 
 下面是你需要为 HTTPS 设置的一个示例 ApplicationManifest。（你将需要提供证书的指纹。） EndpointRef 是对 ServiceManifest 中 EndpointResource 的引用，你为其设置 HTTPS 协议。你可以添加多个 Endpointcertificate。
@@ -133,4 +133,4 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
 </ApplicationManifest>
 ```
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0503_2016-->

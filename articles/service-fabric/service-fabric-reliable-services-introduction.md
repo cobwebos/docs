@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric Reliable Service 编程模型概述 | Microsoft Azure"
+   pageTitle="Service Fabric 可靠服务编程模型概述 | Azure"
    description="了解 Service Fabric 的 Reliable Service 编程模型，并开始编写你自己的服务。"
    services="Service-Fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="Service-Fabric"
-   ms.date="01/13/2016"
+   ms.date="03/25/2016"
    wacn.date=""/>
 
 # Reliable Services 概述
@@ -136,4 +136,4 @@ Service Fabric 中常见的无状态服务使用示例是作为前端，它公�
 + [Reliable Actors 编程模型](/documentation/articles/service-fabric-reliable-actors-introduction)
  
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0503_2016-->

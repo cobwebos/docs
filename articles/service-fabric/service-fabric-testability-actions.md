@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/14/2016"
+   ms.date="03/25/2016"
    wacn.date=""/>
 
 # 可测试性操作
@@ -56,7 +56,7 @@ System.Fabric.dll 程序集包含了这些操作的 C# 实现。Microsoft.Servic
 - [针对单机群集运行一个操作](#run-an-action-against-a-one-box-cluster)
 - [针对 Azure 群集运行一个操作](#run-an-action-against-an-azure-cluster)
 
-### 针对单机群集运行一个操作
+###<a id="run-an-action-against-a-one-box-cluster"></a> 针对单机群集运行一个操作
 
 若要针对本地群集运行一个可测试性操作，首先你需要连接到群集并且应在管理员模式下打开 PowerShell 提示符。让我们看一下 **Restart-ServiceFabricNode** 操作。
 
@@ -81,19 +81,20 @@ Restart-ServiceFabricNode -NodeName $nodeName -CompletionMode DoNotVerify
 
 应使用 **Restart-ServiceFabricNode** 来重新启动群集中的一个 Service Fabric 节点。这将停止会重新启动驻留在该节点上的所有系统服务和用户服务副本的 Fabric.exe 进程。使用此 API 来测试你的服务有助于沿故障转移恢复路径发现 Bug。它帮助模拟群集中的节点故障。
 
-以下屏幕截图显示操作中的 Restart-ServiceFabricNode 可测试性命令。
+以下屏幕截图显示操作中的 **Restart-ServiceFabricNode** 可测试性命令。
 
 ![](./media/service-fabric-testability-actions/Restart-ServiceFabricNode.png)
 
-第一个 Get-ServiceFabricNode（来自 Service Fabric PowerShell 模块的一个 cmdlet）显示本地群集有五个节点：Node.1 至 Node.5。在名为 Node.4 的节点上执行可测试性操作 (cmdlet) Restart-ServiceFabricNode 之后，我们看到节点的正常运行时间已被重置。
+第一个 **Get-ServiceFabricNode**（来自 Service Fabric PowerShell 模块的一个 cmdlet）的输出显示本地群集有五个节点：Node.1 至 Node.5。在名为 Node.4 的节点上执行可测试性操作 (cmdlet) **Restart-ServiceFabricNode** 之后，我们看到节点的正常运行时间已被重置。
 
-### 针对 Azure 群集运行一个操作
+###<a id="run-an-action-against-an-azure-cluster"></a> 针对 Azure 群集运行一个操作
 
 针对 Azure 群集运行一个可测试性操作（使用 PowerShell）与针对本地群集运行一个操作类似。唯一的区别在于：在能够运行操作之前，不是连接到本地群集，而是需要首先连接到 Azure 群集。
 
-## 使用 C 运行可测试性操作#
+## 运行可测试性操作
 
-若要使用 C# 运行可测试性操作，首先你需要使用 FabricClient 连接到群集。然后获取运行该操作所需的参数。可用不同的参数来运行相同的操作。请看一看 RestartServiceFabricNode 操作，运行该操作的方式之一是在群集中使用节点信息（节点名称和节点实例 ID）。
+若要使用 C# 运行可测试性操作，首先你需要使用 FabricClient 连接到群集。然后获取运行该操作所需的参数。可用不同的参数来运行相同的操作。
+请看一看 RestartServiceFabricNode 操作，运行该操作的方式之一是在群集中使用节点信息（节点名称和节点实例 ID）。
 
 ```csharp
 RestartNodeAsync(nodeName, nodeInstanceId, completeMode, operationTimeout, CancellationToken.None)
@@ -101,7 +102,7 @@ RestartNodeAsync(nodeName, nodeInstanceId, completeMode, operationTimeout, Cance
 
 参数说明：
 
-- **CompleteMode** 指定不应该验证实际上是否成功执行了重新启动操作的模式。将完成模式指定为“Verify”会让其验证实际是否成功执行了重新启动操作。  
+- **CompleteMode** 指定该模式不应该验证实际上是否成功执行了重新启动操作。将完成模式指定为“Verify”会让其验证实际是否成功执行了重新启动操作。  
 - **OperationTimeout** 设置在引发 TimeoutException 异常之前等待操作完成的时间量。
 - **CancellationToken** 允许取消挂起调用。
 
@@ -232,4 +233,4 @@ ReplicaSelector secondaryReplicaSelector = ReplicaSelector.RandomSecondaryOf(par
    - [在服务工作负荷期间模拟故障](/documentation/articles/service-fabric-testability-workload-tests)
    - [服务到服务通信失败](/documentation/articles/service-fabric-testability-scenarios-service-communication)
  
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0503_2016-->

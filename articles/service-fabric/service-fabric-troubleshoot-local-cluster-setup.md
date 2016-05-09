@@ -1,5 +1,5 @@
 <properties
-   pageTitle="对本地 Service Fabric 群集设置进行故障排除 | Microsoft Azure"
+   pageTitle="对本地 Service Fabric 群集设置进行故障排除 | Azure"
    description="本文就本地开发群集的故障介绍一些建议"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="01/08/2016"
+   ms.date="04/06/2016"
    wacn.date=""/>
 
 # 排除本地开发群集安装的故障
@@ -46,6 +46,8 @@
 #### 解决方案
 
 始终直接从 Windows PowerShell 运行 Service Fabric cmdlet。
+
+>[AZURE.NOTE] 最新版本的 Azure PowerShell 不创建特殊的快捷方式，因此不会再出现此问题。
 
 ### 类型初始化异常
 
@@ -92,4 +94,4 @@
 - [使用系统运行状况报告了解群集并排除故障](/documentation/articles/service-fabric-understand-and-troubleshoot-with-system-health-reports)
 - [使用 Service Fabric 资源管理器可视化群集](/documentation/articles/service-fabric-visualizing-your-cluster)
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0503_2016-->

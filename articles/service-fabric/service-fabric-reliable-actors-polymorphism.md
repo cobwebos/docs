@@ -9,12 +9,12 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/08/2016"
+   ms.date="03/25/2016"
    wacn.date=""/>
 
 # Reliable Actors 框架中的多态性技术
 
-Reliable Actors 框架简化了分布式系统编程。要做到这一点，它允许你使用在面向对象设计中使用的许多相同技术来构建你的服务。其中一种技术是多态性技术，它允许类型和接口从多个通用父类中继承。Reliable Actors 框架中的继承通常遵循 .NET 模型，并会受到一些附加限制。
+Reliable Actors 框架允许你使用许多在面向对象的设计中使用的相同技术来生成执行组件。其中一种技术是多态性技术，它允许类型和接口从多个通用父类中继承。Reliable Actors 框架中的继承通常遵循 .NET 模型，并会受到一些附加限制。
 
 ## 接口
 
@@ -25,53 +25,59 @@ Reliable Actors 框架要求至少定义一个要由执行组件类型实现的�
 
 ## 类型
 
-你还可以创建执行组件类型的层次结构，这些类型派生自由平台提供的执行组件基类。对于有状态执行组件，你同样可以创建状态类型的层次结构。对于形状，你可能具有一个状态类型为 `ShapeState` 的 `Shape` 基类型。
+你还可以创建执行组件类型的层次结构，这些类型派生自由平台提供的执行组件基类。如果是形状，你可能具有一个 `Shape` 基类型：
 
-    public abstract class Shape : Actor<ShapeState>, IShape
+```csharp
+public abstract class Shape : Actor, IShape
+{
+    public abstract Task<int> GetVerticeCount();
+    
+    public abstract Task<double> GetAreaAsync();
+}
+```
+
+`Shape` 的子类型可以重写基类型的方法。
+
+```csharp
+[ActorService(Name = "Circle")]
+[StatePersistence(StatePersistence.Persisted)]
+public class Circle : Shape, ICircle
+{
+    public override Task<int> GetVerticeCount()
     {
-        ...
+        return Task.FromResult(0);
     }
 
-`Shape` 的子类型可以使用 `ShapeType` 的子类型，以便存储更具体的属性。
-
-    [ActorService(Name = "Circle")]
-    public class Circle : Shape, ICircle
+    public override async Task<double> GetAreaAsync()
     {
-        private CircleState CircleState => this.State as CircleState;
+        CircleState state = await this.StateManager.GetStateAsync<CircleState>("circle");
 
-        public override ShapeState InitializeState()
-        {
-            return new CircleState();
-        }
-
-        [Readonly]
-        public override Task<int> GetVerticeCount()
-        {
-            return Task.FromResult(0);
-        }
-
-       [Readonly]
-       public override Task<double> GetArea()
-       {
-           return Task.FromResult(
-               Math.PI*
-               this.CircleState.Radius*
-               this.CircleState.Radius);
-       }
-
-       ...
+        return Math.PI *
+            state.Radius *
+            state.Radius;
     }
+}
+```
 
-请注意执行组件类型中的 `ActorService` 属性。此属性告知 Azure Service Fabric SDK，它应自动创建用于托管此类型的执行组件的服务。在某些情况下，你可能想要创建仅用于与子类型共享功能，并且始终不会用于实例化具体的执行组件的基类型。在此情况下，应使用 `abstract` 关键字表示你始终不会基于此类型创建执行组件。
+请注意执行组件类型中的 `ActorService` 属性。此属性告知 Reliable Actor 框架，它应自动创建用于托管此类型的执行组件的服务。在某些情况下，你可能想要创建仅用于与子类型共享功能，并且始终不会用于实例化具体的执行组件的基类型。在这些情况下，应使用 `abstract` 关键字表示你始终不会基于此类型创建执行组件。
 
 
 ## 后续步骤
 
-- 请参阅 [Reliable Actors 框架如何使用 Service Fabric 平台](/documentation/articles/service-fabric-reliable-actors-platform)，以提供可靠性、可扩展性和一致状态。
+- 请参阅 [Reliable Actors 框架如何使用 Service Fabric 平台](/documentation/articles/service-fabric-reliable-actors-platform)，以提供可靠性、可伸缩性和一致状态。
 - 了解有关[执行组件生命周期](/documentation/articles/service-fabric-reliable-actors-lifecycle)的信息。
 
 <!-- Image references -->
 
 [shapes-interface-hierarchy]: ./media/service-fabric-reliable-actors-polymorphism/Shapes-Interface-Hierarchy.png
 
-<!---HONumber=Mooncake_0418_2016-->
+## 后续步骤
+ - [执行组件状态管理](/documentation/articles/service-fabric-reliable-actors-state-management)
+ - [执行组件生命周期和垃圾回收](/documentation/articles/service-fabric-reliable-actors-lifecycle)
+ - [执行组件计时器和提醒](/documentation/articles/service-fabric-reliable-actors-timers-reminders)
+ - [执行组件事件](/documentation/articles/service-fabric-reliable-actors-events)
+ - [执行组件可重入性](/documentation/articles/service-fabric-reliable-actors-reentrancy)
+ - [执行组件诊断和性能监视](/documentation/articles/service-fabric-reliable-actors-diagnostics)
+
+
+<!---HONumber=Mooncake_0503_2016-->

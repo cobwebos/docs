@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Service Fabric Reliable Actors KVSActorStateProvider 配置概述 | Microsoft Azure"
+   pageTitle="Azure Service Fabric Reliable Actors KVSActorStateProvider 配置概述 | Azure"
    description="了解有关配置类型为 KVSActorStateProvider 的 Azure Service Fabric 有状态执行组件的信息"
    services="Service-Fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="Service-Fabric"
-   ms.date="01/26/2016"
+   ms.date="04/12/2016"
    wacn.date=""/>
 
 # 配置 Reliable Actors - KVSActorStateProvider
@@ -35,7 +35,7 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 
 ### 配置名称
 
-|名称|计价单位|默认值|备注|
+|Name|计价单位|默认值|备注|
 |----|----|-------------|-------|
 |BatchAcknowledgementInterval|秒|0\.05|收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。为在此间隔内处理的操作发送的任何其他确认都作为响应发送。|
 |ReplicatorEndpoint|不适用|无默认值--必选参数|主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。这应该引用服务清单中的 TCP 资源终结点。有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](/documentation/articles/service-fabric-service-manifest-resources)。 |
@@ -53,10 +53,10 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 
 ### 配置名称
 
-|名称|计价单位|默认值|备注|
+|Name|计价单位|默认值|备注|
 |----|----|-------------|-------|
-|MaxAsyncCommitDelay|毫秒|200|设置持久的本地存储提交的最大批处理间隔。|
-|MaxVerPages|页数|8192|本地存储数据库中的最大版本页数。它确定未完成事务的最大数目。|
+|MaxAsyncCommitDelayInMilliseconds|毫秒|200|设置持久的本地存储提交的最大批处理间隔。|
+|MaxVerPages|页数|16384|本地存储数据库中的最大版本页数。它确定未完成事务的最大数目。|
 
 ## 示例配置文件
 
@@ -86,5 +86,4 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 BatchAcknowledgementInterval 参数用于控制复制延迟。“0”值导致可能的最低延迟，但代价是牺牲吞吐量（因为必须发送和处理更多的确认消息，每个包含较少的确认）。
 BatchAcknowledgementInterval 的值越大，整体复制吞吐量就越高，但代价是导致更高的操作延迟。这直接转换为事务提交的延迟。
  
-
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0503_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="配置 Service Fabric 应用程序的升级 | Microsoft Azure"
+   pageTitle="配置 Service Fabric 应用程序的升级 | Azure"
    description="了解如何使用 Microsoft Visual Studio 来配置 Service Fabric 应用程序的升级设置。"
    services="service-fabric"
    documentationCenter="na"
@@ -8,7 +8,7 @@
    editor="tglee" />
 <tags
    ms.service="service-fabric"
-   ms.date="01/12/2016"
+   ms.date="04/14/2016"
    wacn.date=""/>
 
 # 在 Visual Studio 中配置 Service Fabric 应用程序的升级
@@ -90,4 +90,4 @@ Service Fabric 应用程序中的每个服务可能有自身的运行状况策�
 ## 后续步骤
 有关部署应用程序的详细信息，请参阅[在 Azure Service Fabric 中部署现有应用程序](/documentation/articles/service-fabric-deploy-existing-app)。
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0503_2016-->

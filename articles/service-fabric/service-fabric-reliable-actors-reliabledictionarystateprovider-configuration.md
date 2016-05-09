@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Service Fabric Reliable Actors ReliableDictionaryActorStateProvider 配置概述 | Microsoft Azure"
+   pageTitle="Azure Service Fabric Reliable Actors ReliableDictionaryActorStateProvider 配置概述 | Azure"
    description="了解如何配置 ReliableDictionaryActorStateProvider 类型的 Azure Service Fabric 有状态执行组件。"
    services="Service-Fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="Service-Fabric"
-   ms.date="01/26/2016"
+   ms.date="03/30/2016"
    wacn.date=""/>
 
 # 配置 Reliable Actors - ReliableDictionaryActorStateProvider
@@ -18,6 +18,42 @@
 Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名称，并在创建基础运行时组件时使用这些配置值。
 
 >[AZURE.NOTE] 请**勿**删除或修改 Visual Studio 解决方案中生成的 settings.xml 文件中的以下配置的节名称。
+
+也有一些全局设置会影响 ReliableDictionaryActorStateProvider 的配置。
+
+## 全局配置
+
+全局配置在群集的群集清单中的 KtlLogger 节下面指定。它可配置共享日志位置和大小，以及记录器所使用的全局内存限制。请注意，群集清单中的更改会影响使用 ReliableDictionaryActorStateProvider 的所有服务以及可靠有状态服务。
+
+群集清单是单个 XML 文件，可保留适用于群集中所有节点和服务的设置与配置。此文件通常称为 ClusterManifest.xml。你可以使用 Get-ServiceFabricClusterManifest powershell 命令查看群集的群集清单。
+
+### 配置名称
+
+|Name|计价单位|默认值|备注|
+|----|----|-------------|-------|
+|WriteBufferMemoryPoolMinimumInKB|千字节|8388608|以内核模式分配给记录器写入缓冲区内存池的最小 KB 数。此内存池用于在将状态信息写入磁盘之前缓存这些信息。|
+|WriteBufferMemoryPoolMaximumInKB|千字节|无限制|记录器写入缓冲区内存池可以增长到的大小上限。|
+|SharedLogId|GUID|""|指定用来标识默认共享日志文件的唯一 GUID，该文件用于群集中所有节点上的所有 Reliable Services（不会在其服务特定配置中指定 SharedLogId）。如果指定了 SharedLogId，则也必须指定 SharedLogPath。|
+|SharedLogPath|完全限定的路径名|""|指定完全限定的路径，该路径中的共享日志文件用于群集中所有节点上的所有 Reliable Services（不会在其服务特定配置中指定 SharedLogPath）。但是如果指定了 SharedLogPath，则也必须指定 SharedLogId。|
+|SharedLogSizeInMB|兆字节|8192|指定以静态方式分配给共享日志的磁盘空间 MB 数。此值必须为 2048 或更大。|
+
+### 群集清单节示例
+```xml
+   <Section Name="KtlLogger">
+     <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
+     <Parameter Name="WriteBufferMemoryPoolMaximumInKB" Value="8192" />
+     <Parameter Name="SharedLogId" Value="{7668BB54-FE9C-48ed-81AC-FF89E60ED2EF}"/>
+     <Parameter Name="SharedLogPath" Value="f:\SharedLog.Log"/>
+     <Parameter Name="SharedLogSizeInMB" Value="16383"/>
+   </Section>
+```
+
+### 备注
+记录器具有一个从未分页的内核内存分配的内存全局池，节点上的所有 Reliable Services 都可以使用该池在将状态数据写入与可靠服务副本关联的专用日志之前缓存这些数据。池大小由 WriteBufferMemoryPoolMinimumInKB 和 WriteBufferMemoryPoolMaximumInKB 设置控制。WriteBufferMemoryPoolMinimumInKB 指定此内存池的初始大小，以及内存池可以缩小到的大小下限。WriteBufferMemoryPoolMaximumInKB 是内存池可以增长到的大小上限。每个打开的可靠服务副本都可能会增加内存池的大小，增加幅度从系统决定的数量到 WriteBufferMemoryPoolMaximumInKB。如果内存池的内存需求大于可用的内存，则会延迟内存请求，直到有可用的内存。因此，如果写入缓冲区内存池对特定配置而言太小，则性能可能会受到影响。
+
+SharedLogId 和 SharedLogPath 设置始终一起使用，用于定义群集中所有节点的默认共享日志的 GUID 和位置。默认共享日志可用于不在特定服务 settings.xml 中指定设置的所有 Reliable Services。为了获得最佳性能，共享日志文件应置于仅用于共享日志文件的磁盘上，以便减少争用。
+
+SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志的磁盘空间数量。若要指定 SharedLogSizeInMB，不需要指定 SharedLogId 和 SharedLogPath。
 
 ## 复制器安全配置
 复制器安全配置用于保护在复制过程中使用的通信通道的安全。这意味着服务将无法看到对方的复制流量，从而确保高度可用的数据也处于安全状态。
@@ -35,10 +71,10 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 
 ### 配置名称
 
-|名称|计价单位|默认值|备注|
+|Name|计价单位|默认值|备注|
 |----|----|-------------|-------|
 |BatchAcknowledgementInterval|秒|0\.05|收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。为在此间隔内处理的操作发送的任何其他确认都作为响应发送。||
-|ReplicatorEndpoint|不适用|无默认值--必选参数|主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。这应该引用服务清单中的 TCP 资源终结点。若要了解有关在服务清单中定义终结点资源的更多信息，请参阅[服务清单资源](/documentation/articles/service-fabric-service-manifest-resources)。 |
+|ReplicatorEndpoint|不适用|无默认值--必选参数|主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。这应该引用服务清单中的 TCP 资源终结点。若要了解有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](/documentation/articles/service-fabric-service-manifest-resources)。 |
 |MaxReplicationMessageSize|字节|50 MB|可以在单个消息中传输的复制数据的最大大小。|
 |MaxPrimaryReplicationQueueSize|操作的数量|8192|主要队列中的操作的最大数目。主复制器接收到来自所有辅助复制器的确认之后，将释放一个操作。此值必须大于 64 和 2 的幂。|
 |MaxSecondaryReplicationQueueSize|操作的数量|16384|辅助队列中的操作的最大数目。将在使操作的状态在暂留期间高度可用后释放该操作。此值必须大于 64 和 2 的幂。|
@@ -83,4 +119,4 @@ MaxRecordSizeInKB 设置用于定义可由复制器写入日志文件的记录�
 
 SharedLogId 和 SharedLogPath 设置始终一起使用，使服务可以使用与节点的默认共享日志不同的共享日志。为获得最佳效率，应让尽可能多的服务指定相同共享日志。共享日志文件应置于仅用于共享日志文件的磁盘上，以便减少磁头运动争用。我们预期这些值只在极少数情况下需要更改。
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0503_2016-->

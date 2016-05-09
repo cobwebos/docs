@@ -7,8 +7,8 @@
 	manager="wpickett" 
 	editor=""/>
 
-<tags ms.service="azure-portal"
-
+<tags 
+	ms.service="azure-portal" 
 	ms.date="07/16/2015" 
 	wacn.date=""/>
 
@@ -30,4 +30,4 @@
 - 若要深入了解有关在资源之间创建链接的详细信息，请参阅[在 Azure 资源管理器中链接资源](/documentation/articles/resource-group-link-resources)。
 - 若要了解如何通过预览门户使用资源组，请参阅[使用 Azure 预览门户管理 Azure 资源](/documentation/articles/resource-group-portal)。
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0503_2016-->

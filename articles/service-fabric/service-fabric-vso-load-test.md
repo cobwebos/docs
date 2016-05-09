@@ -1,5 +1,5 @@
 <properties
-    pageTitle="使用 Visual Studio Team Services 对应用程序进行负载测试 | Microsoft Azure"
+    pageTitle="使用 Visual Studio Team Services 对应用程序进行负载测试 | Azure"
     description="了解如何使用 Visual Studio Team Services 对 Azure Service Fabric 应用程序进行压力测试。"
     services="service-fabric"
     documentationCenter="na"
@@ -9,7 +9,7 @@
 
 <tags
     ms.service="multiple"
-    ms.date="10/28/2015"
+    ms.date="04/06/2016"
     wacn.date="" />
 
 # 使用 Visual Studio Team Services 对应用程序进行负载测试
@@ -137,4 +137,4 @@ Visual Studio Team Services 负载测试提供了 API 来帮助你管理负载�
 [8]: ./media/service-fabric-vso-load-test/RunTest2.png
 [9]: ./media/service-fabric-vso-load-test/Graph.png
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0503_2016-->
