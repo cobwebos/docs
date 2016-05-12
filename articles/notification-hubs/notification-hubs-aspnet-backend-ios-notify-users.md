@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="12/16/2015"
+	ms.date="03/28/2016"
 	wacn.date=""/>
 
 #Azure 通知中心 - 使用 .NET 后端通知 iOS 用户
@@ -18,9 +18,9 @@
 
 ##概述
 
-利用 Azure 中的推送通知支持，你可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。ASP.NET WebAPI 后端用于对客户端进行身份验证并生成通知，如指南主题[从应用后端注册](/documentation/articles/notification-hubs-registration-management#registration-management-from-a-backend)中所述。
+利用 Azure 中的推送通知支持，你可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。ASP.NET WebAPI 后端用于对客户端进行身份验证并生成通知，如指南主题[从应用后端注册](notification-hubs-registration-management.md#registration-management-from-a-backend)中所述。
 
-> [AZURE.NOTE]本教程假设您已根据[通知中心入门 (iOS)](/documentation/articles/notification-hubs-ios-get-started) 中所述创建并配置了通知中心。此外，只有在学习本教程后，才可以学习[安全推送 (iOS)](/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push) 教程。如果你使用移动服务作为后端服务，请参阅本教程的[移动服务版本](/documentation/articles/mobile-services-javascript-backend-ios-push-notifications-app-users)。
+> [AZURE.NOTE] 本教程假设您已根据[通知中心入门 (iOS)](notification-hubs-ios-get-started.md) 中所述创建并配置了通知中心。此外，只有在学习本教程后，才可以学习[安全推送 (iOS)](notification-hubs-aspnet-backend-ios-secure-push.md) 教程。如果你要使用 Mobile Apps 作为后端服务，请参阅 [Mobile Apps Get Started with Push（Mobile Apps 中的推送通知入门）](../app-service-mobile/app-service-mobile-ios-get-started-push.md)。
 
 
 
@@ -30,7 +30,7 @@
 
 1. 打开你在[通知中心入门 (iOS)](/documentation/articles/notification-hubs-ios-get-started) 教程中创建的“单页视图”应用。
 
-> [AZURE.NOTE]在本节中我们假定你的项目已配置了空的组织名称。如果未配置，你将需要在所有类名前面追加组织名称。
+> [AZURE.NOTE] 在本节中我们假定你的项目已配置了空的组织名称。如果未配置，你将需要在所有类名前面追加组织名称。
 
 2. 在 Main.storyboard 中添加对象库中的组件，如下面的屏幕截图中所示。 
 
@@ -65,7 +65,7 @@
 
 		- (IBAction)LogInAction:(id)sender;		
 
-4. 在 ViewController.h 中，在 import 语句的正下方添加以下 `#define`。将 *< 输入你的后端终结点>* 占位符替换为在上一节中用于部署应用后端的目标 URL。例如，*http://you_backend.chinacloudsites.cn*。
+4. 在 ViewController.h 中，在 import 语句的正下方添加以下 `#define`。将 <输入你的后端终结点> 占位符替换为在上一节中用于部署应用后端的目标 URL。例如，http://you_backend.chinacloudsites.cn。
 
 		#define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
 
@@ -279,7 +279,7 @@
 
 		@end
 
-> [AZURE.NOTE]下面的代码段不是安全的身份验证方案，你应将 **createAndSetAuthenticationHeaderWithUsername:AndPassword:** 的实现替换为你的特定身份验证机制，该机制将生成要供注册客户端类（例如，OAuth、Active Directory）使用的身份验证令牌。
+> [AZURE.NOTE] 下面的代码段不是安全的身份验证方案，你应将 **createAndSetAuthenticationHeaderWithUsername:AndPassword:** 的实现替换为你的特定身份验证机制，该机制将生成要供注册客户端类（例如，OAuth、Active Directory）使用的身份验证令牌。
 
 9. 然后在 ViewController.m 的 `@implementation` 节中添加以下代码，以添加用于设置设备令牌的实现和身份验证标头。 
 
@@ -461,5 +461,4 @@
 [3]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-registered.png
 [4]: ./media/notification-hubs-aspnet-backend-ios-notify-users/notification-hubs-ios-notify-users-enter-msg.png
  
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0503_2016-->

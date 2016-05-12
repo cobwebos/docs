@@ -36,7 +36,7 @@
 - 不支持跨区域备份和恢复。
 - Azure 的所有公共区域都支持使用 Azure 备份服务来备份虚拟机（请参阅受支持区域的[清单](https://azure.microsoft.com/regions/#services)）。在创建保管库期间，如果你要寻找的区域目前不受支持，则不会在下拉列表中显示它。
 - 只有特定的操作系统版本才支持使用 Azure 备份服务备份虚拟机。
-  - **Linux**：请参阅 [Azure 认可的分发版列表](../virtual-machines/virtual-machines-linux-endorsed-distributions.md)。只要虚拟机上装有 VM 代理，其他自带的 Linux 分发版应该也能正常运行。
+  - **Linux**：请参阅 [Azure 认可的分发版列表](../virtual-machines/virtual-machines-linux-endorsed-distros.md)。只要虚拟机上装有 VM 代理，其他自带的 Linux 分发版应该也能正常运行。
   - **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
 	- 仅支持通过 PowerShell 还原属于多 DC 配置的域控制器 (DC) VM。阅读有关[还原多 DC 域控制器](backup-azure-restore-vms.md#restoring-domain-controller-vms)的详细信息。
 	- 仅支持通过 PowerShell 还原采用以下特殊网络配置的虚拟机。还原操作完成后，在 UI 中使用还原工作流创建的虚拟机将不采用这些网络配置。若要了解详细信息，请参阅[还原采用特殊网络配置的 VM](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations)。
@@ -99,7 +99,7 @@
 
 |选项|优点|缺点|
 |------|----------|-------------|
-|选项 1：将 IP 范围加入白名单| 无额外成本<br><br>若要在 NSG 中打开访问权限，请使用 <i>Set-AzureNetworkSecurityRule</i> cmdlet | 管理起来很复杂，因为受影响的 IP 范围会不断变化；<br>允许访问整个 Azure，而不只是存储空间。|
+|选项 1：将 IP 范围加入白名单| 无额外成本<br><br>若要在 NSG 中打开访问权限，请使用 Set-AzureNetworkSecurityRule cmdlet | 管理起来很复杂，因为受影响的 IP 范围会不断变化；<br>允许访问整个 Azure，而不只是存储空间。|
 |选项 2：HTTP 代理| 通过允许的存储 URL 在代理中进行精细控制；<br>对 VM 进行单点 Internet 访问；<br>不受 Azure IP 地址变化的影响| 通过代理软件运行 VM 带来的额外成本。|
 
 ### 使用 HTTP 代理进行 VM 备份
@@ -107,7 +107,7 @@
 
 >[AZURE.NOTE] 至于应该使用何种代理软件，我们不提供任何建议。请确保你选取的代理可以进行下述配置步骤。
 
-在以下示例中，需要对应用 VM 进行配置，以便将代理 VM 用于所有绑定到公共 Internet 的 HTTP 流量。需要将代理 VM 配置为允许来自虚拟网络中 VM 的传入流量。最后，NSG（也称 *NSG-lockdown*）需要一个新的安全规则，以便允许从代理 VM 流出的出站 Internet 流量。
+在以下示例中，需要对应用 VM 进行配置，以便将代理 VM 用于所有绑定到公共 Internet 的 HTTP 流量。需要将代理 VM 配置为允许来自虚拟网络中 VM 的传入流量。最后，NSG（也称 NSG-lockdown）需要一个新的安全规则，以便允许从代理 VM 流出的出站 Internet 流量。
 
 ![NSG 与 HTTP 代理部署图](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
 
@@ -204,4 +204,4 @@ VM 代理已存在于从 Azure 库创建的 VM 中。但是，从本地数据中
 - [计划 VM 备份基础结构](/documentation/articles/backup-azure-vms-introduction)
 - [管理虚拟机备份](/documentation/articles/backup-azure-manage-vms)
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0503_2016-->

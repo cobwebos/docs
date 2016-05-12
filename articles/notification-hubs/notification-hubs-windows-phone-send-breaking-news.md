@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="12/15/2015" 
+	ms.date="03/28/2016" 
 	wacn.date="" />
 
 # 使用通知中心发送突发新闻
@@ -21,7 +21,7 @@
 
 本主题演示如何使用 Azure 通知中心将突发新闻通知广播到 Windows Phone 8.0/8.1 Silverlight 应用。如果你要以 Windows 应用商店或 Phone 8.1 应用为目标，请参阅 [Windows Universal](/zh-cn/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/) 版本。完成时，你可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。
 
-在创建通知中心的注册时，通过加入一个或多个_标记_来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-routing-tag-expressions.md)。
+在创建通知中心的注册时，通过加入一个或多个标记来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-routing-tag-expressions.md)。
 
 ##先决条件
 
@@ -186,11 +186,11 @@
     此类使用隔离存储区存储此设备要接收的新闻类别。它还包含用于通过[模板](notification-hubs-templates.md)通知注册来注册这些类别的方法。
 
 
-4. 在 App.xaml.cs 项目文件中，将以下属性添加到 **App** 类：将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心名称和前面获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
+4. 在 App.xaml.cs 项目文件中，将以下属性添加到 **App** 类：将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心名称和前面获取的 DefaultListenSharedAccessSignature 的连接字符串。
 
 		public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
 
-	> [AZURE.NOTE]由于使用客户端应用程序分发的凭据通常是不安全的，你只应使用客户端应用程序分发具有侦听访问权限的密钥。侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
+	> [AZURE.NOTE] 由于使用客户端应用程序分发的凭据通常是不安全的，你只应使用客户端应用程序分发具有侦听访问权限的密钥。侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
 
 5. 在 MainPage.xaml.cs 中，添加以下行：
 
@@ -222,7 +222,7 @@
 
 这些步骤用于在启动时将在本地存储区中存储的类别注册到通知中心。
 
-> [AZURE.NOTE]由于 Microsoft 推送通知服务 (MPNS) 分配的通道 URI 随时可能更改，因此你应该经常注册通知以避免通知失败。此示例在每次应用程序启动时注册通知。对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，你可以跳过注册来节省带宽。
+> [AZURE.NOTE] 由于 Microsoft 推送通知服务 (MPNS) 分配的通道 URI 随时可能更改，因此你应该经常注册通知以避免通知失败。此示例在每次应用程序启动时注册通知。对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，你可以跳过注册来节省带宽。
 
 
 1. 打开 App.xaml.cs 文件，将 **async** 修饰符添加到 **Application\_Launching** 方法，并将你在[通知中心入门]中添加的通知中心注册代码替换为以下代码：
@@ -288,7 +288,7 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
 + [Use Notification Hubs to broadcast localized breaking news]
 
-	Learn how to expand the breaking news app to enable sending localized notifications. 
+	Learn how to expand the breaking news app to enable sending localized notifications.
 
 + [Notify users with Notification Hubs]
 
@@ -318,4 +318,8 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
 [Azure Management Portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0104_2016-->
+
+
+
+
+<!---HONumber=Mooncake_0503_2016-->

@@ -1,6 +1,7 @@
 <properties
-	pageTitle="如何通过 Node.js 使用通知中心"
+	pageTitle="使用 Azure 通知中心和 Node.js 发送推送通知"
 	description="了解如何使用通知中心从 Node.js 应用程序发送推送通知。"
+        keywords="推送通知,push notification,node.js 推送,ios 推送"
 	services="notification-hubs"
 	documentationCenter="nodejs"
 	authors="wesmc7777"
@@ -9,12 +10,9 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="03/08/2015"
+	ms.date="03/28/2016"
 	wacn.date=""/>
-	
-	
-	
-	
+
 	
 # 使用 Azure 通知中心和 Node.js 发送推送通知
 [AZURE.INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -36,11 +34,11 @@
 
 ##什么是通知中心？
 
-Azure 通知中心提供用于向移动设备发送推送通知的易于使用、多平台且可缩放的基础结构。有关服务基础结构的详细信息，请参阅 [Azure 通知中心](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx)页面。
+Azure 通知中心提供用于向移动设备发送推送通知的易于使用、多平台且可缩放的基础结构。有关服务基础结构的详细信息，请参阅 [Azure 通知中心](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx)页。
 
 ##创建 Node.js 应用程序
 
-本教程的第一步是创建新的空白 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、[Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell）或 [使用 WebMatrix 创建网站]。
+本教程的第一步是创建新的空白 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][nodejswebsite]、[Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell）或[使用 WebMatrix 创建网站]。
 
 ##将应用程序配置为使用通知中心
 
@@ -80,11 +78,11 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-可通过执行以下步骤从 [Azure 门户] 获取连接 **connectionstring** 值：
+可通过执行以下步骤从 [Azure 门户]获取连接 **connectionstring** 值：
 
 1. 在左侧导航窗格中，单击“浏览”。
 
-2. 选择“通知中心”，然后找到要用于示例的中心。如果在创建新通知中心时需要获得帮助，可以参考 [Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started.md)。
+2. 选择“通知中心”，然后找到要用于示例的中心。如果在创建新通知中心时需要获得帮助，可以参阅 [Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started.md)。
 
 3. 选择“设置”。
 
@@ -101,15 +99,15 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 * **Android** - 使用可从 **notificationHubService.gcm** 中获取的 **GcmService** 对象
 * **iOS** - 使用可在 **notificationHubService.apns** 中访问的 **ApnsService** 对象
 * **Windows Phone** - 使用可从 **notificationHubService.mpns** 中获取的 **MpnsService** 对象
-* **通用 Windows 平台** — 使用可从 **notificationHubService.wns** 中获取的 **WnsService** 对象
+* **通用 Windows 平台** - 使用可从 **notificationHubService.wns** 中获取的 **WnsService** 对象
 
 ### 如何：向 Android 应用程序发送推送通知
 
 **GcmService** 对象提供可用于将推送通知发送到 Android 应用程序的 **send** 方法。该 **send** 方法接受以下参数：
 
-* **Tags** — 标记标识符。如果没有提供任何标记，通知将发送给所有客户端。
-* **Payload** — 消息的 JSON 或原始字符串负载。
-* **Callback** — 回叫函数。
+* **Tags** - 标记标识符。如果没有提供任何标记，通知将发送给所有客户端。
+* **Payload** - 消息的 JSON 或原始字符串负载。
+* **Callback** - 回调函数。
 
 有关负载格式的详细信息，请参阅[实施 GCM 服务器](http://developer.android.com/google/gcm/server.html#payload)文档中的“负载”部分。
 
@@ -130,9 +128,9 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
 与上述 Android 应用程序一样，**ApnsService** 对象提供可用于将推送通知发送到 iOS 应用程序的 **send** 方法。该 **send** 方法接受以下参数：
 
-* **Tags** — 标记标识符。如果没有提供任何标记，通知将发送给所有客户端。
-* **Payload** — 消息的 JSON 或字符串负载。
-* **Callback** — 回叫函数。
+* **Tags** - 标记标识符。如果没有提供任何标记，通知将发送给所有客户端。
+* **Payload** - 消息的 JSON 或字符串负载。
+* **Callback** - 回调函数。
 
 有关负载格式的详细信息，请参阅[本地和推送通知编程指南](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html)文档中的“通知负载”部分。
 
@@ -151,12 +149,12 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
 **MpnsService** 对象提供可用于将推送通知发送到 Windows Phone 应用程序的 **send** 方法。该 **send** 方法接受以下参数：
 
-* **Tags** — 标记标识符。如果没有提供任何标记，通知将发送给所有客户端。
-* **Payload** — 消息的 XML 负载。
-* **TargetName** — `toast` 表示 toast 通知。`token` 表示磁贴通知。
-* **NotificationClass** — 通知的优先级。有关有效值，请参阅[从服务器推送通知](http://msdn.microsoft.com/library/hh221551.aspx)文档中的“HTTP 标头元素”部分。
-* **Options** — 可选的请求标头。
-* **Callback** — 回叫函数。
+* **Tags** - 标记标识符。如果没有提供任何标记，通知将发送给所有客户端。
+* **Payload** - 消息的 XML 负载。
+* **TargetName** - `toast` 表示 toast 通知。`token` 表示磁贴通知。
+* **NotificationClass** - 通知的优先级。有关有效值，请参阅[从服务器推送通知](http://msdn.microsoft.com/library/hh221551.aspx)文档中的“HTTP 标头元素”部分。
+* **Options** - 可选的请求标头。
+* **Callback** - 回调函数。
 
 有关有效的 **TargetName**、**NotificationClass** 和标头选项的列表，请查看[从服务器推送通知](http://msdn.microsoft.com/library/hh221551.aspx)页面。
 
@@ -173,11 +171,11 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
 **WnsService** 对象提供可用于将推送通知发送到通用 Windows 平台应用程序的 **send** 方法。该 **send** 方法接受以下参数：
 
-* **Tags** — 标记标识符。如果没有提供任何标记，通知将发送给所有已注册的客户端。
-* **Payload** — XML 消息负载。
-* **Type** — 通知类型。
-* **Options** — 可选的请求标头。
-* **Callback** — 回叫函数。
+* **Tags** - 标记标识符。如果没有提供任何标记，通知将发送给所有已注册的客户端。
+* **Payload** - XML 消息负载。
+* **Type** - 通知类型。
+* **Options** - 可选的请求标头。
+* **Callback** - 回调函数。
 
 有关有效类型和请求标头的列表，请参阅[推送通知服务请求和响应标头](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx)。
 
@@ -212,20 +210,21 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
   [How to: Delete Topics and Subscriptions]: #How_to_Delete_Topics_and_Subscriptions
   [1]: #Next_Steps
   [Topic Concepts]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-topics-01.png
-  [Azure Management Portal]: http://manage.windowsazure.cn
+  [Azure Classic Portal]: http://manage.windowsazure.cn
   [image]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-03.png
   [2]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-04.png
   [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
   [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
   [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
-  [SqlFilter.SqlExpression]: http://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-  [Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/zh-cn/library/azure/jj927170.aspx
-  [SqlFilter]: http://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.sqlfilter.aspx
-  [ Website with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
-  [Node.js Cloud Service]: /zh-cn/documentation/articles/cloud-services-nodejs-develop-deploy-app/
-  [Azure 门户]: https://portal.azure.cn
-  [nodejswebsite]: /documentation/articles/web-sites-nodejs-develop-deploy-mac/
- 
+  [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+  [Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
+  [SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
+  [使用 WebMatrix 创建网站]: /develop/nodejs/tutorials/web-site-with-webmatrix/
+  [Node.js Cloud Service]: ../cloud-services-nodejs-develop-deploy-app.md
+  [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
+  [nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
+  [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
+  [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
+  [Azure 门户]: https://portal.azure.com
 
-
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0503_2016-->

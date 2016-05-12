@@ -22,13 +22,13 @@ Azure Batch 的应用程序包功能可为池中的计算节点提供简单的�
 
 ## 应用程序包要求
 
-本文所讨论的应用程序包功能*仅*能与 2016 年 3 月 10 日后创建的 Batch 池兼容。应用程序包将无法部署到在此日期之前创建r 池中的计算节点。
+本文所讨论的应用程序包功能仅能与 2016 年 3 月 10 日后创建的 Batch 池兼容。应用程序包将无法部署到在此日期之前创建r 池中的计算节点。
 
 [Batch REST API][api_rest] 2015-12-01.2.2 版和对应的 [Batch .NET][api_net] 库 3.1.0 版引入了此功能。使用 Batch 时，我们建议始终使用最新的 API 版本。
 
 ## 关于应用程序和应用程序包
 
-在 Azure Batch 中，应用程序是指一组已创建版本的二进制文件，这些文件可自动下载到池中的计算节点。应用程序包指的是这些二进制文件中的一组特定组合，其代表应用程序的特定版本。
+在 Azure Batch 中，**应用程序**是指一组已创建版本的二进制文件，这些文件可自动下载到池中的计算节点。**应用程序包**指的是这些二进制文件中的一组特定组合，其代表应用程序的特定版本。
 
 ![应用程序和应用程序包的统括示意图][1]
 
@@ -194,10 +194,11 @@ Batch 服务在应用程序包的存储和检索操作中使用关联的存储�
 ```csharp
 // Create the unbound CloudPool
 CloudPool myCloudPool =
-    batchClient.PoolOperations.CreatePool(poolId: "myPool",
-                                          osFamily: "4",
-                                          virtualMachineSize: "small",
-                                          targetDedicated: "1");
+    batchClient.PoolOperations.CreatePool(
+        poolId: "myPool",
+        targetDedicated: "1",
+        virtualMachineSize: "small",
+        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
 
 // Specify the application and version to install on the compute nodes
 myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
@@ -311,4 +312,4 @@ foreach (ApplicationSummary app in applications)
 [11]: ./media/batch-application-packages/app_pkg_11.png "Azure 门户中的更新包边栏选项卡"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Azure 门户中的删除包确认对话框"
 [13]: ./media/batch-application-packages/app_pkg_13.png "元数据文件选择详细信息"
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0503_2016-->

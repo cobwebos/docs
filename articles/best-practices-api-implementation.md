@@ -1,5 +1,5 @@
 <properties
-   pageTitle="API 实现指南 | Microsoft Azure"
+   pageTitle="API 实现指南 | Azure"
    description="有关如何实现 API 的指南。"
    services=""
    documentationCenter="na"
@@ -10,12 +10,11 @@
 
 <tags
    ms.service="best-practice"
-   ms.date="12/17/2015"
+   ms.date="04/01/2016"
    wacn.date=""/>
 
 # API 实现指南
 
-![](./media/best-practices-api-implementation/pnp-logo.png)
 
 
 本指南中的一些主题正在讨论中，将来可能会更改。我们欢迎你的反馈！
@@ -72,7 +71,7 @@
 	}
 	```
 
-	> [AZURE.TIP]尽可能利用默认路由并避免定义很多复杂的自定义路由，因为这可能会导致易受攻击（很容易向控制器添加导致多义性路由的方法）和性能降低（路由表越大，Web API 框架越不得不执行更多操作来找出哪个路由与给定的 URI 匹配）。简化 API 和路由。有关详细信息，请参阅 API 设计指南中的“围绕资源组织 Web API”一节。如果你必须定义自定义路由，则更可取的方法是使用本节稍后所述的基于属性的路由。
+	> [AZURE.TIP] 尽可能利用默认路由并避免定义很多复杂的自定义路由，因为这可能会导致易受攻击（很容易向控制器添加导致多义性路由的方法）和性能降低（路由表越大，Web API 框架越不得不执行更多操作来找出哪个路由与给定的 URI 匹配）。简化 API 和路由。有关详细信息，请参阅 API 设计指南中的“围绕资源组织 Web API”一节。如果你必须定义自定义路由，则更可取的方法是使用本节稍后所述的基于属性的路由。
 
 	有关基于约定的路由的详细信息，请参阅 Microsoft 网站上的 [ASP.NET Web API 中的路由](http://www.asp.net/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api)页。
 
@@ -153,7 +152,7 @@
 
 	实现这些请求的代码不应施加任何副作用。对同一资源重复进行同一请求应导致同一状态。例如，向同一 URI 发送多个 DELETE 请求应具有相同的效果，尽管响应消息中的 HTTP 状态代码可能会有所不同（第一个 DELETE 请求可能会返回状态代码 204（无内容），而后续的 DELETE 请求可能会返回状态代码 404（未找到））。
 
-> [AZURE.NOTE]Jonathan Oliver 博客上的[幂等性模式](http://blog.jonathanoliver.com/idempotency-patterns/)一文概述了幂等性以及它如何与数据管理操作相关。
+> [AZURE.NOTE] Jonathan Oliver 博客上的[幂等性模式](http://blog.jonathanoliver.com/idempotency-patterns/)一文概述了幂等性以及它如何与数据管理操作相关。
 
 - **创建新资源的 POST 操作应这样做才不会有不相关的副作用**。
 
@@ -222,7 +221,7 @@
 
 	如果客户端未指定 Accept 标头，则对响应正文使用有意义的默认格式。例如，ASP.NET Web API 框架对基于文本的数据默认使用 JSON 格式。
 
-	> [AZURE.NOTE]ASP.NET Web API 框架执行 Accept 标头的某种自动检测，并根据响应消息正文中的数据类型自行处理它们。例如，如果响应消息正文中包含 CLR（公共语言运行时）对象，则 ASP.NET Web API 会将响应的格式自动设置为 JSON，并将响应的 Content-Type 标头设置为“application/json”，除非客户端指示它需要 XML 格式的结果，在这种情况下，ASP.NET Web API 框架会将响应的格式设置为 XML，并将响应的 Content-Type 标头设置为“text/xml”。但是，可能需要处理在操作的实现代码中显式指定多种媒体类型的 Accept 标头。
+	> [AZURE.NOTE] ASP.NET Web API 框架执行 Accept 标头的某种自动检测，并根据响应消息正文中的数据类型自行处理它们。例如，如果响应消息正文中包含 CLR（公共语言运行时）对象，则 ASP.NET Web API 会将响应的格式自动设置为 JSON，并将响应的 Content-Type 标头设置为“application/json”，除非客户端指示它需要 XML 格式的结果，在这种情况下，ASP.NET Web API 框架会将响应的格式设置为 XML，并将响应的 Content-Type 标头设置为“text/xml”。但是，可能需要处理在操作的实现代码中显式指定多种媒体类型的 Accept 标头。
 
 - **提供支持 HATEOAS 样式导航和资源发现的链接**。
 
@@ -358,9 +357,9 @@
 	}
 	```
 
-	> [AZURE.TIP]不要包括可能对尝试入侵你的 Web API 的攻击者有用的信息。有关详细信息，请访问 Microsoft 网站上的 [ASP.NET Web API 中的异常处理](http://www.asp.net/web-api/overview/error-handling/exception-handling)页。
+	> [AZURE.TIP] 不要包括可能对尝试入侵你的 Web API 的攻击者有用的信息。有关详细信息，请访问 Microsoft 网站上的 [ASP.NET Web API 中的异常处理](http://www.asp.net/web-api/overview/error-handling/exception-handling)页。
 
-	> [AZURE.NOTE]许多 Web 服务器在错误条件到达 Web API 之前，自行捕获错误条件。例如，如果你为网站配置了身份验证，但用户无法提供正确的身份验证信息，则 Web 服务器应以状态代码 401（未经授权）进行响应。客户端经过身份验证后，你的代码可以执行自己的检查来验证客户端是否应能够访问所请求的资源。如果此授权失败，则应返回状态代码 403（禁止访问）。
+	> [AZURE.NOTE] 许多 Web 服务器在错误条件到达 Web API 之前，自行捕获错误条件。例如，如果你为网站配置了身份验证，但用户无法提供正确的身份验证信息，则 Web 服务器应以状态代码 401（未经授权）进行响应。客户端经过身份验证后，你的代码可以执行自己的检查来验证客户端是否应能够访问所请求的资源。如果此授权失败，则应返回状态代码 403（禁止访问）。
 
 - **以一致方式处理异常，并记录有关错误的信息**。
 
@@ -461,13 +460,13 @@
     }
 	```
 
-	> [AZURE.NOTE]HTTP 协议还为 Cache-Control 标头定义了 _no-cache_ 指令。令人困惑的是，此指令并不意味着“不缓存”而是指示“在返回信息之前使用服务器重新验证缓存的信息”；数据仍可以缓存，但在每次使用它时检查以确保它仍是最新的。
+	> [AZURE.NOTE] HTTP 协议还为 Cache-Control 标头定义了 _no-cache_ 指令。令人困惑的是，此指令并不意味着“不缓存”而是指示“在返回信息之前使用服务器重新验证缓存的信息”；数据仍可以缓存，但在每次使用它时检查以确保它仍是最新的。
 
 	缓存管理是客户端应用程序或中间服务器的职责，但如果正确实现它，可以节省带宽和提高性能，因为它可以消除提取最近已检索的数据的需要。
 
 	Cache-Control 标头中的 _max-age_ 值只是指南，并不保证相应的数据在指定的时间期间内不会更改。Web API 应将 max-age 设置为适当的值，具体取决于数据的预期波动性。此期间到期后，客户端应放弃缓存中的对象。
 
-	> [AZURE.NOTE]如前所述，大多数现代 Web 浏览器通过向请求添加相应的 Cache-Control 标头并检查结果的标头来支持客户端缓存。但是，某些较旧的浏览器将不缓存从包含查询字符串的 URL 返回的值。这通常不是基于此处讨论的协议实现自己的缓存管理策略的自定义客户端应用程序的问题。
+	> [AZURE.NOTE] 如前所述，大多数现代 Web 浏览器通过向请求添加相应的 Cache-Control 标头并检查结果的标头来支持客户端缓存。但是，某些较旧的浏览器将不缓存从包含查询字符串的 URL 返回的值。这通常不是基于此处讨论的协议实现自己的缓存管理策略的自定义客户端应用程序的问题。
 	>
 	> 某些较旧的代理显示相同的行为并可能不会基于包含查询字符串的 URL 缓存请求。这可能是通过此类代理连接到 Web 服务器的自定义客户端应用程序的问题。
 
@@ -513,7 +512,7 @@
 	{"orderID":2,"productID":4,"quantity":2,"orderValue":10.00}
 	```
 
-	> [AZURE.TIP]出于安全原因，不允许缓存敏感数据或通过经过身份验证 (HTTPS) 的连接返回的数据。
+	> [AZURE.TIP] 出于安全原因，不允许缓存敏感数据或通过经过身份验证 (HTTPS) 的连接返回的数据。
 
 	客户端应用程序随时可以发出后续 GET 请求以检索同一资源，并且如果资源已更改（它具有不同的 ETag），则应放弃缓存的版本，并将新版本添加到缓存中。如果资源很大并且需要大量的带宽才能传输回客户端，则重复执行提取相同数据的请求可能会效率低下。为了应对这种情况，HTTP 协议定义了以下过程来优化应在 Web API 中支持的 GET 请求：
 
@@ -535,7 +534,7 @@
 
 	- 客户端使用状态代码来维护缓存。如果数据尚未更改（状态代码 304），则对象可保持缓存，并且客户端应用程序应继续使用此版本的对象。如果数据已更改（状态代码 200），则应放弃缓存的对象，并插入新对象。如果数据不再可用（状态代码 404），则应从缓存中删除该对象。
 
-	> [AZURE.NOTE]如果响应标头包含 Cache-Control 标头 no-store，则应始终从缓存中删除对象，而不考虑 HTTP 状态代码。
+	> [AZURE.NOTE] 如果响应标头包含 Cache-Control 标头 no-store，则应始终从缓存中删除对象，而不考虑 HTTP 状态代码。
 
 	下面的代码显示了已扩展为支持 If-None-Match 标头的 `FindOrderByID` 方法。请注意，如果省略 If-None-Match 标头，则始终检索指定的订单：
 
@@ -627,7 +626,7 @@
     }
 	```
 
-	> [AZURE.TIP]在此示例中，通过对从基础数据源检索到的数据进行哈希处理生成数据的 ETag。如果 ETag 可以某种其他方式计算，则可以进一步优化此过程，并且仅在数据已更改时，才需要从数据源中提取数据。如果数据很大或访问数据源可能导致显著延迟（例如，如果数据源是远程数据库），则此方法特别有用。
+	> [AZURE.TIP] 在此示例中，通过对从基础数据源检索到的数据进行哈希处理生成数据的 ETag。如果 ETag 可以某种其他方式计算，则可以进一步优化此过程，并且仅在数据已更改时，才需要从数据源中提取数据。如果数据很大或访问数据源可能导致显著延迟（例如，如果数据源是远程数据库），则此方法特别有用。
 
 - **使用 Etag 支持乐观并发**。
 
@@ -728,7 +727,7 @@
     }
 	```
 
-	> [AZURE.TIP]是否使用 If-match 标头完全是可选的，如果省略它，Web API 将始终尝试更新指定的订单，可能会盲目地覆盖其他用户所做的更新。若要避免由于丢失更新出现的问题，请始终提供 If-Match 标头。
+	> [AZURE.TIP] 是否使用 If-match 标头完全是可选的，如果省略它，Web API 将始终尝试更新指定的订单，可能会盲目地覆盖其他用户所做的更新。若要避免由于丢失更新出现的问题，请始终提供 If-Match 标头。
 
 <a name="considerations-for-handling-large"></a>
 ## 有关处理大型请求和响应的注意事项
@@ -869,11 +868,11 @@
     }
 	```
 
-	> [AZURE.TIP]可以上载到 Web 服务的数据量不受流式处理约束，并且单个请求可以想象生成使用大量资源的大型对象。如果在流式处理过程中，Web API 确定请求中的数据量超过一些可接受的范围，它可以中止操作并返回具有状态代码 413（请求实体太大）的响应消息。
+	> [AZURE.TIP] 可以上载到 Web 服务的数据量不受流式处理约束，并且单个请求可以想象生成使用大量资源的大型对象。如果在流式处理过程中，Web API 确定请求中的数据量超过一些可接受的范围，它可以中止操作并返回具有状态代码 413（请求实体太大）的响应消息。
 
 	可以使用 HTTP 压缩将通过网络传输的大型对象的大小降到最低。此方法可帮助减少网络流量和关联的网络延迟，但代价是需要在客户端和托管 Web API 的服务器上进行额外的处理。例如，需要接收压缩数据的客户端应用程序可以提供 Accept-Encoding: gzip 请求标头（还可以指定其他数据压缩算法）。如果服务器支持压缩，则应以消息正文中以 gzip 格式存储的内容以及 Content-Encoding: gzip 响应标头进行响应。
 
-	> [AZURE.TIP]你可以将编码压缩和流式处理结合使用；在流式处理数据之前先压缩它，并在消息标头中指定 gzip 内容编码和 chunked 传输编码。另请注意，某些 Web 服务器（如 Internet Information Server）可以配置为自动压缩 HTTP 响应，而不管 Web API 是否压缩数据。
+	> [AZURE.TIP] 你可以将编码压缩和流式处理结合使用；在流式处理数据之前先压缩它，并在消息标头中指定 gzip 内容编码和 chunked 传输编码。另请注意，某些 Web 服务器（如 Internet Information Server）可以配置为自动压缩 HTTP 响应，而不管 Web API 是否压缩数据。
 
 - **为不支持异步操作的客户端实现部分响应**。
 
@@ -922,7 +921,7 @@
 
 	客户端应用程序可以使用 URI _http://www.adventure-works.com/api/orders?limit=30&offset=50_ 发出请求以检索从偏移量 50 开始的 30 个订单。
 
-	> [AZURE.TIP]请避免让客户端应用程序指定的查询字符串导致 URI 超过 2000 个字符。许多 Web 客户端和服务器无法处理这么长的 URI。
+	> [AZURE.TIP] 请避免让客户端应用程序指定的查询字符串导致 URI 超过 2000 个字符。许多 Web 客户端和服务器无法处理这么长的 URI。
 
 <a name="considerations-for-maintaining-responsiveness"></a>
 ## 有关保持响应能力、可伸缩性和可用性的注意事项
@@ -933,7 +932,7 @@
 
 	可能需要很长的时间来处理的请求应在执行时确保不会阻塞提交请求的客户端。Web API 可以执行一些初始检查来验证请求，启动单独的任务来执行工作，然后返回包含 HTTP 代码 202（已接受）的响应消息。此任务可以在 Web API 处理期间异步运行，也可以卸载到 Azure Web 作业（如果 Web API 由 Azure 网站托管）或辅助角色（如果将 Web API 作为 Azure 云服务实现）。
 
-	> [AZURE.NOTE]有关在 Azure 网站上使用 Web 作业的详细信息，请访问 Microsoft 网站上的[使用 Web 作业在 Microsoft Azure 网站中运行后台任务](/documentation/articles/web-sites-create-web-jobs)页。
+	> [AZURE.NOTE] 有关在 Azure 网站上使用 Web 作业的详细信息，请访问 Microsoft 网站上的[使用 Web 作业在 Microsoft Azure 网站中运行后台任务](/documentation/articles/web-sites-create-web-jobs)页。
 
 	Web API 还应提供一种向客户端应用程序返回处理结果的机制。可以通过以下两种方案实现此目的：为客户端应用程序提供轮询机制以定期查询处理是否已完成并获取结果，或者使 Web API 可以在操作完成时发送通知。
 
@@ -951,7 +950,7 @@
 
 	6. 该任务运行时，客户端可以继续执行其自己的处理。它可以定期将请求发送到 URI _/polling/{guid}_，其中 _{guid}_ 是 Web API 在 202 响应消息中返回的 GUID。
 
-	7. _/polling{guid}_ URI 中的 Web API 在表中查询相应任务的状态并返回包含 HTTP 状态代码 200（正常）的响应消息，该代码包含以下状态（_正在运行_、_完成_或_失败_）。如果该任务已完成或失败，则响应消息还可以包括处理的结果或获得的有关失败原因的任何信息。
+	7. _/polling/{guid}_ URI 中的 Web API 在表中查询相应任务的状态并返回包含 HTTP 状态代码 200（正常）的响应消息，该代码包含以下状态（_正在运行_、_完成_或_失败_）。如果该任务已完成或失败，则响应消息还可以包括处理的结果或获得的有关失败原因的任何信息。
 
 	如果你想要实现通知，可用选项包括：
 
@@ -961,7 +960,7 @@
 
 	- 使用 SignalR 通过永久网络连接将 Web 服务器中的实时数据推送到客户端。SignalR 可作为 NuGet 程序包用于 ASP.NET Web 应用程序。可以在 [ASP.NET SignalR](http://signalr.net/) 网站上找到详细信息。
 
-	> [AZURE.NOTE]Comet 和 SignalR 均利用 Web 服务器和客户端应用程序之间的永久网络连接。这会影响可伸缩性，因为大量客户端可能需要同样多的并发连接数。
+	> [AZURE.NOTE] Comet 和 SignalR 均利用 Web 服务器和客户端应用程序之间的永久网络连接。这会影响可伸缩性，因为大量客户端可能需要同样多的并发连接数。
 
 - **确保每个请求都是无状态的**。
 
@@ -977,7 +976,7 @@
 
 	让连接保持打开状态可以减少延迟和网络拥塞，从而有助于提高响应能力，但让不必要的连接保持打开状态的时间长于所需时间可能会不利于可扩展性，从而限制了其他并发客户端进行连接的能力。如果客户端应用程序运行在移动设备上，则它还会影响电池使用寿命；如果应用程序只偶尔向服务器发出请求，则维护打开的连接可能会导致电池更快耗尽。若要确保不使用 HTTP 1.1 建立永久连接，客户端可以在消息中包括 Connection:Close 标头以覆盖默认行为。同样，如果服务器正在处理大量客户端，它可以在响应消息中包括 Connection:Close 标头，这将关闭连接并节省服务器资源。
 
-	> [AZURE.NOTE]永久 HTTP 连接是纯粹的可选功能，用于减少与反复建立通信通道关联的网络开销。Web API 和客户端应用程序都不应依赖于可用的永久 HTTP 连接。不要使用永久 HTTP 连接实现 Comet 样式通知系统，而是应利用 TCP 层的套接字（或 websocket，如果可用）。最后，请注意：如果客户端应用程序通过代理与服务器通信，则 Keep-Alive 标头的作用有限；只有与客户端和代理的连接将是持久的。
+	> [AZURE.NOTE] 永久 HTTP 连接是纯粹的可选功能，用于减少与反复建立通信通道关联的网络开销。Web API 和客户端应用程序都不应依赖于可用的永久 HTTP 连接。不要使用永久 HTTP 连接实现 Comet 样式通知系统，而是应利用 TCP 层的套接字（或 websocket，如果可用）。最后，请注意：如果客户端应用程序通过代理与服务器通信，则 Keep-Alive 标头的作用有限；只有与客户端和代理的连接将是持久的。
 
 ## 有关发布和管理 Web API 的注意事项
 
@@ -999,7 +998,7 @@
 ## 有关测试 Web API 的注意事项
 Web API 应和软件的任何其他部分一样进行全面测试。你应考虑创建单元测试来验证每个操作的功能，就像对任何其他类型的应用程序所做的那样。有关详细信息，请参阅 Microsoft 网站上的[使用单元测试验证代码](https://msdn.microsoft.com/zh-cn/library/dd264975.aspx)页。
 
-> [AZURE.NOTE]本指南提供的示例 Web API 包括一个演示如何对所选操作执行单元测试的测试项目。
+> [AZURE.NOTE] 本指南提供的示例 Web API 包括一个演示如何对所选操作执行单元测试的测试项目。
 
 Web API 的性质带来了其自己的验证是否正常运行的附加要求。你应特别注意以下几个方面：
 
@@ -1009,13 +1008,13 @@ Web API 的性质带来了其自己的验证是否正常运行的附加要求。
 
 - 验证所有路由是否都得到正确保护并受相应身份验证和授权检查的制约。
 
-	> [AZURE.NOTE]安全性的某些方面（如用户身份验证）最有可能是主机环境（而不是 Web API）的职责，但仍有必要在部署过程中进行安全测试。
+	> [AZURE.NOTE] 安全性的某些方面（如用户身份验证）最有可能是主机环境（而不是 Web API）的职责，但仍有必要在部署过程中进行安全测试。
 
 - 测试每个操作执行的异常处理，并验证是否将相应的有意义的 HTTP 响应传递回客户端应用程序。
 - 验证请求和响应消息的格式是否正确。例如，如果 HTTP POST 请求包含 x-www-form-urlencoded 格式的新资源数据，请确认相应的操作正确分析数据、创建该资源，并返回包含新资源的详细信息的响应，包括正确的 Location 标头。
 - 验证响应消息中的所有链接和 URI。例如，HTTP POST 消息应返回新创建的资源的 URI。所有 HATEOAS 链接都应有效。
 
-	> [AZURE.IMPORTANT]如果通过 API 管理服务发布 Web API，则这些 URI 应反映管理服务的 URL，而不是托管 Web API 的 Web 服务器的 URL。
+	> [AZURE.IMPORTANT] 如果通过 API 管理服务发布 Web API，则这些 URI 应反映管理服务的 URL，而不是托管 Web API 的 Web 服务器的 URL。
 
 - 确保每个操作针对不同输入组合返回正确的状态代码。例如：
 	- 如果查询成功，则应返回状态代码 200（正常）
@@ -1035,13 +1034,13 @@ Web API 的性质带来了其自己的验证是否正常运行的附加要求。
 
 ## 通过使用 Azure API 管理服务发布和管理 Web API
 
-Azure 提供了 [API 管理服务](http://azure.microsoft.com/documentation/services/api-management/)，你可以使用它来发布和管理 Web API。使用此工具，你可以生成一个充当一个或多个 Web API 的外观的服务。该服务本身是一个可缩放的 Web 服务，你可以使用 Azure 管理门户创建和配置它。可以使用此服务发布和管理 Web API，如下所示：
+Azure 提供了 [API 管理服务](/documentation/services/api-management/)，你可以使用它来发布和管理 Web API。使用此工具，你可以生成一个充当一个或多个 Web API 的外观的服务。该服务本身是一个可缩放的 Web 服务，你可以使用 Azure 管理门户创建和配置它。可以使用此服务发布和管理 Web API，如下所示：
 
 1. 将 Web API 部署到网站、Azure 云服务或 Azure 虚拟机。
 
 2. 将 API 管理服务连接到 Web API。发送到管理 API 的 URL 的请求将映射到 Web API 中的 URI。同一 API 管理服务可以将请求路由到多个 Web API。这使你可以将多个 Web API 聚合为单个管理服务。同样，如果你需要限制或分隔可用于不同应用程序的功能，则可以从多个 API 管理服务引用同一 Web API。
 
-	> [AZURE.NOTE]作为 HTTP GET 请求的响应的一部分生成的 HATEOAS 链接中的 URI 应引用 API 管理服务（而不是托管 Web API 的 Web 服务器）的 URL。
+	> [AZURE.NOTE] 作为 HTTP GET 请求的响应的一部分生成的 HATEOAS 链接中的 URI 应引用 API 管理服务（而不是托管 Web API 的 Web 服务器）的 URL。
 
 3. 对于每个 Web API，指定该 Web API 公开的 HTTP 操作以及操作可以获取为输入的任何可选参数。还可以配置 API 管理服务是否应缓存从 Web API 接收的响应以优化对相同数据的重复请求。记录每个操作可以生成的 HTTP 响应的详细信息。此信息用于为开发人员生成文档，因此它应准确且完整。
 
@@ -1051,13 +1050,13 @@ Azure 提供了 [API 管理服务](http://azure.microsoft.com/documentation/serv
 
 5. 创建产品。产品是发布的单元；可将先前连接到管理服务的 Web API 添加到产品。发布产品后，该 Web API 便可供开发人员使用了。
 
-	> [AZURE.NOTE]在发布产品之前，还可以定义可以访问该产品的用户组，并将用户添加到这些组。这让你可以控制可以使用该 Web API 的开发人员和应用程序。如果 Web API 需要批准，则在能够访问它之前，开发人员必须向产品管理员发送请求。管理员可以授予或拒绝开发人员的访问权限。如果情况发生变化，也可以阻止现有开发人员。
+	> [AZURE.NOTE] 在发布产品之前，还可以定义可以访问该产品的用户组，并将用户添加到这些组。这让你可以控制可以使用该 Web API 的开发人员和应用程序。如果 Web API 需要批准，则在能够访问它之前，开发人员必须向产品管理员发送请求。管理员可以授予或拒绝开发人员的访问权限。如果情况发生变化，也可以阻止现有开发人员。
 
 6.	为每个 Web API 配置策略。策略可以控制以下方面：是否应允许跨域调用、如何对客户端进行身份验证、是否要在 XML 和 JSON 数据格式之间透明地进行转换、是否要限制从给定 IP 范围发起的调用、使用配额，以及是否要限制调用率等。策略可以对整个产品全局应用、对产品中的单个 Web API 应用，或者对 Web API 中的单个操作应用。
 
 你可以在 Microsoft 网站上的 [API 管理](http://azure.microsoft.com/services/api-management/)页中找到描述如何执行这些任务的完整详细信息。Azure API 管理服务还提供其自己的 REST 接口，使你可以构建自定义界面来简化配置 Web API 的过程。有关详细信息，请访问 Microsoft 网站上的 [Azure API 管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn776326.aspx)页。
 
-> [AZURE.TIP]Azure 提供了使用 Azure 流量管理器，使用它可以实现故障转移和负载平衡，并可以减少在不同地理位置托管的多个网站实例之间的延迟。可以将 Azure 流量管理器与 API 管理服务结合使用；API 管理服务可以通过 Azure 流量管理器将请求路由到网站实例。有关详细信息，请访问 Microsoft 网站上的[关于流量管理器负载平衡方法](https://msdn.microsoft.com/zh-cn/library/azure/dn339010.aspx)页。
+> [AZURE.TIP] Azure 提供了使用 Azure 流量管理器，使用它可以实现故障转移和负载平衡，并可以减少在不同地理位置托管的多个网站实例之间的延迟。可以将 Azure 流量管理器与 API 管理服务结合使用；API 管理服务可以通过 Azure 流量管理器将请求路由到网站实例。有关详细信息，请访问 Microsoft 网站上的[关于流量管理器负载平衡方法](https://msdn.microsoft.com/zh-cn/library/azure/dn339010.aspx)页。
 
 > 在此结构中，如果你要对网站使用自定义 DNS 名称，则应将每个网站的相应 CNAME 记录配置为指向 Azure 流量管理器网站的 DNS 名称。
 
@@ -1123,7 +1122,7 @@ Microsoft 网站上的 [Application Insights - 开始监视你的应用的运行
 
 可以使用此信息来确定是否是特定 Web API 或操作导致了瓶颈问题，如有必要，扩展主机环境并添加更多服务器。你还可以确定一个或多个应用程序是否正在使用不相称的资源量，从而应用适当的策略以设置配额并限制调用率。
 
-> [AZURE.NOTE]你可以更改已发布产品的详细信息，所做的更改将立即应用。例如，你可以在 Web API 中添加或删除操作，而无需重新发布包含该 Web API 的产品。
+> [AZURE.NOTE] 你可以更改已发布产品的详细信息，所做的更改将立即应用。例如，你可以在 Web API 中添加或删除操作，而无需重新发布包含该 Web API 的产品。
 
 ## 相关模式
 - [外观](http://en.wikipedia.org/wiki/Facade_pattern)模式描述了如何为 Web API 提供接口。
@@ -1148,4 +1147,4 @@ Microsoft 网站上的 [Application Insights - 开始监视你的应用的运行
 - Microsoft 网站上的[使用单元测试验证代码](https://msdn.microsoft.com/zh-cn/library/dd264975.aspx)页提供了有关使用 Visual Studio 创建和管理单元测试的详细信息。
 - Microsoft 网站上的[在发布前对应用程序运行性能测试](https://msdn.microsoft.com/zh-cn/library/dn250793.aspx)页介绍了如何使用 Visual Studio Ultimate 来创建 Web 性能和负载测试项目。
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0503_2016-->

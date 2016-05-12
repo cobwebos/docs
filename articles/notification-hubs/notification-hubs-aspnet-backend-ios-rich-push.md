@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="12/16/2015"
+	ms.date="03/28/2016"
 	wacn.date=""/>
 
 #Azure 通知中心富推送
@@ -19,8 +19,7 @@
 
 为了吸引用户使用即时丰富内容，除纯文本之外，应用程序可能还需要以其他形式进行推送。这些通知将提升用户交互并显示 URL、声音、图像/优惠券等内容。本教程以[通知用户](/documentation/articles/notification-hubs-aspnet-backend-ios-notify-users)主题为基础，演示如何发送包含有效负载（例如图像）的推送通知。
 
-本教程适用于 iOS 7 和 8。
-	![][IOS1]
+本教程适用于 iOS 7 和 8。![][IOS1]
 
 在高级别中：
 
@@ -124,11 +123,11 @@
 
 8. 现在，我们将此应用重新部署到 Azure 网站，以便可以从所有设备对其进行访问。右键单击 **AppBackend** 项目，然后选择“发布”。
 
-9. 选择 Azure 网站作为发布目标。使用您的 Azure 帐户登录，选择一个现有的或新的网站，并记下“连接”选项卡中的**目标 URL** 属性。在本教程后面的部分中，我们将此 URL 称为*后端终结点*。单击“发布”。
+9. 选择 Azure 网站作为发布目标。使用您的 Azure 帐户登录，选择一个现有的或新的网站，并记下“连接”选项卡中的**目标 URL** 属性。在本教程后面的部分中，我们将此 URL 称为后端终结点。单击“发布”。
 
 ## 修改 iOS 项目
 
-您已将应用后端修改为只发送通知的 *ID*，您将更改您的 iOS 应用以处理该 ID，并从后端检索富消息。
+您已将应用后端修改为只发送通知的 ID，您将更改您的 iOS 应用以处理该 ID，并从后端检索富消息。
 
 1. 打开您的 iOS 项目，并转到**目标**部分的主应用目标来启用远程通知。
 
@@ -375,4 +374,4 @@
 [IOS3]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-3.png
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0503_2016-->

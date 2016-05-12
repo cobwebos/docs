@@ -1,18 +1,18 @@
 <properties
-	pageTitle="PHP Web 角色和辅助角色 | Microsoft Azure"
+	pageTitle="PHP Web 角色和辅助角色 | Azure"
 	description="有关如何在 Azure 云服务中创建 PHP Web 和辅助角色以及配置 PHP 运行时的指南。"
 	services=""
 	documentationCenter="php"
-	authors="tfitzmac"
+	authors="rmcmurray"
 	manager="wpickett"
-	editor="mollybos"/>
+	editor=""/>
 
 <tags
 	ms.service="cloud-services"
-	ms.date="01/08/2016"
+	ms.date="04/08/2016"
 	wacn.date=""/>
 
-# 如何创建 PHP Web 角色和辅助角色
+#如何创建 PHP Web 角色和辅助角色
 
 ## 概述
 
@@ -20,9 +20,9 @@
 
 ## 什么是 PHP Web 角色和辅助角色？
 
-Azure 提供了三种计算模型以运行应用程序：Azure App Service、Azure 虚拟机和 Azure 云服务。这三种模型都支持 PHP。云服务（包括 Web 角色和辅助角色）提供了*平台即服务 (PaaS)*。在云服务中，Web 角色提供专门用于托管前端 Web 应用程序的 Internet Information Services (IIS) Web 服务器。辅助角色可运行独立于用户交互或输入的异步任务、运行时间较长的任务或永久性任务。
+Azure 提供了三种计算模型以运行应用程序：Azure App Service、Azure 虚拟机和 Azure 云服务。这三种模型都支持 PHP。云服务（包括 Web 角色和辅助角色）提供了平台即服务 (PaaS)。在云服务中，Web 角色提供专门用于托管前端 Web 应用程序的 Internet Information Services (IIS) Web 服务器。辅助角色可运行独立于用户交互或输入的异步任务、运行时间较长的任务或永久性任务。
 
-有关这些选项的详细信息，请参阅 [Azure 提供的计算托管选项](./cloud-services/fundamentals-application-models.md)。
+有关这些选项的详细信息，请参阅 [Azure 提供的计算托管选项](/documentation/articles/cloud-services-choose-me)。
 
 ## 下载 Azure SDK for PHP
 
@@ -207,4 +207,4 @@ Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署�
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64 安装程序]: http://go.microsoft.com/fwlink/?LinkID=239648
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0503_2016-->

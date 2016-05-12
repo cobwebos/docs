@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="12/15/2015" 
+	ms.date="03/28/2016" 
 	wacn.date="" />
 
 
@@ -21,12 +21,12 @@
 
 本主题介绍如何使用 Azure 通知中心将重要资讯通知广播到 Android 应用。完成时，你可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。
 
-在创建通知中心的注册时，通过加入一个或多个_标记_来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-routing-tag-expressions.md)。
+在创建通知中心的注册时，通过加入一个或多个标记来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-routing-tag-expressions.md)。
 
 
 ##先决条件
 
-本主题以你在[通知中心入门][get-started]中创建的应用为基础。在开始本教程之前，必须先阅读[通知中心入门][get-started]。
+本主题以你在[通知中心入门][get-started]中创建的应用程序为基础。在开始本教程之前，必须先阅读[通知中心入门][get-started]。
 
 ##向应用程序中添加类别选择
 
@@ -106,10 +106,10 @@
 		import android.os.AsyncTask;
 		import android.util.Log;
 		import android.widget.Toast;
-		
+
 		import com.google.android.gms.gcm.GoogleCloudMessaging;
-		import com.microsoft.windowsazure.messaging.NotificationHub;		
-		
+		import com.microsoft.windowsazure.messaging.NotificationHub;
+
 		public class Notifications {
 			private static final String PREFS_NAME = "BreakingNewsCategories";
 			private GoogleCloudMessaging gcm;
@@ -117,8 +117,8 @@
 			private Context context;
 			private String senderId;
 
-		    public Notifications(Context context, String senderId, String hubName,  String listenConnectionString) 
-		    {
+		    public Notifications(Context context, String senderId, String hubName, 
+									String listenConnectionString) {
 		        this.context = context;
 		        this.senderId = senderId;
 		
@@ -192,9 +192,9 @@
 	        notifications.subscribeToCategories(notifications.retrieveCategories());
 	    }
 
-	应已设置 `HubName` 和 `HubListenConnectionString`，其中的 `<hub name>` 和 `<connection string with listen access>` 占位符已替换为你的通知中心名称和你之前获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
+	应已设置 `HubName` 和 `HubListenConnectionString`，其中的 `<hub name>` 和 `<connection string with listen access>` 占位符已替换为你的通知中心名称和你之前获取的 DefaultListenSharedAccessSignature 的连接字符串。
 
-	> [AZURE.NOTE]由于使用客户端应用程序分发的凭据通常是不安全的，你只应使用客户端应用程序分发具有侦听访问权限的密钥。侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
+	> [AZURE.NOTE] 由于使用客户端应用程序分发的凭据通常是不安全的，你只应使用客户端应用程序分发具有侦听访问权限的密钥。侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
 
 
 6. 然后，添加以下导入和 `subscribe` 方法以处理订阅按钮单击事件：
@@ -236,7 +236,7 @@
 
 这些步骤用于在启动时将在本地存储区中存储的类别注册到通知中心。
 
-> [AZURE.NOTE]由于 Google Cloud Messaging (GCM) 分配的 registrationId 随时可能更改，因此你应该经常注册通知以避免通知失败。此示例在每次应用程序启动时注册通知。对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，你可以跳过注册来节省带宽。
+> [AZURE.NOTE] 由于 Google Cloud Messaging (GCM) 分配的 registrationId 随时可能更改，因此你应该经常注册通知以避免通知失败。此示例在每次应用程序启动时注册通知。对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，你可以跳过注册来节省带宽。
 
 
 1. 在 **MainActivity** 类中 **onCreate** 方法的末尾添加以下代码：
@@ -248,9 +248,9 @@
 2. 然后，按如下所示更新 `MainActivity` 类中的 `onStart()` 方法：
 
     @Override
-	protected void onStart() {
-	super.onStart();
-	isVisible = true;
+    protected void onStart() {
+        super.onStart();
+        isVisible = true;
 
         Set<String> categories = notifications.retrieveCategories();
 
@@ -286,7 +286,7 @@
 
 	应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。返回注册的类别并显示在 toast 通知中。
 
-4. 通过运行 .NET 控制台应用发送新通知。或者，你也可以在 [Azure 经典门户] 中使用通知中心的调试选项卡发送带标记的模板通知。
+4. 通过运行 .NET 控制台应用发送新通知。或者，你也可以在 [Azure 经典门户]中使用通知中心的调试选项卡发送带标记的模板通知。
 
 	+ **Java/PHP：**运行你的应用/脚本。
 
@@ -317,8 +317,7 @@
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Azure 经典门户]: https://manage.windowsazure.cn
+[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 
-[Azure Management Portal]: https://manage.windowsazure.cn/
-[wns object]: https://msdn.microsoft.com/zh-cn/library/azure/jj860484.aspx
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0503_2016-->

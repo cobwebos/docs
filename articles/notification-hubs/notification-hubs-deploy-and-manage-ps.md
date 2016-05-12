@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="notification-hubs" 
-	ms.date="12/10/2015" 
+	ms.date="03/28/2016" 
 	wacn.date=""/>
 
 # 使用 PowerShell 部署和管理通知中心
@@ -167,5 +167,4 @@ else
 [New-AzureSBNamespace]: https://msdn.microsoft.com/zh-cn/library/azure/dn495165.aspx
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/zh-cn/library/azure/dn495113.aspx
  
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0503_2016-->

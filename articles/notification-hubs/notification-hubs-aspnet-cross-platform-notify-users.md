@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="12/11/2015" 
+	ms.date="03/28/2016" 
 	wacn.date=""/>
 # 使用通知中心向用户发送跨平台通知
 
@@ -103,4 +103,4 @@
 [Templates]: https://msdn.microsoft.com/zh-cn/library/jj927170.aspx#BKMK_NH7
 [Notification Hub How to for Windows Store]: http://msdn.microsoft.com/zh-cn/library/azure/jj927172.aspx
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0503_2016-->

@@ -1,16 +1,16 @@
-<properties 
-	pageTitle="使用通知中心发送突发新闻 (Windows Universal)" 
-	description="结合注册中的标记使用 Azure 通知中心将突发新闻发送到通用 Windows 应用。" 
-	services="notification-hubs" 
-	documentationCenter="windows" 
-	authors="wesmc7777" 
-	manager="dwrede" 
+<properties
+	pageTitle="使用通知中心发送突发新闻 (Windows Universal)"
+	description="结合注册中的标记使用 Azure 通知中心将突发新闻发送到通用 Windows 应用。"
+	services="notification-hubs"
+	documentationCenter="windows"
+	authors="wesmc7777"
+	manager="dwrede"
 	editor=""/>
 
 
 <tags
 	ms.service="mobile-services,notification-hubs" 
-	ms.date="12/14/2015"
+	ms.date="03/28/2016"
 	wacn.date=""/>
 
 # 使用通知中心发送突发新闻
@@ -23,7 +23,7 @@
 
 本主题演示如何使用 Azure 通知中心将突发新闻通知广播到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用。如果你要以 Windows Phone 8.1 Silverlight 为目标，请参阅 [Windows Phone](/documentation/articles/notification-hubs-ios-send-breaking-news) 版本。完成时，你可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。
 
-在创建通知中心的注册时，通过加入一个或多个_标记_来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标记的详细信息，请参阅[通知中心路由和标记表达式](/documentaiton/articles/notification-hubs-routing-tag-expressions)。
+在创建通知中心的注册时，通过加入一个或多个标记来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标记的详细信息，请参阅[通知中心路由和标记表达式](/documentaiton/articles/notification-hubs-routing-tag-expressions)。
 
 ##先决条件
 
@@ -105,7 +105,7 @@
 					categories);
         }
 
-    此类使用本地存储区存储此设备必须接收的新闻类别。请注意，我们没有调用 *RegisterNativeAsync* 方法，而是调用了 *RegisterTemplateAsync*，以使用模板注册来注册类别。
+    此类使用本地存储区存储此设备必须接收的新闻类别。请注意，我们没有调用 RegisterNativeAsync 方法，而是调用了 RegisterTemplateAsync，以使用模板注册来注册类别。
 	
 	我们还提供模板的名称（“simpleWNSTemplateExample”），因为我们可能要注册多个模板（例如一个用于 toast 通知，一个用于磁贴），需要命名它们以便可以更新或删除它们。
 
@@ -122,9 +122,9 @@
 
 	此属性用于创建和访问 **Notifications** 实例。
 
-	在上面的代码中，将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为你的通知中心的名称和你之前获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
+	在上面的代码中，将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为你的通知中心的名称和你之前获取的 DefaultListenSharedAccessSignature 的连接字符串。
 
-	> [AZURE.NOTE]由于使用客户端应用程序分发的凭据通常是不安全的，你只应使用客户端应用程序分发具有侦听访问权限的密钥。侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
+	> [AZURE.NOTE] 由于使用客户端应用程序分发的凭据通常是不安全的，你只应使用客户端应用程序分发具有侦听访问权限的密钥。侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
 
 5. 在 MainPage.xaml.cs 中，添加以下行：
 
@@ -157,7 +157,7 @@
 
 这些步骤用于在启动时将在本地存储区中存储的类别注册到通知中心。
 
-> [AZURE.NOTE]由于 Windows 通知服务 (WNS) 分配的通道 URI 随时可能更改，因此你应该经常注册通知以避免通知失败。此示例在每次应用程序启动时注册通知。对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，你可以跳过注册来节省带宽。
+> [AZURE.NOTE] 由于 Windows 通知服务 (WNS) 分配的通道 URI 随时可能更改，因此你应该经常注册通知以避免通知失败。此示例在每次应用程序启动时注册通知。对于经常运行（一天一次以上）的应用程序，如果每次注册间隔时间不到一天，你可以跳过注册来节省带宽。
 
 1. 打开 App.xaml.cs 文件，并将 **InitNotificationsAsync** 方法更新为使用 `notifications` 类来基于类别订阅。
 
@@ -170,7 +170,7 @@
 
 	这确保每次应用程序启动时，它从本地存储区检索类别并请求注册这些类别。**InitNotificationsAsync** 方法是在学习[通知中心入门][get-started]教程过程中创建的。
 
-3. 在 MainPage.xaml.cs 项目文件的 *OnNavigatedTo* 方法中添加以下代码：
+3. 在 MainPage.xaml.cs 项目文件的 OnNavigatedTo 方法中添加以下代码：
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -254,4 +254,4 @@
 
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0503_2016-->

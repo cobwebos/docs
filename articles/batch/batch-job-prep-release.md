@@ -74,7 +74,7 @@ Batch 作业通常需要一组通用的数据作为作业任务的输入。例�
 
 		await myJob.CommitAsync();
 
-如上所述，终止或删除作业时会执行释放任务。可以通过调用 [PoolOperations.TerminateJobAsync][net_job_terminate] 使用 Batch .NET API 终止作业。可以使用 [PoolOperations.DeleteJobAsync][net_job_delete] 删除作业。这两项操作通常都是在作业的任务已完成或者达到了你定义的超时时完成。
+如上所述，终止或删除作业时会执行释放任务。可以通过调用 [JobOperations.TerminateJobAsync][net_job_terminate] 使用 Batch .NET API 终止作业。可以使用 [JobOperations.DeleteJobAsync][net_job_delete] 删除作业。这两项操作通常都是在作业的任务已完成或者达到了你定义的超时时完成。
 
 		// Terminate the job to mark it as Completed; this will initiate the Job Release Task on any node
 		// that executed job tasks. Note that the Job Release Task is also executed when a job is deleted,
@@ -145,7 +145,7 @@ Sample complete, hit ENTER to exit...
 
 [Azure Batch 资源管理器][batch_explorer_article]（在 GitHub 上的 Batch [示例代码存储库][batch_explorer_project]中也能找到）是在 Azure Batch 中开发解决方案时可以使用的绝佳工具。例如，在运行上述示例应用程序时，你可以使用 Batch 资源管理器查看作业及其任务的属性，甚至可以下载作业任务修改的共享文本文件。
 
-以下屏幕截图突出显示了当你在“作业”选项卡中选择 *JobPrepReleaseSampleJob* 作业时，“作业详细信息”窗格中显示的作业准备和释放任务属性。
+以下屏幕截图突出显示了当你在“作业”选项卡中选择 JobPrepReleaseSampleJob 作业时，“作业详细信息”窗格中显示的作业准备和释放任务属性。
 
 ![批处理资源管理器][1]
 
@@ -183,4 +183,4 @@ Sample complete, hit ENTER to exit...
 [1]: ./media/batch-job-prep-release/batchexplorer-01.png
 [2]: ./media/batch-job-prep-release/batchexplorer-02.png
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0503_2016-->

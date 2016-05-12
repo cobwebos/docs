@@ -7,8 +7,8 @@
 	manager="dwrede" 
 	editor=""/>
 
-<tags
-	ms.service="notification-hubs"
+<tags 
+	ms.service="notification-hubs" 
 
 	ms.date="02/29/2016" 
 	wacn.date=""/>
@@ -19,8 +19,7 @@
 
 我们从 Azure 通知中心客户处收到的最常见问题之一是如何找出以下问题的原因：他们看不到从应用程序后端发送的通知显示在客户端设备上，删除通知的位置和原因以及如何修复此类问题。在本文中，我们将查看为什么通知被删除或没有在设备上终止的各种原因。我们还将浏览你可以用来分析和找出根本原因的方法。
 
-首先，理解 Azure 通知中心如何将通知推送到设备很重要。
-![][0]
+首先，理解 Azure 通知中心如何将通知推送到设备很重要。![][0]
 
 在典型的发送通知工作流中，消息是从**应用程序后端**发送到 **Azure 通知中心 (NH)**，这反过来会处理将确定“目标”的已配置标记和标记表达式考虑在内的所有注册，即需要接收推送通知的所有注册。这些注册可以横跨各种受支持的平台 - iOS、Google、Windows、Windows Phone、Kindle 和 Baidu for China Android。建立目标之后，NH 将推送出通知，将通知拆分为多个批量发送到设备平台专用**推送通知服务 (PNS)**（例如，APNS for Apple、GCM for Google 等）。NH 使用各自的 PNS（基于你在配置通知中心页面上的 Azure 经典门户中设置的凭据）进行身份验证。然后，PNS 会将通知转发到各自的**客户端设备**。这是平台推荐的方式，用以传递推送通知，并且注意通知传递的最后 Leg 在平台 PNS 和设备之间发生。因此，我们有四个主要组件（客户端、应用程序后端、Azure 通知中心 (NH) 和推送通知服务 (PNS)）并且这些组件的任意一个都有可能导致通知被删除。可在[通知中心概述]中找到有关此体系结构的更多详细信息。
 
@@ -81,8 +80,7 @@ Azure 通知中心需要在开发人员的应用程序的环境中对自身进�
 
 各自的 PNS 收到通知消息之后，那么它的责任就是将通知传递到设备。此时，Azure 通知中心是不相关的，而且不会控制何时将通知传递到设备或是否将通知传递到设备。由于平台通知服务非常强大，这些通知会在几秒钟时间从 PNS 到达很多设备。但是，如果 PNS 进行限制的话，那么 Azure 通知中心会应用指数让步策略；如果 PNS 在 30 分钟之内都无法联系，则我们会准备一个策略以宣布这些消息过期并永久删除它们。
 
-如果 PNS 尝试传递通知，但设备处于脱机状态，则通知被 PNS 短暂存储，然后在设备可用时传递到该设备。只存储了特定应用的一个最近通知。如果在设备处于脱机状态时发送了多个通知，则每个新通知将导致前一个通知被放弃。只保留最新通知的这类行为在 APNS 中被称为合并通知，在 GCM（它使用折叠密钥）中被称为折叠通知。如果设备长时间处于脱机状态，则放弃所有为它存储的通知。 
-信息来源 - [APNS 指南]和 [GCM 指南]
+如果 PNS 尝试传递通知，但设备处于脱机状态，则通知被 PNS 短暂存储，然后在设备可用时传递到该设备。只存储了特定应用的一个最近通知。如果在设备处于脱机状态时发送了多个通知，则每个新通知将导致前一个通知被放弃。只保留最新通知的这类行为在 APNS 中被称为合并通知，在 GCM（它使用折叠密钥）中被称为折叠通知。如果设备长时间处于脱机状态，则放弃所有为它存储的通知。信息来源 - [APNS 指南]和 [GCM 指南]
 
 在 Azure 通知中心中，你可以使用泛型 `SendNotification` API（例如，对于 .NET SDK – `SendNotificationAsync`）通过 HTTP 标头来传递合并密钥，其还会将按原样传递的 HTTP 标头传递到各自的 PNS。
 
@@ -157,8 +155,7 @@ Azure 通知中心需要在开发人员的应用程序的环境中对自身进�
     var result = await hub.SendWindowsNativeNotificationAsync(toast);
     Console.WriteLine(result.State);
  
-`result.State` 将只在执行结束时陈述 `Enqueued`，而不深入分析你的推送发生了什么情况。
-现在，你可以使用 `EnableTestSend` 布尔值属性，同时初始化 `NotificationHubClient`，并获取有关发送通知时遇到的 PNS 错误的详细状态。此处发送调用需要更多时间进行返回，因为它只在 NH 已将通知传递到 PNS 之后返回以确定结果。
+`result.State` 将只在执行结束时陈述 `Enqueued`，而不深入分析你的推送发生了什么情况。现在，你可以使用 `EnableTestSend` 布尔值属性，同时初始化 `NotificationHubClient`，并获取有关发送通知时遇到的 PNS 错误的详细状态。此处发送调用需要更多时间进行返回，因为它只在 NH 已将通知传递到 PNS 之后返回以确定结果。
  
 	bool enableTestSend = true;
 	NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString(connString, hubName, enableTestSend);
@@ -184,7 +181,7 @@ Azure 通知中心需要在开发人员的应用程序的环境中对自身进�
 
 ###查看遥测 
 
-1. **使用 Azure 管理门户**
+1. **使用 Azure 经典门户**
 
 	通过该门户可以获取有关通知中心上所有活动的快速概述。
 	
@@ -239,4 +236,4 @@ Azure 通知中心需要在开发人员的应用程序的环境中对自身进�
 [通过 API 示例遥测访问]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0503_2016-->

@@ -18,8 +18,7 @@
 
 ##概述
 
-本教程说明如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。
-你将创建一个空白 Xamarin.Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。[NotificationHubs][GitHub] 应用程序示例中提供了完成的代码。
+本教程说明如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。你将创建一个空白 Xamarin.Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。[NotificationHubs][GitHub] 应用程序示例中提供了完成的代码。
 
 本教程演示使用通知中心的简单广播方案。
 
@@ -36,7 +35,7 @@
 
 本教程需要的内容如下：
 
-+ [Xamarin.Android]
++ Windows 上的 Visual Studio with Xamarin，或者 Mac OS X 上的 Xamarin Studio。[Setup and Install for Visual Studio and Xamarin（Visual Studio 和 Xamarin 的设置和安装）](https://msdn.microsoft.com/library/mt613162.aspx)中提供了完整安装说明。
 + 有效的 Google 帐户
 + [Azure 消息传送组件]
 + [Google Cloud Messaging 客户端组件]
@@ -110,8 +109,8 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 1. 收集有关 Android 应用和通知中心的以下信息：
 
 	- **GoogleProjectNumber**：在 Google 开发人员门户上，从应用的概览中获取此项目编号值。当你在门户上创建应用时，已事先记下了这个值。
-	- **侦听连接字符串**：在 [Azure 经典门户] 中的仪表板上，单击“查看连接字符串”。复制此值的 *DefaultListenSharedAccessSignature* 连接字符串。
-	- **中心名称**：这是你的中心在 [Azure 经典门户] 上的名称。例如 *mynotificationhub2*。
+	- **侦听连接字符串**：在 [Azure 经典门户]中的仪表板上，单击“查看连接字符串”。复制此值的 DefaultListenSharedAccessSignature 连接字符串。
+	- **中心名称**：这是你的中心在 [Azure 经典门户]上的名称。例如 mynotificationhub2。
 
 	为 Xamarin 项目创建 **Constants.cs** 类，并在该类中定义以下常量值。将占位符替换为你自己的值。
 
@@ -369,12 +368,12 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 3. 在顶部工具栏中，单击“运行”，然后选择你的应用。这将启动模拟器并运行该应用程序。
 
-  应用将从 GCM 检索 *registrationId* 并注册到通知中心。
+  应用将从 GCM 检索 registrationId 并注册到通知中心。
 
 ##从后端发送通知
 
 
-在 [Azure 管理门户]中通过通知中心上的调试选项卡（如以下屏幕中所示）来发送通知，可以在应用中测试通知的接收情况。
+在 [Azure 经典门户]中通过通知中心上的调试选项卡（如以下屏幕中所示）来发送通知，可以在应用中测试通知的接收情况。
 
 ![][30]
 
@@ -414,7 +413,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
         using Microsoft.Azure.NotificationHubs;
 
-5. 在 `Program` 类中添加以下方法。使用 *DefaultFullSharedAccessSignature* 连接字符串和 [Azure 经典门户] 中的中心名称来更新占位符文本。
+5. 在 `Program` 类中添加以下方法。使用 DefaultFullSharedAccessSignature 连接字符串和 [Azure 经典门户]中的中心名称来更新占位符文本。
 
         private static async void SendNotificationAsync()
         {
@@ -435,7 +434,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 1. 按照[移动服务入门]操作。
 
-1. 登录到[ Azure 管理门户]并选择你的移动服务。
+1. 登录到 [Azure 经典门户]并选择你的移动服务。
 
 2. 选择顶部的“计划程序”选项卡。
 
@@ -447,7 +446,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 4. 创建作业时，单击该作业名称。然后单击顶部栏上的“脚本”选项卡。
 
-5. 在你的计划程序函数中插入以下脚本。确保将占位符替换为你先前获取的通知中心名称和 *DefaultFullSharedAccessSignature* 的连接字符串。单击“保存”。
+5. 在你的计划程序函数中插入以下脚本。确保将占位符替换为你先前获取的通知中心名称和 DefaultFullSharedAccessSignature 的连接字符串。单击“保存”。
 
         var azure = require('azure');
 		var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string>');
@@ -501,20 +500,18 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 [移动服务入门]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
-[ Azure 管理门户]: https://manage.windowsazure.cn/
-[Azure 管理门户]: https://manage.windowsazure.cn/
+[Azure 经典门户]: https://manage.windowsazure.cn/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [通知中心指南]: http://msdn.microsoft.com/zh-cn/library/jj927170.aspx
 [针对 Android 的通知中心操作指南]: http://msdn.microsoft.com/zh-cn/library/dn282661.aspx
-[Azure 经典门户]: https://manage.windowsazure.cn
+
 [使用通知中心向用户推送通知]: /documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/
 [使用通知中心将通知推送到用户]: /documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users/
 [使用通知中心发送突发新闻]: /documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
 [GCMClient Component page]: http://components.xamarin.com/view/GCMClient
 [Xamarin.NotificationHub Github page]: https://github.com/SaschaDittmann/Xamarin.NotificationHub
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
-[Xamarin.Android]: http://xamarin.com/download/
 [Google Cloud Messaging 客户端组件]: http://components.xamarin.com/view/GCMClient/
 [Azure 消息传送组件]: http://components.xamarin.com/view/azure-messaging
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0503_2016-->

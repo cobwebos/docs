@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="ios"
 	ms.devlang="objective-c"
 	ms.topic="article"
-	ms.date="12/16/2015"
+	ms.date="03/28/2016"
 	ms.author="wesmc"/>
 # 使用通知中心将本地化的突发新闻发送到 iOS 设备
 
@@ -35,7 +35,7 @@
 
 
 
-##先决条件 ##
+##先决条件
 
 你必须已完成学习[使用通知中心发送突发新闻]教程并具有可用的代码，因为本教程直接围绕该代码展开论述。
 
@@ -95,7 +95,7 @@
 
 		- (int) retrieveLocale;
 
-	在 Notification.m 中，通过添加区域设置参数并将它存储在用户默认值中，修改 *storeCategoriesAndSubscribe* 方法：
+	在 Notification.m 中，通过添加区域设置参数并将它存储在用户默认值中，修改 storeCategoriesAndSubscribe 方法：
 
 		- (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
 		    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -106,7 +106,7 @@
 		    [self subscribeWithLocale: locale categories:categories completion:completion];
 		}
 
-	然后修改 *subscribe* 方法以包括该区域设置：
+	然后修改 subscribe 方法以包括该区域设置：
 	
 		- (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
 		    SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:@"<connection string>" notificationHubPath:@"<hub name>"];
@@ -129,23 +129,23 @@
 		    [hub registerTemplateWithDeviceToken:self.deviceToken name:@"localizednewsTemplate" jsonBodyTemplate:template expiryTemplate:@"0" tags:categories completion:completion];
 		}
 		
-	请注意，我们现在使用的是 *registerTemplateWithDeviceToken* 方法而非 *registerNativeWithDeviceToken*。当我们注册一个模板时，必须提供 json 模板，还要指定其名称（因为我们的应用程序可能要注册不同的模板）。确保将类别作为标记注册，因为我们要确保接收有关这些新闻的通知。
+	请注意，我们现在使用的是 registerTemplateWithDeviceToken 方法而非 registerNativeWithDeviceToken。当我们注册一个模板时，必须提供 json 模板，还要指定其名称（因为我们的应用程序可能要注册不同的模板）。确保将类别作为标记注册，因为我们要确保接收有关这些新闻的通知。
 
 	添加一个方法以从用户默认设置中检索区域设置：
 
 		- (int) retrieveLocale {
 		    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-		    
+
 		    int locale = [defaults integerForKey:@"BreakingNewsLocale"];
-		    
+
 		    return locale < 0?0:locale;
 		}
 
-2. 现在我们修改了 Notifications 类，必须确保 ViewController 使用新的 UISegmentControl。在 *viewDidLoad* 方法中添加以下行，以确保显示当前选择的区域设置：
+2. 现在我们修改了 Notifications 类，必须确保 ViewController 使用新的 UISegmentControl。在 viewDidLoad 方法中添加以下行，以确保显示当前选择的区域设置：
 
 		self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
 		
-	然后，在 *subscribe* 方法中，将对 *storeCategoriesAndSubscribe* 的调用更改为：
+	然后，在 subscribe 方法中，将对 storeCategoriesAndSubscribe 的调用更改为：
 	
 		[notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
 	        if (!error) {
@@ -158,7 +158,7 @@
 	        }
 	    }];
 
-3. 最后，你必须在 AppDelegate.m 中更新 *didRegisterForRemoteNotificationsWithDeviceToken* 方法，以便在应用启动时正确刷新你的注册信息。将对通知的 *subscribe* 方法的调用更改为：
+3. 最后，你必须在 AppDelegate.m 中更新 didRegisterForRemoteNotificationsWithDeviceToken 方法，以便在应用启动时正确刷新你的注册信息。将对通知的 subscribe 方法的调用更改为：
 
 		NSSet* categories = [self.notifications retrieveCategories];
 	    int locale = [self.notifications retrieveLocale];
@@ -200,10 +200,10 @@
 		    [request setValue:categoryTag forHTTPHeaderField:@"ServiceBusNotification-Tags"];
 
 			// Template notification
-	        json = [NSString stringWithFormat:@"{"messageParam":"Breaking %@ News : %@","
-					"News_English":"Breaking %@ News in English : %@","
-					"News_French":"Breaking %@ News in French : %@","
-					"News_Mandarin":"Breaking %@ News in Mandarin : %@","
+	        json = [NSString stringWithFormat:@"{\"messageParam\":\"Breaking %@ News : %@\","
+					\"News_English\":\"Breaking %@ News in English : %@\","
+					\"News_French\":\"Breaking %@ News in French : %@\","
+					\"News_Mandarin\":\"Breaking %@ News in Mandarin : %@\","
 	                categoryTag, self.notificationMessage.text,
 	                categoryTag, self.notificationMessage.text,  // insert English localized news here
 	                categoryTag, self.notificationMessage.text,  // insert French localized news here
@@ -285,4 +285,6 @@
 [Get started with Mobile Services]: /documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started/#create-new-service
 [wns object]: https://msdn.microsoft.com/zh-cn/library/azure/jj860484.aspx
 
-<!---HONumber=Mooncake_0104_2016-->
+
+
+<!---HONumber=Mooncake_0503_2016-->

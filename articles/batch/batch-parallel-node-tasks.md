@@ -1,11 +1,11 @@
 <properties
-   pageTitle="通过并行任务最大限度地使用 Batch 节点 | Microsoft Azure"
-   description="在 Azure Batch 池的每个节点上运行并发任务时，通过减少所使用的计算节点数来提高效率并降低成本"
-   services="batch"
-   documentationCenter=".net"
-   authors="mmacy"
-   manager="timlt"
-   editor=""/>
+	pageTitle="通过并行任务最大限度地使用 Batch 节点 | Microsoft Azure"
+	description="在 Azure Batch 池的每个节点上运行并发任务时，通过减少所使用的计算节点数来提高效率并降低成本"
+	services="batch"
+	documentationCenter=".net"
+	authors="mmacy"
+	manager="timlt"
+	editor="" />
 
    <tags
    	ms.service="batch"
@@ -34,7 +34,7 @@
 
 ## 允许并行执行任务
 
-你可以在Batch 解决方案中进行池级别的计算节点配置，以便并行执行任务。在创建池时，可以通过 Batch .NET 库设置 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 属性。如果你使用的是 Batch REST API，则可在创建池时在请求正文中设置 [maxTasksPerNode][maxtasks_rest] 元素。
+你可以在Batch 解决方案中进行池级别的计算节点配置，以便并行执行任务。在创建池时，可以通过 Batch .NET 库设置 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 属性。如果你使用的是 Batch REST API，则可在创建池时在请求正文中设置 [maxTasksPerNode][rest_addpool] 元素。
 
 使用 Azure Batch 时，可以通过节点设置来设置多达四倍 (4x) 的节点核心数，从而最大限度地提高任务数。例如，如果将池的节点大小配置为“大型”（四核），则可将 `maxTasksPerNode` 设置为 16。有关每个节点大小的核心数的详细信息，请参阅[云服务的大小](./../cloud-services/cloud-services-sizes-specs.md)。有关服务限制的详细信息，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
 
@@ -46,33 +46,43 @@
 
 你可以通过 [CloudPool.TaskSchedulingPolicy][task_schedule] 属性来指定任务，即让任务在池中所有节点之间平均分配（“散布式”）。或者，先给池中的每个节点分配尽量多的任务，然后再将任务分配给池中的其他节点（“装箱式”）。
 
-此功能十分重要，如需示例，请参阅上面示例中节点数为 Standard\_D14 的池，该池配置后的 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 值为 16。如果对 [CloudPool.TaskSchedulingPolicy][task_schedule] 进行配置时，将 [ComputeNodeFillType][fill_type] 设置为 *Pack*，则会充分使用每个节点的所有 16 个核心，并可通过[自动缩放池](./batch-automatic-scaling.md)将不使用的节点（没有分配任何任务的节点）从池中删除。这可以最大程度地减少资源使用量并节省资金。
+此功能十分重要，如需示例，请参阅上面示例中节点数为 Standard\_D14 的池，该池配置后的 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 值为 16。如果对 [CloudPool.TaskSchedulingPolicy][task_schedule] 进行配置时，将 [ComputeNodeFillType][fill_type] 设置为 Pack，则会充分使用每个节点的所有 16 个核心，并可通过[自动缩放池](./batch-automatic-scaling.md)将不使用的节点（没有分配任何任务的节点）从池中删除。这可以最大程度地减少资源使用量并节省资金。
 
 ## Batch .NET 示例
 
 此 [Batch .NET][api_net] API 代码段演示了一个请求，该请求要求创建一个包含四个大型节点的池，每个节点最多四个任务。它指定了一个任务计划策略，要求先用任务填充一个节点，然后再将任务分配给池中的其他节点。有关如何使用 Batch .NET API 添加池的详细信息，请参阅 [BatchClient.PoolOperations.CreatePool][poolcreate_net]。
 
-        CloudPool pool = batchClient.PoolOperations.CreatePool(poolId: "mypool",
-        													osFamily: "2",
-        													virtualMachineSize: "large",
-        													targetDedicated: 4);
-        pool.MaxTasksPerComputeNode = 4;
-        pool.TaskSchedulingPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
-        pool.Commit();
+```
+CloudPool pool =
+    batchClient.PoolOperations.CreatePool(
+        poolId: "mypool",
+		targetDedicated: 4
+		virtualMachineSize: "large",
+		cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
+
+pool.MaxTasksPerComputeNode = 4;
+pool.TaskSchedulingPolicy = new TaskSchedulingPolicy(ComputeNodeFillType.Pack);
+pool.Commit();
+```
 
 ## Batch REST 示例
 
-此 [Batch REST][api_rest] API 代码段演示了一个请求，该请求要求创建一个包含两个大型节点的池，每个节点最多四个任务。有关如何使用 REST API 添加池的详细信息，请参阅[将池添加到帐户][maxtasks_rest]。
+此 [Batch REST][api_rest] API 代码段演示了一个请求，该请求要求创建一个包含两个大型节点的池，每个节点最多四个任务。有关如何使用 REST API 添加池的详细信息，请参阅[将池添加到帐户][rest_addpool]。
 
-        {
-          "id": "mypool",
-          "vmSize": "Large",
-          "osFamily": "2",
-          "targetOSVersion": "*",
-          "targetDedicated": 2,
-          "enableInterNodeCommunication": false,
-          "maxTasksPerNode": 4
-        }
+```
+{
+  "odata.metadata":"https://myaccount.myregion.batch.azure.com/$metadata#pools/@Element",
+  "id":"mypool",
+  "vmSize":"large",
+  "cloudServiceConfiguration": {
+    "osFamily":"4",
+    "targetOSVersion":"*",
+  }
+  "targetDedicated":2,
+  "maxTasksPerNode":4,
+  "enableInterNodeCommunication":true,
+}
+```
 
 > [AZURE.NOTE] 只能在创建池时设置 `maxTasksPerNode` 元素和 [MaxTasksPerComputeNode][maxtasks_net] 属性。创建完池以后，不能对上述元素和属性进行修改。
 
@@ -102,11 +112,11 @@ Duration: 00:08:48.2423500
 
 第二次运行示例应用程序时，显示作业持续时间显著缩短。这是因为该池已被配置为每个节点四个任务，因此可以并行执行任务，使得作业可以在大约四分之一的时间内完成。
 
-> [AZURE.NOTE] 上述摘要中的作业持续时间不包括创建池的时间。上述每个作业都提交到此前已创建的池，这些池的计算节点在提交时处于*空闲* 状态。
+> [AZURE.NOTE] 上述摘要中的作业持续时间不包括创建池的时间。上述每个作业都提交到此前已创建的池，这些池的计算节点在提交时处于空闲状态。
 
 ## Batch 资源管理器热度地图
 
-[Azure Batch 资源管理器][batch_explorer]是 Azure Batch [示例应用程序][github_samples]之一，包含*热度地图* 功能，提供任务执行可视化。执行 [ParallelTasks][parallel_tasks_sample] 示例应用程序时，可以使用“热图”功能来轻松可视化每个节点上并行任务的执行。
+[Azure Batch 资源管理器][batch_explorer]是 Azure Batch [示例应用程序][github_samples]之一，包含热度地图功能，提供任务执行可视化。执行 [ParallelTasks][parallel_tasks_sample] 示例应用程序时，可以使用“热图”功能来轻松可视化每个节点上并行任务的执行。
 
 ![Batch 资源管理器热度地图][1]
 
@@ -114,17 +124,17 @@ Batch 资源管理器热图，其中显示了包含四个节点的池，每个�
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
-[batch_explorer]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
+[batch_explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [enable_autoscaling]: https://msdn.microsoft.com/library/azure/dn820173.aspx
-[fill_type]: https://msdn.microsoft.com/zh-cn/library/microsoft.azure.batch.common.computenodefilltype.aspx
+[fill_type]: https://msdn.microsoft.com/library/microsoft.azure.batch.common.computenodefilltype.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [maxtasks_net]: http://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.maxtaskspercomputenode.aspx
-[maxtasks_rest]: https://msdn.microsoft.com/library/azure/dn820174.aspx
+[rest_addpool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 [parallel_tasks_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks
 [poolcreate_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx
 [task_schedule]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudpool.taskschedulingpolicy.aspx
 
 [1]: ./media/batch-parallel-node-tasks\heat_map.png
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0503_2016-->

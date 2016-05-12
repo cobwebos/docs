@@ -9,10 +9,10 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="12/16/2015"
+	ms.date="03/28/2016"
 	wacn.date=""/>
 
-#Azure 通知中心 - 通知用户
+#Azure 通知中心 - 使用 .NET 后端通知 Android 用户
 
 
 [AZURE.INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
@@ -21,7 +21,7 @@
 
 利用 Azure 中的推送通知支持，你可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。ASP.NET WebAPI 后端用于对客户端进行身份验证并生成通知，如指南主题[从应用后端注册](/documentation/articles/notification-hubs-registration-management#registration-management-from-a-backend)中所述。本教程以你在[通知中心入门 (Android)](/documentation/articles/notification-hubs-android-get-started) 教程中创建的通知中心为基础。
 
-> [AZURE.NOTE]本教程假设你已按照[通知中心入门 (Android)](/documentation/articles/notification-hubs-android-get-started) 中所述创建并配置了通知中心。
+> [AZURE.NOTE] 本教程假设你已按照[通知中心入门 (Android)](/documentation/articles/notification-hubs-android-get-started) 中所述创建并配置了通知中心。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-notifyusers](../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -136,75 +136,75 @@
 4. 在 `MainActivity` 类所在的包中创建一个名为 **RegisterClient** 的新类。将以下代码用于新的类文件。
 
 		import java.io.IOException;
-		import java.io.UnsupportedEncodingException;
-		import java.util.Set;
-		
-		import org.apache.http.HttpResponse;
-		import org.apache.http.HttpStatus;
-		import org.apache.http.client.ClientProtocolException;
-		import org.apache.http.client.HttpClient;
-		import org.apache.http.client.methods.HttpPost;
-		import org.apache.http.client.methods.HttpPut;
-		import org.apache.http.client.methods.HttpUriRequest;
-		import org.apache.http.entity.StringEntity;
-		import org.apache.http.impl.client.DefaultHttpClient;
-		import org.apache.http.util.EntityUtils;
-		import org.json.JSONArray;
-		import org.json.JSONException;
-		import org.json.JSONObject;
-		
-		import android.content.Context;
-		import android.content.SharedPreferences;
-		import android.util.Log;
-		
-		public class RegisterClient {
-			private static final String PREFS_NAME = "ANHSettings";
-			private static final String REGID_SETTING_NAME = "ANHRegistrationId";
+        import java.io.UnsupportedEncodingException;
+        import java.util.Set;
+
+        import org.apache.http.HttpResponse;
+        import org.apache.http.HttpStatus;
+        import org.apache.http.client.ClientProtocolException;
+        import org.apache.http.client.HttpClient;
+        import org.apache.http.client.methods.HttpPost;
+        import org.apache.http.client.methods.HttpPut;
+        import org.apache.http.client.methods.HttpUriRequest;
+        import org.apache.http.entity.StringEntity;
+        import org.apache.http.impl.client.DefaultHttpClient;
+        import org.apache.http.util.EntityUtils;
+        import org.json.JSONArray;
+        import org.json.JSONException;
+        import org.json.JSONObject;
+
+        import android.content.Context;
+        import android.content.SharedPreferences;
+        import android.util.Log;
+
+        public class RegisterClient {
+            private static final String PREFS_NAME = "ANHSettings";
+            private static final String REGID_SETTING_NAME = "ANHRegistrationId";
             private String Backend_Endpoint;
-			SharedPreferences settings;
-			protected HttpClient httpClient;
-			private String authorizationHeader;
-		
+            SharedPreferences settings;
+            protected HttpClient httpClient;
+            private String authorizationHeader;
+
             public RegisterClient(Context context, String backendEnpoint) {
-				super();
-				this.settings = context.getSharedPreferences(PREFS_NAME, 0);
-				httpClient =  new DefaultHttpClient();
+                super();
+                this.settings = context.getSharedPreferences(PREFS_NAME, 0);
+                httpClient =  new DefaultHttpClient();
                 Backend_Endpoint = backendEnpoint + "/api/register";
-			}
-		
-			public String getAuthorizationHeader() {
-				return authorizationHeader;
-			}
-			
-			public void setAuthorizationHeader(String authorizationHeader) {
-				this.authorizationHeader = authorizationHeader;
-			}
-			
-			public void register(String handle, Set<String> tags) throws ClientProtocolException, IOException, JSONException {
-				String registrationId = retrieveRegistrationIdOrRequestNewOne(handle);
+            }
 
-				JSONObject deviceInfo = new JSONObject();
-				deviceInfo.put("Platform", "gcm");
-				deviceInfo.put("Handle", handle);
-				deviceInfo.put("Tags", new JSONArray(tags));
+            public String getAuthorizationHeader() {
+                return authorizationHeader;
+            }
 
-				int statusCode = upsertRegistration(registrationId, deviceInfo);
-				
-				if (statusCode == HttpStatus.SC_OK) {
-					return;
-				} else if (statusCode == HttpStatus.SC_GONE){
-					settings.edit().remove(REGID_SETTING_NAME).commit();
-					registrationId = retrieveRegistrationIdOrRequestNewOne(handle);
-					statusCode = upsertRegistration(registrationId, deviceInfo);
-					if (statusCode != HttpStatus.SC_OK) {
-						Log.e("RegisterClient", "Error upserting registration: " + statusCode);
-						throw new RuntimeException("Error upserting registration");
-					}
-				} else {
-					Log.e("RegisterClient", "Error upserting registration: " + statusCode);
-					throw new RuntimeException("Error upserting registration");
-				}
-			}
+            public void setAuthorizationHeader(String authorizationHeader) {
+                this.authorizationHeader = authorizationHeader;
+            }
+
+            public void register(String handle, Set<String> tags) throws ClientProtocolException, IOException, JSONException {
+                String registrationId = retrieveRegistrationIdOrRequestNewOne(handle);
+
+                JSONObject deviceInfo = new JSONObject();
+                deviceInfo.put("Platform", "gcm");
+                deviceInfo.put("Handle", handle);
+                deviceInfo.put("Tags", new JSONArray(tags));
+
+                int statusCode = upsertRegistration(registrationId, deviceInfo);
+
+                if (statusCode == HttpStatus.SC_OK) {
+                    return;
+                } else if (statusCode == HttpStatus.SC_GONE){
+                    settings.edit().remove(REGID_SETTING_NAME).commit();
+                    registrationId = retrieveRegistrationIdOrRequestNewOne(handle);
+                    statusCode = upsertRegistration(registrationId, deviceInfo);
+                    if (statusCode != HttpStatus.SC_OK) {
+                        Log.e("RegisterClient", "Error upserting registration: " + statusCode);
+                        throw new RuntimeException("Error upserting registration");
+                    }
+                } else {
+                    Log.e("RegisterClient", "Error upserting registration: " + statusCode);
+                    throw new RuntimeException("Error upserting registration");
+                }
+            }
 
             private int upsertRegistration(String registrationId, JSONObject deviceInfo)
                     throws UnsupportedEncodingException, IOException,
@@ -238,7 +238,7 @@
             }
         }
 
-	此组件将实现所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。它还会在本地存储通知中心创建的 *registrationIds*（从[应用后端注册](http://msdn.microsoft.com/library/dn743807.aspx)中提供了详细信息）。请注意，该组件使用当你单击“登录”按钮时存储在本地存储中的授权令牌。
+	此组件将实现所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。它还会在本地存储通知中心创建的 registrationIds（从[应用后端注册](/documentation/articles/notification-hubs-registration-management#registration-management-from-a-backend)中提供了详细信息）。请注意，该组件使用当你单击“登录”按钮时存储在本地存储中的授权令牌。
 
 5. 在 `MainActivity` 类中，删除或注释掉 `NotificationHub` 的私有字段，并添加一个用于 `RegisterClient` 类的字段和一个用于 ASP.NET 后端终结点的字符串。确保使用前面获取的实际后端终结点来替换 `<Enter Your Backend Endpoint>`。例如，`http://mybackend.azurewebsites.net`。
 
@@ -424,4 +424,5 @@
 [A1]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users.png
 [A2]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users-enter-password.png
 
-<!---HONumber=Mooncake_0104_2016-->
+
+<!---HONumber=Mooncake_0503_2016-->

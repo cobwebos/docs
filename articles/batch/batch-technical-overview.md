@@ -38,9 +38,7 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 
 你还可以使用 Batch 来执行并行计算（最后加上归纳步骤），以及其他更复杂的 HPC 工作负荷，例如[消息传递接口 (MPI)](/documentation/articles/batch-mpi) 应用程序。
 
-有关 Batch 与 Azure 中其他 HPC 解决方案选项的比较，请参阅 [Batch 和 HPC 解决方案](/documentation/articles/batch-hpc-solutions)。
-
->[AZURE.NOTE] 目前，Batch 仅支持基于 Windows Server 的虚拟机上运行的工作负荷。
+有关 Batch 与 Azure 中其他 HPC 解决方案选项的比较，请参阅 [Batch 和 HPC 解决方案](batch-hpc-solutions.md)。
 
 ## 使用 Batch 进行开发
 
@@ -132,4 +130,4 @@ Batch 很适合处理本质并行（也称为“超简单并行”）的应用�
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0503_2016-->

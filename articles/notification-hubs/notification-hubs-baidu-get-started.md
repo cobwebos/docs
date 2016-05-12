@@ -136,7 +136,7 @@
 
 ##配置通知中心
 
-1. 登录到 [Azure 管理门户]，然后单击屏幕底部的“+新建”。
+1. 登录到 [Azure 经典门户]，然后单击屏幕底部的“+新建”。
 
 2. 依次单击“应用程序服务”、“服务总线”、“通知中心”和“快速创建”。
 
@@ -182,7 +182,7 @@
 
     ![][26]
 
-5. 从 [Notification-Hubs-Android-SDK on Bintray](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) 的“文件”选项卡下载 notification-hubs-0.4.jar 文件。将该文件添加到 Eclipse 项目的 **libs** 文件夹，然后刷新 *libs* 文件夹。
+5. 从 [Notification-Hubs-Android-SDK on Bintray](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) 的“文件”选项卡下载 notification-hubs-0.4.jar 文件。将该文件添加到 Eclipse 项目的 **libs** 文件夹，然后刷新 libs 文件夹。
 
 6. 下载并解压缩[百度推送 Android SDK]，打开 **libs** 文件夹，然后将 **pushservice-x.y.z** jar 文件以及 **armeabi** 和 **mips** 文件夹复制到 Android 应用程序的 **libs** 文件夹。
 
@@ -201,11 +201,11 @@
 	    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
 	    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 
-8. 向 **AndroidManifest.xml** 中的 **application** 元素添加 **android:name** 属性，并替换 *yourprojectname*（例如 **com.example.BaiduTest**）。确保此项目名称与你在百度控制台中配置的项目名称匹配。
+8. 向 **AndroidManifest.xml** 中的 **application** 元素添加 **android:name** 属性，并替换 yourprojectname（例如 **com.example.BaiduTest**）。确保此项目名称与你在百度控制台中配置的项目名称匹配。
 
 		<application android:name="yourprojectname.DemoApplication"
 
-9. 在 **.MainActivity** 活动元素后的 application 元素内添加以下配置，并替换 *yourprojectname*（例如 **com.example.BaiduTest**）：
+9. 在 **.MainActivity** 活动元素后的 application 元素内添加以下配置，并替换 yourprojectname（例如 **com.example.BaiduTest**）：
 
 		<receiver android:name="yourprojectname.MyPushMessageReceiver">
 		    <intent-filter>
@@ -259,7 +259,7 @@
 				public static String NotificationHubConnectionString = "...";
 			}
 
-	使用先前从百度云项目中检索到的内容设置 **API\_KEY** 的值，使用 Azure 管理门户中的通知中心名称设置 **NotificationHubName**，并使用 Azure 门户中的 DefaultListenSharedAccessSignature 设置 **NotificationHubConnectionString**。
+	使用前面从百度云项目中检索到的内容设置 **API\_KEY** 的值，使用 Azure 经典门户中的通知中心名称设置 **NotificationHubName**，并使用 Azure 经典门户中的 DefaultListenSharedAccessSignature 设置 **NotificationHubConnectionString**。
 
 11. 添加一个名为 **DemoApplication.java** 的新类，并向此类中添加以下代码：
 
@@ -408,7 +408,7 @@
 
 * **Node.js**：[如何通过 Node.js 使用通知中心](notification-hubs-nodejs-how-to-use-notification-hubs.md)。
 
-* **Azure 移动服务**：有关如何从与通知中心集成的 Azure 移动服务后端发送通知的示例，请参阅“移动服务中的推送通知入门”（[.NET 后端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md) | [JavaScript 后端](../mobile-services/mobile-services-javascript-backend-windows-store-dotnet-get-started-push.md)）。
+* **Azure 移动服务**：有关如何从通知中心集成的 Azure 移动服务后端发送通知的示例，请参阅 [Add push notifications to your Mobile Services app（将推送通知添加到移动服务应用）](/documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md)。
 
 * **Java/PHP**：有关如何使用 REST API 发送通知的示例，请参阅“如何通过 Java/PHP 使用通知中心”([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md))。
 
@@ -432,7 +432,7 @@
 
         using Microsoft.Azure.NotificationHubs;
 
-4. 在 `Program` 类中添加以下方法，并将 *DefaultFullSharedAccessSignatureSASConnectionString* 和 *NotificationHubName* 替换为你的值。
+4. 在 `Program` 类中添加以下方法，并将 DefaultFullSharedAccessSignatureSASConnectionString 和 NotificationHubName 替换为你的值。
 
 		private static async void SendNotificationAsync()
 		{
@@ -452,7 +452,7 @@
 
 若要使用模拟器测试此应用，请在 Eclipse 顶部工具栏中，单击“运行”，然后选择你的应用。这将启动模拟器，然后加载并运行该应用。
 
-该应用将从百度推送通知服务检索 “userId” 和 “channelId”，并注册到通知中心。
+该应用将从百度推送通知服务检索“userId”和“channelId”，并注册到通知中心。
 
 若要发送测试通知，可以使用 Azure 经典门户的调试选项卡。如果你为 Visual Studio 生成了 .NET 控制台应用程序，只需在 Visual Studio 中按 F5 键以运行该应用程序。该应用程序将发送一条通知，该通知显示在设备或模拟器的顶部通知区域。
 
@@ -495,7 +495,7 @@
 <!-- URLs. -->
 [移动服务 Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [百度推送 Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
-[Azure Classic Portal]: https://manage.windowsazure.cn/
+[Azure 经典门户]: https://manage.windowsazure.cn/
 [百度门户]: http://www.baidu.com/
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0503_2016-->

@@ -12,6 +12,7 @@
    wacn.date=""/>
 
 # Azure 备份中的脱机备份工作流
+Azure 备份内置了大量的高效功能，可以节省网络和存储成本。Azure 备份不仅会压缩数据，而且只完全备份一次，完全备份之后将以差异/增量的方式备份内容。因此，如果要备份 10TB 的文件卷，Azure 将在初始复制 (IR) 期间发送 10TB 数据，而在差异备份期间只发送差异数据。因此，IR 期间需要占用最大的 WAN 带宽。为了降低执行 IR 时对 WAN 的依赖，Azure 备份支持使用 Azure 导入/导出服务进行脱机备份。
 
 Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输初始备份数据。如果你要通过高延迟、低带宽网络传输 TB 计的初始备份数据，可以使用 Azure 导入/导出服务将一个或多个硬盘驱动器中的初始备份副本传送到 Azure 数据中心。本文概述了完成此工作流所需的步骤。
 
@@ -30,7 +31,7 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 7. 从[此处](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)将 Azure 导入/导出工具下载到 SATA 驱动器编写器连接到的计算机。
 
 ## 工作流
-本部分中提供的信息用于完成“脱机备份工作流”，以便可以将你的数据传输到 Azure 数据中心并上载到 Azure 存储。如果你有关于导入服务或流程的任何方面的问题，请参阅上面引用的[导入服务概述](/documentation/articles/storage-import-export-service)文档。
+本部分中提供的信息用于完成“脱机备份工作流”，以便可以将你的数据传输到 Azure 数据中心并上载到 Azure 存储。如果你有关于导入服务或流程的任何方面的问题，请参阅上面提到的[导入服务概述](/documentation/articles/storage-import-export-service)文档。
 
 ### 启动脱机备份
 
@@ -38,7 +39,8 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 
     ![ImportScreen](./media/backup-azure-backup-import-export/importscreen.png)
 
-    SCDPM 中的对应屏幕如下所示。<br/>![DPM 导入屏幕](./media/backup-azure-backup-import-export/dpmoffline.png)
+    SCDPM 中的对应屏幕如下所示。<br/>
+    ![DPM 导入屏幕](./media/backup-azure-backup-import-export/dpmoffline.png)
 
     其中：
 
@@ -94,7 +96,7 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 
     ![门户](./media/backup-azure-backup-import-export/azureportal.png)
 
-2. 在向导的步骤 1 中，指示你已准备好了驱动器并且具有可用的驱动器日志文件。在向导的步骤 2 中，提供负责该导入作业的人员的联系信息。
+2. 在向导的步骤 1 中，指示你已准备好了驱动器并且具有可用的驱动器日志文件。 在向导的步骤 2 中，提供负责该导入作业的人员的联系信息。
 3. 在步骤 3 中，上载你在上一部分获取的驱动器日志文件。
 4. 在步骤 4 中，请为导入作业输入一个描述性的名称，该名称已在创建备份策略/保护组的过程中输入过。请注意，你输入的名称只能包含小写字母、数字、连字符和下划线，必须以字母开头并且不得包含空格。在作业进行中以及在作业完成后，你将使用所选名称来跟踪作业。
 5. 接下来，从列表中选择你的数据中心区域。数据中心区域会指示必须将你的包裹运送到的数据中心和地址。
@@ -114,4 +116,4 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 - 如有 Azure 导入/导出工作流方面的任何问题，请参阅此[文章](/documentation/articles/storage-import-export-service)。
 - 如有工作流方面的任何问题，请参阅 Azure 备份[常见问题](/documentation/articles/backup-azure-backup-faq)的“脱机备份”部分
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0503_2016-->

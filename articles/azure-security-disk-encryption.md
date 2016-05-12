@@ -1,5 +1,5 @@
 <properties
-   pageTitle="适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密 | Microsoft Azure"
+   pageTitle="适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密 | Azure"
    description="本文概述适用于 Windows 和 Linux IaaS VM 的 Microsoft Azure 磁盘加密。"
    services="virtual-machines, cloud-services, storage"
    documentationCenter="na"
@@ -9,19 +9,13 @@
 
 <tags
    ms.service="azure-security"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="na"
-   ms.date="01/29/2016"
-   ms.author="devtiw"/>
+   ms.date="04/15/2016"
+   wacn.date=""/>
 
 
-#适用于 Windows 和 Linux IaaS VM 预览版的 Azure 磁盘加密
+#适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密
 
-> [AZURE.NOTE] 本文档中的信息适用于 Azure 磁盘加密预览版。
-
-Microsoft Azure 坚决承诺确保数据隐私权和数据所有权，并通过各种先进技术来加密、控制和管理加密密钥以及控制和审核对数据的访问，使你能够控制 Azure 托管的数据。这样，Azure 客户便可以灵活选择最符合其业务需求的解决方案。在本文中，我们将会介绍新的技术解决方案“适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密”，以帮助你保护数据，使你的组织能够信守在安全性与合规性方面所做的承诺。本文提供有关如何使用 Azure 磁盘加密功能的详细指导，包括支持的方案和用户体验。
+Azure 坚定承诺确保数据隐私权和数据所有权，并通过各种先进技术来加密、控制和管理加密密钥以及控制和审核对数据的访问，使你能够控制 Azure 托管的数据。这样，Azure 客户便可以灵活选择最符合其业务需求的解决方案。在本文中，我们将会介绍新的技术解决方案“适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密”，以帮助你保护数据，使你的组织能够信守在安全性与合规性方面所做的承诺。本文提供有关如何使用 Azure 磁盘加密功能的详细指导，包括支持的方案和用户体验。
 
 **注意**：本文包含的特定建议可能会导致数据、网络或计算资源使用量增加，从而产生额外的许可或订阅成本。
 
@@ -29,39 +23,46 @@ Microsoft Azure 坚决承诺确保数据隐私权和数据所有权，并通过�
 
 Azure 磁盘加密是用于加密 Windows 和 Linux IaaS 虚拟机磁盘的新功能。Azure 磁盘加密利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，为 OS 和数据磁盘提供卷加密。该解决方案与 [Azure 密钥](https://azure.microsoft.com/documentation/services/key-vault/)保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储空间中静态加密。
 
+适用于 Windows IaaS VM 的 Azure 磁盘加密目前已在澳大利亚区域推出[正式版](https://blogs.msdn.microsoft.com/azuresecurity/2016/04/15/azure-disk-encryption-for-windows-virtual-machines-reaches-general-availability/)。其他区域的 Windows IaaS VM 正式版即将推出。
+
 ### 加密方案
 
-Azure 磁盘加密解决方案支持以下 3 种客户加密方案：
+Azure 磁盘加密解决方案支持以下客户方案：
 
-- 在通过客户加密 VHD 和加密密钥创建的新 IaaS VM 上启用加密
+- 在通过预加密 VHD 和加密密钥创建的新 IaaS VM 上启用加密
+- 在通过 Azure 库映像创建的新 IaaS VM 上启用加密 
+- 在 Azure 中已运行的现有 IaaS VM 上启用加密 
+- 在 Windows IaaS VM 上禁用加密  
 
-- 在通过 Azure 库创建的新 IaaS VM 上启用加密
-
-- 在 Azure 中已运行的现有 IaaS VM 上启用加密
-
-在 Microsoft Azure 中启用时，该解决方案支持以下适用于公共预览版的 IaaS VM：
+在 Microsoft Azure 中启用时，该解决方案支持以下 IaaS VM：
 
 - 与 Azure 密钥保管库集成
 
 - 标准 [A、D 和 G 系列 IaaS VM](/home/features/virtual-machines/#price)
 
-- 在使用 [Azure Resource Manager](/documentation/articles/resource-group-overview) 模型创建的 IaaS VM 上启用加密
+- 在 Windows 和 Linux IaaS VM 上启用加密
 
+- 在 Windows IaaS VM 上禁用加密
 
+- 在运行 Windows 客户端 OS 的 IaaS VM 上启用加密
 
-该解决方案不支持公共预览版中的以下方案、功能和技术：
+- 在包含装入路径的卷上启用加密
+
+- 所有 Azure 公共区域支持公共预览版，Azure 澳大利亚区域支持 Windows IaaS VM GA 版
+
+该解决方案不支持版本中的以下方案、功能和技术：
 
 - 基本 VM 和标准 DS（高级存储）系列 IaaS VM
 
 - 使用经典 VM 创建方法创建的 IaaS VM
 
-- 可以禁用通过 Azure 磁盘加密启用的 IaaS VM 上的加密功能
+- 在已在 Azure 中运行的 Linux IaaS VM 上启用对 OS 磁盘加密
+
+- 在 IaaS VM 上禁用通过 Azure 磁盘加密启用的加密
 
 - 与本地密钥管理服务集成
 
-- Windows Server Technical Preview 3
-
-- Red Hat Enterprise Linux
+- Windows Server 2016 Technical Preview 3 和更高版本
 
 - Azure 文件（Azure 文件共享）、网络文件系统 (NFS)、动态卷、基于软件的 RAID 系统
 
@@ -72,7 +73,11 @@ Azure 磁盘加密解决方案支持以下 3 种客户加密方案：
 
 - 加密 OS 卷以轻松保护客户存储中的引导卷
 
+	- 目前不支持在已在 Azure 中运行的 Linus IaaS VM 加密 OS 卷。仅支持针对预加密的 VHD 方案加密 Linux IaaS VM 的 OS 卷
+	
 - 加密数据卷以轻松保护客户存储中的数据卷
+
+- 在 Windows IaaS VM 上禁用加密
 
 - 保护客户 Azure 密钥保管库订阅中的加密密钥和机密
 
@@ -82,7 +87,7 @@ Azure 磁盘加密解决方案支持以下 3 种客户加密方案：
 
 适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密解决方案包括适用于 Windows 的磁盘加密扩展、适用于 Linux 的磁盘加密扩展、磁盘加密 PowerShell cmdlet、磁盘加密 CLI cmdlet 和磁盘加密 Azure Resource Manager 模板。在运行 Windows 或 Linux OS 的 IaaS VM 上支持 Azure 磁盘加密解决方案。有关支持的操作系统的详细信息，请参阅以下先决条件部分。
 
-在公共预览期间，可以免费使用 Azure 磁盘加密来加密 VM 磁盘。我们预期在磁盘加密正式版推出后仍然保持免费。不过，价格可能会根据市场和竞争局势而变化。
+**注意**：可以免费使用 Azure 磁盘加密来加密 VM 磁盘。
 
 ### 价值主张
 
@@ -112,17 +117,33 @@ Azure 磁盘加密管理解决方案可以解决云中的以下业务需求：
 
 ![Azure 中的 Microsoft Antimalware](./media/azure-security-disk-encryption/disk-encryption-fig1.JPG)
 
+### 解密工作流
+
+为 Windows IaaS VM 禁用磁盘加密所需的高级步骤如下：
+
+1. 客户选择通过 Azure 磁盘加密 ARM 模板或 PS cmdlet 在 Azure 中运行的 Windows IaaS VM 上禁用加密（解密），并指定解密配置。
+
+2. 禁用加密步骤仅受 Windows IaaS VM 的支持，而不受 Linux IaaS VM 的支持。
+
+3. 禁用加密步骤将禁用正在运行的 Windows IaaS VM 上的 OS 卷和/或数据卷的加密。
+
+4. Azure 服务管理将更新 VM 服务模型，Windows IaaS VM 将标记为已解密。VM 的内容不再静态加密。
+
+5. 禁用加密不会删除客户密钥保管库和加密密钥材料（Windows 的 BitLocker 加密密钥和 Linux 的通行短语）。
+
 ## 先决条件
 
 以下是针对概述部分提到支持的方案，在 Azure IaaS VM 上启用 Azure 磁盘加密所要满足的先决条件
 
 - 用户必须拥有有效的活动 Azure 订阅才能在 Azure 支持的区域中创建资源
 
-- 以下 Windows 服务器 SKU 支持 Azure 磁盘加密 - Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2。Windows Server 2008 操作系统不支持该解决方案。公共预览版不支持 Windows Server Technical Preview。
+- 以下 Windows 服务器 SKU 支持 Azure 磁盘加密 - Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2。Windows Server 2008 操作系统不支持该解决方案。此版本不支持 Windows Server 2016 Technical Preview 3。
+
+以下 Windows 客户端 SKU 支持 Azure 磁盘加密 - Windows 8 Client 和 Windows 10 Client。
 
 **注意**：对于 Windows Server 2008 R2，必须先安装 .NET Framework 4.5 才能在 Azure 中启用加密。你可以通过安装可选更新“适用于 Windows Server 2008 R2 x64 系统的 Microsoft .NET Framework 4.5.2 ([KB2901983](https://support.microsoft.com/kb/2901983))”，从 Windows 更新安装它。
 
-- 以下 Linux 服务器 SKU 支持 Azure 磁盘加密 - Ubuntu、CentOS、SUSE 和 SUSE Linux Enterprise Server (SLES)。公共预览版不支持 Red Hat Enterprise Linux。
+- 以下 Linux 服务器 SKU 支持 Azure 磁盘加密 - Ubuntu、CentOS、SUSE、SUSE Linux Enterprise Server (SLES) 和 Red Hat Enterprise Linux。
 
 - 所有资源（例如密钥保管库、存储帐户、VM 等）必须属于同一 Azure 区域和订阅。
 
@@ -170,13 +191,9 @@ Azure 磁盘加密管理解决方案可以解决云中的以下业务需求：
 
 **注意：**如果你的安全策略限制从 Azure VM 到 Internet 的访问，则你可以解析上述要连接到的 URI，并配置特定的规则以允许与这些 IP 建立出站连接。
 
-- 若要运行任何 Azure 磁盘加密 PowerShell cmdlet，必须先安装 [Azure PowerShell 1.0.2](https://github.com/Azure/azure-powershell/releases/tag/v1.0.2-December2015)：
+- 使用最新版本的 Azure PowerShell SDK 来配置 Azure 磁盘加密。下载 [Azure PowerShell 1.3.0](https://github.com/Azure/azure-powershell/releases/download/v1.3.0-March2016/azure-powershell.1.3.0.msi) 或更高版本。
 
-	- 若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](powershell-install-configure.md)。
-
-	- 本文档假设你已了解基本概念，例如模块、cmdlet 和会话。有关详细信息，请参阅 [Windows PowerShell 入门](https://technet.microsoft.com/library/hh857337.aspx)
-
-**注意：**[Azure PowerShell SDK 1.1.0](https://github.com/Azure/azure-powershell/releases/tag/v1.1.0-January2016) 不支持 Azure 磁盘加密。
+**注意：**[Azure PowerShell SDK 1.1.0](https://github.com/Azure/azure-powershell/releases/tag/v1.1.0-January2016) 不支持 Azure 磁盘加密。如果你收到与 Azure PowerShell 1.1.0 用法相关的错误，请参阅文章 [Azure Disk Encryption Error Related to Azure PowerShell 1.1.0（与 Azure PowerShell 1.1.0 相关的 Azure 磁盘加密错误）](http://blogs.msdn.com/b/azuresecurity/archive/2016/02/10/azure-disk-encryption-error-related-to-azure-powershell-1-1-0.aspx)。
 
 - 若要运行任何 Azure CLI 命令并将它与 Azure 订阅相关联，必须先安装 Azure CLI 版本：
 
@@ -185,6 +202,7 @@ Azure 磁盘加密管理解决方案可以解决云中的以下业务需求：
 	- 将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用，请参阅[此处](azure-cli-arm-commands.md)
 
 - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。如果 VM 已加入域，请不要推送会强制使用 TPM 保护程序的任何组策略。请参阅[此文](https://technet.microsoft.com/library/ee706521)，以了解“没有兼容的 TPM 时允许 BitLocker”组策略的详细信息。
+
 - 用于创建 Azure AD 应用程序、创建新的密钥保管库或设置现有密钥保管库并启用加密的 Azure 磁盘加密先决条件 PowerShell 脚本位于[此处](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)。
 
 ### 根据 Azure 磁盘加密的使用方式设置和配置 Azure 密钥保管库
@@ -195,7 +213,7 @@ Azure 磁盘加密将保护 Azure 密钥保管库中的磁盘加密密钥和机�
 若要创建新的密钥保管库，请使用下列两个选项之一：
 
 - 使用位于[此处](https://github.com/Azure/azure-quickstart-templates/blob/master/101-create-key-vault/azuredeploy.json)的“101-Create-KeyVault”ARM 模板
-- 使用 Azure PowerShell 密钥保管库 cmdlet，如[此处](key-vault-get-started.md)所述
+- 使用 Azure PowerShell 密钥保管库 cmdlet。
 
 **注意：**如果你已为订阅设置密钥保管库，请转到下一部分。
 
@@ -529,7 +547,7 @@ Azure AD 应用程序需有访问保管库中密钥或机密的权限。使用 [
 
 ### 获取已加密 IaaS VM 的加密状态
 
-可以使用 Azure 管理门户、[PowerShell cmdlet](https://msdn.microsoft.com/library/azure/mt622700.aspx) 或 CLI 命令获取加密状态。以下部分将说明如何使用 Azure 管理（预览）门户和 CLI 命令来获取加密状态。
+可以使用 Azure 管理门户、[PowerShell cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/mt622700.aspx) 或 CLI 命令获取加密状态。以下部分将说明如何使用 Azure 门户和 CLI 命令来获取加密状态。
 
 #### 使用 Azure 管理门户获取已加密 IaaS VM 的加密状态
 
@@ -562,6 +580,26 @@ OSVolumeEncrypted 和 DataVolumesEncrypted 设置值为“True”，表明这两
 
     azure vm show-disk-encryption-status --resource-group <yourResourceGroupName> --name <yourVMName> --json  
 
+#### 在正在运行的 Windows IaaS VM 上禁用加密
+
+你可以通过 Azure 磁盘加密 ARM 模板或 PS cmdlet 在运行的 Windows IaaS VM 上禁用加密，并指定解密配置。禁用加密步骤仅受 Windows IaaS VM 的支持，而不受 Linux IaaS VM 的支持。禁用加密步骤将禁用正在运行的 Windows IaaS VM 上的 OS 卷和/或数据卷的加密。你无法禁用 OS 卷并保持数据卷的加密状态。执行禁用加密步骤后，Azure 服务管理将更新 VM 服务模型，Windows IaaS VM 将标记为已解密。VM 的内容不再静态加密。禁用加密不会删除客户密钥保管库和加密密钥材料（Windows 的 BitLocker 加密密钥和 Linux 的通行短语）。
+
+##### 使用 ARM 模板在 Azure 中的现有/正在运行的 IaaS Windows 上禁用加密
+
+可以使用[此处](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm)发布的 ARM 模板，在正在运行的 Windows IaaS VM 上禁用磁盘加密。单击 Azure 快速入门模板上的“部署到 Azure”按钮，在参数边栏选项卡中输入解密配置，然后单击“确定”。选择订阅、资源组、资源组位置、法律条款和协议，然后单击“创建”按钮以在新 IaaS VM 上启用加密。
+
+用于在正在运行的 Windows IaaS VM 上禁用加密的 ARM 模板参数详细信息：
+
+| ​vmName | ​执行加密操作的 VM 的名称 |
+|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ​volumeType | ​执行解密操作的卷的类型。有效值为“OS”、“Data”、“All”。**注意：**如果未在“Data”卷上禁用加密，则无法在运行中的 Windows IaaS VM OS/引导卷上禁用加密。 |
+| sequenceVersion | BitLocker 操作的序列版本。每当在同一个 VM 上执行磁盘解密操作时，此版本号便会递增 |
+
+##### 使用 PS cmdlet 在 Azure 中的现有/正在运行的 IaaS Windows 上禁用加密
+
+若要使用 PS cmdlet 禁用，可以使用 [Disable-AzureRmVMDiskEncryption](https://msdn.microsoft.com/library/azure/mt715776.aspx) cmdlet 在基础结构即服务 (IaaS) 虚拟机上禁用加密。此 cmdlet 仅受 Windows 虚拟机的支持，而不受 Linux 的虚拟机的支持。此 cmdlet 将在虚拟机上安装一个用于禁用加密的扩展。如果未指定 Name 参数，将创建默认名称为“AzureDiskEncryption for Windows VMs”的扩展。
+
+**注意**：运行此 cmdlet 会重新启动虚拟机。
 
 ## 附录
 
@@ -571,7 +609,7 @@ OSVolumeEncrypted 和 DataVolumesEncrypted 设置值为“True”，表明这两
 
 1\. 启动 Azure PowerShell 会话，然后使用以下命令登录你的 Azure 帐户：
 
-    Login-AzureRmAccount -Environment $(GetRmAzureEnvironment -Name AzureChinaCloud)
+    Login-AzureRmAccount -Environment  AzureChinaCloud
 
 2\. 如果你有多个订阅，并想要指定使用某个特定的订阅，请键入以下内容以查看帐户的订阅：
 
@@ -807,4 +845,4 @@ OSVolumeEncrypted 和 DataVolumesEncrypted 设置值为“True”，表明这两
 
 [探讨如何使用 Azure PowerShell 启用 Azure 磁盘加密 - 第 2 部分](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0503_2016-->

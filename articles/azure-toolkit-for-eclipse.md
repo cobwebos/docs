@@ -9,12 +9,8 @@
 
 <tags
     ms.service="multiple"
-    ms.workload="na"
-    ms.tgt_pltfrm="multiple"
-    ms.devlang="Java"
-    ms.topic="article"
-    ms.date="03/07/2016" 
-    ms.author="robmcm"/>
+    ms.date="03/28/2016" 
+    wacn.date=""/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694271.aspx -->
 
@@ -22,7 +18,7 @@
 
 使用 Azure Toolkit for Eclipse 提供的模板和功能，可轻松地利用 Eclipse 开发环境创建、开发、测试和部署 Azure 应用程序。它是一个开放源代码项目，其源代码可从项目站点的 Apache 许可证 2.0 下获取，网址为：
 
-* <https://github.com/MSOpenTech/WindowsAzureToolkitForEclipseWithJava>
+* <https://github.com/microsoft/azure-tools-for-java.>
 
 ## Azure Toolkit for Eclipse 入门 ##
 
@@ -30,7 +26,7 @@
 
 * [Azure Toolkit for Eclipse 的新增功能]
 * [安装 Azure Toolkit for Eclipse]
-* [在 Eclipse 中为 Azure 创建 Hello World 应用程序]
+* [在 Eclipse 中创建 Azure 的 Hello World 云服务]
 * [在 Eclipse 中创建 Azure 的 Hello World Web 应用]
 * [在 Eclipse 中显示 Package for Azure Libraries for Java 的 Javadoc 内容]
 
@@ -64,7 +60,7 @@
 
 [安装 Azure Toolkit for Eclipse]
 
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序]
+[在 Eclipse 中创建 Azure 的 Hello World 应用程序]
 
 [Azure Toolkit for Eclipse 的新增功能]
 
@@ -77,9 +73,10 @@
 [Azure 角色属性]: http://go.microsoft.com/fwlink/?LinkID=699525
 [Azure 服务终结点]: http://go.microsoft.com/fwlink/?LinkID=699526
 [Azure 存储帐户列表]: http://go.microsoft.com/fwlink/?LinkID=699528
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699533
+[在 Eclipse 中创建 Azure 的 Hello World 云服务]: http://go.microsoft.com/fwlink/?LinkID=699533
 [在 Eclipse 中创建 Azure 的 Hello World Web 应用]: /documentation/articles/create-a-hello-world-web-app-for-azure-in-eclipse
 [在 Eclipse 中调试 Azure 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699535
+[在 Eclipse 中创建 Azure 的 Hello World 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699533
 [实施大型部署]: http://go.microsoft.com/fwlink/?LinkID=699536
 [在 Eclipse 中显示 Package for Azure Libraries for Java 的 Javadoc 内容]: http://go.microsoft.com/fwlink/?LinkID=699537
 [在 Eclipse 中为 Azure 部署启用远程访问]: http://go.microsoft.com/fwlink/?LinkID=699538
@@ -95,4 +92,4 @@
 [在 JSP 中使用 Azure 服务运行时库]: http://go.microsoft.com/fwlink/?LinkID=699551
 [Azure Toolkit for Eclipse 的新增功能]: http://go.microsoft.com/fwlink/?LinkID=699552
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0503_2016-->

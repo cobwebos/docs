@@ -1,34 +1,60 @@
 <properties
-	pageTitle="在 Azure 资源管理器模板中处理状态的最佳做法"
-	description="显示了如何通过建议的方法来使用复杂对象，以便与 Azure 资源管理器模板和已链接模板共享状态数据"
+	pageTitle="在资源管理器模板中处理状态 | Azure"
+	description="显示了如何通过建议的方法来使用复杂对象，以便与 Azure Resource Manager 模板和已链接模板共享状态数据"
 	services="azure-resource-manager"
 	documentationCenter=""
-	authors="mmercuri"
-	manager="georgem"
+	authors="tfitzmac"
+	manager="timlt"
 	editor="tysonn"/>
 
 <tags
 	ms.service="azure-resource-manager"
-	ms.date="09/10/2015"
+	ms.date="04/06/2016"
 	wacn.date=""/>
 
 # 在 Azure 资源管理器模板中共享状态
 
-本主题介绍有关在 Azure 资源管理器模板中以及多个链接的模板中管理和共享状态的最佳实践。本主题中所示的参数和变量是你为了方便组织部署要求而可以定义的对象类型的示例。通过这些示例，你可以使用适合环境的属性值实现自己的对象。
+本主题介绍有关在模板中管理和共享状态的最佳实践。本主题中所示的参数和变量是你为了方便组织部署要求而可以定义的对象类型的示例。通过这些示例，你可以使用适合环境的属性值实现自己的对象。
 
 本主题是包含更多内容的白皮书的一部分。若要阅读完整的白皮书，请下载 [一流的 ARM 模板注意事项和成熟的做法](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf)。
 
 
-## 使用复杂的对象来共享状态
+## 提供标准配置设置
 
 与其给予模板来提供整体弹性和无数种差异，不如采用一种常用模式，就是提供选择已知配置的功能 - 实际上，是诸如沙箱、小、中和大之类的标准 T 恤尺寸。T 恤尺寸的其他示例包括产品，例如社区版本或企业版本。在其他情况下，这可能是某种技术的工作负荷特定配置，例如，映射化简或 No SQL。
 
-如果使用复杂对象，你可以创建包含数据集合的变量（有时称为“属性包”），并使用使用数据驱动模板中的资源声明。这种方法可对于预先为客户配置好的各种大小提供正常且已知的配置。如果没有已知配置，客户就必须自行确定群集大小、整合平台资源约束，以及执行数学运算来识别存储帐户的生成分区和其他资源（因群集大小和资源约束而导致）。已知配置使客户能够轻松选择正确的 T 恤尺寸，也就是给定的部署。除了为客户提供更好的体验，少量的已知配置可让你更轻松地提供支持，并帮助你提供较高的密度级别。
-
+如果使用复杂对象，你可以创建包含数据集合的变量（有时称为“属性包”），并使用使用数据驱动模板中的资源声明。这种方法可对于预先为客户配置好的各种大小提供正常且已知的配置。如果没有已知配置，客户就必须自行确定群集大小、整合平台资源约束，以及执行数学运算来识别存储帐户的生成分区和其他资源（因群集大小和资源约束而导致）。除了为客户提供更好的体验，少量的已知配置可让你更轻松地提供支持，并帮助你提供较高的密度级别。
 
 以下示例显示了如何定义包含复杂对象（代表数据聚合）的变量。这些集合定义的值可用于虚拟机大小、网络设置、操作系统设置和可用性设置。
 
     "variables": {
+      "tshirtSize": "[variables(concat('tshirtSize', parameters('tshirtSize')))]",
+      "tshirtSizeSmall": {
+        "vmSize": "Standard_A1",
+        "diskSize": 1023,
+        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
+        "vmCount": 2,
+        "storage": {
+          "name": "[parameters('storageAccountNamePrefix')]",
+          "count": 1,
+          "pool": "db",
+          "map": [0,0],
+          "jumpbox": 0
+        }
+      },
+      "tshirtSizeMedium": {
+        "vmSize": "Standard_A3",
+        "diskSize": 1023,
+        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-8disk-resources.json')]",
+        "vmCount": 2,
+        "storage": {
+          "name": "[parameters('storageAccountNamePrefix')]",
+          "count": 2,
+          "pool": "db",
+          "map": [0,1],
+          "jumpbox": 0
+        }
+      },
       "tshirtSizeLarge": {
         "vmSize": "Standard_A4",
         "diskSize": 1023,
@@ -49,7 +75,7 @@
           "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/shared_scripts/ubuntu/vm-disk-utils-0.1.sh"
         ],
         "imageReference": {
-	  "publisher": "Canonical",
+          "publisher": "Canonical",
           "offer": "UbuntuServer",
           "sku": "14.04.2-LTS",
           "version": "latest"
@@ -78,6 +104,8 @@
       }
     }
 
+请注意，**tshirtSize** 变量连接通过参数（**Small**、**Medium**、**Large**）提供给文本 **tshirtSize** 的 T 恤大小。你将使用此变量来检索该 T 恤大小关联的复杂对象变量。
+
 然后，你可以在将来引用模板中的这些变量。能够引用指定变量及其属性可以简化模板语法，从而轻松地理解上下文。下面的示例定义的资源在部署时可以使用上述对象来设置值。例如，你可以注意到，VM 大小是通过检索 `variables('tshirtSize').vmSize` 的值来设置的，而磁盘大小的值是从 `variables('tshirtSize').diskSize` 检索的。此外，已链接模板的 URI 是通过 `variables('tshirtSize').vmTemplate` 的值来设置的。
 
     "name": "master-node",
@@ -100,7 +128,7 @@
             "value": "[parameters('replicatorPassword')]"
           },
           "osSettings": {
-	    "value": "[variables('osSettings')]"
+            "value": "[variables('osSettings')]"
           },
           "subnet": {
             "value": "[variables('networkSettings').subnets.data]"
@@ -133,20 +161,13 @@
       }
     }
 
-## 将状态传递给模板及其链接的模板
+## 将状态传递给模板
 
-你可以通过以下参数将状态信息共享到模板及其链接的模板中：
-
-- 在部署过程中直接向主模板提供的参数
-- 主模板与链接的模板共享的参数、静态变量和生成的变量
-
-### 向主模板提供的公用参数
+通过在部署期间直接提供的参数，可以在模板中共享状态。
 
 下表列出了模板中的常用参数。
 
-**传递给主模板的常用参数**
-
-Name | 值 | 说明
+名称 | 值 | 说明
 ---- | ----- | -----------
 location | Azure 区域的约束列表中的字符串 | 将在其中部署资源的位置。
 storageAccountNamePrefix | String | 将在其中放置 VM 磁盘的存储帐户的唯一 DNS 名称
@@ -157,111 +178,64 @@ tshirtSize | 所提供 T 恤尺寸的约束列表中的字符串 | 要预配的�
 virtualNetworkName | String | 使用者想要使用的虚拟网络的名称。
 enableJumpbox | 约束列表中的字符串 (enabled/disabled) | 一个参数，标识是否启用针对环境的 jumpbox。值：“enabled”、“disabled”
 
-### 发送到已链接模板的参数
+上一部分中使用的 **tshirtSize** 参数定义为：
+
+    "parameters": {
+      "tshirtSize": {
+        "type": "string",
+        "defaultValue": "Small",
+        "allowedValues": [
+          "Small",
+          "Medium",
+          "Large"
+        ],
+        "metadata": {
+          "Description": "T-shirt size of the MongoDB deployment"
+        }
+      }
+    }
+
+
+## 将状态传递给链接模板
 
 连接到已链接模板时，你会经常混合使用静态变量和生成的变量。
 
-#### 静态变量
+### 静态变量
 
-静态变量通常用于提供基础值，例如 URL，可用于整个模板，或者用来为动态变量组合各种值。
+静态变量通常用于提供基础值，例如 URL，可用于整个模板。
 
-在下面的模板摘录中，*templateBaseUrl* 指定模板在 GitHub 中的根位置。下一行构建新变量 *sharedTemplateUrl*，该变量将 *templateBaseUrl* 的值与共享资源模板的已知名称连接起来。在其下面使用了一个复杂的对象变量来存储 T 恤大小，其中会连接 *templateBaseUrl* 来指定存储在 *vmTemplate* 属性中的已知配置模板位置。
+在下面的模板摘录中，`templateBaseUrl` 指定模板在 GitHub 中的根位置。下一行构建新变量 `sharedTemplateUrl`，该变量将基 URL 的值与共享资源模板的已知名称连接起来。在其下面使用了一个复杂的对象变量来存储 T 恤大小，其中的基 URL 将连接到已知配置模板位置并存储在 `vmTemplate` 属性中。
 
-此方法的好处是可以轻松地移动模板、使模板分叉，或者将模板作为基础来创建新的模板。如果模板位置发生更改，则只需在一个位置更改静态变量，该位置就是主模板。主模板可将静态变量传递到所有模板中。
+这样做的好处是，如果模板位置发生更改，则只需在一个位置更改静态变量，并将静态变量传递到所有链接模板。
 
-    "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
-    "sharedTemplateUrl": "[concat(variables('templateBaseUrl'), 'shared-resources.json')]",
-    "tshirtSizeSmall": {
-      "vmSize": "Standard_A1",
-      "diskSize": 1023,
-      "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
-      "vmCount": 2,
-      "slaveCount": 1,
-      "storage": {
-        "name": "[parameters('storageAccountNamePrefix')]",
-        "count": 1,
-        "pool": "db",
-        "map": [0,0],
-        "jumpbox": 0
+    "variables": {
+      "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
+      "sharedTemplateUrl": "[concat(variables('templateBaseUrl'), 'shared-resources.json')]",
+      "tshirtSizeSmall": {
+        "vmSize": "Standard_A1",
+        "diskSize": 1023,
+        "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
+        "vmCount": 2,
+        "slaveCount": 1,
+        "storage": {
+          "name": "[parameters('storageAccountNamePrefix')]",
+          "count": 1,
+          "pool": "db",
+          "map": [0,0],
+          "jumpbox": 0
+        }
       }
     }
 
-#### 生成的变量
+### 生成的变量
 
 除了静态变量之外，许多变量是动态生成的。本部分介绍所生成变量的部分常见类型。
 
-##### tshirtSize
+#### tshirtSize
 
-在调用主模板时，你可以从固定数目的选项中选择 T 恤大小，这些选项通常包括各种值，例如“小”、“中”、“大”。
+你已熟悉基于上述示例生成的这个变量。
 
-在主模板中，该选项显示为参数，例如 *tshirtSize*：
-
-    "tshirtSize": {
-      "type": "string",
-      "defaultValue": "Small",
-      "allowedValues": [
-        "Small",
-        "Medium",
-        "Large"
-      ],
-      "metadata": {
-        "Description": "T-shirt size of the MongoDB deployment"
-      }
-    }
-
-在主模板中，每种大小都有相应的变量。例如，如果提供的大小为小、中、大，则变量部分会包含名为 *tshirtSizeSmall*、*tshirtSizeMedium* 和 *tshirtSizeLarge* 的变量。
-
-如以下示例所示，这些变量用于定义特定 T 恤大小的属性。单个变量可用于标识 VM 类型、磁盘大小、关联的要链接到的缩放单元资源模板、实例数、存储帐户详细信息，以及 jumpbox 状态。
-
-存储帐户名称前缀是取自用户提供的参数，链接的模板是将模板的基 URL 与特定缩放单元资源模板的文件名相连接。
-
-    "tshirtSizeSmall": {
-      "vmSize": "Standard_A1",
-			"diskSize": 1023,
-      "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]",
-      "vmCount": 2,
-      "storage": {
-        "name": "[parameters('storageAccountNamePrefix')]",
-        "count": 1,
-        "pool": "db",
-        "map": [0,0],
-        "jumpbox": 0
-      }
-    },
-    "tshirtSizeMedium": {
-      "vmSize": "Standard_A3",
-      "diskSize": 1023,
-      "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-8disk-resources.json')]",
-      "vmCount": 2,
-      "storage": {
-        "name": "[parameters('storageAccountNamePrefix')]",
-        "count": 2,
-        "pool": "db",
-        "map": [0,1],
-        "jumpbox": 0
-      }
-    },
-    "tshirtSizeLarge": {
-      "vmSize": "Standard_A4",
-      "diskSize": 1023,
-      "vmTemplate": "[concat(variables('templateBaseUrl'), 'database-16disk-resources.json')]",
-      "vmCount": 3,
-      "storage": {
-        "name": "[parameters('storageAccountNamePrefix')]",
-        "count": 2,
-        "pool": "db",
-        "map": [0,1,1],
-        "jumpbox": 0
-      }
-    }
-
-*tshirtSize* 变量显示在变量部分的更下面。你提供的 T 恤大小（*小*、*中*、*大*）的末端与文本 *tshirtSize* 相连，可检索该 T 恤大小所关联的复杂对象变量：
-
-    "tshirtSize": "[variables(concat('tshirtSize', parameters('tshirtSize')))]",
-
-此变量传递给链接的缩放单元资源模板。
-
-##### networkSettings
+#### networkSettings
 
 在容量、功能或端到端范围解决方案模板中，链接的模板通常创建存在于网络上的资源。一个简单的方法是使用复杂的对象来存储网络设置并将其传递给链接的模板。
 
@@ -284,7 +258,7 @@ enableJumpbox | 约束列表中的字符串 (enabled/disabled) | 一个参数，
       }
     }
 
-##### availabilitySettings
+#### availabilitySettings
 
 在链接的模板中创建的资源通常都放在可用性集中。在下面的示例中，指定了可用性集名称，以及要使用的容错域和更新域计数。
 
@@ -296,7 +270,7 @@ enableJumpbox | 约束列表中的字符串 (enabled/disabled) | 一个参数，
 
 如果你需要多个可用性集（例如，一个用于主节点，另一个用于数据节点），你可以使用某个名称作为前缀，并指定多个可用性集，或者遵循此前显示的用于创建变量（针对特定 T 恤大小）的模型。
 
-##### storageSettings
+#### storageSettings
 
 通常会与链接的模板共享存储详细信息。在以下示例中，*storageSettings* 对象提供了有关存储帐户和容器名称的详细信息。
 
@@ -306,7 +280,7 @@ enableJumpbox | 约束列表中的字符串 (enabled/disabled) | 一个参数，
         "destinationVhdsContainer": "[concat('https://', parameters('storageAccountName'), variables('vmStorageAccountDomain'), '/', variables('vmStorageAccountContainerName'), '/')]"
     }
 
-##### osSettings
+#### osSettings
 
 使用链接的模板，可能需要通过不同的已知配置类型将操作系统设置传递给各种节点类型。使用复杂对象可以轻松地存储和共享操作系统信息，还可以更轻松地支持多个操作系统部署选项。
 
@@ -321,7 +295,7 @@ enableJumpbox | 约束列表中的字符串 (enabled/disabled) | 一个参数，
       }
     }
 
-##### machineSettings
+#### machineSettings
 
 生成的变量 *machineSettings* 是一个复杂的对象，其中包含各种用于创建新的 VM 的核心变量：管理员用户名和密码、VM 名称前缀，以及操作系统映像引用，如下所示：
 
@@ -339,7 +313,7 @@ enableJumpbox | 约束列表中的字符串 (enabled/disabled) | 一个参数，
 
 请注意，*osImageReference* 会检索主模板中定义的 *osSettings* 变量的值。这意味着你可以轻松更改 VM 的操作系统 — 完全进行更改或基于模板使用者的首选项进行更改。
 
-##### vmScripts
+#### vmScripts
 
 *vmScripts* 对象包含可以下载并可在 VM 实例上执行的脚本的详细信息，包括外部和内部引用。外部引用包含基础结构。内部引用包含已按照的软件和配置。
 
@@ -370,19 +344,83 @@ enableJumpbox | 约束列表中的字符串 (enabled/disabled) | 一个参数，
 
     "outputs": {
         "masterip": {
-            "value": "[reference(concat(variables('nicName'),0)).ipConfigurations[0].privateIPAddress]",
+            "value": "[reference(concat(variables('nicName'),0)).ipConfigurations[0].properties.privateIPAddress]",
             "type": "string"
          }
     }
 
 在主模板中，可通过以下语法来使用该数据：
 
-    "masterIpAddress": {
-        "value": "[reference('master-node').outputs.masterip.value]"
+    "[reference('master-node').outputs.masterip.value]"
+
+可以在主模板的 outputs 节或 resources 节中使用此表达式。由于该表达式依赖于运行时状态，因此不能在 variables 节中使用。若要从主模板返回此值，请使用：
+
+    "outputs": { 
+      "masterIpAddress": {
+        "value": "[reference('master-node').outputs.masterip.value]",
+        "type": "string"
+      }
+     
+有关使用链接模板的 outputs 节返回虚拟机数据磁盘的示例，请参阅 [Creating multiple data disks for a Virtual Machine（为一个虚拟机创建多个数据磁盘）](./resource-group-create-multiple/#creating-multiple-data-disks-for-a-virtual-machine)。
+
+## 为虚拟机定义身份验证设置
+
+可以使用与前面所示相同的配置设置模式来指定虚拟机的身份验证设置。需创建要在身份验证类型中传递的参数。
+
+    "parameters": {
+      "authenticationType": {
+        "allowedValues": [
+          "password",
+          "sshPublicKey"
+        ],
+        "defaultValue": "password",
+        "metadata": {
+          "description": "Authentication type"
+        },
+        "type": "string"
+      }
     }
 
-## 后续步骤
-- [创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates)
-- [Azure 资源管理器模板函数](/documentation/articles/resource-group-template-functions)
+需要为不同的身份验证类型添加变量，并使用一个变量根据参数值存储此部署使用的类型。
 
-<!---HONumber=Mooncake_0118_2016-->
+    "variables": {
+      "osProfile": "[variables(concat('osProfile', parameters('authenticationType')))]",
+      "osProfilepassword": {
+        "adminPassword": "[parameters('adminPassword')]",
+        "adminUsername": "notused",
+        "computerName": "[parameters('vmName')]",
+        "customData": "[base64(variables('customData'))]"
+      },
+      "osProfilesshPublicKey": {
+        "adminUsername": "notused",
+        "computerName": "[parameters('vmName')]",
+        "customData": "[base64(variables('customData'))]",
+        "linuxConfiguration": {
+          "disablePasswordAuthentication": "true",
+          "ssh": {
+            "publicKeys": [
+              {
+                "keyData": "[parameters('sshPublicKey')]",
+                "path": "/home/notused/.ssh/authorized_keys"
+              }
+            ]
+          }
+        }
+      }
+    }
+
+定义虚拟机时，请将 **osProfile** 设置为你创建的变量。
+
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      ...
+      "osProfile": "[variables('osProfile')]"
+    }
+
+
+## 后续步骤
+- 若要了解模板的节，请参阅 [Authoring Azure Resource Manager Templates（创作 Azure Resource Manager 模板）](/documentation/articles/resource-group-authoring-templates)。
+- 若要查看模板中可用的函数，请参阅 [Azure Resource Manager Template Functions（Azure Resource Manager 模板函数）](/documentation/articles/resource-group-template-functions)。
+
+
+<!---HONumber=Mooncake_0503_2016-->
