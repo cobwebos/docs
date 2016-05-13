@@ -209,4 +209,4 @@ Storm 可以提供不同级别的有保证的消息处理。例如，基本的 S
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
 [gettingstarted]: /documentation/articles/hdinsight-apache-storm-tutorial-get-started
 
-<!---HONumber=Mooncake_0411_2016-->
+<!----HONumber=Mooncake_0411_2016-->

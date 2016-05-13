@@ -280,4 +280,4 @@ SSH 是用于登录远程服务器以及在其上远程执行命令的实用工�
 * [将 MapReduce 作业与 HDInsight 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
  
 
-<!---HONumber=56-->
+<!----HONumber=56-->

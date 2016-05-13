@@ -219,4 +219,4 @@ Azure 媒体服务提供你所需的工具，以便你创建适用于大多数�
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=Mooncake_0314_2016-->
+<!----HONumber=Mooncake_0314_2016-->
