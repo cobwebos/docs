@@ -202,4 +202,4 @@
 
 [apache.hive]: http://hive.apache.org
 
-<!---HONumber=56-->
+<!----HONumber=56-->

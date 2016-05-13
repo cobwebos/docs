@@ -226,4 +226,4 @@ SSH 用户可以使用密码或公钥进行身份验证。密码仅仅是你编�
 * [将 MapReduce 作业与 HDInsight 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
  
 
-<!---HONumber=74-->
+<!----HONumber=74-->

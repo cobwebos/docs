@@ -212,4 +212,4 @@ Storm 可以提供不同级别的有保证的消息处理。例如，基本的 S
 [apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
 [gettingstarted]: hdinsight-storm-getting-started
 
-<!---HONumber=56-->
+<!----HONumber=56-->
