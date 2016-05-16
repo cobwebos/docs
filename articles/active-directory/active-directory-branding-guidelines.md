@@ -1,5 +1,5 @@
 <properties
-   pageTitle="适用于应用程序的品牌准则"
+   pageTitle="适用于应用程序的品牌准则 | Microsoft Azure"
    description="介绍面向开发人员的 Azure Active Directory 资源的综合性指南"
    services="active-directory"
    documentationCenter="dev-center-name"
@@ -54,7 +54,7 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 管理员许可你的应用程序后，可以选择将应用程序添加到其用户的 Office 365 应用程序启动器体验（可从 waffle 和 [https://portal.office.com/myapps](https://portal.office.com/myapps) 访问）。如果你想要广告此功能，可以使用类似于“将此应用程序添加到你的组织”词语，并显示类似于下面的按钮：
 
 ![应用程序类型和方案](./media/active-directory-branding-guidelines/add-to-my-org.png)
-  
+
 但是，我们建议你编写说明性的文本而不要依赖于按钮。例如：
 > 如果你已使用 Office 365 或 Microsoft 的其他业务服务，则只需授予 <your_app_name> 对你的组织数据的访问权限。这样，你的用户便可以使用其现有工作帐户访问 <your_app_name>。
 
@@ -90,4 +90,4 @@ Microsoft 不会向最终用户显示 Azure 或 Active Directory 品牌名称，
 
 如果你的应用程序同时支持 Azure AD 帐户和 Microsoft 帐户，则需要在应用程序中提供两个单独的登录按钮。我们正在积极处理更新，以便你只需集成一次，就能支持个人帐户和 Microsoft 中的工作帐户。在使用此更新后，你便可以在应用程序中显示“使用 Microsoft 登录”按钮。
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

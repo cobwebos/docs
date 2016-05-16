@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="03/04/2016"
+   ms.date="04/14/2016"
    wacn.date=""/>
 
 # Azure AD Connect 的先决条件
@@ -26,18 +26,19 @@
 ### 本地服务器和环境
 - AD 架构版本与林功能级别必须是 Windows Server 2003 或更高版本。只要符合架构和林级别的要求，域控制器就能运行任何版本。
 - 如果你打算使用**密码写回**功能，必须在 Windows Server 2008（包含最新的 SP）或更高版本上安装域控制器。如果 DC 位于 2008（低于 R2）上，则还必须应用[修补程序 KB2386717](http://support.microsoft.com/kb/2386717)。
+- Azure AD 使用的域控制器必须可写。不支持使用 RODC（只读域控制器），并且 Azure AD Connect 不会遵循任何写重定向。
 - 不能在 Small Business Server 或 Windows Server Essentials 上安装 Azure AD Connect。该服务器必须使用 Windows Server Standard 或更高版本。
 - Azure AD Connect 必须安装在 Windows Server 2008 或更高版本上。如果使用快速设置，此服务器可以是域控制器或成员服务器。如果使用自定义设置，服务器也可以是独立服务器，并且不需要加入域。
 - 如果在 Windows Server 2008 上安装 Azure AD Connect，请确保从 Windows Update 应用最新的修补程序。无法在未修补的服务器上启动安装。
 - 如果你打算使用**密码同步**功能，必须在 Windows Server 2008 R2 SP1 或更高版本上安装 Azure AD Connect 服务器。
-- Azure AD Connect 服务器上必须安装了 [.NET Framework 4.5.1](#component-prerequisites) 或更高版本和 [Microsoft PowerShell 3.0](#component-prerequisites) 或更高版本。
+- Azure AD Connect 服务器必须安装 [.NET Framework 4.5.1](#component-prerequisites) 或更高版本和 [Microsoft PowerShell 3.0](#component-prerequisites) 或更高版本。
 - 如果你正在部署 Active Directory 联合身份验证服务，则要安装 AD FS 或 Web 应用程序代理的服务器必须是 Windows Server 2012 R2 或更高版本。必须在这些服务器上启用 [Windows 远程管理](#windows-remote-management)才能进行远程安装。
 - 如果要部署 Active Directory 联合身份验证服务，你需要使用 [SSL 证书](#ssl-certificate-requirements)。
 - 如果要部署 Active Directory 联合身份验证服务，则需要配置[名称解析](#name-resolution-for-federation-servers)。
 - Azure AD Connect 要求使用 SQL Server 数据库来存储标识数据。默认情况下，将会安装 SQL Server 2012 Express LocalDB（轻量版 SQL Server Express），并在本地计算机上创建服务的服务帐户。SQL Server Express 有 10GB 的大小限制，允许你管理大约 100,000 个对象。如果你需要管理更多的目录对象，则需要将安装向导指向不同的 SQL Server 安装。Azure AD Connect 支持从 SQL Server 2008（装有 SP4）到 SQL Server 2014 的各种 Microsoft SQL Server。**不支持**将 Microsoft Azure SQL 数据库用作数据库。
 
 ### 帐户
-- 你要集成的 Azure AD 目录的 Azure AD 全局管理员帐户。这必须是**学校或组织帐户**，而不能是 **Microsoft 帐户**。
+- 你要集成的 Azure AD 目录的 Azure AD 全局管理员帐户。该帐户必须是**学校或组织帐户**，而不能是 **Microsoft 帐户**。
 - 如果使用快速设置或者从 DirSync 升级，则需要本地 Active Directory 的企业管理员帐户。
 - 如果使用自定义设置安装路径，[帐户将是 Active Directory](active-directory-aadconnect-accounts-permissions.md)。
 
@@ -46,7 +47,7 @@
 
 ### 连接
 - Azure AD Connect 服务器需要 Intranet 和 Internet 的 DNS 解析。DNS 服务器必须能够将名称解析成本地 Active Directory 以及 Azure AD 终结点。
-- 如果 Intranet 有防火墙，而你需要开放 Azure AD Connect 服务器与域控制器之间的端口，请参阅 [Azure AD Connect 连接端口](active-directory-aadconnect-ports.md)来了解详细信息。
+- 如果 Intranet 有防火墙，而你需要开放 Azure AD Connect 服务器与域控制器之间的端口，请参阅 [Azure AD Connect 端口](active-directory-aadconnect-ports.md)了解详细信息。
 - 如果代理限制了可访问的 URL，则必须在代理中打开 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述的 URL。
 - 如果你正在使用出站代理连接到 Internet，则必须在 **C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config** 文件中添加以下设置，才能将安装向导和 Azure AD Connect 同步连接到 Internet 和 Azure AD。必须在文件底部输入此文本。在此代码中，&lt;PROXYADRESS&gt; 代表实际代理 IP 地址或主机名。
 
@@ -62,7 +63,7 @@
     </system.net>
 ```
 
-- 如果代理服务器要求身份验证，则[服务帐户](/documentation/articles/active-directory-aadconnect-accounts-permissions#azure-ad-connect-sync-service-accounts)必须位于域中，且必须使用自定义的设置安装路径来指定[自定义服务帐户](active-directory-aadconnect-get-started-custom.md#install-required-components)。你还需要不同的 machine.config；在 machine.config 中进行此更改之后，安装向导和同步引擎将响应来自代理服务器的身份验证请求。在所有安装向导页中（**“配置”**页除外）都使用了已登录用户的凭据。在安装向导结束时的**“配置”**页上，上下文将切换到你创建的[服务帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)。machine.config 节应如下所示。
+- 如果代理服务器要求身份验证，则[服务帐户](/documentation/articles/active-directory-aadconnect-accounts-permissions#azure-ad-connect-sync-service-accounts)必须位于域中，且必须使用自定义的设置安装路径来指定[自定义服务帐户](active-directory-aadconnect-get-started-custom.md#install-required-components)。你还需要不同的 machine.config；在 machine.config 中进行此更改之后，安装向导和同步引擎将响应来自代理服务器的身份验证请求。在所有安装向导页中（“配置”页除外）都使用已登录用户的凭据。在安装向导结束时的“配置”页上，上下文将切换到你创建的[服务帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)。machine.config 节应如下所示。
 
 ```
     <system.net>
@@ -123,7 +124,7 @@ Azure AD Connect 依赖于 Microsoft PowerShell 和 .NET Framework 4.5.1。请�
 - 证书的标识必须与联合身份验证服务名称（例如 sts.contoso.com）匹配。
     - 标识是类型为 dNSName 的使用者备用名称 (SAN) 扩展，或者是指定为公用名的使用者名称（当不存在 SAN 条目时）。  
     - 证书中可以存在多个 SAN 条目，但是它们中必须有一个与联合身份验证服务名称匹配。
-    - 如果计划使用“工作区加入”，则还额外需要一个 SAN，它具有值 **enterpriseregistration.**，后接你的组织的用户主体名称 (UPN) 后缀（例如 **enterpriseregistration.contoso.com**）。
+    - 如果计划使用“工作区加入”，则还需要一个 SAN，它的值为 **enterpriseregistration.**，后接你的组织的用户主体名称 (UPN) 后缀（例如 **enterpriseregistration.contoso.com**）。
 - 不支持基于 CryptoAPI 下一代 (CNG) 密钥和密钥存储提供者的证书。这意味着，你必须使用基于 CSP（加密服务提供者）而非 KSP（密钥存储提供者）的证书。
 - 支持通配符证书。
 
@@ -133,7 +134,6 @@ Azure AD Connect 依赖于 Microsoft PowerShell 和 .NET Framework 4.5.1。请�
 - 如果要将 Windows 集成身份验证用于 Intranet 中使用 Internet Explorer 的浏览器应用程序，请确保已将 AD FS 联合身份验证服务名称（例如 sts.contoso.com）添加到 IE 中的 Intranet 区域。此配置可以通过组策略进行控制，并可部署到所有已加入域的计算机中。
 
 ## Azure AD Connect 支持组件
-
 下面列出了 Azure AD Connect 在要安装 Azure AD Connect 的服务器上安装的组件。此列表针对基本快速安装。如果在“安装同步服务”页上选择使用不同的 SQL Server，则不会在本地安装 SQL Express LocalDB。
 
 - Azure AD Connect Health
@@ -141,7 +141,7 @@ Azure AD Connect 依赖于 Microsoft PowerShell 和 .NET Framework 4.5.1。请�
 - Microsoft SQL Server 2012 命令行实用工具
 - Microsoft SQL Server 2012 Express LocalDB
 - Microsoft SQL Server 2012 本机客户端
-- Microsoft Visual C++ 2013 再分发包
+- Microsoft Visual C++ 2013 Redistribution Package
 
 ## Azure AD Connect 的硬件要求
 下表显示了 Azure AD Connect 同步计算机的最低要求。
@@ -163,6 +163,6 @@ Azure AD Connect 依赖于 Microsoft PowerShell 和 .NET Framework 4.5.1。请�
 - Azure VM：A2 配置或更高
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

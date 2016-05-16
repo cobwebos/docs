@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect 帐户和权限 | Microsoft Azure"
+   pageTitle="Azure AD Connect：帐户和权限 | Microsoft Azure"
    description="本主题介绍使用和创建的帐户以及所需的权限。"
    services="active-directory"
    documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"  
-   ms.date="03/16/2016"
+   ms.date="04/14/2016"
    wacn.date=""/>
 
 
@@ -59,7 +59,7 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 | 重置密码 | 准备启用密码写回 |
 
 ## 自定义设置安装
-使用自定义设置时，必须在安装之前创建用于连接 Active Directory 的帐户。
+使用自定义设置时，必须在安装之前创建用于连接 Active Directory 的帐户。你必须授予此帐户的权限可在[创建 AD DS 帐户](#create-the-ad-ds-account)中找到。
 
 向导页 | 收集的凭据 | 所需的权限| 用途
 ------------- | ------------- |------------- |-------------
@@ -103,13 +103,13 @@ Web 应用程序代理服务器 |对于列表中的每个服务器，如果运�
 ![AD 帐户](./media/active-directory-aadconnect-accounts-permissions/adsyncserviceaccount.png)
 
 ### Azure AD Connect 同步服务帐户
-本地服务帐户将由安装向导创建（除非你在自定义设置指定了要使用的帐户）。该帐户具有 AAD\_ 前缀，将用作实际同步服务的运行身份。如果你在域控制器上安装 Azure AD Connect，则会在该域中创建帐户。如果你使用运行 SQL 服务器的远程服务器或使用需要身份验证的代理，则 AAD\_ 服务帐户必须位于域中。
+本地服务帐户将由安装向导创建（除非你在自定义设置指定了要使用的帐户）。该帐户具有 **AAD\_** 前缀，可作为实际的同步服务的运行帐户。如果你在域控制器上安装 Azure AD Connect，则会在该域中创建帐户。如果你使用运行 SQL 服务器的远程服务器或使用需要身份验证的代理，则 **AAD\_** 服务帐户必须位于域中。
 
 ![同步服务帐户](./media/active-directory-aadconnect-accounts-permissions/syncserviceaccount.png)
 
 该帐户带有永不过期的长复杂密码。
 
-此帐户用于以安全方式存储其他帐户的密码。其他这些帐户密码将以加密形式存储在数据库中。使用 Windows 数据保护 (DPAPI)，通过加密服务机密-密钥加密方式来保护加密密钥的私钥。你不应重置服务帐户中的密码，否则出于安全原因，Windows 会销毁加密密钥。
+此帐户用于以安全方式存储其他帐户的密码。其他这些帐户密码将以加密形式存储在数据库中。通过使用 Windows 数据保护 API (DPAPI) 的密钥加密服务来保护加密密钥的私钥。你不应重置服务帐户中的密码，否则出于安全原因，Windows 会销毁加密密钥。
 
 如果你使用完整的 SQL Server，则服务帐户将是为同步引擎创建的数据库的 DBO。如果使用其他权限，服务将无法按预期工作。还会创建 SQL 登录名。
 
@@ -130,4 +130,4 @@ Web 应用程序代理服务器 |对于列表中的每个服务器，如果运�
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

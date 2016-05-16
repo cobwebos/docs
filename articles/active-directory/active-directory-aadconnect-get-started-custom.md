@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="active-directory"   
-	ms.date="03/16/2016"
+	ms.date="03/22/2016"
 	wacn.date=""/>
 
 # Azure AD Connect 的自定义安装
@@ -38,7 +38,7 @@
 
 | 可选配置 | 说明 |
 | ------------- | ------------- |
-| 使用现有的 SQL Server | 用于指定 SQL Server 名称和实例名称。如果你已有一个要使用的数据库服务器，请选择此选项。如果你的 SQL Server 没有启用浏览而你必须指定端口号，请在**“实例名称”**框中输入实例名称后接逗号和端口号。 |
+| 使用现有的 SQL Server | 用于指定 SQL Server 名称和实例名称。如果你已有一个要使用的数据库服务器，请选择此选项。如果你的 SQL Server 没有启用浏览而你必须指定端口号，请在“实例名称”框中输入实例名称后接逗号和端口号。 |
 | 使用现有的服务帐户 | 默认情况下，Azure AD Connect 将为同步服务创建要使用的本地服务帐户。密码是自动生成的，而安装 Azure AD Connect 的人员并不知道该密码。如果你使用远程 SQL 服务器或使用需要身份验证的代理，则需要在域中创建一个服务帐户并知道密码。在这些情况下，请输入要使用的服务帐户。确保运行安装的用户是 SQL 中的 SA，以便可以创建服务帐户的登录名。请参阅 [Azure AD Connect 帐户和权限](active-directory-aadconnect-accounts-permissions.md#custom-settings-installation) |
 | 指定自定义同步组 | 默认情况下，在安装同步服务时，Azure AD Connect 将在服务器本地创建四个组。这些组是：管理员组、操作员组、浏览组和密码重置组。如果你想要指定自己的组，可在此处指定。组必须在服务器本地，并且不能位于域中。 |
 
@@ -59,7 +59,7 @@
 
 
 ## 连接到 Azure AD
-在“连接到 Azure AD”屏幕中，输入全局管理员的帐户和密码。如果在前一个页面选择了**“与 AD FS 联合”**，请确保不要以计划启用联合的域中的帐户登录。建议使用随附于 Azure AD 目录的默认 **onmicrosoft.com** 域中的帐户。
+在“连接到 Azure AD”屏幕中，输入全局管理员的帐户和密码。如果在前一个页面选择了“与 AD FS 联合”，请确保不要以计划启用联合的域中的帐户登录。建议使用随附于 Azure AD 目录的默认 **onmicrosoft.com** 域中的帐户。
 
 此帐户只会用于在 Azure AD 中创建服务帐户，在向导完成后将不会使用。  
 ![用户登录](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
@@ -74,10 +74,9 @@
 ## “同步”部分下的页面
 
 ### 连接你的目录
-若要连接到你的 Active Directory 域服务，Azure AD Connect 工具需要使用具有足够权限的帐户的凭据。此帐户可以是普通的用户帐户，因为该帐户只需默认的读取权限。不过，根据你的方案，可能会需要其他权限。有关详细信息，请参阅 [Azure AD Connect 帐户和权限](/documentation/articles/active-directory-aadconnect-accounts-permissions#create-the-ad-ds-account)
+若要连接到你的 Active Directory 域服务，Azure AD Connect 工具需要使用具有足够权限的帐户的凭据。可以使用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\\syncuser 或 fabrikam.com\\syncuser。此帐户可以是普通的用户帐户，因为该帐户只需默认的读取权限。不过，根据你的方案，可能会需要其他权限。有关详细信息，请参阅 [Azure AD Connect 帐户和权限](active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account)
 
 ![连接目录](./media/active-directory-aadconnect-get-started-custom/connectdir.png)
->[注释] 必须以 NetBiosDomainName 的形式使用完整的 FQDN 输入其他林的帐户。例如，若要将 contoso.local 作为另一个林添加到上面的图像中，必须以 CONTOSO.LOCAL<sAMAccountName> 形式输入用户名
 
 ### 域和 OU 筛选
 默认情况下将同步所有域和 OU。如果你不想将某些域或 OU 同步到 Azure AD，可以取消选择这些域和 OU。  
@@ -86,7 +85,7 @@
 
 由于防火墙限制，也可能无法连接到某些域。默认情况下未选择这些域，并且会出现警告。  
 ![不可访问的域](./media/active-directory-aadconnect-get-started-custom/unreachable.png)  
-如果你看到此警告，请确保这些域确实无法连接，并且这在意料之中。
+如果你看到此警告，请确认这些域确实无法连接，并且这是意料之中的情况。
 
 ### 唯一标识你的用户
 
@@ -117,7 +116,7 @@ sAMAccountName 和 MailNickName|此选项根据预期可以在其中找到用户
 
 >[AZURE.WARNING] 此功能只用于支持试验部署，不应在成熟的生产部署中使用。
 
-在成熟的生产部署中，往往很难维护单个要同步所有对象的组。在这种情况下，你应该使用[配置筛选](active-directory-aadconnectsync-configure-filtering.md)中所述的方法之一。
+在成熟的生产部署中，往往很难维护单个要同步所有对象的组。在这种情况下，你应该使用[配置筛选](active-directory-aadconnectsync-configure-filtering.md)中所述的一种方法。
 
 ### 可选功能
 此屏幕可让你针对特定方案选择可选功能。以下是各项功能的简短说明。
@@ -132,7 +131,7 @@ Exchange 混合部署 |Exchange 混合部署功能通过将 Azure AD 中的特�
 Azure AD 应用程序和属性筛选|通过启用 Azure AD 应用程序和属性筛选，可以根据向导后续页面上的特定集定制同步属性集。这会在向导中打开两个附加的配置页。有关更多信息，请参阅 [Azure AD 应用和属性筛选](#azure-ad-app-and-attribute-filtering)。
 密码同步 | 如果你选择了联合作为登录解决方案，则可以启用此选项。然后，可将密码同步用作备份选项。有关更多信息，请参阅[密码同步](/documentation/articles/active-directory-aadconnectsync-implement-password-synchronization)。
 密码写回|通过启用密码写回，源自 Azure AD 的密码更改将写回到本地目录。有关更多信息，请参阅[密码管理入门](/documentation/articles/active-directory-passwords-getting-started)。
-组写回 |如果你使用了**“Office 365 组”**功能，则可以在本地 Active Directory 中将这些组用作分发组。仅当本地 Active Directory 中存在 Exchange 时，才可以使用此选项。有关更多信息，请参阅[组写回](/documentation/articles/active-directory-aadconnect-feature-preview#group-writeback)。
+组写回 |如果你使用了“Office 365 组”功能，则可以在本地 Active Directory 中将这些组用作通讯组。仅当本地 Active Directory 中存在 Exchange 时，才可以使用此选项。有关更多信息，请参阅[组写回](/documentation/articles/active-directory-aadconnect-feature-preview#group-writeback)。
 设备写回 | 允许你将 Azure AD 中的设备对象写回本地 Active Directory 以实现条件性访问方案。有关更多信息，请参阅[在 Azure AD Connect 中启用设备写回](/documentation/articles/active-directory-aadconnect-get-started-custom-device-writeback)
 目录扩展属性同步|通过启用目录扩展属性同步，可将指定的其他属性同步到 Azure AD。有关更多信息，请参阅[目录扩展](/documentation/articles/active-directory-aadconnect-feature-preview#directory-extensions)。
 
@@ -148,11 +147,11 @@ Azure AD 应用程序和属性筛选|通过启用 Azure AD 应用程序和属性
 >[AZURE.WARNING] 删除属性可能会影响功能。有关最佳实践和建议，请参阅[属性同步](/documentation/articles/active-directory-aadconnectsync-attributes-synchronized#attributes-to-synchronize)。
 
 ### 目录扩展属性同步
-借助目录扩展，你可以使用组织添加的自定义属性或 Active Directory 中的其他属性，在 Azure AD 中扩展架构。若要使用这项功能，请在**“可选功能”**页上选择**“目录扩展属性同步”**。这样，你便可以进入此页，并在其中选择其他属性。
+借助目录扩展，你可以使用组织添加的自定义属性或 Active Directory 中的其他属性，在 Azure AD 中扩展架构。若要使用这项功能，请在“可选功能”页上选择“目录扩展属性同步”。这样，你便可以进入此页，并在其中选择其他属性。
 
 ![同步筛选](./media/active-directory-aadconnect-get-started-custom/extension2.png)
 
-有关更多信息，请参阅[目录扩展](/documentation/articles/active-directory-aadconnect-feature-preview#directory-extensions)。
+有关更多信息，请参阅[目录扩展](/documentation/articles/active-directory-aadconnectsync-feature-directory-extensions)。
 
 ## 配置与 AD FS 的联合
 只需单击几下鼠标，请能使用 Azure AD Connect 配置 AD FS。以下是设置之前需要满足的要求。
@@ -166,7 +165,7 @@ Azure AD 应用程序和属性筛选|通过启用 Azure AD 应用程序和属性
 
 ![AD FS 场](./media/active-directory-aadconnect-get-started-custom/adfs1.png)
 
-**注意：**如果选择使用现有 AD FS 场，你将会跳过几个页面并直接转到一个屏幕，你可以在其中配置 AD FS 与 Azure AD 的之间的信任关系。
+**注意：**如果选择使用现有 AD FS 场，你将会跳过几个页面并直接转到一个屏幕，你可以在其中配置 AD FS 与 Azure AD 之间的信任关系。
 
 ### 指定 AD FS 服务器
 在此处输入想要在其中安装 AD FS 的特定服务器。你可以根据容量规划需求添加一个或多个服务器。在执行此配置之前，必须先将这些服务器全部加入 Active Directory 域。我们建议安装一台用于测试和试验部署的 AD FS 服务器，并在完成初始安装后再次打开 Azure AD Connect 向其他服务器部署 AD FS 来部署其他服务器，以满足你的缩放需求。
@@ -179,9 +178,7 @@ Azure AD 应用程序和属性筛选|通过启用 Azure AD 应用程序和属性
 在此处输入你要用作 Web 应用程序代理服务器的特定服务器。Web 应用程序代理服务器部署在你的外围网络中（面向 Extranet），支持来自 Extranet 的身份验证请求。你可以根据容量规划需求添加一个或多个服务器。我们建议安装一台用于测试和试验部署的 Web 应用程序代理服务器，在完成初始安装后再次打开 Azure AD Connect 来部署其他服务器，然后将 Web 应用程序代理部署到其他服务器。我们通常建议使用数量相当的代理服务器，以满足来自 Intranet 的身份验证要求。
 
 > [AZURE.NOTE]
-<li> 如果用于安装 Azure AD Connect 的帐户不是 AD FS 服务器上的本地管理员，则系统会提示你提供具有足够权限的帐户的凭据。</li>
-<li> 在配置此步骤之前，请确保 Azure AD Connect 服务器与 Web 应用程序代理服务器之间已建立 HTTP/HTTPS 连接。</li>
-<li> 此外，请确保 Web 应用程序服务器与 AD FS 服务器之间的 HTTP/HTTPS 连接允许通过身份验证请求。</li>
+<li>如果用于安装 Azure AD Connect 的帐户不是 AD FS 服务器上的本地管理员，则系统会提示你提供具有足够权限的帐户的凭据。</li> <li>在配置此步骤之前，请确保 Azure AD Connect 服务器与 Web 应用程序代理服务器之间已建立 HTTP/HTTPS 连接。</li> <li>此外，请确保 Web 应用程序服务器与 AD FS 服务器之间的 HTTP/HTTPS 连接允许通过身份验证请求。</li>
 
 
 ![Web 应用](./media/active-directory-aadconnect-get-started-custom/adfs3.png)
@@ -196,7 +193,7 @@ Azure AD 应用程序和属性筛选|通过启用 Azure AD 应用程序和属性
 AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory 中查找用户信息。它可以支持两种类型的服务帐户：
 
 - **组托管服务帐户** - 这是 Active Directory 域服务中随 Windows Server 2012 一起引入的服务帐户类型。此类型的帐户提供 AD FS 之类的服务，让你可以使用单个帐户，且不需要定期更新帐户密码。如果 AD FS 服务器将要加入的域中已有 Windows Server 2012 域控制器，请使用此选项。
-- **域用户帐户** - 此类型的帐户会请求你提供密码，并在密码更改时定期更新密码。仅当 AD FS 服务器将要加入的域中没有 Windows Server 2012 域控制器时，才使用此选项。
+- **域用户帐户** - 此类型的帐户会请求你提供密码，并在密码更改时定期更新密码。仅当 AD FS 服务器所属的域中没有 Windows Server 2012 域控制器时，才使用此帐户类型。
 
 如果选择了组托管的服务帐户且从未在 Active Directory 中使用过此功能，则系统也会提示你输入企业管理员凭据。这些凭据用于启动密钥存储，以及在 Active Directory 中启用该功能。
 
@@ -224,7 +221,7 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 在此页面上进行实际配置。
 
 > [AZURE.NOTE]
-在继续安装之前，如果已配置联合，请确保配置[联合服务器的名称解析](/documentation/articles/active-directory-aadconnect-prerequisites#name-resolution-for-federation-servers)。
+在继续安装之前，如果配置了联合服务器，请确保已配置[联合服务器的名称解析](/documentation/articles/active-directory-aadconnect-prerequisites#name-resolution-for-federation-servers)。
 
 ![同步筛选](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
@@ -249,9 +246,8 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 此外，请执行以下验证步骤：
 
 - 在已加入域的计算机上通过 Intranet 中的 Internet Explorer 验证浏览器登录：连接到 https://myapps.microsoft.com ，然后使用你登录的帐户验证登录。**注意：**内置的 AD DS 管理员帐户未同步，因此无法用于验证。
-- 通过 Extranet 中的任何设备验证浏览器登录：在家庭计算机或移动设备上连接到 https://myapps.microsoft.com ，然后提供你的登录 ID 和密码凭据。
-- 验证富客户端登录：连接到 https://testconnectivity.microsoft.com ，选择“Office 365”选项卡，然后选择“Office 365 单一登录测试”。
-
+- 通过 Extranet 在任何设备上验证浏览器登录：在家庭计算机或移动设备上连接到 https://myapps.microsoft.com ，然后提供你的登录 ID 和密码凭据。
+- 验证富客户端登录：连接到 https://testconnectivity.microsoft.com ，选择“Office 365”选项卡，然后选择“Office 365 单点登录测试”。
 
 ## 后续步骤
 安装完成后，请注销并再次登录到 Windows，然后即可使用同步服务管理器或同步规则编辑器。
@@ -260,4 +256,4 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect 同步：Lotus Domino 连接器"
+   pageTitle="Azure AD Connect 同步：Lotus Domino 连接器 | Microsoft Azure"
    description="本文介绍如何配置 Microsoft 的 Lotus Domino 连接器。"
    services="active-directory"
    documentationCenter=""
@@ -130,7 +130,7 @@ Domino 服务器属性支持两种服务器名称格式：
 - ServerName
 - ServerName/DirectoryName
 
-ServerName/DirectoryName 格式是此属性的首选格式，因为它可在连接器联系 Domino 服务器时提供更快速的响应。
+**ServerName/DirectoryName** 格式是此属性的首选格式，因为它可在连接器联系 Domino 服务器时提供更快速的响应。
 
 所提供的 UserID 文件存储在同步服务的配置数据库中。
 
@@ -155,7 +155,7 @@ ServerName/DirectoryName 格式是此属性的首选格式，因为它可在连�
 
 “Domino 服务器时区”参数定义 Domino 服务器的位置。
 
-必须要有此配置选项才能支持增量导入操作，因为它可让同步服务判断最后两次导入之间的更改。
+必须要有此配置选项才能支持**增量导入**操作，因为它可让同步服务判断最后两次导入之间的更改。
 
 #### 导入设置和方法
 
@@ -182,7 +182,7 @@ ServerName/DirectoryName 格式是此属性的首选格式，因为它可在连�
 
 若 Lotus Domino 已配置为拥有不同的通讯簿，并以不同的分辨名称代表同一个对象，则也可以为通讯簿中找到的所有引用值创建 \_Contact 对象。针对此方案，请选择“引用和非引用值”选项。
 
-如果在 Domino 的 FullName 属性中有多个值，那么你还需要允许创建虚拟联系人，以便可以解析引用。合并或分离之后，此属性就可以具有多个值。针对此方案，请选中“允许FullName 具有多个值”复选框。
+如果在 Domino 的 **FullName** 属性中有多个值，那么你还需要允许创建虚拟联系人，以便可以解析引用。合并或分离之后，此属性就可以具有多个值。针对此方案，请选中“允许FullName 具有多个值”复选框。
 
 通过加入正确的属性，\_Contact 对象将加入 MV 对象。
 
@@ -200,7 +200,7 @@ ServerName/DirectoryName 格式是此属性的首选格式，因为它可在连�
 
 #### 路由信息
 
-在 Domino 中，引用属性可能具有嵌入为 DN 后缀的路由信息。例如，组中的成员属性可能包含 CN=example/organization@ABC。后缀 @ABC 就是路由信息。Domino 使用路由信息来传送电子邮件给正确的 Domino 系统，而此系统可能是位于不同组织的系统。在“路由信息”字段中，可以指定组织内所使用、且在连接器范围内的路由后缀。如果在引用属性中发现有任何一个值作为其后缀，便从引用中删除路由信息，以让其符合连接器空间中对象的 DN。如果引用值的路由后缀无法符合所指定的其中一个值，则创建 \_Contact 对象。在创建这些 \_Contact 对象时，将 RO=@<RoutingSuffix> 插入 DN 中。针对这些 \_Contact 对象，还将视需要添加以下属性以允许加入实际的对象：\_routingName、\_contactName、\_displayName 和 UniversalID。
+在 Domino 中，引用属性可能具有嵌入为 DN 后缀的路由信息。例如，组中的成员属性可能包含 **CN=example/organization@ABC**。后缀 @ABC 就是路由信息。Domino 使用路由信息来传送电子邮件给正确的 Domino 系统，而此系统可能是位于不同组织的系统。在“路由信息”字段中，可以指定组织内所使用、且在连接器范围内的路由后缀。如果在引用属性中发现有任何一个值作为其后缀，便从引用中删除路由信息，以让其符合连接器空间中对象的 DN。如果引用值的路由后缀无法符合所指定的其中一个值，则创建 \_Contact 对象。在创建这些 \_Contact 对象时，将 **RO=@<RoutingSuffix>** 插入 DN 中。针对这些 \_Contact 对象，还将视需要添加以下属性以允许加入实际的对象：\_routingName、\_contactName、\_displayName 和 UniversalID。
 
 #### 其他通讯簿
 
@@ -219,8 +219,7 @@ Lotus Domino 中有许多属性具有多个值。相对应的 Metaverse 属性�
 
 **替换项** – 选择此选项时，连接器始终删除 Domino 属性的当前值，并以所提供的值替换这些值。所提供的值可以是单值或多值。
 
-示例：
-person 对象的 Assistant 属性具有以下值：
+示例：person 对象的 Assistant 属性具有以下值：
 
 - CN=Greg Winston/OU= Contoso /O=Americas,NAB=names.nsf
 - CN=John Smith/OU= Contoso /O=Americas,NAB=names.nsf
@@ -231,8 +230,7 @@ person 对象的 Assistant 属性具有以下值：
 
 **附加项** – 选择此选项时，连接器保留 Domino 属性的现有值，并在数据列表顶部插入新值。
 
-示例：
-person 对象的 Assistant 属性具有以下值：
+示例：person 对象的 Assistant 属性具有以下值：
 
 - CN=Greg Winston/OU= Contoso /O=Americas,NAB=names.nsf
 - CN=John Smith/OU= Contoso /O=Americas,NAB=names.nsf
@@ -292,7 +290,7 @@ person 对象的 Assistant 属性具有以下值：
 
 ### 选择属性
 
-配置属性时，必须选择前缀为 \_MMS\_ 的所有属性。在对 Lotus Domino 预配新对象时，必须有这些属性。
+配置属性时，必须选择前缀为 **\_MMS\_** 的所有属性。在对 Lotus Domino 预配新对象时，必须有这些属性。
 
 ![属性](./media/active-directory-aadconnectsync-connector-domino/attributes.png)
 
@@ -538,4 +536,4 @@ Domino 连接器依赖 Directory Assistance 功能来查找辅助通讯簿。如
 
 -	有关如何启用记录来排查连接器问题的信息，请参阅[如何启用连接器的 ETW 跟踪](http://go.microsoft.com/fwlink/?LinkId=335731)。
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

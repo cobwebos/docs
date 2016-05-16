@@ -10,7 +10,7 @@
 <tags
    ms.service="active-directory"
 
-   ms.date="02/16/2016"
+   ms.date="04/14/2016"
    wacn.date=""/>
 
 # Azure AD Connect：设计概念
@@ -65,4 +65,4 @@ sourceAnchor 属性区分大小写。“JohnDoe”与“johndoe”是不同的�
 ## 后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

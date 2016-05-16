@@ -4,13 +4,13 @@
    services="sql-database" 
    documentationCenter="" 
    authors="mihaelablendea" 
-   manager="jeffreyg" 
+   manager="jhubbard" 
    editor="monicar"/>
 
 <tags
    ms.service="sql-database"
-   ms.date="11/16/2015"
-   wacn.date=""/>
+   ms.date="04/18/2016"
+   wacn.date="04/22/2016"/>
 
 #执行灾难恢复演练
 
@@ -52,11 +52,11 @@
 ####恢复
 
 - 确保 DR 区域中的应用程序配置指向以前的辅助数据库，故障转移后，该数据库将成为完全可访问的新主数据库。 
-- 执行[计划的故障转移](/documentation/articles/sql-database-geo-replication-powershell#initiate-a-planned-failover)，使辅助数据库成为新的主数据库
-- 根据[在恢复后配置数据库](sql-database-disaster-recovery)指南完成恢复。
+- 执行[计划的故障转移](/documentation/articles/sql-database-geo-replication-powershell/#initiate-a-planned-failover)，使辅助数据库成为新的主数据库
+- 根据[在恢复后配置数据库](/documentation/articles/sql-database-disaster-recovery)指南完成恢复。
 
 ####验证
 
 - 通过验证恢复后的应用程序完整性（例如，连接字符串、登录名、基本功能测试，或标准应用程序验收过程的其他验证部分）来完成演练。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0509_2016-->

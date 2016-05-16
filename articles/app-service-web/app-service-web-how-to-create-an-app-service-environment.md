@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 <properties 
 	pageTitle="如何创建 Azure 环境" 
 	description="App Service 环境的创建流描述" 
@@ -11,12 +9,12 @@
 
 <tags
 	ms.service="app-service"
-	ms.date="01/14/2016"
+	ms.date="04/06/2016"
 	wacn.date=""/>
 
 # 如何创建 Azure 环境 #
 
-Azure 环境 (ASE) 是 Azure 的一个高级服务选项，可提供多租户戳记中不会提供的增强型配置功能。ASE 功能实质上是将 Azure 部署到客户的虚拟网络。若要更好地理解 Azure 环境所提供的功能，请阅读文档：[什么是 Azure 环境][WhatisASE]。
+Azure 环境 (ASE) 是 Azure 的一个高级服务选项，可提供多租户戳记中不会提供的增强型配置功能。ASE 功能实质上是将 Azure 部署到客户的虚拟网络。若要更好地理解 Azure 环境所提供的功能，请阅读文档[什么是 Azure 环境][WhatisASE]。
 
 ### 概述 ###
 
@@ -29,12 +27,14 @@ Azure 环境 (ASE) 是 Azure 的一个高级服务选项，可提供多租户戳
 - ASE 资源池定义
 
 其中每个项都有一些重要的详细信息。
+
 - ASE 的名称将用于该 ASE 中创建的任何应用的子域。
 - ASE 中创建的所有应用将位于 ASE 本身的相同订阅中
 - 如果无法访问用于创建 ASE 的订阅，则无法使用 ASE 来创建应用
 - 用于托管 ASE 的 VNET 必须是区域性经典“v1”VNET 
 - 用于托管 ASE 的子网不得包含任何其他计算资源
 - 一个子网中只能存在一个 ASE
+- 目前仅支持使用 RFC1918 地址空间（即专用地址）的虚拟网络。
 
 每个 ASE 部署都是 Azure 管理和维护的一种托管服务。客户不可访问托管 ASE 系统角色的计算资源，尽管客户确实管理着实例的数量和大小。
 
@@ -55,12 +55,12 @@ Azure 环境 (ASE) 是 Azure 的一个高级服务选项，可提供多租户戳
 
 ![][1]
 
-为 ASE 指定的名称将用于在 ASE 中创建的应用。如果 ASE 名称为 appsvcenvdemo，则域名将为 appsvcenvdemo.p.chinacloudsites.cn。如果因此创建名为 mytestapp 的应用，则可寻址于 mytestapp.appsvcenvdemo.p.azurewebsites.cn。不能在 ASE 名称中使用空格。如果在名称中使用大写字符，域名将为该名称的全小写形式。
+为 ASE 指定的名称将用于在 ASE 中创建的应用。如果 ASE 名称为 appsvcenvdemo，则域名将为 .appsvcenvdemo.p.chinacloudsites.cn。如果因此创建名为 mytestapp 的应用，则可寻址于 mytestapp.appsvcenvdemo.p.chinacloudsites.cn。不能在 ASE 名称中使用空格。如果在名称中使用大写字符，域名将为该名称的全小写形式。
 
 在某些情况下使用默认值有很好的效果，但通常都必须进行调整。后续几节将逐一说明 ASE 的相关配置部分。
 
 ### 虚拟网络 ###
-虽然快速创建功能将自动创建新的 VNET，但该功能还支持选择现有 VNET 和手动创建 VNET。如果现有的 VNET 够大，可进行选择（目前只有经典“v1”虚拟网络受支持）以支持 Azure 环境部署。VNET 必须有 8 个或更多地址。
+虽然快速创建功能将自动创建新的 VNET，但该功能还支持选择现有 VNET 和手动创建 VNET。如果现有的 VNET 够大，可进行选择（目前只有经典“v1”虚拟网络受支持）以支持 Azure 环境部署。VNET 必须有 8 个或更多地址。目前仅支持使用 RFC1918 地址空间（即专用地址）的虚拟网络。
 
 如果选择预先存在的 VNET，则还需指定要使用的子网或创建一个新子网。子网必须有 8 个或更多地址，且不可有任何其他资源已包含于其中。如果尝试使用已分配 VM 的子网，ASE 创建将失败。
 
@@ -72,9 +72,9 @@ Azure 环境 (ASE) 是 Azure 的一个高级服务选项，可提供多租户戳
 
 VNET 的位置就是 ASE 的位置，因为 ASE 部署到该 VNET 中。
 
-在指定或选择 VNET 后，必须创建或选择适当的子网。需要在此处提供的详细信息包括：
+在指定或选择 VNET 后，必须创建或选择适当的子网。你需要在此处提供的详细信息包括：
 - 子网名称
-- CIDR 表示法中的子网范围
+- 采用 CIDR 表示法的子网范围
 
 如果你不熟悉 CIDR（无类域间路由）表示法，请注意它采用以正斜杠与 CIDR 值分隔的 IP 地址格式。类似于 10.0.0.0/22。CIDR 值表示对显示的 IP 地址进行掩码的前导位数。如果要以更简单的方式表达此概念，我们可以说 CIDR 值提供了 IP 范围。在本示例中，10.0.0.0/22 表示 1024 个地址，或从 10.0.0.0 到 10.0.3.255 的范围。/23 意味着 512 个地址，等等。
 
@@ -131,9 +131,10 @@ Azure 环境的定价针对已分配的计算资源。你为分配到 Azure 环�
 - 使用的 VNET
 - 使用的子网
 
-有关手动缩放、管理和监视 Azure 环境详细信息，请参阅此文：[如何配置 Azure 环境][ASEConfig]
+有关手动缩放、管理和监视 Azure 环境的更多详细信息，请参阅此文：[如何配置 Azure 环境][ASEConfig]
 
-有关自动缩放的信息，请参阅此文：[如何配置 Azure 环境的自动缩放][ASEAutoscale]
+有关自动缩放的信息，请参阅本指南：
+[如何配置 Azure 环境的自动缩放][ASEAutoscale]
 
 存在不可用于自定义（如数据库和存储器）的其他依赖项。这些是由 Azure 处理且随系统出现的。系统存储对于整个 Azure 环境最多可支持 500 GB，Azure 会根据系统规模的需要来调整数据库。
 
@@ -161,4 +162,4 @@ Azure 环境的定价针对已分配的计算资源。你为分配到 Azure 环�
 [AzureAppService]: /documentation/services/web-sites/
 [ASEAutoscale]: /documentation/articles/app-service-environment-auto-scale/
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0509_2016-->

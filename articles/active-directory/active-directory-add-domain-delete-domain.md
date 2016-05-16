@@ -45,10 +45,10 @@
 
 ## 后续步骤
 
-- [使用自定义域名来简化用户登录体验](active-directory-add-domain.md)
-- [向“登录”和“访问面板”页添加公司品牌](active-directory-add-company-branding.md)
-- [在 Azure Active Directory 中添加和验证自定义域名](active-directory-add-domain-add-verify-general.md)
-- [将用户分配到自定义域](active-directory-add-domain-add-users.md)
-- [更改自定义域名的 DNS 注册机构](active-directory-add-domain-change-registrar.md)
+- [使用自定义域名来简化用户登录体验](/documentation/articles/active-directory-add-domain)
+- [向“登录”和“访问面板”页添加公司品牌](/documentation/articles/active-directory-add-company-branding)
+- [在 Azure Active Directory 中添加和验证自定义域名](/documentation/articles/active-directory-add-domain-add-verify-general)
+- [将用户分配到自定义域](/documentation/articles/active-directory-add-domain-add-users)
+- [更改自定义域名的 DNS 注册机构](/documentation/articles/active-directory-add-domain-change-registrar)
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0509_2016-->

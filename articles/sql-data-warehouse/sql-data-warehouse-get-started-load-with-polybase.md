@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="03/03/2016"
+   ms.date="04/18/2016"
    wacn.date=""/>
 
 
@@ -47,20 +47,20 @@
 
 1. 打开记事本并将以下数据行复制到一个新文件。将此文件保存到本地临时目录，路径为 %temp%\\DimDate2.txt。
 
-    ```
-    20150301,1,3
-    20150501,2,4
-    20151001,4,2
-    20150201,1,3
-    20151201,4,2
-    20150801,3,1
-    20150601,2,4
-    20151101,4,2
-    20150401,2,4
-    20150701,3,1
-    20150901,3,1
-    20150101,1,3
-    ```
+```
+20150301,1,3
+20150501,2,4
+20151001,4,2
+20150201,1,3
+20151201,4,2
+20150801,3,1
+20150601,2,4
+20151101,4,2
+20150401,2,4
+20150701,3,1
+20150901,3,1
+20150101,1,3
+```
 
 ### B.查找你的 Blob 服务终结点
 
@@ -80,7 +80,7 @@
 
 若要查找你的 Azure 存储密钥，请执行以下操作：
 
-1. 在主页屏幕中，选择“浏览”>“存储帐户”。
+1. 在 Azure 门户中，选择“浏览”>“存储帐户”。
 2. 单击你要使用的存储帐户。
 3. 选择“所有设置”>“访问密钥”。
 4. 单击复制框，将你的访问密钥之一复制到剪贴板。
@@ -122,7 +122,7 @@
 
 在本部分，我们将创建一个用于定义示例数据的外部表。
 
-PolyBase 使用外部表来访问 Azure Blob 存储或 Hadoop 中的数据。由于数据不是存储在 SQL 数据仓库中，PolyBase 将使用数据库范围的凭据来处理对外部数据的身份验证。
+PolyBase 使用外部表来访问 Azure Blob 存储中的数据。由于数据不是存储在 SQL 数据仓库中，PolyBase 将使用数据库范围的凭据来处理对外部数据的身份验证。
 
 本步骤中的示例使用这些 Transact-SQL 语句来创建外部表。
 
@@ -135,7 +135,7 @@ PolyBase 使用外部表来访问 Azure Blob 存储或 Hadoop 中的数据。由
 请针对你的 SQL 数据仓库数据库运行此查询。它将在 dbo 架构中创建指向 Azure Blob 存储中 DimDate2.txt 示例数据的、名为 DimDate2External 的外部表。
 
 
-```
+```sql
 -- A: Create a master key.
 -- Only necessary if one does not already exist.
 -- Required to encrypt the credential secret in the next step.
@@ -156,6 +156,7 @@ WITH
 
 
 -- C: Create an external data source
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure blob storage.
 -- LOCATION: Provide Azure storage account name and blob container name.
 -- CREDENTIAL: Provide the credential created in the previous step.
 
@@ -202,14 +203,19 @@ SELECT count(*) FROM dbo.DimDate2External;
 
 ```
 
-## 步骤 4：将数据载入 SQL 数据仓库
+
+在 Visual Studio 的 SQL Server 对象资源管理器中，你可以看到外部文件格式、外部数据源和 DimDate2External 表。
+
+![查看外部表](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
+
+## 步骤 3：将数据载入 SQL 数据仓库
 
 创建外部表后，你可以将数据载入新表，或将其插入到现有表。
 
 - 若要将数据载入新表，请运行 [CREATE TABLE AS SELECT (Transact-SQL)][] 语句。新表将包含查询中指定的列。列的数据类型将与外部表定义中的数据类型匹配。
 - 若要将数据载入现有表，请使用 [INSERT...SELECT (Transact-SQL)][] 语句。
 
-```
+```sql
 -- Load the data from Azure blob storage to SQL Data Warehouse
 
 CREATE TABLE dbo.DimDate2
@@ -222,21 +228,16 @@ AS
 SELECT * FROM [dbo].[DimDate2External];
 ```
 
-
-在 Visual Studio 的 SQL Server 对象资源管理器中，你可以看到外部文件格式、外部数据源和 DimDate2External 表。
-
-![查看外部表](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
-
-## 步骤 5：基于新加载的数据创建统计信息
+## 步骤 4：基于新加载的数据创建统计信息
 
 SQL 数据仓库不会自动创建或自动更新统计信息。因此，若要实现较高的查询性能，必须在首次加载后基于每个表的每个列创建统计信息。此外，在对数据做出重大更改后，必须更新统计信息。
 
-本示例将基于新的 DimDate2External 表创建单列统计信息。
+本示例将基于新的 DimDate2 表创建单列统计信息。
 
-```
+```sql
 CREATE STATISTICS [DateId] on [DimDate2] ([DateId]);
 CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
-create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
+CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
 若要了解详细信息，请参阅[统计信息][]。
@@ -246,7 +247,7 @@ create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 有关在开发使用 PolyBase 的解决方案时应了解的其他信息，请参阅 [PolyBase 指南][]。
 
 <!--Image references-->
-[1]:./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png
+[1]: ./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png
 
 <!--Article references-->
 [PolyBase in SQL Data Warehouse Tutorial]: /documentation/articles/sql-data-warehouse-get-started-load-with-polybase
@@ -280,4 +281,4 @@ create statistics [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 [Create Database Scoped Credential (Transact-SQL)]: https://msdn.microsoft.com/zh-cn/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/zh-cn/library/ms189450.aspx
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0509_2016-->

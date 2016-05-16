@@ -1,15 +1,15 @@
 <properties
-	pageTitle="Azure AD Connect Sync：了解声明性设置表达式"
+	pageTitle="Azure AD Connect 同步：了解声明性设置表达式 | Microsoft Azure"
 	description="说明声明性设置表达式"
 	services="active-directory"
 	documentationCenter=""
-	authors="markusvi"
+	authors="andkjell"
 	manager="stevenpo"
 	editor=""/>
 
 <tags
 	ms.service="active-directory"
-	ms.date="02/16/2016"
+	ms.date="04/14/2016"
 	wacn.date=""/>
 
 
@@ -108,7 +108,7 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
 
 ### ImportedValue
 
-函数 ImportedValues 不同于其他所有函数，因为属性名称必须放在引号内，而不是括在方括号中：ImportedValue(“proxyAddresses”)。
+函数 ImportedValues 不同于其他所有函数，因为其属性名称必须放在引号内，而不是括在方括号中：ImportedValue(“proxyAddresses”)。
 
 通常在同步期间，即使尚未导出或在导出过程中收到错误 (“top of the tower”)，属性也会使用预期值。入站同步会假定尚未到达已连接目录的属性最终会到达该目录。在某些情况下，仅同步由已连接目录已确认的值很重要，并且在这种情况下会使用函数 ImportedValue (“hologram and delta import tower”)。
 
@@ -126,4 +126,4 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
  
 <!--Image references-->
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

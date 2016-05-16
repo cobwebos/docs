@@ -1,19 +1,19 @@
 <properties
-	pageTitle="使用 Azure AD 应用程序代理中的自定义域"
+	pageTitle="使用 Azure AD 应用程序代理中的自定义域 | Microsoft Azure"
 	description="介绍如何使用 Azure AD 应用程序代理中的自定义域。"
 	services="active-directory"
 	documentationCenter=""
-	authors="rkarlin"
-	manager="msStevenPo"
+	authors="kgremban"
+	manager="StevenPo"
 	editor=""/>
 
 <tags
 	ms.service="active-directory"
-	ms.date="08/06/2015"
+	ms.date="02/09/2016"
 	wacn.date=""/>
 
 # 使用 Azure AD 应用程序代理中的自定义域
-> [AZURE.NOTE]应用程序代理是一项仅当升级到高级版或基本版的 Azure Active Directory 才可用的功能。有关详细信息，请参阅 [Azure Active Directory 版本](https://msdn.microsoft.com/library/azure/dn532272.aspx)。
+> [AZURE.NOTE] 应用程序代理是一项仅当升级到高级版或基本版的 Azure Active Directory 才可用的功能。有关详细信息，请参阅 [Azure Active Directory 版本](https://msdn.microsoft.com/library/azure/dn532272.aspx)。
 
 通过使用默认域，你能够将相同的 URL 设置为用于访问应用程序的内部和外部 URL，以便不管从哪里访问，你的用户只有一个需要记住来访问应用的 URL，并且还可以使你能够在应用程序的访问面板中创建一个快捷方式。如果使用 Azure AD 应用程序代理提供的默认域，则无需额外配置即可启用你的域。如果使用自定义域，则需要执行几个事项，以确保应用程序代理能够识别你的域并验证其证书。
 
@@ -27,13 +27,62 @@
 
 ## 有关使用自定义域的常见问题
 
-问：无需再次上载的情况下，是否可以选择已上载的证书？ <br> 答：以前上载的证书已自动绑定到应用程序，并且只有一个证书匹配应用程序的主机名称。 <br> …<br> 问：如何添加证书以及已导出证书应上载什么格式？ <br> 答：然后应从应用程序配置页中上载证书。证书应为 PFX 文件。 <br> …<br> 问：是否可以使用 ECC 证书？ <br> 答：签名方法没有显式限制。 <br> …<br> 问：是否可以使用 SAN 证书？ <br> 答：可以。<br> …<br> 问：是否可以使用通配符证书？ <br> 答：可以。 <br> …<br> 问：是否可以在每个应用程序上使用不同的证书？ <br> 答：可以。除非两个应用程序共享相同的外部主机。 <br> …..<br> 问：如果我注册新的域，是否可以使用该域？ <br> 答：可以。来源域列表是租户的已验证域列表。 <br> …<br> 问：证书到期时会怎么样？ <br> 答：你会在应用程序配置页的证书部分中获取一条警告。当用户尝试访问应用程序时，会弹出安全警告。 <br> …<br> 问：如果想要替换给定应用的证书，我应该怎么做？ <br> 答：从应用程序配置页中上载新证书<br> ...<br> 问：是否可以删除并替换证书？ <br> 答：当你上载新的证书时，如果旧的证书未被另一个应用程序使用，则会自动删除它<br> ...<br> 问：当证书被吊销后，会发生什么<br> 答：不对证书执行吊销检查。当用户尝试访问应用程序时，具体取决于浏览器，可能会出现安全警告。<br> …<br> 问：是否可以使用自签名的证书？ <br> 答：可以。允许使用自签名的证书。请注意，如果使用私有证书机构，证书的 CDP（证书吊销点分发点）则应为公共。 <br> ...<br> 问：是否有地方可以查看我的租户的所有证书？ <br> 答：当前版本中不支持。<br>
+问：无需再次上载的情况下，是否可以选择已上载的证书？  
+答：以前上载的证书已自动绑定到应用程序，并且只有一个证书匹配应用程序的主机名称。  
+…  
+问：如何添加证书，以及导出的证书应以何种格式上载？  
+答：应从应用程序配置页中上载证书。证书应为 PFX 文件。  
+…  
+问：是否可以使用 ECC 证书？  
+答：对于签名方法没有明确的限制。  
+...  
+问：是否可以使用 SAN 证书？  
+答：可以。  
+...  
+问：是否可以使用通配符证书？  
+答：可以。  
+...  
+问：是否可以在每个应用程序上使用不同的证书？  
+答：可以，除非这两个应用程序共享相同的外部主机  
+...  
+问：如果我注册新的域，是否可以使用该域？  
+答：可以。域列表来源于租户的已验证域列表。  
+…  
+问：当证书过期时会发生什么情况？  
+答：你会在应用程序配置页的证书部分中获取一条警告。当用户尝试访问该应用程序时，将弹出一条安全警告。  
+...  
+问：应该如何替换指定应用程序的证书？  
+答：从应用程序配置页上载新证书。  
+...  
+问：是否可以删除并替换证书？  
+答：当你上载了一个新证书，如果旧的证书未被其他应用程序使用，那么将自动删除该证书。  
+...  
+问：当证书被吊销时会发生什么情况？  
+答：不会对证书执行吊销检查。当用户尝试访问应用程序时，根据所使用的浏览器，可能会出现安全警告。  
+…  
+问：是否可以使用自签名的证书？  
+答：可以。允许使用自签名的证书。请注意，如果你使用的是私有证书颁发机构，那么证书的 CDP（证书吊销点分发点）应该是公共的。  
+...  
+问：是否有地方可以查看我的租户的所有证书？  
+答：当前版本中不支持。
 
 
+## 另请参阅
+应用程序代理还有其他用途：
+
+- [使用应用程序代理发布应用程序](/documentation/articles/active-directory-application-proxy-publish)
+- [启用单一登录](/documentation/articles/active-directory-application-proxy-sso-using-kcd)
+- [启用条件性访问](/documentation/articles/active-directory-application-proxy-conditional-access)
+- [使用声明感知应用程序](/documentation/articles/active-directory-application-proxy-claims-aware-apps) - [解决使用应用程序代理时遇到的问题](/documentation/articles/active-directory-application-proxy-troubleshoot)
+
+## 了解有关应用程序代理的详细信息
+- [查看我们的联机帮助](/documentation/articles/active-directory-application-proxy-enable)
+- [参阅应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
+- [观看第 9 频道上的视频！](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
 
 ## 其他资源
-
+- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 * [以组织身份注册 Azure](/documentation/articles/sign-up-organization)
 * [Azure 标识](/documentation/articles/fundamentals-identity)
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0509_2016-->

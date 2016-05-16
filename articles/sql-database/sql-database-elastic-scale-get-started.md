@@ -3,14 +3,14 @@
 	description="大致介绍 Azure SQL 数据库的弹性数据库工具功能，包括易于使用的示例应用。" 
 	services="sql-database" 
 	documentationCenter="" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	authors="ddove" 
 	editor="sidneyh"/>
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="02/02/2016" 
-	wacn.date=""/>
+	ms.date="03/22/2016" 
+	wacn.date="04/22/2016"/>
 
 # 弹性数据库工具入门
 
@@ -71,12 +71,13 @@
 ## 后续步骤
 有关弹性数据库工具的详细信息，请参阅：
 
-* [弹性数据库工具文档结构图](/documentation/articles/sql-database-elastic-scale) 
+* [弹性数据库工具文档结构图](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale) 
 -    代码示例： 
     -    [Azure SQL 弹性数据库 - 入门](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)
     -    [Azure SQL 弹性数据库 - 与实体框架集成](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
     -    [脚本中心上的分片弹性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 -    博客：[弹性缩放产品通告](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database)
+-    第 9 频道：[弹性缩放概述视频](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 -    论坛：[Azure SQL 数据库论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=ssdsgetstarted)
 
 
@@ -93,4 +94,4 @@
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
  
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0509_2016-->

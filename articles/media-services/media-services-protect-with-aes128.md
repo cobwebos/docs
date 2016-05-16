@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+ 	ms.date="04/07/2016" 
 	wacn.date=""/>
 
 #使用 AES-128 动态加密和密钥传送服务
@@ -23,7 +23,7 @@
 
 借助 Microsoft Azure 媒体服务，你能够传送使用高级加密标准 (AES) 加密的 Http 实时流式处理 (HLS) 和平滑流（使用 128 位加密密钥）。媒体服务还提供密钥传送服务，将加密密钥传送给已授权的用户。如果你需要媒体服务来加密资产，则需要将加密密钥与资产相关联，并配置密钥的授权策略。当播放器请求流时，媒体服务将使用指定的密钥通过 AES 加密来动态加密你的内容。为了解密流，播放器将从密钥传送服务请求密钥。为了确定用户是否被授权获取密钥，服务将评估你为密钥指定的授权策略。
 
-媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。内容密钥授权策略可能受到一种或多种授权限制：开放、令牌限制或 IP 限制。令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。媒体服务支持采用[简单 Web 令牌](https://msdn.microsoft.com/zh-cn/library/gg185950.aspx#BKMK_2) (SWT) 格式和 [JSON Web 令牌](https://msdn.microsoft.com/zh-cn/library/gg185950.aspx#BKMK_3) (JWT) 格式的令牌。有关详细信息，请参阅[配置内容密钥授权策略](/documentation/articles/media-services-protect-with-aes128#configure_key_auth_policy)。
+媒体服务支持通过多种方式对发出密钥请求的用户进行身份验证。内容密钥授权策略可能受到一种或多种授权限制：开放或令牌限制。令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。媒体服务支持采用[简单 Web 令牌](https://msdn.microsoft.com/zh-cn/library/gg185950.aspx#BKMK_2) (SWT) 格式和 [JSON Web 令牌](https://msdn.microsoft.com/zh-cn/library/gg185950.aspx#BKMK_3) (JWT) 格式的令牌。有关详细信息，请参阅[配置内容密钥授权策略](/documentation/articles/media-services-protect-with-aes128#configure_key_auth_policy)。
 
 为了充分利用动态加密，你的资产必须包含一组多码率 MP4 文件或多码率平滑流源文件。你还需要为资产配置传送策略（在本主题后面部分介绍）。然后，根据你在流 URL 中指定的格式，按需流式处理服务器将确保使用你选定的协议来传送流。因此，你只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。
 
@@ -141,7 +141,7 @@
 
 对于 HLS，根清单将划分成段文件。
 
-例如，根清单是： http://test001.origin.mediaservices.chinacloudapi.cn/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl) ，并且包含段文件名的列表。
+例如，根清单是：http://test001.origin.mediaservices.chinacloudapi.cn/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl)， 并且包含段文件名的列表。
 	
 	. . . 
 	#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -150,7 +150,7 @@
 	QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
 	…
 
-如果在文本编辑器中打开某个段文件（例如 http://test001.origin.mediaservices.chinacloudapi.cn/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl) ），它应包含 #EXT-X-KEY，指示文件已加密。
+如果在文本编辑器中打开某个段文件（例如 http://test001.origin.mediaservices.chinacloudapi.cn/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl)）， 它应包含 #EXT-X-KEY，指示文件已加密。
 	
 	#EXTM3U
 	#EXT-X-VERSION:4
@@ -263,13 +263,7 @@
 		            ConfigurationManager.AppSettings["MediaServicesAccountName"];
 		        private static readonly string _mediaServicesAccountKey =
 		            ConfigurationManager.AppSettings["MediaServicesAccountKey"];
-
-				private static readonly String _defaultScope = "urn:WindowsAzureMediaServices";
-
-				// Azure China uses a different API server and a different ACS Base Address from the Global.
-				private static readonly String _chinaApiServerUrl = "https://wamsshaclus001rest-hs.chinacloudapp.cn/API/";
-				private static readonly String _chinaAcsBaseAddressUrl = "https://wamsprodglobal001acs.accesscontrol.chinacloudapi.cn";
-
+		
 		        // A Uri describing the issuer of the token.  
 		        // Must match the value in the token for the token to be considered valid.
 		        private static readonly Uri _sampleIssuer =
@@ -620,4 +614,6 @@
 		    }
 		}
 
-<!---HONumber=Mooncake_0314_2016-->
+
+
+<!---HONumber=Mooncake_0509_2016-->

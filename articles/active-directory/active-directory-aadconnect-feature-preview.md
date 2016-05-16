@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"  
-   ms.date="02/16/2016"
+   ms.date="04/14/2016"
    wacn.date=""/>
 
 # 有关预览版功能的详细信息
@@ -47,4 +47,4 @@
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect.md)的详细信息。
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

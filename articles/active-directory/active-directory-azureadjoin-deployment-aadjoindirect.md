@@ -1,11 +1,12 @@
-<properties 
-	pageTitle="Azure AD Join 的使用方案和部署注意事项 | Microsoft Azure" 
-	description="本主题说明管理员如何为其最终用户（员工、学生或其他用户）设置 Azure AD Join。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="femila" 
-	manager="stevenpo" 
-	editor=""/>
+<properties
+	pageTitle="Azure AD Join 的使用方案和部署注意事项 | Microsoft Azure"
+	description="说明管理员如何为其最终用户（员工、学生或其他用户）设置 Azure AD Join。它还讨论了使用 Azure AD Join 的不同实际方案。"
+	services="active-directory"
+	documentationCenter=""
+	authors="femila"
+	manager="stevenpo"
+	editor=""
+	tags="azure-classic-portal"/>
 
 <tags 
 	ms.service="active-directory" 
@@ -84,7 +85,7 @@
 * [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
 * [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](active-directory-azureadjoin-passport.md)
 * [了解 Azure AD Join 的使用方案](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Connect domain-joined devices to Azure AD for Windows 10 experiences](active-directory-azureadjoin-devices-group-policy.md)（体验 Windows 10 时将已加入域的设备连接到 Azure AD）
+* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](active-directory-azureadjoin-devices-group-policy.md)
 * [设置 Azure AD Join](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

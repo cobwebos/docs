@@ -1,12 +1,11 @@
 <properties
-   pageTitle="Azure AD Connect 同步：了解默认配置 | Microsoft Azure"
-   description="本文介绍 Azure AD Connect 同步中的默认配置。"
-   services="active-directory"
-   documentationCenter=""
-   authors="andkjell"
-   manager="stevenpo"
-   editor=""/>
-
+    pageTitle="Azure AD Connect 同步：了解默认配置 | Microsoft Azure"
+    description="本文介绍 Azure AD Connect 同步中的默认配置。"
+    services="active-directory"
+    documentationCenter=""
+    authors="andkjell"
+    manager="stevenpo"
+    editor=""/>
 <tags
    ms.service="active-directory"
     ms.date="02/12/2016"
@@ -234,7 +233,7 @@ NULL
 
 ## 其他资源
 
-* [Azure AD Connect Sync：自定义同步选项](active-directory-aadconnectsync-whatis.md)
-* [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
+* [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis)
+* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

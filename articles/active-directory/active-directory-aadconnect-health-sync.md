@@ -1,11 +1,11 @@
 
-<properties 
-	pageTitle="使用 Azure AD Connect Health 进行同步 | Microsoft Azure" 
-	description="本页与 Azure AD Connect Health 相关，介绍如何监视 Azure AD Connect 同步。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+<properties
+	pageTitle="使用 Azure AD Connect Health 进行同步 | Microsoft Azure"
+	description="本页与 Azure AD Connect Health 相关，介绍如何监视 Azure AD Connect 同步。"
+	services="active-directory"
+	documentationCenter=""
+	authors="billmath"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
@@ -63,4 +63,4 @@
 * [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
 * [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history)
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

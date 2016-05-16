@@ -8,18 +8,18 @@
    editor=""/>
 <tags 
    ms.service="expressroute"
-   ms.date="01/16/2016"
+   ms.date="03/21/2016"
    wacn.date=""/>
 
 # ExpressRoute 线路和路由域
 
- 你必须订购一条 *ExpressRoute 线路*，以通过连接提供商将你的本地基础结构连接到 Microsoft。下图提供了你的 WAN 与 Microsoft 之间的连接的逻辑表示形式。
+ 你必须订购一条 ExpressRoute 线路，以通过连接提供商将你的本地基础结构连接到 Microsoft。下图提供了你的 WAN 与 Microsoft 之间的连接的逻辑表示形式。
 
 ![](./media/expressroute-circuit-peerings/expressroute-basic.png)
 
 ## ExpressRoute 线路
 
-*ExpressRoute 线路* 表示通过连接提供商在本地基础结构与 Microsoft 云服务之间建立的逻辑连接。你可以订购多条 ExpressRoute 线路。每条线路可以位于相同或不同的区域，且可以通过不同的连接提供商连接到各个场地。
+ExpressRoute 线路表示通过连接提供商在本地基础结构与 Microsoft 云服务之间建立的逻辑连接。你可以订购多条 ExpressRoute 线路。每条线路可以位于相同或不同的区域，且可以通过不同的连接提供商连接到各个场地。
 
 ExpressRoute 线路不会映射到任何物理实体。线路由称为服务密钥 (s-key) 的标准 GUID 进行唯一标识。服务密钥是在 Microsoft、连接提供商与你之间唯一交换的一条信息。s-key 不是用于保证安全的机密。ExpressRoute 线路与 s-key 之间存在 1:1 映射。
 
@@ -33,7 +33,7 @@ ExpressRoute 线路最多可以有三个独立的对等互连：Azure 公共、A
 
 ## ExpressRoute 路由域
 
-一条 ExpressRoute 线路有多个关联的路由域：Azure 公共、Azure 专用和 Microsoft。在一对路由器上，每个路由域采用相同的配置（主动-主动，或负载分担配置）以实现高可用性。Azure 服务分类为 *Azure 公共*和 *Azure 专用*以表示 IP 寻址方案。
+一条 ExpressRoute 线路有多个关联的路由域：Azure 公共、Azure 专用和 Microsoft。在一对路由器上，每个路由域采用相同的配置（主动-主动，或负载分担配置）以实现高可用性。Azure 服务分类为 Azure 公共和 Azure 专用以表示 IP 寻址方案。
 
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
@@ -65,12 +65,12 @@ Azure 存储空间、SQL 数据库和网站等服务是使用公共 IP 地址提
 
 下表比较了三种路由域。
 
-||**专用对等互连**|**公共对等互连**|**Microsoft 对等互连**|
+|**专用对等互连**|**公共对等互连**|**Microsoft 对等互连**|
 |---|---|---|---|
 |**每个对等互连支持的最大前缀数**|默认情况下为 4000，而 ExpressRoute 高级版支持 10,000|200|200|
 |**支持的 IP 地址范围**|你的 WAN 中任何有效的 IPv4 地址。|由你或你的连接提供商拥有的公共 IPv4 地址。|由你或你的连接提供商拥有的公共 IPv4 地址。|
-|**AS 编号要求**|专用和公共 AS 编号。客户必须拥有公共 AS 编号。 | 专用和公共 AS 编号。客户必须拥有公共 AS 编号。| 仅限公共 AS 编号。AS 编号必须根据路由注册表进行验证以验证所有权。|
-|**路由接口 IP 地址**|RFC1918 和公共 IP 地址|注册到路由注册表中的客户的公共 IP 地址。| 注册到路由注册表中的客户的公共 IP 地址。|
+|**AS 编号要求**|专用和公共 AS 编号。你必须拥有公共 AS 编号。 | 专用和公共 AS 编号。不过，你必须提供公共 AS 编号，以验证公共 IP 地址的所有权。| 专用和公共 AS 编号。不过，你必须提供公共 AS 编号，以验证公共 IP 地址的所有权。|
+|**路由接口 IP 地址**|RFC1918 和公共 IP 地址|在路由注册表中向你注册的公共 IP 地址。| 在路由注册表中向你注册的公共 IP 地址。|
 |**MD5 哈希支持**| 是|是|是|
 
 你可以选择启用一个或多个路由域作为 ExpressRoute 线路的一部分。若要将这些路由域合并成单个路由域，可以选择将所有路由域放置在同一个 VPN 中。此外，还可以如图所示，将它们放置在不同的路由域中。建议的配置是将专用对等链路直接连接到核心网络，并将公共和 Microsoft 对等链路连接到外围网络。
@@ -86,4 +86,6 @@ Azure 存储空间、SQL 数据库和网站等服务是使用公共 IP 地址提
 	- [配置路由（线路对等互连）](/documentation/articles/expressroute-howto-routing-classic)
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
 
-<!---HONumber=Mooncake_0307_2016-->
+
+
+<!---HONumber=Mooncake_0509_2016-->

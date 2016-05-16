@@ -9,14 +9,17 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="03/04/2016"
+
+	ms.date="03/13/2016"
 	wacn.date=""/>
 
 
 # Azure AD Connect 同步：理解和自定义同步
 Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azure AD Connect 的一个主要组件，负责与本地环境和云中 Azure AD 之间同步标识数据相关的所有操作。Azure AD Connect 同步是 DirSync、Azure AD Sync 和 Forefront Identity Manager 的后继版本，同时配置了 Azure Active Directory 连接器。
 
-本主题是 **Azure AD Connect 同步**（也称为**同步引擎**）的主页，其中列出了与其相关的所有其他主题的链接。有关 Azure AD Connect 的链接，请参阅[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
+本主题是 “Azure AD Connect 同步”（也称为“同步引擎”）的主页，其中列出了与其相关的所有其他主题的链接。有关 Azure AD Connect 的链接，请参阅[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
+
+同步服务包括两个组件，本地“Azure AD Connect 同步”组件和 Azure AD 中称为“Azure AD Connect 同步服务”的服务端组件。该服务是 DirSync、Azure AD Sync 和 Azure AD Connect 的常见服务。
 
 ## Azure AD Connect 同步主题
 
@@ -33,13 +36,15 @@ Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azur
 | [更改默认配置的最佳做法](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) | 如果你了解上述主题的详细信息并需要更改现成的配置，以配合方案或要求使用时，可以阅读此主题。 |
 | [配置筛选](active-directory-aadconnectsync-configure-filtering.md) | 介绍有关如何限制哪些对象同步到 Azure AD 的各种选项，并逐步说明如何配置这些选项。 |
 | **功能和方案** ||
-| [防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) | 介绍*防止意外删除* 功能以及如何对其进行配置。 |
+| [防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) | 介绍“防止意外删除”功能以及如何配置该功能。 |
 | [计划程序](active-directory-aadconnectsync-feature-scheduler.md) | 介绍导入、同步和导出数据的内置计划程序。 |
 | [实现密码同步](active-directory-aadconnectsync-implement-password-synchronization.md) | 介绍密码同步的工作原理、实现方式，及其操作与故障排除方法。 |
 | [设备写回](active-directory-aadconnect-feature-device-writeback.md) | 介绍设备写回在 Azure AD Connect 中的工作原理。 |
 | [目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md) | 介绍如何使用你自己的自定义属性扩展 Azure AD 架构。 |
+| **同步服务** ||
+| [重复属性修复](/documentation/articles/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency) | 介绍如何启用并使用 **userPrincipalName** 和 **proxyAddresses** 的重复属性值的修复 |
 | **操作和 UI** ||
-| [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) | 介绍 Synchronization Service Manager UI，包括“操作”[](active-directory-aadconnectsync-service-manager-ui-operations.md)、“连接器”[](active-directory-aadconnectsync-service-manager-ui-connectors.md)、“Metaverse 设计器”[](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)和“Metaverse 搜索”[](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)选项卡。|
+| [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) | 介绍 Synchronization Service Manager UI，包括“[操作](active-directory-aadconnectsync-service-manager-ui-operations.md)”、“[连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md)”、“[Metaverse 设计器](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)”和“[Metaverse 搜索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)”选项卡。|
 | [操作任务和注意事项](active-directory-aadconnectsync-operations.md) | 描述操作注意事项，例如灾难恢复。 |
 | **详细信息和参考** ||
 | [端口](active-directory-aadconnect-ports.md) | 列出需要在同步引擎以及本地目录与 Azure AD 之间打开的端口。 |
@@ -48,6 +53,6 @@ Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azur
 
 ## 其他资源
 
-* [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
+* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

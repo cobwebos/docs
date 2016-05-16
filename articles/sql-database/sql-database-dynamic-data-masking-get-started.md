@@ -4,19 +4,19 @@
    services="sql-database"
    documentationCenter=""
    authors="ronitr"
-   manager="jeffreyg"
+   manager="jhubbard"
    editor="v-romcal"/>
 
 <tags
    ms.service="sql-database"
-   ms.date="10/20/2015"
-   wacn.date=""/>
+   ms.date="04/11/2016"
+   wacn.date="04/22/2016"/>
 
 
 # SQL 数据库动态数据屏蔽入门（Azure 门户）
 
 > [AZURE.SELECTOR]
-- [动态数据屏蔽入门 - Azure 经典门户](/documentation/articles/sql-database-dynamic-data-masking-get-started-portal)
+- [Dynamic Data Masking - Azure Management portal](/documentation/articles/sql-database-dynamic-data-masking-get-started-portal)
 
 ## 概述
 
@@ -103,6 +103,6 @@ DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段�
 
 ## 使用 REST API 为数据库设置动态数据屏蔽
 
-请参阅 [对 Azure SQL 数据库的操作](https://msdn.microsoft.com/zh-cn/library/dn505719.aspx)。
+请参阅[对 Azure SQL 数据库的操作](https://msdn.microsoft.com/zh-cn/library/dn505719.aspx)。
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0509_2016-->

@@ -1,6 +1,6 @@
 <properties
-	pageTitle="在 Azure AD 中分配管理员角色"
-	description="介绍 Azure AD 提供的管理员角色，以及如何分配这些角色。"
+	pageTitle="在 Azure Active Directory 中分配管理员角色 | Microsoft Azure"
+	description="介绍 Azure Active Directory 提供的管理员角色，以及如何分配这些角色。"
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
@@ -69,21 +69,24 @@
 1. 在 Azure 经典门户中，单击“Active Directory”，然后单击你所在组织的目录的名称。
 
 2. 在“用户”页上，单击你想要编辑的用户的显示名称。
+
 3. 在“组织角色”列表中，选择要分配给此用户的管理员角色，或者选择“用户”（如果要删除现有的管理员角色）。
+
 4. 在“备用电子邮件地址”框中键入一个电子邮件地址。此电子邮件地址用于接收重要通知（包括有关密码自助重置的通知），因此，不管该用户是否能够访问 Azure，都必须能够访问其电子邮件帐户。
 
 5. 选择“允许”或“阻止”以指定是否允许用户登录并访问服务。
 
 6. 从“使用位置”下拉列表中指定位置。
+
 7. 完成后，单击“保存”。
 
 ## 后续步骤
 
-- 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [How to add or change Azure administrator roles](../billing-add-change-azure-subscription-administrator.md)（如何添加或更改 Azure 管理员角色）
+- 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [How to add or change Azure administrator roles（如何添加或更改 Azure 管理员角色）](../billing-add-change-azure-subscription-administrator.md)
 
-- 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [Understanding resource access in Azure](active-directory-understanding-resource-access.md)（了解 Azure 中的资源访问）
+- 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [Understanding resource access in Azure（了解 Azure 中的资源访问）](active-directory-understanding-resource-access.md)
 
-- 有关 Azure Active Directory 如何与你的 Azure 订阅相关联的信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)（Azure 订阅与 Azure Active Directory 的关联方式）
+- 有关 Azure Active Directory 如何与你的 Azure 订阅相关联的信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory（Azure 订阅与 Azure Active Directory 的关联方式）](active-directory-how-subscriptions-associated-directory.md)
 
 - [管理用户](active-directory-create-users.md)
 
@@ -91,4 +94,4 @@
 
 - [管理组](active-directory-manage-groups.md)
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

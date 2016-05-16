@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure AD Connect Sync：技术概念"
-	description="说明 Azure AD Connect Sync 的技术概念"
+	pageTitle="Azure AD Connect 同步：技术概念 | Microsoft Azure"
+	description="介绍 Azure AD Connect 同步的技术概念"
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
@@ -79,8 +79,6 @@ metaverse 是相邻连接器空间中的所有已联接标识的合并视图。
 
 每当某条规则确定需要创建新的连接器空间对象时，它都称为设置。但是，因为此操作只在连接器空间内发生，所以它不会延续到已连接数据源，直到执行导出。
 
-
-
 ## 其他资源
 
 * [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis)
@@ -89,4 +87,4 @@ metaverse 是相邻连接器空间中的所有已联接标识的合并视图。
 <!--Image references-->
 [1]: ./media/active-directory-aadsync-technical-concepts/ic750598.png
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

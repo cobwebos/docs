@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure AD Connect 常见问题" 
+	pageTitle="Azure AD Connect：常见问题 | Microsoft Azure"
 	description="此页包含有关 Azure AD Connect 的常见问题。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -29,7 +29,7 @@
 **问：我的防火墙、网络设备或其他软硬件会限制在网络上打开连接的最长时间。使用 Azure AD Connect 时，客户端超时阈值应设为多少？**  
 所有网络软件、物理设备或其他软硬件限制最长连接时间的阈值应该至少为 5 分钟 (300 秒)，使装有 Azure AD Connect 客户端的服务器能够与 Azure Active Directory 连接。这同样适用于以前发布的 Microsoft 标识同步工具。
 
-**问：是否支持 SLD（单一标签域）？**  
+**是否支持 SLD（单一标签域）？**  
 Azure AD Connect 不支持使用 SLD 的本地林/域。
 
 **问：是否支持包含句点的 NetBios 名称？**  
@@ -68,12 +68,12 @@ Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
 
 - 在 Microsoft 知识库 (KB) 中搜索有关 Azure AD Connect 支持的常见故障维修服务问题的技术解决方案。
 
-[Microsoft Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/zh-CN/home?forum=WindowsAzureAD)
+[Microsoft Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/zh-cn/home?forum=WindowsAzureAD)
 
-- 单击[此处](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)，在社区中搜索和浏览技术问题与答案，或提出自己的问题。
+- 单击[此处](https://social.msdn.microsoft.com/Forums/azure/zh-cn/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)，在社区中搜索和浏览技术问题与答案，或提出自己的问题。
 
 [Azure AD Connect 客户支持](https://manage.windowsazure.com/?getsupport=true)
 
 - 使用此链接，以便通过 Azure 门户获取支持。
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

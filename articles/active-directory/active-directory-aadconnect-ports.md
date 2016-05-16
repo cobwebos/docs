@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect 端口"
+	pageTitle="Azure AD Connect：端口 | Microsoft Azure"
 	description="此技术参考页面描述了需要为 Azure AD Connect 打开的端口"
 	services="active-directory"
 	documentationCenter=""
@@ -79,6 +79,6 @@
 |Azure 服务总线|5671 (TCP/UDP)| 出站
 
 ### 6b - 适用于 (AD FS/Sync) 和 Azure AD 的 Azure AD Connect Health 代理的终结点
-有关终结点的列表，请参阅 [Azure AD Connect Health 代理的要求部分](active-directory-aadconnect-health.md#requirements)
+有关终结点的列表，请参阅 [Azure AD Connect Health 代理的要求部分](/documentation/articles/active-directory-aadconnect-health#requirements)
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

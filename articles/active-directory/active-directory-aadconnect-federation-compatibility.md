@@ -316,4 +316,4 @@ AuthAnvil Single Sign On 4.5 实施广泛使用的 WS 联合标识标准以提�
 
 有关详细信息，请参阅 [AuthAnvil Single Sign On（AuthAnvil 单一登录）](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)。
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0509_2016-->

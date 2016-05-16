@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure AD Connect Sync：函数引用"
-	description="在 Azure AD Connect Sync 中引用声明性设置表达式。"
+	pageTitle="Azure AD Connect 同步：函数引用 | Microsoft Azure"
+	description="在 Azure AD Connect 同步中引用声明性设置表达式。"
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
@@ -18,7 +18,6 @@
 
 
 在 Azure Active Directory Sync 中，函数用于在同步期间操作属性值。  
-
 函数的语法使用以下格式表示：  
 `<output type> FunctionName(<input type> <position name>, ..)`
 
@@ -61,7 +60,7 @@
 **计算：**
 
 [IsBitSet](#isbitset) &nbsp;&nbsp;&nbsp;&nbsp; [IsDate](#isdate) &nbsp;&nbsp;&nbsp;&nbsp; [IsEmpty](#isempty)
-&nbsp;&nbsp;&nbsp;&nbsp; [IsGuid](#isguid) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsNumeric](#isnumeric) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring)
+&nbsp;&nbsp;&nbsp;&nbsp; [IsGuid](#isguid) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsNumeric](#isnumeric)  &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring)
 
 **数学：**
 
@@ -770,7 +769,8 @@ Mid 函数从字符串指定位置起返回指定的字符数。
 - NumChar：标识从字符串中的位置返回的字符数的数字
 
 **备注：**  
-从字符串中的开始位置开始返回 numChars 字符。包含字符串中开始位置的 numChar 字符的字符串：
+从字符串中的开始位置开始返回 numChars 字符。  
+包含字符串中开始位置的 numChar 字符的字符串：
 
 - 如果 numChar = 0，则返回空字符串。
 - 如果 numChar < 0，则返回输入字符串。
@@ -904,7 +904,7 @@ RemoveDuplicates 函数使用多值字符串，并确保每个值都是唯一值
 返回净化的 proxyAddress 属性，其中所有重复值已被删除。
 
 ----------
-### Replace
+### 将
 
 **说明：**  
 Replace 函数将所有出现的某一字符串替换为另一个字符串。
@@ -1128,8 +1128,8 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 
 ## 其他资源
 
-* [了解声明性设置表达式](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)
-* [Azure AD Connect Sync：自定义同步选项](active-directory-aadconnectsync-whatis.md)
-* [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
+* [了解声明性设置表达式](/documentation/articles/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions)
+* [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis)
+* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

@@ -1,5 +1,3 @@
-<!-- not suitable for Mooncake -->
-
 <properties 
 	pageTitle="如何控制 Azure 环境的入站流量" 
 	description="了解如何配置网络安全规则，以控制发往 Azure 环境的入站流量。" 
@@ -11,13 +9,13 @@
 
 <tags
 	ms.service="app-service"
-	ms.date="02/26/2016"
-	wacn.date=""/>	
+	ms.date="04/06/2016"
+	wacn.date=""/>
 
 # 如何控制 Azure 环境的入站流量
 
 ## 概述 ##
-Azure 环境始终在区域性经典“v1”[虚拟网络][virtualnetwork]的子网中创建。创建 Azure 环境时，可以定义新的区域性经典“v1”虚拟网络和新的子网。或者，可以在预先存在的区域性经典“v1”虚拟网络和预先存在的子网中创建 Azure 环境。有关创建 Azure 环境的详细信息，请参阅[如何创建 Azure 环境][HowToCreateAnAppServiceEnvironment]。
+Azure 环境始终在区域性经典“v1”[虚拟网络][virtualnetwork]的子网中创建。创建 Azure 环境时，可以定义新的区域性经典“v1”虚拟网络和新的子网。或者，可以在预先存在的区域性经典“v1”虚拟网络和预先存在的子网中创建 Azure 环境。目前仅支持使用 RFC1918 地址空间（即专用地址）的虚拟网络。有关创建 Azure 环境的更多详细信息，请参阅[如何创建 Azure 环境][HowToCreateAnAppServiceEnvironment]。
 
 **注意：**在“v2”ARM 管理的虚拟网络中无法创建 Azure 环境。
 
@@ -47,14 +45,14 @@ Azure 环境始终必须在子网中创建，由于子网提供网络边界用�
 ## 出站连接和 DNS 要求 ##
 为了使让 Azure 环境正常工作，需要对全球 Azure 存储空间以及相同 Azure 区域中 SQL 数据库的出站访问权限。如果虚拟网络中阻止了出站 Internet 访问，则 Azure 环境将无法访问这些 Azure 终结点。
 
-Azure 环境还要求针对虚拟网络设置的有效 DNS 基础结构。如果 DNS 配置在创建 Azure 环境之后因为任何原因而更改，开发人员可以强制 Azure 环境选择新的 DNS 配置。使用位于 [Azure 管理门户][NewPortal]中“Azure 环境管理”边栏选项卡顶部的“重新启动”图标触发轮流环境重新启动，会导致环境选择新的 DNS 配置。
+Azure 环境还要求针对虚拟网络设置的有效 DNS 基础结构。如果 DNS 配置在创建 Azure 环境之后因为任何原因而更改，开发人员可以强制 Azure 环境选择新的 DNS 配置。使用位于 [Azure 门户][NewPortal]中“Azure 环境管理”边栏选项卡顶部的“重新启动”图标触发轮流环境重新启动，会导致环境选择新的 DNS 配置。
 
 以下列表详细描述了 Azure 环境所需的连接和 DNS：
 
--  与全球 Azure 存储空间终结点建立的出站网络连接。这包括位于与 Azure 环境相同区域中的终结点，以及位于**其他** Azure 区域的存储终结点。Azure 存储空间终结点在以下 DNS 域之下解析： table.core.chinacloudapi.cn、blob.core.chinacloudapi.cn、queue.core.chinacloudapi.cn 和 file.core.chinacloudapi.cn。  
--  与位于 Azure 环境相同区域中的 SQL 数据库终结点建立的出站网络连接。Sql 数据库终结点在以下域之下解析：database.chinacloudapi.cn。
+-  与全球 Azure 存储空间终结点建立的出站网络连接。这包括位于与 Azure 环境相同区域中的终结点，以及位于**其他** Azure 区域的存储终结点。Azure 存储空间终结点在以下 DNS 域之下解析：table.core.chinacloudapi.cn、blob.core.chinacloudapi.cn、queue.core.chinacloudapi.cn 和 file.core.chinacloudapi.cn。  
+-  与位于 Azure 环境相同区域中的 SQL 数据库终结点建立的出站网络连接。Sql DB 终结点在以下域之下解析：database.chinacloudapi.cn。
 -  与 Azure 管理平面终结点（ASM 和 ARM 终结点）建立的出站网络连接。这包括与 management.core.chinacloudapi.cn 和 management.azure.com 建立的出站连接。 
--  与 ocsp.msocsp.com 建立的出站连接。需要此连接才能支持 SSL 功能。
+-  与 ocsp.msocsp.com、mscrl.microsoft.com 和 crl.microsoft.com 建立的出站网络连接。需要此连接才能支持 SSL 功能。
 -  虚拟网络的 DNS 设置必须能够解析前面几点所提到的所有终结点和域。如果无法解析这些终结点，Azure 环境创建尝试将失败，并且现有的 Azure 环境标记为状况不正常。
 -  如果 VPN 网关的另一端有自定义 DNS 服务器存在，则必须可从包含 Azure 环境的子网连接该 DNS 服务器。 
 -  出站网络路径不可经过内部公司代理，也不可使用强制通道发送到本地。否则会更改来自 Azure 环境的出站网络流量的有效 NAT 地址。更改 Azure 环境的出站网络流量的 NAT 地址会导致上述众多终结点的连接失败。这将造成 Azure 环境创建尝试失败，并且前面状况良好的 Azure 环境将标记为状况不正常。  
@@ -65,7 +63,7 @@ Azure 环境还要求针对虚拟网络设置的有效 DNS 基础结构。如果
 ## 创建网络安全组 ##
 有关网络安全组工作原理的完整详情，请参阅以下[信息][NetworkSecurityGroups]。以下详细信息涉及到了网络安全组的要点，着重讲解如何配置网络安全组并其应用到包含 Azure 环境的子网。
 
-**注意：**网络安全组只能使用如下所述的 Powershell cmdlet 来配置。由于 [Azure 管理门户](portal.azure.com)仅允许使用与“v2”虚拟网络关联的 NSG 图形配置，因此你无法使用管理门户以图形方式配置网络安全组。但是，Azure 环境目前仅支持使用经典“v1”虚拟网络。因此，仅可使用 Powershell cmdlet 将网络安全组配置为与“v1”虚拟网络关联。
+**注意：**网络安全组只能使用如下所述的 Powershell cmdlet 来配置。由于 [Azure 门户](portal.azure.com)仅允许使用与“v2”虚拟网络关联的 NSG 图形配置，因此你无法使用 Azure 门户以图形方式配置网络安全组。但是，Azure 环境目前仅支持使用经典“v1”虚拟网络。因此，仅可使用 Powershell cmdlet 将网络安全组配置为与“v1”虚拟网络关联。
 
 网络安全组最初创建为与订阅关联的独立实体。由于网络安全组是在 Azure 区域中创建的，因此请确保在与 Azure 环境相同的区域中创建网络安全组。
 
@@ -83,7 +81,7 @@ Azure 环境还要求针对虚拟网络设置的有效 DNS 基础结构。如果
 
 阻止对端口 80 和 443 的访问以便“隐藏”上游设备或服务后面的 Azure 环境时，你必须知道上游 IP 地址。例如，如果你使用 Web 应用程序防火墙 (WAF)，则 WAF 将有自己的 IP 地址，以便在将流量代理到下游 Azure 环境时使用。你必须在网络安全规则的 SourceAddressPrefix 参数中使用此 IP 地址。
 
-在以下示例中，显式允许来自特定上游 IP 地址的入站流量。地址1.2.3.4用作上游 WAF 的 IP 地址占位符。请更改此值，以便与上游设备或服务使用的地址匹配。
+在以下示例中，显式允许来自特定上游 IP 地址的入站流量。地址 1.2.3.4 用作上游 WAF 的 IP 地址占位符。请更改此值，以便与上游设备或服务使用的地址匹配。
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT HTTP" -Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT HTTPS" -Type Inbound -Priority 300 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
@@ -102,7 +100,7 @@ Azure 环境还要求针对虚拟网络设置的有效 DNS 基础结构。如果
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT RemoteDebuggingVS2015" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '4020' -Protocol TCP
 
 ## 将网络安全组分配给子网 ##
-网络安全组包含拒绝访问所有外部流量的默认安全规则。将上述网络安全规则与用于阻止入站流量的默认安全规则相结合后，只有来自与“允许”操作关联的源地址范围的流量能够发送到 Azure 环境中运行的应用。
+网络安全组包含拒绝访问所有外部流量的默认安全规则。将上述网络安全规则与用于阻止入站流量的默认安全规则相结合后，只有来自与“允许”操作关联的源地址范围的流量才能发送到 Azure 环境中运行的应用。
 
 在网络安全组中填充安全规则后，需要将该组分配到包含 Azure 环境的子网。分配命令将引用 Azure 环境所在的虚拟网络的名称，以及 Azure 环境创建所在的子网的名称。
 
@@ -127,7 +125,7 @@ Azure 环境还要求针对虚拟网络设置的有效 DNS 基础结构。如果
 
 若要开始使用 Azure 环境，请参阅 [Azure 环境简介][IntroToAppServiceEnvironment]
 
-有关安全地从 Azure 环境连接到后端资源的详细信息，请参阅[从 Azure 环境安全连接到后端资源][SecurelyConnecttoBackend]
+有关将应用安全地从 Azure 环境连接到后端资源的详细信息，请参阅[从 Azure 环境安全连接到后端资源][SecurelyConnecttoBackend]
 
 有关 Azure 平台的详细信息，请参阅 [Azure Web 应用][AzureAppService]。
 
@@ -142,9 +140,8 @@ Azure 环境还要求针对虚拟网络设置的有效 DNS 基础结构。如果
 [AzureAppService]: /documentation/services/web-sites/
 [IntroToAppServiceEnvironment]: /documentation/articles/app-service-app-service-environment-intro/
 [SecurelyConnecttoBackend]: /documentation/articles/app-service-app-service-environment-securely-connecting-to-backend-resources/
-[NewPortal]: https://manage.windowsazure.cn
+[NewPortal]: https://portal.azure.cn
 
 <!-- IMAGES -->
- 
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0509_2016-->

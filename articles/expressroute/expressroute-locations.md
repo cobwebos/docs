@@ -8,7 +8,7 @@
    editor="" />
 <tags
    ms.service="expressroute"
-   ms.date="01/15/2016"
+   ms.date="04/06/2016"
    wacn.date="" />
 
 # ExpressRoute 合作伙伴和对等位置
@@ -56,12 +56,12 @@
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** | 支持 | 支持 | 阿姆斯特丹、达拉斯、伦敦、硅谷、新加坡、华盛顿特区 |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** | 支持 | 支持 | 阿姆斯特丹、中国香港特别行政区、伦敦、硅谷、新加坡、东京、华盛顿特区 |
 |**China Telecom Global** | 支持 | 不支持 | 香港 |
-|**Cologix** | 即将支持 | 不支持 | 蒙特利尔+、多伦多+ |
+|**Cologix** | 支持 | 即将支持 | 蒙特利尔+、多伦多 |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** | 支持 | 支持 | 阿姆斯特丹、都柏林、伦敦 |
 | **Comcast** | 支持 | 不支持 | 硅谷、华盛顿特区 |
 | **CoreSite** | 支持 | 支持 | 洛杉矶 | 
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** | 支持 | 支持 | 阿姆斯特丹、亚特兰大、芝加哥、达拉斯、中国香港特别行政区、伦敦、洛杉矶、墨尔本、纽约、大阪、圣保罗、西雅图、硅谷、新加坡、悉尼、东京、多伦多+、华盛顿特区 |
-| **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2013/pdf/Azure_E.pdf)** | 支持 | 支持 | 大坂、东京 |
+| **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** | 支持 | 支持 | 大坂、东京 |
 | **[InterCloud](https://www.intercloud.com/)** | 支持 | 支持 | 阿姆斯特丹、伦敦、新加坡、华盛顿特区 |
 | **Internet 解决方案 - 云连接** | 支持 | 支持 | 阿姆斯特丹、伦敦 |
 | **Interxion** | 支持 | 支持 | 阿姆斯特丹 |
@@ -69,19 +69,19 @@
 | **Megaport** | 支持 | 支持 | 墨尔本、悉尼 |
 | **MTN** | 支持 | 支持 | 伦敦 |
 | **NEXTDC** | 支持 | 支持 | 墨尔本、悉尼 |
-| **NTT Communications** | 支持 | 即将支持 | 伦敦、东京 |
+| **NTT Communications** | 支持 | 支持 | 伦敦、大坂、东京 |
 | **[Orange](http://www.orange-business.com/)** | 支持 | 支持 | 阿姆斯特丹、中国香港特别行政区、伦敦、硅谷、新加坡、华盛顿特区 |
 | **PCCW Global Limited** | 支持 | 支持 | 香港 |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** | 支持 | 不支持 | 新加坡 |
-| **Softbank** | 即将支持 | 不支持 | 大坂、东京 | 
-| **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | 支持 | 支持 | 阿姆斯特丹、金奈、中国香港特别行政区、伦敦、孟买、新加坡、华盛顿特区 |
+| **Softbank** | 支持 | 支持 | 大坂、东京 | 
+| **[Tata Communications](http://www.tatacommunications.com/lp/izo/azure/azure_index.html)** | 支持 | 支持 | 阿姆斯特丹、金奈、中国香港特别行政区、伦敦、孟买、硅谷、新加坡、华盛顿特区 |
 | **[TeleCity Group](http://www.telecitygroup.com/investor-centre/news_details.htm?locid=03100500400b00d&xml)** | 支持 | 支持 | 阿姆斯特丹、伦敦 |
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** | 支持 | 不支持 | 墨尔本、悉尼 |
 | **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** | 支持 | 支持 | 阿姆斯特丹、中国香港特别行政区、伦敦、硅谷、悉尼、东京、华盛顿特区 |
 | **Vodafone** | 支持 | 不支持 | 伦敦 | 
 | **[Zayo Group](http://www.zayo.com/)** | 支持 | 支持 | 芝加哥、洛杉矶、纽约、硅谷、华盛顿特区 |
 
- **\+** 表示即将推出
+ **+** 表示即将推出
 
 ### 国家/地区云环境
 
@@ -137,4 +137,4 @@
 - 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)。
 - 确保符合所有先决条件。请参阅 [ExpressRoute 先决条件](/documentation/articles/expressroute-prerequisites)。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0509_2016-->

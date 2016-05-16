@@ -1,22 +1,22 @@
 <properties
-   pageTitle="入门：连接到 Azure SQL 数据仓库 | Microsoft Azure"
+   pageTitle="入门：连接到 Azure SQL 数据仓库 | Azure"
    description="开始连接到 SQL 数据仓库并运行一些查询。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="twounder"
-   manager=""
+   authors="sonyama"
+   manager="barbkess"
    editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="01/07/2016"
+   ms.date="03/28/2016"
    wacn.date=""/>
 
 # 使用 SQLCMD 进行连接和查询
 
 > [AZURE.SELECTOR]
-- [Visual Studio](sql-data-warehouse-get-started-connect.md)
-- [SQLCMD](sql-data-warehouse-get-started-connect-sqlcmd.md)
+- [Visual Studio](/documentation/articles/sql-data-warehouse-get-started-connect)
+- [SQLCMD](/documentation/articles/sql-data-warehouse-get-started-connect-sqlcmd)
 
 本演练说明如何使用 sqlcmd.exe 实用程序在短时间内连接和查询 Azure SQL 数据仓库数据库。在本演练中，你将：
 
@@ -41,17 +41,17 @@
 
 ## 使用 sqlcmd 连接到 SQL 数据仓库
 
-若要在使用 sqlcmd 时连接到 SQL 数据仓库的特定实例，需要打开命令提示符并输入 **sqlcmd** 后接 SQL 数据仓库数据库的连接字符串。连接字符串需包含以下参数：
+若要在使用 sqlcmd 时连接到 SQL 数据仓库的特定实例，需要打开命令提示符并输入 **sqlcmd** 后接 SQL 数据仓库数据库的连接字符串。连接字符串需包含以下必需参数：
 
++ **服务器 (-S)：**采用 `<`服务器名称`>`.database.windows.net 格式的服务器
++ **数据库 (-D)：**数据库名称
 + **用户 (-U)：**采用 `<`用户`>` 格式的服务器用户
 + **密码 (-P)：**与用户关联的密码
-+ **服务器 (-S)：**采用 `<`服务器名称`>`.database.chinacloudapi.cn 格式的服务器
-+ **数据库 (-D)：**数据库名称
 + **启用带引号的标识符 (-I)：**必须启用带引号的标识符才能连接到 SQL 数据仓库实例。
 
 因此，若要连接到 SQL 数据仓库实例，需输入以下信息：
 
-```
+```sql
 C:\>sqlcmd -S <Server Name>.database.windows.net -d <Database> -U <User> -P <Password> -I
 ```
 
@@ -59,24 +59,18 @@ C:\>sqlcmd -S <Server Name>.database.windows.net -d <Database> -U <User> -P <Pas
 
 连接后，可以对实例发出任何支持的 Transact-SQL 语句。
 
-```
-C:\>sqlcmd -S <Server Name>.database.windows.net -d <Database> -U <User> -P <Password> -I
-1> SELECT COUNT(*) FROM dbo.FactInternetSales;
+```sql
+C:\>sqlcmd -S <Server Name>.database.chinacloudapi.cn -d <Database> -U <User> -P <Password> -I
+1> SELECT name FROM sys.tables;
 2> GO
 3> QUIT
 ```
 
-有关 sqlcmd 的更多信息，请参阅 [sqlcmd 文档](https://msdn.microsoft.com/library/azure/ms162773.aspx)。
+有关 sqlcmd 的更多信息，请参阅 [sqlcmd 文档](https://msdn.microsoft.com/zh-cn/library/azure/ms162773.aspx)。
 
 
-## 后续步骤
-
-既然你可以执行连接和查询，接下来请尝试[使用 PowerBI 进行连接][]。
-
-[使用 PowerBI 进行连接]: ./sql-data-warehouse-integrate-power-bi.md
- 
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0509_2016-->

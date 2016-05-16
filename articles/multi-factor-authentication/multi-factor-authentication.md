@@ -1,4 +1,4 @@
-<properties 
+<properties
 	pageTitle="什么是 Azure Multi-Factor Authentication？| Microsoft Azure"
 	description="本主题说明什么是 Multifactor Authentication (MFA)、为何使用 MFA，以及有关 Multifactor Authentication 客户端和不同方法和可用版本的详细信息。Azure Multi-Factor Authentication 是要求使用多种方式（而不仅仅是用户名和密码）对你的身份进行验证的一种方法。它为用户登录和事务提供了额外的安全层。"
 	keywords="MFA 简介, mfa 概述, 什么是 mfa"
@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="03/03/2016"
+	ms.date="04/07/2016"
 	wacn.date="" />
 
 # 什么是 Azure Multi-Factor Authentication？
@@ -102,7 +102,7 @@ Azure Multi-Factor Authentication | Multi-Factor Authentication 提供最丰富�
 将电话呼叫用作第二个因素|* | * | *
 将短信用作第二个因素|* | * | *
 不支持 MFA 的客户端的应用密码|* | * | *
-管理员控制身份验证方法| （公共预览版）|（公共预览版） | *
+管理员控制身份验证方法| *|* | *
 PIN 模式| | | *
 欺诈警报| | | *
 MFA 报告| | | *
@@ -116,6 +116,7 @@ MFA SDK| | | *
 对使用 MFA 服务器的本地应用程序进行 MFA| | | *
 
 
+
 ## 如何获取 Azure Multi-Factor Authentication
 
 如果你想要获取 Azure Multi-Factor Authentication 提供的完整功能，而不只是针对 Office 365 用户和 Azure 管理员提供的功能，可以使用多个选项：
@@ -125,6 +126,7 @@ MFA SDK| | | *
 3.	在 Azure 订阅中创建 Azure Multi-Factor Authentication 提供程序。如果你还没有 Azure 订阅，可以注册 Azure 试用版订阅。在试用过期之前，需要将试用订阅转换为正常订阅。
 
 使用 Azure Multi-Factor Authentication 提供程序时，可根据两种使用模式针对 Azure 订阅计费：
+
 
 - **按用户**。通常适用于想要为固定数目的、需要定期进行身份验证的员工启用 Multi-Factor Authentication 的企业。
 - **按身份验证**。通常适用于想要为大量的、不定期需要身份验证的外部用户启用 Multi-Factor Authentication 的企业。
@@ -185,7 +187,7 @@ Azure AD 和使用 DirSync、Azure AD Sync、Azure AD Connect 的本地 AD - 包
 将双向短信用作第二个因素 | | ●
 将硬件令牌用作第二个因素 | | ●
 不支持 MFA 的客户端的应用密码 | ● |  
-管理员控制身份验证方法 | （公共预览版） | ●
+管理员控制身份验证方法 | ● | ●
 PIN 模式 | | ●
 欺诈警报 | ● | ●
 MFA 报告 | ● | ●
@@ -199,6 +201,8 @@ MFA 报告 | ● | ●
 
 在确定是要使用云 Multi-Factor Authentication 还是本地 MFA 服务器后，接下来可以开始设置并使用 Azure Multi-Factor Authentication。**选择代表你的方案的图标！**
 
-<center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](/documentation/articles/multi-factor-authentication-get-started-cloud) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
+<center>
+[![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](/documentation/articles/multi-factor-authentication-get-started-cloud) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160;
+</center>
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

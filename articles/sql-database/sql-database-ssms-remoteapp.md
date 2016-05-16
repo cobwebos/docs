@@ -1,15 +1,15 @@
-<properties 
-	pageTitle="在 Azure RemoteApp 中使用 SQL Server Management Studio 连接到 SQL 数据库 | Microsoft Azure" 
+<properties
+	pageTitle="在 Azure RemoteApp 中使用 SQL Server Management Studio 连接到 SQL 数据库 | Azure"
 	description="通过本教程了解如何在连接到 SQL 数据库时使用 Azure RemoteApp 中的 SQL Server Management Studio 进行安全和性能操作"
-	services="sql-database" 
+	services="sql-database"
 	documentationCenter=""
-	authors="adhurwit" 
+	authors="adhurwit"
 	manager=""/>
 
-<tags 
-	ms.service="sql-database" 
-	ms.date="01/20/2016" 
-	wacn.date=""/>
+<tags
+	ms.service="sql-database"
+	ms.date="04/12/2016"
+	wacn.date="04/22/2016"/>
 
 # 在 Azure RemoteApp 中使用 SQL Server Management Studio 连接到 SQL 数据库
 
@@ -33,7 +33,7 @@ Azure RemoteApp 是 Azure 中的 RDS 服务，用于交付应用程序。你可�
 在 Azure RemoteApp 中使用 SSMS 有许多好处，包括：
 
 - 在 Azure SQL Server 上的端口 1433 不必对外（在 Azure 外部）公开。
-- 不需要在 Azure SQL Server 防火墙中不断添加和删除 IP 地址。 
+- 不需要在 Azure SQL Server 防火墙中不断添加和删除 IP 地址。
 - 所有 Azure RemoteApp 连接都通过 HTTPS 在端口 443 上发生，使用的是加密的远程桌面协议
 - 它采用多用户模式，可以伸缩。
 - 将 SSMS 与 SQL 数据库置于同一区域可以获得性能提升。
@@ -53,7 +53,8 @@ Azure RemoteApp 是 Azure 中的 RDS 服务，用于交付应用程序。你可�
 
 ### 2\.从 SQL Express 安装 SSMS
 
-转到新的 VM，导航到此下载页面：[Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/zh-cn/download/details.aspx?id=42299)
+转到新的 VM，导航到此下载页面：
+[Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/zh-cn/download/details.aspx?id=42299)
 
 有一个仅下载 SSMS 的选项。下载后，请进入安装目录，然后运行安装程序以安装 SSMS。
 
@@ -75,7 +76,7 @@ sysprep 在完成后会关闭 VM。
 
 当 VM 停止运行以后，可在当前门户中查找并捕获它。
 
-若要详细了解如何捕获映像，请参阅[捕获使用经典部署模型创建的 Azure Windows 虚拟机的映像](/documentation/articles/virtual-machines-capture-image-windows-server)
+若要详细了解如何捕获映像，请参阅[捕获使用经典部署模型创建的 Azure Windows 虚拟机的映像](/documentation/articles/virtual-machines-windows-classic-capture-image)
 
 
 ### 5\.添加到 Azure RemoteApp 模板映像
@@ -121,7 +122,7 @@ sysprep 在完成后会关闭 VM。
 
 ## Multi-Factor Authentication (MFA)
 
-可以为此应用程序专门启用 MFA。转到 Azure Active Directory 的“应用程序”选项卡。你会发现 Microsoft Azure RemoteApp 的一个条目。如果你单击该应用程序然后进行配置，则会看到以下页面，你可以在其中针对此应用程序启用 MFA。
+可以为此应用程序专门启用 MFA。转到 Azure Active Directory 的“应用程序”选项卡。你会发现 Azure RemoteApp 的一个条目。如果你单击该应用程序然后进行配置，则会看到以下页面，你可以在其中针对此应用程序启用 MFA。
 
 ![启用 MFA][3]
 
@@ -154,4 +155,4 @@ sysprep 在完成后会关闭 VM。
 [5]: ./media/sql-database-ssms-remoteapp/publish.png
 [6]: ./media/sql-database-ssms-remoteapp/user.png
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0509_2016-->

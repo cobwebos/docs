@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect：开始使用快速设置 | Microsoft Azure"
+	pageTitle="通过快速设置开始使用 Azure AD Connect | Microsoft Azure"
 	description="了解如何下载、安装和运行 Azure AD Connect 的设置向导。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="02/18/2016"
+	ms.date="03/22/2016"
 	wacn.date=""/>
 
 # 通过快速设置开始使用 Azure AD Connect
@@ -31,7 +31,7 @@
 ## Azure AD Connect 的快速安装
 “快速设置”是默认选项，也是最常用的设置方案之一。使用此选项时，Azure AD Connect 将部署使用密码同步选项的同步。这适用于单一林，它允许你的用户使用本地密码登录到云。如果使用“快速设置”，在完成安装之后，将自动开始进行同步；不过你可以选择不在此时同步。使用此选项时，只需单击几下鼠标就能将本地目录扩展到云中。
 
-![欢迎使用 Azure AD Connect](./media/active-directory-aadconnect-get-started/welcome.png)
+![欢迎使用 Azure AD Connect](./media/active-directory-aadconnect-get-started-express/welcome.png)
 
 ### 使用快速设置安装 Azure AD Connect
 
@@ -43,7 +43,7 @@
 5. 在“连接到 Azure AD”屏幕上，输入 Azure AD 的 Azure 全局管理员用户名和密码。单击“下一步”。
 ![连接到 AAD](./media/active-directory-aadconnect-get-started-express/connectaad.png)
 如果你收到错误消息并且出现了连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
-6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。单击“下一步”。
+6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。可以使用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\\administrator 或 fabrikam.com\\administrator。单击“下一步”。
 ![欢迎使用 Azure AD Connect](./media/active-directory-aadconnect-get-started-express/connectad.png)
 7. 在“已准备好配置”屏幕上，单击“安装”。
 	- 在“已准备好配置”页上，可以取消选中“配置完成后立即开始同步过程”复选框。如果这样做，向导将配置同步，但会禁用同步任务，直到你在任务计划程序重新将它手动启用为止。启用任务后，将每隔 30 分钟运行一次同步。
@@ -61,4 +61,4 @@
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

@@ -13,7 +13,7 @@
 
 
 
-	ms.date="03/21/2016"
+	ms.date="03/29/2016"
 	wacn.date=""/>
 
 
@@ -162,7 +162,7 @@
 你可以将 Azure AD Connect Health 代理配置为使用 HTTP 代理。
 
 >[AZURE.NOTE]
-- 无法使用“Netsh WinHttp set ProxyServerAddress”，因为代理使用 System.Net（而不是 Microsoft Windows HTTP 服务）发出 Web 请求。
+- 无法使用“Netsh WinHttp set ProxyServerAddress”，因为代理使用 System.Net 而不是 Microsoft Windows HTTP 服务发出 Web 请求。
 - 配置的 Http 代理地址将用于传递加密的 Https 消息。
 - 不支持经过身份验证的代理（使用 HTTPBasic）。
 
@@ -189,7 +189,7 @@
 
 	Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 
-示例：*Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver:443*
+示例：Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver:443
 
 - “地址”可以是 DNS 可解析的服务器名称或 IPv4 地址
 - 可以省略“端口”。如果省略端口，则会选择 443 作为默认端口。
@@ -234,4 +234,4 @@ role 参数目前可接受以下值：
 * [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync)
 * [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

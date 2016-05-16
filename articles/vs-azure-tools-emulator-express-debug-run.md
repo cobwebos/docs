@@ -1,21 +1,20 @@
-<properties 
-   pageTitle="使用 Emulator Express 在本地运行和调试云服务"
-   description="使用 Emulator Express 在本地运行和调试云服务"
+<properties
+   pageTitle="使用 Emulator Express 在本地计算机上运行和调试云服务 | Azure"
+   description="使用 Emulator Express 在本地计算机上运行和调试云服务"
    services="visual-studio-online"
    documentationCenter="n/a"
-   authors="patshea123"
+   authors="TomArcher"
    manager="douge"
-   editor="tlee" />
-<tags 
+   editor="" />
+<tags
    ms.service="visual-studio-online"
-   ms.date="08/12/2015"
+   ms.date="01/30/2016"
    wacn.date="" />
 
-# 使用 Emulator Express 在本地运行和调试云服务
 
-##概述
+# 使用 Emulator Express 在本地计算机上运行和调试云服务
 
-通过使用 Emulator Express，您可以测试和调试云服务，而不需要以管理员身份运行 Visual Studio。您可以将项目设置指定为根据云服务的要求使用 Emulator Express 或完整版模拟器。有关完整模拟器的详细信息，请参阅 [在计算模拟器中运行 Azure 应用程序]http://go.microsoft.com/fwlink/p/?LinkId=623050)。Emulator Express 首次包含在 Azure SDK 2.1 中，从 Azure SDK 2.3 开始，它已是默认的模拟器。
+通过使用 Emulator Express，您可以测试和调试云服务，而不需要以管理员身份运行 Visual Studio。您可以将项目设置指定为根据云服务的要求使用 Emulator Express 或完整版模拟器。有关完整模拟器的详细信息，请参阅[在计算模拟器中运行 Azure 应用程序](/documentation/articles/storage-use-emulator)。Emulator Express 首次包含在 Azure SDK 2.1 中，从 Azure SDK 2.3 开始，它已是默认的模拟器。
 
 ## 在 Visual Studio IDE 中使用 Emulator Express
 
@@ -49,6 +48,6 @@
 
 ## 后续步骤
 
-[调试云服务](http://go.microsoft.com/fwlink/p/?LinkId=623041)
+[调试云服务](https://msdn.microsoft.com/zh-cn/library/azure/ee405479.aspx)
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0509_2016-->

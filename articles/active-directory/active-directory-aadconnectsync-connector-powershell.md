@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect 同步：PowerShell 连接器"
+   pageTitle="Azure AD Connect 同步：PowerShell 连接器 | Microsoft Azure"
    description="本文介绍如何配置 Microsoft 的 Windows PowerShell 连接器。"
    services="active-directory"
    documentationCenter=""
@@ -24,7 +24,7 @@
 
 ## PowerShell 连接器概述
 
-PowerShell 连接器可让你将同步服务与可提供基于 Windows PowerShell 的应用程序编程接口 (API) 的外部系统相集成。该连接器在基于调用的可扩展连接管理代理 2 (ECMA2) 框架与 Windows PowerShell 的功能之间提供桥梁。有关 ECMA 框架的详细信息，请参阅 [Extensible Connectivity 2.2 Management Agent Reference](https://msdn.microsoft.com/library/windows/desktop/hh859557.aspx)（可扩展连接管理代理 2.2 参考）。
+PowerShell 连接器可让你将同步服务与可提供基于 Windows PowerShell 的应用程序编程接口 (API) 的外部系统相集成。该连接器在基于调用的可扩展连接管理代理 2 (ECMA2) 框架与 Windows PowerShell 的功能之间提供桥梁。有关 ECMA 框架的详细信息，请参阅 [Extensible Connectivity 2.2 Management Agent Reference（可扩展连接管理代理 2.2 参考）](https://msdn.microsoft.com/library/windows/desktop/hh859557.aspx)。
 
 ### 先决条件
 
@@ -307,7 +307,7 @@ Windows PowerShell 连接器可以用作密码更改/重置的目标。
 
 ## 示例连接器
 
-有关可用示例连接器的完整概述，请参阅 [Windows PowerShell Connector Sample Connector Collection][samp]（Windows PowerShell 连接器示例连接器集合）。
+有关可用示例连接器的完整概述，请参阅 [Windows PowerShell Connector Sample Connector Collection（Windows PowerShell 连接器示例连接器集合）][samp]。
 
 ## 其他说明
 
@@ -337,7 +337,7 @@ $account.Translate([System.Security.Principal.SecurityIdentifier]).Value
 
 ## 故障排除
 
--	有关如何启用记录来排查连接器问题的信息，请参阅 [How to Enable ETW Tracing for Connectors](http://go.microsoft.com/fwlink/?LinkId=335731)（如何启用连接器的 ETW 跟踪）。
+-	有关如何启用记录来排查连接器问题的信息，请参阅 [How to Enable ETW Tracing for Connectors（如何启用连接器的 ETW 跟踪）](http://go.microsoft.com/fwlink/?LinkId=335731)。
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 [cpp]: https://msdn.microsoft.com/library/windows/desktop/microsoft.metadirectoryservices.configparameterpage.aspx
@@ -370,4 +370,4 @@ $account.Translate([System.Security.Principal.SecurityIdentifier]).Value
 [pwdex3]: https://msdn.microsoft.com/library/windows/desktop/microsoft.metadirectoryservices.passwordextensionexception.aspx
 [samp]: http://go.microsoft.com/fwlink/?LinkId=394291
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

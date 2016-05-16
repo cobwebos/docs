@@ -81,7 +81,7 @@ Fabrikam 中有对名字、姓氏和显示名称使用本地字母的林。以�
 
 - 创建新的入站同步规则并填充说明 
 ![说明](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/syncruledescription.png)
-- 创建类型为 Expression 且源为 AuthoritativeNull 的属性流。即使优先顺序较低的同步规则尝试填充值，文本值 AuthoritativeNull 也会指出 MV 中的值应该为空。
+- 创建类型为 **Expression** 且源为 **AuthoritativeNull** 的属性流。即使优先顺序较低的同步规则尝试填充值，文本值 **AuthoritativeNull** 也会指出 MV 中的值应该为空。
 ![扩展属性](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/syncruletransformations.png)
 - 保存同步规则。启动“同步服务”，查找连接器，然后依次选择“运行”和“完全同步”。这将重新计算所有属性流。
 - 通过搜索连接器空间来验证是否即将导出所需的更改。
@@ -112,4 +112,4 @@ Fabrikam 中有对名字、姓氏和显示名称使用本地字母的林。以�
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

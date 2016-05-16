@@ -1,6 +1,6 @@
 <properties
-	pageTitle="管理 Azure AD 目录"
-	description="本主题介绍什么是 Azure AD 租户，以及如何管理 Azure AD 目录。"
+	pageTitle="管理 Azure AD 目录 | Microsoft Azure"
+	description="介绍什么是 Azure AD 租户，以及如何通过 Azure Active Directory 管理 Azure。"
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="01/25/2016"
+	ms.date="04/07/2016"
 	wacn.date="" />
 
 # 管理 Azure AD 目录
@@ -49,9 +49,9 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 
 ### 将 Azure AD 目录与新的 Azure 订阅相关联
 
-可以将新的 Azure 订阅，与用于对现有 Office 365 或 Microsoft Intune 订阅的登录进行身份验证的相同目录进行关联。请使用你的工作或学校帐户登录到 Azure 管理门户。管理门户将返回一条消息，指出找不到该帐户的任何订阅。选择“注册 Azure”，你的目录将可用于在门户中进行管理。有关详细信息，请参阅[在 Azure 中管理 Office 365 订阅的目录](active-directory-how-subscriptions-associated-directory#manage-the-directory-for-your-office-365-subscription-in-azure)。
+可以将新的 Azure 订阅，与用于对现有 Office 365 或 Microsoft Intune 订阅的登录进行身份验证的相同目录进行关联。请使用你的工作或学校帐户登录到 Azure 管理门户。管理门户将返回一条消息，指出找不到该帐户的任何订阅。选择“注册 Azure”，你的目录将可用于在门户中进行管理。有关详细信息，请参阅[在 Azure 中管理 Office 365 订阅的目录](active-directory-how-subscriptions-associated-directory.md#manage-the-directory-for-your-office-365-subscription-in-azure)。
 
-<!--For a video about common usage questions for Azure AD, see [Azure Active Directory - Common Sign-up, sign-in and usage questions](http://channel9.msdn.com/Series/Windows-Azure-Active-Directory/WAADCommonSignupsigninquestions).-->
+有关 Azure AD 的常见使用问题的视频，请参阅 [Azure Active Directory 的常见注册、登录和使用问题](http://channel9.msdn.com/Series/Windows-Azure-Active-Directory/WAADCommonSignupsigninquestions)。
 
 ### 通过以组织名义注册 Microsoft 云服务来创建 Azure AD 目录
 
@@ -96,17 +96,17 @@ Azure 管理门户、Office 365 管理中心、Microsoft Intune 帐户门户和 
 
 可将每个目录作为完全独立的资源进行管理：每个目录都是一个具有完整功能的对等方，在逻辑上独立于你所管理的其他目录；目录之间不存在父子关系。目录之间的这种独立性包括资源独立性、管理独立性和同步独立性。
 
-- **资源独立性**。在一个目录中创建或删除一个资源不影响另一个目录中的任何资源，但对于外部用户来说，情况并不完全如此，具体如下所述。如果将自定义域“contoso.com”用于一个目录，则不能将它用于任何其他目录。 
-- **管理独立性**。如果目录“Contoso”的某个非管理用户创建了测试目录“Test”，那么： 
-    - ◦目录同步工具，用于将数据与单个 AD 林同步。 
-    - ◦目录“Contoso”的管理员对目录“Test”没有直接管理特权，除非“Test”的管理员专门向其授予了这些特权。“Contoso”的管理员可以控制对目录“Test”的访问，因为他们可以控制创建“Test”的用户帐户。 
+- **资源独立性**。在一个目录中创建或删除一个资源不影响另一个目录中的任何资源，但对于外部用户来说，情况并不完全如此，具体如下所述。如果将自定义域“contoso.com”用于一个目录，则不能将它用于任何其他目录。
+- **管理独立性**。如果目录“Contoso”的某个非管理用户创建了测试目录“Test”，那么：
+    - ◦目录同步工具，用于将数据与单个 AD 林同步。
+    - ◦目录“Contoso”的管理员对目录“Test”没有直接管理特权，除非“Test”的管理员专门向其授予了这些特权。“Contoso”的管理员可以控制对目录“Test”的访问，因为他们可以控制创建“Test”的用户帐户。
 
     另外，如果你更改（添加或删除）某个用户在一个目录中的管理员角色，这项更改不会影响该用户在另一个目录中可能具有的任何管理员角色。
 
 
 - **同步独立性**。可以独立配置每个 Azure AD，以便通过下列任一工具的单个实例同步数据：
     - 目录同步工具，用于将数据与单个 AD 林同步
-    - 适用于 Forefront Identity Manager 的 Azure Active Directory 连接器，用于将数据与一个或多个本地林和/或非 AD 数据源同步。 
+    - 适用于 Forefront Identity Manager 的 Azure Active Directory 连接器，用于将数据与一个或多个本地林和/或非 AD 数据源同步。
 
 另请注意，与其他 Azure 资源不同，你的目录不是 Azure 订阅的子资源。因此，如果取消 Azure 订阅或让其过期，则仍可以使用 Azure AD PowerShell、Azure Graph API 或其他界面（例如 Office 365 管理中心）访问目录数据。还可以将其他订阅与目录相关联。
 
@@ -123,8 +123,8 @@ Azure AD 要求删除目录之前必须符合特定的条件。这可以降低�
 需检查以下条件：
 
 - 该目录中的唯一用户是将要删除该目录的全局管理员。只有在删除所有其他用户后，才能删除该目录。如果用户是从本地同步的，则需要关闭同步，并且必须使用管理门户或用于 Windows PowerShell 的 Azure 模块从云目录中删除这些用户。不要求删除组或联系人，例如，从 Office 365 管理中心添加的联系人。
-- 该目录中不能有任何应用程序。只有在删除所有应用程序后，才能删除该目录。 
-- 与该目录关联的任何 Microsoft Online Services（例如 Microsoft Azure、Office 365 或 Azure AD Premium）不能存在任何订阅。例如，如果在 Azure 中为你创建了一个默认目录，并且你的 Azure 订阅仍然依赖于此目录进行身份验证，则你不能删除此目录。类似地，如果其他用户已将订阅与某个目录相关联，则你无法删除该目录。若要将你的订阅与其他目录相关联，请登录到 Azure 管理门户，并在左侧导航窗格中单击“设置”。然后，在“订阅”页的底部单击“编辑目录”。有关 Azure 订阅的详细信息，请参阅 [Azure 订阅与 Azure AD 的关联方式](active-directory-how-subscriptions-associated-directory)。 
+- 该目录中不能有任何应用程序。只有在删除所有应用程序后，才能删除该目录。
+- 与该目录关联的任何 Microsoft Online Services（例如 Microsoft Azure、Office 365 或 Azure AD 高级版）不能存在任何订阅。例如，如果在 Azure 中为你创建了一个默认目录，并且你的 Azure 订阅仍然依赖于此目录进行身份验证，则你不能删除此目录。类似地，如果其他用户已将订阅与某个目录相关联，则你无法删除该目录。若要将你的订阅与其他目录相关联，请登录到 Azure 管理门户，并在左侧导航窗格中单击“设置”。然后，在“订阅”页的底部单击“编辑目录”。有关 Azure 订阅的详细信息，请参阅 [Azure 订阅与 Azure AD 的关联方式](active-directory-how-subscriptions-associated-directory.md)。
 
     > [AZURE.NOTE]
     如果用户是使用工作或学校帐户登录的，则该用户不得尝试删除其主目录。例如，如果用户是作为 joe@contoso.onmicrosoft.com 登录的，则该用户不能删除默认域为 contoso.onmicrosoft.com 的目录。
@@ -145,6 +145,4 @@ Azure AD 要求删除目录之前必须符合特定的条件。这可以降低�
 [1]: ./media/active-directory-administer/aad_portals.png
 [2]: ./media/active-directory-administer/azure_tenants.png
 
-
-
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="通过自定义媒体编码器标准预设执行高级编码任务" 
+	pageTitle="使用媒体编码器标准版进行高级编码" 
 	description="本主题说明如何通过自定义媒体编码器标准任务预设执行高级编码。本主题说明如何使用媒体服务 .NET SDK 创建编码任务和作业。此外，还说明如何向编码作业提供自定义预设。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -9,15 +9,15 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="02/18/2016"    
+	ms.date="03/27/2016"    
 	wacn.date=""/>
 
 
-#通过自定义媒体编码器标准预设执行高级编码任务
+#使用媒体编码器标准版进行高级编码
 
 ##概述
 
-本主题说明如何通过自定义媒体编码器标准任务预设执行高级编码。本主题说明[如何使用 .NET 创建一个编码任务，以及用于执行此任务的作业](/documentation/articles/media-services-custom-mes-presets-with-dotnet#encoding_with_dotnet)。此外，还说明如何向编码任务提供自定义预设。有关预设所用元素的说明，请参阅[此文档](https://msdn.microsoft.com/zh-cn/library/mt269962.aspx)。
+本主题演示如何使用媒体编码器标准版执行高级编码任务。本主题说明[如何使用 .NET 创建一个编码任务，以及用于执行此任务的作业](/documentation/articles/media-services-custom-mes-presets-with-dotnet#encoding_with_dotnet)。此外，还说明如何向编码任务提供自定义预设。有关预设所用元素的说明，请参阅[此文档](https://msdn.microsoft.com/zh-cn/library/mt269962.aspx)。
 
 下面演示了执行以下编码任务的自定义预设：
 
@@ -26,6 +26,7 @@
 - [创建覆盖层](/documentation/articles/media-services-custom-mes-presets-with-dotnet#overlay)
 - [在输入不包含音频时插入静音曲目](/documentation/articles/media-services-custom-mes-presets-with-dotnet#silent_audio)
 - [禁用自动取消隔行扫描](/documentation/articles/media-services-custom-mes-presets-with-dotnet#deinterlacing)
+- [仅音频预设](/documentation/articles/media-services-custom-mes-presets-with-dotnet#audio_only)
 
 ##<a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
 
@@ -33,7 +34,7 @@
 
 - 创建编码作业。
 - 获取对媒体编码器标准版编码器的引用。
-- 加载自定义 XML 或 JSON 预设。可以在某个文件中保存 XML 或 JSON（例如[XML](/documentation/articles/media-services-custom-mes-presets-with-dotnet#xml) 或 [JSON](/documentation/articles/media-services-custom-mes-presets-with-dotnet#json)），然后使用以下代码加载该文件。
+- 加载自定义 XML 或 JSON 预设。可以在某个文件中保存 XML 或 JSON（例如 [XML](/documentation/articles/media-services-custom-mes-presets-with-dotnet#xml) 或 [JSON](/documentation/articles/media-services-custom-mes-presets-with-dotnet#json)），然后使用以下代码加载该文件。
 
 			// Load the XML (or JSON) from the local file.
 		    string configuration = File.ReadAllText(fileName);  
@@ -234,7 +235,7 @@
 
 本部分说明如何自定义生成缩略图的预设。下面定义的预设包含有关如何将文件编码的信息，以及生成缩略图时所需的信息。你可以使用[此处](https://msdn.microsoft.com/zh-cn/library/mt269960.aspx)所述的任何 MES 预设，以及添加生成缩略图的代码。
 
->[AZURE.NOTE]如果要编码为单比特视频，以下预设中的 **SceneChangeDetection** 设置只能设为 true。如果要编码为多比特率视频并将 **SceneChangeDetection** 设为 true，则编码器将返回错误。
+>[AZURE.NOTE]如果要编码为单比特率视频，以下预设中的 **SceneChangeDetection** 设置只能设为 true。如果要编码为多比特率视频并将 **SceneChangeDetection** 设为 true，则编码器将返回错误。
 
 
 有关架构的信息，请参阅[此主题](https://msdn.microsoft.com/zh-cn/library/mt269962.aspx)。
@@ -431,7 +432,8 @@
 
 	你可以随意混搭使用表示法。
 	
-	此外，Start 还支持特殊的宏 {Best}，它会尝试判断第一个“有意义”的内容帧。注意：（Start 设置为 {Best} 时，将忽略 Step 与 Range）
+	此外，Start 还支持特殊的宏 {Best}，它会尝试判断第一个“有意义”的内容帧。 
+	注意：（Start 设置为 {Best} 时，将忽略 Step 与 Range）
 	
 	- 默认值：Start:{Best}
 - 需要显式提供每个图像格式的输出格式：Jpg/Png/BmpFormat。MES 会将 JpgVideo（如果已指定）与 JpgFormat 进行匹配，依此类推。OutputFormat 引入了新的图像编解码器特定宏 {Index}，需要为图像输出格式提供该宏一次（且只需一次）。
@@ -666,7 +668,6 @@
 	          <MaxBitrate>400</MaxBitrate>
 	        </H264Layer>
 	      </H264Layers>
-	      <Chapters />
 	    </H264Video>
 	    <AACAudio>
 	      <Profile>AACLC</Profile>
@@ -686,9 +687,9 @@
 
 媒体编码器标准允许你在现有视频上覆盖图像。目前支持以下格式：png、jpg、gif 和 bmp。下面定义的预设是视频覆盖层的基本示例。
 
-除了定义预设文件外，你还必须让媒体服务知道资产中的哪个文件是覆盖层图像，哪个文件是你要在其上覆盖图像的源视频。视频文件必须是主文件。
+除了定义预设文件外，你还必须让媒体服务知道资产中的哪个文件是覆盖层图像，哪个文件是你要在其上覆盖图像的源视频。视频文件必须是**主**文件。
 
-上面的 .NET 示例定义了两个函数：  **UploadMediaFilesFromFolder** 和 **EncodeWithOverlay** 。UploadMediaFilesFromFolder 函数从文件夹上载文件（例如 BigBuckBunny.mp4 和 Image001.png），并将 mp4 文件设置为资产中的主文件。 **EncodeWithOverlay** 函数使用传递给它的自定义预设文件（例如，下面的预设）来创建编码任务。
+上面的 .NET 示例定义了两个函数：**UploadMediaFilesFromFolder** 和 **EncodeWithOverlay**。UploadMediaFilesFromFolder 函数从文件夹上载文件（例如 BigBuckBunny.mp4 和 Image001.png），并将 mp4 文件设置为资产中的主文件。**EncodeWithOverlay** 函数使用传递给它的自定义预设文件（例如，下面的预设）来创建编码任务。
 
 >[AZURE.NOTE]当前限制：
 >
@@ -893,12 +894,59 @@
 	</Sources>
 
 
+##<a id="audio_only"></a>仅音频预设
 
+本部分介绍两个仅音频 MES 预设：AAC 音频和 AAC 优质音频。
 
+###AAC 音频 
+
+	{
+	  "Version": 1.0,
+	  "Codecs": [
+	    {
+	      "Profile": "AACLC",
+	      "Channels": 2,
+	      "SamplingRate": 48000,
+	      "Bitrate": 128,
+	      "Type": "AACAudio"
+	    }
+	  ],
+	  "Outputs": [
+	    {
+	      "FileName": "{Basename}_AAC_{AudioBitrate}.mp4",
+	      "Format": {
+	        "Type": "MP4Format"
+	      }
+	    }
+	  ]
+	}
+
+###AAC 优质音频
+
+	{
+	  "Version": 1.0,
+	  "Codecs": [
+	    {
+	      "Profile": "AACLC",
+	      "Channels": 2,
+	      "SamplingRate": 48000,
+	      "Bitrate": 192,
+	      "Type": "AACAudio"
+	    }
+	  ],
+	  "Outputs": [
+	    {
+	      "FileName": "{Basename}_AAC_{AudioBitrate}.mp4",
+	      "Format": {
+	        "Type": "MP4Format"
+	      }
+	    }
+	  ]
+	}
 
 
 ##另请参阅 
 
 [媒体服务编码概述](/documentation/articles/media-services-encode-asset)
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0509_2016-->

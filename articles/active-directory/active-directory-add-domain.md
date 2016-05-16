@@ -9,6 +9,7 @@
 
 <tags
 	ms.service="active-directory"
+
 	ms.date="02/08/2016"
 	wacn.date=""/>
 
@@ -30,7 +31,7 @@ Azure Active Directory 中的每个目录随附内置域名，格式为“contos
 
 与 Azure AD 中的其他资源一样，已添加并验证的自定义域名可以在 Office 365、Intune 以及使用 Azure AD 的其他应用程序中使用。例如，在 Exchange Online 中使用自定义域名可让用户以熟悉的电子邮件地址（例如 joe@contoso.com）发送和接收电子邮件。若要让其他这些应用程序使用自定义域，你需要根据应用程序所述，在 DNS 注册机构添加其他 DNS 条目。
 
--   [与 Office 365 中使用自定义域](https://support.office.com/article/Add-your-users-and-domain-to-Office-365-6383f56d-3d09-4dcb-9b41-b5f5a5efd611?ui=en-US&rs=en-US&ad=US)
+-   [与 Office 365 中使用自定义域](https://support.office.com/article/Add-your-users-and-domain-to-Office-365-6383f56d-3d09-4dcb-9b41-b5f5a5efd611?ui=zh-cn&rs=zh-cn&ad=US)
 
 -   [在 Intune 中使用自定义域](https://technet.microsoft.com/library/dn646966.aspx#BKMK_DomainNames)
 
@@ -75,4 +76,4 @@ Azure Active Directory 中的每个目录随附内置域名，格式为“contos
 - [更改自定义域名的 DNS 注册机构](active-directory-add-domain-change-registrar.md)
 - [在 Azure Active Directory 中删除自定义域名](active-directory-add-domain-delete-domain.md)
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

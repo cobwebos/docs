@@ -4,12 +4,12 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	manager="stevenpo" 
+	editor="curtland"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="06/02/2015" 
+	ms.date="04/04/2016" 
 	wacn.date=""/>
 
 # MFA 服务器移动应用 Web 服务入门
@@ -20,7 +20,7 @@ Azure Multi-Factor Authentication 应用提供一个附加的带外身份验证�
 
 - 有关硬件和软件要求，请参阅“硬件和软件要求”
 - 必须使用 v6.0 或更高版本的 Azure Multi-Factor Authentication 服务器
-- 移动应用 Web 服务必须安装在运行 Microsoft® Internet Information Services (IIS) 6.x 或 IIS 7.x 的面向 Internet 的 Web 服务器上
+- 移动应用 Web 服务必须安装在运行 Microsoft® Internet Information Services (IIS) 6.x 或 IIS 7.x 的面向 Internet 的 Web 服务器上。有关 IIS 的详细信息，请参阅 [IIS.NET](http://www.iis.net/)。
 - 使用 IIS 6.x 时，请确保 ASP.NET v2.0.50727 已安装、注册并设置为“允许”
 - 使用 IIS 7.x 时必需的角色服务包括 ASP.NET 和 IIS 6 元数据库兼容性
 - 移动应用 Web 服务必须可通过公共 URL 访问
@@ -28,7 +28,7 @@ Azure Multi-Factor Authentication 应用提供一个附加的带外身份验证�
 - Azure Multi-Factor Authentication Web 服务 SDK 必须安装在 Azure Multi-Factor Authentication 服务器信任的服务器上的 IIS 6.x 或 IIS 7.x 中
 - 必须使用 SSL 证书保护 Azure Multi-Factor Authentication Web 服务 SDK。
 - 移动应用 Web 服务必须能够通过 SSL 连接到 Azure Multi-Factor Authentication Web 服务 SDK
-- 移动应用 Web 服务必须能够使用属于名为“Azure Multi-Factor Authentication管理员”的安全组的服务帐户的凭据，通过 Azure Multi-Factor Authentication Web 服务 SDK 进行身份验证。如果 Azure Multi-Factor Authentication 服务器运行在已加入域的服务器上，则此服务帐户和组存在于 Active Directory 中。如果运行 Azure Multi-Factor Authentication 服务器的服务器未加入域，则此服务帐户和组存在于本地的该服务器上。
+- 移动应用 Web 服务必须能够使用属于名为“PhoneFactor 管理员”的安全组的服务帐户凭据，通过 Azure Multi-Factor Authentication Web 服务 SDK 进行身份验证。如果 Azure Multi-Factor Authentication 服务器运行在已加入域的服务器上，则此服务帐户和组存在于 Active Directory 中。如果 Azure Multi-Factor Authentication 服务器未加入域，则此服务帐户和组存在于本地的该服务器上。
 
 
 在除 Azure Multi-Factor Authentication 服务器以外的其他服务器上安装用户门户需要完成以下三个步骤：
@@ -54,7 +54,7 @@ Azure Multi-Factor Authentication 应用提供一个附加的带外身份验证�
 ### 安装移动应用 Web 服务
 
 <ol>
-<li>在运行 Azure Multi-Factor Authentication 服务器的服务器上，打开 Windows 资源管理器，并导航到 Azure Multi-Factor Authentication 服务器所安装到的文件夹（例如 C:\Program Files\Azure Multi-Factor Authentication）。根据移动应用 Web 服务将安装到的服务器的需要，选择 32 位或 64 位版本的 Azure Multi-Factor AuthenticationPhoneAppWebServiceSetup 安装文件。将安装文件复制到面向 Internet 的服务器。</li>
+<li>在 Azure Multi-Factor Authentication 服务器上打开 Windows 资源管理器并导航到安装 Azure Multi-Factor Authentication 服务器的文件夹（例如，C:\Program Files\Azure Multi-Factor Authentication）。根据移动应用 Web 服务将安装到的服务器的需要，选择 32 位或 64 位版本的 Azure Multi-Factor AuthenticationPhoneAppWebServiceSetup 安装文件。将安装文件复制到面向 Internet 的服务器。</li>
 
 <li>在面向 Internet 的 Web 服务器上，必须使用管理员权限运行安装文件。执行此操作的最简单方法是，以管理员身份打开命令提示符，并导航到安装文件所复制到的位置。</li>
 
@@ -64,11 +64,11 @@ Azure Multi-Factor Authentication 应用提供一个附加的带外身份验证�
 
 <li>找到 WEB_SERVICE_SDK_AUTHENTICATION_USERNAME 和 WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD 键，并将其值设为属于“PhoneFactor 管理员”安全组的服务帐户的用户名和密码（请参见上面的“要求”部分）。这可能是用作 Azure Multi-Factor Authentication 用户门户标识的帐户（如果之前已安装）。请务必在行末引号之间输入用户名和密码 (value=""/>)。建议使用限定的用户名（例如“域\用户名”或“计算机\用户名”）。</li>
 
-<li>找到“pfMobile 应用 Web Service_pfwssdk_PfWsSdk”设置，并将值从“http://localhost:4898/PfWsSdk.asmx”更改为运行 Azure Multi-Factor Authentication 服务器的服务器上运行的 Web 服务 SDK 的 URL（例如 https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx ）。由于对此连接使用了 SSL，你必须按服务器名称（而非 IP 地址）引用 Web 服务 SDK，因为已针对服务器名称颁发 SSL 证书，而所用的 URL 必须与证书上的名称相匹配。如果服务器名称无法解析为面向 Internet 的服务器的 IP 地址，请在该服务器上的 hosts 文件中添加一个条目，以将 Azure Multi-Factor Authentication 服务器的名称映射到其 IP 地址。进行更改之后，保存 web.config 文件。</li>
+<li>找到“pfMobile 应用 Web Service_pfwssdk_PfWsSdk”设置，并将值从“http://localhost:4898/PfWsSdk.asmx”更改为在 Azure Multi-Factor Authentication 服务器上运行的 Web 服务 SDK 的 URL（例如 https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx）。 由于对此连接使用了 SSL，你必须按服务器名称（而非 IP 地址）引用 Web 服务 SDK，因为已针对服务器名称颁发 SSL 证书，而所用的 URL 必须与证书上的名称相匹配。如果服务器名称无法解析为面向 Internet 的服务器的 IP 地址，请在该服务器上的 hosts 文件中添加一个条目，以将 Azure Multi-Factor Authentication 服务器的名称映射到其 IP 地址。进行更改之后，保存 web.config 文件。</li>
 
 <li>如果已安装移动应用 Web 服务的网站（例如默认网站）尚未与公开签名的证书绑定，请在服务器上安装证书（如果尚未安装），打开 IIS 管理器并将证书绑定到该网站。</li>
 
-<li>从任何计算机打开 Web 浏览器，然后导航到已安装移动应用 Web 服务的 URL（例如 https://www.publicwebsite.com/PA ）。确保未显示证书警告或错误。</li>
+<li>从任何计算机打开 Web 浏览器，然后导航到已安装移动应用 Web 服务的 URL（例如 https://www.publicwebsite.com/PA）。 确保未显示证书警告或错误。</li>
 
 ### 在 Azure Multi-Factor Authentication 服务器中配置移动应用设置
 安装移动应用 Web 服务后，你需要配置 Azure Multi-Factor Authentication 服务器，使其能够与门户配合工作。
@@ -85,4 +85,6 @@ Azure Multi-Factor Authentication 应用提供一个附加的带外身份验证�
 
 <center>![Setup](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
 
-<!---HONumber=69-->
+
+
+<!---HONumber=Mooncake_0509_2016-->

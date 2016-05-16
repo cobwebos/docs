@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect 同步：泛型 SQL 连接器"
+   pageTitle="Azure AD Connect 同步：泛型 SQL 连接器 | Microsoft Azure"
    description="本文介绍如何配置 Microsoft 的泛型 SQL 连接器。"
    services="active-directory"
    documentationCenter=""
@@ -122,7 +122,8 @@
 
 - 不列出多值属性和布尔属性。
 - DN 和定位点不能使用相同的属性，除非已在“连接”页面上选择“DN 是定位点”。
-- 如果已在“连接”页面上选择“DN 是定位点”，此页面只需要 DN 属性。此属性也用作定位点属性。![schema3b](./media/active-directory-aadconnectsync-connector-genericsql/schema3b.png)
+- 如果已在“连接”页面上选择“DN 是定位点”，此页面只需要 DN 属性。此属性也用作定位点属性。
+![schema3b](./media/active-directory-aadconnectsync-connector-genericsql/schema3b.png)
 
 ### 架构 4（定义属性类型、引用和方向）
 
@@ -131,7 +132,8 @@
 ![schema4a](./media/active-directory-aadconnectsync-connector-genericsql/schema4a.png)
 
 - **DataType**：用于将属性类型映射到同步引擎所知的属性类型。默认使用在 SQL 架构中检测到的相同类型，但 DateTime 和 Reference 不容易检测。因此，需要指定 **DateTime** 或 **Reference**。
-- **方向**：可以设置 Import、Export 或 ImportExport 的属性方向。ImportExport 是默认值。![schema4b](./media/active-directory-aadconnectsync-connector-genericsql/schema4b.png)
+- **方向**：可以设置 Import、Export 或 ImportExport 的属性方向。ImportExport 是默认值。
+![schema4b](./media/active-directory-aadconnectsync-connector-genericsql/schema4b.png)
 
 说明：
 
@@ -300,4 +302,4 @@
 
 -	有关如何启用记录来排查连接器问题的信息，请参阅[如何启用连接器的 ETW 跟踪](http://go.microsoft.com/fwlink/?LinkId=335731)。
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

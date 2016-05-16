@@ -1,5 +1,3 @@
-## 配置概述
-
 此任务的步骤使用基于以下值的 VNet。此列表中也概述了其他设置和名称。尽管我们确实基于此列表中的值添加变量，但是我们在任何步骤中不会直接使用此列表。你可以复制列表作为参考，并将列表中的值替换为自己的值。
 
 配置参考列表：
@@ -15,7 +13,7 @@
 - 网关名称 = “GW”
 - 网关 IP 名称 = “GWIP”
 - 网关 IP 配置名称 = “gwipconf”
-- VPN 类型 = “ExpressRoute” ExpressRoute 配置需要此 VPN 类型。
+-  类型 =“ExpressRoute” ExpressRoute 配置需要此类型。
 - 网关公共 IP 名称 = “gwpip”
 
 
@@ -63,6 +61,24 @@
 
 9. 创建网关。在此步骤中，**-GatewayType** 尤其重要。必须使用值 **ExpressRoute**。请注意，运行这些 cmdlet 后，可能需要 20 分钟或更多时间来创建网关。
 
-		New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute
+		New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
 
-<!---HONumber=Mooncake_0328_2016-->
+## 验证是否已创建网关
+
+使用以下命令来验证是否已创建网关。
+
+	Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG
+
+## 重设网关大小
+
+有三个[网关 SKU](/documentation/articles/vpn-gateway-about-vpngateways)。你可以使用以下命令随时更改网关 SKU。
+
+	$gw = Get-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
+	Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+
+## 删除网关
+
+使用以下命令可删除网关
+
+	Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG  
+<!---HONumber=Mooncake_0509_2016-->

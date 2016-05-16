@@ -8,7 +8,7 @@
    editor=""/>
 <tags
    ms.service="expressroute"
-   ms.date="02/08/2016"
+   ms.date="03/21/2016"
    wacn.date=""/>
 
 
@@ -18,7 +18,7 @@
 
 有关需要在设置后才能建立连接的路由会话的说明，请参阅[线路和路由域](/documentation/articles/expressroute-circuit-peerings)一文。
 
-**注意：** Microsoft 不支持任何高可用性配置的路由器冗余协议（如 HSRP 和 VRRP）。我们依赖每个对等互连的一组冗余 BGP 会话来获得高可用性。
+**注意：**Microsoft 不支持任何高可用性配置的路由器冗余协议（如 HSRP 和 VRRP）。我们依赖每个对等互连的一组冗余 BGP 会话来获得高可用性。
 
 ## 对等互连的 IP 地址
 
@@ -74,7 +74,7 @@ a.b.c.d/29 拆分成 a.b.c.d/30 和 a.b.c.d+4/30 并通过预配 API 一路传�
 
 ## 自治系统编号
 
-Microsoft 使用 AS 12076 进行 Azure 公共、Azure 专用和 Microsoft 对等互连。我们保留了 AS 65515 供内部使用。支持 16 和 32 位 AS 编号。你可以使用专用 AS 编号建立 Azure 专用对等互连。你必须使用注册的公共 AS 编号建立 Azure 专用和 Microsoft 对等互连。
+Microsoft 使用 AS 12076 进行 Azure 公共、Azure 专用和 Microsoft 对等互连。我们保留了 AS 65515 供内部使用。支持 16 和 32 位 AS 编号。
 
 数据传输对称没有相关要求。转发与返回路径可以遍历不同的路由器对。相同的路由必须在你拥有的多个线路对上，从任何一端播发。路由指标不需要完全相同。
 
@@ -97,7 +97,7 @@ ExpressRoute 不能配置为传输路由器。你必须依赖连接服务提供�
  - 已启用 Azure 公共对等互连，以将流量路由到公共终结点
  - 已使用用户定义的路由，为需要 Internet 连接的每个子网建立 Internet 连接。
 
-**注意：** 播发默认路由会中断 Windows 和其他 VM 许可证激活。请按照[此处](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)的说明来解决此问题。
+**注意：**播发默认路由会中断 Windows 和其他 VM 许可证激活。请按照[此处](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)的说明来解决此问题。
 
 ## BGP 社区支持（即将推出）
 
@@ -113,7 +113,7 @@ ExpressRoute 不能配置为传输路由器。你必须依赖连接服务提供�
 
 Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标记通过公共对等互连和 Microsoft 对等互连播发的前缀。你可以依赖社区值来做出适当的路由决策，以向客户提供最佳路由。
 
-| **地缘政治区域** | **Microsoft Azure 区域（同样适用于 Office 365）** | **BGP 社区值** |
+| **地缘政治区域** | **Microsoft Azure 区域** | **BGP 社区值** |
 |---|---|---|
 | **北美** | | |
 | | 美国东部 | 12076:51004 |
@@ -122,11 +122,15 @@ Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标�
 | | 美国中北部 | 12076:51007 |
 | | 美国中南部 | 12076:51008 |
 | | 美国中部 | 12076:51009 |
+| | 加拿大中部 | 12076:51020 |
+| | 加拿大东部 | 12076:51021 |
 | **南美洲** | | |
 | | 巴西南部 | 12076:51014 |
 | **欧洲** | | |
 | | 欧洲北部 | 12076:51003 |
 | | 欧洲西部 | 12076:51002 |
+| | 英国北部 | 12076:51022 |
+| | 英国南部 2 | 12076:51023 |
 | **亚太区** | | |
 | | 东亚 | 12076:51010 |
 | | 亚洲东南部 | 12076:51011 |
@@ -165,8 +169,10 @@ Microsoft 不遵循你设置的任何 BGP 社区值。你需要为每个对等�
 
 - 配置 ExpressRoute 连接。
 
-	- [创建经典部署模型的 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-classic)或[使用 Azure 资源管理器创建和修改 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-arm)
-	- [为经典部署模型配置路由](/documentation/articles/expressroute-howto-routing-classic)或[为资源管理器部署模型配置路由](/documentation/articles/expressroute-howto-routing-arm)
-	- [将经典 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)或[将资源管理器 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-arm)
+	- [创建经典部署模型的 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-classic)或[使用 Azure Resource Manager 创建和修改 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-arm)
+	- [为经典部署模型配置路由](/documentation/articles/expressroute-howto-routing-classic)或[为 Resource Manager 部署模型配置路由](/documentation/articles/expressroute-howto-routing-arm)
+	- [将经典 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)或[将 Resource Manager VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-arm)
 
-<!---HONumber=Mooncake_0307_2016-->
+
+
+<!---HONumber=Mooncake_0509_2016-->

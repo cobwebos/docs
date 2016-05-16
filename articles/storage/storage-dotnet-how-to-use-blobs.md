@@ -1,5 +1,5 @@
 <properties
-	pageTitle="通过 .NET 开始使用 Azure Blob 存储 | Microsoft Azure"
+	pageTitle="通过 .NET 开始使用 Azure Blob 存储 | Azure"
 	description="使用 Azure Blob 存储（对象存储）在云中存储文件数据。立即开始简单的 Blob 存储操作，包括创建容器并上载、下载、列出和删除 blob 内容。"
 	services="storage"
 	documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="02/25/2016"
+	ms.date="04/07/2016"
 	wacn.date=""/>
 
 
@@ -41,28 +41,27 @@ Azure Blob 存储是在云中存储文件数据的服务。Blob 存储可以存�
 
 [AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
 
-[AZURE.INCLUDE [storage-configure-connection-string-include](../includes/storage-configure-connection-string-include.md)]
+[AZURE.INCLUDE [storage-development-environment-include](../includes/storage-development-environment-include.md)]
 
-## 以编程方式访问 Blob 存储
+### 添加命名空间声明
 
-[AZURE.INCLUDE [storage-dotnet-obtain-assembly](../includes/storage-dotnet-obtain-assembly.md)]
+将下列 `using` 语句添加到 `program.cs` 文件顶部：
 
-### 命名空间声明
+	using Microsoft.Azure; // Namespace for CloudConfigurationManager 
+	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
+    using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 
-在你希望在其中以编程方式访问 Azure 存储空间的任何 C# 文件中，将以下命名空间声明添加到文件的顶部：
+### 解析连接字符串
 
-    using Microsoft.WindowsAzure;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Auth;
-    using Microsoft.WindowsAzure.Storage.Blob;
+[AZURE.INCLUDE [storage-cloud-configuration-manager-include](../includes/storage-cloud-configuration-manager-include.md)]
 
-确保你引用 `Microsoft.WindowsAzure.Storage.dll` 程序集。
+### 创建 Blob 服务客户端
 
-[AZURE.INCLUDE [storage-dotnet-retrieve-conn-string](../includes/storage-dotnet-retrieve-conn-string.md)]
-
-您可以使用 **CloudBlobClient** 类型来检索表示存储在 Blob 存储服务中的容器和 Blob 的对象。以下代码使用我们在上面检索到的存储帐户对象创建 **CloudBlobClient** 对象：
+**CloudBlobClient** 类使你能够在 Blob 存储中检索容器和 blob。下面是创建服务客户端的一种方法：
 
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+
+现在，你已准备好编写从 Blob 存储读取数据并将数据写入 Blob 存储的代码。
 
 ## 创建容器
 
@@ -83,13 +82,12 @@ Azure Blob 存储是在云中存储文件数据的服务。Blob 存储可以存�
     // Create the container if it doesn't already exist.
     container.CreateIfNotExists();
 
-默认情况下，新容器是专用容器，因此你必须指定存储访问密钥才能从该容器下载 Blob。如果你要让容器中的文件可供所有人使用，则可以使用以下代码将容器设置为公共容器：
+默认情况下，新容器是专用容器，意思是必须指定存储访问密钥才能从该容器下载 blob。如果你要让容器中的文件可供所有人使用，则可以使用以下代码将容器设置为公共容器：
 
     container.SetPermissions(
-        new BlobContainerPermissions { PublicAccess =
- 	    BlobContainerPublicAccessType.Blob });
+        new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 
-Internet 中的所有人都可以查看公共容器中的 Blob，但是，仅在你具有相应的访问密钥时，才能修改或删除它们。
+Internet 中的所有人都可以查看公共容器中的 blob，但是，仅在你具有相应的帐户访问密钥或共享的访问签名时，才能修改或删除它们。
 
 ## 将 Blob 上载到容器中
 
@@ -362,7 +360,6 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 - [开始使用适用于 .NET 的队列存储](/documentation/articles/storage-dotnet-how-to-use-queues)
 - [开始使用适用于 .NET 的文件存储](/documentation/articles/storage-dotnet-how-to-use-files)
 - [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
-- [使用 SQL 数据库存储关系数据](/documentation/articles/sql-database/articles/sql-database-dotnet-how-to-use)
 - [如何通过 WebJobs SDK 使用 Azure Blob 存储](/documentation/articles/app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to)
 
   [Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
@@ -376,4 +373,4 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
  
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

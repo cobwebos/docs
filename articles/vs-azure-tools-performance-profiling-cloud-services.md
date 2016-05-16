@@ -1,15 +1,16 @@
 <properties 
-   pageTitle="测试云服务的性能"
+   pageTitle="测试云服务的性能 | Azure"
    description="使用 Visual Studio 探查器测试云服务的性能"
    services="visual-studio-online"
    documentationCenter="n/a"
-   authors="patshea123"
+   authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags 
    ms.service="visual-studio-online"
-   ms.date="08/12/2015"
+   ms.date="04/18/2016"
    wacn.date="" />
+
 
 # 测试云服务的性能 
 
@@ -75,9 +76,10 @@
 
 若要了解有关 Visual Studio 中的性能分析的详细信息，请参阅[性能分析初学者指南](https://msdn.microsoft.com/library/azure/ms182372.aspx)和[使用分析工具分析应用程序性能](https://msdn.microsoft.com/library/azure/z9z62c29.aspx)。
 
->[AZURE.NOTE]发布云服务时，可以启用 IntelliTrace 或分析。但二者不能同时启用。
+>[AZURE.NOTE] 发布云服务时，可以启用 IntelliTrace 或分析。但二者不能同时启用。
 
-###分析集合方法###
+###分析集合方法
+
 根据遇到的性能问题，可以使用不同的分析集合方法：
 
 - **CPU 采样** - 此方法为 CPU 利用率问题的初始分析收集有用的应用程序统计信息。CPU 采样是建议的方法，用于启动大多数性能调查。收集 CPU 采样数据时，这不会对要分析的应用程序产生很大影响。
@@ -96,6 +98,7 @@
 
 ![配置分析设置](./media/vs-azure-tools-performance-profiling-cloud-services/IC526984.png)
 
+>[AZURE.NOTE] 若要启用“启用分析”复选框，则必须在你用来发布云服务的本地计算上安装了探查器。默认情况下，探查器会在你安装 Visual Studio 时安装。
 
 ### 配置分析设置
 
@@ -111,7 +114,9 @@
 
 1. 若要收集层交互分析数据，请选中“启用层交互分析”复选框。
 
-1. 若要保存设置，请选择“确定”按钮。当发布此应用程序时，这些设置将用于为每个角色创建分析会话。
+1. 若要保存设置，请选择“确定”按钮。
+
+    当发布此应用程序时，这些设置将用于为每个角色创建分析会话。
 
 ## 查看分析报告
 
@@ -119,22 +124,23 @@
 
 ![从 Azure 查看分析报告](./media/vs-azure-tools-performance-profiling-cloud-services/IC748914.png)
 
-
-
 ### 查看分析报告
 
 1. 若要在 Visual Studio 中查看“服务器资源管理器”窗口，请在菜单栏上选择“视图”、“服务器资源管理器”。
 
 1. 选择“Azure 计算”节点，然后针对从 Visual Studio 发布时您所选的要进行分析的云服务，选择相应 Azure 部署节点。
 
-1. 若要查看实例分析报告，请选择服务中的角色，打开特定实例的快捷菜单，然后选择“查看分析报告”。目前的报告（即一个 .vsp 文件）是从 Azure 中下载的，下载状态显示在“Azure 活动日志”中。下载完成后，分析报告将显示在名为 <Role name>\_<Instance Number>\_<identifier>.vsp 的 Visual Studio 编辑器选项卡中。随即将显示报告的汇总数据。
+1. 若要查看实例的分析报告，请选择服务中的角色，打开特定实例的快捷菜单，然后选择“查看分析报告”。
 
-1. 若要显示报告的其他视图，请在“当前视图”列表中，选择所需视图类型。有关详细信息，请参阅[分析工具报告视图](https://msdn.microsoft.com/library/bb385755.aspx)。
+    报告是一个 .vsp 文件，它现在已从 Azure 下载，且下载的状态显示在 Azure 活动日志中。下载完成后，分析报告将显示在名为 <Role name>\_<Instance Number>\_<identifier>.vsp 的 Visual Studio 编辑器选项卡中。随即将显示报告的汇总数据。
+
+1. 若要显示报告的其他视图，请在“当前视图”列表中，选择所需视图类型。有关详细信息，请参阅[分析工具报告视图](https://msdn.microsoft.com/library/azure/bb385755.aspx)。
 
 ## 后续步骤
 
-[调试云服务](http://go.microsoft.com/fwlink//p/?LinkID=62304)
+[调试云服务](https://msdn.microsoft.com/zh-cn/library/azure/ee405479.aspx)
 
-[从 Visual Studio 发布到 Azure 云服务](http://go.microsoft.com/fwlink//p/?LinkID=623012)
+[从 Visual Studio 发布到 Azure 云服务](https://msdn.microsoft.com/zh-cn/library/azure/ee460772.aspx)
 
-<!---HONumber=71-->
+
+<!---HONumber=Mooncake_0509_2016-->

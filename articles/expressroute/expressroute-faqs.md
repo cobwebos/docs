@@ -8,7 +8,7 @@
    editor=""/>
 <tags
    ms.service="expressroute"
-   ms.date="02/09/2016"
+   ms.date="04/12/2016"
    wacn.date=""/>
 
 # ExpressRoute 常见问题
@@ -82,8 +82,11 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务，包括 Office 365。
 ### 如果我的某个 ExpressRoute 链路出现故障，我会失去连接吗？
 如果其中一个交叉连接出现故障，你不会失去连接。冗余连接可用于支持网络负载。另外，你还可以在不同对等位置创建多条线路以获得故障恢复能力。
 
-### 我是否需要配置这两种链路才能使服务正常工作？
-如果你正在通过提供第 3 层服务的合作伙伴进行连接，合作伙伴将负责代表你配置冗余链路。但是，如果你所在的位置已有云交换提供商，则你必须为云交换平台配置两条 LAN 链路。如果你从专用数据中心通过单条 WAN 链路连接到云提供商，则需要终止你自己的路由器上的 WAN 链路，然后为云交换平台配置两条 LAN 链路。
+### 如果我不在云交换中共置，而我的服务提供商提供点到点连接，我需要在本地网络与 Microsoft 之间订购两个物理连接吗？ 
+不需要，如果你的服务提供商可以通过物理连接建立两条以太网虚拟电路，你就只需要一个物理连接。物理连接（例如光纤）的终点在第 1 层 (L1) 设备上（请参阅下图）。两条以太网虚拟电路使用不同的 VLAN ID 进行标记，一个供主要电路使用，一个供次要电路使用。这些 VLAN ID 位于外部 802.1Q 以太网标头中。内部 802.1Q 以太网标头（不显示）会映射到特定的 [ExpressRoute 路由域](/documentation/articles/expressroute-circuit-peerings)。
+
+![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
+
 
 ### 能否使用 ExpressRoute 将我的一个 VLAN 扩展到 Azure？
 否。我们不支持将第 2 层连接扩展到 Azure。
@@ -168,4 +171,4 @@ BGP 会话将被删除。当前缀计数低于限制后，将重置这些会话�
 你可以使用“更新专用线路 API”和 PowerShell cmdlet 来更新 ExpressRoute 线路的带宽。
 
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0509_2016-->

@@ -1,10 +1,10 @@
-<properties 
-	pageTitle="Azure AD Connect Health 操作。" 
+<properties
+	pageTitle="Azure AD Connect Health 操作。"
 	description="本文介绍在部署 Azure AD Connect Health 后可以执行的其他操作。"
-	services="active-directory" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	services="active-directory"
+	documentationCenter=""
+	authors="karavar"
+	manager="stevenpo"
 	editor="curtand"/>
 
 <tags 
@@ -42,8 +42,8 @@
 
 - 此操作会导致再也无法从该服务器收集任何数据。将从监视服务中删除此服务器。执行此操作之后，你将无法查看该服务器的新警报、监视数据或使用情况分析数据。
 - 此操作不会从服务器中卸载或删除 Health 代理。如果你在执行此步骤之前未卸载 Health 代理，则可能会在与 Health 代理相关的服务器上看到错误事件。
-- 此操作不会删除已从该服务器上收集的数据。那些数据将按 Microsoft Azure 数据保留策略删除。 
-- 执行此操作后，如果你希望再次监视同一服务器，则需卸载该服务器上的 Health 代理，然后重新安装。 
+- 此操作不会删除已从该服务器上收集的数据。那些数据将按 Microsoft Azure 数据保留策略删除。
+- 执行此操作后，如果你希望再次监视同一服务器，则需卸载该服务器上的 Health 代理，然后重新安装。
 
 
 #### 从 Azure AD Connect Health Service 中删除服务器的步骤
@@ -60,9 +60,9 @@
 
 删除服务实例时，请注意以下事项：
 
-- 此操作将从监视服务中删除当前的服务实例。 
-- 此操作不会从任何服务器中卸载或删除已作为此服务器实例的一部分进行监视的 Health 代理。如果你在执行此步骤之前未卸载 Health 代理，则可能会在与 Health 代理相关的服务器上看到错误事件。 
-- 此服务实例的所有数据将按 Microsoft Azure 数据保留策略删除。 
+- 此操作将从监视服务中删除当前的服务实例。
+- 此操作不会从任何服务器中卸载或删除已作为此服务器实例的一部分进行监视的 Health 代理。如果你在执行此步骤之前未卸载 Health 代理，则可能会在与 Health 代理相关的服务器上看到错误事件。
+- 此服务实例的所有数据将按 Microsoft Azure 数据保留策略删除。
 - 执行此操作后，如果你想要开始监视此服务，请卸载需要进行监视的所有服务器上的 Health 代理，然后重新安装。执行此操作后，如果你希望再次监视同一服务器，则需卸载该服务器上的 Health 代理，然后重新安装。
 
 
@@ -70,9 +70,8 @@
 
 1. 通过选择要删除的服务标识符（场名称），从“服务列表”边栏选项卡中打开“服务”边栏选项卡。
 2. 在“服务器”边栏选项卡中，单击操作栏中的“删除”按钮。
-3. 在确认框中键入服务名称（例如 sts.contoso.com）进行确认。 
-4. 单击“删除”按钮。
-<br><br>
+3. 在确认框中键入服务名称（例如 sts.contoso.com）进行确认。
+4. 单击“删除”按钮。<br><br>
 
 
 [//]: # "启动 RBAC 部分"
@@ -125,8 +124,7 @@ Azure AD Connect 支持两个级别的管理访问：
 
 #### 步骤 3：与用户或组共享边栏选项卡位置
 1. 分配权限后，用户可以转到 [http://aka.ms/aadconnecthealth](http://aka.ms/aadconnecthealth) 来访问 Azure AD Connect Health。
-2. 在边栏选项卡上，用户只需单击“固定到仪表板”，即可将边栏选项卡或其他部件固定到仪表板<br>
-![Azure AD Connect Health RBAC 中的固定边栏选项卡](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
+2. 在边栏选项卡上，用户只需单击“固定到仪表板”，即可将边栏选项卡或其他部件固定到仪表板<br> ![Azure AD Connect Health RBAC 中的固定边栏选项卡](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
 
 
 >[AZURE.NOTE] 分配有“读取者”角色的用户无法执行“创建”操作来从 Azure 应用商店获取 Azure AD Connect Health 扩展。但此用户仍可转到上述链接来访问边栏选项卡。为方便后续使用，用户可以将边栏选项卡固定到仪表板。
@@ -139,11 +137,11 @@ Azure AD Connect 支持两个级别的管理访问：
 
 ## 相关链接
 
-* [Azure AD Connect Health](active-directory-aadconnect-health)
-* [Azure AD Connect Health 代理安装](active-directory-aadconnect-health-agent-install)
-* [在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs)
+* [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health)
+* [Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install)
+* [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs)
 * [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync)
-* [Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq)
+* [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
 * [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history)
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0509_2016-->

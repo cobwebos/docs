@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="01/11/2016" 
+	ms.date="04/07/2016" 
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 常见问题
@@ -23,7 +23,7 @@
 
 [搜索 Microsoft 知识库 (KB)](http://search.microsoft.com/supportresults.aspx?form=mssupport&q=phonefactor)
 
-- 在 Microsoft 知识库 (KB) 中搜索有关 Microsoft Azure Multi-Factor Authentication 服务器 (Phone Factor) 支持的常见故障维修服务问题的技术解决方案。
+- 在 Microsoft 知识库 (KB) 中搜索有关 Microsoft Azure Multi-Factor Authentication 服务器 (PhoneFactor) 支持的常见故障维修服务问题的技术解决方案。
 
 [Microsoft Azure Active Directory 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD)
 
@@ -31,9 +31,9 @@
 
 [密码重置](mailto:phonefactorsupport@microsoft.com)
 
-- 如果旧版 Phonefactor 客户有任何关于重置密码的疑问，或如果需要获取密码重置方面的帮助，请使用下面的链接建立支持案例。
+- 如果旧版 PhoneFactor 客户有任何关于重置密码的疑问，或如果需要获取密码重置方面的帮助，请使用下面的链接建立支持案例。
 
-[Microsoft Azure Multi-Factor Authentication 服务器 (Phone Factor) 客户支持](https://support.microsoft.com/oas/default.aspx?prid=14947)
+[Microsoft Azure Multi-Factor Authentication 服务器 (PhoneFactor) 客户支持](https://support.microsoft.com/oas/default.aspx?prid=14947)
 
 - 使用此链接可联系 Microsoft 支持专业人员。我们将询问几个问题，以帮助确定有哪些支持选项。支持选项可能包括电子邮件、在线提交或电话支持。
 
@@ -111,9 +111,6 @@ Azure Multi-Factor Authentication 可使用按用户计费选项或按身份验�
 
 
 ## 可用性
-**问：我为何无法使用启用了 MFA 的帐户访问 Azure 计费门户或 Office 365？**
-
-可以使用面向 Azure 管理员的 Azure Multi-Factor Authentication 来保护对 Azure 管理门户的访问。但是，在该门户上使用的登录协议与终结点不同于显示 Azure 对帐单的 Azure 帐户门户和 Office 365 所用的协议与终结点。因此，当前不支持已启用 MFA 的帐户登录到这些产品和门户。我们正在努力迁移这些产品和门户，以便它们使用与 Azure 管理门户相同的协议和终结点。我们将在 2016 年第 1 季度迁移 Azure 帐户门户。Office 365 的迁移时间稍长一些。到时，启用多重身份验证的任何帐户只能访问 Azure 管理门户，如果尝试登录其他位置，将会看到错误。
 
 **问：如果我没有接到回复来电，或忘了接电话，该怎么办？**
 
@@ -160,6 +157,11 @@ Azure Multi-Factor Authentication 服务通过短信聚合器发送短信。许�
 
 但是，如果要使用 Windows Server 2012 R2，则需要一个 RD 网关。
 
+**问：在设置呼叫方 ID 后，为什么会从匿名呼叫方收到 MFA 电话？**
+
+有时，当通过公共电话网络拨打 MFA 电话时，会通过不支持调用方 ID 的运营商传送电话。因此，呼叫方 ID 不受保证，即使 MFA 系统始终发送它。
+
+
 ## 错误
 
 **问：如果我在使用移动应用程序通知进行身份验证时看到“身份验证请求不适用于已激活的帐户”错误，该怎么办？**
@@ -179,4 +181,13 @@ Azure Multi-Factor Authentication 服务通过短信聚合器发送短信。许�
 
 此问题的解决方法是，管理员相关操作与非管理员操作使用单独的用户帐户。稍后你可以链接管理员帐户和非管理员帐户的邮箱，以便使用非管理员帐户登录到 Outlook。有关此解决方法的更多详细信息，请参阅 [使管理员能够打开和查看用户邮箱内容](http://help.outlook.com/141/gg709759(d=loband).aspx?sl=1)。
 
-<!---HONumber=Mooncake_0215_2016-->
+
+
+
+
+
+
+
+
+
+<!---HONumber=Mooncake_0509_2016-->

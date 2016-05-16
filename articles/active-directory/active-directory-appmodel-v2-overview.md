@@ -9,10 +9,10 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="03/18/2016"
+	ms.date="04/02/2016"
 	wacn.date=""/>
 
-# 应用模型 v2.0 预览版：单个应用中的 Microsoft 帐户登录和 Azure AD 用户
+# 在单个应用中登录 Microsoft 帐户和 Azure AD 用户
 
 在过去，想要支持 Microsoft 帐户和 Azure Active Directory 的应用开发人员需要集成两个单独的系统。我们现在推出了新的身份验证 API 版本，可让你通过 Azure AD 系统使用这两种帐户类型来登录用户。这种聚合式身份验证系统称为 **v2.0 终结点**。借助 v2.0 终结点，通过一个简单的集成就可以与具有个人和工作/学校帐户的数以百万计的用户受众进行沟通。
 
@@ -35,6 +35,7 @@
 ## 引用
 这些链接有助于深入地利用平台：
 
+- Build 2016：[Getting Started with Microsoft Identities: Enterprise Grade Sign In For Your Apps（开始使用 Microsoft 标识：应用的企业级登录）](https://azure.microsoft.com/documentation/videos/build-2016-getting-started-with-microsoft-identities-enterprise-grade-sign-in-for-your-apps/)
 - 使用 [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) 或 [adal](http://stackoverflow.com/questions/tagged/adal) 标记获取有关堆栈溢出的帮助。
 - [v2.0 协议参考](active-directory-v2-protocols.md)
 - [v2.0 令牌参考](active-directory-v2-tokens.md)
@@ -52,10 +53,4 @@
   - [Android OAuth2 Client](https://github.com/wuman/android-oauth-client)
   - [Android OpenID Connect Client](https://github.com/kalemontes/OIDCAndroidLib)
 
-<!-- TODO: These articles
-- [ADAL Library Reference]()
-- [v2 Endpoint FAQs](active-directory-v2-faq.md)
-- Give us your thoughts on the preview using [User Voice](http://feedback.azure.com/forums/169401-azure-active-directory) - we want to hear them!  Use the phrase "AppModelv2:" in the title of your post so we can find it.
--->
-
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

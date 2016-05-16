@@ -4,12 +4,12 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	manager="stevenpo" 
+	editor="curtland"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="06/02/2015" 
+	ms.date="02/16/2016" 
 	wacn.date=""/>
 
 # 在 Multi-Factor Authentication 中使用替代方法登录
@@ -29,4 +29,5 @@
 
 <li>选择一种替代方法并登录。</li>
 
-<!---HONumber=69-->
+
+<!---HONumber=Mooncake_0509_2016-->

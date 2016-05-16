@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Docker 错误故障排除| Microsoft Azure"
-   description="排查您在使用 Visual Studio 创建 Web 应用并将其部署到 Docker 时遇到的问题。"
+   pageTitle="使用 Visual Studio 对 Windows 排查 Docker 客户端错误 | Microsoft Azure"
+   description="在 Windows 上通过使用 Visual Studio 排查在使用 Visual Studio 创建网站并将其部署到 Docker 时遇到的问题。"
    services="visual-studio-online"
    documentationCenter="na"
    authors="kempb"
@@ -8,7 +8,7 @@
    editor="tglee" />
 <tags
    ms.service="multiple"
-   ms.date="08/17/2015"
+   ms.date="08/20/2015"
    wacn.date="" />
 
 # Docker 错误故障排除
@@ -21,12 +21,12 @@
 
 以下是此问题的一些可能解决方案。
 
-- 在“发布”对话框的“连接”选项卡中，确保“服务器 URL”是正确的，并且“服务器 URL”中尾随的 <port_number> 是 Docker 后台程序侦听的端口。
+- 在“发布”对话框的“连接”选项卡中，确保“服务器 URL”是正确的，并且“服务器 URL”中尾随的 `:<port_number>` 是 Docker 后台程序侦听的端口。
 
-- 在“发布”对话框的“连接”选项卡中，展开“Docker 高级选项”部分并确保指定了正确的身份验证选项。
-  - 如果服务器上的 Docker 后台程序配置为使用 TLS 安全，则 Windows Docker 命令行界面 (docker.exe) 在默认情况下将在 <%userprofile%> docker 文件夹下查找客户端密钥 (key.pem) 和证书 (cert.pem)。如果这些项不存在，则需要使用 OpenSSL 生成这些项。有关配置 Docker for TLS 的详细信息，请参阅“使用 HTTPS 保护 Docker 后台程序套接字”。
+- 在“发布”对话框的“连接”选项卡中，展开“Docker 高级选项”部分并确保指定了正确的“身份验证”选项。
+  - 如果服务器上的 Docker 后台程序配置为使用 TLS 安全，则 Windows Docker 命令行界面 (docker.exe) 在默认情况下将在 `<%userprofile%>\.docker` 文件夹下查找客户端密钥 (key.pem) 和证书 (cert.pem)。如果这些项不存在，则需要使用 OpenSSL 生成这些项。有关配置 Docker for TLS 的详细信息，请参阅[使用 HTTPS 保护 Docker 后台程序套接字](https://docs.docker.com/articles/https/)。
 
-	确保 Docker 正确从 Windows 客户端向 Linux 服务器进行身份验证的一种方法是将“预览”文本框的内容复制到一个新的命令窗口并将 <command> 更改为“info”，如以下所示：
+	确保 Docker 正确从 Windows 客户端向 Linux 服务器进行身份验证的一种方法是将“预览”文本框的内容复制到一个新的命令窗口并将 `<command>` 更改为“info”，如以下所示：
 
     ```
     // This example assumes the Docker daemon is configured to use the default port
@@ -35,7 +35,7 @@
     --tls -H tcp://contoso.cloudapp.net:2376 info
     ```
 
-    作为将客户端证书和密钥文件复制到 .docker 文件夹的替代方法，可以通过添加以下参数来更改身份验证选项：
+    作为将客户端证书和密钥文件复制到 .docker 文件夹的替代方法，可以通过添加以下参数来更改“身份验证”选项：
 
     ```
     --tls --tlscert=C:\mycert\cert.pem --tlskey=C:\mycert\key.pem
@@ -44,11 +44,11 @@
 
 ## 在 Docker 文件夹中没有客户端证书的情况下使用您自己的证书时发生超时错误
 
-如果您选择在 Visual Studio 中创建 Docker 主机时使用您自己的证书（即，清除“在 Microsoft Azure 上创建虚拟机”对话框中的“自动生成 Docker 证书”复选框），则需要将客户端证书和密钥文件（cert.pem 和 key.pem）复制到 Docker 文件夹 (<%userprofile%>.docker)。否则，当您发布项目时，将在一个小时后收到超时错误，并且发布操作将失败。
+如果你选择在 Visual Studio 中创建 Docker 主机时使用你自己的证书（即，清除“在 Microsoft Azure 上创建虚拟机”对话框中的“自动生成 Docker 证书”复选框），则需要将客户端证书和密钥文件（cert.pem 和 key.pem）复制到 Docker 文件夹 (`<%userprofile%>\.docker`)。否则，当您发布项目时，将在一个小时后收到超时错误，并且发布操作将失败。
 
 ## 需要 PowerShell 3.0 才能发布到 Docker 容器
 
-如果您的操作系统是 Windows 7 或 Windows Server 2008，则需要安装 PowerShell 3.0，然后才能发布到 Docker 容器。PowerShell 3.0 包括在 [Windows Management Framework 3.0](https://www.microsoft.com/zh-CN/download/details.aspx?id=34595) 中。在安装它后需要重启系统。
+如果您的操作系统是 Windows 7 或 Windows Server 2008，则需要安装 PowerShell 3.0，然后才能发布到 Docker 容器。PowerShell 3.0 包括在 [Windows Management Framework 3.0](https://www.microsoft.com/zh-cn/download/details.aspx?id=34595) 中。在安装它后需要重启系统。
 
 作为备用解决方法，您可以升级到已装载 PowerShell 3.0 的 Windows 8.1 或 Windows 10。
 
@@ -60,7 +60,7 @@
 
 问：如何使用 Visual Studio 工具在 Azure 中创建新的启用 Docker 的 Linux 计算机？
 
-答：有关如何执行此操作的信息，请参阅[在 Docker 中托管 Web Apps](vs-azure-tools-docker-hosting-web-apps-in-docker)。
+答：有关如何执行此操作的信息，请参阅[在 Docker 中托管网站](/documentation/articles/vs-azure-tools-docker-hosting-web-apps-in-docker)。
 
 问：支持哪些用于发布到 Linux Docker 容器的 Visual Studio 项目模板？
 
@@ -70,13 +70,13 @@
 
 - Web API
 
-- Web 应用程序
+- 网站
 
 问：如何从命令行使用 MSBUILD 将我的 ASP.NET 5 Web 或控制台项目发布到 Docker？
 
 答：使用以下 MSBuild 命令：
 
-    msbuild <projectname.xproj> /p:deployOnBuild=true;publishProfile=<profilename>
+    `msbuild <projectname.xproj> /p:deployOnBuild=true;publishProfile=<profilename>`
 
 问：如何从命令行使用 PowerShell 将我的 ASP.NET 5 Web 或控制台项目发布到 Docker？
 
@@ -88,12 +88,12 @@
 
 问：我有自己的安装了 Docker 的 Linux 服务器，如何在“Web 发布”对话框中指定此服务器？
 
-答：请参阅[在 Docker 中托管 Web Apps](vs-azure-tools-docker-hosting-web-apps-in-docker)主题中的**提供自定义的 Docker 主机**部分。
+答：请参阅[在 Docker 中托管网站](/documentation/articles/vs-azure-tools-docker-hosting-web-apps-in-docker)主题中的**提供自定义的 Docker 主机**部分。
 
 问：我使用的是安装了 Docker 的自己的 Linux 服务器。为使用 TLS 配置身份验证，如何生成密钥和证书？
 
-答：一种方法是在服务器上使用 OpenSSL 为 CA、服务器和客户端生成所需的证书和密钥。然后可以使用第三方软件来建立 SSH/SFTP 连接，然后再将证书复制到本地的 Windows 开发计算机中。默认情况下，Docker (CLI) 将尝试使用位于 <userprofile>.docker 文件夹的证书。
+答：一种方法是在服务器上使用 OpenSSL 为 CA、服务器和客户端生成所需的证书和密钥。然后可以使用第三方软件来建立 SSH/SFTP 连接，然后再将证书复制到本地的 Windows 开发计算机中。默认情况下，Docker (CLI) 将尝试使用位于 `<userprofile>\.docker` 文件夹的证书。
 
 另一个选项是下载 OpenSSL for Windows 并生成所需的证书和密钥，并将 CA、服务器证书和密钥上载到 Linux 计算机上。有关建立与 Docker 的安全连接的详细信息，请参阅[使用 HTTPS 保护 Docker 后台程序套接字](https://docs.docker.com/articles/https/)。
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0509_2016-->

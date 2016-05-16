@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure AD Connect Sync：了解用户和联系人"
-	description="说明 Azure AD Connect Sync 中的用户和联系人。"
+	pageTitle="Azure AD Connect 同步：了解用户和联系人 | Microsoft Azure"
+	description="介绍 Azure AD Connect 同步中的用户和联系人。"
 	services="active-directory"
 	documentationCenter=""
 	authors="markusvi"
@@ -9,6 +9,7 @@
 
 <tags
 	ms.service="active-directory"
+
 	ms.date="02/16/2016"
 	wacn.date=""/>
 
@@ -56,4 +57,4 @@
  
 <!--Image references-->
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0509_2016-->

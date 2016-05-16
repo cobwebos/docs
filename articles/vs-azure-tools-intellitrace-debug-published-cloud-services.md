@@ -1,14 +1,14 @@
 <properties 
-   pageTitle="使用 IntelliTrace 和 Visual Studio 调试已发布的云服务"
+   pageTitle="使用 IntelliTrace 和 Visual Studio 调试已发布的云服务 | Azure"
    description="使用 IntelliTrace 和 Visual Studio 调试已发布的云服务"
    services="visual-studio-online"
    documentationCenter="n/a"
-   authors="patshea123"
+   authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags 
    ms.service="visual-studio-online"
-   ms.date="08/12/2015"
+   ms.date="04/18/2016"
    wacn.date="" />
 
 # 使用 IntelliTrace 和 Visual Studio 调试已发布的云服务
@@ -17,21 +17,23 @@
 
 通过 IntelliTrace，可以在某个角色实例在 Azure 中运行时记录该角色实例的大量调试信息。如果您需要查找问题的原因，您可以从 Visual Studio 使用 IntelliTrace 日志来单步执行代码，就像它在 Azure 中运行一样。实际上，当 Azure 应用程序以云服务的形式在 Azure 中运行时，IntelliTrace 将记录关键代码执行和环境数据，并允许从 Visual Studio 中回放已记录的数据。作为替代方法，您可以使用远程调试，直接连接到在 Azure 中运行的云服务。请参阅[调试云服务](http://go.microsoft.com/fwlink/p/?LinkId=623041)。
 
->[AZURE.IMPORTANT]IntelliTrace 仅适用于调试方案，而不应用于生产部署。
+>[AZURE.IMPORTANT] IntelliTrace 仅适用于调试方案，而不应用于生产部署。
 
->[AZURE.NOTE]如果已安装 Visual Studio Enterprise，且 Azure 应用程序以 .NET Framework 4 或更高版本为目标，则可使用 IntelliTrace。IntelliTrace 收集 Azure 角色的信息。这些角色的虚拟机始终运行 64 位操作系统。
+>[AZURE.NOTE] 如果已安装 Visual Studio Enterprise，且 Azure 应用程序以 .NET Framework 4 或更高版本为目标，则可使用 IntelliTrace。IntelliTrace 收集 Azure 角色的信息。这些角色的虚拟机始终运行 64 位操作系统。
 
 ## 为 IntelliTrace 配置 Azure 应用程序
 
 若要为 Azure 应用程序启用 IntelliTrace，必须从 Visual Studio Azure 项目创建并发布应用程序。在将应用程序发布到 Azure 之前，必须为 Azure 应用程序配置 IntelliTrace。如果发布应用程序（不配置 IntelliTrace），但随即又决定要执行此操作，则必须重新从 Visual Studio 发布该应用程序。有关详细信息，请参阅[使用 Azure Tools 发布云服务](http://go.microsoft.com/fwlink/p/?LinkId=623012)。
 
-1. 当您准备好部署 Azure 应用程序时，请验证是否将项目生成目标设置为**调试**。
+1. 当您准备好部署 Azure 应用程序时，请验证是否将项目生成目标设置为“调试”。
 
-1. 在“解决方案资源管理器”中打开“Azure 项目”的快捷菜单，然后选择“发布”。随即显示“发布 Azure 应用程序”向导。
+1. 在“解决方案资源管理器”中打开“Azure 项目”的快捷菜单，然后选择“发布”。
+ 
+    随即显示“发布 Azure 应用程序”向导。
 
 1. 若想要当在云中发布应用程序时，收集其 IntelliTrace 日志，请选择“启用 IntelliTrace”复选框。
 
-    >[AZURE.NOTE]发布 Azure 应用程序时，可启用 IntelliTrace 或分析。二者不能同时启用。
+    >[AZURE.NOTE] 发布 Azure 应用程序时，可启用 IntelliTrace 或分析。二者不能同时启用。
 
 1. 若要自定义基本的 IntelliTrace 配置，请选择“设置”超链接。
 
@@ -55,10 +57,11 @@ IntelliTrace 日志是一个循环日志文件，IntelliTrace 设置中指定了
 
 下载 IntelliTrace 日志时，可以在 Visual Studio 中继续工作。日志下载完成后，将在 Visual Studio 中自动打开。
 
->[AZURE.NOTE]IntelliTrace 日志可能包含由框架生成并进行后续处理的异常。如果这些异常时内部框架代码生成的，它们是启动角色的正常一环，可以安全地忽略。
+>[AZURE.NOTE] IntelliTrace 日志可能包含由框架生成并进行后续处理的异常。如果这些异常时内部框架代码生成的，它们是启动角色的正常一环，可以安全地忽略。
 
-## 后续步骤
+## 另请参阅
 
-[调试云服务](http://go.microsoft.com/fwlink/p/?LinkID=62304)
+[调试云服务](https://msdn.microsoft.com/zh-cn/library/ee405479.aspx)
 
-<!---HONumber=71-->
+
+<!---HONumber=Mooncake_0509_2016-->
