@@ -252,4 +252,4 @@
 [standard4]: ./media/media-services-managing-channels/media-services-create-channel-standard4.png
 [standard5]: ./media/media-services-managing-channels/media-services-create-channel-standard_encode.png
 
-<!---HONumber=60-->
+<!---HONumber=60--->
