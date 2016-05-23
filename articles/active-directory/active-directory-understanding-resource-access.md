@@ -1,11 +1,11 @@
-<properties 
-	pageTitle="了解 Azure 中的资源访问权限" 
-        description="本主题介绍有关使用订阅管理员在整个 Azure 门户中控制资源访问权限的概念。" 
-        services="active-directory" 
-        documentationCenter="" 
-        authors="markusvi" 
-        manager="stevenpo" 
-        editor=""/>
+<properties
+    pageTitle="了解 Azure 中的资源访问权限 | Microsoft Azure" 
+    description="本主题介绍有关使用订阅管理员在整个 Azure 门户中控制资源访问权限的概念。"
+    services="active-directory"
+    documentationCenter=""
+    authors="markusvi"
+    manager="stevenpo"
+    editor=""/>
 
 <tags 
 	ms.service="active-directory" 
@@ -68,4 +68,4 @@ Azure 中的访问控制首先体现在计费方面。Azure 帐户的所有者�
 [2]: ./media/active-directory-understanding-resource-access/IC707932.png
 [3]: ./media/active-directory-understanding-resource-access/IC707933.png
 [4]: ./media/active-directory-understanding-resource-access/IC707934.png
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

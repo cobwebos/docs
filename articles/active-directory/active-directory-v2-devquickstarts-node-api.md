@@ -1,5 +1,5 @@
 <properties
-	pageTitle="应用模型 v2.0 Node.js Web API | Microsoft Azure"
+	pageTitle="Azure AD v2.0 NodeJS Web API | Microsoft Azure"
 	description="如何构建一个可从个人 Microsoft 帐户和工作或学校帐户接受令牌的 NodeJS Web API。"
 	services="active-directory"
 	documentationCenter="nodejs"
@@ -259,9 +259,9 @@ identityMetadata: 'https://login.microsoftonline.com/common/.well-known/openid-c
 
 ### 所需值
 
-IdentityMetadata：passport-azure-ad 将在此处查找适用于 IdP 的配置数据，以及用来验证 JWT 令牌的密钥。如果你使用 Azure Active Directory，则可能不想更改此项。
+“IdentityMetadata”：passport-azure-ad 将在此处查找适用于 IdP 的配置数据，以及用来验证 JWT 令牌的密钥。如果你使用 Azure Active Directory，则可能不想更改此项。
 
-audience：来自门户的重定向 URI。
+“audience”：来自门户的重定向 URI。
 
 > [AZURE.NOTE]
 我们会频繁滚动更新密钥。请确保始终从“openid\_keys”URL 提取密钥，并且应用程序能够访问 Internet。
@@ -303,9 +303,9 @@ name: 'Microsoft Azure Active Directory Sample'
 
 现在，我们已将这三个文件统一放在 REST API 服务中，接下来让我们的准备工作发挥作用。
 
-对于本演练，我们将使用 MongoDB 来存储**步骤 4** 中所述的任务。
+对于本演练，我们将使用 MongoDB 来存储“步骤 4” 中所述的任务。
 
-回顾我们在步骤 11 中创建的 config.js 文件，我们将数据库称为 tasklist，因为这是我们在 mogoose\_auth\_local 连接 URL 的末尾放置的内容。你无需事先在 MongoDB 中创建此数据库，当你首次运行服务器应用程序时，系统将创建此数据库（假定它不存在）。
+回顾我们在步骤 11 中创建的 config.js 文件，我们将数据库称为 “tasklist”，因为这是我们在 mogoose\_auth\_local 连接 URL 的末尾放置的内容。你无需事先在 MongoDB 中创建此数据库，当你首次运行服务器应用程序时，系统将创建此数据库（假定它不存在）。
 
 现在，我们已告诉服务器要使用哪个 MongoDB 数据库，接下来我们需要编写一些附加的代码，以便为服务器任务创建模型和架构。
 
@@ -313,13 +313,13 @@ name: 'Microsoft Azure Active Directory Sample'
 
 我们的架构模型非常简单，你可以根据需要对其进行扩展。
 
-NAME - 分配到任务的用户名。一个**字符串**。
+NAME - 分配到任务的用户名。一个“字符串”。
 
-TASK - 任务本身。一个**字符串**。
+TASK - 任务本身。一个“字符串”。
 
-DATE - 任务截止日期。一个**日期时间**
+DATE - 任务截止日期。一个“日期时间”
 
-COMPLETED - 任务是否已完成。一个**布尔值**
+COMPLETED - 任务是否已完成。一个“布尔值”
 
 #### 在代码中创建架构
 
@@ -358,7 +358,7 @@ date: Date
 mongoose.model('Task', TaskSchema);
 var Task = mongoose.model('Task');
 ```
-从该代码中可以看到，我们将会创建架构，然后创建在定义**路由**时，将在整个代码中用于存储数据的模型对象。
+从该代码中可以看到，我们将会创建架构，然后创建在定义“路由”时，将在整个代码中用于存储数据的模型对象。
 
 ## 步骤 13：为任务 REST API 服务器添加路由
 
@@ -851,4 +851,4 @@ Transfer-Encoding: chunked
 - [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
 - [堆栈溢出“azure-active-directory”标记 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

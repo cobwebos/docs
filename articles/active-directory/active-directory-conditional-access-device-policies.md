@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="08/02/2015"
+	ms.date="03/07/2016"
 	wacn.date=""/>
 # Office 365 服务的条件性访问设备策略
 
@@ -19,7 +19,7 @@ Azure Active Directory 会强制实施条件性访问策略来确保对 Office 3
 
 对于用户而言，强制实施设备策略的一个先决条件是向 Azure Active Directory 设备注册服务注册其设备。向 Azure Active Directory 设备注册服务注册设备时你可以选择启用 Multi-Factor Authentication (MFA)。建议为 Azure Active Directory 设备注册服务使用 MFA。当启用了 MFA 时，向 Azure Active Directory 设备注册服务注册其设备的用户将面临第二因素身份验证的挑战。
 
-## 条件性访问策略的工作原理
+##条件性访问策略的工作原理
 
 当用户从受支持的设备平台请求访问 O365 服务时，Azure Active Directory 会对用户以及用户从中发起请求的设备进行身份验证；仅当用户符合为该服务设置的策略时，才会向其授予对该服务的访问权限。对于没有注册其设备的用户，会向其提供补救说明来指示如何进行注册并满足访问公司 O365 服务的条件。对于 iOS 和 Android 设备上的用户，将要求其使用公司门户应用程序注册其设备。当用户注册其设备时，将向 Azure Active Directory 注册设备，并且针对设备管理和合规性进行注册。客户必须将 Azure Active Directory 设备注册服务与 Microsoft Intune 一起使用才能为 Office 365 服务启用移动设备管理。当强制实施了设备策略时，对于要访问 Office 365 服务的用户，进行设备注册是一个先决条件。
 
@@ -40,4 +40,4 @@ Azure Active Directory 会强制实施条件性访问策略来确保对 Office 3
 
 答：目前，对 Office365 服务的条件性访问仅限于设备上的丰富应用程序。目前正在计划将条件性访问策略扩展到从浏览器访问服务的用户。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0516_2016-->

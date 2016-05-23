@@ -20,13 +20,13 @@
 	v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
 
 ## 访问 Microsoft 应用注册门户
-第一件事就是先浏览到 [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com)。这是新的应用注册门户，可供你管理有关 Microsoft 应用的所有一切。
+第一件事就是先浏览到 [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com)。这是新的应用注册门户，可供你管理 Microsoft 应用。
 
 使用 Microsoft 个人或工作或学校帐户进行登录。如果你没有任何帐户，请注册新的个人帐户。请继续进行，这不需要很长的时间 — 我们会在此等候。
 
 完成了吗？ 你现在应该看一下你的 Microsoft 应用列表，该列表有可能一片空白。让我们改变这点。
 
-单击“添加应用”，并为它命名。门户将向应用分配全局唯一的应用程序 ID，以便稍后在你的代码中使用。如果应用包含的服务器端组件需要用来调用 API（例如：Office、Azure 或你自己的 Web API）的访问令牌，你也会想在此处创建**A应用程序密码**。
+单击“添加应用”，并为它命名。门户将向应用分配全局唯一的应用程序 ID，以便稍后在你的代码中使用。如果应用包含的服务器端组件需要用来调用 API（例如：Office、Azure 或你自己的 Web API）的访问令牌，你也会想在此处创建**应用程序密码**。
 <!-- TODO: Link for app secrets -->
 
 接下来，添加应用将使用的平台。
@@ -43,4 +43,4 @@
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../includes/active-directory-v2-quickstart-table.md)]
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

@@ -141,11 +141,11 @@ PHP | [Azure AD 图形 API 的 PHP 示例应用](http://code.msdn.microsoft.com/
 
 ##### 其他资源
 
-[Azure Active Directory 开发人员指南](active-directory-developers-guide.md)
+[Azure Active Directory 开发人员指南](/documentation/articles/active-directory-developers-guide)
 
 [Azure AD 图形 API 概念和参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 
 [Azure AD Graph API 帮助程序库](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
 
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0516_2016-->

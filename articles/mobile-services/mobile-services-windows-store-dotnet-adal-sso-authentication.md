@@ -21,7 +21,7 @@
 
 ##概述
 
-在本教程中，你将使用 Active Directory 身份验证库将身份验证添加到快速入门项目，以支持使用 Azure Active Directory 进行[客户端定向的登录操作](http://msdn.microsoft.com/zh-cn/library/azure/jj710106.aspx)。若要支持使用 Azure Active Directory 进行[服务定向的登录操作](http://msdn.microsoft.com/zh-cn/library/azure/dn283952.aspx)，请从[向移动服务应用添加身份验证](/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started-users)教程入手。
+在本教程中，你将使用 Active Directory 身份验证库将身份验证添加到快速入门项目，以支持使用 Azure Active Directory 进行[客户端定向的登录操作](http://msdn.microsoft.com/zh-cn/library/azure/jj710106.aspx)。若要支持使用 Azure Active Directory 进行[服务定向的登录操作](http://msdn.microsoft.com/zh-cn/library/azure/dn283952.aspx)，请从[向移动服务应用添加身份验证](/documentation/articles/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-users)教程入手。
 
 若要能够对用户进行身份验证，必须向 Azure Active Directory (AAD) 注册你的应用程序。此过程分为两个步骤。首先，你必须注册你的移动服务，并公开其上的权限。其次，你必须注册你的 Windows 应用商店应用程序，并授予它对这些权限的访问权限
 
@@ -154,7 +154,7 @@
             } 
         }
 
-6. 在上面的 `AuthenticateAsync` 方法的代码中，将 **INSERT-AUTHORITY-HERE** 替换为在其中进行应用程序设置的租户的名称，格式应为 https://login.chinacloudapi.cn/tenant-name.onmicrosoft.com。 可以在 [Azure 经典门户]中从 Azure Active Directory 的“域”选项卡复制此值。
+6. 在上面的 `AuthenticateAsync` 方法的代码中，将 **INSERT-AUTHORITY-HERE** 替换为在其中进行应用程序设置的租户的名称，格式应为 https://login.chinacloudapi.cn/tenant-name.onmicrosoft.com 。可以在 [Azure 经典门户]中从 Azure Active Directory 的“域”选项卡复制此值。
 
 7. 在上面的 `AuthenticateAsync` 方法的代码中，将 **INSERT-RESOURCE-URI-HERE** 替换为你的移动服务的“应用程序 ID URI”。如果你按照[如何向 Azure Active Directory 注册]主题进行操作，你的应用程序 ID URI 应该类似于 https://todolist.azure-mobile.net/login/aad。
 
@@ -208,4 +208,4 @@
 [移动服务入门]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-get-started
 [Windows 开发人员中心仪表板]: http://go.microsoft.com/fwlink/p/?LinkID=266734
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0516_2016-->

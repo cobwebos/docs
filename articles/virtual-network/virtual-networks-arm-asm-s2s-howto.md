@@ -4,12 +4,12 @@
    services="virtual-network"
    documentationCenter="na"
    authors="telmosampaio"
-   manager="carolz"
+   manager="carmonm"
    editor="tysonn" />
-<tags 
-   ms.service="virtual-network"
-   ms.date="09/18/2015"
-   wan.date="" />
+<tags
+	ms.service="virtual-network"
+	ms.date="03/22/2016"
+	wacn.date=""/>
 
 # 将经典 VNet 连接到新 VNet
 
@@ -19,7 +19,7 @@ Azure 当前有两种管理模式：Azure 服务管理（称之为经典）和 A
 
 在本文中，你将了解如何在经典 VNet 和 ARM VNet 之间创建站点到站点 (S2S) 的 VPN 连接。
 
->[AZURE.NOTE]本文假设你已拥有经典 VNet 和 ARM VNet，并且已熟悉了解如何为经典 VNet 配置 S2S VPN 连接。有关经典 VNet 与 ARM VNet 之间 S2S VPN 连接的详细端到端解决方案，请访问[解决方案指南 - 使用 S2S VPN 将经典 VNet 连接到 ARM VNet](/documentation/articles/virtual-networks-arm-asm-s2s)。
+>[AZURE.NOTE] 本文假设你已拥有经典 VNet 和 ARM VNet，并且已熟悉了解如何为经典 VNet 配置 S2S VPN 连接。有关经典 VNet 与 ARM VNet 之间 S2S VPN 连接的详细端到端解决方案，请访问[解决方案指南 - 使用 S2S VPN 将经典 VNet 连接到 ARM VNet](/documentation/articles/virtual-networks-arm-asm-s2s)。
 
 你会看到使用以下 Azure 网关在经典 VNet 与 ARM VNet 之间创建 S2S VPN 连接所需完成的任务概述。
 
@@ -52,72 +52,60 @@ Azure 当前有两种管理模式：Azure 服务管理（称之为经典）和 A
 
 若要为 ARM VNet 创建 VPN 网关，请遵循以下说明。
 
-1. 从 PowerShell 控制台中，运行以下命令以切换到 ARM 模式。
+1. 从 PowerShell 控制台中，运行以下命令以创建本地网络。本地网络必须使用你要连接到的经典 VNet 的 CIDR 块，以及在上述步骤 1 中创建的网关的公有 IP 地址。
 
-		Switch-AzureMode AzureResourceManager
-
-2. 通过运行以下命令，创建本地网络。本地网络必须使用你要连接到的经典 VNet 的 CIDR 块，以及在上述步骤 1 中创建的网关的公有 IP 地址。
-
-		New-AzureLocalNetworkGateway -Name VNetClassicNetwork `
-			-Location "China North" -AddressPrefix "10.0.0.0/20" `
+		New-AzureRmLocalNetworkGateway -Name VNetClassicNetwork `
+			-Location "China East" -AddressPrefix "10.0.0.0/20" `
 			-GatewayIpAddress "168.62.190.190" -ResourceGroupName RG1
 
 3. 通过运行以下命令，创建网关的公有 IP 地址。
 
-		$ipaddress = New-AzurePublicIpAddress -Name gatewaypubIP`
-			-ResourceGroupName RG1 -Location "China North" `
+		$ipaddress = New-AzureRmPublicIpAddress -Name gatewaypubIP`
+			-ResourceGroupName RG1 -Location "China East" `
 			-AllocationMethod Dynamic
 
 4. 通过运行以下命令，检索网关的子网。
 
-		$subnet = Get-AzureVirtualNetworkSubnetConfig -Name GatewaySubnet `
+		$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet `
 			-VirtualNetwork (Get-AzureVirtualNetwork -Name VNetARM -ResourceGroupName RG1) 
 
-	>[AZURE.IMPORTANT]网关子网必须已经存在，其必须命名为 GatewaySubnet。
+	>[AZURE.IMPORTANT] 网关子网必须已经存在，其必须命名为 GatewaySubnet。
 
 5. 通过运行以下命令，为网关创建 IP 配置对象。注意网关子网的 ID。该子网必须存在于 VNet 中。
 
-		$ipconfig = New-AzureVirtualNetworkGatewayIpConfig `
+		$ipconfig = New-AzureRmVirtualNetworkGatewayIpConfig `
 			-Name ipconfig -PrivateIpAddress 10.1.2.4 `
 			-SubnetId $subnet.id -PublicIpAddressId $ipaddress.id
 
-	>[AZURE.IMPORTANT]*SubnetId* 和 *PublicIpAddressId* 参数必须分别从子网和 IP 地址对象传递 ID 属性。不能使用简单字符串。
+	>[AZURE.IMPORTANT] “SubnetId” 和 “PublicIpAddressId” 参数必须分别从子网和 IP 地址对象传递 ID 属性。不能使用简单字符串。
 	
 5. 通过运行以下命令，创建 ARM VNet 网关。
 
-		New-AzureVirtualNetworkGateway -Name v1v2Gateway -ResourceGroupName RG1 `
-			-Location "China North" -GatewayType Vpn -IpConfigurations $ipconfig `
+		New-AzureRmVirtualNetworkGateway -Name v1v2Gateway -ResourceGroupName RG1 `
+			-Location "China East" -GatewayType Vpn -IpConfigurations $ipconfig `
 			-EnableBgp $false -VpnType RouteBased
 
 6. VPN 网关创建完成后，运行以下命令以检索其公有 IP 地址。复制 IP 地址，为经典 VNet 配置本地网络时需要该地址。
 
-		Get-AzurePublicIpAddress -Name gatewaypubIP -ResourceGroupName RG1
+		Get-AzureRmPublicIpAddress -Name gatewaypubIP -ResourceGroupName RG1
 
 ## 步骤 3：在网关之间创建连接
 
 1. 从 https://manage.windowsazure.cn 打开经典门户，必要时输入你的凭据。
 2. 在经典门户中，向下滚动并单击“网络”，然后单击“本地网络”，单击要连接到的 ARM VNet，然后单击“编辑”按钮。
 3. 在“VPN 设备 IP 地址(可选)”中，键入上述步骤 2 中的 ARM VNet 网关检索的 IP 地址，然后单击右上角的向右箭头，再单击复选标记按钮。
-4. 从 PowerShell 控制台中，运行以下命令以切换到 Azure 服务管理器模式。
-
-		Switch-AzureMode AzureServiceManager
-
-5. 通过运行以下命令，设置共享密钥。确保将 VNet 的名称更改为你自己的 VNet 名称。
+4. 在 PowerShell 控制台中，运行以下命令以设置共享密钥。确保将 VNet 的名称更改为你自己的 VNet 名称。
 
 		Set-AzureVNetGatewayKey -VNetName VNetClassic `
 			-LocalNetworkSiteName VNetARM -SharedKey abc123
 
-6. 从 PowerShell 控制台中，运行以下命令以切换到 Azure 资源管理器模式。
-
-		Switch-AzureMode AzureResourceManager
-
 7. 通过运行以下命令，创建 VPN 连接。
 
-		$vnet01gateway = Get-AzureLocalNetworkGateway -Name VNetClassic -ResourceGroupName RG1
-		$vnet02gateway = Get-AzureVirtualNetworkGateway -Name v1v2Gateway -ResourceGroupName RG1
+		$vnet01gateway = Get-AzureRmLocalNetworkGateway -Name VNetClassic -ResourceGroupName RG1
+		$vnet02gateway = Get-AzureRmVirtualNetworkGateway -Name v1v2Gateway -ResourceGroupName RG1
 		
-		New-AzureVirtualNetworkGatewayConnection -Name arm-asm-s2s-connection `
-			-ResourceGroupName RG1 -Location "China North" -VirtualNetworkGateway1 $vnet02gateway `
+		New-AzureRmVirtualNetworkGatewayConnection -Name arm-asm-s2s-connection `
+			-ResourceGroupName RG1 -Location "China East" -VirtualNetworkGateway1 $vnet02gateway `
 			-LocalNetworkGateway2 $vnet01gateway -ConnectionType IPsec `
 			-RoutingWeight 10 -SharedKey 'abc123'
 
@@ -125,5 +113,4 @@ Azure 当前有两种管理模式：Azure 服务管理（称之为经典）和 A
 
 - 了解有关[适用于 ARM 的网络资源提供程序 (NRP)](/documentation/articles/resource-groups-networking) 的详细信息。
 - 创建[使用 S2S VPN 以将经典 VNet 连接到 ARM VNet 的端到端解决方案](/documentation/articles/virtual-networks-arm-asm-s2s)。
-
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0516_2016-->

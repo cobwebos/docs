@@ -4,12 +4,12 @@
 	services="mobile-services"
 	documentationCenter="android"
 	authors="RickSaling"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="01/20/2016"
+	ms.date="04/07/2016"
 	wacn.date=""/>
 
 # 将移动服务添加到现有 Android 应用（JavaScript 后端）
@@ -73,7 +73,7 @@
 
    	此时会将一个新项作为 insert 发送到移动服务。
 
-3. 在 [Azure 经典门户] 中，单击“移动服务”，然后单击你的移动服务。
+3. 在 [Azure 经典门户](https://manage.windowsazure.cn) 中，单击“移动服务”，然后单击你的移动服务。
 
 4. 单击“数据”选项卡，然后单击“浏览”。
 
@@ -97,7 +97,7 @@
 	<br/>了解如何对应用程序用户进行身份验证。
 
 * [推送通知入门](/documentation/articles/mobile-services-javascript-backend-android-get-started-push)
-  <br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
+	<br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
 
 <!-- Anchors. -->
 [Download the Android app project]: #download-app
@@ -124,4 +124,4 @@
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkID=282122
 [Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=280125
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0516_2016-->

@@ -13,7 +13,8 @@
 	wacn.date=""/>
 
 # <a name="getting-started"></a>移动服务入门
-[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]&nbsp;
+[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
+&nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
 > 有关本主题的对等 Mobile Apps 版本，请参阅[创建 Xamarin.iOS 应用](/documentation/articles/app-service-mobile-xamarin-ios-get-started)。
@@ -30,7 +31,7 @@
 
 ![][0]
 
-完成本教程需要 XCode 和 [Xamarin Studio] for OS X 或用于 Windows 上的 Visual Studio 的 Xamarin Visual Studio 插件。该示例将在 iOS 5.0 和更高版本上运行。
+完成本教程需要 XCode 和 Xamarin Studio（对于 OS X）或 Visual Studio（对于 Windows）以及联网的 Mac。[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/zh-cn/library/mt613162.aspx) 中提供了完整的安装说明。
 
 > [AZURE.IMPORTANT] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial)。
 
@@ -60,7 +61,7 @@
 
 5. 在“下载并运行应用程序”下面单击“下载”。
 
-	随即将会下载示例待办事项列表应用程序的项目，该应用程序已连接到移动服务，并引用 Xamarin.iOS 的 Azure 移动服务组件。将压缩的项目文件保存到本地计算机，并记下保存位置。
+	随即将会下载示例_待办事项列表_应用程序的项目，该应用程序已连接到移动服务，并引用 Xamarin.iOS 的 Azure 移动服务组件。将压缩的项目文件保存到本地计算机，并记下保存位置。
 
 ## 运行新的 Xamarin.iOS 应用程序
 
@@ -74,7 +75,7 @@
 
 2. 按“运行”按钮以生成项目，并在 iPhone 模拟器中启动应用，这是此项目的默认设置。
 
-3. 在应用中键入有意义的文本（例如 Complete the tutorial），然后单击加号 (**+**) 图标。
+3. 在应用中键入有意义的文本（例如 _完成本教程_），然后单击加号 (**+**) 图标。
 
 	![][10]
 
@@ -135,4 +136,4 @@
 
 [Azure 经典门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0516_2016-->

@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="01/06/2016"
+   ms.date="04/02/2016"
    wacn.date=""/>
 
 
@@ -68,6 +68,7 @@
 - [了解 Azure Active Directory 应用程序清单](active-directory-application-manifest)
 - [使用 Office 365 API 创建应用](https://msdn.microsoft.com/office/office365/howto/getting-started-Office-365-APIs)
 - [将适用于 Office 365 的 Web 应用提交到卖家仪表板](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)
+- 了解如何使用 ADAL 在 [Android](active-directory-sso-android) 和 [iOS](active-directory-sso-ios.md) 设备上启用跨应用 SSO
 - [预览：如何构建可以使用个人帐户和工作或学校帐户来登录用户的应用](active-directory-appmodel-v2-overview.md)
 - [预览：如何构建可以注册和登录使用者的应用](active-directory-b2c-overview.md)
 
@@ -84,6 +85,7 @@
 
 - [Azure Active Directory 示例](https://github.com/azure-samples?query=active-directory)：浏览示例列表的最简单办法是使用[代码示例的索引](active-directory-code-samples.md)。
 
+- [ADAL for .NET](https://msdn.microsoft.com/library/azure/mt417579.aspx)：.NET 身份验证库文档。
 
 ### Graph API
 
@@ -91,13 +93,9 @@
 
 - [图形 API 权限范围](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)：用于控制应用对租户中目录数据的访问权限的 OAuth 2.0 权限范围。
 
-### 身份验证库
-
-- [.NET](https://msdn.microsoft.com/library/azure/mt417579.aspx)：.NET 身份验证库文档。
-
 ### 身份验证协议
 
-- **[SAML 2.0 协议参考](https://msdn.microsoft.com/zh-cn/library/azure/dn195591.aspx)**：SAML 2.0 协议使应用程序能够为其用户提供单一登录体验。
+- [SAML 2.0 协议参考](https://msdn.microsoft.com/library/azure/dn195591.aspx)：SAML 2.0 协议使应用程序能够为其用户提供单一登录体验。
 
 
 - [OAuth 2.0 协议参考](https://msdn.microsoft.com/library/azure/dn645545.aspx)：可以使用 OAuth 2.0 协议授权访问 Azure Active Directory 租户中的 Web 应用程序和 Web API。
@@ -120,4 +118,4 @@
 
 - [Twitter 上的 Azure Active Directory](https://twitter.com/azuread)：以 140 个或更少的字符发布的 Azure Active Directory 公告。
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0516_2016-->

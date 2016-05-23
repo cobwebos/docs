@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="10/13/2015"
+	ms.date="03/18/2016"
 	wacn.date=""/>
 
 # 将 Azure AD 集成到 iOS 应用程序中
@@ -31,7 +31,7 @@
 
 若要开始，请[下载应用程序框架](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)。你还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。如果你还没有租户，请[了解如何获取租户](active-directory-howto-tenant)。
 
-## *1.确定用于 iOS 的重定向 URI*
+## 1.确定用于 iOS 的重定向 URI
 
 为了安全地在特定 SSO 方案中启动应用程序，我们需要以特定格式创建**重定向 URI**。重定向 URI 可确保将令牌返回给需要它们的正确应用程序。
 
@@ -44,9 +44,9 @@
 - 	**aap-scheme** - 已在 XCode 项目中注册。它是其他应用程序与你联系的方式。可以在 Info.plist -> URL types -> URL Identifier 下找到此信息。如果尚未配置一个或多个方案，则你应该创建一个。
 - 	**bundle-id** - 这是在 XCode 项目设置中“identity”下可找到的捆绑标识符。
 	
-此快速入门代码的示例为：***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
+此快速入门代码的示例为：**msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart**
 
-## *2.注册 DirectorySearcher 应用程序*
+## 2.注册 DirectorySearcher 应用程序
 若要让应用程序获取令牌，首先需要在 Azure AD 租户中注册该应用程序，并授予它访问 Azure AD Graph API 的权限：
 
 -	登录到 Azure 管理门户
@@ -59,7 +59,7 @@
 -	完成注册后，AAD 将为应用程序分配唯一的客户端标识符。在后面的部分中将会用到此值，因此，请从“配置”选项卡复制此值。
 - 另外，请在“配置”选项卡中，找到“针对其他应用程序的权限”部分。对于“Azure Active Directory”应用程序，在“委托的权限”下添加“访问组织的目录”权限。这样，你的应用程序便可以在 Graph API 中查询用户。
 
-## *3.安装并配置 ADAL*
+## 3.安装并配置 ADAL
 将应用程序注册到 Azure AD 后，可以安装 ADAL 并编写标识相关的代码。为了使 ADAL 能够与 Azure AD 通信，需要为 ADAL 提供一些有关应用程序的注册信息。
 -	首先，使用 Cocapods 将 ADAL 添加到 DirectorySearcher 项目。
 
@@ -89,7 +89,7 @@ $ open QuickStart.xcworkspace
     -	`clientId` 是从门户复制的应用程序 clientId。
     -	`redirectUri` 是在门户中注册的 URL。
 
-## *4.使用 ADAL 从 Azure AD 获取令牌*
+## 4.使用 ADAL 从 Azure AD 获取令牌
 ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只需调用 completionBlock `+(void) getToken : `，然后 ADAL 就会负责其余的工作。
 
 -	在 `QuickStart` 项目中，打开 `GraphAPICaller.m` 并找到靠近顶部位置的 `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` 注释。你将在此处通过 CompletionBlock 传递 ADAL 与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
@@ -216,9 +216,13 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 
 使用 ADAL 可以方便地将所有这些常见标识功能合并到应用程序中。它会负责所有的繁琐工作 - 缓存管理、OAuth 协议支持、向用户显示登录名 UI、刷新已过期的令牌，等等。你只需要真正了解一个 API 调用，即 `getToken`。
 
-[此处](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)提供了已完成示例（无需配置值）供你参考。现在，你可以转到其他方案。你可能想要尝试：
+[此处](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)提供了已完成示例（无需配置值）供你参考。
 
-[使用 Azure AD 保护 Node.js Web API >>](../active-directory-devquickstarts-webapi-nodejst)
+## 其他方案
+现在，你可以转到其他方案。你可能想要尝试：
+
+- [使用 Azure AD 保护 Node.JS Web API](active-directory-devquickstarts-webapi-nodejs.md)
+- 了解[如何使用 ADAL 在 iOS 上启用跨应用 SSO](active-directory-sso-ios.md)  
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources)]
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0516_2016-->

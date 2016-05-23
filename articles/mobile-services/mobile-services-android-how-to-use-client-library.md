@@ -4,12 +4,12 @@
 	services="mobile-services" 
 	documentationCenter="android" 
 	authors="RickSaling" 
-	manager="dwrede" 
+	manager="erikre"
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="01/20/2016"
+	ms.date="04/07/2016"
 	wacn.date=""/>
 
 
@@ -60,7 +60,7 @@
 
 ##<a name="instantiating"></a>如何创建表引用
 
-在移动服务中查询或修改数据的最简单方法就是使用“类型化编程模型”，因为 Java 是强类型化语言（稍后我们将会介绍“非类型化”模型）。在客户端和移动服务之间发送数据时，此模型使用 [gson](http://go.microsoft.com/fwlink/p/?LinkId=290801) 库提供对 JSON 的无缝序列化和反序列化：开发人员无需执行任何操作，该框架将处理一切。
+在移动服务中查询或修改数据的最简单方法就是使用类型化编程模型，因为 Java 是强类型化语言（稍后我们将会介绍非类型化模型）。在客户端和移动服务之间发送数据时，此模型使用 [gson](http://go.microsoft.com/fwlink/p/?LinkId=290801) 库提供对 JSON 的无缝序列化和反序列化：开发人员无需执行任何操作，该框架将处理一切。
 
 查询或修改数据所要执行的第一项操作就是通过对 [**MobileServiceClient**](http://dl.windowsazure.com/androiddocs/com/microsoft/windowsazure/mobileservices/MobileServiceClient.html) 调用 **getTable** 方法来创建一个 [MobileServiceTable](http://go.microsoft.com/fwlink/p/?LinkId=296835) 对象。下面是此方法的两个重载：
 
@@ -661,7 +661,7 @@
 
 移动服务支持使用各种外部标识提供者对应用用户进行身份验证和授权，这些提供者包括：Microsoft 帐户和 Azure Active Directory。你可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。你还可以在后端中使用已经过身份验证的用户的标识来实施授权规则。有关详细信息，请参阅[身份验证入门](/documentation/articles/mobile-services-android-get-started-users/)。
 
-支持两种身份验证流: “服务器”流和“客户端”流。服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。客户端流依赖于提供者和设备特定的 SDK，因此允许与设备特定的功能（例如单一登录）进行更深入的集成。
+支持两种身份验证流: 服务器流和客户端流。服务器流依赖于提供者的 Web 身份验证界面，因此可提供最简便的身份验证体验。客户端流依赖于提供者和设备特定的 SDK，因此允许与设备特定的功能（例如单一登录）进行更深入的集成。
 
 在应用程序中启用身份验证需要执行以下三个步骤：
 
@@ -935,4 +935,4 @@
 [移动服务快速入门]: /documentation/articles/mobile-services-android-get-started
 [ASCII 控制代码 C0 和 C1]: http://zh.wikipedia.org/wiki/Data_link_escape_character#C1_set
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0516_2016-->

@@ -1,15 +1,15 @@
-<properties 
-	pageTitle="如何通过 Node.js 使用队列存储 | Microsoft Azure" 
-	description="了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。相关示例是使用 Node.js 编写的。" 
-	services="storage" 
-	documentationCenter="nodejs" 
-	authors="rmcmurray" 
-	manager="wpickett" 
+<properties
+	pageTitle="如何通过 Node.js 使用队列存储 | Azure"
+	description="了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。相关示例是使用 Node.js 编写的。"
+	services="storage"
+	documentationCenter="nodejs"
+	authors="rmcmurray"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
 	ms.service="storage" 
-	ms.date="02/17/2016"
+	ms.date="04/08/2016"
 	wacn.date=""/>
 
 
@@ -56,7 +56,7 @@
 
 使用记事本或其他文本编辑器将以下内容添加到您要在其中使用存储的应用程序的 **server.js** 文件的顶部：
 
-    var azure = require('azure-storage');
+	var azure = require('azure-storage');
 
 ## 设置 Azure 存储连接
 
@@ -68,27 +68,27 @@ Azure 模块将读取环境变量 AZURE\_STORAGE\_ACCOUNT 和 AZURE\_STORAGE\_AC
 
 以下代码将创建一个 **QueueService** 对象，您可通过该对象来操作队列。
 
-    var queueSvc = azure.createQueueService();
+	var queueSvc = azure.createQueueService();
 
 使用 **createQueueIfNotExists** 方法，该方法将返回指定队列（如果它存在），或创建具有指定名称的新队列（如果它尚不存在）。
 
 	queueSvc.createQueueIfNotExists('myqueue', function(error, result, response){
-      if(!error){
-        // Queue created or exists
+	  if(!error){
+	    // Queue created or exists
 	  }
 	});
 
-如果创建了队列，则 `result` 为 true。如果队列已存在，则 `result` 为 false。
+如果创建了队列，则 `result.created` 为 true。如果队列已存在，则 `result.created` 为 false。
 
 ### 筛选器
 
 可以向使用 **QueueService** 执行的操作应用可选的筛选操作。筛选操作可包括日志记录、自动重试等。筛选器是实现具有签名的方法的对象：
 
-		function handle (requestOptions, next)
+	function handle (requestOptions, next)
 
 在对请求选项执行预处理后，该方法需要调用“next”并且传递具有以下签名的回调：
 
-		function (returnObject, finalCallback, next)
+	function (returnObject, finalCallback, next)
 
 在此回调中并且在处理 returnObject（来自对服务器请求的响应）后，回调需要调用 next（如果它存在以便继续处理其他筛选器）或只调用 finalCallback 以便结束服务调用。
 
@@ -113,7 +113,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 	queueSvc.peekMessages('myqueue', function(error, result, response){
 	  if(!error){
-		// Message text is in messages[0].messagetext
+	    // Message text is in messages[0].messageText
 	  }
 	});
 
@@ -132,14 +132,14 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 若要取消消息的排队，请使用 **getMessages**。这会使消息在队列中不可见，因此其他客户端无法处理它们。一旦应用程序处理完某个消息，即可调用 **deleteMessage** 将其从队列中删除。下面的示例获取了一条消息，然后又将其删除：
 
 	queueSvc.getMessages('myqueue', function(error, result, response){
-      if(!error){
-	    // Message text is in messages[0].messagetext
-        var message = result[0];
-        queueSvc.deleteMessage('myqueue', message.messageid, message.popreceipt, function(error, response){
+	  if(!error){
+	    // Message text is in messages[0].messageText
+	    var message = result[0];
+	    queueSvc.deleteMessage('myqueue', message.messageId, message.popReceipt, function(error, response){
 	      if(!error){
-		    //message deleted
-		  }
-		});
+	        //message deleted
+	      }
+	    });
 	  }
 	});
 
@@ -152,15 +152,15 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 您可以更改队列中现有消息的内容，只需使用 **updateMessage** 即可。以下示例将更新消息文本：
 
-    queueSvc.getMessages('myqueue', function(error, result, response){
+	queueSvc.getMessages('myqueue', function(error, result, response){
 	  if(!error){
-		// Got the message
-		var message = result[0];
-		queueSvc.updateMessage('myqueue', message.messageid, message.popreceipt, 10, {messageText: 'new text'}, function(error, result, response){
-		  if(!error){
-			// Message updated successfully
-		  }
-		});
+	    // Got the message
+	    var message = result[0];
+	    queueSvc.updateMessage('myqueue', message.messageId, message.popReceipt, 10, {messageText: 'new text'}, function(error, result, response){
+	      if(!error){
+	        // Message updated successfully
+	      }
+	    });
 	  }
 	});
 
@@ -173,18 +173,18 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 以下示例使用 **getMessages** 方法通过一次调用获取 15 条消息。然后，它会使用 for 循环处理每条消息。它还将通过此方法返回的所有消息的不可见性超时设置为 5 分钟。
 
-    queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, result, response){
+	queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, result, response){
 	  if(!error){
-		// Messages retreived
-		for(var index in result){
-		  // text is available in result[index].messageText
-		  var message = result[index];
-		  queueSvc.deleteMessage(queueName, message.messageid, message.popreceipt, function(error, response){
-			if(!error){
-			  // Message deleted
-			}
-		  });
-		}
+	    // Messages retreived
+	    for(var index in result){
+	      // text is available in result[index].messageText
+	      var message = result[index];
+	      queueSvc.deleteMessage(queueName, message.messageId, message.popReceipt, function(error, response){
+	        if(!error){
+	          // Message deleted
+	        }
+	      });
+	    }
 	  }
 	});
 
@@ -192,9 +192,9 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 **getQueueMetadata** 返回有关队列的元数据，其中包括队列中等待的消息的大致数目。
 
-    queueSvc.getQueueMetadata('myqueue', function(error, result, response){
+	queueSvc.getQueueMetadata('myqueue', function(error, result, response){
 	  if(!error){
-		// Queue length is available in result.approximatemessagecount
+	    // Queue length is available in result.approximateMessageCount
 	  }
 	});
 
@@ -214,10 +214,10 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 若要删除队列及其中包含的所有消息，请对队列对象调用 **deleteQueue** 方法。
 
-    queueSvc.deleteQueue(queueName, function(error, response){
-		if(!error){
-			// Queue has been deleted
-		}
+	queueSvc.deleteQueue(queueName, function(error, response){
+	  if(!error){
+	    // Queue has been deleted
+	  }
 	});
 
 若要清除队列中的所有消息而不删除该队列，则可使用 **clearMessages**。
@@ -234,7 +234,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 	var expiryDate = new Date(startDate);
 	expiryDate.setMinutes(startDate.getMinutes() + 100);
 	startDate.setMinutes(startDate.getMinutes() - 100);
-	
+
 	var sharedAccessPolicy = {
 	  AccessPolicy: {
 	    Permissions: azure.QueueUtilities.SharedAccessPermissions.ADD,
@@ -265,36 +265,30 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID。下面的示例定义了两个策略，一个用于“user1”，一个用于“user2”：
 
-	var sharedAccessPolicy = [
-	  {
-	    AccessPolicy: {
-	      Permissions: azure.QueueUtilities.SharedAccessPermissions.PROCESS,
-	      Start: startDate,
-	      Expiry: expiryDate
-	    },
-	    Id: 'user1'
+	var sharedAccessPolicy = {
+	  user1: {
+	    Permissions: azure.QueueUtilities.SharedAccessPermissions.PROCESS,
+	    Start: startDate,
+	    Expiry: expiryDate
 	  },
-	  {
-	    AccessPolicy: {
-	      Permissions: azure.QueueUtilities.SharedAccessPermissions.ADD,
-	      Start: startDate,
-	      Expiry: expiryDate
-	    },
-	    Id: 'user2'
+	  user2: {
+	    Permissions: azure.QueueUtilities.SharedAccessPermissions.ADD,
+	    Start: startDate,
+	    Expiry: expiryDate
 	  }
-	];
+	};
 
 下面的示例获取 **myqueue** 的当前 ACL，然后使用 **setQueueAcl** 添加新策略。此方法具有以下用途：
 
+	var extend = require('extend');
 	queueSvc.getQueueAcl('myqueue', function(error, result, response) {
-      if(!error){
-		//push the new policy into signedIdentifiers
-		result.signedIdentifiers = result.signedIdentifiers.concat(sharedAccessPolicy);
-		queueSvc.setQueueAcl('myqueue', result.signedIdentifiers, function(error, result, response){
-	  	  if(!error){
-	    	// ACL set
-	  	  }
-		});
+	  if(!error){
+	    var newSignedIdentifiers = extend(true, result.signedIdentifiers, sharedAccessPolicy);
+	    queueSvc.setQueueAcl('myqueue', newSignedIdentifiers, function(error, result, response){
+	      if(!error){
+	        // ACL set
+	      }
+	    });
 	  }
 	});
 
@@ -320,11 +314,11 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
   [Queue1]: ./media/storage-nodejs-how-to-use-queues/queue1.png
   [plus-new]: ./media/storage-nodejs-how-to-use-queues/plus-new.png
   [quick-create-storage]: ./media/storage-nodejs-how-to-use-queues/quick-storage.png
-  
-  
-  
-  [Node.js Cloud Service]: /documentation/articles/cloud-services-nodejs-develop-deploy-app
-  [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
- [ Website with WebMatrix]: /documentation/articles/web-sites-nodejs-use-webmatrix
 
-<!---HONumber=Mooncake_0411_2016-->
+
+
+  [生成 Node.js 应用程序并将其部署到 Azure 云服务]: /documentation/articles/cloud-services-nodejs-develop-deploy-app
+  [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
+  [使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]: /documentation/articles/web-sites-nodejs-use-webmatrix
+
+<!---HONumber=Mooncake_0516_2016-->

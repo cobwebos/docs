@@ -23,7 +23,7 @@
 
 本教程是在 TodoList 示例应用程序的基础上制作的。在开始本教程之前，必须先完成主题[将移动服务添加到现有应用程序]以将项目连接到移动服务。如果尚未连接移动服务，“添加推送通知”向导可为你创建此连接。
 
->[AZURE.NOTE]若要向 Windows Phone 8.1 应用商店应用程序发送推送通知，请遵照本教程的 [Windows 应用商店应用程序](/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push)版本。
+>[AZURE.NOTE]若要向 Windows Phone 8.1 应用商店应用程序发送推送通知，请遵照本教程的 [Windows 应用商店应用程序](/documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push)版本。
 
 ##<a id="update-app"></a>更新应用程序以注册通知
 
@@ -120,7 +120,7 @@
 
 1. 在 Visual Studio 中，按 F5 键运行应用程序。
 
-    >[AZURE.NOTE]在 Windows Phone 模拟器测试时，你可能会遇到 401 错误“未授权的 RegistrationAuthorizationException”。由于 Windows Phone 模拟器时钟与主机电脑时钟的同步问题，在调用 `RegisterNativeAsync()` 期间可能会出现此错误。这可能会导致安全令牌被拒绝。若要解决此问题，只需在模拟器中手动设置时钟，然后再开始测试。
+    >[AZURE.NOTE] 在 Windows Phone 模拟器测试时，你可能会遇到 401 错误“未授权的 RegistrationAuthorizationException”。由于 Windows Phone 模拟器时钟与主机电脑时钟的同步问题，在调用 `RegisterNativeAsync()` 期间可能会出现此错误。这可能会导致安全令牌被拒绝。若要解决此问题，只需在模拟器中手动设置时钟，然后再开始测试。
 
 2. 在应用程序中，在文本框中输入文本“hello push”，单击“保存”，然后立即单击开始按钮或后退按钮以退出应用程序。
 
@@ -180,5 +180,4 @@
 [什么是通知中心？]: /documentation/articles/notification-hubs-overview
 
  
-
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0516_2016-->

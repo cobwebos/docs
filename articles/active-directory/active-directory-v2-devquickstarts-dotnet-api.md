@@ -1,5 +1,5 @@
 <properties
-	pageTitle="应用模型 v2.0 .NET Web API | Microsoft Azure"
+	pageTitle="Azure AD v2.0 .NET Web API | Microsoft Azure"
 	description="如何构建一个可从个人 Microsoft 帐户及公司或学校帐户接受令牌的 .NET MVC Web API。"
 	services="active-directory"
 	documentationCenter=".net"
@@ -34,7 +34,7 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-Web
 git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
 ```
 
-## 1\.注册应用程序
+## 注册应用程序
 在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) 中创建新的应用程序，或遵循以下[详细步骤](active-directory-v2-app-registration.md)。请确保：
 
 - 复制分配给应用程序的**应用程序 ID**，因为稍后将要用到。
@@ -159,4 +159,4 @@ public IEnumerable<TodoItem> Get()
 - [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
 - [堆栈溢出“azure-active-directory”标记 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

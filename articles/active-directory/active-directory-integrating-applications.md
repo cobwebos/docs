@@ -9,7 +9,7 @@
 <tags
    ms.service="active-directory"
 
-   ms.date="01/08/2016"
+   ms.date="04/06/2016"
    wacn.date="" />
 
 # 将应用程序与 Azure Active Directory 集成
@@ -30,7 +30,7 @@
 
 ### 在 Azure 经典门户注册新应用程序
 
-1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
+1. 登录到 [Azure 经典门户](https://manage.windowsazure.cn)。
 
 1. 在左侧菜单中单击“Active Directory”图标，然后单击所需的目录。
 
@@ -38,9 +38,9 @@
 
 1. 在“要执行什么操作”页上，单击“添加我的组织正在开发的应用程序”链接。
 
-1. 在“向我们说明你的应用程序”页上，必须指定应用程序的名称并指明你要注册到 Azure AD 的应用程序类型。可以选择“Web 应用程序和/或 Web API”（默认值，在 OAuth2 语境中也称为机密客户端）或“本机客户端应用程序”，后者代表安装在电话或计算机等设备上的应用程序（在 OAuth2 语境中也称为公共客户端）。完成后，单击页面右下角的箭头图标。
+1. 在“向我们说明你的应用程序”页上，必须指定应用程序的名称并指明你要注册到 Azure AD 的应用程序类型。可以选择“Web 应用程序和/或 Web API”（默认值，在 OAuth2 中也称为机密客户端）或“本机客户端应用程序”，后者代表安装在电话或计算机等设备上的应用程序（在 OAuth2 中也称为公共客户端）。完成后，单击页面右下角的箭头图标。
 
-1. 在“应用程序属性”页上，提供 Web 应用程序的“登录 URL”和“应用 ID URI”（或者只提供本机客户端应用程序的“重定向 URI”），然后单击页面底部右下角的复选框。
+1. 在“应用属性”页上，提供“登录 URL”和“应用 ID URI”（如果正在注册 Web 应用程序）或者只提供“重定向 URI”（针对本机客户端应用程序），然后单击页面右下角的复选框。
 
 1. 现已添加你的应用程序，此时你将转到应用程序的“快速启动”页。根据你的应用程序是 Web 应用程序还是本机应用程序，你将看到有关如何向应用程序添加更多功能的不同选项。添加应用程序后，你可以开始更新应用程序，使用户能够登录、访问其他应用程序中的 Web API，或者配置多租户应用程序（允许其他组织访问你的应用程序）。
 
@@ -48,7 +48,7 @@
 
 ## 更新应用程序
 
-将应用程序注册到 Azure AD 后，可能需要更新该应用程序，以提供对 Web API 的访问权限、使其可在其他组织中使用，等等。本部分介绍如何进一步配置你的应用程序。有关如何在 Azure AD 中进行身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios)。
+将应用程序注册到 Azure AD 后，可能需要更新该应用程序，以提供对 Web API 的访问权限、使其可在其他组织中使用，等等。本部分介绍如何进一步配置你的应用程序。有关如何在 Azure AD 中进行身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)。
 
 ### 同意框架概述
 
@@ -58,13 +58,13 @@
 
 同意框架使用公共或机密客户端，建立在 OAuth 2.0 及其各种流程的基础之上，例如，代码授权和客户端凭据授权。通过使用 OAuth 2.0，可以在 Azure AD 中生成多种不同类型的客户端应用程序（例如手机、平板电脑、服务器或 Web 应用程序），并获取对所需资源的访问权限。
 
-有关同意框架的更多详细信息，请参阅 [Azure AD 中的 OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)、[Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)和 Office 365 主题 [使用通用同意框架进行身份验证和授权](https://msdn.microsoft.com/library/office/dn605895(v=office.15).aspx)。
+有关同意框架的更多详细信息，请参阅 [Azure AD 中的 OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)、[Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)和 Office 365 主题 [Understanding authentication with Office 365 APIs（了解如何使用 Office 365 API 进行身份验证）](https://msdn.microsoft.com/office/office365/howto/common-app-authentication-tasks)。
 
 #### 同意体验示例
 
 以下步骤将说明同意体验对应用程序开发人员和用户的工作方式。
 
-1. 在 Azure 管理门户中 Web 客户端应用程序的配置页上，使用“对其他应用程序的权限”控件中的下拉菜单设置你的应用程序所需的权限。
+1. 在 Azure 经典门户中 Web 客户端应用程序的配置页上，使用“对其他应用程序的权限”控件中的下拉菜单设置应用程序所需的权限。
 
     ![针对其他应用程序的权限](./media/active-directory-integrating-applications/permissions.png)
 
@@ -74,7 +74,7 @@
 
     ![用户或管理员登录到 Azure AD](./media/active-directory-integrating-applications/useradminsignin.png)
 
-1. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。如果尚未授予许可，Azure AD 将提示用户授予许可，并显示运行该应用程序所需的权限。同意对话框中显示的权限集与在 Azure 管理门户中“对其他应用程序的权限”控件中选择的权限集相同。
+1. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。如果尚未授予许可，Azure AD 将提示用户授予许可，并显示运行该应用程序所需的权限。同意对话框中显示的权限集与在 Azure 经典门户中的“对其他应用程序的权限”控件中选择的权限集相同。
 
     ![用户同意体验](./media/active-directory-integrating-applications/userconsent.png)
 
@@ -110,7 +110,7 @@
 
 #### 将权限范围添加到资源应用程序
 
-1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
+1. 登录到 [Azure 经典门户](https://manage.windowsazure.cn)。
 
 1. 在左侧菜单中单击“Active Directory”图标，然后单击所需的目录。
 
@@ -133,25 +133,25 @@
 			}
 		],
 
-    id 值必须是你通过使用 GUID 生成工具或以编程方式新生成的 GUID。它表示 Web API 公开的权限的唯一标识符。将客户端适当地配置为请求访问 Web API 并调用 Web API 后，该客户端将显示一个 OAuth 2.0 JWT 令牌，该令牌的作用域 (scp) 声明已设置为上面指定的值（在本例中为 user\_impersonation）。
+    ID 值必须是你通过使用 [GUID 生成工具](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx)或以编程方式新生成的 GUID。它表示 Web API 公开的权限的唯一标识符。将客户端适当地配置为请求访问 Web API 并调用 Web API 后，该客户端将显示一个 OAuth 2.0 JWT 令牌，该令牌的范围 (scp) 声明已设置为上面的值（在本例中为 user\_impersonation）。
 
-	>[AZURE.NOTE] 以后你可以根据需要公开其他权限作用域。请考虑你的 Web API 可能要公开与各种不同功能关联的多个权限。现在，你可以通过使用所收到的 OAuth 2.0 JWT 令牌中的作用域 (scp) 声明来控制到 Web API 的访问。
+	>[AZURE.NOTE] 以后你可以根据需要公开其他权限作用域。请考虑你的 Web API 可能要公开与各种不同功能关联的多个权限。现在，你可以通过使用所收到的 OAuth 2.0 JWT 令牌中的范围 (scp) 声明来控制对 Web API 的访问。
 
 1. 保存更新的 JSON 文件，然后将其上载，方法是单击命令栏中的“管理清单”按钮，选择“上载清单”，浏览到更新的清单文件，然后将其选中。上载后，你的 Web API 便已配置为可供目录中的其他应用程序使用。
 
-#### 验证 Web API 是否已公开给目录中的其他应用程序
+#### 验证 Web API 是否已公开给目录中其他应用程序的步骤
 
-1. 在顶部菜单中，单击“应用程序”，选择你要为其配置 Web API 访问权限的所需应用程序，然后单击“配置”。
+1. 在顶部菜单中，单击“应用程序”，选择你要为其配置 Web API 访问权限的所需客户端应用程序，然后单击“配置”。
 
-1. 向下滚动到“对其他应用程序的权限”部分。单击“选择应用程序”下拉菜单，然后便可以选择你刚刚为其公开了权限的 Web API。从“委托权限”下拉菜单中选择新的权限。
+1. 向下滚动到“对其他应用程序的权限”部分。单击“选择应用程序”下拉菜单，然后便可以选择刚刚为其公开了权限的 Web API。从“委托的权限”下拉菜单中选择新的权限。
 
 ![显示“待办事项”权限](./media/active-directory-integrating-applications/listpermissions.png)
 
 #### 有关应用程序清单的更多信息
 应用程序清单实际上充当了用于更新应用程序实体的机制，它定义了 Azure AD 应用程序的标识配置的所有属性，包括本文所述的 API 权限范围。有关应用程序实体的详细信息，请参阅[图形 API 应用程序实体文档](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#EntityreferenceApplicationEntity)。在该文档中，可以找到用于指定 API 权限的应用程序实体成员的完整参考信息：
 
-- appRoles 成员，可用于定义 Web API 的**应用程序权限**的 [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#AppRoleType) 实体集合。  
-- oauth2Permissions 成员，可用于定义 Web API 的**委托权限**的 [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionType) 实体集合。
+- appRoles 成员，可用于定义 Web API 的**应用程序权限**的 [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#AppRoleType) 实体集合  
+- oauth2Permissions 成员，可用于定义 Web API 的**委托的权限**的 [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#OAuth2PermissionType) 实体集合
 
 有关应用程序清单概念的更多一般信息，请参阅[了解 Azure Active Directory 应用程序清单](active-directory-application-manifest.md)。
 
@@ -162,7 +162,7 @@
 有关以下各项公开的权限范围的完整介绍：
 
 - Azure AD 图形 API，请参阅[权限范围 | 图形 API 概念](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)一文。
-- Office 365 API，请参阅[使用通用同意框架进行身份验证和授权](https://msdn.microsoft.com/office/office365/howto/application-manifest)一文。有关如何构建可与 Office 365 API 集成的客户端应用的更详细介绍，请参阅[设置 Office 365 开发环境](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment)。
+- Office 365 API，请参阅[使用通用同意框架进行身份验证和授权](https://msdn.microsoft.com/office/office365/howto/application-manifest)一文。有关如何生成可与 Office 365 API 集成的客户端应用的更详细介绍，请参阅[设置 Office 365 开发环境](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment)。
 
 >[AZURE.NOTE] 由于当前存在的限制，如果本机客户端应用程序使用“访问组织的目录”权限，则它们只能调用 Azure AD 图形 API。此限制不适用于 Web 应用程序。
 
@@ -177,7 +177,7 @@
 
 #### 使外部用户能够授予访问权限
 
-如果你正在编写一个要供组织外部的客户或合作伙伴使用的应用程序，则需要在 Azure 管理门户中更新应用程序定义。
+如果你正在编写一个要供组织外部的客户或合作伙伴使用的应用程序，则需要在 Azure 经典门户中更新应用程序定义。
 
 >[AZURE.NOTE] 在启用多租户时，必须确保应用程序的应用 ID URI 属于已验证的域。此外，返回 URL 必须以 https:// 开头。有关详细信息，请参阅[应用程序对象和服务主体对象](active-directory-application-objects.md)。
 
@@ -195,17 +195,17 @@
 
 完成上述更改后，其他组织中的用户和管理员可以向你的应用程序授予对其目录和其他数据的访问权限。
 
-### 在运行时触发 Azure AD 同意框架 
+### 在运行时触发 Azure AD 同意框架
 
-若要使用同意框架授予访问权限，客户端应用程序必须使用 OAuth 2.0 请求授权。我们提供了[代码示例](https://github.com/AzureADSamples)用于说明 Web 应用程序、本机应用程序或服务器/后台应用程序如何请求授权代码和访问令牌来调用 Web API。
+若要使用同意框架，多租户客户端应用程序必须使用 OAuth 2.0 请求授权。我们提供了[代码示例](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant)，用于说明 Web 应用程序、本机应用程序或服务器/守护应用程序如何请求授权代码和访问令牌来调用 Web API。
 
-Web 应用程序可为用户提供注册体验。如果你确实提供注册体验，用户应会单击注册（或登录）按钮，此时会将浏览器重定向到 Azure AD OAuth2.0 授权终结点或 OpenID Connect userinfo 终结点。这些终结点允许应用程序通过检查 id\_token 来获取有关新用户的信息。
+Web 应用程序也可为用户提供注册体验。如果你确实提供注册体验，用户应会单击注册按钮，此时会将浏览器重定向到 Azure AD OAuth2.0 授权终结点或 OpenID Connect userinfo 终结点。这些终结点允许应用程序通过检查 id\_token 来获取有关新用户的信息。在注册阶段后，用户将看到一个同意提示，与上面“同意框架概述”一节中所示的同意提示类似。
 
-或者，你的 Web 应用程序还可能会提供允许管理员“注册我的公司”的体验。这种体验也会将用户重定向到 Azure AD OAuth 2.0 授权终结点。在此情况下，你也可以传递一个 prompt=admin\_consent 参数来触发管理员同意体验，此时管理员会代表其组织授予许可。成功同意后，响应中将包含 admin\_consent=true。当换取访问令牌时，你还会收到一个 id\_token，其中提供了有关注册你的应用程序的组织和管理员的信息。
+或者，你的 Web 应用程序还可能会提供允许管理员“注册我的公司”的体验。这种体验也会将用户重定向到 Azure AD OAuth 2.0 授权终结点。不过在此情况下，你会向授权终结点传递一个 prompt=admin\_consent 参数来强制提供管理员同意体验，此时管理员会代表其组织授予同意。只有使用属于全局管理员角色的帐户进行身份验证的用户才能提供同意；其他人会收到错误。成功同意后，响应中将包含 admin\_consent=true。当换取访问令牌时，你还会收到一个 id\_token，其中提供了有关注册你的应用程序的组织和管理员的信息。
 
 #### 为单页面应用程序启用 OAuth 2.0 隐式授权
 
-通常将单页面应用程序 (SPA) 构建为一个在浏览器中运行的 JavaScript 重型前端，该前端调用应用程序的 Web API 后端来执行其业务逻辑。对于托管在 Azure AD 中的 SPA，可以使用 OAuth 2.0 隐式授权对具有 Azure AD 的用户进行身份验证，并获取可用来保护从应用程序 JavaScript 客户端到其后端 web API 的调用的令牌。用户授予同意之后，可以使用同一个身份验证协议来获取令牌以保护客户端与针对应用程序配置的其他 Web API 资源之间的调用。默认情况下，为应用程序禁用了 OAuth 2.0 隐式授权。你也可以通过在[应用程序清单](active-directory-application-manifest.md)（表示应用程序标识配置的 JSON 文件）中设置 `oauth2AllowImplicitFlow`”` 值，来为应用程序启用 OAuth 2.0 隐式授权。
+单页面应用程序 (SPA) 通常利用浏览器中运行的 JavaScript 重型前端进行构建，该前端调用应用程序的 Web API 后端来执行其业务逻辑。对于托管在 Azure AD 中的 SPA，可以使用 OAuth 2.0 隐式授权向 Azure AD 验证用户身份，并获取可用来保护从应用程序 JavaScript 客户端到其后端 Web API 的调用的令牌。用户授予同意之后，可以使用同一个身份验证协议来获取令牌以保护客户端与针对应用程序配置的其他 Web API 资源之间的调用。默认情况下，为应用程序禁用了 OAuth 2.0 隐式授权。你也可以通过在[应用程序清单](active-directory-application-manifest.md)（表示应用程序标识配置的 JSON 文件）中设置 `oauth2AllowImplicitFlow`”` 值，来为应用程序启用 OAuth 2.0 隐式授权。
 
 ##### 启用 OAuth 2.0 隐式授权
 
@@ -236,7 +236,7 @@ Web 应用程序可为用户提供注册体验。如果你确实提供注册体�
 
 为了让外部用户使用其组织帐户注册你的应用程序，你需要更新你的应用程序，以显示一个可以链接到 Azure AD 上的页面的按钮，使他们能够授予访问权限。[适用于集成应用程序的品牌准则](active-directory-branding-guidelines.md)主题中介绍了有关此注册按钮的品牌指导。在用户授予或拒绝访问权限后，Azure AD 访问授权页会将浏览器重定向回你的应用程序并返回响应。有关应用程序属性的详细信息，请参阅[应用程序对象和服务主体](active-directory-application-objects.md)。
 
-访问授权页由 Azure AD 创建，你可以在管理门户中应用程序的“配置”页上找到访问授权页的链接。若要转到“配置”页，请单击 Azure AD 租户的顶部菜单中的“应用程序”链接，单击要配置的应用程序，然后在“快速启动”页的顶部菜单中单击“配置”。
+访问授权页由 Azure AD 创建，你可以在 Azure 经典门户中应用的“配置”页上找到访问授权页的链接。若要转到“配置”页，请单击 Azure AD 租户的顶部菜单中的“应用程序”链接，单击要配置的应用，然后在“快速启动”页的顶部菜单中单击“配置”。
 
 应用程序的链接如下所示：`http://account.activedirectory.windowsazure.com/Consent.aspx?ClientID=058eb9b2-4f49-4850-9b78-469e3176e247&RequestedPermissions=DirectoryReaders&ConsentReturnURL=https%3A%2F%2Fadatum.com%2FExpenseReport.aspx%3FContextId%3D123456`。下表描述了该链接的组成部分：
 
@@ -279,7 +279,7 @@ Web 应用程序可为用户提供注册体验。如果你确实提供注册体�
 
 在应用的整个生存期内，你可能需要更改在调用 Azure AD 以获取用于调用图形 API 的访问令牌时使用的密钥。通常，密钥更改操作划分为两种类别：密钥已泄漏时进行的紧急滚动更新，以及当前密钥即将过期时进行的滚动更新。在刷新密钥时，应遵循以下过程来为应用提供无中断访问（主要适用于第二种情况）。
 
-1. 在 Azure 管理门户中，单击你的目录租户，从顶部菜单中单击“应用程序”，然后单击你要配置的应用。“快速启动”页将显示单一登录信息和其他配置信息。
+1. 在 Azure 经典门户中，单击你的目录租户，从顶部菜单中单击“应用程序”，然后单击你要配置的应用。“快速启动”页将显示单一登录信息和其他配置信息。
 
 1. 在顶部菜单中单击“配置”以查看应用的属性列表，同时你将会看到密钥列表。
 
@@ -345,4 +345,4 @@ Web 应用程序可为用户提供注册体验。如果你确实提供注册体�
 
 - 访问 [Active Directory 开发人员指南](active-directory-developer's guide)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

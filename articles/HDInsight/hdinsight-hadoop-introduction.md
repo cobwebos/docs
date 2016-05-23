@@ -1,5 +1,5 @@
 <properties
-	pageTitle="云中的 Hadoop 是什么？ HDInsight 简介 | Microsoft Azure"
+	pageTitle="云中的 Hadoop 是什么？ HDInsight 简介 | Azure"
 	description="云中的 Hadoop 是什么，如何在 HDInsight 中管理它？ Hadoop 组件和大数据分析简介。"
 	keywords="大数据分析,hadoop 简介,什么是 hadoop,云中的 hadoop"
 	services="hdinsight"
@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="01/27/2016"
+	ms.date="03/29/2016"
 	wacn.date=""/>
 
 
@@ -33,19 +33,19 @@ Azure HDInsight 在云中部署并预配托管的 Apache Hadoop 群集，从而�
 
 ## <a name="overview"></a>HDInsight 中的 Hadoop 生态系统概述
 
-HDInsight 是在 Microsoft Azure 上快速扩展 Apache Hadoop 技术堆栈（作为大数据分析的首选解决方案）的云实现。它包括 Apache HBase、Storm、Pig、Hive、Sqoop、Oozie 等的实现。HDInsight 还可集成商业智能 (BI) 工具，例如 Power BI、Excel、SQL Server Analysis Services 和 SQL Server Reporting Services。
+HDInsight 是在 Azure 上快速扩展 Apache Hadoop 技术堆栈（作为大数据分析的首选解决方案）的云实现。它包括 Apache HBase、Storm、Pig、Hive、Sqoop、Oozie 等的实现。HDInsight 还可集成商业智能 (BI) 工具，例如 Power BI、Excel、SQL Server Analysis Services 和 SQL Server Reporting Services。
 
 ### Windows 群集
 
 Azure HDInsight 使用 **Windows** 作为基础操作系统，在云中部署并设置 Hadoop 群集。
 
 类别 | Windows 上的 Hadoop
----------| --------------------
- **群集 OS** | Windows Server 2012 R2
- **群集类型** | Hadoop、HBase、Storm
- **部署** | Azure CLI、Azure PowerShell
- **群集 UI** | 群集仪表板 
- **远程访问** | 远程桌面协议 (RDP)、REST API、ODBC、JDBC
+---------|--------------------
+**群集 OS** | Windows Server 2012 R2
+**群集类型** | Hadoop、HBase、Storm
+**部署** | Azure CLI、Azure PowerShell
+**群集 UI** | 群集仪表板
+**远程访问** | 远程桌面协议 (RDP)、REST API、ODBC、JDBC
 
 
 
@@ -81,7 +81,7 @@ HDInsight 群集包含以下组件和实用程序。
 
 * **[Tez](#tez)**：允许数据密集型进程大规模地高效运行。
 
-* **[YARN](#yarn)**：是 Hadoop 核心库和下一代 MapReduce 软件框架的一部分。
+* **[YARN](#yarn)**：Hadoop 核心库和下一代 MapReduce 软件框架的一部分。
 
 * **[ZooKeeper](#zookeeper)**：协调分布式系统中的进程。
 
@@ -141,7 +141,7 @@ Apache YARN 是下一代 MapReduce（MapReduce 2.0 或 MRv2），它具有更大
 
 ## HDInsight 上的编程语言
 
-HDInsight 群集（Hadoop、HBase、Storm 和 Spark 群集）支持多种编程语言，但某些编程语言默认情况下未安装。对于默认情况下未安装的库、模块或程序包，请使用脚本操作来安装组件。请参阅[使用 HDInsight 进行脚本操作开发](/documentation/articles/hdinsight-hadoop-script-actions-linux)。
+HDInsight 群集（Hadoop、HBase 和 Storm 群集）支持多种编程语言，但某些编程语言默认情况下未安装。对于默认情况下未安装的库、模块或程序包，请使用脚本操作来安装组件。请参阅[使用 HDInsight 进行脚本操作开发](/documentation/articles/hdinsight-hadoop-script-actions)。
 
 ### 默认编程语言支持
 
@@ -151,7 +151,7 @@ HDInsight 群集（Hadoop、HBase、Storm 和 Spark 群集）支持多种编程�
 
 * Python
 
-可以使用脚本操作安装其他语言：[使用 HDInsight 进行脚本操作开发](/documentation/articles/hdinsight-hadoop-script-actions-linux)。
+可以使用脚本操作安装其他语言：[使用 HDInsight 进行脚本操作开发](/documentation/articles/hdinsight-hadoop-script-actions)。
 
 ### Java 虚拟机 (JVM) 语言
 
@@ -171,7 +171,7 @@ HDInsight 群集为以下特定于 Hadoop 生态系统的语言提供支持：
 
 * 用于 Pig 作业的 Pig Latin
 
-* 用于 Hive 作业的 HiveQL 和 SparkSQL
+* 用于 Hive 作业的 HiveQL
 
 
 ## <a name="advantage"></a>Hadoop 在云中的优势
@@ -182,11 +182,15 @@ HDInsight 群集为以下特定于 Hadoop 生态系统的语言提供支持：
 
 * 最先进的 Hadoop 组件。有关详细信息，请参阅 [HDInsight 提供的 Hadoop 群集版本有哪些新功能？][component-versioning]。
 
-* 群集具有高可用性和可靠性。有关详细信息，请参阅 [HDInsight 中的 Hadoop 群集的可用性和可靠性](/documentation/articles/hdinsight-high-availability)。
+* 群集具有高可用性和可靠性。已将第二个头节点添加到 HDInsight 所部署的 Hadoop 群集，以增加服务的可用性。Hadoop 群集的标准实现通常具有单个头节点。HDInsight 通过添加辅助头节点去除了此单点故障。切换到新 HA 群集配置不会更改群集的价格，除非客户不使用默认大节点而是使用超大头节点创建群集。
+	有关详细信息，请参阅 [HDInsight 中的 Hadoop 群集的可用性和可靠性](/documentation/articles/hdinsight-high-availability)。
 
 * 使用 Azure Blob 存储（一种与 Hadoop 兼容的选项），数据存储高效又经济。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 中的 Hadoop 配合使用](/documentation/articles/hdinsight-hadoop-use-blob-storage)。
 
-* 与其他 Azure 服务集成，包括 [Web 应用](/documentation/services/web-sites/)和 [SQL 数据库](/documentation/services/sql-databases/)。
+* 与其他 Azure 服务集成，包括 [Web Apps](/documentation/services/web-sites/) 和 [SQL 数据库](/documentation/services/sql-databases/)。
+* 更多的 VM 大小。HDInsight 群集支持不同的 VM 类型和大小。HDInsight 群集现在可以利用 A2 到 A7 大小实现常规目的；搭载固态硬盘 (SSD) 和处理器速度提高 60% 的 D 系列节点。Azure HDInsight 上的 Apache HBase 客户可以受益于 D 系列的更高内存配置和性能。Azure HDInsight 上的 Apache Storm 客户还受益于更大的内存，因此可以加载更大的引用数据集，此外，更快的 CPU 可以提高吞吐量。
+* 群集缩放。群集缩放使你能够更改正在运行的 HDInsight 群集的节点数，而无需删除或重新创建群集。
+* 虚拟网络支持。HDInsight 群集可用于 Azure 虚拟网络，以支持隔离云资源或将云资源与数据中心资源相链接的混合方案。
 
 * 进入成本低。开始[试用](/pricing/1rmb-trial/)或查阅 [HDInsight 定价详细信息](/home/features/hdinsight/#price)。
 
@@ -216,7 +220,7 @@ HDInsight 群集为以下特定于 Hadoop 生态系统的语言提供支持：
 
 * [Azure SQL 数据库](/documentation/services/sql-databases/)：有关 SQL 数据库的文档、教程和视频。
 
-* [Azure 管理门户上的 SQL 数据库](/documentation/articles/sql-database-manage-portal)：一种轻量版易用型数据库管理工具，用于在云中管理 SQL 数据库。
+* [Azure 门户上的 SQL 数据库](/documentation/articles/sql-database-manage-portal)：一种轻量版易用型数据库管理工具，用于在云中管理 SQL 数据库。
 
 * [Adventure Works for SQL 数据库](http://msftdbprodsamples.codeplex.com/releases/view/37304)：SQL 数据库示例数据库的下载页。
 
@@ -250,4 +254,4 @@ HDInsight 群集为以下特定于 Hadoop 生态系统的语言提供支持：
 [component-versioning]: /documentation/articles/hdinsight-component-versioning-v1
 [zookeeper]: http://zookeeper.apache.org/
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0516_2016-->

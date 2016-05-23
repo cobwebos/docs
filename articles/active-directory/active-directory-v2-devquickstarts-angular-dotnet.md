@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD AngularJS 入门 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 AngularJS 入门 | Microsoft Azure"
 	description="如何构建一个使用个人 Microsoft 帐户和工作或学校帐户登录用户的 Angular JS 单页应用。"
 	services="active-directory"
 	documentationCenter=""
@@ -225,4 +225,4 @@ return $http.get('/api/tasks');
 - [堆栈溢出网站上的 Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 - [Azure.com](https://azure.microsoft.com/documentation/services/active-directory/) 上的 Azure AD 文档 >>
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

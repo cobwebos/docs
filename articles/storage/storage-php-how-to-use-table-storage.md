@@ -1,5 +1,5 @@
 <properties
-	pageTitle="如何通过 PHP 使用表存储 | Microsoft Azure"
+	pageTitle="如何通过 PHP 使用表存储 | Azure"
 	description="了解如何通过 PHP 使用表服务来创建和删除表以及插入、删除和查询表。"
 	services="storage"
 	documentationCenter="php"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="02/17/2016"
+	ms.date="04/08/2016"
 	wacn.date=""/>
 
 
@@ -214,7 +214,7 @@
 
 ## 检索分区中的所有实体
 
-使用筛选器来构造实体查询（有关详细信息，请参阅[查询表和实体][filters]）。若要检索分区中的所有实体，请使用筛选器“PartitionKey eq *partition\_name*”。下面的示例演示如何通过将筛选器传递到 **queryEntities** 方法来检索 `tasksSeattle` 分区中的所有实体。
+使用筛选器来构造实体查询（有关详细信息，请参阅[查询表和实体][filters]）。若要检索分区中的所有实体，请使用筛选器“PartitionKey eq partition\_name”。下面的示例演示如何通过将筛选器传递到 **queryEntities** 方法来检索 `tasksSeattle` 分区中的所有实体。
 
 	require_once 'vendor\autoload.php';
 
@@ -474,4 +474,5 @@
 [filters]: http://msdn.microsoft.com/zh-cn/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/zh-cn/library/azure/dd894038.aspx
 
-<!---HONumber=Mooncake_0411_2016-->
+
+<!---HONumber=Mooncake_0516_2016-->

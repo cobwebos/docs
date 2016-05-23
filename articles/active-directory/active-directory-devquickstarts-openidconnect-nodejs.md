@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="08/25/2015"
+	ms.date="02/25/2016"
 	wacn.date=""/>
 
 # 使用 Azure AD 执行 Web 应用登录和注销
@@ -34,22 +34,22 @@
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-The completed application is provided at the end of this tutorial as well.
+本教程末尾也提供完成的应用程序。
 
-## 1. Register an App
-- Sign into the Azure Management Portal.
-- In the left hand nav, click on **Active Directory**.
-- Select the tenant where you wish to register the application.
-- Click the **Applications** tab, and click add in the bottom drawer.
-- Follow the prompts and create a new **Web Application and/or WebAPI**.
-    - The **name** of the application will describe your application to end-users
-    -	The **Sign-On URL** is the base URL of your app.  The skeleton's default is `http://localhost:3000/auth/openid/return``.
-    - The **App ID URI** is a unique identifier for your application.  The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`
-- Once you've completed registration, AAD will assign your app a unique client identifier.  You'll need this value in the next sections, so copy it from the Configure tab.
+## 1\.注册应用程序
+- 登录到 Azure 管理门户。
+- 在左侧的导航栏中单击“Active Directory”。
+- 选择你要在其中注册应用程序的租户。
+- 单击“应用程序”选项卡，然后在底部抽屉中单击“添加”。
+- 根据提示创建一个新的 **Web 应用程序和/或 WebAPI**。
+    - 应用程序的**名称**向最终用户描述你的应用程序
+    -	“登录 URL”是应用程序的基本 URL。框架的默认值为 `http://localhost:3000/auth/openid/return``。
+    - “应用程序 ID URI”是应用程序的唯一标识符。约定是使用 `https://<tenant-domain>/<app-name>`，例如 `https://contoso.onmicrosoft.com/my-first-aad-app`
+- 完成注册后，AAD 将为应用程序分配唯一的客户端标识符。在后面的部分中将会用到此值，因此，请从“配置”选项卡复制此值。
 
-## 2. Add pre-requisities to your directory
+## 2\.将先决条件添加到目录
 
-From the command-line, change directories to your root folder if not already there and run the following commands:
+在命令行中，将目录切换到根文件夹（如果尚未这样做），然后运行以下命令：
 
 - `npm install express`
 - `npm install ejs`
@@ -60,21 +60,21 @@ From the command-line, change directories to your root folder if not already the
 - `npm install assert-plus`
 - `npm install passport`
 
-- In addition, you'll need our `passport-azure-ad` as well:
+- 此外，你还需要我们的 `passport-azure-ad`：
 
 - `npm install passport-azure-ad`
 
-This will install the libraries that passport-azure-ad depend on.
+这将会安装 passport-azure-ad 所依赖的库。
 
-## 3. Set up your app to use the passport-node-js strategy
-Here, we'll configure the Express middleware to use the OpenID Connect authentication protocol.  Passport will be used to issue sign-in and sign-out requests, manage the user's session, and get information about the user, amongst other things.
+## 3\.将应用设置为使用 passport-node-js 策略
+在这里，我们要将 Express 中间件配置为使用 OpenID Connect 身份验证协议。Passport 将用于发出登录和注销请求、管理用户的会话、获取有关用户的信息，等等。
 
--	To begin, open the `config.js` file in the root of the project, and enter your app's configuration values in the `exports.creds` section.
-    -	The `clientID:` is the **Application Id** assigned to your app in the registration portal.
-    -	The `returnURL` is the **Redirect Uri** you entered in the portal.
-    - The `clientSecret` is the secret you generated in the portal
+-	首先，打开位于项目根目录中的 `config.js` 文件，并在 `exports.creds` 节中输入应用的配置值。
+    -	`clientID:` 是在注册门户中为应用分配的**应用程序 ID**。
+    -	`returnURL` 是在门户中输入的**重定向 URI**。
+    - `clientSecret` 是在门户中生成的密码。
 
-- Next open `app.js` file in the root of the proejct and add the follwing call to invoke the `OIDCStrategy` strategy that comes with `passport-azure-ad`
+- 接下来，打开项目根目录中的 `app.js` 文件，并添加以下调用以调用 `passport-azure-ad` 随附的 `OIDCStrategy` 策略
 
 
 ```JavaScript
@@ -130,7 +130,7 @@ passport.use(new OIDCStrategy({
 Passport 使用适用于它的所有策略（Twitter、Facebook 等），所有策略写入器都依循类似的模式。查看该策略，你会发现，我们已将它作为 function() 来传递，其中包含一个令牌和一个用作参数的 done。策略完成所有工作之后，便尽责地返回。完成后，我们需要存储用户并隐藏令牌，因此不需要再次请求它。
 
 
-> [AZURE.IMPORTANT]
+> [AZURE.IMPORTANT] 
 上述代码使用了正好地服务器上进行身份验证的任何用户。这就是所谓的自动注册。在生产服务器中，你希望所有人都必须先经历你确定的注册过程。这通常是在使用者应用中看到的模式，可让向 Facebook 注册，但接着请求填写其他信息。如果这不是示例应用程序，我们就只能从返回的令牌对象中提取电子邮件，然后请求他们填写其他信息。由于这是测试服务器，因此，我们直接将它们加入到内存中的数据库。
 
 - 接下来，让我们添加方法，以便根据 Passport 的要求，持续跟踪已登录的用户。这包括将用户信息序列化和反序列化：
@@ -239,11 +239,11 @@ app.post('/auth/openid/return',
   });
   ```
 
-## 4. Use Passport to issue sign-in and sign-out requests to Azure AD
+## 4\.使用 Passport 向 Azure AD 发出登录和注销请求
 
-Your app is now properly configured to communicate with the v2.0 endpoint using the OpenID Connect authentication protocol.  `passport-azure-ad` has taken care of all of the ugly details of crafting authentication messages, validating tokens from Azure AD, and maintaining user session.  All that remains is to give your users a way to sign in, sign out, and gather additional info on the logged in user.
+现在，应用已正确配置为使用 OpenID Connect 身份验证协议与 v2.0 终结点通信。`passport-azure-ad` 会代你处理有关创建身份验证消息、验证 Azure AD 提供的令牌以及保留用户会话的繁琐细节。你要做的一切就是提供某种方式让用户登录和注销，以及收集有关已登录用户的其他信息。
 
-- First, lets add the default, login, account, and logout methods to our `app.js` file:
+- 首先，让我们在 `app.js` 文件中添加 default、login、account 和 logout 方法：
 
 ```JavaScript
 
@@ -271,18 +271,18 @@ app.get('/logout', function(req, res){
 
 ```
 
--	Let's review these in detail:
-    -	The `/` route will redirect to the index.ejs view passing the user in the request (if it exists)
-    - The `/account` route will first ***ensure we are authenticated*** (we implement that below) and then pass the user in the request so that we can get additional information about the user.
-    - The `/login` route will call our azuread-openidconnect authenticator from `passport-azuread` and if that doesn't succeed will redirect the user back to /login
-    - The `/logout` will simply call the logout.ejs (and route) which clears cookies and then return the user back to index.ejs
+-	我们详细探讨一下：
+    -	`/` 路由将重定向到 index.ejs 视图，并在请求中传递用户（如果存在）
+    - `/account` 路由首先**确保我们已经过身份验证**（下面我们将会实现），然后在请求中传递用户，以便我们可以获取有关该用户的其他信息。
+    - `/login` 路由将从 `passport-azuread` 调用 azuread-openidconnect 验证器，如果该操作不成功，则将用户重定向回到 /login
+    - `/logout` 只是调用 logout.ejs（和路由），以便清除 Cookie 并将用户返回到 index.ejs
 
 
-- For the last part of `app.js`, let's add the EnsureAuthenticated method that is used in `/account` above.
+- 对于 `app.js` 的最后一个部分，让我们添加上述 `/account` 中使用的 EnsureAuthenticated 方法。
 
 ```JavaScript
 
-// Simple route middleware to ensure user is authenticated.(Section 4)
+// Simple route middleware to ensure user is authenticated. (Section 4)
 
 //   Use this route middleware on any resource that needs to be protected.  If
 //   the request is authenticated (typically via a persistent login session),
@@ -303,7 +303,7 @@ app.listen(3000);
 ```
 
 
-## 5.在 Express 中创建视图与路由，以在网站中显示用户
+## 5\.在 Express 中创建视图与路由，以在网站中显示用户
 
 我们已完成 `app.js`。现在只需添加路由和视图即可，两者将向用户显示我们获取的信息，并处理我们创建的 `/logout` 和 `/login` 路由。
 
@@ -391,16 +391,17 @@ exports.list = function(req, res){
 		<% } %>
 		<%- body %>
 	</body>
-</html>```
+</html>
+```
 
-Finally, build and run your app! 
+最后，生成并运行应用程序！
 
-Run `node app.js` and navigate to `http://localhost:3000`
+运行 `node app.js` 并导航到 `http://localhost:3000`
 
 
-Sign in with either a personal Microsoft Account or a work or school account, and notice how the user's identity is reflected in the /account list.  You now have a web app secured using industry standard protocols that can authenticate users with both their personal and work/school accounts.
+使用个人 Microsoft 帐户或者工作或学校帐户登录，随后你会看到该用户的标识已出现在 /account 列表中。Web 应用现在使用行业标准的协议进行保护，你可以使用个人和工作/学校帐户来验证用户。
 
-For reference, the completed sample (without your configuration values) [is provided as a .zip here](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/complete.zip), or you can clone it from GitHub:
+[此处以 .zip 格式提供了](https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS/archive/complete.zip)完整示例（不包括配置值）供你参考，你也可以从 GitHub 克隆该示例：
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/WebApp-OpenIDConnect-NodeJS.git```
 
@@ -409,6 +410,5 @@ For reference, the completed sample (without your configuration values) [is prov
 
 [使用 Azure AD 保护 Web API >>](active-directory-devquickstarts-webapi-nodejs)
 
-[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
-
-<!---HONumber=74-->
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources.md)]
+<!---HONumber=Mooncake_0516_2016-->

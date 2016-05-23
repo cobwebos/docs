@@ -1,5 +1,5 @@
 <properties
-   pageTitle="如何与 Azure Active Directory 集成"
+   pageTitle="如何与 Azure Active Directory 集成 | Microsoft Azure"
    description="介绍与 Azure Active Directory 集成的好处与相关资源的指南。"
    services="active-directory"
    documentationCenter="dev-center-name"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="11/17/2015"
+   ms.date="02/02/2016"
    wacn.date="" />
 
 # 与 Azure Active Directory 集成
@@ -60,17 +60,17 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 
 ### 与企业标识管理集成
 
-**帮助应用程序符合 IT 策略。** 组织可将其企业标识管理系统与 Azure AD 集成，这样，在员工离开组织后，他们将自动失去对应用程序的访问权限，而不需要 IT 人员采取额外的措施。IT 人员可以控制谁可以访问你的应用程序，并确定需要哪些访问策略（例如多因素身份验证），这就减少了为遵守复杂的企业策略而要编写的代码量。Azure AD 为管理员提供详细的审核日志，其中记录了哪些人登录了你的应用程序，使 IT 人员可以跟踪使用情况。
+**帮助应用程序符合 IT 策略。** 组织可将其企业标识管理系统与 Azure AD 集成，这样，在员工离开组织后，他们将自动失去对应用程序的访问权限，而不需要 IT 人员采取额外的措施。IT 人员可以控制谁可以访问你的应用程序，并确定需要哪些访问策略（例如多重身份验证），这就减少了为遵守复杂的企业策略而要编写的代码量。Azure AD 为管理员提供详细的审核日志，其中记录了哪些人登录了你的应用程序，使 IT 人员可以跟踪使用情况。
 
 **Azure AD 已将 Active Directory 扩展到云中，以便你的应用程序可与 AD 集成。** 世界各地的许多组织都在使用 Active Directory 作为首要登录和标识管理系统，并要求它们的应用程序使用 AD。与 Azure AD 集成可将你的应用程序与 Active Directory 相集成。
 
 ### 高级安全功能
 
-**多因素身份验证。** Azure AD 提供本机多因素身份验证。IT 管理员可以要求访问应用程序之前经过多重身份验证，因此你无需编写此项支持的代码。了解有关 [Multi-Factor Authentication](/documentation/services/multi-factor-authentication/) 的详细信息。
+**多重身份验证。** Azure AD 提供本机多重身份验证。IT 管理员可以要求访问应用程序之前经过多重身份验证，因此你无需编写此项支持的代码。了解有关 [Multi-Factor Authentication](/documentation/services/multi-factor-authentication/) 的详细信息。
 
 **异常登录检测。** Azure AD 每天要处理十亿次以上的登录，同时，使用机器学习算法来检测可疑活动，并通知 IT 管理员可能存在的问题。通过支持 Azure AD 登录，你的应用程序将从这种保护中受益。了解有关[查看 Azure Active Directory 访问报告](/documentation/articles/active-directory-view-access-usage-reports)的详细信息。
 
-**条件性访问。** 除了多因素身份验证以外，管理员可以要求用户在登录应用程序之前满足特定的条件。可设置的条件包括客户端设备的 IP 地址范围、指定的组中的成员资格，以及用于访问的设备的状态。了解有关 [Azure Active Directory 条件性访问](/documentation/articles/active-directory-conditional-access)的详细信息。
+**条件性访问。** 除了多重身份验证以外，管理员可以要求用户在登录应用程序之前满足特定的条件。可设置的条件包括客户端设备的 IP 地址范围、指定的组中的成员资格，以及用于访问的设备的状态。了解有关 [Azure Active Directory 条件性访问](/documentation/articles/active-directory-conditional-access)的详细信息。
 
 ### 易于开发
 
@@ -88,4 +88,5 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 
 [使用 Azure AD 登录用户](/documentation/articles/active-directory-authentication-scenarios)
 
-<!---HONumber=Mooncake_0118_2016-->
+
+<!---HONumber=Mooncake_0516_2016-->

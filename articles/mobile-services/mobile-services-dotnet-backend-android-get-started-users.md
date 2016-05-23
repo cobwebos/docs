@@ -4,12 +4,12 @@
 	services="mobile-services"
 	documentationCenter="android"
 	authors="RickSaling"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="01/21/2016"
+	ms.date="04/11/2016"
 	wacn.date=""/>
 
 # 向移动服务 Android 应用添加身份验证
@@ -52,15 +52,15 @@
 
 ##<a name="add-authentication"></a>向应用程序添加身份验证
 
-[AZURE.INCLUDE [mobile-services-android-authenticate-app](../includes/mobile-services-android-authenticate-app.md)]
+[AZURE.INCLUDE [mobile-android-authenticate-app](../includes/mobile-android-authenticate-app.md)]
 
 ## <a name="cache-tokens"></a>在客户端上缓存身份验证令牌
 
-[AZURE.INCLUDE [mobile-services-android-authenticate-app-with-token](../includes/mobile-services-android-authenticate-app-with-token.md)]
+[AZURE.INCLUDE [mobile-android-authenticate-app-with-token](../includes/mobile-android-authenticate-app-with-token.md)]
 
 ## <a name="refresh-tokens"></a>刷新令牌缓存
 
-[AZURE.INCLUDE [mobile-services-android-authenticate-app-refresh-token](../includes/mobile-services-android-authenticate-app-refresh-token.md)]
+[AZURE.INCLUDE [mobile-android-authenticate-app-refresh-token](../includes/mobile-android-authenticate-app-refresh-token.md)]
 
 ##<a name="next-steps"></a>后续步骤
 
@@ -84,4 +84,4 @@
 [Mobile Services .NET How-to Conceptual Reference]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 [Register your Windows Store app package for Microsoft authentication]: /documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0516_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何通过 Ruby 使用 Blob 存储 | Microsoft Azure" 
+	pageTitle="如何通过 Ruby 使用 Blob 存储 | Azure" 
 	description="了解如何使用 Blob 存储上载、下载、列出和删除 Blob 内容。用 Ruby 编写的相关示例。"
 	services="storage" 
 	documentationCenter="ruby" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="02/17/2016"
+	ms.date="04/08/2016"
 	wacn.date=""/>
 
 
@@ -27,7 +27,7 @@
 
 ## 创建 Ruby 应用程序
 
-创建 Ruby 应用程序。有关说明，请参阅[Azure VM 上的 Ruby on Rails Web 应用程序](/documentation/articles/virtual-machines-ruby-rails-web-app-linux)。
+创建 Ruby 应用程序。有关说明，请参阅 [Azure VM 上的 Ruby on Rails Web 应用程序](/documentation/articles/virtual-machines-linux-classic-ruby-rails-web-app)。
 
 ## 配置应用程序以访问存储
 
@@ -64,7 +64,7 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 从经典门户中的经典存储帐户中获取这些值：
 
 1. 登录到[经典门户](https://manage.windowsazure.cn/)。
-2. 导航到要使用的存储帐户
+2. 导航到要使用的存储帐户。
 3. 单击导航窗格底部的“管理访问密钥”。
 4. 在弹出对话框中，将会看到存储帐户名称、主访问密钥和辅助访问密钥。对于访问密钥，您可以使用主访问密钥，也可以使用辅助访问密钥。 
 5. 单击复制图标以将键复制到剪贴板。
@@ -118,7 +118,7 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 ## 列出容器中的 Blob
 
 若要列出容器，请使用 **list\_containers()** 方法。
-若要列出容器中的 Blob，请使用 **list\_blobs()** 方法。
+若要列出容器中的 Blob，请使用 **list\_blobs()** 方法。 
 
 这将输出帐户的所有容器中的所有 Blog 的 URL。
 
@@ -152,4 +152,5 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 - GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 - [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
-<!---HONumber=Mooncake_0411_2016-->
+
+<!---HONumber=Mooncake_0516_2016-->

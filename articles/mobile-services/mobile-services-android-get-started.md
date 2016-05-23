@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="03/05/2016"
+	ms.date="04/08/2016"
 	wacn.date=""/>
 
 # 适用于 Android 的移动服务入门（JavaScript 后端）
@@ -48,7 +48,7 @@
 
 在本部分中，你将要创建一个连接到移动服务的新的 Android 应用程序。
 
-1.  在 Azure 经典门户中单击“移动服务”，然后单击你刚刚创建的移动服务。
+1.  在 **Azure 经典门户**中单击“移动服务”，然后单击你刚刚创建的移动服务。
 
 2. 在快速入门选项卡中，单击“选择平台”下的“Android”，然后展开“创建新的 Android 应用程序”。
 
@@ -94,4 +94,4 @@
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0516_2016-->

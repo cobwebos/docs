@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="10/13/2015"
+	ms.date="01/21/2016"
 	wacn.date=""/>
 
 # 将 Azure AD Apache Cordova 应用程序集成
@@ -34,7 +34,7 @@ Apache Cordova 可让你开发能够在移动设备上运行的完全成熟的 H
 3. 添加代码以使用该令牌查询 Graph API 并显示结果。
 4. 使用所需的平台和 Cordova ADAL 插件创建 Cordova 部署项目，并在模拟器中测试解决方案。
 
-## *0.先决条件*
+## 0.先决条件
 
 若要完成本教程，你需要：
 
@@ -65,39 +65,42 @@ Apache Cordova 可让你开发能够在移动设备上运行的完全成熟的 H
 	- 安装 [Java 开发工具包 (JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 或更高版本。请确保根据 JDK 安装路径（例如 C:\\Program Files\\Java\\jdk1.7.0\_75）正确设置 `JAVA_HOME`（环境变量）。
 	- 安装 [Android SDK](http://developer.android.com/sdk/installing/index.html?pkg=tools) 并将 `<android-sdk-location>\tools` 位置（例如 C:\\tools\\Android\\android-sdk\\tools）添加到 `PATH` 环境变量。
 	- 打开 Android SDK Manager（例如，通过终端：`android`）并安装
-    - *Android 5.0.1 (API 21)* 平台 SDK
-    - *Android SDK Build-tools* 19.1.0 或更高版本
-    - *Android 支持存储库* (Extras)
+    - Android 5.0.1 (API 21) 平台 SDK
+    - Android SDK Build-tools 19.1.0 或更高版本
+    - Android 支持存储库 (Extras)
 
   Android SDK 不提供任何默认模拟器实例。如果你要在模拟器上运行 Android 应用程序，请从终端运行 `android avd`，然后选择“创建...”，以创建一个新实例。建议的“API 级别”为 19 或更高。有关 Android 模拟器和创建选项的详细信息，请参阅 [AVD Manager](http://developer.android.com/tools/help/avd-manager.html)。
 
 
-## *1.将一个应用程序注册到 Azure AD*
+## 1.将一个应用程序注册到 Azure AD
 
 注意：此步骤是可选的。本教程提供了预先设置的值，使你无需在自己的租户中进行任何设置，就能查看示例的运行情况。但是，建议你执行此步骤并熟悉相关的过程，因为在你创建自己的应用程序时，需要执行该过程。
 
 Azure AD 只会向已知的应用程序颁发令牌。在从应用程序使用 Azure AD 之前，你需要在租户中为该应用程序创建一个条目。在租户中注册新的应用程序：
 
-- 登录到 Azure 管理门户
-- 在左侧的导航栏中单击“Active Directory”
-- 选择你要在其中注册应用程序的租户
-- 单击“应用程序”选项卡，然后在底部抽屉中单击“添加”。
-- 根据提示创建一个新的“本机客户端应用程序”
-    - 应用程序的“名称”向最终用户描述你的应用程序
-    -	“重定向 URI”是用于向应用程序返回令牌的 URI。输入 `http://MyDirectorySearcherApp`。
+-	登录到 [Azure 管理门户](https://manage.windowsazure.com)
+-	在左侧的导航栏中单击“Active Directory”
+-	选择你要在其中注册应用程序的租户。
+-	单击“应用程序”选项卡，然后在底部抽屉中单击“添加”。
+-	按提示操作，并创建新的**本机客户端应用程序**（尽管 Cordova 应用以 HTML 为基础，我们仍在此创建本机客户端应用程序，因此必须选择`Native Client Application`选项，否则应用程序无法运行）。
+    -	应用程序的“名称”向最终用户描述你的应用程序
+    -	“重定向 URI”是用于向应用返回令牌的 URI。输入 `http://MyDirectorySearcherApp`。
 
-完成注册后，AAD 将为应用程序分配唯一的客户端标识符。在学习后面的部分时，你需要用到此值：可以在新建应用程序的“配置”选项卡中找到此值。
+完成注册后，AAD 将为应用程序分配唯一的客户端标识符。在学习后面的部分时，你需要用到此值：可以在新建应用的“配置”选项卡中找到此值。
 
-## *2.克隆教程所需的存储库*
+若要运行 `DirSearchClient Sample`，请向新建应用授予查询 Azure AD 图形 API 的权限：
+-	在“配置”选项卡中，找到“针对其他应用程序的权限”部分。对于“Azure Active Directory”应用程序，在“委托的权限”下添加“以已登录用户的身份访问目录”权限。这样，你的应用程序便可以在 Graph API 中查询用户。
+
+## 2.克隆教程所需的示例应用存储库
 
 在 shell 或命令行中键入以下命令：
 
-    git clone https://github.com/AzureAD/azure-activedirectory-library-for-cordova.git
     git clone -b skeleton https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-Cordova.git
 
-## *3.创建 Cordova 应用程序*
+## 3.创建 Cordova 应用程序
 
-可通过多种方式创建 Cordova 应用程序。在本教程中，我们将使用 Cordova 命令行界面 (CLI)。在 shell 或命令行中键入以下命令：
+可通过多种方式创建 Cordova 应用程序。在本教程中，我们将使用 Cordova 命令行界面 (CLI)。
+在 shell 或命令行中键入以下命令：
 
 
      cordova create DirSearchClient --copy-from="NativeClient-MultiTarget-Cordova/DirSearchClient"
@@ -109,19 +112,19 @@ Azure AD 只会向已知的应用程序颁发令牌。在从应用程序使用 A
 
 添加调用 Graph API 时所需的允许列表插件。
 
-     cordova plugin add https://github.com/apache/cordova-plugin-whitelist.git
+     cordova plugin add cordova-plugin-whitelist
 
 接下来，添加你要支持的所有平台。为了获得一个有效示例，至少需要执行下列其中一个命令。请注意，你无法在 Windows 上模拟 iOS，或者在 Mac 上模拟 Windows/Windows Phone。
 
-    cordova platform add android@97718a0a25ec50fedf7b023ae63bfcffbcfafb4b
+    cordova platform add android
     cordova platform add ios
     cordova platform add windows
 
 最后，可以将 ADAL for Cordova 插件添加到项目。
 
-    cordova plugin add ../azure-activedirectory-library-for-cordova
+    cordova plugin add cordova-plugin-ms-adal
 
-## *3.添加代码以便对用户进行身份验证并从 AAD 获取令牌*
+## 3.添加代码以便对用户进行身份验证并从 AAD 获取令牌
 
 要在本教程中开发的应用程序将提供一个精简的目录搜索功能，最终用户可以使用此功能键入目录中任一用户的别名，并可视化一些基本属性。初学者项目包含应用程序基本用户界面的定义（在 www/index.html 中），以及用于串联基本应用程序事件周期、用户界面绑定和结果显示逻辑的基架（在 www/js/index.js 中）。你唯一要做的事情就是添加实现标识任务的逻辑。
 
@@ -174,7 +177,9 @@ Azure AD 只会向已知的应用程序颁发令牌。在从应用程序使用 A
                 app.context = new Microsoft.ADAL.AuthenticationContext(authority);
             }
 ```
-该方法的第二部分将执行适当的 tokewn 请求。`acquireTokenSilentAsync` 方法请求 ADAL 返回指定资源的令牌，且不显示任何 UX。如果缓存中已经存储了一个适当的访问令牌，或者有一个刷新令牌可用于获取新访问令牌且不显示任何提示，则可能会发生这种情况。如果该尝试失败，我们将在 `acquireTokenAsync` 上回退 - 这会以可视方式提示用户进行身份验证。
+该方法的第二部分将执行适当的 tokewn 请求。
+`acquireTokenSilentAsync` 方法请求 ADAL 返回指定资源的令牌，且不显示任何 UX。如果缓存中已经存储了一个适当的访问令牌，或者有一个刷新令牌可用于获取新访问令牌且不显示任何提示，则可能会发生这种情况。
+如果该尝试失败，我们将在 `acquireTokenAsync` 上回退 - 这会以可视方式提示用户进行身份验证。
 ```javascript
             // Attempt to authorize user silently
             app.context.acquireTokenSilentAsync(resourceUri, clientId)
@@ -215,37 +220,42 @@ Azure AD 只会向已知的应用程序颁发令牌。在从应用程序使用 A
 ```
 起点文件提供了一个精简 UX 用于在文本框中输入用户的别名。此方法使用该值来构造查询，将该查询与访问令牌相结合，然后将其发送到 Graph 并分析结果。起点文件中已提供了一个负责可视化结果的 renderData 方法。
 
-## *4.运行*
-你的应用程序终于准备好运行了！ 它的操作非常简单：启动应用程序后，在文本框中输入要查找的用户的别名，然后单击按钮。系统将提示你进行身份验证。身份验证和搜索成功后，将显示搜索到的用户的属性。后续运行将执行搜索而不显示任何提示，这是因为缓存中已经存储了以前获取的令牌。
-运行应用程序的具体步骤因平台而异。
+## 4.运行
+你的应用程序终于准备好运行了！ 它的操作非常简单：启动应用程序后，在文本框中输入要查找的用户的别名，然后单击按钮。系统将提示你进行身份验证。身份验证和搜索成功后，将显示搜索到的用户的属性。后续运行将执行搜索而不显示任何提示，这是因为缓存中已经存储了以前获取的令牌。运行应用程序的具体步骤因平台而异。
 
+####Windows 10：
 
-##### 生成并运行 Windows Tablet/PC 应用程序版本
+   平板电脑/电脑：`cordova run windows --archs=x64 -- --appx=uap`
+
+   移动版（需要连接到电脑的 Windows10 移动版设备）：`cordova run windows --archs=arm -- --appx=uap --phone`
+
+   __注意__：在首次运行期间，系统可能会要求你登录以获得开发人员许可证。有关详细信息，请参阅[开发人员许可证](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx)。
+
+####Windows 8.1 平板电脑/电脑：
 
    `cordova run windows`
 
-   __注意__：在首次运行期间，系统可能会要求你登录以获得开发人员许可证。有关详细信息，请参阅[开发人员许可证](https://msdn.microsoft.com/zh-cn/library/windows/apps/hh974578.aspx)。
+   __注意__：在首次运行期间，系统可能会要求你登录以获得开发人员许可证。有关详细信息，请参阅[开发人员许可证](https://msdn.microsoft.com/library/windows/apps/hh974578.aspx)。
 
-
-##### 在 Windows Phone 8.1 上生成并运行应用程序
+####Windows Phone 8.1：
 
    在连接的设备上运行：`cordova run windows --device -- --phone`
 
    在默认的模拟器上运行：`cordova emulate windows -- --phone`
 
    使用 `cordova run windows --list -- --phone` 可查看所有可用目标，使用 `cordova run windows --target=<target_name> -- --phone` 可在特定的设备或模拟器上运行应用程序（例如 `cordova run windows --target="Emulator 8.1 720P 4.7 inch" -- --phone`）。
-   
-##### 在 Android 设备上生成并运行
+
+####Android：
 
    在连接的设备上运行：`cordova run android --device`
 
    在默认的模拟器上运行：`cordova emulate android`
 
-   __注意__：请确保根据“先决条件”部分中所示，使用 *AVD Manager* 创建模拟器实例。
+   __注意__：请确保根据“先决条件”部分中所示，使用 AVD Manager 创建模拟器实例。
 
    使用 `cordova run android --list` 可查看所有可用目标，使用 `cordova run android --target=<target_name>` 可在特定的设备或模拟器上运行应用程序（例如 `cordova run android --target="Nexus4_emulator"`）。
 
-##### 在 iOS 设备上生成并运行
+####iOS：
 
    在连接的设备上运行：`cordova run ios --device`
 
@@ -257,10 +267,10 @@ Azure AD 只会向已知的应用程序颁发令牌。在从应用程序使用 A
 
 使用 `cordova run --help` 可查看其他生成和运行选项。
 
-此处提供了已完成示例（无需配置值）供你参考。现在，你可以转到更高级的（也更有趣）的案例。你可能想要尝试：
+[此处](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-Cordova/tree/complete/DirSearchClient)提供了已完成示例（无需配置值）供你参考。现在，你可以转到更高级的（也更有趣）的案例。你可能想要尝试：
 
-[使用 Azure AD 保护 Node.js Web API>>](active-directory-devquickstarts-webapi-nodejs)
+[使用 Azure AD 保护 Node.js Web API>>](/documentation/articles/active-directory-devquickstarts-webapi-nodejs)
 
-[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources)]
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0516_2016-->

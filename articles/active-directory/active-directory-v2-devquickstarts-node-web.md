@@ -1,5 +1,5 @@
 <properties
-	pageTitle="应用模型 v2.0 Node.js Web 应用 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 NodeJS Web 应用 | Microsoft Azure"
 	description="如何构建一个使用个人 Microsoft 帐户和工作或学校帐户来登录用户的 Node JS Web 应用。"
 	services="active-directory"
 	documentationCenter="nodejs"
@@ -70,8 +70,8 @@
 在这里，我们要将 Express 中间件配置为使用 OpenID Connect 身份验证协议。Passport 将用于发出登录和注销请求、管理用户的会话、获取有关用户的信息，等等。
 
 -	首先，打开位于项目根目录中的 `config.js` 文件，并在 `exports.creds` 节中输入应用程序的配置值。
-    -	`clientID:` 是在注册门户中为应用分配的**应用程序 ID**。
-    -	`returnURL` 是在门户中输入的**重定向 URI**。
+    -	`clientID:` 是在注册门户中为应用分配的“应用程序 ID”。
+    -	`returnURL` 是在门户中输入的“重定向 URI”。
     - `clientSecret` 是在门户中生成的机密。
 
 - 接下来，打开项目根目录中的 `app.js` 文件，并添加以下调用以调用 `passport-azure-ad` 随附的 `OIDCStrategy` 策略
@@ -273,7 +273,7 @@ app.get('/logout', function(req, res){
 
 -	我们详细探讨一下：
     -	`/` 路由将重定向到 index.ejs 视图，并在请求中传递用户（如果存在）
-    - `/account` 路由首先**确保我们已经过身份验证**（下面我们将会实现），然后在请求中传递用户，以便我们可以获取有关该用户的其他信息。
+    - `/account` 路由首先“确保我们已经过身份验证”（下面我们将会实现），然后在请求中传递用户，以便我们可以获取有关该用户的其他信息。
     - `/login` 路由将从 `passport-azuread` 调用 azuread-openidconnect 验证器，如果该操作不成功，则将用户重定向回到 /login
     - `/logout` 只是调用 logout.ejs（和路由），以便清除 Cookie 并将用户返回到 index.ejs
 
@@ -416,4 +416,4 @@ exports.list = function(req, res){
 - [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
 - [堆栈溢出“azure-active-directory”标记 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

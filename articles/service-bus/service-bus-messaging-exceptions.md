@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="服务总线消息传送异常 | Microsoft Azure"
+   pageTitle="服务总线消息传送异常 | Azure"
    description="服务总线消息传送异常和建议的操作列表。"
    services="service-bus"
    documentationCenter="na"
@@ -13,7 +13,7 @@
 
 # 服务总线消息传送异常
 
-本文列出 Microsoft Azure 服务总线消息传送 API 生成的一些异常。这些参考信息可随时更改，请不时返回查看更新内容。
+本文列出了 Microsoft Azure 服务总线消息传送 API 生成的一些异常。这些参考信息可随时更改，请不时返回查看更新内容。
 
 ## 异常类别
 
@@ -21,11 +21,11 @@
 
 1.  用户代码错误（[System.ArgumentException](https://msdn.microsoft.com/zh-cn/library/system.argumentexception.aspx)、[System.InvalidOperationException](https://msdn.microsoft.com/zh-cn/library/system.invalidoperationexception.aspx)、[System.OperationCanceledException](https://msdn.microsoft.com/zh-cn/library/system.operationcanceledexception.aspx)、[System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/zh-cn/library/system.runtime.serialization.serializationexception.aspx)）。常规操作：继续之前尝试修复代码。
 
-2.  设置/配置错误（[Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagingentitynotfoundexception.aspx)、[System.UnauthorizedAccessException](https://msdn.microsoft.com/zh-cn/zh-cn/library/system.unauthorizedaccessexception.aspx)）。常规操作：检查你的配置，必要时进行更改。
+2.  设置/配置错误（[Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagingentitynotfoundexception.aspx)、[System.UnauthorizedAccessException](https://msdn.microsoft.com/zh-cn/library/system.unauthorizedaccessexception.aspx)）。常规操作：检查你的配置，必要时进行更改。
 
 3.  暂时性异常（[Microsoft.ServiceBus.Messaging.MessagingException](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagingexception.aspx)、[Microsoft.ServiceBus.Messaging.ServerBusyException](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.serverbusyexception.aspx)、[Microsoft.ServiceBus.Messaging.MessagingCommunicationException](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagingcommunicationexception.aspx)）。常规操作：重试操作或通知用户。
 
-4.  其他异常（[System.Transactions.TransactionException](https://msdn.microsoft.com/zh-cn/library/system.transactions.transactionexception.aspx)、[System.TimeoutException](https://msdn.microsoft.com/zh-cn/library/system.timeoutexception.aspx)、[Microsoft.ServiceBus.Messaging.MessageLockLostException](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagelocklostexception.aspx)、[Microsoft.ServiceBus.Messaging.SessionLockLostException](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.sessionlocklostexception.aspx)）。常规操作：通常不需要处理这些异常来执行清理或中止操作。它们可用于跟踪。
+4.  其他异常（[System.Transactions.TransactionException](https://msdn.microsoft.com/zh-cn/library/system.transactions.transactionexception.aspx)、[System.TimeoutException](https://msdn.microsoft.com/zh-cn/library/system.timeoutexception.aspx)、[Microsoft.ServiceBus.Messaging.MessageLockLostException](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagelocklostexception.aspx)、[Microsoft.ServiceBus.Messaging.SessionLockLostException](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.sessionlocklostexception.aspx)）。常规操作：特定于异常类型；请参考以下部分中的表。
 
 ## 异常类型
 
@@ -54,7 +54,7 @@
 | [MessagingEntityDisabledException](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagingentitydisabledexception.aspx) | 对已禁用的实体请求运行时操作。 | 激活实体。 | 如果在此期间该实体已激活，则重试可能会有帮助。 |
 | [NoMatchingSubscriptionException](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.nomatchingsubscriptionexception.aspx) | 如果你向已启用预筛选的主题发送消息并且所有筛选器都不匹配，则服务总线将返回此异常。 | 确保至少有一个筛选器匹配。 | 重试不会解决问题。 |
 | [MessageSizeExceededException](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagesizeexceededexception.aspx) | 消息负载超出 256K 限制。请注意，256K 限制是指总消息大小，可能包括系统属性和任何 .NET 开销。 | 减少消息负载的大小，然后重试操作。 | 重试不会解决问题。 |
-| [TransactionException](https://msdn.microsoft.com/zh-cn/library/system.transactions.transactionexception.aspx) | 环境事务 (*Transaction.Current*) 无效。该事务可能已完成或已中止。内部异常可能提供了更多信息。| | 重试不会解决问题。|
+| [TransactionException](https://msdn.microsoft.com/zh-cn/library/system.transactions.transactionexception.aspx) | 环境事务 (“Transaction.Current”) 无效。该事务可能已完成或已中止。内部异常可能提供了更多信息。| | 重试不会解决问题。| -
 | [TransactionInDoubtException](https://msdn.microsoft.com/zh-cn/library/system.transactions.transactionindoubtexception.aspx) | 尝试对有问题的事务执行操作，或者尝试提交事务时事务出现问题。| 应用程序必须处理此异常（作为特殊情况），因为该事务可能已提交。| - |
 
 ## 后续步骤
@@ -66,5 +66,4 @@
 - [服务总线消息传送概述](/documentation/articles/service-bus-messaging-overview)
 - [服务总线基础知识](/documentation/articles/service-bus-fundamentals-hybrid-solutions)
 - [服务总线体系结构](/documentation/articles/service-bus-architecture)
-
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0516_2016-->

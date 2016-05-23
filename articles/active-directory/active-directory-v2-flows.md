@@ -1,6 +1,6 @@
 <properties
-	pageTitle="应用模型 v2.0 支持的应用类型 | Microsoft Azure"
-	description="Azure AD 应用模型 v2.0 公共预览版支持的应用和方案类型。"
+	pageTitle="v2.0 终结点的类型 | Microsoft Azure"
+	description="Azure AD v2.0 终结点支持的应用和方案类型。"
 	services="active-directory"
 	documentationCenter=""
 	authors="dstrockis"
@@ -9,7 +9,6 @@
 
 <tags
 	ms.service="active-directory"
-
 	ms.date="02/20/2016"
 	wacn.date=""/>
 
@@ -115,4 +114,4 @@ v2.0 终结点中目前不支持客户端凭据流。若要查看此流在正式
 
 可以使用 OAuth 2.0 Jwt 持有者凭据授权（也称为[代理流](active-directory-v2-protocols.md#oauth2-on-behalf-of-flow)）来支持这种链接的 Web API 方案。但是，v2.0 终结点中目前尚未实现代理流。若要查看此流在正式版 Azure AD 服务中如何工作，请参阅 [GitHub 上的代理代码示例](https://github.com/AzureADSamples/WebAPI-OnBehalfOf-DotNet)。
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

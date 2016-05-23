@@ -27,13 +27,13 @@
 
 Azure AD Privileged Identity Management 可以管理内置的 Azure Active Directory 组织角色：
 
-- 全局管理员角色 
-- 计费管理员 
+- 全局管理员角色
+- 计费管理员
 - 服务管理员  
-- 用户管理员 
-- 密码管理员 
+- 用户管理员
+- 密码管理员
 
-## 实时管理员访问 
+## 实时管理员访问
 
 以前，你可以通过 Azure 管理门户或 Windows PowerShell 向管理员角色分配用户。因此，该用户将成为**永久管理员**，始终以他或她的分配角色工作。此预览版增加了**临时管理员**支持，该用户需要完成激活过程才能获得分配的角色。激活过程会 Azure AD 中的用户角色分配从活动更改为非活动。
 
@@ -103,4 +103,4 @@ Azure AD Privileged Identity Manager 提供一个仪表板，其中显示了许�
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
 
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

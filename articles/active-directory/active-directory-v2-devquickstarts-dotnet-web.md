@@ -1,5 +1,5 @@
 <properties
-	pageTitle="应用程序模型 v2.0 .NET Web 应用 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 .NET Web 应用 | Microsoft Azure"
 	description="如何构建一个使用个人 Microsoft 帐户和工作或学校帐户来登录用户的 .NET MVC Web 应用。"
 	services="active-directory"
 	documentationCenter=".net"
@@ -9,7 +9,6 @@
 
 <tags
 	ms.service="active-directory"
-
 	ms.date="02/20/2016"
 	wacn.date=""/>
 
@@ -205,4 +204,4 @@ public ActionResult About()
 - [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
 - [堆栈溢出“azure-active-directory”标记 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

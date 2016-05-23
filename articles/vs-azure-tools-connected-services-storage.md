@@ -1,14 +1,14 @@
 <properties 
-   pageTitle="通过在 Visual Studio 中使用连接服务来添加 Azure 存储空间"
+   pageTitle="在 Visual Studio 中使用连接服务添加 Azure 存储空间 | Azure"
    description="使用 Visual Studio 的“添加连接服务”对话框将 Azure 存储空间添加到您的应用"
    services="visual-studio-online"
    documentationCenter="na"
-   authors="patshea123"
+   authors="TomArcher"
    manager="douge"
-   editor="tlee" />
+   editor="" />
 <tags 
    ms.service="visual-studio-online"
-   ms.date="08/12/2015"
+   ms.date="04/18/2016"
    wacn.date="" />
 
 # 使用 Visual Studio 连接服务添加 Azure 存储空间
@@ -34,13 +34,13 @@
 
 ## 使用“连接服务”对话框连接到 Azure 存储空间
 
-1. 确保您具有 Azure 帐户。如果您没有 Azure 帐户，可以注册 [免费试用版](http://go.microsoft.com/fwlink/?LinkId=518146)。一旦您有 Azure 帐户，您就可以创建存储帐户、创建移动服务和配置 Azure Active Directory。
+1. 确保您具有 Azure 帐户。如果你没有 Azure 帐户，可以注册 [1 元试用版](/pricing/1rmb-trial/)。一旦你有了 Azure 帐户，就可以创建存储帐户、创建移动服务和配置 Azure Active Directory。
 
 1. 在 Visual Studio 中打开您的项目、在解决方案资源管理器中打开“引用”节点的上下文菜单，然后选择“添加连接服务”。
 
     ![添加连接服务](./media/vs-azure-tools-connected-services-storage/IC796702.png)
 
-1. 在“添加连接服务”对话框中，选择“Azure 存储空间”，然后选择“配置”按钮。如果尚未登录到 Azure，系统可能会提示您登录。
+1. 在“添加连接服务”对话框中，选择“Azure 存储空间”，然后选择“配置”按钮。如果尚未登录到 Azure，系统可能会提示你登录。
 
     ![“添加连接服务”对话框 - 存储](./media/vs-azure-tools-connected-services-storage/IC796703.png)
 
@@ -75,7 +75,7 @@
  - 对于 ASP.NET 项目，请参阅[完成的操作 – ASP.NET 项目](http://go.microsoft.com/fwlink/p/?LinkId=513126)。 
  - 对于 ASP.NET 5 项目，请参阅[完成的操作 – ASP.NET 5 项目](http://go.microsoft.com/fwlink/p/?LinkId=513124)。 
  - 有关云服务项目（Web 角色和辅助角色），请参阅[完成的操作 – 云服务项目](http://go.microsoft.com/fwlink/p/?LinkId=516965)。 
- - 对于 WebJob 项目，请参阅[完成的操作 – WebJob 项目](storage/vs-storage-webjobs-what-happened/)。
+ - 对于 WebJob 项目，请参阅[完成的操作 – WebJob 项目](/documentation/articles/vs-storage-webjobs-what-happened/)。
 
 ## 后续步骤
 
@@ -86,8 +86,9 @@
 
      - [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 
-     - [azure.microsoft.com 上的存储](http://azure.microsoft.com/services/storage)
+     - [azure.microsoft.com 上的存储](/services/storage)
 
-     - [azure.microsoft.com 上的存储文档](http://azure.microsoft.com/documentation/services/storage/)
+     - [azure.microsoft.com 上的存储文档](/documentation/services/storage/)
 
-<!---HONumber=71-->
+
+<!---HONumber=Mooncake_0516_2016-->

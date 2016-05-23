@@ -1,6 +1,6 @@
 <properties
-	pageTitle="在 Azure AD 中管理密码 | Microsoft Azure"
-	description="如何在 Azure AD 中管理密码。"
+	pageTitle="在 Azure Active Directory 中管理密码 | Microsoft Azure"
+	description="如何在 Azure Active Directory 中管理密码。"
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
@@ -44,4 +44,4 @@ Azure AD 高级版适用于使用世界范围的 Azure AD 实例的中国客户�
 - [在 Azure AD 中创建或编辑用户](active-directory-create-users)
 - [在 Azure AD 中管理组](active-directory-manage-groups)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

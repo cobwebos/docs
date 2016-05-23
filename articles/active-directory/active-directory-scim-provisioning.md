@@ -374,7 +374,7 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。�
 
 下图显示了 Azure Active Directory 将发送到 SCIM 服务以管理用户在其他标识存储中的生命周期的消息。该图还显示了使用 Microsoft 提供的、用于构建此类服务的通用语言基础结构库所实现的 SCIM 服务如何将这些请求转换为对提供程序的方法调用。
 
-![][4] 
+![][4]
 图：用户预配和撤销顺序
 
 **1：**Azure Active Directory 将在服务中查询是否有某个用户的 externalId 属性值与 Azure Active Directory 中用户的 mailNickname 属性值匹配。查询以类似的超文本传输协议请求表示，其中，jyoung 是 Azure Active Directory 中某个用户的 mailNickname 示例：
@@ -682,7 +682,7 @@ Microsoft 提供的、用于实现 SCIM 服务的通用语言基础结构库将�
 * 检索组的请求规定将成员属性从请求响应中提供的任何资源中排除。  
 * 确定引用属性是否具有特定值的请求将是有关成员属性的请求。  
 
-![][5]
+![][5] 
 图：组预配和撤销顺序
 
 ##相关文章
@@ -704,4 +704,4 @@ Microsoft 提供的、用于实现 SCIM 服务的通用语言基础结构库将�
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

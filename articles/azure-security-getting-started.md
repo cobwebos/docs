@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Microsoft Azure 安全入门 | Microsoft Azure"
+   pageTitle="Microsoft Azure 安全入门 | Azure"
    description="本文概述了 Microsoft Azure 安全功能，以及组织在将其资产迁移到云提供商处时需要注意的一般性注意事项。"
    services="virtual-machines, cloud-services, storage"
    documentationCenter="na"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-security"
-   ms.date="12/10/2015"
+   ms.date="04/04/2016"
    wacn.date=""/>
 
 #Microsoft Azure 安全入门
@@ -29,9 +29,9 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 
 控制对 IT 基础结构、数据和应用程序的访问很重要。在 Microsoft Azure 中，这些功能是通过 Azure Active Directory、Azure 存储空间、对各种标准和 API 的支持之类的服务提供的。
 
-[Azure Active Directory](/documentation/articles/active-directory-whatis) (Azure AD) 是一个标识存储库和引擎，可以为组织的用户、小组和对象提供身份验证、授权和访问控制。Azure AD 还为开发人员提供了在其应用程序中集成标识管理的有效方法。通过支持行业标准协议（例如 [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0)、[WS-Federation](https://msdn.microsoft.com/zh-cn/library/bb498017.aspx) 和 [OpenID Connect](http://openid.net/connect/)），能够在多种平台（例如 .NET、Java、Node.js 和 PHP）上进行登录。
+[Azure Active Directory(Azure AD)](/documentation/articles/active-directory-whatis) 是一个标识存储库和引擎，可以为组织的用户、小组和对象提供身份验证、授权和访问控制。Azure AD 还为开发人员提供了在其应用程序中集成标识管理的有效方法。通过支持行业标准协议（例如 [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0)、[WS-Federation](https://msdn.microsoft.com/zh-cn/library/bb498017.aspx) 和 [OpenID Connect](http://openid.net/connect/)），能够在多种平台（例如 .NET、Java、Node.js 和 PHP）上进行登录。
 
-基于 REST 的图形 API 允许开发人员从任意平台对目录进行读和写。通过对 [OAuth 2.0](http://oauth.net/2/) 的支持，开发人员可以构建与 Microsoft 和第三方 Web API 相集成的移动服务和网站，以及构建自己的安全 Web API。提供面向 .Net、Windows 应用商店、iOS 和 Android 的开放源客户端库，还有更多的库仍在开发中。
+基于 REST 的图形 API 允许开发人员从任意平台对目录进行读和写。通过对 [OAuth 2.0](http://oauth.net/2/) 的支持，开发人员可以构建与 Microsoft 和第三方 Web API 相集成的移动和 Web 应用程序，并且构建自己的安全 Web API。提供面向 .Net、Windows 应用商店、iOS 和 Android 的开放源客户端库，还有更多的库仍在开发中。
 
 ### Azure 启用标识和访问管理的方式
 
@@ -41,11 +41,11 @@ Azure 的基础结构（从设备到应用程序）经过设计，可同时托�
 
 -   使用 Azure AD 即可对 SaaS 应用程序启用 [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)，不管这些应用程序在何处托管。某些应用程序会与 Azure AD 联合起来进行身份验证，其他应用程序则使用密码 SSO。联合应用程序还可以支持用户预配和密码存储。
 
--   对 [Azure 存储空间](https://azure.microsoft.com/zh-cn/services/storage/)中的数据进行访问可以通过身份验证来控制。每个存储帐户都有一个主密钥（[存储帐户密钥](https://msdn.microsoft.com/zh-cn/library/azure/ee460785.aspx)，简称 SAK）和一个辅助密钥（[共享访问签名](/documentation/articles/storage-dotnet-shared-access-signature-part-1)，简称 SAS）。
+-   对 [Azure 存储空间](/services/storage/)中的数据进行访问可以通过身份验证来控制。每个存储帐户都有一个主密钥（[存储帐户密钥](https://msdn.microsoft.com/zh-cn/library/azure/ee460785.aspx)，简称 SAK）和一个辅助密钥（共享访问签名，简称 SAS）。
 
 -   Azure AD 通过联合身份验证（使用 [Active Directory 联合身份验证服务](/documentation/articles/fundamentals-identity)）、同步以及本地目录复制方式提供标识即服务。
 
--   [Azure 多重身份验证 (MFA)](/documentation/articles/multi-factor-authentication) 是多重身份验证服务，它要求用户使用移动应用程序、手机或短信验证登录。它可用于 Azure AD 以通过 Azure MFA 服务器来保护本地资源安全，它还用于使用 SDK 的自定义应用程序和目录。
+-   [Azure Multi-Factor Authentication (MFA)](/documentation/articles/multi-factor-authentication) 是多重身份验证服务，它要求用户使用移动应用程序、手机或短信验证登录。它可用于 Azure AD 以通过 Azure MFA 服务器来保护本地资源安全，它还用于使用 SDK 的自定义应用程序和目录。
 
 -   [Azure AD 域服务](https://azure.microsoft.com/zh-cn/services/active-directory-ds/)让你可以将 Azure 虚拟机加入一个域，且无需部署域控制器。用户可以使用其公司的 Active Directory 凭据登录到这些虚拟机中，并使用组策略管理已加入域的虚拟机，以便在你的所有 Azure 虚拟机上强制实施安全基准措施。
 
@@ -69,7 +69,7 @@ Azure 中其他用于确保数据安全的功能包括：
 
 - 针对 Microsoft Blob 存储进行客户端加密可以让你完全控制密钥。存储服务永远看不到这些密钥，因此无法解密数据。
 
--   [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx)（随附 [RMS SDK](https://msdn.microsoft.com/zh-cn/library/dn758244.aspx)）通过基于策略的访问管理提供文件和数据级别的加密和数据泄露防护功能。
+-   [Azure RMS](https://technet.microsoft.com/zh-cn/library/jj585026.aspx)（随附 [RMS SDK](https://msdn.microsoft.com/zh-cn/library/dn758244.aspx)）通过基于策略的访问管理提供文件和数据级别的加密和数据泄露防护功能。
 
 -   Azure 支持在 SQL Server 虚拟机中进行[表级和列级加密 (TDE/CLE)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database.aspx)，并支持在客户的数据中心部署第三方本地密钥管理服务器。
 
@@ -91,7 +91,7 @@ Azure 的虚拟机监控程序相当于微内核，可将所有硬件访问请�
 
 ### Azure 如何实现虚拟化
 
-Azure 使用虚拟机监控程序防火墙（数据包筛选器），该防火墙是在虚拟机监控程序中实施的，可以通过结构控制器代理进行配置。这有助于防止租户进行未经授权的访问。默认情况下，在创建 VM 时，会阻止所有流量，然后通过结构控制器代理来配置数据包筛选器，添加*规则和例外* 以允许经授权的流量。
+Azure 使用虚拟机监控程序防火墙（数据包筛选器），该防火墙是在虚拟机监控程序中实施的，可以通过结构控制器代理进行配置。这有助于防止租户进行未经授权的访问。默认情况下，在创建 VM 时，会阻止所有流量，然后通过结构控制器代理来配置数据包筛选器，添加“规则和例外” 以允许经授权的流量。
 
 此处对两类规则进行了编程：
 
@@ -134,16 +134,16 @@ Azure 在每个 Azure 群集中提供三种主要级别的网络隔离，可通�
 流向 VM 以及从 VM 流出的网络流量必须经过虚拟机监控程序虚拟交换机。根 OS 中的 IP 筛选器组件将根 VM 与来宾 VM 隔离，以及将来宾 VM 相互隔离。它会对流量进行筛选，将通信限制在租户的节点与公共 Internet 之间（基于客户的服务配置），将这些节点与其他租户隔离开。
 
 IP 筛选器可以防止来宾 VM 执行以下操作：
- 
+
 - 生成欺骗性流量
- 
+
 - 接收不发送给它们的流量
 
 - 将流量定向到受保护的基础结构终结点
 
 - 发送或接收不当的广播流量
 
-你可以将虚拟机置于 [Azure 虚拟网络](https://azure.microsoft.com/zh-cn/documentation/services/virtual-network/)中。这些虚拟网络类似于你在本地环境中配置的网络，在本地环境中，网络通常与虚拟交换机相关联。连接到同一个 Azure 虚拟网络的虚拟机可以相互通信而无需其他配置。你还可以选择在 Azure 虚拟网络中配置不同的子网。
+你可以将虚拟机置于 [Azure 虚拟网络](/documentation/services/virtual-network/)中。这些虚拟网络类似于你在本地环境中配置的网络，在本地环境中，网络通常与虚拟交换机相关联。连接到同一个 Azure 虚拟网络的虚拟机可以相互通信而无需其他配置。你还可以选择在 Azure 虚拟网络中配置不同的子网。
 
 可以使用以下 Azure 虚拟网络技术来帮助实现 Azure 虚拟网络上的安全通信：
 
@@ -157,7 +157,6 @@ IP 筛选器可以防止来宾 VM 执行以下操作：
 
 -   [**终结点** ACL](/documentation/articles/virtual-machines-set-up-endpoints)。你可以通过定义终结点 ACL 来控制哪些计算机允许从 Internet 到 Azure 虚拟网络上的虚拟机的入站连接。
 
--   [**合作伙伴网络安全解决方案**](https://azure.microsoft.com/zh-cn/marketplace/)。可以通过 Azure 应用商店访问大量的合作伙伴网络安全解决方案。
 
 ### Azure 如何实施虚拟网络和防火墙
 
@@ -233,8 +232,8 @@ Azure 建立安全控制的目的是实施威胁缓解措施，同时协助客�
 
 [Azure 安全团队博客](http://blogs.msdn.com/b/azuresecurity/)
 
-[Microsoft 安全响应中心](https://technet.microsoft.com/library/dn440717.aspx)
+[Microsoft 安全响应中心](https://technet.microsoft.com/zh-cn/library/dn440717.aspx)
 
 [Active Directory 博客](http://blogs.technet.com/b/ad/)
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0516_2016-->

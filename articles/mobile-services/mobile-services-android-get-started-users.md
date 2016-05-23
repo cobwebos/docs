@@ -1,15 +1,15 @@
 <properties
-	pageTitle="Android 上的身份验证入门（JavaScript 后端）| Microsoft Azure"
+	pageTitle="Android 上的身份验证入门（JavaScript 后端）| Azure"
 	description="了解如何使用移动服务通过提供各种标识提供程序（包括 Google、Facebook、Twitter 和 Microsoft）对 Android 应用程序的用户进行身份验证（JavaScript 后端）。"
 	services="mobile-services"
 	documentationCenter="android"
 	authors="RickSaling"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="01/20/2016"
+	ms.date="04/07/2016"
 	wacn.date=""/>
 
 # 向移动服务 Android 应用添加身份验证（JavaScript 后端）
@@ -51,15 +51,15 @@
 
 ## 向应用程序添加身份验证
 
-[AZURE.INCLUDE [mobile-services-android-authenticate-app](../includes/mobile-services-android-authenticate-app.md)]
+[AZURE.INCLUDE [mobile-android-authenticate-app](../includes/mobile-android-authenticate-app.md)]
 
 ## <a name="cache-tokens"></a>在客户端上缓存身份验证令牌
 
-[AZURE.INCLUDE [mobile-services-android-authenticate-app-with-token](../includes/mobile-services-android-authenticate-app-with-token.md)]
+[AZURE.INCLUDE [mobile-android-authenticate-app-with-token](../includes/mobile-android-authenticate-app-with-token.md)]
 
 ## <a name="refresh-tokens"></a>刷新令牌缓存
 
-[AZURE.INCLUDE [mobile-services-android-authenticate-app-refresh-token](../includes/mobile-services-android-authenticate-app-refresh-token.md)]
+[AZURE.INCLUDE [mobile-android-authenticate-app-refresh-token](../includes/mobile-android-authenticate-app-refresh-token.md)]
 
 
 
@@ -97,4 +97,4 @@
 [使用脚本为用户授权]: /documentation/articles/mobile-services-javascript-backend-service-side-authorization/
 
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0516_2016-->

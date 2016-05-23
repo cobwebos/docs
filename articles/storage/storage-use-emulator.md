@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用 Azure 存储模拟器进行开发和测试 | Microsoft Azure" 
+	pageTitle="使用 Azure 存储模拟器进行开发和测试 | Azure" 
 	description="Azure 存储模拟器为针对 Azure 存储的开发和测试提供了免费的本地开发环境。了解有关存储模拟器的信息，包括如何对请求进行身份验证、如何从您的应用程序连接到模拟器和如何使用命令行工具。" 
 	services="storage" 
 	documentationCenter="" 
@@ -8,7 +8,7 @@
 	editor=""/>
 <tags 
 	ms.service="storage" 
-	ms.date="02/21/2016" 
+	ms.date="03/28/2016" 
 	wacn.date=""/>
 
 # 使用 Azure 存储模拟器进行开发和测试
@@ -17,7 +17,7 @@
 
 Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表服务以进行开发的本地环境。使用存储模拟器，您可以在本地针对存储服务测试应用程序，而无需创建 Azure 订阅且不会产生任何费用。如果您对应用程序在模拟器中的工作情况感到满意，则可以切换到在云中使用 Azure 存储帐户。
 
-> [AZURE.NOTE] 存储模拟器作为 [Microsoft Azure SDK](/downloads/) 的一部分提供。此外，还可以作为独立程序包来安装存储模拟器。若要配置存储模拟器，必须在计算机上具有管理权限。
+> [AZURE.NOTE] 存储模拟器作为 [Microsoft Azure SDK](/downloads/) 的一部分提供。此外，还可以使用[独立安装程序](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)来安装存储模拟器。若要配置存储模拟器，必须在计算机上具有管理权限。
 >  
 > 请注意，在一个版本的存储模拟器中创建的数据不保证在使用不同版本时可以访问。如果需要长期保存数据，建议将该数据存储在 Azure 存储帐户中，而不是存储在存储模拟器中。
 
@@ -37,7 +37,7 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 
 [AZURE.INCLUDE [storage-emulator-connection-string-include](../includes/storage-emulator-connection-string-include.md)]
 
-有关连接字符串的详细信息，请参阅[配置 Azure 存储空间的连接字符串](/documentation/articles/storage-configure-connection-string)。
+有关连接字符串的详细信息，请参阅[配置 Azure 存储空间连接字符串](/documentation/articles/storage-configure-connection-string)。
 
 ### 使用共享访问签名进行身份验证 
 
@@ -45,7 +45,7 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 
 1. 安装 Azure PowerShell（如果尚未安装）。建议使用 Azure PowerShell cmdlet 最新版本。请查看[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure#Install) 以获取安装说明。
 
-2. 请打开 Azure PowerShell 并运行以下命令。请记住要使用您自己的凭据替换ACCOUNT\_NAME和ACCOUNT\_KEY = =。将 CONTAINER\_NAME替换为您选择的名称。
+2. 请打开 Azure PowerShell 并运行以下命令。请记住要使用您自己的凭据替换 ACCOUNT\_NAME 和 ACCOUNT\_KEY = =。将 CONTAINER\_NAME 替换为您选择的名称。
 
 		$context = New-AzureStorageContext -StorageAccountName "ACCOUNT_NAME" -StorageAccountKey "ACCOUNT_KEY=="
 		
@@ -129,7 +129,7 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 
     http://127.0.0.1:10000/myaccount-secondary/mycontainer/myblob.txt 
 
-> [AZURE.NOTE] 若要使用存储模拟器以编程方式访问辅助副本，请使用 Storage Client Library for .NET 3.2 版或更高版本。有关详细信息，请参阅[.NET 的存储空间客户端库](https://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx)。
+> [AZURE.NOTE] 若要使用存储模拟器以编程方式访问辅助副本，请使用 Storage Client Library for .NET 3.2 版或更高版本。有关详细信息，请参阅[用于 .NET 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx)。
 
 ## 存储模拟器命令行工具参考
 
@@ -147,7 +147,7 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 
 | 选项 | 说明 | 命令 | 参数 |
 |--------|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| **启动** | 启动存储模拟器。 | `AzureStorageEmulator start [-inprocess]` |-inprocess：在当前进程中启动模拟器而不是创建一个新的进程。 |
+| **启动** | 启动存储模拟器。 | `AzureStorageEmulator start [-inprocess]` | -inprocess：在当前进程中启动模拟器而不是创建一个新的进程。 |
 | **停止** | 停止存储模拟器。 | `AzureStorageEmulator stop` | |
 | **状态** | 打印存储模拟器的状态。 | `AzureStorageEmulator status` | |
 | **清除** | 清除命令行上指定的所有服务中的数据。 | `AzureStorageEmulator clear [blob] [table] [queue] [all]                                                    `| blob：清除 Blob 数据。<br/>queue：清除队列数据。<br/>table：清除表数据。<br/>all：清除所有服务中的所有数据。 |
@@ -165,7 +165,7 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 
 - 存储模拟器从 3.1 版开始，支持读取访问地域冗余复制 (RA-GRS)。在模拟器中，所有帐户都已启用 RA-GRS，在主要和辅助副本之间不会有任何延迟。获取 Blob 服务统计信息、获取队列服务统计信息和获取表服务统计信息操作在帐户辅助副本上受支持，并且将始终根据基础 SQL 数据库返回 `LastSyncTime` 响应元素的值作为当前时间。
 
-	若要使用存储模拟器以编程方式访问辅助副本，请使用 Storage Client Library for .NET 3.2 版或更高版本。有关详细信息，请参阅[.NET 的存储空间客户端库](https://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx)。
+	若要使用存储模拟器以编程方式访问辅助副本，请使用 Storage Client Library for .NET 3.2 版或更高版本。有关详细信息，请参阅[用于 .NET 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx)。
 
 - 文件服务和 SMB 协议服务终结点当前在存储模拟器中不受支持。
 
@@ -199,6 +199,10 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 
 ## 存储模拟器发行说明
 
+### 版本 4.3
+
+- 存储模拟器现在支持 Blob、队列和表服务终结点上的 2015-07-08 版本的存储服务。
+
 ### 版本 4.2
 
 - 存储模拟器现在支持 Blob、队列和表服务终结点上的 2015-04-05 版本的存储服务。
@@ -213,7 +217,7 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 
 ### 4\.0 版
 
-- 存储模拟器可执行文件已重命名为AzureStorageEmulator.exe。
+- 存储模拟器可执行文件已重命名为 AzureStorageEmulator.exe。
 
 ### 3\.2 版
 - 存储模拟器现在支持 Blob、队列和表服务终结点上的 2014-02-14 版本的存储服务。请注意，文件服务终结点目前在存储模拟器中不受支持。请参阅 [Azure 存储服务的版本控制](https://msdn.microsoft.com/zh-cn/library/azure/dd894041.aspx)以了解有关 2014-02-14 版本的详细信息。
@@ -228,4 +232,5 @@ Microsoft Azure 存储模拟器提供了一个模拟 Azure Blob、队列和表�
 
 - 现在完全支持版本 2013年-08-15 的 Azure 存储服务。（以前仅存储模拟器 2.2.1 预览版本支持此版本。）
 
-<!---HONumber=Mooncake_0411_2016-->
+
+<!---HONumber=Mooncake_0516_2016-->

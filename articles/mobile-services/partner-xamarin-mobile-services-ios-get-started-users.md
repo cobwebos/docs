@@ -31,7 +31,7 @@
 
 本教程基于移动服务快速入门。此外，还必须先完成[移动服务入门]教程。
 
-完成本教程需要安装 [Xamarin.iOS]、XCode 6.0 和 iOS 7.0 或更高版本。
+完成本教程需要安装 [Xamarin Studio]、XCode 6.0 和 iOS 7.0 或更高版本。
 
 ##<a name="register"></a>注册应用程序以进行身份验证并配置移动服务
 
@@ -47,7 +47,7 @@
 
 2. 在 iPhone 模拟器中按“运行”按钮以生成项目并启动应用程序；验证启动该应用程序后，是否会引发状态代码为 401（“未授权”）的未处理异常。
    
-   	发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 TodoItem 表现在要求身份验证。
+   	发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 _TodoItem_ 表现在要求身份验证。
 
 接下来，你需要更新应用程序，以便在从移动服务请求资源之前对用户进行身份验证。
 
@@ -73,7 +73,7 @@
             }
         }
 
-	> [AZURE.NOTE] 如果使用的标识提供程序不是 Microsoft 帐户，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：Facebook、Twitter、Google 或 WindowsAzureActiveDirectory。
+	> [AZURE.NOTE] 如果使用的标识提供程序不是 Microsoft 帐户，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：_Facebook_、_Twitter_、_Google_ 或 _WindowsAzureActiveDirectory_。
 
 3. 从 **ToDoService** 构造函数将对 **ToDoItem** 表的请求移到名为 **CreateTable** 的新方法中：
 
@@ -149,6 +149,6 @@
 [使用脚本为用户授权]: /documentation/articles/mobile-services-javascript-backend-service-side-authorization
 
 [已完成的示例项目]: http://go.microsoft.com/fwlink/p/?LinkId=331328
-[Xamarin.iOS]: http://xamarin.com/download
+[Xamarin Studio]: http://xamarin.com/download
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0516_2016-->

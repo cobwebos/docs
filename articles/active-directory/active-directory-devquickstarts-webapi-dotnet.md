@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="10/13/2015"
+	ms.date="01/21/2016"
 	wacn.date=""/>
 
 
@@ -33,7 +33,7 @@
 若要开始，请[下载应用程序框架](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip)。每个下载项目都是 Visual Studio 2013 解决方案。你还需要一个用于注册应用程序的 Azure AD 租户。如果你没有此租户，请[了解如何获取租户](active-directory-howto-tenant.md)。
 
 
-## *1.将一个应用程序注册到 Azure AD*
+## 1.将一个应用程序注册到 Azure AD
 若要保护你的应用程序，首先需要在租户中创建一个应用程序，并为 Azure AD 提供一些关键信息。
 
 -	登录到 [Azure 管理门户](https://manage.windowsazure.cn)
@@ -46,7 +46,7 @@
 -	完成注册后，导航到“配置”选项卡并找到“应用 ID URI”字段。为此值输入特定于租户的标识符，例如 `https://contoso.partner.onmschina.cn/TodoListService`
 - 保存配置。保持门户的打开状态 - 稍后你还需要注册客户端应用程序。
 
-## *2.将应用程序设置为使用 OWIN 身份验证管道*
+## 2.将应用程序设置为使用 OWIN 身份验证管道
 
 将应用程序注册到 Azure AD 后，需要将应用程序设置为与 Azure AD 通信，以验证传入请求和令牌。
 
@@ -114,7 +114,7 @@ public IEnumerable<TodoItem> Get()
   -	`ida:Tenant` 是 Azure AD 租户的名称，例如“contoso.partner.onmschina.cn”。
   -	`ida:Audience` 是你在 Azure 门户中为应用程序输入的应用程序 ID URI。
 
-## *3.配置客户端应用程序并运行服务*
+## 3.配置客户端应用程序并运行服务
 需要先配置待办事项列表客户端，使它能够从 AAD 获取令牌并可调用服务，然后，你才能看到待办事项服务的运行情况。
 
 - 导航回到 [Azure 管理门户](https://manage.windowsazure.cn)
@@ -133,9 +133,8 @@ public IEnumerable<TodoItem> Get()
 
 最后，清理、生成并运行每个项目！ 如果你尚未这样做，现在可以使用 *.partner.onmschina.cn 域在租户中创建一个新的用户。使用该用户登录到待办事项列表客户端，并向用户的待办事项列表添加一些任务。
 
-[此处](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip)提供了已完成示例（无需配置值）供你参考。现在，你可以转到其他标识方案。你可能想要尝试学习：
+[此处](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip)提供了已完成示例（无需配置值）供你参考。现在，你可以转到其他标识方案。
 
-[使用 Azure AD 生成 .NET 本机客户端 >>](active-directory-devquickstarts-native-dotnet)
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources)]
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0516_2016-->

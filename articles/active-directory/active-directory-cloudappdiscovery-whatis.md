@@ -1,54 +1,48 @@
-<properties 
-	pageTitle="我如何发现我的组织内使用的未经认可的云应用" 
-	description="本主题介绍 Cloud App Discvery 的定义和用途。" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="markusvi" 
-	manager="swadhwa" 
-	editor="lisatoft"/>
+<properties
+	pageTitle="使用 Cloud App Discovery 查找非托管的云应用程序 | Microsoft Azure"
+	description="提供有关如何使用 Cloud App Discovery 来查找和管理应用程序、这样做的好处以及其工作原理的信息。"
+	services="active-directory"
+	keywords="cloud app discovery, 管理应用程序"
+	documentationCenter=""
+	authors="markusvi"
+	manager="stevenpo"
+	editor=""/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="07/23/2015" 
+	ms.date="02/09/2016"
 	wacn.date=""/>
 
-# 我如何发现我的组织内使用的未经认可的云应用
+# 使用 Cloud App Discovery 查找非托管的云应用程序
 
-在现代企业中，IT 部门通常不了解用户执行其工作所使用的所有云应用程序。因此，管理员经常担忧公司数据的未授权访问、潜在的数据泄漏和应用程序固有的其他安全风险。因为他们不知道使用了多少或哪些应用，甚至连开始制定应对这些风险的计划似乎都是困难的。
+## 概述
+在现代企业中，IT 部门不一定了解组织成员执行其工作所使用的所有云应用程序。很容易知道为什么管理员对未经授权访问公司数据、可能的数据泄漏和其他安全风险有所顾虑。缺乏认知可能使得要创建一个应付这些安全风险的计划让人却步。
 
-你可通过使用 Cloud App Discovery 解决这些问题。Cloud App Discovery 是 Azure Active Directory 的高级功能，借此可发现组织中的员工所使用的云应用程序。
+Cloud App Discovery 是 Azure Active Directory (AD) Premium 的一项功能，可用于发现你组织中的人员所使用的云应用程序。
 
+**使用 Cloud App Discovery，你可以：**
 
-**通过 Cloud App Discovery，你可以：**
+- 查找正在使用的云应用程序，并根据用户数目、流量或应用程序的 Web 请求数目测量使用量。
+- 识别正在使用应用程序的用户。
+- 导出数据以进行离线分析。
+- 使这些应用程序受 IT 控制并为用户管理启用单一登录。
 
-* 发现正在使用的应用程序，并通过用户数量、流量大小或对应用程序的 Web 请求数量来测量使用情况。 
-* 确定正在使用应用程序的用户。 
-* 导出数据用于其他脱机分析。 
-* 确定要纳入 IT 控制的应用程序的优先顺序，轻松整合应用程序，以实现单一登录和用户管理。 
+## 工作原理
+1. 应用程序使用代理安装在用户的计算机上。
+2. 代理所捕获的应用程序使用情况信息会通过安全的加密通道发送到 Cloud App Discovery 服务。
+3. Cloud App Discovery 服务会评估数据并生成报告。
 
-通过 Cloud App Discovery，数据检索部分由你环境中的计算机上运行的代理完成。由代理捕获的应用使用情况信息经安全加密通道传送到 Cloud App Discovery 服务。Cloud App Discovery 服务评估数据，并生成可用于分析你的环境的报告。
+![Cloud App Discovery 图示](./media/active-directory-cloudappdiscovery/cad01.png)
 
+若要开始使用 Cloud App Discovery，请参阅 [Getting Started With Cloud App Discovery（Cloud App Discovery 入门）](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
 
-<center>![Cloud App Discovery 工作原理](./media/active-directory-cloudappdiscovery/cad01.png)</center>
+## 相关文章
+- [Cloud App Discovery 的安全和隐私注意事项](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)  
+- [Cloud App Discovery Group Policy Deployment Guide（Cloud App Discovery 组策略部署指南）](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)
+- [Cloud App Discovery System Center Deployment Guide（Cloud App Discovery System Center 部署指南）](http://social.technet.microsoft.com/wiki/contents/articles/30968.cloud-app-discovery-system-center-deployment-guide.aspx)
+- [Cloud App Discovery Registry Settings for Proxy Servers with Custom Ports（具有自定义端口的代理服务器的 Cloud App Discovery 注册表设置）](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
+- [Cloud App Discovery Agent Changelog（Cloud App Discovery 代理更改日志）](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx)
+- [Cloud App Discovery Frequently Asked Questions（Cloud App Discovery 常见问题）](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 
-##后续步骤
-
-
-* 要深入了解 Cloud App Discovery 工作原理，请参见 [Cloud App Discovery 入门](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx) 
-* 有关安全和隐私注意事项，请参阅 [Cloud App Discovery 安全和隐私注意事项](/documentation/articles/active-directory-cloudappdiscovery-security-and-privacy-considerations) 
-* 有关在以下企业环境部署 Cloud App Discovery 代理的信息： 
- * 对于使用 Active Directory 组策略管理的企业环境，请参阅 [Active Directory 组策略管理部署指南](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx) 
- * 对于使用 Microsoft System Center Configuration Manager 的企业环境，请参阅 [Cloud App Discovery System Center 部署指南](http://social.technet.microsoft.com/wiki/contents/articles/30968.cloud-app-discovery-system-center-deployment-guide.aspx) 
- * 对于使用带自定义端口的代理服务器的企业环境，请参阅[针对带自定义端口的代理服务器的 Cloud App Discovery 注册表设置](/documentation/articles/active-directory-cloudappdiscovery-registry-settings-for-proxy-services) 
-
-
-
-
-
-**其他资源**
-
-
-* [Cloud App Discovery - 代理更改日志](http://social.technet.microsoft.com/wiki/contents/articles/24616.cloud-app-discovery-agent-changelog.aspx)
-* [Cloud App Discovery - 常见问题](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx)
-
-<!---HONumber=67-->
+<!---HONumber=Mooncake_0516_2016-->

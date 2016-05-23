@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="02/17/2016"
+	ms.date="04/08/2016"
 	wacn.date=""/>
 
 # 如何通过 PHP 使用 Blob 存储
@@ -302,4 +302,5 @@
 [fopen]: http://www.php.net/fopen
 [stream-get-contents]: http://www.php.net/stream_get_contents
 
-<!---HONumber=Mooncake_0411_2016-->
+
+<!---HONumber=Mooncake_0516_2016-->

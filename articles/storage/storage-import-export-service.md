@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="02/29/2016"
+	ms.date="04/06/2016"
 	wacn.date=""/>
 
 
@@ -23,7 +23,7 @@
 
 你可以通过以下两种方式中的一种创建和管理导入和导出作业：
 
-- 通过使用 Azure 管理门户(https://manage.windowsazure.cn)。
+- 通过使用 Azure 管理门户(https://manage.windowsazure.cn) 。
 - 通过使用服务的 REST 接口。
 
 本文概述了该导入/导出服务并且说明了如何通过[管理门户](https://manage.windowsazure.cn)来使用该导入/导出服务。有关 REST API 的详细信息，请参阅[存储导入/导出服务 REST API 参考](http://msdn.microsoft.com/zh-cn/library/dn529096.aspx)。
@@ -37,11 +37,11 @@
 
 创建作业时，需通知导入/导出服务：你要将一个或多个硬盘驱动器运送到 Azure 数据中心。对于某一导入作业，你将要运送包含文件数据的硬盘驱动器。对于某一导出作业，你将要运送空硬盘驱动器。
 
-若要为导入作业准备要运送的驱动器，你需要运行 **Azure 导入/导出工具**，该工具可帮助你将数据复制到驱动器、使用 BitLocker 对驱动器上的数据进行加密以及生成驱动器日志文件。我们将在下文中讨论此方面的内容。
+若要为导入作业准备要运送的驱动器，你需要运行 Azure 导入/导出工具，该工具可帮助你将数据复制到驱动器、使用 BitLocker 对驱动器上的数据进行加密以及生成驱动器日志文件。我们将在下文中讨论此方面的内容。
 
 > [AZURE.NOTE] 必须使用 BitLocker 驱动器加密对驱动器上的数据进行加密。这将在运送过程中保护你的数据。对于导出作业，该导入/导出服务在将驱动器运送回你处之前对你的数据进行加密。
 
-在你创建导入作业或导出作业时，还需要*驱动器 ID*，这是驱动器制造商分配给特定硬盘的序列号。该驱动器 ID 显示在驱动器的表面。
+在你创建导入作业或导出作业时，还需要驱动器 ID，这是驱动器制造商分配给特定硬盘的序列号。该驱动器 ID 显示在驱动器的表面。
 
 ### 要求和范围
 
@@ -54,7 +54,7 @@
 4.	**Blob 存储目标：**可以将数据上载到块 Blob 和页 Blob 或者从块 Blob 和页 Blob 下载数据。
 5.	**作业数：**对于每个存储帐户，一个客户最多可以有 20 个处于活动状态的作业。
 6.	**作业的最大大小：**作业的大小由使用的硬盘驱动器的容量以及可在一个存储帐户中存储的最大数据量确定。每个作业可以包含不超过 10 个硬盘驱动器。
-7.  **支持的操作系统：**在发送到 Azure 之前，客户可以使用以下 64 位操作系统之一，通过 Azure 导入/导出工具准备硬盘驱动器 - Windows 7、Windows 8、Windows 8.1、Windows 10*、Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2。  
+7.  **支持的操作系统：**在发送到 Azure 之前，客户可以使用以下 64 位操作系统之一，通过 Azure 导入/导出工具准备硬盘驱动器 - Windows 7 企业版、Windows 7 旗舰版、Windows 8 专业版、Windows 8 企业版、Windows 8.1 专业版、Windows 8.1 企业版、Windows 10*、Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2。所有这些操作系统都支持 BitLocker 驱动器加密。  
 
   > [AZURE.IMPORTANT]
   >  
@@ -227,7 +227,7 @@
 - 不需要。所有驱动器都必须是准备了 BitLocker 的。
 
 **在创建导出作业时我是否需要执行任何磁盘准备操作？**
-- 不需要，但建议执行一些预先检查。使用 Azure 导入/导出工具的 PreviewExport 命令检查所需的磁盘数。有关详细信息，请参阅[预览导出作业的驱动器用法](https://msdn.microsoft.com/zh-cn/library/azure/dn722414.aspx)命令。它可以根据你要使用的驱动器大小，帮助你预览所选 Blob 的驱动器使用情况。此外，请检查你是否可以读取/写入要为导出作业传送的硬盘驱动器。
+- 不需要，但建议执行一些预先检查。使用 Azure 导入/导出工具的 PreviewExport 命令检查所需的磁盘数。有关详细信息，请参阅[预览导出作业的驱动器用法](https://msdn.microsoft.com/zh-cn/library/azure/dn722414.aspx)。它可以根据你要使用的驱动器大小，帮助你预览所选 Blob 的驱动器使用情况。此外，请检查你是否可以读取/写入要为导出作业传送的硬盘驱动器。
 
 ### 装运
 
@@ -274,8 +274,8 @@
 [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
 
-[import-job-03]: ./media/storage-import-export-service-classic-portal/import-job-03.png
-[export-job-03]: ./media/storage-import-export-service-classic-portal/export-job-03.png
-[export-job-bitlocker-keys]: ./media/storage-import-export-service-classic-portal/export-job-bitlocker-keys.png
+[import-job-03]: ./media/storage-import-export-service/import-job-03.png
+[export-job-03]: ./media/storage-import-export-service/export-job-03.png
+[export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0516_2016-->

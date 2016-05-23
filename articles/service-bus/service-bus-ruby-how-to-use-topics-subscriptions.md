@@ -1,5 +1,5 @@
 <properties
-	pageTitle="如何使用服务总线主题 (Ruby) | Microsoft Azure"
+	pageTitle="如何使用服务总线主题 (Ruby) | Azure"
 	description="了解如何在 Azure 中使用 Service Bus 主题和订阅。相关代码示例是针对 Ruby 应用程序编写的。"
 	services="service-bus"
 	documentationCenter="ruby"
@@ -13,9 +13,6 @@
 	wacn.date=""/>
 
 
-
-
-
 # 如何使用 Service Bus 主题/订阅
 
 [AZURE.INCLUDE [service-bus-selector-topics](../includes/service-bus-selector-topics.md)]
@@ -24,7 +21,7 @@
 
 ## 服务总线主题和订阅
 
-服务总线主题和订阅支持**发布/订阅消息通信**模型。在使用主题和订阅时，分布式应用程序的组件不会直接相互通信，而是通过充当中介的主题交换消息。
+服务总线主题和订阅支持**发布/订阅**消息通信模型。在使用主题和订阅时，分布式应用程序的组件不会直接相互通信，而是通过充当中介的主题交换消息。
 
 ![TopicConcepts](./media/service-bus-ruby-how-to-use-topics-subscriptions/sb-topics-01.png)
 
@@ -32,7 +29,7 @@
 
 主题订阅类似于接收发送至该主题的消息副本的虚拟队列。您可以选择基于每个订阅注册主题的筛选规则，这样就可以筛选/限制哪些主题订阅接收发送至某个主题的哪些消息。
 
-利用 Service Bus 主题和订阅，您可以进行扩展以处理跨大量用户和应用程序的许多消息。
+利用 Service Bus 主题和订阅，你可以进行扩展以处理跨大量用户和应用程序的许多消息。
 
 ## 创建服务命名空间
 
@@ -48,7 +45,7 @@
 	New-AzureSBNamespace -Name 'yourexamplenamespace' -Location 'West US' -NamespaceType 'Messaging' -CreateACSNamespace $true
 	```
 
-      ![创建命名空间](./media/service-bus-ruby-how-to-use-topics-subscriptions/showcmdcreate.png)
+	![创建命名空间](./media/service-bus-ruby-how-to-use-topics-subscriptions/showcmdcreate.png)
 
 ## 获取命名空间的默认管理凭据
 
@@ -56,14 +53,14 @@
 
 你运行的用于创建服务总线命名空间的 PowerShell cmdlet 将显示可用于管理命名空间的密钥。复制 **DefaultKey** 值。你将本教程稍后的代码中使用此值。
 
-       ![Copy key](./media/service-bus-ruby-how-to-use-topics-subscriptions/defaultkey.png)
+![复制密钥](./media/service-bus-ruby-how-to-use-topics-subscriptions/defaultkey.png)
 
 > [AZURE.NOTE]
 如果登录到 [Azure 经典门户][]并导航到命名空间的连接信息，也可以找到此密钥。
 
 ## 创建 Ruby 应用程序
 
-有关说明，请参阅[在 Azure 上创建 Ruby 应用程序](/documentation/articles/virtual-machines/virtual-machines-ruby-rails-web-app-linux)。
+有关说明，请参阅[在 Azure 上创建 Ruby 应用程序](/documentation/articles/virtual-machines-linux-classic-ruby-rails-web-app)。
 
 ## 配置应用程序以使用 Service Bus
 
@@ -92,7 +89,7 @@ Azure.config.sb_namespace = "<your azure service bus namespace>"
 Azure.config.sb_access_key = "<your azure service bus access key>"
 ```
 
-将命名空间值设置为你创建的值，而不是整个 URL 的值。例如，使用 **"yourexamplenamespace"**，而不是 "yourexamplenamespace.servicebus.chinacloudapi.cn"。 
+将命名空间值设置为你创建的值，而不是整个 URL 的值。例如，使用 **"yourexamplenamespace"**，而不是 "yourexamplenamespace.servicebus.chinacloudapi.cn"。
 
 ## 创建主题
 
@@ -216,7 +213,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 ## 删除主题和订阅
 
-主题和订阅具有持久性，必须通过 [Azure 经典门户](https://manage.windowsazure.cn)或以编程方式显式删除。下面的示例演示如何删除名为“test-topic”的主题：
+主题和订阅具有持久性，必须通过 [Azure 管理门户](https://manage.windowsazure.cn)或以编程方式显式删除。下面的示例演示如何删除名为“test-topic”的主题：
 
 ```
 azure_service_bus_service.delete_topic("test-topic")
@@ -237,4 +234,4 @@ azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 -	访问 GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 [Azure 经典门户]: http://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0516_2016-->

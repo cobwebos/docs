@@ -1,5 +1,5 @@
 <properties
-	pageTitle="应用模型 v2.0 .NET 本机应用 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 .NET 本机应用 | Microsoft Azure"
 	description="如何构建一个使用个人 Microsoft 帐户和工作或学校帐户来登录用户的 .NET 本机应用。"
 	services="active-directory"
 	documentationCenter=""
@@ -249,4 +249,4 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 - [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
 - [堆栈溢出“adal”标记 >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

@@ -1,15 +1,15 @@
-<properties 
-	pageTitle="缩放 Azure SQL 数据库支持的移动服务 | Azure" 
-	description="了解如何诊断和修复 SQL 数据库支持的移动服务中的可扩展性问题" 
-	services="mobile-services" 
-	documentationCenter="" 
-	authors="lindydonna" 
-	manager="dwrede" 
+<properties
+	pageTitle="缩放 Azure SQL 数据库支持的移动服务 | Azure"
+	description="了解如何诊断和修复 SQL 数据库支持的移动服务中的可扩展性问题"
+	services="mobile-services"
+	documentationCenter=""
+	authors="lindydonna"
+	manager="dwrede"
 	editor="mollybos"/>
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="12/01/2015" 
+	ms.date="02/23/2016" 
 	wacn.date=""/>
 
 # 扩展 Azure SQL 数据库支持的移动服务
@@ -84,9 +84,9 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
 请尽早考虑以下其他缓解步骤：
 
 - **优化数据库。**
-优化数据库通常可以降低数据库利用率，并避免扩展到更高的服务层。 
+  优化数据库通常可以降低数据库利用率，并避免扩展到更高的服务层。 
 - **考虑服务体系结构。**
-随着时间的推移，您的服务负载通常分布不均，但包含高需求“峰值”。如果不纵向扩展数据库应对峰值，并让数据库在低需求期间保持低利用率，通常可以调整服务体系结构，以避免出现此类峰值，或在不对数据库造成干扰的情况下处理峰值情况。
+  随着时间的推移，您的服务负载通常分布不均，但包含高需求“峰值”。如果不纵向扩展数据库应对峰值，并让数据库在低需求期间保持低利用率，通常可以调整服务体系结构，以避免出现此类峰值，或在不对数据库造成干扰的情况下处理峰值情况。
 
 本文余下部分将介绍自定义指南，以帮助实施这些缓解措施。
 
@@ -165,7 +165,7 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
         public bool Complete { get; set; }
     }
 		 
-更多有关索引的详细信息，请参阅[实体框架中的索引批注][]。有关优化索引的更多提示，请参阅本文末尾的“高级索引”(#AdvancedIndexing)。
+更多有关索引的详细信息，请参阅[实体框架中的索引批注][]。有关优化索引的更多提示，请参阅本文末尾的“[高级索引](#AdvancedIndexing)”。
 
 <a name="Schema"></a>
 ## 架构设计
@@ -180,7 +180,7 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
 
 查询数据库时要考虑的以下指南：
 
-- **始终在数据库中执行联接操作。** 你经常需要合并来自两个或更多表的记录，且这些要合并的记录共享相同的字段（称为 *联接*）。此操作涉及到同时从两个表中提取所有实体，然后循环访问所有实体，因此，如果未正确执行此操作，可能会降低效率。此类操作最好在数据库中执行，但有时却很容易误由客户端执行，或者在移动服务代码中执行。
+- **始终在数据库中执行联接操作。** 你经常需要合并来自两个或更多表的记录，且这些要合并的记录共享相同的字段（称为联接）。此操作涉及到同时从两个表中提取所有实体，然后循环访问所有实体，因此，如果未正确执行此操作，可能会降低效率。此类操作最好在数据库中执行，但有时却很容易误由客户端执行，或者在移动服务代码中执行。
     - 请不要在应用程序代码中执行联接
     - 请不要在移动服务代码中执行联接。在使用 JavaScript 后端时，请注意，[table 对象](http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554210.aspx)不处理联接。请务必直接使用 [mssql 对象](http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554212.aspx)，以确保在数据库中执行联接。有关详细信息，请参阅[联接关系表](/documentation/articles/mobile-services-how-to-use-server-scripts/#joins)。如果使用 .NET 后端，并且通过 LINQ 查询，实体框架将在数据库级别自动处理联接。
 - **实现分页。** 查询数据库有时可能会导致大量记录返回到客户端。为了尽可能减少操作的大小和延迟，请考虑实现分页。
@@ -195,7 +195,7 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
 假设您要向所有客户发送推送通知，提醒他们查看应用中的新内容。他们点击该通知时，该应用将启动，这样可能会触发调用您的移动服务，并根据 SQL 数据库执行查询。由于可能会有数百万客户在仅仅几分钟的跨度内执行该操作，将形成 SQL 负载高峰，该峰值大大高于您应用的稳定状态负载。通过在峰值期间将应用扩展到更高版本的 SQL 层，然后再回缩可解决这种问题，但这种解决方法需要手动干预，并且会导致成本上升。通常，细微调整移动服务体系结构可显著平衡访问 SQL 数据库的负载客户端，并消除问题需求峰值。这些调整通常可以轻松执行，而对客户体验的影响可降至最低。下面是一些示例：
 
 - **将负载分散到不同时间。** 如果你对特定事件（例如广播推送通知）的执行时间进行控制，并预期这些事件会产生需求上的高峰，且这些事件的执行时间并不重要，请考虑将其分散到不同时间。在上述示例中，或许你的应用程序客户可以在一天的不同时间分批获取新应用程序内容的通知，而无需在几乎相同的时间获取。请考虑将客户分成允许交错传送到每个批的组。使用通知中心时，应用附加标记以跟踪批，然后将推送通知传送到该标记，这样便可提供实现此策略的简单途径。有关标记的详细信息，请参阅[使用通知中心发送突发新闻](/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news)。
-- **在可能的情况下使用 Blob 和表存储。** 客户在高峰期所查看的内容经常是较为静态的，且不需要存储在 SQL 数据库中，因为你不可能需要对该内容的关系查询功能。在此情况下，请考虑将内容存储在 Blob 或表存储中。你可以直接从设备访问 Blob 存储中的公共 Blob。若要以安全方式访问 Blob 或使用表存储，必须通过移动服务自定义 API 保护存储访问密钥。有关详细信息，请参阅[使用移动服务将图像上载到 Azure 存储空间](/documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-upload-data-blob-storage)。
+- **在可能的情况下使用 Blob 和表存储。** 客户在高峰期所查看的内容经常是较为静态的，且不需要存储在 SQL 数据库中，因为你不可能需要对该内容的关系查询功能。在此情况下，请考虑将内容存储在 Blob 或表存储中。你可以直接从设备访问 Blob 存储中的公共 Blob。若要以安全方式访问 Blob 或使用表存储，必须通过移动服务自定义 API 保护存储访问密钥。有关详细信息，请参阅[使用移动服务将图像上载到 Azure 存储空间](/documentation/articles/mobile-services-dotnet-backend-windows-universal-dotnet-upload-data-blob-storage)。
 - **使用内存中缓存**。另一种方法是将流量峰值期间通常访问的数据存储于内存中缓存，比如 [Azure 缓存](/documentaiton/services/cache/)。这意味着传入的请求能够从内存中提取所需的信息，而不是重复查询数据库。
 
 <a name="Advanced"></a>
@@ -205,7 +205,7 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
 ### 先决条件
 若要执行本部分的诊断任务，你需要访问 SQL 数据库的管理工具，比如 **SQL Server Management Studio** 或内置于 **Azure 经典门户**的管理功能。
 
-SQL Server Management Studio 是一个免费 Windows 应用，可提供最先进的功能。如果你无法访问 Windows 计算机（例如，你使用的是 Mac），请考虑按照[创建运行 Windows Server 的虚拟机](/documentation/articles/virtual-machines-windows-tutorial)中的说明在 Azure 中设置虚拟机，然后远程连接到该虚拟机。如果你使用 VM 的主要目的是运行 SQL Server Management Studio，则一个**基本 A0**（以前称为“超小型”）实例应该够用。
+SQL Server Management Studio 是一个免费 Windows 应用，可提供最先进的功能。如果你无法访问 Windows 计算机（例如，你使用的是 Mac），请考虑按照[创建运行 Windows Server 的虚拟机](/documentation/articles/virtual-machines-windows-hero-tutorial)中的说明在 Azure 中设置虚拟机，然后远程连接到该虚拟机。如果你使用 VM 的主要目的是运行 SQL Server Management Studio，则一个**基本 A0**（以前称为“超小型”）实例应该够用。
 
 Azure 经典门户提供内置管理体验，虽然限制更多，但无需本地安装即可提供。
 
@@ -220,31 +220,31 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 6. 记下“连接到数据库”部分中的服务器地址，例如：*mcml4otbb9.database.windows.net*。
 
 #### SQL Server Management Studio
-1. 导航到[“SQL Server 版本 - Express”](http://www.microsoft.com/zh-cn/server-cloud/products/sql-server-editions/sql-server-express.aspx)
+1. 导航到“[SQL Server 版本 - Express](http://www.microsoft.com/zh-cn/server-cloud/products/sql-server-editions/sql-server-express.aspx)”
 2. 找到“SQL Server Management Studio”部分，然后选择下方的“下载”按钮。
 3. 完成安装步骤，直到成功运行该应用：
 
     ![SQL Server Management Studio][SSMS]
 
 4. 在“连接到服务器”对话框中输入以下值
-    - 服务器名称： *前面获取的服务器地址*
-    - 身份验证： *SQL Server 身份验证*
-    - 登录名： *创建服务器时选择的登录名*
-    - 密码： *创建服务器时选择的密码*
+    - 服务器名称：*前面获取的服务器地址*
+    - 身份验证：*SQL Server 身份验证*
+    - 登录名：*创建服务器时选择的登录名*
+    - 密码：*创建服务器时选择的密码*
 5. 立即连接。
 
 #### SQL 数据库管理门户
 1. 在数据库的“Azure SQL 数据库”选项卡上，选择“管理”按钮 
 2. 输入下列值对连接进行配置
-    - 服务器： *应预设为正确值*
-    - 数据库： *保留空白*
-    - 用户名： *创建服务器时选择的登录名*
-    - 密码： *创建服务器时选择的密码*
+    - 服务器：*应预设为正确值*
+    - 数据库：*保留空白*
+    - 用户名：*创建服务器时选择的登录名*
+    - 密码：*创建服务器时选择的密码*
 3. 立即连接。
 
     ![Azure 经典门户 - SQL 数据库][PortalSqlManagement]
 
-<a name="AdvancedDiagnosing" /></a>
+<a name="AdvancedDiagnosing"/></a>
 ### 高级诊断
 
 许多诊断任务都可直接在 **Azure 经典门户**中轻松完成，但有些高级诊断任务只能通过 **SQL Server Management Studio** 或 **SQL 数据库管理门户**来完成。我们将充分利用动态管理视图，它是一组已自动填充数据库相关诊断信息的视图。本部分将提供一组我们根据这些视图所运行的查询，以检查各种指标。有关详细信息，请参阅[使用动态管理视图监视 SQL 数据库][]。
@@ -264,7 +264,7 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 #### 高级指标
 
 
-如果使用基础层、标准层和高级层，管理门户可随时提供部分指标。无论你使用哪种层，都可以通过 **[sys.resource_stats](http://msdn.microsoft.com/zh-cn/library/dn269979.aspx)** 管理视图轻松获取所有度量值。请考虑下列查询：
+如果使用基础层、标准层和高级层，管理门户可随时提供部分指标。无论你使用哪种层，都可以通过 **[sys.resource\_stats](http://msdn.microsoft.com/zh-cn/library/dn269979.aspx)** 管理视图轻松获取所有度量值。请考虑下列查询：
 
     SELECT TOP 10 * 
     FROM sys.resource_stats 
@@ -288,7 +288,7 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 > [AZURE.NOTE] 
 请在服务器的 **master** 数据库上执行此查询，**sys.event\_log** 视图只会出现在该数据库上。
 
-<a name="AdvancedIndexing" ></a>
+<a name="AdvancedIndexing"></a>
 ### 高级索引
 
 表或视图可能包含以下类型的索引：
@@ -372,7 +372,7 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 
 有关详细信息，请参阅[使用动态管理视图监视 SQL 数据库][] 和[缺失索引动态管理视图][]。
 
-<a name="AdvancedQuery" ></a>
+<a name="AdvancedQuery"></a>
 ### 高级查询设计 
 
 通常难以诊断数据库中开销最大的查询。
@@ -431,6 +431,7 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 - [Code First 数据批注][]
 
 <!-- IMAGES -->
+ 
 [SSMS]: ./media/mobile-services-sql-scale-guidance/1.png
 [PortalSqlManagement]: ./media/mobile-services-sql-scale-guidance/2.png
 [PortalSqlMetrics]: ./media/mobile-services-sql-scale-guidance/3.png
@@ -481,4 +482,4 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 <!-- BLOG LINKS -->
 [键的开销]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0516_2016-->

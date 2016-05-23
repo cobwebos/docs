@@ -1,5 +1,5 @@
 <properties
-	pageTitle="应用程序模型 v2.0 .NET Web 应用 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 .NET Web 应用 | Microsoft Azure"
 	description="如何构建一个 .NET MVC Web 应用，以通过用于登录的 Microsoft 个人帐户和工作或学校帐户调用 Web 服务。"
 	services="active-directory"
 	documentationCenter=".net"
@@ -100,7 +100,7 @@ public void ConfigureAuth(IAppBuilder app)
 ...
 ```
 
-## 3\.在用户登录时使用 ADAL 获取访问令牌
+## 使用 ADAL 获取访问令牌
 在 `AuthorizationCodeReceived` 通知中，我们想要使用[与 OpenID Connect 串联的 OAuth 2.0](/documentation/articles/active-directory-v2-protocols#openid-connect-with-oauth-code-flow)，以兑换待办事项列表服务的访问令牌的 authorization\_code。ADAL 可以简化此过程：
 
 - 首先，安装 ADAL 预览版：
@@ -190,7 +190,7 @@ catch (AdalException ee)
 ## 后续步骤
 
 有关更多资源，请查看：
-- [应用模型 v2.0 预览版 >>](/documentation/articles/active-directory-appmodel-v2-overview)
+- [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
 - [堆栈溢出“adal”标记 >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

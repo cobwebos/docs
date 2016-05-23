@@ -1,10 +1,10 @@
-<properties 
-	pageTitle="将移动服务添加到现有应用 (WP8) | Azure" 
-	description="了解如何使用来自 Azure 移动服务 Windows Phone 8 应用程序的数据。" 
-	services="mobile-services" 
-	documentationCenter="windows" 
-	authors="ggailey777" 
-	manager="dwrede" 
+<properties
+	pageTitle="将移动服务添加到现有应用 (WP8) | Azure"
+	description="了解如何使用来自 Azure 移动服务 Windows Phone 8 应用程序的数据。"
+	services="mobile-services"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="dwrede"
 	editor=""/>
 
 <tags 
@@ -32,11 +32,11 @@
 
 ##<a name="download-app"></a>下载 GetStartedWithData 项目
 
-本教程是在 [GetStartedWithData 应用程序][Developer Code Samples site]的基础上制作的，该应用程序是一个 Windows Phone Silverlight 8 应用程序项目。  
+本教程是在 [GetStartedWithData 应用程序][Developer Code Samples site]的基础上制作的，该应用程序是一个 Windows Phone Silverlight 8 应用程序项目。
 
 1. 从[开发人员代码示例站点]下载 GetStartedWithData 示例应用程序项目。 
 
-	>[AZURE.NOTE]若要创建 Windows Phone Silverlght 8.1 应用程序，只需在下载的 Windows Phone Silverlight 8 应用程序项目中将目标操作系统更改为 Windows Phone 8.1。若要创建 Windows Phone 应用商店应用程序，请下载 GetStartedWithData 示例应用程序项目的 [Windows Phone 应用商店应用程序版本](http://go.microsoft.com/fwlink/p/?LinkId=397372)。 
+	>[AZURE.NOTE]若要创建 Windows Phone Silverlght 8.1 应用程序，只需在下载的 Windows Phone Silverlight 8 应用程序项目中将目标操作系统更改为 Windows Phone 8.1。若要创建 Windows Phone 应用商店应用程序，请下载 GetStartedWithData 示例应用程序项目的 [Windows Phone 应用商店应用程序版本](http://go.microsoft.com/fwlink/p/?LinkId=397372)。
 
 2. 在 Visual Studio 中打开下载的项目，然后检查 MainPage.xaml.cs 文件。
 
@@ -159,13 +159,13 @@
 
 本教程演示了有关如何使 Windows Phone 8 应用程序处理移动服务中的数据的基础知识。建议你接下来阅读下列其他主题之一：
 
-* [向应用程序添加身份验证](/documentation/articles/mobile-services-windows-phone-get-started-users) 
+* [向应用程序添加身份验证](/documentation/articles/mobile-services-windows-phone-get-started-users)
   <br/>了解如何对应用程序用户进行身份验证。
 
-* [向应用程序添加推送通知](/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push) 
+* [向应用程序添加推送通知](/documentation/articles/mobile-services-javascript-backend-windows-phone-get-started-push)
   <br/>了解如何使用移动服务将非常基本的推送通知发送到应用程序。
  
-* [移动服务 C# 操作方法概念性参考 ](/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library)
+* [移动服务 C# 操作方法概念性参考 ](/documentation/articles/mobile-services-dotnet-how-to-use-client-library)
   <br/>了解有关如何将移动服务与 .NET 一起使用的详细信息。
  
 <!-- Anchors. -->
@@ -174,7 +174,7 @@
 [Add a data table for storage]: #add-table
 [Update the app to use Mobile Services]: #update-app
 [Test the app against Mobile Services]: #test-app
-[Next Steps]:#next-steps
+[Next Steps]: #next-steps
 
 <!-- Images. -->
 [0]: ./media/mobile-services-windows-phone-get-started-data/mobile-quickstart-startup-wp8.png
@@ -187,8 +187,7 @@
 [Azure 经典门户]: https://manage.windowsazure.cn/
 [Windows Phone 8 SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268374
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/p/?LinkID=268375
-[Developer Code Samples site]:  http://go.microsoft.com/fwlink/p/?LinkId=271146
+[Developer Code Samples site]: http://go.microsoft.com/fwlink/p/?LinkId=271146
 [开发人员代码示例站点]: http://go.microsoft.com/fwlink/p/?LinkId=271146
  
-
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0516_2016-->

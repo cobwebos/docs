@@ -75,6 +75,5 @@ OAuth 2.0 和 OpenID Connect 的 v2.0 实现广泛使用了持有者令牌，包
 - 使用 OAuth 2.0 代理流在 Web API 中获取令牌（敬请期待）
 
 <!-- - Get tokens using a username & password with the OAuth 2.0 Resource Owner Password Credentials Flow (coming soon) --> 
-<!-- [Call the Azure AD Graph API using the OAuth 2.0 Client Credentials Flow](active-directory-reference-graph.md) -->
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

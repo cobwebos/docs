@@ -1,5 +1,5 @@
 <properties
-	pageTitle="应用模型 v2.0 iOS 应用 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 iOS 应用 | Microsoft Azure"
 	description="如何构建一个使用个人 Microsoft 帐户和工作或学校帐户来登录用户的 iOS 应用。"
 	services="active-directory"
 	documentationCenter=""
@@ -19,4 +19,4 @@
 > [AZURE.NOTE]
 	v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

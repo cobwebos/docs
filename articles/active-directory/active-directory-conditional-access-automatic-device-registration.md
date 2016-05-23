@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="08/14/2015"
+	ms.date="03/07/2016"
 	wacn.date=""/>
 
 # 将已加入 Windows 域的设备自动注册到 Azure Active Directory
@@ -34,29 +34,30 @@
 
         c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"]
         => issue(claim = c);
-    
+
 8. 单击“确定”两次以完成对话框中的操作。
 
 配置其他 Azure Active Directory 信赖方信任身份验证类引用
 -----------------------------------------------------------------------------------------------------
-9. 在联合服务器上，打开 Windows PowerShell 命令窗口并键入：
+在联合服务器上，打开 Windows PowerShell 命令窗口并键入：
 
 
   `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
-   
+
 其中，<RPObjectName> 是 Azure Active Directory 信赖方信任对象的信赖方对象名称。此对象通常命名为 Microsoft Office 365 标识平台。
 
 AD FS 全局身份验证策略
 -----------------------------------------------------------------------------
-1. 配置 AD FS 全局主要身份验证策略以允许 Intranet 使用 Windows 集成身份验证（这是默认设置）。
+配置 AD FS 全局主要身份验证策略以允许 Intranet 使用 Windows 集成身份验证（这是默认设置）。
 
 
 Internet Explorer 配置
 ------------------------------------------------------------------------------
-1. 在 Windows 设备的 Internet Explorer 中，为“本地 Intranet”安全区域配置以下设置：
-    * 只存在一个证书时不提示进行客户端证书选择：**已启用**
-    * 允许脚本：**已启用**
-    * 只在 Intranet 区域自动登录：**已选中**
+在 Windows 设备的 Internet Explorer 中，为“本地 Intranet”安全区域配置以下设置：
+
+- 只存在一个证书时不提示进行客户端证书选择：**已启用**
+- 允许脚本：**已启用**
+- 只在 Intranet 区域自动登录：**已选中**
 
 这些是 Internet Explorer“本地 Intranet”安全区域的默认设置。你可以通过导航到“Internet 选项”>“安全”>“本地 Intranet”>“自定义级别”来查看或管理这些设置。你也可以使用 Active Directory 组策略配置这些设置。
 
@@ -64,13 +65,25 @@ Internet Explorer 配置
 -------------------------------------------------------------
 加入域的 Windows 设备必须已连接到 AD FS 和 Active Directory 域控制器，才能自动向 Azure AD 注册。这通常意味着计算机必须已连接到企业网络。连接方式包括有线连接、Wi-Fi 连接、DirectAccess 或 VPN。
 
-## 为加入 Windows 7 和 Windows 8.1 域的设备配置自动设备注册
+## 配置 Azure Active Directory 设备注册发现
+Windows 7 和 Windows 8.1 设备将通过组合使用用户帐户名称和已知的设备注册服务器名称来发现设备注册服务器。必须创建一条 DNS CNAME 记录，该记录指向与你的 Azure Active Directory 设备注册服务关联的 A 记录。该 CNAME 记录必须使用已知的前缀 **enterpriseregistration**，后接组织中的用户帐户使用的 UPN 后缀。如果你的组织使用了多个 UPN 后缀，则必须在 DNS 中创建多条 CNAME 记录。
+
+例如，如果你在组织中使用名为 @contoso.com 和 @region.contoso.com 的两个 UPN 后缀，则需创建以下 DNS 记录。
+
+| 条目 | 类型 | 地址 |
+|-------------------------------------------|-------|------------------------------------|
+| enterpriseregistration.contoso.com | CNAME | enterpriseregistration.windows.net |
+| enterpriseregistration.region.contoso.com | CNAME | enterpriseregistration.windows.net |
+
+##为加入 Windows 7 和 Windows 8.1 域的设备配置自动设备注册
 
 使用以下链接为加入 Windows 7 和 Windows 8.1 域的设备配置自动设备注册。继续下一步之前，请确保满足上述先决条件。
 
-* [为加入 Windows 8.1 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows8_1.md)
+* [为加入 Windows 8.1 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
 
 * [为加入 Windows 7 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows7.md)
+
+* [将已加入域的 Windows 10 设备自动注册到 Azure Active Directory](active-directory-azureadjoin-devices-group-policy.md)
 
 附加说明
 --------------------------------------------------------------------
@@ -79,6 +92,13 @@ Internet Explorer 配置
 
 如果公司使用移动设备和传统设备，或使用 Office365、Azure AD 或其他 Microsoft 服务，则应该使用 Azure AD 设备注册服务在 Azure AD 中注册设备。如果公司不使用移动设备，也不使用任何 Microsoft 服务（例如 Office365、Azure AD 或 Microsoft Intune），而只是托管本地应用程序，则可以选择使用 AD FS 在 Active Directory 中注册设备。
 
-可以在[此处](https://technet.microsoft.com/zh-CN/library/dn486831.aspx)详细了解如何使用 AD FS 部署设备注册。
+可以在[此处](https://technet.microsoft.com/library/dn486831.aspx)详细了解如何使用 AD FS 部署设备注册。
 
-<!---HONumber=79-->
+## 其他主题
+
+- [Azure Active Directory 设备注册概述](active-directory-conditional-access-device-registration-overview.md)
+- [为加入 Windows 7 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows7.md)
+- [为加入 Windows 8.1 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
+- [将已加入域的 Windows 10 设备自动注册到 Azure Active Directory](active-directory-azureadjoin-devices-group-policy.md)
+
+<!---HONumber=Mooncake_0516_2016-->

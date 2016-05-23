@@ -1,15 +1,12 @@
 <properties 
-   pageTitle="在 Visual Studio 中使用连接服务添加 Azure Active Directory"
+   pageTitle="在 Visual Studio 中使用连接服务添加 Azure Active Directory | Azure"
    description="使用 Visual Studio 中“添加连接的服务”对话框添加 Azure Active Directory"
    services="visual-studio-online"
-   documentationCenter="n/a"
-   authors="patshea123"
+   documentationCenter="na"
+   authors="TomArcher"
    manager="douge"
-   editor="tlee" />
-<tags  
-ms.service="visual-studio-online"" 
-ms.date="08/12/2015" 
-wacn.date=""/>
+   editor="" />
+<tags  ms.service="visual-studio-online"" ms.date="04/18/2016" wacn.date="" />
 
 # 在 Visual Studio 中使用连接服务添加 Azure Active Directory 
 
@@ -51,9 +48,7 @@ wacn.date=""/>
 
 1. 单击“完成”按钮。对话框将添加必要的配置代码和引用，以便为 Azure AD 身份验证启用项目。您可以在 Azure 门户上看到 AD 域。
 
-    ![在 Azure 管理门户中查找域](./media/vs-azure-tools-connected-services-add-active-directory/IC765882.png)
-
-1. 查看浏览器中显示的“入门”页可了解有关后续步骤的内容，查看“发生了什么”页可查看您的项目的修改情况。如果您想要查看状态是否正常，请打开其中一个修改过的配置文件，并验证“发生了什么”中提到的设置确实存在。例如，ASP.NET MVC 项目中的主 web.config 会添加这些设置：
+1. 查看浏览器中显示的“入门”页以了解后续步骤，查看“发生了什么情况”页以了解如何修改了你的项目。如果想要检查一切是否正常运作，请打开已修改的配置文件之一并验证其中是否存在“发生了什么情况”中提及的设置。例如，ASP.NET MVC 项目中的主 web.config 会添加这些设置：
 
         <appSettings> 
             <add key="ida:ClientId" value="ClientId from the new Azure AD App" />
@@ -73,8 +68,9 @@ wacn.date=""/>
 
  - [MSDN 论坛：Azure AD](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)
 
- - [Azure AD 文档](http://azure.microsoft.com/documentation/services/active-directory/)
+ - [Azure AD 文档](/documentation/services/active-directory/)
 
  - [博客文章：Azure AD 简介](http://blogs.msdn.com/b/brunoterkaly/archive/2014/03/03/introduction-to-windows-azure-active-directory.aspx)
 
-<!---HONumber=71-->
+
+<!---HONumber=Mooncake_0516_2016-->

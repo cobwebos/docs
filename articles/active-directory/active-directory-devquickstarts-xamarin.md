@@ -9,16 +9,17 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="07/17/2015"
+	ms.date="01/21/2016"
 	wacn.date=""/>
 
 
 # 将 Azure AD 集成到 Xamarin 应用程序中
 
-[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../../includes/active-directory-devquickstarts-switcher)]
-[AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide)]
+[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../includes/active-directory-devquickstarts-switcher.md)]
 
-Xamarin 允许你以 C# 语言编写可在多种不同的平台（包括移动设备和电脑等平台）上运行的应用程序。如果你要使用 Xamarin 生成应用程序，Azure AD 可让你简单直接地使用用户的 Active Directory 帐户对其进行身份验证。它还可以让应用程序安全地使用 Azure AD 保护的任何 Web API，例如 Office 365 API 或 Azure API。
+[AZURE.INCLUDE [active-directory-devguide](../includes/active-directory-devguide.md)]
+
+Xamarin 允许你使用 C# 编写可在 iOS、Android 和 Windows（移动设备和电脑）上运行的移动应用。如果你要使用 Xamarin 生成应用程序，Azure AD 可让你简单直接地使用用户的 Active Directory 帐户对其进行身份验证。它还可以让应用程序安全地使用 Azure AD 保护的任何 Web API，例如 Office 365 API 或 Azure API。
 
 对于需要访问受保护资源的 Xamarin 应用程序，Azure AD 提供 Active Directory 身份验证库 (ADAL)。在本质上，ADAL 的唯一用途就是方便应用程序获取访问令牌。为了演示操作的简单性，下面我们要生成一个“目录搜索器”应用程序，该应用程序可以：
 
@@ -36,17 +37,9 @@ Xamarin 允许你以 C# 语言编写可在多种不同的平台（包括移动�
 若要开始，请[下载框架项目](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)。每个下载项目都是 Visual Studio 2013 解决方案。你还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。如果你还没有租户，请[了解如何获取租户](active-directory-howto-tenant)。
 
 ## 0.设置 Xamarin 开发环境
-你可以根据所需的具体平台，使用多种不同的方法设置 Xamarin。本教程包含适用于 iOS、Android 和 Windows 的项目，因此，我们将选择使用 Visual Studio 2013 和 [Xamarin.iOS 生成主机](http://developer.xamarin.com/guides/ios/getting_started/installation/windows/)，这将需要：
-- 一台可运行 Visual Studio 和 Windows 应用的 Windows 计算机
-- 一台 OSX 计算机（如果你希望能够运行 iOS 应用）
-- Xamarin 企业订阅（[免费试用版](http://developer.xamarin.com/guides/cross-platform/getting_started/beginning_a_xamarin_trial/)就已足够）
-- [Xamarin for Windows](https://xamarin.com/download)，其中包括 Xamarin.iOS、Xamarin.Android，以及 Visual Studio 集成（建议在此示例中使用）。
-- [Xamarin for OSX](https://xamarin.com/download)，其中包括 Xamarin.iOS（以及 Xamarin.iOS 生成主机）、Xamarin.Android、Xamarin.Mac 和 Xamarin Studio。
-
-建议你从 [Xamarin 下载页](https://xamarin.com/download)入手，并在 Mac 和 PC 上安装 Xamarin。如果你无法提供这两台计算机，仍可以运行本示例，不过，必须省略某些项目。请遵照针对 iOS 和 Android 的[详细安装指南](http://developer.xamarin.com/guides/cross-platform/getting_started/installation/)。如果你想要详细了解可用于开发的选项，请查看[生成跨平台应用程序](http://developer.xamarin.com/guides/cross-platform/application_fundamentals/building_cross_platform_applications/part_1_-_understanding_the_xamarin_mobile_platform/)指南。暂时不需要设置用于开发的设备，也不需要 Apple 开发人员计划订阅（当然，除非你要在设备上运行 iOS 应用程序）。
+因为本教程包含 iOS、Android 和 Windows 项目，所以你需要 Visual Studio 和 Xamarin。若要创建必要的环境，请遵循 MSDN 上 [Visual Studio 和 Xamarin 的设置和安装](https://msdn.microsoft.com/library/mt613162.aspx)中的完整说明。这些说明包含的材料可供你在等待安装程序完成时查看，以深入了解 Xamarin。
 
 完成必要的设置后，在 Visual Studio 中打开解决方案以开始操作。你会看到六个项目：五个特定于平台的项目，一个要在所有平台之间共享的可移植类库，即 `DirectorySearcher.cs`
-
 
 ## 1.注册目录搜索器应用程序
 若要让应用程序获取令牌，首先需要在 Azure AD 租户中注册该应用程序，并授予它访问 Azure AD Graph API 的权限：
@@ -97,7 +90,7 @@ PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName
     - `returnUri` 是你在门户中输入的 redirectUri，例如 `http://DirectorySearcher`。
 
 ## 3.使用 ADAL 从 Azure AD 获取令牌
-*几乎*所有的应用程序身份验证逻辑都在 `DirectorySearcher.SearchByAlias(...)` 中。在特定于平台的项目中，所要做的一切就是将上下文参数传递到 `DirectorySearcher` PCL。
+几乎所有的应用程序身份验证逻辑都在 `DirectorySearcher.SearchByAlias(...)` 中。在特定于平台的项目中，所要做的一切就是将上下文参数传递到 `DirectorySearcher` PCL。
 
 - 首先打开 `DirectorySearcher.cs`，然后将一个新参数添加到 `SearchByAlias(...)` 方法。`IPlatformParameters` 是上下文参数，用于封装 ADAL 需要对其执行身份验证的特定于平台的对象。
 
@@ -150,8 +143,7 @@ protected override void OnActivityResult(int requestCode, Result resultCode, Int
 ...
 ```
 
-####Windows 桌面：  
-
+####Windows 桌面：
 - 在 `MainWindow.xaml.cs` 中，只需调用 `SearchByAlias(...)`，并在桌面的 `PlatformParameters` 对象中传递 `WindowInteropHelper`：
 
 ```C#
@@ -160,18 +152,16 @@ List<User> results = await DirectorySearcher.SearchByAlias(
   new PlatformParameters(PromptBehavior.Auto, this.Handle));
 ```
 
-####iOS：  
-
+####iOS：
 - 在 `DirSearchClient_iOSViewController.cs` 中，iOS `PlatformParameters` 对象只会引用视图控制器：
 
 ```C#
-		List<User> results = await DirectorySearcher.SearchByAlias(  
+List<User> results = await DirectorySearcher.SearchByAlias(
   SearchTermText.Text,
   new PlatformParameters(PromptBehavior.Auto, this.Handle));
 ```
 
-####Windows 应用商店  
-
+####Windows 应用商店
 - 在 Windows 应用商店中，打开 `MainPage.xaml.cs` 并实现 `Search` 方法，该方法会根据需要，使用共享项目中的帮助器方法来更新 UI。
 
 ```C#
@@ -183,8 +173,7 @@ await UnivDirectoryHelper.Search(
   new PlatformParameters(PromptBehavior.Auto, false));
 ```
 
-####Windows Phone  
-
+####Windows Phone
 - 在 Windows Phone 中，打开 `MainPage.xaml.cs` 并实现 `Search` 方法，该方法会使用共享项目中的同一个帮助器方法来更新 UI。
 
 ```C#
@@ -198,13 +187,13 @@ await UnivDirectoryHelper.Search(
 
 祝贺你！ 现在，你已创建一个有效的 Xamarin 应用程序，它可以对用户进行身份验证，并使用 OAuth 2.0 在五个不同的平台上安全调用 Web API。如果你尚未这样做，可以在租户中填充一些用户。运行你的 DirectorySearcher 应用程序，并使用这些用户之一进行登录。根据用户的 UPN 搜索其他用户。
 
-使用 ADAL 可以方便地将常见标识功能合并到应用程序中。它会负责所有的繁琐工作 - 缓存管理、OAuth 协议支持、向用户显示登录名 UI、刷新已过期的令牌，等等。你只需要真正了解一个 API 调用，即 `authContext.AcquireToken*(…)`。
+使用 ADAL 可以方便地将常见标识功能合并到应用中。它会负责所有的繁琐工作 - 缓存管理、OAuth 协议支持、向用户显示登录名 UI、刷新已过期的令牌，等等。你只需要真正了解一个 API 调用，即 `authContext.AcquireToken*(…)`。
 
 [此处](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip)提供了已完成示例（无需配置值）供你参考。现在，你可以转到其他标识方案。你可能想要尝试：
 
-[使用 Azure AD 保护 .NET Web API >>](active-directory-devquickstarts-webapi-dotnet)
+[使用 Azure AD 保护 .NET Web API >>](/documentation/articles/active-directory-devquickstarts-webapi-dotnet)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources)]
 
  
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

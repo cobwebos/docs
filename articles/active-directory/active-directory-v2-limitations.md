@@ -1,6 +1,6 @@
 <properties
-	pageTitle="应用模型 v2.0 的限制和局限性 | Microsoft Azure"
-	description="Azure AD v2.0 应用模型的限制和局限性列表。"
+	pageTitle="v2.0 终结点的限制和局限性 | Microsoft Azure"
+	description="Azure AD v2.0 终结点的限制和局限性列表。"
 	services="active-directory"
 	documentationCenter=""
 	authors="dstrockis"
@@ -57,7 +57,7 @@ v2.0 终结点目前不支持此流，也就是说，应用只能在发生交互
 v2.0 终结点目前支持登录所有已在新应用程序注册门户中注册的应用，前提是该应用已在[支持的身份验证流](active-directory-v2-flows.md)列表中列出。但是，这些应用只能获取 OAuth 2.0 访问令牌来访问非常有限的资源集。v2.0 终结点只为以下项目颁发 access\_token：
 
 - 请求令牌的应用。如果逻辑应用包含多个不同的组件或层，则应用可为自身获取 access\_token。若要查看此方案的工作方式，请参阅[入门](active-directory-appmodel-v2-overview.md#getting-started)教程。
-- Outlook 邮件、日历和联系人 REST API，全都位于 https://outlook.office.com 。若要了解如何编写访问这些 API 的应用，请参阅 [Office Getting Started](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)（Office 入门）教程。
+- Outlook 邮件、日历和联系人 REST API，全都位于 https://outlook.office.com。 若要了解如何编写访问这些 API 的应用，请参阅 [Office Getting Started（Office 入门）](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)教程。
 - Microsoft 图形 API。若要了解 Microsoft Graph 和可用的所有数据，请访问 [https://graph.microsoft.io](https://graph.microsoft.io)。
 
 目前不支持其他服务。将来会添加更多的 Microsoft Online 服务，并支持自定义构建的 Web API 和服务。
@@ -93,4 +93,4 @@ Azure Active Directory 服务提供一组开发人员功能（v2.0 终结点尚�
 - Azure AD 用户的组声明
 - 应用程序角色和角色声明
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

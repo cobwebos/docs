@@ -1,20 +1,18 @@
 <properties
-   pageTitle="使用 Azure Active Directory 管理应用程序 | Microsoft Azure"
-   description="本文介绍将 Azure Active Directory 与本地、云和 SaaS 应用程序集成的好处。"
-   services="active-directory"
-   documentationCenter=""
-   authors="ihenkel"
-   manager="stevenpo"
-   editor=""/>
+    pageTitle="使用 Azure Active Directory 管理应用程序 | Microsoft Azure"
+    description="本文介绍将 Azure Active Directory 与本地、云和 SaaS 应用程序集成的好处。"
+    services="active-directory"
+    documentationCenter=""
+    authors="markusvi"
+    manager="stevenpo"
+    editor=""/>
 
    <tags
       ms.service="active-directory"
-      ms.date="10/16/2015"
+      ms.date="02/16/2016"
       wacn.date=""/>
 
 # 使用 Azure Active Directory (AD) 管理应用程序
-
-## 概述
 
 除了实际工作流或内容以外，企业对所有应用程序还会提出两个基本要求：
 
@@ -26,17 +24,17 @@
 
 在计算术语中：
 
-- “谁”称为“标识”- 由用户和组构成的数据存储区
+- 谁称为标识 — 用于管理用户和组
 
-- “什么”称为“访问管理”- 对受保护资源的访问权限的管理
+- 什么称为访问管理 — 用于管理对受保护资源的访问权限
 
-这两个组成部分统称为“标识和访问管理 (IAM)”，[Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) 小组将其定义为“允许适当的人员在适当的时间出于适当的理由访问适当的资源的安全原则”。
+这两个组成部分统称为标识和访问管理 (IAM)，[Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) 小组将其定义为“允许适当的人员在适当的时间出于适当的理由访问适当的资源的安全策略”。
 
-那么，这有什么问题呢？ 如果*不*使用一个集中式解决方案在一个位置管理 IAM：
+那么，这有什么问题呢？ 如果不使用一个集中式解决方案在一个位置管理 IAM：
 
 - 标识管理员必须单独在所有应用程序中逐个创建和更新用户帐户，这是一个繁琐而耗时的活动。
 
-- 用户必须记住多个凭据才能访问他们需要使用的应用程序，尤其是出于安全原因，建议他们不要对每个应用程序使用相同的密码时。因此，用户往往会写下其密码或使用其他密码管理解决方案，这又带来了其他数据安全风险。
+- 用户必须记住多个凭据，才能访问他们需要使用的应用程序。因此，用户往往会写下其密码或使用其他密码管理解决方案，这又带来了其他数据安全风险。
 
 - 繁琐而耗时的活动减少了用户和管理员在可增加业务收益的业务活动上投入的时间。
 
@@ -48,15 +46,25 @@
 
 - 安全和监视工具需要额外的定制和集成才能实现全面的 E2E 方案。
 
-## 将 Azure Active Directory (AD) 与应用程序集成
+## 将 Azure Active Directory 与应用程序集成
 
-Azure Active Directory (AD) 是 Microsoft 的综合性标识即服务 (IDaaS) 解决方案，它支持将 IAM 用作云服务，提供内置的访问管理、单一登录 (SSO) 和报告，并[预先集成了数千个应用程序](https://azure.microsoft.com/marketplace/active-directory/)，包括 Salesforce、Google Apps、Box、Concur，等等。借助 Azure AD，你为合作伙伴与客户（企业或消费者）发布的应用程序将具有相同的标识和访问管理功能，使你能够专注于核心业务。
+Azure Active Directory 是 Microsoft 的综合性标识即服务 (IDaaS) 解决方案，它可以：
 
-Azure AD 的价值“不只是”体现在云应用程序方面。你还可以将它与本地应用程序配合使用，提供安全远程访问，避免使用 VPN 或其他传统的远程访问管理系统。
+- 启用 IAM 作为云服务 
+
+- 提供中心访问管理、单一登录 (SSO) 及报告功能
+
+- 支持应用程序库中[数千个应用程序](https://azure.microsoft.com/marketplace/active-directory/)（包括 Salesforce、Google Apps、Box、Concur 等）的集成访问管理。
+
+
+借助 Azure Active Directory，你为合作伙伴与客户（企业或消费者）发布的所有应用程序都具有相同的标识和访问管理功能。<br> 
+这可让你大幅降低运营成本。
 
 如果需要实施未在应用程序库中列出的应用程序怎么办？ 尽管这比为应用程序库中的应用程序配置 SSO 更加耗时，但 Azure AD 提供的向导可以帮助你完成配置。
 
-Azure AD 为所有应用程序提供中心访问管理和单一登录 (SSO)，可以解决数据安全和工作效率问题。
+Azure AD 的价值“不只是”体现在云应用程序方面。你也可以通过提供安全的远程访问，将它与本地应用程序搭配使用。有了安全的远程访问，你就不再需要 VPN 或其他传统的远程访问管理实施。
+
+Azure AD 为所有应用程序提供中心访问管理和单一登录 (SSO)，可以解决主要数据安全和工作效率问题。
 
 - 用户只需登录一次就能访问多个应用程序，从而腾出更多的时间来增加收入或者完成业务运营活动。
 
@@ -120,4 +128,8 @@ Azure AD 提供预先集成的报告和监控功能，使你能够知道谁有�
 
 若要开始将应用程序与 Azure AD 集成，请参阅[将 Azure Active Directory 与应用程序集成入门指南](active-directory-integrating-applications-getting-started.md)。
 
-<!---HONumber=Mooncake_0418_2016-->
+## 另请参阅
+
+[有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
+
+<!---HONumber=Mooncake_0516_2016-->

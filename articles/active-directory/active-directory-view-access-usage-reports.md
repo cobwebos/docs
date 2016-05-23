@@ -5,7 +5,7 @@
 	documentationCenter=""
 	authors="dhanyahk"
 	manager="stevenpo"
-	editor="LisaToft"/>
+	editor=""/>
 
 <tags 
 	ms.service="active-directory" 
@@ -14,7 +14,7 @@
 
 # 查看访问和使用情况报告
 
-本文档是 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)的一部分。
+“本文档是 [Azure Active Directory 报告指南](active-directory-reporting-guide.md)的一部分。”
 
 你可以使用 Azure Active Directory 的访问和使用情况报告来监控你所在组织的目录的完整性和安全性。使用此信息，目录管理员可以更好地确定哪里可能存在安全风险，以便制定相应的计划来降低风险。
 
@@ -165,7 +165,7 @@
 | :-------------     | :-------        |
 | 当你要查看目录中所有 SaaS 应用程序的使用情况时，可使用此报告。此报告基于用户在访问面板中单击应用程序的次数。 | “目录”>“报告”选项卡 |
 
-此报告包含目录有权访问的所有应用程序（包括预先集成的 Microsoft 应用程序）的登录。
+此报告包含目录有权访问的_所有_应用程序（包括预先集成的 Microsoft 应用程序）的登录。
 
 预先集成的 Microsoft 应用程序包括 Office 365、Sharepoint、Azure 管理门户，等等。
 
@@ -281,4 +281,4 @@
 <!--- [Getting started with Azure Active Directory Premium](active-directory-get-started-premium.md)-->
 - [向“登录”和“访问面板”页添加公司品牌](active-directory-add-company-branding)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

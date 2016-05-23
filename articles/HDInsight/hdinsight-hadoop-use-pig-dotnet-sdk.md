@@ -12,7 +12,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="02/05/2016"
+	ms.date="04/06/2016"
 	wacn.date=""/>
 
 #使用 HDInsight 中的 .NET SDK for Hadoop 运行 Pig 作业
@@ -31,23 +31,16 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 若要完成本文中的步骤，你将需要：
 
-* Azure HDInsight（HDInsight 上的 Hadoop）群集（基于 Windows 或 Linux）
+
+* Azure HDInsight（HDInsight 上的 Hadoop）群集 (Windows)
 
 * Visual Studio 2012、2013 或 2015
-
-##<a id="certificate"></a>创建管理证书
-
-若要在 Azure HDInsight 上对应用程序进行身份验证，你必须创建自签名证书，将它安装在开发工作站上，同时将它上载到你的 Azure 订阅。
-
-有关如何执行此操作的说明，请参阅[创建自签名证书](/documentation/articles/hdinsight-administer-use-management-portal-v1/#cert)。
-
-> [AZURE.NOTE] 创建证书时，请务必记下使用的友好名称供以后使用。
 
 ##<a id="subscriptionid"></a>查找你的订阅 ID
 
 每个 Azure 订阅都是以 GUID 值（称为订阅 ID）标识的。请使用以下步骤来查找此值。
 
-1. 访问 [Azure 管理门户][preview-portal]。
+1. 访问 [Azure 门户][preview-portal]。
 
 2. 从门户左侧的栏中，选择“浏览全部”，然后从“浏览”边栏选项卡中选择“订阅”。
 
@@ -56,6 +49,10 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 保存该订阅 ID，因为稍后你要用到它。
 
 ##<a id="create"></a>创建应用程序
+
+HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsight 群集的操作。
+
+下面的示例使用用户交互式身份验证。若要使用非交互身份验证，请参阅[创建非交互式身份验证 .NET HDInsight 应用程序](/documentation/articles/hdinsight-create-non-interactive-authentication-dotnet-applications)。
 
 1. 打开 Visual Studio 2012 或 2013
 2. 在“文件”菜单中，选择“新建”，然后选择“项目”。
@@ -83,44 +80,84 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 5. 从“工具”菜单中选择“库包管理器”或“Nuget 包管理器”，然后选择“包管理器控制台”。
 6. 在控制台中运行以下命令，以安装 .NET SDK 包。
 
+        	Install-Package Microsoft.Azure.Common.Authentication -Pre
+        	Install-Package Microsoft.Azure.Management.HDInsight -Pre
 		Install-Package Microsoft.Azure.Management.HDInsight.Job -Pre
 
 7. 在“解决方案资源管理器”中，双击 **Program.cs** 将其打开。将现有代码替换为以下内容。
 
         using System;
+        using System.Collections.Generic;
+        using System.Security;
+        using System.Threading;
+        using Microsoft.Azure;
+        using Microsoft.Azure.Common.Authentication;
+        using Microsoft.Azure.Common.Authentication.Factories;
+        using Microsoft.Azure.Common.Authentication.Models;
+        using Microsoft.Azure.Management.HDInsight;
         using Microsoft.Azure.Management.HDInsight.Job;
         using Microsoft.Azure.Management.HDInsight.Job.Models;
         using Hyak.Common;
         
-        namespace HDInsightSubmitPigJobsDotNet
+        namespace SubmitHDInsightJobDotNet
         {
             class Program
             {
+                private static HDInsightManagementClient _hdiManagementClient;
+                private static HDInsightJobManagementClient _hdiJobManagementClient;
+                private static Guid SubscriptionId = new Guid("<Your Subscription ID>");
+                private const string ExistingClusterName = "<Your HDInsight Cluster Name>";
+                private const string ExistingClusterUri = ExistingClusterName + ".azurehdinsight.cn";
+                private const string ExistingClusterUsername = "<Cluster Username>";
+                private const string ExistingClusterPassword = "<Cluster User Password>";
+                private const string DefaultStorageAccountName = "<Default Storage Account Name>";
+                private const string DefaultStorageAccountKey = "<Default Storage Account Key>";
+                private const string DefaultStorageContainerName = "<Default Blob Container Name>";
                 static void Main(string[] args)
                 {
-                    var ExistingClusterName = "<HDInsightClusterName>";
-                    var ExistingClusterUri = ExistingClusterName + ".azurehdinsight.cn";
-                    var ExistingClusterUsername = "<HDInsightClusterHttpUsername>";
-                    var ExistingClusterPassword = "<HDInsightClusterHttpUserPassword>";
-        
-                    // The Pig Latin statements to run
-                    string queryString = "LOGS = LOAD 'wasb:///example/data/sample.log';" +
-                        "LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;" +
-                        "FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;" +
-                        "GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;" +
-                        "FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;" +
-                        "RESULT = order FREQUENCIES by COUNT desc;" +
-                        "DUMP RESULT;";
+                    System.Console.WriteLine("The application is running ...");
+                    var tokenCreds = GetTokenCloudCredentials();
+                    var subCloudCredentials = GetSubscriptionCloudCredentials(tokenCreds, SubscriptionId);
+                    _hdiManagementClient = new HDInsightManagementClient(subCloudCredentials);
+
         
         
-                    HDInsightJobManagementClient _hdiJobManagementClient;
+        
                     var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
                     _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
         
-                    // Define the Pig job
-                    var parameters = new PigJobSubmissionParameters()
+
+                    SubmitPigJob();
+                    System.Console.WriteLine("Press ENTER to continue ...");
+                    System.Console.ReadLine();
+                }
+                public static TokenCloudCredentials GetTokenCloudCredentials(string username = null, SecureString password = null)
+                {
+                    var authFactory = new AuthenticationFactory();
+                    var account = new AzureAccount { Type = AzureAccount.AccountType.User };
+                    if (username != null && password != null)
+                        account.Id = username;
+                    var env = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
+                    var accessToken =
+                        authFactory.Authenticate(account, env, AuthenticationFactory.CommonAdTenant, password, ShowDialog.Auto)
+                            .AccessToken;
+                    return new TokenCloudCredentials(accessToken);
+                }
+                public static SubscriptionCloudCredentials GetSubscriptionCloudCredentials(TokenCloudCredentials creds, Guid subId)
+                {
+                    return new TokenCloudCredentials(subId.ToString(), creds.Token);
+                }
+                private static void SubmitPigJob()
+                {
+                    var parameters = new PigJobSubmissionParameters
                     {
-                        Query = queryString,
+                        Query = @"LOGS = LOAD 'wasb:///example/data/sample.log';
+                            LEVELS = foreach LOGS generate REGEX_EXTRACT($0, '(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)', 1)  as LOGLEVEL;
+                            FILTEREDLEVELS = FILTER LEVELS by LOGLEVEL is not null;
+                            GROUPEDLEVELS = GROUP FILTEREDLEVELS by LOGLEVEL;
+                            FREQUENCIES = foreach GROUPEDLEVELS generate group as LOGLEVEL, COUNT(FILTEREDLEVELS.LOGLEVEL) as COUNT;
+                            RESULT = order FREQUENCIES by COUNT desc;
+                            DUMP RESULT;"
                     };
         
                     System.Console.WriteLine("Submitting the Pig job to the cluster...");
@@ -129,8 +166,6 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
                     System.Console.WriteLine("Response status code is " + response.StatusCode);
                     System.Console.WriteLine("Validating the response object...");
                     System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
-                    Console.WriteLine("Press ENTER to continue ...");
-                    Console.ReadLine();
                 }
             }
         }
@@ -153,5 +188,6 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 * [将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive)
 
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce)
-[preview-portal]: https://manage.windowsazure.cn/
-<!---HONumber=Mooncake_0405_2016-->
+[preview-portal]: https://portal.azure.cn/
+
+<!---HONumber=Mooncake_0516_2016-->

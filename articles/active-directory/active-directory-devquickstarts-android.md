@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="10/13/2015"
+	ms.date="03/18/2016"
 	wacn.date=""/>
 
 # 将 Azure AD 集成到 Android 应用程序中
@@ -40,13 +40,13 @@
 
 **我正在执行什么操作？**
 
-*Microsoft Active Directory 支持添加两种类型的应用程序。Web API，向访问这些 Web API 的用户和应用程序（在 Web 上或者设备中运行的应用程序上）提供服务。在此步骤中，你将注册你在本地运行的用于测试此示例的 Web API。通常，此 Web API 是一个 REST 服务，它提供应用程序需要访问的功能。Microsoft Azure Active Directory 可以保护任何终结点！*
+Microsoft Active Directory 支持添加两种类型的应用程序。Web API，用于向访问这些 Web API 的用户和应用程序（在 Web 上或者设备中运行的应用程序上）提供服务。在此步骤中，你将注册你在本地运行的用于测试此示例的 Web API。通常，此 Web API 是一个 REST 服务，它提供应用需要访问的功能。Microsoft Azure Active Directory 可以保护任何终结点！
 
-*此处我们假设你要注册上面引用的 TODO REST API，但这也适用于你希望 Azure Active Directory 保护的任何 Web API。*
+此处我们假设你要注册上面引用的 TODO REST API，但这也适用于你希望 Azure Active Directory 保护的任何 Web API。
 
-向 Microsoft Azure AD 注册 Web API 的步骤
+在 Microsoft Azure AD 中注册 Web API 的步骤
 
-1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
+1. 登录到 [Azure 管理门户](https://manage.windowsazure.com)。
 2. 在左侧的导航栏中单击“Active Directory”。
 3. 单击你要在其中注册示例应用程序的目录租户。
 4. 单击“应用程序”选项卡。
@@ -60,17 +60,17 @@
 
 ## 步骤 3：注册示例 Android 本机客户端应用程序
 
-注册网站是第一步。接下来，你还需要告诉 Azure Active Directory 有关应用程序的情况。这样，应用程序便能够与刚刚注册的 Web API 通信
+注册 Web 应用程序是第一步。接下来，你还需要告诉 Azure Active Directory 有关应用程序的情况。这样，应用程序便能够与刚刚注册的 Web API 通信
 
 **我正在执行什么操作？**
 
-*如前所述，Microsoft Azure Active Directory 支持添加两种类型的应用程序。Web API，向访问这些 Web API 的用户和应用程序（在 Web 上或者设备中运行的应用程序上）提供服务。在此步骤中，你要将应用程序注册到此示例。只有执行了此操作，此应用程序才能请求访问你刚刚注册的 Web API。除非注册了应用程序，否则 Azure Active Directory 甚至可能会拒绝应用程序请求登录！ 这是模型安全功能的一部分。*
+如前所述，Microsoft Azure Active Directory 支持添加两种类型的应用程序。Web API，用于向访问这些 Web API 的用户和应用程序（在 Web 上或者设备中运行的应用程序上）提供服务。在此步骤中，你要将应用程序注册到此示例。只有执行了此操作，此应用程序才能请求访问你刚刚注册的 Web API。除非注册了应用程序，否则 Azure Active Directory 甚至可能会拒绝应用程序请求登录！ 这是模型安全功能的一部分。
 
-*此处我们假设你要注册上面引用的这个示例应用程序，但这也适用于你正在开发的任何应用程序。*
+此处我们假设你要注册上面引用的这个示例应用程序，但这也适用于你正在开发的任何应用程序。
 
 **为什么要将应用程序和 Web API 放在一个租户中？**
 
-*如你可能猜到的那样，你可以生成一个从其他租户访问 Azure Active Directory 中注册的外部 API 的应用程序。如果你这样做，系统将提示你的客户许可使用该应用程序中的 API。令人欣慰的是，适用于 iOS 的 Active Directory 身份验证库将负责为你处理此许可！ 在了解更高级的功能后，你将发现，这是从 Azure 和 Office 以及任何其他服务提供程序访问 Microsoft API 套件所需工作的重要部分。现在，由于你已将 Web API 和应用程序注册到同一个租户下，因此，你不会看到任何许可提示。如果你只是在为自己的公司开发要使用的应用程序，则通常就是这种情况。*
+如你可能猜到的那样，你可以生成一个从其他租户访问 Azure Active Directory 中注册的外部 API 的应用程序。如果你这样做，系统将提示你的客户许可使用该应用程序中的 API。令人欣慰的是，适用于 iOS 的 Active Directory 身份验证库将负责为你处理此许可！ 在了解更高级的功能后，你将发现，这是从 Azure 和 Office 以及任何其他服务提供程序访问 Microsoft API 套件所需工作的重要部分。现在，由于你已将 Web API 和应用程序注册到同一个租户下，因此，你不会看到任何许可提示。如果你只是在为自己的公司开发要使用的应用程序，则通常就是这种情况。
 
 1. 登录到 [Azure 管理门户](https://manage.windowsazure.cn)。
 2. 在左侧的导航栏中单击“Active Directory”。
@@ -157,8 +157,7 @@ dependencies {
 ```
 
 
-####选项 5：libs 文件夹中的 jar 包  
-
+####选项 5：libs 文件夹中的 jar 包
 可以从 maven 存储库获取 jar 文件并将其放入项目中的 *libs* 文件夹。你还需要将所需的资源复制到项目，因为 jar 包不包括这些项目。
 
 
@@ -263,12 +262,12 @@ dependencies {
 
 可以调用 **acquireTokenSilent** 来处理缓存和令牌刷新。它也提供了同步版本。它接受使用 userid 作为参数。
 
- ```Java
- mContext.acquireTokenSilent(resource, clientid, userId, callback );
- ```
+    ```java
+     mContext.acquireTokenSilent(resource, clientid, userId, callback );
+    ```
 
 11. **Broker**：
-  Microsoft Intune 的公司门户应用程序将提供代理组件。如果在身份验证器中创建了一个用户帐户并且开发人员选择不跳过代理帐户，ADAL 将使用代理帐户。开发人员可以使用以下操作跳过代理用户：
+  Microsoft Intune 的公司门户应用程序将提供代理组件。如果在验证器中创建了一个用户帐户并且开发人员选择不跳过代理帐户，ADAL 将使用代理帐户。开发人员可以使用以下操作跳过代理用户：
 
     ```java
      AuthenticationSettings.Instance.setSkipBroker(true);
@@ -310,7 +309,7 @@ ADFS 不会识别为生产 STS，因此，你需要关闭实例发现，并在 A
 
 ### 查询缓存项
 
-ADAL 在 SharedPrefrecens 中提供默认缓存，以及一些简单的缓存查询函数。你可以使用以下命令从 AuthenticationContext 中获取当前缓存：
+ADAL 在 SharedPreferences 中提供默认缓存，以及一些简单的缓存查询函数。你可以使用以下命令从 AuthenticationContext 中获取当前缓存：
 ```Java
  ITokenCacheStore cache = mContext.getCache();
 ```
@@ -389,7 +388,7 @@ Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
  ```
 
  除了将所有日志消息发送到任何自定义日志回调以外，还将其发送到 logcat。
-可以将日志从 logcat 提取到文件，如下所示：
+ 可以将日志从 logcat 提取到文件，如下所示：
 
  ```
   adb logcat > "C:\logmsg\logfile.txt"
@@ -449,6 +448,10 @@ ADAL 库包含以下两条 ProgressDialog 消息的英文字符串。
 ### NTLM 对话
 ADAL 版本 1.1.0 支持通过 WebViewClient 中的 onReceivedHttpAuthRequest 事件处理的 NTLM 对话。你可以自定义对话布局和字符串。### 步骤 5：下载 iOS Native Client 示例代码
 
-[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources)]
- 
-<!---HONumber=Mooncake_0411_2016-->
+### 跨应用 SSO
+了解[如何使用 ADAL 在 Android 上启用跨应用 SSO](documentation/articles/active-directory-sso-android)
+
+
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
+
+<!---HONumber=Mooncake_0516_2016-->

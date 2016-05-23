@@ -1,6 +1,6 @@
 <properties
    pageTitle="在 Azure 中管理 Office 365 订阅的目录"
-   description="使用 Azure Active Directory 的管理门户来管理 Office 365 订阅帐户目录"
+   description="使用 Azure Active Directory 和 Azure 经典门户来管理 Office 365 订阅帐户目录"
    services="active-directory"
    documentationCenter=""
    authors="curtand"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="09/21/2015"
+   ms.date="02/10/2016"
    wacn.date=""/>
 
 #在 Azure 中管理 Office 365 订阅的目录
@@ -24,7 +24,7 @@
 
 ![](./media/active-directory-manage-o365-subscription/AAD_O365_02.png)
 
-完成 Azure 订阅后，你便可以登录到 Azure 管理门户并访问 Azure 服务了。若要管理对 Office 365 用户进行身份验证所用的同一目录，请单击 Active Directory 扩展。
+完成 Azure 订阅后，你便可以登录到 Azure 经典门户并访问 Azure 服务。若要管理对 Office 365 用户进行身份验证所用的同一目录，请单击 Active Directory 扩展。
 
 如果你已有 Azure 订阅，则管理其他目录的过程也很简单明了。下图可帮助你了解该过程。
 
@@ -45,26 +45,26 @@
 若要在以 msmith@hotmail.com 身份登录到 Azure 时管理这两个目录，Michael Smith 需要完成以下步骤：
 
 > [AZURE.NOTE]
-> 仅当用户使用 Microsoft 帐户登录时才能完成这些步骤。如果用户是使用工作或学校帐户登录的，则“使用现有目录”选项不可用，因为工作或学校帐户只能通过其主目录（也就是存储着工作或学校帐户的目录，该目录归工作单位或学校拥有）进行身份验证。
+仅当用户使用 Microsoft 帐户登录时才能完成这些步骤。如果用户是使用工作或学校帐户登录的，则“使用现有目录”选项不可用，因为工作或学校帐户只能通过其主目录（也就是存储着工作或学校帐户的目录，该目录归工作单位或学校拥有）进行身份验证。
 
-1.	以 msmith@hotmail.com 身份登录到 Azure 管理门户。
+1.	以 msmith@hotmail.com 身份登录到 Azure 经典门户。
 2.	单击“新建”>“应用程序服务”>“Active Directory”>“目录”>“自定义创建”。
 3.	单击“使用现有目录”，然后选中“已准备好立即注销”。
-4.	以 Contoso.onmicrosoft.com 的全局管理员身份（例如 msmith@contoso.com)）登录到管理门户。
+4.	以 Contoso.onmicrosoft.com 的全局管理员身份（例如 msmith@contoso.com)）登录到 Azure 经典门户。
 5.	当系统提示“是否要将 Contoso 目录用于 Azure?”时，单击“继续”。
 6.	单击“立即注销”。
-7.	以 msmith@hotmail.com 身份登录到管理门户。Contoso 目录和默认目录将显示在 Active Directory 扩展中。
+7.	以 msmith@hotmail.com 身份登录到 Azure 经典门户。Contoso 目录和默认目录将显示在 Active Directory 扩展中。
 
 完成这些步骤之后，msmith@hotmail.com 将成为 Contoso 目录的全局管理员。
 
 ##以全局管理员身份管理资源
-现在，让我们假设 John Doe 需要登录到管理门户并管理与 msmith@hotmail.com 的 Azure 订阅关联的网站和数据库资源。为此，Michael Smith 需要完成以下附加步骤：
+现在，让我们假设 John Doe 需要登录到 Azure 经典门户并管理与 msmith@hotmail.com 的 Azure 订阅关联的网站和数据库资源。为此，Michael Smith 需要完成以下附加步骤：
 
-1.	使用 Azure 订阅的服务管理员帐户（在此示例中为 msmith@hotmail.com)）登录到管理门户。
+1.	使用 Azure 订阅的服务管理员帐户（在本示例中为 msmith@hotmail.com)）登录到 Azure 经典门户。
 2.	将订阅传输到 Contoso 目录：单击“设置”>“订阅”> 选择订阅 >“编辑目录”> 选择“Contoso (Contoso.com)”。在传输过程中，将删除是订阅的协同管理员的任何工作或学校帐户。
 3.	添加 John Doe 作为订阅的协同管理员：单击“设置”>“管理员”> 选择订阅 >“添加”> 键入 **JohnDoe@Contoso.com**。
 
 ##后续步骤
-有关订阅与目录之间关系的详细信息，请参阅[订阅如何与目录关联](active-directory-how-subscriptions-associated-directory)。
+有关订阅与目录之间关系的详细信息，请参阅[订阅如何与目录关联](/documentation/articles/active-directory-how-subscriptions-associated-directory)。
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0516_2016-->

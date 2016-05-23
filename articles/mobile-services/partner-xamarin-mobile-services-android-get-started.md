@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="适用于 Xamarin.Android 的移动服务入门 | Microsoft Azure" 
+	pageTitle="适用于 Xamarin.Android 的移动服务入门 | Azure" 
 	writer="craigd" 
 	description="了解如何对 Xamarin.Android 应用程序使用 Azure 移动服务。" 
 	documentationCenter="xamarin" 
@@ -15,7 +15,8 @@
 
 # <a name="getting-started"></a>移动服务入门
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]&nbsp;
+[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
+&nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
 > 有关本主题的对等 Mobile Apps 版本，请参阅[创建 Xamarin.Android 应用](/documentation/articles/app-service-mobile-xamarin-android-get-started)。
@@ -28,7 +29,7 @@
 
 ![][0]
 
-完成本教程需要 [Xamarin.Android]，该工具将安装 Xamarin Studio 和 Visual Studio 插件（在 Windows 上）以及最新的 Android 平台。需要使用 Android 4.2 SDK 或更高版本。
+完成本教程需要 XCode 和 Xamarin Studio（对于 OS X）或 Visual Studio（对于 Windows）以及联网的 Mac。[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/zh-cn/library/mt613162.aspx) 中提供了完整的安装说明。
 
 下载的快速入门项目包含适用于 Xamarin.Android 的 Azure 移动服务组件。尽管此项目面向 Android 4.2 或更高版本，但移动服务 SDK 只需要 Android 2.2 或更高版本。
 
@@ -58,7 +59,7 @@
 
 4. 在“下载并运行应用程序”下面单击“下载”。
 
-	随即将会下载已连接到移动服务的示例待办事项列表应用程序的项目。将压缩的项目文件保存到本地计算机，并记下保存位置。
+	随即将会下载已连接到移动服务的示例_待办事项列表_应用程序的项目。将压缩的项目文件保存到本地计算机，并记下保存位置。
 
 ## 运行 Android 应用程序
 
@@ -72,7 +73,7 @@
 
 	> [AZURE.NOTE] 若要在 Android 模拟器中运行项目，必须至少定义一个 Android 虚拟设备 (AVD)。使用 AVD 管理器创建和管理这些设备。
 
-4. 在应用程序中键入有意义的文本（例如 Complete the tutorial），然后单击“添加”。
+4. 在应用程序中键入有意义的文本（例如 _完成本教程_），然后单击“添加”。
 
 	![][10]
 
@@ -137,4 +138,4 @@
 [WindowsAzure.com]: http://www.windowsazure.com/
 [Azure 经典门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0516_2016-->

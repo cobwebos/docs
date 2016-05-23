@@ -1,15 +1,15 @@
 <properties
-                pageTitle="什么是 Azure Active Directory？"
-                description="使用 Azure Active Directory 将现有的本地标识扩展到云中，或开发 Azure AD 集成的应用程序。"
-                services="active-directory"
-                documentationCenter=""
-                authors="markusvi"
-                manager="swadhwa"
-                editor=""/>
+    pageTitle="什么是 Azure Active Directory？"
+    description="使用 Azure Active Directory 将现有的本地标识扩展到云中，或开发 Azure AD 集成的应用程序。"
+    services="active-directory"
+    documentationCenter=""
+    authors="markusvi"
+    manager="stevenpo"
+    editor=""/>
 
 <tags 
 	ms.service="active-directory" 
-                ms.date="10/30/2015"
+    ms.date="04/07/2016"
 	wacn.date="" />
 
 
@@ -100,4 +100,4 @@ Azure AD 的多租户、地理分布、高可用性设计意味着你可以依�
 
 - [如何发现本组织中使用的未经认可的云应用](active-directory-cloudappdiscovery-whatis)
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0516_2016-->

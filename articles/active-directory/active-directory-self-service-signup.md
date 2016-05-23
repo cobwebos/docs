@@ -1,15 +1,15 @@
-<properties 
-	pageTitle="什么是 Azure 的自助注册？| Microsoft Azure" 
-	description="概述 Azure 的自助服务注册以及如何管理注册过程。" 
-	services="active-directory" 
-	documentationCenter="" 
+<properties
+	pageTitle="什么是 Azure 的自助注册？| Microsoft Azure"
+	description="概述 Azure 的自助注册、如何管理注册过程以及如何接管 DNS 域名。"
+	services="active-directory"
+	documentationCenter=""
 	authors="curtand"
 	manager="stevenpo"
 	editor=""/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="01/05/2016"
+	ms.date="04/04/2016"
 	wacn.date=""/>
 
 
@@ -159,7 +159,7 @@
 		import-module MSOnline
 		$msolcred = get-credential
 		connect-msolservice -credential $msolcred
-			
+		
 2. 获取域的列表：
 
 	Get-MsolDomain
@@ -234,4 +234,4 @@
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
 
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="监视、诊断和排查存储空间问题 | Microsoft Azure"
+	pageTitle="监视、诊断和排查存储空间问题 |Azure"
 	description="使用存储分析、客户端日志记录等功能及其他第三方工具来确定、诊断和排查与 Azure 存储空间相关的问题。"
 	services="storage"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="03/18/2016"
+	ms.date="04/06/2016"
 	wacn.date=""/>
 
 # 监视、诊断和排查 Microsoft Azure 存储空间问题
@@ -73,7 +73,7 @@
 
 ![][1]
 
-*图 1：监视、诊断和故障排除*
+图 1：监视、诊断和故障排除
 
 本指南的主要目标受众是开发使用 Azure 存储服务的联机服务的开发人员以及负责管理此类联机服务的 IT 专业人员。本指南的目标是：
 
@@ -104,7 +104,7 @@
 
 ![][2]
 
-*图 2 在 Azure 经典门户中查看存储度量值*
+图 2 在 Azure 经典门户中查看存储度量值
 
 你应通过以下方式持续监视 Azure 应用程序以确保它们正常运行并按预期执行操作：
 
@@ -522,7 +522,7 @@ de8b1c3c-...|**UploadFromStream** 方法，用于创建 Blob。**PUT** 请求失
 07b26a5d-... | 正在下载响应正文。
 07b26a5d-... | 操作已成功完成。
 07b26a5d-... | 开始发出同步请求到 https://domemaildist.blob.core.chinacloudapi.cn/azuremmblobcontainer。
-07b26a5d-... | StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.
+07b26a5d-... | StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.
 07b26a5d-... | 正在等待响应。
 07b26a5d-... | 收到响应。状态代码 = 202，请求 ID = 6ab2a4cf-...，Content-MD5 = ，ETag = 。
 07b26a5d-... | 响应标头已成功处理，继续执行该操作的剩余部分。
@@ -612,7 +612,7 @@ e2d06d78-... | 重试策略不允许重试。操作失败，远程服务器返�
 
 > [AZURE.NOTE] 在排查客户端 JavaScript 问题时，可以使用 Internet Explorer 中的 F12 开发人员工具来跟踪浏览器与存储服务之间交换的消息。
 
-之所以发生这些错误是因为 Web 浏览器实施了<a href="http://www.w3.org/Security/wiki/Same_Origin_Policy" target="_blank">“同源策略”</a>安全限制，以防止网页调用与它来自的域不同的域中的 API。
+之所以发生这些错误是因为 Web 浏览器实施了 <a href="http://www.w3.org/Security/wiki/Same_Origin_Policy" target="_blank">“同源策略”</a> 安全限制，以防止网页调用与它来自的域不同的域中的 API。
 
 若要解决此 JavaScript 问题，可以为客户端访问的存储服务配置跨域资源共享 (CORS)。有关详细信息，请参阅 MSDN 上的 <a href="http://msdn.microsoft.com/zh-cn/library/azure/dn535601.aspx" target="_blank">Azure 存储空间服务的跨域资源共享 (CORS) 支持</a>。
 
@@ -822,7 +822,7 @@ Microsoft Message Analyzer 中内置的“Web 代理”跟踪基于 Fiddler；�
 
 ### <a name="appendix-4"></a>附录 4：使用 Excel 查看度量值和日志数据
 
-使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。但是，您需要基于<a href="http://msdn.microsoft.com/zh-cn/library/azure/hh343259.aspx" target="_blank">“存储分析日志格式”</a>和<a href="http://msdn.microsoft.com/zh-cn/library/azure/hh343264.aspx" target="_blank">“存储分析度量表架构”中的信息添加相应的列标题</a>。
+使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。但是，您需要基于 <a href="http://msdn.microsoft.com/zh-cn/library/azure/hh343259.aspx" target="_blank">“存储分析日志格式”</a> 和 <a href="http://msdn.microsoft.com/zh-cn/library/azure/hh343264.aspx" target="_blank">“存储分析度量表架构”</a> 中的信息添加相应的列标题。
 
 若要将存储日志记录数据导入 Excel（从 Blob 存储下载后），请执行以下操作：
 
@@ -915,4 +915,4 @@ Microsoft Message Analyzer 中内置的“Web 代理”跟踪基于 Fiddler；�
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting-classic-portal/mma-screenshot-2.png
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0516_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="08/12/2015"
+	ms.date="03/30/2016"
 	wacn.date=""/>
 
 # SaaS 应用程序的 Azure 条件性访问预览
@@ -29,7 +29,7 @@
 ## 此预览版中的已知问题
 此预览版仅适用于预先集成的联合身份验证 SaaS 应用程序、使用密码单一登录的应用程序、已注册的开发和业务线应用程序，以及 Azure AD 应用程序代理。。我们正在为其他一些应用程序提供支持...
 
-## 配置基于应用程序的访问规则
+##配置基于应用程序的访问规则
 
 本部分介绍如何配置基于应用程序的访问规则。
 
@@ -43,21 +43,22 @@
 8. 指定要向其应用规则的用户。
 9. 选择将“启用”设置为“打开”以启用该策略。
 
-## 了解访问规则
+##了解访问规则
 
 本部分详细说明在 Azure 条件性应用程序访问预览版中支持的访问规则。
 ### 指定要向其应用访问规则的用户
 
 默认情况下，该策略将应用于拥有该应用程序访问权限的所有用户。但是，也可以将该策略的应用范围限制为指定安全组成员的用户。可以使用“添加组”按钮，从组选择对话框中选择一个或多个要向其应用访问规则的组。此对话框还可以用于删除所选组。当选择规则应用于组时，仅会对属于指定安全组之一的用户强制执行访问规则。
 
-也可以通过选择“排除”选项并指定一个或多个安全组，从策略中显式排除安全组。属于“排除”列表中某个组的成员的用户将不受 Multi-Factor Authentication 要求的约束，即使这些用户是访问规则要应用到的组的成员。下面所示的访问规则将要求“管理员”组中的所有用户在访问应用程序时使用 Multi-Factor Authentication。
+也可以通过选择“排除”选项并指定一个或多个安全组，从策略中显式排除安全组。属于“排除”列表中某个组的成员的用户将不受 Multi-Factor Authentication 要求的约束，即使这些用户是访问规则要应用到的组的成员。
+下面所示的访问规则将要求“管理员”组中的所有用户在访问应用程序时使用 Multi-Factor Authentication。
 
 ![设置使用 MFA 的条件性访问规则](./media/active-directory-conditional-access/conditionalaccess-saas-apps.jpg)
 
-## 使用 MFA 的条件性访问规则
+##使用 MFA 的条件性访问规则
 如果使用针对用户的 Multi-Factor Authentication 功能对某个用户进行了配置，则针对该用户的这个设置将优先于应用 Multi-Factor Authentication 规则。这意味着，如果将某个用户配置为进行针对用户的 Multi-Factor Authentication，则该用户必须执行 Multi-Factor Authentication，即使该用户已被排除在应用程序 Multi-Factor Authentication 规则之外。了解有关 Multi-Factor Authentication 和每个用户设置的详细信息。
 
-### 访问规则选项
+###访问规则选项
 当前预览版支持以下选项：
 
 * **需要 Multi-Factor Authentication**：使用此选项时，将要求要向其应用访问规则的用户先完成 Multi-Factor Authentication，然后才能访问策略所应用到的应用程序。
@@ -66,12 +67,13 @@
 
 * **不工作时阻止访问**：使用此选项时，将阻止不是来自受信任 IP 的用户。可以在 Multi-Factor Authentication 设置页上配置受信任的 IP 范围。
 
-### 设置规则状态
+###设置规则状态
 使用访问规则状态可以启用或禁用规则。当访问规则处于禁用状态时，不会强制实施 Multi-Factor Authentication 要求。
 
 ### 访问规则的评估
 
-当用户访问使用 OAuth 2.0、OpenID Connect、SAML 或 WS-Federation 的联合应用程序时，则会计算访问规则。此外，当刷新令牌用于获取访问令牌时，则会在使用 OAuth 2.0 和 OpenID Connect 的情况下计算访问规则。如果在使用刷新令牌的情况下策略评估失败，则会返回错误 invalid\_grant，这表明用户需要通过客户端重新进行身份验证。配置联合身份验证服务以提供 Multi-Factor Authentication
+当用户访问使用 OAuth 2.0、OpenID Connect、SAML 或 WS-Federation 的联合应用程序时，则会计算访问规则。此外，当刷新令牌用于获取访问令牌时，则会在使用 OAuth 2.0 和 OpenID Connect 的情况下计算访问规则。如果在使用刷新令牌的情况下策略评估失败，则会返回错误 invalid\_grant，这表明用户需要通过客户端重新进行身份验证。
+配置联合身份验证服务以提供 Multi-Factor Authentication
 
 对于联合租户，Multi-Factor Authentication (MFA) 可能通过 Azure Active Directory 或本地 AD FS 服务器执行。
 
@@ -83,4 +85,9 @@
 
 除了设置此标志之外，必须配置联合租户 AD FS 实例，以执行 Multi-Factor Authentication。请遵遵循部署本地 Azure Multi-Factor Authentication 的说明。
 
-<!---HONumber=79-->
+##相关文章
+
+- [保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](active-directory-conditional-access.md)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+
+<!---HONumber=Mooncake_0516_2016-->

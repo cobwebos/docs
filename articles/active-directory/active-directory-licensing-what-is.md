@@ -1,12 +1,12 @@
 <properties
-   pageTitle="什么是 Microsoft Azure Active Directory 许可？| Microsoft Azure"
-   description="介绍 Microsoft Azure AD 许可及其工作原理、入门方法和最佳实践，涉及的产品包括 Office 365、Microsoft Intune 及 Azure Active Directory Premium 和 Basic 版本"
-   services="active-directory"
-   keywords="Azure AD 许可"
-   documentationCenter=""
-   authors="curtand"
-   manager="stevenpo"
-   editor=""/>
+    pageTitle="什么是 Microsoft Azure Active Directory 许可？| Microsoft Azure"
+    description="介绍 Microsoft Azure Active Directory 许可及其工作原理、入门方法和最佳实践，涉及的产品包括 Office 365、Microsoft Intune 及 Azure Active Directory Premium 和 Basic 版本"
+    services="active-directory"
+    keywords="Azure AD 许可"
+    documentationCenter=""
+    authors="curtand"
+    manager="stevenpo"
+    editor=""/>
 
 <tags
    ms.service="active-directory"
@@ -136,4 +136,4 @@ Azure AD 很容易入门；你始终可以在注册免费 Azure 试用版过程�
 - [Azure Multi-Factor Authentication](/documentation/articles/multi-factor-authentication)
 - [直接购买 Azure AD Premium 许可证](http://aka.ms/buyaadp)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0516_2016-->
