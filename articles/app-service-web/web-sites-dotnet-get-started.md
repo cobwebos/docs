@@ -290,4 +290,4 @@
 
 	在 Azure 中，你可以根据本教程中所述在 Azure Web Apps 中运行 Web 应用程序，也可以在云服务或虚拟机中运行 Web 应用程序。有关详细信息，请参阅 [Azure web apps, cloud services, and VMs: When to use which（Azure Web Apps、云服务和 VM：何时使用何种产品）](/documentation/articles/choose-web-site-cloud-service-vm/)。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0509_2016--->
