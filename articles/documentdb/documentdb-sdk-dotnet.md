@@ -3,13 +3,13 @@
 	description="了解有关 .NET SDK 的全部信息，包括发布日期、停用日期和 DocumentDB.NET SDK 各版本之间的更改。" 
 	services="documentdb" 
 	documentationCenter=".net" 
-	authors="ryancrawcour" 
+	authors="aliuy" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="04/08/2016" 
+	ms.date="05/06/2016" 
 	wacn.date=""/>
 
 # DocumentDB SDK
@@ -32,35 +32,41 @@
 
 ## 发行说明
 
+### <a name="1.7.1"/>[1\.7.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.7.1)
+  - 向采用 RequestOptions 作为参数的基于 Uri 的 ExecuteStoredProcedureAsync 方法添加了重载。
+  
+### <a name="1.7.0"/>[1\.7.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.7.0)
+  - 对文档添加了生存时间 (TTL) 支持。
+
 ### <a name="1.6.3"/>[1\.6.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.6.3)
   - 修复了用于将其打包为 Azure 云服务解决方案的一部分的 .NET SDK 的 Nuget 包中的 Bug。
   
 ### <a name="1.6.2"/>[1\.6.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.6.2)
-  - 已实现[分区集合](/documentation/articles/documentdb-partition-data)和[用户定义的性能级别](/documentation/articles/documentdb-performance-levels)。 
+  - 实现了[分区集合](/documentation/articles/documentdb-partition-data)和[用户定义的性能级别](/documentation/articles/documentdb-performance-levels)。 
 
 ### <a name="1.5.3"/>[1\.5.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.3)
-  - **[已修复]**查询 DocumentDB 终结点引发：System.Net.Http.HttpRequestException：将内容复制到流时出错。
+  - **[已修复]** 查询 DocumentDB 终结点引发：System.Net.Http.HttpRequestException：将内容复制到流时出错。
 
 ### <a name="1.5.2"/>[1\.5.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.2)
   - 扩展的 LINQ 支持，包括用于分页、条件表达式和范围比较的新运算符。
     - Take 运算符在 LINQ 中启用 SELECT TOP 行为
     - CompareTo 运算符使能够进行字符串范围比较
     - Conditional (?) 和 coalesce 运算符 (??)
-  - **[已修复]**合并模型投影与 linq 查询中的 Where-In 时出现 ArgumentOutOfRangeException。[#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
+  - **[已修复]** 合并模型投影与 linq 查询中的 Where-In 时出现 ArgumentOutOfRangeException。[#81](https://github.com/Azure/azure-documentdb-dotnet/issues/81)
 
 ### <a name="1.5.1"/>[1\.5.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.1)
- - **[已修复]**如果 Select 不是最后一个表达式，则 LINQ 提供程序假定没有投影，并且错误地生成 SELECT *。[#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
+ - **[已修复]** 如果 Select 不是最后一个表达式，则 LINQ 提供程序假定没有投影，并且错误地生成 SELECT *。[#58](https://github.com/Azure/azure-documentdb-dotnet/issues/58)
 
 ### <a name="1.5.0"/>[1\.5.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.0)
  - 实现的 Upsert，已添加 UpsertXXXAsync 方法
  - 所有请求的性能改进
  - LINQ 提供程序支持字符串的条件、联合和 CompareTo 方法
- - **[已修复]** LINQ 提供程序--> 在列表上实现 Contains 方法以生成与 IEnumerable 和 Array 上相同的 SQL
+ - **[已修复]** LINQ 提供程序 --> 在列表上实现 Contains 方法以生成与 IEnumerable 和 Array 上相同的 SQL
  - **[已修复]** BackoffRetryUtility 再次使用相同的 HttpRequestMessage 而不是在重试时创建一个新的
- - **[已过时]** UriFactory.CreateCollection--> 现在应使用 UriFactory.CreateDocumentCollection
+ - **[已过时]** UriFactory.CreateCollection --> 现在应使用 UriFactory.CreateDocumentCollection
  
 ### <a name="1.4.1"/>[1\.4.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.4.1)
- - **[已修复]**使用非 en 区域性信息（如 NL-NL 等）时出现本地化问题。 
+ - **[已修复]** 使用非 en 区域性信息（如 NL-NL 等）时出现本地化问题。 
  
 ### <a name="1.4.0"/>[1\.4.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.4.0)
   - 基于 ID 的路由
@@ -123,22 +129,24 @@ Microsoft 将在停用一款 SDK 之前至少 **12 个月**发出通知，以便
  
 | 版本 | 发布日期 | 停用日期 
 | ---	  | ---	         | ---
-| [1\.6.3](#1.6.3) |2016 年 4 月 8 日 |---
-| [1\.6.2](#1.6.2) |2016 年 3 月 29 日 |---
-| [1\.5.3](#1.5.3) |2016 年 2 月 19 日 |---
-| [1\.5.2](#1.5.2) |2015 年 12 月 14 日 |---
-| [1\.5.1](#1.5.1) |2015 年 11 月 23 日 |---
-| [1\.5.0](#1.5.0) |2015 年 10 月 5 日 |---
-| [1\.4.1](#1.4.1) |2015 年 8 月 25 日 |---
-| [1\.4.0](#1.4.0) |2015 年 8 月 13 日 |---
-| [1\.3.0](#1.3.0) |2015 年 8 月 5 日 |---
-| [1\.2.0](#1.2.0) |2015 年 7 月 6 日 |---
-| [1\.1.0](#1.1.0) |2015 年 4 月 30 日 |---
-| [1\.0.0](#1.0.0) |2015 年 4 月 8 日 |---
-| [0\.9.3-prelease](#0.9.x-preview) |2015 年 3 月 12 日 |2016 年 2 月 29 日 
-| [0\.9.2-prelease](#0.9.x-preview) |2015 年 1 月 |2016 年 2 月 29 日 
-| [.9.1-prelease](#0.9.x-preview) |2014 年 10 月 13 日 |2016 年 2 月 29 日 
-| [0\.9.0-prelease](#0.9.x-preview) |2014 年 8 月 21 日 |2016 年 2 月 29日
+| [1\.7.1](#1.7.1) | 2016 年 5 月 6 日 |--- 
+| [1\.7.0](#1.7.0) | 2016 年 4 月 26 日 |--- 
+| [1\.6.3](#1.6.3) | 2016 年 4 月 8 日 |---
+| [1\.6.2](#1.6.2) | 2016 年 3 月 29 日 |---
+| [1\.5.3](#1.5.3) | 2016 年 2 月 19 日 |---
+| [1\.5.2](#1.5.2) | 2015 年 12 月 14 日 |---
+| [1\.5.1](#1.5.1) | 2015 年 11 月 23 日 |---
+| [1\.5.0](#1.5.0) | 2015 年 10 月 5 日 |---
+| [1\.4.1](#1.4.1) | 2015 年 8 月 25 日 |---
+| [1\.4.0](#1.4.0) | 2015 年 8 月 13 日 |---
+| [1\.3.0](#1.3.0) | 2015 年 8 月 5 日 |---
+| [1\.2.0](#1.2.0) | 2015 年 7 月 6 日 |---
+| [1\.1.0](#1.1.0) | 2015 年 4 月 30 日 |---
+| [1\.0.0](#1.0.0) | 2015 年 4 月 8 日 |---
+| [0\.9.3-prelease](#0.9.x-preview) | 2015 年 3 月 12 日 |2016 年 2 月 29 日 
+| [0\.9.2-prelease](#0.9.x-preview) | 2015 年 1 月 |2016 年 2 月 29 日 
+| [.9.1-prelease](#0.9.x-preview) | 2014 年 10 月 13 日 |2016 年 2 月 29 日 
+| [0\.9.0-prelease](#0.9.x-preview) | 2014 年 8 月 21 日 |2016 年 2 月 29 日
 
 ## 常见问题
 [AZURE.INCLUDE [documentdb sdk 常见问题](../includes/documentdb-sdk-faq.md)]
@@ -147,4 +155,4 @@ Microsoft 将在停用一款 SDK 之前至少 **12 个月**发出通知，以便
 
 要了解有关 DocumentDB 的详细信息，请参阅 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服务页。
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

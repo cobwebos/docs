@@ -4,7 +4,7 @@
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
@@ -15,6 +15,7 @@
 
 # 后台作业指南
 
+[AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
 ## 概述
 
@@ -32,7 +33,7 @@
 - I/O 密集型作业，例如执行一系列存储事务或文件索引编制。
 - 批处理作业，例如夜间数据更新或计划的处理。
 - 长时间运行的工作流，例如订单履行或预配服务和系统。
-- 敏感数据处理，其中的任务将转移到更安全的位置以进行处理。例如，你可能不想要处理 Web 应用中的敏感数据，而是改为使用[守护程序](http://msdn.microsoft.com/library/dn589793.aspx)等模式将数据传输到有权访问受保护存储的已隔离后台进程。
+- 敏感数据处理，其中的任务将转移到更安全的位置以进行处理。例如，你可能不想要处理 Web 应用中的敏感数据，而想使用[守护程序](http://msdn.microsoft.com/library/dn589793.aspx)等模式将数据传输到有权访问受保护存储的已隔离后台进程。
 
 ## 触发器
 
@@ -129,9 +130,9 @@ Azure Web 作业具有以下特征：
 可通过多种方式在云服务角色中实施后台任务：
 
 - 在角色中创建 **RoleEntryPoint** 类的实现，并使用它的方法来执行后台任务。任务在 WaIISHost.exe 的上下文中运行。它们可以使用 **CloudConfigurationManager** 类的 **GetSetting** 方法来加载配置设置。有关详细信息，请参阅[生命周期（云服务）](#lifecycle-cloud-services)。
-- 应用程序启动时，使用启动任务来执行后台任务。若要强制任务继续在后台运行，请将 **taskType** 属性设置为 **background**（如果不这样做，应用程序启动进程将会中止并等待任务完成）。有关详细信息，请参阅 [Run startup tasks in Azure（在 Azure 中运行启动任务）](./cloud-services/cloud-services-startup-tasks.md)。
-- 可以使用 WebJobs SDK 来实施作为启动任务启动的后台任务（如 Web 作业）。有关详细信息，请参阅 [Get started with the Azure WebJobs SDK（Azure WebJobs SDK 入门）](./app-service-web/websites-dotnet-webjobs-sdk-get-started.md)。
-- 使用启动任务可以安装一个 Windows 服务来执行一个或多个后台任务。必须将 **taskType** 属性设置为 **background**，以便服务在后台执行。有关详细信息，请参阅 [Run startup tasks in Azure（在 Azure 中运行启动任务）](./cloud-services/cloud-services-startup-tasks.md)。
+- 应用程序启动时，使用启动任务来执行后台任务。若要强制任务继续在后台运行，请将 **taskType** 属性设置为 **background**（如果不这样做，应用程序启动进程将会中止并等待任务完成）。有关详细信息，请参阅[在 Azure 中运行启动任务](./cloud-services/cloud-services-startup-tasks.md)。
+- 可以使用 WebJobs SDK 来实施作为启动任务启动的后台任务（如 Web 作业）。有关详细信息，请参阅 [Azure WebJobs SDK 入门](./app-service-web/websites-dotnet-webjobs-sdk-get-started.md)。
+- 使用启动任务可以安装一个 Windows 服务来执行一个或多个后台任务。必须将 **taskType** 属性设置为 **background**，以便服务在后台执行。有关详细信息，请参阅[在 Azure 中运行启动任务](./cloud-services/cloud-services-startup-tasks.md)。
 
 ### 在 Web 角色中运行后台任务
 
@@ -167,7 +168,7 @@ Azure Web 作业具有以下特征：
 
 实施后台任务时，可以避免将其部署到 Azure Web Apps 或云服务，但有时这些选项可能不方便。典型的示例包括 Windows 服务、第三方实用程序和可执行程序。另一个示例是针对托管应用程序以外的执行环境所编写的程序。例如，它可能是你想要从 Windows 或 .NET 应用程序执行的 Unix 或 Linux 程序。可以为 Azure 虚拟机选择各种操作系统，并在该虚拟机上运行你的服务或可执行文件。
 
-若要确定何时使用虚拟机，请参阅 [Azure App Services, Cloud Services and Virtual Machines comparison（Azure 应用程序服务、云服务和虚拟机的比较）](/documentation/articles/choose-web-site-cloud-service-vm)。有关虚拟机选项的信息，请参阅 [Virtual Machines, see Virtual Machine and Cloud Service sizes for Azure（Azure 的虚拟机和云服务大小）](http://msdn.microsoft.com/zh-cn/library/azure/dn197896.aspx)。有关虚拟机可用的操作系统和预建映像的详细信息，请参阅 [Azure Virtual Machines Marketplace（Azure 虚拟机应用商店）](https://azure.microsoft.com/gallery/virtual-machines/)。
+若要确定何时使用虚拟机，请参阅 [Azure 应用程序服务、云服务和虚拟机的比较](/documentation/articles/choose-web-site-cloud-service-vm)。有关虚拟机选项的信息，请参阅 [Virtual Machines, see Virtual Machine and Cloud Service sizes for Azure](http://msdn.microsoft.com/zh-cn/library/azure/dn197896.aspx)（Azure 的虚拟机和云服务大小）。有关虚拟机可用的操作系统和预建映像的详细信息，请参阅 [Azure Virtual Machines Marketplace](https://azure.microsoft.com/gallery/virtual-machines/)（Azure 虚拟机应用商店）。
 
 若要在独立的虚拟机中启动后台任务，可以从多个选项中进行选择：
 
@@ -182,7 +183,7 @@ Azure Web 作业具有以下特征：
 在确定是否要在 Azure 虚拟机中部署后台任务时，请注意以下几点：
 
 - 在单独的 Azure 虚拟机中托管后台任务可提供弹性，并可通过启动、执行、计划和资源分配来实现精确控制。但是，如果只是出于运行后台任务的目的而必须部署虚拟机，则会增加运行时成本。
-- 没有任何工具可以监视 Azure 门户中的任务，并且对于失败的任务没有任何自动重新启动功能 -- 不过，你可以监视虚拟机的基本状态，并使用 [Azure 服务管理 Cmdlet](http://msdn.microsoft.com/zh-cn/library/azure/dn495240.aspx) 来管理它。但是，计算节点中没有任何工具可用于控制进程和线程。通常，使用虚拟机时，需要付出额外的工作量才能实施一个机制用于从任务的检测中收集数据，以及从虚拟机中的操作系统收集数据。一个可以适当的解决方案是使用 [用于 Azure 的 System Center 管理包](http://technet.microsoft.com/zh-cn/library/gg276383.aspx)。
+- 没有任何工具可以监视 Azure 门户中的任务，并且对于失败的任务没有任何自动重新启动功能 -- 不过，你可以监视虚拟机的基本状态，并使用 [Azure Service Management Cmdlets](http://msdn.microsoft.com/zh-cn/library/azure/dn495240.aspx)（Azure 服务管理 Cmdlet）来管理它。但是，计算节点中没有任何工具可用于控制进程和线程。通常，使用虚拟机时，需要付出额外的工作量才能实施一个机制用于从任务的检测中收集数据，以及从虚拟机中的操作系统收集数据。一个适当的解决方案是使用 [System Center Management Pack for Azure](http://technet.microsoft.com/zh-cn/library/gg276383.aspx)（用于 Azure 的 System Center 管理包）。
 - 可以考虑创建通过 HTTP 终结点公开的监视探测。这些探测器的代码可以执行运行状况检查、收集操作信息和统计信息，或者整理错误信息，并将其返回给管理应用程序。有关详细信息，请参阅[运行状况终结点监视模式](http://msdn.microsoft.com/zh-cn/library/dn589789.aspx)。
 
 ### 详细信息
@@ -200,13 +201,13 @@ Azure Web 作业具有以下特征：
 
 - **可用性**：后台任务可能无需具有应用程序其他部分所具有的相同可用性级别，特别是直接参与用户交互的 UI 和其他部分。由于可将操作排入队列，后台任务可能更容许延迟、重试的连接失败，以及影响可用性的其他因素。但是，必须有足够的容量来防止备份可能阻止队列和影响整个应用程序的请求。
 - **可缩放性**：后台任务对 UI 和应用程序的交互部分可能有不同的可缩放性要求。缩放 UI 可能需要符合需求的高峰，而未完成的后台任务可能在较空闲的时间由较少的计算实例数完成。
-- **复原能力**：如果只有托管后台任务的请求可以排入队列或延迟到任务再次可用为止，则这些任务的计算实例失败不能严重影响整个应用程序。如果计算实例和/或任务可以在适当的间隔内重新启动，则不可以影响应用程序的用户。
+- **复原能力**：如果只有托管后台任务的请求可以排入队列或延迟到任务再次可用为止，则这些任务的计算实例失败不会严重影响整个应用程序。如果计算实例和/或任务可以在适当的间隔内重新启动，则不可以影响应用程序的用户。
 - **安全性**：相较于 UI 或应用程序的其他部分，后台任务可能有不同的安全要求或限制。通过使用单独的计算实例，可以为任务指定不同的安全环境。你还可以使用模式（例如守护程序）将后台计算实例与 UI 相隔离，以最大程度地提供安全性和隔离性。
 - **性能**：你可以选择专门与任务的性能要求相符的后台任务计算实例类型。这可能意味着，当任务无需与 UI 具有相同处理功能时，可以使用更便宜的计算选项；或者如果任务需要附加的容量和资源，则使用更大的实例。
 - **易管理性**：相较于主应用程序代码或 UI，后台任务可能有不同的开发和部署节奏。将它们部署到不同的计算实例可简化更新与版本控制。
 - **成本**：添加计算实例来执行后台任务会增加托管成本。你应该仔细考虑如何在添加容量与产生的成本之间做出取舍。
 
-有关详细信息，请参阅 [Leader Election Pattern（领导选拔模式）](http://msdn.microsoft.com/library/dn568104.aspx)和 [Competing Consumers Pattern（使用者竞争模式）](http://msdn.microsoft.com/zh-cn/library/dn568101.aspx)。
+有关详细信息，请参阅 [Leader Election Pattern](http://msdn.microsoft.com/library/dn568104.aspx)（领导选拔模式）和 [Competing Consumers Pattern](http://msdn.microsoft.com/zh-cn/library/dn568101.aspx)（使用者竞争模式）。
 
 ## 冲突
 
@@ -249,8 +250,8 @@ Web 角色和辅助角色在启动、运行和停止时会经历一组不同的�
 - **Run** 方法的典型实现包含用于启动每个后台任务的代码，以及定期检查所有后台任务状态的循环构造。它可以重新启动任何失败的任务，或监视用于指示作业已完成的取消标记。
 - 如果后台任务引发了未处理的异常，则应该回收该任务，同时允许角色中的任何其他后台任务继续运行。但是，如果异常是由于任务外部的对象（例如共享存储）损坏所造成的，则应由 **RoleEntryPoint** 类处理异常，应取消所有任务，并允许 **Run** 方法结束。然后，Azure 将重新启动角色。
 - 使用 **OnStop** 方法可以暂停或终止后台任务并清理资源。这可能涉及到停止长时间运行的任务或多步骤任务。请务必考虑到这种操作的后果，以避免数据不一致。如果角色实例出于任何原因（用户启动的关机除外）而停止，**OnStop** 方法中运行的代码必须在五分钟内完成，然后才能将它强行终止。确保代码可以在这段时间内完成，或者可以容忍无法完成运行。  
-- 当 **RoleEntryPoint.OnStart** 方法返回值 **true** 时，Azure 负载平衡器开始将流量定向到角色实例。因此，请考虑将所有初始化代码置于 **OnStart** 方法中，使未成功初始化的角色实例不会收到任何流量。
-- 除了 **RoleEntryPoint** 类的方法以外，还可以使用启动任务。你应该使用启动任务来初始化需要在 Azure 负载平衡器中更改的任何设置，因为在角色接收任何请求之前将执行这些任务。有关详细信息，请参阅 [Run startup tasks in Azure（在 Azure 中运行启动任务）](./cloud-services/cloud-services-startup-tasks.md)。
+- 当 **RoleEntryPoint.OnStart** 方法返回值 **true** 时，Azure Load Balancer 开始将流量定向到角色实例。因此，请考虑将所有初始化代码置于 **OnStart** 方法中，使未成功初始化的角色实例不会收到任何流量。
+- 除了 **RoleEntryPoint** 类的方法以外，还可以使用启动任务。你应该使用启动任务来初始化需要在 Azure 负载平衡器中更改的任何设置，因为在角色接收任何请求之前将执行这些任务。有关详细信息，请参阅[在 Azure 中运行启动任务](./cloud-services/cloud-services-startup-tasks.md)。
 - 如果启动任务发生错误，它可以强制角色持续重新启动。这可能会阻止你执行到以前暂存版本的虚拟 IP (VIP) 回切，因为交换需要对角色的独占访问权限。在角色重新启动时无法做到这一点。若要解决此问题：
 	-  将以下代码添加到角色中 **OnStart** 和 **Run** 方法的开头：
 
@@ -265,13 +266,13 @@ Web 角色和辅助角色在启动、运行和停止时会经历一组不同的�
 	}
 	```
 
-   - 对于角色，将 **Freeze** 设置的定义作为布尔值添加到 ServiceDefinition.csdef 和 ServiceConfiguration.\*.cscfg 文件，并将它设置为 **false**。如果角色进入重复重新启动模式，你可以将设置更改为 **true** 以冻结角色的执行，并允许它与以前的版本交换。
+   - 对于角色，将 **Freeze** 设置的定义作为布尔值添加到 ServiceDefinition.csdef 和 ServiceConfiguration..cscfg 文件，并将它设置为 **false**。如果角色进入重复重新启动模式，你可以将设置更改为 **true** 以冻结角色的执行，并允许它与以前的版本交换。
 
 ## 复原注意事项
 
 后台任务必须具有复原能力，以便为应用程序提供可靠的服务。规划和设计后台任务时，请注意以下几点：
 
-- 后台任务必须能够正常处理角色或服务重新启动，而不会损坏数据或导致应用程序不一致。对于长时间运行的任务或多步骤任务，请考虑使用_检查点_，方法是在永久性存储中保存作业状态，或者在队列中将作业状态保存为消息（如果适当）。例如，你可以在队列的消息中永久保存状态信息，并根据任务进度增量更新此状态信息，以便从上次已知正常的检查点处理任务，而不必从头重新开始。使用 Azure 服务总线队列时，可以使用消息会话来实现相同的方案。会话可让你使用 [SetState](http://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagesession.setstate.aspx) 和 [GetState](http://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagesession.getstate.aspx) 方法来保存和检索应用程序处理状态。有关设计可靠的多步骤过程和工作流的详细信息，请参阅 [Scheduler Agent Supervisor Pattern（计划程序代理监督程序模式）](http://msdn.microsoft.com/library/dn589780.aspx)。
+- 后台任务必须能够正常处理角色或服务重新启动，而不会损坏数据或导致应用程序不一致。对于长时间运行的任务或多步骤任务，请考虑使用_检查点_，方法是在永久性存储中保存作业状态，或者在队列中将作业状态另存为消息（如果适当）。例如，你可以在队列的消息中永久保存状态信息，并根据任务进度增量更新此状态信息，以便从上次已知正常的检查点处理任务，而不必从头重新开始。使用 Azure 服务总线队列时，可以使用消息会话来实现相同的方案。会话可让你使用 [SetState](http://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagesession.setstate.aspx) 和 [GetState](http://msdn.microsoft.com/library/microsoft.servicebus.messaging.messagesession.getstate.aspx) 方法来保存和检索应用程序处理状态。有关设计可靠的多步骤过程和工作流的详细信息，请参阅 [Scheduler Agent Supervisor Pattern](http://msdn.microsoft.com/library/dn589780.aspx)（计划程序代理监督程序模式）。
 - 使用 Web 角色或辅助角色托管多个后台任务时，请设计 **Run** 方法的重写来监视失败或已停止的任务，并将其重新启动。如果这不可行并且你正在使用辅助角色，请从 **Run** 方法退出，以强制辅助角色重新启动。
 - 使用队列来与后台任务通信时，队列可以充当缓冲区，用于在应用程序超过一般负载时，存储发送给任务的请求。这样，任务便可以在相对空闲期间与 UI 同步。这也意味着，回收角色不会阻止 UI。有关详细信息，请参阅[基于队列的负载调节模式](http://msdn.microsoft.com/library/dn589783.aspx)。如果某些任务比其他任务更重要，请考虑实施[优先级队列模式](http://msdn.microsoft.com/library/dn589794.aspx)，以确保这些任务在较不重要的任务之前运行。
 - 必须将消息或进程消息启动的后台任务设计为处理不一致情况，例如消息以错误顺序到达、消息重复导致错误（通常称为_有害消息_）和消息传送多次。请注意以下几点：
@@ -315,4 +316,4 @@ Web 角色和辅助角色在启动、运行和停止时会经历一组不同的�
 - [Azure 队列和服务总线队列 - 比较与对照](/documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted)
 - [如何在云服务中启用诊断](/documentation/articles/cloud-services-dotnet-diagnostics)
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0523_2016-->

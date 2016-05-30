@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="暂存云服务部署 (Node.js) | Microsoft Azure" 
+	pageTitle="暂存云服务部署 (Node.js) | Azure" 
 	description="了解如何使用虚拟 IP (VIP) 交换将 Azure 应用程序部署到过渡环境，然后再将其部署到生产环境。" 
 	services="cloud-services" 
 	documentationCenter="nodejs" 
@@ -9,8 +9,8 @@
 
 <tags 
 	ms.service="cloud-services" 
-	ms.date="11/20/2015" 
-	wacn.date="mwasson"/>
+	ms.date="05/04/2016" 
+	wacn.date="05/17/2016"/>
 
 
 
@@ -18,7 +18,7 @@
 
 可以先将要测试的已打包应用程序部署到 Azure 中的过渡环境，然后再将该应用程序移动到用户可通过 Internet 对其进行访问的生产环境。过渡环境与生产环境完全一样，只不过访问暂存应用程序时必须使用由 Azure 生成的经过模糊处理的 URL。在验证您的应用程序能够正常运行后，可以通过执行虚拟 IP (VIP) 交换将其部署到生产环境。
 
-> [AZURE.NOTE]本文中的步骤仅适用于托管为 Azure 云服务的 Node 应用程序。
+> [AZURE.NOTE] 本文中的步骤仅适用于托管为 Azure 云服务的 Node 应用程序。
 
 ## 步骤 1：暂存应用程序
 
@@ -48,7 +48,7 @@
 
 在过渡环境中验证应用程序的升级版本后，您可以通过交换过渡和生产环境的虚拟 PI (VIP) 来快速使应用程序可用于生产环境。
 
-> [AZURE.NOTE]此步骤假定您已将应用程序部署到生产环境，并且暂存了它的升级版本。
+> [AZURE.NOTE] 此步骤假定您已将应用程序部署到生产环境，并且暂存了它的升级版本。
 
 1.  登录到 [Azure 经典门户]，单击“云服务”，然后选择服务名称。
 
@@ -71,4 +71,4 @@
 [vip-swap-dialog]: ./media/cloud-services-nodejs-stage-application/vip-swap-dialog.png
 [如何在 Azure 中通过交换 VIP 来将服务升级部署到生产]: /documentation/articles/cloud-services-how-to-manage/#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0523_2016-->

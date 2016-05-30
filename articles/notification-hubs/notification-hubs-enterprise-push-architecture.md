@@ -1,15 +1,14 @@
-<properties 
-	pageTitle="通知中心 - 企业推送架构" 
-	description="有关在企业环境中使用 Azure 通知中心的指南" 
-	services="notification-hubs" 
-	documentationCenter="" 
+<properties
+	pageTitle="通知中心 - 企业推送架构"
+	description="有关在企业环境中使用 Azure 通知中心的指南"
+	services="notification-hubs"
+	documentationCenter=""
 	authors="wesmc7777"
-	manager="dwrede" 
+	manager="dwrede"
 	editor=""/>
 
 <tags 
 	ms.service="notification-hubs" 
-	
 	ms.date="02/29/2016" 
 	wacn.date=""/>
 
@@ -49,19 +48,19 @@
 ###先决条件
 你应完成以下教程以熟悉相关概念以及常见的创建和配置步骤：
 
-1. [服务总线 Pub/Sub 编程] - 此教程说明了使用服务总线主题/订阅的详细信息、如何创建命名空间以包含主题/订阅、如何通过它们发送和接收消息。 
-2. [通知中心 - Windows 通用教程] - 此教程说明了如何设置 Windows 应用商店应用以及如何使用通知中心注册，然后接收通知。 
+1. [服务总线 Pub/Sub 编程] - 此教程说明了使用服务总线主题/订阅的详细信息、如何创建命名空间以包含主题/订阅、如何通过它们发送和接收消息。
+2. [通知中心 - Windows 通用教程] - 此教程说明了如何设置 Windows 应用商店应用以及如何使用通知中心注册，然后接收通知。
 
 ###代码示例
 
 完整的示例代码可在[通知中心示例]中找到。它分为三个组件：
 
 1. **EnterprisePushBackendSystem**
-	
-	a.此项目使用 WindowsAzure.ServiceBus Nuget 包，并基于[服务总线 Pub/Sub 编程]构建。
+
+	a.此项目使用 *WindowsAzure.ServiceBus* Nuget 包，并基于[服务总线 Pub/Sub 编程]构建。
 
 	b.这是一个简单 C# 控制台应用，模拟启动要传送到移动应用的消息的 LoB 系统。
-	
+
 		static void Main(string[] args)
         {
             string connectionString =
@@ -122,7 +121,7 @@
 
 2. **ReceiveAndSendNotification**
 
-	a.此项目使用 WindowsAzure.ServiceBus 和 Microsoft.Web.WebJobs.Publish Nuget 包，并基于[服务总线 Pub/Sub 编程]构建。
+	a.此项目使用 *WindowsAzure.ServiceBus* 和 *Microsoft.Web.WebJobs.Publish* Nuget 包，并基于[服务总线 Pub/Sub 编程]构建。
 
 	b.这是另一个 C# 控制台应用，我们将它作为 [Azure WebJob] 运行，因为它必须连续运行以侦听来自 LoB/后端系统的消息。它将是移动后端的一部分。
 
@@ -221,7 +220,7 @@
 	
 	b.确保应用程序已启用接收 toast 通知。
 
-	c.确保在应用启动时（替换 HubName 和 DefaultListenSharedAccessSignature 后）调用以下通知中心注册代码：
+	c.确保在应用启动时（替换 *HubName* 和 *DefaultListenSharedAccessSignature* 后）调用以下通知中心注册代码：
 
         private async void InitNotificationsAsync()
         {
@@ -268,4 +267,4 @@
 [通知中心 - Windows 通用教程]: /documentation/articles/notification-hubs-windows-store-dotnet-get-started
 [Azure 经典门户]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0523_2016-->

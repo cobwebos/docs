@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/23/2016"
+   ms.date="04/25/2016"
    wacn.date=""/>
 
 # 使用系统运行状况报告进行故障排除
@@ -22,8 +22,7 @@ Azure Service Fabric 组件报告包含群集中的所有实体。[运行状况�
 
 > [AZURE.NOTE] 监视器运行状况报告仅在系统组件创建一个实体之后才可见。在删除实体之后，运行状况存储自动删除与该实体关联的所有运行状况报告。创建实体的新实例时的处理方式也一样（例如，创建新的服务副本实例）。所有与旧实例关联的报告都将从存储中删除并清除。
 
-按来源标识系统组件报告，并以“**System.**”前缀开头。监视器不能与来源使用相同的前缀，因为如果参数无效，报告将被拒绝。
-让我们来看一些系统报告并了解是什么触发了这些报告以及如何纠正报告指出的问题。
+按来源标识系统组件报告，并以“System”前缀开头。监视器不能与来源使用相同的前缀，因为如果参数无效，报告将被拒绝。让我们来看一些系统报告并了解是什么触发了这些报告以及如何纠正报告指出的问题。
 
 > [AZURE.NOTE] Service Fabric 不断添加感兴趣的状况报告，这些报告可以提高对群集和应用程序中正在发生的事情的可见性。
 
@@ -31,16 +30,16 @@ Azure Service Fabric 组件报告包含群集中的所有实体。[运行状况�
 群集运行状况实体在运行状况存储中自动创建，因此，如果一切运行正常，则没有系统报告。
 
 ### 邻居丢失
-**System.Federation** 在检测到邻居丢失时会报告一个错误。报告来自于单个节点，并且在属性名称中包含节点 ID。如果在整个 Service Fabric 环中出现一个邻居丢失，通常你会预料到两个事件（间隙的两侧都会报告）。如果有多个邻居丢失，则将有更多事件。
+System.Federation 在检测到邻居丢失时会报告一个错误。报告来自于单个节点，并且在属性名称中包含节点 ID。如果在整个 Service Fabric 环中出现一个邻居丢失，通常你会预料到两个事件（间隙的两侧都会报告）。如果有多个邻居丢失，则将有更多事件。
 
 报告将全局租约超时指定为生存时间。只要条件仍处于活动状态，就会在每半个 TTL 期间重新发送一次报告。事件到期后将被自动删除，因此，如果报告节点关闭，则仍然能够从运行状况存储正确地清除事件。
 
 - **SourceId**：System.Federation
-- **属性**：以 **Neighborhood** 开头并包含节点信息。
+- **属性**：以 “Neighborhood” 开头并包含节点信息。
 - **后续步骤**：调查网络上邻居丢失的原因（例如，检查群集节点之间的通信）。
 
 ## 节点系统运行状况报告
-**System.FM** 表示故障转移管理器 (Failover Manager) 服务，是管理群集节点信息的主管服务。每个节点应该都有一个来自 System.FM 的报告，显示其状态。删除节点状态时，也会删除节点实体（请参阅 [RemoveNodeStateAsync](https://msdn.microsoft.com/zh-cn/library/azure/mt161348.aspx)）。
+System.FM 表示故障转移管理器 (Failover Manager) 服务，是管理群集节点信息的主管服务。每个节点应该都有一个来自 System.FM 的报告，显示其状态。删除节点状态时，也会删除节点实体（请参阅 [RemoveNodeStateAsync](https://msdn.microsoft.com/zh-cn/library/azure/mt161348.aspx)）。
 
 ### 节点开启/节点关闭
 当节点加入环时，System.FM 报告为正常（节点已启动且正在运行）。当节点离开环时，则报告错误（节点已关闭进行升级，或只是发生故障）。运行状况存储构建的运行状况层次结构依据 System.FM 节点报告在已部署的实体上实施操作。它将节点视为所有已部署实体的虚拟父项。如果节点处于关闭状态或未报告，则查询不到已部署在该节点上的实体，或者节点拥有的实例与这些实体相关联的实例不同，则也会查询不到这些实例。当 System.FM 报告节点关闭或已重新启动（新实例）时，运行状况存储自动清理只能在已关闭节点或该节点的上一实例中存在的已部署实体。
@@ -168,16 +167,16 @@ PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountService
 
 ServiceName           : fabric:/WordCount/WordCountService
 AggregatedHealthState : Warning
-UnhealthyEvaluations  : 
-                        Unhealthy event: SourceId='System.PLB', 
-                        Property='ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b', HealthState='Warning', 
+UnhealthyEvaluations  :
+                        Unhealthy event: SourceId='System.PLB',
+                        Property='ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b', HealthState='Warning',
                         ConsiderWarningAsError=false.
-                        
-PartitionHealthStates : 
+
+PartitionHealthStates :
                         PartitionId           : a1f83a35-d6bf-4d39-b90d-28d15f39599b
                         AggregatedHealthState : Warning
-                        
-HealthEvents          : 
+
+HealthEvents          :
                         SourceId              : System.FM
                         Property              : State
                         HealthState           : Ok
@@ -189,7 +188,7 @@ HealthEvents          :
                         RemoveWhenExpired     : False
                         IsExpired             : False
                         Transitions           : Error->Ok = 3/22/2016 7:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
-                        
+
                         SourceId              : System.PLB
                         Property              : ServiceReplicaUnplacedHealth_Secondary_a1f83a35-d6bf-4d39-b90d-28d15f39599b
                         HealthState           : Warning
@@ -198,32 +197,32 @@ HealthEvents          :
                         ReceivedAt            : 3/23/2016 4:14:03 PM
                         TTL                   : 00:01:05
                         Description           : The Load Balancer was unable to find a placement for one or more of the Service's Replicas:
-                        fabric:/WordCount/WordCountService Secondary Partition a1f83a35-d6bf-4d39-b90d-28d15f39599b could not be placed, possibly, 
+                        fabric:/WordCount/WordCountService Secondary Partition a1f83a35-d6bf-4d39-b90d-28d15f39599b could not be placed, possibly,
                         due to the following constraints and properties:  
                         Placement Constraint: N/A
                         Depended Service: N/A
-                        
+
                         Constraint Elimination Sequence:
                         ReplicaExclusionStatic eliminated 4 possible node(s) for placement -- 1/5 node(s) remain.
                         ReplicaExclusionDynamic eliminated 1 possible node(s) for placement -- 0/5 node(s) remain.
-                        
+
                         Nodes Eliminated By Constraints:
-                        
+
                         ReplicaExclusionStatic:
-                        FaultDomain:fd:/0 NodeName:_Node_0 NodeType:NodeType0 UpgradeDomain:0 UpgradeDomain: ud:/0 Deactivation Intent/Status: 
+                        FaultDomain:fd:/0 NodeName:_Node_0 NodeType:NodeType0 UpgradeDomain:0 UpgradeDomain: ud:/0 Deactivation Intent/Status:
                         None/None
-                        FaultDomain:fd:/1 NodeName:_Node_1 NodeType:NodeType1 UpgradeDomain:1 UpgradeDomain: ud:/1 Deactivation Intent/Status: 
+                        FaultDomain:fd:/1 NodeName:_Node_1 NodeType:NodeType1 UpgradeDomain:1 UpgradeDomain: ud:/1 Deactivation Intent/Status:
                         None/None
-                        FaultDomain:fd:/3 NodeName:_Node_3 NodeType:NodeType3 UpgradeDomain:3 UpgradeDomain: ud:/3 Deactivation Intent/Status: 
+                        FaultDomain:fd:/3 NodeName:_Node_3 NodeType:NodeType3 UpgradeDomain:3 UpgradeDomain: ud:/3 Deactivation Intent/Status:
                         None/None
-                        FaultDomain:fd:/4 NodeName:_Node_4 NodeType:NodeType4 UpgradeDomain:4 UpgradeDomain: ud:/4 Deactivation Intent/Status: 
+                        FaultDomain:fd:/4 NodeName:_Node_4 NodeType:NodeType4 UpgradeDomain:4 UpgradeDomain: ud:/4 Deactivation Intent/Status:
                         None/None
-                        
+
                         ReplicaExclusionDynamic:
-                        FaultDomain:fd:/2 NodeName:_Node_2 NodeType:NodeType2 UpgradeDomain:2 UpgradeDomain: ud:/2 Deactivation Intent/Status: 
+                        FaultDomain:fd:/2 NodeName:_Node_2 NodeType:NodeType2 UpgradeDomain:2 UpgradeDomain: ud:/2 Deactivation Intent/Status:
                         None/None
-                        
-                        
+
+
                         RemoveWhenExpired     : True
                         IsExpired             : False
                         Transitions           : Error->Warning = 3/22/2016 7:57:48 PM, LastOk = 1/1/0001 12:00:00 AM
@@ -267,7 +266,7 @@ HealthEvents          :
 以下显示了一个小于目标副本计数的分区的运行状况。下一步是获取显示分区配置方式的分区描述：**MinReplicaSetSize** 为 2，**TargetReplicaSetSize** 为 7。然后获得群集中的节点数：5。因此在这种情形下，不能放置两个副本。
 
 ```powershell
-PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasHealthStateFilter ([System.Fabric.Health.HealthStateFilter]::None)
+PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None
 
 PartitionId           : 875a1caa-d79f-43bd-ac9d-43ee89a9891c
 AggregatedHealthState : Warning
@@ -603,4 +602,4 @@ HealthEvents          :
 
 [Service Fabric 应用程序升级](/documentation/articles/service-fabric-application-upgrade)
  
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0523_2016-->

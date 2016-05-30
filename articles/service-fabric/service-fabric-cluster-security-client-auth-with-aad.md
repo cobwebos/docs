@@ -10,7 +10,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="04/11/2016"
+   ms.date="04/22/2016"
    wacn.date=""/>
 
 # 预览：创建使用 Azure Active Directory 进行客户端身份验证的 Service Fabric 群集
@@ -27,17 +27,21 @@ Service Fabric 群集提供其管理功能的各种入口点（包括基于 Web 
 
 为了简化涉及到配置 AAD 与 Service Fabric 群集的一些步骤，我们创建了一组 Windows PowerShell 脚本。
 
->[AZURE.NOTE] 你必须在创建群集之前执行这些步骤；因此，在脚本需要群集名称和终结点的情况下，这些应该是计划的值，而不是所创建的值。
+>[AZURE.NOTE] 你必须在创建群集“之前”执行这些步骤；因此，在脚本需要群集名称和终结点的情况下，这些应该是计划的值，而不是所创建的值。
 
-1. [下载脚本][sf-aad-ps-script-download]并将其解压缩，然后继续操作。
+1. [将脚本下载到][sf-aad-ps-script-download]你的计算机。
 
-2. 运行 `SetupApplications.ps1` 并提供 TenantId、ClusterName 和 WebApplicationReplyUrl 作为参数。例如：
+2. 右键单击 zip 文件，选择“属性”，然后选中“取消阻止”复选框，并应用。
+
+3. 解压缩 zip 文件。
+
+4. 运行 `SetupApplications.ps1` 并提供 TenantId、ClusterName 和 WebApplicationReplyUrl 作为参数。例如：
 
     ```powershell
     .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
     ```
 
-    可以通过在 Azure 管理门户中查看租户的 URL 来找到 **TenantId**。该 URL 中嵌入的 GUID 就是 TenantId。例如：
+    可以通过在 Azure 管理门户中查看租户的 URL 来查找 **TenantId**。该 URL 中嵌入的 GUID 就是 TenantId。例如：
 
     https://<i></i>manage.windowsazure.cn/microsoft.onmicrosoft.com#Workspaces/ActiveDirectoryExtension/Directory/**690ec069-8200-4068-9d01-5aaf188e557a**/users
 
@@ -49,8 +53,8 @@ Service Fabric 群集提供其管理功能的各种入口点（包括基于 Web 
 
     系统将提示你登录到具有 AAD 租户管理权限的帐户。在你完成此操作后，脚本将继续创建 Web 和本机应用程序来代表 Service Fabric 群集。如果你在 [Azure 管理门户][azure-management-portal]中查看租户的应用程序，应会看到两个新条目：
 
-    - ClusterName\_Cluster
-    - ClusterName\_Client
+    - *ClusterName*\_Cluster
+    - *ClusterName*\_Client
 
     该脚本将列显你在下一部分创建群集时 Azure Resource Manager (ARM) 模板所需的 Json，使 PowerShell 窗口保持打开状态。
 
@@ -79,7 +83,7 @@ clusterApplication 表示在上一部分创建的 Web 应用程序。你可以�
 创建用于表示群集的应用程序后，需要将用户分配到 Service Fabric 支持的角色：只读和管理员。可以使用 [Azure 管理门户][azure-management-portal]来执行此操作。
 
 1. 导航到你的租户，然后选择“应用程序”。
-2. 选择名称类似于 `myTestCluster_Cluster` 的 Web 应用程序。
+2. 选择名称类似于 `myTestCluster_Cluster` 的 Web 应用。
 3. 单击“用户”选项卡。
 4. 选择要分配的用户，然后单击屏幕底部的“分配”按钮。
 
@@ -152,4 +156,4 @@ Connect-ServiceFabricCluster -AzureActiveDirectory -ConnectionEndpoint <cluster_
 [setupapp-script-output]: ./media/service-fabric-cluster-security-client-auth-with-aad/setupapp-script-arm-json-output.png
 [vs-publish-aad-login]: ./media/service-fabric-cluster-security-client-auth-with-aad/vs-login-prompt.png
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

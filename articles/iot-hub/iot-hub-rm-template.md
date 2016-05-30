@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 ARM 模板和 C# 创建 IoT 中心 | Microsoft Azure"
+	pageTitle="使用 ARM 模板和 C# 创建 IoT 中心 | Azure"
 	description="遵照本教程开始使用 Resource Manager 模板和 C# 程序创建 IoT 中心。"
 	services="iot-hub"
 	documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
      ms.service="iot-hub"
-     ms.date="02/12/2016"
+     ms.date="05/03/2016"
      wacn.date=""/>
 
 # 使用 C# 程序和 ARM 模板创建 IoT 中心
@@ -60,7 +60,7 @@
     static string subscriptionId = "{Your SubscriptionId}";
     static string tenantId = "{Your TenantId}";
     static string password = "{Your application Password}";
-    static string storageAddress = "https://{Your storage account name}.blob.core.windows.net";
+    static string storageAddress = "https://{Your storage account name}.blob.core.chinacloudapi.cn";
     static string rgName = "{Resource group name}";
     static string deploymentName = "{Deployment name}";
     ```
@@ -73,7 +73,7 @@
 
 1. 在解决方案资源管理器中右键单击你的项目，单击“添加”，然后单击“新建项”。将名为 **template.json** 的新 JSON 文件添加到项目。
 
-2. 将 **template.json** 的内容替换为以下资源定义，以便在**美国东部**区域添加新的标准 IoT 中心：
+2. 将 **template.json** 的内容替换为以下资源定义，以便在**中国东部**区域添加新的标准 IoT 中心：
 
     ```
     {
@@ -89,14 +89,14 @@
         "apiVersion": "2016-02-03",
         "type": "Microsoft.Devices/IotHubs",
         "name": "[parameters('hubName')]",
-        "location": "East US",
+        "location": "China East",
         "sku": {
           "name": "S1",
           "tier": "Standard",
           "capacity": 1
         },
         "properties": {
-          "location": "East US"
+          "location": "China East"
         }
       }
       ],
@@ -111,7 +111,7 @@
 
 3. 在解决方案资源管理器中右键单击你的项目，单击“添加”，然后单击“新建项”。将名为 **parameters.json** 的新 JSON 文件添加到项目。
 
-4. 将 **parameters.json** 的内容替换为以下参数信息，以便将新 IoT 中心的名称设置为 **mynewiothub**（请注意，此名称必须全局唯一）：
+4. 将 **parameters.json** 的内容替换为以下参数信息，以便设置新 IoT 中心的名称，例如 **{你的姓名首字母缩写}mynewiothub**（请注意，此名称必须全局唯一，因此应当包含你的姓名或姓名的首字母缩写）：
 
     ```
     {
@@ -210,4 +210,7 @@
 [lnk-rest-api]: https://msdn.microsoft.com/zh-cn/library/mt589014.aspx
 [lnk-azure-rm-overview]: /documentation/articles/resource-group-overview
 [lnk-storage-account]: /documentation/articles/storage-create-storage-account
-<!---HONumber=Mooncake_0425_2016-->
+
+
+
+<!---HONumber=Mooncake_0523_2016-->

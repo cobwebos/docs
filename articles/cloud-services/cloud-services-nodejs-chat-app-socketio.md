@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用 Socket.io 构建 Node.js 应用程序 | Microsoft Azure" 
+	pageTitle="使用 Socket.io 构建 Node.js 应用程序 | Azure" 
 	description="了解如何在 Azure 上托管的 node.js 应用程序中使用 socket.io。" 
 	services="cloud-services" 
 	documentationCenter="nodejs" 
@@ -9,8 +9,8 @@
 
 <tags 
 	ms.service="cloud-services" 
-	ms.date="01/09/2016" 
-	wacn.date=""/>
+	ms.date="05/04/2016" 
+	wacn.date="05/17/2016"/>
 
 # 在 Azure 云服务中使用 Socket.IO 生成 Node.js 聊天应用程序
 
@@ -32,7 +32,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
 
 以下步骤创建将托管 Socket.IO 应用程序的云服务项目。
 
-1. 在“开始”菜单或“开始”屏幕中，搜索 **Azure PowerShell**。最后，右键单击“Azure PowerShell”并选择“以管理员身份运行”。
+1. 在“开始”菜单或“开始”屏幕中，搜索 **Windows PowerShell**。最后，右键单击“Windows PowerShell”并选择“以管理员身份运行”。
 
 	![Azure PowerShell 图标][powershell-menu]
 
@@ -111,7 +111,7 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
 
         PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
 
-2.  打开浏览器并导航到 ****http://127.0.0.1**。
+2.  打开浏览器并导航到 **http://127.0.0.1**。
 
 3.  当浏览器窗口打开时，输入一个昵称，然后按 Enter。这样，您就可以以特定昵称发布消息。要测试多用户功能，请使用同一 URL 打开另外的浏览器窗口但输入不同的昵称。
 
@@ -125,9 +125,9 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
 
         PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "China East" -Launch
 
-	> [AZURE.IMPORTANT] 确保使用唯一名称，否则发布过程会失败。部署完成后，浏览器将打开并导航到已部署的服务。  
-	
-	如果你收到一条错误，指出导入的发布配置文件中不存在提供的订阅名称，则你必须先为你的订阅下载和导入发布配置文件，然后再部署到 Azure。请参阅[生成 Node.js 应用程序并将其部署到 Azure 云服务](/documentation/articles/cloud-services-nodejs-develop-deploy-app)中的**将应用程序部署到 Azure**部分
+	> [AZURE.IMPORTANT] 确保使用唯一名称，否则发布过程会失败。部署完成后，浏览器将打开并导航到已部署的服务。
+	> 
+	> 如果你收到一条错误，指出导入的发布配置文件中不存在提供的订阅名称，则你必须先为你的订阅下载和导入发布配置文件，然后再部署到 Azure。请参阅[生成 Node.js 应用程序并将其部署到 Azure 云服务](/documentation/articles/cloud-services-nodejs-develop-deploy-app)中的**将应用程序部署到 Azure**部分
 
     ![显示托管在 Azure 上的服务的浏览器窗口][completed-app]
 
@@ -166,4 +166,4 @@ Socket.IO 在 node.js 服务器和客户端之间提供实时通信。本教程�
   
  
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0523_2016-->

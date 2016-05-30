@@ -1,7 +1,7 @@
 
 本文介绍如何在 Azure 中为 Web 应用配置 HTTPS。其中不涉及客户端证书身份验证；有关该方面的信息，请参阅[如何为 Web 应用配置 TLS 相互身份验证](/documentation/articles/app-service-web-configure-tls-mutual-auth)。
 
-默认情况下，Azure 已使用 *.chinacloudsites.cn 域的通配符证书为你的应用启用 HTTP。如果不打算配置自定义域，可以直接利用默认的 HTTPS 证书。但是，就像[所有通配符域](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)一样，这并不如将自定义域与自己的证书搭配使用那么安全。
+默认情况下，Azure 已使用 *.chinacloudsites.cn 域的通配符证书为你的应用启用 HTTPS。如果不打算配置自定义域，可以直接利用默认的 HTTPS 证书。但是，就像[所有通配符域](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)一样，这并不如将自定义域与自己的证书搭配使用那么安全。
 
 本文档的其余部分提供了有关为自定义域启用 HTTPS 的详细信息，例如 **contoso.com**、**www.contoso.com** 或 **\*.contoso.com**
 
@@ -11,11 +11,11 @@
 若要为自定义域启用 HTTPS（例如 **contoso.com**），必须先[在 Azure Web 应用中配置自定义域名](/documentation/articles/web-sites-custom-domain-name)。然后，执行下列操作：
 
 1. [获取 SSL 证书](#bkmk_getcert)
-2. [配置标准定价层](#bkmk_standardmode)
+2. [配置标准或高级定价层](#bkmk_standardmode)
 2. [在应用中配置 SSL](#bkmk_configuressl)
 3. [对应用强制实施 SSL](#bkmk_enforce)（可选）
 
-如果在本文中有任何需要协助的地方，你可以联系 [MSDN Azure 和堆栈溢出论坛](/support/forums/)上的 Azure 专家。或者，你也可以提出 Azure 支持事件。请转到 [Azure 支持站点](/support/contact/)并单击“获取支持”。
+如果在本文中有任何需要协助的地方，你可以联系 [MSDN Azure 和堆栈溢出论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。或者，你也可以提出 Azure 支持事件。请转到 [Azure 支持站点](https://azure.microsoft.com/support/contact/)并单击“获取支持”。
 
 <a name="bkmk_getcert"></a>
 ## 1\.获取 SSL 证书
@@ -44,7 +44,7 @@
 >
 > Azure Web 应用支持椭圆曲线加密 (ECC) 证书；不过，它们相对较新，你应该在具体步骤中使用 CA 来创建 CSR。
 
-你可能还需要获取**[中间证书](http://en.wikipedia.org/wiki/Intermediate_certificate_authorities)**（也称为链证书），前提是这些证书由你的 CA 使用。与“非链式证书”相比，使用中间证书被认为更安全，因此 CA 通常使用这些证书。中间证书通常作为从 CA 网站的单独下载提供。本文中的步骤提供了有关如何确保任何中间证书与上载到应用的证书合并的步骤。
+你可能还需要获取**[中间证书](http://en.wikipedia.org/wiki/Intermediate_certificate_authorities)**（也称为链证书），前提是这些证书由你的 CA 使用。与“非链式证书”相比，使用中间证书被认为更安全，因此 CA 通常使用这些证书。中间证书通常作为从 CA 网站的单独下载提供。本文提供的步骤可确保任何中间证书与上载到应用的证书合并。
 
 > [AZURE.NOTE]
 >
@@ -100,15 +100,15 @@ Certreq.exe 是用于创建证书请求的 Windows 实用程序。它已成为�
 
 	![将证书管理器的图像插入此处][certmgr]
 
-9. 右键单击该证书并选择“所有任务”，然后选择“导出”。在“证书导出向导”中，单击“下一步”，然后选择“是，导出私钥”。单击**“下一步”**。
+9. 右键单击该证书并选择“所有任务”，然后选择“导出”。在“证书导出向导”中，单击“下一步”，然后选择“是，导出私钥”。单击“下一步”。
 
 	![导出私钥][certwiz1]
 
-10. 选择“个人信息交换 - PKCS #12”、“将所有证书包括在证书链中”和“导出所有扩展属性”。单击**“下一步”**。
+10. 选择“个人信息交换 - PKCS #12”、“将所有证书包括在证书链中”和“导出所有扩展属性”。单击“下一步”。
 
 	![包括所有证书和扩展的属性][certwiz2]
 
-11. 选择“密码”，然后输入并确认该密码。单击**“下一步”**。
+11. 选择“密码”，然后输入并确认该密码。单击“下一步”。
 
 	![指定密码][certwiz3]
 
@@ -376,27 +376,26 @@ OpenSSL 可用于创建使用 SubjectAltName 扩展以使单个证书支持多�
 	可使用此命令生成的 **myserver.pfx** 来出于测试目的保护你的应用。
 
 <a name="bkmk_standardmode"></a>
-## 2\.配置标准定价层
+## 2\.配置标准或高级定价层
 
-为自定义域启用 HTTPS 只适用于 Azure Web 应用中的**标准**层。请按照以下步骤将你的 App Service 计划切换到**标准**层。
+为自定义域启用 HTTPS 只适用于 Azure Web 应用中的“标准”定价层和“高级”定价层。请按照以下步骤将你的 App Service 计划切换到**标准**层。
 
 > [AZURE.NOTE] 将应用从**免费**层切换到**标准**层之前，你应该删除订阅已有的支出上限，否则如果你在计费周期结束之前达到你的上限，可能会出现你的应用变得不可用的风险。有关共享和**标准**层的详细信息，请参阅[定价详细信息][pricing]。
 
-1. 在浏览器中，打开[管理门户][portal]。
+1.	在浏览器中，打开 [Azure 门户](https://portal.azure.cn)。
+	
+2.	单击页面左侧的“应用程序服务”选项。
 
-2. 在“Web Apps”选项卡中，单击你的网站的名称。
+4.	单击应用的名称。
 
-	![选择网站][website]
+5.	在“基本功能”页中，单击“设置”。
 
-3. 单击“缩放”选项卡。
-
+6.	单击“增加”。
+	
 	![“缩放”选项卡][scale]
 
-4. 在“常规”部分中，通过单击“标准”设置应用服务计划定价层。
+7.	在“增加”部分中，单击“选择”设置 App Service 计划模式。
 
-	![选定的标准模式][standard]
-
-5. 单击“保存”。在系统提示后，单击“是”。
 	> [AZURE.NOTE] 如果出现“为 Web 应用‘&lt;应用名称&gt;’配置缩放失败”错误，你可以使用详细信息按钮来了解详细信息。可能会出现“可用的标准实例服务器不足，无法满足此请求。”错误。如果收到此错误，请联系 [Azure 支持人员](/support/contact/)。
 
 <a name="bkmk_configuressl"></a>
@@ -404,28 +403,33 @@ OpenSSL 可用于创建使用 SubjectAltName 扩展以使单个证书支持多�
 
 在执行本部分中的这些步骤之前，必须将某个自定义域名与你的应用相关联。有关详细信息，请参阅[为 Web 应用配置自定义域名][customdomain]。
 
-1.	在你的浏览器中，打开 [Azure 管理门户][portal]。
+1.	在浏览器中，打开 [Azure 门户](https://portal.azure.cn)。
 
-2. 在“Web Apps”选项卡中，单击站点名称，然后选择“配置”选项卡。
+2.	单击页面左侧的“应用程序服务”选项。
+
+4.	单击应用的名称。
+
+5.	在“基本功能”页中，单击“设置”。
+
+6.	单击“自定义域和 SSL”。
 
 	![“配置”选项卡][configure]
 
-3. 在“证书”部分中，单击“上载证书”
+7.	在“证书”部分中，单击“上载”
 
-	![上载证书][uploadcert]
+8.	通过使用“上载证书”对话框，选择以前使用 IIS 管理器或 OpenSSL 创建的 .pfx 证书文件。如果有，指定用于保护 .pfx 文件的密码。最后，单击“保存”以上载证书。
 
-4. 通过使用“上载证书”对话框，选择以前使用 IIS 管理器或 OpenSSL 创建的 .pfx 证书文件。如果有，指定用于保护 .pfx 文件的密码。最后，单击**复选标记**以上载证书。
-	
-	![“上载证书”对话框][uploadcertdlg]
+	![ssl 上载][uploadcert]
 
-5. 在“配置”选项卡的“ssl 绑定”部分中，使用下拉菜单选择要使用 SSL 保护的域名，然后选择要使用的证书。你还可以选择是使用[服务器名称指示][sni] (SNI) 还是使用基于 IP 的 SSL。
+9. 在“SSL 设置”选项卡的“ssl 绑定”部分中，使用下拉菜单选择要使用 SSL 保护的域名，然后选择要使用的证书。你还可以选择是使用[服务器名称指示][sni] (SNI) 还是使用基于 IP 的 SSL。
 
 	![SSL 绑定][sslbindings]
+
 	* 基于 IP 的 SSL 通过将服务器的专用公共 IP 地址映射到域名，将证书与域名相关联。这要求与您的服务相关联的每个域名（contoso.com、fabricam.com 等）都具有专用的 IP 地址。这是将 SSL 证书与某一 Web 服务器相关联的传统方法。
 
 	* 基于 SNI 的 SSL 是对 SSL 和[传输层安全性][tls] (TLS) 的扩展，它允许多个域共享相同的 IP 地址，并且对于每个域都有单独的安全证书。当前常用的大多数浏览器（包括 Internet Explorer、Chrome、Firefox 和 Opera）都支持 SNI，但是，较旧的浏览器可能不支持 SNI。有关 SNI 的详细信息，请参阅 Wikipedia 上的文章[服务器名称指示][sni]。
 
-6. 单击“保存”以保存更改和启用 SSL。
+10. 单击“保存”以保存更改和启用 SSL。
 
 > [AZURE.NOTE] 如果你选择“基于 IP 的 SSL”，并且你的自定义域使用 A 记录进行配置，则必须执行以下附加步骤：
 >
@@ -437,15 +441,18 @@ OpenSSL 可用于创建使用 SubjectAltName 扩展以使单个证书支持多�
 >
 > 2. 通过使用您的域名注册机构所提供的工具，修改您的自定义域名的 A 记录以指向上一步中的 IP 地址。
 
+> [AZURE.NOTE] 如果你将“基于 IP 的 SSL”添加到已与其他证书进行了“SNI 绑定”的 Web 应用，则一旦为 Web 应用启用 IP SSL，我们就会将站点的主机名重新映射到该 IP 地址，这样一来，如果任何其他主机名通过 CNAME 类型转换的方式成为该站点的主机名，则该主机名也会获取 IP SSL 地址的流量。对于这样的情况，我们创建了另一个 DNS 条目：sni.&lt;nameofyourWebApp&gt;.chinacloudsites.cn，其中，&lt;nameofyourWebApp&gt; 是 Azure Web 应用的名称。因此，你应该对指向 SNI 绑定中所用名称的 DNS 记录进行更改，改为指向 sni.&lt;nameofyourWebApp&gt;.chinacloudsites.cn。
 
 此时，你应该能够使用 `HTTPS://` 而不是 `HTTP://` 访问你的应用，以便验证证书是否已正确配置。
 
 <a name="bkmk_enforce"></a>
 ## 4\.对应用强制实施 HTTPS
 
-Azure *不* 强制实施 HTTPS。访问者可能仍使用 HTTP 访问应用，这可能危及应用的安全。如果想为应用强制实施 HTTPS，可以使用 **URL 重写**模块。URL 重写模块包含在 Azure Web 应用中，你能够用它定义将请求传递给应用程序之前应用于传入请求的规则。**该模块可用于以 Azure 支持的任何编程语言编写的应用程序。**
+Azure *不*强制实施 HTTPS。访问者可能仍使用 HTTP 访问应用，这可能危及应用的安全。如果想为应用强制实施 HTTPS，可以使用 **URL 重写**模块。URL 重写模块包含在 Azure Web 应用中，你能够用它定义将请求传递给应用程序之前应用于传入请求的规则。**该模块可用于以 Azure 支持的任何编程语言编写的应用程序。**
 
-> [AZURE.NOTE] .NET MVC 应用程序应使用 [RequireHttps](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.requirehttpsattribute.aspx) 筛选器而不是 URL 重写。有关使用 RequireHttps 的详细信息，请参阅[将安全的 ASP.NET MVC 5 应用部署到 Web 应用](/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database)。<p>有关使用其他编程语言和框架以编程方式重定向请求的信息，请参阅这些技术的文档。
+> [AZURE.NOTE] .NET MVC 应用程序应使用 [RequireHttps](http://msdn.microsoft.com/zh-cn/library/system.web.mvc.requirehttpsattribute.aspx) 筛选器而不是 URL 重写。有关使用 RequireHttps 的详细信息，请参阅[将安全的 ASP.NET MVC 5 应用部署到 Web 应用](/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database)。
+>
+> 有关使用其他编程语言和框架以编程方式重定向请求的信息，请参阅这些技术的文档。
 
 URL 重写规则在存储于应用程序根目录中的 **web.config** 文件内定义。以下示例包含可强制所有传入流量使用 HTTPS 的基本 URL 重写规则。
 
@@ -515,6 +522,7 @@ URL 重写规则在存储于应用程序根目录中的 **web.config** 文件内
 - [在 Azure 中配置 Web 应用](/documentation/articles/web-sites-configure)
 - [Azure 管理门户](https://manage.windowsazure.cn)
 
+
 [customdomain]: /documentation/articles/web-sites-custom-domain-name
 [iiscsr]: http://technet.microsoft.com/zh-cn/library/cc732906(WS.10).aspx
 [cas]: http://go.microsoft.com/fwlink/?LinkID=269988
@@ -539,4 +547,4 @@ URL 重写规则在存储于应用程序根目录中的 **web.config** 文件内
 [certwiz3]: ./media/configure-ssl-web-site/waws-certwiz3.png
 [certwiz4]: ./media/configure-ssl-web-site/waws-certwiz4.png
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0523_2016-->

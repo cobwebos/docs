@@ -1,6 +1,6 @@
 <properties
    pageTitle="扩展或缩减 Service Fabric 群集 | Azure"
-   description="根据要求通过添加或删除虚拟机节点来扩展或缩减 Service Fabric 群集。"
+   description="通过为每个节点类型/VM 缩放集设置自动缩放规则来增加或减少 Service Fabric 群集以满足需求。"
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -9,73 +9,65 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/12/2016"
+   ms.date="05/04/2016"
    wacn.date=""/>
 
 
-# 通过添加或删除虚拟机来扩展或缩减 Service Fabric 群集
+# 使用自动缩放规则增加或减少 Service Fabric 群集
 
-你可以根据要求，通过添加或删除虚拟机来扩展或缩减 Azure Service Fabric 群集。
+虚拟机缩放集是一种 Azure 计算资源，可用于将一组 VM 作为一个集进行部署和管理。在 Service Fabric 群集中定义的每个节点类型将设置为不同的 VM 缩放集。然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。可在 [Service Fabric nodetypes](/documentation/articles/service-fabric-cluster-nodetypes) 文档中了解有关详细信息。由于群集中的 Service Fabric 节点类型由后端的 VM 缩放集构成，因此需要为每个节点类型/VM 缩放集设置自动缩放规则。
 
->[AZURE.NOTE] 你的订阅必须有足够的核心用于添加构成此群集的新 VM。
+>[AZURE.NOTE] 你的订阅必须有足够的核心用于添加构成此群集的新 VM。当前没有模型验证，因此如果达到任何配额限制，则你会遇到部署时间故障。
 
-## 手动缩放 Service Fabric 群集
+## 选择要缩放的节点类型/VM 缩放集
 
-### 选择要缩放的节点类型
+当前无法使用门户为 VM 缩放集指定自动缩放规则，因此我们来使用 Azure PowerShell (1.0+) 列出节点类型，然后向它们添加自动缩放规则。
 
-如果群集包含多个节点类型，你必须在特定节点类型中添加或删除 VM。方法如下：
+若要获取构成群集的 VM 缩放集的列表，请运行以下 cmdlet：
 
-1. 登录到 [Azure 门户](https://portal.azure.cn/)。
+```powershell
+Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Network/VirtualMachineScaleSets
 
-2. 导航到“Service Fabric 群集”。
- ![Azure 门户中的 Service Fabric 群集页。][BrowseServiceFabricClusterResource]
+Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <VM Scale Set name>
+```
 
-3. 选择想要扩展或缩减的群集。
+## 为节点类型/VM 缩放集设置自动缩放规则
 
-4. 在群集仪表板上导航到“设置”边栏选项卡。如果没看到“设置”边栏选项卡，请单击群集仪表板上基本信息部分中的“所有设置”。
+如果群集具有多个节点类型，则需要为要缩放（增加或减少）的每个节点类型/VM 缩放集执行此操作。在设置自动缩放之前请考虑必须具有的节点数。对于主节点类型所必须具有的最小节点数受所选择的可靠性级别影响。了解有关[可靠性级别](/documentation/articles/service-fabric-cluster-capacity)的详细信息。
 
-5. 单击“NodeTypes”，随后将打开“NodeTypes 列表”边栏选项卡。
+>[AZURE.NOTE]  将主节点类型减少到小于最小数量会使群集不稳定或使它关闭。这可能会对应用程序和系统服务造成数据丢失。
 
-6. 单击想要扩展或缩减的节点类型，随后将打开“NodeType 详细信息”边栏选项卡。
+当前，自动缩放功能不受应用程序可能向 Service Fabric 报告的负荷所影响。因此当前你获得的自动缩放纯粹受每个 VM 缩放集实例发出的性能计数器所影响。
 
-### 通过添加节点来扩展
+请按照以下说明[为每个 VM 缩放集设置自动缩放](/documentation/articles/virtual-machine-scale-sets-autoscale-overview)。
 
-根据需要调大 VM 数量，然后保存。部署完成后，将会增加节点/VM。
+>[AZURE.NOTE] 在减少方案中，除非节点类型具有金级或银级持续性级别，否则需要使用相应节点名称来调用 [Remove-ServiceFabricNodeState cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/mt125993.aspx)。
 
-### 通过删除节点来缩减
+## 可能会在 Service Fabric Explorer 中观察到的行为
 
-删除节点是包含两个步骤的过程：
+增加群集时，Service Fabric Explorer 会反映属于群集一部分的节点（VM 缩放集实例）数。但是在减少群集时，你仍会看到已删除的节点/VM 实例显示为不正常状态，除非使用相应节点名称来调用 [Remove-ServiceFabricNodeState cmd](https://msdn.microsoft.com/zh-cn/library/mt125993.aspx)。
 
-1. 根据需要调小 VM 数量，然后保存。滑块下方的值表示该节点类型所需的最少 VM 数量。
+下面是此行为的说明。
 
-    >[AZURE.NOTE] 必须为主节点类型至少保留 5 个 VM。
+Service Fabric Explorer 中列出的节点是 Service Fabric 系统服务（特别是 FM）在群集具有的节点数方面所了解的信息的反映。减少 VM 缩放集时，VM 已删除，但是 FM 系统服务仍然认为节点（映射到已删除的 VM）会恢复。因此 Service Fabric Explorer 会继续显示该节点（尽管运行状况状态可能是错误或未知）。
 
-2. 该部署完成后，系统告知现在可以删除的 VM 名称。然后，你需要导航到 VM 资源并将其删除：
+若要确保在删除 VM 时删除节点，有两个选项：
 
-    a.返回到群集仪表板并单击“资源组”。随后将打开“资源组”边栏选项卡。
+1) 为群集中的节点类型选择金级或银级（即将推出）持续性级别，这会为你提供基础结构集成。这随后会在你进行减少时自动从我们的系统服务 (FM) 状态中删除节点。请参阅[有关持续性级别的详细信息](/documentation/articles/service-fabric-cluster-capacity)
 
-    b.查看“摘要”下面的信息，或单击“...”打开资源列表。
-
-    c.单击系统指出可以删除的 VM 名称。
-
-    d.单击“删除”图标删除该 VM。
+2) 减少 VM 实例之后，需要调用 [Remove-ServiceFabricNodeState cmdlet](https://msdn.microsoft.com/zh-cn/library/mt125993.aspx)。
 
 >[AZURE.NOTE] Service Fabric 群集需要有一定数量的节点可随时启动，以保持可用性和状态 - 称为“维持仲裁”。因此，除非你已事先执行[状态的完整备份](/documentation/articles/service-fabric-reliable-services-backup-restore)，否则关闭群集中的所有计算机通常是不安全的做法。
 
-## 自动缩放 Service Fabric 群集
-
-Service Fabric 群集目前不支持自动缩放。不久之后，群集将构建在虚拟机缩放集的基础之上，到时你便可以使用自动缩放功能，其行为与云服务的自动缩放行为类似。
-
-## 使用 PowerShell/CLI 缩放群集
-
-本文介绍使用门户缩放群集。但是，你也可以从命令行执行相同的操作，方法是对群集资源使用 Azure Resource Manager 命令。群集资源的 GET 响应提供已禁用的节点列表。
-
 ## 后续步骤
+参阅以下文章以另外了解如何规划群集容量、升级群集以及对服务进行分区：
 
-- [了解群集升级](/documentation/articles/service-fabric-cluster-upgrade)
-- [了解如何为有状态服务分区以最大程度地实现缩放](/documentation/articles/service-fabric-concepts-partitioning)
+- [规划群集容量](/documentation/articles/service-fabric-cluster-capacity)
+- [群集升级](/documentation/articles/service-fabric-cluster-upgrade)
+- [为有状态服务分区以最大程度地实现缩放](/documentation/articles/service-fabric-concepts-partitioning)
 
 <!--Image references-->
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png
+[ClusterResources]: ./media/service-fabric-cluster-scale-up-down/ClusterResources.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0523_2016-->

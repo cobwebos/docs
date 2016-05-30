@@ -1,5 +1,5 @@
 <properties
-   pageTitle="保护 Service Fabric 群集 | Microsoft Azure"
+   pageTitle="保护 Service Fabric 群集 | Azure"
    description="如何保护 Service Fabric 群集。有哪些选项？"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/01/2016"
+   ms.date="05/02/2016"
    wacn.date=""/>
 
 # 保护 Service Fabric 群集
@@ -74,10 +74,14 @@ Import-Module "C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\Service
 登录到你的 Azure 帐户。如果此 PowerShell 命令由于某些原因而失败，你应该检查 Azure PowerShell 是否已正确安装。
 
 ```
-Login-AzureRmAccount
+Login-AzureRmAccount -EnvironmentName AzureChinaCloud
 ```
 
-以下脚本将创建新的资源组和/或密钥保管库（如果尚不存在）。
+以下脚本将创建新的资源组和/或密钥保管库（如果尚不存在）。**请注意：如果使用现有密钥保管库，则它必须使用此脚本配置为支持部署。**
+
+```
+Set-AzureRmKeyVaultAccessPolicy -VaultName <Name of the Vault> -ResourceGroupName <string> -EnabledForDeployment
+```
 
 ```
 Invoke-AddCertToKeyVault -SubscriptionId <your subscription id> -ResourceGroupName <string> -Location <region> -VaultName <Name of the Vault> -CertificateName <Name of the Certificate> -Password <Certificate password> -UseExistingCertificate -ExistingPfxFilePath <Full path to the .pfx file>
@@ -98,12 +102,12 @@ Invoke-AddCertToKeyVault -SubscriptionId 35389201-c0b3-405e-8a23-9f1450994307 -R
 
 现在你已拥有设置安全群集所需的信息。请转到步骤 3。
 
-**步骤 2.5**：如果你*没有*证书，但想要创建新的自签名证书并将它上载到密钥保管库，请执行以下步骤。
+**步骤 2.5**：如果你*没有* 证书，但想要创建新的自签名证书并将它上载到密钥保管库，请执行以下步骤。
 
 登录到你的 Azure 帐户。如果此 PowerShell 命令由于某些原因而失败，你应该检查 Azure PowerShell 是否已正确安装。
 
 ```
-Login-AzureRmAccount
+Login-AzureRmAccount -EnvironmentName AzureChinaCloud
 ```
 
 以下脚本将创建新的资源组和/或密钥保管库（如果尚不存在）。
@@ -168,7 +172,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FileP
 ```
 ```
     https://chackdan-kmstest-eastus.vault.chinacloudapi.cn:443/secrets/MyCert/6b5cc15a753644e6835cb3g3486b3812
-    ```
+```
 
 - **证书指纹。** 这是证书的指纹，可以在前面指定的 URL 中找到。
 
@@ -220,7 +224,7 @@ X.509 数字证书通常用于验证客户端与服务器，以及对消息进�
 >[AZURE.NOTE]
 - 运行生产工作负荷的群集中使用的证书应使用正确配置的 Windows Server 证书服务来创建，或者从已批准的[证书颁发机构 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) 获取。
 - 切勿在生产环境中使用通过 MakeCert.exe 等工具创建的临时或测试证书。
-- 对于用于测试的群集，可以选择使用自签名证书。
+- 对于仅用于测试的群集，可以选择使用自签名证书。
 
 ### 服务器证书和客户端证书
 
@@ -228,8 +232,7 @@ X.509 数字证书通常用于验证客户端与服务器，以及对消息进�
 
 服务器证书的主要任务是在客户端上对服务器（节点）进行身份验证，或者在一个服务器（节点）上对另一个服务器（节点）进行身份验证。客户端或节点对节点进行身份验证时，一项初始检查是检查“使用者”字段中的公用名值。此公用名或某个证书的使用者可选名称必须存在于允许的公用名列表中。
 
-以下文章说明了如何生成包含使用者可选名称 (SAN) 的证书：
-[如何将使用者可选名称添加到安全的 LDAP 证书](http://support.microsoft.com/zh-cn/kb/931351)。
+以下文章说明了如何生成包含使用者可选名称 (SAN) 的证书：[如何将使用者可选名称添加到安全的 LDAP 证书](http://support.microsoft.com/zh-cn/kb/931351)。
 
 >[AZURE.NOTE] “使用者”字段可以包含多个值，每个值的前面带有代表该值类型的首字母。最常见的首字母是“CN”，表示公用名，例如“CN = www.contoso.com”。“使用者”字段也可能是空白的。如果可选的“使用者可选名称”字段已填充数据，则此字段必须包含证书的公用名，以及每个使用者可选名称的一个条目。这些内容作为“DNS 名称”值输入。
 
@@ -242,6 +245,37 @@ X.509 数字证书通常用于验证客户端与服务器，以及对消息进�
 >[AZURE.NOTE] Service Fabric 群集上的所有管理操作都需要服务器证书。客户端证书不能用于管理。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+
+
+### 连接到安全群集
+
+1. 运行以下命令，以便在即将用于运行“Connect-serviceFabricCluster”PowerShell 命令的计算机上设置证书。
+
+    ```powershell
+    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
+            -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
+            -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
+    ```
+
+2. 运行以下 PowerShell 命令连接到安全群集。证书的详细信息与设置群集时提供的信息相同。
+
+    ```powershell
+    Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
+              -KeepAliveIntervalInSec 10 `
+              -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
+              -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
+              -StoreLocation CurrentUser -StoreName My
+    ```
+
+    例如，上述 PowerShell 命令应该类似于以下内容：
+
+    ```powershell
+    Connect-serviceFabricCluster -ConnectionEndpoint sfcluster4doc.westus.cloudapp.azure.com:19000 `
+              -KeepAliveIntervalInSec 10 `
+              -X509Credential -ServerCertThumbprint C179E609BBF0B227844342535142306F3913D6ED `
+              -FindType FindByThumbprint -FindValue C179E609BBF0B227844342535142306F3913D6ED `
+              -StoreLocation CurrentUser -StoreName My
+    ```
 
 ## 后续步骤
 
@@ -256,4 +290,4 @@ X.509 数字证书通常用于验证客户端与服务器，以及对消息进�
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0523_2016-->

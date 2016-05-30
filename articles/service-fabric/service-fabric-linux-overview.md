@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="04/14/2016"
+   ms.date="05/13/2016"
    wacn.date=""/>
 
 # Linux 上的 Service Fabric
@@ -24,14 +24,9 @@ Service Fabric 目前在 Linux 上以受限预览版提供，可让你在 Linux 
 
 >[AZURE.NOTE] Java 尚不支持可靠集合。
 
-## 参与预览
-
-如果你有兴趣参与受限预览计划，[请填写调查表](http://aka.ms/sflinuxsurvey)，好让我们更深入地了解你的方案和要求。预览群体的规模一开始比较小，以后会不断扩大。
-
-请注意，Linux 上的 Service Fabric 在概念上相当于 Windows 上可用的 Service Fabric（OS 细节和编程语言支持除外），因此大部分[现有文档](/documentation/services/service-fabric)都适用并可帮助你熟悉该技术。
 
 ## 后续步骤
 
 熟悉 [Reliable Actors](/documentation/articles/service-fabric-reliable-actors-introduction) 和 [Reliable Services](/documentation/articles/service-fabric-reliable-services-introduction) 编程框架。
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

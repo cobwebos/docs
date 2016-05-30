@@ -21,7 +21,7 @@
 
 本主题介绍如何使用 Azure 通知中心将重要资讯通知广播到 Android 应用。完成时，你可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。
 
-在创建通知中心的注册时，通过加入一个或多个标记来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-routing-tag-expressions.md)。
+在创建通知中心的注册时，通过加入一个或多个_标记_来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标记的详细信息，请参阅[通知中心路由和标记表达式](notification-hubs-routing-tag-expressions.md)。
 
 
 ##先决条件
@@ -192,7 +192,7 @@
 	        notifications.subscribeToCategories(notifications.retrieveCategories());
 	    }
 
-	应已设置 `HubName` 和 `HubListenConnectionString`，其中的 `<hub name>` 和 `<connection string with listen access>` 占位符已替换为你的通知中心名称和你之前获取的 DefaultListenSharedAccessSignature 的连接字符串。
+	应已设置 `HubName` 和 `HubListenConnectionString`，其中的 `<hub name>` 和 `<connection string with listen access>` 占位符已替换为你的通知中心名称和你之前获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
 
 	> [AZURE.NOTE] 由于使用客户端应用程序分发的凭据通常是不安全的，你只应使用客户端应用程序分发具有侦听访问权限的密钥。侦听访问权限允许应用程序注册通知，但是无法修改现有注册，也无法发送通知。在受保护的后端服务中使用完全访问权限密钥，以便发送通知和更改现有注册。
 
@@ -249,8 +249,8 @@
 
     @Override
     protected void onStart() {
-        super.onStart();
-        isVisible = true;
+    super.onStart();
+    isVisible = true;
 
         Set<String> categories = notifications.retrieveCategories();
 
@@ -288,8 +288,6 @@
 
 4. 通过运行 .NET 控制台应用发送新通知。或者，你也可以在 [Azure 经典门户]中使用通知中心的调试选项卡发送带标记的模板通知。
 
-	+ **Java/PHP：**运行你的应用/脚本。
-
 	所选类别的通知作为 toast 通知显示。
 
 ##后续步骤
@@ -320,4 +318,4 @@
 [Azure 经典门户]: https://manage.windowsazure.cn
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0523_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="如何创建和部署云服务 | Microsoft Azure"
+	pageTitle="如何创建和部署云服务 | Azure"
 	description="了解如何在 Azure 中使用“快速创建”方法创建和部署云服务。"
 	services="cloud-services"
 	documentationCenter=""
@@ -9,8 +9,8 @@
 
 <tags
 	ms.service="cloud-services"
-	ms.date="01/15/2016"
-	wacn.date=""/>
+	ms.date="04/15/2016"
+	wacn.date="05/17/2016"/>
 
 
 
@@ -18,14 +18,14 @@
 # 如何创建和部署云服务
 
 > [AZURE.SELECTOR]
-- [Azure portal](/documentation/articles/cloud-services-how-to-create-deploy-portal)
-- [Azure classic portal](/documentation/articles/cloud-services-how-to-create-deploy)
+- [Azure 门户](/documentation/articles/cloud-services-how-to-create-deploy-portal)
+- [Azure 经典门户](/documentation/articles/cloud-services-how-to-create-deploy)
 
 Azure 经典门户为你提供两种创建和部署云服务的方法：“快速创建”和“自定义创建”。
 
 本主题介绍如何使用“快速创建”方法创建新的云服务，然后使用“上载”在 Azure 中上载和部署云服务包。使用此方法时，Azure 经典门户在你进行操作时将提供方便的链接供你完成所有要求。如果你在创建云服务后已准备好对其进行部署，则可以使用“自定义创建”同时执行这两项操作。
 
-> [AZURE.NOTE] 如果你计划从 Visual Studio Team Services (VSTS) 发布云服务，请使用“快速创建”，然后从“快速启动”或仪表板设置 VSTS 发布。有关详细信息，请参阅[使用 Visual Studio Team Services 向 Azure 持续传送项目][TFSTutorialForCloudService]，或查看“快速启动”页的帮助。
+> [AZURE.NOTE] 如果你计划从 Visual Studio Team Services (VSTS) 发布云服务，请使用“快速创建”，然后从“快速启动”或仪表板设置 VSTS 发布。有关详细信息，请参阅 [使用 Visual Studio Team Services 向 Azure 持续传送项目][TFSTutorialForCloudService]，或查看“快速启动”页的帮助。
 
 ## 概念
 要将应用程序部署为 Azure 中的云服务，需要以下三个组件：
@@ -50,7 +50,7 @@ Azure 经典门户为你提供两种创建和部署云服务的方法：“快�
 
 - 如果要配置与角色实例的远程桌面连接，请[为这些角色配置远程桌面](/documentation/articles/cloud-services-role-enable-remote-desktop)。
 
-- 如果要为云服务配置详细监视，请为云服务启用 Azure 诊断。*“最少监视”*（默认监视级别）使用从角色实例（虚拟机）的主机操作系统中收集到的性能计数器。“详细监视”根据角色实例中的性能数据收集其他度量信息，以便对处理应用程序期间出现的问题进行进一步分析。若要了解如何启用 Azure 诊断，请参阅[在 Azure 中启用诊断](/documentation/articles/cloud-services-dotnet-diagnostics)。
+- 如果要为云服务配置详细监视，请为云服务启用 Azure 诊断。“最少监视”（默认监视级别）使用从角色实例（虚拟机）的主机操作系统中收集到的性能计数器。“详细监视”根据角色实例中的性能数据收集其他度量信息，以便对处理应用程序期间出现的问题进行进一步分析。若要了解如何启用 Azure 诊断，请参阅[在 Azure 中启用诊断](/documentation/articles/cloud-services-dotnet-diagnostics)。
 
 要使用 Web 角色或辅助角色创建云服务，你必须[创建服务包](/documentation/articles/cloud-services-model-and-package/#servicepackagecspkg)。
 
@@ -139,14 +139,12 @@ Azure 经典门户为你提供两种创建和部署云服务的方法：“快�
 
     ![云服务\_速览](./media/cloud-services-how-to-create-deploy/CloudServices_QuickGlance.png)
 
-
-[TFSTutorialForCloudService]: /documentation/articles/cloud-services-continuous-delivery-use-vso
  
 ## 后续步骤
 
 * [云服务的常规配置](/documentation/articles/cloud-services-how-to-configure)。
-* 配置 [自定义域名](/documentation/articles/cloud-services-custom-domain-name)。
+* [配置自定义域名](/documentation/articles/cloud-services-custom-domain-name)
 * [管理云服务](/documentation/articles/cloud-services-how-to-manage)。
 * 配置 [SSL 证书](/documentation/articles/cloud-services-configure-ssl-certificate)。
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0523_2016-->

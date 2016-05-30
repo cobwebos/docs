@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 REST API 创建 IoT 中心 | Microsoft Azure"
+	pageTitle="使用 REST API 创建 IoT 中心 | Azure"
 	description="遵照本教程开始使用 REST API 创建 IoT 中心。"
 	services="iot-hub"
 	documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
      ms.service="iot-hub"
-     ms.date="02/12/2016"
+     ms.date="05/03/2016"
      wacn.date=""/>
 
 # 教程：使用 C# 程序和 REST API 创建 IoT 中心
@@ -25,8 +25,8 @@
 为了完成本教程，你需要有：
 
 - Microsoft Visual Studio 2015。
-- 有效的 Azure 帐户。<br/>如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][lnk-free-trial]。
-- [Microsoft Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。
+- 有效的 Azure 帐户。<br/>如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 免费试用][lnk-free-trial]。
+- [Azure PowerShell 1.0][lnk-powershell-install] 或更高版本。
 
 [AZURE.INCLUDE [iot-hub-prepare-resource-manager](../includes/iot-hub-prepare-resource-manager.md)]
 
@@ -57,7 +57,7 @@
     using Newtonsoft.Json;
     ```
     
-7. 在 Program.cs 中，将占位符值替换为以下静态变量。在本教程前面的介绍中，你已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。**Resource group name** 是创建 IoT 中心时要使用的资源组名称，可以是现有的资源组或新资源组。**IoT 中心名称**是要创建的 IoT 中心的名称，例如 **MyIoTHub**（请注意此名称必须全局唯一）。**Deployment name** 是部署的名称，例如 **Deployment\_01**。
+7. 在 Program.cs 中，将占位符值替换为以下静态变量。在本教程前面的介绍中，你已记下 **ApplicationId**、**SubscriptionId**、**TenantId** 和 **Password**。**Resource group name** 是创建 IoT 中心时要使用的资源组名称，可以是现有的资源组或新资源组。**IoT 中心名称**是要创建的 IoT 中心的名称，例如 **MyIoTHub**（请注意，此名称必须全局唯一，因此应当包含你的姓名或姓名的首字母缩写）。**Deployment name** 是部署的名称，例如 **Deployment\_01**。
 
     ```
     static string applicationId = "{Your ApplicationId}";
@@ -66,7 +66,7 @@
     static string password = "{Your application Password}";
     
     static string rgName = "{Resource group name}";
-    static string iotHubName = "{IoT Hub name}";
+    static string iotHubName = "{IoT Hub name including your initials}";
     ```
 
 [AZURE.INCLUDE [iot-hub-get-access-token](../includes/iot-hub-get-access-token.md)]
@@ -97,7 +97,7 @@
     var description = new
     {
       name = iotHubName,
-      location = "East US",
+      location = "China East",
       sku = new
       {
         name = "S1",
@@ -113,7 +113,7 @@
 
     ```
     var content = new StringContent(JsonConvert.SerializeObject(description), Encoding.UTF8, "application/json");
-    var requestUri = string.Format("https://management.azure.com/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.devices/IotHubs/{2}?api-version=2016-02-03", subscriptionId, rgName, iotHubName);
+    var requestUri = string.Format("https://management.chinacloudapi.cn/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.devices/IotHubs/{2}?api-version=2016-02-03", subscriptionId, rgName, iotHubName);
     var result = client.PutAsync(requestUri, content).Result;
       
     if (!result.IsSuccessStatusCode)
@@ -134,13 +134,13 @@
       Thread.Sleep(10000);
       HttpResponseMessage deploymentstatus = client.GetAsync(asyncStatusUri).Result;
       body = deploymentstatus.Content.ReadAsStringAsync().Result;
-    } while (body == "{"Status":"Running"}");
+    } while (body == "{'Status\':'Running'}");
     ```
 
 6. 将以下代码添加到 **CreateIoTHub** 方法末尾，以检索创建的 IoT 中心密钥并将其输出到控制台：
 
     ```
-    var listKeysUri = string.Format("https://management.azure.com/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Devices/IotHubs/{2}/IoTHubKeys/listkeys?api-version=2015-08-15-preview", subscriptionId, rgName, iotHubName);
+    var listKeysUri = string.Format("https://management.chinacloudapi.cn/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Devices/IotHubs/{2}/IoTHubKeys/listkeys?api-version=2015-08-15-preview", subscriptionId, rgName, iotHubName);
     var keysresults = client.PostAsync(listKeysUri, null).Result;
     
     Console.WriteLine("Keys: {0}", keysresults.Content.ReadAsStringAsync().Result);
@@ -178,4 +178,8 @@
 [lnk-powershell-install]: /documentation/articles/powershell-install-configure
 [lnk-rest-api]: https://msdn.microsoft.com/zh-cn/library/mt589014.aspx
 [lnk-azure-rm-overview]: /documentation/articles/resource-group-overview
-<!---HONumber=Mooncake_0425_2016-->
+
+
+
+
+<!---HONumber=Mooncake_0523_2016-->

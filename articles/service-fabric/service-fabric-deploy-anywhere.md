@@ -9,13 +9,13 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="04/05/2016"
+   ms.date="05/02/2016"
    wacn.date=""/>
 
 # 在 Windows Server 或 Linux 上创建独立的 Service Fabric 群集
 Azure Service Fabric 允许在运行 Windows Server 或 Linux 的任何 VM 或计算机上创建 Service Fabric 群集。这意味着你能够在具有一组相互连接的 Windows Server 或 Linux 计算机的任何环境（无论是本地环境还是任何云提供商所提供的）中部署和运行 Service Fabric 应用程序。
 
-**注意**：应该通过 Azure 资源模型模板或 Azure 门户在 Azure 上创建群集。有关详细信息，请阅读 [Create a Service Fabric cluster by using an Azure Resource Manager template（使用 Azure Resource Manager 模板创建 Service Fabric 群集）](/documentation/articles/service-fabric-cluster-creation-via-arm) 或 [Create a Service Fabric cluster from the Azure portal（从 Azure 门户创建 Service Fabric 群集）](/documentation/articles/service-fabric-cluster-creation-via-portal)。
+**注意**：应该通过 Azure 资源模型模板或 Azure 门户在 Azure 上创建群集。有关详细信息，请阅读 [Create a Service Fabric cluster by using an Azure Resource Manager template（使用 Azure Resource Manager 模板创建 Service Fabric 群集）](/documentation/articles/service-fabric-cluster-creation-via-arm)或 [Create a Service Fabric cluster from the Azure portal（从 Azure 门户创建 Service Fabric 群集）](/documentation/articles/service-fabric-cluster-creation-via-portal)。
 
 Service Fabric 提供了一个安装包用于在本地创建这些独立 Service Fabric 群集。此功能的一个主要优点是在使用 Service Fabric 构建应用程序时不存在供应商锁定，因为是由你选择这些应用程序的运行位置。此功能还会使你有更大的能力实现更广泛的客户群，因为客户对于想要在其中运行你的应用程序的环境可能具有不同的要求。例如，医疗保健和金融行业中的客户的需求可能与汽车或旅行行业中的客户不同。
 
@@ -58,4 +58,4 @@ Service Fabric 提供可以下载的安装包。下载了此包之后，你便�
 
 在运行 Linux 的 VM 或计算机上创建群集：[Linux 上的 Service Fabric](/documentation/articles/service-fabric-linux-overview)
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

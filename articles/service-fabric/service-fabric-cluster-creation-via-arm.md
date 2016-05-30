@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/12/2016"
+   ms.date="05/02/2016"
    wacn.date=""/>
 
 
@@ -40,7 +40,7 @@
 
 2. 可以登录到 Azure 门户，然后使用 Service Fabric 门户页来生成可自定义的模板。为此，请执行以下步骤：
 
-    a.登录到[管理门户](https://manage.windowsazure.cn/)。
+    a.登录到 [Azure 门户](https://portal.azure.cn/)。
 
     b.完成[通过 Azure 门户创建 Service Fabric 群集](/documentation/articles/service-fabric-cluster-creation-via-portal)一文中所述的群集创建过程，但不要单击“创建”，而是转到“摘要”并下载模板，如以下屏幕截图所示。
 
@@ -61,4 +61,4 @@
 <!--Image references-->
 [DownloadTemplate]: ./media/service-fabric-cluster-creation-via-arm/DownloadTemplate.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0523_2016-->

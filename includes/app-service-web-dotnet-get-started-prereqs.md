@@ -1,8 +1,6 @@
-### Azure 帐户
+* 本教程假设你用过 ASP.NET MVC。如需简介，请参阅 [Getting Started with ASP.NET MVC 5（ASP.NET MVC 5 入门）](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)。
 
-完成本教程需要有一个 Azure 帐户。你可以：
-
-* [打开 Azure 帐户](/pricing/1rmb-trial/?WT.mc_id=A261C142F)。获取可用来尝试付费版 Azure 服务的信用额度。即使在信用额度用完之后，你也可以保留帐户和使用免费的 Azure 服务和功能。
+* 需要一个 Azure 帐户。你可以[建立一个免费 Azure 帐户](/pricing/1rmb-trial/?WT.mc_id=A261C142F)或[激活 Visual Studio 订户权益](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。如果你想在注册 Azure 帐户之前就开始使用 Azure，请访问 [Try Azure Web App（试用 Azure Web 应用）](https://tryappservice.azure.com/)。在那里，你可以立刻在 Azue 中创建短期的入门级应用 -- 无需信用卡，也无需做出承诺。
 
 ### <a name="setupdevenv"></a>Visual Studio 2015 with the Azure SDK for .NET
 
@@ -14,6 +12,5 @@
 
 ### ASP.NET MVC 5
 
-本教程是关于配合使用 ASP.NET MVC 5 和 Azure Web 应用的；它并不讲解如何开发 ASP.NET Web 应用程序。如需 ASP.NET MVC 5 简介，请参阅 [ASP.NET](http://asp.net/) 站点上的 [ASP.NET MVC 5 入门](http://www.asp.net/mvc/overview/getting-started/introduction/getting-started)。
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0523_2016-->

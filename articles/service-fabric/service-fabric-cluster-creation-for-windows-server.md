@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/28/2016"
+   ms.date="05/12/2016"
    wacn.date=""/>
 
 
@@ -21,7 +21,7 @@ Azure Service Fabric 允许在运行 Windows Server 的任何虚拟机或计算�
 
 ## 下载 Service Fabric 独立包
 
-[下载适用于 Windows Server 2012 R2 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，其名为 Microsoft.Azure.ServiceFabric.WindowsServer.&lt;版本&gt;.zip。
+[下载适用于 Windows Server 2012 R2 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，其名为 “Microsoft.Azure.ServiceFabric.WindowsServer.&lt;版本&gt;.zip”。
 
 在下载包中，你将看到以下文件：
 
@@ -49,15 +49,15 @@ Azure Service Fabric 允许在运行 Windows Server 的任何虚拟机或计算�
 - .NET Framework 4.5.1 或更高版本的完整安装版
 - Windows PowerShell 3.0
 - 部署和配置群集的群集管理员必须拥有每台计算机的管理员权限。
+- 应在所有计算机上运行 RemoteRegistry 服务。
 
 ### 步骤 3：确定初始群集大小
-每个节点都包含完整的 Service Fabric 堆栈，并且是 Service Fabric 群集的独立成员。在典型的 Service Fabric 部署中，每个 OS 实例（物理或虚拟）都有一个节点。群集大小取决于业务要求；但是，一个群集必须至少包含三个节点（计算机/VM）。
-请注意，出于开发目的，可以在一台指定的计算机上创建多个节点。在生产环境中，对于每个物理机或虚拟机，Service Fabric 只支持一个节点。
+每个节点都包含完整的 Service Fabric 堆栈，并且是 Service Fabric 群集的独立成员。在典型的 Service Fabric 部署中，每个 OS 实例（物理或虚拟）都有一个节点。群集大小取决于业务要求；但是，一个群集必须至少包含三个节点（计算机/VM）。请注意，出于开发目的，可以在一台指定的计算机上创建多个节点。在生产环境中，对于每个物理机或虚拟机，Service Fabric 只支持一个节点。
 
 ### 步骤 4：确定容错域和升级域的数目
 **容错域 (FD)** 是故障的物理单元，与数据中心内的物理基础结构直接相关。容错域由共享单一故障点的硬件组件（计算机、交换机等）组成。尽管容错域与机架之间没有 1:1 映射，但是大致上，可将每个机架视为一个容错域。在考虑群集中的节点时，强烈建议至少在三个容错域之间分布节点。
 
-当你在 ClusterConfig.JSON 中指定 FD 时，必须选择 FD 的名称。Service Fabric 支持分层的 FD，因此，你可以在 FD 中反映基础结构拓扑。例如，允许以下配置：
+当你在 *ClusterConfig.JSON* 中指定 FD 时，必须选择 FD 的名称。Service Fabric 支持分层的 FD，因此，你可以在 FD 中反映基础结构拓扑。例如，允许以下配置：
 
 - "faultDomain": "fd:/Room1/Rack1/Machine1"
 - "faultDomain": "fd:/FD1"
@@ -68,7 +68,7 @@ Azure Service Fabric 允许在运行 Windows Server 的任何虚拟机或计算�
 
 领会这些概念的最简单方法是将 FD 视为非计划内故障的单元，将 UD 视为计划维护的单元。
 
-当你在 ClusterConfig.JSON 中指定 UD 时，必须选择 UD 的名称。例如，允许以下所有配置：
+当你在 *ClusterConfig.JSON* 中指定 UD 时，必须选择 UD 的名称。例如，允许以下所有配置：
 
 - "upgradeDomain": "UD0"
 - "upgradeDomain": "UD1A"
@@ -76,19 +76,19 @@ Azure Service Fabric 允许在运行 Windows Server 的任何虚拟机或计算�
 - "upgradeDomain": "Blue"
 
 ### 步骤 5：下载适用于 Windows Server 的 Service Fabric 独立包
-下载[适用于 Windows Server 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，并将包解压缩到不属于群集的部署计算机或将会属于群集的计算机之一。
+下载[适用于 Windows Server 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，并将包解压缩到不属于群集的部署计算机或将会属于群集的一个计算机中。
 
 ## 创建群集
 
 完成以上规划和准备部分中所述的步骤之后，可以开始创建群集。
 
 ### 步骤 1：修改群集配置
-打开下载的包中的 ClusterConfig.JSON。可以使用选择的任何编辑器来修改以下设置：
+打开下载的包中的 *ClusterConfig.JSON*。可以使用选择的任何编辑器来修改以下设置：
 
 |**配置设置**|**说明**|
 |-----------------------|--------------------------|
-|NodeTypes|节点类型可让你将群集节点划分到不同的组中。一个群集必须至少有一个节点类型。组中的所有节点具有以下共同特征。<br>Name - 这是节点类型名称。<br>EndPoints - 这是与此节点类型关联的各种命名终结点（端口）。你可以使用任何所需的端口号，前提是它们不与此清单中的其他任何端口冲突，并且计算机/VM 上的其他任何进程未使用该端口号 <br>PlacementProperties - 描述此节点类型的属性，你可以使用这些属性作为系统服务或服务的放置约束。这些属性是用户定义的键/值对，可为指定节点提供额外的元数据。节点属性的示例包括节点是否有硬盘或图形卡、其硬盘的轴数、核心和其他物理属性。<br>Capacities - 节点容量定义特定节点可以使用的特定资源的名称和数量。例如，节点可以定义名为“MemoryInMb”的指标容量，而且默认有 2048 MB 的可用内存。这些容量在运行时使用，以确保将需要特定资源量的服务放在具有剩余可用资源的节点上。|
-|Nodes|将属于群集的每个节点的详细信息（节点类型、节点名称、IP 地址、节点的容错域和升级域）。要在其上创建群集的计算机必须与其 IP 地址一起列在此处。<br>如果你为所有节点使用相同的 IP 地址，将会创建一个可用于测试的单机群集。不应将单机群集用于部署生产工作负荷。|
+|NodeTypes|节点类型可让你将群集节点划分到不同的组中。一个群集必须至少有一个节点类型。组中的所有节点具有以下共同特征。<br>*Name* - 这是节点类型名称。<br>*EndPoints* - 这是与此节点类型关联的各种命名终结点（端口）。你可以使用任何所需的端口号，前提是它们不与此清单中的其他任何端口冲突，并且计算机/VM 上的其他任何程序未使用该端口号 <br>*PlacementProperties* - 描述此节点类型的属性，你可以使用这些属性作为系统服务或服务的放置约束。这些属性是用户定义的键/值对，可为指定节点提供额外的元数据。节点属性的示例包括节点是否有硬盘或图形卡、其硬盘的轴数、核心和其他物理属性。<br>*Capacities* - 节点容量，定义特定节点可以使用的特定资源的名称和数量。例如，节点可以定义名为“MemoryInMb”的指标容量，而且默认有 2048 MB 的可用内存。这些容量在运行时使用，以确保将需要特定资源量的服务放在具有剩余可用资源的节点上。|
+|Nodes|将属于群集的每个节点的详细信息（节点类型、节点名称、IP 地址、节点的容错域和升级域）。要在其上创建群集的计算机必须与其 IP 地址一起列在此处。<br>如果你对所有节点使用相同的 IP 地址，将会创建一个可用于测试的单机群集。不应将单机群集用于部署生产工作负荷。|
 
 ### 步骤 2：运行创建群集脚本
 在 JSON 文档中修改群集配置并在其中添加所有节点信息之后，运行包文件夹中的群集创建 PowerShell 脚本，并传入配置文件的路径和包根目录的位置。
@@ -111,4 +111,4 @@ Azure Service Fabric 允许在运行 Windows Server 的任何虚拟机或计算�
 阅读有关 Azure 群集和独立群集的详细信息：
 - [Overview of the standalone cluster creation feature and a comparison with Azure-managed clusters（独立群集创建功能的概述及其与 Azure 托管群集的比较）](/documentation/articles/service-fabric-deploy-anywhere)
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/16/2016"
+   ms.date="05/02/2016"
    wacn.date=""/>
 
 
@@ -122,4 +122,4 @@ Microsoft 将维护群集中运行的结构代码和配置。我们将根据需�
 [AddingProbes]: ./media/service-fabric-cluster-upgrade/addingProbes.png
 [AddingLBRules]: ./media/service-fabric-cluster-upgrade/addingLBRules.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0523_2016-->

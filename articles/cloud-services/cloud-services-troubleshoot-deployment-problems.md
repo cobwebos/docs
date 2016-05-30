@@ -1,5 +1,5 @@
 <properties
- pageTitle="解决云服务部署问题 | Microsoft Azure"
+ pageTitle="排查云服务部署问题 | Azure"
  description="将云服务部署到 Azure 时，你可能会遇到几个常见问题。本文提供了部分问题的解决方案。"
    services="cloud-services"
    documentationCenter=""
@@ -9,8 +9,8 @@
    tags="top-support-issue"/>
 <tags
    ms.service="cloud-services"
-   ms.date="01/20/2016"
-   wacn.date="" />
+   ms.date="04/20/2016"
+   wacn.date="05/17/2016" />
 
 # 排查云服务部署问题
 
@@ -27,7 +27,7 @@
 
 如果你对本文中的任何点需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](/support/forums)上的 Azure 专家。
 
-或者，你也可以提出 Azure 支持事件。请转到 [Azure 支持站点](/support/contact)并单击“获取支持”。有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](/support/faq)。
+或者，你也可以提出 Azure 支持事件。请转到 [Azure 支持站点](/support/contact)并单击“获取支持”。有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](/support/faq)。
 
 ## 问题：我无法访问我的网站，但我的部署已启动且所有角色实例均已就绪
 
@@ -83,4 +83,4 @@
 
 若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请参阅 [Kevin Williamson 博客系列](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0523_2016-->

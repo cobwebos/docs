@@ -8,7 +8,7 @@
 	editor=""/>
 
 <tags
-    ms.service="backup"
+    ms.service="site-recovery"
     ms.date="03/20/2016"
     wacn.date=""/>
 
@@ -55,7 +55,7 @@ Azure 在世界各地的多个地理位置运营。Azure 地理位置是至少�
 
 ![3Green](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL 数据库** – 使用 Azure SQL 标准异地复制，可以配置为将事务异步复制到配对区域。使用高级异地复制，可以配置为复制到全球任何区域；但是，我们建议在配对区域中为大多数灾难恢复方案部署这些资源。有关详细信息，请参阅 [Azure SQL 数据库中的异地复制](https://msdn.microsoft.com/zh-cn/library/azure/dn783447.aspx)
 
-![4Green](./media/best-practices-availability-paired-regions/4Green.png) **Azure 资源管理器 (ARM)** - ARM 原本就能跨区域提供服务管理组件的逻辑隔离。这意味着某个区域发生逻辑故障不太可能会影响另一个区域。
+![4Green](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager (ARM)** - ARM 原本就能跨区域提供服务管理组件的逻辑隔离。这意味着某个区域发生逻辑故障不太可能会影响另一个区域。
 
 ## 配对区域的优势
 如图 2 所示。
@@ -76,4 +76,4 @@ Azure 在世界各地的多个地理位置运营。Azure 地理位置是至少�
 ![9Orange](./media/best-practices-availability-paired-regions/9Orange.png)
 **数据驻留** – 一个区域驻留在与其配对区域相同的地理位置（巴西南部除外），以符合税务和执法管辖范围方面的数据驻留要求。
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0523_2016-->

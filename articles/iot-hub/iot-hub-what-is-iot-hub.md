@@ -1,5 +1,5 @@
 <properties
- pageTitle="Azure IoT 中心概述 | Microsoft Azure"
+ pageTitle="Azure IoT 中心概述 | Azure"
  description="Azure IoT 中心服务概述：什么是 IoT 中心、设备连接、物联网通信模式和服务辅助通信模式"
  services="iot-hub"
  documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
  ms.service="iot-hub"
- ms.date="02/03/2016"
+ ms.date="04/29/2016"
  wacn.date=""/>
 
 # Azure IoT 中心是什么？
@@ -27,7 +27,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个 IoT 设备�
 
 ![在物联网解决方案中充当云网关的 Azure IoT 中心][img-architecture]
 
-> [AZURE.NOTE] 有关 IoT 体系结构的深入介绍，请参阅 [Microsoft Azure IoT 参考体系结构][lnk-refarch]。
+> [AZURE.NOTE] 有关 IoT 体系结构的深入讨论，请参阅 [Azure IoT 参考体系结构][lnk-refarch]。
 
 ## IoT 设备连接性挑战
 
@@ -47,15 +47,18 @@ IoT 中心和设备库可帮助你应对挑战，即如何以可靠且安全的�
 
 Azure IoT 中心以下列方式应对设备连接性挑战：
 
--   **每个设备的身份验证和安全连接性**。你可以为每个设备设置独有的 [安全密钥][lnk-devguide-security]，让它连接到 IoT 中心。[IoT 中心标识注册表][lnk-devguide-identityregistry]会在解决方案中存储设备标识和密钥。解决方案后端可将个别设备加入白名单或黑名单，以便完全控制设备访问权限。
+-   **每个设备的身份验证和安全连接性**。你可以为每个设备设置独有的[安全密钥][lnk-devguide-security]，让它连接到 IoT 中心。[IoT 中心标识注册表][lnk-devguide-identityregistry]会在解决方案中存储设备标识和密钥。解决方案后端可将个别设备加入白名单或黑名单，以便完全控制设备访问权限。
 
 -   **设备连接操作监视**。你可以收到有关设备标识管理操作与设备连接事件的详细操作日志。这可让 IoT 解决方案轻松识别连接问题，例如，尝试使用错误凭据进行连接的设备、消息发送太频繁，或拒绝所有云到设备的消息。
 
--   **一组广泛的设备库**。[Azure IoT 设备 SDK][lnk-device-sdks] 可供各种语言和平台使用并受其支持：C 表示许多 Linux 分发版、Windows 和实时操作系统。Azure IoT 设备 SDK 也支持 C#、Java 和 JavaScript 等托管语言。
+-   **一组丰富的设备库**。[Azure IoT 设备 SDK][lnk-device-sdks]可用于各种语言和平台并受到支持 — C 用于许多 Linux 分发版、Windows 和实时操作系统。Azure IoT 设备 SDK 也支持 C#、Java 和 JavaScript 等托管语言。
 
--   **IoT 协议和可扩展性**。如果你的解决方案不能使用设备库，IoT 中心会公开可让设备以本机方式使用 MQTT v3.1.1、HTTP 1.1 或 AMQP 1.0 协议的公共协议。你也可以通过自定义 [Azure IoT 协议网关][protocol-gateway]开源组件，将 IoT 中心扩展为支持自定义协议。你可以在云中或本地运行 Azure IoT 协议网关。
+-   **IoT 协议和可扩展性**。如果解决方案无法使用设备库，则 IoT 中心会公开一个公共协议，它使设备可以通过本机方式使用 MQTT v3.1.1、HTTP 1.1 或 AMQP 1.0 协议。还可以通过以下方式扩展 IoT 中心，以便为自定义协议提供支持：
 
--   **缩放**。Azure IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件。
+    - 使用 [Azure IoT 网关 SDK][lnk-gateway-sdk]创建现场网关，该 SDK 可将自定义协议转换为 IoT 中心所理解的三个协议之一。 
+    - 自定义 [Azure IoT 协议网关][protocol-gateway]（在云中运行的一个开放源代码组件）。
+
+-   **扩展**。Azure IoT 中心可扩展为数百万个同时连接的设备，以及每秒数百万个事件。
 
 对于许多通信模式，这些优点是通用的。IoT 中心目前可让你实现下列特定的通信模式：
 
@@ -67,7 +70,7 @@ Azure IoT 中心以下列方式应对设备连接性挑战：
 
 ## 网关
 
-IoT 解决方案中的网关通常是部署于云中的[协议网关][lnk-gateway]或使用你的设备在本地部署的[现场网关][lnk-field-gateway]。协议网关执行协议转换，例如 MQTT 到 AMQP。现场网关为设备提供本地管理服务。它可以是专用的设备，也可以是在现有硬件部分上运行的软件。这两种网关都可以充当设备与 IoT 中心之间的媒介。
+IoT 解决方案中的网关通常是部署于云中的[协议网关][lnk-gateway]或使用你的设备在本地部署的[现场网关][lnk-field-gateway]。协议网关执行协议转换，例如 MQTT 到 AMQP。现场网关可以在边缘运行分析、制定可以减少延迟的时间敏感型决策、提供设备管理服务、强制实施安全和隐私约束，并且还可以执行协议转换。这两种网关都可以充当设备与 IoT 中心之间的媒介。
 
 现场网关与简单的流量路由设备（例如网络地址转换 (NAT) 设备或防火墙）不同，因为它通常在解决方案中管理访问和信息流中扮演主动的角色。
 
@@ -106,8 +109,14 @@ Azure IoT 中心会实现[服务辅助通信][lnk-service-assisted-pattern]模�
 [lnk-gateway]: /documentation/articles/iot-hub-protocol-gateway
 [lnk-field-gateway]: /documentation/articles/iot-hub-guidance/#field-gateways
 [lnk-devguide-identityregistry]: /documentation/articles/iot-hub-devguide/#identityregistry
+[lnk-devguide-security]: /documentation/articles/iot-hub-devguide/#security
 [lnk-wns]: https://msdn.microsoft.com/zh-cn/library/windows/apps/mt187203.aspx
 [lnk-google-messaging]: https://developers.google.com/cloud-messaging/
 [lnk-apple-push]: https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9
+[lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
+[lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
+[lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!---HONumber=Mooncake_0425_2016-->
+
+
+<!---HONumber=Mooncake_0523_2016-->

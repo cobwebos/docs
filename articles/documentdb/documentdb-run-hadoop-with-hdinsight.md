@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用 DocumentDB 和 HDInsight 运行 Hadoop 作业 | Microsoft Azure" 
+	pageTitle="使用 DocumentDB 和 HDInsight 运行 Hadoop 作业 | Azure" 
 	description="了解如何使用 DocumentDB 和 Azure HDInsight 运行一个简单的 Hive、Pig 和 MapReduce 作业。"
 	services="documentdb" 
 	authors="AndrewHoh" 
@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="01/29/2016" 
+	ms.date="04/26/2016" 
 	wacn.date=""/>
 
 #<a name="DocumentDB-HDInsight"></a>使用 DocumentDB 和 HDInsight 运行 Hadoop 作业
@@ -36,20 +36,16 @@
 
 <table border='1'>
 	<tr><th>Hadoop 连接器版本</th>
-		<td>1.1.0</td></tr>
+		<td>1.2.0</td></tr>
 	<tr><th>脚本 URI</th>
-		<td>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v03.ps1</td></tr>
+		<td>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v04.ps1</td></tr>
 	<tr><th>修改日期</th>
-		<td>07/20/2015</td></tr>
+		<td>2016/04/26</td></tr>
 	<tr><th>支持的 HDInsight 版本</th>
 		<td>3.1, 3.2</td></tr>
 	<tr><th>更改日志</th>
-		<td>DocumentDB Java SDK 已更新到 1.1.0</br>
-			删除自定义索引编制路径的其他输出参数</br>
-			添加自定义字符串精度（默认情况下为 -1）的可选参数</br>
-			6/11/2015</br>
-			修复连接器与 <a href="https://www.microsoft.com/download/details.aspx?id=40886">Microsoft Hive ODBC Driver</a> 的兼容性</br>
-			已添加的更改输出集合产品/服务类型（默认情况下为 S3 产品）的功能</br>
+		<td>DocumentDB Java SDK 已更新到 1.6.0</br>
+			针对同时作为来源和接收器的已分区集合添加了支持</br>
 		</td></tr>
 </table>
 
@@ -62,7 +58,7 @@
 - 从 Hive、Pig 或 MapReduce 作业生成的文档的容量。有关详细信息，请参阅 [Manage DocumentDB capacity and performance（管理 DocumentDB 容量和性能）][documentdb-manage-collections]。
 - [可选]其他集合的容量。有关详细信息，请参阅 [Provisioned document storage and index overhead（设置的文档存储和索引开销）][documentdb-manage-document-storage]。
 	
-> [AZURE.WARNING] 为了避免在任何作业期间创建一个新集合，你可以将结果打印到 stdout，将输出保存到你的 WASB 容器，或指定一个现有集合。指定现有集合时，将在集合内创建新文档，如果 ID 中有冲突，只会影响现有文档。**连接器将自动覆盖出现 ID 冲突的现有文档**。通过将 upsert 选项设置为 false 可以关闭此功能。如果 upsert 为 false，并且发生冲突，则 Hadoop 作业将失败；并报告 ID 冲突错误。
+> [AZURE.WARNING] 为了避免在任何作业期间创建一个新集合，你可以将结果打印到 stdout，将输出保存到你的 WASB 容器，或指定一个现有集合。指定现有集合时，将在集合内创建新文档，如果 *ID* 中有冲突，只会影响现有文档。**连接器将自动覆盖出现 ID 冲突的现有文档**。通过将 upsert 选项设置为 false 可以关闭此功能。如果 upsert 为 false，并且发生冲突，则 Hadoop 作业将失败；并报告 ID 冲突错误。
 
 ## <a name="CreateStorage"></a>步骤 1：创建 Azure 存储帐户
 
@@ -221,7 +217,7 @@ Azure HDInsight 使用 Azure Blob 存储来存储数据。我们称之为 WASB �
     <p>首先，让我们从 DocumentDB 集合创建 Hive 表。将以下代码段添加到 PowerShell 脚本窗格中从 #1 开始的代码段<strong>之后</strong>。请确保包括可选的 DocumentDB.query 参数，以便将我们的文档调整为 just_ts 和 _rid。</p>
 
     > [AZURE.NOTE] **命名 DocumentDB.inputCollections 不是一个错误。** 是，我们允许添加多个集合作为输入：</br>
-    '*DocumentDB.inputCollections*' = '*\<DocumentDB Input Collection Name 1\>*,*\<DocumentDB Input Collection Name 2\>*' </br>不使用空格分隔集合名称，仅使用单个逗号。
+    “DocumentDB.inputCollections”=“\<DocumentDB Input Collection Name 1\>,\<DocumentDB Input Collection Name 2\>”</br>不使用空格分隔集合名称，仅使用单个逗号。
 
 
 		# Create a Hive table using data from DocumentDB. Pass DocumentDB the query to filter transferred data to _rid and _ts.
@@ -238,7 +234,7 @@ Azure HDInsight 使用 Azure Blob 存储来存储数据。我们称之为 WASB �
 3.  接下来，让我们为输出集合创建 Hive 表。输出文档属性将为月、日、小时、分钟和发生次数总数。
 
 	> [AZURE.NOTE] **再次，命名 DocumentDB.outputCollections 不是一个错误。** 是，我们允许添加多个集合作为输出：</br>
-    '*DocumentDB.outputCollections*' = '*\<DocumentDB Output Collection Name 1\>*,*\<DocumentDB Output Collection Name 2\>*' </br> 不使用空格分隔集合名称，仅使用单个逗号。</br></br>
+    “DocumentDB.outputCollections”=“\<DocumentDB Output Collection Name 1\>,\<DocumentDB Output Collection Name 2\>”</br>不使用空格分隔集合名称，仅使用单个逗号。</br></br>
     文档将为跨多个集合的分布式轮循机制。一批文档将存储在一个集合中，第二批文档则存储在下一个集合中，如此类推。
 
 		# Create a Hive table for the output data to DocumentDB.
@@ -318,7 +314,7 @@ Azure HDInsight 使用 Azure Blob 存储来存储数据。我们称之为 WASB �
     <p>首先，从 DocumentDB 将文档加载到 HDInsight 中。将以下代码段添加到 PowerShell 脚本窗格中从 #1 开始的代码段<strong>之后</strong>。请确保添加了 DocumentDB.query 到可选的 DocumentDB 查询参数，以便将我们的文档调整到 just_ts 和 _rid。</p>
 
     > [AZURE.NOTE] 是，我们允许添加多个集合作为输入：</br>
-    '*\<DocumentDB Input Collection Name 1\>*,*\<DocumentDB Input Collection Name 2\>*'</br>不使用空格分隔集合名称，仅使用单个逗号。</b>
+    “\<DocumentDB Input Collection Name 1\>,\<DocumentDB Input Collection Name 2\>”</br>不使用空格分隔集合名称，仅使用单个逗号。</b>
 
 	文档将为跨多个集合的分布式轮循机制。一批文档将存储在一个集合中，第二批文档则存储在下一个集合中，如此类推。
 
@@ -339,7 +335,7 @@ Azure HDInsight 使用 Azure Blob 存储来存储数据。我们称之为 WASB �
 4. 最后，让我们将结果存储到我们新的输出集合。
 
     > [AZURE.NOTE] 是，我们允许添加多个集合作为输出：</br>
-    '\<DocumentDB Output Collection Name 1\>,\<DocumentDB Output Collection Name 2\>'</br>不使用空格分隔集合名称，仅使用单个逗号。</br> 
+    “\<DocumentDB Output Collection Name 1\>,\<DocumentDB Output Collection Name 2\>”</br>不使用空格分隔集合名称，仅使用单个逗号。</br>
     文档将是跨多个集合的分布式轮循机制。一批文档将存储在一个集合中，第二批文档则存储在下一个集合中，如此类推。
 
 		# Store output data to DocumentDB.
@@ -486,4 +482,4 @@ Azure HDInsight 使用 Azure Blob 存储来存储数据。我们称之为 WASB �
 [powershell-install-configure]: /documentation/articles/powershell-install-configure
  
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

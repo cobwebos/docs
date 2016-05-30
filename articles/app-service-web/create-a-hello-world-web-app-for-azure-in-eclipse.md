@@ -11,7 +11,7 @@
 
 <tags
 	ms.service="app-service-web"
-	ms.date="03/07/2016"
+	ms.date="05/04/2016"
 	wacn.date=""/>
 
 # 在 Eclipse 中创建 Azure 的 Hello World Web 应用
@@ -35,14 +35,12 @@
 首先，我们将从创建 Java 项目开始。
 
 1. 启动 Eclipse。在 Eclipse 中的菜单上，依次单击“文件”、新建和“动态 Web 项目”。（如果在单击“文件”、“新建”后未看到“动态 Web 项目”作为可用项目列出，则执行以下操作：依次单击“文件”、“新建”、“项目...”，展开“Web”，单击“动态 Web 项目”，然后单击“下一步”。）
-1. 在本教程中，项目命名为 MyHelloWorld。你的屏幕应与下图中所示类似：
-   ![][02]
+1. 在本教程中，项目命名为 MyHelloWorld。你的屏幕应与下图中所示类似：![][02]
 1. 单击“完成”。
 1. 在 Eclipse 的项目资源管理器视图中，展开 MyHelloWorld。右键单击“WebContent”，单击“新建”，然后单击“JSP 文件”。
 1. 在“新建 JSP 文件”对话框中，将文件命名为 index.jsp。将父文件夹保留为 MyHelloWorld/WebContent。
 1. 对于本教程，请在“选择 JSP 模板”对话框中选择“新建 JSP 文件(html)”，然后单击“完成”。
-1. 在 Eclipse 中打开 index.jsp 文件后，添加文本以便在现有 `<body>` 元素中动态显示 Hello World!。更新后的 `<body>` 内容应类似于以下示例：
-   `<body><b><% out.println("Hello World!"); %></b></body>` 
+1. 在 Eclipse 中打开 index.jsp 文件后，添加文本以便在现有 `<body>` 元素中动态显示 Hello World!。更新后的 `<body>` 内容应类似于以下示例：`<body><b><% out.println("Hello World!"); %></b></body>` 
 1. 保存 index.jsp。
 
 ## 将应用程序部署到 Azure Web 应用容器
@@ -52,14 +50,26 @@
 1. 在 Eclipse 的项目资源管理器中，右键单击“MyHelloWorld”。
 
 1. 在上下文菜单中选择“Azure”，然后单击“发布为 Azure Web 应用...”
+
    ![][03]
-1. 如果你尚未从 Eclipse 登录 Azure，系统将提示登录 Azure 帐户：
+   
+   另外，如果你已在项目资源管理器中选择 Web 应用程序项目，则可单击工具栏中的“发布”下拉按钮，然后从该处选择“发布为 Azure Web 应用”：
+   
+   ![][publishDropdownButton]
+   
+1. 如果你尚未从 Eclipse 登录到 Azure 中，系统会提示你登录 Azure 帐户：
+
    ![][04]
-   注意：如果有多个 Azure 帐户，登录期间的某些提示可能显示多次，即使它们看起来似乎相同。发生此情况时，请遵循登录指示继续操作。
+   
+   注意：如果你有多个 Azure 帐户，部分提示会在登录过程中显示多次，即使这些提示看起来是相同的。发生此情况时，请遵循登录指示继续操作。
 1. 在你成功登录 Azure 帐户后，“管理订阅”对话框将显示与你的凭据关联的订阅列表。如果列出了多个订阅，而你只想使用其中几个帐户，你可以选择取消选中要使用的订阅。选择订阅后，单击“关闭”。
+
    ![][05]
-1. 当“部署到 Azure Web 应用容器”对话框出现时，它将显示前面创建的所有 Web 应用容器；如果尚未创建任何容器，列表将是空白的。   
+   
+1. 当“部署到 Azure Web 应用容器”对话框出现时，它将显示前面创建的所有 Web 应用容器；如果尚未创建任何容器，列表将是空白的。
+
    ![][06]
+   
 1. 如果前面尚未创建 Azure Web 应用容器，或你想要将应用程序发布到新的容器，请使用以下步骤。否则，请选择现有的 Web 应用容器，并跳到下面的步骤 7。
 
   1. 单击“新建...”
@@ -128,7 +138,7 @@
 
     单击“确定”将 Java 应用程序部署到选定的 Web 应用容器。
 
-    注意：默认情况下，应用程序将部署为应用程序服务器的子目录。如果你想要部署为根应用程序，请选中“部署到根”复选框，然后单击“确定”。
+    注意：默认情况下，应用程序将部署为应用程序服务器的子目录。如果你想要将其部署为根应用程序，请选中“部署到根”复选框，然后单击“确定”。
 
 1. 接下来，你应会看到“Azure 活动日志”视图，其中指示了 Web 应用的部署状态。
 
@@ -164,8 +174,7 @@
 1. 展开“Azure”节点。
 2. 展开“Web Apps”节点。 
 3. 右键单击所需的 Web 应用。
-5. 出现上下文菜单时，单击“停止”。
-    ![][13]
+5. 出现上下文菜单时，单击“停止”。![][13]
 
 ## 后续步骤
 
@@ -199,4 +208,6 @@
 [11]: ./media/create-a-hello-world-web-app-for-azure-in-eclipse/11-Completed-Deploy-Dialog.png
 [12]: ./media/create-a-hello-world-web-app-for-azure-in-eclipse/12-Activity-Log-View.png
 [13]: ./media/create-a-hello-world-web-app-for-azure-in-eclipse/13-Azure-Explorer-Web-App.png
-<!---HONumber=Mooncake_0328_2016-->
+[publishDropdownButton]: ./media/create-a-hello-world-web-app-for-azure-in-eclipse/publishDropdownButton.png
+
+<!---HONumber=Mooncake_0523_2016-->

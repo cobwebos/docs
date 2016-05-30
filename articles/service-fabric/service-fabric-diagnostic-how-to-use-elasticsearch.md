@@ -9,12 +9,12 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/31/2016"
+   ms.date="05/16/2016"
    wacn.date=""/>
 
 # 将 Elasticsearch 用作 Service Fabric 应用程序跟踪存储
 ## 介绍
-本文介绍 [Azure Service Fabric](/documentation/services/service-fabric/) 应用程序如何使用 **Elasticsearch** 和 **Kibana** 来存储、索引和搜索应用程序跟踪。[Elasticsearch](https://www.elastic.co/guide/index.html) 是开源的、分布式和可缩放的实时搜索和分析引擎，很适合执行此任务。它可以安装在 Azure 中运行的 Windows 和 Linux 虚拟机上。Elasticsearch 可以非常高效地处理使用**Windows 事件跟踪 (ETW)** 之类的技术所生成的结构化跟踪。
+本文介绍 [Azure Service Fabric](/documentation/services/service-fabric/) 应用程序如何使用 **Elasticsearch** 和 **Kibana** 来存储、索引和搜索应用程序跟踪。[Elasticsearch](https://www.elastic.co/guide/index.html) 是开源的、分布式和可缩放的实时搜索和分析引擎，很适合执行此任务。它可以安装在 Azure 中运行的 Windows 和 Linux 虚拟机上。Elasticsearch 可以非常高效地处理使用**Windows 事件跟踪 (ETW)** 之类的技术所生成的*结构化*跟踪。
 
 Service Fabric 运行时会使用 ETW 来获取诊断信息（跟踪）。它也是 Service Fabric 应用程序获取其诊断信息的建议方法。这可让运行时提供和应用程序提供的跟踪之间相互关联，使故障排除更轻松。Visual Studio 中的 Service Fabric 项目模板包含日志记录 API（基于 .NET **EventSource** 类），该 API 默认情况下会发出 ETW 跟踪。有关使用 ETW 的 Service Fabric 应用程序跟踪的一般概述，请参阅[在本地计算机开发安装过程中监视和诊断服务](/documentation/articles/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally)。
 
@@ -32,14 +32,14 @@ Service Fabric 运行时会使用 ETW 来获取诊断信息（跟踪）。它也
 ## 在 Azure 上设置 Elasticsearch
 若要在 Azure 上设置 Elasticsearch 服务，最直接的方法是通过 [**Azure Resource Manager 模板**](/documentation/articles/resource-group-overview)。Azure 快速入门模板存储库提供完整的 [Elasticsearch 快速入门 Azure Resource Manager 模板](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch)。此模板会针对缩放单位使用不同的存储帐户（节点组）。它也可以设置具有不同配置和附加各种数量的数据磁盘的个别客户端与服务器节点。
 
-此处我们将使用 [Microsoft 模式和做法 ELK 分支](https://github.com/mspnp/semantic-logging/tree/elk/)中的另一个模板，称为 **ES-MultiNode**。此模板比较容易使用，默认情况下会创建受 HTTP 基本身份验证保护的 Elasticsearch 群集。在继续操作之前，请先从 GitHub 将 [Microsoft 模式和做法 ELK 存储库](https://github.com/mspnp/semantic-logging/tree/elk/)下载到你的计算机（通过克隆存储库或下载 zip 文件）。ES-MultiNode 模板位于具有相同名称的文件夹中。
+我们在此处将使用另一个模板（名为 **ES-MultiNode**，来自 [Azure 诊断工具存储库](https://github.com/Azure/azure-diagnostics-tools)）。此模板比较容易使用，会创建受 HTTP 基本身份验证保护的 Elasticsearch 群集。在继续操作之前，请先从 GitHub 将存储库下载到你的计算机（通过克隆存储库或下载 zip 文件）。ES-MultiNode 模板位于具有相同名称的文件夹中。
 
 ### 准备计算机以运行 Elasticsearch 安装脚本
 若要使用 ES-MultiNode 模板，最简单的方式是通过提供的 Azure PowerShell 脚本，称为 `CreateElasticSearchCluster`。若要使用此脚本，你需要安装 PowerShell 模块和名为 **openssl** 的工具。需要后者，才能创建可用于远程管理 Elasticsearch 群集的 SSH 密钥。
 
 请注意，`CreateElasticSearchCluster` 脚本主要是为了从 Windows 计算机轻松使用 ES-MultiNode 模板。可以在非 Windows 计算机上使用此模板，但这已超出本文的范围。
 
-1. 如果你尚未安装它们，请安装 [**Azure PowerShell 模块**](http://aka.ms/webpi-azps)。出现提示时，请单击“运行”，再单击“安装”。
+1. 如果你尚未安装它们，请安装 [**Azure PowerShell 模块**](http://aka.ms/webpi-azps)。出现提示时，请单击“运行”，再单击“安装”。需要 Azure PowerShell 1.3 或更高版本。
 
 2. [**Git for Windows**](http://www.git-scm.com/downloads) 的分发版中包含 **openssl** 工具。如果你尚未安装 [Git for Windows](http://www.git-scm.com/downloads)，请立即安装。（可使用默认安装选项）。
 
@@ -67,12 +67,12 @@ Service Fabric 运行时会使用 ETW 来获取诊断信息（跟踪）。它也
 |dataDiskSize |将分配给每个数据节点的数据磁盘大小（以 GB 为单位）。每个节点将会收到 4 个数据磁盘，专供弹性搜索服务使用。|
 |region |应该放置弹性搜索群集的 Azure 区域的名称。|
 |esUserName |将配置为可访问 ES 群集的用户的用户名（受限于 HTTP 基本身份验证）。密码不是参数文件的一部分，必须在调用 `CreateElasticSearchCluster` 脚本时提供。|
-|vmSizeDataNodes |弹性搜索群集节点的 Azure 虚拟机大小。默认为 Standard\_D1。|
+|vmSizeDataNodes |弹性搜索群集节点的 Azure 虚拟机大小。默认为 Standard\_D2。|
 
 你现在可以开始运行脚本。发出以下命令：
 
 ```powershell
-CreateElasticSearchCluster -ResourceGroupName <es-group-name>
+CreateElasticSearchCluster -ResourceGroupName <es-group-name> -Region <azure-region> -EsPassword <es-password>
 ```
 
 其中
@@ -103,7 +103,7 @@ CreateElasticSearchCluster -ResourceGroupName <es-group-name>
 
 **进程内跟踪捕获**的优点包括：
 
-1. 易于配置及部署
+1. “易于配置及部署”
 
     * 诊断数据收集配置只是应用程序配置的一部分。将其与应用程序的其余部分始终保持“同步”很简单。
 
@@ -111,7 +111,7 @@ CreateElasticSearchCluster -ResourceGroupName <es-group-name>
 
     * 进程外跟踪捕获通常需要单独部署和配置诊断代理，这是额外的管理任务，也是潜在的错误来源。特定代理技术通常只允许每个虚拟机（节点）有一个代理实例。这表示该节点上运行的所有应用程序和服务会共享诊断配置集合的配置。
 
-2. 灵活性
+2. “灵活性”
 
     * 只要客户端库支持目标数据存储系统，应用程序就可以将数据发送至任何需要的地方。可以根据需要添加新的接收器。
 
@@ -119,7 +119,7 @@ CreateElasticSearchCluster -ResourceGroupName <es-group-name>
 
     * 进程外跟踪捕获通常受限于代理支持的数据接收器。有些代理是可扩展的。
 
-3. 访问内部应用程序数据与上下文
+3. “访问内部应用程序数据与上下文”
 
     * 应用程序/服务进程内运行的诊断子系统可以轻松地随着上下文信息而扩展跟踪。
 
@@ -127,11 +127,11 @@ CreateElasticSearchCluster -ResourceGroupName <es-group-name>
 
 **进程外跟踪捕获**的优点包括：
 
-1. 能够监视应用程序并收集故障转储
+1. “能够监视应用程序并收集故障转储”
 
     * 如果应用程序启动失败或崩溃，进程内跟踪捕获可能不会成功。独立代理有更好的机会捕获重要的故障排除信息。<br /><br />
 
-2. 成熟度、稳定性和已证实的性能
+2. “成熟度、稳定性和已证实的性能”
 
     * 平台供应商所开发的代理（例如 Azure 诊断代理）都经过严格的测试和实战锻炼。
 
@@ -242,7 +242,7 @@ Elasticsearch 连接数据应该放在服务配置文件 (**PackageRoot\\Config\
 `serviceUri`、`userName` 和 `password` 的值分别对应于 Elasticsearch 群集终结点地址、Elasticsearch 用户名和密码。`indexNamePrefix` 是 Elasticsearch 索引的前缀；Microsoft.Diagnostics.Listeners 库会每天创建其数据的新索引。
 
 ### 验证
-就这么简单！ 现在每当服务运行时，就会开始将跟踪发送至配置中指定的 Elasticsearch 服务。如果要验证这一点，你可以打开与目标 Elasticsearch 实例相关联的 Kibana UI（在示例中，网页地址是 http://myBigCluster.westus.cloudapp.azure.com/） ，检查 `ElasticSearchListener` 实例的索引（具有所选的名称前缀）已确实创建并填充了数据。
+就这么简单！ 现在每当服务运行时，就会开始将跟踪发送至配置中指定的 Elasticsearch 服务。如果要验证这一点，你可以打开与目标 Elasticsearch 实例相关联的 Kibana UI（在示例中，网页地址是 http://myBigCluster.westus.cloudapp.azure.com/）， 检查 `ElasticSearchListener` 实例的索引（具有所选的名称前缀）已确实创建并填充了数据。
 
 ![显示 PartyCluster 应用程序事件的 Kibana][2]
 
@@ -253,4 +253,4 @@ Elasticsearch 连接数据应该放在服务配置文件 (**PackageRoot\\Config\
 [1]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/listener-lib-references.png
 [2]: ./media/service-fabric-diagnostics-how-to-use-elasticsearch/kibana.png
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

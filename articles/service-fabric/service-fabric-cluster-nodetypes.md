@@ -11,7 +11,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/17/2016"
+   ms.date="05/02/2016"
    wacn.date=""/>
 
 
@@ -64,7 +64,7 @@
 
 端口是以 VM 缩放集实例的递增顺序分配的。因此，在 FrontEnd 节点类型的示例中，五个实例的每个端口分别如下。现在你需要对 VM 缩放集实例执行相同的映射。
 
-|**VMSS 实例**|**端口**|
+|**VM 缩放集实例**|**端口**|
 |-----------------------|--------------------------|
 |FrontEnd\_0|3389|
 |FrontEnd\_1|3390|
@@ -86,13 +86,13 @@
 
 使用 ARM 模板设置群集时，可以在 **inboundNatPools** 中指定范围。
 
-转到 **Microsoft.Network/loadBalancers** 的资源定义。在此处找到 **inboundNatPools** 的描述。替换 frontendPortRangeStart 和 frontendPortRangeEnd 值。
+转到 **Microsoft.Network/loadBalancers** 的资源定义。在此处找到 **inboundNatPools** 的描述。替换 *frontendPortRangeStart* 和 *frontendPortRangeEnd* 值。
 
 ![InboundNatPools][InboundNatPools]
 
 
 ### 群集部署之后
-这稍微要复杂一点，并且可能会导致 VM 设置被回收。你现在必须使用 Azure PowerShell 设置新值。请确保计算机上已安装 Azure PowerShell 1.0 或更高版本。如果尚未安装，我强烈建议你根据 [How to install and configure Azure PowerShell（如何安装和配置 Azure PowerShell）](/documentation/articles/powershell-install-configure)一文中所述的步骤安装。
+这稍微要复杂一点，并且可能会导致 VM 设置被回收。你现在必须使用 Azure PowerShell 设置新值。请确保计算机上已安装 Azure PowerShell 1.0 或更高版本。如果尚未安装，我强烈建议你根据 [How to install and configure Azure PowerShell](/documentation/articles/powershell-install-configure)（如何安装和配置 Azure PowerShell）一文中所述的步骤安装。
 
 登录到你的 Azure 帐户。如果此 PowerShell 命令由于某些原因而失败，你应该检查 Azure PowerShell 是否已正确安装。
 
@@ -106,7 +106,7 @@ Login-AzureRmAccount
 Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Network/loadBalancers -ResourceName <load balancer name>
 ```
 
-现在，将 frontendPortRangeStart 和 frontendPortRangeEnd 设置为所需的值。
+现在，将 *frontendPortRangeStart* 和 *frontendPortRangeEnd* 设置为所需的值。
 
 ```
 $PropertiesObject = @{
@@ -131,4 +131,4 @@ Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG nam
 [NATRules]: ./media/service-fabric-cluster-nodetypes/NATRules.png
 [RDP]: ./media/service-fabric-cluster-nodetypes/RDP.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0523_2016-->

@@ -1,15 +1,14 @@
 <properties 
 	pageTitle="Azure 通知中心 - 使用 .NET 后端通知用户"
-	description="了解如何在 Azure 中发送安全推送通知。代码示例是使用 .NET API 通过 C# 编写的。" 
-	documentationCenter="windows" 
-	authors="wesmc7777" 
-	manager="dwrede" 
-	services="notification-hubs" 
+	description="了解如何在 Azure 中发送安全推送通知。代码示例是使用 .NET API 通过 C# 编写的。"
+	documentationCenter="windows"
+	authors="wesmc7777"
+	manager="dwrede"
+	services="notification-hubs"
 	editor=""/>
 
 <tags
 	ms.service="notification-hubs"
-
 	ms.date="02/29/2016"
 	wacn.date=""/>
 
@@ -238,7 +237,7 @@
 
 15. 在“解决方案资源管理器”中，右键单击“共享”项目，然后依次单击“添加”和“类”。将类命名为 **RegisterClient.cs**，然后单击“确定”以生成该类。
 
-	此类将包装所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。它还会在本地存储通知中心创建的 registrationIds（从[应用后端注册](http://msdn.microsoft.com/library/dn743807.aspx)中提供了详细信息）。请注意，该组件使用当你单击“登录并注册”按钮时存储在本地存储中的授权令牌。
+	此类将包装所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。它还会在本地存储通知中心创建的 *registrationIds*（从[应用后端注册](http://msdn.microsoft.com/library/dn743807.aspx)中提供了详细信息）。请注意，该组件使用当你单击“登录并注册”按钮时存储在本地存储中的授权令牌。
 
 
 16. 在 RegisterClient.cs 文件的顶部添加以下 `using` 语句：
@@ -383,5 +382,4 @@
 [安全推送]: /documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-secure-push
 [使用通知中心发送突发新闻]: /documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news
 [通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
-
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0523_2016-->

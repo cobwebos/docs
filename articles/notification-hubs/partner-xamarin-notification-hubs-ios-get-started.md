@@ -1,8 +1,8 @@
 <properties
-	pageTitle="使用通知中心针对 Xamarin 应用发送 iOS 推送通知 | Microsoft Azure"
+	pageTitle="使用通知中心针对 Xamarin 应用发送 iOS 推送通知 | Azure"
 	description="在本教程中，你将了解如何使用 Azure 通知中心将推送通知发送到 Xamarin iOS 应用程序。"
 	services="notification-hubs"
-    keywords="ios 推送通知, 推送消息, 推送通知, 推送消息"
+	keywords="ios 推送通知, 推送消息, 推送通知, 推送消息"
 	documentationCenter="xamarin"
 	authors="ysxu"
 	manager="dwrede"
@@ -13,7 +13,6 @@
 	ms.date="02/15/2016"
 	wacn.date=""/>
 
-# 通知中心入门
 # 使用通知中心针对 Xamarin 应用发送 iOS 推送通知
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -260,7 +259,7 @@
 
 4. 创建作业时，单击该作业名称。然后单击顶部栏上的“脚本”选项卡。
 
-5. 在你的计划程序函数中插入以下脚本。确保将占位符替换为你先前获取的通知中心名称和 DefaultFullSharedAccessSignature 的连接字符串。单击“保存”。
+5. 在你的计划程序函数中插入以下脚本。确保将占位符替换为你先前获取的通知中心名称和 *DefaultFullSharedAccessSignature* 的连接字符串。单击“保存”。
 
 		var azure = require('azure');
 		var notificationHubService = azure.createNotificationHubService('<Hubname>', '<SAS Full access >');
@@ -324,4 +323,4 @@
 [Xamarin.iOS]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0523_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用 Express (Node.js) 构建 Web 应用 | Microsoft Azure" 
+	pageTitle="使用 Express 构建 Web 应用程序 (Node.js) | Azure" 
 	description="本教程以云服务教程为基础，演示如何使用 Express 模块。" 
 	services="cloud-services" 
 	documentationCenter="nodejs" 
@@ -9,8 +9,8 @@
 
 <tags 
 	ms.service="cloud-services" 
-	ms.date="01/09/2016" 
-	wacn.date=""/>
+	ms.date="05/04/2016" 
+	wacn.date="05/17/2016"/>
 
 
 
@@ -29,7 +29,7 @@ Node.js 包含核心运行时中最小的一个功能集。开发人员在开发
 
 执行下列步骤可新建一个名为“expressapp”的云服务项目：
 
-1. 在“开始”菜单或“开始”屏幕中，搜索 **Azure PowerShell**。最后，右键单击“Azure PowerShell”并选择“以管理员身份运行”。
+1. 在“开始”菜单或“开始”屏幕中，搜索 **Windows PowerShell**。最后，右键单击“Windows PowerShell”并选择“以管理员身份运行”。
 
 	![Azure PowerShell 图标](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
 
@@ -134,4 +134,4 @@ Node.js 包含核心运行时中最小的一个功能集。开发人员在开发
 
  
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0523_2016-->

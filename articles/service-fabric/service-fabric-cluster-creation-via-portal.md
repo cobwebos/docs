@@ -11,7 +11,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/28/2016"
+   ms.date="05/02/2016"
    wacn.date=""/>
 
 
@@ -28,8 +28,7 @@
 
     a.单击顶层的“应用商店”。
 
-    b.在“全部内容”下面输入“Fabric”并按 Enter。有时自动筛选器无法工作，因此请务必按 Enter。
-    ![在 Azure 门户上搜索 Service Fabric 群集模板的屏幕截图。][SearchforServiceFabricClusterTemplate]
+    b.在“全部内容”下面输入“Fabric”并按 Enter。有时自动筛选器无法工作，因此请务必按 Enter。![在 Azure 门户上搜索 Service Fabric 群集模板的屏幕截图。][SearchforServiceFabricClusterTemplate]
 
 3. 从列表中选择“Service Fabric 群集”。
 
@@ -45,16 +44,16 @@
 
 2. 选择 VM 远程桌面的“用户名”和“密码”。
 
-3. 务必选择要将群集部署到的**订阅**，尤其是在拥有多个订阅时。
+3. 务必选择要将群集部署到的“订阅”，尤其是在拥有多个订阅时。
 
-4. 创建**新的资源组**，最好让它与群集同名，这样稍后就可以轻松找到它们，在尝试更改部署或删除群集时非常有用。
+4. 创建“新的资源组”，最好让它与群集同名，这样稍后就可以轻松找到它们，在尝试更改部署或删除群集时非常有用。
 
     >[AZURE.NOTE] 尽管你可以决定使用现有资源组，但最好还是创建新的资源组。这样可以轻松删除不需要的群集。
 
  	![创建新资源组的屏幕截图。][CreateRG]
 
 
-5. 从下拉列表中选择一个**位置**。默认值为“美国西部”。按“确定”。
+5. 从下拉列表中选择一个**位置**。默认值为“中国东部”。按“确定”。
 
 ## 步骤 2 - 配置群集
 
@@ -74,7 +73,7 @@
 
 	b.选择 VM 大小/定价层。默认值为“D4 标准”，但如果只是要用此群集来测试自己的应用程序，也可以选择“D2”或任何较小的 VM。
 
-	c.主节点类型的 VM 数目下限取决于选择的可靠性层。可靠性层的默认值为 Silver。请仔细阅读有关如何[选择 Service Fabric 群集可靠性和持久性](/documentation/articles/service-fabric-cluster-reliability-and-durability)的文档。
+	c.主节点类型的 VM 数目下限取决于选择的可靠性层。可靠性层的默认值为 Silver。请仔细阅读有关如何[选择 Service Fabric 群集可靠性和持久性](/documentation/articles/service-fabric-cluster-capacity)的文档。
 
 	c.选择节点类型的 VM 数目。可在以后扩展或缩减节点类型中的 VM 数目，但数目下限取决于你选择的可靠性层。其他节点类型的下限可以是 1 个 VM。
 
@@ -87,8 +86,7 @@
 
 	b.在“应用程序输入终结点”字段中添加所有端口（以逗号分隔）。TCP 客户端连接终结点的默认值为 19000，因此不需要指定该值。例如，示例应用程序 WordCount 需要打开端口 83。可以在应用程序包的 servicemanifest.xml 文件中找到该示例应用程序。（其中可能包含多个 servicemanifest.xml 文件。）
 
-    c.大多数示例应用程序都使用端口 80 和 8081，因此如果你打算将示例部署到此群集，请添加这两个端口。
-    ![端口][Ports]
+    c.大多数示例应用程序都使用端口 80 和 8081，因此如果你打算将示例部署到此群集，请添加这两个端口。![端口][Ports]
 
 10. 不需要配置“放置属性”，因为系统添加了“NodeTypeName”的默认放置属性。如果应用程序有需要，可以添加更多属性。
 
@@ -127,11 +125,9 @@
 
 1. 转到“浏览”，然后单击“Service Fabric 群集”。
 
-2. 查找你的群集并单击它。
-  ![在门户中查找群集的屏幕截图。][BrowseCluster]
+2. 查找你的群集并单击它。![在门户中查找群集的屏幕截图。][BrowseCluster]
 
-3. 现在仪表板将显示群集的详细信息，包括群集的公共 IP 地址。将鼠标光标移到“群集公共 IP 地址”上会显示剪贴板，单击它可以复制该 IP 地址。
-  ![仪表板中群集详细信息的屏幕截图。][ClusterDashboard]
+3. 现在仪表板将显示群集的详细信息，包括群集的公共 IP 地址。将鼠标光标移到“群集公共 IP 地址”上会显示剪贴板，单击它可以复制该 IP 地址。![仪表板中群集详细信息的屏幕截图。][ClusterDashboard]
 
   群集仪表板边栏选项卡上的“节点监视器”部分显示运行正常和不正常的 VM 的数目。若要了解有关群集运行状况的详细信息，请参阅 [Service Fabric health model introduction（Service Fabric 运行状况模型简介）](/documentation/articles/service-fabric-health-introduction)。
 
@@ -143,39 +139,39 @@
 
 ### 连接到不安全的群集
 
-    ```powershell
-    Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 -KeepAliveIntervalInSec 10
-    ```
+```powershell
+Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 -KeepAliveIntervalInSec 10
+```
 
 ### 连接到安全群集
 
-    1. Run the following to set up the certificate on the machine that you are going to use to run the "Connect-serviceFabricCluster" PowerShell command.
+1. 运行以下命令，以便在即将用于运行“Connect-serviceFabricCluster”PowerShell 命令的计算机上设置证书。
 
-        ```powershell
-        Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
-                -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
-                -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
-        ```
+    ```powershell
+    Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My `
+            -FilePath C:\docDemo\certs\DocDemoClusterCert.pfx `
+            -Password (ConvertTo-SecureString -String test -AsPlainText -Force)
+    ```
 
-    2. Run the following PowerShell command to connect to a secure cluster. The certificate details are the same ones that you gave on the portal.
+2. 运行以下 PowerShell 命令连接到安全群集。证书的详细信息与门户上提供的信息相同。
 
-        ```powershell
-        Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
-                  -KeepAliveIntervalInSec 10 `
-                  -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
-                  -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
-                  -StoreLocation CurrentUser -StoreName My
-        ```
+    ```powershell
+    Connect-serviceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
+              -KeepAliveIntervalInSec 10 `
+              -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
+              -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
+              -StoreLocation CurrentUser -StoreName My
+    ```
 
-        For example, the PowerShell command above should look similar to the following:
+    例如，上述 PowerShell 命令应该类似于以下内容：
 
-        ```powershell
-        Connect-serviceFabricCluster -ConnectionEndpoint sfcluster4doc.westus.cloudapp.azure.com:19000 `
-                  -KeepAliveIntervalInSec 10 `
-                  -X509Credential -ServerCertThumbprint C179E609BBF0B227844342535142306F3913D6ED `
-                  -FindType FindByThumbprint -FindValue C179E609BBF0B227844342535142306F3913D6ED `
-                  -StoreLocation CurrentUser -StoreName My
-        ```
+    ```powershell
+    Connect-serviceFabricCluster -ConnectionEndpoint sfcluster4doc.westus.cloudapp.azure.com:19000 `
+              -KeepAliveIntervalInSec 10 `
+              -X509Credential -ServerCertThumbprint C179E609BBF0B227844342535142306F3913D6ED `
+              -FindType FindByThumbprint -FindValue C179E609BBF0B227844342535142306F3913D6ED `
+              -StoreLocation CurrentUser -StoreName My
+    ```
 
 ### 部署应用
 现在你已创建连接，请运行以下命令来部署应用程序，但别忘了要先用计算机上适当的路径来替换以下所示的路径。以下示例将部署单词计数示例应用程序：
@@ -207,9 +203,9 @@
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## 远程连接到虚拟机缩放集 (VMSS) 实例或群集节点
+## 远程连接到虚拟机缩放集实例或群集节点
 
-每次在群集中指定 NodeTypes，都会设置 VMSS。有关详细信息，请参阅 [How to RDP into your VMSS instance](/documentation/articles/service-fabric-cluster-nodetypes)（如何通过 RDP 访问 VMSS 实例）。
+每次在群集中指定 NodeTypes，都会设置 VM 缩放集。有关详细信息，请参阅[远程连接到 VM 缩放集实例](/documentation/articles/service-fabric-cluster-nodetypes#remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node)。
 
 ## 后续步骤
 
@@ -231,4 +227,4 @@
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [SecureConnection]: ./media/service-fabric-cluster-creation-via-portal/SecureConnection.png
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

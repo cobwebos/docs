@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="11/25/2015"
+	ms.date="05/05/2016"
 	wacn.date=""/>
 # 通过百度开始使用通知中心
 
@@ -182,7 +182,7 @@
 
     ![][26]
 
-5. 从 [Notification-Hubs-Android-SDK on Bintray](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) 的“文件”选项卡下载 notification-hubs-0.4.jar 文件。将该文件添加到 Eclipse 项目的 **libs** 文件夹，然后刷新 libs 文件夹。
+5. 从 [Notification-Hubs-Android-SDK on Bintray](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) 的“文件”选项卡下载 notification-hubs-0.4.jar 文件。将该文件添加到 Eclipse 项目的 **libs** 文件夹，然后刷新 *libs* 文件夹。
 
 6. 下载并解压缩[百度推送 Android SDK]，打开 **libs** 文件夹，然后将 **pushservice-x.y.z** jar 文件以及 **armeabi** 和 **mips** 文件夹复制到 Android 应用程序的 **libs** 文件夹。
 
@@ -201,11 +201,11 @@
 	    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
 	    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 
-8. 向 **AndroidManifest.xml** 中的 **application** 元素添加 **android:name** 属性，并替换 yourprojectname（例如 **com.example.BaiduTest**）。确保此项目名称与你在百度控制台中配置的项目名称匹配。
+8. 向 **AndroidManifest.xml** 中的 **application** 元素添加 **android:name** 属性，并替换 *yourprojectname*（例如 **com.example.BaiduTest**）。确保此项目名称与你在百度控制台中配置的项目名称匹配。
 
 		<application android:name="yourprojectname.DemoApplication"
 
-9. 在 **.MainActivity** 活动元素后的 application 元素内添加以下配置，并替换 yourprojectname（例如 **com.example.BaiduTest**）：
+9. 在 **.MainActivity** 活动元素后的 application 元素内添加以下配置，并替换 *yourprojectname*（例如 **com.example.BaiduTest**）：
 
 		<receiver android:name="yourprojectname.MyPushMessageReceiver">
 		    <intent-filter>
@@ -408,7 +408,7 @@
 
 * **Node.js**：[如何通过 Node.js 使用通知中心](notification-hubs-nodejs-how-to-use-notification-hubs.md)。
 
-* **Azure 移动服务**：有关如何从通知中心集成的 Azure 移动服务后端发送通知的示例，请参阅 [Add push notifications to your Mobile Services app（将推送通知添加到移动服务应用）](/documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md)。
+* **Azure 移动服务**：有关如何从通知中心集成的 Azure 移动服务后端发送通知的示例，请参阅 [Add push notifications to your Mobile Services app](/documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md)（将推送通知添加到移动服务应用）。
 
 * **Java/PHP**：有关如何使用 REST API 发送通知的示例，请参阅“如何通过 Java/PHP 使用通知中心”([Java](notification-hubs-java-backend-how-to.md) | [PHP](notification-hubs-php-backend-how-to.md))。
 
@@ -432,7 +432,7 @@
 
         using Microsoft.Azure.NotificationHubs;
 
-4. 在 `Program` 类中添加以下方法，并将 DefaultFullSharedAccessSignatureSASConnectionString 和 NotificationHubName 替换为你的值。
+4. 在 `Program` 类中添加以下方法，并将 *DefaultFullSharedAccessSignatureSASConnectionString* 和 *NotificationHubName* 替换为你的值。
 
 		private static async void SendNotificationAsync()
 		{
@@ -498,4 +498,4 @@
 [Azure 经典门户]: https://manage.windowsazure.cn/
 [百度门户]: http://www.baidu.com/
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0523_2016-->

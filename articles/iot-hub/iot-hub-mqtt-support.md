@@ -1,5 +1,5 @@
 <properties
- pageTitle="IoT 中心 MQTT 支持 | Microsoft Azure"
+ pageTitle="IoT 中心 MQTT 支持 | Azure"
  description="介绍 IoT 中心级别的 MQTT 支持"
  services="iot-hub"
  documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
  ms.service="iot-hub"
- ms.date="02/03/2016"
+ ms.date="04/29/2016"
  wacn.date=""/>
 
 # IoT 中心 MQTT 支持
@@ -44,26 +44,28 @@ IoT 中心允许设备在端口 8883 上使用 [MQTT v3.1.1][lnk-mqtt-org] 协�
 
     例如，如果 IoT 中心的名称为 **contoso.azure-devices.net**，设备的名称为 **MyDevice01**，则完整“用户名”字段应包含 `contoso.azure-devices.net/MyDevice01`。
 
-- “密码”字段使用 SAS 令牌。[SAS 令牌的格式][lnk-iothub-security]与针对 HTTP 和 AMQP 协议所述的格式相同：<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`。
+- “密码”字段使用 SAS 令牌。对于 HTTP 和 AMQP 协议，SAS 令牌的格式是相同的：<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`。
 
-    有关如何生成 SAS 令牌的详细信息，请参阅[使用 IoT 中心安全令牌][lnk-sas-tokens]。
+    有关如何生成 SAS 令牌的详细信息，请参阅 [Using IoT Hub security tokens（使用 IoT 中心安全令牌）][lnk-sas-tokens]的设备部分。
     
     测试时也可以使用[设备资源管理器][lnk-device-explorer]工具来快速生成可以复制并粘贴到自己的代码中的 SAS 令牌。
     
     1. 转到设备资源管理器中的“管理”选项卡。
     2. 单击“SAS 令牌”（右上角）。
-    3. 在 **SASTokenForm** 上，从 **DeviceID** 下拉列表中选择你的设备。设置你的 **TTL**。
-    4. 单击“生成”以创建你的令牌。
+    3. 在 **SASTokenForm** 上，从“DeviceID”下拉列表中选择你的设备。设置 **TTL**。
+    4. 单击“生成”以创建令牌。
     
-    所生成的 SAS 令牌如下所示：`HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fMyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802`。
+    所生成的 SAS 令牌如下所示：
+    `HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fMyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802`。
 
-    与在“密码”字段中使用 MQTT 连接一样，此部分使用的是：`SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`。
+    与“密码”字段一样使用 MQTT 连接的部分为：
+    `SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`。
 
-对于 MQTT 连接和断开连接数据包，IoT 中心将在“操作监视”通道上发出事件。
+对于 MQTT 连接和断开连接数据包，IoT 中心将在**操作监视**通道上发出事件。
 
 ### 将消息发送到 IoT 中心
 
-成功建立连接后，设备可以使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作为**主题名称**来将消息发送到 IoT 中心。`{property_bag}` 元素可让设备使用 URL 编码格式发送包含其他属性的消息。例如：
+成功建立连接后，设备可以使用 `devices/{device_id}/messages/events/` 或 `devices/{device_id}/messages/events/{property_bag}` 作为**主题名称**将消息发送到 IoT 中心。`{property_bag}` 元素可让设备使用 URL 编码格式发送包含其他属性的消息。例如：
 
 ```
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -75,13 +77,13 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 ### 接收消息
 
-若要从 IoT 中心接收消息，设备应使用 `devices/{device_id}/messages/devicebound/#”` 作为**主题筛选器**来进行订阅。如有任何消息属性，IoT 中心将传送包含**主题名称** `devices/{device_id}/messages/devicebound/` 或 `devices/{device_id}/messages/devicebound/{property_bag}` 的消息。`{property_bag}` 包含 URL 编码的消息属性键/值对。属性包中只包含应用程序属性和用户可设置的系统属性（例如 **messageId** 或 **correlationId**）。系统属性名称具有前缀 **$**，但应用程序属性使用没有前缀的原始属性名称。
+若要从 IoT 中心接收消息，应使用 `devices/{device_id}/messages/devicebound/#”` 作为**主题筛选器**来订阅设备。如有任何消息属性，IoT 中心将传送包含**主题名称**、`devices/{device_id}/messages/devicebound/` 或 `devices/{device_id}/messages/devicebound/{property_bag}` 的消息。`{property_bag}` 包含 URL 编码的消息属性键/值对。属性包中只包含应用程序属性和用户可设置的系统属性（例如 **messageId** 或 **correlationId**）。系统属性名称具有前缀 **$**，但应用程序属性使用没有前缀的原始属性名称。
 
 ## 后续步骤
 
 有关 IoT 设备 SDK 的 MQTT 支持的更多信息，请参阅 Azure IoT 中心开发人员指南中的 [Notes on MQTT support（有关 MQTT 支持的说明）][lnk-mqtt-devguide]。
 
-若要详细了解如何使用设备客户端 SDK 来与 IoT 中心通信，请参阅 [Azure IoT 中心入门][lnk-iot-get-stated]。
+若要详细了解如何使用设备客户端 SDK 来与 IoT 中心通信，请参阅 [Get started with Azure IoT Hub（Azure IoT 中心入门）][lnk-iot-get-stated]。
 
 若要了解有关 MQTT 协议的详细信息，请参阅 [MQTT 文档][lnk-mqtt-docs]。
 
@@ -98,4 +100,6 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 [lnk-sas-tokens]: /documentation/articles/iot-hub-sas-tokens
 [lnk-mqtt-devguide]: /documentation/articles/iot-hub-devguide/#mqtt-support
 
-<!---HONumber=Mooncake_0425_2016-->
+
+
+<!---HONumber=Mooncake_0523_2016-->

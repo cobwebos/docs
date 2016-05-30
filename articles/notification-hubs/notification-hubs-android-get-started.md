@@ -9,7 +9,7 @@
 	editor=""/>
 <tags 	
 	ms.service="notification-hubs"
-	ms.date="04/14/2016"
+	ms.date="05/05/2016"
 	wacn.date="" />
 
 # 通过 Azure 通知中心向 Android 发送推送通知
@@ -24,7 +24,7 @@
 
 [AZURE.INCLUDE [notification-hubs-hero-slug](../includes/notification-hubs-hero-slug.md)]
 
-可以在 GitHub 上的[此处](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted)找到本教程的已完成代码。
+可以从 GitHub 上的[此处](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted)下载本教程的已完成代码。
 
 
 ##先决条件
@@ -71,9 +71,9 @@
 
 ###添加 Azure 通知中心库
 
-1. 从 [Notification-Hubs-Android-SDK on Bintray](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) 的“文件”选项卡下载 notification-hubs-0.4.jar 文件。在 Android Studio 的“项目视图”窗口中，将文件直接拖放到 **libs** 文件夹。右键单击该文件，然后单击“添加为库”。
-  
-2. 在**应用**的 Build.Gradle 文件的 **dependencies** 节中添加以下行。
+1. 从 [Notification-Hubs-Android-SDK on Bintray](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) 的“文件”选项卡下载 `notification-hubs-0.4.jar` 文件。将该文件拖入项目目录的 **libs** 文件夹。
+
+2. 在**应用**的 `Build.Gradle` 文件的 **dependencies** 节中添加以下行。
 
 	    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
 
@@ -90,7 +90,7 @@
 
 1. 若要支持 GCM，我们必须在代码中实现实例 ID 侦听器服务，以便使用 [Google 的实例 ID API](https://developers.google.com/instance-id/) 来[获取注册令牌](https://developers.google.com/cloud-messaging/android/client#sample-register)。在本教程中，我们将该类命名为 `MyInstanceIDService`。 
  
-	将以下服务定义添加到 AndroidManifest.xml 文件的 `<application>` 标记内。将 `<your package>` 占位符替换为实际的包名称。
+	将以下服务定义添加到 AndroidManifest.xml 文件的 `<application>` 标记内。将 `<your package>` 占位符替换为 `AndroidManifest.xml` 文件顶部显示的实际包名称。
 
 		<service android:name="<your package>.MyInstanceIDService" android:exported="false">
 		    <intent-filter>
@@ -101,16 +101,16 @@
 
 2. 从实例 ID API 收到 GCM 注册令牌后，我们将使用它[在 Azure 通知中心注册](notification-hubs-registration-management.md)。我们将使用名为 `RegistrationIntentService` 的 `IntentService` 在后台支持此注册。此服务还负责[刷新 GCM 注册令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)。
  
-	将以下服务定义添加到 AndroidManifest.xml 文件的 `<application>` 标记内。
+	将以下服务定义添加到 AndroidManifest.xml 文件的 `<application>` 标记内。将 `<your package>` 占位符替换为 `AndroidManifest.xml` 文件顶部显示的实际包名称。
 
         <service
-            android:name="com.example.microsoft.getstarted.RegistrationIntentService"
+            android:name="<your package>.RegistrationIntentService"
             android:exported="false">
         </service>
 
 
 
-3. 我们还要定义通知接收者。将以下接收者定义添加到 AndroidManifest.xml 文件的 `<application>` 标记内。
+3. 我们还要定义通知接收者。将以下接收者定义添加到 AndroidManifest.xml 文件的 `<application>` 标记内。将 `<your package>` 占位符替换为 `AndroidManifest.xml` 文件顶部显示的实际包名称。
 
 		<receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
 		    android:permission="com.google.android.c2dm.permission.SEND">
@@ -124,7 +124,7 @@
 
 4. 在 `</application>` 标记下面添加以下必要的 GCM 相关权限。请确保将 `<your package>` 替换为 `AndroidManifest.xml` 文件顶部显示的包名称。
 
-	有关这些权限的详细信息，请参阅 [Setup a GCM Client app for Android（设置适用于 Android 的 GCM 客户端应用）](https://developers.google.com/cloud-messaging/android/client#manifest)。
+	有关这些权限的详细信息，请参阅 [Setup a GCM Client app for Android](https://developers.google.com/cloud-messaging/android/client#manifest)（设置适用于 Android 的 GCM 客户端应用）。
 
 		<uses-permission android:name="android.permission.INTERNET"/>
 		<uses-permission android:name="android.permission.GET_ACCOUNTS"/>
@@ -480,7 +480,7 @@
 		import android.view.View;
 		import android.widget.EditText;
 
-6. 在 `MainActivity.java` 文件中，在 `MainActivity` 类的最上面添加以下成员。
+6. 在 `MainActivity.java` 文件中，将以下成员添加到 `MainActivity` 类的顶部。
 
 	    private String HubEndpoint = null;
 	    private String HubSasKeyName = null;
@@ -491,12 +491,12 @@
 	在 `MainActivity.java` 中，将以下方法添加到 `MainActivity` 类，以分析连接字符串。
 
 	    /**
-    	 * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx
-    	 * to parse the connection string so a SaS authentication token can be
-    	 * constructed.
-    	 *
-    	 * @param connectionString This must be the DefaultFullSharedAccess connection
-    	 *                         string for this example.
+	     * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx
+	     * to parse the connection string so a SaS authentication token can be
+	     * constructed.
+	     *
+	     * @param connectionString This must be the DefaultFullSharedAccess connection
+	     *                         string for this example.
 	     */
 	    private void ParseConnectionString(String connectionString)
 	    {
@@ -504,7 +504,7 @@
 	        if (parts.length != 3)
 	            throw new RuntimeException("Error parsing connection string: "
 	                    + connectionString);
-
+	
 	        for (int i = 0; i < parts.length; i++) {
 	            if (parts[i].startsWith("Endpoint")) {
 	                this.HubEndpoint = "https" + parts[i].substring(11);
@@ -515,6 +515,7 @@
 	            }
 	        }
 	    }
+
 
 7. 在 `MainActivity.java` 中，将以下方法添加到 `MainActivity` 类，以创建 SaS 身份验证令牌。
 
@@ -680,9 +681,9 @@
 
 建议下一步学习[使用通知中心向用户推送通知]教程。它将显示如何使用标记从 ASP.NET 后端将通知发送到目标特定的用户。
 
-如果要按兴趣组划分用户，可以查看 [Use Notification Hubs to send breaking news（使用通知中心发送最新消息）]教程。
+如果要按兴趣组划分用户，可以查看 [Use Notification Hubs to send breaking news]（使用通知中心发送最新消息）教程。
 
-若要了解有关通知中心的更多一般信息，请参阅 [Notification Hubs Guidance（通知中心指南）]。
+若要了解有关通知中心的更多一般信息，请参阅 [Notification Hubs Guidance]（通知中心指南）。
 
 <!-- Images. -->
 [6]: ./media/notification-hubs-android-get-started/notification-hub-android-new-class.png
@@ -714,9 +715,9 @@
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
 [Azure Classic Portal]: https://manage.windowsazure.cn/
-[Notification Hubs Guidance（通知中心指南）]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [使用通知中心向用户推送通知]: notification-hubs-aspnet-backend-android-notify-users.md
-[Use Notification Hubs to send breaking news（使用通知中心发送最新消息）]: notification-hubs-aspnet-backend-android-breaking-news.md
+[Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-breaking-news.md
 [Azure 门户]: https://portal.azure.cn
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0523_2016-->

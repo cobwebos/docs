@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric 应用程序模型 | Microsoft Azure"
+   pageTitle="Service Fabric 应用程序模型 | Azure"
    description="如何在 Service Fabric 中建模和描述应用程序。"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
     ms.service="service-fabric"
-   ms.date="04/05/2016"   
+   ms.date="05/12/2016"   
     wacn.date=""/>
 
 # 在 Service Fabric 中对应用程序建模
@@ -25,7 +25,7 @@
 
 应用程序类型是一个应用程序分类，包含大量服务类型。服务类型是一个服务分类。该分类可以具有不同的设置和配置，但核心功能保持相同。服务实例是相同服务类型的不同服务配置变体。
 
-应用程序和服务的类（或“类型”）是通过 XML 文件（应用程序清单和服务清单）进行描述的，这些文件是从群集映像存储实例化应用程序所依据的模板。
+应用程序和服务的类（或“类型”）是通过 XML 文件（应用程序清单和服务清单）进行描述的，这些文件是从群集映像存储实例化应用程序所依据的模板。ServiceManifest.xml 和 ApplicationManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\\Program Files\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd*。
 
 即使在由同一 Service Fabric 节点托管时，不同应用程序实例的代码也将作为单独的进程运行。此外，可以独立管理每个应用程序实例的生命周期（即升级）。下图显示了应用程序类型如何由服务类型组成，而服务类型又如何由代码、配置和包组成。为了简化示意图，这里只显示了 `ServiceType4` 的代码/配置/数据包，不过每个服务类型包括其中的部分或全部包类型。
 
@@ -40,7 +40,7 @@
 ![服务中的分区和副本][cluster-application-instances]
 
 
->[AZURE.TIP] 可以使用 http://&lt;yourclusteraddress&gt;:19080/Explorer 上提供的 Service Fabric 资源管理器工具查看群集中应用程序的布局。有关详细信息，请参阅[使用 Service Fabric 资源管理器可视化群集](/documentation/articles/service-fabric-visualizing-your-cluster)。
+>[AZURE.TIP] 可以使用 http://&lt;yourclusteraddress&gt;:19080/Explorer 上提供的 Service Fabric Explorer 工具查看群集中应用程序的布局。有关详细信息，请参阅[使用 Service Fabric Explorer 可视化群集](/documentation/articles/service-fabric-visualizing-your-cluster)。
 
 ## 描述服务
 
@@ -72,13 +72,13 @@
 
 **Version** 特性是未结构化的字符串，并且不由系统进行分析。这些特性用于对每个组件进行版本控制，以进行升级。
 
-**ServiceTypes** 声明清单中的 **CodePackages** 支持哪些服务类型。当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。生成的进程应在运行时注册所支持的服务类型。请注意，在清单级别而不是代码包级别声明服务类型。因此，当存在多个代码包时，每当系统查找任何一种声明的服务类型时，它们都将被激活。
+**ServiceTypes** 声明此清单中的 **CodePackages** 支持哪些服务类型。当一种服务针对这些服务类型之一进行实例化时，可激活此清单中声明的所有代码包，方法是运行这些代码包的入口点。生成的进程应在运行时注册所支持的服务类型。请注意，在清单级别而不是代码包级别声明服务类型。因此，当存在多个代码包时，每当系统查找任何一种声明的服务类型时，它们都将被激活。
 
-**SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 LocalSystem 帐户）相同的凭据先于任何其他入口点运行。**EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。提供单独的设置入口点可避免长时间使用高特权运行服务主机。由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。如果总是终止或出现故障，则将监视并重启所产生的过程（再次从 **SetupEntryPoint** 开始）。
+**SetupEntryPoint** 是特权入口点，以与 Service Fabric（通常是 *LocalSystem* 帐户）相同的凭据先于任何其他入口点运行。**EntryPoint** 指定的可执行文件通常是长时间运行的服务主机。提供单独的设置入口点可避免长时间使用高特权运行服务主机。由 **EntryPoint** 指定的可执行文件在 **SetupEntryPoint** 成功退出后运行。如果总是终止或出现故障，则将监视并重启所产生的过程（再次从 **SetupEntryPoint** 开始）。
 
 **DataPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含进程将在运行时使用的静态数据。
 
-**ConfigPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含 Settings.xml 文件。此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。升级期间，如果仅更改了 **ConfigPackage** **版本**，则不重启正在运行的进程。相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。下面是 Settings.xml 文件的一个示例：
+**ConfigPackage** 声明一个由 **Name** 特性命名的文件夹，该文件夹中包含 *Settings.xml* 文件。此文件包含进程用户定义的键值对设置，进程可在运行时读回这些设置。升级期间，如果仅更改了 **ConfigPackage** **版本**，则不重启正在运行的进程。相反，回调会向进程通知配置设置已更改，以便可以重新动态加载这些设置。下面是 *Settings.xml* 文件的一个示例：
 
 ~~~
 <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -194,7 +194,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ### 测试包
 
-可以使用 T**est-ServiceFabricApplicationPackage** 命令，通过 PowerShell 在本地验证包结构。此命令将检查是否存在清单分析问题，并验证所有引用。请注意，此命令只验证包中文件与目录结构的正确性。它不验证任何代码或数据包内容，而只检查所有必要的文件是否存在。
+可以使用 **Test-ServiceFabricApplicationPackage** 命令，通过 PowerShell 在本地验证包结构。此命令将检查是否存在清单分析问题，并验证所有引用。请注意，此命令只验证包中文件与目录结构的正确性。它不验证任何代码或数据包内容，而只检查所有必要的文件是否存在。
 
 ~~~
 PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
@@ -203,7 +203,7 @@ Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
 ~~~
 
-此错误显示代码包中缺少服务清单 **SetupEntryPoint** 中引用的 MySetup.bat 文件。添加缺少的文件后，应用程序验证通过：
+此错误显示代码包中缺少服务清单 **SetupEntryPoint** 中引用的 *MySetup.bat* 文件。添加缺少的文件后，应用程序验证通过：
 
 ~~~
 PS D:\temp> tree /f .\MyApplicationType
@@ -250,4 +250,4 @@ PS D:\temp>
 [11]: /documentation/articles/service-fabric-manage-multiple-environment-app-configuration
 [12]: /documentation/articles/service-fabric-application-runas-security
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

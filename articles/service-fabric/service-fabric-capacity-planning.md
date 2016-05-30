@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Service Fabric 应用的容量规划 | Microsoft Azure"
+   pageTitle="Service Fabric 应用的容量规划 | Azure"
    description="介绍如何识别 Service Fabric 应用程序所需的计算节点数"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/09/2016"
+   ms.date="05/13/2016"
    ms.author="subramar"/>
 
 
@@ -71,4 +71,4 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: /documentation/articles/service-fabric-concepts-partitioning
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0523_2016-->

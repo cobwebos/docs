@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="multiple"
-	ms.date="03/07/2016"
+	ms.date="05/11/2016"
 	wacn.date=""/>
 
 # Azure 订阅和服务限制、配额和约束
@@ -20,15 +20,15 @@
 
 > [AZURE.NOTE] 如果想要提高**默认限制**之上的限制，可以[打开免费的联机客户支持请求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。无法将这些限制提高到超过下表中的**最大限制**值。如果没有任何**最大限制**列，则指定的资源不具有可调整的限制。
 
-## 限制和 Azure 资源管理器
+## 限制和 Azure Resource Manager
 
-现在可以将多个 Azure 资源合并到单个 Azure 资源组中。在使用资源组时，以前针对全局的限制会通过 Azure 资源管理器在区域级别进行管理。有关 Azure 资源组的详细信息，请参阅[使用资源组管理 Azure 资源](/documentation/articles/resource-group-portal)。
+现在可以将多个 Azure 资源合并到单个 Azure 资源组中。在使用资源组时，以前针对全局的限制会通过 Azure Resource Manager 在区域级别进行管理。有关 Azure 资源组的详细信息，请参阅[使用资源组管理 Azure 资源](/documentation/articles/resource-group-portal)。
 
-在下面的限制中，添加了一个新表以反映在使用 Azure 资源管理器时限制中的任何差异。例如，会存在一个**订阅限制**表和一个**订阅数限制 - Azure 资源管理器**表。如果某个限制同时适用于这两种方案，它将仅显示在第一个表中。除非另有说明，否则限制是跨所有区域的全局限制。
+在下面的限制中，添加了一个新表以反映在使用 Azure Resource Manager时限制中的任何差异。例如，会存在一个**订阅限制**表和一个**订阅数限制 - Azure Resource Manager**表。如果某个限制同时适用于这两种方案，它将仅显示在第一个表中。除非另有说明，否则限制是跨所有区域的全局限制。
 
 > [AZURE.NOTE] 请务必强调 Azure 资源组中的资源配额是您的订阅可以访问的每个区域，而不像服务管理配额那样是可以访问的每个订阅。我们来使用核心配额作为示例。如果您需要根据对核心的支持请求增加配额，则需要决定您想要在哪个区域中使用多少核心，然后针对您希望的 Azure 资源组核心配额的数量和区域进行特定请求。因此，如果您需要在西欧使用 30 个核心以在那里运行您的应用程序，则应专门在西欧请求 30 个核心。但这不会增加您在任何其他区域的核心配额 -- 仅西欧会有 30 个核心配额。
 <!-- -->
-因此，你可能会发现考虑决定你在任何一个区域中的工作负荷所需的 Azure 资源组配额数量，以及请求你考虑在其中进行部署的每个区域的数量很有用。请参阅[部署问题疑难解答](/documentation/articles/resource-group-deploy-debug##authentication-subscription-role-and-quota-issues)，了解有关发现你特定区域的当前配额的更多帮助。
+因此，你可能会发现考虑决定你在任何一个区域中的工作负荷所需的 Azure 资源组配额数量，以及请求你考虑在其中进行部署的每个区域的数量很有用。请参阅[部署问题疑难解答](/documentation/articles/resource-manager-common-deployment-errors)，了解有关发现你特定区域的当前配额的更多帮助。
 
 
 ## 服务特定的限制
@@ -76,7 +76,7 @@
 
 #### 订阅限制 - Azure Resource Manager
 
-使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。未使用 Azure 资源管理器更改的限制不会在下面列出。请参阅上表了解这些限制。
+使用 Azure Resource Manager 和 Azure 资源组时，以下限制适用。未使用 Azure Resource Manager 更改的限制不会在下面列出。请参阅上表了解这些限制。
 
 [AZURE.INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 
@@ -93,7 +93,7 @@
 
 #### 虚拟机限制 - Azure Resource Manager
 
-使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。未使用 Azure 资源管理器更改的限制不会在下面列出。请参阅上表了解这些限制。
+使用 Azure Resource Manager 和 Azure 资源组时，以下限制适用。未使用 Azure Resource Manager 更改的限制不会在下面列出。请参阅上表了解这些限制。
 
 [AZURE.INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
@@ -125,7 +125,7 @@
 
 [AZURE.INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-有关其他详细信息，请参阅[虚拟机大小](/documentation/articles/virtual-machines-size-specs)。
+有关其他详细信息，请参阅[虚拟机大小](/documentation/articles/virtual-machines-linux-sizes)。
 
 **标准存储帐户**
 
@@ -267,6 +267,9 @@
 ### Multi-Factor Authentication
 [AZURE.INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
+### 自动化限制
+[AZURE.INCLUDE [automation-limits](../includes/azure-automation-service-limits.md)]
+
 ### SQL 数据库限制
 
 有关 Azure SQL 数据库限制，请参阅 [SQL 数据库资源限制](/documentation/articles/sql-database-resource-limits)。
@@ -279,4 +282,4 @@
 
 [云服务的大小](/documentation/articles/cloud-services-sizes-specs)
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0523_2016-->

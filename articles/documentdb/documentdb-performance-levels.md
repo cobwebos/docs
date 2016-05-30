@@ -9,16 +9,13 @@
 
 <tags 
 	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
+ 
 	ms.date="04/08/2016" 
-	ms.author="johnmac"/>
+	wacn.date=""/>
 
 # DocumentDB 中的性能级别
 
-本文提供 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 中性能级别的概述。
+本文概述了 [Microsoft Azure DocumentDB](/services/documentdb/) 中的性能级别。
 
 阅读本文之后，你将能够回答以下问题：
 
@@ -175,4 +172,4 @@ DocumentDB 集合允许你根据应用程序的查询模式和性能需求来对
 
 [1]: ./media/documentdb-performance-levels/documentdb-change-collection-performance7-9.png
 [2]: ./media/documentdb-performance-levels/documentdb-change-collection-performance10-11.png
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="连接到 SQL 数据仓库 | Microsoft Azure"
+   pageTitle="连接到 SQL 数据仓库 | Azure"
    description="有关在开发解决方案时连接到 Azure SQL 数据仓库的技巧。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -9,11 +9,11 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="01/07/2016"
+   ms.date="04/30/2016"
    wacn.date=""/>
 
-# 连接到 SQL 数据仓库 
-若要连接到 SQL 数据仓库，需要传入安全凭据进行身份验证。建立连接时，你还会看到特定的连接设置已配置为建立查询会话的一部分。
+# 连接到 SQL 数据仓库
+若要连接到 SQL 数据仓库，需要传入安全凭据进行身份验证。建立连接时，你还会看到特定的连接设置已配置为建立查询会话的一部分。有关安全性以及如何启用与 SQL 数据仓库的连接的详细信息，也可以查看 [Secure a database in SQL Data Warehouse][]（保护 SQL 数据仓库中的数据库）一文。
 
 本文详细说明有关连接到 SQL 数据仓库的以下方面：
 
@@ -25,9 +25,9 @@
 ## 身份验证
 若要连接到 SQL 数据仓库，需要提供以下信息：
 
-- 完全限定的服务器名称 
+- 完全限定的服务器名称
 - 指定 SQL 身份验证
-- 用户名 
+- 用户名
 - 密码
 - 默认数据库（可选）
 
@@ -48,8 +48,9 @@
 - ADO.NET
 - ODBC
 - PHP
-- JDBC
+- JDBC 
 
+下面是每个协议的连接字符串的一些示例。你可以使用 Azure 门户来帮助设置连接字符串。只需在 Azure 门户中导航到你的数据库。在“概要”下面，单击“显示数据库连接字符串”。
 ### 示例 ADO.NET 连接字符串
 
 ```
@@ -91,10 +92,10 @@ SQL 数据仓库在连接和创建对象期间标准化一些设置。无法重�
 
 每个查询由一个或多个请求标识符表示。在该连接上提交的所有查询都是单个会话的一部分，因此将以单个会话标识符表示。
 
-但是，SQL 数据仓库是分布式 MPP 系统，相比于 SQL Server，会话和请求标识符的公开方式有所不同。
+但是，SQL 数据仓库是分布式 MPP（大规模并行处理）系统，相比于 SQL Server，会话和请求标识符的公开方式有所不同。
 
 会话和请求由各自的标识符以逻辑方式表示。
-	
+
 | 标识符 | 示例值 |
 | :--------- | :------------ |
 | 会话 ID | SID123456 |
@@ -147,11 +148,12 @@ WHERE   s.[session_id] <> SESSION_ID()
 <!--Image references-->
 
 <!--Azure.com references-->
-[连接和查询]: ./sql-data-warehouse-get-started-connect.md
-[表设计]: ./sql-data-warehouse-develop-table-design.md
+[连接和查询]: /documentation/articles/sql-data-warehouse-get-started-connect
+[表设计]: /documentation/articles/sql-data-warehouse-develop-table-design
+[Secure a database in SQL Data Warehouse]: /documentation/articles/sql-data-warehouse-overview-security
 
 <!--MSDN references-->
 
 <!--Other references-->
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0523_2016-->

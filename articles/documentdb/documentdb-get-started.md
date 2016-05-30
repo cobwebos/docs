@@ -1,5 +1,5 @@
 <properties
-	pageTitle="NoSQL tutorial 教程：DocumentDB .NET SDK | Microsoft Azure"
+	pageTitle="NoSQL tutorial 教程：DocumentDB .NET SDK | Azure"
 	description="使用 DocumentDB .NET SDK 创建联机数据库和 C# 控制台应用程序的 NoSQL 教程。DocumentDB 是用于 JSON 的 NoSQL 数据库。"
 	keywords="nosql 教程, 联机数据库, c# 控制台应用程序"
 	services="documentdb"
@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="documentdb"
-	ms.date="04/15/2016"
+	ms.date="05/13/2016"
 	wacn.date=""/>
 
 # NoSQL 教程︰构建 DocumentDB C# 控制台应用程序
@@ -56,17 +56,12 @@
 ##<a id="SetupVS"></a>第 2 步：设置 Visual Studio 解决方案
 
 1. 在计算机上打开 **Visual Studio 2015**。
-2. 在“文件”菜单中，选择“新建”，然后选择“项目”。
-3. 在“新建项目”对话框中，选择“模板” / “Visual C#” / “控制台应用程序”，为项目命名，然后单击“确定”。
-![“新建项目”窗口屏幕截图](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
-4. 在“解决方案资源管理器”中，右键单击 Visual Studio 解决方案下方的新控制台应用程序。
-5. 接下来，无需离开菜单，单击“管理 NuGet 程序包...”
-![“项目”右键菜单屏幕截图](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
-6. 在“管理 NuGet 程序包”窗口最左侧的面板上，单击“联机” / “nuget.org”。
-7. 在“联机搜索”输入框中，搜索“DocumentDB”。
-8. 在结果中，找到“Microsoft Azure DocumentDB 客户端库”，然后单击“安装”。  
-   DocumentDB 客户端库的程序包 ID 是 [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB)
-![用于查找 DocumentDB 客户端 SDK 的 Nuget 菜单的屏幕截图](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+2. 在**“文件”**菜单中，选择**“新建”**，然后选择**“项目”**。
+3. 在**“新建项目”**对话框中，选择**“模板”** / **“Visual C#”** / **“控制台应用程序”**，为项目命名，然后单击**“确定”**。![“新建项目”窗口屏幕截图](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
+4. 在**“解决方案资源管理器”**中，右键单击 Visual Studio 解决方案下方的新控制台应用程序。
+5. 接下来，无需离开菜单，单击**“管理 NuGet 程序包...”** ![“项目”右键菜单屏幕截图](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+6. 在“Nuget”选项卡上，单击“浏览”，然后在搜索框中输入“azure documentdb”。
+7. 在结果中，找到“Microsoft.Azure.DocumentDB”，然后单击“安装”。DocumentDB 客户端库的程序包 ID 是 [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB) ![用于查找 DocumentDB 客户端 SDK 的 Nuget 菜单的屏幕截图](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
 很好！ 现在，我们已完成安装，让我们开始编写一些代码。可以在 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) 上找到本教程的完整代码项目。
 
@@ -74,10 +69,11 @@
 
 首先，在 Program.cs 文件中 C# 应用程序的开始位置添加这些引用︰
 
-		// ADD THIS PART TO YOUR CODE
-		using System;
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
+
+    // ADD THIS PART TO YOUR CODE
     using System.Net;
     using Microsoft.Azure.Documents;
     using Microsoft.Azure.Documents.Client;
@@ -85,7 +81,7 @@
 
 > [AZURE.IMPORTANT] 为了完成该 NoSQL 教程，请确保添加以上依赖关系。
 
-现在，在公共类 *Program* 下添加这两个常量和*客户端*变量。
+现在，在公共类 Program 下添加这两个常量和客户端变量。
 
 	public class Program
 	{
@@ -98,15 +94,15 @@
 
 在 Azure 门户中，从第 1 步导航到 DocumentDB 帐户。
 
-单击**“Essentials”**栏上的**“键”**图标。
-复制该 URI，并用在程序中复制的 URI 替换 *<your endpoint URI>*。
-复制该主键，并用在程序中复制的键替换 *<your key>*。
+单击“Essentials”栏上的“键”图标。
+复制该 URI，并用在程序中复制的 URI 替换 \<your endpoint URI\>。
+复制该主键，并用在程序中复制的键替换 \<your key\>。
 
 ![NoSQL 教程用于创建 C# 控制台应用程序的 Azure 门户的屏幕截图。显示 DocumentDB 帐户，在“DocumentDB 帐户”边栏选项卡上突出显示“ACTIVE”中心、“键”按钮，在“键”边栏选项卡上突出显示 URI、主键、辅键的值][keys]
 
 我们首先通过创建一个新的 **DocumentClient** 实例来开始创建应用程序。
 
-在 **Main** 方法中，添加名为**“GetStartedDemo”**的这个新异步任务，它将实例化我们的新 **DocumentClient**。
+在 **Main** 方法中，添加名为 **GetStartedDemo** 的这个新异步任务，它将实例化我们的新 **DocumentClient**。
 
 	static void Main(string[] args)
 	{
@@ -143,7 +139,6 @@
 					Console.WriteLine("End of demo, press any key to exit.");
 					Console.ReadKey();
 			}
-	}
 
 按 **F5** 运行应用程序。
 
@@ -164,7 +159,7 @@
 
 可以通过使用 **DocumentClient** 类的 [CreateDatabaseAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) 方法来创建 DocumentDB [数据库](documentdb-resources.md#databases)。数据库是跨集合分区的 JSON 文档存储的逻辑容器。
 
-复制并粘贴 **GetStartedDemo** 方法下的 **CreateDatabaseIfNotExists** 方法。
+复制并粘贴 **WriteToConsoleAndPromptToContinue** 方法下的 **CreateDatabaseIfNotExists** 方法。
 
 	// ADD THIS PART TO YOUR CODE
 	private async Task CreateDatabaseIfNotExists(string databaseName)
@@ -190,7 +185,7 @@
 			}
 	}
 
-将以下代码复制并粘贴到客户端创建下方的 **GetStartedDemo** 方法。这将创建一个名为 *FamilyDB* 的数据库。
+将以下代码复制并粘贴到客户端创建下方的 **GetStartedDemo** 方法。这将创建一个名为 FamilyDB 的数据库。
 
 	private async Task GetStartedDemo()
 	{
@@ -245,7 +240,7 @@
 		}
 	}
 
-将以下代码复制并粘贴到数据库创建下方的 **GetStartedDemo** 方法。这将创建一个名为 *FamilyCollection* 的文档集合。
+将以下代码复制并粘贴到数据库创建下方的 **GetStartedDemo** 方法。这将创建一个名为 FamilyCollection 的文档集合。
 
 		this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 
@@ -261,7 +256,7 @@
 ##<a id="CreateDoc"></a>第 6 步：创建 JSON 文档
 可以通过使用 **DocumentClient** 类的 [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) 方法创建[文档](/documentation/articles/documentdb-resources#documents)。文档为用户定义的（任意）JSON 内容。现在，我们可以插入一个或多个文档。如果已经有想要在数据库中存储的数据，则可以使用 DocumentDB 的[数据迁移工具](/documentation/articles/documentdb-import-data)。
 
-在本例中，我们首先需要创建 **Family** 类来表示存储在 DocumentDB 中的对象。我们还将创建 **Family** 中用到的 **Parent**、**Child**、**Pet** 和 **Family** 子类。请注意，文档必须将 **Id** 属性序列化为 JSON 格式的 **id**。通过在 **GetStartedDemo** 方法后添加以下内部子类来创建这些类。
+在本例中，我们首先需要创建 **Family** 类来表示存储在 DocumentDB 中的对象。我们还将创建 **Family** 中用到的 **Parent**、**Child**、**Pet** 和 **Address** 子类。请注意，文档必须将 **Id** 属性序列化为 JSON 格式的 **id**。通过在 **GetStartedDemo** 方法后添加以下内部子类来创建这些类。
 
 复制 **Family**、**Parent**、**Child**、**Pet** 和 **Address** 类并粘贴到 **WriteToConsoleAndPromptToContinue** 方法下。
 
@@ -450,7 +445,7 @@ DocumentDB 对存储在每个集合中的 JSON 文档都支持丰富[查询](/do
 					queryOptions);
 
 			Console.WriteLine("Running direct SQL query...");
-			foreach (Family family in familyQuery)
+			foreach (Family family in familyQueryInSql)
 			{
 					Console.WriteLine("\tRead {0}", family);
 			}
@@ -565,7 +560,7 @@ DocumentDB 支持删除 JSON 文档。
 
 祝贺你！ 你已成功删除 DocumentDB 数据库。
 
-##<a id="Run"></a>第 11 步︰一起运行 C# 控制台应用程序！
+##<a id="Run"></a>第 11 步：一起运行 C# 控制台应用程序！
 
 在 Visual Studio 中按 F5，即可在调试模式下构建应用程序。
 
@@ -597,6 +592,7 @@ DocumentDB 支持删除 JSON 文档。
 ##<a id="GetSolution"></a>获取完整的 NoSQL 教程解决方案
 若要生成包含本文所有示例的 GetStarted 解决方案，你将需要以下内容：
 
+- 有效的 Azure 帐户。如果你没有订阅，可以注册[免费帐户](/free/)。
 -   [DocumentDB 帐户][documentdb-create-account]。
 -   GitHub 上可用的 [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) 解决方案。
 
@@ -613,4 +609,4 @@ DocumentDB 支持删除 JSON 文档。
 [documentdb-manage]: /documentation/articles/documentdb-manage
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

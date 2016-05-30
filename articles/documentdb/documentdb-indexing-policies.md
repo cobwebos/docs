@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="DocumentDB 索引策略| Microsoft Azure" 
+    pageTitle="DocumentDB 索引策略 | Azure" 
     description="了解 DocumentDB 中的索引工作原理以及如何配置与更改索引策略。在 DocumentDB 中配置索引策略，实现自动索引并提高性能。" 
 	keywords="索引的工作原理, 自动索引, 索引数据库, documentdb, azure, Microsoft azure"
     services="documentdb" 
@@ -10,7 +10,7 @@
 
 <tags 
     ms.service="documentdb" 
-    ms.date="03/30/2016" 
+    ms.date="05/05/2016" 
     wacn.date=""/>
 
 
@@ -40,9 +40,9 @@
 
     DocumentCollection collection = new DocumentCollection { Id = "myCollection" };
     
-    collection.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
     collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
-
+    collection.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
+    
     await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), collection);   
 
 
@@ -283,7 +283,7 @@ DocumentDB 返回在“无”索引模式下对集合进行查询的错误。查
      
      collection.IndexingPolicy.IndexingMode = IndexingMode.Consistent;
      
-     collection = await client.CreateDocumentCollectionAsync(database.SelfLink, collection);
+     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("mydb"), collection);
 
 
 ### 索引路径
@@ -496,10 +496,7 @@ DocumentDB 还针对每个路径支持空间索引，可为点数据类型指定
             </td>
             <td valign="top">
                 <p>
-                    通过 /prop /?（或 / *）的哈希可用于高效执行以下查询：
-                      SELECT * FROM collection c WHERE c.prop = "value"。
-                    通过 /props/[]/?（或 /*或 /props/*）的哈希可用于高效执行以下查询：
-                      SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5
+                    通过 /prop /?（或 / *）的哈希可用于高效执行以下查询：SELECT * FROM collection c WHERE c.prop = "value"。通过 /props/[]/?（或 /*或 /props/*）的哈希可用于高效执行以下查询：SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5
                 </p>
             </td>
         </tr>
@@ -511,10 +508,7 @@ DocumentDB 还针对每个路径支持空间索引，可为点数据类型指定
             </td>
             <td valign="top">
                 <p>
-                    通过 /prop /?（或 / *）的范围可用于高效执行以下查询：
-                        SELECT * FROM collection c WHERE c.prop = "value"
-                        SELECT * FROM collection c WHERE c.prop > 5
-                        SELECT * FROM collection c ORDER BY c.prop
+                    通过 /prop /?（或 / *）的范围可用于高效执行以下查询：SELECT * FROM collection c WHERE c.prop = "value" SELECT * FROM collection c WHERE c.prop > 5 SELECT * FROM collection c ORDER BY c.prop
                 </p>
             </td>
         </tr>
@@ -526,10 +520,7 @@ DocumentDB 还针对每个路径支持空间索引，可为点数据类型指定
             </td>
             <td valign="top">
                 <p>
-                    通过 /prop /?（或 / *）的范围可用于高效执行以下查询：
-                        SELECT * FROM collection c
-                        WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) &lt; 40
-                        SELECT * FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... })
+                    通过 /prop /?（或 / *）的范围可用于高效执行以下查询：SELECT * FROM collection c WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) &lt; 40 SELECT * FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... })
                 </p>
             </td>
         </tr>        
@@ -542,27 +533,20 @@ DocumentDB 还针对每个路径支持空间索引，可为点数据类型指定
 
 #### 索引精度
 
-索引精度让你可以在索引存储开销和查询性能之间做出权衡。 
-对于数值，我们建议使用默认的精度配置 -1（最大）。由于数字是 JSON 格式的 8 个字节，这相当于 8 个字节的配置。选择较低值的精度（如 1-7）意味着在某些范围内的值会映射到相同的索引条目。因此，你可以降低索引存储空间，但查询执行可能需要处理更多文档，并因此占用更大的吞吐量，即请求单位。
+索引精度让你可以在索引存储开销和查询性能之间做出权衡。对于数值，我们建议使用默认的精度配置 -1（最大）。由于数字是 JSON 格式的 8 个字节，这相当于 8 个字节的配置。选择较低值的精度（如 1-7）意味着在某些范围内的值会映射到相同的索引条目。因此，你可以降低索引存储空间，但查询执行可能需要处理更多文档，并因此占用更大的吞吐量，即请求单位。
 
 索引精度配置对于字符串范围更加实用。由于字符串可以是任意长度，索引精度的选择可影响字符串范围查询的性能，并且影响所需的索引存储空间量。字符串范围索引可以配置为 1-100 或 -1（最大）。如果想要对字符串属性执行 Order By 查询，则必须为相应路径指定精度 -1。
 
 空间索引始终为点使用默认索引精度，并且不能重写。
 
-下面的示例演示了如何使用 .NET SDK 来提高集合中范围索引的精度。请注意，这将使用默认路径“/*”。
+下面的示例演示了如何使用 .NET SDK 来提高集合中范围索引的精度。
 
 **创建自定义索引精度的集合**
 
     var rangeDefault = new DocumentCollection { Id = "rangeCollection" };
     
-    rangeDefault.IndexingPolicy.IncludedPaths.Add(
-        new IncludedPath { 
-            Path = "/*", 
-            Indexes = new Collection<Index> { 
-                new RangeIndex(DataType.String) { Precision = -1 }, 
-                new RangeIndex(DataType.Number) { Precision = -1 }
-            }
-        });
+    // Override the default policy for Strings to range indexing and "max" (-1) precision
+    rangeDefault.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
 
     await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), rangeDefault);   
 
@@ -572,7 +556,7 @@ DocumentDB 还针对每个路径支持空间索引，可为点数据类型指定
 同样，可以从索引中完全排除路径。下面的示例演示了如何使用“*”通配符从索引中排除文档的整个部分（也称为子树）。
 
     var collection = new DocumentCollection { Id = "excludedPathCollection" };
-    collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/" });
+    collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
     collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
     
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
@@ -772,4 +756,4 @@ JSON 规范中实现了以下更改︰
  
 
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

@@ -41,6 +41,6 @@
 [18]: ./media/iot-suite-visualize-connecting/suite10.png
 [img-telemetry]: ./media/iot-suite-visualize-connecting/telemetry.png
 [lnk-customize]: /documentation/articles/iot-suite-guidance-on-customizing-preconfigured-solutions
-[lnk-dev-messaging]: /documentation/articles/iot-hub/iot-hub-devguide/#messaging
+[lnk-dev-messaging]: /documentation/articles/iot-hub-devguide/#messaging
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0523_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="通知中心入门（Xamarin.Android 应用）| Microsoft Azure"
+	pageTitle="适用于 Xamarin.Android 应用的通知中心入门 | Azure"
 	description="在本教程中，你将了解如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。"
 	authors="wesmc7777"
 	manager="dwrede"
@@ -35,7 +35,7 @@
 
 本教程需要的内容如下：
 
-+ Windows 上的 Visual Studio with Xamarin，或者 Mac OS X 上的 Xamarin Studio。[Setup and Install for Visual Studio and Xamarin（Visual Studio 和 Xamarin 的设置和安装）](https://msdn.microsoft.com/library/mt613162.aspx)中提供了完整安装说明。
++ Windows 上的 Visual Studio with Xamarin，或者 Mac OS X 上的 Xamarin Studio。[Setup and Install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx)（Visual Studio 和 Xamarin 的设置和安装）中提供了完整安装说明。
 + 有效的 Google 帐户
 + [Azure 消息传送组件]
 + [Google Cloud Messaging 客户端组件]
@@ -109,8 +109,8 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 1. 收集有关 Android 应用和通知中心的以下信息：
 
 	- **GoogleProjectNumber**：在 Google 开发人员门户上，从应用的概览中获取此项目编号值。当你在门户上创建应用时，已事先记下了这个值。
-	- **侦听连接字符串**：在 [Azure 经典门户]中的仪表板上，单击“查看连接字符串”。复制此值的 DefaultListenSharedAccessSignature 连接字符串。
-	- **中心名称**：这是你的中心在 [Azure 经典门户]上的名称。例如 mynotificationhub2。
+	- **侦听连接字符串**：在 [Azure 经典门户]中的仪表板上，单击“查看连接字符串”。复制此值的 *DefaultListenSharedAccessSignature* 连接字符串。
+	- **中心名称**：这是你的中心在 [Azure 经典门户]上的名称。例如 *mynotificationhub2*。
 
 	为 Xamarin 项目创建 **Constants.cs** 类，并在该类中定义以下常量值。将占位符替换为你自己的值。
 
@@ -368,7 +368,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 3. 在顶部工具栏中，单击“运行”，然后选择你的应用。这将启动模拟器并运行该应用程序。
 
-  应用将从 GCM 检索 registrationId 并注册到通知中心。
+  应用将从 GCM 检索 *registrationId* 并注册到通知中心。
 
 ##从后端发送通知
 
@@ -413,7 +413,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
         using Microsoft.Azure.NotificationHubs;
 
-5. 在 `Program` 类中添加以下方法。使用 DefaultFullSharedAccessSignature 连接字符串和 [Azure 经典门户]中的中心名称来更新占位符文本。
+5. 在 `Program` 类中添加以下方法。使用 *DefaultFullSharedAccessSignature* 连接字符串和 [Azure 经典门户]中的中心名称来更新占位符文本。
 
         private static async void SendNotificationAsync()
         {
@@ -446,7 +446,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 4. 创建作业时，单击该作业名称。然后单击顶部栏上的“脚本”选项卡。
 
-5. 在你的计划程序函数中插入以下脚本。确保将占位符替换为你先前获取的通知中心名称和 DefaultFullSharedAccessSignature 的连接字符串。单击“保存”。
+5. 在你的计划程序函数中插入以下脚本。确保将占位符替换为你先前获取的通知中心名称和 *DefaultFullSharedAccessSignature* 的连接字符串。单击“保存”。
 
         var azure = require('azure');
 		var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string>');
@@ -514,4 +514,4 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 [Google Cloud Messaging 客户端组件]: http://components.xamarin.com/view/GCMClient/
 [Azure 消息传送组件]: http://components.xamarin.com/view/azure-messaging
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0523_2016-->

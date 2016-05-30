@@ -45,9 +45,7 @@
 
 ##模板概念
 
-在[使用通知中心发送突发新闻]中，你构建了一个使用**标记**订阅不同新闻类别通知的应用程序。
-但是，很多应用程序针对多个市场，需要本地化。这意味着通知内容本身必须本地化且传递到正确的设备组。
-在本主题中，我们将演示如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
+在[使用通知中心发送突发新闻]中，你构建了一个使用**标记**订阅不同新闻类别通知的应用程序。但是，很多应用程序针对多个市场，需要本地化。这意味着通知内容本身必须本地化且传递到正确的设备组。在本主题中，我们将演示如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
 
 注意：发送本地化的通知的一种方式是创建每个标签的多个版本。例如，要支持英语、法语和汉语，我们需要三种不同的标签用于世界新闻：“world\_en”、“world\_fr”和“world\_ch”。我们然后必须将世界新闻的本地化版本分别发送到这些标签。在本主题中，我们使用模板来避免增生标签和发送多个消息的要求。
 
@@ -95,7 +93,7 @@
 
 		- (int) retrieveLocale;
 
-	在 Notification.m 中，通过添加区域设置参数并将它存储在用户默认值中，修改 storeCategoriesAndSubscribe 方法：
+	在 Notification.m 中，通过添加区域设置参数并将它存储在用户默认值中，修改 *storeCategoriesAndSubscribe* 方法：
 
 		- (void) storeCategoriesAndSubscribeWithLocale:(int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion {
 		    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
@@ -106,7 +104,7 @@
 		    [self subscribeWithLocale: locale categories:categories completion:completion];
 		}
 
-	然后修改 subscribe 方法以包括该区域设置：
+	然后修改 *subscribe* 方法以包括该区域设置：
 	
 		- (void) subscribeWithLocale: (int) locale categories:(NSSet *)categories completion:(void (^)(NSError *))completion{
 		    SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:@"<connection string>" notificationHubPath:@"<hub name>"];
@@ -129,7 +127,7 @@
 		    [hub registerTemplateWithDeviceToken:self.deviceToken name:@"localizednewsTemplate" jsonBodyTemplate:template expiryTemplate:@"0" tags:categories completion:completion];
 		}
 		
-	请注意，我们现在使用的是 registerTemplateWithDeviceToken 方法而非 registerNativeWithDeviceToken。当我们注册一个模板时，必须提供 json 模板，还要指定其名称（因为我们的应用程序可能要注册不同的模板）。确保将类别作为标记注册，因为我们要确保接收有关这些新闻的通知。
+	请注意，我们现在使用的是 *registerTemplateWithDeviceToken* 方法而非 *registerNativeWithDeviceToken*。当我们注册一个模板时，必须提供 json 模板，还要指定其名称（因为我们的应用程序可能要注册不同的模板）。确保将类别作为标记注册，因为我们要确保接收有关这些新闻的通知。
 
 	添加一个方法以从用户默认设置中检索区域设置：
 
@@ -141,11 +139,11 @@
 		    return locale < 0?0:locale;
 		}
 
-2. 现在我们修改了 Notifications 类，必须确保 ViewController 使用新的 UISegmentControl。在 viewDidLoad 方法中添加以下行，以确保显示当前选择的区域设置：
+2. 现在我们修改了 Notifications 类，必须确保 ViewController 使用新的 UISegmentControl。在 *viewDidLoad* 方法中添加以下行，以确保显示当前选择的区域设置：
 
 		self.Locale.selectedSegmentIndex = [notifications retrieveLocale];
 		
-	然后，在 subscribe 方法中，将对 storeCategoriesAndSubscribe 的调用更改为：
+	然后，在 *subscribe* 方法中，将对 *storeCategoriesAndSubscribe* 的调用更改为：
 	
 		[notifications storeCategoriesAndSubscribeWithLocale: self.Locale.selectedSegmentIndex categories:[NSSet setWithArray:categories] completion: ^(NSError* error) {
 	        if (!error) {
@@ -158,7 +156,7 @@
 	        }
 	    }];
 
-3. 最后，你必须在 AppDelegate.m 中更新 didRegisterForRemoteNotificationsWithDeviceToken 方法，以便在应用启动时正确刷新你的注册信息。将对通知的 subscribe 方法的调用更改为：
+3. 最后，你必须在 AppDelegate.m 中更新 *didRegisterForRemoteNotificationsWithDeviceToken* 方法，以便在应用启动时正确刷新你的注册信息。将对通知的 *subscribe* 方法的调用更改为：
 
 		NSSet* categories = [self.notifications retrieveCategories];
 	    int locale = [self.notifications retrieveLocale];
@@ -200,10 +198,10 @@
 		    [request setValue:categoryTag forHTTPHeaderField:@"ServiceBusNotification-Tags"];
 
 			// Template notification
-	        json = [NSString stringWithFormat:@"{\"messageParam\":\"Breaking %@ News : %@\","
-					\"News_English\":\"Breaking %@ News in English : %@\","
-					\"News_French\":\"Breaking %@ News in French : %@\","
-					\"News_Mandarin\":\"Breaking %@ News in Mandarin : %@\","
+	        json = [NSString stringWithFormat:@"{"messageParam":"Breaking %@ News : %@","
+					"News_English":"Breaking %@ News in English : %@","
+					"News_French":"Breaking %@ News in French : %@","
+					"News_Mandarin":"Breaking %@ News in Mandarin : %@","
 	                categoryTag, self.notificationMessage.text,
 	                categoryTag, self.notificationMessage.text,  // insert English localized news here
 	                categoryTag, self.notificationMessage.text,  // insert French localized news here
@@ -258,14 +256,6 @@
 
 <!-- Images. -->
 
-
-
-
-
-
-
-
-
 [13]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized1.png
 [14]: ./media/notification-hubs-ios-send-localized-breaking-news/ios_localized2.png
 
@@ -287,4 +277,4 @@
 
 
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0523_2016-->

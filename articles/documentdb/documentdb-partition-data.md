@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure DocumentDB 中的分区和缩放 | Microsoft Azure"      
+	pageTitle="Azure DocumentDB 中的分区和缩放 | Azure"      
 	description="了解分区在 Azure DocumentDB 中的工作原理，如何配置分区和分区键以及如何为应用程序选取适当的分区键。"         
 	services="documentdb" 
 	authors="arramac" 
@@ -315,4 +315,4 @@ DocumentDB 最常见的使用案例之一是记录和遥测。选取适当的分
 
  
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

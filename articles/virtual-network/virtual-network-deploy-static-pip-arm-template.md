@@ -1,6 +1,4 @@
-<!-- not suitable for Mooncake -->
-
-<properties 
+<properties
    pageTitle="在 Resource Manager 中使用模板通过静态公共 IP 部署 VM | Azure"
    description="了解如何在 Resource Manager 中使用模板通过静态公共 IP 部署 VM"
    services="virtual-network"
@@ -12,7 +10,7 @@
 />
 <tags
 	ms.service="virtual-network"
-	ms.date="01/08/2016"
+	ms.date="04/27/2016"
 	wacn.date=""/>
 
 # 使用模板通过静态公共 IP 部署 VM
@@ -21,7 +19,7 @@
 
 [AZURE.INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
+> [AZURE.NOTE] Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器和经典](/documentation/articles/resource-manager-deployment-model)。本文介绍如何使用 Resource Manager 部署模型。Microsoft 建议对大多数新的部署使用该模型，而不是经典部署模型。
 
 [AZURE.INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
@@ -44,9 +42,9 @@
         }
       },
 
-请注意 **publicIPAllocationMethod** 属性，该属性已设置为“静态”。该属性可以是“动态”（默认值），也可以是“静态”。将其设置为静态可确保该公共 IP 的 IP 地址不变。
+请注意 **publicIPAllocationMethod** 属性，该属性已设置为“静态”。该属性可以是“动态”（默认值），也可以是“静态”。将其设置为静态可确保分配的公共 IP 地址永不更改。
 
-以下部分说明如何将上述公共 IP 与 NIC 关联在一起。
+以下部分说明了公共 IP 地址与网络接口的关联。
 
       {
         "apiVersion": "2015-06-15",
@@ -81,7 +79,7 @@
 
 请注意，**publicIPAddress** 属性指向名为 **variables('webVMSetting').pipName** 的资源的 **Id**。该名称是上面所示的公共 IP 资源的名称。
 
-最后，上述 NIC 列在要创建的 VM 的 **networkProfile** 属性中。
+最后，上述网络接口列在要创建的 VM 的 **networkProfile** 属性中。
 
       "networkProfile": {
         "networkInterfaces": [
@@ -93,24 +91,24 @@
 
 ## 通过单击部署方式部署模板
 
-公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。若要使用单击部署来部署此模板，按照[此链接](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/03-Static-public-IP)，单击“部署至 Azure”，如有必要替换默认参数值，然后按照门户中的说明进行操作。
+公共存储库中提供的示例模板采用包含用于生成上述方案的默认值的参数文件。若要使用单击部署来部署此模板，请在[使用静态 PIP](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/03-Static-public-IP) 的 VM 模板的 Readme.md 文件中单击“部署到 Azure”。如果需要，请替换默认参数值并输入空白参数的值。按照门户中的说明使用静态公共 IP 地址创建虚拟机。
 
 ## 使用 PowerShell 部署模板
 
 若要使用 PowerShell 部署下载的模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure PowerShell，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)，并按步骤 1 到 3 中的说明进行操作。
+1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell（如何安装和配置 Azure PowerShell）](/documentation/articles/powershell-install-configure)，并按步骤 1 到 3 中的说明进行操作。
 
 2. 在 PowerShell 控制台中，根据需要运行 **New-AzureRmResourceGroup** cmdlet 以创建新资源组。如果已创建资源组，请转到步骤 3。
 
-		New-AzureRmResourceGroup -Name StaticPublicIP -Location chinanorth
+		New-AzureRmResourceGroup -Name PIPTEST -Location chinanorth
 
 	预期输出：
 
-		ResourceGroupName : StaticPublicIP
+		ResourceGroupName : PIPTEST
 		Location          : chinanorth
 		ProvisioningState : Succeeded
-		Tags              : 
+		Tags              :
 		ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/StaticPublicIP
 
 3. 在 PowerShell 控制台中，运行 **New-AzureRmResourceGroupDeployment** cmdlet 以部署模板。
@@ -124,33 +122,33 @@
 		DeploymentName    : DeployVM
 		ResourceGroupName : PIPTEST
 		ProvisioningState : Succeeded
-		Timestamp         : 1/8/2016 7:04:44 PM
+		Timestamp         : <Deployment date> <Deployment time>
 		Mode              : Incremental
-		TemplateLink      : 
+		TemplateLink      :
 		                    Uri            : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/mas
 		                    ter/IaaS-Story/03-Static-public-IP/azuredeploy.json
 		                    ContentVersion : 1.0.0.0
-		                    
-		Parameters        : 
+
+		Parameters        :
 		                    Name                      Type                       Value     
 		                    ========================  =========================  ==========
-		                    vnetName                  String                     WTestVNet 
+		                    vnetName                  String                     WTestVNet
 		                    vnetPrefix                String                     192.168.0.0/16
 		                    frontEndSubnetName        String                     FrontEnd  
 		                    frontEndSubnetPrefix      String                     192.168.1.0/24
 		                    storageAccountNamePrefix  String                     iaasestd  
 		                    stdStorageType            String                     Standard_LRS
 		                    osType                    String                     Windows   
-		                    adminUsername             String                     adminUser 
+		                    adminUsername             String                     adminUser
 		                    adminPassword             SecureString                         
-		                    
-		Outputs           : 
+
+		Outputs           :
 
 ## 使用 Azure CLI 部署模板
 
 若要使用 Azure CLI 部署模板，请执行以下步骤。
 
-1. 如果你从未使用过 Azure CLI，请参阅[安装和配置 Azure CLI](/documentation/articles/xplat-cli-install)，并按照说明进行操作，直到选择 Azure 帐户和订阅。
+1. 如果你从未用过 Azure CLI，请遵循 [Install and Configure the Azure CLI（安装和配置 Azure CLI）](/documentation/articles/xplat-cli-install)一文中的步骤，然后遵循 [Connect to an Azure subscription from the Azure Command-Line Interface (Azure CLI)（从 Azure 命令行接口 (Azure CLI) 连接到 Azure 订阅）](/documentation/articles/xplat-cli-connect)一文的“Use azure login to authenticate interactively”（使用 azure 登录名以交互方式进行身份验证）部分中所述的，将 CLI 连接到订阅的步骤。
 2. 运行 **azure config mode** 命令以切换到资源管理器模式，如下所示。
 
 		azure config mode arm
@@ -159,13 +157,13 @@
 
 		info:    New mode is arm
 
-3. 打开[参数文件](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json)，选择其内容，然后将其保存到计算机上的文件中。对于本示例，我们将参数文件保存到 parameters.json。
+3. 打开[参数文件](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json)，选择其内容，然后将其保存到计算机上的文件中。在本示例中，参数已保存到名为 parameters.json 的文件。如果需要，请更改文件中的参数值，但建议至少将 adminPassword 参数的值更改为唯一的复杂密码。
 
-4. 运行 **azure group deployment create** cmdlet 以使用你在前面下载并修改的模板和参数文件部署新 VNet。在输出后显示的列表说明了所用的参数。
+4. 运行 **azure group deployment create** cmdlet 以使用你在前面下载并修改的模板和参数文件部署新 VNet。在以下命令中，将 <path> 替换为文件保存到的目标路径。
 
-		azure group create -n PIPTEST2 -l chinanorth --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json -e parameters.json
+		azure group create -n PIPTEST2 -l chinanorth --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json -e <path>\parameters.json
 
-	预期输出：
+	预期输出（列出使用的参数值）：
 
 		info:    Executing command group create
 		+ Getting resource group PIPTEST2
@@ -174,7 +172,7 @@
 		+ Initializing template configurations and parameters
 		+ Creating a deployment
 		info:    Created template deployment "azuredeploy"
-		data:    Id:                  /subscriptions/628dad04-b5d1-4f10-b3a4-dc61d88cf97c/resourceGroups/PIPTEST2
+		data:    Id:                  /subscriptions/<Subscription ID>/resourceGroups/PIPTEST2
 		data:    Name:                PIPTEST2
 		data:    Location:            chinanorth
 		data:    Provisioning State:  Succeeded
@@ -182,4 +180,4 @@
 		data:
 		info:    group create command OK
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0523_2016-->

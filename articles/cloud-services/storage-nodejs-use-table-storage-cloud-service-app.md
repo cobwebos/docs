@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用表存储构建 Web 应用 (Node.js) | Microsoft Azure" 
+	pageTitle="使用表存储构建 Web 应用 (Node.js) | Azure" 
 	description="本教程以“使用 Express 构建 Web 应用程序”教程为基础，演示如何添加 Azure 存储服务和 Azure 模块。" 
 	services="cloud-services, storage" 
 	documentationCenter="nodejs" 
@@ -9,8 +9,8 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="01/09/2016" 
-	wacn.date=""/>
+	ms.date="05/04/2016" 
+	wacn.date="05/17/2016"/>
 
 # 使用存储构建 Node.js Web 应用程序
 
@@ -91,7 +91,7 @@
 
 ##在 Node 应用程序中使用表服务
 
-在本节中，你将通过添加一个包含你的任务模型的 **task.js** 文件来扩展 **express** 命令创建的基本应用程序。你还将修改现有 **app.js** 并创建使用该模型的新 **tasklist.js** 文件。
+在本节中，你将通过添加一个包含你的任务模型的 **task.js** 文件来扩展 **express** 命令创建的基本应用程序。你还将修改现有 **app.js** 并创建使用该模型的新** tasklist.js** 文件。
 
 ### 创建模型
 
@@ -354,7 +354,7 @@
 部署完成后，你将看到如下响应：
 
 	PS C:\node\tasklist> publish-azureserviceproject -servicename tasklist -location "China North"
-	WARNING: Publishing tasklist to Microsoft Azure. This may take several minutes...
+	WARNING: Publishing tasklist to Azure. This may take several minutes...
 	WARNING: 2:18:42 PM - Preparing runtime deployment for service 'tasklist'
 	WARNING: 2:18:42 PM - Verifying storage account 'tasklist'...
 	WARNING: 2:18:43 PM - Preparing deployment for tasklist with Subscription ID: 65a1016d-0f67-45d2-b838-b8f373d6d52e...
@@ -399,4 +399,4 @@ Azure 将按使用的服务器小时数对 Web 角色实例计费。你的应用
  
  
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0523_2016-->

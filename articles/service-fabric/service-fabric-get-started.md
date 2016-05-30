@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/26/2016"
+   ms.date="04/18/2016"
    wacn.date=""/>
 
 # 准备开发环境
@@ -23,6 +23,8 @@
 - Windows 8/Windows 8.1
 - Windows Server 2012 R2
 - Windows 10
+
+>[AZURE.NOTE] 默认情况下，Windows 7 仅包含 Windows PowerShell 2.0。需要安装 PowerShell 3.0 或更高版本才能使用 Service Fabric PowerShell cmdlet。可以从 Microsoft 下载中心[下载 Windows PowerShell 5.0][powershell5-download]。
 
 ## 安装运行时、SDK 和工具
 
@@ -55,5 +57,6 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 [full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI 链接"
 [full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI 链接"
 [core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK "Core SDK WebPI 链接"
+[powershell5-download]: https://www.microsoft.com/zh-cn/download/details.aspx?id=50395
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0523_2016-->

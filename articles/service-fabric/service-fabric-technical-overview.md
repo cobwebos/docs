@@ -32,7 +32,7 @@ Service Fabric 是一种分布式系统平台，可让你轻松打包、部署�
 
 **服务类型**：分配给服务的代码包、数据包、配置包的名称/版本。此信息在 `ServiceManifest.xml` 文件中定义，在服务包目录中嵌入，然后，应用程序包的 `ApplicationManifest.xml` 文件将引用该服务包目录。在群集中创建命名应用程序后，你可以从应用程序类型的服务类型之一创建命名服务。服务类型的 `ServiceManifest.xml` 文件描述该服务。
 
-有关详细信息，请阅读 [Application Model（应用程序模型）](/documentation/articles/service-fabric-application-model)一文。
+有关详细信息，请阅读 [Application Model](/documentation/articles/service-fabric-application-model)（应用程序模型）一文。
 
 有两种类型的服务：
 
@@ -72,9 +72,9 @@ Service Fabric 是一种分布式系统平台，可让你轻松打包、部署�
 ## 内置编程模型
 有一些 .NET Framework 编程模型可用于生成 Service Fabric 服务：
 
-- Reliable Services：用于构建无状态和有状态服务的 API。有状态服务将其状态存储在可靠集合（例如字典或队列）中。你也可以插入各种通信堆栈，如 Web API 和 Windows Communication Foundation (WCF)。
+**Reliable Services**：用于构建无状态和有状态服务的 API。有状态服务将其状态存储在可靠集合（例如字典或队列）中。你也可以插入各种通信堆栈，如 Web API 和 Windows Communication Foundation (WCF)。
 
-- Reliable Actors - 用于通过虚拟执行组件编程模型构建无状态和有状态对象的 API。如果你有大量的独立计算/状态单位，此模型可能十分有用。由于此模型使用基于轮次的线程模型，因此最好避免使用向外调用其他执行组件或服务的代码，原因是只有在单个执行组件的所有出站请求都已完成后，该执行组件才能处理其他传入请求。
+**Reliable Actors** - 用于通过虚拟执行组件编程模型构建无状态和有状态对象的 API。如果你有大量的独立计算/状态单位，此模型可能十分有用。由于此模型使用基于轮次的线程模型，因此最好避免使用向外调用其他执行组件或服务的代码，原因是只有在单个执行组件的所有出站请求都已完成后，该执行组件才能处理其他传入请求。
 
 有关详细信息，请阅读[为服务选择编程模型](/documentation/articles/service-fabric-choose-framework)一文。
 
@@ -86,4 +86,4 @@ Service Fabric 是一种分布式系统平台，可让你轻松打包、部署�
 - [为什么通过微服务的方法构建应用程序？](/documentation/articles/service-fabric-overview-microservices)
 - [应用程序方案](/documentation/articles/service-fabric-application-scenarios)
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0523_2016-->

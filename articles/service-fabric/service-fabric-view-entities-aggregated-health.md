@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/23/2016"
+   ms.date="04/25/2016"
    wacn.date=""/>
 
 # 查看 Service Fabric 运行状况报告
@@ -38,7 +38,7 @@ Service Fabric 提供多种方式来获取实体聚合运行状况：
 ## Service Fabric 资源管理器中的运行状况
 Service Fabric 资源管理器提供群集的更直观展示。在下图中，你可以看到：
 
-- 应用程序 **fabric:/WordCount** 为红色（出错），因为 **MyWatchdog** 报告“可用性”属性有一个错误事件。
+- 应用程序 fabric:/WordCount 为红色（出错），因为 MyWatchdog 报告“可用性”属性有一个错误事件。
 
 - 其服务之一，**fabric:/WordCount/WordCountService** 为黄色（警告）。如上所述，服务配置有七个副本，这些副本无法全部放置（因为只有五个节点）。尽管此处未显示，因为系统报告，服务分区为黄色。黄色分区触发黄色服务。
 
@@ -56,7 +56,7 @@ Service Fabric 资源管理器提供群集的更直观展示。在下图中，�
 > [AZURE.NOTE] 了解有关 [Service Fabric 资源管理器](/documentation/articles/service-fabric-visualizing-your-cluster)的更多信息。
 
 ## 运行状况查询
-Service Fabric 为每个支持的[实体类型](/documentation/articles/service-fabric-health-introduction#health-entities-and-hierarchy)提供运行状况查询。可以通过 API（可在 **FabricClient.HealthManager** 中找到的方法）、PowerShell cmdlet 和 REST 访问它们。这些查询返回有关实体的完整运行状况信息，包括聚合运行状况、报告的实体上的运行状况事件、子运行状况（在适用时）以及实体不正常时的不正常评估。
+Service Fabric 为每个支持的[实体类型](/documentation/articles/service-fabric-health-introduction#health-entities-and-hierarchy)提供运行状况查询。可以通过 API（可在 FabricClient.HealthManager 中找到的方法）、PowerShell cmdlet 和 REST 访问它们。这些查询返回有关实体的完整运行状况信息，包括聚合运行状况、报告的实体上的运行状况事件、子运行状况（在适用时）以及实体不正常时的不正常评估。
 
 > [AZURE.NOTE] 完全填充运行状况存储中时，运行状况实体返回给用户。实体必须是作用中（未删除），并且具有系统报告。层次结构链上其父实体还必须有系统报告。如果不满足上述条件之一，则运行状况查询返回一个异常，并显示未返回实体的原因。
 
@@ -234,8 +234,7 @@ NodeHealth nodeHealth = await fabricClient.HealthManager.GetNodeHealthAsync(quer
 ```
 
 ### PowerShell
-用于获取节点运行状况的 cmdlet 为 [Get-ServiceFabricNodeHealth](https://msdn.microsoft.com/zh-cn/library/mt125937.aspx)。首先使用 [Connect-ServiceFabricCluster](https://msdn.microsoft.com/zh-cn/library/mt125938.aspx) cmdlet 连接到群集。
-以下 cmdlet 使用默认运行状况策略获取节点运行状况：
+用于获取节点运行状况的 cmdlet 为 [Get-ServiceFabricNodeHealth](https://msdn.microsoft.com/zh-cn/library/mt125937.aspx)。首先使用 [Connect-ServiceFabricCluster](https://msdn.microsoft.com/zh-cn/library/mt125938.aspx) cmdlet 连接到群集。以下 cmdlet 使用默认运行状况策略获取节点运行状况：
 
 ```powershell
 PS C:\> Get-ServiceFabricNodeHealth _Node_1
@@ -760,7 +759,7 @@ HealthEvents          :
 
 运行状况区块查询目前仅对群集实体公开。它会返回群集运行状况区块，其中包含：
 
-- 群集聚合健康状况。
+- 群集的聚合健康状况。
 
 - 采用输入筛选器的节点的健康状况区块列表。
 
@@ -773,8 +772,7 @@ HealthEvents          :
 
 - [可选] 应用程序运行状况策略与用于取代应用程序清单策略的运行状况策略进行映射。
 
-- [可选] 节点和应用程序的筛选器，用于指定应该在结果中返回的相关条目。筛选器特定于实体/实体组，或适用于该级别的所有实体。筛选器列表可包含一个常规筛选器以及/或者一个由查询返回的精细实体的特定标识符筛选器。
-如果筛选器列表为空，默认情况下不会返回任何子项。如需详细了解筛选器，请参阅 [NodeHealthStateFilter](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.nodehealthstatefilter.aspx) 和 [ApplicationHealthStateFilter](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.applicationhealthstatefilter.aspx)。应用程序筛选器可采用递归方式为子项指定高级筛选器。
+- [可选] 节点和应用程序的筛选器，用于指定应该在结果中返回的相关条目。筛选器特定于实体/实体组，或适用于该级别的所有实体。筛选器列表可包含一个常规筛选器以及/或者一个由查询返回的精细实体的特定标识符筛选器。如果筛选器列表为空，默认情况下不会返回任何子项。如需详细了解筛选器，请参阅 [NodeHealthStateFilter](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.nodehealthstatefilter.aspx) 和 [ApplicationHealthStateFilter](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.applicationhealthstatefilter.aspx)。应用程序筛选器可采用递归方式为子项指定高级筛选器。
 
 区块结果包含采用筛选器的子项。
 
@@ -1056,9 +1054,9 @@ HealthState            : Warning
 ## 群集和应用程序升级
 在群集与应用程序的受监视升级期间，Service Fabric 将检查运行状况，以确保一切都能维持在运行状况良好的状态。如果实体通过使用已设置的运行状况策略评估为状况不良，升级过程将应用升级特定的策略来确定后续措施。升级可能会暂停，以允许用户交互（例如修复错误条件或更改策略），或是它自动回滚到以前的正常版本。
 
-在群集升级期间，你可以获取群集升级状态。这包括任何状况不正常的评估，指向群集中状况不正常的项目。如果升级因运行状况问题而回滚，则升级状态将保留最后的不正常原因。这可以让管理员能够调查发生的问题。
+在“群集”升级期间，你可以获取群集升级状态。这包括任何状况不正常的评估，指向群集中状况不正常的项目。如果升级因运行状况问题而回滚，则升级状态将保留最后的不正常原因。这可以让管理员能够调查发生的问题。
 
-同样地，在应用程序升级期间，应用程序升级状态也会包含任何不正常的评估。
+同样地，在“应用程序”升级期间，应用程序升级状态也会包含任何不正常的评估。
 
 以下代码显示修改后的 fabric:/WordCount 应用程序的升级状态。监视程序在其中一个副本上报告一个错误。因为运行状况检查不合格，升级回滚。
 
@@ -1130,4 +1128,4 @@ UpgradeReplicaSetCheckTimeout : 00:15:00
 
 [Service Fabric 应用程序升级](/documentation/articles/service-fabric-application-upgrade)
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0523_2016-->

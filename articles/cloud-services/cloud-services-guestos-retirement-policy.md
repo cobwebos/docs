@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure 来宾 OS 可支持性和停用策略指南 | Microsoft Azure" 
+   pageTitle="Azure 来宾 OS 可支持性和停用策略指南 | Azure" 
    description="介绍有关 Microsoft 对云服务使用的 Azure 来宾 OS 提供的支持的信息。" 
    services="cloud-services" 
    documentationCenter="na" 
@@ -9,8 +9,8 @@
 
 <tags
    ms.service="cloud-services"
-   ms.date="12/07/2015" 
-   wacn.date=""/>
+   ms.date="04/19/2016"
+   wacn.date="05/17/2016"/>
 
 # Azure 来宾 OS 可支持性和停用策略
 本页面上的信息与 Azure 来宾操作系统（[来宾 OS](/documentation/articles/cloud-services-guestos-update-matrix)）相关。来宾 OS 仅适用于云服务辅助角色和 Web 角色 (PaaS)，而不适用于虚拟机 (IaaS)。
@@ -81,9 +81,9 @@ Microsoft 将继续推出合并了最新 MSRC 更新的新来宾 OS 版本，直
 
 **如果我的 Web 应用程序需要更深入地与 OS 集成，我该怎么办？**
 
-如果你的 Web 应用程序体系结构需要更深入地依赖于基本操作系统，请使用平台支持的功能（例如[启动任务](/documentation/articles/cloud-services-startup-tasks)）或将来可能存在的其他扩展性机制。此外，你还可以使用 [Azure 虚拟机](http://azure.microsoft.com/documentation/scenarios/virtual-machines/)（IaaS – 基础结构即服务），你可以在其中负责维护基本操作系统。
+如果你的 Web 应用程序体系结构需要更深入地依赖于基本操作系统，请使用平台支持的功能（例如[启动任务](/documentation/articles/cloud-services-startup-tasks)）或将来可能存在的其他扩展性机制。此外，你还可以使用 [Azure 虚拟机](https://azure.microsoft.com/documentation/scenarios/virtual-machines)（IaaS – 基础结构即服务），你可以在其中负责维护基本操作系统。
  
 ## 后续步骤
 查看最新的[来宾 OS 版本](/documentation/articles/cloud-services-guestos-update-matrix)。
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0523_2016-->
