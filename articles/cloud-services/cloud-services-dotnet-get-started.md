@@ -809,4 +809,4 @@ Contoso 广告应用程序有意保持入门教程的简单性。例如，它没
 * [如何管理云服务](/documentation/articles/cloud-services-how-to-manage)
 * [Azure 存储空间](/documentation/services/storage)
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0503_2016--->
