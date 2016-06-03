@@ -800,4 +800,4 @@ Contoso 广告应用程序有意保持入门教程的简单性。例如，它没
 * [Azure 存储空间](/zh-cn/documentation/services/storage/)
 * [如何通过 .NET 使用 Blob 存储](/zh-cn/documentation/articles/storage-dotnet-how-to-use-blobs/)
 * [如何通过 .NET 使用队列存储](/zh-cn/documentation/articles/storage-dotnet-how-to-use-queues/)
-<!-----HONumber=39-->
+<!-----HONumber=39--->

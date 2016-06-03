@@ -175,4 +175,4 @@ Azure 库提供了由 Microsoft、第三方公司和开源软件计划开发的�
 [WordPressDashboard]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard.png
 [WordPressConfigure]: ./media/app-service-web-create-web-app-from-marketplace/wpconfigure.png
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0523_2016--->
