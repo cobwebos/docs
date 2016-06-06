@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="02/16/2016" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 # 在 Office 365 门户中创建或删除 Azure Multi-Factor Authentication 的应用密码
@@ -67,4 +67,4 @@
 
 
  
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0530_2016-->

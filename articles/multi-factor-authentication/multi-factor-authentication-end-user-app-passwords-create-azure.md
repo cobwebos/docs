@@ -4,12 +4,12 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	manager="stevenp" 
+	editor="curtland"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="06/02/2015" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 # 在 Azure 门户中为 Azure Multi-Factor Authentication 创建应用密码
@@ -28,4 +28,5 @@
 
 <center>![Cloud](./media/multi-factor-authentication-end-user-app-passwords-create-azure/app2.png)</center>
 
-<!---HONumber=69-->
+ 
+<!---HONumber=Mooncake_0530_2016-->

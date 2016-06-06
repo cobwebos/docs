@@ -1,5 +1,5 @@
 <properties
-   pageTitle="在 HDInsight 中将 Hadoop Pig 与 .NET 配合使用 | Microsoft Azure"
+   pageTitle="在 HDInsight 中将 Hadoop Pig 与 .NET 配合使用 | Azure"
    description="了解如何使用 .NET SDK for Hadoop 将 Pig 作业提交到 HDInsight 上的 Hadoop。"
    services="hdinsight"
    documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="09/23/2015"
+	ms.date="05/04/2016"
 	wacn.date=""/>
 
 #使用 HDInsight 中的 .NET SDK for Hadoop 运行 Pig 作业
@@ -20,9 +20,7 @@
 
 HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsight 群集的操作。Pig 可让你通过为一系列数据转换建模，来创建 MapReduce 操作。你将学习如何使用基本 C# 应用程序将 Pig 作业提交到 HDInsight 群集。
 
-[AZURE.INCLUDE [azure-preview-portal](../includes/hdinsight-azure-portal.md)]
-
-* [使用 HDInsight 中的 .NET SDK for Hadoop 运行 Pig 作业](/documentation/articles/hdinsight-hadoop-use-pig-dotnet-sdk)
+> [AZURE.IMPORTANT] 目前，Azure 中国区的 HDInsight 只能通过 Azure 服务管理器 (ASM) 进行管理。适用于 HDInsight 的 Azure Resource Manager (ARM) 模型尚不可用。
 
 ##<a id="prereq"></a>先决条件
 
@@ -34,11 +32,11 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 ##<a id="certificate"></a>创建管理证书
 
-若要在 Azure HDInsight 上对应用程序进行身份验证，你必须创建自签名证书，将它安装在开发工作站上，同时将它上载到你的 Azure 订阅。
+若要在 Azure HDInsight 上对应用程序进行身份验证，必须创建自签名证书，将它安装在开发工作站上，同时将它上载到你的 Azure 订阅。
 
 有关如何执行此操作的说明，请参阅[创建自签名证书](/documentation/articles/hdinsight-administer-use-management-portal-v1/#cert)。
 
-> [AZURE.NOTE]创建证书时，请务必记下使用的友好名称供以后使用。
+> [AZURE.NOTE] 创建证书时，请务必记下使用的友好名称供以后使用。
 
 ##<a id="subscriptionid"></a>查找你的订阅 ID
 
@@ -61,23 +59,23 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 3. 对于新项目，请键入或选择以下值。
 
 	<table>
-<tr>
-<th>属性</th>
-<th>值</th>
-</tr>
-<tr>
-<th>类别</th>
-<th>模板/Visual C#/Windows</th>
-</tr>
-<tr>
-<th>模板</th>
-<th>控制台应用程序</th>
-</tr>
-<tr>
-<th>Name</th>
-<th>SubmitPigJob</th>
-</tr>
-</table>
+	<tr>
+	<th>属性</th>
+	<th>值</th>
+	</tr>
+	<tr>
+	<th>类别</th>
+	<th>模板/Visual C#/Windows</th>
+	</tr>
+	<tr>
+	<th>模板</th>
+	<th>控制台应用程序</th>
+	</tr>
+	<tr>
+	<th>Name</th>
+	<th>SubmitPigJob</th>
+	</tr>
+	</table>
 
 4. 单击“确定”以创建该项目。
 
@@ -122,11 +120,10 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 		            // Define the Pig job
 		            var parameters = new PigJobSubmissionParameters()
 		            {
-		                UserName = ExistingClusterUsername,
 		                Query = queryString,
 		            };
 		
-		            System.Console.WriteLine("Submitting the Sqoop job to the cluster...");
+		            System.Console.WriteLine("Submitting the Pig job to the cluster...");
 		            var response = _hdiJobManagementClient.JobManagement.SubmitPigJob(parameters);
 		            System.Console.WriteLine("Validating that the response is as expected...");
 		            System.Console.WriteLine("Response status code is " + response.StatusCode);
@@ -157,4 +154,4 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 * [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce)
 
-<!---HONumber=82-->
+<!---HONumber=Mooncake_0530_2016-->

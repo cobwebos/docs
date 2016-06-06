@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="04/07/2016" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 常见问题
@@ -190,4 +190,4 @@ Azure Multi-Factor Authentication 服务通过短信聚合器发送短信。许�
 
 
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0530_2016-->

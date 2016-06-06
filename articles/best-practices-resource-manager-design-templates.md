@@ -1,15 +1,15 @@
 <properties
-	pageTitle="设计 Azure 资源管理器模板的最佳实践"
+	pageTitle="Azure Resource Manager 模板最佳实践 | Azure"
 	description="演示 Azure 资源管理器模板的设计模式"
 	services="azure-resource-manager"
 	documentationCenter=""
-	authors="mmercuri"
-	manager="georgem"
+	authors="tfitzmac"
+	manager="timlt"
 	editor="tysonn"/>
 
 <tags
 	ms.service="azure-resource-manager"
-	ms.date="12/17/2015"
+	ms.date="03/23/2016"
 	wacn.date=""/>
 
 # 设计 Azure 资源管理器模板的最佳实践
@@ -141,7 +141,7 @@ DSC 可以使用最热门机制的一些资源扩展 - PowerShell DSC、Chef 和
 
 表面上，自由格式配置听起来很实用。它们允许你选择 VM 类型，并提供任意数目的节点以及这些节点的附加磁盘用作模板的参数。但是，当你进一步了解并考虑将要部署多个不同大小的虚拟机的模板时，会出现其他一些因素，使得这种选择在许多情况下并不合适。
 
-Azure 网站上的 [Azure 的虚拟机和云服务大小](http://msdn.microsoft.com/zh-cn/library/azure/dn641267.aspx)一文中已介绍了不同的 VM 类型和可用大小，以及每种可附加的持久性磁盘数目（2、4、8、16 或 32）。每个附加的磁盘提供 500 IOPS，可将这些磁盘的倍数组建成池，以成倍提高 IOPS 数目。例如，可将 16 个磁盘组建成池，以提供 8,000 IOPS。可以使用 Microsoft Windows 存储空间或者在 Linux 使用价格便宜的磁盘冗余阵列 (RAID)，使用操作系统中的配置来实现池的组建。
+[Sizes for virtual machines](/documentation/articles/virtual-machines-windows-sizes)（虚拟机的大小）中已介绍了不同的 VM 类型和可用大小，以及每种可附加的持久性磁盘数目（2、4、8、16 或 32）。每个附加的磁盘提供 500 IOPS，可将这些磁盘的倍数组建成池，以成倍提高 IOPS 数目。例如，可将 16 个磁盘组建成池，以提供 8,000 IOPS。可以使用 Microsoft Windows 存储空间或者在 Linux 使用价格便宜的磁盘冗余阵列 (RAID)，使用操作系统中的配置来实现池的组建。
 
 自由格式配置可让你选择多个 VM 实例、多个适用于这些实例的不同 VM 类型和大小、多个可根据 VM 类型而有所不同的磁盘，以及一个或多个脚本来配置 VM 内容。
 
@@ -149,13 +149,13 @@ Azure 网站上的 [Azure 的虚拟机和云服务大小](http://msdn.microsoft.
 
 当你开始部署具有任何重要性的群集时，将会使用所有节点的倍数。例如，如果你在部署 Hadoop 群集，其中有 8 个主节点和 200 个数据节点，并且每个主节点上组建了包含 4 个附加磁盘的池，每个数据节点上共享了 16 个附加磁盘，那么，有 208 个 VM 和 3,232 个磁盘需要管理。
 
-存储帐户将根据它所识别出的每秒 20,000 个事务限制上调节请求，因此，应该查看存储帐户的分区，并使用计算来确定适当数的存储帐户以配合此拓扑。假设自由格式的方法支持多种组合，则需要动态计算来确定适当的分区。Azure 资源管理器模板语言当前不提供数学函数，因此你必须在代码中执行这些计算，生成唯一的硬编码模板以及适当的详细信息。
+存储帐户将根据它所识别出的每秒 20,000 个事务限制上调节请求，因此，应该查看存储帐户的分区，并使用计算来确定适当数的存储帐户以配合此拓扑。假设自由格式的方法支持多种组合，则需要动态计算来确定适当的分区。Azure 资源管理器模板语言当前不提供数学函数，因此必须在代码中执行这些计算，生成唯一的硬编码模板以及适当的详细信息。
 
 在企业 IT 和 SI 方案中，某人必须维护模板，并提供已针对一个或多个组织部署的拓扑的支持。这种额外的开销（每位客户有不同的配置和模板）并不尽理想。
 
 你可以使用这些模板在客户的 Azure 订阅中部署环境，但是企业 IT 团队和 CSV 通常将它们部署到自己的订阅，使用分摊功能向客户收费。在这种情况下，目标是要跨订阅池部署适用于多个客户的容量，并让部署密集填入订阅中，以便将订阅的扩展最小化，也就是能够管理更多订阅。使用真正的动态部署大小，达到这种类型的密度需要仔细规划，并代表组织基架工作执行其他开发。
 
-此外，你无法通过 API 调用来创建订阅，而是必须通过门户手动执行此操作。随着订阅数的增加，任何产生的订阅扩展都必须人为介入，而无法自动化。由于部署的大小如此多变，因此你必须手动预先设置一些订阅，以确保有订阅可供使用。
+此外，你无法通过 API 调用来创建订阅，而是必须通过门户手动执行此操作。随着订阅数的增加，任何产生的订阅扩展都必须人为介入，而无法自动化。由于部署的大小如此多变，因此必须手动预先设置一些订阅，以确保有订阅可供使用。
 
 考虑所有这些因素，真正的自由格式配置乍看之下不是那么有吸引力。
 
@@ -375,8 +375,7 @@ Redis 只使用单一节点类型，因此你将要创建名为 node-resources.j
 
 ## 后续步骤
 
-- 若要查看有关如何实施本主题中所述设计原理的上下文示例，请参阅[模板实施最佳实践的上下文示例](/documentation/articles/best-practices-resource-manager-examples)。
-- 至于如何在 Azure 资源管理器中处理安全事项，请参阅 [Azure 资源管理器的安全注意事项](/documentation/articles/best-practices-resource-manager-security)以获取相关建议
-- 若要了解进出模板的状态，请参阅[共享 Azure 资源管理器模板中的状态](/documentation/articles/best-practices-resource-manager-state)。
+- 至于如何在 Azure 资源管理器中处理安全事项，请参阅 [Azure 资源管理器的安全注意事项](best-practices-resource-manager-security.md)以获取相关建议
+- 若要了解进出模板的状态，请参阅[共享 Azure 资源管理器模板中的状态](best-practices-resource-manager-state.md)。
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0530_2016-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="04/11/2016" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 # 管理云中 Azure Multi-Factor Authentication 的用户设置
@@ -44,8 +44,7 @@
 5. 在页面底部，单击“管理 Multi-Factor Auth”。此时将打开“Multi-Factor Authentication”页。
 6. 找到要管理的用户，并勾选其名称旁边的框。你可能需要在顶部切换视图。
 7. 此时会在右侧显示“管理用户设置”链接。请单击此按钮。
-8. 勾选“要求选定的用户再次提供联系方法”。
-![提供联系方法](./media/multi-factor-authentication-manage-users-and-devices/reproofup.png)
+8. 勾选“要求选定的用户再次提供联系方法”。![提供联系方法](./media/multi-factor-authentication-manage-users-and-devices/reproofup.png)
 9. 单击“保存”。
 10. 单击“关闭”
 
@@ -62,8 +61,7 @@
 5. 在页面底部，单击“管理 Multi-Factor Auth”。此时将打开“Multi-Factor Authentication”页。
 6. 找到要管理的用户，并勾选其名称旁边的框。你可能需要在顶部切换视图。
 7. 此时会在右侧显示“管理用户设置”链接。请单击此按钮。 
-8. 勾选“删除选定用户生成的所有现有应用密码”。
-![删除应用密码](./media/multi-factor-authentication-manage-users-and-devices/deleteapppasswords.png)
+8. 勾选“删除选定用户生成的所有现有应用密码”。![删除应用密码](./media/multi-factor-authentication-manage-users-and-devices/deleteapppasswords.png)
 9. 单击“保存”。
 10. 单击“关闭”。
 
@@ -80,11 +78,10 @@
 5. 在页面底部，单击“管理 Multi-Factor Auth”。此时将打开“Multi-Factor Authentication”页。
 6. 找到要管理的用户，并勾选其名称旁边的框。你可能需要在顶部切换视图。
 7. 此时会在右侧显示“管理用户设置”链接。请单击此按钮。
-8. 勾选“还原所有已记住设备的 Multi-Factor Authentication”。
-![删除应用密码](./media/multi-factor-authentication-manage-users-and-devices/rememberdevices.png)
+8. 勾选“还原所有已记住设备的 Multi-Factor Authentication”。![删除应用密码](./media/multi-factor-authentication-manage-users-and-devices/rememberdevices.png)
 9. 单击“保存”。
 10. 单击“关闭”。
 
 
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0530_2016-->

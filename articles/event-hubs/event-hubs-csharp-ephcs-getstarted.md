@@ -1,5 +1,5 @@
 <properties
-	pageTitle="通过 C# 使用事件中心入门 | Microsoft Azure"
+	pageTitle="通过 C# 使用事件中心入门 | Azure"
 	description="遵循本教程开始使用以 C# 编写的 Azure 事件中心和 EventProcessorHost。"
 	services="event-hubs"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="event-hubs"
-	ms.date="04/12/2016"
+	ms.date="05/13/2016"
 	wacn.date=""/>
 
 # 事件中心入门
@@ -26,37 +26,9 @@
 
 + Microsoft Visual Studio 2013 或更高版本，或 Microsoft Visual Studio Express for Windows。本文中的示例使用 Visual Studio 2015。
 
-+ 有效的 Azure 帐户。<br/>如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.cn/pricing/1rmb-trial/" target="_blank">Azure 试用</a>。
++ 有效的 Azure 帐户。<br/>如果你没有帐户，只需几分钟的时间就能创建一个免费帐户。有关详细信息，请参阅 [Azure 免费试用](/pricing/1rmb-trial)。
 
-## 创建事件中心
-
-1. 登录到 [Azure 经典门户][]，然后单击屏幕底部的“新建”。
-
-2. 依次单击“App Service”、“服务总线”、“事件中心”、“快速创建”。
-
-	![][1]
-
-3. 为你的事件中心键入名称，选择所需区域，然后单击“创建新事件中心”。
-
-	![][2]
-
-4. 如果你未显式选择给定区域中现有的命名空间，门户会为你创建命名空间（通常为 **事件中心名称-ns**）。单击该命名空间（在此示例中为 **eventhub-ns**）。
-
-	![][3]
-
-5. 单击页面顶部的“事件中心”选项卡，然后单击你刚创建的事件中心。
-
-	![][4]
-
-6. 单击顶部的“配置”选项卡，添加具有“发送”权限的名为“SendRule”的规则，再添加具有“管理”、“发送”和“侦听”权限的名为“ReceiveRule”的规则，然后单击“保存”。
-
-	![][5]
-
-7. 单击页面顶部的“仪表板”选项卡，然后单击“连接信息”。将两个连接字符串复制到临时位置，因为你稍后将在本教程中用到它们。
-
-	![][6]
-
-现在，你的事件中心就创建好了，你已经有了收发事件所需的连接字符串。
+[AZURE.INCLUDE [event-hubs-create-event-hub](../includes/event-hubs-create-event-hub.md)]
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-send-csharp](../includes/service-bus-event-hubs-get-started-send-csharp.md)]
 
@@ -75,7 +47,7 @@
  
 4. 再次右键单击“Receiver”解决方案，然后单击“属性”。随即显示“Receiver”属性页面。
 
-5. 单击“启动项目”，然后单击“多启动项目”按钮。将 **Receiver** 和 **Sender** 项目的“操作”框设置为“启动”。
+5. 单击“启动项目”，然后单击“多个启动项目”按钮。将 **Receiver** 和 **Sender** 项目的“操作”框设置为“启动”。
 
 	![][19]
 
@@ -105,20 +77,13 @@
 - [事件中心概述][]
 
 <!-- Images. -->
-[1]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub1.png
-[2]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub2.png
-[3]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub3.png
-[4]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub4.png
-[5]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub5.png
-[6]: ./media/event-hubs-csharp-ephcs-getstarted/create-event-hub6.png
-
 [19]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj1.png
 [20]: ./media/event-hubs-csharp-ephcs-getstarted/create-eh-proj2.png
 [21]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs1.png
 [22]: ./media/event-hubs-csharp-ephcs-getstarted/run-csharp-ephcs2.png
 
 <!-- Links -->
-[Azure 经典门户]: https://manage.windowsazure.cn/
+[Azure Classic Portal]: https://manage.windowsazure.cn/
 [事件处理程序主机]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [事件中心概述]: /documentation/articles/event-hubs-overview
 [使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
@@ -126,4 +91,4 @@
 [队列消息解决方案]: /documentation/articles/service-bus-dotnet-multi-tier-app-using-service-bus-queues
  
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0530_2016-->

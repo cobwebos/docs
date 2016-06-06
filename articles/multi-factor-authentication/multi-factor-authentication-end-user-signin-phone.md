@@ -5,12 +5,12 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	manager="stevenpo" 
+	editor="curtland"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="06/02/2015" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 # 在 Azure Multi-Factor Authentication 中使用办公电话或手机呼叫进行登录
@@ -34,4 +34,12 @@
 
 <li>现在你应已登录。</li>
 
-<!---HONumber=69-->
+
+
+
+
+
+
+
+ 
+<!---HONumber=Mooncake_0530_2016-->

@@ -1,3 +1,5 @@
+<!-- not suitable for Mooncake -->
+
 <properties
    pageTitle="使用 HDInsight 开发 Python MapReduce 作业 | Azure"
    description="了解如何在基于 Linux 的 HDInsight 群集上创建和运行 Python MapReduce 作业。"
@@ -9,15 +11,17 @@
 	tags="azure-portal"/>
 
 <tags
-   ms.service="hdinsight" 
-   ms.date="08/04/2015"
-   wacn.date=""/>
+	ms.service="hdinsight"
+	ms.date="05/13/2016"
+	wacn.date=""/>
 
 #开发适用于 HDInsight 的 Python 流式处理程序
 
 Hadoop 为 MapReduce 提供了一个流式处理 API，使你能够以 Java 之外的其他语言来编写映射和化简函数。在本文中，你将学习如何使用 Python 执行 MapReduce 操作。
 
-> [AZURE.NOTE]本文是根据 Michael Noll 在 [http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/) 上发布的信息和示例编写的。
+> [AZURE.NOTE] 尽管也可以针对基于 Windows 的 HDInsight 群集使用本文档中的 Python 代码，但本文档中的步骤是专门针对基于 Linux 的群集编写的。
+
+本文的内容基于 Michael Noll 在 [Writing an Hadoop MapReduce Program in Python（以 Python 编写 Hadoop MapReduce 程序）](http://www.michael-noll.com/tutorials/writing-an-hadoop-mapreduce-program-in-python/)中发布的信息和示例。
 
 ##先决条件
 
@@ -26,6 +30,8 @@ Hadoop 为 MapReduce 提供了一个流式处理 API，使你能够以 Java 之�
 * 基于 Linux 的 HDInsight 上的 Hadoop 群集
 
 * 文本编辑器
+
+    > [AZURE.IMPORTANT] 文本编辑器必须使用 LF 作为行尾。如果它使用 CRLF，则在基于 Linux 的 HDInsight 群集上运行 MapReduce 作业时会导致出错。如果你不确定它使用哪种行尾，请使用[运行 MapReduce](#run-mapreduce) 部分中的可选步骤，将所有 CRLF 转换为 LF。
 
 * 对于 Windows 客户端，需要 PuTTY 和 PSCP。这些实用程序可通过 <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">PuTTY 下载页</a>获得。
 
@@ -63,29 +69,29 @@ Python 可以使用 **sys** 模块从 STDIN 读取数据，并使用 **print** �
 
 创建名为 **mapper.py** 的新文件并使用以下代码作为内容：
 
-	#!/usr/bin/env python
+    #!/usr/bin/env python
 
-	# Use the sys module
-	import sys
+    # Use the sys module
+    import sys
 
-	# 'file' in this case is STDIN
-	def read_input(file):
-		# Split each line into words
-		for line in file:
-			yield line.split()
+    # 'file' in this case is STDIN
+    def read_input(file):
+        # Split each line into words
+        for line in file:
+            yield line.split()
 
-	def main(separator='\t'):
-		# Read the data using read_input
-		data = read_input(sys.stdin)
-		# Process each words returned from read_input
-		for words in data:
-			# Process each word
-			for word in words:
-				# Write to STDOUT
-				print '%s%s%d' % (word, separator, 1)
+    def main(separator='\t'):
+        # Read the data using read_input
+        data = read_input(sys.stdin)
+        # Process each words returned from read_input
+        for words in data:
+            # Process each word
+            for word in words:
+                # Write to STDOUT
+                print '%s%s%d' % (word, separator, 1)
 
-	if __name__ == "__main__":
-		main()
+    if __name__ == "__main__":
+        main()
 
 花些时间通读代码，以便你可以了解它的功能。
 
@@ -93,40 +99,40 @@ Python 可以使用 **sys** 模块从 STDIN 读取数据，并使用 **print** �
 
 创建名为 **reducer.py** 的新文件并使用以下代码作为内容：
 
-	#!/usr/bin/env python
-	
-	# import modules
-	from itertools import groupby
-	from operator import itemgetter
-	import sys
-	
-	# 'file' in this case is STDIN
-	def read_mapper_output(file, separator='\t'):
-		# Go through each line
-	    for line in file:
-			# Strip out the separator character
-	        yield line.rstrip().split(separator, 1)
-	
-	def main(separator='\t'):
-	    # Read the data using read_mapper_output
-	    data = read_mapper_output(sys.stdin, separator=separator)
-		# Group words and counts into 'group'
-		#   Since MapReduce is a distributed process, each word
+    #!/usr/bin/env python
+
+    # import modules
+    from itertools import groupby
+    from operator import itemgetter
+    import sys
+
+    # 'file' in this case is STDIN
+    def read_mapper_output(file, separator='\t'):
+        # Go through each line
+        for line in file:
+            # Strip out the separator character
+            yield line.rstrip().split(separator, 1)
+
+    def main(separator='\t'):
+        # Read the data using read_mapper_output
+        data = read_mapper_output(sys.stdin, separator=separator)
+        # Group words and counts into 'group'
+        #   Since MapReduce is a distributed process, each word
         #   may have multiple counts. 'group' will have all counts
         #   which can be retrieved using the word as the key.
-	    for current_word, group in groupby(data, itemgetter(0)):
-	        try:
-				# For each word, pull the count(s) for the word
-				#   from 'group' and create a total count
-	            total_count = sum(int(count) for current_word, count in group)
-				# Write to stdout
-	            print "%s%s%d" % (current_word, separator, total_count)
-	        except ValueError:
-	            # Count was not a number, so do nothing
-	            pass
-	
-	if __name__ == "__main__":
-	    main()
+        for current_word, group in groupby(data, itemgetter(0)):
+            try:
+                # For each word, pull the count(s) for the word
+                #   from 'group' and create a total count
+                total_count = sum(int(count) for current_word, count in group)
+                # Write to stdout
+                print "%s%s%d" % (current_word, separator, total_count)
+            except ValueError:
+                # Count was not a number, so do nothing
+                pass
+
+    if __name__ == "__main__":
+        main()
 
 ##上载文件
 
@@ -138,7 +144,7 @@ Python 可以使用 **sys** 模块从 STDIN 读取数据，并使用 **print** �
 
 这样就会将两个文件从本地系统复制到头节点。
 
-> [AZURE.NOTE]如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。如果你使用了 SSH 密钥，则可能需要使用 `-i` 参数和私钥路径，例如 `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.cn:`。
+> [AZURE.NOTE] 如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。如果你使用了 SSH 密钥，则可能需要使用 `-i` 参数和私钥路径，例如 `scp -i /path/to/private/key mapper.py reducer.py username@clustername-ssh.azurehdinsight.cn:`。
 
 ##运行 MapReduce
 
@@ -146,16 +152,21 @@ Python 可以使用 **sys** 模块从 STDIN 读取数据，并使用 **print** �
 
 		ssh username@clustername-ssh.azurehdinsight.cn
 
-	> [AZURE.NOTE]如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。如果你使用了 SSH 密钥，则可能需要使用 `-i` 参数和私钥路径，例如 `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.net`。
+	> [AZURE.NOTE] 如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。如果你使用了 SSH 密钥，则可能需要使用 `-i` 参数和私钥路径，例如 `ssh -i /path/to/private/key username@clustername-ssh.azurehdinsight.cn`。
+
+2. （可选）如果在创建 mapper.py 和 reducer.py 文件时，所用的文本编辑器使用 CRLF 作为行尾，或者你不知道该编辑器使用哪种行尾，请使用以下命令将 mapper.py 和 reducer.py 中出现的 CRLF 转换为 LF。
+
+        perl -pi -e 's/\r\n/\n/g' mappery.py
+        perl -pi -e 's/\r\n/\n/g' reducer.py
 
 2. 使用以下命令启动 MapReduce 作业。
 
-		hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasb:///example/data/davinci.txt -output wasb:///example/wordcountout
+		yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files mapper.py,reducer.py -mapper mapper.py -reducer reducer.py -input wasb:///example/data/gutenberg/davinci.txt -output wasb:///example/wordcountout
 
 	此命令包括以下几个部分：
 
 	* **hadoop-streaming.jar**：运行流式处理 MapReduce 操作时使用。它可以将 Hadoop 和你提供的外部 MapReduce 代码连接起来。
-	
+
 	* **-files**：告知 Hadoop 此 MapReduce 作业需要指定的文件，而且应将这些文件复制到所有辅助节点。
 
 	* **-mapper**：告诉 Hadoop 要用作映射器的文件。
@@ -166,7 +177,7 @@ Python 可以使用 **sys** 模块从 STDIN 读取数据，并使用 **print** �
 
 	* **-output**：要将输出写入到的目录。
 
-		> [AZURE.NOTE]该作业会创建此目录。
+		> [AZURE.NOTE] 该作业会创建此目录。
 
 作业启动后，你会看到一堆 **INFO** 语句，最后会看到以百分比显示的**映射**和**化简**操作。
 
@@ -180,7 +191,7 @@ Python 可以使用 **sys** 模块从 STDIN 读取数据，并使用 **print** �
 
 在作业完成后，使用以下命令查看输出：
 
-	hadoop fs -text /example/wordcountout/part-00000
+	hdfs dfs -text /example/wordcountout/part-00000
 
 这应会显示文本及文本出现次数的列表。下面是输出数据的示例：
 
@@ -195,8 +206,8 @@ Python 可以使用 **sys** 模块从 STDIN 读取数据，并使用 **print** �
 
 既然你了解了如何将流式处理 MapRedcue 作业用于 HDInsight，就使用以下链接来学习 Azure HDInsight 的其他用法。
 
-* [将 Hive 与 HDInsight 配合使用](/documentation/articles/hdinsight-use-hive/)
-* [将 Pig 与 HDInsight 配合使用](/documentation/articles/hdinsight-use-pig/)
+* [将 Hive 与 HDInsight 配合使用](/documentation/articles/hdinsight-use-hive)
+* [将 Pig 与 HDInsight 配合使用](/documentation/articles/hdinsight-use-pig)
 * [将 MapReduce 作业与 HDInsight 配合使用](/documentation/articles/hdinsight-use-mapreduce)
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0530_2016-->

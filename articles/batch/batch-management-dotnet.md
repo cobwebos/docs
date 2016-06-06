@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Batch Management .NET 管理帐户 | Microsoft Azure"
+	pageTitle="使用 Batch Management .NET 管理帐户 | Azure"
 	description="使用 Batch Management .NET 库在应用程序中创建、删除和修改 Azure Batch 帐户。"
 	services="batch"
 	documentationCenter=".net"
@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="batch"
-	ms.date="01/28/2016"
+	ms.date="05/02/2016"
 	wacn.date=""/>
 
 # 使用 Batch Management .NET 管理 Azure Batch 帐户和配额
@@ -24,7 +24,7 @@
 - 在任何区域中**创建和删除 Batch 帐户**。例如，如果你是一家独立软件供应商 (ISV)，现在要为每个分配了不同计费 Batch 帐户的客户提供服务，则你可以将帐户创建和删除功能添加到客户门户中。
 - 以编程方式为任何 Batch 帐户**检索和重新生成帐户密钥**。这尤其有利于保持符合可能对帐户密钥强制实施定期滚动更新或过期的安全策略。当各种不同的 Azure 区域中有许多 Batch 帐户时，将此滚动更新过程自动化会提高解决方案的效率。
 - **检查帐户配额**并采取试错猜测，确定哪些 Batch 帐户存在哪些限制。在启动作业、创建池或添加计算节点之前检查帐户配额可以主动调整创建计算资源的位置或时机。你可以在帐户中分配其他资源之前，确定哪些帐户需要增加配额。
-- 通过在同一个应用程序中利用 Batch Management .NET、[Azure Active Directory][aad_about] 和 [Azure Resource Manager][resman_overview]，**结合其他 Azure 服务的功能**以获得全功能管理体验。使用这些功能及其 API 可以提供顺畅的身份验证体验、创建和删除资源组以及上述功能，以获取端到端管理解决方案。
+- 通过在同一个应用程序中利用 Batch Management .NET、[Azure Active Directory][aad_about] 和 [Azure Resource Manager][resman_overview]，结合其他 Azure 服务的功能以获得全功能管理体验。使用这些功能及其 API 可以提供顺畅的身份验证体验、创建和删除资源组以及上述功能，以获取端到端管理解决方案。
 
 > [AZURE.NOTE] 尽管本文着重介绍以编程方式管理 Batch 帐户、密钥和配额，但你也可以使用 [Azure 门户][azure_portal]执行其中的许多活动。有关详细信息，请参阅[在 Azure 门户中创建和管理 Azure Batch 帐户](batch-account-create-portal.md)以及 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
 
@@ -34,7 +34,7 @@
 
 以下代码段将创建一个帐户，从 Batch 服务获取新建的帐户，然后将它删除。在此部分与在本文的其他代码段中，`batchManagementClient` 是完全初始化的 [BatchManagementClient][net_mgmt_client] 实例。
 
-```
+```csharp
 // Create a new Batch account
 await batchManagementClient.Accounts.CreateAsync("MyResourceGroup",
 	"mynewaccount",
@@ -48,13 +48,13 @@ AccountResource account = getResponse.Resource;
 await batchManagementClient.Accounts.DeleteAsync("MyResourceGroup", account.Name);
 ```
 
-> [AZURE.NOTE] 使用 Batch Management .NET 库及其 BatchManagementClient 类的应用程序需有**服务管理员**或**共同管理员**访问权限才能使用拥有要管理的 Batch 帐户的订阅。有关详细信息，请参阅下面的 [Azure Active Directory](#aad) 部分和 [AccountManagement][acct_mgmt_sample] 代码示例。
+> [AZURE.NOTE] 使用 Batch Management .NET 库及其 BatchManagementClient 类的应用程序需有服务管理员或共同管理员访问权限才能使用拥有要管理的 Batch 帐户的订阅。有关详细信息，请参阅下面的 [Azure Active Directory](#azure-active-directory) 部分和 [AccountManagement][acct_mgmt_sample] 代码示例。
 
 ## 检索和重新生成帐户密钥
 
 使用 [ListKeysAsync][net_list_keys] 从订阅中的任何 Batch 帐户获取主要和辅助帐户密钥。可以使用 [RegenerateKeyAsync][net_regenerate_keys] 重新生成这些密钥。
 
-```
+```csharp
 // Get and print the primary and secondary keys
 BatchAccountListKeyResponse accountKeys = await batchManagementClient.Accounts.ListKeysAsync("MyResourceGroup", "mybatchaccount");
 Console.WriteLine("Primary key:   {0}", accountKeys.PrimaryKey);
@@ -79,7 +79,7 @@ Azure 订阅和类似于 Batch 的各个 Azure 服务均有默认配额，用于
 
 在以下的代码段中，我们先使用 [BatchManagementClient.Accounts.ListAsync][net_mgmt_listaccounts] 来获取订阅中所有 Batch 帐户的集合。获取此集合后，可以确定目标区域有多少个帐户。然后使用 [BatchManagementClient.Subscriptions][net_mgmt_subscriptions] 来获取 Batch 帐户配额，并确定可以在该区域中创建多少个帐户（如果有）。
 
-```
+```csharp
 // Get a collection of all Batch accounts within the subscription
 BatchAccountListResponse listResponse = await batchManagementClient.Accounts.ListAsync(new AccountListParameters());
 IList<AccountResource> accounts = listResponse.Accounts;
@@ -104,7 +104,7 @@ Console.WriteLine("You can create {0} accounts in the {1} region.", quotaRespons
 
 在增加 Batch 解决方案内的计算资源之前，你可以检查以确保想要分配的资源不会超出当前指定的帐户配额。在以下代码段中，我们只是要输出名为 `mybatchaccount` 的 Batch 帐户的配额信息。但在你自己的应用程序中，你可以使用此类信息来确定帐户是否可以处理你要创建的其他资源。
 
-```
+```csharp
 // First obtain the Batch account
 BatchAccountGetResponse getResponse = await batchManagementClient.Accounts.GetAsync("MyResourceGroup", "mybatchaccount");
 AccountResource account = getResponse.Resource;
@@ -141,6 +141,8 @@ Azure 本身使用 Azure AD 来对其客户、服务管理员和组织用户进�
 
 ![Azure 门户中的应用程序权限][2]
 
+> [AZURE.TIP] 如果“Microsoft Azure 服务管理 API”未出现在“对其他应用程序的权限”下，请单击“添加应用程序”，选择“Microsoft Azure 服务管理 API”，然后单击复选标记按钮。然后，根据上面的指定委托权限。
+
 根据上述说明添加应用程序以后，请使用应用程序的重定向 URI 和客户端 ID 更新 [AccountManagment][acct_mgmt_sample] 示例项目中的 `Program.cs`。可在应用程序的“配置”选项卡中查找这些值：
 
 ![Azure 门户中的应用程序配置][3]
@@ -167,7 +169,7 @@ Azure 本身使用 Azure AD 来对其客户、服务管理员和组织用户进�
 
 ![显示资源组和 Batch 帐户的 Azure 门户][1]
 <br />
-显示新资源组和 Batch 帐户的 Azure 门户
+“显示新资源组和 Batch 帐户的 Azure 门户”
 
 [aad_about]: ../active-directory/active-directory-whatis.md "什么是 Azure Active Directory？"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md
@@ -198,4 +200,4 @@ Azure 本身使用 Azure AD 来对其客户、服务管理员和组织用户进�
 [2]: ./media/batch-management-dotnet/portal-02.png
 [3]: ./media/batch-management-dotnet/portal-03.png
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0530_2016-->

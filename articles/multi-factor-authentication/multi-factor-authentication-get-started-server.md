@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="01/25/2016" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 服务器入门
@@ -27,7 +27,7 @@
 
 
 
-可以使用两种不同的方法下载 Azure Multi-Factor Authentication 服务器。两种方法都是通过 Azure 门户进行的。第一种方法是直接管理 Multi-Factor Auth 提供程序。第二种方法是通过服务设置。第二个选项需要 Multi-Factor Auth 提供程序或 Azure MFA、Azure AD Premium 或企业移动套件许可证。
+可以使用两种不同的方法下载 Azure Multi-Factor Authentication 服务器。两种方法都是通过 Azure 门户进行的。第一种方法是直接管理 Multi-Factor Auth 提供程序。第二种方法是通过服务设置。第二个选项需要 Multi-Factor Auth 提供程序或 Azure MFA、Azure AD Premium 或 Enterprise Mobility Suite 许可证。
 
 
 ### 从 Azure 门户下载 Azure Multi-Factor Authentication 服务器
@@ -37,10 +37,8 @@
 2. 在左侧选择“Active Directory”。
 3. 在“Active Directory”页的顶部，单击“Multi-Factor Auth 提供程序”
 4. 在底部单击“管理”
-5. 此时将打开一个新页面。单击“下载”。
-![下载](./media/multi-factor-authentication-sdk/download.png)
-6. 在“生成激活凭据”上方，单击“下载”。
-![下载](./media/multi-factor-authentication-get-started-server/download4.png)
+5. 此时将打开一个新页面。单击“下载”。![下载](./media/multi-factor-authentication-sdk/download.png)
+6. 在“生成激活凭据”上方，单击“下载”。![下载](./media/multi-factor-authentication-get-started-server/download4.png)
 7. 保存下载的内容。
 
 
@@ -51,11 +49,9 @@
 1. 以管理员身份登录到 Azure 门户。
 2. 在左侧选择“Active Directory”。
 3. 双击 Azure AD 的实例。
-4. 在顶部单击“配置”
-![下载](./media/multi-factor-authentication-sdk/download2.png)
+4. 在顶部单击“配置” ![下载](./media/multi-factor-authentication-sdk/download2.png)
 5. 在“Multi-Factor Authentication”下选择“管理服务设置”
-6. 在“服务设置”页上的屏幕底部单击“转到门户”。
-![下载](./media/multi-factor-authentication-get-started-server/servicesettings.png)
+6. 在“服务设置”页上的屏幕底部单击“转到门户”。![下载](./media/multi-factor-authentication-get-started-server/servicesettings.png)
 7. 此时将打开一个新页面。单击“下载”。
 8. 在“生成激活凭据”上方，单击“下载”。
 9. 保存下载的内容。
@@ -71,7 +67,7 @@
 Azure Multi-Factor Authentication 服务器要求|说明|
 :------------- | :------------- | 
 硬件|<li>200 MB 硬盘空间</li><li>x32 或 x64 处理器</li><li>1 GB 或更大的 RAM</li>
-软件|<li>Windows Server 2003 或更高版本（如果主机是服务器操作系统）</li><li>Windows Vista 或更高版本（如果主机是客户端操作系统）</li><li>Microsoft.NET 2.0 Framework</li><li>IIS 6.0 或更高版本（如果要安装用户门户或 Web 服务 SDK）</li>
+软件|<li>Windows Server 2008 或更高版本（如果主机是服务器 OS）</li><li>Windows 7 或更高版本（如果主机是客户端 OS）</li><li>Microsoft.NET 4.0 Framework</li><li>IIS 7.0 或更高版本（如果要安装用户门户或 Web 服务 SDK）</li>
 
 ### Azure Multi-Factor Authentication 服务器防火墙要求
 --------------------------------------------------------------------------------
@@ -186,4 +182,4 @@ IP 子网|网络掩码|IP 范围
 [与 Windows Server Active Directory 同步](/documentation/articles/multi-factor-authentication-get-started-server-dirint)|有关在 Active Directory 与 Azure MFA 服务器之间设置和配置同步的信息。
 [部署 Azure Multi-Factor Authentication 服务器移动应用 Web 服务](/documentation/articles/multi-factor-authentication-get-started-server-webservice)|有关设置和配置 Azure MFA 服务器 Web 服务的信息。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0530_2016-->

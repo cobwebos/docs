@@ -9,10 +9,10 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="01/11/2016" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
-# 将多重身份验证构建到自定义应用程序中 (SDK)
+# 将 Multi-Factor Authentication 构建到自定义应用程序中 (SDK)
 
 使用 Azure Multi-Factor Authentication 软件开发工具包 (SDK)，你可将电话呼叫和短信验证直接内置于 Azure AD 租户的应用程序的登录或事务处理流程中。
 
@@ -29,7 +29,7 @@ Multi-Factor Authentication SDK 的 API 结构相当简单。你可使用 Multi-
 
 ## 下载 Azure Multi-Factor Authentication SDK 
 
-可以使用两种不同的方法下载 Azure Multi-Factor Authentication SDK。两种方法都是通过 Azure 门户进行的。第一种方法是直接管理 Multi-Factor Auth 提供程序。第二种方法是通过服务设置。第二个选项需要 Multi-Factor Auth 提供程序或 Azure AD Premium 许可证。
+可以使用两种不同的方法下载 Azure Multi-Factor Authentication SDK。两种方法都是通过 Azure 门户进行的。第一种方法是直接管理 Multi-Factor Auth 提供程序。第二种方法是通过服务设置。第二个选项需要 Multi-Factor Auth 提供程序或 Azure MFA、Azure AD Premium 或 Enterprise Mobility Suite 许可证。
 
 
 ### 从 Azure 门户下载 Azure Multi-Factor Authentication SDK
@@ -187,4 +187,5 @@ Multi-Factor Authentication SDK 的 API 结构相当简单。你可使用 Multi-
 	    }
 	}
 
-<!---HONumber=Mooncake_0215_2016-->
+
+<!---HONumber=Mooncake_0530_2016-->

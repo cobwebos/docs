@@ -1,5 +1,5 @@
 <properties
-   pageTitle="配置可以并存的 ExpressRoute 连接和站点到站点 VPN 连接 | Microsoft Azure"
+   pageTitle="配置可共存的 ExpressRoute 连接和站点到站点 VPN 连接 | Azure"
    description="本文将指导你配置可在经典部署模型中并存的 ExpressRoute 连接和站点到站点 VPN 连接。"
    documentationCenter="na"
    services="expressroute"
@@ -17,7 +17,7 @@
 
 > [AZURE.SELECTOR]
 - [PowerShell - Resource Manager](/documentation/articles/expressroute-howto-coexist-resource-manager)
-- [PowerShell - Classic](/documentation/articles/expressroute-howto-coexist-classic)
+- [PowerShell - 经典](/documentation/articles/expressroute-howto-coexist-classic)
 
 能够配置站点到站点 VPN 和 ExpressRoute 具有多项优势。你可以将站点到站点 VPN 配置为 ExressRoute 的安全故障转移路径，或者使用站点到站点 VPN 连接到不是通过 ExpressRoute 进行连接的站点。我们将在本文中介绍这两种方案的配置步骤。本文适用于经典部署模型。此配置在门户中不可用。
 
@@ -31,7 +31,7 @@
 
 - **不支持转换性路由：**你将不能（通过 Azure）在通过站点到站点 VPN 连接的本地网络与通过 ExpressRoute 连接的本地网络之间进行路由。
 - **不支持点到站点连接：**你不能启用点到站点 VPN 连接来连接到已连接到 ExpressRoute 的同一 VNet。对于同一 VNet 而言，点到站点 VPN 和 ExpressRoute 不能共存。
-- **无法在站点到站点 VPN 网关上启用强制隧道：**你只能通过 ExpressRoute 将所有 Internet 绑定流量“强制”返回到本地网络。 
+- **无法在站点到站点 VPN 网关上启用强制隧道：**你只能通过 ExpressRoute 将所有面向 Internet 的流量“强制”返回到本地网络。 
 - **仅限标准或高性能网关：**ExpressRoute 网关和站点到站点 VPN 网关必须使用标准或高性能网关。有关网关 SKU 的信息，请参阅[网关 SKU](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
 - **仅限基于路由的 VPN 网关：**必须使用基于路由的 VPN 网关。有关基于路由的 VPN 网关的信息，请参阅 [VPN 网关](/documentation/articles/vpn-gateway-about-vpngateways)。
 - **静态路由要求：**如果你的本地网络同时连接到 ExpressRoute 和站点到站点 VPN，则必须在本地网络中配置静态路由，以便将站点到站点 VPN 连接路由到公共 Internet。
@@ -70,11 +70,11 @@
 	在此过程中，创建可以共存的连接将需要你删除网关，然后配置新网关。这意味着，在你删除并重新创建网关和连接时，跨界连接将会停止工作，但你无需将任何 VM 或服务迁移到新的虚拟网络。在你配置网关时，如果进行了相应配置，你的 VM 和服务仍可以通过负载平衡器与外界通信。
 
 
-## <a name="new"></a>创建新的虚拟网络和共存连接
+## <a name="new"></a>创建新的虚拟网络和并存连接
 
 本过程将指导你创建 VNet，以及创建将共存的站点到站点连接和 ExpressRoute 连接。
 
-1. 你需要安装最新版本的 Azure Resource Manager PowerShell cmdlet。有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。请务必使用说明内容中指定的 cmdlet。 
+1. 你需要安装最新版本的 Azure Resource Manager PowerShell cmdlet。有关安装 PowerShell cmdlet 的详细信息，请参阅 [How to install and configure Azure PowerShell（如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)）。请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。请务必使用说明内容中指定的 cmdlet。 
 
 2. 创建虚拟网络的架构。有关配置架构的详细信息，请参阅 [Azure 虚拟网络配置架构](https://msdn.microsoft.com/zh-cn/library/azure/jj157100.aspx)。
 
@@ -120,7 +120,7 @@
 
 		New-AzureDedicatedCircuitLink -ServiceKey <service-key> -VNetName MyAzureVNET
 
-6. 接下来，创建站点到站点 VPN 网关。GatewaySKU 必须为 Standard 或 HighPerformance，GatewayType 必须为 DynamicRouting。
+6. <a name="vpngw"></a>接下来，创建站点到站点 VPN 网关。GatewaySKU 必须为 Standard 或 HighPerformance，GatewayType 必须为 DynamicRouting。
 
 		New-AzureVirtualNetworkGateway -VNetName MyAzureVNET -GatewayName S2SVPN -GatewayType DynamicRouting -GatewaySKU  HighPerformance
 
@@ -153,7 +153,7 @@
 
 	使用下面的示例，并将值替换为你自己的值。
 
-	`New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>`
+		New-AzureLocalNetworkGateway -GatewayName MyLocalNetwork -IpAddress <MyLocalGatewayIp> -AddressSpace <MyLocalNetworkAddress>
 
 	> [AZURE.NOTE] 如果你的本地网络具有多个路由，你可以通过数组的形式将其全部传入。$MyLocalNetworkAddress = @("10.1.2.0/24","10.1.3.0/24","10.2.1.0/24")
 
@@ -178,13 +178,15 @@
 	在此示例中，connectedEntityId 是本地网关 ID，可以通过运行 `Get-AzureLocalNetworkGateway` 来查找它。可以通过使用 `Get-AzureVirtualNetworkGateway` cmdlet 查找 virtualNetworkGatewayId。完成此步骤后，已通过站点到站点 VPN 连接建立本地网络与 Azure 之间的连接。
 
 
-	`New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>`
+		New-AzureVirtualNetworkGatewayConnection -connectedEntityId <local-network-gateway-id> -gatewayConnectionName Azure2Local -gatewayConnectionType IPsec -sharedKey abc123 -virtualNetworkGatewayId <azure-s2s-vpn-gateway-id>
 
-## <a name="add"></a>为现有的 VNet 配置共存连接
+## <a name="add"></a>为现有的 VNet 配置并存连接
 
-如果有通过 ExpressRoute 连接或站点到站点 VPN 连接进行连接的现有虚拟网络，要使这两个连接都连接到现有虚拟网络，必须先删除现有网关。这意味着，当你进行此配置时，本地系统将丢失通过网关与虚拟网络建立的连接。
+如果你已经有了一个虚拟网络，请检查网关子网大小。如果网关子网为 /28 或 /29，则必须先删除虚拟网络网关，然后增加网关子网大小。本部分的步骤将说明如何这样做。
 
-**在开始配置之前：**确认虚拟网络中剩下足够的 IP 地址，以便你可以增加网关子网大小。请注意，即使你有足够多的 IP 地址，也必须删除网关，然后重新创建它。这是因为网关必须重新创建才能适应并存的连接。
+如果网关子网为 /27 或更大，且虚拟网络是通过 ExpressRoute 连接的，则可跳过下面的步骤，转到前一部分的[“步骤 6 - 创建站点到站点 VPN 网关”](#vpngw)。
+
+>[AZURE.NOTE] 如果你删除的是现有网关，则当你进行此配置时，本地系统将失去与虚拟网络建立的连接。
 
 1. 你需要安装最新版本的 Azure Resource Manager PowerShell cmdlet。有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。请注意，针对此配置使用的 cmdlet 可能与你熟悉的 cmdlet 稍有不同。请务必使用说明内容中指定的 cmdlet。 
 
@@ -196,13 +198,14 @@
 
 	`Get-AzureVNetConfig -ExportToFile "C:\NetworkConfig.xml"`
 
-4. 编辑网络配置文件架构，使网关子网为 /27 或更短的前缀（例如 /26 或 /25）。请参阅以下示例。有关配置架构的详细信息，请参阅 [Azure 虚拟网络配置架构](https://msdn.microsoft.com/zh-cn/library/azure/jj157100.aspx)。
+4. 编辑网络配置文件架构，使网关子网为 /27 或更短的前缀（例如 /26 或 /25）。请参阅以下示例。
+>[AZURE.NOTE] 如果你因为虚拟网络中没有剩余足够的 IP 地址而无法增加网关子网大小，则需增加 IP 地址空间。有关配置架构的详细信息，请参阅 [Azure 虚拟网络配置架构](https://msdn.microsoft.com/library/azure/jj157100.aspx)。
 
           <Subnet name="GatewaySubnet">
             <AddressPrefix>10.17.159.224/27</AddressPrefix>
           </Subnet>
 
-5. 如果以前的网关是站点到站点 VPN，则还必须将连接类型更改为“专用”。
+5. 如果以前的网关是站点到站点 VPN，则还必须将连接类型更改为**“专用”**。
 
 		         <Gateway>
 		          <ConnectionsToLocalNetwork>
@@ -219,4 +222,4 @@
 有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)。
 
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0530_2016-->

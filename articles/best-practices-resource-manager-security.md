@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure 资源管理器的安全注意事项"
+	pageTitle="Resource Manager 的安全注意事项 | Azure"
 	description="显示了在 Azure 资源管理器中如何使用建议的方法通过密钥和机密、基于角色的访问控制以及网络安全组来确保资源的安全。"
 	services="azure-resource-manager"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="azure-resource-manager"
-	ms.date="08/13/2015"
+	ms.date="05/16/2016"
 	wacn.date=""/>
 
 
@@ -17,7 +17,7 @@
 
 关于 Azure 资源管理器模板的安全事项，有几个方面需要考虑，即密钥和机密、基于角色的访问控制，以及网络安全组。
 
-本主题假定你熟悉 Azure 资源管理器中基于角色的访问控制 (RBAC)。有关详细信息，请参阅 [Microsoft Azure 门户中基于角色的访问控制](/documentation/articles/role-based-access-control-configure)以及[管理和审核对资源的访问权限](/documentation/articles/resource-group-rbac)
+本主题假定你熟悉 Azure 资源管理器中基于角色的访问控制 (RBAC)。有关详细信息，请参阅 [Azure Role-based Access Control](/documentation/articles/role-based-access-control-configure)（Azure 基于角色的访问控制）。
 
 本主题是包含更多内容的白皮书的一部分。若要阅读完整的白皮书，请下载 [一流的 ARM 模板注意事项和成熟的做法](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf)。
 
@@ -28,8 +28,8 @@
 - 模板只包含机密的 URI 引用，这意味着实际机密不在代码、配置或源代码存储库中。这样可防止他人对内部或外部存储库（例如 GitHub 中的 harvest-bot）进行密钥钓鱼攻击。
 - 受信任的操作员可以通过 RBAC 来完全控制密钥保管库中存储的机密。如果这个受信任的操作员离开了公司或者转到了公司内部的新组中，该操作员将无法继续访问该保管库中创建的密钥。
 - 对所有资产进行完全的区室化：
-      - 用于部署密钥的模板 
-      - 用于部署带密钥引用的 VM 的模板 
+      - 用于部署密钥的模板
+      - 用于部署带密钥引用的 VM 的模板
       - 保管库中实际的密钥材料。可以为每个模板（和操作）分配不同的 RBAC 角色，以便将不同职责完全分开。
 - 在部署时将机密加载到 VM 需通过 Azure 结构和密钥保管库（位于 Microsoft 数据中心）之间的直接通道进行。一旦将密钥置于密钥保管库中，将无法通过数据中心外不受信任的管道来查看这些密钥。  
 - 密钥保管库始终是区域性的，因此 VM 的机密始终具有地区性（和自主性）。没有全局密钥保管库。
@@ -143,6 +143,8 @@
         }
     }
 
+在部署模板的过程中，若要以参数形式传递密钥保管库中的值，请参阅 [Pass secure values during deployment](/documentation/articles/resource-manager-keyvault-parameter)（在部署期间传递安全值）。
+
 ## 负责跨订阅交互的服务主体
 
 服务标识由 Active Directory 中的服务主体表示。将由服务主体主要负责为企业 IT 组织、系统集成商 (SI) 和云服务供应商 (CSV) 启用密钥方案。具体说来，将会存在这样的用例：一家这样的组织需要与一位客户的订阅进行交互。
@@ -166,17 +168,17 @@
 
 许多方案都会有特定的要求，要求指定具体的控制方法来控制流向你的虚拟网络中一个或多个 VM 实例的流量。你可以使用网络安全组 (NSG) 在 ARM 模板部署过程中这样做。
 
-网络安全组是与你的订阅相关联的顶层对象。NSG 包含特定的访问控制规则，可以通过这些规则来允许或拒绝流向 VM 实例的流量。可以随时更改 NSG 的规则，所做的更改适用于所有关联的实例。若要使用 NSG，你必须有一个与某区域（位置）关联的虚拟网络。NSG 不兼容与地缘组关联的虚拟网络。如果你没有区域性虚拟网络却又希望控制流向终结点的流量，请参阅[关于网络访问控制列表 (ACL)](../virtual-network/virtual-networks-acl.md)。
+网络安全组是与你的订阅相关联的顶层对象。NSG 包含特定的访问控制规则，可以通过这些规则来允许或拒绝流向 VM 实例的流量。可以随时更改 NSG 的规则，所做的更改适用于所有关联的实例。若要使用 NSG，你必须有一个与某区域（位置）关联的虚拟网络。NSG 不兼容与地缘组关联的虚拟网络。如果你没有区域性虚拟网络却又希望控制流向终结点的流量，请参阅[关于网络访问控制列表 (ACL)](/documentation/articles/virtual-networks-acl)。
 
 你可以将 NSG 与 VM 相关联，也可以将其与虚拟网络中的子网相关联。与 VM 关联后，NSG 适用于 VM 实例所发送和接收的所有通信。应用到虚拟网络中的子网以后，它将适用于子网中所有 VM 实例发送和接收的所有通信。一个 VM 或子网只能与 1 个 NSG 相关联，但每个 NSG 都可以包含多达 200 条规则。每个订阅可以有 100 个 NSG。
 
->[AZURE.NOTE]不支持将基于终结点的 ACL 和网络安全组置于相同 VM 实例上。如果你想要使用 NSG，但已有了终结点 ACL，则请先删除该终结点 ACL。有关如何执行此操作的信息，请参阅[使用 PowerShell 管理终结点的访问控制列表 (ACL)](../virtual-network/virtual-networks-acl-powershell.md)。
+>[AZURE.NOTE]  不支持将基于终结点的 ACL 和网络安全组置于相同 VM 实例上。如果你想要使用 NSG，但已有了终结点 ACL，则请先删除该终结点 ACL。有关如何执行此操作的信息，请参阅[使用 PowerShell 管理终结点的访问控制列表 (ACL)](/documentation/articles/virtual-networks-acl-powershell)。
 
 ### 网络安全组工作原理
 
 网络安全组不同于基于终结点的 ACL。终结点 ACL 只适用于通过输入终结点公开的公共端口。NSG 适用于一个或多个 VM 实例，并可控制 VM 上的所有入站和出站流量。
 
-网络安全组有一个*名称*，与一个*区域*（所支持的 Azure 位置之一）相关联，并且有一个描述性标签。它包含两种类型的规则，分为入站规则和出站规则。入站规则适用于传入到 VM 的传入数据包，出站规则适用于从 VM 传出的传出数据包。这些规则将应用到 VM 所在的服务器。传入或传出数据包必须符合“允许”规则才能传入或传出，否则会被丢弃。
+网络安全组有一个名称，与一个区域（所支持的 Azure 位置之一）相关联，并且有一个描述性标签。它包含两种类型的规则，分为入站规则和出站规则。入站规则适用于传入到 VM 的传入数据包，出站规则适用于从 VM 传出的传出数据包。这些规则将应用到 VM 所在的服务器。传入或传出数据包必须符合“允许”规则才能传入或传出，否则会被丢弃。
 
 规则将按优先级顺序处理。例如，优先级编号较低的规则（如优先级编号为 100）在处理时将先于优先级编号较高的规则（如优先级编号为 200）。找到匹配项之后，将不再对规则进行处理。
 
@@ -202,19 +204,19 @@ NSG 包含默认规则。默认规则无法删除，但由于给它们分配的�
 
 **入站默认规则**
 
-Name |	Priority |	Source IP |	Source Port |	Destination IP |	Destination Port |	协议 |	Access
+名称 |	优先级 |	源 IP |	源端口 |	目标 IP |	目标端口 |	协议 |	访问
 --- | --- | --- | --- | --- | --- | --- | ---
-ALLOW VNET INBOUND | 65000 | VIRTUAL\_NETWORK |	* |	VIRTUAL\_NETWORK | * |	* | ALLOW
-ALLOW AZURE LOAD BALANCER INBOUND | 65001 | AZURE\_LOADBALANCER | * | * | * | * | ALLOW
-DENY ALL INBOUND | 65500 | * | * | * | * | * | DENY
+允许 VNET 入站 | 65000 | VIRTUAL\_NETWORK |	* |	VIRTUAL\_NETWORK | * |	* |  允许
+允许 AZURE LOAD BALANCER 入站 | 65001 | AZURE\_LOADBALANCER | * | * | * | * |  允许
+拒绝全部入站 | 65500 | * | * | * | * | * | 拒绝
 
 **出站默认规则**
 
-Name |	Priority |	Source IP |	Source Port |	Destination IP |	Destination Port |	协议 |	Access
+名称 |	优先级 |	源 IP|	源端口 |	目标 IP |	目标端口 |	协议 |	访问
 --- | --- | --- | --- | --- | --- | --- | ---
-ALLOW VNET OUTBOUND | 65000 | VIRTUAL\_NETWORK | * | VIRTUAL\_NETWORK | * | * | ALLOW
-ALLOW INTERNET OUTBOUND | 65001 | * | * | INTERNET | * | * | ALLOW
-DENY ALL OUTBOUND | 65500 | * | * | * | * | * | DENY
+允许 VNET 出站 | 65000 | VIRTUAL\_NETWORK | * | VIRTUAL\_NETWORK | * | * | 允许
+允许 INTERNET 出站 | 65001 | * | * | INTERNET | * | * | 允许
+拒绝全部出站 | 65500 | * | * | * | * | * | 拒绝
 
 ### 特殊的基础结构规则
 
@@ -273,7 +275,7 @@ Azure 使用路由表来决定如何根据每个数据包的目标来转发 IP �
 
 在路由表中添加自定义条目时，最常见的需要是在 Azure 环境中使用虚拟设备。考虑一下下图中显示的方案。假设你想要确保所有从前端子网发出并流向中间层和后端子网的流量都经过一个虚拟防火墙设备。直接将设备添加到虚拟网络中并将其连接到不同的子网并不会启用此功能。你还需更改应用到子网的路由表，确保将数据包转发到虚拟防火墙设备。
 
-如果你实现了一个虚拟 NAT 设备来控制 Azure 虚拟网络和 Internet 之间的流量，则也是这种情况。若要确保使用虚拟设备，你必须创建一个路由，指定流向 Internet 的所有流量必须转发到虚拟设备。
+如果你实现了一个虚拟 NAT 设备来控制 Azure 虚拟网络和 Internet 之间的流量，则也是这种情况。若要确保使用虚拟设备，必须创建一个路由，指定流向 Internet 的所有流量必须转发到虚拟设备。
 
 ### 路由
 
@@ -286,7 +288,7 @@ Azure 使用路由表来决定如何根据每个数据包的目标来转发 IP �
   - Internet。表示由 Azure 基础结构提供的默认 Internet 网关
   - Virtual Appliance。表示已添加到 Azure 虚拟网络的虚拟设备。
   - NULL。表示黑洞。转发到黑洞的数据包根本就不会进行转发。
--	下一跃点值。下一跃点值包含应将数据包转发到的 IP 地址。下一跃点值只允许在下一跃点类型为*虚拟设备* 的路由中使用。下一跃点需要位于该子网（虚拟设备的本地接口，具体取决于网络 ID）上，不能位于远程子网上。 
+-	下一跃点值。下一跃点值包含应将数据包转发到的 IP 地址。下一跃点值只允许在下一跃点类型为*虚拟设备* 的路由中使用。下一跃点需要位于该子网（虚拟设备的本地接口，具体取决于网络 ID）上，不能位于远程子网上。
 
 ![路由](./media/best-practices-resource-manager-security/routing.png)
 
@@ -300,9 +302,9 @@ Azure 使用路由表来决定如何根据每个数据包的目标来转发 IP �
 
 ### BGP 路由
 
-在撰写本文时，[ExpressRoute](expressroute/expressroute-introduction.md) 在 Azure 资源管理器的[网络资源提供程序](virtual-network/resource-groups-networking.md)中并不受支持。如果在本地网络和 Azure 之间存在 ExpressRoute 连接，则一旦 NRP 支持 ExpressRoute，即可通过 BGP 将路由从本地网络传播到 Azure。在每个 Azure 子网中，这些 BGP 路由的使用方式与默认路由和用户定义路由相同。有关详细信息，请参阅 [ExpressRoute 简介](expressroute/expressroute-introduction.md)。
+在撰写本文时，[ExpressRoute](/documentation/articles/expressroute-introduction) 在 Azure 资源管理器的[网络资源提供程序](/documentation/articles/resource-groups-networking)中并不受支持。如果在本地网络和 Azure 之间存在 ExpressRoute 连接，则一旦 NRP 支持 ExpressRoute，即可通过 BGP 将路由从本地网络传播到 Azure。在每个 Azure 子网中，这些 BGP 路由的使用方式与默认路由和用户定义路由相同。有关详细信息，请参阅 [ExpressRoute 简介](/documentation/articles/expressroute-introduction)。
 
->[AZURE.NOTE]NRP 上支持 ExpressRoute 时，你就可以将 Azure 环境配置为使用强制方式通过隧道来连接你的本地网络，即为子网 0.0.0.0/0 创建一个用户定义路由，而该子网则使用 VPN 网关作为下一跃点。但是，仅在使用 VPN 网关而非 ExpressRoute 的情况下，此方法才起作用。对于 ExpressRoute，强制隧道是通过 BGP 配置的。
+>[AZURE.NOTE] NRP 上支持 ExpressRoute 时，你就可以将 Azure 环境配置为使用强制方式通过隧道来连接你的本地网络，即为子网 0.0.0.0/0 创建一个用户定义路由，而该子网则使用 VPN 网关作为下一跃点。但是，仅在使用 VPN 网关而非 ExpressRoute 的情况下，此方法才起作用。对于 ExpressRoute，强制隧道是通过 BGP 配置的。
 
 ### 用户定义路由
 
@@ -319,7 +321,7 @@ Azure 使用路由表来决定如何根据每个数据包的目标来转发 IP �
 2.	BGP 路由（当使用 ExpressRoute 时）
 3.	默认路由
 
->[AZURE.NOTE]用户定义路由仅适用于 Azure VM 和云服务。例如，如果你想要在本地网络和 Azure 之间添加防火墙虚拟设备，则需为 Azure 路由表创建用户定义路由，以便将目标为本地地址空间的所有流量转发到虚拟设备。但是，来自本地地址空间的传入流量将流经你的 VPN 网关或 ExpressRoute 线路，绕过虚拟设备直接进入 Azure 环境中。
+>[AZURE.NOTE] 用户定义路由仅适用于 Azure VM 和云服务。例如，如果你想要在本地网络和 Azure 之间添加防火墙虚拟设备，则需为 Azure 路由表创建用户定义路由，以便将目标为本地地址空间的所有流量转发到虚拟设备。但是，来自本地地址空间的传入流量将流经你的 VPN 网关或 ExpressRoute 线路，绕过虚拟设备直接进入 Azure 环境中。
 
 ### IP 转发
 
@@ -330,7 +332,7 @@ Azure 使用路由表来决定如何根据每个数据包的目标来转发 IP �
 ## 后续步骤
 - 若要了解如何设置安全主体，以便通过正确的访问权限来使用组织中的资源，请参阅[通过 Azure 资源管理器对服务主体进行身份验证](/documentation/articles/resource-group-authenticate-service-principal)
 - 如果你需要锁定对资源的访问，则可使用管理锁。请参阅[使用 Azure 资源管理器锁定资源](/documentation/articles/resource-group-lock-resources)
-- 若要配置路由和 IP 转发，请参阅[如何在 Azure 中创建路由和启用 IP 转发](virtual-network/virtual-networks-udr-how-to.md) 
+- 若要配置路由和 IP 转发，请参阅 [Create User Defined Routes (UDR) in Resource Manager by using a template](/documentation/articles/virtual-network-create-udr-arm-template)（在 Resource Manager 中使用模板创建用户定义的路由 (UDR)）
 - 有关基于角色的访问控制的概述，请参阅 [Microsoft Azure 门户中基于角色的访问控制](/documentation/articles/role-based-access-control-configure)
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0530_2016-->

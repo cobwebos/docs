@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="backup"
-	ms.date="04/12/2016"
+	ms.date="04/22/2016"
 	wacn.date=""/>
 
 
@@ -19,34 +19,30 @@
 - [备份 ARM VM](backup-azure-vms-first-look-arm.md)
 - [备份经典模式 VM](backup-azure-vms-first-look.md)
 
-本教程将引导你完成备份 Azure 虚拟机 (VM) 的步骤。若要顺利完成本教程，必须满足以下先决条件：
+本教程将引导你完成将 Azure 虚拟机 (VM) 备份到 Azure 的步骤。若要顺利完成本教程，必须满足以下先决条件：
 
 - 已在 Azure 订阅中创建 VM。
-- 备份服务可以访问你的 VM。
+- VM 已连接到 Azure 公共 IP 地址。有关更多信息，请参阅[网络连接](./backup-azure-vms-prepare.md#network-connectivity)。
 
-下面是本教程中的高级步骤。
+若要备份 VM，需要执行五个主要步骤：
+
+![第一步](./media/backup-azure-vms-first-look/step-one.png)创建一个备份保管库，或指定现有的备份保管库。<br/>
+![第二步](./media/backup-azure-vms-first-look/step-two.png)使用 Azure 经典门户来发现并注册虚拟机。<br/>
+![第三步](./media/backup-azure-vms-first-look/step-three.png)安装 VM 代理。<br/>
+![第四步](./media/backup-azure-vms-first-look/step-four.png)创建用于保护虚拟机的策略。<br/>
+![第五步](./media/backup-azure-vms-first-look/step-five.png)运行备份。
 
 ![VM 备份过程的高级视图](./media/backup-azure-vms-first-look/backupazurevm-classic.png)
 
-1. 在与 VM 相同的区域中创建备份保管库，或标识现有的备份保管库。
-2. 使用 Azure 门户来发现并注册订阅中的虚拟机。
-3. 在虚拟机上安装 VM 代理（如果使用 Azure 资源库中的 VM，则 VM 代理已经存在）。
-4. 创建用于保护虚拟机的策略。
-5. 运行备份。
+>[AZURE.NOTE] Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 和经典部署模型](../resource-manager-deployment-model.md)。本教程适用于可在 Azure 经典门户中创建的 VM。Azure 备份服务支持基于 Azure Resource Manager (ARM) 的 VM - 也称为 IaaS V2 VM。有关备份 ARM VM 的详细信息，请参阅 [First Look: Back up ARM VMs to a Recovery Services vault（先睹为快：将 ARM VM 备份到恢复服务保管库）](backup-azure-vms-first-look-arm.md)。
 
->[AZURE.NOTE] Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 和经典部署模型](../resource-manager-deployment-model.md)。Azure 备份服务支持基于 Azure Resource Manager (ARM) 的 VM - 也称为 IaaS V2 VM。本教程适用于可在 Azure 经典门户中创建的 VM。
 
 
 ## 步骤 1 - 为 VM 创建备份保管库
 
 备份保管库是存储所有按时间创建的备份和恢复点的实体。备份保管库还包含将应用到要备份的虚拟机的备份策略。
 
-下图显示了各种 Azure 备份实体之间的关系：
-    ![Azure 备份实体和关系](./media/backup-azure-vms-prepare/vault-policy-vm.png)
-
-创建备份保管库的步骤：
-
-1. 登录到 [Azure 门户](http://manage.windowsazure.com/)。
+1. 登录到 [Azure 经典门户](http://manage.windowsazure.cn/)。
 
 2. 在 Azure 门户的左下角单击“新建”。
 
@@ -58,11 +54,11 @@
 
     向导将提示你输入**名称**和**区域**。如果你管理多个订阅，将出现一个对话框让你选择订阅。
 
-4. 对于“名称”，请输入一个友好名称用于标识此保管库。名称对于 Azure 订阅需要是唯一的。键入包含 2 到 50 个字符的名称。名称必须以字母开头，只能包含字母、数字和连字符。
+4. 对于“名称”，请输入一个友好名称来标识保管库。名称对于 Azure 订阅需要是唯一的。
 
 5. 在“区域”中，为保管库选择地理区域。保管库**必须**与要保护的虚拟机位于同一区域中。
 
-    如果你不确定 VM 所在的区域，请关闭此向导，然后单击 Azure 服务列表中的“虚拟机”。“位置”列提供区域的名称。如果你在多个区域中具有虚拟机，请在每个区域中创建备份保管库。
+    如果你不知道 VM 所在的区域，请关闭此向导，然后单击 Azure 服务列表中的“虚拟机”。“位置”列提供区域的名称。如果你在多个区域中具有虚拟机，请在每个区域中创建备份保管库。
 
 6. 如果向导中没有“订阅”对话框，请跳到下一个步骤。如果你使用多个订阅，请选择要与新备份保管库关联的订阅。
 
@@ -87,14 +83,14 @@
 
     ![备份保管库列表](./media/backup-azure-vms-first-look/backup-vault-storage-options-border.png)
 
-    默认情况下，保管库具有异地冗余存储。如果你使用 Azure 作为主要备份存储终结点，则建议继续使用异地冗余存储。如果使用 Azure 作为非主要的备份存储终结点，请考虑选择本地冗余存储，以减少在 Azure 中存储数据的成本。请在此[概述](../storage/storage-redundancy.md)中深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项。
+    默认情况下，保管库具有异地冗余存储。如果这是你的主要备份，请选择异地冗余存储。如果你想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。请在 [Azure Storage replication overview（Azure 存储复制概述）](../storage/storage-redundancy.md)中深入了解异地冗余和本地冗余存储选项。
 
 选择好保管库的存储选项后，可以开始将 VM 与保管库相关联。若要开始关联，请发现及注册 Azure 虚拟机。
 
 ## 步骤 2 - 发现并注册 Azure 虚拟机
-向保管库注册 VM 之前，请运行发现过程以识别所有新 VM。该过程将在 Azure 上查询订阅中的虚拟机列表和其他信息，例如云服务名称、区域等。
+向保管库注册 VM 之前，请运行发现过程以识别所有新 VM。随后将返回订阅中的虚拟机列表和其他信息，例如云服务名称、区域等。
 
-1. 登录到 [Azure 门户](http://manage.windowsazure.com/)
+1. 登录到 [Azure 经典门户](http://manage.windowsazure.cn/)
 
 2. 在 Azure 经典门户中，单击“恢复服务”打开恢复服务保管库列表。
     ![选择工作负荷](./media/backup-azure-vms-first-look/recovery-services-icon.png)
@@ -125,7 +121,7 @@
 7. 单击页面底部的“注册”。
     ![注册按钮](./media/backup-azure-vms-first-look/register-icon.png)
 
-8. 在“注册项”快捷菜单中，选择你要注册的虚拟机。如果存在两个或两个以上的同名虚拟机，请使用云服务来区别它们。
+8. 在“注册项”快捷菜单中，选择你要注册的虚拟机。
 
     >[AZURE.TIP] 可以一次注册多个虚拟机。
 
@@ -145,15 +141,15 @@
 
 ## 步骤 3 - 在虚拟机中安装 VM 代理
 
-Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。如果你的 VM 是从 Azure 库创建的，则该 VM 上已包含 VM 代理！ 你可以跳到[保护 VM](backup-azure-vms-first-look.md#step-4---protect-azure-virtual-machines)。
+Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。如果你的 VM 是从 Azure 库创建的，则该 VM 上已包含 VM 代理。你可以跳到[保护 VM](backup-azure-vms-first-look.md#step-4---protect-azure-virtual-machines)。
 
-如果你的 VM 是从本地数据中心迁移的，则该 VM 上可能尚未安装 VM 代理。必须先在虚拟机上安装 VM 代理，然后才能继续保护 VM。有关安装 VM 代理的详细步骤，请参阅[“备份 VM”一文中的“VM 代理”部分](backup-azure-vms-prepare.md#vm-agent)。
+如果你的 VM 是从本地数据中心迁移的，则该 VM 上可能尚未安装 VM 代理。必须先在虚拟机上安装 VM 代理，然后才能继续保护 VM。有关安装 VM 代理的详细步骤，请参阅[“Backup VMs”（备份 VM）一文中的“VM Agent”（VM 代理）部分](backup-azure-vms-prepare.md#vm-agent)。
 
 
-## 步骤 4 - 保护 Azure 虚拟机
-现在，你可以设置虚拟机的备份和保留策略。只需单个保护操作即可保护多个虚拟机。2015 年 5 月之后创建的 Azure 备份保管库内置了默认策略。此默认策略随附默认 30 天保留期和每日一次的备份计划。
+## 步骤 4 - 创建备份策略
+在触发初始备份作业之前，请设置计划来规定何时创建备份快照。规定备份快照创建时间以及快照保留时长的计划就是备份策略。保留期信息基于祖父-父-子备份轮转方案。
 
-1. 导航到备份保管库（位于 Azure 门户的“恢复服务”下），然后单击“注册的项”。
+1. 导航到备份保管库（位于 Azure 经典门户的“恢复服务”下），然后单击“注册的项”。
 2. 从下拉菜单中选择“Azure 虚拟机”。
 
     ![在门户中选择工作负荷](./media/backup-azure-vms/select-workload.png)
@@ -171,7 +167,7 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。�
 
 5. 在“配置保护”菜单中，选择现有策略或创建新策略，以保护你标识的虚拟机。
 
-    每个备份策略可以有多个关联的虚拟机。但无论何时，该虚拟机只能与一个策略相关联。
+    新备份保管库与一个默认策略相关联。此策略在每天晚上创建每日快照，该每日快照将保留 30 天。每个备份策略可以有多个关联的虚拟机。但无论何时，该虚拟机只能与一个策略相关联。
 
     ![使用新策略进行保护](./media/backup-azure-vms/policy-schedule.png)
 
@@ -195,7 +191,7 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。�
 
 ![等待中的备份](./media/backup-azure-vms-first-look/protection-pending-border.png)
 
-若要在配置保护后立即触发初始备份，请执行以下操作：
+若要立即开始初始备份，请执行以下操作：
 
 1. 在“受保护的项”页面底部，单击“立即备份”。
     ![“立即备份”图标](./media/backup-azure-vms-first-look/backup-now-icon.png)
@@ -223,4 +219,4 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。�
 ## 有疑问？
 如果你有疑问，或者希望包含某种功能，请[给我们反馈](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0530_2016-->

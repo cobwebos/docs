@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="08/24/2015" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 
@@ -29,7 +29,7 @@
 
 首先，请确保准备好 QR 代码，或者为要添加到应用中的帐户准备好可随时输入的代码和 URL。
 
-> [AZURE.NOTE]不知道怎样获取 QR 代码？ 请联系技术支持以获得帮助。
+> [AZURE.NOTE] 不知道怎样获取 QR 代码？ 请联系技术支持以获得帮助。
 > 
 > 无法使用新应用激活你的帐户？ 请联系技术支持。
 >
@@ -53,9 +53,7 @@
 
 将所有帐户添加到新应用后，请通过手机卸载旧应用。
 
-想知道如何从旧应用中删除个人帐户？ 请点击该帐户。随后会出现“删除”选项。
 
-![删除帐户](./media/multi-factor-authentication-azure-authenticator/remove.png)
 
 ## 如何使用条形码扫描仪添加帐户
 
@@ -160,4 +158,9 @@ iOS 上的 Azure 验证器移动应用支持 Touch ID。Azure Multi-Factor Authe
 
 ![Touch ID](./media/multi-factor-authentication-azure-authenticator/touchid2.png)
 
-<!---HONumber=Mooncake_1207_2015-->
+## 如何删除帐户
+
+若要从 Azure 验证器应用程序中删除个人帐户，只需点击该帐户。随后会出现“删除”选项。
+
+![删除帐户](./media/multi-factor-authentication-azure-authenticator/remove.png)
+<!---HONumber=Mooncake_0530_2016-->

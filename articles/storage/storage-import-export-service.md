@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="04/06/2016"
+	ms.date="05/09/2016"
 	wacn.date=""/>
 
 
@@ -23,7 +23,7 @@
 
 你可以通过以下两种方式中的一种创建和管理导入和导出作业：
 
-- 通过使用 Azure 管理门户(https://manage.windowsazure.cn) 。
+- 通过使用 Azure 管理门户(https://manage.windowsazure.cn)。
 - 通过使用服务的 REST 接口。
 
 本文概述了该导入/导出服务并且说明了如何通过[管理门户](https://manage.windowsazure.cn)来使用该导入/导出服务。有关 REST API 的详细信息，请参阅[存储导入/导出服务 REST API 参考](http://msdn.microsoft.com/zh-cn/library/dn529096.aspx)。
@@ -45,7 +45,7 @@
 
 ### 要求和范围
 
-1.	**订阅和存储帐户：**你必须已拥有 Azure 订阅以及一个或多个存储帐户，才能使用导入/导出服务。每个作业只能用于将数据传输到一个存储帐户或者从一个存储帐户传输数据。换言之，一个作业不能跨多个存储帐户。有关创建新存储帐户的信息，请参阅[如何创建存储帐户](/documentation/articles/storage-create-storage-account#create-a-storage-account)。
+1.	**订阅和存储帐户：**必须已拥有 Azure 订阅以及一个或多个经典存储帐户，才能使用导入/导出服务。每个作业只能用于将数据传输到一个经典存储帐户或者从一个经典存储帐户传输数据。换言之，一个作业不能跨多个存储帐户。有关创建新存储帐户的信息，请参阅[如何创建存储帐户](/documentation/articles/storage-create-storage-account#create-a-storage-account)。
 
   > [AZURE.NOTE] 尚不支持使用 ARM 模型的存储帐户。
 
@@ -191,6 +191,7 @@
 	- Anker 68UPSATAA-02BU
 	- Anker 68UPSHHDS-BU
 	- Startech SATADOCK22UE
+	- Sharkoon QuickPort XT HC
 
 > [AZURE.NOTE] 如果你有上方没有列出的转换器，则在购买受支持的转换器之前，可以尝试使用你的转换器运行 Azure 导入/导出工具来准备驱动器并看看它是否工作。
 
@@ -267,7 +268,7 @@
 
 **为什么当承运方网站上显示我的包裹已送达时，我在经典门户上的作业状态显示的是“正在配送”？**
 
-- 当驱动器处理启动时，门户网站的状态将从“正在运送”更改为“正在转接”。如果你的驱动器已达到工厂，但尚未开始处理，作业状态将显示为“正在运送”。
+- 当驱动器处理启动时，门户的状态将从“正在配送”更改为“正在转接”。如果你的驱动器已达到工厂，但尚未开始处理，作业状态将显示为“正在配送”。
 
 ## 另请参阅
 
@@ -278,4 +279,4 @@
 [export-job-03]: ./media/storage-import-export-service/export-job-03.png
 [export-job-bitlocker-keys]: ./media/storage-import-export-service/export-job-bitlocker-keys.png
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0530_2016-->

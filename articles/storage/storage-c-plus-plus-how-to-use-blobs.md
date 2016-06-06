@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="如何使用 Blob 存储 (C++) | Microsoft Azure" 
-    description="了解如何在 Azure 中使用 blob 存储服务。示例用 C++ 编写。" 
+    pageTitle="如何使用 Blob 存储 (C++) | Azure" 
+	description="使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
     services="storage" 
     documentationCenter=".net" 
     authors="tamram" 
@@ -9,7 +9,7 @@
 
 <tags 
     ms.service="storage" 
-    ms.date="02/17/2016"
+    ms.date="04/29/2016"
     wacn.date=""/>
 
 # 如何通过 C++ 使用 Blob 存储  
@@ -232,10 +232,10 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 -	[如何通过 C++ 使用表存储](/documentation/articles/storage-c-plus-plus-how-to-use-tables)
 -	[使用 C++ 列出 Azure 存储资源](/documentation/articles/storage-c-plus-plus-enumeration)
 -	[适用于 C++ 的存储空间客户端库参考](http://azure.github.io/azure-storage-cpp)
--	[Azure 存档文档](/documentation/services/storage/)
+-	[Azure 存储空间文档](/documentation/services/storage/)
 - [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
 
 
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0530_2016-->

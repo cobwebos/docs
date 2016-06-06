@@ -14,7 +14,7 @@
 
 
 # 管理 Azure 备份保管库和服务器
-本文概述了可通过管理门户完成的备份管理任务。
+本文概述了可通过管理门户和 Microsoft Azure 备份代理完成的备份管理任务。
 
 >[AZURE.NOTE] 本文提供经典部署模型中的操作过程。
 
@@ -90,7 +90,7 @@
 
 ![Microsoft Azure 备份代理控制台操作](./media/backup-azure-manage-windows-server/console-actions.png)
 
->[AZURE.NOTE] 若要**恢复数据**，请参阅 [Restore files to a Windows server or Windows client machine（将文件还原到 Windows Server 或 Windows 客户端计算机）](backup-azure-restore-windows-server.md) 。
+>[AZURE.NOTE] 若要**恢复数据**，请参阅 [Restore files to a Windows server or Windows client machine（将文件还原到 Windows Server 或 Windows 客户端计算机）](backup-azure-restore-windows-server.md)。
 
 ### 修改现有备份
 
@@ -124,7 +124,7 @@
 
 7. 在“确认”屏幕上复查信息，然后单击“完成”。
 
-8. 向导完成创建**备份计划**后，请单击“关闭”。
+8. 向导完成创建备份计划后，请单击“关闭”。
 
     修改保护设置后，可以通过转到“作业”选项卡并确认更改已反映在备份作业中，来确认可正确触发备份。
 
@@ -194,4 +194,4 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
 - 若要了解有关 Azure 备份的详细信息，请参阅 [Azure 备份概述](/documentation/articles/backup-introduction-to-azure-backup)
 - 访问 [Azure 备份论坛](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0530_2016-->

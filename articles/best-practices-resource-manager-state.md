@@ -1,6 +1,6 @@
 <properties
-	pageTitle="在资源管理器模板中处理状态 | Azure"
-	description="显示了如何通过建议的方法来使用复杂对象，以便与 Azure Resource Manager 模板和已链接模板共享状态数据"
+	pageTitle="在 Resource Manager 模板中处理状态 | Azure"
+	description="显示了如何通过建议的方法来使用复杂对象，以便与 Azure 资源管理器模板和已链接模板共享状态数据"
 	services="azure-resource-manager"
 	documentationCenter=""
 	authors="tfitzmac"
@@ -361,7 +361,7 @@ enableJumpbox | 约束列表中的字符串 (enabled/disabled) | 一个参数，
         "type": "string"
       }
      
-有关使用链接模板的 outputs 节返回虚拟机数据磁盘的示例，请参阅 [Creating multiple data disks for a Virtual Machine（为一个虚拟机创建多个数据磁盘）](./resource-group-create-multiple/#creating-multiple-data-disks-for-a-virtual-machine)。
+有关使用链接模板的 outputs 节返回虚拟机数据磁盘的示例，请参阅 [Creating multiple data disks for a Virtual Machine](./resource-group-create-multiple/#creating-multiple-data-disks-for-a-virtual-machine)（为一个虚拟机创建多个数据磁盘）。
 
 ## 为虚拟机定义身份验证设置
 
@@ -419,8 +419,8 @@ enableJumpbox | 约束列表中的字符串 (enabled/disabled) | 一个参数，
 
 
 ## 后续步骤
-- 若要了解模板的节，请参阅 [Authoring Azure Resource Manager Templates（创作 Azure Resource Manager 模板）](/documentation/articles/resource-group-authoring-templates)。
-- 若要查看模板中可用的函数，请参阅 [Azure Resource Manager Template Functions（Azure Resource Manager 模板函数）](/documentation/articles/resource-group-template-functions)。
+- 若要了解模板的节，请参阅 [Authoring Azure Resource Manager Templates](/documentation/articles/resource-group-authoring-templates)（创作 Azure Resource Manager 模板）。
+- 若要查看模板中可用的函数，请参阅 [Azure Resource Manager Template Functions](/documentation/articles/resource-group-template-functions)（Azure Resource Manager 模板函数）。
 
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0530_2016-->

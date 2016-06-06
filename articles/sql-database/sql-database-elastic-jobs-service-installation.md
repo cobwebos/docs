@@ -9,12 +9,12 @@
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="03/24/2016" 
-	wacn.date="04/22/2016"/>
+	ms.date="05/02/2016" 
+	wacn.date="05/23/2016"/>
 
 # 安装弹性数据库作业概述
 
-可以通过 PowerShell 或 Azure 管理门户安装[弹性数据库作业](/documentation/articles/sql-database-elastic-jobs-overview)。只有安装了 PowerShell 包，才能获取使用 PowerShell API 创建和管理作业的权限。此外，PowerShell API 目前提供的功能明显多于门户。
+可以通过 PowerShell 或 Azure 经典门户安装[**弹性数据库作业**](/documentation/articles/sql-database-elastic-jobs-overview)。只有安装了 PowerShell 包，才能获取使用 PowerShell API 创建和管理作业的权限。此外，PowerShell API 目前提供的功能明显多于门户。
 
 如果你从现有的**弹性数据库池**通过门户安装了**弹性数据库作业**，最新的 Powershell 预览包含用于升级现有安装的脚本。强烈建议将安装升级到最新的**弹性数据库作业**组件，以便利用通过 PowerShell API 公开的新功能。
 
@@ -30,7 +30,7 @@
 
 		PS C:\>.\nuget install Microsoft.Azure.SqlDatabase.Jobs -prerelease
 
-    **弹性数据库作业**文件放在本地目录中名为 **Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x**（其中的 x.x.xxxx.x 表示版本号）的文件夹内。PowerShell cmdlet（包括所需的客户端.dll）位于 **tools\\ElasticDatabaseJobs** 子目录中，用于安装、升级和卸载的 PowerShell 脚本也位于 **tools** 子目录中。
+    **弹性数据库作业**文件放在本地目录中名为 **Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x**（其中的 *x.x.xxxx.x* 表示版本号）的文件夹内。PowerShell cmdlet（包括所需的客户端.dll）位于 **tools\\ElasticDatabaseJobs** 子目录中，用于安装、升级和卸载的 PowerShell 脚本也位于 **tools** 子目录中。
 
 3. 键入 cd tools，导航到 Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x 文件夹下的 tools 子目录，例如：
 
@@ -70,7 +70,7 @@
 
 	<tr>
 	<td>ResourceGroupLocation</td>
-	<td>提供用于保存新建 Azure 组件的 Azure 位置。此参数默认为“美国中部”位置。</td>
+	<td>提供用于保存新建 Azure 组件的 Azure 位置。此参数默认为“中国北部”位置。</td>
 </tr>
 
 <tr>
@@ -145,34 +145,6 @@
 
 </table>
 
-## 使用门户安装弹性数据库作业组件
-
-[创建弹性数据库池](/documentation/articles/sql-database-elastic-pool-create-portal)后，你可以安装**弹性数据库作业**组件，以便对弹性数据库池中的每个数据库执行管理任务。与使用**弹性数据库作业** PowerShell API 不同，门户界面目前限制为只能针对现有的池执行。
-
-
-**估计完成时间：**10 分钟。
-
-1. 在 [Azure 门户](https://manage.windowsazure.cn)上的弹性数据库池的仪表板视图中，单击“创建作业”。
-2. 如果是首次创建作业，必须通过单击“预览版条款”安装**弹性数据库作业**。 
-3. 单击相应的复选框接受条款。
-4. 在“安装服务”视图中，单击“作业凭据”。
-
-	![安装服务][1]
-
-5. 键入数据库管理员的用户名和密码。安装过程中会创建新的 Azure SQL 数据库服务器。在新服务器中，创建了一个称为控制数据库的新数据库，用于包含弹性数据库作业的元数据。此处创建的用户名和密码用于登录控制数据库。单独的凭据用于对池中的数据库执行脚本。
-
-	![创建用户名和密码][2]
-
-6. 单击“确定”按钮。几分钟后，将在新的[资源组](/documentation/articles/resource-group-portal)中为你创建组件。新资源组已固定到开始面板，如下所示。弹性数据库作业（云服务、SQL 数据库、 Service Bus 和存储空间）都在该组中创建。
-
-	![开始面板中的资源组][3]
-
-7. 如果你在安装弹性数据库作业时尝试创建或管理某个作业，则在提供**凭据**时，你将看到以下消息。
-
-	![部署仍在进行][4]
-
-如果需要卸载，请删除资源组。请参阅[如何卸载弹性数据库作业组件](/documentation/articles/sql-database-elastic-jobs-uninstall)。
-
 ## 后续步骤
 
 确保已在组中的每个数据库上创建对脚本执行具有适当权限的凭据。有关详细信息，请参阅[保护你的 SQL 数据库](/documentation/articles/sql-database-security)。
@@ -183,6 +155,5 @@
 [2]: ./media/sql-database-elastic-jobs-service-installation/credentials.png
 [3]: ./media/sql-database-elastic-jobs-service-installation/start-board.png
 [4]: ./media/sql-database-elastic-jobs-service-installation/not-done.png
- 
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0530_2016-->

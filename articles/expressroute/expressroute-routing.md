@@ -1,5 +1,5 @@
 <properties
-   pageTitle="ExpressRoute 路由要求 | Microsoft Azure"
+   pageTitle="ExpressRoute 路由要求 | Azure"
    description="本页提供有关为 ExpressRoute 线路配置和管理路由的详细要求。"
    documentationCenter="na"
    services="expressroute"
@@ -8,7 +8,7 @@
    editor=""/>
 <tags
    ms.service="expressroute"
-   ms.date="03/21/2016"
+   ms.date="05/16/2016"
    wacn.date=""/>
 
 
@@ -74,7 +74,7 @@ a.b.c.d/29 拆分成 a.b.c.d/30 和 a.b.c.d+4/30 并通过预配 API 一路传�
 
 ## 自治系统编号
 
-Microsoft 使用 AS 12076 进行 Azure 公共、Azure 专用和 Microsoft 对等互连。我们保留了 AS 65515 供内部使用。支持 16 和 32 位 AS 编号。
+Microsoft 使用 AS 12076 进行 Azure 公共、Azure 专用和 Microsoft 对等互连。我们保留了 ASN 65515-65520 供内部使用。支持 16 和 32 位 AS 编号。
 
 数据传输对称没有相关要求。转发与返回路径可以遍历不同的路由器对。相同的路由必须在你拥有的多个线路对上，从任何一端播发。路由指标不需要完全相同。
 
@@ -100,6 +100,7 @@ ExpressRoute 不能配置为传输路由器。你必须依赖连接服务提供�
 **注意：**播发默认路由会中断 Windows 和其他 VM 许可证激活。请按照[此处](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)的说明来解决此问题。
 
 ## BGP 社区支持（即将推出）
+
 
 本部分概述如何配合 ExpressRoute 使用 BGP 社区。Microsoft 将播发公共和 Microsoft 对等互连路径中的路由并为路由标记适当的社区值。下面将会介绍这种方案的理由以及有关社区值的详细信息。但是，Microsoft 不遵循向 Microsoft 播发的路由的任何标记社区值。
 
@@ -175,4 +176,4 @@ Microsoft 不遵循你设置的任何 BGP 社区值。你需要为每个对等�
 
 
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0530_2016-->

@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="stream-analytics"
-	ms.date="04/15/2016"
+	ms.date="05/03/2016"
 	wacn.date=""/>
 # 使流分析数据转换输出输出到分析工具和数据存储选项
 
@@ -18,7 +18,56 @@
 
 为了启用多种应用程序模式，Azure 流分析提供了不同的选项来存储输出和查看分析结果。这样可以轻松地查看作业输出，并可灵活地使用和存储作业输出，以便进行数据仓库操作和其他操作。必须先存在作业中配置的输出，然后才能启动作业并开始事件的流动。例如，如果你使用 Blob 存储作为输出，该作业将不会自动创建存储帐户。在启动 ASA 作业之前，需要由用户创建该存储帐户。
 
+## Azure 数据湖存储
 
+流分析支持 [Azure 数据湖存储](https://azure.microsoft.com/services/data-lake-store/)。此存储可让你存储任何大小、类型和引入速度的数据，以便进行运行和探索分析。目前只有 Azure 经典门户支持创建和配置数据湖存储输出。此外，流分析需要经过授权，才能访问数据湖存储。[数据湖输出一文](stream-analytics-data-lake-output.md)中讨论了有关授权以及如何注册数据湖存储预览版（如有需要）的详细信息。
+
+下表列出了属性名称和创建数据湖存储输出所需的属性说明。
+
+<table>
+<tbody>
+<tr>
+<td><B>属性名称</B></td>
+<td><B>说明</B></td>
+</tr>
+<tr>
+<td>输出别名</td>
+<td>该名称是在查询中使用的友好名称，用于将查询输出定向到此数据湖存储。</td>
+</tr>
+<tr>
+<td>数据湖存储帐户</td>
+<td>存储帐户的名称（你正在向该存储帐户发送输出）。你将看到数据湖存储帐户的下拉列表，登录门户的用户可访问该下拉列表。</td>
+</tr>
+<tr>
+<td>路径前缀模式 [“可选”]</td>
+<td>用于对指定数据湖存储帐户中的文件进行编写的文件路径。<BR>{date}、{time}<BR>示例 1：folder1/logs/{date}/{time}<BR>示例 2：folder1/logs/{date}</td>
+</tr>
+<tr>
+<td>日期格式 [“可选”]</td>
+<td>如果在前缀路径中使用日期令牌，你可以选择组织文件所采用的日期格式。示例：YYYY/MM/DD</td>
+</tr>
+<tr>
+<td>时间格式 [“可选”]</td>
+<td>如果在前缀路径中使用时间令牌，你可以选择组织文件所采用的时间格式。目前唯一支持的值是 HH。</td>
+</tr>
+<tr>
+<td>事件序列化格式</td>
+<td>输出数据的序列化格式。支持 JSON、CSV 和 Avro。</td>
+</tr>
+<tr>
+<td>编码</td>
+<td>如果是 CSV 或 JSON 格式，则必须指定一种编码格式。目前只支持 UTF-8 这种编码格式。</td>
+</tr>
+<tr>
+<td>分隔符</td>
+<td>仅适用于 CSV 序列化。流分析支持大量的常见分隔符以对 CSV 数据进行序列化。支持的值为逗号、分号、空格、制表符和竖线。</td>
+</tr>
+<tr>
+<td>格式</td>
+<td>仅适用于 JSON 序列化。分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。数组指定输出将被格式化为 JSON 对象的数组。</td>
+</tr>
+</tbody>
+</table>
 
 ## SQL 数据库
 
@@ -111,6 +160,47 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 | 分隔符 | 仅适用于 CSV 序列化。流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。支持的值为逗号、分号、空格、制表符和竖线。 |
 | 格式 | 仅适用于 JSON 类型。分隔行指定了通过新行分隔各个 JSON 对象，从而格式化输出。数组指定输出将被格式化为 JSON 对象的数组。 |
 
+## Power BI
+
+[Power BI](https://powerbi.microsoft.com/) 可以用作流分析作业的输出，以便提供丰富的分析结果可视化体验。此功能可用于操作仪表板、生成报告以及进行指标驱动型报告。
+
+### 向 Power BI 帐户授权
+
+1.	当 Power BI 被选为 Azure 管理门户中的输出时，会提示你向现有的 Power BI 用户授权或创建新的 Power BI 帐户。  
+
+    ![向 Power BI 用户授权](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)
+
+2.	如果你还没有帐户，请创建一个新帐户，然后单击“立即授权”。将显示如下所示的屏幕。
+
+    ![Azure 帐户的 Power BI](./media/stream-analytics-define-outputs/02-stream-analytics-define-outputs.png)
+
+3.	在此步骤中，提供用于授权 Power BI 输出的工作或学校帐户。如果你还没有注册 Power BI，请选择“立即注册”。用于 Power BI 的工作或学校帐户可能不同于你当前登录时所用的 Azure 订阅帐户。
+
+### 配置 Power BI 输出属性
+
+Power BI 帐户身份验证完成后，你可以为自己的 Power BI 输出配置属性。下表列出了属性名称以及配置 Power BI 输出的说明。
+
+| 属性名称 | 说明 |
+|---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 输出别名 | 该名称是在查询中使用的友好名称，用于将查询输出定向到此 PowerBI 输出。 |
+| 数据集名称 | 提供数据集名称，供 Power BI 输出使用。 |
+| 表名称 | 在 Power BI 输出的数据集下提供表名称。目前，流分析作业的 Power BI 输出只能在数据集中设置一个表。 |
+| 组名称 | 为了与其他 Power BI 用户共享数据，请将数据写入组。在你的 Power BI 帐户内选择组，或者如果你不想写入组，请选择“我的工作区”。更新现有组需要对 Power BI 重新进行身份验证。 |
+
+有关配置 Power BI 输出和仪表板的演练，请参阅 [Azure 流分析和 Power BI](stream-analytics-power-bi-dashboard.md) 一文。
+
+> [AZURE.NOTE] 不要在 Power BI 仪表板中显式创建数据集和表。当作业启动并且开始将输出抽取到 Power BI 中时，会自动填充数据集和表。请注意，如果作业查询没有生成任何结果，则不会创建数据集和表。另请注意，如果 Power BI 已经有一个数据集和表，且与流分析作业中提供的数据集和表名称相同，则会覆盖现有的数据。
+
+### 续订 Power BI 授权
+
+如果自作业创建后或上次身份验证后更改了密码，你需要重新对 Power BI 帐户进行身份验证。如果在 Azure Active Directory (AAD) 租户上配置了 Multi-Factor Authentication (MFA)，还需要每 2 周续订一次 Power BI 授权。此问题的症状是没有作业输出，并且操作日志存在“验证用户错误”：
+
+  ![Power BI 刷新令牌错误](./media/stream-analytics-define-outputs/03-stream-analytics-define-outputs.png)
+
+要解决此问题，请停止正在运行的作业并转到你的 Power BI 输出。单击“续订授权”链接，并在“上次停止时间”重新启动你的工作以避免数据丢失。
+
+  ![Power BI 续订授权](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)
+
 ## 表存储
 
 [Azure 表存储](/documentation/articles/storage-introduction)提供了具有高可用性且可大规模缩放的存储，因此应用程序可以自动缩放以满足用户需求。表存储是 Microsoft 推出的 NoSQL 键/属性存储，适用于对架构的约束性较少的结构化数据。Azure 表存储可用于持久地存储数据，方便进行高效的检索。
@@ -162,6 +252,45 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 | 编码 | 如果是 CSV 或 JSON 格式，则必须指定一种编码格式。目前只支持 UTF-8 这种编码格式 |
 | 分隔符 | 仅适用于 CSV 序列化。流分析支持大量的常见分隔符以对 CSV 格式的数据进行序列化。支持的值为逗号、分号、空格、制表符和竖线。 |
 
+## DocumentDB
+
+[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 是完全托管的 NoSQL 文档数据库服务，提供针对无架构数据的查询和事务、可预测且可靠的性能，以及快速开发。
+
+下表列出了用于创建 DocumentDB 输出的属性名称和属性说明。
+
+<table>
+<tbody>
+<tr>
+<td>属性名称</td>
+<td>说明</td>
+</tr>
+<tr>
+<td>帐户名</td>
+<td>DocumentDB 帐户的名称。这也可以是该帐户的终结点。</td>
+</tr>
+<tr>
+<td>帐户密钥</td>
+<td>DocumentDB 帐户的共享访问密钥。</td>
+</tr>
+<tr>
+<td>数据库</td>
+<td>DocumentDB 数据库名称。</td>
+</tr>
+<tr>
+<td>集合名称模式</td>
+<td>要使用的集合的集合名称模式。可以使用可选的 {partition} 令牌（其中分区从 0 开始）构造集合名称格式。<BR>例如以下是有效的输入：<BR>MyCollection{partition}<BR>MyCollection<BR>请注意，集合必须在启动流分析作业之前存在并且不会自动创建。</td>
+</tr>
+<tr>
+<td>分区键</td>
+<td>输出事件中的字段的名称，该字段用于指定跨集合分区输出的键。</td>
+</tr>
+<tr>
+<td>文档 ID</td>
+<td>输出事件中的字段的名称，该字段用于指定插入或更新操作所基于的主键。</td>
+</tr>
+</tbody>
+</table>
+
 
 ## 获取帮助
 如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=AzureStreamAnalytics)
@@ -182,4 +311,4 @@ Blob 存储提供了一个种经济高效且可扩展的解决方案，用于在
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0530_2016-->

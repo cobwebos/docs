@@ -1,6 +1,6 @@
 <properties
 	pageTitle="什么是 Azure Multi-Factor Authentication？| Microsoft Azure"
-	description="本主题说明什么是 Multifactor Authentication (MFA)、为何使用 MFA，以及有关 Multifactor Authentication 客户端和不同方法和可用版本的详细信息。Azure Multi-Factor Authentication 是要求使用多种方式（而不仅仅是用户名和密码）对你的身份进行验证的一种方法。它为用户登录和事务提供了额外的安全层。"
+	description="本主题介绍什么是 Multifactor Authentication (MFA)、为何使用 MFA，以及有关 Multi-factor Authentication 客户端和不同方法和可用版本的详细信息。Azure Multi-Factor Authentication 是要求使用多种方式（而不仅仅是用户名和密码）对你的身份进行验证的一种方法。它为用户登录和事务提供了附加的安全层。"
 	keywords="MFA 简介, mfa 概述, 什么是 mfa"
 	services="multi-factor-authentication"
 	documentationCenter=""
@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="04/07/2016"
+	ms.date="05/12/2016"
 	wacn.date="" />
 
 # 什么是 Azure Multi-Factor Authentication？
@@ -201,8 +201,6 @@ MFA 报告 | ● | ●
 
 在确定是要使用云 Multi-Factor Authentication 还是本地 MFA 服务器后，接下来可以开始设置并使用 Azure Multi-Factor Authentication。**选择代表你的方案的图标！**
 
-<center>
-[![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](/documentation/articles/multi-factor-authentication-get-started-cloud) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160;
-</center>
+<center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](/documentation/articles/multi-factor-authentication-get-started-cloud) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0530_2016-->

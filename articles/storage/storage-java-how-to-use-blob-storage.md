@@ -1,6 +1,6 @@
 <properties
-	pageTitle="如何通过 Java 使用 Azure Blob 存储 | Microsoft Azure"
-	description="了解如何使用 Azure Blob 存储上载、下载、列出和删除 Blob 内容。用 Java 编写的示例。"
+	pageTitle="如何通过 Java 使用 Azure Blob 存储 | Azure"
+	description="使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
 	services="storage"
 	documentationCenter="java"
 	authors="rmcmurray"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="02/29/2016"
+	ms.date="05/04/2016"
 	wacn.date=""/>
 
 # 如何通过 Java 使用 Blob 存储
@@ -18,7 +18,7 @@
 
 ## 概述
 
-本文将演示如何使用 Microsoft Azure Blob 存储执行常见任务。这些示例用 Java 编写并使用 [Azure Storage SDK for Java][]。涉及的任务包括**上载**、**列出**、**下载**和**删除** Blob。有关 Blob 的详细信息，请参阅[后续步骤](#NextSteps)部分。
+本文将演示如何使用 Microsoft Azure Blob 存储执行常见任务。这些示例用 Java 编写并使用 [Azure Storage SDK for Java][]。涉及的任务包括**上载**、**列出**、**下载**和**删除** Blob。有关 Blob 的详细信息，请参阅[后续步骤](#Next-Steps)部分。
 
 > [AZURE.NOTE] SDK 提供给在 Android 设备上使用 Azure 存储空间的开发人员。有关详细信息，请参阅 [Azure Storage SDK for Android][]。
 
@@ -42,7 +42,7 @@
 
 ## 设置 Azure 存储连接字符串
 
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 AccountName 和 AccountKey 值使用[管理门户](https://manage.windowsazure.cn)中列出的存储帐户的名称和存储帐户的主访问密钥。下面的示例演示如何声明一个静态字段以保存连接字符串。
+Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 *AccountName* 和 *AccountKey* 值使用 [Azure 门户](https://portal.azure.cn)中列出的存储帐户的名称和存储帐户的主访问密钥。下面的示例演示如何声明一个静态字段以保存连接字符串。
 
     // Define the connection-string with your values
     public static final String storageConnectionString =
@@ -51,7 +51,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
         "AccountKey=your_storage_account_key;" +
 	"EndpointSuffix=core.chinacloudapi.cn";
 
-在 Microsoft Azure 的角色中运行的应用程序中，此字符串可存储在服务配置文件 ServiceConfiguration.cscfg 中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。下面的示例从服务配置文件中名为 StorageConnectionString 的 **Setting** 元素获取连接字符串。
+在 Microsoft Azure 的角色中运行的应用程序中，此字符串可存储在服务配置文件 *ServiceConfiguration.cscfg* 中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。下面的示例从服务配置文件中名为 *StorageConnectionString* 的 **Setting** 元素获取连接字符串。
 
     // Retrieve storage account from connection-string.
     String storageConnectionString =
@@ -262,7 +262,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Azure 存储客户端 SDK 参考]: http://dl.windowsazure.com/storage/javadoc/
 [Azure 存储空间客户端 SDK 参考]: http://dl.windowsazure.com/storage/javadoc/
-[Azure 存储 REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
+[Azure 存储 REST API]: https://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0530_2016-->

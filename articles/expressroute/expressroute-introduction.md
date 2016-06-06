@@ -1,14 +1,14 @@
 <properties 
-   pageTitle="ExpressRoute 简介 | Microsoft Azure"
+   pageTitle="ExpressRoute 简介 | Azure"
    description="本页提供 ExpressRoute 服务的概述，包括 ExpressRoute 连接的工作原理。"
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags 
    ms.service="expressroute"
-   ms.date="01/16/2016"
+   ms.date="05/02/2016"
    wacn.date=""/>
 
 # ExpressRoute 技术概述
@@ -29,21 +29,31 @@ Microsoft Azure ExpressRoute 可让你通过连接服务提供商所提供的专
 
 有关详细信息，请参阅 [ExpressRoute 常见问题](/documentation/articles/expressroute-faqs)。
 
-## 如何使用 ExpressRoute 将我的网络连接到 Microsoft？
+## <a name="howtoconnect"></a>如何使用 ExpressRoute 将我的网络连接到 Microsoft？
 
-有三种方法可以在本地网络与 Microsoft 云之间建立连接。
+有三种方法可以在本地网络与 Microsoft 云之间建立连接：
 
-1. **共置于云交换位置。** 如果你所在的位置提供云交换设施，则你可以订购虚拟交叉连接，以通过共同租用提供商的以太网交换连接到 Microsoft 云。共同租用提供商可以在共置设施中的基础结构与 Microsoft 云之间提供第 2 层交叉连接或托管的第 3 层交叉连接。
-2.	**点到点以太网连接。** 你可以通过点到点以太网链路，将本地数据中心/办公室连接到 Microsoft 云。点到点以太网提供商可以在你的站点与 Microsoft 云之间提供第 2 层连接或托管的第 3 层连接。
-3.	**任意位置之间的 (IPVPN) 网络。** 你可以将 WAN 集成到 Microsoft 云。IPVPN 提供商（通常提供 MPLS VPN）可在分支机构与数据中心之间提供任意位置之间的连接。Microsoft 云可与你的 WAN 互连，就如同它是其他任何一个分支机构。WAN 提供商通常提供托管的第 3 层连接。
+### 共置于云交换位置
+
+如果你所在的位置提供云交换设施，则你可以订购虚拟交叉连接，以通过共同租用提供商的以太网交换连接到 Microsoft 云。共同租用提供商可以在共置设施中的基础结构与 Microsoft 云之间提供第 2 层交叉连接或托管的第 3 层交叉连接。
+
+### 点到点以太网连接 
+
+你可以通过点到点以太网链路，将本地数据中心/办公室连接到 Microsoft 云。点到点以太网提供商可以在你的站点与 Microsoft 云之间提供第 2 层连接或托管的第 3 层连接。
+
+### 任意位置之间的 (IPVPN) 网络
+
+你可以将 WAN 集成到 Microsoft 云。IPVPN 提供商（通常提供 MPLS VPN）可在分支机构与数据中心之间提供任意位置之间的连接。Microsoft 云可与你的 WAN 互连，就如同它是其他任何一个分支机构。WAN 提供商通常提供托管的第 3 层连接。在上述所有连接模型中，ExpressRoute 功能与特性完全相同。
+
+连接服务提供商可以提供一个或多个连接模型。你可以咨询连接服务提供商以选择最合适的模型。
 
 ![](./media/expressroute-introduction/expressroute-connectivitymodels.png)
 
-在上述所有连接模型中，ExpressRoute 功能与特性完全相同。连接服务提供商可以提供上述列表中的一个或多个连接模型。你可以咨询连接服务提供商以选择最合适的模型。
+
 
 ## ExpressRoute 功能
 
-ExpressRoute 支持以下特性和功能。
+ExpressRoute 支持以下特性和功能：
 
 ### 第 3 层连接
 
@@ -55,7 +65,7 @@ Microsoft 采用行业标准动态路由协议 (BGP)，在本地网络、Azure �
 
 ### 与 Microsoft 云服务建立连接
 
-通过 ExpressRoute 连接可访问以下服务。
+通过 ExpressRoute 连接可访问以下服务：
 
 - Microsoft Azure 服务
 - Microsoft Office 365 服务
@@ -120,4 +130,4 @@ Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。�
 	- [配置路由](/documentation/articles/expressroute-howto-routing-classic)
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0530_2016-->

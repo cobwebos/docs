@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="03/31/2016"
+	ms.date="05/09/2016"
 	wacn.date=""/>
 
 
@@ -23,7 +23,7 @@
 
 有关使用客户端的加密和 Azure 密钥保管库引导你完成加密 blob 的过程的分步教程，请参阅[使用 Azure 密钥保管库在 Azure 存储中加密和解密 blob](/documentation/articles/storage-encrypt-decrypt-blobs-key-vault)。
 
-有关使用 Java 的客户端加密，请参阅 [Microsoft Azure 存储空间的使用 Java 客户端加密](/documentation/articles/storage-client-side-encryption-java)。
+有关使用 Java 的客户端加密，请参阅 [Azure 存储空间的使用 Java 客户端加密](/documentation/articles/storage-client-side-encryption-java)。
 
 ## 通过信封技术加密和解密
 
@@ -247,4 +247,4 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 - 下载 Azure 密钥保管库 NuGet [核心](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[客户端](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)和[扩展](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)包  
 - 访问 [Azure 密钥保管库文档](/documentation/articles/key-vault-whatis) 
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0530_2016-->

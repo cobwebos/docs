@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="如何使用表存储 (C++) | Microsoft Azure" 
-    description="了解如何在 Azure 中使用表存储服务。示例用 C++ 编写。" 
+    pageTitle="如何使用表存储 (C++) | Azure" 
+	description="使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。"
     services="storage" 
     documentationCenter=".net" 
     authors="tamram" 
@@ -9,7 +9,7 @@
 
 <tags 
     ms.service="storage" 
-    ms.date="02/17/2016"
+	ms.date="04/29/2016"
     wacn.date=""/>
 
 # 如何通过 C++ 使用表存储
@@ -408,7 +408,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 -	[如何通过 C++ 使用队列存储](/documentation/articles/storage-c-plus-plus-how-to-use-queues)
 -	[使用 C++ 列出 Azure 存储资源](/documentation/articles/storage-c-plus-plus-enumeration)
 -	[适用于 C++ 的存储空间客户端库参考](http://azure.github.io/azure-storage-cpp)
--	[Azure 存储空间文档](http://azure.microsoft.com/documentation/services/storage/)
+-	[Azure 存储空间文档](/documentation/services/storage/)
  
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0530_2016-->

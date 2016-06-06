@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="02/25/2016" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 # 使用 Azure Multi-Factor Authentication 时遇到问题
 >[AZURE.IMPORTANT]
@@ -42,7 +42,7 @@
  
 ![相关性 ID](./media/multi-factor-authentication-end-user-manage/correlation.png)
 
- - **用户 ID** – 看到错误的用户的 ID（例如 user@contoso.com)?）
+ - **用户 ID** – 看到错误的用户的 ID（例如 user@contoso.com)?
  - **有关用户的信息** – 用户是否已联合、密码哈希是否已同步、是否只在云中？ 用户是否已获得 Azure AD Premium、Enterprise Mobility 或 Azure AD Basic 许可证？ 用户是否在使用 Office 365 等产品？
 
 包含这些信息将有助于我们尽快为你解决问题。
@@ -52,7 +52,7 @@
 
 若要取回你的帐户，可以采取两种做法。第一种做法是，如果你已设置备用身份验证电话号码，你可以使用此号码来取回你的帐户并更改安全设置。
 
-如果你指定了辅助身份验证电话号码，可以使用该号码登录。 
+如果你指定了辅助身份验证电话号码，可以使用该号码登录。
 ![设置](./media/multi-factor-authentication-end-user-manage/altphone.png)
 请注意，在上面的屏幕截图中，已设置两个电话号码。一个以 67 结尾，另一个以 30 结尾。
   
@@ -89,10 +89,8 @@
 1. 登录到 [Office 365 门户](https://login.microsoftonline.com/)。
 2. 在右上角选择小组件并选择“Office 365 设置”。
 3. 单击“其他安全性验证”。
-4. 在右侧，单击“更新用于帐户安全性的电话号码”链接。
-![O365](./media/multi-factor-authentication-end-user-manage/o365a.png)
-5. 随后你将转到可以更改设置的页面。
-![O365](./media/multi-factor-authentication-end-user-manage/o365b.png)
+4. 在右侧，单击“更新用于帐户安全性的电话号码”链接。![O365](./media/multi-factor-authentication-end-user-manage/o365a.png)
+5. 随后你将转到可以更改设置的页面。![O365](./media/multi-factor-authentication-end-user-manage/o365b.png)
 
 
 ### 使用 Myapps 门户更改设置
@@ -103,8 +101,7 @@
 
 1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)	
 2. 在顶部选择配置文件。
-3. 选择“其他安全性验证”。
-![Myapps](./media/multi-factor-authentication-end-user-manage/myapps1.png)
+3. 选择“其他安全性验证”。![Myapps](./media/multi-factor-authentication-end-user-manage/myapps1.png)
 4. 随后你将转到可以更改设置的页面。
 
 ![验证](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
@@ -118,10 +115,8 @@
 
 1. 登录到 Azure 门户。
 2. 在 Azure 门户的顶部，单击你的用户名。此时将显示一个下拉框。
-3. 在下拉框中，选择“其他安全性验证”。
-![Azure](./media/multi-factor-authentication-end-user-manage/azure1.png)
-4. 随后你将转到可以更改设置的页面。
-![验证](./media/multi-factor-authentication-end-user-manage-azure/proofup.png)
+3. 在下拉框中，选择“其他安全性验证”。![Azure](./media/multi-factor-authentication-end-user-manage/azure1.png)
+4. 随后你将转到可以更改设置的页面。![验证](./media/multi-factor-authentication-end-user-manage-azure/proofup.png)
 
 ##我换了手机，想要更改我的电话号码
 
@@ -130,7 +125,7 @@
 >[AZURE.IMPORTANT]
 必须配置辅助身份验证电话号码。由于你的主要电话号码和移动应用可能在同一部手机上，因此，当你的手机丢失或被盗时，只能通过辅助电话号码访问你的帐户。
 
-第一种方法是使用辅助身份验证方法。如果你指定了辅助身份验证电话号码，可以使用该号码登录。 
+第一种方法是使用辅助身份验证方法。如果你指定了辅助身份验证电话号码，可以使用该号码登录。
 ![设置](./media/multi-factor-authentication-end-user-manage/altphone.png)
 请注意，在上面的屏幕截图中，已设置两个电话号码。一个以 67 结尾，另一个以 30 结尾。
   
@@ -177,4 +172,4 @@
 此外，你可以联系管理员或为你设置多重身份验证的人员，看看他们是否可以提供帮助。
 
 最后，请务必在此页面上留下一些详细的意见反馈，好让我们更新此页面，并通过提供更多的信息来持续改进此页面。
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0530_2016-->

@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="ExpressRoute 线路和路由域 | Microsoft Azure"
+   pageTitle="ExpressRoute 线路和路由域 | Azure"
    description="本页提供 ExpressRoute 线路和路由域的概述。"
    documentationCenter="na"
    services="expressroute"
@@ -65,11 +65,11 @@ Azure 存储空间、SQL 数据库和网站等服务是使用公共 IP 地址提
 
 下表比较了三种路由域。
 
-|**专用对等互连**|**公共对等互连**|**Microsoft 对等互连**|
+||**专用对等互连**|**公共对等互连**|**Microsoft 对等互连**|
 |---|---|---|---|
 |**每个对等互连支持的最大前缀数**|默认情况下为 4000，而 ExpressRoute 高级版支持 10,000|200|200|
 |**支持的 IP 地址范围**|你的 WAN 中任何有效的 IPv4 地址。|由你或你的连接提供商拥有的公共 IPv4 地址。|由你或你的连接提供商拥有的公共 IPv4 地址。|
-|**AS 编号要求**|专用和公共 AS 编号。你必须拥有公共 AS 编号。 | 专用和公共 AS 编号。不过，你必须提供公共 AS 编号，以验证公共 IP 地址的所有权。| 专用和公共 AS 编号。不过，你必须提供公共 AS 编号，以验证公共 IP 地址的所有权。|
+|**AS 编号要求**|专用和公共 AS 编号。你必须拥有公共 AS 编号。 | 专用和公共 AS 编号。但是，必须证明对公共 IP 地址的所有权。| 专用和公共 AS 编号。但是，必须证明对公共 IP 地址的所有权。|
 |**路由接口 IP 地址**|RFC1918 和公共 IP 地址|在路由注册表中向你注册的公共 IP 地址。| 在路由注册表中向你注册的公共 IP 地址。|
 |**MD5 哈希支持**| 是|是|是|
 
@@ -86,6 +86,4 @@ Azure 存储空间、SQL 数据库和网站等服务是使用公共 IP 地址提
 	- [配置路由（线路对等互连）](/documentation/articles/expressroute-howto-routing-classic)
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
 
-
-
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0530_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用存储分析收集日志和度量值数据 | Microsoft Azure"
+	pageTitle="使用存储分析收集日志和度量值数据 | Azure"
 	description="使用存储分析，可以跟踪所有存储服务的度量值数据，并收集 Blob、队列和表存储的日志。"
 	services="storage" 
 	documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="02/14/2016"
+	ms.date="05/09/2016"
 	wacn.date=""/>
 
 # 存储分析
@@ -65,7 +65,8 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。�
 ### 如何存储日志
 所有日志以块 Blob 的形式存储在一个名为 $logs 的容器中，为存储帐户启用存储分析时将自动创建该容器。$logs 容器位于存储帐户的 blob 命名空间中，例如：`http://<accountname>.blob.core.chinacloudapi.cn/$logs`。在启用存储分析后，无法删除该容器，但可以删除其内容。
 
->[Azure.NOTE] 在执行容器列出操作（例如 [ListContainers](https://msdn.microsoft.com/zh-cn/library/azure/dd179352.aspx) 方法）时，不会显示 $logs 容器。必须直接访问该容器。例如，可以使用 [ListBlobs](https://msdn.microsoft.com/zh-cn/library/azure/dd135734.aspx) 方法访问 `$logs` 容器中的 Blob。在记录请求时，存储分析将中间结果作为块进行上载。存储分析定期提交这些块，并将其作为 Blob 提供。
+>[Azure.NOTE] 在执行容器列出操作（例如 [ListContainers](https://msdn.microsoft.com/zh-cn/library/azure/dd179352.aspx) 方法）时，不会显示 $logs 容器。必须直接访问该容器。例如，可以使用 [ListBlobs](https://msdn.microsoft.com/zh-cn/library/azure/dd135734.aspx) 方法访问 `$logs` 容器中的 Blob。
+在记录请求时，存储分析将中间结果作为块进行上载。存储分析定期提交这些块，并将其作为 Blob 提供。
 
 在同一小时内创建的日志中可能存在重复的记录。可以通过检查 **RequestId** 和**操作**编号来确定记录是否为重复记录。
 
@@ -197,12 +198,11 @@ Azure 存储分析执行日志记录并为存储帐户提供度量值数据。�
 ### 存储分析日志记录  
 - [关于存储分析日志记录](https://msdn.microsoft.com/zh-cn/library/hh343262.aspx) 
 - [存储分析日志格式](https://msdn.microsoft.com/zh-cn/library/hh343259.aspx) 
-- [存储分析记录的操作和状态消息](https://msdn.microsoftcom/zh-cn/library/hh343260.aspx) 
+- [存储分析记录的操作和状态消息](https://msdn.microsoft.com/zh-cn/library/hh343260.aspx) 
 
 ### 存储分析度量值
 - [关于存储分析度量值](https://msdn.microsoft.com/zh-cn/library/hh343258.aspx)
 - [存储分析度量值表架构](https://msdn.microsoft.com/zh-cn/library/hh343264.aspx) 
 - [存储分析记录的操作和状态消息](https://msdn.microsoft.com/zh-cn/library/hh343260.aspx)  
 
-
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0530_2016-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="04/07/2016" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 # 配置 Azure Multi-Factor Authentication
@@ -94,11 +94,9 @@ Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。如
 1.	登录到 http://azure.microsoft.com
 2.	根据此页顶部的说明导航到 MFA 管理门户。
 3.	在 Azure Multi-Factor Authentication 管理门户中，如果在左侧看到租户或 Azure MFA 提供程序的名称旁边有一个 +，则单击 + 可查看不同的 MFA 服务器复制组以及 Azure 默认组。单击相应的组。
-4.	在“用户管理”下面，单击“一次性跳过”。
-![云](./media/multi-factor-authentication-whats-next/create1.png)
+4.	在“用户管理”下面，单击“一次性跳过”。![云](./media/multi-factor-authentication-whats-next/create1.png)
 5.	在“一次性跳过”页上，单击“新建一次性跳过”。
-6.	输入用户的用户名、“跳过”将存在的秒数、跳过的原因，然后单击“跳过”。
-![云](./media/multi-factor-authentication-whats-next/create2.png)
+6.	输入用户的用户名、“跳过”将存在的秒数、跳过的原因，然后单击“跳过”。![云](./media/multi-factor-authentication-whats-next/create2.png)
 7.	此时，用户必须在一次性跳过过期之前登录。
 
 
@@ -132,14 +130,10 @@ Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。如
 2.	登录到 http://azure.microsoft.com
 3.	根据此页顶部的说明导航到 MFA 管理门户。
 4.	在 Azure Multi-Factor Authentication 管理门户中，单击“配置”部分下面的“语音消息”。
-5.	在“语音消息”部分下，单击“新建语音消息”。
-![云](./media/multi-factor-authentication-whats-next/custom1.png)
-6.	在“配置: 新建语音消息”页上，单击“管理声音文件”。
-![云](./media/multi-factor-authentication-whats-next/custom2.png)
-7.	在“配置: 声音文件”页上，单击“上载声音文件”。
-![云](./media/multi-factor-authentication-whats-next/custom3.png)
-8.	在“配置: 上载声音文件”页上，单击“浏览”，然后导航到你的语音消息，单击“打开”。
-![云](./media/multi-factor-authentication-whats-next/custom4.png)
+5.	在“语音消息”部分下，单击“新建语音消息”。![云](./media/multi-factor-authentication-whats-next/custom1.png)
+6.	在“配置: 新建语音消息”页上，单击“管理声音文件”。![云](./media/multi-factor-authentication-whats-next/custom2.png)
+7.	在“配置: 声音文件”页上，单击“上载声音文件”。![云](./media/multi-factor-authentication-whats-next/custom3.png)
+8.	在“配置: 上载声音文件”页上，单击“浏览”，然后导航到你的语音消息，单击“打开”。![云](./media/multi-factor-authentication-whats-next/custom4.png)
 9.	添加说明，然后单击“上载”。
 10.	完成此操作后，你将看到一条消息，指示已成功上载文件。
 11.	在左侧，单击“语音消息”。
@@ -148,8 +142,7 @@ Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。如
 14.	如果此消息用于特定应用程序，请在“应用程序”框中指定该应用程序。
 15.	从“消息类型”中，选择将使用我们的新建自定义消息重写的消息类型。
 16.	从“声音文件”下拉列表中选择你的声音文件。
-17.	单击“创建”。你将看到一条消息，指示已成功创建语音消息。
-![云](./media/multi-factor-authentication-whats-next/custom5.png)</center>
+17.	单击“创建”。你将看到一条消息，指示已成功创建语音消息。![云](./media/multi-factor-authentication-whats-next/custom5.png)</center>
 
 
 
@@ -352,8 +345,7 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 联�
 3. 在 Active Directory 下，单击你要为设备设置“记住 Multi-Factor Authentication”的目录。
 4. 在选择的目录上，单击“配置”。
 5. 在“Multi-Factor Authentication”部分中，单击“管理服务设置”。
-6. 在“服务设置”页面上的“管理用户设备设置”下方，选择/取消选择“允许用户记住其信任的设备的 Multi-Factor Authentication”选项。
-![记住设备](./media/multi-factor-authentication-whats-next/remember.png)
+6. 在“服务设置”页面上的“管理用户设备设置”下方，选择/取消选择“允许用户记住其信任的设备的 Multi-Factor Authentication”选项。![记住设备](./media/multi-factor-authentication-whats-next/remember.png)
 8. 设置允许暂停的天数。默认值为 14 天。
 9. 单击“保存”。
 10. 单击“关闭”。
@@ -380,5 +372,4 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 联�
 9. 单击“保存”。
 10. 单击“关闭”。
 
-
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0530_2016-->

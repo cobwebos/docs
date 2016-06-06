@@ -4,12 +4,12 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	manager="stevenp" 
+	editor="curtland"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="07/21/2015" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 # 在 Azure Multi-Factor Authentication 中使用移动应用作为联系方法
@@ -69,4 +69,4 @@ Azure 验证器应用可用于 [Windows Phone](http://www.windowsphone.com/zh-cn
 >[AZURE.NOTE]如果你看到“添加工作帐户”，请注意该选项适用于“工作区加入”，而不适用于 Multi-Factor Authentication。你可以忽略此选项。
  
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0530_2016-->

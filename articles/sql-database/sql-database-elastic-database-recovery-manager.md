@@ -1,15 +1,15 @@
 <properties 
-	pageTitle="使用恢复管理器解决分片映射问题 | Microsoft Azure" 
+	pageTitle="使用恢复管理器解决分片映射问题 | Azure" 
 	description="使用 RecoveryManager 类解决分片映射问题" 
 	services="sql-database" 
 	documentationCenter=""  
-	manager="jeffreyg"
+	manager="jhubbard"
 	authors="ddove"/>
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="02/08/2016" 
-	wacn.date=""/>
+	ms.date="05/05/2016" 
+	wacn.date="05/23/2016"/>
 
 # 使用 RecoveryManager 类解决分片映射问题
 
@@ -78,8 +78,8 @@ GSM 和 LSM 可能因以下原因变得不同步：
 
 	rm.DetectMappingDifferences(location, shardMapName);
 
-*  *位置* 指定服务器名称和数据库名称。 
-* *shardMapName* 参数是分片映射名称。仅当多个分片映射由同一分片映射管理器管理时才是必需的。可选。 
+* 位置指定服务器名称和数据库名称。 
+* shardMapName 参数是分片映射名称。仅当多个分片映射由同一分片映射管理器管理时才是必需的。可选。 
 
 ## 解决映射差异
 
@@ -87,7 +87,7 @@ GSM 和 LSM 可能因以下原因变得不同步：
 
 	ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    
-* *RecoveryToken* 参数枚举特定分片的 GSM 与 LSM 之间映射的差异。 
+* RecoveryToken 参数枚举特定分片的 GSM 与 LSM 之间映射的差异。 
 
 * [MappingDifferenceResolution 枚举](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx)指示用于解决分片映射之间差异的方法。
 * 当 LSM 包含正确映射时，建议使用 **MappingDifferenceResolution.KeepShardMapping**，因此应该使用分片中的映射。这通常是因为发生故障转移：分片现在驻留在新服务器上。由于必须先从 GSM 中删除分片（使用 RecoveryManager.DetachShard 方法），GSM 上不再存在映射。因此，必须使用 LSM 重新建立分片映射。
@@ -98,9 +98,9 @@ GSM 和 LSM 可能因以下原因变得不同步：
 
 	rm.AttachShard(location, shardMapName) 
 
-* *location* 参数是要附加的分片的服务器名称和数据库名称。 
+* location 参数是要附加的分片的服务器名称和数据库名称。 
 
-* *shardMapName* 参数是分片映射名称。仅当多个分片映射由同一分片映射管理器管理时才是必需的。可选。
+* shardMapName 参数是分片映射名称。仅当多个分片映射由同一分片映射管理器管理时才是必需的。可选。
 
 此示例将分片添加最近从较早还原时间点的分片映射。由于已还原分片（也就是 LSM 中的分片映射），该分片可能与 GSM 中的分片条目不一致。在此示例代码之外，分片已还原并重命名为数据库的原始名称。由于它已还原，因此假设 LSM 中的映射为受信任的映射。
 
@@ -126,10 +126,10 @@ GSM 和 LSM 可能因以下原因变得不同步：
 5. 解决 GSM 和 LSM 之间的差异，信任 LSM。 
 
 此示例将执行以下步骤：
-1.从分片映射中删除反映故障转移事件之前分片位置的分片。
-2.将反映新分片位置的分片附加到分片映射（参数“Configuration.SecondaryServer”是新服务器名称，但是相同的数据库名称）。
-3.通过检测每个分片的 GSM 与 LSM 之间的映射差异来检索恢复令牌。
-4.通过信任来自每个分片 LSM 的映射解决不一致情况。
+1. 从分片映射中删除反映故障转移事件之前分片位置的分片。
+2. 将反映新分片位置的分片附加到分片映射（参数“Configuration.SecondaryServer”是新服务器名称，但是相同的数据库名称）。
+3. 通过检测每个分片的 GSM 与 LSM 之间的映射差异来检索恢复令牌。 
+4. 通过信任来自每个分片 LSM 的映射解决不一致情况。 
 
 	var shards = smm.GetShards(); 
 	foreach (shard s in shards) 
@@ -160,4 +160,4 @@ GSM 和 LSM 可能因以下原因变得不同步：
 [1]: ./media/sql-database-elastic-database-recovery-manager/recovery-manager.png
  
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0530_2016-->

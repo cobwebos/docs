@@ -9,12 +9,12 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="01/11/2016" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 中的报告
 
-Azure Multi-Factor Authentication 提供了几个报告供你和你的组织使用。可通过 Multi-Factor Authentication 管理门户访问这些报告。以下是可用报告的列表。
+Azure Multi-Factor Authentication 提供了几个报告供你和你的组织使用。可通过 Multi-Factor Authentication 管理门户访问这些报告，这需要你提供 Azure MFA 提供程序、Azure MFA、Azure AD Premium 或 Enterprise Mobility Suite 许可证。以下是可用报告的列表。
 
 你可以通过 Azure 管理门户访问报告。
 
@@ -46,5 +46,4 @@ Name| 说明
 * [面向用户](/documentation/articles/multi-factor-authentication-end-user)
 * [MSDN 上的 Azure Multi-Factor Authentication](https://msdn.microsoft.com/zh-cn/library/azure/dn249471.aspx)
  
-
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0530_2016-->

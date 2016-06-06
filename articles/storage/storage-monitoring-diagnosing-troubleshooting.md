@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="04/06/2016"
+	ms.date="04/29/2016"
 	wacn.date=""/>
 
 # 监视、诊断和排查 Microsoft Azure 存储空间问题 
@@ -73,7 +73,7 @@
 
 ![][1]
 
-图 1：监视、诊断和故障排除
+*图 1：监视、诊断和故障排除*
 
 本指南的主要目标受众是开发使用 Azure 存储服务的联机服务的开发人员以及负责管理此类联机服务的 IT 专业人员。本指南的目标是：
 
@@ -119,8 +119,7 @@
 
 可以使用 [Azure 门户](https://portal.azure.cn)查看全球所有 Azure 区域中存储服务（及其他 Azure 服务）的运行状况。这使你可以立即了解是否有不受你控制的问题正在影响你的应用程序所使用的区域中的存储服务。
 
-此外，[Azure 门户](https://portal.azure.cn)还可以提供影响各种 Azure 服务的事件的通知。
-注意：此信息以前未在 Azure 服务仪表板（网址为：<a href="http://www.windowsazure.cn/support/service-dashboard/" target="_blank">http://www.windowsazure.cn/support/service-dashboard/</a>）上与历史数据一起提供。
+此外，[Azure 门户](https://portal.azure.cn)还可以提供影响各种 Azure 服务的事件的通知。注意：此信息以前在 Azure 服务仪表板（网址为：<a href="/support/service-dashboard/" target="_blank">https://www.azure.cn/support/service-dashboard/</a>）上与历史数据一起提供。
 
 虽然 [Azure 门户](https://portal.azure.cn)从 Azure 数据中心内部收集运行状况信息（由内而外监视），但你也可以考虑采用由外而内方法来生成定期从多个位置访问 Azure 托管的 Web 应用程序的综合事务。<a href="http://www.keynote.com/solutions/monitoring/web-monitoring" target="_blank">Keynote</a>、<a href="https://www.gomeznetworks.com/?g=1" target="_blank">Gomez</a> 和 Application Insights for Visual Studio Team Services 提供的服务是这种由外而内方法的示例。有关 Application Insights for Visual Studio Team Services 的详细信息，请参阅附录“[附录 5：使用 Application Insights for Visual Studio Team Services 进行监视]”。
 
@@ -406,7 +405,7 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 
 较高的 **AverageServerLatency** 值也可能是设计欠佳的表或查询的症状，它会导致扫描操作或执行追加/前面预置反模式。有关详细信息，请参阅“[度量值显示 PercentThrottlingError 增加]”。
 
-> [AZURE.NOTE] 你可以在此处找到一份包括应注意的其他问题的全面的清单：[Azure 存储空间性能和可伸缩性清单](/documentation/articles/storage-performance-checklist)。
+> [AZURE.NOTE] 你可以在此处找到一份全面的性能清单：[Azure 存储空间性能和可伸缩性清单](/documentation/articles/storage-performance-checklist)。
 
 ### <a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>队列上的消息传递出现意外的延迟
 
@@ -484,7 +483,7 @@ Microsoft.WindowsAzure.Storage|错误|1|85d077ab -…|重试策略不允许重�
 
 - 通常，当你创建 SAS 供客户端立即使用时，不应设置开始时间。如果使用当前时间生成 SAS 的主机与存储服务之间存在较小的时钟差异，则存储服务有可能收到尚未生效的 SAS。
 - 不应在 SAS 上设置太短的到期时间。同样，生成 SAS 的主机与存储服务之间的较小时钟差异可能会导致 SAS 似乎早于预期到期。
-- SAS 密钥中的版本参数（例如 **sv=2015-04-05**）是否与你正在使用的存储客户端库的版本匹配？ 我们建议你始终使用最新版的[存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)。有关 SAS 令牌版本控制及客户端库版本的依赖项的详细信息，请参阅 [Microsoft Azure 存储空间的新增功能](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/14/what-s-new-for-microsoft-azure-storage-at-teched-2014.aspx)。
+- SAS 密钥中的版本参数（例如 **sv=2015-04-05**）是否与你正在使用的存储客户端库的版本匹配？ 我们建议你始终使用最新版的[存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)。有关 SAS 令牌版本控制的详细信息，请参阅 [Microsoft Azure 存储空间的新增功能](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/14/what-s-new-for-microsoft-azure-storage-at-teched-2014.aspx)。
 - 如果你重新生成存储访问密钥，则可能会使任何现有的 SAS 令牌无效。如果你生成的 SAS 令牌具有较长的到期时间供客户端应用程序缓存，这可能是个问题。
 
 如果你使用存储客户端库生成 SAS 令牌，则可轻松生成有效令牌。但是，如果您使用的是存储 REST API 并手动构造 SAS 令牌，则应仔细阅读 MSDN 上的主题<a href="http://msdn.microsoft.com/zh-cn/library/azure/ee395415.aspx" target="_blank">使用共享访问签名委托访问</a>。
@@ -524,7 +523,7 @@ de8b1c3c-...|**UploadFromStream** 方法，用于创建 Blob。**PUT** 请求失
 07b26a5d-... | 正在下载响应正文。
 07b26a5d-... | 操作已成功完成。
 07b26a5d-... | 开始发出同步请求到 https://domemaildist.blob.core.chinacloudapi.cn/azuremmblobcontainer。
-07b26a5d-... | StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12    GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.
+07b26a5d-... | StringToSign = DELETE............x-ms-client-request-id:07b26a5d-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container.
 07b26a5d-... | 正在等待响应。
 07b26a5d-... | 收到响应。状态代码 = 202，请求 ID = 6ab2a4cf-...，Content-MD5 = ，ETag = 。
 07b26a5d-... | 响应标头已成功处理，继续执行该操作的剩余部分。
@@ -614,7 +613,7 @@ e2d06d78-... | 重试策略不允许重试。操作失败，远程服务器返�
 
 > [AZURE.NOTE] 在排查客户端 JavaScript 问题时，可以使用 Internet Explorer 中的 F12 开发人员工具来跟踪浏览器与存储服务之间交换的消息。
 
-之所以发生这些错误是因为 Web 浏览器实施了“同源策略”安全限制，以防止网页调用与它来自的域不同的域中的 API。<a href="http://www.w3.org/Security/wiki/Same_Origin_Policy" target="_blank"></a>
+之所以发生这些错误是因为 Web 浏览器实施了“<a href="http://www.w3.org/Security/wiki/Same_Origin_Policy" target="_blank">同源策略</a>”安全限制，以防止网页调用与它来自的域不同的域中的 API。
 
 若要解决此 JavaScript 问题，可以为客户端访问的存储服务配置跨域资源共享 (CORS)。有关详细信息，请参阅 MSDN 上的 <a href="http://msdn.microsoft.com/zh-cn/library/azure/dn535601.aspx" target="_blank">Azure 存储空间服务的跨域资源共享 (CORS) 支持</a>。
 
@@ -681,8 +680,7 @@ Timestamp|操作|结果|容器名称|客户端请求 ID
 
 如果 Azure 虚拟机 (VM) 具有大量位于同一存储帐户的附加 VHD，则可能会超过单个存储帐户的可伸缩性目标，从而导致 VM 出现故障。您应查看存储帐户的每分钟度量值 (**TotalRequests**/**TotalIngress**/**TotalEgress**)，以获取超过一个存储帐户的可伸缩性目标的峰值。若要帮助确定是否已对您的存储帐户进行限制，请参阅“[度量值显示 PercentThrottlingError 增加]”一节。
 
-通常，虚拟机对 VHD 进行的每个单独的输入或输出操作都会转换为对基础页 Blob 进行的“Get 页”或“Put 页”操作。因此，你可以根据应用程序的特定行为，对环境使用估计的 IOPS 以优化可以在单个存储帐户中设置的 VHD 数。我们不建议在单个存储帐户中设置超过 40 个的磁盘。有关存储帐户的当前可伸缩性目标的详细信息（尤其是您所用的存储帐户类型的总请求速率和总带宽），请参阅 <a href="http://msdn.microsoft.com/zh-cn/library/azure/dn249410.aspx" target="_blank">Azure 存储空间可伸缩性和性能目标</a>。
-如果你即将超过存储帐户的可伸缩性目标，则应将你的 VHD 放入多个不同的存储帐户中，以减少每个帐户中的活动。
+通常，虚拟机对 VHD 进行的每个单独的输入或输出操作都会转换为对基础页 Blob 进行的“Get 页”或“Put 页”操作。因此，你可以根据应用程序的特定行为，对环境使用估计的 IOPS 以优化可以在单个存储帐户中设置的 VHD 数。我们不建议在单个存储帐户中设置超过 40 个的磁盘。有关存储帐户的当前可伸缩性目标的详细信息（尤其是您所用的存储帐户类型的总请求速率和总带宽），请参阅 <a href="http://msdn.microsoft.com/zh-cn/library/azure/dn249410.aspx" target="_blank">Azure 存储空间可伸缩性和性能目标</a>。如果你即将超过存储帐户的可伸缩性目标，则应将你的 VHD 放入多个不同的存储帐户中，以减少每个帐户中的活动。
 
 ### <a name="your-issue-arises-from-using-the-storage-emulator"></a>您的问题是由于使用存储模拟器进行开发或测试而导致
 
@@ -824,7 +822,7 @@ Microsoft Message Analyzer 中内置的“Web 代理”跟踪基于 Fiddler；�
 
 ### <a name="appendix-4"></a>附录 4：使用 Excel 查看度量值和日志数据
 
-使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。但是，您需要基于 <a href="http://msdn.microsoft.com/zh-cn/library/azure/hh343259.aspx" target="_blank">“存储分析日志格式”</a> 和 <a href="http://msdn.microsoft.com/zh-cn/library/azure/hh343264.aspx" target="_blank">“存储分析度量表架构”</a> 中的信息添加相应的列标题。
+使用许多工具可以从 Azure 表存储中下载带分隔符格式的存储度量值数据，以便可以轻松地将这些数据加载到 Excel 中进行查看和分析。来自 Azure Blob 存储的存储日志记录数据已采用可以加载到 Excel 中的带分隔符格式。但是，您需要基于“<a href="http://msdn.microsoft.com/zh-cn/library/azure/hh343259.aspx" target="_blank">存储分析日志格式</a>”和“<a href="http://msdn.microsoft.com/zh-cn/library/azure/hh343264.aspx" target="_blank">存储分析度量表架构</a>”中的信息添加相应的列标题。
 
 若要将存储日志记录数据导入 Excel（从 Blob 存储下载后），请执行以下操作：
 
@@ -916,5 +914,4 @@ Microsoft Message Analyzer 中内置的“Web 代理”跟踪基于 Fiddler；�
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
 
-
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0530_2016-->

@@ -40,6 +40,15 @@
 
 > [AZURE.IMPORTANT]  密钥管理（包括密钥滚动更新）不是 Azure 备份的一部分。这一方面需要分开管理，但对整体备份/还原操作很重要。
 
+### 支持的方案
+
+
+| &nbsp; | 备份保管库 | 恢复服务保管库 |
+| :-- | :-- | :-- |
+| Azure IaaS V1 VM | 是 | 否 |
+| Azure IaaS V2 VM | 不适用 | 否 |
+
+
 ## CloudLink SecureVM
 
 [CloudLink SecureVM](http://www.cloudlinktech.com/choose-your-cloud/microsoft-azure/) 是 VM 加密解决方案，可用于保护 Azure IaaS VM 数据。CloudLink SecureVM 可以配合 Azure 备份使用。
@@ -58,4 +67,4 @@
 - [部署指南 - PDF](http://www.cloudlinktech.com/Azure/CL_SecureVM_4_0_DG_EMC_Azure_R2.pdf)
 - [部署和使用 SecureVM - 视频](https://www.youtube.com/watch?v=8AIRe92UDNg)
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0530_2016-->

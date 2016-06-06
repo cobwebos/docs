@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 DPM 为 SQL 工作负荷配置 Azure 备份| Microsoft Azure"
+	pageTitle="使用 DPM 为 SQL 工作负荷配置 Azure 备份 | Azure"
 	description="使用 Azure 备份服务备份 SQL Server 数据库简介"
 	services="backup"
 	documentationCenter=""
@@ -170,4 +170,4 @@
 
 • [Azure 备份常见问题](/documentation/articles/backup-azure-backup-faq)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0530_2016-->

@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="01/25/2016" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 的登录体验
@@ -99,5 +99,4 @@
 - 选择一种替代方法并登录。
 
  
-
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0530_2016-->

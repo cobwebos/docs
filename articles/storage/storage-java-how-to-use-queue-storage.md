@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何通过 Java 使用队列存储 | Microsoft Azure" 
+	pageTitle="如何通过 Java 使用队列存储 | Azure" 
 	description="了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。用 Java 编写的示例。" 
 	services="storage" 
 	documentationCenter="java" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="02/29/2016"
+	ms.date="05/04/2016"
 	wacn.date=""/>
 
 # 如何通过 Java 使用队列存储
@@ -18,7 +18,7 @@
 
 ## 概述
 
-本指南将演示如何使用 Azure 队列存储服务执行常见方案。这些示例用 Java 编写并使用 [Azure Storage SDK for Java][]。涉及的方案包括“插入”、“扫视”、“获取”和“删除”队列消息以及“创建”和“删除”队列。有关队列的详细信息，请参阅[后续步骤](#NextSteps)部分。
+本指南将演示如何使用 Azure 队列存储服务执行常见方案。这些示例用 Java 编写并使用 [Azure Storage SDK for Java][]。涉及的方案包括“插入”、“扫视”、“获取”和“删除”队列消息以及“创建”和“删除”队列。有关队列的详细信息，请参阅[后续步骤](#Next-Steps)部分。
 
 注意：为在 Android 设备上使用 Azure 存储的开发人员提供了 SDK。有关详细信息，请参阅 [Azure Storage SDK for Android][]。
 
@@ -42,7 +42,7 @@
 
 ## 设置 Azure 存储连接字符串
 
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 AccountName 和 AccountKey 值使用[管理门户](https://manage.windowsazure.cn)中列出的存储帐户的名称和存储帐户的主访问密钥。此示例演示如何声明一个静态字段以保存连接字符串：
+Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 *AccountName* 和 *AccountKey* 值使用 [Azure 门户](https://portal.azure.cn)中列出的存储帐户的名称和存储帐户的主访问密钥。此示例演示如何声明一个静态字段以保存连接字符串：
 
     // Define the connection-string with your values.
     public static final String storageConnectionString = 
@@ -51,7 +51,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
         "AccountKey=your_storage_account_key;" +
 	"EndpointSuffix=core.chinacloudapi.cn";
 
-在 Microsoft Azure 的角色中运行的应用程序中，此字符串可存储在服务配置文件 ServiceConfiguration.cscfg 中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。下面是从服务配置文件中名为 StorageConnectionString 的 **Setting** 元素中获取连接字符串的示例：
+在 Microsoft Azure 的角色中运行的应用程序中，此字符串可存储在服务配置文件 *ServiceConfiguration.cscfg* 中，并可通过调用 **RoleEnvironment.getConfigurationSettings** 方法进行访问。下面是从服务配置文件中名为 *StorageConnectionString* 的 **Setting** 元素中获取连接字符串的示例：
 
     // Retrieve storage account from connection-string.
     String storageConnectionString = 
@@ -61,7 +61,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 
 ## 如何：创建队列
 
-利用 **CloudQueueClient** 对象，可以获取队列的引用对象。以下代码将创建 **CloudQueueClient** 对象。（注意：还有其他方式来创建 **CloudStorageAccount** 对象；有关详细信息，请参阅 [Azure 存储客户端 SDK 参考]中的 **CloudStorageAccount**。）
+利用 **CloudQueueClient** 对象，可以获取队列的引用对象。以下代码将创建 **CloudQueueClient** 对象。（注意：还有其他方式来创建 **CloudStorageAccount** 对象；有关详细信息，请参阅 **Azure 存储客户端 SDK 参考**中的 [CloudStorageAccount]。）
 
 使用 **CloudQueueClient** 对象获取对你要使用的队列的引用。如果队列不存在，你可以创建它。
 
@@ -148,7 +148,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 
 ## 如何：更改已排队消息的内容
 
-你可以更改队列中现有消息的内容。如果消息表示工作任务，则你可以使用此功能来更新该工作任务的状态。以下代码使用新内容更新队列消息，并将可见性超时设置为再延长 60 秒。这将保存与消息关联的工作的状态，并额外为客户端提供一分钟的时间来继续处理消息。可使用此方法跟踪队列消息上的多步骤工作流，即使处理步骤因硬件或软件故障而失败，也无需从头开始操作。通常，你还可以保留重试计数，如果某条消息的重试次数超过 n，你将删除此消息。这可避免每次处理某条消息时都触发应用程序错误。
+你可以更改队列中现有消息的内容。如果消息表示工作任务，则你可以使用此功能来更新该工作任务的状态。以下代码使用新内容更新队列消息，并将可见性超时设置为再延长 60 秒。这将保存与消息关联的工作的状态，并额外为客户端提供一分钟的时间来继续处理消息。可使用此方法跟踪队列消息上的多步骤工作流，即使处理步骤因硬件或软件故障而失败，也无需从头开始操作。通常，你还可以保留重试计数，如果某条消息的重试次数超过 *n*，你将删除此消息。这可避免每次处理某条消息时都触发应用程序错误。
 
 下面的代码示例将搜索队列中的消息，查找内容中第一个与“Hello, World”匹配的消息，然后对消息内容进行修改并退出。
 
@@ -389,4 +389,4 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 [Azure 存储空间服务 REST API]: https://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0530_2016-->

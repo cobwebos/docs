@@ -4,13 +4,13 @@
 	services="sql-database, automation"
 	documentationCenter=""
 	authors="jodoglevy"
-	manager="jeffreyg"
+	manager="jhubbard"
 	editor="monicar"/>
 
 <tags
 	ms.service="sql-database"
-	ms.date="01/21/2016"
-	wacn.date=""/>
+	ms.date="05/03/2016"
+	wacn.date="05/23/2016"/>
 
 
 
@@ -50,4 +50,4 @@ Azure 自动化还可以通过使用 PowerShell 发出 SQL 命令，来与 SQL �
 - [Azure 自动化：你在云中的 SQL 代理](https://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud) 
  
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0530_2016-->

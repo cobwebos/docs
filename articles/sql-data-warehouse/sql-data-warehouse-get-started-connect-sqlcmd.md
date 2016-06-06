@@ -3,13 +3,13 @@
    description="开始连接到 SQL 数据仓库并运行一些查询。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sonyama"
+   authors="sonyam"
    manager="barbkess"
    editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="03/28/2016"
+   ms.date="05/12/2016"
    wacn.date=""/>
 
 # 使用 SQLCMD 进行连接和查询
@@ -26,7 +26,7 @@
 
 ## 先决条件
 
-+ [sqlcmd.exe](https://msdn.microsoft.com/library/azure/ms162773.aspx) - 若要下载 sqlcmd.exe，请参阅[适用于 SQL Server 的 Microsoft 命令行实用程序 11](http://www.microsoft.com/zh-cn/download/details.aspx?id=36433)。
++ [sqlcmd.exe](https://msdn.microsoft.com/zh-cn/library/azure/ms162773.aspx) - 若要下载 sqlcmd.exe，请参阅[适用于 SQL Server 的 Microsoft 命令行实用程序 11](http://www.microsoft.com/zh-cn/download/details.aspx?id=36433)。
 
 ## 获取完全限定的 Azure SQL 服务器名称
 
@@ -44,7 +44,7 @@
 若要在使用 sqlcmd 时连接到 SQL 数据仓库的特定实例，需要打开命令提示符并输入 **sqlcmd** 后接 SQL 数据仓库数据库的连接字符串。连接字符串需包含以下必需参数：
 
 + **服务器 (-S)：**采用 `<`服务器名称`>`.database.windows.net 格式的服务器
-+ **数据库 (-D)：**数据库名称
++ **数据库 (-d)：**数据库名称。
 + **用户 (-U)：**采用 `<`用户`>` 格式的服务器用户
 + **密码 (-P)：**与用户关联的密码
 + **启用带引号的标识符 (-I)：**必须启用带引号的标识符才能连接到 SQL 数据仓库实例。
@@ -73,4 +73,4 @@ C:\>sqlcmd -S <Server Name>.database.chinacloudapi.cn -d <Database> -U <User> -P
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-get-started-connect/get-server-name.png
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0530_2016-->

@@ -9,7 +9,6 @@
 
 <tags
 	ms.service="batch"
-
 	ms.date="03/11/2016"
 	wacn.date=""/>
 
@@ -43,7 +42,7 @@
 
 ## 查看 Batch 配额
 
-可在 [Azure 门户](https://manage.windowsazure.cn)中查看 Batch 帐户配额。
+可在 [Azure 门户](https://portal.azure.cn)中查看 Batch 帐户配额。
 
 1. 在门户中，单击“Batch 帐户”，然后单击你的 Batch 帐户的名称。
 
@@ -71,7 +70,7 @@
 
 	d.在“支持计划”中，选择“Azure 支持计划 - 开发人员”。
 
-	单击**“下一步”**。
+	单击“下一步”。
 
 4. 在“问题”边栏选项卡中执行以下操作：
 
@@ -97,4 +96,4 @@ Azure 支持人员将与你联系。完成请求最长需要 2 个工作日。
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0530_2016-->

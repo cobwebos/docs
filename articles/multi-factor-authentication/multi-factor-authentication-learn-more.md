@@ -4,20 +4,15 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	manager="stevenpo" 
+	editor="curtland"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="06/02/2015" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 # 了解 Azure Multi-Factor Authentication
-[简介](/documentation/articles/multi-factor-authentication)<br>
-[工作原理](/documentation/articles/multi-factor-authentication-how-it-works)<br>
-[入门](/documentation/articles/multi-factor-authentication-get-started)<br>
-[后续步骤](/documentation/articles/multi-factor-authentication-whats-next)<br>
-[了解详细信息](/documentation/articles/multi-factor-authentication-learn-more)
 
 
 下面是可帮助你充分利用 Azure Multi-Factor Authentication 中提供的所有功能的其他资源集合
@@ -34,9 +29,8 @@
 
 [使用 RADIUS 的远程桌面网关和 Azure Multi-Factor Authentication 服务器](https://msdn.microsoft.com/zh-cn/library/azure/dn394287.aspx)
 
-[将多重身份验证构建到自定义应用程序中 (SDK)](https://msdn.microsoft.com/zh-cn/library/azure/dn249464.aspx)
+[将 Multi-Factor Authentication 构建到自定义应用程序中 (SDK)](https://msdn.microsoft.com/zh-cn/library/azure/dn249464.aspx)
 
 
  
-
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0530_2016-->

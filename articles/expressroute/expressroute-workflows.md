@@ -1,14 +1,14 @@
 <properties
-   pageTitle="ExpressRoute 线路配置工作流 | Microsoft Azure"
+   pageTitle="ExpressRoute 线路配置工作流 | Azure"
    description="本页将指导你完成配置 ExpressRoute 线路和对等互连的工作流"
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor="" />
 <tags
    ms.service="expressroute"
-   ms.date="01/21/2016"
+   ms.date="04/18/2016"
    wacn.date=""/>
 
 # ExpressRoute 线路预配工作流和线路状态
@@ -45,9 +45,9 @@
 - 服务提供商预配状态
 - 状态
 
-“状态”表示 Microsoft 的预配状态。此属性可能是以下状态之一：*Enabled*、*Enabling* 或 *Disabling*ExpressRoute 线路必须处于 Enabled 状态才可供使用。
+“状态”表示 Microsoft 的预配状态。此属性可能是以下状态之一：Enabled、Enabling 或 Disabling。ExpressRoute 线路必须处于 Enabled 状态才可供使用。
 
-连接服务提供商预配状态表示连接服务提供商一端的状态。该状态可能是 *NotProvisioned*、*Provisioning* 或 *Provisioned*。ExpressRoute 线路必须处于 Provisioned 状态才可供使用。
+连接服务提供商预配状态表示连接服务提供商一端的状态。该状态可能是 NotProvisioned、Provisioning 或 Provisioned。ExpressRoute 线路必须处于 Provisioned 状态才可供使用。
 
 ### ExpressRoute 线路的可能状态
 
@@ -102,11 +102,11 @@
 
 BGP 预配状态可让你知道 Microsoft 边缘是否已启用 BGP 会话。必须处于已启用状态才能使用对等互连。
 
-必须特意检查 Microsoft 对等互连的 BGP 会话状态。除了 BGP 预配状态，还有另一个状态称为*播发的公共前缀状态*。播发的公共前缀状态必须是*已配置*状态，BGP 会话才能启动，才能进行端到端的路由。
+必须特意检查 Microsoft 对等互连的 BGP 会话状态。除了 BGP 预配状态，还有另一个状态称为播发的公共前缀状态。播发的公共前缀状态必须是已配置状态，BGP 会话才能启动，才能进行端到端的路由。
 
-如果播发的公共前缀状态设置为*需要验证*状态，则不会启用 BGP 会话，因为播发的前缀不符合任何路由注册表中的 AS 编号。
+如果播发的公共前缀状态设置为需要验证状态，则不会启用 BGP 会话，因为播发的前缀不符合任何路由注册表中的 AS 编号。
 
->[AZURE.IMPORTANT] 如果播发的公共前缀状态是*手动验证*状态，则你必须向 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证，并提供拥有播发 IP 地址的证明以及相关的自治系统编号。
+>[AZURE.IMPORTANT] 如果播发的公共前缀状态是手动验证状态，则你必须向 [Microsoft 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)开具支持票证，并提供拥有播发 IP 地址的证明以及相关的自治系统编号。
 
 
 ## 后续步骤
@@ -117,4 +117,4 @@ BGP 预配状态可让你知道 Microsoft 边缘是否已启用 BGP 会话。必
 	- [配置路由](/documentation/articles/expressroute-howto-routing-arm)
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-arm)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0530_2016-->
