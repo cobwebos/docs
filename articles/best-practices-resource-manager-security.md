@@ -265,9 +265,9 @@ INTERNET | 表示虚拟网络外部的 IP 地址空间，可以通过公共 Inte
 
 **允许流量流向特定端口的显式规则**
 
-Name |	Priority |	Source IP |	Source Port |	Destination IP |	Destination Port |	协议 |	Access
+名称 |	优先级 |	源 IP |	源端口 |	目标 IP |	目标端口 |	协议 |	访问
 --- | --- | --- | --- | --- | --- | --- | ---
-Web | 100 | INTERNET | * | * | 80 | TCP | ALLOW
+Web | 100 | INTERNET | * | * | 80 | TCP | 允许
 
 ## 用户定义路由
 
