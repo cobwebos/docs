@@ -256,4 +256,4 @@ AD FS 服务需要域服务帐户来验证用户，以及在 Active Directory �
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0509_2016--->

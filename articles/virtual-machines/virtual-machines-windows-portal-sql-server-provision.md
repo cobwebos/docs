@@ -207,4 +207,4 @@ Azure 虚拟机 (VM) 库包括几种内含 Microsoft SQL Server 的映像。你�
 ##<a id="Next"></a>后续步骤
 有关在 Azure 中使用 SQL Server 的其他信息，请参阅 [Azure 虚拟机上的 SQL Server](/documentation/articles/virtual-machines-windows-sql-server-iaas-overview)。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0509_2016--->
