@@ -115,4 +115,4 @@ Contoso 是一家工业自动化行业的制造公司，该公司已经完全自
 
 本教程提供有关编写不同 SAQL 查询并在浏览器中查看数据不同模式的结果的基本入门指导。但是，这仅仅是一个开始。使用流分析还可以许多其他操作。接下来，你将学习将流分析作业连接到输入和输出并将其部署到 Azure。你可使用[学习路线图](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/)指南开始了解有关流分析的详细信息，若要了解有关编写查询的详细信息，请查看有关[常见查询模式](./stream-analytics-stream-analytics-query-patterns.md#query-example-detect-the-absence-of-events)的文章。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0530_2016--->
