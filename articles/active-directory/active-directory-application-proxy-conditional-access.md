@@ -9,16 +9,17 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="02/09/2016"
+	ms.date="05/09/2016"
 	wacn.date=""/>
 
 # 使用条件性访问
 > [AZURE.NOTE] 应用程序代理是一项仅当升级到高级版或基本版的 Azure Active Directory 才可用的功能。有关详细信息，请参阅 [Azure Active Directory 版本](/documentation/articles/active-directory-editions)。
 
-现在你可以启用访问规则，以便为访问使用应用程序代理发布的应用程序的用户和组授予条件性访问权限。这使你可以：
-- 要求每个应用程序进行 Multi-Factor Authentication 
-- 仅当用户不在工作时要求 Multi-Factor Authentication 
-- 阻止用户不在工作时访问应用程序
+你可以配置访问规则，以便授予对使用应用程序代理发布的应用程序的条件性访问权限。这样，你便可以：
+
+- 基于应用程序要求多重身份验证
+- 仅当用户未工作时要求多重身份验证
+- 当用户未工作时阻止其访问应用程序
 
 这些规则可以应用于所有用户和组，或仅应用于特定用户和组。默认情况下，规则将应用于有权访问应用程序的所有用户。但是规则也可以只适用于属于指定安全组成员的用户。
 
@@ -41,7 +42,7 @@
 
   - 若要从规则中显式排除安全组，请选中“例外”并指定一个或多个组。属于“例外”列表中的组成员的用户不需要执行 Multi-Factor Authentication。  
 
-  - 如果已使用按用户的多重身份验证功能配置用户，则此设置的优先级高于应用程序的多重身份验证规则。这意味着已配置为每个用户 Multi-Factor Authentication 的用户将需要执行 Multi-Factor Authentication，即使他们已从应用程序的 Multi-Factor Authentication 规则中免除。了解有关[多重身份验证和按用户设置](../multi-factor-authentication/multi-factor-authentication.md)的详细信息。
+  - 如果已使用按用户的多重身份验证功能配置用户，则此设置的优先级高于应用程序的多重身份验证规则。这意味着已配置为每个用户 Multi-Factor Authentication 的用户将需要执行 Multi-Factor Authentication，即使他们已从应用程序的 Multi-Factor Authentication 规则中免除。了解有关[多重身份验证和每个用户的设置](../multi-factor-authentication/multi-factor-authentication.md)的详细信息。
 
 6. 选择你想要设置的访问规则：
 	- **要求 Multi-Factor Authentication**：向其应用访问规则的用户要求完成 Multi-Factor Authentication，然后才能访问规则应用的应用程序。
@@ -52,28 +53,18 @@
 ## 为联合服务配置 MFA
 对于联合租户，多重身份验证 (MFA) 可能通过 Azure Active Directory 或本地 AD FS 服务器执行。默认情况下，MFA 会在 Azure Active Directory 托管的任意页上发生。若要配置本地 MFA，请运行 Windows PowerShell 并使用 –SupportsMFA 属性设置 Azure AD 模块。
 
-以下示例演示了如何在 contoso.com 租户上使用 [Set-MsolDomainFederationSettings cmdlet](https://msdn.microsoft.com/library/azure/dn194088.aspx) 启用本地 MFA：`Set-MsolDomainFederationSettings -DomainName contoso.com -SupportsMFA $true `
+以下示例演示如何在 contoso.com 租户上使用 [Set-MsolDomainFederationSettings cmdlet](https://msdn.microsoft.com/library/azure/dn194088.aspx) 启用本地 MFA：`Set-MsolDomainFederationSettings -DomainName contoso.com -SupportsMFA $true `
 
 除了设置此标志之外，必须配置联合租户 AD FS 实例，以执行 Multi-Factor Authentication。请按照[在本地部署 Microsoft Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started-server.md) 中的说明执行操作。
 
 
 ## 另请参阅
-应用程序代理还有其他用途：
 
-- [使用应用程序代理发布应用程序](/documentation/articles/active-directory-application-proxy-publish)
-- [使用你自己的域名发布应用程序](/documentation/articles/active-directory-application-proxy-custom-domains)
-- [启用单一登录](/documentation/articles/active-directory-application-proxy-sso-using-kcd)
-- [使用声明感知应用程序](/documentation/articles/active-directory-application-proxy-claims-aware-apps)
-- [解决使用应用程序代理时遇到的问题](/documentation/articles/active-directory-application-proxy-troubleshoot)
+- [使用声明感知应用程序](active-directory-application-proxy-claims-aware-apps.md)
+- [使用应用程序代理发布应用程序](active-directory-application-proxy-publish.md)
+- [启用单一登录](active-directory-application-proxy-sso-using-kcd.md)
+- [使用你自己的域名发布应用程序](active-directory-application-proxy-custom-domains.md)
 
-## 了解有关应用程序代理的详细信息
-- [查看我们的联机帮助](/documentation/articles/active-directory-application-proxy-enable)
-- [参阅应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
-- [观看第 9 频道上的视频！](http://channel9.msdn.com/events/Ignite/2015/BRK3864)
+有关最新新闻和更新，请参阅[应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
 
-## 其他资源
-- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
-- [以组织身份注册 Azure](/documentation/articles/sign-up-organization)
-- [Azure 标识](/documentation/articles/fundamentals-identity)
-
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

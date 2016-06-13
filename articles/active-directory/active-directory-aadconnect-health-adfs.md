@@ -1,9 +1,9 @@
 
-<properties 
+<properties
 	pageTitle="在 AD FS 中使用 Azure AD Connect Health | Microsoft Azure"
-	description="本页与 Azure AD Connect Health 相关，介绍如何监视本地 AD FS 基础结构。" 
-	services="active-directory" 
-	documentationCenter="" 
+	description="本页与 Azure AD Connect Health 相关，介绍如何监视本地 AD FS 基础结构。"
+	services="active-directory"
+	documentationCenter=""
 	authors="karavar"
 	manager="stevenpo"
 	editor="karavar"/>
@@ -109,4 +109,4 @@ Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户�
 * [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
 * [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

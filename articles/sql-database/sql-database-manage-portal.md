@@ -64,7 +64,7 @@ Azure 门户提供了一系列的通用数据库操作，你可以在数据库�
 
 
 
-## 其他资源
+##其他资源
 * [SQL 数据库](/documentation/articles/sql-database-technical-overview)   
 * [使用动态管理视图监控 SQL 数据库][]   
 * [Transact-SQL 参考 (SQL 数据库)][]
@@ -80,4 +80,4 @@ Azure 门户提供了一系列的通用数据库操作，你可以在数据库�
   [AzureDb Auditing]: /documentation/articles/sql-database-auditing-get-started/
   [AzureDb datamasking]: /documentation/articles/sql-database-dynamic-data-masking-get-started/
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0606_2016-->

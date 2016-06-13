@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect：启用设备写回 | Microsoft Azure"
+	pageTitle="Azure AD Connect：启用设备写回 | Azure"
 	description="本文档详细说明如何使用 Azure AD Connect 启用设备写回功能"
 	services="active-directory"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"  
-	ms.date="02/16/2016"
+	ms.date="05/10/2016"
 	wacn.date=""/>
 
 # Azure AD Connect：启用设备写回
@@ -27,7 +27,7 @@
 <li>只能将一个设备注册配置对象添加到本地 Active Directory 林。此功能与本地 Active Directory 同步到多个 Azure AD 目录的拓扑不兼容。</li>
 
 ## 第 1 部分：安装 Azure AD Connect
-1. 使用自定义或快速设置安装 Azure AD Connect。建议在启用设备写回之前，首先让所有用户和组成功完成同步。
+1. 使用自定义或快速设置安装 Azure AD Connect。Microsoft 建议在启用设备写回之前，首先让所有用户和组成功完成同步。
 
 ## 第2 部分：准备 Active Directory
 使用以下步骤来准备使用设备写回。
@@ -65,12 +65,12 @@
 ## 第 3 部分：在 Azure AD Connect 中启用设备写回
 使用以下过程在 Azure AD Connect 中启用设备写回。
 
-1.	再次运行安装向导。从“其他任务”页中选择自定义同步选项，然后单击“下一步”。
-![自定义安装](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback2.png)
+1.	再次运行安装向导。从“其他任务”页中选择“自定义同步选项”，然后单击“下一步”。
+![自定义安装 - 自定义同步选项](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback2.png)
 2.	在“可选功能”页中，设备写回不再灰显。请注意，如果 Azure AD Connect 准备步骤未完成，“可选功能”页中的设备写回将会灰显。选中设备写回对应的框并单击“下一步”。如果该复选框仍已禁用，请参阅[疑难解答部分](#the-writeback-checkbox-is-still-disabled)。
-![设备写回](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback3.png)
+![自定义安装 - 设备写回可选功能](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback3.png)
 3.	在写回页中，你会看到提供的域是默认的设备写回林。
-![自定义安装](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
+![自定义安装 - 设备写回目标林](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
 4.	在向导中完成安装，不需要更改其他配置。如果需要，请参阅 [Azure AD Connect 的自定义安装](active-directory-aadconnect-get-started-custom.md)。
 
 ## 启用条件性访问
@@ -81,10 +81,9 @@
 
 1.	启动 Active Directory 管理中心。
 2.	在要联合的域中展开 RegisteredDevices。
-![自定义安装](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)
+![Active Directory 管理中心 - 已注册的设备](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)
 3.	其中将会列出当前已注册的设备。
-
-![自定义安装](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)
+![Active Directory 管理中心 - 已注册的设备列表](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)
 
 ## 故障排除
 
@@ -101,36 +100,36 @@
 	- 查找类型为 Active Directory 域服务的连接器并选择它。
 	- 在“操作”下面，选择“属性”。
 	- 转到“连接到 Active Directory 林”。检查此屏幕上指定的域和用户名是否与提供给脚本的帐户匹配。
-![连接器帐户](./media/active-directory-aadconnect-feature-device-writeback/connectoraccount.png)
+![同步服务管理器中的连接器帐户](./media/active-directory-aadconnect-feature-device-writeback/connectoraccount.png)
 
 在 Active Directory 中验证配置：
 - 检查设备注册服务是否位于配置命名上下文下面的以下位置：(CN=DeviceRegistrationService,CN=Device Registration Services,CN=Device Registration Configuration,CN=Services,CN=Configuration)。
 
-![Troubleshoot1](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot1.png)
+![故障排除，配置命名空间中的 DeviceRegistrationService](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot1.png)
 
 - 搜索配置命名空间以验证是否只有一个配置对象。如果存在多个对象，请删除重复项。
 
-![Troubleshoot2](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot2.png)
+![排除故障，搜索重复的对象](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot2.png)
 
 - 对于设备注册服务对象，请确保 msDS-DeviceLocation 属性存在且具有值。查找此位置，并确保它存在且 objectType 为 msDS-DeviceContainer。
 
-![Troubleshoot3](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot3.png)
+![故障排除，msDS-DeviceLocation](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot3.png)
 
-![Troubleshoot4](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot4.png)
+![故障排除，RegisteredDevices 对象类](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot4.png)
 
 - 验证 Active Directory 连接器使用的帐户是否具有上一步骤所找到的“注册的设备”容器的所需权限。这是此容器上所需的权限：
 
-![Troubleshoot5](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot5.png)
+![故障排除，验证对容器的权限](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot5.png)
 
 - 验证 Active Directory 帐户是否具有对 CN=Device Registration Configuration,CN=Services,CN=Configuration 对象的权限。
 
-![Troubleshoot6](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot6.png)
+![排除故障，验证对设备注册配置的权限](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot6.png)
 
 ## 其他信息
-- [使用条件性访问管理风险](active-directory-conditional-access.md)
+- [使用条件性访问管理风险](/documentation/articles/active-directory-conditional-access)
 - [使用 Azure Active Directory Device Registration 设置本地条件性访问](https://msdn.microsoft.com/library/azure/dn788908.aspx)
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0606_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Azure AD 应用程序代理发布应用 | Microsoft Azure"
+	pageTitle="使用 Azure AD 应用程序代理发布应用 | Azure"
 	description="介绍如何使用 Azure AD 应用程序代理发布本地应用程序。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="06/02/2015"
+	ms.date="04/12/2016"
 	wacn.date=""/>
 
 
@@ -110,4 +110,4 @@
 - [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
 - [关于 Kerberos 约束委派](http://technet.microsoft.com/library/cc995228.aspx)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

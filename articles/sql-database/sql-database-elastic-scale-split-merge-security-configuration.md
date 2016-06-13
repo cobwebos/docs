@@ -1,19 +1,20 @@
 <properties 
-    pageTitle="弹性缩放安全配置 | Microsoft Azure" 
+    pageTitle="弹性缩放安全配置 | Azure" 
     description="设置用于加密的 x409 证书" 
-    metaKeywords="Elastic Database certificates security" 
-    services="sql-database" documentationCenter="" 
+    metaKeywords="弹性数据库证书安全性" 
+    services="sql-database"
+    documentationCenter="" 
     manager="jhubbard" 
     authors="torsteng"/>
 
 <tags 
     ms.service="sql-database" 
-    ms.date="02/04/2016" 
+    ms.date="02/23/2016" 
     wacn.date="" />
 
 # 拆分合并安全配置  
 
-若要使用拆分/合并服务，必须正确配置安全性。该服务是 Microsoft Azure SQL 数据库弹性扩展功能的一部分。有关详细信息，请参阅[弹性缩放拆分和合并服务教程](/documentation/articles/sql-database-elastic-scale-configure-deploy-split-and-merge)。
+若要使用拆分/合并服务，必须正确配置安全性。该服务是 Azure SQL 数据库弹性缩放功能的一部分。有关详细信息，请参阅[弹性缩放拆分和合并服务教程](/documentation/articles/sql-database-elastic-scale-configure-deploy-split-and-merge)。
 
 ## 配置证书
 
@@ -130,7 +131,8 @@
 
 在服务配置文件的 <AccessControl name=""> 节中配置访问控制组中的规则。
 
-在网络访问控制列表文档中对格式进行了说明。例如，若要仅允许范围 100.100.0.0 到 100.100.255.255 中的 IP 访问 HTTPS 终结点，规则将如下所示：
+在网络访问控制列表文档中对格式进行了说明。
+例如，若要仅允许范围 100.100.0.0 到 100.100.255.255 中的 IP 访问 HTTPS 终结点，规则将如下所示：
 
     <AccessControl name="Retricted">
       <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
@@ -202,7 +204,9 @@
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
 
-输入密码，然后使用以下选项导出证书：* 是，导出私钥。* 导出所有扩展属性
+输入密码，然后使用以下选项导出证书：
+* 是，导出私钥
+* 导出所有扩展属性
 
 ## 从证书存储中导出 SSL 证书
 
@@ -210,7 +214,8 @@
 * 依次单击“操作”->“所有任务”->“导出...”
 * 使用以下选项将证书导出到 .PFX 文件中：
     * 是，导出私钥
-    * 包括证书路径中的所有证书（如果可能）*导出所有扩展属性
+    * 包括证书路径中的所有证书（如果可能）
+    * 导出所有扩展属性
 
 ## 将 SSL 证书上载到云服务
 
@@ -234,7 +239,7 @@
 
 ## 禁用基于客户端证书的身份验证
 
-仅支持基于客户端证书的身份验证，禁用它即可公开访问服务终结点，除非使用了其他机制（例如 Microsoft Azure 虚拟网络）。
+仅支持基于客户端证书的身份验证，禁用它即可公开访问服务终结点，除非使用了其他机制（例如 Azure 虚拟网络）。
 
 在服务配置文件中，将这些设置更改为 false 以关闭该功能：
 
@@ -350,9 +355,9 @@
 * 在打开的“证书”对话框中，选择“详细信息”选项卡
 * 确保“显示”可显示全部内容
 * 选择列表中名为“Thumbprint”的字段
-* 复制指纹值
-** 删除第一个数字前面的不可见 Unicode 字符
-** 删除所有空格
+* 复制指纹的值
+* 删除第一个数字前不可见的 Unicode 字符
+* 删除所有空格
 
 ## 在服务配置文件中配置允许的客户端
 
@@ -376,7 +381,10 @@
 
     MyID.pvk and MyID.cer with the filename for the encryption certificate
 
-输入密码，然后使用以下选项导出证书：* 是，导出私钥 * 导出所有扩展属性 * 将证书上载到云服务时，你将需要密码。
+输入密码，然后使用以下选项导出证书：
+*    是，导出私钥
+*    导出所有扩展属性
+*    将证书上载到云服务时，你将需要密码。
 
 ## 从证书存储中导出加密证书
 
@@ -471,12 +479,11 @@
 
 ## 其他安全注意事项
  
-使用 HTTPS 终结点时，本文档中介绍的 SSL 设置将对服务及其客户端之间的通信进行加密。这一点很重要，因为该通信中包含了数据库访问凭据以及其他可能的敏感信息。但是，请注意，该服务会将内部状态（包括凭据）保存在其内部表中，该表位于你在 Microsoft Azure 订阅中为元数据存储提供的 Microsoft Azure SQL 数据库中。在服务配置文件（.CSCFG 文件）中，该数据库已定义为以下设置的一部分：
+使用 HTTPS 终结点时，本文档中介绍的 SSL 设置将对服务及其客户端之间的通信进行加密。这一点很重要，因为该通信中包含了数据库访问凭据以及其他可能的敏感信息。但是，请注意，该服务会将内部状态（包括凭据）保存在其内部表中，该表位于你在 Azure 订阅中为元数据存储提供的 Azure SQL 数据库中。在服务配置文件（.CSCFG 文件）中，该数据库已定义为以下设置的一部分：
 
     <Setting name="ElasticScaleMetadata" value="Server=…" />
 
 对此数据库中存储的凭据进行加密。但是，最佳做法是，确保服务部署的 Web 角色和辅助角色保持最新且是安全的，因为它们都有权访问元数据数据库和用于加密和解密存储凭据的证书。
 
 [AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
-
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0606_2016-->

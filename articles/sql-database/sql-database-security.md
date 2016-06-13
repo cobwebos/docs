@@ -102,4 +102,4 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 
 除了上述可帮助应用程序符合各项安全法规要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。有关详细信息，请参阅 [Microsoft Azure 信任中心](/support/trust-center)，你可以在其中找到 [SQL 数据库法规认证](/support/trust-center/compliance)的最新列表。
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0606_2016-->

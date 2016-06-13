@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="开始使用队列存储和 Visual Studio 连接服务（WebJob 项目）| Microsoft Azure"
+	pageTitle="队列存储和 Visual Studio 连接服务（Web 作业项目）入门 | Azure"
 	description="在使用 Visual Studio 连接服务连接到存储帐户后，如何开始使用 WebJob 项目中的 Azure 队列存储"
 	services="storage"
 	documentationCenter=""
@@ -7,9 +7,9 @@
 	manager="douge"
 	editor=""/>
 
-<tags 
+<tags
 	ms.service="storage"
-	ms.date="02/21/2016"
+	ms.date="05/08/2016"
 	wacn.date=""/>
 
 # 开始使用 Azure 队列存储和 Visual Studio 连接服务（WebJob 项目）
@@ -330,7 +330,7 @@ SDK 使用 [Newtonsoft.Json NuGet 包](http://www.nuget.org/packages/Newtonsoft.
 
 SDK 在处理一个队列消息时最多会调用某个函数 5 次。如果第五次尝试失败，消息将移到有害队列。有关如何配置最大重试次数的信息，请参阅[如何设置配置选项](#how-to-set-configuration-options)。
 
-病毒队列的名称为{originalqueuename}-poison。你可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
+病毒队列的名称为 *{originalqueuename}*-poison。你可以编写一个函数来处理有害队列中的消息，并记录这些消息，或者发送需要注意的通知。
 
 在下面的示例中，如果队列消息包含不存在的 blob 名称，则 **CopyBlob** 函数会失败。在这种情况，消息将从 copyBlobqueue 队列移到 copyBlobqueue-poison 队列。然后 **ProcessPoisonMessage** 会记录有害消息。
 
@@ -521,13 +521,16 @@ SDK 在处理一个队列消息时最多会调用某个函数 5 次。如果第�
 
 ![单击“切换输出”](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-在连续的 WebJob 中，应用程序日志在 Web 应用文件系统的 /data/jobs/continuous/{webjobname}/job\_log.txt 中显示。
+在连续的 WebJob 中，应用程序日志在 Web 应用文件系统的 /data/jobs/continuous/*{webjobname}*/job\_log.txt 中显示。
 
 		[09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
 		[09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
 		[09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-在 Azure blob 中，应用程序日志如下所示：2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world!, 2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error - Hello world!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
+在 Azure blob 中，应用程序日志如下所示：
+		2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world!,
+		2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error - Hello world!,
+		2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
 
 在 Azure 表中，**Console.Out** 和 **Console.Error** 日志如下所示：
 
@@ -539,4 +542,4 @@ SDK 在处理一个队列消息时最多会调用某个函数 5 次。如果第�
 
 本文章提供了代码示例，演示如何处理用于操作 Azure 队列的常见方案。有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 文档资源](/documentation/articles/websites-webjobs-resources)。
  
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0606_2016-->

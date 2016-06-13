@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect：从 Microsoft Azure AD 同步工具 (DirSync) 升级 | Microsoft Azure"
+   pageTitle="Azure AD Connect：从 Microsoft Azure AD 同步工具 (DirSync) 升级 | Azure"
    description="了解如何从 DirSync 升级到 Azure AD Connect。本文介绍将当前 Microsoft Azure AD 同步工具 (DirSync) 升级到 Azure AD Connect 的步骤。"
    services="active-directory"
    documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags 
    ms.service="active-directory" 
-   ms.date="03/16/2016"
+   ms.date="04/25/2016"
    wacn.date=""/>
 
 # Azure AD Connect：升级 Microsoft Azure Active Directory 同步 (DirSync)
@@ -89,13 +89,14 @@
 3. 单击“下一步”开始分析现有的 DirSync 安装。
 ![分析现有的目录同步安装](./media/active-directory-aadconnect-dirsync-upgrade-get-started/Analyze.png)
 4. 分析完成时，我们将提出如何继续的建议。  
-    - 如果使用 SQL Server Express 并且对象数少于 50,000 个，则会显示以下屏幕：
+    - 如果使用 SQL Server Express 并且对象数少于 50,000 个，则会显示以下屏幕：  
 ![分析完成，已准备好从 DirSync 升级](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReady.png)
     - 如果为 DirSync 使用了完整的 SQL Server，将看到此页面：
-![分析完成，已准备好从 DirSync 升级](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)<BR/>系统会显示有关 DirSync 使用的现有 SQL Server 数据库服务器的信息。如果需要，请做相应的调整。单击“下一步”继续安装。
+![分析完成，已准备好从 DirSync 升级](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)<BR/>
+系统会显示有关 DirSync 使用的现有 SQL Server 数据库服务器的信息。如果需要，请做相应的调整。单击“下一步”继续安装。
     - 如果对象数超过 50,000 个，你将看到此屏幕：
 ![分析完成，已准备好从 DirSync 升级](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)<BR/>
-若要继续进行就地升级，请单击消息旁的复选框：“继续在此计算机上升级 DirSync”。
+若要继续进行就地升级，请单击消息旁的复选框：“继续在此计算机上升级 DirSync”。 
 若要改为执行[并行部署](#parallel-deployment)，请导出 DirSync 配置设置并将其转移到新服务器。
 5. 提供当前用于连接 Azure AD 的帐户的密码。这必须是 DirSync 当前使用的帐户。
 ![输入你的 Azure AD 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToAzureAD.png)  
@@ -103,7 +104,7 @@
 6. 提供 Active Directory 的企业管理员帐户。
 ![输入你的 ADDS 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToADDS.png)
 7. 你现在可以开始配置。单击“升级”后，将会卸载 DirSync 并配置 Azure AD Connect，然后开始同步。
- ![已准备好配置](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ReadyToConfigure.png)
+![已准备好配置](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ReadyToConfigure.png)
 8. 安装完成后，请注销并再次登录到 Windows，然后即可使用同步服务管理器或同步规则编辑器，或者尝试进行其他任何配置更改。
 
 ## 并行部署
@@ -211,4 +212,4 @@ Azure AD Connect 现为你的活动服务器。
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

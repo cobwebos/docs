@@ -1,5 +1,5 @@
 <properties
-   pageTitle="了解 Azure Active Directory 应用程序清单 | Microsoft Azure"
+   pageTitle="了解 Azure Active Directory 应用程序清单 | Azure"
    description="详细介绍如何使用 Azure Active Directory 应用程序清单，该清单表示 Azure AD 租户中的应用程序标识配置，并方便实现 OAuth 授权、许可体验和其他功能。"
    services="active-directory"
    documentationCenter=""
@@ -142,4 +142,4 @@
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0606_2016-->

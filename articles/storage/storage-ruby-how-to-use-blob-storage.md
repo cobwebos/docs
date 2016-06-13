@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="如何通过 Ruby 使用 Blob 存储 | Azure" 
-	description="了解如何使用 Blob 存储上载、下载、列出和删除 Blob 内容。用 Ruby 编写的相关示例。"
+	description="使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
 	services="storage" 
 	documentationCenter="ruby" 
 	authors="tfitzmac" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="04/08/2016"
+    ms.date="04/29/2016"
 	wacn.date=""/>
 
 
@@ -118,7 +118,7 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 ## 列出容器中的 Blob
 
 若要列出容器，请使用 **list\_containers()** 方法。
-若要列出容器中的 Blob，请使用 **list\_blobs()** 方法。 
+若要列出容器中的 Blob，请使用 **list\_blobs()** 方法。
 
 这将输出帐户的所有容器中的所有 Blog 的 URL。
 
@@ -152,5 +152,4 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 - GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 - [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
 
-
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0606_2016-->

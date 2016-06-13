@@ -1,5 +1,5 @@
 <properties
-	pageTitle="从 DirSync 和 Azure AD Sync 升级 | Microsoft Azure"
+	pageTitle="从 DirSync 和 Azure AD Sync 升级 | Azure"
 	description="介绍如何从 DirSync 和 Azure AD Sync 升级到 Azure AD Connect。"
 	services="active-directory"
 	documentationCenter=""
@@ -10,7 +10,7 @@
 <tags
 	ms.service="active-directory"
 
-	ms.date="04/14/2016"
+	ms.date="05/11/2016"
 	wacn.date=""/>
 
 
@@ -22,7 +22,7 @@ Azure AD Connect 是连接本地目录与 Azure AD 和 Office 365 的最佳方�
 最新版 DirSync 已在 2014 年 7 月发布，最新版 Azure AD Sync 已在 2015 年 5 月发布。
 
 ## 什么是 Azure AD Connect
-Azure AD Connect 是 DirSync 和 Azure AD Sync 的后继产品。它结合了两者支持的所有方案。可以在 [Integrating your on-premises identities with Azure Active Directory（将本地标识与 Azure Active Directory 集成）](active-directory-aadconnect.md)中了解详细信息。
+Azure AD Connect 是 DirSync 和 Azure AD Sync 的后继产品。它结合了两者支持的所有方案。可以在 [Integrating your on-premises identities with Azure Active Directory（将本地标识与 Azure Active Directory 集成）](/documentation/articles/active-directory-aadconnect)中了解详细信息。
 
 ## 弃用计划
 
@@ -38,17 +38,12 @@ Azure AD Connect 是 DirSync 和 Azure AD Sync 的后继产品。它结合了两
 
 | 解决方案 | 方案 |
 | ----- | ----- |
-| [从 DirSync 升级](active-directory-aadconnect-dirsync-upgrade-get-started.md) | <li>如果你有已在运行的现有 DirSync 服务器。</li>
-| [从 Azure AD Sync 升级](active-directory-aadconnect-upgrade-previous-version.md)| <li>如果要从 Azure AD Sync 迁移。</li>
+| [从 DirSync 升级](/documentation/articles/active-directory-aadconnect-dirsync-upgrade-get-started) | <li>如果你有已在运行的现有 DirSync 服务器。</li>
+| [从 Azure AD Sync 升级](/documentation/articles/active-directory-aadconnect-upgrade-previous-version)| <li>如果要从 Azure AD Sync 迁移。</li>
 
 如果你想要了解如何从 DirSync Azure AD Connect 执行就地升级，请参阅第 9 频道视频：
 
-<!-- The next section is actually supposed to look like this, but video ids are not working at present.
-> [AZURE.VIDEO azure-active-directory-connect-in-place-upgrade-from-legacy-tools]
--->
 
-[Azure Active Directory Connect: in-place upgrade from legacy tools（Azure Active Directory Connect：从旧版工具就地升级）](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-Active-Directory-Connect-in-place-upgrade-from-legacy-tools)  
-![就地升级](./media/active-directory-aadconnect-dirsync-deprecated/inplaceupgrade.png)
 
 ## 常见问题
 **问：我收到了 Azure 团队发来的电子邮件通知和/或 Office 365 消息中心发来的消息，但我使用的是 Connect。**  
@@ -57,11 +52,14 @@ Azure AD Connect 是 DirSync 和 Azure AD Sync 的后继产品。它结合了两
 **问：DirSync/Azure AD Sync 将在 2017 年 4 月 13 日停用吗？**  
 不是。我们将在日后宣布这些工具不再能够与 Azure AD 通信的日期。你可以在本主题中找到相关信息（如果有）。
 
+**问：可从哪些 DirSync 版本升级？**  
+支持从当前所用的任何 DirSync 版本升级。
+
 **问：用于 FIM/MIM 的 Azure AD 连接器的情况怎样？**  
 用于 FIM/MIM 的 Azure AD 连接器**尚未**宣布弃用。它目前处于**功能冻结**状态；其中不会添加任何功能，也不会接受任何 bug 修复。Microsoft 建议其用户计划好迁移到 Azure AD Connect。我们强烈建议不要使用它来启动任何新部署。今后我们将宣布弃用此连接器。
 
 ## 其他资源
 
-* [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
+* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0606_2016-->

@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="01/09/2016"
+	ms.date="05/04/2016"
 	wacn.date=""/>
 
 # 使用 Azure 移动服务 .NET 后端创建排行榜应用程序
@@ -17,7 +17,7 @@
 
 &nbsp;
 
-本教程将说明如何使用具有 .NET 后端的 Azure 移动服务生成 Windows 应用商店应用程序。Azure 移动服务提供可缩放且安全的后端，具有内置身份验证、监视、推送通知和其他功能，以及用来生成移动应用程序的跨平台客户端库。移动服务的 .NET 后端基于 [ASP.NET Web API](http://asp.net/web-api)，可为 .NET 开发人员提供创建 REST API 的绝佳途径。   
+本教程将说明如何使用具有 .NET 后端的 Azure 移动服务生成 Windows 应用商店应用程序。Azure 移动服务提供可缩放且安全的后端，具有内置身份验证、监视、推送通知和其他功能，以及用来生成移动应用程序的跨平台客户端库。移动服务的 .NET 后端基于 [ASP.NET Web API](http://asp.net/web-api)，可为 .NET 开发人员提供创建 REST API 的绝佳途径。
 
 ## 概述
 
@@ -41,7 +41,7 @@ Web API 是一个开源框架，可为 .NET 开发人员提供创建 REST API �
 
 ## 关于示例应用程序
 
-*排行榜* 显示游戏的玩家列表，以及每个玩家的分数和排名。排行榜可作为较大游戏的一部分，或作为单独的应用程序。排行榜是实际的应用程序，但简单易懂且可用于教程。下面是该应用程序的屏幕截图：
+排行榜显示游戏的玩家列表，以及每个玩家的分数和排名。排行榜可作为较大游戏的一部分，或作为单独的应用程序。排行榜是实际的应用程序，但简单易懂且可用于教程。下面是该应用程序的屏幕截图：
 
 ![][1]
 
@@ -114,7 +114,7 @@ PlayerRank 具有 Player 的外键。每个玩家各有零个或一个 PlayerRan
 
 ## 添加 Web API 控制器
 
-接下来，你要为 `Player` 和 `PlayerRank` 添加 Web API 控制器。要添加的并不是普通 Web API 控制器，而是专门针对 Azure 移动服务设计的名为 *表控制器* 的特殊控制器。
+接下来，你要为 `Player` 和 `PlayerRank` 添加 Web API 控制器。要添加的并不是普通 Web API 控制器，而是专门针对 Azure 移动服务设计的名为*表控制器*的特殊控制器。
 
 右键单击 Controllers 文件夹，选择“添加”，然后选择“新建基架项”。
 
@@ -169,7 +169,7 @@ PlayerRank 具有 Player 的外键。每个玩家各有零个或一个 PlayerRan
 	
 	[{"id":"1","rank":1,"score":150},{"id":"2","rank":3,"score":100},{"id":"3","rank":1,"score":150}]
 
-请注意，`Player` 并未包含在对象图形中。若要包含玩家，可以通过定义 *数据传输对象 (DTO)* 将对象图形平面化。
+请注意，`Player` 并未包含在对象图形中。若要包含玩家，可以通过定义*数据传输对象 (DTO)* 将对象图形平面化。
 
 DTO 是定义如何通过网络发送数据的对象。如果你希望有线格式看起来与数据库模型不同，即可使用 DTO。若要为 `PlayerRank` 创建 DTO，请在 DataObjects 文件夹中添加名为 `PlayerRankDto` 的新类。
 
@@ -263,8 +263,8 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 
 从 `PlayerRankController` 中删除以下方法：
 
-- `PatchPlayerRank` 
-- `PostPlayerRank` 
+- `PatchPlayerRank`
+- `PostPlayerRank`
 - `DeletePlayerRank`
 
 然后，将以下代码添加到 `PlayerRankController`：
@@ -327,7 +327,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 将新的 Windows 应用商店应用程序项目添加到解决方案。我使用了空白应用程序 (Windows) 模板。
 
 ![][10]
- 
+
 使用 NuGet Package Manager 添加移动服务客户端库。在 Visual Studio 中，从“工具”菜单中选择“NuGet Package Manager”。然后选择“Package Manager Console”。在“Package Manager Console”窗口中键入以下命令。
 
 	Install-Package WindowsAzure.MobileServices -Project LeaderboardApp
@@ -345,7 +345,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 	        public string Id { get; set; }
 	        public string Name { get; set; }
 	    }
-	
+
 	    public class PlayerRank
 	    {
 	        public string Id { get; set; }
@@ -353,7 +353,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 	        public int Score { get; set; }
 	        public int Rank { get; set; }
 	    }
-	
+
 	    public class PlayerScore
 	    {
 	        public string PlayerId { get; set; }
@@ -362,13 +362,13 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 	}
 
 这些类直接对应于移动服务中的数据实体。
- 
+
 ## 创建视图模型
 
 模型-视图-视图模型 (MVVM) 是模型-视图-控制器 (MVC) 的变体。MVVM 模式有助于将应用程序逻辑与表示形式区分开来。
 
 - 模型表示域数据（玩家、玩家排名和玩家分数）。
-- 视图模型是视图的抽象表示形式。 
+- 视图模型是视图的抽象表示形式。
 - 视图显示视图模型，并向视图模型发送用户输入。对于 Windows 应用商店应用程序，视图在 XAML 中定义。
 
 ![][11]
@@ -540,8 +540,8 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
             {
                 PlayerId = player.Id,
                 Score = score
-            }; 
-            
+            };
+
             try
             {
                 await _client.InvokeApiAsync<PlayerScore, object>("score", playerScore);
@@ -588,7 +588,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 
 ## 添加 MobileServiceClient 实例
 
-打开 *App.xaml.cs* 文件并将 **MobileServiceClient** 实例添加到 `App` 类。
+打开 App.xaml.cs 文件并将 **MobileServiceClient** 实例添加到 `App` 类。
 
 	// New code:
 	using Microsoft.WindowsAzure.MobileServices;
@@ -607,7 +607,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 	    }
 	}
 
-当你在本地调试时，移动服务将在 IIS Express 上运行。Visual Studio 将分配一个随机端口号，因此本地 URL 为 http://localhost: *port* ，其中 *port* 为端口号。若要获取端口号，请按 F5 在 Visual Studio 中启动服务，以进行调试。Visual Studio 将启动浏览器，并导航到服务 URL。你也可以在项目属性中的 **Web** 下查找本地 URL。
+当你在本地调试时，移动服务将在 IIS Express 上运行。Visual Studio 将分配一个随机端口号，因此本地 URL 为 http://localhost:*port*，其中 *port* 为端口号。若要获取端口号，请按 F5 在 Visual Studio 中启动服务，以进行调试。Visual Studio 将启动浏览器，并导航到服务 URL。你也可以在项目属性中的 **Web** 下查找本地 URL。
 
 ## 创建主页面
 
@@ -760,4 +760,4 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 [添加推送通知]: /documentation/articles/notification-hubs-windows-store-dotnet-get-started
 [身份验证入门]: /documentation/articles/mobile-services-windows-store-dotnet-get-started-users
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0606_2016-->

@@ -58,7 +58,7 @@ Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序提供关�
 
 你可以从 Azure 启用连接：
 
-- 在“经典门户”中，从服务器上的“配置”选项卡，在“允许的服务”部分下，单击“Microsoft Azure 服务”对应的“是”[](https://manage.windowsazure.cn)。
+- 在“[经典门户](https://manage.windowsazure.cn)”中，从服务器上的“配置”选项卡，在“允许的服务”部分下，单击“Microsoft Azure 服务”对应的“是”。
 
 ## 创建第一个服务器级防火墙规则
 
@@ -132,4 +132,4 @@ Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序提供关�
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0606_2016-->

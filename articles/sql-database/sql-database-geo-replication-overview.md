@@ -62,4 +62,4 @@
 ## 后续步骤
 有关 SQL 数据库的其他业务连续性功能的信息，请参阅[业务连续性概述](/documentation/articles/sql-database-business-continuity)。
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0606_2016-->

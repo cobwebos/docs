@@ -1,5 +1,5 @@
 <properties
-	pageTitle="身份验证入门 (Android) | Microsoft Azure"
+	pageTitle="身份验证入门 (Android) | Azure"
 	description="了解如何使用移动服务通过提供各种标识提供程序（包括 Google、Facebook、Twitter 和 Microsoft）对 Windows 应用商店应用程序的用户进行身份验证。"
 	services="mobile-services"
 	documentationCenter="android"
@@ -79,9 +79,9 @@
 [移动服务入门]: /documentation/articles/mobile-services-dotnet-backend-android-get-started
 [Get started with authentication]: /documentation/articles/mobile-services-dotnet-backend-android-get-started-users
 [Get started with push notifications]: /documentation/articles/mobile-services-dotnet-backend-android-get-started-push
-[Authorize users with scripts]: /documentation/articles/mobile-services-dotnet-backend-android-authorize-users-in-scripts
+[Authorize users with scripts]: /documentation/articles/mobile-services-dotnet-backend-service-side-authorization
 
 [Mobile Services .NET How-to Conceptual Reference]: /documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library
 [Register your Windows Store app package for Microsoft authentication]: /documentation/articles/mobile-services-how-to-register-store-app-package-microsoft-authentication
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0606_2016-->

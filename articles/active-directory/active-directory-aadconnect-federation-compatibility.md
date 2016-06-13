@@ -9,7 +9,8 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="04/13/2016"
+
+	ms.date="05/12/2016"
 	wacn.date=""/>
 
 # Azure AD 联合身份验证兼容性列表
@@ -211,11 +212,11 @@ NetIQ Access Manager 4.0.1 实施广泛使用的 WS 联合/WS 信任标识标准
 
 | 客户端 |支持 |异常|
 | --------- | --------- |--------- |
-| 基于 Web 的客户端（如 Exchange Web Access 和 SharePoint Online） | 支持 |*支持 Kerberos 约定|
-| 富客户端应用程序（如 Lync、Office Subscription、CRM）| 支持 |不支持 Windows 集成身份验证|
+| 基于 Web 的客户端（如 Exchange Web Access 和 SharePoint Online） | 支持 |**支持 Kerberos 约定|
+| 富客户端应用程序（如 Lync、Office Subscription、CRM）| 支持 |不支持 Windows 集成身份验证| 
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync）| 支持 |无|
 
-*NetIQ 支持通过配置 Kerberos 约定实现 Kerberos 身份验证。如需此配置的帮助，请联系 NetIQ 或查看设置指南。有关 NetIQ Access Manager 的详细信息，请参阅 [NetIQ Access Manager](https://www.netiq.com/documentation/netiqaccessmanager4/identityserverhelp/data/b12iqp0m.html)。
+**NetIQ 支持通过配置 Kerberos 约定实现 Kerberos 身份验证。如需此配置的帮助，请联系 NetIQ 或查看设置指南。有关 NetIQ Access Manager 的详细信息，请参阅 [NetIQ Access Manager](https://www.netiq.com/documentation/netiqaccessmanager4/identityserverhelp/data/b12iqp0m.html)。
 
 ## BIG-IP with Access Policy Manager BIG-IP ver.11.3x – 11.6x 
 BIG-IP with Access Policy Manager (APM) BIG-IP ver.11.3x – 11.6x 实施广泛使用的 SAML 标识标准以提供单一登录体验和属性交换框架。
@@ -314,6 +315,6 @@ AuthAnvil Single Sign On 4.5 实施广泛使用的 WS 联合标识标准以提�
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） | 支持 |无|
 
 
-有关详细信息，请参阅 [AuthAnvil Single Sign On（AuthAnvil 单一登录）](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)。
+有关详细信息，请参阅 [AuthAnvil Single Sign On](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)（AuthAnvil 单一登录）。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

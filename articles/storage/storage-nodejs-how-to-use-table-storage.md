@@ -1,6 +1,6 @@
 <properties
 	pageTitle="如何通过 Node.js 使用 Azure 表存储 | Azure"
-	description="了解如何使用 Azure 表存储。代码示例使用 Node.js API 编写。"
+	description="使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。"
 	services="storage"
 	documentationCenter="nodejs"
 	authors="rmcmurray"
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="04/08/2016"
+	ms.date="04/29/2016"
 	wacn.date=""/>
 
 
@@ -276,8 +276,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 ### 查询一部分实体属性
 
-对表的查询可以只检索实体中的少数几个字段。
-这可以减少带宽并提高查询性能，尤其适用于大型实体。使用 **select** 子句并传递要返回的字段的名称。例如，下面的查询将只返回 **description** 和 **dueDate** 字段。
+对表的查询可以只检索实体中的少数几个字段。这可以减少带宽并提高查询性能，尤其适用于大型实体。使用 **select** 子句并传递要返回的字段的名称。例如，下面的查询将只返回 **description** 和 **dueDate** 字段。
 
 	var query = new azure.TableQuery()
 	  .select(['description', 'dueDate'])
@@ -439,4 +438,4 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
   [使用 Azure 表服务的 Node.js Web 应用]: /documentation/articles/storage-nodejs-use-table-storage-web-site
   [Create and deploy a Node.js application to an Azure website]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0606_2016-->

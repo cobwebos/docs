@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="使用组来管理对 SaaS 应用程序的访问 | Microsoft Azure"
+	pageTitle="使用组来管理对 SaaS 应用程序的访问 | Azure"
 	description="如何在 Azure Active Directory Premium 或 Basic 中使用组来分配与 Azure Active Directory 集成的 SaaS 应用程序的访问权限。"
 	services="active-directory"
 	documentationCenter=""
@@ -49,4 +49,4 @@
 * [什么是 Azure Active Directory？](/documentation/articles/active-directory-whatis)
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

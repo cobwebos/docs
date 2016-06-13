@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="02/18/2016" 
+	ms.date="05/12/2016" 
 	wacn.date=""/>
 
 # Azure AD Connect Health：版本发布历史记录
@@ -82,4 +82,4 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 ## 后续步骤
 详细了解如何[在云中监视本地标识基础结构和同步服务](/documentation/articles/active-directory-aadconnect-health)。
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0606_2016-->

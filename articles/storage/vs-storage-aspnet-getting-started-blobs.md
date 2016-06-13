@@ -1,5 +1,5 @@
 <properties
-	pageTitle="开始使用 blob 存储和 Visual Studio 连接服务 (ASP.NET) | Microsoft Azure"
+	pageTitle="Blob 存储和 Visual Studio 连接服务入门 (ASP.NET) | Azure"
 	description="在使用 Visual Studio 连接服务连接到存储帐户后，如何开始在 Visual Studio 的 ASP.NET 项目中使用 Azure Blob 存储"
 	services="storage"
 	documentationCenter=""
@@ -7,9 +7,9 @@
 	manager="douge"
 	editor=""/>
 
-<tags 
+<tags
 	ms.service="storage"
-	ms.date="02/21/2016"
+	ms.date="05/08/2016"
 	wacn.date=""/>
 
 # 开始使用 blob 存储和 Visual Studio 连接服务 (ASP.NET)
@@ -224,4 +224,4 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 [AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0606_2016-->

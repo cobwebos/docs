@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect 同步：同步到 Azure Active Directory 的属性 | Microsoft Azure"
+	pageTitle="Azure AD Connect 同步：与 Azure Active Directory 同步的属性 | Azure"
 	description="列出同步到 Azure Active Directory 的属性。"
 	services="active-directory"
 	documentationCenter=""
@@ -461,8 +461,8 @@
 - 在上述列表中，对象类型 **User** 也适用于对象类型 **iNetOrgPerson**。
 
 ## 后续步骤
-了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。
+了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

@@ -138,4 +138,4 @@ Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连�
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0606_2016-->

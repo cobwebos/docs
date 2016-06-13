@@ -1,9 +1,9 @@
 <properties
-	pageTitle="为自助式应用程序访问管理设置 Azure Active Directory | Microsoft Azure"
+	pageTitle="为自助服务应用程序访问管理设置 Azure Active Directory | Azure"
 	description="用户通过自助组管理可以在 Azure Active Directory 中创建和管理安全组或 Office 365 组，还可以请求安全组或 Office 365 组成员身份。"
 	services="active-directory"
 	documentationCenter=""
-  	authors="curtand"
+	authors="curtand"
 	manager="stevenpo"
 	editor=""
 	/>
@@ -46,4 +46,4 @@
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

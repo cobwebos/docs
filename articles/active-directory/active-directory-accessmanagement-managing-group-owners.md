@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="使用组进行访问管理的后续步骤 | Microsoft Azure"
+	pageTitle="使用组进行访问管理的后续步骤 | Azure"
 	description="有关如何管理安全组，以及如何使用这些组来管理对资源的访问的高级操作指南。"
 	services="active-directory"
 	documentationCenter=""
@@ -48,4 +48,4 @@
 * [什么是 Azure Active Directory？](/documentation/articles/active-directory-whatis)
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

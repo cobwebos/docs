@@ -19,7 +19,7 @@
 **单一数据库**
 
 > [AZURE.SELECTOR]
-- [Azure Portal](/documentation/articles/sql-database-import)
+- [Azure 门户](/documentation/articles/sql-database-import)
 - [PowerShell](/documentation/articles/sql-database-import-powershell)
 - [SSMS](/documentation/articles/sql-database-cloud-migrate-compatible-import-bacpac-ssms)
 - [SqlPackage](/documentation/articles/sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage)
@@ -36,9 +36,9 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。数据库是使用�
 
 - Azure 订阅。 
 - Azure SQL 数据库 V12 服务器。如果你没有 V12 服务器，可以遵循本文中的以下步骤创建一个：[创建你的第一个 Azure SQL 数据库](/documentation/articles/sql-database-get-started)。
-- 要导入的数据库的 .bacpac 文件位于 [Azure 存储帐户（标准）](/documentation/articles/storage-create-storage-account)blob 容器中。
+- 要导入的数据库的 .bacpac 文件位于 [Azure 存储帐户（标准）](/documentation/articles/storage-create-storage-account)Blob 容器中。
 
-重要说明：从 Azure Blob 存储导入 BACPAC 时，请使用标准存储。不支持从高级存储导入 BACPAC。
+**重要说明**：从 Azure Blob 存储导入 BACPAC 时，请使用标准存储。不支持从高级存储导入 BACPAC。
 
 
 ## 选择将包含数据库的服务器
@@ -89,4 +89,4 @@ BACPAC 是包含数据库架构和数据的 .bacpac 文件。数据库是使用�
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

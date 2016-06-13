@@ -32,7 +32,7 @@
 
 若要配置异地复制，需要提供以下各项：
 
-- Azure 订阅。如果你需要 Azure 订阅，只需单击本页顶部的“免费帐户”，然后再回来完成本文的相关操作即可。
+- Azure 订阅。如果你需要 Azure 订阅，只需单击本页顶部的“试用”，然后再回来完成本文的相关操作即可。
 - 一个 Azure SQL 数据库 - 你要复制到不同地理区域的主数据库。
 - Azure PowerShell 1.0 或更高版本。根据遵循[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure) 来下载并安装 Azure PowerShell 模块。
 
@@ -70,7 +70,8 @@
 
 此 cmdlet 将 **Start-AzureSqlDatabaseCopy** 替换为 **-IsContinuous** 参数。它将输出可供其他 cmdlet 用于明确识别特定复制链接的 **AzureRmSqlDatabaseSecondary** 对象。创建辅助数据库并完全设定种子后，此 cmdlet 将返回。根据数据库的大小，这可能需要花费数分钟到数小时的时间。
 
-辅助服务器上的复制数据库具备与主要服务器上的数据库相同的名称，并且默认具有相同的服务级别。辅助数据库可以是可读或不可读，并且可以是单一数据库或弹性数据库。有关详细信息，请参阅 [New-AzureRMSqlDatabaseSecondary](https://msdn.microsoft.com/zh-cn/library/mt603689.aspx) 和[服务层](/documentation/articles/sql-database-service-tiers)。创建辅助数据库并设定种子之后，开始将数据从主数据库复制到新的辅助数据库。以下步骤说明如何使用 PowerShell 完成这项任务，以使用单一数据库或弹性数据库来创建不可读和可读的辅助数据库。
+辅助服务器上的复制数据库具备与主要服务器上的数据库相同的名称，并且默认具有相同的服务级别。辅助数据库可以是可读或不可读，并且可以是单一数据库或弹性数据库。有关详细信息，请参阅 [New-AzureRMSqlDatabaseSecondary](https://msdn.microsoft.com/zh-cn/library/mt603689.aspx) 和[服务层](/documentation/articles/sql-database-service-tiers)。
+创建辅助数据库并设定种子之后，开始将数据从主数据库复制到新的辅助数据库。以下步骤说明如何使用 PowerShell 完成这项任务，以使用单一数据库或弹性数据库来创建不可读和可读的辅助数据库。
 
 如果伙伴数据库已存在（例如，由于终止前面的异地复制关系），命令将会失败。
 
@@ -211,4 +212,4 @@
 - [业务连续性概述](/documentation/articles/sql-database-business-continuity)
 - [SQL 数据库文档](/documentation/services/sql-databases)
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0606_2016-->

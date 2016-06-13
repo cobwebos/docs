@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect：排查连接问题 | Microsoft Azure"
+	pageTitle="Azure AD Connect：排查连接问题 | Azure"
 	description="介绍如何使用 Azure AD Connect 排查连接问题。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="04/14/2016"
+	ms.date="04/27/2016"
 	ms.author="andkjell"/>
 
 # 使用 Azure AD Connect 排查连接问题
@@ -23,7 +23,8 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 首先，我们需要确保正确配置 [**machine.config**](active-directory-aadconnect-prerequisites.md#connectivity)。  
 ![machineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/machineconfig.png)
 
-> [AZURE.NOTE] 某些非 Microsoft 博客提到，应该对 miiserver.exe.config 进行更改。但是，每次升级都会覆盖此文件，因此，尽管系统在初始安装期间可正常工作，但首次升级时将停止工作。出于此原因，建议改为更新 machine.config。
+>[AZURE.NOTE]
+某些非 Microsoft 博客提到，应该对 miiserver.exe.config 进行更改。但是，每次升级都会覆盖此文件，因此，尽管系统在初始安装期间可正常工作，但首次升级时将停止工作。出于此原因，建议改为更新 machine.config。
 
 
 
@@ -35,9 +36,9 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 | ---- | ---- | ---- |
 | mscrl.microsoft.com | HTTP/80 | 用于下载 CRL 列表。 |
 | **.verisign.com | HTTP/80 | 用于下载 CRL 列表。|
-| *.trust.com | HTTP/80 | 用于下载 MFA 的 CRL 列表。|
-| *.windows.net | HTTPS/443 | 用于登录 Azure AD。|
-| secure.aadcdn.microsoftonline-p.com | HTTPS/443 | 用于 MFA。|
+| *.entrust.com | HTTP/80 | 用于下载 MFA 的 CRL 列表。| 
+| *.windows.net | HTTPS/443 | 用于登录 Azure AD。| 
+| secure.aadcdn.microsoftonline-p.com | HTTPS/443 | 用于 MFA。| 
 | *.microsoftonline.com | HTTPS/443 | 用于配置 Azure AD 目录和导入/导出数据。|
 
 ## 向导中的错误
@@ -53,8 +54,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 - 如果配置看起来正确，请遵循[验证代理连接](#verify-proxy-connectivity)中的步骤，查看问题是否也出现在向导外部的位置。
 
 ### 无法访问 MFA 终结点
-如果无法访问终结点 **https://secure.aadcdn.microsoftonline-p.com**，并且你的全局系统管理员启用了 MFA，则会出现此错误。  
-![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
+如果无法访问终结点 **https://secure.aadcdn.microsoftonline-p.com**，并且你的全局系统管理员启用了 MFA，则会出现此错误。![nomachineconfig](./media/active-directory-aadconnect-troubleshoot-connectivity/nomicrosoftonlinep.png)
 
 - 如果你看到此错误，请验证是否已将 secure.aadcdn.microsoftonline-p.com 终结点添加到代理。
 
@@ -130,10 +130,46 @@ PowerShell 使用 machine.config 中的配置来联系代理。winhttp/netsh 中
 1/11/2016 8:49 | connect://*bba900-anchor*.microsoftonline.com:443
 1/11/2016 8:49 | connect://*bba800-anchor*.microsoftonline.com:443
 
+## 身份验证错误
+本部分说明可能从 ADAL（Azure AD Connect 使用的身份验证库）和 PowerShell 返回的错误。其中说明的错误可帮助你了解后续步骤。
+
+### 无效授权
+无效的用户名或密码。有关详细信息，请参阅[无法验证密码](#the-password-cannot-be-verified)。
+
+### 未知用户类型
+找不到或无法解析你的 Azure AD 目录。也许你在尝试使用未验证域中的用户名登录？
+
+### 用户领域发现失败
+网络或代理配置问题。无法连接网络，请参阅 [Troubleshoot connectivity issues in the installation wizard（在安装向导中排查连接问题）](#troubleshoot-connectivity-issues-in-the-installation-wizard)。
+
+### 用户密码已过期
+你的凭据已过期。请更改密码。
+
+### AuthorizationFailure
+未知问题。
+
+### 身份验证已取消
+多重身份验证 (MFA) 质询已取消。
+
+### ConnectToMSOnline
+身份验证成功，但 Azure AD PowerShell 出现身份验证问题。
+
+### AzureRoleMissing
+身份验证成功。你不是全局管理员。
+
+### PrivilegedIdentityManagement
+身份验证成功。已启用 Privileged Identity Management，但你目前不是全局管理员。有关详细信息，请参阅 [Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)。
+
+### CompanyInfoUnavailable
+身份验证成功。无法从 Azure AD 检索公司信息。
+
+### RetrieveDomains
+身份验证成功。无法从 Azure AD 检索域信息。
+
 ## 旧版疑难解答步骤
 从内部版本号 1.1.105.0（于 2016 年 2 月发行）开始已停用登录助理。你不再需要用到本部分所述的配置，这些内容仅供参考。
 
-要使单一登录助理正常工作，必须配置 winhttp。使用 [**netsh**](active-directory-aadconnect-prerequisites.md#connectivity) 可以实现此目的。  
+要使单一登录助理正常工作，必须配置 winhttp。使用 [**netsh**](active-directory-aadconnect-prerequisites.md#connectivity) 可实现此目的。  
 ![netsh](./media/active-directory-aadconnect-troubleshoot-connectivity/netsh.png)
 
 ### 未正确配置登录助理
@@ -145,6 +181,6 @@ PowerShell 使用 machine.config 中的配置来联系代理。winhttp/netsh 中
 - 如果配置看起来正确，请遵循[验证代理连接](#verify-proxy-connectivity)中的步骤，查看问题是否也出现在向导外部的位置。
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0606_2016-->

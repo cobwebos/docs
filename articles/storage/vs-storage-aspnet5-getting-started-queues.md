@@ -1,5 +1,5 @@
 <properties
-	pageTitle="开始使用队列存储和 Visual Studio 连接服务 (ASP.NET 5) | Microsoft Azure"
+	pageTitle="队列存储和 Visual Studio 连接服务入门 (ASP.NET 5) | Azure"
 	description="如何开始在 Visual Studio 中的 ASP.NET 5 项目中使用 Azure 队列存储"
 	services="storage"
 	documentationCenter=""
@@ -7,9 +7,9 @@
 	manager="douge"
 	editor=""/>
 
-<tags 
-	ms.service="storage"
-	ms.date="02/21/2016"
+<tags
+	ms.service="storage"	
+	ms.date="05/08/2016"
 	wacn.date=""/>
 
 # 开始使用队列存储和 Visual Studio 连接服务 (ASP.NET 5)
@@ -162,4 +162,4 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0606_2016-->

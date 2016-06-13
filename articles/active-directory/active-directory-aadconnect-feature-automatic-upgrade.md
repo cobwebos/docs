@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect：自动升级 | Microsoft Azure"
+   pageTitle="Azure AD Connect：自动升级 | Azure"
    description="本主题介绍 Azure AD Connect sync 中的内置自动升级功能。"
    services="active-directory"
    documentationCenter=""
@@ -79,6 +79,6 @@
 | UpgradeNotSupportedStagingModeEnabled | 服务器已设置为[过渡模式](active-directory-aadconnectsync-operations.md#staging-mode)。 |
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0606_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory 中的专用组 | Microsoft Azure"
+	pageTitle="Azure Active Directory 中的专用组 | Azure"
 	description="概述专用组在 Azure Active Directory 中的工作原理及其创建方法。"
 	services="active-directory"
 	documentationCenter=""
@@ -17,9 +17,9 @@
 
 在 Azure Active Directory (Azure AD) 中，专门的组功能可自动创建并填充 Azure AD 预定义的组的成员身份。无法使用 Azure 经典门户、Windows PowerShell cmdlet 或以编程方式添加或删除专用组的成员。
 
->[AZURE.NOTE] 专用组要求向以下人员分配 Azure AD Premium 许可证：
->- 管理组规则的管理员，
->- 以及由规则选定为组成员的所有用户。
+>[AZURE.NOTE] 专用组要求将 Azure AD Premium 许可证分配给
+>- 管理组中规则的管理员
+>- 规则选择成为组成员的所有用户
 
 **启用专用组**
 
@@ -52,4 +52,4 @@
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

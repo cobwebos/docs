@@ -1,5 +1,5 @@
 <properties
-	pageTitle="用于 Xamarin iOS 应用的移动服务中的身份验证入门 | Microsoft Azure"
+	pageTitle="适用于 Xamarin iOS 应用的移动服务中的身份验证入门 | Azure"
 	description="了解如何使用移动服务通过各种标识提供程序（包括 Google、Facebook、Twitter 和 Microsoft）对 Xamarin iOS 应用程序的用户进行身份验证。"
 	services="mobile-services"
 	documentationCenter="xamarin"
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="03/18/2016" 
+	ms.date="05/11/2016" 
 	wacn.date=""/>
 
 # 向移动服务应用程序添加身份验证
@@ -43,7 +43,7 @@
 
 &nbsp;&nbsp;&nbsp;6.在 Visual Studio 或 Xamarin Studio 中，运行设备或模拟器中的客户端项目。验证在应用程序启动后是否引发状态代码为 401（“未授权”）的未处理异常。
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发生此异常的原因是应用尝试以未经身份验证的用户身份访问移动服务，但 TodoItem 表现在要求身份验证。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发生此异常的原因是应用尝试以未经身份验证的用户身份访问移动服务，但 *TodoItem* 表现在要求身份验证。
 
 接下来，你需要更新应用程序，以便在从移动服务请求资源之前对用户进行身份验证。
 
@@ -71,7 +71,7 @@
             }
         }
 
-	> [AZURE.NOTE] 如果使用的标识提供者不是 Facebook，请将传递给上述 **LoginAsync** 的值更改为下列其中一项：MicrosoftAccount 或 WindowsAzureActiveDirectory。
+	> [AZURE.NOTE] 如果使用的标识提供者不是 Facebook，请将传递给上述 **LoginAsync** 的值更改为下列其中一项：_MicrosoftAccount_ 或 _WindowsAzureActiveDirectory_。
 
 3. 打开 **QSTodoListViewController.cs**，并修改 **ViewDidLoad** 的方法定义以删除或注释禁止接近结尾处对 **RefreshAsync()** 的调用。
 
@@ -111,8 +111,8 @@
 [移动服务入门]: /documentation/articles/mobile-services-dotnet-backend-xamarin-ios-get-started
 [Get started with authentication]: /documentation/articles/mobile-services-dotnet-backend-xamarin-ios-get-started-users
 [Get started with push notifications]: /documentation/articles/mobile-services-dotnet-backend-xamarin-ios-get-started-push
-[Authorize users with scripts]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-authorize-users-in-scripts
+[Authorize users with scripts]: /documentation/articles/mobile-services-dotnet-backend-service-side-authorization
 [JavaScript and HTML]: /documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users
 
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0606_2016-->

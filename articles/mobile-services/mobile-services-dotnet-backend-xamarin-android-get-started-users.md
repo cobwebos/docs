@@ -1,5 +1,5 @@
 <properties
-	pageTitle="用于 Xamarin Android 应用的移动服务中的身份验证入门 | Microsoft Azure"
+	pageTitle="适用于 Xamarin Android 应用的移动服务中的身份验证入门 | Azure"
 	description="了解如何使用移动服务通过各种标识提供程序（包括 Google、Facebook、Twitter 和 Microsoft）对 Xamarin Android 应用程序的用户进行身份验证。"
 	services="mobile-services"
 	documentationCenter="xamarin"
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="12/01/2015" 
+	ms.date="05/11/2015" 
 	wacn.date=""/>
 
 # 移动服务中的身份验证入门
@@ -44,7 +44,7 @@
 <ol start="6">
 <li><p>在 Visual Studio 或 Xamarin Studio 中，运行设备或模拟器中的客户端项目。验证在应用程序启动后是否引发状态代码为 401（“未授权”）的未处理异常。</p>
    
-   	<p>发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 TodoItem 表现在要求身份验证。</p></li>
+   	<p>发生此异常的原因是应用程序尝试以未经身份验证的用户身份访问移动服务，但 <em>TodoItem</em> 表现在要求身份验证。</p></li>
 </ol>
 
 接下来，你需要更新应用程序，以便在从移动服务请求资源之前对用户进行身份验证。
@@ -72,7 +72,7 @@
 
     这将会创建一个用于处理身份验证过程的新方法。将使用 Facebook 登录对用户进行身份验证。此时将出现一个对话框，其中显示了已经过身份验证的用户的 ID。
 
-    > [AZURE.NOTE] 如果使用的标识提供程序不是 Facebook，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：MicrosoftAccount、Twitter、Google 或 WindowsAzureActiveDirectory。
+    > [AZURE.NOTE] 如果使用的标识提供程序不是 Facebook，请将传递给上述 **LoginAsync** 方法的值更改为下列其中一项：_MicrosoftAccount_、_Twitter_、_Google_ 或 _WindowsAzureActiveDirectory_。
 
 3. 在 **OnCreate** 方法中，在实例化 `MobileServiceClient` 对象的代码后面添加以下代码行。
 
@@ -105,9 +105,8 @@ In the next tutorial, [Service-side authorization of Mobile Services users][Auth
 [移动服务入门]: /documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started
 [Get started with authentication]: /documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started-users
 [Get started with push notifications]: /documentation/articles/mobile-services-dotnet-backend-xamarin-android-get-started-push
-[Authorize users with scripts]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-authorize-users-in-scripts
+[Authorize users with scripts]: /documentation/articles/mobile-services-dotnet-backend-service-side-authorization
 [JavaScript and HTML]: /documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users
 
-[Azure Management Portal]: https://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0606_2016-->

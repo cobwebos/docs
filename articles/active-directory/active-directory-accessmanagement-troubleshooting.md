@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="组的动态成员身份疑难解答 | Microsoft Azure"
+	pageTitle="组的动态成员身份疑难解答 | Azure"
 	description="有关 Azure AD 中组的动态成员身份的疑难解答提示。"
 	services="active-directory"
 	documentationCenter=""
@@ -33,4 +33,4 @@
 
 
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

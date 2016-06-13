@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="03/29/2016"
+	ms.date="05/11/2016"
 	wacn.date=""/>
 
 # 静态数据的 Azure 存储空间服务加密（预览版）
@@ -53,7 +53,7 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 
 -   现有数据 - SSE 只将加密启用加密之后新建的数据。例如，如果你创建新的 ARM 存储帐户但未打开加密，然后将 blob 或存档 VHD 上载到该存储帐户，然后打开 SSE，则那些 Blob 不会加密，除非重新写入或复制。
 
--   应用商店支持 - 针对从应用商店使用（Azure 门户）[https://portal.azure.cn) 、PowerShell 和 Azure CLI 创建的 VM 启用加密。VHD 基本映像将保持未加密状态；但是，在 VM 启动之后完成的任何写入将会加密。
+-   应用商店支持 - 针对从应用商店使用[Azure 门户](https://portal.azure.cn)、PowerShell 和 Azure CLI 创建的 VM 启用加密。VHD 基本映像将保持未加密状态；但是，在 VM 启动之后完成的任何写入将会加密。
 
 -   表、队列和文件数据将不会加密。
 
@@ -99,7 +99,7 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 
 AzCopy 是一个 Windows 命令行实用工具，专用于将数据复制到 Azure Blob、文件和表存储以及从这些位置复制数据。你可以使用此实用工具，将数据从现有 Blob 存储帐户复制到已启用加密功能的新存储帐户。
 
-有关详细信息，请参阅 [Transfer data with the AzCopy Command Line Utility（使用 AzCopy 命令行实用工具传输数据）](/documentation/articles/storage-use-azcopy)。
+有关详细信息，请参阅 [Transfer data with the AzCopy Command Line Utility（使用 AzCopy 命令行实用工具传输数据](/documentation/articles/storage-use-azcopy)）。
 
 #### 使用存储客户端库
 
@@ -119,7 +119,7 @@ AzCopy 是一个 Windows 命令行实用工具，专用于将数据复制到 Azu
 
 SSE 普及之后，我们将部署存储客户端库的更高版本，可让你查询对象的状态，以判断它是否已加密。
 
-在此同时，你可以调用[“获取帐户属性”](https://msdn.microsoft.com/zh-cn/library/azure/mt163553.aspx)来验证存储帐户是否已启用加密，或者在 Azure 门户中查看存储帐户属性。
+在此同时，你可以调用“[获取帐户属性](https://msdn.microsoft.com/zh-cn/library/azure/mt163553.aspx)”来验证存储帐户是否已启用加密，或者在 Azure 门户中查看存储帐户属性。
 
 ##加密和解密工作流
 
@@ -218,5 +218,4 @@ SSE 普及之后，我们将部署存储客户端库的更高版本，可让你�
 
 Azure 存储空间提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。有关详细信息，请访问 [Storage Security Guide（存储安全指南）](/documentation/articles/storage-security-guide)。
 
-
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0606_2016-->

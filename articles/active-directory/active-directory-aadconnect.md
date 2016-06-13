@@ -1,27 +1,27 @@
 <properties
-	pageTitle="Azure AD Connect：将本地标识与 Azure Active Directory 集成 | Microsoft Azure"
-	description="Azure AD Connect 是用于集成本地标识系统（例如 Windows Server Active Directory）与 Azure Active Directory，并将用户连接到 Office 365、Azure 和数千种 SaaS 应用程序的工具。本主题介绍 Azure AD Connect 的功能，并提供有关 Azure AD Connect 的工作原理，如何进行安装、配置和自定义的信息。"
+	pageTitle="Azure AD Connect：将本地标识与 Azure Active Directory 集成 | Azure"
+	description="Azure AD Connect 会将你的本地目录与 Azure Active Directory 集成。这样，你便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序提供一个通用标识。"
     keywords="Azure AD Connect 介绍, Azure AD Connect 概述, 什么是 Azure AD Connect, 安装 active directory"
 	services="active-directory"
 	documentationCenter=""
 	authors="andkjell"
-	manager="stevenpo" 
-	editor="curtand"/>
+	manager="stevenpo"
+	editor=""/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="04/14/2016"
+	ms.date="04/20/2016"
 	wacn.date=""/>
 
 
 # 将本地标识与 Azure Active Directory 集成
-Azure AD Connect 是用于集成本地标识系统（例如 Windows Server Active Directory）与 Azure Active Directory，并将用户连接到 Office 365、Azure 和 1000 多种 SaaS 应用程序的工具。本主题将全面指导你准备和部署必要的组件，让用户使用其目前用于访问现有公司应用的同一标识来访问云服务。
+Azure AD Connect 会将你的本地目录与 Azure Active Directory 集成。这样，你便可以为集成到 Azure AD 的 Office 365、Azure 和 SaaS 应用程序的用户提供一个通用标识。本主题将指导你完成规划、部署和操作步骤。其中统合了与这些操作相关的主题的链接。
 
-> [AZURE.IMPORTANT] [Azure AD Connect 是连接本地目录与 Azure AD 和 Office 365 的最佳方式。这是将 Azure AD Connect 从 Microsoft Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升级的最佳时机，由于这些工具现在已弃用，并在 2017 年 4 月 13 日结束支持。](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM)
+> [AZURE.IMPORTANT] [Azure AD Connect 是连接本地目录与 Azure AD 和 Office 365 的最佳方式。这是将 Azure AD Connect 从 Microsoft Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升级的最佳时机，由于这些工具现在已弃用，并在 2017 年 4 月 13 日结束支持。](https://azure.microsoft.com/documentation/articles/active-directory-aadconnect-dirsync-deprecated/?WT.mc_id=DirSyncDepACOM) 
 ![什么是 Azure AD Connect](./media/active-directory-aadconnect/arch.png)
 
 ## 为何使用 Azure AD Connect
-将本地目录与 Azure AD 集成后，可以让用户使用通用标识访问位于云中和本地的资源，从而提高他们的生产率。通过这种集成，用户和组织可以享受到以下好处：
+将本地目录与 Azure AD 集成后，可以让用户使用通用标识访问位于云中和本地的资源，从而提高他们的生产率。用户和组织可以享受到以下好处：
 
 - 用户可以使用单个标识来访问本地应用程序和云服务，例如 Office 365。
 
@@ -31,14 +31,13 @@ Azure AD Connect 是用于集成本地标识系统（例如 Windows Server Activ
 
 
 ### Azure AD Connect 工作原理
-
-Azure Active Directory Connect 由三个主要部分组成，分别是同步服务、可选的 Active Directory 联合身份验证服务功能，以及使用 [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health) 实现的监视功能。
+Azure Active Directory Connect 由三个主要组件构成：同步服务、可选的 Active Directory 联合身份验证服务组件和名为 [Azure AD Connect Health](active-directory-aadconnect-health.md) 的监视组件。
 
 <center>![Azure AD Connect 堆栈](./media/active-directory-aadconnect-how-it-works/AADConnectStack2.png) </center>
 
-- 同步 - 此部分由以前包含以前作为 [DirSync 和 Azure AD Sync](/documentation/articles/active-directory-hybrid-identity-design-considerations-tools-comparison) 发布的组件和功能组成。此部分负责创建用户和组。它还负责确保本地环境中有关用户和组的信息与云匹配。
-- AD FS - 这是 Azure AD Connect 的可选部分，可用于使用本地 AD FS 基础结构设置混合环境。组织可以使用此部分来解决复杂的部署，包括域加入 SSO、实施 AD 登录策略和智能卡或第三方 MFA 等方案。
-- 运行状况监视 - Azure AD Connect Health 提供可靠监视，并在 Azure 门户中提供一个中心位置用于查看此活动。有关更多信息，请参阅 [Azure Active Directory Connect Health](/documentation/articles/active-directory-aadconnect-health)。
+- 同步 - 此组件负责创建用户、组和其他对象。它还负责确保本地用户和组的标识信息与云匹配。
+- AD FS - 联合身份验证是 Azure AD Connect 的可选部件，可用于使用本地 AD FS 基础结构配置混合环境。组织可以使用此部件来解决复杂的部署，例如域加入 SSO、实施 AD 登录策略和智能卡或第三方 MFA。
+- 运行状况监视 - Azure AD Connect Health 提供可靠监视，并在 Azure 门户中提供一个中心位置用于查看此活动。有关更多信息，请参阅 [Azure Active Directory Connect Health](active-directory-aadconnect-health.md)。
 
 ## 安装 Azure AD Connect
 
@@ -134,6 +133,7 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 | 主题 | |
 | --------- | --------- |
 | 配置带有子域的 ADFS | [与 Azure AD 联合的多域支持](active-directory-aadconnect-multiple-domains.md) |
+| 管理 AD FS 场 | [使用 Azure AD Connect 管理和自定义 AD FS](active-directory-aadconnect-federation-management.md) |
 | 手动更新联合身份验证证书 | [续订 Office 365 和 Azure AD 的联合身份验证证书](active-directory-aadconnect-o365-certs.md) |
 
 ## 详细信息和参考
@@ -154,4 +154,4 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 有关将本地目录扩展到云的 Ignite 2015 演示文稿。
 
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

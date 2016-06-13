@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect：后续步骤以及如何管理 Azure AD Connect | Microsoft Azure"
+	pageTitle="Azure AD Connect：后续步骤以及如何管理 Azure AD Connect | Azure"
 	description="了解如何扩展 Azure AD Connect 的默认配置和操作任务。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="03/16/2016"
+	ms.date="05/12/2016"
 	wacn.date=""/>
 
 # 后续步骤以及如何管理 Azure AD Connect
@@ -17,13 +17,6 @@
 
 ## 添加更多的同步管理员
 默认情况下，只有执行安装的用户和本地管理员才可以管理安装的同步引擎。要使其他用户能够访问和管理同步引擎，请在本地服务器上找到名为 ADSyncAdmins 的组，并将这些用户添加到此组中。
-
-## AD FS 服务中的可选配置
-你可以自定义 AD FS 登录页的插图和徽标图像，方法是登录 AD FS，然后使用 PSH 进行这项配置。
-
-	Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.png"} –Illustration @{path=”c:\Contoso\illustration.png”}
-
-有关可能配置的完整说明，请参阅[自定义 AD FS 登录页](https://technet.microsoft.com/library/dn280950.aspx)。
 
 ## 向 Azure AD Premium 和企业移动性套件用户分配许可证
 
@@ -79,4 +72,4 @@
 
  
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

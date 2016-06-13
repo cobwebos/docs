@@ -111,7 +111,7 @@ Microsoft 还在 Azure SQL 数据库中加入许多自动管理功能，如自�
 有关详细信息，请参阅[业务连续性概述](/documentation/articles/sql-database-business-continuity)。
 
 ### 最大内存中 OLTP 存储
-**最大内存中 OLTP 存储**是指可供高级数据库的[内存中 OLTP 预览版](/documentation/articles/sql-database-in-memory)使用的最大存储空间量。这有时也称为 XTP 内存中存储。你可以使用 Azure 管理门户或 **sys.dm\_db\_resource\_stats** 视图来监视内存中存储的使用情况。有关监视的详细信息，请参阅[监视内存中 OLTP 存储](/documentation/articles/sql-database-in-memory-oltp-monitoring)。
+**最大内存中 OLTP 存储**是指可供高级数据库的[内存中 OLTP 预览版](/documentation/articles/sql-database-in-memory)使用的最大存储空间量。这有时也称为 XTP 内存中存储。你可以使用 Azure 管理门户或 sys.dm\_db\_resource\_stats 视图来监视内存中存储的使用情况。有关监视的详细信息，请参阅[监视内存中 OLTP 存储](/documentation/articles/sql-database-in-memory-oltp-monitoring)。
 
 >[AZURE.NOTE] 内存中 OLTP 预览版目前仅适用于单一数据库，不适用于弹性数据库池中的数据库。
 
@@ -487,4 +487,4 @@ SQL Server 用户经常将许多功能集中在单一数据库内。例如，如
 
 在 Azure SQL 数据库中的服务层使你能够增加在云中生成的应用程序的类型。再加上坚持不懈地优化应用程序，你的应用程序的性能可变得既强大又可预测。本文档概述了可根据某个性能级别优化数据库资源使用的推荐技术。优化是云模型中一个持续的过程，管理员可以通过服务层及其性能级别，在 Azure 平台上最大程度地提高性能，同时将成本降至最低。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

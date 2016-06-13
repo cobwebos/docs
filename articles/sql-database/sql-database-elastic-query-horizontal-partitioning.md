@@ -237,4 +237,4 @@ sp\_execute\_fanout 使用调用参数中提供的分片映射信息在注册到
 [1]: ./media/sql-database-elastic-query-horizontal-partitioning/horizontalpartitioning.png
 <!--anchors-->
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0606_2016-->

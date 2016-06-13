@@ -144,7 +144,7 @@
         "Server=myservername.database.chinacloudapi.cn; Database=mydatabasename;User ID=myuserID; Password=mypassword; Encrypt=True; Connection Timeout=30" .
 
 * 确保服务器名称不以 **https://** 开头。
-* 确保你的 Azure SQL DB 服务器允许 Azure 服务与其连接。若要执行此操作，请打开 https://manage.windowsazure.cn，依次单击左侧的“SQL 数据库s”和顶部的“服务器”，然后选择你的服务器。在顶部单击“配置”并确保将“Azure 服务”设置为“是”。（请参阅此文章顶部的“先决条件”部分）。
+* 确保你的 Azure SQL DB 服务器允许 Azure 服务与其连接。若要执行此操作，请打开 https://manage.windowsazure.cn ，依次单击左侧的“SQL 数据库s”和顶部的“服务器”，然后选择你的服务器。在顶部单击“配置”并确保将“Azure 服务”设置为“是”。（请参阅此文章顶部的“先决条件”部分）。
 
 ## 测试你的拆分/合并服务部署
 
@@ -330,4 +330,4 @@
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0606_2016-->

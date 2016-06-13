@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect 同步：了解声明性设置表达式 | Microsoft Azure"
+	pageTitle="Azure AD Connect 同步：了解声明性预配表达式 | Azure"
 	description="说明声明性设置表达式"
 	services="active-directory"
 	documentationCenter=""
@@ -126,4 +126,4 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
  
 <!--Image references-->
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure AD Connect：常见问题 | Microsoft Azure"
+	pageTitle="Azure AD Connect：常见问题 | Azure"
 	description="此页包含有关 Azure AD Connect 的常见问题。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="02/29/2016"
+	ms.date="05/12/2016"
 	wacn.date=""/>
 
 # Azure AD Connect 常见问题
@@ -53,6 +53,7 @@ Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
 - [Office 365、Azure 或 Intune 中的用户名与本地 UPN 或备用登录 ID 不匹配](https://support.microsoft.com/zh-cn/kb/2523192)
 - [在将用户帐户的 UPN 更改为使用不同的联合域后，Azure Active Directory 同步工具未同步更改](https://support.microsoft.com/zh-cn/kb/2669550)
 
+你还可以根据 [Azure AD Connect 同步服务功能](/documentation/articles/active-directory-aadconnectsyncservice-features)中所述配置 Azure AD，以允许同步引擎更新 userPrincipalName。
 ## 自定义配置
 **问：在哪里可以找到 Azure AD Connect 的 PowerShell cmdlet 介绍？**  
 仅支持客户使用本站点上介绍的 cmdlet，而不支持使用 Azure AD Connect 中的其他 PowerShell cmdlet。
@@ -76,4 +77,4 @@ Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
 
 - 使用此链接，以便通过 Azure 门户获取支持。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

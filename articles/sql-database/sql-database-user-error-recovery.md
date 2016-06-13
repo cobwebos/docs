@@ -102,4 +102,4 @@ Azure SQL 数据库始终会还原到新数据库。这些还原功能适用于�
 	
 4.	使用[数据库操作状态](http://msdn.microsoft.com/zh-cn/library/azure/dn720371.aspx)操作跟踪还原状态。
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0606_2016-->

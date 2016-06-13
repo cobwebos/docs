@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="使用属性创建高级规则 | Microsoft Azure"
+	pageTitle="使用属性创建高级规则 | Azure"
 	description="如何为组创建高级规则，包括支持的表达式规则运算符和参数。"
 	services="active-directory"
 	documentationCenter=""
@@ -134,7 +134,7 @@
 | passwordPolicies | None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword | (user.passwordPolicies -eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName | 任意字符串值或 $null | (user.physicalDeliveryOfficeName -eq "value") |
 | postalCode | 任意字符串值或 $null | (user.postalCode -eq "value") |
-| preferredLanguage | ISO 639-1 代码 | (user.preferredLanguage -eq "en-US") |
+| preferredLanguage | ISO 639-1 代码 | (user.preferredLanguage -eq "zh-CN") |
 | sipProxyAddress | 任意字符串值或 $null | (user.sipProxyAddress -eq "value") |
 | state | 任意字符串值或 $null | (user.state -eq "value") |
 | streetAddress | 任意字符串值或 $null | (user.streetAddress -eq "value") |
@@ -166,8 +166,7 @@
 
 (user.extensionAttribute15 -eq "Marketing")
 
-自定义属性从本地 Windows Server AD 或从连接的 SaaS 应用程序同步，采用“user.extension\_[GUID]\_\_[Attribute]”格式，其中，[GUID] 是在 AAD 中创建该属性的应用程序在 AAD 中的唯一标识符，[Attribute] 是创建的属性的名称。
-下面是使用自定义属性的规则示例：
+自定义属性从本地 Windows Server AD 或从连接的 SaaS 应用程序同步，采用“user.extension\_[GUID]\_\_[Attribute]”格式，其中，[GUID] 是在 AAD 中创建该属性的应用程序在 AAD 中的唯一标识符，[Attribute] 是创建的属性的名称。下面是使用自定义属性的规则示例：
 
 user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 
@@ -208,4 +207,4 @@ user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

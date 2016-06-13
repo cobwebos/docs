@@ -1,7 +1,6 @@
 <properties
-
-	pageTitle="在 Azure Active Directory 中管理安全组 | Microsoft Azure"
-	description="如何创建和管理安全组以使用 Azure Active Directory 管理 Azure 资源访问。"
+	pageTitle="在 Azure Active Directory 中管理组 | Azure"
+	description="如何创建和管理组，以便使用 Azure Active Directory 管理 Azure 资源访问权限。"
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
@@ -65,9 +64,9 @@ Azure Active Directory (Azure AD) 的主要功能之一是管理对资源的访�
 
 在 Azure AD 中，你可以非常轻松地设置一个简单的规则（该规则只有一个比较条件）来确定哪些用户将成为组的成员。例如，如果将一个组分配给 SaaS 应用程序，并且设置了一个规则用于添加职务为“Sales Rep”的用户，那么 Azure AD 目录中具有该职务的所有用户都有权访问此 SaaS 应用程序。
 
-> [AZURE.NOTE] 你可以为安全组或 Office 365 组中的动态成员身份设置规则。目前应用程序的基于组的分配不支持嵌套的组成员身份。组的动态成员身份要求向以下人员分配 Azure AD Premium 许可证：
->- 管理组规则的管理员，
->- 以及由规则选定为组成员的所有用户。
+> [AZURE.NOTE] 你可以为安全组或 Office 365 组中的动态成员身份设置规则。目前应用程序的基于组的分配不支持嵌套的组成员身份。动态组成员身份要求将 Azure AD Premium 许可证分配给
+>- 管理组中规则的管理员
+>- 规则选择成为组成员的所有用户
 
 **启用组的动态成员身份**
 
@@ -77,11 +76,11 @@ Azure Active Directory (Azure AD) 的主要功能之一是管理对资源的访�
 
 3. 选择“配置”选项卡，然后将“启用动态成员身份”设置为“是”。
 
-4. 为该组设置一个简单的规则，以控制该组的动态成员身份的运作方式。请确保已选中“添加符合以下条件的用户”选项，然后从列表中选择用户属性（例如部门、职务等），
+4. 为该组设置一个简单的规则，以控制该组的动态成员身份的运作方式。请确保已选中“添加符合以下条件的用户”选项，然后从列表中选择用户属性（例如部门、职务等）。
 
 5. 接下来选择条件（“不等于”、“等于”、“开头不为”、“开头为”、“不包含”、“包含”、“不匹配”、“匹配”），最后指定所选用户属性的值。
 
-要了解如何为动态组成员身份创建高级规则（包含多个比较条件的规则），请参阅[使用属性创建高级规则](active-directory-accessmanagement-groups-with-advanced-rules.md)。
+要了解如何为动态组成员身份创建*高级*规则（包含多个比较条件的规则），请参阅[使用属性创建高级规则](active-directory-accessmanagement-groups-with-advanced-rules.md)。
 
 ## 其他信息
 
@@ -94,4 +93,4 @@ Azure Active Directory (Azure AD) 的主要功能之一是管理对资源的访�
 * [什么是 Azure Active Directory？](/documentation/articles/active-directory-whatis)
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

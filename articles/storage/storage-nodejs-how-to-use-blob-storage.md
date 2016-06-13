@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="如何通过 Node.js 使用 Blob 存储 | Azure" 
-	description="了解如何使用 Blob 存储上载、下载、列出和删除 Blob 内容。示例用 Node.js 编写。"
+	description="使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
 	services="storage"
 	documentationCenter="nodejs"
 	authors="rmcmurray"
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="04/08/2016"
+    ms.date="04/29/2016"
 	wacn.date=""/>
 
 
@@ -411,4 +411,4 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node API 参考]: http://azure.github.io/azure-storage-node/
  
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0606_2016-->

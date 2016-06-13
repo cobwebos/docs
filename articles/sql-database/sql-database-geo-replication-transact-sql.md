@@ -230,4 +230,4 @@
 - [业务连续性概述](/documentation/articles/sql-database-business-continuity)
 - [SQL 数据库文档](/home/features/sql-database)
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0606_2016-->

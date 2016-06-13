@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="03/14/2016"
+	ms.date="05/12/2016"
 	wacn.date=""/>
 
 
@@ -155,4 +155,4 @@
 5.	单击“确定”。单击“应用”。单击“确定”。关闭“AD FS 管理”。
 
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0606_2016-->

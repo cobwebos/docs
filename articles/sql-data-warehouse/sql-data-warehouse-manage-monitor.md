@@ -1,5 +1,5 @@
 <properties
-   pageTitle="使用 DMV 监视工作负荷 | Microsoft Azure"
+   pageTitle="使用 DMV 监视工作负荷 | Azure"
    description="了解如何使用 DMV 监视工作负荷。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="04/12/2016"
+   ms.date="05/03/2016"
    wacn.date=""/>
 
 # 使用 DMV 监视工作负荷
@@ -35,7 +35,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed';
 -- Monitor running queries
 SELECT * FROM sys.dm_pdw_exec_requests WHERE status = 'Running';
 
--- Find the 10 longest running queries
+-- Find 10 queries which ran the longest
 SELECT TOP 10 * FROM sys.dm_pdw_exec_requests ORDER BY total_elapsed_time DESC;
 ```
 
@@ -138,31 +138,18 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 
 ```
 
-
-## 调查数据偏斜
-
-使用 [DBCC PDW\_SHOWSPACEUSED][] 查找某个表使用的空间。
-
-```sql
--- Find data skew for a distributed table
-DBCC PDW_SHOWSPACEUSED("dbo.FactInternetSales");
-```
-
-此查询的结果将显示存储在数据库中每组 60 个分布内的表行数目。为了获得最佳性能，分布式表中的行应该平均分散在所有分布区中。
-
-若要了解详细信息，请参阅[管理分布式表的数据偏斜][]或[表设计][]。
-
 ## 后续步骤
-有关 Transact-SQL 和动态管理视图 (DMV) 的详细信息，请参阅[参考概述][]。
-有关管理 SQL 数据仓库的更多提示，请参阅[管理概述][]。
+有关动态管理视图 (DMV) 的详细信息，请参阅[系统视图][]。  
+有关管理 SQL 数据仓库的提示，请参阅[管理概述][]。  
+有关最佳实践，请参阅 [SQL 数据仓库最佳实践][]。
 
 <!--Image references-->
 
 <!--Article references-->
-[管理概述]: /documentation/articles/sql-data-warehouse-overview-manage
-[表设计]: /documentation/articles/sql-data-warehouse-develop-table-design
-[参考概述]: /documentation/articles/sql-data-warehouse-overview-reference
-[管理分布式表的数据偏斜]: /documentation/articles/sql-data-warehouse-manage-distributed-data-skew
+[manage data skew for distributed tables]: sql-data-warehouse-manage-distributed-data-skew.md
+[管理概述]: sql-data-warehouse-overview-manage.md
+[SQL 数据仓库最佳实践]: sql-data-warehouse-best-practices.md
+[系统视图]: sql-data-warehouse-reference-tsql-system-views.md
 
 <!--MSDN references-->
 [sys.dm\_pdw\_dms\_workers]: http://msdn.microsoft.com/zh-cn/library/mt203878.aspx
@@ -171,6 +158,6 @@ DBCC PDW_SHOWSPACEUSED("dbo.FactInternetSales");
 [sys.dm\_pdw\_request\_steps]: http://msdn.microsoft.com/zh-cn/library/mt203913.aspx
 [sys.dm\_pdw\_sql\_requests]: http://msdn.microsoft.com/zh-cn/library/mt203889.aspx
 [DBCC PDW\_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/zh-cn/library/mt204017.aspx
-[DBCC PDW\_SHOWSPACEUSED]: http://msdn.microsoft.com/zh-cn/library/mt204028.aspx
+[DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/zh-cn/library/mt204028.aspx
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

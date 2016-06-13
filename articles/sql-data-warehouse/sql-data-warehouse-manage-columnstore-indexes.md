@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="04/07/2016"
+   ms.date="05/02/2016"
    wacn.date=""/>
 
 # 管理 Azure SQL 数据仓库中的列存储索引
@@ -119,7 +119,7 @@ WHERE	[table_name] = 'FactInternetSales'
 | [OPEN\_rowgroup\_rows\_MIN] | 打开的组表示数据正在以点滴方式加载到表，或者之前的加载超出了剩余行，溢出到此行组。使用 MIN、MAX、AVG 列来查看 OPEN 行组中有多少数据。对于小型表，此数据量可以为所有数据的 100%！ 在此情况下使用 ALTER INDEX REBUILD 语句将数据强制转换为列存储格式。 |
 | [OPEN\_rowgroup\_rows\_MAX] | 同上 |
 | [OPEN\_rowgroup\_rows\_AVG] | 同上 |
-| [CLOSED\_rowgroup\_rows] | 查看已关闭行组的行以进行健全性检查。若有 |
+| [CLOSED\_rowgroup\_rows] | 查看已关闭行组的行以进行健全性检查。 |
 | [CLOSED\_rowgroup\_count] | 如果没有看到几个行组，则已关闭的行组数应该较低。可以将已关闭的行组转换为压缩行组，方法是使用 ALTER INDEX ...REORGANISE 命令。但是，通常并不需要使用此命令。后台的“tuple mover”进程会自动将关闭的组转换为列存储行组。 |
 | [CLOSED\_rowgroup\_rows\_MIN] | 已关闭的行组应具有非常高的填充率。如果已关闭的行组的填充率较低，则需要进一步分析列存储。 |
 | [CLOSED\_rowgroup\_rows\_MAX] | 同上 |
@@ -160,7 +160,7 @@ WHERE	[table_name] = 'FactInternetSales'
 
 ## 步骤 5：分配额外的计算资源
 
-重新生成索引，尤其是对于大型表，通常需要额外的资源。SQL 数据仓库提供可以向用户分配更多内存的工作负荷管理功能。若要了解如何为你的索引重新生成保留更多内存，请参阅 [concurrency（并发）][]文章的工作负荷管理部分。
+重新生成索引，尤其是对于大型表，通常需要额外的资源。SQL 数据仓库提供可以向用户分配更多内存的工作负荷管理功能。若要了解如何为你的索引重新生成保留更多内存，请参阅 [concurrency][]（并发）文章的工作负荷管理部分。
 
 ## 步骤 6：重新生成索引以改善每个行组的平均行数
 
@@ -231,12 +231,10 @@ ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternet
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
 ```
 
-有关使用 `CTAS` 重新创建分区的更多详细信息，请参阅 [Table partitioning（表分区）][]和 [concurrency（并发）][]。
+有关使用 `CTAS` 重新创建分区的更多详细信息，请参阅 [Table partitioning][]（表分区）和 [concurrency][]（并发）。
 
 
 ## 后续步骤
-
-有关索引管理的更具体建议，请查看 [manage indexes（管理索引）][]一文。
 
 有关更多管理提示，请转到[管理][]概述。
 
@@ -244,14 +242,13 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 
 <!--Article references-->
 [CTAS]: sql-data-warehouse-develop-ctas.md
-[Table partitioning（表分区）]: sql-data-warehouse-develop-table-partitions.md
-[Concurrency（并发）]: sql-data-warehouse-develop-concurrency.md
+[Table partitioning]: sql-data-warehouse-develop-table-partitions.md
+[Concurrency]: sql-data-warehouse-develop-concurrency.md
 [管理]: sql-data-warehouse-manage-monitor.md
-[Manage indexes（管理索引）]: sql-data-warehouse-manage-indexes.md
 
 <!--MSDN references-->
 [ALTER INDEX]: https://msdn.microsoft.com/zh-cn/library/ms188388.aspx
 
 
 <!--Other Web references-->
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0606_2016-->

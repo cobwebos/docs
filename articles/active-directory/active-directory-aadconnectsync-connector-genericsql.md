@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect 同步：泛型 SQL 连接器 | Microsoft Azure"
+   pageTitle="Azure AD Connect 同步：泛型 SQL 连接器 | Azure"
    description="本文介绍如何配置 Microsoft 的泛型 SQL 连接器。"
    services="active-directory"
    documentationCenter=""
@@ -99,7 +99,7 @@
 
 - **固定值**：以逗号分隔列表来提供对象类型列表。例如User,Group,Department。  
 ![schema1b](./media/active-directory-aadconnectsync-connector-genericsql/schema1b.png)
-- **表/视图/存储过程**：提供表/视图/存储过程的名称，然后提供列名称以提供对象类型的列表。如果使用存储过程，则还需要使用以下格式提供其参数：**[名称]:[方向]:[值]**。独行提供每个参数（使用 Ctrl+Enter 来换行）。  
+- **表/视图/存储过程**：提供表/视图/存储过程的名称，然后提供列名称以提供对象类型的列表。如果使用存储过程，则还需要使用以下格式提供其参数：[名称]:[方向]:[值]。独行提供每个参数（使用 Ctrl+Enter 来换行）。  
 ![schema1c](./media/active-directory-aadconnectsync-connector-genericsql/schema1c.png)
 - **SQL 查询**：此选项可让提供 SQL 查询，以返回包含对象类型的单个列，例如 `SELECT [Column Name] FROM TABLENAME`。返回的列必须是字符串类型 (varchar)。
 
@@ -302,4 +302,4 @@
 
 -	有关如何启用记录来排查连接器问题的信息，请参阅[如何启用连接器的 ETW 跟踪](http://go.microsoft.com/fwlink/?LinkId=335731)。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

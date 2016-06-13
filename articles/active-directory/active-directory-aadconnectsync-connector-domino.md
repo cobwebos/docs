@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect 同步：Lotus Domino 连接器 | Microsoft Azure"
+   pageTitle="Azure AD Connect 同步：Lotus Domino 连接器 | Azure"
    description="本文介绍如何配置 Microsoft 的 Lotus Domino 连接器。"
    services="active-directory"
    documentationCenter=""
@@ -10,7 +10,7 @@
 <tags
    ms.service="active-directory"
 
-   ms.date="03/16/2016"
+   ms.date="04/20/2016"
    wacn.date=""/>
 
 # Lotus Domino 连接器技术参考
@@ -219,7 +219,8 @@ Lotus Domino 中有许多属性具有多个值。相对应的 Metaverse 属性�
 
 **替换项** – 选择此选项时，连接器始终删除 Domino 属性的当前值，并以所提供的值替换这些值。所提供的值可以是单值或多值。
 
-示例：person 对象的 Assistant 属性具有以下值：
+示例：
+person 对象的 Assistant 属性具有以下值：
 
 - CN=Greg Winston/OU= Contoso /O=Americas,NAB=names.nsf
 - CN=John Smith/OU= Contoso /O=Americas,NAB=names.nsf
@@ -230,7 +231,8 @@ Lotus Domino 中有许多属性具有多个值。相对应的 Metaverse 属性�
 
 **附加项** – 选择此选项时，连接器保留 Domino 属性的现有值，并在数据列表顶部插入新值。
 
-示例：person 对象的 Assistant 属性具有以下值：
+示例：
+person 对象的 Assistant 属性具有以下值：
 
 - CN=Greg Winston/OU= Contoso /O=Americas,NAB=names.nsf
 - CN=John Smith/OU= Contoso /O=Americas,NAB=names.nsf
@@ -536,4 +538,4 @@ Domino 连接器依赖 Directory Assistance 功能来查找辅助通讯簿。如
 
 -	有关如何启用记录来排查连接器问题的信息，请参阅[如何启用连接器的 ETW 跟踪](http://go.microsoft.com/fwlink/?LinkId=335731)。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

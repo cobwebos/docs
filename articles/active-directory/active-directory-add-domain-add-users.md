@@ -1,5 +1,5 @@
 <properties
-	pageTitle="将用户添加到 Azure Active Directory 中的自定义域 | Microsoft Azure"
+	pageTitle="将用户添加到 Azure Active Directory 中的自定义域 | Azure"
 	description="如何使用用户帐户填充 Azure Active Directory 中的自定义域。"
 	services="active-directory"
 	documentationCenter=""
@@ -10,7 +10,7 @@
 <tags
 	ms.service="active-directory"
 
-	ms.date="02/03/2016"
+	ms.date="04/20/2016"
 	wacn.date=""/>
 
 # 将用户分配到自定义域
@@ -53,10 +53,10 @@
 
 ## 后续步骤
 
-- [使用自定义域名来简化用户登录体验](active-directory-add-domain.md)
-- [向“登录”和“访问面板”页添加公司品牌](active-directory-add-company-branding.md)
-- [在 Azure Active Directory 中添加和验证自定义域名](active-directory-add-domain-add-verify-general.md)
-- [更改自定义域名的 DNS 注册机构](active-directory-add-domain-change-registrar.md)
-- [在 Azure Active Directory 中删除自定义域名](active-directory-add-domain-delete-domain.md)
+-   [使用自定义域名来简化用户登录体验](/documentation/articles/active-directory-add-domain)
 
-<!---HONumber=Mooncake_0321_2016-->
+-   [管理自定义域名](/documentation/articles/active-directory-add-manage-domain-names)
+
+-   [了解 Azure AD 中的域管理概念](/documentation/articles/active-directory-add-domain-concepts)
+
+<!---HONumber=Mooncake_0606_2016-->

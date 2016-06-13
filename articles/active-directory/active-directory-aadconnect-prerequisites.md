@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect：先决条件和硬件 | Microsoft Azure"
+   pageTitle="Azure AD Connect：先决条件和硬件 | Azure"
    description="本主题介绍 Azure AD Connect 的先决条件和硬件要求"
    services="active-directory"
    documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="04/14/2016"
+   ms.date="05/10/2016"
    wacn.date=""/>
 
 # Azure AD Connect 的先决条件
@@ -22,6 +22,9 @@
 - Azure 订阅或 [Azure 试用版订阅](https://azure.microsoft.com/pricing/free-trial/)。这只是用来访问 Azure 门户，而不是用于 Azure AD Connect。如果你正在使用 PowerShell 或 Office 365，则无需 Azure 订阅即可使用 Azure AD Connect。如果你有 Office 365 许可证，则还可以使用 Office 365 门户。使用付费的 Office 365 许可证，还可以从 Office 365 门户访问 Azure 门户。
 - [添加并验证](/documentation/articles/active-directory-add-domain)要在 Azure AD 中使用的域。例如，如果你计划让用户使用 contoso.com，请确保此域已经过验证，并且不是直接使用 contoso.onmicrosoft.com 默认域。
 - Azure AD 目录默认允许 5 万个对象。在验证域后，该限制将增加到 30 万个对象。如果在 Azure AD 中需要更多的对象，则需要开具支持案例来请求增大此限制。如果需要 50 万个以上的对象，则需要购买 Office 365、Azure AD Basic、Azure AD Premium 或 Enterprise Mobility Suite 等许可证。
+
+### 准备本地数据
+- 查看[可以在 Azure AD 中启用的可选同步功能](/documentation/articles/active-directory-aadconnectsyncservice-features)并评估要启用哪些功能。
 
 ### 本地服务器和环境
 - AD 架构版本与林功能级别必须是 Windows Server 2003 或更高版本。只要符合架构和林级别的要求，域控制器就能运行任何版本。
@@ -49,6 +52,7 @@
 - Azure AD Connect 服务器需要 Intranet 和 Internet 的 DNS 解析。DNS 服务器必须能够将名称解析成本地 Active Directory 以及 Azure AD 终结点。
 - 如果 Intranet 有防火墙，而你需要开放 Azure AD Connect 服务器与域控制器之间的端口，请参阅 [Azure AD Connect 端口](active-directory-aadconnect-ports.md)了解详细信息。
 - 如果代理限制了可访问的 URL，则必须在代理中打开 [Office 365 URL 和 IP 地址范围](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中所述的 URL。
+    - 如果你在德国使用 Microsoft 云或要使用 Microsoft Azure 政府云，请参阅 [Azure AD Connect 同步服务实例注意事项](/documentation/articles/active-directory-aadconnect-instances)以了解 URL。
 - 如果你正在使用出站代理连接到 Internet，则必须在 **C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\Config\\machine.config** 文件中添加以下设置，才能将安装向导和 Azure AD Connect 同步连接到 Internet 和 Azure AD。必须在文件底部输入此文本。在此代码中，&lt;PROXYADRESS&gt; 代表实际代理 IP 地址或主机名。
 
 ```
@@ -141,7 +145,7 @@ Azure AD Connect 依赖于 Microsoft PowerShell 和 .NET Framework 4.5.1。请�
 - Microsoft SQL Server 2012 命令行实用工具
 - Microsoft SQL Server 2012 Express LocalDB
 - Microsoft SQL Server 2012 本机客户端
-- Microsoft Visual C++ 2013 Redistribution Package
+- Microsoft Visual C++ 2013 再分发包
 
 ## Azure AD Connect 的硬件要求
 下表显示了 Azure AD Connect 同步计算机的最低要求。
@@ -165,4 +169,4 @@ Azure AD Connect 依赖于 Microsoft PowerShell 和 .NET Framework 4.5.1。请�
 ## 后续步骤
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

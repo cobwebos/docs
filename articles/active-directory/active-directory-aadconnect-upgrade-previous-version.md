@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect：从旧版升级 | Microsoft Azure"
+   pageTitle="Azure AD Connect：从旧版升级 | Azure"
    description="介绍升级到 Azure Active Direcotry Connect 最新版本的不同方法，包括就地升级和交叉迁移。"
    services="active-directory"
    documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="04/14/2016"
+   ms.date="05/12/2016"
    wacn.date=""/>
 
 # Azure AD Connect：从旧版升级到最新版本
@@ -30,7 +30,7 @@
 ## 就地升级
 就地升级适用于从 Azure AD Sync 或 Azure AD Connect 迁移。它不适用于 DirSync 或使用 FIM + Azure AD 连接器的解决方案。
 
-如果你只有一台服务器且对象数少于 100,000 个，则这是首选方法。升级后，将执行完全导入和完全同步。这可以确保将新配置应用到系统中的所有现有对象。这可能需要花费几小时的时间，具体取决于同步引擎范围内的对象数。计划的正常增量同步（默认为每隔 30 分钟）将会暂停，但密码同步将会继续。你可以考虑在周末进行就地升级。
+如果你只有一台服务器且对象数少于 100,000 个，则这是首选方法。升级后，如果对现成的同步规则进行任何更改，则会发生完全导入和完全同步。这可以确保将新配置应用到系统中的所有现有对象。这可能需要花费几小时的时间，具体取决于同步引擎范围内的对象数。计划的正常增量同步（默认为每隔 30 分钟）将会暂停，但密码同步将会继续。你可以考虑在周末进行就地升级。如果未对新版 Azure AD Connect 中的现成配置进行更改，则启动一般的增量导入/同步。
 
 ![就地升级](./media/active-directory-aadconnect-upgrade-previous-version/inplaceupgrade.png)
 
@@ -81,6 +81,6 @@
 5. 如果你有多个自定义规则，请针对所有自定义规则重复上述步骤。
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0606_2016-->

@@ -64,7 +64,7 @@ SaaS 开发人员必须创建并管理数十、数百或甚至数千个 SQL 数�
 
 ## 弹性数据库作业
 
-通过池，可以通过运行[弹性作业](/documentation/articles/sql-database-elastic-jobs-overview)中的脚本来简化管理任务。弹性数据库作业可消除与大量数据库有关的大部分麻烦。若要开始，请参阅[弹性数据库作业入门](/documentation/articles/sql-database-elastic-jobs-getting-started)。
+通过池，可以通过运行**[弹性作业](/documentation/articles/sql-database-elastic-jobs-overview)**中的脚本来简化管理任务。弹性数据库作业可消除与大量数据库有关的大部分麻烦。若要开始，请参阅[弹性数据库作业入门](/documentation/articles/sql-database-elastic-jobs-getting-started)。
 
 有关其他工具的详细信息，请参阅[弹性数据库工具学习路线图](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale)。
 
@@ -99,4 +99,4 @@ SaaS 开发人员必须创建并管理数十、数百或甚至数千个 SQL 数�
 <!--Image references-->
 [1]: ./media/sql-database-elastic-pool/databases.png
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

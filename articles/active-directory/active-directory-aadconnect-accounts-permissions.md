@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD Connect：帐户和权限 | Microsoft Azure"
+   pageTitle="Azure AD Connect：帐户和权限 | Azure"
    description="本主题介绍使用和创建的帐户以及所需的权限。"
    services="active-directory"
    documentationCenter=""
@@ -130,4 +130,4 @@ Web 应用程序代理服务器 |对于列表中的每个服务器，如果运�
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

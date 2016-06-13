@@ -1,5 +1,5 @@
 <properties
-	pageTitle="适用于 Windows 应用商店应用的移动服务入门 (C#) | Microsoft Azure"
+	pageTitle="适用于 Windows 应用商店应用的移动服务入门 (C#) | Azure"
 	description="按照本教程开始使用 Azure 移动服务通过 C# 进行 Windows 应用商店开发。"
 	services="mobile-services"
 	documentationCenter="windows"
@@ -9,12 +9,13 @@
 
 <tags
 	ms.service="mobile-services"
-	ms.date="03/16/2016"
+	ms.date="05/11/2016"
 	wacn.date=""/>
 
 # <a name="getting-started"></a>移动服务入门
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]&nbsp;
+[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
+&nbsp;
 
 [AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
 > 有关本主题的对应的 Mobile Apps 版本，请参阅[创建 Windows 应用](/documentation/articles/app-service-mobile-windows-store-dotnet-get-started)。
@@ -27,7 +28,7 @@
 
 若要完成本教程，您需要以下各项：
 
-* 有效的 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 免费试用](/zh-cn/pricing/1rmb-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.cn%2Fzh-cn%2Fdocumentation%2Farticles%2Fmobile-services-javascript-backend-windows-store-javascript-get-started%2F)。
+* 有效的 Azure 帐户。如果你没有帐户，可以注册 Azure 试用版并取得多达 10 个免费的移动服务，即使在试用期结束之后仍可继续使用这些服务。有关详细信息，请参阅 [Azure 免费试用](/zh-cn/pricing/1rmb-trial/)。
 * [Visual Studio 2013 Express for Windows] 
 
 ## 创建新的移动服务
@@ -76,7 +77,7 @@
   了解如何向应用发送一条很基本的推送通知。
 
 * [如何使用 .NET 客户端库](/documentation/articles/mobile-services-dotnet-how-to-use-client-library)  
- 了解如何查询移动服务、处理数据和访问自定义 API。
+  了解如何查询移动服务、处理数据和访问自定义 API。
 
 [AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
 
@@ -92,10 +93,10 @@
 
 <!-- URLs. -->
 [脱机数据同步入门]: /documentation/articles/mobile-services-windows-store-dotnet-get-started-offline-data
-[Get started with authentication]: /zh-cn/documentation/articles/mobile-services-windows-store-dotnet-get-started-users
-[Get started with push notifications]: /zh-cn/documentation/articles/mobile-services-javascript-backend-windows-store-dotnet-get-started-push
+[Get started with authentication]: /documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-users
+[Get started with push notifications]: /documentation/articles/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push
 [Visual Studio 2013 Express for Windows]: http://go.microsoft.com/fwlink/?LinkId=257546
 [Mobile Services SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure 经典门户]: https://manage.windowsazure.cn/
  
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0606_2016-->

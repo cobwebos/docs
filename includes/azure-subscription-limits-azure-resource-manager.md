@@ -8,8 +8,8 @@
 资源管理器 API 读取次数|每小时 15000 次|每小时 15000 次
 资源管理器 API 写入次数|每小时 1200 次|每小时 1200 次
 资源管理器 API 请求大小|4194304 字节|4194304 字节
-每个订阅的[云服务数](/documentation/articles/cloud-services-what-is)|已过时<sup>3</sup>|已过时<sup>3</sup>
-每个订阅的[地缘组](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)数|已过时<sup>3</sup>|已过时<sup>3</sup>
+每个订阅的[云服务数](/documentation/articles/cloud-services-choose-me)|不适用<sup>3</sup>|不适用<sup>3</sup>
+每个订阅的[地缘组](/documentation/articles/virtual-networks-migrate-to-regional-vnet)数|不适用<sup>3</sup>|不适用<sup>3</sup>
 
 <sup>1</sup>默认限制根据产品类别类型（例如免费试用、即用即付，等等）而有所不同。
 
@@ -17,4 +17,4 @@
 
 <sup>3</sup>使用 Azure 资源组和 Azure 资源管理器时不再需要这些功能。
 
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0606_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Connect Health 代理安装 | Microsoft Azure"
+	pageTitle="Azure AD Connect Health 代理安装 | Azure"
 	description="本页与 Azure AD Connect Health 相关，介绍如何安装用于 AD FS 和同步的代理。"
 	services="active-directory"
 	documentationCenter=""
@@ -162,7 +162,7 @@
 你可以将 Azure AD Connect Health 代理配置为使用 HTTP 代理。
 
 >[AZURE.NOTE]
-- 无法使用“Netsh WinHttp set ProxyServerAddress”，因为代理使用 System.Net 而不是 Microsoft Windows HTTP 服务发出 Web 请求。
+- 无法使用“Netsh WinHttp set ProxyServerAddress”，因为代理使用 System.Net（而不是 Microsoft Windows HTTP 服务）发出 Web 请求。
 - 配置的 Http 代理地址将用于传递加密的 Https 消息。
 - 不支持经过身份验证的代理（使用 HTTPBasic）。
 
@@ -234,4 +234,4 @@ role 参数目前可接受以下值：
 * [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync)
 * [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0606_2016-->

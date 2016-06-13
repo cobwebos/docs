@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="如何通过 Ruby 使用 Azure 表存储 | Azure" 
-	description="了解如何使用 Azure 中的 Azure 表存储。相关代码示例是使用 Ruby API 编写的。"
+	description="使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。"
 	services="storage"
 	documentationCenter="ruby"
 	authors="tfitzmac"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="04/10/2016"
+	ms.date="04/29/2016"
 	wacn.date=""/>
 
 
@@ -160,5 +160,4 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 - [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 - GitHub 上的 [Azure SDK for Ruby](http://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 
-
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0606_2016-->
