@@ -154,4 +154,4 @@ Azure AD Connect 同步随附一个适用于大部分客户和拓扑的默认配
 有关将本地目录扩展到云的 Ignite 2015 演示文稿。
 
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0606_2016--->

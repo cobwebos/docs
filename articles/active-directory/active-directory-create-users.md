@@ -123,4 +123,4 @@
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0516_2016--->

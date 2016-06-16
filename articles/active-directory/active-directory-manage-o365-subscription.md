@@ -67,4 +67,4 @@
 ##后续步骤
 有关订阅与目录之间关系的详细信息，请参阅[订阅如何与目录关联](/documentation/articles/active-directory-how-subscriptions-associated-directory)。
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0516_2016--->

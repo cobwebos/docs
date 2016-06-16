@@ -28,4 +28,4 @@ Azure Active Directory Connect 向导是用于将本地目录与 Azure Active Di
 ## 其他资源
 [Azure Active Directory 文档](/documentation/services/identity/)
 
-<!--HONumber=51-->
+<!--HONumber=51--->
