@@ -89,4 +89,4 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 - [Customize Linux-based HDInsight clusters using Script Action（使用脚本操作自定义基于 Linux 的 HDInsight 群集）](/documentation/articles/hdinsight-hadoop-customize-cluster-v1)：了解如何使用脚本操作来安装其他应用程序。
 - [Create Linux-based Hadoop clusters in HDInsight using ARM templates（使用 ARM 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集）](/documentation/articles/hdinsight-hadoop-create-linux-clusters-arm-templates)：了解如何调用 ARM 模板来创建 HDInsight 群集。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0530_2016--->
