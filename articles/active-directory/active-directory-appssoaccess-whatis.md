@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory 的应用程序访问与单一登录是什么？| Microsoft Azure"
+	pageTitle="Azure Active Directory 的应用程序访问与单一登录是什么？| Azure"
 	description="使用 Azure Active Directory 启用单一登录，以访问完成业务所需的全部 SaaS 和 Web 应用程序。"
 	services="active-directory"
 	documentationCenter=""
@@ -76,7 +76,7 @@ Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协�
 
 对于基于密码的 SSO，最终用户的浏览器可以是：
 
-- Windows 7 或更高版本上的 Internet Explorer 8、9、10 和 11（另请参阅 [IE Extension Deployment Guide](active-directory-saas-ie-group-policy.md)（IE 扩展部署指南））
+- Windows 7 或更高版本上的 Internet Explorer 8、9、10 和 11（另请参阅 [IE Extension Deployment Guide（IE 扩展部署指南）](active-directory-saas-ie-group-policy.md)）
 - Chrome -- 在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上
 - Firefox 26.0 或更高版本 -- 在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上
 
@@ -210,7 +210,7 @@ https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05
 - [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
 - [使用 Cloud App Discovery 查找未经认可的云应用程序](active-directory-cloudappdiscovery-whatis.md)
-- [Introduction to Managing Access to Apps](active-directory-managing-access-to-apps.md)（管理对应用的访问简介）
+- [Introduction to Managing Access to Apps（管理对应用的访问简介）](active-directory-managing-access-to-apps.md)
 - [比较 Azure AD 中用于管理外部标识的功能](active-directory-b2b-compare-external-identities.md)
 
 <!--Image references-->
@@ -221,4 +221,4 @@ https://myapps.microsoft.com/contosobuild.com/signin/Twitter/230848d52c8745d4b05
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0613_2016-->

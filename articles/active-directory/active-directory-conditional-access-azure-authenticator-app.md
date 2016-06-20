@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="适用于 Android 的 Azure 验证器 | Microsoft Azure"
+	pageTitle="适用于 Android 的 Azure 验证器 | Azure"
 	description="Microsoft Azure 身份验证器应用可用于登录以访问工作资源。Azure 验证器应用对移动设备显示警报，以通知你有一个等待中的双因素验证请求。"
 	services="active-directory"
 	documentationCenter=""
@@ -107,11 +107,11 @@
 ##卸载应用
 
 在 Samsung Android 设备上，必须先按如下所述删除设备管理员特权才能卸载应用：
-1. 1\. 在“设置”部分的“系统”下，选择“安全性”。
+1. 在“设置”部分的“系统”下，选择“安全性”。
 2. 在“设备管理”中单击“设备管理员”。确保清除“Azure 验证器”旁边的复选框。
 
 ##故障排除
 
 如果你看到“密钥存储错误”，则可能表示你未使用 PIN 设置锁屏。若要解决此问题，请卸载 Azure 验证器应用，配置用于锁屏的 PIN，然后重新安装该应用。
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -10,7 +10,7 @@
 
 <tags
    ms.service="billing"
-   ms.date="04/13/2016"
+   ms.date="04/28/2016"
    wacn.date=""/>
 
 
@@ -24,11 +24,11 @@ Azure 订阅的费用因资费套餐而异。某些资费套餐（例如 Visual 
 
 ### 查看或下载 Azure 帐单：
 
-在 [Azure 帐户门户](https://account.windowsazure.cn/subscriptions)中，你可以查看当前的帐单并下载过去的帐单。
+在 [Azure 帐户中心](https://account.windowsazure.cn/subscriptions)，可以查看当前的帐单并下载过去的帐单。
 
 查看或下载帐单：
 
-1. 使用你的 Microsoft 帐户 ID 或者工作或学校帐户 ID 登录到[帐户门户](https://account.windowsazure.cn/subscriptions)。
+1. 使用 Microsoft 帐户 ID 或者工作或学校帐户 ID 登录到[帐户中心](https://account.windowsazure.cn/subscriptions)。
 
 2. 单击你要查看其详细信息和使用量的订阅。
 
@@ -37,7 +37,7 @@ Azure 订阅的费用因资费套餐而异。某些资费套餐（例如 Visual 
     ![摘要 - 帐单 1](./media/billing-understand-your-bill/ContentViewaBillforMA1.png)
 
 
-4. “帐单”部分中列出了您最近 6 个计费周期（外加当前的未计费周期）的对帐单。当前期间的对帐单是生成估算值时的估计费用。此信息每天只会更新一次，而且可能不包含截到本日为止的所有使用量。你的每月帐单可能与这项估计有所不同。
+4. “帐单历史记录”部分列出了以前的计费周期以及当前未开票期间的对帐单。当前期间的对帐单是生成估算值时的估计费用。此信息每天只会更新一次，而且可能不包含截到本日为止的所有使用量。你的每月帐单可能与这项估计有所不同。
 
     ![摘要 - 帐单 2](./media/billing-understand-your-bill/ContentViewaBillforMA2.png)
 
@@ -52,8 +52,8 @@ Azure 订阅的费用因资费套餐而异。某些资费套餐（例如 Visual 
     ![摘要 - 帐单 5](./media/billing-understand-your-bill/ContentViewaBillforMA5.png)
 
 
-***重要说明：***
-*对于国际客户，对帐单上列出的费用仅用于估算目的，因为不同的银行根据不同的兑换率计算费用。*
+**重要说明：**
+对于国际客户，对帐单上列出的费用仅用于估算目的，因为不同的银行根据不同的兑换率计算费用。
 
 
 以下是 Microsoft Azure 上提供的两种不同产品/服务的一些示例对帐单。
@@ -131,7 +131,7 @@ Microsoft Azure 付款地址。
 ![其他信息](./media/billing-understand-your-bill/AdditionalInformation.png)
 
 ### 详细使用情况
-“详细使用情况”下面的描述中提供了一个链接，单击该链接可定向到帐户门户，你可以在其中查看此订阅的详细使用情况。现在有两个版本可供下载：**.csv 版本 1** 包含旧的命名约定和使用量字段，而 **.csv 版本 2** 则包含每个类别的客户易记名称，以及其他有助于您了解在 Microsoft Azure 上使用的服务的字段。请注意，.csv 版本 1 中没有 Azure Resource Manager 详细信息。在 .csv 版本 2 中可以找到 Azure Resource Manager 信息。
+“详细使用情况”下面的描述中提供了一个链接，单击该链接可定向到帐户中心，你可以在其中查看此订阅的详细使用情况。现在有两个版本可供下载：**.csv 版本 1** 包含旧的命名约定和使用量字段，而 **.csv 版本 2** 则包含每个类别的客户易记名称，以及其他有助于您了解在 Microsoft Azure 上使用的服务的字段。请注意，.csv 版本 1 中没有 Azure Resource Manager 详细信息。在 .csv 版本 2 中可以找到 Azure Resource Manager 信息。
 
 ### 其他信息和有用资源
 此部分包含有关计算实例大小、SQL DB 费用等简单问题的链接，以及可帮助你进一步回答问题的有用链接。
@@ -199,16 +199,16 @@ SKU | SKU | 指明每个 Azure 资源的唯一系统标识符。
 已耗用 | 已耗用数量 | 包含当日已耗用的资源量。
 子区域 | 资源位置 | 指明资源正在其中运行的数据中心。
 服务 | 已耗用的服务 | 你可以利用这个列来跟踪可能无法在名称列中特别列出的单个 Azure 平台服务。此服务列将指出与使用有关的特定服务。
-不适用 | 资源组 | _**添加新列。**_ 部署的资源正在其中运行的资源组。请参阅 http://azure.microsoft.com/documentation/articles/resource-group-overview/
+不适用 | 资源组 | **添加新列。** 部署的资源正在其中运行的资源组。请参阅 http://azure.microsoft.com/documentation/articles/resource-group-overview/
 组件 | 实例 ID | 正在运行的资源的标识符。此标识符包含您在资源创建时为其指定的名称。
-不适用 | 标记 | _**添加新列。**_ Azure 中的新资源类型，允许您标记资源。请参阅 http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/
+不适用 | 标记 | **添加新列。** Azure 中的新资源类型，允许您标记资源。请参阅 http://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/
 其他信息 | 其他信息 | 与服务相关的其他元数据。
 服务信息 1 | 服务信息 1 | 此列包含订阅上服务所属的项目名称。
 服务信息 2 | 服务信息 2 | 这是一个旧字段，可以捕获可选的服务特定元数据。
 
 除了一些新字段和对 csv 版本 2 的名称更改之外，将对以下字段中的数据进行标准格式化：
 
-- **实例 ID**：“实例 ID”字段表示用户为已预配的服务指定的标识符。目前，有两种格式的实例 ID：资源名称或完全限定的资源 ID。Microsoft Azure 服务正在转换为对实例 ID 使用标准化的完全限定的资源 ID 格式 _**(/subscriptions/<subscription id>/resourcegroups/<resourcegroupname>/providers/<providername>/<resourcename>)**_。在服务转换为采用新格式时，您会看到“实例 ID”数据字段从仅包含资源名称更改为包含资源 ID。资源 ID 是 [Azure 资源管理器 API](https://msdn.microsoft.com/library/azure/dn790567.aspx) 用来标识订阅中资源的格式。
+- **实例 ID**：“实例 ID”字段表示用户为已预配的服务指定的标识符。目前，有两种格式的实例 ID：资源名称或完全限定的资源 ID。Microsoft Azure 服务正在转换为对实例 ID 使用标准化的完全限定的资源 ID 格式 **(/subscriptions/<subscription id>/resourcegroups/<resourcegroupname>/providers/<providername>/<resourcename>)**。在服务转换为采用新格式时，您会看到“实例 ID”数据字段从仅包含资源名称更改为包含资源 ID。资源 ID 是 [Azure 资源管理器 API](https://msdn.microsoft.com/library/azure/dn790567.aspx) 用来标识订阅中资源的格式。
 
 ![实例 ID](./media/billing-understand-your-bill/instanceid.png)
 
@@ -229,7 +229,7 @@ SKU | SKU | 指明每个 Azure 资源的唯一系统标识符。
 
 - [Azure 计费和订阅常见问题](/documentation/articles/billing-subscription-faq)
 
-- [管理付款方式](https://msdn.microsoft.com/zh-cn/library/azure/dn736054.aspx)
+- [如何更改用于支付 Azure 订阅的信用卡](/documentation/articles/billing-how-to-change-credit-card)
 
 - [编辑现有信用卡的付款信息](https://msdn.microsoft.com/zh-cn/library/azure/dn736053.aspx)
 
@@ -242,4 +242,4 @@ SKU | SKU | 指明每个 Azure 资源的唯一系统标识符。
 
 <!--Image references-->
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0613_2016-->

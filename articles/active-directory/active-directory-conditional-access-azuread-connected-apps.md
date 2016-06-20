@@ -1,5 +1,5 @@
 <properties
-	pageTitle="适用于 SaaS 应用的 Azure 条件性访问预览版 | Microsoft Azure"
+	pageTitle="适用于 SaaS 应用的 Azure 条件性访问预览版 | Azure"
 	description="使用 Azure AD 中的条件性访问功能可以配置基于应用程序的 Multi-Factor Authentication，以及阻止不在受信任网络中的用户的访问。"
 	services="active-directory"
 	documentationCenter=""
@@ -72,12 +72,11 @@
 
 ### 访问规则的评估
 
-当用户访问使用 OAuth 2.0、OpenID Connect、SAML 或 WS-Federation 的联合应用程序时，则会计算访问规则。此外，当刷新令牌用于获取访问令牌时，则会在使用 OAuth 2.0 和 OpenID Connect 的情况下计算访问规则。如果在使用刷新令牌的情况下策略评估失败，则会返回错误 invalid\_grant，这表明用户需要通过客户端重新进行身份验证。
-配置联合身份验证服务以提供 Multi-Factor Authentication
+当用户访问使用 OAuth 2.0、OpenID Connect、SAML 或 WS-Federation 的联合应用程序时，则会计算访问规则。此外，当刷新令牌用于获取访问令牌时，则会在使用 OAuth 2.0 和 OpenID Connect 的情况下计算访问规则。如果在使用刷新令牌的情况下策略评估失败，则会返回错误 invalid\_grant，这表明用户需要通过客户端重新进行身份验证。配置联合身份验证服务以提供 Multi-Factor Authentication
 
 对于联合租户，Multi-Factor Authentication (MFA) 可能通过 Azure Active Directory 或本地 AD FS 服务器执行。
 
-默认情况下，MFA 将在由 Azure Active Directory 托管的页上进行。若要在本地配置 MFA，必须在 Azure Active Directory 中将 –SupportsMFA 属性设置为 true，或者使用适用于 Windows PowerShell 的 Azure AD 模块来进行此项设置。
+默认情况下，MFA 将在由 Azure Active Directory 托管的页上进行。若要在本地配置 MFA，必须使用适用于 Windows PowerShell 的 Azure AD 模块，在 Azure Active Directory 中将 –SupportsMFA 属性设置为 **true**。
 
 以下示例演示如何在 contoso.com 租户上使用 [Set-MsolDomainFederationSettings cmdlet](https://msdn.microsoft.com/library/azure/dn194088.aspx) 启用本地 MFA：
 
@@ -87,7 +86,7 @@
 
 ##相关文章
 
-- [保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](active-directory-conditional-access.md)
-- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+- [保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问](/documentation/articles/active-directory-conditional-access)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

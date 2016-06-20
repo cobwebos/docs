@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="代理服务的 Cloud App Discovery 注册表设置 | Microsoft Azure" 
+	pageTitle="代理服务的 Cloud App Discovery 注册表设置 | Azure" 
 	description="本主题旨在为你提供在运行 Cloud App Discovery 代理的计算机上设置必要端口所需执行的步骤。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -13,8 +13,8 @@
 
 # 代理服务的 Cloud App Discovery 注册表设置
 
-默认情况下，Cloud App Discovery 代理配置为仅使用端口 80 或 443。 
-如果计划在具有使用自定义端口（既不是 80 也不是 443）的代理服务器的环境中安装 Cloud App Discovery，则需要将代理配置为使用此端口。 
+默认情况下，Cloud App Discovery 代理配置为仅使用端口 80 或 443。
+如果计划在具有使用自定义端口（既不是 80 也不是 443）的代理服务器的环境中安装 Cloud App Discovery，则需要将代理配置为使用此端口。
 该配置以注册表项为基础。
 
 
@@ -34,10 +34,10 @@
 4. 若要打开“编辑多字符串”对话框，请双击“端口”值。
 
 
-5. 在“值数据”文本框中键入以下值，然后添加你组织所使用的所有自定义端口：<br><br>
-**80** <br>
-**8080** <br>
-**8118** <br>
+5. 在“值数据”文本框中键入以下值，然后添加你组织所使用的所有自定义端口：<br><br> 
+**80** <br> 
+**8080** <br> 
+**8118** <br> 
 **8888** <br> 
 **81** <br> 
 **12080** <br> 
@@ -60,4 +60,4 @@
 
 
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0613_2016-->

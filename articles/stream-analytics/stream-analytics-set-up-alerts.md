@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="03/18/2016" 
+	ms.date="05/03/2016" 
 	wacn.date=""/>
 
 
@@ -67,4 +67,4 @@
 - [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
 - [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0613_2016-->

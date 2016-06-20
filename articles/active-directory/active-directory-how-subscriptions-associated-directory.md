@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure 订阅与 Azure Active Directory 的关联方式 | Microsoft Azure"
+	pageTitle="Azure 订阅与 Azure Active Directory 的关联方式 | Azure"
 	description="登录 Microsoft Azure 及相关问题（例如，Azure 订阅与 Azure Active Directory 之间的关系）。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="02/11/2016"
+	ms.date="04/26/2016"
 	wacn.date=""/>
 
 # Azure 订阅与 Azure Active Directory 的关联方式
@@ -26,7 +26,7 @@ Microsoft 运行的使用者标识系统 | Microsoft 运行的企业标识系统
 使用者创建其自己的 Microsoft 帐户（例如，在注册电子邮件时） | 公司和组织创建并管理其自己的工作或学校帐户
 创建标识并将其存储在 Microsoft 帐户系统中 | 使用 Azure 或其他服务（例如 Office 365）创建标识，并将其存储在分配给组织的 Azure AD 实例中
 
-尽管 Azure 最初只允许 Microsoft 帐户用户的访问，但现在它允许来自*两个*系统的用户的访问。这种变化是通过以下方式实现的：让所有 Azure 属性信任 Azure AD 执行身份验证，让 Azure AD 对组织用户进行身份验证，并创建一种联合关系，在这种关系中，Azure AD 将信任 Microsoft 帐户使用者标识系统对使用者用户执行身份验证。因此，Azure AD 能够对“来宾”Microsoft 帐户以及“本机”Azure AD 帐户进行身份验证。
+尽管 Azure 最初只允许 Microsoft 帐户用户的访问，但现在它允许来自两个系统的用户的访问。这种变化是通过以下方式实现的：让所有 Azure 属性信任 Azure AD 执行身份验证，让 Azure AD 对组织用户进行身份验证，并创建一种联合关系，在这种关系中，Azure AD 将信任 Microsoft 帐户使用者标识系统对使用者用户执行身份验证。因此，Azure AD 能够对“来宾”Microsoft 帐户以及“本机”Azure AD 帐户进行身份验证。
 
 例如，下面这个具有 Microsoft 帐户的用户想要登录到 Azure 经典门户。
 
@@ -39,7 +39,7 @@ Microsoft 运行的使用者标识系统 | Microsoft 运行的企业标识系统
 
 ## Azure 订阅与 Azure AD 的关系
 
-每个 Azure 订阅都与某个 Azure AD 实例存在信任关系。这意味着，此订阅信任该目录对用户、服务和设备执行身份验证。多个订阅可以信任同一个目录，但一个订阅只能信任一个目录。可以在“设置”选项卡下查看你的订阅信任的目录。可以[编辑订阅设置](active-directory-understanding-resource-access.md)以更改它信任的目录。
+每个 Azure 订阅都与某个 Azure AD 实例存在信任关系。这意味着，此订阅信任该目录对用户、服务和设备执行身份验证。多个订阅可以信任同一个目录，但一个订阅只能信任一个目录。可以在“设置”选项卡下查看你的订阅信任的目录。可以[编辑订阅设置](/documentation/articles/active-directory-understanding-resource-access)以更改它信任的目录。
 
 订阅与目录之间的这种信任关系不同于订阅与 Azure 中所有其他资源（网站、数据库等）之间的信任关系，在后一种关系中，这些资源更像是订阅的子资源。如果某个订阅过期，则对该订阅关联的其他那些资源的访问权限也将被终止。但是，目录将保留在 Azure 中，并且你可以将另一个订阅与该目录相关联，然后继续管理目录用户。
 
@@ -52,7 +52,7 @@ Microsoft 运行的使用者标识系统 | Microsoft 运行的企业标识系统
 ![][2]
 
 ## 如何管理订阅和目录
-Azure 订阅的管理角色可以管理与 Azure 订阅绑定的资源。[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)中介绍了这些角色以及订阅管理最佳实践。
+Azure 订阅的管理角色可以管理与 Azure 订阅绑定的资源。[在 Azure Active Directory 中分配管理员角色](/documentation/articles/active-directory-assign-admin-roles)中介绍了这些角色以及订阅管理最佳实践。
 
 默认情况下，当你注册时，系统将为你分配服务管理员角色。如果其他人需要使用同一个订阅登录和访问服务，则你可以将他们添加为协同管理员。服务管理员和协同管理员可以是 Microsoft 帐户，也可以是 Azure 订阅信任的 Azure AD 组织内部的工作或学校帐户。
 
@@ -121,13 +121,13 @@ Azure AD 提供一组不同的管理角色，用于管理目录和标识相关�
 
 ## 后续步骤
 
-- 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅[如何添加或更改 Azure 管理员角色](../billing-add-change-azure-subscription-administrator.md)
+- 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅[如何添加或更改 Azure 管理员角色](/documentation/articles/billing-add-change-azure-subscription-administrator)
 
-- 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅[了解 Azure 中的资源访问权限](active-directory-understanding-resource-access.md)
+- 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅[了解 Azure 中的资源访问权限](/documentation/articles/active-directory-understanding-resource-access)
 
-- 有关如何在 Azure AD 中分配角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)
+- 有关如何在 Azure AD 中分配角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](/documentation/articles/active-directory-assign-admin-roles)
 
-- [以组织身份注册 Azure](sign-up-organization.md)
+- [以组织身份注册 Azure](/documentation/articles/sign-up-organization)
 
 
 <!--Image references-->
@@ -136,4 +136,4 @@ Azure AD 提供一组不同的管理角色，用于管理目录和标识相关�
 [3]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_SignInDisambiguation.PNG
 
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

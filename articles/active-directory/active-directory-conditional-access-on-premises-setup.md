@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Azure Active Directory 设备注册设置本地条件性访问 | Microsoft Azure"
+	pageTitle="使用 Azure Active Directory 设备注册设置本地条件性访问 | Azure"
 	description="在 Windows Server 2012 R2 中使用 Active Directory 联合身份验证服务 (AD FS) 启用对本地应用程序的条件性访问的分步指南。"
 	services="active-directory"
 	documentationCenter=""
@@ -245,6 +245,6 @@ Azure Active Directory 设备注册为 iOS 设备使用无线配置文件注册�
 
 ##相关文章
 
-- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 Azure Active Directory 中分配管理员角色 | Microsoft Azure"
+	pageTitle="在 Azure Active Directory 中分配管理员角色 | Azure"
 	description="介绍 Azure Active Directory 提供的管理员角色，以及如何分配这些角色。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="02/18/2016"
+	ms.date="04/26/2016"
 	wacn.date=""/>
 
 # 在 Azure Active Directory (Azure AD) 中分配管理员角色
@@ -21,11 +21,15 @@
 提供以下管理员角色：
 
 - **计费管理员**：进行采购、管理订阅、管理支持票证并监视服务运行状况。
+
 - **全局管理员**：有权访问所有管理功能。注册 Azure 帐户的人员将成为全局管理员。只有全局管理员才能分配其他管理员角色。你的公司中可以有多个全局管理员。
+
 - **密码管理员**：重置密码、管理服务请求并监视服务运行状况。密码管理员只能为用户和其他密码管理员重置密码。
+
 - **服务管理员**：管理服务请求并监视服务运行状况。
 
 	> [AZURE.NOTE] 若要为用户分配服务管理员角色，全局管理员必须先在服务（例如 Exchange Online）中将管理权限分配给用户，然后再在 Azure 经典门户中将服务管理员角色分配给用户。
+
 - **用户管理员**：重置密码、监视服务运行状况，并管理用户帐户、用户组和服务请求。用户管理管理员权限存在一些限制。例如，他们不能删除全局管理员或创建其他管理员。另外，他们也不能为计费管理员、全局管理员和服务管理员重置密码。
 
 ## 管理员权限
@@ -82,16 +86,16 @@
 
 ## 后续步骤
 
-- 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅 [How to add or change Azure administrator roles（如何添加或更改 Azure 管理员角色）](../billing-add-change-azure-subscription-administrator.md)
+- 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅[如何添加或更改 Azure 管理员角色](/documentation/articles/billing-add-change-azure-subscription-administrator)
 
-- 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅 [Understanding resource access in Azure（了解 Azure 中的资源访问）](active-directory-understanding-resource-access.md)
+- 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅[了解 Azure 中的资源访问权限](/documentation/articles/active-directory-understanding-resource-access)
 
-- 有关 Azure Active Directory 如何与你的 Azure 订阅相关联的信息，请参阅 [How Azure subscriptions are associated with Azure Active Directory（Azure 订阅与 Azure Active Directory 的关联方式）](active-directory-how-subscriptions-associated-directory.md)
+- 有关 Azure Active Directory 如何与你的 Azure 订阅相关联的详细信息，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式](/documentation/articles/active-directory-how-subscriptions-associated-directory)
 
-- [管理用户](active-directory-create-users.md)
+- [管理用户](/documentation/articles/active-directory-create-users)
 
-- [管理密码](active-directory-manage-passwords.md)
+- [管理密码](/documentation/articles/active-directory-manage-passwords)
 
-- [管理组](active-directory-manage-groups.md)
+- [管理组](/documentation/articles/active-directory-manage-groups)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -18,17 +18,14 @@ IT 管理员可以将已加入 Windows 7 域的设备配置为自动注册到 Az
 
 ##在已加入 Windows 7 域的设备上安装设备注册软件包
 
-Windows 7 的设备注册以可下载的 MSI 包形式提供。必须将此包安装到已加入 Active Directory 域的 Windows 7 计算机上。应该使用软件分发系统（如 System Center Configuration Manager）部署此包。MSI 包使用 /quiet 参数支持标准的无提示安装选项。可在 Microsoft Connect 网站上下载该软件包。在这里，你可以先选择“Windows 7 的工作区加入”，然后再进行下载。
+Windows 7 的设备注册以[可下载的 MSI 包](https://connect.microsoft.com/site1164)形式提供。必须将此包安装到已加入 Active Directory 域的 Windows 7 计算机上。应该使用软件分发系统（如 System Center Configuration Manager）部署此包。MSI 包使用 /quiet 参数支持标准的无提示安装选项。可在 [Microsoft Connect 网站](https://connect.microsoft.com/site1164)上下载该软件包。在这里，你可以先选择“Windows 7 的工作区加入”，然后再进行下载。
 
 ![](./media/active-directory-conditional-access/device-registration-process-windows7.gif)
 
 ## Azure Active Directory 中的“工作区加入”
 对于已加入 Windows 7 域的设备，设备注册不需要也不提供用户界面。安装到计算机上后，任何登录到计算机的域用户都将自动且无提示地注册到 Azure AD 中的一个设备对象。在 Azure AD 中，物理设备的每个已注册用户都有一个设备对象。
 
-安装程序会在系统上创建一项计划任务，该任务将在用户的上下文中运行并在用户登录时触发。当用户登录完成之后，该任务将以无提示方式向 Azure AD 注册用户和设备。
-可以在“Microsoft”>“工作区加入”下面的“任务计划程序库”中找到该计划任务。
-该任务将运行并注册所有登录到计算机的 Active Directory 用户。
-下图列出了用于自动设备注册的分步过程。
+安装程序会在系统上创建一项计划任务，该任务将在用户的上下文中运行并在用户登录时触发。当用户登录完成之后，该任务将以无提示方式向 Azure AD 注册用户和设备。可以在“Microsoft”>“工作区加入”下面的“任务计划程序库”中找到该计划任务。该任务将运行并注册所有登录到计算机的 Active Directory 用户。下图列出了用于自动设备注册的分步过程。
 
 ![](./media/active-directory-conditional-access/automatic-device-registration-windows7.png)
 
@@ -56,9 +53,9 @@ Windows 7 计算机上的 Windows 事件日志将显示与“工作区加入”�
 
 ## 其他主题
 
-- [Azure Active Directory 设备注册概述](active-directory-conditional-access-device-registration-overview.md)
-- [将已加入 Windows 域的设备自动注册到 Azure Active Directory](active-directory-conditional-access-automatic-device-registration.md)
-- [为加入 Windows 8.1 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
-- [将已加入域的 Windows 10 设备自动注册到 Azure Active Directory](active-directory-azureadjoin-devices-group-policy.md)
+- [Azure Active Directory 设备注册概述](/documentation/articles/active-directory-conditional-access-device-registration-overview)
+- [将已加入 Windows 域的设备自动注册到 Azure Active Directory](/documentation/articles/active-directory-conditional-access-automatic-device-registration)
+- [为加入 Windows 8.1 域的设备配置自动设备注册](/documentation/articles/active-directory-conditional-access-automatic-device-registration-windows-8-1)
+- [将已加入域的 Windows 10 设备自动注册到 Azure Active Directory](/documentation/articles/active-directory-azureadjoin-devices-group-policy)
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="安装期间使用 Azure AD 设置新设备 | Microsoft Azure"
+	pageTitle="安装期间使用 Azure AD 设置新设备 | Azure"
 	description="本主题说明用户在其首次运行体验过程中如何设置 Azure AD Join。"
 	services="active-directory"
 	documentationCenter=""
@@ -42,11 +42,12 @@
 > [AZURE.NOTE] 不支持在 Windows 全新体验期间加入本地 Windows Server Active Directory 域。因此，如果你打算将计算机加入域，则应改为选择链接“使用本地帐户设置 Windows”。然后，你就可以像往常一样通过计算机上的设置加入域。
 
 ## 其他信息
-* [面向企业的 Windows 10：在工作中使用设备的方式](active-directory-azureadjoin-windows10-devices-overview.md)
-* [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
-* [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](active-directory-azureadjoin-passport.md)
-* [了解 Azure AD Join 的使用方案](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](active-directory-azureadjoin-devices-group-policy.md)
-* [设置 Azure AD Join](active-directory-azureadjoin-setup.md)
+* [面向企业的 Windows 10：在工作中使用设备的方式](/documentation/articles/active-directory-azureadjoin-windows10-devices-overview)
+* [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](/documentation/articles/active-directory-azureadjoin-user-upgrade)
+* [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](/documentation/articles/active-directory-azureadjoin-passport)
+* [了解 Azure AD Join 的使用方案](/documentation/articles/active-directory-azureadjoin-deployment-aadjoindirect)
+* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](/documentation/articles/active-directory-azureadjoin-devices-group-policy)
+* [设置 Azure AD Join](/documentation/articles/active-directory-azureadjoin-setup)
 
-<!---HONumber=Mooncake_0509_2016-->
+
+<!---HONumber=Mooncake_0613_2016-->

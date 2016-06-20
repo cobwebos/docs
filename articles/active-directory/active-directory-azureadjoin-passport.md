@@ -1,5 +1,5 @@
 <properties
-	pageTitle="通过 Microsoft Passport 在不使用密码的情况下进行身份验证 | Microsoft Azure"
+	pageTitle="通过 Microsoft Passport 在不使用密码的情况下进行身份验证 | Azure"
 	description="概述 Microsoft Passport 并提供有关部署 Microsoft Passport 的其他信息。"
 	services="active-directory"
 	documentationCenter=""
@@ -66,15 +66,16 @@
 
 * 用户的计算机运行 Windows 10 专业版或企业版。
 
-有关详细的部署说明，请参阅[在组织中启用 Microsoft Passport for Work](active-directory-azureadjoin-passport-deployment.md)。
+有关详细的部署说明，请参阅[在组织中启用 Microsoft Passport for Work](/documentation/articles/active-directory-azureadjoin-passport-deployment)。
 
 
 ## 其他信息
+* [面向企业的 Windows 10：在工作中使用设备的方式](/documentation/articles/active-directory-azureadjoin-windows10-devices-overview)
+* [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](/documentation/articles/active-directory-azureadjoin-user-upgrade)
+* [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](/documentation/articles/active-directory-azureadjoin-passport)
+* [了解 Azure AD Join 的使用方案](/documentation/articles/active-directory-azureadjoin-deployment-aadjoindirect)
+* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](/documentation/articles/active-directory-azureadjoin-devices-group-policy)
+* [设置 Azure AD Join](/documentation/articles/active-directory-azureadjoin-setup)
 
-* [面向企业的 Windows 10：在工作中使用设备的方式](active-directory-azureadjoin-windows10-devices-overview.md)
-* [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
-* [了解 Azure AD Join 的使用方案](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](active-directory-azureadjoin-devices-group-policy.md)
-* [设置 Azure AD Join](active-directory-azureadjoin-setup.md)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0613_2016-->

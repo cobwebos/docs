@@ -9,8 +9,8 @@
    tags="azure-resource-manager,azure-service-management"/>
 <tags 
    ms.service="vpn-gateway"
-   ms.date="03/18/2016"
-   wacn.date="04/19/2016" />
+   ms.date="05/12/2016"
+   wacn.date="06/08/2016" />
 
 # 关于 VPN 网关
 
@@ -35,6 +35,7 @@ VPN 网关（也称为 Azure 虚拟网络网关）用于在虚拟网络和本地
 
 	Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 
+>[AZURE.IMPORTANT] 确保未对 GatewaySubnet 应用网络安全组 (NSG)，因为这可能会导致连接失败。
 
 ## <a name="gwtype"></a>网关类型
 
@@ -44,7 +45,7 @@ VPN 网关（也称为 Azure 虚拟网络网关）用于在虚拟网络和本地
 - ExpressRoute
 
 
-此 Resource Manager 部署模型示例将 -GatewayType 指定为 *Vpn*。在创建网关时，你必须确保用于配置的网关类型正确。
+此 Resource Manager 部署模型示例将 -GatewayType 指定为 Vpn。在创建网关时，你必须确保用于配置的网关类型正确。
 
 	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'China North' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
 
@@ -64,7 +65,7 @@ VPN 网关（也称为 Azure 虚拟网络网关）用于在虚拟网络和本地
 
 
 下表显示网关类型和估计的聚合吞吐量。
-网关 SKU 之间并无定价差异。有关定价的信息，请参阅 [VPN 网关定价](/home/features/vpn-gateway/#price)。此表适用于 Resource Manager 与经典部署模型。
+网关 SKU 之间并无定价差异。有关定价的信息，请参阅 [VPN 网关定价](/home/features/vpn-gateway#price)。此表适用于 Resource Manager 与经典部署模型。
 
 [AZURE.INCLUDE [vpn-gateway-table-gwtype-aggthroughput](../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -96,7 +97,7 @@ VPN 网关（也称为 Azure 虚拟网络网关）用于在虚拟网络和本地
 	New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg -Location 'China North' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 
 
-## <a name="lng"></a>局域网网关
+## <a name="lng"></a>本地网关
 
 局域网网关通常是指你的本地位置。在经典部署模型中，局域网网关称为本地站点。指定局域网网关的名称（即本地 VPN 设备的公共 IP 地址），并指定位于本地位置的地址前缀。Azure 将查看网络流量的目标地址前缀、查阅你为局域网网关指定的配置，并相应地路由数据包。你可以根据需要修改这些地址前缀。
 
@@ -104,7 +105,7 @@ VPN 网关（也称为 Azure 虚拟网络网关）用于在虚拟网络和本地
 
 ### 修改地址前缀 - Resource Manager
 
-修改地址前缀的过程根据是否已创建 VPN 网关而有所不同。请参阅以下文章部分：[Modify address prefixes for a local network gateway（修改局域网网关的地址前缀）](/documentation/articles/vpn-gateway-create-site-to-site-rm-powershell/#modify)。
+修改地址前缀的过程根据是否已创建 VPN 网关而有所不同。请参阅以下文章部分：[修改本地网关的地址前缀](/documentation/articles/vpn-gateway-create-site-to-site-rm-powershell/#modify)。
 
 在以下示例中，你可以看到要指定名为 MyOnPremiseWest 的局域网网关，其中包含两个 IP 地址前缀。
 
@@ -135,4 +136,4 @@ VPN 网关（也称为 Azure 虚拟网络网关）用于在虚拟网络和本地
 
  
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0613_2016-->

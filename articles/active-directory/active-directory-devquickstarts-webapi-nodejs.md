@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD NodeJS 入门 | Microsoft Azure"
+	pageTitle="Azure AD NodeJS 入门 | Azure"
 	description="如何生成一个与 Azure AD 集成以进行身份验证的 Node.js REST Web API。"
 	services="active-directory"
 	documentationCenter="nodejs"
@@ -44,7 +44,7 @@
 
 ## 2\.创建应用程序
 
-你现在需要在目录中创建应用，以便为 Azure AD 提供一些必要信息，让它与应用安全地通信。在此案例中，因为客户端应用和 Web API 会组成一个逻辑应用，所以将由单一**应用程序 ID** 表示。若要创建应用，请遵循[这些说明](active-directory-how-applications-are-added.md)。如果你要生成业务线应用，[这些附加说明可能很有用](active-directory-applications-guiding-developers-for-lob-applications.md)。
+你现在需要在目录中创建应用，以便为 Azure AD 提供一些必要信息，让它与应用安全地通信。在此案例中，因为客户端应用和 Web API 会组成一个逻辑应用，所以将由单一**应用程序 ID** 表示。若要创建应用，请遵循[这些说明](/documentation/articles/active-directory-how-applications-are-added)。如果你要生成业务线应用，[这些附加说明可能很有用](active-directory-applications-guiding-developers-for-lob-applications.md)。
 
 请务必：
 
@@ -338,9 +338,9 @@ var serverURI = (process.env.PORT) ? config.creds.mongoose_auth_mongohq : config
 
 现在，我们已将这三个文件统一放在 REST API 服务中，接下来让我们的准备工作发挥作用。
 
-对于本演练，我们将使用 MongoDB 来存储**步骤 4** 中所述的任务。
+对于本演练，我们将使用 MongoDB 来存储 **步骤 4** 中所述的任务。
 
-回顾我们在 **步骤 11**中创建的 `config.js` 文件，我们将数据库称为 `tasklist`，因为这是我们在 mogoose\_auth\_local 连接 URL 的末尾放置的内容。你无需事先在 MongoDB 中创建此数据库，当你首次运行服务器应用程序时，系统将创建此数据库（假定它不存在）。
+回顾我们在 **步骤 11** 中创建的 `config.js` 文件，我们将数据库称为 `tasklist`，因为这是我们在 mogoose\_auth\_local 连接 URL 的末尾放置的内容。你无需事先在 MongoDB 中创建此数据库，当你首次运行服务器应用程序时，系统将创建此数据库（假定它不存在）。
 
 现在，我们已告诉服务器要使用哪个 MongoDB 数据库，接下来我们需要编写一些附加的代码，以便为服务器任务创建模型和架构。
 
@@ -727,7 +727,7 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
 然后，切换到目录并开始运行。
 
-`$ cd azuread`
+`$ cd azuread` 
 `$ node server.js`
 
 `$ curl -isS http://127.0.0.1:8080 | json`
@@ -938,4 +938,4 @@ Transfer-Encoding: chunked
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

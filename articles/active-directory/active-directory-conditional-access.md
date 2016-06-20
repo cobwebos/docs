@@ -1,5 +1,5 @@
 <properties
-	pageTitle="保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问 | Microsoft Azure"  
+	pageTitle="保护对 Office 365 和其他连接到 Azure Active Directory 的应用的访问 | Azure"  
     description="借助条件性访问控制，Azure Active Directory 会在验证用户身份时先检查你选取的特定条件，然后才允许访问应用程序。一旦符合这些条件，用户就会通过身份验证并获权访问应用程序。"  
     services="active-directory" 
 	keywords="对应用的条件性访问, 使用 Azure AD 进行条件性访问, 保护对公司资源的访问, 条件性访问策略" 
@@ -41,13 +41,11 @@
 ## 条件性访问 — 内容映射  
 以下内容映射列出了进一步了解在当前部署中启用条件性访问所需参考的文档
 
-
 | 方案 | 文章 |
 |------------------------------------------------------|----------|
-| 保护公司资源免受网络钓鱼攻击 |[开始使用 MFA 和 Extranet 进行 AAD SaaS 应用的条件性访问](active-directory-conditional-access-azuread-connected-apps.md)<br><br>[Azure AD 应用的条件性访问](active-directory-conditional-access-technical-reference.md)<br><br>[如何配置 MFA](multi-factor-authentication-get-started-cloud.md)<br><br>[将 Azure Multi-Factor Authentication 与 AD FS 配合使用来保护云资源](https://technet.microsoft.com/library/dn758113.aspx)<br><br>[每用户 MFA 注意事项](multi-factor-authentication-end-user-manage-settings.md)<br><br>[来自 Extranet 的 MFA](multi-factor-authentication-get-started-adfs-cloud.md)|
-| 保护丢失/遭窃设备上的公司数据 |[设备注册服务](active-directory-conditional-access-device-registration-overview.md)<br><br> [注册已加入域的设备](active-directory-azureadjoin-setup.md)<br><br> [使用 Azure AD 中注册的设备进行本地条件性访问](active-directory-conditional-access-on-premises-setup.md) <br><br>[为加入域的 Windows 7 设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows7.md) <br><br>[为加入域的 Windows 8.1 设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows8_1.md) <br><br>[Office 365 服务的条件性访问设备策略](active-directory-conditional-access-device-policies.md)|
-| 其他信息 |[条件性访问常见问题解答](active-directory-conditional-faqs.md)|
+| 保护公司资源免受网络钓鱼攻击 |[开始使用 MFA 和 Extranet 进行 AAD SaaS 应用的条件性访问](/documentation/articles/active-directory-conditional-access-azuread-connected-apps)<br><br>[Azure AD 应用的条件性访问](/documentation/articles/active-directory-conditional-access-technical-reference)<br><br>[如何配置 MFA](/documentation/articles/multi-factor-authentication-get-started-cloud)<br><br>[将 Azure Multi-Factor Authentication 与 AD FS 配合使用来保护云资源](https://technet.microsoft.com/library/dn758113.aspx)<br><br>[每用户 MFA 注意事项](/documentation/articles/multi-factor-authentication-end-user-manage-settings)<br><br>[来自 Extranet 的 MFA](/documentation/articles/multi-factor-authentication-get-started-adfs-cloud)|
+| 保护丢失/遭窃设备上的公司数据 |[设备注册服务](/documentation/articles/active-directory-conditional-access-device-registration-overview)<br><br> [注册已加入域的设备](/documentation/articles/active-directory-azureadjoin-setup)<br><br> [使用 Azure AD 中注册的设备进行本地条件性访问](/documentation/articles/active-directory-conditional-access-on-premises-setup) <br><br>[为加入域的 Windows 7 设备配置自动设备注册](/documentation/articles/active-directory-conditional-access-automatic-device-registration-windows7) <br><br>[为加入域的 Windows 8.1 设备配置自动设备注册](/documentation/articles/active-directory-conditional-access-automatic-device-registration-windows8_1) <br><br>[Office 365 服务的条件性访问设备策略](/documentation/articles/active-directory-conditional-access-device-policies)|
+| 其他信息 |[条件性访问常见问题解答](/documentation/articles/active-directory-conditional-faqs)|
 
 
-
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

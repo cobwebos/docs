@@ -9,11 +9,12 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="09/21/2015"
-	wacn.date=""/>
+	ms.date="04/26/2016"
+	ms.author="curtand"/>
 
 # 了解有关 Azure AD 的详细信息
 
+### 本主题的其他相关文章
 [什么是 Azure AD？](/documentation/articles/active-directory-whatis)<br>
 
 [它的工作原理是怎样的？](/documentation/articles/active-directory-works)<br>
@@ -38,4 +39,6 @@
 * [以组织身份注册 Azure](/documentation/articles/sign-up-organization)
 * [Azure 标识](/documentation/articles/fundamentals-identity)
 
-<!---HONumber=79-->
+
+
+<!---HONumber=Mooncake_0613_2016-->

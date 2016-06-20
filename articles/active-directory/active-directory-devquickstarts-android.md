@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Android 入门 | Microsoft Azure"
+	pageTitle="Azure AD Android 入门 | Azure"
 	description="如何生成一个与 Azure AD 集成以方便登录，并使用 OAuth 调用 Azure AD 保护 API 的 Android 应用程序。"
 	services="active-directory"
 	documentationCenter="android"
@@ -16,9 +16,9 @@
 
 [AZURE.INCLUDE [active-directory-devquickstarts-switcher](../includes/active-directory-devquickstarts-switcher)]
 
-[AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
+[AZURE.INCLUDE [active-directory-devguide](../includes/active-directory-devguide.md)]
 
-如果你要开发桌面应用程序，Azure AD 可让你简单直接地使用用户的 Active Directory 帐户对其进行身份验证。它还可以让应用程序安全地使用 Azure AD 保护的任何 Web API，例如 Office 365 Api 或 Azure API。
+如果你要开发桌面应用程序，Azure AD 可让你简单直接地使用用户的 Active Directory 帐户对其进行身份验证。它还可以让应用程序安全地使用 Azure AD 保护的任何 Web API，例如 Office 365 API 或 Azure API。
 
 对于需要访问受保护资源的 Android 客户端，Azure AD 提供 Active Directory 身份验证库 (ADAL)。在本质上，ADAL 的唯一用途就是方便应用程序获取访问令牌。为了演示这种简便性，我们生成了一个 Android 待办事项列表应用程序，其中包括：
 
@@ -30,11 +30,11 @@
 
 ## 步骤 1：下载并运行 Node.js REST API TODO 示例服务器
 
-专门编写这个示例是为了与用于生成 Microsoft Azure Active Directory 的单租户待办事项 REST API 的现有示例配合使用。这是本快速入门教程的先决条件。
+专门编写这个示例是为了与用于生成 Microsoft Azure Active Directory 的单租户 To-Do REST API 的现有示例配合工作。这是本快速入门教程的先决条件。
 
 有关如何设置的信息，请访问我们的现有示例：
 
-* [适用于 Node.js 的 Microsoft Azure Active Directory 示例 REST API 服务](active-directory-devquickstarts-webapi-nodejs)
+* [适用于 Node.js 的 Microsoft Azure Active Directory 示例 REST API 服务](/documentation/articles/active-directory-devquickstarts-webapi-nodejs)
 
 ## 步骤 2：向 Microsoft Azure AD 租户注册 Web API
 
@@ -266,8 +266,7 @@ dependencies {
      mContext.acquireTokenSilent(resource, clientid, userId, callback );
     ```
 
-11. **Broker**：
-  Microsoft Intune 的公司门户应用程序将提供代理组件。如果在验证器中创建了一个用户帐户并且开发人员选择不跳过代理帐户，ADAL 将使用代理帐户。开发人员可以使用以下操作跳过代理用户：
+11. **Broker**：Microsoft Intune 的公司门户应用程序将提供代理组件。如果在验证器中创建了一个用户帐户并且开发人员选择不跳过代理帐户，ADAL 将使用代理帐户。开发人员可以使用以下操作跳过代理用户：
 
     ```java
      AuthenticationSettings.Instance.setSkipBroker(true);
@@ -289,7 +288,7 @@ dependencies {
  * MANAGE\_ACCOUNTS
 
 
-使用本演练时，你应会获得与 Azure Active Directory 成功集成所需的项目。有关此工作的更多示例，请访问 GitHub 上的 AzureADSamples/存储库。
+使用本演练时，你应会获得与 Azure Active Directory 成功集成所需的项目。有关此工作的更多示例，请访问 GitHub 上的 AzureADSamples/ 存储库。
 
 ## 重要信息
 
@@ -299,7 +298,7 @@ dependencies {
 
 ### 代理
 
-代理组件将随 Intune 的公司门户应用程序一起提供。帐户将在帐户管理器中创建。帐户类型为“com.microsoft.workaccount”。它只允许单个 SSO 帐户。在完成一个应用程序的设备质询后，它将为此用户创建 SSO Cookie。
+代理组件将随 Microsoft Intune 的公司门户应用一起提供。帐户将在帐户管理器中创建。帐户类型为“com.microsoft.workaccount”。它只允许单个 SSO 帐户。在完成一个应用的设备质询后，它将为此用户创建 SSO Cookie。
 
 ### 机构 URL 和 ADFS
 
@@ -388,7 +387,7 @@ Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
  ```
 
  除了将所有日志消息发送到任何自定义日志回调以外，还将其发送到 logcat。
- 可以将日志从 logcat 提取到文件，如下所示：
+可以将日志从 logcat 提取到文件，如下所示：
 
  ```
   adb logcat > "C:\logmsg\logfile.txt"
@@ -414,7 +413,7 @@ Fiddler 是最方便的 HTTP 跟踪工具。使用以下链接设置该工具以
 
 ### Oauth2 持有者质询
 
-AuthenticationParameters 类提供了通过 Oauth2 持有者质询获取 authorization\_uri 的功能。
+AuthenticationParameters 类提供通过 Oauth2 持有者质询获取 authorization\_uri 的功能。
 
 ### Webview 中的会话 Cookie
 
@@ -446,12 +445,12 @@ ADAL 库包含以下两条 ProgressDialog 消息的英文字符串。
 =======
 
 ### NTLM 对话
-ADAL 版本 1.1.0 支持通过 WebViewClient 中的 onReceivedHttpAuthRequest 事件处理的 NTLM 对话。你可以自定义对话布局和字符串。### 步骤 5：下载 iOS Native Client 示例代码
+ADAL 版本 1.1.0 支持通过 WebViewClient 中的 onReceivedHttpAuthRequest 事件处理的 NTLM 对话。你可以自定义对话布局和字符串。
 
 ### 跨应用 SSO
-了解[如何使用 ADAL 在 Android 上启用跨应用 SSO](documentation/articles/active-directory-sso-android)
+了解[如何使用 ADAL 在 Android 上启用跨应用 SSO](/documentation/articles/active-directory-sso-android)
 
 
-[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Microsoft Azure 服务总线配额和限制 | Microsoft Azure"
+   pageTitle="Microsoft Azure 服务总线配额和限制 | Azure"
    description="Azure 服务总线的限制和配额"
    services="service-bus"
    documentationCenter="na"
@@ -8,7 +8,7 @@
    editor="" />
 <tags 
    ms.service="service-bus"
-   ms.date="02/08/2016"
+   ms.date="05/04/2016"
    wacn.date=""/>
 
 # 服务总线配额
@@ -18,5 +18,4 @@
 ## 消息传送配额
 
 [AZURE.INCLUDE [service-bus-quotas-table](../includes/service-bus-quotas-table.md)]
-
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0613_2016-->

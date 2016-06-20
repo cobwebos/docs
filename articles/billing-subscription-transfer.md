@@ -1,15 +1,15 @@
 <properties
-   pageTitle="转让 Azure 订阅 | Microsoft Azure"
+   pageTitle="转让 Azure 订阅 | Azure"
    description="如何将 Azure 订阅转让给另一用户，以及有关转让过程的一些常见问题 (FAQ)"
    services="billing"
    documentationCenter=""
-   authors="curtand"
+   authors="genlin"
    manager="stevenpo"
    editor=""/>
 
 <tags
    ms.service="billing"
-   ms.date="09/21/2015"
+   ms.date="04/14/2016"
    wacn.date=""/>
 
 # 转让 Azure 订阅
@@ -55,13 +55,19 @@
 
     不会影响服务。实际上这是在当前帐户管理员下取消订阅，并在接收方帐户下创建新订阅，但会将基础 Azure 服务与新订阅相关联。订阅 ID 保持不变。
 
+-   **如何使用此机制更改订阅的目录？**-   
+    Azure 订阅创建于帐户管理员所属的目录中。因此，若要更改目录，只需将订阅转让给目标目录中的用户帐户即可。当该用户完成接受转让的步骤后，订阅就会自动移至目标目录。
+
 -   **如果我接管另一个组织的订阅帐单所有权，他们可以继续访问我的资源吗？**
 
-    如果将订阅转让到另一个租户，与前一租户关联的用户将失去订阅的访问权限。即使用户不再是服务管理员或共同管理员，他们仍可以通过其他安全机制来访问订阅。这些机制包括：- 向用户授予订阅资源管理权限的管理证书。有关详细信息，请参阅[创建并上载 Azure 的管理证书](https://msdn.microsoft.com/library/azure/gg551722.aspx)。- 存储空间等服务的访问密钥。有关详细信息，请参阅[查看、复制和重新生成存储访问密钥](/documentation/articles/storage-create-storage-account#view-copy-and-regenerate-storage-access-keys)。- Azure 虚拟机等服务的远程访问凭据。
+    如果将订阅转让到另一个租户，与前一租户关联的用户将失去订阅的访问权限。即使用户不再是服务管理员或共同管理员，他们仍可以通过其他安全机制来访问订阅。其中包括：
+    - 用于向用户授予订阅资源管理权限的管理证书。有关详细信息，请参阅[创建并上载 Azure 的管理证书](https://msdn.microsoft.com/library/azure/gg551722.aspx)
+    -	存储空间等服务的访问密钥。有关详细信息，请参阅[查看、复制和重新生成存储访问密钥](/documentation/articles/storage-create-storage-account#view-copy-and-regenerate-storage-access-keys)
+    -	Azure 虚拟机等服务的远程访问凭据
 
     此列表并不完整。如果接收方需要限制对其资源的访问，则应考虑更新与服务关联的任何机密。可按如下所述更新大多数资源：
 
-    1.   移到 Azure 门户：[**https://portal.azure.com*](https://portal.azure.com)
+    1.   移到 Azure 门户：[https://portal.azure.com](https://portal.azure.com)
 
     2.    单击“全部浏览”-&gt;“所有资源”
 
@@ -88,17 +94,21 @@
 
 -   **接收方可以使用不同的付款机制吗？**
 
-    事实上可以使用不同的机制将订阅的付款方式从发票更改为信用卡。只需转让到你拥有的另一个帐户，然后在收到订阅时输入信用卡。这就存在以下限制：订阅帐单历史记录现已拆分到两个帐户。但好处是不需要[联系支持人员](http://go.microsoft.com/fwlink/?LinkID=619338)也能完成转让。
+    是的。这就存在以下限制：订阅帐单历史记录现已拆分到两个帐户。但好处是不需要[联系支持人员](http://go.microsoft.com/fwlink/?LinkID=619338)也能完成转让。
+
+-   **转让 Azure 订阅后，付款方式会受到影响吗？**
+
+    若要接受订阅转让，必须提供信用卡或类似的付款方式为订阅付款。例如，如果 Bob 将订阅转让给 Jane，而 Jane 接受转让，那么，Jane 还必须提供订阅付款方式。完成转让后，就不会再为转让给 Jane 的订阅向 Bob 收费。
 
 ## 接受订阅所有权后的后续步骤
 
-1. 现在你是帐户管理员。请查看并更新服务管理员和共同管理员。在 [Azure 管理门户](https://manage.windowsazure.cn)中转到“设置”来管理管理员。[了解详细信息](http://go.microsoft.com/fwlink/?LinkID=533293)。
-2. 你还可以针对订阅和服务使用基于角色的访问控制 (RBAC)。请访问 [Azure 预览门户](https://portal.azure.com) [了解有关 RBAC 的详细信息](http://go.microsoft.com/fwlink/?LinkID=544802)
+1. 现在你是帐户管理员。请查看并更新服务管理员和共同管理员。在 [Azure 经典门户](https://manage.windowsazure.com)中转到“设置”来管理管理员。[了解详细信息](http://go.microsoft.com/fwlink/?LinkID=533293)。
+2. 你还可以针对订阅和服务使用基于角色的访问控制 (RBAC)。请访问 [Azure 门户](https://portal.azure.com) [了解有关 RBAC 的详细信息](http://go.microsoft.com/fwlink/?LinkID=544802)
 3. 更新与此订阅服务关联的凭据。其中包括：
-    -   用于向用户授予订阅资源管理权限的管理证书。有关详细信息，请参阅[创建并上载 Azure 的管理证书](https://msdn.microsoft.com/library/azure/gg551722.aspx)
-    -	存储空间等服务的访问密钥。有关详细信息，请参阅[查看、复制和重新生成存储访问密钥](/documentation/articles/storage-create-storage-account#view-copy-and-regenerate-storage-access-keys)
+    - 用于向用户授予订阅资源管理权限的管理证书。有关详细信息，请参阅[创建并上载 Azure 的管理证书](https://msdn.microsoft.com/library/azure/gg551722.aspx)
+    -	存储空间等服务的访问密钥。有关详细信息，请参阅[查看、复制和重新生成存储访问密钥](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)
     -	Azure 虚拟机等服务的远程访问凭据
-4. 请在 [Azure 帐户中心](https://account.windowsazure.cn/Subscriptions)更新此订阅的计费警报 [了解详细信息](http://go.microsoft.com/fwlink/?LinkID=533292)
-5. 	如果你正与合作伙伴合作，请考虑更新此订阅的合作伙伴 ID。可以在 [Azure 帐户中心](https://account.windowsazure.cn/Subscriptions)执行此操作。
+4. 请在 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)更新此订阅的计费警报 [了解详细信息](http://go.microsoft.com/fwlink/?LinkID=533292)
+5. 	如果你正与合作伙伴合作，请考虑更新此订阅的合作伙伴 ID。可以在 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)执行此操作。
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0613_2016-->

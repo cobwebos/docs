@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016" 
 	wacn.date=""/>
 
 
@@ -37,7 +37,7 @@
 
 如果指定使用 **StorageEncrypted** 选项加密资产，适用于 .NET 的媒体服务 SDK 将为资产创建 **StorateEncrypted** **ContentKey**。
 
->[AZURE.NOTE]构建流内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.chinacloudapi.cn/{GUID}/{IAssetFile.Name}/streamingParameters.）。出于这个原因，不允许使用百分号编码。**Name** 属性的值不能含有任何以下保留的[百分号编码字符](http://zh.wikipedia.org/wiki/百分号编码#.E4.BF.9D.E7.95.99.E5.AD.97.E7.AC.A6.E7.9A.84.E7.99.BE.E5.88.86.E5.8F.B7.E7.BC.96.E7.A0.81)：!*'();:@&=+$,/?%#"。此外，文件扩展名中只能含有一个“.”。
+>[AZURE.NOTE]构建流内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.chinacloudapi.cn/{GUID}/{IAssetFile.Name}/streamingParameters.）。出于这个原因，不允许使用百分号编码。**Name** 属性的值不能含有任何以下保留的[百分号编码字符](http://zh.wikipedia.org/wiki/百分号编码#.E4.BF.9D.E7.95.99.E5.AD.97.E7.AC.A6.E7.9A.84.E7.99.BE.E5.88.86.E5.8F.B7.E7.BC.96.E7.A0.81)：!*'();:@&=+$,/?%#[]"。此外，文件扩展名中只能含有一个“.”。
 
 本主题说明如何使用媒体服务.NET SDK 以及媒体服务.NET SDK 扩展将文件上载到媒体服务资产中。
 
@@ -175,7 +175,7 @@
  
 ##<a id="ingest_in_bulk"></a>使用媒体服务 .NET SDK 批量引入资产 
 
-上载大型资产文件可能在资产创建过程中形成瓶颈。批量引入资产（简称“批量引入”）涉及到将资产创建过程与上载过程分离。若要使用批量引入方法，请创建一个描述资产及其关联文件的清单 (IngestManifest)。然后，你可以使用所选上载方法将关联的文件上载到该清单的 Blob 容器。Microsoft Azure 媒体服务将会监视与清单关联的 Blob 容器。文件上载到 Blob 容器后，Microsoft Azure 媒体服务将基于清单 (IngestManifestAsset) 中资产的配置完成资产创建过程。
+上载大型资产文件可能在资产创建过程中形成瓶颈。批量引入资产（简称“批量引入”）涉及到将资产创建过程与上载过程分离。若要使用批量引入方法，请创建一个描述资产及其关联文件的清单 (IngestManifest)。然后，你可以使用所选上载方法将关联的文件上载到该清单的 Blob 容器。Microsoft Azure 媒体服务将会监视与清单关联的 Blob 容器。文件上载到 Blob 容器后，Azure 媒体服务将基于清单 (IngestManifestAsset) 中资产的配置完成资产创建过程。
 
 
 若要创建新的 IngestManifest，请调用通过 CloudMediaContext 中的 IngestManifests 集合公开的 Create 方法。此方法将使用你提供的清单名称创建一个新的 IngestManifest。
@@ -188,7 +188,8 @@
 	IAsset destAsset1 = _context.Assets.Create(name + "_asset_1", AssetCreationOptions.None);
 	IAsset destAsset2 = _context.Assets.Create(name + "_asset_2", AssetCreationOptions.None);
 
-一个 IngestManifestAsset 将一个资产与一个用于批量引入的批量 IngestManifest 相关联。它还关联构成每个资产的 AssetFiles。若要创建 IngestManifestAsset，请使用服务器上下文中的 Create 方法。
+一个 IngestManifestAsset 将一个资产与一个用于批量引入的批量 IngestManifest 相关联。它还关联构成每个资产的 AssetFiles。
+若要创建 IngestManifestAsset，请使用服务器上下文中的 Create 方法。
 
 以下示例演示如何添加两个新的 IngestManifestAssets，这两项将以前创建的两个资产关联到批量引入清单。每个 IngestManifestAsset 还关联一组将在批量引入期间为每个资产上载的文件。
 
@@ -303,4 +304,4 @@
 [如何获取媒体处理器]: /documentation/articles/media-services-get-media-processor
  
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0613_2016-->

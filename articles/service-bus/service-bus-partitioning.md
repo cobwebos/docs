@@ -1,14 +1,14 @@
 <properties 
-   pageTitle="分区消息传送实体 | Microsoft Azure"
+   pageTitle="分区消息传送实体 | Azure"
    description="介绍如何使用多个消息中转站对消息传递实体进行分区。"
    services="service-bus"
    documentationCenter="na"
    authors="sethmanheim"
    manager="timlt"
-   editor="tysonn" /> 
+    editor="" /> 
 <tags 
    ms.service="service-bus"
-   ms.date="12/28/2015"
+    ms.date="05/06/2016"
    wacn.date="" />
 
 # 分区消息传送实体
@@ -19,15 +19,15 @@ Azure 服务总线使用多个消息中转站来处理消息，并用多个消�
 
 ## 分区的队列和主题
 
-每个分区的队列或主题由多个片段构成。每个片段存储在不同的消息传送存储中并由不同的消息中转站进行处理。当向分区的队列或主题发送消息时，服务总线会将该消息分配到其中一个片段。选择是通过服务总线或发送方可以指定的分区密钥随机完成的。
+每个分区的队列或主题由多个片段构成。每个片段存储在不同的消息传送存储中并由不同的消息中转站进行处理。当向分区的队列或主题发送消息时，服务总线会将该消息分配到其中一个片段。选择是通过服务总线或发送方可以指定的分区键随机完成的。
 
-当客户端想要从分区队列或从分区主题的订阅接收消息时，服务总线查询所有片段以获取消息，然后将自任何消息传送存储返回的第一条消息返回到接收方。服务总线缓存其他消息并在收到其他接收请求时将它们返回。接收客户端无法识别分区；分区队列或主题的面向客户端的行为（例如，读取、完成、延迟、死信、预提取）与常规实体行为相同。
+当客户端想要从分区队列或从分区主题的订阅接收消息时，服务总线查询所有片段以获取消息，然后将自任何消息传送存储获取的第一条消息返回到接收方。服务总线缓存其他消息并在收到其他接收请求时将它们返回。接收客户端无法识别分区；分区队列或主题的面向客户端的行为（例如，读取、完成、延迟、死信、预提取）与常规实体行为相同。
 
 向分区队列或主题发送一条消息，或从分区队列或主题接收消息时无需额外付费。
 
 ## 启用分区
 
-要将分区的队列和主题用于 Microsoft Azure 服务总线，使用 Azure SDK 2.2 或更高版本，或在 HTTP 请求中指定 `api-version=2013-10`。
+若要将分区队列和主题用于 Azure 服务总线，请使用 Azure SDK 2.2 版或更高版本，或在 HTTP 请求中指定 `api-version=2013-10`。
 
 你可以创建 1、2、3、4 或 5 GB 大小的服务总线队列和主题（默认值为 1 GB）。启用分区时，服务总线将为指定的每份大小创建 16 个分区。因此，如果你创建了一个大小为 5 GB 的队列，共有 16 个分区，最大队列大小为 (5 * 16) = 80 GB。可以通过在 [Azure 经典门户][]上查看分区队列或主题的条目，来了解该队列或主题的最大大小。
 
@@ -89,7 +89,7 @@ committableTransaction.Commit();
 
 若要将事务性消息发送到会话感知的主题或队列，消息必须设置 [BrokeredMessage.SessionId][] 属性。如果也指定了 [BrokeredMessage.PartitionKey][] 属性，它必须与 [SessionId][] 属性相同。如果它们不同，服务总线会返回 **InvalidOperationException** 异常。
 
-与常规（非分区）的队列或主题不同，不可能使用单一事务来将多条消息发送到不同会话。如果进行尝试，服务总线会返回**InvalidOperationException **异常。例如：
+与常规（非分区）的队列或主题不同，不可能使用单一事务来将多条消息发送到不同会话。如果进行尝试，服务总线会返回**InvalidOperationException**异常。例如：
 
 ```
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -140,4 +140,4 @@ Azure 服务总线支持从分区实体、向分区的实体或在分区的实�
   [QueueDescription.ForwardTo]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
   [针对服务总线分区队列和主题的 AMQP 1.0 支持]: /documentation/articles/service-bus-partitioned-queues-and-topics-amqp-overview
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0613_2016-->

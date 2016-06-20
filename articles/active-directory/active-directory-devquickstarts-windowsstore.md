@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Windows 应用商店入门 | Microsoft Azure"
+	pageTitle="Azure AD Windows 应用商店入门 | Azure"
 	description="如何生成一个与 Azure AD 集成以方便登录，并使用 OAuth 调用 Azure AD 保护 API 的 Windows 应用商店应用程序。"
 	services="active-directory"
 	documentationCenter="windows"
@@ -63,7 +63,7 @@ PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     -	`tenant` 是 Azure AD 租户的域，例如 contoso.partner.onmschina.cn
     -	`clientId` 是从门户复制的应用程序 clientId。  
 
--	你现在需要发现 Windows Phone 应用程序的回调 URI。在 `MainPage` 方法中的此行上设置一个断点：
+-	你现在需要发现 Windows 应用商店应用的回叫 URI。在 `MainPage` 方法中的此行上设置一个断点：
 
 ```
 redirectURI = Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
@@ -97,13 +97,16 @@ public MainPage()
 private async void Search(object sender, RoutedEventArgs e)
 {
     ...
-    AuthenticationResult result = await authContext.AcquireTokenAsync(graphResourceId, clientId, redirectURI);
-    if (result.Status != AuthenticationStatus.Success)
+    AuthenticationResult result = null;
+    try
     {
-        if (result.Error != "authentication_canceled")
+        result = await authContext.AcquireTokenAsync(graphResourceId, clientId, redirectURI, new PlatformParameters(PromptBehavior.Auto, false));
+    }
+    catch (AdalException ex)
+    {
+        if (ex.ErrorCode != "authentication_canceled")
         {
-            MessageDialog dialog = new MessageDialog(string.Format("If the error continues, please contact your administrator.\n\nError: {0}\n\nError Description:\n\n{1}", result.Error, result.ErrorDescription), "Sorry, an error occurred while signing you in.");
-            await dialog.ShowAsync();
+            ShowAuthError(string.Format("If the error continues, please contact your administrator.\n\nError: {0}\n\nError Description:\n\n{1}", ex.ErrorCode, ex.Message));
         }
         return;
     }
@@ -115,8 +118,8 @@ private async void Search(object sender, RoutedEventArgs e)
 - 现在，你可以使用刚刚获得的 access\_token。同时，在 `Search(...)` 方法中，将令牌附加到 Authorization 标头的 Graph API GET 请求中：
 
 ```C#
-// Add the access token to the Authorization Header of the call to the Graph API
-httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
+// Add the access token to the Authorization Header of the call to the Graph API, and call the Graph API.
+httpClient.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", result.AccessToken);
 
 ```
 - 你还可以使用 `AuthenticationResult` 对象在应用程序中显示有关用户的信息，例如，用户的 ID：
@@ -147,4 +150,4 @@ private void SignOut()
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources)]
  
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

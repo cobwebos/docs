@@ -1,5 +1,5 @@
 <properties
-	pageTitle="将已加入 Windows 域的设备自动注册到 Azure Active Directory | Microsoft Azure"
+	pageTitle="将已加入域的 Windows 设备自动注册到 Azure Active Directory | Azure"
 	description="IT 管理员可以选择以自动静默方式向 Azure Active Directory (Azure AD) 注册已加入域的 Windows 设备。"
 	services="active-directory"
 	documentationCenter=""
@@ -12,9 +12,9 @@
 	ms.date="03/07/2016"
 	wacn.date=""/>
 
-# 将已加入 Windows 域的设备自动注册到 Azure Active Directory
+# 将已加入域的 Windows 设备自动注册到 Azure Active Directory
 
-作为 IT 管理员，你可以选择以自动静默方式向 Azure Active Directory (Azure AD) 注册已加入 Windows 域的设备。如果你已针对 Office365 应用程序或者由 AD FS 在本地管理的应用程序配置了基于设备的条件性访问策略，则这种方式非常有效。你可以阅读 [Azure Active Directory 设备注册概述](active-directory-conditional-access-device-registration-overview.md)来详细了解设备注册方案。
+作为 IT 管理员，你可以选择以自动静默方式向 Azure Active Directory (Azure AD) 注册已加入 Windows 域的设备。如果你已针对 Office365 应用程序或者由 AD FS 在本地管理的应用程序配置了基于设备的条件性访问策略，则这种方式非常有效。你可以阅读 [Azure Active Directory 设备注册概述](/documentation/articles/active-directory-conditional-access-device-registration-overview)来详细了解设备注册方案。
 
 向 Azure Active Directory 自动注册设备适用于已加入 Active Directory 域的 Windows 7 和 Windows 8.1 计算机。这通常是提供给信息工作者使用的企业自有计算机。
 
@@ -79,11 +79,11 @@ Windows 7 和 Windows 8.1 设备将通过组合使用用户帐户名称和已知
 
 使用以下链接为加入 Windows 7 和 Windows 8.1 域的设备配置自动设备注册。继续下一步之前，请确保满足上述先决条件。
 
-* [为加入 Windows 8.1 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
+* [为加入 Windows 8.1 域的设备配置自动设备注册](/documentation/articles/active-directory-conditional-access-automatic-device-registration-windows-8-1)
 
-* [为加入 Windows 7 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows7.md)
+* [为加入 Windows 7 域的设备配置自动设备注册](/documentation/articles/active-directory-conditional-access-automatic-device-registration-windows7)
 
-* [将已加入域的 Windows 10 设备自动注册到 Azure Active Directory](active-directory-azureadjoin-devices-group-policy.md)
+* [将已加入域的 Windows 10 设备自动注册到 Azure Active Directory](/documentation/articles/active-directory-azureadjoin-devices-group-policy)
 
 附加说明
 --------------------------------------------------------------------
@@ -96,9 +96,9 @@ Windows 7 和 Windows 8.1 设备将通过组合使用用户帐户名称和已知
 
 ## 其他主题
 
-- [Azure Active Directory 设备注册概述](active-directory-conditional-access-device-registration-overview.md)
-- [为加入 Windows 7 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows7.md)
-- [为加入 Windows 8.1 域的设备配置自动设备注册](active-directory-conditional-access-automatic-device-registration-windows-8-1.md)
-- [将已加入域的 Windows 10 设备自动注册到 Azure Active Directory](active-directory-azureadjoin-devices-group-policy.md)
+- [Azure Active Directory 设备注册概述](/documentation/articles/active-directory-conditional-access-device-registration-overview)
+- [为加入 Windows 7 域的设备配置自动设备注册](/documentation/articles/active-directory-conditional-access-automatic-device-registration-windows7)
+- [为加入 Windows 8.1 域的设备配置自动设备注册](/documentation/articles/active-directory-conditional-access-automatic-device-registration-windows-8-1)
+- [将已加入域的 Windows 10 设备自动注册到 Azure Active Directory](/documentation/articles/active-directory-azureadjoin-devices-group-policy)
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

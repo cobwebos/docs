@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何通过 Python 使用服务总线队列 | Microsoft Azure" 
+	pageTitle="如何通过 Python 使用服务总线队列 | Azure" 
 	description="了解如何使用 Python 中的 Azure 服务总线队列" 
 	services="service-bus" 
 	documentationCenter="python" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	wacn.date=""/>
 
 
@@ -67,7 +67,7 @@ msg = Message(b'Test Message')
 bus_service.send_queue_message('taskqueue', msg)
 ```
 
-Service Bus 队列支持最大为 256 KB 的消息（标头最大为 64 KB，其中包括标准和自定义应用程序属性）。一个队列可包含的消息数不受限制，但消息的总大小受限。此队列大小是在创建时定义的，上限为 5 GB。有关配额的详细信息，请参阅 [Azure 队列和服务总线队列][]。
+Service Bus 队列支持最大为 256 KB 的消息（标头最大为 64 KB，其中包括标准和自定义应用程序属性）。一个队列可包含的消息数不受限制，但消息的总大小受限。此队列大小是在创建时定义的，上限为 5 GB。有关配额的详细信息，请参阅[服务总线配额][]。
 
 ## 从队列接收消息
 
@@ -108,7 +108,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 [Azure 经典门户]: http://manage.windowsazure.cn
 [Python Azure 包]: https://pypi.python.org/pypi/azure
 [队列、主题和订阅]: /documentation/articles/service-bus-queues-topics-subscriptions
-[Azure 队列和服务总线队列]: /documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted/#capacity-and-quotas
+[服务总线配额]: /documentation/articles/service-bus-quotas
  
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0613_2016-->

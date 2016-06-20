@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Apache Storm 通过 Java 使用事件中心入门 | Microsoft Azure"
+	pageTitle="使用 Apache Storm 通过 Java 使用事件中心入门 | Azure"
 	description="遵循本教程开始使用 Azure 事件中心，以通过 Java 发送事件，并在 Apache Storm 群集中接收这些事件。"
 	services="event-hubs"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="event-hubs"
-	ms.date="11/05/2015"
+	ms.date="05/13/2016"
 	wacn.date=""/>
 
 # 事件中心入门
@@ -30,37 +30,9 @@
 
 + 有效的 Azure 帐户。<br/>如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 <a href="http://www.windowsazure.cn/zh-cn/pricing/1rmb-trial/" target="_blank">Azure 免费试用</a>。
 
-## 创建事件中心
+[AZURE.INCLUDE [event-hubs-create-event-hub](../includes/event-hubs-create-event-hub.md)]
 
-1. 登录到 [Azure 管理门户]，然后单击屏幕底部的“新建”。
-
-2. 依次单击“App Service”、“服务总线”、“事件中心”、“快速创建”。
-
-   	![][1]
-
-3. 为你的事件中心键入名称，选择所需区域，然后单击“创建新事件中心”。
-
-   	![][2]
-
-4. 单击你刚创建的命名空间（通常为 ***事件中心名称*-ns**）。
-
-   	![][3]
-
-5. 单击页面顶部的“事件中心”选项卡，然后单击你刚创建的事件中心。
-
-   	![][4]
-
-6. 单击页面顶部的“配置”选项卡，添加具有“发送”权限的名为“SendRule”的规则，添加另一具有“侦听”权限的名为“ReceiveRule”的规则，然后单击“保存”。
-
-   	![][5]
-
-7. 在同一页上，记下为 **SendRule** 和 **ReceiveRule** 生成的密钥。
-
-   	![][6c]
-
-现在，你的事件中心就创建好了，你已经有了收发事件所需的连接字符串。
-
-[AZURE.INCLUDE [service-bus-event-hubs-get-started-send-java](../includes/service-bus-event-hubs-get-started-send-java.md)]
+[AZURE.INCLUDE [service-bus-event-hubs-get-started-send-java](../../includes/service-bus-event-hubs-get-started-send-java.md)]
 
 
 [AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-storm](../includes/service-bus-event-hubs-get-started-receive-storm.md)]
@@ -75,7 +47,7 @@
 
    	![][22]
 
-> [AZURE.NOTE] 在本教程中，只出于开发目的以本地模式使用 Storm。请参阅 [HDInsight Storm 概述][]和官方 [Apache Storm][] 文档，以了解 Storm 部署和模式的详细信息。
+> [AZURE.NOTE]  在本教程中，只出于开发目的以本地模式使用 Storm。请参阅 [HDInsight Storm 概述][]和官方 [Apache Storm][] 文档，以了解 Storm 部署和模式的详细信息。
 
 ## 后续步骤
 
@@ -85,18 +57,10 @@
 - [使用 SCP.NET 和 C# 在 Storm 和 HDInsight 上开发流式数据处理应用程序][]是有关使用 C# 编写 Storm 管道的教程。
 
 <!-- Images. -->
-[1]: ./media/event-hubs-java-storm-getstarted/create-event-hub1.png
-[2]: ./media/event-hubs-java-storm-getstarted/create-event-hub2.png
-[3]: ./media/event-hubs-java-storm-getstarted/create-event-hub3.png
-[4]: ./media/event-hubs-java-storm-getstarted/create-event-hub4.png
-[5]: ./media/event-hubs-java-storm-getstarted/create-event-hub5.png
-[6]: ./media/event-hubs-getstarted/create-event-hub6.png
-[6c]: ./media/event-hubs-java-storm-getstarted/create-event-hub6c.png
-
 [22]: ./media/event-hubs-java-storm-getstarted/receive-storm2.png
 
 <!-- Links -->
-[Azure 管理门户]: https://manage.windowsazure.cn/
+[Azure Management Portal]: https://manage.windowsazure.cn/
 [Event Processor Host]: https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost
 [事件中心概述]: /documentation/articles/event-hubs-overview
 
@@ -105,5 +69,4 @@
 [用 Storm 和 HDInsight 分析传感器数据]: /documentation/articles/hdinsight-storm-sensor-data-analysis
 [使用 SCP.NET 和 C# 在 Storm 和 HDInsight 上开发流式数据处理应用程序]: /documentation/articles/hdinsight-hadoop-storm-scpdotnet-csharp-develop-streaming-data-processing-application
  
-
-<!---HONumber=Mooncake_1207_2015-->
+<!---HONumber=Mooncake_0613_2016-->

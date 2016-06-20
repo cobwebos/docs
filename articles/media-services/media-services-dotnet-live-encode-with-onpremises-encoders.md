@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何使用本地编码器进行实时编码" 
+	pageTitle="如何使用本地编码器执行实时流式处理" 
 	description="本主题演示如何使用 .NET 通过本地编码器进行实时编码。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -9,10 +9,10 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+ 	ms.date="05/05/2016"  
 	wacn.date=""/>
 
-#如何使用本地编码器进行实时编码
+#如何使用本地编码器执行实时流式处理
 
 ##先决条件
 
@@ -26,7 +26,7 @@
 建议阅读以下文章：
 
 - [Azure 媒体服务 RTMP 支持和实时编码器](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
-- [使用从本地编码器接收多比特率实时流的频道](/documentation/articles/media-services-manage-channels-overview)
+- [使用本地编码器执行实时流式处理以创建多比特率流](/documentation/articles/media-services-live-streaming-with-onprem-encoders)
  
 
 ##示例
@@ -36,7 +36,7 @@
 - 连接到媒体服务
 - 创建通道
 - 更新通道
-- 检索通道的输入终结点。应将输入终结点提供给本地实时编码器。实时编码器将相机的信号转换为流，以便发送到通道的输入（引入）终结点。
+- 检索通道的输入终结点。应将输入终结点提供给本地实时编码器。实时编码器将相机的信号转换为流，以便发送到通道的输入（插入）终结点。
 - 检索通道的预览终结点
 - 创建并启动节目
 - 创建访问该节目所需的定位符
@@ -119,7 +119,7 @@
 		
 		        public static IChannel CreateAndStartChannel()
 		        {
-					//If you want to change the Smooth fragments to HLS segment ratio, you would set the ChannelCreationOptions¡¯s Output property.
+				//If you want to change the Smooth fragments to HLS segment ratio, you would set the ChannelCreationOptions’s Output property.
 	
 		            IChannel channel = _context.Channels.Create(
 		                new ChannelCreationOptions
@@ -385,4 +385,5 @@
 		    }
 		}
 
-<!---HONumber=Mooncake_0307_2016-->
+
+<!---HONumber=Mooncake_0613_2016-->

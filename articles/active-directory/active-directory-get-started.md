@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="02/01/2016"
+	ms.date="05/16/2016"
 	wacn.date="" />
 
 # 如何开始使用 Azure AD
@@ -47,4 +47,4 @@ Azure AD 为管理员提供许多报告。Azure AD 付费版提供更多的报�
 * [Azure 标识](/documentation/articles/fundamentals-identity)
 
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

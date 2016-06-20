@@ -11,7 +11,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="02/03/2016"  
+	ms.date="04/18/2016"   
 	wacn.date=""/>
 
 #使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务  
@@ -38,7 +38,7 @@ Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细�
 
 ##内容保护
 
-若要了解如何配置动态保护和密钥传递策略，请查看 Mingfei 的博客：[如何通过 Azure 媒体服务配置 Widevine 打包](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)。
+若要了解如何配置动态保护和密钥传递策略，请查看 Mingfei 的博客：[How to configure Widevine packaging with Azure Media Services](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)（如何通过 Azure 媒体服务配置 Widevine 打包）。
 
 你可以通过 multi-DRM 配置动态 CENC 保护，因为 DASH 流式处理具有下述两项特点：
 
@@ -195,16 +195,7 @@ Widevine 许可证获取 URL|必须用于配置资产传送策略，以便进行
 内容密钥 ID|必须包括，作为 JWT 令牌的授权消息声明值的一部分（参见[此](/documentation/articles/media-services-axinom-integration#jwt-token-generation)部分）。 
 
 
-##媒体服务学习路径
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../includes/media-services-learning-paths-include.md)]
 
-##提供反馈
 
-[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
-
-###致谢 
-
-我们诚挚地向以下人员表达谢意，是他们协助完成了本文档的写作工作：Kristjan Jõgi（来自 Axinom）、Mingfei Yan 和 Amit Rajput。
-
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0613_2016-->

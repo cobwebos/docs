@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016"  
 	wacn.date=""/>
 
 
@@ -39,4 +39,7 @@
 
 有关详细信息，请参阅[跨多个存储帐户管理媒体服务资产](https://msdn.microsoft.com/zh-cn/library/azure/dn271889.aspx)和[使用 Azure 存储空间](https://msdn.microsoft.com/zh-cn/library/azure/dn767951.aspx)。
 
-<!---HONumber=Mooncake_0307_2016-->
+
+
+
+<!---HONumber=Mooncake_0613_2016-->

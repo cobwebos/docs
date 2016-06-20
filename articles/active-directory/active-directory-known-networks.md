@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="已知网络 | Microsoft Azure" 
+	pageTitle="已知网络 | Azure" 
 	description="配置已知网络后，你可以避免将你组织拥有的 IP 地址包含在“从多个地理区域登录”和“从具有可疑活动的 IP 地址登录”报告中。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="02/18/2016" 
+	ms.date="05/03/2016" 
 	wacn.date=""/>
 
 # 已知网络
@@ -48,10 +48,10 @@
 **其他资源**
 
 
-* [查看访问和使用情况报告](active-directory-view-access-usage-reports)
-* [从具有可疑活动的 IP 地址登录](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity)
-* [来自多个地理区域的登录](active-directory-reporting-sign-ins-from-multiple-geographies)
+* [查看访问和使用情况报告](/documentation/articles/active-directory-view-access-usage-reports)
+* [从具有可疑活动的 IP 地址登录](/documentation/articles/active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity)
+* [来自多个地理区域的登录](/documentation/articles/active-directory-reporting-sign-ins-from-multiple-geographies)
 
 
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="02/03/2016"    
+	ms.date="04/18/2016"    
 	wacn.date=""/>
 
 #如何：检查作业进度
@@ -137,7 +137,7 @@ Microsoft Azure 媒体服务可以在处理媒体作业时向 [Azure 队列存�
 
 >[AZURE.NOTE]监视作业状态的建议方法是侦听通知消息，如以下示例所示。
 >
->或者，你可以使用 **IJob.State** 属性检查作业状态。请注意，在 **IJob** 的状态尚未设置为“已完成”之前，你可能会先收到一条指出作业已完成的通知消息。**IJob.State** 属性在延迟片刻之后将反映正确的状态。
+>或者，你可以使用 **IJob.State** 属性检查作业状态。请注意，在 **IJob** 的状态设置为“已完成”之前，你可能会先收到一条指出作业已完成的通知消息。**IJob.State** 属性在延迟片刻之后将反映正确的状态。
 
 	
 	using System;
@@ -262,7 +262,7 @@ Microsoft Azure 媒体服务可以在处理媒体作业时向 [Azure 队列存�
 	
 	            // Get a media processor reference, and pass to it the name of the 
 	            // processor to use for the specific task.
-	            IMediaProcessor processor = GetLatestMediaProcessorByName("Azure Media Encoder");
+	            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 	
 	            // Create a task with the conversion details, using a configuration file. 
 	            ITask task = job.Tasks.AddNew("My encoding Task",
@@ -424,4 +424,4 @@ Microsoft Azure 媒体服务可以在处理媒体作业时向 [Azure 队列存�
 	State: Finished
 	
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0613_2016-->

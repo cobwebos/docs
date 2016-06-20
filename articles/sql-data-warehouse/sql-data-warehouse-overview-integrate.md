@@ -1,5 +1,5 @@
 <properties
-   pageTitle="使用 SQL 数据仓库构建集成解决方案 | Microsoft Azure"
+   pageTitle="使用 SQL 数据仓库构建集成解决方案 | Azure"
    description="用于集成 SQL 数据仓库的工具以及提供相应解决方案的合作伙伴。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="02/01/2016"
+   ms.date="03/03/2016"
    wacn.date=""/>
 
 #在 SQL 数据仓库中利用其他服务
@@ -25,21 +25,21 @@ Azure 流分析是复杂、完全托管的基础结构，用于处理和使用�
 
 + **作业输出**：将流分析作业的输出直接发送到 SQL 数据仓库。
 
-有关详细信息，请参阅[与 Azure 流分析集成](../sql-data-warehouse-integrate-azure-stream-analytics.md)或 [Azure 流分析文档](/documentation/services/stream-analytics/)。
+有关详细信息，请参阅[与 Azure 流分析集成](/documentation/articles/sql-data-warehouse-integrate-azure-stream-analytics)或 [Azure 流分析文档](/documentation/services/stream-analytics/)。
 
 <!--Image references-->
 
 <!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop/
+[development overview]: /documentation/articles/sql-data-warehouse-overview-develop/
 
-[Azure Data Factory]: sql-data-warehouse-integrate-azure-data-factory.md
-[Azure Machine Learning]: sql-data-warehouse-integrate-azure-machine-learning.md
-[Azure Stream Analytics]: sql-data-warehouse-integrate-azure-stream-analytics.md
-[Power BI]: sql-data-warehouse-integrate-power-bi.md
-[Partners]: sql-data-warehouse-integrate-solution-partners.md
+[Azure Data Factory]: /documentation/articles/sql-data-warehouse-integrate-azure-data-factory
+[Azure Machine Learning]: /documentation/articles/sql-data-warehouse-integrate-azure-machine-learning
+[Azure Stream Analytics]: /documentation/articles/sql-data-warehouse-integrate-azure-stream-analytics
+[Power BI]: /documentation/articles/sql-data-warehouse-integrate-power-bi
+[Partners]: /documentation/articles/sql-data-warehouse-integrate-solution-partners
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0613_2016-->

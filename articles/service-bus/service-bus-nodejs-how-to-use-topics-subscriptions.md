@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何通过 Node.js 使用服务总线主题 | Microsoft Azure" 
+	pageTitle="如何通过 Node.js 使用服务总线主题 | Azure" 
 	description="了解如何在来自 Node.js 应用的 Azure 中使用服务总线主题和订阅。" 
 	services="service-bus" 
 	documentationCenter="nodejs" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	wacn.date=""/>
 
 
@@ -115,7 +115,7 @@ function handle (requestOptions, next)
 function (returnObject, finalCallback, next)
 ```
 
-在此回调中并且在处理 returnObject（来自对服务器请求的响应）后，回调需要调用 next（如果它存在以便继续处理其他筛选器）或只调用 finalCallback 以便结束服务调用。
+在此回叫中并且在处理 **returnObject**（来自对服务器请求的响应）后，回叫需要调用 next（如果存在）以便继续处理其他筛选器，或者只调用 **finalCallback** 以便结束服务调用。
 
 Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分别是 **ExponentialRetryPolicyFilter** 和 **LinearRetryPolicyFilter**。以下代码创建一个 **ServiceBusService** 对象，该对象使用 **ExponentialRetryPolicyFilter**：
 
@@ -324,4 +324,4 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [使用存储构建 Node.js Web 应用程序]: /documentation/articles/cloud-services/storage-nodejs-use-table-storage-cloud-service-app
  
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Active Directory B2B 协作 | Microsoft Azure"
+   pageTitle="Azure Active Directory B2B 协作 | Azure"
    description="Azure Active Directory B2B 协作可让业务合作伙伴访问你的企业应用程序，合作伙伴的每个用户将由单个 Azure AD 帐户表示"
    services="active-directory"
    documentationCenter=""
@@ -9,10 +9,10 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="03/31/2016"
+   ms.date="05/09/2016"
    wacn.date=""/>
 
-# Azure Active Directory (Azure AD) B2B 协作
+# Azure Active Directory B2B 协作
 
 Azure Active Directory (Azure AD) B2B 协作可让你通过合作伙伴管理的标识来访问企业应用程序。你可以通过邀请并授权合作伙伴公司的用户访问你的资源，来创建跨公司关系。由于每家公司只与 Azure Active Directory 联合一次，并且每位用户都由单个 Azure AD 帐户来表示，因此降低了复杂性。由于当合作伙伴用户从其组织离职时，其访问权限即会吊销，而无法通过内部目录中的成员身份进行意外的访问，因此提高了安全性。对于尚未部署 Azure AD 的业务合作伙伴，B2B 协作简化了注册体验，可以更方便地向业务合作伙伴提供 Azure AD 帐户。
 
@@ -43,15 +43,16 @@ Azure Active Directory B2B 协作易于配置，各种规模的合作伙伴都�
 有关 B2B 协作工作原理的详细信息，请观看[此视频](http://aka.ms/aadshowb2b)。
 
 ## 后续步骤
-在 Azure B2B 协作网站上浏览我们的其他文章。
+在 Azure AD B2B 协作网站上浏览我们的其他文章。
 
-- [什么是 Azure AD B2B 协作？](active-directory-b2b-what-is-azure-ad-b2b.md)
-- [工作原理](active-directory-b2b-how-it-works.md)
-- [详细演练](active-directory-b2b-detailed-walkthrough.md)
-- [CSV 文件格式参考](active-directory-b2b-references-csv-file-format.md)
-- [外部用户令牌格式](active-directory-b2b-references-external-user-token-format.md)
-- [外部用户对象属性更改](active-directory-b2b-references-external-user-object-attribute-changes.md)
-- [当前预览版限制](active-directory-b2b-current-preview-limitations.md)
-- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+- [什么是 Azure AD B2B 协作？](/documentation/articles/active-directory-b2b-what-is-azure-ad-b2b)
+- [工作原理](/documentation/articles/active-directory-b2b-how-it-works)
+- [详细演练](/documentation/articles/active-directory-b2b-detailed-walkthrough)
+- [CSV 文件格式参考](/documentation/articles/active-directory-b2b-references-csv-file-format)
+- [外部用户令牌格式](/documentation/articles/active-directory-b2b-references-external-user-token-format)
+- [外部用户对象属性更改](/documentation/articles/active-directory-b2b-references-external-user-object-attribute-changes)
+- [当前预览版限制](/documentation/articles/active-directory-b2b-current-preview-limitations)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
 
-<!---HONumber=Mooncake_0509_2016-->
+
+<!---HONumber=Mooncake_0613_2016-->

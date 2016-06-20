@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Active Directory 图形 API | Microsoft Azure"
+   pageTitle="Azure Active Directory 图形 API | Azure"
    description="有关可通过 REST API 终结点提供对 Azure AD 的编程访问权限的图形 API 的概述和快速入门指南。"
    services="active-directory"
    documentationCenter=""
@@ -63,10 +63,10 @@ Azure Active Directory 图形 API 通过 REST API 终结点提供对 Azure AD �
 
 ## 另请参阅
 
-[Azure AD 图形 API 快速入门指南](active-directory-graph-api-quickstart)
+[Azure AD 图形 API 快速入门指南](/documentation/articles/active-directory-graph-api-quickstart)
 
 [AD Graph REST 文档](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
 
-[Azure Active Directory 开发人员指南](active-directory-developers-guide)
+[Azure Active Directory 开发人员指南](/documentation/articles/active-directory-developers-guide)
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

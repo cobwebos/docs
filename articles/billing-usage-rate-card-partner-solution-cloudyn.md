@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Microsoft Azure 使用情况 API 和 RateCard 使 Cloudyn 能够为客户提供 ITFM"
+   pageTitle="Microsoft Azure 使用情况 API 和 RateCard API 使 Cloudyn 能够为客户提供 ITFM | Azure"
    description="Microsoft Azure 计费合作伙伴 Cloudyn 将 Azure 计费 API 集成到了其产品中，从而能够根据亲身体验提供独特的观点。对于有兴趣使用/试用 Cloudyn for Azure 服务的 Azure 和 Cloudyn 客户而言，这是非常有用的。"
    services="billing"
    documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="billing"
-   ms.date="06/14/2015"
+   ms.date="02/19/2016"
    wacn.date=""/>
 
 # Microsoft Azure 使用情况 API 和 RateCard 使 Cloudyn 能够为客户提供 ITFM 
@@ -85,5 +85,4 @@ RateCard API 需要多个输入参数（如区域信息、货币和区域设置�
 [5]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Cost-Effective-Sizing.png
 [6]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Performance-Reports.png
 [7]: ./media/billing-usage-rate-card-partner-solution-cloudyn/Cloudyn-Category-Manager.png
-
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0613_2016-->

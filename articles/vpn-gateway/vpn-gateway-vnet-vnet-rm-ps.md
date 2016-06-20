@@ -10,14 +10,14 @@
 
 <tags
    ms.service="vpn-gateway"
-   ms.date="03/15/2016"
-   wacn.date="04/19/2016"/>
+   ms.date="05/02/2016"
+   wacn.date="06/08/2016"/>
 
 # 使用 Azure Resource Manager 和 PowerShell 配置 VNet 到 VNet 连接
 
 > [AZURE.SELECTOR]
 - [Azure 管理门户](/documentation/articles/virtual-networks-configure-vnet-to-vnet-connection)
-- [PowerShell - Azure 资源管理器](/documentation/articles/vpn-gateway-vnet-vnet-rm-ps)
+- [PowerShell - Azure Resource Manager](/documentation/articles/vpn-gateway-vnet-vnet-rm-ps)
 
 本文将引导你使用 Resource Manager 部署模型和 PowerShell 来创建虚拟网络间的连接。虚拟网络可以位于来自相同或不同订阅的相同或不同区域中。
 
@@ -74,7 +74,7 @@
 
 - VNet 到 VNet 流量通过 Microsoft 网络而不是 Internet 传输。
 
-- 同一区域中的 VNet 到 VNet 流量双向均为免费；跨区域 VNet 到 VNet 出口流量根据源区域的出站 VNet 间数据传输费率收费。有关详细信息，请参阅[定价页](/home/features/vpn-gateway/#price)。
+- 同一区域中的 VNet 到 VNet 流量双向均为免费；跨区域 VNet 到 VNet 出口流量根据源区域的出站 VNet 间数据传输费率收费。有关详细信息，请参阅[定价页](/home/features/vpn-gateway#price)。
 
 
 ## 我应使用哪个步骤集？
@@ -91,7 +91,7 @@
 - [位于不同订阅中的 VNet](#difsub)
 
 
-## <a name ="samesub"/></a>如何连接相同订阅中的 VNet
+## <a name="samesub"></a>如何连接相同订阅中的 VNet
 
 此配置适用于相同订阅中的虚拟网络，如下图中所示：
 
@@ -101,9 +101,9 @@
 
 - 确保你拥有 Azure 订阅。如果你还没有 Azure 订阅，你可以注册一个[试用版](/pricing/1rmb-trial)。
 	
-- 你需要安装 Azure Resource Manager PowerShell cmdlet。有关安装 PowerShell cmdlet 的详细信息，请参阅 [How to install and configure Azure PowerShell（如何安装和配置 Azure PowerShell）](/documentation/articles/powershell-install-configure)。
+- 你需要安装 Azure Resource Manager PowerShell cmdlet。有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。
 
-### <a name ="Step1"/></a>步骤 1 - 规划 IP 地址范围
+### <a name="Step1"></a>步骤 1 - 规划 IP 地址范围
 
 
 必须确定要用于配置网络配置的范围。请记住，必须确保没有任何 VNet 范围或本地网络范围存在任何形式的重叠。
@@ -148,7 +148,7 @@
 
 
 
-### <a name ="Step2"/></a>步骤 2 - 创建并配置 TestVNet1
+### <a name="Step2"></a>步骤 2 - 创建并配置 TestVNet1
 
 1. 声明变量
 
@@ -308,13 +308,13 @@
 
 	几分钟后，应会建立连接。
 
-## <a name ="Verify"/></a>如何验证 VNet 到 VNet 连接
+## <a name="Verify"></a>如何验证 VNet 到 VNet 连接
 
 以下示例演示如何验证连接。请务必根据环境更改值。
 
 ### 使用 Azure 门户验证连接
 
-可以在 Azure 门户中验证 VPN 连接，方法是导航到“虚拟网络网关”-> 单击你的网关名称 ->“设置”->“连接”。选择连接名称即可在“连接”边栏选项卡中查看详细信息。
+可以在 Azure 门户中验证 VPN 连接，方法是导航到“虚拟网络网关”> 单击你的网关名称 >“设置”>“连接”。选择连接名称即可在“连接”边栏选项卡中查看详细信息。
 
 
 ### 使用 PowerShell 验证连接
@@ -323,7 +323,7 @@
 
 	Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection1 -ResourceGroupName $RG1 -Debug
 
-cmdlet 运行完毕后，通过滚动查看该值。在下面的 PowerShell 输出示例中，连接状态显示为“已连接”，你可以看到入口和出口字节。
+cmdlet 运行完毕后，通过滚动查看该值。在下面的 PowerShell 输出示例中，连接状态显示为“已连接”，你可以看到入口和出口字节数。
 
 
 
@@ -351,7 +351,7 @@ cmdlet 运行完毕后，通过滚动查看该值。在下面的 PowerShell 输�
 	Name                       : VNet1toVNet4
 	Id                         : /subscriptions/<SubscriptionID>/resourceGroups/TestRG1/providers/Micr osoft.Network/connections/VNet1toVNet4
 
-## <a name ="difsub"/></a>如何连接不同订阅中的 VNet
+## <a name="difsub"></a>如何连接不同订阅中的 VNet
 
 以下配置步骤将添加其他的 VNet 到 VNet 连接，以将 TestVNet1 连接到位于不同订阅中的 TestVNet5。此处的差别是，在第二个订阅的上下文中（尤其是当两个订阅属于不同的组织时），部分设置步骤需要在不同的 PowerShell 会话中执行。完成以下步骤后，将生成下图中所示的配置：
 
@@ -449,7 +449,7 @@ cmdlet 运行完毕后，通过滚动查看该值。在下面的 PowerShell 输�
 
 		$vnet5     = Get-AzureRmVirtualNetwork -Name $VnetName5 -ResourceGroupName $RG5
 		$subnet5   = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet5
-		$gwipconf5 = New-AzureRmVirtualNetworkGatewayIpConfig 
+		$gwipconf5 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName5 -Subnet $subnet5 -PublicIpAddress $gwpip5
 
 8. 创建 TestVNet5 网关
 
@@ -520,11 +520,12 @@ cmdlet 运行完毕后，通过滚动查看该值。在下面的 PowerShell 输�
 
 5. 验证连接
 
-	完成这些步骤后，可以使用 [How to verify a VNet-to-VNet connecion（如何验证 VNet 到 VNet 连接）](#Verify)中的方法来验证连接。
+	完成这些步骤后，可以使用[如何验证 VNet 到 VNet 连接](#Verify)中的方法来验证连接。
 
 ## 后续步骤
 
-连接完成后，即可将虚拟机添加到虚拟网络。请参阅[创建虚拟机](/documentation/articles/virtual-machines-windows-hero-tutorial)以获取相关步骤。
+- 连接完成后，即可将虚拟机添加到虚拟网络。请参阅[创建虚拟机](/documentation/articles/virtual-machines-windows-hero-tutorial)以获取相关步骤。
+- 有关 BGP 的信息，请参阅 [BGP 概述](/documentation/articles/vpn-gateway-bgp-overview)和[如何配置 BGP](/documentation/articles/vpn-gateway-bgp-resource-manager-ps)。 
 
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -30,4 +30,4 @@
 ## 后续步骤
 [AZURE.INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD .NET 入门 | Microsoft Azure"
+	pageTitle="Azure AD .NET 入门 | Azure"
 	description="如何生成一个与 Azure AD 集成以进行身份验证和授权的 .NET MVC Web API。"
 	services="active-directory"
 	documentationCenter=".net"
@@ -135,6 +135,6 @@ public IEnumerable<TodoItem> Get()
 
 [此处](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip)提供了已完成示例（无需配置值）供你参考。现在，你可以转到其他标识方案。
 
-[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

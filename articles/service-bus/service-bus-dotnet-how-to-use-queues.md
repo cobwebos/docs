@@ -1,5 +1,5 @@
 <properties
-    pageTitle="如何使用服务总线队列 (.NET) | Microsoft Azure"
+    pageTitle="如何使用服务总线队列 (.NET) | Azure"
     description="了解如何在 Azure 中使用 Service Bus 队列。代码示例是使用 .NET API 通过 C# 编写的。"
     services="service-bus"
     documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
     ms.service="service-bus"
-    ms.date="01/26/2016"
+    ms.date="05/09/2016"
     wacn.date=""/>
 
 # 如何使用 Service Bus 队列
@@ -24,9 +24,7 @@
 
 ## 添加服务总线 NuGet 包
 
-[服务总线 **NuGet** 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。利用 NuGet Visual Studio 扩展，可以轻松地在 Visual Studio 和 Visual Studio Express 中安装和更新库和工具。服务总线 NuGet 包是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。
-
-要在你的应用程序中安装 NuGet 包，请执行以下操作：
+[服务总线 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)是获取服务总线 API 并为应用程序配置所有服务总线依赖项的最简单的方法。要在你的应用程序中安装 NuGet 包，请执行以下操作：
 
 1.  在解决方案资源管理器中，右键单击“引用”，然后单击“管理 NuGet 包”。
 2.  搜索“服务总线”并选择“Microsoft Azure 服务总线”项。单击“安装”以完成安装，然后关闭此对话框。
@@ -44,9 +42,9 @@
 
 在上述两种情况下，你都可以使用 [CloudConfigurationManager.GetSetting][GetSetting] 方法检索连接字符串，本文稍后部分将对此进行介绍。
 
-### 使用云服务时配置连接字符串
+### 配置连接字符串
 
-该服务配置机制是 Azure 云服务项目特有的，它使你能够从 [Azure 经典门户][]动态更改配置设置，而无需重新部署你的应用程序。例如，向服务定义 (.csdef) 文件中添加 `Setting` 标签，如以下示例所示。
+利用该服务配置机制，你可以从 [Azure 经典门户][]动态更改配置设置，而无需重新部署应用程序。例如，向服务定义 (.csdef) 文件中添加 `Setting` 标签，如以下示例所示。
 
 ```
 <ServiceDefinition name="Azure1">
@@ -175,7 +173,7 @@ for (int i=0; i<5; i++)
 }
 ```
 
-服务总线队列支持[最大为 256 Kb 的消息](/documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted/#capacity-and-quotas)（标头最大为 64 KB，其中包括标准和自定义应用程序属性）。一个队列可包含的消息数不受限制，但消息的总大小受限。此队列大小是在创建时定义的，上限为 5 GB。如果启用了分区，则上限更高。有关详细信息，请参阅[分区消息实体](/documentation/articles/service-bus-partitioning)。
+服务总线队列支持[最大为 256 Kb 的消息](/documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted/#capacity-and-quotas)（标头最大为 64 KB，其中包括标准和自定义应用程序属性）。一个队列可包含的消息数不受限制，但消息的总大小受限。此队列大小是在创建时定义的，上限为 5 GB。如果启用了分区，则上限更高。有关详细信息，请参阅[分区消息传送实体](/documentation/articles/service-bus-partitioning)。
 
 ## 如何从队列接收消息
 
@@ -250,4 +248,4 @@ Client.OnMessage((message) =>
   [BrokeredMessage]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.aspx
   [QueueClient]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queueclient.aspx
   [Complete]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.brokeredmessage.complete.aspx
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0613_2016-->

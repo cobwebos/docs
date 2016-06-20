@@ -4,29 +4,29 @@
 	services="azure-resource-manager" 
 	documentationCenter="" 
 	authors="tfitzmac" 
-	manager="wpickett" 
-	editor=""/>
+	manager="timlt" 
+	editor="tysonn"/>
 
 <tags 
 	ms.service="azure-resource-manager" 
-	ms.date="04/04/2016" 
+	ms.date="04/25/2016" 
 	wacn.date=""/>
 
 # 使用 Azure 资源管理器锁定资源
 
-作为管理员，在以下情况下，你将需要在订阅、资源组或资源上放置锁定，以防止你组织中的其他用户意外删除关键资源。锁定后，经过授权的用户仍可以读取和修改资源，但不能删除资源。
+作为管理员，你可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除关键资源。锁定后，经过授权的用户仍可以读取和修改资源，但不能删除资源。
 
-锁不同于使用基于角色的访问控制向用户分配用来执行特定操作的权限。若要了解如何为用户和角色设置权限，请参阅[Azure 基于角色的访问控制](/documentation/articles/role-based-access-control-configure)。与基于角色的访问控制不同，你可以使用管理锁来对所有用户和角色应用限制，并且通常只会在有限的持续时间内应用锁。
+不同于基于角色的访问控制，你可以使用管理锁对所有用户和角色应用限制。若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制](/documentation/articles/role-based-access-control-configure)。
 
 在父作用域应用锁时，所有子资源将继承同一个锁。
 
 ## 谁可以在组织中创建或删除锁
 
-若要创建或删除管理锁，你必须有权访问 **Microsoft.Authorization/*** 或 **Microsoft.Authorization/locks/*** 操作。在内置角色中，只有**所有者**和**用户访问管理员**有权执行这些操作。有关分配访问控制的详细信息，请参阅 [Azure 基于角色的访问控制](./active-directory/role-based-access-control-configure.md)。
+若要创建或删除管理锁，你必须有权访问 **Microsoft.Authorization/\*** 或 **Microsoft.Authorization/locks/\*** 操作。在内置角色中，只有**所有者**和**用户访问管理员**有权执行这些操作。
 
 ## 在模板上创建锁
 
-以下示例演示在存储帐户上创建锁的模板。要对其应用锁的存储帐户将以参数形式提供。锁名是通过将包含 **/Microsoft.Authorization/** 的资源名称与锁名串连起来创建的（本例中为 **myLock**）。
+以下示例演示在存储帐户上创建锁的模板。要对其应用锁的存储帐户将以参数形式提供。锁名是通过将包含 **/Microsoft.Authorization/** 的资源名称与锁名连接起来创建的（本例中为 **myLock**）。
 
 提供的类型特定于资源类型。对于存储，此类型是“Microsoft.Storage/storageaccounts/providers/locks”。
 
@@ -86,4 +86,4 @@ Azure PowerShell 提供了其他用于使用锁的命令，如 **Set-AzureRmReso
 - 若要更改资源位于哪个资源组，请参阅[将资源移到新的资源组](/documentation/articles/resource-group-move-resources)
 - 你可以使用自定义策略对订阅应用限制和约定。有关详细信息，请参阅[使用策略来管理资源和控制访问](/documentation/articles/resource-manager-policy)。
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0613_2016-->

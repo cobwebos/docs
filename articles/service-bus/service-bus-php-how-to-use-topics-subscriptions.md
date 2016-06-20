@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何通过 PHP 使用服务总线主题 | Microsoft Azure" 
+	pageTitle="如何通过 PHP 使用服务总线主题 | Azure" 
 	description="了解如何通过 PHP 使用 Azure 中的服务总线主题。" 
 	services="service-bus" 
 	documentationCenter="php" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	wacn.date=""/>
 # 如何使用服务总线主题和订阅
 
@@ -228,7 +228,7 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-Service Bus 队列支持最大为 256 KB 的消息（标头最大为 64 KB，其中包括标准和自定义应用程序属性）。一个队列可包含的消息数不受限制，但消息的总大小受限。队列大小的上限为 5 GB。有关配额的详细信息，请参阅 [Azure 队列和服务总线队列][]。
+Service Bus 队列支持最大为 256 KB 的消息（标头最大为 64 KB，其中包括标准和自定义应用程序属性）。一个队列可包含的消息数不受限制，但消息的总大小受限。队列大小的上限为 5 GB。有关配额的详细信息，请参阅[服务总线配额][]。
 
 ## 从订阅接收消息
 
@@ -330,6 +330,6 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 [队列、主题和订阅]: /documentation/articles/service-bus-queues-topics-subscriptions
 [sqlfilter]: http://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [require-once]: http://php.net/require_once
-[Azure 队列和服务总线队列]: /documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted/#capacity-and-quotas
+[服务总线配额]: /documentation/articles/service-bus-quotas
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0613_2016-->

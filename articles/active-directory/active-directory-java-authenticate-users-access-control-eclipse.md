@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何使用访问控制 (Java) | Microsoft Azure" 
+	pageTitle="如何使用访问控制 (Java) | Azure" 
 	description="了解如何在 Azure 中以 Java 开发和使用访问控制。" 
 	services="active-directory" 
 	documentationCenter="java"
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-    ms.date="03/04/2016" 
+    ms.date="05/04/2016" 
 	wacn.date=""/>
 
 # 如何使用 Eclipse 在 Azure Access Control 服务上对 Web 用户进行身份验证
@@ -113,7 +113,7 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。紧接着，�
     2.  在“模式”中，选择“手动输入设置”。
     3.  在“领域”中，键入 ACS 所颁发的安全令牌将应用于的 URI。对于此任务，请键入 **http://localhost:8080/**。
         ![要在计算仿真程序中使用的信赖方领域][relying_party_realm_emulator]
-    4.  在“返回 URL”中，键入 ACS 将安全令牌返回到的 URL。对于此任务，请键入 **http://localhost:8080/MyACSHelloWorld/index.jsp**
+    5.  在“返回 URL”中，键入 ACS 将安全令牌返回到的 URL。对于此任务，请键入 **http://localhost:8080/MyACSHelloWorld/index.jsp** 
         ![要在计算模拟器中使用的信赖方返回 URL][relying_party_return_url_emulator]
     5.  接受其余字段中的默认值。
 
@@ -254,7 +254,7 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。紧接着，�
 
 1. 在“Azure 访问控制服务筛选器”对话框的“安全性”部分，键入 **${env.JAVA\_HOME}/mycert.cer** 并取消选中“在 WAR 文件中嵌入证书”。（如果你的证书文件名不同，请调整 mycert.cer。） 单击“完成”关闭对话框。
 2. 在部署中将证书作为组件复制：在 Eclipse 的项目资源管理器中，展开“MyAzureACSProject”，右键单击“WorkerRole1”，单击“属性”，展开“Azure 角色”，然后单击“组件”。
-3. 单击**“添加”**。
+3. 单击“添加”。
 4. 在“添加组件”对话框中：
     1. 在“导入”部分中：
         1. 使用“文件”按钮导航到要使用的证书。 
@@ -267,7 +267,7 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。紧接着，�
 
         ![添加证书组件][add_cert_component]
 
-    5. 单击**“确定”**。
+    5. 单击“确定”。
 
 此时，你的证书将包含在部署中。请注意，无论你是在 WAR 文件中嵌入证书还是将其作为组件添加到部署中，都需要将证书上载到命名空间，如[将证书上载到 ACS 命名空间][]部分中所述。
 
@@ -308,4 +308,4 @@ Windows Live ID 现已作为你的 ACS 命名空间的 IP 启用。紧接着，�
 [create_acs_hello_world]: ./media/active-directory-java-authenticate-users-access-control-eclipse/CreateACSHelloWorld.png
 [add_token_signing_cert]: ./media/active-directory-java-authenticate-users-access-control-eclipse/AddTokenSigningCertificate.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -1,14 +1,14 @@
 <properties 
-   pageTitle="服务总线示例概述 | Microsoft Azure"
+   pageTitle="服务总线示例概述 | Azure"
    description="分类并介绍相互链接的服务总线示例。"
    services="service-bus"
    documentationCenter="na"
    authors="sethmanheim"
    manager="timlt"
-   editor="tysonn" />
+    editor="" />
 <tags 
    ms.service="service-bus"
-   ms.date="01/26/2016"
+    ms.date="05/06/2016"
    wacn.date="" />
 
 # 服务总线示例
@@ -16,6 +16,8 @@
 服务总线示例演示了[服务总线](/home/features/service-bus/)（云服务）和 [Windows Server 服务总线](https://msdn.microsoft.com/zh-cn/library/dn282144.aspx)中的主要功能。本文分类并介绍了可用的示例，每个示例均具有链接。
 
 >[AZURE.NOTE] 服务总线示例未安装 SDK。若要获取这些示例，请访问 [Azure SDK 示例页](https://code.msdn.microsoft.com/site/search?query=service%20bus&f%5B0%5D.Value=service%20bus&f%5B0%5D.Type=SearchText&ac=5)。
+>
+>另外，[此处](https://github.com/Azure-Samples/azure-servicebus-messaging-samples)提供一组已更新的服务总线消息传送示例（撰写本文时未介绍这些示例）。[此处](https://github.com/Azure-Samples/azure-servicebus-relay-samples)是中继示例。
 
 ## 服务总线中转消息传送
 
@@ -128,4 +130,4 @@
 - [服务总线体系结构](/documentation/articles/service-bus-architecture)
 - [服务总线基础知识](/documentation/articles/service-bus-fundamentals-hybrid-solutions)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0613_2016-->

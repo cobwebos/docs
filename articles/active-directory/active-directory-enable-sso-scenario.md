@@ -1,5 +1,5 @@
 <properties
-    pageTitle="使用 Azure Active Directory 管理应用程序 | Microsoft Azure"
+    pageTitle="使用 Azure Active Directory 管理应用程序 | Azure"
     description="本文介绍将 Azure Active Directory 与本地、云和 SaaS 应用程序集成的好处。"
     services="active-directory"
     documentationCenter=""
@@ -9,7 +9,7 @@
 
    <tags
       ms.service="active-directory"
-      ms.date="02/16/2016"
+      ms.date="05/03/2016"
       wacn.date=""/>
 
 # 使用 Azure Active Directory (AD) 管理应用程序
@@ -132,4 +132,4 @@ Azure AD 提供预先集成的报告和监控功能，使你能够知道谁有�
 
 [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

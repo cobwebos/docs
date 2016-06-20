@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Cloud App Discovery 的安全和隐私注意事项 | Microsoft Azure"
+	pageTitle="Cloud App Discovery 的安全和隐私注意事项 | Azure"
 	description="本主题介绍与 Cloud App Discovery 相关的安全和隐私注意事项。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="02/09/2016"
+	ms.date="04/30/2016"
 	wacn.date=""/>
 
 # Cloud App Discovery 的安全和隐私注意事项
@@ -27,7 +27,7 @@ Microsoft 致力于保护你的隐私和数据安全，同时提供软件和服�
 ##概述
 
 Cloud App Discovery 是 Azure AD 的一项功能，在 Microsoft Azure 中托管。<br>
-Cloud App Discovery 终结点代理用于从 IT 托管的计算机收集应用程序发现数据。<br>
+Cloud App Discovery 终结点代理用于从 IT 托管的计算机收集应用程序发现数据。<br> 
 收集的数据通过加密通道安全地发送到 Azure AD Cloud App Discovery 服务。<br>
 然后，组织的 Cloud App Discovery 数据会显示在 Azure 门户中。<br>
 
@@ -45,8 +45,7 @@ Cloud App Discovery 终结点代理用于从 IT 托管的计算机收集应用�
 
 Azure Active Directory 租户（或其代理）的管理员可从 Azure 门户下载代理安装包。这些代理可以手动安装或使用 SCCM 或组策略安装在组织中的多台计算机上。
 
-有关部署选项的进一步说明，请参阅 [Cloud App Discovery Group Policy Deployment Guide（Cloud App Discovery 组策略部署指南）](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)。
-<br>
+有关部署选项的进一步说明，请参阅 [Cloud App Discovery Group Policy Deployment Guide（Cloud App Discovery 组策略部署指南）](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)。<br>
 
 ### 代理收集的数据
 
@@ -101,8 +100,7 @@ Azure Active Directory 租户（或其代理）的管理员可从 Azure 门户�
 
 
 
-> [AZURE.NOTE] 以上 HTTP 信息收集用于所有的非加密连接。
- 对于 TLS 连接，仅在门户中打开“深度检测”设置时，才捕获此信息。默认情况下设置为“打开”。
+> [AZURE.NOTE] 以上 HTTP 信息收集用于所有的非加密连接。对于 TLS 连接，仅在门户中打开“深度检测”设置时，才捕获此信息。默认情况下设置为“打开”。
 有关更多详细信息，请参阅下文以及 [Getting Started With Cloud App Discovery（Cloud App Discovery 入门）](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
 
 
@@ -119,7 +117,7 @@ Azure Active Directory 租户（或其代理）的管理员可从 Azure 门户�
 
 
 
-首次安装代理时，它将在计算机上存储特定于计算机的受信任的证书，然后用该证书来建立与 Cloud App Discovery 服务的安全连接。<br>
+首次安装代理时，它将在计算机上存储特定于计算机的受信任的证书，然后用该证书来建立与 Cloud App Discovery 服务的安全连接。<br> 
 代理会通过此安全连接从 Cloud App Discovery 服务定期检索策略配置。<br>
 该策略包括有关要监视的云应用程序以及是否应启用自动更新等的信息。
 
@@ -192,7 +190,6 @@ Cloud App Discovery 服务的分析管道可通过在分析管道的各个阶段
 
 
 > [AZURE.NOTE] 有关更多详细信息，请参阅 [Getting Started With Cloud App Discovery（Cloud App Discovery 入门）](http://social.technet.microsoft.com/wiki/contents/articles/30962.getting-started-with-cloud-app-discovery.aspx)
- 
 
 <br>
 任何在门户中访问数据的用户，都必须使用 Azure AD Premium 许可证进行许可。
@@ -205,4 +202,4 @@ Cloud App Discovery 服务的分析管道可通过在分析管道的各个阶段
 * [如何发现本组织中使用的未经认可的云应用](/documentation/articles/active-directory-cloudappdiscovery-whatis)
 * [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0613_2016-->

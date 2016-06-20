@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD .NET 入门 | Microsoft Azure"
+	pageTitle="Azure AD .NET 入门 | Azure"
 	description="如何生成一个与 Azure AD 集成以支持登录的 .NET MVC Web 应用。"
 	services="active-directory"
 	documentationCenter=".net"
@@ -55,7 +55,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 -	将称为 `Startup.cs` 的 OWIN 启动类添加到项目。右键单击项目，选择“添加”-->“新建项”，然后搜索“OWIN”。当你的应用程序启动时，该 OWIN 中间件将调用 `Configuration(...)` 方法。
--	将类声明更改为 `public partial class Startup` - 我们已在另一个文件中实现了此类的一部分。在 `Configuration(...)` 方法中，调用 ConfgureAuth(...) 以设置网站的身份验证  
+-	将类声明更改为 `public partial class Startup` - 我们已在另一个文件中实现了此类的一部分。在 `Configuration(...)` 方法中，调用 ConfgureAuth(...) 以设置 Web 应用的身份验证  
 
 ```C#
 public partial class Startup
@@ -170,8 +170,8 @@ public ActionResult About()
 
 现在，可以转到更高级的主题。你可能想要尝试：
 
-[使用 Azure AD 保护 Web API >>](active-directory-devquickstarts-webapi-dotnet)
+[使用 Azure AD 保护 Web API >>](/documentation/articles/active-directory-devquickstarts-webapi-dotnet)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources.md)]
  
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

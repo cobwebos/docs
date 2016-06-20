@@ -60,7 +60,7 @@ Azure Active Directory 有三个版本：免费版 (Free)、基本版 (Basic) �
 为你的目录预配许可证时，你会收到**欢迎电子邮件**。
 此电子邮件会确认你可以开始管理 Azure Active Directory Premium 或企业移动性套件的许可证和功能。
 
-如果你以前用过 Microsoft Azure，则可以转到 [http://manage.windowsazure.com](http://manage.windowsazure.com) 以分配新的许可证（有关更多详细信息，请参阅[步骤 4](#step-4-assign-license-to-user-accounts)）。
+如果你以前用过 Microsoft Azure，则可以转到 [http://manage.windowsazure.com](http://manage.windowsazure.cn) 以分配新的许可证（有关更多详细信息，请参阅[步骤 4](#step-4-assign-license-to-user-accounts)）。
 
 如果你不曾用过 Microsoft Azure，则可以单击电子邮件中的“登录”或转到 [Azure Active Directory 访问权限激活页](https://account.windowsazure.com/signup?offer=MS-AZR-0110P)。
 这两种方法都会带你完成一系列步骤，以帮助你通过 Azure 经典门户访问目录。
@@ -136,6 +136,4 @@ Azure Active Directory 有三个版本：免费版 (Free)、基本版 (Basic) �
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
 
-
-
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

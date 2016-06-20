@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD Java 入门 | Microsoft Azure"
+	pageTitle="Azure AD Java 入门 | Azure"
 	description="如何生成使用户登录以访问 API 的 Java 命令行应用。"
 	services="active-directory"
 	documentationCenter="java"
@@ -23,7 +23,7 @@
 
 使用 Azure AD，只需编写几行代码，就能简单直接地外包 Web 应用的标识管理，提供单一登录和注销。在 Java Web Apps 中，你可以使用社区驱动 ADAL4J 的 Microsoft 实现来达到此目的。
 
-  现在，我们将使用 ADAL4J 来执行下列操作：
+  现在，我们将使用 ADAL4J 来执行以下操作：
 - 使用 Azure AD 作为标识提供者将用户登录到应用。
 - 显示有关用户的一些信息。
 - 从应用中注销用户。
@@ -50,7 +50,7 @@
     - “应用程序 ID URI”是应用程序的唯一标识符。约定是使用 `https://<tenant-domain>/<app-name>`，例如 `http://localhost:8080/adal4jsample/`
 - 完成注册后，AAD 将为应用程序分配唯一的客户端标识符。在后面的部分中将会用到此值，因此，请从“配置”选项卡复制此值。
 
-进入门户后，为你的应用程序创建一个**应用程序密码**并复制下来。稍后您将需要它。
+进入门户后，为你的应用创建一个**应用程序机密**并复制该机密。稍后您将需要它。
 
 
 ## 2\.使用 Maven 将应用设置为使用 ADAL4J 库和必备组件
@@ -269,4 +269,4 @@ public class PublicClient {
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
 
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -9,12 +9,12 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="02/10/2016"
+   ms.date="05/16/2016"
    wacn.date=""/>
 
 #在 Azure 中管理 Office 365 订阅的目录
 
-本文介绍如何在 Azure 管理门户中管理为 Office 365 订阅创建的目录。完成此任务的步骤因你是否拥有 Azure 订阅而异。你必须是 Azure 订阅的服务管理员或协同管理员才能登录到 Azure 管理门户。
+本文介绍如何在 Azure 经典门户中管理为 Office 365 订阅创建的目录。完成此任务的步骤因你是否拥有 Azure 订阅而异。必须是 Azure 订阅的服务管理员或协同管理员才能登录到 Azure 经典门户。
 
 如果你还没有 Azure 订阅，只需使用用于登录 Office 365 的工作或学校帐户注册即可。
 
@@ -67,4 +67,4 @@
 ##后续步骤
 有关订阅与目录之间关系的详细信息，请参阅[订阅如何与目录关联](/documentation/articles/active-directory-how-subscriptions-associated-directory)。
 
-<!---HONumber=Mooncake_0516_2016--->
+<!---HONumber=Mooncake_0613_2016-->

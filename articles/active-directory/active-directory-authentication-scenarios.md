@@ -1,6 +1,6 @@
 
 <properties
-   pageTitle="Azure AD 的身份验证方案 | Microsoft Azure"
+   pageTitle="Azure AD 的身份验证方案 | Azure"
    description="Azure Active Directory (AAD) 的五个最常见身份验证方案概述"
    services="active-directory"
    documentationCenter="dev-center-name"
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) 通过以下方式简化了对开发人员的�
 - 开发人员可以使用开源 Azure AD 身份验证库为你处理协议细节，方便你进行身份验证。有关详细信息，请参阅 [Azure Active Directory 身份验证库](active-directory-authentication-libraries)。
 
 
-• 在用户通过身份验证后，应用程序必须对用户的安全令牌进行验证以确保身份验证对于目标方是成功的。开发人员可以使用所提供的身份验证库来处理 Azure AD 提供的令牌的验证，包括 JSON Web 令牌 (JWT) 或 SAML 2.0。如果希望手动执行验证，请参阅 [JWT Token Handler](https://msdn.microsoft.com/library/dn205065.aspx)（JWT 令牌处理程序）文档。
+• 在用户通过身份验证后，应用程序必须对用户的安全令牌进行验证以确保身份验证对于目标方是成功的。开发人员可以使用所提供的身份验证库来处理 Azure AD 提供的令牌的验证，包括 JSON Web 令牌 (JWT) 或 SAML 2.0。如果希望手动执行验证，请参阅 [JWT Token Handler（JWT 令牌处理程序）](https://msdn.microsoft.com/library/dn205065.aspx)文档。
 
 
 > [AZURE.IMPORTANT] Azure AD 使用公钥加密对令牌进行签名以及验证它们是否有效。应用程序必须实施必要的逻辑才能确保始终使用最新密钥进行更新，此方面的详细信息，请参阅有关 [Azure AD 中签名密钥滚动更新的重要信息](https://msdn.microsoft.com/zh-cn/library/azure/dn641920.aspx)。
@@ -294,7 +294,7 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 #### 代码示例
 
 
-请参阅本机应用程序到 Web API 方案的代码示例。另外，请经常回来查看 - 我们会不时地添加新示例。[本机应用程序到 Web API](active-directory-code-samples#native-application-to-web-api)。
+请参阅本机应用程序到 Web API 方案的代码示例。另外，请经常回来查看 - 我们会不时地添加新示例。[本机应用程序到 Web API](/documentation/articles/active-directory-code-samples#native-application-to-web-api)。
 
 
 #### 注册
@@ -303,7 +303,7 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 - 单租户：本机应用程序和 Web API 必须在 Azure AD 的同一个目录中进行注册。可以对 Web API 进行配置以公开一组权限，然后使用这些权限来限制本机应用程序对其资源的访问。然后，客户端应用程序在 Azure 管理门户的“对其他应用程序的权限”下拉菜单中选择所需的权限。
 
 
-- 多租户：首先，本机应用程序只在开发人员或发布者的目录中进行注册。其次，本机应用程序在配置后会指示它在正常运行时所需的权限。当目标目录中的用户或管理员表示许可应用程序的要求时（这将使应用程序可供其组织使用），此必需权限列表将显示在一个对话框中。某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。另外一些应用程序需要管理员级权限，组织中的用户无法表示许可。只有目录管理员可以对需要此级别的权限的应用程序表示许可。当用户或管理员表示许可后，才会在其目录中注册该 Web API。有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](active-directory-integrating-applications)。
+- 多租户：首先，本机应用程序只在开发人员或发布者的目录中进行注册。其次，本机应用程序在配置后会指示它在正常运行时所需的权限。当目标目录中的用户或管理员表示许可应用程序的要求时（这将使应用程序可供其组织使用），此必需权限列表将显示在一个对话框中。某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。另外一些应用程序需要管理员级权限，组织中的用户无法表示许可。只有目录管理员可以对需要此级别的权限的应用程序表示许可。当用户或管理员表示许可后，才会在其目录中注册该 Web API。有关详细信息，请参阅[将应用程序与 Azure Active Directory 集成](/documentation/articles/active-directory-integrating-applications)。
 
 
 #### 令牌过期
@@ -442,7 +442,7 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 
 #### 代码示例
 
-请参阅后台或服务器应用程序到 Web API 方案的代码示例。另外，请经常回来查看 - 我们会不时地添加新示例。[服务器或守护程序应用程序到 Web API](active-directory-code-samples#server-or-daemon-application-to-web-api)
+请参阅后台或服务器应用程序到 Web API 方案的代码示例。另外，请经常回来查看 - 我们会不时地添加新示例。[服务器或守护程序应用程序到 Web API](/documentation/articles/active-directory-code-samples#server-or-daemon-application-to-web-api)
 
 #### 注册
 
@@ -457,12 +457,12 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 
 ## 另请参阅
 
-[Azure Active Directory 开发人员指南](active-directory-developers-guide)
+[Azure Active Directory 开发人员指南](/documentation/articles/active-directory-developers-guide)
 
-[Azure Active Directory 代码示例](active-directory-code-samples)
+[Azure Active Directory 代码示例](/documentation/articles/active-directory-code-samples)
 
 [有关 Azure AD 中签名密钥滚动更新的重要信息](https://msdn.microsoft.com/zh-cn/library/azure/dn641920.aspx)
 
 [Azure AD 中的 OAuth 2.0](https://msdn.microsoft.com/zh-cn/library/azure/dn645545.aspx)
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0613_2016-->

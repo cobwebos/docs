@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="02/02/2016"  
+	ms.date="04/18/2016"     
 	wacn.date=""/>
 
 #使用多重 DRM 的 CENC 和访问控制：Azure 与 Azure 媒体服务的参考设计和实现
@@ -251,9 +251,9 @@ George 还撰写了一篇相关的博客文章：[Azure 媒体服务和动态加
 
 实现中存在一些“难点”。希望以下“难点”列表可以帮助你在遇到问题时进行故障排除。
 
-1. **颁发者** URL 应以 **“/”** 结尾。  
+1. **颁发者** URL 应以**“/”**结尾。  
 
-	**受众** 应该是播放器应用程序客户端 ID，你也应该在颁发者 URL 的末尾添加 **“/”**。
+	**受众**应该是播放器应用程序客户端 ID，你也应该在颁发者 URL 的末尾添加**“/”**。
 
 		<add key="ida:audience" value="[Application Client ID GUID]" />
 		<add key="ida:issuer" value="https://sts.chinacloudapi.cn/[AAD Tenant ID]/" /> 
@@ -505,4 +505,6 @@ Windows 10 的 Microsoft Edge 及 IE 11 中的 EME，允许支持 [PlayReady SL3
 - Azure、Azure 媒体服务和 Azure Media Player 的参考实现。
 - 同时还讨论到直接涉及设计和实现的某些主题。
 
-<!---HONumber=Mooncake_0307_2016-->
+
+
+<!---HONumber=Mooncake_0613_2016-->

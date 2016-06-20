@@ -11,12 +11,12 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="02/25/2016" 
+	ms.date="05/15/2016" 
 	wacn.date=""/>
 
 #使用 Media Encoder Premium Workflow 进行高级编码
 
-**请注意**，本主题中所述的 Media Encoder Premium Workflow 媒体处理器在中国不可用。
+>[AZURE.NOTE] 本主题中所述的 Media Encoder Premium Workflow 媒体处理器在中国不可用。
 
 ##概述
 
@@ -24,9 +24,9 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 以下主题概述了与**媒体编码器高级工作流**相关的详细信息：
 
-- [媒体编码器高级工作流支持的格式](/documentation/articles/media-services-premium-workflow-encoder-formats) - 介绍**媒体编码器高级工作流**支持的文件格式和编解码器。
+- [Media Encoder Premium Workflow 支持的格式](/documentation/articles/media-services-premium-workflow-encoder-formats) — 介绍 **Media Encoder Premium Workflow** 支持的文件格式和编解码器。
 
-- [比较编码器](/documentation/articles/media-services-encode-asset#compare_encoders)部分比较了**媒体编码器高级工作流**、**媒体编码器标准**和 **Azure 媒体编码器**的编码功能。
+- [比较编码器](/documentation/articles/media-services-encode-asset#compare_encoders)部分比较了 **Media Encoder Premium Workflow** 和 **Media Encoder Standard** 的编码功能。
 
 本主题演示如何在**媒体编码器高级工作流**中使用 .NET 进行编码。
 
@@ -265,12 +265,5 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 
 
-##媒体服务学习路径
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../includes/media-services-learning-paths-include.md)]
-
-##提供反馈
-
-[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
-
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0613_2016-->

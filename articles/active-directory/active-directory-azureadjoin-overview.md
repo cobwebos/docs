@@ -1,5 +1,5 @@
 <properties
-	pageTitle="通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备 | Microsoft Azure"
+	pageTitle="通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备 | Azure"
 	description="详细阐述 Windows 10 设备如何利用 Azure AD Join 在 Azure Active Directory 上注册。"
 	services="active-directory"
 	documentationCenter=""
@@ -49,7 +49,7 @@ Azure AD Join 面向云优先/仅限云的企业 -- 通常是不具备本地 Win
 * **自动的移动设备管理注册**：设备可以在连接到 Azure AD 时自动注册到移动设备管理中。此过程适用于 Microsoft Intune 与合作伙伴移动设备管理解决方案。使用 Intune 执行设备管理时，IT 管理员可在 SCCM 管理控制台中监视/管理已加入 Azure AD 的设备以及已加入域的设备。
 
 
-* **单一登录公司资源**：用户享有从 Windows 桌面到云中应用和资源的单一登录（例如 Office 365），以及数千个通过 [Azure AD Connect](active-directory-azureadjoin-deployment-aadjoindirect.md) 依赖 Azure AD 进行身份验证的企业应用程序。当已加入 Azure AD 的企业拥有设备位于企业网络时，这类设备也享有本地资源的 SSO，并且在通过 [Azure AD 应用程序代理](https://msdn.microsoft.com/library/azure/Dn768219.aspx)公开这些资源时，也可从任何地方享有 SSO。
+* **单一登录公司资源**：用户享有从 Windows 桌面到云中应用和资源（例如 Office 365）以及数千个通过 [Azure AD Connect](/documentation/articles/active-directory-azureadjoin-deployment-aadjoindirect) 依赖 Azure AD 进行身份验证的企业应用程序的单一登录。当已加入 Azure AD 的企业拥有设备位于企业网络时，这类设备也享有本地资源的 SSO，并且在通过 [Azure AD 应用程序代理](https://msdn.microsoft.com/library/azure/Dn768219.aspx)公开这些资源时，也可从任何地方享有 SSO。
 
 
 * **OS 状态漫游**：辅助功能设置、网站和 Wi-Fi 密码等设置都会在企业拥有的设备上同步，且无需使用个人 Microsoft 帐户。
@@ -68,11 +68,11 @@ Azure AD Join 面向云优先/仅限云的企业 -- 通常是不具备本地 Win
 
 
 ## 其他信息
-* [面向企业的 Windows 10：在工作中使用设备的方式](active-directory-azureadjoin-windows10-devices-overview.md)
-* [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
-* [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](active-directory-azureadjoin-passport.md)
-* [了解 Azure AD Join 的使用方案](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](active-directory-azureadjoin-devices-group-policy.md)
-* [设置 Azure AD Join](active-directory-azureadjoin-setup.md)
+* [面向企业的 Windows 10：在工作中使用设备的方式](/documentation/articles/active-directory-azureadjoin-windows10-devices-overview)
+* [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](/documentation/articles/active-directory-azureadjoin-user-upgrade)
+* [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](/documentation/articles/active-directory-azureadjoin-passport)
+* [了解 Azure AD Join 的使用方案](/documentation/articles/active-directory-azureadjoin-deployment-aadjoindirect)
+* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](/documentation/articles/active-directory-azureadjoin-devices-group-policy)
+* [设置 Azure AD Join](/documentation/articles/active-directory-azureadjoin-setup)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0613_2016-->

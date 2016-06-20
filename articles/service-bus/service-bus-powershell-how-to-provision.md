@@ -1,6 +1,6 @@
 <properties
-	pageTitle="使用 PowerShell 管理服务总线 | Microsoft Azure"
-	description="使用 PowerShell 脚本而不是 .NET 来管理服务总线"
+	pageTitle="使用 PowerShell 管理服务总线 | Azure"
+	description="使用 PowerShell 脚本管理服务总线"
 	services="service-bus"
 	documentationCenter=".net"
 	authors="sethmanheim"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="service-bus"
-	ms.date="02/08/2016"
+	ms.date="05/02/2016"
 	wacn.date=""/>
 
 # 使用 PowerShell 管理服务总线
@@ -152,6 +152,21 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 	Write-Output "The consumer group [$ConsumerGroupName] for the [$Path] event hub has been successfully created."
 	```
 
+## 将命名空间迁移到另一个 Azure 订阅
+
+通过运行以下顺序的命令，可在 Azure 订阅之间移动命名空间。若要执行此操作，命名空间必须已经处于活动状态，而且运行 PowerShell 命令的用户必须既是源订阅又是目标订阅的管理员。
+
+```
+# Create a new resource group in target subscription
+Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+New-AzureRmResourceGroup -Name 'targetRP' -Location 'East US'
+
+# Move namespace from source subscription to target subscription
+Select-AzureRmSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+$res = Find-AzureRmResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
+Move-AzureRmResource -DestinationResourceGroupName 'targetRP' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
+```
+
 ## 后续步骤
 
 本文提供使用 PowerShell 预配服务总线实体的基本概述。使用 .NET 客户端库可以执行的任何操作同样可以在 PowerShell 脚本中完成。
@@ -175,5 +190,4 @@ Write-Output "NamespaceManager object for the [$Namespace] namespace has been su
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/zh-cn/library/azure/dn495113.aspx
 [适用于服务总线的 .NET API]: https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.aspx
 [NamespaceManager]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.namespacemanager.aspx
-
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0613_2016-->

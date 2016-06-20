@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-    ms.date="03/04/2016" 
+    ms.date="05/04/2016" 
 	wacn.date=""/>
 
 # 如何查看 Azure Access Control 服务返回的 SAML
@@ -192,5 +192,4 @@ Azure 访问服务控制筛选器是一个社区技术预览版。作为预发�
 [如何使用 Eclipse 向 Azure 访问控制服务对 Web 用户进行身份验证]: ../active-directory-java-authenticate-users-access-control-eclipse
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png
  
-
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0613_2016-->

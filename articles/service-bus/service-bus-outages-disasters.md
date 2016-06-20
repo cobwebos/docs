@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="使服务总线应用程序免受服务总线中断和灾难影响 | Microsoft Azure"
+   pageTitle="使服务总线应用程序免受服务中断和灾难影响 | Azure"
    description="介绍可用于保护应用程序免受潜在服务总线中断影响的技术。"
    services="service-bus"
    documentationCenter="na"
@@ -8,7 +8,7 @@
    editor="tysonn" /> 
 <tags 
    ms.service="service-bus"
-   ms.date="01/26/2016"
+    ms.date="05/06/2016"
    wacn.date="" />
 
 # 使应用程序免受服务总线中断和灾难影响的最佳实践
@@ -23,7 +23,7 @@
 
 服务总线使用多个消息存储空间来存储发送到队列或主题的消息。将未分区的队列或主题分配到一个消息存储空间。如果此消息存储空间不可用，则针对该队列或主题的所有操作将都失败。
 
-所有服务总线消息传送实体（队列、主题、中继）都位于同一服务命名空间中，它隶属于数据中心。服务总线不允许数据的自动异地复制，也不允许一个服务命名空间跨多个数据中心。
+所有服务总线消息传送实体（队列、主题、中继）都位于同一服务命名空间中，它隶属于数据中心。服务总线不允许对数据进行自动异地复制，也不允许一个命名空间跨多个数据中心。
 
 ## 针对 ACS 中断进行保护
 
@@ -37,7 +37,7 @@
 
 ## 针对数据中心中断或灾难进行保护
 
-若要允许在两个数据中心之间进行故障转移，你可以在每个数据中心中各创建一个服务总线服务命名空间。例如，服务总线服务命名空间 **contosoPrimary.servicebus.windows.net** 可能位于美国（北部/中部）区域，而 **contosoSecondary.servicebus.windows.net** 可能位于美国（南部/中部）区域。如果必须在数据中心中断的情况下仍可访问服务总线消息传送实体，你可以在两个命名空间中都创建该实体。
+若要允许在两个数据中心之间进行故障转移，你可以在每个数据中心中各创建一个服务总线服务命名空间。例如，服务总线服务命名空间 **contosoPrimary.servicebus.windows.net** 可能位于美国北部/中部区域，而 **contosoSecondary.servicebus.windows.net** 可能位于美国南部/中部区域。如果必须在数据中心中断的情况下仍可访问服务总线消息传送实体，你可以在两个命名空间中都创建该实体。
 
 有关详细信息，请参阅[异步消息传送模式和高可用性][]中的“Azure 数据中心内的服务总线故障”部分。
 
@@ -51,13 +51,13 @@
 
 ## 保护队列和主题免受数据中心中断或灾难的影响
 
-为了在使用中转消息传送时实现针对数据中心中断的恢复，服务总线支持两种方法：主动和被动复制。对于每一种方法，如果必须在数据中心中断的情况下仍可访问给定的队列或主题，你可以将其创建在两个命名空间中。两个实体可以具有相同的名称。例如，可在 **contosoPrimary.servicebus.windows.net/myQueue** 下访问主要队列，而在 **contosoSecondary.servicebus.windows.net/myQueue** 下访问其辅助副本。
+为了在使用中转消息传送时实现针对数据中心中断的恢复，服务总线支持两种方法：*主动*和*被动*复制。对于每一种方法，如果必须在数据中心中断的情况下仍可访问给定的队列或主题，你可以将其创建在两个命名空间中。两个实体可以具有相同的名称。例如，可在 **contosoPrimary.servicebus.windows.net/myQueue** 下访问主要队列，而在 **contosoSecondary.servicebus.windows.net/myQueue** 下访问其辅助副本。
 
 如果应用程序不需要发送方到接收方的持续通信，则该应用程序可实施一个用于防止消息丢失的持久客户端队列，从而保护发送方免受任何暂时性服务总线故障的影响。
 
 ## 主动复制
 
-主动复制对于每个操作都将使用这两个服务命名空间中的实体。任何发送消息的客户端都将发送同一条消息的两个副本。将第一个副本发送到主要实体（例如 **contosoPrimary.servicebus.windows.net/sales**），并将该消息的第二个副本发送到辅助实体（例如 **contosoSecondary.servicebus.windows.net/sales**）。
+主动复制对于每个操作都使用这两个命名空间中的实体。任何发送消息的客户端都将发送同一条消息的两个副本。第一个副本将发送到主要实体（例如 **contosoPrimary.servicebus.windows.net/sales**），该消息的第二个副本将发送到辅助实体（例如 **contosoSecondary.servicebus.chinacloudapi.cn/sales**）。
 
 客户端从两个队列接收消息。如果接收方处理了消息的第一个副本，则第二个副本将被取消。要取消重复的消息，发送方必须用唯一标识符标记每一条消息。必须用同一标识符标记消息的两个副本。你可以使用 [BrokeredMessage.MessageId][] 或 [BrokeredMessage.Label][] 属性或自定义属性对消息进行标记。接收方必须保留已接收消息的列表。
 
@@ -107,4 +107,4 @@
   [Azure SQL 数据库业务连续性]: /documentation/articles//sql-database-business-continuity
   [Azure 业务连续性技术指南]: https://msdn.microsoft.com/library/azure/hh873027.aspx
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -9,12 +9,12 @@
    tags="azure-service-management,azure-resource-manager"/>
 <tags 
    ms.service="vpn-gateway"
-   ms.date="03/28/2016"
-   wacn.date="04/19/2016"/>
+   ms.date="04/20/2016"
+   wacn.date="06/08/2016"/>
 
 # 规划和设计 VPN 网关
 
-规划和设计跨界连接与 VNet 到 VNet 连接可能很简单，也可以非常复杂，具体取决于你的网络需求。
+规划和设计跨界配置和 VNet 到 VNet 配置可以很简单，也可以相当复杂，具体取决于你的网络需求。本文将详细介绍基本规划和设计注意事项。
 
 ## 规划
 
@@ -43,7 +43,8 @@
 ### <a name="gwrequire"></a>2.根据 VPN 类型和 SKU 考虑网关要求
 
 
-在创建 VPN 网关时，你需要指定想要使用的网关 SKU。共有 3 种 VPN 网关 SKU：
+在创建 VPN 网关时，你需要指定想要使用的网关 SKU。 
+共有 3 种 VPN 网关 SKU：
 
 - 基本
 - 标准
@@ -56,7 +57,7 @@
 ### 3\.网关类型和聚合吞吐量估计
 
 下表显示网关类型和估计的聚合吞吐量。估计的聚合吞吐量可能是设计时的决定因素。
-网关 SKU 之间并无定价差异。有关定价的信息，请参阅 [VPN 网关定价](/home/features/vpn-gateway/#price)。此表适用于 Resource Manager 与经典部署模型。
+网关 SKU 之间并无定价差异。有关定价的信息，请参阅 [VPN 网关定价](/home/features/vpn-gateway#price)。此表适用于 Resource Manager 与经典部署模型。
 
 [AZURE.INCLUDE [vpn-gateway-table-gwtype-aggtput](../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -159,9 +160,9 @@
 
 ## 后续步骤
 
-请参阅 [VPN Gateway FAQ（VPN 网关常见问题）](/documentation/articles/vpn-gateway-vpn-faq)和 [About VPN Gateways（关于 VPN 网关）](/documentation/articles/vpn-gateway-about-vpngateways)，以获取可帮助你进行设计的详细信息。有关连接拓扑的详细信息，请参阅 [Connection toplogies（连接拓扑](/documentation/articles/vpn-gateway-topology)）。
+请参阅 [VPN Gateway FAQ（VPN 网关常见问题）](/documentation/articles/vpn-gateway-vpn-faq)和 [About VPN Gateways（关于 VPN 网关）](/documentation/articles/vpn-gateway-about-vpngateways)，以获取可帮助你进行设计的详细信息。有关连接拓扑的详细信息，请参阅 [Connection toplogies（连接拓扑）](/documentation/articles/vpn-gateway-topology)。
 
 
 
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="如何与 Azure Active Directory 集成 | Microsoft Azure"
+   pageTitle="如何与 Azure Active Directory 集成 | Azure"
    description="介绍与 Azure Active Directory 集成的好处与相关资源的指南。"
    services="active-directory"
    documentationCenter="dev-center-name"
@@ -14,7 +14,7 @@
 
 # 与 Azure Active Directory 集成
 
-[AZURE.INCLUDE [active-directory-devguide](../includes/active-directory-devguide)]
+[AZURE.INCLUDE [active-directory-devguide](../includes/active-directory-devguide.md)]
 
 Azure Active Directory 为组织的云应用程序提供企业级标识管理。Azure AD 集成可以简化用户登录体验，并帮助你的应用程序符合 IT 策略。
 
@@ -45,9 +45,9 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 <!--
 ### Promote Your Application in the Azure and Office 365 Marketplaces
 
-**Promote your application to the millions of organizations who are already using Azure AD.**  Users who search and browse these marketplaces are already using one or more cloud services, making them qualified cloud service customers.  Learn more about promoting your application in [the Azure Marketplace](http://azure.microsoft.com/marketplace/partner-program/).
+**Promote your application to the millions of organizations who are already using Azure AD.**  Users who search and browse these marketplaces are already using one or more cloud services, making them qualified cloud service customers.  Learn more about promoting your application in [the Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/).
 
-**When users sign up for your application, it will appear in their Azure AD access panel and Office 365 app launcher.**  Users will be able to quickly and easily return to your application later, improving user engagement.  Learn more about the [Azure AD access panel](active-directory-saas-access-panel-introduction).
+**When users sign up for your application, it will appear in their Azure AD access panel and Office 365 app launcher.**  Users will be able to quickly and easily return to your application later, improving user engagement.  Learn more about the [Azure AD access panel](/documentation/articles/active-directory-saas-access-panel-introduction).
 -->
 
 ### 保护设备与服务之间以及服务与服务之间的通信
@@ -89,4 +89,4 @@ Azure Active Directory 为组织的云应用程序提供企业级标识管理。
 [使用 Azure AD 登录用户](/documentation/articles/active-directory-authentication-scenarios)
 
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

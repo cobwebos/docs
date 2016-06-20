@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD iOS 入门 | Microsoft Azure"
+	pageTitle="Azure AD iOS 入门 | Azure"
 	description="如何生成一个与 Azure AD 集成以方便登录，并使用 OAuth 调用 Azure AD 保护 API 的 iOS 应用程序。"
 	services="active-directory"
 	documentationCenter="ios"
@@ -14,9 +14,9 @@
 
 # 将 Azure AD 集成到 iOS 应用程序中
 
-[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../includes/active-directory-devquickstarts-switcher)]
+[AZURE.INCLUDE [active-directory-devquickstarts-switcher](../includes/active-directory-devquickstarts-switcher.md)]
 
-[AZURE.INCLUDE [active-directory-devguide](../includes/active-directory-devguide)]
+[AZURE.INCLUDE [active-directory-devguide](../includes/active-directory-devguide.md)]
 
 对于需要访问受保护资源的 iOS 客户端，Azure AD 提供 Active Directory 身份验证库 (ADAL)。在本质上，ADAL 的唯一用途就是方便应用程序获取访问令牌。为了演示这种简便性，我们生成了一个 Objective C 待办事项列表应用程序，其中包括：
 
@@ -89,7 +89,7 @@ $ open QuickStart.xcworkspace
     -	`clientId` 是从门户复制的应用程序 clientId。
     -	`redirectUri` 是在门户中注册的 URL。
 
-## 4.使用 ADAL 从 Azure AD 获取令牌
+## *4.使用 ADAL 从 Azure AD 获取令牌*
 ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只需调用 completionBlock `+(void) getToken : `，然后 ADAL 就会负责其余的工作。
 
 -	在 `QuickStart` 项目中，打开 `GraphAPICaller.m` 并找到靠近顶部位置的 `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` 注释。你将在此处通过 CompletionBlock 传递 ADAL 与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
@@ -224,5 +224,5 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 - [使用 Azure AD 保护 Node.JS Web API](active-directory-devquickstarts-webapi-nodejs.md)
 - 了解[如何使用 ADAL 在 iOS 上启用跨应用 SSO](active-directory-sso-ios.md)  
 
-[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources)]
-<!---HONumber=Mooncake_0516_2016-->
+[AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources)]
+<!---HONumber=Mooncake_0613_2016-->

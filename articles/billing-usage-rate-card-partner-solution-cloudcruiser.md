@@ -9,7 +9,7 @@
 
 <tags
    ms.service="billing"
-   ms.date="08/10/2015"
+   ms.date="02/19/2016"
    wacn.date=""/>
 
 # Cloud Cruiser 和 Microsoft Azure 计费 API 集成
@@ -48,7 +48,7 @@ Cloud Cruiser 可以多种方式利用 RateCard API 信息。在本文中，我�
 
 Cloud Cruiser 工作簿提供自动化的方式来从 RateCard API 收集信息并进行处理。ETL（提取-转换-加载）工作簿允许您对数据的收集、转换以及发布到 Cloud Cruiser 数据库进行配置。
 
-每个工作簿可以有一个或多个集合。这样，您可以关联来自不同源的信息以补充或增加使用数据。在如下的两个屏幕快照中，我们展示了在现有工作簿中创建一个新的*集合*，以及将信息从 RateCard API 导入到*集合*：
+每个工作簿可以有一个或多个集合。这样，您可以关联来自不同源的信息以补充或增加使用数据。在如下的两个屏幕快照中，我们展示了在现有工作簿中创建一个新的集合，以及将信息从 RateCard API 导入到集合：
 
 ![图 1 - 创建新集合][1]
 
@@ -74,11 +74,11 @@ Cloud Cruiser 工作簿提供自动化的方式来从 RateCard API 收集信息�
 
 ### 验证 Azure 服务和费率
 
-在发布服务和费率后，您可以在 Cloud Cruiser 的*服务*选项卡中验证导入的服务列表：
+在发布服务和费率后，您可以在 Cloud Cruiser 的服务选项卡中验证导入的服务列表：
 
 ![图 5 - 验证新的服务][5]
 
-在*费率计划*选项卡上，您可以查看名为“AzureSimulation”的新费率计划，其费率是从 RateCard API 导入的。
+在费率计划选项卡上，您可以查看名为“AzureSimulation”的新费率计划，其费率是从 RateCard API 导入的。
 
 ![图 6 - 验证新的费率计划和关联的费率][6]
 
@@ -174,27 +174,27 @@ Cloud Cruiser 可以通过多种方式利用与使用情况 API 的集成。通�
 
 Cloud Cruiser 工作簿提供自动化的方式来从使用情况 API 收集信息并进行处理。ETL（提取-转换-加载）工作簿允许您对数据的收集、转换以及发布到 Cloud Cruiser 数据库进行配置。
 
-每个工作簿可以有一个或多个集合。这样，您可以关联来自不同源的信息以补充或增加使用数据。在此示例中，我们将在 Azure 模板工作簿 (_UsageAPI) 中创建一个新工作表_和设置一个新的_集合_以从使用情况 API 导入信息。
+每个工作簿可以有一个或多个集合。这样，您可以关联来自不同源的信息以补充或增加使用数据。在此示例中，我们将在 Azure 模板工作簿 (UsageAPI) 中创建一个新工作表和设置一个新的集合以从使用情况 API 导入信息。
 
 ![图 3 - 导入到 UsageAPI 工作表的使用情况 API 数据][12]
 
-请注意，此工作簿已有其他工作表要从 Azure 导入服务 (_ImportServices_)，并处理计费 API (_PublishData_) 的消耗信息。
+请注意，此工作簿已有其他工作表要从 Azure 导入服务 (ImportServices)，并处理计费 API (PublishData) 的消耗信息。
 
-我们要在 _UsageAPI_ 工作表上从使用情况 API 提取信息并进行处理，并在 _PublishData_ 工作表上将该信息与来自计费 API 的消耗数据进行关联。
+我们要在 UsageAPI 工作表上从使用情况 API 提取信息并进行处理，并在 PublishData 工作表上将该信息与来自计费 API 的消耗数据进行关联。
 
 ### 处理来自使用情况 API 的标记信息
 
-在将数据导入工作簿之后，我们将在 _UsageAPI_ 工作表中创建转换步骤以对来自该 API 的信息进行处理。第一步是使用“JSON 拆分”处理器从单个字段中提取标记（当从 API 导入它们时）并为每个标记创建新的字段（部门、项目、所有者和环境）。
+在将数据导入工作簿之后，我们将在 UsageAPI 工作表中创建转换步骤以对来自该 API 的信息进行处理。第一步是使用“JSON 拆分”处理器从单个字段中提取标记（当从 API 导入它们时）并为每个标记创建新的字段（部门、项目、所有者和环境）。
 
 ![图 4 - 为标记信息创建新字段][13]
 
-请注意，标记信息中缺少“网络”服务（黄色框），但是通过查看 _ResourceGroupName_ 字段，我们可以得知此服务属于相同的资源组。因为我们有相同资源组中其他资源的标记，所以我们可以在以后的过程中使用此信息来将缺少的标记应用到该资源。
+请注意，标记信息中缺少“网络”服务（黄色框），但是通过查看 ResourceGroupName 字段，我们可以得知此服务属于相同的资源组。因为我们有相同资源组中其他资源的标记，所以我们可以在以后的过程中使用此信息来将缺少的标记应用到该资源。
 
-下一步是创建查找表，将标记中的信息关联到 _ResourceGroupName_。接下来，将使用此查找表为消耗数据扩充标记信息。
+下一步是创建查找表，将标记中的信息关联到 ResourceGroupName。接下来，将使用此查找表为消耗数据扩充标记信息。
 
 ### 将标记信息添加到消耗数据
 
-现在我们可以跳转到 _PublishData_ 表，它对来自计费 API 的消耗信息进行处理，并添加从标记提取的字段。通过查看在上一步中创建的查找表（使用 _ResourceGroupName_ 作为查找关键字），就可以执行该过程。
+现在我们可以跳转到 PublishData 表，它对来自计费 API 的消耗信息进行处理，并添加从标记提取的字段。通过查看在上一步中创建的查找表（使用 ResourceGroupName 作为查找关键字），就可以执行该过程。
 
 ![图 5 - 使用查找到的信息填充帐户结构][14]
 
@@ -215,6 +215,7 @@ Cloud Cruiser 工作簿提供自动化的方式来从使用情况 API 收集信�
 + 若要了解有关 Azure 资源管理器的详细信息，请参阅 [Azure 资源管理器概述](/documentation/articles/resource-group-overview)。
 
 <!--Image references-->
+ 
 [1]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Create-New-Workbook-Collection.png "图 1 - 创建新集合"
 [2]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Import-Data-From-RateCard.png "图 2 - 从新集合导入数据"
 [3]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/Transformation-Steps-Process-RateCard-Data.png "图 3 - 对从 RateCard API 收集的数据进行处理的转换步骤"
@@ -230,4 +231,4 @@ Cloud Cruiser 工作簿提供自动化的方式来从使用情况 API 收集信�
 [13]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/4_NewTagField.png "图 13 - 为标记信息创建新字段"
 [14]: ./media/billing-usage-rate-card-partner-solution-cloudcruiser/5_PopulateAccountStructure.png "图 14 - 使用查找到的信息填充帐户结构"
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="02/03/2016" 
+	ms.date="05/03/2016" 
 	wacn.date=""/>
 
 #使用 Wirecast 编码器发送单比特率实时流
@@ -50,8 +50,7 @@
 
 确保选中“立即启动新频道”。
 
-3. 单击“创建频道”。
-![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
+3. 单击“创建频道”。![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
 
 >[AZURE.NOTE] 启动频道可能需要长达 20 分钟的时间。
 
@@ -135,8 +134,7 @@
 
 	![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
->[AZURE.IMPORTANT] 在单击“流”之前，**必须**确保频道已就绪。
->另外，请确保不要让频道在没有一个输入/贡献源的情况下处于就绪状态的时间超出 15 分钟。
+>[AZURE.IMPORTANT] 在单击“流”之前，**必须**确保频道已就绪。另外，请确保不要让频道在没有一个输入/贡献源的情况下处于就绪状态的时间超出 15 分钟。
 
 ##测试播放
   
@@ -170,4 +168,5 @@
  
 请参阅[故障排除](/documentation/articles/media-services-troubleshooting-live-streaming)主题以获取相关指导。
 
-<!---HONumber=Mooncake_0307_2016-->
+
+<!---HONumber=Mooncake_0613_2016-->

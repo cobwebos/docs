@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure AD 图形 API 快速入门 | Microsoft Aure"
+   pageTitle="Azure AD 图形 API 快速入门 | Aure"
    description="Azure Active Directory 图形 API 通过 OData REST API 终结点提供对 Azure AD 的编程访问权限。应用程序可以使用图形 API 对目录数据和对象执行创建、读取、更新和删除 (CRUD) 操作。"
    services="active-directory"
    documentationCenter="n/a"
@@ -117,4 +117,4 @@ Content-Type: application/json
 - 了解有关 [Azure AD 图形 API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) 的详细信息。
 - 了解有关 [Azure AD 图形 API 权限范围](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)的详细信息
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Office 365 服务的条件性访问设备策略 | Microsoft Azure"
+	pageTitle="Office 365 服务的条件性访问设备策略 | Azure"
 	description="详细说明基于设备的条件如何控制对 Office 365 服务访问。尽管信息工作者 (IW) 希望在工作中或在学校时从其个人设备访问 Office 365 服务（如 Exchange 和 SharePoint Online），但是其 IT 管理员希望访问是安全的。IT 管理员可以设置条件性访问设备策略来保护公司资源，同时允许 IW 在符合条件的设备上访问服务。"
 	services="active-directory"
 	documentationCenter=""
@@ -40,4 +40,4 @@ Azure Active Directory 会强制实施条件性访问策略来确保对 Office 3
 
 答：目前，对 Office365 服务的条件性访问仅限于设备上的丰富应用程序。目前正在计划将条件性访问策略扩展到从浏览器访问服务的用户。
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0613_2016-->

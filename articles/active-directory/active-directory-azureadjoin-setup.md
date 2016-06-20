@@ -1,5 +1,5 @@
 <properties
-	pageTitle="为用户设置 Azure AD Join | Microsoft Azure"
+	pageTitle="为用户设置 Azure AD Join | Azure"
 	description="说明管理员如何为本地目录和设备注册设置 Azure AD Join。"
 	services="active-directory"
 	documentationCenter=""
@@ -45,10 +45,12 @@
 - 用户在个人设备上将工作或学校帐户添加到 Windows
 
 ## 其他信息
-* [面向企业的 Windows 10：在工作中使用设备的方式](active-directory-azureadjoin-windows10-devices-overview.md)
-* [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](active-directory-azureadjoin-user-upgrade.md)
-* [了解 Azure AD Join 的使用方案](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](active-directory-azureadjoin-devices-group-policy.md)
-* [设置 Azure AD Join](active-directory-azureadjoin-setup.md)
+* [面向企业的 Windows 10：在工作中使用设备的方式](/documentation/articles/active-directory-azureadjoin-windows10-devices-overview)
+* [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](/documentation/articles/active-directory-azureadjoin-user-upgrade)
+* [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](/documentation/articles/active-directory-azureadjoin-passport)
+* [了解 Azure AD Join 的使用方案](/documentation/articles/active-directory-azureadjoin-deployment-aadjoindirect)
+* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](/documentation/articles/active-directory-azureadjoin-devices-group-policy)
+* [设置 Azure AD Join](/documentation/articles/active-directory-azureadjoin-setup)
 
-<!---HONumber=Mooncake_0509_2016-->
+
+<!---HONumber=Mooncake_0613_2016-->

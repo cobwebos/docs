@@ -1,5 +1,5 @@
 <properties
-   pageTitle="深入了解 Microsoft Azure 资源消耗"
+   pageTitle="深入了解 Microsoft Azure 资源消耗 | Azure"
    description="从概念上概述了 Azure 帐单使用状况和价目表 API，可帮助您深入了解 Azure 资源耗用量和趋势。"
    services="billing"
    documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="billing"
-   ms.date="07/07/2015"
+   ms.date="02/19/2016"
    wacn.date=""/>
 
 # 深入了解 Microsoft Azure 资源消耗 
@@ -25,7 +25,7 @@ Azure 资源使用状况和价目表 API 作为资源提供单元进行实现，
 ### Azure 资源使用状况 API（预览）
 客户和合作伙伴可以使用 Azure 资源使用状况 API 来估计 Azure 耗用数据。具体功能包括：
 	
-- **Azure 基于角色的访问控制** - 客户和合作伙伴可以在 [Azure 预览门户](https://portal.azure.com)上或通过 [Azure PowerShell cmdlet](powershell-install-configure) 配置其访问策略，以指定哪些用户或应用程序可以有权访问订阅使用状况数据。调用方必须使用标准 Azure Active Directory 令牌进行身份验证。此外，调用方必须添加至读者、所有者或参与者角色，才能有权访问特定 Azure 订阅的使用状况数据。
+- **Azure 基于角色的访问控制** - 客户和合作伙伴可以在 [Azure 预览门户](https://portal.azure.cn)上或通过 [Azure PowerShell cmdlet](/documentation/articles/powershell-install-configure) 配置其访问策略，以指定哪些用户或应用程序可以有权访问订阅使用状况数据。调用方必须使用标准 Azure Active Directory 令牌进行身份验证。此外，调用方必须添加至读者、所有者或参与者角色，才能有权访问特定 Azure 订阅的使用状况数据。
 
 - **每小时或每日聚合** - 调用方可以指定 Azure 使用状况数据是以每小时存储桶为单位，还是以每日存储桶为单位。默认值为每日聚合。
 
@@ -74,4 +74,4 @@ Azure 资源使用状况和价目表 API 作为资源提供单元进行实现，
 + 若要了解有关 Azure 资源管理器的详细信息，请参阅 [Azure 资源管理器概述](/documentation/articles/resource-group-overview)。
 + 有关有助于了解云费用所需工具套件的其他信息，请参阅 Gartner 文章 [IT 财务管理 (ITFM) 工具的市场指南](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb)。
 
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0613_2016-->
