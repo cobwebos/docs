@@ -12,7 +12,7 @@
 3. 下载 [Qpid Proton 库](http://qpid.apache.org/proton/index.html)并提取它，例如：
 
 	```
-	wget http://apache.fastbull.org/qpid/proton/0.7/qpid-proton-0.7.tar.gz
+	wget http://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
 	tar xvfz qpid-proton-0.7.tar.gz
 	```
 
@@ -116,4 +116,4 @@
 
 > [AZURE.NOTE] 在此代码中，我们使用传出窗口 1 以强制尽快发出消息。通常，你的应用程序应尝试批处理消息，以提高吞吐量。请参阅 [Qpid AMQP Messenger 页](http://qpid.apache.org/components/messenger/index.html)，以详细了解如何在此环境及其他环境中以及从为其提供了绑定的平台（目前为 Perl、PHP、Python 和 Ruby）中使用 Qpid Proton 库。
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

@@ -1,21 +1,21 @@
 <properties
-	pageTitle="什么是 Azure 自动化 | Microsoft Azure"
+	pageTitle="什么是 Azure 自动化 | Azure"
 	description="了解 Azure 自动化的重要性和常见问题的答案，为创建和使用 Runbook 做准备。"
 	services="automation"
 	documentationCenter=""
-	authors="SnehaGunda"
-	manager="stevenka"
-	editor=""/>
-
+	authors="mgoedtel"
+	manager="jwhit"
+	editor=""
+	keywords="什么是自动化, azure 自动化, azure 自动化示例"/>
 <tags
 	ms.service="automation"
-	ms.date="02/11/2016"
-	wacn.date=""/>
+	ms.date="05/10/2016"
+	wacn.date="06/17/2016"/>
 
 # Azure 自动化概述
 
 
-借助 Microsoft Azure 自动化，用户可以自动完成通常要在云环境和企业环境中执行的手动、长时间进行、易出错且重复性高的任务。它可以节省时间，可以提高常规管理任务的可靠性，甚至可以将这些任务安排成按特定的时间间隔自动执行。你可以使用 Runbook 实现这些过程的自动化，或者使用 Desired State Configuration 实现配置管理的自动化。本文概述了 Azure 自动化并回答了一些常见问题。您可以参考此库中的其他文章，以了解有关不同主题的更多详细信息。
+借助 Azure 自动化，用户可以自动完成通常要在云环境和企业环境中执行的手动、长时间进行、易出错且重复性高的任务。它可以节省时间，可以提高常规管理任务的可靠性，甚至可以将这些任务安排成按特定的时间间隔自动执行。你可以使用 Runbook 实现这些过程的自动化，或者使用 Desired State Configuration 实现配置管理的自动化。本文概述了 Azure 自动化并回答了一些常见问题。您可以参考此库中的其他文章，以了解有关不同主题的更多详细信息。
 
 
 ## 使用 Runbook 实现过程的自动化
@@ -46,7 +46,7 @@ Runbook 是 Azure 自动化中执行某些自动化过程的一组任务。它�
 
 ## Azure 自动化实际应用示例 
 
-在多种情况下可以通过 Azure 自动化进行自动化操作，以下是部分示例。
+以下是一些使用 Azure 自动化的自动化方案种类的示例。
 
 * 在不同的 Azure 订阅中创建和复制虚拟机。 
 * 计划文件复制操作，以便将文件从本地计算机复制到 Azure Blob 存储容器。 
@@ -60,7 +60,7 @@ Runbook 是 Azure 自动化中执行某些自动化过程的一组任务。它�
 
 ## Azure 自动化如何与其他自动化工具关联？
 
-[Service Management 自动化(SMA)](http://technet.microsoft.com/zh-cn/library/dn469260.aspx) 用于自动处理私有云中的管理任务。它作为 [Microsoft Azure Pack](https://www.microsoft.com/server-cloud/) 的组件本地安装在您的数据中心中。SMA 和 Azure 自动化使用基于 Windows PowerShell 工作流的相同的 Runbook 格式。
+[Service Management 自动化(SMA)](http://technet.microsoft.com/zh-cn/library/dn469260.aspx) 用于自动处理私有云中的管理任务。它作为 [Azure Pack](https://www.microsoft.com/server-cloud/) 的组件本地安装在你的数据中心中。SMA 和 Azure 自动化使用基于 Windows PowerShell 工作流的相同的 Runbook 格式。
 
 [System Center 2012 Orchestrator](http://technet.microsoft.com/zh-cn/library/hh237242.aspx) 适用于本地资源的自动化。它使用与 Azure 自动化和 Service Management 自动化不同的 Runbook 格式，并且具有图形界面，可用于创建 Runbook 而无需编写任何脚本。它的 Runbook 由专门为 Orchestrator 编写的集成包中的活动构成。
 
@@ -80,4 +80,6 @@ Runbook 是 Azure 自动化中执行某些自动化过程的一组任务。它�
 
 **欢迎提供反馈！** 如果您正在寻找 Azure 自动化 Runbook 解决方案或集成模块，请在脚本中心发布脚本请求。如果您有关于 Azure 自动化的反馈或功能请求，请将其发布在[用户之声](/product-feedback)。谢谢！
 
-<!---HONumber=Mooncake_0307_2016-->
+
+
+<!---HONumber=Mooncake_0620_2016-->

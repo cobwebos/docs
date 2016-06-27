@@ -1,5 +1,5 @@
 <properties
-	pageTitle="如何使用 ADAL 在 iOS 上启用跨应用 SSO | Microsoft Azure"
+	pageTitle="如何使用 ADAL 在 iOS 上启用跨应用 SSO | Azure"
 	description="如何使用 ADAL SDK 的功能跨应用程序启用单一登录。"
 	services="active-directory"
 	documentationCenter=""
@@ -233,7 +233,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 
 ### 打开对中转站辅助 SSO 的 SSO
 
-应用程序使用安装在设备上的任何中转站的功能**默认情况下已关闭**。若要向中转站使用应用程序必须执行一些额外配置，并将一些代码添加到你的应用程序。
+应用程序使用安装在设备上的任何中转站的功能默认情况下已关闭。若要向中转站使用应用程序必须执行一些额外配置，并将一些代码添加到你的应用程序。
 
 要遵循的步骤如下：
 
@@ -311,4 +311,13 @@ ADAL 使用 -canOpenURL: 来检查是否在设备上安装了中转站。在 iOS
 
 现在，Microsoft 标识 SDK 将自动在应用程序之间共享凭据并调用中转站（如果在设备上存在）。
 
-<!---HONumber=Mooncake_0418_2016-->
+
+
+
+
+
+
+
+
+
+<!---HONumber=Mooncake_0620_2016-->

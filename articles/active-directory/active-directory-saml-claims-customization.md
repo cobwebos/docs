@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 Azure Active Directory 中为预先集成的应用自定义 SAML 令牌中颁发的声明 | Microsoft Azure"
+	pageTitle="在 Azure Active Directory 中为预先集成的应用自定义 SAML 令牌中颁发的声明 | Azure"
 	description="了解如何在 Azure Active Directory 中为预先集成的应用自定义 SAML 令牌中颁发的声明"
 	services="active-directory"
 	documentationCenter=""
@@ -12,7 +12,6 @@
 
 	ms.date="02/26/2016"
 	ms.author="asmalser"/>
-
 #在 Azure Active Directory 中为预先集成的应用自定义 SAML 令牌中颁发的声明
 
 Azure Active Directory 目前支持 Azure AD 应用库中数千个预先集成的应用程序，其中有 150 个以上的应用程序支持使用 SAML 2.0 协议的单一登录。当用户使用 SAML 通过 Azure AD 对某个应用程序进行身份验证时，Azure AD 将该应用程序发送令牌（通过 HTTP 302 重定向），然后，该应用程序将执行验证并使用该令牌来登录用户，而不是提示用户输入用户名和密码。这些 SAML 令牌包含有关用户的信息片段（称为“声明”）。
@@ -53,13 +52,15 @@ Azure Active Directory 目前支持 Azure AD 应用库中数千个预先集成�
 
 如果指定的用户没有针对选定属性存储的值，则不会在令牌中颁发该声明。
 
-**注意：**仅当在使用 [Azure AD Connect 工具](active-directory-aadconnect.md)从本地 Active Directory 同步用户数据时，才支持 **user.onpremisesecurityidentifier** 和 **user.onpremisesamaccountname**。
+**注意：**仅当在使用 [Azure AD Connect 工具](/documentation/articles/active-directory-aadconnect)从本地 Active Directory 同步用户数据时，才支持 **user.onpremisesecurityidentifier** 和 **user.onpremisesamaccountname**。
 
 ## 相关文章
 
-- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-- [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](active-directory-saas-custom-apps.md)
-- [排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
+- [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](/documentation/articles/active-directory-saas-custom-apps)
+- [排查基于 SAML 的单一登录问题](/documentation/articles/active-directory-saml-debugging)
+	
+
 	
 <!--Image references-->
 [1]: ./media/active-directory-saml-claims-customization/claimscustomization1.png
@@ -67,4 +68,4 @@ Azure Active Directory 目前支持 Azure AD 应用库中数千个预先集成�
 [3]: ./media/active-directory-saml-claims-customization/claimscustomization3.png
 [4]: ./media/active-directory-saml-claims-customization/claimscustomization4.png
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

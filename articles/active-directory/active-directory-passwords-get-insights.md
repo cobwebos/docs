@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="深入分析：Azure AD 密码管理报告 | Microsoft Azure" 
+	pageTitle="深入分析：Azure AD 密码管理报告 | Azure" 
 	description="本文介绍如何使用报告来深入分析组织中的密码管理操作。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -167,5 +167,4 @@
 [002]: ./media/active-directory-passwords-get-insights/002.jpg "Image_002.jpg"
 [003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
  
-
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0620_2016-->

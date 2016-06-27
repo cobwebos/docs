@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="01/28/2016"  
+	ms.date="04/18/2016"
 	wacn.date=""/>
 
 #媒体编码器标准格式和编解码器
@@ -108,4 +108,4 @@ MPEG2-TS |H.264（High、Main 和 Baseline Profile）|AAC-LC、HE-AAC v1、HE-AA
 
 [如何使用媒体编码器标准版进行编码](/documentation/articles/media-services-dotnet-encode-with-media-encoder-standard)
 
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0620_2016-->

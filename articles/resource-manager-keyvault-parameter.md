@@ -9,20 +9,18 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="02/09/2016"
+   ms.date="05/16/2016"
    wacn.date=""/>
 
 # 在部署期间传递安全值
 
-当你需要在部署期间以参数形式传递安全值（例如密码）时，可以将该值存储为 [Azure 密钥保管库](./key-vault/key-vault-whatis.md)中的机密，并在其他资源管理器模板中引用该值。你只会在模板中包含对机密的引用，因此该机密永远都不会公开，并且不需要每次部署资源时都手动输入该机密的值。指定哪些用户或服务主体可以访问该机密。
-
-> [AZURE.NOTE] 目前，只有 Azure CLI 支持引用密钥保管库机密的功能。Azure PowerShell 中即将添加此功能。
+当你需要在部署期间以参数形式传递安全值（例如密码）时，可以将该值存储为 [Azure 密钥保管库](/documentation/articles/key-vault-whatis)中的机密，并在其他 Resource Manager 模板中引用该值。你只会在模板中包含对机密的引用，因此该机密永远都不会公开，并且不需要每次部署资源时都手动输入该机密的值。指定哪些用户或服务主体可以访问该机密。
 
 ## 部署密钥保管库和机密
 
-若要创建可从其他资源管理器模板引用的密钥保管库，必须将 **enabledForTemplateDeployment** 属性设置为 **true**，并且必须向相应的用户或服务主体授予访问权限，使其能够执行引用机密的部署。
+若要创建可从其他 Resource Manager 模板引用的密钥保管库，必须将 **enabledForTemplateDeployment** 属性设置为 **true**，并且必须向相应的用户或服务主体授予访问权限，使其能够执行引用机密的部署。
 
-若要了解如何部署密钥保管库和机密，请参阅[密钥保管库架构](resource-manager-template-keyvault.md)和[密钥保管库机密架构](resource-manager-template-keyvault-secret.md)。
+若要了解如何部署密钥保管库和机密，请参阅[密钥保管库架构](/documentation/articles/resource-manager-template-keyvault)和[密钥保管库机密架构](/documentation/articles/resource-manager-template-keyvault-secret)。
 
 ## 引用机密
 
@@ -97,8 +95,9 @@
 
 ## 后续步骤
 
-- 有关密钥保管库的一般信息，请参阅 [Azure 密钥保管库入门](./key-vault/key-vault-get-started.md)。
+- 有关密钥保管库的一般信息，请参阅 [Azure 密钥保管库入门](/documentation/articles/key-vault-get-started)。
 - 有关对虚拟机使用密钥保管库的信息，请参阅 [Azure Resource Manager 的安全注意事项](/documentation/articles/best-practices-resource-manager-security)。
 - 有关引用密钥机密的完整示例，请参阅[密钥保管库示例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)。
 
-<!---HONumber=Mooncake_0314_2016-->
+
+<!---HONumber=Mooncake_0620_2016-->

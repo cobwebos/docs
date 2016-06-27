@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Active Directory 的自助应用程序访问和委派管理 | Microsoft Azure"
+	pageTitle="Azure Active Directory 的自助应用程序访问和委派管理 | Azure"
 	description="本文介绍如何使用 Azure Active Directory 启用自助应用程序访问和委派管理"
 	services="active-directory"
 	documentationCenter=""
@@ -99,11 +99,11 @@
 * **用户使用我管理的单个帐户自动登录** - 这是一种特殊方案，适用于所有分配的用户有权使用单个共享帐户进行访问的情况。此选项的最常见用例就是社交媒体应用程序，其中，组织有单个“公司”帐户，多个用户需要对该帐户进行更新。这也相当于[管理员管理凭据](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)的密码 SSO 方案。不过，选择此选项后，系统将提示审批人输入单个共享帐户的用户名和密码。完成后，所有分配的用户在单击 Azure AD 访问面板或 Office 365 中的应用程序时，将使用此帐户登录。
 
 ##其他资源
-- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
 
 <!--Image references-->
 [1]: ./media/active-directory-self-service-application-access/ssaa_admin.PNG
 [2]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app.PNG
 [3]: ./media/active-directory-self-service-application-access/ssaa_ap_manage_app_config.PNG
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

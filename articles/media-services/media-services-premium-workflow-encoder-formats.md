@@ -11,7 +11,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016"    
 	wacn.date=""/>
 
 #Media Encoder Premium Workflow 格式和编解码器
@@ -126,12 +126,6 @@
 如果输入视频不包含隐藏式字幕，输出资产仍将包含一个空的 TTML 文件。
 
 
-##媒体服务学习路径
 
-[AZURE.INCLUDE [media-services-learning-paths-include](../includes/media-services-learning-paths-include.md)]
 
-##提供反馈
-
-[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
-
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0620_2016-->

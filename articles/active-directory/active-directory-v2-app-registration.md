@@ -1,5 +1,5 @@
 <properties
-	pageTitle="v2.0 应用注册 | Microsoft Azure"
+	pageTitle="v2.0 应用注册 | Azure"
 	description="如何使用 v2.0 终结点向 Microsoft 注册应用以启用登录和访问 Microsoft 服务"
 	services="active-directory"
 	documentationCenter=""
@@ -26,7 +26,7 @@
 
 完成了吗？ 你现在应该看一下你的 Microsoft 应用列表，该列表有可能一片空白。让我们改变这点。
 
-单击“添加应用”，并为它命名。门户将向应用分配全局唯一的应用程序 ID，以便稍后在你的代码中使用。如果应用包含的服务器端组件需要用来调用 API（例如：Office、Azure 或你自己的 Web API）的访问令牌，你也会想在此处创建**应用程序密码**。
+单击“添加应用”，并为它命名。门户将向应用分配全局唯一的应用程序 ID，以便稍后在你的代码中使用。如果应用包含的服务器端组件需要用来调用 API（例如：Office、Azure 或你自己的 Web API）的访问令牌，你也会想在此处创建**A应用程序密码**。
 <!-- TODO: Link for app secrets -->
 
 接下来，添加应用将使用的平台。
@@ -43,4 +43,4 @@
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../includes/active-directory-v2-quickstart-table.md)]
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

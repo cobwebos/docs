@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD v2.0 终结点 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 终结点 | Azure"
 	description="原始 Azure AD 终结点与 v2.0 终结点之间的比较。"
 	services="active-directory"
 	documentationCenter=""
@@ -127,6 +127,6 @@ v2.0 终结点颁发的令牌中的声明与正式版 Azure AD 终结点颁发�
 若要了解 v2.0 令牌中发出的特定声明，请参阅 [v2.0 令牌参考](/documentation/articles/active-directory-v2-tokens)。
 
 ## 限制
-使用 v2.0 终结点时有一些要注意的限制。请参阅 [v2.0 限制文档](active-directory-v2-limitations.md)，以了解特定的方案是否存在任何限制。
+使用 v2.0 终结点时有一些要注意的限制。请参阅 [v2.0 限制文档](/documentation/articles/active-directory-v2-limitations)，以了解特定的方案是否存在任何限制。
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0620_2016-->

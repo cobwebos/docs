@@ -22,4 +22,4 @@
 - [以组织身份注册 Azure](/documentation/articles/sign-up-organization)
 - [Azure 订阅与 Azure AD 的关联方式](/documentation/articles/active-directory-how-subscriptions-associated-directory)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0620_2016-->

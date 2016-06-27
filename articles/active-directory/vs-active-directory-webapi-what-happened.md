@@ -1,23 +1,22 @@
-<properties 
-	pageTitle="我的 WebApi 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况 |Microsoft Azure " 
-	description="描述你使用 Visual Studio 连接到 Azure AD 的 MVC 项目 WebApi 发生了什么情况" 
-	services="active-directory" 
-	services="active-directory" 
-	documentationCenter="" 
-	authors="patshea123" 
-	manager="douge" 
-	editor="tglee"/>
+<properties
+	pageTitle="我的 WebApi 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况 | Azure"
+	description="描述当你使用 Visual Studio 连接到 Azure AD 时，你的 MVC 项目 WebApi 会发生什么情况"
+	services="active-directory"
+	documentationCenter=""
+	authors="TomArcher"
+	manager="douge"
+	editor=""/>
 
 <tags
 	ms.service="active-directory"
-	ms.date="09/03/2015"
+	ms.date="03/28/2016"
 	wacn.date=""/>
 
 # 我的 WebApi 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况
 
 > [AZURE.SELECTOR]
-> - [Getting Started](vs-active-directory-webapi-getting-started)
-> - [What Happened](vs-active-directory-webapi-what-happened)
+> - [入门](/documentation/articles/vs-active-directory-webapi-getting-started)
+> - [发生了什么情况](/documentation/articles/vs-active-directory-webapi-what-happened)
 
 ##已添加引用
 
@@ -47,7 +46,7 @@
 
 ###代码文件已添加到您的项目
 
-身份验证启动类 **App_Start/Startup.Auth.cs**（包含 Azure AD 身份验证的启动逻辑）已添加到您的项目。
+身份验证启动类 **App\_Start/Startup.Auth.cs**（包含 Azure AD 身份验证的启动逻辑）已添加到您的项目。
 
 ###启动代码已添加到您的项目
 
@@ -112,6 +111,6 @@ NuGet 包引用已删除，文件已删除和备份。根据你的项目的状�
 ###你的 Azure Active Directory 应用已更新
 你的 Azure Active Directory 应用已更新为包括“读取目录数据”权限，并已创建一个附加密钥，该密钥随后已用作 `web.config` 文件中的 *ida:Password*。
 
-[详细了解 Azure Active Directory](http://azure.microsoft.com/services/active-directory/)
+[详细了解 Azure Active Directory](/services/active-directory/)
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0620_2016-->

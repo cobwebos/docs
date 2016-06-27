@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+	ms.date="04/18/2016"
 	wacn.date=""/>
 
 
@@ -95,7 +95,8 @@ Azure 媒体服务使用 Azure 存储空间来存储媒体内容。当你创建�
 
 ##重新生成媒体服务访问密钥
 
-如果你想要更新媒体服务主访问密钥或辅助访问密钥，请使用 [New-AzureMediaServicesKey](https://msdn.microsoft.com/zh-cn/library/azure/dn495215.aspx)。你需要提供帐户名并指定你想要重新生成的密钥（主密钥或辅助密钥）。
+如果你想要更新媒体服务主访问密钥或辅助访问密钥，请使用 [New-AzureMediaServicesKey](https://msdn.microsoft.com/zh-cn/library/azure/dn495215.aspx)。 
+你需要提供帐户名并指定你想要重新生成的密钥（主密钥或辅助密钥）。
 
 如果你不希望 PowerShell 提出确认问题，请指定 -Force 开关。
 
@@ -109,5 +110,4 @@ Azure 媒体服务使用 Azure 存储空间来存储媒体内容。当你创建�
 
 
  
-
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0620_2016-->

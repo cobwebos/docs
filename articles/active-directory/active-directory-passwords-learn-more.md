@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="详细了解：Azure AD 密码管理 | Microsoft Azure" 
+	pageTitle="详细了解：Azure AD 密码管理 | Azure" 
 	description="有关 Azure AD 密码管理的高级主题，内容包括密码写回的工作原理、密码写回安全性、密码重置门户的工作原理，以及密码重置使用的数据。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -375,4 +375,4 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 [001]: ./media/active-directory-passwords-learn-more/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
  
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

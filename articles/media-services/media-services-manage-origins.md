@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+	ms.date="04/18/2016"
 	wacn.date=""/>
 
 
@@ -97,9 +97,9 @@
 
 3. 指定 Akamai 签名标头身份验证的配置。
 
-4. 你可以为 Adobe Flash 客户端指定跨域访问策略（有关详细信息，请参阅[跨域策略文件规范](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)），以及为 Microsoft Silverlight 客户端指定客户端访问策略（有关详细信息，请参阅 [跨域边界提供服务](https://msdn.microsoft.com/zh-cn/library/cc197955(v=vs.95).aspx)）。
+4. 你可以为 Adobe Flash 客户端指定跨域访问策略（有关详细信息，请参阅[跨域策略文件规范](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)），以及为 Microsoft Silverlight 客户端指定客户端访问策略（有关详细信息，请参阅 [跨域边界提供服务](https://msdn.microsoft.com/zh-cn/library/cc197955(v=vs.95).aspx)。
 
-5. 还可以通过单击**“配置”**按钮配置自定义主机名。有关详细信息，请参阅 [StreamingEndpont](https://msdn.microsoft.com/zh-cn/library/dn783468.aspx) 主题中的 **CustomHostNames** 属性。
+5. 还可以通过单击“配置”按钮配置自定义主机名。有关详细信息，请参阅 [StreamingEndpont](https://msdn.microsoft.com/zh-cn/library/dn783468.aspx) 主题中的 **CustomHostNames** 属性。
 
 
 ##<a id="enable_cdn"></a>启用 Azure CDN 集成
@@ -137,5 +137,4 @@
 [configure-origin]: ./media/media-services-manage-origins/media-services-origins-configure.png
 [configure-origin-configure-custom-host-names]: ./media/media-services-manage-origins/media-services-configure-custom-host-names.png
  
-
-<!---HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0620_2016-->

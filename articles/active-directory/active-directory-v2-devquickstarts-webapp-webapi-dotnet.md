@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD v2.0 .NET Web 应用 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 .NET Web 应用 | Azure"
 	description="如何构建一个 .NET MVC Web 应用，以通过用于登录的 Microsoft 个人帐户和工作或学校帐户调用 Web 服务。"
 	services="active-directory"
 	documentationCenter=".net"
@@ -193,4 +193,4 @@ catch (AdalException ee)
 - [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
 - [堆栈溢出“adal”标记 >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

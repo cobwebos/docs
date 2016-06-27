@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="如何在 Azure Active Directory 中调试对应用程序进行基于 SAML 的单一登录 | Microsoft Azure" 
+    pageTitle="如何在 Azure Active Directory 中调试对应用程序进行的基于 SAML 的单一登录 | Azure" 
     description="了解如何在 Azure Active Directory 中调试对应用程序进行基于 SAML 的单一登录" 
     services="active-directory" 
     authors="asmalser-msft"  
@@ -23,11 +23,10 @@
 
 ## 相关文章
 
-- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-- [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](active-directory-saas-custom-apps.md)
-- [如何为预先集成的应用程序自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
+- [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](/documentation/articles/active-directory-saas-custom-apps)
+- [如何为预先集成的应用程序自定义 SAML 令牌中颁发的声明](/documentation/articles/active-directory-saml-claims-customization)
 
 <!--Image references-->
 [1]: ./media/active-directory-saml-debugging/fiddler.png
-
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0620_2016-->

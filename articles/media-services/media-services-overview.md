@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="02/02/2016"
+ 	ms.date="05/03/2016" 
 	wacn.date=""/>
 
 #Azure 媒体服务概述和常见方案
@@ -55,7 +55,7 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 
 本部分描述常见方案并提供相关主题的链接。下图显示了参与点播内容交付的主要媒体服务平台部分。
 
-![VoD 工作流][vod-overview]
+![VoD 工作流](./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png)
 
 
 ###保护存储中的内容并以明文（非加密）形式交付流式处理媒体
@@ -90,14 +90,19 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 1. 通过创建 OnDemand 定位符来发布资产。
 1. 流式传输已发布的内容。 
 
-###为内容编制索引
+###使用媒体分析从视频中汲取可以实施的见解 
+
+媒体分析是语音和视觉组件的集合，便于组织和企业从视频文件中汲取可以实施的见解。有关详细信息，请参阅 [Azure 媒体服务分析概述](/documentation/articles/media-services-analytics-overview)。
 
 1. 将优质夹层文件上载到资产中。
-1. 为内容编制索引。
-
-	索引作业将生成可用作视频播放中的隐藏式字幕 (CC) 的文件。它还将生成让你能够执行视频内搜索并跳转到视频确切位置的文件。
-
-1. 使用已编制索引的内容。
+2. 使用下述媒体分析服务之一来处理你的视频：
+	
+	- **Indexer** ¨C [使用 Azure Media Indexer 2 来处理视频](/documentation/articles/media-services-process-content-with-indexer2)
+	- **Hyperlapse** ¨C [Hyperlapse 媒体文件与 Azure Media Hyperlapse](/documentation/articles/media-services-hyperlapse-content)
+	- **动作检测** ¨C [Azure 媒体分析的动作检测](/documentation/articles/media-services-motion-detection)。
+	- **面部检测和面部情绪** ¨C [Azure 媒体分析的面部和情绪检测](/documentation/articles/media-services-face-and-emotion-detection)。
+	- **视频摘要** ¨C [使用 Azure 媒体视频缩略图创建视频摘要](/documentation/articles/media-services-video-summarization)
+3. 媒体分析媒体处理器会生成 MP4 文件或 JSON 文件。如果媒体处理器生成了 MP4 文件，你可以采用渐进方式下载该文件。如果媒体处理器生成了 JSON 文件，你可以从 Azure Blob 存储下载该文件。 
 
 
 ###提供渐进式下载 
@@ -118,7 +123,7 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 - [如何获取媒体处理器](/documentation/articles/media-services-get-media-processor)
 - [如何对内容进行编码](/documentation/articles/media-services-manage-content#encode)
 - [如何监视作业](/documentation/articles/media-services-portal-check-job-progress)
-- [如何为内容编制索引](/documentation/articles/media-services-manage-content#index)
+- [如何使用分析](/documentation/articles/media-services-analytics-overview)
 - [如何保护内容](/documentation/articles/media-services-manage-content#encrypt)
 - [如何保护发布](/documentation/articles/media-services-manage-content#publish)
 - [如何缩放编码](/documentation/articles/media-services-portal-encoding-units)
@@ -171,7 +176,7 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 
 ![实时工作流][live-overview2]
 
-有关详细信息，请参阅[使用从本地编码器接收多比特率实时流的频道](/documentation/articles/media-services-manage-channels-overview)。
+有关详细信息，请参阅[使用从本地编码器接收多比特率实时流的频道](/documentation/articles/media-services-live-streaming-with-onprem-encoders)。
 
 ##使用内容
 
@@ -195,11 +200,6 @@ Azure 媒体服务提供你所需的工具，以便你创建适用于大多数�
 
 [Azure 支持](/support/contact/)为 Azure（包括媒体服务）提供支持选项。
 
-##模式与实践指南
-
-[模式与实践指南](https://wamsg.codeplex.com/)
-[联机文档](https://msdn.microsoft.com/zh-cn/library/dn735912.aspx)
-[可下载的电子书](https://www.microsoft.com/download/details.aspx?id=42629)
 
 
 ##服务级别协议 (SLA)
@@ -219,4 +219,4 @@ Azure 媒体服务提供你所需的工具，以便你创建适用于大多数�
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!----HONumber=Mooncake_0314_2016-->
+<!---HONumber=Mooncake_0620_2016-->

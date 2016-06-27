@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD v2.0 AngularJS 入门 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 AngularJS 入门 | Azure"
 	description="如何构建一个使用个人 Microsoft 帐户和工作或学校帐户登录用户的 Angular JS 单页应用。"
 	services="active-directory"
 	documentationCenter=""
@@ -209,7 +209,7 @@ angular.module('todoApp')
 ```
 
 ## 调用 REST API
-最后，获取一些令牌并调用 REST API，以创建、读取、更新和删除任务。知道吗？ 你*什么事*都不用做。Adal.js 将自动为你获取、缓存和刷新令牌。它还会将这些令牌附加到发往 REST API 的传出 AJAX 请求。
+最后，获取一些令牌并调用 REST API，以创建、读取、更新和删除任务。知道吗？ 你什么事都不用做。Adal.js 将自动为你获取、缓存和刷新令牌。它还会将这些令牌附加到发往 REST API 的传出 AJAX 请求。
 
 到底是如何做到这一点的呢？ 一切归功于神奇的 [AngularJS 拦截器](https://docs.angularjs.org/api/ng/service/$http)，它可以让 adal.js 转换传出和传入的 http 消息。此外，adal.js 假设作为窗口发送到同一个域的任何请求都应该使用与 AngularJS 应用相同的应用程序 ID 所用的令牌。这就是为什么我们在 Angular 应用和 NodeJS REST API 中使用相同的应用程序 ID。当然，你可以重写此行为，并根据需要告知 adal.js 获取其他 REST API 的令牌 - 但是对于此简单方案，使用默认值即可。
 
@@ -236,4 +236,5 @@ node server.js
 - [GitHub 上的 Azure 示例 >>](https://github.com/Azure-Samples)
 - [堆栈溢出网站上的 Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 - [Azure.com](/documentation/services/active-directory/) 上的 Azure AD 文档 >>
-<!---HONumber=Mooncake_0516_2016-->
+
+<!---HONumber=Mooncake_0620_2016-->

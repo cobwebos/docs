@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016"    
 	wacn.date=""/>
 
 #如何：检查作业进度
@@ -53,4 +53,4 @@
 
 
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0620_2016-->

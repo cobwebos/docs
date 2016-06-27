@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="04/14/2016"   
+	ms.date="04/22/2016"   
 	wacn.date=""/>
 
 
@@ -50,9 +50,9 @@
 
 采用这些格式的隐藏字幕 (CC) 文件可用于使有听力障碍的用户能够访问音频和视频文件。
 
-##任务配置（预设值）
+##任务配置（预设）
 
-在使用 *Azure Media Indexer 2 预览版 创建索引任务时，必须指定配置预设值。
+在使用 **Azure Media Indexer 2 预览版**创建索引任务时，必须指定配置预设值。
 
 下面的 JSON 设置可用的参数。
 
@@ -274,7 +274,7 @@ Azure Media Indexer 2 预览版支持以下语言的语音转换为文本功能�
 
 ## 相关链接
 
-[Azure 媒体服务分析概述](/documentation/articles/media-services-analytics-overview)
+[Azure Media Services Analytics Overview（Azure 媒体服务分析概述）](/documentation/articles/media-services-analytics-overview)
 
 [Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0620_2016-->

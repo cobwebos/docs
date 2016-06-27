@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="Azure AD v2.0 OpenID Connect 协议 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 OpenID Connect 协议 | Azure"
 	description="使用 Azure AD 的 OpenID Connect 身份验证协议 v2.0 实现构建 Web 应用程序。"
 	services="active-directory"
 	documentationCenter=""
@@ -19,7 +19,7 @@ OpenID Connect 是构建在 OAuth 2.0 基础之上的身份验证协议，可用
 > [AZURE.NOTE]
 	v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
     
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 授权协议，可用作“身份验证”协议，让你使用 OAuth 执行单一登录。它引入了 `id_token` 的概念，这是一种安全令牌，可让客户端验证用户的标识，并获取有关用户的基本配置文件信息。由于它扩展了 OAuth 2.0，因此还可让应用程序安全地获取 **access\_tokens**，而这些令牌可用于访问[授权服务器](active-directory-v2-protocols.md#the-basics)保护的资源。如果要构建的 [Web 应用程序](active-directory-v2-flows.md#web-apps)托管在服务器中并通过浏览器访问，我们建议使用 OpenID Connect。
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) 扩展了 OAuth 2.0 授权协议，可用作身份验证协议，让你使用 OAuth 执行单一登录。它引入了 `id_token` 的概念，这是一种安全令牌，可让客户端验证用户的标识，并获取有关用户的基本配置文件信息。由于它扩展了 OAuth 2.0，因此还可让应用程序安全地获取 **access\_tokens**，而这些令牌可用于访问[授权服务器](active-directory-v2-protocols.md#the-basics)保护的资源。如果要构建的 [Web 应用程序](active-directory-v2-flows.md#web-apps)托管在服务器中并通过浏览器访问，我们建议使用 OpenID Connect。
 
 ## 协议图 - 登录
 最基本的登录流包含以下步骤 - 下面详细描述了每个步骤。
@@ -116,8 +116,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 ## 发送注销请求
 
-v2.0 终结点目前不支持 OpenIdConnect `end_session_endpoint`。这意味着应用程序无法向 v2.0 终结点发送请求，因而无法结束用户会话并清除 v2.0 终结点设置的 Cookie。
-若要将用户注销，应用只需结束自身的用户会话，并完整地将用户会话留给 v2.0 终结点即可。下次用户尝试登录时，将看到列出其活动登录帐户的“选择帐户”页面。在该页面上，用户可以选择注销任一帐户，结束 v2.0 终结点的会话。
+v2.0 终结点目前不支持 OpenIdConnect `end_session_endpoint`。这意味着应用程序无法向 v2.0 终结点发送请求，因而无法结束用户会话并清除 v2.0 终结点设置的 Cookie。若要将用户注销，应用只需结束自身的用户会话，并完整地将用户会话留给 v2.0 终结点即可。下次用户尝试登录时，将看到列出其活动登录帐户的“选择帐户”页面。在该页面上，用户可以选择注销任一帐户，结束 v2.0 终结点的会话。
 
 <!--
 
@@ -200,4 +199,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 | error\_description | 帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
 
 获取授权 `code` 和 `id_token` 之后，可以将用户登录，并代表他们获取访问令牌。若要将用户登录，必须确切地按[上面](#validating-the-id-token)所述验证 `id_token`。若要获取访问令牌，可以遵循 [OAuth 协议文档](active-directory-v2-protocols-oauth-code.md#request-an-access-token)中所述的步骤。
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

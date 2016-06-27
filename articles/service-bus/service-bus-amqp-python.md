@@ -1,14 +1,14 @@
 <properties 
-   pageTitle="服务总线和集成了 AMQP 1.0 的 Python | Microsoft Azure"
+   pageTitle="服务总线和 Python 与 AMQP 1.0 | Azure"
    description="使用集成了 AMQP 的 Python 中的服务总线。"
    services="service-bus"
    documentationCenter="na"
    authors="sethmanheim"
    manager="timlt"
-   editor="tysonn" /> 
+    editor="" /> 
 <tags 
    ms.service="service-bus"
-   ms.date="02/08/2016"
+    ms.date="05/10/2016"
    wacn.date="" />
 
 # 使用集成了 AMQP 1.0 的 Python 中的服务总线。
@@ -97,7 +97,7 @@ if (message.Properties.Keys.Count > 0)
 | long | int64 |
 | uuid | guid |
 | bool | bool |
-| 字符串 | 字符串 |
+| string | string |
 
 #### 服务总线 .NET API 到 Proton-Python
 
@@ -154,7 +154,7 @@ if message.properties != None:
 | Guid | uuid | Proton-Python 类 |
 | string | string | - |
 | DateTime | timestamp | Proton-Python 类 |
-| DateTimeOffset | DescribedType | 映射到 AMQP 类型的 DateTimeOffset.UtcTicks：<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
+| DateTimeOffset | DescribedType |映射到 AMQP 类型的 DateTimeOffset.UtcTicks：<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type> |
 | TimeSpan | DescribedType | 映射到 AMQP 类型的 Timespan.Ticks：<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> |
 | Uri | DescribedType | 映射到 AMQP 类型的 Uri.AbsoluteUri：<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type> |
 
@@ -212,4 +212,4 @@ if message.properties != None:
 
 [服务总线 AMQP 概述]: /documentation/articles/service-bus-amqp-overview
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0620_2016-->

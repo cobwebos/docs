@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD v2.0 .NET Web API | Microsoft Azure"
+	pageTitle="Azure AD v2.0 .NET Web API| Azure"
 	description="如何构建一个可从个人 Microsoft 帐户及公司或学校帐户接受令牌的 .NET MVC Web API。"
 	services="active-directory"
 	documentationCenter=".net"
@@ -159,4 +159,4 @@ public IEnumerable<TodoItem> Get()
 - [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
 - [堆栈溢出“azure-active-directory”标记 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

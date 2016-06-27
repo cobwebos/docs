@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD v2.0 的范围、权限和同意 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 的范围、权限和同意 | Azure"
 	description="介绍 Azure AD v2.0 终结点中的授权，包括范围、权限和同意。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,7 +9,6 @@
 
 <tags
 	ms.service="active-directory"
-
 	ms.date="02/20/2016"
 	wacn.date=""/>
 
@@ -22,7 +21,7 @@
 
 ## 范围和权限
 
-Azure AD 实施 [OAuth 2.0](active-directory-v2-protocols.md) 授权协议，此方法允许第三方应用程序代表用户访问 Web 托管的资源。任何与 Azure AD 集成的 Web 托管资源都有资源标识符或**应用程序 ID URI**。例如，Microsoft 的某些 Web 托管资源包括：
+Azure AD 实施 [OAuth 2.0](/documentation/articles/active-directory-v2-protocols) 授权协议，此方法允许第三方应用代表用户访问 Web 托管的资源。任何与 Azure AD 集成的 Web 托管资源都有资源标识符或**应用程序 ID URI**。例如，Microsoft 的某些 Web 托管资源包括：
 
 - Office 365 统一邮件 API：`https://outlook.office.com`
 - Azure AD 图形 API：`https://graph.windows.net`
@@ -117,4 +116,4 @@ OpenID Connect 的 v2.0 实现有一些明确定义但未应用到任何特定�
 
 有关如何获取及使用刷新令牌的详细信息，请参阅 [v2.0 协议参考](active-directory-v2-protocols.md)。
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0620_2016-->

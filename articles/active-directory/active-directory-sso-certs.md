@@ -1,9 +1,9 @@
 <properties
-	pageTitle="如何在 Azure AD 中管理联合证书 | Microsoft Azure"
+	pageTitle="如何在 Azure AD 中管理联合证书 | Azure"
 	description="了解如何自定义联合证书的过期日期，以及如何续订即将过期的证书。"
 	services="active-directory"
 	documentationCenter=""
-	authors="liviodlc"
+	authors="asmalser-msft"
 	manager="stevenpo"
 	editor=""/>
 
@@ -74,8 +74,8 @@
 
 ## 相关文章
 
-- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-- [Azure Active Directory 的应用程序访问与单一登录](active-directory-appssoaccess-whatis.md)
-- [排查基于 SAML 的单一登录问题](active-directory-saml-debugging.md)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
+- [Azure Active Directory 的应用程序访问与单一登录](/documentation/articles/active-directory-appssoaccess-whatis)
+- [排查基于 SAML 的单一登录问题](/documentation/articles/active-directory-saml-debugging)
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

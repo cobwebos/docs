@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016" 
 	wacn.date=""/>
 
 #如何：轮转存储访问密钥后更新媒体服务
@@ -145,4 +145,4 @@
 ###致谢 
 
 我们诚挚地向以下人员表达谢意，是他们协助完成了本文档的写作工作：Cenk Dingiloglu、Milan Gada 和 Seva Titov。
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0620_2016-->

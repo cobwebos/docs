@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="服务总线 AMQP 概述 | Microsoft Azure" 
+	pageTitle="服务总线 AMQP 概述 | Azure" 
 	description="了解如何在 Azure 中使用高级消息队列协议 (AMQP) 1.0。" 
 	services="service-bus" 
 	documentationCenter=".net" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.date="02/08/2016" 
+	ms.date="05/10/2016" 
 	wacn.date=""/>
 
 
@@ -57,7 +57,7 @@ AMQP 1.0 是一种国际标准，已通过 ISO 和 IEC 的认证，认证编号�
 *    随时可找到知识渊博的工作人员
 *    风险较低且可控
 
-## AMQP 1.0 和 Service Bus
+## AMQP 1.0 和服务总线
 
 Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列使用有效的二进制协议的平台利用队列和发布/订阅中转消息传送功能。此外，你还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
 
@@ -102,4 +102,4 @@ Azure 服务总线中对 AMQP 1.0 的支持意味着现在可以通过一系列�
 [使用 AMQP 通过 PHP 使用服务总线]: /documentation/articles/service-bus-amqp-php
 [在 Azure Linux VM 上安装 Apache Qpid Proton-C]: /documentation/articles/service-bus-amqp-apache
 [适用于 Windows Server 的服务总线中的 AMQP]: https://msdn.microsoft.com/zh-cn/library/dn574799.aspx
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0620_2016-->

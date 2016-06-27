@@ -9,7 +9,7 @@
   
 <tags 
 	ms.service="active-directory"  
-	ms.date="12/10/2015" 
+	ms.date="03/28/2016" 
 	wacn.date=""/>
 
 # 身份验证检测期间的错误
@@ -90,7 +90,6 @@
 
 如需变更身份认证类型，请删除不兼容的身份验证类型，然后再次运行此向导。
 
-有关详细信息，请参阅 [Azure AD 的身份验证方案](active-directory-authentication-scenarios)。
+有关详细信息，请参阅 [Azure AD 的身份验证方案](/documentation/articles/active-directory-authentication-scenarios)。
  
-
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0620_2016-->

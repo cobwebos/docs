@@ -9,14 +9,14 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="03/14/2016"
+   ms.date="05/04/2016"
    wacn.date=""/>
    
 # Resource Manager 模板演练
 
-本主题将逐步引导你完成创建 Resource Manager 模板的步骤。你将在[快速入门库](https://github.com/Azure/azure-quickstart-templates)中创建基于[包含负载平衡器和负载平衡规则模板的 2 个 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules) 的模板。你学到的技巧可运用到任何需要创建的模板。
+创建模板时的首要问题之一是“如何开始？”。用户可以从空白模板开始，按照[创作模板](resource-group-authoring-templates#template-format)一文中所述的基本结构操作，并添加资源和相应的参数和变量。一个不错的开始替代方法是，浏览[快速入门库](https://github.com/Azure/azure-quickstart-templates)并寻找与你要创建的模板类似的方案。可以合并多个模板或编辑现有模板以适合你自己的特定方案。
 
-让我们来看一下通用体系结构：
+让我们来看一下通用基础结构：
 
 * 使用同一存储帐户的两个虚拟机具有相同的可用性集，并且处于虚拟网络的同一子网中。
 * 每个虚拟机有单独的 NIC 和虚拟机 IP 地址。
@@ -24,9 +24,11 @@
 
 ![体系结构](./media/resource-group-overview/arm_arch.png)
 
-你已确定要将此体系结构部署到 Azure，并且想要使用 Resource Manager 模板，因此可以在其他时间轻松重新部署此体系结构；不过，你不确定如何创建该模板。本主题将帮助你了解要放在模板中的内容。
+本主题将指导你完成为该基础结构创建 Resource Manager 模板的步骤。你创建的最后一个模板基于名为 [2 VMs in a Load Balancer and load balancing rules（负载平衡器中的 2 个 VM 和负载平衡规则）](https://azure.microsoft.com/documentation/templates/201-2-vms-loadbalancer-lbrules/)的快速入门模板。
 
-创建模板时，你可以使用任何类型的编辑器。Visual Studio 提供了可简化模板开发的工具，但你不需要 Visual Studio 即可完成本教程。有关使用 Visual Studio 创建 Web 应用和 SQL 数据库部署的教程，请参阅 [Creating and deploying Azure resource groups through Visual Studio（通过 Visual Studio 创建和部署 Azure 资源组）](/documentation/articles/vs-azure-tools-resource-groups-deployment-projects-create-deploy)。
+但是，要立即构建所有这些还有很多工作要做，因此，让我们首先创建一个存储帐户并将其部署。你掌握如何创建存储帐户后，可添加其他资源并重新部署模板以完成基础结构。
+
+>[AZURE.NOTE] 创建模板时，你可以使用任何类型的编辑器。Visual Studio 提供了可简化模板开发的工具，但你不需要 Visual Studio 即可完成本教程。有关使用 Visual Studio 创建 Web 应用和 SQL 数据库部署的教程，请参阅 [Creating and deploying Azure resource groups through Visual Studio（通过 Visual Studio 创建和部署 Azure 资源组）](/documentation/articles/vs-azure-tools-resource-groups-deployment-projects-create-deploy)。
 
 ## 创建 Resource Manager 模板
 
@@ -43,35 +45,98 @@
       "outputs": {  }
     }
 
-将此文件保存为 **azuredeploy.json**。
 
-首先，我们将着重于 **resources** 节，本主题稍后将继续讨论 **parameters** 和 **variables**。
+将此文件另存为 **azuredeploy.json**（请注意，模板可以具有任何所需的名称，只是它必须是 json 文件）。
 
-## 存储帐户
-你将定义虚拟机所要使用的存储帐户。在 **resources** 节内，添加用于定义存储帐户的对象，如下所示。
+## 创建存储帐户
+在 **resources** 节内，添加用于定义存储帐户的对象，如下所示。
 
-```json
-"resources": [
-  {
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "[parameters('storageAccountName')]",
-    "apiVersion": "2015-06-15",
-    "location": "[resourceGroup().location]",
-    "properties": {
-      "accountType": "Standard_LRS"
-    }
-  }
-]
-```
 
-你可能想知道这些属性和值来自何处。**type**、**name**、**apiVersion** 和 **location** 属性都是可供所有资源类型使用的标准元素。你可以在[资源](../resource-group-authoring-templates/#resources)中了解常用元素。要将 **name** 设置为在部署期间传递的参数值。要将 **location** 设置为资源组使用的位置。我们将在下面各部分探讨如何确定 **type** 和 **apiVersion**。
+	"resources": [
+	  {
+	    "type": "Microsoft.Storage/storageAccounts",
+	    "name": "[parameters('storageAccountName')]",
+	    "apiVersion": "2015-06-15",
+	    "location": "[resourceGroup().location]",
+	    "properties": {
+	      "accountType": "Standard_LRS"
+	    }
+	  }
+	]
 
-**properties** 节包含特定资源类型特有的所有属性。在此节中指定的值完全匹配 REST API 中可供创建该资源类型的 PUT 操作。创建存储帐户时，必须提供 **accountType**。请注意，在[用于创建存储帐户的 REST API](https://msdn.microsoft.com/library/azure/mt163564.aspx) 中，REST 操作的 properties 节也包含 **accountType** 属性，并阐述了允许的值。在本示例中，帐户类型设置为 **Standard\_LRS**，但你可以指定其他值或允许用户传入帐户类型作为参数。
+你可能想知道这些属性和值来自何处。**type**、**name**、**apiVersion** 和 **location** 属性都是可供所有资源类型使用的标准元素。你可以在 [Resources](/documentation/articles/resource-group-authoring-templates#resources) 中了解常见元素。**name** 设置为在部署过程中传递的参数值，**location** 作为资源组使用的位置。我们将在下面部分探讨如何确定 **type** 和 **apiVersion**。
+
+**properties** 节包含特定资源类型特有的所有属性。在此节中指定的值完全匹配 REST API 中可供创建该资源类型的 PUT 操作。创建存储帐户时，必须提供 **accountType**。请注意，在[用于创建存储帐户的 REST API](https://msdn.microsoft.com/library/azure/mt163564.aspx) 中，REST 操作的 properties 节也包含 **accountType** 属性，并阐述了允许的值。在本示例中，帐户类型设置为 **Standard\_LRS**，但你可以指定其他值或允许用户以参数形式传入帐户类型。
+
+现在，让我们跳回到 **parameters** 节，并了解如何定义存储帐户的名称。你可以在 [Parameters](/documentation/articles/resource-group-authoring-templates#parameters) 中了解有关如何使用参数的更多信息。
+
+
+	"parameters" : {
+		"storageAccountName": {
+	      "type": "string",
+	      "metadata": {
+	        "description": "Storage Account Name"
+	      }
+	    }
+	}
+
+此处你定义了一个字符串类型的参数，用于保存存储帐户的名称。在部署模板过程中将提供此参数的值。
+
+## 部署模板
+我们已有用于创建新存储帐户的完整模板。你应该还记得，该模板保存在 **azuredeploy.json** 文件中：
+
+
+	{
+	  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	  "contentVersion": "1.0.0.0",
+	  "parameters" : {
+		"storageAccountName": {
+	      "type": "string",
+	      "metadata": {
+	        "description": "Storage Account Name"
+	      }
+	    }
+	  },  
+	  "resources": [
+	    {
+	      "type": "Microsoft.Storage/storageAccounts",
+	      "name": "[parameters('storageAccountName')]",
+	      "apiVersion": "2015-06-15",
+	      "location": "[resourceGroup().location]",
+	      "properties": {
+	        "accountType": "Standard_LRS"
+	      }
+	    }
+	  ]
+	}
+
+
+有很多方法可以部署模板，如[资源部署](/documentation/articles/resource-group-template-deploy)一文所示。若要使用 Azure PowerShell 部署模板，请使用：
+
+
+	# create a new resource group
+	New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West Europe"
+
+	# deploy the template to the resource group
+	New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile azuredeploy.json
+
+
+或者，若要使用 Azure CLI 部署模板，请使用：
+
+
+	azure group create -n ExampleResourceGroup -l "China East"
+
+	azure group deployment create -f azuredeploy.json -g ExampleResourceGroup -n ExampleDeployment
+
+
+现在，你是存储帐户的骄傲拥有者！
+
+接下来的步骤将是添加部署本教程开始所述体系结构所需的所有资源。你将在你已处理的同一模板中添加这些资源。
 
 ## 可用性集
-在存储帐户的定义后面，添加虚拟机的可用性集。在本例中，无需其他属性，因此其定义相当简单。如果想要定义更新域计数和容错域计数值，请参阅 [REST API for creating an Availability Set（用于创建可用性集的 REST API）](https://msdn.microsoft.com/library/azure/mt163607.aspx)中的完整 properties 节。
+在存储帐户的定义后面，添加虚拟机的可用性集。在本例中，无需其他属性，因此其定义相当简单。如果想要定义更新域计数和容错域计数值，请参阅 [REST API for creating an Availability Set](https://msdn.microsoft.com/library/azure/mt163607.aspx)（用于创建可用性集的 REST API）中的完整 properties 节。
 
-```json
+
 {
    "type": "Microsoft.Compute/availabilitySets",
    "name": "[variables('availabilitySetName')]",
@@ -79,7 +144,7 @@
    "location": "[resourceGroup().location]",
    "properties": {}
 }
-```
+
 
 请注意，**name** 已设置为某个变量的值。在此模板中，在几个不同的位置需要可用性集的名称。可以通过定义该值一次并在多个位置使用它，来更轻松地维护模板。
 
@@ -110,7 +175,7 @@
 ## 公共 IP
 定义公共 IP 地址。再次查看[公共 IP 地址的 REST API](https://msdn.microsoft.com/library/azure/mt163590.aspx) 中要设置的属性。
 
-```json
+
 {
   "apiVersion": "2015-06-15",
   "type": "Microsoft.Network/publicIPAddresses",
@@ -123,7 +188,7 @@
     }
   }
 }
-```
+
 
 分配方法设置为 **Dynamic**，但你可以将它设置为所需的值或将它设置为接受参数值。你已让模板的用户能够传入域名标签的值。
 
@@ -261,9 +326,7 @@
 ```
 
 ## 网络接口
-你将创建 2 个网络接口，每个 VM 各用一个。可以使用 [copyIndex()](resource-group-create-multiple.md) 函数来迭代复制循环（称为 nicLoop），并创建 `numberOfInstances` 变量中定义的网络接口个数，而不必包含重复的网络接口项。
-网络接口取决于虚拟网络和负载平衡器的创建。它使用创建虚拟网络时所定义的子网，以及负载平衡器 ID 来配置负载平衡器地址池和入站 NAT 规则。
-有关所有属性，请查看 [REST API for network interfaces（网络接口的 REST API）](https://msdn.microsoft.com/zh-cn/library/azure/mt163668.aspx)。
+你将创建 2 个网络接口，每个 VM 各用一个。可以使用 [copyIndex() 函数](/documentation/articles/resource-group-create-multiple) 来迭代复制循环（称为 nicLoop），并创建 `numberOfInstances` 变量中定义的网络接口个数，而不必包含重复的网络接口项。网络接口取决于虚拟网络和负载平衡器的创建。它使用创建虚拟网络时所定义的子网，以及负载平衡器 ID 来配置负载平衡器地址池和入站 NAT 规则。有关所有属性，请查看 [REST API for network interfaces（网络接口的 REST API）](https://msdn.microsoft.com/zh-cn/library/azure/mt163668.aspx)。
 
 ```json
 {
@@ -306,13 +369,9 @@
 ```
 
 ## 虚拟机
-如同在创建[网络接口](#network-interface)时一样，你将使用 copyIndex() 函数创建 2 个虚拟机。
-VM 的创建取决于存储帐户、网络接口和可用性集。如 `storageProfile` 属性中的定义，将从应用商店映像创建此 VM - `imageReference` 用于定义映像发布者、产品、SKU 和版本。
-最后，配置诊断配置文件以启用 VM 的诊断。
+如同在创建[网络接口](#network-interface)时所做的一样，你将使用 copyIndex() 函数创建 2 个虚拟机。VM 的创建取决于存储帐户、网络接口和可用性集。如 `storageProfile` 属性中的定义，将从应用商店映像创建此 VM - `imageReference` 用于定义映像发布者、产品、SKU 和版本。最后，配置诊断配置文件以启用 VM 的诊断。
 
-若要查找应用商店映像的相关属性，请遵循[select Linux virtual machine images（选择 Linux 虚拟机映像）](/documentation/articles/virtual-machines/virtual-machines-linux-cli-ps-findimage)或 [select Windows virtual machine images（选择 Windows 虚拟机映像）](/documentation/articles/virtual-machines/virtual-machines-windows-cli-ps-findimage)文章。
-对于第三方供应商提供的映像，必须指定名为 `plan` 的另一个属性。从快速入门库的[此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic)中可找到示例。
-
+若要查找应用商店映像的相关属性，请遵循 [select Linux virtual machine images（选择 Linux 虚拟机映像）](/documentation/articles/virtual-machines-linux-cli-ps-findimage)或 [select Windows virtual machine images（选择 Windows 虚拟机映像）](/documentation/articles/virtual-machines-windows-cli-ps-findimage)文章。
 
 ```json
 {
@@ -372,6 +431,8 @@ VM 的创建取决于存储帐户、网络接口和可用性集。如 `storagePr
      }
 }
 ```
+
+>[AZURE.NOTE] 对于**第三方供应商**发布的映像，必须指定名为 `plan` 的另一个属性。从快速入门库的[此模板](https://github.com/Azure/azure-quickstart-templates/tree/master/checkpoint-single-nic)中可找到示例。
 
 你已定义模板的资源。
 
@@ -495,13 +556,14 @@ VM 的创建取决于存储帐户、网络接口和可用性集。如 `storagePr
   }
 ```
 
+你已经完成此模板！ 你可以将你的模板与[快速入门库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules)中[包含负载平衡器和负载平衡规则模板的 2 个 VM](https://github.com/Azure/azure-quickstart-templates) 下的完整模板相比较。由于使用不同的版本号，你的模板可能会略有不同。
 
+你可以使用部署存储帐户时使用的相同命令，重新部署该模板。在重新部署前无需删除存储帐户，因为 Resource Manager 将跳过重新创建已存在且未发生更改的资源。
 
 ## 后续步骤
 
-创建模板后，便可以开始部署。
-
+- [Azure Resource Manager 模板可视化工具 (ARMViz)](http://armviz.io/#/) 是个强大的工具，可直观地显示 ARM 模板，因为这些模板只从 json 文件读取可能会变得太大而无法了解。
 - 若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates（创作 Azure Resource Manager 模板）](/documentation/articles/resource-group-authoring-templates)。
 - 若要了解如何部署模板，请参阅 [Deploy a Resource Group with Azure Resource Manager template（使用 Azure Resource Manager 模板部署资源组）](/documentation/articles/resource-group-template-deploy)
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0620_2016-->

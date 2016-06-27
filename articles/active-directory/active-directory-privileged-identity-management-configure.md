@@ -1,6 +1,6 @@
 <properties
-	pageTitle="Azure AD 特权标识管理"
-	description="本主题介绍什么是 Azure AD 特权标识管理，以及如何对它进行配置。"
+	pageTitle="Azure AD Privileged Identity Management | Azure"
+	description="本主题介绍什么是 Azure AD Privileged Identity Management，以及如何使用 PIM 来提升云安全性。"
 	services="active-directory"
 	documentationCenter=""
 	authors="kgremban"
@@ -9,19 +9,19 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="01/21/2016"
+	ms.date="04/15/2016"
 	wacn.date=""/>
 
 # Azure AD 特权标识管理
 
-利用 Azure Active Directory (AD) Privileged Identity Management，可以管理、控制和监视特权标识及其对 Azure AD 中和 Office 365 或 Microsoft Intune 等其他 Microsoft Online Services 中资源的访问权限。
+利用 Azure Active Directory (AD) Privileged Identity Management，可以管理、控制和监视特权标识以及对 Azure AD 中和 Office 365 或 Microsoft Intune 等其他 Microsoft Online Services 中资源的访问权限。
 
-为了允许用户执行特权操作，组织通常需要为许多用户授予 Azure AD、Azure 或 Office 365 资源或者其他 SaaS 应用的永久访问特权。对于许多客户而言，这会给云中托管的资源不断增大安全风险，因为他们无法充分监视这些用户正在使用管理特权执行哪些操作。此外，如果有访问特权的用户帐户被泄露，则可能会影响客户的总体云安全性。Azure AD 特权标识管理可帮助解决这一风险。
+用户有时候需要在 Azure 或 Office 365 资源或者其他 SaaS 应用中执行特权操作。这通常意味着，组织必须授予他们永久的 Azure AD 访问特权。这会给云中托管的资源不断增大安全风险，因为组织无法充分监视这些用户正在使用管理特权执行哪些操作。此外，如果有访问特权的用户帐户被泄露，这个缺口可能会影响其总体云安全性。Azure AD 特权标识管理可帮助解决这一风险。
 
 利用 Azure AD Privileged Identity Management，你可以：
 
-- 发现哪些用户是 Azure AD 管理员
-- 启用对访问目录的按需“实时”管理权限
+- 查看哪些用户是 Azure AD 管理员
+- 按需启用对 Office 365 和 Intune 等 Microsoft Online Services 的“实时”管理访问权限
 - 获取有关管理员访问历史记录以及管理员分配更改的报告
 - 获取有关访问特权角色的警报
 
@@ -35,17 +35,24 @@ Azure AD Privileged Identity Management 可以管理内置的 Azure Active Direc
 
 ## 实时管理员访问
 
-以前，你可以通过 Azure 管理门户或 Windows PowerShell 向管理员角色分配用户。因此，该用户将成为**永久管理员**，始终以他或她的分配角色工作。此预览版增加了**临时管理员**支持，该用户需要完成激活过程才能获得分配的角色。激活过程会 Azure AD 中的用户角色分配从活动更改为非活动。
+以前，你可以通过早期的 Azure 管理门户或 Windows PowerShell 向管理员角色分配用户。因此，该用户将成为该角色的**永久管理员**，始终以他或她的分配角色工作。Azure AD Privileged Identity Management 引入了**临时管理员**角色的概念，这是需要完成分配角色激活过程的用户。激活过程会在指定的时段内（如 8 小时），将 Azure AD 中的用户角色分配从非活动更改为活动。
 
-## 为目录启用特权标识管理
+## 为目录启用 Privileged Identity Management
 
-可以通过访问 [Azure 门户](https://portal.azure.cn/)开始使用 Azure AD Privileged Identity Management。目前，Azure AD Privileged Identity Management 只会出现在 Azure 门户中。它不会出现在经典门户中。你必须是全局管理员才能为目录启用 Azure AD 特权标识管理。
+可以通过访问 [Azure 门户](https://portal.azure.com/)开始使用 Azure AD Privileged Identity Management。早期的经典门户不显示 Azure AD Privileged Identity Management。
 
-![Azure 门户 — 搜索特权标识 — 屏幕截图][1]
+>[AZURE.NOTE] 你必须是拥有组织帐户而非 Microsoft 帐户的全局管理员，才能为目录启用 Azure AD Privileged Identity Management。
 
-[初始化此扩展](active-directory-privileged-identity-management-getting-started.md)后，你将自动成为目录的第一个**安全管理员**。安全管理员可以访问此扩展来管理其他管理员的访问权限。
+1. 以目录的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
+2. 如果你的组织有多个目录，请单击 Azure 门户右上角的用户名，选择你要使用 Azure AD Privileged Identity Management 的目录。
+3. 单击左侧导航区域中的“新建”图标。
+4. 选择“安全性 + 标识”。
+5. 选择“Azure AD Privileged Identity Management”。
+6. 选中“固定到仪表板”选项，然后单击“创建”按钮。“Privileged Identity Management”仪表板随即打开。
 
-在初始化期间，Azure AD Privileged Identity Management 的磁贴将添加到 Azure 门户的开始面板。
+如果你是在目录中使用 Azure AD Privileged Identity Management 的第一个人，则[安全性向导](active-directory-privileged-identity-management-security-wizard.md)会引导你完成初始分配体验。之后，你将自动成为目录的第一个**安全管理员**。
+
+只有安全管理员才能使用 PIM 应用来管理其他管理员的访问权限。你可以[在 PIM 中为其他用户提供管理能力](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)。
 
 ## 特权标识管理仪表板
 
@@ -53,7 +60,7 @@ Azure AD Privileged Identity Manager 提供一个仪表板，其中显示了许�
 
 - 分配给每个特权角色的用户数  
 - 临时管理员和永久管理员的数目
-- 管理员的访问历史记录
+- 每个管理员的访问历史记录
 
 ![PIM 仪表板 — 屏幕截图][2]
 
@@ -81,7 +88,7 @@ Azure AD Privileged Identity Manager 提供一个仪表板，其中显示了许�
 
 任何类型的管理员都可以使用 Azure AD 特权标识管理激活其角色。
 
-角色激活有时间限制。在“角色激活”设置中，你可以配置激活时限，以及管理员为了激活角色而需要提供的信息。
+角色激活有时间限制。在“角色激活”设置中，你可以设置激活时限，以及管理员为了激活角色而需要提供的信息。
 
 ![PIM 管理员请求角色激活 — 屏幕截图][5]
 
@@ -95,7 +102,7 @@ Azure AD Privileged Identity Manager 提供一个仪表板，其中显示了许�
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../includes/active-directory-privileged-identity-management-toc.md)]
 
 <!--Image references-->
-[1]: ./media/active-directory-privileged-identity-management-configure/Search_PIM.png
+
 [2]: ./media/active-directory-privileged-identity-management-configure/PIM_Dash.png
 [3]: ./media/active-directory-privileged-identity-management-configure/PIM_AddRemove.png
 [4]: ./media/active-directory-privileged-identity-management-configure/PIM_RoleActivationSettings.png
@@ -103,4 +110,4 @@ Azure AD Privileged Identity Manager 提供一个仪表板，其中显示了许�
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
 
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

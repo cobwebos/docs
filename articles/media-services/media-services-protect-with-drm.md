@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/07/2016" 
+ 	ms.date="05/03/2016" 
 	wacn.date=""/>
 
 
@@ -25,7 +25,7 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 媒体服务提供传送 PlayReady 和 Widevine DRM 许可证的服务。媒体服务还提供用于配置所需权限和限制的 API，这样当用户播放受保护的内容时，PlayReady 或者 Widevine DRM 运行时便会强制实施这些权限和限制。当用户请求受 DRM 保护的内容时，播放器应用程序将从 AMS 许可证服务请求许可证。如果播放器已获授权，AMS 许可证服务将向播放器颁发许可证。PlayReady 或者 Widevine 许可证包含客户端播放器用来对内容进行解密和流式传输的解密密钥。
 
 
-你还可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)。有关详细信息，请参阅：与 [castLabs](/documentation/articles/media-services-castlabs-integration) 集成。
+你还可以通过以下 AMS 合作伙伴来交付 Widevine 许可证：[EZDRM](http://ezdrm.com/)、[castLabs](http://castlabs.com/company/partners/azure/)有关详细信息，请参阅：与 [castLabs](/documentation/articles/media-services-castlabs-integration) 集成。
 
 媒体服务支持通过多种方式对发出密钥请求的用户进行授权。内容密钥授权策略可能受到一种或多种授权限制：开放或令牌限制。令牌限制策略必须附带由安全令牌服务 (STS) 颁发的令牌。媒体服务支持采用[简单 Web 令牌](https://msdn.microsoft.com/zh-cn/library/gg185950.aspx#BKMK_2) (SWT) 格式和 [JSON Web 令牌](https://msdn.microsoft.com/zh-cn/library/gg185950.aspx#BKMK_3) (JWT) 格式的令牌。有关详细信息，请参阅“配置内容密钥授权策略”。
 
@@ -260,7 +260,8 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 		                // Note, you need to pass the key id Guid because we specified 
 		                // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
 		                Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
-		                string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey, DateTime.UtcNow.AddDays(365));
+		                string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey, 
+																				DateTime.UtcNow.AddDays(365));
 		                Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 		                Console.WriteLine();
 		            }
@@ -308,33 +309,30 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 		            return inputAsset;
 		        }
 		
-		
-		        static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset inputAsset)
-		        {
-		            var encodingPreset = "H264 Adaptive Bitrate MP4 Set 720p";
-		
-		            IJob job = _context.Jobs.Create(String.Format("Encoding into Mp4 {0} to {1}",
-		                                    inputAsset.Name,
-		                                    encodingPreset));
-		
-		            var mediaProcessors =
-		                _context.MediaProcessors.Where(p => p.Name.Contains("Media Encoder")).ToList();
-		
-		            var latestMediaProcessor =
-		                mediaProcessors.OrderBy(mp => new Version(mp.Version)).LastOrDefault();
-		
-		
-		
-		            ITask encodeTask = job.Tasks.AddNew("Encoding", latestMediaProcessor, encodingPreset, TaskOptions.None);
-		            encodeTask.InputAssets.Add(inputAsset);
-		            encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset), AssetCreationOptions.StorageEncrypted);
-		
-		            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-		            job.Submit();
-		            job.GetExecutionProgressTask(CancellationToken.None).Wait();
-		
-		            return job.OutputMediaAssets[0];
-		        }
+			    static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset inputAsset)
+			    {
+			        var encodingPreset = "H264 Multiple Bitrate 720p";
+			
+			        IJob job = _context.Jobs.Create(String.Format("Encoding into Mp4 {0} to {1}",
+			                                inputAsset.Name,
+			                                encodingPreset));
+			
+			        var mediaProcessors =
+			            _context.MediaProcessors.Where(p => p.Name.Contains("Media Encoder Standard")).ToList();
+			
+			        var latestMediaProcessor =
+			            mediaProcessors.OrderBy(mp => new Version(mp.Version)).LastOrDefault();
+			
+			        ITask encodeTask = job.Tasks.AddNew("Encoding", latestMediaProcessor, encodingPreset, TaskOptions.None);
+			        encodeTask.InputAssets.Add(inputAsset);
+			        encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset), 	AssetCreationOptions.StorageEncrypted);
+			
+			        job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
+			        job.Submit();
+			        job.GetExecutionProgressTask(CancellationToken.None).Wait();
+			
+			        return job.OutputMediaAssets[0];
+			    }
 		
 		
 		        static public IContentKey CreateCommonTypeContentKey(IAsset asset)
@@ -538,7 +536,7 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 			        // For example: https://amsaccount1.keydelivery.mediaservices.chinacloudapi.cn/Widevine/?KID=268a6dcb-18c8-4648-8c95-f46429e4927c.  
 			        // The WidevineBaseLicenseAcquisitionUrl (used below) also tells Dynamaic Encryption 
 			        // to append /? KID =< keyId > to the end of the url when creating the manifest.
-			        // As a result Widevine license aquisition URL will have KID appended twice, 
+			        // As a result Widevine license acquisition URL will have KID appended twice, 
 			        // so we need to remove the KID that in the URL when we call GetKeyDeliveryUrl.
 			
 		            Uri widevineUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.Widevine);
@@ -629,4 +627,4 @@ Microsoft Azure 媒体服务允许你传送受 [Microsoft PlayReady DRM](https:/
 
 [特此宣布已在 Azure 媒体服务中推出 Google Widevine 许可证传送服务](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0620_2016-->

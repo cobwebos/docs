@@ -21,7 +21,7 @@
 	using Microsoft.ServiceBus.Messaging;
 	```
 
-5. 将以下字段添加到 **Program** 类，从而将占位符值分别替换为你在上一节中创建的事件中心的名称和具有 **Send** 权限的连接字符串（**SendRule** 连接字符串）。请务必删除连接字符串的 `EntityPath` 后缀：
+5. 将以下字段添加到 **Program** 类，并将占位符值分别替换为你在上一节中创建的事件中心的名称和前面保存的命名空间级别连接字符串。
 
 	```
 	static string eventHubName = "{Event Hub name}";
@@ -69,4 +69,4 @@
 <!-- Images -->
 [7]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
 [8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

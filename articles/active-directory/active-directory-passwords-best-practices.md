@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="最佳实践：Azure AD 密码管理 | Microsoft Azure" 
+	pageTitle="最佳实践：Azure AD 密码管理 | Azure" 
 	description="有关 Azure Active Directory 中密码管理的部署和使用最佳实践、示例最终用户文档和培训指南。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -148,5 +148,4 @@
 [005]: ./media/active-directory-passwords-best-practices/005.jpg "Image_005.jpg"
 [006]: ./media/active-directory-passwords-best-practices/006.jpg "Image_006.jpg"
 [007]: ./media/active-directory-passwords-best-practices/007.jpg "Image_007.jpg"
-
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0620_2016-->

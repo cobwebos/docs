@@ -1,5 +1,5 @@
 <properties
-    pageTitle="了解 Azure 中的资源访问权限 | Microsoft Azure" 
+    pageTitle="了解 Azure 中的资源访问权限 | Azure" 
     description="本主题介绍有关使用订阅管理员在整个 Azure 门户中控制资源访问权限的概念。"
     services="active-directory"
     documentationCenter=""
@@ -10,7 +10,7 @@
 <tags 
 	ms.service="active-directory" 
 
-    	ms.date="02/11/2016"
+    ms.date="05/03/2016"
         wacn.date=""/>
 
 
@@ -57,7 +57,7 @@ Azure 中的访问控制首先体现在计费方面。Azure 帐户的所有者�
 
 - 若要了解有关如何更改 Azure 订阅管理员的详细信息，请参阅[如何添加或更改 Azure 管理员角色](../billing-add-change-azure-subscription-administrator.md)
 
-- 有关 Azure Active Directory 如何与你的 Azure 订阅相关联的信息，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式](active-directory-how-subscriptions-associated directory.md)
+- 有关 Azure Active Directory 如何与你的 Azure 订阅相关联的详细信息，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式](/documentation/articles/active-directory-how-subscriptions-associated directory)
 
 - 有关如何在 Azure AD 中分配角色的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](active-directory-assign-admin-roles.md)
 
@@ -68,4 +68,4 @@ Azure 中的访问控制首先体现在计费方面。Azure 帐户的所有者�
 [2]: ./media/active-directory-understanding-resource-access/IC707932.png
 [3]: ./media/active-directory-understanding-resource-access/IC707933.png
 [4]: ./media/active-directory-understanding-resource-access/IC707934.png
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

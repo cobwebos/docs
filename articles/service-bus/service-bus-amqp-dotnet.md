@@ -1,14 +1,14 @@
 <properties 
-   pageTitle="服务总线与 .NET 和 AMQP 1.0 | Microsoft Azure"
-   description="使用 AMQP 通过 .NET 使用服务总线。"
+   pageTitle="服务总线与 .NET 和 AMQP 1.0 | Azure"
+    description="使用 AMQP 通过 .NET 使用服务总线"
    services="service-bus"
    documentationCenter="na"
    authors="sethmanheim"
    manager="timlt"
-   editor="tysonn" /> 
+    editor="" /> 
 <tags 
    ms.service="service-bus"
-   ms.date="01/26/2016"
+    ms.date="05/06/2016"
    wacn.date="" />
 
 # 使用 AMQP 1.0 通过 .NET 使用服务总线
@@ -21,7 +21,7 @@ AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。可以从 [
 
 ## 将 .NET 应用程序配置为使用 AMQP 1.0
 
-默认情况下，Service Bus .NET 客户端库使用基于 SOAP 的专用协议与 Service Bus 服务通信。若要使用 AMQP 1.0 而非默认协议，需要对服务总线连接字符串进行显式配置，如下一部分所述。除了此更改之外，在使用 AMQP 1.0 时应用程序代码基本保持不变。
+默认情况下，服务总线 .NET 客户端库使用基于 SOAP 的专用协议与服务总线服务通信。若要使用 AMQP 1.0 而非默认协议，需要对服务总线连接字符串进行显式配置，如下一部分所述。除了此更改之外，在使用 AMQP 1.0 时应用程序代码基本保持不变。
 
 在当前版本中，有一些在使用 AMQP 时不受支持的 API 功能。这些不受支持的功能将在后面的[不支持的功能、限制和行为差异](#unsupported-features-restrictions-and-behavioral-differences)部分中列出。在使用 AMQP 时，一些高级配置设置还具有不同的含义。
 
@@ -55,12 +55,12 @@ AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。可以从 [
 
 | .NET 正文对象类型 | 映射的 AMQP 类型 | AMQP 正文部分类型 |
 |--------------------------------|-------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| bool | 布尔值 | AMQP 值 |
-| 字节 | ubyte | AMQP 值 |
+| bool | boolean | AMQP 值 |
+| byte | ubyte | AMQP 值 |
 | ushort | ushort | AMQP 值 |
 | uint | uint | AMQP 值 |
 | ulong | ulong | AMQP 值 |
-| sbyte | 字节 | AMQP 值 |
+| sbyte | byte | AMQP 值 |
 | short | short | AMQP 值 |
 | int | int | AMQP 值 |
 | long | long | AMQP 值 |
@@ -70,10 +70,10 @@ AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。可以从 [
 | char | char | AMQP 值 |
 | DateTime | timestamp | AMQP 值 |
 | Guid | uuid | AMQP 值 |
-| 字节 | binary | AMQP 值 |
-| 字符串 | 字符串 | AMQP 值 |
+| byte[] | binary | AMQP 值 |
+| string | string | AMQP 值 |
 | System.Collections.IList | list | AMQP 值：集合中包含的项只能是此表中定义的类型。 |
-| System.Array | 数组 | AMQP 值：集合中包含的项只能是此表中定义的类型。 |
+| System.Array | array | AMQP 值：集合中包含的项只能是此表中定义的类型。 |
 | System.Collections.IDictionary | map | AMQP 值：集合中包含的项只能是此表中定义的类型。注意：仅支持字符串键。 |
 | Uri | 描述型 string（请参阅下表） | AMQP 值 |
 | DateTimeOffset | 描述型 long（请参阅下表） | AMQP 值 |
@@ -199,4 +199,4 @@ AMQP 1.0 支持在服务总线 SDK 2.1 版或更高版本中提供。可以从 [
 [服务总线 AMQP 概述]: /documentation/articles/service-bus-amqp-overview
 [针对服务总线分区队列和主题的 AMQP 1.0 支持]: /documentation/articles/service-bus-partitioned-queues-and-topics-amqp-overview
 [适用于 Windows Server 的服务总线中的 AMQP]: https://msdn.microsoft.com/zh-cn/library/dn574799.aspx
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0620_2016-->

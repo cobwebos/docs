@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016"  
 	wacn.date=""/>
 
 # 设置你的环境
@@ -17,8 +17,7 @@
 > [AZURE.SELECTOR]
 - [门户](/documentation/articles/media-services-create-account)
 - [PowerShell](/documentation/articles/media-services-manage-with-powershell)
-- [REST](https://msdn.microsoft.com/zh-cn/library/azure/dn167014.aspx)
-<a id="create_account"></a>
+- [REST](https://msdn.microsoft.com/zh-cn/library/azure/dn167014.aspx) <a id="create_account"></a>
 
 以下步骤描述使用 Azure 媒体服务进行开发所要满足的先决条件。
 
@@ -41,4 +40,4 @@
 [AZURE.INCLUDE [media-services-selector-connect](../includes/media-services-selector-connect.md)]
 
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0620_2016-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="服务总线 和 Java 与 AMQP 1.0 | Microsoft Azure"
-   description="使用 AMQP 通过 Java 使用服务总线。"
+   pageTitle="服务总线和 Java 与 AMQP 1.0 | Azure"
+    description="使用 AMQP 通过 Java 使用服务总线"
    services="service-bus"
    documentationCenter="na"
    authors="sethmanheim"
@@ -8,20 +8,20 @@
    editor="tysonn" /> 
 <tags 
    ms.service="service-bus"
-   ms.date="01/26/2016"
+    ms.date="05/06/2016"
    wacn.date="" />
 
-# 使用 AMQP 1.0 通过 Java 使用 Service Bus
+# 使用 AMQP 1.0 通过 Java 使用服务总线
 
 [AZURE.INCLUDE [service-bus-selector-amqp](../includes/service-bus-selector-amqp.md)]
 
-Java 消息服务 (JMS) 是一种标准 API，用于处理 Java 平台上面向消息的中间件。Microsoft Azure 服务总线已使用 Apache Qpid 项目开发的基于 AMQP 1.0 的 JMS 客户端库进行测试。此库支持完整的 JMS 1.1 API，并可用于任何 AMQP 1.0 兼容的消息服务。[Windows Server 服务总线](https://msdn.microsoft.com/zh-cn/library/dn282144.aspx)（本地服务总线）中也支持此方案。有关详细信息，请参阅[适用于 Windows Server 的服务总线中的 AMQP][]。
+Java 消息服务 (JMS) 是一种标准 API，用于处理 Java 平台上面向消息的中间件。Azure 服务总线已使用 Apache Qpid 项目开发的基于 AMQP 1.0 的 JMS 客户端库进行测试。此库支持完整的 JMS 1.1 API，并可用于任何 AMQP 1.0 兼容的消息服务。[Windows Server 服务总线](https://msdn.microsoft.com/zh-cn/library/dn282144.aspx)（本地服务总线）中也支持此方案。有关详细信息，请参阅[适用于 Windows Server 的服务总线中的 AMQP][]。
 
 ## 下载 Apache Qpid AMQP 1.0 JMS 客户端库
 
 有关下载 Apache Qpid JMS AMQP 1.0 客户端库的最新版本的信息，请访问 [http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html](http://people.apache.org/~rgodfrey/qpid-java-amqp-1-0-client-jms.html)。
 
-使用 Service Bus 构建和运行 JMS 应用程序时必须将以下 4 个 JAR 文件从 Apache Qpid JMS AMQP 1.0 分发存档添加到 Java CLASSPATH：
+使用服务总线构建和运行 JMS 应用程序时必须将以下 4 个 JAR 文件从 Apache Qpid JMS AMQP 1.0 分发存档添加到 Java CLASSPATH：
 
 -   geronimo-jms\_1.1\_spec-[version].jar
 
@@ -111,12 +111,12 @@ topic.[jndi_name] = [physical_name]
 | 名称 | 含义 |
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | `[jndi\_name]` | 目标的逻辑名称。通过使用 JNDI `IntialContext.lookup()` 方法在 Java 应用程序中解析此名称。 |
-| `[physical\name]` | 应用程序在其中发送或接收消息的 Service Bus 实体的名称。 |
+| `[physical\name]` | 应用程序在其中发送或接收消息的服务总线实体的名称。 |
 
 注意以下事项：
 
 - `[physical\name]` 值可以是服务总线队列或主题。
-- 在从 Service Bus 主题订阅中接收时，在 JNDI 中指定的物理名称应该是该主题的名称。在 JMS 应用程序代码中创建可持久订阅时提供该订阅名称。
+- 在从服务总线主题订阅中接收时，在 JNDI 中指定的物理名称应该是该主题的名称。在 JMS 应用程序代码中创建可持久订阅时提供该订阅名称。
 - 还可以将服务总线主题订阅视为一个 JMS 队列。此方法具有以下几个优点：可以针对队列和主题订阅使用同一接收者代码，并且所有地址信息（主题和订阅名称）都在属性文件中外部化。
 - 若要将服务总线主题订阅视为一个 JMS 队列，属性文件中的条目应采用以下形式：`queue.[jndi\_name] = [topic\_name]/Subscriptions/[subscription\_name]`。|
 
@@ -312,11 +312,11 @@ if (message.Properties.Keys.Count > 0)
 | JMS 属性类型 | .NET 属性类型 |
 |-------------------|--------------------|
 | Byte | sbyte |
-| 整数 | int |
+| Integer | int |
 | Float | float |
 | Double | double |
-| 布尔 | bool |
-| String | 字符串 |
+| Boolean | bool |
+| String | string |
 
 [BrokeredMessage][] 类型支持以下类型的应用程序属性：**byte**、**sbyte**、**char**、**short**、**ushort**、**int**、**uint**、**long**、**ulong**、**float**、**double**、**decimal**、**bool**、**Guid**、**string**、**Uri**、**DateTime**、**DateTimeOffset** 和 **TimeSpan**。以下 .NET 代码显示如何使用上述每种属性类型在 [BrokeredMessage][] 对象上设置属性。
 
@@ -394,7 +394,7 @@ while (propertyNames.hasMoreElements())
 | JMSPriority | 当前不可用 | 服务总线不支持消息优先级。|
 | JMSRedelivered | 当前不可用 | - |
 | JMSReplyTo | 消息。ReplyTo | - |
-| JMSTimestamp | Message.EnqueuedTimeUtc | Conversion |
+| JMSTimestamp | Message.EnqueuedTimeUtc | 转换 |
 | JMSType | Message.Properties[“jms-type”] | - |
 
 #### 服务总线 .NET API 到 JMS
@@ -442,4 +442,4 @@ while (propertyNames.hasMoreElements())
 [服务总线 AMQP 概述]: /documentation/articles/service-bus-amqp-overview
 [Azure 经典门户]: http://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0620_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 Azure Active Directory 中管理密码 | Microsoft Azure"
+	pageTitle="在 Azure Active Directory 中管理密码 | Azure"
 	description="如何在 Azure Active Directory 中管理密码。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="01/05/2016"
+	ms.date="05/16/2016"
 	wacn.date=""/>
 
 # 在 Azure Active Directory 中管理密码
@@ -29,19 +29,21 @@ Azure AD 高级版适用于使用世界范围的 Azure AD 实例的中国客户�
 
 使用以下链接可跳转至你最感兴趣的文档：
 
-- [概述：Azure AD 中的密码管理](active-directory-passwords-how-it-works)
-- [Azure AD 中的自助密码重置：如何启用、配置和测试自助密码重置](active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)
-- [Azure AD 中的自助密码重置：如何根据你的需要自定义密码重置](active-directory-passwords-customize)
-- [Azure AD 中的自助密码重置：部署和管理最佳实践](active-directory-passwords-best-practices)
-- [Azure AD 中的密码管理报告：如何查看租户中的密码管理活动](active-directory-passwords-get-insights)
-- [密码写回：如何配置 Azure AD 以管理本地密码](active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
-- [Azure AD 密码管理故障排除](active-directory-passwords-troubleshoot)
-- [Azure AD 密码管理常见问题](active-directory-passwords-faq)
+
+- [概述：Azure AD 中的密码管理](/documentation/articles/active-directory-passwords-how-it-works)
+- [Azure AD 中的自助密码重置：如何启用、配置和测试自助密码重置](/documentation/articles/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)
+- [Azure AD 中的自助密码重置：如何根据你的需要自定义密码重置](/documentation/articles/active-directory-passwords-customize)
+- [Azure AD 中的自助密码重置：部署和管理最佳实践](/documentation/articles/active-directory-passwords-best-practices)
+- [Azure AD 中的密码管理报告：如何查看租户中的密码管理活动](/documentation/articles/active-directory-passwords-get-insights)
+- [密码写回：如何配置 Azure AD 以管理本地密码](/documentation/articles/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
+- [Azure AD 密码管理故障排除](/documentation/articles/active-directory-passwords-troubleshoot)
+- [Azure AD 密码管理常见问题](/documentation/articles/active-directory-passwords-faq)
 
 ## 后续步骤
 
-- [管理 Azure AD](active-directory-administer)
-- [在 Azure AD 中创建或编辑用户](active-directory-create-users)
-- [在 Azure AD 中管理组](active-directory-manage-groups)
+- [管理 Azure AD](/documentation/articles/active-directory-administer)
+- [在 Azure AD 中创建或编辑用户](/documentation/articles/active-directory-create-users)
+- [在 Azure AD 中管理组](/documentation/articles/active-directory-manage-groups)
 
-<!---HONumber=Mooncake_0516_2016-->
+
+<!---HONumber=Mooncake_0620_2016-->

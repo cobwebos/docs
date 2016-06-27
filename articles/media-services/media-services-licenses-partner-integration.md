@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+	ms.date="04/18/2016" 
 	wacn.date=""/>
 
 #使用合作伙伴将 Widevine 许可证传送到 Azure 媒体服务
@@ -31,4 +31,5 @@ Microsoft Azure 媒体服务可让你传送使用 Widevine DRM 保护的 MPEG DA
 
 [Mingfei 的博客](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)
 
-<!---HONumber=Mooncake_0314_2016-->
+
+<!---HONumber=Mooncake_0620_2016-->

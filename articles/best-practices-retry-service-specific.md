@@ -1,27 +1,25 @@
 <properties
-   pageTitle="重试服务指南 | Microsoft Azure"
+   pageTitle="重试服务指南 | Azure"
    description="设置重试机制的服务指南。"
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
 <tags
    ms.service="best-practice"
-   ms.date="12/28/2015"
+   ms.date="04/01/2016"
    wacn.date=""/>
 
 # 重试服务指南
-
-![](media/best-practices-retry-service-specific/pnp-logo.png)
 
 ## 概述
 
 大多数 Azure 服务和客户端 SDK 都包括重试机制。不过，这些重试机制各不相同，这是因为每个服务都有不同的特征和要求，这样一来，各个重试机制都会针对特定服务进行优化。本指南汇总了大多数 Azure 服务的重试机制功能，并介绍了如何使用、适应或扩展相应服务的重试机制。
 
-有关如何处理临时故障、针对服务和资源重试连接和操作的一般指南，请参阅[重试指南](best-practices-retry-general.md)。
+有关如何处理临时故障、针对服务和资源重试连接和操作的一般指南，请参阅[重试指南](/documentation/articles/best-practices-retry-general)。
 
 下表总结了本指南中介绍的 Azure 服务重试功能。
 
@@ -208,7 +206,7 @@ namespace RetryCodeSamples
 
 ## 详细信息
 
-- [Azure 存储空间客户端库重试策略建议](http://azure.microsoft.com/blog/2014/05/22/azure-storage-client-library-retry-policy-recommendations/)
+- [Azure 存储空间客户端库重试策略建议](https://azure.microsoft.com/blog/2014/05/22/azure-storage-client-library-retry-policy-recommendations/)
 - [存储客户端库 2.0 - 实现重试策略](http://gauravmantri.com/2012/12/30/storage-client-library-2-0-implementing-retry-policies/)
 
 ## 使用 Entity Framework 6 的 SQL 数据库重试指南
@@ -433,7 +431,7 @@ RetryManager.SetDefault(new RetryManager(
 
 不过，在临时故障处理应用程序块的当前版本中，这些方法本身并不支持针对 SQL 数据库的异步操作。最好仅使用异步技术访问 Azure 服务（如 SQL 数据库）。因此，您应考虑采用以下技术，结合使用临时故障处理应用程序块和 SQL 数据库。
 
-您可以借助 C# 语言第 5 版中的简化异步支持，创建由临时故障处理应用程序块提供的方法的异步版本。例如，以下代码展示了如何创建 **ExecuteReaderWithRetry** 扩展方法的异步版本。原始代码的更改和添加内容进行了突出显示。可从 GitHub 上的[临时故障处理应用程序块 (Topaz)](http://topaz.codeplex.com/SourceControl/latest) 获取 Topaz 的源代码。
+您可以借助 C# 语言第 5 版中的简化异步支持，创建由临时故障处理应用程序块提供的方法的异步版本。例如，以下代码展示了如何创建 **ExecuteReaderWithRetry** 扩展方法的异步版本。原始代码的更改和添加内容进行了突出显示。可从 Codeplex 上的 [Transient Fault Handling Application Block ("Topaz")（临时故障处理应用程序块（“Topaz”））](http://topaz.codeplex.com/SourceControl/latest)获取 Topaz 的源代码。
 
 ```csharp
 public async static Task<SqlDataReader> ExecuteReaderWithRetryAsync(this SqlCommand command, RetryPolicy cmdRetryPolicy,
@@ -513,8 +511,6 @@ using (var reader = await sqlCommand.ExecuteReaderWithRetryAsync(retryPolicy))
 
 	namespaceManager.Settings.RetryPolicy = new RetryExponential(minBackoff: TimeSpan.FromSeconds(0.1),
 	                                                             maxBackoff: TimeSpan.FromSeconds(30),
-	                                                             deltaBackoff: TimeSpan.FromSeconds(2),
-	                                                             terminationTimeBuffer: TimeSpan.FromSeconds(5),
 	                                                             maxRetryCount: 3);
 
 请注意，为了清楚起见，此代码使用命名参数。或者，您可以省略名称，因为没有参数是可选的。
@@ -526,8 +522,6 @@ using (var reader = await sqlCommand.ExecuteReaderWithRetryAsync(retryPolicy))
 
 	messagingFactory.RetryPolicy = new RetryExponential(minBackoff: TimeSpan.FromSeconds(0.1),
 	                                                    maxBackoff: TimeSpan.FromSeconds(30),
-	                                                    deltaBackoff: TimeSpan.FromSeconds(2),
-	                                                    terminationTimeBuffer: TimeSpan.FromSeconds(5),
 	                                                    maxRetryCount: 3);
 
 若要设置消息客户端的重试策略，或替代其默认策略，请使用相应策略类的实例设置其 **RetryPolicy** 属性：
@@ -535,12 +529,11 @@ using (var reader = await sqlCommand.ExecuteReaderWithRetryAsync(retryPolicy))
 ```csharp
 client.RetryPolicy = new RetryExponential(minBackoff: TimeSpan.FromSeconds(0.1),
 	                                        maxBackoff: TimeSpan.FromSeconds(30),
-	                                        deltaBackoff: TimeSpan.FromSeconds(2),
-	                                        terminationTimeBuffer: TimeSpan.FromSeconds(5),
 	                                        maxRetryCount: 3);
 ```
 
-不能在各个操作级别设置重试策略。它适用于消息客户端的所有操作。下表显示了内置重试策略的默认设置。
+不能在各个操作级别设置重试策略。它适用于消息客户端的所有操作。
+下表显示了内置重试策略的默认设置。
 
 ![](media/best-practices-retry-service-specific/RetryServiceSpecificGuidanceTable7.png)
 
@@ -615,8 +608,6 @@ namespace RetryCodeSamples
 		            new RetryExponential(
 		                minBackoff: TimeSpan.FromSeconds(0),
 		                maxBackoff: TimeSpan.FromSeconds(30),
-		                deltaBackoff: TimeSpan.FromSeconds(1.75),
-		                terminationTimeBuffer: TimeSpan.FromSeconds(4),
 		                maxRetryCount: 3);
 
 		        // Policies cannot be specified on a per-operation basis.
@@ -640,8 +631,6 @@ namespace RetryCodeSamples
 		            new RetryExponential(
 		                minBackoff: TimeSpan.FromSeconds(1),
 		                maxBackoff: TimeSpan.FromSeconds(30),
-		                deltaBackoff: TimeSpan.FromSeconds(2),
-		                terminationTimeBuffer: TimeSpan.FromSeconds(5),
 		                maxRetryCount: 3);
 
 
@@ -660,8 +649,6 @@ namespace RetryCodeSamples
 		            new RetryExponential(
 		                minBackoff: TimeSpan.FromSeconds(0.1),
 		                maxBackoff: TimeSpan.FromSeconds(30),
-		                deltaBackoff: TimeSpan.FromSeconds(2),
-		                terminationTimeBuffer: TimeSpan.FromSeconds(5),
 		                maxRetryCount: 3);
 
 
@@ -721,7 +708,7 @@ var conn = ConnectionMultiplexer.Connect("redis0:6380,redis1:6380,connectRetry=3
 |----------------------|-----------------------------------------|-----------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 配置选项 | ConnectRetry<br /><br />ConnectTimeout<br /><br />SyncTimeout | 3<br /><br />最长 5000 毫秒，外加 SyncTimeout<br />1000 | 初始连接操作期间，连接尝试的重复次数。<br />连接操作的超时（以毫秒为单位）。不是重试尝试之间的延迟。<br />同步操作时间（以毫秒为单位）。 |
 
-> [AZURE.NOTE] SyncTimeout 对操作的端到端延迟有推高效果。不过，通常情况下，不建议使用同步操作。有关详细信息，请参阅[管道和多路复用器](http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/PipelinesMultiplexers.md)。
+> [AZURE.NOTE] SyncTimeout 对操作的端到端延迟有推高效果。不过，通常情况下，不建议使用同步操作。有关详细信息，请参阅[管道和多路复用器](http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/PipelinesMultiplexers)。
 
 ## 重试使用指南
 
@@ -847,7 +834,7 @@ namespace RetryCodeSamples
 }
 ```
 
-有关更多示例，请参阅项目网站上的[配置](http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration.md#configuration)。
+有关更多示例，请参阅项目网站上的[配置](http://github.com/StackExchange/StackExchange.Redis/blob/master/Docs/Configuration#configuration)。
 
 ## 详细信息
 
@@ -951,13 +938,11 @@ var result = await policy.ExecuteAsync(() => authContext.AcquireTokenAsync(resou
 以下代码示例展示了如何使用临时故障处理应用程序块 (Topaz)，定义适合与 ADAL 客户端结合使用的自定义临时错误检测策略。此代码会根据类型 **AdalDetectionStrategy** 的自定义检测策略新建一个 **RetryPolicy** 实例，如以下代码清单所定义。Topaz 的自定义检测策略实现 **ITransientErrorDetectionStrategy** 接口。如果应尝试重试，则返回 true；如果故障似乎是非临时故障且不应尝试重试，则返回 **false**。
 
 	using System;
-	using System.Collections.Generic;
 	using System.Linq;
 	using System.Net;
-	using System.Text;
 	using System.Threading.Tasks;
+	using Microsoft.Practices.TransientFaultHandling;
 	using Microsoft.IdentityModel.Clients.ActiveDirectory;
-	using Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling;
 
 	namespace RetryCodeSamples
 	{
@@ -1117,4 +1102,4 @@ var result = await policy.ExecuteAsync(() => authContext.AcquireTokenAsync(resou
 | **线性（固定间隔）** | retryCount<br />retryInterval<br />fastFirstRetry<br /> | 10<br />1 秒<br />true | 重试尝试次数。<br />重试之间延迟。<br />是否立即进行首次重试尝试。 |
 有关使用临时故障处理应用程序块的示例，请参阅本指南中前面与使用 ADO.NET 的 Azure SQL 数据库和 Azure Active Directory 有关的示例部分。
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0620_2016-->

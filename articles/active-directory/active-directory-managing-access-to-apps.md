@@ -1,5 +1,5 @@
 <properties
-  pageTitle="使用 Azure AD 管理对应用的访问 | Microsoft Azure"
+  pageTitle="使用 Azure AD 管理对应用的访问 | Azure"
   description="介绍 Azure Active Directory 如何使组织能够指定每个用户有权访问的应用。"
   services="active-directory"
   documentationCenter=""
@@ -21,7 +21,7 @@
 
  Azure AD 针对已配置的应用程序支持广泛的访问管理，使组织能够轻松实现正确的访问策略，范围包括自动的基于分配的策略（ABAC 或 RBAC 方案）到委派和纳入管理员管理。有了 Azure AD，你可以轻松地实现复杂策略，结合单个应用程序的多个管理模型，甚至在具有相同对象的应用程序之间重复使用管理规则。
 
- - [添加新的或现有的应用程序](active-directory-sso-integrate-saas-apps.md)
+ - [添加新的或现有的应用程序](/documentation/articles/active-directory-sso-integrate-saas-apps)
 
 
  Azure AD 的应用程序分配着重于两种主要分配模式：
@@ -49,26 +49,26 @@
 
 在此情况下，所有分配的用户将自动预配到 Salesforce，因为当他们添加到不同组时，他们的角色分配会在 Salesforce 中更新。用户可以通过 Microsoft 应用程序访问面板、Office Web 客户端甚至通过浏览到其组织的 Salesforce 登录页来发现和访问 Salesforce。管理员可以使用 Azure AD 报告轻松查看使用情况和分配状态。
 
- 管理员可以运用 [Azure AD 条件性访问](active-directory-conditional-access.md)为特定角色设置访问策略。这些策略可能包括是否允许从企业环境外部访问、Multi-Factor Authentication 或设备要求，以在各种情况下实现访问。
+ 管理员可以运用 [Azure AD 条件性访问](/documentation/articles/active-directory-conditional-access)为特定角色设置访问策略。这些策略可能包括是否允许从企业环境外部访问、Multi-Factor Authentication 或设备要求，以在各种情况下实现访问。
 
 ## 如何入门？
 
 首先，如果你未用过 Azure AD 并且你是 IT 管理员：
 
- - [立即试用！](https://azure.microsoft.com/trial/get-started-active-directory/)- 你现在就可以使用此链接注册 30 天免费试用版，然后在不到 5 分钟内部署第一个云解决方案
+ - [立即试用！](trial/get-started-active-directory/)- 你现在就可以使用此链接注册 30 天免费试用版，然后在不到 5 分钟内部署第一个云解决方案
 
 支持帐户共享的 Azure AD 功能包括：
-
-- [组分配](active-directory-accessmanagement-self-service-group-management.md)
+- [组分配](/documentation/articles/active-directory-accessmanagement-self-service-group-management)
 - 将应用程序添加到 Azure AD
 - 分配入门
 - 应用程序分配常见问题
-- [应用使用情况仪表板/报告](active-directory-passwords-get-insights.md)
+- [应用使用情况仪表板/报告](/documentation/articles/active-directory-passwords-get-insights)
 
 ## 可以从何处了解详细信息？
 
-- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-- [使用条件性访问保护应用](active-directory-conditional-access.md)
-- [自助组管理/SSAA](active-directory-accessmanagement-self-service-group-management.md)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
+- [使用条件性访问保护应用](/documentation/articles/active-directory-conditional-access)
+- [自助组管理/SSAA](/documentation/articles/active-directory-accessmanagement-self-service-group-management)
 
-<!---HONumber=Mooncake_0516_2016-->
+
+<!---HONumber=Mooncake_0620_2016-->

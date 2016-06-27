@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="常见问题：Azure AD 密码管理 | Microsoft Azure" 
+	pageTitle="常见问题：Azure AD 密码管理 | Azure" 
 	description="有关 Azure AD 中密码管理的常见问题 (FAQ)，包括密码重置、注册、报告和写回本地 Active Directory。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -27,7 +27,7 @@
 ## 密码重置注册
  - **问：我的用户是否可以注册其自己的密码重置数据？**
  
- > **答：**可以。只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户（网址为 http://aka.ms/ssprsetup ）来注册他们用于密码重置的身份验证信息。用户还可以通过以下方式进行注册：转到访问面板 (http://myapps.microsoft.com) ，单击配置文件选项卡，然后单击“注册密码重置”选项。阅读“如何为用户配置密码重置”，了解如何为你的用户配置密码重置。
+ > **答：**可以。只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户（网址为 http://aka.ms/ssprsetup ）来注册他们用于密码重置的身份验证信息。用户还可以通过以下方式进行注册：转到访问面板 (http://myapps.microsoft.com )，单击配置文件选项卡，然后单击“注册密码重置”选项。阅读“如何为用户配置密码重置”，了解如何为你的用户配置密码重置。
  
  - **问：我能否代表我的用户定义密码重置数据？**
  
@@ -199,4 +199,4 @@
 [001]: ./media/active-directory-passwords-faq/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-faq/002.jpg "Image_002.jpg"
  
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0620_2016-->

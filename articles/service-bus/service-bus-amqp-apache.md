@@ -1,14 +1,14 @@
 <properties 
-   pageTitle="如何在 Linux VM 上安装 Apache Qpid Proton-C | Microsoft Azure"
+   pageTitle="如何在 Linux VM 上安装 Apache Qpid Proton-C | Azure"
    description="如何使用 Azure 虚拟机创建 CentOS Linux VM 以及如何生成和安装 Apache Qpid Proton-C 库。"
    services="service-bus"
    documentationCenter="na"
    authors="sethmanheim"
    manager="timlt"
-   editor="tysonn" /> 
+    editor="" /> 
 <tags 
    ms.service="service-bus"
-   ms.date="01/26/2016"
+    ms.date="05/06/2016"
    wacn.date="" />
 
 # 在 Azure Linux VM 上安装 Apache Qpid Proton-C
@@ -56,23 +56,25 @@
 1.  下载 Proton 库：
 
 	```
-	[azureuser@this-user ~]$ wget http://www.bizdirusa.com/mirrors/apache/qpid/proton/0.4/qpid-proton-0.4.tar.gz 
-		--2013-05-23 21:27:55-- http://www.bizdirusa.com/mirrors/apache/qpid/proton/0.4/qpid-proton-0.4.tar.gz 
-		Resolving www.bizdirusa.com... 205.186.175.195 
-		Connecting to www.bizdirusa.com|205.186.175.195|:80... connected. 
-		HTTP request sent, awaiting response... 200 OK 
-		Length: 456693 (446K) [application/x-gzip] 
-		Saving to: âqpid-proton-0.4.tar.gzâ
-
-		100%[======================================>] 456,693 --.-K/s in 0.06s
-
-		2015-05-23 21:27:55 (6.84 MB/s) - qpid-proton-0.4.tar.gz
+	[azureuser@this-user ~]$ wget http://apache.panu.it/qpid/proton/0.9/qpid-proton-0.9.tar.gz
+	--2016-04-17 14:45:03--  http://apache.panu.it/qpid/proton/0.9/qpid-proton-0.9.tar.gz
+	Resolving apache.panu.it (apache.panu.it)... 81.208.22.71
+	Connecting to apache.panu.it (apache.panu.it)|81.208.22.71|:80... connected.
+	HTTP request sent, awaiting response... 200 OK
+	Length: 868226 (848K) [application/x-gzip]
+	Saving to: ‘qpid-proton-0.9.tar.gz’
+	
+	qpid-proton-0.9.tar.gz                               
+	
+	100%[====================================================================================================================>] 847.88K   102KB/s    in 8.4s    
+	
+	2016-04-17 14:45:12 (101 KB/s) - ‘qpid-proton-0.9.tar.gz’ saved [868226/868226]
 	```
 
 1.  从分发存档中提取 Proton 代码：
 
 	```
-	tar xvfz qpid-proton-0.4.tar.gz
+	tar xvfz qpid-proton-0.9.tar.gz
 	```
 
 1.  使用从自述文件中获取的以下步骤生成并安装代码：
@@ -112,4 +114,4 @@
 
 
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0620_2016-->

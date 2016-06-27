@@ -1,5 +1,5 @@
 <properties
-	pageTitle="入门：Azure AD 密码管理 | Microsoft Azure"
+	pageTitle="入门：Azure AD 密码管理 | Azure"
 	description="使用户能够重置其自己的密码和了解密码重置先决条件，并启用密码写回来管理 Active Directory 中的本地密码。"
 	services="active-directory"
 	keywords="Active Directory 密码管理, 密码管理, 重置 Azure AD 密码"
@@ -194,7 +194,7 @@
 Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure AD Sync 工具中提供了密码写回功能。Azure AD Connect 发行版或版本号为 **1.0.0485.0222** 或更高的 Azure AD Sync 工具中提供了支持自动帐户解锁的密码写回功能。如果你运行的是较旧版本，请在继续操作之前至少升级到此版本。[单击此处下载最新版本的 Azure AD Connect](/documentation/articles/active-directory-aadconnect#download-azure-ad-connect)。
 
 #### 查看 Azure AD Sync 的版本
-1.	导航到 **%ProgramFiles%\Azure Active Directory Sync\**。
+1.	导航到 %ProgramFiles%\\Azure Active Directory Sync**。
 2.	找到 **ConfigWizard.exe** 可执行文件。
 3.	右键单击该可执行文件，然后从上下文菜单中选择“属性”选项。
 4.	单击“详细信息”选项卡。
@@ -350,4 +350,4 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 [032]: ./media/active-directory-passwords-getting-started/032.jpg "Image_032.jpg"
 
-<!---HONumber=Mooncake_0418_2016--->
+<!---HONumber=Mooncake_0620_2016-->

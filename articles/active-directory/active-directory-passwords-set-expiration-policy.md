@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 Azure Active Directory 中设置密码过期策略 | Microsoft Azure"
+	pageTitle="在 Azure Active Directory 中设置密码过期策略 | Azure"
 	description="了解如何检查 Azure Active Directory 密码的过期策略，以及如何逐个或批量更改用户密码过期策略"
 	services="active-directory"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="01/05/2016"
+	ms.date="05/16/2016"
 	ms.author="curtand"/>
 
 
@@ -60,4 +60,4 @@
 
 	- 若要将组织中所有用户的密码设置为永不过期，请运行以下 cmdlet：`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires \$true`
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0620_2016-->

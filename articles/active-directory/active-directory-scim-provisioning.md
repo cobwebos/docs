@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配 | Microsoft Azure"
+	pageTitle="使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配 | Azure"
 	description="Azure Active Directory 可以使用 SCIM 协议规范中定义的接口，自动将用户和组预配到以 Web 服务为前端的任何应用程序或标识存储"
 	services="active-directory"
 	documentationCenter=""
@@ -18,7 +18,7 @@
 
 Azure Active Directory 可以使用 [SCIM 2.0 协议规范](https://tools.ietf.org/html/draft-ietf-scim-api-19)中定义的接口，将用户和组自动预配到 Web 服务前端的任何应用程序或标识存储。Azure Active Directory 可将请求发送到此 Web 服务以创建、修改和删除分配的用户与组，然后，Web 服务可将这些请求转换为针对目标标识存储的操作。
 
-![][1]
+![][1] 
 图：通过 Web 服务从 Azure Active Directory 预配到标识存储
 
 此功能可配合 Azure AD 中的“[自带应用](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)”功能，为提供 SCIM Web 服务或位于该服务后端的应用程序启用单一登录和自动用户预配。
@@ -682,18 +682,18 @@ Microsoft 提供的、用于实现 SCIM 服务的通用语言基础结构库将�
 * 检索组的请求规定将成员属性从请求响应中提供的任何资源中排除。  
 * 确定引用属性是否具有特定值的请求将是有关成员属性的请求。  
 
-![][5] 
+![][5]
 图：组预配和撤销顺序
 
 ##相关文章
 
-- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-- [在 SaaS 应用中自动预配和撤销用户](active-directory-saas-app-provisioning.md)
-- [为用户预配自定义属性映射](active-directory-saas-customizing-attribute-mappings.md)
-- [为属性映射编写表达式](active-directory-saas-writing-expressions-for-attribute-mappings.md)
-- [用于用户预配的作用域筛选器](active-directory-saas-scoping-filters.md)
-- [帐户预配通知](active-directory-saas-account-provisioning-notifications.md)
-- [有关如何集成 SaaS 应用的教程列表](active-directory-saas-tutorial-list.md)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
+- [在 SaaS 应用中自动预配和撤销用户](/documentation/articles/active-directory-saas-app-provisioning)
+- [为用户预配自定义属性映射](/documentation/articles/active-directory-saas-customizing-attribute-mappings)
+- [为属性映射编写表达式](/documentation/articles/active-directory-saas-writing-expressions-for-attribute-mappings)
+- [用于用户预配的作用域筛选器](/documentation/articles/active-directory-saas-scoping-filters)
+- [帐户预配通知](/documentation/articles/active-directory-saas-account-provisioning-notifications)
+- [有关如何集成 SaaS 应用的教程列表](/documentation/articles/active-directory-saas-tutorial-list)
 
 
 	
@@ -704,4 +704,4 @@ Microsoft 提供的、用于实现 SCIM 服务的通用语言基础结构库将�
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0620_2016-->

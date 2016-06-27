@@ -9,14 +9,14 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="02/04/2016"  
+	ms.date="04/25/2016"  
 	wacn.date=""/>
 
 #高级媒体编码器高级工作流教程
 
 ##概述 
 
-本文档包含的演练说明如何使用 **工作流设计器** 自定义工作流。你可以在[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)找到实际的工作流文件。
+本文档包含的演练说明如何使用**工作流设计器**自定义工作流。你可以在[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)找到实际的工作流文件。
 
 ##目录
 
@@ -270,7 +270,8 @@
 
 	${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4
 
-这意味着我们的文件名由两个变量决定：要写入的输出目录和源文件基本名称。前者在工作流根目录上公开为属性，后者则由传入的文件决定。请注意，输出目录是用于本地测试的目录；当 Azure 媒体服务中基于云的媒体处理器执行工作流时，此属性由工作流引擎重写。若要提供这两个输出文件一致的输出命名，请将第一个文件命名表达式更改为：
+这意味着我们的文件名由两个变量决定：要写入的输出目录和源文件基本名称。前者在工作流根目录上公开为属性，后者则由传入的文件决定。请注意，输出目录是用于本地测试的目录；当 Azure 媒体服务中基于云的媒体处理器执行工作流时，此属性由工作流引擎重写。
+若要提供这两个输出文件一致的输出命名，请将第一个文件命名表达式更改为：
 
 	${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
 
@@ -475,7 +476,8 @@
 
 *引入场景搜索 JPG 文件写入器*
 
-使用以下表达式配置输出文件夹路径属性：${ROOT\_outputWriteDirectory}
+使用以下表达式配置输出文件夹路径属性：
+	${ROOT\_outputWriteDirectory}
 
 配置文件名前缀属性：
 
@@ -974,4 +976,4 @@
 
 [Azure 媒体服务资源管理器工具](https://github.com/Azure/Azure-Media-Services-Explorer/releases/tag/v3.36.0.0)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0620_2016-->

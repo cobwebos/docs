@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="自定义：Azure AD 密码管理 | Microsoft Azure" 
+	pageTitle="自定义：Azure AD 密码管理 | Azure" 
 	description="如何根据需要在 Azure AD 中自定义密码管理外观、行为和通知。" 
 	services="active-directory" 
 	documentationCenter="" 
@@ -856,16 +856,16 @@
 ## 密码重置文档的链接
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* [**重置自己的密码**](active-directory-passwords-update-your-own-password.md) - 了解如何以系统用户的身份重置或更改自己的密码
-* [**工作原理**](active-directory-passwords-how-it-works.md) - 了解六个不同的服务组件及其功能
-* [**入门**](active-directory-passwords-getting-started.md) - 了解如何让用户重置及更改云密码或本地密码
-* [**最佳实践**](active-directory-passwords-best-practices.md) - 了解如何快速部署且有效管理组织的密码
-* [**深入分析**](active-directory-passwords-get-insights.md) - 了解集成式报告功能
-* [**常见问题**](active-directory-passwords-faq.md) - 获取常见问题的解答
-* [**故障排除**](active-directory-passwords-troubleshoot.md) - 了解如何快速排查服务的问题
-* [**了解更多**](active-directory-passwords-learn-more.md) - 深入探索服务工作原理的技术细节
+* [**重置自己的密码**](/documentation/articles/active-directory-passwords-update-your-own-password) — 了解如何以系统用户的身份重置或更改自己的密码
+* [**工作原理**](/documentation/articles/active-directory-passwords-how-it-works) - 了解六个不同的服务组件及其功能
+* [**入门**](/documentation/articles/active-directory-passwords-getting-started) - 了解如何让用户重置及更改云密码或本地密码
+* [**最佳实践**](/documentation/articles/active-directory-passwords-best-practices) - 了解如何快速部署且有效管理组织的密码
+* [**深入分析**](/documentation/articles/active-directory-passwords-get-insights) - 了解集成式报告功能
+* [**常见问题**](/documentation/articles/active-directory-passwords-faq) - 获取常见问题的解答
+* [**故障排除**](/documentation/articles/active-directory-passwords-troubleshoot) - 了解如何快速排查服务的问题
+* [**了解更多**](/documentation/articles/active-directory-passwords-learn-more) - 深入探索服务工作原理的技术细节
 
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0620_2016-->

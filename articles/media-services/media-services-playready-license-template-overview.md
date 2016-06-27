@@ -9,14 +9,15 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016"  
 	wacn.date=""/>
 
 #媒体服务 PlayReady 许可证模板概述
 
 Azure 媒体服务现在提供有用于传送 Microsoft PlayReady 许可证的服务。当最终用户播放器（例如 Silverlight）尝试播放受 PlayReady 保护的内容时，将向许可证交付服务发送请求以获取许可证。如果许可证服务批准了该请求，则会颁发该许可证，该许可证将发送到客户端，并可用于解密和播放指定的内容。
 
-媒体服务还提供有可让你配置 PlayReady 许可证的 API。许可证包含在用户尝试播放受保护的内容时要由 PlayReady DRM 运行时强制实施的权限和限制。以下是你可以指定的 PlayReady 许可证限制的一些示例：
+媒体服务还提供有可让你配置 PlayReady 许可证的 API。许可证包含在用户尝试播放受保护的内容时要由 PlayReady DRM 运行时强制实施的权限和限制。
+以下是你可以指定的 PlayReady 许可证限制的一些示例：
 
 - 该许可证开始生效的日期/时间。
 - 许可证过期时的日期/时间值。 
@@ -297,4 +298,6 @@ XML 符合 PlayReady 许可证模板 XML 架构部分中定义的 PlayReady 许�
 	  <xs:element name="ScmsRestriction" nillable="true" type="tns:ScmsRestriction" />
 	</xs:schema>
 
-<!---HONumber=Mooncake_0314_2016-->
+
+
+<!---HONumber=Mooncake_0620_2016-->

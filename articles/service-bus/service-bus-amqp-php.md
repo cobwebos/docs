@@ -1,14 +1,14 @@
 <properties 
-   pageTitle="服务总线和 PHP 与 AMQP 1.0 | Microsoft Azure"
+   pageTitle="服务总线和 PHP 与 AMQP 1.0 | Azure"
    description="使用 AMQP 通过 PHP 使用服务总线。"
    services="service-bus"
    documentationCenter="na"
    authors="sethmanheim"
    manager="timlt"
-   editor="tysonn" /> 
+    editor="" /> 
 <tags 
    ms.service="service-bus"
-   ms.date="01/26/2016"
+    ms.date="05/06/2016"
    wacn.date="" />
 
 # 使用 AMQP 1.0 通过 PHP 使用服务总线
@@ -106,9 +106,9 @@ Console.WriteLine();
 |-------------------|--------------------|
 | integer | int |
 | double | double |
-| 布尔值 | bool |
-| 字符串 | 字符串 |
-| 对象 | 对象 |
+| boolean | bool |
+| string | string |
+| object | object |
 
 #### 服务总线 .NET API 到 PHP
 
@@ -165,7 +165,8 @@ if ($message->properties != null)
 | double | double | - |
 | decimal | string | Proton 目前不支持 Decimal。|
 | bool | boolean | - |
-| Guid | UUID | Proton-PHP 类 | | string | string | - |
+| Guid | UUID | Proton-PHP 类 |
+| string | string | - |
 | DateTime | integer | - |
 | DateTimeOffset | DescribedType | 映射到 AMQP 类型的 DateTimeOffset.UtcTicks：<type name="datetime-offset" class=restricted source="long"> <descriptor name="com.microsoft:datetime-offset" /></type> |
 | TimeSpan | DescribedType | 映射到 AMQP 类型的 Timespan.Ticks：<type name="timespan" class=restricted source="long"> <descriptor name="com.microsoft:timespan" /></type> |
@@ -195,7 +196,7 @@ if ($message->properties != null)
 | group\_id | Message.SessionId | - |
 | group\_sequence | - | - |
 | reply\_to\_group\_id | Message.ReplyToSessionId | - |
-| Format | 不适用 | - |
+| Format | 不适用 | -
 
 #### 服务总线 .NET API 到 Proton-PHP
 
@@ -227,4 +228,4 @@ if ($message->properties != null)
 
 [服务总线 AMQP 概述]: /documentation/articles/service-bus-amqp-overview
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0620_2016-->

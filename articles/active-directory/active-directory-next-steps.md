@@ -15,10 +15,10 @@
 # Azure AD 的后续用途有哪些？
 
 ### 本主题的其他相关文章
-[什么是 Azure AD？](/documentation/articles/active-directory-whatis)<br> 
-[它的工作原理是怎样的？](/documentation/articles/active-directory-works)<br> 
-[入门](/documentation/articles/active-directory-get-started)<br> 
-[后续步骤](/documentation/articles/active-directory-next-steps)<br> 
+[什么是 Azure AD？](/documentation/articles/active-directory-whatis)<br>
+[它的工作原理是怎样的？](/documentation/articles/active-directory-works)<br>
+[入门](/documentation/articles/active-directory-get-started)<br>
+[后续步骤](/documentation/articles/active-directory-next-steps)<br>
 [了解详细信息](/documentation/articles/active-directory-learn-map)
 
 ## 在 Azure AD 中管理用户
@@ -41,4 +41,4 @@ Azure AD 设备注册会利用当用户登录时用于验证设备的标识来�
 
 
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0620_2016-->

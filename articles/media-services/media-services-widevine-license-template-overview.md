@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016"  
 	wacn.date=""/>
 
 #Widevine 许可证模板概述
@@ -198,4 +198,4 @@ override\_provider\_client\_token | 布尔值。true 或 false |如果为 false 
 
 [使用 PlayReady 和/或 Widevine DRM 动态通用加密](/documentation/articles/media-services-protect-with-drm)
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0620_2016-->

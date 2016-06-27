@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/03/2016"  
+ 	ms.date="04/18/2016"  
 	wacn.date=""/>
 
 #使用 Azure 媒体服务 REST API 创建筛选器
@@ -361,4 +361,4 @@
 
  
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0620_2016-->

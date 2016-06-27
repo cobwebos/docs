@@ -1,12 +1,12 @@
 <properties 
-   pageTitle="创建使用服务总线主题和订阅的应用程序 | Microsoft Azure"
+   pageTitle="创建使用服务总线主题和订阅的应用程序 | Azure"
    description="服务总线主题和订阅提供的发布-订阅功能简介。"
    services="service-bus"
    documentationCenter="na"
    authors="sethmanheim"
    manager="timlt"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="service-bus"
     ms.date="03/16/2016"
    wacn.date="" />
@@ -89,7 +89,7 @@ bm.Properties["MachineID"] = "POS_1";
 将消息发送到主题的最简单方法是使用 [CreateMessageSender](https://msdn.microsoft.com/zh-cn/library/azure/hh322659.aspx) 从 [MessagingFactory](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) 实例直接创建 [MessageSender](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagesender.aspx) 对象。
 
 ```
-MessageSender sender = factory.CreateMessageSender("DataCollectionQueue");
+MessageSender sender = factory.CreateMessageSender("DataCollectionTopic");
 sender.Send(bm);
 ```
 
@@ -97,7 +97,7 @@ sender.Send(bm);
 
 类似于使用队列，若要从订阅接收消息，可以使用 [MessageReceiver](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx) 对象，可使用 [CreateMessageReceiver](https://msdn.microsoft.com/zh-cn/library/azure/hh322642.aspx) 从 [MessagingFactory](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagingfactory.aspx) 直接创建它。可以使用两种不同接收模式之一（**ReceiveAndDelete** 和 **PeekLock**），如[创建使用服务总线队列的应用程序](/documentation/articles/service-bus-create-queues)中所述。
 
-请注意，为订阅创建 [MessageReceiver](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx) 时，entityPath 参数的形式为 `topicPath/subscriptions/subscriptionName`。因此，若要为 **DataCollectionTopic** 主题的“库存”订阅创建 [MessageReceiver](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx)，必须将 entityPath 设置为 `DataCollectionTopic/subscriptions/Inventory`。代码将如下所示：
+请注意，为订阅创建 [MessageReceiver](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx) 时，*entityPath* 参数的形式为 `topicPath/subscriptions/subscriptionName`。因此，若要为 **DataCollectionTopic** 主题的“库存”订阅创建 [MessageReceiver](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagereceiver.aspx)，必须将 *entityPath* 设置为 `DataCollectionTopic/subscriptions/Inventory`。代码将如下所示：
 
 ```
 MessageReceiver receiver = factory.CreateMessageReceiver("DataCollectionTopic/subscriptions/Inventory");
@@ -145,4 +145,4 @@ namespaceManager.CreateSubscription("DataCollectionTopic", "Dashboard", dashboar
 ## 后续步骤
 
 请参阅[创建使用服务总线队列的应用程序](/documentation/articles/service-bus-create-queues)，以了解有关如何在 POS 零售方案中使用队列的信息。
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0620_2016-->
