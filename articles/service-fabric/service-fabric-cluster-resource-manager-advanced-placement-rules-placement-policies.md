@@ -9,11 +9,11 @@
 
 <tags
    ms.service="Service-Fabric"
-   ms.date="03/10/2016"
+   ms.date="05/20/2016"
    wacn.date=""/>
 
 # Service Fabric 服务的放置策略
-其他许多不同的规则最终可能让你关心 Service Fabric 群集是否跨越地理距离（例如多个数据中心或 Azure 区域），或者环境是否跨越多个地缘政治控制区域（或所要关心的其他一些法律或政策边界问题）。其中的大多数规则都能通过节点属性和放置约束来配置（如前所述），但有一些规则比较复杂。在任何情况下，我们都可提供捷径（例如放置约束），让你根据每个服务来配置放置策略。
+其他许多不同的规则最终可能让你关心 Service Fabric 群集是否跨越地理距离（例如多个数据中心或 Azure 区域），或者环境是否跨越多个地缘政治控制区域（或者你关心其他一些法律或政策边界问题，或者这种距离确实会造成性能/延迟影响）。其中的大多数规则都能通过节点属性和放置约束来配置，但有一些规则比较复杂。在任何情况下，我们都可提供捷径（例如放置约束），让你根据每个命名服务实例来配置放置策略。
 
 ## 指定无效域
 InvalidDomain 放置策略可让你指定特定的容错域对此工作负荷是无效的。此策略可确保特定的服务绝对不会在特定的区域中运行（例如，出于地缘政治或公司政策的原因）。可以指定多个无效域
@@ -88,10 +88,10 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 现在，是否可针对未跨越地理区域的群集中的服务使用这些配置？ 当然可以！ 但也没有充分的理由 – 除非你实际上正在运行跨越地理区域的群集，否则，特别要避免所需、无效和首选域配置。
 
 ## 后续步骤
-- 有关可用于配置服务的其他选项的详细信息，请查看 [Learn about configuring Services（了解如何配置服务）](/documentation/articles/service-fabric-cluster-resource-manager-configure-services)中提供的其他群集资源管理器配置的相关主题
+- 有关可用于配置服务的其他选项的详细信息，请查看 [Learn about configuring Services](/documentation/articles/service-fabric-cluster-resource-manager-configure-services)（了解如何配置服务）中提供的其他群集资源管理器配置的相关主题
 
 [Image1]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png
 [Image3]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-preferred-primary-domain.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0627_2016-->

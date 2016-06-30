@@ -9,7 +9,7 @@
 
 <tags
     ms.service="service-fabric"
-   ms.date="05/13/2016"
+    ms.date="05/18/2016"
     wacn.date=""/>
 
 
@@ -17,7 +17,7 @@
 
 # 使用 Visual Studio 进行 Service Fabric 应用程序升级的教程
 
-Azure Service Fabric 确保只升级已更改的服务，并在整个升级过程中监视应用程序的运行状况，从而可以简化云应用程序的升级过程。它还能在应用程序发生任何问题时自动回滚到旧版本。Service Fabric 应用程序升级造成的*停机时间为零*，因为可以在不停机的情况下升级应用程序。本教程介绍如何从 Visual Studio 完成简单的滚动升级。
+Azure Service Fabric 确保只升级已更改的服务，并在整个升级过程中监视应用程序的运行状况，从而可以简化云应用程序的升级过程。它还能在应用程序发生任何问题时自动回滚到旧版本。Service Fabric 应用程序升级造成的停机时间为零，因为可以在不停机的情况下升级应用程序。本教程介绍如何从 Visual Studio 完成简单的滚动升级。
 
 
 ## 步骤 1：构建和发布可视对象示例
@@ -84,4 +84,4 @@ Azure Service Fabric 确保只升级已更改的服务，并在整个升级过�
 [image3]: ./media/service-fabric-application-upgrade-tutorial/upgrade5.png
 [image4]: ./media/service-fabric-application-upgrade-tutorial/upgrade6.png
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

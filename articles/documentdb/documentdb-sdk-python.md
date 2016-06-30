@@ -1,9 +1,9 @@
 <properties 
-	pageTitle="DocumentDB Python SDK | Microsoft Azure" 
+	pageTitle="DocumentDB Python SDK | Azure" 
 	description="了解有关 Python SDK 的全部信息，包括发布日期、停用日期和 DocumentDB Python SDK 各版本之间所做的更改。" 
 	services="documentdb" 
 	documentationCenter="python" 
-	authors="ryancrawcour" 
+	authors="aliuy" 
 	manager="jhubbard" 
 	editor="cgronlun"/>
 
@@ -13,7 +13,7 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="python" 
 	ms.topic="article" 
-	ms.date="04/08/2016" 
+	ms.date="06/14/2016" 
 	ms.author="rnagpal"/>
 
 # DocumentDB SDK
@@ -36,11 +36,17 @@
 
 ## 发行说明
 
+### <a name="1.8.0"/>[1\.8.0](https://pypi.python.org/pypi/pydocumentdb/1.8.0)
+  - 添加了对多区域数据库帐户的支持。
+
+### <a name="1.7.0"/>[1\.7.0](https://pypi.python.org/pypi/pydocumentdb/1.7.0)
+- 在文档中添加了对生存时间 (TTL) 的支持。
+
 ### <a name="1.6.1"/>[1\.6.1](https://pypi.python.org/pypi/pydocumentdb/1.6.1)
 - 与服务器端分区相关的 bug 修复，以允许在 partitionkey 路径中使用特殊字符。
 
 ### <a name="1.6.0"/>[1\.6.0](https://pypi.python.org/pypi/pydocumentdb/1.6.0)
-- 已实现[分区集合](/documentation/articles/documentdb-partition-data)和[用户定义的性能级别](/documentation/articles/documentdb-performance-levels)。 
+- 实现了[分区集合](/documentation/articles/documentdb-partition-data)和[用户定义的性能级别](/documentation/articles/documentdb-performance-levels)。 
 
 ### <a name="1.5.0"/>[1\.5.0](https://pypi.python.org/pypi/pydocumentdb/1.5.0)
 - 添加哈希和范围分区冲突解决程序以协助跨多个分区对应用程序进行分片。
@@ -77,20 +83,22 @@ Microsoft 将在停用一款 SDK 之前至少 **12 个月**发出通知，以便
 
 | 版本 | 发布日期 | 停用日期 
 | ---	  | ---	         | ---
-| [1\.6.1](#1.6.1) |2016 年 4 月 8 日 |---
-| [1\.6.0](#1.6.0) |2016 年 3 月 29 日 |---
-| [1\.5.0](#1.5.0) |2016 年 1 月 3 日 |---
-| [1\.4.2](#1.4.2) |2015 年 10 月 6 日 |---
-| [1\.4.1](#1.4.1) |2015 年 10 月 6 日 |---
-| [1\.2.0](#1.2.0) |2015 年 8 月 6 日 |---
-| [1\.1.0](#1.1.0) |2015 年 7 月 9 日 |---
-| [1\.0.1](#1.0.1) |2015 年 5 月 25 日 |---
-| [1\.0.0](#1.0.0) |2015 年 4 月 7 日 |---
-|0.9.4-prelease |2015 年 1 月 14 日 |2016 年 2 月 29 日 
-|0.9.3-prelease |2014 年 12 月 9 日 |2016 年 2 月 29 日 
-|0.9.2-prelease |2014 年 11 月 25 日 |2016 年 2 月 29 日 
-|0.9.1-prelease |2014 年 9 月 23 日 |2016 年 2 月 29 日 
-|0.9.0-prelease |2014 年 8 月 21 日 |2016 年 2 月 29日
+| [1\.8.0](#1.8.0) | 2016 年 6 月 14 日 |---
+| [1\.7.0](#1.7.0) | 2016 年 4 月 26 日 |---
+| [1\.6.1](#1.6.1) | 2016 年 4 月 8 日 |---
+| [1\.6.0](#1.6.0) | 2016 年 3 月 29 日 |---
+| [1\.5.0](#1.5.0) | 2016 年 1 月 3 日 |---
+| [1\.4.2](#1.4.2) | 2015 年 10 月 6 日 |---
+| [1\.4.1](#1.4.1) | 2015 年 10 月 6 日 |---
+| [1\.2.0](#1.2.0) | 2015 年 8 月 6 日 |---
+| [1\.1.0](#1.1.0) | 2015 年 7 月 9 日 |---
+| [1\.0.1](#1.0.1) | 2015 年 5 月 25 日 |---
+| [1\.0.0](#1.0.0) | 2015 年 4 月 7 日 |---
+|0.9.4-prelease | 2015 年 1 月 14 日 | 2016 年 2 月 29 日
+|0.9.3-prelease | 2014 年 12 月 9 日 | 2016 年 2 月 29 日
+|0.9.2-prelease | 2014 年 11 月 25 日 | 2016 年 2 月 29 日
+|0.9.1-prelease | 2014 年 9 月 23 日 | 2016 年 2 月 29 日
+|0.9.0-prelease | 2014 年 8 月 21 日 | 2016 年 2 月 29日
 
 ## 常见问题
 [AZURE.INCLUDE [documentdb sdk 常见问题](../includes/documentdb-sdk-faq.md)]
@@ -99,4 +107,4 @@ Microsoft 将在停用一款 SDK 之前至少 **12 个月**发出通知，以便
 
 要了解有关 DocumentDB 的详细信息，请参阅 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服务页。
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0627_2016-->

@@ -10,7 +10,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="05/13/2016"
+   ms.date="05/18/2016"
    wacn.date=""/>
 
 
@@ -74,4 +74,4 @@
 参考[对应用程序升级进行故障排除](/documentation/articles/service-fabric-application-upgrade-troubleshooting)中的步骤来解决应用程序升级时的常见问题。
  
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

@@ -9,7 +9,7 @@
 
 <tags
     ms.service="service-fabric"
-   ms.date="05/12/2016"   
+    ms.date="05/18/2016"   
     wacn.date=""/>
 
 # 在 Service Fabric 中对应用程序建模
@@ -250,4 +250,4 @@ PS D:\temp>
 [11]: /documentation/articles/service-fabric-manage-multiple-environment-app-configuration
 [12]: /documentation/articles/service-fabric-application-runas-security
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

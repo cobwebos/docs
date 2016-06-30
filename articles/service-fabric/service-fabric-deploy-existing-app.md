@@ -1,6 +1,6 @@
 <properties
-   pageTitle="将现有可执行文件部署到 Azure Service Fabric |Microsoft Azure"
-   description="有关如何打包现有应用程序以便可以在 Azure Service Fabric 群集上部署它的演练"
+   pageTitle="将现有可执行文件部署到 Azure Service Fabric | Microsoft Azure"
+   description="有关如何将现有应用程序打包为来宾可执行文件，以便可以在 Azure Service Fabric 群集上部署的演练"
    services="service-fabric"
    documentationCenter=".net"
    authors="clca"
@@ -9,11 +9,11 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/12/2016"
+   ms.date="06/20/2016"
    wacn.date=""/>
 
-可以在 Azure Service Fabric 中运行任何类型的应用程序，如 Node.js、Java 或本机应用程序。Service Fabric 术语将这些类型的应用程序称为来宾可执行文件。 
-来宾可执行文件由 Service Fabric 如同无状态服务一样进行处理。因此，它们会基于可用性和其他指标位于群集中的节点上。本文介绍如何打包来宾可执行文件并部署到 Service Fabric 群集。
+可以在 Azure Service Fabric 中运行任何类型的应用程序，如 Node.js、Java 或本机应用程序。Service Fabric 术语将这些类型的应用程序称为来宾可执行文件。
+来宾可执行文件由 Service Fabric 如同无状态服务一样进行处理。因此，它们会基于可用性和其他指标位于群集中的节点上。本文介绍如何使用 Visual Studio 或命令行实用工具打包来宾可执行文件并部署到 Service Fabric 群集。
 
 ## 在 Service Fabric 中运行来宾可执行文件的好处
 
@@ -26,25 +26,21 @@
 
 在本文中，我们会介绍打包来宾可执行文件并将它部署到 Service Fabric 的基本步骤。
 
-
 ## 应用程序和服务清单文件的快速概述
 
-在了解部署来宾可执行文件的详细信息之前，了解 Service Fabric 打包和部署模型会十分有用。Service Fabric 打包部署模型主要依赖两个文件：
-
+在部署来宾可执行文件过程中，了解 Service Fabric 打包和部署模型会十分有用。Service Fabric 打包部署模型主要依赖两个 XML 文件：应用程序清单和服务清单。ApplicationManifest.xml 和 ServiceManifest.xml 文件的架构定义随 Service Fabric SDK 和工具一起安装到 *C:\\Program Files\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd*。
 
 * **应用程序清单**
 
   应用程序清单用于描述应用程序。它会列出构成它的服务以及用于定义应如何部署服务（如实例数）的其他参数。
 
-  在 Service Fabric 领域中，应用程序是“可升级单元”。 应用程序可以作为单个单元进行升级，其中的潜在失败（潜在回滚）由平台进行管理。平台可保证升级过程完全成功 — 或者如果失败，平台不会使应用程序处于未知/不稳定状态。
-
+  在 Service Fabric 领域中，应用程序是“可升级单元”。 应用程序可以作为单个单元进行升级，其中的潜在失败（潜在回滚）由平台进行管理。平台可保证升级过程完全成功，或者，如果失败，平台不会使应用程序处于未知/不稳定状态。
 
 * **服务清单**
 
   服务清单描述服务的组件。它包含数据（如服务的名称和类型（这是 Service Fabric 用于管理服务的信息），及其代码、配置和数据组件。服务清单还包含一些可以用于在部署之后配置服务的其他参数。
 
   我们不会介绍服务清单中可用的所有不同参数的详细信息。我们会讨论使来宾可执行文件在 Service Fabric 上运行所需的子集。
-
 
 ## 应用程序包文件结构
 为了将应用程序部署到 Service Fabric，应用程序需要遵循预定义的目录结构。下面是该结构的一个示例。
@@ -54,13 +50,13 @@
 	|-- code
 		|-- existingapp.exe
 	|-- config
-		|--Settings.xml
-    |--data    
-    |-- ServiceManifest.xml
+		|-- Settings.xml
+  |-- data    
+  |-- ServiceManifest.xml
 |-- ApplicationManifest.xml
 ```
 
-根目录包含定义应用程序的 ApplicationManifest.xml 文件。应用程序中包含的每个服务的子目录用于包含服务需要的所有项目 -- ServiceManifest.xml 以及通常以下三个目录：
+根目录包含定义应用程序的 ApplicationManifest.xml 文件。应用程序中包含的每个服务的子目录用于包含服务需要的所有项目 — ServiceManifest.xml 以及通常以下三个目录：
 
 - *Code*。此目录包含服务代码。
 - *Config*。此目录包含一个 Settings.xml 文件（必要时还将包含其他文件），服务可以在运行时访问该文件以检索特定的配置设置。
@@ -70,7 +66,9 @@
 
 ## 打包现有应用的过程
 
-打包来宾可执行文件的过程基于以下步骤进行：
+打包来宾可执行文件时，可以选择使用 Visual Studio 项目模板，或者手动创建应用程序包。使用 Visual Studio 时，新的项目向导将为你创建应用程序包结构和清单文件。有关如何使用 Visual Studio 打包来宾可执行文件的分步指导，请参阅下文。
+
+手动打包来宾可执行文件的过程基于以下步骤进行：
 
 1. 创建包目录结构。
 2. 添加应用程序的代码和配置文件。
@@ -158,7 +156,7 @@ CodePackage 元素指定服务代码的位置（和版本）。
 ```
 SetupEntrypoint 元素用于指定在启动服务代码之前应执行的任何可执行文件或批处理文件。它是可选元素，因此在无需初始化/设置时无需包含在内。每次重新启动服务时，会执行 SetupEntryPoint。
 
-只有一个 SetupEntrypoint，因此如果应用程序的设置/配置需要多个脚本，则设置/配置脚本需要捆绑在单个批处理文件中。与 Entrypoint 元素一样，SetupEntrypoint 可以执行任何类型的文件 — 可执行文件、批处理文件和 PowerShell cmdlet。在上面的示例中，SetupEntrypoint 基于一个批处理文件 LaunchConfig.cmd，该文件位于代码目录的 `scripts` 子目录中（假定 WorkingDirectory 元素设置为 code）。
+只有一个 SetupEntrypoint，因此如果应用程序的设置/配置需要多个脚本，则设置/配置脚本需要捆绑在单个批处理文件中。与 SetupEntryPoint 元素一样，SetupEntrypoint 可以执行任何类型的文件 — 可执行文件、批处理文件和 PowerShell cmdlet。在上面的示例中，SetupEntrypoint 基于一个批处理文件 LaunchConfig.cmd，该文件位于代码目录的 `scripts` 子目录中（假定 WorkingFolder 元素设置为 code）。
 
 ### 入口点
 
@@ -179,7 +177,7 @@ SetupEntrypoint 元素用于指定在启动服务代码之前应执行的任何�
 - `WorkingFolder` 指定要启动的进程的工作目录。你可以指定两个值：
 	- `CodeBase` 指定工作目录将设置为应用程序包中的 code 目录（结构中的 `Code` 目录如下所示）
 	- `CodePackage` 指定要设置为应用程序包的根目录的工作目录 (`MyServicePkg`)。
-- `WorkingDirectory` 用于设置正确的工作目录，以便应用程序或初始化脚本可以使用相对路径。
+- `WorkingFolder` 用于设置正确的工作目录，以便应用程序或初始化脚本可以使用相对路径。
 
 ### 终结点
 
@@ -215,8 +213,7 @@ SetupEntrypoint 元素用于指定在启动服务代码之前应执行的任何�
 ```
 
 ### 设置日志记录
-对于来宾可执行文件，能够查看控制台日志以查明应用程序和配置脚本是否显示了任何错误会非常有用。
-可以使用 `ConsoleRedirection` 元素在 `ServiceManifest.xml` 文件中配置控制台重定向。
+对于来宾可执行文件，能够查看控制台日志以查明应用程序和配置脚本是否显示了任何错误会非常有用。可以使用 `ConsoleRedirection` 元素在 `ServiceManifest.xml` 文件中配置控制台重定向。
 
 ```xml
 <EntryPoint>
@@ -244,10 +241,10 @@ SetupEntrypoint 元素用于指定在启动服务代码之前应执行的任何�
 Connect-ServiceFabricCluster localhost:19000
 
 Write-Host 'Copying application package...'
-Copy-ServiceFabricApplicationPackage -ApplicationPackagePath 'C:\Dev\MultipleApplications' -ImageStoreConnectionString 'file:C:\SfDevCluster\Data\ImageStoreShare' -ApplicationPackagePathInImageStore 'Store\nodeapp'
+Copy-ServiceFabricApplicationPackage -ApplicationPackagePath 'C:\Dev\MultipleApplications' -ImageStoreConnectionString 'file:C:\SfDevCluster\Data\ImageStoreShare' -ApplicationPackagePathInImageStore 'nodeapp'
 
 Write-Host 'Registering application type...'
-Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'Store\nodeapp'
+Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'nodeapp'
 
 New-ServiceFabricApplication -ApplicationName 'fabric:/nodeapp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0
 
@@ -268,22 +265,42 @@ Service Fabric 服务可以采用各种“配置”进行部署。 例如，可�
 
 在 Service Fabric 资源管理器中，确定服务在其中运行的节点。在此示例中，它在节点 1 上运行：
 
-![运行服务的节点](./media/service-fabric-deploy-existing-app/runningapplication.png)
+![运行服务的节点](./media/service-fabric-deploy-existing-app/nodeappinsfx.png)
 
 如果导航到该节点并浏览到应用程序，则会看到基本节点信息（包括在磁盘上的位置）。
 
-![磁盘上的位置](./media/service-fabric-deploy-existing-app/locationondisk.png)
+![磁盘上的位置](./media/service-fabric-deploy-existing-app/locationondisk2.png)
 
 如果使用服务器资源管理器浏览到目录，则可以按如下所示找到工作目录和服务的日志文件夹。
 
 ![日志的位置](./media/service-fabric-deploy-existing-app/loglocation.png)
 
+## 使用 Visual Studio 打包现有应用程序
+
+Visual Studio 提供 Service Fabric 服务模板来帮助你将来宾可执行文件部署到 Service Fabric 群集。需要执行以下过程来完成发布：
+
+>[AZURE.NOTE] 此功能需要 [SDK 版本 2.1.150](https://blogs.msdn.microsoft.com/azureservicefabric/2016/06/13/release-of-service-fabric-sdk-2-1-150-and-runtime-5-1-150/)
+
+1. 选择“文件”->“新建项目”，然后创建新的 Service Fabric 应用程序。
+2. 为“服务模板”选择“来宾可执行文件”。
+3. 单击“浏览”选择包含你的可执行文件的文件夹，然后填充余下的参数以创建新服务。
+  - 可将“代码包行为”设置为将文件夹中的所有内容复制到 Visual Studio 项目，如果可执行文件不会更改，则这样设置会很有用。如果预期可执行文件会更改，并且希望能够动态选择新版本，则可以改为选择文件夹的链接。
+  - *Program*：选择为了启动服务而应该执行的可执行文件。
+  - *Arguments*：指定应传递给可执行文件的参数。它可以是带有实参的形参的列表。
+  - *WorkingFolder*：选择要启动的进程所在的工作目录。你可以指定两个值：
+  	- *CodeBase*：指定工作目录将设置为应用程序包中的 code 目录（结构中的 `Code` 目录如下所示）
+    - *CodePackage*：指定要设置为应用程序包的根目录的工作目录 (`MyServicePkg`)。
+4. 为服务命名，然后单击“确定”。
+5. 如果你的服务需要使用终结点进行通信，现在你可以在 ServiceManifest.xml 文件中添加协议、端口和类型，例如：```<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" Type="Input" />```。
+6. 现在，可以通过在 Visual Studio 中调试解决方案，尝试针对本地群集执行打包和发布操作。准备就绪后，可以将应用程序发布到远程群集，或者将解决方案签入源代码管理。
+
+>[AZURE.NOTE] 在 Visual Studio 中创建应用程序项目时，可以使用链接的文件夹。这将会从项目内部链接到源位置，使你能够在来宾可执行文件的源目标中对它进行更新，并在生成时使这些更新成为应用程序包的一部分。
 
 ## 后续步骤
 在本文中，我们了解了如何打包来宾可执行文件并将它部署到 Service Fabric。作为下一步，可以查看本主题的其他内容。
 
-- [在 GitHub 上打包和部署来宾可执行文件的示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Custom/SimpleApplication)，包括打包工具的预发行版本的链接
+- [在 GitHub 上打包和部署来宾可执行文件的示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/GuestExe/SimpleApplication)，包括打包工具的预发行版本的链接
 - [部署多个来宾可执行文件](/documentation/articles/service-fabric-deploy-multiple-apps)
 - [使用 Visual Studio 创建第一个 Service Fabric 应用程序](/documentation/articles/service-fabric-create-your-first-application-in-visual-studio)
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0627_2016-->

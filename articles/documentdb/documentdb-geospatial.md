@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="使用 Azure DocumentDB 中的地理空间数据 | Microsoft Azure" 
+    pageTitle="使用 Azure DocumentDB 中的地理空间数据 | Azure" 
     description="了解如何使用 Azure DocumentDB 创建、索引和查询空间对象。" 
     services="documentdb" 
     documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags 
     ms.service="documentdb" 
-    ms.date="03/30/2016" 
+    ms.date="05/16/2016" 
     wacn.date=""/>
     
 # 使用 Azure DocumentDB 中的地理空间数据
@@ -177,7 +177,7 @@ DocumentDB 支持以下用于查询地理空间的开放地理空间信息联盟
 
 ST\_WITHIN 可用于检查点是否在多边形内。多边形通常用来表示边界，例如邮政编码、省/自治区边界或自然构成物。再次说明，如果在你的索引策略中包含空间索引，则将通过索引有效地进行“within”查询。
 
-ST\_WITHIN 中的多边形参数只能包含单个环形，也就是说，多边形本身不能包含洞。有关 ST\_WITHIN 查询的多边形中允许的点数目上限，请查看 [DocumentDB 限制](/documentation/articles/documentdb-limits)。
+ST\_WITHIN 中的多边形参数只能包含单个环形，也就是说，多边形本身不能包含洞。
 
 **查询**
 
@@ -198,7 +198,7 @@ ST\_WITHIN 中的多边形参数只能包含单个环形，也就是说，多边
 
 ST\_ISVALID 和 ST\_ISVALIDDETAILED 可用来检查空间对象是否有效。例如，下列查询检查纬度值 (-132.8) 超出范围的点的有效性。ST\_ISVALID 仅返回一个布尔值，ST\_ISVALIDDETAILED 则返回布尔值和字符串，字符串中包含被视为无效的原因。
 
-**查询**
+** 查询 **
 
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 
@@ -342,4 +342,4 @@ DocumentDB .NET SDK 还提供存根方法 `Distance()` 和 `Within()`，供你�
 - 详细了解 [DocumentDB 查询](/documentation/articles/documentdb-sql-query)
 - 详细了解 [DocumentDB 索引策略](/documentation/articles/documentdb-indexing-policies)
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0627_2016-->

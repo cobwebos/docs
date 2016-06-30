@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/08/2016"
+   ms.date="06/14/2016"
    wacn.date=""/>
 
 # 部署应用程序
@@ -26,7 +26,9 @@
 
 上载应用程序包会将其放在一个可由内部 Service Fabric 组件访问的位置。你可以使用 PowerShell 执行上载。在运行本文中的任何 PowerShell 命令之前，请始终先使用 **Connect-ServiceFabricCluster** 连接到 Service Fabric 群集。
 
-假设你有一个名为 MyApplicationType 的文件夹，其中包含必要的应用程序清单、服务清单以及代码/配置/数据包。**Copy-ServiceFabricApplicationPackage** 命令会上载包。例如：
+假设你有一个名为 *MyApplicationType* 的文件夹，其中包含必要的应用程序清单、服务清单以及代码/配置/数据包。**Copy-ServiceFabricApplicationPackage** 命令可将包上载到群集映像存储。Service Fabric SDK PowerShell 模块中包含的 **Get-ImageStoreConnectionStringFromClusterManifest** cmdlet 用于获取映像存储连接字符串。若要导入 SDK 模块，请运行 *Import-Module "$ENV:ProgramFiles\\Microsoft SDKs\\Service Fabric\\Tools\\PSModule\\ServiceFabricSDK\\ServiceFabricSDK.psm1"*。
+
+以下示例将上载包：
 
 ~~~
 PS D:\temp> dir
@@ -84,7 +86,7 @@ PS D:\temp>
 
 ## 创建应用程序
 
-可以使用已通过 **New-ServiceFabricApplication** 命令成功注册的任何应用程序类型版本来实例化应用程序。每个应用程序的名称必须以 fabric: 方案开头，并且对每个应用程序实例是唯一的。如果目标应用程序类型的应用程序清单中定义有任何默认服务，则此时将还创建那些服务。
+可以使用已通过 **New-ServiceFabricApplication** 命令成功注册的任何应用程序类型版本来实例化应用程序。每个应用程序的名称必须以 *fabric:* 方案开头，并且对每个应用程序实例是唯一的。如果目标应用程序类型的应用程序清单中定义有任何默认服务，则此时将还创建那些服务。
 
 ~~~
 PS D:\temp> New-ServiceFabricApplication fabric:/MyApp MyApplicationType AppManifestVersion1
@@ -171,12 +173,6 @@ DefaultParameters      : {}
 PS D:\temp>
 ~~~
 
-<!--
-## Next steps
-
-TODO [Upgrade applications][11]
--->
-
 ## 故障排除
 
 ### Copy-ServiceFabricApplicationPackage 请求 ImageStoreConnectionString
@@ -221,5 +217,4 @@ PS D:\temp>
 [10]: /documentation/articles/service-fabric-application-model
 [11]: /documentation/articles/service-fabric-application-upgrade
  
-
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0627_2016-->

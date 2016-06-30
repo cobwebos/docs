@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="04/08/2016"
+   ms.date="05/20/2016"
    wacn.date=""/>
 
 
@@ -24,13 +24,15 @@
 * [Azure 资源管理器](/documentation/articles/resource-group-overview)
 * [Azure PowerShell](/documentation/articles/powershell-install-configure)
 * [Azure Resource Manager 客户端](https://github.com/projectkudu/ARMClient)
+* [使用 Azure 资源管理器模板创建具有监视和诊断功能的 Windows 虚拟机](/documentation/articles//virtual-machines-windows-extensions-diagnostics-template)
+
 
 ## 可以收集的不同日志源
-1. **Service Fabric 日志：** 由平台发送到标准 ETW 和 EventSource 通道。日志有以下几种类型：
+1. **Service Fabric 日志：**由平台发送到标准 ETW 和 EventSource 通道。日志有以下几种类型：
   - 操作事件：Service Fabric 平台执行的操作的日志。示例包括创建应用程序和服务、节点状态更改和升级信息。
   - [执行组件编程模型事件](/documentation/articles/service-fabric-reliable-actors-diagnostics)
   - [Reliable Services 编程模型事件](/documentation/articles/service-fabric-reliable-services-diagnostics)
-2. **应用程序事件：** 从服务代码发出，使用 Visual Studio 模板提供的 EventSource 帮助器类写出的事件。有关如何从应用程序写入日志的详细信息，请参阅[这篇有关监视和诊断本地计算机安装中的服务的文章](/documentation/articles/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally)。
+2. **应用程序事件：**从服务代码发出，使用 Visual Studio 模板提供的 EventSource 帮助器类写出的事件。有关如何从应用程序写入日志的详细信息，请参阅[这篇有关监视和诊断本地计算机安装中的服务的文章](/documentation/articles/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally)。
 
 
 ## 部署诊断扩展
@@ -41,7 +43,9 @@
 
 ![门户中有关创建群集的 Azure 诊断设置](./media/service-fabric-diagnostics-how-to-setup-wad/portal-cluster-creation-diagnostics-setting.png)
 
-Azure 支持团队**需要**支持日志才能涉及所创建的任何支持请求。这些日志实时收集，并存储在创建于资源组中的其中一个存储帐户。诊断设置将配置应用程序级别事件，包括[执行组件](/documentation/articles/service-fabric-reliable-actors-diagnostics)事件、[可靠服务](/documentation/articles/service-fabric-reliable-services-diagnostics)事件和某些系统级别 Service Fabric 事件设置为存储到 Azure 存储空间。[弹性搜索](/documentation/articles/service-fabric-diagnostic-how-to-use-elasticsearch)等产品或自己的进程可以从存储帐户中选择事件。目前没有任何方法可以筛选或清理已发送到表的事件。如果未实现从表删除事件的进程，表将继续增长。使用门户创建群集时，建议在部署完成后才导出模板。可以在门户中使用以下控件导出模板
+Azure 支持团队**需要**支持日志才能涉及所创建的任何支持请求。这些日志实时收集，并存储在创建于资源组中的其中一个存储帐户。诊断设置将配置应用程序级别事件，包括[执行组件](/documentation/articles/service-fabric-reliable-actors-diagnostics)事件、[可靠服务](/documentation/articles/service-fabric-reliable-services-diagnostics)事件和某些系统级别 Service Fabric 事件设置为存储到 Azure 存储空间。[弹性搜索](/documentation/articles/service-fabric-diagnostic-how-to-use-elasticsearch)等产品或自己的进程可以从存储帐户中选择事件。目前没有任何方法可以筛选或清理已发送到表的事件。如果未实现从表删除事件的进程，表将继续增长。
+
+使用门户创建群集时，强烈建议先下载模板，然后单击“确定”以创建群集。有关详细信息，请参阅 [Setup a Service Fabric cluster by using an Azure Resource Manager template](/documentation/articles/service-fabric-cluster-creation-via-arm)（使用 Azure Resource Manager 模板设置 Service Fabric 群集）。这样，便可以获得一个可用的 ARM 模板来创建群集。稍后需要使用此模板来进行更改，因为并非所有更改都可以使用门户来完成。可以使用以下步骤从门户导出模板，但是，这些模板可能更难以使用，因为它们可能包含许多 null 值，而这些位置本应有值，否则会缺少所有必需的信息。
 
 1. 打开资源组
 2. 选择“设置”可显示“设置”面板
@@ -50,20 +54,26 @@ Azure 支持团队**需要**支持日志才能涉及所创建的任何支持请�
 5. 选择“导出模板”可显示“模板”面板
 6. 选择“保存到文件”可导出包含模板、参数和 PowerShell 文件的 .zip 文件。
 
-导出文件后，需要进行修改。编辑 **parameters.json** 文件并删除 **adminPassword** 元素。这样，在运行部署脚本时会出现密码提示。
+导出文件后，需要进行修改。编辑 **parameters.json** 文件并删除 **adminPassword** 元素。这样，在运行部署脚本时会出现密码提示。运行部署脚本时，可能需要修复 null 参数值。使用下载的模板更新配置
+
+1. 将内容解压缩到本地计算机上的某个文件夹
+2. 修改内容以反映新配置
+3. 启动 PowerShell 并切换到内容解压缩到的文件夹
+4. 运行 **deploy.ps1** 并填入 subscriptionId、资源组名称（使用相同的名称更新配置）和唯一的部署名称
+
 
 ### 使用 Azure Resource Manager 在创建群集过程中部署诊断扩展
 若要使用 Resource Manager 创建群集，需要在创建群集之前，将诊断配置 JSON 添加到整个 Resource Manager 模板。我们将在 Resource Manager 模板示例中提供包含五个 VM 的群集 Resource Manager 模板，并在演示 Resource Manager 模板示例的过程中添加诊断配置。你可以在 Azure 示例库中的以下位置找到该示例：[包含五节点群集的诊断 Resource Manager 模板示例](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype-wad)。若要查看 Resource Manager 模板中的诊断设置，请打开 **azuredeploy.json** 文件并搜索 **IaaSDiagnostics**。若要使用此模板创建群集，只要按上述链接提供的“部署到 Azure”按钮即可。
 
-或者，也可以下载 Resource Manager 示例，进行更改，然后在 Azure PowerShell 窗口中输入 `New-AzureResourceGroupDeployment` 命令，使用修改后的模板创建群集。请参阅以下信息获取需要传入命令的参数。有关如何使用 PowerShell 部署资源组的详细信息，请参阅 [Deploy a Resource Group with Azure Resource Manager template（使用 Azure Resource Manager 模板部署资源组）](/documentation/articles/resource-group-template-deploy) 一文
+或者，也可以下载 Resource Manager 示例，进行更改，然后在 Azure PowerShell 窗口中输入 `New-AzureRmResourceGroupDeployment` 命令，使用修改后的模板创建群集。请参阅以下信息获取需要传入命令的参数。有关如何使用 PowerShell 部署资源组的详细信息，请参阅 [Deploy a Resource Group with Azure Resource Manager template](/documentation/articles/resource-group-template-deploy)（使用 Azure Resource Manager 模板部署资源组）一文
 
 ```powershell
 
-New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $deploymentName -TemplateFile $pathToARMConfigJsonFile -TemplateParameterFile $pathToParameterFile –Verbose
+New-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $deploymentName -TemplateFile $pathToARMConfigJsonFile -TemplateParameterFile $pathToParameterFile –Verbose
 ```
 
 ### 将诊断扩展部署到现有群集
-如果现有的群集上未部署诊断，可以使用以下步骤来添加。修改用于创建现有群集的 ARM 模板或从门户下载模板，如上所述。通过运行以下任务来修改 **template.json** 文件：
+如果现有的群集上未部署诊断或者你要修改现有配置，可以使用以下步骤来添加或更新配置。修改用于创建现有群集的 ARM 模板或从门户下载模板，如上所述。通过运行以下任务来修改 **template.json** 文件：
 
 通过将存储资源添加到 resources 节将其添加到模板。
 
@@ -84,7 +94,7 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
 },
 ```
 
- 接下来，将参数节添加到存储帐户定义之后、“supportLogStorageAccountName”与“vmNodeType0Name”之间。将占位符文本 storage account name goes here 替换为所需存储帐户的名称。
+ 接下来，将参数节添加到存储帐户定义之后、“supportLogStorageAccountName”与“vmNodeType0Name”之间。将占位符文本 *storage account name goes here* 替换为所需存储帐户的名称。
 
 ##### 更新 parameters 节
 ```json
@@ -107,7 +117,7 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
       }
     },
 ```
-然后通过在“extensions”数组中添进行下内容以更新 **template.json** 的 VirtualMachineProfile 节。根据插入的位置，请务必在开头或末尾添加逗点。
+然后通过在“extensions”数组中添进行下内容以更新 **template.json** 的 *VirtualMachineProfile* 节。根据插入的位置，请务必在开头或末尾添加逗点。
 
 ##### 添加到 VirtualMachineProfile 的 extensions 数组
 ```json
@@ -165,14 +175,18 @@ New-AzureResourceGroupDeployment -ResourceGroupName $resourceGroupName -Name $de
 }
 ```
 
-如上所述修改 **template.json** 文件之后，重新发布 ARM 模板。如果已导出模板，则运行 **deploy.ps1** 文件会重新发布模板。部署后，请确保 ProvisioningState 为 Succeeded。
+如上所述修改 **template.json** 文件之后，重新发布 ARM 模板。如果已导出模板，则运行 **deploy.ps1** 文件会重新发布模板。部署后，请确保 *ProvisioningState* 为 *Succeeded*。
 
 
 ## 更新诊断以从新的 EventSource 通道收集并上载日志
-若要更新诊断从新的 EventSource 通道（表示将要部署的新应用程序）收集日志，只需要执行[上述部分](#deploywadarm)中相同的步骤即可，其中描述了现有群集的诊断设置。在使用 New-AzureResourceGroupDeployment PowerShell 命令应用配置更新之前，需要更新 **template.json** 中的 EtwEventSourceProviderConfiguration 节，以添加新的 EventSources 条目。
+若要更新诊断从新的 EventSource 通道（表示将要部署的新应用程序）收集日志，只需要执行[上述部分](#deploywadarm)中相同的步骤即可，其中描述了现有群集的诊断设置。在使用 *New-AzureRmResourceGroupDeployment* PowerShell 命令应用配置更新之前，需要更新 **template.json** 中的 *EtwEventSourceProviderConfiguration* 节，以添加新的 EventSources 条目。事件源的名称定义为 Visual Studio 生成的 **ServiceEventSource.cs** 文件中的代码的一部分。
 
 
 ## 后续步骤
 查看针对 [Reliable Actors](/documentation/articles/service-fabric-reliable-actors-diagnostics) 和 [Reliable Services](/documentation/articles/service-fabric-reliable-services-diagnostics) 发出的诊断事件，以更详细地了解排查问题时应该调查哪些事件。
 
-<!---HONumber=Mooncake_0425_2016-->
+
+## 相关文章
+* [了解如何使用诊断扩展收集性能计数器或日志](/documentation/articles/virtual-machines-windows-extensions-diagnostics-template)
+
+<!---HONumber=Mooncake_0627_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DocumentDB 的请求单位 | Microsoft Azure" 
+	pageTitle="DocumentDB 中的请求单位 | Azure" 
 	description="了解如何理解、指定和估计 DocumentDB 中的请求单元需求。" 
 	services="documentdb" 
 	authors="stephbaron" 
@@ -9,11 +9,15 @@
 
 <tags 
 	ms.service="documentdb"
-	ms.date="03/30/2016" 
+	ms.date="05/31/2016" 
 	wacn.date=""/>
 
 #DocumentDB 中的请求单位
+现已推出：DocumentDB [请求单位计算器](https://www.documentdb.com/capacityplanner)。详细了解如何[估计吞吐量需求](documentdb-request-units.md#estimating-throughput-needs)。
 
+![吞吐量计算器][5]
+
+##介绍
 本文概述了 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 中的请求单位。
 
 阅读本文之后，你将能够回答以下问题：
@@ -40,8 +44,8 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 - **文档大小**。随着文档大小的增加，用来读取或写入数据的单位数也随之增加。
 - **文档属性计数**。假设默认为所有属性创建索引，用于写入文档的单位数将随着属性计数的增加而增加。
 - **数据一致性**。当使用“强”或“有限过时”的数据一致性级别时，将占用更多单位数来读取文档。
-- **已编制索引的属性**。每个集合的索引策略都可确定默认情况下要进行索引的属性类别。通过限制已创建索引的属性数目或通过启用延迟索引编制，可以减少请求单位消耗。
-- **文档索引编制**。默认情况下，将自动为每个文档创建索引，如果你选择不为其中一些文档创建索引，则将占用更少的请求单位。
+- **已创建索引的属性**。每个集合的索引策略都可确定默认情况下要进行索引的属性类别。通过限制已创建索引的属性数目或通过启用延迟索引编制，可以减少请求单位消耗。
+- **文档索引**。默认情况下，将自动为每个文档创建索引，如果你选择不为其中一些文档创建索引，则将占用更少的请求单位。
 - **查询模式**。查询的复杂性会影响操作使用的请求单位数量。谓词数、谓词性质、投影、UDF 数和源数据集的大小都会影响查询操作的成本。
 - **脚本使用情况**。正如查询一样，存储过程和触发器也是根据所执行的操作的复杂性来使用请求单位的。在开发应用程序时，检查请求费用标头，以更好地了解每个操作消耗请求单位容量的方式。
 
@@ -50,6 +54,30 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 
 > [AZURE.NOTE] 用于 1 KB 文档的 1 个请求单位基线通过自链接或文档的ID 与简单的 GET 对应。
 
+###使用请求单位计算器
+若要帮助客户微调其吞吐量估算，可以使用一个基于 Web 的[请求单位计算器](https://www.documentdb.com/capacityplanner)来帮助估计典型操作的请求单位要求，包括：
+
+- 文档创建（写入）
+- 文档读取
+- 文档删除
+
+该工具易于使用：
+
+1. 上载一个或多个有代表性的 JSON 文档。
+
+	![将文档上载到请求单位计算器][2]
+
+2. 输入所需的文档创建、读取和删除操作数目（以秒为单位）。
+
+	![在请求单位计算器中输入吞吐量要求][3]
+
+3. 单击“计算”，然后查看结果。
+
+	![请求单位计算器结果][4]
+
+>[AZURE.NOTE]如果文档类型与已编制索引之属性的大小与数目截然不同，请将每个典型文档的类型示例上载到该工具，然后计算结果。
+
+###使用 DocumentDB 请求费用响应标头
 每个来自 DocumentDB 服务的响应都包含一个包含用于请求的请求单位的自定义标头 (x-ms-request-charge)。此标头也可通过 DocumentDB SDK 访问。在 .NET SDK 中，RequestCharge 是 ResourceResponse 对象的属性。对于查询，在 Azure 门户中的 DocumentDB 查询资源管理器提供了用于执行的查询的请求费用信息。
 
 ![检查查询资源管理器中的 RU 费用][1]
@@ -174,6 +202,13 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 
 若要了解有关 DocumentDB 的详细信息，请参阅 Azure DocumentDB [文档](https://azure.microsoft.com/documentation/services/documentdb/)。
 
-[1]: ./media/documentdb-request-units/queryexplorer.png
+若要开始使用 DocumentDB 进行规模和性能测试，请参阅 [Performance and Scale Testing with Azure DocumentDB（使用 Azure DocumentDB 进行性能和规模测试）](documentdb-performance-testing.md)。
 
-<!---HONumber=Mooncake_0425_2016-->
+
+[1]: ./media/documentdb-request-units/queryexplorer.png
+[2]: ./media/documentdb-request-units/RUEstimatorUpload.png
+[3]: ./media/documentdb-request-units/RUEstimatorDocuments.png
+[4]: ./media/documentdb-request-units/RUEstimatorResults.png
+[5]: ./media/documentdb-request-units/RUCalculator2.png
+
+<!---HONumber=Mooncake_0627_2016-->

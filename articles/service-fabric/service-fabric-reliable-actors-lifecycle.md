@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/25/2016"
+   ms.date="06/13/2016"
    wacn.date=""/>
 
 
@@ -121,8 +121,8 @@ await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
  - [执行组件 API 参考文档](https://msdn.microsoft.com/zh-cn/library/azure/dn971626.aspx)
  - [代码示例](https://github.com/Azure/servicefabric-samples)
 
- 
+
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0627_2016-->

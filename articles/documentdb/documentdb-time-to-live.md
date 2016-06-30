@@ -146,15 +146,15 @@ TTL 应用于整个文档。如果只是想要使文档的一部分过期，则�
 
 **TTL 功能是否具有特定的索引编制要求？**
 
-是的。该集合必须将[索引策略设置](documentdb-indexing-policies.md)为“迟缓”或或“一致”。尝试在索引设置为“无”的集合上设置 DefaultTTL 将导致错误，尝试关闭已设置 DefaultTTL 的集合上的索引也是如此。
+是的。该集合必须将[索引策略设置](/documentation/articles/documentdb-indexing-policies)为“迟缓”或或“一致”。尝试在索引设置为“无”的集合上设置 DefaultTTL 将导致错误，尝试关闭已设置 DefaultTTL 的集合上的索引也是如此。
 
 
 ## 后续步骤
 
-若要了解有关 Azure DocumentDB 的详细信息，请参阅该服务的[文档](https://azure.microsoft.com/documentation/services/documentdb/)页。
+若要了解有关 Azure DocumentDB 的详细信息，请参阅该服务的[文档](/documentation/services/documentdb/)页。
 
 
 
 
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

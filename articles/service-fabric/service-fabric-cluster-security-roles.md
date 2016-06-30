@@ -10,7 +10,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="05/13/2016"
+   ms.date="05/18/2016"
    wacn.date=""/>
 
 
@@ -108,4 +108,4 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 
 [创建 Service Fabric 群集](/documentation/articles/service-fabric-cluster-creation-via-portal)
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

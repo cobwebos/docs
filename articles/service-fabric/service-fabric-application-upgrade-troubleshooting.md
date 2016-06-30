@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="05/13/2016"
+   ms.date="05/18/2016"
    wacn.date=""/>
 
 # 应用程序升级故障排除
@@ -225,4 +225,4 @@ Service Fabric 将所有百分比转换为实际实体（如副本、分区和�
 了解如何使用[数据序列化](/documentation/articles/service-fabric-application-upgrade-data-serialization)，使应用程序在升级后保持兼容。参考[高级主题](/documentation/articles/service-fabric-application-upgrade-advanced)，了解如何在升级应用程序时使用高级功能。参考[对应用程序升级进行故障排除](/documentation/articles/service-fabric-application-upgrade-troubleshooting)中的步骤来解决应用程序升级时的常见问题。
  
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

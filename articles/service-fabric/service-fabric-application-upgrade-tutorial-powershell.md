@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="05/13/2016"
+   ms.date="06/13/2016"
    wacn.date=""/>
 
 
@@ -25,9 +25,8 @@
 
 ## 步骤 1：构建和部署视觉对象示例
 
-若要执行这些步骤，请从 GitHub 下载应用程序，然后根据示例的自述文件所述，将 **webgl-utils.js** 和 **gl-matrix-min.js** 文件添加到项目中。否则，应用程序将无法正常运行。
 
-将这些文件添加到项目之后，在应用程序项目 **VisualObjectsApplication** 上单击右键，然后从 Service Fabric 菜单项中选择“发布”命令以构建和发布应用程序，如以下所示。有关详细信息，请参阅 [Service Fabric 应用程序升级教程](/documentation/articles/service-fabric-application-upgrade-tutorial)。或者，也可以使用 PowerShell 来部署应用程序。
+在应用程序项目 **VisualObjectsApplication** 上单击右键，然后从 Service Fabric 菜单项中选择“发布”命令以构建和发布应用程序，如以下所示。有关详细信息，请参阅 [Service Fabric 应用程序升级教程](/documentation/articles/service-fabric-application-upgrade-tutorial)。或者，也可以使用 PowerShell 来部署应用程序。
 
 > [AZURE.NOTE] 要在 PowerShell 中使用任何 Service Fabric 命令，必须先使用 `Connect-ServiceFabricCluster` cmdlet 连接到群集。同样，假设已在本地计算机上设置了群集。请参阅[设置 Service Fabric 部署环境](/documentation/articles/service-fabric-get-started)上的文章。
 
@@ -66,7 +65,7 @@
 
 ## 步骤 3：确定运行状况策略和升级参数
 
-请熟悉[应用程序升级参数](/documentation/articles/service-fabric-application-upgrade-parameters)和[升级过程](/documentation/articles/service-fabric-application-upgrade)，以充分了解所应用的各种升级参数、超时和运行状况标准。对于本演练，我们将服务运行状况评估标准保留为默认值（即推荐值），这意味着在升级后所有服务和实例均应为_运行状况正常_。
+请熟悉[应用程序升级参数](/documentation/articles/service-fabric-application-upgrade-parameters)和[升级过程](/documentation/articles/service-fabric-application-upgrade)，以充分了解所应用的各种升级参数、超时和运行状况标准。对于本演练，我们将服务运行状况评估标准保留为默认值（即推荐值），这意味着在升级后所有服务和实例均应为运行状况正常。
 
 但是，我们将 *HealthCheckStableDuration* 增加到 60 秒（这样该服务在进行下一个更新域的升级之前将至少保持 20 秒的运行状况正常）。我们还将 *UpgradeDomainTimeout* 设置为 1200 秒，将 *UpgradeTimeout* 设置为 3000 秒。
 
@@ -113,7 +112,7 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 请注意，应用程序名称与 *ApplicationManifest.xml* 文件中所述的相同。Service Fabric 使用此名称来确定升级的应用程序。如果设置的超时太短，则可能遇到一条说明该问题的失败消息。请参阅故障排除部分，或增加超时值。
 
-现在，应用程序升级继续进行，你可以使用 Service Fabric 资源管理器或以下 PowerShell 命令对其进行监视：**Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects**。
+现在，应用程序升级继续进行，你可以使用 Service Fabric Explorer 或以下 PowerShell 命令对其进行监视：**Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects**。
 
 几分钟后，使用上述 PowerShell 命令获得的状态应说明所有更新域均已升级（已完成）。并且你会发现浏览器窗口中的视觉对象现在已开始旋转！
 
@@ -126,10 +125,10 @@ Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/VisualObjects -Ap
 
 使用[升级参数](/documentation/articles/service-fabric-application-upgrade-parameters)来控制应用程序的升级方式。
 
-了解如何使用[数据序列化](/documentation/articles/service-fabric-application-upgrade-data-serialization)，使应用程序在升级后保持兼容。
+了解如何使用[数据序列化](/documentation/articles/service-fabric-application-upgrade-data-serialization)，使应用程序在升级后保持兼容
 
 参考[高级主题](/documentation/articles/service-fabric-application-upgrade-advanced)，了解如何在升级应用程序时使用高级功能。
 
-参考[对应用程序升级进行故障排除](/documentation/articles/service-fabric-application-upgrade-troubleshooting)中的步骤来解决应用程序升级时的常见问题。
+参考 [Troubleshooting Application Upgrades](/documentation/articles/service-fabric-application-upgrade-troubleshooting)（对应用程序升级进行故障排除）中的步骤来解决应用程序升级时的常见问题。
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

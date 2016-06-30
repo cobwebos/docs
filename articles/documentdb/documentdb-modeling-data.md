@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure DocumentDB 中的数据建模 |Microsoft Azure" 
+	pageTitle="Azure DocumentDB 中的数据建模 | Azure" 
 	description="了解 DocumentDB，一个 NoSQL 文档数据库的数据建模。" 
 	keywords="数据建模"
 	services="documentdb" 
@@ -275,7 +275,7 @@
 在上面的示例中，我们删除了出版商文档中的无限制集合，只在每个书籍文档中引用出版商。
 
 ###如何对多对多关系建模？
-在关系型数据库中，多对多关系通常使用联接表来建模，这种方法只是将其他表中的记录联接在一起。
+在关系型数据库中，*多对多*关系通常使用联接表来建模，这种方法只是将其他表中的记录联接在一起。
 
 ![联接表](./media/documentdb-modeling-data/join-table.png)
 
@@ -389,4 +389,4 @@
 最后，有关多租户应用程序的数据建模和分片指导，请查阅[使用 Azure DocumentDB 扩展多租户应用程序](http://blogs.msdn.com/b/documentdb/archive/2014/12/03/scaling-a-multi-tenant-application-with-azure-documentdb.aspx)。
  
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

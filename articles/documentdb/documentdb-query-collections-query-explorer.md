@@ -1,5 +1,5 @@
 <properties
-	pageTitle="DocumentDB 查询资源管理器：一个 SQL 查询编辑器 | Microsoft Azure"
+	pageTitle="DocumentDB 查询资源管理器：一个 SQL 查询编辑器 | Azure"
 	description="了解 DocumentDB 查询资源管理器，它是 Azure 门户中的一个编写 SQL 查询，并针对 NoSQL DocumentDB 集合运行这些查询的 SQL 查询编辑器。"
 	keywords="编写 SQL 查询, SQL 查询编辑器"
 	services="documentdb"
@@ -10,12 +10,12 @@
 
 <tags
 	ms.service="documentdb"
-	ms.date="02/23/2016"
+	ms.date="05/24/2016"
 	wacn.date=""/>
 
 # 使用查询资源管理器对 DocumentDB 编写、编辑和运行 SQL 查询 
 
-本文概述了 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 查询资源管理器，该资源管理器是一个 Azure 门户工具，允许你针对 [DocumentDB 集合](documentdb-create-collection)编写、编辑和运行 SQL 查询。
+本文概述了 [Microsoft Azure DocumentDB](/services/documentdb/) 查询资源管理器，该资源管理器是一个 Azure 门户工具，允许你针对 [DocumentDB 集合](documentdb-create-collection)编写、编辑和运行 SQL 查询。
 
 1. 在 Azure 门户的跳转栏中，单击“DocumentDB 帐户”。如果“DocumentDB 帐户”不可见，请单击“浏览”，再单击“DocumentDB 帐户”。
 
@@ -76,4 +76,4 @@ Azure 门户中的查询资源管理器只是一种对 DocumentDB 运行 SQL 查
 有关查询资源管理器中支持的 DocumentDB SQL 语法的详细信息，请参阅 [SQL 查询和 SQL 语法](/documentation/articles/documentdb-sql-query)一文或打印 [SQL 查询备忘单](/documentation/articles/documentdb-sql-query-cheat-sheet)。
 也许你还可以尝试使用[查询板块](https://www.documentdb.com/sql/demo)，使用其中的数据集示例联机测试查询。
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0627_2016-->

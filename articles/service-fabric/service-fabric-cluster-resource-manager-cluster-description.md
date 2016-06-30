@@ -9,11 +9,11 @@
 
 <tags
    ms.service="Service-Fabric"
-   ms.date="03/10/2016"
+   ms.date="05/20/2016"
    wacn.date=""/>
 
 # 描述 Service Fabric 群集
-Service Fabric 群集资源管理器提供多种机制用于描述群集。在运行时，资源管理器使用此信息来确保群集中运行的服务的高可用性，同时确保适当使用群集中的资源。
+Service Fabric 群集资源管理器提供多种机制用于描述群集。在运行时，Resource Manager 使用此信息来确保群集中运行的服务的高可用性，同时确保适当使用群集中的资源。
 
 ## 关键概念
 描述群集的群集资源管理器功能包括：
@@ -26,8 +26,7 @@ Service Fabric 群集资源管理器提供多种机制用于描述群集。在�
 ## 容错域
 容错域是协调故障的任何区域。单一计算机就是容错域（它本身可能出于多种不同的原因而停机，包括电源故障、驱动器故障、NIC 固件错误，等等）。连接到同一以太网交换机的许多计算机位于同一个容错域中，连接到单一电源的计算机也是如此。
 
-如果已设置自己的群集，则需要考虑故障的所有不同区域，以确保容错域已正确设置，使 Service Fabric 知道可以安全放置服务的位置。所谓的“安全”实际上是指智能 – 我们不想要将服务放置在造成服务停机的容错域中。在 Azure 环境中，我们利用 Azure 结构控制器/资源管理器提供的容错域信息来代表你正确设置群集中的节点。
-在下图（图 7）中，我们为所有实体着色以便使容错域成为简单的示例，并列出生成的所有不同容错域。此示例列出了数据中心 (DC)、机架 (R) 和刀片服务器 (B)。可以想象，如果每个刀片服务器包含多个虚拟机，则容错域层次结构上可能有另一个层。
+如果已设置自己的群集，则需要考虑故障的所有不同区域，以确保容错域已正确设置，使 Service Fabric 知道可以安全放置服务的位置。所谓的“安全”实际上是指智能 – 我们不想要将服务放置在造成服务停机的容错域中。在 Azure 环境中，我们利用 Azure 结构控制器/资源管理器提供的容错域信息来代表你正确设置群集中的节点。在下图（图 7）中，我们为所有实体着色以便使容错域成为简单的示例，并列出生成的所有不同容错域。此示例列出了数据中心 (DC)、机架 (R) 和刀片服务器 (B)。可以想象，如果每个刀片服务器包含多个虚拟机，则容错域层次结构上可能有另一个层。
 
 ![通过故障域组织的节点][Image1]
 
@@ -105,8 +104,7 @@ Service Fabric 还定义了一些默认属性，无需用户进行定义，系�
 
 ![放置约束和节点属性][Image6]
 
-假设为给定节点类型定义了以下节点属性：
-ClusterManifest.xml
+假设为给定节点类型定义了以下节点属性：ClusterManifest.xml
 
 ```xml
     <NodeType Name="NodeType01">
@@ -156,6 +154,8 @@ Update-ServiceFabricService -Stateful -ServiceName $serviceName -PlacementConstr
 
 放置约束（以及我们即将讨论的许多其他属性）是针对每个不同的服务实例指定的。更新始终会取代（覆盖）以前指定的值。
 
+此外，值得注意的是，节点上的属性目前是通过群集定义来定义的，因此在不升级群集的情况下无法更新。
+
 ## 容量
 任何协调器的最重要作业之一是帮助管理群集中的资源消耗。如果你想要有效运行服务，最不想遇到的情况是许多节点是热的（导致资源争用和性能不佳），而其他节点是冷的（浪费资源）。但是，让我们试着想想比平衡（稍后将会讲解）还要简单的事情 – 只要确保节点不在第一时间用完资源，情况会怎样？
 
@@ -201,22 +201,23 @@ ClusterManifest.xml
 
 此外，服务的负载也会动态变化。在此情况下，当前放置副本或实例的位置可能失效，因为该节点上所有副本和实例的合并使用量超出了该节点的容量。我们稍后将更详细讨论负载可以动态更改的方案，但是只要还有容量，就能够以相同方式处理 - Service Fabric 资源管理将自动启动，并通过将低于容量的节点上的一个或多个副本或实例移到其他节点，来恢复该节点。执行此操作时，资源管理器会尝试将所有移动的成本降到最低（我们稍后再回头讨论“成本”的概念）。
 
-##群集容量
+## 群集容量
 那么，我们要如何防止整体群集太满？ 使用动态负载，实际上我们并没有太多可以执行的操作（因为服务有自己的负载高峰，独立于资源管理器所执行的操作 – 今天群集具有许多空余空间，但是明天当你成名之后空间就不足），但是有些控件可以防止基本错误。我们可做的第一件事是防止创建导致群集空间变满的新工作负荷。
 
 假设你要创建一个简单的无状态服务，并且它具有某些关联的负载（比默认值还多且动态负载稍后才报告）。对于此服务，让我们假设它考虑某些资源（例如磁盘空间），默认情况下针对服务的每个实例使用 5 个单位的磁盘空间。你需要创建服务的 3 个实例。很好！ 这意味着我们需要群集中有 15 个单位的磁盘空间才能创建这些服务实例。Service Fabric 将持续计算整体容量和每个指标的消耗量，因此我们可以轻松做出决定并且在空间不足时拒绝创建服务调用。
 
 请注意，由于要求仅是 15 个可用单位，此空间可以使用不同的方式分配；例如，可能是在 15 个不同节点上各一个剩余单位，或是在 5 个不同节点上各三个剩余单位，等等。如果三个不同节点上没有足够的容量，Service Fabric 将重新组织已在群集中的服务，以便在三个必要的节点上腾出空间。此类重新排列几乎始终可行，除非整个群集几乎已满。
 
+## 缓冲容量
 我们为了帮助用户管理整体群集容量所做的另一件事是，针对每个节点的指定容量添加了一些保留缓冲区。此设置是可选的，但可以让用户保留整体节点容量的某些部分，让它只用于在升级和失败期间放置服务 - 应对群集容量降低的情况。目前缓冲区是通过 ClusterManifest 针对所有节点全局指定的。针对保留容量选择的值是服务更受约束的资源的函数，以及在群集中具有的容错和升级域的数目。通常较多的容错和升级域表示可以选择较少数目的缓冲处理容量，因为预期在升级和失败期间有较少量的群集无法使用。请注意，指定缓冲区百分比只有在同时指定了指标的节点容量时才有意义。
 
 ClusterManifest.xml
 
 ```xml
-        <Section Name=" NodeBufferPercentage">
-            <Parameter Name="DiskSpace" Value="10" />
-            <Parameter Name="Memory" Value="15" />
-            <Parameter Name="SomeOtherMetric" Value="20" />
+        <Section Name="NodeBufferPercentage">
+            <Parameter Name="DiskSpace" Value="0.10" />
+            <Parameter Name="Memory" Value="0.15" />
+            <Parameter Name="SomeOtherMetric" Value="0.20" />
         </Section>
 ```
 创建调用在群集耗尽缓冲处理容量时导致新的服务失败，确保群集保留足够的备用额外负荷，使升级和失败不会造成节点实际超过容量。资源管理器通过 PowerShell 和查询 API 来公开许多此类信息，让你看到缓冲容量设置、总容量及每个给定指标的当前消耗量。下面提供了该输出的示例：
@@ -248,7 +249,7 @@ LoadMetricInformation     :
 ```
 
 ## 后续步骤
-- 有关群集资源管理器中的体系结构和信息流的信息，请查看[此文](/documentation/articles/service-fabric-cluster-resource-manager-architecture)。
+- 有关群集资源管理器中的体系结构和信息流的信息，请查看[此文](/documentation/articles/service-fabric-cluster-resource-manager-architecture)
 - 定义重整指标是合并（而不是分散）节点上负载的一种方式。若要了解如何配置重整，请参阅[此文](/documentation/articles/service-fabric-cluster-resource-manager-defragmentation-metrics)
 - [获取有关 Service Fabric 群集资源管理器的简介](/documentation/articles/service-fabric-cluster-resource-manager-introduction)以帮助自己入门
 - 若要了解群集资源管理器如何管理和平衡群集中的负载，请查看关于[平衡负载](/documentation/articles/service-fabric-cluster-resource-manager-balancing)的文章
@@ -261,4 +262,4 @@ LoadMetricInformation     :
 [Image6]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-placement-constraints-node-properties.png
 [Image7]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-nodes-and-capacity.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0627_2016-->

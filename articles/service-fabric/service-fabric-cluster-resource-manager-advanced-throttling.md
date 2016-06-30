@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric 群集资源管理器简介 | Azure"
-   description="介绍 Service Fabric 群集资源管理器。"
+   pageTitle="Service Fabric 群集资源管理器中的限制 | Azure"
+   description="了解如何配置 Service Fabric 群集资源管理器提供的限制。"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="Service-Fabric"
-   ms.date="03/10/2016"
+   ms.date="05/20/2016"
    wacn.date=""/>
 
 
@@ -39,4 +39,4 @@
 - 若要了解群集资源管理器如何管理和平衡群集中的负载，请查看关于[平衡负载](/documentation/articles/service-fabric-cluster-resource-manager-balancing)的文章
 - 群集资源管理器提供许多用于描述群集的选项。若要详细了解这些选项，请查看有关这篇[描述 Service Fabric 群集](/documentation/articles/service-fabric-cluster-resource-manager-cluster-description)的文章
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0627_2016-->

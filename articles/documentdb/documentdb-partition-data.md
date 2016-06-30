@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="04/10/2016" 
+	ms.date="05/16/2016" 
 	wacn.date=""/> 
 
 # Azure DocumentDB 中的分区和缩放
@@ -20,6 +20,8 @@
 - Azure DocumentDB 中的分区原理是什么？
 - 如何配置 DocumentDB 中的分区
 - 什么是分区键，以及如何为应用程序选取适当的分区键？
+
+若要开始处理代码，请从 [DocumentDB 性能测试驱动程序示例](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark)下载项目。
 
 ## DocumentDB 中的分区
 
@@ -70,7 +72,7 @@ DocumentDB 旨在提供可预测的性能。在创建集合时，你希望根据
 
 DocumentDB 存储文档时，它将基于分区键值在分区间均匀地分布它们。吞吐量也均匀分布在可用分区中，即每个分区的吞吐量 =（每个集合的总吞吐量）/（分区的数目）。
 
-> [AZURE.TIP] 为了实现集合的全部吞吐量，必须选择分区键，可用于在多个不同的分区键之间均匀分布请求。
+>[AZURE.NOTE] 为了实现集合的全部吞吐量，必须选择分区键，可用于在多个不同的分区键之间均匀分布请求。
 
 ## 单个分区和已分区的集合
 DocumentDB 支持创建单个分区和已分区的集合。
@@ -139,7 +141,7 @@ Azure DocumentDB 增加了对 [REST API 版本 2015-12-16](https://msdn.microsof
 
 下面的示例演示创建集合的 .NET 代码片段，以存储吞吐量为 20,000 个请求单位/秒的设备遥测数据。SDK 将设置 OfferThroughput 值（其反过来将设置 REST API 中的 `x-ms-offer-throughput` 请求标头）。这里，我们将 `/deviceId` 设为分区键。所选的分区键随集合元数据（如名称和索引策略）的其余部分一起保存。
 
-对于此示例，我们选取了 `deviceId`，因为我们知道：(a) 由于存在大量的设备，写入可以跨分区均匀地分步并且我们可以扩展数据库以摄取海量数据，(b) 许多请求（如提取设备最近读取内容）仅限于单个设备 ID，并且可以从单个分区进行检索。
+对于此示例，我们选取了 `deviceId`，因为我们知道：(a) 由于存在大量的设备，写入可以跨分区均匀地分步并且我们可以扩展数据库以引入海量数据，(b) 许多请求（如提取设备最近读取内容）仅限于单个 deviceId，并且可以从单个分区进行检索。
 
     DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
     await client.CreateDatabaseAsync(new Database { Id = "db" });
@@ -248,8 +250,8 @@ Azure DocumentDB 增加了对 [REST API 版本 2015-12-16](https://msdn.microsof
 
     await client.ExecuteStoredProcedureAsync<DeviceReading>(
         UriFactory.CreateStoredProcedureUri("db", "coll", "SetLatestStateAcrossReadings"),
-        "XMS-001-FE24C",
-        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") });
+        new RequestOptions { PartitionKey = new PartitionKey("XMS-001") }, 
+        "XMS-001-FE24C");
 
 在下一节，我们将介绍如何从单个分区集合移动到已分区集合。
 
@@ -305,6 +307,7 @@ DocumentDB 最常见的使用案例之一是记录和遥测。选取适当的分
 ## 后续步骤
 在本文中，我们已经介绍了分区在 Azure DocumentDB 中的工作原理，如何创建已分区的集合和如何为应用程序选取适当的分区键。
 
+-   使用 DocumentDB 执行规模和性能测试。有关示例，请参阅[使用 Azure DocumentDB 进行性能和规模测试](/documentation/articles/documentdb-performance-testing)。
 -   使用 [SDK](/documentation/articles/documentdb-sdk-dotnet) 或 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 的编码入门
 -   了解 [DocumentDB 中设置的吞吐量](/documentation/articles/documentdb-performance-levels)
 -   如果你想要自定义应用程序执行分区的方式，可以插入自己的客户端分区实现。请参阅[客户端分区支持](/documentation/articles/documentdb-sharding)。
@@ -315,4 +318,4 @@ DocumentDB 最常见的使用案例之一是记录和遥测。选取适当的分
 
  
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

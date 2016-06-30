@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/03/2016"
+   ms.date="06/02/2016"
    wacn.date=""/>
 
 # 基于 REST 的应用程序生命周期示例
@@ -705,4 +705,4 @@ namespace ServiceFabricRestCaller
 
 [Service Fabric 应用程序生命周期](/documentation/articles/service-fabric-application-lifecycle)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0627_2016-->

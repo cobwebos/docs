@@ -9,7 +9,7 @@
 
 <tags
     ms.service="service-fabric"
-   ms.date="05/12/2016"
+    ms.date="05/18/2016"
     wacn.date=""/>
 
 
@@ -29,7 +29,7 @@ Azure Service Fabric 应用程序是多个服务的集合。在升级期间，Se
 
 ## 升级过程中的运行状况检查
 
-必须对升级设置运行状况策略（或者可使用默认值）。当所有更新域均在指定的超时内进行了升级，并且所有更新域均被认为运行正常时，即可称升级为成功升级。运行正常的更新域是指该更新域通过了运行状况策略中指定的所有运行状况检查。例如，运行状况策略可能要求应用程序实例中的所有服务都必须“运行正常”，因为运行状况是由 Service Fabric 定义的。
+必须对升级设置运行状况策略（或者可使用默认值）。当所有更新域均在指定的超时内进行了升级，并且所有更新域均被认为运行正常时，即可称升级为成功升级。运行正常的更新域是指该更新域通过了运行状况策略中指定的所有运行状况检查。例如，运行状况策略可能要求应用程序实例中的所有服务都必须运行正常，因为运行状况是由 Service Fabric 定义的。
 
 升级期间 Service Fabric 执行的运行状况策略和检查与服务和应用程序无关。也就是说，不会执行任何特定于服务的测试。例如，你的服务可能具有最小吞吐量要求。但 Service Fabric 没有对其进行测试的信息，因此将不会检查为应用程序定义的吞吐量。有关要执行的检查，请参阅[运行状况文章](/documentation/articles/service-fabric-health-introduction)。在升级期间执行的检查包括是否已正确复制应用程序包、是否已启动实例，等等。
 
@@ -43,7 +43,7 @@ Azure Service Fabric 应用程序是多个服务的集合。在升级期间，Se
 
 ## 应用程序升级流程图
 
-下面的流程图可帮助你理解 Service Fabric 应用程序的升级过程。具体而言，该流程描述当一个更新域的升级被认为成功或失败时，超时（包括 “HealthCheckStableDuration”、“HealthCheckRetryTimeout” 和 “UpgradeHealthCheckInterval”）如何为控制提供帮助。
+下面的流程图可帮助你理解 Service Fabric 应用程序的升级过程。具体而言，该流程描述当一个更新域的升级被认为成功或失败时，超时（包括 *HealthCheckStableDuration*、*HealthCheckRetryTimeout* 和 *UpgradeHealthCheckInterval*）如何为控制提供帮助。
 
 ![Service Fabric 应用程序的升级过程][image]
 
@@ -67,4 +67,4 @@ Azure Service Fabric 应用程序是多个服务的集合。在升级期间，Se
 [image]: ./media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png
  
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

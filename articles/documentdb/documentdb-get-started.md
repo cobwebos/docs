@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="documentdb"
-	ms.date="05/13/2016"
+	ms.date="05/16/2016"
 	wacn.date=""/>
 
 # NoSQL 教程︰构建 DocumentDB C# 控制台应用程序
@@ -57,11 +57,14 @@
 
 1. 在计算机上打开 **Visual Studio 2015**。
 2. 在**“文件”**菜单中，选择**“新建”**，然后选择**“项目”**。
-3. 在**“新建项目”**对话框中，选择**“模板”** / **“Visual C#”** / **“控制台应用程序”**，为项目命名，然后单击**“确定”**。![“新建项目”窗口屏幕截图](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
+3. 在**“新建项目”**对话框中，选择**“模板”** / **“Visual C#”** / **“控制台应用程序”**，为项目命名，然后单击**“确定”**。
+![“新建项目”窗口屏幕截图](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
 4. 在**“解决方案资源管理器”**中，右键单击 Visual Studio 解决方案下方的新控制台应用程序。
-5. 接下来，无需离开菜单，单击**“管理 NuGet 程序包...”** ![“项目”右键菜单屏幕截图](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+5. 接下来，无需离开菜单，单击**“管理 NuGet 程序包...”** 
+![“项目”右键菜单屏幕截图](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 6. 在“Nuget”选项卡上，单击“浏览”，然后在搜索框中输入“azure documentdb”。
-7. 在结果中，找到“Microsoft.Azure.DocumentDB”，然后单击“安装”。DocumentDB 客户端库的程序包 ID 是 [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB) ![用于查找 DocumentDB 客户端 SDK 的 Nuget 菜单的屏幕截图](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+7. 在结果中，找到“Microsoft.Azure.DocumentDB”，然后单击“安装”。DocumentDB 客户端库的程序包 ID 是 [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB) 
+![用于查找 DocumentDB 客户端 SDK 的 Nuget 菜单的屏幕截图](./media/documentdb-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
 很好！ 现在，我们已完成安装，让我们开始编写一些代码。可以在 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started/blob/master/src/Program.cs) 上找到本教程的完整代码项目。
 
@@ -228,7 +231,7 @@
 				// Here we create a collection with 400 RU/s.
 				await this.client.CreateDocumentCollectionAsync(
 					UriFactory.CreateDatabaseUri(databaseName),
-					new DocumentCollection { Id = collectionName },
+					collectionInfo,
 					new RequestOptions { OfferThroughput = 400 });
 
 				this.WriteToConsoleAndPromptToContinue("Created {0}", collectionName);
@@ -256,7 +259,7 @@
 ##<a id="CreateDoc"></a>第 6 步：创建 JSON 文档
 可以通过使用 **DocumentClient** 类的 [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) 方法创建[文档](/documentation/articles/documentdb-resources#documents)。文档为用户定义的（任意）JSON 内容。现在，我们可以插入一个或多个文档。如果已经有想要在数据库中存储的数据，则可以使用 DocumentDB 的[数据迁移工具](/documentation/articles/documentdb-import-data)。
 
-在本例中，我们首先需要创建 **Family** 类来表示存储在 DocumentDB 中的对象。我们还将创建 **Family** 中用到的 **Parent**、**Child**、**Pet** 和 **Address** 子类。请注意，文档必须将 **Id** 属性序列化为 JSON 格式的 **id**。通过在 **GetStartedDemo** 方法后添加以下内部子类来创建这些类。
+在本例中，我们首先需要创建 **Family** 类来表示存储在 DocumentDB 中的对象。我们还将创建 **Family** 中用到的 **Parent**、**Child**、**Pet** 和 **Family** 子类。请注意，文档必须将 **Id** 属性序列化为 JSON 格式的 **id**。通过在 **GetStartedDemo** 方法后添加以下内部子类来创建这些类。
 
 复制 **Family**、**Parent**、**Child**、**Pet** 和 **Address** 类并粘贴到 **WriteToConsoleAndPromptToContinue** 方法下。
 
@@ -601,12 +604,13 @@ DocumentDB 支持删除 JSON 文档。
 ## 后续步骤
 
 -   需要更复杂的 ASP.NET MVC NoSQL 教程？ 请参阅[使用 DocumentDB 构建具有 ASP.NET MVC 的 Web 应用程序](/documentation/articles/documentdb-dotnet-application)。
+- 想要使用 DocumentDB 执行规模和性能测试？ 请参阅 [Performance and Scale Testing with Azure DocumentDB（使用 Azure DocumentDB 进行性能和规模测试）](/documentation/articles/documentdb-performance-testing)
 -	了解如何[监视 DocumentDB 帐户](/documentation/articles/documentdb-monitor-accounts)。
--	在 [Query Playground（查询板块）](https://www.documentdb.com/sql/demo)中对示例数据集运行查询。
--	了解有关编程模型的详细信息，请参阅 [DocumentDB 文档页面](https://azure.microsoft.com/documentation/services/documentdb/)的开发部分。
+-	在 [Query Playground](https://www.documentdb.com/sql/demo) 中对示例数据集运行查询。
+-	在 [DocumentDB 文档页](https://azure.microsoft.com/documentation/services/documentdb/)的“Develop”（开发）部分中了解有关编程模型的详细信息。
 
 [documentdb-create-account]: /documentation/articles/documentdb-create-account
 [documentdb-manage]: /documentation/articles/documentdb-manage
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

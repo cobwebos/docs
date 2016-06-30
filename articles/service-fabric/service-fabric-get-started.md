@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="04/18/2016"
+   ms.date="06/15/2016"
    wacn.date=""/>
 
 # 准备开发环境
@@ -30,7 +30,7 @@
 
 Web 平台安装程序为 Service Fabric 开发提供三种配置：
 
-- [安装适用于 Visual Studio 2015 的 Service Fabric 运行时、SDK 和工具][full-bundle-vs2015]
+- [安装适用于 Visual Studio 2015 Update 2 的 Service Fabric 运行时、SDK 和工具][full-bundle-vs2015]
 - [安装适用于 Visual Studio "15" 预览版的 Service Fabric 运行时、SDK 和工具][full-bundle-dev15]
 - [仅安装 Service Fabric 运行时和 SDK（不安装 Visual Studio 工具）][core-sdk]
 
@@ -54,9 +54,9 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 [1]: /home/features/service-fabric "Service Fabric 活动页"
 [2]: http://go.microsoft.com/fwlink/?LinkId=517106 "VS RC"
-[full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015 "VS 2015 WebPI 链接"
-[full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15 "Dev15 WebPI 链接"
-[core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK "Core SDK WebPI 链接"
+[full-bundle-vs2015]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015-2_1 "VS 2015 WebPI 链接"
+[full-bundle-dev15]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-Dev15-2_1 "Dev15 WebPI 链接"
+[core-sdk]: http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=ServiceFabricSDK_2_1 "Core SDK WebPI 链接"
 [powershell5-download]: https://www.microsoft.com/zh-cn/download/details.aspx?id=50395
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/25/2016"
+   ms.date="06/13/2016"
    wacn.date=""/>
 
 
@@ -55,7 +55,7 @@ class GameEventsHandler : IGameEvents
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
                     new ActorId(Guid.Parse(arg)), ApplicationName);
-                    
+
 await proxy.SubscribeAsync<IGameEvents>(new GameEventsHandler());
 ```
 
@@ -74,4 +74,4 @@ ev.GameScoreUpdated(Id.GetGuidId(), score);
  - [执行组件 API 参考文档](https://msdn.microsoft.com/zh-cn/library/azure/dn971626.aspx)
  - [代码示例](https://github.com/Azure/servicefabric-samples)
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0627_2016-->

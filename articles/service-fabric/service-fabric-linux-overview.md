@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="05/13/2016"
+   ms.date="05/18/2016"
    wacn.date=""/>
 
 # Linux 上的 Service Fabric
@@ -29,4 +29,4 @@ Service Fabric 目前在 Linux 上以受限预览版提供，可让你在 Linux 
 
 熟悉 [Reliable Actors](/documentation/articles/service-fabric-reliable-actors-introduction) 和 [Reliable Services](/documentation/articles/service-fabric-reliable-services-introduction) 编程框架。
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

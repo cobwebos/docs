@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="使用逻辑应用发送 DocumentDB 更改通知 | Microsoft Azure" 
+    pageTitle="使用 Logic Apps 发送 DocumentDB 更改通知 | Azure" 
     description="。" 
     keywords="更改通知"
     services="documentdb" 
@@ -10,7 +10,7 @@
 
 <tags 
     ms.service="documentdb" 
-    ms.date="03/17/2016" 
+    ms.date="06/14/2016" 
     wacn.date=""/>
 
 # 使用逻辑应用针对新增或已更改的 DocumentDB 资源发送通知
@@ -252,8 +252,7 @@ IT 部门表示他们可以轻松提供此通知。他们还表示可以将文�
 
 > [AZURE.NOTE] 使用 Webhook，你可以完整访问触发器的请求标头和主体。在此应用程序中，你会需要主体。
 
-如先前所述，你可以使用设计器来分配参数，或在代码视图中分配参数。
-如果在代码视图中分配参数，你会接着定义需有值的属性，如下列代码示例所示。
+如先前所述，你可以使用设计器来分配参数，或在代码视图中分配参数。如果在代码视图中分配参数，你会接着定义需有值的属性，如下列代码示例所示。
 
 ```JSON
 
@@ -278,8 +277,7 @@ IT 部门表示他们可以轻松提供此通知。他们还表示可以将文�
 	    }
 ```
 
-你正在创建将从 HTTP POST 主体传入的 JSON 架构。
-若要引发触发器，你需要一个回叫 URL。你将在稍后的教程中了解如何生成回叫 URL。
+你正在创建将从 HTTP POST 主体传入的 JSON 架构。若要引发触发器，你需要一个回叫 URL。你将在稍后的教程中了解如何生成回叫 URL。
 
 ## 操作
 我们来看一下逻辑应用中每个操作的用途。
@@ -501,7 +499,7 @@ QueryDocuments 操作会对 API 应用执行 HTTP POST 操作。
 		    "_rid": "vCYLAP2k6gAXAAAAAAAAAA==",
 		    "_self": "dbs/vCYLAA==/colls/vCYLAP2k6gA=/docs/vCYLAP2k6gAXAAAAAAAAAA==/",
 		    "_ts": 1454874620,
-		    "_etag": "\"00007d01-0000-0000-0000-56b79ffc0000\"",
+		    "_etag": ""00007d01-0000-0000-0000-56b79ffc0000"",
 		    "resourceType": "Patient",
 		    "text": {
 			"status": "generated",
@@ -578,7 +576,7 @@ QueryDocuments 操作会对 API 应用执行 HTTP POST 操作。
             "_rid": "vCYLAP2k6gAXAAAAAAAAAA==",
             "_self": "dbs/vCYLAA==/colls/vCYLAP2k6gA=/docs/vCYLAP2k6gAXAAAAAAAAAA==/",
             "_ts": 1454874620,
-            "_etag": "\"00007d01-0000-0000-0000-56b79ffc0000\"",
+            "_etag": ""00007d01-0000-0000-0000-56b79ffc0000"",
             "resourceType": "Patient",
             "text": {
                 "status": "generated",
@@ -650,7 +648,7 @@ QueryDocuments 操作会对 API 应用执行 HTTP POST 操作。
             "_rid": "vCYLAP2k6gAXAAAAAAAAAA==",
             "_self": "dbs/vCYLAA==/colls/vCYLAP2k6gA=/docs/vCYLAP2k6gAXAAAAAAAAAA==/",
             "_ts": 1454874620,
-            "_etag": "\"00007d01-0000-0000-0000-56b79ffc0000\"",
+            "_etag": ""00007d01-0000-0000-0000-56b79ffc0000"",
             "resourceType": "Patient",
             "text": {
                 "status": "generated",
@@ -718,7 +716,7 @@ QueryDocuments 操作会对 API 应用执行 HTTP POST 操作。
 		"Size": 65647,
 		"MediaType": "application/octet-stream",
 		"IsFolder": false,
-		"ETag": "\"c-g_a-1OtaH-kNQ4WBoXLp3Zv9s/MTQ1NjUwMTY1NjIxNQ\"",
+		"ETag": ""c-g_a-1OtaH-kNQ4WBoXLp3Zv9s/MTQ1NjUwMTY1NjIxNQ"",
 		"FileLocator": "0B0nBzHyMV-_NRGRDcDNMSFAxWFE"
 	    }
 	}
@@ -901,9 +899,7 @@ emailBody 会将查询所返回的文档数目（可能是“0”或更多）与
 
 ```
 
-此触发器已设置为 24 个小时重复一次。
-操作为 HTTP POST，该操作使用主要逻辑应用的回叫 URL。
-主体包含 JSON 架构中指定的参数。
+此触发器已设置为 24 个小时重复一次。操作为 HTTP POST，该操作使用主要逻辑应用的回叫 URL。主体包含 JSON 架构中指定的参数。
 
 #### 操作
 
@@ -1155,4 +1151,4 @@ EmailTo | 将会收到电子邮件通知的电子邮件地址
 请下载并使用 [Github](https://github.com/HEDIDIN/DocDbNotifications) 上提供的逻辑应用代码。竭诚邀请你在该应用程序基础上进行构建，并将更改提交到存储库。
 
 若要详细了解 DocumentDB，请访问[学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)。
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0627_2016-->

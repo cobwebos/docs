@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/18/2016"
+   ms.date="06/07/2016"
    wacn.date=""/>
 
 
@@ -21,7 +21,7 @@
 - 使用 [Partition](https://msdn.microsoft.com/zh-cn/library/system.fabric.istatefulservicepartition.aspx) 或 [CodePackageActivationContext](https://msdn.microsoft.com/zh-cn/library/system.fabric.codepackageactivationcontext.aspx) 对象。  
 你可以使用 `Partition` 和 `CodePackageActivationContext` 对象在属于当前上下文一部分的项目中报告运行状况。例如，作为副本一部分运行的代码只能报告该副本、其所属的分区，以及其所属应用程序的运行状况。
 
-- 使用 `FabricClient`。   
+- 使用 `FabricClient`。  
 如果群集不[安全](/documentation/articles/service-fabric-cluster-security)或者服务以管理员权限运行，你可以使用 `FabricClient` 从服务代码报告运行状况。在大部分的真实方案中都不会发生此情况。你可以使用 `FabricClient` 报告任何属于群集一部分的实体的运行状况。但是，在理想情况下，服务代码应该只发送与其本身运行状况相关的报告。
 
 本文将引导你完成从服务代码报告运行状况的示例。本示例还演示如何使用 Service Fabric 提供的工具检查运行状况。本文旨在快速介绍 Service Fabric 中的运行状况监视功能。有关更多详细信息，可以从本文末尾的链接开始，阅读一系列有关运行状况的深入文章。
@@ -85,7 +85,7 @@ Visual Studio 中的 Service Fabric 项目模板包含相同的代码。以下�
     ```
     我们将报告副本运行状况，由于它是从有状态服务报告的。`HealthInformation` 参数存储所要报告的运行状况问题的相关信息。
 
-    对于无状态服务，请使用以下代码。
+    如果你创建了无状态服务，请使用以下代码
 
     ```csharp
     if (!result.HasValue)
@@ -155,4 +155,4 @@ activationContext.ReportApplicationHealth(healthInformation);
 ## 后续步骤
 [深入了解 Service Fabric 运行状况](/documentation/articles/service-fabric-health-introduction)
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0627_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DocumentDB 设计模式：社交媒体应用 |Microsoft Azure" 
+	pageTitle="DocumentDB 设计模式：社交媒体应用 | Azure" 
 	description="利用 DocumentDB 的存储灵活性和其他 Azure 服务了解社交网络的设计模式。" 
 	keywords="社交媒体应用"
 	services="documentdb" 
@@ -98,7 +98,7 @@ Azure DocumentDB 可确保所有属性通过其[自动索引](/documentation/art
 
 我们可以有一个“最新”流（其中帖子按创建日期排序）和一个“最热门”流（其中包括在过去 24 小时内获得了更多赞的帖子），甚至还可以基于逻辑点赞粉丝和兴趣为每个用户实现客户流，且它仍然可以是一个帖子列表。虽然如何生成这些列表还是一个问题，但读取性能仍然不受阻碍。一旦我们获得其中一个列表之后，我们就可以使用 [IN 运算符](/documentation/articles/documentdb-sql-query#where-clause) 向 DocumentDB 发布单个查询以一次性获取帖子的所有页面。
 
-可以使用 [Azure App Service](https://azure.microsoft.com/services/app-service/) 的后台处理程序 [Webjobs](/documentation/articles/web-sites-create-web-jobs) 创建源流。创建一个帖子后，可以通过使用 [Azure 存储空间](https://azure.microsoft.com/services/storage/)[队列](/documentation/articles/storage-dotnet-how-to-use-queues)和 Webjobs（通过 [Azure Webjobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk) 触发）触发后台处理，从而根据我们自己的自定义逻辑实现流内的帖子传播。
+可以使用 [Azure App Service](/services/app-service/) 的后台进程 - [Web 作业](/documentation/articles/web-sites-create-web-jobs) - 来构建源流。创建一个帖子后，可以通过使用 [Azure 存储空间](https://azure.microsoft.com/services/storage/)[队列](/documentation/articles/storage-dotnet-how-to-use-queues)和 Web 作业（通过 [Azure Webjobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk) 触发）触发后台处理，从而根据我们自己的自定义逻辑实现流内的帖子传播。
 
 通过使用这种相同的技术创建最终一致性环境还可以以延迟方式处理评分和点赞。
 
@@ -192,5 +192,5 @@ Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/libra
 
 阅读[对 DocumentDB 中的数据进行建模](/documentation/articles/documentdb-modeling-data)一文，了解有关数据建模的详细信息。如需了解 DocumentDB 其他用例信息，请参阅 [DocumentDB 的常见用例](/documentation/articles/documentdb-use-cases)。
 
-或跟随 [DocumentDB 学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)了解关于 DocumentDB 的详细信息。
-<!---HONumber=Mooncake_0425_2016-->
+或跟随 [DocumentDB 学习路径](/documentation/learning-paths/documentdb/)了解关于 DocumentDB 的详细信息。
+<!---HONumber=Mooncake_0627_2016-->

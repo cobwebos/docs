@@ -9,8 +9,8 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="05/13/2016"
-   ms.author="subramar"/>
+   ms.date="05/18/2016"
+   wacn.date=""/>
 
 
 # Service Fabric 应用程序的容量规划
@@ -71,4 +71,4 @@ Number of Nodes = (DB_Size * RF)/Node_Size
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: /documentation/articles/service-fabric-concepts-partitioning
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

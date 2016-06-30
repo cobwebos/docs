@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/15/2016"
+   ms.date="06/20/2016"
    wacn.date=""/>
 # Service Fabric Reliable Services 分区
 本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions) 上获取。
@@ -36,8 +36,7 @@
 
 在 Service Fabric 有状态服务的上下文中进行分区是指确定特定服务分区负责服务完整状态的某个部分的过程。（如前所述，分区是一组[副本](/documentation/articles/service-fabric-availability-services)）。Service Fabric 的一大优点是它将分区置于不同节点上。这使它们可以按照节点的资源限制来增长。随着数据需求的增长，分区也会增长，Service Fabric 会在节点间重新平衡分区。这可确保硬件资源的持续高效使用。
 
-为了提供一个示例，假设你开始时具有一个 5 节点群集，以及一个配置为具有 10 个分区并且目标为 3 个副本的服务。在这种情况下，Service Fabric 会在群集间平衡和分布副本 — 最后每个节点会有两个主[副本](/documentation/articles/service-fabric-availability-services)。
-如果现在需要将群集扩大到 10 个节点，则 Service Fabric 会在所有 10 个节点间重新平衡主[副本](/documentation/articles/service-fabric-availability-services)。同样，如果重新缩小为 5 个节点，则 Service Fabric 会在 5 个节点间重新平衡所有副本。
+为了提供一个示例，假设你开始时具有一个 5 节点群集，以及一个配置为具有 10 个分区并且目标为 3 个副本的服务。在这种情况下，Service Fabric 会在群集间平衡和分布副本 — 最后每个节点会有两个主[副本](/documentation/articles/service-fabric-availability-services)。如果现在需要将群集扩大到 10 个节点，则 Service Fabric 会在所有 10 个节点间重新平衡主[副本](/documentation/articles/service-fabric-availability-services)。同样，如果重新缩小为 5 个节点，则 Service Fabric 会在 5 个节点间重新平衡所有副本。
 
 图 2 显示缩放群集之前和之后的 10 个分区的分布。
 
@@ -120,16 +119,16 @@ Service Fabric 提供了三个分区方案可供选择：
 3. 将项目命名为“AlphabetPartitions”。
 4. 在“创建服务”对话框中，选择“有状态”服务并将它称为“Alphabet.Processing”，如下图所示。
 
-    ![有状态服务屏幕截图](./media/service-fabric-concepts-partitioning/alphabetstatefulnew.png)
+    ![有状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createstateful.png)
 
-5. 设置分区数。在 AlphabetPartitions 项目中打开 ApplicationManifest.xml 文件，然后将参数 Processing\_PartitionCount 更新为 26，如下所示。
+5. 设置分区数。打开 AlphabetPartitions 项目的 ApplicationPackageRoot 文件夹中的 Applicationmanifest.xml 文件，然后将参数 Processing\_PartitionCount 更新为 26，如下所示。
 
     ```xml
     <Parameter Name="Processing_PartitionCount" DefaultValue="26" />
     ```
     
-    还需要更新 StatefulService 元素的 LowKey 和 HighKey 属性，如下所示。
-    
+    还需要更新 ApplicationManifest.xml 中 StatefulService 元素的 LowKey 和 HighKey 属性，如下所示。
+
     ```xml
     <Service Name="Processing">
       <StatefulService ServiceTypeName="ProcessingType" TargetReplicaSetSize="[Processing_TargetReplicaSetSize]" MinReplicaSetSize="[Processing_MinReplicaSetSize]">
@@ -141,7 +140,7 @@ Service Fabric 提供了三个分区方案可供选择：
 6. 要使访问可以访问，请通过添加 Alphabet.Processing 服务的 ServiceManifest.xml（位于 PackageRoot 文件夹中）的终结点元素，在某个端口上打开终结点，如下所示：
 
     ```xml
-    <Endpoint Name="ProcessingServiceEndpoint" Protocol="http" Type="Internal" />
+    <Endpoint Name="ProcessingServiceEndpoint" Port="8089" Protocol="http" Type="Internal" />
     ```
 
     现在服务已配置为侦听具有 26 个分区的内部终结点。
@@ -159,28 +158,29 @@ Service Fabric 提供了三个分区方案可供选择：
     ```CSharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
     {
-        return new[] { new ServiceReplicaListener(CreateInternalListener, "Internal", false) };
+         return new[] { new ServiceReplicaListener(context => this.CreateInternalListener(context))};
     }
-    private ICommunicationListener CreateInternalListener(StatefulServiceInitializationParameters args)
+    private ICommunicationListener CreateInternalListener(ServiceContext context)
     {
-        EndpointResourceDescription internalEndpoint = args.CodePackageActivationContext.GetEndpoint("ProcessingServiceEndpoint");
+            
+         EndpointResourceDescription internalEndpoint = context.CodePackageActivationContext.GetEndpoint("ProcessingServiceEndpoint");
+         string uriPrefix = String.Format(
+                "{0}://+:{1}/{2}/{3}-{4}/",
+                internalEndpoint.Protocol,
+                internalEndpoint.Port,
+                context.PartitionId,
+                context.ReplicaOrInstanceId,
+                Guid.NewGuid());
 
-        string uriPrefix = String.Format(
-            "{0}://+:{1}/{2}/{3}-{4}/",
-            internalEndpoint.Protocol,
-            internalEndpoint.Port,
-            this.ServiceInitializationParameters.PartitionId,
-            this.ServiceInitializationParameters.ReplicaId,
-            Guid.NewGuid());
+         string nodeIP = FabricRuntime.GetNodeContext().IPAddressOrFQDN;
 
-        string nodeIP = FabricRuntime.GetNodeContext().IPAddressOrFQDN;
-        string uriPublished = uriPrefix.Replace("+", nodeIP);
-        return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInternalRequest);
+         string uriPublished = uriPrefix.Replace("+", nodeIP);
+         return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInternalRequest);
     }
     ```
 
     此外，值得注意的是发布的 URL 与侦听 URL 前缀略有不同。该侦听 URL 提供给 HttpListener。发布的 URL 是发布到 Service Fabric 命名服务（用于服务发现）的 URL。客户端会通过该发现服务请求此地址。客户端获取的地址需要具有节点的实际 IP 或 FQDN 才能连接。因此需要将“+”替换为节点的 IP 或 FQDN，如上所示。
-    
+
 9. 最后一步是将处理逻辑添加到服务，如下所示。
 
     ```CSharp
@@ -224,40 +224,40 @@ Service Fabric 提供了三个分区方案可供选择：
         }
     }
     ```
-        
+
     `ProcessInternalRequest` 会读取用于调用分区的查询字符串参数值，并调用 `AddUserAsync` 以将姓氏添加到可靠字典 `dictionary`。
-    
+
 10. 我们来将一个无状态服务添加到项目，以查看如何调用特定分区。
 
     此服务可用作简单 Web 界面，它接受姓氏作为查询字符串参数，确定分区键，然后将它发送到 Alphabet.Processing 服务进行处理。
     
-11. 在“创建服务”对话框中，选择“无状态”服务并将它称为“Alphabet.WebApi”，如下所示。
+11. 在“创建服务”对话框中，选择“无状态”服务并将它称为“Alphabet.Web”，如下所示。
     
-    ![无状态服务屏幕截图](./media/service-fabric-concepts-partitioning/alphabetstatelessnew.png)。
-    
+    ![无状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createnewstateless.png)。
+
 12. 在 Alphabet.WebApi 服务的 ServiceManifest.xml 中更新终结点信息，以打开端口，如下所示。
 
     ```xml
-    <Endpoint Name="WebApiServiceEndpoint" Protocol="http" Port="8090"/>
+    <Endpoint Name="WebApiServiceEndpoint" Protocol="http" Port="8081"/>
     ```
 
-13. 需要返回 ServiceInstanceListeners 的集合。同样，可以选择实现简单 HttpCommunicationListener。
+13. 需要在 Web 类中返回 ServiceInstanceListeners 的集合。同样，可以选择实现简单 HttpCommunicationListener。
 
     ```CSharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
-        return new[] {new ServiceInstanceListener(this.CreateInputListener, "Input")};
+        return new[] {new ServiceInstanceListener(context => this.CreateInputListener(context))};
     }
-    private ICommunicationListener CreateInputListener(StatelessServiceInitializationParameters args)
+    private ICommunicationListener CreateInputListener(ServiceContext context)
     {
         // Service instance's URL is the node's IP & desired port
-        EndpointResourceDescription inputEndpoint = args.CodePackageActivationContext.GetEndpoint("WebApiServiceEndpoint")
+        EndpointResourceDescription inputEndpoint = context.CodePackageActivationContext.GetEndpoint("WebApiServiceEndpoint")
         string uriPrefix = String.Format("{0}://+:{1}/alphabetpartitions/", inputEndpoint.Protocol, inputEndpoint.Port);
-        var uriPublished = uriPrefix.Replace("+", m_nodeIP);
-        return new HttpCommunicationListener(uriPrefix, uriPublished, ProcessInputRequest);
+        var uriPublished = uriPrefix.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
+        return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInputRequest);
     }
     ```
-     
+
 14. 现在需要实现处理逻辑。HttpCommunicationListener 在请求进入时调用 `ProcessInputRequest`。那么，我们来继续进行，添加下面的代码。
 
     ```CSharp
@@ -268,12 +268,13 @@ Service Fabric 提供了三个分区方案可供选择：
         {
             string lastname = context.Request.QueryString["lastname"];
             char firstLetterOfLastName = lastname.First();
-            int partitionKey = Char.ToUpper(firstLetterOfLastName) - 'A';
+            ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
 
             ResolvedServicePartition partition = await this.servicePartitionResolver.ResolveAsync(alphabetServiceUri, partitionKey, cancelRequest);
             ResolvedServiceEndpoint ep = partition.GetEndpoint();
+                
             JObject addresses = JObject.Parse(ep.Address);
-            string primaryReplicaAddress = addresses["Endpoints"].First()["Value"].Value<string>();
+            string primaryReplicaAddress = (string)addresses["Endpoints"].First();
 
             UriBuilder primaryReplicaUriBuilder = new UriBuilder(primaryReplicaAddress);
             primaryReplicaUriBuilder.Query = "lastname=" + lastname;
@@ -281,7 +282,7 @@ Service Fabric 提供了三个分区方案可供选择：
             string result = await this.httpClient.GetStringAsync(primaryReplicaUriBuilder.Uri);
 
             output = String.Format(
-                    "Result: {0}. Partition key: '{1}' generated from the first letter '{2}' of input value '{3}'. Processing service partition ID: {4}. Processing service replica address: {5}",
+                    "Result: {0}. <p>Partition key: '{1}' generated from the first letter '{2}' of input value '{3}'. <br>Processing service partition ID: {4}. <br>Processing service replica address: {5}",
                     result,
                     partitionKey,
                     firstLetterOfLastName,
@@ -290,7 +291,7 @@ Service Fabric 提供了三个分区方案可供选择：
                     primaryReplicaAddress);
         }
         catch (Exception ex) { output = ex.Message; }
-        
+
         using (var response = context.Response)
         {
             if (output != null)
@@ -308,13 +309,13 @@ Service Fabric 提供了三个分区方案可供选择：
     ```CSharp
     string lastname = context.Request.QueryString["lastname"];
     char firstLetterOfLastName = lastname.First();
-    int partitionKey = Char.ToUpper(firstLetterOfLastName) - 'A';
+    ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
     ```
 
     请记住，对于此示例，我们在使用 26 个分区，其中每个分区有一个分区键。接下来，我们通过对 `servicePartitionResolver` 对象使用 `ResolveAsync` 方法，来获取此键的服务分区 `partition`。`servicePartitionResolver` 定义为
 
     ```CSharp
-    private static readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
+    private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
 
     `ResolveAsync` 方法采用服务 URI、分区键和取消标记作为参数。处理服务的服务 URI 是 `fabric:/AlphabetPartitions/Processing`。接下来，我们会获取分区的终结点。
@@ -327,7 +328,7 @@ Service Fabric 提供了三个分区方案可供选择：
 
     ```CSharp
     JObject addresses = JObject.Parse(ep.Address);
-    string primaryReplicaAddress = addresses["Endpoints"].First()["Value"].Value<string>();
+    string primaryReplicaAddress = (string)addresses["Endpoints"].First();
 
     UriBuilder primaryReplicaUriBuilder = new UriBuilder(primaryReplicaAddress);
     primaryReplicaUriBuilder.Query = "lastname=" + lastname;
@@ -348,11 +349,11 @@ Service Fabric 提供了三个分区方案可供选择：
 
 16. 完成部署之后，便可以在 Service Fabric 资源管理器中检查服务及其所有分区。
     
-    ![Service Fabric 资源管理器屏幕截图](./media/service-fabric-concepts-partitioning/alphabetservicerunning.png)
+    ![Service Fabric 资源管理器屏幕截图](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
     
-17. 在浏览器中，可以通过输入 `http://localhost:8090/?lastname=somename` 来测试分区逻辑。你会看到以相同字母开头的每个姓氏都存储在相同区域中。
+17. 在浏览器中，可以通过输入 `http://localhost:8081/?lastname=somename` 来测试分区逻辑。你会看到以相同字母开头的每个姓氏都存储在相同区域中。
     
-    ![浏览器屏幕截图](./media/service-fabric-concepts-partitioning/alphabetinbrowser.png)
+    ![浏览器屏幕截图](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
 该示例的完整源代码位于 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions)。
 
@@ -368,4 +369,4 @@ Service Fabric 提供了三个分区方案可供选择：
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0627_2016-->

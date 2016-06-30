@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="04/12/2016"
+   ms.date="06/09/2016"
    wacn.date=""/>
 
 # 在本地群集上部署和升级应用程序入门
@@ -62,7 +62,7 @@ Service Fabric SDK 包含一组丰富的框架以及用于创建应用程序的�
     cd c:\ServiceFabric\
     ```
 
-4. [下载 WordCount 应用程序](http://aka.ms/servicefabric-wordcountapp)到创建的位置。
+4. [下载 WordCount 应用程序](http://aka.ms/servicefabric-wordcountapp)到创建的位置。注意：Microsoft Edge 浏览器将以 *.zip* 扩展名保存文件。你需要将文件扩展名更改为 *.sfpkg*。
 
 5. 连接到本地群集：
 
@@ -80,7 +80,7 @@ Service Fabric SDK 包含一组丰富的框架以及用于创建应用程序的�
 
     ![将应用程序部署到本地群集][deploy-app-to-local-cluster]
 
-7. 若要应用程序的运行情况，请启动浏览器并导航到 [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html)。您应看到与下面类似的内容：
+7. 若要查看应用程序的操作情况，请启动浏览器并导航到 [http://localhost:8081/wordcount/index.html](http://localhost:8081/wordcount/index.html)。您应看到与下面类似的内容：
 
     ![已部署的应用程序 UI][deployed-app-ui]
 
@@ -164,6 +164,33 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
 
     ![在浏览器中查看应用程序的新版本][deployed-app-ui-v2]
 
+## 清理
+
+结束之前，请务必记住该本地群集非常真实。应用程序将继续在后台运行，直到你删除它们。根据应用的性质，正在运行的应用可能会占用计算机上的大量资源。可通过几个选项对此进行管理：
+
+1. 若要删除单个应用程序及其所有数据，请运行以下命令：
+
+    ```powershell
+    Unpublish-ServiceFabricApplication -ApplicationName "fabric:/WordCount"
+    ```
+
+    或者在 Service Fabric Explorer 的“操作”菜单或者左窗格中应用程序列表视图的上下文菜单内，使用“删除应用程序”操作。
+
+    ![在 Service Fabric Explorer 中删除应用程序][sfe-delete-application]
+
+2. 从群集中删除应用程序后，可以取消注册 WordCount 应用程序类型的版本 1.0.0 和 2.0.0。这将从群集的映像存储中删除该应用程序包，包括其代码和配置。
+
+    ```powershell
+    Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 2.0.0
+    Remove-ServiceFabricApplicationType -ApplicationTypeName WordCount -ApplicationTypeVersion 1.0.0
+    ```
+
+    或者，在 Service Fabric Explorer 中选择该应用程序对应的“取消预配类型”。
+
+3. 若要关闭群集，但保留应用程序数据和跟踪，请在系统托盘应用中单击“停止本地群集”。
+
+4. 要完全删除群集，请在系统托盘应用中单击“删除本地群集”。请注意，此选项会导致下次在 Visual Studio 中按 F5 时部署较慢。仅当在一段时间内不想使用本地群集时，或者当需要回收资源时，才使用此选项。
+
 ## 后续步骤
 - 现在，你已部署并升级某些预先生成的应用程序，接下来可以[尝试在 Visual Studio 中生成你自己的应用程序](/documentation/articles/service-fabric-create-your-first-application-in-visual-studio)。
 - 也可以对 [Azure 群集](/documentation/articles/service-fabric-cluster-creation-via-portal)执行本文中所述的对本地群集执行的所有操作。
@@ -185,5 +212,6 @@ Service Fabric 在应用程序推出于群集时监视其运行状况，从而�
 [ps-getsfsvc-postupgrade]: ./media/service-fabric-get-started-with-a-local-cluster/PS-GetSFSvc-PostUpgrade.png
 [sfx-upgradeprogress]: ./media/service-fabric-get-started-with-a-local-cluster/SfxUpgradeOverview.png
 [sfx-service-overview]: ./media/service-fabric-get-started-with-a-local-cluster/sfx-service-overview.png
+[sfe-delete-application]: ./media/service-fabric-get-started-with-a-local-cluster/sfe-delete-application.png
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0627_2016-->

@@ -1,6 +1,6 @@
 <properties
    pageTitle="为应用程序创建 Web 前端 | Azure"
-   description="使用 ASP.NET 5 Web API 项目和服务间通信，通过 ServiceProxy 将 Service Fabric 应用程序公开到 Web。"
+   description="使用 ASP.NET Core Web API 项目和服务间通信，通过 ServiceProxy 将 Service Fabric 应用程序公开到 Web。"
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
@@ -9,74 +9,73 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="04/05/2016"
+   ms.date="06/10/2016"
    wacn.date=""/>
 
 
 # 构建应用程序的 Web 服务前端
 
->[AZURE.WARNING] 由于 ASP.NET Core RC2 有所更改，本文中的内容目前不太准确，因为参考的项目模板已从 SDK 中删除。发布 ASP.NET Core RC2 后，本文将会更新。在此期间，你可以使用 [Get started: Service Fabric Web API services with OWIN self-hosting（入门：Service Fabric Web API 服务与 OWIN 自托管）](/documentation/articles/service-fabric-reliable-services-communication-webapi) 中所述的无状态 Web API 模板。
-
 默认情况下，Azure Service Fabric 服务不提供用于访问 Web 的公共接口。若要向 HTTP 客户端公开应用程序的功能，需要创建一个 Web 项目作为入口点，然后从该处与单个服务进行通信。
 
-本教程中演练如何将 ASP.NET 5 Web API 前端添加到已根据有状态服务项目模板包含可靠服务的应用程序。如果尚未这么做，请考虑在开始本教程之前，逐步完成[在 Visual Studio 中创建第一个应用程序](/documentation/articles/service-fabric-create-your-first-application-in-visual-studio)。
+在本教程中，我们将弥补[在 Visual Studio 中创建第一个应用程序](/documentation/articles/service-fabric-create-your-first-application-in-visual-studio)教程中遗留的内容，在有状态计数器服务的前面添加一个 Web 服务。如果你尚未学习上述教程，应该返回并逐步完成该教程中的步骤。
 
+## 将 ASP.NET Core 服务添加到应用程序
 
-## 将 ASP.NET 5 服务添加到应用程序
+ASP.NET Core 是轻量跨平台的 Web 开发框架，可用于创建现代 Web UI 和 Web API。让我们将 ASP.NET Web API 项目添加到现有的应用程序。
 
-ASP.NET 5 是轻量跨平台的 Web 开发框架，可用于创建现代 Web UI 和 Web API。让我们将 ASP.NET Web API 项目添加到现有的应用程序。
+>[AZURE.NOTE] 若要完成本教程，需要[安装 .NET Core RC2][dotnetcore-install]。
 
-1. 在解决方案资源管理器中，右键单击应用程序项目中的“服务”，然后选择“添加 Fabric Service”。
+1. 在解决方案资源管理器中，右键单击应用程序项目中的“服务”，然后选择“添加”>“新建 Service Fabric 服务”。
 
 	![将一个新服务添加到现有应用程序][vs-add-new-service]
 
-2. 在“创建服务”页上，选择“ASP.NET 5”并将它命名。
+2. 在“创建服务”页上，选择“ASP.NET Core”并将它命名。
 
 	![在新建服务对话框中选择 ASP.NET Web 服务][vs-new-service-dialog]
 
-3. 下一页将提供一组 ASP.NET 5 项目模板。请注意，这些都是在 Service Fabric 应用程序外部创建 ASP.NET 5 项目时所看到的相同模板。对于本教程，我们将选择“Web API”。不过你也可以运用相同的思路来构建完整的 Web 应用程序。
+3. 下一页将提供一组 ASP.NET Core 项目模板。请注意，这些都是在 Service Fabric 应用程序外部创建 ASP.NET Core 项目时所看到的相同模板。对于本教程，我们将选择“Web API”。不过你也可以运用相同的思路来构建完整的 Web 应用程序。
 
 	![选择 ASP.NET 项目类型][vs-new-aspnet-project-dialog]
 
     创建 Web API 项目后，应用程序中会有两个服务。随着你不断构建应用程序，将以完全相同的方式添加更多服务。每个服务都可以单独进行版本控制和升级。
 
->[AZURE.NOTE] 自 Service Fabric 11 月公共预览版开始，已知在处理 ASP.NET 项目时会出现长路径方面的问题。在创建此类项目时，最好为应用程序和服务类型以及代码和配置包名称选择简短名称，以避免发生任何问题。
+>[AZURE.TIP] 若要了解有关构建 ASP.NET Core 服务的详细信息，请参阅 [ASP.NET Core 文档](https://docs.asp.net/en/latest/)。
 
 ## 运行应用程序
 
-为了感受一下我们的成果，让我们部署新的应用程序并看看 ASP.NET 5 Web API 模板提供的默认行为。
+为了感受一下我们的成果，让我们部署新的应用程序并看看 ASP.NET Core Web API 模板提供的默认行为。
 
 1. 在 Visual Studio 中，按 F5 调试应用。
 
-2. 部署完成后，Visual Studio 将启动浏览器并打开 ASP.NET Web API 服务的根目录，类似于 http://localhost:33003。端口号是随机分配的，可能与你计算机上的端口号不同。ASP.NET 5 Web API 模板不提供根目录的默认行为，因此你将在浏览器中收到错误。
+2. 部署完成后，Visual Studio 将启动浏览器并打开 ASP.NET Web API 服务的根目录，类似于 http://localhost:33003。端口号是随机分配的，可能与你计算机上的端口号不同。ASP.NET Core Web API 模板不提供根目录的默认行为，因此你将在浏览器中收到错误。
 
 3. 将 `/api/values` 添加到浏览器中的位置。这将对 Web API 模板中的 ValuesController 调用 `Get` 方法。它会返回模板提供的默认响应，即包含两个字符串的 JSON 数组：
 
-    ![从 ASP.NET 5 Web API 模板返回的默认值][browser-aspnet-template-values]
+    ![从 ASP.NET Core Web API 模板返回的默认值][browser-aspnet-template-values]
 
     在本教程结束后，我们将以有状态服务的最新计数器值替换这些默认值。
 
 
 ## 连接服务
 
-在如何与 Reliable Services 通信方面，Service Fabric 提供十足的弹性。在单个应用程序中，你可能拥有可通过 TCP 访问的服务、可通过 HTTP REST API 访问的其他服务，并且还有其他可通过 Web 套接字访问的服务。有关可用选项和相关权衡取舍的背景信息，请参阅 [Communicating with services（与服务通信）](/documentation/articles/service-fabric-connect-and-communicate-with-services)。 在本教程中，我们将遵循下列其中一种更简单的方法并使用 SDK 中提供的 `ServiceProxy`/`ServiceRemotingListener` 类。
+在如何与 Reliable Services 通信方面，Service Fabric 提供十足的弹性。在单个应用程序中，你可能拥有可通过 TCP 访问的服务、可通过 HTTP REST API 访问的其他服务，并且还有其他可通过 Web 套接字访问的服务。有关可用选项和相关权衡取舍的背景信息，请参阅 [Communicating with services](/documentation/articles/service-fabric-connect-and-communicate-with-services)（与服务通信）。在本教程中，我们将遵循下列其中一种更简单的方法并使用 SDK 中提供的 `ServiceProxy`/`ServiceRemotingListener` 类。
 
 在 `ServiceProxy` 方法（模仿远程过程调用或 RPC）中，定义一个接口以用作服务的公共约定。然后使用该接口生成代理类，以便与服务交互。
 
 
 ### 创建接口
 
-首先创建接口以充当有状态服务与其客户端之间的约定，包括 ASP.NET 5 项目。
+首先创建接口以充当有状态服务与其客户端之间的约定，包括 ASP.NET Core 项目。
 
 1. 在解决方案资源管理器中，右键单击你的解决方案并选择“添加”>“新建项目”。
 
-2. 在左侧导航窗格中选择“Visual C#”条目，然后选择“类库”模板。确保 .NET Framework 版本已设置为 **4.5.1**。
+2. 在左侧导航窗格中选择“Visual C#”条目，然后选择“类库”模板。确保 .NET Framework 版本已设置为 **4.5.2**。
 
     ![为有状态服务创建接口项目][vs-add-class-library-project]
 
 3. 若要使某个接口可供 `ServiceProxy` 使用，它必须派生自 IService 接口。此接口包含在某个 Service Fabric NuGet 包中。若要添加该包，请右键单击新的类库项目，然后选择“管理 NuGet 包”。
 
-4. 确保已选中“包括预发行版”复选框，然后搜索 **Microsoft.ServiceFabric.Services** 包并安装它。
+4. 搜索 **Microsoft.ServiceFabric.Services** 包并安装它。
 
     ![添加服务 NuGet 包][vs-services-nuget-package]
 
@@ -126,14 +125,14 @@ ASP.NET 5 是轻量跨平台的 Web 开发框架，可用于创建现代 Web UI 
 
         using (var tx = this.StateManager.CreateTransaction())
         {          
-            var result = await myDictionary.TryGetValueAsync(tx, "Counter-1");
+            var result = await myDictionary.TryGetValueAsync(tx, "Counter");
             return result.HasValue ? result.Value : 0;
         }
     }
     ```
 
 
-### 使用 ServiceRemotingListener 公开有状态服务
+### 使用服务远程侦听器公开有状态服务
 
 实现 `ICounter` 接口后，使有状态服务可从其他服务调用的最后一个步骤是打开通信通道。对于有状态服务，Service Fabric 提供了名为 `CreateServiceReplicaListeners` 的可重写方法。通过此方法，你可以根据想要为服务启用的通信类型指定一个或多个通信侦听器。
 
@@ -151,8 +150,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     return new List<ServiceReplicaListener>()
     {
         new ServiceReplicaListener(
-            (initParams) =>
-                new ServiceRemotingListener<ICounter>(initParams, this))
+            (context) =>
+                this.CreateServiceRemotingListener(context))
     };
 }
 ```
@@ -177,7 +176,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
     public async Task<IEnumerable<string>> Get()
     {
         ICounter counter =
-            ServiceProxy.Create<ICounter>(0, new Uri("fabric:/MyApp/MyStatefulService"));
+            ServiceProxy.Create<ICounter>(0, new Uri("fabric:/MyApplication/MyStatefulService"));
 
         long count = await counter.GetCountAsync();
 
@@ -187,7 +186,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
     第一行代码是关键代码。若要创建有状态服务的 ICounter Proxy，必须提供两项信息：分区 ID 和服务名称。
 
-    可以使用分区根据定义的键（例如客户 ID 或邮政编码）将有状态服务的状态划分为不同的桶，以此调整有状态服务。在我们的简单应用程序中，有状态服务只有一个分区，所以键并不重要。提供的任何键将导致分区相同。若要深入了解分区服务，请参阅 [How to partition Service Fabric Reliable Services（如何为 Service Fabric Reliable Services 分区）](/documentation/articles/service-fabric-concepts-partitioning)。
+    可以使用分区根据定义的键（例如客户 ID 或邮政编码）将有状态服务的状态划分为不同的桶，以此调整有状态服务。在我们的简单应用程序中，有状态服务只有一个分区，所以键并不重要。提供的任何键将导致分区相同。若要深入了解分区服务，请参阅 [How to partition Service Fabric Reliable Services](/documentation/articles/service-fabric-concepts-partitioning)（如何为 Service Fabric Reliable Services 分区）。
 
     服务名称是 fabric:/&lt;应用程序名称&gt;/&lt;服务名称&gt; 格式的 URI。
 
@@ -216,7 +215,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 相比之下，当你在本地运行 Web 服务时，必须确保服务只有一个实例正在运行。否则，正在同一路径和端口上侦听的多个进程将发生冲突。因此，本地部署的 Web 服务实例计数应设置为“1”。
 
-若要了解如何针对不同环境配置不同的值，请参阅 [Managing application parameters for multiple environments（管理多个环境的应用程序参数）](/documentation/articles/service-fabric-manage-multiple-environment-app-configuration)。
+若要了解如何针对不同环境配置不同的值，请参阅 [Managing application parameters for multiple environments](/documentation/articles/service-fabric-manage-multiple-environment-app-configuration)（管理多个环境的应用程序参数）。
 
 ## 后续步骤
 
@@ -235,4 +234,7 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 [vs-services-nuget-package]: ./media/service-fabric-add-a-web-frontend/vs-services-nuget-package.png
 [browser-aspnet-counter-value]: ./media/service-fabric-add-a-web-frontend/browser-aspnet-counter-value.png
 
-<!---HONumber=Mooncake_0425_2016-->
+<!-- external links -->
+[dotnetcore-install]: https://www.microsoft.com/net/core#windows
+
+<!---HONumber=Mooncake_0627_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="使用 Azure Resource Manager 模板部署 DocumentDB 和 Azure App Service Web Apps | Microsoft Azure" 
+	pageTitle="使用 Azure Resource Manager 模板部署 DocumentDB 和 Azure App Service Web Apps | Azure" 
 	description="了解如何使用 Azure Resource Manager 模板部署 DocumentDB 帐户、Azure App Service Web Apps 以及示例 Web 应用程序。" 
 	services="documentdb, app-service\web" 
 	authors="stephbaron" 
@@ -75,7 +75,7 @@
 7.  部署完成后，就会打开资源组边栏选项卡。
 	![资源组边栏选项卡的屏幕截图](./media/documentdb-create-documentdb-website/TemplateDeployment7.png)
 
-8.  若要使用应用程序，只需导航到 Web 应用 URL（上述示例中的 URL 会是 http://mydemodocdbwebapp.azurewebsites.net)）。你会看到下列 Web 应用程序：
+8.  若要使用应用程序，只需导航到 Web 应用 URL（上述示例中的 URL 会是 http://mydemodocdbwebapp.azurewebsites.net ）。你会看到下列 Web 应用程序：
 
 	![示例待办事项应用程序](./media/documentdb-create-documentdb-website/image2.png)
 
@@ -152,4 +152,4 @@
 >[AZURE.NOTE] 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。你不需要使用信用卡，也不需要做出承诺。
  
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

@@ -9,7 +9,7 @@
 
 <tags
    ms.service="Service-Fabric"
-   ms.date="03/10/2016"
+   ms.date="05/20/2016"
    wacn.date=""/>
 
 
@@ -23,7 +23,7 @@ Service Fabric 群集资源管理器可让你非常精细地控制用于管控�
 让我们依次讨论每项任务：
 
 ## 放置约束
-放置约束可用来控制服务实际可在群集中的哪些节点上运行。通常看到特定的命名服务实例或受限于在特定类型节点上运行的类型的所有服务，但放置约束是可扩展的 - 可以根据节点类型定义任意的属性组合，然后在创建服务时，利用约束来选择它们。放置约束还会在服务生存期内动态更新，让你响应群集中的更改。
+放置约束可用来控制服务实际可在群集中的哪些节点上运行。通常看到特定的命名服务实例或受限于在特定类型节点上运行的类型的所有服务，但放置约束是可扩展的 - 可以根据节点类型定义任意的属性组合，然后在创建服务时，利用约束来选择它们。放置约束还会在服务生存期内动态更新，让你响应群集中的更改。有关放置约束以及如何对其进行配置的详细信息，请参阅[此文](/documentation/articles/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-properties)
 
 ## 度量值
 指标是此服务应在其上获取平衡的资源列表，包括该服务的每个副本或实例默认消耗该资源的数量相关信息。指标还包括一个权重，表示该指标对于服务的重要程度，以便于权衡利弊。
@@ -39,4 +39,4 @@ Service Fabric 群集资源管理器可让你非常精细地控制用于管控�
 - 若要了解群集资源管理器如何管理和平衡群集中的负载，请查看关于[平衡负载](/documentation/articles/service-fabric-cluster-resource-manager-balancing)的文章
 - 群集资源管理器提供许多用于描述群集的选项。若要详细了解这些选项，请查看有关这篇[描述 Service Fabric 群集](/documentation/articles/service-fabric-cluster-resource-manager-cluster-description)的文章
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0627_2016-->

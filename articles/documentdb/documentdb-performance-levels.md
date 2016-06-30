@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DocumentDB 的性能级别 | Microsoft Azure" 
+	pageTitle="DocumentDB 中的性能级别 | Azure" 
 	description="了解 DocumentDB 中的性能级别如何让你能够在每个集合的基础上保留吞吐量。" 
 	services="documentdb" 
 	authors="johnfmacintyre" 
@@ -9,8 +9,7 @@
 
 <tags 
 	ms.service="documentdb" 
- 
-	ms.date="04/08/2016" 
+	ms.date="05/16/2016" 
 	wacn.date=""/>
 
 # DocumentDB 中的性能级别
@@ -170,6 +169,8 @@ DocumentDB 集合允许你根据应用程序的查询模式和性能需求来对
 
 若要了解有关 DocumentDB 的详细信息，请参阅 Azure DocumentDB [文档](https://azure.microsoft.com/documentation/services/documentdb/)。
 
+若要开始使用 DocumentDB 进行规模和性能测试，请参阅 [Performance and Scale Testing with Azure DocumentDB（使用 Azure DocumentDB 进行性能和规模测试）](/documentation/articles/documentdb-performance-testing)。
+
 [1]: ./media/documentdb-performance-levels/documentdb-change-collection-performance7-9.png
 [2]: ./media/documentdb-performance-levels/documentdb-change-collection-performance10-11.png
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

@@ -10,24 +10,22 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="04/22/2016"
+   ms.date="06/13/2016"
    wacn.date=""/>
 
-# 预览：创建使用 Azure Active Directory 进行客户端身份验证的 Service Fabric 群集
+# 创建使用 Azure Active Directory 进行客户端身份验证的 Service Fabric 群集
 
 你可以使用 Azure Active Directory (AAD) 来保护对 Service Fabric 群集管理终结点的访问。本文介绍如何创建所需的 AAD 项目、如何在群集创建期间填充这些项目，以及之后如何连接到这些群集。
 
->[AZURE.IMPORTANT] 与 Service Fabric 群集的 AAD 集成目前以预览版提供。Service Fabric 5.0 运行时提供本文中所述的所有功能，但是目前建议不要将它用于生产群集。
-
 ## 在 AAD 中为 Service Fabric 群集建模
 
-AAD 可让组织（称为租户）管理用户对应用程序的访问，这些应用程序划分为提供基于 Web 的 UI 的应用程序，以及提供本机客户端体验的应用程序。在本文中，我们假设你已创建一个租户。否则，请先阅读 [How to get an Azure Active Directory tenant（如何获取 Azure Active Directory 租户）](/documentation/articles/active-directory-howto-tenant)。
+AAD 可让组织（称为租户）管理用户对应用程序的访问，这些应用程序划分为提供基于 Web 的 UI 的应用程序，以及提供本机客户端体验的应用程序。在本文中，我们假设你已创建一个租户。否则，请先阅读 [How to get an Azure Active Directory tenant](/documentation/articles/active-directory-howto-tenant)（如何获取 Azure Active Directory 租户）。
 
 Service Fabric 群集提供其管理功能的各种入口点（包括基于 Web 的 [Service Fabric Explorer](/documentation/articles/service-fabric-visualizing-your-cluster) 和 [Visual Studio](/documentation/articles/service-fabric-manage-application-in-visual-studio)）。因此，你将要创建两个 AAD 应用程序来控制对群集的访问：一个 Web 应用程序和一个本机应用程序。
 
 为了简化涉及到配置 AAD 与 Service Fabric 群集的一些步骤，我们创建了一组 Windows PowerShell 脚本。
 
->[AZURE.NOTE] 你必须在创建群集“之前”执行这些步骤；因此，在脚本需要群集名称和终结点的情况下，这些应该是计划的值，而不是所创建的值。
+>[AZURE.NOTE] 必须在创建群集*之前*执行这些步骤；因此，在脚本需要群集名称和终结点的情况下，这些应该是计划的值，而不是所创建的值。
 
 1. [将脚本下载到][sf-aad-ps-script-download]你的计算机。
 
@@ -38,7 +36,7 @@ Service Fabric 群集提供其管理功能的各种入口点（包括基于 Web 
 4. 运行 `SetupApplications.ps1` 并提供 TenantId、ClusterName 和 WebApplicationReplyUrl 作为参数。例如：
 
     ```powershell
-    .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
+    .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.chinaeast.chinacloudapp.cn:19080/Explorer/index.html'
     ```
 
     可以通过在 Azure 管理门户中查看租户的 URL 来查找 **TenantId**。该 URL 中嵌入的 GUID 就是 TenantId。例如：
@@ -83,7 +81,7 @@ clusterApplication 表示在上一部分创建的 Web 应用程序。你可以�
 创建用于表示群集的应用程序后，需要将用户分配到 Service Fabric 支持的角色：只读和管理员。可以使用 [Azure 管理门户][azure-management-portal]来执行此操作。
 
 1. 导航到你的租户，然后选择“应用程序”。
-2. 选择名称类似于 `myTestCluster_Cluster` 的 Web 应用。
+2. 选择名称类似于 `myTestCluster_Cluster` 的 Web 应用程序。
 3. 单击“用户”选项卡。
 4. 选择要分配的用户，然后单击屏幕底部的“分配”按钮。
 
@@ -93,7 +91,7 @@ clusterApplication 表示在上一部分创建的 Web 应用程序。你可以�
 
     ![将用户分配到角色][assign-users-to-roles-dialog]
 
->[AZURE.NOTE] 有关 Service Fabric 中角色的详细信息，请参阅 [Role-based access control for Service Fabric clients（适用于 Service Fabric 客户端的基于角色的访问控制）](/documentation/articles/service-fabric-cluster-security-roles)。
+>[AZURE.NOTE] 有关 Service Fabric 中角色的详细信息，请参阅 [Role-based access control for Service Fabric clients](/documentation/articles/service-fabric-cluster-security-roles)（适用于 Service Fabric 客户端的基于角色的访问控制）。
 
 ## 连接到群集
 
@@ -156,4 +154,4 @@ Connect-ServiceFabricCluster -AzureActiveDirectory -ConnectionEndpoint <cluster_
 [setupapp-script-output]: ./media/service-fabric-cluster-security-client-auth-with-aad/setupapp-script-arm-json-output.png
 [vs-publish-aad-login]: ./media/service-fabric-cluster-security-client-auth-with-aad/vs-login-prompt.png
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

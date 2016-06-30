@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/27/2016"
+   ms.date="06/09/2016"
    wacn.date=""/>
 
 # 在 Visual Studio 中创建你的第一个 Azure Service Fabric 应用程序
@@ -38,7 +38,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 	![Visual Studio 中的新建服务对话框][2]
 
-	>[AZURE.NOTE] 有关选项的详细信息，请参阅[选择框架](/documentation/articles/service-fabric-choose-framework)。
+	>[AZURE.NOTE] 有关选项的详细信息，请参阅 [Service Fabric programming model overview](/documentation/articles/service-fabric-choose-framework)（Service Fabric 编程模型概述）。
 
 	Visual Studio 会创建应用程序项目和有状态服务项目，并在解决方案资源管理器中显示它们。
 
@@ -50,7 +50,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 	- **脚本**：包括用于部署/升级应用程序的 PowerShell 脚本。此脚本由 Visual Studio 在幕后使用，可以在命令行直接调用。
 
-	- **应用程序定义**：包括 ApplicationPackageRoot 下的应用程序清单以及 ApplicationParameters 下的用于定义应用程序并使你可以专门为给定环境配置它的关联应用程序参数文件。
+	- **应用程序定义**：包括 *ApplicationPackageRoot* 下的应用程序清单以及 *ApplicationParameters* 下的用于定义应用程序并使你可以专门为给定环境配置它的关联应用程序参数文件。
 
     有关服务项目的内容概述，请参阅 [Reliable Services 入门](/documentation/articles/service-fabric-reliable-services-quick-start)。
 
@@ -102,31 +102,19 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
     ![故障转移之后的诊断事件查看器][diagnostic-events-viewer-detail-post-failover]
 
-### 清理
+## 清理
 
-  结束之前，请务必记住该本地群集非常真实。即使在你停止调试器并关闭 Visual Studio 之后，应用程序也会在后台继续保持运行。根据应用的性质，此后台活动可能会占用计算机上的大量资源。可通过几个选项对此进行管理：
+  结束之前，请务必记住该本地群集非常真实。停止调试器会删除你的应用程序实例，并取消注册应用程序类型。不过，群集将继续在后台运行。可通过几个选项对此进行管理：
 
-  1. 若要删除单个应用程序及其所有数据，请在 Service Fabric Explorer 的“操作”菜单或者左窗格中的应用程序列表视图内，使用“删除应用程序”操作。
-  
-    ![在 Service Fabric Explorer 中删除应用程序][sfe-delete-application]
-    
-  2. 从群集中删除该应用程序后，你可以针对该应用程序选择“取消预配类型”，这将从群集的映像存储中删除该应用程序的包，包括其代码和配置。
-  3. 若要关闭群集，但保留应用程序数据和跟踪，请在系统托盘应用中单击“停止本地群集”。
+  1. 若要关闭群集，但保留应用程序数据和跟踪，请在系统托盘应用中单击“停止本地群集”。
 
-  4. 要完全删除群集，请在系统托盘应用中单击“删除本地群集”。请注意，此选项会导致下次在 Visual Studio 中按 F5 时部署较慢。仅当在一段时间内不想使用本地群集时，或者当需要回收资源时，才使用此选项。
-
-
+  2. 要完全删除群集，请在系统托盘应用中单击“删除本地群集”。请注意，此选项会导致下次在 Visual Studio 中按 F5 时部署较慢。仅当在一段时间内不想使用本地群集时，或者当需要回收资源时，才使用此选项。
 
 ## 后续步骤
 
-<!--
-Temporarily removing this link because we have removed the ASP.NET template.
-
- - [See how you can expose your services to the Internet with a web service front end](/documentation/articles/service-fabric-add-a-web-frontend)
--->
-- [了解如何在 Azure 中创建群集](/documentation/articles/service-fabric-cluster-creation-via-portal)
-- [了解有关 Reliable Services 的详细信息](/documentation/articles/service-fabric-reliable-services-quick-start)
-- [尝试使用 Reliable Actors 编程模型创建服务](/documentation/articles/service-fabric-reliable-actors-get-started)
+- 了解如何[在 Azure 中创建群集](/documentation/articles/service-fabric-cluster-creation-via-portal)或者[在 Windows 上创建独立群集](/documentation/articles/service-fabric-cluster-creation-for-windows-server)。
+- 尝试使用 [Reliable Services](/documentation/articles/service-fabric-reliable-services-quick-start) 或 [Reliable Actors](/documentation/articles/service-fabric-reliable-actors-get-started) 编程模型创建服务。
+- 了解如何使用 [Web 服务前端](/documentation/articles/service-fabric-add-a-web-frontend)向 Internet 服务公开服务。
 
 <!-- Image References -->
 
@@ -142,4 +130,4 @@ Temporarily removing this link because we have removed the ASP.NET template.
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0627_2016-->

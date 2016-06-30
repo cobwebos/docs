@@ -1,16 +1,16 @@
 <properties 
-	pageTitle="DocumentDB 的 .NET NoSQL 示例 | Microsoft Azure" 
+	pageTitle="DocumentDB 的 .NET NoSQL 示例 | Azure" 
 	description="在 github 上查找用于 DocumentDB 中的常见任务的 C# .NET NoSQL 示例，包括针对 NoSQL 数据库中的 JSON 文档执行的 CRUD 操作。" 
 	keywords="NoSQL 示例"
 	services="documentdb" 
-	authors="mimig1" 
+	authors="aliuy" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter=".net"/>
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="03/22/2016" 
+	ms.date="04/18/2016" 
 	wacn.date=""/>
 
 
@@ -179,4 +179,4 @@ IndexManagement 项目示例的 [RunIndexDemo](https://github.com/Azure/azure-do
 
 
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0627_2016-->

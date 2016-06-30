@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DocumentDB 分层资源模型和概念 | Microsoft Azure" 
+	pageTitle="DocumentDB 分层资源模型和概念 | Azure" 
 	description="了解 DocumentDB 的数据库、集合、用户自定义函数 (UDF)、文档、管理资源的权限等的分层模型。"
 	keywords="分层模型, DocumentDB, Azure, Microsoft Azure"	
 	services="documentdb" 
@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="03/30/2016" 
+	ms.date="06/20/2016" 
 	wacn.date=""/>
 
 # DocumentDB 分层资源模型和概念
@@ -93,7 +93,7 @@ DocumentDB 管理的数据库实体被称为**资源**。每个资源都通过�
 DocumentDB 不强制对 JSON 标准或特殊编码进行任何专有扩展；它使用符合标准的 JSON 文档。
  
 ### 对资源进行寻址
-所有资源都可通过 URI 寻址。**\_self** 属性的值表示资源的相对 URI。URI 的格式由 /\<feed>/{\_rid} 路径段构成：
+所有资源都可通过 URI 寻址。**\_self** 属性的值表示资源的相对 URI。URI 的格式由 /\<feed\>/{_rid} 路径段构成：
 
 |\_self 的值 | 说明
 |-------------------|-----------
@@ -408,11 +408,12 @@ DocumentDB 可通过 DocumentDB 存储二进制 blob/媒体，或将其存储到
 -	应用程序可能会将每个用户的元数据存储为不同的文档 - 例如 book1 的 Joe 的元数据存储在由 /colls/joe/docs/book1 引用的文档中。 
 -	指向用户的特定书的内容页面的附件存储在对应的文档中，如 /colls/joe/docs/book1/chapter1、/colls/joe/docs/book1/chapter2，等等。 
 
-请注意，示例使用易于理解的 ID 来表示资源层次结构。通过唯一的资源 ID 和 REST API 访问资源。
+请注意，上面列出的示例使用易于理解的 ID 来表示资源层次结构。通过唯一的资源 ID 和 REST API 访问资源。
 
 对于由 DocumentDB 管理的媒体，附件的 \_media 属性将通过其 URI 引用媒体。DocumentDB 将确保在删除所有未完成的引用时对媒体进行垃圾收集。当你上传新的媒体并填充 \_media 以指向新添加的媒体时，DocumentDB 自动生成附件。如果你选择将媒体存储在由你（例如 OneDrive、Azure 存储空间、DropBox 等）管理的远程 blob 存储区，你仍可以使用附件以引用媒体。在这种情况下，你将自行创建附件并填充其 \_media 属性。
 
-至于所有其他资源，可以创建、替换、删除、读取、枚举附件，也可以轻松地使用 REST API 或任一客户端 SDK 查询附件。至于文档，附件的读取一致性级别遵守数据库帐户中的一致性策略。可以根据你的应用程序的数据一致性要求在每个请求中重写此策略。查询附件时，读取一致性遵循集合上的索引编制模式设置。对于“一致性”，将遵循帐户的一致性策略。
+至于所有其他资源，可以创建、替换、删除、读取、枚举附件，也可以轻松地使用 REST API 或任一客户端 SDK 查询附件。至于文档，附件的读取一致性级别遵守数据库帐户中的一致性策略。可以根据你的应用程序的数据一致性要求在每个请求中重写此策略。查询附件时，读取一致性遵循集合上的索引编制模式设置。对于“一致性”，将遵循帐户的一致性策略。 
+
 ## 用户
 DocumentDB 用户是指对权限进行分组的逻辑命名空间。DocumentDB 用户可能与标识管理系统或预定义应用程序角色中的用户相对应。对于 DocumentDB，用户只是表示在数据库下对一组权限进行分组的抽象。
 
@@ -448,4 +449,4 @@ DocumentDB 用户是指对权限进行分组的逻辑命名空间。DocumentDB �
 [3]: media/documentdb-resources/resources3.png
 
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0627_2016-->

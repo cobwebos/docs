@@ -1,5 +1,5 @@
 <properties
-	pageTitle="DocumentDB 存储和性能 |Microsoft Azure" 
+	pageTitle="DocumentDB 存储和性能 | Azure" 
 	description="了解 DocumentDB 中的数据存储和文档存储，以及如何调整 DocumentDB 的规模来满足你的应用程序的容量需求。" 
 	keywords="文档存储"
 	services="documentdb" 
@@ -10,11 +10,11 @@
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="03/30/2016" 
+	ms.date="05/24/2016" 
 	wacn.date=""/>
 
 # 了解 DocumentDB 中的存储和可预测性能的预配信息
-DocumentDB 是一个全面托管的，面向可扩展文档的针对 JSON 文档的 NoSQL 数据库服务。使用 DocumentDB，你无需租用虚拟机、部署软件、监控数据库或担心灾难恢复。DocumentDB 由 Microsoft 工程师操作和持续监视，以提供一流的可用性、性能和数据保护。
+DocumentDB 是一个全面托管的，面向可扩展文档的针对 JSON 文档的 NoSQL 数据库服务。使用 DocumentDB，你无需租用虚拟机、部署软件或监视数据库。DocumentDB 由 Microsoft 工程师操作和持续监视，以提供一流的可用性、性能和数据保护。
 
 你可以通过在 [Azure 门户](https://portal.azure.com/)中[创建数据库帐户](/documentation/articles/documentdb-create-account)来开始使用 DocumentDB。DocumentDB 使用固态硬盘 (SSD) 支持的存储和吞吐量的单位数来提供。这些单位数是通过在数据库帐户中创建数据库集合来设置的。每个集合都有预留的吞吐量。如果应用程序的吞吐量需求改变，你可以通过为每个集合设置[性能级别](/documentation/articles/documentdb-performance-levels)来动态更改此预留值。
 
@@ -127,4 +127,4 @@ DocumentDB 支持创建单个分区和已分区的集合。DocumentDB 中的每�
 
 有关选择集合的性能级别的详细信息，请参阅 [DocumentDB 中的性能级别](/documentation/articles/documentdb-performance-levels)。
  
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0627_2016-->

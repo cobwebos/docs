@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Azure DocumentDB 中的自动索引| Microsoft Azure" 
+	pageTitle="DocumentDB 中的自动索引 | Azure" 
 	description="了解 Azure DocumentDB 中的自动索引工作原理。" 
 	services="documentdb" 
 	authors="arramac" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="02/03/2016" 
+	ms.date="05/05/2016" 
 	wacn.date=""/>
 	
 # Azure DocumentDB 中的自动索引
@@ -47,7 +47,7 @@ DocumentDB 中的索引利用 JSON 语法允许文档**以树形表示**这一�
 在路径方面均衡处理架构和实例值的重要意义在于，在逻辑上就像单个文档，如果两个文档的索引在路径和包含该路径的文档 ID 之间保留映射，则该索引也可以表示为一个树。DocumentDB 使用这一事实来生成索引树，通过表示集合中各个文档的所有树的联合来构建。DocumentDB 集合中的索引树会随着新文档增加或集合更新而逐渐长大。
 
 
-**DocumentDB 索引的树形表示：**
+**DocumentDB 索引的树形表示︰**
 
 ![索引的树形表示](media/documentdb-indexing/IndexAsTree.png)
 
@@ -63,4 +63,4 @@ DocumentDB 的索引旨在提升存储效率，同时处理多租户。为了追
 - 在[此处](/documentation/articles/documentdb-indexing-policies)了解如何自定义 DocumentDB 索引
  
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0627_2016-->

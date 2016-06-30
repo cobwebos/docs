@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/12/2016"
+   ms.date="06/20/2016"
    wacn.date=""/>
 
 
@@ -57,11 +57,13 @@
 下面描述了所使用的参数：
 
 - **/source** 指向应打包的应用程序的目录。
-- **/target** 定义应在其中创建包的目录。此目录必须与目标目录不同。
+- **/target** 定义应在其中创建包的目录。此目录必须与源目录不同。
 - **/appname** 定义现有应用程序的应用程序名称。请务必了解，这会转换成清单中的服务名称，而不是转换成 Service Fabric 应用程序名称。
 - **/exe** 定义 Service Fabric 应启动的可执行文件，在此例中为 `node.exe`。
 - **/ma** 定义要用来启动可执行文件的参数。由于未安装 Node.js，因此 Service Fabric 需要执行 `node.exe bin/www` 来启动 Node.js Web 服务器。`/ma:'bin/www'` 会指示打包工具使用 `bin/ma` 作为 node.exe 的参数。
 - **/AppType** 定义 Service Fabric 应用程序类型名称。
+
+>[AZURE.NOTE] 可以使用 Visual Studio 来生成应用程序包，以用作应用程序项目的一部分。如果选择在 Visual Studio 项目中链接源，则生成 Visual Studio 解决方案可确保应用程序包能够与源中的更改保持同步。[使用 Visual Studio 打包现有应用程序](/documentation/articles/service-fabric-deploy-existing-app#using-visual-studio-to-package-an-existing-application)
 
 如果浏览到 /target 参数中指定的目录，则可以看到工具已创建完全正常运行的 Service Fabric 包，如下所示：
 
@@ -131,6 +133,8 @@ mongod.exe --dbpath [path to data]
 
 为了将 MongoDB 添加到你的 Service Fabric 应用程序包，你必须确定 /target 参数指向已经包含应用程序清单及 Node.js 应用程序的同一个目录。此外，还需要确定你使用的是相同的 ApplicationType 名称。
 
+>[AZURE.NOTE] 可以使用 Visual Studio 来生成应用程序包，以用作应用程序项目的一部分。如果选择在 Visual Studio 项目中链接源，则生成 Visual Studio 解决方案可确保应用程序包能够与源中的更改保持同步。[使用 Visual Studio 打包现有应用程序](/documentation/articles/service-fabric-deploy-existing-app#using-visual-studio-to-package-an-existing-application)
+
 让我们浏览到该目录并检查已创建的工具。
 
 ```
@@ -178,13 +182,15 @@ mongod.exe --dbpath [path to data]
 Connect-ServiceFabricCluster localhost:19000
 
 Write-Host 'Copying application package...'
-Copy-ServiceFabricApplicationPackage -ApplicationPackagePath '[yourtargetdirectory]' -ImageStoreConnectionString 'file:C:\SfDevCluster\Data\ImageStoreShare' -ApplicationPackagePathInImageStore 'Store\NodeAppType'
+Copy-ServiceFabricApplicationPackage -ApplicationPackagePath '[yourtargetdirectory]' -ImageStoreConnectionString 'file:C:\SfDevCluster\Data\ImageStoreShare' -ApplicationPackagePathInImageStore 'NodeAppType'
 
 Write-Host 'Registering application type...'
-Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'Store\NodeAppType'
+Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
+
+>[AZURE.NOTE] 使用 Visual Studio，可以通过调试 (F5) 或使用发布向导在本地发布应用程序。
 
 将应用程序成功发布到本地群集之后，你便可以通过我们在 Node.js 应用程序的服务清单中输入的端口（例如 http://localhost:3000）访问 Node.js 应用程序。
 
@@ -194,4 +200,4 @@ New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationType
 
 - 了解如何[手动打包来宾应用程序](/documentation/articles/service-fabric-deploy-existing-app)。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0627_2016-->

@@ -28,8 +28,7 @@
  - NoSQL 技术与 Azure SQL 数据库的比较。 
  - 何时使用 DocumentDB、表存储、HBase、HDInsight 与 SQL 数据库。
 
-**PDF 下载：**[Understanding NoSQL on Microsoft Azure（了解 Microsoft Azure 上的 NoSQL）](http://go.microsoft.com/fwlink/p/?LinkId=330292)
 
  
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

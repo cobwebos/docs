@@ -1,6 +1,6 @@
 <properties 
-	pageTitle="如何在 DocumentDB 中创建数据库 | Microsoft Azure" 
-	description="了解如何使用在线服务门户为 Azure DocumentDB（用于 JSON 的 NoSQL 文档数据库）创建数据库。立即获取免费帐户。" 
+	pageTitle="如何在 DocumentDB 中创建数据库 | Azure" 
+	description="了解如何使用在线服务门户为 Azure DocumentDB 创建运行速度飞快且可全局缩放的 NoSQL 数据库。" 
 	keywords="如何创建数据库" 
 	services="documentdb" 
 	authors="mimig1" 
@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="02/19/2016" 
+	ms.date="05/16/2016" 
 	wacn.date=""/>
 
 # 如何使用 Azure 门户创建 DocumentDB 数据库
@@ -48,4 +48,4 @@
 
 当集合中有文档后，你就可以利用门户中的[查询资源管理器](/documentation/articles/documentdb-query-collections-query-explorer)、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) 或某个 [SDK](/documentation/articles/documentdb-sdk-dotnet)，来针对文档使用 [DocumentDB SQL](/documentation/articles/documentdb-sql-query) [执行查询](/documentation/articles/documentdb-sql-query#executing-sql-queries)。
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0627_2016-->

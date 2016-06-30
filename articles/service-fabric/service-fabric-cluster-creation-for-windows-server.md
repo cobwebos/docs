@@ -1,6 +1,6 @@
 <properties
-   pageTitle="创建本地或多云 Azure Service Fabric 群集 | Azure"
-   description="了解如何在运行 Windows Server 的任何本地或云中计算机上创建 Azure Service Fabric 群集（物理或虚拟）。"
+   pageTitle="创建本地或任意云 Azure Service Fabric 群集 | Azure"
+   description="了解如何在运行 Windows Server 的任何本地或任意云中计算机上创建 Azure Service Fabric 群集（物理或虚拟）。"
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="05/12/2016"
+   ms.date="06/14/2016"
    wacn.date=""/>
 
 
@@ -19,9 +19,13 @@ Azure Service Fabric 允许在运行 Windows Server 的任何虚拟机或计算�
 
 本文将引导你使用 Service Fabric的独立包在本地完成创建群集的步骤，不过，你也可以针对其他任何环境（例如其他云）轻松地调整。
 
+>[AZURE.NOTE] 此独立产品目前以预览版提供。如果你想要立即下载一份 EULA，请[单击此处](http://go.microsoft.com/fwlink/?LinkID=733084)。
+
+<a id="downloadpackage">
 ## 下载 Service Fabric 独立包
 
-[下载适用于 Windows Server 2012 R2 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，其名为 “Microsoft.Azure.ServiceFabric.WindowsServer.&lt;版本&gt;.zip”。
+
+[下载适用于 Windows Server 2012 R2 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，其名为 *Microsoft.Azure.ServiceFabric.WindowsServer.&lt;版本&gt;.zip*。
 
 在下载包中，你将看到以下文件：
 
@@ -78,6 +82,7 @@ Azure Service Fabric 允许在运行 Windows Server 的任何虚拟机或计算�
 ### 步骤 5：下载适用于 Windows Server 的 Service Fabric 独立包
 下载[适用于 Windows Server 的 Service Fabric 独立包](http://go.microsoft.com/fwlink/?LinkId=730690)，并将包解压缩到不属于群集的部署计算机或将会属于群集的一个计算机中。
 
+<a id="createcluster"></a>
 ## 创建群集
 
 完成以上规划和准备部分中所述的步骤之后，可以开始创建群集。
@@ -111,4 +116,4 @@ Azure Service Fabric 允许在运行 Windows Server 的任何虚拟机或计算�
 阅读有关 Azure 群集和独立群集的详细信息：
 - [Overview of the standalone cluster creation feature and a comparison with Azure-managed clusters（独立群集创建功能的概述及其与 Azure 托管群集的比较）](/documentation/articles/service-fabric-deploy-anywhere)
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

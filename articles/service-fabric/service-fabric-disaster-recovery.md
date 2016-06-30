@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/03/2016"
+   ms.date="05/25/2016"
    wacn.date=""/>
 
 # Azure Service Fabric 中的灾难恢复
@@ -34,7 +34,7 @@
 
 ### 地理分布
 
-全世界目前有 22 个 Azure 区域（最近又宣布了 5 个）。根据需求和适当位置的可用性（还有其他因素），单个区域可以包含一个或多个物理数据中心。但请注意，即使在包含多个物理数据中心的区域中，也不能保证群集的 VM 平均分散在这些物理位置。实际上，给定群集的所有 VM 目前都预配在单个物理站点中。
+目前中国有 2 个 Azure 区域：中国东部和中国北部。根据需求和适当位置的可用性（还有其他因素），单个区域可以包含一个或多个物理数据中心。但请注意，即使在包含多个物理数据中心的区域中，也不能保证群集的 VM 平均分散在这些物理位置。实际上，给定群集的所有 VM 目前都预配在单个物理站点中。
 
 ## 应对故障
 
@@ -52,7 +52,7 @@
 
 #### 仲裁丢失
 
-如果有状态服务的分区的大多数副本关闭，则该分区将进入所谓的“仲裁丢失”状态。此时，Service Fabric 将停止允许写入该分区，以确保其状态保持一致且可靠。实际上，我们会选择接受一段不可用的时间，以确保客户端不被告知其数据已保存（但事实并非如此）。请注意，如果选择允许从该有状态服务的辅助副本读取，可以在此状态下继续执行读取操作。分区保持仲裁丢失的状态，直到恢复足量的副本，或群集管理员强迫系统继续使用 [Repair-ServiceFabricPartition API](repair-partition-ps) 为止。在主副本关闭时执行此操作会导致数据丢失。
+如果有状态服务的分区的大多数副本关闭，则该分区将进入所谓的“仲裁丢失”状态。此时，Service Fabric 将停止允许写入该分区，以确保其状态保持一致且可靠。实际上，我们会选择接受一段不可用的时间，以确保客户端不被告知其数据已保存（但事实并非如此）。请注意，如果选择允许从该有状态服务的辅助副本读取，可以在此状态下继续执行读取操作。分区保持仲裁丢失的状态，直到恢复足量的副本，或群集管理员强迫系统继续使用 [Repair-ServiceFabricPartition API][repair-partition-ps] 为止。在主副本关闭时执行此操作会导致数据丢失。
 
 系统服务也会遭受仲裁丢失，同时对相关服务造成特定影响。例如，命名服务的仲裁丢失将影响名称解析，而故障转移管理器服务的仲裁丢失将阻止创建新服务与故障转移。请注意，我们并*不*建议你像修复自己的服务一样尝试修复系统服务，而最好是单纯地等待，直到关闭的副本恢复为止。
 
@@ -64,7 +64,7 @@
 
 ### 数据中心服务中断或损坏
 
-在极少数情况下，物理数据中心可能会由于电源或网络连接中断而暂时不可用。在这种情况下，Service Fabric 群集和应用程序同样不可用，但会保留你的数据。对于在 Azure 中运行的群集，你可以在 [Azure 状态页](azure-status-dashboard)上查看有关中断的最新信息。
+在极少数情况下，物理数据中心可能会由于电源或网络连接中断而暂时不可用。在这种情况下，Service Fabric 群集和应用程序同样不可用，但会保留你的数据。对于在 Azure 中运行的群集，你可以在 [Azure 状态页][azure-status-dashboard]上查看有关中断的最新信息。
 
 在整个物理数据中心遭到损坏（这种情况很少见）时，该数据中心托管的所有 Service Fabric 群集及其状态将会丢失。
 
@@ -78,7 +78,6 @@ protected virtual Task<bool> OnDataLoss(CancellationToken cancellationToken)
 }
 ```
 
->[AZURE.NOTE] 备份和还原目前只适用于 Reliable Services API。即将推出的版本将为 Reliable Actors 提供备份和还原。
 
 ### 软件故障和其他数据丢失根源
 
@@ -88,19 +87,21 @@ protected virtual Task<bool> OnDataLoss(CancellationToken cancellationToken)
 
 - 了解如何使用[可测试性框架](/documentation/articles/service-fabric-testability-overview)模拟各种故障
 - 阅读有关灾难恢复和高可用性的其他资源。Microsoft 已发布大量有关这些主题的指导。尽管其中有些文档提到其他产品中使用的特定技术，但也包含了许多可在 Service Fabric 上下文中应用的一般性最佳实践：
- - [可用性核对清单](azure-availability-checklist)
- - [执行灾难恢复演练](disaster-recovery-drill)
- - [Azure 应用程序的灾难恢复和高可用性](dr-ha-guide)
+ - [可用性核对清单](/documentation/articles/best-practices-availability-checklist)
+ - [执行灾难恢复演练](/documentation/articles/sql-database-disaster-recovery-drills)
+ - [Azure 应用程序的灾难恢复和高可用性][dr-ha-guide]
 
 
 <!-- External links -->
 
 [repair-partition-ps]: https://msdn.microsoft.com/zh-cn/library/mt163522.aspx
-[azure-availability-checklist]: /documentation/articles/best-practices-availability-checklist
-[disaster-recovery-drill]: /documentation/articles/sql-database-disaster-recovery-drills/
+[azure-status-dashboard]: /support/service-dashboard/
+
+[dr-ha-guide]: https://msdn.microsoft.com/zh-cn/library/azure/dn251004.aspx
+
 
 <!-- Images -->
 
 [sfx-cluster-map]: ./media/service-fabric-disaster-recovery/sfx-clustermap.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0627_2016-->

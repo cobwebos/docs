@@ -9,16 +9,16 @@
 
 <tags
    ms.service="Service-Fabric"
-   ms.date="03/10/2016"
+   ms.date="05/20/2016"
    wacn.date=""/>
 
 # 在 Service Fabric 中使用指标管理资源消耗和负载
 在 Service Fabric 中，指标是与服务关切的资源相关的一般术语。一般而言，指标是你想要从资源立场进行管理，以便处理服务性能的任何项目。
 
-在上述所有示例中，我们一直在暗中提到指标；内存、磁盘、CPU 使用率等参数都是指标的示例。这些是物理指标，即对应于节点上需要管理的物理资源的资源。指标也可以是逻辑指标，例如应用程序定义的“MyWorkQueueDepth”，它对应于某个级别的资源消耗量（但应用程序并没有真正了解或不知道如何测量它）。
+在上述所有示例中，我们一直在暗中提到指标；内存、磁盘、CPU 使用率等参数都是指标的示例。这些是物理指标，即对应于节点上需要管理的物理资源的资源。指标也可以是逻辑指标，例如应用程序定义的“MyWorkQueueDepth”，它对应于某个级别的资源消耗量（但应用程序并没有真正了解或不知道如何测量它）。事实上，我们看到用户使用的大多数指标是逻辑指标。这是由多种原因造成的，但是最常见的原因是现今我们的许多客户使用托管的代码编写他们的服务，很难从指定的无状态服务实例或有状态服务副本对象测量和报告实际实体资源的消耗量。报告自己的指标的复杂度也是为什么我们要提供现成的一些默认指标。
 
 ## 默认指标
-假设你只是想要开始体验，但并不知道要使用哪些资源，或者哪些资源对你很重要。此时，你可以实施自己的想法，在不指定任何指标的情况下创建服务。这样就可以了！ 我们将为选择一些指标。如果你未自行指定任何指标，我们将为你使用默认的指标 PrimaryCount、ReplicaCount 和（我们知道有点模糊）Count。下表显示了我们默认跟踪的这些指标各有多少负载：
+假设你只是想要开始体验，但并不知道要使用哪些资源，或者哪些资源对你很重要。此时，你可以实施自己的想法，在不指定任何指标的情况下创建服务。这样就可以了！ 我们将为选择一些指标。如果你未自行指定任何指标，我们将为你使用默认的指标 PrimaryCount、ReplicaCount 和（我们知道有点模糊）Count。下表显示这些指标各有多少负载与每个服务对象关联：
 
 | 度量值 | 无状态实例负载 |	有状态辅助负载 |	有状态主要负载 |
 |--------|--------------------------|-------------------------|-----------------------|
@@ -38,14 +38,16 @@
 
 非常好！
 
-获得这种理想的结果后，开始思考下面问题：不同服务的所有主要副本实际上立即呈现相同负载的真正可能性有多大？ 此外，指定服务的负载在一段时间内保持不变的几率为何？ 结果是，对任何严重的工作负荷而言，可能性实际上很低。
+这非常适合，直到开始思考：选择的分区分配导致经过一段时间让所有分区完全平均使用的可能性？ 此外，指定服务的负载在一段时间内保持不变的几率为何，或只是现在相同？ 结果，对于任何严重的工作负荷，它实际上相当低，因此如果对于获得群集最大使用量感兴趣，可能想要开始考虑自定义指标。
 
-实际上，你绝对可以使用默认指标，或至少配合静态自定义指标运行，但这么做通常意味着群集使用率低于期望（因为报告不是自适应的）；在最糟的情况下，还可能导致过度安排节点，因而造成性能问题。使用自定义指标和动态负载报告，我们可以处理得比较好。我们一起来看看后续部分 – 自定义指标和动态负载。
+实际上，你绝对可以使用默认指标，或至少配合静态自定义指标运行，但这么做通常意味着群集使用率低于期望（因为报告不是自适应的）；在最糟的情况下，还可能导致过度安排节点，因而造成性能问题。使用自定义指标和动态负载报告，我们可以处理得比较好。
+
+我们一起来看看后续部分 – 自定义指标和动态负载。
 
 ## 自定义指标
-我们已经讨论过可以有物理和逻辑指标，并且用户可以定义自己的指标。要如何处理这些指标？ 非常简单！ 只要在创建服务时配置指标和默认初始负载就大功告成了！ 当你创建服务时，可以为每个服务实例配置任何一组指标和默认值。
+我们已经讨论过可以有物理和逻辑指标，并且用户可以定义自己的指标。但是怎么做？ 其实很简单！ 只要在创建服务时配置指标和默认初始负载就大功告成了！ 当你创建服务时，可以为每个命名服务实例配置任何一组指标和默认值。
 
-请注意，当你开始定义自定义指标时，如果希望我们也将默认指标用于平衡服务，则需要显式加回默认指标。这是因为我们希望能清楚了解默认指标与自定义指标之间的关系 – 或许相比于主要分布，你更看重内存消耗量，或者，你也许有多个想要与默认指标“混合”的指标。
+请注意，当你开始定义自定义指标时，如果希望我们也将默认指标用于平衡服务，则需要显式加回默认指标。这是因为我们希望能清楚了解默认指标与自定义指标之间的关系 – 或许相比于主要分布，你更看重内存消耗量或 WorkQueueDepth。
 
 假设你要配置一个服务，该服务报告名为“内存”的指标（除了默认指标以外）。对于内存，我们假设已完成一些基本测量，并且知道该服务的主副本通常占用 20Mb 的内存，而同一服务的辅助副本则占用 5Mb。你知道就管理此特定服务的性能而论，内存是最重要的指标，但你仍希望主副本达到平衡，某个节点或容错域的丢失才不使用过多的主副本。此外，你也可以使用默认值。
 
@@ -55,25 +57,25 @@
 
 ```csharp
 StatefulServiceDescription serviceDescription = new StatefulServiceDescription();
-ServiceLoadMetricDescription memoryMetric = new ServiceLoadMetricDescription();
+StatefulServiceLoadMetricDescription memoryMetric = new StatefulServiceLoadMetricDescription();
 memoryMetric.Name = "MemoryInMb";
 memoryMetric.PrimaryDefaultLoad = 20;
 memoryMetric.SecondaryDefaultLoad = 5;
 memoryMetric.Weight = ServiceLoadMetricWeight.High;
 
-ServiceLoadMetricDescription primaryCountMetric = new ServiceLoadMetricDescription();
+StatefulServiceLoadMetricDescription primaryCountMetric = new StatefulServiceLoadMetricDescription();
 primaryCountMetric.Name = "PrimaryCount";
 primaryCountMetric.PrimaryDefaultLoad = 1;
 primaryCountMetric.SecondaryDefaultLoad = 0;
 primaryCountMetric.Weight = ServiceLoadMetricWeight.Medium;
 
-ServiceLoadMetricDescription replicaCountMetric = new ServiceLoadMetricDescription();
+StatefulServiceLoadMetricDescription replicaCountMetric = new StatefulServiceLoadMetricDescription();
 replicaCountMetric.Name = "ReplicaCount";
 replicaCountMetric.PrimaryDefaultLoad = 1;
 replicaCountMetric.SecondaryDefaultLoad = 1;
 replicaCountMetric.Weight = ServiceLoadMetricWeight.Low;
 
-ServiceLoadMetricDescription totalCountMetric = new ServiceLoadMetricDescription();
+StatefulServiceLoadMetricDescription totalCountMetric = new StatefulServiceLoadMetricDescription();
 totalCountMetric.Name = "Count";
 totalCountMetric.PrimaryDefaultLoad = 1;
 totalCountMetric.SecondaryDefaultLoad = 1;
@@ -106,7 +108,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 负载是特定节点上某个服务实例或副本使用多少特定指标的一般概念。
 
 ## 默认负载
-默认负载是资源管理器从实际的服务实例或副本收到任何更新之前，应假设每个服务实例或副本将使用多少负载。对于较简单的服务，这是永远不会动态更新的静态定义，因此将用于服务的生存期。这很适合用于简单的容量规划，因为这正好是我们习惯的做法 – 将某些资源投注于某些工作负荷，好处是至少我们现在是以微服务的心态运行，其中的资源实际上不静态分配到特定工作负荷，而其中的人员也不在决策圈内。
+默认负载是群集资源管理器从实际的服务实例或副本收到任何更新之前，应假设每个服务实例或副本将使用多少负载。对于较简单的服务，这是永远不会动态更新的静态定义，因此将用于服务的生存期。这很适合用于简单的容量规划，因为这正好是我们习惯的做法 – 将某些资源投注于某些工作负荷，好处是至少我们现在是以微服务的心态运行，其中的资源实际上不静态分配到特定工作负荷，而其中的人员也不在决策圈内。
 
 我们允许有状态服务指定其主副本和辅助副本的默认负载 – 实际上对许多服务而言，这些数字都不同，因为主副本和辅助副本运行不同的工作负荷，并且主副本通常可用于读取和写入（以及大多数的计算负荷），而主副本的默认负载大于辅助副本。
 
@@ -118,7 +120,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 代码：
 
 ```csharp
-this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("Memory", 1234), new LoadMetric("Foo", 42) });
+this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("Memory", 1234), new LoadMetric("metric1", 42) });
 ```
 
 服务副本或实例只能针对它们配置要使用的指标报告负载。创建每个服务时将设置指标列表。如果服务副本或实例尝试针对当前未配置要使用的指标报告负载，Service Fabric 将记录该报告但予以忽略，这意味着我们在计算或报告群集的状态时不会使用该指标。这是理想的结果，因为可以改善体验 – 代码可以测量并报告它知道做法的所有内容，而操作员无需更改代码，就可以快速配置、调整和更新该服务的资源平衡规则。例如，这可能包括禁用有错误报告的指标、根据行为重新设置指标的权重，或仅在部署和验证代码之后启用新的指标。
@@ -181,7 +183,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 将指标权重纳入考虑，可以根据指标权重的平均值计算全局平衡。我们已根据服务自身的定义指标权重平衡了服务。
 
 ## 后续步骤
-- 有关可用于配置服务的其他选项的详细信息，请查看 [Learn about configuring Services（了解如何配置服务）](/documentation/articles/service-fabric-cluster-resource-manager-configure-services)中提供的其他群集资源管理器配置的相关主题
+- 有关可用于配置服务的其他选项的详细信息，请查看 [Learn about configuring Services](/documentation/articles/service-fabric-cluster-resource-manager-configure-services)（了解如何配置服务）中提供的其他群集资源管理器配置的相关主题
 - 定义重整指标是合并（而不是分散）节点上负载的一种方式。若要了解如何配置重整，请参阅[此文](/documentation/articles/service-fabric-cluster-resource-manager-defragmentation-metrics)
 - 若要了解群集资源管理器如何管理和平衡群集中的负载，请查看关于[平衡负载](/documentation/articles/service-fabric-cluster-resource-manager-balancing)的文章
 - [获取有关 Service Fabric 群集资源管理器的简介](/documentation/articles/service-fabric-cluster-resource-manager-introduction)以帮助自己入门
@@ -192,4 +194,4 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 [Image3]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-metric-weights-impact.png
 [Image4]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-global-vs-local-balancing.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0627_2016-->
