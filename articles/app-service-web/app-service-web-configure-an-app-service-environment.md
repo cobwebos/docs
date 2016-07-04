@@ -1,3 +1,5 @@
+<!-- not suitable for Mooncake -->
+
 <properties 
 	pageTitle="如何配置 Azure 环境" 
 	description="配置、管理和监视 Azure 环境" 
@@ -9,7 +11,7 @@
 
 <tags
 	ms.service="app-service"
-	ms.date="04/04/2016"
+	ms.date="06/20/2016"
 	wacn.date=""/>
 
 
@@ -27,17 +29,17 @@
 
 ### 计算资源
 
-计算资源用于 4 个资源池。每个 Azure 环境都有一组前端和 3 个可能的辅助角色池。你不需要使用所有 3 个辅助角色池，如果需要，可以只使用其中一个或两个。租户无法直接访问资源池、前端和辅助角色。你无法与其建立 RDP、更改其预配或充当其管理员，但可以查看其数量和大小。在 ASE 中，有 4 个大小选项，标记为 P1 到 P4。有关这些大小及其定价的详细信息，请参阅 [Azure Pricing（Azure 定价）](/documentation/services/web-sites)。
+计算资源用于 4 个资源池。每个 Azure 环境都有一组前端和 3 个可能的辅助角色池。你不需要使用所有 3 个辅助角色池，如果需要，可以只使用其中一个或两个。租户无法直接访问资源池、前端和辅助角色。你无法与其建立 RDP、更改其预配或充当其管理员，但可以查看其数量和大小。在 ASE 中，有 4 个大小选项，标记为 P1 到 P4。有关这些大小及其定价的详细信息，请参阅此处的 [Azure 定价](/documentation/services/web-sites)。
 一次只能执行一项缩放操作。
 
-**前端**前端是保留在 ASE 中的应用的 HTTP/HTTPS 终结点。不能在前端中运行工作负荷。
+**前端**：前端是保留在 ASE 中的应用的 HTTP/HTTPS 终结点。不能在前端中运行工作负荷。
 
 - ASE 以 2 个 P2 开始，这对于开发/测试工作负荷和低级生产工作负荷而言已经足够。强烈建议针对中型到重型生产工作负荷使用 P3。
 - 对于中型到重型生产工作过程而言，建议至少有 4 个 P3 以确保在计划的维护开始执行时有足够的前端在运行。计划的维护活动将一次关闭 1 个前端，因此在维护活动执行期间会降低总体可用的前端容量。
 - 无法立即添加新的前端实例。它们可能需要 2-3 小时来预配。
 - 若要进一步微调，客户应监视前端池的 CPU 百分比、内存百分比，以及活动请求指标。如果运行 P3 时 CPU 或内存百分比超过 70%，则应添加更多前端。如果每个前端的活动请求数目平均达到 15K 到 20K 个请求，也应该添加更多前端。总体目标是在运行 P3 时，将 CPU 和内存百分比维持在低于 70%，并将每个前端的活动请求平均数维持在低于 15K 个请求。  
 
-**辅助角色**辅助角色是应用程序实际运行所在的位置。当你提高 App Service 计划时，将用尽关联辅助角色池中的辅助角色。
+**辅助角色**：辅助角色是应用实际运行所在的位置。当你提高 App Service 计划时，将用尽关联辅助角色池中的辅助角色。
 
 - 无法立即添加辅助角色。无论添加多少辅助角色，都可能需要 2 到 3 小时来预配。
 - 缩放任何池的计算资源大小时，每个更新域都将需要 2-3 小时来完成缩放。ASE 中有 20 个更新域。如果缩放包含 10 个实例的辅助角色池的计算大小，可能需要 20 到 30 个小时才能完成。 
@@ -54,7 +56,7 @@
 - 将需要更大大小的、托管应用程序的 App Service 计划重新分配到新配置的辅助角色池。这是一个快速操作，在一分钟内应可完成。  
 - 如果不再需要那些未使用的实例，请缩减第一个辅助角色池。此操作大约需要 30 分钟来完成。
 
-**自动缩放**可帮助管理计算资源消耗的工具之一就是可以针对前端或辅助角色池执行的自动缩放。例如，你可以在上午增加任何池类型的实例数，然后在傍晚减少实例数，或在辅助角色池中可用的辅助角色数降到低于特定阈值时，增加实例数。如果你想要设置有关计算资源池指标的自动缩放规则，请记得考虑预配所需的时间。有关自动缩放 App Service 环境的更多详细信息，请转到 [How to configure autoscale in an Azure Environment（如何在 App Service 环境中配置自动缩放）][ASEAutoscale]
+**自动缩放**：可帮助管理计算资源消耗的工具之一就是可以针对前端或辅助角色池执行的自动缩放。例如，你可以在上午增加任何池类型的实例数，然后在傍晚减少实例数，或在辅助角色池中可用的辅助角色数降到低于特定阈值时，增加实例数。如果你想要设置有关计算资源池指标的自动缩放规则，请记得考虑预配所需的时间。有关自动缩放 Azure 环境的更多详细信息，请转到[如何在 Azure 环境中配置自动缩放][ASEAutoscale]
 
 ### 存储
 
@@ -66,23 +68,24 @@
 
 ### 网络
 
-与 ASE 配合使用的虚拟网络可以是在创建 ASE 时创建的虚拟网络，或者现有的虚拟网络。如果你希望 VNET 所属的资源组不同于用于 ASE 的资源组，则需要在 ASE 创建流程以外单独创建 VNET。如果在创建 ASE 创建创建子网，将会强制 ASE 进入与 VNET 相同的资源组。
+与 ASE 配合使用的虚拟网络可以是在创建 ASE 时创建的虚拟网络，或者现有的虚拟网络。如果你希望 VNET 所属的资源组不同于用于 ASE 的资源组，则需要在 ASE 创建流程以外单独创建 VNET。如果在创建 ASE 创建创建子网，将会强制 ASE 进入与 VNET 相同的资源组。  
 
 用于 ASE 的 VNET 存在一些限制：
 
 - 目前仅支持 V1“经典”VNET
-- 虚拟网络必须为区域虚拟网络
-- 用于托管 ASE 的 VNET 必须使用 RFC1918 地址（即专用地址）
+- VNET 必须为区域 VNET
+- 利用 2016 年 6 月的最新更改，现在可以将 ASE 部署到使用公用地址范围或 RFC1918 地址空间（即专用地址）的虚拟网络。若要使用具有公用地址范围的虚拟网络，你需要提前创建子网，然后在 ASE 创建 UX 中选择该子网。
 - 需要有包含 8 个或更多个地址且为 ASE 部署位置的子网
-- 将某个子网用于托管 ASE 之后，无法更改该子网的地址范围。因此，建议子网至少包含 64 个位置以适应将来的 ASE 发展 
+- 将某个子网用于托管 ASE 之后，无法更改该子网的地址范围。因此，建议子网至少包含 64 个地址以适应将来的 ASE 增长 
+- **用于托管 ASE 的子网不得包含任何其他计算资源。**
 
 不同于包含 ASE 的托管服务，[虚拟网络][virtualnetwork]和子网都在用户的控制之下。可以通过虚拟网络 UI 或 Powershell 管理 VNET。
 
 因为此功能将 Azure 置于 VNET 中，这意味着托管在 ASE 中的应用现在可直接访问通过 ExpressRoute 或站点到站点 VPN 提供的资源。Azure 环境中的应用不需要其他网络功能即可访问托管 Azure 环境的 VNET 可用的资源。这意味着你无需使用 VNET 集成或混合连接，即可将资源移入或连接到 VNET。但你仍可以使用这两项功能访问网络中未连接到 VNET 的资源。例如，你可以使用 VNET 集成来与订阅中未连接到 ASE 所在的 VNET 的 VNET 相集成。像平时一样，你仍可使用混合连接来访问其他网络中的资源。
 
-如果 VNET 配置了 ExpressRoute VPN，则你应注意 ASE 的某些路由要求。某些用户定义的路由 (UDR) 配置与 ASE 不兼容。有关在包含 ExpressRoute 的 VNET 中运行 ASE 的详细信息，请参阅以下文档：[Running an Azure Environment in a VNET with ExpressRoute（在包含 ExpressRoute 的 VNET 中运行 Azure 环境）][ExpressRoute]
+如果 VNET 配置了 ExpressRoute VPN，则你应注意 ASE 的某些路由要求。某些用户定义的路由 (UDR) 配置与 ASE 不兼容。有关在包含 ExpressRoute 的 VNET 中运行 ASE 的更多详细信息，请参阅以下文档：[在包含 ExpressRoute 的 VNET 中运行 Azure 环境][ExpressRoute]
 
-现在你还可以使用网络安全组来控制对应用的访问。通过此功能，可以将 Azure 环境锁定到你想限定使用的 IP 地址。有关如何操作的详细信息，请参阅此处的文档：[How to Control Inbound Traffic in an Azure Environment（如何在 Azure 环境中控制入站流量）](/documentation/articles/app-service-app-service-environment-control-inbound-traffic)。
+现在你还可以使用网络安全组来控制对应用的访问。通过此功能，可以将 Azure 环境锁定到你想限定使用的 IP 地址。有关如何操作的详细信息，请参阅以下文档：[如何在 Azure 环境中控制入站流量](/documentation/articles/app-service-app-service-environment-control-inbound-traffic)。
 
 ## 门户
 
@@ -111,13 +114,13 @@
 
 ASE 边栏选项卡中有一个包含几项重要功能的“设置”部分
 
-**“设置”>属性**“设置”边栏选项卡在显示 ASE 边栏选项卡时自动打开。顶部是“属性”。此处显示了许多与“基本信息”重复的项目，但“VIP 地址”和“出站 IP 地址”是非常有用的项。
+**设置 > 属性**：“设置”边栏选项卡在显示 ASE 边栏选项卡时自动打开。顶部是“属性”。此处显示了许多与“基本信息”重复的项目，但“VIP 地址”和“出站 IP 地址”是非常有用的项。
 
 ![][4]
 
-**“设置”>“IP 地址”**当你在 ASE 中创建 IP SSL 应用时，需要有一个 IP SSL 地址。为此，你的 ASE 需要拥有一些可分配的 IP SSL 地址。创建的 ASE 最初有 1 个 IP SSL 用于此目的，但你可以添加更多地址。增加 IP SSL 地址需要付费，如 [Azure Pricing][AppServicePricing]（Azure 定价）中有关 SSL 连接的部分中所述。额外的价格是 IP SSL 价格。
+**设置 > IP 地址**：当你在 ASE 中创建 IP SSL 应用时，需要有一个 IP SSL 地址。为此，你的 ASE 需要拥有一些可分配的 IP SSL 地址。创建的 ASE 最初有 1 个 IP SSL 用于此目的，但你可以添加更多地址。附加 IP SSL 地址需要付费，如 [Azure 定价][AppServicePricing]中有关 SSL 连接的部分所述。额外的价格是 IP SSL 价格。
 
-**“设置”>“前端池”/“辅助角色池”**其中的每个资源池边栏选项卡可让你查看有关该资源池的信息，以及获得全面缩放该资源池所需的控制权。
+**设置 > 前端池/辅助角色池**：其中的每个资源池边栏选项卡可让你查看有关该资源池的信息，并获得全面缩放该资源池所需的控制权。
 
 每个资源池的基本边栏选项卡分别提供一个图表，其中包含该资源池的度量值。就像 ASE 边栏选项卡中的图表，你可以进入图表并设置所需的警报。从 ASE 边栏选项卡为特定的资源池设置警报，效果等同于从资源池进行设置。在辅助角色池的“设置”边栏选项卡中，你有权列出在此辅助角色池中运行的所有应用或 App Service 计划。
 
@@ -141,7 +144,7 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”部分
 
 ![][6]
 
-若要使用特定资源池中的手动或自动缩放功能，请在适当情况下转到的“设置”>“前端池”/“辅助角色池”，然后打开想要更改的池。转到“设置”>“扩大或设置”>“增加”。“扩大”边栏选项卡可让你控制实例数量。“增加”可让你控制资源大小。
+若要使用特定资源池中的手动或自动缩放功能，请根据需要转到“设置”>“前端池”/“辅助角色池”，然后打开想要更改的池。转到“设置”>“扩大或设置”>“增加”。“扩大”边栏选项卡可让你控制实例数量。“增加”可让你控制资源大小。
 
 ![][7]
 
@@ -174,10 +177,11 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”部分
 ![][9]
 
 ## 入门
+[应用程序服务环境自述文件](/documentation/articles/app-service-app-service-environments-readme)中提供了有关 Azure 环境的所有文章和操作说明。
 
-若要开始使用 Azure 环境，请参阅 [How To Create An Azure Environment（如何创建 Azure 环境）](/documentation/articles/app-service-web-how-to-create-an-app-service-environment)
+若要开始使用 Azure 环境，请参阅[如何创建 Azure 环境](/documentation/articles/app-service-web-how-to-create-an-app-service-environment)
 
-有关 Azure 平台的详细信息，请参阅 [Azure Web App（Azure Web 应用）](/documentation/services/web-sites)。
+有关 Azure 平台的详细信息，请参阅 [Azure Web 应用](/documentation/services/web-sites)。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../includes/app-service-web-whats-changed.md)]
 
@@ -206,4 +210,4 @@ ASE 边栏选项卡中有一个包含几项重要功能的“设置”部分
 [ASEAutoscale]: /documentation/articles/app-service-environment-auto-scale/
 [ExpressRoute]: /documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0627_2016-->

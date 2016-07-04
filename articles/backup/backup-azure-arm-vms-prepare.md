@@ -1,16 +1,16 @@
 <properties
-	pageTitle="准备好环境以备份 ARM 虚拟机 | Azure"
+	pageTitle="准备环境以备份 Resource Manager 部署的虚拟机 | Azure"
 	description="确保对环境进行准备，以便在 Azure 中备份虚拟机"
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
-	manager="jwhit"
+	manager="cfreeman"
 	editor=""
 	keywords="备份; 正在备份;"/>
 
 <tags
 	ms.service="backup"
-	ms.date="05/03/2016"
+	ms.date="06/03/2016"
 	wacn.date=""/>
 
 
@@ -20,13 +20,13 @@
 - [Resource Manager 模型](backup-azure-arm-vms-prepare.md)
 - [经典模型](backup-azure-vms-prepare.md)
 
-本文提供有关准备环境以备份 Azure Resource Manager (ARM) 虚拟机 (VM) 的步骤。过程中显示的步骤将使用 Azure 门户。
+本文提供有关准备环境以备份 Resource Manager 部署的虚拟机 (VM) 的步骤。过程中显示的步骤将使用 Azure 门户。
 
-Azure 备份服务提供两种类型的保管库（备份保管库和恢复服务保管库）来保护 VM。备份保管库保护使用经典部署模型部署的 VM。恢复服务保管库保护经典部署的 VM 和 ARM 部署的 VM。必须使用恢复服务保管库来保护 ARM 部署的 VM。
+Azure 备份服务提供两种类型的保管库（备份保管库和恢复服务保管库）来保护 VM。备份保管库保护使用经典部署模型部署的 VM。恢复服务保管库保护**经典部署的 VM 和 Resource Manager 部署的 VM**。必须使用恢复服务保管库来保护 Resource Manager 部署的 VM。
 
 >[AZURE.NOTE] Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 和经典部署模型](../resource-manager-deployment-model.md)。有关使用经典部署模型 VM 的详细信息，请参阅 [Prepare your environment to back up Azure virtual machines（准备好环境以备份 Azure 虚拟机）](backup-azure-vms-prepare.md)。
 
-在保护或备份 ARM 虚拟机 (VM) 之前，请确保符合以下先决条件：
+请确保符合以下先决条件，这样才能保护或备份 Resource Manager 部署的虚拟机 (VM)：
 
 - 在与 VM 相同的位置创建恢复服务保管库（或标识现有的恢复服务保管库）。
 - 选择方案、定义备份策略并定义要保护的项。
@@ -166,7 +166,7 @@ Azure 备份服务提供两种类型的保管库（备份保管库和恢复服�
 
 ## 在虚拟机中安装 VM 代理
 
-Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。如果 VM 创建自 Azure 资源库，则 VM 代理已存在于虚拟机上。此处提供的信息适用于不是使用从 Azure 映像库创建的 VM 的情况（例如，从本地数据中心迁移的 VM）。在这种情况下，需要安装 VM 代理才能保护虚拟机。
+Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。如果 VM 创建自 Azure 资源库，则 VM 代理已存在于虚拟机上。此处提供的信息适用于*不是*使用从 Azure 映像库创建的 VM 的情况（例如，从本地数据中心迁移的 VM）。在这种情况下，需要安装 VM 代理才能保护虚拟机。
 
 了解 [VM 代理](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)以及[如何安装 VM 代理](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md)。
 
@@ -178,7 +178,7 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。�
 | --- | --- | --- |
 | 安装 VM 代理 | <li>下载并安装[代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。你需要有管理员权限才能完成安装。<li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，指明已安装代理。 | <li>从 GitHub 安装最新的 [Linux 代理](https://github.com/Azure/WALinuxAgent)。你需要有管理员权限才能完成安装。<li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，指明已安装代理。 |
 | 更新 VM 代理 | 更新 VM 代理与重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。<br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 | 遵循有关[更新 Linux VM 代理](../virtual-machines-linux-update-agent.md)的说明操作。<br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
-| 验证 VM 代理安装 | <li>导航到 Azure VM 中的 *C:\\WindowsAzure\\Packages* 文件夹。<li>你应会发现 WaAppAgent.exe 文件已存在。<li> 右键单击该文件，转到“属性”，然后选择“详细信息”选项卡。“产品版本”字段应为 2.6.1198.718 或更高。 | 不适用 |
+| 验证 VM 代理安装 | <li>导航到 Azure VM 中的 C:\\WindowsAzure\\Packages 文件夹。<li>你应会发现 WaAppAgent.exe 文件已存在。<li> 右键单击该文件，转到“属性”，然后选择“详细信息”选项卡。“产品版本”字段应为 2.6.1198.718 或更高。 | 不适用 |
 
 
 ### 备份扩展
@@ -302,10 +302,10 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 ```
 
 
-*这些步骤使用本示例中的特定名称和值。在输入或者将详细信息剪切并粘贴到代码中时，请使用部署的名称和值。*
+这些步骤使用本示例中的特定名称和值。在输入或者将详细信息剪切并粘贴到代码中时，请使用部署的名称和值。
 
 
-确定已建立网络连接后，可以开始备份 VM 了。请参阅 [Back up Azure Resource Manager (ARM) VMs（备份 Azure Resource Manager (ARM) VM）](backup-azure-arm-vms.md)。
+确定已建立网络连接后，可以开始备份 VM 了。请参阅[备份 Resource Manager 部署的 VM](backup-azure-arm-vms.md)。
 
 ## 有疑问？
 如果你有疑问，或者希望包含某种功能，请[给我们反馈](http://aka.ms/azurebackup_feedback)。
@@ -317,4 +317,4 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 - [计划 VM 备份基础结构](backup-azure-vms-introduction.md)
 - [管理虚拟机备份](backup-azure-manage-vms.md)
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0627_2016-->

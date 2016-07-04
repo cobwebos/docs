@@ -11,4 +11,4 @@
 每个查询的最大 OR 子句数量* |200
 最大响应大小|1 MB
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0627_2016-->

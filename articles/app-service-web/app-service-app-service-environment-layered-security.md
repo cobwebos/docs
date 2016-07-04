@@ -11,8 +11,8 @@
 
 <tags
 	ms.service="app-service"
-	ms.date="01/05/2016"
-	wacn.date=""/>	
+	ms.date="06/14/2016"
+	wacn.date=""/>
 
 # 使用 Azure 环境实现分层的安全体系结构
 
@@ -87,7 +87,9 @@
 
 
 ## 其他链接和信息 ##
-经典虚拟网络上的网络[安全组配置][NetworkSecurityGroupsClassic]。
+[应用程序服务环境自述文件](/documentation/articles/app-service-app-service-environments-readme)中提供了有关 Azure 环境的所有文章和操作说明。
+
+在经典虚拟网络上配置[网络安全组][NetworkSecurityGroupsClassic]。
 
 了解[出站 IP 地址][NetworkArchitecture]和 Azure 环境。
 
@@ -107,4 +109,4 @@ Azure 环境使用的[网络端口][InboundTraffic]。
 [ConceptualArchitecture]: ./media/app-service-app-service-environment-layered-security/ConceptualArchitecture-1.png
 [NSGConfiguration]: ./media/app-service-app-service-environment-layered-security/NSGConfiguration-1.png
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0627_2016-->

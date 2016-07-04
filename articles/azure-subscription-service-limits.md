@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="multiple"
-	ms.date="05/11/2016"
+	ms.date="06/08/2016"
 	wacn.date=""/>
 
 # Azure 订阅和服务限制、配额和约束
@@ -20,11 +20,11 @@
 
 > [AZURE.NOTE] 如果想要提高**默认限制**之上的限制，可以[打开免费的联机客户支持请求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。无法将这些限制提高到超过下表中的**最大限制**值。如果没有任何**最大限制**列，则指定的资源不具有可调整的限制。
 
-## 限制和 Azure Resource Manager
+## 限制和 Azure 资源管理器
 
-现在可以将多个 Azure 资源合并到单个 Azure 资源组中。在使用资源组时，以前针对全局的限制会通过 Azure Resource Manager 在区域级别进行管理。有关 Azure 资源组的详细信息，请参阅[使用资源组管理 Azure 资源](/documentation/articles/resource-group-portal)。
+现在可以将多个 Azure 资源合并到单个 Azure 资源组中。在使用资源组时，以前针对全局的限制会通过 Azure 资源管理器在区域级别进行管理。有关 Azure 资源组的详细信息，请参阅[使用资源组管理 Azure 资源](/documentation/articles/resource-group-portal)。
 
-在下面的限制中，添加了一个新表以反映在使用 Azure Resource Manager时限制中的任何差异。例如，会存在一个**订阅限制**表和一个**订阅数限制 - Azure Resource Manager**表。如果某个限制同时适用于这两种方案，它将仅显示在第一个表中。除非另有说明，否则限制是跨所有区域的全局限制。
+在下面的限制中，添加了一个新表以反映在使用 Azure 资源管理器时限制中的任何差异。例如，会存在一个**订阅限制**表和一个**订阅数限制 - Azure 资源管理器**表。如果某个限制同时适用于这两种方案，它将仅显示在第一个表中。除非另有说明，否则限制是跨所有区域的全局限制。
 
 > [AZURE.NOTE] 请务必强调 Azure 资源组中的资源配额是您的订阅可以访问的每个区域，而不像服务管理配额那样是可以访问的每个订阅。我们来使用核心配额作为示例。如果您需要根据对核心的支持请求增加配额，则需要决定您想要在哪个区域中使用多少核心，然后针对您希望的 Azure 资源组核心配额的数量和区域进行特定请求。因此，如果您需要在西欧使用 30 个核心以在那里运行您的应用程序，则应专门在西欧请求 30 个核心。但这不会增加您在任何其他区域的核心配额 -- 仅西欧会有 30 个核心配额。
 <!-- -->
@@ -37,6 +37,7 @@
 - [API 管理](#api-management-limits)
 - [App Service](#app-service-limits)
 - [Application Insights](#application-insights-limits)
+- [自动化](#automation-limits)
 - [Azure Redis Cache](#azure-redis-cache-limits)
 - [Azure RemoteApp](#azure-remoteapp-limits)
 - [备份](#backup-limits)
@@ -47,6 +48,7 @@
 - [Data Factory](#data-factory-limits)
 - [DNS](#dns-limits)
 - [DocumentDB](#documentdb-limits)
+- [事件中心](#event-hubs-limits)
 - [IoT 中心](#iot-hub-limits)
 - [密钥保管库](#key-vault-limits)
 - [媒体服务](#media-services-limits)
@@ -68,6 +70,7 @@
 - [订阅](#subscription-limits)
 - [流量管理器](#traffic-manager-limits)
 - [虚拟机](#virtual-machines-limits)
+- [虚拟机规模集](#virtual-machine-scale-sets-limits)
 
 
 ### 订阅限制
@@ -76,7 +79,7 @@
 
 #### 订阅限制 - Azure Resource Manager
 
-使用 Azure Resource Manager 和 Azure 资源组时，以下限制适用。未使用 Azure Resource Manager 更改的限制不会在下面列出。请参阅上表了解这些限制。
+使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。未使用 Azure 资源管理器更改的限制不会在下面列出。请参阅上表了解这些限制。
 
 [AZURE.INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 
@@ -85,7 +88,6 @@
 
 [AZURE.INCLUDE [azure-resource-groups-limits](../includes/azure-resource-groups-limits.md)]
 
-
 ### 虚拟机限制
 #### 虚拟机限制
 [AZURE.INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
@@ -93,10 +95,13 @@
 
 #### 虚拟机限制 - Azure Resource Manager
 
-使用 Azure Resource Manager 和 Azure 资源组时，以下限制适用。未使用 Azure Resource Manager 更改的限制不会在下面列出。请参阅上表了解这些限制。
+使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。未使用 Azure 资源管理器更改的限制不会在下面列出。请参阅上表了解这些限制。
 
 [AZURE.INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
+### 虚拟机规模集限制
+
+[AZURE.INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]
 
 ### 网络限制
 
@@ -168,6 +173,7 @@
 
 [AZURE.INCLUDE [azure-documentdb-limits](../includes/azure-documentdb-limits.md)]
 
+列出的带星号 (*) 的配额[可联系 Azure 支持部门进行调整](./documentdb/documentdb-increase-limits.md)。
 
 ### Mobile Engagement 限制
 
@@ -178,13 +184,19 @@
 
 定价层决定了搜索服务的容量和限制。层包括：
 
-- **免费**：多租户服务，与其他 Azure 订户共享，仅用于评估和小型开发项目。
-- **基本（预览）**：为小规模生产工作负荷提供专用计算资源。此层目前处于预览期，以优惠价提供。
-- **标准（S1 和 S2）**：面向生产工作负荷。我们可根据要求提供更大的容量版本 (S2)，如有需要，请向 azuresearch_contact@microsoft.com) 发送电子邮件）。
+- 免费层是多租户服务，与其他 Azure 订户共享，仅用于评估和小型开发项目。
+- 基本层为规模较小的生产工作负荷提供专用的计算资源，并为高可用查询工作负荷提供最多 3 个副本。
+- 标准层（S1、S2、S3、S3 高密度）适用于较大型生产工作负荷。标准层内有多个级别，以便你针对特定方案选择资源配置。
 
-[AZURE.INCLUDE [azure-search-limits-all](../includes/azure-search-limits-all.md)]
+**订阅限制**
 
-若要了解其他限制，如文档大小、密钥数、请求数和响应数，请参阅 [Azure 搜索中的服务限制](/documentation/articles/search-limits-quotas-capacity)。
+[AZURE.INCLUDE [azure-search-limits-per-subscription](../includes/azure-search-limits-per-subscription.md)]
+
+**搜索服务限制**
+
+[AZURE.INCLUDE [azure-search-limits-per-service](../includes/azure-search-limits-per-service.md)]
+
+有关其他限制的更详尽的信息，包括文档大小、每秒查询数、密钥、请求和响应，请参阅 [Azure 搜素中的服务限制](search/search-limits-quotas-capacity.md)。
 
 ### 媒体服务限制
 
@@ -202,6 +214,9 @@
 
 [AZURE.INCLUDE [notification-hub-limits](../includes/notification-hub-limits.md)]
 
+### 事件中心限制
+
+[AZURE.INCLUDE [azure-servicebus-limits](../includes/event-hubs-limits.md)]
 
 ### 服务总线限制
 
@@ -220,7 +235,10 @@
 
 ### 流分析限制
 
-[AZURE.INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]
+| 限制标识符 | 限制 | 注释 |
+|----------------- | ------------|--------- |
+| 每个区域每个订阅的最大流式处理单位数 | 50 | 增加订阅的流式处理单位数超过 50 的请求可通过联系 [Microsoft 支持](https://support.microsoft.com/zh-cn)发出。 |
+| 流式处理单位的最大吞吐量 | 1MB/秒* | 每个 SU 的最大吞吐量取决于方案。实际的吞吐量可能较低，具体取决于查询复杂性和分区。可在[扩展 Azure 流分析作业以增加吞吐量](../articles/stream-analytics/stream-analytics-scale-jobs.md)一文中找到更多详细信息。 |
 
 ### Active Directory 限制
 
@@ -282,4 +300,4 @@
 
 [云服务的大小](/documentation/articles/cloud-services-sizes-specs)
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

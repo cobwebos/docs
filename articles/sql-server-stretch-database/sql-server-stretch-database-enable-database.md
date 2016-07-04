@@ -1,15 +1,15 @@
 <properties
-	pageTitle="为数据库启用延伸数据库 | Microsoft Azure"
+	pageTitle="为数据库启用 Stretch Database | Azure"
 	description="了解如何为延伸数据库配置数据库。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
-	authors="douglasl"
-	manager="jhubbard"
-	editor="monicar"/>
+	authors="douglaslMS"
+	manager=""
+	editor=""/>
 
 <tags
 	ms.service="sql-server-stretch-database"
-	ms.date="02/26/2016"
+	ms.date="06/14/2016"
 	wacn.date=""/>
 
 # 为数据库启用延伸数据库
@@ -24,7 +24,7 @@
 
 -   在为延伸配置数据库之前，我们建议你运行延伸数据库顾问来识别符合延伸条件的数据库和表。延伸数据库顾问还可识别阻碍性问题。有关详细信息，请参阅[识别符合延伸数据库条件的数据库和表](/documentation/articles/sql-server-stretch-database-identify-databases)。
 
--   请查看[延伸数据库的外围应用限制与阻碍性问题](/documentation/articles/sql-server-stretch-database-limitations)。
+-   请参阅 [Stretch Database 的限制](/documentation/articles/sql-server-stretch-database-limitations)。
 
 -   延伸数据库会将数据迁移到 Azure。因此，你必须拥有一个 Azure 帐户和订阅以供计费。若要获取 Azure 帐户，请[单击此处](pricing/1rmb-trial/)。
 
@@ -48,7 +48,7 @@ GO
 有关详细信息，请参阅[配置 remote data archive 服务器配置选项](https://msdn.microsoft.com/zh-cn/library/mt143175.aspx) 和 [sp\_configure (Transact-SQL)](https://msdn.microsoft.com/zh-cn/library/ms188787.aspx)。
 
 ## <a name="Wizard"></a>使用向导来对数据库启用延伸数据库
-有关“为数据库启用延伸向导”的信息，包括必须输入的信息以及必须选择的选项，请参阅[为数据库启用延伸向导](/documentation/articles/sql-server-stretch-database-wizard)。
+有关“为数据库启用延伸向导”的信息，包括必须输入的信息以及必须选择的选项，请参阅[通过运行“为数据库启用延伸向导”开始操作](/documentation/articles/sql-server-stretch-database-wizard)。
 
 ## <a name="EnableTSQLDatabase"></a>使用 Transact-SQL 对数据库启用延伸数据库
 在对各个表启用延伸数据库之前，必须先对数据库启用延伸数据库。
@@ -61,12 +61,10 @@ GO
 
 3.  若要为延伸数据库配置某个 SQL Server 数据库，该数据库必须具有数据库主密钥。数据库主密钥用于保护延伸数据库在连接到远程数据库时所用的凭据。若要手动创建数据库主密钥，请参阅 [CREATE MASTER KEY (Transact-SQL)](https://msdn.microsoft.com/zh-cn/library/ms174382.aspx) 和[创建数据库主密钥](https://msdn.microsoft.com/zh-cn/library/aa337551.aspx)。
 
-    ```tsql
-    USE <database>
-    GO
-
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD='<password>'
-    ```
+        USE <database>
+        GO
+    
+        CREATE MASTER KEY ENCRYPTION BY PASSWORD ='<password>'
 
 4.  在为延伸数据库配置数据库时，必须提供用于在本地 SQL Server 与远程 Azure 服务器之间进行通信的延伸数据库凭据。可以使用两个选项。
 
@@ -78,11 +76,9 @@ GO
 
         若要手动创建凭据，请参阅 [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/mt270260.aspx)。创建凭据需要 ALTER ANY CREDENTIAL 权限。
 
-        ```tsql
-        CREATE DATABASE SCOPED CREDENTIAL <db_scoped_credential_name>
-            WITH IDENTITY = '<identity>' , SECRET = '<secret>'
-        GO
-        ```
+            CREATE DATABASE SCOPED CREDENTIAL <db_scoped_credential_name>
+                WITH IDENTITY = '<identity>' , SECRET = '<secret>'
+            GO
 
     -   如果符合以下所有条件，则可以使用 SQL Server 的联合服务帐户来与远程 Azure 服务器通信。
 
@@ -98,17 +94,15 @@ GO
 
     1.  对于 SERVER 参数，请提供现有 Azure 服务器的名称，包括该名称的 `.database.windows.net` 部分 - 例如 `MyStretchDatabaseServer.database.windows.net`。
 
-    2.  提供包含 CREDENTIAL 参数的现有管理员凭据，或指定 FEDERATED\_SERVICE\_ACCOUNT \\= ON。以下示例提供了一个现有的凭据。
+    2.  请提供具有 CREDENTIAL 参数的现有管理员凭据，或指定 FEDERATED\_SERVICE\_ACCOUNT = ON。以下示例提供了一个现有的凭据。
 
-    ```tsql
-    ALTER DATABASE <database name>
-        SET REMOTE_DATA_ARCHIVE = ON
-            (
-                SERVER = <server_name> ,
-                CREDENTIAL = <db_scoped_credential_name>
-            ) ;
-    GO;
-    ```
+            ALTER DATABASE <database name>
+                SET REMOTE_DATA_ARCHIVE = ON
+                    (
+                        SERVER = '<server_name>',
+                        CREDENTIAL = <db_scoped_credential_name>
+                    ) ;
+            GO;
 
 ## 后续步骤
 为延伸数据库启用其他表。监视数据迁移与管理已启用延伸的数据库和表。
@@ -124,7 +118,8 @@ GO
 -   [备份和还原已启用延伸的数据库](/documentation/articles/sql-server-stretch-database-backup)
 
 ## 另请参阅
-[识别符合延伸数据库条件的数据库和表](/documentation/articles/sql-server-stretch-database-identify-databases)
-[ALTER DATABASE SET 选项 (Transact-SQL)](https://msdn.microsoft.com/zh-cn/library/bb522682.aspx)
 
-<!---HONumber=Mooncake_0307_2016-->
+[标识 Stretch Database 的数据库和表](/documentation/articles/sql-server-stretch-database-identify-databases)
+
+[ALTER DATABASE SET 选项 (Transact-SQL)](https://msdn.microsoft.com/zh-cn/library/bb522682.aspx)
+<!---HONumber=Mooncake_0627_2016-->

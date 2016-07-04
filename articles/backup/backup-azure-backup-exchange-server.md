@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份 | Microsoft Azure"
+	pageTitle="使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份 | Azure"
 	description="了解如何使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份"
 	services="backup"
 	documentationCenter=""
@@ -9,7 +9,8 @@
 
 <tags
 	ms.service="backup"
-	ms.date="04/20/2015"
+
+	ms.date="05/19/2016"
 	wacn.date=""/>
 
 
@@ -129,4 +130,4 @@
 
 - [Azure 备份常见问题](/documentation/articles/backup-azure-backup-faq)
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0627_2016-->

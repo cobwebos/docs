@@ -7,9 +7,9 @@
    manager="jwhit"
    editor=""/>
 <tags
-   ms.service="backup"
-   ms.date="05/03/2016"
-   wacn.date=""/>
+	ms.service="backup"
+   ms.date="06/08/2016"
+	wacn.date=""/>
 
 # 使用 Azure 备份来取代磁带基础结构
 Azure 备份和 System Center Data Protection Manager 客户可以：
@@ -41,8 +41,8 @@ Azure 备份和 System Center Data Protection Manager 客户可以：
 
 1. **每天保留策略**：每天创建的备份存储 7 天。
 2. **每周保留策略**：每个星期六午夜和下午 6 点创建的备份保留 4 周
-3. **每月保留策略**：每个月最后一个星期六午夜和下午 6 点创建的备份保留 12 个月
-4. **每年保持期策略**：每年三月最后一个星期六午夜执行的备份保留 10 年
+3. “每月保留策略”：每个月最后一个星期六午夜和下午 6 点创建的备份保留 12 个月
+4. “每年保持期策略”：每年三月最后一个星期六午夜执行的备份保留 10 年
 
 上图中“保留点”总数（客户可从中还原数据的恢复点）计算方式如下：
 
@@ -66,4 +66,4 @@ Azure 备份和 System Center Data Protection Manager 客户可以：
 - [Azure 备份简介](/documentation/articles/backup-introduction-to-azure-backup)
 - [尝试 Azure 备份](/documentation/articles/backup-try-azure-backup-in-10-mins)
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0627_2016-->

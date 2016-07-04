@@ -11,15 +11,15 @@
 
 <tags
 	ms.service="app-service"
-	ms.date="01/05/2016"
-	wacn.date=""/>	
+	ms.date="06/21/2016"
+	wacn.date=""/>
 
 # 使用 ExpressRoute 的 Azure 环境的网络配置详细信息 
 
 ## 概述 ##
 客户可以将 [Azure ExpressRoute][ExpressRoute] 线路连接到虚拟网络基础结构，从而将其本地网络扩展到 Azure。可以在这个[虚拟网络][virtualnetwork]基础结构的子网中创建 Azure 环境。然后，在 Azure 环境上运行的应用程序可与后端资源建立安全连接，而后端资源只能通过 ExpressRoute 连接来访问。
 
-**注意：**在“v2”虚拟网络中无法创建 Azure 环境。目前只有经典“v1”虚拟网络支持 Azure 环境。
+**注意：**在“v2”虚拟网络中无法创建 Azure 环境。目前只有使用 RFC1918 地址空间（即专用地址）的经典“v1”虚拟网络才支持 Azure 环境。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -27,18 +27,18 @@
 在已连接到 ExpressRoute 的虚拟网络中，可能一开始不符合 Azure 环境的网络连接要求。Azure 环境需要以下所有项目才能正确工作：
 
 
--  与全球 Azure 存储空间终结点建立的出站网络连接。这包括位于与 Azure 环境相同区域中的终结点，以及位于**其他** Azure 区域的存储终结点。Azure 存储空间终结点在以下 DNS 域之下解析： table.core.chinacloudapi.cn、 blob.core.chinacloudapi.cn、 queue.core.chinacloudapi.cn 和 file.core.chinacloudapi.cn。  
--  与位于 Azure 环境相同区域中的 SQL 数据库终结点建立的出站网络连接。Sql DB 终结点在以下域之下解析： database.chinacloudapi.cn。
+-  在端口 80 和 443 上与全球 Azure 存储空间终结点建立的出站网络连接。这包括位于与 Azure 环境相同区域中的终结点，以及位于其他 Azure 区域的存储终结点。Azure 存储空间终结点在以下 DNS 域之下解析：table.core.chinacloudapi.cn、blob.core.chinacloudapi.cn、queue.core.chinacloudapi.cn 和 file.core.chinacloudapi.cn。  
+-  与位于 Azure 环境相同区域中的 SQL 数据库终结点建立的出站网络连接。Sql DB 终结点在以下域之下解析：database.chinacloudapi.cn。
 -  与 Azure 管理平面终结点（ASM 和 ARM 终结点）建立的出站网络连接。这包括与 management.core.chinacloudapi.cn 和 management.azure.com 建立的出站连接。 
--  与 ocsp.msocsp.com 建立的出站连接。需要此连接才能支持 SSL 功能。
+-  与 *ocsp.msocsp.com*、*mscrl.microsoft.com* 和 *crl.microsoft.com* 建立的出站网络连接。需要此连接才能支持 SSL 功能。
 -  虚拟网络的 DNS 设置必须能够解析前面几点所提到的所有终结点和域。如果无法解析这些终结点，Azure 环境创建尝试将失败，并且现有的 Azure 环境标记为状况不正常。
 -  如果 VPN 网关的另一端有自定义 DNS 服务器存在，则必须可从包含 Azure 环境的子网连接该 DNS 服务器。 
 -  出站网络路径不可经过内部公司代理，也不可使用强制通道发送到本地。否则会更改来自 Azure 环境的出站网络流量的有效 NAT 地址。更改 Azure 环境的出站网络流量的 NAT 地址会导致上述众多终结点的连接失败。这将造成 Azure 环境创建尝试失败，并且前面状况良好的 Azure 环境将标记为状况不正常。  
--  必须根据此[文章][requiredports]中所述，允许对 Azure 环境所需的端口进行入站网络访问。
+-  必须根据此[文][requiredports]所述，允许对 Azure 环境所需的端口进行入站网络访问。
 
-确保已针对虚拟网络配置并维护有效的 DNS 基础结构即可符合 DNS 要求。如果 DNS 配置在创建 Azure 环境之后因为任何原因而更改，开发人员可以强制 Azure 环境选择新的 DNS 配置。使用位于 [Azure 管理门户][NewPortal]中“Azure 环境管理”边栏选项卡顶部的“重新启动”图标触发轮流环境重新启动，会导致环境选择新的 DNS 配置。
+确保已针对虚拟网络配置并维护有效的 DNS 基础结构即可符合 DNS 要求。如果 DNS 配置在创建 Azure 环境之后因为任何原因而更改，开发人员可以强制 Azure 环境选择新的 DNS 配置。使用位于 [Azure 门户][NewPortal]中“Azure 环境管理”边栏选项卡顶部的“重新启动”图标触发轮流环境重新启动，会导致环境选择新的 DNS 配置。
 
-根据此[文章][requiredports]中所述，在 Azure 环境的子网上设置[网络安全组][NetworkSecurityGroups]以允许所需访问权限，即可满足入站网络访问的要求。
+根据此[文][requiredports]所述，在 Azure 环境的子网上设置[网络安全组][NetworkSecurityGroups]以允许所需访问权限，即可满足入站网络访问的要求。
 
 ## 启用 Azure 环境的出站网络连接##
 默认情况下，新创建的 ExpressRoute 线路将会通告允许出站 Internet 连接的默认路由。使用此配置，Azure 环境可以连接到其他 Azure 终结点。
@@ -54,9 +54,9 @@
 
 这些步骤的组合效应是子网级 UDR 优先于 ExpressRoute 强制隧道，因而确保来自 Azure 环境的出站 Internet 访问。
 
-**重要说明：**  UDR 中定义的路由**必须**明确足以优先于 ExpressRoute 配置所播发的任何路由。以下示例使用广泛 0.0.0.0/0 地址范围，因此使用更明确的地址范围，有可能意外地被路由播发重写。
+**重要说明：**UDR 中定义的路由**必须**足够明确，以便优先于 ExpressRoute 配置所播发的任何路由。以下示例使用广泛 0.0.0.0/0 地址范围，因此使用更明确的地址范围，有可能意外地被路由播发重写。
 
-**非常重要：**  **未正确交叉播发从公共对等路径到专用对等路径的路由**的 ExpressRoute 配置不支持 Azure 环境。已配置公共对等互连的 ExpressRoute 配置将收到来自 Microsoft 的大量 Microsoft Azure IP 地址范围的路由播发。如果这些地址范围在专用对等路径上未正确交叉播发，最后的结果是来自 Azure 环境子网的所有输出网络数据包都不会正确地使用强制隧道发送到客户的本地网络基础结构。此网络流将破坏 Azure 环境。此问题的解决方法是停止从公共对等路径到专用对等路径的交叉播发路由。
+**非常重要：****未正确交叉播发从公共对等路径到专用对等路径的路由**的 ExpressRoute 配置不支持 Azure 环境。已配置公共对等互连的 ExpressRoute 配置将收到来自 Microsoft 的大量 Microsoft Azure IP 地址范围的路由播发。如果这些地址范围在专用对等路径上未正确交叉播发，最后的结果是来自 Azure 环境子网的所有输出网络数据包都不会正确地使用强制隧道发送到客户的本地网络基础结构。此网络流将破坏 Azure 环境。此问题的解决方法是停止从公共对等路径到专用对等路径的交叉播发路由。
 
 有关用户定义路由的背景信息，请参阅此[概述][UDROverview]。
 
@@ -112,6 +112,7 @@
 然后继续创建 Azure 环境！
 
 ## 入门
+[应用程序服务环境自述文件](/documentation/articles/app-service-app-service-environments-readme)中提供了有关 Azure 环境的所有文章和操作说明。
 
 若要开始使用 Azure 环境，请参阅 [Azure 环境简介][IntroToAppServiceEnvironment]
 
@@ -130,9 +131,9 @@
 [NetworkSecurityGroups]: /documentation/articles/virtual-networks-nsg/
 [AzureAppService]: /documentation/services/web-sites/
 [IntroToAppServiceEnvironment]: /documentation/articles/app-service-app-service-environment-intro/
-[NewPortal]: https://manage.windowsazure.cn
+[NewPortal]: https://portal.azure.cn
  
 
 <!-- IMAGES -->
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0627_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure 备份 - 使用 Azure 导入/导出服务进行脱机备份或初始种子设定 | Microsoft Azure"
+   pageTitle="Azure 备份 — 使用 Azure 导入/导出服务进行离线备份或初始种子设定 | Azure"
    description="了解 Azure 备份如何让你使用 Azure 导入/导出服务离线发送数据。本文介绍如何使用 Azure 导入导出服务来脱机设定初始备份数据的种子。"
    services="backup"
    documentationCenter=""
@@ -8,7 +8,7 @@
    editor=""/>
 <tags
    ms.service="backup"
-   ms.date="01/28/2016"
+   ms.date="06/14/2016"
    wacn.date=""/>
 
 # Azure 备份中的脱机备份工作流
@@ -26,7 +26,7 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 2. 在启动工作流之前，请确保已创建 Azure 备份保管库，已下载保管库凭据，已在 Windows Server/Windows 客户端或 System Center Data Protection Manager (SCDPM) 服务器以及已注册到 Azure 备份保管库的计算机上安装 Azure 备份代理。
 3. 下载中的 Azure 发布文件设置[此处](https://manage.windowsazure.cn/publishsettings)您计划用于备份我们的数据的计算机上。
 4. 准备“暂存位置”，这可能是网络共享或计算机上的其他驱动器。确保临时位置具有足够的磁盘空间来保存你的初始副本。例如，如果您尝试备份 500GB 文件服务器，请确保暂存区域至少为 500GB（尽管将使用较少的量）。暂存区域是“短时存储”并在此工作流期间暂时使用。
-5. 外部 SATA 驱动器编写器和外部 3.5 英寸 SATA 驱动器。只支持对 3.5 英寸 SATA II/III 硬盘驱动器使用导入/导出服务。不支持大于 6TB 的硬盘驱动器。你可以使用 SATA II/III USB 适配器在外部将 SATA II/III 磁盘连接到大多数计算机。检查的最新的一套驱动器支持的服务的 Azure 导入/导出文档。
+5. 外部 SATA 驱动器编写器和外部 3.5 英寸 SATA 驱动器。只支持对 3.5 英寸 SATA II/III 硬盘驱动器使用导入/导出服务。不支持大于 8TB 的硬盘驱动器。你可以使用 SATA II/III USB 适配器在外部将 SATA II/III 磁盘连接到大多数计算机。检查的最新的一套驱动器支持的服务的 Azure 导入/导出文档。
 6. SATA 驱动器编写器连接到计算机上启用 BitLocker。
 7. 从[此处](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409)将 Azure 导入/导出工具下载到 SATA 驱动器编写器连接到的计算机。
 
@@ -96,7 +96,7 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 
     ![门户](./media/backup-azure-backup-import-export/azureportal.png)
 
-2. 在向导的步骤 1 中，指示你已准备好了驱动器并且具有可用的驱动器日志文件。 在向导的步骤 2 中，提供负责该导入作业的人员的联系信息。
+2. 在向导的步骤 1 中，指示你已准备好了驱动器并且具有可用的驱动器日志文件。在向导的步骤 2 中，提供负责该导入作业的人员的联系信息。
 3. 在步骤 3 中，上载你在上一部分获取的驱动器日志文件。
 4. 在步骤 4 中，请为导入作业输入一个描述性的名称，该名称已在创建备份策略/保护组的过程中输入过。请注意，你输入的名称只能包含小写字母、数字、连字符和下划线，必须以字母开头并且不得包含空格。在作业进行中以及在作业完成后，你将使用所选名称来跟踪作业。
 5. 接下来，从列表中选择你的数据中心区域。数据中心区域会指示必须将你的包裹运送到的数据中心和地址。
@@ -116,4 +116,4 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 - 如有 Azure 导入/导出工作流方面的任何问题，请参阅此[文章](/documentation/articles/storage-import-export-service)。
 - 如有工作流方面的任何问题，请参阅 Azure 备份[常见问题](/documentation/articles/backup-azure-backup-faq)的“脱机备份”部分
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0627_2016-->

@@ -9,28 +9,14 @@
 
 <tags
      ms.service="iot-hub"
-     ms.date="03/22/2016"
+     ms.date="06/16/2016"
      wacn.date=""/>
 
 # 适用于 Java 的 Azure IoT 中心入门
 
 [AZURE.INCLUDE [iot-hub-selector-get-started](../includes/iot-hub-selector-get-started.md)]
 
-## 介绍
-
-Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (IoT) 设备和一个解决方案后端之间实现安全可靠的双向通信。IoT 项目面临的最大挑战之一是如何可靠且安全地将设备连接到解决方案后端。为了解决此难题，IoT 中心：
-
-- 提供可靠的设备到云和云到设备的超大规模消息传送。
-- 使用每个设备的安全凭据和访问控制来实现安全通信。
-- 包含最流行语言和平台的设备库。
-
-本教程演示如何：
-
-- 使用 Azure 门户创建 IoT 中心。
-- 在 IoT 中心内创建设备标识。
-- 创建一个模拟设备用于将遥测数据发送到云后端。
-
-本教程最后提供了三个 Java 控制台应用程序：
+在本教程结束时，你将有三个 Java 控制台应用程序：
 
 * **create-device-identity**，用于创建设备标识和关联的安全密钥以连接模拟设备。
 * **read-d2c-messages**，显示模拟设备发送的遥测数据。
@@ -44,11 +30,11 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
 
 + Maven 3。<br/>[准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Maven。
 
-+ 有效的 Azure 帐户。<br/>如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 免费试用][lnk-free-trial]。
++ 有效的 Azure 帐户。（如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 免费试用][lnk-free-trial]。）
 
 [AZURE.INCLUDE [iot-hub-get-started-create-hub](../includes/iot-hub-get-started-create-hub.md)]
 
-最后一步是在 IoT 中心边栏选项卡上单击“设置”，然后在“设置”边栏选项卡上单击“消息传送”。在“消息传送”边栏选项卡上，记下“与事件中心兼容的名称”和“与事件中心的兼容终结点”。创建 **read-d2c-messages** 应用程序时，将要用到这些值。
+最后一步是在 IoT 中心边栏选项卡上单击“设置”，然后在“设置”边栏选项卡上单击“消息传送”。在“消息传送”边栏选项卡上，记下“与事件中心兼容的名称”和“与事件中心兼容的终结点”。创建 **read-d2c-messages** 应用程序时，将要用到这些值。
 
     ![][6]
 
@@ -56,9 +42,9 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
 
 ## 创建设备标识
 
-在本部分中，你将创建一个 Java 控制台应用程序，用于在 IoT 中心的标识注册表中创建新的设备标识。设备无法连接到 IoT 中心，除非它在设备标识注册表中具有条目。有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]的“设备标识注册表”部分。当你运行此控制台应用程序时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以用于标识设备本身。
+在本部分中，你将创建一个 Java 控制台应用程序，用于在 IoT 中心的标识注册表中创建新的设备标识。设备无法连接到 IoT 中心，除非它在设备标识注册表中具有条目。有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]的“设备标识注册表”部分。当你运行此控制台应用程序时，它将生成唯一的设备 ID 和密钥，当设备向 IoT 中心发送设备到云的消息时，可以使用这些信息标识设备本身。
 
-1. 新建名为 iot-java-get-started 的空文件夹。在命令提示符处的 iot-java-get-started 文件夹中，使用以下命令创建名为 **create-device-identity** 的新 Maven 项目。请注意，这是一条很长的命令：
+1. 新建名为 iot-java-get-started 的空文件夹。在命令提示符下的 iot-java-get-started 文件夹中，使用以下命令创建名为 **create-device-identity** 的新 Maven 项目。请注意，这是一条很长的命令：
 
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=create-device-identity -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -91,10 +77,10 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
     import java.net.URISyntaxException;
     ```
 
-7. 将以下类级变量添加到 **App** 类，并将 **{yourhubname}** 和 **{yourhubkey}** 替换为前面记下的值：
+7. 将以下类级变量添加到 **App** 类，并将 **{yourhostname}** 和 **{yourhubkey}** 替换为前面记下的值：
 
     ```
-    private static final String connectionString = "HostName={yourhubname}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={yourhubkey}";
+    private static final String connectionString = "HostName={yourhostname};SharedAccessKeyName=iothubowner;SharedAccessKey={yourhubkey}";
     private static final String deviceId = "javadevice";
     
     ```
@@ -140,7 +126,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
 
 13. 记下**设备 ID** 和**设备密钥**。稍后在创建连接到作为设备的 IoT 中心的应用程序时需要这些数据。
 
-> [AZURE.NOTE] IoT 中心标识注册表只存储设备标识，以启用对中心的安全访问。它存储设备 ID 和密钥作为安全凭据，以及启用或禁用标志让你禁用对单个设备的访问。如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]。
+> [AZURE.NOTE] IoT 中心标识注册表只存储设备标识，以启用对中心的安全访问。它存储设备 ID 和密钥作为安全凭据，以及启用或禁用标志（可用于禁用对单个设备的访问）。如果应用程序需要存储其他特定于设备的元数据，则应使用特定于应用程序的存储。有关详细信息，请参阅 [IoT 中心开发人员指南][lnk-devguide-identity]。
 
 ## 接收设备到云的消息
 
@@ -148,7 +134,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
 
 > [AZURE.NOTE] 读取设备到云消息的事件中心兼容终结点始终使用 AMQPS 协议。
 
-1. 在命令提示符下创建设备标识部分中创建的 iot-java-get-started 文件夹中，使用以下命令创建名为 **read-d2c-messages** 的新 Maven 项目。请注意，这是一条很长的命令：
+1. 在命令提示符下，在创建设备标识部分中创建的 iot-java-get-started 文件夹中，使用以下命令创建名为 **read-d2c-messages** 的新 Maven 项目。请注意，这是一条很长的命令：
 
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-d2c-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -159,10 +145,10 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
 3. 使用文本编辑器，打开 read-d2c-messages 文件夹中的 pom.xml 文件，并在 **dependencies** 节点中添加以下依赖项。这可让你在应用程序中使用 eventhubs-client 包，以从事件中心兼容的终结点进行读取：
 
     ```
-    <dependency>
-      <groupId>com.microsoft.eventhubs.client</groupId>
-      <artifactId>eventhubs-client</artifactId>
-      <version>1.0</version>
+    <dependency> 
+        <groupId>com.microsoft.azure</groupId> 
+        <artifactId>azure-eventhubs</artifactId> 
+        <version>0.7.1</version> 
     </dependency>
     ```
 
@@ -174,60 +160,79 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
 
     ```
     import java.io.IOException;
-    import com.microsoft.eventhubs.client.Constants;
-    import com.microsoft.eventhubs.client.EventHubClient;
-    import com.microsoft.eventhubs.client.EventHubEnqueueTimeFilter;
-    import com.microsoft.eventhubs.client.EventHubException;
-    import com.microsoft.eventhubs.client.EventHubMessage;
-    import com.microsoft.eventhubs.client.EventHubReceiver;
-    import com.microsoft.eventhubs.client.ConnectionStringBuilder;
+    import com.microsoft.azure.eventhubs.*;
+    import com.microsoft.azure.servicebus.*;
+    
+    import java.io.IOException;
+    import java.nio.charset.Charset;
+    import java.time.*;
+    import java.util.Collection;
+    import java.util.concurrent.ExecutionException;
+    import java.util.function.*;
+    import java.util.logging.*;
     ```
 
-7. 将以下类级变量添加到 **App** 类：
+7. 将以下类级变量添加到 **App** 类。将 **{youriothubkey}**、**{youreventhubcompatibleendpoint}** 和 **{youreventhubcompatiblename}** 替换为前面记下的值：
 
     ```
-    private static EventHubClient client;
-    private static long now = System.currentTimeMillis();
+    private static String connStr = "Endpoint={youreventhubcompatibleendpoint};EntityPath={youreventhubcompatiblename};SharedAccessKeyName=iothubowner;SharedAccessKey={youriothubkey}";
     ```
 
-8. 在 **App** 类中添加以下嵌套类。应用程序将创建两个线程来运行 **MessageReceiver**，以从事件中心读取两个分区中的消息：
+8. 将以下 **receiveMessages** 方法添加到 **App** 类。此方法创建 **EventHubClient** 实例以连接到与事件中心兼容的终结点，然后以异步方式创建 **PartitionReceiver** 实例，以便从事件中心分区读取。它将持续循环并输出消息详细信息，直到应用程序终止。
 
     ```
-    private static class MessageReceiver implements Runnable
+    private static EventHubClient receiveMessages(final String partitionId)
     {
-        public volatile boolean stopThread = false;
-        private String partitionId;
-    }
-    ```
-
-9. 将以下构造函数添加到 **MessageReceiver** 类：
-
-    ```
-    public MessageReceiver(String partitionId) {
-        this.partitionId = partitionId;
-    }
-    ```
-
-10. 将以下 **run** 方法添加到 **MessageReceiver** 类。此方法将创建 **EventHubReceiver** 实例以从事件中心数据分区进行读取。此方法会不断循环并将消息详细信息打印到控制台，直到 **stopThread** 为 true。
-
-    ```
-    public void run() {
+      EventHubClient client = null;
       try {
-        EventHubReceiver receiver = client.getConsumerGroup(null).createReceiver(partitionId, new EventHubEnqueueTimeFilter(now), Constants.DefaultAmqpCredits);
-        System.out.println("** Created receiver on partition " + partitionId);
-        while (!stopThread) {
-          EventHubMessage message = EventHubMessage.parseAmqpMessage(receiver.receive(5000));
-          if(message != null) {
-            System.out.println("Received: (" + message.getOffset() + " | "
-                + message.getSequence() + " | " + message.getEnqueuedTimestamp()
-                + ") => " + message.getDataAsString());
+        client = EventHubClient.createFromConnectionStringSync(connStr);
+      }
+      catch(Exception e) {
+        System.out.println("Failed to create client: " + e.getMessage());
+        System.exit(1);
+      }
+      try {
+        client.createReceiver( 
+          EventHubClient.DEFAULT_CONSUMER_GROUP_NAME,  
+          partitionId,  
+          Instant.now()).thenAccept(new Consumer<PartitionReceiver>()
+        {
+          public void accept(PartitionReceiver receiver)
+          {
+            System.out.println("** Created receiver on partition " + partitionId);
+            try {
+              while (true) {
+                Iterable<EventData> receivedEvents = receiver.receive(100).get();
+                int batchSize = 0;
+                if (receivedEvents != null)
+                {
+                  for(EventData receivedEvent: receivedEvents)
+                  {
+                    System.out.println(String.format("Offset: %s, SeqNo: %s, EnqueueTime: %s", 
+                      receivedEvent.getSystemProperties().getOffset(), 
+                      receivedEvent.getSystemProperties().getSequenceNumber(), 
+                      receivedEvent.getSystemProperties().getEnqueuedTime()));
+                    System.out.println(String.format("| Device ID: %s", receivedEvent.getProperties().get("iothub-connection-device-id")));
+                    System.out.println(String.format("| Message Payload: %s", new String(receivedEvent.getBody(),
+                      Charset.defaultCharset())));
+                    batchSize++;
+                  }
+                }
+                System.out.println(String.format("Partition: %s, ReceivedBatch Size: %s", partitionId,batchSize));
+              }
+            }
+            catch (Exception e)
+            {
+              System.out.println("Failed to receive messages: " + e.getMessage());
+            }
           }
-        }
-        receiver.close();
+        });
       }
-      catch(EventHubException e) {
-        System.out.println("Exception: " + e.getMessage());
+      catch (Exception e)
+      {
+        System.out.println("Failed to create receiver: " + e.getMessage());
       }
+      return client;
     }
     ```
 
@@ -239,35 +244,26 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
     public static void main( String[] args ) throws IOException
     ```
 
-12. 在 **App** 类的 **main** 方法中添加以下代码。此代码将创建 **EventHubClient** 实例以连接到 IoT 中心的与事件中心兼容的终结点。然后，创建两个线程以从两个分区进行读取。将 **{youriothubkey}**、**{youreventhubcompatiblenamespace}** 和 **{youreventhubcompatiblename}** 替换为前面记下的值。**{youreventhubcompatiblenamespace}** 占位符的值来自**与事件中心兼容的终结点**，其格式为 **xxxxnamespace**（即，在门户中删除与事件中心兼容的终结点值的 ****sb://** 前缀和 **.servicebus.chinacloudapi.cn** 后缀）。
+10. 在 **App** 类的 **main** 方法中添加以下代码。此代码将创建两个（**EventHubClient** 和 **PartitionReceiver**）实例并让你在处理完消息后关闭应用程序：
 
     ```
-    String policyName = "iothubowner";
-    String policyKey = "{youriothubkey}";
-    String namespace = "{youreventhubcompatiblenamespace}";
-    String name = "{youreventhubcompatiblename}";
-    try {
-      ConnectionStringBuilder csb = new ConnectionStringBuilder(policyName, policyKey, namespace);
-      client = EventHubClient.create(csb.getConnectionString(), name);
-    }
-    catch(EventHubException e) {
-        System.out.println("Exception: " + e.getMessage());
-    }
-    
-    MessageReceiver mr0 = new MessageReceiver("0");
-    MessageReceiver mr1 = new MessageReceiver("1");
-    Thread t0 = new Thread(mr0);
-    Thread t1 = new Thread(mr1);
-    t0.start(); t1.start();
-
+    EventHubClient client0 = receiveMessages("0");
+    EventHubClient client1 = receiveMessages("1");
     System.out.println("Press ENTER to exit.");
     System.in.read();
-    mr0.stopThread = true;
-    mr1.stopThread = true;
-    client.close();
+    try
+    {
+      client0.closeSync();
+      client1.closeSync();
+      System.exit(0);
+    }
+    catch (ServiceBusException sbe)
+    {
+      System.exit(1);
+    }
     ```
 
-    > [AZURE.NOTE] 此代码假设已在 F1（免费）层创建 IoT 中心。免费 IoT 中心有“0”和“1”这两个分区。如果使用另一种定价层创建 IoT 中心，则应调整代码，以便为每个分区创建 **MessageReceiver**。
+    > [AZURE.NOTE] 此代码假设已在 F1（免费）层创建 IoT 中心。免费 IoT 中心有“0”和“1”这两个分区。
 
 13. 保存并关闭 App.java 文件。
 
@@ -281,7 +277,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
 
 在本部分中，你将创建一个 Java 控制台应用程序，用于模拟向 IoT 中心发送设备到云消息的设备。
 
-1. 在命令提示符下创建设备标识部分中创建的 iot-java-get-started 文件夹中，使用以下命令创建名为 **simulated-device** 的新 Maven 项目。请注意，这是一条很长的命令：
+1. 在命令提示符下，在创建设备标识部分中创建的 iot-java-get-started 文件夹中，使用以下命令创建名为 **simulated-device** 的新 Maven 项目。请注意，这是一条很长的命令：
 
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -366,7 +362,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
     }
     ```
 
-10. 在 **App** 类中添加以下嵌套 **MessageSender** 类。此类中的 **run** 方法将生成发送到 IoT 中心的示例遥测数据，并在发送下一条消息之前等待确认：
+10. 在 **App** 类中添加以下嵌套 **MessageSender** 类。此类中的 **run** 方法将生成要发送到 IoT 中心的示例遥测数据，并在发送下一条消息之前等待确认：
 
     ```
     private static class MessageSender implements Runnable {
@@ -432,16 +428,24 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
     mvn clean package -DskipTests
     ```
 
-> [AZURE.NOTE] 为简单起见，本教程不实现任何重试策略。在生产代码中，你应该按 MSDN 文章 [Transient Fault Handling][lnk-transient-faults]（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
+> [AZURE.NOTE] 为简单起见，本教程不实现任何重试策略。在生产代码中，你应该按 MSDN 文章 [Transient Fault Handling（暂时性故障处理）][lnk-transient-faults]中所述实施重试策略（例如指数性的回退）。
 
 ## 运行应用程序
 
 现在，你已准备就绪，可以运行应用程序了。
 
-1. 在 read-d2c 文件夹中的命令提示符下，运行以下命令开始监视 IoT 中心：
+1. 在命令提示符下的 read-d2c 文件夹中，运行以下命令以开始监视 IoT 中心的第一个分区：
 
     ```
-    mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"  -Dexec.args="0"
+    ```
+
+    ![][7]
+
+1. 在命令提示符下的 read-d2c 文件夹中，运行以下命令以开始监视 IoT 中心的第二个分区：
+
+    ```
+    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"  -Dexec.args="1"
     ```
 
     ![][7]
@@ -479,7 +483,7 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
 [lnk-devguide-identity]: /documentation/articles/iot-hub-devguide/#identityregistry
 [lnk-event-hubs-overview]: /documentation/articles/event-hubs-overview
 
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/java/device/doc/devbox_setup.md
+[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/java-devbox-setup.md
 [lnk-c2d-tutorial]: /documentation/articles/iot-hub-csharp-csharp-c2d
 [lnk-process-d2c-tutorial]: /documentation/articles/iot-hub-csharp-csharp-process-d2c
 [lnk-upload-tutorial]: /documentation/articles/iot-hub-csharp-csharp-file-upload
@@ -488,7 +492,4 @@ Azure IoT 中心是一项完全托管的服务，可在数百万个物联网 (Io
 [lnk-free-trial]: /pricing/1rmb-trial/
 [lnk-resource-groups]: /documentation/articles/resource-group-portal
 [lnk-portal]: https://manage.windowsazure.cn
-
-
-
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0627_2016-->

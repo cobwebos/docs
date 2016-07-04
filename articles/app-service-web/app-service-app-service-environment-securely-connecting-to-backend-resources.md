@@ -11,13 +11,13 @@
 
 <tags
 	ms.service="app-service"
-	ms.date="02/10/2016"
-	wacn.date=""/>	
+	ms.date="06/21/2016"
+	wacn.date=""/>
 
 # 从 Azure 环境安全连接到后端资源 #
 
 ## 概述 ##
-由于 Azure 环境始终创建于区域性经典“v1”[虚拟网络][virtualnetwork]的子网中，因此从 Azure 环境发往其他后端资源的出站连接可以独占方式通过虚拟网络发送。
+由于 Azure 环境始终创建于区域性经典“v1”[虚拟网络][virtualnetwork]的子网中，因此从 Azure 环境发往其他后端资源的出站连接可以独占方式通过虚拟网络发送。请注意，仅支持使用 RFC1918 地址空间（即专用地址）的虚拟网络。
 
 **注意：**在“v2”ARM 管理的虚拟网络中无法创建 Azure 环境。
 
@@ -27,14 +27,12 @@
 
 在上述这些方案中，在 Azure 环境上运行的应用能够安全地连接到各种服务器和资源。从 Azure 环境中运行的应用程序发往相同虚拟网络中专用终结点（或连接到相同的虚拟网络）的出站流量，只通过虚拟网络发送。发往专用终结点的出站流量不通过公共 Internet 发送。
 
-在从 Azure 环境发往虚拟网络中终结点的出站流量方面，有一点需要注意。Azure 环境无法访问与 Azure 环境处于**同一**子网中的虚拟机终结点。只要将 Azure 环境部署在供 Azure 环境独占使用的子网内，通常就不会出现任何问题。
+在从 Azure 环境发往虚拟网络中终结点的出站流量方面，有一点需要注意。Azure 环境无法访问与 Azure 环境处于同一子网中的虚拟机终结点。只要将 Azure 环境部署在供 Azure 环境独占使用的子网内，通常就不会出现任何问题。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../includes/app-service-web-to-api-and-mobile.md)]
 
 ## 出站连接和 DNS 要求 ##
-请注意，为了使让 Azure 环境正常工作，需要对全球 Azure 存储空间的出站访问权限，以及与同一 Azure 区域中的 SQL 数据库建立连接。如果虚拟网络中阻止了出站 Internet 访问，则 Azure 环境将无法访问这些 Azure 终结点。
-
-客户可能还在虚拟网络中配置了自定义 DNS 服务器。Azure 环境必须能够解析 *.database.chinacloudapi.cn、 *.file.core.chinacloudapi.cn 和 *.blob.core.chinacloudapi.cn 下的 Azure 终结点。
+若要让 Azure 环境正常运行，需具有对各个终结点的出站访问权限。[ExpressRoute 的网络配置](/documentation/articles/app-service-app-service-environment-network-configuration-expressroute#required-network-connectivity)一文的“所需的网络连接”部分中提供了 ASE 所用外部终结点的完整列表。
 
 此外，还建议事先在虚拟网络上设置任何自定义 DNS 服务器，然后创建 Azure 环境。如果在创建 Azure 环境时更改虚拟网络的 DNS 配置，将会导致 Azure 环境创建过程失败。如果自定义 DNS 服务器存在于 VPN 网关的另一端，且 DNS 服务器无法连接或使用，则 Azure 环境创建过程也会失败。
 
@@ -86,10 +84,11 @@
 
 
 ## 入门
+[应用程序服务环境自述文件](/documentation/articles/app-service-app-service-environments-readme)中提供了有关 Azure 环境的所有文章和操作说明。
 
 若要开始使用 Azure 环境，请参阅 [Azure 环境简介][IntroToAppServiceEnvironment]
 
-有关控制发往 Azure 环境的入站流量的详细信息，请参阅[控制 Azure 环境的入站流量][ControlInboundASE]
+有关控制 Azure 环境的入站流量的详细信息，请参阅[控制 Azure 环境的入站流量][ControlInboundASE]
 
 有关 Azure 平台的详细信息，请参阅 [Azure Web 应用][AzureAppService]。
 
@@ -114,4 +113,4 @@
 [NetworkAccessControlListExample]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/NetworkAcl01.png
 [DefaultNetworkSecurityRules]: ./media/app-service-app-service-environment-securely-connecting-to-backend-resources/DefaultNetworkSecurityRules01.png
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0627_2016-->

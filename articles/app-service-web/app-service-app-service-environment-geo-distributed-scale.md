@@ -11,8 +11,8 @@
 
 <tags
 	ms.service="app-service"
-	ms.date="01/09/2016"
-	wacn.date=""/>	
+	ms.date="06/21/2016"
+	wacn.date=""/>
 
 # Azure 环境的异地分布式缩放
 
@@ -39,8 +39,8 @@ Azure 环境是水平扩展的理想平台。在选择可支持已知请求率�
 - **应用的自定义域：**客户访问应用时使用的自定义域名是什么？ 示例应用的自定义域名是 www.scalableasedemo.com
 - **流量管理器域：**创建 [Azure 流量管理器配置文件][AzureTrafficManagerProfile]时需要选择域名。此名称与 trafficmanager.cn 后缀相结合，以注册流量管理器所管理的域条目。就示例应用而言，选择的名称是 scalable-ase-demo。因此，流量管理器所管理的完整域名是 scalable-ase-demo.trafficmanager.net。
 - **缩放应用占用空间的策略：**应用程序占用空间是否分布到单个区域中的多个 Azure 环境？ 是多个区域吗？ 两种方法要混搭使用吗？ 决策依据应来自于客户流量的来源位置，以及其余应用的支持后端基础结构的可缩放性。例如，对于 100% 无状态的应用程序，可以使用每一 Azure 区域多个 Azure 环境的组合，乘以跨多个 Azure 区域部署的 Azure 环境数，来大幅缩放应用。由于有 15 个以上的公用 Azure 区域可供选择，客户将可真正构建全球性超高缩放性的应用程序占用空间。在本文所使用的示例应用中，有三个 Azure 环境创建在单个 Azure 区域（中国东部）。
-- **Azure 环境的命名约定：**每个 Azure 环境都需要唯一名称。有两个或更多 Azure 环境时，命名约定将有助于标识每个 Azure 环境。示例应用中使用了简单的命名约定。三个 Azure 环境的名称分别是 fe1ase、 fe2ase 和 fe3ase。
-- **应用的命名约定：**由于将部署多个应用实例，每个部署的应用实例都要有名称。有一项鲜为人知、但非常方便的 Azure 环境功能，是多个 Azure 环境可以使用相同的应用名称。由于每个 Azure 环境都有唯一的域后缀，开发人员可以选择在每个环境中重复使用相同的应用名称。例如，开发人员可以将应用命名如下： myapp.foo1.p.azurewebsites.cn、 myapp.foo2.p.azurewebsites.cn、 myapp.foo3.p.azurewebsites.cn，依此类推。但示例应用的每个应用实例也都有唯一名称。所用的应用实例名称是 webfrontend1、 webfrontend2 和 webfrontend3。
+- **Azure 环境的命名约定：**每个 Azure 环境都需要唯一名称。有两个或更多 Azure 环境时，命名约定将有助于标识每个 Azure 环境。示例应用中使用了简单的命名约定。三个 Azure 环境的名称分别是 fe1ase、fe2ase 和 fe3ase。
+- **应用的命名约定：**由于将部署多个应用实例，每个部署的应用实例都要有名称。有一项鲜为人知、但非常方便的 Azure 环境功能，是多个 Azure 环境可以使用相同的应用名称。由于每个 Azure 环境都有唯一的域后缀，开发人员可以选择在每个环境中重复使用相同的应用名称。例如，开发人员可以将应用命名如下：myapp.foo1.p.azurewebsites.cn、myapp.foo2.p.azurewebsites.cn、myapp.foo3.p.azurewebsites.cn，依此类推。但示例应用的每个应用实例也都有唯一名称。所用的应用实例名称是 webfrontend1、webfrontend2 和 webfrontend3。
 
 
 ## 设置流量管理器配置文件 ##
@@ -50,7 +50,7 @@ Azure 环境是水平扩展的理想平台。在选择可支持已知请求率�
 - **webfrontend2.fe2ase.p.azurewebsites.cn：**部署在第二个 Azure 环境中的示例应用实例。
 - **webfrontend3.fe3ase.p.azurewebsites.cn：**部署在第三个 Azure 环境中的示例应用实例。
 
-要注册多个 Azure 终结点（全部运行于**相同**的 Azure 区域中），最简单的方法是使用预览版 Powershell [Azure Resource Manager (ARM) 流量管理器支持][ARMTrafficManager]。
+要注册多个 Azure 终结点（全部运行于相同的 Azure 区域中），最简单的方法是使用预览版 Powershell [Azure Resource Manager (ARM) 流量管理器支持][ARMTrafficManager]。
 
 第一个步骤是创建 Azure 流量管理器配置文件。以下代码演示如何为示例应用创建配置文件：
 
@@ -72,7 +72,7 @@ TrafficRoutingMethod 参数定义负载平衡策略，供流量管理器用于�
 
 三个终结点为 Weight 参数使用了相同的值 (10)。这使流量管理器将客户请求较平均地分散到所有三个应用实例。
 
-*注意：*由于 ARM 流量管理器支持目前仍处于预览阶段，因此 Azure 终结点必须将 Type 参数设置为 ExternalEndpoints。Azure 终结点今后将以终结点类型的形式受到流量管理器 ARM 版本的本机支持。
+注意：由于 ARM 流量管理器支持目前仍处于预览阶段，因此 Azure 终结点必须将 Type 参数设置为 ExternalEndpoints。Azure 终结点今后将以终结点类型的形式受到流量管理器 ARM 版本的本机支持。
 
 ## 将应用的自定义域指向流量管理器域 ##
 最后一个必要步骤是将应用的自定义域指向流量管理器域。就示例应用而言，这意味着将 www.scalableasedemo.com 指向 scalable-ase-demo.trafficmanager.cn。此步骤必须以管理自定义域的域注册机构来完成。
@@ -83,7 +83,7 @@ TrafficRoutingMethod 参数定义负载平衡策略，供流量管理器用于�
 
 尽管本主题并未说明，但请记住，每个应用实例也都需要注册其自定义域。否则，在对应用实例发出请求时，如果应用程序并未注册应用的自定义域，请求将失败。
 
-在本示例中，自定义域是 www.scalableasedemo.com，且每个应用程序实例都有其关联的自定义域。
+在本示例中，自定义域是 www.scalableasedemo.com ，且每个应用程序实例都有其关联的自定义域。
 
 ![自定义域][CustomDomain]
 
@@ -105,6 +105,8 @@ TrafficRoutingMethod 参数定义负载平衡策略，供流量管理器用于�
 ![DNS 查找][DNSLookup]
 
 ## 其他链接和信息 ##
+[应用程序服务环境自述文件](/documentation/articles/app-service-app-service-environments-readme)中提供了有关 Azure 环境的所有文章和操作说明。
+
 有关预览版 Powershell 的文档：[Azure Resource Manager (ARM) 流量管理器支持][ARMTrafficManager]。
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../includes/app-service-web-whats-changed.md)]
@@ -123,4 +125,4 @@ TrafficRoutingMethod 参数定义负载平衡策略，供流量管理器用于�
 [DNSLookup]: ./media/app-service-app-service-environment-geo-distributed-scale/DNSLookup-1.png
 [CustomDomain]: ./media/app-service-app-service-environment-geo-distributed-scale/CustomDomain-1.png
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0627_2016-->

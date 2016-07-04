@@ -11,7 +11,7 @@
 
 <tags
 	ms.service="app-service"
-	ms.date="01/05/2016"
+	ms.date="06/14/2016"
 	wacn.date=""/>
 
 # Azure 环境简介
@@ -28,9 +28,11 @@ Azure 环境非常适合有以下要求的应用程序工作负荷：
 
 Azure 环境已经过隔离，可运行只有单个客户的应用程序，且始终部署到虚拟网络。客户对于入站和出站的应用网络流量都有更细微的控制，且应用程序可以通过虚拟网络创建与本地公司资源的高速安全连接。
 
-有关 Azure 环境如何提供高缩放性和安全的网络访问的概述，请参阅有关 Azure 环境的 [AzureCon 深入探讨][AzureConDeepDive]！
+[应用程序服务环境自述文件](/documentation/articles/app-service-app-service-environments-readme)中提供了有关 Azure 环境的所有文章和操作说明。
 
-有关使用多个 Azure 环境水平缩放的深入探讨，请参阅有关如何设置[地理分散的应用占用空间][GeodistributedAppFootprint]一文。
+有关 Azure 环境如何提供高缩放性和安全网络访问的概述，请参阅有关 Azure 环境的 [AzureCon 深入探讨][AzureConDeepDive]！
+
+有关使用多个 Azure 环境水平缩放的深入探讨，请参阅有关如何设置[地理分散的应用占用空间][GeodistributedAppFootprint]的文章。
 
 若要查看“AzureCon 深入探讨”中所示的安全体系结构的配置方式，请参阅有关使用 Azure 环境实现[分层安全体系结构](/documentation/articles/app-service-app-service-environment-layered-security)的文章。
 
@@ -45,11 +47,11 @@ Azure 环境由一个前端计算资源池，以及一到三个辅助角色计�
 
 前端池包含负责处理 SSL 终止以及 Azure 环境中应用请求的自动负载平衡的计算资源。
 
-每个辅助角色池包含分配给 [App Service 计划][AppServicePlan]的计算资源，而这些资源又包含一个或多个 Azure Web 应用。由于 Azure 环境中可能有多达三个不同的辅助角色池，因此你可以灵活地为每个辅助角色池选择不同的计算资源。
+每个辅助角色池都包含分配给 [App Service 计划][AppServicePlan]的计算资源，而这些资源又包含一个或多个 Azure Web Apps。由于 Azure 环境中可能有多达三个不同的辅助角色池，因此你可以灵活地为每个辅助角色池选择不同的计算资源。
 
 例如，你可以针对主要用于开发或测试应用的 App Service 方案创建一个计算资源较不强大的工作线程池。第二个（甚至第三个）工作线程池可以使用比较强大的计算资源，以供 App Service 计划运行生产应用。
 
-有关前端和辅助角色池可用计算资源数量的详细信息，请参阅[如何配置 Azure 环境][HowToConfigureanAppServiceEnvironment]。
+有关前端池和辅助角色池可用计算资源数量的更多详细信息，请参阅[如何配置 Azure 环境][HowToConfigureanAppServiceEnvironment]。
 
 有关 Azure 环境中支持的可用计算资源大小的详细信息，请参阅 [Azure 定价][AppServicePricing]页，并查看高级定价层中 Azure 环境可用的选项。
 
@@ -58,9 +60,9 @@ Azure 环境由一个前端计算资源池，以及一到三个辅助角色计�
 
 可以使用[网络安全组][NetworkSecurityGroups]将入站网络通信限制为 Azure 环境所在的子网。这样，你便可以在上游设备和服务（例如 Ｗeb 应用程序防火墙和网络 SaaS 提供者）后面运行应用。
 
-应用还经常需要访问公司资源，例如内部数据库和 Web 服务。常见的做法是让这些终结点仅可用于在 Azure 虚拟网络中流动的内部网络流量。一旦 Azure 环境加入到与内部服务相同的虚拟网络，在此环境中运行的应用即可访问这些内部服务，包括可通过[站点到站点][SiteToSite]和 [Azure ExpressRoute][ExpressRoute] 访问的终结点。
+应用还经常需要访问公司资源，例如内部数据库和 Web 服务。常见的做法是让这些终结点仅可用于在 Azure 虚拟网络中流动的内部网络流量。一旦 Azure 环境加入到与内部服务相同的虚拟网络，在此环境中运行的应用即可访问这些内部服务，包括可通过[站点到站点][SiteToSite]和 [Azure ExpressRoute][ExpressRoute] 连接访问的终结点。
 
-有关 Azure 环境如何配合虚拟网络和本地网络使用的详细信息，请参阅以下文章：[网络体系结构][NetworkArchitectureOverview]、[控制入站流量][ControllingInboundTraffic]和[安全连接到后端][SecurelyConnectingToBackends]。
+有关 Azure 环境如何配合虚拟网络和本地网络使用的更多详细信息，请参阅以下文章：[网络体系结构][NetworkArchitectureOverview]、[控制入站流量][ControllingInboundTraffic]和[安全连接到后端][SecurelyConnectingToBackends]。
 
 **注意：**在“v2”虚拟网络中无法创建 Azure 环境。
 
@@ -104,4 +106,4 @@ Azure 环境由一个前端计算资源池，以及一到三个辅助角色计�
 
  
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0627_2016-->

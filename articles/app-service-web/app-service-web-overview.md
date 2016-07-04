@@ -1,64 +1,63 @@
+<!-- not suitable for Mooncake -->
+
 <properties
-	pageTitle="Web Apps 概述"
-	description="了解有关 App Service Web Apps 的详细信息"
+	pageTitle="Web Apps 概述 | Azure"
+	description="了解 Azure 如何帮助你开发和托管 Web 应用程序"
 	services="app-service\web"
 	documentationCenter=""
 	authors="jaime-espinosa"
 	manager="wpickett"
-	editor="jimbe"/>
+	editor=""/>
 
 <tags
 	ms.service="app-service-web"
-	ms.date="03/24/2015"
+	ms.date="05/25/2016"
 	wacn.date=""/>
 
+# Web Apps 概述
 
-#Web Apps 概述
+*Azure Web Apps* 是一个完全托管的计算平台，非常适合用来托管网站和 Web 应用程序。Azure 的这个[平台即服务](https://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS) 产品可让你专注于业务逻辑，而让 Azure 负责处理用来运行和缩放应用的基础结构。
 
-[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) 是一个完全托管平台，专业开发人员可通过它在 Web、移动和集成方案中实现一系列丰富功能。通过使用 Azure App Service，快速创建和部署可与你的业务一起缩放的任务关键 Web 应用。
+下面的 5 分钟视频将介绍 Azure Web Apps。
 
-利用 [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) 的功能使用你熟悉和依赖的语言和框架，将你的应用程序快速部署到 Azure 云，并持续改进你的代码而无需再考虑基础结构。
+[AZURE.VIDEO azure-app-service-web-apps-with-yochay-kiriaty]
 
-![Web 应用商店](./media/app-service-web-overview/marketplace.png)
+## Azure 中的 Web 应用是什么？
 
-## 不只是网站##
+在 Azure Web 应用中，*Web 应用*是 Azure 提供用来托管网站或 Web 应用程序的计算资源。
 
-现代企业用与客户交互的方式越来越复杂。所有类型的公司都将公司 Web 平台视为其业务的关键内容、业务计划的重要组成部分。为了适应这种重要性，各企业正在寻找一个可提供灵活性、安全性和可伸缩性的平台。此外，他们还要求能够链接到其现有的业务系统，能够快速部署新代码以及在全球范围内扩展实例。凭借 Azure App Service 和 Web Apps，组织可以快速又经济地满足客户。
+该计算资源可能位于共享虚拟机 (VM) 上，也可能位于专用虚拟机上，具体取决于你选择的定价层。你的应用程序代码在独立于其他客户的托管 VM 中运行。
 
-## 为什么选择 Web Apps？ ##
+你的代码可以使用 [Azure Web 应用](/documentation/services/web-sites) 支持的任何语言或框架，例如 ASP.NET、Node.js、Java、PHP 或 Python。你也可以在 Web 应用中运行使用 [PowerShell 和其他脚本语言](/documentation/articles/web-sites-create-web-jobs#acceptablefiles)的脚本。
 
-Azure App Service Web Apps 是一个完全托管平台，凭借这一平台，你可以在数秒内构建、部署并缩放企业级 Web 应用。只需专注于应用程序代码，放手让 Azure 处理基础结构，为你进行缩放和安全运行。Web Apps 的特点：
+有关可使用 Web Apps 的典型应用程序方案的示例，请参阅 [Web 应用方案](https://azure.microsoft.com/documentation/scenarios/web-app/)以及 [Azure Web 应用、虚拟机、Service Fabric 和云服务的比较](/documentation/articles/choose-web-site-cloud-service-vm#scenarios)的**方案和建议**一节。
 
-- **用户熟悉，使用快速** - 运用现有技能，使用喜爱的语言、框架和 IDE 进行编码。只需几次单击，即可向你现有的 Web 应用添加版本控制、更新、单一登录、标识代理、独立存储和性能监视功能。访问内容丰富的库，将其用作构建基块以加快开发速度。使用持续集成、活动网站调试和业界领先的 Visual Studio IDE 等前沿功能，体验无与伦比的开发人员工作效率。
-- **企业级** - Web Apps 设计用于生成和托管安全的任务关键应用程序。生成安全连接到本地资源的 Active Directory 集成业务应用，在符合 ISO、SOC2 和 PCI 的安全云平台上进行托管。更能同时享受企业级 SLA。
-- **全球缩放** - Web Apps 已实现优化，可在全球数据中心基础结构上提供可用性和自动缩放。根据需要轻松缩放应用程序。可在各个地理区域内和跨地理区域间提供高可用性。在多个位置复制数据和托管服务更加方便快捷，点击鼠标即可扩展到新区域和地理位置。  
+## 为何使用 Web Apps？
 
-## Web Apps 概念 ##
+以下是 Azure 适用于 Web Apps 的一些主要功能：
 
-- **Web Apps 库** - 从不断增长的现有 Web 应用程序模板列表中选择。一键安装 Wordpress、Joomla 和 Drupal 等程序包，充分利用 OSS 应用社区。通过利用 .NET MVC、Django 和 CakePHP 等框架，立即开始应用程序开发过程。
-- **自动缩放** - 凭借 Web Apps，可以快速缩放以处理任何入站客户负载。手动选择 VM 的数量和大小，或设置自动缩放以基于负载或计划来缩放服务器。
-- **持续集成** - 使用 VSO、GitHub、TeamCity、Hudson 或 BitBucket 设置持续集成和部署工作流，从而可以针对每个成功的代码签入或集成测试来自动生成、测试和部署 Web 应用。
-- **部署槽** - 实现[预留部署][Slots]来验证预生产环境中的代码，这与 Azure App Service 中的生产 Web 应用相同。满意后，即可通过执行交换操作，在零停机时间的情况下发布应用的新版本。 
-- **生产中测试** - 升级预留部署并执行 A/B 测试，从而用实时流量的可配置部分来验证新代码。 
-- **Webjobs** - 在 Web Apps VM 上运行任何程序或脚本。持续或按计划运行作业，进行扩展以在多台 VM 上运行。使用 Azure [WebJobs SDK][Webjobs] 与 Azure 存储空间或服务总线集成。
-- **混合连接** - 使用[混合连接](/documentation/articles/integration-hybrid-connection-overview)和[虚拟网络](/documentation/articles/web-sites-integrate-with-vnet)访问本地数据。
+- **多种语言和框架** — Azure 对 ASP.NET、Node.js、Java、PHP 和 Python 提供顶级支持。你也可以在 Azure VM 上运行 [PowerShell 和其他脚本或可执行文件](/documentation/articles/web-sites-create-web-jobs)。
 
-## 入门 ##
-要开始使用 Web Apps，请按照[创建 ASP.NET Web 应用][create]教程进行操作。
-
-有关 Azure App Service 平台的详细信息，请参阅 [Azure App Service][appservice]。
-
->[AZURE.NOTE]如果你想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，你可以通过该网站在 App Service 中立即创建一个生存期较短的入门 Web 应用。你不需要使用信用卡，也不需要做出承诺。
-
-## 发生的更改
-* 有关从网站更改为 App Service 的指南，请参阅：[Azure App Service 及其对现有 Azure 服务的影响](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 有关从旧门户更改为新门户的指南，请参阅：[有关在预览门户中导航的参考](http://go.microsoft.com/fwlink/?LinkId=529715)
-
-[appservice]: /documentation/articles/app-service-value-prop-what-is
-[create]: /documentation/articles/web-sites-dotnet-get-started
-[Webjobs]: /documentation/articles/websites-dotnet-webjobs-sdk-get-started
-[Slots]: /documentation/articles/web-sites-staged-publishing
-
+- **DevOps 优化** — 使用 Visual Studio Team Services、GitHub 或 BitBucket 设置[持续集成和部署](/documentation/articles/app-service-continous-deployment)。通过[测试和过渡环境](/documentation/articles/web-sites-staged-publishing)提升更新。执行 [A/B 测试](/documentation/articles/app-service-web-test-in-production-get-start)。使用 [Azure PowerShell](/documentation/articles/powershell-install-configure) 或[跨平台命令行接口 (CLI)](/documentation/articles/xplat-cli-install) 在 Azure 中管理应用。
  
+- **具有高可用性的全局缩放** — 以手动或自动方式[增加](/documentation/articles/app-service-scale)或[扩大](/documentation/articles/insights-how-to-scale)。在 Microsoft 全球数据中心基础结构中的任意位置托管应用，Azure [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) 将承诺高可用性。
 
-<!----HONumber=67-->
+- **到 SaaS 平台和本地数据的连接** — 从适用于企业系统（例如 SAP、Siebel 和 Oracle）的 50 多个[连接器](/documentation/articles/apis-list)、SaaS 服务（例如 Salesforce 和 Office 365）以及 Internet 服务（例如 Facebook 和 Twitter）中进行选择。使用[混合连接](/documentation/articles/integration-hybrid-connection-overview)和 [Azure 虚拟网络](/documentation/articles/web-sites-integrate-with-vnet)访问本地数据。
+
+- **安全性和合规性** — Azure 符合 [ISO、SOC 和 PCI](https://www.microsoft.com/TrustCenter/)。
+
+- **应用程序模板** — 从 [Azure 库](https://azure.microsoft.com/marketplace/)的大量应用程序模板列表中进行选择，以便使用向导来安装流行的开源软件，例如 WordPress、Joomla 和 Drupal。
+
+- **Visual Studio 集成** — Visual Studio 中的专用工具可简化创建、部署和调试工作。
+
+此外，Web 应用可以利用 [API Apps](/documentation/articles/app-service-api-apps-why-best-platform) 提供的功能（例如 CORS 支持）和 [Mobile Apps](/documentation/articles/app-service-mobile-value-prop) 提供的功能（例如推送通知）。有关 Azure Web 应用中应用类型的详细信息，请参阅 [Azure 概述](/documentation/services/web-sites)。
+
+除了 Azure 中的 Web Apps，Azure 还提供可用来托管网站和 Web 应用程序的其他服务。大多数情况下，Web Apps 是最佳选择。对于微服务体系结构，请考虑使用 [Service Fabric](/documentation/services/service-fabric)；如果你需要更好地控制运行代码的 VM，请考虑使用 [Azure 虚拟机](/documentation/services/virtual-machines/)。有关如何在这些 Azure 服务之间做选择的详细信息，请参阅 [Azure Web 应用、虚拟机、Service Fabric 和云服务的比较](/documentation/articles/choose-web-site-cloud-service-vm)。
+
+## 入门
+
+若要开始在 Azure 中向新 Web 应用部署示例代码，请遵循[在 5 分钟内将第一个 Web 应用部署到 Azure](/documentation/articles/app-service-web-get-started) 教程。你需要一个免费 Azure 帐户。
+
+如果想要在注册 Azure 帐户之前开始使用 Azure，请转到[试用 Azure Web 应用](https://tryappservice.azure.com/)，你可以在 Azure 中立即创建一个生存期较短的入门 Web 应用。你不需要使用信用卡，也不需要做出承诺。
+
+<!---HONumber=Mooncake_0627_2016-->

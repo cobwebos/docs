@@ -5,18 +5,18 @@
 	description="了解如何实现连续部署到 Azure Web 应用。"
 	services="app-service"
 	documentationCenter=""
-	authors="dariac"
+	authors="dariagrigoriu"
 	manager="wpickett"
 	editor="mollybos"/>
 
 <tags
 	ms.service="app-service"
-	ms.date="03/15/2016"
+	ms.date="06/13/2016"
 	wacn.date=""/>
     
 # 连续部署到 Azure
 
-将 [Azure Web 应用]与 BitBucket、GitHub 和 Visual Studio Team Services (VSTS) 集成可以实现一种连续部署工作流，在其中，Azure 可以从发布到其中一种服务的项目中提取最近的更新。连续部署选项非常适合用于频繁集成多个分发内容的项目。
+本教程说明如何为 [Azure Web 应用] 应用配置连续部署工作流。将 Azure 与 BitBucket、GitHub 和 Visual Studio Team Services (VSTS) 集成可以实现一种连续部署工作流，在其中，Azure 可以从发布到其中一种服务的项目中拉取最近的更新。连续部署选项非常适合用于频繁集成多个分发内容的项目。
 
 ## <a name="overview"></a>启用连续部署
 
@@ -25,7 +25,7 @@
 1. 将应用内容发布到用于连续部署的存储库。  
     有关将项目发布到这些服务的详细信息，请参阅[创建存储库 (GitHub)]、[创建存储库 (BitBucket)] 和 [VSTS 入门]。
 
-2. 在 [Azure 管理门户]上的应用边栏选项卡中，单击“设置”>“部署源”。单击“选择源”，然后单击“GitHub”或其他源。
+2. 在 [Azure 门户]上的应用边栏选项卡中，单击“设置”>“部署源”。单击“选择源”，然后单击“GitHub”或其他源。
 
 	![](./media/app-service-continous-deployment/cd_options.png)
 	
@@ -37,9 +37,9 @@
 
 	> [AZURE.NOTE] 在使用 GitHub 或 BitBucket 启用连续部署时，将显示公用项目和专用项目。
 
-    Azure 将创建与所选存储库的关联，从指定的分支提取文件，并保留 Azure Web 应用存储库的副本。当你从 Azure 管理门户配置 VSTS 连续部署时，集成将使用 Azure [Kudu 部署引擎](https://github.com/projectkudu/kudu/wiki)，该引擎能够使用每个 `git push` 来自动完成生成和部署任务。你不需要在 VSTS 中单独设置连续部署。此过程完成后，应用边栏选项卡的“部署”部分将显示“活动的部署”消息，指出部署已成功完成。
+    Azure 将创建与所选存储库的关联，从指定的分支提取文件，并保留 Azure Web 应用存储库的副本。当你从 Azure 门户配置 VSTS 连续部署时，集成将使用 Azure [Kudu 部署引擎](https://github.com/projectkudu/kudu/wiki)，该引擎能够使用每个 `git push` 来自动完成生成和部署任务。你不需要在 VSTS 中单独设置连续部署。此过程完成后，应用边栏选项卡的“部署”部分将显示“活动的部署”消息，指出部署已成功完成。
 
-5. 若要验证是否已成功部署应用，请在 Azure 管理门户的应用边栏选项卡顶部单击“URL”。
+5. 若要验证是否已成功部署应用，请在 Azure 门户的应用边栏选项卡顶部单击“URL”。
 
 6. 若要验证是否能够在从所选存储库进行连续部署，请将更改推送到该存储库。推送到存储库完成后，你的应用应该很快更新以反映更改。可以在应用的“部署”边栏选项卡中验证是否已提取更新。
 
@@ -61,7 +61,7 @@
 
 若要禁用连续部署，请执行以下操作：
 
-1. 在 [Azure 管理门户]上的应用边栏选项卡中，单击“设置”>“部署源”。然后，在“部署”边栏选项卡中单击“断开连接”。
+1. 在 [Azure 门户]上的应用边栏选项卡中，单击“设置”>“部署源”。然后，在“部署”边栏选项卡中单击“断开连接”。
 
     ![](./media/app-service-continous-deployment/cd_disconnect.png)
 
@@ -77,7 +77,7 @@
 >[AZURE.NOTE] 如果想要在注册 Azure 帐户之前开始使用 Azure，请转到[试用 Azure Web 应用](https://tryappservice.azure.com/)，你可以在 Azure 中立即创建一个生存期较短的入门 Web 应用。你不需要使用信用卡，也不需要做出承诺。
 
 [Azure Web 应用]: /documentation/articles/app-service-changes-existing-services/
-[Azure 管理门户]: https://manage.windowsazure.cn
+[Azure 门户]: https://portal.azure.cn
 [VSTS Portal]: https://www.visualstudio.com/products/visual-studio-team-services-vs.aspx
 [Installing Git]: http://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git
 [如何使用适用于 Azure 的 PowerShell]: /documentation/articles/powershell-install-configure
@@ -89,4 +89,4 @@
 [VSTS 入门]: https://www.visualstudio.com/get-started/overview-of-get-started-tasks-vs
 [Continuous delivery to Azure using Visual Studio Team Services]: /documentation/articles/cloud-services-continuous-delivery-use-vso
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0627_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="multiple"
-	ms.date="03/04/2016" 
+	ms.date="05/04/2016" 
 	wacn.date=""/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694270.aspx -->
@@ -257,7 +257,7 @@ Azure Plugin for Eclipse - 2012 年 6 月 CTP 已发布。新功能包括：
 * **在安装插件期间安装 Microsoft JDBC Driver 4.0 for SQL Server：**在安装新插件期间，可以安装最新版本的 Microsoft JDBC Driver for SQL Server。
 * **在安装插件期间安装 Azure 访问控制服务筛选器：**在工具包中包含为 Eclipse 库的这个新组件可让你 Java Web 应用程序正常使用标识提供程序（如 Google、Live.com 和 Yahoo!）来利用 Azure 访问控制服务 (ACS) 身份验证。你不需要自行编写身份验证逻辑，只需配置几个选项，然后让筛选器执行繁琐的任务，让用户使用 ACS 登录。你可以专注于编写代码，使用户能够基于请求对象中的筛选器返回到应用程序中的标识来访问资源。有关使用 ACS 筛选器的教程，请参阅[如何使用 Eclipse 在 Azure 访问控制服务上对 Web 用户进行身份验证]。
 * **自动检测 Azure SDK 1.7 必备组件：**当你创建新的 Azure 部署项目时，将会自动下载 Azure SDK 1.7（如果尚未安装）。
-* **实例终结点：**允许直接端口终结点访问，以便与负载平衡角色实例通信。可以通过“[终结点属性]”页上的终结点 UI 添加实例终结点。在包含多实例部署的方案中，这有助于针对云中运行的特定计算实例启用远程调试和 JMX 诊断。 
+* **实例终结点：**允许直接端口终结点访问，以便与负载平衡角色实例通信。可以通过“终结点属性”页上的终结点 UI 添加实例终结点。[]在包含多实例部署的方案中，这有助于针对云中运行的特定计算实例启用远程调试和 JMX 诊断。 
 * **组件 UI** 中：方便高级用户设置项目中各个 Azure 角色与其他外部资源（如 Java 应用程序项目）之间的项目依赖关系；此外，还可以方便描述其部署逻辑。有关详细信息，请参阅[组件属性]。
 * **自动升级先前版本的项目：**如果打开的工作区包含使用先前版本的插件创建的 Azure 项目，旧项目将在 Eclipse 中显示为已关闭，因为先期版本的项目与新版本不兼容。如果你尝试打开这些旧项目之一，将会启动升级向导。如果你同意升级，将会创建一个新项目并在其名称后面附加 **\_Upgraded**，同时会自动更新它以配合新版本。你可以根据需要重命名新项目。在升级过程中，原始项目不会修改（并将保持为关闭状态）。
 
@@ -278,27 +278,36 @@ Azure Plugin for Eclipse - 2011 年 12 月 CTP 已发布。新功能包括：新
 
 ## 另请参阅 ##
 
-[适用于 Eclipse 的 Azure 工具包]
+有关 Azure Toolkits for Java IDE 的详细信息，请参阅以下链接：
 
-[安装 Azure Toolkit for Eclipse]
-
-[在 Eclipse 中为 Azure 创建 Hello World 应用程序]
+- [适用于 Eclipse 的 Azure 工具包]
+  - [安装 Azure Toolkit for Eclipse]
+  - [在 Eclipse 中创建 Azure 的 Hello World Web 应用]
+  - Azure Toolkit for Eclipse 的新增功能（本文）
+- [Azure Toolkit for IntelliJ]
+  - [安装 Azure Toolkit for IntelliJ]
+  - [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]。
 
 <!-- URL List -->
 
+[适用于 Eclipse 的 Azure 工具包]: /documentation/articles/azure-toolkit-for-eclipse
+[Azure Toolkit for IntelliJ]: /documentation/articles/azure-toolkit-for-intellij
+[在 Eclipse 中创建 Azure 的 Hello World Web 应用]: /documentation/articles/app-service-web/app-service-web-eclipse-create-hello-world-web-app
+[在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: /documentation/articles/app-service-web/app-service-web-intellij-create-hello-world-web-app
+[Installing the Azure Toolkit for Eclipse]: /documentation/articles/azure-toolkit-for-eclipse-installation
+[安装 Azure Toolkit for IntelliJ]: /documentation/articles/azure-toolkit-for-intellij-installation
+
 [Zulu OpenJDK 的 Azul Systems 网页]: http://go.microsoft.com/fwlink/?LinkId=402457
 [Azure Java 开发人员中心]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure 服务终结点]: http://go.microsoft.com/fwlink/?LinkID=699526
 [Azure 存储帐户列表]: http://go.microsoft.com/fwlink/?LinkID=699528
-[适用于 Eclipse 的 Azure 工具包]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure Toolkit for IntelliJ]: https://plugins.jetbrains.com/plugin/8053
 [组件属性]: http://go.microsoft.com/fwlink/?LinkID=699525#components_properties
 [在 Eclipse 中为 Azure 创建 Hello World 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699533
 [在 Eclipse 中调试 Azure 应用程序]: http://go.microsoft.com/fwlink/?LinkID=699535
 [实施大型部署]: http://go.microsoft.com/fwlink/?LinkID=699536
-[终结点属性]: http://go.microsoft.com/fwlink/?LinkID=699525#endpoints_properties
+[]: http://go.microsoft.com/fwlink/?LinkID=699525#endpoints_properties
 [环境变量属性]: http://go.microsoft.com/fwlink/?LinkID=699525#environment_variables_properties
 [如何使用 Eclipse 在 Azure 访问控制服务上对 Web 用户进行身份验证]: http://go.microsoft.com/fwlink/?LinkID=264703
 [如何使用 SSL 卸载]: http://go.microsoft.com/fwlink/?LinkID=699545
@@ -322,4 +331,4 @@ Azure Plugin for Eclipse - 2011 年 12 月 CTP 已发布。新功能包括：新
 [ic710882]: ./media/azure-toolkit-for-eclipse-whats-new/ic710882.png
 [ic710883]: ./media/azure-toolkit-for-eclipse-whats-new/ic710883.png
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0627_2016-->
