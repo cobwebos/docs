@@ -3,16 +3,16 @@
 	description="了解如何在 Azure 门户中创建 Azure Batch 帐户，以便在云中运行大规模并行工作负荷"
 	services="batch"
 	documentationCenter=""
-	authors="dlepow"
+	authors="mmacy"
 	manager="timlt"
 	editor=""/>
 
 <tags
 	ms.service="batch"
-	ms.date="05/12/2016"
+	ms.date="06/01/2016"
 	wacn.date=""/>
 
-
+	
 
 # 在 Azure 门户中创建和管理 Azure Batch 帐户
 
@@ -28,49 +28,45 @@
 
 1. 登录到 [Azure 门户][azure_portal]。
 
-2. 单击“新建”>“计算”>“Batch 服务”。
+2. 单击“新建”>“虚拟机”>“Batch 服务”。
 
 	![应用商店中的批处理][marketplace_portal]
 
-3. 在“Batch 服务”边栏选项卡上检查信息，然后单击“创建”。请注意，已禁用部署模型选择功能。这是因为 Batch 仅使用资源组部署模型。
-
-	![Azure 门户中的创建 Batch 服务边栏选项卡][3]
-
-4. “新建 Batch 帐户”边栏选项卡随即显示。请参阅以下 a 到 ee 项，以获取每个边栏选项卡元素的说明。
+3. “新建 Batch 帐户”边栏选项卡随即显示。请参阅以下 *a* 到 *e* 项，以获取每个边栏选项卡元素的说明。
 
     ![创建批处理帐户][account_portal]
 
-	a.**帐户名** -- 为 Batch 帐户指定唯一的名称。此名称必须是创建帐户的 Azure 区域内的唯一名称（请参阅下面的“位置”）。它只能包含小写字符、数字，且长度必须为 3-24 个字符。
+	a.**帐户名**：Batch 帐户的唯一名称。此名称必须是创建帐户的 Azure 区域内的唯一名称（请参阅下面的“位置”）。它只能包含小写字符、数字，且长度必须为 3-24 个字符。
 
-	b.**订阅** -- 选择要在其中创建 Batch 帐户的订阅。如果你只有一个订阅，则默认选择此项目。
+	b.**订阅**：要在其中创建 Batch 帐户的订阅。如果你只有一个订阅，则默认选择此项目。
 
-	c.**资源组** -- 选择新的 Batch 帐户的资源组，如果订阅中没有资源组，则新建一个。
+	c.**资源组**：为新 Batch 帐户选择现有的资源组，或选择性地创建一个新组。
 
-	d.**位置** -- 选择要在其中创建 Batch 帐户的 Azure 区域。只有订阅和资源组支持的区域显示为选项。
+	d.**位置**：要在其中创建 Batch 帐户的 Azure 区域。只有订阅和资源组支持的区域显示为选项。
 
-    e.**存储帐户**（可选）-- 可以将**常规用途**存储帐户关联（链接）到新的 Batch 帐户。Batch 的[应用程序包](batch-application-packages.md)功能在应用程序包的存储和检索操作中使用链接的存储帐户。有关此功能的详细信息，请参阅 [Application deployment with Azure Batch application packages（使用 Azure Batch 应用程序包部署应用程序）](batch-application-packages.md)。
+    e.**存储帐户**（可选）：要与新 Batch 帐户关联（链接）的**常规用途**存储帐户。Batch 的[应用程序包](batch-application-packages.md)功能在应用程序包的存储和检索操作中使用链接的存储帐户。有关此功能的详细信息，请参阅 [Application deployment with Azure Batch application packages（使用 Azure Batch 应用程序包部署应用程序）](batch-application-packages.md)。
 
-     > [AZURE.TIP] 在链接的存储帐户中重新生成密钥时需要特别注意。有关详细信息，请参阅下面的 [Batch 帐户注意事项](#considerations-for-batch-accounts)。
+     > [AZURE.IMPORTANT] 在链接的存储帐户中重新生成密钥时需要特别注意。有关详细信息，请参阅下面的 [Batch 帐户注意事项](#considerations-for-batch-accounts)。
 
-5. 单击“创建”以创建帐户。
+4. 单击“创建”以创建帐户。
 
-  门户将指示它“正在部署”帐户，“Batch 帐户”边栏选项卡将在完成时显示。
+  门户将指示**正在部署**帐户，完成后，“通知”中会显示“部署成功”通知。
 
 ## 查看 Batch 帐户属性
 
 Batch 帐户边栏选项卡显示帐户的多个属性，并且可让你访问其他设置，例如访问密钥、配额、用户和存储帐户关联。
 
-* **Batch 帐户 URL** -- 当你使用 [Batch REST][api_rest] API 或 [Batch .NET][api_net] 客户端库时，此 URL 可用于访问 Batch 帐户，并遵循以下格式：
+* **Batch 帐户 URL**：当你使用 [Batch REST][api_rest] API 或 [Batch .NET][api_net] 客户端库时，此 URL 可用于访问 Batch 帐户，并遵循以下格式：
 
-  `https://<account_name>.<region>.batch.azure.com`
+    `https://<account_name>.<region>.batch.azure.com`
 
-* **访问密钥** -- 若要查看及管理 Batch 帐户的访问密钥，请单击密钥图标打开“管理密钥”边栏选项卡，或单击“所有设置”>“密钥”。与 Batch 服务 API（例如 [Batch REST][api_rest] 或 [Batch .NET][api_net] 客户端库）通信时，需要有访问密钥。
+* **访问密钥**：若要查看及管理 Batch 帐户的访问密钥，请单击密钥图标打开“管理密钥”边栏选项卡，或单击“所有设置”>“密钥”。与 Batch 服务 API（例如 [Batch REST][api_rest] 或 [Batch .NET][api_net] 客户端库）通信时，需要有访问密钥。
 
- ![批处理帐户密钥][account_keys]
+    ![批处理帐户密钥][account_keys]
 
-* **所有设置** -- 若要管理 Batch 帐户的所有设置，或要查看其属性，请单击“所有设置”以打开“设置”边栏选项卡。此边栏选项卡可供访问帐户的所有设置和属性，包括查看帐户配额、选择要链接到 Batch 帐户的 Azure 存储帐户，以及管理用户。
+* **所有设置**：若要管理 Batch 帐户的所有设置，或要查看其属性，请单击“所有设置”以打开“设置”边栏选项卡。此边栏选项卡可供访问帐户的所有设置和属性，包括查看帐户配额、选择要链接到 Batch 帐户的 Azure 存储帐户，以及管理用户。
 
- ![Batch 帐户设置和属性边栏选项卡][5]
+    ![Batch 帐户设置和属性边栏选项卡][5]
 
 ## Batch 帐户注意事项
 
@@ -100,11 +96,10 @@ Batch 帐户边栏选项卡显示帐户的多个属性，并且可让你访问�
 [azure_portal]: https://portal.azure.cn
 [batch_pricing]: /pricing/details/batch/
 
-[3]: ./media/batch-account-create-portal/batch_acct_03.png "Azure 门户中的创建 Batch 服务边栏选项卡"
 [4]: ./media/batch-account-create-portal/batch_acct_04.png "重新生成存储帐户密钥"
 [5]: ./media/batch-account-create-portal/batch_acct_05.png "Batch 帐户设置和属性边栏选项卡"
 [marketplace_portal]: ./media/batch-account-create-portal/marketplace_batch.PNG
 [account_portal]: ./media/batch-account-create-portal/batch_acct_portal.png
 [account_keys]: ./media/batch-account-create-portal/account_keys.PNG
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->

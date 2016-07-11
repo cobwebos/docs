@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="02/25/2016" 
+	ms.date="05/11/2016" 
 	wacn.date=""/>
 
 #Azure 媒体服务概念 
@@ -85,7 +85,8 @@
 
 Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。
 
-一开始使用媒体服务时，了解编解码器与文件格式之间的区别很重要。编解码器是实现压缩/解压缩算法的软件，而文件格式是用于保存压缩视频的容器。
+一开始使用媒体服务时，了解编解码器与文件格式之间的区别很重要。
+编解码器是实现压缩/解压缩算法的软件，而文件格式是用于保存压缩视频的容器。
 
 媒体服务所提供的动态打包可让你以媒体服务支持的流格式（MPEG DASH、HLS、Smooth Streaming、HDS）传送自适应比特率 MP4 或平滑流编码内容，而无须重新打包成这些流格式。
 
@@ -121,7 +122,8 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 
 ###节目 
 
-[节目](https://msdn.microsoft.com/zh-cn/library/azure/dn783463.aspx)用于控制实时流中的片段的发布和存储。通道管理节目。频道和节目的关系非常类似于传统媒体，频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。你可以通过设置 **ArchiveWindowLength** 属性，指定你希望保留多少小时的节目录制内容。此值的设置范围是最短 5 分钟，最长 25 小时。
+[节目](https://msdn.microsoft.com/zh-cn/library/azure/dn783463.aspx)用于控制实时流中的片段的发布和存储。通道管理节目。频道和节目的关系非常类似于传统媒体，频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。
+你可以通过设置 **ArchiveWindowLength** 属性，指定你希望保留多少小时的节目录制内容。此值的设置范围是最短 5 分钟，最长 25 小时。
 
 ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。超出指定时间长度后，节目也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。此属性的这个值还决定了客户端清单能够增加多长时间。
 
@@ -133,7 +135,7 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 有关详细信息，请参阅：
 
 - [使用能够使用 Azure 媒体服务执行实时编码的频道](/documentation/articles/media-services-manage-live-encoder-enabled-channels)
-- [使用从本地编码器接收多比特率实时流的频道](/documentation/articles/media-services-manage-channels-overview)
+- [使用从本地编码器接收多比特率实时流的频道](/documentation/articles/media-services-live-streaming-with-onprem-encoders)
 - [配额和限制](/documentation/articles/media-services-quotas-and-limitations)  
 
 ##保护内容
@@ -242,4 +244,4 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 		http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f) 
 
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0704_2016-->

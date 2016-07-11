@@ -7,9 +7,9 @@
 - 资源组 = “TestRG”
 - Subnet1 名称 = “FrontEnd” 
 - Subnet1 地址空间 = “192.168.0.0/16”
-- 网关子网名称：“GatewaySubnet” 必须始终将网关子网命名为 *GatewaySubnet*。
+- 网关子网名称：“GatewaySubnet” 必须始终将网关子网命名为 GatewaySubnet。
 - 网关子网地址空间 = “192.168.200.0/26”
-- 区域 =“美国东部”
+- 区域 =“China East”
 - 网关名称 = “GW”
 - 网关 IP 名称 = “GWIP”
 - 网关 IP 配置名称 = “gwipconf”
@@ -28,7 +28,7 @@
 2. 声明此练习的变量。本示例将在以下例子中使用这些变量。请务必编辑此例子，以反映想要使用的设置。
 		
 		$RG = "TestRG"
-		$Location = "East US"
+		$Location = "China East"
 		$GWName = "GW"
 		$GWIPName = "GWIP"
 		$GWIPconfName = "gwipconf"
@@ -53,11 +53,10 @@
 7. 请求公共 IP 地址。创建网关之前请求 IP 地址。你无法指定要使用的 IP 地址；它会进行动态分配。后面的配置部分将使用此 IP 地址。AllocationMethod 必须是动态的。
 
 		$pip = New-AzureRmPublicIpAddress -Name gwpip -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
-		$ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 
 8. 创建网关配置。网关配置定义要使用的子网和公共 IP 地址。在此步骤中，你将指定创建网关时使用的配置。此步骤不会实际创建网关对象。使用下面的示例创建你的网关配置。
 
-		$gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -SubnetId $subnet.Id -PublicIpAddressId $pip.Id 
+		$ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
 
 9. 创建网关。在此步骤中，**-GatewayType** 尤其重要。必须使用值 **ExpressRoute**。请注意，运行这些 cmdlet 后，可能需要 20 分钟或更多时间来创建网关。
 
@@ -81,4 +80,4 @@
 使用以下命令可删除网关
 
 	Remove-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG  
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0704_2016-->

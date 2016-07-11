@@ -1,5 +1,5 @@
 <properties
-	pageTitle="通过 PowerShell 为 Azure VM 部署和管理备份 | Microsoft Azure"
+	pageTitle="通过 PowerShell 为 Azure VM 部署和管理备份 | Azure"
 	description="了解如何使用 PowerShell 部署和管理 Azure 备份"
 	services="backup"
 	documentationCenter=""
@@ -9,6 +9,7 @@
 
 <tags
 	ms.service="backup"
+
 	ms.date="05/09/2016"
 	wacn.date=""/>
 
@@ -119,9 +120,9 @@ DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:
 
 > [AZURE.NOTE] PowerShell 中 BackupTime 字段的时区是 UTC。但是，在 Azure 门户中显示备份时间时，时区将会调整为你的本地系统并附带 UTC 时差。
 
-一个备份策略至少与一个保留策略相关联。保留策略定义在 Azure 备份中保留恢复点的时限。**New-AzureRmBackupRetentionPolicy** cmdlet 创建的 PowerShell 对象用于存储保留策略信息。这些保留策略对象可以用作 *New-AzureRmBackupProtectionPolicy* cmdlet 的输入，也可以直接用于 *Enable-AzureRmBackupProtection* cmdlet。
+一个备份策略至少与一个保留策略相关联。保留策略定义在 Azure 备份中保留恢复点的时限。**New-AzureRmBackupRetentionPolicy** cmdlet 创建的 PowerShell 对象用于存储保留策略信息。这些保留策略对象可以用作 New-AzureRmBackupProtectionPolicy cmdlet 的输入，也可以直接用于 Enable-AzureRmBackupProtection cmdlet。
 
-备份策略定义对某个项目进行备份的时间和频率。**New-AzureRmBackupProtectionPolicy** cmdlet 创建的 PowerShell 对象用于存储备份策略信息。该备份策略用作 *Enable-AzureRmBackupProtection* cmdlet 的输入。
+备份策略定义对某个项目进行备份的时间和频率。**New-AzureRmBackupProtectionPolicy** cmdlet 创建的 PowerShell 对象用于存储备份策略信息。该备份策略用作 Enable-AzureRmBackupProtection cmdlet 的输入。
 
 ```
 PS C:\> $Daily = New-AzureRmBackupRetentionPolicyObject -DailyRetention -Retention 30
@@ -189,7 +190,7 @@ PS C:\> $backupitem = Get-AzureRmBackupContainer -Vault $backupvault -Type Azure
 
 ### 选择恢复点
 
-你现在可以使用 **Get-AzureRmBackupRecoveryPoint** cmdlet 列出备份项目的所有恢复点，然后选择要还原的恢复点。通常情况下，用户会选取列表中在时间上最近的 *AppConsistent* 点。
+你现在可以使用 **Get-AzureRmBackupRecoveryPoint** cmdlet 列出备份项目的所有恢复点，然后选择要还原的恢复点。通常情况下，用户会选取列表中在时间上最近的 AppConsistent 点。
 
 ```
 PS C:\> $rp =  Get-AzureRmBackupRecoveryPoint -Item $backupitem
@@ -217,7 +218,7 @@ WorkloadName    Operation       Status          StartTime              EndTime
 testvm          Restore         InProgress      01-Sep-15 1:14:01 PM   01-Jan-01 12:00:00 AM
 ```
 
-还原作业完成后，你可以使用 **Get-AzureRmBackupJobDetails** cmdlet 获取还原操作的详细信息。*ErrorDetails* 属性将提供重建 VM 所需的信息。
+还原作业完成后，你可以使用 **Get-AzureRmBackupJobDetails** cmdlet 获取还原操作的详细信息。ErrorDetails 属性将提供重建 VM 所需的信息。
 
 ```
 PS C:\> $restorejob = Get-AzureRmBackupJob -Job $restorejob
@@ -338,4 +339,8 @@ $DAILYBACKUPSTATS | Out-GridView
 
 如果你想要为此报告输出添加图表功能，可通过 TechNet 博客[使用 PowerShell 绘制图表](http://blogs.technet.com/b/richard_macdonald/archive/2009/04/28/3231887.aspx)来了解相关信息
 
-<!---HONumber=Mooncake_0606_2016-->
+## 后续步骤
+
+如果你更愿意使用 PowerShell 来处理 Azure 资源，则请查看有关如何保护 Windows Server 的 PowerShell 文章：[为 Windows Server 部署和管理备份](./backup-client-automation-classic.md)。此外还有一篇有关如何管理 DPM 备份的 PowerShell 文章：[为 DPM 部署和管理备份](./backup-dpm-automation-classic.md)。这两篇文章都为 Resource Manager 部署和经典部署提供了一个版本。
+
+<!---HONumber=Mooncake_0704_2016-->

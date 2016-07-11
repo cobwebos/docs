@@ -65,6 +65,8 @@ Microsoft 采用行业标准动态路由协议 (BGP)，在本地网络、Azure �
 
 ### 与 Microsoft 云服务建立连接
 
+[AZURE.INCLUDE [expressroute-office365-include](../includes/expressroute-office365-include.md)]
+
 通过 ExpressRoute 连接可访问以下服务：
 
 - Microsoft Azure 服务
@@ -130,4 +132,4 @@ Microsoft 为特殊的地缘政治地区和客户群提供隔离的云环境。�
 	- [配置路由](/documentation/articles/expressroute-howto-routing-classic)
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->

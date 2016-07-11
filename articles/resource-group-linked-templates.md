@@ -1,20 +1,20 @@
 <properties
-   pageTitle="将已链接的模版与 Azure 资源管理器配合使用"
-   description="介绍如何使用 Azure 资源管理器模板中的链接模板创建一个模块化的模板的解决方案。演示如何传递参数值、指定参数文件和动态创建的 URL。"
+   pageTitle="将链接模版与 Resource Manager 配合使用 | Azure"
+   description="介绍如何使用 Azure Resource Manager 模板中的链接模板创建一个模块化的模板的解决方案。演示如何传递参数值、指定参数文件和动态创建的 URL。"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
-   manager="wpickett"
-   editor=""/>
+   manager="timlt"
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="04/04/2016"
+   ms.date="06/08/2016"
    wacn.date=""/>
 
-# 将已链接的模版与 Azure 资源管理器配合使用
+# 将已链接的模版与 Azure Resource Manager 配合使用
 
-从一个 Azure 资源管理器模板中，您可以链接到能使您将部署分解成一组有针对性并且有特定用途的模板的另一个模板。就像将一个应用程序分解为多个代码类那样，分解可提供测试、重用和可读性方面的好处。
+从一个 Azure Resource Manager 模板中，您可以链接到能使您将部署分解成一组有针对性并且有特定用途的模板的另一个模板。就像将一个应用程序分解为多个代码类那样，分解可提供测试、重用和可读性方面的好处。
 
 可以将参数从主模板传递到链接的模板，并可以直接将这些参数映射到由调用模板公开提供的参数或变量。链接模板还可以将输出变量传递回源模板中，启用模板之间的双向数据交换。
 
@@ -47,6 +47,29 @@
         "contentVersion": "1.0.0.0",
     }
 
+尽管链接模板必须可从外部使用，但它无需向公众正式发布。你可以将模板添加到专用存储帐户，这样，只有存储帐户所有者可访问该模板，然后创建共享访问签名 (SAS) 令牌，以允许在部署期间访问。将该 SAS 令牌添加到链接模板的 URI。有关在存储帐户中设置模板和生成 SAS 令牌的步骤，请参阅[使用 Resource Manager 模板和 Azure PowerShell 部署资源](resource-group-template-deploy.md)或[使用 Resource Manager 模板和 Azure CLI 部署资源](resource-group-template-deploy-cli.md)。
+
+下面的示例演示了链接到其他模板的父模板。使用作为参数传入的 SAS 令牌访问嵌套模板。
+
+    "parameters": {
+        "sasToken": { "type": "securestring" }
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-01-01",
+            "name": "nestedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+              "mode": "incremental",
+              "templateLink": {
+                "uri": "[concat('https://storagecontosotemplates.blob.core.windows.net/templates/helloworld.json', parameters('sasToken'))]",
+                "contentVersion": "1.0.0.0"
+              }
+            }
+        }
+    ],
+
+即使令牌作为安全字符串传入，链接模板的 URI（包括 SAS 令牌）也将记录在该资源组的部署操作中。若要限制公开，请设置令牌的到期时间。
 
 ## 链接到参数文件
 
@@ -71,7 +94,7 @@
       } 
     ] 
 
-链接参数文件的 URI 值不能是本地文件，并且必须包含 **http** 或 **https**。
+链接参数文件的 URI 值不能是本地文件，并且必须包含 **http** 或 **https**。当然，也可将参数文件限制为通过 SAS 令牌进行访问。
 
 ## 使用变量来链接模板
 
@@ -98,18 +121,78 @@
         }
     }
 
-你还可以使用 [deployment()](../resource-group-template-functions/#deployment) 获取当前模板的基 URL，并使用该 URL 来获取同一位置其他模板的 URL。如果你的模板位置发生变化（原因可能是改版）或者你想要避免对模板文件中的 URL 进行硬编码，则此操作非常有用。
+你还可以使用 [deployment()](/documentation/articles/resource-group-template-functions/#deployment) 获取当前模板的基 URL，并使用该 URL 来获取同一位置其他模板的 URL。如果你的模板位置发生变化（原因可能是改版）或者你想要避免对模板文件中的 URL 进行硬编码，则此操作非常有用。
 
     "variables": {
         "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
     }
 
-## 将值传递回链接模板
+## 完整示例
 
-如果你需要将值从链接模板传递到主模板，则可以在链接模板的**输出**部分创建一个值。有关示例，请参阅[在 Azure 资源管理器模板中共享状态](/documentation/articles/best-practices-resource-manager-state)。
+下面的示例模板显示了简化布置的链接模板以说明本文中的几个概念。它假定模板已添加到公共访问权限已关闭的存储帐户中的同一个容器。链接模板将一个值传递回 **outputs** 节中的主模板。
+
+**Parent.json** 文件由以下部分组成：
+
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "containerSasToken": { "type": "string" }
+      },
+      "resources": [
+        {
+          "apiVersion": "2015-01-01",
+          "name": "nestedTemplate",
+          "type": "Microsoft.Resources/deployments",
+          "properties": {
+            "mode": "incremental",
+            "templateLink": {
+              "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
+              "contentVersion": "1.0.0.0"
+            }
+          }
+        }
+      ],
+      "outputs": {
+        "result": {
+          "type": "object",
+          "value": "[reference('nestedTemplate').outputs.result]"
+        }
+      }
+    }
+
+**helloworld.json** 文件由以下部分组成：
+
+    {
+	  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	  "contentVersion": "1.0.0.0",
+	  "parameters": {},
+	  "variables": {},
+	  "resources": [],
+	  "outputs": {
+		"result": {
+			"value": "Hello World",
+			"type" : "string"
+		}
+	  }
+    }
+    
+在 PowerShell 中，你使用以下命令获取容器的令牌并部署模板：
+
+    Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
+    $token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
+    New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ("https://storagecontosotemplates.blob.core.windows.net/templates/parent.json" + $token) -containerSasToken $token
+
+在 Azure CLI 中，你使用以下代码获取容器的令牌并部署模板。目前，使用包括 SAS 令牌的模板 URI 时必须提供部署的名称。
+
+    expiretime=$(date -I'minutes' --date "+30 minutes")  
+    azure storage container sas create --container templates --permissions r --expiry $expiretime --json | jq ".sas" -r
+    azure group deployment create -g ExampleGroup --template-uri "https://storagecontosotemplates.blob.core.windows.net/templates/parent.json?{token}" -n tokendeploy  
+
+系统将提示你提供 SAS 令牌作为参数。你需要在令牌的前面加 **?**。
 
 ## 后续步骤
 - 若要了解如何为资源定义部署顺序，请参阅 [Defining dependencies in Azure Resource Manager templates（在 Azure Resource Manager 模板中定义依赖关系）](/documentation/articles/resource-group-define-dependencies)
 - 若要了解如何定义一个资源但要创建其多个实例，请参阅 [Create multiple instances of resources in Azure Resource Manager（在 Azure Resource Manager 中创建多个资源实例）](/documentation/articles/resource-group-create-multiple)
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0704_2016-->

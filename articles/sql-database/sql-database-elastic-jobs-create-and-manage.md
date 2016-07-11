@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="04/25/2016"
+	ms.date="05/27/2016"
 	wacn.date="05/23/2016"/>
 
 # 创建和管理扩大的 SQL Azure 数据库（预览版）
@@ -111,4 +111,4 @@
 
  
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->

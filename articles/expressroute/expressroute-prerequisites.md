@@ -4,17 +4,19 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags
    ms.service="expressroute"
-   ms.date="04/19/2016"
+   ms.date="06/13/2016"
    wacn.date=""/>
 
 
 # ExpressRoute 先决条件和清单  
 
 若要使用 ExpressRoute 连接到 Microsoft 云服务，你需要确认是否符合以下部分中所列的要求。
+
+[AZURE.INCLUDE [expressroute-office365-include](../includes/expressroute-office365-include.md)]
 
 ## Azure 帐户
 
@@ -60,4 +62,4 @@
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
  
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->

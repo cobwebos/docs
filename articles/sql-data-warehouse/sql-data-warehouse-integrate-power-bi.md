@@ -9,10 +9,6 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
    ms.date="10/06/2015"
    wacn.date=""/>
 
@@ -50,7 +46,7 @@
 6.	 你可以单击新的数据集，以浏览数据库中的所有表和视图。选择一个列会将查询发回到源，并动态创建视觉效果。可将这些视觉效果保存在新报表中，并固定回到仪表板。
 
 ## 查找参数值
-在 Azure 门户中可以找到完全限定的服务器名称和数据库名称。请注意，SQL 数据仓库此时只出现在 Azure 预览门户中。
+在 Azure 门户中可以找到完全限定的服务器名称和数据库名称。请注意，SQL 数据仓库此时只出现在 Azure 管理门户中。
 
 
 <!--Image references-->
@@ -63,4 +59,6 @@
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_1207_2015-->
+
+
+<!---HONumber=Mooncake_0704_2016-->

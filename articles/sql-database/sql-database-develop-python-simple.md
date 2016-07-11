@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="04/07/2016"
+	ms.date="06/16/2016"
 	wacn.date="04/22/2016"/>
 
 
@@ -41,6 +41,13 @@
 
 ## 后续步骤
 
-有关详细信息，请参阅 [Python 开发人员中心](/develop/python)。
+* 参阅 [SQL Database Development Overview（SQL 数据库开发概述）](/documentation/articles/sql-database-develop-overview)
+* 有关 [Microsoft Python Driver for SQL Server](https://msdn.microsoft.com/zh-cn/library/mt652092.aspx) 的详细信息
+* 访问 [Python 开发人员中心](/develop/python/)。
 
-<!---HONumber=Mooncake_0503_2016-->
+## 其他资源 
+
+* [包含 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](/documentation/articles/sql-database-design-patterns-multi-tenancy-saas-applications)
+* 浏览所有 [SQL 数据库功能](/home/features/sql-databases/)
+
+<!---HONumber=Mooncake_0704_2016-->

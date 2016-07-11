@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="batch"
-	ms.date="04/19/2016"
+	ms.date="06/03/2016"
 	wacn.date=""/>
 
 # 在 Azure Batch 池中预配 Linux 计算节点
@@ -22,9 +22,9 @@ Azure Batch 可让你同时在 Linux 和 Windows 虚拟机上运行并行计算�
 
 在 Batch 中创建计算节点池时，可以使用两个选项来选择节点大小和操作系统：“云服务配置”和“虚拟机配置”。
 
-“云服务配置”只提供 Windows 计算节点。[Sizes for Cloud Services（云服务的大小）](../cloud-services/cloud-services-sizes-specs.md)中列出了可用的计算节点大小，[Azure Guest OS releases and SDK compatibility matrix（Azure 来宾 OS 版本和 SDK 兼容性对照表）](../cloud-services/cloud-services-guestos-update-matrix.md)中列出了可用的操作系统。创建包含云服务节点的池时，只需指定可在这些文章中找到的节点大小及其“OS 系列”。创建 Windows 计算节点池时，最常使用的是云服务。
+**云服务配置**“只”提供 Windows 计算节点。[Sizes for Cloud Services（云服务的大小）](../cloud-services/cloud-services-sizes-specs.md)中列出了可用的计算节点大小，[Azure Guest OS releases and SDK compatibility matrix（Azure 来宾 OS 版本和 SDK 兼容性对照表）](../cloud-services/cloud-services-guestos-update-matrix.md)中列出了可用的操作系统。创建包含云服务节点的池时，只需指定可在这些文章中找到的节点大小及其“OS 系列”。创建 Windows 计算节点池时，最常使用的是云服务。
 
-“虚拟机配置”为计算节点提供 Linux 和 Windows 映像。[Sizes for virtual machines in Azure（Azure 中虚拟机的大小）](../virtual-machines/virtual-machines-linux-sizes.md)(Linux) 和 [Sizes for virtual machines in Azure（Azure 中虚拟机的大小）](../virtual-machines/virtual-machines-windows-sizes.md)(Windows) 中列出了可用的计算节点大小。创建包含虚拟机配置节点的池时，不仅需要指定节点的大小，还需要在节点上安装**虚拟机映像引用**和 Batch **节点代理 SKU**。
+**虚拟机配置**为计算节点提供 Linux 和 Windows 映像。[Sizes for virtual machines in Azure（Azure 中虚拟机的大小）](../virtual-machines/virtual-machines-linux-sizes.md)(Linux) 和 [Sizes for virtual machines in Azure（Azure 中虚拟机的大小）](../virtual-machines/virtual-machines-windows-sizes.md)(Windows) 中列出了可用的计算节点大小。创建包含虚拟机配置节点的池时，不仅需要指定节点的大小，还需要在节点上安装**虚拟机映像引用**和 Batch **节点代理 SKU**。
 
 ### 虚拟机映像引用
 
@@ -51,7 +51,7 @@ Batch 节点代理是一个程序，它在池中的每个节点上运行，并�
 
 ## 创建 Linux 池：Batch Python
 
-以下代码片段演示如何使用[适用于 Python 的 Microsoft Azure Batch 客户端库][py_batch_package]来创建 Ubuntu Server 计算节点池。有关 Batch Python 模块的参考文档可在此处找到：[azure.batch package ][py_batch_docs] 阅读文档。
+以下代码片段演示如何使用[适用于 Python 的 Microsoft Azure Batch 客户端库][py_batch_package]来创建 Ubuntu Server 计算节点池。有关 Batch Python 模块的参考文档可在此处找到： [azure.batch package ][py_batch_docs] 阅读文档。
 
 在此代码片段中，我们显式创建了一个 [ImageReference][py_imagereference] 用于指定池的每个属性（publisher、offer、sku、version）。但是，我们建议在生产代码中使用 [list\_node\_agent\_skus][py_list_skus] 方法在运行时从可用映像和节点代理 SKU 组合中做出决定和选择。
 
@@ -206,11 +206,13 @@ ImageReference imageReference = new ImageReference(
 | Canonical | UbuntuServer | 14\.04.3-LTS | 最新 | batch.node.ubuntu 14.04 |
 | Canonical | UbuntuServer | 14\.04.4-LTS | 最新 | batch.node.ubuntu 14.04 |
 | Canonical | UbuntuServer | 15\.10 | 最新 | batch.node.debian 8 |
+| Canonical | UbuntuServer | 16\.04.0-LTS | 最新 | batch.node.ubuntu 16.04 |
 | Credativ | Debian | 8 | 最新 | batch.node.debian 8 |
 | OpenLogic | CentOS | 7\.0 | 最新 | batch.node.centos 7 |
 | OpenLogic | CentOS | 7\.1 | 最新 | batch.node.centos 7 |
 | OpenLogic | CentOS | 7\.2 | 最新 | batch.node.centos 7 |
-| Oracle | Oracle-Linux-7 | OL70 | 最新 | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7\.1 | 最新 | batch.node.centos 7 |
+| Oracle | Oracle-Linux | 7\.0 | 最新 | batch.node.centos 7 |
 | SUSE | SLES | 12 | 最新 | batch.node.opensuse 42.1 |
 | SUSE | SLES | 12-SP1 | 最新 | batch.node.opensuse 42.1 |
 | SUSE | SLES-HPC | 12 | 最新 | batch.node.opensuse 42.1 |
@@ -279,9 +281,13 @@ Azure Batch 构建在 Azure 云服务和 Azure 虚拟机技术基础之上。Bat
 
 ## 后续步骤
 
+### Batch Python 教程
+
+有关配合 Python 使用 Batch 的更深入教程，请参阅 [Get started with the Azure Batch Python client（Azure Batch Python 客户端入门）](batch-python-tutorial.md)。该教程随附的[代码示例][github_samples_pyclient]包含一个帮助器函数 `get_vm_config_for_distro`，用于演示获取虚拟机配置的另一种方法。
+
 ### Batch Python 代码示例
 
-查看 GitHub 上 [azure-batch-samples][github_samples] 存储库中的 [Python code samples（Python 代码示例）][github_samples_py]，获取演示如何执行常见 Batch 操作（例如创建池、作业和任务）的多个脚本。Python 示例随附的 [README][github_py_readme] 文件包含有关安装所需包的详细信息。
+查看 GitHub 上 [azure-batch-samples][github_samples] 存储库中的其他 [Python 代码示例][github_samples_py]，获取演示如何执行常见 Batch 操作（例如创建池、作业和任务）的多个脚本。Python 示例随附的 [README][github_py_readme] 文件包含有关安装所需包的详细信息。
 
 ### Batch 论坛
 
@@ -295,6 +301,7 @@ MSDN 上的 [Azure Batch 论坛][forum]是探讨 Batch 服务以及咨询其相�
 [github_py_readme]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/README.md
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_py]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch
+[github_samples_pyclient]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/python_tutorial_client.py
 [portal]: https://portal.azure.com
 [net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [net_computenodeuser]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenodeuser.aspx
@@ -316,4 +323,4 @@ MSDN 上的 [Azure Batch 论坛][forum]是探讨 Batch 服务以及咨询其相�
 
 [1]: ./media/batch-application-packages/app_pkg_01.png "应用程序包统括示意图"
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0704_2016-->

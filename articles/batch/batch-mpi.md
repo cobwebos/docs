@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 Azure Batch 中使用多实例任务运行 MPI 应用程序 | Microsoft Azure"
+	pageTitle="在 Azure Batch 中使用多实例任务运行 MPI 应用程序 | Azure"
 	description="了解如何在 Azure Batch 中使用多实例任务类型执行消息传递接口 (MPI) 应用程序。"
 	services="batch"
 	documentationCenter=".net"
@@ -9,8 +9,7 @@
 
 <tags
 	ms.service="batch"
-
-	ms.date="02/19/2016"
+	ms.date="06/03/2016"
 	wacn.date="" />
 
 # 在 Azure Batch 中使用多实例任务来执行消息传递接口 (MPI) 应用程序
@@ -19,24 +18,24 @@
 
 ## 多实例任务概述
 
-在 Batch 中，每个任务通常是在单个计算节点上执行 -- 你将多个任务提交给作业，Batch 服务将每个任务安排在节点上执行。不过，通过配置任务的**多实例设置**，可以指示 Batch 将该任务拆分成子任务，以便在多个节点上执行。
+在 Batch 中，每个任务通常是在单个计算节点上执行 -- 你将多个任务提交给作业，Batch 服务将每个任务安排在节点上执行。不过，通过配置任务的多实例设置，可以指示 Batch 将该任务拆分成子任务，以便在多个节点上执行。
 
 ![多实例任务概述][1]
 
 将具有多实例设置的任务提交给作业时，Batch 执行多实例任务特有的几个步骤：
 
-1. Batch 服务自动将任务拆分成一个**主要任务**和多个**子任务**。Batch 然后将主要任务和子任务排定在池的计算节点上执行。
-2. 这些任务（主要任务和子任务）下载在多实例设置中指定的任何**通用资源文件**。
-3. 下载一般资源文件之后，主要任务和子任务执行在多实例设计中指定的**协调命令**。此协调命令通常用于启动后台服务（例如 [Microsoft MPI][msmpi_msdn] 的 `smpd.exe`），也可能确认节点已准备好处理节点间的消息。
-4. 主要任务及所有子任务成功完成协调命令之后，只有**主要任务**执行多实例任务的**命令行**（“应用程序命令”）。例如，在基于 [MS-MPI][msmpi_msdn] 的方案中，你将在此处使用 `mpiexec.exe` 执行已启用 MPI 的应用程序。
+1. Batch 服务自动将任务拆分成一个主要任务和多个子任务。Batch 然后将主要任务和子任务排定在池的计算节点上执行。
+2. 这些任务（主要任务和子任务）下载在多实例设置中指定的任何通用资源文件。
+3. 下载一般资源文件之后，主要任务和子任务执行在多实例设计中指定的协调命令。此协调命令通常用于启动后台服务（例如 [Microsoft MPI][msmpi_msdn] 的 `smpd.exe`），也可能确认节点已准备好处理节点间的消息。
+4. 主要任务及所有子任务成功完成协调命令之后，只有主要任务执行多实例任务的命令行（“应用程序命令”）。例如，在基于 [MS-MPI][msmpi_msdn] 的方案中，你将在此处使用 `mpiexec.exe` 执行已启用 MPI 的应用程序。
 
-> [AZURE.NOTE] 虽然“多实例任务”在功能上不同，但不是特殊的任务类型，例如 [StartTask][net_starttask] 或 [JobPreparationTask][net_jobprep]。多实例任务只是已设置多实例设置的标准 Batch 任务（Batch .NET 中的 [CloudTask][net_task]）。在本文中，我们将它称为**多实例任务**。
+> [AZURE.NOTE] 虽然“多实例任务”在功能上不同，但不是特殊的任务类型，例如 [StartTask][net_starttask] 或 [JobPreparationTask][net_jobprep]。多实例任务只是已设置多实例设置的标准 Batch 任务（Batch .NET 中的 [CloudTask][net_task]）。在本文中，我们将它称为多实例任务。
 
 ## 多实例任务的要求
 
-多实例任务需要有已启用**节点间通信**和**已禁用并发任务执行**的池。如果尝试在已禁用节点间通信，或 maxTasksPerNode 值大于 1 的池中执行多实例任务，则永远不排定任务 -- 它无限期停留在“活动”状态。本代码段显示如何使用 Batch .NET 库创建这种池。
+多实例任务需要有已启用节点间通信和已禁用并发任务执行的池。如果尝试在已禁用节点间通信，或 maxTasksPerNode 值大于 1 的池中执行多实例任务，则永远不排定任务 -- 它无限期停留在“活动”状态。本代码段显示如何使用 Batch .NET 库创建这种池。
 
-```
+```csharp
 CloudPool myCloudPool =
 	myBatchClient.PoolOperations.CreatePool(
 		poolId: "MultiInstanceSamplePool",
@@ -50,13 +49,13 @@ myCloudPool.InterComputeNodeCommunicationEnabled = true;
 myCloudPool.MaxTasksPerComputeNode = 1;
 ```
 
-此外，多实例任务只在 **2015 年 12 月 14 日之后创建的池**中的节点上执行。
+此外，多实例任务只在 2015 年 12 月 14 日之后创建的池中的节点上执行。
 
 > [AZURE.TIP] 当你在 Batch 池中使用 [A8 或 A9 大小的计算节点](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)时，MPI 应用程序可以使用 Azure 的高性能、低延迟的远程直接内存访问 (RDMA) 网络。[云服务的大小](./../cloud-services/cloud-services-sizes-specs.md)提供了 Batch 池中可用的计算节点大小的完整列表。
 
 ### 使用 StartTask 安装 MPI 应用程序
 
-若要使用多实例任务来执行 MPI 应用程序，首先需要将 MPI 软件安装到池中的计算节点。这是使用 [StartTask][net_starttask] 的好时机，每当节点加入池或重新启动时，它就会执行。此代码段创建 StartTask 将 MS-MPI 安装包指定为[资源文件][net_resourcefile]，并指定将于资源文件下载到节点之后执行的命令行。
+若要使用多实例任务来执行 MPI 应用程序，首先需要将 MPI 软件安装到池中的计算节点。这是使用 [StartTask][net_starttask] 的好时机，每当节点加入池或重新启动时，它就会执行。此代码段创建 StartTask 将 MS-MPI 安装包指定为资源文件，并指定将于资源文件下载到节点之后执行的命令行。[][net_resourcefile]
 
 ```
 // Create a StartTask for the pool which we use for installing MS-MPI on
@@ -81,7 +80,7 @@ await myCloudPool.CommitAsync();
 
 我们已讨论池的要求和 MPI 包安装，现在让我们创建多实例任务。在此代码段中，我们将创建一个标准 [CloudTask][net_task]，然后配置其 [MultiInstanceSettings][net_multiinstance_prop] 属性。如上所述，多实例任务不是独特的任务类型，而只是已配置多实例设置的标准 Batch 任务。
 
-```
+```csharp
 // Create the multi-instance task. Its command line is the "application command"
 // and will be executed *only* by the primary, and only after the primary and
 // subtasks execute the CoordinationCommandLine.
@@ -106,18 +105,18 @@ await myBatchClient.JobOperations.AddTaskAsync("mybatchjob", myMultiInstanceTask
 
 ## 主要任务和子任务
 
-当你创建任务的多实例设置时，需要指定用于执行任务的计算节点数目。当你将任务提交给作业时，Batch 服务将创建一个**主要任务**和足够的**子任务**，并且合计符合指定的节点数。
+当你创建任务的多实例设置时，需要指定用于执行任务的计算节点数目。当你将任务提交给作业时，Batch 服务将创建一个主要任务和足够的子任务，并且合计符合指定的节点数。
 
 系统分配范围介于 0 到 numberOfInstances-1 的整数 ID 给这些任务。ID 为 0 的任务是主要任务，其他所有 ID 都是子任务。例如，如果为任务创建以下多实例设置，则主要任务的 ID 为 0，而子任务的 ID 为 1 到 9。
 
-```
+```csharp
 int numberOfNodes = 10;
 myMultiInstanceTask.MultiInstanceSettings = new MultiInstanceSettings(numberOfNodes);
 ```
 
 ## 协调命令和应用程序命令
 
-主要任务和子任务都执行**协调命令**。主要任务及所有子任务完成执行协调命令之后，只有主要任务执行多实例任务的命令行。我们将此命令行称为**应用程序命令**，以便与协调命令有所区别。
+主要任务和子任务都执行协调命令。主要任务及所有子任务完成执行协调命令之后，只有主要任务执行多实例任务的命令行。我们将此命令行称为应用程序命令，以便与协调命令有所区别。
 
 阻止调用协调命令 -- 在所有子任务的协调命令成功返回之前，Batch 不执行应用程序命令。因此，协调命令应该启动任何所需的后台服务，确认它们已准备好可供使用，然后退出。例如，在使用 MS-MPI 第 7 版的方案中，此协调命令在节点上启动 SMPD 服务，然后退出：
 
@@ -127,7 +126,7 @@ cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 
 请注意此协调命令中使用 `start`。这是必需的，因为 `smpd.exe` 应用程序不会在执行后立即返回。如果不使用 [start][cmd_start] 命令，此协调命令就不返回，因此将阻止执行应用程序命令。
 
-只有主要任务执行**应用程序命令**（为多实例任务执行的命令行）。就 MS MPI 应用程序而言，这是使用 `mpiexec.exe` 来执行已启用 MPI 的应用程序。例如，以下是使用 MS-MPI 第 7 版的方案所执行的应用程序命令：
+只有主要任务执行应用程序命令（为多实例任务执行的命令行）。就 MS MPI 应用程序而言，这是使用 `mpiexec.exe` 来执行已启用 MPI 的应用程序。例如，以下是使用 MS-MPI 第 7 版的方案所执行的应用程序命令：
 
 ```
 cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIApplication.exe
@@ -135,9 +134,9 @@ cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIAp
 
 ## 资源文件
 
-多实例任务需要考虑两组资源文件：所有任务（主要任务和子任务）下载的**一般资源文件**，以及为多实例任务本身指定的**资源文件**（只有主要任务下载）。
+多实例任务需要考虑两组资源文件：所有任务（主要任务和子任务）下载的一般资源文件，以及为多实例任务本身指定的资源文件（只有主要任务下载）。
 
-可以在任务的多实例设置中指定一个或多个**通用资源文件**。主要任务及所有子任务从 [Azure 存储空间](./../storage/storage-introduction.md)将这些通用资源文件下载到每个节点的任务共享目录。可以使用 `AZ_BATCH_TASK_SHARED_DIR` 环境变量从应用程序命令和协调命令行访问任务共享目录。
+可以在任务的多实例设置中指定一个或多个通用资源文件。主要任务及所有子任务从 [Azure 存储空间](./../storage/storage-introduction.md)将这些通用资源文件下载到每个节点的任务共享目录。可以使用 `AZ_BATCH_TASK_SHARED_DIR` 环境变量从应用程序命令和协调命令行访问任务共享目录。
 
 只有主要任务将为多实例任务本身指定的资源文件，下载到任务的任务目录 `AZ_BATCH_TASK_WORKING_DIR` -- 子任务不下载为多实例任务指定的资源文件。
 
@@ -167,7 +166,7 @@ cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIAp
 
 以下代码段演示如何获取子任务信息，以及从它们执行所在的节点请求文件的内容。
 
-```
+```csharp
 // Obtain the job and the multi-instance task from the Batch service
 CloudJob boundJob = batchClient.JobOperations.GetJob("mybatchjob");
 CloudTask myMultiInstanceTask = boundJob.GetTask("mymultiinstancetask");
@@ -244,4 +243,4 @@ await subtasks.ForEachAsync(async (subtask) =>
 
 [1]: ./media/batch-mpi/batch_mpi_01.png "多实例概述"
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0704_2016-->

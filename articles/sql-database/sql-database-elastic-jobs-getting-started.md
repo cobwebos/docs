@@ -8,7 +8,7 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="02/23/2016"
+	ms.date="05/23/2016"
 	wacn.date="" />
 
 # 弹性数据库作业入门
@@ -31,7 +31,7 @@ Azure SQL 数据库的弹性数据库作业（预览版）可让你跨多个数�
 
 2.  在命令窗口中键入“1”，然后按 **Enter**。这会创建分片映射管理器，并将两个分片添加到服务器。然后键入“3”并按 **Enter**；重复该操作四次。这会在你的分片中插入示例数据行。
 
-3.  [Azure 门户](https://manage.windowsazure.cn)应会在 v12 服务器中显示三个新的数据库：
+3.  [Azure 门户](https://portal.azure.cn)应会在 v12 服务器中显示三个新的数据库：
 
 	![Visual Studio 确认][2]
 
@@ -39,7 +39,7 @@ Azure SQL 数据库的弹性数据库作业（预览版）可让你跨多个数�
 
 我们通常会使用 **New-AzureSqlJobTarget** cmdlet 来创建分片映射目标。必须将分片映射管理器数据库设置为数据库目标，然后将特定分片映射指定为目标。而我们的做法是枚举服务器中的所有数据库，并将这些数据库添加到 master 数据库除外的其他新自定义集合。
 
-## 创建自定义集合并将服务器中的所有数据库添加到 master 除外的自定义集合目标。
+##创建自定义集合并将服务器中的所有数据库添加到 master 除外的自定义集合目标。
 
 
 	$customCollectionName = "dbs_in_server"
@@ -443,4 +443,4 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0704_2016-->

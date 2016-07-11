@@ -1,35 +1,35 @@
 <properties
-	pageTitle="使用 Azure 备份保护 ARM VM | Microsoft Azure"
-	description="使用 Azure 备份服务保护 ARM VM。使用 ARM VM 和高级存储的 VM 的备份来保护数据。创建并注册恢复服务保管库。在 Azure 中注册 VM、创建策略和保护 VM。"
+	pageTitle="使用 Azure 备份保护 Resource Manager 部署型 VM | Azure"
+	description="使用 Azure 备份服务保护 Resource Manager 部署型 VM。使用 Resource Manager 部署型 VM 和高级存储 VM 的备份来保护数据。创建并注册恢复服务保管库。在 Azure 中注册 VM、创建策略和保护 VM。"
 	services="backup"
 	documentationCenter=""
 	authors="markgalioto"
-	manager="jwhit"
+	manager="cfreeman"
 	editor=""
 	keyword="backups; vm backup"/>
 
 <tags
 	ms.service="backup"
-	ms.date="03/31/2016"
+	ms.date="06/03/2016"
 	wacn.date=""/>
 
 
-# 初步了解：将 ARM VM 备份到恢复服务保管库
+# 初步了解：将 Resource Manager 部署型 VM 备份到恢复服务保管库
 
 > [AZURE.SELECTOR]
-- [备份 ARM VM](backup-azure-vms-first-look-arm.md)
+- [备份 Resource Manager 部署型 VM](backup-azure-vms-first-look-arm.md)。
 - [备份经典模式 VM](backup-azure-vms-first-look.md)
 
 本教程将引导你完成创建恢复服务保管库和备份 Azure 虚拟机 (VM) 的步骤。恢复服务保管库保护：
 
-- Azure Resource Manager (ARM) VM
+- Azure Resource Manager 部署型 VM
 - 经典 VM
 - 标准存储 VM
 - 高级存储 VM
 
 有关保护高级存储 VM 的详细信息，请参阅 [Back up and Restore Premium Storage VMs（备份和还原高级存储 VM）](backup-introduction-to-azure-backup.md#back-up-and-restore-premium-storage-vms)
 
->[AZURE.NOTE] 本教程假设 Azure 订阅中已有 VM，且已采取措施以允许备份服务访问 VM。Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 和经典部署模型](../resource-manager-deployment-model.md)。本文适用于 Resource Manager VM 和基于 ARM 的 VM。
+>[AZURE.NOTE] 本教程假设 Azure 订阅中已有 VM，且已采取措施以允许备份服务访问 VM。Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 部署模型和经典部署模型](../resource-manager-deployment-model.md)。本文适用于 Resource Manager 和 Resource Manager 部署型 VM。
 
 概括而言，你将要完成以下这些步骤。
 
@@ -185,35 +185,7 @@
 
     完成备份作业后，状态将变为“已完成”。
 
-## 定义备份策略
-
-备份策略定义由数据快照创建时间和这些快照的保留时间长度构成的矩阵。定义 VM 的备份策略时，可以一天一次地触发备份作业。创建新策略时，该策略将应用到保管库。备份策略界面如下所示：
-
-![备份策略](./media/backup-azure-vms-first-look-arm/backup-policy-daily-raw.png)
-
-若要创建策略，请执行以下操作：
-
-1. 在“策略名称”中指定策略的名称。
-
-2. 数据快照可按“每日”或“每周”的间隔来创建。使用“备份频率”下拉菜单来选择要“每日”或“每周”创建数据快照。
-
-    - 如果选择“每日”间隔，可使用突出显示的控件来选择要在一天中的什么时间创建快照。若要更改小时，请取消选择该小时值，然后选择新的小时值。
-
-    ![每日备份策略](./media/backup-azure-vms-first-look-arm/backup-policy-daily.png) <br/>
-
-    - 如果选择“每周”间隔，可使用突出显示的控件来选择要在哪个星期日期，以及该日期的什么时间创建快照。在日期菜单中选择一个或多个日期。在小时菜单中选择某个小时。若要更改小时，请取消选择选定的小时值，然后选择新的小时值。
-
-    ![每周备份策略](./media/backup-azure-vms-first-look-arm/backup-policy-weekly.png)
-
-3. 默认情况下，已选择所有“保留范围”选项。请取消选中任何不想要使用的保留范围限制。
-
-    >[AZURE.NOTE] 在保护 VM 时，备份作业将每天运行一次。每个保留范围的备份运行时间相同。
-
-    在相应的控件中指定要使用的间隔。“每月”和“每年”保留范围可让你根据每周或每日增量指定快照。
-
-4. 设置策略的所有选项后，在边栏选项卡底部单击“确定”。
-
-    完成恢复服务保管库设置后，新策略将设置为应用到保管库。返回到[选择方案设置策略并定义要保护的项](backup-azure-vms-first-look-arm.md#step-2---select-scenario-set-policy-and-define-items-to-protect)部分的步骤 6
+[AZURE.INCLUDE [backup-create-backup-policy-for-vm](../includes/backup-create-backup-policy-for-vm.md)]
 
 ## 在虚拟机中安装 VM 代理
 
@@ -227,20 +199,20 @@
 | --- | --- | --- |
 | 安装 VM 代理 | <li>下载并安装[代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。你需要有管理员权限才能完成安装。<li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，指明已安装代理。 | <li>从 GitHub 安装最新的 [Linux 代理](https://github.com/Azure/WALinuxAgent)。你需要有管理员权限才能完成安装。<li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，指明已安装代理。 |
 | 更新 VM 代理 | 更新 VM 代理与重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。<br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 | 遵循有关[更新 Linux VM 代理](../virtual-machines-linux-update-agent.md)的说明操作。<br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
-| 验证 VM 代理安装 | <li>导航到 Azure VM 中的 *C:\\WindowsAzure\\Packages* 文件夹。<li>你应会发现 WaAppAgent.exe 文件已存在。<li> 右键单击该文件，转到“属性”，然后选择“详细信息”选项卡。“产品版本”字段应为 2.6.1198.718 或更高。 | 不适用 |
+| 验证 VM 代理安装 | <li>导航到 Azure VM 中的 C:\\WindowsAzure\\Packages 文件夹。<li>你应会发现 WaAppAgent.exe 文件已存在。<li> 右键单击该文件，转到“属性”，然后选择“详细信息”选项卡。“产品版本”字段应为 2.6.1198.718 或更高。 | 不适用 |
 
 
 ### 备份扩展
 
 在虚拟机上安装 VM 代理后，Azure 备份服务会将备份扩展安装到 VM 代理上。Azure 备份服务会无缝地升级和修补备份扩展，不需用户进行额外的干预。
 
-无论 VM 是否在运行，备份服务都安装备份扩展。VM 运行时，很有可能会获得应用程序一致的恢复点。但是，即使 VM 已关闭并且无法安装扩展，Azure 备份服务也会继续备份 VM。这被称为脱机 VM。在这种情况下，恢复点将是崩溃一致恢复点。
+无论 VM 是否在运行，备份服务都安装备份扩展。VM 运行时，很有可能会获得应用程序一致的恢复点。但是，即使 VM 已关闭并且无法安装扩展，Azure 备份服务也会继续备份 VM。这被称为脱机 VM。在这种情况下，恢复点将是崩溃一致性恢复点。
 
 ## 故障排除信息
-如果你在完成本文中的某些任务时遇到问题，请参阅 [Troubleshooting guidance（故障排除指南）](backup-azure-vms-troubleshoot.md)。
+如果你在完成本文中的某些任务时遇到问题，请参阅[故障排除指南](backup-azure-vms-troubleshoot.md)。
 
 
 ## 有疑问？
 如果你有疑问，或者希望包含某种功能，请[给我们反馈](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0704_2016-->

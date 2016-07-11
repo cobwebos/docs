@@ -10,10 +10,10 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="05/05/2016"
+   ms.date="06/20/2016"
    wacn.date=""/>
 
-# 创建 SQL 数据仓库
+# 创建 Azure SQL 数据仓库
 
 > [AZURE.SELECTOR]
 - [Azure 门户](sql-data-warehouse-get-started-provision.md)
@@ -63,6 +63,6 @@
 若要将数据加载到 SQL 数据仓库中，请参阅[加载概述](/documentation/articles/sql-data-warehouse-overview-load)。
 
 如果尝试将现有数据库迁移到 SQL 数据仓库，请参阅[迁移概述](/documentation/articles/sql-data-warehouse-overview-migrate)或使用[迁移实用工具](/documentation/articles/sql-data-warehouse-migrate-migration-utility)。
- 
 
-<!---HONumber=Mooncake_0530_2016-->
+
+<!---HONumber=Mooncake_0704_2016-->

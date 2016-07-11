@@ -1,5 +1,5 @@
 <properties
-   pageTitle="使用 Power BI 可视化 SQL 数据仓库数据 | Azure"
+   pageTitle="使用 Power BI 可视化 SQL 数据仓库数据 | Microsoft Azure"
    description="使用 Power BI 可视化 SQL 数据仓库数据"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -8,22 +8,28 @@
    editor="" />
 
 <tags
-    ms.service="sql-data-warehouse"
-   ms.date="03/03/2016"
+   ms.service="sql-data-warehouse"
+   ms.date="06/16/2016"
     wacn.date=""/>
 
 # 使用 Power BI 可视化数据
 
-
-> [AZURE.NOTE] 若要完成本教程，需要使用一个已随 AdventureWorksDW 示例数据库预先加载的 SQL 数据仓库数据库。[创建 SQL 数据仓库](sql-data-warehouse-get-started-provision.md)说明了如何创建这样一个数据仓库。
->
-> 如果你已有 SQL 数据仓库数据库但没有示例数据，可以[手动加载示例数据][]。
+> [AZURE.SELECTOR]
+- [Visual Studio](/documentation/articles/sql-data-warehouse-query-visual-studio)
+- [sqlcmd](/documentation/articles/sql-data-warehouse-get-started-connect-sqlcmd) 
 
 本教程说明如何使用 Power BI 连接到 SQL 数据仓库，并创建一些基本的视觉效果。
 
 > [AZURE.VIDEO azure-sql-data-warehouse-sample-data-and-powerbi]
 
-## 连接到 AdventureWorksDW
+## 先决条件
+
+若要逐步完成本教程，你需要：
+
+- 已随 AdventureWorksDW 数据库预先加载的 SQL 数据仓库。若要完成此设置，请参阅[创建 SQL 数据仓库][]，并选择加载示例数据。如果你已有数据仓库但没有示例数据，可以[手动加载示例数据][]。
+
+
+## 1\.连接到您的数据库
 
 若要打开 Power BI 并连接到 AdventureWorksDW 数据库，请执行以下操作：
 
@@ -44,13 +50,13 @@
 
     ![Power BI 登录][4]
 
-1. 登录 Power BI 后，单击左侧边栏选项卡上的 AdventureWorksDW 数据集。随后将打开该数据库。
+7. 登录 Power BI 后，单击左侧边栏选项卡上的 AdventureWorksDW 数据集。随后将打开该数据库。
 
     ![在 Power BI 中打开 AdventureWorksDW][5]
 
 
 
-## 创建 Power BI 报告来分析示例数据
+## 2\.创建报告
 
 现在，你可以使用 Power BI 来分析 AdventureWorksDW 示例数据。为了执行分析，AdventureWorksDW 提供了一个名为 AggregateSales 的视图。此视图包含用于分析公司销售情况的一些关键指标。
 
@@ -98,13 +104,15 @@
 [12]: ./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-save.png
 
 <!--Article references-->
-[迁移]: ./sql-data-warehouse-overview-migrate.md
-[开发]: ./sql-data-warehouse-overview-develop.md
-[加载]: ./sql-data-warehouse-overview-load.md
-[手动加载示例数据]: ./sql-data-warehouse-get-started-manually-load-samples.md
-[Azure 门户]: https://portal.azure.cn/
-[Power BI]: http://www.powerbi.com/
-[connecting to SQL Data Warehouse]: ./sql-data-warehouse-integrate-power-bi.md
-[Create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
+[迁移]: /documentation/articles/sql-data-warehouse-overview-migrate.md
+[开发]: /documentation/articles/sql-data-warehouse-overview-develop.md
+[加载]: /documentation/articles/sql-data-warehouse-overview-load.md
+[手动加载示例数据]: /documentation/articles/sql-data-warehouse-load-sample-databases.md
+[connecting to SQL Data Warehouse]: /documentation/articles/sql-data-warehouse-integrate-power-bi.md
+[创建 SQL 数据仓库]: /documentation/articles/sql-data-warehouse-get-started-provision.md
 
-<!---HONumber=Mooncake_0418_2016-->
+<!--Other-->
+[Azure 门户]: https://manage.windowsazure.cn/
+[Power BI website]: http://www.powerbi.com/
+
+<!---HONumber=Mooncake_0704_2016-->

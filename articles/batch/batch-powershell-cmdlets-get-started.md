@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Batch PowerShell cmdlet 入门 | Microsoft Azure"
+   pageTitle="Azure Batch PowerShell 入门 | Azure"
    description="快速介绍可用于管理 Azure Batch 服务的 Azure PowerShell cmdlet"
    services="batch"
    documentationCenter=""
@@ -157,4 +157,4 @@ OData 筛选器的替代方法是使用 **Id** 参数。若要查询 ID 为“my
 
 * 有关如何减少项数和有关针对 Batch 查询返回的信息类型的详细信息，请参阅 [Query the Batch service efficiently（有效地查询 Batch 服务）](batch-efficient-list-queries.md)。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->

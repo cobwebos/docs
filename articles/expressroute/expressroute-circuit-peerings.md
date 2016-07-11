@@ -8,7 +8,7 @@
    editor=""/>
 <tags 
    ms.service="expressroute"
-   ms.date="03/21/2016"
+   ms.date="06/13/2016"
    wacn.date=""/>
 
 # ExpressRoute 线路和路由域
@@ -57,7 +57,9 @@ Azure 存储空间、SQL 数据库和网站等服务是使用公共 IP 地址提
  
 ### Microsoft 对等互连
 
-与其他所有 Microsoft Online Services（如 Office 365 服务）的连接将通过 Microsoft 对等互连建立。我们将通过 Microsoft 对等路由域在你的 WAN 和 Microsoft 云服务之间启用双向连接。你只能通过由你或你的连接提供商拥有的公共 IP 地址连接到 Microsoft 云服务，并且你必须遵守我们规定的所有规则。有关详细信息，请参阅 [ExpressRoute 先决条件](/documentation/articles/expressroute-prerequisites)页。
+[AZURE.INCLUDE [expressroute-office365-include](../includes/expressroute-office365-include.md)]
+
+与其他所有 Microsoft Online Services（如 Office 365 服务）的连接将通过 Microsoft 对等互连建立。我们将通过 Microsoft 对等路由域在你的 WAN 和 Microsoft 云服务之间启用双向连接。你只能通过由你或你的连接提供商拥有的公共 IP 地址连接到 Microsoft 云服务，并且你必须遵守我们规定的所有规则。有关详细信息，请参阅 [ExpressRoute 先决条件](expressroute-prerequisites.md)页。
 
 有关支持的服务、费用和配置的详细信息，请参阅[常见问题页](/documentation/articles/expressroute-faqs)。有关提供 Microsoft 对等互连支持的连接提供商列表的信息，请参阅 [ExpressRoute 位置](/documentation/articles/expressroute-locations)页。
 
@@ -86,4 +88,4 @@ Azure 存储空间、SQL 数据库和网站等服务是使用公共 IP 地址提
 	- [配置路由（线路对等互连）](/documentation/articles/expressroute-howto-routing-classic)
 	- [将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->

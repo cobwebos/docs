@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Batch 中的有效列表查询 | Microsoft Azure"
+	pageTitle="Azure Batch 中的高效列表查询 | Azure"
 	description="在查询 Azure Batch 实体（例如池、作业、任务和计算节点）时通过减少返回的数据量来提高性能。"
 	services="batch"
 	documentationCenter=".net"
@@ -41,7 +41,7 @@ IPagedEnumerable<CloudTask> completedTasks = batchClient.JobOperations.ListTasks
 在上面的示例方案中，如果作业中存在数以千计的任务，则通常情况下，第二个查询的结果的返回速度将远远快于第一个查询。[下面](#efficient-querying-in-batch-net)提供了有关使用 Batch .NET API 列出项时使用 ODATADetailLevel 的详细信息。
 
 > [AZURE.IMPORTANT]
-强烈建议你*始终* 将 ODATADetailLevel 对象提供给 .NET API 列表调用，以确保最大程度地提高应用程序的效率和性能。指定详细程度有助于缩短 Batch 服务响应时间、提高网络利用率，以及最大程度减少客户端应用程序的内存使用量。
+强烈建议你“始终” 将 ODATADetailLevel 对象提供给 .NET API 列表调用，以确保最大程度地提高应用程序的效率和性能。指定详细程度有助于缩短 Batch 服务响应时间、提高网络利用率，以及最大程度减少客户端应用程序的内存使用量。
 
 ## 高效查询工具
 
@@ -117,7 +117,7 @@ List<CloudPool> testPools = await myBatchClient.PoolOperations.ListPools(detailL
 
 ## Batch REST 到 .NET API 映射
 
-filter、select 和 expand 字符串中的属性名称“必须”反映其 REST API 对应项，不管是名称本身还是大小写。下表提供了 .NET 和 REST API 的对应项之间的映射。
+filter、select 和 expand 字符串中的属性名称*必须*反映其 REST API 对应项，不管是名称本身还是大小写。下表提供了 .NET 和 REST API 的对应项之间的映射。
 
 ### filter 字符串的映射
 
@@ -249,4 +249,4 @@ MSDN 上的 [Azure Batch 论坛][forum]是探讨 Batch 服务以及咨询其相�
 [net_schedule]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjobschedule.aspx
 [net_task]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->

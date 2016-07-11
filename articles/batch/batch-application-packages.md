@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="batch"
-	ms.date="05/12/2016"
+	ms.date="05/20/2016"
 	wacn.date="" />
 
 # 使用 Azure Batch 应用程序包部署应用程序
@@ -22,13 +22,15 @@ Azure Batch 的应用程序包功能可为池中的计算节点提供简单的�
 
 ## 应用程序包要求
 
-本文所讨论的应用程序包功能“仅”能与 2016 年 3 月 10 日后创建的 Batch 池兼容。应用程序包将无法部署到在此日期之前创建池中的计算节点。
+本文所讨论的应用程序包功能*仅*能与 2016 年 3 月 10 日后创建的 Batch 池兼容。应用程序包将无法部署到在此日期之前创建r 池中的计算节点。
 
 [Batch REST API][api_rest] 2015-12-01.2.2 版和对应的 [Batch .NET][api_net] 库 3.1.0 版引入了此功能。使用 Batch 时，我们建议始终使用最新的 API 版本。
 
+> [AZURE.IMPORTANT] 当前只有使用 **CloudServiceConfiguration** 创建的池才支持应用程序包。无法在使用 VirtualMachineConfiguration 映像创建的池中使用应用程序包。有关这两种不同配置的详细信息，请参阅 [Provision Linux compute nodes in Azure Batch pools（在 Azure Batch 池中预配 Linux 计算节点）](batch-linux-nodes.md)的 [Virtual Machine Configuration（虚拟机配置）](batch-linux-nodes.md#virtual-machine-configuration)部分。
+
 ## 关于应用程序和应用程序包
 
-在 Azure Batch 中，应用程序是指一组已创建版本的二进制文件，这些文件可自动下载到池中的计算节点。应用程序包指的是这些二进制文件中的一组特定组合，其代表应用程序的特定版本。
+在 Azure Batch 中，**应用程序**是指一组已创建版本的二进制文件，这些文件可自动下载到池中的计算节点。**应用程序包**指的是这些二进制文件中的一组“特定组合”，其代表应用程序的特定“版本”。
 
 ![应用程序和应用程序包的统括示意图][1]
 
@@ -40,7 +42,7 @@ Batch 中的每个应用程序都包含一或多个应用程序包。它能指�
 
 应用程序包为 ZIP 文件，其中包含应用程序二进制文件和任务执行所需的支持文件。每个应用程序包都代表特定版本的应用程序。在 Batch 服务中创建池时，可以指定一或多个这种类型的应用程序和版本（可选），当节点添加池时，这些应用程序包就自动下载及解压缩到每个节点上。
 
-> [AZURE.IMPORTANT] Batch 帐户中的应用程序和应用程序包数目，以及应用程序包的大小上限有其限制。有关这些限制的详细信息，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
+> [AZURE.IMPORTANT] Batch 帐户中的应用程序和应用程序包数目，以及应用程序包的大小上限有其限制。有关这些限制的详细信息，请参阅 [Quotas and limits for the Azure Batch service（Azure Batch 服务的配额和限制）](batch-quota-limit.md)。
 
 ### 应用程序包的优点
 
@@ -60,7 +62,7 @@ Batch 能在后台处理使用 Azure 存储空间将应用程序包存储及部�
 
 若要使用应用程序包，必须先链接 Azure 存储帐户与 Batch 帐户。如果还没有为 Batch 帐户配置存储帐户，Azure 门户在第一次单击 Batch 帐户边栏选项卡中的“应用程序”磁贴时显示警告。
 
-> [AZURE.IMPORTANT] Batch 目前“仅”支持**常规用途**存储帐户类型，如 [About Azure storage accounts（关于 Azure 存储帐户）](../storage/storage-create-storage-account.md)的 [Create a storage account（创建存储帐户）](/documentation/articles/storage-create-storage-account#create-a-storage-account)中步骤 5 所述。将某个 Azure 存储帐户链接到你的 Batch 帐户时，“只会”链接**常规用途**的存储帐户。
+> [AZURE.IMPORTANT] Batch 目前*仅*支持**常规用途**存储帐户类型，如 [About Azure storage accounts（关于 Azure 存储帐户）](../storage/storage-create-storage-account.md)的 [Create a storage account（创建存储帐户）](/documentation/articles/storage-create-storage-account#create-a-storage-account)中步骤 5 所述。将某个 Azure 存储帐户链接到你的 Batch 帐户时，“只会”链接**常规用途**的存储帐户。
 
 ![Azure 门户中显示的未配置存储帐户警告][9]
 
@@ -68,7 +70,7 @@ Batch 服务在应用程序包的存储和检索操作中使用关联的存储�
 
 ![在 Azure 门户中选择存储帐户边栏选项卡][10]
 
-我们建议你专门创建一个存储帐户用作 Batch 帐户，并在此处选择该帐户。有关创建存储帐户的详细信息，请参阅 [About Azure storage accounts](../storage/storage-create-storage-account.md)（关于 Azure 存储帐户）中的“Create a storage account”（创建存储帐户）。创建存储帐户之后，可以使用“存储帐户”边栏选项卡将它链接到 Batch 帐户。
+我们建议你“专门”创建一个存储帐户用作 Batch 帐户，并在此处选择该帐户。有关创建存储帐户的详细信息，请参阅 [About Azure storage accounts（关于 Azure 存储帐户）](../storage/storage-create-storage-account.md)中的“Create a storage account”（创建存储帐户）。创建存储帐户之后，可以使用“存储帐户”边栏选项卡将它链接到 Batch 帐户。
 
 > [AZURE.WARNING] 由于 Batch 使用 Azure 存储空间来存储应用程序包，因此我们针对块 Blob 数据向[收取正常费用][storage_pricing]。请务必考虑应用程序包的大小和数目，并定期删除过时的包以降低成本。
 
@@ -146,7 +148,7 @@ Batch 服务在应用程序包的存储和检索操作中使用关联的存储�
 
 ### 更新或删除应用程序包
 
-若要更新或删除现有的应用程序包，请打开应用程序的详细信息边栏选项卡，单击“包”以显示“包”边栏选项卡，单击要修改之应用程序包数据列中的省略号，然后选择要执行的操作。
+若要更新或删除现有的应用程序包，请打开应用程序的详细信息边栏选项卡，单击“包”以显示“包”边栏选项卡，单击要修改之应用程序包数据列中的**省略号**，然后选择要执行的操作。
 
 ![在 Azure 门户中更新或删除包][7]
 
@@ -166,7 +168,7 @@ Batch 服务在应用程序包的存储和检索操作中使用关联的存储�
 
 既然我们已探讨如何使用 Azure 门户来上载及管理应用程序包，接下来我们可以讨论如何将它们实际部署到计算节点，以及如何使用 Batch 任务运行它们。
 
-若要将应用程序包安装在池中的计算节点上，需要为池指定一个或多个应用程序包引用。在 Batch .NET 中，可以在创建池时指定一个或多个 [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]，或将它们添加现有池。
+若要将应用程序包安装在池中的计算节点上，需要为池指定一个或多个应用程序包“引用”。在 Batch .NET 中，可以在创建池时指定一个或多个 [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]，或将它们添加现有池。
 
 [ApplicationPackageReference][net_pkgref] 类指定要安装在池的计算节点上的应用程序 ID 和版本。
 
@@ -198,15 +200,15 @@ await myCloudPool.CommitAsync();
 
 `AZ_BATCH_APP_PACKAGE_appid#version`
 
-例如，如果指定要安装应用程序 blender 的 2.7 版，任务可以通过在其命令行中引用以下环境变量来访问应用程序二进制文件：
+例如，如果指定要安装应用程序 *blender* 的 2.7 版，任务可以通过在其命令行中引用以下环境变量来访问应用程序二进制文件：
 
 `AZ_BATCH_APP_PACKAGE_BLENDER#2.7`
 
-如果应用程序指定默认版本，你可以引用不含版本字符串后缀的环境变量。例如，如果已在 Azure 门户中指定应用程序 blender 的默认版本 2.7，任务可以引用以下环境变量：
+如果应用程序指定默认版本，你可以引用不含版本字符串后缀的环境变量。例如，如果已在 Azure 门户中指定应用程序 *blender* 的默认版本 2.7，任务可以引用以下环境变量：
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 
-以下代码段演示当已指定应用程序 blender 的默认版本时如何配置任务。
+以下代码片段演示当已指定应用程序 *blender* 的默认版本时如何配置任务。
 
 ```csharp
 string taskId = "blendertask01";
@@ -214,11 +216,15 @@ string commandLine = @"cmd /c %AZ_BATCH_APP_PACKAGE_BLENDER%\blender.exe -my -co
 CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
-> [AZURE.TIP] 有关计算节点环境设置的详细信息，请参阅 [Batch feature overview（Batch 功能概述）](batch-api-basics.md)中的“Environment settings for tasks”（任务的环境设置）。
+> [AZURE.TIP] 有关计算节点环境设置的详细信息，请参阅 [Batch feature overview](batch-api-basics.md)（Batch 功能概述）中的“Environment settings for tasks”（任务的环境设置）。
 
 ## 更新池的应用程序包
 
-如果已配置现有池的应用程序包，你可以指定池的新包。添加池的所有新节点都会安装新指定的包，任何重新启动或重置映像的现有节点也是如此。在更新包引用时已存在池中的计算节点不自动安装新应用程序包。
+如果已配置现有池的应用程序包，你可以指定池的新包。如果为池指定新的包引用，请遵循以下规则：
+
+* 添加池的所有新节点都会安装新指定的包，任何重新启动或重置映像的现有节点也是如此。
+* 在更新包引用时，已在池中的计算节点不会自动安装新应用程序包 - 必须将这些节点重新启动或重置映像才能接收新包。
+* 部署新包后，创建的环境变量将反映新的应用程序包引用。
 
 在此示例中，现有池已将应用程序 *blender* 的 2.7 版设置为其中一个 [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]。若要将池的节点更新为 2.76b 版，请将 [ApplicationPackageReference][net_pkgref] 指定为新版本并提交更改。
 
@@ -234,7 +240,7 @@ boundPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await boundPool.CommitAsync();
 ```
 
-配置新版本后，任何加入池的“新”节点都将部署 2.76b 版。若要将 2.76b 安装到“已在”池中的节点上，请重新启动节点（或重置映像）。请注意，重新启动的节点保留前次包部署的文件。
+配置新版本后，任何加入池的“新”节点都将部署 2.76b 版。若要将 2.76b 安装到*已在*池中的节点上，请重新启动节点（或重置映像）。请注意，重新启动的节点保留前次包部署的文件。
 
 ## 列出 Batch 帐户中的应用程序
 
@@ -260,7 +266,7 @@ foreach (ApplicationSummary app in applications)
 
 ## 后续步骤
 
-* [Batch REST API][api_rest] 还提供应用程序包的使用支持。有关示例，请参阅[将池添加到帐户中][rest_add_pool]的 [applicationPackageReferences][rest_add_pool_with_packages] 元素，以了解如何使用 REST API 来指定要安装的包。有关使用 Batch REST API 来获取应用程序信息的详细信息，请参阅[应用程序][rest_applications]。
+* [Batch REST API][api_rest] 还提供应用程序包的使用支持。有关示例，请参阅 [Add a pool to an account（将池添加到帐户）][rest_add_pool]中的 [applicationPackageReferences][rest_add_pool_with_packages] 元素，以了解如何使用 REST API 来指定要安装的包。有关使用 Batch REST API 来获取应用程序信息的详细信息，请参阅 [Applications（应用程序）][rest_applications]。
 
 * 了解如何以编程方式[使用 Batch Management .NET 管理 Azure Batch 帐户和配额](batch-management-dotnet.md)。[Batch Management .NET][api_net_mgmt] 库可以启用 Batch 应用程序或服务的帐户创建和删除功能。
 
@@ -291,4 +297,4 @@ foreach (ApplicationSummary app in applications)
 [11]: ./media/batch-application-packages/app_pkg_11.png "Azure 门户中的更新包边栏选项卡"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Azure 门户中的删除包确认对话框"
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->

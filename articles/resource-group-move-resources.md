@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="azure-resource-manager" 
-	ms.date="05/12/2016" 
+	ms.date="06/08/2016" 
 	wacn.date=""/>
 
 # 将资源移动到新的资源组或订阅中
@@ -23,12 +23,14 @@
 
 您不能更改该资源的位置。移动资源仅能够将其移动到新的资源组。新的资源组可能有不同的位置，但这不会更改该资源的位置。
 
+> [AZURE.NOTE] 本文介绍如何在现有 Azure 帐户产品/服务中移动资源。如果你确实想要更改 Azure 帐户产品/服务（如从即用即付升级到预付）同时继续使用现有资源，请参阅 [Switching to a different Azure offer（切换到其他 Azure 产品/服务）](billing-how-to-switch-azure-offer.md)。
+
 ## 移动资源前需查看的清单
 
 移动资源之前需执行的一些重要步骤。验证这些条件可以避免错误。
 
 1. 该服务必须支持移动资源的功能。请参阅以下列表，以了解[哪些服务支持移动资源](#services-that-support-move)。
-2. 必须针对要移动的资源的资源提供程序注册目标订阅。否则会出现错误“未针对资源类型注册订阅”。将资源移到新的订阅时，你可能会遇到此问题，但该订阅从未配合该资源类型使用。若要了解如何检查注册状态和注册资源提供程序，请参阅 [Resource providers and types（资源提供程序和类型）](../resource-manager-supported-services/#resource-providers-and-types)。
+2. 必须针对要移动的资源的资源提供程序注册目标订阅。否则会出现错误“未针对资源类型注册订阅”。将资源移到新的订阅时，你可能会遇到此问题，但该订阅从未配合该资源类型使用。若要了解如何检查注册状态和注册资源提供程序，请参阅 [Resource providers and types（资源提供程序和类型）](/documentation/articles/resource-manager-supported-services/#resource-providers-and-types)。
 3. 如果你要使用 Azure PowerShell 或 Azure CLI，请使用最新版本。若要更新您的版本，请运行 Microsoft Web 平台安装程序并检查新版本是否可用。有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure) 以及[安装 Azure CLI](/documentation/articles/xplat-cli-install)。
 4. 如果你要移动 App Service 应用，则你已查看 [App Service 限制](#app-service-limitations)。
 5. 如果你要移动通过经典模型部署的资源，则你已查看[经典部署限制](#classic-deployment-limitations)。
@@ -42,34 +44,32 @@
 - 批处理
 - CDN
 - 云服务 - 请参阅[经典部署限制](#classic-deployment-limitations)
-- 数据工厂
+- Data Factory
 - DocumentDB
 - HDInsight 群集
 - 密钥保管库
 - Mobile Engagement
 - 通知中心
 - 操作见解
-- Redis 缓存
+- Redis Cache
 - 计划程序
+- 存储
 - 存储（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
 - SQL 数据库服务器 - 数据库和服务器必须位于同一个资源组中。当你移动 SQL 服务器时，其所有数据库也会一起移动。
+- 虚拟机
 - 虚拟机（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
-
-## 部分支持移动的服务
-
-支持移到新的资源组而非新的订阅的服务包括：
-
 - 虚拟网络
 
 ## 不支持移动的服务
 
 目前不支持移动资源的服务包括：
 
+- 应用程序网关
 - Application Insights
 - Express Route
-- 存储
-- 虚拟机
+- 虚拟机规模集
 - 虚拟网络（经典）- 请参阅[经典部署限制](#classic-deployment-limitations)
+- VPN 网关
 
 ## App Service 限制
 
@@ -96,14 +96,14 @@
 
 如果你的 Web 应用与其 App Service 计划位于不同的资源组中，而你想要将二者都移到新的资源组，则必须分两步执行移动操作。例如：
 
-- **web-a** 位于 **web-group**
-- **plan-a** 位于 **plan-group**
-- 你想要让 **web-a** 和 **plan-a** 位于 **combined-group**
+- **web-a** 位于 **web-group** 中
+- **plan-a** 位于 **plan-group** 中
+- 你想要让 **web-a** 和 **plan-a** 位于 **combined-group** 中
 
 若要完成此移动操作，可按以下顺序执行两个独立的移动操作：
 
-1. 将 **web-a** 移到 **plan-group**
-2. 将 **web-a** 和 **plan-a** 移到 **combined-group**。
+1. 将 **web-a** 移到 **plan-group** 中
+2. 将 **web-a** 和 **plan-a** 移到 **combined-group** 中。
 
 ## 经典部署限制
 
@@ -151,7 +151,7 @@
 
 ![选择属性](./media/resource-group-move-resources/select-properties.png)
 
-选择“更改资源组”（如果适用于此资源类型）。
+如果适用于此资源类型，选择“更改资源组”。
 
 ![更改资源组](./media/resource-group-move-resources/change-resource-group.png)
 
@@ -260,9 +260,9 @@
 
 
 ## 后续步骤
-- 若要了解管理订阅所需的 PowerShell cmdlet，请参阅[将 Azure PowerShell 用于 Resource Manager](/documentation/articles/powershell-azure-resource-manager)。
-- 若要了解管理订阅所需的 Azure CLI 命令，请参阅[将 Azure CLI 用于 Resource Manager](/documentation/articles/xplat-cli-azure-resource-manager)。
+- 若要了解管理订阅所需的 PowerShell cmdlet，请参阅 [Using Azure PowerShell with Resource Manager（将 Azure PowerShell 用于 Resource Manager）](/documentation/articles/powershell-azure-resource-manager)。
+- 若要了解管理订阅所需的 Azure CLI 命令，请参阅 [Using the Azure CLI with Resource Manager（将 Azure CLI 用于 Resource Manager）](/documentation/articles/xplat-cli-azure-resource-manager)。
 - 若要了解管理订阅所需的门户功能，请参阅[使用 Azure 门户管理资源](/documentation/articles/resource-group-portal)。
 - 若要了解如何对资源应用逻辑组织，请参阅[使用标记来组织资源](/documentation/articles/resource-group-using-tags)。
 
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0704_2016-->

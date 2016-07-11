@@ -9,19 +9,17 @@
 
 <tags
 	ms.service="site-recovery"
-	ms.workload="backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="03/15/2016"
-	ms.author="rajanaki"/>
+	ms.date="06/13/2016"
+	wacn.date=""/>
 
 # 使用 PowerShell 和 Azure Resource Manager 将 VMM 云中的 Hyper-V 虚拟机复制到 Azure
 
 > [AZURE.SELECTOR]
-- [Azure 经典门户](/documentation/articles/site-recovery-vmm-to-azure)
+- [Azure 门户](/documentation/articles/site-recovery-vmm-to-azure)
+- [PowerShell - ARM](/documentation/articles/site-recovery-vmm-to-azure-powershell-resource-manager)
+- [经典门户](/documentation/articles/site-recovery-vmm-to-azure-classic)
 - [PowerShell - 经典](/documentation/articles/site-recovery-deploy-with-powershell)
-- [PowerShell - 资源管理器](/documentation/articles/site-recovery-vmm-to-azure-powershell-resource-manager) 
+
 
 
 ## 概述
@@ -42,6 +40,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 如果在设置本方案时遇到问题，请将你的问题发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=hypervrecovmgr)。
 
+> [AZURE.NOTE] Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器模型和经典模型](/documentation/articles/resource-manager-deployment-model)。本文介绍如何使用资源管理器部署模型。
 
 ## 开始之前
 
@@ -51,7 +50,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 - 需要一个 [Azure](https://azure.cn/) 帐户。如果没有，请使用 [1rmb 试用版](/pricing/1rmb-trial/)。此外，你可以了解 [Azure Site Recovery Manager 定价](/home/features/site-recovery#price)。
 - 如果你正在尝试复制到 CSP 订阅的方案，则需要 CSP 订阅。若要详细了解 CSP 计划，请参阅[如何注册 CSP 计划](https://msdn.microsoft.com/zh-cn/library/partnercenter/mt156995.aspx)。
-- 你将需要一个 Azure v2 存储 (ARM) 帐户来存储复制到 Azure 的数据。需要为帐户启用地域复制。该帐户应位于 Azure Site Recovery 服务所在的同一区域，并与同一订阅或 CSP 订阅相关联。若要详细了解如何设置 Azure 存储空间，请参阅 [Azure 存储空间简介](/documentation/articles/storage-introduction)进行参考。
+- 你将需要一个 Azure v2 存储 (ARM) 帐户来存储复制到 Azure 的数据。需要为帐户启用地域复制。该帐户应位于 Azure Site Recovery 服务所在的同一区域，并与同一订阅或 CSP 订阅相关联。若要详细了解如何设置 Azure 存储空间，请参阅 [Introduction to Azure Storage（Azure 存储空间简介）](/documentation/articles/storage-introduction)。
 - 需要确保你要保护的虚拟机符合 [Azure 虚拟机先决条件](/documentation/articles/site-recovery-best-practices#azure-virtual-machine-requirements)。
 
 > [AZURE.NOTE] 目前只能通过 Powershell 执行 VM 级别的操作。很快将提供对恢复计划级别操作的支持。现在，你只能在“受保护的 VM”粒度执行故障转移，而不能在恢复计划级别执行。
@@ -66,14 +65,14 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 - 了解有关设置 VMM 云的更多信息：
 	- 在 [System Center 2012 R2 VMM 中私有云的新增功能](http://channel9.msdn.com/Events/TechEd/NorthAmerica/2013/MDC-B357)及 [VMM 2012 和云](http://www.server-log.com/blog/2011/8/26/vmm-2012-and-the-clouds.html)中阅读有关私有 VMM 云的详细信息。
 	- 了解有关[配置 VMM 云结构](/documentation/articles/site-recovery-best-practices)的更多信息
-	- 在你的云结构元素就位后，通过[在 VMM 中创建私有云](https://technet.microsoft.com/zh-cn/library/jj860425.aspx)和[演练：使用 System Center 2012 SP1 VMM 创建私有云](https://blogs.technet.microsoft.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)了解如何创建私有云。
+	- 在你的云结构元素就位后，通过[在 VMM 中创建私有云](https://technet.microsoft.com/zh-cn/library/jj860425.aspx)和[Walkthrough: Creating private clouds with System Center 2012 SP1 VMM（演练：使用 System Center 2012 SP1 VMM 创建私有云）](https://blogs.technet.microsoft.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)了解如何创建私有云。
 
 
 ### Hyper-V 先决条件
 
 - Hyper-V 主机服务器必须至少运行具有 Hyper-V 角色且安装了最新更新的 Windows Server 2012。
 - 如果你在群集中运行 Hyper-V，请注意，如果你具有基于静态 IP 地址的群集，则不会自动创建群集代理。你需要手动配置群集代理。对于 
-- 有关说明，请参阅[如何配置 Hyper-V 副本代理](http://blogs.technet.com/b/haroldwong/archive/2013/03/27/server-virtualization-series-hyper-v-replica-broker-explained-part-15-of-20-by-yung-chou.aspx)。
+- 有关说明，请参阅 [How to Configure Hyper-V Replica Broker（如何配置 Hyper-V 副本代理）](http://blogs.technet.com/b/haroldwong/archive/2013/03/27/server-virtualization-series-hyper-v-replica-broker-explained-part-15-of-20-by-yung-chou.aspx)。
 - 你要为其管理保护的任何 Hyper-V 主机服务器或群集必须包括在 VMM 云中。
 
 ### 网络映射先决条件
@@ -96,9 +95,9 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 
 ###PowerShell 必决条件
-确保已将 Azure PowerShell 准备就绪。如果你已使用 PowerShell，则升级到 0.8.10 或更高版本。有关设置 PowerShell 的信息，请参阅 [Azure PowerShell 安装和配置指南](/documentation/articles/powershell-install-configure)。安装并配置 PowerShell 后，可在[此处](https://msdn.microsoft.com/zh-cn/library/dn850420.aspx)查看该服务的所有可用 cmdlet。
+确保已将 Azure PowerShell 准备就绪。如果你已使用 PowerShell，则升级到 0.8.10 或更高版本。有关设置 PowerShell 的信息，请参阅 [Guide to install and configure Azure PowerShell（Azure PowerShell 安装和配置指南）](/documentation/articles/powershell-install-configure)。安装并配置 PowerShell 后，可在[此处](https://msdn.microsoft.com/zh-cn/library/dn850420.aspx)查看该服务的所有可用 cmdlet。
 
-若要了解可帮助你使用 cmdlet 的提示（如在 Azure PowerShell 中通常如何处理参数值、输入和输出），请参阅 [Azure Cmdlet 入门指南](https://msdn.microsoft.com/zh-cn/library/azure/jj554332.aspx)。
+若要了解可帮助你使用 cmdlet 的提示（如在 Azure PowerShell 中通常如何处理参数值、输入和输出），请参阅 [Azure Cmdlet 入门](https://msdn.microsoft.com/zh-cn/library/azure/jj554332.aspx)。
 
 ## 步骤 1：设置订阅 
 
@@ -120,7 +119,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 		Set-AzureRmContext –SubscriptionID <subscriptionId>
 
 
-## 步骤 2：创建恢复服务保管库
+## 步骤 2：创建恢复服务保管库 
 
 1. 如果还没有 ARM 资源组，则创建一个
 
@@ -130,19 +129,11 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 		$vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location 
 
-## 步骤 3：生成保管库注册密钥
+## 步骤 3：设置恢复服务保管库上下文
 
-在保管库中生成一个注册密钥。在下载 Azure Site Recovery 提供程序并将其安装到 VMM 服务器上后，你将使用此密钥在保管库中注册 VMM 服务器。
+1.  通过运行以下命令设置保管库上下文。
 
-1.	获取保管库设置文件并设置上下文：
-	
-
-		Get-AzureRmRecoveryServicesVaultSettingsFile -Vault vaultname -Path #VaultSettingFilePath
-	
-	
-2.	通过运行以下命令设置保管库上下文：
-	
-		Import-AzureRmSiteRecoveryVaultSettingsFile -Path $VaultSettingFilePath
+		Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
 
 ## 步骤 4：安装 Azure Site Recovery 提供者
 
@@ -243,7 +234,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 在开始网络映射之前，请验证源 VMM 服务器上的虚拟机是否已连接到一个 VM 网络。此外，请创建一个或多个 Azure 虚拟机。
 
-
+在 [Create a virtual network with a site-to-site VPN connection using Azure Resource Manager and PowerShell（使用 Azure Resource Manager 和 PowerShell 创建具有站点到站点 VPN 连接的虚拟网络）](/documentation/articles/vpn-gateway-create-site-to-site-rm-powershell)中，了解更多有关如何使用 Azure Resource Manager 和 PowerShell 创建虚拟网络的信息。
 
 请注意，可以将多个虚拟机网络映射到单个 Azure 网络。如果目标网络具有多个子网，并且其中一个子网与源虚拟机所在的子网同名，则在故障转移后副本虚拟机将连接到该目标子网。如果没有具有匹配名称的目标子网，则虚拟机将连接到网络中的第一个子网。
 
@@ -318,7 +309,7 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 ### 运行非计划的故障转移
 
-1. 通过运行以下命令来启动计划的故障转移：
+1. 通过运行以下命令来启动非计划的故障转移：
 		
 		$protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $protectionContainer
 
@@ -348,6 +339,9 @@ Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障
 
 ## 后续步骤
 
-[详细了解](https://msdn.microsoft.com/zh-cn/library/dn850420.aspx) Azure Site Recovery PowerShell cmdlet</a>。
+[详细了解](https://msdn.microsoft.com/zh-cn/library/azure/mt637930.aspx) Azure Site Recovery 和 Azure Resource Manager PowerShell cmdlet。
 
-<!---HONumber=Mooncake_0328_2016-->
+
+
+
+<!---HONumber=Mooncake_0704_2016-->

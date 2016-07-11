@@ -1,5 +1,5 @@
 <properties
-   pageTitle="批处理和 HPC 工作负荷在云中的资源 | Microsoft Azure"
+   pageTitle="批处理和 HPC 工作负荷在云中的资源 | Azure"
    description="列出了旨在帮助你在 Azure 中运行大规模并行批处理和高性能计算 (HPC) 工作负荷的技术资源。"
    services="batch, cloud-services, virtual-machines"
    documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="multiple"
-   ms.date="04/29/2016"
+   ms.date="06/08/2016"
    wacn.date=""/>
 
 # Azure 中的大型计算：用于批处理和高性能计算 (HPC) 的技术资源
@@ -146,4 +146,4 @@ Azure 提供一[系列大小](/documentation/articles/virtual-machines-windows-s
 * 有关最新通告，请参阅 [Microsoft HPC 和批处理团队博客](http://blogs.technet.com/b/windowshpc/)与 [Azure 博客](/blog/tag/hpc/)。
 * 另请参阅 [Batch 中的新增功能](/updates/?service=batch)或订阅 [RSS 源](/updates/feed/?service=batch)。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->

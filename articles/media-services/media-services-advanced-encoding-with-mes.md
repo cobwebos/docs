@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="04/24/2016"    
+	ms.date="05/19/2016"    
 	wacn.date=""/>
 
 
@@ -232,6 +232,20 @@
 		}
 
 
+##支持相对大小
+
+生成它的缩略图时，不需始终以像素为单位指定输出宽度和高度。你可以以百分比的方式在 [1%, …, 100%] 范围内对其进行指定。
+
+###JSON 预设 
+	
+	"Width": "100%",
+	"Height": "100%"
+
+###XML 预设
+	
+	<Width>100%</Width>
+	<Height>100%</Height>
+	
 ##<a id="thumbnails"></a>生成缩略图
 
 本部分说明如何自定义生成缩略图的预设。下面定义的预设包含有关如何将文件编码的信息，以及生成缩略图时所需的信息。你可以使用[此处](https://msdn.microsoft.com/zh-cn/library/mt269960.aspx)所述的任何 MES 预设，并添加生成缩略图的代码。
@@ -438,7 +452,7 @@
 	- 默认值：Start:{Best}
 - 需要显式提供每个图像格式的输出格式：Jpg/Png/BmpFormat。MES 会将 JpgVideo（如果已指定）与 JpgFormat 进行匹配，依此类推。OutputFormat 引入了新的图像编解码器特定宏 {Index}，需要为图像输出格式提供该宏一次（且只需一次）。
 
-##<a id="trim_video"></a>剪裁视频（剪辑）
+##<a id="trim_video"></a>修剪视频（裁剪）
 
 本部分说明如何修改编码器预设，以裁剪或修剪其输入为所谓的夹层文件或按需文件的输入视频。也可以使用编码器来剪辑或剪裁从实时流捕获或存档的资产 — [此博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)提供了详细信息。
 
@@ -1061,4 +1075,4 @@
 
 [媒体服务编码概述](/documentation/articles/media-services-encode-asset)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0704_2016-->

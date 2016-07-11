@@ -1,5 +1,5 @@
 <properties
-   pageTitle="注册你的应用程序并获取客户端 ID 和密钥以便从代码连接到 SQL 数据库 |Azure"
+   pageTitle="注册你的应用程序并获取客户端 ID 和密钥以便从代码连接到 SQL 数据库 | Azure"
    description="获取客户端 ID 和密钥以便从代码访问 SQL 数据库。"
    services="sql-database"
    documentationCenter=""
@@ -10,7 +10,7 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="03/15/2016"
+   ms.date="06/06/2016"
    wacn.date=""/>
 
 # 获取客户端 ID 和密钥以便从代码连接到 SQL 数据库
@@ -53,8 +53,8 @@
 
 1. 在页面上向下滚动并单击“添加应用程序”。
 1. 选择“Microsoft 应用”。
-1. 选择“Azure 服务管理 API”，然后完成向导。
-2. 在“其他应用程序的权限”部分找到“Azure 服务管理 API”，然后单击“委派权限”。
+1. 选择“Microsoft Azure 服务管理 API”，然后完成向导。
+2. 在“其他应用程序的权限”部分找到“Microsoft Azure 服务管理 API”，然后单击“委派权限”。
 3. 选择“访问 Azure 服务管理...”。
 
     ![权限][2]
@@ -104,8 +104,8 @@
 
 1. 在页面上向下滚动并单击“添加应用程序”。
 1. 选择“Microsoft 应用”。
-1. 找到并选择“Azure 服务管理 API”，然后完成向导。
-2. 在“其他应用程序的权限”部分找到“Azure 服务管理 API”，然后单击“委派权限”。
+1. 找到并选择“Microsoft Azure 服务管理 API”，然后完成向导。
+2. 在“其他应用程序的权限”部分找到“Microsoft Azure 服务管理 API”，然后单击“委派权限”。
 3. 选择“访问 Azure 服务管理...”。
 
     ![权限][2]
@@ -121,10 +121,10 @@
 
 身份验证代码中有时需要用到域名。轻松标识正确域名的一种方式是：
 
-1. 转到 [Azure 门户](https://manage.windowsazure.cn)。
+1. 转到 [Azure 门户](https://portal.azure.cn)。
 2. 将鼠标悬停在右上角的名称上，并记下弹出窗口中显示的域。
 
-   
+    ![标识域名][3]
 
 
 
@@ -132,7 +132,7 @@
 ## 示例控制台应用程序
 
 
-要获取所需的管理库，请在 Visual Studio 中使用“程序包管理器控制台”[](http://docs.nuget.org/Consume/Package-Manager-Console)安装以下程序包（“工具”>“NuGet 程序包管理器”>“程序包管理器控制台”）：
+要获取所需的管理库，请在 Visual Studio 中使用“[包管理器控制台](http://docs.nuget.org/Consume/Package-Manager-Console)”安装以下程序包（“工具”>“NuGet 程序包管理器”>“包管理器控制台”）：
 
 
     PM> Install-Package Microsoft.Azure.Common.Authentication –Pre
@@ -246,4 +246,4 @@
 [13]: ./media/sql-database-client-id-keys/key-duration.png
 [14]: ./media/sql-database-client-id-keys/web-secrets.png
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0704_2016-->

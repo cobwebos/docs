@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="04/11/2016"
+	ms.date="05/17/2016"
 	wacn.date="04/21/2016"/>
  
 # SQL 数据库审核入门
@@ -53,7 +53,35 @@ SQL 数据库审核可让你：
 
 可以为特定数据库定义审核策略，也可以将审核策略定义为默认服务器策略。默认服务器审核策略将应用于服务器上所有未定义特定重写数据库审核策略的数据库。
 
-在设置审核之前，请检查是否正在使用[“下层客户端”](/documentation/articles/sql-database-auditing-and-dynamic-data-masking-downlevel-clients)。
+在设置审核之前，请检查是否正在使用[“下层客户端”](/documentation/articles/sql-database-auditing-and-dynamic-data-masking-downlevel-clients)。此外，如果你有严格的防火墙设置，请注意当启用审核时[将更改数据库的 IP 终结点](/documentation/articles/sql-database-auditing-and-dynamic-data-masking-downlevel-clients)。
+
+
+##<a id="subheading-2"></a>为数据库设置审核
+
+1. 启动 [Azure 门户](https://portal.azure.cn) (https://portal.azure.cn) 。或者，你也可以启动 [Azure 管理门户](https://manage.windowsazure.cn/) (https://manage.windowsazure.cn/) 。请参考以下详细信息。
+
+2. 导航到你要审核的 SQL 数据库/SQL Server 的设置边栏选项卡。在“设置”边栏选项卡中，选择“审核和威胁检测”。
+
+	![导航窗格][1]
+
+3. 在“审核配置”边栏选项卡中，启用审核。
+
+4. 选择“存储详细信息”以打开“审核日志存储”边栏选项卡。选择要用于保存日志的 Azure 存储帐户以及保留期。**提示：**为所有审核的数据库使用相同的存储帐户，以便充分利用审核报告模板。
+
+	![导航窗格][2]
+
+5. 单击“审核事件”自定义要审核的事件。在“按事件记录日志”边栏选项卡中，单击“成功”和“失败”以记录所有事件，或者选择单个事件类别。
+
+
+6. 你可以选择“从服务器继承审核设置”复选框以指定将根据数据库的服务器的设置对数据库进行审核。一旦选中此选项，你将看到一个链接，你可以使用该链接在此上下文中查看或修改服务器审核设置。
+
+	![导航窗格][3]
+
+7. 配置审核设置之后，你可以启用威胁检测并配置电子邮件，以接收安全警报。有关更多详细信息，请参阅 [Threat Detection Getting Started（威胁检测入门）](/documentation/articles/sql-database-threat-detection-get-started)。
+
+8. 单击“保存”。
+
+
 
 ##<a id="subheading-3"></a>分析审核日志和报告
 
@@ -69,7 +97,7 @@ SQL 数据库审核可让你：
 
 ##<a id="subheading-4"></a>使用 Azure 管理门户为数据库设置审核
 
-1. 通过 https://manage.windowsazure.cn/ 启动 [Azure 管理门户](https://manage.windowsazure.cn)。
+1. 启动 [Azure 管理门户](https://manage.windowsazure.cn) (https://manage.windowsazure.cn/) 。
 
 2. 单击要审核的 SQL 数据库/SQL Server，然后单击“审核和安全性”选项卡。
 
@@ -90,8 +118,8 @@ SQL 数据库审核可让你：
 
 
 
-##<a id="subheading-5"></a>生产环境中的用法实践
-本部分中的说明与以上屏幕截图相关。可以使用 [Azure 门户](https://manage.windowsazure.cn)或 [Azure 管理门户](https://manage.windowsazure.cn)。
+##<a id="subheading-5">生产环境中的用法实践</a>
+本部分中的说明与以上屏幕截图相关。可以使用 [Azure 门户](https://portal.azure.cn)或 [Azure 管理门户](https://manage.windowsazure.cn)。
 
 
 ##<a id="subheading-6"></a>重新生成存储密钥
@@ -146,4 +174,4 @@ SQL 数据库审核可让你：
 
  
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0704_2016-->

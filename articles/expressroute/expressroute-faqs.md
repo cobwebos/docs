@@ -4,11 +4,11 @@
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
-   manager="carolz"
+   manager="carmonm"
    editor=""/>
 <tags
    ms.service="expressroute"
-   ms.date="05/11/2016"
+   ms.date="06/13/2016"
    wacn.date=""/>
 
 # ExpressRoute 常见问题
@@ -57,6 +57,7 @@ ExpressRoute 目前支持大多数 Microsoft Azure 服务，包括 Office 365。
 	- CDN
 	- Visual Studio Team Services 负载测试
 	- 多重身份验证
+	- 流量管理器
 
 ## 数据和连接
 
@@ -214,6 +215,8 @@ ExpressRoute 高级版包括下面列出的功能集合。
 
 ## ExpressRoute 和 Office 365 服务以及 CRM Online
 
+[AZURE.INCLUDE [expressroute-office365-include](../includes/expressroute-office365-include.md)]
+
 ### 如何创建 ExpressRoute 线路，以便连接到 Office 365 服务和 CRM Online？
 
 1. 请查看 [ExpressRoute 先决条件页](/documentation/articles/expressroute-prerequisites)，以确保满足要求。
@@ -245,4 +248,4 @@ Office 365 服务和 CRM Online 要求启用高级版外接程序。[定价详�
 ### 是否可以通过 ExpressRoute 连接访问 Dynamics AX？
 否，不支持这样做。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->

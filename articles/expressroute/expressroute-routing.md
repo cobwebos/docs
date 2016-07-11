@@ -8,7 +8,7 @@
    editor=""/>
 <tags
    ms.service="expressroute"
-   ms.date="05/16/2016"
+   ms.date="06/01/2016"
    wacn.date=""/>
 
 
@@ -99,7 +99,7 @@ ExpressRoute 不能配置为传输路由器。你必须依赖连接服务提供�
 
 **注意：**播发默认路由会中断 Windows 和其他 VM 许可证激活。请按照[此处](http://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx)的说明来解决此问题。
 
-## BGP 社区支持（即将推出）
+## BGP 社区支持（预览版）
 
 
 本部分概述如何配合 ExpressRoute 使用 BGP 社区。Microsoft 将播发公共和 Microsoft 对等互连路径中的路由并为路由标记适当的社区值。下面将会介绍这种方案的理由以及有关社区值的详细信息。但是，Microsoft 不遵循向 Microsoft 播发的路由的任何标记社区值。
@@ -112,7 +112,7 @@ ExpressRoute 不能配置为传输路由器。你必须依赖连接服务提供�
 
 可以针对每个地缘政治区域购买多个 ExpressRoute 线路。如果拥有多个连接，则可以从异地冗余中获得明显的高可用性优势。如果你多条 ExpressRoute 线路，将从 Microsoft 收到同一组公共对等互连和 Microsoft 对等互连路径的前缀。这意味着你可以使用多个路径从你的网络接入 Microsoft。这可能会导致在网络中做出欠佳的路由决策。因此，你可能会在不同的服务上遇到欠佳的连接体验。
 
-Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标记通过公共对等互连和 Microsoft 对等互连播发的前缀。你可以依赖社区值来做出适当的路由决策，以向客户提供最佳路由。
+Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标记通过公共对等互连播发的前缀。你可以依赖社区值来做出适当的路由决策，以向客户提供最佳路由。
 
 | **地缘政治区域** | **Microsoft Azure 区域** | **BGP 社区值** |
 |---|---|---|
@@ -130,8 +130,6 @@ Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标�
 | **欧洲** | | |
 | | 欧洲北部 | 12076:51003 |
 | | 欧洲西部 | 12076:51002 |
-| | 英国北部 | 12076:51022 |
-| | 英国南部 2 | 12076:51023 |
 | **亚太区** | | |
 | | 东亚 | 12076:51010 |
 | | 亚洲东南部 | 12076:51011 |
@@ -161,10 +159,7 @@ Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标�
 | **CRM Online** | 12076:5040 |
 | **其他 Office 365 服务** | 12076:5100 |
 
-
-### 操作路由首选项
-
-Microsoft 不遵循你设置的任何 BGP 社区值。你需要为每个对等互连设置一对 BGP 会话，才能确保满足[可用性 SLA](/support/legal/sla/) 要求。但是，你可以依赖标准的 BGP 路由操作方法，将网络配置为首选某个链路。你可以将不同的 BGP 本地首选项应用到每个链路，以优先选择某个路径来从你的网络连接到 Microsoft。你可以在路由播发的前面加上 AS-PATH，以控制从 Microsoft 到你网络的流量传送。
+>[AZURE.NOTE] Microsoft 不遵循你在播发到 Microsoft 的路由上设置的任何 BGP 社区值。
 
 ## 后续步骤
 
@@ -176,4 +171,4 @@ Microsoft 不遵循你设置的任何 BGP 社区值。你需要为每个对等�
 
 
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->

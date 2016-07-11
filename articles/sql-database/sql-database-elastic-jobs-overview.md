@@ -1,15 +1,15 @@
 <properties
 	pageTitle="管理扩大的云数据库 | Azure" 
 	description="安装弹性数据库作业服务" 
-	metaKeywords="azure sql database elastic databases" 
+	metaKeywords="azure sql 数据库弹性数据库" 
 	services="sql-database" 
-    documentationCenter=""  
+	documentationCenter="" 
 	manager="jhubbard" 
 	authors="ddove"/>
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="04/25/2016" 
+	ms.date="05/27/2016" 
 	wacn.date="05/23/2016" />
 
 # 管理扩大的云数据库
@@ -135,7 +135,8 @@
 1.	使用门户或 PowerShell API 将作业插入**控制数据库**。作业将使用特定的凭据，请求针对一组数据库执行 Transact-SQL 脚本。
 2.	控制器将识别新作业。创建并执行作业任务，以拆分脚本并刷新组的数据库。最后，将创建并执行新的作业以扩展该作业，并创建新的作业，其中指定了每个子作业针对据组中的单个数据库执行 Transact-SQL 脚本。
 3.	控制器将识别创建的子作业。对于每个作业，控制器将创建并触发作业任务，以针对数据库执行脚本。 
-4.	完成所有作业任务后，控制器会将作业更新为已完成状态。在作业执行期间，可以随时使用 PowerShell API 来查看作业执行的当前状态。PowerShell API 返回的所有时间都以 UTC 表示。如果需要，你可以启动取消请求来停止作业。 
+4.	完成所有作业任务后，控制器会将作业更新为已完成状态。 
+在作业执行期间，可以随时使用 PowerShell API 来查看作业执行的当前状态。PowerShell API 返回的所有时间都以 UTC 表示。如果需要，你可以启动取消请求来停止作业。 
 
 ## 后续步骤
 [安装组件](/documentation/articles/sql-database-elastic-jobs-service-installation)，然后[创建一个登录名并将其添加到数据库组的每个数据库中](/documentation/articles/sql-database-security)。若要进一步了解作业创建和管理过程，请参阅[创建和管理弹性数据库作业](/documentation/articles/sql-database-elastic-jobs-create-and-manage)。另请参阅[弹性数据库作业入门](/documentation/articles/sql-database-elastic-jobs-getting-started)。
@@ -148,4 +149,4 @@
 
  
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="数据迁移的监视和故障排除（延伸数据库）| Microsoft Azure"
+	pageTitle="数据迁移的监视和故障排除 (Stretch Database) | Azure"
 	description="了解如何监视数据迁移状态。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="sql-server-stretch-database"
-	ms.date="02/26/2016"
+	ms.date="06/14/2016"
 	wacn.date=""/>
 
 # 数据迁移的监视和故障排除（延伸数据库）
@@ -29,11 +29,8 @@
 打开动态管理视图 **sys.dm\_db\_rda\_migration\_status** 查看已迁移的数据批数与行数。有关详细信息，请参阅 [sys.dm\_db\_rda\_migration\_status (Transact-SQL)](https://msdn.microsoft.com/zh-cn/library/dn935017.aspx)。
 
 ## <a name="Firewall"></a>数据迁移的故障排除
-**Azure 防火墙阻止正在阻止来自我的本地服务器的连接。**
 
-你可能必须在 Azure 服务器的 Azure 防火墙设置中添加一条规则，以使 SQL Server 可与远程 Azure 服务器进行通信。
-
-**我的已启用延伸的表中的行未迁移到 Azure。这是什么问题呢？**
+**我的已启用延伸的表中的行未迁移到 Azure。那么，这有什么问题呢？**
 
 有几个问题可能会影响迁移。请检查以下事项。
 
@@ -43,9 +40,13 @@
 
 -   在动态管理视图 **sys.dm\_db\_rda\_migration\_status** 中检查最新一批的状态。如果发生错误，请检查该批的 error\_number、 error\_state 和 error\_severity 值。
 
-    -   有关该视图的详细信息，请参阅 [sys.dm\_db\_rda\_migration\_status (Transact-SQL)](https://msdn.microsoft.com/library/dn935017.aspx)。
+    -   有关该视图的详细信息，请参阅 [sys.dm\_db\_rda\_migration\_status (Transact-SQL)](https://msdn.microsoft.com/zh-cn/library/dn935017.aspx)。
 
-    -   有关 SQL Server 错误消息内容的详细信息，请参阅 [sys.messages (Transact-SQL)](https://msdn.microsoft.com/library/ms187382.aspx)。
+    -   有关 SQL Server 错误消息内容的详细信息，请参阅 [sys.messages (Transact-SQL)](https://msdn.microsoft.com/zh-cn/library/ms187382.aspx)。
+
+**Azure 防火墙阻止正在阻止来自我的本地服务器的连接。**
+
+你可能必须在 Azure 服务器的 Azure 防火墙设置中添加一条规则，以使 SQL Server 可与远程 Azure 服务器进行通信。
 
 ## 另请参阅
 
@@ -54,4 +55,4 @@
 <!--Image references-->
 [StretchMonitorImage1]: ./media/sql-server-stretch-database-monitor/StretchDBMonitor.png
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0704_2016-->

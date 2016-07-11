@@ -1,5 +1,5 @@
 <properties
-   pageTitle="云中的 Batch 和 HPC 解决方案 | Microsoft Azure"
+   pageTitle="云中的 Batch 和 HPC 解决方案 | Azure"
    description="介绍 Azure 中的批处理和高性能计算（HPC 和大型计算）应用方案和解决方案选项"
    services="batch, virtual-machines, cloud-services"
    documentationCenter=""
@@ -31,7 +31,7 @@ Azure 还为开发人员和合作伙伴提供一整套功能、体系结构选�
 
 与 Web 应用程序和许多业务线应用程序不同，批处理和 HPC 应用程序有确定的开始和结束时间，而且它们可以按照计划运行或按需运行。其中的大多数应用程序可分为两大类：“内在并行”（有时称为“高度并行”，因为它们解决的问题有助于使自身在多个计算机或处理器上并行运行）和“紧密耦合”。有关这些应用程序类型的详细信息，请参阅下表。某些 Azure 解决方案方法更适合一种类型或其他类型。
 
->[AZURE.NOTE] 在批处理和 HPC 解决方案中，应用程序的运行中实例通常称为“作业”，而每个作业可以划分成“任务”。应用程序的群集计算资源通常称为“计算节点”。
+>[AZURE.NOTE] 在批处理和 HPC 解决方案中，应用程序的运行中实例通常称为*作业*，而每个作业可以划分成*任务*。应用程序的群集计算资源通常称为“计算节点”。
 
 类型 | 特征 | 示例
 ------------- | ----------- | ---------------
@@ -151,4 +151,4 @@ Azure 计算服务是大型计算解决方案的核心，不同的计算服务�
 [burst_cluster]: ./media/batch-hpc-solutions/burst_cluster.png
 [batch_proc]: ./media/batch-hpc-solutions/batch_proc.png
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0704_2016-->
