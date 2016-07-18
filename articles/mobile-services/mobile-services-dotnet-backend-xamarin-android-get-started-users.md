@@ -90,7 +90,7 @@
 
 In the next tutorial, [Service-side authorization of Mobile Services users][Authorize users with scripts], you will take the user ID value provided by Mobile Services based on an authenticated user and use it to filter the data returned by Mobile Services. 
  -->
- 
+
 <!-- Anchors. -->
 [注册应用程序以进行身份验证并配置移动服务]: #register
 [将表权限限制给已经过身份验证的用户]: #permissions
@@ -109,4 +109,4 @@ In the next tutorial, [Service-side authorization of Mobile Services users][Auth
 [JavaScript and HTML]: /documentation/articles/mobile-services-dotnet-backend-windows-store-javascript-get-started-users
 
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0711_2016-->

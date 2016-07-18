@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"  
-   ms.date="04/14/2016"
+   ms.date="05/19/2016"
    wacn.date=""/>
 
 
@@ -32,10 +32,10 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 
 
 ## 快速设置安装
-在快速设置中，安装向导将要求提供企业管理员凭据，以便可以配置本地 Active Directory，使其具有 Azure AD Connect 所需的权限。如果你从 DirSync 升级，企业管理员凭据可用于重置 DirSync 所用帐户的密码。
+在快速设置中，安装向导将要求提供 AD DS 企业管理员凭据，以便配置本地 Active Directory，使其具有 Azure AD Connect 所需的权限。如果从 DirSync 升级，AD DS 企业管理员凭据可用于重置 DirSync 所用帐户的密码。此外，还需要 Azure AD 全局管理员凭据。
 
 向导页 | 收集的凭据 | 所需的权限| 用途
-------------- | ------------- |------------- |------------- |
+------------- | ------------- |------------- |-------------
 不适用|运行安装向导的用户| 本地服务器的管理员| <li>创建用作[同步引擎服务帐户](#azure-ad-connect-sync-service-account)的本地帐户。
 连接到 Azure AD| Azure AD 目录凭据 | Azure AD 中的全局管理员角色 | <li>在 Azure AD 目录中启用同步。</li> <li>创建将在 Azure AD 中用于进行中同步操作的 [Azure AD 帐户](#azure-ad-service-account)。</li>
 连接到 AD DS | 本地 Active Directory 凭据 | Active Directory 中企业管理员 (EA) 组的成员| <li>在 Active Directory 中创建一个[帐户](#active-directory-account)并向其授予权限。在同步期间，将使用这个创建的帐户读取和写入目录信息。</li>
@@ -49,14 +49,14 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 ### 使用快速设置创建的 AD DS 帐户的权限
 如果使用快速设置创建用于在 AD DS 中读取和写入数据的[帐户](#active-directory-account)，该帐户将拥有以下权限：
 
-| 权限 | 用途 |
-| ---- | ---- |
-| <li>复制目录更改</li><li>复制所有目录更改 | 密码同步 |
-| 读取/写入所有用户属性 | 导入和执行 Exchange 混合部署 |
-| 读取/写入所有 iNetOrgPerson 属性 | 导入和执行 Exchange 混合部署 |
-| 读取/写入所有组属性 | 导入和执行 Exchange 混合部署 |
-| 读取/写入所有联系人属性 | 导入和执行 Exchange 混合部署 |
-| 重置密码 | 准备启用密码写回 |
+权限 | 用途
+---- | ----
+<li>复制目录更改</li><li>复制所有目录更改 | 密码同步
+读取/写入所有用户属性 | 导入和执行 Exchange 混合部署
+读取/写入所有 iNetOrgPerson 属性 | 导入和执行 Exchange 混合部署
+读取/写入所有组属性 | 导入和执行 Exchange 混合部署
+读取/写入所有联系人属性 | 导入和执行 Exchange 混合部署
+重置密码 | 准备启用密码写回
 
 ## 自定义设置安装
 使用自定义设置时，必须在安装之前创建用于连接 Active Directory 的帐户。你必须授予此帐户的权限可在[创建 AD DS 帐户](#create-the-ad-ds-account)中找到。
@@ -77,22 +77,22 @@ Web 应用程序代理服务器 |对于列表中的每个服务器，如果运�
 
 需要哪些权限取决于你启用的可选功能。如果你有多个域，则必须对林中的所有域授予权限。如果你未启用任何一项功能，则默认的**域用户**权限就已足够。
 
-| 功能 | 权限 |
-| ------ | ------ |
-| 密码同步 | <li>复制目录更改</li><li>复制所有目录更改。 |
-| Exchange 混合部署 | [Exchange 混合写回](/documentation/articles/active-directory-aadconnectsync-attributes-synchronized#exchange-hybrid-writeback)中叙述了对用户、组和联系人的属性的写入权限。 |
-| 密码写回 | [密码管理入门](/documentation/articles/active-directory-passwords-getting-started#step-4-set-up-the-appropriate-active-directory-permissions)中叙述了对用户的属性的写入权限。 |
-| 设备写回 | [设备写回](/documentation/articles/active-directory-aadconnect-get-started-custom-device-writeback)中叙述了如何使用 PowerShell 脚本授予权限。|
-| 组写回 | 在分发组应该放置到的 OU 中读取、创建、更新和删除组对象。|
+功能 | 权限
+------ | ------
+密码同步 | <li>复制目录更改</li><li>复制所有目录更改。
+Exchange 混合部署 | [Exchange 混合写回](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)中叙述了对用户、组和联系人的属性的写入权限。
+密码写回 | [密码管理入门](active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions)中叙述了对用户的属性的写入权限。
+设备写回 | [设备写回](active-directory-aadconnect-feature-device-writeback.md)中叙述了如何使用 PowerShell 脚本授予权限。
+组写回 | 在分发组应该放置到的 OU 中读取、创建、更新和删除组对象。
 
 ## 升级
 从 Azure AD Connect 的一个版本升级到新版本时，你需要拥有以下权限：
 
-| 主体 | 所需的权限 | 用途 |
-| ---- | ---- | ---- |
-| 运行安装向导的用户 | 本地服务器的管理员 | 更新二进制文件 |
-| 运行安装向导的用户 | ADSyncAdmins 的成员 | 对同步规则和其他配置进行更改。 |
-| 运行安装向导的用户 | 如果使用完整 SQL 服务器：需有同步引擎数据库的 DBO 权限（或类似权限） | 进行数据库级别的更改，例如使用新列更新表。 |
+主体 | 所需的权限 | 用途
+---- | ---- | ----
+运行安装向导的用户 | 本地服务器的管理员 | 更新二进制文件
+运行安装向导的用户 | ADSyncAdmins 的成员 | 对同步规则和其他配置进行更改。
+运行安装向导的用户 | 如果使用完整 SQL 服务器：需有同步引擎数据库的 DBO 权限（或类似权限） | 进行数据库级别的更改，例如使用新列更新表。
 
 ## 有关所创建帐户的详细信息
 
@@ -103,7 +103,7 @@ Web 应用程序代理服务器 |对于列表中的每个服务器，如果运�
 ![AD 帐户](./media/active-directory-aadconnect-accounts-permissions/adsyncserviceaccount.png)
 
 ### Azure AD Connect 同步服务帐户
-本地服务帐户将由安装向导创建（除非你在自定义设置指定了要使用的帐户）。该帐户具有 **AAD\_** 前缀，可作为实际的同步服务的运行帐户。如果你在域控制器上安装 Azure AD Connect，则会在该域中创建帐户。如果你使用运行 SQL 服务器的远程服务器或使用需要身份验证的代理，则 **AAD\_** 服务帐户必须位于域中。
+本地服务帐户将由安装向导创建（除非你在自定义设置指定了要使用的帐户）。该帐户具有 **AAD_** 前缀，可作为实际同步服务的运行帐户。如果你在域控制器上安装 Azure AD Connect，则会在该域中创建帐户。如果你使用运行 SQL 服务器的远程服务器或使用需要身份验证的代理，则 **AAD_** 服务帐户必须位于域中。
 
 ![同步服务帐户](./media/active-directory-aadconnect-accounts-permissions/syncserviceaccount.png)
 
@@ -130,4 +130,4 @@ Web 应用程序代理服务器 |对于列表中的每个服务器，如果运�
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0711_2016-->

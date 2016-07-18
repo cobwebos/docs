@@ -55,4 +55,4 @@
 <!--Image references-->
 [StretchMonitorImage1]: ./media/sql-server-stretch-database-monitor/StretchDBMonitor.png
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0711_2016-->

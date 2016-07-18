@@ -9,7 +9,6 @@
 
 <tags
 	ms.service="active-directory"
-
 	ms.date="03/31/2016"
 	wacn.date=""/>
 
@@ -71,6 +70,7 @@
 - 外部用户无法同意在其主目录以外的目录中的多租户应用程序
 - PowerBI 目前不支持外部用户访问
 - Office 门户不支持向外部用户提供许可
+- 对于 Azure AD PowerShell，外部用户会登录其主目录，无法管理他们在其中是外部用户的目录
 
 
 ## 后续步骤
@@ -80,4 +80,4 @@
 - [在 Azure AD 中管理密码](/documentation/articles/active-directory-manage-passwords)
 - [在 Azure AD 中管理组](/documentation/articles/active-directory-manage-groups)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0711_2016-->

@@ -61,7 +61,7 @@
     - 我想要使用磁盘提供短期保护。
     - 我想要使用在线保护。
 
-6. 单击**“下一步”**。
+6. 单击“下一步”。
 
 7. 如果想要检查 Exchange Server 数据库的完整性，请选择“运行 Eseutil 以检查数据完整性”选项。
 
@@ -70,7 +70,7 @@
     >[AZURE.NOTE] 若要使用此选项，必须将 Ese.dll 和 Eseutil.exe 文件复制到 DPM 服务器上的 C:\\Program Files\\Microsoft System Center 2012 R2\\DPM\\DPM\\bin 目录。否则会触发以下错误：  
     ![eseutil 错误](./media/backup-azure-backup-exchange-server/eseutil-error.png)
 
-8. 单击**“下一步”**。
+8. 单击“下一步”。
 
 9. 选择“复制备份”的数据库，然后单击“下一步”。
 
@@ -130,4 +130,4 @@
 
 - [Azure 备份常见问题](/documentation/articles/backup-azure-backup-faq)
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0711_2016-->

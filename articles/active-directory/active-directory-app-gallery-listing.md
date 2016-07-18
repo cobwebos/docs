@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="02/19/2016"
+   ms.date="05/31/2016"
    wacn.date=""/>
 
 
@@ -27,7 +27,7 @@
 
 若要将你的应用程序与 Azure AD 集成，请遵循[开发人员说明](active-directory-authentication-scenarios.md)。然后回答以下问题并发送到 waadpartners@microsoft.com。
 
-* 提供应用程序测试租户或帐户的凭据，使 Azure AD 团队可以测试集成。  
+* 提供应用程序测试租户或帐户的凭据，使 Azure AD 团队可以测试集成。
 
 * 为 Azure AD 团队提供有关如何使用 [Azure AD 许可框架](https://azure.microsoft.com/documentation/articles/active-directory-integrating-applications/#overview-of-the-consent-framework)登录并将 Azure AD 实例连接到应用程序的说明。
 
@@ -63,7 +63,7 @@
 
 如果[使用这些说明添加自定义应用程序](active-directory-saas-custom-apps.md)，支持 SAML 2.0 的任何应用程序都可直接与 Azure AD 租户集成。应用程序经测试可与 Azure AD 集成后，请将以下信息发送到 <waadpartners@microsoft.com>。
 
-* 提供应用程序测试租户或帐户的凭据，使 Azure AD 团队可以测试集成。  
+* 提供应用程序测试租户或帐户的凭据，使 Azure AD 团队可以测试集成。
 
 * 按[此处](active-directory-saas-custom-apps.md)所述提供应用程序的 SAML 登录 URL、颁发者 URL（实体 ID）和回复 URL（断言使用者服务）的值。如果你一般情况下在 SAML 元数据文件中提供了这些值，请随附该文件。
 
@@ -93,4 +93,4 @@
 >
 > 附加应用程序徽标（PNG 文件，150 x 122 像素，透明背景色）：
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0711_2016-->

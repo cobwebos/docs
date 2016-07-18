@@ -3,13 +3,13 @@
  description="将云服务部署到 Azure 时，你可能会遇到几个常见问题。本文提供了部分问题的解决方案。"
    services="cloud-services"
    documentationCenter=""
-   authors="dalechen"
+   authors="simonxjx"
    manager="felixwu"
    editor=""
    tags="top-support-issue"/>
 <tags
    ms.service="cloud-services"
-   ms.date="04/20/2016"
+   ms.date="06/03/2016"
    wacn.date="05/17/2016" />
 
 # 排查云服务部署问题
@@ -23,11 +23,7 @@
 
 > [AZURE.NOTE] 你可以通过单击“属性”窗格右上角的图标将该窗格的内容复制到剪贴板。
 
-## 与 Azure 客户支持联系
-
-如果你对本文中的任何点需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](/support/forums)上的 Azure 专家。
-
-或者，你也可以提出 Azure 支持事件。请转到 [Azure 支持站点](/support/contact)并单击“获取支持”。有关使用 Azure 支持的信息，请阅读 [Azure 支持常见问题](/support/faq)。
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## 问题：我无法访问我的网站，但我的部署已启动且所有角色实例均已就绪
 
@@ -44,8 +40,7 @@
 1. 在 Azure 门户中，单击云服务的部署。
 2. 在 Azure 门户的“属性”窗格中查看相关信息，确定在你观察到角色回收期间是否进行了服务修复。
 
-在主机 OS 和来宾 OS 更新期间，角色也会差不多每月回收一次。  
-有关详细信息，请参阅博客文章[重新启动角色实例进行 OS 升级](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)
+在主机 OS 和来宾 OS 更新期间，角色也会差不多每月回收一次。有关详细信息，请参阅博客文章[重新启动角色实例进行 OS 升级](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)
 
 ## 问题：无法进行 VIP 交换并收到错误
 
@@ -79,8 +74,8 @@
 
 ## 后续步骤
 
-查看更多针对云服务的[故障排除文章](..\?tag=top-support-issue&service=cloud-services)。
+
 
 若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请参阅 [Kevin Williamson 博客系列](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0711_2016-->

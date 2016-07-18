@@ -9,12 +9,13 @@
 
 <tags
     ms.service="sql-database"
-    ms.date="04/28/2016"
+    ms.date="05/27/2016"
     wacn.date="05/23/2016"/>
 
 # 使用 C&#x23; 监视和管理弹性数据库池 
 
 > [AZURE.SELECTOR]
+- [Azure 门户](/documentation/articles/sql-database-elastic-pool-manage-portal)
 - [PowerShell](/documentation/articles/sql-database-elastic-pool-manage-powershell)
 - [C#](/documentation/articles/sql-database-elastic-pool-manage-csharp)
 - [T-SQL](/documentation/articles/sql-database-elastic-pool-manage-tsql)
@@ -58,7 +59,7 @@
 
 ## 列出弹性池中的数据库
 
-要在池中检索所有数据库，可调用 [ListDatabases](https://msdn.microsoft.com/zh-cn/library/microsoft.azure.management.sql.elasticpooloperationsextensions.listdatabases) 方法。
+若要在池中检索所有数据库，可调用 [ListDatabases](https://msdn.microsoft.com/zh-cn/library/microsoft.azure.management.sql.elasticpooloperationsextensions.listdatabases) 方法。
 
     //List databases in the elastic pool
     DatabaseListResponse dbListInPool = sqlClient.ElasticPools.ListDatabases("resourcegroup-name", "server-name", "ElasticPool1");
@@ -105,7 +106,7 @@
     PM> Install-Package Microsoft.Azure.Management.Resources –Pre
     PM> Install-Package Microsoft.Azure.Common.Authentication –Pre
 
-创建控制台应用并将 Program.cs 的内容替换为以下内容。若要获取必需的客户端 ID 和相关的值，请参阅[注册应用并获取所需的客户端值以便将你的应用连接到 SQL 数据库](/documentation/articles/sql-database-client-id-keys)。
+创建控制台应用并将 Program.cs 的内容替换为以下内容。若要获取所需的客户端 ID 和相关的值，请参阅[注册应用并获取所需的客户端值以便将你的应用连接到 SQL 数据库](/documentation/articles/sql-database-client-id-keys)。
 
     using Microsoft.Azure;
     using Microsoft.Azure.Management.Resources;
@@ -168,7 +169,7 @@
             Console.WriteLine("Creation of pool " + epool.ElasticPool.Name + ": " + epool.Status.ToString());
 
             // Open the portal so we can see our operations in action
-            string portalPage = @"https://manage.windowsazure.cn/#resource/subscriptions/"
+            string portalPage = @"https://portal.azure.cn/#resource/subscriptions/"
                 + subscriptionId
                 + @"/resourceGroups/"
                 + resourceGroupName
@@ -409,7 +410,7 @@
                 ("https://login.chinacloudapi.cn/" + domainName /* Tenant ID or AAD domain */);
 
             AuthenticationResult token = authContext.AcquireToken
-                ("https://management.azure.com/"/* the Azure Resource Management endpoint */,
+                ("https://management.chinacloudapi.cn/"/* the Azure Resource Management endpoint */,
                     clientId,
             new Uri(redirectUri) /* redirect URI */,
             PromptBehavior.Auto /* with Auto user will not be prompted if an unexpired token is cached */);
@@ -425,7 +426,7 @@
 - [Azure 资源管理 API](https://msdn.microsoft.com/zh-cn/library/azure/dn948464.aspx)
 - [使用 C# 创建新的弹性数据库池](/documentation/articles/sql-database-elastic-pool-create-csharp)
 - [何时使用弹性数据库池？](/documentation/articles/sql-database-elastic-pool-guidance)
-- 请参阅[使用 Azure SQL 数据库扩展](/documentation/articles/sql-database-elastic-scale-introduction)：使用弹性数据库工具扩展、移动数据、查询或创建事务。
+- 请参阅 [Scaling out with Azure SQL Database（使用 Azure SQL 数据库进行扩展）](/documentation/articles/sql-database-elastic-scale-introduction)：使用弹性数据库工具扩展、移动数据、查询或创建事务。
 
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0711_2016-->

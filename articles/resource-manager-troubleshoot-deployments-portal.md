@@ -1,19 +1,19 @@
 <properties
-   pageTitle="使用门户对部署进行故障排除 | Azure"
-   description="介绍如何使用 Azure 门户来检测和解决资源管理器部署的问题。"
+   pageTitle="使用门户查看部署操作 | Azure"
+   description="介绍如何使用 Azure 门户来检测 Resource Manager 部署中的错误。"
    services="azure-resource-manager,virtual-machines"
    documentationCenter=""
    tags="top-support-issue"
    authors="tfitzmac"
    manager="timlt"
-   editor=""/>
+   editor="tysonn"/>
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="03/21/2016"
+   ms.date="06/15/2016"
    wacn.date=""/>
 
-# 使用 Azure 门户对资源组部署进行故障排除
+# 使用 Azure 门户查看部署操作
 
 > [AZURE.SELECTOR]
 - [门户](/documentation/articles/resource-manager-troubleshoot-deployments-portal)
@@ -21,55 +21,9 @@
 - [Azure CLI](/documentation/articles/resource-manager-troubleshoot-deployments-cli)
 - [REST API](/documentation/articles/resource-manager-troubleshoot-deployments-rest)
 
-如果在将资源部署到 Azure 时发生错误，你需要进行故障排除。Azure 门户提供了一个界面让你轻松找到错误并确定可能的解决方法。
+可以通过 Azure 门户查看部署操作。当你在部署过程中收到错误时，可能最想要查看操作，因此本文将重点介绍如何查看已失败的操作。该门户提供了一个界面让你轻松找到错误并确定可能的解决方法。
 
-可以通过查看审核日志或部署操作来对部署进行故障排除。本主题将演示这两种方法。
-
-如果部署之前先验证模板和基础结构，则可以避免一些错误。有关详细信息，请参阅 [Deploy a resource group with Azure Resource Manager template（使用 Azure Resource Manager 模板部署资源组）](/documentation/articles/resource-group-template-deploy)。
-
-## 使用审核日志进行故障排除
-
-[AZURE.INCLUDE [resource-manager-audit-limitations](../includes/resource-manager-audit-limitations.md)]
-
-若要查看部署相关的错误，请使用以下步骤：
-
-1. 通过在门户中选择“浏览”和“审核日志”来查看审核日志。
-
-    ![选择审核日志](./media/resource-manager-troubleshoot-deployments-portal/select-audit-logs.png)
-
-2. 在“审核日志”边栏选项卡中，你将看到订阅中所有资源组的最新操作摘要。其中包括表示操作的时间与状态的图形，以及操作的列表。
-
-    ![显示操作](./media/resource-manager-troubleshoot-deployments-portal/audit-summary.png)
-
-3. 你可以在列表中选择任意操作。选择包含你要调查的错误的操作。
-
-    ![选择操作](./media/resource-manager-troubleshoot-deployments-portal/select-operation.png)
-  
-4. 你将看到该操作的所有事件。请注意摘要中的**相关性 ID**。此 ID 用于跟踪相关的事件。与技术支持人员合作排查问题时，此 ID 非常有用。你可以选择任一事件，以查看有关该事件的详细信息。
-
-    ![选择事件](./media/resource-manager-troubleshoot-deployments-portal/select-event.png)
-
-5. 你将看到有关事件的详细信息。请特别注意“属性”，其中提供了有关错误的信息。
-
-    ![显示审核日志详细信息](./media/resource-manager-troubleshoot-deployments-portal/audit-details.png)
-
-你可以筛选审核日志的视图，以便重点关注特定的条件。若要自定义审核日志的视图，请执行以下操作：
-
-1. 选择“审核日志”边栏选项卡顶部的“筛选”。
-
-    ![筛选日志](./media/resource-manager-troubleshoot-deployments-portal/filter-logs.png)
-
-2. 从“筛选”边栏选项卡中选择条件，以将审核日志的视图限制为你要查看的操作。例如，你可以筛选操作，以便只显示特定资源组的错误。
-
-    ![设置筛选选项](./media/resource-manager-troubleshoot-deployments-portal/set-filter.png)
-
-3. 你可以设置时间跨度以进一步筛选操作。下图将视图筛选为包含特定的 20 分钟时间跨度的信息。
-
-    ![设置时间](./media/resource-manager-troubleshoot-deployments-portal/select-time.png)
-
-更新审核日志的视图之后，你只会看到符合指定条件的操作。下次你查看审核日志时，这些设置仍会保留，因此可能需要更改这些值才能扩展操作视图。
-
-你很有可能会找出部署失败的原因。你也可以查看部署操作以获取状态信息，如下部分中所示。
+[AZURE.INCLUDE [resource-manager-troubleshoot-introduction](../includes/resource-manager-troubleshoot-introduction.md)]
 
 ## 使用部署操作进行故障排除
 
@@ -83,19 +37,70 @@
 
     ![部署状态](./media/resource-manager-troubleshoot-deployments-portal/select-deployment.png)
 
-3. 查看有关部署的信息，然后选择失败的操作以查看有关错误的详细信息。
+3. 选择“失败”**。单击此处查看详细信息**以查看部署失败的原因的说明。在下图中，DNS 记录不是唯一的。
 
-    ![查看失败的部署](./media/resource-manager-troubleshoot-deployments-portal/view-failed-deployment.png)
+    ![查看失败的部署](./media/resource-manager-troubleshoot-deployments-portal/view-error.png)
 
-4. 在“操作详细信息”边栏选项卡中，你将看到有关操作失败的信息。请特别注意状态消息。
+    此错误消息应足够让你可以开始进行故障排除。但是，如果你需要有关完成了哪些任务的更多详细信息，可以查看操作，如下面的步骤所示。
 
-    ![查看状态消息](./media/resource-manager-troubleshoot-deployments-portal/operations-status.png)
+4. 可以在“部署”边栏选项卡中查看所有部署操作。选择任何操作，以查看更多详细信息。
 
+    ![查看操作](./media/resource-manager-troubleshoot-deployments-portal/view-operations.png)
 
+    在此示例中，你会看到已成功创建存储帐户、虚拟网络和可用性集。公共 IP 地址失败，未尝试其他资源。
+
+5. 可以通过选择“事件”查看部署的事件。
+
+    ![查看事件](./media/resource-manager-troubleshoot-deployments-portal/view-events.png)
+
+6. 查看部署的所有事件，并选择任何事件以了解更多详细信息。
+
+    ![查看事件](./media/resource-manager-troubleshoot-deployments-portal/see-all-events.png)
+
+## 使用审核日志进行故障排除
+
+[AZURE.INCLUDE [resource-manager-audit-limitations](../includes/resource-manager-audit-limitations.md)]
+
+若要查看部署相关的错误，请使用以下步骤：
+
+1. 通过选择“审核日志”查看资源组的审核日志。
+
+    ![选择审核日志](./media/resource-manager-troubleshoot-deployments-portal/select-audit-logs.png)
+
+2. 在“审核日志”边栏选项卡中，你将看到订阅中所有资源组的最新操作摘要。其中包括表示操作的时间与状态的图形，以及操作的列表。
+
+    ![显示操作](./media/resource-manager-troubleshoot-deployments-portal/audit-summary.png)
+
+3. 你可以筛选审核日志的视图，以便重点关注特定的条件。选择“审核日志”边栏选项卡顶部的“筛选”。
+
+    ![筛选日志](./media/resource-manager-troubleshoot-deployments-portal/filter-logs.png)
+
+4. 从“筛选”边栏选项卡中选择条件，以将审核日志的视图限制为你要查看的操作。例如，你可以筛选操作，以便只显示资源组的错误。
+
+    ![设置筛选选项](./media/resource-manager-troubleshoot-deployments-portal/set-filter.png)
+
+5. 你可以设置时间跨度以进一步筛选操作。下图将视图筛选为包含特定的 20 分钟时间跨度的信息。
+
+    ![设置时间](./media/resource-manager-troubleshoot-deployments-portal/select-time.png)
+
+6. 你可以在列表中选择任意操作。选择包含你要调查的错误的操作。
+
+    ![选择操作](./media/resource-manager-troubleshoot-deployments-portal/select-operation.png)
+  
+7. 你将看到该操作的所有事件。请注意摘要中的**相关 ID**。此 ID 用于跟踪相关的事件。与技术支持人员合作排查问题时，此 ID 非常有用。你可以选择任一事件，以查看有关该事件的详细信息。
+
+    ![选择事件](./media/resource-manager-troubleshoot-deployments-portal/select-event.png)
+
+8. 你将看到有关事件的详细信息。请特别注意“属性”，其中提供了有关错误的信息。
+
+    ![显示审核日志详细信息](./media/resource-manager-troubleshoot-deployments-portal/audit-details.png)
+
+下次你查看审核日志时，应用于审核日志的筛选器将会保留，因此可能需要更改这些值才能扩展操作视图。
 
 ## 后续步骤
 
-- 若要了解如何使用审核日志来监视其他类型的操作，请参阅 [Audit operations with Resource Manager（使用资源管理器执行审核操作）](/documentation/articles/resource-group-audit)。
+- 有关解决特定部署错误的帮助，请参阅 [Resolve common errors when deploying resources to Azure with Azure Resource Manager（解决使用 Azure Resource Manager 将资源部署到 Azure 时的常见错误）](/documentation/articles/resource-manager-common-deployment-errors.md)。
+- 若要了解如何使用审核日志来监视其他类型的操作，请参阅 [Audit operations with Resource Manager（使用 Resource Manager 执行审核操作）](/documentation/articles/resource-group-audit)。
 - 若要在执行部署之前验证部署，请参阅 [Deploy a resource group with Azure Resource Manager template（使用 Azure Resource Manager 模板部署资源组）](/documentation/articles/resource-group-template-deploy)。
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0711_2016-->

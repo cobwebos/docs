@@ -1,5 +1,5 @@
 <properties
-	pageTitle="通过 .NET 开始使用 Azure Blob 存储 | Azure"
+	pageTitle="通过 .NET 开始使用 Azure Blob 存储（对象存储）| Azure"
 	description="使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
 	services="storage"
 	documentationCenter=".net"
@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="04/25/2016"
+	ms.date="06/09/2016"
 	wacn.date=""/>
 
 
@@ -363,7 +363,7 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 Azure 存储空间支持在客户端和服务器上加密 Blob 数据：
 
 - **客户端加密**：用于 .NET 的存储客户端库支持在上传到 Azure 存储空间之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。此库还支持与 Azure 密钥保管库集成，以便管理存储帐户密钥。有关详细信息，请参阅 [Microsoft Azure 存储空间的使用 .NET 客户端加密](/documentation/articles/storage-client-side-encryption)。另请参阅[教程：在 Microsoft Azure 存储空间中使用 Azure 密钥保管库加密和解密 Blob](/documentation/articles/storage-encrypt-decrypt-blobs-key-vault)。
-- **服务器端加密**：Azure 存储空间现在支持服务器端加密。请参阅[静态数据的 Azure 存储空间服务加密（预览版）](/documentation/articles/storage-service-encryption)。 
+- **服务器端加密**：Azure 存储空间现在支持服务器端加密。请参阅[静态数据的 Azure 存储空间服务加密（预览版）](/documentation/articles/storage-service-encryption)。
 
 ## 后续步骤
 
@@ -391,4 +391,4 @@ Azure 存储空间支持在客户端和服务器上加密 Blob 数据：
   [.NET client library reference]: https://msdn.microsoft.com/zh-cn/library/mt347887.aspx
   [REST API reference]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
  
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0711_2016-->

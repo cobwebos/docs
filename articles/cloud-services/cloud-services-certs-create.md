@@ -47,16 +47,21 @@ Azure 使用的证书可以包含一个私钥或公钥。证书具有指纹，�
 * 使用者名称必须与用于访问云服务的域匹配。
     > 你无法获取 chinacloudapp.cn 域（或与 Azure 相关的任何域）的 SSL 证书；该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。例如，**contoso.net**，而不是 **contoso.chinacloudapp.cn**。
 * 至少为 2048 位加密。
-* **仅服务证书**：客户端证书必须驻留在个人证书存储区。
+* **仅服务证书**：客户端证书必须驻留在*个人*证书存储区。
 
 有两种简单的方法可在 Windows 上创建证书，即使用 `makecert.exe` 实用程序或 IIS。
 
 ### Makecert.exe
 
-此实用程序随 Visual Studio 2013/2015 一并安装。它是一个控制台实用程序，可允许你创建和安装证书。如果你启动在安装 Visual Studio 时创建的 **VS2015 开发人员命令提示符**快捷方式，将出现命令提示符，提示在路径中加入此工具。
+此实用工具已弃用，此处不再进行记录。有关详细信息，请参阅[此 MSDN 文章](https://msdn.microsoft.com/zh-cn/library/windows/desktop/aa386968)。
 
-    makecert -sky exchange -r -n "CN=[CertificateName]" -pe -a sha1 -len 2048 -ss My -sv [CertificateName].pvk [CertificateName].cer
+### PowerShell
 
+```
+$cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My"
+$password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
+Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
+```
 
 ### Internet 信息服务 (IIS)
 
@@ -76,4 +81,4 @@ Azure 使用的证书可以包含一个私钥或公钥。证书具有指纹，�
 
 >[AZURE.NOTE] Azure 门户不使用管理证书来访问 API，而是使用用户帐户。
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0711_2016-->

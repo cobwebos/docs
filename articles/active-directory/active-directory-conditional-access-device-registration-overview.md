@@ -59,7 +59,7 @@ Windows 7 和 Windows 8.1 设备将通过组合使用用户帐户名称和已知
 必须创建一条 DNS CNAME 记录，该记录指向与你的 Azure Active Directory 设备注册服务关联的 A 记录。该 CNAME 记录必须使用已知的前缀 enterpriseregistration，后接组织中的用户帐户使用的 UPN 后缀。如果你的组织使用了多个 UPN 后缀，则必须在 DNS 中创建多条 CNAME 记录。
 
 例如，如果你在组织中使用名为 @contoso.com 和 @region.contoso.com 的两个 UPN 后缀，则需创建以下 DNS 记录。
- 
+
 | 条目 | 类型 | 地址 |
 |-------------------------------------------|-------|------------------------------------|
 | enterpriseregistration.contoso.com | CNAME | enterpriseregistration.windows.net |
@@ -84,4 +84,4 @@ Windows 7 和 Windows 8.1 设备将通过组合使用用户帐户名称和已知
 - [为加入 Windows 8.1 域的设备配置自动设备注册](/documentation/articles/active-directory-conditional-access-automatic-device-registration-windows-8-1)
 - [将已加入域的 Windows 10 设备自动注册到 Azure Active Directory](/documentation/articles/active-directory-azureadjoin-devices-group-policy)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0711_2016-->

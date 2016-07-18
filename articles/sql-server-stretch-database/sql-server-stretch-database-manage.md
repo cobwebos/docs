@@ -81,8 +81,8 @@
  若要更改所有用户进行的所有查询的范围，请运行存储过程 **sys.sp\_rda\_set\_query\_mode**。你可以将范围缩小到仅查询本地数据、禁用所有查询，或还原默认设置。有关详细信息，请参阅 [sys.sp\_rda\_set\_query\_mode](https://msdn.microsoft.com/zh-cn/library/mt703715.aspx)。
 
 ### <a name="queryHints"></a>更改管理员进行的单个查询的范围  
- 若要更改 db\_owner 角色的成员进行的单个查询的范围，请将 **WITH ( REMOTE\_DATA\_ARCHIVE\_OVERRIDE = *value* )** 查询提示添加到 SELECT 语句。REMOTE\_DATA\_ARCHIVE\_OVERRIDE 查询提示可具有以下值。
- -   **LOCAL\_ONLY**。仅查询本地数据。  
+ 若要更改 db\_owner 角色的成员进行的单个查询的范围，请将 **WITH ( REMOTE\_DATA\_ARCHIVE\_OVERRIDE = value )** 查询提示添加到 SELECT 语句。REMOTE\_DATA\_ARCHIVE\_OVERRIDE 查询提示可具有以下值。
+ -   **LOCAL\_ONLY**。仅查询本地数据。
 
  -   **REMOTE\_ONLY**。仅查询远程数据。
 
@@ -93,8 +93,8 @@
     SELECT * FROM Stretch_enabled_table WITH (REMOTE_DATA_ARCHIVE_OVERRIDE = LOCAL_ONLY) WHERE ...  
 
 ## <a name="adminHints"></a>进行管理更新和删除操作  
- 默认情况下，在启用了延伸的表中不能“更新”或“删除”可进行迁移的行或已迁移的行。当你遇到必须解决的问题时，db\_owner 角色的成员可以通过将 **WITH ( REMOTE\_DATA\_ARCHIVE\_OVERRIDE = *value* )** 查询提示添加到语句来运行“更新”或“删除”操作。REMOTE\_DATA\_ARCHIVE\_OVERRIDE 查询提示可具有以下值。
- -   **LOCAL\_ONLY**。仅更新或删除本地数据。  
+ 默认情况下，在启用了延伸的表中不能“更新”或“删除”可进行迁移的行或已迁移的行。当你遇到必须解决的问题时，db\_owner 角色的成员可以通过将 **WITH ( REMOTE\_DATA\_ARCHIVE\_OVERRIDE = value )** 查询提示添加到语句来运行“更新”或“删除”操作。REMOTE\_DATA\_ARCHIVE\_OVERRIDE 查询提示可具有以下值。
+ -   **LOCAL\_ONLY**。仅更新或删除本地数据。
 
  -   **REMOTE\_ONLY**。仅更新或删除远程数据。
 
@@ -108,4 +108,4 @@
 
 [还原已启用延伸的数据库](/documentation/articles/sql-server-stretch-database-restore)
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0711_2016-->

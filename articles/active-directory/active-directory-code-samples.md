@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="02/09/2016"
+   ms.date="05/16/2016"
    wacn.date=""/>
 
 # Azure Active Directory 代码示例
@@ -148,4 +148,4 @@ PHP | [Azure AD 图形 API 的 PHP 示例应用](http://code.msdn.microsoft.com/
 [Azure AD Graph API 帮助程序库](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
 
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0711_2016-->

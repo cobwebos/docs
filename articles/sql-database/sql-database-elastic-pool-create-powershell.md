@@ -9,12 +9,13 @@
 
 <tags
     ms.service="sql-database"
-    ms.date="04/28/2016"
+    ms.date="05/27/2016"
     wacn.date="05/23/2016"/>
 
 # 使用 PowerShell 创建新的弹性数据库池
 
 > [AZURE.SELECTOR]
+- [Azure 门户](/documentation/articles/sql-database-elastic-pool-create-portal)
 - [PowerShell](/documentation/articles/sql-database-elastic-pool-create-powershell)
 - [C#](/documentation/articles/sql-database-elastic-pool-create-csharp)
 
@@ -72,8 +73,8 @@
 ## 后续步骤
 
 - [管理你的池](/documentation/articles/sql-database-elastic-pool-manage-powershell)
-- [创建弹性作业](/documentation/articles/sql-database-elastic-jobs-overview)弹性作业可以根据池中数据库的数量来运行 T-SQL 脚本。
+- [创建弹性作业](/documentation/articles/sql-database-elastic-jobs-overview)弹性作业可以根据池中数据库的数目来运行 T-SQL 脚本。
 - [使用 Azure SQL 数据库扩展](/documentation/articles/sql-database-elastic-scale-introduction)：使用弹性数据库工具扩展。
 
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0711_2016-->

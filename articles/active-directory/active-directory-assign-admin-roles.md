@@ -24,7 +24,11 @@
 
 - **全局管理员**：有权访问所有管理功能。注册 Azure 帐户的人员将成为全局管理员。只有全局管理员才能分配其他管理员角色。你的公司中可以有多个全局管理员。
 
+	> [AZURE.NOTE] 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“公司管理员”。
+
 - **密码管理员**：重置密码、管理服务请求并监视服务运行状况。密码管理员只能为用户和其他密码管理员重置密码。
+
+	> [AZURE.NOTE] 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“支持管理员”。
 
 - **服务管理员**：管理服务请求并监视服务运行状况。
 
@@ -98,4 +102,4 @@
 
 - [管理组](/documentation/articles/active-directory-manage-groups)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0711_2016-->

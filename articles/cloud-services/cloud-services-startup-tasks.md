@@ -1,5 +1,5 @@
 <properties 
-pageTitle="在 Azure 云服务中运行启动任务 | Microsoft Azure" 
+pageTitle="在 Azure 云服务中运行启动任务 | Azure" 
 description="启动任务可帮助为你的应用准备云服务环境。这将讲授启动任务的工作方式以及如何生成启动任务" 
 services="cloud-services" 
 documentationCenter="" 
@@ -8,8 +8,7 @@ manager="timlt"
 editor=""/>
 <tags 
 ms.service="cloud-services" 
-
-ms.date="12/07/2015" 
+ms.date="06/07/2016" 
 wacn.date=""/>
 
 
@@ -18,7 +17,7 @@ wacn.date=""/>
 
 在角色启动之前，可以使用启动任务执行操作。你可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。
 
->[AZURE.NOTE]启动任务不适用于虚拟机，只适用于云服务 Web 角色和辅助角色。
+>[AZURE.NOTE] 启动任务不适用于虚拟机，只适用于云服务 Web 角色和辅助角色。
 
 ## 启动任务的工作方式
 
@@ -26,7 +25,7 @@ wacn.date=""/>
 
 环境变量将信息传递给启动任务，而本地存储可用于从启动任务中传出信息。例如，环境变量可以指定你要安装的程序的路径，并可以将文件写入到本地存储，然后你的角色可以稍后读取这些文件。
 
-启动任务可以将信息和错误记录到 **TEMP** 环境变量指定的目录。在云中运行时，在启动任务期间，**TEMP** 环境变量将解析为 *C:\\Resources\\temp\\[guid].[rolename]\\RoleTemp* 目录。
+启动任务可以将信息和错误记录到 **TEMP** 环境变量指定的目录。在云中运行时，在启动任务期间，**TEMP** 环境变量将解析为 C:\\Resources\\temp\\[guid].[rolename]\\RoleTemp 目录。
 
 此外，启动任务还可以在重新启动之间执行多次。例如，每次角色回收时都会运行启动任务，但角色回收可能并非始终包括重新启动。应以这样的方式编写启动任务：使其能够多次运行而不会出现问题。
 
@@ -41,9 +40,9 @@ wacn.date=""/>
 
 2. 所有启动任务均根据其 **taskType** 属性执行。
     - **simple** 任务以同步方式执行（一次一个任务）。
-    - **background** 和 **foreground** 任务与启动任务并行，以异步方式启动。  
+    - **background** 和 **foreground** 任务与启动任务并行，以异步方式启动。
        
-    > [AZURE.WARNING]在启动过程中的启动任务阶段，IIS 可能未完全配置，因此角色特定的数据可能不可用。需要角色特定的数据的启动任务应使用 [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx)。
+    > [AZURE.WARNING] 在启动过程中的启动任务阶段，IIS 可能未完全配置，因此角色特定的数据可能不可用。需要角色特定的数据的启动任务应使用 [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx)。
 
 3. 将启动角色主机进程并在 IIS 中创建站点。
 
@@ -79,7 +78,7 @@ ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
 EXIT /B 0
 ```
 
-> [AZURE.NOTE]在 Visual Studio 中，启动批处理文件的“复制到输出目录”属性应设为“始终复制”，以确保将启动批处理文件正确地部署到 Azure 上你的项目（对于 Web 角色，为 **approot\\bin**；对于辅助角色，为 **approot**）。
+> [AZURE.NOTE] 在 Visual Studio 中，启动批处理文件的“复制到输出目录”属性应设为“始终复制”，以确保将启动批处理文件正确地部署到 Azure 上你的项目（对于 Web 角色，为 **approot\\bin**；对于辅助角色，为 **approot**）。
 
 ## 任务属性的说明
 
@@ -100,14 +99,14 @@ EXIT /B 0
 - **elevated**  
 启动任务以管理员特权运行。这将允许启动任务安装程序、更改 IIS 配置、执行注册表更改和其他管理员级别任务，而不会提高角色本身的权限级别。
 
-> [AZURE.NOTE]启动任务的权限级别不需要与角色本身相同。
+> [AZURE.NOTE] 启动任务的权限级别不需要与角色本身相同。
 
 **taskType** - 指定启动任务的执行方式。
 
 - **simple**  
-任务按照 [ServiceDefinition.csdef] 文件中指定的顺序一次一个地以同步方式执行。当一个 **simple** 启动任务以为零的 **errorlevel** 结束时，将执行下一个 **simple** 启动任务。如果没有更多 **simple** 启动任务要执行，则将启动角色本身。   
+任务按照 [ServiceDefinition.csdef] 文件中指定的顺序一次一个地以同步方式执行。当一个 **simple** 启动任务以为零的 **errorlevel** 结束时，将执行下一个 **simple** 启动任务。如果没有更多 **simple** 启动任务要执行，则将启动角色本身。
 
-    > [AZURE.NOTE]如果 **simple** 任务以非零 **errorlevel** 结束，则将阻止该实例。后续 **simple** 启动任务和角色本身将不会启动。
+    > [AZURE.NOTE] 如果 **simple** 任务以非零 **errorlevel** 结束，则将阻止该实例。后续 **simple** 启动任务和角色本身将不会启动。
 
     若要确保你的批处理文件以为零的 **errorlevel** 结束，请在在批处理文件进程结束时执行命令 `EXIT /B 0`。
 
@@ -125,7 +124,7 @@ EXIT /B 0
 
 静态环境变量使用 [Variable] 元素的 **value** 属性。上面的示例创建了环境变量 **MyVersionNumber**，该变量具有静态值 **1.0.0.0**。另一个示例就是创建 **StagingOrProduction** 环境变量，你可以手动将该变量设置为值 **staging** 或 **production**，以根据 **StagingOrProduction** 环境变量的值执行不同的启动操作。
 
-基于 RoleEnvironment 类的成员的环境变量不使用 [Variable] 元素的 **value** 属性。而是使用具有相应 **xPath** 属性值的 [RoleInstanceValue] 子元素基于 [RoleEnvironment] 类的特定成员创建环境变量。用于访问各种 [RoleEnvironment] 值的 **xPath** 属性的值可以在 [Azure 中的 xPath 值](https://msdn.microsoft.com/zh-cn/library/azure/hh404006.aspx)中找到。
+基于 RoleEnvironment 类的成员的环境变量不使用 [Variable] 元素的 **value** 属性。而是使用具有相应 **XPath** 属性值的 [RoleInstanceValue] 子元素基于 [RoleEnvironment] 类的特定成员创建环境变量。用于访问各种 [RoleEnvironment] 值的 **XPath** 属性的值可以在[此处](/documentation/articles/cloud-services-role-config-xpath)找到。
 
 
 
@@ -164,5 +163,4 @@ EXIT /B 0
 [Variable]: https://msdn.microsoft.com/zh-cn/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/zh-cn/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0711_2016-->

@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="05/04/2016"
+   ms.date="06/13/2016"
    wacn.date=""/>
 # 在 Azure SQL 数据仓库中管理数据库
 
@@ -84,25 +84,7 @@ DMV 是管理 SQL 数据仓库的必备工具。在门户中显示的所有信�
 
 ## 备份和还原
 
-有两种方法可恢复数据库。如果你的数据库中有一些数据已损坏或出了错，你可以还原数据库快照。如果因区域停电或灾难而呈现出某一区域不可用，你可以在另一区域中重新创建数据库。
-
-SQL 数据仓库会自动每隔一定时间备份你的数据库。有关数据备份计划和保留策略，请参阅[高可靠性][]。
-
-### 异地冗余存储
-
-由于 SQL 数据仓库会隔离计算和存储，因此所有数据将直接写入异地冗余的 Azure 存储空间 (RA-GRS)。地域冗余存储将数据复制到距主区域数百英里以外的辅助区域。在主要区域和次要区域，你的数据将分别复制到次要区域三次，并且是在不同的容错域和升级域之间复制。即使其中一个区域发生全区域性的停电或灾难，造成服务中断，也仍可确保数据的持久性。若要了解有关读取访问权限异地冗余存储的详细信息，请参阅 [Azure 存储冗余选项][]。
-
-### 数据库还原
-
-数据库点还原旨在将数据库还原到以前的某个时间点。SQL 数据仓库服务至少每隔 8 小时使用自动存储快照来保护所有数据库，并将快照保留 7 天，为你提供一组离散的还原点。这些备份存储在 RA-GRS Azure 存储空间中，因此，默认情况下是异地冗余的。自动备份和还原功能不收取额外的费用，提供零成本和免管理的方式来避免数据库遭到意外损坏或删除。
-
-若要详细了解数据库还原，请直接访问 [Restore from snapshot（从快照还原）][]。
-
-### 异地还原
-
-在由于发生中断性事件而使数据库不可用时，异地还原可以恢复数据库。你可以联系支持人员，以便从异地冗余的备份还原数据库，并在任一 Azure 区域中创建新数据库。由于备份是异地冗余的，即使由于停电而无法访问数据库，也能够使用备份来恢复数据库。异地还原功能不收取额外的费用。
-
-若要使用异地还原，请直接访问 [Geo-restore from snapshot（从快照异地还原）][]。
+创建数据的可靠备份是任何生产数据库必不可少的组成部分。SQL 数据仓库可通过定期自动备份活动数据库来使数据保持安全。通过这些备份可以从损坏了数据或是意外删除了数据或数据库的情形中恢复。有关数据备份计划、保留策略以及如何还原数据库，请参阅[从快照还原][]。
 
 ## 后续步骤
 使用好的数据库设计原则可更轻松地在 SQL 数据仓库中管理数据库。若要了解详细信息，请直接访问[开发概述][]。
@@ -110,18 +92,15 @@ SQL 数据仓库会自动每隔一定时间备份你的数据库。有关数据�
 <!--Image references-->
 
 <!--Article references-->
-[Azure 存储冗余选项]: /documentation/articles/storage-redundancy#read-access-geo-redundant-storage
 [创建 SQL 数据仓库（Azure 门户）]: /documentation/articles/sql-data-warehouse-get-started-provision
 [Create a database (PowerShell)（创建数据库 (PowerShell)）]: /documentation/articles/sql-data-warehouse-get-started-provision-powershell
 [connection]: /documentation/articles/sql-data-warehouse-develop-connections
 [使用 Visual Studio 连接到 Azure SQL 数据仓库]: /documentation/articles/sql-data-warehouse-get-started-connect
 [Connect and query with sqlcmd（使用 sqlcmd 进行连接和查询）]: /documentation/articles/sql-data-warehouse-get-started-connect-sqlcmd
 [开发概述]: /documentation/articles/sql-data-warehouse-overview-development
-[Geo-restore from snapshot（从快照异地还原）]: /documentation/articles/sql-data-warehouse-backup-and-geo-restore-from-snapshot
-[高可靠性]: /documentation/articles/sql-data-warehouse-overview-expectations#high-reliability
 [Monitor your workload using DMVs（使用 DMV 监视工作负荷）]: /documentation/articles/sql-data-warehouse-manage-monitor
 [暂停计算]: /documentation/articles/sql-data-warehouse-overview-scalability#pause-compute-bk
-[Restore from snapshot（从快照还原）]: /documentation/articles/sql-data-warehouse-backup-and-restore-from-snapshot
+[从快照还原]: /documentation/articles/sql-data-warehouse-backup-and-restore-from-snapshot
 [恢复计算]: /documentation/articles/sql-data-warehouse-overview-scalability#resume-compute-performance-bk
 [缩放性能]: /documentation/articles/sql-data-warehouse-overview-scalability#scale-performance-bk
 [安全性概述]: /documentation/articles/sql-data-warehouse-overview-security
@@ -133,4 +112,4 @@ SQL 数据仓库会自动每隔一定时间备份你的数据库。有关数据�
 
 <!--Other web references-->
 [Azure 门户]: https://manage.windowsazure.cn
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0711_2016-->

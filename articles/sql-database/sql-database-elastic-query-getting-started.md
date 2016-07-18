@@ -1,21 +1,24 @@
 <properties
-	pageTitle="用于分片的弹性查询（水平分区）入门 | Microsoft Azure"
+	pageTitle="跨扩展云数据库（横向分区）进行报告 | Azure"
 	description="如何使用跨数据库数据库查询"
 	services="sql-database"
 	documentationCenter=""  
-	manager="jeffreyg"
+	manager="jhubbard"
 	authors="sidneyh"/>
 
 <tags
 	ms.service="sql-database"
-	ms.date="01/22/2016"
-	wacn.date="" />
+	ms.date="05/23/2016"
+	wacn.date="06/01/2016" />
 
-# 用于分片的弹性查询（水平分区）入门
+# 跨扩展云数据库进行报告（预览）
 
-Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连接点运行跨多个数据库的 T-SQL 查询。有关弹性数据库查询功能的详细信息，请参阅[功能概述页](/documentation/articles/sql-database-elastic-query-overview)。
+你可以使用[弹性查询](/documentation/articles/sql-database-elastic-query-overview)从单个连接点中的多个 Azure SQL 数据库中创建报告。数据库必须进行横向分区（也称为“分片”）。
 
-本主题对[弹性数据库工具入门](/documentation/articles/sql-database-elastic-scale-get-started)中的示例做了延伸。完成时，你将会：了解如何配置和使用 Azure SQL 数据库执行跨多个相关数据库的查询。
+如果有现有的数据库，请参阅 [Migrating existing databases to scaled-out databases（将现有数据库迁移到扩展数据库）](/documentation/articles/sql-database-elastic-convert-to-use-elastic-tools)。
+
+若要了解需要查询的 SQL 对象，请参阅 [Query across horizontally partitioned databases（跨横向分区的数据库进行查询）](/documentation/articles/sql-database-elastic-query-horizontal-partitioning)。
+
 ## 先决条件
 
 下载并运行[弹性数据库工具示例入门](/documentation/articles/sql-database-elastic-scale-get-started)。
@@ -24,12 +27,12 @@ Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连�
 
 在此处，你将创建分片映射管理器以及多个分片，然后将数据插入分片。如果你的分片中正好设置了分片数据，则你可以跳过下面的步骤，直接转到下一部分。
 
-1. 生成并运行**弹性数据库工具入门**示例应用程序。一直执行到[下载和运行示例应用](/documentation/articles/sql-database-elastic-scale-get-started/#Getting-started-with-elastic-database-tools)部分中的步骤 7。在步骤 7 结束时，你将看到以下命令提示符：
+1. 生成并运行**弹性数据库工具入门**示例应用程序。一直执行到[下载和运行示例应用](/documentation/articles/sql-database-elastic-scale-get-started#Getting-started-with-elastic-database-tools)部分中的步骤 7。在步骤 7 结束时，你将看到以下命令提示符：
 
 	![命令提示符][1]
 
 2.  在命令窗口中键入“1”，然后按 **Enter**。这会创建分片映射管理器，并将两个分片添加到服务器。然后键入“3”并按 **Enter**；重复该操作四次。这会在你的分片中插入示例数据行。
-3.  [Azure 门户](https://manage.windowsazure.cn)应会在 v12 服务器中显示三个新的数据库：
+3.  [Azure 门户](https://portal.azure.cn)会在 v12 服务器中显示三个新的数据库：
 
 	![Visual Studio 确认][2]
 
@@ -39,7 +42,7 @@ Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连�
 
 ## 创建弹性查询数据库
 
-1. 打开 [Azure 门户](https://manage.windowsazure.cn)并登录。
+1. 打开 [Azure 门户](https://portal.azure.cn)并登录。
 2. 在与分片设置相同的服务器中创建新的 Azure SQL 数据库。将数据库命名为“ElasticDBQuery”。
 
 	![Azure 门户和定价层][3]
@@ -138,4 +141,4 @@ Azure SQL 数据库弹性数据库查询（预览版）可让你使用单一连�
 [5]: ./media/sql-database-elastic-query-getting-started/exel-sources.png
 <!--anchors-->
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0711_2016-->

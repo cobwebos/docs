@@ -29,14 +29,14 @@
 
 密码同步可通过将用户需要维护的密码数目减少到只剩一个，帮助你：
 
-- 提升用户的生产力 
-- 减少技术服务相关的成本  
+- 提升用户的生产力
+- 减少技术服务相关的成本
 
 此外，如果你选择使用[**使用 AD FS 进行联合身份验证**](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect)，则可以选择性地启用密码同步作为在 AD FS 基础结构发生故障时的备用身份验证方式。
 
 密码同步是由 Azure AD Connect Sync 实现的目录同步功能的扩展。若要在环境中使用密码同步，需要：
 
-- 安装 Azure AD Connect  
+- 安装 Azure AD Connect
 
 - 配置本地 AD 与 Azure Active Directory 之间的目录同步
 
@@ -59,9 +59,11 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 首次启用密码同步功能时，它将对范围内的所有用户执行初始密码同步。你无法显式定义一部分要同步的用户密码。
 
-当你更改本地密码时，更新后的密码将会同步，此操作基本上在几分钟内就可完成。密码同步功能会自动重试失败的同步尝试。如果尝试同步密码期间出现错误，该错误会被记录在事件查看器中。
+当你更改本地密码时，更新后的密码将会同步，此操作基本上在几分钟内就可完成。
+密码同步功能会自动重试失败的同步尝试。如果尝试同步密码期间出现错误，该错误会被记录在事件查看器中。
 
-同步密码对当前登录的用户没有任何影响。当前的云服务会话不会立即受到已同步密码更改的影响，而是在你登录云服务时才受到影响。但是，当云服务要求你再次身份验证时，就需要提供新的密码。
+同步密码对当前登录的用户没有任何影响。
+当前的云服务会话不会立即受到已同步密码更改的影响，而是在你登录云服务时才受到影响。但是，当云服务要求你再次身份验证时，就需要提供新的密码。
 
 > [AZURE.NOTE] 只有 Active Directory 的对象类型用户才支持密码同步。不支持 iNetOrgPerson 对象类型。
 
@@ -91,7 +93,8 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 **密码过期策略**
 
-如果用户属于密码同步的范围，云帐户密码则设置为“永不过期”。你可以继续使用已在本地环境中过期的同步密码来登录云服务。下次当你在本地环境中更改密码时，云密码将会更新。
+如果用户属于密码同步的范围，云帐户密码则设置为“永不过期”。
+你可以继续使用已在本地环境中过期的同步密码来登录云服务。下次当你在本地环境中更改密码时，云密码将会更新。
 
 ### 覆盖已同步的密码
 
@@ -127,8 +130,8 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 1. 转到 **%programfiles%\\Azure AD Sync\\Bin**。
 2. 打开 **miiserver.exe.config**。
-2. 转到 **configuration/runtime** 节点（位于文件末尾）。 
-3. 添加以下节点：**<enforceFIPSPolicy enabled="false"/>** 
+2. 转到 **configuration/runtime** 节点（位于文件末尾）。
+3. 添加以下节点：**<enforceFIPSPolicy enabled="false"/>**
 4. 保存所做更改。
 
 有关安全性与 FIPS 的信息，请参阅 [AAD Password Sync, Encryption and FIPS compliance（AAD 密码同步、加密和 FIPS 合规性）](http://blogs.technet.com/b/ad/archive/2014/06/28/aad-password-sync-encryption-and-and-fips-compliance.aspx)
@@ -143,11 +146,11 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
 1. 启动**[同步服务管理器](active-directory-aadconnectsync-service-manager-ui.md)**。
 
-2. 单击“连接器”
+2. 单击“连接器”。
 
-3. 选择用户所在的 Active Directory 连接器
+3. 选择用户所在的 **Active Directory 连接器**。
 
-4. 选择“搜索连接器空间”
+4. 选择“搜索连接器空间”。
 
 5. 找到你要查找的用户。
 
@@ -155,11 +158,11 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 
     ![有关用户的沿袭信息](./media/active-directory-aadconnectsync-implement-password-synchronization/cspasswordsync.png)
 
-7. 此外，你应该在 Azure AD 连接器空间中通过 Metaverse [跟踪用户](active-directory-aadconnectsync-service-manager-ui-connectors.md#follow-an-object-and-its-data-through-the-system)。连接器空间对象应存在一个“密码同步”设置为 **True** 的出站规则。在默认配置中，同步规则的名称为 **Out to AAD - User Join**。
+7. 此外，你应该从 Metaverse 到 Azure AD 连接器空间一直[跟踪用户](active-directory-aadconnectsync-service-manager-ui-connectors.md#follow-an-object-and-its-data-through-the-system)。连接器空间对象应存在一个“密码同步”设置为 **True** 的出站规则。在默认配置中，同步规则的名称为 **Out to AAD - User Join**。
 
     ![用户的连接器空间属性](./media/active-directory-aadconnectsync-implement-password-synchronization/cspasswordsync2.png)
 
-8. 若要查看对象在过去一周的密码同步详细信息，请单击“日志...”按钮。
+8. 若要查看对象在过去一周的密码同步详细信息，请单击“日志...”。
 
     ![对象日志详细信息](./media/active-directory-aadconnectsync-implement-password-synchronization/csobjectlog.png)
 
@@ -201,4 +204,4 @@ Active Directory 域服务以实际用户密码的哈希值表示形式存储密
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0711_2016-->

@@ -1,30 +1,26 @@
 <properties
-   pageTitle="对无法启动的角色进行故障排除 | Microsoft Azure"
+   pageTitle="对无法启动的角色进行故障排除 | Azure"
    description="以下是云服务角色无法启动的一些常见原因。此外还提供了这些问题的解决方案。"
    services="cloud-services"
    documentationCenter=""
-   authors="dalechen"
+   authors="simonxjx"
    manager="felixwu"
    editor=""
    tags="top-support-issue"/>
 <tags
    ms.service="cloud-services"
-   ms.date="01/20/2016"
+   ms.date="06/03/2016"
    wacn.date="" />
 
 # 对无法启动的云服务角色进行故障排除
 
 以下是一些与无法启动的 Azure 云服务角色相关的常见问题和解决方案。
 
-## 与 Azure 客户支持联系
-
-如果你对本文中的任何点需要更多帮助，可以联系 [MSDN Azure 和堆栈溢出论坛](/support/forums)上的 Azure 专家。
-
-或者，你也可以提出 Azure 支持事件。请转到 [Azure 支持站点](/support/contact)并单击“获取支持”。有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](/support/faq)。
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## 缺少 DLL 或依赖项
 
-DLL 或程序集缺失可能导致出现不响应的角色以及在“正在初始化”、“忙”、“正在停止”状态之间循环的角色。
+DLL 或程序集缺失可能导致出现不响应的角色以及在“正在初始化”、“忙”和“正在停止”状态之间循环的角色。
 
 DLL 或程序集缺失的症状可能为：
 
@@ -67,9 +63,9 @@ DLL 或程序集缺失的症状可能为：
 
 1. 确保安装了 Azure SDK 1.3 或更高版本。
 
-2. 在使用 Visual Studio 部署解决方案的过程中，选择“配置远程桌面连接...”。有关配置远程桌面连接的详细信息，请参阅[将远程桌面与 Azure 角色一起使用](https://msdn.microsoft.com/zh-cn/library/gg443832.aspx)。
+2. 在使用 Visual Studio 部署解决方案的过程中，选择“配置远程桌面连接...”。有关配置远程桌面连接的详细信息，请参阅[将远程桌面与 Azure 角色一起使用](/documentation/articles/vs-azure-tools-remote-desktop-roles)。
 
-3. 在 Microsoft Azure 经典门户中，在实例显示“就绪”状态后，请单击其中一个角色实例。
+3. 在 Azure 经典门户中，在实例显示“就绪”状态后，请单击其中一个角色实例。
 
 4. 单击功能区的“远程访问”区域中的“连接”图标。
 
@@ -99,7 +95,7 @@ DLL 或程序集缺失的症状可能为：
 
 ## 使用计算模拟器诊断问题
 
-可以使用 Microsoft Azure 计算模拟器来诊断并解决缺失依赖项和出现 web.config 错误的问题。
+可以使用 Azure 计算模拟器来诊断并解决缺失依赖项和出现 web.config 错误的问题。
 
 为了在使用此诊断方法时获得最佳结果，你应使用包含 Windows 的干净安装的计算机或虚拟机。若要以最佳效果模拟 Azure 环境，请使用 Windows Server 2008 R2 x64。
 
@@ -151,16 +147,16 @@ DLL 或程序集缺失的症状可能为：
 
 3. 单击错误中标识的程序集。
 
-4. 在“属性”窗格中，找到“复制本地”属性并将值设置为 **True**。
+4. 在“属性”窗格中，找到“复制本地属性”并将值设置为 **True**。
 
 5. 重新部署云服务。
 
-确认所有错误均已更正后，则可在不选中“为 .NET 4 角色启用 IntelliTrace”复选框的情况下部署服务。
+确认所有错误均已更正后，可以在不选中“为 .NET 4 角色启用 IntelliTrace”复选框的情况下部署服务。
 
 ## 后续步骤
 
-查看更多针对云服务的[故障排除文章](..\?tag=top-support-issue&service=cloud-services)。
+
 
 若要了解如何使用 Azure PaaS 计算机诊断数据对云服务角色问题进行故障排除，请参阅 [Kevin Williamson 博客系列](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0711_2016-->

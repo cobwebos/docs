@@ -1,5 +1,5 @@
 <properties
-	pageTitle="管理 Azure Active Directory 中的自定义域名 | Microsoft Azure"
+	pageTitle="管理 Azure Active Directory 中的自定义域名 | Azure"
 	description="用于管理 Azure Active Directory 中的自定义域的管理概念和操作指南"
 	services="active-directory"
 	documentationCenter=""
@@ -9,7 +9,6 @@
 
 <tags
 	ms.service="active-directory"
-
 	ms.date="04/20/2016"
 	wacn.date=""/>
 
@@ -77,4 +76,4 @@
 
 -   [管理自定义域名](/documentation/articles/active-directory-add-manage-domain-names)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0711_2016-->

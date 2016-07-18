@@ -1,5 +1,5 @@
 <properties
-	pageTitle="SQL In-Memory 入门 | Microsoft Azure"
+	pageTitle="SQL In-Memory 入门 | Azure"
 	description="SQL In-Memory 技术大幅提升了事务和分析工作负荷的性能。了解如何利用这些技术。"
 	services="sql-database"
 	documentationCenter=""
@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="02/11/2016"
+	ms.date="06/08/2016"
 	wacn.date=""/>
 
 
@@ -86,7 +86,7 @@ GA（正式版）：
 
 ## A.安装 In-Memory OLTP 示例
 
-在 [Azure 门户](https://manage.windowsazure.cn)中按几下鼠标，即可创建 AdventureWorksLT [V12] 示例数据库。本部分中的步骤说明如何使用以下项目扩充 AdventureWorksLT 数据库：
+在 [Azure 门户](https://portal.azure.cn/)中按几下鼠标，即可创建 AdventureWorksLT [V12] 示例数据库。本部分中的步骤说明如何使用以下项目扩充 AdventureWorksLT 数据库：
 
 - In-Memory 表。
 - 本机编译的存储过程。
@@ -94,12 +94,12 @@ GA（正式版）：
 
 #### 安装步骤
 
-1. 在 [Azure 门户](https://manage.windowsazure.cn)中，于 V12 服务器上创建一个高级数据库。将“源”设置为 AdventureWorksLT [V12] 示例数据库。
+1. 在 [Azure 门户](https://portal.azure.cn/)中，于 V12 服务器上创建一个高级数据库。将“源”设置为 AdventureWorksLT [V12] 示例数据库。
  - 有关详细指示，请参阅[创建你的第一个 Azure SQL 数据库](/documentation/articles/sql-database-get-started)。
 
 2. 使用 SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/zh-cn/library/mt238290.aspx) 连接到该数据库。
 
-3. 将 [In-Memory OLTP Transact-SQL 脚本](http://raw.githubusercontent.com/Azure/azure-sql-database-samples/master/T-SQL/In-Memory/sql_in-memory_oltp_sample.sql)复制到剪贴板。
+3. 将 [In-Memory OLTP Transact-SQL 脚本](https://raw.githubusercontent.com/Azure/azure-sql-database-samples/master/t-sql/In-Memory/sql_in-memory_oltp_sample.sql)复制到剪贴板。
  - T-SQL 脚本在步骤 1 创建的 AdventureWorksLT 示例数据库中创建所需的 In-Memory 对象。
 
 4. 将 T-SQL 脚本粘贴到 SSMS，然后执行该脚本。
@@ -225,7 +225,7 @@ end
 ```
 
 
-若要创建上述适用于 ostress.exe 的 T-SQL 的 \_ondisk 版本，只需将两处出现的 *\_inmem* 子字符串替换为 *\_ondisk*。这种替换将影响表和存储过程的名称。
+若要创建上述适用于 ostress.exe 的 T-SQL 的 \_ondisk 版本，只需将两处出现的 \_inmem 子字符串替换为 \_ondisk。这种替换将影响表和存储过程的名称。
 
 
 ### 安装 RML 实用程序和 ostress
@@ -278,7 +278,7 @@ EXECUTE Demo.usp_DemoReset;
 
 2. 将上述 ostress.exe 命令行的文本复制到剪贴板。
 
-3. 将参数 -S -U -P -d 的 <placeholders> 替换为正确的实数值。
+3. 将参数 -S -U -P -d 的 <占位符> 替换为正确的实数值。
 
 4. 在 RML Cmd 窗口中运行编辑后的命令行。
 
@@ -302,7 +302,7 @@ EXECUTE Demo.usp_DemoReset;
 EXECUTE Demo.usp_DemoReset;
 ```
 
-2. 编辑 ostress.exe 命令行，将所有的 *\_inmem* 替换为 *\_ondisk*。
+2. 编辑 ostress.exe 命令行，将所有的 \_inmem 替换为 \_ondisk。
 
 3. 再次重新运行 ostress.exe，并捕获持续时间结果。
 
@@ -340,7 +340,7 @@ EXECUTE Demo.usp_DemoReset;
  - 使用相同的名称。
  - 选择任一高级服务层。
 
-2. 将 [sql\_in-memory\_analytics\_sample](http://raw.githubusercontent.com/Azure/azure-sql-database-samples/master/T-SQL/In-Memory/sql_in-memory_analytics_sample.sql) 复制到剪贴板。
+2. 将 [sql\_in-memory\_analytics\_sample](https://raw.githubusercontent.com/Azure/azure-sql-database-samples/master/t-sql/In-Memory/sql_in-memory_analytics_sample.sql) 复制到剪贴板。
  - T-SQL 脚本在步骤 1 创建的 AdventureWorksLT 示例数据库中创建所需的 In-Memory 对象。
  - 该脚本将创建维度表和两个事实表。每个事实表中填充了 350 万行。
  - 该脚本可能需要 15 分钟才能完成。
@@ -355,7 +355,7 @@ EXECUTE Demo.usp_DemoReset;
 #### 关键表和列存储索引
 
 
-- dbo.FactResellerSalesXL\_CCI 是具有群集**列存储索引**的表，已在*数据*级别进一步压缩。
+- dbo.FactResellerSalesXL\_CCI 是具有群集**列存储索引**的表，已在数据级别进一步压缩。
 
 - dbo.FactResellerSalesXL\_PageCompressed 是具有等效常规群集索引的表，只在页面级别压缩。
 
@@ -363,7 +363,7 @@ EXECUTE Demo.usp_DemoReset;
 #### 用于比较列存储索引的关键查询
 
 
-[此处](http://raw.githubusercontent.com/Azure/azure-sql-database-samples/master/T-SQL/In-Memory/clustered_columnstore_sample_queries.sql)提供了你可以运行的用于查看性能改进情况的几种 T-SQL 查询类型。在 T-SQL 脚本的步骤 2 中，有一对直接相关的查询。这两个查询只是在一行上有所不同：
+[此处](https://raw.githubusercontent.com/Azure/azure-sql-database-samples/master/t-sql/In-Memory/clustered_columnstore_sample_queries.sql)提供了你可以运行的用于查看性能改进情况的几种 T-SQL 查询类型。在 T-SQL 脚本的步骤 2 中，有一对直接相关的查询。这两个查询只是在一行上有所不同：
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`
@@ -443,7 +443,7 @@ GO
 
 
 
-<a id="preview_considerations_for_in_memory" name="preview_considerations_for_in_memory"></a>
+<a id="preview_considerations_for_in_memory" name="preview_considerations_for_in_memory">
 
 
 ## In-Memory OLTP 预览版注意事项
@@ -452,7 +452,7 @@ GO
 Azure SQL 数据库中的 In-Memory OLTP 功能将在 [2015 年 10 月 28 日推出预览版](https://azure.microsoft.com/updates/public-preview-in-memory-oltp-and-real-time-operational-analytics-for-azure-sql-database)。
 
 
-在正式版 (GA) 发布前的预览期间，只有下述数据库支持 In-Memory OLTP：
+在最新预览版中，只能对以下数据库使用 In-Memory OLTP：
 
 - 使用高级服务层的数据库。
 
@@ -483,7 +483,11 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 #### 其他关系
 
 
-- 在预览期不支持将 In-Memory OLTP 功能用于弹性池中的数据库，但将来可能支持这种做法：
+- 在预览期不支持将 In-Memory OLTP 功能用于弹性池中的数据库。
+ - 若要将现在包含或一直包含 In-Memory OLTP 对象的数据库移到弹性池中，请按以下步骤操作：
+  - 1. 删除数据库中的任何内存优化表、表类型以及本机编译型 T-SQL 模块
+  - 2. 将数据库的服务层更改为标准（*目前无法将过去一直包含 In-Memory OLTP 对象的高级数据库移到弹性池中去；Azure DB 团队正努力解决此问题）
+  - 3. 将数据库移到弹性池中
 
 - 不支持将 In-Memory OLTP 与 SQL 数据仓库配合使用。
  - SQL 数据仓库支持 In-Memory Analytics 的列存储索引功能。
@@ -525,4 +529,5 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 - [监视内存中存储](/documentation/articles/sql-database-in-memory-oltp-monitoring)（适用于 In-Memory OLTP）。
 
-<!---HONumber=Mooncake_0321_2016-->
+
+<!---HONumber=Mooncake_0711_2016-->

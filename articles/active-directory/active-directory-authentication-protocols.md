@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure Active Directory 身份验证协议"
+   pageTitle="Azure Active Directory 身份验证协议 | Azure"
    description="概述 Azure Active Directory (AD) 支持的身份验证协议"
    documentationCenter="dev-center-name"
    authors="msmbaldwin"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="09/17/2015"
+   ms.date="05/16/2016"
    wacn.date=""/>
 
 # Azure Active Directory 身份验证协议
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) 支持多个最广泛使用的身份验证和�
 
 
 
-## 另请参阅 
+## 另请参阅
 
 [Azure Active Directory 开发人员指南](active-directory-developers-guide)
 
@@ -51,4 +51,4 @@ Azure Active Directory (Azure AD) 支持多个最广泛使用的身份验证和�
 
 [Active Directory 代码示例](active-directory-code-samples)
 
-<!---HONumber=79-->
+<!---HONumber=Mooncake_0711_2016-->

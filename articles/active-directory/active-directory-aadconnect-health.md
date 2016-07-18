@@ -70,13 +70,14 @@ Azure AD Connect Health 很容易入门。请遵循以下步骤进行配置：
 
 - 请参阅 Azure AD Connect Health 的[要求](/documentation/articles/active-directory-aadconnect-health-agent-install#Requirements)
 
-- 若要开始使用适用于 AD FS 的 Azure AD Connect Health，可在此处下载最新版本的代理：[下载适用于 AD FS 的 Azure AD Connect Health 代理](http://go.microsoft.com/fwlink/?LinkID=518973)。[](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
+- 若要开始使用适用于 AD FS 的 Azure AD Connect Health，可在此处下载最新版本的代理：[下载适用于 AD FS 的 Azure AD Connect Health 代理](http://go.microsoft.com/fwlink/?LinkID=518973)。
+[](active-directory-aadconnect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)
 
 - 若要开始使用用于同步的 Azure AD Connect Health，请下载并安装[最新版本的 Azure AD Connect](http://go.microsoft.com/fwlink/?linkid=615771)。在安装 Azure AD Connect 的过程中，将会安装 Health 代理（版本 1.0.9125.0 或更高）。Azure AD Connect 支持从以前的版本就地升级。
 
 
 ## Azure AD Connect Health 门户
-可以使用 Azure AD Connect Health 门户来查看警报、性能监视情况和使用情况分析。单击 https://aka.ms/aadconnecthealth 可转到 Azure AD Connect Health 的主边栏选项卡。你可以将边栏选项卡视为窗口。在主边栏选项卡上，你将看到“快速启动”、“Azure AD Connect Health 中的服务”和其他配置选项。在屏幕快照下方是上述每个选项卡的简短说明。部署代理后，Azure AD Connect Health 将监视服务的服务标识符。
+可以使用 Azure AD Connect Health 门户来查看警报、性能监视情况和使用情况分析。单击 https://aka.ms/aadconnecthealth 可转到 Azure AD Connect Health 的主边栏选项卡。你可以将边栏选项卡视为窗口。在主边栏选项卡上，你将看到“快速启动”、“Azure AD Connect Health 中的服务”和其他配置选项。在屏幕快照下方是上述每个选项卡的简短说明。部署代理后，运行状况服务将自动标识 Azure AD Connect Health 正在监视的服务。
 
 ![Azure AD Connect Health 门户](./media/active-directory-aadconnect-health/portal2.png)
 
@@ -102,4 +103,4 @@ Azure AD Connect Health 很容易入门。请遵循以下步骤进行配置：
 * [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
 * [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0711_2016-->

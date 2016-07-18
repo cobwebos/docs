@@ -2,7 +2,7 @@
 
 <properties
  pageTitle="创建 Linux RDMA 群集以运行 MPI 应用程序 | Azure"
- description="创建 VM 的 Linux 群集以使用 RDMA 运行 MPI 应用"
+ description="创建 A8 或 A9 大小 VM 的 Linux 群集以使用 RDMA 运行 MPI 应用"
  services="virtual-machines-linux"
  documentationCenter=""
  authors="dlepow"
@@ -16,12 +16,12 @@
 
 # 设置 Linux RDMA 群集以运行 MPI 应用程序
 
-> [AZURE.IMPORTANT] Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器和经典](/documentation/articles/resource-manager-deployment-model)。本文介绍使用经典部署模型。Microsoft 建议大多数新部署使用资源管理器模型。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)] 资源管理器模型。
 
 
-了解如何在 Azure 中设置 Linux RDMA 群集以运行并行消息传递接口 (MPI) 应用程序。当你设置 VM 群集以运行支持的 Linux HPC 分发版和支持的 MPI 实现时，MPI 应用程序将通过 Azure 中基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络高效地进行通信。
+了解如何使用 [A8 和 A9 大小虚拟机](/documentation/articles/virtual-machines-linux-a8-a9-a10-a11-specs)在 Azure 中设置 Linux RDMA 群集以运行并行消息传递接口 (MPI) 应用程序。当你设置 A8 和 A9 大小 VM 的群集以运行支持的 Linux HPC 分发版和支持的 MPI 实现时，MPI 应用程序将通过 Azure 中基于远程直接内存访问 (RDMA) 技术的低延迟、高吞吐量网络高效地进行通信。
 
->[AZURE.NOTE] 目前，通过 Azure 库中 SUSE Linux Enterprise Server (SLES) 12 HPC 映像或基于 CentOS 的 6.5 或 7.1 映像创建的 VM 上运行的 Intel MPI 库版本 5 支持 Azure Linux RDMA。基于 Centos 的 HPC 应用商店映像将安装 Intel MPI 版本 5.1.3.181。
+>[AZURE.NOTE] 目前，通过 Azure 库中 SUSE Linux Enterprise Server (SLES) 12 HPC 映像或基于 CentOS 的 6.5 或 7.1 映像创建的 A8 或 A9 大小的 VM 上运行的 Intel MPI 库版本 5 支持 Azure Linux RDMA。基于 Centos 的 HPC 应用商店映像将安装 Intel MPI 版本 5.1.3.181。
 
 
 
@@ -29,15 +29,17 @@
 
 以下是可用于创建 Linux RDMA 群集的方法（使用或不使用作业计划程序）。
 
-* **Azure CLI 脚本** - 如本文余下内容中的步骤所述，使用 [Azure 命令行接口](/documentation/articles/xplat-cli-install) (CLI) 生成部署创建 Linux VM 群集所需的虚拟网络和其他必需组件的脚本。服务管理模式下的 CLI 将在经典部署模型中依序创建群集节点，因此，如果你要部署许多计算节点，可能需要几分钟才能完成部署。
+* **HPC Pack** - 在 Azure 中创建 Microsoft HPC Pack 群集，然后添加运行受支持 Linux 分发版的 A8 或 A9 大小的计算节点，以便访问 RDMA 网络。请参阅 [Azure 的 HPC Pack 群集中的 Linux 计算节点入门](/documentation/articles/virtual-machines-linux-classic-hpcpack-cluster)。
 
-* **Azure Resource Manager 模板** - 使用 Resource Manager 部署模型来部署多个 Linux VM，以及定义虚拟网络、静态 IP 地址、DNS 设置和其他资源，以便创建可使用 RDMA 网络运行 MPI 工作负荷的计算群集。你可以[创建自己的模板](/documentation/articles/resource-group-authoring-templates)，或查看 [Azure quickstart templates](https://azure.microsoft.com/documentation/templates/)（Azure 快速入门模板），以获取 Microsoft 或社区贡献的模板来部署所需的解决方案。Resource Manager 模板可以提供快速可靠的方式来部署 Linux 群集。
+* **Azure CLI 脚本** - 如本文余下内容中的步骤所述，使用 [Azure 命令行接口](/documentation/articles/xplat-cli-install) (CLI) 生成部署创建 A8 或 A9 大小的 Linux VM 群集所需的虚拟网络和其他必需组件的脚本。服务管理模式下的 CLI 将在经典部署模型中依序创建群集节点，因此，如果你要部署许多计算节点，可能需要几分钟才能完成部署。
+
+* **Azure Resource Manager 模板** - 使用 Resource Manager 部署模型来部署多个 A8 和 A9 Linux VM，以及定义虚拟网络、静态 IP 地址、DNS 设置和其他资源，以便创建可使用 RDMA 网络运行 MPI 工作负荷的计算群集。你可以[创建自己的模板](/documentation/articles/resource-group-authoring-templates)，或查看 [Azure quickstart templates（Azure 快速入门模板）](https://azure.microsoft.com/documentation/templates/)，以获取 Microsoft 或社区贡献的模板来部署所需的解决方案。Resource Manager 模板可以提供快速可靠的方式来部署 Linux 群集。
 
 ## 经典模型中的示例部署
 
-以下步骤将帮助你使用 Azure CLI 从 Azure 库部署 SUSE Linux Enterprise Server 12 HPC VM、安装 Intel MPI 库和其他自定义项、创建自定义 VM 映像，然后编写脚本来部署 VM 群集。
+以下步骤将帮助你使用 Azure CLI 从 Azure 库部署 SUSE Linux Enterprise Server 12 HPC VM、安装 Intel MPI 库和其他自定义项、创建自定义 VM 映像，然后编写脚本来部署 A8 或 A9 VM 群集。
 
->[AZURE.TIP]  使用类似的步骤，根据 Azure 库中基于 CentOS 的 6.5 或 7.1 HPC 映像部署 VM 群集。步骤中已注明差异。例如，由于基于 CentOS 的 HPC 映像包括 Intel MPI，因此不需要在从这些映像创建的 VM 上单独安装 Intel MPI。
+>[AZURE.TIP]  使用类似的步骤，根据 Azure 库中基于 CentOS 的 6.5 或 7.1 HPC 映像部署 A8 或 A9 VM 群集。步骤中已注明差异。例如，由于基于 CentOS 的 HPC 映像包括 Intel MPI，因此不需要在从这些映像创建的 VM 上单独安装 Intel MPI。
 
 ### 先决条件
 
@@ -45,7 +47,7 @@
 
 *   **Azure 订阅** - 如果你没有订阅，只需要花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/free/)。对于较大的群集，请考虑即用即付订阅或其他购买选项。
 
-*   **内核配额** - 你可能需要增加内核配额才能部署 VM 群集。例如，如果你要按本文所示部署 8 个 VM，则至少需要 128 个内核。若要增加配额，可免费[建立联机客户支持请求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
+*   **内核配额** - 你可能需要增加内核配额才能部署 A8 或 A9 VM 的群集。例如，如果你要按本文所示部署 8 个 A9 VM，则至少需要 128 个内核。若要增加配额，可免费[建立联机客户支持请求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
 
 *   **Azure CLI** - [安装](/documentation/articles/xplat-cli-install) Azure CLI 并从客户端计算机[连接到你的 Azure 订阅](/documentation/articles/xplat-cli-connect)。
 
@@ -75,15 +77,17 @@
 
     azure vm image list | grep "suse.*hpc"
 
-现在，通过运行如下命令使用提供的 SLES 12 HPC 映像预配 VM：
+现在，通过运行如下命令使用提供的 SLES 12 HPC 映像预配 A9 大小 VM：
 
-    azure vm create -g <username> -p <password> -c <cloud-service-name> -l <location> -z A7 -n <vm-name> -e 22 b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708
+    azure vm create -g <username> -p <password> -c <cloud-service-name> -l <location> -z A9 -n <vm-name> -e 22 b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708
 
 其中
 
+* 大小（在此示例中为 A9）可以是 A8 或 A9
+
 * 外部 SSH 端口号（在此示例中为 SSH 默认值 22）是任何有效的端口号；内部 SSH 端口号将设为 22
 
-* 将在 location 指定的 Azure 区域中创建新的云服务；请指定提供实例的位置，例如“China North”
+* 将在 location 指定的 Azure 区域中创建新的云服务；请指定提供 A8 和 A9 实例的位置，例如“China North”
 
 * SLES 12 映像名称当前可以是 `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-v20150708` 或 `b4590d9e3ed742e4a1d46e5424aa335e__suse-sles-12-hpc-priority-v20150708`（用于 SUSE 优先支持，收费）
 
@@ -95,13 +99,13 @@
 
 >[AZURE.IMPORTANT]Azure 不提供对 Linux VM 的 root 访问权限。若要在以用户身份连接至 VM 时获得管理访问权限，使用 `sudo` 运行命令。
 
-* **更新** - 使用 **zypper** 安装更新。你可能想要安装 NFS 实用工具。  
+* **更新** - 使用 **zypper** 安装更新。你可能想要安装 NFS 实用工具。
 
     >[AZURE.IMPORTANT]如果你部署了 SLES 12 HPC V，则目前我们建议不要应用内核更新，否则可能会在使用 Linux RDMA 驱动程序时遇到问题。
     >
     >在来自应用商店的基于 CentOS 的 HPC 映像中，内核更新已在 **yum** 配置文件中禁用。这是因为 Linux RDMA 驱动程序以 RPM 包的形式分发，如果更新了内核，驱动程序更新可能无法工作。
 
-* **Linux RDMA 驱动程序更新** - 如果你部署了 SLES 12 HPC VM，则需要更新 RDMA 驱动程序。
+* **Linux RDMA 驱动程序更新** - 如果你部署了 SLES 12 HPC VM，则需要更新 RDMA 驱动程序。请参阅[关于 A8、A9、A10 和 A11 计算密集型实例](/documentation/articles/virtual-machines-linux-a8-a9-a10-a11#Linux-RDMA-driver-updates-for-SLES-12)以获取详细信息。
 
 * **Intel MPI** - 如果你部署了 SLES 12 HPC VM，请运行如下所示的命令，从 Intel.com 站点下载并安装 Intel MPI 库 5 运行时。如果你部署了基于 CentOS 的 6.5 或 7.1 HPC VM，则不一定要执行此步骤。
 
@@ -121,9 +125,9 @@
 
         <User or group name> soft    memlock <memory required for your application in KB>
 
-    >[AZURE.NOTE]出于测试目的，你也可以将 memlock 设置为不受限制。例如：`<User or group name> hard memlock unlimited。
+    >[AZURE.NOTE]出于测试目的，你也可以将 memlock 设置为不受限制。例如：`<用户或组名称> hard memlock unlimited。
 
-* **SLES 12 VM 的 SSH 密钥** -生成 SSH 密钥以在运行 MPI 作业时，在 SLES 12 HPC 群集中的所有计算节点上为你的用户帐户建立信任。（如果你部署了基于 CentOS 的 HPC VM，请不要遵循此步骤。请参阅本文稍后的说明，以便在捕获映像并部署群集之后，在群集节点之间设置无密码 SSH 信任。）
+* **SLES 12 VM 的 SSH 密钥** - 生成 SSH 密钥以在运行 MPI 作业时，在 SLES 12 HPC 群集中的所有计算节点上为你的用户帐户建立信任。（如果你部署了基于 CentOS 的 HPC VM，请不要遵循此步骤。请参阅本文稍后的说明，以便在捕获映像并部署群集之后，在群集节点之间设置无密码 SSH 信任。）
 
     运行以下命令以创建 SSH 密钥。只需按 Enter 键以在默认位置生成密钥，而无需设置密码。
 
@@ -161,7 +165,7 @@
 sudo waagent -deprovision
 ```
 
-然后，从客户端计算机运行以下 Azure CLI 命令，以捕获映像。有关详细信息，请参阅 [How to capture a classic Linux virtual machine as an image（如何捕获用作映像的经典 Linux 虚拟机）](/documentation/articles/virtual-machines-linux-classic-capture-image)。
+然后，从客户端计算机运行以下 Azure CLI 命令，以捕获映像。有关详细信息，请参阅[如何捕获用作映像的经典 Linux 虚拟机](/documentation/articles/virtual-machines-linux-classic-capture-image)。
 
 ```
 azure vm shutdown <vm-name>
@@ -174,7 +178,7 @@ azure vm capture -t <vm-name> <image-name>
 
 ### 使用映像部署群集
 
-使用你环境的相应值修改以下 Bash 脚本，并从客户端计算机运行它。由于 Azure 在经典部署模型中依序部署 VM，因此将需要几分钟时间才能部署此脚本中建议的 8 个 VM。
+使用你环境的相应值修改以下 Bash 脚本，并从客户端计算机运行它。由于 Azure 在经典部署模型中依序部署 VM，因此将需要几分钟时间才能部署此脚本中建议的 8 个 A9 VM。
 
 ```
 #!/bin/bash -x
@@ -182,12 +186,12 @@ azure vm capture -t <vm-name> <image-name>
 # Create a custom private network in Azure
 # Replace 10.32.0.0 with your virtual network address space
 # Replace <network-name> with your network identifier
-# Select a region where VMs are available, such as China North
-# See Azure Pricing pages for prices and availability of VMs
+# Select a region where A8 and A9 VMs are available, such as China North
+# See Azure Pricing pages for prices and availability of A8 and A9 VMs
 
 azure network vnet create -l "China North" -e 10.32.0.0 -i 16 <network-name>
 
-# Create a cloud service. All the instances need to be in the same cloud service for Linux RDMA to work across InfiniBand.
+# Create a cloud service. All the A8 and A9 instances need to be in the same cloud service for Linux RDMA to work across InfiniBand.
 # Note: The current maximum number of VMs in a cloud service is 50. If you need to provision more than 50 VMs in the same cloud service in your cluster, contact Azure Support.
 
 azure service create <cloud-service-name> --location "China North" -s <subscription-ID>
@@ -200,10 +204,10 @@ vmname=cluster
 
 portnumber=101
 
-# In this cluster there will be 8 nodes, named cluster11 to cluster18. Specify your captured image in <image-name>. Specify the username and password you used when creating the SSH keys.
+# In this cluster there will be 8 size A9 nodes, named cluster11 to cluster18. Specify your captured image in <image-name>. Specify the username and password you used when creating the SSH keys.
 
 for (( i=11; i<19; i++ )); do
-        azure vm create -g <username> -p <password> -c <cloud-service-name> -z A7 -n $vmname$i -e $portnumber$i -w <network-name> -b Subnet-1 <image-name>
+        azure vm create -g <username> -p <password> -c <cloud-service-name> -z A9 -n $vmname$i -e $portnumber$i -w <network-name> -b Subnet-1 <image-name>
 done
 
 # Save this script with a name like makecluster.sh and run it in your shell environment to provision your cluster
@@ -228,9 +232,9 @@ done
 
 此脚本执行以下任务：
 
-* 在主机节点上创建名为 .ssh 的目录，进行无密码登录时需要用到该目录。 
-* 在 .ssh 目录中创建一个配置文件，用于指示无密码登录允许从群集中的任何节点登录。 
-* 创建包含群集中所有节点的节点名称与节点 IP 地址的文件。运行脚本后，将保留这些文件供用户参考。 
+* 在主机节点上创建名为 .ssh 的目录，进行无密码登录时需要用到该目录。
+* 在 .ssh 目录中创建一个配置文件，用于指示无密码登录允许从群集中的任何节点登录。
+* 创建包含群集中所有节点的节点名称与节点 IP 地址的文件。运行脚本后，将保留这些文件供用户参考。
 * 为每个群集节点创建包括主机节点的私钥和公钥对，共享有关该密钥对的信息，然后在 authorized\_keys 文件中创建一个条目。
 
 >[AZURE.WARNING]运行此脚本可能会造成潜在的安全风险。请确保不要分发 ~/.ssh 中的公钥信息。
@@ -392,4 +396,4 @@ mpirun -hosts <host1>,<host2> -ppn 1 -n 2 -env I_MPI_FABRICS=dapl -env I_MPI_DAP
 
 * 尝试使用基于 CentOS 的 HPC 映像通过[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/intel-lustre-clients-on-centos)创建 Intel Lustre 群集。
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0711_2016-->

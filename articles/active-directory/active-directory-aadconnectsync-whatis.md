@@ -9,8 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-
-	ms.date="05/11/2016"
+	ms.date="05/19/2016"
 	wacn.date=""/>
 
 
@@ -23,36 +22,38 @@ Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azur
 
 ## Azure AD Connect 同步主题
 
-| 主题 | 涵盖的内容和阅读时机 |
-| ----- | ----- |
-| **Azure AD Connect 同步基础知识** ||
-| [了解体系结构](active-directory-aadconnectsync-understanding-architecture.md) | 适合不熟悉同步引擎并想要深入了解所用体系结构和术语的人员。 |
-| [技术概念](active-directory-aadconnectsync-technical-concepts.md) | 精简版的体系结构主题，简要解释所用的术语。 |
-| [Azure AD Connect 的拓扑](active-directory-aadconnect-topologies.md) | 介绍同步引擎支持的各种拓扑和方案。 |
-| **自定义配置** ||
-| [了解默认配置](active-directory-aadconnectsync-understanding-default-configuration.md)| 描述现成的规则和默认配置。此外还描述规则如何一起工作，以供现成的方案使用。 |
-| [了解用户和联系人](active-directory-aadconnectsync-understanding-users-and-contacts.md) | 延续前一个主题，并说明用户和联系人的配置如何一起工作（尤其是在多林环境中）。 |
-| [了解声明性设置表达式](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) | 深入了解配置模型的工作原理和表达式语言的语法。 |
-| [更改默认配置的最佳做法](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) | 如果你了解上述主题的详细信息并需要更改现成的配置，以配合方案或要求使用时，可以阅读此主题。 |
-| [配置筛选](active-directory-aadconnectsync-configure-filtering.md) | 介绍有关如何限制哪些对象同步到 Azure AD 的各种选项，并逐步说明如何配置这些选项。 |
-| **功能和方案** ||
-| [防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) | 介绍“防止意外删除”功能以及如何配置该功能。 |
-| [计划程序](active-directory-aadconnectsync-feature-scheduler.md) | 介绍导入、同步和导出数据的内置计划程序。 |
-| [实现密码同步](active-directory-aadconnectsync-implement-password-synchronization.md) | 介绍密码同步的工作原理、实现方式，及其操作与故障排除方法。 |
-| [设备写回](active-directory-aadconnect-feature-device-writeback.md) | 介绍设备写回在 Azure AD Connect 中的工作原理。 |
-| [目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md) | 介绍如何使用你自己的自定义属性扩展 Azure AD 架构。 |
-| **同步服务** ||
-| [重复属性修复](/documentation/articles/active-directory-aadconnectsyncservice-duplicate-attribute-resiliency) | 介绍如何启用并使用 **userPrincipalName** 和 **proxyAddresses** 的重复属性值的修复 |
-| **操作和 UI** ||
-| [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) | 介绍 Synchronization Service Manager UI，包括“[操作](active-directory-aadconnectsync-service-manager-ui-operations.md)”、“[连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md)”、“[Metaverse 设计器](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)”和“[Metaverse 搜索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)”选项卡。|
-| [操作任务和注意事项](active-directory-aadconnectsync-operations.md) | 描述操作注意事项，例如灾难恢复。 |
-| **详细信息和参考** ||
-| [端口](active-directory-aadconnect-ports.md) | 列出需要在同步引擎以及本地目录与 Azure AD 之间打开的端口。 |
-| [与 Azure Active Directory 同步的属性](active-directory-aadconnectsync-attributes-synchronized.md) | 列出在本地 AD 与 Azure AD 之间同步的所有属性。 |
-| [函数引用](active-directory-aadconnectsync-functions-reference.md) | 列出声明性预配中可用的所有函数。 |
+主题 | 涵盖的内容和阅读时机
+----- | -----
+**Azure AD Connect 同步基础知识** |
+[了解体系结构](active-directory-aadconnectsync-understanding-architecture.md) | 适合不熟悉同步引擎并想要深入了解所用体系结构和术语的人员。
+[技术概念](active-directory-aadconnectsync-technical-concepts.md) | 精简版的体系结构主题，简要解释所用的术语。
+[Azure AD Connect 的拓扑](active-directory-aadconnect-topologies.md) | 介绍同步引擎支持的各种拓扑和方案。
+**自定义配置** |
+[再次运行安装向导](active-directory-aadconnectsync-installation-wizard.md) | 介绍再次运行 Azure AD Connect 安装向导时可以使用的选项。
+[了解默认配置](active-directory-aadconnectsync-understanding-default-configuration.md)| 描述现成的规则和默认配置。此外还描述规则如何一起工作，以供现成的方案使用。
+[了解用户和联系人](active-directory-aadconnectsync-understanding-users-and-contacts.md) | 延续前一个主题，并说明用户和联系人的配置如何一起工作（尤其是在多林环境中）。
+[了解声明性设置表达式](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) | 深入了解配置模型的工作原理和表达式语言的语法。
+[更改默认配置的最佳做法](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) | 如果你了解上述主题的详细信息并需要更改现成的配置，以配合方案或要求使用时，可以阅读此主题。
+[配置筛选](active-directory-aadconnectsync-configure-filtering.md) | 介绍有关如何限制哪些对象同步到 Azure AD 的各种选项，并逐步说明如何配置这些选项。
+**功能和方案** |
+[防止意外删除](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) | 介绍“防止意外删除”功能以及如何配置该功能。
+[计划程序](active-directory-aadconnectsync-feature-scheduler.md) | 介绍导入、同步和导出数据的内置计划程序。
+[实现密码同步](active-directory-aadconnectsync-implement-password-synchronization.md) | 介绍密码同步的工作原理、实现方式，及其操作与故障排除方法。
+[设备写回](active-directory-aadconnect-feature-device-writeback.md) | 介绍设备写回在 Azure AD Connect 中的工作原理。
+[目录扩展](active-directory-aadconnectsync-feature-directory-extensions.md) | 介绍如何使用你自己的自定义属性扩展 Azure AD 架构。
+**同步服务** |
+[Azure AD Connect 同步服务功能](active-directory-aadconnectsyncservice-features.md) | 介绍同步服务端，以及如何在 Azure AD 中更改同步设置。
+[重复属性修复](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) | 介绍如何启用并使用 **userPrincipalName** 和 **proxyAddresses** 重复属性值复原。
+**操作和 UI** |
+[Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) | 介绍 Synchronization Service Manager UI，包括“[操作](active-directory-aadconnectsync-service-manager-ui-operations.md)”、“[连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md)”、“[Metaverse 设计器](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)”和“[Metaverse 搜索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)”选项卡。
+[操作任务和注意事项](active-directory-aadconnectsync-operations.md) | 描述操作注意事项，例如灾难恢复。
+**详细信息和参考** |
+[端口](active-directory-aadconnect-ports.md) | 列出需要在同步引擎以及本地目录与 Azure AD 之间打开的端口。
+[与 Azure Active Directory 同步的属性](active-directory-aadconnectsync-attributes-synchronized.md) | 列出在本地 AD 与 Azure AD 之间同步的所有属性。
+[函数引用](active-directory-aadconnectsync-functions-reference.md) | 列出声明性预配中可用的所有函数。
 
 ## 其他资源
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0711_2016-->

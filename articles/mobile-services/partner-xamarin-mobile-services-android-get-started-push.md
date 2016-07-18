@@ -69,7 +69,7 @@
 * [身份验证入门 ](/documentation/articles/mobile-services-android-get-started-users)
   <br/>了解如何通过移动服务对使用不同帐户类型的应用程序用户进行身份验证。
 
-* [什么是通知中心？](/documentation/articles/notification-hubs-overview)
+* [什么是通知中心？](/documentation/articles/notification-hubs-push-notification-overview)
   <br/>了解有关通知中心跨所有主要的客户端平台向你的应用程序交付通知的详细信息。
 
 * [调试通知中心应用程序](http://go.microsoft.com/fwlink/p/?linkid=386630)
@@ -88,4 +88,4 @@
 [Google Cloud Messaging 客户端组件]: http://components.xamarin.com/view/GCMClient/
 [Azure 移动服务组件]: http://components.xamarin.com/view/azure-mobile-services/
  
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0711_2016-->

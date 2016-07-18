@@ -9,8 +9,8 @@
 
 <tags
    ms.service="active-directory"
-    ms.date="04/21/2016"
-   wacn.date=""/>
+    ms.date="05/19/2016"
+    wacn.date=""/>
 
 # Azure AD Connect 的拓扑
 
@@ -18,31 +18,30 @@
 
 文档中的图片图例：
 
-| 说明 | 图标 |
-|-----|-----|
-| 本地 Active Directory 林 | ![AD](./media/active-directory-aadconnect-topologies/LegendAD1.png)|
-| 包含筛选导入的 Active Directory | ![AD](./media/active-directory-aadconnect-topologies/LegendAD2.png)|
-| Azure AD Connect 同步服务器 | ![同步](./media/active-directory-aadconnect-topologies/LegendSync1.png)|
-| Azure AD Connect 同步服务器“暂存模式” | ![同步](./media/active-directory-aadconnect-topologies/LegendSync2.png)|
-| 包含 FIM2010 或 MIM2016 的 GALSync | ![同步](./media/active-directory-aadconnect-topologies/LegendSync3.png)|
-| Azure AD Connect 同步服务器，详细说明 |![同步](./media/active-directory-aadconnect-topologies/LegendSync4.png)|
-| Azure AD 目录 |![AAD](./media/active-directory-aadconnect-topologies/LegendAAD.png)|
-| 不支持的方案 | ![不支持](./media/active-directory-aadconnect-topologies/LegendUnsupported.png)
-
+说明 | 图标
+-----|-----
+本地 Active Directory 林| ![AD](./media/active-directory-aadconnect-topologies/LegendAD1.png)
+包含筛选导入的 Active Directory| ![AD](./media/active-directory-aadconnect-topologies/LegendAD2.png)
+Azure AD Connect 同步服务器| ![同步](./media/active-directory-aadconnect-topologies/LegendSync1.png)
+Azure AD Connect 同步服务器“暂存模式”| ![同步](./media/active-directory-aadconnect-topologies/LegendSync2.png)
+包含 FIM2010 或 MIM2016 的 GALSync| ![同步](./media/active-directory-aadconnect-topologies/LegendSync3.png)
+Azure AD Connect 同步服务器，详细说明| ![同步](./media/active-directory-aadconnect-topologies/LegendSync4.png)
+Azure AD 目录 |![AAD](./media/active-directory-aadconnect-topologies/LegendAAD.png)
+不支持的方案 | ![不支持](./media/active-directory-aadconnect-topologies/LegendUnsupported.png)
 
 
 ## 单个林，单个 Azure AD 目录
-![SingleForestSingleDirectory](./media/active-directory-aadconnect-topologies/SingleForestSingleDirectory.png)
+![单林单目录](./media/active-directory-aadconnect-topologies/SingleForestSingleDirectory.png)
 
-最常见的拓朴是包含一个或多个域的单个本地林，以及单个 Azure AD 目录（也称为“租户”）。Azure AD 身份验证方法是使用密码同步。这是 Azure AD Connect 快速安装支持的拓扑。
+最常见的拓朴是包含一个或多个域的单个本地林，以及单个 Azure AD 目录（也称为“租户”）。Azure AD 身份验证使用密码同步。Azure AD Connect 的快速安装仅支持此拓扑。
 
 ### 单个林，多个同步服务器连接到一个 Azure AD 目录
-![SingleForestFilteredUnsupported](./media/active-directory-aadconnect-topologies/SingleForestFilteredUnsupported.png)
+![不支持单林筛选](./media/active-directory-aadconnect-topologies/SingleForestFilteredUnsupported.png)
 
-不支持将多个 Azure AD Connect 同步服务器连接到同一个 Azure AD 目录，即使它们已配置为同步对象的互斥集（[暂存服务器](#staging-server)除外）。你可以尝试这样做，因为林中的一个域无法从通用网络位置访问，或尝试跨多个服务器分散同步负载。
+不支持多个 Azure AD Connect 同步服务器连接到同一个 Azure AD 目录（[暂存服务器](#staging-server)除外）。即使配置为同步一组互斥对象，也不支持。如果你无法从单个服务器连接到林中的所有域，或者将负载分散到多个服务器，你可能已经考虑过这种情形。
 
 ## 多个林，单个 Azure AD 目录
-![MultiForestSingleDirectory](./media/active-directory-aadconnect-topologies/MultiForestSingleDirectory.png)
+![多林单目录](./media/active-directory-aadconnect-topologies/MultiForestSingleDirectory.png)
 
 许多组织具有包含多个本地 Active Directory 林的环境。有多种原因导致出现多个本地 Active Directory 林。典型示例是具有帐户资源林的设计以及合并和收购之后采用的设计。
 
@@ -67,19 +66,20 @@ Azure AD Connect 同步中的默认配置假设：
 可以在[了解默认配置](/documentation/articles/active-directory-aadconnectsync-understanding-default-configuration)中找到更多详细信息。
 
 ### 多个林，多个同步服务器连接到单个 Azure AD 目录
-![MultiForestMultiSyncUnsupported](./media/active-directory-aadconnect-topologies/MultiForestMultiSyncUnsupported.png)
+![不支持多林多同步](./media/active-directory-aadconnect-topologies/MultiForestMultiSyncUnsupported.png)
 
-不支持多个 Azure AD Connect 同步服务器连接到单个 Azure AD 目录（[暂存服务器](#staging-server)除外）。
+不支持多个 Azure AD Connect 同步服务器连接到单个 Azure AD 目录。使用[暂存服务器](#staging-server)时例外。
 
 ### 多个林 – 独立的拓扑
-“所有目录中只会显示用户一次”
+**用户在所有目录中只出现一次**
 
-![MultiForestUsersOnce](./media/active-directory-aadconnect-topologies/MultiForestUsersOnce.png)
+![多林用户一次](./media/active-directory-aadconnect-topologies/MultiForestUsersOnce.png)
 
-![MultiForestSeperateTopologies](./media/active-directory-aadconnect-topologies/MultiForestSeperateTopologies.png)
+![多林独立拓扑](./media/active-directory-aadconnect-topologies/MultiForestSeperateTopologies.png)
 
-在此环境中，本地的所有林都被视为单独的实体，并且没有用户出现在任何其他林中。每个林都有其自己的 Exchange 组织，并且林之间没有任何 GALSync。合并/收购之后或在其中每个业务单位在相互隔离的情况下运营的组织中，可能出现这种情况。在 Azure AD 中，这些林将在相同的组织中并与统一 GAL 一起出现。
-在此图中，每个林中的每个对象会在 metaverse 中出现一次，并在目标 Azure AD 目录中聚合。
+在此环境中，本地的所有林都被视为单独的实体，并且没有用户出现在任何其他林中。
+每个林都有其自己的 Exchange 组织，并且林之间没有任何 GALSync。合并/收购之后或在其中每个业务单位在相互隔离的情况下运营的组织中，可能出现这种拓扑。在 Azure AD 中，这些林位于相同的组织中并与统一 GAL 一起出现。
+在此图中，每个林中的每个对象会在 Metaverse 中出现一次，并在目标 Azure AD 目录中聚合。
 
 ### 多个林 – 匹配用户
 **用户标识存在于多个目录中**
@@ -91,9 +91,9 @@ FSP 可在 ADDS 中用来代表安全组中来自其他林的成员。在 Azure 
 ### 多个林 – 包含可选 GALSync 的完整网格
 **用户标识存在于多个目录中。匹配方法：mail 属性**
 
-![MultiForestUsersMail](./media/active-directory-aadconnect-topologies/MultiForestUsersMail.png)
+![多林用户邮件](./media/active-directory-aadconnect-topologies/MultiForestUsersMail.png)
 
-![MultiForestFullMesh](./media/active-directory-aadconnect-topologies/MultiForestFullMesh.png)
+![多林完整网格](./media/active-directory-aadconnect-topologies/MultiForestFullMesh.png)
 
 利用完全网格拓扑，用户和资源能够位于任何林中，并且通常林之间会有双向信任。
 
@@ -104,21 +104,21 @@ FSP 可在 ADDS 中用来代表安全组中来自其他林的成员。在 Azure 
 ### 多个林 – 帐户资源林
 **用户标识存在于多个目录中。匹配方法：ObjectSID 和 msExchMasterAccountSID 属性**
 
-![MultiForestUsersObjectSID](./media/active-directory-aadconnect-topologies/MultiForestUsersObjectSID.png)
+![多林用户 ObjectSID](./media/active-directory-aadconnect-topologies/MultiForestUsersObjectSID.png)
 
-![MultiForestAccountResource](./media/active-directory-aadconnect-topologies/MultiForestAccountResource.png)
+![多林 AccountResource](./media/active-directory-aadconnect-topologies/MultiForestAccountResource.png)
 
 在帐户资源林拓扑中，你拥有带活动用户帐户的一个或多个帐户林。此外，还有一个或多个包含已禁用帐户的资源林。
 
 在此方案中，一个（或多个）**资源林**信任所有**帐户林**。资源林通常具有带 Exchange 和 Lync 的扩展 AD 架构。所有 Exchange 和 Lync 服务以及其他共享的服务都位于此林中。用户在此林中具有一个禁用的用户帐户，并且邮箱被链接到帐户林。
 
 ## Office 365 和拓扑注意事项
-某些 Office 365 工作负荷对支持的拓扑实施一些限制。如果你打算使用其中任何一项，请参阅每个工作负荷的支持拓扑页。
+某些 Office 365 工作负荷对支持的拓扑实施一些限制。如果你打算使用其中任何一项，请阅读工作负荷的受支持拓扑主题。
 
-| 工作负载 | |
-| --------- | --------- |
-| Exchange Online |	如果有多个本地 Exchange 组织（即 Exchange 已部署到多个林），则必须使用 Exchange 2013 SP1 或更高版本。可以在此找到详细信息：[包含多个 Active Directory 林的混合部署](https://technet.microsoft.com/zh-cn/library/jj873754.aspx) |
-| Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。可以在此找到支持的拓扑的详细信息：[Skype for Business Server 2015 的环境要求](https://technet.microsoft.com/zh-cn/library/dn933910.aspx) |
+工作负载 |  
+--------- | ---------
+Exchange Online | 如果有多个本地 Exchange 组织（即 Exchange 已部署到多个林），则必须使用 Exchange 2013 SP1 或更高版本。可以在此找到详细信息：[包含多个 Active Directory 林的混合部署](https://technet.microsoft.com/library/jj873754.aspx)
+Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。可以在此找到支持的拓扑的详细信息：[Skype for Business Server 2015 的环境要求](https://technet.microsoft.com/library/dn933910.aspx)
 
 ## 暂存服务器
 ![暂存服务器](./media/active-directory-aadconnect-topologies/MultiForestStaging.png)
@@ -132,18 +132,19 @@ Azure AD Connect 支持以**暂存模式**安装第二个服务器。使用此�
 如果想要在不同的数据中心拥有多个备份，也可以配置多个暂存服务器。
 
 ## 多个 Azure AD 目录
-Microsoft 建议组织在 Azure AD 中部署单个目录。在打算使用多个 Azure AD 目录之前，请参阅以下主题，其中介绍了可让你使用单个目录的常见方案。
+Azure 建议组织在 Azure AD 中部署单个目录。
+在打算使用多个 Azure AD 目录之前，请参阅以下主题，其中介绍了可让你使用单个目录的常见方案。
 
-| 主题 | |
-| --------- | --------- |
-| 使用管理单位委派 | [Azure AD 中的管理单元管理](/documentation/articles/active-directory-administrative-units-management)
+主题 |  
+--------- | ---------
+使用管理单位委派 | [Azure AD 中的管理单元管理](/documentation/articles/active-directory-administrative-units-management)
 
-![MultiForestMultiDirectory](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectory.png)
+![多林多目录](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectory.png)
 
 Azure AD Connect 同步服务器与 Azure AD 目录之间不存在一对一的关系。在每个 Azure AD 目录中，你需要一个 Azure AD Connect 同步服务器安装。Azure AD 目录实例在设计上是隔离的，其中一个目录中的用户看不到另一个目录中的用户。如果这种隔离是有意而为的，则它就是受支持的配置，否则应该使用单一 Azure AD 目录模型。
 
 ### 每个对象只在 Azure AD 目录中运行一次
-![SingleForestFiltered](./media/active-directory-aadconnect-topologies/SingleForestFiltered.png)
+![单林筛选](./media/active-directory-aadconnect-topologies/SingleForestFiltered.png)
 
 在此拓扑中，一个 Azure AD Connect 同步服务器连接到每个 Azure AD 目录。Azure AD Connect 同步服务器必须设置筛选，让它们都有一组对象的互斥集可运行。例如，将每个服务器的范围设置为特定域或 OU。DNS 域只能在单个 Azure AD 目录中注册。本地 AD 中的用户 UPN 也必须使用独立的命名空间。例如，在以上三个独立 UPN 的图片中，后缀都注册在本地 AD 中：contoso.com、fabrikam.com 和 wingtiptoys.com。每个本地 AD 域中的用户使用不同的命名空间。
 
@@ -186,4 +187,4 @@ Azure AD 目录在设计上是隔离的。
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0711_2016-->

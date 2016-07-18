@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="向移动服务应用添加推送通知 (Windows Phone) | Microsoft Azure" 
+	pageTitle="向移动服务应用添加推送通知 (Windows Phone) | Azure" 
 	description="了解如何使用 Azure 移动服务和通知中心将推送通知发送到 Windows Phone 应用。" 
 	services="mobile-services,notification-hubs" 
 	documentationCenter="windows" 
@@ -80,7 +80,7 @@
 
 最后，您必须更新注册到 TodoItem 表上的插入操作的脚本，以便发送通知。
 
-1. 单击“TodoItem”，单击“脚本”，然后选择“插入”。 
+1. 单击“TodoItem”，单击“脚本”，然后选择“插入”。
 
 2. 将 insert 函数替换为以下代码，然后单击“保存”：
 
@@ -136,19 +136,19 @@
 
 本教程演示了启用 Windows 应用商店应用程序以便使用移动服务和通知中心发送推送通知的基础知识。接下来，请考虑完成以下教程之一：
 
-+ [将广播通知发送到订户](/documentation/articles/notification-hubs-windows-phone-send-breaking-news)
++ [将广播通知发送到订户](/documentation/articles/notification-hubs-windows-phone-push-xplat-segmented-mpns-notification)
 	<br/>了解用户如何注册和接收他们感兴趣的类别的推送通知。
 
-+ [将平台无关的通知发送到订户](/documentation/articles/notification-hubs-aspnet-cross-platform-notify-users)
++ [将平台无关的通知发送到订户](/documentation/articles/notification-hubs-aspnet-cross-platform-notification)
 	<br/>了解如何使用模板从移动服务发送推送通知，且不会在后端中产生平台特定的负载。
 
 
 通过以下主题了解有关移动服务和通知中心的详细信息：
 
-* [Azure 通知中心 - 诊断指南](/documentation/articles/notification-hubs-diagnosing)
+* [Azure 通知中心 - 诊断指南](/documentation/articles/notification-hubs-push-notification-fixer)
 	<br/>了解如何排查推送通知问题。
 
-* [身份验证入门 ]
+* [身份验证入门]
   <br/>了解如何通过移动服务对使用不同帐户类型的应用程序用户进行身份验证。
 
 * [什么是通知中心？]
@@ -180,4 +180,4 @@
 [什么是通知中心？]: /documentation/articles/notification-hubs-overview
 
  
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0711_2016-->

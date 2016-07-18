@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="active-directory" 
-	ms.date="03/17/2016"
+	ms.date="06/14/2016"
 	wacn.date=""/>
 
 
@@ -45,7 +45,7 @@
 
 > [AZURE.NOTE]
 字符串和正则表达式运算不区分大小写。你还可以执行 Null 检查，使用 $null 作为常量，例如 user.department -eq $null。
-应该使用 \` 字符来转义包含引号 " 的字符串，例如，user.department -eq \`"Sales"。
+应该使用 ` 字符来转义包含引号 " 的字符串，例如，user.department -eq `"Sales"。
 
 ##支持的表达式规则运算符
 下表列出所有要在高级规则正文中使用的支持表达式规则运算符及其语法：
@@ -69,7 +69,7 @@
 |-----------------------|-------------------|-----------------------------|
 | 错误: 不支持的属性。 | (user.invalidProperty -eq "Value") | (user.department -eq "value")<br/>属性应匹配[支持的属性列表](#supported-properties)中的一个属性。 |
 | 错误: 不支持对属性使用运算符。 | (user.accountEnabled -contains true) | (user.accountEnabled -eq true)<br/>属性类型为布尔型。对布尔值类型使用上面列出的受支持运算符（-eq 或 -ne）。 |
-| 错误: 查询编译错误。 | (user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") | (user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>逻辑运算符应匹配上面的支持的属性列表中的一个属性。(user.userPrincipalName -match ".*@domain.ext")or(user.userPrincipalName -match "@domain.ext$")正则表达式存在错误。 |
+| 错误: 查询编译错误。 | (user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") | (user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>逻辑运算符应与上面所列的受支持属性之一匹配。(user.userPrincipalName -match ".*@domain.ext")or(user.userPrincipalName -match "@domain.ext$")正则表达式存在错误。 |
 | 错误: 二进制表达式的格式不正确。 | (user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales") | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>查询有多个错误。括号的位置不正确。 |
 | 错误: 在设置动态成员身份期间发生未知的错误。 | (user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain") | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>查询有多个错误。括号的位置不正确。 |
 
@@ -161,12 +161,11 @@
 ## 扩展属性和自定义属性
 动态成员身份规则支持扩展属性和自定义属性。
 
-扩展属性从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。
-下面是使用扩展属性的规则示例：
+扩展属性从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。下面是使用扩展属性的规则示例：
 
 (user.extensionAttribute15 -eq "Marketing")
 
-自定义属性从本地 Windows Server AD 或从连接的 SaaS 应用程序同步，采用“user.extension\_[GUID]\_\_[Attribute]”格式，其中，[GUID] 是在 AAD 中创建该属性的应用程序在 AAD 中的唯一标识符，[Attribute] 是创建的属性的名称。下面是使用自定义属性的规则示例：
+自定义属性从本地 Windows Server AD 或从连接的 SaaS 应用程序同步，采用“user.extension_[GUID]\__[Attribute]”格式，其中，[GUID] 是在 AAD 中创建该属性的应用程序在 AAD 中的唯一标识符，[Attribute] 是创建的属性的名称。下面是使用自定义属性的规则示例：
 
 user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 
@@ -189,7 +188,7 @@ user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 
 					Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
 
-	其中，"62e19b97-8b3d-4d4a-a106-4ce66896a863" 是管理员的 objectID。可以在 Azure AD 的经理用户的用户页上的“基本情况”选项卡上找到该对象 ID。
+	其中，"62e19b97-8b3d-4d4a-a106-4ce66896a863" 是管理员的 objectID。可以在 Azure AD 的管理员用户的用户页上的“个人资料”选项卡中找到该对象 ID。
 
 3. 保存此规则时，满足该规则的所有用户将会加入为该组的成员。最初填充该组可能需要几分钟时间。
 
@@ -201,10 +200,8 @@ user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 
 * [使用 Azure Active Directory 组管理对资源的访问](/documentation/articles/active-directory-manage-groups)
 
-* [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-
-* [什么是 Azure Active Directory？](active-directory-whatis.md)
+* [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0711_2016-->

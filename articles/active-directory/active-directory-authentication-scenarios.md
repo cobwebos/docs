@@ -10,7 +10,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="02/09/2016"
+   ms.date="06/06/2016"
    wacn.date=""/>
 
 # Azure AD 的身份验证方案
@@ -134,7 +134,7 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 
 ## 应用程序类型和方案
 
-本文档所述的每个方案都可以使用各种语言和平台进行开发，并且 [GitHub 上提供了每个方案的完整代码示例](https://github.com/AzureADSamples)。此外，如果你的应用程序需要某个端到端方案的特定片段，在大多数情况下都可以独立添加该功能。例如，如果你有一个调用某个 Web API 的本机应用程序，则你可以轻松添加也调用该 Web API 的网站。下面的图示介绍了这些方案和应用程序类型，以及可以如何添加各种组件：
+本文档中所述的每个方案可以使用各种语言和平台进行开发。它们都由完整代码示例提供支持（在我们的[代码示例指南](active-directory-code-samples.md)中提供的，也可以直接从对应的 [Github 示例存储库](https://github.com/Azure-Samples?utf8=%E2%9C%93&query=active-directory)中获取）。此外，如果你的应用程序需要某个端到端方案的特定片段，在大多数情况下都可以独立添加该功能。例如，如果你有一个调用某个 Web API 的本机应用程序，则你可以轻松添加也调用该 Web API 的 Web 应用程序。下面的图示介绍了这些方案和应用程序类型，以及可以如何添加各种组件：
 
 ![应用程序类型和方案](./media/active-directory-authentication-scenarios/application_types_and_scenarios.png)
 
@@ -199,10 +199,9 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 
 ### 单页面应用程序 (SPA)
 
+本部分介绍使用 Azure AD 和 OAuth 2.0 隐式授权授予来保护其 Web API 后端的单页面应用程序的身份验证。通常将单页面应用程序构建为一个 JavaScript 表示层（前端），该表示层不仅在浏览器中运行，还在一个在服务器上运行并实现应用程序业务逻辑的 Web API 中运行。若要了解有关隐式授权授予的详细信息，并帮助你决定它是否适合于你的应用程序方案，请参阅[了解 Azure Active Directory 中的 OAuth2 隐式授予流](active-directory-dev-understanding-oauth2-implicit-grant.md)。
 
-本部分介绍使用 Azure AD 来保护其 Web API 后端的单页面应用程序的身份验证。通常将单页面应用程序构建为一个 JavaScript 表示层（前端），该表示层不仅在浏览器中运行，还在一个在服务器上运行并实现应用程序业务逻辑的 Web API 中运行。在此方案中，当用户登录时，JavaScript 前端使用 [JavaScript (ADAL.JS) 的 Active Directory 身份验证库](https://github.com/AzureAD/azure-activedirectory-library-for-js/tree/dev)预览版和 OAuth 2.0 隐式授权协议从 Azure AD 获取一个 ID 令牌 (id\_token)。该令牌随后被缓存，当客户端调用使用 OWIN 中间件进行保护的 Web API 后端时，客户端将该令牌作为持有者令牌附加到请求。
-
-
+在此方案中，当用户登录时，JavaScript 前端使用 [JavaScript (ADAL.JS) 的 Active Directory 身份验证库](https://github.com/AzureAD/azure-activedirectory-library-for-js/tree/dev)和隐式授权授予从 Azure AD 获取一个 ID 令牌 (id\_token)。该令牌随后被缓存，当客户端调用使用 OWIN 中间件进行保护的 Web API 后端时，客户端将该令牌作为持有者令牌附加到请求。
 #### 图表
 
 ![单页面应用程序图示](./media/active-directory-authentication-scenarios/single_page_app.png)
@@ -465,4 +464,4 @@ Azure AD 颁发的安全令牌包含与经过授权的使用者有关的信息�
 
 [Azure AD 中的 OAuth 2.0](https://msdn.microsoft.com/zh-cn/library/azure/dn645545.aspx)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0711_2016-->

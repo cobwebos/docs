@@ -30,13 +30,13 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
 5. [服务体系结构](#Architecture)
 6. [高级故障排除](#Advanced)
 
-<a name="Diagnosing"></a>
+<a name="Diagnosing">
 ## 诊断问题
 
 如果你怀疑移动服务出现欠载问题，首先需要在 [Azure 经典门户]中查看服务的“仪表板”选项卡。以下几点需要验证：
 
 - 用量计量表（包括“API 调用”和“活动设备”计量表）未超出配额
-- “终结点监视”状态指示服务处于上升阶段（仅支持服务正使用标准层以及终结点监视已启用的情况） 
+- “终结点监视”状态指示服务处于上升阶段（仅支持服务正使用标准层以及终结点监视已启用的情况）
 
 如与上述任一情况不符，请考虑在“缩放”选项卡上调整缩放设置。如果问题未得以解决，您可以继续操作并调查问题的根源是否为 Azure SQL 数据库。下文介绍了几种不同的问题诊断方法。
 
@@ -67,12 +67,12 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
 4. 在“数据库设置”部分中选择“SQL 数据库”名称。这样可导航到门户中的 Azure SQL 数据库选项卡。
 5. 导航到“监视”选项卡
 6. 确保使用“添加度量值”按钮显示相关度量值。待显示指标包含以下内容
-    - *CPU 百分比*（仅在基本/标准/高级层中显示）
+    - CPU 百分比（仅在基本/标准/高级层中显示）
 
-    - *数据 IO 百分比*（仅在基本/标准/高级层中显示）
-    - *日志 IO 百分比*（仅在基本/标准/高级层中显示）
-    - *存储* 
-7. 当服务遇到问题时，检查高于时窗的指标。 
+    - 数据 IO 百分比（仅在基本/标准/高级层中显示）
+    - 日志 IO 百分比（仅在基本/标准/高级层中显示）
+    - 存储
+7. 当服务遇到问题时，检查高于时窗的指标。
 
     ![Azure 经典门户 - SQL 数据库度量值][PortalSqlMetrics]
 
@@ -83,10 +83,8 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
 
 请尽早考虑以下其他缓解步骤：
 
-- **优化数据库。**
-  优化数据库通常可以降低数据库利用率，并避免扩展到更高的服务层。 
-- **考虑服务体系结构。**
-  随着时间的推移，您的服务负载通常分布不均，但包含高需求“峰值”。如果不纵向扩展数据库应对峰值，并让数据库在低需求期间保持低利用率，通常可以调整服务体系结构，以避免出现此类峰值，或在不对数据库造成干扰的情况下处理峰值情况。
+- **优化数据库。** 优化数据库通常可以降低数据库利用率，并避免扩展到更高的服务层。
+- **考虑服务体系结构。** 随着时间的推移，您的服务负载通常分布不均，但包含高需求“峰值”。如果不纵向扩展数据库应对峰值，并让数据库在低需求期间保持低利用率，通常可以调整服务体系结构，以避免出现此类峰值，或在不对数据库造成干扰的情况下处理峰值情况。
 
 本文余下部分将介绍自定义指南，以帮助实施这些缓解措施。
 
@@ -173,19 +171,19 @@ Azure 移动服务可轻松启动和构建连接云托管后端的应用，从�
 为对象选取数据类型，然后将其转换为 SQL 数据库架构时，需注意以下几个问题。由于 SQL 具备自定义的优化方式处理不同数据类型的索引和存储，因此优化架构通常可显著提高性能：
 
 - **使用所提供的 ID 列**。每个移动服务表均带有以主关键配置的默认 ID 列，并具有索引设置。因此无需创建其他 ID 列。
-- **在模型中使用正确的数据类型。** 如果你知道模型的特定属性将是数字或布尔值，请务必在模型中将其定义为该形式，而不要定义为字符串。在 JavaScript 后端中，请使用文本，例如，使用 `true` 而不是 `"true"`，使用 `5` 而不是 `"5"`。在 .NET 后端中，当你声明模型的属性时，请使用 `int` 和 `bool` 类型。这会让 SQL 为这些类型创建正确的架构，因而提高查询效率。  
+- **在模型中使用正确的数据类型。** 如果你知道模型的特定属性将是数字或布尔值，请务必在模型中将其定义为该形式，而不要定义为字符串。在 JavaScript 后端中，请使用文本，例如，使用 `true` 而不是 `"true"`，使用 `5` 而不是 `"5"`。在 .NET 后端中，当你声明模型的属性时，请使用 `int` 和 `bool` 类型。这会让 SQL 为这些类型创建正确的架构，因而提高查询效率。
 
 <a name="Query"></a>
 ## 查询设计
 
 查询数据库时要考虑的以下指南：
 
-- **始终在数据库中执行联接操作。** 你经常需要合并来自两个或更多表的记录，且这些要合并的记录共享相同的字段（称为联接）。此操作涉及到同时从两个表中提取所有实体，然后循环访问所有实体，因此，如果未正确执行此操作，可能会降低效率。此类操作最好在数据库中执行，但有时却很容易误由客户端执行，或者在移动服务代码中执行。
+- **始终在数据库中执行联接操作。** 你经常需要合并来自两个或更多表的记录，且这些要合并的记录共享相同的字段（称为*联接*）。此操作涉及到同时从两个表中提取所有实体，然后循环访问所有实体，因此，如果未正确执行此操作，可能会降低效率。此类操作最好在数据库中执行，但有时却很容易误由客户端执行，或者在移动服务代码中执行。
     - 请不要在应用程序代码中执行联接
     - 请不要在移动服务代码中执行联接。在使用 JavaScript 后端时，请注意，[table 对象](http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554210.aspx)不处理联接。请务必直接使用 [mssql 对象](http://msdn.microsoft.com/zh-cn/library/windowsazure/jj554212.aspx)，以确保在数据库中执行联接。有关详细信息，请参阅[联接关系表](/documentation/articles/mobile-services-how-to-use-server-scripts/#joins)。如果使用 .NET 后端，并且通过 LINQ 查询，实体框架将在数据库级别自动处理联接。
 - **实现分页。** 查询数据库有时可能会导致大量记录返回到客户端。为了尽可能减少操作的大小和延迟，请考虑实现分页。
     - 默认情况下，你的移动服务将所有传入的查询限制在大小为 50 的页面中，但您可以手动请求多达 1000 条记录。有关详细信息，请参阅适用于 [Windows 应用商店](/documentation/articles/mobile-services-windows-dotnet-how-to-use-client-library/#paging)、[iOS](/documentation/articles/mobile-services-ios-how-to-use-client-library/#paging)、[Android](/documentation/articles/mobile-services-android-how-to-use-client-library/#paging)、[HTML/JavaScript](/documentation/articles/mobile-services-html-how-to-use-client-library/#paging) 和 [Xamarin](/documentation/articles/partner-xamarin-mobile-services-how-to-use-client-library/#paging) 的“在页中返回数据”。
-    - 通过移动服务代码进行的查询没有默认页面大小。如果您的应用不实现分页，也不用作防御措施，请考虑将默认限制应用于您的查询。在 JavaScript 后端是，对 [query 对象](http://msdn.microsoft.com/library/azure/jj613353.aspx)使用 **take** 运算符。如果你使用 .NET 后端，请考虑以 [Take 方法]作为 LINQ 查询的一部分。  
+    - 通过移动服务代码进行的查询没有默认页面大小。如果您的应用不实现分页，也不用作防御措施，请考虑将默认限制应用于您的查询。在 JavaScript 后端是，对 [query 对象](http://msdn.microsoft.com/library/azure/jj613353.aspx)使用 **take** 运算符。如果你使用 .NET 后端，请考虑以 [Take 方法]作为 LINQ 查询的一部分。
 
 有关改进查询设计的详细信息，请参阅本文末尾的[高级查询设计](#AdvancedQuery)。
 
@@ -220,31 +218,31 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 6. 记下“连接到数据库”部分中的服务器地址，例如：*mcml4otbb9.database.windows.net*。
 
 #### SQL Server Management Studio
-1. 导航到“[SQL Server 版本 - Express](http://www.microsoft.com/zh-cn/server-cloud/products/sql-server-editions/sql-server-express.aspx)”
+1. 导航到“SQL Server 版本 - Express”[](http://www.microsoft.com/zh-cn/server-cloud/products/sql-server-editions/sql-server-express.aspx)
 2. 找到“SQL Server Management Studio”部分，然后选择下方的“下载”按钮。
 3. 完成安装步骤，直到成功运行该应用：
 
     ![SQL Server Management Studio][SSMS]
 
 4. 在“连接到服务器”对话框中输入以下值
-    - 服务器名称：*前面获取的服务器地址*
-    - 身份验证：*SQL Server 身份验证*
-    - 登录名：*创建服务器时选择的登录名*
-    - 密码：*创建服务器时选择的密码*
+    - 服务器名称：前面获取的服务器地址
+    - 身份验证：SQL Server 身份验证
+    - 登录名：创建服务器时选择的登录名
+    - 密码：创建服务器时选择的密码
 5. 立即连接。
 
 #### SQL 数据库管理门户
-1. 在数据库的“Azure SQL 数据库”选项卡上，选择“管理”按钮 
+1. 在数据库的“Azure SQL 数据库”选项卡上，选择“管理”按钮
 2. 输入下列值对连接进行配置
-    - 服务器：*应预设为正确值*
-    - 数据库：*保留空白*
-    - 用户名：*创建服务器时选择的登录名*
-    - 密码：*创建服务器时选择的密码*
+    - 服务器：应预设为正确值
+    - 数据库：保留空白
+    - 用户名：创建服务器时选择的登录名
+    - 密码：创建服务器时选择的密码
 3. 立即连接。
 
     ![Azure 经典门户 - SQL 数据库][PortalSqlManagement]
 
-<a name="AdvancedDiagnosing"/></a>
+<a name="AdvancedDiagnosing"></a>
 ### 高级诊断
 
 许多诊断任务都可直接在 **Azure 经典门户**中轻松完成，但有些高级诊断任务只能通过 **SQL Server Management Studio** 或 **SQL 数据库管理门户**来完成。我们将充分利用动态管理视图，它是一组已自动填充数据库相关诊断信息的视图。本部分将提供一组我们根据这些视图所运行的查询，以检查各种指标。有关详细信息，请参阅[使用动态管理视图监视 SQL 数据库][]。
@@ -264,7 +262,7 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 #### 高级指标
 
 
-如果使用基础层、标准层和高级层，管理门户可随时提供部分指标。无论你使用哪种层，都可以通过 **[sys.resource\_stats](http://msdn.microsoft.com/zh-cn/library/dn269979.aspx)** 管理视图轻松获取所有度量值。请考虑下列查询：
+如果使用基础层、标准层和高级层，管理门户可随时提供部分指标。无论你使用哪种层，都可以通过 **[sys.resource\_stats](http://msdn.microsoft.com/zh-cn/library/dn269979.aspx)** 管理视图轻松获取这些指标以及其他指标。请考虑下列查询：
 
     SELECT TOP 10 * 
     FROM sys.resource_stats 
@@ -288,7 +286,7 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 > [AZURE.NOTE] 
 请在服务器的 **master** 数据库上执行此查询，**sys.event\_log** 视图只会出现在该数据库上。
 
-<a name="AdvancedIndexing"></a>
+<a name="AdvancedIndexing" ></a>
 ### 高级索引
 
 表或视图可能包含以下类型的索引：
@@ -310,7 +308,7 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 - Narrow - 使用小型数据类型，或属于少量窄数据行的[复合键][Primary and Foreign Key Constraints]
 - 唯一，或通常唯一
 - 静态 - 值不会经常更改
-- 不断增加 
+- 不断增加
 - （可选）固定宽度
 - （可选） nonnull
 
@@ -320,8 +318,8 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 
 聚集索引对执行下列操作的查询最有价值：
 
-- 使用诸如 BETWEEN、>、>=、< 和 <= 等运算符返回一定范围的值。 
-	- 使用聚集索引查找到第一个值的行后，才能保证包含后续索引值的行物理相邻。 
+- 使用诸如 BETWEEN、>、>=、< 和 <= 等运算符返回一定范围的值。
+	- 使用聚集索引查找到第一个值的行后，才能保证包含后续索引值的行物理相邻。
 - 使用 JOIN 子句；通常为外键列。
 - 使用 ORDER BY 或 GROUP BY 子句。
 	- ORDER BY 或 GROUP BY 子句中指定列的索引可能无需采用数据库引擎对数据进行排序，因为行已经进行了排序。这将有助于提升查询性能。
@@ -482,4 +480,4 @@ Azure 经典门户提供内置管理体验，虽然限制更多，但无需本�
 <!-- BLOG LINKS -->
 [键的开销]: http://www.sqlskills.com/blogs/kimberly/how-much-does-that-key-cost-plus-sp_helpindex9/
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0711_2016-->

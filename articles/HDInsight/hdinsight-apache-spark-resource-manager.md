@@ -1,3 +1,5 @@
+<!-- not suitable for Mooncake -->
+
 <properties 
 	pageTitle="使用资源管理器向 HDInsight 中的 Apache Spark 群集分配资源 | Azure" 
 	description="了解如何对 HDInsight 上的 Apache Spark 群集使用资源管理器，以提高性能。" 
@@ -8,70 +10,204 @@
 	editor="cgronlun"
 	tags="azure-portal"/>
 
-<tags 
-	ms.service="hdinsight" 
-	ms.date="07/31/2015" 
+<tags
+	ms.service="hdinsight"
+	ms.date="06/06/2016"
 	wacn.date=""/>
 
 
-# 管理 Azure HDInsight 中 Apache Spark 群集的资源
+# 管理 HDInsight Linux 上 Apache Spark 群集的资源
 
-资源管理器是 Spark 群集仪表板的组件，可让你管理群集上运行的每个应用程序所用的核心和 RAM 等资源。
+在本文中，你将了解如何访问与 Spark 群集关联的界面，例如 Ambari UI、YARN UI 和 Spark History Server。你还将了解如何优化群集配置以获得最佳性能。
 
-## <a name="launchrm"></a>如何启动资源管理器？
+**先决条件：**
 
-1. 在 Azure 门户选择你的 Spark 群集，然后在底部的门户任务栏中单击“Spark 仪表板”。
+必须满足以下条件：
 
-2. 在仪表板的顶部窗格中，单击“资源管理器”选项卡。
+- Azure 订阅。请参阅[获取 Azure 试用版](/pricing/1rmb-trial/)。
+- HDInsight Linux 上的 Apache Spark 群集。有关说明，请参阅 [Create Apache Spark clusters in Azure HDInsight](/documentation/articles/hdinsight-apache-spark-jupyter-spark-sql)（在 Azure HDInsight 中创建 Apache Spark 群集）。
 
-##<a name="scenariosrm"></a>如何使用资源管理器修复这些问题？
+## 如何启动 Ambari Web UI？
 
-下面介绍了当你使用 Spark 群集时可能会遇到的一些常见问题，并说明了如何使用资源管理器解决这些问题。
+1. 在 [Azure 门户](https://portal.azure.cn/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。也可以单击“全部浏览”>“HDInsight 群集”导航到你的群集。
+ 
+2. 在 Spark 群集边栏选项卡中，单击“仪表板”。出现提示时，输入 Spark 群集的管理员凭据。
 
-### HDInsight 上的 Spark 群集速度很慢
+	![启动 Ambari](./media/hdinsight-apache-spark-resource-manager/hdispark.cluster.launch.dashboard.png "启动 Resource Manager")
 
-HDInsight 中的 Apache Spark 群集专门为多租户而设计，因此资源已拆分成多个组件（笔记本、作业服务器等）。这样，你便可以同时使用所有 Spark 组件，而无需担心有组件无法运行资源，但由于资源已分段，因此每个组件都变慢。你可以根据需要进行调整。
+3. 这应会启动 Ambari Web UI，如下所示。
+
+	![Ambari Web UI](./media/hdinsight-apache-spark-resource-manager/ambari-web-ui.png "Ambari Web UI")
+
+## 如何启动 Spark History Server？
+
+1. 在 [Azure 门户](https://portal.azure.cn/)上的启动板中，单击 Spark 群集的磁贴（如果已将它固定到启动板）。
+
+2. 在群集边栏选项卡中的“快速链接”下，单击“群集仪表板”。在“群集仪表板”边栏选项卡中，单击“Spark History Server”。
+
+	![Spark History Server](./media/hdinsight-apache-spark-resource-manager/launch-history-server.png "Spark History Server")
+
+	出现提示时，输入 Spark 群集的管理员凭据。
 
 
-### 我只需在 Spark 群集上使用 Jupyter 笔记本。如何将所有资源分配给群集？
+## 如何启动 Yarn UI？
 
-1. 在“Spark 仪表板”中，单击“Spark UI”选项卡以找出可分配给应用程序的核心数目和 RAM 上限。
+可以使用 YARN UI 来监视 Spark 群集上当前运行的应用程序。
 
-	![资源分配](./media/hdinsight-apache-spark-resource-manager/HDI.Spark.UI.Resource.png "查找已分配给 Spark 群集的资源")
+1. 在群集边栏选项卡中，单击“群集仪表板”，然后单击“YARN”。
 
-	根据上面的屏幕截图，可以分配的核心数目上限为 7 个（总共 8 个，其中有 1 正在使用），可分配的 RAM 上限为 9 GB（总共 12 GB RAM，其中 2 GB 必须保留给系统使用，有 1 GB 正在供给其他应用程序使用）。
+	![启动 YARN UI](./media/hdinsight-apache-spark-resource-manager/launch-yarn-ui.png)
 
-	你还应该考虑到所有正在运行的应用程序。可以从“Spark UI”选项卡查看运行中的应用程序。
+	>[AZURE.TIP] 或者，也可以从 Ambari UI 启动 YARN UI。若要启动 Ambari UI，请在群集边栏选项卡中单击“群集仪表板”，然后单击“HDInsight 群集仪表板”。在 Ambari UI 中依次单击“YARN”、“快速链接”、活动的 Resource Manager、“ResourceManager UI”。
 
-	![正在运行的应用程序](./media/hdinsight-apache-spark-resource-manager/HDI.Spark.UI.Running.Apps.png "在群集上运行的应用程序")
+## 用于运行 Spark 应用程序的最佳群集配置是什么？
+
+根据应用程序的要求，可用于 Spark 配置的三个关键参数为 `spark.executor.instances`、`spark.executor.cores` 和 `spark.executor.memory`。执行器是针对 Spark 应用程序启动的进程。它在辅助角色节点上运行，负责执行应用程序的任务。执行器的默认数目和每个群集的执行器大小是根据辅助角色节点数目和辅助角色节点大小计算的。这些值存储在群集头节点上的 `spark-defaults.conf` 中。
+
+这三个配置参数可在群集级别配置（适用于群集上运行的所有应用程序），也可以针对每个应用程序指定。
+
+### 使用 Ambari UI 更改参数
+
+1. 在 Ambari UI 中单击“Spark”，单击“配置”，然后展开“自定义 spark-defaults”。
+
+	![使用 Ambari 设置参数](./media/hdinsight-apache-spark-resource-manager/set-parameters-using-ambari.png)
+
+2. 默认值（在群集上并发运行 4 个 Spark 应用程序）是合理的。但你也可以从用户界面更改这些值，如下所示。
+
+	![使用 Ambari 设置参数](./media/hdinsight-apache-spark-resource-manager/set-executor-parameters.png)
+
+3. 单击“保存”以保存配置更改。在页面顶部，系统将提示是否重新启动所有受影响的服务。请单击“重新启动”。
+
+	![重新启动服务](./media/hdinsight-apache-spark-resource-manager/restart-services.png)
+
+
+### 更改 Jupyter 笔记本中运行的应用程序的参数
+
+对于在 Jupyter 笔记本中运行的应用程序，可以使用 `%%configure` magic 进行配置更改。理想情况下，必须先在应用程序开头进行此类更改，然后再运行第一个代码单元。这可以确保在创建 Livy 会话时将配置应用到该会话。如果你想要更改处于应用程序中后面某个阶段的配置，必须使用 `-f` 参数。但是，这样做会使应用程序中的所有进度丢失。
+
+以下代码片段演示如何更改 Jupyter 中运行的应用程序的配置。
+
+	%%configure 
+	{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+
+配置参数必须以 JSON 字符串传入，并且必须位于 magic 后面的下一行，如示例列中所示。
+
+### 使用 spark-submit 更改已提交应用程序的参数
+
+以下命令示范了如何更改使用 `spark-submit` 提交的批处理应用程序的配置参数。
+
+	spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 --num-executors 10 <location of application jar file> <application parameters>
+
+### 使用 cURL 更改已提交应用程序的参数
+
+以下命令示范了如何更改使用 cURL 提交的批处理应用程序的配置参数。
+
+	curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+
+### 如何更改 Spark Thrift 服务器上的这些参数？
+
+Spark Thrift 服务器提供对 Spark 群集的 JDBC/ODBC 访问，用来为 Spark SQL 查询提供服务。Power BI、Tableau 等工具使用 ODBC 协议来与 Spark Thrift 服务器通信，以便将 Spark SQL 查询作为 Spark 应用程序执行。创建 Spark 群集时，将启动 Spark Thrift 服务器的两个实例（每个头节点上各有一个实例）。在 YARN UI 中，每个 Spark Thrift 服务器显示为一个 Spark 应用程序。
+
+Spark Thrift 服务器使用 Spark 动态执行器分配，因此未使用 `spark.executor.instances`。Spark Thrift 服务器使用 `spark.dynamicAllocation.minExecutors` 和 `spark.dynamicAllocation.maxExecutors` 来指定执行器计数。使用配置参数 `spark.executor.cores` 和 `spark.executor.memory` 可以修改执行器大小。可按如下所示更改这些参数。
+
+* 展开“高级 spark-thrift-sparkconf”类别可更新参数 `spark.dynamicAllocation.minExecutors`、`spark.dynamicAllocation.maxExecutors` 和 `spark.executor.memory`。
+
+	![配置 Spark Thrift 服务器](./media/hdinsight-apache-spark-resource-manager/spark-thrift-server-1.png)
+
+* 展开“自定义 spark-thrift-sparkconf”类别可更新参数 `spark.executor.cores`。
+
+	![配置 Spark Thrift 服务器](./media/hdinsight-apache-spark-resource-manager/spark-thrift-server-2.png)
+
+### 如何更改 Spark Thrift 服务器的驱动程序内存？
+
+Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，前提是头节点的 RAM 总大小大于 14GB。可按如下所示使用 Ambari UI 更改驱动程序内存配置。
+
+* 在 Ambari UI 中单击“Spark”，单击“配置”，展开“高级 spark-env”，然后提供“spark\_thrift\_cmd\_opts”的值。
+
+	![配置 Spark Thrift 服务器 RAM](./media/hdinsight-apache-spark-resource-manager/spark-thrift-server-ram.png)
+
+## 我没有在 Spark 群集上使用 BI。该如何回收资源？
+
+因为我们使用 Spark 动态分配，Thrift 服务器使用的唯一资源是两个应用程序主机的资源。若要回收这些资源，必须停止群集上运行的 Thrift 服务器服务。
+
+1. 在 Ambari UI 的左窗格中，单击“Spark”。
+
+2. 在下一页中，单击“Spark Thrift 服务器”。
+
+	![重新启动 Thrift 服务器](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-1.png)
+
+3. 你应会看到正在运行 Spark Thrift 服务器的两个头节点。单击其中一个头节点。
+
+	![重新启动 Thrift 服务器](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-2.png)
+
+4. 下一页将列出该头节点上运行的所有服务。在该列表中单击 Spark Thrift 服务器旁边的下拉按钮，然后单击“停止”。
+
+	![重新启动 Thrift 服务器](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-3.png)
+
+5. 对其他头节点重复上述步骤。
+
+
+## 我的 Jupyter 笔记本未按预期运行。如何重新启动该服务？
+
+1. 如上所示启动 Ambari Web UI。在左侧导航窗格中，依次单击“Jupyter”、“服务操作”和“全部重新启动”。随后将在所有头节点上启动 Jupyter 服务。
+
+	![重新启动 Jupyter](./media/hdinsight-apache-spark-resource-manager/restart-jupyter.png "重新启动 Jupyter")
 
 	
-2. 在 HDInsight Spark 仪表板中单击“资源管理器”选项卡，然后指定“默认应用程序核心计数”和“每个工作线程节点的默认执行器内存”的值。将其他属性设置为 0。
 
-	![资源分配](./media/hdinsight-apache-spark-resource-manager/HDI.Spark.UI.Allocate.Resources.png "向应用程序分配资源")
 
-### 我不需要将 BI 工具与 Spark 群集配合使用。该如何回收资源？ 
+## <a name="seealso"></a>另请参阅
 
-将 Thrift 服务器核心计数和 Thrift 服务器执行器内存指定为 0。在未分配核心或内存的情况下，Thrift 服务器将进入“等候”状态。
-
-![资源分配](./media/hdinsight-apache-spark-resource-manager/HDI.Spark.UI.No.Thrift.png "未向 thrift 服务器分配资源")
-
-##<a name="seealso"></a>另请参阅
 
 * [概述：Azure HDInsight 上的 Apache Spark](/documentation/articles/hdinsight-apache-spark-overview)
-* [在 HDInsight 群集上设置 Spark](/documentation/articles/hdinsight-apache-spark-provision-clusters)
-* [使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](/documentation/articles/hdinsight-apache-spark-use-bi-tools)
-* [使用 HDInsight 中的 Spark 生成机器学习应用程序](/documentation/articles/hdinsight-apache-spark-ipython-notebook-machine-learning)
-* [使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-csharp-apache-zeppelin-eventhub-streaming)
+
+### 方案
+
+* [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](/documentation/articles/hdinsight-apache-spark-use-bi-tools)
+
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](/documentation/articles/hdinsight-apache-spark-ipython-notebook-machine-learning)
+
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](/documentation/articles/hdinsight-apache-spark-machine-learning-mllib-ipython)
+
+* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-eventhub-streaming)
+
+* [使用 HDInsight 中的 Spark 分析网站日志](/documentation/articles/hdinsight-apache-spark-custom-library-website-log-analysis)
+
+### 创建和运行应用程序
+
+* [使用 Scala 创建独立的应用程序](/documentation/articles/hdinsight-apache-spark-create-standalone-application)
+
+* [使用 Livy 在 Spark 群集中远程运行作业](/documentation/articles/hdinsight-apache-spark-livy-rest-interface)
+
+### 工具和扩展
+
+* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin)
+
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely)（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）
+
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](/documentation/articles/hdinsight-apache-spark-use-zeppelin-notebook)
+
+* [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels)
+
+* [Use external packages with Jupyter notebooks](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-use-external-packages)（将外部包与 Jupyter 笔记本配合使用）
+
+* [Install Jupyter on your computer and connect to an HDInsight Spark cluster](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-install-locally)（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）
+
+### 管理资源
+
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight](/documentation/articles/hdinsight-apache-spark-job-debugging)（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）
 
 
-[hdinsight-versions]: /documentation/articles/hdinsight-component-versioning
+
+[hdinsight-versions]: /documentation/articles/hdinsight-component-versioning-v1
 [hdinsight-upload-data]: /documentation/articles/hdinsight-upload-data
-[hdinsight-storage]: /documentation/articles/hdinsight-use-blob-storage
+[hdinsight-storage]: /documentation/articles/hdinsight-hadoop-use-blob-storage
 
-[azure-purchase-options]: http://www.windowsazure.cn/pricing/overview/
-[azure-trial]: http://www.windowsazure.cn/pricing/1rmb-trial/
+
+[azure-purchase-options]: /pricing/overview/
+[azure-member-offers]: /pricing/member-offers/
+[azure-trial]: /pricing/1rmb-trial/
 [azure-management-portal]: https://manage.windowsazure.cn/
 [azure-create-storageaccount]: /documentation/articles/storage-create-storage-account
 
-<!---HONumber=74-->
+<!---HONumber=Mooncake_0711_2016-->

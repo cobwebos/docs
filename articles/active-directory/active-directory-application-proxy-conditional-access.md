@@ -29,20 +29,19 @@
 
 - Azure Active Directory Premium 订阅
 - 联合或托管的 Azure Active Directory 租户
-- 联合租户需要启用 Multi-Factor Authentication (MFA)
-
-![配置访问规则 - 需要多重身份验证](./media/active-directory-application-proxy-conditional-access/application-proxy-conditional-access.png)
+- 联合租户需要启用 Multi-Factor Authentication (MFA)  
+	![配置访问规则 - 需要多重身份验证](./media/active-directory-application-proxy-conditional-access/application-proxy-conditional-access.png)
 
 ## 配置每个应用程序 Multi-Factor Authentication
 1. 在 Azure 经典门户中，以管理员身份进行登录。
 2. 转到 Active Directory，并选择你要在其中启用应用程序代理的目录。
 3. 单击“应用程序”，然后向下滚动到“访问规则”部分。只有使用应用程序代理（该代理使用联合身份验证）发布的应用程序才会显示“访问规则”部分。
 4. 通过选择“打开”“启用访问规则”来启用规则。
-5. 指定向其应用规则的用户和组。使用“添加组”按钮选择访问规则会应用的一个或多个组。此对话框还可以用于删除所选组。当选择规则应用于组时，仅会对属于指定安全组之一的用户强制执行访问规则。  
+5. 指定向其应用规则的用户和组。使用“添加组”按钮选择访问规则会应用的一个或多个组。此对话框还可以用于删除所选组。当选择规则应用于组时，仅会对属于指定安全组之一的用户强制执行访问规则。
 
-  - 若要从规则中显式排除安全组，请选中“例外”并指定一个或多个组。属于“例外”列表中的组成员的用户不需要执行 Multi-Factor Authentication。  
+  - 若要从规则中显式排除安全组，请选中“除外”并指定一个或多个组。属于“例外”列表中的组成员的用户不需要执行 Multi-Factor Authentication。
 
-  - 如果已使用按用户的多重身份验证功能配置用户，则此设置的优先级高于应用程序的多重身份验证规则。这意味着已配置为每个用户 Multi-Factor Authentication 的用户将需要执行 Multi-Factor Authentication，即使他们已从应用程序的 Multi-Factor Authentication 规则中免除。了解有关[多重身份验证和每个用户的设置](../multi-factor-authentication/multi-factor-authentication.md)的详细信息。
+  - 如果已使用按用户的多重身份验证功能配置用户，则此设置的优先级高于应用程序的多重身份验证规则。这意味着已配置为每个用户 Multi-Factor Authentication 的用户将需要执行 Multi-Factor Authentication，即使他们已从应用程序的 Multi-Factor Authentication 规则中免除。了解有关 [Multi-Factor Authentication 和每个用户设置](../multi-factor-authentication/multi-factor-authentication.md)的详细信息。
 
 6. 选择你想要设置的访问规则：
 	- **要求 Multi-Factor Authentication**：向其应用访问规则的用户要求完成 Multi-Factor Authentication，然后才能访问规则应用的应用程序。
@@ -67,4 +66,4 @@
 
 有关最新新闻和更新，请参阅[应用程序代理博客](http://blogs.technet.com/b/applicationproxyblog/)
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0711_2016-->

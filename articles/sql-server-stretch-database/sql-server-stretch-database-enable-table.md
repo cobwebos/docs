@@ -109,4 +109,4 @@
 
 [CREATE TABLE (Transact-SQL)](https://msdn.microsoft.com/zh-cn/library/ms174979.aspx)
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0711_2016-->

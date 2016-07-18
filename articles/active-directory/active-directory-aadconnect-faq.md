@@ -18,8 +18,7 @@
 **问：如果 Azure AD 全局管理员已启用 2FA，安装是否能够正常进行？**  
 2016 年 2 月版本开始支持此功能。
 
-**问：Azure AD Connect 是否提供无人值守安装方法？**
-
+**问：Azure AD Connect 是否提供无人值守安装方法？**  
 仅支持使用安装向导来安装 Azure AD Connect。不支持无人值守和静默安装。
 
 **问：我有一个林，但无法连接到其中的某个域。如何安装 Azure AD Connect？**  
@@ -58,11 +57,10 @@ Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
 **问：在哪里可以找到 Azure AD Connect 的 PowerShell cmdlet 介绍？**  
 仅支持客户使用本站点上介绍的 cmdlet，而不支持使用 Azure AD Connect 中的其他 PowerShell cmdlet。
 
-**问：我是否可以使用同步服务管理器中的“服务器导出/服务器导入”在服务器之间移动配置？**  
+**问：我是否可以使用 *Synchronization Service Manager* 中的“服务器导出/服务器导入”在服务器之间移动配置？**  
 不可以。此选项不会检索所有配置设置，因此不应使用。应该改用向导在第二台服务器上创建基础配置，并使用同步规则编辑器生成 PowerShell 脚本，如此即可在服务器之间移动任何自定义规则。请参阅[将自定义配置从活动服务器移到暂存服务器](active-directory-aadconnect-upgrade-previous-version.md#move-custom-configuration-from-active-to-staging-server)。
 
 ## 故障排除
-
 **问：如何获取有关 Azure AD Connect 的帮助？**
 
 [搜索 Microsoft 知识库 (KB)](https://www.microsoft.com/zh-cn/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
@@ -77,4 +75,4 @@ Azure AD Connect 不支持 NetBios 名称包含句点“.”的本地林/域。
 
 - 使用此链接，以便通过 Azure 门户获取支持。
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0711_2016-->

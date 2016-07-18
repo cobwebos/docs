@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Insights：使用自动缩放操作发送电子邮件和 webhook 警报通知。| Microsoft Azure"
+	pageTitle="Azure Insights：使用自动缩放操作发送电子邮件和 webhook 警报通知 | Azure"
 	description="了解如何在 Azure Insights 中使用自动缩放操作来调用 Web URL 或发送电子邮件通知。"
 	authors="kamathashwin"
 	manager=""
@@ -37,8 +37,8 @@
 ## webhook 中的身份验证
 有两种身份验证 URI 形式：
 
-	1. Token-base authentication, where you save the webhook URI with a token ID as a query parameter. For example, https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
-	2. Basic authentication, where you use a user ID and password. For example, https://userid:password@mysamplealert/webcallback?someparamater=somevalue&parameter=value
+1. 基于令牌的身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。例如 https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue
+2. 基本身份验证：使用用户 ID 和密码。例如 https://userid:password@mysamplealert/webcallback?someparamater=somevalue&parameter=value
 
 ## 自动缩放通知 webhook 负载架构
 生成自动缩放通知时，以下元数据会包含在 webhook 负载中：
@@ -74,11 +74,11 @@
 |---|---|---|
 |status |是 |指示生成自动缩放操作的状态|
 |operation|	是 |对于实例的增加，它会是“Scale Out”，对于实例的减少，它会是“Scale In”|
-|context|	是 |自动缩放操作上下文|
+|上下文|	是 |自动缩放操作上下文|
 |timestamp|	是 |触发自动缩放操作时的时间戳|
 |id |是|	自动缩放设置的 ARM (Azure Resource Manager) ID|
-|name |是|	自动缩放设置的名称|
-|details|	是 |自动缩放服务执行的操作和实例计数的更改的说明|
+|名称 |是|	自动缩放设置的名称|
+|详细信息|	是 |自动缩放服务执行的操作和实例计数的更改的说明|
 |subscriptionId|	是 |所缩放的目标资源的订阅 ID|
 |resourceGroupName|	是|	所缩放的目标资源的资源组名|
 |resourceName |是|	所缩放的目标资源的名称|
@@ -87,6 +87,6 @@
 |portalLink |是 |指向目标资源摘要页的 Azure 门户链接|
 |oldCapacity|	是 |自动缩放执行缩放操作时的当前（旧）实例计数|
 |newCapacity|	是 |自动缩放将资源缩放到的新实例计数|
-|Properties|	否|	可选。<Key  Value> 对集合（例如，字典 <String  String>）。properties 字段是可选的。在自定义用户界面或基于逻辑应用的工作流中，可以输入可使用负载传递的键和值。将自定义属性传递回传出 webhook 调用的替代方法是使用 webhook URI 本身（作为查询参数）|
+|属性|	否|	可选。<键, 值> 对集（例如字典 <String, String>）。properties 字段是可选的。在自定义用户界面或基于逻辑应用的工作流中，可以输入可使用负载传递的键和值。将自定义属性传递回传出 webhook 调用的替代方法是使用 webhook URI 本身（作为查询参数）|
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0711_2016-->

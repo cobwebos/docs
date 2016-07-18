@@ -116,4 +116,4 @@ Azure 备份与 Azure 导入/导出服务深度集成，使你可以快速传输
 - 如有 Azure 导入/导出工作流方面的任何问题，请参阅此[文章](/documentation/articles/storage-import-export-service)。
 - 如有工作流方面的任何问题，请参阅 Azure 备份[常见问题](/documentation/articles/backup-azure-backup-faq)的“脱机备份”部分
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0711_2016-->

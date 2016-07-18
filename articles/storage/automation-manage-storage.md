@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="02/20/2016"
+	ms.date="05/23/2016"
 	wacn.date=""/>
 
 
@@ -46,4 +46,4 @@ Azure 自动化提供高度可靠且高度可用的工作流执行引擎，它�
 请参阅 Azure 自动化教程[在 Azure 自动化中创建或导入 Runbook](/documentation/articles/automation-creating-importing-runbook)
  
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0711_2016-->

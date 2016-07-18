@@ -22,9 +22,9 @@
 
 本文提供有关准备环境以备份 Resource Manager 部署的虚拟机 (VM) 的步骤。过程中显示的步骤将使用 Azure 门户。
 
-Azure 备份服务提供两种类型的保管库（备份保管库和恢复服务保管库）来保护 VM。备份保管库保护使用经典部署模型部署的 VM。恢复服务保管库保护**经典部署的 VM 和 Resource Manager 部署的 VM**。必须使用恢复服务保管库来保护 Resource Manager 部署的 VM。
+Azure 备份服务提供两种类型的保管库（备份保管库和恢复服务保管库）来保护 VM。备份保管库保护使用经典部署模型部署的 VM。恢复服务保管库保护**经典部署和 Resource Manager 部署的 VM**。必须使用恢复服务保管库来保护 Resource Manager 部署的 VM。
 
->[AZURE.NOTE] Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 和经典部署模型](../resource-manager-deployment-model.md)。有关使用经典部署模型 VM 的详细信息，请参阅 [Prepare your environment to back up Azure virtual machines（准备好环境以备份 Azure 虚拟机）](backup-azure-vms-prepare.md)。
+>[AZURE.NOTE] Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 和经典部署模型](../resource-manager-deployment-model.md)。有关使用经典部署模型 VM 的详细信息，请参阅[准备好环境以备份 Azure 虚拟机](backup-azure-vms-prepare.md)。
 
 请确保符合以下先决条件，这样才能保护或备份 Resource Manager 部署的虚拟机 (VM)：
 
@@ -33,7 +33,7 @@ Azure 备份服务提供两种类型的保管库（备份保管库和恢复服�
 - 检查虚拟机上的 VM 代理安装。
 - 检查网络连接
 
-如果你确定你的环境满足这些条件，请转到[有关备份 VM 的文章](backup-azure-vms.md)。如果需要设置或检查上述任何先决条件，本文将引导你逐步完成先决条件的准备步骤。
+如果你确定你的环境满足这些条件，请转到[备份 VM 的文章](backup-azure-vms.md)。如果需要设置或检查上述任何先决条件，本文将引导你逐步完成先决条件的准备步骤。
 
 
 ## 备份和还原 VM 时的限制
@@ -44,7 +44,7 @@ Azure 备份服务提供两种类型的保管库（备份保管库和恢复服�
 - 不支持备份使用保留 IP 地址且未定义终结点的虚拟机。
 - 不支持在恢复过程中替换现有虚拟机。如果在 VM 存在时尝试还原 VM，还原操作将会失败。
 - 不支持跨区域备份和恢复。
-- 可以在 Azure 的所有公共区域中备份虚拟机（请参阅支持的区域[清单](https://azure.microsoft.com/regions/#services)）。在创建保管库期间，如果你要寻找的区域目前不受支持，则不会在下拉列表中显示它。
+- 可以在 Azure 的所有公共区域中备份虚拟机（请参阅支持区域的[清单](https://azure.microsoft.com/regions/#services)）。在创建保管库期间，如果你要寻找的区域目前不受支持，则不会在下拉列表中显示它。
 - 只可以备份选定操作系统版本的虚拟机：
   - **Linux**：请参阅 [Azure 认可的分发版列表](../virtual-machines/virtual-machines-linux-endorsed-distros.md)。只要虚拟机上装有 VM 代理，其他自带的 Linux 分发版应该也能正常运行。
   - **Windows Server**：不支持低于 Windows Server 2008 R2 的版本。
@@ -76,11 +76,11 @@ Azure 备份服务提供两种类型的保管库（备份保管库和恢复服�
 
     ![创建恢复服务保管库步骤 5](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
 
-4. 对于“名称”，请输入一个友好名称来标识保管库。名称对于 Azure 订阅需要是唯一的。键入包含 2 到 50 个字符的名称。名称必须以字母开头，只能包含字母、数字和连字符。
+4. 对于“名称”，请输入一个友好名称以标识保管库。名称对于 Azure 订阅需要是唯一的。键入包含 2 到 50 个字符的名称。名称必须以字母开头，只能包含字母、数字和连字符。
 
 5. 单击“订阅”查看可用订阅列表。如果不确定要使用哪个订阅，请使用默认（或建议）的订阅。仅当组织帐户与多个 Azure 订阅关联时，才会有多个选项。
 
-6. 单击“资源组”查看可用资源组列表，或单击“新建”以创建新资源组。有关资源组的完整信息，请参阅 [Using the Azure Portal to deploy and manage your Azure resources（使用 Azure 门户部署和管理 Azure 资源）](../azure-portal/resource-group-portal.md)
+6. 单击“资源组”查看可用资源组列表，或单击“新建”以创建新的资源组。有关资源组的完整信息，请参阅 [Using the Azure Portal to deploy and manage your Azure resources（使用 Azure 门户部署和管理 Azure 资源）](../azure-portal/resource-group-portal.md)
 
 7. 单击“位置”，为保管库选择地理区域。保管库**必须**与你要保护的虚拟机位于同一区域中。
 
@@ -94,7 +94,7 @@ Azure 备份服务提供两种类型的保管库（备份保管库和恢复服�
 
 ## 设置存储复制
 
-存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。默认情况下，保管库具有异地冗余存储。如果这是你的主要备份，请将选项保持设置为异地冗余存储。如果你想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。请在 [Azure Storage replication overview（Azure 存储空间复制概述）](../storage/storage-redundancy.md)中深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项。
+存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。默认情况下，保管库具有异地冗余存储。如果这是你的主要备份，请将选项保持设置为异地冗余存储。如果你想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。在 [Azure 存储空间复制概述](../storage/storage-redundancy.md)了解更多有关[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项的信息。
 
 若要编辑存储复制设置，请执行以下操作：
 
@@ -111,7 +111,7 @@ Azure 备份服务提供两种类型的保管库（备份保管库和恢复服�
 
 在向保管库注册 VM 前，请先执行发现过程，以确保能够识别任何添加到订阅中的新虚拟机。该过程将在 Azure 上查询订阅中的虚拟机列表和其他信息，例如云服务名称、区域等。在 Azure 门户中，方案是指要放入恢复服务保管库中的项。策略是有关恢复点创建频率和时间的计划。策略还包含恢复点的保留范围。
 
-1. 如果已打开恢复服务保管库，请转到步骤 2。如果未打开恢复服务保管库，而是在 Azure 门户中，请在“中心”菜单中单击“浏览”。
+1. 如果已打开恢复服务保管库，请转到步骤 2。如果未打开恢复服务保管库，而是位于 Azure 门户中，请在“中心”菜单中单击“浏览”。
 
   - 在资源列表中，键入“恢复服务”。
   - 当你开始键入时，会根据你的输入筛选该列表。出现“恢复服务保管库”时，请单击它。
@@ -137,7 +137,7 @@ Azure 备份服务提供两种类型的保管库（备份保管库和恢复服�
 
     ![打开“方案”边栏选项卡](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
 
-4. 在“备份目标”边栏选项卡中，将“工作负荷的运行位置”设置为“Azure”，并将“要备份的项”设置为“虚拟机”，然后单击“确定”。
+4. 在“备份目标”边栏选项卡中，将“工作负荷的运行位置”设置为 Azure，并将“要备份的项”设置为“虚拟机”，然后单击“确定”。
 
     随即关闭“备份目标”边栏选项卡，然后打开“备份策略”边栏选项卡。
 
@@ -166,18 +166,18 @@ Azure 备份服务提供两种类型的保管库（备份保管库和恢复服�
 
 ## 在虚拟机中安装 VM 代理
 
-Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。如果 VM 创建自 Azure 资源库，则 VM 代理已存在于虚拟机上。此处提供的信息适用于*不是*使用从 Azure 映像库创建的 VM 的情况（例如，从本地数据中心迁移的 VM）。在这种情况下，需要安装 VM 代理才能保护虚拟机。
+Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。如果 VM 创建自 Azure 资源库，则 VM 代理已存在于虚拟机上。此处提供的信息适用于不是使用从 Azure 映像库创建的 VM 的情况（例如，从本地数据中心迁移的 VM）。在这种情况下，需要安装 VM 代理才能保护虚拟机。
 
 了解 [VM 代理](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)以及[如何安装 VM 代理](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md)。
 
-如果在备份 Azure VM 时遇到问题，请先检查是否已在虚拟机上正确安装 Azure VM 代理（请参阅下表）。如果你创建了自定义 VM，请先[确保已选中“安装 VM 代理”复选框](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md)，然后再预配虚拟机。
+如果在备份 Azure VM 时遇到问题，请先检查是否已在虚拟机上正确安装 Azure VM 代理（请参阅下表）。如果你创建了自定义 VM，[请先确保已选中“安装 VM 代理”复选框](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md)，然后再预配虚拟机。
 
 下表提供了适用于 Windows 和 Linux VM 的 VM 代理的其他信息。
 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
 | 安装 VM 代理 | <li>下载并安装[代理 MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。你需要有管理员权限才能完成安装。<li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，指明已安装代理。 | <li>从 GitHub 安装最新的 [Linux 代理](https://github.com/Azure/WALinuxAgent)。你需要有管理员权限才能完成安装。<li>[更新 VM 属性](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)，指明已安装代理。 |
-| 更新 VM 代理 | 更新 VM 代理与重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。<br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 | 遵循有关[更新 Linux VM 代理](../virtual-machines-linux-update-agent.md)的说明操作。<br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
+| 更新 VM 代理 | 更新 VM 代理与重新安装 [VM 代理二进制文件](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)一样简单。<br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 | 按照[更新 Linux VM 代理](../virtual-machines-linux-update-agent.md)上的说明进行操作。<br>确保在更新 VM 代理时，没有任何正在运行的备份操作。 |
 | 验证 VM 代理安装 | <li>导航到 Azure VM 中的 C:\\WindowsAzure\\Packages 文件夹。<li>你应会发现 WaAppAgent.exe 文件已存在。<li> 右键单击该文件，转到“属性”，然后选择“详细信息”选项卡。“产品版本”字段应为 2.6.1198.718 或更高。 | 不适用 |
 
 
@@ -185,26 +185,26 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。�
 
 在虚拟机上安装 VM 代理后，Azure 备份服务会将备份扩展安装到 VM 代理上。Azure 备份服务会无缝地升级和修补备份扩展。
 
-无论 VM 是否在运行，备份服务都安装备份扩展。VM 运行时，很有可能会获得应用程序一致的恢复点。但是，即使 VM 已关闭并且无法安装扩展，Azure 备份服务也会继续备份 VM。这被称为脱机 VM。在这种情况下，恢复点将是崩溃一致恢复点。
+无论 VM 是否在运行，备份服务都安装备份扩展。VM 运行时，很有可能会获得应用程序一致的恢复点。但是，即使 VM 已关闭并且无法安装扩展，Azure 备份服务也会继续备份 VM。这被称为脱机 VM。在这种情况下，恢复点将是崩溃一致性恢复点。
 
 
 ## 网络连接
 
 为了管理 VM 快照，备份扩展需要连接 Azure 公共 IP 地址。如果未建立适当的 Internet 连接，虚拟机的 HTTP 请求将会超时，并且备份操作将会失败。如果你的部署中配置了访问限制（如通过网络安全组 (NSG)），请选择其中一个选项来提供备份流量的明确路径：
 
-- [将 Azure 数据中心 IP 范围加入白名单](http://www.microsoft.com/zh-cn/download/details.aspx?id=41653) - 请参阅相关文章以获取有关如何将 IP 地址加入白名单的说明。
+- [Whitelist the Azure datacenter IP ranges（将 Azure 数据中心 IP 范围加入白名单）](http://www.microsoft.com/zh-cn/download/details.aspx?id=41653)- 请参阅相关文章以获取有关如何将 IP 地址加入白名单的说明。
 - 部署 HTTP 代理服务器来路由流量。
 
 在确定使用哪个选项时，要取舍的不外乎是易管理性、控制粒度和成本等要素。
 
 |选项|优点|缺点|
 |------|----------|-------------|
-|将 IP 范围加入白名单| 无额外成本<br><br>若要在 NSG 中打开访问权限，请使用 <i>Set-AzureNetworkSecurityRule</i> cmdlet | 管理起来很复杂，因为受影响的 IP 范围会不断变化；<br><br>允许访问整个 Azure，而不只是存储空间。|
+|将 IP 范围加入白名单| 无额外成本<br><br>若要在 NSG 中打开访问权限，请使用 <i>Set-AzureNetworkSecurityRule</i> cmdlet | 管理起来很复杂，因为受影响的 IP 范围会不断变化。<br><br>允许访问整个 Azure，而不只是存储空间。|
 |HTTP 代理| 通过允许的存储 URL 在代理中进行精细控制；<br>对 VM 进行单点 Internet 访问；<br>不受 Azure IP 地址变化的影响| 通过代理软件运行 VM 带来的额外成本。|
 
 ### 将 Azure 数据中心 IP 范围加入白名单
 
-若要将 Azure 数据中心 IP 范围加入白名单，请参阅 [Azure 网站](http://www.microsoft.com/zh-cn/download/details.aspx?id=41653)以获取有关 IP 范围的详细信息和说明。
+若要将 Azure 数据中心 IP 范围加入白名单，请参阅 [Azure website（Azure 网站）](http://www.microsoft.com/zh-cn/download/details.aspx?id=41653)以获取有关 IP 范围的详细信息和说明。
 
 ### 使用 HTTP 代理进行 VM 备份
 备份 VM 时，VM 上的备份扩展会使用 HTTPS API 将快照管理命令发送到 Azure 存储空间。将通过 HTTP 代理路由备份扩展流量，因为它是为了访问公共 Internet 而配置的唯一组件。
@@ -232,9 +232,9 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。�
      ```
      psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"
      ```
-    该命令将打开 Internet Explorer 窗口。
+     该命令将打开 Internet Explorer 窗口。
 3. 转到“工具”->“Internet 选项”->“连接”->“LAN 设置”。
-4. 验证系统帐户的代理设置。设置代理 IP 和端口。 
+4. 验证系统帐户的代理设置。设置代理 IP 和端口。
 5. 关闭 Internet Explorer。
 
 这样就会设置计算机范围的代理配置，可以用于任何传出的 HTTP/HTTPS 流量。
@@ -254,7 +254,7 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。�
 
 ######对于 Linux 计算机 
 
-将以下行添加到 ```/etc/environment``` 文件：
+将以下代码行添加到 ```/etc/environment``` 文件：
 
 ```
 http_proxy=http://<proxy IP>:<proxy port>
@@ -317,4 +317,4 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 - [计划 VM 备份基础结构](backup-azure-vms-introduction.md)
 - [管理虚拟机备份](backup-azure-manage-vms.md)
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0711_2016-->

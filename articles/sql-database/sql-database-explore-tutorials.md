@@ -1,5 +1,5 @@
 <properties
-   pageTitle="浏览 SQL 数据库教程"
+   pageTitle="浏览 Azure SQL 数据库教程"
    description="了解 SQL 数据库的特性和功能"
    keywords=""
    services="sql-database"
@@ -10,12 +10,12 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="05/04/2016"
+   ms.date="06/01/2016"
    wacn.date="05/23/2016"/>
    
-# 浏览 SQL 数据库教程
+# 浏览 Azure SQL 数据库教程
 
-以下链接可以转到每个列出的功能区域概述以及每个区域的快速入门教程。
+以下链接可以转到每个列出的功能区域的概述以及每个区域的简单的分步入门教程。有关在基于实际情况的完整解决方案中演示 SQL 数据库的使用的解决方案范围的快速入门，请参阅 [Azure SQL Database Solution Quick Starts（Azure SQL 数据库解决方案快速入门）](/documentation/articles/sql-database-solution-quick-starts)。
 
 ## 使用 SQL Server Management Studio
 
@@ -58,7 +58,7 @@
 | 教程 | 说明 |
 |---|---|---|
 | [跨横向分区（分片）数据库查询）](/documentation/articles/sql-database-elastic-query-getting-started) | 在本教程中，你将学习如何使用[弹性查询](/documentation/articles/sql-database-elastic-query-overview)从位于横向分区（分片）数据库中的所有数据库创建报表 |
-| [跨垂直分区数据库查询）](/documentation/articles/sql-database-elastic-query-getting-started-vertical/#create-database-objects) | 在本教程中，你将学习如何使用[弹性查询](/documentation/articles/sql-database-elastic-query-overview)从位于垂直分区（分片）数据库中的所有数据库创建报表 |
+| [跨垂直分区数据库查询）](/documentation/articles/sql-database-elastic-query-getting-started-vertical/#create-database-objects) | 在本教程中，你将学习如何使用[弹性查询](/documentation/articles/sql-database-elastic-query-overview)从位于纵向分区数据库中的所有数据库创建报表 |
 | [迁移要横向扩展的现有数据库](/documentation/articles/sql-database-elastic-convert-to-use-elastic-tools)| 在本教程中，你将学习如何横向扩展（分片）Azure SQL 数据库。 |
 ||||
 
@@ -88,12 +88,12 @@
 | [使用“将数据库部署到 Azure 数据库”向导将 SQL Server 数据库迁移到 SQL 数据库](/documentation/articles/sql-database-cloud-migrate-compatible-using-ssms-migration-wizard/#use-the-deploy-database-to-microsoft-azure-database-wizard) | 在本教程中，你将学习如何在 SQL Server Management Studio 中使用“将数据库部署到 Azure 数据库”向导将兼容的 SQL Server 数据库迁移到 Azure SQL 数据库。
 | [使用 SSMS 将 SQL Server 数据库导出到 BACPAC 文件](/documentation/articles/sql-database-cloud-migrate-compatible-export-bacpac-ssms) | 在本教程中，你将学习如何在 SQL Server Management Studio 中使用“导出数据层应用程序”向导将兼容的 SQL Server 数据库导出到 BACPAC 文件。|
 | [使用 SqlPackage 将 SQL Server 数据库导出到 BACPAC 文件](/documentation/articles/sql-database-cloud-migrate-compatible-export-bacpac-sqlpackage) | 在本教程中，你将学习如何使用 SQLPackage.exe 命令行实用工具将兼容的 SQL Server 数据库导出到 BACPAC 文件。|
-| [使用 PowerShell 将 BACPAC 文件导入 Azure SQL 数据库](/documentation/articles/sql-database-cloud-migrate-compatible-import-bacpac-ssms) | 在本教程中，你将学习如何在 SQL Server Management Studio 中使用“导出数据层应用程序”向导将数据库从 BACPAC 文件导入 Azure SQL 数据库。 |
+| [使用 SSMS 将 BACPAC 文件导入 Azure SQL 数据库](/documentation/articles/sql-database-cloud-migrate-compatible-import-bacpac-ssms) | 在本教程中，你将学习如何在 SQL Server Management Studio 中使用“导出数据层应用程序”向导将数据库从 BACPAC 文件导入 Azure SQL 数据库。 |
 | [使用 SqlPackage 将 BACPAC 文件导入 Azure SQL 数据库](/documentation/articles/sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage/#import-from-a-bacpac-file-into-azure-sql-database-using-sqlpackage) | 在本教程中，你将学习如何使用 SQLPackage 命令行实用工具将数据库从 BACPAC 文件导入 Azure SQL 数据库。 |
 | [使用 Azure 门户将 BACPAC 文件导入 Azure SQL 数据库](/documentation/articles/sql-database-import) | 在本教程中，你将学习如何使用 Azure 门户将数据库从存储在 Azure blob 中的 BACPAC 文件导入 Azure SQL 数据库。|
 | [使用 PowerShell 将 BACPAC 文件导入 Azure SQL 数据库](/documentation/articles/sql-database-import-powershell) | 在本教程中，你将学习如何使用 PowerShell 将数据库从 BACPAC 文件导入 Azure SQL 数据库。|
 | [使用 Azure 门户存档 Azure SQL 数据库](/documentation/articles/sql-database-export/#export-your-database) | 在本教程中，你将学习如何使用 Azure 门户将 Azure SQL 数据库存档到 BACPAC 文件。 |
-| [使用 PowerShell 存档 Azure SQL 数据库](/documentation/articles/sql-database-export-powershell) | 在本教程中，你将学习如何使用 Azure 门户将 Azure SQL 数据库存档到 BACPAC 文件。 |
+| [使用 PowerShell 存档 Azure SQL 数据库](/documentation/articles/sql-database-export-powershell) | 在本教程中，你将学习如何使用 PowerShell 将 Azure SQL 数据库存档到 BACPAC 文件。 |
 | [使用 Azure 门户复制 Azure SQL 数据库](/documentation/articles/sql-database-copy/#copy-your-sql-database) | 在本教程中，你将学习如何使用 Azure 门户复制 Azure SQL 数据库。 |
 | [使用 PowerShell 复制 Azure SQL 数据库](/documentation/articles/sql-database-copy-powershell#copy-your-sql-database) | 在本教程中，你将学习如何使用 PowerShell 复制 Azure SQL 数据库。 |
 | [使用 Transact-SQL 复制 Azure SQL 数据库](/documentation/articles/sql-database-copy-transact-sql/#copy-your-sql-database) | 在本教程中，你将学习如何使用 Transact-SQL 复制 Azure SQL 数据库。 |
@@ -101,7 +101,7 @@
 
 ##开发
 
-在以下教程中，你将了解 [Azure SQL 数据库的客户端连接](/documentation/articles/sql-database-connect-central-recommendations)和使用[连接库](/documentation/articles/sql-database-libraries)。
+在以下教程中，你将了解 [SQL 数据库开发](/documentation/articles/sql-database-develop-overview)和使用[连接库](/documentation/articles/sql-database-libraries)。
 
 | 教程 | 说明 |
 |---|---|---|
@@ -147,7 +147,7 @@
 
 ## 业务连续性和查询横向扩展
 
-在以下教程中，你将学习如何使用[异地还原和活动异地复制](/documentation/articles/sql-database-business-continuity)从错误中恢复过来，以保持业务连续性和实现查询横向扩展。
+在以下教程中，你将学习如何使用[异地还原和活动异地复制](/documentation/articles/sql-database-business-continuity)从错误中恢复过来，以保持业务连续性和实现查询扩展。
 
 | 教程 | 说明 |
 |---|---|---|
@@ -172,4 +172,4 @@
 | [Azure SQL 数据同步入门（预览版）](/documentation/articles/sql-database-get-started-sql-data-sync) | 在本教程中，你将了解使用 Azure 经典门户的 Azure SQL 数据同步的基础知识。 |
 ||||
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0711_2016-->

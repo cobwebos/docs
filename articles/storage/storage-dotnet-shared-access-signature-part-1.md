@@ -1,6 +1,6 @@
 <properties 
 	pageTitle="共享访问签名：了解 SAS 模型 | Microsoft Azure" 
-	description="了解使用共享访问签名 (SAS) 委派对 Azure 存储空间资源（包括 Blob、队列、表和文件）的访问权限。使用共享访问签名，你可以保护你的存储帐户密钥，同时授权其他用户访问你的帐户中的资源。你可以控制你授予的权限以及 SAS 的有效期。如果你还建立存储访问策略，则在你担心你的帐户安全受到威胁时可以撤消该 SAS。" 
+	description="了解使用共享访问签名 (SAS) 委派对 Azure 存储空间资源（包括 Blob、队列、表和文件）的访问权限。共享访问签名可以保护你的存储帐户密钥，同时授权其他用户访问你的帐户中的资源。你可以控制你授予的权限以及 SAS 的有效期。如果你还建立存储访问策略，则在你担心你的帐户安全受到威胁时可以撤消该 SAS。"
 	services="storage" 
 	documentationCenter="" 
 	authors="tamram" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="02/14/2016"
+	ms.date="05/23/2016"
 	wacn.date=""/>
 
 
@@ -18,7 +18,7 @@
 
 ## 概述
 
-使用共享访问签名 (SAS) 是将对你的存储帐户中对象的受限访问权限授予其他客户端且不必公开帐户密钥的一种强大方法。在有关共享访问签名的教程的第 1 部分中，我们将概要介绍 SAS 模型并复习 SAS 最佳实践。本教程的[第 2 部分](/documentation/articles/storage-dotnet-shared-access-signature-part-2)将逐步引导你完成使用 Blob 服务创建共享访问签名的过程。
+使用共享访问签名 (SAS) 是将对你的存储帐户中对象的受限访问权限授予其他客户端且不必公开帐户密钥的一种强大方法。在有关共享访问签名的教程的第 1 部分中，我们将概要介绍 SAS 模型并复习 SAS 最佳实践。本教程的[第 2 部分](storage-dotnet-shared-access-signature-part-2.md)将逐步引导你完成使用 Blob 服务创建共享访问签名的过程。
 
 ## 什么是共享访问签名？
 
@@ -63,12 +63,12 @@ Azure 存储空间的版本 2015-04-05 引入了一种新的共享访问签名�
 
 ### 帐户 SAS 令牌和服务 SAS 令牌共有的参数
 
-- **Api 版本** 一个可选参数，它指定要用于执行请求的存储服务版本。 
+- **Api 版本** 一个可选参数，它指定要用于执行请求的存储服务版本。
 - **服务版本** 一个必需参数，它指定要用于对请求进行身份验证的存储服务版本。
-- **开始时间。** 这是 SAS 生效的时间。共享访问签名的开始时间是可选的；如果省略，SAS 将立即生效。 
-- **到期时间。** 这是之后 SAS 将不再有效的时间。最佳实践建议你或者为 SAS 指定到期时间，或者将其与某一存储访问策略相关联（有关更多信息，请参见下文）。
+- **开始时间。** 这是 SAS 生效的时间。共享访问签名的开始时间是可选的；如果省略，SAS 将立即生效。必须以 UTC（协调世界时）格式表示，并使用特殊的 UTC 指示符（“Z”），例如 1994-11-05T13:15:30Z。
+- **到期时间。** 这是之后 SAS 将不再有效的时间。最佳实践建议你或者为 SAS 指定到期时间，或者将其与某一存储访问策略相关联。必须以 UTC（协调世界时）格式表示，并使用特殊的 UTC 指示符（“Z”），例如 1994-11-05T13:15:30Z（详见下）。
 - **权限。** 对 SAS 指定的权限指示客户端可使用 SAS 对存储资源执行哪些操作。帐户 SAS 和服务 SAS 提供的权限不同。
-- **IP。** 一个可选参数，它指定 Azure 外部要从中接受请求的一个 IP 地址或 IP 地址范围（有关 Express Route，请参阅[路由会话配置状态](/documentation/articles/expressroute-workflows#routing-session-configuration-state)部分）。 
+- **IP。** 一个可选参数，它指定 Azure 外部要从中接受请求的一个 IP 地址或 IP 地址范围（有关 Express Route，请参阅[路由会话配置状态](/documentation/articles/expressroute-workflows#routing-session-configuration-state)部分）。
 - **协议。** 一个可选参数，它指定请求允许的协议。可能的值包括“HTTPS 和 HTTP”(https,http)（它是默认值）或者“仅限 HTTPS”(https)。请注意，“仅限 HTTP”是不允许的值。
 - **签名。** 签名由指定为部分令牌的其他参数构造，然后进行加密。它用于对 SAS 进行身份验证。
 
@@ -98,8 +98,8 @@ Azure 存储空间的版本 2015-04-05 引入了一种新的共享访问签名�
 ---|---|---
 Blob URI|https://myaccount.blob.core.chinacloudapi.cn/sascontainer/sasblob.txt | Blob 的地址。请注意，强烈建议使用 HTTPS。
 存储服务版本|sv=2015-04-05|对于存储服务版本 2012-02-12 和更高版本，此参数指示要使用的版本。
-开始时间|st=2015-04-29T22%3A18%3A26Z|以 ISO 8601 格式指定。如果你想要 SAS 立即生效，则省略开始时间。
-到期时间|se=2015-04-30T02%3A23%3A26Z|以 ISO 8601 格式指定。
+开始时间|st=2015-04-29T22%3A18%3A26Z|以 UTC 时间格式指定。如果你想要 SAS 立即生效，则省略开始时间。
+到期时间|se=2015-04-30T02%3A23%3A26Z|以 UTC 时间格式指定。
 资源|sr=b|资源是 Blob。
 权限|sp=rw|SAS 授予的权限包括读取 (r) 和写入 (w)。
 IP 范围|sip=168.1.5.60-168.1.5.70|将从中接受请求的 IP 地址范围。
@@ -110,7 +110,7 @@ IP 范围|sip=168.1.5.60-168.1.5.70|将从中接受请求的 IP 地址范围。
 
 	https://myaccount.blob.core.chinacloudapi.cn/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
 
-名称|SAS 部分|说明
+Name|SAS 部分|说明
 ---|---|---
 资源 URI|https://myaccount.blob.core.chinacloudapi.cn/?restype=service&comp=properties|The Blob 服务终结点，包含用于获取服务属性（使用 GET 调用时）或设置服务属性（使用 SET 调用时）的参数。
 服务|ss=bf|该 SAS 适用于 Blob 和文件服务
@@ -123,7 +123,7 @@ IP 范围|sip=168.1.5.60-168.1.5.70|将从中接受请求的 IP 地址范围。
 
 共享访问签名可以采取以下两种形式的一种：
 
-- **临时 SAS：**在你创建一个临时 SAS 时，针对该 SAS 的开始时间、到期时间和权限全都在 SAS URI 上指定（在省略开始时间的情况下，也可以是暗示的）。这种类型的 SAS 可以创建为帐户 SAS 或服务 SAS。 
+- **临时 SAS：**在你创建一个临时 SAS 时，针对该 SAS 的开始时间、到期时间和权限全都在 SAS URI 上指定（在省略开始时间的情况下，也可以是暗示的）。这种类型的 SAS 可以创建为帐户 SAS 或服务 SAS。
 
 - **具有存储访问策略的 SAS：**存储访问策略是对资源容器（Blob 容器、表、队列或文件共享）定义的，可用于管理针对一个或多个共享访问签名的约束。在你将某一 SAS 与一个存储访问策略相关联时，该 SAS 将继承对该存储访问策略定义的约束：开始时间、到期时间和权限。
 
@@ -145,7 +145,7 @@ IP 范围|sip=168.1.5.60-168.1.5.70|将从中接受请求的 IP 地址范围。
 若要运行这些示例，需下载和引用以下包：
 
 - [适用于 .NET 的 Azure 存储客户端库](http://www.nuget.org/packages/WindowsAzure.Storage) 6.x 或更高版本（以便使用帐户 SAS）。
-- [Azure 配置管理器](http://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) 
+- [Azure 配置管理器](http://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager)
 
 ### 示例：帐户 SAS
 
@@ -154,8 +154,8 @@ IP 范围|sip=168.1.5.60-168.1.5.70|将从中接受请求的 IP 地址范围。
     static string GetAccountSASToken()
     {
         // To create the account SAS, you need to use your shared key credentials. Modify for your account.
-        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-            Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+	    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.chinacloudapi.cn";
+	    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
 
         // Create a new access policy for the account.
         SharedAccessAccountPolicy policy = new SharedAccessAccountPolicy()
@@ -177,8 +177,8 @@ IP 范围|sip=168.1.5.60-168.1.5.70|将从中接受请求的 IP 地址范围。
     {
         // In this case, we have access to the shared key credentials, so we'll use them
         // to get the Blob service endpoint.
-        CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-            Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
+	    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.chinacloudapi.cn";
+	    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
         CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
         // Create new storage credentials using the SAS token.
@@ -222,9 +222,9 @@ IP 范围|sip=168.1.5.60-168.1.5.70|将从中接受请求的 IP 地址范围。
 以下代码示例在容器上创建存储访问策略，然后为该容器生成服务 SAS。然后可以将此 SAS 提供给客户端，使其获得对容器的读/写权限。更改代码以使用你自己的帐户名：
 
     // Parse the connection string for the storage account.
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-        Microsoft.Azure.CloudConfigurationManager.GetSetting("StorageConnectionString"));
-    
+    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.chinacloudapi.cn";
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
+
     // Create the storage account with the connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
        
@@ -285,7 +285,7 @@ IP 范围|sip=168.1.5.60-168.1.5.70|将从中接受请求的 IP 地址范围。
 当你在应用程序中使用共享访问签名时，需要知道以下两个可能的风险：
 
 - 如果 SAS 泄露，则获取它的任何人都可以使用它，这可能会损害你的存储帐户。
-- 如果提供给客户端应用程序的 SAS 到期并且应用程序无法从你的服务检索新 SAS，则可能会影响该应用程序的功能。  
+- 如果提供给客户端应用程序的 SAS 到期并且应用程序无法从你的服务检索新 SAS，则可能会影响该应用程序的功能。
 
 下面这些针对使用共享访问签名的建议将帮助化解这些风险：
 
@@ -317,4 +317,4 @@ IP 范围|sip=168.1.5.60-168.1.5.70|将从中接受请求的 IP 地址范围。
 
  
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0711_2016-->

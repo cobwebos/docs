@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="03/03/2016"
+   ms.date="05/31/2016"
    wacn.date=""/>
 
 #在 SQL 数据仓库中利用其他服务
@@ -42,4 +42,4 @@ Azure 流分析是复杂、完全托管的基础结构，用于处理和使用�
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0711_2016-->

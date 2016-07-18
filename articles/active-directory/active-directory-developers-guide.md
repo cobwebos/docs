@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="04/02/2016"
+   ms.date="06/06/2016"
    wacn.date=""/>
 
 
@@ -58,10 +58,9 @@
 |:--:|
 |[Graph API](/documentation/articles/active-directory-graph-api-quickstart)|
 
+## 操作方法
 
-## 操作说明
-
-以下文章介绍如何使用 Azure Active Directory (AD) 执行具体的任务。
+以下文章介绍如何使用 Azure Active Directory 执行特定任务：
 
 - [获取 Azure Active Directory 租户](/documentation/articles/active-directory-howto-tenant)
 - [列出 Azure Active Directory 应用程序库中的应用程序](/documentation/articles/active-directory-app-gallery-listing)
@@ -87,7 +86,7 @@
 
 - [ADAL for .NET](https://msdn.microsoft.com/library/azure/mt417579.aspx)：.NET 身份验证库文档。
 
-### Graph API
+### 图形 API
 
 - [图形 API 参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)：Azure Active Directory 图形 API 的 REST 参考。[查看交互式图形 API 参考体验](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)。
 
@@ -118,4 +117,4 @@
 
 - [Twitter 上的 Azure Active Directory](https://twitter.com/azuread)：以 140 个或更少的字符发布的 Azure Active Directory 公告。
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0711_2016-->

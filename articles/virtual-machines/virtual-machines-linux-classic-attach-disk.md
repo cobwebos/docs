@@ -10,12 +10,12 @@
 
 <tags
 	ms.service="virtual-machines-linux"
-	ms.date="04/04/2016"
+	ms.date="06/07/2016"
 	wacn.date=""/>
 
 # 如何将数据磁盘附加到 Linux 虚拟机
 
-> [AZURE.IMPORTANT] Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器和经典](/documentation/articles/resource-manager-deployment-model)。本文介绍使用经典部署模型。Microsoft 建议大多数新部署使用 [Resource Manager 模型](/documentation/articles/virtual-machines-linux-add-disk)。
+> [AZURE.IMPORTANT] Azure 具有用于创建和处理资源的两个不同的部署模型：[资源管理器和经典](/documentation/articles/resource-manager-deployment-model)。本文介绍使用经典部署模型。Azure 建议大多数新部署使用 [Resource Manager 模型](/documentation/articles/virtual-machines-linux-add-disk)。
 
 你可以将空磁盘和包含数据的磁盘附加到 Azure VM。这两种类型的磁盘是驻留在 Azure 存储帐户中的 .vhd 文件。就像将任何磁盘添加到 Linux 计算机一样，连接之后需要将它初始化和格式化才可供使用。本文将详细说明如何附加空磁盘和附加包含数据的磁盘到 VM，以及初始化和格式化新磁盘的方法。
 
@@ -24,7 +24,7 @@
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../includes/howto-attach-disk-linux.md)]
 
-## 在 Linux 中初始化新的数据磁盘
+##<a name="how-to-initialize-a-new-data-disk-in-linux"></a> 在 Linux 中初始化新的数据磁盘
 
 1. 通过 SSH 连接到你的 VM。有关更多详细信息，请参阅[如何登录到运行 Linux 的虚拟机][Logon]。
 
@@ -157,15 +157,17 @@
 
 >[AZURE.NOTE] 之后，在不编辑 fstab 的情况下删除数据磁盘可能会导致 VM 无法引导。如果这是一种常见情况，则请注意，大多数分发都提供了 `nofail` 和/或 `nobootwait` fstab 选项，这些选项使系统在磁盘无法装载的情况下也能引导。有关这些参数的详细信息，请查阅您的分发文档。
 
-## 其他资源
-[如何登录到运行 Linux 的虚拟机][Logon]
+## 后续步骤
+你可以阅读下列文章，进一步了解如何使用 Linux VM：
 
-[如何从 Linux 虚拟机分离磁盘](/documentation/articles/virtual-machines-linux-classic-detach-disk)
+- [如何登录到运行 Linux 的虚拟机][Logon]
 
-[使用带服务管理 API 的 Azure CLI](/documentation/articles/virtual-machines-command-line-tools)
+- [如何从 Linux 虚拟机分离磁盘](/documentation/articles/virtual-machines-linux-classic-detach-disk)
+
+- [将 Azuer CLI 与经典部署模型搭配使用](/documentation/articles/virtual-machines-command-line-tools)
 
 <!--Link references-->
 [Agent]: /documentation/articles/virtual-machines-linux-agent-user-guide
 [Logon]: /documentation/articles/virtual-machines-linux-classic-log-on
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0711_2016-->

@@ -1,15 +1,15 @@
 <properties 
-	pageTitle="使用 PowerShell 在 Azure 云服务中启用诊断 | Microsoft Azure" 
+	pageTitle="使用 PowerShell 在 Azure 云服务中启用诊断 | Azure" 
 	description="了解如何使用 PowerShell 为云服务启用诊断" 
 	services="cloud-services" 
 	documentationCenter=".net" 
-	authors="sbtron" 
-	manager="" 
+	authors="Thraka"
+	manager="timlt"
 	editor=""/>
 
 <tags 
 	ms.service="cloud-services" 
-	ms.date="02/09/2016" 
+	ms.date="06/07/2016"
 	wacn.date=""/>
 
 
@@ -19,7 +19,7 @@
 
 ## 在部署云服务过程中启用诊断扩展
 
-此方法适合持续集成类型的方案，在这些方案中可以在部署云服务的过程中启用诊断扩展。创建新的云服务部署时，可以通过向 [New-AzureDeployment](https://msdn.microsoft.com/zh-cn/library/azure/mt589089.aspx) cmdlet 传入 *ExtensionConfiguration* 参数来启用诊断扩展。*ExtensionConfiguration* 参数取值为可通过 [New-AzureServiceDiagnosticsExtensionConfig](https://msdn.microsoft.com/zh-cn/library/azure/mt589168.aspx) cmdlet 创建的诊断配置数组。
+此方法适合持续集成类型的方案，在这些方案中可以在部署云服务的过程中启用诊断扩展。创建新的云服务部署时，可以通过向 [New-AzureDeployment](https://msdn.microsoft.com/zh-cn/library/azure/mt589089.aspx) cmdlet 传入 ExtensionConfiguration 参数来启用诊断扩展。ExtensionConfiguration 参数取值为可通过 [New-AzureServiceDiagnosticsExtensionConfig](https://msdn.microsoft.com/zh-cn/library/azure/mt589168.aspx) cmdlet 创建的诊断配置数组。
 
 以下示例演示如何为某个云服务（其中的 WebRole 和 WorkerRole 拥有不同的诊断配置）启用诊断。
 
@@ -110,7 +110,7 @@ Visual Studio Online 使用类似的方法通过诊断扩展自动部署云服�
 
 	Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 
-如果你使用不带 *Role* 参数的 *Set-AzureServiceDiagnosticsExtension* 或 *New-AzureServiceDiagnosticsExtensionConfig* 启用了诊断扩展，则可以使用不带 *Role* 参数的 *Remove-AzureServiceDiagnosticsExtension* 删除该扩展。如果启用扩展时使用了 *Role* 参数，则删除扩展时也必须使用该参数。
+如果你使用不带 Role 参数的 Set-AzureServiceDiagnosticsExtension 或 New-AzureServiceDiagnosticsExtensionConfig 启用了诊断扩展，则可以使用不带 Role 参数的 Remove-AzureServiceDiagnosticsExtension 删除该扩展。如果启用扩展时使用了 Role 参数，则删除扩展时也必须使用该参数。
 
 若要从单个角色中删除诊断扩展，请使用以下命令：
 
@@ -121,5 +121,8 @@ Visual Studio Online 使用类似的方法通过诊断扩展自动部署云服�
 
 - 有关使用 Azure 诊断和其他方法排查问题的详细说明，请参阅[在 Azure 云服务和虚拟机中启用诊断](/documentation/articles/cloud-services-dotnet-diagnostics)。
 - [诊断配置架构](https://msdn.microsoft.com/zh-cn/library/azure/dn782207.aspx)说明了诊断扩展的各种 XML 配置选项。
+- 若要了解如何为虚拟机启用诊断扩展，请参阅[使用 Azure 资源管理器模板创建具有监视和诊断功能的 Windows 虚拟机](/documentation/articles/virtual-machines-windows-extensions-diagnostics-template)
 
-<!---HONumber=Mooncake_0307_2016-->
+
+
+<!---HONumber=Mooncake_0711_2016-->
