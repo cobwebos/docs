@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用经典部署模型将 Windows Server 或客户端备份到 Azure | Microsoft Azure"
+	pageTitle="使用经典部署模型将 Windows Server 或客户端备份到 Azure | Azure"
 	description="通过创建备份保管库、下载凭据、安装备份代理并完成文件和文件夹的初始备份，将 Windows 服务器或客户端备份到 Azure。"
 	services="backup"
 	documentationCenter=""
@@ -24,7 +24,7 @@
 
 ![创建保管库](./media/backup-configure-vault-classic/initial-backup-process.png)
 
->[AZURE.IMPORTANT] Azure 具有用于创建和处理资源的两个不同的部署模型：Resource Manager 模型和经典模型。本文介绍使用经典部署模型。Microsoft 建议大多数新部署使用资源管理器模型。
+>[AZURE.IMPORTANT] Azure 具有用于创建和处理资源的两个不同的部署模型：Resource Manager 模型和经典模型。本文介绍使用经典部署模型。Azure 建议大多数新部署使用 Resource Manager 模型。
 
 ## 开始之前
 若要将服务器或客户端备份到 Azure，你需要一个 Azure 帐户。如果你没有帐户，只需几分钟的时间就能创建一个[免费帐户](https://azure.microsoft.com/free/)。
@@ -75,7 +75,7 @@
     d.在左侧导航窗格中单击“恢复服务”，以返回到恢复服务的资源列表。
 
 ## 步骤 2：下载保管库凭据文件
-本地计算机需要先在备份保存库中通过身份验证才能将数据备份到 Azure。身份验证是通过保管库凭据实现的。从经典门户通过安全通道下载保管库凭据文件。证书私钥不会在门户或服务中持久保存。
+本地计算机需要先在备份保存库中通过身份验证才能将数据备份到 Azure。身份验证是通过*保管库凭据*实现的。从经典门户通过安全通道下载保管库凭据文件。证书私钥不会在门户或服务中持久保存。
 
 详细了解[如何使用保管库凭据向备份服务进行身份验证](backup-introduction-to-azure-backup.md#what-is-the-vault-credential-file)。
 
@@ -222,4 +222,4 @@
 - [Back up workloads to Azure with Microsoft Azure Backup Server（使用 Microsoft Azure 备份服务器将工作负荷备份到 Azure）](backup-azure-microsoft-azure-backup.md)
 - [Back up workloads to Azure with DPM（使用 DPM 将工作负荷备份到 Azure）](backup-azure-dpm-introduction.md)
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=AcomDC_0718_2016-->

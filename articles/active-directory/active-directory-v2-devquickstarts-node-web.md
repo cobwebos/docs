@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	wacn.date=""/>
 
 # 将登录凭据添加到 nodeJS Web 应用
@@ -36,7 +36,7 @@
 本教程末尾也提供完成的应用程序。
 
 ## 1\.注册应用程序
-在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) 中创建新的应用程序，或遵循以下[详细步骤](/documentation/articles/active-directory-v2-app-registration)。请确保：
+在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) 中创建新的应用，或遵循以下[详细步骤](/documentation/articles/active-directory-v2-app-registration/)。请确保：
 
 - 复制分配给应用程序的**应用程序 ID**，因为稍后将要用到。
 - 为应用程序添加 **Web** 平台。
@@ -410,10 +410,14 @@ exports.list = function(req, res){
 
 现在，可以转到更高级的主题。你可能想要尝试：
 
-[使用 v2.0 终结点保护 node.js Web API >>](/documentation/articles/active-directory-v2-devquickstarts-node-api)
+[使用 v2.0 终结点保护 node.js Web API >>](/documentation/articles/active-directory-v2-devquickstarts-node-api/)
 
 有关更多资源，请查看：
-- [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
+- [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview/)
 - [堆栈溢出“azure-active-directory”标记 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Mooncake_0620_2016-->
+## 获取关于我们产品的安全更新
+
+建议发生安全事件时获取相关通知，方法是访问[此页](https://technet.microsoft.com/security/dd252948)并订阅“安全公告通知”。
+
+<!---HONumber=Mooncake_0718_2016-->

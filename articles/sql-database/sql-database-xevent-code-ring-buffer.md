@@ -1,22 +1,23 @@
 <properties 
-	pageTitle="SQL 数据库的 XEvent 环形缓冲区代码 | Microsoft Azure" 
+	pageTitle="SQL 数据库的 XEvent 环形缓冲区代码 | Azure" 
 	description="提供一个 Transact-SQL 代码示例，以帮助你快速轻松地在 Azure SQL 数据库中使用环形缓存区目标。" 
 	services="sql-database" 
 	documentationCenter="" 
 	authors="MightyPen" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	editor="" 
 	tags=""/>
 
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="12/30/2015" 
+	ms.date="06/03/2016" 
 	wacn.date=""/>
 
 
 # SQL 数据库中扩展事件的环形缓冲区目标代码
 
+[AZURE.INCLUDE [sql-database-xevents-selectors-1-include](../includes/sql-database-xevents-selectors-1-include.md)]
 
 你需要完整的代码示例以最简单快速的方式在测试期间捕获和报告扩展事件的信息。扩展事件数据最简单的目标是[环形缓冲区目标](http://msdn.microsoft.com/zh-cn/library/ff878182.aspx)。
 
@@ -51,13 +52,13 @@
 
 
 - 可以在其中创建表的任何数据库。
- - 你可以选择快速[创建一个 **AdventureWorksLT** 演示数据库](/documentation/articles/sql-database-get-started)。
+ - 你可以选择快速[创建一个 **AdventureWorksLT** 演示数据库](/documentation/articles/sql-database-get-started/)。
 
 
 - SQL Server Management Studio (ssms.exe) 2015 年 8 月预览版或更高版本。可从以下位置下载最新的 ssms.exe：
  - [主题中的链接。](http://msdn.microsoft.com/zh-cn/library/mt238290.aspx)
  - [直接指向下载位置的链接。](http://go.microsoft.com/fwlink/?linkid=616025)
- - Microsoft 建议你定期更新 ssms.exe（可以每月更新一次）。
+ - Azure 建议你定期更新 ssms.exe（可以每月更新一次）。
 
 
 ## 代码示例
@@ -365,13 +366,13 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 有关 Azure SQL 数据库中扩展事件的主要主题是：
 
 
-- [SQL 数据库中扩展事件的注意事项](/documentation/articles/sql-database-xevent-db-diff-from-svr)，对比 Azure SQL 数据库与 Microsoft SQL Server 的扩展事件的某些方面。
+- [SQL 数据库中扩展事件的注意事项](/documentation/articles/sql-database-xevent-db-diff-from-svr/)，对比 Azure SQL 数据库与 Microsoft SQL Server 的扩展事件的某些方面。
 
 
 可通过以下链接访问有关扩展事件的其他代码示例主题。不过，你必须定期检查所有示例，以确定这些示例是针对 Microsoft SQL Server 还是 Azure SQL 数据库。然后，你可以在运行示例时确定是否要做出细微的更改。
 
 
-- Azure SQL 数据库的代码示例：[SQL 数据库中扩展事件的事件文件目标代码](/documentation/articles/sql-database-xevent-code-event-file)
+- Azure SQL 数据库的代码示例：[SQL 数据库中扩展事件的事件文件目标代码](/documentation/articles/sql-database-xevent-code-event-file/)
 
 
 <!--
@@ -381,4 +382,4 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 - Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/zh-cn/library/bb630355.aspx)
 -->
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0718_2016-->

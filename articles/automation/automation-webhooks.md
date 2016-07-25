@@ -1,26 +1,23 @@
+<!-- not suitable for Mooncake -->
+
 <properties 
-   pageTitle="Azure 自动化 Webhook | Microsoft Azure"
+   pageTitle="Azure 自动化 webhook | Azure"
    description="一个可供客户端通过 HTTP 调用在 Azure 自动化中启动 Runbook 的 Webhook。本文介绍了如何创建 Webhook，以及如何通过调用 Webhook 来启动 Runbook。"
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
-   manager="stevenka"
+   manager="jwhit"
    editor="tysonn" />
 <tags 
-   ms.service="automation"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
-   ms.date="02/23/2016"
-   ms.author="magoedte;bwren;sngun"/>
+	ms.service="automation"
+	ms.date="05/24/2016"
+	wacn.date=""/>
 
 # Azure 自动化 Webhook
 
-*Webhook* 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特定的 Runbook。这样，外部服务（例如 Visual Studio Team Services、GitHub 或自定义应用程序）就可以在不通过 Azure 自动化 API 实施完整解决方案的情况下启动 Runbook。  
-![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
+*Webhook* 可以用来在 Azure 自动化中通过单个 HTTP 请求来启动特定的 Runbook。这样，外部服务（例如 Visual Studio Team Services、GitHub 或自定义应用程序）就可以在不通过 Azure 自动化 API 实现完整解决方案的情况下启动 Runbook。![WebhooksOverview](./media/automation-webhooks/webhook-overview-image.png)
 
-你可以将 Webhook 与[在 Azure 自动化中启动 Runbook](automation-starting-a-runbook.md) 中其他启动 Runbook 的方法进行比较。
+你可以将 Webhook 与[在 Azure 自动化中启动 Runbook](/documentation/articles/automation-starting-a-runbook/) 中其他启动 Runbook 的方法进行比较。
 
 ## Webhook 详细信息
 
@@ -39,7 +36,7 @@ Webhook 可以定义 Runbook 参数的值，当该 Webhook 启动 Runbook 时会
 
 客户端在使用 Webhook 启动 Runbook 时，不能重写在 Webhook 中定义的参数值。为了从客户端接收数据，Runbook 可能会接受名为 **$WebhookData** 且类型为 [object] 的单个参数，该参数会包含客户端包括在 POST 请求中的数据。
 
-![Webhookdata 属性](media/automation-webhooks/webhook-data-properties.png)
+![Webhookdata 属性](./media/automation-webhooks/webhook-data-properties.png)
 
 **$WebhookData** 对象将具有以下属性：
 
@@ -56,19 +53,19 @@ Webhook 可以定义 Runbook 参数的值，当该 Webhook 启动 Runbook 时会
 
 例如，如果你要从 Azure 门户启动以下 Runbook，并想要传递一些 WebhookData 示例进行测试。由于 WebhookData 为对象，因此应以 UI 中的 JSON 进行传递。
 
-![UI 中的 WebhookData 参数](media/automation-webhooks/WebhookData-parameter-from-UI.png)
+![UI 中的 WebhookData 参数](./media/automation-webhooks/WebhookData-parameter-from-UI.png)
 
 针对上述 Runbook，如果 WebhookData 参数具有以下属性：
 
 1. WebhookName：*MyWebhook*
 2. RequestHeader：*From=Test User*
-3. RequestBody：*[“VM1”, “VM2”]*
+3. RequestBody：*["VM1", "VM2"]*
 
 那么，应为 WebhookData 参数传递以下 UI 中的 JSON 值：
 
 * {"WebhookName":"MyWebhook", "RequestHeader":{"From":"Test User"}, "RequestBody":"["VM1","VM2"]"}
 
-![UI 中的启动 WebhookData 参数](media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
+![UI 中的启动 WebhookData 参数](./media/automation-webhooks/Start-WebhookData-parameter-from-UI.png)
 
 
 >[AZURE.NOTE] 所有输入参数的值都会通过 Runbook 作业进行记录。这意味着，客户端在 Webhook 请求中提供的任何输入都将记录下来，并可供有权访问自动化作业的任何人使用。因此，在 Webhook 调用中包括敏感信息时，应该特别小心。
@@ -85,11 +82,11 @@ Webhook 的安全性取决于其 URL 的私密性，可以通过 URL 中包含�
 
 在 Azure 门户中使用以下过程来创建新的链接到 Runbook 的 Webhook。
 
-1. 在 Azure 门户的“Runbook”边栏选项卡中，单击需要通过 Webhook 来启动以查看其详细信息边栏选项卡的 Runbook。 
-3. 单击边栏选项卡顶部的 **Webhook** 以打开“添加 Webhook”边栏选项卡。<br> ![Webhook 按钮](media/automation-webhooks/webhooks-button.png)
+1. 在 Azure 门户的“Runbook”边栏选项卡中，单击需要通过 Webhook 来启动以查看其详细信息边栏选项卡的 Runbook。
+3. 单击边栏选项卡顶部的 **Webhook** 以打开“添加 Webhook”边栏选项卡。<br> ![Webhook 按钮](./media/automation-webhooks/webhooks-button.png)
 4. 单击“创建新的 Webhook”以打开“创建 Webhook 边栏选项卡”。
 5. 指定 Webhook 的“名称”、“到期日期”，以及是否应启用它。若需这些属性的详细信息，请参阅 [Webhook 详细信息](#details-of-a-webhook)。
-6. 单击复制图标，然后按 Ctrl+C 以复制 Webhook 的 URL。然后，将其记录在某个安全的位置。**一旦创建 Webhook，你就不能再次检索该 URL。**<br> ![Webhook URL](media/automation-webhooks/copy-webhook-url.png)
+6. 单击复制图标，然后按 Ctrl+C 以复制 Webhook 的 URL。然后，将其记录在某个安全的位置。**一旦创建 Webhook，你就不能再次检索该 URL。**<br> ![Webhook URL](./media/automation-webhooks/copy-webhook-url.png)
 3. 单击“参数”为 Runbook 参数提供值。如果 Runbook 包含必需的参数，除非提供了相应的值，否则你无法创建 Webhook。
 1. 单击“创建”以创建 Webhook。
 
@@ -113,7 +110,7 @@ Webhook 的安全性取决于其 URL 的私密性，可以通过 URL 中包含�
 
 	{"JobIds":["<JobId>"]}  
 
-客户端无法从 Webhook 确定 Runbook 的作业何时完成或其完成状态。可以使用作业 ID 并配合其他方法（例如 [Windows PowerShell](http://msdn.microsoft.com/library/azure/dn690263.aspx) 或 [Azure 自动化 API](https://msdn.microsoft.com/library/azure/mt163826.aspx)）来确定此信息。
+客户端无法从 Webhook 确定 Runbook 的作业何时完成或其完成状态。可以使用作业 ID 并配合其他方法（例如 [Windows PowerShell](http://msdn.microsoft.com/zh-cn/library/azure/dn690263.aspx) 或 [Azure 自动化 API](https://msdn.microsoft.com/zh-cn/library/azure/mt163826.aspx)）来确定此信息。
 
 ### 示例
 
@@ -136,15 +133,15 @@ Runbook 预期请求的正文中包含 JSON 格式的虚拟机列表。我们还
 
 下图显示此请求中的标头信息（使用 [Fiddler](http://www.telerik.com/fiddler) 跟踪）。这包括 HTTP 请求的标准标头，除此之外，还有我们添加的自定义“日期”和“时间”标头。其中每个值可以在 **WebhookData** 的 **RequestHeaders** 属性中提供给 Runbook 使用。
 
-![Webhook 按钮](media/automation-webhooks/webhook-request-headers.png)
+![Webhook 按钮](./media/automation-webhooks/webhook-request-headers.png)
 
 下图显示请求的正文（使用 [Fiddler](http://www.telerik.com/fiddler) 跟踪）可在 **WebhookData** 的 **RequestBody** 属性中提供给 Runbook 使用。格式化为 JSON 是因为其格式是请求正文中包含的格式。
 
-![Webhook 按钮](media/automation-webhooks/webhook-request-body.png)
+![Webhook 按钮](./media/automation-webhooks/webhook-request-body.png)
 
 下图显示了从 Windows PowerShell 发送的请求以及生成的响应。作业 ID 从响应中提取，并转换为字符串。
 
-![Webhook 按钮](media/automation-webhooks/webhook-request-response.png)
+![Webhook 按钮](./media/automation-webhooks/webhook-request-response.png)
 
 以下示例 Runbook 将接受前面的示例请求，并启动请求正文中指定的虚拟机。
 
@@ -187,22 +184,22 @@ Runbook 预期请求的正文中包含 JSON 格式的虚拟机列表。我们还
 
 ## 启动 Runbook 以响应 Azure 警报
 
-启用 Webhook 的 Runbook 可用以响应 [Azure 警报](../azure-portal/insights-receive-alert-notifications.md)。Azure 中的资源可以借助 Azure 警报通过收集性能、可用性和使用情况等统计信息进行监视。可以收到根据监视 Azure 资源的计量或事件的警报，目前自动化帐户仅支持度量值。当指定的计量值超过分配的阈值，或者如果触发了配置的事件时，就会向服务管理员或共同管理员发送通知以解决该警报。有关度量值与事件的详细信息，请参阅 [Azure alerts](../azure-portal/insights-receive-alert-notifications.md)（Azure 警报）。
+启用 Webhook 的 Runbook 可用以响应 [Azure 警报](/documentation/articles/insights-receive-alert-notifications/)。Azure 中的资源可以借助 Azure 警报通过收集性能、可用性和使用情况等统计信息进行监视。可以收到根据监视 Azure 资源的计量或事件的警报，目前自动化帐户仅支持度量值。当指定的度量值超过分配的阈值时，或者如果触发了配置的事件，就会向服务管理员或共同管理员发送通知以解决该警报。有关度量值和事件的详细信息，请参阅 [Azure alerts（Azure 警报）](/documentation/articles/insights-receive-alert-notifications/)。
 
 除了使用 Azure 警报作为通知系统以外，还可以使用 Runbook 响应警报。Azure 自动化可让你使用 Azure 警报运行启用 Webhook 的 Runbook。当某个度量值超过配置的阈值时，警报规则将会激活，并触发自动化 Webhook，后者将执行 Runbook。
 
-![Webhook](media/automation-webhooks/webhook-alert.jpg)
+![Webhook](./media/automation-webhooks/webhook-alert.jpg)
 
 ### 警报上下文
 
 考虑虚拟机等 Azure 资源，这台计算机的 CPU 使用率是其中一个关键性能度量值。如果 CPU 使用率是 100% 或者在一段长时间超过某个量，你可能想要重新启动虚拟机以解决问题。这可以通过配置虚拟机的警报规则来解决，而此规则可以使用 CPU 百分比作为度量值。此处的 CPU 百分比只是一个示例，但是还有许多可以对 Azure 资源配置的其他度量值，重新启动虚拟机是解决此问题采取的一种措施，你可以将 Runbook 配置为采取其他措施。
 
-当此警报规则活动并触发启用 Webhook 的 Runbook 时，将向 Runbook 发送警报上下文。[警报上下文](../azure-portal/insights-receive-alert-notifications.md)中的详细信息包括 **SubscriptionID**、**ResourceGroupName**、**ResourceName**、**ResourceType**、**ResourceId** 和 **Timestamp**，这些都是 Runbook 识别在其上采取措施的资源所需的项。警报上下文嵌入在发送到 Runbook 的 **WebhookData** 对象的正文部分，可以使用 **Webhook.RequestBody** 属性访问
+当此警报规则活动并触发启用 Webhook 的 Runbook 时，将向 Runbook 发送警报上下文。[警报上下文](/documentation/articles/insights-receive-alert-notifications/)中的详细信息包括 **SubscriptionID**、**ResourceGroupName**、**ResourceName**、**ResourceType**、**ResourceId** 和 **Timestamp**，这些都是 Runbook 识别在其上执行操作的资源所需的项。警报上下文嵌入在发送到 Runbook 的 **WebhookData** 对象的正文部分，可以使用 **Webhook.RequestBody** 属性访问
 
 
 ### 示例
 
-在订阅中创建 Azure 虚拟机，并关联[警报以监视 CPU 百分比度量值](../azure-portal/insights-receive-alert-notifications.md)。创建警报时，请确保使用创建 Webhook 时生成的 Webhook URL 填充 Webhook 字段。
+在订阅中创建 Azure 虚拟机，并关联[用于监视 CPU 百分比度量值的警报](/documentation/articles/insights-receive-alert-notifications/)。创建警报时，请确保使用创建 Webhook 时生成的 Webhook URL 填充 Webhook 字段。
 
 以下示例 Runbook 在警报规则激活时触发，并收集 Runbook 识别在上面采取措施的资源所需的警报上下文参数。
 
@@ -269,8 +266,8 @@ Runbook 预期请求的正文中包含 JSON 格式的虚拟机列表。我们还
 
 ## 后续步骤
 
-- 有关以不同方式启动 Runbook 的详细信息，请参阅 [Starting a Runbook（启动 Runbook）](automation-starting-a-runbook.md)
-- 有关查看 Runbook 作业状态的详细信息，请参阅 [Runbook execution in Azure Automation（在 Azure 自动化中执行 Runbook）](automation-runbook-execution.md)
-- [Using Azure Automation to take actions on Azure Alerts（使用 Azure 自动化对 Azure 警报采取措施）](https://azure.microsoft.com/blog/using-azure-automation-to-take-actions-on-azure-alerts/)
+- 有关以不同方式启动 Runbook 的详细信息，请参阅 [Starting a Runbook（启动 Runbook）](/documentation/articles/automation-starting-a-runbook/)
+- 有关查看 Runbook 作业状态的信息，请参阅 [Runbook execution in Azure Automation（在 Azure 自动化中执行 Runbook）](/documentation/articles/automation-runbook-execution/)
+- 若要了解如何使用 Azure 自动化对 Azure 警报执行操作，请参阅 [Remediate Azure VM Alerts with Automation Runbooks（使用自动化 Runbook 解决 Azure VM 警报）](/documentation/articles/automation-azure-vm-alert-integration/)
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=AcomDC_0718_2016-->

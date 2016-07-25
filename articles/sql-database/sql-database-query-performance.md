@@ -4,39 +4,34 @@
    services="sql-database" 
    documentationCenter="" 
    authors="stevestein" 
-   manager="jeffreyg" 
+   manager="jhubbard" 
    editor="monicar"/>
 
 <tags
    ms.service="sql-database"
-   ms.devlang="na"
-   ms.topic="article"
-   ms.tgt_pltfrm="na"
-   ms.workload="data-management" 
-   ms.date="02/03/2016"
-   ms.author="sstein"/>
+   ms.date="05/05/2016"
+   wacn.date=""/>
 
 # Azure SQL 数据库 Query Performance Insight
 
 
 管理和优化关系数据库性能是一项颇具挑战性的操作，需要投入大量的专业知识和时间。Query Performance Insight 提供以下功能，使你能够花费更少的时间来排查数据库性能问题：
 
-- 深入洞察数据库资源 (DTU) 的消耗。 
-- 排名靠前的 CPU 消耗查询，经过优化后可能会改善性能。 
+- 深入洞察数据库资源 (DTU) 的消耗。
+- 排名靠前的 CPU 消耗查询，经过优化后可能会改善性能。
 - 可以向下钻取查询的详细信息。
-
 
 ## 先决条件
 
 - Query Performance Insight 仅适用于 Azure SQL 数据库 V12。
-- Query Performance Insight 要求在数据库中运行[查询存储](https://msdn.microsoft.com/library/dn817826.aspx)。如果尚未运行查询存储，门户将提示你打开查询存储。
+- Query Performance Insight 要求在数据库中运行[查询存储](https://msdn.microsoft.com/zh-cn/library/dn817826.aspx)。如果尚未运行查询存储，门户将提示你打开查询存储。
 
  
 ## 权限
 
-需有以下[基于角色的访问控制](../active-directory/role-based-access-control-configure.md)权限才能使用 Query Performance Insight：
+需有以下[基于角色的访问控制](/documentation/articles/role-based-access-control-configure/)权限才能使用 Query Performance Insight：
 
-- 查看排名靠前的资源消耗查询和图表时，需有“读取者”、“所有者”、“参与者”、“SQL DB 参与者”或“SQL Server 参与者”权限。 
+- 查看排名靠前的资源消耗查询和图表时，需有“读取者”、“所有者”、“参与者”、“SQL DB 参与者”或“SQL Server 参与者”权限。
 - 查看查询文本时，需有“所有者”、“参与者”、“SQL DB 参与者”或“SQL Server 参与者”权限。
 
 
@@ -45,12 +40,12 @@
 
 Query Performance Insight 很容易使用：
 
-- 查看排名靠前的资源消耗查询列表。 
+- 查看排名靠前的资源消耗查询列表。
 - 选择单个查询以查看其详细信息。
-- 单击“设置”以自定义数据的显示方式，或显示不同的时间段。
-- 打开[索引顾问](sql-database-index-advisor.md)并检查是否有任何建议。
+- 打开[SQL 数据库顾问](/documentation/articles/sql-database-index-advisor/)并检查是否有任何建议。
+- 放大查看详细信息。
 
-
+    ![性能仪表板](./media/sql-database-query-performance/performance.png)
 
 > [AZURE.NOTE] SQL 数据库的查询存储区需要捕获几个小时的数据，才能提供查询性能洞察数据。如果在某段时间内数据库没有任何活动，或查询存储不处于活动状态，则在显示该期间时图表是空的。如果查询存储未运行，你随时可以启用它。
 
@@ -58,9 +53,9 @@ Query Performance Insight 很容易使用：
 
 ## 查看 DTU 消耗量靠前的查询
 
-在[门户](http://portal.azure.com)中执行以下操作：
+在[门户](http://portal.azure.cn)中执行以下操作：
 
-1. 浏览到 SQL 数据库并单击“Query Performance Insight”。 
+1. 浏览到 SQL 数据库并单击“所有设置”>“性能”>“查询”。
 
     ![Query Performance Insight][1]
 
@@ -72,8 +67,9 @@ Query Performance Insight 很容易使用：
 
     底部网格表示可见查询的聚合信息。
 
-    -	每个查询在可观察到的时间间隔内消耗的平均 CPU。 
-    -	每个查询的总持续时间。
+    -	查询 ID - 数据库内查询的唯一标识符。
+    -	每个查询在可观察到的时间间隔内的 CPU（取决于聚合函数）。
+    -	每个查询的持续时间（取决于聚合函数）。
     -	特定查询的执行总次数。
 
 
@@ -81,7 +77,7 @@ Query Performance Insight 很容易使用：
 
 
 1. 如果你感觉数据已过时，可单击“刷新”按钮。
-1. （可选）单击“设置”以自定义 CPU 消耗数据的显示方式，或显示不同的时间段。
+1. 可选择单击“设置”以自定义 CPU 消耗数据的显示方式，或显示不同的时间段。
 
     ![设置](./media/sql-database-query-performance/settings.png)
 
@@ -99,7 +95,7 @@ Query Performance Insight 很容易使用：
     
     ![查询详细信息][3]
 
-1. （可选）单击“设置”以自定义 CPU 消耗数据的显示方式，或显示不同的时间段。
+1. 可选择单击“设置”以自定义 CPU 消耗数据的显示方式，或显示不同的时间段。
 
 
 ## 	优化 Query Performance Insight 的“查询存储”配置
@@ -113,7 +109,7 @@ Query Performance Insight 很容易使用：
 当查询存储无法收集新数据时，通常会显示这些消息。若要解决此问题，你可以采用多种选择：
 
 -	更改查询存储的保留和捕获策略
--	增加查询存储的大小 
+-	增加查询存储的大小
 -	清除查询存储
 
 ### 建议的保留和捕获策略
@@ -121,13 +117,13 @@ Query Performance Insight 很容易使用：
 有两种类型的保留策略：
 
 - 基于大小的保留策略 – 如果设置为“自动”，则会在快要达到最大大小时自动清除数据。
-- 基于时间的保留策略 - 默认设置为 30 天。也就是说，如果空间不足，存储查询会删除 30 天以前的查询信息。 
+- 基于时间的保留策略 - 默认设置为 30 天。也就是说，如果空间不足，存储查询会删除 30 天以前的查询信息。
 
 可以将捕获策略设置为：
 
-- **所有** – 捕获所有查询。这是默认选项。
-- **自动** – 将忽略不频繁的查询以及编译和执行持续时间很短的查询。执行计数、编译和运行时持续时间的阈值由内部决定。
-- **无** – 查询存储停止捕获新的查询。
+- **所有** - 捕获所有查询。这是默认选项。
+- **自动** - 将忽略不频繁的查询以及编译和执行持续时间很短的查询。执行计数、编译和运行时持续时间的阈值由内部决定。
+- **无** - 查询存储停止捕获新的查询。
 	
 建议将所有策略设置为“自动”，将清除策略设置为“30 天”：
 
@@ -152,18 +148,16 @@ Query Performance Insight 很容易使用：
 
 ## 摘要
 
-Query Performance Insight 可帮助你了解查询工作负荷的影响，以及它与数据库资源消耗的关系。使用此功能可以了解排名靠前的消耗查询，并在发生问题之前轻松找出问题。单击数据库上的“Query Performance Insight”可以查看排位靠前的资源 (CPU) 消耗查询。
+Query Performance Insight 可帮助你了解查询工作负荷的影响，以及它与数据库资源消耗的关系。使用此功能可以了解排名靠前的消耗查询，并在发生问题之前轻松找出问题。
 
 
 
 
 ## 后续步骤
 
-数据库工作负荷是动态的，并且不断地更改。监视查询并继续微调以优化性能。
+有关改善 SQL 数据库性能的其他建议，请单击“Query Performance Insight”边栏选项卡上的“[SQL 数据库顾问](/docmentation/articles/sql-database-index-advisor/)”。
 
-如需改善 SQL 数据库性能的其他建议，请单击“Query Performance Insight”边栏选项卡上的“[索引顾问](sql-database-index-advisor.md)”。
-
-![索引顾问](./media/sql-database-query-performance/ia.png)
+![Performance Advisor](./media/sql-database-query-performance/ia.png)
 
 
 <!--Image references-->
@@ -174,4 +168,4 @@ Query Performance Insight 可帮助你了解查询工作负荷的影响，以及
 
 
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0718_2016-->

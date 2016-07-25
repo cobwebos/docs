@@ -9,7 +9,7 @@
   
 <tags 
 	ms.service="active-directory"  
-	ms.date="03/28/2016" 
+	ms.date="06/01/2016" 
 	wacn.date=""/>
 
 # 开始使用 Azure Active Directory 和 Visual Studio 连接服务（MVC 项目）
@@ -24,7 +24,7 @@
  
 ##添加 SignIn/SignOut 控件 
 
-若要将 SignIn/SignOut 控件添加到您的视图，您可以使用 **\_LoginPartial.cshtml** 分部视图将该功能添加到您的某个视图。下面是已添加到标准 **\_Layout.cshtml** 视图的功能的示例。（注意带有 navbar-collapse 类的 div 中的最后一个元素）：
+若要将 SignIn/SignOut 控件添加到你的视图，可以使用 **\_LoginPartial.cshtml** 分部视图将该功能添加到你的某个视图。下面是已添加到标准 **\_Layout.cshtml** 视图的功能的示例。（注意带有 navbar-collapse 类的 div 中的最后一个元素）：
 
 <pre>
     &lt;!DOCTYPE html> 
@@ -72,4 +72,4 @@
 </pre>
 
 [详细了解 Azure Active Directory](/documentation/services/identity/)
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0718_2016-->

@@ -9,7 +9,7 @@
   
 <tags 
 	ms.service="active-directory"  
-	ms.date="03/28/2016" 
+	ms.date="06/01/2016" 
 	wacn.date=""/>
 
 # 身份验证检测期间的错误
@@ -45,9 +45,9 @@
 
 最后，向导将尝试检测使用以前版本的 Visual Studio 配置的身份验证代码版本。如果您已收到此错误，它表示您的项目包含不兼容的身份验证类型。此向导将通过以前版本的 Visual Studio 检测以下身份验证类型：
 
-* Windows 身份验证 
-* 单个用户帐户 
-* 组织帐户 
+* Windows 身份验证
+* 单个用户帐户
+* 组织帐户
  
 
 为了检测 MVC 项目中的 Windows 身份验证，此向导将从 **web.config** 文件中查找 `authentication` 元素。
@@ -90,6 +90,6 @@
 
 如需变更身份认证类型，请删除不兼容的身份验证类型，然后再次运行此向导。
 
-有关详细信息，请参阅 [Azure AD 的身份验证方案](/documentation/articles/active-directory-authentication-scenarios)。
+有关详细信息，请参阅 [Azure AD 的身份验证方案](/documentation/articles/active-directory-authentication-scenarios/)。
  
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0718_2016-->

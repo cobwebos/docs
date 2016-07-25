@@ -1,49 +1,53 @@
 <properties
-	pageTitle="适用于 Mac 和 Linux 的 Azure 命令行工具"
-	description="了解如何在 Azure 中使用针对 Mac 和 Linux 的命令行工具。"
-	services="web-sites, virtual-machines, mobile-services, cloud-services"
+	pageTitle="服务管理模式下的 Azure CLI 命令 | Azure"
+	description="在服务管理模式下使用 Azure 命令行界面 (CLI) 命令管理经典部署模型中的部署"
+	services="virtual-machines-linux,virtual-machines-windows,mobile-services, cloud-services"
 	documentationCenter=""
-	authors="squillace"
+	authors="dlepow"
 	manager="timlt"
-	editor="tysonn"/>
+	editor="tysonn"
+	tags="azure-service-management"/>
 
-#适用于 Mac 和 Linux 的 Azure 命令行工具
+<tags
+	ms.service="multiple"
+	ms.date="06/15/2016"
+	wacn.date=""/>
 
-此工具提供了用于从 Mac 和 Linux 桌面创建、部署和管理虚拟机的功能。此功能类似于随面向 .NET、Node.JS 和 PHP 的 Azure SDK 一起安装的 Windows PowerShell cmdlet 所提供的功能。
+# Azure 服务管理 (asm) 模式下的 Azure CLI 命令
 
-若要在 Mac 上安装该工具，请下载并运行 [Azure SDK 安装程序](http://go.microsoft.com/fwlink/?LinkId=252249)。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager model](virtual-machines/azure-cli-arm-commands.md)。
 
-若要在 Linux 上安装该工具，请安装最新版本的 Node.JS，然后使用 NPM 进行安装：
+本文提供经常用于在经典部署模型中创建和管理 Azure 资源的 Azure CLI 命令的语法和选项。通过在 Azure 服务管理 (asm) 模式下运行 CLI 可以访问这些命令。本参考内容并不完整，你的 CLI 版本可能会显示略微不同的命令或参数。
 
-    npm install azure-cli -g
+若要开始，请先[安装 Azure CLI](xplat-cli-install.md) 并[连接到 Azure 订阅](/documentation/articles/xplat-cli-connect/)。
 
-可选参数显示在方括号中（例如，[参数]）。其他所有参数都是必需的。
+若要在 asm 模式下在命令行中查看当前的命令语法和选项，请键入 `azure help`；若要显示特定命令的帮助，请键入 `azure help [command]`。你还可以在创建和管理具体 Azure 服务的说明文档中找到 CLI 示例。
 
-除了此处记录的特定于命令的可选参数外，还有三个可用于显示详细输出（例如请求选项和状态代码）的可选参数。-v 参数提供详细输出，而 -vv 参数提供更详细的输出。--json 选项将以原始的 json 格式输出结果。
+可选参数显示在方括号中（例如，`[parameter]`）。其他所有参数都是必需的。
 
-**目录：**
+除了此处记录的特定于命令的可选参数外，还有三个可用于显示详细输出（例如请求选项和状态代码）的可选参数。`-v` 参数提供详细输出，而 `-vv` 参数提供更详细的输出。`--json` 选项将以原始的 json 格式输出结果。
 
-* [管理帐户信息和发布设置](#Manage_your_account_information_and_publish_settings)
-* [用于管理 Azure 虚拟机的命令](#Commands_to_manage_your_Azure_virtual_machines)
-* [用于管理 Azure 虚拟机终结点的命令](#Commands_to_manage_your_Azure_virtual_machine_endpoints)
-* [用于管理 Azure 虚拟机映像的命令](#Commands_to_manage_your_Azure_virtual_machine_images)
-* [用于管理 Azure 虚拟机数据磁盘的命令](#Commands_to_manage_your_Azure_virtual_machine_data_disks)
-* [用于管理 Azure 云服务的命令](#Commands_to_manage_your_Azure_cloud_services)
-* [用于管理 Azure 证书的命令](#Commands_to_manage_your_Azure_certificates)
-* [用于管理网站的命令](#Commands_to_manage_your_web_sites)
-* [用于管理 Azure 移动服务的命令](#Commands_to_manage_mobile_services)
-* [管理工具本地设置](#Manage_tool_local_settings)
-* [用于管理 Service Bus 的命令](#Commands_to_manage_service_bus)
-* [用于管理存储对象的命令](#Commands_to_manage_your_Storage_objects)
-* [用于管理 SQL 数据库的命令](#Commands_to_manage_sql)
-* [用于管理虚拟网络的命令](#Commands_to_manage_vnet)
+## 设置 asm 模式
 
-##<a name="Manage_your_account_information_and_publish_settings"></a>管理帐户信息和发布设置
-该工具使用你的 Azure 订阅信息连接到你的帐户。可以从 Azure 门户中的发布设置文件中获取此信息，如下所述。可以导入发布设置文件作为永久性本地配置设置，该工具会将此设置用于后续操作。你只需导入你的发布设置一次。
+当前，首次安装 CLI 时，在默认情况下启用 asm 模式。如果需要，请使用以下命令设置 asm 模式。
+
+	azure config mode asm
+
+>[AZURE.NOTE] CLI 的 Azure Resource Manager 模式与 asm 模式互斥。即在一种模式下创建的资源不能从另一种模式进行管理。
+
+## 管理帐户信息和发布设置
+CLI 可以连接到你的帐户的一种方式是使用你的 Azure 订阅信息。（有关其他选项，请参阅[从 Azure CLI 连接到 Azure 订阅](xplat-cli-connect.md)。） 可以从 Azure 经典门户中的发布设置文件中获取此信息，如下所述。可以导入发布设置文件作为永久性本地配置设置，CLI 会将此设置用于后续操作。你只需导入你的发布设置一次。
 
 **account download [options]**
 
-启动浏览器访问 <a href="http://go.microsoft.com/fwlink/?LinkID=301774">https://manage.windowsazure.cn/publishsettings</a>，保存下载的文件。
+此命令启动浏览器以从 Azure 经典门户下载你的 .publishsettings 文件。
+
+	~$ azure account download
+	info:   Executing command account download
+	info:   Launching browser to https://windows.azure.com/download/publishprofile.aspx
+	help:   Save the downloaded file, then execute the command
+	help:   account import <file>
+	info:   account download command OK
 
 **account import [options] &lt;file>**
 
@@ -52,14 +56,14 @@
 
 	~$ azure account import publishsettings.publishsettings
 	info:   Importing publish settings file publishsettings.publishsettings
-	info:   Found subscription: Free Trial
+	info:   Found subscription: 3-Month Free Trial
 	info:   Found subscription: Pay-As-You-Go
-	info:   Setting default subscription to: Free Trial
+	info:   Setting default subscription to: 3-Month Free Trial
 	warn:   The 'publishsettings.publishsettings' file contains sensitive information.
 	warn:   Remember to delete it now that it has been imported.
 	info:   Account publish settings imported successfully
 
-> [AZURE.NOTE]publishsettings 文件可以包含有关多个订阅的详细信息（即，订阅名称和 ID）。当你导入 publishsettings 文件时，第一个订阅将用作默认订阅。若要使用不同订阅，请运行以下命令。<code>~$ azure config set subscription &lt;other-subscription-id&gt;</code>
+> [AZURE.NOTE] publishsettings 文件可以包含有关多个订阅的详细信息（即，订阅名称和 ID）。当你导入 publishsettings 文件时，第一个订阅将用作默认订阅。若要使用不同订阅，请运行以下命令。<code>~$ azure config set subscription &lt;other-subscription-id&gt;</code>
 
 **account clear [options]**
 
@@ -160,18 +164,9 @@
 
 	~$ azure account env show AzureChinaCloud
 	info:    Executing command account env show
-	data:    Name:                       AzureChinaCloud
-	data:    activeDirectoryEndpointUrl: https://login.chinacloudapi.cn
-	data:    activeDirectoryResourceId:  https://management.core.chinacloudapi.cn/
-	data:    commonTenantName:           common
-	data:    galleryEndpointUrl:
-	data:    isPublicEnvironment:        true
-	data:    managementEndpointUrl:      https://management.core.chinacloudapi.cn
-	data:    portalUrl:                  http://go.microsoft.com/fwlink/?LinkId=301902
-	data:    publishingProfileUrl:       http://go.microsoft.com/fwlink/?LinkID=301774
-	data:    resourceManagerEndpointUrl:
-	data:    sqlManagementEndpointUrl:
-	data:    sqlServerHostnameSuffix:    .database.chinacloudapi.cn
+	Environment name: AzureChinaCloud
+	data:    Environment publishingProfile  http://go.microsoft.com/fwlink/?LinkId=2544
+	data:    Environment portal  http://go.microsoft.com/fwlink/?LinkId=2544
 	info:    account env show command OK
 
 **account env add [options] [environment]**
@@ -186,7 +181,7 @@
 
 此命令从帐户中删除指定的环境
 
-##<a name="Commands_to_manage_your_Azure_virtual_machines"></a>用于管理 Azure 虚拟机的命令
+## 用于管理虚拟机的命令
 下图显示了如何在 Azure 云服务的生产部署环境中托管 Azure 虚拟机。
 
 ![Azure 技术图表](./media/virtual-machines-command-line-tools/architecturediagram.jpg)
@@ -209,11 +204,21 @@ Windows 虚拟机稍后可以通过添加端口 3389 作为终结点来启用 RD
 
 此命令支持以下可选参数：
 
-**-c, --connect** 在托管服务中已创建的部署中创建虚拟机。如果 -vmname 未与此选项一起使用，将自动生成新虚拟机的名称。<br /> **-n, --vm-name** 指定虚拟机的名称。默认情况下，此参数采用托管服务名称。如果未指定 -vmname，将生成 &lt;service-name>&lt;id> 形式的新虚拟机名称，其中 &lt;id> 是服务中现有虚拟机的数量加上 1。例如，如果你使用此命令向拥有一个现有虚拟机的托管服务 MyService 中添加新虚拟机，则会将新虚拟机命名为 MyService2。<br /> **-u, --blob-url** 指定从中创建虚拟机系统磁盘的目标 Blob 存储 URL。<br /> **-z, --vm-size** 指定虚拟机的大小。有效值为“特小型”、“小型”、“中型”、“大型”和“特大型”。默认值为“小型”。<br /> **-r** 添加到 Windows 虚拟机的 RDP 连接。<br /> **-e, --ssh** 添加到 Windows 虚拟机的 SSH 连接。<br /> **-t, --ssh-cert** 指定 SSH 证书。<br /> **-s** 订阅。<br /> **-o, --community** 指定的映像是社区映像。<br /> **-w** 虚拟网络名称。<br/> **-l, --location** 指定位置（例如，“North Central US”）。<br /> **-a, --affinity-group** 指定地缘组。<br /> **-w, --virtual-network-name** 指定要在其中添加新虚拟机的虚拟网络。可从 Azure 门户设置和管理虚拟网络。<br /> **-b, --subnet-names** 指定要分配虚拟机的子网名称。
+**-c, --connect** 在托管服务中已创建的部署中创建虚拟机。如果 -vmname 未与此选项一起使用，将自动生成新虚拟机的名称。<br />
+**-n, --vm-name** 指定虚拟机的名称。默认情况下，此参数采用托管服务名称。如果未指定 -vmname，将生成 &lt;service-name>&lt;id> 形式的新虚拟机名称，其中 &lt;id> 是服务中现有虚拟机的数量加上 1。例如，如果你使用此命令向拥有一个现有虚拟机的托管服务 MyService 中添加新虚拟机，则会将新虚拟机命名为 MyService2。<br />
+**-u, --blob-url** 指定从中创建虚拟机系统磁盘的目标 Blob 存储 URL。<br />
+**-z, --vm-size** 指定虚拟机的大小。有效值为：“ExtraSmall”、“Small”、“Medium”、“Large”、“ExtraLarge”、“A5”、“A6”、“A7”、“A8”、“A9”、“A10”、“A11”、“Basic\_A0”、“Basic\_A1”、“Basic\_A2”、“Basic\_A3”、“Basic\_A4”、“Standard\_D1”、“Standard\_D2”、“Standard\_D3”、“Standard\_D4”、“Standard\_D11”、“Standard\_D12”、“Standard\_D13”、“Standard\_D14”、“Standard\_DS1”、“Standard\_DS2”、“Standard\_DS3”、“Standard\_DS4”、“Standard\_DS11”、“Standard\_DS12”、“Standard\_DS13”、“Standard\_DS14”、“Standard\_G1”、“Standard\_G2”、“Standard\_G3”、“Standard\_G4”、“Standard\_G55”。默认值为“Small”。<br /> **-r** 添加到 Windows 虚拟机的 RDP 连接。<br />
+**-e, --ssh** 添加到 Windows 虚拟机的 SSH 连接。<br />
+**-t, --ssh-cert** 指定 SSH 证书。<br /> **-s** 订阅。<br />
+**-o, --community** 指定的映像是社区映像。<br />
+**-w** 虚拟网络名称。<br/> **-l, --location** 指定位置（例如，“North Central US”）。<br />
+**-a, --affinity-group** 指定地缘组。<br />
+**-w, --virtual-network-name** 指定要在其中添加新虚拟机的虚拟网络。可从 Azure 门户设置和管理虚拟网络。<br />
+**-b, --subnet-names** 指定要分配虚拟机的子网名称。
 
-在此示例中，55bc2b193643443bb879a78bda516fc8\_\_Windows-Server-2012-R2-201502.01-zh.cn-127GB.vhd 是由平台提供的一个映像。有关操作系统映像的详细信息，请参阅 VM 映像列表。
+在此示例中，MSFT\_\_Win2K8R2SP1-120514-1520-141205-01-zh-cn-30GB 是该平台提供的映像。有关操作系统映像的详细信息，请参阅 VM 映像列表。
 
-	~$ azure vm create my-vm-name 55bc2b193643443bb879a78bda516fc8__Windows-Server-2012-R2-201502.01-zh.cn-127GB.vhd username --location "China North" -r
+	~$ azure vm create my-vm-name MSFT__Windows-Server-2008-R2-SP1.11-29-2011 username --location "China East" -r
 	info:   Executing command vm create
 	Enter VM 'my-vm-name' password: ************
 	info:   vm create command OK
@@ -227,7 +232,7 @@ Windows 虚拟机稍后可以通过添加端口 3389 作为终结点来启用 RD
 
 **vm list [options]**
 
-此命令列出 Azure 虚拟机。-json 选项指定以原始 JSON 格式返回结果。
+此命令列出 Azure 虚拟机。--json 选项指定以原始 JSON 格式返回结果。
 
 	~$ azure vm list
 	info:   Executing command vm list
@@ -242,12 +247,11 @@ Windows 虚拟机稍后可以通过添加端口 3389 作为终结点来启用 RD
 此命令列出所有可用的 Azure 帐户位置。
 
 	~$ azure vm location list
-	info:    Executing command vm location list
-	data:    Name
-	data:    -----------
-	data:    China East
-	data:    China North
-	info:    vm location list command OK
+	info:   Executing command vm location list
+	data:   Name                   Display Name
+	data:   ---------------------  ------------
+	data:   Azure Preview  China East
+	info:   account location list command OK
 
 **vm show [options] &lt;name>**
 
@@ -420,20 +424,21 @@ info:   vm shutdown command OK
 
 **vm image list [options]**
 
-此命令获取虚拟机映像的列表。有三种类型的映像：Microsoft 创建的映像（以“MSFT”作为前缀）、第三方创建的映像（通常以供应商的名称作为前缀）以及你创建的映像。若要创建映像，你可以捕获现有虚拟机或从上载到 Blob 存储的自定义 .vhd 创建映像。有关使用自定义 .vhd 的更多信息，请参见 VM 映像创建。-json 选项指定以原始 JSON 格式返回结果。
+此命令获取虚拟机映像的列表。有三种类型的映像：Microsoft 创建的映像（以“MSFT”作为前缀）、第三方创建的映像（通常以供应商的名称作为前缀）以及你创建的映像。若要创建映像，你可以捕获现有虚拟机或从上载到 Blob 存储的自定义 .vhd 创建映像。有关使用自定义 .vhd 的更多信息，请参见 VM 映像创建。
+-json 选项指定以原始 JSON 格式返回结果。
 
 	~$ azure vm image list
 	data:   Name                                                                   Category   OS
 	data:   ---------------------------------------------------------------------  ---------  -------
-	data:   CANONICAL__Canonical-Ubuntu-12-04-20120519-2012-05-19-zh-CN-30GB.vhd   Canonical  Linux
+	data:   CANONICAL__Canonical-Ubuntu-12-04-20120519-2012-05-19-zh-cn-30GB.vhd   Canonical  Linux
 	data:   MSFT__Windows-Server-2008-R2-SP1.11-29-2011                            Microsoft  Windows
 	data:   MSFT__Windows-Server-2008-R2-SP1-with-SQL-Server-2012-Eval.11-29-2011  Microsoft  Windows
-	data:   MSFT__Windows-Server-8-Beta.zh-CN.30GB.2012-03-22                      Microsoft  Windows
+	data:   MSFT__Windows-Server-8-Beta.zh-cn.30GB.2012-03-22                      Microsoft  Windows
 	data:   MSFT__Windows-Server-8-Beta.2-17-2012                                  Microsoft  Windows
-	data:   MSFT__Windows-Server-2008-R2-SP1.zh-CN.30GB.2012-3-22                  Microsoft  Windows
-	data:   OpenLogic__OpenLogic-CentOS-62-20120509-zh-CN-30GB.vhd                 OpenLogic  Linux
-	data:   SUSE__SUSE-Linux-Enterprise-Server-11SP2-20120521-zh-CN-30GB.vhd       SUSE       Linux
-	data:   SUSE__OpenSUSE64121-03192012-zh-CN-15GB.vhd                            SUSE       Linux
+	data:   MSFT__Windows-Server-2008-R2-SP1.zh-cn.30GB.2012-3-22                  Microsoft  Windows
+	data:   OpenLogic__OpenLogic-CentOS-62-20120509-zh-cn-30GB.vhd                 OpenLogic  Linux
+	data:   SUSE__SUSE-Linux-Enterprise-Server-11SP2-20120521-zh-cn-30GB.vhd       SUSE       Linux
+	data:   SUSE__OpenSUSE64121-03192012-zh-cn-15GB.vhd                            SUSE       Linux
 	data:   WIN2K8-R2-WINRM                                                        User       Windows
 	info:   vm image list command OK
 
@@ -506,7 +511,7 @@ info:   vm shutdown command OK
 	data:   LogicalDiskSizeInGB "30"
 	data:   MediaLink "http://mystorageaccount.blob.core.chinacloudapi.cn/vhd-store/mycentos-cb39b8223b01f95c.vhd"
 	data:   Name "mycentos-mycentos-0-20120524070008"
-	data:   SourceImageName "OpenLogic__OpenLogic-CentOS-62-20120509-zh-CN-30GB.vhd"
+	data:   SourceImageName "OpenLogic__OpenLogic-CentOS-62-20120509-zh-cn-30GB.vhd"
 	info:   vm disk show command OK
 
 **vm disk list [options] [vm-name]**
@@ -734,7 +739,7 @@ Azure 网站是可通过 URI 访问的 Web 配置。网站托管在虚拟机中�
 	info:   Repository initialized
 	info:   site create command OK
 
-> [AZURE.NOTE]站点名称必须是唯一的。你无法创建与现有站点具有相同 DNS 名称的站点。
+> [AZURE.NOTE] 站点名称必须是唯一的。你无法创建与现有站点具有相同 DNS 名称的站点。
 
 **site browse [options] [name]**
 
@@ -791,7 +796,7 @@ Azure 网站是可通过 URI 访问的 Web 配置。网站托管在虚拟机中�
 
 此命令支持以下附加选项：
 
-****-q 或 **--quiet**：不提示确认。在自动化脚本中使用此选项。
+**-q** 或 **--quiet**：不提示确认。在自动化脚本中使用此选项。
 
 
 **site start [options] [name]**
@@ -814,7 +819,7 @@ Azure 网站是可通过 URI 访问的 Web 配置。网站托管在虚拟机中�
 	info:   Site mysite has been stopped
 	info:   site stop command OK
 
-****site restart [options] [name]
+**site restart [options] [name]
 
 此命令停止然后启动指定的网站。
 
@@ -1258,7 +1263,7 @@ Azure 移动服务汇聚了一系列支持你的应用程序的后端功能的 A
 + **-k`<skip>`** 或 **--skip`<skip>`**：跳过 `<skip>` 指定的行数。
 + **-p`<top>`** 或 **--top `<top>`**：返回由 `<top>` 指定的特定行数。
 
-> [AZURE.NOTE]**--query** 参数优先于 **--type**、**--skip** 和 **--top**。
+> [AZURE.NOTE] **--query** 参数优先于 **--type**、**--skip** 和 **--top**。
 
 **mobile recover [options] [unhealthyservicename] [healthyservicename]**
 
@@ -1279,7 +1284,7 @@ Azure 移动服务汇聚了一系列支持你的应用程序的后端功能的 A
 
 密钥类型为 `master` 和 `application`。
 
-> [AZURE.NOTE]当重新生成密钥时，使用旧密钥的客户端可能无法访问你的移动服务。当重新生成应用程序密钥时，应使用新密钥值更新你的应用程序。
+> [AZURE.NOTE] 当重新生成密钥时，使用旧密钥的客户端可能无法访问你的移动服务。当重新生成应用程序密钥时，应使用新密钥值更新你的应用程序。
 
 **mobile key set [options] [servicename] [type] [value]**
 
@@ -1538,7 +1543,7 @@ Azure 移动服务汇聚了一系列支持你的应用程序的后端功能的 A
 	+ **none**（按需作业）
 + **-t`<time>`** **--startTime `<time>`** 脚本的首次运行开始时间，采用 ISO 格式；默认值为 `now`。
 
-> [AZURE.NOTE]创建的新作业处于禁用状态，因为还必须上载脚本。请使用 **mobile script upload** 命令上载脚本并使用 **mobile job update** 命令启用作业。
+> [AZURE.NOTE] 创建的新作业处于禁用状态，因为还必须上载脚本。请使用 **mobile script upload** 命令上载脚本并使用 **mobile job update** 命令启用作业。
 
 **mobile job update [options] [servicename] [jobname]**
 
@@ -1568,7 +1573,7 @@ Azure 移动服务汇聚了一系列支持你的应用程序的后端功能的 A
 	info:    Executing command mobile job delete
 	info:    mobile job delete command OK
 
-> [AZURE.NOTE]删除作业也将删除已上载的脚本。
+> [AZURE.NOTE] 删除作业也将删除已上载的脚本。
 
 ###<a name="Mobile_Scale"></a>用于缩放移动服务的命令
 
@@ -1599,7 +1604,7 @@ Azure 移动服务汇聚了一系列支持你的应用程序的后端功能的 A
 + **-c`<mode>`** 或 **--computeMode `<mode>`**：计算模式必须为 `Free` 或 `Reserved`。
 + **-i`<count>`** 或 **--numberOfInstances`<count>`**：在保留模式下运行时使用的实例数。
 
-> [AZURE.NOTE]将计算模式设置为`Reserved`时，同一区域中的所有移动服务都将在高级模式下运行。
+> [AZURE.NOTE] 将计算模式设置为`Reserved`时，同一区域中的所有移动服务都将在高级模式下运行。
 
 
 ###用于为移动服务启用预览版功能的命令
@@ -2023,7 +2028,7 @@ Azure 移动服务汇聚了一系列支持你的应用程序的后端功能的 A
 
 ##<a name ="Commands_to_manage_sql"></a>用于管理 SQL 数据库的命令
 
-使用这些命令来管理你的 Azure SQL Database
+使用这些命令来管理你的 Azure SQL 数据库
 
 ###用于管理 SQL Server 的数据库
 
@@ -2329,4 +2334,4 @@ Azure 移动服务汇聚了一系列支持你的应用程序的后端功能的 A
 	+ Deleting the DNS server entry dns-4 ( 77.88.99.11 )
 	info:    network dnsserver unregister command OK
 
-<!---HONumber=69-->
+<!---HONumber=AcomDC_0718_2016-->

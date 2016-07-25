@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	wacn.date=""/>
 
 
@@ -42,7 +42,7 @@ git clone https://github.com/AzureADSamples/SinglePageApp-AngularJS-NodeJS.git
 
 - 为应用程序添加 **Web** 平台。
 - 输入正确的**重定向 URI**。本示例的默认值为 `http://localhost:8080`。
-- 保留启用“允许隐式流”复选框。 
+- 保留启用“允许隐式流”复选框。
 
 复制分配给应用程序的“应用程序 ID”，因为稍后将要用到。
 
@@ -231,10 +231,13 @@ node server.js
 
 在浏览器中，导航到 `http://localhost:8080`。使用个人 Microsoft 帐户或工作/学校帐户登录。将任务添加到用户的待办事项列表，然后注销。尝试使用其他类型的帐户登录。如果你需要一个 Azure AD 租户来创建工作/学校用户，请[在此处了解如何获取租户](active-directory-howto-tenant.md)（免费）。
 
-如果要继续了解 v2.0 终结点，请返回到 [v2.0 开发人员指南](/documentation/articles/active-directory-appmodel-v2-overview)。有关更多资源，请查看：
+如果要继续了解 v2.0 终结点，请返回到 [v2.0 开发人员指南](/documentation/articles/active-directory-appmodel-v2-overview/)。有关更多资源，请查看：
 
 - [GitHub 上的 Azure 示例 >>](https://github.com/Azure-Samples)
 - [堆栈溢出网站上的 Azure AD >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 - [Azure.com](/documentation/services/active-directory/) 上的 Azure AD 文档 >>
+## 获取关于我们产品的安全更新
 
-<!---HONumber=Mooncake_0620_2016-->
+建议发生安全事件时获取相关通知，方法是访问[此页](https://technet.microsoft.com/security/dd252948)并订阅“安全公告通知”。
+
+<!---HONumber=Mooncake_0718_2016-->

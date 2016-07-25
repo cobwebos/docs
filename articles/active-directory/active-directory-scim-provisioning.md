@@ -18,7 +18,7 @@
 
 Azure Active Directory 可以使用 [SCIM 2.0 协议规范](https://tools.ietf.org/html/draft-ietf-scim-api-19)中定义的接口，将用户和组自动预配到 Web 服务前端的任何应用程序或标识存储。Azure Active Directory 可将请求发送到此 Web 服务以创建、修改和删除分配的用户与组，然后，Web 服务可将这些请求转换为针对目标标识存储的操作。
 
-![][1] 
+![][1]
 图：通过 Web 服务从 Azure Active Directory 预配到标识存储
 
 此功能可配合 Azure AD 中的“[自带应用](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)”功能，为提供 SCIM Web 服务或位于该服务后端的应用程序启用单一登录和自动用户预配。
@@ -33,7 +33,7 @@ Azure Active Directory 中的 SCIM 有两种使用方案：
 
 Azure Active Directory 可配置为将已分配的用户和组预配到实现[跨域标识管理系统 2 (SCIM)](https://tools.ietf.org/html/draft-ietf-scim-api-19) Web 服务、并接受使用 OAuth 持有者令牌进行身份验证的应用程序。在 SCIM 2.0 规范中，应用程序必须符合以下要求：
 
-* 支持根据 SCIM 协议第 3.3 部分创建用户和/或组。  
+* 支持根据 SCIM 协议第 3.3 部分创建用户和/或组。
 
 * 支持根据 SCIM 协议第 3.5.2 部分修改具有修补请求的用户和/或组。
 
@@ -64,11 +64,11 @@ Azure Active Directory 可配置为将已分配的用户和组预配到实现[�
 4.	在出现的屏幕中，选择第二个“配置帐户预配”按钮。
 5.	在“预配终结点 URL”字段中，输入应用程序的 SCIM 终结点的 URL。
 6.	如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，那么便将所需的 OAuth 持有者令牌复制到“身份验证令牌(可选)”字段。如果此字段留空，则 Azure AD 将在每个请求中包含从 Azure AD 颁发的 OAuth 持有者令牌。使用 Azure AD 作为标识提供者的应用可以验证 Azure AD 颁发的此令牌。
-7.	单击“下一步”，然后单击“开始测试”按钮，使 Azure Active Directory 尝试连接到 SCIM 终结点。如果尝试失败，将显示诊断信息。  
+7.	单击“下一步”，然后单击“开始测试”按钮，使 Azure Active Directory 尝试连接到 SCIM 终结点。如果尝试失败，将显示诊断信息。
 8.	如果尝试连接到应用程序成功，请在余下的屏幕中单击“下一步”，然后单击“完成”以退出对话框。
 9.	在出现的屏幕中，选择第三个“分配帐户”按钮。在出现的“用户和组”部分中，分配你要预配到应用程序的用户或组。
 10.	分配用户和组后，单击屏幕顶部附近的“配置”选项卡。
-11.	在“帐户预配”下，确认“状态”设置为“打开”。 
+11.	在“帐户预配”下，确认“状态”设置为“打开”。
 12.	在“工具”下，单击“重新开始帐户预配”以开始预配过程。
 
 请注意，预配过程可能需要 5-10 分钟才能开始将请求发送到 SCIM 终结点。应用程序的“仪表板”选项卡上提供了连接尝试的摘要，可以从目录的“报告”选项卡下载预配活动报告和任何预配错误。
@@ -124,19 +124,19 @@ Azure Active Directory 可配置为将已分配的用户和组预配到实现[�
 
 **在 Azure AD 中注册示例 SCIM 终结点：**
 
-1.	在 Web 浏览器中，从 https://manage.windowsazure.cn 启动 Azure 管理门户。
-2.	浏览到“Active Directory”>“目录”>“[你的目录]”>“应用程序”，然后选择“添加”>“从库中添加应用程序”。
-3.	选择左侧的“自定义”选项卡，输入类似于“SCIM 测试应用”的名称，然后单击复选标记图标以创建应用对象。请注意，创建的应用程序对象代表要预配和实现登一登入的目标应用程序，而不只是 SCIM 终结点。
+1.	在 Web 浏览器中，通过 https://manage.windowsazure.cn 启动 Azure 管理门户。
+2.	浏览到“Active Directory”>“目录”> [你的目录] >“应用程序”，然后选择“添加”>“从库中添加应用程序”。
+3.	选择左侧的“自定义”选项卡，输入类似于“SCIM 测试应用”的名称，然后单击复选标记图标创建应用对象。请注意，创建的应用程序对象代表要预配和实现登一登入的目标应用程序，而不只是 SCIM 终结点。
 
 ![][2]
 
 4.	在出现的屏幕中，选择第二个“配置帐户预配”按钮。
-5.	在对话框中，输入面向 Internet 的 URL 和 SCIM 终结点的端口。这类似于 http://testmachine.contoso.com:9000 或 http://<ip-address>:9000/，其中 <ip-address> 是面向 Internet 的 IP 地址。  
-6.	单击“下一步”，然后单击“开始测试”按钮，使 Azure Active Directory 尝试连接到 SCIM 终结点。如果尝试失败，将显示诊断信息。  
+5.	在对话框中，输入面向 Internet 的 URL 和 SCIM 终结点的端口。这类似于 http://testmachine.contoso.com:9000 或 http://<ip-address>:9000/，其中 <ip-address> 是 Internet 公开的 IP 地址。
+6.	单击“下一步”，然后单击“开始测试”按钮，使 Azure Active Directory 尝试连接到 SCIM 终结点。如果尝试失败，将显示诊断信息。
 7.	如果尝试连接到 Web 服务成功，请在余下的屏幕中单击“下一步”，然后单击“完成”以退出对话框。
 8.	在出现的屏幕中，选择第三个“分配帐户”按钮。在出现的“用户和组”部分中，分配你要预配到应用程序的用户或组。
 9.	分配用户和组后，单击屏幕顶部附近的“配置”选项卡。
-10.	在“帐户预配”下，确认“状态”设置为“打开”。 
+10.	在“帐户预配”下，确认“状态”设置为“打开”。
 11.	在“工具”下，单击“重新开始帐户预配”以开始预配过程。
 
 请注意，预配过程可能需要 5-10 分钟才能开始将请求发送到 SCIM 终结点。应用程序的“仪表板”选项卡上提供了连接尝试的摘要，可以从目录的“报告”选项卡下载预配活动报告和任何预配错误。
@@ -276,7 +276,7 @@ Azure Active Directory 可配置为将已分配的用户和组预配到实现[�
 
 ###处理终结点身份验证
 
-来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。接收请求的任何服务应该代表所需的 Azure Active Directory 租户将颁发者作为 Azure Active Directory 进行身份验证，以访问 Azure Active Directory 的 Graph Web 服务。在令牌中，颁发者由 iss 声明，例如："iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/" 。在此示例中，声明值的基址 https://sts.windows.net 将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 代表颁发令牌时 Azure Active Directory 租户的唯一标识符。如果颁发的令牌用于访问 Azure Active Directory 的 Graph Web 服务，该服务的标识符 00000002-0000-0000-c000-000000000000 应在令牌的 aud 声明值中。
+来自 Azure Active Directory 的请求包括 OAuth 2.0 持有者令牌。接收请求的任何服务应该代表所需的 Azure Active Directory 租户将颁发者作为 Azure Active Directory 进行身份验证，以访问 Azure Active Directory 的 Graph Web 服务。在令牌中，颁发者由 iss 声明，例如："iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"。 在此示例中，声明值的基址 https://sts.windows.net 将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 代表颁发令牌时 Azure Active Directory 租户的唯一标识符。如果颁发的令牌用于访问 Azure Active Directory 的 Graph Web 服务，该服务的标识符 00000002-0000-0000-c000-000000000000 应在令牌的 aud 声明值中。
 
 使用 Microsoft 提供的通用语言基础结构库构建 SCIM 服务的开发人员可以按照以下步骤使用 Microsoft.Owin.Security.ActiveDirectory 包对 Azure Active Directory 的请求进行身份验证：
 
@@ -375,7 +375,7 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。�
 下图显示了 Azure Active Directory 将发送到 SCIM 服务以管理用户在其他标识存储中的生命周期的消息。该图还显示了使用 Microsoft 提供的、用于构建此类服务的通用语言基础结构库所实现的 SCIM 服务如何将这些请求转换为对提供程序的方法调用。
 
 ![][4]
-图：用户预配和撤销顺序
+图：用户预配和取消预配顺序
 
 **1：**Azure Active Directory 将在服务中查询是否有某个用户的 externalId 属性值与 Azure Active Directory 中用户的 mailNickname 属性值匹配。查询以类似的超文本传输协议请求表示，其中，jyoung 是 Azure Active Directory 中某个用户的 mailNickname 示例：
 
@@ -678,22 +678,22 @@ Microsoft 提供的、用于实现 SCIM 服务的通用语言基础结构库将�
 
 下图显示了 Azure Active Directory 将发送到 SCIM 服务以管理组在其他标识存储中的生命周期的消息。这些消息在以下三个方面与用户相关的消息不同：
 
-* 组资源的架构标识为 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group。  
-* 检索组的请求规定将成员属性从请求响应中提供的任何资源中排除。  
-* 确定引用属性是否具有特定值的请求将是有关成员属性的请求。  
+* 组资源的架构标识为 http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group。
+* 检索组的请求规定将成员属性从请求响应中提供的任何资源中排除。
+* 确定引用属性是否具有特定值的请求将是有关成员属性的请求。
 
 ![][5]
-图：组预配和撤销顺序
+图：组预配和取消预配顺序
 
 ##相关文章
 
-- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
-- [在 SaaS 应用中自动预配和撤销用户](/documentation/articles/active-directory-saas-app-provisioning)
-- [为用户预配自定义属性映射](/documentation/articles/active-directory-saas-customizing-attribute-mappings)
-- [为属性映射编写表达式](/documentation/articles/active-directory-saas-writing-expressions-for-attribute-mappings)
-- [用于用户预配的作用域筛选器](/documentation/articles/active-directory-saas-scoping-filters)
-- [帐户预配通知](/documentation/articles/active-directory-saas-account-provisioning-notifications)
-- [有关如何集成 SaaS 应用的教程列表](/documentation/articles/active-directory-saas-tutorial-list)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index/)
+- [在 SaaS 应用中自动预配和撤销用户](/documentation/articles/active-directory-saas-app-provisioning/)
+- [为用户预配自定义属性映射](/documentation/articles/active-directory-saas-customizing-attribute-mappings/)
+- [为属性映射编写表达式](/documentation/articles/active-directory-saas-writing-expressions-for-attribute-mappings/)
+- [用于用户预配的作用域筛选器](/documentation/articles/active-directory-saas-scoping-filters/)
+- [帐户预配通知](/documentation/articles/active-directory-saas-account-provisioning-notifications/)
+- [有关如何集成 SaaS 应用的教程列表](/documentation/articles/active-directory-saas-tutorial-list/)
 
 
 	
@@ -704,4 +704,4 @@ Microsoft 提供的、用于实现 SCIM 服务的通用语言基础结构库将�
 [4]: ./media/active-directory-scim-provisioning/scim-figure-4.PNG
 [5]: ./media/active-directory-scim-provisioning/scim-figure-5.PNG
 
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=AcomDC_0718_2016-->

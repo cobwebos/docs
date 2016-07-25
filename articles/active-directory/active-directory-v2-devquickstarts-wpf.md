@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	wacn.date=""/>
 
 # 将登录凭据添加到 Windows 桌面应用
@@ -17,11 +17,11 @@
 v2.0 终结点可让你快速地将身份验证添加桌面应用，同时支持个人 Microsoft 帐户以及工作或学校帐户。它也可让你应用程序安全地与后端 Web API，以及 [Microsoft Graph](https://graph.microsoft.io) 和多个 [Office 365 统一 API](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) 进行通信。
 
 > [AZURE.NOTE]
-	v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](/documentation/articles/active-directory-v2-limitations)。
+	v2.0 终结点并不支持所有 Azure Active Directory 方案和功能。若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](/documentation/articles/active-directory-v2-limitations/)。
 
-对于[在设备上运行的 .NET 本机应用](/documentation/articles/active-directory-v2-flows#mobile-and-native-apps)，Azure AD 提供 Active Directory 身份验证库 (ADAL)。在本质上，ADAL 的唯一用途就是方便应用获取用于调用 Web 服务的令牌。为了演示这种简便性，我们生成了一个 .NET WPF 待办事项列表应用，其中包括：
+对于[在设备上运行的 .NET 本机应用](/documentation/articles/active-directory-v2-flows/#mobile-and-native-apps)，Azure AD 提供 Active Directory 身份验证库 (ADAL)。在本质上，ADAL 的唯一用途就是方便应用获取用于调用 Web 服务的令牌。为了演示这种简便性，我们生成了一个 .NET WPF 待办事项列表应用，其中包括：
 
--	使用 [OAuth 2.0 身份验证协议](/documentation/articles/active-directory-v2-protocols#oauth2-authorization-code-flow)来登录用户和获取访问令牌。
+-	使用 [OAuth 2.0 身份验证协议](/documentation/articles/active-directory-v2-protocols/#oauth2-authorization-code-flow)来登录用户和获取访问令牌。
 -	安全调用受 OAuth 2.0 保护的后端待办事项列表 Web 服务。
 -	将用户注销。
 
@@ -34,7 +34,7 @@ v2.0 终结点可让你快速地将身份验证添加桌面应用，同时支持
 本教程末尾也提供完成的应用。
 
 ## 注册应用程序
-在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) 中创建新的应用，或遵循以下[详细步骤](/documentation/articles/active-directory-v2-app-registration)。请确保：
+在 [apps.dev.microsoft.com](https://apps.dev.microsoft.com) 中创建新的应用，或遵循以下[详细步骤](/documentation/articles/active-directory-v2-app-registration/)。请确保：
 
 - 复制分配给应用程序的**应用程序 ID**，因为稍后将要用到。
 - 为应用添加**移动**平台。
@@ -52,7 +52,7 @@ PM> Install-Package Microsoft.Experimental.IdentityModel.Clients.ActiveDirectory
 -	在 TodoListClient 项目中打开 `app.config`。替换 `<appSettings>` 节中的元素值，以反映你在应用注册门户中输入的值。只要使用 ADAL，你的代码就会引用这些值。
     -	`ida:ClientId` 是从门户复制的、应用的**应用程序 ID**。
     -	`ida:RedirectUri` 是来自门户的**重定向 URI**。
-- 在 TodoList-Service 项目中，打开项目根目录中的 `web.config`。  
+- 在 TodoList-Service 项目中，打开项目根目录中的 `web.config`。
     - 将 `ida:Audience` 值替换为来自门户的相同**应用程序 ID**。
 
 ## 使用 ADAL 获取令牌
@@ -243,10 +243,14 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 
 现在，可以转到更高级的主题。你可能想要尝试：
 
-- [使用 v2.0 终结点保护 TodoListService Web API >>](/documentation/articles/active-directory-v2-devquickstarts-dotnet-api)
+- [使用 v2.0 终结点保护 TodoListService Web API >>](/documentation/articles/active-directory-v2-devquickstarts-dotnet-api/)
 
 有关更多资源，请查看：
-- [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
+- [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview/)
 - [堆栈溢出“adal”标记 >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=Mooncake_0620_2016-->
+## 获取关于我们产品的安全更新
+
+建议发生安全事件时获取相关通知，方法是访问[此页](https://technet.microsoft.com/security/dd252948)并订阅“安全公告通知”。
+
+<!---HONumber=Mooncake_0718_2016-->

@@ -1,14 +1,14 @@
 <properties
    pageTitle="使用 VirtualBox 配置 Docker 主机 | Azure"
    description="使用 Docker 计算机和 VirtualBox 配置默认 Docker 实例的逐步说明"
-   services="visual-studio-online"
+   services="azure-container-service"
    documentationCenter="na"
-   authors="TomArcher"
+   authors="allclark"
    manager="douge"
    editor="" />
 <tags
    ms.service="multiple"
-   ms.date="03/27/2016"
+   ms.date="06/08/2016"
    wacn.date="" />
 
 # 使用 VirtualBox 配置 Docker 主机
@@ -46,10 +46,12 @@
 
 		docker ps
 
-	![][1]
+
+	![docker ps output][1]
  
-> [AZURE.NOTE] 每次重启开发计算机时，都需要重启本地 Docker 主机。要执行此操作，请在命令提示符下发出以下命令：`docker-machine start default`
+> [AZURE.NOTE] 每次重启开发计算机时，都需要重启本地 Docker 主机。为此，请在命令提示符下发出以下命令：`docker-machine start default`。
 
 [0]: ./media/vs-azure-tools-docker-setup/docker-machine-ls.png
 [1]: ./media/vs-azure-tools-docker-setup/docker-ps.png
-<!---HONumber=Mooncake_0516_2016-->
+
+<!---HONumber=AcomDC_0718_2016-->

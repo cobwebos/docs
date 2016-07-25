@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="01/23/2016"
+	ms.date="05/16/2016"
 	wacn.date=""/>
 
 # 节点 WEB API 入门
@@ -44,7 +44,7 @@
 
 ## 2\.创建应用程序
 
-你现在需要在目录中创建应用，以便为 Azure AD 提供一些必要信息，让它与应用安全地通信。在此案例中，因为客户端应用和 Web API 会组成一个逻辑应用，所以将由单一**应用程序 ID** 表示。若要创建应用，请遵循[这些说明](/documentation/articles/active-directory-how-applications-are-added)。如果你要生成业务线应用，[这些附加说明可能很有用](active-directory-applications-guiding-developers-for-lob-applications.md)。
+你现在需要在目录中创建应用，以便为 Azure AD 提供一些必要信息，让它与应用安全地通信。在此案例中，因为客户端应用和 Web API 会组成一个逻辑应用，所以将由单一**应用程序 ID** 表示。若要创建应用，请遵循[这些说明](/documentation/articles/active-directory-how-applications-are-added/)。如果你要生成业务线应用，[这些附加说明可能很有用](active-directory-applications-guiding-developers-for-lob-applications.md)。
 
 请务必：
 
@@ -177,16 +177,16 @@ Restify 提供强大的机制来使用 DTrace 跟踪 REST 调用。但是，许�
 该命令的输出应如下所示：
 
 ``
-passport-azure-ad@1.0.0 node\_modules/passport-azure-ad
-├── xtend@4.0.0 
-├── xmldom@0.1.19 
-├── passport-http-bearer@1.0.1 (passport-strategy@1.0.0) 
-├── underscore@1.8.3 
-├── async@1.3.0 
-├── jsonwebtoken@5.0.2 
-├── xml-crypto@0.5.27 (xpath.js@1.0.6) 
-├── ursa@0.8.5 (bindings@1.2.1, nan@1.8.4) 
-├── jws@3.0.0 (jwa@1.0.1, base64url@1.0.4) 
+passport-azure-ad@1.0.0 node_modules/passport-azure-ad
+├── xtend@4.0.0
+├── xmldom@0.1.19
+├── passport-http-bearer@1.0.1 (passport-strategy@1.0.0)
+├── underscore@1.8.3
+├── async@1.3.0
+├── jsonwebtoken@5.0.2
+├── xml-crypto@0.5.27 (xpath.js@1.0.6)
+├── ursa@0.8.5 (bindings@1.2.1, nan@1.8.4)
+├── jws@3.0.0 (jwa@1.0.1, base64url@1.0.4)
 ├── request@2.58.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, tunnel-agent@0.4.1, oauth-sign@0.8.0, isstream@0.1.2, extend@2.0.1, json-stringify-safe@5.0.1, node-uuid@1.4.3, qs@3.1.0, combined-stream@1.0.5, mime-types@2.0.14, form-data@1.0.0-rc1, http-signature@0.11.0, bl@0.9.4, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
 └── xml2js@0.4.9 (sax@0.6.1, xmlbuilder@2.6.4)
 
@@ -338,7 +338,7 @@ var serverURI = (process.env.PORT) ? config.creds.mongoose_auth_mongohq : config
 
 现在，我们已将这三个文件统一放在 REST API 服务中，接下来让我们的准备工作发挥作用。
 
-对于本演练，我们将使用 MongoDB 来存储 **步骤 4** 中所述的任务。
+对于本演练，我们将使用 MongoDB 来存储**步骤 4** 中所述的任务。
 
 回顾我们在 **步骤 11** 中创建的 `config.js` 文件，我们将数据库称为 `tasklist`，因为这是我们在 mogoose\_auth\_local 连接 URL 的末尾放置的内容。你无需事先在 MongoDB 中创建此数据库，当你首次运行服务器应用程序时，系统将创建此数据库（假定它不存在）。
 
@@ -727,7 +727,7 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
 然后，切换到目录并开始运行。
 
-`$ cd azuread` 
+`$ cd azuread`
 `$ node server.js`
 
 `$ curl -isS http://127.0.0.1:8080 | json`
@@ -904,7 +904,7 @@ next();
 
 然后，切换到目录并开始运行。
 
-  $ cd azuread 
+  $ cd azuread
   $ node server.js
 
 试用基本 POST：
@@ -938,4 +938,4 @@ Transfer-Encoding: chunked
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=AcomDC_0718_2016-->

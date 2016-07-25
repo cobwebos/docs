@@ -9,8 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	wacn.date=""/>
 
 # 将登录凭据添加到 .NET MVC Web 应用
@@ -22,7 +21,7 @@
 
  此处，我们将构建一个可以使用 OWIN 来将用户登录、显示有关用户的某些信息以及将用户从应用中注销的 Web 应用。
  
- ## 下载。
+## 下载
 本教程的代码[在 GitHub 上](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet)维护。若要遵照该代码，你可以[下载 .zip 格式应用骨架](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet/archive/skeleton.zip)，或克隆该骨架：
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIdConnect-DotNet.git```
@@ -52,7 +51,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 -	将称为 `Startup.cs` 的 OWIN 启动类添加到项目。右键单击项目，选择“添加”-->“新建项”，然后搜索“OWIN”。当你的应用程序启动时，该 OWIN 中间件将调用 `Configuration(...)` 方法。
--	将类声明更改为 `public partial class Startup` - 我们已在另一个文件中实现了此类的一部分。在 `Configuration(...)` 方法中，调用 ConfigureAuth(...) 以设置 Web 应用的身份验证。  
+-	将类声明更改为 `public partial class Startup` - 我们已在另一个文件中实现了此类的一部分。在 `Configuration(...)` 方法中，调用 ConfigureAuth(...) 以设置 Web 应用的身份验证。
 
 ```C#
 [assembly: OwinStartup(typeof(Startup))]
@@ -199,10 +198,14 @@ public ActionResult About()
 
 现在，可以转到更高级的主题。你可能想要尝试：
 
-[使用 v2.0 终结点保护 Web API >>](/documentation/articles/active-directory-devquickstarts-webapi-dotnet)
+[使用 v2.0 终结点保护 Web API >>](/documentation/articles/active-directory-devquickstarts-webapi-dotnet/)
 
 有关更多资源，请查看：
-- [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
+- [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview/)
 - [堆栈溢出“azure-active-directory”标记 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Mooncake_0620_2016-->
+## 获取关于我们产品的安全更新
+
+建议发生安全事件时获取相关通知，方法是访问[此页](https://technet.microsoft.com/security/dd252948)并订阅“安全公告通知”。
+
+<!---HONumber=Mooncake_0718_2016-->

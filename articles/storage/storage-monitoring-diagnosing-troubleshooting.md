@@ -9,10 +9,10 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="04/29/2016"
+	ms.date="05/27/2016"
 	wacn.date=""/>
 
-# 监视、诊断和排查 Microsoft Azure 存储空间问题 
+# 监视、诊断和排查 Microsoft Azure 存储空间问题
 
 [AZURE.INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
 
@@ -22,7 +22,7 @@
 
 若要成功管理此类应用程序，应主动监视这些应用程序，并了解如何诊断和排查这些应用程序及其相关技术的所有方面的问题。作为 Azure 存储服务的用户，你应持续监视你的应用程序所用的存储服务是否出现任何意外的行为更改（如比正常响应时间慢），并使用日志记录收集更详细的数据并深入地分析问题。从监视和日志记录获取的诊断信息将有助于确定应用程序所遇到问题的根本原因。然后，你可以排查该问题，并确定可以执行以更正该问题的相应步骤。Azure 存储空间是一项核心 Azure 服务，它是客户部署到 Azure 基础结构的大多数解决方案的重要组成部分。Azure 存储空间提供的功能可以简化监视、诊断和排查基于云的应用程序中的存储问题的过程。
 
-有关 Azure 存储空间应用程序中的端到端故障排除的动手指导，请参阅[端到端故障排除 - 使用 Azure 存储空间指标和日志记录、AzCopy 和 Message Analyzer](/documentation/articles/storage-e2e-troubleshooting)。
+有关 Azure 存储空间应用程序中的端到端故障排除的动手指导，请参阅[端到端故障排除 - 使用 Azure 存储空间指标和日志记录、AzCopy 和 Message Analyzer](/documentation/articles/storage-e2e-troubleshooting/)。
 
 + [介绍]
 	+ [本指南的组织方式]
@@ -73,7 +73,7 @@
 
 ![][1]
 
-*图 1：监视、诊断和故障排除*
+图 1：监视、诊断和故障排除
 
 本指南的主要目标受众是开发使用 Azure 存储服务的联机服务的开发人员以及负责管理此类联机服务的 IT 专业人员。本指南的目标是：
 
@@ -257,7 +257,9 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 
 下面的代码示例演示如何通过附加 **OperationContext** 对象（向存储服务发出的请求）设置自定义 **ClientRequestId** 值。它还演示了如何从响应消息中检索 **ServerRequestId** 值。
 
-    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+	//Parse the connection string for the storage account.
+    const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.chinacloudapi.cn";
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
     // Create an Operation Context that includes custom ClientRequestId string based on constants defined within the application along with a Guid.
@@ -389,7 +391,7 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 
 - 检查存储分析日志。如果发生多次重试，你会看到多个操作具有相同的客户端请求 ID，但却具有不同的服务器请求 ID。
 - 检查客户端日志。详细日志记录会指示重试已发生过。
-- 对代码进行调试，并查看与请求关联的 **OperationContext** 对象的属性。如果该操作已重试过，则 **RequestResults** 属性将包括多个唯一的服务器请求 ID。此外，你还可以检查每个请求的开始和结束时间。有关详细信息，请参阅“[服务器请求 ID]”一节中的代码示例。 
+- 对代码进行调试，并查看与请求关联的 **OperationContext** 对象的属性。如果该操作已重试过，则 **RequestResults** 属性将包括多个唯一的服务器请求 ID。此外，你还可以检查每个请求的开始和结束时间。有关详细信息，请参阅“[服务器请求 ID]”一节中的代码示例。
 
 如果客户端没有问题，则应调查潜在的网络问题，例如数据包丢失。可以使用工具（如 Wireshark 或 Microsoft Message Analyzer）调查网络问题。
 
@@ -405,7 +407,7 @@ Azure SDK 提供了一个存储模拟器，你可以在开发工作站上运行�
 
 较高的 **AverageServerLatency** 值也可能是设计欠佳的表或查询的症状，它会导致扫描操作或执行追加/前面预置反模式。有关详细信息，请参阅“[度量值显示 PercentThrottlingError 增加]”。
 
-> [AZURE.NOTE] 你可以在此处找到一份全面的性能清单：[Azure 存储空间性能和可伸缩性清单](/documentation/articles/storage-performance-checklist)。
+> [AZURE.NOTE] 你可以在此处找到一份全面的性能清单：[Azure 存储空间性能和可伸缩性清单](/documentation/articles/storage-performance-checklist/)。
 
 ### <a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>队列上的消息传递出现意外的延迟
 
@@ -678,7 +680,7 @@ Timestamp|操作|结果|容器名称|客户端请求 ID
 
 ### <a name="you-are-experiencing-unexpected-reboots"></a>遇到具有大量附加 VHD 的 Azure 虚拟机意外重新启动
 
-如果 Azure 虚拟机 (VM) 具有大量位于同一存储帐户的附加 VHD，则可能会超过单个存储帐户的可伸缩性目标，从而导致 VM 出现故障。您应查看存储帐户的每分钟度量值 (**TotalRequests**/**TotalIngress**/**TotalEgress**)，以获取超过一个存储帐户的可伸缩性目标的峰值。若要帮助确定是否已对您的存储帐户进行限制，请参阅“[度量值显示 PercentThrottlingError 增加]”一节。
+如果 Azure 虚拟机 (VM) 具有大量位于同一存储帐户的附加 VHD，则可能会超过单个存储帐户的可伸缩性目标，从而导致 VM 出现故障。你应检查存储帐户的分钟度量值 (**TotalRequests**/**TotalIngress**/**TotalEgress**)，获取超过一个存储帐户的可伸缩性目标的峰值。若要帮助确定是否已对您的存储帐户进行限制，请参阅“[度量值显示 PercentThrottlingError 增加]”一节。
 
 通常，虚拟机对 VHD 进行的每个单独的输入或输出操作都会转换为对基础页 Blob 进行的“Get 页”或“Put 页”操作。因此，你可以根据应用程序的特定行为，对环境使用估计的 IOPS 以优化可以在单个存储帐户中设置的 VHD 数。我们不建议在单个存储帐户中设置超过 40 个的磁盘。有关存储帐户的当前可伸缩性目标的详细信息（尤其是您所用的存储帐户类型的总请求速率和总带宽），请参阅 <a href="http://msdn.microsoft.com/zh-cn/library/azure/dn249410.aspx" target="_blank">Azure 存储空间可伸缩性和性能目标</a>。如果你即将超过存储帐户的可伸缩性目标，则应将你的 VHD 放入多个不同的存储帐户中，以减少每个帐户中的活动。
 
@@ -770,7 +772,7 @@ Wireshark 是一种网络协议分析器，可用于查看各种网络协议的�
 1.	在本地计算机上启动 Wireshark。
 2.	在“启动”部分中，选择本地网络接口或连接到 Internet 的接口。
 3.	单击“捕获选项”。
-4.	将一个筛选器添加到“捕获筛选器”文本框中。例如，**host contosoemaildist.table.core.chinacloudapi.cn** 会将 Wireshark 配置为只捕获发送到 **contosoemaildist** 存储帐户中的表服务终结点或从该终结点发送的数据包。捕获的筛选器的完整列表请参阅 <a href="http://wiki.wireshark.org/CaptureFilters" target="_blank">http://wiki.wireshark.org/CaptureFilters</a>。 
+4.	将一个筛选器添加到“捕获筛选器”文本框中。例如，**host contosoemaildist.table.core.chinacloudapi.cn** 会将 Wireshark 配置为只捕获发送到 **contosoemaildist** 存储帐户中的表服务终结点或从该终结点发送的数据包。捕获的筛选器的完整列表请参阅 <a href="http://wiki.wireshark.org/CaptureFilters" target="_blank">http://wiki.wireshark.org/CaptureFilters</a>。
 
     ![][6]
 
@@ -914,4 +916,4 @@ Microsoft Message Analyzer 中内置的“Web 代理”跟踪基于 Fiddler；�
 [9]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-1.png
 [10]: ./media/storage-monitoring-diagnosing-troubleshooting/mma-screenshot-2.png
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0718_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="我的 MVC 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况？| Azure"
+	pageTitle="我的 MVC 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况？| Azure "
 	description="描述一下，当你使用 Visual Studio 连接服务连接到 Azure AD 时，你的 MVC 项目会发生什么情况"
 	services="active-directory"
 	documentationCenter="na"
@@ -9,14 +9,14 @@
   
 <tags 
 	ms.service="active-directory" 
-	ms.date="03/28/2016"
-	wacn.date=""/>	
+	ms.date="06/01/2016"
+	wacn.date=""/>
 
 # 我的 MVC 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况？
 
 > [AZURE.SELECTOR]
-> - [入门](/documentation/articles/vs-active-directory-dotnet-getting-started)
-> - [发生了什么情况](/documentation/articles/vs-active-directory-dotnet-what-happened)
+> - [入门](/documentation/articles/vs-active-directory-dotnet-getting-started/)
+> - [发生了什么情况](/documentation/articles/vs-active-directory-dotnet-what-happened/)
 
 
 
@@ -167,4 +167,4 @@ NuGet 包引用已删除，文件已删除和备份。根据你的项目的状�
 
 [详细了解 Azure Active Directory](/documentation/services/active-directory/)
  
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0718_2016-->

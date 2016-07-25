@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Azure 备份在 Azure 中保护 VM | Microsoft Azure"
+	pageTitle="使用 Azure 备份在 Azure 中保护 VM | Azure"
 	description="使用 Azure 备份服务保护 Azure VM。本教程介绍如何在 Azure 中创建保管库、注册 VM、创建策略和保护 VM。"
 	services="backup"
 	documentationCenter=""
@@ -26,11 +26,11 @@
 
 若要备份 VM，需要执行五个主要步骤：
 
-![第一步](./media/backup-azure-vms-first-look/step-one.png)创建一个备份保管库，或指定现有的备份保管库。<br/>
-![第二步](./media/backup-azure-vms-first-look/step-two.png)使用 Azure 经典门户来发现并注册虚拟机。<br/>
-![第三步](./media/backup-azure-vms-first-look/step-three.png)安装 VM 代理。<br/>
-![第四步](./media/backup-azure-vms-first-look/step-four.png)创建用于保护虚拟机的策略。<br/>
-![第五步](./media/backup-azure-vms-first-look/step-five.png)运行备份。
+![第一步](./media/backup-azure-vms-first-look/step-one.png) 创建一个备份保管库，或指定现有的备份保管库。<br/>
+![第二步](./media/backup-azure-vms-first-look/step-two.png) 使用 Azure 经典门户来发现并注册虚拟机。<br/> 
+![第三步](./media/backup-azure-vms-first-look/step-three.png) 安装 VM 代理。<br/> 
+![第四步](./media/backup-azure-vms-first-look/step-four.png) 创建用于保护虚拟机的策略。<br/> 
+![第五步](./media/backup-azure-vms-first-look/step-five.png) 运行备份。
 
 ![VM 备份过程的高级视图](./media/backup-azure-vms-first-look/backupazurevm-classic.png)
 
@@ -93,7 +93,7 @@
 1. 登录到 [Azure 经典门户](http://manage.windowsazure.cn/)
 
 2. 在 Azure 经典门户中，单击“恢复服务”打开恢复服务保管库列表。
-    ![选择工作负荷](./media/backup-azure-vms-first-look/recovery-services-icon.png)
+     ![选择工作负荷](./media/backup-azure-vms-first-look/recovery-services-icon.png)
 
 3. 从保管库列表中，选择要备份 VM 的保管库。
 
@@ -157,7 +157,7 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。�
 3. 单击页面底部的“保护”。
     ![单击“保护”](./media/backup-azure-vms-first-look/protect-icon.png)
 
-    此时将显示“保护项”向导，其中只列出了已注册但未受保护的虚拟机。
+    此时将显示“保护项”向导，其中*只*列出了已注册但未受保护的虚拟机。
 
     ![配置批量保护](./media/backup-azure-vms/protect-at-scale.png)
 
@@ -209,14 +209,14 @@ Azure VM 代理必须安装在 Azure 虚拟机上，备份扩展才能运行。�
     >[AZURE.NOTE] 备份虚拟机是在本地完成的过程。你不能将一个区域的虚拟机备份到另一个区域的备份保管库。因此，对于每个需要备份 VM 的 Azure 区域，需要在该区域中至少创建一个备份保管库。
 
 ## 后续步骤
-成功备份 VM 后，你可能需要执行几个相关的步骤。最符合逻辑的步骤是让自己熟悉如何将数据还原到 VM，但是，也有帮助你了解如何确保数据安全并持续降skc低成本的管理任务。
+成功备份 VM 后，你可能需要执行几个相关的步骤。最合理的步骤是熟悉将数据还原到 VM 的操作。但是，有几个管理任务可帮助你了解如何确保数据安全和成本最小化。
 
-- [管理和监视你的虚拟机](/documentation/articles/backup-azure-manage-vms)
-- [恢复虚拟机](/documentation/articles/backup-azure-restore-vms)
-- [故障排除指南](/documentation/articles/backup-azure-vms-troubleshoot)
+- [管理和监视你的虚拟机](/documentation/articles/backup-azure-manage-vms/)
+- [恢复虚拟机](/documentation/articles/backup-azure-restore-vms/)
+- [故障排除指南](/documentation/articles/backup-azure-vms-troubleshoot/)
 
 
 ## 有疑问？
 如果你有疑问，或者希望包含某种功能，请[给我们反馈](http://aka.ms/azurebackup_feedback)。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=AcomDC_0718_2016-->

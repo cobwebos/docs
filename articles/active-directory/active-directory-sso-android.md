@@ -9,8 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-
-	ms.date="03/17/2015"
+	ms.date="05/16/2016"
 	wacn.date=""/>
 
 
@@ -29,7 +28,8 @@ Microsoft 标识平台以及 Microsoft 标识 SDK 能够为你完成所有这些
 
 * Azure Active Directory
 * Azure Active Directory B2C
-* Azure Active Directory B2B。请注意，以下文档假设你已了解如何[在旧版门户中为 Azure Active Directory 预配应用程序](active-directory-how-to-integrate.md)，并且你已将应用程序与 [Microsoft Identity Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) 集成。
+* Azure Active Directory B2B。
+请注意，以下文档假设你已了解如何[在旧版门户中为 Azure Active Directory 预配应用程序](active-directory-how-to-integrate.md)，并且你已将应用程序与 [Microsoft Identity Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android) 集成。
 
 ## Microsoft 标识平台中的 SSO 概念
 
@@ -53,7 +53,7 @@ Microsoft 提供了为来自不同供应商的应用程序之间过渡凭据允�
 这种登录具有以下优点：
 
 -  完全在应用程序存在的用户体验。
--  凭据可跨应用程序共享并由同一个证书签名，为应用程序套件提供单一登录体验。 
+-  凭据可跨应用程序共享并由同一个证书签名，为应用程序套件提供单一登录体验。
 -  围绕体验中的日志记录的控件提供给应用程序之前和之后登录。
 
 这种登录具有以下缺点：
@@ -80,7 +80,8 @@ Microsoft 提供了为来自不同供应商的应用程序之间过渡凭据允�
 
 #### 中转站辅助的登录
 
-中转站辅助的登录在中转站应用程序中发生，使用存储和中转站的安全性在设备上的所有应用程序利用 Microsoft 身份平台之间共享的凭据登录体验。这意味着，应用程序将依赖于中转站才能将用户登录。在 iOS 和 Android 提供这些方法通过可下载的应用程序的客户可以独立安装或由公司负责管理其用户的设备推送到设备。这种类型的应用程序示例是 iOS 上的 Azure 验证器应用程序。在 Windows 内置于操作系统，已知技术作为 Web 身份验证中转站帐户选择器提供此功能。体验因平台而异，如果未正确管理，有时会给用户带来麻烦。如果脸已安装 Facebook 应用程序并在另一个应用程序中使用 Facebook 登录功能，你可能很熟悉这种模式。Microsoft 标识平台利用相同的模式。
+中转站辅助的登录在中转站应用程序中发生，使用存储和中转站的安全性在设备上的所有应用程序利用 Microsoft 身份平台之间共享的凭据登录体验。这意味着，应用程序将依赖于中转站才能将用户登录。在 iOS 和 Android 提供这些方法通过可下载的应用程序的客户可以独立安装或由公司负责管理其用户的设备推送到设备。这种类型的应用程序示例是 iOS 上的 Azure 验证器应用程序。在 Windows 内置于操作系统，已知技术作为 Web 身份验证中转站帐户选择器提供此功能。 
+体验因平台而异，如果未正确管理，有时会给用户带来麻烦。如果脸已安装 Facebook 应用程序并在另一个应用程序中使用 Facebook 登录功能，你可能很熟悉这种模式。Microsoft 标识平台利用相同的模式。
 
 对于 iOS，这会导致“过渡”动画，其中，应用程序将发送到后台，而 Azure 验证器应用程序将发送到前台，让用户选择他们登录时使用的帐户。
 
@@ -150,7 +151,7 @@ Microsoft 提供了为来自不同供应商的应用程序之间过渡凭据允�
 
 若要跨你拥有的应用程序启用 SSO，需要执行以下操作：
 
-1. 确保所有应用程序使用相同的客户端 ID 或应用程序 ID。 
+1. 确保所有应用程序使用相同的客户端 ID 或应用程序 ID。
 * 确保所有应用程序具有相同的 SharedUserID 集。
 * 确保所有应用程序共享来自 Google Play Store 的相同签名证书，以便可以共享存储。
 
@@ -194,7 +195,7 @@ Microsoft 提供了为来自不同供应商的应用程序之间过渡凭据允�
 ```
 
 
-请注意，下面介绍了这些重定向 URI 的格式。你可以使用任何重定向 URI，除非你想要支持中转站，在这种情况下，它们必须如上所示
+*请注意，下面介绍了这些重定向 URI 的格式。你可以使用任何重定向 URI，除非你想要支持中转站，在这种情况下，它们必须如上所示*
 
 
 #### 步骤 2：在 Android 中配置共享存储
@@ -265,4 +266,4 @@ MANAGE_ACCOUNTS
 
 
 
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0718_2016-->

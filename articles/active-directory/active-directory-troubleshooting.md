@@ -1,5 +1,5 @@
 <properties
-   pageTitle="故障排除：“Active Directory”项缺失或不可用 | Microsoft Azure"
+   pageTitle="故障排除：“Active Directory”项缺失或不可用 | Azure "
    description="Azure 管理门户中未显示 Active Directory 菜单项时怎么办。"
    services="active-directory"
    documentationCenter="na"
@@ -9,8 +9,7 @@
 
 <tags
    ms.service="active-directory"
-
-   ms.date="12/04/2015"
+   ms.date="05/31/2016"
    wacn.date=""/>
 
 # 故障排除：“Active Directory”项缺失或不可用
@@ -51,4 +50,4 @@
 
 ![屏幕截图：Active Directory 不可用](./media/active-directory-troubleshooting/not-available.png)
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0718_2016-->

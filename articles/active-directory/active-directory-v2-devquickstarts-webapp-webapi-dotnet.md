@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	wacn.date=""/>
 
 # 从 .NET Web 应用调用 API
@@ -101,7 +101,7 @@ public void ConfigureAuth(IAppBuilder app)
 ```
 
 ## 使用 ADAL 获取访问令牌
-在 `AuthorizationCodeReceived` 通知中，我们想要使用[与 OpenID Connect 串联的 OAuth 2.0](/documentation/articles/active-directory-v2-protocols#openid-connect-with-oauth-code-flow)，以兑换待办事项列表服务的访问令牌的 authorization\_code。ADAL 可以简化此过程：
+在 `AuthorizationCodeReceived` 通知中，我们想要使用[与 OpenID Connect 串联的 OAuth 2.0](/documentation/articles/active-directory-v2-protocols/#openid-connect-with-oauth-code-flow)，以兑换待办事项列表服务的访问令牌的 authorization\_code。ADAL 可以简化此过程：
 
 - 首先，安装 ADAL 预览版：
 
@@ -190,7 +190,11 @@ catch (AdalException ee)
 ## 后续步骤
 
 有关更多资源，请查看：
-- [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
+- [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview/)
 - [堆栈溢出“adal”标记 >>](http://stackoverflow.com/questions/tagged/adal)
 
-<!---HONumber=Mooncake_0620_2016-->
+## 获取关于我们产品的安全更新
+
+建议发生安全事件时获取相关通知，方法是访问[此页](https://technet.microsoft.com/security/dd252948)并订阅“安全公告通知”。
+
+<!---HONumber=Mooncake_0718_2016-->

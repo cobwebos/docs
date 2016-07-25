@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	wacn.date=""/>
 
 # 使用 node.js 保护 Web API
@@ -259,9 +259,9 @@ identityMetadata: 'https://login.microsoftonline.com/common/.well-known/openid-c
 
 ### 所需值
 
-*IdentityMetadata*：passport-azure-ad 将在此处查找适用于 IdP 的配置数据，以及用来验证 JWT 令牌的密钥。如果你使用 Azure Active Directory，则可能不想更改此项。
+IdentityMetadata：passport-azure-ad 将在此处查找适用于 IdP 的配置数据，以及用来验证 JWT 令牌的密钥。如果你使用 Azure Active Directory，则可能不想更改此项。
 
-*audience*：来自门户的重定向 URI。
+audience：来自门户的重定向 URI。
 
 > [AZURE.NOTE]
 我们会频繁滚动更新密钥。请确保始终从“openid\_keys”URL 提取密钥，并且应用程序能够访问 Internet。
@@ -303,9 +303,9 @@ name: 'Microsoft Azure Active Directory Sample'
 
 现在，我们已将这三个文件统一放在 REST API 服务中，接下来让我们的准备工作发挥作用。
 
-对于本演练，我们将使用 MongoDB 来存储***步骤 4*** 中所述的任务。
+对于本演练，我们将使用 MongoDB 来存储**步骤 4** 中所述的任务。
 
-回顾我们在步骤 11 中创建的 config.js 文件，我们将数据库称为 *tasklist*，因为这是我们在 mogoose\_auth\_local 连接 URL 的末尾放置的内容。你无需事先在 MongoDB 中创建此数据库，当你首次运行服务器应用程序时，系统将创建此数据库（假定它不存在）。
+回顾我们在步骤 11 中创建的 config.js 文件，我们将数据库称为 tasklist，因为这是我们在 mogoose\_auth\_local 连接 URL 的末尾放置的内容。你无需事先在 MongoDB 中创建此数据库，当你首次运行服务器应用程序时，系统将创建此数据库（假定它不存在）。
 
 现在，我们已告诉服务器要使用哪个 MongoDB 数据库，接下来我们需要编写一些附加的代码，以便为服务器任务创建模型和架构。
 
@@ -641,7 +641,8 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
 然后，切换到目录并开始运行。
 
-`$ cd azuread` `$ node server.js`
+`$ cd azuread`
+`$ node server.js`
 
 `$ curl -isS http://127.0.0.1:8080 | json`
 
@@ -844,10 +845,14 @@ Transfer-Encoding: chunked
 
 现在，可以转到更高级的主题。你可能想要尝试：
 
-[使用 v2.0 终结点保护 Node.js Web 应用 >>](/documentation/articles/active-directory-v2-devquickstarts-node-web)
+[使用 v2.0 终结点保护 Node.js Web 应用 >>](/documentation/articles/active-directory-v2-devquickstarts-node-web/)
 
 有关更多资源，请查看：
-- [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview)
+- [v2.0 开发人员指南 >>](/documentation/articles/active-directory-appmodel-v2-overview/)
 - [堆栈溢出“azure-active-directory”标记 >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-<!---HONumber=Mooncake_0620_2016-->
+## 获取关于我们产品的安全更新
+
+建议发生安全事件时获取相关通知，方法是访问[此页](https://technet.microsoft.com/security/dd252948)并订阅“安全公告通知”。
+
+<!---HONumber=Mooncake_0718_2016-->

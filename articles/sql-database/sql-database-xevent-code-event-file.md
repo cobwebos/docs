@@ -1,22 +1,23 @@
 <properties 
-	pageTitle="SQL 数据库的 XEvent 事件文件代码 | Microsoft Azure" 
+	pageTitle="SQL 数据库的 XEvent 事件文件代码 | Azure" 
 	description="提供一个双阶段代码示例的 PowerShell 和 Transact-SQL，该示例演示 Azure SQL 数据库的扩展事件中的事件文件目标。完成此方案部分必须用到 Azure 存储空间。" 
 	services="sql-database" 
 	documentationCenter="" 
 	authors="MightyPen" 
-	manager="jeffreyg" 
+	manager="jhubbard" 
 	editor="" 
 	tags=""/>
 
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="12/09/2015" 
-	wacn.date=""/>
+	ms.date="06/08/2016" 
+	wacn.date="06/02/2016"/>
 
 
 # SQL 数据库中扩展事件的事件文件目标代码
 
+[AZURE.INCLUDE [sql-database-xevents-selectors-1-include](../includes/sql-database-xevents-selectors-1-include.md)]
 
 你需要一个完整的代码示例来可靠捕获和报告扩展事件的信息。
 
@@ -41,16 +42,17 @@
 
 
 - 可以在其中创建表的任何数据库。
- - 你可以选择快速[创建一个 **AdventureWorksLT** 演示数据库](/documentation/articles/sql-database-get-started)。
+ - 你可以选择快速[创建一个 **AdventureWorksLT** 演示数据库](/documentation/articles/sql-database-get-started/)。
 
 
-- SQL Server Management Studio (ssms.exe) 2015 年 8 月预览版或更高版本。可从以下位置下载最新的 ssms.exe：
+- SQL Server Management Studio (ssms.exe) 2015 年 8 月预览版或更高版本。 
+可从以下位置下载最新的 ssms.exe：
  - 标题为[下载 SQL Server Management Studio](http://msdn.microsoft.com/zh-cn/library/mt238290.aspx) 的主题。
  - [直接指向下载位置的链接。](http://go.microsoft.com/fwlink/?linkid=616025)
- - Microsoft 建议定期更新 ssms.exe。在某些情况下，ssms.exe 将每个月更新。
+ - Azure 建议定期更新 ssms.exe。在某些情况下，ssms.exe 将每个月更新。
 
 
-- 你必须安装 [Azure PowerShell 模块](http://go.microsoft.com/?linkid=9811175)。
+- 必须安装 [Azure PowerShell 模块](http://go.microsoft.com/?linkid=9811175)。
  - 这些模块提供 **New-AzureStorageAccount** 等命令。
 
 
@@ -63,7 +65,7 @@
 
 
 
-1. 将 PowerShell 脚本粘贴到 Notepad.exe 等简单文本编辑器，并将脚本保存到扩展名为 **.ps1** 的文件。
+1. 将 PowerShell 脚本粘贴到 Notepad.exe 等简单的文本编辑器中，并将脚本保存为扩展名为 **.ps1** 的文件。
 
 2. 以管理员身份启动 PowerShell ISE。
 
@@ -72,7 +74,7 @@
 4. 在 PowerShell ISE 中打开你的 **.ps1** 文件。运行该脚本。
 
 5. 该脚本会先启动新的窗口让你登录 Azure。
- - 如果你想要重复运行脚本而不中断会话，可以很方便地选择注释掉 **Add-AzureAccount** 命令。
+ - 如果你想要重新运行脚本而不中断会话，可以很方便地选择注释禁止 **Add-AzureAccount** 命令。
 
 
 ![在准备运行脚本之前，必须准备好已装有 Azure 模块的 PowerShell ISE。][30_powershell_ise]
@@ -82,18 +84,19 @@
 
 
 ```
-## TODO: Before running, find all 'TODO' and make each edit!
+## TODO: Before running, find all 'TODO' and make each edit!!
 
 #--------------- 1 -----------------------
 
 
-# You can comment out or skip this Add-AzureAccount command after the first run.
+# You can comment out or skip this Add-AzureAccount
+# command after the first run.
 # Current PowerShell environment retains the successful outcome.
 
 'Expect a pop-up window in which you log in to Azure.'
 
 
-Add-AzureAccount
+Add-AzureAccount -EnvironmentName AzureChinaCloud
 
 #-------------- 2 ------------------------
 
@@ -102,7 +105,10 @@ Add-AzureAccount
 TODO: Edit the values assigned to these variables, especially the first few!
 '
 
-$subscriptionName       = 'YOUR_SUBSCRIPTION_NAME'
+# Ensure the current date is between
+# the Expiry and Start time values that you edit here.
+
+$subscriptionName    = 'YOUR_SUBSCRIPTION_NAME'
 $policySasExpiryTime = '2016-01-28T23:44:56Z'
 $policySasStartTime  = '2015-08-01'
 
@@ -111,7 +117,7 @@ $storageAccountName     = 'gmstorageaccountxevent'
 $storageAccountLocation = 'China North'
 $contextName            = 'gmcontext'
 $containerName          = 'gmcontainerxevent'
-$policySasToken      = 'gmpolicysastoken'
+$policySasToken         = 'gmpolicysastoken'
 
 
 # Leave this value alone, as 'rwl'.
@@ -283,6 +289,12 @@ PowerShell 脚本在结束时输出了几个命名值。你必须编辑 Transact
 &nbsp;
 
 
+> [AZURE.WARNING] 之前 PowerShell 脚本生成的 SAS 密钥值可能以“?”（问号）开头。在以下 T-SQL 脚本中使用 SAS 密钥时，必须删除了前导“?”。
+
+
+&nbsp;
+
+
 ```
 ---- TODO: First, run the PowerShell portion of this two-part code sample.
 ---- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
@@ -291,7 +303,6 @@ PowerShell 脚本在结束时输出了几个命名值。你必须编辑 Transact
 
 
 SET NOCOUNT ON;
-
 GO
 
 
@@ -573,16 +584,16 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 有关 Azure SQL 数据库中扩展事件的主要主题是：
 
-- [SQL 数据库中的扩展事件](/documentation/articles/sql-database-xevent-db-diff-from-svr) - 有关 Azure SQL 数据库中扩展事件的主要主题。
+- [SQL 数据库中的扩展事件](/documentation/articles/sql-database-xevent-db-diff-from-svr/) - 有关 Azure SQL 数据库中扩展事件的主要主题。
  - 对比 Azure SQL 数据库与 Microsoft SQL Server 的扩展事件的不同方面。
 
 
-- [SQL 数据库中扩展事件的环形缓冲区目标代码](/documentation/articles/sql-database-xevent-code-ring-buffer) - 提供一个可以快速方便上手的辅助代码示例，但该示例主要适用于简单测试，而对于大型活动则不够可靠。
+- [SQL 数据库中扩展事件的环形缓冲区目标代码](/documentation/articles/sql-database-xevent-code-ring-buffer/) - 提供一个可以快速方便上手的辅助代码示例，但该示例主要适用于简单测试，而对于大型活动则不够可靠。
 
 
 有关 Azure 存储空间服务中帐户和容器的详细信息，请参阅：
 
-- [如何通过 .NET 使用 Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs)
+- [如何通过 .NET 使用 Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs/)
 - [命名和引用容器、Blob 与元数据](http://msdn.microsoft.com/zh-cn/library/azure/dd135715.aspx)
 - [使用根容器](http://msdn.microsoft.com/zh-cn/library/azure/ee395424.aspx)
 
@@ -593,4 +604,5 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-<!---HONumber=Mooncake_0118_2016-->
+
+<!---HONumber=Mooncake_0718_2016-->

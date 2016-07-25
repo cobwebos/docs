@@ -1,6 +1,6 @@
 <properties
-	pageTitle="使用存储空间资源管理器（预览版）管理 Azure 存储空间资源 | Azure"
-	description="介绍如何使用 Microsoft Azure 存储空间资源管理器（预览版）来创建和管理 Azure 存储空间资源。"
+	pageTitle="存储资源管理器（预览版）入门 | Azure"
+	description="使用存储空间资源管理器（预览版）管理 Azure 存储空间资源"
 	services="visual-studio-online"
 	documentationCenter="na"
 	authors="TomArcher"
@@ -9,173 +9,281 @@
 
  <tags
 	ms.service="visual-studio-online"
-	ms.date="01/30/2016"
+	ms.date="06/05/2016"
 	wacn.date="" />
 
-# 使用存储空间资源管理器（预览版）管理 Azure 存储空间资源
+# 存储资源管理器（预览版）入门
 
-Microsoft Azure 存储空间资源管理器（预览版）是一个独立的工具，可帮助你轻松管理 Azure 存储帐户。当你想要快速管理 Azure 门户的外部存储时（例如，你要在 Visual Studio 中开发应用），此工具十分有用。此预览版可让你轻松使用 Blob 存储。你可以创建和删除容器，上载、下载和删除 Blob，以及在所有容器和 Blob 中搜索。高级功能可让开发人员和操作员使用 SAS 密钥和策略。Windows 开发人员还可以借助 Azure 存储模拟器，使用本地开发存储帐户来测试代码。
+## 概述 
 
-若要查看或管理存储空间资源管理器中的存储资源，需要能够以订阅或外部存储帐户访问 Azure 存储帐户。如果你没有存储帐户，只需花费几分钟就能创建一个帐户。或者，请参阅 [1 元试用版](/pricing/1rmb-trial/)。
+Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可用于在 Windows、OSX 和 Linux 上轻松处理 Azure 存储数据。在本文中，你将了解如何通过各种方式连接到 Azure 存储帐户并对其进行管理。
 
-## 管理 Azure 帐户和订阅
+## 先决条件
 
-若要在存储空间资源管理器中查看 Azure 存储空间资源，需要登录到包含一个或多个有效订阅的 Azure 帐户。如果你有多个 Azure 帐户，可将它们添加存储空间资源管理器，然后选择想要包含在存储空间资源管理器资源视图中的订阅。如果你未曾使用过 Azure，或尚未将必要的帐户添加到 Visual Studio，系统将提示你登录到 Azure 帐户。
+- [下载并安装存储资源管理器（预览版）](http://go.microsoft.com/fwlink/?LinkId=708343)
 
-### 将 Azure 帐户添加到存储空间资源管理器
+## 连接到存储帐户或服务
 
-1.	在“存储空间资源管理器”工具栏上选择“设置”（齿轮）图标。
-1.	选择“添加帐户”链接。登录到你要浏览其存储空间资源的 Azure 帐户。帐户选择器下拉列表中应已选择刚刚添加的帐户。该帐户的所有订阅出现在帐户条目下。
+存储资源管理器（预览版）提供了多种连接到存储帐户的方式。这些方式包括连接到与 Azure 订阅关联的存储帐户、连接到从其他 Azure 订阅共享的存储帐户和服务，甚至包括使用 Azure 存储模拟器连接到本地存储并对其进行管理：
+
+- [连接到 Azure 订阅](#connect-to-an-azure-subscription) - 管理属于 Azure 订阅的存储资源。
+- [连接到本地存储](#connect-to-local-storage) - 使用 Azure 存储模拟器管理本地存储。
+- [附加到外部存储](#attach-or-detach-an-external-storage-account) - 使用存储帐户的帐户名称和密钥管理属于另一 Azure 订阅的存储资源。
+- [使用 SAS 附加帐户](#attach-account-using-sas) - 使用 SAS 管理属于另一 Azure 订阅的存储资源。
+- [使用 SAS 附加服务](#attach-service-using-sas) - 使用 SAS 管理属于另一 Azure 订阅的特定存储服务（Blob 容器、队列或表）。
+
+## 连接到 Azure 订阅
+
+> [AZURE.NOTE] 如果你没有 Azure 帐户，可以[注册免费试用帐户](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或者[激活你的 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
+
+1. 启动存储资源管理器（预览版）。
+
+1. 如果你是第一次运行存储资源管理器（预览版），或者你此前已运行过存储资源管理器（预览版），但尚未连接到 Azure 帐户，则会看到一个信息栏，你可以通过该信息栏中的信息连接到 Azure 帐户。
 
 	![][0]
+	
+1. 选择“连接到 Microsoft Azure”，然后按照对话框中的说明，使用与至少一个活动 Azure 订阅相关联的 Microsoft 帐户登录。
 
-1.	选中你要浏览的帐户订阅的复选框，然后选择“应用”按钮。
+使用 Microsoft 帐户成功登录以后，存储资源管理器（预览版）的左窗格中将会填充与所有 Azure 订阅关联的所有存储帐户，而这些 Azure 订阅又与 Microsoft 帐户关联。
+
+### 筛选 Azure 订阅
+
+使用存储资源管理器（预览版），你可以筛选出会在左窗格中列出其存储帐户且与已登录 Microsoft 帐户关联的 Azure 订阅。
+
+1. 选择“设置”（齿轮）图标。
 
 	![][1]
 
-	所选订阅的 Azure 存储空间资源将出现在存储空间资源管理器中。
-
-### 附加外部存储
-
-1. 获取想要附加的存储帐户的帐户名称和密钥。
-	1.	在 Azure 预览门户中，选择要附加的存储帐户。
-	1.	在 Azure 预览门户上的“设置”窗格的“管理”部分中，选择“密钥”按钮。
-	1.	复制“存储帐户名称”和“主访问密钥”值。
-
-		![][2]
-
-1.	在“存储空间资源管理器”的“存储帐户”节点的快捷菜单中，选择“附加外部存储”命令。
+1. 	在左窗格顶部，你会看到一个下拉列表，其中包含你已登录的所有 Microsoft 帐户。
 
 	![][3]
-
-1. 在“帐户名称”框中输入存储帐户名称，在“帐户密钥”框中输入主访问密钥。选择“确定”按钮以继续。
+	 
+1.	选择下拉列表旁边的向下箭头，以便查看所有已登录的 Microsoft 帐户以及用于添加（登录）其他 Microsoft 帐户的链接。
 
 	![][4]
 
-	外部存储将出现在存储空间资源管理器中。
+1.	从下拉列表中，选择所需 Microsoft 帐户。
+
+1. 	左窗格将显示与所选 Microsoft 帐户关联的所有 Azure 订阅。使用每个 Azure 订阅左侧的复选框，你可以指定是否希望存储资源管理器（预览版）列出与该 Azure 订阅关联的所有存储帐户。选中/取消选中“所有订阅”即可通过切换来选择所有列出的 Azure 订阅，或者一个都不选。
+
+	![][2]
+
+1.	选择完要管理的 Azure 订阅以后，请选择“应用”。左窗格在更新后会针对当前 Microsoft 帐户的每个所选 Azure 订阅列出所有存储帐户。
+
+### 添加其他 Microsoft 帐户
+
+以下步骤演示如何通过连接到其他 Microsoft 帐户来查看每个帐户的 Azure 订阅和存储帐户。
+
+1.	选择“设置”（齿轮）图标。
+
+	![][1]
+
+1. 	在左窗格顶部，你会看到一个下拉列表，其中包含当前已连接的所有 Microsoft 帐户。
+
+	![][3]
+	 
+1.	选择下拉列表旁边的向下箭头，以便查看所有已登录的 Microsoft 帐户以及用于添加（登录）其他 Microsoft 帐户的链接。
+
+	![][4]
+
+1.	选择“添加帐户”，然后按对话框中的说明登录到与至少一个活动 Azure 订阅关联的帐户。
+
+1.	选择与要浏览的 Azure 订阅相对应的复选框。
+
+	![][2]
+
+1.	选择“应用”。
+
+### 在 Microsoft 帐户之间切换
+
+虽然你可以连接到多个 Microsoft 帐户，但左窗格仅显示与单个（当前）Microsoft 帐户的订阅关联的存储帐户。如果连接到多个 Microsoft 帐户，你可以通过以下步骤在这些帐户之间切换：
+
+1.	选择“设置”（齿轮）图标。
+
+	![][1]
+
+1. 	在左窗格顶部，你会看到一个下拉列表，其中包含当前已连接的所有 Microsoft 帐户。
+
+	![][3]
+	 
+1.	选择下拉列表旁边的向下箭头，以便查看所有已登录的 Microsoft 帐户以及用于添加（登录）其他 Microsoft 帐户的链接。
+
+	![][4]
+
+1.	选择所需的 Microsoft 帐户。
+
+1.	选择与要浏览的 Azure 订阅相对应的复选框。
+
+	![][2]
+
+1.	选择“应用”。
+  
+## 连接到本地存储
+
+使用存储资源管理器（预览版），你可以通过 Azure 存储模拟器对本地存储进行操作。因此，你不需要在 Azure 上部署存储帐户就可以针对存储编写代码并对存储进行测试（因为存储帐户是通过 Azure 存储模拟器进行模拟的）。
+
+>[AZURE.NOTE] 目前仅 Windows 支持 Azure 存储模拟器。
+
+1. 启动存储资源管理器（预览版）。
+
+1. 在左窗格中，展开“(开发)”节点。
+
+	![][21]
+
+1. 如果你尚未安装 Azure 存储模拟器，系统会提示你按照信息栏中的说明进行安装。如果该信息栏已显示，请选择“下载最新版本”，然后安装模拟器。
+
+	![][22]
+
+1. 安装模拟器以后，即可创建和使用本地 Blob、队列和表。若要了解如何使用每个存储帐户类型，请在下面选择相应的链接：
+
+	- [管理 Azure Blob 存储资源](./vs-azure-tools-storage-explorer-blobs.md)
+	- 管理 Azure 队列存储资源 - 即将推出
+	- 管理 Azure 表存储资源 - 即将推出
+
+## 附加或分离外部存储帐户
+
+可以通过存储资源管理器（预览版）附加到外部存储帐户，因此可以轻松共享存储帐户。本部分介绍如何附加到外部存储帐户（以及如何从其分离）。
+
+### 获取存储帐户凭据
+
+若要共享外部存储帐户，首先必须由该帐户的所有者获取该帐户的凭据（帐户名称和密钥），然后将该信息共享给想要附加到该（外部）帐户的人员。可以使用以下步骤通过 Azure 门户获取存储帐户凭据：
+
+1.	登录到 [Azure 门户](https://portal.azure.com)。
+1.	选择“浏览”。
+1.	选择“存储帐户”。
+1.	在“存储帐户”边栏选项卡中，选择所需存储帐户。
+1.	在所选存储帐户的“设置”边栏选项卡中，选择“访问密钥”。
 
 	![][5]
-
-1. 若要删除外部存储，请在外部存储的快捷菜单中选择“分离”命令。
+	
+1.	在“访问密钥”边栏选项卡中，复制“存储帐户名称”和“密钥 1”的值，以便在附加到存储帐户时使用这些值。
 
 	![][6]
 
-## 查看和浏览存储资源
+### 附加到外部存储帐户
 
-若要在存储空间资源管理器导航到 Azure 存储空间资源并查看其信息，请展开存储类型，然后选择资源。所选资源的相关信息将出现在“存储空间资源管理器”底部的“操作”和“属性”选项卡上。
+1.	在存储资源管理器（预览版）中，右键单击“存储帐户”，然后从上下文菜单中选择“附加外部存储”。
 
-![][7]
+	![][7]
+	
+1.	“获取存储帐户凭据”部分介绍了如何获取存储帐户名称和密钥 1 的值。这些值将在此步骤中使用。在“附加外部存储”对话框中，在“帐户名称”框中输入存储帐户名称，在“帐户密钥”框中输入密钥 1 的值。完成时选择“确定”。
 
--	“操作”选项卡显示可以在存储空间资源管理器中针对所选存储资源执行的操作，例如打开、复制或删除。“操作”还会显示在资源的快捷菜单中。
+	![][8]
 
--	“属性”选项卡显示存储资源的属性，例如其类型、区域设置、关联的资源组和 URL。
+	附加完以后，在显示外部存储帐户时，会将“(外部)”文本追加到存储帐户名称后面。
 
-所有存储帐户都有“在门户中打开”操作。当你选择此操作时，存储空间资源管理器将在 Azure 预览门户中显示所选的存储帐户。
+	![][9]
 
-根据所选的资源，有时会显示其他操作和属性值。例如，“Blob 容器”、“队列”和“表”节点都有“创建”操作。各个项（例如 Blob 容器）具有“打开”、“删除”和“获取共享访问签名”等操作。当你选择存储帐户 Blob 时，将显示用于打开 Blob 编辑器的操作。
+### 从外部存储帐户分离
 
-## 搜索存储帐户和 Blob 容器
-
-若要在 Azure 订阅中查找具有特定名称的存储帐户和 Blob 容器，请在存储空间资源管理器的“搜索”框中输入名称。
-
-![][8]
-
-当你在“搜索”框中输入字符时，只有与这些字符匹配的存储帐户和 Blob 容器才出现在资源树中。若要清除搜索，请在“搜索”框中选择“x”按钮。
-
-## 编辑存储帐户
-
-若要添加或更改存储帐户的内容，请选择该存储类型对应的“打开编辑器”命令。可以在所选项的快捷菜单中选择操作，或者在存储空间资源管理器底部的“操作”选项卡上选择操作。
-
-![][9]
-
-可以创建或删除 Blob 容器、队列和表。还可以通过选择“打开 Blob 容器编辑器”操作来编辑存储空间资源管理器中的 Blob。
-
-### 编辑 Blob 容器
-
-1.	选择“打开 Blob 容器编辑器”操作。“Blob 容器编辑器”将出现在右窗格中。
+1. 	右键单击要分离的外部存储帐户，然后从上下文菜单中选择“分离”。
 
 	![][10]
 
-1.	选择“上载”按钮，然后选择“上载文件”命令。
-
-	![][11]
-
-	如果要上载的文件位于单个文件夹中，你可以改为选择“上载文件夹”命令。
-
-1. 在“上载文件”对话框中，选择“文件”框右侧的省略号 (**…**) 按钮，以选择要上载的文件。然后，选择要上载的 Blob 类型（块、页或追加）。如果需要，你可以选择将文件上载到 Blob 容器中的文件夹。在“上载到文件夹(可选)”框中输入文件夹的名称。如果该文件夹不存在，系统将会创建。
+1.	确认消息框出现时，选择“是”确认从外部存储帐户中分离。
 
 	![][12]
 
-	在以下屏幕截图中，已将三个映像文件上载到“映像”Blob 容器中名为“我的新文件”的新文件夹中。
+## 使用 SAS 附加帐户
+
+Azure 订阅管理员可以临时通过 SAS（共享访问签名）授予对存储帐户的访问权限，不需提供 Azure 订阅凭据。
+
+为了说明这一点，假设 UserA 是 Azure 订阅的管理员，UserA 想要允许 UserB 在有限的时间内使用特定权限访问某个存储帐户：
+
+1. UserA 生成了一个适用于特定时间段且具有所需权限的 SAS（包含存储帐户的连接字符串）。
+1. UserA 将 SAS 与需要访问该存储帐户的人员（在我们的示例中为 UserB）共享。
+1. UserB 通过存储资源管理器（预览版）使用所提供的 SAS 附加到属于 UserA 的帐户。
+
+### 获取要共享的帐户的 SAS
+
+1.	打开存储资源管理器（预览版）。
+1.	在左窗格中，右键单击要共享的存储帐户，然后从上下文菜单中选择“获取共享访问签名”。
 
 	![][13]
 
-	可以使用 Blob 编辑器工具栏上的按钮来选择、下载、打开、复制和删除文件，以及执行其他操作。对话框底部的“活动”窗格显示操作是否成功，并可让你从视图中仅删除成功的活动，或完全清除窗格。选择已上载文件旁边的“+”图标可以查看已上载文件的详细列表。
-
-## 创建共享访问签名 (SAS)
-
-对于某些操作，你可能需要 SAS 才能访问存储资源。可以使用存储空间资源管理器创建 SAS。
-
-1.	选择要为其创建 SAS 的项，然后在“操作”窗格或项目的快捷菜单中，选择“获取共享访问签名”命令。
+1. 在“共享访问签名”对话框中，指定你要授予该帐户的时间范围和权限，然后选择“创建”。
 
 	![][14]
+ 
+1. 此时会出现第二个“共享访问签名”对话框，其中会显示 SAS。选择“连接字符串”旁边的“复制”，将其复制到剪贴板。选择“关闭”以关闭对话框。
 
-1.	在“共享访问签名”对话框中，选择策略、开始和过期日期及时区。同时，请选中所需资源访问级别对应的复选框，例如只读、读写等等。完成后，选择“创建”按钮以创建 SAS。
+### 使用 SAS 附加到共享帐户
 
-	![][15]
+1.	打开存储资源管理器（预览版）。
+1.	在左窗格中，右键单击“存储帐户”，然后从上下文菜单中，选择“使用 SAS 附加帐户”。![][15]
 
-1.	“共享访问签名”对话框列出了可用来访问存储资源的容器以及 URL 和查询字符串。选择“复制”按钮以复制字符串。
+1. 在“使用 SAS 附加帐户”对话框中：
 
+	- **帐户名称** - 输入要与此帐户关联的名称。**注意：**此帐户名称不需与生成 SAS 时所针对的原始存储帐户名称匹配。
+ 	- **连接字符串** - 粘贴先前复制的连接字符串。
+ 	- 完成时选择“确定”。
+	
 	![][16]
 
-## 管理 SAS 和权限
+附加完以后，在显示存储帐户时，会将“(SAS)”文本追加到你所提供的帐户名称后面。
 
-若要控制对 Blob 容器的访问，可以选择“管理访问控制列表”和“设置公共访问级别”命令。
+![][17]
 
--	“管理访问控制列表”可让你对所选 Blob 容器添加、编辑和删除策略（用户是否可以读取、写入等等）。
--	“设置公共访问级别”可让你确定多少个公共访问用户可以获取资源。  
+## 使用 SAS 附加服务
 
--
+[使用 SAS 附加帐户](#attach-account-using-sas)部分演示了 Azure 订阅管理员如何为存储帐户生成（和共享）SAS，从而授予用户对存储帐户的临时访问权限。同样可以在存储帐户中为特定服务（Blob 容器、队列或表）生成 SAS。
 
-1.	选择 Blob 容器，然后在快捷菜单或“操作”窗格中选择“管理访问控制列表”命令。
+### 为要共享的服务生成 SAS
 
-	![][17]
+在这种情况下，服务可以是 Blob 容器、队列或表。以下各节说明如何生成所列服务的 SAS：
 
-1.	在“访问控制列表”对话框中，选择“添加”按钮以添加访问策略。选择访问策略，然后为它选择权限。完成后，请选择“保存”按钮。
+- [获取 Blob 容器的 SAS](./vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
+- 为队列获取 SAS - 即将推出
+- 为表获取 SAS - 即将推出
 
-	![][18]
+### 使用 SAS 附加到共享帐户服务
 
-1.	若要设置某个 Blob 容器的访问级别，请在存储空间资源管理器中选择该容器，然后在快捷菜单或“操作”窗格中选择“设置公共访问级别”命令。
+1.	打开存储资源管理器（预览版）。
+1.	在左窗格中，右键单击“存储帐户”，然后从上下文菜单中，选择“使用 SAS 附加服务”。![][18]
+
+1. 在“使用 SAS 附加帐户”对话框中，粘贴此前复制的 SAS URI，然后选择“确定”。
 
 	![][19]
 
-1.	在“设置容器公共访问级别”对话框中，选择要提供给公共用户的访问级别所对应的选项按钮，然后选择“应用”按钮。
+附加完成后，新附加的服务将显示在“(服务 SAS)”节点下。
 
-	![][20]
+![][20]
+
+## 搜索存储帐户
+
+如果你的存储帐户列表很长，则可使用左窗格顶部的搜索框来快速查找特定的存储帐户。
+
+在搜索框中键入内容时，左窗格仅显示与当前已输入搜索值匹配的存储帐户。以下屏幕快照演示了一个示例，在该示例中，我通过搜索获得了存储帐户名称中包含文本“tarcher”的所有存储帐户。
+
+![][11]
+	
+若要清除搜索，请在“搜索”框中选择“x”按钮。
 
 ## 后续步骤
-阅读 [Introduction to Microsoft Azure Storage](./storage/storage-introduction.md)（Microsoft Azure 存储空间简介）中的文章，了解 Azure 存储空间服务中的功能。
+- [使用存储资源管理器（预览版）管理 Azure Blob 存储资源](./vs-azure-tools-storage-explorer-blobs.md)
 
-[0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AddAccount1c.png
-[1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/AddAccount2c.png
-[2]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/External1c.png
-[3]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/External2c.png
-[4]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/External3c.png
-[5]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/External4c.png
-[6]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/External5c.png
-[7]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Navigatec.png
-[8]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Searchc.png
-[9]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Edit1c.png
-[10]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Edit2c.png
-[11]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Edit3c.png
-[12]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Edit4c.png
-[13]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/Edit5c.png
-[14]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/SAS1c.png
-[15]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/SAS2c.png
-[16]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/SAS3c.png
-[17]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS1c.png
-[18]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS2c.png
-[19]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS3c.png
-[20]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/ManageSAS4c.png
+[0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure.png
+[1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/settings-gear.png
+[2]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/filter-subscriptions.png
+[3]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/filter-accounts.png
+[4]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/accounts-drop-down.png
+[5]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/access-keys.png
+[6]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/access-keys-copy.png
+[7]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-external-storage.png
+[8]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-external-storage-dlg.png
+[9]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/external-storage-account.png
+[10]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/detach-external-storage.png
+[11]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/storage-account-search.png
+[12]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/detach-external-storage-confirmation.png
+[13]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/get-sas-context-menu.png
+[14]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/get-sas-dlg1.png
+[15]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-account-using-sas-context-menu.png
+[16]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-account-using-sas-dlg.png
+[17]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-account-using-sas-finished.png
+[18]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-service-using-sas-context-menu.png
+[19]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-service-using-sas-dlg.png
+[20]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/attach-service-using-sas-finished.png
+[21]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/local-storage-drop-down.png
+[22]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/download-storage-emulator.png
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=AcomDC_0718_2016-->

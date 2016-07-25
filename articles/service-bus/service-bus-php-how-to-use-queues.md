@@ -9,20 +9,20 @@
 
 <tags 
 	ms.service="service-bus" 
-	ms.date="05/06/2016" 
+	ms.date="06/01/2016" 
 	wacn.date=""/>
 
 # 如何使用 Service Bus 队列
 
 [AZURE.INCLUDE [service-bus-selector-queues](../includes/service-bus-selector-queues.md)]
 
-本指南说明如何使用服务总线队列。示例是用 PHP 编写的并使用了 [Azure SDK for PHP](/documentation/articles/php-download-sdk)。涉及的任务包括**创建队列**、**发送和接收消息**以及**删除队列**。
+本指南说明如何使用服务总线队列。示例是用 PHP 编写的并使用了 [Azure SDK for PHP](/documentation/articles/php-download-sdk/)。涉及的任务包括**创建队列**、**发送和接收消息**以及**删除队列**。
 
 [AZURE.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
 ## 创建 PHP 应用程序
 
-创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码中引用 [Azure SDK for PHP](/documentation/articles/php-download-sdk) 中的类。你可以使用任何开发工具或记事本创建应用程序。
+创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码中引用 [Azure SDK for PHP](/documentation/articles/php-download-sdk/) 中的类。你可以使用任何开发工具或记事本创建应用程序。
 
 > [AZURE.NOTE] 你的 PHP 安装还必须已安装并启用 [OpenSSL 扩展](http://php.net/openssl)。
 
@@ -44,7 +44,7 @@
 > [AZURE.NOTE] 本示例（以及本文中的其他示例）假定你已通过 Composer 安装用于 Azure 的 PHP 客户端库。如果你已手动安装这些库或将其作为 PEAR 包安装，则必须引用 **WindowsAzure.php** autoloader 文件。
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
@@ -58,7 +58,7 @@ use WindowsAzure\Common\ServicesBuilder;
 Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[Default Key]
 ```
 
-其中，**Endpoint** 的格式通常为 `https://[yourNamespace].servicebus.chinacloudapi.cn`。
+其中，**Endpoint** 的格式通常为 `[yourNamespace].servicebus.chinacloudapi.cn`。
 
 若要创建任何 Azure 服务客户端，必须使用 **ServicesBuilder** 类。你可以：
 
@@ -70,7 +70,7 @@ Endpoint=[yourEndpoint];SharedSecretIssuer=[Default Issuer];SharedSecretValue=[D
 在此处列出的示例中，将直接传递连接字符串。
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 
@@ -86,7 +86,7 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 下面的示例演示了如何实例化 **ServiceBusRestProxy** 并调用 **servicebusrestproxy->createqueue** 以创建 `MySBNamespace` 服务命名空间中名为 `myqueue` 的队列：
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 use WindowsAzure\Common\ServiceException;
@@ -118,7 +118,7 @@ catch(ServiceException $e){
 若要将消息发送到服务总线队列，应用程序应调用 **servicebusrestproxy->sendqueuemessage** 方法。下面的代码演示了如何将消息发送到在 `MySBNamespace` 服务命名空间先前创建的 `myqueue` 队列。
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 use WindowsAzure\Common\ServiceException;
@@ -147,7 +147,7 @@ catch(ServiceException $e){
 
 发送至服务总线队列（和接收自服务总线队列）的消息是 **BrokeredMessage** 类实例。**BrokeredMessage** 对象具有一组标准方法（例如 **getLabel**、**getTimeToLive**、**setLabel** 和 **setTimeToLive**）和用来保存自定义的特定于应用程序的属性和任意应用程序数据正文的属性。
 
-Service Bus 队列支持最大为 256 KB 的消息（标头最大为 64 KB，其中包括标准和自定义应用程序属性）。一个队列可包含的消息数不受限制，但消息的总大小受限。队列大小的上限为 5 GB。
+服务总线队列在[标准层](/documentation/articles/service-bus-premium-messaging/)中支持的最大消息大小为 256 KB，在[高级层](service-bus-dotnet-get-started-with-queuesservice-bus-premium-messaging)中则为 1 MB。标头最大为 64 KB，其中包括标准和自定义应用程序属性。一个队列可包含的消息数不受限制，但消息的总大小受限。队列大小的上限为 5 GB。
 
 ## 如何从队列接收消息
 
@@ -160,7 +160,7 @@ Service Bus 队列支持最大为 256 KB 的消息（标头最大为 64 KB，其
 以下示例演示了如何使用 **PeekLock** 模式（非默认模式）接收和处理消息。
 
 ```
-require_once 'vendor\autoload.php';
+require_once 'vendor/autoload.php';
 
 use WindowsAzure\Common\ServicesBuilder;
 use WindowsAzure\Common\ServiceException;
@@ -211,8 +211,8 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 有关详细信息，请参阅 [PHP 开发人员中心](/develop/php/)。
 
-[队列、主题和订阅]: /documentation/articles/service-bus-queues-topics-subscriptions
+[队列、主题和订阅]: /documentation/articles/service-bus-queues-topics-subscriptions/
 [require_once]: http://php.net/require_once
 
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0718_2016-->

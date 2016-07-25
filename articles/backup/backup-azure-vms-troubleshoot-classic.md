@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure 虚拟机备份疑难解答 | Microsoft Azure"
+	pageTitle="Azure 虚拟机备份疑难解答 | Azure"
 	description="Azure 虚拟机备份和还原疑难解答"
 	services="backup"
 	documentationCenter=""
@@ -112,12 +112,7 @@
 ### 验证 VM 代理安装
 如何检查 Windows VM 上的 VM 代理版本：
 
-1. 登录 Azure 虚拟机并导航到 *C:\\WindowsAzure\\Packages* 文件夹。你应会发现 WaAppAgent.exe 文件已存在。
+1. 登录 Azure 虚拟机并导航到 C:\\WindowsAzure\\Packages 文件夹。你应会发现 WaAppAgent.exe 文件已存在。
 2. 右键单击该文件，转到“属性”，然后选择“详细信息”选项卡。“产品版本”字段应为 2.6.1198.718 或更高
 
-
-
-
-
-
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=AcomDC_0718_2016-->

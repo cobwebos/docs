@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="支持的令牌和声明类型"
+   pageTitle="“支持的令牌和声明类型”"
    description="本指南帮助你了解和评估 Azure Active Directory (AAD) 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 令牌中的声明。"
    documentationCenter="dev-center-name"
    authors="msmbaldwin"
@@ -9,16 +9,19 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="09/17/2015"
+   ms.date="05/16/2016"
    wacn.date=""/>
 
 # “支持的令牌和声明类型”
+
+[AZURE.INCLUDE [active-directory-protocols](../includes/active-directory-protocols.md)]
 
 本主题旨在帮助你了解和评估 Azure Active Directory (Azure AD) 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT) 令牌中的声明。
 
 本主题以每种令牌声明的说明开头，并根据需要举例说明了 SAML 令牌和 JWT 令牌中的声明。处于预览状态的声明将单独列出。本主题以令牌示例结束以便你可以查看上下文中的声明。
 
-Azure 会不断向令牌中添加声明，以便启用新方案。通常，我们会介绍这些处于预览状态的声明，然后在测试期间过后将它们转换为完全支持。为了给声明更改做准备，从 Azure AD 接受令牌的应用程序应忽略不熟悉的令牌声明，以使新声明不会中断应用程序。使用处于预览状态的声明的应用程序不应依赖这些声明，并且在声明未出现在令牌中时不应引发异常。如果你的应用程序需要 Azure AD 颁发的 SAML 或 JWT 令牌中未提供的声明，请使用此页底部的“社区加码”部分建议和讨论新声明类型。
+Azure 会不断向令牌中添加声明，以便启用新方案。通常，我们会介绍这些处于预览状态的声明，然后在测试期间过后将它们转换为完全支持。为了给声明更改做准备，从 Azure AD 接受令牌的应用程序应忽略不熟悉的令牌声明，以使新声明不会中断应用程序。使用处于预览状态的声明的应用程序不应依赖这些声明，并且在声明未出现在令牌中时不应引发异常。
+如果你的应用程序需要 Azure AD 颁发的 SAML 或 JWT 令牌中未提供的声明，请使用此页底部的“社区加码”部分建议和讨论新声明类型。
 
 ## 令牌声明参考
 
@@ -37,7 +40,7 @@ Azure AD 不支持 SAML 令牌中的应用程序 ID 声明。
 ### 目标受众
 令牌的受众是令牌的预期接收者。接收令牌的应用程序必须验证受众值是否正确，并拒绝任何针对其他受众的令牌。
 
-受众值是一个字符串，通常为所访问资源的基址，如“https://contoso.com”。在 Azure AD 令牌中，受众是请求该令牌的应用程序的应用程序 ID URI 。当应用程序（即受众）具有多个应用程序 ID URI 时，该令牌的 Audience 声明中的应用程序 ID URI 将与令牌请求中的应用程序 ID URI 相匹配。
+受众值是一个字符串，通常为所访问资源的基址，如“https://contoso.com” 。在 Azure AD 令牌中，受众是请求该令牌的应用程序的应用程序 ID URI 。当应用程序（即受众）具有多个应用程序 ID URI 时，该令牌的 Audience 声明中的应用程序 ID URI 将与令牌请求中的应用程序 ID URI 相匹配。
 在 SAML 令牌中，Audience 声明在 AudienceRestriction 元素的 Audience 元素中定义。
 
     <AudienceRestriction>
@@ -127,7 +130,8 @@ Azure AD 未在 JWT 令牌中提供等效声明。
 
 ### IssuedAt
 
-IssuedAt 声明存储颁发令牌的时间。它通常用于度量令牌新鲜度。在 SAML 令牌中，IssuedAt 值出现在 IssueInstant 断言中。
+IssuedAt 声明存储颁发令牌的时间。它通常用于度量令牌新鲜度。
+在 SAML 令牌中，IssuedAt 值出现在 IssueInstant 断言中。
 
     <Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">
 
@@ -160,7 +164,7 @@ IssuedAt 声明存储颁发令牌的时间。它通常用于度量令牌新鲜�
 
     "family_name": "Miller"
 
-### Name
+### 名称
 
 此名称声明提供了标识令牌使用者的人工可读值。此值不一定在租户中唯一，它旨在仅用于显示目的。
 在 SAML 令牌中，名称出现在 Name 属性中。
@@ -256,13 +260,15 @@ SubjectConfirmation 不是声明。它描述如何对令牌的使用者进行验
     "upn": frankm@contoso.com
 
 ### 版本
-版本声明存储令牌的版本号。在 JWT 令牌中，用户主体名称出现在 ver 声明中。
+版本声明存储令牌的版本号。
+在 JWT 令牌中，用户主体名称出现在 ver 声明中。
 
     "ver": "1.0"
 
 ## 示例令牌
 
-本部分显示 Azure AD 返回的 SAML 和 JWT 令牌的示例。这些示例让你查看上下文中的声明。SAML 令牌
+本部分显示 Azure AD 返回的 SAML 和 JWT 令牌的示例。这些示例让你查看上下文中的声明。
+SAML 令牌
 
 这是典型 SAML 令牌的一个示例。
 
@@ -414,6 +420,6 @@ SubjectConfirmation 不是声明。它描述如何对令牌的使用者进行验
 
 ##另请参阅
 
-[Azure Active Directory 身份验证协议](active-directory-authentication-protocols)
+[Azure Active Directory 身份验证协议](https://msdn.microsoft.com/library/azure/dn151124.aspx)
 
-<!---HONumber=Mooncake_1221_2015-->
+<!---HONumber=Mooncake_0718_2016-->

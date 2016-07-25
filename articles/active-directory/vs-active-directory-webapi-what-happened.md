@@ -1,7 +1,7 @@
 <properties
-	pageTitle="我的 WebApi 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况 | Azure"
+	pageTitle="我的 WebApi 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况 | Azure "
 	description="描述当你使用 Visual Studio 连接到 Azure AD 时，你的 MVC 项目 WebApi 会发生什么情况"
-	services="active-directory"
+ 	services="active-directory"
 	documentationCenter=""
 	authors="TomArcher"
 	manager="douge"
@@ -9,14 +9,14 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="03/28/2016"
+	ms.date="06/01/2016"
 	wacn.date=""/>
 
 # 我的 WebApi 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况
 
 > [AZURE.SELECTOR]
-> - [入门](/documentation/articles/vs-active-directory-webapi-getting-started)
-> - [发生了什么情况](/documentation/articles/vs-active-directory-webapi-what-happened)
+> - [入门](/documentation/articles/vs-active-directory-webapi-getting-started/)
+> - [发生了什么情况](/documentation/articles/vs-active-directory-webapi-what-happened/)
 
 ##已添加引用
 
@@ -113,4 +113,4 @@ NuGet 包引用已删除，文件已删除和备份。根据你的项目的状�
 
 [详细了解 Azure Active Directory](/services/active-directory/)
 
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0718_2016-->

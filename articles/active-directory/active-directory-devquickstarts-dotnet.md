@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="01/21/2016"
+	ms.date="05/16/2016"
 	wacn.date=""/>
 
 
@@ -35,7 +35,7 @@
 
 若要开始，请[下载应用程序框架](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/skeleton.zip)或[下载已完成的示例](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)。你还需要一个可在其中创建用户和注册应用程序的 Azure AD 租户。如果你还没有租户，请[了解如何获取租户](active-directory-howto-tenant)。
 
-## 1.注册 DirectorySearcher 应用程序
+## *1.注册 DirectorySearcher 应用程序*
 若要让应用程序获取令牌，首先需要在 Azure AD 租户中注册该应用程序，并授予它访问 Azure AD Graph API 的权限：
 
 -	登录到 Azure 管理门户
@@ -48,7 +48,7 @@
 -	完成注册后，AAD 将为应用程序分配唯一的客户端标识符。在后面的部分中将会用到此值，因此，请从“配置”选项卡复制此值。
 - 另外，请在“配置”选项卡中，找到“针对其他应用程序的权限”部分。对于“Azure Active Directory”应用程序，在“委托的权限”下添加“访问组织的目录”权限。这样，你的应用程序便可以在 Graph API 中查询用户。
 
-## 2.安装并配置 ADAL
+## *2.安装并配置 ADAL*
 将应用程序注册到 Azure AD 后，可以安装 ADAL 并编写标识相关的代码。为了使 ADAL 能够与 Azure AD 通信，需要为 ADAL 提供一些有关应用程序的注册信息。
 -	首先，使用 Package Manager Console 将 ADAL 添加到 DirectorySearcher 项目。
 
@@ -61,7 +61,7 @@ PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     -	`ida:ClientId` 是从门户复制的应用程序 clientId。
     -	`ida:RedirectUri` 是在门户中注册的 URL。
 
-## 3.使用 ADAL 从 Azure AD 获取令牌
+## *3.使用 ADAL 从 Azure AD 获取令牌*
 ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只需调用 `authContext.AcquireTokenAsync(...)`，然后 ADAL 就会负责其余的工作。
 
 -	在 `DirectorySearcher` 项目中，打开 `MainWindow.xaml.cs` 并找到 `MainWindow()` 方法。第一步是初始化应用程序的 `AuthenticationContext`（ADAL 的主类）。你将在此处传递 ADAL 与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
@@ -159,8 +159,8 @@ public async void CheckForCachedToken()
 
 [此处](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)提供了已完成示例（无需配置值）供你参考。现在，你可以转到其他方案。你可能想要尝试：
 
-[使用 Azure AD 保护 .NET Web API >>](/documentation/articles/active-directory-devquickstarts-webapi-dotnet)
+[使用 Azure AD 保护 .NET Web API >>](/documentation/articles/active-directory-devquickstarts-webapi-dotnet/)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources.md)]
  
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0718_2016-->

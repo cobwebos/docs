@@ -10,13 +10,13 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="03/17/2016"
+	ms.date="06/14/2016"
 	wacn.date="" />
 
 
 # 使用 Azure Active Directory 组管理对资源的访问
 
-Azure Active Directory (Azure AD) 是综合性的标识和访问管理解决方案，它提供一套稳健的功能来管理对本地和云应用程序及资源（包括诸如 Office 365 的 Microsoft 联机服务和众多非 Microsoft SaaS 应用程序）的安全访问。本文提供了概述，但如果你要立即开始使用 Azure AD 组，请遵循[在 Azure AD 中管理安全组](/documentation/articles/active-directory-accessmanagement-manage-groups)中的说明。
+Azure Active Directory (Azure AD) 是综合性的标识和访问管理解决方案，它提供一套稳健的功能来管理对本地和云应用程序及资源（包括诸如 Office 365 的 Microsoft 联机服务和众多非 Microsoft SaaS 应用程序）的安全访问。本文提供了概述，但如果你要立即开始使用 Azure AD 组，请遵循 [Managing security groups in Azure AD（在 Azure AD 中管理安全组）](/documentation/articles/active-directory-accessmanagement-manage-groups/)中的说明。
 
 
 > [AZURE.NOTE] 若要使用 Azure Active Directory，你需要一个 Azure 帐户。如果你没有帐户，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
@@ -64,26 +64,26 @@ Azure AD 访问管理解决方案的核心是安全组。使用安全组管理�
 已准备就绪？ 你可以尝试一些可以使用 Azure AD 组完成的基本任务。使用这些功能可向不同的人员组提供对组织中不同资源的特定访问权限。下面是基本的首要步骤列表。
 
 
-* [创建简单规则以配置组的动态成员身份](/documentation/articles/active-directory-accessmanagement-manage-groups#how-can-i-create-a-simple-rule-to-manage-members-of-a-group-dynamically)
+* [创建简单规则以配置组的动态成员身份](/documentation/articles/active-directory-accessmanagement-manage-groups/#how-can-i-create-a-simple-rule-to-manage-members-of-a-group-dynamically)
 
-* [使用组来管理对 SaaS 应用程序的访问](/documentation/articles/active-directory-accessmanagement-group-saasapps)
+* [使用组来管理对 SaaS 应用程序的访问](/documentation/articles/active-directory-accessmanagement-group-saasapps/)
 
-* [为最终用户启用自助组管理功能](/documentation/articles/active-directory-accessmanagement-self-service-group-management)
+* [为最终用户启用自助组管理功能](/documentation/articles/active-directory-accessmanagement-self-service-group-management/)
 
-* [使用 Azure AD Connect 将本地组同步到 Azure](/documentation/articles/active-directory-aadconnect)
+* [使用 Azure AD Connect 将本地组同步到 Azure](/documentation/articles/active-directory-aadconnect/)
 
-* [管理组的所有者](/documentation/articles/active-directory-accessmanagement-managing-group-owners)
+* [管理组的所有者](/documentation/articles/active-directory-accessmanagement-managing-group-owners/)
 
 
 ## 访问管理的后续步骤
 了解访问管理的基本概念后，请继续学习 Azure Active Directory 中用于管理应用程序和资源访问权限的其他高级功能。
 
-* [使用属性创建高级规则](/documentation/articles/active-directory-accessmanagement-groups-with-advanced-rules)
+* [使用属性创建高级规则](/documentation/articles/active-directory-accessmanagement-groups-with-advanced-rules/)
 
-* [在 Azure AD 中管理安全组](/documentation/articles/active-directory-accessmanagement-manage-groups)
+* [在 Azure AD 中管理安全组](/documentation/articles/active-directory-accessmanagement-manage-groups/)
 
-* [在 Azure AD 中设置专用组](/documentation/articles/active-directory-accessmanagement-dedicated-groups)
+* [在 Azure AD 中设置专用组](/documentation/articles/active-directory-accessmanagement-dedicated-groups/)
 
 * [适用于组的图形 API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=AcomDC_0718_2016-->

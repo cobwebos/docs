@@ -21,7 +21,7 @@
 
 [AZURE.INCLUDE [howto-service-bus-queues](../includes/howto-service-bus-queues.md)]
 
-> [AZURE.NOTE] 若要安装 Python 或 [Python Azure 包][]，请参阅 [Python 安装指南](/documentation/articles/python-how-to-install)。
+> [AZURE.NOTE] 若要安装 Python 或 [Python Azure 包][]，请参阅 [Python 安装指南](/documentation/articles/python-how-to-install/)。
 
 ## 创建队列
 
@@ -60,14 +60,14 @@ bus_service.create_queue('taskqueue', queue_options)
 
 若要向服务总线队列发送消息，你的应用程序需对 **ServiceBusService** 对象调用 **send\_queue\_message** 方法。
 
-以下示例演示如何使用 **send\_queue\_message** 向名为 *taskqueue* 的队列发送测试消息：
+以下示例演示如何使用 **send\_queue\_message** 向名为 taskqueue 的队列发送测试消息：
 
 ```
 msg = Message(b'Test Message')
 bus_service.send_queue_message('taskqueue', msg)
 ```
 
-Service Bus 队列支持最大为 256 KB 的消息（标头最大为 64 KB，其中包括标准和自定义应用程序属性）。一个队列可包含的消息数不受限制，但消息的总大小受限。此队列大小是在创建时定义的，上限为 5 GB。有关配额的详细信息，请参阅[服务总线配额][]。
+服务总线队列在[标准层](/documentation/articles/service-bus-premium-messaging/)中支持的最大消息大小为 256 KB，在[高级层](/documentation/articles/service-bus-premium-messaging/)中则为 1 MB。标头最大为 64 KB，其中包括标准和自定义应用程序属性。一个队列可包含的消息数不受限制，但消息的总大小受限。此队列大小是在创建时定义的，上限为 5 GB。有关配额的详细信息，请参阅[服务总线配额][]。
 
 ## 从队列接收消息
 
@@ -107,8 +107,8 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
 [Azure 经典门户]: http://manage.windowsazure.cn
 [Python Azure 包]: https://pypi.python.org/pypi/azure
-[队列、主题和订阅]: /documentation/articles/service-bus-queues-topics-subscriptions
-[服务总线配额]: /documentation/articles/service-bus-quotas
+[队列、主题和订阅]: /documentation/articles/service-bus-queues-topics-subscriptions/
+[服务总线配额]: /documentation/articles/service-bus-quotas/
  
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0718_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure AD v2.0 终结点更改 | Microsoft Azure"
+	pageTitle="Azure AD v2.0 终结点的更改 | Azure"
 	description="介绍了要对应用模型 v2.0 公共预览协议进行的更改。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,11 +9,11 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="02/20/2016"
+	ms.date="05/31/2016"
 	wacn.date=""/>
 
 # v2.0 身份验证协议的重要更新
-开发人员请注意！ 在接下来两周，我们会对 v2.0 身份验证协议进行一些更新，这些更新对于你在我们的预览期间编写的任何应用都可能是重大更改。
+开发人员请注意！ 在接下来两周，我们会对 v2.0 身份验证协议进行一些更新，这些更新对于你在我们的预览期间编写的任何应用都可能是重大更改。  
 
 ## 哪些人会受到影响？
 任何已编写为使用 v2.0 聚合身份验证终结点的应用，
@@ -22,7 +22,7 @@
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
 ```
 
-有关 v2.0 终结点的详细信息可以在[此处](/documentation/articles/active-directory-appmodel-v2-overview)找到。
+有关 v2.0 终结点的详细信息可以在[此处](/documentation/articles/active-directory-appmodel-v2-overview/)找到。
 
 如果你已经通过直接编码到 v2.0 协议，使用 v2.0 终结点构建了应用，并使用我们的任意 OpenID Connect 或 OAuth Web 中间件，或使用其他第三方库来执行身份验证，则应该准备好测试你的项目，并且根据需要进行更改。
 
@@ -116,7 +116,7 @@ https://myapp.com?id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...&id_token_exp
 }
 ```
 
-`id_token_expires_in` 值会指出 id\_token 保持有效的秒数。现在，我们完全删除 `id_token_expires_in` 值。你可以改为使用 OpenID Connect 标准 `nbf` 和 `exp` 声明来检查 id\_token 的有效性。有关这些声明的详细信息，请参阅 [v2.0 令牌参考](/documentation/articles/active-directory-v2-tokens)。
+`id_token_expires_in` 值会指出 id\_token 保持有效的秒数。现在，我们完全删除 `id_token_expires_in` 值。你可以改为使用 OpenID Connect 标准 `nbf` 和 `exp` 声明来检查 id\_token 的有效性。有关这些声明的详细信息，请参阅 [v2.0 令牌参考](/documentation/articles/active-directory-v2-tokens/)。
 
 > [AZURE.IMPORTANT] **你的工作：确保应用不依赖于 `id_token_expires_in` 值是否存在。**
 
@@ -200,7 +200,7 @@ https://login.microsoftonline.com/{some-guid}/v2.0
 3.	**如果应用需要基本用户信息，则向应用添加 `profile` 和 `email` 范围。**
 4.	**接受令牌中包含或不含尾部斜杠的颁发者值。**
 
-我们的 [v2.0 协议文档](/documentation/articles/active-directory-v2-protocols)已更新以反映这些更改，因此你可以将它作为参考，帮助你更新代码。
+我们的 [v2.0 协议文档](/documentation/articles/active-directory-v2-protocols/)已更新以反映这些更改，因此你可以将它作为参考，帮助你更新代码。
 
 如果你对更改的范围还有别的疑问，欢迎在我们的 Twitter (@AzureAD) 上与我们联系。
 
@@ -213,4 +213,4 @@ https://login.microsoftonline.com/{some-guid}/v2.0
 
 Microsoft 标识部门
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0718_2016-->

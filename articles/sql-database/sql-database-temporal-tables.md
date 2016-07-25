@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="03/28/2016"
+   ms.date="06/15/2016"
    wacn.date="04/22/2016"/>
 
 #Azure SQL 数据库中的临时表入门
@@ -192,4 +192,4 @@ ALTER TABLE dbo.WebsiteUserInfo
 有关临时表的详细信息，请参阅 [MSDN 文档](https://msdn.microsoft.com/zh-cn/library/dn935015.aspx)。
 访问第 9 频道收听[客户实施临时表的真实成功案例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)，并观看[临时表现场演示](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)。
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0718_2016-->

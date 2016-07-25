@@ -60,7 +60,7 @@
 
 ## 创建 Ruby 应用程序
 
-有关说明，请参阅[在 Azure 上创建 Ruby 应用程序](/documentation/articles/virtual-machines-linux-classic-ruby-rails-web-app)。
+有关说明，请参阅[在 Azure 上创建 Ruby 应用程序](/documentation/articles/virtual-machines-linux-classic-ruby-rails-web-app/)。
 
 ## 配置应用程序以使用 Service Bus
 
@@ -128,7 +128,6 @@ topic = azure_service_bus_service.create_topic(topic)
 subscription = azure_service_bus_service.create_subscription("test-topic", "all-messages")
 ```
 
-
 ### <a id="how-to-create-subscriptions"></a>创建具有筛选器的订阅
 
 还可以定义筛选器，以指定发送到主题的哪些消息应该在特定订阅中显示。
@@ -183,7 +182,7 @@ rule = azure_service_bus_service.create_rule(rule)
 end
 ```
 
-Service Bus 主题支持最大为 256 MB 的消息（标头最大为 64 MB，其中包括标准和自定义应用程序属性）。一个主题中包含的消息数量不受限制，但消息的总大小受限制。此主题大小是在创建时定义的，上限为 5 GB。
+服务总线主题在[标准层](/documentation/articles/service-bus-premium-messaging/)中支持的最大消息大小为 256 KB，在[高级层](/documentation/articles/service-bus-premium-messaging/)中则为 1 MB。标头最大为 64 KB，其中包括标准和自定义应用程序属性。一个主题中包含的消息数量不受限制，但消息的总大小受限制。此主题大小是在创建时定义的，上限为 5 GB。
 
 ## 从订阅接收消息
 
@@ -229,9 +228,9 @@ azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 
 现在，你已了解有关 Service Bus 主题的基础知识，单击下面的链接可了解更多信息。
 
--   请参阅[队列、主题和订阅](/documentation/articles/service-bus-queues-topics-subscriptions)。
+-   请参阅[队列、主题和订阅](/documentation/articles/service-bus-queues-topics-subscriptions/)。
 -   [SqlFilter](http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx) 的 API 参考。
 -	访问 GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 [Azure 经典门户]: http://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0718_2016-->

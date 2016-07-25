@@ -247,7 +247,7 @@ for (i = 0;i < 5;i++) {
 }
 ```
 
-Service Bus 主题支持最大为 256 MB 的消息（标头最大为 64 MB，其中包括标准和自定义应用程序属性）。一个主题中包含的消息数量不受限制，但消息的总大小受限制。此主题大小是在创建时定义的，上限为 5 GB。
+服务总线主题在[标准层](/documentation/articles/service-bus-premium-messaging/)中支持的最大消息大小为 256 KB，在[高级层](/documentation/articles/service-bus-premium-messaging/)中则为 1 MB。标头最大为 64 KB，其中包括标准和自定义应用程序属性。一个主题中包含的消息数量不受限制，但消息的总大小受限制。此主题大小是在创建时定义的，上限为 5 GB。
 
 ## 从订阅接收消息
 
@@ -316,7 +316,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 
   [Azure 经典门户]: http://manage.windowsazure.cn
   [SqlFilter.SqlExpression]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-  [队列、主题和订阅]: /documentation/articles/service-bus-queues-topics-subscriptions
+  [队列、主题和订阅]: /documentation/articles/service-bus-queues-topics-subscriptions/
   [SqlFilter]: http://msdn.microsoft.com/zh-cn/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
   [Node.js Cloud Service]: /zh-cn/documentation/articles/cloud-services-nodejs-develop-deploy-app/
   [创建 Node.js 应用程序并将其部署到 Azure 网站]: /documentation/articles/app-service-web/web-sites-nodejs-develop-deploy-mac
@@ -324,4 +324,4 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
   [使用存储构建 Node.js Web 应用程序]: /documentation/articles/cloud-services/storage-nodejs-use-table-storage-cloud-service-app
  
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0718_2016-->

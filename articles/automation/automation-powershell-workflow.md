@@ -3,13 +3,13 @@
    description="本文旨在作为熟悉 PowerShell 创作人员的一个速成教程，以便其了解 PowerShell 和 PowerShell 工作流之间的具体差异。"
    services="automation"
    documentationCenter=""
-   authors="bwren"
-   manager="stevenka"
+   authors="mgoedtel"
+   manager="jwhit"
    editor="tysonn" />
-<tags 
-   ms.service="automation"
-   ms.date="02/03/2016"
-   wacn.date="" />
+<tags
+	ms.service="automation"
+	ms.date="05/26/2016"
+	wacn.date=""/>
 
 # 学习 Windows PowerShell 工作流
 
@@ -21,7 +21,7 @@ Azure 自动化中的 Runbook 作为 Windows PowerShell 工作流实现。Window
 
 ## Runbook 类型
 
-Microsoft Azure 中国区目前仅支持文本 Runbook。
+Azure 中国区目前仅支持文本 PowerShell 工作流 Runbook。
 
 ## 工作流的基本结构
 
@@ -89,7 +89,7 @@ Microsoft Azure 中国区目前仅支持文本 Runbook。
 	}
 
 
-## InlineScript
+##<a name="InlineScript"></a> InlineScript
 
 当您需要将一个或多个命令作为传统的 PowerShell 脚本而不是 PowerShell 工作流运行时，**InlineScript** 活动非常有用。尽管工作流中的命令将发送到 Windows Workflow Foundation 进行处理，但 InlineScript 块中的命令将由 Windows PowerShell 处理。
 
@@ -139,7 +139,7 @@ InlineScript 使用如下所示的语法。
 有关使用 InlineScript 的进一步信息，请参阅[在工作流中运行 Windows PowerShell 命令](http://technet.microsoft.com/zh-cn/library/jj574197.aspx)和 [about\_InlineScript](http://technet.microsoft.com/zh-cn/library/jj649082.aspx)。
 
 
-## 并行处理
+##<a name="parallel-processing" id="parallel-execution"></a> 并行处理
 
 Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行而不是按顺序执行一组命令。
 
@@ -198,10 +198,10 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
 		Write-Output "All files copied."
 	}
 
-> [AZURE.NOTE] 我们不建议并行运行子 Runbook，这是由于这已被证实将导致不可靠的结果。来自子 Runbook 的输出有时将不会显示，一个子 Runbook 中的设置可能会影响其他并行子 Runbook
+> [AZURE.NOTE]  我们不建议并行运行子 Runbook，这是由于这已被证实将导致不可靠的结果。来自子 Runbook 的输出有时将不会显示，一个子 Runbook 中的设置可能会影响其他并行子 Runbook
 
 
-## 检查点
+##<a name="Checkpoints"></a> 检查点
 
 “检查点”是工作流变量的当前状态的快照，包括变量的当前值以及到该点为止生成的任何输出。如果工作流以错误结束或暂停，则其下次运行时将从其上一个检查点开始，而不是从工作流的起点开始。您可以使用 **Checkpoint-Workflow** 活动在工作流中设置一个检查点。
 
@@ -232,13 +232,11 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
 	}
 
 
-
 关于检查点的详细信息，请参阅[将检查点添加到脚本工作流](http://technet.microsoft.com/zh-cn/library/jj574114.aspx)。
 
 
+## 后续步骤
 
-## 相关文章
+- 若要开始使用 PowerShell 工作流 Runbook，请参阅 [My first PowerShell workflow runbook（我的第一个 PowerShell 工作流 Runbook）](/documentation/articles/automation-first-runbook-textual/)
 
-- [Windows PowerShell 工作流入门](http://technet.microsoft.com/zh-cn/library/jj134242.aspx)
-
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=AcomDC_0718_2016-->

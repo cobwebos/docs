@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="02/25/2016"
+	ms.date="05/31/2016"
 	wacn.date=""/>
 
 # 使用 Azure AD 执行 Web 应用登录和注销
@@ -43,7 +43,7 @@
 - 单击“应用程序”选项卡，然后在底部抽屉中单击“添加”。
 - 根据提示创建一个新的 **Web 应用程序和/或 WebAPI**。
     - 应用程序的**名称**向最终用户描述你的应用程序
-    -	“登录 URL”是应用程序的基本 URL。框架的默认值为 `http://localhost:3000/auth/openid/return``。
+    -	“登录 URL”是应用程序的基本 URL。框架的默认值为 http://localhost:3000/auth/openid/return``。
     - “应用程序 ID URI”是应用程序的唯一标识符。约定是使用 `https://<tenant-domain>/<app-name>`，例如 `https://contoso.onmicrosoft.com/my-first-aad-app`
 - 完成注册后，AAD 将为应用程序分配唯一的客户端标识符。在后面的部分中将会用到此值，因此，请从“配置”选项卡复制此值。
 
@@ -411,4 +411,4 @@ exports.list = function(req, res){
 [使用 Azure AD 保护 Web API >>](active-directory-devquickstarts-webapi-nodejs)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources.md)]
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0718_2016-->

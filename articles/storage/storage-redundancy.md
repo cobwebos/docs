@@ -1,21 +1,21 @@
 
 <properties 
-  pageTitle="Azure 存储复制 | Microsoft Azure" 
-  description="复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。" 
-  services="storage"  
-  documentationCenter=""  
+  pageTitle="Azure 存储复制 | Microsoft Azure" 
+  description="复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。" 
+  services="storage" 
+  documentationCenter="" 
   authors="tamram" 
   manager="adinah" 
   editor=""/>
 
 <tags 
   ms.service="storage" 
-  ms.date="02/17/2016" 
+	ms.date="06/08/2016"
   wacn.date=""/>
 
 # Azure 存储空间复制
 
-始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性，并且即使在遇到临时硬件故障时也符合 [Azure 存储空间 SLA](/support/sla/storage) 要求。
+始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性，并且即使在遇到临时硬件故障时也符合 [Azure 存储空间 SLA](/support/sla/storage/) 要求。
 
 创建存储帐户时，必须选择以下复制选项之一：
 
@@ -33,6 +33,7 @@
 | 可以从辅助位置和主位置读取数据。 | 否 | 否 | 是 |
 | 在单独的节点上维护的数据副本数。 | 3 | 6 | 6 |
 
+有关不同冗余选项的定价信息，请参阅 [Azure 存储空间定价](/home/features/storage/pricing/)。
 
 ## 本地冗余存储
 
@@ -73,10 +74,10 @@
 
 ## 后续步骤
 
-- [关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account)
-- [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets) 
-- [Microsoft Azure 存储冗余选项和读取访问异地冗余存储](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)  
-- [使用 RA-GRS 的 Microsoft Azure 存储模拟器 3.1](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/08/microsoft-azure-storage-emulator-3-1-with-ra-grs.aspx)
-- [SOSP 论文 - Azure 存储空间：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)  
+- [Azure 存储定价](/home/features/storage/pricing)
+- [关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account/)
+- [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets/)
+- [Microsoft Azure 存储冗余选项和读取访问异地冗余存储](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [SOSP 论文 - Azure 存储空间：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
  
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0718_2016-->

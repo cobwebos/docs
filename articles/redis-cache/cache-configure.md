@@ -1,43 +1,33 @@
 <!-- not suitable for Mooncake -->
 
 <properties 
-	pageTitle="如何配置 Azure Redis 缓存"
+	pageTitle="如何配置 Azure Redis 缓存 | Azure"
 	description="了解 Azure Redis 缓存的默认 Redis 配置，并了解如何配置 Azure Redis 缓存实例"
 	services="redis-cache"
 	documentationCenter="na"
 	authors="steved0x"
-	manager="erikre"
+	manager="douge"
 	editor="tysonn" />
-<tags 
+<tags
 	ms.service="cache"
-	ms.date="03/10/2016"
+	ms.date="06/20/2016"
 	wacn.date=""/>
 
 # 如何配置 Azure Redis 缓存
 
 本主题介绍如何查看和更新 Azure Redis 缓存实例的配置，并介绍了 Azure Redis 缓存实例的默认 Redis 服务器配置。
 
->[AZURE.NOTE] 有关配置和使用高级缓存功能的详细信息，请参阅[如何配置高级 Azure Redis 缓存的持久性](/documentation/articles/cache-how-to-premium-persistence)、[如何配置高级 Azure Redis 缓存的群集](/documentation/articles/cache-how-to-premium-clustering)以及[如何配置高级 Azure Redis 缓存的虚拟网络支持](/documentation/articles/cache-how-to-premium-vnet)。
+>[AZURE.NOTE] 有关配置和使用高级缓存功能的详细信息，请参阅[如何配置高级 Azure Redis 缓存的持久性](/documentation/articles/cache-how-to-premium-persistence/)、[如何配置高级 Azure Redis 缓存的群集](/documentation/articles/cache-how-to-premium-clustering/)以及[如何配置高级 Azure Redis 缓存的虚拟网络支持](/documentation/articles/cache-how-to-premium-vnet/)。
 
 ## 配置 Redis 缓存设置
 
-可以在 [Azure 门户](https://portal.azure.cn)中使用“浏览”边栏选项卡访问缓存。
+[AZURE.INCLUDE [redis-cache-create](../includes/redis-cache-browse.md)]
 
-![Azure Redis 缓存浏览边栏选项卡](./media/cache-configure/redis-cache-browse.png)
-
-单击“Redis 缓存”查看你的缓存。如果你最近浏览过 Redis 缓存，则可以从列表中直接单击“Redis 缓存”，而无需单击“浏览”。
-
-![Azure Redis 缓存浏览缓存列表](./media/cache-configure/redis-caches.png)
-
-选择所需缓存以查看其属性。
-
-![Redis 缓存的所有设置](./media/cache-configure/redis-cache-blade.png)
-
-单击“设置”或“所有设置”以查看和配置缓存。
+Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
 
 ![Redis 缓存设置](./media/cache-configure/redis-cache-settings.png)
 
-Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
+
 
 -	[支持和故障排除设置](#support-amp-troubleshooting-settings)
 -	[常规设置](#general-settings)
@@ -46,9 +36,10 @@ Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
 	-	[访问端口](#access-ports)
 	-	[Maxmemory 策略](#maxmemory-policy-and-maxmemory-reserved)
 	-	[高级设置（密钥空间通知）](#keyspace-notifications-advanced-settings)
-	-	[建议](#recommendations)
+	-	[Redis 缓存顾问](#redis-cache-advisor)
 -	[数据管理设置](#data-management-settings)
 	-	[Redis 数据持久性](#redis-data-persistence)
+	-	[导入/导出](#importexport)
 -	[网络设置](#network-settings)
 -	[诊断设置](#diagnostics-settings)
 -	[缩放设置](#scale-settings)
@@ -58,13 +49,30 @@ Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
 
 ## 支持和故障排除设置
 
-单击“审核日志”，以查看对你的缓存执行的操作。你也可以使用筛选来展开此视图，以包含其他资源。有关使用审核日志的详细信息，请参阅[查看事件和审核日志](/documentation/articles/insights-debugging-with-events)以及[使用资源管理器执行审核操作](/documentation/articles/resource-group-audit)。有关监视 Azure Redis 缓存事件的详细信息，请参阅[操作和警报](/documentation/articles/cache-how-to-monitor#operations-and-alerts)。
+“支持 + 疑难解答”部分中的设置为你提供用于解决你的缓存问题的选项。
+
+![支持 + 疑难解答](./media/cache-configure/redis-cache-support-troubleshooting.png)
+
+单击“疑难解答”可提供常见问题和用于解决这些问题的策略。
+
+单击“审核日志”可查看已对你的缓存执行的操作。你也可以使用筛选来展开此视图，以包含其他资源。有关使用审核日志的详细信息，请参阅[查看事件和审核日志](/documentation/articles/insights-debugging-with-events/)以及[使用 Resource Manager 执行审核操作](/documentation/articles/resource-group-audit/)。有关监视 Azure Redis 缓存事件的详细信息，请参阅[操作和警报](/documentation/articles/cache-how-to-monitor/#operations-and-alerts)。
+
+“资源运行状况”会监视你的资源，并告知资源是否按预期运行。有关 Azure 资源运行状况服务的详细信息，请参阅 [Azure 资源运行状况概述](/documentation/articles/resource-health-overview/)。
+
+单击“新建支持请求”可建立缓存的支持请求。
 
 ## 常规设置
 
 “常规”部分中的设置可让你访问和配置缓存的下列设置。
 
 ![常规设置](./media/cache-configure/redis-cache-general-settings.png)
+
+-	[属性](#properties)
+-	[访问密钥](#access-keys)
+-	[访问端口](#access-ports)
+-	[Maxmemory 策略](#maxmemory-policy-and-maxmemory-reserved)
+-	[高级设置（密钥空间通知）](#keyspace-notifications-advanced-settings)
+-	[Redis 缓存顾问](#redis-cache-advisor)
 
 ### 属性
 
@@ -115,7 +123,8 @@ Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
 
 有关详细信息，请参阅 [Redis 密钥空间通知](http://redis.io/topics/notifications)。有关示例代码，请参阅 [Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 示例中的 [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) 文件。
 
-### 建议
+<a name="recommendations"></a>
+## Redis 缓存顾问
 
 “建议”边栏选项卡会显示适用于你的缓存的建议。在正常操作期间，不会显示任何建议。
 
@@ -129,18 +138,18 @@ Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
 
 ![建议](./media/cache-configure/redis-cache-recommendations.png)
 
-你可以在“Redis 缓存”边栏选项卡的[监视图表](/documentation/articles/cache-how-to-monitor#monitoring-charts)和[使用率图表](/documentation/articles/cache-how-to-monitor#usage-charts)部分监视这些度量值。
+你可以在“Redis 缓存”边栏选项卡的“[监视图表](/documentation/articles/cache-how-to-monitor/#monitoring-charts)”和“[使用率图表](/documentation/articles/cache-how-to-monitor/#usage-charts)”部分监视这些度量值。
 
 每个定价层都有不同的客户端连接、内存和带宽的限制。如果你的缓存持续一段时间接近这些度量值的最大容量，即会提供建议。有关通过“建议”工具查看的度量值和限制的详细信息，请参阅下表。
 
 | Redis 缓存度量值 | 有关详细信息，请参阅 |
 |-------------------------|---------------------------------------------------------------------------|
-| 网络带宽使用率 | [缓存性能 — 可用带宽](/documentation/articles/cache-faq#cache-performance) |
+| 网络带宽使用率 | [缓存性能 — 可用带宽](/documentation/articles/cache-faq/#cache-performance) |
 | 连接的客户端数 | [默认 Redis 服务器配置 — maxclients](#maxclients) |
-| 服务器负载 | [使用率图表 — Redis 服务器负载](/documentation/articles/cache-how-to-monitor#usage-charts) |
-| 内存使用率 | [缓存性能 — 大小](/documentation/articles/cache-faq#cache-performance) |
+| 服务器负载 | [使用率图表 — Redis 服务器负载](/documentation/articles/cache-how-to-monitor/#usage-charts) |
+| 内存使用率 | [缓存性能 — 大小](/documentation/articles/cache-faq/#cache-performance) |
 
-若要升级你的缓存，请单击“立即升级”以更改[定价层](#pricing-tier)并缩放缓存。有关选择定价层的详细信息，请参阅[我应使用哪种 Redis 缓存产品和大小？](/documentation/articles/cache-faq#what-redis-cache-offering-and-size-should-i-use)。
+若要升级你的缓存，请单击“立即升级”以更改[定价层](#pricing-tier)并缩放缓存。有关选择定价层的详细信息，请参阅[我应使用哪种 Redis 缓存产品和大小？](/documentation/articles/cache-faq/#what-redis-cache-offering-and-size-should-i-use)。
 
 ## 数据管理设置
 
@@ -148,21 +157,34 @@ Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
 
 ![数据管理](./media/cache-configure/redis-cache-data-management.png)
 
+-	[Redis 数据持久性](#redis-data-persistence)
+-	[导入/导出](#importexport)
+
 ### Redis 数据持久性
 
 单击“Redis 数据持久性”可启用、禁用或配置高级缓存的数据持久性。
 
 ![Redis 数据持久性](./media/cache-configure/redis-cache-persistence-settings.png)
 
-若要启用 Redis 持久性，请单击“已启用”来启用 RDB（Redis 数据库）备份。若要禁用 Redis 持久性，请单击“已禁用”。
+若要启用 Redis 持久性，请单击“启用”来启用 RDB（Redis 数据库）备份。若要禁用 Redis 持久性，请单击“禁用”。
 
-若要配置备份间隔，请选择下拉列表中的“备份频率”。选项包括“15 分钟”、“30 分钟”、“60 分钟”、“6 小时”、“12 小时”和“24 小时”。在上一个备份操作成功完成以后，此时间间隔就会开始倒计时，同时会启动新的备份。
+若要配置备份间隔，请从下拉列表中选择“备份频率”。选项包括“15 分钟”、“30 分钟”、“60 分钟”、“6 小时”、“12 小时”和“24 小时”。在上一个备份操作成功完成以后，此时间间隔就会开始倒计时，同时会启动新的备份。
 
-单击“存储帐户”以选择要使用的存储帐户，然后从“存储密钥”下拉列表中选择要使用的“主密钥”或“辅助密钥”。你必须选择与缓存处于相同区域的存储帐户，建议选择“高级存储”帐户，因为高级存储的吞吐量较高。不管任何时候，只要重新生成了持久性帐户的存储密钥，你就必须从“存储密钥”下拉列表中重新选择所需的密钥。
+单击“存储帐户”以选择要使用的存储帐户，然后从“存储密钥”下拉列表中选择要使用的“主密钥”或“辅助密钥”。你必须选择与缓存处于同一区域的存储帐户，建议选择“高级存储”帐户，因为高级存储的吞吐量较高。不管任何时候，只要重新生成了持久性帐户的存储密钥，你就必须从“存储密钥”下拉列表中重新选择所需的密钥。
 
 单击“确定”可保存暂留配置。
 
->[AZURE.IMPORTANT] Redis 数据持久性仅适用于高级缓存。有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置持久性](/documentation/articles/cache-how-to-premium-persistence)。
+>[AZURE.IMPORTANT] Redis 数据持久性仅适用于高级缓存。有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置持久性](/documentation/articles/cache-how-to-premium-persistence/)。
+
+### 导入/导出
+
+导入/导出是一种 Azure Redis 缓存数据管理操作，可用于通过从高级缓存导入 Redis 缓存数据库 (RDB) 快照以及将 Redis 缓存数据库 (RDB) 快照导出到 Azure 存储帐户中的页 blob 来相应地将数据导入到 Azure Redis 缓存以及从 Azure Redis 缓存导出数据。这使你可以在不同 Azure Redis 缓存实例之间进行迁移，或者在使用之前使用数据填充缓存。
+
+导入可用于从任何云或环境中运行的任何 Redis 服务器引入与 Redis 兼容的 RDB 文件，包括在 Linux、Windows 上运行的 Redis 或任何云提供程序（如 Amazon Web Services 等）。导入数据是使用预先填充的数据创建缓存的简单方式。在导入过程中，Azure Redis 缓存从 Azure 存储空间将 RDB 文件加载到内存中，然后再将密钥插入到缓存中。
+
+使用导出可以将 Azure Redis 缓存中存储的数据导出到与 Redis 兼容的 RDB 文件。可以使用此功能将一个 Azure Redis 缓存实例中的数据移到另一个 Azure Redis 缓存实例或另一个 Redis 服务器。在导出过程中，将在托管 Azure Redis 缓存服务器实例的 VM 上创建临时文件，并将该文件上载到指定的存储帐户。导出操作完成后，无论状态为成功还是失败，都会删除临时文件。
+
+>[AZURE.IMPORTANT] 导入/导出仅适用于高级层缓存。有关详细信息和说明，请参阅[在 Azure Redis 缓存中导入和导出数据](/documentation/articles/cache-how-to-import-export-data/)。
 
 ## 网络设置
 
@@ -170,7 +192,7 @@ Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
 
 ![网络](./media/cache-configure/redis-cache-network.png)
 
->[AZURE.IMPORTANT] 虚拟网络设置仅适用于缓存创建期间利用 VNET 支持配置的高级缓存。有关利用 VNET 支持创建高级缓存并更新其设置的信息，请参阅[如何配置高级 Azure Redis 缓存的虚拟网络支持](/documentation/articles/cache-how-to-premium-vnet)。
+>[AZURE.IMPORTANT] 虚拟网络设置仅适用于缓存创建期间利用 VNET 支持配置的高级缓存。有关利用 VNET 支持创建高级缓存并更新其设置的信息，请参阅[如何配置高级 Azure Redis 缓存的虚拟网络支持](/documentation/articles/cache-how-to-premium-vnet/)。
 
 ## 诊断设置
 
@@ -178,11 +200,13 @@ Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
 
 ![诊断](./media/cache-configure/redis-cache-diagnostics.png)
 
-单击“诊断”以配置用于存储缓存诊断的存储帐户。
+单击“诊断”可[配置存储帐户](/documentation/articles/cache-how-to-monitor/#enable-cache-diagnostics)（用于存储缓存诊断）。
 
 ![Redis 缓存诊断](./media/cache-configure/redis-cache-diagnostics-settings.png)
 
-有关详细信息，请参阅[如何监视 Azure Redis 缓存](/documentation/articles/cache-how-to-monitor)。
+单击“Redis 指标”可对你的缓存[查看度量值](/documentation/articles/cache-how-to-monitor/#how-to-view-metrics-and-customize-charts)，单击“警报规则”可[设置预警规则](/documentation/articles/cache-how-to-monitor/#operations-and-alerts)。
+
+有关 Azure Redis 缓存诊断的详细信息，请参阅[如何监视 Azure Redis 缓存](/documentation/articles/cache-how-to-monitor/)。
 
 ## 缩放设置
 
@@ -190,9 +214,12 @@ Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
 
 ![网络](./media/cache-configure/redis-cache-scale.png)
 
+-	[定价层](#pricing-tier)
+-	[Redis 群集大小](#cluster-size)
+
 ### 定价层
 
-单击“定价层”可查看或更改缓存的定价层。有关缩放的详细信息，请参阅[如何缩放 Azure Redis 缓存](/documentation/articles/cache-how-to-scale)。
+单击“定价层”可查看或更改缓存的定价层。有关缩放的详细信息，请参阅[如何缩放 Azure Redis 缓存](/documentation/articles/cache-how-to-scale/)。
 
 ![Redis 缓存定价层](./media/cache-configure/pricing-tier.png)
 
@@ -207,16 +234,20 @@ Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
 
 若要更改群集大小，请使用滑块，或在“分片计数”文本框中键入 1 到 10 之间的数字，然后单击“确定”进行保存。
 
->[AZURE.IMPORTANT] Redis 群集仅适用于高级缓存。有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置群集](/documentation/articles/cache-how-to-premium-clustering)。
+>[AZURE.IMPORTANT] Redis 群集仅适用于高级缓存。有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置群集](/documentation/articles/cache-how-to-premium-clustering/)。
 
 
 ## 资源管理设置
 
-![Redis 缓存用户和标记](./media/cache-configure/redis-cache-resource-management.png)
+![资源管理](./media/cache-configure/redis-cache-resource-management.png)
+
+“标记”部分可帮助你组织资源。有关详细信息，请参阅[使用标记来组织 Azure 资源](/documentation/articles/resource-group-using-tags/)。
+
+“锁定”部分可让你锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。有关详细信息，请参阅[使用 Azure 资源管理器锁定资源](/documentation/articles/resource-group-lock-resources/)。
 
 Azure 门户中的“用户”部分对基于角色的访问控制 (RBAC) 提供支持，以帮助组织简单准确地满足其访问管理要求。有关详细信息，请参阅 [Azure 门户中基于角色的访问控制](/documentation/articles/role-based-access-control-configure/)。
 
-“标记”部分可帮助你组织资源。有关详细信息，请参阅[使用标记来组织 Azure 资源](/documentation/articles/resource-group-using-tags)。
+单击“导出模板”可生成并导出已部署资源的模板，以用于将来部署。有关使用模板的详细信息，请参阅 [Deploy resources with Azure Resource Manager templates（使用 Azure Resource Manager 模板部署资源）](/documentation/articles/resource-group-template-deploy/)。
 
 ## 默认 Redis 服务器配置
 
@@ -230,16 +261,36 @@ Azure 门户中的“用户”部分对基于角色的访问控制 (RBAC) 提供
 
 |设置|默认值|说明|
 |---|---|---|
-|数据库|16|默认数据库是 DB 0，可使用 connection.GetDataBase(dbid) 对每个连接使用不同数据库，其中 dbid 是 0 到 15 之间的数字。|
-|maxclients|取决于定价层<sup>1</sup>|这是同一时间内允许的最大已连接客户端数。一旦达到该限制，Redis 将在关闭所有新连接的同时发送“达到客户端最大数量”的错误。|
+|数据库|16|默认的数据库数为 16，但你可以根据定价层配置不同数目。<sup>1</sup> 默认数据库是 DB 0，你可以基于每个连接使用 `connection.GetDatabase(dbid)`（其中 dbid 是介于 `0` 和 `databases - 1` 之间的数字）选择其他数据库。|
+|maxclients|取决于定价层<sup>2</sup>|这是同一时间内允许的最大已连接客户端数。一旦达到该限制，Redis 将在关闭所有新连接的同时发送“达到客户端最大数量”的错误。|
 |maxmemory-policy|volatile-lru|Maxmemory 策略是达到 maxmemory（创建缓存时所选缓存服务的大小）时，Redis 将根据它选择要删除内容的设置。Azure Redis 缓存的默认设置为 volatile-lru，此设置使用 LRU 算法删除具有过期设置的密钥。可以在 Azure 门户中配置此设置。有关详细信息，请参阅 [Maxmemory-policy 和 maxmemory-reserved](#maxmemory-policy-and-maxmemory-reserved)。|
 |maxmemory-samples|3|LRU 和最小 TTL 算法不是精确算法而是近似算法（为了节省内存），因此你还可以选择示例大小进行检查。例如，对于默认设置，Redis 将检查三个密钥并选取最近使用较少的一个。|
 |lua-time-limit|5,000|Lua 脚本的最大执行时间（以毫秒为单位）。如果达到最大执行时间，Redis 将记录达到最大允许时间后仍继续执行的脚本，并将开始在查询答复时出现错误。|
 |lua-event-limit|500|这是脚本事件队列的最大大小。|
 |client-output-buffer-limit normalclient-output-buffer-limit pubsub|0 0 032mb 8mb 60|客户端输出缓冲区限制可用于强制断开处于某种原因（一个常见原因是发布/订阅客户端处理消息的速度慢于发布者提供消息的速度）而未从服务器快速读取数据的客户端的连接。有关详细信息，请参阅 [http://redis.io/topics/clients](http://redis.io/topics/clients)。|
 
-<a name="maxclients"></a>
-<sup>1</sup>`maxclients` 对于每个 Azure Redis 缓存定价层都是不同的。
+<a name="databases"></a> <sup>1</sup>每个 Azure Redis 缓存定价层的 `databases` 限制是不同的，可以在创建缓存时进行设置。如果在创建缓存期间未指定 `databases` 设置，则默认值为 16。
+
+-	基本缓存和标准缓存
+	-	C0 (250 MB) 缓存 - 最多支持 16 个数据库
+	-	C1 (1 GB) 缓存 - 最多支持 16 个数据库
+	-	C2 (2.5 GB) 缓存 - 最多支持 16 个数据库
+	-	C3 (6 GB) 缓存 - 最多支持 16 个数据库
+	-	C4 (13 GB) 缓存 - 最多支持 32 个数据库
+	-	C5 (26 GB) 缓存 - 最多支持 48 个数据库
+	-	C6 (53 GB) 缓存 - 最多支持 64 个数据库
+-	高级缓存
+	-	P1 (6 GB - 60 GB) - 最多支持 16 个数据库
+	-	P2 (13 GB - 130 GB) - 最多支持 32 个数据库
+	-	P3 (26 GB - 260 GB) - 最多支持 48 个数据库
+	-	P4 (53 GB - 530 GB) - 最多支持 64 个数据库
+	-   所有启用了 Redis 群集的高级缓存 - Redis 群集仅支持使用数据库 0，因此任何启用了 Redis 群集的高级缓存的 `databases` 限制实际上是 1，并且不允许使用 [Select](http://redis.io/commands/select) 命令。有关详细信息，请参阅[使用群集功能时，是否需要对客户端应用程序进行更改？](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+
+
+>[AZURE.NOTE] `databases` 设置只能在创建缓存期间配置，并且只能使用 PowerShell、CLI 或其他管理客户端进行配置。有关在创建缓存期间使用 PowerShell 配置 `databases` 的示例，请参阅 [New-AzureRmRedisCache](/documentation/articles/cache-howto-manage-redis-cache-powershell/#databases)。
+
+
+<a name="maxclients"></a> <sup>2</sup>`maxclients` 对于每个 Azure Redis 缓存定价层都是不同的。
 
 -	基本缓存和标准缓存
 	-	C0 (250 MB) 缓存 - 最多支持 256 个连接
@@ -267,6 +318,7 @@ Azure 门户中的“用户”部分对基于角色的访问控制 (RBAC) 提供
 >-	保存
 >-	关机
 >-	SLAVEOF
+>-	CLUSTER - 群集写命令已禁用，但允许使用只读群集命令。
 
 有关 Redis 命令的详细信息，请参阅 [http://redis.io/commands](http://redis.io/commands)。
 
@@ -276,8 +328,8 @@ Azure 门户中的“用户”部分对基于角色的访问控制 (RBAC) 提供
 
 >[AZURE.IMPORTANT] Redis 控制台无法使用 VNET 或群集。
 >
->-	[VNET](/documentation/articles/cache-how-to-premium-vnet) — 如果缓存是 VNET 的一部分，则只有 VNET 中的客户端才能访问缓存。Redis 控制台使用的 redis cli.exe 客户端承载于不属于 VNET 的 VM 上，因此该控制台无法连接到你的缓存。
->-	[群集](/documentation/articles/cache-how-to-premium-clustering) — Redis 控制台使用目前不支持群集的 redis-cli.exe 客户端。GitHub 上 Redis 存储库的[不稳定](http://redis.io/download)分支中的 redis-cli 实用程序在使用 `-c` 开关启动时，会实现基本支持。有关详细信息，请参阅 [http://redis.io](http://redis.io) 上的 [Redis 群集教程](http://redis.io/topics/cluster-tutorial)中的[操作群集](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)。
+>-	[VNET](/documentation/articles/cache-how-to-premium-vnet/) - 如果缓存是 VNET 的一部分，则只有 VNET 中的客户端可以访问缓存。Redis 控制台使用的 redis cli.exe 客户端承载于不属于 VNET 的 VM 上，因此该控制台无法连接到你的缓存。
+>-	[群集](/documentation/articles/cache-how-to-premium-clustering/) - Redis 控制台使用目前不支持群集的 redis-cli.exe 客户端。GitHub 上 Redis 存储库的[不稳定](http://redis.io/download)分支中的 redis-cli 实用程序在使用 `-c` 开关启动时，会实现基本支持。有关详细信息，请参阅 [http://redis.io](http://redis.io) 上的 [Redis 群集教程](http://redis.io/topics/cluster-tutorial)中的[操作群集](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)。
 
 要访问 Redis 控制台，则从“Redis 缓存”边栏选项卡单击“控制台”。
 
@@ -295,8 +347,9 @@ Azure 门户中的“用户”部分对基于角色的访问控制 (RBAC) 提供
 
 ![移动 Redis 缓存](./media/cache-configure/redis-cache-move.png)
 
-有关在资源组之间以及订阅之间移动资源的信息，请参阅[将资源移动到新的资源组或订阅中](/documentation/articles/resource-group-move-resources)。
+有关在资源组之间以及订阅之间移动资源的信息，请参阅[将资源移到新的资源组或订阅](/documentation/articles/resource-group-move-resources/)。
 
 ## 后续步骤
--	有关使用 Redis 命令的详细信息，请参阅[如何运行 Redis 命令？](/documentation/articles/cache-faq#how-can-i-run-redis-commands)
-<!---HONumber=Mooncake_0411_2016-->
+-	有关使用 Redis 命令的详细信息，请参阅[如何运行 Redis 命令？](/documentation/articles/cache-faq/#how-can-i-run-redis-commands)
+
+<!---HONumber=AcomDC_0718_2016-->
