@@ -9,7 +9,7 @@
 
 <tags
      ms.service="iot-hub"
-     ms.date="05/03/2016"
+     ms.date="05/31/2016"
      wacn.date=""/>
 
 # 教程：使用 C# 程序和 REST API 创建 IoT 中心
@@ -36,7 +36,7 @@
 
 2. 在解决方案资源管理器中右键单击你的项目，然后单击“管理 NuGet 包”。
 
-3. 在 NuGet 包管理器中，选中“包括预发行版”，然后搜索 **Microsoft.Azure.Management.Resources**。单击“安装”，在“审阅更改”中单击“确定”，然后单击“我接受”以接受许可证。
+3. 在 NuGet 包管理器中，选中“包括预发行版”，然后搜索 **Microsoft.Azure.Management.ResourceManager**。单击“安装”，在“审阅更改”中单击“确定”，然后单击“我接受”以接受许可证。
 
 4. 在 NuGet 包管理器中，搜索 **Microsoft.IdentityModel.Clients.ActiveDirectory**。单击“安装”，在“审阅更改”中单击“确定”，然后单击“我接受”以接受许可证。
 
@@ -47,8 +47,8 @@
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
+    using Microsoft.Azure.Management.ResourceManager;
+    using Microsoft.Azure.Management.ResourceManager.Models;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Newtonsoft.Json;
     using Microsoft.Rest;
@@ -134,7 +134,7 @@
       Thread.Sleep(10000);
       HttpResponseMessage deploymentstatus = client.GetAsync(asyncStatusUri).Result;
       body = deploymentstatus.Content.ReadAsStringAsync().Result;
-    } while (body == "{'Status\':'Running'}");
+    } while (body == "{"Status":"Running"}");
     ```
 
 6. 将以下代码添加到 **CreateIoTHub** 方法末尾，以检索创建的 IoT 中心密钥并将其输出到控制台：
@@ -169,17 +169,33 @@
 
 既然你已使用 REST API 部署了一个 IoT 中心，接下来可以进一步进行探索：
 
-- 探索 [IoT 中心资源提供程序 REST API][lnk-rest-api] 的功能。
+- 阅读 [IoT 中心资源提供程序 REST API][lnk-rest-api] 的相关功能。
 - 有关 Azure Resource Manager 功能的详细信息，请参阅 [Azure Resource Manager 概述][lnk-azure-rm-overview]。
+
+若要深入了解如何开发 IoT 中心，请参阅以下内容：
+
+- [C SDK 简介][lnk-c-sdk]
+- [IoT 中心 SDK][lnk-sdks]
+
+若要进一步探索 IoT 中心的功能，请参阅：
+
+- [设计你的解决方案][lnk-design]
+- [使用 UI 示例探索设备管理][lnk-dmui]
+- [使用网关 SDK 模拟设备][lnk-gateway]
+- [使用 Azure 门户管理 IoT 中心][lnk-portal]
 
 <!-- Links -->
 [lnk-free-trial]: /pricing/1rmb-trial/
 [lnk-azure-portal]: https://manage.windowsazure.cn
-[lnk-powershell-install]: /documentation/articles/powershell-install-configure
+[lnk-powershell-install]: /documentation/articles/powershell-install-configure/
 [lnk-rest-api]: https://msdn.microsoft.com/zh-cn/library/mt589014.aspx
-[lnk-azure-rm-overview]: /documentation/articles/resource-group-overview
+[lnk-azure-rm-overview]: /documentation/articles/resource-group-overview/
+[lnk-c-sdk]: /documentation/articles/iot-hub-device-sdk-c-intro/
+[lnk-sdks]: /documentation/articles/iot-hub-sdks-summary/
 
+[lnk-design]: /documentation/articles/iot-hub-guidance/
+[lnk-dmui]: /documentation/articles/iot-hub-device-management-ui-sample/
+[lnk-gateway]: /documentation/articles/iot-hub-linux-gateway-sdk-simulated-device/
+[lnk-portal]: /documentation/articles/iot-hub-manage-through-portal/
 
-
-
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0725_2016-->

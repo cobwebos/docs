@@ -17,11 +17,41 @@ Runbook 输入参数可让你将数据传递到启动的 Runbook，以增加 Run
 
 ## 配置输入参数
 
+[AZURE.ACOM]{
+
+可以在 PowerShell、PowerShell 工作流和图形 Runbook 中配置输入参数。一个 Runbook 可以包含具有不同数据类型的多个参数，或者不包含任何参数。输入参数可以是必需的或可选的，你可以为可选参数分配默认值。你可以在通过某种可用方法启动 Runbook 时分配 Runbook 的输入参数值。这些方法包括使用 UI 或 Web 服务启动 Runbook。还可以启动一个 Runbook 作为另一个 Runbook 中内联调用的子 Runbook。
+
+[AZURE.ACOM]}
+
+[AZURE.ACN]{
+
 可以在 PowerShell 工作流中配置输入参数。一个 Runbook 可以包含具有不同数据类型的多个参数，或者不包含任何参数。输入参数可以是必需的或可选的，你可以为可选参数分配默认值。你可以在通过某种可用方法启动 Runbook 时分配 Runbook 的输入参数值。这些方法包括使用 UI 或 Web 服务启动 Runbook。还可以启动一个 Runbook 作为另一个 Runbook 中内联调用的子 Runbook。
+
+[AZURE.ACN]}
+
+[AZURE.ACOM]{
+
+## 在 PowerShell 和 PowerShell 工作流 Runbook 中配置输入参数
+
+[AZURE.ACOM]}
+
+[AZURE.ACN]{
 
 ## 在 PowerShell 工作流 Runbook 中配置输入参数
 
+[AZURE.ACN]}
+
+[AZURE.ACOM]{
+
+Azure 自动化中的 PowerShell 和 [PowerShell 工作流 Runbook](/documentation/articles/automation-first-runbook-textual/) 支持通过以下属性定义的输入参数。
+
+[AZURE.ACOM]}
+
+[AZURE.ACN]{
+
 Azure 自动化中的 [PowerShell 工作流 Runbook](/documentation/articles/automation-first-runbook-textual/) 支持通过以下属性定义的输入参数。
+
+[AZURE.ACN]}
 
 | **属性** | **说明** |
 |:--- |:---|
@@ -34,7 +64,6 @@ Windows PowerShell 支持的输入参数属性比此处所列的多，例如验�
 
 PowerShell 工作流 Runbook 中的参数定义采用以下常规格式，其中，多个参数必须以逗号分隔。
 
-
      Param
      (
          [Parameter (Mandatory= $true/$false)]
@@ -44,11 +73,15 @@ PowerShell 工作流 Runbook 中的参数定义采用以下常规格式，其中
          [Type] Name2 = <Default value>
      )
 
-
->[AZURE.NOTE] 定义参数时，如果未指定 **Mandatory** 属性，则会按默认将参数视为可选。此外，如果在 PowerShell 工作流 Runbook 中设置某个参数的默认值，则 PowerShell 会将其视为可选参数，而不管 **Mandatory** 属性值为何。
+>[AZURE.NOTE] 定义参数时，如果未指定 **Mandatory** 属性，则会按默认将参数视为可选。此外，如果在 PowerShell 工作流 Runbook 中设置某个参数的默认值，则 PowerShell 会将其视为可选参数，而不管 **Mandatory** 属性值如何。
 
 例如，让我们为输出有关虚拟机（可以是单个 VM 或服务中的所有 VM）的详细信息的 PowerShell 工作流 Runbook 配置输入参数。如以下屏幕截图中所示，此 Runbook 有两个参数：虚拟机的名称和服务的名称。
 
+[AZURE.ACOM]{
+
+![自动化 PowerShell 工作流](./media/automation-runbook-input-parameters/automation_01_PowerShellWorkflow.png)
+
+[AZURE.ACOM]}
 
 在此参数定义中，**$VMName** 和 **$ServiceName** 参数是字符串类型的简单参数。但是，PowerShell 和 PowerShell 工作流 Runbook 支持所有简单类型和复杂类型，例如输入参数的 **object** 或 **PSCredential**。
 
@@ -61,11 +94,78 @@ PowerShell 工作流 Runbook 中的参数定义采用以下常规格式，其中
 
     @{"FirstName"="Joe";"MiddleName"="Bob";"LastName"="Smith"}
 
+[AZURE.ACOM]{
+
+## 在图形 Runbook 中配置输入参数
+
+为了使用输入参数[配置图形 Runbook](/documentation/articles/automation-first-runbook-graphical/)，让我们创建输出有关虚拟机（可以是单个 VM 或服务中的所有 VM）的详细信息的图形 Runbook。配置 Runbook 包括两个主要活动，如下所述。
+
+使用 [**Add-AzureAccount**](https://msdn.microsoft.com/zh-cn/library/dn495128.aspx) 在 Azure 上进行身份验证。
+
+使用 [**Get-AzureVM**](https://msdn.microsoft.com/zh-cn/library/azure/dn495236.aspx) 获取所有虚拟机。
+
+可以使用 [**Write-Output**](https://technet.microsoft.com/zh-cn/library/hh849921.aspx) 活动输出虚拟机的名称。**Get-AzureVM** 活动接受两个参数：**虚拟机名称**和**服务名称**。由于这些参数在每次启动 Runbook 时可能需要不同的值，因此可以将输入参数添加到 Runbook。以下是添加输入参数的步骤：
+
+1. 从“Runbook”边栏选项卡中选择图形 Runbook 并[编辑](/documentation/articles/automation-graphical-authoring-intro/)它。
+
+2. 在“编辑”边栏选项卡中单击“输入和输出”，以打开“输入和输出”边栏选项卡。
+
+    ![自动化图形 Runbook](./media/automation-runbook-input-parameters/automation_02_GraphicalRunbook.png)
+
+
+3. “输入和输出”边栏选项卡显示针对 Runbook 定义的输入参数列表。在此边栏选项卡上，你可以添加新的输入参数，或编辑现有输入参数的配置。若要为 Runbook 添加新参数，请单击“添加输入”打开“Runbook 输入参数”边栏选项卡。在此处可以配置以下参数：
+
+    | **属性** | **说明** |
+    |:--- |:---|
+    | 名称 | 必需。参数的名称。在 Runbook 中必须唯一，并且只能包含字母、数字或下划线字符。必须以字母开头。 |
+    | 说明 | 可选。有关输入参数用途的说明。 |
+    | 类型 | 可选。参数值的预期数据类型。支持的参数类型包括 **String**、**Int32**、**Int64**、**Decimal**、**Boolean**、**DateTime** 和 **Object**。如果未选择数据类型，将默认为 **String**。 |
+    | 必需 | 可选。指定是否必须为该参数提供值。如果选择“是”，则在启动 Runbook 时必须提供一个值。如果选择“否”，则在启动 Runbook 时不需要提供值，并且可以设置一个默认值。 |
+    | 默认值 | 可选。指定在 Runbook 启动时未传递值的情况下要用于参数的值。对于不是必需的参数，可以设置默认值。若要设置默认值，请选择“自定义”。除非在 Runbook 启动时提供了其他值，否则将使用此值。如果不想要提供任何默认值，请选择“无”。 |  
+
+    ![添加新输入](./media/automation-runbook-input-parameters/automation_03_AddNewInput.png)
+
+4. 使用以下属性，创建 **Get-AzureVM** 活动使用的两个参数：
+
+    * **Parameter1：**
+    名称 -- VMName，
+    类型 -- 字符串，
+    必需 -- 否
+
+    * **Parameter2：**
+    名称 -- ServiceName，
+    类型 -- 字符串，
+    必需 -- 否，
+    默认值 -- 自定义，
+    自定义默认值 --<包含虚拟机的默认服务名称>
+
+5. 添加参数后，单击“确定”。现在，可以在“输入和输出”边栏选项卡中查看这些参数。再次单击“确定”，然后单击“保存”并“发布” Runbook。
+
+[AZURE.ACN]}
+
 ## 为 Runbook 中的输入参数赋值
 
 在以下情况下，可以将值传递到 Runbook 中的输入参数。
 
 ### 启动 Runbook 并分配参数
+
+[AZURE.ACOM]{
+
+Runbook 有多种启动方式：通过 Azure 门户 UI、Webhook、PowerShell cmdlet、REST API 或 SDK。下面介绍了启动 Runbook 和分配参数的不同方法。
+
+- **使用 Azure 门户启动已发布的 Runbook 并分配参数**
+
+当你[启动 Runbook](/documentation/articles/automation-starting-a-runbook/#starting-a-runbook-with-the-azure-portal) 时，“启动 Runbook”边栏选项卡将会打开，你可以为刚刚创建的参数配置值。
+
+![使用门户启动](./media/automation-runbook-input-parameters/automation_04_StartRunbookUsingPortal.png)
+
+在输入框下面的标签中，可以查看为参数设置的属性。属性包括必需或可选状态、类型和默认值。在参数名称旁边的帮助气球中，可以查看做出参数输入值相关决策时所需的所有关键信息。此信息包括参数是必需还是可选的。此外还包括类型和默认值（如果有）及其他有用的说明。
+
+![帮助气球](./media/automation-runbook-input-parameters/automation_05_HelpBaloon.png)
+
+[AZURE.ACOM]}
+
+[AZURE.ACN]{
 
 Runbook 有多种启动方式：通过 Azure 经典管理门户 UI、PowerShell cmdlet、REST API 或 SDK。下面介绍了启动 Runbook 和分配参数的不同方法。
 
@@ -76,7 +176,7 @@ Runbook 有多种启动方式：通过 Azure 经典管理门户 UI、PowerShell 
  
 在输入框下面的标签中，可以查看为参数设置的属性。属性包括必需或可选状态、类型和默认值。在参数名称旁边的帮助气球中，可以查看做出参数输入值相关决策时所需的所有关键信息。此信息包括参数是必需还是可选的。此外还包括类型和默认值（如果有）及其他有用的说明。
 
- 
+[AZURE.ACN]}
 
 >[AZURE.NOTE] 字符串类型参数支持**空**字符串值。在输入参数框中输入 **[EmptyString]** 将向参数传递空字符串。另外，字符串类型参数不支持传递 **Null** 值。如果未向字符串参数传递任何值，则 PowerShell 会将值解释为 Null。
 
@@ -90,14 +190,37 @@ Runbook 有多种启动方式：通过 Azure 经典管理门户 UI、PowerShell 
 
         Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
 
+    [AZURE.ACOM]{
+
+    - **Azure Resource Manager cmdlet：**可以使用 [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/zh-cn/library/mt603661.aspx) 启动在资源组中创建的自动化 Runbook。
+
+
+    **示例：**
+
+        $params = @{"VMName"="WSVMClassic";"ServiceName"="WSVMClassicSG"}
+
+        Start-AzureRmAutomationRunbook -AutomationAccountName "TestAutomationRG" -Name "Get-AzureVMGraphical" -ResourceGroupName "RG1" -Parameters $params
+
+    [AZURE.ACOM]}
+
+[AZURE.ACOM]{
+
+>[AZURE.NOTE] 使用 PowerShell cmdlet 启动 Runbook 时，将创建值为 **PowerShell** 的默认参数 **MicrosoftApplicationManagementStartedBy**。可以在“作业详细信息”边栏选项卡中查看此参数。
+
+[AZURE.ACOM]}
+
+[AZURE.ACN]{
+
 >[AZURE.NOTE] 使用 PowerShell cmdlet 启动 Runbook 时，将创建值为 **PowerShell** 的默认参数 **MicrosoftApplicationManagementStartedBy**。
+
+[AZURE.ACN]}
 
 - **使用 SDK 启动 Runbook 并分配参数**
 
     - **Azure 服务管理方法：**可以使用编程语言的 SDK 启动 Runbook。以下 C# 代码段用于在自动化帐户中启动 Runbook。可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)中查看完整代码。
 
-        public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
-        {
+	        public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
+	        {
             var response = AutomationClient.Jobs.Create(automationAccount, new JobCreateParameters
             {
                 Properties = new JobCreateProperties
@@ -110,7 +233,29 @@ Runbook 有多种启动方式：通过 Azure 经典管理门户 UI、PowerShell 
                 }
             });
             return response.Job;
-        }
+	        }
+
+    [AZURE.ACOM]{
+
+    - **Azure Resource Manager 方法：**可以使用编程语言的 SDK 来启动 Runbook。以下 C# 代码段用于在自动化帐户中启动 Runbook。可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)中查看完整代码。
+
+	        public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
+	        {
+	           var response = AutomationClient.Jobs.Create(resourceGroup, automationAccount, new JobCreateParameters
+	           {
+	               Properties = new JobCreateProperties
+	               {
+	                   Runbook = new RunbookAssociationProperty
+	                   {
+	                       Name = runbookName
+	                   },
+	                       Parameters = parameters
+	               }
+	           });
+	        return response.Job;
+	        }
+
+    [AZURE.ACOM]}
 
 若要启动此方法，请创建一个字典来存储 Runbook 参数（**VMName** 和 **ServiceName**）及其值。然后启动 Runbook。以下 C# 代码段用于调用上面定义的方法。
 
@@ -127,7 +272,12 @@ Runbook 有多种启动方式：通过 Azure 经典管理门户 UI、PowerShell 
 
 可以通过 Azure 自动化 REST API 并配合使用 **PUT** 方法及以下请求 URI 来创建和启动 Runbook 作业。
 
+    [AZURE.ACOM]{
+    https://management.core.windows.net/<subscription-id>/cloudServices/<cloud-service-name>/resources/automation/~/automationAccounts/<automation-account-name>/jobs/<job-id>?api-version=2014-12-08
+    [AZURE.ACOM]}
+    [AZURE.ACN]{
     https://management.core.chinacloudapi.cn/<subscription-id>/cloudServices/<cloud-service-name>/resources/automation/~/automationAccounts/<automation-account-name>/jobs/<job-id>?api-version=2014-12-08
+    [AZURE.ACN]}
 
 在请求 URI 中替换以下参数：
 
@@ -161,15 +311,40 @@ Runbook 有多种启动方式：通过 Azure 经典管理门户 UI、PowerShell 
 
 使用测试选项[测试 Runbook 的草稿版本](/documentation/articles/automation-testing-runbook/)时，将打开“测试”边栏选项卡，你可以在其中为刚刚创建的参数配置值。
 
- 
+[AZURE.ACOM]{
+
+![测试并分配参数](./media/automation-runbook-input-parameters/automation_06_TestAndAssignParameters.png)
+
+[AZURE.ACOM]}
+
 ### 将计划链接到 Runbook 并分配参数
 
 可以将[计划链接](/documentation/articles/automation-scheduling-a-runbook/)到 Runbook，以便在特定的时间启动 Runbook。可以在创建计划时分配输入参数，Runbook 在按计划启动时，将使用这些值。只有在提供所有必需参数值之后，才可以保存计划。
+
+[AZURE.ACOM]{
+
+![计划并分配参数](./media/automation-runbook-input-parameters/automation_07_ScheduleAndAssignParameters.png)
+
+### 创建 Runbook 的 Webhook 并分配参数
+
+可以为 Runbook 创建 [Webhook](/documentation/articles/automation-webhooks/) 并配置 Runbook 输入参数。只有在提供所有必需参数值之后，才可以保存 Webhook。
+
+![创建 webhook 并分配参数](./media/automation-runbook-input-parameters/automation_08_CreateWebhookAndAssignParameters.png)
+
+当你使用 Webhook 执行 Runbook 时，将连同定义的输入参数一起发送预定义的输入参数 **[Webhookdata](/documentation/articles/automation-webhooks/#details-of-a-webhook)**。你可以单击 **WebhookData** 参数将它展开，以查看更多详细信息。
+
+![WebhookData 参数](./media/automation-runbook-input-parameters/automation_09_WebhookDataParameter.png)
+
+
+[AZURE.ACOM]}
 
 ## 后续步骤
 
 - 有关 Runbook 输入和输出的详细信息，请参阅 [Azure 自动化：Runbook 输入、输出和嵌套 Runbook](https://azure.microsoft.com/blog/azure-automation-runbook-input-output-and-nested-runbooks/)。
 - 有关以不同方式启动 Runbook 的详细信息，请参阅[启动 Runbook](/documentation/articles/automation-starting-a-runbook/)。
 - 若要编辑文本 Runbook，请参阅[编辑文本 Runbook](/documentation/articles/automation-edit-textual-runbook/)。
+- [AZURE.ACOM]{
+- 若要编辑图形 Runbook，请参阅 [Azure 自动化中的图形创作](/documentation/articles/automation-graphical-authoring-intro/)。
+- [AZURE.ACOM]}
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0725_2016-->

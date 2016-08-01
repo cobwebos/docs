@@ -9,18 +9,18 @@
 
 <tags
  ms.service="iot-hub"
- ms.date="02/03/2016"
+ ms.date="07/06/2016"
  wacn.date=""/>
 
 # 诊断度量值简介
 
-诊断度量值是 Azure 范围的度量值推送内容的一部分，目的是提供有关订阅中 Azure 资源状态的更清晰数据。用户可以使用度量值评估服务以及连接到服务的设备的总体运行状况。面向用户的统计信息非常重要，因为它们可以帮助用户了解其 IoT 中心的情况，帮助用户在不联系 Azure 支持人员的情况下解决根本问题。
+诊断度量值提供有关订阅中 Azure 资源状态的更清晰数据。用户可以使用度量值评估服务以及连接到服务的设备的总体运行状况。面向用户的统计信息非常重要，因为它们可以帮助用户了解其 IoT 中心的情况，帮助用户在不联系 Azure 支持人员的情况下解决根本问题。
 
 可以从 Azure 门户启用诊断度量值。
 
 ## 如何启用诊断度量值
 
-1. 创建 IoT 中心。可以在[入门][lnk-get-started]指南中找到有关如何创建 IoT 中心的说明。
+1. 创建 IoT 中心。有关如何创建 IoT 中心的说明，请参阅[入门][lnk-get-started]指南。
 
 2. 打开 IoT 中心的边栏选项卡。在此处单击“所有设置”，然后单击“诊断”。
 
@@ -50,20 +50,34 @@ IoT 中心提供多个度量值，使你大致了解中心的运行状况及连�
 
 ## 后续步骤
 
-现在你已了解诊断度量值的概述，接下来请单击以下链接来了解更多信息：
+现在你已大概了解了诊断度量值，接下来请单击以下链接来了解有关管理 IoT 中心的详细信息：
 
-- [IoT 中心操作监视][lnk-operations-monitoring]
-- [缩放 IoT 中心][lnk-scaling]
-- [IoT 中心高可用性和灾难恢复][lnk-dr]
+- [操作监视][lnk-monitor]
+- [管理 IoT 中心的访问权限][lnk-itpro]
+
+若要进一步探索 IoT 中心的功能，请参阅：
+
+- [设计你的解决方案][lnk-design]
+- [开发人员指南][lnk-devguide]
+- [使用 UI 示例探索设备管理][lnk-dmui]
+- [使用网关 SDK 模拟设备][lnk-gateway]
 
 <!-- Links and images -->
-[1]: media/iot-hub-metrics/enable-metrics-1.png
-[2]: media/iot-hub-metrics/enable-metrics-2.png
-[3]: media/iot-hub-metrics/enable-metrics-3.png
+[1]: ./media/iot-hub-metrics/enable-metrics-1.png
+[2]: ./media/iot-hub-metrics/enable-metrics-2.png
+[3]: ./media/iot-hub-metrics/enable-metrics-3.png
 
-[lnk-get-started]: /documentation/articles/iot-hub-csharp-csharp-getstarted
-[lnk-operations-monitoring]: /documentation/articles/iot-hub-operations-monitoring
-[lnk-scaling]: /documentation/articles/iot-hub-scaling
-[lnk-dr]: /documentation/articles/iot-hub-ha-dr
+[lnk-get-started]: /documentation/articles/iot-hub-csharp-csharp-getstarted/
+[lnk-operations-monitoring]: /documentation/articles/iot-hub-operations-monitoring/
+[lnk-scaling]: /documentation/articles/iot-hub-scaling/
+[lnk-dr]: /documentation/articles/iot-hub-ha-dr/
 
-<!---HONumber=Mooncake_0307_2016-->
+[lnk-monitor]: /documentation/articles/iot-hub-operations-monitoring/
+[lnk-itpro]: /documentation/articles/iot-hub-itpro-info/
+
+[lnk-design]: /documentation/articles/iot-hub-guidance/
+[lnk-devguide]: /documentation/articles/iot-hub-devguide/
+[lnk-dmui]: /documentation/articles/iot-hub-device-management-ui-sample/
+[lnk-gateway]: /documentation/articles/iot-hub-linux-gateway-sdk-simulated-device/
+
+<!---HONumber=Mooncake_0725_2016-->

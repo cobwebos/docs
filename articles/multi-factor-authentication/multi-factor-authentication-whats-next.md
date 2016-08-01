@@ -28,7 +28,7 @@
 [欺诈警报](#fraud-alert)|你可以配置和设置欺诈警报，使你的用户可以针对访问其资源的欺诈性企图进行举报。|如何设置、配置和报告欺诈行为
 [一次性跳过](#one-time-bypass) |“一次性跳过”可让用户通过“跳过”Multi-Factor Authentication 来进行身份验证，不过只能跳过一次。|如何设置和配置一次性跳过
 [自定义语音消息](#custom-voice-messages) |自定义语音消息可让你将自己的录音或问候语用于 Multi-Factor Authentication。 |如何设置和配置自定义问候语与消息
-[缓存](#caching)|使用缓存可以设置一段特定的时间，使后续的身份验证尝试自动成功。 |如何设置和配置身份验证缓存。
+[缓存](#caching-in-azure-multi-factor-authentication)|使用缓存可以设置一段特定的时间，使后续的身份验证尝试自动成功。 |如何设置和配置身份验证缓存。
 [受信任的 IP](#trusted-ips)|受信任的 IP 是一项 Multi-Factor Authentication 功能，它允许托管或联合租户的管理员跳过对从公司本地 Intranet 登录的用户进行的 Multi-Factor Authentication。|配置和设置免于进行 Multi-Factor Authentication 的 IP 地址	
 [应用密码](#app-passwords)|应用密码允许非 MFA 感知应用程序跳过 Multi-Factor Authentication 并继续工作。|有关应用密码的信息。
 [记住已记住设备和浏览器的 Multi-Factor Authentication](#remember-multi-factor-authentication-for-devices-users-trust)|允许在用户使用 MFA 成功登录后的指定天数内记住设备。|有关启用此功能和设置天数的信息。
@@ -46,7 +46,7 @@
 3.	在 Azure Multi-Factor Authentication 管理门户中，单击“配置”部分下面的“设置”。
 4.	在“设置”页的“欺诈警报”部分下，选中“允许用户提交欺诈警报”复选框。
 5.	如果你希望在报告欺诈时阻止用户，则勾选“报告欺诈时阻止用户”。
-6.	在“用于在初始问候期间报告欺诈的代码”下的框中输入可以在呼叫验证期间使用的数字代码。如果用户输入此代码加上 #（而不是只输入 # 号），则随后会报告欺诈警报。 
+6.	在“用于在初始问候期间报告欺诈的代码”下的框中输入可以在呼叫验证期间使用的数字代码。如果用户输入此代码加上 #（而不是只输入 # 号），则随后会报告欺诈警报。
 7.	在底部单击“保存”。
 
 >[AZURE.NOTE]
@@ -63,7 +63,7 @@ Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。如
 
 
 1. 在手机上收到验证码后，单击该验证码即会启动 Azure 验证器应用。
-2. 若要报告欺诈行为，请单击“取消并报告欺诈行为”。此时会弹出一个框，其中显示“你组织的 IT 支持人员将会收到通知”。 
+2. 若要报告欺诈行为，请单击“取消并报告欺诈行为”。此时会弹出一个框，其中显示“你组织的 IT 支持人员将会收到通知”。
 3. 单击“报告欺诈行为”。
 4. 在该应用上，单击“关闭”。
 
@@ -94,9 +94,11 @@ Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。如
 1.	登录到 http://azure.microsoft.com
 2.	根据此页顶部的说明导航到 MFA 管理门户。
 3.	在 Azure Multi-Factor Authentication 管理门户中，如果在左侧看到租户或 Azure MFA 提供程序的名称旁边有一个 +，则单击 + 可查看不同的 MFA 服务器复制组以及 Azure 默认组。单击相应的组。
-4.	在“用户管理”下面，单击“一次性跳过”。![云](./media/multi-factor-authentication-whats-next/create1.png)
+4.	在“用户管理”下面，单击“一次性跳过”。
+![云](./media/multi-factor-authentication-whats-next/create1.png)
 5.	在“一次性跳过”页上，单击“新建一次性跳过”。
-6.	输入用户的用户名、“跳过”将存在的秒数、跳过的原因，然后单击“跳过”。![云](./media/multi-factor-authentication-whats-next/create2.png)
+6.	输入用户的用户名、“跳过”将存在的秒数、跳过的原因，然后单击“跳过”。
+![云](./media/multi-factor-authentication-whats-next/create2.png)
 7.	此时，用户必须在一次性跳过过期之前登录。
 
 
@@ -130,10 +132,14 @@ Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。如
 2.	登录到 http://azure.microsoft.com
 3.	根据此页顶部的说明导航到 MFA 管理门户。
 4.	在 Azure Multi-Factor Authentication 管理门户中，单击“配置”部分下面的“语音消息”。
-5.	在“语音消息”部分下，单击“新建语音消息”。![云](./media/multi-factor-authentication-whats-next/custom1.png)
-6.	在“配置: 新建语音消息”页上，单击“管理声音文件”。![云](./media/multi-factor-authentication-whats-next/custom2.png)
-7.	在“配置: 声音文件”页上，单击“上载声音文件”。![云](./media/multi-factor-authentication-whats-next/custom3.png)
-8.	在“配置: 上载声音文件”页上，单击“浏览”，然后导航到你的语音消息，单击“打开”。![云](./media/multi-factor-authentication-whats-next/custom4.png)
+5.	在“语音消息”部分下，单击“新建语音消息”。
+![云](./media/multi-factor-authentication-whats-next/custom1.png)
+6.	在“配置: 新建语音消息”页上，单击“管理声音文件”。
+![云](./media/multi-factor-authentication-whats-next/custom2.png)
+7.	在“配置: 声音文件”页上，单击“上载声音文件”。
+![云](./media/multi-factor-authentication-whats-next/custom3.png)
+8.	在“配置: 上载声音文件”页上，单击“浏览”，然后导航到你的语音消息，单击“打开”。
+![云](./media/multi-factor-authentication-whats-next/custom4.png)
 9.	添加说明，然后单击“上载”。
 10.	完成此操作后，你将看到一条消息，指示已成功上载文件。
 11.	在左侧，单击“语音消息”。
@@ -142,7 +148,8 @@ Microsoft 的默认问候语音将指示用户按 0# 以提交欺诈警报。如
 14.	如果此消息用于特定应用程序，请在“应用程序”框中指定该应用程序。
 15.	从“消息类型”中，选择将使用我们的新建自定义消息重写的消息类型。
 16.	从“声音文件”下拉列表中选择你的声音文件。
-17.	单击“创建”。你将看到一条消息，指示已成功创建语音消息。![云](./media/multi-factor-authentication-whats-next/custom5.png)</center>
+17.	单击“创建”。你将看到一条消息，指示已成功创建语音消息。
+![云](./media/multi-factor-authentication-whats-next/custom5.png)</center>
 
 
 
@@ -190,7 +197,7 @@ AZURE AD 租户类型| 可用的受信任 IP 选项
 5. 在“Multi-Factor Authentication”部分中，单击“管理服务设置”。
 6. 在“服务设置”页的“受信任的 IP”下，选择以下任一项：
 
-	- 对于来自 Intranet 的联合用户发出的请求 – 所有从公司网络登录的联合用户都能使用 AD FS 发出的声明跳过 Multi-Factor Authentication。 
+	- 对于来自 Intranet 的联合用户发出的请求 – 所有从公司网络登录的联合用户都能使用 AD FS 发出的声明跳过 Multi-Factor Authentication。
 	- 对于来自特定公共 IP 范围的请求 – 使用 CIDR 表示法在提供的框中输入 IP 地址。例如：xxx.xxx.xxx.0/24 表示 xxx.xxx.xxx.1 – xxx.xxx.xxx.254 范围内的 IP 地址；xxx.xxx.xxx.xxx/32 表示单个 IP 地址。你最多可以输入 50 个 IP 地址范围。
 
 7. 单击“保存”。
@@ -317,7 +324,7 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 联�
 
 ### 在没有 Office 365 或 Azure 订阅的情况下创建应用密码
 --------------------------------------------------------------------------------
-1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)	
+1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 在顶部选择配置文件。
 3. 单击你的用户名并选择“其他安全性验证”。
 5. 在验证页的顶部选择应用密码
@@ -345,7 +352,8 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 联�
 3. 在 Active Directory 下，单击你要为设备设置“记住 Multi-Factor Authentication”的目录。
 4. 在选择的目录上，单击“配置”。
 5. 在“Multi-Factor Authentication”部分中，单击“管理服务设置”。
-6. 在“服务设置”页面上的“管理用户设备设置”下方，选择/取消选择“允许用户记住其信任的设备的 Multi-Factor Authentication”选项。![记住设备](./media/multi-factor-authentication-whats-next/remember.png)
+6. 在“服务设置”页面上的“管理用户设备设置”下方，选择/取消选择“允许用户记住其信任的设备的 Multi-Factor Authentication”选项。
+![记住设备](./media/multi-factor-authentication-whats-next/remember.png)
 8. 设置允许暂停的天数。默认值为 14 天。
 9. 单击“保存”。
 10. 单击“关闭”。
@@ -358,8 +366,8 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 联�
 :------------- | :------------- | 
 [拨打电话](multi-factor-authentication-end-user-first-time-mobile-phone.md)| 向身份验证电话拨打自动语音呼叫。用户接听电话，并按电话键盘上的 # 进行身份验证。此电话号码将不会同步到本地 Active Directory。
 [向手机发送短信](multi-factor-authentication-end-user-first-time-mobile-phone.md)|向用户发送包含验证码的短信。系统会提示用户使用验证码回复短信或在登录界面中输入验证码。
-[通过移动应用发送通知](multi-factor-authentication-end-user-first-time-mobile-app.md)|在此模式下，Azure 验证器应用可防止对帐户进行未经授权的访问并停止欺诈性事务。此功能是使用推送到你的手机或已注册设备上的推送通知来完成的。你可以直接查看通知，如果该通知是合法的，请点击“验证”。否则，你可以选择“拒绝”或选择拒绝并报告欺诈性通知。有关报告欺诈性通知的信息，请参阅“如何针对 Multi-Factor Authentication 使用拒绝并报告欺诈功能”。</br></br>Azure 验证器应用适用于 [Windows Phone](http://www.windowsphone.com/zh-cn/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) 和 [IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458)。|
-[通过移动应用发送验证码](multi-factor-authentication-end-user-first-time-mobile-app.md)|在此模式下，Azure 验证器应用可用作生成 OATH 验证码所需的软件令牌。然后可以将此验证码与用户名和密码一起输入，进行第二种形式的身份验证。</li><br><p> Azure 验证器应用可用于 [Windows Phone](http://www.windowsphone.com/zh-cn/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) 和 [iOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458)。
+[通过移动应用发送通知](multi-factor-authentication-end-user-first-time-mobile-app.md)|在此模式下，Azure 验证器应用可防止对帐户进行未经授权的访问并停止欺诈性事务。此功能是使用推送到你的手机或已注册设备上的推送通知来完成的。你可以直接查看通知，如果该通知是合法的，请点击“验证”。否则，你可以选择“拒绝”或选择拒绝并报告欺诈性通知。有关报告欺诈性通知的信息，请参阅“如何针对 Multi-Factor Authentication 使用拒绝并报告欺诈功能”。</br></br>Azure 验证器应用适用于 [Windows Phone](http://www.windowsphone.com/en-us/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) 和 [IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458)。|
+[通过移动应用发送验证码](multi-factor-authentication-end-user-first-time-mobile-app.md)|在此模式下，Azure 验证器应用可用作生成 OATH 验证码所需的软件令牌。然后可以将此验证码与用户名和密码一起输入，进行第二种形式的身份验证。</li><br><p> Azure 验证器应用可用于 [Windows Phone](http://www.windowsphone.com/en-us/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) 和 [iOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458)。
 
 ### 如何启用/禁用身份验证方法
 
@@ -368,8 +376,9 @@ Azure AD 支持与本地 Windows Server Active Directory 域服务 (AD DS) 联�
 3. 在 Active Directory 中，单击要对其启用或禁用身份验证方法的目录。
 4. 在选择的目录上，单击“配置”。
 5. 在“Multi-Factor Authentication”部分中，单击“管理服务设置”。
-6. 在“服务设置”页上的验证选项下，选择/取消选择你要使用的选项。</br></br>![验证选项](./media/multi-factor-authentication-whats-next/authmethods.png)
+6. 在“服务设置”页上的验证选项下，选择/取消选择你要使用的选项。</br></br>
+![验证选项](./media/multi-factor-authentication-whats-next/authmethods.png)
 9. 单击“保存”。
 10. 单击“关闭”。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0725_2016-->

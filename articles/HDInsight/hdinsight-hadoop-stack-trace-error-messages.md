@@ -6,31 +6,35 @@
 	keywords="堆栈跟踪, 错误消息"
 	services="hdinsight"
 	documentationCenter="NA"
-	authors="cjgronlund"
+	authors="mumian"
 	manager="paulettm"
 	editor="cgronlun"/>
 
 <tags
 	ms.service="hdinsight"
-	ms.date="03/21/2016"
+	ms.date="07/14/2016"
 	wacn.date=""/>
 
-# HDInsight 中的 Hadoop 堆栈跟踪错误：故障排除文章的索引
+# HDInsight 中的 Hadoop 索引疑难解答文章
 
-使用 Hadoop 堆栈跟踪错误的此索引可在 HDInsight 中进行故障排除。这些文章按错误消息的类型进行组织。
+这些文章已按错误类型进行组织。
 
-## 内存不足错误信息
-* [使用 Hive 设置修复内存不足 (OOM) 错误](/documentation/articles/hdinsight-hadoop-hive-out-of-memory-error-oom)：
- 	修复来自 Hive 查询的内存不足错误 (OOM)。客户方案包括跨多个大型表运行的查询。
+## 内存不足错误
 
-> [AZURE.NOTE] 更多堆栈跟踪错误故障排除文章即将推出。
+* [使用 Hive 设置修复内存不足 (OOM) 错误](/documentation/articles/hdinsight-hadoop-hive-out-of-memory-error-oom/)：
+	修复来自 Hive 查询的内存不足错误 (OOM)。客户方案包括跨多个大型表运行的查询。
 
-## 更多针对 HDInsight 的故障排除文章
+## Hive 查询性能
 
-* [有关在 Linux 上使用 HDInsight 的信息](/documentation/articles/hdinsight-hadoop-linux-information)
-* [在 HDInsight 中调试 Hadoop：查看日志和解释错误消息](/documentation/articles/hdinsight-debug-jobs)
-* [以编程方式访问 HDInsight 中 Hadoop 上的 YARN 应用程序日志](/documentation/articles/hdinsight-hadoop-access-yarn-app-logs)
-* [将堆转储收集在 Blob 存储中，以便调试和分析 Hadoop 服务](/documentation/articles/hdinsight-hadoop-collect-debug-heap-dumps)
-* [Azure HDInsight 上的 Hadoop 组件发行说明](/documentation/articles/hdinsight-release-notes)
+* [Optimize Hive queries for Hadoop in HDInsight（在 Hdinsight 中优化 Hadoop 的 Hive 查询）](/documentation/articles/hdinsight-hadoop-optimize-hive-query-v1/)：此文介绍可对 Hive 查询应用的几种最常见 Hive 性能优化方法。
+* [Troubleshoot Hive query performance issues in HDInsight Hadoop cluster（排查 HDInsight Hadoop 群集中的 Hive 查询性能问题）](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
 
-<!---HONumber=Mooncake_0411_2016-->
+## 更多疑难解答文章
+
+* [有关在 Linux 上使用 HDInsight 的信息](/documentation/articles/hdinsight-hadoop-linux-information/)
+* [在 HDInsight 中调试 Hadoop：查看日志和解释错误消息](/documentation/articles/hdinsight-debug-jobs/)
+* [Access YARN application logs on Linux-based Hadoop on HDInsight（在 HDInsight 上基于 Linux 的 Hadoop 中访问 YARN 应用程序日志）](/documentation/articles/hdinsight-hadoop-access-yarn-app-logs-linux/)
+* [Enable heap dumps for Hadoop services on Linux-based HDInsight（在基于 Linux 的 HDInsight 上为 Hadoop 服务启用堆转储）](/documentation/articles/hdinsight-hadoop-collect-debug-heap-dump-linux/)
+* [Azure HDInsight 上的 Hadoop 组件发行说明](/documentation/articles/hdinsight-release-notes/)
+
+<!---HONumber=Mooncake_0725_2016-->

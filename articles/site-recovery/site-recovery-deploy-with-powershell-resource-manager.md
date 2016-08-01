@@ -9,21 +9,21 @@
 
 <tags
 	ms.service="site-recovery"
-	ms.date="06/15/2016"
-	ms.author="bsiva"/>
+	ms.date="07/12/2016"
+	wacn.date=""/>
 
 # 使用 PowerShell 和 Azure Resource Manager 在本地 Hyper-V 虚拟机与 Azure 之间复制
 
 > [AZURE.SELECTOR]
-- [Azure 门户](/documentation/articles/site-recovery-hyper-v-site-to-azure)
-- [PowerShell - ARM](/documentation/articles/site-recovery-deploy-with-powershell-resource-manager)
-- [经典门户](/documentation/articles/site-recovery-hyper-v-site-to-azure-classic)
+- [Azure 门户](/documentation/articles/site-recovery-hyper-v-site-to-azure/)
+- [PowerShell - Resource Manager](/documentation/articles/site-recovery-deploy-with-powershell-resource-manager/)
+- [经典门户](/documentation/articles/site-recovery-hyper-v-site-to-azure-classic/)
 
 
 
 ## 概述
 
-Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障转移和恢复，为业务连续性和灾难恢复策略发挥作用。有关部署方案的完整列表，请参阅 [Azure Site Recovery overview（Azure Site Recovery 概述）](/documentation/articles/site-recovery-overview)。
+Azure Site Recovery 可在许多部署方案中安排虚拟机的复制、故障转移和恢复，为业务连续性和灾难恢复策略发挥作用。有关部署方案的完整列表，请参阅 [Azure Site Recovery 概述](/documentation/articles/site-recovery-overview/)。
 
 Azure PowerShell 是一个模块，提供用于通过 Windows PowerShell 管理 Azure 的 cmdlet。它可与两种类型的模块配合工作：Azure 配置文件模块或 Azure Resource Manager 模块。
 
@@ -34,7 +34,7 @@ Site Recovery PowerShell cmdlet 在 Azure PowerShell for Azure Resource Manager 
 > [AZURE.NOTE] 当前你可以使用 Site Recovery PowerShell cmdlet 配置以下保护、故障转移和恢复方式：从一个虚拟机管理器站点到另一个站点、从虚拟机管理器站点到 Azure 和从 Hyper-V 站点到 Azure。
 
 你无需是一名 PowerShell 专家就可以使用本文章，但是你需要理解诸如模块、cmdlet 和会话等基本概念。有关 Windows PowerShell 的详细信息，请参阅 [Windows PowerShell 入门](http://technet.microsoft.com/zh-cn/library/hh857337.aspx)。
-你还可以阅读有关[将 Azure PowerShell 与 Azure Resource Manager 配合使用](/documentation/articles/powershell-azure-resource-manager)的更多信息。
+还可阅读有关[将 Azure PowerShell 与 Azure Resource Manager 配合使用](/documentation/articles/powershell-azure-resource-manager/)的更多信息。
 
 > [AZURE.NOTE] 参与云解决方案提供商 (CSP) 计划的 Microsoft 合作伙伴可以根据客户的各自的 CSP 订阅（租户订阅）情况对客户服务器的保护措施进行配置和管理。
 
@@ -42,15 +42,15 @@ Site Recovery PowerShell cmdlet 在 Azure PowerShell for Azure Resource Manager 
 
 确保已满足以下先决条件：
 
-- 一个 [Microsoft Azure](https://azure.cn/) 帐户。你可以从[试用版](/pricing/1rmb-trial/)开始。此外，你可以阅读 [Azure Site Recovery Manager 定价](/home/features/site-recovery/#price)。
-- Azure PowerShell 1.0。有关此版本及其安装方法的信息，请参阅 [Azure PowerShell 1.0](/documentation/articles/powershell-install-configure)。
+- 一个 [Microsoft Azure](https://azure.cn/) 帐户。你可以从[试用版](/pricing/1rmb-trial/)开始。此外，你可以阅读 [Azure Site Recovery Manager 定价](/pricing/details/site-recovery/)。
+- Azure PowerShell 1.0。有关此版本及其安装方法的信息，请参阅 [Azure PowerShell 1.0](/documentation/articles/powershell-install-configure/)。
 - [AzureRM.SiteRecovery](https://www.powershellgallery.com/packages/AzureRM.SiteRecovery/) 和 [AzureRM.RecoveryServices](https://www.powershellgallery.com/packages/AzureRM.RecoveryServices/) 模块。你可以从 [PowerShell 库](https://www.powershellgallery.com/)获取这些模块的最新版本
 
 本文将举例说明如何使用 Azure Powershell 和 Azure Resource Manager 来配置和管理对服务器的保护。本文中使用的示例演示了如何将在 Hyper-V 主机上运行的虚拟机保护到 Azure。下面是特定于该示例的先决条件。如需不同站点恢复方案的各种详细要求，请参阅与该方案相关的文档。
 
 - 需要一台运行 Windows Server 2012 R2 的 Hyper-V 主机，其中包含一个或多个虚拟机。
 - Hyper-V 服务器应直接或通过代理连接到 Internet。
-- 要保护的虚拟机应符合[虚拟机先决条件](/documentation/articles/site-recovery-best-practices#virtual-machines)。
+- 要保护的虚拟机应符合[虚拟机先决条件](/documentation/articles/site-recovery-best-practices/#virtual-machines)。
 	
 
 ## 步骤 1：登录到你的 Azure 帐户
@@ -167,7 +167,7 @@ Site Recovery PowerShell cmdlet 在 Azure PowerShell for Azure Resource Manager 
 
 	等待关联作业完成，确保它已成功完成。
 
-##步骤 7：为虚拟机启用保护
+## 步骤 7：为虚拟机启用保护
 
 1. 获取与你要保护的 VM 相对应的保护实体，如下所示：
 
@@ -252,5 +252,4 @@ Site Recovery PowerShell cmdlet 在 Azure PowerShell for Azure Resource Manager 
 
 [详细了解](https://msdn.microsoft.com/zh-cn/library/azure/mt637930.aspx) Azure Site Recovery 和 Azure Resource Manager PowerShell cmdlet。
 
-
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0725_2016-->

@@ -5,12 +5,11 @@
 	documentationCenter="android"
 	keywords="推送通知、推送通知、android 推送通知"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 <tags
 	ms.service="notification-hubs"
-
-	ms.date="05/27/2016"
+	ms.date="07/05/2016"
 	ms.author="wesmc"/>
 
 # 通过 Azure 通知中心向 Android 发送推送通知
@@ -19,9 +18,10 @@
 
 ##概述
 
-> [AZURE.IMPORTANT] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](/pricing/free-trial/)。
+> [AZURE.IMPORTANT] 本主题演示了使用 Google Cloud Messaging (GCM) 的推送通知。如果你使用的是 Google 的 Firebase Cloud Messaging (FCM)，请参阅[使用 Azure 通知中心和 FCM 将推送通知发送到 Android](notification-hubs-android-push-notification-google-fcm-get-started.md)。
 
-本教程演示如何使用 Azure 通知中心将推送通知发送到 Android 应用程序。你将创建一个空白 Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。
+本教程演示如何使用 Azure 通知中心将推送通知发送到 Android 应用程序。
+你将创建一个空白 Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。
 
 [AZURE.INCLUDE [notification-hubs-hero-slug](../includes/notification-hubs-hero-slug.md)]
 
@@ -29,6 +29,8 @@
 
 
 ##先决条件
+
+> [AZURE.IMPORTANT] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started)。
 
 除了上面提到的有效的 Azure 帐户外，本教程只需要最新版本的 [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797)。
 
@@ -88,7 +90,7 @@
 ### 更新 AndroidManifest.xml。
 
 
-1. 若要支持 GCM，我们必须在代码中实现实例 ID 侦听器服务，以便使用 [Google 的实例 ID API](https://developers.google.com/instance-id/) 来[获取注册令牌](https://developers.google.com/cloud-messaging/android/client#sample-register)。在本教程中，我们将该类命名为 `MyInstanceIDService`。 
+1. 若要支持 GCM，我们必须在代码中实现实例 ID 侦听器服务，以便使用 [Google 的实例 ID API](https://developers.google.com/instance-id/) 来[获取注册令牌](https://developers.google.com/cloud-messaging/android/client#sample-register)。在本教程中，我们将该类命名为 `MyInstanceIDService`。
  
 	将以下服务定义添加到 AndroidManifest.xml 文件的 `<application>` 标记内。将 `<your package>` 占位符替换为 `AndroidManifest.xml` 文件顶部显示的实际包名称。
 
@@ -99,7 +101,7 @@
 		</service>
 
 
-2. 从实例 ID API 收到 GCM 注册令牌后，我们将使用它[在 Azure 通知中心注册](/documentation/articles/notification-hubs-push-notification-registration-management)。我们将使用名为 `RegistrationIntentService` 的 `IntentService` 在后台支持此注册。此服务还负责[刷新 GCM 注册令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)。
+2. 从实例 ID API 收到 GCM 注册令牌后，我们将使用它[在 Azure 通知中心注册](/documentation/articles/notification-hubs-push-notification-registration-management/)。我们将使用名为 `RegistrationIntentService` 的 `IntentService` 在后台支持此注册。此服务还负责[刷新 GCM 注册令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)。
  
 	将以下服务定义添加到 AndroidManifest.xml 文件的 `<application>` 标记内。将 `<your package>` 占位符替换为 `AndroidManifest.xml` 文件顶部显示的实际包名称。
 
@@ -138,7 +140,7 @@
 ### 添加代码
 
 
-1. 在“项目”视图中，展开“应用”>“src”>“main”>“java”。右键单击 **java** 下的包文件夹，单击“新建”，然后单击“Java 类”。添加名为 `NotificationSettings` 的新类。 
+1. 在“项目”视图中，展开“应用”>“src”>“main”>“java”。右键单击 **java** 下的包文件夹，单击“新建”，然后单击“Java 类”。添加名为 `NotificationSettings` 的新类。
 
 	![Android Studio - 新 Java 类][6]
 
@@ -179,7 +181,7 @@
 		};
 
 
-3. 将另一个名为 `RegistrationIntentService` 的新类添加到项目。这是我们的 `IntentService` 实现，用于处理[刷新 GCM 令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)和[在通知中心注册](/documentation/articles/notification-hubs-push-notification-registration-management)。
+3. 将另一个名为 `RegistrationIntentService` 的新类添加到项目。这是我们的 `IntentService` 实现，用于处理[刷新 GCM 令牌](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)和[在通知中心注册](/documentation/articles/notification-hubs-push-notification-registration-management/)。
 
 	针对此类使用以下代码。
 
@@ -226,7 +228,7 @@
 		                regID = hub.register(token).getRegistrationId();
 
 		                // If you want to use tags...
-						// Refer to : https://azure.microsoft.com/zh-cn/documentation/articles/notification-hubs-tags-segment-push-message/
+						// Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-routing-tag-expressions/
 		                // regID = hub.register(token, "tag1,tag2").getRegistrationId();
 
 		                resultString = "Registered Successfully - RegId : " + regID;
@@ -357,7 +359,7 @@
 	    }
 
 
-10. `ToastNotify` 方法使用 "Hello World" `TextView` 控件持续在应用程序中报告状态和通知。在 activity\_main.xml 布局中，为该控件添加以下 ID。
+10. `ToastNotify` 方法使用 *"Hello World"* `TextView` 控件持续在应用程序中报告状态和通知。在 activity\_main.xml 布局中，为该控件添加以下 ID。
 
         android:id="@+id/text_hello"
 
@@ -616,7 +618,7 @@
 	
 	                        // Include any tags
 	                        // Example below targets 3 specific tags
-	                        // Refer to : https://azure.microsoft.com/zh-cn/documentation/articles/notification-hubs-tags-segment-push-message/
+	                        // Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-tags-segment-push-message/
 	                        // urlConnection.setRequestProperty("ServiceBusNotification-Tags", 
 							//		"tag1 || tag2 || tag3");
 	
@@ -712,13 +714,13 @@
 
 
 <!-- URLs. -->
-[Get started with push notifications in Mobile Services]: /documentation/articles/mobile-services-javascript-backend-android-get-started-push
+[Get started with push notifications in Mobile Services]: /documentation/articles/mobile-services-javascript-backend-android-get-started-push/
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
 [Azure Classic Portal]: https://manage.windowsazure.cn/
 [Notification Hubs Guidance（通知中心指南）]: http://msdn.microsoft.com/library/jj927170.aspx
-[使用通知中心向用户推送通知]: /documentation/articles/notification-hubs-aspnet-backend-android-notify-users
-[Use Notification Hubs to send breaking news（使用通知中心发送最新消息）]: /documentation/articles/notification-hubs-aspnet-backend-android-breaking-news
+[使用通知中心向用户推送通知]: /documentation/articles/notification-hubs-aspnet-backend-android-notify-users/
+[Use Notification Hubs to send breaking news（使用通知中心发送最新消息）]: /documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/
 [Azure 门户]: https://portal.azure.cn
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0725_2016-->

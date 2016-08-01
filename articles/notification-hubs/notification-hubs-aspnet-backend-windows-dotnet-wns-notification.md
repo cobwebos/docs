@@ -3,13 +3,13 @@
 	description="了解如何在 Azure 中发送安全推送通知。代码示例是使用 .NET API 通过 C# 编写的。"
 	documentationCenter="windows"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	services="notification-hubs"
 	editor=""/>
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="02/29/2016"
+	ms.date="06/29/2016"
 	wacn.date=""/>
 
 #Azure 通知中心 - 使用 .NET 后端通知用户
@@ -39,12 +39,12 @@
 
 在开始本教程之前，必须已完成以下移动服务教程：
 
-+ [通知中心入门]<br/>在此教程中，你创建通知中心，保留应用名称，然后注册以接收通知。本教程假设已完成这些步骤。请遵循[通知中心入门（Windows 应用商店）](/documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification-wns-push-notification)中的步骤；具体而言，请遵循[在 Windows 应用商店中注册你的应用](/documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification-wns-push-notification#register-your-app-for-the-windows-store)和[配置通知中心](/documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification-wns-push-notification#configure-your-notification-hub)部分中的步骤。请务必确保已在门户中你的通知中心的“配置”选项卡上输入了“程序包 SID”和“客户端机密”值。[配置通知中心](/documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification-wns-push-notification#configure-your-notification-hub)部分中介绍了此配置过程。这个步骤非常重要：如果门户上的凭据与针对所选应用程序名称指定的凭据不匹配，推送通知将不会成功。
++ [通知中心入门]<br/>在此教程中，你创建通知中心，保留应用名称，然后注册以接收通知。本教程假设已完成这些步骤。请遵循[通知中心入门（Windows 应用商店）](/documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification-wns-push-notification/)中的步骤；具体而言，请遵循[在 Windows 应用商店中注册你的应用](/documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification-wns-push-notification/#register-your-app-for-the-windows-store)和[配置通知中心](/documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification-wns-push-notification/#configure-your-notification-hub)部分中的步骤。请务必确保已在门户中你的通知中心的“配置”选项卡上输入了“程序包 SID”和“客户端机密”值。[配置通知中心](/documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification-wns-push-notification/#configure-your-notification-hub)部分中介绍了此配置过程。这个步骤非常重要：如果门户上的凭据与针对所选应用程序名称指定的凭据不匹配，推送通知将不会成功。
 
 
 
 
-> [AZURE.NOTE] 如果你使用移动服务作为后端服务，请参阅本教程的[移动服务版本](mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push)。
+> [AZURE.NOTE] 如果你使用移动服务作为后端服务，请参阅本教程的[移动服务版本](/documentation/articles/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push/)。
 
 
 
@@ -237,7 +237,7 @@
 
 15. 在“解决方案资源管理器”中，右键单击“共享”项目，然后依次单击“添加”和“类”。将类命名为 **RegisterClient.cs**，然后单击“确定”以生成该类。
 
-	此类将包装所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。它还会在本地存储通知中心创建的 registrationIds（从[应用后端注册](http://msdn.microsoft.com/library/dn743807.aspx)中提供了详细信息）。请注意，该组件使用当你单击“登录并注册”按钮时存储在本地存储中的授权令牌。
+	此类将包装所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。它还会在本地存储通知中心创建的 *registrationIds*（从[应用后端注册](http://msdn.microsoft.com/library/dn743807.aspx)中提供了详细信息）。请注意，该组件使用当你单击“登录并注册”按钮时存储在本地存储中的授权令牌。
 
 
 16. 在 RegisterClient.cs 文件的顶部添加以下 `using` 语句：
@@ -378,9 +378,9 @@
 
 
 <!-- URLs. -->
-[通知中心入门]: /documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification-wns-push-notification
-[安全推送]: /documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification
-[使用通知中心发送突发新闻]: /documentation/articles/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns
+[通知中心入门]: /documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification-wns-push-notification/
+[安全推送]: /documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification/
+[使用通知中心发送突发新闻]: /documentation/articles/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns/
 [通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0725_2016-->

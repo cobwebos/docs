@@ -14,7 +14,7 @@
 
 # 具有 MongoDB 协议支持的 DocumentDB 帐户开发指南（预览版）
 
-可以通过任何开源 MongoDB 客户端[驱动程序](https://docs.mongodb.org/ecosystem/drivers/)来与 DocumentDB 通信。对 MongoDB 的协议支持假设 MongoDB 客户端驱动程序与 MongoDB 2.6 或更高版本的服务器终结点通信。DocumentDB 通过遵守 MongoDB [线路协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol/) 2.6 版来提供此支持（请注意，线路协议 3.2 版几乎完全受支持，但某些客户端体验，例如 3.2 版 MongoDB shell 会话，可能会指出它们“即将降级到‘旧’模式”）。
+可通过任何开源 MongoDB 客户端[驱动程序](https://docs.mongodb.org/ecosystem/drivers/)来与 Azure DocumentDB 通信。对 MongoDB 的协议支持假设 MongoDB 客户端驱动程序与 MongoDB 2.6 或更高版本的服务器终结点通信。DocumentDB 通过遵守 MongoDB [线路协议](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol/) 2.6 版来提供此支持（请注意，线路协议 3.2 版几乎完全受支持，但某些客户端体验，例如 3.2 版 MongoDB shell 会话，可能会指出它们“即将降级到‘旧’模式”）。
 
 DocumentDB 支持使用核心 MongoDB API 函数来创建、读取、更新和删除 (CRUD) 数据以及查询数据库。实现的功能已根据常见平台、架构、工具和应用程序模式的需求设置优先级。
 
@@ -91,9 +91,9 @@ QueryPlan 缓存| | |-all-
 
 ## 后续步骤
 
-- 了解如何配合具有 MongoDB 协议支持的 DocumentDB 帐户[使用 MongoChef](/documentation/articles/documentdb-mongodb-mongochef)。
-- 浏览具有 MongoDB 协议支持的 DocumentDB [示例](/documentation/articles/documentdb-mongodb-samples)。
+- 了解如何配合具有 MongoDB 协议支持的 DocumentDB 帐户[使用 MongoChef](/documentation/articles/documentdb-mongodb-mongochef/)。
+- 浏览具有 MongoDB 协议支持的 DocumentDB [示例](/documentation/articles/documentdb-mongodb-samples/)。
 
  
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0725_2016-->

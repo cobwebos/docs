@@ -1,16 +1,16 @@
 <properties
-   pageTitle="数据分区指南 | Microsoft Azure"
+   pageTitle="数据分区指南 | Azure"
    description="有关如何隔离分区，以便单独进行管理和访问的指导。"
    services=""
    documentationCenter="na"
    authors="dragon119"
-   manager="masimms"
+   manager="christb"
    editor=""
    tags=""/>
 
 <tags
    ms.service="best-practice"
-   ms.date="03/26/2016"
+   ms.date="07/14/2016"
    wacn.date=""/>
 
 # 数据分区指南
@@ -25,7 +25,7 @@
 
 大多数云应用程序和服务将数据存储与检索当作其操作的一部分。应用程序所用数据存储的设计可能会给系统的性能、吞吐量和缩放性造成严重的影响。大型系统中经常应用的一项技术是将数据分割成独立分区。
 
-> 本指南中所用的术语_分区_是指以物理方式将数据分割成独立数据存储的过程。这与 SQL Server 表分区不同，后者是不同的概念。
+> 本指南中所用的术语分区是指以物理方式将数据分割成独立数据存储的过程。这与 SQL Server 表分区不同，后者是不同的概念。
 
 将数据分区可以带来很多好处。例如，应用分区可以：
 
@@ -123,7 +123,7 @@
 
 请注意，某些云环境会根据基础结构边界分配资源。请确保所选边界的限制可在数据存储、处理能力和带宽等方面提供足够的空间，以满足数据量的预期增长。
 
-例如，如果你使用 Azure 表存储，繁忙的分片所需的资源可能会超过可供单一分区处理请求的资源。（单一分区在给定时间段内可处理的请求数量是有限制的。请参阅 Microsoft 网站上的 [Azure storage scalability and performance targets]（Azure 存储空间可缩放性和性能目标）页以了解详细信息。
+例如，如果你使用 Azure 表存储，繁忙的分片所需的资源可能会超过可供单一分区处理请求的资源。（单一分区在给定时间段内可处理的请求数量是有限制的。请参阅 Microsoft 网站上的 [Azure storage scalability and performance targets]（Azure 存储空间可缩放性和性能目标）页以了解详细信息。）
 
  在此情况下，可能需要对分片进行重新分区以分散负载。如果这些表的总大小或吞吐量超过存储帐户的容量，可能需要创建其他存储帐户并跨帐户分散表。如果存储帐户的数目超过订阅可用的帐户数目，可能需要使用多个订阅。
 
@@ -308,7 +308,7 @@ Azure 表存储使用分区键来确定如何存储数据。如果将具有先�
 	- 对每个实体使用唯一的分区键使表存储服务为每个实体创建不同的分区，可能会导致大量的小分区（取决于实体的大小）。这种方法比使用单个分区键更具可缩放性，但是无法进行实体组事务。此外，检索多个实体的查询可能涉及到读取多台服务器。但是，如果应用程序执行范围查询，使用单调序列生成分区键可能有助于优化这些查询。
 	- 跨实体子集共享分区键可将相同分区中的相关实体分组。涉及使用实体组事务执行的相关实体的操作，以及提取一组相关实体的查询，可能通过访问单个服务器即可满足。
 
-有关 Azure 表存储中的分区的更多信息，请参阅 Microsoft 网站上的 [Azure storage table design guide]（Azure 存储表设计指南）一文。
+有关 Azure 表存储中的分区的更多信息，请参阅 Microsoft 网站上的 [Azure 存储空间表设计指南]一文。
 
 ## 将 Azure Blob 存储分区
 
@@ -342,7 +342,7 @@ Azure 服务总线使用消息中转站处理发送到服务总线队列或主�
 
 服务总线将消息分配给段，如下所示：
 
-- 如果消息属于会话，所有具有 \_SessionId\_ 属性的相同值的消息都将发送到相同的段。
+- 如果消息属于会话，所有具有 _SessionId_ 属性的相同值的消息都将发送到相同的段。
 - 如果消息不属于会话，但发件人已指定 _PartitionKey_ 属性的值，则具有相同 _PartitionKey_ 值的所有消息都将发送到相同的段。
 
 	> [AZURE.NOTE] 如果同时指定 _SessionId_ 和 _PartitionKey_ 属性，则两者需要设置为相同的值，否则消息将被拒绝。
@@ -365,11 +365,11 @@ Azure DocumentDB 是可以存储文档的 NoSQL 数据库。DocumentDB 数据库
 
 文档集合提供一个自然机制用于在单一数据库中将数据分区。在内部，DocumentDB 数据库可以跨多台服务器，并可以尝试跨服务器分布集合以分散负载。实施分片的最简单方法是为每个分片创建一个集合。
 
-> [AZURE.NOTE] 每个 DocumentDB 数据库都有一个性能级别，用于确定它所获取的资源量。性能级别与请求单位 (RU) 比率限制关联。RU 比率限制指定要保留的并可供该集合独占使用的资源量。集合的成本取决于为该集合选择的性能级别。性能级别（以及 RU 比率限制）越高，则费用就越高。可以使用 Azure 门户来调整集合的性能级别。有关详细信息，请参阅 Microsoft 网站上的 [Performance levels in DocumentDB]（DocumentDB 中的性能级别）页。
+> [AZURE.NOTE] 每个 DocumentDB 数据库都有一个性能级别，用于确定它所获取的资源量。性能级别与请求单位 (RU) 比率限制关联。RU 比率限制指定要保留的并可供该集合独占使用的资源量。集合的成本取决于为该集合选择的性能级别。性能级别（以及 RU 比率限制）越高，则费用就越高。可以使用 Azure 门户来调整集合的性能级别。有关详细信息，请参阅 Microsoft 网站上的 [DocumentDB 中的性能级别]页。
 
 所有数据库在 DocumentDB 帐户的上下文中创建。一个 DocumentDB 帐户可以包含多个数据库，并指定数据库要在哪些区域中创建。每个 DocumentDB 帐户还强制实施自身的访问控制。可以使用 DocumentDB 帐户异地查找靠近需要访问帐户的用户的分片（数据库中的集合），并强制实施限制，以便只有这些用户才能连接到这些帐户。
 
-每个 DocumentDB 帐户都有配额，用于限制其包含的数据库和集合数目，以及可用的文档存储量。这些限制随时会更改，但 Microsoft 网站上的 [DocumentDB limits and quotas]（DocumentDB 限制和配额）页上已提供了说明。如果实施的系统中所有分片都属于同一数据库，则理论上有可能会达到帐户的存储容量限制。
+每个 DocumentDB 帐户都有配额，用于限制其包含的数据库和集合数目，以及可用的文档存储量。这些限制随时会更改，但 Microsoft 网站上的 [DocumentDB 限制和配额]页上已提供了说明。如果实施的系统中所有分片都属于同一数据库，则理论上有可能会达到帐户的存储容量限制。
 
 在此情况下，可能需要创建更多的 DocumentDB 帐户和数据库，并跨这些数据库分布分片。但是，即使你不太可能会超过数据库的存储容量，使用多个数据库也是个不错的做法。这是因为，每个数据库都有自身的用户和权限集，你可以使用这种机制按数据库隔离对集合的访问。
 
@@ -497,7 +497,7 @@ Redis 网站上的 [Partitioning: how to split data among multiple Redis instanc
 
 执行联机迁移更复杂，但是用户比较不受干扰，因为数据在整个过程中保持可用。该过程与脱机迁移类似，不同之处在于，原始分片不会标记为脱机（步骤 1）。根据迁移过程的数据粒度（例如，是逐项还是逐分片执行的），客户端应用程序中的数据访问代码可能需要处理保存在两个位置（原始分片和新分片）的数据的读取和写入。
 
-有关支持联机迁移的解决方案示例，请参阅 Microsoft 网站上的文章 [Scaling using the Elastic Database split-merge tool]（使用弹性数据库拆分/合并工具进行缩放）。
+有关支持联机迁移的解决方案示例，请参阅 Microsoft 网站上的文章[使用弹性数据库拆分/合并工具进行缩放]。
 
 ## 相关模式和指南
 
@@ -517,9 +517,9 @@ Redis 网站上的 [Partitioning: how to split data among multiple Redis instanc
 - Microsoft 网站上的 [Scaling using the Elastic Database split-merge tool]（使用弹性数据库拆分/合并工具进行缩放）页包含有关使用拆分/合并服务管理弹性数据库分片的信息。
 - Microsoft 网站上的 [Azure storage scalability and performance targets](https://msdn.microsoft.com/library/azure/dn249410.aspx)（Azure 存储空间可缩放性和性能目标）页介绍了 Azure 存储空间的当前大小和吞吐量限制。
 - Microsoft 网站上的 [Performing entity group transactions]（执行实体组事务）页提供了有关通过存储在 Azure 表存储的实体执行事务操作的详细信息。
-- Microsoft 网站上的 [Azure Storage table design guide]（Azure 存储表设计指南）一文包含有关在 Azure 表存储中分区数据的详细信息。
+- Microsoft 网站上的 [Azure 存储空间表设计指南]一文包含有关在 Azure 表存储中分区数据的详细信息。
 - Microsoft 网站上的 [Using Azure Content Delivery Network]（使用 Azure 内容交付网络）页介绍了如何使用 Azure 内容交付网络复制保存在 Azure Blob 存储中的数据。
-- Microsoft 网站上的 [Manage DocumentDB capacity needs]（管理 DocumentDB 容量需求）页包含有关 Azure DocumentDB 数据库如何分配资源的信息。
+- Microsoft 网站上的 [管理 DocumentDB 容量需求]页包含有关 Azure DocumentDB 数据库如何分配资源的信息。
 - Microsoft 网站上的 [What is Azure Search?]（什么是 Azure 搜索？）页全面介绍了 Azure 搜索提供的功能。
 - Microsoft 网站上的 [Service limits in Azure Search]（Azure 搜索中的服务限制）页包含有关每个 Azure 搜索实例的容量的信息。
 - Microsoft 网站上的 [Supported data types (Azure Search)]（支持的数据类型（Azure 搜索））页汇总了你可以在可搜索文档和索引中使用的数据类型。
@@ -529,29 +529,36 @@ Redis 网站上的 [Partitioning: how to split data among multiple Redis instanc
 - Redis 网站上的 [Data types]（数据类型）页介绍了可在 Redis 和 Azure Redis 缓存中使用的数据类型。
 
 [Azure Redis Cache]: /services/cache/
-[Azure Storage Scalability and Performance Targets]: /documentation/articles/storage-scalability-targets
-[Azure Storage Table Design Guide]: /documentation/articles/storage-table-design-guide
+[Azure Storage Scalability and Performance Targets]: /documentation/articles/storage-scalability-targets/
+[Azure 存储空间表设计指南]: /documentation/articles/storage-table-design-guide/
 [Building a Polyglot Solution]: https://msdn.microsoft.com/zh-cn/library/dn313279.aspx
 [Data Access for Highly-Scalable Solutions: Using SQL, NoSQL, and Polyglot Persistence]: https://msdn.microsoft.com/zh-cn/library/dn271399.aspx
 [Data consistency primer]: http://aka.ms/Data-Consistency-Primer
 [Data Partitioning Guidance]: https://msdn.microsoft.com/zh-cn/library/dn589795.aspx
 [Data Types]: http://redis.io/topics/data-types
-[Elastic Database features overview]: /documentation/articles/sql-database-elastic-scale-introduction
+[DocumentDB limits and quotas]: /documentatin/articles/documentdb-limits
+[DocumentDB 限制和配额]: /documentatin/articles/documentdb-limits
+[Elastic Database features overview]: /documentation/articles/sql-database-elastic-scale-introduction/
 [Federations Migration Utility]: https://code.msdn.microsoft.com/vstudio/Federations-Migration-ce61e9c1
 [索引表模式]: http://aka.ms/Index-Table-Pattern
+[Manage DocumentDB capacity needs]: /documentation/articles/documentdb-manage
+[管理 DocumentDB 容量需求]: /documentation/articles/documentdb-manage
 [具体化视图模式]: http://aka.ms/Materialized-View-Pattern
-[Multi-shard querying]: /documentation/articles/sql-database-elastic-scale-multishard-querying.md
+[Multi-shard querying]: /documentation/articles/sql-database-elastic-scale-multishard-querying.md/
 [Partitioning: how to split data among multiple Redis instances]: http://redis.io/topics/partitioning
+[DocumentDB 中的性能级别]: /documentation/articles/documentdb-performance-levels
 [Performing Entity Group Transactions]: https://msdn.microsoft.com/zh-cn/library/azure/dd894038.aspx
 [Redis 群集教程]: http://redis.io/topics/cluster-tutorial
 [Running Redis on a CentOS Linux VM in Azure]: http://blogs.msdn.com/b/tconte/archive/2012/06/08/running-redis-on-a-centos-linux-vm-in-windows-azure.aspx
-[Scaling using the Elastic Database split-merge tool]: /documentation/articles/sql-database-elastic-scale-overview-split-and-merge
-[Using CDN for Azure]: /documentation/articles/cdn-how-to-use-cdn
-[Service Bus quotas]: /documentation/articles/service-bus-quotas
-[Service limits in Azure Search]: /documentation/articles/search-limits-quotas-capacity
+[Scaling using the Elastic Database split-merge tool]: /documentation/articles/sql-database-elastic-scale-overview-split-and-merge/
+[使用弹性数据库拆分/合并工具进行缩放]: /documentation/articles/sql-database-elastic-scale-overview-split-and-merge/
+[Using CDN for Azure]: /documentation/articles/cdn-how-to-use-cdn/
+[Service Bus quotas]: /documentation/articles/service-bus-quotas/
+[Service limits in Azure Search]: /documentation/articles/search-limits-quotas-capacity/
 [分片模式]: http://aka.ms/Sharding-Pattern
 [Supported data types (Azure Search)]: https://msdn.microsoft.com/zh-cn/library/azure/dn798938.aspx
 [Transactions]: http://redis.io/topics/transactions
-[What is Azure Search?]: /documentation/articles/search-what-is-azure-search
+[What is Azure Search?]: /documentation/articles/search-what-is-azure-search/
 [What is Azure SQL Database?]: /documentation/articles/sql-database-technical-overview
-<!---HONumber=Mooncake_0530_2016-->
+
+<!---HONumber=Mooncake_0725_2016-->

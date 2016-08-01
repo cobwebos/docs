@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="04/29/2016"
+	ms.date="06/24/2016"
 	wacn.date=""/>
 
 
@@ -24,9 +24,9 @@
 
 本主题中的代码示例假定您已有 Node.js 应用程序。有关在 Azure 中创建 Node.js 应用程序的信息，请参阅以下任何主题：
 
-- [在 Azure App Service 中创建 Node.js Web 应用](/documentation/articles/web-sites-nodejs-develop-deploy-mac)
-- [使用 WebMatrix 构建 Node.js Web 应用并将其部署到 Azure](/documentation/articles/web-sites-nodejs-use-webmatrix)
-- [生成 Node.js 应用程序并将其部署到 Azure 云服务](/documentation/articles/cloud-services-nodejs-develop-deploy-app)（使用 Windows PowerShell）
+- [在 Azure App Service 中创建 Node.js Web 应用](/documentation/articles/web-sites-nodejs-develop-deploy-mac/)
+- [使用 WebMatrix 构建 Node.js Web 应用并将其部署到 Azure](/documentation/articles/web-sites-nodejs-use-webmatrix/)
+- [生成 Node.js 应用程序并将其部署到 Azure 云服务](/documentation/articles/cloud-services-nodejs-develop-deploy-app/)（使用 Windows PowerShell）
 
 
 [AZURE.INCLUDE [storage-table-concepts-include](../includes/storage-table-concepts-include.md)]
@@ -272,7 +272,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 	  }
 	});
 
-如果成功，`result.entries` 将包含与查询匹配的一组实体。如果查询无法返回所有实体，`result.continuationToken` 就不会是 null，因此可用作 **queryEntities** 的第三个参数来检索更多结果。对于初始查询，第三个参数请使用 null。
+如果成功，`result.entries` 将包含与查询匹配的一组实体。如果查询无法返回所有实体，`result.continuationToken` 就不会是 *null*，因此可用作 **queryEntities** 的第三个参数来检索更多结果。对于初始查询，第三个参数请使用 *null*。
 
 ### 查询一部分实体属性
 
@@ -431,11 +431,11 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
   [using the REST API]: http://msdn.microsoft.com/zh-cn/library/azure/hh264518.aspx
   [Azure Portal]: portal.azure.cn
 
-  [Node.js Cloud Service]: /documentation/articles/cloud-services-nodejs-develop-deploy-app
+  [Node.js Cloud Service]: /documentation/articles/cloud-services-nodejs-develop-deploy-app/
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
-  [ Website with WebMatrix]: /documentation/articles/web-sites-nodejs-use-webmatrix
-  [Node.js Cloud Service with Storage]: /documentation/articles/storage-nodejs-use-table-storage-cloud-service-app
-  [使用 Azure 表服务的 Node.js Web 应用]: /documentation/articles/storage-nodejs-use-table-storage-web-site
-  [Create and deploy a Node.js application to an Azure website]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
+  [ Website with WebMatrix]: /documentation/articles/web-sites-nodejs-use-webmatrix/
+  [Node.js Cloud Service with Storage]: /documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
+  [使用 Azure 表服务的 Node.js Web 应用]: /documentation/articles/storage-nodejs-use-table-storage-web-site/
+  [Create and deploy a Node.js application to an Azure website]: /documentation/articles/web-sites-nodejs-develop-deploy-mac/
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0725_2016-->

@@ -1,7 +1,7 @@
 
-<properties 
-  pageTitle="Azure 存储复制 | Microsoft Azure" 
-  description="复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。" 
+<properties 
+  pageTitle="Azure 存储复制 | Microsoft Azure" 
+  description="复制 Microsoft Azure 存储帐户中的数据以实现持久性和高可用性。复制选项包括本地冗余存储 (LRS)、区域冗余存储 (ZRS)、异地冗余存储 (GRS) 和读取访问异地冗余存储 (RA-GRS)。" 
   services="storage" 
   documentationCenter="" 
   authors="tamram" 
@@ -10,7 +10,7 @@
 
 <tags 
   ms.service="storage" 
-	ms.date="06/08/2016"
+	ms.date="06/23/2016"
   wacn.date=""/>
 
 # Azure 存储空间复制
@@ -33,7 +33,7 @@
 | 可以从辅助位置和主位置读取数据。 | 否 | 否 | 是 |
 | 在单独的节点上维护的数据副本数。 | 3 | 6 | 6 |
 
-有关不同冗余选项的定价信息，请参阅 [Azure 存储空间定价](/home/features/storage/pricing/)。
+有关不同冗余选项的定价信息，请参阅 [Azure 存储空间定价](/pricing/details/storage/)。
 
 ## 本地冗余存储
 
@@ -74,10 +74,11 @@
 
 ## 后续步骤
 
-- [Azure 存储定价](/home/features/storage/pricing)
+- [Azure 存储定价](/pricing/details/storage/)
 - [关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account/)
 - [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets/)
 - [Microsoft Azure 存储冗余选项和读取访问异地冗余存储](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 - [SOSP 论文 - Azure 存储空间：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
  
-<!---HONumber=Mooncake_0718_2016-->
+
+<!---HONumber=Mooncake_0725_2016-->

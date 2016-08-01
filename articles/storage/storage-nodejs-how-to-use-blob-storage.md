@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-    ms.date="04/29/2016"
+    ms.date="06/24/2016"
 	wacn.date=""/>
 
 
@@ -28,7 +28,7 @@
 
 ## 创建 Node.js 应用程序
 
-有关创建 Node.js 应用程序的说明，请参阅[在 Azure App Service 中创建 Node.js Web 应用]，使用 Windows PowerShell [生成 Node.js 应用程序并将其部署到 Azure 云服务]，或[使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]。
+有关创建 Node.js 应用程序的说明，请参阅[在 Azure App Service 中创建 Node.js Web 应用]、、[使用 Windows PowerShell 生成 Node.js 应用程序并将其部署到 Azure 云服务]或[使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]。
 
 ## 配置应用程序以访问存储
 
@@ -397,18 +397,19 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
 -   [Azure 存储团队博客][]
 -   GitHub 上的 [Azure Storage SDK for Node][] 存储库
 -   [Node.js 开发人员中心](/develop/nodejs/)
--   [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
+-   [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy/)
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
 
-[在 Azure App Service 中创建 Node.js Web 应用]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
-[Node.js Cloud Service with Storage]: /documentation/articles/storage-nodejs-use-table-storage-cloud-service-app
-[使用 Azure 表服务的 Node.js Web 应用]: /documentation/articles/storage-nodejs-use-table-storage-web-site
-[使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]: /documentation/articles/web-sites-nodejs-use-webmatrix
+[在 Azure App Service 中创建 Node.js Web 应用]: /documentation/articles/web-sites-nodejs-develop-deploy-mac/
+[Node.js Cloud Service with Storage]: /documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
+[使用 Azure 表服务的 Node.js Web 应用]: /documentation/articles/storage-nodejs-use-table-storage-web-site/
+[使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]: /documentation/articles/web-sites-nodejs-use-webmatrix/
 [Using the REST API]: http://msdn.microsoft.com/zh-cn/library/azure/hh264518.aspx
 [Azure Portal]: https://portal.azure.cn
-[生成 Node.js 应用程序并将其部署到 Azure 云服务]: /documentation/articles/cloud-services-nodejs-develop-deploy-app
+[使用 Windows PowerShell 生成 Node.js 应用程序并将其部署到 Azure 云服务]: /documentation/articles/cloud-services-nodejs-develop-deploy-app/
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Node API 参考]: http://azure.github.io/azure-storage-node/
  
-<!---HONumber=Mooncake_0606_2016-->
+
+<!---HONumber=Mooncake_0725_2016-->

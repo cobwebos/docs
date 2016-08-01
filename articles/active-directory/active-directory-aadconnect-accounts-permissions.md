@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"  
-   ms.date="05/19/2016"
+   ms.date="06/27/2016"
    wacn.date=""/>
 
 
@@ -24,11 +24,11 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 ## 相关文档
 如果你尚未阅读有关[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)的文档，下表提供了相关主题的链接。
 
-| 主题 | |
-| --------- | --------- |
-| 使用快速设置安装 | [Azure AD Connect 的快速安装](/documentation/articles/active-directory-aadconnect-get-started-express) |
-| 使用自定义设置安装 | [Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom) |
-| 从 DirSync 升级 | [从 Azure AD 同步工具 (DirSync) 升级](/documentation/articles/active-directory-aadconnect-dirsync-upgrade-get-started) |
+主题 |  
+--------- | ---------
+使用快速设置安装 | [Azure AD Connect 的快速安装](/documentation/articles/active-directory-aadconnect-get-started-express/)
+使用自定义设置安装 | [Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom/)
+从 DirSync 升级 | [从 Azure AD 同步工具 (DirSync) 升级](/documentation/articles/active-directory-aadconnect-dirsync-upgrade-get-started/)
 
 
 ## 快速设置安装
@@ -59,7 +59,7 @@ Azure AD Connect 安装向导提供提供两种不同的路径：
 重置密码 | 准备启用密码写回
 
 ## 自定义设置安装
-使用自定义设置时，必须在安装之前创建用于连接 Active Directory 的帐户。你必须授予此帐户的权限可在[创建 AD DS 帐户](#create-the-ad-ds-account)中找到。
+使用自定义设置时，必须在安装之前创建用于连接 Active Directory 的帐户。授予此帐户的权限可在[创建 AD DS 帐户](#create-the-ad-ds-account)中找到。
 
 向导页 | 收集的凭据 | 所需的权限| 用途
 ------------- | ------------- |------------- |-------------
@@ -128,6 +128,6 @@ Exchange 混合部署 | [Exchange 混合写回](active-directory-aadconnectsync-
 
 ## 后续步骤
 
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0725_2016-->

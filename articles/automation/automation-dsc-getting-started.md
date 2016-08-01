@@ -17,7 +17,7 @@
 
 # Azure 自动化 DSC 入门
 
-本主题说明如何使用 Azure 自动化所需状态配置 (DSC) 执行最常见的任务，例如创建、导入和编译配置，登记要管理的计算机，以及查看报告。若要大致了解什么是 Azure 自动化 DSC，请参阅 [Azure 自动化 DSC 概述](/documentation/articles/automation-dsc-overview/)。如需 DSC 文档，请参阅 [Windows PowerShell Desired State Configuration 概述]（Windows PowerShell Desired State Configuration 概述）。
+本主题说明如何使用 Azure 自动化所需状态配置 (DSC) 执行最常见的任务，例如创建、导入和编译配置，登记要管理的计算机，以及查看报告。若要大致了解什么是 Azure 自动化 DSC，请参阅 [Azure 自动化 DSC 概述](/documentation/articles/automation-dsc-overview/)。如需 DSC 文档，请参阅 [Windows PowerShell Desired State Configuration 概述](Windows PowerShell Desired State Configuration 概述)。
 
 本主题分步介绍了如何使用 Azure 自动化 DSC。如果你需要一个已经设置好的示例环境，而不想按照本主题所述步骤进行操作，则可使用 https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup 中提供的 ARM 模板。此模板设置了一个完整的 Azure 自动化 DSC 环境，包括一个由 Azure 自动化 DSC 管理的 Azure VM。
  
@@ -82,7 +82,7 @@
     ![“导入配置”边栏选项卡的屏幕快照](./media/automation-dsc-getting-started/AddConfig.png)
     
 
-6. 单击“确定”。
+6. 单击**“确定”**。
 
 ## 查看 Azure 自动化中的配置
 
@@ -94,7 +94,7 @@
 
 3. 在“自动化帐户”边栏选项卡中，单击“DSC 配置”
 
-4. 在“DSC 配置”边栏选项卡中，单击“TestConfig”（这是你在前一过程中导入的配置的名称）。
+4. 在“DSC 配置”边栏选项卡中，单击“TestConfig”（这是你在前一过程中导入的配置的名称）。**
 
 5. 在“TestConfig 配置”边栏选项卡中，单击“查看配置源”。
 
@@ -112,7 +112,7 @@
 
 3. 在“自动化帐户”边栏选项卡中，单击“DSC 配置”
 
-4. 在“DSC 配置”边栏选项卡中，单击“TestConfig”（以前导入的配置的名称）。
+4. 在“DSC 配置”边栏选项卡中，单击“TestConfig”（以前导入的配置的名称）。**
 
 5. 在“TestConfig 配置”边栏选项卡中，单击“编译”，然后单击“是”。此时会启动编译作业。
     
@@ -130,7 +130,7 @@
 
 3. 在“自动化帐户”边栏选项卡中，单击“DSC 配置”。
 
-4. 在“DSC 配置”边栏选项卡中，单击“TestConfig”（以前导入的配置的名称）。
+4. 在“DSC 配置”边栏选项卡中，单击“TestConfig”（以前导入的配置的名称）。**
 
 5. 在“TestConfig 配置”边栏选项卡的“编译作业”磁贴上，单击列出的任何作业。此时会打开“编译作业”边栏选项卡，其中标记了启动编译作业的日期。
 
@@ -217,7 +217,7 @@ Azure 将启动登记 VM 的过程。完成后，VM 会显示在“DSC 节点”
 - 在配置中使用的任何 DSC 资源，以及每个资源的状态（节点是否处于该资源的所需状态）- 你可以单击每个资源以获取该资源的更多详细信息。
 - 节点的名称、IP 地址和配置模式。
 
-你还可以通过单击“查看原始报告”来查看节点发送到服务器的实际数据。有关如何使用该数据的详细信息，请参阅[使用 DSC 报表服务器](https://msdn.microsoft.com/powershell/dsc/reportserver)。
+你还可以通过单击“查看原始报告”来查看节点发送到服务器的实际数据。有关如何使用该数据的详细信息，请参阅[使用 DSC 报告服务器](https://msdn.microsoft.com/powershell/dsc/reportserver)。
 
 在登记节点以后，可能需要一段时间才会提供第一个报告。在登记节点以后，可能需要等待长达 30 分钟的时间才能获得第一个报告。
 
@@ -231,7 +231,7 @@ Azure 将启动登记 VM 的过程。完成后，VM 会显示在“DSC 节点”
 
 3. 在“自动化帐户”边栏选项卡中，单击“DSC 节点”。
 
-4. 在“DSC 节点”边栏选项卡中，单击要重新分配配置的节点的名称。
+4. 在“DSC 节点”边栏选项卡中，单击要重新分配的节点的名称。
 
 5. 在该节点的边栏选项卡中，单击“分配节点”。
 
@@ -251,7 +251,7 @@ Azure 将启动登记 VM 的过程。完成后，VM 会显示在“DSC 节点”
 
 3. 在“自动化帐户”边栏选项卡中，单击“DSC 节点”。
 
-4. 在“DSC 节点”边栏选项卡中，单击要重新分配配置的节点的名称。
+4. 在“DSC 节点”边栏选项卡中，单击要重新分配的节点的名称。
 
 5. 在该节点的边栏选项卡中，单击“注销”。
 
@@ -261,7 +261,7 @@ Azure 将启动登记 VM 的过程。完成后，VM 会显示在“DSC 节点”
 * [Azure Automation DSC overview（Azure 自动化 DSC 概述）](/documentation/articles/automation-dsc-overview/)
 * [Onboarding machines for management by Azure Automation DSC（登记由 Azure Automation DSC 管理的计算机）](/documentation/articles/automation-dsc-onboarding/)
 * [Windows PowerShell Desired State Configuration Overview（Windows PowerShell Desired State Configuration 概述）](https://msdn.microsoft.com/powershell/dsc/overview)
-* [Azure Automation DSC cmdlet](https://msdn.microsoft.com/zh-cn/library/mt244122.aspx)
-* [Azure 自动化 DSC 定价](/home/features/automation/pricing/)
+* [Azure 自动化 DSC cmdlet](https://msdn.microsoft.com/zh-cn/library/mt244122.aspx)
+* [Azure 自动化 DSC 定价](/pricing/details/automation/)
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0725_2016-->

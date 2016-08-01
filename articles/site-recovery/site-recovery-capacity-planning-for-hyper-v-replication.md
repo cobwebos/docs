@@ -8,7 +8,7 @@
 	editor="tysonn"/>
 <tags
 	ms.service="site-recovery"
-	ms.date="02/15/2016"
+	ms.date="07/12/2016"
 	wacn.date=""/>
 
 # 为站点恢复运行 Hyper-V Capacity Planner 工具
@@ -16,7 +16,7 @@
 作为 Azure Site Recovery 部署的一部分，你需要确定复制和带宽要求。站点恢复的 Hyper-V Capacity Planner 工具可帮助你确定 Hyper-V 虚拟机复制的复制要求和带宽要求。
 
 
-本文介绍如何运行 Hyper-V Capacity Planner 工具。此工具应与[站点恢复容量计划](/documentation/articles/site-recovery-capacity-planner)中所述的其他容量计划工具和信息一起使用。
+本文介绍如何运行 Hyper-V Capacity Planner 工具。此工具应与 [Site Recovery 容量规划](/documentation/articles/site-recovery-capacity-planner/)中所述的其他容量规划工具和信息一起使用。
 
 
 ## 开始之前
@@ -71,7 +71,7 @@
 
 	![](./media/site-recovery-capacity-planning-for-hyper-v-replication/image1.png)
 
-	- 运行 **netsh http show servicestate** 检查是否针对指定的协议/端口运行了侦听器：  
+	- 运行 **netsh http show servicestate** 检查是否针对指定的协议/端口运行了侦听器：
 4. 设置防火墙。在 Hyper-V 安装期间创建防火墙规则，以允许默认端口上的流量（443 上的 HTTPS 流量，80 上的 Kerberos 流量）。按如下所示启用这些规则：
 
 		- Certificate authentication on cluster (443): **Get-ClusterNode | ForEach-Object {Invoke-command -computername \$\_.name -scriptblock {Enable-Netfirewallrule -displayname "Hyper-V Replica HTTPS Listener (TCP-In)"}}**
@@ -127,7 +127,7 @@
 
 - 有关该工具的详细信息，请阅读随工具下载的文档。
 - 观看 Keith Mayer 的 [TechNet 博客](http://blogs.technet.com/b/keithmayer/archive/2014/02/27/guided-hands-on-lab-capacity-planner-for-windows-server-2012-hyper-v-replica.aspx)中的工具演练。
-- 获取本地到本地 Hyper-V 复制的性能测试[结果](/documentation/articles/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises)
+- 获取本地到本地 Hyper-V 复制的性能测试[结果](/documentation/articles/site-recovery-performance-and-scaling-testing-on-premises-to-on-premises/)
 
 
 
@@ -135,10 +135,10 @@
 
 你已完成容量计划，可以开始部署站点恢复了：
 
-- [设置本地 VMM 站点与 Azure 之间的保护](/documentation/articles/site-recovery-vmm-to-azure)
-- [在本地 Hyper-V 站点与 Azure 之间设置保护](/documentation/articles/site-recovery-hyper-v-site-to-azure)
-- [设置两个本地 VMM 站点之间的保护](/documentation/articles/site-recovery-vmm-to-vmm)
-- [使用 SAN 在两个本地 VMM 站点之间设置保护](/documentation/articles/site-recovery-vmm-san)
-- [使用单个 VMM 服务器设置保护](/documentation/articles/site-recovery-single-vmm)
+- [将 VMM 云中的 Hyper-V VM 复制到 Azure](/documentation/articles/site-recovery-vmm-to-azure/)
+- [将 Hyper-V VM（不带 VMM）复制到 Azure](/documentation/articles/site-recovery-hyper-v-site-to-azure/)
+- [在 VMM 站点之间复制 Hyper-V VM](/documentation/articles/site-recovery-vmm-to-vmm/)
+- [使用 SAN 在 VMM 站点之间复制 Hyper-V VM](/documentation/articles/site-recovery-vmm-san/)
+- [在单个 VMM 服务器上复制 hyper-V VM](/documentation/articles/site-recovery-single-vmm/)
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0725_2016-->

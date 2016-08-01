@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="03/21/2016"
+	ms.date="07/14/2016"
 	wacn.date=""/>
 
 
@@ -31,7 +31,7 @@
 
 **问：在单个服务器上安装 Azure AD Connect Health 代理有何影响？**
 
-在 ADFS 服务器上安装 Microsoft Identity Health 代理对 CPU、内存消耗、网络带宽和存储的影响很小。
+在 ADFS 服务器或域控制器上安装 Microsoft Identity Health 代理对 CPU、内存消耗、网络带宽和存储空间的影响很小。
 
 下面的数字为近似值。
 
@@ -69,6 +69,13 @@
 否。目前不支持指定任意用户名/密码进行基本身份验证这种机制。
 
 
+**问：用于 AD DS 的 Azure AD Connect Health 支持哪个版本的 AD DS？**
+
+在以下 OS 版本上安装后支持 AD DS 监视：
+
+- Windows Server 2008 R2
+- Windows Server 2012
+- Windows Server 2012 R2
 
 ## 操作问题
 
@@ -82,7 +89,7 @@
 
 **问：如何解除 Azure AD Connect Health 警报？**
 
-在成功的情况下，将解除 Azure AD Connect Health 警报。Azure AD Connect Health 代理将定期检测并向服务报告成功的情况。某些警报的解除取决于时间。也就是说，如果在警报生成后的 48 小时内未观察到相同的错误条件，则警报会自动解除。
+在成功的情况下，将解除 Azure AD Connect Health 警报。Azure AD Connect Health 代理将定期检测并向服务报告成功的情况。某些警报的解除取决于时间。也就是说，如果在警报生成后的 72 小时内未观察到相同的错误条件，则警报会自动解除。
 
 
 
@@ -94,16 +101,16 @@
 
 **问：Azure AD Connect Health 门户中为何有两个同名的服务器？**
 
-当你从某个服务器中删除代理时，该服务器不会自动从 Azure AD Connect 门户中删除。因此，如果你手动从服务器中删除代理或删除服务器本身，需要从 Azure AD Connect Health 门户中手动删除该服务器条目。有关详细信息，请参阅[删除服务器或服务实例](/documentation/articles/active-directory-aadconnect-health-operations#delete-a-server-or-service-instance)。
+当你从某个服务器中删除代理时，该服务器不会自动从 Azure AD Connect 门户中删除。因此，如果你手动从服务器中删除代理或删除服务器本身，需要从 Azure AD Connect Health 门户中手动删除该服务器条目。有关详细信息，请参阅[删除服务器或服务实例。](/documentation/articles/active-directory-aadconnect-health-operations/#delete-a-server-or-service-instance)
 此外，如果你重建了服务器的映像或者创建了具有相同详细信息（如计算机名称）的新服务器，但没有从 Azure AD Connect Health 门户中删除原有服务器，而是在新服务器上安装了代理，则你现在将看到两个服务器条目。在这种情况下，你应手动删除属于原有服务器的条目。此条目中的数据通常已过时。
 
 ## 相关链接
 
-* [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health)
-* [Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install)
-* [Azure AD Connect Health 操作](/documentation/articles/active-directory-aadconnect-health-operations)
-* [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs)
-* [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync)
-* [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history)
+* [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health/)
+* [Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install/)
+* [Azure AD Connect Health 操作](/documentation/articles/active-directory-aadconnect-health-operations/)
+* [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs/)
+* [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync/)
+* [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history/)
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0725_2016-->

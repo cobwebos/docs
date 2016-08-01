@@ -2,23 +2,23 @@
 	pageTitle="通过 Azure 通知中心发送安全推送通知"
 	description="了解如何从 Azure 将安全推送通知发送到 Android 应用。用 Java 和 C# 编写的代码示例。"
 	documentationCenter="android"
-    keywords="推送通知、推送通知、推送消息、android 推送通知"
+        keywords="推送通知、推送通知、推送消息、android 推送通知"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="notification-hubs"/>
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="02/15/2016" 
+	ms.date="06/29/2016" 
 	wacn.date=""/>
 
 #通过 Azure 通知中心发送安全推送通知
 
 > [AZURE.SELECTOR]
-- [Windows Universal](/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification)
-- [iOS](/documentation/articles/notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification)
-- [Android](/documentation/articles/notification-hubs-aspnet-backend-android-secure-push)
+- [Windows Universal](/documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification/)
+- [iOS](/documentation/articles/notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification/)
+- [Android](/documentation/articles/notification-hubs-aspnet-backend-android-secure-push/)
 
 ##概述
 
@@ -39,9 +39,9 @@ Microsoft Azure 中的推送通知支持使你能够访问易于使用且可扩�
 
 请务必注意，在之前的流程（以及本教程中）中，我们假设此设备会在用户登录后在本地存储中存储身份验证令牌。这可以保证完全无缝的体验，因为该设备可以使用此令牌检索通知的安全有效负载。如果你的应用程序未在设备上存储身份验证令牌，或者如果这些令牌可能已过期，那么此设备应用程序在收到推送通知时应显示提示用户启动此应用程序的一般性通知。然后，应用对用户进行身份验证并显示通知有效负载。
 
-本教程介绍如何发送安全推送通知。本教程以[通知用户](/documentation/articles/notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification)教程为基础，因此你应该先完成“通知用户”教程中的步骤，如果你还没有完成的话。
+本教程介绍如何发送安全推送通知。本教程以[通知用户](/documentation/articles/notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification/)教程为基础，因此你应该先完成“通知用户”教程中的步骤（若未完成）。
 
-> [AZURE.NOTE] 本教程假设你已按照[通知中心入门 (Android)](/documentation/articles/notification-hubs-android-push-notification-google-gcm-get-started) 中所述创建并配置了通知中心。
+> [AZURE.NOTE] 本教程假设你已按照[通知中心入门 (Android)](/documentation/articles/notification-hubs-android-push-notification-google-gcm-get-started/) 中所述创建并配置了通知中心。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../includes/notification-hubs-aspnet-backend-securepush.md)]
 
@@ -130,4 +130,4 @@ Microsoft Azure 中的推送通知支持使你能够访问易于使用且可扩�
 
 4. 在 Android 应用 UI 中，单击“登录”。然后单击“发送推送”。
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0725_2016-->

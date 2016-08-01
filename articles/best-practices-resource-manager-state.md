@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="azure-resource-manager"
-	ms.date="04/06/2016"
+	ms.date="07/12/2016"
 	wacn.date=""/>
 
 # 在 Azure 资源管理器模板中共享状态
@@ -419,8 +419,7 @@ enableJumpbox | 约束列表中的字符串 (enabled/disabled) | 一个参数，
 
 
 ## 后续步骤
-- 若要了解模板的节，请参阅 [Authoring Azure Resource Manager Templates](/documentation/articles/resource-group-authoring-templates)（创作 Azure Resource Manager 模板）。
-- 若要查看模板中可用的函数，请参阅 [Azure Resource Manager Template Functions](/documentation/articles/resource-group-template-functions)（Azure Resource Manager 模板函数）。
+- 若要了解模板的章节，请参阅[创作 Azure Resource Manager 模板](/documentation/articles/resource-group-authoring-templates/)
+- 若要查看模板中可用的函数，请参阅 [Azure Resource Manager 模板函数](/documentation/articles/resource-group-template-functions/)
 
-
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0725_2016-->

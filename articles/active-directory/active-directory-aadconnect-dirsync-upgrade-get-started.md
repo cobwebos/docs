@@ -9,7 +9,7 @@
 
 <tags 
    ms.service="active-directory" 
-   ms.date="05/31/2016"
+   ms.date="06/27/2016"
    wacn.date=""/>
 
 
@@ -80,13 +80,13 @@ Azure AD Connect 是 DirSync 的后继产品。你将在本主题中了解可从
 ![欢迎使用 Azure](./media/active-directory-aadconnect-dirsync-upgrade-get-started/Welcome.png)
 3. 单击“下一步”开始分析现有的 DirSync 安装。
 ![分析现有的目录同步安装](./media/active-directory-aadconnect-dirsync-upgrade-get-started/Analyze.png)
-4. 分析完成时，你将看到如何继续的建议。
+4. 分析完成时，你将看到如何继续的建议。  
     - 如果使用 SQL Server Express 并且对象数少于 50,000 个，则会显示以下屏幕：
 ![分析完成，已准备好从 DirSync 升级](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReady.png)
-    - 如果为 DirSync 使用了完整的 SQL Server，将看到此页面：
+    - 如果为 DirSync 使用了完整的 SQL Server，将看到此页面：  
 ![分析完成，已准备好从 DirSync 升级](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
 系统会显示有关 DirSync 使用的现有 SQL Server 数据库服务器的信息。如果需要，请做相应的调整。单击“下一步”继续安装。
-    - 如果对象数超过 50,000 个，你将看到此屏幕：
+    - 如果对象数超过 50,000 个，你将看到此屏幕：  
 ![分析完成，已准备好从 DirSync 升级](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
 若要继续进行就地升级，请单击此消息旁的复选框：“继续在此计算机上升级 DirSync”。
 若要改为执行[并行部署](#parallel-deployment)，请导出 DirSync 配置设置并将其转移到新服务器。
@@ -147,7 +147,7 @@ Azure AD Connect 是 DirSync 的后继产品。你将在本主题中了解可从
     - Azure AD Connect 的自定义安装位置。
 	- 现有 SQL Server 实例（默认值：Azure AD Connect 将安装 SQL Server 2012 Express）。请不要使用与 DirSync 服务器相同的数据库实例。
 	- 用于连接 SQL Server 的服务帐户（如果你的 SQL Server 数据库位于远程，则此帐户必须是域服务帐户）。
-可以在此屏幕上看到以下选项：
+可以在此屏幕上看到以下选项：  
 ![输入你的 Azure AD 凭据](./media/active-directory-aadconnect-dirsync-upgrade-get-started/advancedsettings.png)
 7. 单击**“下一步”**。
 8. 在“已准备好配置”页上，保留选中“配置完成后立即开始同步过程”。服务器将进入[过渡模式](/documentation/articles/active-directory-aadconnectsync-operations#staging-mode)，因此暂时不会将更改导出到 Azure AD。
@@ -203,6 +203,18 @@ Azure AD Connect 现为你的活动服务器。
 ## 后续步骤
 安装 Azure AD Connect 后，可以[验证安装并分配许可证](/documentation/articles/active-directory-aadconnect-whats-next)。
 
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+有关这些新功能（在安装过程中已启用）的详细信息，请参阅[自动升级](/documentation/articles/active-directory-aadconnect-feature-automatic-upgrade/)，[防止意外删除](/documentation/articles/active-directory-aadconnectsync-feature-prevent-accidental-deletes/)。
 
-<!---HONumber=Mooncake_0711_2016-->
+了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](/documentation/articles/active-directory-aadconnectsync-feature-scheduler/)。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
+## 相关文档
+
+主题 |  
+--------- | ---------
+Azure AD Connect 概述 | [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
+从先前的 Connect 版本升级 | [从先前的 Connect 版本升级](/documentation/articles/active-directory-aadconnect-upgrade-previous-version/)
+使用快速设置安装 | [Azure AD Connect 的快速安装](/documentation/articles/active-directory-aadconnect-get-started-express/)
+使用自定义设置安装 | [Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom/)
+用于安装的帐户 | [有关 Azure AD Connect 帐户和权限的详细信息](/documentation/articles/active-directory-aadconnect-accounts-permissions/)
+
+<!---HONumber=Mooncake_0725_2016-->

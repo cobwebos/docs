@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="05/04/2016" 
+	ms.date="06/24/2016" 
 	wacn.date=""/>
 
 
@@ -27,7 +27,7 @@
 
 ## 创建 Ruby 应用程序
 
-创建 Ruby 应用程序。有关说明，请参阅 [Azure VM 上的 Ruby on Rails Web 应用程序](/documentation/articles/virtual-machines-linux-classic-ruby-rails-web-app)。
+创建 Ruby 应用程序。有关说明，请参阅 [Azure VM 上的 Ruby on Rails Web 应用程序](/documentation/articles/virtual-machines-linux-classic-ruby-rails-web-app/)。
 
 ## 配置应用程序以访问存储
 
@@ -53,20 +53,20 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 	Azure.config.storage_access_key = "<your Azure storage access key>"
 
  
-从 Azure 门户中的经典或 ARM 存储帐户中获取这些值：
+从 Azure 门户中的经典或 Resource Manager 存储帐户中获取这些值：
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 2. 导航到要使用的存储帐户。
 3. 在右侧的“设置”边栏选项卡中，单击“访问密钥”。
-4. 在出现的“访问密钥”边栏选项卡中，将看到访问密钥 1 和访问密钥 2。你可以使用其中任意一个。 
-5. 单击复制图标以将键复制到剪贴板。 
+4. 在出现的“访问密钥”边栏选项卡中，将看到访问密钥 1 和访问密钥 2。你可以使用其中任意一个。
+5. 单击复制图标以将键复制到剪贴板。
 
-从经典门户中的经典存储帐户中获取这些值：
+从经典 Azure 门户中的经典存储帐户中获取这些值：
 
 1. 登录到[经典门户](https://manage.windowsazure.cn/)。
 2. 导航到要使用的存储帐户。
 3. 单击导航窗格底部的“管理访问密钥”。
-4. 在弹出对话框中，将会看到存储帐户名称、主访问密钥和辅助访问密钥。对于访问密钥，您可以使用主访问密钥，也可以使用辅助访问密钥。 
+4. 在弹出对话框中，将会看到存储帐户名称、主访问密钥和辅助访问密钥。对于访问密钥，您可以使用主访问密钥，也可以使用辅助访问密钥。
 5. 单击复制图标以将键复制到剪贴板。
 
 ## 如何：创建队列
@@ -155,7 +155,7 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 - 访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 - 访问 GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 
-有关本文中讨论的 Azure 队列服务与[如何使用服务总线队列](/documentation/articles/service-bus-ruby-how-to-use-queues)一文中讨论的 Azure 服务总线队列的比较，请参阅 [Azure 队列和服务总线队列 - 比较与对照](/documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted)
+有关本文中讨论的 Azure 队列服务与[如何使用服务总线队列](/documentation/articles/service-bus-ruby-how-to-use-queues/)一文中讨论的 Azure 服务总线队列的比较，请参阅 [Azure 队列和服务总线队列 - 比较与对照](/documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted/)
  
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0725_2016-->

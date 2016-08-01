@@ -12,7 +12,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="06/09/2016"
+	ms.date="07/06/2016"
 	wacn.date=""/>
 
 
@@ -32,20 +32,13 @@
 ##先决条件
 
 * Azure 订阅。请参阅[获取 Azure 试用版](/pricing/1rmb-trial/)。
-* HDInsight Linux 上的 Apache Spark 群集。有关说明，请参阅 [Create Apache Spark clusters in Azure HDInsight](/documentation/articles/hdinsight-apache-spark-jupyter-spark-sql)（在 Azure HDInsight 中创建 Apache Spark 群集）。
+* HDInsight Linux 上的 Apache Spark 群集。有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](/documentation/articles/hdinsight-apache-spark-jupyter-spark-sql/)。
 * Oracle Java 开发工具包。可以从[此处](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)安装它。
 * IntelliJ IDEA。本文使用版本 15.0.1。可以从[此处](https://www.jetbrains.com/idea/download/)安装它。
 
 ## 安装适用于 IntelliJ IDEA 的 HDInsight 工具插件
 
-1. 如果你位于 IntelliJ IDEA 欢迎屏幕，请单击“配置”，然后单击“插件”。
-
-2. 在下一屏幕中，单击左下角的“浏览存储库”。在打开的“浏览存储库”对话框中，搜索“HDInsight”，选择“IntelliJ 的 Azure HDInsight 工具”，然后单击“安装”。该插件依赖于 Scala 插件，因此，如果未安装 Scala 插件，系统还会提示你安装 Scala 插件。
-
-	![安装 HDInsight 插件](./media/hdinsight-apache-spark-intellij-tool-plugin/install-hdinsight-plugin.png)
-
-3. 出现提示时，请单击“重新启动 IntelliJ IDEA”按钮以重新启动 IDE。
-
+IntelliJ IDEA 的 HDInsight 工具插件作为 Azure Toolkit for IntelliJ 的一部分提供。有关 Azure Toolkit 安装方式的说明，请参阅[安装 Azure Toolkit for IntelliJ](/documentation/articles/azure-toolkit-for-intellij-installation/)。
 
 ## 在 HDInsight Spark 群集中运行 Spark Scala 应用程序
 
@@ -121,7 +114,7 @@
 
 		![提交 Spark 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
 
-	2. 系统将提示你输入 Azure 订阅凭据。在“Spark 提交”对话框框中，提供以下值。
+	2. 系统将提示你输入 Azure 订阅凭据。在“Spark 提交”对话框中，提供以下值。
 
 		* 对于“Spark 群集(仅限 Linux)”，选择要在其上运行应用程序的 HDInsight Spark 群集。
 
@@ -160,7 +153,7 @@
 
 	![访问群集存储](./media/hdinsight-apache-spark-intellij-tool-plugin/hdi-spark-access-storage.png)
 
-4. 单击与群集关联的存储容器名称。在右窗格中，应看到名为 **HVACOut** 的文件夹。双击以打开该文件夹，你将看到 **part-*** 文件。打开其中一个文件可查看应用程序的输出。
+4. 单击与群集关联的存储容器名称。在右窗格中，应看到名为 **HVACOut** 的文件夹。双击打开该文件夹，你将看到 **part-*** 文件。打开其中一个文件可查看应用程序的输出。
 
 ### 直接在插件中访问作业视图
 
@@ -281,42 +274,44 @@
 ## <a name="seealso"></a>另请参阅
 
 
-* [概述：Azure HDInsight 上的 Apache Spark](/documentation/articles/hdinsight-apache-spark-overview)
+* [概述：Azure HDInsight 上的 Apache Spark](/documentation/articles/hdinsight-apache-spark-overview/)
 
 ### 方案
 
-* [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](/documentation/articles/hdinsight-apache-spark-use-bi-tools)
+* [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](/documentation/articles/hdinsight-apache-spark-use-bi-tools/)
 
-* [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](/documentation/articles/hdinsight-apache-spark-ipython-notebook-machine-learning)
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](/documentation/articles/hdinsight-apache-spark-ipython-notebook-machine-learning/)
 
-* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](/documentation/articles/hdinsight-apache-spark-machine-learning-mllib-ipython)
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](/documentation/articles/hdinsight-apache-spark-machine-learning-mllib-ipython/)
 
-* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-eventhub-streaming)
+* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-eventhub-streaming/)
 
-* [使用 HDInsight 中的 Spark 分析网站日志](/documentation/articles/hdinsight-apache-spark-custom-library-website-log-analysis)
+* [使用 HDInsight 中的 Spark 分析网站日志](/documentation/articles/hdinsight-apache-spark-custom-library-website-log-analysis/)
 
 ### 创建和运行应用程序
 
-* [使用 Scala 创建独立的应用程序](/documentation/articles/hdinsight-apache-spark-create-standalone-application)
+* [使用 Scala 创建独立的应用程序](/documentation/articles/hdinsight-apache-spark-create-standalone-application/)
 
-* [使用 Livy 在 Spark 群集中远程运行作业](/documentation/articles/hdinsight-apache-spark-livy-rest-interface)
+* [使用 Livy 在 Spark 群集中远程运行作业](/documentation/articles/hdinsight-apache-spark-livy-rest-interface/)
 
 ### 工具和扩展
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely)（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/)
 
-* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](/documentation/articles/hdinsight-apache-spark-use-zeppelin-notebook)
+* [使用 Eclipse 的 HDInsight 工具插件创建 Spark 应用程序](/documentation/articles/hdinsight-apache-spark-eclipse-tool-plugin/)
 
-* [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels)
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](/documentation/articles/hdinsight-apache-spark-use-zeppelin-notebook/)
 
-* [Use external packages with Jupyter notebooks](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-use-external-packages)（将外部包与 Jupyter 笔记本配合使用）
+* [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels/)
 
-* [Install Jupyter on your computer and connect to an HDInsight Spark cluster](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-install-locally)（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）
+* [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-use-external-packages/)
+
+* [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-install-locally/)
 
 ### 管理资源
 
-* [管理 Azure HDInsight 中 Apache Spark 群集的资源](/documentation/articles/hdinsight-apache-spark-resource-manager)
+* [管理 Azure HDInsight 中 Apache Spark 群集的资源](/documentation/articles/hdinsight-apache-spark-resource-manager/)
 
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight](/documentation/articles/hdinsight-apache-spark-job-debugging)（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](/documentation/articles/hdinsight-apache-spark-job-debugging/)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0725_2016-->

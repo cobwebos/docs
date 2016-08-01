@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="multiple"
-	ms.date="06/07/2016" 
+	ms.date="06/24/2016" 
 	wacn.date=""/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh694271.aspx -->
@@ -61,31 +61,34 @@
 - [Azure Toolkit for IntelliJ]
   - [安装 Azure Toolkit for IntelliJ]
   - [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
+  - [Azure Toolkit for IntelliJ 中的新增功能]
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]。
 
 <!-- URL List -->
 
-[Azure Toolkit for IntelliJ]: /documentation/articles/azure-toolkit-for-intellij
-[在 Eclipse 中创建 Azure 的 Hello World Web 应用]: /documentation/articles/app-service-web-eclipse-create-hello-world-web-app
-[在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: /documentation/articles/app-service-web-intellij-create-hello-world-web-app
-[安装 Azure Toolkit for Eclipse]: /documentation/articles/azure-toolkit-for-eclipse-installation
-[安装 Azure Toolkit for IntelliJ]: /documentation/articles/azure-toolkit-for-intellij-installation
-[Azure Toolkit for Eclipse 的新增功能]: /documentation/articles/azure-toolkit-for-eclipse-whats-new
+[Azure Toolkit for Eclipse]: /documentation/articles/azure-toolkit-for-eclipse/
+[Azure Toolkit for IntelliJ]: /documentation/articles/azure-toolkit-for-intellij/
+[在 Eclipse 中创建 Azure 的 Hello World Web 应用]: /documentation/articles/app-service-web-eclipse-create-hello-world-web-app/
+[在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: /documentation/articles/app-service-web-intellij-create-hello-world-web-app/
+[安装 Azure Toolkit for Eclipse]: /documentation/articles/azure-toolkit-for-eclipse-installation/
+[安装 Azure Toolkit for IntelliJ]: /documentation/articles/azure-toolkit-for-intellij-installation/
+[Azure Toolkit for Eclipse 的新增功能]: /documentation/articles/azure-toolkit-for-eclipse-whats-new/
+[Azure Toolkit for IntelliJ 中的新增功能]: /documentation/articles/azure-toolkit-for-intellij-whats-new/
 
 [Azure Java 开发人员中心]: /develop/java/
 
-[Azure 项目属性]: /documentation/articles/azure-toolkit-for-eclipse-azure-project-properties
-[Azure 角色属性]: /documentation/articles/azure-toolkit-for-eclipse-azure-role-properties
-[Azure 服务终结点]: /documentation/articles/azure-toolkit-for-eclipse-azure-service-endpoints
-[Azure 存储帐户列表]: /documentation/articles/azure-toolkit-for-eclipse-azure-storage-account-list
-[在 Eclipse 中创建 Azure 的 Hello World 云服务]: /documentation/articles/azure-toolkit-for-eclipse-creating-a-hello-world-application
-[在 Eclipse 中调试 Azure 应用程序]: /documentation/articles/azure-toolkit-for-eclipse-debugging-azure-applications
-[实施大型部署]: /documentation/articles/azure-toolkit-for-eclipse-deploying-large-deployments
-[在 Eclipse 中显示 Package for Azure Libraries for Java 的 Javadoc 内容]: /documentation/articles/azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries
-[在 Eclipse 中为 Azure 部署启用远程访问]: /documentation/articles/azure-toolkit-for-eclipse-enabling-remote-access-for-azure-deployments
-[How to Authenticate Web Users with Azure Access Control Service Using Eclipse]: /documentation/articles/active-directory-java-authenticate-users-access-control-eclipse
-[启用会话相关性]: /documentation/articles/azure-toolkit-for-eclipse-enable-session-affinity
+[Azure 项目属性]: /documentation/articles/azure-toolkit-for-eclipse-azure-project-properties/
+[Azure 角色属性]: /documentation/articles/azure-toolkit-for-eclipse-azure-role-properties/
+[Azure 服务终结点]: /documentation/articles/azure-toolkit-for-eclipse-azure-service-endpoints/
+[Azure 存储帐户列表]: /documentation/articles/azure-toolkit-for-eclipse-azure-storage-account-list/
+[在 Eclipse 中创建 Azure 的 Hello World 云服务]: /documentation/articles/azure-toolkit-for-eclipse-creating-a-hello-world-application/
+[在 Eclipse 中调试 Azure 应用程序]: /documentation/articles/azure-toolkit-for-eclipse-debugging-azure-applications/
+[实施大型部署]: /documentation/articles/azure-toolkit-for-eclipse-deploying-large-deployments/
+[在 Eclipse 中显示 Package for Azure Libraries for Java 的 Javadoc 内容]: /documentation/articles/azure-toolkit-for-eclipse-displaying-javadoc-content-for-azure-libraries/
+[在 Eclipse 中为 Azure 部署启用远程访问]: /documentation/articles/azure-toolkit-for-eclipse-enabling-remote-access-for-azure-deployments/
+[How to Authenticate Web Users with Azure Access Control Service Using Eclipse]: /documentation/articles/active-directory-java-authenticate-users-access-control-eclipse/
+[启用会话相关性]: /documentation/articles/azure-toolkit-for-eclipse-enable-session-affinity/
 
 <!-- [How to Maintain Session Data with Session Affinity]: http://go.microsoft.com/fwlink/?LinkID=699539 -->
 <!-- [How to Use Co-located Caching]: http://go.microsoft.com/fwlink/?LinkID=699542 -->
@@ -95,4 +98,4 @@
 <!-- [SSL Offloading]: http://go.microsoft.com/fwlink/?LinkID=699549 -->
 <!-- [Using the Azure Service Runtime Library in JSP]: http://go.microsoft.com/fwlink/?LinkID=699551 -->
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0725_2016-->

@@ -9,7 +9,7 @@
 
 <tags
   ms.service="documentdb"
-  ms.date="06/20/2016"
+  ms.date="07/06/2016"
   wacn.date=""/>
 
 # 社区门户
@@ -21,7 +21,7 @@
 
 ### documentdb-lumenize
 
-作者：Larry Maccherone
+*作者：Larry Maccherone*
 
 DocumentDB 中以存储过程形式提供的聚合（分组依据、数据透视表和 N 维多维数据集）和时序转换功能。
 
@@ -30,7 +30,7 @@ DocumentDB 中以存储过程形式提供的聚合（分组依据、数据透视
 
 ### DocumentDB Studio
 
-作者：Ming Liu
+*作者：Ming Liu*
 
 Microsoft Azure DocumentDB 服务的客户端管理查看器/资源管理器。
 
@@ -39,7 +39,7 @@ Microsoft Azure DocumentDB 服务的客户端管理查看器/资源管理器。
 
 ### DoQmentDB
 
-作者：Ariel Mashraki
+*作者：Ariel Mashraki*
 
 DoQmentDB 是一个以 Node.js Promise 为基础的客户端，可在 DocumentDB 的顶端提供类似 MongoDB 的层。
 
@@ -48,7 +48,7 @@ DoQmentDB 是一个以 Node.js Promise 为基础的客户端，可在 DocumentDB
 
 ### DocumentDB 的 Swagger REST API
 
-作者：Howard Edidin
+*作者：Howard Edidin*
 
 可以轻松部署为 API 应用的 DocumentDB REST API Swagger 文件。
 
@@ -57,13 +57,13 @@ DoQmentDB 是一个以 Node.js Promise 为基础的客户端，可在 DocumentDB
 
 ### fluent-plugin-documentdb
 
-作者：Yoichi Kawasaki
+*作者：Yoichi Kawasaki*
 
 fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件。
 
 在 [Github](https://github.com/yokawasa/fluent-plugin-documentdb) 和 [rubygems](https://rubygems.org/gems/fluent-plugin-documentdb) 上了解相关信息。
 
-在 [GitHub](https://github.com/search?p=4&q=documentdb&type=Repositories) 上查找更多开放源代码 DocumentDB 项目。
+*在 [GitHub](https://github.com/search?p=4&q=documentdb&type=Repositories) 上查找更多开放源代码 DocumentDB 项目。*
 
 ## 新闻、博客和文章
 
@@ -71,49 +71,49 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 
 **社区贴文：**
 
-* [**Going Social with DocumentDB**（使用 DocumentDB 展开社交）](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/03/15/going-social-with-documentdb/)- 作者：Matias Quarantaas
+- [**Going Social with DocumentDB（使用 DocumentDB 展开社交）**](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/03/15/going-social-with-documentdb/)- *作者：Matias Quarantaas*
 
-* [**UWP, Azure App Services, and DocumentDB Soup: A photo-sharing app**（UWP、Azure App Service 和 DocumentDB Soup：一个照片分享应用）](https://blogs.windows.com/buildingapps/2016/03/17/uwp-azure-app-services-and-documentdb-soup-a-photo-sharing-app/)- 作者：Eric Langland
+- [**UWP, Azure App Services, and DocumentDB Soup: A photo-sharing app（UWP、Azure App Service 和 DocumentDB Soup：一个照片分享应用）**](https://blogs.windows.com/buildingapps/2016/03/17/uwp-azure-app-services-and-documentdb-soup-a-photo-sharing-app/)- *作者：Eric Langland*
 
-* [**Notifications for new or changed DocumentDB resources using Logic Apps**（使用逻辑应用的新的或更改后的 DocumentDB 通知）](documentdb-change-notification.md)- 作者：Howard Edidin
+- [**Notifications for new or changed DocumentDB resources using Logic Apps（使用逻辑应用的新的或更改后的 DocumentDB 通知）**](documentdb-change-notification.md)- *作者：Howard Edidin*
 
-* [**Collecting logs into Azure DocumentDB using fluent-plugin-documentdb**（使用 fluent-plugin-documentdb 将日志收集到 Azure DocumentDB）](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/)- 作者：Yoichi Kawasaki
+- [**Collecting logs into Azure DocumentDB using fluent-plugin-documentdb（使用 fluent-plugin-documentdb 将日志收集到 Azure DocumentDB）**](http://unofficialism.info/posts/collecting-logs-into-azure-documentdb-using-fluent-plugin-documentdb/)- *作者：Yoichi Kawasaki*
 
-* [**DocumentDB revisited Part 1/2 – The theory**（重新访问的 DocumentDB 第 1 部分（共 2 部分）- 理论）](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/)- 作者：Peter Mannerhult
+- [**DocumentDB revisited Part 1/2 – The theory（重新访问的 DocumentDB 第 1 部分（共 2 部分）- 理论）**](https://peterintheazuresky.wordpress.com/2016/02/19/documentdb-revisited-part-12-the-theory/)- *作者：Peter Mannerhult*
 
-* [**What to love and hate about Azure’s DocumentDB**（令人又爱又恨的 Azure 的 DocumentDB）](http://blog.falafel.com/4-what-to-love-and-hate-about-azures-documentdb/)- 作者：George Saadeh
+- [**What to love and hate about Azure’s DocumentDB（令人又爱又恨的 Azure 的 DocumentDB）**](http://blog.falafel.com/4-what-to-love-and-hate-about-azures-documentdb/)- *作者：George Saadeh*
 
-* [**Azure DocumentDB Server-Side Scripting**（Azure DocumentDB 服务器端脚本）](https://www.simple-talk.com/cloud/cloud-data/azure-documentdb-server-side-scripting/)- 作者：Robert Sheldon
+- [**Azure DocumentDB Server-Side Scripting（Azure DocumentDB 服务器端脚本）**](https://www.simple-talk.com/cloud/cloud-data/azure-documentdb-server-side-scripting/)- *作者：Robert Sheldon*
 
-* [**DocumentDB as a data sink for Azure Stream Analytics**（作为 Azure 流分析的数据接收器的 DocumentDB）](http://janatdevelopment.com/2015/12/11/documentdb-as-a-data-sink-for-azure-stream-analytics/?utm_source=twitterfeed&utm_medium=twitter)- 作者：Jan Hentschel
+- [**DocumentDB as a data sink for Azure Stream Analytics（作为 Azure 流分析的数据接收器的 DocumentDB）**](http://janatdevelopment.com/2015/12/11/documentdb-as-a-data-sink-for-azure-stream-analytics/?utm_source=twitterfeed&utm_medium=twitter)- *作者：Jan Hentschel*
 
-* [**Azure DocumentDB in production!**](http://blog.nexapp.ca/2015/11/30/azure-documentdb-in-production/) - 作者：Alexandre Walsh 和 Marc-Olivier Duval
+- [**Azure DocumentDB in production!**](http://blog.nexapp.ca/2015/11/30/azure-documentdb-in-production/) - *作者：Alexandre Walsh 和 Marc-Olivier Duval*
 
-* [**Azure Search Indexers – DocumentDB Queries (Spanish)**（Azure 搜索索引器 - DocumentDB 查询（西班牙语））](http://www.ealsur.com.ar/wp/index.php/2015/11/19/azure-search-indexers-documentdb-queries/)- 作者：Matthias Quaranta
+- [**Azure Search Indexers – DocumentDB Queries (Spanish)（Azure 搜索索引器 - DocumentDB 查询（西班牙语））**](http://www.ealsur.com.ar/wp/index.php/2015/11/19/azure-search-indexers-documentdb-queries/)- *作者：Matthias Quaranta*
 
-* [**Azure DocumentDB のSQLクエリ基礎**](http://beachside.hatenablog.com/entry/2015/12/06/000045) - 作者：Atsushi Yokohama
+- [**Azure DocumentDB SQL query basics（Azure DocumentDB SQL 查询的基础知识）（日语）**](http://beachside.hatenablog.com/entry/2015/12/06/000045) - *作者 Atsushi Yokohama*
 
-* [**Data Points - Aurelia Meets DocumentDB: A Matchmaker’s Journey**（数据点 - Aurelia 遇见 DocumentDB：匹配生成器之旅）](https://msdn.microsoft.com/magazine/mt620011.aspx)- 作者：Julie Lerman
+- [**Data Points - Aurelia Meets DocumentDB: A Matchmaker’s Journey（数据点 - Aurelia 遇见 DocumentDB：匹配生成器之旅）**](https://msdn.microsoft.com/magazine/mt620011.aspx)- *作者：Julie Lerman*
 
-* [**Infrastructure as Code and Continuous Deployment of a Node.js + Azure DocumentDB Solution**（基础结构即代码和 Node.js + Azure DocumentDB 解决方案的连续部署）](http://www.talmeida.net/blog/2015/10/26/infrastructure-as-code-and-continuous-deployment-of-a-nodejs-azure-documentdb-solution)- 作者：Thiago Almedia
+- [**Infrastructure as Code and Continuous Deployment of a Node.js + Azure DocumentDB Solution（基础结构即代码和 Node.js + Azure DocumentDB 解决方案的连续部署）**](http://www.talmeida.net/blog/2015/10/26/infrastructure-as-code-and-continuous-deployment-of-a-nodejs-azure-documentdb-solution)- *作者：Thiago Almedia*
 
-* [**Why DocumentDb Makes Good Business Sense for Some Projects**（为什么 DocumentDB 对于某些项目具有重要商业意义）](http://www.iquestllc.com/blogs/read/405/why-documentdb-makes-good-business-sense-for-some-projects)- 作者：Samuel Uresin
+- [**Why DocumentDb Makes Good Business Sense for Some Projects（为什么 DocumentDB 对于某些项目具有重要商业意义）**](http://www.iquestllc.com/blogs/read/405/why-documentdb-makes-good-business-sense-for-some-projects)- *作者：Samuel Uresin*
 
-* [**Azure DocumentDB の開発ことはじめ - Client クラスの開発（1/2）**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - 作者：Atsushi Yokohama
+- [**Azure DocumentDB development moving forward – development of the Client class（Azure DocumentDB 开发向前推进 – 开发客户端类）(1/2)（日语）**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *作者：Atsushi Yokohama*
 
-* [**Azure DocumentDB を使うときに知っておきたいいくつかのこと**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - 作者：Atsushi Yokohama
+- [**Things you need to know when using Azure DocumentDB（使用 Azure DocumentDB 时需要了解的内容）（日语）**](http://beachside.hatenablog.com/entry/2015/10/01/202734) - *作者：Atsushi Yokohama*
 
-* [**Dealing with RequestRateTooLarge errors in Azure DocumentDB and testing performance**（在 Azure DocumentDB 中处理 RequestRateTooLarge 错误并测试性能）](http://blogs.msdn.com/b/bigdatasupport/archive/2015/09/02/dealing-with-requestratetoolarge-errors-in-azure-documentdb-and-testing-documentdb-performance.aspx)- 作者：Azim Uddin
+- [**Dealing with RequestRateTooLarge errors in Azure DocumentDB and testing performance（在 Azure DocumentDB 中处理 RequestRateTooLarge 错误并测试性能）**](http://blogs.msdn.com/b/bigdatasupport/archive/2015/09/02/dealing-with-requestratetoolarge-errors-in-azure-documentdb-and-testing-documentdb-performance.aspx)- *作者：Azim Uddin*
 
-* [**Data Points - An Overview of Microsoft Azure DocumentDB**（数据点 - Microsoft Azure DocumentDB 概述）](https://msdn.microsoft.com/magazine/mt147238.aspx)- 作者：Julie Lerman
+- [**Data Points - An Overview of Microsoft Azure DocumentDB（数据点 - Microsoft Azure DocumentDB 概述）**](https://msdn.microsoft.com/magazine/mt147238.aspx)- *作者：Julie Lerman*
 
-* [**Using DocumentDB With F#**（配合 F# 使用 DocumentDB）](https://jamessdixon.wordpress.com/2014/12/30/using-documentdb-with-f/)- 作者：Jamie Dixon
+- [**Using DocumentDB With F#（配合 F# 使用 DocumentDB）**](https://jamessdixon.wordpress.com/2014/12/30/using-documentdb-with-f/)- *作者：Jamie Dixon*
 
-* [**Analysing Application Logs with DocumentDB**（使用 DocumentDB 分析应用程序日志）](http://vincentlauzon.com/2015/09/06/analysing-application-logs-with-documentdb/)- 作者：Vincent-Philippe Lauzon
+- [**Analysing Application Logs with DocumentDB（使用 DocumentDB 分析应用程序日志）**](http://vincentlauzon.com/2015/09/06/analysing-application-logs-with-documentdb/)- *作者：Vincent-Philippe Lauzon*
 
-* [**Azure DocumentDB – Point in time Backups**（Azure DocumentDB - 时间备份中的点）](http://softwarejuancarlos.com/2015/09/06/azure-documentdb-point-in-time-backups/)- 作者：Juan Carlos Sanchez
+- [**Azure DocumentDB – Point in time Backups（Azure DocumentDB - 时间备份中的点）**](http://softwarejuancarlos.com/2015/09/06/azure-documentdb-point-in-time-backups/)- *作者：Juan Carlos Sanchez*
 
-你有想要分享的博客文章、代码示例或案例研究吗？ [请告诉我们](mailto:askdocdb@microsoft.com)！
+*你有想要分享的博客文章、代码示例或案例研究吗？ [请告诉我们](mailto:askdocdb@microsoft.com)！*
 
 ## 活动和录像
 
@@ -121,15 +121,19 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 
 | 事件名称 | 主讲人 | 位置 | 日期 | 井号标签 |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ------------------------ | ------- |
-| [Do Logic Apps support error handling?（Logic Apps 是否支持错误处理？）](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/?event_date=2016-06-20) | Howard S. Edidin | 网络广播 | 2016 年 6 月 20 日 | 不适用 |
+| [Ignite 2016](https://myignite.microsoft.com/sessions?q=documentdb) | Andrew Liu 和 Tara Jana | 亚特兰大 | 2016 年 9 月 26 日至 9 月 30 日 | [#MSIgnite](https://twitter.com/MS_Ignite) |
 
 
-你在演讲或举办活动吗？ [让我们知道](mailto:askdocdb@microsoft.com)我们能为你做些什么！
+*你在演讲或举办活动吗？ [让我们知道](mailto:askdocdb@microsoft.com)我们能为你做些什么！*
 
 ### 先前的活动和录像
 
 | 事件名称 | 主讲人 | 位置 | 日期 | 记录 |
 | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------- | ---------------------- | --------- |
+| [DevTeach](http://devteach.com/) | Ken Cenerelli | 加拿大，蒙特利尔 | 2016 年 7 月 4 日至 7 月 8 日 | [NoSQL, No Problem, Using Azure DocumentDB](http://www.slideshare.net/KenCenerelli)（NoSQL：使用 Azure DocumentDB 没问题） |
+| [Integration and IoT](http://www.btug.be/events)（集成和 IoT） | Eldert Grootenboer | Kontich，比利时 | 2016 年 6 月 30 日 | 不适用 |
+| [MongoDB World 2016](https://www.mongodb.com/world16) | Kirill Gavrylyuk | 纽约州，纽约市 | 2016 年 6 月 28 日至 6 月 29 日 | 不适用 |
+| [Integration User Group](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/) | Howard S. Edidin | 网络广播 | 2016 年 6 月 20 日 | [Do Logic Apps support error handling?（Logic Apps 是否支持错误处理？）](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/) |
 | [Meetup: UK Azure User Group](http://www.meetup.com/UKAzureUserGroup/events/229673468/)| Andrew Liu | 英国伦敦 | 2016 年 5 月 12 日 | 不适用
 |[Meetup: ONETUG - Orlando .NET User Group（会面：ONETUG - 奥兰多 .NET 用户组）](http://www.meetup.com/ONETUG/events/230797164/)| Santosh Hari| Orlando, FL| 2016 年 5 月 12 日| 不适用 
 | [SQLBits XV](https://sqlbits.com/) | Andrew Liu、Aravind Ramachandran | 英国利物浦 | 2016 年 5 月 4 日至 7 日 | 不适用| [Meetup: NYC .NET Developers Group](http://www.meetup.com/NYC-NET-Developers/events/230396260/) | Leonard Lobel | 纽约州纽约市 | 2016 年 4 月 21 日 | 不适用 |
@@ -149,7 +153,7 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 | [SQL Saturday #430 - Sofia 2015](http://www.sqlsaturday.com/430/Sessions/Details.aspx?sid=36090) | Leonard Lobel | 保加利亚索非亚 | 2015 年 10 月 10 日 | 不适用 |
 | [SQL Saturday #444 - Kansas City 2015](http://www.sqlsaturday.com/444/Sessions/Details.aspx?sid=38576) | Jeff Renz | 密苏里州堪萨斯城 | 2015 年 10 月 3 日 | 不适用 |
 | [SQL Saturday #429 - Oporto 2015](http://www.sqlsaturday.com/429/Sessions/Details.aspx?sid=36089) | Leonard Lobel | 葡萄牙波尔图 | 2015 年 10 月 3 日 | 不适用 |
-| [AzureCon](https://azure.microsoft.com/azurecon/) | David Makogon、Ryan Crawcour、John Macintyre | 虚拟活动 | 2015 年 9 月 29 日 | [Azure 数据和分析平台](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207)<br/>[在 DocumentDB 中使用 NoSQL 数据](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338) |
+| [AzureCon](https://azure.microsoft.com/azurecon/) | David Makogon、Ryan Crawcour、John Macintyre | 虚拟活动 | 2015 年 9 月 29 日 | [Azure data and analytics platform](https://channel9.msdn.com/events/Microsoft-Azure/AzureCon-2015/ACON207)（Azure 数据和分析平台）[Working with NoSQL Data in DocumentDB](https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON338)（在 DocumentDB 中使用 NoSQL 数据） |
 | [SQL Saturday #434 - Holland 2015](http://www.sqlsaturday.com/434/Sessions/Details.aspx?sid=36413) | Leonard Lobel | 荷兰乌得勒支 | 2015 年 9 月 26 日 | [Azure DocumentDB 简介](https://channel9.msdn.com/Blogs/Windows-Azure/SQL-Saturday-Holland-2015-Introduction-to-Azure-DocumentDB) |
 | [SQL Saturday #441 - Denver 2015](http://www.sqlsaturday.com/441/Sessions/Details.aspx?sid=39191) | Jeff Renz | 科罗拉多州丹佛 | 2015 年 9 月 19 日 | 不适用 |
 | [Meetup: San Francisco Bay Area Azure Developers](http://www.meetup.com/bayazure/events/223943785/) | Andrew Liu | 加州旧金山 | 2015 年 9 月 15 日 | 不适用 |
@@ -164,7 +168,7 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 | [Meetup: London SQL Server User Group](http://www.meetup.com/London-SQL-Server-User-Group/events/221525058/) | Allan Mitchell | 英国伦敦 | 2015 年 5 月 19 日 | 不适用 |
 | [DevIntersection](https://devintersection.com/) | Andrew Liu | 亚利桑那州斯科茨代尔 | 2015 年 5 月 18 日至 21 日 | 不适用 |
 | [Meetup: Seattle Web App Developers Group](http://www.meetup.com/Seattle-Web-App-Developers-Group/events/220591071/) | Andrew Liu | 华盛顿州西雅图 | 2015 年 5 月 14 日 | 不适用 |
-| [Ignite](http://ignite.microsoft.com/) | Andrew Hoh、John Macintyre | 伊利诺斯州芝加哥 | 2015 年 5 月 4 日至 8 日 | [选择最新的 DocumentDB 视频](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/)<br/>[DocumentDB and Azure HDInsight: Better Together video（DocumentDB 和 Azure HDInsight：一起使用效果更佳）视频](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
+| [Ignite](http://ignite.microsoft.com/) | Andrew Hoh、John Macintyre | 伊利诺斯州芝加哥 | 2015 年 5 月 4 日至 8 日 | [“选择最新的 DocumentDB”视频](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-select-latest-from-microsoft-azure-documentdb/)[“DocumentDB 和 Azure HDInsight 结合使用，效果更佳”视频](https://azure.microsoft.com/documentation/videos/microsoft-ignite-2015-microsoft-azure-documentdb-and-azure-hdinsight-better-together/) |
 | [Build 2015](http://www.buildwindows.com/) | Ryan Crawcour | 加州旧金山 | 2015 年 4 月 29 日至 5 月 1 日 | [使用 Azure 的 NoSQL 服务：DocumentDB，构建又一个重大成就](https://channel9.msdn.com/Events/Build/2015/2-729) |
 | [Global Azure Bootcamp 2015 - Spain](http://azurebootcamp.es/) | Luis Ruiz Pavon、Roberto Gonzalez | 西班牙马德里 | 2015 年 4 月 25 日 | [Azure 上运行的 #DEAN DocumentDB + Express + AngularJS + NodeJS](https://channel9.msdn.com/events/Developers-Spain-Events/Global-Azure-Bootcamp-2015/DEAN-DocumentDB--Express--AngularJS--NodeJS-running-on-Azure) |
 | [Meetup: Azure Usergroup Denmark](http://www.meetup.com/Azure-Usergroup-Denmark/events/221026670/) | Christian Holm Diget | 丹麦哥本哈根 | 2015 年 4 月 16 日 | 不适用 |
@@ -205,7 +209,7 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 
 | 学习合作伙伴 | 说明 |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| [![Microsoft 虚拟大学](./media/documentdb-community/mva.png)](https://www.microsoftvirtualacademy.com/zh-cn/training-courses/developing-solutions-with-azure-documentdb-10554) | [**Microsoft Virtual Academy**](https://www.microsoftvirtualacademy.com/zh-cn/training-courses/developing-solutions-with-azure-documentdb-10554) 向你提供培训，这些培训来自那些帮助构建 Azure DocumentDB 的人士。 |
+| [![Microsoft 虚拟大学](./media/documentdb-community/mva.png)](https://www.microsoftvirtualacademy.com/en-us/training-courses/developing-solutions-with-azure-documentdb-10554) | [**Microsoft Virtual Academy**](https://www.microsoftvirtualacademy.com/en-us/training-courses/developing-solutions-with-azure-documentdb-10554) 向你提供培训，这些培训来自那些帮助构建 Azure DocumentDB 的人士。 |
 | [![Pluralsight](./media/documentdb-community/pluralsight.png)](http://www.pluralsight.com/courses/azure-documentdb-introduction) | [**Pluralsight**](http://www.pluralsight.com/courses/azure-documentdb-introduction) 是提供 Azure 培训的重要 Microsoft 合作伙伴。如果你是一名 MSDN 订户，请使用你访问 Microsoft Azure 培训的权益。 |
 | [![OpsGility](./media/documentdb-community/opsgility.png)](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) | [**OpsGility**](https://www.opsgility.com/courses/player/introduction_to_azure_documentdb) 提供有关 Microsoft Azure 的深层次技术培训。在现场或通过远程教室获得由业内认可的培训师指导的培训。 |
 
@@ -226,7 +230,7 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 
 ![团队](./media/documentdb-community/documentdb-team.png)
 
-你需要技术协助吗？ 有任何疑问吗？ 想知道 NoSQL 是否适合你？ 你可以[安排直接与 DocumentDB 工程团队进行 1 对 1 交谈](http://www.askdocdb.com/)。你也可以发送[电子邮件](mailto:askdocdb@microsoft.com)给我们，或在 [@DocumentDB](https://twitter.com/DocumentDB) 推文给我们。
+你需要技术协助吗？ 有任何疑问吗？ 想知道 NoSQL 是否适合你？ 你可以[安排直接与 DocumentDB 工程团队进行 1 对 1 交谈](http://www.askdocdb.com/)。也可以发送[电子邮件](mailto:askdocdb@microsoft.com)给我们，或在 [@DocumentDB](https://twitter.com/DocumentDB) 推文给我们。
 
 ## 开放源代码项目
 
@@ -246,13 +250,13 @@ fluent-plugin-documentdb 是用于输出到 Azure DocumentDB 的 Fluentd 插件�
 | ------------------- | ------------------------------------------------------------------------------------------------- | ------- |
 | 文档 | [azure-content](https://github.com/Azure/azure-content/tree/master/articles/documentdb) | [文档网站](https://azure.microsoft.com/documentation/services/documentdb/) |
 | Hadoop 连接器 | [azure-documentdb-hadoop](https://github.com/Azure/azure-documentdb-hadoop) | [Maven](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-documentdb-hadoop%22) |
-| 数据迁移工具 | [azure-documentdb-datamigrationtool](https://github.com/Azure/azure-documentdb-datamigrationtool) | [Microsoft 下载中心](http://www.microsoft.com/zh-cn/download/details.aspx?id=46436) |
+| 数据迁移工具 | [azure-documentdb-datamigrationtool](https://github.com/Azure/azure-documentdb-datamigrationtool) | [Microsoft 下载中心](http://www.microsoft.com/en-us/download/details.aspx?id=46436) |
 
 ## DocumentDB 奇才
 
 DocumentDB 奇才是社区领导者，他们是帮助其他人充分利用他们在 Azure DocumentDB 上的经验的最佳典范。他们和社区及 DocumentDB 团队分享了他们超乎常人的热情、实用的知识以及专业技术。
-      
-                                                                                                                                                                                                                                                                                                           Wizard | Picture 
+
+向导 | 图片 
  --- | --- 
  [Allan Mitchell](https://twitter.com/allansqlis) | [![Allan Mitchell](./media/documentdb-community/wizard-allan-mitchell.jpg)](https://twitter.com/allansqlis) 
  [Jen Stirrup](https://twitter.com/jenstirrup) | [![Jen Stirrup](./media/documentdb-community/wizard-jen-stirrup.jpg)](https://twitter.com/jenstirrup)            
@@ -263,4 +267,4 @@ DocumentDB 奇才是社区领导者，他们是帮助其他人充分利用他们
 
 想要成为 DocumentDB 奇才？ 由于是否能成为 DocumentDB 奇才并没有任何评判基准，因此我们会针对部分条件来评估，包括被提名人对在线论坛（例如 StackOverflow 和 MSDN；Wiki 和在线内容；会议和用户组；播客；网站；博客和社交媒体；以及文章与书籍）的贡献所产生的影响。如果你想提名自己或其他人，[请向我们发送电子邮件](mailto:askdocdb@microsoft.com)。
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0725_2016-->

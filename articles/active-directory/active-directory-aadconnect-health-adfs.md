@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="03/21/2016"
+	ms.date="07/14/2016"
 	wacn.date=""/>
 
 # 在 AD FS 中使用 Azure AD Connect Health 
@@ -28,7 +28,7 @@ Azure AD Connect Health 警报部分将提供活动警报列表。每个警报�
 ## AD FS 的使用情况分析
 Azure AD Connect Health 使用情况分析可分析联合服务器的身份验证流量。选择使用情况分析框将会打开使用情况分析边栏选项卡，其中将显示度量值和分组。
 
->[AZURE.NOTE] 若要将使用情况分析与 AD FS 结合使用，必须确保启用了 AD FS 审核。有关详细信息，请参阅[为 AD FS 启用审核](/documentation/articles/active-directory-aadconnect-health-agent-install#enable-auditing-for-ad-fs)。
+>[AZURE.NOTE] 若要将使用情况分析与 AD FS 结合使用，必须确保启用了 AD FS 审核。有关详细信息，请参阅[为 AD FS 启用审核](/documentation/articles/active-directory-aadconnect-health-agent-install/#enable-auditing-for-ad-fs)。
 
 ![Azure AD Connect Health 门户](./media/active-directory-aadconnect-health/report1.png)
 
@@ -102,11 +102,11 @@ Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户�
 
 ## 相关链接
 
-* [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health)
-* [适用于 AD FS 的 Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install-adfs)
-* [Azure AD Connect Health 操作](/documentation/articles/active-directory-aadconnect-health-operations)
-* [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync)
-* [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
-* [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history)
+* [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health/)
+* [适用于 AD FS 的 Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install-adfs/)
+* [Azure AD Connect Health 操作](/documentation/articles/active-directory-aadconnect-health-operations/)
+* [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync/)
+* [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq/)
+* [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history/)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0725_2016-->

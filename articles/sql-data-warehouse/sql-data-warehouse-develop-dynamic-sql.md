@@ -1,5 +1,5 @@
 <properties
-   pageTitle="SQL 数据仓库中的动态 SQL | Microsoft Azure"
+   pageTitle="SQL 数据仓库中的动态 SQL | Azure"
    description="有关在开发解决方案时使用 Azure SQL 数据仓库中的动态 SQL 的技巧。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="01/07/2016"
+   ms.date="06/14/2016"
    wacn.date=""/>
 
 # SQL 数据仓库中的动态 SQL
@@ -17,13 +17,13 @@
 
 一个简单的示例：
 
-```
-DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
-,       @sql_fragment2 VARCHAR(8000)=' FROM sys.system_views '
-,       @sql_fragment3 VARCHAR(8000)=' WHERE name like ''%table%''';
 
-EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
-```
+	DECLARE @sql_fragment1 VARCHAR(8000)=' SELECT name '
+	,       @sql_fragment2 VARCHAR(8000)=' FROM sys.system_views '
+	,       @sql_fragment3 VARCHAR(8000)=' WHERE name like ''%table%''';
+
+	EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
+
 
 如果字符串较短，则可以像平时一样使用 [sp\_executesql][]。
 
@@ -35,11 +35,11 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 <!--Image references-->
 
 <!--Article references-->
-[开发概述]: sql-data-warehouse-overview-develop.md
+[开发概述]: /documentation/articles/sql-data-warehouse-overview-develop
 
 <!--MSDN references-->
 [sp\_executesql]: https://msdn.microsoft.com/zh-cn/library/ms188001.aspx
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_0215_2016-->
+<!---HONumber=Mooncake_0725_2016-->

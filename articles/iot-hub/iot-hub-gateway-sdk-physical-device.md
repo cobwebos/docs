@@ -74,10 +74,10 @@
 
 在开始之前，你应确保可以将 Edison 设备连接到无线网络。若要设置 Edison 设备，需要将其连接到主计算机。Intel 针对以下操作系统提供了入门指南：
 
-- [Get Started with the Intel Edison Development Board on Windows 64-bit（Windows 64 位上的 Intel Edison 开发板入门）][lnk-setup-win64]。
-- [Get Started with the Intel Edison Development Board on Windows 32-bit（Windows 32 位上的 Intel Edison 开发板入门）][lnk-setup-win32]。
-- [Get Started with the Intel Edison Development Board on Mac OS X（Mac OS X 上的 Intel Edison 开发板入门）][lnk-setup-osx]。
-- [Getting Started with the Intel® Edison Board on Linux（Linux 上的 Intel® Edison 板入门）][lnk-setup-linux]。
+- [Get Started with the Intel Edison Development Board on Windows 64-bit][lnk-setup-win64]（Windows 64 位上的 Intel Edison 开发板入门）。
+- [Get Started with the Intel Edison Development Board on Windows 32-bit][lnk-setup-win32]（Windows 32 位上的 Intel Edison 开发板入门）。
+- [Get Started with the Intel Edison Development Board on Mac OS X][lnk-setup-osx]（Mac OS X 上的 Intel Edison 开发板入门）。
+- [Getting Started with the Intel® Edison Board on Linux][lnk-setup-linux]（Linux 上的 Intel® Edison 板入门）。
 
 若要设置 Edison 设备并熟悉它，应完成所有这些“入门”文章中除最后一步外的所有步骤，最后一步“选择 IDE”不是当前教程所必需的。在 Edison 设置过程结束时，你应已：
 
@@ -160,7 +160,7 @@
     Discovery stopped
     ```
 
-6. 通过输入 **connect <MAC address>** 使用其 MAC 地址连接到 SensorTag 设备。请注意，下面的示例输出已节略：
+6. 通过输入“connect <MAC address>”，使用其 MAC 地址连接到 SensorTag 设备。请注意，下面的示例输出已节略：
     
     ```
     Attempting to connect to A0:E6:F8:B5:F6:00
@@ -179,9 +179,9 @@
     [CHG] Device A0:E6:F8:B5:F6:00 Modalias: bluetooth:v000Dp0000d0110
     ```
     
-    注意：你可以使用 **list-attributes** 命令重新列出设备的 GATT 特征。
+    注意：可使用“list-attributes”命令重新列出设备的 GATT 特征。
 
-7. 现在可以使用 **disconnect** 命令与设备断开连接，然后使用 **quit** 命令退出蓝牙外壳程序：
+7. 现可使用“disconnect”命令与设备断开连接，然后使用“quit”命令退出蓝牙程序：
     
     ```
     Attempting to disconnect from A0:E6:F8:B5:F6:00
@@ -189,7 +189,7 @@
     [CHG] Device A0:E6:F8:B5:F6:00 Connected: no
     ```
 
-你现在可以在 Edison 设备上运行 BLE 网关示例。
+现可在 Edison 设备上运行 BLE 网关示例。
 
 ## 运行 BLE 网关示例
 
@@ -203,24 +203,24 @@
 
 ### 在 IoT 中心中配置两个示例设备
 
-- 在 Azure 订阅中[创建 IoT 中心][lnk-create-hub]，你需要中心的名称才能完成此演练。如果还没有 Azure 订阅，可以获取一个[试用帐户][lnk-free-trial]。
-- 将一台名为 **SensorTag\_01** 的设备添加到 IoT 中心，并记下其 ID 和设备密钥。可使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具将此设备添加到在上一步中创建的 IoT 中心，并检索其密钥。配置网关时，可将此设备映射到 SensorTag 设备。
+- 在 Azure 订阅中[创建 IoT 中心][lnk-create-hub]，将需要中心的名称才能完成此演练。如果还没有 Azure 订阅，可以获取一个[试用帐户][lnk-free-trial]。
+- 将一台名为“SensorTag\_01”的设备添加到 IoT 中心，并记下其 ID 和设备密钥。可使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具将此设备添加到在上步中创建的 IoT 中心，然后检索其密钥。配置网关时，可将此设备映射到 SensorTag 设备。
 
 ### 在 Edison 设备上生成网关 SDK
 
-Edsion 上的 **git** 版本不支持子模块。若要将网关 SDK 的完整源代码下载到 Edison，有两个选择：
+Edsion 上的“git”版本不支持子模块。若要将网关 SDK 的完整源代码下载到 Edison，有两个选择：
 
-- 选项 #1：在 Edison 上克隆 [Azure IoT 网关 SDK][lnk-sdk]，然后手动克隆每个子模块的存储库。
-- 选项 #2：在其中 **git** 支持子模块的桌面设备上克隆 [Azure IoT 网关 SDK][lnk-sdk] 存储库，然后将包含子模块的整个存储库复制到 Edison 中。
+- 选项 #1：在 Edison 上克隆 [Azure IoT 网关 SDK][lnk-sdk] 存储库，然后手动克隆每个子模块的存储库。
+- 选项 #2：在其中“git”支持子模块的桌面设备上克隆 [Azure IoT 网关 SDK][lnk-sdk] 存储库，然后将包含子模块的整个存储库复制到 Edison 中。
 
-如果你选择选项 #2，请使用以下 **git** 命令克隆网关 SDK 及其所有子模块：
+如果你选择选项 #2，请使用以下“git”命令克隆网关 SDK 及其所有子模块：
 
 ```
 git clone --recursive https://github.com/Azure/azure-iot-gateway-sdk.git 
 git submodule update --init --recursive
 ```
 
-然后应将整个本地存储库压缩成单个存档文件，然后再将其复制到 Edison。可以使用实用程序（如 **Putty** 附带的 **pscp**）将存档文件复制到 Edison。例如：
+然后应将整个本地存储库压缩成单个存档文件，然后再将其复制到 Edison。可使用实用程序（如“Putty”附带的“pscp”）将存档文件复制到 Edison。例如：
 
 ```
 pscp .\gatewaysdk.zip root@192.168.0.45:/home/root
@@ -234,14 +234,14 @@ pscp .\gatewaysdk.zip root@192.168.0.45:/home/root
 
 ### 在 Edison 设备上配置和运行 BLE 示例
 
-若要启动和运行示例，需要配置参与网关的每个模块。在 JSON 文件中提供了此配置，你需要配置所有五个参与模块。存储库中提供了一个名为 **gateway\_sample.json** 的示例 JSON 文件，你可以使用它作为生成自己的配置文件的起点。此文件位于网关 SDK 存储库的本地副本中的 **samples/ble\_gateway\_hl/src** 文件夹。
+若要启动和运行示例，需要配置参与网关的每个模块。在 JSON 文件中提供了此配置，你需要配置所有五个参与模块。存储库中提供了一个名为“gateway\_sample.json”的示例 JSON 文件，可使用它作为自行生成配置文件的起点。此文件位于网关 SDK 存储库的本地副本中的“samples/ble\_gateway\_hl/src”文件夹。
 
-下列各节描述如何为 BLE 示例编辑此配置文件，并假设网关 SDK 存储库位于 Edison 设备上的 **/home/root/azure-iot-gateway-sdk/** 文件夹中。如果存储库在其他位置，则应相应地调整路径：
+下列各节描述了如何为 BLE 示例编辑此配置文件，并假设网关 SDK 存储库位于 Edison 设备上的“/home/root/azure-iot-gateway-sdk/”文件夹中。如果存储库在其他位置，则应相应地调整路径：
 
 
 #### 记录器配置
 
-假定网关存储库位于 **/home/root/azure-iot-gateway-sdk/** 文件夹中，请按如下所示配置记录器模块：
+假定网关存储库位于“/home/root/azure-iot-gateway-sdk/”文件夹中，请按如下所示配置记录器模块：
 
 ```json
 {
@@ -312,7 +312,7 @@ BLE 设备的示例配置假定使用 Texas Instruments SensorTag 设备。任�
 
 #### IoT 中心 HTTP 模块
 
-添加 IoT 中心的名称。后缀值通常是 **azure-devices.net**：
+添加 IoT 中心的名称。后缀值通常是“azure-devices.net”：
 
 ```json
 {
@@ -327,7 +327,7 @@ BLE 设备的示例配置假定使用 Texas Instruments SensorTag 设备。任�
 
 #### 标识映射模块配置
 
-添加已添加到 IoT 中心的 SensorTag 设备的 MAC 地址和 **SensorTag\_01** 设备的设备 ID 和密钥：
+添加 SensorTag 设备的 MAC 地址以及已添加到 IoT 中心的“SensorTag\_01”设备的设备 ID 和密钥：
 
 ```json
 {
@@ -353,7 +353,7 @@ BLE 设备的示例配置假定使用 Texas Instruments SensorTag 设备。任�
 }
 ```
 
-若要运行示例，需运行 **ble\_gateway\_hl** 二进制文件，以将路径传递给 JSON 配置文件。如果已使用 **gateway\_sample.json** 文件，则要执行的命令如下所示：
+若要运行示例，需运行“ble\_gateway\_hl”二进制文件，以将路径传递给 JSON 配置文件。如果已使用“gateway\_sample.json”文件，则要执行的命令如下所示：
 
 ```
 ./build/samples/ble_gateway_hl/ble_gateway_hl ./samples/ble_gateway_hl/src/gateway_sample.json
@@ -361,11 +361,11 @@ BLE 设备的示例配置假定使用 Texas Instruments SensorTag 设备。任�
 
 在运行示例之前，可能需要按 SensorTag 上的小按钮，使其可被发现。
 
-运行示例时，可以使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具监视网关从 SensorTag 设备转发的消息。
+运行示例时，可使用[设备资源管理器或 iothub-explorer][lnk-explorer-tools] 工具来监视网关从 SensorTag 设备转发的消息。
 
 ## 发送云到设备的消息
 
-BLE 模块还支持从 Azure IoT 中心将指令发送到设备。可以使用 [Azure IoT 中心设备资源管理器](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md)或 [IoT 中心资源管理器] https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer 将 BLE 网关模块传递的 JSON 消息发送到 BLE 设备。例如，如果你使用的是 Texas Instruments SensorTag 设备，则可以从 IoT 中心将以下 JSON 消息发送到设备。
+BLE 模块还支持从 Azure IoT 中心将指令发送到设备。可使用 [Azure IoT 中心设备资源管理器](https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md)或 [IoT 中心资源管理器](https://github.com/Azure/azure-iot-sdks/tree/master/tools/iothub-explorer) 将传递 BLE 网关模块的 JSON 消息发送到 BLE 设备。例如，如果你使用的是 Texas Instruments SensorTag 设备，则可以从 IoT 中心将以下 JSON 消息发送到设备。
 
 - 重置所有 LED 和蜂鸣器（将它们关闭）
 
@@ -423,12 +423,22 @@ BLE 模块还支持从 Azure IoT 中心将指令发送到设备。可以使用 [
 
 ## 后续步骤
 
-有关详细信息，请参阅 [Azure IoT 网关 SDK][lnk-sdk]。
+如果想要深入了解网关 SDK 并尝试一些代码示例，请访问以下开发人员教程和资源：
+
+- [管理网关设备][lnk-manage-devices]
+- [Azure IoT 网关 SDK][lnk-gateway-sdk]
+
+若要进一步探索 IoT 中心的功能，请参阅：
+
+- [设计你的解决方案][lnk-design]
+- [开发人员指南][lnk-devguide]
+- [使用 UI 示例探索设备管理][lnk-dmui]
+- [使用 Azure 门户管理 IoT 中心][lnk-portal]
 
 <!-- Links -->
 [lnk-ble-samplecode]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/samples/ble_gateway_hl
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
-[lnk-create-hub]: /documentation/articles/iot-hub-manage-through-portal.md
+[lnk-create-hub]: /documentation/articles/iot-hub-manage-through-portal.md/
 [lnk-free-trial]: /pricing/1rmb-trial/
 [lnk-explorer-tools]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/manage_iot_hub.md
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
@@ -437,4 +447,12 @@ BLE 模块还支持从 Azure IoT 中心将指令发送到设备。可以使用 [
 [lnk-setup-osx]: https://software.intel.com/get-started-edison-osx
 [lnk-setup-linux]: https://software.intel.com/get-started-edison-linux
 [lnk-sdk]: https://github.com/Azure/azure-iot-gateway-sdk/
-<!---HONumber=Mooncake_0627_2016-->
+
+[lnk-manage-devices]: /documentation/articles/iot-hub-gateway-sdk-device-management/
+
+[lnk-design]: /documentation/articles/iot-hub-guidance/
+[lnk-devguide]: /documentation/articles/iot-hub-devguide/
+[lnk-dmui]: /documentation/articles/iot-hub-device-management-ui-sample/
+[lnk-portal]: /documentation/articles/iot-hub-manage-through-portal/
+
+<!---HONumber=Mooncake_0725_2016-->

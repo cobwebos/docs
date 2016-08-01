@@ -1,6 +1,6 @@
 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，然后单击屏幕左上角的“+新建”。
+1. 登录到 [Azure 门户](https://portal.azure.cn)，然后单击屏幕左上角的“+新建”。
 
 2. 单击“新建”，然后单击“Web + 移动”。根据需要向下滚动，然后单击“通知中心”。
 
@@ -22,4 +22,4 @@
 
    	![Azure 门户 - 通知中心连接字符串](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0725_2016-->

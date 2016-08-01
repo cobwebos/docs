@@ -9,13 +9,12 @@
 
 <tags
    ms.service="documentdb"
-
    ms.date="06/14/2016"
    wacn.date=""/>
    
 # 使用多区域 DocumentDB 帐户进行开发
 
-为了利用[全局分发](documentdb-distribute-data-globally.md)，客户端应用程序可以指定用于执行文档操作的区域优先顺序列表。可通过设置连接策略来实现此目的。SDK 将会根据 DocumentDB 帐户配置、当前区域可用性和指定的优先顺序列表，选择最佳的终结点来执行写入和读取操作。
+为了利用[全局分发](/documentation/articles/documentdb-distribute-data-globally/)，客户端应用程序可以指定用于执行文档操作的区域优先顺序列表。可通过设置连接策略来实现此目的。SDK 将会根据 DocumentDB 帐户配置、当前区域可用性和指定的优先顺序列表，选择最佳的终结点来执行写入和读取操作。
 
 此优先顺序列表是在使用 DocumentDB 客户端 SDK 初始化连接时指定的。SDK 接受可选参数“PreferredLocations”，这是 Azure 区域的顺序列表。
 
@@ -133,11 +132,11 @@ SDK 会自动将所有写入请求发送到当前写入区域。
 
 在以下文章中了解有关使用 DocumentDB 全局分发数据的详细信息：
 
-- [使用 DocumentDB 全局分发数据](documentdb-distribute-data-globally.md)
-- [Consistency levels（一致性级别）](documentdb-consistency-levels.md)
-- [How throughput works with multiple regions（多个区域中的吞吐量工作原理）](documentdb-manage.md#how-throughput-works-with-multiple-regions)
-- [Add regions using the Azure portal（使用 Azure 门户添加区域）](documentdb-manage-account.md#addregion)
+- [使用 DocumentDB 全局分发数据](/documentation/articles/documentdb-distribute-data-globally/)
+- [Consistency levels（一致性级别）](/documentation/articles/documentdb-consistency-levels/)
+- [How throughput works with multiple regions（多个区域中的吞吐量工作原理）](/documentation/articles/documentdb-manage/#how-throughput-works-with-multiple-regions)
+- [Add regions using the Azure portal（使用 Azure 门户添加区域）](/documentation/articles/documentdb-manage-account/#addregion)
 
 [regions]: https://azure.microsoft.com/regions/
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0725_2016-->

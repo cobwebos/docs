@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/26/2016"
+	ms.date="06/27/2016"
 	wacn.date="06/21/2016"/>
 
 # 通过快速设置开始使用 Azure AD Connect
@@ -33,7 +33,7 @@
 如果你收到错误消息并且出现了连接问题，请参阅[排查连接问题](active-directory-aadconnect-troubleshoot-connectivity.md)。
 6. 在“连接到 AD DS”屏幕上，输入企业管理员帐户的用户名和密码。可以使用 NetBios 或 FQDN 格式输入域部分，即 FABRIKAM\\administrator 或 fabrikam.com\\administrator。单击“下一步”。  
 ![连接到 AD DS](./media/active-directory-aadconnect-get-started-express/connectad.png)
-7. 只有在未完成[必备组件](active-directory-aadconnect-prerequisites.md)中的[验证域](active-directory-add-domain.md)时，才会显示[“Azure AD 登录配置”](/documentation/articles/active-directory-aadconnect-user-signin#azure-ad-sign-in-configuration)页面。
+7. 只有在未完成[必备组件](active-directory-aadconnect-prerequisites.md)中的[验证域](active-directory-add-domain.md)时，才会显示“Azure AD 登录配置”页面。[](/documentation/articles/active-directory-aadconnect-user-signin#azure-ad-sign-in-configuration)
 ![未验证的域](./media/active-directory-aadconnect-get-started-express/unverifieddomain.png)  
 如果你看到此页，请查看标记为“未添加”和“未验证”的每个域。确保使用的域都已在 Azure AD 中验证。验证域后，请单击“刷新”符号。有关详细信息，请参阅[添加和验证域](active-directory-add-domain.md)
 8. 在“已准备好配置”屏幕上，单击“安装”。
@@ -50,6 +50,7 @@
 ## 后续步骤
 安装 Azure AD Connect 后，可以[验证安装并分配许可证](/documentation/articles/active-directory-aadconnect-whats-next)。
 
+了解有关这些常见主题的详细信息，请参阅[计划程序以及如何触发同步](/documentation/articles/active-directory-aadconnectsync-feature-scheduler/)。
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 ## 相关文档
 
@@ -60,4 +61,4 @@ Azure AD Connect 概述 | [将本地标识与 Azure Active Directory 集成](/do
 从 DirSync 升级 | [从 Azure AD 同步工具 (DirSync) 升级](/documentation/articles/active-directory-aadconnect-dirsync-upgrade-get-started)
 用于安装的帐户 | [有关 Azure AD Connect 帐户和权限的详细信息](/documentation/articles/active-directory-aadconnect-accounts-permissions)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0725_2016-->

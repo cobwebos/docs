@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="05/24/2016"
+   ms.date="06/27/2016"
    wacn.date=""/>
 
 # Azure AD Connect 的先决条件
@@ -20,11 +20,11 @@
 
 ### Azure AD
 - Azure 订阅或 [Azure 试用版订阅](https://azure.microsoft.com/pricing/free-trial/)。这只是用来访问 Azure 门户，而不是用于 Azure AD Connect。如果你正在使用 PowerShell 或 Office 365，则无需 Azure 订阅即可使用 Azure AD Connect。如果你有 Office 365 许可证，则还可以使用 Office 365 门户。使用付费的 Office 365 许可证，还可以从 Office 365 门户访问 Azure 门户。
-- [添加并验证](/documentation/articles/active-directory-add-domain)要在 Azure AD 中使用的域。例如，如果你计划让用户使用 contoso.com，请确保此域已经过验证，并且不是直接使用 contoso.onmicrosoft.com 默认域。
+- [添加并验证](/documentation/articles/active-directory-add-domain/)要在 Azure AD 中使用的域。例如，如果你计划让用户使用 contoso.com，请确保此域已经过验证，并且不是直接使用 contoso.onmicrosoft.com 默认域。
 - Azure AD 目录默认允许 5 万个对象。在验证域后，该限制将增加到 30 万个对象。如果在 Azure AD 中需要更多的对象，则需要开具支持案例来请求增大此限制。如果需要 50 万个以上的对象，则需要购买 Office 365、Azure AD Basic、Azure AD Premium 或 Enterprise Mobility Suite 等许可证。
 
 ### 准备本地数据
-- 查看[可以在 Azure AD 中启用的可选同步功能](/documentation/articles/active-directory-aadconnectsyncservice-features)并评估要启用哪些功能。
+- 查看[可以在 Azure AD 中启用的可选同步功能](/documentation/articles/active-directory-aadconnectsyncservice-features/)并评估要启用哪些功能。
 
 ### 本地服务器和环境
 - AD 架构版本与林功能级别必须是 Windows Server 2003 或更高版本。只要符合架构和林级别的要求，域控制器就能运行任何版本。
@@ -72,7 +72,7 @@
     </system.net>
 ```
 
-- 如果代理服务器要求身份验证，则[服务帐户](/documentation/articles/active-directory-aadconnect-accounts-permissions#azure-ad-connect-sync-service-accounts)必须位于域中，且必须使用自定义的设置安装路径来指定[自定义服务帐户](active-directory-aadconnect-get-started-custom.md#install-required-components)。你还需要不同的 machine.config；在 machine.config 中进行此更改之后，安装向导和同步引擎将响应来自代理服务器的身份验证请求。在所有安装向导页中（“配置”页除外）都使用了已登录用户的凭据。在安装向导结束时的“配置”页上，上下文将切换到你创建的[服务帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)。machine.config 节应如下所示。
+- 如果代理服务器要求身份验证，则[服务帐户](/documentation/articles/active-directory-aadconnect-accounts-permissions/#azure-ad-connect-sync-service-accounts)必须位于域中，且必须使用自定义的设置安装路径来指定[自定义服务帐户](active-directory-aadconnect-get-started-custom.md#install-required-components)。你还需要不同的 machine.config；在 machine.config 中进行此更改之后，安装向导和同步引擎将响应来自代理服务器的身份验证请求。在所有安装向导页中（“配置”页除外）都使用了已登录用户的凭据。在安装向导结束时的“配置”页上，上下文将切换到你创建的[服务帐户](active-directory-aadconnect-accounts-permissions.md#azure-ad-connect-sync-service-accounts)。machine.config 节应如下所示。
 
 ```
     <system.net>
@@ -123,7 +123,7 @@ Azure AD Connect 默认情况下使用 TLS 1.0 对同步引擎服务器和 Azure
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
 "SchUseStrongCrypto"=dword:00000001
 ```
-4. 如果还想在同步引擎服务器和远程 SQL Server之间启用 TLS 1.2，请确保你已为 [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/kb/3135244)（适用于 Microsoft SQL Server 的 TLS 1.2 支持）安装了所需的版本。
+4. 如果还想在同步引擎服务器和远程 SQL Server之间启用 TLS 1.2，请确保你已为 [TLS 1.2 support for Microsoft SQL Server（适用于 Microsoft SQL Server 的 TLS 1.2 支持）](https://support.microsoft.com/kb/3135244)安装了所需的版本。
 
 ## 联合身份验证安装和配置的先决条件
 
@@ -191,6 +191,6 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
 - Azure VM：A2 配置或更高
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0725_2016-->

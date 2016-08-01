@@ -1,5 +1,5 @@
 <properties
- pageTitle="IoT 中心高可用性和灾难恢复 | Microsoft Azure"
+ pageTitle="IoT 中心 HA 和 DR | Azure"
  description="介绍可帮助你构建包含灾难恢复功能的高可用性 IoT 解决方案的功能。"
  services="iot-hub"
  documentationCenter=""
@@ -14,7 +14,7 @@
 
 # IoT 中心高可用性和灾难恢复
 
-作为一项 Azure 服务，IoT 中心在 Azure 区域级别使用冗余来提供高可用性 (HA)，而解决方案不需要执行任何额外的工作。此外，Azure 还可根据需要提供一些功能，使你能够构建包含灾难恢复 (DR) 功能或跨区域可用性的解决方案。若要提供全局跨区域的高可用性给设备或用户，必须妥善设计并准备好解决方案以利用这些 DR 功能。[Azure 业务连续性技术指南][]一文介绍了业务连续性和 DR 的 Azure 内置功能。[Azure 应用程序的灾难恢复和高可用性][]一文针对 Azure 应用程序的策略提供了体系结构指导以便实现 HA 和 DR。
+作为一项 Azure 服务，IoT 中心在 Azure 区域级别使用冗余来提供高可用性 (HA)，而解决方案不需要执行任何额外的工作。此外，Azure 还可根据需要提供一些功能，使你能够构建包含灾难恢复 (DR) 功能或跨区域可用性的解决方案。若要提供全局跨区域的高可用性给设备或用户，必须妥善设计并准备好解决方案以利用这些 DR 功能。[Azure 业务连续性技术指南][] 一文介绍了针对业务连续性和 DR 的 Azure 内置功能。[Azure 应用程序的灾难恢复和高可用性][]一文针对 Azure 应用程序的策略提供了体系结构指导以便实现 HA 和 DR。
 
 ## Azure IoT 中心 DR
 除了区域内部的 HA，IoT 中心还实施了无需用户干预的灾难恢复故障转移机制。IoT 中心 DR 自行启动，其恢复时间目标 (RTO) 为 2 到 26 小时，恢复点目标 (RPO) 如下所示。
@@ -47,12 +47,13 @@ IoT 解决方案中部署拓扑的完整处理已超出本文的范围，但为�
 - [IoT 中心入门（教程）][lnk-get-started]
 - [Azure IoT 中心是什么？][]
 
-[Azure 业务连续性技术指南]: https://msdn.microsoft.com/zh-cn/library/azure/hh873027.aspx
-[Azure 应用程序的灾难恢复和高可用性]: https://msdn.microsoft.com/zh-cn/library/azure/dn251004.aspx
+[Azure resiliency technical guidance]: /documentation/articles/resiliency-technical-guidance/
+[Azure 应用程序的灾难恢复和高可用性]: /documentation/articles/resiliency-disaster-recovery-high-availability-azure-applications/
 [Failsafe: Guidance for Resilient Cloud Architectures]: https://msdn.microsoft.com/zh-cn/library/azure/jj853352.aspx
 [Azure 流量管理器]: /documentation/services/traffic-manager/
 [IoT 中心开发人员指南 - 标识注册表]: /documentation/articles/iot-hub-devguide/#identityregistry
-[lnk-get-started]: /documentation/articles/iot-hub-csharp-csharp-getstarted
-[Azure IoT 中心是什么？]: /documentation/articles/iot-hub-what-is-iot-hub
 
-<!---HONumber=Mooncake_0425_2016-->
+[lnk-get-started]: /documentation/articles/iot-hub-csharp-csharp-getstarted/
+[Azure IoT 中心是什么？]: /documentation/articles/iot-hub-what-is-iot-hub/
+
+<!---HONumber=Mooncake_0725_2016-->

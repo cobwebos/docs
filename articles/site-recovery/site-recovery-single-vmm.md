@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="site-recovery"
-	ms.date="03/30/2016"
+	ms.date="07/06/2016"
 	wacn.date=""/>
 
 #  复制单个 VMM 服务器上的 Hyper-V 虚拟机
@@ -23,14 +23,14 @@
 
 可通过多种方式复制位于 VMM 云中 Hyper-V 主机上的 Hyper-V VM：
 
-- 复制到 Azure。 
+- 复制到 Azure。
 - 复制到辅助 VMM 站点
 
 如果你想要复制到辅助 VMM 位置，但部署中只有单个 VMM 服务器时该怎么办？
 
 这种情况下，你有多种选择：
 
-- 将 VMM 云中的 Hyper-V VM 复制到 Azure。[详细了解](/documentation/articles/site-recovery-vmm-to-azure)此方案。
+- 将 VMM 云中的 Hyper-V VM 复制到 Azure。[详细了解](/documentation/articles/site-recovery-vmm-to-azure/)此方案。
 - 在单个 VMM 服务器上的云之间复制。
 
 我们建议你采用第一种选择，因为在第二种选择中，故障转移和恢复不是无缝的，需要执行许多手动步骤。如果要在站点之间复制而不是复制到 Azure，你可以使用多个选项。
@@ -52,13 +52,13 @@
 4. 在 Hyper-V 管理器控制台中，在包含 VMM VM 的 Hyper-V 主机上启用 Hyper-V 副本，在 VM 上启用复制。请确保不将 VMM 虚拟机添加到受 Site Recovery 保护的云中，使得 Hyper-V 副本设置不会被 Site Recovery 重写。
 5. 如果需要创建恢复计划，则请为源和目标指定同一 VMM 服务器。
 
-按照[此文](/documentation/articles/site-recovery-vmm-to-vmm)中的说明创建保管库、获取密钥、注册服务器并设置保护。
+按照[此文](/documentation/articles/site-recovery-vmm-to-vmm/)中的说明创建保管库、获取密钥、注册服务器并设置保护。
 
 ### 中断后
 
 发生中断时，请恢复 Hyper-V VM 上的工作负荷，如下所示：
 
-1. 使用 Hyper-V 管理器通过计划的故障转移将 VMM VM 手动故障转移到辅助站点。 
+1. 使用 Hyper-V 管理器通过计划的故障转移将 VMM VM 手动故障转移到辅助站点。
 2. 恢复 VMM VM 以后，你可以从辅助站点登录到 Hyper-V 恢复管理器，然后运行非计划的故障转移将 VM 从辅助站点故障转移到主站点。注意，在能够进行工作负荷 VM 的故障转移之前，必须手动进行从 VMM VM 到辅助站点的故障转移。
 3. 完成非计划的故障转移之后，可再次通过主站点访问所有资源。
 
@@ -82,11 +82,11 @@
 
 ## 后续步骤
 
-[详细了解](/documentation/articles/site-recovery-vmm-to-vmm)有关 VMM 到 VMM 复制的站点恢复部署信息。
+[详细了解](/documentation/articles/site-recovery-vmm-to-vmm/)有关 VMM 到 VMM 复制的 Site Recovery 部署信息。
 
 
 
 
  
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0725_2016-->

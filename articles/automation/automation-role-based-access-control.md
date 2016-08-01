@@ -5,13 +5,13 @@
    description="基于角色的访问控制 (RBAC) 可用于对 Azure 资源进行访问管理。本文介绍如何设置 Azure 自动化中的 RBAC。"
    services="automation"
    documentationCenter=""
-   authors="SnehaGunda"
-   manager="stevenka"
+   authors="mgoedtel"
+   manager="jwhit"
    editor="tysonn"
    keywords="自动化 rbac, 基于角色的访问控制, azure rbac" />
 <tags 
 	ms.service="automation"
-	ms.date="05/10/2016"
+	ms.date="06/20/2016"
 	wacn.date=""/>
 
 # Azure 自动化中基于角色的访问控制
@@ -26,13 +26,102 @@
 
 |**角色** | **说明** |
 |:--- |:---|
-| 所有者 | 所有者角色允许访问自动化帐户中的所有资源和操作，包括访问其他用户、组和应用程序以管理自动化帐户。 |
-| 参与者 | 参与者角色允许你管理所有事项，修改其他用户对自动化帐户的访问权限除外。 |
-| 读取器 | 读者角色允许你查看自动化帐户中的所有资源，但不能进行任何更改。 |
-| 自动化操作员 | 自动化操作员角色允许你执行作业的启动、停止、暂停、恢复和计划等操作任务。如果你想要防止他人查看或修改你的自动化帐户资源（例如凭据资产和 Runbook），但仍允许所在组织的成员执行这些 Runbook，则可使用此角色。[自动化操作员操作](/documentation/articles/role-based-access-built-in-roles/#automation-operator)列出了自动化操作员角色所支持的针对自动化帐户及其资源的操作。 |
-| 用户访问管理员 | 用户访问管理员角色允许你管理用户对 Azure 自动化帐户的访问。 |
+| 所有者 | “所有者”角色允许访问自动化帐户中的所有资源和操作，包括访问其他用户、组和应用程序以管理自动化帐户。 |
+| 参与者 | “参与者”角色允许你管理所有事项，修改其他用户对自动化帐户的访问权限除外。 |
+| 读取器 | “读者”角色允许你查看自动化帐户中的所有资源，但不能进行任何更改。|
+| 自动化运算符 | “自动化操作员”角色允许你执行作业的启动、停止、暂停、恢复和计划等操作任务。如果你想要防止他人查看或修改你的自动化帐户资源（例如凭据资产和 Runbook），但仍允许所在组织的成员执行这些 Runbook，则可使用此角色。 |
+| 用户访问管理员 | “用户访问管理员”角色允许你管理用户对 Azure 自动化帐户的访问。 |
 
-在本文中，我们将指导你在 Azure 自动化中设置 RBAC。
+>[AZURE.NOTE] 你不能授予对特定 Runbook 的访问权限，而只能授予对自动化帐户中的资源和操作的访问权限。
+
+在本文中，我们将指导你在 Azure 自动化中设置 RBAC。不过，首先让我们仔细地看一下授予参与者、读者、自动化操作员和用户访问管理员的各个权限，以便我们在授予任何人对自动化帐户的权限之前更好地理解这些权限。否则，它可能导致意外或不良后果。
+
+## “参与者”角色权限
+
+下表列出了可以由自动化中的“参与者”角色执行的特定操作。
+
+| **资源类型** | **读取** | **写入** | **删除** | **其他操作** |
+|:--- |:---|:--- |:---|:--- |
+| Azure 自动化帐户 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | 
+| 自动化证书资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | |
+| 自动化连接资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | 
+| 自动化连接类型资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | 
+| 自动化凭据资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | |
+| 自动化计划资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | |
+| 自动化变量资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | |
+| 自动化所需状态配置 | | | | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) |
+| 混合 Runbook 辅助角色资源类型 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | 
+| Azure 自动化作业 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | 
+| 自动化作业流 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| 自动化作业计划 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | |
+| 自动化模块 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | |
+| Azure 自动化 Runbook | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) |
+| 自动化 Runbook 草稿 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) |
+| 自动化 Runbook 草稿测试作业 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | 
+| 自动化 Webhook | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) |
+
+## “读者”角色权限
+
+下表列出了可以由自动化中的“读者”角色执行的特定操作。
+
+| **资源类型** | **读取** | **写入** | **删除** | **其他操作** |
+|:--- |:---|:--- |:---|:--- |
+| 经典订阅管理员 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | 
+| 管理锁 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | 
+| 权限 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | |
+| 提供程序操作 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | 
+| 角色分配 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | 
+| 角色定义 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | 
+
+## “自动化操作员”角色权限
+
+下表列出了可以由自动化中的“自动化操作员”角色执行的特定操作。
+
+| **资源类型** | **读取** | **写入** | **删除** | **其他操作** |
+|:--- |:---|:--- |:---|:--- |
+| Azure 自动化帐户 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | 
+| 自动化证书资产 | | | |
+| 自动化连接资产 | | | |
+| 自动化连接类型资产 | | | |
+| 自动化凭据资产 | | | |
+| 自动化计划资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | |
+| 自动化变量资产 | | | |
+| 自动化所需状态配置 | | | | |
+| 混合 Runbook 辅助角色资源类型 | | | | | 
+| Azure 自动化作业 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | 
+| 自动化作业流 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | |  
+| 自动化作业计划 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | |
+| 自动化模块 | | | |
+| Azure 自动化 Runbook | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | |
+| 自动化 Runbook 草稿 | | | |
+| 自动化 Runbook 草稿测试作业 | | | |  
+| 自动化 Webhook | | | |
+
+有关更多详细信息，[自动化操作员操作](/documentation/articles/role-based-access-built-in-roles/#automation-operator)列出了自动化操作员角色所支持的针对自动化帐户及其资源的操作。
+
+## “用户访问管理员”角色权限
+
+下表列出了可以由自动化中的“用户访问管理员”角色执行的特定操作。
+
+| **资源类型** | **读取** | **写入** | **删除** | **其他操作** |
+|:--- |:---|:--- |:---|:--- |
+| Azure 自动化帐户 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | |
+| 自动化证书资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | |
+| 自动化连接资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | |
+| 自动化连接类型资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | |
+| 自动化凭据资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | |
+| 自动化计划资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | |
+| 自动化变量资产 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | |
+| 自动化所需状态配置 | | | | |
+| 混合 Runbook 辅助角色资源类型 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| Azure 自动化作业 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| 自动化作业流 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| 自动化作业计划 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | |
+| 自动化模块 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | |
+| Azure 自动化 Runbook | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | |
+| 自动化 Runbook 草稿 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | |
+| 自动化 Runbook 草稿测试作业 | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | | | 
+| 自动化 Webhook | ![绿色状态](./media/automation-role-based-access-control/green-checkmark.png) | | |
 
 ## 使用 Azure 门户为自动化帐户配置 RBAC
 
@@ -42,7 +131,7 @@
 
     ![访问按钮](./media/automation-role-based-access-control/automation-01-access-button.png)
 
->[AZURE.NOTE]  **订阅管理员**已作为默认用户存在。订阅管理员 Active Directory 组包括 Azure 订阅的服务管理员和共同管理员。服务管理员是 Azure 订阅及其资源的所有者，并且还会让自动化帐户的所有者角色继承下去。这意味着，访问权限对于订阅的**服务管理员和共同管理员**是**继承的**，而对于所有其他用户是**分配的**。单击“订阅管理员”可查看有关其权限的更多详细信息。
+>[AZURE.NOTE] **订阅管理员**已作为默认用户存在。订阅管理员 Active Directory 组包括 Azure 订阅的服务管理员和共同管理员。服务管理员是 Azure 订阅及其资源的所有者，并且还会让自动化帐户的所有者角色继承下去。这意味着，访问权限对于订阅的**服务管理员和共同管理员**是**继承的**，而对于所有其他用户是**分配的**。单击“订阅管理员”可查看有关其权限的更多详细信息。
 
 ### 添加新用户并分配角色
 
@@ -58,19 +147,21 @@
 
     ![添加用户](./media/automation-role-based-access-control/automation-04-add-users.png)
  
-现在，你会看到添加到“用户”边栏选项卡且被分配了“读者”角色的用户。
+    现在，你会看到添加到“用户”边栏选项卡且被分配了“读者”角色的用户。
 
-![列出用户](./media/automation-role-based-access-control/automation-05-list-users.png)
+    ![列出用户](./media/automation-role-based-access-control/automation-05-list-users.png)
 
-你也可以通过“角色”边栏选项卡向用户分配角色。单击“用户”边栏选项卡中的“角色”以打开“角色”边栏选项卡。在该边栏选项卡中，你可以查看角色的名称以及分配给该角色的用户和组的数目。
+    你也可以通过“角色”边栏选项卡向用户分配角色。
 
-![从用户边栏选项卡分配角色](./media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
+1. 单击“用户”边栏选项卡中的“角色”以打开“角色”边栏选项卡。在该边栏选项卡中，你可以查看角色的名称以及分配给该角色的用户和组的数目。
+
+    ![从用户边栏选项卡分配角色](./media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
    
->[AZURE.NOTE] 基于角色的访问控制只能在自动帐户级别设置，不能在自动帐户下的任何资源上设置。
+    >[AZURE.NOTE] 基于角色的访问控制只能在自动帐户级别设置，不能在自动帐户下的任何资源上设置。
 
-可以将多个角色分配给用户、组或应用程序。例如，如果将“自动化操作员”角色和“读者”角色一起添加到用户，用户就可以查看所有自动化资源并执行 Runbook 作业。你可以展开下拉列表，以便查看分配给用户的角色的列表。
+    可以将多个角色分配给用户、组或应用程序。例如，如果将“自动化操作员”角色和“读者”角色一起添加到用户，用户就可以查看所有自动化资源并执行 Runbook 作业。你可以展开下拉列表，以便查看分配给用户的角色的列表。
 
-![查看多个角色](./media/automation-role-based-access-control/automation-07-view-multiple-roles.png)
+    ![查看多个角色](./media/automation-role-based-access-control/automation-07-view-multiple-roles.png)
  
 ### 删除用户
 
@@ -112,34 +203,35 @@
 
 还可以使用以下 [Azure PowerShell cmdlet](/documentation/articles/role-based-access-control-manage-access-powershell/) 为自动化帐户配置基于角色的访问权限。
 
-• [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/zh-cn/library/mt603792.aspx) 列出 Azure Active Directory RBAC 中提供的所有角色。你可以使用此命令和 **Name** 属性来列出具有特定角色的所有用户。  
+• [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/zh-cn/library/mt603792.aspx) 列出 Azure Active Directory 中提供的所有 RBAC 角色。你可以使用此命令和 **名称** 属性来列出特定角色可以执行的所有操作。  
     **示例：**  
     ![获取角色定义](./media/automation-role-based-access-control/automation-14-get-azurerm-role-definition.png)
 
-• [Get-AzureRmRoleAssignment](https://msdn.microsoft.com/zh-cn/library/mt619413.aspx) 列出指定作用域的 Azure RBAC 角色分配。在没有任何参数的情况下，此命令返回在订阅下进行的所有角色分配。使用 **ExpandPrincipalGroups** 参数可列出针对指定用户和该用户所在组的访问权限分配。  
+• [Get-AzureRmRoleAssignment](https://msdn.microsoft.com/zh-cn/library/mt619413.aspx) 列出指定作用域的 Azure AD RBAC 角色分配。在没有任何参数的情况下，此命令返回在订阅下进行的所有角色分配。使用 **ExpandPrincipalGroups** 参数可列出针对指定用户和该用户所在组的访问权限分配。  
     **示例：**使用以下命令列出自动化帐户中的所有用户及其角色。
 
     Get-AzureRMRoleAssignment -scope "/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>" 
 
 ![获取角色分配](./media/automation-role-based-access-control/automation-15-get-azurerm-role-assignment.png)
 
-• [New-AzureRmRoleAssignment](https://msdn.microsoft.com/zh-cn/library/mt603580.aspx)：授予对特定作用域的用户、组和应用程序的访问权限。  
-    **示例：**使用以下命令为“自动化帐户”作用域的用户创建新的“自动化操作员”角色。
+• [New-AzureRmRoleAssignment](https://msdn.microsoft.com/zh-cn/library/mt603580.aspx)：为特定作用域的用户、组和应用程序分配访问权限。  
+    **示例：**使用以下命令为“自动化帐户”作用域的用户分配“自动化操作员”角色。
 
     New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName "Automation operator" -Scope "/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>"  
 
 ![新建角色分配](./media/automation-role-based-access-control/automation-16-new-azurerm-role-assignment.png)
 
-• 使用 [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/zh-cn/library/mt603781.aspx) 删除对特定作用域的指定用户、组或应用程序的访问权限。**示例：**使用以下命令为“自动化帐户”作用域的用户创建新的“自动化操作员”角色。
+• 使用 [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/zh-cn/library/mt603781.aspx) 从特定作用域中删除指定用户、组或应用程序的访问权限。  
+    **示例：**使用以下命令从自动化帐户作用域的“自动化操作员”角色中删除用户。
 
-    Remove-AzureRmRoleAssignment -SignInName "<sign-in Id of a user you wish to remove>" -RoleDefinitionName "Automation Operator" -Scope "/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>"
+    Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName "Automation Operator" -Scope "/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation Account Name>"
 
-在上述 cmdlet 中，请将登录名称、订阅 ID、资源组名称和自动化帐户名称替换为你的帐户详细信息。当系统提示你继续操作以删除角色分配时，请选择“是”。
+在上述示例中，请将**登录 ID**、**订阅 ID**、**资源组名称**和**自动化帐户名称**替换为你的帐户详细信息。出现提示时选择“是”以在继续删除用户角色分配前确认。
 
 
 ## 后续步骤
 -  有关为 Azure 自动化配置 RBAC 的不同方式的信息，请参阅[使用 Azure PowerShell 管理 RBAC](/documentation/articles/role-based-access-control-manage-access-powershell/)。
-- 有关以不同方式启动 runbook 的详细信息，请参阅 [Starting a runbook（启动 runbook）](/documentation/articles/automation-starting-a-runbook/)
-- 有关不同类型的信息，请参阅 [Azure 自动化 runbook 类型](/documentation/articles/automation-runbook-types/)
+- 有关以不同方式启动 Runbook 的详细信息，请参阅 [Starting a runbook（启动 Runbook）](/documentation/articles/automation-starting-a-runbook/)
+- 有关不同 Runbook 类型的信息，请参阅 [Azure 自动化 Runbook 类型](/documentation/articles/automation-runbook-types/)
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0725_2016-->

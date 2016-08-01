@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="04/08/2016"
+	ms.date="06/24/2016"
 	wacn.date=""/>
 
 # 使用 Blob 存储的本地应用程序
@@ -22,8 +22,8 @@
 
 - 已安装 Java 开发人员工具包 (JDK) 版本1.6 或更高版本。
 - 已安装 Azure SDK。
-- 适用于 Azure Libraries for Java 的 JAR 以及任何适用的依赖项 JAR 已安装并且位于 Java 编译器使用的生成路径中。有关安装 Azure Libraries for Java 的信息，请参阅[下载 Azure SDK for Java](/documentation/articles/java-download-azure-sdk)。
-- 已设置了一个 Azure 存储帐户。本文中的代码将使用存储帐户的帐户名称和帐户密钥。有关创建存储帐户的信息，请参阅[如何创建存储帐户](/documentation/articles/storage-create-storage-account#create-a-storage-account)；有关检索帐户密钥的信息，请参阅[查看并复制存储访问密钥](/documentation/articles/storage-create-storage-account#view-and-copy-storage-access-keys)。
+- 适用于 Azure Libraries for Java 的 JAR 以及任何适用的依赖项 JAR 已安装并且位于 Java 编译器使用的生成路径中。若要了解如何安装用于 Java 的 Azure Libraries，请参阅[下载用于 Java 的 Azure SDK](/documentation/articles/java-download-azure-sdk/)。
+- 已设置了一个 Azure 存储帐户。本文中的代码将使用存储帐户的帐户名称和帐户密钥。有关创建存储帐户的信息，请参阅[如何创建存储帐户](/documentation/articles/storage-create-storage-account/#create-a-storage-account)；有关检索帐户密钥的信息，请参阅[查看并复制存储访问密钥](/documentation/articles/storage-create-storage-account/#view-and-copy-storage-access-keys)。
 
 - 您已创建存储在路径 c:\\myimages\\image1.jpg 处的已命名本地图像文件。或者，在示例中修改 **FileInputStream** 构造函数以使用其他图像路径和文件名。
 
@@ -347,7 +347,7 @@
         }
     }
 
-有关其他 Blob 存储类和方法的概述，请参阅[如何通过 Java 使用 Blob 存储](/documentation/articles/storage-java-how-to-use-blob-storage)。
+有关其他 Blob 存储类和方法的概述，请参阅[如何通过 Java 使用 Blob 存储](/documentation/articles/storage-java-how-to-use-blob-storage/)。
 
 ## 后续步骤
 
@@ -358,5 +358,4 @@
 - [Azure 存储空间服务 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx)
 - [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 
-
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0725_2016-->

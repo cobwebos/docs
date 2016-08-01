@@ -1,15 +1,15 @@
 <properties
-	pageTitle="如何通过 Java 使用 Azure Blob 存储 | Azure"
+	pageTitle="如何通过 Java 使用 Azure Blob 存储（对象存储）| Azure"
 	description="使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
 	services="storage"
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe"/>
+	editor=""/>
 
 <tags
 	ms.service="storage"
-	ms.date="05/04/2016"
+	ms.date="06/24/2016"
 	wacn.date=""/>
 
 # 如何通过 Java 使用 Blob 存储
@@ -17,6 +17,8 @@
 [AZURE.INCLUDE [storage-selector-blob-include](../includes/storage-selector-blob-include.md)]
 
 ## 概述
+
+Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中的服务。Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。Blob 存储也称为对象存储。
 
 本文将演示如何使用 Microsoft Azure Blob 存储执行常见任务。这些示例用 Java 编写并使用 [Azure Storage SDK for Java][]。涉及的任务包括**上载**、**列出**、**下载**和**删除** Blob。有关 Blob 的详细信息，请参阅[后续步骤](#Next-Steps)部分。
 
@@ -265,4 +267,4 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 [Azure 存储 REST API]: https://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0725_2016-->

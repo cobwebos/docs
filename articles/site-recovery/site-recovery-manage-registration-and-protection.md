@@ -9,12 +9,12 @@
 
 <tags 
 	ms.service="site-recovery" 
-	ms.date="02/22/2016" 
+	ms.date="07/12/2016" 
 	wacn.date=""/>
 
 # 删除服务器并禁用保护
 
-Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略，因为它可以协调虚拟机和物理服务器的复制、故障转移和恢复。虚拟机可复制到 Azure 中，也可复制到本地数据中心中。如需快速概览，请阅读[什么是 Azure Site Recovery？](/documentation/articles/site-recovery-overview)
+Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略，因为它可以协调虚拟机和物理服务器的复制、故障转移和恢复。虚拟机可复制到 Azure 中，也可复制到本地数据中心中。如需快速概览，请阅读[什么是 Azure Site Recovery？](/documentation/articles/site-recovery-overview/)
 
 ## 概述
 
@@ -40,12 +40,12 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 1. 从 Azure 门户取消注册 VMM 服务器。
 2. 在 VMM 服务器上，下载清理脚本。
 3. 使用“以管理员身份运行”选项打开 PowerShell，以更改默认 (LocalMachine) 范围的执行策略。
-4. 根据脚本中的说明操作。 
+4. 根据脚本中的说明操作。
 
 在包含的云与你要删除的服务器上的云配对的 VMM 服务器上：
 
 1. 运行清理脚本，然后执行步骤 2 至 4。
-2. 指定已取消注册的 VMM 服务器的 VMM ID。 
+2. 指定已取消注册的 VMM 服务器的 VMM ID。
 3. 此脚本将删除 VMM 服务器的注册信息以及云配对信息。
 
 
@@ -55,7 +55,7 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 
 1. 对 Hyper-V 服务器上的虚拟机禁用保护。
 2. 在 Azure Site Recovery 门户中的“服务器”选项卡上选择服务器，然后选择“删除”。执行此操作时，服务器不需要连接到 Azure。
-3. 运行以下脚本以清理服务器上的设置，并从保管库中取消注册该服务器。 
+3. 运行以下脚本以清理服务器上的设置，并从保管库中取消注册该服务器。
 
 	    pushd .
 	    try
@@ -216,4 +216,4 @@ Azure Site Recovery 服务有助于业务连续性和灾难恢复 (BCDR) 策略�
 	
 		![删除选项](./media/site-recovery-manage-registration-and-protection/remove-vm.png)
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0725_2016-->

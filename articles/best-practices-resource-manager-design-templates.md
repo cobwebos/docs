@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure Resource Manager 模板最佳实践 | Azure"
+	pageTitle="Resource Manager 模板中的模式 | Azure"
 	description="演示 Azure 资源管理器模板的设计模式"
 	services="azure-resource-manager"
 	documentationCenter=""
@@ -9,10 +9,10 @@
 
 <tags
 	ms.service="azure-resource-manager"
-	ms.date="03/23/2016"
+	ms.date="06/13/2016"
 	wacn.date=""/>
 
-# 设计 Azure 资源管理器模板的最佳实践
+# 用于设计 Azure Resource Manager 模板的模式
 
 在与企业、系统集成商 (SI)、云服务供应商 (CSV) 和开放源代码软件 (OSS) 项目团队合作时，经常需要快速部署环境、工作负荷或缩放单位。这些部署需要受到支持，根据经过实证的做法执行，并遵循既有的策略。基于 Azure 资源管理器模板使用弹性方法，可以快速一致地部署复杂拓扑，然后随着核心产品的演进轻松缩放这些部署，或者适应外来方案或客户的变化。
 
@@ -141,7 +141,7 @@ DSC 可以使用最热门机制的一些资源扩展 - PowerShell DSC、Chef 和
 
 表面上，自由格式配置听起来很实用。它们允许你选择 VM 类型，并提供任意数目的节点以及这些节点的附加磁盘用作模板的参数。但是，当你进一步了解并考虑将要部署多个不同大小的虚拟机的模板时，会出现其他一些因素，使得这种选择在许多情况下并不合适。
 
-[Sizes for virtual machines](/documentation/articles/virtual-machines-windows-sizes)（虚拟机的大小）中已介绍了不同的 VM 类型和可用大小，以及每种可附加的持久性磁盘数目（2、4、8、16 或 32）。每个附加的磁盘提供 500 IOPS，可将这些磁盘的倍数组建成池，以成倍提高 IOPS 数目。例如，可将 16 个磁盘组建成池，以提供 8,000 IOPS。可以使用 Microsoft Windows 存储空间或者在 Linux 使用价格便宜的磁盘冗余阵列 (RAID)，使用操作系统中的配置来实现池的组建。
+[虚拟机大小](/documentation/articles/virtual-machines-windows-sizes/)介绍了不同的 VM 类型和可用大小，以及每种可附加的持久性磁盘数目（2、4、8、16 或 32）。每个附加的磁盘提供 500 IOPS，可将这些磁盘的倍数组建成池，以成倍提高 IOPS 数目。例如，可将 16 个磁盘组建成池，以提供 8,000 IOPS。可以使用 Microsoft Windows 存储空间或者在 Linux 使用价格便宜的磁盘冗余阵列 (RAID)，使用操作系统中的配置来实现池的组建。
 
 自由格式配置可让你选择多个 VM 实例、多个适用于这些实例的不同 VM 类型和大小、多个可根据 VM 类型而有所不同的磁盘，以及一个或多个脚本来配置 VM 内容。
 
@@ -378,4 +378,4 @@ Redis 只使用单一节点类型，因此你将要创建名为 node-resources.j
 - 至于如何在 Azure 资源管理器中处理安全事项，请参阅 [Azure 资源管理器的安全注意事项](best-practices-resource-manager-security.md)以获取相关建议
 - 若要了解进出模板的状态，请参阅[共享 Azure 资源管理器模板中的状态](best-practices-resource-manager-state.md)。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0725_2016-->

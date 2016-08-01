@@ -10,10 +10,9 @@
 <tags
 	ms.service="automation"
 	ms.date="05/10/2016"
-	wacn.date="06/17/2016"/>
+	wacn.date=""/>
 
 # Azure 自动化概述
-
 
 借助 Azure 自动化，用户可以自动完成通常要在云环境和企业环境中执行的手动、长时间进行、易出错且重复性高的任务。它可以节省时间，可以提高常规管理任务的可靠性，甚至可以将这些任务安排成按特定的时间间隔自动执行。你可以使用 Runbook 实现这些过程的自动化，或者使用 Desired State Configuration 实现配置管理的自动化。本文概述了 Azure 自动化并回答了一些常见问题。您可以参考此库中的其他文章，以了解有关不同主题的更多详细信息。
 
@@ -27,8 +26,17 @@ Runbook 是 Azure 自动化中执行某些自动化过程的一组任务。它�
 
 ## Runbook 可以自动化哪些任务？
 
+[AZURE.ACOM]{
+
+Azure 自动化中的 Runbook 均基于 Windows PowerShell 或 Windows PowerShell 工作流，因此它们能够执行 PowerShell 可以完成的任何工作。如果应用程序或服务具有一个 API，Runbook 可以使用它。如果你有一个用于该应用程序的 PowerShell 模块，可以将该模块加载到 Azure 自动化中，并在 Runbook 中包括这些 cmdlet。Azure 自动化 Runbook 在 Azure 云中运行，因此可以访问任何云资源或者那些可从云中访问的外部资源。使用[混合 Runbook 辅助角色](/documentation/articles/automation-hybrid-runbook-worker/)，Runbook 可以在您的本地数据中心运行以管理本地资源。
+
+[AZURE.ACOM]}
+
+[AZURE.ACN]{
+
 在 Azure 自动化中的 Runbook 均基于 Windows PowerShell 工作流，因此它们能够执行 PowerShell 可以完成的任何工作。如果应用程序或服务具有一个 API，Runbook 可以使用它。如果你有一个用于该应用程序的 PowerShell 模块，可以将该模块加载到 Azure 自动化中，并在 Runbook 中包括这些 cmdlet。Azure 自动化 Runbook 在 Azure 云中运行，因此可以访问任何云资源或者那些可从云中访问的外部资源。
 
+[AZURE.ACN]}
 
 ## 从社区获取 Runbook
 
@@ -37,49 +45,99 @@ Runbook 是 Azure 自动化中执行某些自动化过程的一组任务。它�
 
 ## 使用 Azure 自动化创建 Runbook 
 
-您可以从头开始[创建您自己的 Runbook](/documentation/articles/automation-creating-importing-runbook)，根据您自己的要求修改[Runbook 库](/documentation/articles/automation-runbook-gallery)中的 Runbook。WindowsAzure.cn 中只有一个 Runbook 类型。你可以使用一个 PowerShell 工作流 Runbook，该 Runbook 可以脱机进行编辑，也可以在 Azure 管理门户中通过[文本编辑器](/documentation/articles/automation-edit-textual-runbook)进行编辑。
+[AZURE.ACOM]{
+
+您可以从头开始[创建您自己的 Runbook](/documentation/articles/automation-creating-importing-runbook/)，根据您自己的要求修改[Runbook 库](/documentation/articles/automation-runbook-gallery/)中的 Runbook。有三种不同的 [Runbook 类型](/documentation/articles/automation-runbook-types/)，你可以根据自己的需求和 PowerShell 体验从中进行选择。如果你想要直接使用 PowerShell 代码，则可以使用 [PowerShell Runbook](/documentation/articles/automation-runbook-types/#powershell-runbooks) 或 [PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/#powershell-workflow-runbooks)，这两种你可以脱机编辑或使用 Azure 门户中的[文本编辑器](/documentation/articles/automation-edit-textual-runbook/)进行编辑。如果你想要在不公开给底层代码的情况下编辑 Runbook，则可以使用 Azure 门户中的[图形编辑器](/documentation/articles/automation-graphical-authoring-intro/)创建[图形 Runbook](/documentation/articles/automation-runbook-types/#graphical-runbooks)。
+
+[AZURE.ACOM]}
+
+[AZURE.ACN]{
+
+您可以从头开始[创建您自己的 Runbook](/documentation/articles/automation-creating-importing-runbook/)，根据您自己的要求修改[Runbook 库](/documentation/articles/automation-runbook-gallery/)中的 Runbook。WindowsAzure.cn 中只有一个 Runbook 类型。你可以使用 PowerShell 工作流 Runbook，该 Runbook 可以脱机编辑，也可以使用 Azure 经典管理门户中的[文本编辑器](/documentation/articles/automation-edit-textual-runbook/)进行编辑。
+
+[AZURE.ACN]}
+
+[AZURE.ACOM]{
+
+你更喜欢观看视频而不喜欢阅读文档？ 请看一下下面的来自 2015 年 5 月 Microsoft Ignite 会话的视频。请注意：虽然此视频中所述的概念和功能是正确的，但 Azure 自动化自录制此视频以来已取得很大进展，它现在具有 Azure 门户中更广泛的 UI，并支持其他功能。
+
+> [AZURE.VIDEO microsoft-ignite-2015-automating-operational-and-management-tasks-using-azure-automation]
+
+[AZURE.ACOM]}
+
+[AZURE.ACOM]{
+
+## 使用所需状态配置自动执行配置管理 
+
+[PowerShell DSC](https://technet.microsoft.com/zh-cn/library/dn249912.aspx) 是一个管理平台，可让你使用声明性 PowerShell 语法管理、部署和强制实施物理主机和虚拟机的配置。你可以在中央 DSC 拉取服务器上定义目标计算机可自动检索和应用的配置。DSC 提供一组可用于管理配置和资源的 PowerShell cmdlet。
+
+[Azure 自动化 DSC](/documentation/articles/automation-dsc-overview/) 是一个针对 PowerShell DSC 的基于云的解决方案，可提供企业环境所需的服务。你可以在 Azure 自动化中管理 DSC 资源，并将配置应用于从 Azure 云中的 DSC 拉取服务器检索配置的虚拟机或物理计算机。它还提供报告服务，以通知你重要的事件，如在节点偏离其所分配的配置时，以及已应用新配置时。
+
+
+## 使用 Azure 自动化创建你自己的 DSC 配置
+
+[DSC 配置](/documentation/articles/automation-dsc-overview/#azure-automation-dsc-terms)指定节点的所需状态。多个节点可应用同一配置，以确保它们都保持相同状态。可以在本地计算机上使用任何文本编辑器创建配置，然后将其导入 Azure 自动化中，你可以在其中编译配置并将其应用于节点。
+
+[AZURE.ACOM]}
 
 ## 获取模块和配置 
 
-你可以获取包含 cmdlet 的 [PowerShell 模块](/documentation/articles/automation-runbook-gallery#modules-in-powershell-gallery)，这些 cmdlet 可以用于 [PowerShell 库](http://www.powershellgallery.com/)中的 Runbook。你可以下载并手动导入它们。你不能直接从 Azure 管理门户安装这些模块，但可以在下载之后进行安装，就像使用其他模块一样。
+[AZURE.ACOM]{
+
+你可以获取包含 cmdlet 的 [PowerShell 模块](/documentation/articles/automation-runbook-gallery/#modules-in-powershell-gallery)，这些 cmdlet 可以用于 [PowerShell 库](http://www.powershellgallery.com/)中的 Runbook 和 DSC 配置。你可以从 Azure 门户启动此库，并将模块直接导入到 Azure 自动化中，也可以下载并手动导入这些模块。你不能直接从 Azure 门户安装这些模块，但可以在下载之后进行安装，就像使用其他模块一样。
+
+[AZURE.ACOM]}
+
+[AZURE.ACN]{
+
+你可以获取包含 cmdlet 的 [PowerShell 模块](/documentation/articles/automation-runbook-gallery/#modules-in-powershell-gallery)，这些 cmdlet 可以用于 [PowerShell 库](http://www.powershellgallery.com/)中的 Runbook。你可以下载并手动导入它们。你不能直接从 Azure 经典管理门户安装这些模块，但可以在下载之后进行安装，就像使用任何其他模块一样。
+
+[AZURE.ACN]}
 
 
 ## Azure 自动化实际应用示例 
 
 以下是一些使用 Azure 自动化的自动化方案种类的示例。
 
-* 在不同的 Azure 订阅中创建和复制虚拟机。 
-* 计划文件复制操作，以便将文件从本地计算机复制到 Azure Blob 存储容器。 
-* 自动执行各种安全功能，例如在检测到拒绝服务攻击时拒绝来自某个客户端的请求。 
+* 在不同的 Azure 订阅中创建和复制虚拟机。
+* 计划文件复制操作，以便将文件从本地计算机复制到 Azure Blob 存储容器。
+* 自动执行各种安全功能，例如在检测到拒绝服务攻击时拒绝来自某个客户端的请求。
 * 确保计算机始终符合配置的安全策略。
-* 通过管理确保在云和本地基础结构中对应用程序代码进行连续的部署。 
-* 针对你的实验室环境在 Azure 中构建 Active Directory 林。 
-* 如果 SQL 数据库即将达到其最大大小，则截断数据库中的表。 
-* 远程更新 Azure 网站的环境设置。 
+* 通过管理确保在云和本地基础结构中对应用程序代码进行连续的部署。
+* 针对你的实验室环境在 Azure 中构建 Active Directory 林。
+* 如果 SQL 数据库即将达到其最大大小，则截断数据库中的表。
+* 远程更新 Azure 网站的环境设置。
 
+
+[AZURE.ACOM]{
 
 ## Azure 自动化如何与其他自动化工具关联？
 
-[Service Management 自动化(SMA)](http://technet.microsoft.com/zh-cn/library/dn469260.aspx) 用于自动处理私有云中的管理任务。它作为 [Azure Pack](https://www.microsoft.com/server-cloud/) 的组件本地安装在你的数据中心中。SMA 和 Azure 自动化使用基于 Windows PowerShell 工作流的相同的 Runbook 格式。
+[Service Management 自动化(SMA)](http://technet.microsoft.com/zh-cn/library/dn469260.aspx) 用于自动处理私有云中的管理任务。它作为 [Azure Pack](https://www.microsoft.com/server-cloud/) 的组件本地安装在你的数据中心中。SMA 和 Azure 自动化使用基于 Windows PowerShell 和 Windows PowerShell 工作流的相同 Runbook 格式，但 SMA 不支持[图形 Runbook](/documentation/articles/automation-graphical-authoring-intro/)。
 
 [System Center 2012 Orchestrator](http://technet.microsoft.com/zh-cn/library/hh237242.aspx) 适用于本地资源的自动化。它使用与 Azure 自动化和 Service Management 自动化不同的 Runbook 格式，并且具有图形界面，可用于创建 Runbook 而无需编写任何脚本。它的 Runbook 由专门为 Orchestrator 编写的集成包中的活动构成。
 
+[AZURE.ACOM]}
 
 ## 从哪里可以获得详细信息？ 
 
 我们提供了多种资源，以帮助您了解有关 Azure 自动化的信息以及学习如何创建您自己的 Runbook。
 
-* “Azure 自动化库”就是您当前正在查看的资源。该库中的文章提供了有关配置和管理 Azure 自动化以及创作自己的 Runbook 的完整文档。 
-* [Azure PowerShell cmdlet](http://msdn.microsoft.com/zh-cn/library/jj156055.aspx) 提供了有关使用 Windows PowerShell 自动完成 Azure 操作的信息。Runbook 使用这些 cmdlet 来处理 Azure 资源。 
-* [管理博客](https://azure.microsoft.com/blog/tag/azure-automation)提供有关 Azure 自动化以及 Microsoft 的其他管理技术的最新信息。欢迎订阅 Azure 自动化博客，随时了解 Azure 自动化团队提供的最新信息。 
-* [自动化论坛](http://go.microsoft.com/fwlink/p/?LinkId=390561)允许您提出有关 Azure 自动化的问题，并将由 Microsoft 和自动化社区提供解答。 
-* [Azure 自动化 Cmdlet](https://msdn.microsoft.com/zh-cn/library/mt244122.aspx) 提供有关管理任务自动化的信息。它包含的 cmdlet 可用于管理自动化帐户、资产、Runbook。
-
+* “Azure 自动化库”就是您当前正在查看的资源。该库中的文章提供了有关配置和管理 Azure 自动化以及创作自己的 Runbook 的完整文档。
+* [Azure PowerShell cmdlet](http://msdn.microsoft.com/zh-cn/library/jj156055.aspx) 提供了有关使用 Windows PowerShell 自动完成 Azure 操作的信息。Runbook 使用这些 cmdlet 来处理 Azure 资源。
+* [AZURE.ACOM]{
+* [管理博客](https://azure.microsoft.com/blog/tag/azure-automation/)提供有关 Azure 自动化以及 Microsoft 的其他管理技术的最新信息。欢迎订阅 Azure 自动化博客，随时了解 Azure 自动化团队提供的最新信息。
+* [AZURE.ACOM]}
+* [自动化论坛](https://social.msdn.microsoft.com/Forums/azure/zh-cn/home?forum=azureautomation)允许您提出有关 Azure 自动化的问题，并将由 Microsoft 和自动化社区提供解答。
+* [AZURE.ACOM]{
+* [Azure 自动化 Cmdlet](https://msdn.microsoft.com/zh-cn/library/mt244122.aspx) 提供有关管理任务自动化的信息。它包含的 cmdlet 可用于管理自动化帐户、资产、Runbook、DSC。
+* [AZURE.ACOM]}
+* [AZURE.ACN]{
+* [Azure 自动化 Cmdlet](https://msdn.microsoft.com/zh-cn/library/dn690262.aspx) 提供有关管理任务自动化的信息。它包含的 cmdlet 可用于管理自动化帐户、资产、Runbook。
+* [AZURE.ACN]}
 
 ## 我是否可以提供反馈？ 
 
 **欢迎提供反馈！** 如果您正在寻找 Azure 自动化 Runbook 解决方案或集成模块，请在脚本中心发布脚本请求。如果您有关于 Azure 自动化的反馈或功能请求，请将其发布在[用户之声](/product-feedback)。谢谢！
 
-
-
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0725_2016-->

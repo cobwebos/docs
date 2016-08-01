@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="site-recovery"
-	ms.date="12/14/2015"
+	ms.date="07/06/2016"
 	wacn.date=""/>
 
 # 使用 Site Recovery 进行本地到本地 Hyper-V 复制的性能测试和缩放结果
@@ -101,7 +101,7 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 ### 结束语
 
-我们的结果清晰地表明，与 Hyper-V 副本配合使用的 Azure Site Recovery 可以针对大型群集以最小的开销很好地进行扩展。Azure Site Recovery 提供了简单的部署、复制、管理和监视。Hyper-V 副本为成功进行复制扩展提供了必要的基础结构。为规划最佳的部署，建议你下载 [Hyper-V 副本容量规划器](https://www.microsoft.com/zh-cn/download/details.aspx?id=39057)。
+我们的结果清晰地表明，与 Hyper-V 副本配合使用的 Azure Site Recovery 可以针对大型群集以最小的开销很好地进行扩展。Azure Site Recovery 提供了简单的部署、复制、管理和监视。Hyper-V 副本为成功进行复制扩展提供了必要的基础结构。为规划最佳的部署，建议你下载 [Hyper-V 副本容量规划器](https://www.microsoft.com/en-us/download/details.aspx?id=39057)。
 
 ## 测试环境详细信息
 
@@ -150,7 +150,7 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 |工作负载|I/O 大小 (KB)|访问百分比|读取百分比|未完成的 I/O|I/O 模式|
 |---|---|---|---|---|---|
 |文件服务器|48163264|60%20%5%5%10%|80%80%80%80%80%|88888|全部 100% 随机|
-|SQL Server（卷 1）SQL Server（卷 2）|864|100%100%|70%0%|88|100% 随机100% 连续|
+|SQL Server（卷 1）SQL Server（卷 2）|864|100%100%|70%0%|88|100% 随机 100% 连续|
 |Exchange|32|100%|67%|8|100% 随机|
 |工作站/VDI|464|66%34%|70%95%|11|两者都 100% 随机|
 |Web 文件服务器|4864|33%34%33%|95%95%95%|888|全部 75% 随机|
@@ -202,8 +202,8 @@ Hyper-V 副本使用恢复服务器上的少量内存来使存储操作数量最
 
 ## 后续步骤
 
-- [设置两个本地 VMM 站点之间的保护](/documentation/articles/site-recovery-vmm-to-vmm)
+- [设置两个本地 VMM 站点之间的保护](/documentation/articles/site-recovery-vmm-to-vmm/)
 
  
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0725_2016-->

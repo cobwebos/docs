@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="02/21/2016"
+	ms.date="07/14/2016"
 	wacn.date=""/> 
 
 # Azure AD Connect Health 操作
@@ -48,11 +48,20 @@
 
 #### 从 Azure AD Connect Health Service 中删除服务器的步骤
 
+用于 AD FS 和 Azure AD Connect (Sync) 的 Azure AD Connect Health：
+
 1. 通过选择要删除的服务器名称，从“服务器列表”边栏选项卡中打开“服务器”边栏选项卡。
 2. 在“服务器”边栏选项卡中，单击操作栏中的“删除”按钮。
 3. 在确认框中键入服务器名称，以便确认删除服务器的操作。
 4. 单击“删除”按钮。
 
+用于 AD DS 的 Azure AD Connect Health：
+
+1. 打开域控制器仪表板。
+2. 选择要删除的域控制器。
+3. 单击操作栏中的“删除所选项”按钮。
+4. 确认删除服务器的操作。
+5. 单击“删除”按钮。
 
 ### 从 Azure AD Connect Health Service 中删除服务实例
 
@@ -71,7 +80,8 @@
 1. 通过选择要删除的服务标识符（场名称），从“服务列表”边栏选项卡中打开“服务”边栏选项卡。
 2. 在“服务器”边栏选项卡中，单击操作栏中的“删除”按钮。
 3. 在确认框中键入服务名称（例如 sts.contoso.com）进行确认。
-4. 单击“删除”按钮。<br><br>
+4. 单击“删除”按钮。
+<br><br>
 
 
 [//]: # "启动 RBAC 部分"
@@ -124,7 +134,8 @@ Azure AD Connect 支持两个级别的管理访问：
 
 #### 步骤 3：与用户或组共享边栏选项卡位置
 1. 分配权限后，用户可以转到 [http://aka.ms/aadconnecthealth](http://aka.ms/aadconnecthealth) 来访问 Azure AD Connect Health。
-2. 在边栏选项卡上，用户只需单击“固定到仪表板”，即可将边栏选项卡或其他部件固定到仪表板<br> ![Azure AD Connect Health RBAC 中的固定边栏选项卡](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
+2. 在边栏选项卡上，用户只需单击“固定到仪表板”，即可将边栏选项卡或其他部件固定到仪表板<br>
+![Azure AD Connect Health RBAC 中的固定边栏选项卡](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
 
 
 >[AZURE.NOTE] 分配有“读取者”角色的用户无法执行“创建”操作来从 Azure 应用商店获取 Azure AD Connect Health 扩展。但此用户仍可转到上述链接来访问边栏选项卡。为方便后续使用，用户可以将边栏选项卡固定到仪表板。
@@ -137,11 +148,11 @@ Azure AD Connect 支持两个级别的管理访问：
 
 ## 相关链接
 
-* [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health)
-* [Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install)
-* [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs)
-* [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync)
-* [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
-* [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history)
+* [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health/)
+* [Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install/)
+* [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs/)
+* [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync/)
+* [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq/)
+* [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history/)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0725_2016-->

@@ -10,7 +10,7 @@
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="03/30/2016" 
+	ms.date="07/01/2016" 
 	wacn.date=""/>
 
 # DocumentDB 简介：一种 NoSQL JSON 数据库
@@ -28,25 +28,27 @@ Azure DocumentDB 是一个完全托管的 NoSQL 数据库服务，其构建目�
 -	[什么是 DocumentDB 以及它对现代应用程序有哪些价值？](#what-is-azure-documentdb)
 -	[DocumentDB 是如何管理我的数据的，以及我如何访问该数据库？](#data-management)
 -	[如何使用 DocumentDB 开发应用程序？](#develop)
--	[构建一个 DocumentDB 应用程序的后续步骤有哪些？](#next-steps)  
+-	[构建一个 DocumentDB 应用程序的后续步骤有哪些？](#next-steps)
 
 ## 什么是 Azure DocumentDB？  
 
 现代应用程序生成、使用并快速响应非常大量的数据。这些应用程序发展非常迅速，相应的底层数据架构也是如此。为适应这种形势，开发人员日益倾向于选择无架构的 NoSQL 文档数据库作为存储和处理数据的简单、快速和可扩展的解决方案，并且该数据库同时保留了快速循环访问应用程序数据模型和非结构化数据源的功能。但是，许多无架构数据库无法进行复杂的查询和事务处理，这使高级数据管理变得困难。这正是 DocumentDB 的用武之地。在管理当今应用程序的数据时，Microsoft 开发了 DocumentDB 来满足这些需求。
 
-DocumentDB 是针对当今的移动、Web、游戏和 IoT 应用程序设计的一个真正无架构的 NoSQL 数据库服务。DocumentDB 提供了持续快速的读取和写入功能、架构灵活性，以及能够根据需要轻松扩大和减小数据库规模的功能。无需为已建立索引的 JSON 文档假设或要求任何架构。默认情况下，将自动对数据库中的所有文档创建索引，并且无需期望或要求任何架构或创建二级索引。DocumentDB 可使用 SQL 语言进行复杂的即席查询，支持定义完好的一致性级别，并且提供使用存储过程、触发器和 UDF 的熟悉编程模型的集成了 JavaScript 语言的多文档事务处理。
+DocumentDB 是针对当今的移动、Web、游戏和 IoT 应用程序设计的一个真正无架构的 NoSQL 数据库服务。DocumentDB 可确保在 10 毫秒内完成 99% 的读取操作，并且在 15 毫秒内完成 99% 的写入操作。而且它的构架灵活性，可以根据需求轻松缩放数据库规模。无需为已建立索引的 JSON 文档假设或要求任何架构。默认情况下，将自动对数据库中的所有文档创建索引，并且无需期望或要求任何架构或创建二级索引。DocumentDB 可使用 SQL 语言进行复杂的即席查询，支持定义完好的一致性级别，并且提供使用存储过程、触发器和 UDF 的熟悉编程模型的集成了 JavaScript 语言的多文档事务处理。
 
 作为一种 JSON 数据库，DocumentDB 原生支持启用了应用程序架构简单迭代的 JSON 文档，并且支持需要键/值、文档或表格数据模型的应用程序。DocumentDB 采用广泛普及的 JSON 和 JavaScript 语言，消除了应用程序定义的对象和数据库架构之间的不匹配。对 JavaScript 的深度集成还允许开发人员在数据库事务中，在数据库引擎内高效而直接地执行应用程序逻辑。
 
 Azure DocumentDB 具有以下主要功能和优势：
 
--	**可灵活增减的吞吐量和存储：**轻松增大或减小 DocumentDB JSON 数据库规模来满足你的应用程序的需求。你的数据存储在固态硬盘 (SSD) 上，以实现可预测的低延迟。DocumentDB 支持使用容器来存储称为集合的 JSON 数据，这些数据可以扩展到几乎无限的存储大小和设置的吞吐量。随着应用程序规模的增长，你可以灵活无缝地扩展具有可预测的性能的 DocumentDB。 
+-	**可灵活增减的吞吐量和存储：**轻松增大或减小 DocumentDB JSON 数据库规模来满足你的应用程序的需求。你的数据存储在固态硬盘 (SSD) 上，以实现可预测的低延迟。DocumentDB 支持使用容器来存储称为集合的 JSON 数据，这些数据可以扩展到几乎无限的存储空间大小和设置的吞吐量。随着应用程序规模的增长，你可以灵活无缝地扩展具有可预测的性能的 DocumentDB。
 
--	**使用熟悉的 SQL 语法进行即席查询：**在 DocumentDB 中存储异类 JSON 文档，并通过熟悉的 SQL 语法查询这些文档。DocumentDB 使用高并发、无锁、日志结构化索引技术为所有文档内容自动创建索引。这样可以实现各种实时查询，而无需指定架构提示、二级索引或视图。要了解更多信息，请参阅[查询 DocumentDB](documentdb-sql-query.md)。
+-	**多区域复制：**DocumentDB 以透明方式将数据复制到与你的 DocumentDB 帐户关联的所有区域，使你可以开发那些对全局性数据访问有要求的应用程序，与此同时还在一致性、可用性和性能方面做出权衡，所有这些都有相应的保证。DocumentDB 提供了具有多宿主 API 的透明区域故障转移，还可以弹性缩放全局吞吐量和存储空间。有关详细信息，请参阅[使用 DocumentDB 全局分发数据](/documentation/articles/documentdb-distribute-data-globally)。
 
--	**在数据库中执行 JavaScript：**使用标准 JavaScript 将应用程序逻辑表示为存储过程、触发器和用户定义函数 (UDF)。这样，你的应用程序逻辑可基于数据进行运作，而无需担心应用程序和数据库架构之间的不匹配。DocumentDB 支持在数据库引擎内部直接进行 JavaScript 应用程序逻辑的完全事务执行。对 JavaScript 的深度集成支持在一个 JavaScript 程序中将 INSERT、REPLACE、DELETE 和 SELECT 操作作为独立的事务来执行。要了解更多信息，请参阅 [DocumentDB 服务器端编程](documentdb-programming.md)。
+-	**使用熟悉的 SQL 语法进行即席查询：**在 DocumentDB 中存储异类 JSON 文档，并通过熟悉的 SQL 语法查询这些文档。DocumentDB 使用高并发、无锁、日志结构化索引技术为所有文档内容自动创建索引。这样可以实现各种实时查询，而无需指定架构提示、二级索引或视图。有关详细信息，请参阅 [ DocumentDB 查询](documentdb-sql-query.md)。
 
--	**可调优的一致性级别：**从 4 个定义完好的一致性级别中选择，以实现一致性和性能之间的最佳平衡。对于查询和读取操作，DocumentDB 提供了四种不同的一致性级别：强、有限过时、会话和最终。通过这些细化的定义完好的一致性级别，你可以在一致性、可用性和延迟之间实现合理的平衡。要了解更多信息，请参阅[使用一致性级别最大化 DocumentDB 中的可用性和性能](documentdb-consistency-levels.md)。
+-	**在数据库中执行 JavaScript：**使用标准 JavaScript 将应用程序逻辑表示为存储过程、触发器和用户定义函数 (UDF)。这样，你的应用程序逻辑可基于数据进行运作，而无需担心应用程序和数据库架构之间的不匹配。DocumentDB 支持在数据库引擎内部直接进行 JavaScript 应用程序逻辑的完全事务执行。对 JavaScript 的深度集成支持在一个 JavaScript 程序中将 INSERT、REPLACE、DELETE 和 SELECT 操作作为独立的事务来执行。有关详细信息，请参阅 [DocumentDB 服务器端编程](documentdb-programming.md)。
+
+-	**可调优的一致性级别：**从 4 个定义完好的一致性级别中选择，以实现一致性和性能之间的最佳平衡。对于查询和读取操作，DocumentDB 提供了四种不同的一致性级别：强、有限过时、会话和最终。通过这些细化的定义完好的一致性级别，你可以在一致性、可用性和延迟之间实现合理的平衡。有关详细信息，请参阅[使用一致性级别最大化 DocumentDB 中的可用性和性能](documentdb-consistency-levels.md)。
 
 -	**完全托管：**无需管理数据库和计算机资源。作为一种完全托管的 Microsoft Azure 服务，你无需管理虚拟机、部署并配置软件、管理数据库和资源的增减，或处理复杂的数据层升级。每个数据库都将自动备份，以防受到区域故障的影响。你可以轻松添加 DocumentDB 帐户并按照你的需求设置容量，从而使你专注于你的应用程序而不是操作和管理你的数据库。
 
@@ -98,13 +100,13 @@ DocumentDB 中的 JavaScript 执行是在关系型数据库系统所支持的概
 
 如果你没有 Azure 帐户，则可以：
 
-- 注册 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)，将为你提供 30 天试用期和 200 美元用于试用所有 Azure 服务。 
-- 如果你有 MSDN 订阅，那么你有资格免费获取[每月 150 美元的 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)用于任何 Azure 服务。 
+- 注册 [Azure 免费试用版](/pricing/free-trial/)，以获取 30 天试用期和 200 美元信用额度，可试用所有 Azure 服务。
+- 如果你有 MSDN 订阅，就有资格免费获取[每月 150 美元的 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)，可用于任何 Azure 服务。
 
-然后，当你准备好了解更多信息，请访问我们的[学习途径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)浏览所有可供你使用的学习资源。
+然后，当你准备好了解详细信息，请访问我们的[学习路径](/documentation/learning-paths/documentdb/)浏览所有可供你使用的学习资源。
 
 
 [1]: ./media/documentdb-introduction/json-database-resources1.png
  
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0725_2016-->

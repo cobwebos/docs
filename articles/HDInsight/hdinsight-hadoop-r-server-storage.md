@@ -7,7 +7,8 @@
    documentationCenter=""
    authors="jeffstokes72"
    manager="paulettem"
-   editor="cgronlun"/>
+   editor="cgronlun"
+/>
 
 <tags
 	ms.service="HDInsight"
@@ -16,156 +17,173 @@
 
 # 用于 HDInsight（预览版）上的 R Server 的 Azure 存储选项
 
-HDInsight（预览版）上的 R Server 有权访问 Azure Blob，并且有权访问 [Azure 数据湖存储](/home/features/data-lake-store/)，作为保持分析中的数据、代码、结果对象等的方式。
+HDInsight（预览版）上的 Microsoft R Server 有权访问 Azure Blob，并且有权访问 [Azure Data Lake Storage](/home/features/data-lake-store/)，作为保持分析中的数据、代码、结果对象等的方式。
 
-在 HDInsight 中创建 Hadoop 群集时，将指定 Azure 存储帐户。将该帐户的一个特定 Blob 存储容器指定为对你所创建的群集保存文件系统，即 Hadoop 分布式文件系统 (HDFS)。出于性能目的，HDInsight 群集将在与你指定的主存储帐户相同的数据中心内创建。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](/documentation/articles/hdinsight-hadoop-use-blob-storage "将 Azure Blob 存储与 HDInsight 配合使用")。
+在 HDInsight 中创建 Hadoop 群集时，将指定 Azure 存储帐户。该帐户中的一个特定 Blob 存储容器可为你所创建的群集保存文件系统（例如 Hadoop 分布式文件系统）。出于性能目的，HDInsight 群集将在与你指定的主存储帐户相同的数据中心内创建。有关详细信息，请参阅[将 Azure Blob 存储与 HDInsight 配合使用](/documentation/articles/hdinsight-hadoop-use-blob-storage/ "将 Azure Blob 存储与 HDInsight 配合使用")。
 
 
 ## 使用多个 Azure Blob 存储帐户
 
-如果需要，可以使用 HDI 群集访问多个 Azure 存储帐户或容器。为此，需要在创建群集时在用户界面中指定其他存储帐户，并按照下列步骤进行操作，以在 R 中使用它们。
+如果需要，可以使用 HDI 群集访问多个 Azure 存储帐户或容器。为此，需要在创建群集时在 UI 中指定其他存储帐户，并按照下列步骤进行操作，以在 R 中使用它们。
 
-1.	假设使用存储帐户名“storage1”并使用默认容器“container1”创建 HDInsight 群集。你还指定了其他存储帐户“storage2”。
-2.	现在，将文件“mycsv.csv”复制到目录“/share”，并且想要对该文件执行分析。
+1.	使用存储帐户名 **storage1** 并使用名为 **container1** 的默认容器创建 HDInsight 群集。
+2. 指定名为 **storage2** 的另一个存储帐户。
+3. 将 mycsv.csv 文件复制到 /share 目录，然后对该文件执行分析。
 
-	    hadoop fs -mkdir /share
-	    hadoop fs -copyFromLocal myscsv.scv /share  
+````
+hadoop fs -mkdir /share
+hadoop fs -copyFromLocal myscsv.scv /share  
+````
 
-3.	在 R 代码中，将名称节点设置为“default”，并将你的目录和文件设置为处理
+3.	在 R 代码中，将名称节点设置为 **default**，并设置要处理的目录和文件。
 
-	    myNameNode <- "default"
-	    myPort <- 0
+````
+myNameNode <- "default"
+myPort <- 0
+````
 
-  数据的位置
+  数据的位置：
 
     bigDataDirRoot <- "/share"  
 
-  定义 Spark 计算上下文
+  定义 Spark 计算上下文：
 
     mySparkCluster <- RxSpark(consoleOutput=TRUE)
 
-  设置计算上下文
+  设置计算上下文：
 
     rxSetComputeContext(mySparkCluster)
 
-  定义 HDFS 文件系统
+  定义 Hadoop 分布式文件系统 (HDFS)：
 
     hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 
-  指定 HDFS 中要分析的输入文件
+  指定 HDFS 中要分析的输入文件：
 
     inputFile <-file.path(bigDataDirRoot,"mycsv.csv")
- 
-所有目录和文件引用均指向存储帐户，wasb://container1@storage1.blob.core.chinacloudapi.cn因为这是与 HDInsight 群集相关联的**默认存储帐户**。
 
-现在假设你想要处理位于存储帐户名“storage2”上容器“container2”中的目录“/private”中的名为“mySpecial.csv”的文件。
+所有目录和文件引用都指向存储帐户 wasb://container1@storage1.blob.core.chinacloudapi.cn。这是与 HDInsight 群集关联的**默认存储帐户**。
 
-在 R 代码中，将名称节点引用更改为“storage2”存储帐户。
+现在，假设你要处理名为 mySpecial.csv 的文件，其所在位置为 **storage2** 的 **container2** 中的 /private 目录。
+
+在 R 代码中，将名称节点引用指向 **storage2** 存储帐户。
 
     myNameNode <- "wasb://container2@storage2.blob.core.chinacloudapi.cn"
     myPort <- 0
 
-  数据的位置
+  数据的位置：
 
     bigDataDirRoot <- "/private"
 
-  定义 Spark 计算上下文
+  定义 Spark 计算上下文：
 
     mySparkCluster <- RxSpark(consoleOutput=TRUE)
 
-  设置计算上下文
+  设置计算上下文：
 
     rxSetComputeContext(mySparkCluster)
 
-  定义 HDFS 文件系统
+  定义 HDFS 文件系统：
 
     hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 
-  指定 HDFS 中要分析的输入文件
+  指定 HDFS 中要分析的输入文件：
 
     inputFile <-file.path(bigDataDirRoot,"mySpecial.csv")
- 
-所有目录和文件引用现在均指向存储帐户，wasb://container2@storage2.blob.core.chinacloudapi.cn因为这是你已指定的**名称节点**。
 
-请注意，将必须配置存储帐户“storage2”上的 /user/RevoShare/<SSH 用户名> 目录：
+所有目录和文件引用现在指向存储帐户 wasb://container2@storage2.blob.core.chinacloudapi.cn。这是你指定的**名称节点**。
+
+请注意，必须在 **storage2** 上配置 /user/RevoShare/<SSH 用户名> 目录，如下所示：
 
     hadoop fs -mkdir wasb://container2@storage2.blob.core.chinacloudapi.cn/user
     hadoop fs -mkdir wasb://container2@storage2.blob.core.chinacloudapi.cn/user/RevoShare
     hadoop fs -mkdir wasb://container2@storage2.blob.core.chinacloudapi.cn/user/RevoShare/<RDP username>
 
-## 使用 Azure 数据湖存储
+## 使用 Azure Data Lake Store
 
-若要配合 HDInsight 帐户使用 Azure 数据湖存储，需要使群集有权访问你想要使用的每个 Azure 数据湖存储，然后以类似于上述使用辅助 Azure 存储帐户的方式，在 R 脚本中引用该存储。
+若要以 HDInsight 帐户使用 Data Lake Store，必须允许群集访问你要使用的每个 Azure Data Lake Store。在 R 脚本中使用该存储的方式与使用辅助存储帐户的方式（如上一过程中所述）非常类似。
 
-## 为群集添加 Azure 数据湖存储访问权限
+## 为群集添加 Azure Data Lake Store 访问权限
 
-对 Azure 数据湖存储的访问是通过使用与 HDInsight 群集关联的 Azure Active Directory (AAD) 服务主体建立的。若要在创建 HDInsight 群集时添加服务主体，请单击“数据源”选项卡中的“群集 AAD 标识”选项，然后单击“新建”以创建服务主体。为服务主体指定名称和密码后，将打开一个新选项卡，让你将该该服务主体与 Azure 数据湖存储相关联。
+可以使用与 HDInsight 群集关联的 Azure Active Directory (Azure AD) 服务主体来访问 Data Lake Store。
 
-请注意，以后你也可以通过在 Azure 门户中打开 Azure 数据湖存储，然后转到“数据资源管理器”->“访问”，来添加对 Azure 数据湖存储的访问权限。以下示例对话框显示了如何创建服务主体并将其关联到 "rkadl11" Azure 数据湖存储。
+### 添加服务主体
+1. 创建 HDInsight 群集时，请在“数据源”选项卡中选择“群集 AAD 标识”。
+2. 在“群集 AAD 标识”对话框中的“选择 AD 服务主体”下面，选择“新建”。
 
-![创建 ADL 存储服务主体 1](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp1.png)
+为服务主体命名并创建密码后，将会打开一个新选项卡，你可以在其中将该服务主体与 Data Lake Store 相关联。
+
+请注意，以后你也可以通过在 Azure 门户中打开 Data Lake Store，然后转到“数据资源管理器”>“访问”，来添加对 Data Lake Store 的访问权限。下面是一个对话框示例，其中显示了如何创建服务主体，并将它与“rkadl11”Data Lake Store 相关联。
+
+![创建 Data Lake Store 服务主体 1](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp1.png)
 
 
-![创建 ADL 存储服务主体 2](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp2.png)
+![创建 Data Lake Store 服务主体 2](./media/hdinsight-hadoop-r-server-storage/hdinsight-hadoop-r-server-storage-adls-sp2.png)
 
-## 在 R Server 中使用 Azure 数据湖存储
-使用群集服务主体提供对 Azure 数据湖存储的访问权限之后，你可以像使用辅助 Azure 存储帐户时一样，在 HDInsight 上的 R Server 中使用该存储。唯一的差别在于，要将 wasb:// 前缀更改为 adl://。
+## 在 R Server 中使用 Data Lake Store
+获取 Data Lake Store 访问权限后，便可以在 HDInsight 上的 R Server 中使用 Data Lake Store，其使用方式与使用辅助 Azure 存储帐户类似。唯一的差别在于，前缀 **wasb://** 需更改为 **adl://**，如下所示：
 
-	# point to the ADL store (e.g. ADLtest) 
-	myNameNode <- "adl://rkadl1.azuredatalakestore.net"
-	myPort <- 0
-	
-	# Location of the data (assumes a /share directory on the ADL account) 
-	bigDataDirRoot <- "/share"  
-	
-	# define Spark compute context
-	mySparkCluster <- RxSpark(consoleOutput=TRUE)
-	
-	# set compute context
-	rxSetComputeContext(mySparkCluster)
-	
-	# define HDFS file system
-	hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
-	
-	# specify the input file in HDFS to analyze
-	inputFile <-file.path(bigDataDirRoot,"AirlineDemoSmall.csv")
-	
-	# create Factors for days of the week
-	colInfo <- list(DayOfWeek = list(type = "factor",
-	               levels = c("Monday", "Tuesday", "Wednesday", "Thursday",
-	                          "Friday", "Saturday", "Sunday")))
-	
-	# define the data source 
-	airDS <- RxTextData(file = inputFile, missingValueString = "M",
-	                    colInfo  = colInfo, fileSystem = hdfsFS)
-	
-	# Run a linear regression
-	model <- rxLinMod(ArrDelay~CRSDepTime+DayOfWeek, data = airDS)
+````
+# Point to the ADL store (e.g. ADLtest)
+myNameNode <- "adl://rkadl1.azuredatalakestore.net"
+myPort <- 0
 
-> [AZURE.NOTE] 以下命令用于结合 RevoShare 目录配置 Azure 数据湖存储帐户，并添加上述示例中所述的示例 CSV 文件：
+# Location of the data (assumes a /share directory on the ADL account)
+bigDataDirRoot <- "/share"  
 
-	hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user 
-	hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user/RevoShare 
-	hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user/RevoShare/<user>
-	
-	hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/share
-	
-	hadoop fs -copyFromLocal /usr/lib64/R Server-7.4.1/library/RevoScaleR/SampleData/AirlineDemoSmall.csv adl://rkadl1.azuredatalakestore.net/share
-	
-	hadoop fs -ls adl://rkadl1.azuredatalakestore.net/share
+# Define Spark compute context
+mySparkCluster <- RxSpark(consoleOutput=TRUE)
 
-## 在边缘节点上使用 Azure 文件 
+# Set compute context
+rxSetComputeContext(mySparkCluster)
 
-还可以选择在边缘节点上使用名为 [Azure 文件](/documentation/articles/storage-how-to-use-files-linux "Azure 文件")的方便数据存储，允许你装载共享到 Linux 文件系统的 Azure 存储空间文件。对比 HDFS，如果可以在边缘节点上使用本机文件系统，则存储数据文件、R 脚本以及随后可能需要的结果对象将更方便。使用 Azure 文件的最大优点是通过支持的 OS (Win，Linux) 任何系统均可装载并使用文件共享，例如，你或者团队中的其他人拥有的另一个 HDInsight 群集、Azure VM 或者甚至是本地系统。
+# Define HDFS file system
+hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
+
+# Specify the input file in HDFS to analyze
+inputFile <-file.path(bigDataDirRoot,"AirlineDemoSmall.csv")
+
+# Create factors for days of the week
+colInfo <- list(DayOfWeek = list(type = "factor",
+               levels = c("Monday", "Tuesday", "Wednesday", "Thursday",
+                          "Friday", "Saturday", "Sunday")))
+
+# Define the data source
+airDS <- RxTextData(file = inputFile, missingValueString = "M",
+                    colInfo  = colInfo, fileSystem = hdfsFS)
+
+# Run a linear regression
+model <- rxLinMod(ArrDelay~CRSDepTime+DayOfWeek, data = airDS)
+````
+
+以下命令用于结合 RevoShare 目录配置 Data Lake 存储帐户，并添加上述示例所述的示例 .csv 文件：
+
+````
+hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user
+hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user/RevoShare
+hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user/RevoShare/<user>
+
+hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/share
+
+hadoop fs -copyFromLocal /usr/lib64/R Server-7.4.1/library/RevoScaleR/SampleData/AirlineDemoSmall.csv adl://rkadl1.azuredatalakestore.net/share
+
+hadoop fs -ls adl://rkadl1.azuredatalakestore.net/share
+````
+
+## 在边缘节点上使用 Azure 文件
+
+还有一个可在边缘节点上使用的便利数据存储选项，我们称之为 [Azure 文件](/documentation/articles/storage-how-to-use-files-linux/ "Azure 文件")。使用该选项可将 Azure 存储空间的文件共享装载到 Linux 文件系统。对比 HDFS，如果可以在边缘节点上使用本机文件系统，则存储数据文件、R 脚本以及随后可能需要的结果对象将更方便。
+
+使用 Azure 文件的主要好处之一是，装有受支持 OS（例如 Windows 或 Linux）的系统都可以装载和使用文件共享。例如，你自己或者团队成员拥有的另一个 HDInsight 群集、Azure VM 甚至本地系统均可使用 Azure 文件。
 
 
 ## 后续步骤
 
-现在，你已了解如何创建包括 R Server 的新 HDInsight 群集，以及从 SSH 会话使用 R 控制台的基础知识，请使用以下资源发现使用 HDInsight 上的 R Server 的其他方法。
+现在，你已了解有关如何从 SSH 会话使用 R 控制台，以及创建包括 R Server 的新 HDInsight 群集的基础知识，请使用以下链接探索使用 HDInsight 上的 R Server 的其他方法。
 
-- [Overview of R Server on Hadoop（Hadoop 上的 R Server 概述）](/documentation/articles/hdinsight-hadoop-r-server-overview)
-- [Get started with R server on Hadoop（Hadoop 上的 R Server 入门）](/documentation/articles/hdinsight-hadoop-r-server-get-started)
-- [Add RStudio Server to HDInsight premium（将 RStudio Server 添加到 HDInsight 高级版）](/documentation/articles/hdinsight-hadoop-r-server-install-r-studio)
-- [Compute context options for R Server on HDInsight premium（用于 HDInsight 高级版上的 R Server 的计算上下文选项）](/documentation/articles/hdinsight-hadoop-r-server-compute-contexts)
+- [Overview of R Server on HDInsight（HDInsight 上的 R Server 概述）](/documentation/articles/hdinsight-hadoop-r-server-overview/)
+- [Get started with R server on Hadoop（Hadoop 上的 R Server 入门）](/documentation/articles/hdinsight-hadoop-r-server-get-started/)
+- [Add RStudio Server to HDInsight premium（将 RStudio Server 添加到 HDInsight 高级版）](/documentation/articles/hdinsight-hadoop-r-server-install-r-studio/)
+- [Compute context options for R Server on HDInsight（适用于 HDInsight 上的 R Server 的计算上下文选项）](/documentation/articles/hdinsight-hadoop-r-server-compute-contexts/)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0725_2016-->

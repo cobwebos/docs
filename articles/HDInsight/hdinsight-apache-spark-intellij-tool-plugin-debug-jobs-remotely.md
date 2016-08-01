@@ -1,6 +1,6 @@
 <!-- not suitable for Mooncake -->
 
-<properties
+ <properties
 	pageTitle="使用 IntelliJ IDEA 的 HDInsight 插件远程调试 HDInsight Spark 群集上运行的应用程序 | Azure"
 	description="了解如何使用 IntelliJ IDEA 的 HDInsight 插件远程调试 HDInsight Spark 群集上运行的应用程序。"
 	services="hdinsight"
@@ -12,7 +12,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="06/09/2016"
+	ms.date="07/06/2016"
 	wacn.date=""/>
 
 
@@ -34,13 +34,13 @@
 
 * Azure 订阅。请参阅[获取 Azure 试用版](/pricing/1rmb-trial/)。
 
-* HDInsight Linux 上的 Apache Spark 群集。有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](/documentation/articles/hdinsight-apache-spark-jupyter-spark-sql)。
+* HDInsight Linux 上的 Apache Spark 群集。有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](/documentation/articles/hdinsight-apache-spark-jupyter-spark-sql/)。
  
 * Oracle Java 开发工具包。可以从[此处](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)安装它。
  
 * IntelliJ IDEA。本文使用版本 15.0.1。可以从[此处](https://www.jetbrains.com/idea/download/)安装它。
  
-* IntelliJ IDEA 的 HDInsight 工具插件。有关安装该插件的说明，请参阅 [Install HDInsight Tools plugin for IntelliJ IDEA](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin#install-hdinsight-tools-plugin-for-intellij-idea)（安装 IntelliJ IDEA 的 HDInsight 工具插件）。
+* IntelliJ IDEA 的 HDInsight 工具插件。IntelliJ IDEA 的 HDInsight 工具插件作为 Azure Toolkit for IntelliJ 的一部分提供。有关 Azure Toolkit 安装方式的说明，请参阅[安装 Azure Toolkit for IntelliJ](/documentation/articles/azure-toolkit-for-intellij-installation/)。
  
 * 在 Windows 计算机上运行 Spark Scala 应用程序以进行远程调试时，可能会发生 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的异常，发生该异常是由于在 Windows 中缺少 WinUtils.exe。若要解决此错误，必须[从此处下载该可执行文件](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe)到相应位置（例如 **C:\\WinUtils\\bin**）。然后必须添加环境变量 **HADOOP\_HOME**，并将该变量的值设置为 **C\\WinUtils**。
 
@@ -48,13 +48,13 @@
 
 遵循以下链接中的说明创建 Azure 虚拟网络，然后确认台式机与 Azure 虚拟网络之间的连接。
 
-* [使用 Azure 门户创建具有站点到站点 VPN 连接的 VNet](..\vpn-gateway\vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-* [使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet](..\vpn-gateway\vpn-gateway-create-site-to-site-rm-powershell.md)
-* [使用 PowerShell 配置与虚拟网络的点到站点连接](..\vpn-gateway\vpn-gateway-howto-point-to-site-rm-ps.md)
+* [使用 Azure 门户创建具有站点到站点 VPN 连接的 VNet](/documentation/articles/vpn-gateway-howto-site-to-site-resource-manager-portal/)
+* [使用 PowerShell 创建具有站点到站点 VPN 连接的 VNet](/documentation/articles/vpn-gateway-create-site-to-site-rm-powershell/)
+* [使用 PowerShell 配置与虚拟网络的点到站点连接](/documentation/articles/vpn-gateway-howto-point-to-site-rm-ps/)
 
 ## 步骤 2：创建 HDInsight Spark 群集
 
-还应该在 Azure HDInsight 上创建属于所创建 Azure 虚拟网络一部分的 Apache Spark 群集。参考 [Create Linux-based clusters in HDInsight](/documentation/articles/hdinsight-provision-clusters-v1)（在 HDInsight 中创建基于 Linux 的群集）中提供的信息。请选择在上一步骤中创建的 Azure 虚拟网络作为可选配置的一部分。
+还应该在 Azure HDInsight 上创建属于所创建 Azure 虚拟网络一部分的 Apache Spark 群集。请使用[在 HDInsight 中创建基于 Linux 的群集](/documentation/articles/hdinsight-provision-clusters-v1/)中提供的信息。请选择在上一步骤中创建的 Azure 虚拟网络作为可选配置的一部分。
 
 ## 步骤 3：验证群集头节点与台式机之间的连接
 
@@ -91,7 +91,7 @@
 
 5. 在连接到 HDInsight 群集所用 Azure 虚拟网络的计算机中，验证是否能够使用该 IP 地址和主机名 ping 到两个头节点。
 
-6. 参考 [Connect to an HDInsight cluster using SSH](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows#connect-to-a-linux-based-hdinsight-cluster)（使用 SSH 连接到 HDInsight 群集）中的说明，通过 SSH 连接到群集头节点。从群集头节点 ping 台式机的 IP 地址。应该测试是否能够连接到分配给计算机的两个 IP 地址，其中一个是网络连接的地址，另一个是计算机所连接到的 Azure 虚拟网络的地址。
+6. 按[使用 SSH 连接到 HDInsight 群集](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/#connect-to-a-linux-based-hdinsight-cluster)中说明，通过 SSH 连接到群集头节点。从群集头节点，对台式机的 IP 地址执行 ping 操作。应该测试是否能够连接到分配给计算机的两个 IP 地址，其中一个是网络连接的地址，另一个是计算机所连接到的 Azure 虚拟网络的地址。
 
 7. 针对其他头节点重复上述步骤。
 
@@ -113,7 +113,7 @@
 
 		![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-version.png)
 
-	* 对于“Spark SDK”，请从[此处](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)下载并使用该 SDK。你也可以忽略过此字段并改用“[Spark Maven 存储库](http://mvnrepository.com/search?q=spark)”，不过请确保已安装正确的 Maven 存储库，以便能够开发 Spark 应用程序。（例如，如果你使用 Spark Streaming，则需要确保已安装 Spark Streaming 部件；另请确保使用标记为 Scala 2.10 的存储库 - 不要使用标记为 Scala 2.11 的存储库。）
+	* 对于“Spark SDK”，请从[此处](http://go.microsoft.com/fwlink/?LinkID=723585&clcid=0x409)下载并使用该 SDK。你也可以忽略过此字段并改用“Spark Maven 存储库”，不过请确保已安装正确的 Maven 存储库，以便能够开发 Spark 应用程序。[](http://mvnrepository.com/search?q=spark)（例如，如果你使用 Spark Streaming，则需要确保已安装 Spark Streaming 部件；另请确保使用标记为 Scala 2.10 的存储库 - 不要使用标记为 Scala 2.11 的存储库。）
 
 		![创建 Spark Scala 应用程序](./media/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
 
@@ -154,7 +154,7 @@
 
 6. 更新 `core-site.xml` 以进行以下更改。
 
-	1. `core-site.xml` 包含与群集关联的存储帐户的已加密密钥。在已添加到项目的 `core-site.xml` 中，将已加密密钥替换为与默认存储帐户关联的实际存储密钥。请参阅 [Manage your storage access keys](..\storage\storage-create-storage-account.md#manage-your-storage-account)（管理存储访问密钥）。
+	1. `core-site.xml` 包含与群集关联的存储帐户的已加密密钥。在已添加到项目的 `core-site.xml` 中，将已加密密钥替换为与默认存储帐户关联的实际存储密钥。请参阅[管理存储访问密钥](/documentation/articles/storage-create-storage-account/#manage-your-storage-account)。
 
 			<property>
 	      		<name>fs.azure.account.key.hdistoragecentral.blob.core.chinacloudapi.cn</name>
@@ -304,42 +304,44 @@
 ## <a name="seealso"></a>另请参阅
 
 
-* [概述：Azure HDInsight 上的 Apache Spark](/documentation/articles/hdinsight-apache-spark-overview)
+* [概述：Azure HDInsight 上的 Apache Spark](/documentation/articles/hdinsight-apache-spark-overview/)
 
 ### 方案
 
-* [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](/documentation/articles/hdinsight-apache-spark-use-bi-tools)
+* [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](/documentation/articles/hdinsight-apache-spark-use-bi-tools/)
 
-* [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](/documentation/articles/hdinsight-apache-spark-ipython-notebook-machine-learning)
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](/documentation/articles/hdinsight-apache-spark-ipython-notebook-machine-learning/)
 
-* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](/documentation/articles/hdinsight-apache-spark-machine-learning-mllib-ipython)
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](/documentation/articles/hdinsight-apache-spark-machine-learning-mllib-ipython/)
 
-* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-eventhub-streaming)
+* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-eventhub-streaming/)
 
-* [使用 HDInsight 中的 Spark 分析网站日志](/documentation/articles/hdinsight-apache-spark-custom-library-website-log-analysis)
+* [使用 HDInsight 中的 Spark 分析网站日志](/documentation/articles/hdinsight-apache-spark-custom-library-website-log-analysis/)
 
 ### 创建和运行应用程序
 
-* [使用 Scala 创建独立的应用程序](/documentation/articles/hdinsight-apache-spark-create-standalone-application)
+* [使用 Scala 创建独立的应用程序](/documentation/articles/hdinsight-apache-spark-create-standalone-application/)
 
-* [使用 Livy 在 Spark 群集中远程运行作业](/documentation/articles/hdinsight-apache-spark-livy-rest-interface)
+* [使用 Livy 在 Spark 群集中远程运行作业](/documentation/articles/hdinsight-apache-spark-livy-rest-interface/)
 
 ### 工具和扩展
 
-* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin)
+* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin/)
 
-* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](/documentation/articles/hdinsight-apache-spark-use-zeppelin-notebook)
+* [使用 Eclipse 的 HDInsight 工具插件创建 Spark 应用程序](/documentation/articles/hdinsight-apache-spark-eclipse-tool-plugin/)
 
-* [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels)
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](/documentation/articles/hdinsight-apache-spark-use-zeppelin-notebook/)
 
-* [Use external packages with Jupyter notebooks](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-use-external-packages)（将外部包与 Jupyter 笔记本配合使用）
+* [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels/)
 
-* [Install Jupyter on your computer and connect to an HDInsight Spark cluster](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-install-locally)（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）
+* [将外部包与 Jupyter 笔记本配合使用](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-use-external-packages/)
+
+* [在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-install-locally/)
 
 ### 管理资源
 
-* [管理 Azure HDInsight 中 Apache Spark 群集的资源](/documentation/articles/hdinsight-apache-spark-resource-manager)
+* [管理 Azure HDInsight 中 Apache Spark 群集的资源](/documentation/articles/hdinsight-apache-spark-resource-manager/)
 
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight](/documentation/articles/hdinsight-apache-spark-job-debugging)（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）
+* [跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业](/documentation/articles/hdinsight-apache-spark-job-debugging/)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0725_2016-->

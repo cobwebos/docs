@@ -24,9 +24,9 @@ Azure Active Directory 是综合性的标识即服务 (IDaaS) 解决方案，其
 ## 访问 Azure 和 Azure Active Directory
 
 
-**问：当我尝试在 Azure 经典门户中访问 Azure AD 时，为何收到“找不到订阅”(https://manage.windowsazure.cn)？**
+**问：当我尝试在 Azure 经典门户中访问 Azure AD 时，为何收到“找不到订阅” (https://manage.windowsazure.cn) ？**
 
-**答：**若要访问 Azure 经典门户，每位用户必须拥有 Azure 订阅的权限。如果你使用付费版 Office 365 或 Azure AD，请导航到 [http://aka.ms/accessAAD](http://aka.ms/accessAAD) 完成一次性的激活步骤，否则需要激活完整的 [Azure 试用版](https://azure.microsoft.com/pricing/free-trial/)或付费版订阅。
+**答：**若要访问 Azure 经典门户，每位用户必须拥有 Azure 订阅的权限。如果你使用付费版 Office 365 或 Azure AD，请导航到 [http://aka.ms/accessAAD](http://aka.ms/accessAAD) 完成一次性的激活步骤，否则需要激活完整的 [Azure 试用版](/pricing/free-trial/)或付费版订阅。
 
 有关详细信息，请参阅：
 
@@ -87,7 +87,7 @@ Azure Active Directory 是综合性的标识即服务 (IDaaS) 解决方案，其
 
 **答：**可以。Azure AD Premium Edition 提供 **Connect Health**。Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。
 
-有关详细信息，请参阅 [Monitor your on-premises identity infrastructure and synchronization services in the cloud（在云中监视本地标识基础结构和同步服务）](active-directory-aadconnect-health.md)。
+有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](/documentation/articles/active-directory-aadconnect-health/)。
 
 ---
 
@@ -198,4 +198,4 @@ Azure Active Directory 是综合性的标识即服务 (IDaaS) 解决方案，其
 
 ---
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0725_2016-->

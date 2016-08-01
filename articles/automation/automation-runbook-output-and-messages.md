@@ -112,7 +112,17 @@ Runbook 作业的详细流将是：
 
 ##<a id="progress-record" name="Progress"></a> 进度记录
 
+[AZURE.ACOM]{
+
+如果你将 Runbook 配置为记录进度记录（在 Azure 门户中 Runbook 的“配置”选项卡上），则在运行每个活动之前和之后，会向作业历史记录中写入一条记录。在大多数情况下，你应该保留默认设置，即，不记录 Runbook 的进度记录，以最大程度地提高性能。启用此选项的目的只是为了排查 Runbook 的问题或对它进行调试。在测试 Runbook 时，将不显示进度消息，即使已将该 Runbook 配置为记录进度记录。
+
+[AZURE.ACOM]}
+
+[AZURE.ACN]{
+
 如果你将 Runbook 配置为记录进度记录（在 Azure 经典管理门户中 Runbook 的“配置”选项卡上），则在运行每个活动之前和之后，会向作业历史记录中写入一条记录。在大多数情况下，你应该保留默认设置，即，不记录 Runbook 的进度记录，以最大程度地提高性能。启用此选项的目的只是为了排查 Runbook 的问题或对它进行调试。在测试 Runbook 时，将不显示进度消息，即使已将该 Runbook 配置为记录进度记录。
+
+[AZURE.ACN]}
 
 [Write-Progress](http://technet.microsoft.com/zh-cn/library/hh849902.aspx) cmdlet 在 Runbook 中无效，因为此 cmdlet 旨在供交互式用户使用。
 
@@ -138,9 +148,21 @@ Windows PowerShell 使用 [preference 变量](http://technet.microsoft.com/zh-cn
 
 ## 检索 Runbook 输出和消息
 
+[AZURE.ACOM]{
+
+### Azure 门户
+
+可以从 Azure 门户中 Runbook 的“作业”选项卡查看 Runbook 作业的详细信息。作业的“摘要”将显示输入参数和[输出流](#Output)，此外，还显示有关作业的一般信息以及发生的任何异常。“历史记录”包含来自[输出流](#Output)以及[警告和错误流](#WarningError)的消息，此外，如果 Runbook 已配置为记录详细记录和进度记录，则该选项卡还包含[详细流](#Verbose)和[进度记录](#Progress)。
+
+[AZURE.ACOM]}
+
+[AZURE.ACN]{
+
 ### Azure 经典管理门户
 
 可以从 Azure 经典管理门户中 Runbook 的“作业”选项卡查看 Runbook 作业的详细信息。作业的“摘要”将显示输入参数和[输出流](#Output)，此外，还显示有关作业的一般信息以及发生的任何异常。“历史记录”包含来自[输出流](#Output)以及[警告和错误流](#WarningError)的消息，此外，如果 Runbook 已配置为记录详细记录和进度记录，则该选项卡还包含[详细流](#Verbose)和[进度记录](#Progress)。
+
+[AZURE.ACN]}
 
 ### Windows PowerShell
 
@@ -148,20 +170,65 @@ Windows PowerShell 使用 [preference 变量](http://technet.microsoft.com/zh-cn
 
 以下示例将启动一个示例 Runbook，然后等待该 Runbook 完成。完成后，将从作业收集该 Runbook 的输出流。
 
+	[AZURE.ACOM]{
+	$job = Start-AzureRmAutomationRunbook -ResourceGroupName "ResourceGroup01" `
+    -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook"
+	[AZURE.ACOM]}
+	[AZURE.ACN]{
 	$job = Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" 
-	
+	[AZURE.ACN]}
+
 	$doLoop = $true
 	While ($doLoop) {
+	   [AZURE.ACOM]{
+	   $job = Get-AzureRmAutomationJob -ResourceGroupName "ResourceGroup01" `
+       -AutomationAccountName "MyAutomationAccount" -Id $job.JobId
+	   [AZURE.ACOM]}
+	   [AZURE.ACN]{
 	   $job = Get-AzureAutomationJob –AutomationAccountName "MyAutomationAccount" -Id $job.Id
+	   [AZURE.ACN]}
 	   $status = $job.Status
-	   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped") 
+	   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped")
 	}
 	
+	[AZURE.ACOM]{
+	Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+    -AutomationAccountName "MyAutomationAccount" -Id $job.JobId -Stream Output
+	[AZURE.ACOM]}
+	[AZURE.ACN]{
 	Get-AzureAutomationJobOutput –AutomationAccountName "MyAutomationAccount" -Id $job.Id –Stream Output
+	[AZURE.ACN]}
+
+[AZURE.ACOM]{
+
+### 图形创作
+
+对于图形 Runbook，以活动级别跟踪形式提供了额外的日志记录。有两个级别的跟踪：基本和详细。在基本跟踪中，你可以看到 Runbook 中每个活动的开始和结束时间，以及与任何活动重试相关的信息，例如尝试次数和活动开始时间。在详细跟踪中，可获取基本跟踪以及每个活动的输入和输出数据。请注意，目前跟踪记录是使用详细流写入的，因此你必须在启用跟踪时启用详细日志记录。对于启用了跟踪的图形 Runbook，无需记录进度记录，因为基本跟踪起着相同作用，并且信息更丰富。
+
+![“图形创作作业流”视图](./media/automation-runbook-output-and-messages/job-streams-view-blade.png)
+
+从上面的屏幕截图可以看出，为图形 Runbook 启用详细日志记录和跟踪时，在“生产作业流”视图中会提供更多信息。此额外信息对于解决 Runbook 的生产问题是非常必要的，因此应仅为该目的启用它，而不是作为一种常规做法。    
+“跟踪”记录可以特别大量。使用图形 Runbook 跟踪，每个活动可以获取二至四条记录，具体取决于是配置了基本跟踪还是详细跟踪。  除非你需要此信息来跟踪 Runbook 进度以进行故障排除，否则你可能想要使跟踪保持关闭状态。
+
+**若要启用活动级别跟踪，请执行以下步骤。**
+
+ 1. 在 Azure 门户中，打开你的自动化帐户。
+
+ 2. 单击“Runbook”磁贴打开 Runbook 列表。
+
+ 3. 在“Runbook”边栏选项卡上，单击以从 Runbook 列表中选择图形 Runbook。
+
+ 4. 在所选 Runbook 的“设置”边栏选项卡上，单击“日志记录和跟踪”。
+
+ 5. 在“日志记录和跟踪”边栏选项卡上，在“记录详细记录”下，单击“启用”以启用详细日志记录，在“活动级别跟踪”下，根据自己所需的跟踪级别，将跟踪级别更改为“基本”或“详细”。<br>
+
+    ![“图形创作日志记录和跟踪”边栏选项卡](./media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
+
+[AZURE.ACOM]}
 
 ## 后续步骤
 
 - 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅[跟踪 Runbook 作业](/documentation/articles/automation-runbook-execution/)
 - 若要了解如何设计和使用子 Runbook，请参阅 [Azure 自动化中的子 Runbook](/documentation/articles/automation-child-runbooks/)
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0725_2016-->

@@ -1,15 +1,15 @@
 <properties 
 	pageTitle="使用导入/导出将数据传输到 Blob 存储 | Azure" 
-	description="了解如何在 Azure 管理门户中创建导入和导出作业，以将数据传输到 blob 存储中。" 
-	authors="tamram" 
-	manager="adinah" 
-	editor="" 
+	description="了解如何在 Azure 经典门户中创建导入和导出作业，以将数据传输到 blob 存储中。"
+	authors="renashahmsft"
+	manager="aungoo"
+	editor="tysonn"
 	services="storage" 
 	documentationCenter=""/>
 
 <tags 
 	ms.service="storage" 
-	ms.date="05/16/2016"
+	ms.date="06/22/2016"
 	wacn.date=""/>
 
 
@@ -43,7 +43,7 @@
 
 ### 存储帐户
 
-必须已拥有 Azure 订阅以及一个或多个“经典”存储帐户，才能使用导入/导出服务。每个作业只能用于将数据传输到一个经典存储帐户或者从一个经典存储帐户传输数据。换言之，一个导入/导出作业不能跨多个存储帐户。有关创建新存储帐户的信息，请参阅[如何创建存储帐户](/documentation/articles/storage-create-storage-account#create-a-storage-account)。
+必须已拥有 Azure 订阅以及一个或多个“经典”存储帐户，才能使用导入/导出服务。每个作业只能用于将数据传输到一个经典存储帐户或者从一个经典存储帐户传输数据。换言之，一个导入/导出作业不能跨多个存储帐户。有关创建新存储帐户的信息，请参阅[如何创建存储帐户](/documentation/articles/storage-create-storage-account/#create-a-storage-account)。
 
 ### Blob 类型
 
@@ -154,8 +154,7 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 - Azure 数据中心在收到驱动器后会对其进行处理。
 - 该中心会使用你的快递商帐户将驱动器寄送到你在导入作业中提供的回寄地址。
 
-<!-- save this until you have usable images -->
-<!--	![Figure 1:Import job flow](./media/storage-import-export-service/importjob.png) -->
+	![图 1：导入作业流](./media/storage-import-export-service/importjob.png)
 
 
 ### 关于导出作业
@@ -173,8 +172,7 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 - 驱动器使用 BitLocker 加密；密钥通过经典门户提供。
 - 该中心会使用你的快递商帐户将驱动器寄送到你在导入作业中提供的回寄地址。
 
-<!-- save this until you have usable images -->
-<!--	![Figure 1:Export job flow](./media/storage-import-export-service/exportjob.png) -->
+	![图 2：导出作业流](./media/storage-import-export-service/exportjob.png)
 
 ### 查看作业状态
 
@@ -185,7 +183,7 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 作业状态|说明
 ---|---
 正在创建|你的作业已创建，但尚未提供装运信息。
-装运|你的作业已创建，并且提供了装运信息。**注意**：有时候，将驱动器寄送到 Azure 数据中心以后，其状态可能仍会显示“正在寄送”。当服务开始复制你的数据以后，状态会更改为“正在传输”。若要查看驱动器的更具体状态，可使用导入/导出 REST API。 
+装运|你的作业已创建，并且提供了装运信息。**注意**：在驱动器寄送到 Azure 数据中心后，其状态有时可能仍会显示“正在寄送”。当服务开始复制你的数据以后，状态会更改为“正在传输”。若要查看驱动器的更具体状态，可使用导入/导出 REST API。 
 转移|你的数据正在从你的硬盘驱动器传输（对于导入作业）或传输到你的硬盘驱动器（对于导出作业）。
 打包|你的数据传输已完成，并且你的硬盘驱动器正准备返还给你。
 完成|你的硬盘驱动器已返还给你。
@@ -240,7 +238,8 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 
 6.	可以通过指定 /encrypt 参数在硬盘驱动器上启用 Bitlocker 加密。也可以在硬盘驱动器上手动启用 Bitlocker 加密，并在运行该工具时提供密钥。
 
-7.	对于每个驱动器，在准备它时，Azure 导入/导出工具会生成一个驱动器日志文件。该驱动器日志文件存储于你的本地计算机上，而不是存储于驱动器本身。你在创建导入作业时将上载该日志文件。驱动器日志文件将包含驱动器 ID 和 BitLocker 密钥，以及与驱动器有关的其他信息。**重要事项**：你准备的每个硬盘驱动器都会生成一个日志文件。使用经典门户创建导入作业时，必须上载属于该导入作业的驱动器的所有日志文件。不带日志文件的驱动器将得不到处理。
+7.	对于每个驱动器，在准备它时，Azure 导入/导出工具会生成一个驱动器日志文件。该驱动器日志文件存储于你的本地计算机上，而不是存储于驱动器本身。你在创建导入作业时将上载该日志文件。驱动器日志文件将包含驱动器 ID 和 BitLocker 密钥，以及与驱动器有关的其他信息。
+**注意事项**：你准备的每个硬盘驱动器都会生成一个日志文件。使用经典门户创建导入作业时，必须上载属于该导入作业的驱动器的所有日志文件。不带日志文件的驱动器将得不到处理。
 
 8.	完成磁盘准备操作以后，请勿修改硬盘驱动器上的数据，也勿修改日志文件。
 
@@ -274,13 +273,13 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 
 **请记住**：默认情况下，数据将作为块 Blob 导入。可以使用 /BlobType 参数以页 Blob 方式导入数据。例如，如果你要要导入 VHD 文件，而这些文件需要以磁盘方式装载到 Azure VM 上，则必须以页 Blob 方式导入。如果你不确定需要使用哪种 Blob 类型，则可指定 /blobType:auto，我们会帮你确定正确的类型。在此示例中，所有 vhd 和 vhdx 文件将作为页 Blob 导入，其余文件将作为块 Blob 导入。
 
-有关如何使用 Azure 导入/导出客户端工具的更多详细信息，请参阅[为导入作业准备硬盘驱动器](https://msdn.microsoft.com/zh-cn/library/dn529089.aspx)。
+若要更详细了解如何使用 Azure 导入/导出客户端工具，请参阅[准备硬盘驱动器进行导入](https://msdn.microsoft.com/zh-cn/library/dn529089.aspx)。
 
-另请参阅[用于为导入作业准备硬盘驱动器的示例工作流](https://msdn.microsoft.com/zh-cn/library/dn529097.aspx)以获取更多详细的分步说明。
+另请参阅[准备硬盘驱动器进行导入作业的示例工作流](https://msdn.microsoft.com/zh-cn/library/dn529097.aspx)，以获取更详细的分步说明。
 
 ### 创建导入作业
 
-1.	在准备好你的驱动器后，在[管理门户](https://manage.windowsazure.cn)中导航到你的存储帐户，并查看“仪表板”。在“速览”下，单击“创建导入作业”。查看相关步骤，然后选择指示你已准备好驱动器并提供了驱动器日志文件的复选框。
+1.	准备好驱动器后，在[管理门户](https://manage.windowsazure.cn)中导航到你的存储帐户，然后查看“仪表板”。在“速览”下，单击“创建导入作业”。查看相关步骤，然后选择指示你已准备好驱动器并提供了驱动器日志文件的复选框。
 
 2.	在步骤 1 中，提供负责该导入作业的人员的联系信息，以及有效的回寄地址。如果你希望保存导入作业的详细日志数据，则选中“将详细日志保存在我的‘waimportexport’Blob 容器中”选项。
 
@@ -304,7 +303,7 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 
 	如果作业处于“正在创建”、“正在发运”或“正在传送”状态，则你还可以在向导的第 2 步中更新你的承运人帐号。一旦作业处于“正在打包”状态，你将无法更新该作业的承运人帐号。
 
-7. 你可以在门户仪表板上跟踪作业进度。通过[查看作业状态](#viewing-your-job-status)了解上一部分中每个作业状态的含义。
+7. 你可以在门户仪表板上跟踪作业进度。若要了解上一部分中每个作业状态的含义，请[查看作业状态](#viewing-your-job-status)。
 
 ## 如何创建导出作业？
 
@@ -320,13 +319,13 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 
 ### 创建导出作业
 
-1. 	若要创建导出作业，请导航到[经典门户](https://manage.windowsazure.cn)中的存储帐户，并查看“仪表板”。在“速览”下，单击“创建导出作业”，并继续完成向导。
+1. 	若要创建导出作业，请导航到[经典门户](https://manage.windowsazure.cn)中的存储帐户，然后查看“仪表板”。在“速览”下，单击“创建导出作业”，然后继续完成向导。
 
 2. 	在步骤 2 中，提供负责该导出作业的人员的联系信息。如果你希望保存导出作业的详细日志数据，则选中“将详细日志保存在我的‘waimportexport’Blob 容器中”选项。
 
 3.	在步骤 3 中，指定要从你的存储帐户导出到空驱动器中的 Blob 数据。你可以选择导出该存储帐户中的所有 Blob 数据，也可以指定要导出的 Blob 或 Blob 组。
 
-	若要指定要导出的 Blob，请使用“等于”选择器，并指定该 Blob 的相对路径，以容器名称开头。使用 $root 指定根容器。
+	若要指定要导出的 Blob，请使用“等于”选择器，并指定该 Blob 的相对路径，以容器名称开头。使用 *$root* 指定根容器。
 
 	若要指定以某一前缀开头的所有 Blob，请使用“开头为”选择器，并指定前缀，以正斜杠“/”开头。该前缀可以是容器名称的前缀、完整容器名称或者后跟 Blob 名称前缀的完整容器名称。
 
@@ -381,7 +380,7 @@ Azure 导入/导出服务支持将数据复制到所有公共 Azure 存储帐户
 
 **能否通过 Resource Manager 存储帐户来使用 Azure 导入/导出服务？**
 
-否。你不能使用 Azure 导入/导出服务直接将数据复制到 Resource Manager 存储帐户或从其复制数据。此服务仅支持经典存储帐户。很快将提供 Resource Manager 存储帐户支持。你也可以先将数据导入经典存储帐户，然后使用 [AzCopy](/documentation/articles/storage-use-azcopy) 或 CopyBlob 将其迁移到 Resource Manager 存储帐户中。
+否。你不能使用 Azure 导入/导出服务直接将数据复制到 Resource Manager 存储帐户或从其复制数据。此服务仅支持经典存储帐户。很快将提供 Resource Manager 存储帐户支持。还可将数据导入经典存储帐户，然后使用 [AzCopy](/documentation/articles/storage-use-azcopy/) 或 CopyBlob 将其迁移到 Resource Manager 存储帐户。
 
 **能否使用 Azure 导入/导出服务复制 Azure 文件？**
 
@@ -436,7 +435,7 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。如果�
 准备驱动器时，你可以使用名为 /Disposition:<rename|no-overwrite|overwrite> 的参数指定是否应覆盖或忽略目标文件。默认情况下，该服务会将新文件重命名，而不是覆盖现有 Blob。
 
 **Azure 导入/导出客户端工具是否兼容 32 位操作系统？**
-否。此客户端工具仅兼容 64 位 Windows 操作系统。请参阅[先决条件](#pre-requisites)中的“操作系统”部分，以获取受支持的 OS 版本的完整列表。
+否。此客户端工具仅兼容 64 位 Windows 操作系统。有关受支持的 OS 版本的完整列表，请参阅[先决条件](#pre-requisites)中的“操作系统”部分。
 
 **是否应该在包裹中添加除硬盘驱动器之外的其他东西？**
 
@@ -468,11 +467,12 @@ Azure 数据中心会将不符合支持要求的驱动器返还给你。如果�
 
 **能否使用 Azure 导入/导出服务将我的备份脱机复制到 Azure 备份服务？**
 
-请参阅 [Azure 备份中的脱机备份工作流](/documentation/articles/backup-azure-backup-import-export)。
+请参阅 [Azure 备份中的脱机备份工作流](/documentation/articles/backup-azure-backup-import-export/)。
 
 ## 另请参阅：
 
 - [设置 Azure 导入/导出客户端工具](https://msdn.microsoft.com/zh-cn/library/dn529112.aspx)
 
-- [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
-<!---HONumber=Mooncake_0711_2016-->
+- [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy/)
+
+<!---HONumber=Mooncake_0725_2016-->

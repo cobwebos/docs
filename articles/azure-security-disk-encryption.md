@@ -1,7 +1,7 @@
 <properties
    pageTitle="适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密 | Azure"
    description="本文概述适用于 Windows 和 Linux IaaS VM 的 Microsoft Azure 磁盘加密。"
-   services="virtual-machines, cloud-services, storage"
+   services="security"
    documentationCenter="na"
    authors="YuriDio"
    manager="swadhwa"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-security"
-   ms.date="04/15/2016"
+   ms.date="05/23/2016"
    wacn.date=""/>
 
 
@@ -30,15 +30,15 @@ Azure 磁盘加密是用于加密 Windows 和 Linux IaaS 虚拟机磁盘的新�
 Azure 磁盘加密解决方案支持以下客户方案：
 
 - 在通过预加密 VHD 和加密密钥创建的新 IaaS VM 上启用加密
-- 在通过 Azure 库映像创建的新 IaaS VM 上启用加密 
-- 在 Azure 中已运行的现有 IaaS VM 上启用加密 
-- 在 Windows IaaS VM 上禁用加密  
+- 在通过 Azure 库映像创建的新 IaaS VM 上启用加密
+- 在 Azure 中已运行的现有 IaaS VM 上启用加密
+- 在 Windows IaaS VM 上禁用加密
 
 在 Microsoft Azure 中启用时，该解决方案支持以下 IaaS VM：
 
 - 与 Azure 密钥保管库集成
 
-- 标准 [A、D 和 G 系列 IaaS VM](/home/features/virtual-machines/#price)
+- 标准 [A、D 和 G 系列 IaaS VM](/pricing/details/virtual-machines/)
 
 - 在 Windows 和 Linux IaaS VM 上启用加密
 
@@ -74,7 +74,7 @@ Azure 磁盘加密解决方案支持以下客户方案：
 - 加密 OS 卷以轻松保护客户存储中的引导卷
 
 	- 目前不支持在已在 Azure 中运行的 Linus IaaS VM 加密 OS 卷。仅支持针对预加密的 VHD 方案加密 Linux IaaS VM 的 OS 卷
-	
+
 - 加密数据卷以轻松保护客户存储中的数据卷
 
 - 在 Windows IaaS VM 上禁用加密
@@ -85,9 +85,9 @@ Azure 磁盘加密解决方案支持以下客户方案：
 
 - 从 IaaS 虚拟机中删除磁盘加密配置设置
 
-适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密解决方案包括适用于 Windows 的磁盘加密扩展、适用于 Linux 的磁盘加密扩展、磁盘加密 PowerShell cmdlet、磁盘加密 CLI cmdlet 和磁盘加密 Azure Resource Manager 模板。在运行 Windows 或 Linux OS 的 IaaS VM 上支持 Azure 磁盘加密解决方案。有关支持的操作系统的详细信息，请参阅以下先决条件部分。
+适用于 Windows 和 Linux IaaS VM 的 Azure 磁盘加密解决方案包括适用于 Windows 的磁盘加密扩展、适用于 Linux 的磁盘加密扩展、磁盘加密 PowerShell cmdlet、磁盘加密 CLI cmdlet 和磁盘加密 Azure 资源管理器模板。在运行 Windows 或 Linux OS 的 IaaS VM 上支持 Azure 磁盘加密解决方案。有关支持的操作系统的详细信息，请参阅以下先决条件部分。
 
-**注意**：可以免费使用 Azure 磁盘加密来加密 VM 磁盘。
+**注意：**可以免费使用 Azure 磁盘加密来加密 VM 磁盘。
 
 ### 价值主张
 
@@ -151,9 +151,9 @@ Azure 磁盘加密管理解决方案可以解决云中的以下业务需求：
 
 - 若要根据 Azure 磁盘加密的使用方式设置和配置 Azure 密钥保管库，请参阅本文先决条件中的**根据 Azure 磁盘加密的使用方式设置和配置 Azure 密钥保管库**部分。
 
-- 若要根据 Azure 磁盘加密的使用方式在 Azure Active Directory 中设置和配置 Azure AD 应用程序，请参阅本文先决条件中的**在 Azure Active Directory 中设置 Azure AD 应用程序**部分。
+- 若要根据 Azure 磁盘加密的使用方式，在 Azure Active Drectory 中设置和配置 Azure AD 应用程序，请参阅本文先决条件中的**在 Azure Active Directory 中设置 Azure AD 应用程序**部分。
 
-- 若要设置和配置 Azure AD 应用程序的密钥保管库访问策略，请参阅本文先决条件中的**为 Azure AD 应用程序设置密钥保管库访问策略**部分。
+- 若要设置和配置 Azure AD 应用程序的密钥保管库访问策略，请参阅本文*先决条件*中的**为 Azure AD 应用程序设置密钥保管库访问策略**部分。
 
 - 若要准备预先加密的 Windows VHD，请参阅本文附录中的**准备已预先加密的 Windows VHD** 部分。
 
@@ -191,15 +191,15 @@ Azure 磁盘加密管理解决方案可以解决云中的以下业务需求：
 
 **注意：**如果你的安全策略限制从 Azure VM 到 Internet 的访问，则你可以解析上述要连接到的 URI，并配置特定的规则以允许与这些 IP 建立出站连接。
 
-- 使用最新版本的 Azure PowerShell SDK 来配置 Azure 磁盘加密。下载 [Azure PowerShell 1.3.0](https://github.com/Azure/azure-powershell/releases/download/v1.3.0-March2016/azure-powershell.1.3.0.msi) 或更高版本。
+- 使用最新版本的 Azure PowerShell SDK 来配置 Azure 磁盘加密。下载最新的 [Azure PowerShell 1.3.0](https://github.com/Azure/azure-powershell/releases/download/v1.3.0-March2016/azure-powershell.1.3.0.msi) 或更高版本
 
-**注意：**[Azure PowerShell SDK 1.1.0](https://github.com/Azure/azure-powershell/releases/tag/v1.1.0-January2016) 不支持 Azure 磁盘加密。如果你收到与 Azure PowerShell 1.1.0 用法相关的错误，请参阅文章 [Azure Disk Encryption Error Related to Azure PowerShell 1.1.0（与 Azure PowerShell 1.1.0 相关的 Azure 磁盘加密错误）](http://blogs.msdn.com/b/azuresecurity/archive/2016/02/10/azure-disk-encryption-error-related-to-azure-powershell-1-1-0.aspx)。
+**注意：**[Azure PowerShell SDK 1.1.0](https://github.com/Azure/azure-powershell/releases/tag/v1.1.0-January2016) 不支持 Azure 磁盘加密。如果你收到与使用 Azure PowerShell 1.1.0 相关的错误，请参阅 [Azure Disk Encryption Error Related to Azure PowerShell 1.1.0](http://blogs.msdn.com/b/azuresecurity/archive/2016/02/10/azure-disk-encryption-error-related-to-azure-powershell-1-1-0.aspx)（与 Azure PowerShell 1.1.0 相关的 Azure 磁盘加密错误）一文。
 
 - 若要运行任何 Azure CLI 命令并将它与 Azure 订阅相关联，必须先安装 Azure CLI 版本：
 
 	- 若要安装 Azure CLI 并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure CLI](xplat-cli-install.md)
 
-	- 将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用，请参阅[此处](azure-cli-arm-commands.md)
+	- 将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure 资源管理器配合使用，请参阅[此处](azure-cli-arm-commands.md)
 
 - Azure 磁盘加密解决方案对 Windows IaaS VM 使用 BitLocker 外部密钥保护程序。如果 VM 已加入域，请不要推送会强制使用 TPM 保护程序的任何组策略。请参阅[此文](https://technet.microsoft.com/library/ee706521)，以了解“没有兼容的 TPM 时允许 BitLocker”组策略的详细信息。
 
@@ -283,7 +283,7 @@ Azure 平台需要访问 Azure 密钥保管库中的加密密钥或机密，才�
 
 若要执行以下命令，你需要 Azure AD PowerShell 模块，可从[此处](https://technet.microsoft.com/library/jj151815.aspx)获取该模块。
 
-**注意：**必须在新的 PowerShell 窗口中执行以下命令。请不要使用 Azure PowerShell 或 Azure Resource Manager 窗口执行这些命令。提出这项建议的原因是这些 cmdlet 位于 MSOnline 模块或 Azure AD PowerShell 中。
+**注意：**必须在新的 PowerShell 窗口中执行以下命令。请不要使用 Azure PowerShell 或 Azure 资源管理器窗口执行这些命令。提出这项建议的原因是这些 cmdlet 位于 MSOnline 模块或 Azure AD PowerShell 中。
 
     $clientSecret = ‘<yourAadClientSecret>’
     $aadClientID = '<Client ID of your AAD app>'
@@ -454,10 +454,9 @@ Azure AD 应用程序需有访问保管库中密钥或机密的权限。使用 [
 遵循以下步骤使用 CLI 命令为此方案启用磁盘加密：
 
 1. 设置对密钥保管库的访问策略：
-	- 设置 ‘EnabledForDiskEncryption’ 标志：“azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
-	- 向 Azure AD 应用设置将机密写入 KeyVault 的权限：“azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
-2. 若要在现有/正在运行的 VM 上启用加密，请键入：
-	*azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
+	- 设置“EnabledForDiskEncryption”标志：“azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
+	- 向 Azure AD 应用程序设置将机密写入 KeyVault 的权限：“azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
+2. 若要在现有/正在运行的 VM 上启用加密，请键入：*azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
 3. 获取加密状态：*“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”*
 4. 若要从客户加密的 VHD 在新 VM 上启用加密，请将以下参数与“azure vm create”命令结合使用：
 	- disk-encryption-key-vault-id <disk-encryption-key-vault-id>
@@ -498,10 +497,9 @@ Azure AD 应用程序需有访问保管库中密钥或机密的权限。使用 [
 遵循以下步骤，使用 CLI 命令在 Azure 中现有/正在运行的 IaaS Windows VM 上启用加密：
 
 1. 设置对密钥保管库的访问策略：
-	- 设置 ‘EnabledForDiskEncryption’ 标志：“azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
-	- 向 Azure AD 应用设置将机密写入 KeyVault 的权限：“azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
-2. 若要在现有/正在运行的 VM 上启用加密，请键入：
-	*azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
+	- 设置“EnabledForDiskEncryption”标志：“azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
+	- 向 Azure AD 应用程序设置将机密写入 KeyVault 的权限：“azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
+2. 若要在现有/正在运行的 VM 上启用加密，请键入：*azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
 3. 获取加密状态：*“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”*
 4. 若要从客户加密的 VHD 在新 VM 上启用加密，请将以下参数与“azure vm create”命令结合使用：
 	- disk-encryption-key-vault-id <disk-encryption-key-vault-id>
@@ -534,10 +532,9 @@ Azure AD 应用程序需有访问保管库中密钥或机密的权限。使用 [
 可以使用从[此处](xplat-cli-install.md)安装的 CLI 命令，在客户加密的 VHD 上启用磁盘加密。遵循以下步骤，使用 CLI 命令在 Azure 中现有/正在运行的 IaaS Linux VM 上启用加密：
 
 1. 设置对密钥保管库的访问策略：
-	- 设置 ‘EnabledForDiskEncryption’ 标志：“azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
-	- 向 Azure AD 应用设置将机密写入 KeyVault 的权限：“azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
-2. 若要在现有/正在运行的 VM 上启用加密，请键入：
-	*azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
+	- 设置“EnabledForDiskEncryption”标志：“azure keyvault set-policy --vault-name <keyVaultName> --enabled-for-disk-encryption true”
+	- 向 Azure AD 应用程序设置将机密写入 KeyVault 的权限：“azure keyvault set-policy --vault-name <keyVaultName> --spn <aadClientID> --perms-to-keys ["all"] --perms-to-secrets ["all"]”
+2. 若要在现有/正在运行的 VM 上启用加密，请键入：*azure vm enable-disk-encryption --resource-group <resourceGroupName> --name <vmName> --aad-client-id <aadClientId> --aad-client-secret <aadClientSecret> --disk-encryption-key-vault-url <keyVaultURL> --disk-encryption-key-vault-id <keyVaultResourceId>*
 3. 获取加密状态：“azure vm show-disk-encryption-status --resource-group <resourceGroupName> --name <vmName> --json”
 4. 若要从客户加密的 VHD 在新 VM 上启用加密，请将以下参数与“azure vm create”命令结合使用：
 	- *disk-encryption-key-vault-id <disk-encryption-key-vault-id>*
@@ -551,7 +548,7 @@ Azure AD 应用程序需有访问保管库中密钥或机密的权限。使用 [
 
 #### 使用 Azure 管理门户获取已加密 IaaS VM 的加密状态
 
-可以从 Azure 管理门户获取 IaaS VM 的加密状态。在 https://portal.azure.com/ 处登录 Azure 门户，在左侧菜单中单击虚拟机链接以查看你的订阅中的虚拟机的摘要视图。可以从订阅下拉列表中选择订阅名称，以筛选虚拟机视图。单击位于虚拟机页面菜单顶部的列。从“选择列”边栏选项卡中选择“磁盘加密”列，然后单击“更新”。你应会看到，对于每个 VM，磁盘加密列会显示加密状态“已启用”或“未启用”，如下图所示。
+可以从 Azure 管理门户获取 IaaS VM 的加密状态。通过 https://portal.azure.com/ 登录到 Azure 门户，在左侧菜单中单击虚拟机链接以查看订阅中虚拟机的摘要视图。可以从订阅下拉列表中选择订阅名称，以筛选虚拟机视图。单击位于虚拟机页面菜单顶部的列。从“选择列”边栏选项卡中选择“磁盘加密”列，然后单击“更新”。你应会看到，对于每个 VM，磁盘加密列会显示加密状态“已启用”或“未启用”，如下图所示。
 
 ![Azure 中的 Microsoft Antimalware](./media/azure-security-disk-encryption/disk-encryption-fig2.JPG)
 
@@ -597,7 +594,7 @@ OSVolumeEncrypted 和 DataVolumesEncrypted 设置值为“True”，表明这两
 
 ##### 使用 PS cmdlet 在 Azure 中的现有/正在运行的 IaaS Windows 上禁用加密
 
-若要使用 PS cmdlet 禁用，可以使用 [Disable-AzureRmVMDiskEncryption](https://msdn.microsoft.com/library/azure/mt715776.aspx) cmdlet 在基础结构即服务 (IaaS) 虚拟机上禁用加密。此 cmdlet 仅受 Windows 虚拟机的支持，而不受 Linux 的虚拟机的支持。此 cmdlet 将在虚拟机上安装一个用于禁用加密的扩展。如果未指定 Name 参数，将创建默认名称为“AzureDiskEncryption for Windows VMs”的扩展。
+若要禁用 PS cmdlet ，可以使用 [Disable-AzureRmVMDiskEncryption](https://msdn.microsoft.com/library/azure/mt715776.aspx) cmdlet 在服务架构 (IaaS) 虚拟机上禁用加密。此 cmdlet 仅受 Windows 虚拟机的支持，而不受 Linux 的虚拟机的支持。此 cmdlet 将在虚拟机上安装一个用于禁用加密的扩展。如果未指定 Name 参数，将创建默认名称为“AzureDiskEncryption for Windows VMs”的扩展。
 
 **注意**：运行此 cmdlet 会重新启动虚拟机。
 
@@ -709,7 +706,7 @@ OSVolumeEncrypted 和 DataVolumesEncrypted 设置值为“True”，表明这两
     Sda5_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
 
 3\. 如果要在 Windows 中编辑 *azure\_crypt\_key.sh* 并将它复制到 Linux，请记得运行 *dos2unix /usr/local/sbin/azure\_crypt\_key.sh*。
-4. 运行 *update-initramfs -u -k all* 以更新 initramfs，使 keyscript 生效。
+4\. 运行 *update-initramfs -u -k all* 以更新 initramfs，使 keyscript 生效。
 
 ##### openSUSE 13.2。
 
@@ -845,4 +842,4 @@ OSVolumeEncrypted 和 DataVolumesEncrypted 设置值为“True”，表明这两
 
 [探讨如何使用 Azure PowerShell 启用 Azure 磁盘加密 - 第 2 部分](http://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx)
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0725_2016-->

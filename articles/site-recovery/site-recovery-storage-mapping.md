@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="site-recovery"
-	ms.date="02/22/2016"
+	ms.date="07/06/2016"
 	wacn.date=""/>
 
 
@@ -94,6 +94,6 @@ VM5 | C:\\ClusterStorage\\SourceVolume3 | 不适用 | 无映射，因此将使�
 
 ## 后续步骤
 
-现在，你已经对存储映射有了更好的了解，因此可以[准备部署 Azure Site Recovery](/documentation/articles/site-recovery-best-practices) 了。
+现在，你已经对存储映射有了更好的了解，因此可以[准备部署 Azure Site Recovery](/documentation/articles/site-recovery-best-practices/) 了。
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0725_2016-->

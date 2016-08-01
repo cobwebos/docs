@@ -8,7 +8,7 @@
    editor="tysonn" />
 <tags
 	ms.service="automation"
-	ms.date="05/26/2016"
+	ms.date="06/24/2016"
 	wacn.date=""/>
 
 # 学习 Windows PowerShell 工作流
@@ -21,7 +21,21 @@ Azure 自动化中的 Runbook 作为 Windows PowerShell 工作流实现。Window
 
 ## Runbook 类型
 
+[AZURE.ACOM]{
+
+Azure 自动化中有三种类型的 Runbook：_PowerShell 工作流_ Runbook、_PowerShell_ Runbook 和_图形_ Runbook。您在创建 Runbook 时定义其类型，并且一旦创建之后，不能将 Runbook 转换为另一种类型。
+
+PowerShell 工作流 Runbook 和 PowerShell Runbook 适用于愿意使用 Azure 自动化中的文本编辑器或脱机编辑器（如 PowerShell ISE）直接处理 PowerShell 代码的用户。如果你要创建 PowerShell 工作流 Runbook，则应了解本文中的信息。
+
+图形 Runbook 允许您图形界面创建使用相同活动和 cmdlet 的 Runbook，图形界面隐藏了底层 PowerShell 工作流的复杂性。本文中的一些概念（如检查点和并行执行）仍适用于图形 Runbook，但您无需关心详细的语法。
+
+[AZURE.ACOM]}
+
+[AZURE.ACN]{
+
 Azure 中国区目前仅支持文本 PowerShell 工作流 Runbook。
+
+[AZURE.ACN]}
 
 ## 工作流的基本结构
 
@@ -231,6 +245,40 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
 		Write-Output "All files copied."
 	}
 
+由于在调用 [Suspend-Workflow](https://technet.microsoft.com/zh-cn/library/jj733586.aspx) 活动或最后一个检查点之后，将不保留用户名凭据，你需要在调用 **Suspend-Workflow** 或检查点后将凭据设置为 null，然后再从资产存储重新检索凭据。否则，可能会收到以下错误消息：_无法继续执行工作流作业，因为无法完整保存持久性数据或保存的持久性数据已损坏。你必须重新启动工作流。_
+
+下面的相同代码演示如何在 PowerShell 工作流 Runbook 中处理此问题。
+
+       
+    workflow CreateTestVms
+    {
+       $Cred = Get-AzureAutomationCredential -Name "MyCredential"
+       $null = Add-AzureRmAccount -Credential $Cred
+
+       $VmsToCreate = Get-AzureAutomationVariable -Name "VmsToCreate"
+
+       foreach ($VmName in $VmsToCreate)
+         {
+          # Do work first to create the VM (code not shown)
+        
+          # Now add the VM
+          [AZURE.ACOM]{
+          New-AzureRmVm -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
+          [AZURE.ACOM]}
+          [AZURE.ACN]{
+          New-AzureRmVm -VM $Vm -Location "ChinaNorth" -ResourceGroupName "ResourceGroup01"
+          [AZURE.ACN]}
+
+          # Checkpoint so that VM creation is not repeated if workflow suspends
+          $Cred = $null
+          Checkpoint-Workflow
+          $Cred = Get-AzureAutomationCredential -Name "MyCredential"
+          $null = Add-AzureRmAccount -Credential $Cred
+         }
+     } 
+
+
+此外，如果你使用配置了服务主体的运行方式帐户进行身份验证，则不需要此处理。
 
 关于检查点的详细信息，请参阅[将检查点添加到脚本工作流](http://technet.microsoft.com/zh-cn/library/jj574114.aspx)。
 
@@ -239,4 +287,4 @@ Windows PowerShell 工作流的一个优点是能够与典型脚本一样并行�
 
 - 若要开始使用 PowerShell 工作流 Runbook，请参阅 [My first PowerShell workflow runbook（我的第一个 PowerShell 工作流 Runbook）](/documentation/articles/automation-first-runbook-textual/)
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0725_2016-->

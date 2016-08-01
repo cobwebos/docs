@@ -1,6 +1,6 @@
 <properties 
  pageTitle="计划程序 PowerShell Cmdlet 参考" 
- description="" 
+ description="计划程序 PowerShell Cmdlet 参考"
  services="scheduler" 
  documentationCenter=".NET" 
  authors="krisragh" 
@@ -8,7 +8,7 @@
  editor=""/>
 <tags 
  ms.service="scheduler" 
- ms.date="03/09/2016"
+ ms.date="06/30/2016"
  wacn.date=""/>
  
 # 计划程序 PowerShell Cmdlet 参考
@@ -33,23 +33,25 @@
 
 ## 另请参阅
  
- [计划程序是什么？](/documentation/articles/scheduler-intro)
+ [计划程序是什么？](/documentation/articles/scheduler-intro/)
  
- [Azure 计划程序的概念、术语和实体层次结构](/documentation/articles/scheduler-concepts-terms)
+ [Azure 计划程序的概念、术语和实体层次结构](/documentation/articles/scheduler-concepts-terms/)
  
- [开始在管理门户中使用计划程序](/documentation/articles/scheduler-get-started-portal)
+ [开始在管理门户中使用计划程序](/documentation/articles/scheduler-get-started-portal/)
  
- [Azure 计划程序中的计划和计费](/documentation/articles/scheduler-plans-billing)
+ [Azure 计划程序中的计划和计费](/documentation/articles/scheduler-plans-billing/)
  
  [Azure 计划程序 REST API 参考](https://msdn.microsoft.com/zh-cn/library/dn528946)
  
- [计划程序高可用性和高可靠性](/documentation/articles/scheduler-high-availability-reliability)
- [Azure 计划程序的限制、默认值和错误代码](/documentation/articles/scheduler-limits-defaults-errors)
- [Azure 计划程序出站身份验证](/documentation/articles/scheduler-outbound-authentication)
+ [计划程序高可用性和高可靠性](/documentation/articles/scheduler-high-availability-reliability/)
+ 
+ [Azure 计划程序的限制、默认值和错误代码](/documentation/articles/scheduler-limits-defaults-errors/)
+ 
+ [Azure 计划程序出站身份验证](/documentation/articles/scheduler-outbound-authentication/)
  
   
 
 
   
 
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0725_2016-->

@@ -1,6 +1,6 @@
 <properties
  pageTitle="开始在管理门户中使用 Azure 计划程序 | Microsoft Azure"
- description=""
+ description="Azure 门户中的 Azure 计划程序入门"
  services="scheduler"
  documentationCenter=".NET"
  authors="krisragh"
@@ -8,7 +8,7 @@
  editor=""/>
 <tags
  ms.service="scheduler"
- ms.date="03/09/2016"
+ ms.date="06/30/2016"
  wacn.date=""/>
 
 # Azure 管理门户中的 Azure 计划程序入门
@@ -17,9 +17,9 @@
 
 ## 创建作业
 
-1.  登录到[管理门户](https://manage.windowsazure.cn/)。  
+1.  登录到[管理门户](https://manage.windowsazure.cn/)。
 
-2.  单击“应用程序服务”>“新建”>“计划程序”，然后单击“自定义创建”。。<br /><br /> ![][2]
+2.  单击“应用程序服务”>“新建”>“计划程序”，然后单击“自定义创建”。。<br /><br />![][2]
 
 3.  在“作业集合”中的“作业集合”下拉列表下，选择现有作业集合的名称。如果你要将作业添加到的作业集合不存在，请选择“新建”并输入一个名称来标识新的作业集合。<br /><br /> ![][3]
 
@@ -31,11 +31,11 @@
 
     1.  **名称：**` getmicrosoft`  
 
-    2.  **操作类型：**` HTTP`
+    2.  **操作类型：**` HTTP`  
 
-    3.  **方法：**` GET`
+    3.  **方法：**` GET`  
 
-    4.  **URI：**` http://www.microsoft.com`
+    4.  **URI：**` http://www.microsoft.com`  
 
    	![][4]
 
@@ -43,13 +43,14 @@
 
     1.  **执行间隔：**` 12 Hours`  
 
-    2.  **开始时间：**` Now`
+    2.  **开始时间：**` Now`  
 
-    3.  **结束时间：**` Select date 2 days after current day and any time`
+    3.  **结束时间：**` Select date 2 days after current day and any time`  
 
    	![][5]
 
-8.  单击**“确定”**。创建作业和作业集合可能需要一段时间。若要检查状态，可以监视门户底部的通知。
+8.  单击**“确定”**。  
+    创建作业和作业集合可能需要一段时间。若要检查状态，可以监视门户底部的通知。
 
    	![][6]
 
@@ -67,11 +68,11 @@
 
 1.  仪表板  
 
-2.  缩放
+2.  缩放  
 
-3.  历史记录
+3.  历史记录  
 
-4.  作业
+4.  作业  
 
 以下主题更为详细地介绍了这些选项卡。
 
@@ -87,15 +88,15 @@
 
 1.  当前作业  
 
-2.  已完成的作业
+2.  已完成的作业  
 
-3.  出错的作业
+3.  出错的作业  
 
-4.  已启用的作业
+4.  已启用的作业  
 
-5.  已禁用的作业
+5.  已禁用的作业  
 
-6.  作业执行次数
+6.  作业执行次数  
 
 #### 速览
 
@@ -103,13 +104,13 @@
 
 1.  状态  
 
-2.  区域
+2.  区域  
 
-3.  错误数
+3.  错误数  
 
-4.  错误发生次数
+4.  错误发生次数  
 
-5.  URI
+5.  URI  
 
 ### 缩放
 
@@ -127,9 +128,9 @@ Azure 计划程序基于几个条件实施配额。本节列出了配额阈值�
 
 1.  最大作业数  
 
-2.  最大频率
+2.  最大频率  
 
-3.  最大间隔
+3.  最大间隔  
 
 ### 历史记录
 
@@ -147,13 +148,13 @@ Azure 计划程序基于几个条件实施配额。本节列出了配额阈值�
 
 1.  状态  
 
-2.  详细信息
+2.  详细信息  
 
-3.  重试次数
+3.  重试次数  
 
-4.  执行次数（第一次、第二次、第三次等）
+4.  执行次数（第一次、第二次、第三次等）  
 
-5.  执行的时间戳
+5.  执行的时间戳  
 
 你可以单击“查看历史记录详细信息”以查看每次执行的响应情况。此对话框还允许你将响应复制到剪贴板。
 
@@ -177,23 +178,23 @@ Azure 计划程序基于几个条件实施配额。本节列出了配额阈值�
 
 提供以下计数器和度量值：
 
-1.  Name  
+1.  名称  
 
-2.  上次运行时间
+2.  上次运行时间  
 
-3.  下次运行时间
+3.  下次运行时间  
 
-4.  状态
+4.  状态  
 
-5.  频率
+5.  频率  
 
-6.  失败数
+6.  失败数  
 
-7.  错误数
+7.  错误数  
 
-8.  执行次数
+8.  执行次数  
 
-9.  操作类型
+9.  操作类型  
 
 ### 配置作业
 
@@ -211,23 +212,23 @@ Azure 计划程序基于几个条件实施配额。本节列出了配额阈值�
 
 ## 另请参阅
 
- [计划程序是什么？](/documentation/articles/scheduler-intro)
+ [计划程序是什么？](/documentation/articles/scheduler-intro/)
 
- [计划程序的概念、术语和实体层次结构](/documentation/articles/scheduler-concepts-terms)
+ [计划程序的概念、术语和实体层次结构](/documentation/articles/scheduler-concepts-terms/)
 
- [Azure 计划程序中的计划和计费](/documentation/articles/scheduler-plans-billing)
+ [Azure 计划程序中的计划和计费](/documentation/articles/scheduler-plans-billing/)
 
- [如何使用 Azure 计划程序生成复杂的计划和高级重复执行](/documentation/articles/scheduler-advanced-complexity)
+ [如何使用 Azure 计划程序生成复杂的计划和高级重复执行](/documentation/articles/scheduler-advanced-complexity/)
 
  [计划程序 REST API 参考](https://msdn.microsoft.com/zh-CN/library/dn528946)
 
- [计划程序 PowerShell Cmdlet 参考](/documentation/articles/scheduler-powershell-reference)
+ [计划程序 PowerShell Cmdlet 参考](/documentation/articles/scheduler-powershell-reference/)
 
- [计划程序的高可用性和可靠性](/documentation/articles/scheduler-high-availability-reliability)
+ [计划程序的高可用性和可靠性](/documentation/articles/scheduler-high-availability-reliability/)
 
- [计划程序的限制、默认值和错误代码](/documentation/articles/scheduler-limits-defaults-errors)
+ [计划程序的限制、默认值和错误代码](/documentation/articles/scheduler-limits-defaults-errors/)
 
- [计划程序出站身份验证](/documentation/articles/scheduler-outbound-authentication)
+ [计划程序出站身份验证](/documentation/articles/scheduler-outbound-authentication/)
 
 
 
@@ -246,4 +247,5 @@ Azure 计划程序基于几个条件实施配额。本节列出了配额阈值�
 [13]: ./media/scheduler-get-started-portal/scheduler-get-started-portal013.png
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
-<!---HONumber=Mooncake_0405_2016-->
+
+<!---HONumber=Mooncake_0725_2016-->

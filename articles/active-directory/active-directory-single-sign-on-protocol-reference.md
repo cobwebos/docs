@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/31/2016"
+	ms.date="06/23/2016"
 	wacn.date=""/>
 
 # 单一登录 SAML 协议
@@ -80,7 +80,7 @@ Azure AD 还会忽略 `AuthnRequest` 中的 `Conditions` 元素。
 
 ### RequestAuthnContext
 
-`RequestedAuthnContext` 元素指定所需的身份验证方法。在发送到 Azure AD 的 `AuthnRequest` 元素中是可选的。Azure AD 只支持一个 `AuthnContextClassRef` 值：`urn:oasis:names:tc:SAML:2.0:ac:classes:Password`
+`RequestedAuthnContext` 元素指定所需的身份验证方法。在发送到 Azure AD 的 `AuthnRequest` 元素中是可选的。Azure AD 只支持一个 `AuthnContextClassRef` 值： `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`
 
 ### Scoping
 
@@ -299,4 +299,4 @@ Azure AD 为断言签名以响应成功登录。`Signature` 元素包含数字�
 </AuthnStatement>
 ```
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0725_2016-->

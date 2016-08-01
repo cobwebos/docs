@@ -10,7 +10,7 @@
 <tags
    ms.service="active-directory"
 
-   ms.date="04/20/2016"
+   ms.date="06/27/2016"
    wacn.date=""/>
 
 # Azure AD Connect：设计概念
@@ -34,13 +34,12 @@ sourceAnchor 属性定义为在对象生存期内不会变化的属性。它可�
 
 - 长度小于 60 个字符
     - 系统将 a-z、A-Z 或 0-9 以外的字符编码并计为 3 个字符
-- 不包含特殊字符：&#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " @ \_
+- 不包含特殊字符：&#92; ! # $ % & * + / = ? ^ &#96; { }| ~ < > ( ) ' ; : , [ ] " @ _
 - 必须全局唯一
 - 必须是字符串、整数或二进制数
 - 不应基于用户的名称
 - 不应区分大小写，避免使用可能因大小写而改变的值
 - 应在创建对象时分配。
-
 
 如果选定的 sourceAnchor 不是字符串类型，Azure AD Connect 会将此属性值进行 Base64Encode 处理，以确保不会出现特殊字符。如果你使用除 ADFS 以外的其他联合服务器，请确保服务器也能将此属性进行 Base64Encode 处理。
 
@@ -53,7 +52,6 @@ sourceAnchor 属性区分大小写。“JohnDoe”与“johndoe”是不同的�
 如果你要在林和域之间移动用户，则必须查找不会更改的属性或者在移动时可随用户移动的属性。建议的方法是引入合成属性。可以保存 GUID 等信息的属性也可能适用。在对象创建期间，将创建新的 GUID 创建并对用户加上戳记。可以在同步引擎服务器中创建自定义规则，以根据 **objectGUID** 创建此值，然后在 ADDS 中更新选择的属性。当移动对象时，请务必同时复制此值的内容。
 
 另一个解决方案是选择已知不会更改的现有属性。常用的属性包括 **employeeID**。如果你打算使用包含字母的属性，请确保属性值的大小写（大写与小写）不会更改。不应使用的不当属性包括用户的姓名。因为在结婚或离婚时，此姓名很可能会更改，所以不适用于此属性。这也是无法在 Azure AD Connect 安装向导中选择 **userPrincipalName**、**mail** 和 **targetAddress** 等属性的原因之一。这些属性还包含 @ 字符，而 sourceAnchor 中不允许此字符。
-
 
 ### 更改 sourceAnchor 属性
 在 Azure AD 中创建对象并同步标识之后，无法更改 sourceAnchor 属性值。
@@ -72,7 +70,7 @@ sourceAnchor 属性区分大小写。“JohnDoe”与“johndoe”是不同的�
 
 选择属性以便提供用于 Azure 的 UPN 值时，应确保
 
-* 属性值符合 UPN 语法 (RFC 822)，其格式应该是 username@domain。
+* 属性值符合 UPN 语法 (RFC 822)，其格式应为 <username@domain>。
 * 这些值的后缀符合 Azure AD 中其中一个已验证的自定义域
 
 在快速设置中，属性的假设选择是 userPrincipalName。但是，如果认为 userprincipalname 属性不包含希望用户用于登录 Azure 的值，则必须选择“自定义安装”并提供适当的属性。
@@ -85,12 +83,11 @@ John 是 contoso.com 中的用户。在将用户同步到 Azure AD 目录 azurec
 ### 不可路由的本地域与 Azure AD 的 UPN
 有些组织使用不可路由的域，例如 contoso.local 或简单的单标签域，例如 contoso。在 Azure AD 中，你无法验证不可路由的域。Azure AD Connect 只能同步到 Azure AD 中已验证的域。当你创建 Azure AD 目录时，将创建可路由的域，而该域将成为 Azure AD 的默认域，例如 contoso.onmicrosoft.com。因此，如果你不想要同步到默认的 .onmicrosoft.com 域，则必须在此类方案中验证任何其他可路由的域。
 
-有关添加和验证域的详细信息，请阅读 [Add your custom domain name to Azure Active Directory（将自定义域名添加到 Azure Active Directory）](/documentation/articles/active-directory-add-domain)。
+有关添加和验证域的详细信息，请阅读[将自定义域名添加到 Azure Active Directory](/documentation/articles/active-directory-add-domain/)。
 
-Azure AD Connect 将检测你是否在不可路由的域环境中运行，并在适当的情况下警告你不要继续使用快速设置。如果你在不可路由的域中操作，则用户的 UPN 可能也有不可路由的后缀。例如，如果你在 contoso.local 下运行，Azure AD Connect 将建议使用自定义设置，而不是快速设置。使用自定义设置，可以在用户同步到 Azure AD 之后，指定要用作 UPN 以供登录 Azure 的属性。
-有关详细信息，请参阅下面的**选择 Azure AD 中用户主体名的属性**。
+Azure AD Connect 将检测你是否在不可路由的域环境中运行，并在适当的情况下警告你不要继续使用快速设置。如果你在不可路由的域中操作，则用户的 UPN 可能也有不可路由的后缀。例如，如果你在 contoso.local 下运行，Azure AD Connect 将建议使用自定义设置，而不是快速设置。使用自定义设置，可以在用户同步到 Azure AD 之后，指定要用作 UPN 以供登录 Azure 的属性。有关详细信息，请参阅下面的**选择 Azure AD 中用户主体名的属性**。
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0725_2016-->

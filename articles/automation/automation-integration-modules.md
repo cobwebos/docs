@@ -11,7 +11,7 @@
 
 <tags
 	ms.service="automation"
-	ms.date="05/24/2016"
+	ms.date="07/14/2016"
 	wacn.date=""/>
 
 # Azure 自动化集成模块
@@ -25,6 +25,8 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
 ## 什么是 Azure 自动化集成模块？
 
 集成模块与 PowerShell 模块并没有很大的不同。集成模块就是 PowerShell 模块，只是选择性地包含了另一个文件 - 元数据文件，该文件指定的 Azure 自动化连接类型需要在 Runbook 中用于模块的 cmdlet。不管是否为选择性文件，这些 PowerShell 模块均可导入到 Azure 自动化中，这样其 cmdlet 就可以在 Runbook 中使用，其 DSC 资源就可以在 DSC 配置中使用。Azure 自动化在后台存储这些模块，在执行 Runbook 作业和 DSC 编译作业时将其载入 Azure 自动化沙盒中，并在其中执行 Runbook 以及编译 DSC 配置。此外还会自动将模块中的任何 DSC 资源放置在自动化 DSC 拉取服务器上，供那些尝试应用 DSC 配置的计算机拉取。我们在 Azure 自动化中为你附送许多现成的 Azure PowerShell 模块，以便你能够立刻使用这些模块进行 Azure 自动化管理，但你也可以轻松地导入 PowerShell 模块，不管你要集成的系统、服务或工具是什么。
+
+>[AZURE.NOTE] 某些模块作为自动化服务中的“全局模块”随附。在创建自动化帐户时，这些全局模块是现成的可立即供你使用，我们有时会更新这些模块，这时会自动地将这些模块推送到你的自动化帐户。如果你不想自动更新这些模块，可以始终自行导入相同的模块，该模块将优先于我们在服务中提供的该模块的全局模块版本。
 
 导入集成模块包时，采用压缩文件格式，文件名与模块名相同，使用 .zip 扩展名。该包包含 Windows PowerShell 模块以及任何支持文件，包括一个清单文件 (.psd1)，如果模块有的话。
 
@@ -99,7 +101,8 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
     $response.TwilioResponse.IncomingPhoneNumbers.IncomingPhoneNumber
     }
     ```
-<br> 你提供此信息以后，用户不仅可以使用 **Get-Help** cmdlet 在 PowerShell 控制台中显示此帮助，还可以在特定情况下（例如在进行 Runbook 创作过程中插入活动）在 Azure 自动化中公开此帮助功能。在使用 Web 浏览器访问 Azure 自动化时，单击“查看详细帮助”即可在该浏览器的另一标签页中打开帮助 URI。<br>![集成模块帮助](./media/automation-integration-modules/automation-integration-module-activitydesc.png)
+<br> 
+  你提供此信息以后，用户不仅可以使用 **Get-Help** cmdlet 在 PowerShell 控制台中显示此帮助，还可以在特定情况下（例如在进行 Runbook 创作过程中插入活动）在 Azure 自动化中公开此帮助功能。在使用 Web 浏览器访问 Azure 自动化时，单击“查看详细帮助”即可在该浏览器的另一标签页中打开帮助 URI。<br>![集成模块帮助](./media/automation-integration-modules/automation-integration-module-activitydesc.png)
 2. 如果该模块是针对远程系统运行的，则应遵循以下规范：
     a.该模块应包含一个集成模块元数据文件，用于定义连接到该远程系统所需的信息，即定义连接类型。 
     b.模块中的每个 cmdlet 都应能够使用连接对象（该连接类型的实例）作为参数。  
@@ -116,7 +119,8 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
         -AuthToken $CorptTwilio.AuthToken
     }
     ```
-<br> 更轻松且更佳的访问方式是直接将连接对象传递给 cmdlet -
+<br>
+    更轻松且更佳的访问方式是直接将连接对象传递给 cmdlet -
 
     ```
     workflow Get-CorpTwilioPhones
@@ -153,8 +157,9 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
     }
     ```
 <br>
-3. 在模块中定义所有 cmdlet 的输出类型。定义 cmdlet 的输出类型以后，就可以利用设计时 IntelliSense 来确定 cmdlet 的输出属性，供创作时使用。这在自动化 Runbook 的图形创作过程中特别有用，这种创作过程要求你掌握一定程度的设计时知识，以改进用户对你的模块的使用体验。<br> ![图形 Runbook 输出类型](./media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> 这类似于 PowerShell ISE 中 cmdlet 输出的“预输入”功能，不需要运行。<br>![POSH IntelliSense](./media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
-4. 模块中的 cmdlet 不应使用复杂对象类型作为参数。PowerShell 工作流不同于 PowerShell，因为前者采用反序列化格式存储复杂类型。基元类型仍为基于类型，而复杂类型则转换为反序列化版本，后者实质上是属性包。例如，如果你使用了 Runbook（或 PowerShell 工作流）中的 **Get-Process** cmdlet，则会返回 [Deserialized.System.Diagnostic.Process] 类型的对象，而不是所期待的 [System.Diagnostic.Process] 类型。此类型包含所有与非反序列化类型相同的属性，但不包含相关方法。如果你尝试将该值作为参数传递给某个 cmdlet，而此 cmdlet 正常情况下接收到的该参数的值为 [System.Diagnostic.Process]，则会出现以下错误：无法处理参数 "process" 的参数转换。错误：无法将 "System.Diagnostics.Process (CcmExec)" 值从类型 "Deserialized.System.Diagnostics.Process" 转换为类型 "System.Diagnostics.Process"。* 这是因为，预期的 [System.Diagnostic.Process] 类型与给定的 [Deserialized.System.Diagnostic.Process] 类型存在类型不匹配的情况。若要解决此问题，必须确保模块的 cmdlet 不使用复杂类型作为参数。下面是错误的处理方式。
+3. 在模块中定义所有 cmdlet 的输出类型。定义 cmdlet 的输出类型以后，就可以利用设计时 IntelliSense 来确定 cmdlet 的输出属性，供创作时使用。这在自动化 Runbook 的图形创作过程中特别有用，这种创作过程要求你掌握一定程度的设计时知识，以改进用户对你的模块的使用体验。<br> ![图形 Runbook 输出类型](./media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> 
+这类似于 PowerShell ISE 中 cmdlet 输出的“预输入”功能，不需要运行。<br>![POSH IntelliSense](./media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
+4. 模块中的 cmdlet 不应使用复杂对象类型作为参数。PowerShell 工作流不同于 PowerShell，因为前者采用反序列化格式存储复杂类型。基元类型仍为基于类型，而复杂类型则转换为反序列化版本，后者实质上是属性包。例如，如果你使用了 Runbook（或 PowerShell 工作流）中的 **Get-Process** cmdlet，则会返回 [Deserialized.System.Diagnostic.Process] 类型的对象，而不是所期待的 [System.Diagnostic.Process] 类型。此类型包含所有与非反序列化类型相同的属性，但不包含相关方法。如果你尝试将该值作为参数传递给某个 cmdlet，而此 cmdlet 正常情况下接收到的该参数的值为 [System.Diagnostic.Process]，则会出现以下错误：_无法处理参数 "process" 的参数转换。错误：无法将 "System.Diagnostics.Process (CcmExec)" 值从类型 "Deserialized.System.Diagnostics.Process" 转换为类型 "System.Diagnostics.Process"。_ 这是因为，预期的 [System.Diagnostic.Process] 类型与给定的 [Deserialized.System.Diagnostic.Process] 类型存在类型不匹配的情况。若要解决此问题，必须确保模块的 cmdlet 不使用复杂类型作为参数。下面是错误的处理方式。
 
     ```
     function Get-ProcessDescription {
@@ -165,7 +170,7 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
     }
     ``` 
 <br>
-下面是正确的处理方式，即采用可以由 cmdlet 在内部使用的基元类型来获取复杂对象使用。由于 cmdlet 是在 PowerShell 环境而非 PowerShell 工作流环境中执行的，因此在 cmdlet 中，$process 会变为正确的 [System.Diagnostic.Process] 类型。
+下面是正确的处理方式，即采用可以由 cmdlet 在内部使用的基元类型来获取复杂对象并使用。由于 cmdlet 是在 PowerShell 环境而非 PowerShell 工作流环境中执行的，因此在 cmdlet 中，$process 会变为正确的 [System.Diagnostic.Process] 类型。
 
     ```
     function Get-ProcessDescription {
@@ -178,7 +183,7 @@ PowerShell 模块是指一组可以通过 PowerShell 控制台、脚本、工作
     }
     ```
 <br>
-Runbook 中的连接资产是哈希表，这些表属于复杂类型。不过，这些哈希表似乎可以传递到 cmdlet 中用作 -Connection 参数而不出任何问题，不会有任何强制转换异常。从技术上讲，某些 PowerShell 类型是能够正常地从序列化形式强制转换为反序列化形式的，因此可以传递到 cmdlet 中作为参数来接受非反序列化类型。哈希表就是其中之一。可以对模块作者所定义的类型进行某种方式的实施，使之也能正确地反序列化，但这种方式需要克服某些弊端。该类型需要有一个默认的构造函数，需要公开其所有属性，且需要有一个 PSTypeConverter。不过，对于模块作者没有所有权的已定义类型，则无法对其进行“修改”，因此建议你还是避免使用复杂类型作为参数。Runbook 创作提示：如果你的 cmdlet 因故而需要使用复杂类型参数，或者你使用的是其他人的需要复杂类型参数的模块，则要想在本地 PowerShell 的 PowerShell 工作流 Runbook 和 PowerShell 工作流中解决这个问题，你需要将生成复杂类型的 cmdlet 和使用该复杂类型的 cmdlet 打包到同一个 InlineScript 活动中。由于 InlineScript 以 PowerShell 方式而非 PowerShell 工作流方式执行其内容，生成复杂类型的 cmdlet 会生成相应的正确类型，而不是反序列化的复杂类型。
+ Runbook 中的连接资产是哈希表，这些表属于复杂类型。不过，这些哈希表似乎可以传递到 cmdlet 中用作 -Connection 参数而不出任何问题，不会有任何强制转换异常。从技术上讲，某些 PowerShell 类型是能够正常地从序列化形式强制转换为反序列化形式的，因此可以传递到 cmdlet 中作为参数来接受非反序列化类型。哈希表就是其中之一。可以对模块作者所定义的类型进行某种方式的实施，使之也能正确地反序列化，但这种方式需要克服某些弊端。该类型需要有一个默认的构造函数，需要公开其所有属性，且需要有一个 PSTypeConverter。不过，对于模块作者没有所有权的已定义类型，则无法对其进行“修改”，因此建议你还是避免使用复杂类型作为参数。Runbook 创作提示：如果你的 cmdlet 因故而需要使用复杂类型参数，或者你使用的是其他人的需要复杂类型参数的模块，则要想在本地 PowerShell 的 PowerShell 工作流 Runbook 和 PowerShell 工作流中解决这个问题，你需要将生成复杂类型的 cmdlet 和使用该复杂类型的 cmdlet 打包到同一个 InlineScript 活动中。由于 InlineScript 以 PowerShell 方式而非 PowerShell 工作流方式执行其内容，生成复杂类型的 cmdlet 会生成相应的正确类型，而不是反序列化的复杂类型。
 5. 使模块中的所有 cmdlet 以无状态方式呈现。PowerShell 工作流在不同的会话中运行在工作流中调用的每个 cmdlet。这意味着，任何依赖于同一模块中其他 cmdlet 创建/修改的会话状态的 cmdlet 都无法在 PowerShell 工作流 Runbook 中使用。下面是应避免的处理方式的示例。
 
     ```
@@ -201,7 +206,7 @@ Runbook 中的连接资产是哈希表，这些表属于复杂类型。不过，
 
 ## 后续步骤
 
-- 若要开始使用 PowerShell 工作流 Runbook，请参阅[我的第一个 PowerShell 工作流 Runbook](/documentation/articles/automation-first-runbook-textual/)
-- 若要详细了解如何创建 PowerShell 模块，请参阅 [Writing a Windows PowerShell Module（编写 Windows PowerShell 模块）](https://msdn.microsoft.com/zh-cn/library/dd878310(v=vs.85).aspx)
+- 若要开始使用 PowerShell 工作流 Runbook，请参阅 [My first PowerShell workflow runbook（我的第一个 PowerShell 工作流 Runbook）](/documentation/articles/automation-first-runbook-textual/)
+- 若要详细了解如何创建 PowerShell 模块，请参阅 [Writing a Windows PowerShell Module（编写 Windows PowerShell 模块）](https://msdn.microsoft.com/zh-cn/library/dd878310%28v=vs.85%29.aspx)
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0725_2016-->

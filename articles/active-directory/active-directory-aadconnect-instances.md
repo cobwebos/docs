@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/10/2016"
+	ms.date="06/27/2016"
 	wacn.date=""/>
 
 # Azure AD Connect：有关实例的特殊注意事项
@@ -22,8 +22,8 @@ Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例�
 
 在代理服务器中打开的 URL |
 --- |
-*.microsoftonline.de |
-*.windows.net |
+\*.microsoftonline.de |
+\*.windows.net |
 \+ 证书吊销列表 |
 
 在登录你的 Azure AD 目录时，必须使用 onmicrosoft.de 域中的帐户。
@@ -59,6 +59,6 @@ Microsoft Azure 政府版云中当前不存在的功能：
 - 密码写回未提供。
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0725_2016-->

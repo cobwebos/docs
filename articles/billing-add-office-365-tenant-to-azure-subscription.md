@@ -110,7 +110,7 @@
 
 		![assigned-users-removed-resource-groups](./media/billing-add-office-365-tenant-to-azure-subscription/s325_assigned-users-removed-resource-groups.png)
 
-	4. 单击“完成” ![complete-icon](./media/billing-add-office-365-tenant-to-azure-subscription/s38_complete-icon.png)。
+	4. 单击“完成”![complete-icon](./media/billing-add-office-365-tenant-to-azure-subscription/s38_complete-icon.png)。
 
 5. 现在可以向 AAD 租户添加 Office 365 组织帐户作为共同管理员。
 
@@ -118,7 +118,7 @@
 
 		![azure-classic-portal-settings-administrators](./media/billing-add-office-365-tenant-to-azure-subscription/s319_azure-classic-portal-settings-administrators.png)
 
-	2. 输入 Office 365 租户的组织帐户，单击选择 Azure 订阅，然后单击“完成” ![complete-icon](./media/billing-add-office-365-tenant-to-azure-subscription/s38_complete-icon.png)。
+	2. 输入 Office 365 租户的组织帐户，单击选择 Azure 订阅，然后单击“完成”![complete-icon](./media/billing-add-office-365-tenant-to-azure-subscription/s38_complete-icon.png)。
 
 		![azure-add-co-administrator](./media/billing-add-office-365-tenant-to-azure-subscription/s320_azure-add-co-administrator.png)
 
@@ -141,4 +141,4 @@
 ## 后续步骤
 相关场景：你已经有一个 Office 365 订阅，准备进行 Azure 订阅，但想要使用现有的 Office 365 用户帐户进行 Azure 订阅。或者，你是 Azure 订户，想要为现有 Azure Active Directory 中的用户获取 Office 365 订阅。若要了解如何完成这些任务，请参阅[对 Azure 订阅使用现有的 Office 365 帐户，或者相反](billing-use-existing-office-365-account-azure-subscription.md)。
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0725_2016-->

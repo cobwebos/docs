@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="04/08/2016"
+	ms.date="06/24/2016"
 	wacn.date=""/>
 
 
@@ -27,7 +27,7 @@
 
 ## 创建 Node.js 应用程序
 
-创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[在 Azure App Service 中创建 Node.js Web 应用]，使用 Windows PowerShell [生成 Node.js 应用程序并将其部署到 Azure 云服务]，或 [使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]。
+创建一个空的 Node.js 应用程序。有关创建 Node.js 应用程序的说明，请参阅[在 Azure App Service 中创建 Node.js Web 应用]、[使用 Windows PowerShell 生成 Node.js 应用程序并将其部署到 Azure 云服务]或[使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]。
 
 ## 配置应用程序以访问存储
 
@@ -306,9 +306,9 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
   [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
   [using the REST API]: http://msdn.microsoft.com/zh-cn/library/azure/hh264518.aspx
   [Azure Portal]: https://portal.azure.cn
-  [在 Azure App Service 中创建 Node.js Web 应用]: /documentation/articles/web-sites-nodejs-develop-deploy-mac
-  [Node.js Cloud Service with Storage]: /documentation/articles/storage-nodejs-use-table-storage-cloud-service-app
-  [使用 Azure 表服务的 Node.js Web 应用]: /documentation/articles/storage-nodejs-use-table-storage-web-site
+  [在 Azure App Service 中创建 Node.js Web 应用]: /documentation/articles/web-sites-nodejs-develop-deploy-mac/
+  [Node.js Cloud Service with Storage]: /documentation/articles/storage-nodejs-use-table-storage-cloud-service-app/
+  [使用 Azure 表服务的 Node.js Web 应用]: /documentation/articles/storage-nodejs-use-table-storage-web-site/
 
   
   [Queue1]: ./media/storage-nodejs-how-to-use-queues/queue1.png
@@ -317,8 +317,8 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
 
 
 
-  [生成 Node.js 应用程序并将其部署到 Azure 云服务]: /documentation/articles/cloud-services-nodejs-develop-deploy-app
+  [使用 Windows PowerShell 生成 Node.js 应用程序并将其部署到 Azure 云服务]: /documentation/articles/cloud-services-nodejs-develop-deploy-app/
   [Azure 存储空间团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
-  [使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]: /documentation/articles/web-sites-nodejs-use-webmatrix
+  [使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]: /documentation/articles/web-sites-nodejs-use-webmatrix/
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0725_2016-->

@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="Microsoft Azure 上的应用程序体系结构" 
+	pageTitle="Azure 上的应用程序体系结构" 
 	description="包括常见设计模式的体系结构概述" 
 	services="" 
 	documentationCenter="" 
@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multiple" 
-	ms.date="10/16/2015" 
+	ms.date="05/19/2016" 
 	wacn.date=""/>
 
 #Microsoft Azure 上的应用程序体系结构
@@ -34,9 +34,9 @@ Microsoft 发布了一套高级别的 [体系结构蓝图](http://aka.ms/azbluep
 
 每个蓝图包含一个
 
-- 平面的基于**2D Visio** 2003 的文件，供你下载和修改 
+- 平面的基于**2D Visio** 2003 的文件，供你下载和修改
 - 彩色 **3D perspective PDF** 文件为较少的技术受众介绍蓝图
-- **Video** 通过 3D 版本运行。 
+- **Video** 通过 3D 版本运行。
 
 该蓝图使用[云和企业符号集](#symbol-and-icon-sets)。
 
@@ -50,9 +50,9 @@ Microsoft 发布了一套高级别的 [体系结构蓝图](http://aka.ms/azbluep
 
 该模板在本课程外也可用。
 
-- 首先[观看视频培训](http://aka.ms/3dBlueprintTemplateVideo)了解其功能   
+- 首先[观看视频培训](http://aka.ms/3dBlueprintTemplateVideo)了解其功能
 - 下载 [Microsoft 3d Blueprint Visio Template](http://aka.ms/3DBlueprintTemplate)
-- 下载与 3D 模板配合使用的[云和企业符号](#drawing-symbol-and-icon-sets) 
+- 下载与 3D 模板配合使用的[云和企业符号](#drawing-symbol-and-icon-sets)
 
 提供反馈，或者需要提培训材料无法答复的具体问题，请发邮件至 [CnESymbols@microsoft.com](mailto:CnESymbols@microsoft.com)。可用性是模板的主要目标之一，让我们了解其优点和缺点
 
@@ -68,7 +68,7 @@ CnE 符号采用 Visio 和 PNG 格式。有关如何在 PowerPoint 中使用 PNG
 
 符号集按季度发布，一旦新服务发布就会更新。
 
-Microsoft Office 和相关技术的其他符号可在 [Microsoft Office Visio stencil](http://www.microsoft.com/zh-cn/download/details.aspx?id=35772) 中使用，但并没有对体系结构图如 CnE 集进行优化。
+Microsoft Office 和相关技术的其他符号可在 [Microsoft Office Visio stencil](http://www.microsoft.com/en-us/download/details.aspx?id=35772) 中使用，但并没有对体系结构图如 CnE 集进行优化。
 
 **反馈：**如果你曾经使用过 CnE 符号，请填写 5 个简短的[调查](http://aka.ms/azuresymbolssurveyv2)问题，如果有具体的问题或事宜需要咨询，请发电子邮件至 [CnESymbols@microsoft.com](mailto:CnESymbols@microsoft.com)。我们想知道您的想法，包括积极的反馈，以便我们知道可以继续对其投入时间。
 
@@ -81,4 +81,4 @@ Microsoft 发布了几个与体系结构相关的海报/信息图。它们包括
 
 ![Azure 体系结构信息图](./media/architecture-overview/AzureArchInfographicThumb.jpg)
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0725_2016-->

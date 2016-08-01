@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="site-recovery" 
-	ms.date="03/30/2016"
+	ms.date="07/06/2016"
 	wacn.date=""/>
 
 # 通过 Azure Site Recovery 使用 SAN 将 VMM 云中的 Hyper-V VM 复制到辅助站点
@@ -23,7 +23,7 @@
 
 组织需要制定业务连续性和灾难恢复 (BCDR) 策略来确定应用、工作负荷和数据如何在计划和非计划停机期间保持运行和可用，并尽快恢复正常运行情况。BCDR 策略的重点在于，发生灾难时提供确保业务数据的安全性和可恢复性以及工作负荷的持续可用性的解决方案。
 
-站点恢复是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。当主要位置发生故障时，你可以故障转移到辅助站点，使应用和工作负荷保持可用。当主要位置恢复正常时，你可以故障转移回到主要位置。站点恢复可用于许多方案，并可保护许多工作负荷。在[什么是 Azure Site Recovery？](/documentation/articles/site-recovery-overview)中了解详细信息。
+站点恢复是一项 Azure 服务，可以通过协调从本地物理服务器和虚拟机到云 (Azure) 或辅助数据中心的的复制，来为 BCDR 策略提供辅助。当主要位置发生故障时，你可以故障转移到辅助站点，使应用和工作负荷保持可用。当主要位置恢复正常时，你可以故障转移回到主要位置。站点恢复可用于许多方案，并可保护许多工作负荷。在[什么是 Azure Site Recovery？](/documentation/articles/site-recovery-overview/)中了解详细信息
 
 本文说明了使用 SAN 复制设置从一个 VMM 站点到其他 VMM 站点的 Hyper-V 虚拟机的复制。本文包含架构概述、部署先决条件和说明。你可以发现和分类 VMM 中的 SAN 存储，设置 LUN，以及向 Hyper-V 群集分配存储。本文最后指导你测试故障转移，以确保一切都按预期进行。
 
@@ -36,8 +36,8 @@
 - 利用企业存储合作伙伴通过光纤通道和 iSCSI 存储提供的 SAN 复制功能。请查看我们的 [SAN 存储合作伙伴](http://social.technet.microsoft.com/wiki/contents/articles/28317.deploying-azure-site-recovery-with-vmm-and-san-supported-storage-arrays.aspx)。
 - 利用现有的 SAN 基础结构来保护 Hyper-V 群集中部署的任务关键型应用程序。
 - 为来宾群集提供支持。
-- 确保使用 RTO 和 RPO 较低的同步复制以及灵活性较高的异步复制（取决于存储阵列功能），在不同的应用程序层实现复制一致性。  
-- 与 VMM 的集成可以在 VMM 控制台中提供 SAN 管理，VMM 中的 SMI-S 可发现现有的存储。  
+- 确保使用 RTO 和 RPO 较低的同步复制以及灵活性较高的异步复制（取决于存储阵列功能），在不同的应用程序层实现复制一致性。
+- 与 VMM 的集成可以在 VMM 控制台中提供 SAN 管理，VMM 中的 SMI-S 可发现现有的存储。
 
 ## 体系结构
 
@@ -59,11 +59,11 @@
 
 **先决条件** | **详细信息** 
 --- | ---
-**Azure**| 需要一个 [Microsoft Azure](https://azure.cn/) 帐户。你可以从 [1rmb 试用版](/pricing/1rmb-trial/)开始。[详细了解](/home/features/site-recovery#price)站点恢复定价。 
-**VMM** | 你至少需要一台部署为单独的物理或虚拟服务器（或虚拟群集）的 VMM 服务器。<br/><br/>VMM 服务器应运行安装了最新累积更新的 System Center 2012 R2。<br/><br/>至少需要将一个云配置在所要保护的主 VMM 服务器上，一个云配置在需要用于保护和恢复的辅助 VMM 服务器上<br/><br/>要保护的源云必须包含一个或多个 VMM 主机组。<br/><br/>所有 VMM 云都必须设置 Hyper-V 容量配置文件。<br/><br/>若要详细了解如何设置 VMM 云，请参阅[配置 VMM 云结构](/documentation/articles/site-recovery-best-practices)和[演练：使用 System Center 2012 SP1 VMM 创建私有云](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)。
+**Azure**| 需要一个 [Microsoft Azure](https://azure.cn/) 帐户。你可以从 [1rmb 试用版](/pricing/1rmb-trial/)开始。[详细了解](/pricing/details/site-recovery/) Site Recovery 定价。 
+**VMM** | 你至少需要一台部署为单独的物理或虚拟服务器（或虚拟群集）的 VMM 服务器。<br/><br/>VMM 服务器应运行安装了最新累积更新的 System Center 2012 R2。<br/><br/>至少需要将一个云配置在所要保护的主 VMM 服务器上，一个云配置在需要用于保护和恢复的辅助 VMM 服务器上<br/><br/>要保护的源云必须包含一个或多个 VMM 主机组。<br/><br/>所有 VMM 云都必须设置 Hyper-V 容量配置文件。<br/><br/>若要详细了解如何设置 VMM 云，请参阅[配置 VMM 云结构](/documentation/articles/site-recovery-best-practices/)和[演练：使用 System Center 2012 SP1 VMM 创建私有云](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)。
 **Hyper-V** | 你将需要一个或多个位于主站点和辅助站点中的 Hyper-V 群集，以及一个或多个位于源 Hyper-V 群集中的 VM。主位置和辅助位置中的 VMM 主机组应在每个组中有一个或多个 Hyper-V 群集。<br/><br/>主机和目标 Hyper-V 服务器必须至少运行包含 Hyper-V 角色的 Windows Server 2012，并安装了最新更新。<br/><br/>任何包含你所要保护的 VM 的 Hyper-V 服务器都必须位于 VMM 云中。<br/><br/>如果你要在群集中运行 Hyper-V，请注意，如果你的群集是静态的基于 IP 地址的群集，则不会自动创建群集中转站。你需要手动配置群集代理。在 Aidan Finn 的博客文章中[了解详细信息](https://www.petri.com/use-hyper-v-replica-broker-prepare-host-clusters)。
 **SAN 存储** | 使用可以通过 iSCSI 或光纤通道存储复制来宾群集虚拟机的 SAN 复制，或使用共享虚拟硬盘 (vhdx)。<br/><br/>你需要设置两个 SAN 阵列，一个位于主站点，另一个位于辅助站点。<br/><br/>应在阵列之间设置网络基础结构。应该配置对等互连和复制。应该根据存储阵列要求设置复制许可证。<br/><br/>应该在 Hyper-V 主机服务器与存储阵列之间设置网络，使主机能够使用 ISCSI 或光纤通道与存储 LUN 通信。<br/><br/> 查看[支持的存储阵列](http://social.technet.microsoft.com/wiki/contents/articles/28317.deploying-azure-site-recovery-with-vmm-and-san-supported-storage-arrays.aspx)列表。<br/><br/>应安装存储阵列制造商提供的 SMI-S 提供程序，并且 SAN 阵列应由提供程序管理。按提供程序文档要求设置提供程序。<br/><br/>确保阵列的 SMI-S 提供程序位于某个服务器上，使得 VMM 服务器能够通过 IP 地址或 FQDN 进行经网络的访问。<br/><br/>每个 SAN 阵列应该有一个或多个可以用于此部署的存储池。主站点的 VMM 服务器需管理主阵列，辅助 VMM 服务器将管理辅助阵列。<br/><br/>主站点的 VMM 服务器应管理主阵列，辅助 VMM 服务器应管理辅助阵列。
-**网络映射** | 你可以配置网络映射，以确保在故障转移后以最佳方式将复制的虚拟机放置在辅助 Hyper-V 主机服务器上，并确保它们连接到适当的 VM 网络。如果不配置网络映射，则在故障转移后，副本 VM 将不会连接到任何网络。<br/><br/>若要在部署期间设置网络映射，请确保源 Hyper-V 主机服务器上的虚拟机连接到 VMM VM 网络。该网络应链接到与云关联的逻辑网络。<br/<br/>辅助 VMM 服务器上用于恢复的目标云应当配置了相应的 VM 网络，并且该网络应当链接到与目标云关联的相应逻辑网络。<br/><br/>[详细了解](/documentation/articles/site-recovery-network-mapping)网络映射。
+**网络映射** | 你可以配置网络映射，以确保在故障转移后以最佳方式将复制的虚拟机放置在辅助 Hyper-V 主机服务器上，并确保它们连接到适当的 VM 网络。如果不配置网络映射，则在故障转移后，副本 VM 将不会连接到任何网络。<br/><br/>若要在部署期间设置网络映射，请确保源 Hyper-V 主机服务器上的虚拟机连接到 VMM VM 网络。该网络应链接到与云关联的逻辑网络。<br/<br/>辅助 VMM 服务器上用于恢复的目标云应当配置了相应的 VM 网络，并且该网络应当链接到与目标云关联的相应逻辑网络。<br/><br/>[详细了解](/documentation/articles/site-recovery-network-mapping/)网络映射。
 
 
 ## 步骤 1：准备 VMM 基础结构
@@ -130,7 +130,7 @@ Site Recovery 将协调 VMM 云中 Hyper-V 主机服务器上的虚拟机的保�
 
 如果你要配置网络映射，请执行以下操作：
 
-1. [了解](/documentation/articles/site-recovery-network-mapping)网络映射。
+1. [了解](/documentation/articles/site-recovery-network-mapping/)网络映射。
 2. 在 VMM 中准备 VM 网络：
 
 	- [设置逻辑网络](https://technet.microsoft.com/zh-cn/library/jj721568.aspx)。
@@ -147,7 +147,7 @@ Site Recovery 将协调 VMM 云中 Hyper-V 主机服务器上的虚拟机的保�
 
 4. 在“名称”中，输入一个友好名称以标识此保管库。
 
-5. 在“区域”中，为保管库选择地理区域。若要查看受支持的区域，请参阅 [Azure Site Recovery 价格详细信息](/home/features/site-recovery/#price)中的“地域可用性”。
+5. 在“区域”中，为保管库选择地理区域。若要查看受支持的区域，请参阅 Azure Site Recovery 价格详细信息中的“地域可用性”。[](/pricing/details/site-recovery/)
 
 6. 单击“创建保管库”。
 
@@ -192,13 +192,13 @@ Site Recovery 将协调 VMM 云中 Hyper-V 主机服务器上的虚拟机的保�
 		- *.hypervrecoverymanager.windowsazure.cn
 		- *.accesscontrol.chinacloudapi.cn
 		- *.backup.windowsazure.cn
-		- *.blob.core.chinacloudapi.cn
-		- *.store.core.chinacloudapi.cn
-	- 允许 [Azure 数据中心 IP 范围](https://msdn.microsoft.com/zh-cn/library/azure/dn175718.aspx)中所述的 IP 地址，以及 HTTPS (443) 协议。必须将你打算使用的 Azure 区域以及中国东部的 IP 范围加入允许列表。 
+		- *.blob.core.chinacloudapi.cn 
+		- *.store.core.chinacloudapi.cn 
+	- 允许 [Azure 数据中心 IP 范围](https://msdn.microsoft.com/zh-cn/library/azure/dn175718.aspx)中所述的 IP 地址，以及 HTTPS (443) 协议。必须将你打算使用的 Azure 区域以及中国东部的 IP 范围加入允许列表。
 	- 如果你使用自定义代理，则将使用指定的代理凭据自动创建一个 VMM 运行身份帐户 (DRAProxyAccount)。对代理服务器进行配置以便该帐户可以成功通过身份验证。可以在 VMM 控制台中修改 VMM 运行身份帐户设置。若要执行此操作，请打开“设置”工作区，展开“安全性”，单击“运行身份帐户”，然后修改 DRAProxyAccount 的密码。你将需要重新启动 VMM 服务以使此设置生效。
 
 10. 在“注册密钥”中，选择你从 Azure Site Recovery 下载并复制到 VMM 服务器的密钥。
-11. 在“保管库名称”中，验证将要在其中注册服务器的保管库的名称。 
+11. 在“保管库名称”中，验证将要在其中注册服务器的保管库的名称。
 
 	![服务器注册](./media/site-recovery-vmm-san/vault-creds.png)
 
@@ -235,7 +235,7 @@ Site Recovery 将协调 VMM 云中 Hyper-V 主机服务器上的虚拟机的保�
 
 其中的参数如下：
 
- - **/Credentials**：用于指定注册密钥文件所在位置的必需参数  
+ - **/Credentials**：用于指定注册密钥文件所在位置的必需参数
  - **/FriendlyName**：在 Azure Site Recovery 门户中显示的 Hyper-V 主机服务器名称的必需参数。
  - **/EncryptionEnabled**：仅当你需要在 Azure 中以静止方式为虚拟机加密时，才需要在 VMM 到 Azure 方案中使用这个可选参数。请确保提供的文件名具有 **.pfx** 扩展名。
  - **/proxyAddress**：可选参数，用于指定代理服务器的地址。
@@ -304,7 +304,8 @@ Site Recovery 将协调 VMM 云中 Hyper-V 主机服务器上的虚拟机的保�
 
 存储组开始复制后，请在 VMM 控制台中使用以下方法之一为虚拟机启用保护：
 
-- **新的虚拟机** - 在创建新的虚拟机时，可以在 VMM 控制台中启用 Azure Site Recovery 保护，并将虚拟机与复制组相关联。如果选择此选项，VMM 将使用智能定位以最佳方式将虚拟机存储放置在复制组的 LUN 上。Azure Site Recovery 将协调辅助站点上的阴影虚拟机的创建并分配容量，以便在故障转移后可以启动副本虚拟机。
+- **新的虚拟机** - 在创建新的虚拟机时，可以在 VMM 控制台中启用 Azure Site Recovery 保护，并将虚拟机与复制组相关联。
+如果选择此选项，VMM 将使用智能定位以最佳方式将虚拟机存储放置在复制组的 LUN 上。Azure Site Recovery 将协调辅助站点上的阴影虚拟机的创建并分配容量，以便在故障转移后可以启动副本虚拟机。
 - **现有虚拟机** - 如果已在 VMM 中部署虚拟机，你可以启用 Azure Site Recovery 保护，并执行到复制组的存储迁移。完成此操作后，VMM 和 Azure Site Recovery 将检测新虚拟机，并开始在 Azure Site Recovery 中对它进行管理，以提供保护。将在辅助站点上创建阴影虚拟机并为其分配容量，以便在故障转移后可以启动副本虚拟机。
 
 	![启用保护](./media/site-recovery-vmm-san/enable-protect.png)
@@ -331,7 +332,7 @@ Site Recovery 将协调 VMM 云中 Hyper-V 主机服务器上的虚拟机的保�
 	![添加虚拟机](./media/site-recovery-vmm-san/r-plan-vm.png)
 5. 在创建恢复计划后，它将出现在“恢复计划”选项卡上的列表中。
 6. 在“恢复计划”选项卡上，选择该计划并单击“测试故障转移”。
-7. 在“确认测试故障转移”页面上，选择“无”。请注意，当启用了此选项时，故障转移后的副本虚拟机不会连接到任何网络。这将测试虚拟机是否按预期进行故障转移，但是不会测试你的复制网络环境。有关如何使用不同网络选项的详细信息，请查看“如何[运行测试故障转移](site-recovery-failover.md#run-a-test-failover)”。
+7. 在“确认测试故障转移”页面上，选择“无”。请注意，当启用了此选项时，故障转移后的副本虚拟机不会连接到任何网络。这将测试虚拟机是否按预期进行故障转移，但是不会测试你的复制网络环境。有关如何使用不同网络选项的详细信息，请查看[如何运行测试性故障转移](site-recovery-failover.md#run-a-test-failover)。
 
 
 	![选择测试网络](./media/site-recovery-vmm-san/test-fail1.png)
@@ -358,6 +359,6 @@ Site Recovery 将协调 VMM 云中 Hyper-V 主机服务器上的虚拟机的保�
 
 ## 后续步骤
 
-运行测试故障转移以确保环境功能正常以后，请[了解](/documentation/articles/site-recovery-failover)不同类型的故障转移。
+运行测试性故障转移以确保环境功能正常以后，请[了解](/documentation/articles/site-recovery-failover/)不同类型的故障转移。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0725_2016-->

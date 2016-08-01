@@ -9,14 +9,11 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/31/2016"
+	ms.date="06/23/2016"
 	wacn.date=""/>
 
 
 # Azure Active Directory 如何使用 SAML 协议
-
-[AZURE.INCLUDE [active-directory-protocols](../includes/active-directory-protocols.md)]
-
 
 Azure Active Directory (Azure AD) 使用 SAML 2.0 协议，使应用程序能够为其用户提供单一登录体验。Azure AD 的[单一登录](/documentation/articles/active-directory-single-sign-on-protocol-reference/)和[单一注销](/documentation/articles/active-directory-single-sign-out-protocol-reference/) SAML 配置文件说明了如何在标识提供者服务中使用 SAML 断言、协议和绑定。
 
@@ -32,6 +29,6 @@ Azure Active Directory 公开特定于租户的和公用的（独立于租户的
 
 - 独立于租户的终结点位于 `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`。此终结点地址中显示 **common**，而不是租户域名或 ID。
 
-有关 Azure AD 发布的联合元数据文档的信息，请参阅 [Federation Metadata（联合元数据）](/documentation/articles/active-directory-federation-metadata/)。
+有关 Azure AD 发布的联合元数据文档的信息，请参阅 [Federation Metadata（联合元数据）](/documentation/articles/active-directory-federation-metadata)。
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0725_2016-->

@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="03/22/2016"
+	ms.date="07/06/2016"
 	ms.author="genli"/>
 
 # 如何添加或更改 Azure 管理员角色
@@ -48,7 +48,7 @@
 
 	**Note**
 	- 所有者角色具有与共同管理员相同的访问特权。此角色没有对 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)的访问特权。
-	- 通过 [Azure 门户](https://portal.azure.com)添加的所有者不能管理 [Azure 经典门户](https://manage.windowsazure.com)中的服务。  
+	- 通过 [Azure 门户](https://portal.azure.com)添加的所有者不能管理 [Azure 经典门户](https://manage.windowsazure.com)中的服务。
 
 5. 键入要添加为所有者的用户的电子邮件地址，单击该用户，然后单击“选择”。
 
@@ -94,7 +94,7 @@
 
 2. 选择要更改的订阅。
 
-3. 在右侧，单击“编辑订阅”以获取详细信息。</br>
+3. 在右侧，单击“编辑订阅详细信息”。</br>
 
 	![editsub](./media/billing-add-change-azure-subscription-administrator/editsub.png)
 
@@ -104,14 +104,14 @@
 
 ## 如何更改帐户管理员
 
-若要将 Azure 帐户的所有权转让给另一个帐户，请参阅[转让 Azure 订阅](billing-subscription-transfer.md)。
+若要将 Azure 帐户的所有权转让给另一个帐户，请参阅[转让 Azure 订阅的所有权](billing-subscription-transfer.md)。
 
 ## 后续步骤
 
 * 若要了解有关如何在 Microsoft Azure 中控制资源访问的详细信息，请参阅[了解 Azure 中的资源访问权限](./active-directory/active-directory-understanding-resource-access.md)
 
-* 有关 Azure Active Directory 如何与你的 Azure 订阅相关联的信息，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式](./active-directory/active-directory-how-subscriptions-associated directory.md)
+* 有关 Azure Active Directory 如何与你的 Azure 订阅相关联的详细信息，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式](./active-directory/active-directory-how-subscriptions-associated-directory.md)
 
 * 有关 Azure Active Directory 如何与你的 Azure 订阅相关联的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](./active-directory/active-directory-assign-admin-roles.md)
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0725_2016-->

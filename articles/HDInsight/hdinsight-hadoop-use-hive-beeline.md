@@ -12,7 +12,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="04/27/2016"
+	ms.date="07/12/2016"
 	wacn.date=""/>
 
 #通过 Beeline 将 Hive 与 HDInsight 中的 Hadoop 配合使用
@@ -21,7 +21,7 @@
 
 在本文中，你将学习如何使用安全外壳 (SSH) 连接到基于 Linux 的 HDInsight 群集，然后使用 [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline-NewCommandLineShell) 命令行工具以交互方式提交 Hive 查询。
 
-> [AZURE.NOTE] Beeline 使用 JDBC 连接到 Hive。有关将 JDBC 与 Hive 配合使用的详细信息，请参阅 [Connect to Hive on Azure HDInsight using the Hive JDBC driver（使用 Hive JDBC 驱动程序连接到 Azure HDInsight 上的 Hive）](/documentation/articles/hdinsight-connect-hive-jdbc-driver)。
+> [AZURE.NOTE] Beeline 使用 JDBC 连接到 Hive。有关将 JDBC 与 Hive 配合使用的详细信息，请参阅 [Connect to Hive on Azure HDInsight using the Hive JDBC driver（使用 Hive JDBC 驱动程序连接到 Azure HDInsight 上的 Hive）](/documentation/articles/hdinsight-connect-hive-jdbc-driver/)。
 
 ##<a id="prereq"></a>先决条件
 
@@ -43,35 +43,23 @@
 
 如果你在创建 HDInsight 群集时**提供了 SSH 身份验证的密码**，则需要根据提示提供该密码。
 
-有关将 SSH 与 HDInsight 配合使用的详细信息，请参阅[在 Linux、OS X 和 Unix 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix)。
+有关将 SSH 与 HDInsight 配合使用的详细信息，请参阅[在 Linux、OS X 和 Unix 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/)。
 
 ###PuTTY（基于 Windows 的客户端）
 
 Windows 未提供内置的 SSH 客户端。建议使用可从 [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) 下载的 **PuTTY**。
 
-有关使用 PuTTY 的详细信息，请参阅[从 Windows 在 HDInsight 上配合使用 SSH 与基于 Linux 的 Hadoop](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows)。
+有关使用 PuTTY 的详细信息，请参阅[从 Windows 在 HDInsight 上配合使用 SSH 与基于 Linux 的 Hadoop](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/)。
 
 ##<a id="beeline"></a>使用 Beeline 命令
 
-1. 连接之后，使用以下命令来获取头节点的主机名：
+1. 连接后，使用以下命令来启动 Beeline：
 
-        hostname -f
+        beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
+
+    随后将会启动 Beeline 客户端并连接到 JDBC url。此处之所以使用 `localhost`，是因为 HiveServer2 在群集中的两个头节点上运行，而我们将直接在头节点 0 上运行 Beeline。
     
-    保存返回的主机名，因为稍后从 Beeline 连接到 HiveServer2 时需要用到。
-    
-2. 使用以下命令启动 Hive CLI：
-
-        beeline
-
-2. 在 `beeline>` 提示符下，使用以下命令来连接到 HiveServer2 服务。将 __HOSTNAME__ 替换为前面返回的头节点主机名：
-
-        !connect jdbc:hive2://HOSTNAME:10001/;transportMode=http admin
-        
-    这将指示 Beeline 连接到指定 __HOSTNAME__ 上的端口 __10001__，__HTTP__ 是传输方法。__admin__ 帐户用于对连接进行身份验证。
-
-    出现提示时，请输入 HDInsight 群集管理员 (admin) 帐户的密码。建立连接后，提示将更改为：
-    
-        jdbc:hive2://HOSTNAME:10001/>
+    完成该命令后，将出现 `jdbc:hive2://localhost:10001/>` 提示符。
 
 3. Beeline 命令通常以 `!` 字符开头，例如，`!help` 将显示帮助。但是，通常可以省略 `!`。例如，`help` 也是有效的。
 
@@ -178,9 +166,11 @@ Beeline 还可用于运行包含 HiveQL 语句的文件。使用以下步骤创�
 
 4. 使用以下命令以通过 Beeline 运行该文件。将 __HOSTNAME__ 替换为前面获取的头节点名称，将 __PASSWORD__ 替换为 admin 帐户的密码：
 
-        beeline -u 'jdbc:hive2://HOSTNAME:10001/;transportMode=http' -n admin -p PASSWORD -f query.hql
+        beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin -i query.hql
 
-5. 若要验证是否已创建 **errorLogs** 表，请启动 Beeline 并连接到 HiveServer2，然后使用以下语句从 **errorLogs** 返回所有行：
+    > [AZURE.NOTE] `-i` 参数将启动 Beeline，运行 query.hql 文件中的语句，并在出现 `jdbc:hive2://localhost:10001/>` 提示符时保留在 Beeline 中。你也可以使用 `-f` 参数运行某个文件，以便在处理该文件后返回到 Bash。
+
+5. 若要验证是否已创建 **errorLogs** 表，请使用以下语句从 **errorLogs** 返回所有行：
 
         SELECT * from errorLogs;
 
@@ -203,19 +193,19 @@ Beeline 还可用于运行包含 HiveQL 语句的文件。使用以下步骤创�
 
 有关 HDInsight 中的 Hive 的一般信息：
 
-* [将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive)
+* [将 Hive 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-hive/)
 
 有关 HDInsight 上的 Hadoop 的其他使用方法的信息：
 
-* [将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig)
+* [将 Pig 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-pig/)
 
-* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce)
+* [将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
 
 如果将 Tez 与 Hive 配合使用，请参阅以下文档以了解调试信息：
 
-* [在基于 Windows 的 HDInsight 上使用 Tez UI](/documentation/articles/hdinsight-debug-tez-ui)
+* [在基于 Windows 的 HDInsight 上使用 Tez UI](/documentation/articles/hdinsight-debug-tez-ui/)
 
-* [Use the Ambari Tez view on Linux-based HDInsight（在基于 Linux 的 HDInsight 上使用 Ambari Tez 视图）](/documentation/articles/hdinsight-debug-ambari-tez-view)
+* [Use the Ambari Tez view on Linux-based HDInsight（在基于 Linux 的 HDInsight 上使用 Ambari Tez 视图）](/documentation/articles/hdinsight-debug-ambari-tez-view/)
 
 [hdinsight-sdk-documentation]: http://msdn.microsoft.com/zh-cn/library/dn479185.aspx
 
@@ -230,18 +220,17 @@ Beeline 还可用于运行包含 HiveQL 语句的文件。使用以下步骤创�
 [import-to-excel]: /documentation/articles/hdinsight-connect-excel-power-query/
 
 
-[hdinsight-use-oozie]: /documentation/articles/hdinsight-use-oozie
-[hdinsight-analyze-flight-data]: /documentation/articles/hdinsight-analyze-flight-delay-data
+[hdinsight-use-oozie]: /documentation/articles/hdinsight-use-oozie/
+[hdinsight-analyze-flight-data]: /documentation/articles/hdinsight-analyze-flight-delay-data/
 
 [putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 
 
-[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters-v1
-[hdinsight-submit-jobs]: /documentation/articles/hdinsight-submit-hadoop-jobs-programmatically
-[hdinsight-upload-data]: /documentation/articles/hdinsight-upload-data
+[hdinsight-provision]: /documentation/articles/hdinsight-provision-clusters-v1/
+[hdinsight-submit-jobs]: /documentation/articles/hdinsight-submit-hadoop-jobs-programmatically/
+[hdinsight-upload-data]: /documentation/articles/hdinsight-upload-data/
 
 
 [powershell-here-strings]: http://technet.microsoft.com/zh-cn/library/ee692792.aspx
 
-
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0725_2016-->

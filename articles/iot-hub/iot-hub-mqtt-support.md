@@ -39,14 +39,14 @@ IoT 中心允许设备在端口 8883 上使用 [MQTT v3.1.1][lnk-mqtt-org] 协�
 
 如果设备无法使用设备客户端 SDK，仍可使用 MQTT 协议连接到公共设备终结点。在 **CONNECT** 数据包中，设备应使用以下值：
 
-- **ClientId** 字段使用 **deviceId**。 
+- **ClientId** 字段使用 **deviceId**。
 - “用户名”字段使用 `{iothubhostname}/{device_id}`，其中 {iothubhostname} 是 IoT 中心的完整 CName。
 
     例如，如果 IoT 中心的名称为 **contoso.azure-devices.net**，设备的名称为 **MyDevice01**，则完整“用户名”字段应包含 `contoso.azure-devices.net/MyDevice01`。
 
 - “密码”字段使用 SAS 令牌。对于 HTTP 和 AMQP 协议，SAS 令牌的格式是相同的：<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`。
 
-    有关如何生成 SAS 令牌的详细信息，请参阅 [Using IoT Hub security tokens（使用 IoT 中心安全令牌）][lnk-sas-tokens]的设备部分。
+    有关如何生成 SAS 令牌的详细信息，请参阅[使用 IoT 中心安全令牌][lnk-sas-tokens]的设备部分。
     
     测试时也可以使用[设备资源管理器][lnk-device-explorer]工具来快速生成可以复制并粘贴到自己的代码中的 SAS 令牌。
     
@@ -55,11 +55,9 @@ IoT 中心允许设备在端口 8883 上使用 [MQTT v3.1.1][lnk-mqtt-org] 协�
     3. 在 **SASTokenForm** 上，从“DeviceID”下拉列表中选择你的设备。设置 **TTL**。
     4. 单击“生成”以创建令牌。
     
-    所生成的 SAS 令牌如下所示：
-    `HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fMyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802`。
+    所生成的 SAS 令牌如下所示：`HostName={your hub name}.azure-devices.net;DeviceId=javadevice;SharedAccessSignature=SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fMyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802`。
 
-    与“密码”字段一样使用 MQTT 连接的部分为：
-    `SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`。
+    与“密码”字段一样使用 MQTT 连接的部分为：`SharedAccessSignature sr={your hub name}.azure-devices.net%2fdevices%2fyDevice01&sig=vSgHBMUG.....Ntg%3d&se=1456481802g%3d&se=1456481802`。
 
 对于 MQTT 连接和断开连接数据包，IoT 中心将在**操作监视**通道上发出事件。
 
@@ -81,25 +79,41 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 ## 后续步骤
 
-有关 IoT 设备 SDK 的 MQTT 支持的更多信息，请参阅 Azure IoT 中心开发人员指南中的 [Notes on MQTT support（有关 MQTT 支持的说明）][lnk-mqtt-devguide]。
-
-若要详细了解如何使用设备客户端 SDK 来与 IoT 中心通信，请参阅 [Get started with Azure IoT Hub（Azure IoT 中心入门）][lnk-iot-get-stated]。
+有关 IoT 设备 SDK 的 MQTT 支持的更多信息，请参阅 Azure IoT 中心开发人员指南中的 [Notes on MQTT support][lnk-mqtt-devguide]（有关 MQTT 支持的说明）。
 
 若要了解有关 MQTT 协议的详细信息，请参阅 [MQTT 文档][lnk-mqtt-docs]。
 
+若要深入了解如何规划 IoT 中心部署，请参阅：
+
+- [支持的设备][lnk-devices]
+- [支持其他协议][lnk-protocols]
+- [与事件中心比较][lnk-compare]
+- [缩放、HA 和 DR][lnk-scaling]
+
+若要进一步探索 IoT 中心的功能，请参阅：
+
+- [开发人员指南][lnk-devguide]
+- [使用 UI 示例探索设备管理][lnk-dmui]
+- [使用网关 SDK 模拟设备][lnk-gateway]
+- [使用 Azure 门户管理 IoT 中心][lnk-portal]
+
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
 [lnk-mqtt-org]: http://mqtt.org/
-[lnk-iot-get-stated]: /documentation/articles/iot-hub-csharp-csharp-getstarted
 [lnk-mqtt-docs]: http://mqtt.org/documentation
-[lnk-iothub-security]: /documentation/articles/iot-hub-devguide/#security
 [lnk-sample-node]: https://github.com/Azure/azure-iot-sdks/blob/develop/node/device/samples/simple_sample_device.js
 [lnk-sample-java]: https://github.com/Azure/azure-iot-sdks/blob/develop/java/device/samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/iothub/SendReceive.java
 [lnk-sample-c]: https://github.com/Azure/azure-iot-sdks/tree/master/c/iothub_client/samples/iothub_client_sample_mqtt
 [lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device/samples
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/readme.md
-[lnk-sas-tokens]: /documentation/articles/iot-hub-sas-tokens
+[lnk-sas-tokens]: /documentation/articles/iot-hub-sas-tokens/#using-sas-tokens-as-a-device
 [lnk-mqtt-devguide]: /documentation/articles/iot-hub-devguide/#mqtt-support
+[lnk-devices]: /documentation/articles/iot-hub-tested-configurations/
+[lnk-protocols]: /documentation/articles/iot-hub-protocol-gateway/
+[lnk-compare]: /documentation/articles/iot-hub-compare-event-hubs/
+[lnk-scaling]: /documentation/articles/iot-hub-scaling/
+[lnk-devguide]: /documentation/articles/iot-hub-devguide/
+[lnk-dmui]: /documentation/articles/iot-hub-device-management-ui-sample/
+[lnk-gateway]: /documentation/articles/iot-hub-linux-gateway-sdk-simulated-device/
+[lnk-portal]: /documentation/articles/iot-hub-manage-through-portal/
 
-
-
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0725_2016-->

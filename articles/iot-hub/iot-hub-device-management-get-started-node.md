@@ -180,21 +180,24 @@
 
 ## 后续步骤
 
-若要继续了解 Azure IoT 中心设备管理功能，请参阅[使用示例 UI 了解 Azure IoT 中心设备管理][lnk-sample-ui]教程。
+若要继续完成 IoT 中心的入门内容，请参阅[网关 SDK 入门][lnk-gateway-SDK]。
+
+若要详细了解 Azure IoT 中心设备管理功能，请参阅[使用示例 UI 了解 Azure IoT 中心设备管理][lnk-sample-ui]教程。
 
 <!-- images and links -->
-[img-new-hub]: ./media/iot-hub-device-management-get-started/image1.png
-[img-configure-hub]: ./media/iot-hub-device-management-get-started/image2.png
-[img-monitor]: ./media/iot-hub-device-management-get-started/image3.png
-[img-keys]: ./media/iot-hub-device-management-get-started/image4.png
-[img-connection]: ./media/iot-hub-device-management-get-started/image5.png
-[img-output]: ./media/iot-hub-device-management-get-started/image6.png
+[img-new-hub]: ./media/iot-hub-device-management-get-started-node/image1.png
+[img-configure-hub]: ./media/iot-hub-device-management-get-started-node/image2.png
+[img-monitor]: ./media/iot-hub-device-management-get-started-node/image3.png
+[img-keys]: ./media/iot-hub-device-management-get-started-node/image4.png
+[img-connection]: ./media/iot-hub-device-management-get-started-node/image5.png
+[img-output]: ./media/iot-hub-device-management-get-started-node/image6.png
 [img-dm-ui]: media/iot-hub-device-management-get-started-node/dmui.png
 
 [lnk-free-trial]: /pricing/1rmb-trial/
 [Azure 门户]: https://portal.azure.cn/
-[使用资源组管理 Azure 资源]: /documentation/articles/resource-group-portal
+[使用资源组管理 Azure 资源]: /documentation/articles/resource-group-portal/
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
-[lnk-sample-ui]: /documentation/articles/iot-hub-device-management-ui-sample
+[lnk-sample-ui]: /documentation/articles/iot-hub-device-management-ui-sample/
+[lnk-gateway-SDK]: /documentation/articles/iot-hub-linux-gateway-sdk-get-started/
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0725_2016-->

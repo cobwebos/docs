@@ -9,8 +9,8 @@
 
 <tags
     ms.service="multiple"
-    ms.date="03/28/2016" 
-    ms.author="robmcm"/>
+    ms.date="06/24/2016" 
+    wacn.date=""/>
 
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690944.aspx -->
 
@@ -55,12 +55,12 @@
 当你的 Java Web 应用程序准备好进行测试时，可立即使用以下快捷方式直接在 Azure 云上试用一下。
 
 1. 在 Eclipse 的项目资源管理器中，单击“MyHelloWorld”。
-1. 在 Eclipse 工具栏中，单击“发布到 Azure 云”按钮。
-    ![][ic710882]
+1. 在 Eclipse 工具栏中，单击“发布”下拉按钮，然后单击“发布为 Azure 云服务” 
+    ![][publishDropdownButton]
 1. 如果你是首次将此应用程序发布到 Azure，并且以前尚未为此应用程序创建 Azure 部署项目，则将自动为你创建 Azure 部署项目。你将看到以下提示，其中还列出了将自动部署的用于运行你的应用程序的 JDK 包和应用程序服务器。
     ![][ic789598]
-    使用此快捷方法可快速简便地在 Azure 中测试你的应用程序，而无需配置不同于默认设置的特定服务器或 JDK。如果你对默认设置感到满意，则可以单击“确定”以继续执行后续步骤。
-    但是，如果你要更改要用于应用程序的 JDK 或应用程序服务器，则可以稍后通过编辑已为你自动创建的 Azure 部署项目来执行该操作，也可以立即单击“取消”并阅读本教程的“关于 Azure 部署项目”部分。
+
+    使用此快捷方法可快速简便地在 Azure 中测试你的应用程序，而无需配置不同于默认设置的特定服务器或 JDK。如果你对默认设置感到满意，则可以单击“确定”以继续执行后续步骤。但是，如果你要更改要用于应用程序的 JDK 或应用程序服务器，则可以稍后通过编辑已为你自动创建的 Azure 部署项目来执行该操作，也可以立即单击“取消”并阅读本教程的“关于 Azure 部署项目”部分。
 1. 在“发布到 Azure”对话框中执行以下操作：
     1. 如果“订阅”列表中还没有任何订阅可供选择，请按照下列步骤来导入订阅信息：
         1. 单击“从发布设置文件导入”。
@@ -74,7 +74,7 @@
     1. 对于“目标 OS”，请选择要用于部署的操作系统版本。
     1. 在本教程中，对于“目标环境”，请选择“过渡”。（如果你已准备好部署到生产站点，则将该选项更改为“生产”。）
     1. 可选：如果你希望新部署自动覆盖以前的部署，请确保选中“覆盖以前的部署”。启用了此选项后，在发布到同一位置时将不会遇到“409 冲突”问题。
-        请注意，“发布到 Azure”对话框包含“远程访问”部分。默认情况下，未启用远程访问，我们将不会为此示例启用它。若要启用远程访问，需输入远程登录时要使用的用户名和密码。有关远程访问的详细信息，请参阅[在 Eclipse 中为 Azure 部署启用远程访问][]。
+        请注意，“发布到 Azure”对话框包含“远程访问”部分。默认情况下，未启用远程访问，我们将不会为此示例启用它。若要启用远程访问，需输入远程登录时要使用的用户名和密码。有关远程访问的详细信息，请参阅 [Enabling Remote Access for Azure Deployments in Eclipse][]（在 Eclipse 中为 Azure 部署启用远程访问）。
         “发布到 Azure”对话框将如下所示：
         ![][ic719488]
 1. 单击“发布”以发布到过渡环境。
@@ -112,9 +112,9 @@
 1. 在项目资源管理器中展开项目节点（例如 **MyHelloWorld\_onAzure**）
 2. 右键单击“WorkerRole1”
 3. 展开上下文菜单中的“Azure”子菜单
-4. 单击“服务器配置”
+4. 单击“服务器配置”。
 
-无论你是通过编辑现有的 Azure 部署项目（如上所示）还是通过从头开始创建新的 Azure 部署项目来开始这些服务器配置步骤，你都将看到相同类型的对话框，让你可以配置 JDK、服务器和应用程序组件。若要详细了解如何更改这些对话框中的设置（例如，更改 JDK、应用程序服务器，以及在部署中添加或删除应用程序），请参阅[服务器配置属性][]一文。
+无论你是通过编辑现有的 Azure 部署项目（如上所示）还是通过从头开始创建新的 Azure 部署项目来开始这些服务器配置步骤，你都将看到相同类型的对话框，让你可以配置 JDK、服务器和应用程序组件。若要详细了解如何更改这些对话框中的设置（例如，更改 JDK、应用程序服务器，以及在部署中添加或删除应用程序），请参阅 [Server configuration properties][]（服务器配置属性）一文。
 
 ## 仅限 Windows：将应用程序部署到计算模拟器 ##
 
@@ -166,9 +166,9 @@
 [Azure 管理门户]: http://go.microsoft.com/fwlink/?LinkID=512959
 [Azure Role Properties]: http://go.microsoft.com/fwlink/?LinkID=699525
 [适用于 Eclipse 的 Azure 工具包]: http://go.microsoft.com/fwlink/?LinkID=699529
-[在 Eclipse 中为 Azure 部署启用远程访问]: http://go.microsoft.com/fwlink/?LinkID=699538
+[Enabling Remote Access for Azure Deployments in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699538
 [安装 Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
-[服务器配置属性]: http://go.microsoft.com/fwlink/?LinkID=699525#server_configuration_properties
+[Server configuration properties]: http://go.microsoft.com/fwlink/?LinkID=699525#server_configuration_properties
 [Azure Toolkit for Eclipse 的新增功能]: http://go.microsoft.com/fwlink/?LinkID=699552
 
 <!-- IMG List -->
@@ -188,5 +188,6 @@
 [ic719490]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/ic719490.png
 [ic719491]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/ic719491.png
 [ic789598]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/ic789598.png
+[publishDropdownButton]: ./media/azure-toolkit-for-eclipse-creating-a-hello-world-application/publishDropdownButton.png
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0725_2016-->

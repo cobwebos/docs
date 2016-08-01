@@ -10,11 +10,11 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="05/12/2016"
+	ms.date="07/14/2016"
 	wacn.date=""/>
 
 # 使用用于同步的 Azure AD Connect Health
-以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect 同步。有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅[在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs)。
+以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect 同步。有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅[在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs/)。
 
 ![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/sync.png)
 
@@ -56,11 +56,11 @@
 
 ## 相关链接
 
-* [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health)
-* [Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install)
-* [Azure AD Connect Health 操作](/documentation/articles/active-directory-aadconnect-health-operations)
-* [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs)
-* [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq)
-* [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history)
+* [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health/)
+* [Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install/)
+* [Azure AD Connect Health 操作](/documentation/articles/active-directory-aadconnect-health-operations/)
+* [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs/)
+* [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq/)
+* [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history/)
 
-<!---HONumber=Mooncake_0606_2016--->
+<!---HONumber=Mooncake_0725_2016-->

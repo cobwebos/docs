@@ -16,7 +16,7 @@
 
 [AZURE.INCLUDE [active-directory-protocols](../includes/active-directory-protocols.md)]
 
-在本文中，我们将了解在使用 Azure Active Directory (Azure AD) 为应用程序授权时可能遇到的常见错误类的一些最佳做法。有关授权终结点和令牌颁发终结点的详细信息，请参阅 [Authentication flow for an application in Azure AD（Azure AD 中应用程序的身份验证流）](active-directory-protocols-oauth-code.md)。
+在本文中，我们将了解在使用 Azure Active Directory (Azure AD) 为应用程序授权时可能遇到的常见错误类的一些最佳做法。有关授权终结点和令牌颁发终结点的详细信息，请参阅 [Azure AD 中应用程序的身份验证流](/documentation/articles/active-directory-protocols-oauth-code/)。
 
 ## 授权终结点错误
 
@@ -26,10 +26,10 @@
 
 下面是当请求中缺少必需的 `response_type` 参数时，Azure AD 授权终结点发出的示例 HTTP 302 错误响应。
 
-```
-GET  HTTP/1.1 302 Found
-Location: http://localhost/myapp/?error=invalid_request&error_description=AADSTS90014%3a+The+request+body+must+contain+the+following+parameter%3a+%27response_type%27.%0d%0aTrace+ID%3a+57f5cb47-2278-4802-a018-d05d9145daad%0d%0aCorrelation+ID%3a+570a9ed3-bf1d-40d1-81ae-63465cc25488%0d%0aTimestamp%3a+2013-12-31+05%3a51%3a35Z&state=D79E5777-702E-4260-9A62-37F75FF22CCE
-```
+		
+		GET  HTTP/1.1 302 Found
+		Location: http://localhost/myapp/?error=invalid_request&error_description=AADSTS90014%3a+The+request+body+must+contain+the+following+parameter%3a+%27response_type%27.%0d%0aTrace+ID%3a+57f5cb47-2278-4802-a018-d05d9145daad%0d%0aCorrelation+ID%3a+570a9ed3-bf1d-40d1-81ae-63465cc25488%0d%0aTimestamp%3a+2013-12-31+05%3a51%3a35Z&state=D79E5777-702E-4260-9A62-37F75FF22CCE
+		
 
 | 参数 | 说明 |
 |-----------|-------------|
@@ -59,12 +59,12 @@ Location: http://localhost/myapp/?error=invalid_request&error_description=AADSTS
 
 例如，如果请求中的 `client_id` 参数无效，将返回如下所示的错误：
 
-```
-HTTP/1.1 400 Bad Request
-Content-Type: application/json; charset=utf-8
+		
+		HTTP/1.1 400 Bad Request
+		Content-Type: application/json; charset=utf-8
+		
+		{"error":"invalid_request","error_description":"AADSTS90011: Request is ambiguous, multiple application identifiers found. Application identifiers: '197451ec-ade4-40e4-b403-02105abd9049, 597451ec-ade4-40e4-b403-02105abd9049'.\r\nTrace ID: 4457d068-2a03-42b2-97f2-d55325289d86\r\nCorrelation ID: 6b3474d8-233e-463f-b0a3-86433d8ba889\r\nTimestamp: 2013-12-31 06:31:41Z","error_codes":[90011],"timestamp":"2013-12-31 06:31:41Z","trace_id":"4457d068-2a03-42b2-97f2-d55325289d86","correlation_id":"6b3474d8-233e-463f-b0a3-86433d8ba889"}
 
-{"error":"invalid_request","error_description":"AADSTS90011: Request is ambiguous, multiple application identifiers found. Application identifiers: '197451ec-ade4-40e4-b403-02105abd9049, 597451ec-ade4-40e4-b403-02105abd9049'.\r\nTrace ID: 4457d068-2a03-42b2-97f2-d55325289d86\r\nCorrelation ID: 6b3474d8-233e-463f-b0a3-86433d8ba889\r\nTimestamp: 2013-12-31 06:31:41Z","error_codes":[90011],"timestamp":"2013-12-31 06:31:41Z","trace_id":"4457d068-2a03-42b2-97f2-d55325289d86","correlation_id":"6b3474d8-233e-463f-b0a3-86433d8ba889"}
-```
 ### HTTP 状态代码
 
 下表列出了令牌颁发终结点返回的 HTTP 状态代码。在某些情况下，错误代码足以描述响应，但在发生错误的情况下，你需要分析随附的 JSON 文档并检查其错误代码。
@@ -108,10 +108,10 @@ Content-Type: application/json; charset=utf-8
 
 下面是不成功的请求和响应的示例，其中，客户端请求不包含持有者令牌：
 
-```
-HTTP/1.1 401 Unauthorized
-WWW-Authenticate: Bearer authorization_uri="https://login.window.net/contoso.com/oauth2/authorize",  error="invalid_token",  error_description="The access token is missing.",
-```
+		
+		HTTP/1.1 401 Unauthorized
+		WWW-Authenticate: Bearer authorization_uri="https://login.window.net/contoso.com/oauth2/authorize",  error="invalid_token",  error_description="The access token is missing.",
+
 
 ## 错误参数
 
@@ -133,4 +133,4 @@ RFC 6750 规范为在响应中使用 WWW-Authenticate 标头和持有者方案�
 | 403 | insufficient\_scope | 访问令牌不包含访问资源所需的模拟权限。 | 将新的授权请求发送到授权终结点。如果响应包含 scope 参数，则在对资源的请求中使用 scope 值。 |
 | 403 | insufficient\_access | 令牌的使用者没有访问该资源所需的权限。 | 提示用户使用其他帐户或请求对指定资源的权限。 |
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0725_2016-->

@@ -2,21 +2,22 @@
 
 <properties
    pageTitle="HDInsight 上的 R Server（预览版）入门 | Azure"
-   description="了解如何在包含 R Server 的 HDInsight（预览版）群集上创建 Apache Spark，然后在群集上提交 R 脚本。"
+   description="了解如何在包含 R Server（预览版）的 HDInsight (Hadoop) 群集上创建 Apache Spark，然后在群集上提交 R 脚本。"
    services="HDInsight"
    documentationCenter=""
    authors="jeffstokes72"
    manager="paulettem"
-   editor="cgronlun"/>
+   editor="cgronlun"
+/>
 
 <tags
 	ms.service="HDInsight"
-	ms.date="03/25/2016"
+	ms.date="07/07/2016"
 	wacn.date=""/>
 
-#开始使用 HDInsight 上的 R Server（预览版）
+# 开始使用 HDInsight 上的 R Server（预览版）
 
-HDInsight 的高级层产品包括 HDInsight 上的 R Server（预览版）。它允许 R 脚本使用 MapReduce 和 Spark 来运行分布式计算。在本文档中，你将了解如何在 HDInsight 上创建新的 R Server，然后运行 R 脚本，以使用 Spark 进行分布式 R 计算。
+HDInsight 的高级层产品包括 R Server 作为 HDInsight（预览版）群集的一部分。它允许 R 脚本使用 MapReduce 和 Spark 来运行分布式计算。在本文档中，你将了解如何在 HDInsight 上创建新的 R Server，然后运行 R 脚本，以使用 Spark 进行分布式 R 计算。
 
 ![本文档的工作流示意图](./media/hdinsight-getting-started-with-r/rgettingstarted.png)
 
@@ -30,13 +31,13 @@ HDInsight 的高级层产品包括 HDInsight 上的 R Server（预览版）。�
     
         本文档中的步骤假设使用密码。有关如何创建在 HDInsight 中创建和使用 SSH 密钥的信息，请参阅以下文档：
         
-        * [Use SSH with HDInsight from Linux, Unix, or OS X clients（在 Linux、Unix 或 OS X 客户端中将 SSH 与 HDInsight 配合使用）](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix)
+        * [Use SSH with HDInsight from Linux, Unix, or OS X clients（在 Linux、Unix 或 OS X 客户端中将 SSH 与 HDInsight 配合使用）](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/)
         
-        * [Use SSH with HDInsight from Windows clients（在 Windows 客户端中将 SSH 与 HDInsight 配合使用）](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows)
+        * [Use SSH with HDInsight from Windows clients（在 Windows 客户端中将 SSH 与 HDInsight 配合使用）](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/)
 
 ## 创建群集
 
-> [AZURE.NOTE] 本文档中的步骤将使用基本配置信息在 HDInsight 上创建 R Server。有关其他群集配置设置（例如，添加其他存储帐户、使用 Azure 虚拟网络或创建 Hive 元存储）的信息，请参阅 [Create Linux-based HDInsight clusters（创建基于 Linux 的 HDInsight 群集）](/documentation/articles/hdinsight-provision-clusters-v1)。
+> [AZURE.NOTE] 本文档中的步骤将使用基本配置信息在 HDInsight 上创建 R Server。有关其他群集配置设置（例如，添加其他存储帐户、使用 Azure 虚拟网络或创建 Hive 元存储）的信息，请参阅 [Create Linux-based HDInsight clusters（创建基于 Linux 的 HDInsight 群集）](/documentation/articles/hdinsight-provision-clusters-v1/)。
 
 1. 登录到 [Azure 门户](https://portal.azure.cn)。
 
@@ -68,11 +69,31 @@ HDInsight 的高级层产品包括 HDInsight 上的 R Server（预览版）。�
 
 6. 选择“凭据”，然后输入“群集登录用户名”和“群集登录密码”。
 
-    输入“SSH 用户名”，选择“密码”，然后输入“SSH 密码”以配置 SSH 帐户。通过安全 Shell (SSH) 客户端从远程连接到群集时，将使用 SSH。
-    
-    使用“选择”按钮保存凭据。
+    输入 __SSH 用户名__。通过__安全外壳 (SSH)__ 客户端从远程连接到群集时，将使用 SSH。可以在此对话框中指定 SSH 用户，也可以在创建群集之后指定（通过群集的“配置”选项卡）。R Server 配置为要求使用 __SSH 用户名__“remoteuser”。如果你使用其他用户名，则必须在创建群集后执行附加步骤。
     
     ![凭据边栏选项卡](./media/hdinsight-getting-started-with-r/clustercredentials.png)
+
+    __SSH 身份验证类型__：除非你偏好使用公钥，否则请选择“密码”作为身份验证类型。如果想要通过远程客户端（例如 RTVS、RStudio 或其他桌面 IDE）访问群集上的 R Server，则需要使用公钥/私钥对。
+
+	若要创建并使用公钥/私钥对，请选择“公钥”，然后按如下所述继续操作。这些说明假设你安装了包含 ssh-keygen 的 Cygwin 或同等组件。
+
+	- 在便携式计算机上通过命令提示符生成公钥/私钥对：
+	  
+			````ssh-keygen -t rsa -b 2048 -f <private-key-filename>````
+
+    - 这将会创建一个私钥文件，以及一个名为 <私钥文件名>.pub 的公钥文件，例如 davec 和 davec.pub。然后，在分配 HDI 群集凭据时指定公钥文件 (*.pub)：
+    
+	![凭据边栏选项卡](./media/hdinsight-getting-started-with-r/publickeyfile.png)
+
+	- 在便携式计算机上更改对私钥文件的权限
+    
+			````chmod 600 <private-key-filename>````
+
+	- 结合使用私钥文件和 SSH 进行远程登录，例如：
+	
+			````ssh -i <private-key-filename> remoteuser@<hostname public ip>````
+
+	  在客户端上为 R Server 定义 Hadoop Spark 计算上下文的过程中（请参阅“RevoScaleR Hadoop Spark Getting Started”（RevoScaleR Hadoop Spark 入门）在线指南中的“Using Microsoft R Server as a Hadoop Client in the Creating a Compute Context for Spark”（使用 Microsoft R Server 作为 Hadoop 客户端来创建 Spark 的计算上下文）部分。）
 
 7. 选择“数据源”以选择群集的数据源。可以选择现有的存储帐户，方法是选择“选择存储帐户”，然后选择帐户；也可以使用“选择存储帐户”部分中的“新建”链接创建新帐户。
 
@@ -90,6 +111,15 @@ HDInsight 的高级层产品包括 HDInsight 上的 R Server（预览版）。�
 
 8. 选择“节点定价层”会显示针对此群集创建的节点的相关信息。除非你确定需要更大的群集，否则请保留辅助角色节点数目的默认值 `4`。该群集的预估成本将显示在边栏选项卡内。
 
+	> [AZURE.NOTE] 以后，如果需要，你可以通过门户调整群集的大小（“群集”->“设置”->“缩放群集”），以增加或减少辅助角色节点的数目。这种方法可将不再使用的群集置于空闲状态，或者增加容量来满足更大任务的需要。
+
+	调整群集、数据节点和边缘节点的大小时，需要注意的一些因素包括：
+
+	•	如果数据较大，则 Spark 上的分布式 R Server 分析的性能与辅助角色节点数目成正比。  
+	•	R Server 分析的性能与所要分析的数据大小呈线性关系。
+	•	对于小型到中等的数据，如果在边缘节点上的本地计算上下文中执行分析，则性能最佳。有关在哪种本地上下文和 Spark 计算上下文中可获得最佳工作性能的详细信息，请参阅“Compute context options for R Server on HDInsight”（HDInsight 上 R Server 的计算上下文选项）
+	•	如果你登录到边缘节点并在该处运行 R 脚本，则除 ScaleR rx-functions 以外的所有函数将在边缘节点**本地**执行，因此内存和边缘节点的核心数应会相应地调整。如果通过便携式计算机使用 HDI 上的 R Server 作为远程计算上下文，则这一点同样适用。
+
     ![节点定价层边栏选项卡](./media/hdinsight-getting-started-with-r/pricingtier.png)
 
     使用“选择”按钮保存节点定价配置。
@@ -106,19 +136,19 @@ HDInsight 的高级层产品包括 HDInsight 上的 R Server（预览版）。�
 
 使用 SSH 连接到 HDInsight 群集的 R Server 边缘节点：
 
-    ssh USERNAME@rserver.CLUSTERNAME.ssh.azurehdinsight.cn
+    ssh USERNAME@r-server.CLUSTERNAME-ssh.azurehdinsight.cn
     
-> [AZURE.NOTE] 也可以依次选择你的群集、“所有设置”、“应用”和“RServer”，在 Azure 门户中找到 `RServer.CLUSTERNAME.ssh.azurehdinsight.cn` 地址。这会显示边缘节点的 SSH 终结点信息。
+> [AZURE.NOTE] 也可以依次选择你的群集、“所有设置”、“应用”和“RServer”，在 Azure 门户中找到 `R-Server.CLUSTERNAME-ssh.azurehdinsight.cn` 地址。这会显示边缘节点的 SSH 终结点信息。
 >
 > ![边缘节点 SSH 终结点的图像](./media/hdinsight-getting-started-with-r/sshendpoint.png)
     
-如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。如果你使用了公钥，则可能需要使用 `-i` 参数来指定匹配的私钥。例如，`ssh -i ~/.ssh/id_rsa USERNAME@RServer.CLUSTERNAME.ssh.azurehdinsight.cn`。
+如果你使用了密码来保护 SSH 帐户，系统会提示你输入密码。如果你使用了公钥，则可能需要使用 `-i` 参数来指定匹配的私钥。例如，`ssh -i ~/.ssh/id_rsa USERNAME@R-Server.CLUSTERNAME-ssh.azurehdinsight.cn`。
     
 有关将 SSH 与基于 Linux 的 HDInsight 配合使用的详细信息，请参阅以下文章：
 
-* [在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix)
+* [在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/)
 
-* [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows)
+* [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/)
 
 连接之后，你将看到类似于下面的提示。
 
@@ -165,84 +195,139 @@ HDInsight 的高级层产品包括 HDInsight 上的 R Server（预览版）。�
     
         rxHadoopListFiles("wasb:///")
 
-##使用计算上下文
+## 从 Microsoft R Server 或 Microsoft R Client 的远程实例使用 HDI 上的 R Server
+
+根据上述有关使用公钥/私钥对访问群集的部分，可以设置从台式机或便携式计算机上运行的 Microsoft R Server 或 Microsoft R Client 到 HDI Hadoop Spark 计算上下文的访问（请参阅“RevoScaleR Hadoop Spark Getting Started”（RevoScaleR Hadoop Spark 入门）在线指南中的“Using Microsoft R Server as a Hadoop Client in the Creating a Compute Context for Spark”（使用 Microsoft R Server 作为 Hadoop 客户端来创建 Spark 的计算上下文）部分。） 为此，需要在便携式计算机上定义 RxSpark 计算上下文时指定以下选项：hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches 和 sshProfileScript。例如：
+
+    
+        mySshHostname  <- 'rkrrehdi1-ssh.azurehdinsight.cn'  # HDI secure shell hostname
+        mySshUsername  <- 'remoteuser'# HDI SSH username
+        mySshSwitches  <- '-i /cygdrive/c/Data/R/davec'   # HDI SSH private key
+    
+        myhdfsShareDir <- paste("/user/RevoShare", mySshUsername, sep="/")
+        myShareDir <- paste("/var/RevoShare" , mySshUsername, sep="/")
+    
+        mySparkCluster <- RxSpark(
+          hdfsShareDir = myhdfsShareDir,
+          shareDir = myShareDir,
+          sshUsername  = mySshUsername,
+          sshHostname  = mySshHostname,
+          sshSwitches  = mySshSwitches,
+          sshProfileScript = '/etc/profile',
+          nameNode = myNameNode,
+          port = myPort,
+          consoleOutput= TRUE
+        )
+    
+ 
+## 使用计算上下文
 
 计算上下文可让你控制是否要在边缘节点上本地执行计算，或者是否要将计算分布到 HDInsight 群集的节点之间。
         
 1. 在 R 控制台中，使用以下命令将示例数据加载到 HDInsight 的默认存储中。
 
-        # Set the NameNode and port for the cluster
-        myNameNode <- "default"
-        myPort <- 0
         # Set the HDFS (WASB) location of example data
         bigDataDirRoot <- "/example/data"
-        # Source for the data to load
-        source <- system.file("SampleData/AirlineDemoSmall.csv", package="RevoScaleR")
-        # Directory in bigDataDirRoot to load the data into
-        inputDir <- file.path(bigDataDirRoot,"AirlineDemoSmall") 
+        # create a local folder for storaging data temporarily
+        source <- "/tmp/AirOnTimeCSV2012"
+        dir.create(source)
+        # Download data to the tmp folder
+        remoteDir <- "http://packages.revolutionanalytics.com/datasets/AirOnTimeCSV2012"
+        download.file(file.path(remoteDir, "airOT201201.csv"), file.path(source, "airOT201201.csv"))
+        download.file(file.path(remoteDir, "airOT201202.csv"), file.path(source, "airOT201202.csv"))
+        download.file(file.path(remoteDir, "airOT201203.csv"), file.path(source, "airOT201203.csv"))
+        download.file(file.path(remoteDir, "airOT201204.csv"), file.path(source, "airOT201204.csv"))
+        download.file(file.path(remoteDir, "airOT201205.csv"), file.path(source, "airOT201205.csv"))
+        download.file(file.path(remoteDir, "airOT201206.csv"), file.path(source, "airOT201206.csv"))
+        download.file(file.path(remoteDir, "airOT201207.csv"), file.path(source, "airOT201207.csv"))
+        download.file(file.path(remoteDir, "airOT201208.csv"), file.path(source, "airOT201208.csv"))
+        download.file(file.path(remoteDir, "airOT201209.csv"), file.path(source, "airOT201209.csv"))
+        download.file(file.path(remoteDir, "airOT201210.csv"), file.path(source, "airOT201210.csv"))
+        download.file(file.path(remoteDir, "airOT201211.csv"), file.path(source, "airOT201211.csv"))
+        download.file(file.path(remoteDir, "airOT201212.csv"), file.path(source, "airOT201212.csv"))
+        # Set directory in bigDataDirRoot to load the data into
+        inputDir <- file.path(bigDataDirRoot,"AirOnTimeCSV2012") 
         # Make the directory
         rxHadoopMakeDir(inputDir)
         # Copy the data from source to input
-        rxHadoopCopyFromLocal(source, inputDir)
+        rxHadoopCopyFromLocal(source, bigDataDirRoot)
 
-2. 接下来，我们要创建一些因数并定义数据源，以便使用数据。
+2. 接下来，我们要创建一些数据信息并定义两个数据源，以便使用数据。
 
         # Define the HDFS (WASB) file system
-        hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, 
-                                   port=myPort)
-        # Create Factors for the days of the week
-        colInfo <- list(DayOfWeek = list(type = "factor",
-             levels = c("Monday", 
-                        "Tuesday", 
-                        "Wednesday", 
-                        "Thursday", 
-                        "Friday", 
-                        "Saturday", 
-                        "Sunday")))
-        # Define the data source
-        airDS <- RxTextData(file = inputDir, 
-                            missingValueString = "M",
-                            colInfo  = colInfo, 
-                            fileSystem = hdfsFS)
+        hdfsFS <- RxHdfsFileSystem()
+        # Create info list for the airline data
+        airlineColInfo <- list(
+            DAY_OF_WEEK = list(type = "factor"),
+            ORIGIN = list(type = "factor"),
+            DEST = list(type = "factor"),
+            DEP_TIME = list(type = "integer"),
+            ARR_DEL15 = list(type = "logical"))
 
-3. 现在，我们使用本地计算上下文对数据运行线性回归。
+        # get all the column names
+        varNames <- names(airlineColInfo)
+
+        # Define the text data source in hdfs
+        airOnTimeData <- RxTextData(inputDir, colInfo = airlineColInfo, varsToKeep = varNames, fileSystem = hdfsFS)
+        # Define the text data source in local system
+        airOnTimeDataLocal <- RxTextData(source, colInfo = airlineColInfo, varsToKeep = varNames)
+
+        # formula to use
+        formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
+
+3. 现在，我们使用本地计算上下文对数据运行逻辑回归。
 
         # Set a local compute context
         rxSetComputeContext("local")
-        # Run a linear regression
+        # Run a logistic regression
         system.time(
-            modelLocal <- rxLinMod(ArrDelay~CRSDepTime+DayOfWeek,
-                                   data = airDS)
+            modelLocal <- rxLogit(formula, data = airOnTimeDataLocal)
         )
         # Display a summary 
-        summary(modelLocal) 
+        summary(modelLocal)
 
     你应会看到结尾类似于以下行的输出：
-    
-        Residual standard error: 40.39 on 582620 degrees of freedom
-        Multiple R-squared: 0.01465
-        Adjusted R-squared: 0.01464
-        F-statistic:  1238 on 7 and 582620 DF,  p-value: < 2.2e-16
-        Condition number: 10.6542
 
-4. 然后，我们使用 Spark 上下文来运行相同的线性回归。Spark 上下文会将处理分布到 HDInsight 群集的所有辅助角色节点之间。
+        Data: airOnTimeDataLocal (RxTextData Data Source)
+        File name: /tmp/AirOnTimeCSV2012
+        Dependent variable(s): ARR_DEL15
+        Total independent variables: 634 (Including number dropped: 3)
+        Number of valid observations: 6005381
+        Number of missing observations: 91381
+        -2*LogLikelihood: 5143814.1504 (Residual deviance on 6004750 degrees of freedom)
+
+        Coefficients:
+                        Estimate Std. Error z value Pr(>|z|)
+        (Intercept)   -3.370e+00  1.051e+00  -3.208  0.00134 **
+        ORIGIN=JFK     4.549e-01  7.915e-01   0.575  0.56548
+        ORIGIN=LAX     5.265e-01  7.915e-01   0.665  0.50590
+        ......
+        DEST=SHD       5.975e-01  9.371e-01   0.638  0.52377
+        DEST=TTN       4.563e-01  9.520e-01   0.479  0.63172
+        DEST=LAR      -1.270e+00  7.575e-01  -1.676  0.09364 .
+        DEST=BPT         Dropped    Dropped Dropped  Dropped
+        ---
+        Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+        Condition number of final variance-covariance matrix: 11904202
+        Number of iterations: 7
+
+4. 然后，我们使用 Spark 上下文来运行相同的逻辑回归。Spark 上下文会将处理分布到 HDInsight 群集的所有辅助角色节点之间。
 
         # Define the Spark compute context 
-        mySparkCluster <- RxSpark(consoleOutput=TRUE) 
+        mySparkCluster <- RxSpark()
         # Set the compute context 
-        rxSetComputeContext(mySparkCluster) 
-        # Run a linear regression 
+        rxSetComputeContext(mySparkCluster)
+        # Run a logistic regression 
         system.time(  
-            modelSpark <- rxLinMod(ArrDelay~CRSDepTime+DayOfWeek, data = airDS) 
+            modelSpark <- rxLogit(formula, data = airOnTimeData)
         )
         # Display a summary
         summary(modelSpark)
 
-    由于我们设置了 `consoleOutput=TRUE`，因此 Spark 处理的输出将写入控制台。
-    
-    > [AZURE.NOTE] 也可以使用 MapReduce 将计算分布到群集节点之间。有关计算上下文的详细信息，请参阅 [Compute context options for R Server on HDInsight premium（适用于 HDInsight 高级版上的 R Server 的计算上下文选项）](/documentation/articles/hdinsight-hadoop-r-server-compute-contexts)。
+    > [AZURE.NOTE] 也可以使用 MapReduce 将计算分布到群集节点之间。有关计算上下文的详细信息，请参阅 [Compute context options for R Server on HDInsight premium（适用于 HDInsight 高级版上的 R Server 的计算上下文选项）](/documentation/articles/hdinsight-hadoop-r-server-compute-contexts/)。
 
-##将 R 代码分布到多个节点
+## 将 R 代码分布到多个节点
 
 使用 R Server 时，可以轻松利用现有的 R 代码并使用 `rxExec` 跨多个群集节点运行代码。执行参数扫描或模拟时，这非常有用。下面是 `rxExec` 的用法示例。
 
@@ -266,7 +351,7 @@ HDInsight 的高级层产品包括 HDInsight 上的 R Server（预览版）。�
         nodename
     "wn3-myrser"
 
-##安装 R 包
+## 安装 R 包
 
 如果你要在边缘节点上安装其他 R 包，可以在通过 SSH 连接到边缘节点时，直接从 R 控制台内部使用 `install.packages()`。但是，如果需要在群集的辅助角色节点上安装 R 包，则必须使用脚本操作。
 
@@ -292,7 +377,7 @@ HDInsight 的高级层产品包括 HDInsight 上的 R Server（预览版）。�
     
     > [AZURE.IMPORTANT] 如果安装的 R 包需要添加系统库，则必须下载此处使用的基本脚本，并添加安装系统库的步骤。接下来，必须将修改的脚本上载到 Azure 存储空间中的公共 Blob 容器，并使用修改的脚本来安装包。
     >
-    >有关开发脚本操作的详细信息，请参阅 [Script Action development（脚本操作开发）](/documentation/articles/hdinsight-hadoop-script-actions-linux)。
+    >有关开发脚本操作的详细信息，请参阅 [Script Action development（脚本操作开发）](/documentation/articles/hdinsight-hadoop-script-actions-linux/)。
     
     ![添加脚本操作](./media/hdinsight-getting-started-with-r/scriptaction.png)
 
@@ -302,11 +387,11 @@ HDInsight 的高级层产品包括 HDInsight 上的 R Server（预览版）。�
 
 现在，你已了解如何创建包括 R Server 的新 HDInsight 群集，以及从 SSH 会话使用 R 控制台的基础知识，请使用以下资源发现使用 HDInsight 上的 R Server 的其他方法。
 
-- [Add RStudio Server to HDInsight premium（将 RStudio Server 添加到 HDInsight 高级版）](/documentation/articles/hdinsight-hadoop-r-server-install-r-studio)
+- [Add RStudio Server to HDInsight premium（将 RStudio Server 添加到 HDInsight 高级版）](/documentation/articles/hdinsight-hadoop-r-server-install-r-studio/)
 
-- [Compute context options for R Server on HDInsight premium（适用于 HDInsight 高级版上的 R Server 计算上下文选项）](/documentation/articles/hdinsight-hadoop-r-server-compute-contexts)
+- [Compute context options for R Server on HDInsight premium（适用于 HDInsight 高级版上的 R Server 计算上下文选项）](/documentation/articles/hdinsight-hadoop-r-server-compute-contexts/)
 
-- [Azure Storage options for R Server on HDInsight premium（适用于 HDInsight 高级版上的 R Server 的 Azure 存储空间选项）](/documentation/articles/hdinsight-hadoop-r-server-storage)
+- [Azure Storage options for R Server on HDInsight premium（适用于 HDInsight 高级版上的 R Server 的 Azure 存储空间选项）](/documentation/articles/hdinsight-hadoop-r-server-storage/)
 
 ### Azure Resource Manager 模板
 
@@ -317,6 +402,6 @@ HDInsight 的高级层产品包括 HDInsight 上的 R Server（预览版）。�
 
 这两个模板都会创建新的 HDInsight 群集和关联的存储帐户，并可以通过 Azure CLI、Azure PowerShell 或 Azure 门户来使用。
 
-有关使用 ARM 模板的一般信息，请参阅 [Create Linux-based Hadoop clusters in HDInsight using ARM templates（在 HDInsight 中使用 ARM 模板创建基于 Linux 的 Hadoop 群集）](/documentation/articles/hdinsight-hadoop-create-linux-clusters-arm-templates)。
+有关使用 ARM 模板的一般信息，请参阅 [Create Linux-based Hadoop clusters in HDInsight using ARM templates（在 HDInsight 中使用 ARM 模板创建基于 Linux 的 Hadoop 群集）](/documentation/articles/hdinsight-hadoop-create-linux-clusters-arm-templates/)。
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0725_2016-->

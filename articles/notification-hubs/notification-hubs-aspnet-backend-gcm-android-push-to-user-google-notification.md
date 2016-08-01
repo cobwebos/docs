@@ -4,12 +4,12 @@
 	documentationCenter="android"
 	services="notification-hubs"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="03/28/2016"
+	ms.date="06/29/2016"
 	wacn.date=""/>
 
 #Azure 通知中心 - 使用 .NET 后端通知 Android 用户
@@ -19,9 +19,9 @@
 
 ##概述
 
-利用 Azure 中的推送通知支持，你可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。ASP.NET WebAPI 后端用于对客户端进行身份验证并生成通知，如指南主题[从应用后端注册](/documentation/articles/notification-hubs-push-notification-registration-management#registration-management-from-a-backend)中所述。本教程以你在[通知中心入门 (Android)](/documentation/articles/notification-hubs-android-push-notification-google-gcm-get-started) 教程中创建的通知中心为基础。
+利用 Azure 中的推送通知支持，你可以访问易于使用且向外扩展的多平台推送基础结构，这大大简化了为移动平台的使用者应用程序和企业应用程序实现推送通知的过程。本教程说明如何使用 Azure 通知中心将推送通知发送到特定设备上的特定应用程序用户。ASP.NET WebAPI 后端用于对客户端进行身份验证并生成通知，如指南主题[从应用后端注册](/documentation/articles/notification-hubs-push-notification-registration-management/#registration-management-from-a-backend)中所述。本教程以你在[通知中心入门 (Android)](/documentation/articles/notification-hubs-android-push-notification-google-gcm-get-started/) 教程中创建的通知中心为基础。
 
-> [AZURE.NOTE] 本教程假设你已按照[通知中心入门 (Android)](/documentation/articles/notification-hubs-android-push-notification-google-gcm-get-started) 中所述创建并配置了通知中心。
+> [AZURE.NOTE] 本教程假设你已按照[通知中心入门 (Android)](/documentation/articles/notification-hubs-android-push-notification-google-gcm-get-started/) 中所述创建并配置了通知中心。
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-notifyusers](../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -29,7 +29,7 @@
 
 下一步是创建 Android 应用程序。
 
-1. 请按照[通知中心入门 (Android)](/documentation/articles/notification-hubs-android-push-notification-google-gcm-get-started) 教程创建应用并将其配置为从 GCM 接收推送通知。
+1. 请按照[通知中心入门 (Android)](/documentation/articles/notification-hubs-android-push-notification-google-gcm-get-started/) 教程创建应用并将其配置为从 GCM 接收推送通知。
 
 2. 打开 **res/layout/activity\_main.xml** 文件，并将其内容替换为以下内容定义。
 
@@ -238,7 +238,7 @@
             }
         }
 
-	此组件将实现所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。它还会在本地存储通知中心创建的 registrationIds（从[应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中提供了详细信息）。请注意，该组件使用当你单击“登录”按钮时存储在本地存储中的授权令牌。
+	此组件将实现所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。它还会在本地存储通知中心创建的 *registrationIds*（从[应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中提供了详细信息）。请注意，该组件使用当你单击“登录”按钮时存储在本地存储中的授权令牌。
 
 5. 在 `MainActivity` 类中，删除或注释掉 `NotificationHub` 的私有字段，并添加一个用于 `RegisterClient` 类的字段和一个用于 ASP.NET 后端终结点的字符串。确保使用前面获取的实际后端终结点来替换 `<Enter Your Backend Endpoint>`。例如，`http://mybackend.azurewebsites.net`。
 
@@ -428,4 +428,4 @@
 [A1]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users.png
 [A2]: ./media/notification-hubs-aspnet-backend-android-notify-users/android-notify-users-enter-password.png
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0725_2016-->
