@@ -4,12 +4,12 @@
    services="Service-Fabric"
    documentationCenter=".net"
    authors="sumukhs"
-   manager="anuragg"
+   manager="timlt"
    editor=""/>
 
 <tags
    ms.service="Service-Fabric"
-   ms.date="03/30/2016"
+   ms.date="07/18/2016"
    wacn.date=""/>
 
 # 配置 Reliable Actors - ReliableDictionaryActorStateProvider
@@ -38,15 +38,15 @@ Azure Service Fabric 运行时在 settings.xml 文件中查找预定义的节名
 |SharedLogSizeInMB|兆字节|8192|指定以静态方式分配给共享日志的磁盘空间 MB 数。此值必须为 2048 或更大。|
 
 ### 群集清单节示例
-```xml
-   <Section Name="KtlLogger">
-     <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
-     <Parameter Name="WriteBufferMemoryPoolMaximumInKB" Value="8192" />
-     <Parameter Name="SharedLogId" Value="{7668BB54-FE9C-48ed-81AC-FF89E60ED2EF}"/>
-     <Parameter Name="SharedLogPath" Value="f:\SharedLog.Log"/>
-     <Parameter Name="SharedLogSizeInMB" Value="16383"/>
-   </Section>
-```
+
+	   <Section Name="KtlLogger">
+	     <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
+	     <Parameter Name="WriteBufferMemoryPoolMaximumInKB" Value="8192" />
+	     <Parameter Name="SharedLogId" Value="{7668BB54-FE9C-48ed-81AC-FF89E60ED2EF}"/>
+	     <Parameter Name="SharedLogPath" Value="f:\SharedLog.Log"/>
+	     <Parameter Name="SharedLogSizeInMB" Value="16383"/>
+	   </Section>
+
 
 ### 备注
 记录器具有一个从未分页的内核内存分配的内存全局池，节点上的所有 Reliable Services 都可以使用该池在将状态数据写入与可靠服务副本关联的专用日志之前缓存这些数据。池大小由 WriteBufferMemoryPoolMinimumInKB 和 WriteBufferMemoryPoolMaximumInKB 设置控制。WriteBufferMemoryPoolMinimumInKB 指定此内存池的初始大小，以及内存池可以缩小到的大小下限。WriteBufferMemoryPoolMaximumInKB 是内存池可以增长到的大小上限。每个打开的可靠服务副本都可能会增加内存池的大小，增加幅度从系统决定的数量到 WriteBufferMemoryPoolMaximumInKB。如果内存池的内存需求大于可用的内存，则会延迟内存请求，直到有可用的内存。因此，如果写入缓冲区内存池对特定配置而言太小，则性能可能会受到影响。
@@ -74,7 +74,7 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 |Name|计价单位|默认值|备注|
 |----|----|-------------|-------|
 |BatchAcknowledgementInterval|秒|0\.05|收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。为在此间隔内处理的操作发送的任何其他确认都作为响应发送。||
-|ReplicatorEndpoint|不适用|无默认值--必选参数|主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。这应该引用服务清单中的 TCP 资源终结点。若要了解有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](/documentation/articles/service-fabric-service-manifest-resources)。 |
+|ReplicatorEndpoint|不适用|无默认值--必选参数|主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。这应该引用服务清单中的 TCP 资源终结点。若要了解有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](/documentation/articles/service-fabric-service-manifest-resources/)。 |
 |MaxReplicationMessageSize|字节|50 MB|可以在单个消息中传输的复制数据的最大大小。|
 |MaxPrimaryReplicationQueueSize|操作的数量|8192|主要队列中的操作的最大数目。主复制器接收到来自所有辅助复制器的确认之后，将释放一个操作。此值必须大于 64 和 2 的幂。|
 |MaxSecondaryReplicationQueueSize|操作的数量|16384|辅助队列中的操作的最大数目。将在使操作的状态在暂留期间高度可用后释放该操作。此值必须大于 64 和 2 的幂。|
@@ -87,29 +87,28 @@ SharedLogSizeInMB 指定要预先分配给所有节点上的默认共享日志�
 
 ## 示例配置文件
 
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
-   <Section Name="MyActorServiceReplicatorConfig">
-      <Parameter Name="ReplicatorEndpoint" Value="MyActorServiceReplicatorEndpoint" />
-      <Parameter Name="BatchAcknowledgementInterval" Value="0.05"/>
-      <Parameter Name="CheckpointThresholdInMB" Value="180" />
-   </Section>
-   <Section Name="MyActorServiceReplicatorSecurityConfig">
-      <Parameter Name="CredentialType" Value="X509" />
-      <Parameter Name="FindType" Value="FindByThumbprint" />
-      <Parameter Name="FindValue" Value="9d c9 06 b1 69 dc 4f af fd 16 97 ac 78 1e 80 67 90 74 9d 2f" />
-      <Parameter Name="StoreLocation" Value="LocalMachine" />
-      <Parameter Name="StoreName" Value="My" />
-      <Parameter Name="ProtectionLevel" Value="EncryptAndSign" />
-      <Parameter Name="AllowedCommonNames" Value="My-Test-SAN1-Alice,My-Test-SAN1-Bob" />
-   </Section>
-</Settings>
-```
+
+	<?xml version="1.0" encoding="utf-8"?>
+	<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+	   <Section Name="MyActorServiceReplicatorConfig">
+	      <Parameter Name="ReplicatorEndpoint" Value="MyActorServiceReplicatorEndpoint" />
+	      <Parameter Name="BatchAcknowledgementInterval" Value="0.05"/>
+	      <Parameter Name="CheckpointThresholdInMB" Value="180" />
+	   </Section>
+	   <Section Name="MyActorServiceReplicatorSecurityConfig">
+	      <Parameter Name="CredentialType" Value="X509" />
+	      <Parameter Name="FindType" Value="FindByThumbprint" />
+	      <Parameter Name="FindValue" Value="9d c9 06 b1 69 dc 4f af fd 16 97 ac 78 1e 80 67 90 74 9d 2f" />
+	      <Parameter Name="StoreLocation" Value="LocalMachine" />
+	      <Parameter Name="StoreName" Value="My" />
+	      <Parameter Name="ProtectionLevel" Value="EncryptAndSign" />
+	      <Parameter Name="AllowedCommonNames" Value="My-Test-SAN1-Alice,My-Test-SAN1-Bob" />
+	   </Section>
+	</Settings>
+
 
 ## 备注
-BatchAcknowledgementInterval 参数用于控制复制延迟。“0”值导致可能的最低延迟，但代价是牺牲吞吐量（因为必须发送和处理更多的确认消息，每个包含较少的确认）。
-BatchAcknowledgementInterval 的值越大，整体复制吞吐量就越高，但代价是导致更高的操作延迟。这直接转换为事务提交的延迟。
+BatchAcknowledgementInterval 参数用于控制复制延迟。“0”值导致可能的最低延迟，但代价是牺牲吞吐量（因为必须发送和处理更多的确认消息，每个包含较少的确认）。BatchAcknowledgementInterval 的值越大，整体复制吞吐量就越高，但代价是导致更高的操作延迟。这直接转换为事务提交的延迟。
 
 CheckpointThresholdInMB 参数控制复制器可以用于将状态信息存储在副本的专用日志文件中的磁盘空间量。将此值提高到大于默认值可以在将副本添加到集时缩短重新配置的时间。这是因为日志中会提供更多的操作历史记录，从而发生部分状态传输。在崩溃后，这可能会延长副本恢复时间。
 
@@ -119,4 +118,4 @@ MaxRecordSizeInKB 设置用于定义可由复制器写入日志文件的记录�
 
 SharedLogId 和 SharedLogPath 设置始终一起使用，使服务可以使用与节点的默认共享日志不同的共享日志。为获得最佳效率，应让尽可能多的服务指定相同共享日志。共享日志文件应置于仅用于共享日志文件的磁盘上，以便减少磁头运动争用。我们预期这些值只在极少数情况下需要更改。
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0801_2016-->

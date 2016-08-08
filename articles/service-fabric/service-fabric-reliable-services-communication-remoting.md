@@ -3,13 +3,13 @@
    description="Service Fabric 远程处理允许客户端和服务使用远程过程调用来与服务进行通信。"
    services="service-fabric"
    documentationCenter=".net"
-   authors="BharatNarasimman"
+   authors="vturecek"
    manager="timlt"
-   editor="vturecek"/>
+   editor="BharatNarasimman"/>
 
 <tags
    ms.service="service-fabric"
-   ms.date="03/25/2016"
+   ms.date="07/06/2016"
    wacn.date=""/>
 
 # 通过 Reliable Services 进行服务远程处理
@@ -23,36 +23,36 @@
 
 例如，以下无状态服务公开了一个方法，此方法通过远程过程调用获取“Hello World”。
 
-```csharp
-using Microsoft.ServiceFabric.Services.Communication.Runtime;
-using Microsoft.ServiceFabric.Services.Remoting;
-using Microsoft.ServiceFabric.Services.Remoting.Runtime;
-using Microsoft.ServiceFabric.Services.Runtime;
 
-public interface IMyService : IService
-{
-    Task<string> GetHelloWorld();
-}
+	using Microsoft.ServiceFabric.Services.Communication.Runtime;
+	using Microsoft.ServiceFabric.Services.Remoting;
+	using Microsoft.ServiceFabric.Services.Remoting.Runtime;
+	using Microsoft.ServiceFabric.Services.Runtime;
 
-class MyService : StatelessService, IMyService
-{
-    public MyService(StatelessServiceContext context)
-        : base (context)
-{
-    }
+	public interface IMyService : IService
+	{
+	    Task<string> GetHelloWorld();
+	}
 
-    public Task HelloWorld()
-    {
-        return Task.FromResult("Hello!");
-    }
+	class MyService : StatelessService, IMyService
+	{
+	    public MyService(StatelessServiceContext context)
+	        : base (context)
+	    {
+	    }
 
-    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
-    {
-        return new[] { new ServiceInstanceListener(context => 
-            this.CreateServiceRemotingListener(context)) };
-    }
-}
-```
+	    public Task HelloWorld()
+	    {
+	        return Task.FromResult("Hello!");
+	    }
+
+	    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+	    {
+	        return new[] { new ServiceInstanceListener(context => 
+	            this.CreateServiceRemotingListener(context)) };
+	    }
+	}
+
 > [AZURE.NOTE] 服务接口中的参数和返回类型可以是任何简单、复杂或自定义的类型，但它们必须是 .NET [DataContractSerializer](https://msdn.microsoft.com/zh-cn/library/ms731923.aspx) 可序列化的类型。
 
 
@@ -60,22 +60,22 @@ class MyService : StatelessService, IMyService
 若要使用远程处理堆栈在服务上调用方法，可以通过 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类对此服务使用本地代理。`ServiceProxy` 方法通过使用此服务实现的相同接口来创建本地代理。使用此代理，你只需在此接口上远程调用方法。
 
 
-```csharp
 
-IHelloWorldStateful helloWorldClient = ServiceProxy.Create<IHelloWorldStateful>(new Uri("fabric:/MyApplication/MyHelloWorldService"));
 
-string message = await helloWorldClient.GetHelloWorld();
+	IMyService helloWorldClient = ServiceProxy.Create<IMyService>(new Uri("fabric:/MyApplication/MyHelloWorldService"));
 
-```
+	string message = await helloWorldClient.GetHelloWorld();
+
+
 
 此远程处理框架将服务引发的异常传播到客户端。因此，在客户端使用 `ServiceProxy` 的异常处理逻辑可直接处理服务引发的异常。
 
 ## 后续步骤
 
-* [Reliable Services 中使用 OWIN 的 Web API](/documentation/articles/service-fabric-reliable-services-communication-webapi)
+* [Reliable Services 中使用 OWIN 的 Web API](/documentation/articles/service-fabric-reliable-services-communication-webapi/)
 
-* [通过 Reliable Services 进行 WCF 通信](/documentation/articles/service-fabric-reliable-services-communication-wcf)
+* [通过 Reliable Services 进行 WCF 通信](/documentation/articles/service-fabric-reliable-services-communication-wcf/)
 
-* [确保 Reliable Services 的通信安全](/documentation/articles/service-fabric-reliable-services-secure-communication)
+* [确保 Reliable Services 的通信安全](/documentation/articles/service-fabric-reliable-services-secure-communication/)
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0801_2016-->

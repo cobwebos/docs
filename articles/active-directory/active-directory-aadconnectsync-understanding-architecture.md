@@ -101,7 +101,7 @@
 
 每个占位符代表尚未导入同步引擎、但需要构造分层名称的对象的分层名称的组成部分（例如，组织单位）。占位符填补在连接的数据源中引用不是连接器空间中暂存对象的对象所产生的间距。
 
-同步引擎还使用占位符来存储尚未导入的引用对象。例如，如果已将同步配置为包含 *Abbie Spencer* 对象的管理器属性，并且接收的值是尚未导入的对象（例如 *CN=Lee Sperry,CN=Users,DC=fabrikam,DC=com*），则管理器信息将存储为连接器空间中的占位符。如果稍后导入管理器对象，则表示此管理器的暂存对象将覆盖占位符对象。
+同步引擎还使用占位符来存储尚未导入的引用对象。例如，如果已将同步配置为包含 Abbie Spencer 对象的管理器属性，并且接收的值是尚未导入的对象（例如 CN=Lee Sperry,CN=Users,DC=fabrikam,DC=com），则管理器信息将存储为连接器空间中的占位符。如果稍后导入管理器对象，则表示此管理器的暂存对象将覆盖占位符对象。
 
 ### Metaverse 对象
 Metaverse 对象包含同步引擎具有的连接器空间中暂存对象的聚合视图。同步引擎使用导入对象中的信息创建 Metaverse 对象。可将多个连接器空间对象链接到单个 Metaverse 对象，但无法将连接器空间对象链接到多个 Metaverse 对象。
@@ -250,4 +250,4 @@ Metaverse 对象包含同步引擎具有的连接器空间中暂存对象的聚�
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

@@ -9,7 +9,8 @@
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="05/16/2016" 
+ 
+	ms.date="06/27/2016" 
 	wacn.date=""/>
 
 # DocumentDB 中的性能级别
@@ -93,30 +94,30 @@ DocumentDB 集合允许你根据应用程序的查询模式和性能需求来对
 
 ## 使用 Azure 门户更改性能级别
 
-在管理集合的性能级别时，Azure 门户是你可用的一个选项。按照下列步骤在 Azure 门户中从使用预定义性能级别更改为使用用户定义的性能级别，或者观看此 75 秒的 [Channel 9 视频](https://channel9.msdn.com/Blogs/AzureDocumentDB/ChangeDocumentDBCollectionPerformance)。有关对定价选项的更改的详细信息，请参阅博客文章 [DocumentDB：关于使用新的定价选项所需要了解的一切](https://azure.microsoft.com/blog/documentdb-use-the-new-pricing-options-on-your-existing-collections/)。
+在管理集合的性能级别时，Azure 门户是你可用的一个选项。在 Azure 门户中按照这些步骤从使用预定义的吞吐量级别更改为用户定义的吞吐量级别。通过使用用户定义的吞吐量级别，可以根据你的需要定制吞吐量。如果你仍在使用 S1 帐户，则只需单击几下，即可将默认吞吐量从 250 RU/s 增加到 400 RU/s。
 
-1. 从你的浏览器中导航至 [**Azure 门户**](https://portal.azure.com)。
-2. 从左侧的跳转栏单击“浏览”。
-3. 在“浏览”中心中，单击“筛选方式”标签下的“DocumentDB 帐户”。
-4. 在“DocumentDB 帐户”边栏选项卡中，单击包含所需集合的 DocumentDB 帐户。
-5. 在“DocumentDB 帐户”边栏选项卡中，向下滚动至“数据库”可重用功能区并单击包含所需集合的数据库。 
-6. 在新打开的“数据库”边栏选项卡中，向下滚动至“集合”可重用功能区并选择所需集合。
-7. 在“管理集合”边栏选项卡中，单击“定价层”。
+有关与用户定义和预定义的吞吐量相关的定价更改的详细信息，请参阅博客文章 [DocumentDB: Everything you need to know about using the new pricing options](https://azure.microsoft.com/blog/documentdb-use-the-new-pricing-options-on-your-existing-collections/)（DocumentDB：关于使用新的定价选项所需要了解的一切）。
 
-    ![Azure DocumentDB 的“管理集合”和“选择你的定价层”边栏选项卡的屏幕截图，显示在何处更改集合的定价层][1]
+> [AZURE.VIDEO changedocumentdbcollectionperformance]
 
-8. 在“选择你的定价层”边栏选项卡中，单击“标准”。
+1. 在浏览器中导航至 [**Azure 门户**](https://portal.azure.cn)。
+2. 单击“浏览”->“DocumentDB 帐户”，然后选择要修改的 DocumentDB 帐户。
+3. 在“数据库”可重用功能区中，选择要修改的数据库，然后在“数据库”边栏选项卡中选择要修改的集合。使用预定义吞吐量的帐户拥有定价层 S1、S2 或 S3。
 
-9. 在“选择你的定价层”边栏选项卡中，单击“选择”。
+      ![具有 S1 集合的“数据库”边栏选项卡屏幕截图](./media/documentdb-performance-levels/documentdb-change-performance-S1.png)
 
-10. 回到“管理集合”边栏选项卡中，“定价层”被更改为了“标准”，且显示了“吞吐量 (RU/s)”框。
+4. 在“集合”边栏选项卡的顶栏上单击“设置”。
+5. 在“设置”边栏选项卡上单击“定价层”，请注意，此时“选择定价层”边栏选项卡上将显示每个计划的月成本估计值。若要更改为用户定义的吞吐量，请单击“标准”，然后单击“选择”以保存你的更改。
 
-    将“吞吐量”框中的值更改为 400 到 10,000 [请求单位](documentdb-request-units.md)/秒 (RU/s) 之间的值。页面底部的“定价摘要”将自动更新以提供月度成本估算。
+      ![“DocumentDB 设置”和“选择定价层”边栏选项卡屏幕截图](./media/documentdb-performance-levels/documentdb-change-performance.png)
 
-    ![显示在何处更改集合的吞吐量值的“管理集合”边栏选项卡的屏幕截图][2]
+6. 返回到“设置”边栏选项卡中，“定价层”已更改为“标准”，“吞吐量(RU/s)”框显示默认值 400。可以在 400 和 10,000 [请求单位](documentdb-request-units.md)/秒 (RU/s) 之间设置吞吐量。页面底部的“定价摘要”将自动更新以提供月成本估计值。单击“确定”以保存你的更改。
+    
+	![显示在何处更改吞吐量值的“设置”边栏选项卡屏幕截图](./media/documentdb-performance-levels/documentdb-change-performance-set-thoughput.png)
 
-9. 在“管理集合”边栏选项卡上，单击“确定”以将你的集合更新为用户定义的性能。
+7. 返回到“数据库”边栏选项卡，你可以核实该集合的新吞吐量。
 
+	![具有已修改的集合的“数据库”边栏选项卡屏幕截图](./media/documentdb-performance-levels/documentdb-change-performance-confirmation.png)
 如果你确定需要更多吞吐量（大于 10,000 RU/s）或更多存储（大于 10GB），可以创建分区集合。若要创建分区集合，请参阅[创建集合](/documentation/articles/documentdb-create-collection)。
 
 >[AZURE.NOTE] 更改集合的性能级别可能会花费 2 分钟。
@@ -162,15 +163,16 @@ DocumentDB 集合允许你根据应用程序的查询模式和性能需求来对
 若要了解更多有关 Azure DocumentDB 的定价和管理数据的信息，请浏览以下资源：
  
 - [DocumentDB 定价](https://azure.microsoft.com/pricing/details/documentdb/)
-- [管理 DocumentDB 容量](/documentation/articles/documentdb-manage) 
+- [管理 DocumentDB 容量](/documentation/articles/documentdb-manage)
 - [对 DocumentDB 中的数据进行建模](/documentation/articles/documentdb-modeling-data)
 - [对 DocumentDB 中的数据进行分区](/documentation/articles/documentdb-partition-data)
 - [请求单位](http://go.microsoft.com/fwlink/?LinkId=735027)
 
 若要了解有关 DocumentDB 的详细信息，请参阅 Azure DocumentDB [文档](https://azure.microsoft.com/documentation/services/documentdb/)。
 
-若要开始使用 DocumentDB 进行规模和性能测试，请参阅 [Performance and Scale Testing with Azure DocumentDB（使用 Azure DocumentDB 进行性能和规模测试）](/documentation/articles/documentdb-performance-testing)。
+若要开始使用 DocumentDB 进行规模和性能测试，请参阅 [Performance and Scale Testing with Azure DocumentDB](/documentation/articles/documentdb-performance-testing)（使用 Azure DocumentDB 进行性能和规模测试）。
 
 [1]: ./media/documentdb-performance-levels/documentdb-change-collection-performance7-9.png
 [2]: ./media/documentdb-performance-levels/documentdb-change-collection-performance10-11.png
-<!---HONumber=Mooncake_0627_2016-->
+
+<!---HONumber=Mooncake_0801_2016-->

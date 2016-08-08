@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="sql-server-stretch-database"
-	ms.date="06/14/2016"
+	ms.date="06/27/2016"
 	wacn.date=""/>
 
 # 通过运行“为数据库启用延伸向导”开始操作
@@ -47,25 +47,25 @@
 |**名称**|指定表中的列名。|
 |(无标题)|此列中的符号可能表示不会阻止你为所选表启用延伸的警告。它也可能表示会阻止你为所选表启用延伸的阻止问题，例如，因为该表使用不支持的数据类型。将鼠标悬停于符号上可在工具提示中显示更多信息。有关详细信息，请参阅 [Stretch Database 的限制](/documentation/articles/sql-server-stretch-database-limitations/)。|
 |**已延伸**|指示该表是否已启用延伸。|
-|**迁移**|你可以迁移整个表（**整个表**），也可以对表中的现有列指定一个筛选器。如果想要使用不同的筛选器谓词来选择要迁移的行，请运行 ALTER TABLE 语句以在退出向导后指定筛选器谓词。有关筛选器谓词的详细信息，请参阅[使用筛选器谓词选择要迁移的行](/documentation/articles/sql-server-stretch-database-predicate-function/)。有关如何应用谓词的详细信息，请参阅[为表启用 Stretch Database](/documentation/articles/sql-server-stretch-database-enable-table/) 或 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)。|
+|**迁移**|你可以迁移整个表（**整个表**），也可以对表中的现有列指定一个筛选器。如果想要使用不同的筛选器函数来选择要迁移的行，请运行 ALTER TABLE 语句以在退出向导后指定筛选器函数。有关筛选器函数的详细信息，请参阅[使用筛选器函数选择要迁移的行](sql-server-stretch-database-predicate-function.md)。有关如何应用函数的详细信息，请参阅[为表启用 Stretch Database](sql-server-stretch-database-enable-table.md) 或 [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)。|
 |**行**|指定表中的行数。|
 |**大小(KB)**|指定表的大小，以 KB 为单位。|
 
 ## <a name="Filter"></a>有选择性地提供行筛选器
 
-如果想提供筛选器谓词来选择要迁移的行，请在“选择表”页上执行以下操作。
+如果想提供筛选器函数来选择要迁移的行，请在“选择表”页上执行以下操作。
 
 1.  在“选择要延伸的表”列表中，单击表的行中的“整个表”。此时将打开“选择要延伸的行”对话框。
 
-    ![定义筛选器谓词][StretchWizardImage2a]
+    ![定义筛选器函数][StretchWizardImage2a]
 
 2.  在“选择要延伸的行”对话框中，选择“选择行”。
 
-3.  在“名称”字段中，提供筛选器谓词的名称。
+3.  在“名称”字段中，提供筛选器函数的名称。
 
 4.  针对 **Where** 子句，从表中选择某列，选择一个运算符，并提供一个值。
 
-5. 单击“检查”以测试该谓词。如果该谓词返回表中的结果（也就是说，如果有要迁移的行满足条件），则测试会报告“成功”。
+5. 单击“检查”以测试该函数。如果该函数返回表中的结果（也就是说，如果有要迁移的行满足条件），则测试会报告“成功”。
 
     >   [AZURE.NOTE] 显示筛选器查询的文本框是只读的。你无法在文本框中编辑查询。
 
@@ -73,13 +73,13 @@
 
 只有在完成向导后，才会在 SQL Server 中创建筛选器函数。在此之前，你可以返回到“选择表”页面，以更改或重命名筛选器函数。
 
-![定义筛选器谓词之后的“选择表”页][StretchWizardImage2b]
+![定义筛选器函数之后的“选择表”页][StretchWizardImage2b]
 
-如果想使用其他类型的筛选器谓词来选择要迁移的行，请执行下列操作之一。
+如果想使用不同类型的筛选器函数来选择要迁移的行，请执行下列操作之一。
 
--   退出向导并运行 ALTER TABLE 语句，以便为表启用延伸，并指定谓词。有关详细信息，请参阅[为表启用 Stretch Database](/documentation/articles/sql-server-stretch-database-enable-table/)。
+-   退出向导并运行 ALTER TABLE 语句，以便为表启用延伸，并指定筛选器函数。有关详细信息，请参阅[为表启用 Stretch Database](sql-server-stretch-database-enable-table.md)。
 
--   退出向导后，运行 ALTER TABLE 语句，以便指定谓词。有关所需步骤，请参阅[运行向导后添加筛选器谓词](/documentation/articles/sql-server-stretch-database-predicate-function/#addafterwiz)。
+-   退出向导后，运行 ALTER TABLE 语句，以便指定筛选器函数。有关所需步骤，请参阅[运行向导后添加筛选器函数](sql-server-stretch-database-predicate-function.md#addafterwiz)。
 
 ## <a name="Configure"></a>配置 Azure 部署
 
@@ -152,7 +152,7 @@
 ![Stretch Database 向导的“结果”页][StretchWizardImage9]
 
 ## <a name="KnownIssues"></a>排查向导问题
-**延伸数据库向导失败。**
+**延伸数据库向导失败。** 
 如果延伸数据库尚未在服务器级别启用，而你在不使用系统管理员权限的情况下运行向导来启用延伸数据库，则向导将会失败。请求系统管理员在本地服务器实例上启用延伸数据库，然后再次运行向导。有关详细信息，请参阅[先决条件：在服务器上启用 Stretch Database 所需的权限](/documentation/articles/sql-server-stretch-database-enable-database/#EnableTSQLServer)。
 
 ## 后续步骤
@@ -187,4 +187,4 @@
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 [StretchWizardImage9]: ./media/sql-server-stretch-database-wizard/stretchwiz9.png
 
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0801_2016-->

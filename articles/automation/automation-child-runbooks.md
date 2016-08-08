@@ -24,17 +24,7 @@
 
 发布某个 Runbook 时，必须事先发布它所调用的任何子 Runbook。这是因为，在编译 Runbook 时，Azure 自动化将会生成与任何子 Runbook 的关联。如果未进行这种关联，父 Runbook 看似发布正常，但在启动时会生成异常。如果发生这种情况，你可以重新发布父 Runbook，以正确引用子 Runbook。如果由于已创建关联而更改了任何子 Runbook，则你不需重新发布父 Runbook。
 
-[AZURE.ACOM]{
-
-内联调用的子 Runbook 的参数可以是任意数据类型（包括复杂对象），并且不会进行 [JSON 序列化](/documentation/articles/automation-starting-a-runbook/#runbook-parameters)，因为当你使用 Azure 管理门户或 Start-AzureRmAutomationRunbook cmdlet 启动 Runbook 时会进行这种序列化。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-内联调用的子 Runbook 的参数可以是任意数据类型（包括复杂对象），并且不会进行 [JSON 序列化](/documentation/articles/automation-starting-a-runbook/#runbook-parameters)，因为当你使用 Azure 经典管理门户或 Start-AzureAutomationRunbook cmdlet 启动 Runbook 时会进行这种序列化。
-
-[AZURE.ACN]}
+内联调用的子 Runbook 的参数可以是任意数据类型（包括复杂对象），并且不会进行 [JSON 序列化](/documentation/articles/automation-starting-a-runbook/#runbook-parameters)，因为当你使用 Azure 经典管理门户或 cmdlet 启动 Runbook 时会进行这种序列化。 [AZURE.ACOM]{ Start-AzureRmAutomationRunbook [AZURE.ACOM]} [AZURE.ACN]{ Start-AzureAutomationRunbook [AZURE.ACN]} cmdlet。
 
 [AZURE.ACOM]{
 
@@ -51,7 +41,7 @@
 - Runbook 的发布顺序仅对于 PowerShell 工作流和图形 PowerShell 工作流 Runbook 重要。
 
 
-在通过内联执行调用图形或 PowerShell 工作流子 Runbook 时，你只需使用 Runbook 的名称。调用 PowerShell 子 Runbook 时，你必须将 *.\* 用作其名称的前缀，表示脚本位于本地目录中。
+在通过内联执行调用图形或 PowerShell 工作流子 Runbook 时，你只需使用 Runbook 的名称。调用 PowerShell 子 Runbook 时，你必须将 .\ 用作其名称的前缀，表示脚本位于本地目录中。
 
 [AZURE.ACOM]}
 
@@ -71,7 +61,6 @@
 
 [AZURE.ACOM]}
 
-
 ##  使用 cmdlet 启动子 Runbook
 
 [AZURE.ACOM]{
@@ -86,17 +75,7 @@
 
 [AZURE.ACN]}
 
-[AZURE.ACOM]{
-
 使用 cmdlet 启动的子 Runbook 的作业将在父 Runbook 的某个独立作业中运行。这会导致比调用内联 Runbook 更多的作业，并使这些作业更难以跟踪。不过，父级可以异步启动多个子 Runbook，而无需等待每个子 Runbook 完成。对于调用内嵌子 Runbook 的同一种并行执行，父 Runbook 需要使用[并行关键字](/documentation/articles/automation-powershell-workflow/#parallel-processing)。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-使用 cmdlet 启动的子 Runbook 的作业将在父 Runbook 的某个独立作业中运行。这会导致比调用内联 Runbook 更多的作业，并使这些作业更难以跟踪。不过，父级可以启动多个子 Runbook，而无需等待每个子 Runbook 完成。对于调用内嵌子 Runbook 的同一种并行执行，父 Runbook 需要使用[并行关键字](/documentation/articles/automation-powershell-workflow/#parallel-processing)。
-
-[AZURE.ACN]}
 
 使用 cmdlet 启动的子 Runbook 的参数以哈希表形式提供，如 [Runbook 参数](/documentation/articles/automation-starting-a-runbook/#runbook-parameters)中所述。只能使用简单数据类型。如果 Runbook 的参数使用复杂数据类型，则必须内联调用该 Runbook。
 
@@ -144,14 +123,8 @@
 | | 内联| Cmdlet|
 |:---|:---|:---|
 |作业|子 Runbook 在父级所在的同一个作业中运行。|为子 Runbook 创建单独的作业。|
-|[AZURE.ACOM]{|
-|执行|父 Runbook 等待子 Runbook 完成，然后继续。|父 Runbook 会在子 Runbook 启动后立刻继续运行，_或_父 Runbook 会等待子作业完成。|
-|输出|父 Runbook 可以直接从子 Runbook 获取输出。|父 Runbook 必须检索子 Runbook 作业的输出，_或_父 Runbook 可以直接从子 Runbook 获取输出。|
-|[AZURE.ACOM]}|
-|[AZURE.ACN]{|
-|执行|父 Runbook 等待子 Runbook 完成，然后继续。|子 Runbook 启动后，父 Runbook 立即继续。|
-|输出|父 Runbook 可以直接从子 Runbook 获取输出。|父 Runbook 必须从子 Runbook 作业检索输出。|
-|[AZURE.ACN]}|
+|执行|父 Runbook 等待子 Runbook 完成，然后继续。|子 Runbook 启动后，父 Runbook 立即继续 [AZURE.ACOM]{ 或父 Runbook 等待子作业完成 [AZURE.ACOM]}。|
+|输出|父 Runbook 可以直接从子 Runbook 获取输出。|父 Runbook 必须从子 Runbook 作业检索输出 [AZURE.ACOM]{ 或父 Runbook 可以直接从子 Runbook 获取输出 [AZURE.ACOM]}。|
 |Parameters|子 Runbook 参数的值需单独指定，并且可以使用任意数据类型。|子 Runbook 参数值必须组合成单个哈希表，并且只能包含简单数据类型、数组和利用 JSON 序列化的对象数据类型。|
 |自动化帐户|父 Runbook 只能使用同一自动化帐户中的子 Runbook。|父 Runbook 可以使用同一 Azure 订阅（甚至还包括不同的订阅，如果你已连接到该订阅的话）中任意自动化帐户内的子 Runbook。|
 |发布|在发布父 Runbook 之前必须先发布子 Runbook。|必须在启动父 Runbook 前的任意时间发布子 Runbook。|
@@ -161,4 +134,4 @@
 - [在 Azure 自动化中启动 Runbook](/documentation/articles/automation-starting-a-runbook/)
 - [Azure 自动化中的 Runbook 输出和消息](/documentation/articles/automation-runbook-output-and-messages/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

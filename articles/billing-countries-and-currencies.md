@@ -14,7 +14,7 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="02/14/2016"
+	ms.date="07/13/2016"
 	ms.author="genli"/>
 
 # Microsoft Azure 在哪些国家和地区销售？哪些货币可以用来购买 Azure？
@@ -171,4 +171,4 @@
 | 赞比亚 | USD |
 | 津巴布韦 | USD |
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0801_2016-->

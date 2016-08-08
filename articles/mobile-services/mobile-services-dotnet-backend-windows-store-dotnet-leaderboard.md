@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="mobile-services" 
-	ms.date="05/04/2016"
+	ms.date="06/24/2016"
 	wacn.date=""/>
 
 # 使用 Azure 移动服务 .NET 后端创建排行榜应用程序
@@ -23,9 +23,9 @@
 
 Web API 是一个开源框架，可为 .NET 开发人员提供创建 REST API 的绝佳途径。你可以在 Azure 网站或使用 .NET 后端的 Azure 移动服务上托管 Web API 解决方案，甚至以自定义过程自我托管解决方案。移动服务是专门为移动应用程序设计的托管环境。当你在移动服务上托管 Web API 服务时，除了数据存储以外，还可以获得以下好处：
 
-- 使用社交服务提供商和 Azure Active Directory (AAD) 的内置身份验证。 
+- 使用社交服务提供商和 Azure Active Directory (AAD) 的内置身份验证。
 - 使用设备特定的通知服务将通知推送到应用程序。
-- 一整套可让你从任何应用程序轻松访问服务的客户端库。 
+- 一整套可让你从任何应用程序轻松访问服务的客户端库。
 - 内置的日志记录和诊断。
 
 在本教程中你将：
@@ -114,19 +114,19 @@ PlayerRank 具有 Player 的外键。每个玩家各有零个或一个 PlayerRan
 
 ## 添加 Web API 控制器
 
-接下来，你要为 `Player` 和 `PlayerRank` 添加 Web API 控制器。要添加的并不是普通 Web API 控制器，而是专门针对 Azure 移动服务设计的名为*表控制器*的特殊控制器。
+接下来，你要为 `Player` 和 `PlayerRank` 添加 Web API 控制器。要添加的并不是普通 Web API 控制器，而是专门针对 Azure 移动服务设计的名为表控制器的特殊控制器。
 
 右键单击 Controllers 文件夹，选择“添加”，然后选择“新建基架项”。
 
-![][6]
+![][6] 
 
 在“添加基架”对话框中，展开左侧的“通用”，然后选择“Azure 移动服务”。接下来，选择“Azure 移动服务表控制器”。单击**“添加”**。
 
-![][7]
+![][7] 
  
 在“添加控制器”对话框中：
 
-1.	在“模型类”下，选择“Player”。 
+1.	在“模型类”下，选择“Player”。
 2.	在“数据上下文类”下，选择“MobileServiceContext”。
 3.	将控制器命名为“PlayerController”。
 4.	单击**“添加”**。
@@ -134,12 +134,12 @@ PlayerRank 具有 Player 的外键。每个玩家各有零个或一个 PlayerRan
 
 此步骤将名为 PlayerController.cs 的文件添加到项目中。
 
-![][8]
+![][8] 
 
 该控制器派生自 **TableController<T>**。此类继承 **ApiController**，但它是专用于 Azure 移动服务的类。
  
-- 路由：**TableController** 的默认路径为 `/tables/{table_name}/{id}`，其中，*table\_name* 与实体名称匹配。因此，Player 控制器的路由为 */tables/player/{id}*。这种路由约定使得 **TableController** 与移动服务 [REST API](http://msdn.microsoft.com/zh-cn/library/azure/jj710104.aspx) 相一致。
-- 数据访问：对于数据库操作，**TableController** 类使用 **IDomainManager** 接口，该接口定义数据访问的抽象。基架使用 **EntityDomainManager**，这是包装 EF 上下文的 **IDomainManager** 的具体实现。 
+- 路由：**TableController** 的默认路径为 `/tables/{table_name}/{id}`，其中，table\_name 与实体名称匹配。因此，Player 控制器的路由为 /tables/player/{id}。这种路由约定使得 **TableController** 与移动服务 [REST API](http://msdn.microsoft.com/zh-cn/library/azure/jj710104.aspx) 相一致。
+- 数据访问：对于数据库操作，**TableController** 类使用 **IDomainManager** 接口，该接口定义数据访问的抽象。基架使用 **EntityDomainManager**，这是包装 EF 上下文的 **IDomainManager** 的具体实现。
 
 现在，请为 PlayerRank 实体添加第二个控制器。请遵循相同的步骤，但选择 PlayerRank 作为模型类。请使用相同的数据上下文类，而不要创建新类。将控制器命名为“PlayerRankController”。
 
@@ -169,7 +169,7 @@ PlayerRank 具有 Player 的外键。每个玩家各有零个或一个 PlayerRan
 	
 	[{"id":"1","rank":1,"score":150},{"id":"2","rank":3,"score":100},{"id":"3","rank":1,"score":150}]
 
-请注意，`Player` 并未包含在对象图形中。若要包含玩家，可以通过定义*数据传输对象 (DTO)* 将对象图形平面化。
+请注意，`Player` 并未包含在对象图形中。若要包含玩家，可以通过定义数据传输对象 (DTO) 将对象图形平面化。
 
 DTO 是定义如何通过网络发送数据的对象。如果你希望有线格式看起来与数据库模型不同，即可使用 DTO。若要为 `PlayerRank` 创建 DTO，请在 DataObjects 文件夹中添加名为 `PlayerRankDto` 的新类。
 
@@ -607,7 +607,7 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 	    }
 	}
 
-当你在本地调试时，移动服务将在 IIS Express 上运行。Visual Studio 将分配一个随机端口号，因此本地 URL 为 http://localhost:*port*，其中 *port* 为端口号。若要获取端口号，请按 F5 在 Visual Studio 中启动服务，以进行调试。Visual Studio 将启动浏览器，并导航到服务 URL。你也可以在项目属性中的 **Web** 下查找本地 URL。
+当你在本地调试时，移动服务将在 IIS Express 上运行。Visual Studio 将分配一个随机端口号，因此本地 URL 为 http://localhost:port，其中 port 为端口号。若要获取端口号，请按 F5 在 Visual Studio 中启动服务，以进行调试。Visual Studio 将启动浏览器，并导航到服务 URL。你也可以在项目属性中的 **Web** 下查找本地 URL。
 
 ## 创建主页面
 
@@ -756,8 +756,8 @@ DTO 是定义如何通过网络发送数据的对象。如果你希望有线格�
 
 [详细了解 Azure 移动服务]: /documentation/services/mobile-services/
 [详细了解 Web API]: http://asp.net/web-api
-[处理数据库写入冲突]: /documentation/articles/mobile-services-windows-store-dotnet-handle-database-conflicts
-[添加推送通知]: /documentation/articles/notification-hubs-windows-store-dotnet-get-started
-[身份验证入门]: /documentation/articles/mobile-services-windows-store-dotnet-get-started-users
+[处理数据库写入冲突]: /documentation/articles/mobile-services-windows-store-dotnet-handle-database-conflicts/
+[添加推送通知]: /documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[身份验证入门]: /documentation/articles/mobile-services-windows-store-dotnet-get-started-users/
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0801_2016-->

@@ -10,7 +10,8 @@
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="05/20/2016" 
+
+	ms.date="07/18/2016" 
 	wacn.date=""/>
 
 # 使用 Azure DocumentDB 进行性能和规模测试
@@ -21,7 +22,7 @@
 阅读本文后，你将能够回答以下问题：
 
 - 在哪里可以找到可用于 Azure DocumentDB 性能测试的示例 .NET 客户端应用程序？
-- 有哪些关键因素会影响到对 Azure DocumentDB 发出的请求的端到端性能？ 
+- 有哪些关键因素会影响到对 Azure DocumentDB 发出的请求的端到端性能？
 - 如何使用 Azure DocumentDB 从客户端应用程序实现高吞吐量级别？
 
 若要开始处理代码，请从 [DocumentDB 性能测试示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)下载项目。
@@ -35,9 +36,9 @@ DocumentDB 是一个快速、弹性的分布式数据库，可以在提供延迟
 - **在同一个 Azure 区域中测试**：尽可能地从部署在同一 Azure 区域中的虚拟机或 App Service 进行测试。通过大致的比较发现，在同一区域中对 DocumentDB 的调用可在 1-2 毫秒内完成，而美国西岸和美国东岸之间的延迟则大于 50 毫秒。
 - **增加每台主机的 System.Net MaxConnections**：默认情况下，DocumentDB 请求是通过 HTTPS/REST 发出的，并受制于每个主机名或 IP 地址的默认连接限制。可能需要将此值设置为较大的值 (100-1000)，以便客户端库能够同时利用多个连接来访问 DocumentDB。在 .NET 中，此参数为 [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx)。
 - **打开服务器端 GC**：在某些情况下，降低垃圾收集的频率可能会有帮助。在 .NET 中，应将 [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) 设置为 true。
-- **配合 TCP 协议使用直接连接**：配合 [TCP 协议](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.protocol.aspx)使用[直接连接](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionmode.aspx)以获得最佳性能。 
+- **使用直接连接**：为获得最佳性能，请使用[直接连接](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionmode.aspx)。
 - **按 RetryAfter 间隔实现退让**：在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。如果受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。这可确保最大程度地减少等待重试的时间。请参阅 [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx)。
-- **扩展客户端工作负荷**：如果以高吞吐量级别（> 50,000 RU/秒）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。如果达到此限制，可以将客户端应用程序扩展到多个服务器，以进一步推送 DocumentDB 帐户。
+- **扩大客户端工作负荷**：如果以高吞吐量级别（> 50,000 RU/秒）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。如果达到此限制，可以将客户端应用程序扩展到多个服务器，以进一步推送 DocumentDB 帐户。
 
 ## 入门
 最快的入门方法是根据以下步骤中所述，编译并运行下面的 .NET 示例。你也可以查看源代码，然后在自己的客户端应用程序中实施类似的配置。
@@ -48,7 +49,7 @@ DocumentDB 是一个快速、弹性的分布式数据库，可以在提供延迟
 
 > [AZURE.NOTE] 以高吞吐量预配集合之前，请参阅[定价页](/pricing/details/documentdb/)以估算每个集合的成本。DocumentDB 根据存储和吞吐量单独按小时计费，因此你可以通过在测试后删除或降低 DocumentDB 集合的吞吐量来节省成本。
 
-**步骤 3：**从命令行编译并运行控制台应用程序。你应会看到如下输出：
+**步骤 3：**从命令行编译并运行控制台应用。你应会看到如下输出：
 
 	Summary:
 	---------------------------------------------------------------------
@@ -96,15 +97,15 @@ DocumentDB 是一个快速、弹性的分布式数据库，可以在提供延迟
 
 **步骤 4（如有必要）：**工具报告的吞吐量（RU/秒）应该等于或大于预配的集合吞吐量。如果情况并非如此，以较小的增量提高 DegreeOfParallelism 可帮助达到该限制。如果客户端应用的吞吐量达到持平状态，则在相同或不同计算机上启动多个应用程序实例可帮助在各个不同的实例中达到预配的限制。如需有关此步骤的帮助，请通过 [Ask DocumentDB](askdocdb@microsoft.com) 或发起支持票证来与我们联系。
 
-应用处于运行状态后，你可以尝试不同的[索引编制策略](/documentation/articles/documentdb-indexing-policies)和[一致性级别](/documentation/articles/documentdb-consistency-levels)，以了解它们对吞吐量和延迟的影响。你也可以查看源代码，然后在自己的测试套件或生产应用程序中实施类似的配置。
+应用处于运行状态后，你可以尝试不同的[索引编制策略](/documentation/articles/documentdb-indexing-policies/)和[一致性级别](/documentation/articles/documentdb-consistency-levels/)，以了解它们对吞吐量和延迟的影响。你也可以查看源代码，然后在自己的测试套件或生产应用程序中实施类似的配置。
 
 ## 摘要
 在本文中，我们探讨了如何在 DocumentDB 中使用 .NET 控制台应用程序来执行性能和规模测试，另外，了解了可从 Azure DocumentDB 获得最佳性能的关键配置选项。有关使用 DocumentDB 的其他信息，请参阅下面的链接。
 
 * [DocumentDB performance testing sample（DocumentDB 性能测试示例）](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
-* [Server-side partitioning in DocumentDB（DocumentDB 中的服务器端分区）](/documentation/articles/documentdb-partition-data)
-* [DocumentDB 集合和性能级别](/documentation/articles/documentdb-performance-levels)
+* [Server-side partitioning in DocumentDB（DocumentDB 中的服务器端分区）](/documentation/articles/documentdb-partition-data/)
+* [DocumentDB 集合和性能级别](/documentation/articles/documentdb-performance-levels/)
 * [MSDN 上的 DocumentDB .NET SDK 文档](https://msdn.microsoft.com/library/azure/dn948556.aspx)
 * [DocumentDB .NET samples（DocumentDB .NET 示例）](https://github.com/Azure/azure-documentdb-net)
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0801_2016-->

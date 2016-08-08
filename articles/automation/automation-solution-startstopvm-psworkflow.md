@@ -38,17 +38,7 @@
 
 ## 获取方案
 
-[AZURE.ACOM]{
-
-此方案包含两个可通过以下链接下载的 PowerShell 工作流 Runbook。请参阅此方案的[图形版本](/documentation/articles/automation-solution-startstopvm-graphical/)，以获取指向图形 Runbook 的链接。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-此方案包含两个可通过以下链接下载的 PowerShell 工作流 Runbook。
-
-[AZURE.ACN]}
+此方案包含两个可通过以下链接下载的 PowerShell 工作流 Runbook。[AZURE.ACOM]{ 请参阅此方案的[图形版本](/documentation/articles/automation-solution-startstopvm-graphical/)，以获取图形 Runbook 的链接。[AZURE.ACOM]}
 
 | Runbook | 链接 | 类型 | 说明 |
 |:---|:---|:---|:---|
@@ -70,31 +60,26 @@ Runbook 需要以下资产，你必须创建这些资产并在其中填充适当
 
 | 资产类型 | 资产名称 | 说明 |
 |:---|:---|:---|:---|
-|[AZURE.ACOM]{|
-| 凭据 | AzureCredential | 包含帐户凭据，该帐户有权在 Azure 订阅中启动和停止虚拟机。此外，你也可以在 **Add-AzureAccount** 活动的 **Credential** 参数中指定其他凭据。 |
-|[AZURE.ACOM]}|
-|[AZURE.ACN]{|
-| 凭据 | AzureCredential | 包含帐户凭据，该帐户有权在 Azure 订阅中启动和停止虚拟机。此外，你也可以在 **Add-AzureAccount -Environment AzureChinaCloud** 活动的 **Credential** 参数中指定其他凭据资产。 |
-|[AZURE.ACN]}|
+| 凭据 | AzureCredential | 包含帐户凭据，该帐户有权在 Azure 订阅中启动和停止虚拟机。或者，你也可以在 **Add-AzureAccount 活动的 **Credential** 参数中指定其他凭据资产。 [AZURE.ACN]{ -Environment AzureChinaCloud [AZURE.ACN]}** 活动。 |
 | 变量 | AzureSubscriptionId | 包含你的 Azure 订阅的订阅 ID。 |
 
 ##<a id="using-the-solution"></a> 使用方案
 
-### 参数
+### Parameters
 
 每个 Runbook 具有以下参数。必需参数必须提供值，其他参数则可根据要求选择性地提供值。
 
 | 参数 | 类型 | 必需 | 说明 |
 |:---|:---|:---|:---|
 | ServiceName | 字符串 | 否 | 如果提供了值，则会启动或停止具有该服务名称的所有虚拟机。如果没有提供值，则会启动或停止 Azure 订阅中的所有经典虚拟机。 |
-| AzureSubscriptionIdAssetName | 字符串 | 否 | 包含[变量资产](#installing-and-configuring-the-scenario)的名称，该资产中包含 Azure 订阅的订阅 ID。如果不指定值，则会使用 *AzureSubscriptionId*。 |
-| AzureCredentialAssetName | 字符串 | 否 | 包含[凭据资产](#installing-and-configuring-the-scenario)的名称，该资产中包含要使用的 Runbook 的凭据。如果不指定值，则会使用 *AzureCredential*。 |
+| AzureSubscriptionIdAssetName | 字符串 | 否 | 包含[变量资产](#installing-and-configuring-the-scenario)的名称，该资产中包含 Azure 订阅的订阅 ID。如果不指定值，则会使用 AzureSubscriptionId。 |
+| AzureCredentialAssetName | 字符串 | 否 | 包含[凭据资产](#installing-and-configuring-the-scenario)的名称，该资产中包含要使用的 Runbook 的凭据。如果不指定值，则会使用 AzureCredential。 |
 
 ### 启动 Runbook
 
 你可以使用[在 Azure 自动化中启动 Runbook](/documentation/articles/automation-starting-a-runbook/) 中的任何方法来启动此方案中的任一 Runbook。
 
-以下示例命令使用 Windows PowerShell 来运行 **StartAzureVMs**，以便启动服务名称为 *MyVMService* 的所有虚拟机。
+以下示例命令使用 Windows PowerShell 来运行 **StartAzureVMs**，以便启动服务名称为 MyVMService 的所有虚拟机。
 
 	$params = @{"ServiceName"="MyVMService"}
 	Start-AzureAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Start-AzureVMs" -Parameters $params
@@ -112,7 +97,7 @@ Runbook 需要以下资产，你必须创建这些资产并在其中填充适当
 | Stop-AzureVMs | 已成功提交虚拟机启动请求 | MyVM 已启动 |
 | Stop-AzureVMs | 虚拟机启动请求失败 | MyVM 无法启动 |
 
-例如，Runbook 中的以下代码段尝试启动服务名称为 *MyServiceName* 的所有虚拟机。如果任何启动请求失败，则可能会执行错误操作。
+例如，Runbook 中的以下代码段尝试启动服务名称为 MyServiceName 的所有虚拟机。如果任何启动请求失败，则可能会执行错误操作。
 
 	$results = Start-AzureVMs -ServiceName "MyServiceName"
 	foreach ($result in $results) {
@@ -129,7 +114,7 @@ Runbook 需要以下资产，你必须创建这些资产并在其中填充适当
 
 下面是此方案中 Runbook 的明细。你可以使用此信息来自定义 Runbook，或只是从中学习如何创作自己的自动化方案。
 
-### 参数
+### Parameters
 
     param (
         [Parameter(Mandatory=$false)] 
@@ -155,26 +140,12 @@ Runbook 需要以下资产，你必须创建这些资产并在其中填充适当
 
 	# Connect to Azure and select the subscription to work against
 	$Cred = Get-AutomationPSCredential -Name $AzureCredentialAssetName
-	[AZURE.ACOM]{
-	$null = Add-AzureAccount -Credential $Cred -ErrorAction Stop
-	[AZURE.ACOM]}
-	[AZURE.ACN]{
-	$null = Add-AzureAccount -Environment AzureChinaCloud -Credential $Cred -ErrorAction Stop
-	[AZURE.ACN]}
+	$null = Add-AzureAccount [AZURE.ACN]{ -Environment AzureChinaCloud [AZURE.ACN]} -Credential $Cred -ErrorAction Stop
 	$SubId = Get-AutomationVariable -Name $AzureSubscriptionIdAssetName
     $null = Select-AzureSubscription -SubscriptionId $SubId -ErrorAction Stop
 
-[AZURE.ACOM]{
-
-后续的行设置将要用于剩余 Runbook 的[凭据](/documentation/articles/automation-configuring/#configuring-authentication-to-azure-resources)和 Azure 订阅。首先，我们使用 **Get-AutomationPSCredential** 来获取用于存储凭据的资产，这些凭据具有相应的访问权限，可用于启动和停止 Azure 订阅中的虚拟机。**Add-AzureAccount** 然后就会使用此资产来设置凭据。该输出已分配给一个虚拟变量，因此不会包括在 Runbook 输出中。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-后续行设置将要用于 Runbook 的剩余部分的凭据和 Azure 订阅。首先，我们使用 **Get-AutomationPSCredential** 来获取用于存储凭据的资产，这些凭据具有相应的访问权限，可用于启动和停止 Azure 订阅中的虚拟机。**Add-AzureAccount -Environment AzureChinaCloud** 然后就会使用此资产来设置凭据。该输出已分配给一个虚拟变量，因此不会包括在 Runbook 输出中。
-
-[AZURE.ACN]}
+后续行设置 [AZURE.ACOM]{ [凭据](/documentation/articles/automation-configuring/#configuring-authentication-to-azure-resources) [AZURE.ACOM]} [AZURE.ACN]{ 凭据 [AZURE.ACN]} 用于 Runbook 剩余部分的 Azure 订阅。
+首先，我们使用 **Get-AutomationPSCredential** 来获取用于存储凭据的资产，这些凭据具有相应的访问权限，可用于启动和停止 Azure 订阅中的虚拟机。**Add-AzureAccount [AZURE.ACN]{ -Environment AzureChinaCloud [AZURE.ACN]}** 然后就会使用此资产来设置凭据。该输出已分配给一个虚拟变量，因此不会包括在 Runbook 输出中。
 
 然后会使用 **Get-AutomationVariable** 来检索包含订阅 ID 的变量资产，并使用 **Select-AzureSubscription** 来设置订阅。
 
@@ -226,7 +197,7 @@ Runbook 需要以下资产，你必须创建这些资产并在其中填充适当
 
 ## 后续步骤
 
-- 若要了解有关使用子 Runbook 的详细信息，请参阅 [Azure 自动化中的子 Runbook](/documentation/articles/automation-child-runbooks/)
-- 若要详细了解执行 Runbook 期间的输出消息和日志记录以帮助进行故障排除，请参阅 [Azure 自动化中的 Runbook 输出和消息](/documentation/articles/automation-runbook-output-and-messages/)
+- 若要了解有关使用子 Runbook 的详细信息，请参阅 [Child runbooks in Azure Automation（Azure 自动化中的子 Runbook）](/documentation/articles/automation-child-runbooks/)
+- 若要详细了解执行 Runbook 期间的输出消息和日志记录以帮助进行故障排除，请参阅 [Runbook output and messages in Azure Automation（Azure 自动化中的 Runbook 输出和消息）](/documentation/articles/automation-runbook-output-and-messages/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

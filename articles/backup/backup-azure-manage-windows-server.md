@@ -1,5 +1,5 @@
 <properties
-	pageTitle="管理 Azure 备份保管库和服务器 | Microsoft Azure"
+	pageTitle="管理 Azure 备份保管库和服务器 | Azure"
 	description="使用本教程来了解如何管理 Azure 备份保管库和服务器。"
 	services="backup"
 	documentationCenter=""
@@ -19,7 +19,7 @@
 >[AZURE.NOTE] 本文提供经典部署模型中的操作过程。
 
 ## 管理门户任务
-1. 登录到[管理门户](https://manage.windowsazure.com)。
+1. 登录到[管理门户](https://manage.windowsazure.cn)。
 
 2. 单击“恢复服务”，然后单击备份保管库的名称以查看“快速启动”页。
 
@@ -190,8 +190,8 @@ Azure 备份代理提供的“限制”选项卡可让你控制在数据传输�
     ![计划 Windows Server 备份](./media/backup-azure-manage-windows-server/finish-exclusions.png)
 
 ## 后续步骤
-- [从 Azure 还原 Windows Server 或 Windows 客户端](/documentation/articles/backup-azure-restore-windows-server)
-- 若要了解有关 Azure 备份的详细信息，请参阅 [Azure 备份概述](/documentation/articles/backup-introduction-to-azure-backup)
+- [从 Azure 还原 Windows Server 或 Windows 客户端](/documentation/articles/backup-azure-restore-windows-server/)
+- 若要了解有关 Azure 备份的详细信息，请参阅 [Azure 备份概述](/documentation/articles/backup-introduction-to-azure-backup/)
 - 访问 [Azure 备份论坛](http://go.microsoft.com/fwlink/p/?LinkId=290933)
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0801_2016-->

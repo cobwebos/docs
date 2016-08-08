@@ -1,6 +1,6 @@
 <properties
-	pageTitle="何时使用 NoSQL 与 SQL | Microsoft Azure"
-	description="比较使用非关系 NoSQL 解决方案与使用 SQL 解决方案的好处。了解 Microsoft Azure NoSQL 服务还是 SQL Server 解决方案最适合你的方案。"
+	pageTitle="何时使用 NoSQL 与 SQL | Azure"
+	description="比较使用 NoSQL 非关系解决方案与使用 SQL 解决方案的好处。了解 Microsoft Azure NoSQL 服务还是 SQL Server 最适合你的方案。"
 	keywords="nosql 与 sql, 何时使用 NoSQL, sql 与 nosql"
 	services="documentdb"
 	documentationCenter=""
@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="documentdb"
-	ms.date="03/28/2016"
+	ms.date="06/24/2016"
 	wacn.date=""/>
 
 # NoSQL 与 SQL
@@ -87,9 +87,9 @@ Azure 具有以下四种完全托管的 NoSQL 服务：
 
 如果这些服务中的一个或多个可能满足你应用程序的需要，可使用以下资源了解详细信息：
 
-- [DocumentDB 学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)和 [DocumentDB 用例](/documentation/articles/documentdb-use-cases)
-- [Azure 表存储入门](/documentation/articles/storage-dotnet-how-to-use-tables)
-- [HDInsight 中的 HBase 是什么](/documentation/articles/hdinsight-hbase-overview)
+- [DocumentDB 学习路径](https://azure.microsoft.com/documentation/learning-paths/documentdb/)和 [DocumentDB 用例](/documentation/articles/documentdb-use-cases/)
+- [Azure 表存储入门](/documentation/articles/storage-dotnet-how-to-use-tables/)
+- [HDInsight 中的 HBase 是什么](/documentation/articles/hdinsight-hbase-overview/)
 - [Redis 缓存学习路径](https://azure.microsoft.com/documentation/learning-paths/redis-cache/)
 
 然后转到[后续步骤](#next-steps)，获取免费试用版信息。
@@ -126,5 +126,4 @@ Microsoft 提供了五种 SQL 产品/服务：
     - [SQL Server](https://www.microsoft.com/server-cloud/products/sql-server-2016/)
     - [Azure 虚拟机中的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)
 
-
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0801_2016-->

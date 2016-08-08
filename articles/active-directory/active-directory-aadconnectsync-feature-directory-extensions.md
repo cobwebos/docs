@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="04/12/2016"
+   ms.date="06/27/2016"
    wacn.date=""/>
 
 # Azure AD Connect 同步：目录扩展
@@ -18,7 +18,7 @@
 当前没有任何 Office 365 工作负荷使用这些属性。
 
 在安装向导的自定义设置路径中配置要同步的其他属性。
-![架构扩展向导](./media/active-directory-aadconnectsync-feature-directory-extensions/extension2.png) 
+![架构扩展向导](./media/active-directory-aadconnectsync-feature-directory-extensions/extension2.png)
 安装将显示以下属性，它们是有效的候选项：
 
 - “用户”和“组”对象类型
@@ -36,8 +36,8 @@
 这些属性的前面带有 extension\_{AppClientId}\_ 前缀。Azure AD 目录中的所有属性具有相同的 AppClientId 值。
 
 ## 后续步骤
-了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis)配置的详细信息。
+了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis/)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0801_2016-->

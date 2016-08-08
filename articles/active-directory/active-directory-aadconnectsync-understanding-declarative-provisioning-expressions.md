@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="04/14/2016"
+	ms.date="06/27/2016"
 	wacn.date=""/>
 
 
@@ -39,7 +39,7 @@ Azure AD Connect 同步构建在声明性预配的基础之上。该声明性预
 
 有关函数的完整列表，请参阅[函数参考](active-directory-aadconnectsync-functions-reference.md)。
 
-### 参数
+### Parameters
 
 参数由连接器定义，或者由系统管理员使用 PowerShell 来设置。参数通常包含因系统不同而各异的值，例如用户所在域的名称。这些参数可在属性流中使用。
 
@@ -72,7 +72,7 @@ Active Directory 连接器为入站同步规则提供以下参数：
 - **逻辑**：&&（和）、||（或）
 - **计算顺序**：( )
 
-运算符从左到右进行求值，并具有相同的求值优先级。也就是说，\*（乘号）不会在 -（减号）之前求值。2\*(5+3) 与 2*5+3 不同。如果从左到右的求值顺序不适当，可以使用括号 () 来更改求值顺序。
+运算符从左到右进行求值，并具有相同的求值优先级。也就是说，* （乘号）不会在 -（减号）之前求值。2 * (5+3) 与 2 * 5+3 不同。如果从左到右的求值顺序不适当，可以使用括号 () 来更改求值顺序。
 
 ## 常见方案
 
@@ -116,14 +116,14 @@ Active Directory 中的某些属性在架构中是多值，不过它们在 Activ
 
 `proxyAddresses` <- `RemoveDuplicates(Trim(ImportedValue("proxyAddresses")))`
 
-有关函数的完整列表，请参阅 [Azure AD Connect Sync：函数引用](/documentation/articles/active-directory-aadconnectsync-functions-reference)
+有关函数的完整列表，请参阅 [Azure AD Connect Sync：函数引用](/documentation/articles/active-directory-aadconnectsync-functions-reference/)
 
 
 ## 其他资源
 
-* [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis)
-* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
+* [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis/)
+* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
  
 <!--Image references-->
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0801_2016-->

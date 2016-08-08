@@ -27,40 +27,17 @@
 
 | **方法** | **特征** |
 |-------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|[AZURE.ACOM]{|
-| [Azure 门户](#starting-a-runbook-with-the-azure-portal) | <li>使用交互式用户界面的最简单方法。<br> <li>用于提供简单参数值的窗体。<br> <li>轻松跟踪作业状态。<br> <li>使用 Azure 登录对访问进行身份验证。 |
-|[AZURE.ACOM]}|
-|[AZURE.ACN]{|
-| [Azure 经典管理门户](#starting-a-runbook-with-the-azure-portal) | <li>使用交互式用户界面的最简单方法。<br> <li>用于提供简单参数值的窗体。<br> <li>轻松跟踪作业状态。<br> <li>使用 Azure 登录对访问进行身份验证。 |
-|[AZURE.ACN]}|
+| [Azure [AZURE.ACN]{ 经典管理 [AZURE.ACN]} 门户](#starting-a-runbook-with-the-azure-portal) | <li>使用交互式用户界面的最简单方法。<br> <li>用于提供简单参数值的窗体。<br> <li>轻松跟踪作业状态。<br> <li>使用 Azure 登录对访问进行身份验证。 |
 | [Windows PowerShell](https://msdn.microsoft.com/zh-cn/library/dn690259.aspx) | <li>使用 Windows PowerShell cmdlet 从命令行调用。<br> <li>可以使用多个步骤包含在自动化解决方案中。<br> <li>使用证书或 OAuth 用户主体/服务主体对请求进行身份验证。<br> <li>提供简单和复杂的参数值。<br> <li>跟踪作业状态。<br> <li>支持 PowerShell cmdlet 所需的客户端。 |
-|[AZURE.ACOM]{|
-| [Azure 自动化 API](https://msdn.microsoft.com/zh-cn/library/azure/mt662285.aspx) | <li>最有弹性的方法，但也最复杂。<br> <li>从任何可发出 HTTP 请求的自定义代码调用。<br> <li>使用证书或 OAuth 用户主体/服务主体对请求进行身份验证。<br> <li>提供简单和复杂的参数值。<br> <li>跟踪作业状态。 |
-|[AZURE.ACOM]}|
-|[AZURE.ACN]{|
-| [Azure 自动化 API](http://msdn.microsoft.com/zh-cn/library/azure/mt163849.aspx) | <li>最有弹性的方法，但也最复杂。<br> <li>从任何可发出 HTTP 请求的自定义代码调用。<br> <li>使用证书或 OAuth 用户主体/服务主体对请求进行身份验证。<br> <li>提供简单和复杂的参数值。<br> <li>跟踪作业状态。 |
-|[AZURE.ACN]}|
+| [AZURE.ACOM]{ [Azure 自动化 API](https://msdn.microsoft.com/zh-cn/library/azure/mt662285.aspx) [AZURE.ACOM]} [AZURE.ACN]{ [Azure 自动化 API](http://msdn.microsoft.com/zh-cn/library/azure/mt163849.aspx) [AZURE.ACN]} | <li>最有弹性的方法，但也最复杂。<br> <li>从任何可发出 HTTP 请求的自定义代码调用。<br> <li>使用证书或 Oauth 用户主体/服务主体对请求进行身份验证。<br> <li>提供简单和复杂的参数值。<br> <li>跟踪作业状态。 |
 | [Webhook](/documentation/articles/automation-webhooks/) | <li>从单个 HTTP 请求启动 Runbook。<br> <li>使用 URL 中的安全令牌进行身份验证。<br> <li>客户端无法覆盖创建 Webhook 时指定的参数值。Runbook 可以定义填入了 HTTP 请求详细信息的单个参数。<br> <li>无法通过 Webhook URL 跟踪作业状态。 |
 |[AZURE.ACOM]{|
 | [响应 Azure 警报](/documentation/articles/log-analytics-alerts/) | <li>启动 Runbook 以响应 Azure 警报。<br> <li>为 Runbook 配置 Webhook 并链接到警报。<br> <li>使用 URL 中的安全令牌进行身份验证。<br> <li>当前仅对度量值支持警报。 |
-| [计划](/documentation/articles/automation-scheduling-a-runbook/) | <li>按每小时、每天或每周计划自动启动 Runbook。<br> <li>通过 Azure 门户、PowerShell cmdlet 或 Azure API 来操作计划。<br> <li>提供要用于计划的参数值。 |
 |[AZURE.ACOM]}|
-|[AZURE.ACN]{|
-| [计划](/documentation/articles/automation-scheduling-a-runbook/) | <li>按每小时、每天或每周计划自动启动 Runbook。<br> <li>通过 Azure 经典管理门户、PowerShell cmdlet 或 Azure API 来操作计划。<br> <li>提供要用于计划的参数值。 |
-|[AZURE.ACN]}|
+| [计划](/documentation/articles/automation-scheduling-a-runbook/) | <li>按每小时、每天或每周计划自动启动 Runbook。<br> <li>通过 Azure [AZURE.ACN]{ 经典管理 [AZURE.ACN]} 门户、PowerShell cmdlet 或 Azure API 来操作计划。<br> <li>提供要用于计划的参数值。 |
 | [从另一个 Runbook](/documentation/articles/automation-child-runbooks/) | <li>使用一个 Runbook 作为另一个 Runbook 中的活动。<br> <li>对多个 Runbook 使用的功能很有用。<br> <li>为子 Runbook 提供参数值，并使用父 Runbook 中的输出。 |
 
-[AZURE.ACOM]{
-
-下图演示了 Runbook 生命周期的详细分步过程。它包括在 Azure 自动化中启动 Runbook 的不同方式、混合 Runbook 辅助角色执行 Azure 自动化 Runbook 所需的组件以及不同组件之间的交互方式。若要了解如何在数据中心执行自动化 Runbook，请参阅[混合 Runbook 辅助角色](/documentation/articles/automation-hybrid-runbook-worker/)
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-下图演示了 Runbook 生命周期的详细分步过程。它包括在 Azure 自动化中启动 Runbook 的不同方式、本地计算机执行 Azure 自动化 Runbook 所需的组件以及不同组件之间的交互方式。
-
-[AZURE.ACN]}
+下图演示了 Runbook 生命周期的详细分步过程。其中包括在 Azure 自动化中启动 Runbook 的不同方式、 [AZURE.ACOM]{ 混合 Runbook 辅助角色 [AZURE.ACOM]} [AZURE.ACN]{ 所需的组件、本地计算机 [AZURE.ACN]} 执行 Azure 自动化 Runbook 时所需的组件，以及不同组件之间的交互。[AZURE.ACOM]若要了解如何在数据中心执行自动化 Runbook，请参阅[混合 Runbook 辅助角色](/documentation/articles/automation-hybrid-runbook-worker/) [AZURE.ACOM]}
 
 ![Runbook 体系结构](./media/automation-starting-runbook/runbooks-architecture.png)
 
@@ -151,23 +128,13 @@ Start-AzureAutomationRunbook 将返回一个作业对象，启动 Runbook 后，
 
 ##<a name="runbook-parameters"></a> Runbook 参数
 
-[AZURE.ACOM]{
-
-当你使用 Azure 门户或 Windows PowerShell 启动 Runbook 时，系统将通过 Azure 自动化 Web 服务发送指令。此服务不支持复杂数据类型的参数。如果需要提供复杂参数的值，则必须根据 [Azure 自动化中的子 Runbook](/documentation/articles/automation-child-runbooks/) 中所述，以内联方式从另一个 Runbook 调用该参数值。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-当你使用 Azure 经典管理门户或 Windows PowerShell 启动 Runbook 时，系统将通过 Azure 自动化 Web 服务发送指令。此服务不支持复杂数据类型的参数。如果需要提供复杂参数的值，则必须根据 [Azure 自动化中的子 Runbook](/documentation/articles/automation-child-runbooks/) 中所述，以内联方式从另一个 Runbook 调用该参数值。
-
-[AZURE.ACN]}
+当你使用 Azure [AZURE.ACN]{ 经典管理 [AZURE.ACN]} 门户或 Windows PowerShell 启动 Runbook 时，系统将通过 Azure 自动化 Web 服务发送指令。此服务不支持复杂数据类型的参数。如果需要提供复杂参数的值，则必须根据 [Azure 自动化中的子 Runbook](/documentation/articles/automation-child-runbooks/) 中所述，以内联方式从另一个 Runbook 调用该参数值。
 
 Azure 自动化 Web 服务将为使用特定数据类型的参数提供特殊功能，如以下部分中所述。
 
 ### 命名值
 
-如果参数的数据类型为 object，则你可以使用以下 JSON 格式向它发送命名值列表：_{"Name1":Value1, "Name2":Value2, "Name3":Value3}_。这些值必须使用简单类型。Runbook 将以 [PSCustomObject](https://msdn.microsoft.com/zh-cn/library/system.management.automation.pscustomobject(v=vs.85).aspx) 的形式接收参数，该对象的属性对应于每个命名值。
+如果参数的数据类型为 object，则你可以使用以下 JSON 格式向它发送命名值列表：{"Name1":Value1, "Name2":Value2, "Name3":Value3}。这些值必须使用简单类型。Runbook 将以 [PSCustomObject](https://msdn.microsoft.com/zh-cn/library/system.management.automation.pscustomobject(v=vs.85).aspx) 的形式接收参数，该对象的属性对应于每个命名值。
 
 请考虑以下接受名为 user 的参数的测试 Runbook。
 
@@ -197,9 +164,9 @@ Azure 自动化 Web 服务将为使用特定数据类型的参数提供特殊功
 
 ### 数组
 
-如果参数是数组（如 array 或 string），则你可以使用以下 JSON 格式向它发送值列表：_[Value1,Value2,Value3]_。这些值必须使用简单类型。
+如果参数是数组（如 array 或 string），则你可以使用以下 JSON 格式向它发送值列表：[Value1,Value2,Value3]。这些值必须使用简单类型。
 
-请考虑以下接受名为 *user* 的参数的测试 Runbook。
+请考虑以下接受名为 user 的参数的测试 Runbook。
 
 	Workflow Test-Parameters
 	{
@@ -239,26 +206,16 @@ Azure 自动化 Web 服务将为使用特定数据类型的参数提供特殊功
 	   $credential.UserName
 	}
 
-假设存在名为 *My Credential* 的凭据资产，则可为 user 参数使用以下文本。
+假设存在名为 My Credential 的凭据资产，则可为 user 参数使用以下文本。
 
 	My Credential
 
-假设凭据中的用户名为 *jsmith*，则会导致生成以下输出。
+假设凭据中的用户名为 jsmith，则会导致生成以下输出。
 
 	jsmith
 
 ## 后续步骤
 
-[AZURE.ACOM]{
+-	本文中的 Runbook 体系结构提供了有关 [AZURE.ACOM]{ 混合 Runbook [AZURE.ACOM]} [AZURE.ACN]{ 子 Runbook 混合的概括说明 [AZURE.ACN]}。若要了解详细信息，请参阅 [Child runbooks in Azure Automation（Azure 自动化中的子 Runbook）](/documentation/articles/automation-child-runbooks/)
 
--	本文中的 Runbook 体系结构提供了有关混合 Runbook 的概括说明。若要了解详细信息，请参阅 [Azure 自动化中的子 Runbook](/documentation/articles/automation-child-runbooks/)
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
--	本文中的 Runbook 体系结构提供了有关子 Runbook 的概括说明，若要了解详细信息，请参阅 [Child runbooks in Azure Automation（Azure 自动化中的子 Runbook）](/documentation/articles/automation-child-runbooks/)
-
-[AZURE.ACN]}
-
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

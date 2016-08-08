@@ -14,17 +14,7 @@
 
 # 使用 Azure 服务管理和 Resource Manager 对 Runbook 进行身份验证
 
-[AZURE.ACOM]{
-
-本文介绍当你为针对 Azure 服务管理 (ASM) 或 Azure Resource Manager (ARM) 资源运行的 Azure 自动化 Runbook 配置 Azure AD 用户帐户时所要执行的步骤。尽管这仍是基于 ARM 的 Runbook 支持的身份验证标识，但建议的方法是使用新的 Azure 运行方式帐户。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-本文介绍当你为针对 Azure 服务管理 (ASM) 或 Azure Resource Manager (ARM) 资源运行的 Azure 自动化 Runbook 配置 Azure AD 用户帐户时所要执行的步骤。
-
-[AZURE.ACN]}
+本文介绍当你为针对 Azure 服务管理 (ASM) 或 Azure Resource Manager (ARM) 资源运行的 Azure 自动化 Runbook 配置 Azure AD 用户帐户时所要执行的步骤。[AZURE.ACOM]{ 尽管这仍是基于 ARM 的 Runbook 支持的身份验证标识，但建议的方法是使用新的 Azure 运行方式帐户。[AZURE.ACOM]}
 
 ## 创建新的 Azure Active Directory 用户
 
@@ -44,19 +34,13 @@
 
 ## 在 Azure 经典管理门户中创建自动化帐户
 
-[AZURE.ACOM]{
+在本部分中，你将执行以下步骤以在 Azure 经典管理门户中创建一个新的 Azure 自动化帐户，该帐户将用于在 ARM 模式下管理资源的 Runbook 配合使用。 [AZURE.ACN]{ 经典管理 [AZURE.ACN]} 将与你在 ASM 中管理资源的 Runbook 使用的门户 [AZURE.ACOM]{ 和 ARM [AZURE.ACOM]} 模式。
 
-在本部分中，你将执行以下步骤以在 Azure 门户中创建一个新的 Azure 自动化帐户，该帐户将用于在 ASM 和 ARM 模式下管理资源的 Runbook 配合使用。
+[AZURE.ACOM]{
 
 >[AZURE.NOTE] 可以通过 Azure 经典门户、Azure 门户和任何一组 cmdlet 来管理使用 Azure 经典管理门户创建的自动化帐户。创建帐户后，在该帐户中创建和管理资源的方式没有差别。如果你打算继续使用 Azure 经典管理门户，则应该使用它而不是 Azure 门户来创建任何自动化帐户。
 
 [AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-在本部分中，你将执行以下步骤以在 Azure 经典管理门户中创建一个新的 Azure 自动化帐户，该帐户将用于在 ASM 模式下管理资源的 Runbook。
-
-[AZURE.ACN]}
 
 1. 以你要管理的 Azure 订阅的服务管理员身份登录到 Azure 经典管理门户。
 2. 选择“自动化”。
@@ -114,8 +98,8 @@
 [AZURE.ACOM]{
 
 ## 后续步骤
-* 查看 [Azure 自动化 Runbook 类型](/documentation/articles/automation-runbook-types/)一文中所述的不同 Runbook 类型和创建自己的 Runbook 所需的步骤
+* 查看 [Azure Automation runbook types（Azure 自动化 Runbook 类型）](/documentation/articles/automation-runbook-types/)一文中所述的不同 Runbook 类型和创建自己的 Runbook 所需的步骤
 
 [AZURE.ACOM]}
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

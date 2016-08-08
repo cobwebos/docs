@@ -9,13 +9,13 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/19/2016"
+	ms.date="06/27/2016"
 	wacn.date=""/>
 
 
 # Azure AD Connect 同步：Synchronization Service Manager
 
-[操作](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-operations) | [连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md) | [Metaverse 设计器](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-mvdesigner) | [Metaverse 搜索](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-mvsearch)
+[操作](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-operations) | [连接器](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-connectors/) | [Metaverse 设计器](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-mvdesigner/) | [Metaverse 搜索](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-mvsearch/)
 --- | --- | --- | ---
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvsearch.png)
@@ -29,4 +29,4 @@
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0801_2016-->

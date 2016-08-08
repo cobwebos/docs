@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="backup"
-	ms.date="02/08/2016"
+	ms.date="07/01/2016"
 	wacn.date=""/>
 
 
@@ -48,7 +48,7 @@
 
     ![选择 SQL DB](./media/backup-azure-backup-sql/pg-databases.png)
 
-6. 提供要创建的保护组的名称。请确保选择“**我需要在线保护**”选项。
+6. 提供要创建的保护组的名称。请确保选择“我需要在线保护”选项。
 
     ![数据保护方法 - 短期磁盘和在线 Azure](./media/backup-azure-backup-sql/pg-name.png)
 
@@ -168,6 +168,6 @@
 
 ### 后续步骤：
 
-• [Azure 备份常见问题](/documentation/articles/backup-azure-backup-faq)
+•	[Azure 备份常见问题](/documentation/articles/backup-azure-backup-faq/)
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0801_2016-->

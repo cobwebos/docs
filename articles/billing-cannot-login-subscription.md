@@ -15,12 +15,12 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="05/26/2016"
+	ms.date="06/30/2016"
 	ms.author="genli"/>
 
 # 无法登录管理 Azure 订阅
 
-> [AZURE.NOTE]如果在本文中有任何需要协助的地方，你可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。或者，你也可以提出 Azure 支持事件。请转到 [Azure 支持站点](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)并单击“获取支持”。有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
+> [AZURE.NOTE] 如果在本文中有任何需要协助的地方，你可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。或者，你也可以在 [Azure 支持站点](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)上提出 Azure 支持事件。有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题](https://azure.microsoft.com/support/faq/)。
 
 本文将探讨引发登录问题的部分常见原因。
 
@@ -54,4 +54,4 @@
 
 尝试删除高速缓存/Cookie，使用 IE InPrivate 浏览模式，或者使用其他浏览器。
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0801_2016-->

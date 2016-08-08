@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="azure-resource-manager"
-	ms.date="03/21/2016"
+	ms.date="06/13/2016"
 	wacn.date=""/>
 
 # 使用资源管理器执行审核操作
@@ -24,7 +24,7 @@
 
 [AZURE.INCLUDE [resource-manager-audit-limitations](../includes/resource-manager-audit-limitations)]
 
-本主题着重于审核操作。若要了解如何使用审核日志对部署进行故障排除，请参阅 [Azure 中的资源组部署故障排除](/documentation/articles/resource-manager-troubleshoot-deployments-portal)。
+本主题着重于审核操作。若要了解如何使用审核日志对部署进行故障排除，请参阅 [Azure 中的资源组部署故障排除](/documentation/articles/resource-manager-troubleshoot-deployments-portal/)。
 
 可以通过 Azure 门户、Azure PowerShell、Azure CLI、Insights REST API 或 [Insights .NET 库](https://www.nuget.org/packages/Microsoft.Azure.Insights/)检索审核日志中的信息。
 
@@ -117,10 +117,9 @@
 
 ## 后续步骤
 
-- Azure 审核日志可以与 Power BI 一起使用，以便更深入地了解在你的订阅中执行的操作。请参阅 [View and analyze Azure Audit Logs in Power BI and more（在 Power BI 和其他组件中查看和分析 Azure 审核日志）](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)。
-- 若要了解如何设置安全策略，请参阅 [Azure 基于角色的访问控制](/documentation/articles/role-based-access-control-configure)。
-- 若要了解对部署进行故障排除的命令，请参阅 [Azure 中的资源组部署故障排除](/documentation/articles/resource-manager-troubleshoot-deployments-portal)。
-- 若要了解如何防止对所有用户的资源执行删除操作，请参阅[使用 Azure Resource Manager 锁定资源](/documentation/articles/resource-group-lock-resources)。
+- Azure 审核日志可以与 Power BI 一起使用，以便更深入地了解在你的订阅中执行的操作。请参阅 [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 审核日志）。
+- 若要了解如何设置安全策略，请参阅 [Azure 基于角色的访问控制](/documentation/articles/role-based-access-control-configure/)。
+- 若要了解对部署进行故障排除的命令，请参阅 [Azure 中的资源组部署故障排除](/documentation/articles/resource-manager-troubleshoot-deployments-portal/)。
+- 若要了解如何防止删除所有用户的资源，请参阅[使用 Azure Resource Manager 锁定资源](/documentation/articles/resource-group-lock-resources/)。
 
-
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0801_2016-->

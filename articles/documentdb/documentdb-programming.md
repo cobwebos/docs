@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="DocumentDB 编程：存储过程、数据库触发器和 UDF | Microsoft Azure" 
+	pageTitle="DocumentDB 编程：存储过程、数据库触发器和 UDF | Azure" 
 	description="了解如何使用 DocumentDB 以 JavaScript 编写存储过程、数据库触发器和用户定义的函数 (UDF)获取数据库编程提示以及更多内容。" 
 	keywords="数据库触发器, 存储过程, 存储过程, 数据库程序, sproc, DocumentDB, Azure, Microsoft Azure"
 	services="documentdb" 
@@ -15,7 +15,7 @@
 
 # DocumentDB 服务器端编程：存储过程、数据库触发器和 UDF
 
-了解 DocumentDB 的语言如何集成、JavaScript 的事务执行如何使开发人员以 JavaScript 本机编写**存储过程**、**触发器**和**用户定义的函数 (UDF)**。这让你能够编写可以在数据库存储分区上直接传送和执行的数据库程序应用程序逻辑。
+了解 Azure DocumentDB 的语言如何集成、JavaScript 的事务执行如何使开发人员以 JavaScript 本机编写**存储过程**、**触发器**和**用户定义的函数 (UDF)**。这让你能够编写可以在数据库存储分区上直接传送和执行的数据库程序应用程序逻辑。
 
 我们建议通过观看下面的视频入门，该视频中 Andrew Liu 简单介绍了 DocumentDB 服务器端数据库编程模型。
 
@@ -39,14 +39,14 @@
 -	**原子事务：**DocumentDB 保证在单个存储过程或触发器内部执行的数据库操作是原子事务。这使得应用程序能在单个批处理中合并相关操作，因此要么它们全部成功，要么全部不成功。
 
 -	**性能：**本质上将 JSON 映射到 Javascript 语言类型系统且它还是 DocumentDB 中存储的基本单位，这一事实允许大量的优化，如缓冲池中 JSON 文档的延迟具体化和使它们按需对执行代码可用。还有更多与传送业务逻辑到数据库相关的性能优点：
-	-	批处理 – 开发人员可以分组操作（如插入）并批量提交它们。用于创建单独事务的网络流量延迟成本和存储开销显著降低。 
+	-	批处理 – 开发人员可以分组操作（如插入）并批量提交它们。用于创建单独事务的网络流量延迟成本和存储开销显著降低。
 	-	预编译 – DocumentDB 预编译存储过程、触发器和用户定义的函数 (UDF) 以避免每次调用产生的 JavaScript 编译成本。对于过程逻辑生成字节代码的开销被摊销为最小值。
-	-	序列化 – 很多操作需要可能涉及执行一个或多个次要存储操作的副作用（“触发器”）。除了原子性之外，当移动到服务器时，它的性能也更高。 
+	-	序列化 – 很多操作需要可能涉及执行一个或多个次要存储操作的副作用（“触发器”）。除了原子性之外，当移动到服务器时，它的性能也更高。
 -	**封装：**可以使用存储过程在一个位置对业务逻辑进行分组。这样做有两个优点：
-	-	它会在原始数据之上添加抽象层，这使得数据架构师能够从数据独立发展他们的应用程序。当数据无架构时，如果他们必须直接处理数据，则由于可能需要兼并到应用程序中的脆性假设，使得这样做尤其有益。  
-	-	这种抽象使企业通过从脚本简化访问来保证他们的数据安全。  
+	-	它会在原始数据之上添加抽象层，这使得数据架构师能够从数据独立发展他们的应用程序。当数据无架构时，如果他们必须直接处理数据，则由于可能需要兼并到应用程序中的脆性假设，使得这样做尤其有益。
+	-	这种抽象使企业通过从脚本简化访问来保证他们的数据安全。
 
-数据库触发器、存储过程和自定义查询运算符的创建和执行通过许多平台（包括 .NET、Node.js 和 JavaScript）中的 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) 和[客户端 SDK](/documentation/articles/documentdb-sdk-dotnet) 得到支持。
+数据库触发器、存储过程和自定义查询运算符的创建和执行通过许多平台（包括 .NET、Node.js 和 JavaScript）中的 [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) 和[客户端 SDK](/documentation/articles/documentdb-sdk-dotnet/) 得到支持。
 
 **本教程使用 [具有 Q Promises 的 Node.js SDK](http://azure.github.io/azure-documentdb-node-q/)** 来阐明存储过程、触发器和 UDF 的语法和用法。
 
@@ -218,7 +218,7 @@
 
 此存储过程使用游戏应用内的事务在单个操作中的两个玩家之间交易项。该存储过程尝试读取两个分别与作为参数传递的玩家 ID 对应的文档。如果两个玩家文档都被找到，那么存储过程将通过交换它们的项来更新文档。如果在此过程中遇到了任何错误，它将引发隐式终止事务的 JavaScript 异常。
 
-如果存储过程针对其注册的集合是单区集合，那么该事务的范围为该集合内的所有文档。如果集合已分区，那么存储过程将在单个分区键的事务范围中执行。每个存储过程执行必须包含对应于事务在其下运行的范围的分区键值。有关更多详细信息，请参阅 [DocumentDB 分区](/documentation/articles/documentdb-partition-data)。
+如果存储过程针对其注册的集合是单区集合，那么该事务的范围为该集合内的所有文档。如果集合已分区，那么存储过程将在单个分区键的事务范围中执行。每个存储过程执行必须包含对应于事务在其下运行的范围的分区键值。有关更多详细信息，请参阅 [DocumentDB 分区](/documentation/articles/documentdb-partition-data/)。
 
 ### 提交和回滚
 事务将在本机深入集成到 DocumentDB 的 JavaScript 编程模型中。在 JavaScript 函数内，所有操作都在单个事务下自动包装。如果 JavaScript 在没有任何异常的情况下完成，将提交针对数据库的操作。实际上，关系数据库中的“BEGIN TRANSACTION”和“COMMIT TRANSACTION”语句在 DocumentDB 中是隐式的。
@@ -475,7 +475,9 @@ UDF 随后可以用在诸如下面示例的查询中：
 ## JavaScript 语言集成的查询 API
 除了使用 DocumentDB 的 SQL 语法发起查询外，服务器端 SDK 还允许你在没有任何 SQL 知识的情况下使用流畅的 JavaScript 接口来执行优化的查询。JavaScript 查询 API 允许你使用与 ECMAScript5 的数组内置项类似的语法和如 lodash 等热门的 JavaScript 库，通过将谓词函数传递到可链的函数调用中以编程方式生成查询。使用 DocumentDB 的索引进行有效执行的 JavaScript 运行时将对查询进行分析。
 
-> [AZURE.NOTE] `__`（双下划线）是 `getContext().getCollection()` 的别名。<br/>换言之，你可以使用 `__` 或 `getContext().getCollection()` 来访问 JavaScript 查询 API。
+> [AZURE.NOTE] `__`（双下划线）是 `getContext().getCollection()` 的别名。
+> <br/>
+> 换言之，你可以使用 `__` 或 `getContext().getCollection()` 来访问 JavaScript 查询 API。
 
 支持的函数包括：
 <ul>
@@ -540,7 +542,7 @@ UDF 随后可以用在诸如下面示例的查询中：
 
 当在其中包含谓词和/或选择器函数时，以下 JavaScript 构造将自动优化以在 DocumentDB 索引上直接运行：
 
-* 简单的运算符：= + - * / % | ^ &amp; == != === !=== &lt; &gt; &lt;= &gt;= || &amp;&amp; &lt;&lt; &gt;&gt; &gt;&gt;&gt;! ~
+* 简单运算符：= + - * / %| ^ &amp; == != === !=== &lt; &gt; &lt;= &gt;= || &amp;&amp; &lt;&lt; &gt;&gt; &gt;&gt;&gt;! ~
 * 文本（包括对象文本）：{}
 * var, return
 
@@ -758,7 +760,7 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
 存储过程、触发器和 UDF 是隐式预编译到字节代码格式的，这是为了避免每次脚本调用时产生的编译成本。这可确保存储过程的调用迅速且痕迹较少。
 
 ## 客户端 SDK 支持
-除了 [Node.js](/documentation/articles/documentdb-sdk-node) 客户端之外，DocumentDB 还支持 [.NET](/documentation/articles/documentdb-sdk-dotnet)、[Java](/documentation/articles/documentdb-sdk-java)、[JavaScript](http://azure.github.io/azure-documentdb-js/) 和 [Python SDK](/documentation/articles/documentdb-sdk-python)。也可以使用这些 SDK 来创建和执行存储过程、触发器和 UDF。以下示例演示如何使用 .NET 客户端创建和执行存储过程。请注意 .NET 类型是如何以 JSON 传递到存储过程中并从中读回的。
+除了 [Node.js](/documentation/articles/documentdb-sdk-node/) 客户端之外，DocumentDB 还支持 [.NET](/documentation/articles/documentdb-sdk-dotnet/)、[Java](/documentation/articles/documentdb-sdk-java/)、[JavaScript](http://azure.github.io/azure-documentdb-js/) 和 [Python SDK](/documentation/articles/documentdb-sdk-python/)。也可以使用这些 SDK 来创建和执行存储过程、触发器和 UDF。以下示例演示如何使用 .NET 客户端创建和执行存储过程。请注意 .NET 类型是如何以 JSON 传递到存储过程中并从中读回的。
 
 	var markAntiquesSproc = new StoredProcedure
 	{
@@ -812,7 +814,7 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
 	    });
 
 
-下面的示例则演示如何创建用户定义的函数 (UDF) 并在 [DocumentDB SQL 查询](/documentation/articles/documentdb-sql-query)中使用它。
+下面的示例则演示如何创建用户定义的函数 (UDF) 并在 [DocumentDB SQL 查询](/documentation/articles/documentdb-sql-query/)中使用它。
 
 	UserDefinedFunction function = new UserDefinedFunction()
 	{
@@ -907,17 +909,17 @@ JavaScript 存储过程和触发器经过沙盒处理，以使一个脚本的效
 
 ## 后续步骤
 
-在你创建了一个或多个存储过程、触发器和用户定义的函数之后，可以使用脚本资源管理器在 Azure 门户中加载和查看它们。有关详细信息，请参阅[使用 DocumentDB 脚本资源管理器查看存储过程、触发器和用户定义的函数](/documentation/articles/documentdb-view-scripts)。
+在你创建了一个或多个存储过程、触发器和用户定义的函数之后，可以使用脚本资源管理器在 Azure 门户中加载和查看它们。有关详细信息，请参阅[使用 DocumentDB 脚本资源管理器查看存储过程、触发器和用户定义的函数](/documentation/articles/documentdb-view-scripts/)。
 
 还可以查找以下参考和资源，可帮助你了解更多有关 DocumentDB 服务器端编程的信息：
 
 - [Azure DocumentDB SDK](https://msdn.microsoft.com/library/azure/dn781482.aspx)
 - [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
-- [JSON](http://www.json.org/) 
+- [JSON](http://www.json.org/)
 - [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
-- [JavaScript – JSON 类型系统](http://www.json.org/js.html) 
-- [安全和可移植的数据库扩展性](http://dl.acm.org/citation.cfm?id=276339) 
-- [面向服务的数据库体系结构](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
+- [JavaScript – JSON 类型系统](http://www.json.org/js.html)
+- [安全和可移植的数据库扩展性](http://dl.acm.org/citation.cfm?id=276339)
+- [面向服务的数据库体系结构](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE)
 - [在 Microsoft SQL 服务器中托管 .NET 运行时](http://dl.acm.org/citation.cfm?id=1007669)
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0801_2016-->

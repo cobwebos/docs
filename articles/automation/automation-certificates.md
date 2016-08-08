@@ -13,33 +13,13 @@
 
 # Azure 自动化中的证书资产
 
-[AZURE.ACOM]{
-
-可以安全地将证书存储在 Azure 自动化中，以便使用 **Get-AutomationCertificate** 活动通过 Runbook 或 DSC 配置访问这些证书。这样，你便可以创建使用证书进行身份验证的 Runbook 和 DSC 配置，或者将证书添加到 Azure 或第三方资源。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-可以安全地将证书存储在 Azure 自动化中，以便使用 **Get-AutomationCertificate** 活动通过 Runbook 访问这些证书。这样，你便可以创建使用证书进行身份验证的 Runbook，或者将证书添加到 Azure 或第三方资源。
-
-[AZURE.ACN]}
+可以安全地将证书存储在 Azure 自动化中，以便 [AZURE.ACOM]{ 或 DSC 配置 [AZURE.ACOM]} 使用 **Get-AutomationCertificate** 活动通过 Runbook 访问这些证书。这样，你便可以创建 Runbook [AZURE.ACOM]{ 和 DSC 配置 [AZURE.ACOM]} 使用证书进行身份验证的 Runbook，或者将证书添加到 Azure 或第三方资源。
 
 >[AZURE.NOTE] Azure 自动化中的安全资产包括凭据、证书、连接和加密的变量。这些资产已使用针对每个自动化帐户生成的唯一密钥加密并存储在 Azure 自动化中。此密钥由主证书加密，并存储在 Azure 自动化中。在存储安全资产之前，会先使用主证书来解密自动化帐户的密钥，然后使用该密钥来加密资产。
 
 ## Windows PowerShell Cmdlet
 
-[AZURE.ACOM]{
-
-下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化证书资产。可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/documentation/articles/powershell-install-configure/)已随附了这些 cmdlet。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化证书资产。可在自动化 Runbook 中使用的 [Azure PowerShell 模块](/documentation/articles/powershell-install-configure/)已随附了这些 cmdlet。
-
-[AZURE.ACN]}
+下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化证书资产。可在自动化 Runbook 中使用的 [Azure PowerShell 模块](/documentation/articles/powershell-install-configure/)已随附了这些 cmdlet。 [AZURE.ACOM]{ 和 DSC 配置 [AZURE.ACOM]}。
 
 |Cmdlet|说明|
 |:---|:---|
@@ -50,52 +30,17 @@
 
 ## 要访问证书的活动
 
-[AZURE.ACOM]{
-
-下表中的活动用于在 Runbook 或 DSC 配置中访问证书。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-下表中的活动用于在 Runbook 中访问证书。
-
-[AZURE.ACN]}
+下表中的活动用于在 Runbook 中访问证书。 [AZURE.ACOM]{ 或 DSC 配置 [AZURE.ACOM]}。
 
 |活动|说明|
 |:---|:---|
-|[AZURE.ACOM]{|
-|Get-AutomationCertificate|在 Runbook 或 DSC 配置中获取要使用的证书。|
-|[AZURE.ACOM]}|
-|[AZURE.ACN]{|
-|Get-AutomationCertificate|在 Runbook 中获取要使用的证书。|
-|[AZURE.ACN]}|
+|Get-AutomationCertificate|在 Runbook 中获取要使用的证书。 [AZURE.ACOM]{ 或 DSC 配置 [AZURE.ACOM]}。|
 
-[AZURE.ACOM]{
-
->[AZURE.NOTE] 应避免在 Get-AutomationCertificate 的 -Name 参数中使用变量，因为这可能会使设计时发现 Runbook 或 DSC 配置与证书资产之间的依赖关系变得复杂化。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
->[AZURE.NOTE] 应避免在 Get-AutomationCertificate 的 –Name 参数中使用变量，因为这可能会使设计时发现 Runbook 与证书资产之间的依赖关系变得复杂化。
-
-[AZURE.ACN]}
+>[AZURE.NOTE] 应避免在 Get-AutomationCertificate 的 –Name 参数中使用变量，因为这可能会使设计时发现 Runbook 与凭据资产之间的依赖关系变得复杂化。 [AZURE.ACOM]{ 或 DSC 配置[AZURE.ACOM]} 和设计时的证书资产。
 
 ## 创建新证书
 
-[AZURE.ACOM]{
-
-创建新证书时，需要将 .cer 或 .pfx 文件上载到 Azure 自动化。将证书标记为可导出后，你可以将其转出 Azure 自动化证书存储区。如果证书不可导出，则它只可用于在 Runbook 或 DSC 配置中签名。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-创建新证书时，需要将 .cer 或 .pfx 文件上载到 Azure 自动化。将证书标记为可导出后，你可以将其转出 Azure 自动化证书存储区。如果证书不可导出，则它只可用于在 Runbook 中签名。
-
-[AZURE.ACN]}
+创建新证书时，需要将 .cer 或 .pfx 文件上载到 Azure 自动化。将证书标记为可导出后，你可以将其转出 Azure 自动化证书存储区。如果证书不可导出，则它只可用于在 Runbook 中签名。 [AZURE.ACOM]{ 或 DSC 配置 [AZURE.ACOM]}。
 
 ### 使用 Azure 经典管理门户创建新证书
 
@@ -106,7 +51,6 @@
 3. 在“名称”框中键入证书的名称，然后单击右箭头。
 4. 浏览到 .cer 或 .pfx 文件。如果选择了 .pfx 文件，请指定密码，以及它是否允许导出。
 1. 单击复选标记上载该证书文件。
-
 
 [AZURE.ACOM]{
 
@@ -166,4 +110,4 @@
 
 [AZURE.ACOM]}
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

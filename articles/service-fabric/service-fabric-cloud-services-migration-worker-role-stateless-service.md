@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="02/29/2016"
+   ms.date="07/06/2016"
    wacn.date=""/>
  
 # 将 Web 角色和辅助角色转换成 Service Fabric 无状态服务的指南
@@ -54,55 +54,55 @@ VM 停止 | `OnStop()` | 不适用
 
 ### 辅助角色
 
-```C#
 
-using Microsoft.WindowsAzure.ServiceRuntime;
 
-namespace WorkerRole1
-{
-    public class WorkerRole : RoleEntryPoint
-    {
-        public override void Run()
-        {
-        }
+	using Microsoft.WindowsAzure.ServiceRuntime;
 
-        public override bool OnStart()
-        {
-        }
+	namespace WorkerRole1
+	{
+	    public class WorkerRole : RoleEntryPoint
+	    {
+	        public override void Run()
+	        {
+	        }
 
-        public override void OnStop()
-        {
-        }
-    }
-}
+	        public override bool OnStart()
+	        {
+	        }
 
-```
+	        public override void OnStop()
+	        {
+	        }
+	    }
+	}
+
+
 
 ### Service Fabric 无状态服务
 
-```C#
 
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.ServiceFabric.Services.Communication.Runtime;
-using Microsoft.ServiceFabric.Services.Runtime;
 
-namespace Stateless1
-{
-    public class Stateless1 : StatelessService
-    {
-        protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
-        {
-        }
+	using System.Collections.Generic;
+	using System.Threading;
+	using System.Threading.Tasks;
+	using Microsoft.ServiceFabric.Services.Communication.Runtime;
+	using Microsoft.ServiceFabric.Services.Runtime;
 
-        protected override Task RunAsync(CancellationToken cancelServiceInstance)
-        {
-        }
-    }
-}
+	namespace Stateless1
+	{
+	    public class Stateless1 : StatelessService
+	    {
+	        protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+	        {
+	        }
 
-```
+	        protected override Task RunAsync(CancellationToken cancelServiceInstance)
+	        {
+	        }
+	    }
+	}
+
+
 
 两者都有可从中开始处理的主要“Run”重写。Service Fabric 服务将 `Run`、`Start` 和 `Stop` 合并为单一入口点 `RunAsync`。当 `RunAsync` 启动时，服务应开始工作；发出 `RunAsync` 方法的 CancellationToken 信号时，应停止工作。
 
@@ -134,7 +134,7 @@ Service Fabric 为侦听客户端请求的服务提供可选的通信设置入�
  - **配置：**服务的所有配置文件和设置。
  - **数据：**与服务关联的静态数据文件。
 
-其中每个包可独立设置版本和进行升级。与云服务类似，可通过 API 以编程方式访问配置包。发生配置包更改时，系统会提供事件来通知服务。Settings.xml 文件可用于键-值配置和编程访问。但是，与云服务不同的是，Service Fabric 配置包可以包含任何格式的任何配置文件，不管是 XML、JSON、YAML 还是自定义的二进制格式。
+其中每个包可独立设置版本和进行升级。与云服务类似，可通过 API 以编程方式访问配置包。发生配置包更改时，系统会提供事件来通知服务。Settings.xml 文件可用于键-值配置和编程访问，这与 App.config 文件的应用设置部分类似。但是，与云服务不同的是，Service Fabric 配置包可以包含任何格式的任何配置文件，不管是 XML、JSON、YAML 还是自定义的二进制格式。
 
 
 ### 访问配置
@@ -142,55 +142,55 @@ Service Fabric 为侦听客户端请求的服务提供可选的通信设置入�
 
 可通过 `RoleEnvironment` 访问 ServiceConfiguration.*.cscfg 中的配置设置。这些设置可全局提供给同一云服务部署中的所有角色实例使用。
 
-```C#
 
-string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 
-```
+	string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 
-#### ServiceFabic
+
+
+#### Service Fabric
 
 每个服务都有自身的独立配置包。可供群集中所有应用程序访问的全局配置设置没有内置机制。使用配置包中的 Service Fabric 特殊配置文件 Settings.xml 时，Settings.xml 中的值可以在应用程序级别覆盖，实现应用程序级别的配置设置。
 
 通过服务的 `CodePackageActivationContext` 可在每个服务实例中访问配置设置。
 
-```C#
 
-ConfigurationPackage configPackage = this.ServiceInitializationParameters.CodePackageActivationContext.GetConfigurationPackageObject("Config");
 
-// Access Settings.xml
-KeyedCollection<string, ConfigurationProperty> parameters = configPackage.Settings.Sections["MyConfigSection"].Parameters;
+	ConfigurationPackage configPackage = this.Context.CodePackageActivationContext.GetConfigurationPackageObject("Config");
 
-string value = parameters["Key"]?.Value;
+	// Access Settings.xml
+	KeyedCollection<string, ConfigurationProperty> parameters = configPackage.Settings.Sections["MyConfigSection"].Parameters;
 
-// Access custom configuration file:
-using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "CustomConfig.json")))
-{
-    MySettings settings = JsonConvert.DeserializeObject<MySettings>(reader.ReadToEnd());
-}
+	string value = parameters["Key"]?.Value;
 
-```
+	// Access custom configuration file:
+	using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "CustomConfig.json")))
+	{
+	    MySettings settings = JsonConvert.DeserializeObject<MySettings>(reader.ReadToEnd());
+	}
+
+
 
 ### 配置更新事件
 #### 云服务
 
 当环境中发生更改（例如配置更改）时，将使用 `RoleEnvironment.Changed` 事件来通知所有角色实例。通过此事件可以使用配置更新，却无需回收角色实例或重新启动辅助角色进程。
 
-```C#
 
-RoleEnvironment.Changed += RoleEnvironmentChanged;
 
-private void RoleEnvironmentChanged(object sender, RoleEnvironmentChangedEventArgs e)
-{
-   // Get the list of configuration changes
-   var settingChanges = e.Changes.OfType<RoleEnvironmentConfigurationSettingChange>();
-foreach (var settingChange in settingChanges) 
-   {
-      Trace.WriteLine("Setting: " + settingChange.ConfigurationSettingName, "Information");
-   }
-}
+	RoleEnvironment.Changed += RoleEnvironmentChanged;
 
-```
+	private void RoleEnvironmentChanged(object sender, RoleEnvironmentChangedEventArgs e)
+	{
+	   // Get the list of configuration changes
+	   var settingChanges = e.Changes.OfType<RoleEnvironmentConfigurationSettingChange>();
+	foreach (var settingChange in settingChanges) 
+	   {
+	      Trace.WriteLine("Setting: " + settingChange.ConfigurationSettingName, "Information");
+	   }
+	}
+
+
 
 #### ServiceFabic
 
@@ -198,18 +198,18 @@ foreach (var settingChange in settingChanges)
 
 通过这些事件可以使用服务包中的更改，而无需重新启动服务实例。
  
-```C#
 
-this.ServiceInitializationParameters.CodePackageActivationContext.ConfigurationPackageModifiedEvent +=
-                    this.CodePackageActivationContext_ConfigurationPackageModifiedEvent;
 
-private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(object sender, PackageModifiedEventArgs<ConfigurationPackage> e)
-{
-    this.UpdateCustomConfig(e.NewPackage.Path);
-    this.UpdateSettings(e.NewPackage.Settings);
-}
+	this.Context.CodePackageActivationContext.ConfigurationPackageModifiedEvent +=
+	                    this.CodePackageActivationContext_ConfigurationPackageModifiedEvent;
 
-```
+	private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(object sender, PackageModifiedEventArgs<ConfigurationPackage> e)
+	{
+	    this.UpdateCustomConfig(e.NewPackage.Path);
+	    this.UpdateSettings(e.NewPackage.Settings);
+	}
+
+
 
 ## 启动任务
 
@@ -224,38 +224,38 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ### 云服务
 云服务中的启动入口点是在 ServiceDefintion.csdef 中针对每个角色配置的。
 
-```xml
 
-<ServiceDefinition>
-    <Startup>
-        <Task commandLine="Startup.cmd" executionContext="limited" taskType="simple" >
-            <Environment>
-                <Variable name="MyVersionNumber" value="1.0.0.0" />
-            </Environment>
-        </Task>
-    </Startup>
-    ...
-</ServiceDefinition>
 
-```
+	<ServiceDefinition>
+	    <Startup>
+	        <Task commandLine="Startup.cmd" executionContext="limited" taskType="simple" >
+	            <Environment>
+	                <Variable name="MyVersionNumber" value="1.0.0.0" />
+	            </Environment>
+	        </Task>
+	    </Startup>
+	    ...
+	</ServiceDefinition>
+
+
 
 ### Service Fabric
 
 Service Fabric 中的启动入口点是在 ServiceManifest.xml 中针对每个服务配置的。
 
-```xml
 
-<ServiceManifest>
-  <CodePackage Name="Code" Version="1.0.0">
-    <SetupEntryPoint>
-      <ExeHost>
-        <Program>Startup.bat</Program>
-      </ExeHost>
-    </SetupEntryPoint>
-    ...
-</ServiceManifest>
 
-``` 
+	<ServiceManifest>
+	  <CodePackage Name="Code" Version="1.0.0">
+	    <SetupEntryPoint>
+	      <ExeHost>
+	        <Program>Startup.bat</Program>
+	      </ExeHost>
+	    </SetupEntryPoint>
+	    ...
+	</ServiceManifest>
+
+
 
 ## 有关开发环境的说明
 
@@ -265,12 +265,12 @@ Service Fabric 中的启动入口点是在 ServiceManifest.xml 中针对每个�
 
 阅读有关 Service Fabric Reliable Services 的详细信息以及云服务与 Service Fabric 应用程序体系结构之间的差异，以了解如何利用 Service Fabric 的完整功能集。
 
- - [Service Fabric Reliable Services 入门](/documentation/articles/service-fabric-reliable-services-quick-start)
+ - [Service Fabric Reliable Services 入门](/documentation/articles/service-fabric-reliable-services-quick-start/)
 
- - [云服务与 Service Fabric 之间差异的概念指南](/documentation/articles/service-fabric-cloud-services-migration-differences)
+ - [云服务与 Service Fabric 之间差异的概念指南](/documentation/articles/service-fabric-cloud-services-migration-differences/)
  
 <!--Image references-->
 [3]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/service-fabric-cloud-service-projects.png
 [4]: ./media/service-fabric-cloud-services-migration-worker-role-stateless-service/worker-role-to-stateless-service.png
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0801_2016-->

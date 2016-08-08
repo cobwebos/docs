@@ -9,13 +9,13 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/19/2016"
+	ms.date="06/27/2016"
 	wacn.date=""/>
 
 
 # Azure AD Connect 同步：Synchronization Service Manager
 
-[操作](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-operations) | [连接器](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-connectors) | [Metaverse 设计器](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-mvdesigner) | [Metaverse 搜索](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-mvsearch)
+[操作](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-operations) | [连接器](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-connectors/) | [Metaverse 设计器](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-mvdesigner/) | [Metaverse 搜索](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-mvsearch/)
 --- | --- | --- | ---
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectors.png)
@@ -60,8 +60,8 @@
 
 先选择一个“范围”。你可以基于数据（RDN、DN、定位点、子树）或对象状态（所有其他选项）进行搜索。  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchscope.png)  
-例如，如果进行子树搜索，将获取某个 OU 中的所有对象。  
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png)  
+例如，如果进行子树搜索，将获取某个 OU 中的所有对象。
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png)
 你可以从此处选择对象，选择“属性”，并且从源连接器空间到 Metaverse 再到目标连接器空间一直[跟踪对象](#follow-an-object-and-its-data-through-the-system)。
 
 ## 在整个系统中跟踪对象及其数据
@@ -83,7 +83,7 @@
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cslineageout.png)
 在“PasswordSync”列中，我们也会发现入站连接器空间可进行密码更改，因为有一个同步规则的值为 **True**。此密码接着会通过出站规则发送到 Azure AD。
 
-从“沿袭”选项卡中，可以单击“[Metaverse 对象属性](#metaverse-object-properties)”转到 Metaverse。
+从“沿袭”选项卡中，可以单击[“Metaverse 对象属性”](#metaverse-object-properties)转到 Metaverse。
 
 所有选项卡的底部都有两个按钮：“预览”和“日志”。
 
@@ -106,8 +106,8 @@
 此选项卡也可让你导航到[连接器空间对象](#connector-space-object-properties)。
 
 ## 后续步骤
-了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis)配置的详细信息。
+了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis/)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0801_2016-->

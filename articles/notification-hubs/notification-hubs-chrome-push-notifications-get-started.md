@@ -5,12 +5,12 @@
     keywords="移动推送通知,推送通知,push notification,chrome 推送通知"
 	documentationCenter=""
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="03/21/2016"
+	ms.date="06/29/2016"
 	wacn.date=""/>
 
 # 使用 Azure 通知中心向 Chrome 应用发送推送通知
@@ -29,7 +29,7 @@
 * [向 Chrome 应用发送推送通知](#send)
 * [其他功能](#next-steps)
 
->[AZURE.NOTE] Chrome 应用的推送通知不是常规的浏览器中通知，而是特定于浏览器扩展模型（有关详细信息，请参阅 [Chrome Apps Overview（Chrome 应用概述）]）。Chrome 应用除了在桌面浏览器中运行以外，还可通过 Apache Cordova 在移动设备（Android 和 iOS）上运行。请参阅[移动设备上的 Chrome 应用]，了解详细信息。
+>[AZURE.NOTE] Chrome 应用的推送通知不是常规的浏览器中通知，而是特定于浏览器扩展模型（有关详细信息，请参阅 [Chrome Apps Overview]（Chrome 应用概述））。Chrome 应用除了在桌面浏览器中运行以外，还可通过 Apache Cordova 在移动设备（Android 和 iOS）上运行。请参阅[移动设备上的 Chrome 应用]，了解详细信息。
 
 配置 GCM 和 Azure 通知中心的方法与为 Android 配置相同，由于 [Google Cloud Messaging for Chrome] 已弃用，现在同一 GCM 同时支持 Android 设备和 Chrome 实例。
 
@@ -98,7 +98,8 @@
 		  "icons": { "128": "gcm_128.png" }
 		}
 
-	请注意 `permissions` 元素，该元素指定此 Chrome 应用可以从 GCM 中接收推送通知。此外，它还必须指定 Azure 通知中心 URI，其中 Chrome 应用将进行 REST 调用以进行注册。本示例应用还使用了图标文件 `gcm_128.png`，该文件可在原始 GCM 示例中重复使用的源中找到。可以使用此图标文件来替换任何符合[图标条件](https://developer.chrome.com/apps/manifest/icons)的图像。
+	请注意 `permissions` 元素，该元素指定此 Chrome 应用可以从 GCM 中接收推送通知。此外，它还必须指定 Azure 通知中心 URI，其中 Chrome 应用将进行 REST 调用以进行注册。
+	本示例应用还使用了图标文件 `gcm_128.png`，该文件可在原始 GCM 示例中重复使用的源中找到。可以使用此图标文件来替换任何符合[图标条件](https://developer.chrome.com/apps/manifest/icons)的图像。
 
 4. 使用以下代码创建名为 `background.js` 的文件：
 
@@ -353,7 +354,7 @@
 
 
 此项目的整体文件夹结构应与下图类似：
-![Google Chrome 应用 - 文件夹结构][21]
+   	![Google Chrome 应用 - 文件夹结构][21]
 
 ###设置并测试你的 Chrome 应用
 
@@ -431,9 +432,9 @@
 
 在[通知中心概述]中，了解有关通知中心的详细信息。
 
-若要针对特定用户，请参阅 [Azure Notification Hubs Notify Users（Azure 通知中心 - 通知用户）]教程。
+若要针对特定用户，请参阅 [Azure Notification Hubs Notify Users]（Azure 通知中心 - 通知用户）教程。
 
-如果要按兴趣组来划分用户，可以遵循 [Azure Notification Hubs breaking news（Azure 通知中心最新消息）]教程。
+如果要按兴趣组来划分用户，可以遵循 [Azure Notification Hubs breaking news]（Azure 通知中心最新消息）教程。
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-chrome-get-started/GoogleConsoleCreateProject.PNG
@@ -463,7 +464,7 @@
 [Google Cloud Console]: http://cloud.google.com/console
 [Azure Classic Portal]: https://manage.windowsazure.com/
 [通知中心概述]: http://msdn.microsoft.com/library/jj927170.aspx
-[Chrome Apps Overview（Chrome 应用概述）]: https://developer.chrome.com/apps/about_apps
+[Chrome Apps Overview]: https://developer.chrome.com/apps/about_apps
 [Chrome 应用 GCM 示例]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
 [移动设备上的 Chrome 应用]: https://developer.chrome.com/apps/chrome_apps_on_mobile
@@ -471,7 +472,7 @@
 [crypto-js 库]: http://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging
 [Google Cloud Messaging for Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
-[Azure Notification Hubs Notify Users（Azure 通知中心 - 通知用户）]: /documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-notify-users
-[Azure Notification Hubs breaking news（Azure 通知中心最新消息）]: /documentation/articles/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns
+[Azure Notification Hubs Notify Users]: /documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-wns-notification/
+[Azure Notification Hubs breaking news]: /documentation/articles/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0801_2016-->

@@ -300,7 +300,7 @@ while(true)
 ## 获取容器 SAS URI
 
 
-以下代码示例演示如何生成具有 Blob 容器读取、写入和删除权限的 [SAS URI](/documentation/articles/storage-dotnet-shared-access-signature-part-2)：
+以下代码示例演示如何生成具有 Blob 容器读取、写入和删除权限的 [SAS URI](/documentation/articles/storage-dotnet-shared-access-signature-part-2/)：
 
 ```
 static string GetContainerSasUri(CloudBlobContainer container)
@@ -328,11 +328,26 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## 后续步骤
 
-在本文中，你已学习如何对 IoT 中心内的设备标识注册表执行批量操作。可以使用以下文章继续探索 IoT 中心功能和其他 IoT 方案：
+在本文中，你已学习如何对 IoT 中心内的设备标识注册表执行批量操作。若要了解有关如何管理 Azure IoT 中心的详细信息，请参阅以下链接：
 
-- [以编程方式创建 IoT 中心](/documentation/articles/iot-hub-rm-template)
-- [IoT 中心使用情况度量值](/documentation/articles/iot-hub-metrics)
-- [IoT 中心操作监视](/documentation/articles/iot-hub-operations-monitoring)
+- [使用指标][lnk-metrics]
+- [操作监视][lnk-monitor]
+- [管理 IoT 中心的访问权限][lnk-itpro]
 
+若要进一步探索 IoT 中心的功能，请参阅：
 
-<!---HONumber=Mooncake_0523_2016-->
+- [设计你的解决方案][lnk-design]
+- [开发人员指南][lnk-devguide]
+- [使用 UI 示例探索设备管理][lnk-dmui]
+- [使用网关 SDK 模拟设备][lnk-gateway]
+
+[lnk-metrics]: /documentation/articles/iot-hub-metrics/
+[lnk-monitor]: /documentation/articles/iot-hub-operations-monitoring/
+[lnk-itpro]: /documentation/articles/iot-hub-itpro-info/
+
+[lnk-design]: /documentation/articles/iot-hub-guidance/
+[lnk-devguide]: /documentation/articles/iot-hub-devguide/
+[lnk-dmui]: /documentation/articles/iot-hub-device-management-ui-sample/
+[lnk-gateway]: /documentation/articles/iot-hub-linux-gateway-sdk-simulated-device/
+
+<!---HONumber=Mooncake_0801_2016-->

@@ -20,21 +20,9 @@
 
 ##<a name="runbooks-in-runbook-gallery"></a> Runbook 库中的 Runbook
 
-[AZURE.ACOM]{
+[Runbook 库](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=RootCategory&f[0].Value=WindowsAzure&f[1].Type=SubCategory&f[1].Value=WindowsAzure_automation&f[1].Text=Automation)提供各种来自 Microsoft 的 Runbook，以及可导入 Azure 自动化中的社区。你可以从 [TechNet 脚本中心](http://gallery.technet.microsoft.com/)托管的库下载 Runbook，或者在 Azure 经典管理门户或 Azure 门户中直接从该库导入 Runbook。 [AZURE.ACOM]{ 使用 [AZURE.ACOM]} Azure 经典管理门户 [AZURE.ACOM]{ 或 Azure 门户 [AZURE.ACOM]}。
 
-[Runbook 库](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=RootCategory&f[0].Value=WindowsAzure&f[1].Type=SubCategory&f[1].Value=WindowsAzure_automation&f[1].Text=Automation)提供各种来自 Microsoft 的 Runbook，以及可导入 Azure 自动化中的社区。你可以从 [TechNet 脚本中心](http://gallery.technet.microsoft.com/)托管的库下载 Runbook，或者在 Azure 经典管理门户或 Azure 门户中直接从该库导入 Runbook。
-
-直接从 Runbook 库导入只能使用 Azure 经典管理门户或 Azure 门户来完成，而不能使用 Windows PowerShell 执行此功能。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-[Runbook 库](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=RootCategory&f[0].Value=WindowsAzure&f[1].Type=SubCategory&f[1].Value=WindowsAzure_automation&f[1].Text=Automation)提供各种来自 Microsoft 的 Runbook，以及可导入 Azure 自动化中的社区。你可以从 [TechNet 脚本中心](http://gallery.technet.microsoft.com)托管的库下载 Runbook，或者在 Azure 经典管理门户中直接从该库导入 Runbook。
-
-直接从 Runbook 库导入只能使用 Azure 经典管理门户来完成，而不能使用 Windows PowerShell 执行此功能。
-
-[AZURE.ACN]}
+直接从 Runbook 库导入只能使用 Azure 经典管理门户或 Azure 门户来完成。 [AZURE.ACOM]{ 或 Azure 门户 [AZURE.ACOM]}。而不能使用 Windows PowerShell 执行此功能。
 
 >[AZURE.NOTE] 你应验证从 Runbook 库获取的任何 Runbook 的内容，在生产环境中安装和运行这些 Runbook 时，请谨慎操作。
 
@@ -54,7 +42,7 @@
 ### 使用 Azure 门户从 Runbook 库导入 Runbook
 
 1. 在 Azure 门户中，打开你的自动化帐户。
-2. 单击“Runbook”磁贴以打开 Runbook 的列表。
+2. 单击“Runbook”磁贴打开 Runbook 列表。
 3. 单击“浏览库”按钮。
 
     ![“浏览库”按钮](./media/automation-runbook-gallery/browse-gallery-button.png)
@@ -77,25 +65,17 @@
 
 Microsoft 建议你将 Runbook 添加到你认为对其他客户有用的 Runbook 库中。你可以通过连同以下详细信息[将 Runbook 上载到脚本中心](http://gallery.technet.microsoft.com/site/upload)，来添加 Runbook。
 
-- 你必须为向导中要显示的 Runbook 指定“Microsoft Azure”作为“类别”，指定“自动化”作为“子类别”。
+- 必须为向导中要显示的 Runbook 指定“Microsoft Azure”作为“类别”，指定“自动化”作为“子类别”。
+
+- 上载内容必须是单个 .ps1 [AZURE.ACOM]{ 或 .graphrunbook [AZURE.ACOM]} 文件。如果 Runbook 需要任何模块、子 Runbook 或资产，则你应该在提交内容的说明和 Runbook 的注释部分列出这些内容。如果你的方案需要多个 Runbook，请单独上载每个 Runbook 并在各自的说明中列出相关 Runbook 的名称。请确保使用相同的标记，以便它们在同一类别中显示。用户阅读说明后才会知道，方案要正常工作需要其他 Runbook。
 
 - [AZURE.ACOM]{
 
-- 上载内容必须是单个 .ps1 或 .graphrunbook 文件。如果 Runbook 需要任何模块、子 Runbook 或资产，则你应该在提交内容的说明和 Runbook 的注释部分列出这些内容。如果你的方案需要多个 Runbook，请单独上载每个 Runbook 并在各自的说明中列出相关 Runbook 的名称。请确保使用相同的标记，以便它们在同一类别中显示。用户阅读说明后才会知道，方案要正常工作需要其他 Runbook。
-
 - 如果你要发布**图形 Runbook**（非图形工作流），则添加标记“GraphicalPS”。
-
-- 使用“插入代码段”图标将 PowerShell 或 PowerShell 工作流代码片段插入说明中。
 
 - [AZURE.ACOM]}
 
-- [AZURE.ACN]{
-
-- 上载内容必须是单个 .ps1 文件。如果 Runbook 需要任何模块、子 Runbook 或资产，则你应该在提交内容的说明和 Runbook 的注释部分列出这些内容。如果你的方案需要多个 Runbook，请单独上载每个 Runbook 并在各自的说明中列出相关 Runbook 的名称。请确保使用相同的标记，以便它们在同一类别中显示。用户阅读说明后才会知道，方案要正常工作需要其他 Runbook。
-
-- 使用“插入代码段”图标将 PowerShell 工作流代码片段插入说明中。
-
-- [AZURE.ACN]}
+- 插入 [AZURE.ACOM]{ PowerShell 或 [AZURE.ACOM]使用“插入代码段”图标将 PowerShell 工作流代码片段插入说明中。
 
 - Runbook 库结果中将显示上载摘要，因此，你应该提供详细信息，以帮助用户了解 Runbook 的功能。
 
@@ -163,12 +143,7 @@ PowerShell 模块包含可以在 Runbook 中使用的 cmdlet，并可以在 [Pow
 
 ## 后续步骤
 
-- 若要开始使用 Runbook，请参阅[在 Azure 自动化中创建或导入 Runbook](/documentation/articles/automation-creating-importing-runbook/)
-- [AZURE.ACOM]{
-- 若要了解 Runbook 的 PowerShell 和 PowerShell 工作流之间的差异，请参阅 [Learning PowerShell workflow（了解 PowerShell 工作流）](/documentation/articles/automation-powershell-workflow/)
-- [AZURE.ACOM]}
-- [AZURE.ACN]{
-- [了解 PowerShell 工作流](/documentation/articles/automation-powershell-workflow/)
-- [AZURE.ACN]}
+- 若要开始使用 Runbook，请参阅 [Creating or importing a runbook in Azure Automation（在 Azure 自动化中创建或导入 Runbook）](/documentation/articles/automation-creating-importing-runbook/)
+- [AZURE.ACOM]{ 若要了解 Runbook 的 PowerShell 和 PowerShell 工作流之间的差异，请参阅 [AZURE.ACOM]} [了解 PowerShell 工作流](/documentation/articles/automation-powershell-workflow/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

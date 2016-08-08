@@ -16,10 +16,10 @@
 # 使用 DPM 准备将工作负荷备份到 Azure
 
 > [AZURE.SELECTOR]
-- [Azure 备份服务器](backup-azure-microsoft-azure-backup.md)
-- [SCDPM](backup-azure-dpm-introduction.md)
-- [Azure 备份服务器（经典）](backup-azure-microsoft-azure-backup-classic.md)
-- [SCDPM（经典）](backup-azure-dpm-introduction-classic.md)
+- [Azure 备份服务器](/documentation/articles/backup-azure-microsoft-azure-backup/)
+- [SCDPM](/documentation/articles/backup-azure-dpm-introduction/)
+- [Azure 备份服务器（经典）](/documentation/articles/backup-azure-microsoft-azure-backup-classic/)
+- [SCDPM（经典）](/documentation/articles/backup-azure-dpm-introduction-classic/)
 
 本文介绍如何使用 Microsoft Azure 备份来保护 System Center Data Protection Manager (DPM) 服务器和工作负载。通过阅读本文，你将会了解：
 
@@ -56,7 +56,7 @@ System Center DPM 备份文件和应用程序数据。备份到 DPM 的数据可
 ### 1\.创建恢复服务保管库
 若要创建恢复服务保管库，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
 2. 在“中心”菜单中，单击“浏览”，然后在资源列表中，键入“恢复服务”。当你开始键入时，会根据你的输入筛选该列表。单击“恢复服务保管库”。
 
@@ -76,7 +76,7 @@ System Center DPM 备份文件和应用程序数据。备份到 DPM 的数据可
 
 5. 单击“订阅”查看可用订阅列表。如果不确定要使用哪个订阅，请使用默认（或建议）的订阅。仅当组织帐户与多个 Azure 订阅关联时，才会有多个选项。
 
-6. 单击“资源组”查看可用资源组列表，或单击“新建”以创建新资源组。有关资源组的完整信息，请参阅 [Using the Azure Portal to deploy and manage your Azure resources（使用 Azure 门户部署和管理 Azure 资源）](../azure-portal/resource-group-portal.md)
+6. 单击“资源组”查看可用资源组列表，或单击“新建”以创建新资源组。有关资源组的完整信息，请参阅 [Azure Resource Manager 概述](/documentation/articles/resource-group-overview/)
 
 7. 单击“位置”，为保管库选择地理区域。
 
@@ -106,7 +106,7 @@ System Center DPM 备份文件和应用程序数据。备份到 DPM 的数据可
 
 从 Azure 门户通过安全通道下载保管库凭据文件。Azure 备份服务并不知道证书的私钥，并且私钥不会保存在门户或服务中。使用以下步骤将保管库凭据文件下载到本地计算机。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.cn/)。
 
 2. 打开要将 DPM 计算机注册到的恢复服务保管库。
 
@@ -184,8 +184,8 @@ System Center DPM 备份文件和应用程序数据。备份到 DPM 的数据可
 - DPM 服务器上应已安装 Windows PowerShell 和 .NET Framework 4.5。
 - DPM 可将大多数工作负载备份到 Azure 备份。有关所支持内容的完整列表，请参阅下面的 Azure 备份支持项。
 - 使用“复制到磁带”选项无法恢复存储在 Azure 备份中的数据。
-- 你需要一个启用了 Azure 备份功能的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。阅读 [Azure 备份定价](/pricing/details/backup/)的相关信息。
-- 若要使用 Azure 备份，应在要备份的服务器上安装 Azure 备份代理。每台服务器上的可用本地存储空间必须至少为要备份的数据大小的 10%。例如，如果要备份 100 GB 的数据，则暂存位置至少需要 10 GB 的可用空间。尽管最低要求为 10%，但我们建议为缓存位置腾出 15% 的本地可用存储空间。
+- 你需要一个启用了 Azure 备份功能的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。阅读 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)的相关信息。
+- 若要使用 Azure 备份，应在要备份的服务器上安装 Azure 备份代理。每台服务器上的可用本地存储空间必须至少为要备份的数据大小的 5%。例如，如果要备份 100 GB 的数据，则暂存位置至少需要 5 GB 的可用空间。
 - 数据将存储在 Azure 保管库存储中。你可以备份到 Azure 备份保管库的数据量没有限制，但数据源（例如虚拟机或数据库）的大小不应超过 54400 GB。
 
 支持将以下文件类型备份到 Azure：
@@ -207,4 +207,4 @@ System Center DPM 备份文件和应用程序数据。备份到 DPM 的数据可
 
 >[AZURE.NOTE] 从 System Center 2012 DPM SP1 开始，你可以使用 Microsoft Azure 备份将 DPM 保护的工作负载备份到 Azure。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0801_2016-->

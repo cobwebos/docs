@@ -9,19 +9,19 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="04/25/2016"
+   ms.date="07/11/2016"
    wacn.date=""/>
 
 # 添加自定义 Service Fabric 运行状况报告
-Azure Service Fabric 引入了[运行状况模型](/documentation/articles/service-fabric-health-introduction)，设计为在特定实体上标记不正常的群集和应用程序状态。通过使用运行状况报告器（系统组件和监视器）可实现此操作。其目标是实现轻松快捷的诊断和修复。服务编写器必须预先考虑到运行状况。应报告任何可能会影响运行状况的条件，尤其是如果它有助于标记出接近根源的问题。一旦在云（私有云或 Azure）中大规模地启动并运行服务，便可大幅缩小调试和调查操作所需的时间和精力。
+Azure Service Fabric 引入了[运行状况模型](/documentation/articles/service-fabric-health-introduction/)，设计为在特定实体上标记不正常的群集和应用程序状态。通过使用运行状况报告器（系统组件和监视器）可实现此操作。其目标是实现轻松快捷的诊断和修复。服务编写器必须预先考虑到运行状况。应报告任何可能会影响运行状况的条件，尤其是如果它有助于标记出接近根源的问题。一旦在云（私有云或 Azure）中大规模地启动并运行服务，便可大幅缩小调试和调查操作所需的时间和精力。
 
-Service Fabric 报告器可监视感兴趣的已标识条件。它们会根据其本地视图报告这些条件。[运行状况存储](/documentation/articles/service-fabric-health-introduction#Health-Store)可聚合所有报告器发送的运行状况数据，以确定实体的运行状况是否为全局良好。该模型应具有功能丰富、灵活且易于使用的特点。运行状况报告的质量决定了群集运行状况视图的准确度。错误显示不正常问题的误报会对升级或其他使用运行状况数据的服务产生负面影响。这可能包括如修复服务和警报机制。因此，提供报表时需多加考量，才能让其以尽可能最佳的方式捕获感兴趣的条件。
+Service Fabric 报告器可监视感兴趣的已标识条件。它们会根据其本地视图报告这些条件。[运行状况存储](/documentation/articles/service-fabric-health-introduction/#Health-Store)可聚合所有报告器发送的运行状况数据，以确定实体的运行状况是否为全局良好。该模型应具有功能丰富、灵活且易于使用的特点。运行状况报告的质量决定了群集运行状况视图的准确度。错误显示不正常问题的误报会对升级或其他使用运行状况数据的服务产生负面影响。这可能包括如修复服务和警报机制。因此，提供报表时需多加考量，才能让其以尽可能最佳的方式捕获感兴趣的条件。
 
 若要设计和实施运行状况报告，监视器和系统组件必须：
 
 - 定义它们感兴趣的条件、受监视的方式以及对群集或应用程序功能的影响。这会定义运行状况报告属性和运行状况。
 
-- 确定应用报表的[实体](/documentation/articles/service-fabric-health-introduction#health-entities-and-hierarchy)。
+- 确定应用报表的[实体](/documentation/articles/service-fabric-health-introduction/#health-entities-and-hierarchy)。
 
 - 确定是从服务内部、内部监视器还是外部监视器完成报表。
 
@@ -41,9 +41,9 @@ Service Fabric 报告器可监视感兴趣的已标识条件。它们会根据�
 
 - 从 Service Fabric 群集外探测资源的外部监视器（例如，类似于 Gomez 的监视服务）。
 
-> [AZURE.NOTE] 根据现有设定，群集会被系统组件发送的运行状况报告填充。从[使用系统运行状况报告进行故障排除](/documentation/articles/service-fabric-understand-and-troubleshoot-with-system-health-reports)了解更多信息。必须在系统已创建的[运行状况实体](/documentation/articles/service-fabric-health-introduction#health-entities-and-hierarchy)上发送用户报告。
+> [AZURE.NOTE] 根据现有设定，群集会被系统组件发送的运行状况报告填充。从[使用系统运行状况报告进行故障排除](/documentation/articles/service-fabric-understand-and-troubleshoot-with-system-health-reports/)了解更多信息。必须在系统已创建的[运行状况实体](/documentation/articles/service-fabric-health-introduction/#health-entities-and-hierarchy)上发送用户报告。
 
-只要运行状况报告的设计清晰明了，发送运行状况报告就十分容易。如果群集不[安全](/documentation/articles/service-fabric-cluster-security)或者如果结构客户端具有管理员权限，你可以使用 `FabricClient` 来报告运行状况。这可以使用 [FabricClient.HealthManager.ReportHealth](https://msdn.microsoft.com/zh-cn/library/system.fabric.fabricclient.healthclient.reporthealth.aspx) 通过 API 来完成，或者通过 PowerShell 或 REST 来完成。有用于批处理报告的配置旋钮，可提升性能。
+只要运行状况报告的设计清晰明了，发送运行状况报告就十分容易。如果群集不[安全](/documentation/articles/service-fabric-cluster-security/)或者如果结构客户端具有管理员权限，你可以使用 `FabricClient` 来报告运行状况。这可以使用 [FabricClient.HealthManager.ReportHealth](https://msdn.microsoft.com/zh-cn/library/system.fabric.fabricclient.healthclient.reporthealth.aspx) 通过 API 来完成，或者通过 PowerShell 或 REST 来完成。有用于批处理报告的配置旋钮，可提升性能。
 
 > [AZURE.NOTE] 报告运行状况会同步处理，并且只代表客户端上的验证工作。运行状况客户端或者 `Partition` 或 `CodePackageActivationContext` 对象接受报告的这项事实并不表示该报告应用在存储中。它以异步方式发送并可能与其他报告一起进行批处理。在服务器上处理仍可能失败（例如序号已过时、必须应用报告的实体已被删除，等等）。
 
@@ -58,49 +58,50 @@ Service Fabric 报告器可监视感兴趣的已标识条件。它们会根据�
 
 > [AZURE.NOTE] 批量处理报告时，结构客户端必须至少保持 HealthReportSendInterval 的活动状态，以确保报告发送完毕。如果消息丢失或运行状况存储因为暂时性错误而无法应用它们，结构客户端必须保持更长时间的活动状态，让其有再试一次的机会。
 
-客户端上的缓冲会将报告的唯一性纳入考虑范围。例如，如果特定的错误报告器针对相同实体的相同属性每秒产生 100 个报告，则会以最后一个版本取代所有报告。客户端队列中最多存在一个这样的报告。如果配置了批处理，则发送到运行状况存储的报告数目仅为每个发送间隔发送一份报告。这是最后添加的报告，可反映实体的最新状态。在创建 `FabricClient` 时，藉由针对运行状况相关实体传递 [FabricClientSettings](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.fabricclientsettings.aspx) 的所需值，即能指定所有配置参数。
+客户端上的缓冲会将报告的唯一性纳入考虑范围。例如，如果特定的错误报告器针对相同实体的相同属性每秒产生 100 个报告，则会以最后一个版本取代所有报告。客户端队列中最多存在一个这样的报告。如果配置了批处理，则发送到运行状况存储的报告数目仅为每个发送间隔发送一份报告。这是最后添加的报告，可反映实体的最新状态。
+在创建 `FabricClient` 时，藉由针对运行状况相关实体传递 [FabricClientSettings](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.fabricclientsettings.aspx) 的所需值，即能指定所有配置参数。
 
 以下命令将创建结构客户端，并指定一旦添加报告就应该尽快发送。在可重试的错误或超时发生时，每 40 秒重试一次。
 
-```csharp
-var clientSettings = new FabricClientSettings()
-{
-    HealthOperationTimeout = TimeSpan.FromSeconds(120),
-    HealthReportSendInterval = TimeSpan.FromSeconds(0),
-    HealthReportRetrySendInterval = TimeSpan.FromSeconds(40),
-};
-var fabricClient = new FabricClient(clientSettings);
-```
+
+	var clientSettings = new FabricClientSettings()
+	{
+	    HealthOperationTimeout = TimeSpan.FromSeconds(120),
+	    HealthReportSendInterval = TimeSpan.FromSeconds(0),
+	    HealthReportRetrySendInterval = TimeSpan.FromSeconds(40),
+	};
+	var fabricClient = new FabricClient(clientSettings);
+
 
 通过 PowerShell 创建与群集的连接时，可以指定相同的参数。以下命令将启动与本地群集的连接：
 
-```powershell
-PS C:\> Connect-ServiceFabricCluster -HealthOperationTimeoutInSec 120 -HealthReportSendIntervalInSec 0 -HealthReportRetrySendIntervalInSec 40
-True
 
-ConnectionEndpoint   :
-FabricClientSettings : {
-                       ClientFriendlyName                   : PowerShell-1944858a-4c6d-465f-89c7-9021c12ac0bb
-                       PartitionLocationCacheLimit          : 100000
-                       PartitionLocationCacheBucketCount    : 1024
-                       ServiceChangePollInterval            : 00:02:00
-                       ConnectionInitializationTimeout      : 00:00:02
-                       KeepAliveInterval                    : 00:00:20
-                       HealthOperationTimeout               : 00:02:00
-                       HealthReportSendInterval             : 00:00:00
-                       HealthReportRetrySendInterval        : 00:00:40
-                       NotificationGatewayConnectionTimeout : 00:00:00
-                       NotificationCacheUpdateTimeout       : 00:00:00
-                       }
-GatewayInformation   : {
-                       NodeAddress                          : localhost:19000
-                       NodeId                               : 1880ec88a3187766a6da323399721f53
-                       NodeInstanceId                       : 130729063464981219
-                       NodeName                             : Node.1
-                       }
-```
+	PS C:\> Connect-ServiceFabricCluster -HealthOperationTimeoutInSec 120 -HealthReportSendIntervalInSec 0 -HealthReportRetrySendIntervalInSec 40
+	True
 
-> [AZURE.NOTE] 若要确保未授权的服务无法针对群集中的实体报告运行状况，可将服务器配置为只接受来自受保护客户端的请求。由于报告是通过 `FabricClient` 来完成的，这表示 `FabricClient` 必须启用安全性才能与群集通信，例如使用 Kerberos 或证书身份验证。详细了解[群集安全性](/documentation/articles/service-fabric-cluster-security)。
+	ConnectionEndpoint   :
+	FabricClientSettings : {
+	                       ClientFriendlyName                   : PowerShell-1944858a-4c6d-465f-89c7-9021c12ac0bb
+	                       PartitionLocationCacheLimit          : 100000
+	                       PartitionLocationCacheBucketCount    : 1024
+	                       ServiceChangePollInterval            : 00:02:00
+	                       ConnectionInitializationTimeout      : 00:00:02
+	                       KeepAliveInterval                    : 00:00:20
+	                       HealthOperationTimeout               : 00:02:00
+	                       HealthReportSendInterval             : 00:00:00
+	                       HealthReportRetrySendInterval        : 00:00:40
+	                       NotificationGatewayConnectionTimeout : 00:00:00
+	                       NotificationCacheUpdateTimeout       : 00:00:00
+	                       }
+	GatewayInformation   : {
+	                       NodeAddress                          : localhost:19000
+	                       NodeId                               : 1880ec88a3187766a6da323399721f53
+	                       NodeInstanceId                       : 130729063464981219
+	                       NodeName                             : Node.1
+	                       }
+
+
+> [AZURE.NOTE] 若要确保未授权的服务无法针对群集中的实体报告运行状况，可将服务器配置为只接受来自受保护客户端的请求。由于报告是通过 `FabricClient` 来完成的，这表示 `FabricClient` 必须启用安全性才能与群集通信，例如使用 Kerberos 或证书身份验证。详细了解[群集安全性](/documentation/articles/service-fabric-cluster-security/)。
 
 ## 在低特权的服务内进行报告
 在对群集不具有管理员访问权限的 Service Fabric 服务内，你可以通过 `Partition` 或 `CodePackageActivationContext`，报告来自当前上下文的实体的运行状况。
@@ -117,7 +118,7 @@ GatewayInformation   : {
 
 - 使用 [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://msdn.microsoft.com/zh-cn/library/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth.aspx) 来报告部署于当前节点上的当前应用程序的服务包运行状况。
 
-> [AZURE.NOTE] 就内部而言，`Partition` 和 `CodePackageActivationContext` 会保留使用默认设置配置的运行状况客户端。针对[运行状况客户端](/documentation/articles/service-fabric-report-health#health-client)所说明的相同注意事项将适用 — 报告在计时器上进行批处理和发送操作，因此这些对象应保持活动状态，以便有机会发送报告。
+> [AZURE.NOTE] 就内部而言，`Partition` 和 `CodePackageActivationContext` 会保留使用默认设置配置的运行状况客户端。针对[运行状况客户端](/documentation/articles/service-fabric-report-health/#health-client)所说明的相同注意事项将适用 — 报告在计时器上进行批处理和发送操作，因此这些对象应保持活动状态，以便有机会发送报告。
 
 ## 设计运行状况报告
 生成高质量报告的第一步是识别可能影响服务运行状况的条件。在条件启动甚至发生之前，任何有助于在服务或群集中标记问题的条件，都有可能替你省下数十亿元。优点包括故障时间变少，晚上花在调查和修复问题上的时间变少，客户满意度自然也高。
@@ -132,7 +133,7 @@ GatewayInformation   : {
 
 确定监视器详细信息后，应该确定可唯一标识它的源 ID。如果多个相同类型的监视器存留于群集中，它们必须报告不同的实体，如果它们报告相同的实体，请确保源 ID 或属性皆不相同，如此报告才可并存。运行状况报告的属性应捕获受监视的条件。（在上述示例中，该属性可以是 **ShareSize**。） 如果多个报告应用于同一条件，该属性应包含一些动态信息，才可让报告共存。例如，如果有多个需要监视的共享，该属性的名称可以是 **ShareSize-sharename**。
 
-> [AZURE.NOTE] 运行状况存储*不*应该用来保存状态信息。只有与运行状况相关的信息才应作为运行状况进行报告，即影响实体运行状况评估的信息。运行状况存储并非设计作为一般用途的存储。它使用运行状况评估逻辑将所有数据聚合到运行状况中。发送与运行状况无关的信息（例如，报告运行状况为“正常”的状态）不会影响聚合的运行状况，但可能对运行状况存储的性能造成负面影响。
+> [AZURE.NOTE] 运行状况存储不应该用来保存状态信息。只有与运行状况相关的信息才应作为运行状况进行报告，即影响实体运行状况评估的信息。运行状况存储并非设计作为一般用途的存储。它使用运行状况评估逻辑将所有数据聚合到运行状况中。发送与运行状况无关的信息（例如，报告运行状况为“正常”的状态）不会影响聚合的运行状况，但可能对运行状况存储的性能造成负面影响。
 
 下一个决策点为何种实体需报告。大多数情况下，显然是依据条件而定。应该选择具有最佳粒度的实体。如果条件影响到某个分区中的所有副本，则报告该分区，而非服务。以下是需要仔细考虑的极端案例。如果条件影响到实体（例如副本），但需要将条件标记为超过副本生存期，则应报告分区。否则，当删除副本时，与其相关的所有报告都会从存储中清除。这表示监视器编写器也必须将实体和报告的生存期纳入考虑范围。必须清楚说明报告需从存储中清除的时间点（例如，针对实体报告的错误不再适用时）。
 
@@ -151,7 +152,7 @@ GatewayInformation   : {
 不过，上述情况中的报告已完成，评估运行状况时，将在应用程序运行状况中捕获这些报告。
 
 ## 定期报告与转换时报告
-使用运行状况报告模型，监视器可以定期发送报告，也可以在转换时发送报告。建议定期发送监视器报告，因为代码要简单得多，所以较不容易发生错误。监视器必须尽可能简单，以免出现触发误报的 bug。不正确的*不正常*报告会影响运行状况评估以及基于运行状况的情况（包括升级）。不正确的“正常”报告会隐藏群集中的问题，我们不希望发生这种情况。
+使用运行状况报告模型，监视器可以定期发送报告，也可以在转换时发送报告。建议定期发送监视器报告，因为代码要简单得多，所以较不容易发生错误。监视器必须尽可能简单，以免出现触发误报的 bug。不正确的不正常报告会影响运行状况评估以及基于运行状况的情况（包括升级）。不正确的正常报告会隐藏群集中的问题，我们不希望发生这种情况。
 
 针对定期报告，可以使用计时器实现监视器。计时器回调时，监视器可以检查状态并根据当前状态发送报告。不需要查看先前发送的报告或在消息传送方面进行任何优化。运行状况客户端具有批处理逻辑，有利于此种情况。只要运行状况客户端保持活动状态，就会在内部不断重试，直到运行状况存储确认报告，或者监视器生成具有相同实体、属性和源的较新报告。
 
@@ -167,130 +168,133 @@ GatewayInformation   : {
 
 以下示例演示如何从群集内的监视器定期发送报告。该监视器会检查能否从节点内访问外部资源。应用程序内的服务清单需要该资源。如果无法访问该资源，应用程序内的其他服务仍然可以正常运行。因此，会在已部署的服务包实体上每隔 30 秒发送一次报告。
 
-```csharp
-private static Uri ApplicationName = new Uri("fabric:/WordCount");
-private static string ServiceManifestName = "WordCount.Service";
-private static string NodeName = FabricRuntime.GetNodeContext().NodeName;
-private static Timer ReportTimer = new Timer(new TimerCallback(SendReport), null, 30 * 1000, 30 * 1000);
-private static FabricClient Client = new FabricClient(new FabricClientSettings() { HealthReportSendInterval = TimeSpan.FromSeconds(0) });
 
-public static void SendReport(object obj)
-{
-    // Test whether the resource can be accessed from the node
-    HealthState healthState = this.TestConnectivityToExternalResource();
+	private static Uri ApplicationName = new Uri("fabric:/WordCount");
+	private static string ServiceManifestName = "WordCount.Service";
+	private static string NodeName = FabricRuntime.GetNodeContext().NodeName;
+	private static Timer ReportTimer = new Timer(new TimerCallback(SendReport), null, 30 * 1000, 30 * 1000);
+	private static FabricClient Client = new FabricClient(new FabricClientSettings() { HealthReportSendInterval = TimeSpan.FromSeconds(0) });
 
-    // Send report on deployed service package, as the connectivity is needed by the specific service manifest
-    // and can be different on different nodes
-    var deployedServicePackageHealthReport = new DeployedServicePackageHealthReport(
-        ApplicationName,
-        ServiceManifestName,
-        NodeName,
-        new HealthInformation("ExternalSourceWatcher", "Connectivity", healthState));
+	public static void SendReport(object obj)
+	{
+	    // Test whether the resource can be accessed from the node
+	    HealthState healthState = this.TestConnectivityToExternalResource();
 
-    // TODO: handle exception. Code omitted for snippet brevity.
-    // Possible exceptions: FabricException with error codes
-    // FabricHealthStaleReport (non-retryable, the report is already queued on the health client),
-    // FabricHealthMaxReportsReached (retryable; user should retry with exponential delay until the report is accepted).
-    Client.HealthManager.ReportHealth(deployedServicePackageHealthReport);
-}
-```
+	    // Send report on deployed service package, as the connectivity is needed by the specific service manifest
+	    // and can be different on different nodes
+	    var deployedServicePackageHealthReport = new DeployedServicePackageHealthReport(
+	        ApplicationName,
+	        ServiceManifestName,
+	        NodeName,
+	        new HealthInformation("ExternalSourceWatcher", "Connectivity", healthState));
+
+	    // TODO: handle exception. Code omitted for snippet brevity.
+	    // Possible exceptions: FabricException with error codes
+	    // FabricHealthStaleReport (non-retryable, the report is already queued on the health client),
+	    // FabricHealthMaxReportsReached (retryable; user should retry with exponential delay until the report is accepted).
+	    Client.HealthManager.ReportHealth(deployedServicePackageHealthReport);
+	}
+
 
 ### PowerShell
 用户可使用 **Send-ServiceFabric*EntityType*HealthReport** 发送运行状况报告。
 
 以下示例演示如何定期报告某个节点上的 CPU 值。应每隔 30 秒发送一次报告，报告生存时间为 2 分钟。如果过期，就表示报告器有问题，因此会错误地评估该节点。当 CPU 高于阈值时，报告的运行状况为警告。当 CPU 保持高于阈值超过设置的时间时，则将其报告为错误。否则，报告器发送的运行状况为“正常”。
 
-```powershell
-PS C:\> Send-ServiceFabricNodeHealthReport -NodeName Node.1 -HealthState Warning -SourceId PowershellWatcher -HealthProperty CPU -Description "CPU is above 80% threshold" -TimeToLiveSec 120
 
-PS C:\> Get-ServiceFabricNodeHealth -NodeName Node.1
-NodeName              : Node.1
-AggregatedHealthState : Warning
-UnhealthyEvaluations  :
-                        Unhealthy event: SourceId='PowershellWatcher', Property='CPU', HealthState='Warning', ConsiderWarningAsError=false.
+	PS C:\> Send-ServiceFabricNodeHealthReport -NodeName Node.1 -HealthState Warning -SourceId PowershellWatcher -HealthProperty CPU -Description "CPU is above 80% threshold" -TimeToLiveSec 120
 
-HealthEvents          :
-                        SourceId              : System.FM
-                        Property              : State
-                        HealthState           : Ok
-                        SequenceNumber        : 5
-                        SentAt                : 4/21/2015 8:01:17 AM
-                        ReceivedAt            : 4/21/2015 8:02:12 AM
-                        TTL                   : Infinite
-                        Description           : Fabric node is up.
-                        RemoveWhenExpired     : False
-                        IsExpired             : False
-                        Transitions           : ->Ok = 4/21/2015 8:02:12 AM
+	PS C:\> Get-ServiceFabricNodeHealth -NodeName Node.1
+	NodeName              : Node.1
+	AggregatedHealthState : Warning
+	UnhealthyEvaluations  :
+	                        Unhealthy event: SourceId='PowershellWatcher', Property='CPU', HealthState='Warning', ConsiderWarningAsError=false.
 
-                        SourceId              : PowershellWatcher
-                        Property              : CPU
-                        HealthState           : Warning
-                        SequenceNumber        : 130741236814913394
-                        SentAt                : 4/21/2015 9:01:21 PM
-                        ReceivedAt            : 4/21/2015 9:01:21 PM
-                        TTL                   : 00:02:00
-                        Description           : CPU is above 80% threshold
-                        RemoveWhenExpired     : False
-                        IsExpired             : False
-                        Transitions           : ->Warning = 4/21/2015 9:01:21 PM
-```
+	HealthEvents          :
+	                        SourceId              : System.FM
+	                        Property              : State
+	                        HealthState           : Ok
+	                        SequenceNumber        : 5
+	                        SentAt                : 4/21/2015 8:01:17 AM
+	                        ReceivedAt            : 4/21/2015 8:02:12 AM
+	                        TTL                   : Infinite
+	                        Description           : Fabric node is up.
+	                        RemoveWhenExpired     : False
+	                        IsExpired             : False
+	                        Transitions           : ->Ok = 4/21/2015 8:02:12 AM
+
+	                        SourceId              : PowershellWatcher
+	                        Property              : CPU
+	                        HealthState           : Warning
+	                        SequenceNumber        : 130741236814913394
+	                        SentAt                : 4/21/2015 9:01:21 PM
+	                        ReceivedAt            : 4/21/2015 9:01:21 PM
+	                        TTL                   : 00:02:00
+	                        Description           : CPU is above 80% threshold
+	                        RemoveWhenExpired     : False
+	                        IsExpired             : False
+	                        Transitions           : ->Warning = 4/21/2015 9:01:21 PM
+
 
 以下示例会在副本上报告暂时性警告。它先获取分区 ID，再获取所需服务的副本 ID。然后从 **PowershellWatcher** 发送有关 **ResourceDependency** 属性的报告。此报告只需存在 2 分钟，就从存储中自动删除。
 
-```powershell
-PS C:\> $partitionId = (Get-ServiceFabricPartition -ServiceName fabric:/WordCount/WordCount.Service).PartitionId
 
-PS C:\> $replicaId = (Get-ServiceFabricReplica -PartitionId $partitionId | where {$_.ReplicaRole -eq "Primary"}).ReplicaId
+	PS C:\> $partitionId = (Get-ServiceFabricPartition -ServiceName fabric:/WordCount/WordCount.Service).PartitionId
 
-PS C:\> Send-ServiceFabricReplicaHealthReport -PartitionId $partitionId -ReplicaId $replicaId -HealthState Warning -SourceId PowershellWatcher -HealthProperty ResourceDependency -Description "The external resource that the primary is using has been rebooted at 4/21/2015 9:01:21 PM. Expect processing delays for a few minutes." -TimeToLiveSec 120 -RemoveWhenExpired
+	PS C:\> $replicaId = (Get-ServiceFabricReplica -PartitionId $partitionId | where {$_.ReplicaRole -eq "Primary"}).ReplicaId
 
-PS C:\> Get-ServiceFabricReplicaHealth  -PartitionId $partitionId -ReplicaOrInstanceId $replicaId
+	PS C:\> Send-ServiceFabricReplicaHealthReport -PartitionId $partitionId -ReplicaId $replicaId -HealthState Warning -SourceId PowershellWatcher -HealthProperty ResourceDependency -Description "The external resource that the primary is using has been rebooted at 4/21/2015 9:01:21 PM. Expect processing delays for a few minutes." -TimeToLiveSec 120 -RemoveWhenExpired
+
+	PS C:\> Get-ServiceFabricReplicaHealth  -PartitionId $partitionId -ReplicaOrInstanceId $replicaId
 
 
-PartitionId           : 8f82daff-eb68-4fd9-b631-7a37629e08c0
-ReplicaId             : 130740415594605869
-AggregatedHealthState : Warning
-UnhealthyEvaluations  :
-                        Unhealthy event: SourceId='PowershellWatcher', Property='ResourceDependency', HealthState='Warning', ConsiderWarningAsError=false.
+	PartitionId           : 8f82daff-eb68-4fd9-b631-7a37629e08c0
+	ReplicaId             : 130740415594605869
+	AggregatedHealthState : Warning
+	UnhealthyEvaluations  :
+	                        Unhealthy event: SourceId='PowershellWatcher', Property='ResourceDependency', HealthState='Warning', ConsiderWarningAsError=false.
 
-HealthEvents          :
-                        SourceId              : System.RA
-                        Property              : State
-                        HealthState           : Ok
-                        SequenceNumber        : 130740768777734943
-                        SentAt                : 4/21/2015 8:01:17 AM
-                        ReceivedAt            : 4/21/2015 8:02:12 AM
-                        TTL                   : Infinite
-                        Description           : Replica has been created.
-                        RemoveWhenExpired     : False
-                        IsExpired             : False
-                        Transitions           : ->Ok = 4/21/2015 8:02:12 AM
+	HealthEvents          :
+	                        SourceId              : System.RA
+	                        Property              : State
+	                        HealthState           : Ok
+	                        SequenceNumber        : 130740768777734943
+	                        SentAt                : 4/21/2015 8:01:17 AM
+	                        ReceivedAt            : 4/21/2015 8:02:12 AM
+	                        TTL                   : Infinite
+	                        Description           : Replica has been created.
+	                        RemoveWhenExpired     : False
+	                        IsExpired             : False
+	                        Transitions           : ->Ok = 4/21/2015 8:02:12 AM
 
-                        SourceId              : PowershellWatcher
-                        Property              : ResourceDependency
-                        HealthState           : Warning
-                        SequenceNumber        : 130741243777723555
-                        SentAt                : 4/21/2015 9:12:57 PM
-                        ReceivedAt            : 4/21/2015 9:12:57 PM
-                        TTL                   : 00:02:00
-                        Description           : The external resource that the primary is using has been rebooted at 4/21/2015 9:01:21 PM. Expect processing delays for a few minutes.
-                        RemoveWhenExpired     : True
-                        IsExpired             : False
-                        Transitions           : ->Warning = 4/21/2015 9:12:32 PM
-```
+	                        SourceId              : PowershellWatcher
+	                        Property              : ResourceDependency
+	                        HealthState           : Warning
+	                        SequenceNumber        : 130741243777723555
+	                        SentAt                : 4/21/2015 9:12:57 PM
+	                        ReceivedAt            : 4/21/2015 9:12:57 PM
+	                        TTL                   : 00:02:00
+	                        Description           : The external resource that the primary is using has been rebooted at 4/21/2015 9:01:21 PM. Expect processing delays for a few minutes.
+	                        RemoveWhenExpired     : True
+	                        IsExpired             : False
+	                        Transitions           : ->Warning = 4/21/2015 9:12:32 PM
+
 
 ## 后续步骤
 
 根据运行状况数据，服务编写人员和群集/应用程序管理员可以想一想如何使用这些信息。例如，他们可以根据运行状况设置警报，以便在出现导致服务中断的严重问题之前就将其捕获。管理员还可以设置修复系统以便自动修复问题。
 
-[Service Fabric 运行状况监视简介](/documentation/articles/service-fabric-health-introduction)
+[Service Fabric 运行状况监视简介](/documentation/articles/service-fabric-health-introduction/)
 
-[查看 Service Fabric 运行状况报告](/documentation/articles/service-fabric-view-entities-aggregated-health)
+[查看 Service Fabric 运行状况报告](/documentation/articles/service-fabric-view-entities-aggregated-health/)
 
-[使用系统运行状况报告进行故障排除](/documentation/articles/service-fabric-understand-and-troubleshoot-with-system-health-reports)
+[如何报告和检查服务运行状况](/documentation/articles/service-fabric-diagnostics-how-to-report-and-check-service-health/)
 
-[在本地监视和诊断服务](/documentation/articles/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally)
+[使用系统运行状况报告进行故障排除](/documentation/articles/service-fabric-understand-and-troubleshoot-with-system-health-reports/)
 
-[Service Fabric 应用程序升级](/documentation/articles/service-fabric-application-upgrade)
+[在本地监视和诊断服务](/documentation/articles/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/)
+
+[Service Fabric 应用程序升级](/documentation/articles/service-fabric-application-upgrade/)
  
-<!---HONumber=Mooncake_0523_2016-->
+
+<!---HONumber=Mooncake_0801_2016-->

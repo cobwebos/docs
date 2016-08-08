@@ -1,5 +1,5 @@
 <properties
-   pageTitle="将数据从 SQL Server 载入 Azure SQL 数据仓库 (PolyBase) | Microsoft Azure"
+   pageTitle="将数据从 SQL Server 载入 Azure SQL 数据仓库 (PolyBase) | Azure"
    description="使用 bcp 将数据从 SQL Server 导出到平面文件，使用 AZCopy 将数据导入 Azure Blob 存储，使用 PolyBase 将数据引入 Azure SQL 数据仓库。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="05/08/2016"
+   ms.date="06/30/2016"
    wacn.date=""/>
 
 
@@ -52,11 +52,11 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
->[AZURE.NOTE] 有关在 SQL 数据仓库中创建表和 WITH 子句中可用选项的详细信息，请参阅 [Table Design][]（表设计）或 [CREATE TABLE syntax][]（CREATE TABLE 语法）。
+>[AZURE.NOTE] 有关在 SQL 数据仓库中创建表和 WITH 子句中可用选项的详细信息，请参阅 [Table Overview][]（表概述）或 [CREATE TABLE syntax][]（CREATE TABLE 语法）。
 
 ### 步骤 2：创建源数据文件
 
-打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录，路径为 C:\\Temp\\DimDate2.txt。
+打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录，路径为 C:\Temp\DimDate2.txt。
 
 ```
 20150301,1,3
@@ -120,7 +120,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 ## 从 SQL 数据仓库导出数据
-在本教程中，你将从 Azure SQL 数据仓库中的表创建数据文件。我们将上面创建的数据导出到名为 DimDate2\_export.txt 的新数据文件。
+在本教程中，你将从 Azure SQL 数据仓库中的表创建数据文件。我们将上面创建的数据导出到名为 DimDate2_export.txt 的新数据文件。
 
 ### 步骤 1：导出数据
 
@@ -156,16 +156,16 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 
 <!--Article references-->
 
-[将数据载入 SQL 数据仓库]: sql-data-warehouse-overview-load.md
-[SQL 数据仓库开发概述]: sql-data-warehouse-overview-develop.md
-[Table Design]: sql-data-warehouse-develop-table-design.md
-[统计信息]: sql-data-warehouse-develop-statistics.md
+[将数据载入 SQL 数据仓库]: /documentation/articles/sql-data-warehouse-overview-load
+[SQL 数据仓库开发概述]: /documentation/articles/sql-data-warehouse-overview-develop
+[Table Design]: /documentation/articles/sql-data-warehouse-develop-table-design
+[统计信息]: /documentation/articles/sql-data-warehouse-develop-statistics
 
 <!--MSDN references-->
-[bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
+[bcp]: https://msdn.microsoft.com/zh-cn/library/ms162802.aspx
+[CREATE TABLE syntax]: https://msdn.microsoft.com/zh-cn/library/mt203953.aspx
 
 <!--Other Web references-->
 [Microsoft 下载中心]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0801_2016-->

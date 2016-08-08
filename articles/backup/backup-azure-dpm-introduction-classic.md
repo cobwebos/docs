@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure DPM 备份简介 | Microsoft Azure"
+	pageTitle="Azure DPM 备份简介 | Azure"
 	description="使用 Azure 备份服务备份 DPM 服务器的简介"
 	services="backup"
 	documentationCenter=""
@@ -16,10 +16,10 @@
 # 使用 DPM 准备将工作负荷备份到 Azure
 
 > [AZURE.SELECTOR]
-- [Azure 备份服务器](backup-azure-microsoft-azure-backup.md)
-- [SCDPM](backup-azure-dpm-introduction.md)
-- [Azure 备份服务器（经典）](backup-azure-microsoft-azure-backup-classic.md)
-- [SCDPM（经典）](backup-azure-dpm-introduction-classic.md)
+- [Azure 备份服务器](/documentation/articles/backup-azure-microsoft-azure-backup/)
+- [SCDPM](/documentation/articles/backup-azure-dpm-introduction/)
+- [Azure 备份服务器（经典）](/documentation/articles/backup-azure-microsoft-azure-backup-classic/)
+- [SCDPM（经典）](/documentation/articles/backup-azure-dpm-introduction-classic/)
 
 
 本文介绍如何使用 Microsoft Azure 备份来保护 System Center Data Protection Manager (DPM) 服务器和工作负载。通过阅读本文，你将会了解：
@@ -55,11 +55,11 @@ System Center DPM 备份文件和应用程序数据。备份到 DPM 的数据可
 2. **下载保管库凭据** — 在 Azure 备份中，将你创建的管理证书上载到保管库。
 3. **安装 Azure 备份代理并注册服务器** — 通过 Azure 备份，在每个 DPM 服务器上安装代理，并在备份保管库中注册 DPM 服务器。
 
-[AZURE.INCLUDE [backup-create-vault](../../includes/backup-create-vault.md)]
+[AZURE.INCLUDE [backup-create-vault](../includes/backup-create-vault.md)]
 
-[AZURE.INCLUDE [backup-download-credentials](../../includes/backup-download-credentials.md)]
+[AZURE.INCLUDE [backup-download-credentials](../includes/backup-download-credentials.md)]
 
-[AZURE.INCLUDE [backup-install-agent](../../includes/backup-install-agent.md)]
+[AZURE.INCLUDE [backup-install-agent](../includes/backup-install-agent.md)]
 
 
 ## 要求和限制
@@ -92,4 +92,4 @@ System Center DPM 备份文件和应用程序数据。备份到 DPM 的数据可
 
 >[AZURE.NOTE] 从 System Center 2012 DPM SP1 开始，你可以使用 Microsoft Azure 备份将 DPM 保护的工作负载备份到 Azure。
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0801_2016-->

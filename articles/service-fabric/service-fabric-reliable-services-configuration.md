@@ -4,13 +4,14 @@
    services="Service-Fabric"
    documentationCenter=".net"
    authors="sumukhs"
-   manager="anuragg"
-   editor=""/>
+   manager="timlt"
+   editor="vturecek"/>
 
 <tags
    ms.service="Service-Fabric"
-   ms.date="03/30/2016"
+   ms.date="06/30/2016"
    wacn.date=""/>
+# 配置有状态 Reliable Services
 
 有两组配置设置可供 Reliable Services 使用。一组适用于群集中的所有 Reliable Services，而另一组特定于特定的 Reliable Services。
 
@@ -29,15 +30,15 @@
 |SharedLogSizeInMB|兆字节|8192|指定以静态方式分配给共享日志的磁盘空间 MB 数。此值必须为 2048 或更大。|
 
 ### 群集清单节示例
-```xml
-   <Section Name="KtlLogger">
-     <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
-     <Parameter Name="WriteBufferMemoryPoolMaximumInKB" Value="8192" />
-     <Parameter Name="SharedLogId" Value="{7668BB54-FE9C-48ed-81AC-FF89E60ED2EF}"/>
-     <Parameter Name="SharedLogPath" Value="f:\SharedLog.Log"/>
-     <Parameter Name="SharedLogSizeInMB" Value="16383"/>
-   </Section>
-```
+
+	   <Section Name="KtlLogger">
+	     <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
+	     <Parameter Name="WriteBufferMemoryPoolMaximumInKB" Value="8192" />
+	     <Parameter Name="SharedLogId" Value="{7668BB54-FE9C-48ed-81AC-FF89E60ED2EF}"/>
+	     <Parameter Name="SharedLogPath" Value="f:\SharedLog.Log"/>
+	     <Parameter Name="SharedLogSizeInMB" Value="16383"/>
+	   </Section>
+
 
 ### 备注
 记录器具有一个从未分页的内核内存分配的内存全局池，节点上的所有 Reliable Services 都可以使用该池在将状态数据写入与可靠服务副本关联的专用日志之前缓存这些数据。池大小由 WriteBufferMemoryPoolMinimumInKB 和 WriteBufferMemoryPoolMaximumInKB 设置控制。WriteBufferMemoryPoolMinimumInKB 指定此内存池的初始大小，以及内存池可以缩小到的大小下限。WriteBufferMemoryPoolMaximumInKB 是内存池可以增长到的大小上限。每个打开的可靠服务副本都可能会增加内存池的大小，增加幅度从系统决定的数量到 WriteBufferMemoryPoolMaximumInKB。如果内存池的内存需求大于可用的内存，则会延迟内存请求，直到有可用的内存。因此，如果写入缓冲区内存池对特定配置而言太小，则性能可能会受到影响。
@@ -82,67 +83,67 @@ ReplicatorConfig
 |Name|计价单位|默认值|备注|
 |----|----|-------------|-------|
 |BatchAcknowledgementInterval|秒|0\.05|收到操作后，在向主要复制器送回确认之前，辅助复制器等待的时间段。为在此间隔内处理的操作发送的任何其他确认都作为响应发送。|
-|ReplicatorEndpoint|不适用|无默认值--必选参数|主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。这应该引用服务清单中的 TCP 资源终结点。若要了解有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](/documentation/articles/service-fabric-service-manifest-resources)。 |
+|ReplicatorEndpoint|不适用|无默认值--必选参数|主要/辅助复制器用于与副本集中其他复制器通信的 IP 地址和端口。这应该引用服务清单中的 TCP 资源终结点。若要了解有关在服务清单中定义终结点资源的详细信息，请参阅[服务清单资源](/documentation/articles/service-fabric-service-manifest-resources/)。 |
 |MaxPrimaryReplicationQueueSize|操作的数量|8192|主要队列中的操作的最大数目。主复制器接收到来自所有辅助复制器的确认之后，将释放一个操作。此值必须大于 64 和 2 的幂。|
 |MaxSecondaryReplicationQueueSize|操作的数量|16384|辅助队列中的操作的最大数目。将在使操作的状态在暂留期间高度可用后释放该操作。此值必须大于 64 和 2 的幂。|
 |CheckpointThresholdInMB|MB|50|创建状态检查点后的日志文件空间量。|
 |MaxRecordSizeInKB|KB|1024|复制器可以在日志中写入的最大记录大小。此值必须是 4 的倍数，且大于 16。|
 |SharedLogId|GUID|""|指定要用于标识与此副本一起使用的共享日志文件的唯一 GUID。通常情况下，服务不应使用此设置。但是如果指定了 SharedLogId，则也必须指定 SharedLogPath。|
 |SharedLogPath|完全限定的路径名|""|指定将在其中创建此副本共享日志文件的完全限定路径。通常情况下，服务不应使用此设置。但是如果指定了 SharedLogPath，则也必须指定 SharedLogId。|
-
+|SlowApiMonitoringDuration|秒|300|设置托管 API 调用的监视间隔。示例：用户提供的备份回调函数。此间隔时间过去后，将向运行状况管理器发送一个警告运行状况报告。|
 
 ### 通过代码进行配置的示例
-```csharp
-class Program
-{
-    /// <summary>
-    /// This is the entry point of the service host process.
-    /// </summary>
-    static void Main()
-    {
-        ServiceRuntime.RegisterServiceAsync("HelloWorldStatefulType",
-            context => new HelloWorldStateful(context, 
-                new ReliableStateManager(context, 
-        new ReliableStateManagerConfiguration(
-                        new ReliableStateManagerReplicatorSettings()
-            {
-                RetryInterval = TimeSpan.FromSeconds(3)
-                        }
-            )))).GetAwaiter().GetResult();
-    }
-}    
-```
-```csharp
-class MyStatefulService : StatefulService
-{
-    public MyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica stateManager)
-        : base(context, stateManager)
-    { }
-    ...
-}
-```
+
+	class Program
+	{
+	    /// <summary>
+	    /// This is the entry point of the service host process.
+	    /// </summary>
+	    static void Main()
+	    {
+	        ServiceRuntime.RegisterServiceAsync("HelloWorldStatefulType",
+	            context => new HelloWorldStateful(context, 
+	                new ReliableStateManager(context, 
+	        new ReliableStateManagerConfiguration(
+	                        new ReliableStateManagerReplicatorSettings()
+	            {
+	                RetryInterval = TimeSpan.FromSeconds(3)
+	                        }
+	            )))).GetAwaiter().GetResult();
+	    }
+	}    
+
+
+	class MyStatefulService : StatefulService
+	{
+	    public MyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica stateManager)
+	        : base(context, stateManager)
+	    { }
+	    ...
+	}
+
 
 
 ### 示例配置文件
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
-   <Section Name="ReplicatorConfig">
-      <Parameter Name="ReplicatorEndpoint" Value="ReplicatorEndpoint" />
-      <Parameter Name="BatchAcknowledgementInterval" Value="0.05"/>
-      <Parameter Name="CheckpointThresholdInMB" Value="512" />
-   </Section>
-   <Section Name="ReplicatorSecurityConfig">
-      <Parameter Name="CredentialType" Value="X509" />
-      <Parameter Name="FindType" Value="FindByThumbprint" />
-      <Parameter Name="FindValue" Value="9d c9 06 b1 69 dc 4f af fd 16 97 ac 78 1e 80 67 90 74 9d 2f" />
-      <Parameter Name="StoreLocation" Value="LocalMachine" />
-      <Parameter Name="StoreName" Value="My" />
-      <Parameter Name="ProtectionLevel" Value="EncryptAndSign" />
-      <Parameter Name="AllowedCommonNames" Value="My-Test-SAN1-Alice,My-Test-SAN1-Bob" />
-   </Section>
-</Settings>
-```
+
+	<?xml version="1.0" encoding="utf-8"?>
+	<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+	   <Section Name="ReplicatorConfig">
+	      <Parameter Name="ReplicatorEndpoint" Value="ReplicatorEndpoint" />
+	      <Parameter Name="BatchAcknowledgementInterval" Value="0.05"/>
+	      <Parameter Name="CheckpointThresholdInMB" Value="512" />
+	   </Section>
+	   <Section Name="ReplicatorSecurityConfig">
+	      <Parameter Name="CredentialType" Value="X509" />
+	      <Parameter Name="FindType" Value="FindByThumbprint" />
+	      <Parameter Name="FindValue" Value="9d c9 06 b1 69 dc 4f af fd 16 97 ac 78 1e 80 67 90 74 9d 2f" />
+	      <Parameter Name="StoreLocation" Value="LocalMachine" />
+	      <Parameter Name="StoreName" Value="My" />
+	      <Parameter Name="ProtectionLevel" Value="EncryptAndSign" />
+	      <Parameter Name="AllowedCommonNames" Value="My-Test-SAN1-Alice,My-Test-SAN1-Bob" />
+	   </Section>
+	</Settings>
+
 
 
 ### 备注
@@ -156,9 +157,7 @@ MaxRecordSizeInKB 设置用于定义可由复制器写入日志文件的记录�
 SharedLogId 和 SharedLogPath 设置始终一起使用，使服务可以使用与节点的默认共享日志不同的共享日志。为获得最佳效率，应让尽可能多的服务指定相同共享日志。共享日志文件应置于仅用于共享日志文件的磁盘上，以便减少磁头运动争用。我们预期此值只在极少数情况下需要更改。
 
 ## 后续步骤
- - [在 Visual Studio 中调试 Service Fabric 应用程序](/documentation/articles/service-fabric-debugging-your-application)
+ - [在 Visual Studio 中调试 Service Fabric 应用程序](/documentation/articles/service-fabric-debugging-your-application/)
  - [Reliable Services 的开发人员参考](https://msdn.microsoft.com/zh-cn/library/azure/dn706529.aspx)
 
-
-
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0801_2016-->

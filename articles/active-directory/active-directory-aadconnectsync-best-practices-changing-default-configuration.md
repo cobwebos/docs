@@ -10,7 +10,7 @@
 <tags
 	ms.service="active-directory"
 
-	ms.date="05/10/2016"
+	ms.date="06/27/2016"
 	wacn.date=""/>
 
 
@@ -26,7 +26,7 @@ Azure AD Connect 同步在安装向导创建的服务帐户下运行。此服务
 - **不支持**更改或重置服务帐户的密码。这样做会破坏加密密钥，服务将无法访问数据库且无法启动。
 
 ## 计划程序的更改
-从内部版本 1.1（2016 年 2 月）开始，你可以将[计划程序](/documentation/articles/active-directory-aadconnectsync-feature-scheduler)配置为使用非默认的同步周期（默认周期为 30 分钟）。
+从内部版本 1.1（2016 年 2 月）开始，你可以将[计划程序](/documentation/articles/active-directory-aadconnectsync-feature-scheduler/)配置为使用非默认的同步周期（默认周期为 30 分钟）。
 
 ## 同步规则的更改
 安装向导提供的配置应该适用于最常见的方案。如果需要对配置进行更改，必须遵循这些规则，以便仍可保留支持的配置。
@@ -79,9 +79,9 @@ Fabrikam 中有对名字、姓氏和显示名称使用本地字母的林。以�
 
 ![扩展属性](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/badextensionattribute.png)
 
-- 创建新的入站同步规则并填充说明 
+- 创建新的入站同步规则并填充说明
 ![说明](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/syncruledescription.png)
-- 创建类型为 **Expression** 且源为 **AuthoritativeNull** 的属性流。即使优先顺序较低的同步规则尝试填充值，文本值 **AuthoritativeNull** 也会指出 MV 中的值应该为空。
+- 创建类型为 Expression 且源为 AuthoritativeNull 的属性流。即使优先顺序较低的同步规则尝试填充值，文本值 AuthoritativeNull 也会指出 MV 中的值应该为空。
 ![扩展属性](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/syncruletransformations.png)
 - 保存同步规则。启动“同步服务”，查找连接器，然后依次选择“运行”和“完全同步”。这将重新计算所有属性流。
 - 通过搜索连接器空间来验证是否即将导出所需的更改。
@@ -108,8 +108,8 @@ Fabrikam 中有对名字、姓氏和显示名称使用本地字母的林。以�
 在这个克隆的规则中，对范围、联接和转换进行任何必要的更改。
 
 ## 后续步骤
-了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis)配置的详细信息。
+了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis/)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0801_2016-->

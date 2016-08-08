@@ -13,21 +13,9 @@
 
 # 在 Azure 自动化中执行 Runbook
 
-[AZURE.ACOM]{
+在 Azure 自动化中启动 Runbook 时，将会创建一个作业。作业是 Runbook 的单一执行实例。将分配一个 Azure 自动化工作线程来运行每个作业。尽管工作线程由多个 Azure 帐户共享，但不同自动化帐户中的作业是相互独立的。你无法控制要由哪个工作线程为作业的请求提供服务。一个 Runbook 可以同时运行多个作业。当你在 Azure 经典门户中查看 Runbook 列表时，列表中会列出上次为每个 Runbook 启动的作业的状态。 [AZURE.ACN]{ 经典管理 [AZURE.ACN]} 门户，它将列出上次为每个 Runbook 启动的作业的状态。可以查看每个 Runbook 的作业列表以跟踪每个作业的状态。有关不同作业状态的说明，请参阅[作业状态](#job-statuses)。
 
-在 Azure 自动化中启动 Runbook 时，将会创建一个作业。作业是 Runbook 的单一执行实例。将分配一个 Azure 自动化工作线程来运行每个作业。尽管工作线程由多个 Azure 帐户共享，但不同自动化帐户中的作业是相互独立的。你无法控制要由哪个工作线程为作业的请求提供服务。一个 Runbook 可以同时运行多个作业。当你在 Azure 门户中查看 Runbook 列表时，列表中会列出上次为每个 Runbook 启动的作业的状态。可以查看每个 Runbook 的作业列表以跟踪每个作业的状态。有关不同作业状态的说明，请参阅[作业状态](#job-statuses)。
-
-下图显示[图形 Runbook](/documentation/articles/automation-runbook-types/#graphical-runbooks) 和 [PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/#powershell-workflow-runbooks) 的 Runbook 作业生命周期。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-在 Azure 自动化中启动 Runbook 时，将会创建一个作业。作业是 Runbook 的单一执行实例。将分配一个 Azure 自动化工作线程来运行每个作业。尽管工作线程由多个 Azure 帐户共享，但不同自动化帐户中的作业是相互独立的。你无法控制要由哪个工作线程为作业的请求提供服务。一个 Runbook 可以同时运行多个作业。当你在 Azure 经典管理门户中查看 Runbook 列表时，列表中会列出为每个 Runbook 启动的最后一个作业的状态。可以查看每个 Runbook 的作业列表以跟踪每个作业的状态。有关不同作业状态的说明，请参阅[作业状态](#job-statuses)。
-
-下图显示 PowerShell 工作流 Runbook 的 Runbook 作业生命周期。
-
-[AZURE.ACN]}
+下图显示了 [AZURE.ACOM]{ [图形 Runbook](/documentation/articles/automation-runbook-types/#graphical-runbooks) 和 [PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/#powershell-workflow-runbooks) 的 Runbook 作业生命周期 [AZURE.ACOM]} [AZURE.ACN]{ PowerShell 工作流 Runbook [AZURE.ACN]}。
 
 ![作业状态 - PowerShell 工作流](./media/automation-runbook-execution/job-statuses.png)
 
@@ -48,12 +36,7 @@
 | 状态| 说明|
 |:---|:---|
 |已完成|作业已成功完成。|
-|[AZURE.ACOM]{|
-|已失败| 对于[图形 Runbook 和 PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/)，Runbook 无法编译。就 [PowerShell 脚本 Runbook](/documentation/articles/automation-runbook-types/) 来说，是指 Runbook 无法启动或作业遇到异常。 |
-|[AZURE.ACOM]}|
-|[AZURE.ACN]{|
-|已失败| 对于 PowerShell 工作流的 Runbook，Runbook 无法编译。 |
-|[AZURE.ACN]}|
+|已失败| 对于 [AZURE.ACOM]{ [图形和 PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/) [AZURE.ACOM]} [AZURE.ACN]{ PowerShell 工作流 Runbook [AZURE.ACN]}，Runbook 无法编译。[AZURE.ACOM]就 [PowerShell 脚本 Runbook](/documentation/articles/automation-runbook-types/) 来说，是指 Runbook 无法启动或作业遇到异常。[AZURE.ACOM]} |
 |失败，正在等待资源|作业失败，因为它已达到[公平份额](#fairshare)限制三次，并且每次都已从同一个检查点或 Runbook 开始处启动。|
 |已排队|作业正在等待提供自动化工作线程的资源，以便能够启动。|
 |正在启动|作业已分配给工作线程，并且系统正在将它启动。|
@@ -62,14 +45,8 @@
 |正在运行，正在等待资源|作业已卸载，因为它已达到[公平份额](#fairshare)限制。片刻之后，它将从其上一个检查点恢复。|
 |已停止|作业在完成之前已被用户停止。|
 |正在停止|系统正在停止作业。|
-|[AZURE.ACOM]{|
-|已挂起|作业已被用户、系统或 Runbook 中的命令暂停。挂起的作业可以重新启动，并且将从其上一个检查点恢复，如果没有检查点，则从 Runbook 的开始处恢复。只有在出现异常时，系统才会挂起 Runbook。默认情况下，ErrorActionPreference 设置为 **Continue**，表示出错时作业将保持运行。如果此首选项变量设置为 **Stop**，则出错时作业将会挂起。仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/)。|
-|正在暂停|系统正在尝试按用户请求暂停作业。Runbook 只有在达到其下一个检查点后才能挂起。如果 Runbook 越过了最后一个检查点，则只有在完成后才能挂起。仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/)。|
-|[AZURE.ACOM]}|
-|[AZURE.ACN]{|
-|已挂起|作业已被用户、系统或 Runbook 中的命令暂停。挂起的作业可以重新启动，并且将从其上一个检查点恢复，如果没有检查点，则从 Runbook 的开始处恢复。只有在出现异常时，系统才会挂起 Runbook。默认情况下，ErrorActionPreference 设置为 **Continue**，表示出错时作业将保持运行。如果此首选项变量设置为 **Stop**，则出错时作业将会挂起。|
-|正在暂停|系统正在尝试按用户请求暂停作业。Runbook 只有在达到其下一个检查点后才能挂起。如果 Runbook 越过了最后一个检查点，则只有在完成后才能挂起。|
-|[AZURE.ACN]}|
+|已挂起|作业已被用户、系统或 Runbook 中的命令暂停。挂起的作业可以重新启动，并且将从其上一个检查点恢复，如果没有检查点，则从 Runbook 的开始处恢复。只有在出现异常时，系统才会挂起 Runbook。默认情况下，ErrorActionPreference 设置为 **Continue**，表示出错时作业将保持运行。如果此首选项变量设置为 **Stop**，则出错时作业将会挂起。[AZURE.ACOM]{ 仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/)。[AZURE.ACOM]} |
+|正在暂停|系统正在尝试按用户请求暂停作业。Runbook 只有在达到其下一个检查点后才能挂起。如果 Runbook 越过了最后一个检查点，则只有在完成后才能挂起。[AZURE.ACOM]{ 仅适用于[图形 Runbook 和 PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/)。[AZURE.ACOM]} |
 
 ## 使用 Azure 经典管理门户查看作业状态
 
@@ -116,23 +93,17 @@ Runbook 仪表板显示单个 Runbook 的摘要。摘要图表显示在给定的
 
 ## 公平份额
 
-[AZURE.ACOM]{
+为了在云中的所有 Runbook 之间共享资源，Azure 自动化在任何作业运行 3 小时后都会将其暂时卸载。[AZURE.ACOM]{ [图形](/documentation/articles/automation-runbook-types/#graphical-runbooks)和 [PowerShell 工作流](/documentation/articles/automation-runbook-types/#powershell-workflow-runbooks) [AZURE.ACOM]} [AZURE.ACN]{ PowerShell 工作流 [AZURE.ACN]} Runbook 将会从上一个[检查点](http://technet.microsoft.com/zh-cn/library/dn469257.aspx#bk_Checkpoints)进行恢复。在此期间，该作业将显示“正在运行，正在等待资源”状态。如果该 Runbook 没有检查点或者作业在卸载之前尚未达到第一个检查点，则会从开始处重启。[AZURE.ACOM]{ [PowerShell](/documentation/articles/automation-runbook-types/#powershell-runbooks) Runbook 始终从头开始重新启动，因为它们不支持检查点。[AZURE.ACOM]}
 
-为了在云中的所有 Runbook 之间共享资源，Azure 自动化在任何作业运行 3 小时后都会将其暂时卸载。[图形](/documentation/articles/automation-runbook-types/#graphical-runbooks) Runbook 和 [PowerShell 工作流](/documentation/articles/automation-runbook-types/#powershell-workflow-runbooks) Runbook 将会从上一个[检查点](http://technet.microsoft.com/zh-cn/library/dn469257.aspx#bk_Checkpoints)进行恢复。在此期间，该作业将显示“正在运行，正在等待资源”状态。如果该 Runbook 没有检查点或者作业在卸载之前尚未达到第一个检查点，则会从开始处重启。[PowerShell](/documentation/articles/automation-runbook-types/#powershell-runbooks) Runbook 始终从头开始重新启动，因为它们不支持检查点。
+[AZURE.ACOM]{
 
 >[AZURE.NOTE] 公平份额限制不适用于在混合 Runbook 辅助角色上执行的 Runbook 作业。
 
 [AZURE.ACOM]}
 
-[AZURE.ACN]{
-
-为了在云中的所有 Runbook 之间共享资源，Azure 自动化在任何作业运行 3 小时后都会将其暂时卸载。PowerShell 工作流 Runbook 将会从上一个[检查点](http://technet.microsoft.com/zh-cn/library/dn469257.aspx#bk_Checkpoints)进行恢复。在此期间，该作业将显示“正在运行，正在等待资源”状态。如果该 Runbook 没有检查点或者作业在卸载之前尚未达到第一个检查点，则会从开始处重启。
-
-[AZURE.ACN]}
-
 如果 Runbook 连续三次从同一个检查点或者从 Runbook 的开始处重启，则会终止并显示状态“失败，正在等待资源”。这是为了防止 Runbook 无限期运行而无法完成，因为在不重新卸载的情况下，它们无法到达下一个检查点。在此情况下，你将会收到以下异常和失败。
 
-*该作业无法继续运行，因为它已反复被系统从同一个检查点逐出。请确保你的 Runbook 在未保持其状态的情况下没有执行冗长的操作。*
+该作业无法继续运行，因为它已反复被系统从同一个检查点逐出。请确保你的 Runbook 在未保持其状态的情况下没有执行冗长的操作。
 
 在创建 Runbook 时，应确保在两个检查点之间运行任何活动的时间不超过 3 小时。你可能需要向 Runbook 添加检查点以确保它不会达到此 3 小时限制，或者需要将长时间运行的操作进行分解。例如，你的 Runbook 可能对大型 SQL 数据库执行了重新编制索引。如果这一项操作未在公平份额限制内完成，则作业将会卸载并从开始处重启。在此情况下，你应该将重新编制索引操作拆分成多个步骤（例如，一次重新编制一个表的索引），然后在每项操作的后面插入一个检查点，使作业能够在上次操作后恢复并得以完成。
 
@@ -142,4 +113,4 @@ Runbook 仪表板显示单个 Runbook 的摘要。摘要图表显示在给定的
 
 - [在 Azure 自动化中启动 Runbook](/documentation/articles/automation-starting-a-runbook/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

@@ -9,14 +9,15 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/19/2016"
+
+	ms.date="06/27/2016"
 	wacn.date=""/>
 
 
 # Azure AD Connect 同步：理解和自定义同步
 Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azure AD Connect 的一个主要组件，负责与本地环境和云中 Azure AD 之间同步标识数据相关的所有操作。Azure AD Connect 同步是 DirSync、Azure AD Sync 和 Forefront Identity Manager 的后继版本，同时配置了 Azure Active Directory 连接器。
 
-本主题是 **Azure AD Connect 同步**（也称为**同步引擎**）的主页，其中列出了与其相关的所有其他主题的链接。有关 Azure AD Connect 的链接，请参阅[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
+本主题是 Azure AD Connect 同步（也称为同步引擎）的主页，其中列出了与其相关的所有其他主题的链接。有关 Azure AD Connect 的链接，请参阅[将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)。
 
 同步服务包括两个组件，本地“Azure AD Connect 同步”组件和 Azure AD 中称为“Azure AD Connect 同步服务”的服务端组件。该服务是 DirSync、Azure AD Sync 和 Azure AD Connect 的常见服务。
 
@@ -45,8 +46,10 @@ Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azur
 [Azure AD Connect 同步服务功能](active-directory-aadconnectsyncservice-features.md) | 介绍同步服务端，以及如何在 Azure AD 中更改同步设置。
 [重复属性修复](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) | 介绍如何启用并使用 **userPrincipalName** 和 **proxyAddresses** 重复属性值复原。
 **操作和 UI** |
-[Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) | 介绍 Synchronization Service Manager UI，包括“[操作](active-directory-aadconnectsync-service-manager-ui-operations.md)”、“[连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md)”、“[Metaverse 设计器](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)”和“[Metaverse 搜索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)”选项卡。
+[Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) | 介绍 Synchronization Service Manager UI，包括“操作”[](active-directory-aadconnectsync-service-manager-ui-operations.md)、“连接器”[](active-directory-aadconnectsync-service-manager-ui-connectors.md)、“Metaverse 设计器”[](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)和“Metaverse 搜索”[](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)选项卡。
 [操作任务和注意事项](active-directory-aadconnectsync-operations.md) | 描述操作注意事项，例如灾难恢复。
+**如何...** |
+[重置 Azure AD 帐户](active-directory-aadconnectsync-howto-azureadaccount.md) | 如何重置用于从 Azure AD Connect 同步连接到 Azure AD 的服务帐户凭据。
 **详细信息和参考** |
 [端口](active-directory-aadconnect-ports.md) | 列出需要在同步引擎以及本地目录与 Azure AD 之间打开的端口。
 [与 Azure Active Directory 同步的属性](active-directory-aadconnectsync-attributes-synchronized.md) | 列出在本地 AD 与 Azure AD 之间同步的所有属性。
@@ -54,6 +57,6 @@ Azure Active Directory Connect 同步服务（Azure AD Connect 同步）是 Azur
 
 ## 其他资源
 
-* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
+* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0801_2016-->

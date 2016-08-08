@@ -6,7 +6,7 @@
 	authors="genlin"
 	manager="msmbaldwin"
 	editor="meerak"
-	tags="top-support-issue"
+	tags="billing,top-support-issue"
 	/>
 
 <tags
@@ -15,20 +15,22 @@
 	ms.tgt_pltfrm="na"
 	ms.devlang="na"
 	ms.topic="article"
-	ms.date="04/11/2016"
+	ms.date="06/21/2016"
 	ms.author="genli"/>
 
-# Azure 产品/服务 - 权益和限制，如何进行注册、购买、升级或激活
+# 如何注册、购买、升级或激活 Azure
 
 Azure 提供各种符合用户业务需求的产品/服务，让用户快速完成 Azure 使用入门。请访问 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)，获取目前提供的所有产品/服务的完整列表，详细了解每种产品/服务所涵盖的内容、权益以及在各个国家/地区的可用性。
+
+## Azure 产品/服务 - 优势和限制
 
 下表详细说明了常用产品/服务：
 
 | 产品 | 详细信息 |
 |--------------------------------------------------------------------------------------|---------|
-| 免费试用版 |• [注册和分步指南](billing-buy-sign-up-azure-subscription.md#SignupFreeTrial)<br>• [Benefits](https://azure.microsoft.com/pricing/free-trial/)（权益）</br>• [常见问题](https://azure.microsoft.com/pricing/free-trial-faq/)</br>• [将免费试用升级到即用即付](billing-buy-sign-up-azure-subscription.md#UpgradeFreeToPYG) |
-| 即用即付 | • [Sign-up](https://azure.microsoft.com/pricing/purchase-options/)（注册）</br>• [定价](https://azure.microsoft.com/pricing/) |
-| MPN（Microsoft 合作伙伴网络）- 成员每月均可免费获得 Azure 信用额度 | • [Azure Benefits for partners](https://azure.microsoft.com/offers/ms-azr-0025p/)（合作伙伴的 Azure 权益）</br>• [Enroll as a partner](http://go.microsoft.com/fwlink/?linkid=309258&clcid=0x409)（注册为合作伙伴）或 [Subscribe to Microsoft Action pack](http://go.microsoft.com/fwlink/?linkid=525768&clcid=0x409)（订阅 Microsoft 行动宝盒）</br>• 使用 Azure 信用额度 - 访问 [MPN 门户](https://partner.microsoft.com)，验证你的资格状态，并按照“软件密钥和权益”下的步骤进行操作。如果你无法验证自己的资格，请联系 [MPN support](https://partner.microsoft.com/Support/)（MPN 支持）。 |
+| 免费试用版 |• [Sign-up and step by step guide](billing-buy-sign-up-azure-subscription.md#SignupFreeTrial)（注册和分步指南）<br>• [Benefits](https://azure.microsoft.com/pricing/free-trial/)（权益）</br>• [FAQ](https://azure.microsoft.com/pricing/free-trial-faq/)（常见问题）</br>• [Upgrade Free Trial to Pay-As-You-Go](billing-buy-sign-up-azure-subscription.md#UpgradeFreeToPYG)（将免费试用升级到即用即付） |
+| 即用即付 | • [Sign-up](https://azure.microsoft.com/pricing/purchase-options/)（注册）</br>• [Pricing](https://azure.microsoft.com/pricing/)（定价） |
+| MPN（Microsoft 合作伙伴网络）- 成员每月均可免费获得 Azure 信用额度 | • [Azure Benefits for partners](https://azure.microsoft.com/offers/ms-azr-0025p/)（合作伙伴的 Azure 权益）</br>• [Enroll as a partner](http://go.microsoft.com/fwlink/?linkid=309258&clcid=0x409)（注册为合作伙伴）或 [Subscribe to Microsoft Action pack](http://go.microsoft.com/fwlink/?linkid=525768&clcid=0x409)（订阅 Microsoft 行动宝盒）</br>• 使用 Azure 信用额度 - 访问 [MPN 门户](https://partner.microsoft.com)，验证你的资格状态，并按照“软件密钥和权益”下的步骤进行操作。如果你无法验证自己的资格，请联系 [MPN 支持](https://partner.microsoft.com/Support/)。 |
 | MSDN 和 Visual Studio 订户 |• [MSDN Dev/Test Benefits](https://azure.microsoft.com/offers/ms-azr-0023p/)（MSDN 开发/测试权益）</br>• [Visual Studio subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)（Visual Studio 订户权益）</br>• [Activate Visual Studio subscriber Azure credit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)（激活 Visual Studio 订户 Azure 信用额度）</br>• [Activate MSDN Azure benefits in three simple steps](https://www.youtube.com/watch?v=SN2CA71uOEI&feature=youtu.be)（以三个简单步骤激活 MSDN Azure 权益）：<br>登录到 [MSDN account page](https://msdn.microsoft.com/subscriptions/manage/default.aspx)（MSDN 帐户页）并验证资格，然后单击“激活 Azure 权益”。如果你无法验证自己的资格，请联系 [MSDN Subscriptions Customer Service Centers](https://msdn.microsoft.com/subscriptions/contactus.aspx)（MSDN 订阅客户服务中心）。|
 | BizSpark | • [Benefits BizSpark](https://www.microsoft.com/bizspark/default.aspx#start-two)（BizSpark 权益）。有关详细信息，请参阅 [Monthly Azure credit for Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0064p/)（Visual Studio Enterprise 的每月 Azure 信用额度）<br>• [Join BizSpark](https://www.microsoft.com/bizspark/signup/default.aspx)（加入 BizSpark）。如果你遇到问题，请联系 [BizSpark 团队](mailto:bizspark@microsoft.com?subject=BizSpark%20Support&body=Thank%20you%20for%20contacting%20BizSpark.%20Please%20provide%20as%20much%20of%20the%20following%20information%20as%20possible,%20as%20it%20will%20help%20expedite%20our%20response%20to%20you.%0aContact%20name:%0aStartup%20name:%0aMicrosoft%20Account/Live%20ID:%0aSpecific%20description%20of%20issue%20experienced%20or%20question:%0a%0aThank%20you,%0a%0aThe%20BizSpark%20Team)。 |
 | BizSpark Plus |• [Learn about BizSpark Plus](https://www.microsoft.com/bizspark/plus/default.aspx)（了解 BizSpark Plus）。有关详细信息，请参阅 [BizSpark Plus Benefits](https://azure.microsoft.com/offers/ms-azr-0149p/)（BizSpark Plus 权益）</br>• [Join BizSpark](https://www.microsoft.com/bizspark/signup/default.aspx)（加入 BizSpark），并与合作伙伴联系人员合作，以便升级到 BizSpark Plus。如果你遇到问题，请联系 [BizSpark 团队](mailto:bizspark@microsoft.com?subject=BizSpark%20Support&body=Thank%20you%20for%20contacting%20BizSpark.%20Please%20provide%20as%20much%20of%20the%20following%20information%20as%20possible,%20as%20it%20will%20help%20expedite%20our%20response%20to%20you.%0aContact%20name:%0aStartup%20name:%0aMicrosoft%20Account/Live%20ID:%0aSpecific%20description%20of%20issue%20experienced%20or%20question:%0a%0aThank%20you,%0a%0aThe%20BizSpark%20Team)。 |
@@ -52,7 +54,8 @@ Azure 提供各种符合用户业务需求的产品/服务，让用户快速完�
 
  你可以选择以短信或语音呼叫的方式来接收验证代码。进行选择时，可以选择“发送短信”或“呼叫我”。在第一个框中选择你所在国家/地区的国际区号，在第二个框中输入你的电话号码。收到验证代码后，将其输入到第三个框中，然后选择“验证代码”按钮。
 
- **注意** 电话验证过程中不能使用 VOIP 电话号码。</br> ![电话验证的屏幕快照](./media/billing-buy-sign-up-azure-subscription/PhoneVerify.png)</br>如果你没有收到短信或呼叫，可尝试使用其他电话号码，或者联系 [Azure 支持](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)以获取帮助。</br>
+ **注意** 电话验证过程中不能使用 VOIP 电话号码。</br> 
+ ![电话验证的屏幕快照](./media/billing-buy-sign-up-azure-subscription/PhoneVerify.png)</br>如果你没有收到短信或呼叫，可尝试使用其他电话号码，或者联系 [Azure 支持](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)以获取帮助。</br>
 5. 在“通过信用卡进行验证”部分，输入有效信用卡的详细信息。收集该信息只是为了验证你的身份。
 
  **注意** 虽然不会向你的信用卡收费，但 Microsoft 会通过收取小额的授权保证金来验证信用卡是否有效。该保证金将在 3-5 个工作日内返回给你，具体取决于金融机构的政策。
@@ -60,14 +63,18 @@ Azure 提供各种符合用户业务需求的产品/服务，让用户快速完�
  如果你在提交信用卡信息后收到错误，请参阅以下文章：[尝试注册 Azure 时信用卡没有通过验证](billing-credit-card-fails-during-azure-sign-up.md)。
 
  ![cardverify](./media/billing-buy-sign-up-azure-subscription/VardVerify.png)
-6. 在“协议”部分，如果你同意订阅协议、产品/服务详细信息和隐私声明，则请勾选该框。然后，选择“注册”。示例屏幕快照是协议的英文版。协议形式可能因国家/地区而异。
+6. 在“协议”部分，如果你同意订阅协议、产品/服务详细信息和隐私声明，则请勾选该框。然后，选择“注册”。
+示例屏幕快照是协议的英文版。协议形式可能因国家/地区而异。
 
- ![注册](./media/billing-buy-sign-up-azure-subscription/Signup.png)</br></br> 设置订阅可能需要数分钟的时间。如果订阅设置没有在 15 分钟内完成，请联系 [Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以获取帮助。</br> 如果你收到一条错误消息，按消息中的步骤操作即可解决问题。典型的错误消息如下：
+ ![注册](./media/billing-buy-sign-up-azure-subscription/Signup.png)</br></br> 
+ 设置订阅可能需要数分钟的时间。如果订阅设置没有在 15 分钟内完成，请联系 [Azure 支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以获取帮助。</br> 
+ 如果你收到一条错误消息，按消息中的步骤操作即可解决问题。典型的错误消息如下：
 
  **抱歉，我们无法完成该操作。请稍后重试或重新加载该网页** </br>
 
- 在这种情况下，可尝试使用其他浏览器来完成注册过程。如果问题仍然存在，请联系 [Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以获取帮助。</br>
-7. 订阅准备就绪后，选择“开始管理我的服务”即可开始。</br>![startservice](./media/billing-buy-sign-up-azure-subscription/startservice.png)
+ 在这种情况下，可尝试使用其他浏览器来完成注册过程。如果问题仍然存在，请联系 [Azure 支持](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以获取帮助。</br>
+7. 订阅准备就绪后，选择“开始管理我的服务”即可开始。</br>
+ ![startservice](./media/billing-buy-sign-up-azure-subscription/startservice.png)
 
 <a name="UpgradeFreeToPYG"></a>
 ## 将 Azure 免费试用升级到即用即付
@@ -89,4 +96,4 @@ Azure 提供各种符合用户业务需求的产品/服务，让用户快速完�
 
 3. 输入产品密钥，然后选中协议选项。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0801_2016-->

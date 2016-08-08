@@ -21,14 +21,14 @@
 
 ### 场景：登录 Azure 帐户失败
 
-**错误：**
+**错误：**  
 你在使用 Add-AzureAccount 或 Login-AzureRmAccount cmdlet 时收到“Unknown\_user\_type: 用户类型未知”错误。
 
-**错误原因：**
+**错误原因：**  
 如果凭据资产名称无效或者用于设置自动化凭据资产的用户名和密码无效，则会出现此错误。
 
-**疑难解答提示：**
-为了确定具体错误，请执行以下步骤：
+**疑难解答提示：**  
+为了确定具体错误，请执行以下步骤：  
 
 1. 确保在用于连接到 Azure 的自动化凭据资产名称中没有任何特殊字符，包括 **@** 字符。
 
@@ -36,19 +36,9 @@
 
         $Cred = Get-Credential  
         #Using Azure Service Management   
-        [AZURE.ACOM]{
-        Add-AzureAccount -Credential $Cred 
-        [AZURE.ACOM]}
-        [AZURE.ACN]{
-        Add-AzureAccount -Environment AzureChinaCloud -Credential $Cred  
-        [AZURE.ACN]}
+        Add-AzureAccount [AZURE.ACN]{ -Environment AzureChinaCloud [AZURE.ACN]} -Credential $Cred  
         #Using Azure Resource Manager  
-        [AZURE.ACOM]{
-        Login-AzureRmAccount -Credential $Cred
-        [AZURE.ACOM]}
-        [AZURE.ACN]{
-        Login-AzureRmAccount -EnvironmentName AzureChinaCloud -Credential $Cred
-        [AZURE.ACN]}
+        Login-AzureRmAccount [AZURE.ACN]{ -EnvironmentName AzureChinaCloud [AZURE.ACN]} -Credential $Cred
 
 3. 如果本地身份验证失败，则意味着你尚未正确设置 Azure Active Directory 凭据。请参阅[使用 Azure Active Directory 向 Azure 进行身份验证](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)博客文章，了解如何正确设置 Azure Active Directory 帐户。
 
@@ -109,16 +99,7 @@ Runbook 作业失败，出现“已达到此订阅的每月总作业运行时间
 
 **错误原因：**
 
-[AZURE.ACOM]{
-
-当作业执行时间超过你帐户的 500 分钟免费配额时，就会出现此错误。此配额适用于所有类型的作业执行任务，例如测试作业、从门户启动作业、使用 Webhook 执行作业，以及通过 Azure 门户或数据中心计划要执行的作业。若要详细了解自动化的定价，请参阅 [Automation pricing（自动化定价）](https://azure.microsoft.com/pricing/details/automation/)。
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-当作业执行时间超过你帐户的 500 分钟免费配额时，就会出现此错误。此配额适用于所有类型的作业执行任务，例如测试作业、从门户启动作业、使用 Webhook 执行作业，以及通过 Azure 经典管理门户或数据中心计划要执行的作业。若要详细了解自动化的定价，请参阅 [Automation pricing（自动化定价）](/pricing/details/automation/)。
-
-[AZURE.ACN]}
+当作业执行时间超过你帐户的 500 分钟免费配额时，就会出现此错误。此配额适用于所有类型的作业执行任务，例如测试作业、从门户启动作业、使用 Webhook 执行作业，以及通过 Azure [AZURE.ACN]{ 经典管理 [AZURE.ACN]} 门户或数据中心计划要执行的作业。若要详细了解自动化的定价，请参阅 [AZURE.ACOM]{ [自动化定价](https://azure.microsoft.com/pricing/details/automation/) [AZURE.ACOM]} [AZURE.ACN]{ [自动化定价](/pricing/details/automation/) [AZURE.ACN]}。
 
 **疑难解答提示：**
 如果你想要每月使用 500 分钟以上的处理时间，则需将订阅从免费层改为基本层。你可以通过下述步骤升级到基本层：
@@ -130,8 +111,8 @@ Runbook 作业失败，出现“已达到此订阅的每月总作业运行时间
 4. 在“选择你的定价层”边栏选项卡中，选择“基本”
 1. [AZURE.ACOM]}
 1. [AZURE.ACN]{
-3. 单击“规模”
-4. 对于“常规”下的“自动化计划”，选择“基本”
+3. 单击“缩放”
+4. 对于“常规”下的“自动化计划”，请选择“基本”
 1. [AZURE.ACN]}
 
 
@@ -144,7 +125,7 @@ Runbook 作业失败，出现“``<cmdlet name>``: 无法将 ``<cmdlet name>`` �
 当 PowerShell 引擎找不到你要在 Runbook 中使用的 cmdlet 时，则会导致此错误。这可能是因为，帐户中缺少包含该 cmdlet 的模块、与 Runbook 名称存在名称冲突，或者该 cmdlet 也存在于其他模块中，而自动化无法解析该名称。
 
 **疑难解答提示：**
-下述解决方案中的任何一种都可以解决此问题：
+下述解决方案中的任何一种都可以解决此问题：  
 
 - 检查输入的 cmdlet 名称是否正确。
 
@@ -180,21 +161,16 @@ Runbook 作业失败，出现“``<cmdlet name>``: 无法将 ``<cmdlet name>`` �
 
 - 该模块的文件夹中缺少依赖项。
 
-- [AZURE.ACOM]{
-- 使用了 **New-AzureRmAutomationModule** cmdlet 来上载该模块，但你尚未提供完整的存储路径，或者尚未使用可公开访问的 URL 来加载该模块。
-- [AZURE.ACOM]}
+- 元素 [AZURE.ACOM]{ **New-AzureRmAutomationModule** [AZURE.ACOM]} [AZURE.ACN]{ **New-AzureAutomationModule** [AZURE.ACN]} cmdlet 用于上载该模块，但你尚未提供完整的存储路径，或者尚未使用可公开访问的 URL 来加载该模块。
 
-- [AZURE.ACN]{
-- 使用了 **New-AzureAutomationModule** cmdlet 来上载该模块，但你尚未提供完整的存储路径，或者尚未使用可公开访问的 URL 来加载该模块。
-- [AZURE.ACN]}
 
 **疑难解答提示：**  
-下述解决方案中的任何一种都可以解决此问题：  
+下述解决方案中的任何一种都可以解决此问题：
 
 - 确保模块遵循以下格式：  
 ModuleName.Zip **->** ModuleName 或版本号 **->** (ModuleName.psm1, ModuleName.psd1)
 
-- 打开 .psd1 文件，看模块是否有任何依赖项。如果有，则将这些模块上载到自动化帐户。  
+- 打开 .psd1 文件，看模块是否有任何依赖项。如果有，则将这些模块上载到自动化帐户。
 
 - 确保任何引用的 .dll 都存在于模块文件夹中。
 
@@ -210,7 +186,7 @@ ModuleName.Zip **->** ModuleName 或版本号 **->** (ModuleName.psm1, ModuleNam
 **错误原因：**
 当将节点分配到配置名称（例如 ABC）而不是节点配置名称（例如 ABC.WebServer）时，通常会发生此错误。
 
-**疑难解答提示：**  
+**疑难解答提示：**
 
 - 确保要为节点分配“节点配置名称”，而不是“配置名称”。
 
@@ -228,7 +204,7 @@ DSC 编译作业暂停，出现错误：“编译已成功完成，但未生成�
 如果 DSC 配置中 **Node** 关键字后面的表达式的计算结果为 $null，则不会生成节点配置。
 
 **疑难解答提示：**  
-下述解决方案中的任何一种都可以解决此问题：
+下述解决方案中的任何一种都可以解决此问题：  
 
 - 确保配置定义中 **Node** 关键字旁边的表达式的计算结果不为 $null。
 - 如果要在编译配置时传递 ConfigurationData，请确保从 [ConfigurationData](/documentation/articles/automation-dsc-compile/#configurationdata) 传递配置需要的预期值。
@@ -242,18 +218,20 @@ DSC 代理输出“未找到具有给定属性值的实例。”
 **错误原因：**
 已升级 WMF 版本，已损坏 WMI。
 
-**疑难解答提示：**  
+**疑难解答提示：**
 请按照 [DSC 已知问题和限制](https://msdn.microsoft.com/powershell/wmf/limitation_dsc)博客文章中的说明解决此问题。
 
 
 ### 场景：无法在 DSC 配置中使用凭据
 
-**错误：**DSC 编译作业已暂停，并出现错误：“在处理 ``<some resource name>`` 类型的属性 'Credential' 时出现 System.InvalidOperationException 错误: 仅当 PSDscAllowPlainTextPassword 设置为 true 时，才允许将已加密的密码转换并存储为纯文本”。
+**错误：**
+DSC 编译作业已暂停，并出现错误：“在处理 ``<some resource name>`` 类型的属性 'Credential' 时出现 System.InvalidOperationException 错误: 仅当 PSDscAllowPlainTextPassword 设置为 true 时，才允许将已加密的密码转换并存储为纯文本”。
 
-**错误原因：**已在配置中使用凭据，但未提供正确 **ConfigurationData**，从而无法将每个节点配置的 **PSDscAllowPlainTextPassword** 设置为 true。
+**错误原因：**
+已在配置中使用凭据，但未提供正确 **ConfigurationData**，从而无法将每个节点配置的 **PSDscAllowPlainTextPassword** 设置为 true。
 
 **疑难解答提示：**
-- 确保传入正确的 **ConfigurationData**，以便将配置中涉及的每个节点配置的 **PSDscAllowPlainTextPassword** 设置为 true。有关详细信息，请参阅 [Azure 自动化 DSC 中的资产](/documentation/articles/automation-dsc-compile/#assets)。
+- 确保传入正确的 **ConfigurationData**，以便将配置中涉及的每个节点配置的 **PSDscAllowPlainTextPassword** 设置为 true。有关详细信息，请参阅 [assets in Azure Automation DSC（Azure Automation DSC 中的资产）](/documentation/articles/automation-dsc-compile/#assets)。
 
 [AZURE.ACOM]}
 
@@ -261,15 +239,9 @@ DSC 代理输出“未找到具有给定属性值的实例。”
 
 如果你在完成上述疑难解答步骤以后仍对本文中的内容存有疑问，你可以：
 
-- [AZURE.ACOM]{
-- 从 Azure 专家那里获取帮助。向 [MSDN Azure 或 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)提交问题。
-- [AZURE.ACOM]}
+- 从 Azure 专家那里获取帮助。将问题提交到 [AZURE.ACOM]{ [MSDN Azure 或 Stack Overflow 论坛。](https://azure.microsoft.com/support/forums/) [AZURE.ACOM]} [AZURE.ACN]{ [MSDN Azure 或 CSDN Azure](/support/forums) [AZURE.ACN]}
 
-- [AZURE.ACN]{
-- 从 Azure 专家那里获取帮助。向 [MSDN Azure 或 CSDN Azure](/support/forums) 提交问题。
-- [AZURE.ACN]}
-
-- 提出 Azure 支持事件。转到“[Azure 支持站点](/support/contact)”，单击“技术和帐单支持”下的“获得支持”。
+- 提出 Azure 支持事件。转到[](/support/contact)“Azure 支持站点”，单击“技术和帐单支持”下的“获得支持”。
 
 - [AZURE.ACOM]{
 - 如果你正在寻找 Azure 自动化 Runbook 解决方案或集成模块，请在[脚本中心](https://azure.microsoft.com/documentation/scripts/)发布脚本请求。
@@ -277,4 +249,4 @@ DSC 代理输出“未找到具有给定属性值的实例。”
 
 - 将关于 Azure 自动化的反馈或功能请求发布到[用户之声](/product-feedback)。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

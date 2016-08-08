@@ -97,4 +97,4 @@ UserWriteback | 目前不支持。
 
 - [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

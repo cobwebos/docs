@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="06/01/2016"
+	ms.date="06/27/2016"
 	wacn.date=""/>
 
 
@@ -392,7 +392,7 @@
 | mailNickName| X| X| X| |
 | member| | | X| |
 | objectSID| X| | | 机械属性。用于维护 Azure AD 和 AD 之间的同步的 AD 用户标识符。|
-| proxyAddresses| X| X| x| |
+| proxyAddresses| X| X| X| |
 | pwdLastSet| X| | | 机械属性。用于了解使已颁发令牌失效的时间。由密码同步和联合使用。|
 | sn| X| X| | |
 | sourceAnchor| X| X| X| 机械属性。用于保持 ADDS 与 Azure AD 之间的关系的不可变标识符。|
@@ -458,11 +458,11 @@
 
 ## 说明
 - 使用替代 ID 时，本地属性 userPrincipalName 将与 Azure AD 属性 onPremisesUserPrincipalName 同步。替代 ID 属性（例如 mail）将与 Azure AD 属性 userPrincipalName 同步。
-- 在上述列表中，对象类型 **User** 也适用于对象类型 **iNetOrgPerson**。
+- 在上述列表中，对象类型 User 也适用于对象类型 iNetOrgPerson。
 
 ## 后续步骤
-了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis)配置的详细信息。
+了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis/)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0801_2016-->

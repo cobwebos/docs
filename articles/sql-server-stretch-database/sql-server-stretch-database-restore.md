@@ -1,5 +1,5 @@
 <properties
-	pageTitle="还原已启用延伸的数据库 | Microsoft Azure"
+	pageTitle="还原已启用延伸的数据库 | Azure"
 	description="了解如何还原已启用延伸的数据库。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
@@ -9,25 +9,21 @@
 
 <tags
 	ms.service="sql-server-stretch-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/14/2016"
-	ms.author="douglasl"/>
+	ms.date="07/06/2016"
+	wacn.date=""/>
 
 # 还原已启用延伸的数据库
 
 必要时还原备份的数据库可从许多类型的故障、错误和灾难中恢复。
 
-有关备份的详细信息，请参阅[备份已启用延伸的数据库](sql-server-stretch-database-backup.md)。
+有关备份的详细信息，请参阅[备份已启用延伸的数据库](/documentation/articles/sql-server-stretch-database-backup)。
 
 >   [AZURE.NOTE] 备份只是完整的高可用性和业务连续性解决方案的一个部分。有关高可用性的详细信息，请参阅[高可用性解决方案](https://msdn.microsoft.com/library/ms190202.aspx)。
 
 ## 还原 SQL Server 数据
 若要从硬件故障或损坏中恢复，请从备份还原已启用延伸的 SQL Server 数据库。你可以继续使用当前使用的 SQL Server 还原方法。有关详细信息，请参阅[还原和恢复概述](https://msdn.microsoft.com/library/ms191253.aspx)。
 
-还原 SQL Server 数据库之后，必须运行存储过程 **sys.sp\_rda\_reauthorize\_db** 才能在已启用延伸的 SQL Server 数据库和远程 Azure 数据库之间重新建立连接。有关详细信息，请参阅[还原 SQL Server 数据库和远程 Azure 数据库之间的连接](#Restore-the-connection-between-the-SQL-Server-database-and-the-remote-Azure-database)。
+还原 SQL Server 数据库之后，必须运行存储过程 **sys.sp_rda_reauthorize_db** 才能在已启用延伸的 SQL Server 数据库和远程 Azure 数据库之间重新建立连接。有关详细信息，请参阅[还原 SQL Server 数据库和远程 Azure 数据库之间的连接](#Restore-the-connection-between-the-SQL-Server-database-and-the-remote-Azure-database)。
 
 ## 还原远程 Azure 数据
 
@@ -56,44 +52,31 @@ Azure 上的 SQL Server Stretch Database 服务在删除数据库之前会创建
 5. 指定新的**数据库名称**，然后单击“创建”。
 6. 数据库还原过程随即将会开始，你可以使用“通知”监视还原进度。
 
-### 在不同 Azure 区域中恢复 Azure 数据库  
-在发生区域性的故障时，Azure 上的 SQL Server Stretch Database 服务以异步方式将快照复制到其他 Azure 地理区域，以提高可恢复性。如果你由于 Azure 区域故障而无法访问数据库，可以将数据库还原到某个异地冗余的快照。
-
->   [AZURE.NOTE] 在不同 Azure 区域中恢复 Azure 数据库需要在恢复后更改客户端应用程序中的连接字符串，并可能会导致数据永久丢失。仅当中断可能会持续很长时间时，才执行此类型的恢复。
-
-若要使用 Azure 门户在不同 Azure 区域中将 Azure 数据库还原到较早的时间点，请执行以下操作。
-
-1. 登录到 Azure 门户。
-2. 在屏幕左侧选择“+新建”，选择“数据和存储”，然后选择“SQL 数据仓库”
-3. 选择“备份”作为源，然后选择要从中进行恢复的异地冗余备份
-4. 指定余下的数据库属性，然后单击“创建”
-5. 数据库还原过程随即将会开始，你可以使用“通知”监视还原进度
-
-在不同区域中还原 Azure 数据库之后，必须运行存储过程 **sys.sp\_rda\_deauthorize\_db** 和 **sys.sp\_rda\_reauthorize\_db** 才能在已启用延伸的 SQL Server 数据库和远程 Azure 数据库之间重新建立连接。有关详细信息，请参阅[还原 SQL Server 数据库和远程 Azure 数据库之间的连接](#Restore-the-connection-between-the-SQL-Server-database-and-the-remote-Azure-database)。
-
 ## 还原 SQL Server 数据库和远程 Azure 数据库之间的连接
 
-1.  如果你要使用不同的名称或在不同区域中连接到已还原的 Azure 数据库，请运行存储过程 [sys.sp\_rda\_deauthorize\_db](https://msdn.microsoft.com/library/mt703716.aspx) 以与以前的 Azure 数据库断开连接。  
+1.  如果你要使用不同的名称或在不同区域中连接到已还原的 Azure 数据库，请运行存储过程 [sys.sp_rda_deauthorize_db](https://msdn.microsoft.com/library/mt703716.aspx) 以与以前的 Azure 数据库断开连接。
 
-2.  运行存储过程 [sys.sp\_rda\_reauthorize\_db](https://msdn.microsoft.com/library/mt131016.aspx)，以将已启用延伸的本地数据库重新连接到 Azure 数据库。
+2.  运行存储过程 [sys.sp_rda_reauthorize_db](https://msdn.microsoft.com/library/mt131016.aspx)，以将已启用延伸的本地数据库重新连接到 Azure 数据库。
 
-	-   提供现有的数据库范围凭据作为 sysname 或 varchar(128) 值。（不要使用 varchar(max)。） 你可以在视图 **sys.database\_scoped\_credentials** 中查找凭据名称。  
+	-   提供现有的数据库范围凭据作为 sysname 或 varchar(128) 值。（不要使用 varchar(max)。） 你可以在视图 **sys.database\_scoped\_credentials** 中查找凭据名称。
 
 	-   指定是否要制作远程数据的副本并连接到该副本（推荐）。
 
-	```tsql  
-	DECLARE @credentialName nvarchar(128);   
-	SET @credentialName = N'<existing_database_scoped_credential_name>';   
-	EXEC sp_rda_reauthorize_db @credential = @credentialName, @with_copy = 1;  
 
-	```  
+	    	USE <Stretch-enabled database name>;
+		GO
+		EXEC sp_rda_reauthorize_db
+		    @credential = N'<existing_database_scoped_credential_name>',
+			@with_copy = 1 ;  
+		GO
+
 
 ## 另请参阅
 
-[延伸数据库的管理和故障排除](sql-server-stretch-database-manage.md)
+[延伸数据库的管理和故障排除](/documentation/articles/sql-server-stretch-database-manage/)
 
-[sys.sp\_rda\_reauthorize\_db (Transact-SQL)](https://msdn.microsoft.com/library/mt131016.aspx)
+[sys.sp_rda_reauthorize_db (Transact-SQL)](https://msdn.microsoft.com/zh-cn/library/mt131016.aspx)
 
-[备份和还原 SQL Server 数据库](https://msdn.microsoft.com/library/ms187048.aspx)
+[备份和还原 SQL Server 数据库](https://msdn.microsoft.com/zh-cn/library/ms187048.aspx)
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0801_2016-->

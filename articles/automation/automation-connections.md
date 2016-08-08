@@ -13,17 +13,7 @@
 
 # Azure 自动化中的连接资产
 
-[AZURE.ACOM]{
-
-自动化连接资产包含从 Runbook 或 DSC 配置连接到外部服务或应用程序所需的信息。除 URL 和端口等连接信息外，还包括身份验证所需的信息，如用户名和密码。使用连接的值将用于连接一个特定应用程序的所有属性保留在一个资产中，而不是创建多个变量。用户可以从一个位置编辑连接的值，并且你可以在单个参数中将连接名称传递给 Runbook 或 DSC 配置。可在 Runbook 或 DSC 配置中使用 **Get-AutomationConnection** 活动访问连接的属性。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-自动化连接资产包含从 Runbook 连接到外部服务或应用程序所需的信息。除 URL 和端口等连接信息外，还包括身份验证所需的信息，如用户名和密码。使用连接的值将用于连接一个特定应用程序的所有属性保留在一个资产中，而不是创建多个变量。用户可以从一个位置编辑连接的值，并且您可以在单个参数中将连接名称传递给 Runbook。可在 Runbook 中使用 **Get-AutomationConnection** 活动访问连接的属性。
-
-[AZURE.ACN]}
+自动化连接资产包含从 Runbook 连接到外部服务或应用程序所需的信息。 [AZURE.ACOM]{ 或 DSC 配置 [AZURE.ACOM]}。除 URL 和端口等连接信息外，还包括身份验证所需的信息，如用户名和密码。使用连接的值将用于连接一个特定应用程序的所有属性保留在一个资产中，而不是创建多个变量。用户可以从一个位置编辑连接的值，并且你可以在单个参数中将连接名称传递给 Runbook。 [AZURE.ACOM]{ 或 DSC 配置 [AZURE.ACOM]} 单个参数。可以在 Runbook 中访问连接的属性 [AZURE.ACOM]{ 或 DSC 配置 [AZURE.ACOM]} 使用 **Get-AutomationConnection** 活动。
 
 当创建连接时，必须指定“连接类型”。连接类型是定义了一组属性的模板。连接为其连接类型中定义的每个属性定义值。连接类型通过集成模块添加到 Azure 自动化或使用 [Azure 自动化 API](http://msdn.microsoft.com/zh-cn/library/azure/mt163818.aspx) 创建。在创建连接时，仅能使用安装到你的自动化帐户中的连接类型。
 
@@ -31,17 +21,7 @@
 
 ## Windows PowerShell Cmdlet
 
-[AZURE.ACOM]{
-
-下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化连接。可在自动化 Runbook 和 DSC 配置中使用的 [Azure PowerShell 模块](/documentation/articles/powershell-install-configure/)已随附了这些 cmdlet。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化连接。可在自动化 Runbook 中使用的 [Azure PowerShell 模块](/documentation/articles/powershell-install-configure/)已随附了这些 cmdlet。
-
-[AZURE.ACN]}
+下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化连接。可在自动化 Runbook 中使用的 [Azure PowerShell 模块](/documentation/articles/powershell-install-configure/)已随附了这些 cmdlet。 [AZURE.ACOM]{ 和 DSC 配置 [AZURE.ACOM]}。
 
 |Cmdlet|说明|
 |:---|:---|
@@ -52,33 +32,13 @@
 
 ## 活动
 
-[AZURE.ACOM]{
-
-下表中的活动用于在 Runbook 或 DSC 配置中访问连接。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-下表中的活动用于在 Runbook 中访问连接。
-
-[AZURE.ACN]}
+下表中的活动用于在 Runbook 中访问连接。 [AZURE.ACOM]{ 或 DSC 配置 [AZURE.ACOM]}。
 
 |活动|说明|
 |---|---|
 |Get-AutomationConnection|获取要使用的连接。返回包括该连接属性的哈希表。|
 
-[AZURE.ACOM]{
-
->[AZURE.NOTE] 应避免在 **Get- AutomationConnection** 的 -Name 参数中使用变量，因为这可能会使设计时发现 Runbook 或 DSC 配置与连接资产之间的依赖关系变得复杂化。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
->[AZURE.NOTE] 应避免在 **Get- AutomationConnection** 的 –Name 参数中使用变量，因为这可能会使设计时发现 Runbook 与连接资产之间的依赖关系变得复杂化。
-
-[AZURE.ACN]}
+>[AZURE.NOTE] 应避免在 **Get-AutomationConnection** 的 –Name 参数中使用变量，因为这可能会使设计时发现 Runbook 与凭据资产之间的依赖关系变得复杂化。 [AZURE.ACOM]{ 或 DSC 配置[AZURE.ACOM]} 和设计时的连接资产。
 
 ## 创建新连接
 
@@ -119,29 +79,9 @@
 	New-AzureAutomationConnection -AutomationAccountName "MyAutomationAccount" -Name "TwilioConnection" -ConnectionTypeName "Twilio" -ConnectionFieldValues $FieldValues
 
 
-[AZURE.ACOM]{
+## 在 Runbook 中使用连接 [AZURE.ACOM]{ 或 DSC 配置 [AZURE.ACOM]}
 
-## 在 Runbook 或 DSC 配置中使用连接
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-## 在 Runbook 中使用连接
-
-[AZURE.ACN]}
-
-[AZURE.ACOM]{
-
-在 Runbook 或 DSC 配置中使用 **Get-AutomationConnection** cmdlet 检索连接。此活动检索连接中的不同字段的值，并将它们按[哈希表](https://technet.microsoft.com/zh-cn/library/hh847780.aspx)返回，该哈希表随后可用于 Runbook 或 DSC 配置中的相应命令。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-在 Runbook 中使用 **Get-AutomationConnection** cmdlet 检索连接。此活动检索连接中的不同字段的值，并将它们按[哈希表](https://technet.microsoft.com/zh-cn/library/hh847780.aspx)返回，该哈希表随后可用于 Runbook 中适当的命令。
-
-[AZURE.ACN]}
+检索 Runbook 中的连接 [AZURE.ACOM]{ 或 DSC 配置 [AZURE.ACOM]} 使用 **Get-AutomationConnection** cmdlet。此活动检索连接中的不同字段的值，并将它们按[哈希表](https://technet.microsoft.com/zh-cn/library/hh847780.aspx)返回，该哈希表随后可用于 Runbook 中适当的命令。 [AZURE.ACOM]{ 或 DSC 配置 [AZURE.ACOM]}。
 
 ### 文本 Runbook 示例
 下面的示例命令演示如何使用前面示例中的 Twilio 连接从 Runbook 中发送短信。此处使用的 Send-TwilioSMS 活动具有两个参数集，它们分别使用不同方法对 Twilio 服务进行身份验证。其中一个使用连接对象，而另一个对“帐户 SID”和“授权令牌”使用单个参数。此示例中显示了这两种方法。
@@ -183,4 +123,4 @@
 
 [AZURE.ACOM]}
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

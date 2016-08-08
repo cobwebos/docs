@@ -4,13 +4,13 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeffsta"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
 	ms.service="active-directory"
 
-	ms.date="04/20/2016"
+	ms.date="07/18/2016"
 	wacn.date=""/>
 
 # 将用户分配到自定义域
@@ -53,10 +53,10 @@
 
 ## 后续步骤
 
--   [使用自定义域名来简化用户登录体验](/documentation/articles/active-directory-add-domain)
+-   [使用自定义域名来简化用户登录体验](/documentation/articles/active-directory-add-domain/)
 
--   [管理自定义域名](/documentation/articles/active-directory-add-manage-domain-names)
+-   [管理自定义域名](/documentation/articles/active-directory-add-manage-domain-names/)
 
--   [了解 Azure AD 中的域管理概念](/documentation/articles/active-directory-add-domain-concepts)
+-   [了解 Azure AD 中的域管理概念](/documentation/articles/active-directory-add-domain-concepts/)
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0801_2016-->

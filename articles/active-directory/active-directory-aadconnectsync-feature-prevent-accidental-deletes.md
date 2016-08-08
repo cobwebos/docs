@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="05/18/2016"
+   ms.date="06/27/2016"
    wacn.date=""/>
 
 # Azure AD Connect 同步：防止意外删除
@@ -29,7 +29,7 @@
 
 ![有关防止意外删除的电子邮件](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/email.png)
 
-> *你好（技术联系人）。标识同步服务在（时间）检测到删除数目超过了为（组织名称）配置的删除阈值。在此次标识同步运行期间，总共已发送（数目）个对象进行删除。这达到或超过了配置的删除阈值，即（数目）个对象。在继续之前，我们需要你确认应该处理这些删除。有关此电子邮件中所列错误的详细信息，请参阅“防止意外删除”。*
+> 你好（技术联系人）。标识同步服务在（时间）检测到删除数目超过了为（组织名称）配置的删除阈值。在此次标识同步运行期间，总共已发送（数目）个对象进行删除。这达到或超过了配置的删除阈值，即（数目）个对象。在继续之前，我们需要你确认应该处理这些删除。有关此电子邮件中所列错误的详细信息，请参阅“防止意外删除”。
 
 在 **Synchronization Service Manager** UI 中查看导出配置文件时，还可以看到状态 `stopped-deletion-threshold-exceeded`。
 ![防止意外删除 Sync Service Manager UI](./media/active-directory-aadconnectsync-feature-prevent-accidental-deletes/syncservicemanager.png)
@@ -54,6 +54,6 @@
 ## 后续步骤
 了解有关 [Azure AD Connect 同步](active-directory-aadconnectsync-whatis.md)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0801_2016-->

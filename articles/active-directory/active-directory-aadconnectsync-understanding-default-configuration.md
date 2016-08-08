@@ -8,7 +8,7 @@
     editor=""/>
 <tags
    ms.service="active-directory"
-    ms.date="04/25/2016"
+    ms.date="06/27/2016"
    wacn.date=""/>
 
 # Azure AD Connect 同步：了解默认配置
@@ -41,7 +41,9 @@
     - `Left([mailNickname], 14) = "SystemMailbox{"`
     - `(Left([mailNickname], 4) = "CAS_" && (InStr([mailNickname], "}") > 0))`
     - `(Left([sAMAccountName], 4) = "CAS_" && (InStr([sAMAccountName], "}")> 0))`
-- 不同步不在 Exchange Online 中运行的对象。`CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))` 此位掩码 (&H21C07000) 将筛选掉以下对象：
+- 不同步不在 Exchange Online 中运行的对象。
+`CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))`  
+此位掩码 (&H21C07000) 将筛选掉以下对象：
     - 支持邮件的公共文件夹
     - 系统助理邮箱
     - 邮箱数据库邮箱（系统邮箱）
@@ -233,7 +235,7 @@ NULL
 
 ## 其他资源
 
-* [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis)
-* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
+* [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis/)
+* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0801_2016-->

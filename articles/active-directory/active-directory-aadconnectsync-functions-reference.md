@@ -9,7 +9,8 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/23/2016"
+
+	ms.date="06/27/2016"
 	wacn.date=""/>
 
 
@@ -20,7 +21,7 @@
 `<output type> FunctionName(<input type> <position name>, ..)`
 
 如果函数被重载并接受多个语法，则会列出所有的有效语法。  
-该函数为强类型函数，并会验证传递的类型是否匹配记录的类型。   
+该函数为强类型函数，并会验证传递的类型是否匹配记录的类型。  
 如果类型不匹配，则会引发错误。
 
 类型使用以下语法表示：
@@ -50,7 +51,7 @@
 **日期/时间** |  
 [DateAdd](#dateadd) | [DateFromNum](#datefromnum) | [FormatDateTime](#formatdatetime) | [Now](#now)
 [NumFromDate](#numfromdate) |  
-**目录** |  
+**Directory** |  
 [DNComponent](#dncomponent) | [DNComponentRev](#dncomponentrev) | [EscapeDNComponent](#escapedncomponent)
 **计算** |  
 [IsBitSet](#isbitset) | [IsDate](#isdate) | [IsEmpty](#isempty) | [IsGuid](#isguid)
@@ -79,7 +80,7 @@ BitAnd 函数设置值的指定位。
 **语法：**  
 `num BitAnd(num value1, num value2)`
 
-- value1、value2： 应该 AND 在一起的数字值
+- value1、value2：应该 AND 在一起的数字值
 
 **备注：**  
 此函数将两个参数转换为二进制表示形式，并将位设置为：
@@ -120,7 +121,7 @@ CBool 函数基于计算的表达式返回布尔值
 如果表达式的计算结果为非零值，则 CBool 返回 True，否则则返回 False。
 
 **示例：**  
-`CBool([attrib1] = [attrib2])`
+`CBool([attrib1] = [attrib2])`  
 
 如果两个属性具有相同的值，则返回 True。
 
@@ -175,7 +176,7 @@ Contains 函数查找多值属性内的字符串
 
 **备注：**  
 对于多值字符串属性，搜索会在值中查找子字符串。  
-对于引用属性，搜索的字符串必须与视为匹配的值完全匹配。  
+对于引用属性，搜索的字符串必须与视为匹配的值完全匹配。
 
 **示例：**  
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
@@ -198,7 +199,7 @@ ConvertFromBase64 函数将指定的 base64 编码值转换为规则的字符串
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
-这两个示例均返回 "*Hello world!*"
+这两个示例均返回 "Hello world!"
 
 ----------
 ### ConvertFromUTF8Hex
@@ -217,7 +218,7 @@ ConvertFromUTF8Hex 函数将指定的 UTF8 Hex 编码值转换为字符串。
 
 **示例：**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
-返回 "*Hello world!*"
+返回 "Hello world!"
 
 ----------
 ### ConvertToBase64
@@ -288,7 +289,7 @@ CStr 函数转换为字符串数据类型。
 **语法：**  
 `str CStr(num value)`  
 `str CStr(ref value)`  
-`str CStr(bool value)`
+`str CStr(bool value)`  
 
 - value：可以是数字值、引用属性或布尔值。
 
@@ -414,7 +415,7 @@ FormatDateTime 函数用于为具有指定格式的字符串设置 DateTime 格�
 **备注：**  
 格式的可能值可以在此处找到：[用户定义的日期/时间格式（Format 函数）](http://msdn2.microsoft.com/library/73ctwf33(VS.90).aspx)
 
-**示例：**  
+**示例：**
 
 `FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
 结果是 "2007-12-25"。
@@ -910,9 +911,9 @@ Replace 函数将所有出现的某一字符串替换为另一个字符串。
 **备注：**  
 该函数可以识别以下特殊 moniker：
 
-- \\n – 新行
-- \\r – 回车符
-- \\t – 选项卡
+- \n – 新行
+- \r – 回车符
+- \t – 选项卡
 
 **示例：**  
 `Replace([address],"\r\n",", ")`  
@@ -1119,8 +1120,8 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 
 ## 其他资源
 
-* [了解声明性设置表达式](/documentation/articles/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions)
-* [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis)
-* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
+* [了解声明性设置表达式](/documentation/articles/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions/)
+* [Azure AD Connect Sync：自定义同步选项](/documentation/articles/active-directory-aadconnectsync-whatis/)
+* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0801_2016-->

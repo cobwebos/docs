@@ -17,31 +17,11 @@
 
 ## <a name="creating-a-new-runbook"></a> 创建新的 Runbook
 
-[AZURE.ACOM]{
-
-你可以使用其中一个 Azure 门户或 Windows PowerShell 在 Azure 自动化中创建一个新的 Runbook。一旦创建了 Runbook，你就可以利用[了解 PowerShell 工作流](/documentation/articles/automation-powershell-workflow/)和 [Azure 自动化中的图形创作](/documentation/articles/automation-graphical-authoring-intro/)中的信息对其进行编辑。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-你可以使用其中一个 Azure 门户或 Windows PowerShell 在 Azure 自动化中创建一个新的 Runbook。一旦创建了 Runbook，你就可以利用[了解 PowerShell 工作流](/documentation/articles/automation-powershell-workflow/)中的信息对其进行编辑。
-
-[AZURE.ACN]}
+你可以使用其中一个 Azure 门户或 Windows PowerShell 在 Azure 自动化中创建一个新的 Runbook。一旦创建了 Runbook，你就可以利用[了解 PowerShell 工作流](/documentation/articles/automation-powershell-workflow/)中的信息对其进行编辑。 [AZURE.ACOM]{ [Azure 自动化中的图形创作](/documentation/articles/automation-graphical-authoring-intro/) [AZURE.ACOM]}。
 
 ### 使用 Azure 经典管理门户创建新的 Azure 自动化 Runbook
 
-[AZURE.ACOM]{
-
-你只能使用 Azure 门户中的 [PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/#powershell-workflow-runbooks)。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-你只能使用 Azure 经典管理门户中的 PowerShell 工作流 Runbook。
-
-[AZURE.ACN]}
+只能使用 [AZURE.ACOM]{ [PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/#powershell-workflow-runbooks) [AZURE.ACOM]} [AZURE.ACN]{ PowerShell 工作流 Runbook [AZURE.ACN]} Azure 经典管理门户。
 
 1. 在 Azure 经典管理门户中，单击“新建”>“应用程序服务”>“自动化”>“Runbook”>“快速创建”。
 2. 输入所需的信息，然后单击“创建”。Runbook 名称必须以字母开头，可以使用字母、数字、下划线和短划线。
@@ -81,6 +61,7 @@
     New-AzureRmAutomationRunbook -AutomationAccountName MyAccount `
     -Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
     [AZURE.ACOM]}
+
     [AZURE.ACN]{
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Sample-TestRunbook"
@@ -109,17 +90,7 @@
 
 ### 使用 Azure 经典管理门户从文件导入 Runbook
 
-[AZURE.ACOM]{
-
-可通过以下过程将脚本文件导入 Azure 自动化。请注意，你只能通过此门户将 .ps1 文件导入 PowerShell 工作流 Runbook。其他类型必须使用 Azure 门户。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-可通过以下过程将脚本文件导入 Azure 自动化。请注意，你只能通过此门户将 .ps1 文件导入 PowerShell 工作流 Runbook。
-
-[AZURE.ACN]}
+可通过以下过程将脚本文件导入 Azure 自动化。请注意，你只能通过此门户将 .ps1 文件导入 PowerShell 工作流 Runbook。[AZURE.ACOM]{ 其他类型必须使用 Azure 门户。[AZURE.ACOM]}
 
 1. 在 Azure 经典管理门户中，选择“自动化”，然后选择一个自动化帐户。
 2. 单击“导入”。
@@ -152,18 +123,7 @@
 
 [AZURE.ACOM]{
 
-你可以使用 [Import-AzureRMAutomationRunbook](https://msdn.microsoft.com/zh-cn/library/mt603735.aspx) cmdlet 将脚本文件导入为 PowerShell 工作流草稿 Runbook。如果 Runbook 已存在，则除非你使用 *-Force* 参数，否则导入将失败。
-
-下面的示例命令演示了如何将脚本文件导入到 Runbook 中。
-
-    $automationAccountName =  "AutomationAccount"
-    $runbookName = "Sample_TestRunbook"
-    $scriptPath = "C:\Runbooks\Sample_TestRunbook.ps1"
-    $RGName = "ResourceGroup"
-
-    Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
-    -ResourceGroupName $RGName -AutomationAccountName $automationAccountName `
-    -Type PowerShellWorkflow 
+你可以使用 [Import-AzureRMAutomationRunbook](https://msdn.microsoft.com/zh-cn/library/mt603735.aspx) cmdlet 将脚本文件导入为 PowerShell 工作流草稿 Runbook。如果 Runbook 已存在，则除非你使用 -Force 参数，否则导入将失败。
 
 [AZURE.ACOM]}
 
@@ -171,16 +131,25 @@
 
 可以使用 [Set-AzureAutomationRunbookDefinition](https://msdn.microsoft.com/zh-cn/library/dn690267.aspx) cmdlet 将脚本文件导入到现有 Runbook 的草稿版本中。脚本文件必须包含单个 Windows PowerShell 工作流。如果 Runbook 已有草稿版本，则除非你使用 Overwrite 参数，否则导入将失败。导入 Runbook 后，可以使用 [Publish-AzureAutomationRunbook](https://msdn.microsoft.com/zh-cn/library/dn690266.aspx) 来发布它。
 
-下面的示例命令演示了如何将脚本文件导入到现有 Runbook 中，然后将其发布。
+[AZURE.ACN]}
 
-    $automationAccountName = "AutomationAccount"
-    $runbookName = "Sample-TestRunbook"
-    $scriptPath = "c:\runbooks\Sample-TestRunbook.ps1"
+下面的示例命令演示了如何将脚本文件导入到 Runbook 中。
 
+    $automationAccountName =  "AutomationAccount"
+    $runbookName = "Sample_TestRunbook"
+    $scriptPath = "C:\Runbooks\Sample_TestRunbook.ps1"
+    [AZURE.ACOM]{
+    $RGName = "ResourceGroup"
+
+    Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
+    -ResourceGroupName $RGName -AutomationAccountName $automationAccountName `
+    -Type PowerShellWorkflow 
+    [AZURE.ACOM]}
+
+    [AZURE.ACN]{
     Set-AzureAutomationRunbookDefinition -AutomationAccountName $automationAccountName -Name $runbookName -Path $ scriptPath -Overwrite
     Publish-AzureAutomationRunbook -AutomationAccountName $automationAccountName -Name $runbookName
-
-[AZURE.ACN]}
+    [AZURE.ACN]}
 
 
 ## <a name="publishing-a-runbook"></a> 发布 Runbook
@@ -205,21 +174,10 @@
 
 ## 使用 Windows PowerShell 发布 Runbook
 
-[AZURE.ACOM]{
-
-可以使用 Windows PowerShell，通过 [Publish-AzureRmAutomationRunbook](https://msdn.microsoft.com/zh-cn/library/mt603705.aspx) cmdlet 来发布 Runbook。以下示例命令显示了如何发布示例 Runbook。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-可以使用 Windows PowerShell，通过 [Publish-AzureAutomationRunbook](https://msdn.microsoft.com/zh-cn/library/dn690266.aspx) cmdlet 来发布 Runbook。以下示例命令显示了如何发布示例 Runbook。
-
-[AZURE.ACN]}
+您可以使用 [AZURE.ACOM]{ [Publish-AzureRmAutomationRunbook](https://msdn.microsoft.com/zh-cn/library/mt603705.aspx) [AZURE.ACOM]} [AZURE.ACN]{ [Publish-AzureAutomationRunbook](https://msdn.microsoft.com/zh-cn/library/dn690266.aspx) [AZURE.ACN]} cmdlet 在 Windows PowerShell 中发布 Runbook。以下示例命令显示了如何发布示例 Runbook。
 
 	$automationAccountName = "AutomationAccount"
 	$runbookName = "Sample_TestRunbook"
-
 	[AZURE.ACOM]{
     $RGName = "ResourceGroup"
 
@@ -232,10 +190,10 @@
 
 
 ## 后续步骤
-- 若要了解你可以如何从 Runbook 和 PowerShell 模块库中受益，请参阅 [Azure 自动化的 Runbook 和模块库](/documentation/articles/automation-runbook-gallery/)
-- 若要了解有关使用文本编辑器编辑 PowerShell 和 PowerShell 工作流 Runbook 的详细信息，请参阅[编辑 Azure 自动化中的文本 Runbook](/documentation/articles/automation-edit-textual-runbook/)
+- 若要了解你可以如何从 Runbook 和 PowerShell 模块库中受益，请参阅 [Runbook and module galleries for Azure Automation（Azure 自动化的 Runbook 和模块库）](/documentation/articles/automation-runbook-gallery/)
+- 若要了解有关使用文本编辑器编辑 PowerShell 和 PowerShell 工作流 Runbook 的详细信息，请参阅 [Editing textual runbooks in Azure Automation（编辑 Azure 自动化中的文本 Runbook）](/documentation/articles/automation-edit-textual-runbook/)
 - [AZURE.ACOM]{
-- 若要详细了解图形 Runbook 创作，请参阅 [Azure 自动化中的图形创作](/documentation/articles/automation-graphical-authoring-intro/)
+- 若要详细了解图形 Runbook 创作，请参阅 [Graphical authoring in Azure Automation（Azure 自动化中的图形创作）](/documentation/articles/automation-graphical-authoring-intro/)
 - [AZURE.ACOM]}
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

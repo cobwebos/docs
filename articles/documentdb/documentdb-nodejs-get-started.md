@@ -1,12 +1,12 @@
 <properties
 	pageTitle="适用于 DocumentDB 的 NoSQL Node.js 教程 | Azure"
 	description="使用 DocumentDB Node.js SDK 创建节点数据库和控制台应用程序的 NoSQL Node.js 教程。DocumentDB 是用于 JSON 的 NoSQL 数据库。"
-    keywords="node.js 教程, 节点数据库"
-	services="documentdb"
-	documentationCenter="node.js"
-	authors="AndrewHoh"
-	manager="jhubbard"
-	editor="monicar"/>
+    	keywords="node.js 教程, 节点数据库"
+  	services="documentdb"
+  	documentationCenter="node.js"
+  	authors="AndrewHoh"
+  	manager="jhubbard"
+  	editor="monicar"/>
 
 <tags
 	ms.service="documentdb"
@@ -16,8 +16,8 @@
 # NoSQL Node.js 教程：DocumentDB Node.js 控制台应用程序  
 
 > [AZURE.SELECTOR]
-- [.NET](/documentation/articles/documentdb-get-started)
-- [Node.js](/documentation/articles/documentdb-nodejs-get-started)
+- [.NET](/documentation/articles/documentdb-get-started/)
+- [Node.js](/documentation/articles/documentdb-nodejs-get-started/)
 
 欢迎使用 DocumentDB Node.js SDK 的 Node.js 教程！ 学习本教程后，你将拥有一个创建并查询 DocumentDB 资源（包括节点数据库）的控制台应用程序。
 
@@ -33,7 +33,7 @@
 - 删除文档
 - 删除节点数据库
 
-没有时间？ 不必担心！ 可在 [GitHub](https://github.com/Azure-Samples/documentdb-node-getting-started) 上获取完整的解决方案。有关快速说明，请参阅 [Get the complete solution（获取完整解决方案）](#GetSolution)。
+没有时间？ 不必担心！ 可在 [GitHub](https://github.com/Azure-Samples/documentdb-node-getting-started) 上获取完整的解决方案。有关快速说明，请参阅 [Get the complete solution](#GetSolution)（获取完整解决方案）。
 
 完成 Node.js 教程后，请使用位于本页顶部和底部的投票按钮向我们提供反馈。如果你希望我们直接与你联系，欢迎将你的电子邮件地址附在评论中。
 
@@ -589,7 +589,6 @@ DocumentDB 支持删除 JSON 文档。
     Anderson.1
 
     Cleaning up by deleting database FamilyDB
-
     Completed successfully
     Press any key to exit
 
@@ -598,24 +597,24 @@ DocumentDB 支持删除 JSON 文档。
 ##<a id="GetSolution"></a>获取完整的 Node.js 教程解决方案
 若要生成包含本文所有示例的 GetStarted 解决方案，你将需要以下内容：
 
--   [DocumentDB 帐户][documentdb-create-account]。
+-   [DocumentDB 帐户][/documentation/articles/documentdb-create-account/]。
 -   GitHub 上可用的 [GetStarted](https://github.com/Azure-Samples/documentdb-node-getting-started) 解决方案。
 
 通过 npm 安装 **documentdb** 模块。请使用以下命令：
-* ```npm install documentdb --save```
+* `npm install documentdb --save`
 
 如[步骤 3：设置应用的配置](#Config)中所述，接下来在 ```config.js``` 文件中更新 config.endpoint 和 config.authKey 的值。
 
 ## 后续步骤
 
--   想要更复杂的 Node.js 示例？ 请参阅 [Build a Node.js web application using DocumentDB（使用 DocumentDB 构建 Node.js Web 应用程序）](/documentation/articles/documentdb-nodejs-application)。
--  了解如何[监视 DocumentDB 帐户](/documentation/articles/documentdb-monitor-accounts)。
+-   想要更复杂的 Node.js 示例？ 请参阅 [Build a Node.js web application using DocumentDB](/documentation/articles/documentdb-nodejs-application/)（使用 DocumentDB 构建 Node.js Web 应用程序）。
+-  了解如何[监视 DocumentDB 帐户](/documentation/articles/documentdb-monitor-accounts/)。
 -  在 [Query Playground](https://www.documentdb.com/sql/demo) 中对示例数据集运行查询。
 -  在 [DocumentDB 文档页](/documentation/services/documentdb/)的“Develop”（开发）部分中了解有关编程模型的详细信息。
 
-[documentdb-create-account]: /documentation/articles/documentdb-create-account
-[documentdb-manage]: /documentation/articles/documentdb-manage
+[documentdb-create-account]: /documentation/articles/documentdb-create-account/
+[documentdb-manage]: /documentation/articles/documentdb-manage/
 
 [keys]: media/documentdb-nodejs-get-started/node-js-tutorial-keys.png
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0801_2016-->

@@ -10,7 +10,7 @@
 <tags
 	ms.service="active-directory"
 
-	ms.date="04/21/2016"
+	ms.date="07/18/2016"
 	wacn.date=""/>
 
 # Azure Active Directory 中自定义域名的概念性概述
@@ -33,7 +33,7 @@ Azure AD 中的每个域名不是初始域名就是自定义域名。
 
 目录的初始域名会由 Azure AD 隐式评估为已验证。管理员在 Azure AD 中添加自定义域名时，其最初是未验证的状态。Azure AD 不允许任何目录资源使用未验证的域名。如此可确保只有一个目录可以使用特定的域名，而且使用域名的组织实际拥有该域名。
 
-Azure AD 通过在域名的域名服务 (DNS) 区域文件中查找特定的条目，来验证域名的所有权。若要验证域名的所有权，管理员可以从 Azure AD 获取 Azure AD 将查找的 DNS 条目，并将该条目添加到域名的 DNS 区域文件。该域的域名注册机构负责维护 DNS 区域文件。域验证步骤可在[将自定义域添加到 Azure AD 目录](/documentation/articles/active-directory-add-domain)一文中找到。
+Azure AD 通过在域名的域名服务 (DNS) 区域文件中查找特定的条目，来验证域名的所有权。若要验证域名的所有权，管理员可以从 Azure AD 获取 Azure AD 将查找的 DNS 条目，并将该条目添加到域名的 DNS 区域文件。该域的域名注册机构负责维护 DNS 区域文件。域验证步骤可在[将自定义域添加到 Azure AD 目录](/documentation/articles/active-directory-add-domain/)一文中找到。
 
 将 DNS 条目添加到域名的区域文件中，并不会影响其他域服务，例如电子邮件或 Web 托管。
 
@@ -57,12 +57,12 @@ Azure Web 应用使用其自身的机制来验证域的所有权。必须验证�
 
 可以在 Azure 经典门户和 PowerShell 中完成域管理任务。许多任务可使用 Azure AD 图形 API（公共预览版）来完成。
 
--   [添加和验证自定义域名](/documentation/articles/active-directory-add-domain)
+-   [添加和验证自定义域名](/documentation/articles/active-directory-add-domain/)
 
--   [在 Azure 经典门户中管理域](/documentation/articles/active-directory-add-manage-domain-names)
+-   [在 Azure 经典门户中管理域](/documentation/articles/active-directory-add-manage-domain-names/)
 
 -   [使用 PowerShell 管理 Azure AD 中的域名](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 
 -   [使用 Azure AD 图形 API 管理 Azure AD 中的域名](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0801_2016-->

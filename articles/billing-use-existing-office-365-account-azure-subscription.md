@@ -133,11 +133,11 @@ Office 365 和 Azure 使用 Azure Active Directory (AAD) 服务来管理用户�
 
 ![background-information](./media/billing-use-existing-office-365-account-azure-subscription/19-background-information.png)
 
-有关详细信息，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式](/documentation/articles/active-directory-how-subscriptions-associated-directory)。
+有关详细信息，请参阅 [Azure 订阅与 Azure Active Directory 的关联方式](/documentation/articles/active-directory-how-subscriptions-associated-directory/)。
 
 **说明：**
 
 - Azure 订阅由目录中的各个用户所有。
 - Office 365 订阅由目录本身所有。目录中的用户可以对这些订阅进行操作，前提是这些用户具有必需权限。
 
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0801_2016-->

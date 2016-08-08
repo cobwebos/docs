@@ -112,17 +112,7 @@ Runbook 作业的详细流将是：
 
 ##<a id="progress-record" name="Progress"></a> 进度记录
 
-[AZURE.ACOM]{
-
-如果你将 Runbook 配置为记录进度记录（在 Azure 门户中 Runbook 的“配置”选项卡上），则在运行每个活动之前和之后，会向作业历史记录中写入一条记录。在大多数情况下，你应该保留默认设置，即，不记录 Runbook 的进度记录，以最大程度地提高性能。启用此选项的目的只是为了排查 Runbook 的问题或对它进行调试。在测试 Runbook 时，将不显示进度消息，即使已将该 Runbook 配置为记录进度记录。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-如果你将 Runbook 配置为记录进度记录（在 Azure 经典管理门户中 Runbook 的“配置”选项卡上），则在运行每个活动之前和之后，会向作业历史记录中写入一条记录。在大多数情况下，你应该保留默认设置，即，不记录 Runbook 的进度记录，以最大程度地提高性能。启用此选项的目的只是为了排查 Runbook 的问题或对它进行调试。在测试 Runbook 时，将不显示进度消息，即使已将该 Runbook 配置为记录进度记录。
-
-[AZURE.ACN]}
+如果你将 Runbook 配置为记录进度记录（在 Azure [AZURE.ACN]{ 经典管理 [AZURE.ACN]} 门户中 Runbook 的“配置”选项卡上），则在运行每个活动之前和之后，会向作业历史记录中写入一条记录。在大多数情况下，你应该保留默认设置，即，不记录 Runbook 的进度记录，以最大程度地提高性能。启用此选项的目的只是为了排查 Runbook 的问题或对它进行调试。在测试 Runbook 时，将不显示进度消息，即使已将该 Runbook 配置为记录进度记录。
 
 [Write-Progress](http://technet.microsoft.com/zh-cn/library/hh849902.aspx) cmdlet 在 Runbook 中无效，因为此 cmdlet 旨在供交互式用户使用。
 
@@ -148,21 +138,9 @@ Windows PowerShell 使用 [preference 变量](http://technet.microsoft.com/zh-cn
 
 ## 检索 Runbook 输出和消息
 
-[AZURE.ACOM]{
+### Azure [AZURE.ACN]{ 经典管理 [AZURE.ACN]} 门户
 
-### Azure 门户
-
-可以从 Azure 门户中 Runbook 的“作业”选项卡查看 Runbook 作业的详细信息。作业的“摘要”将显示输入参数和[输出流](#Output)，此外，还显示有关作业的一般信息以及发生的任何异常。“历史记录”包含来自[输出流](#Output)以及[警告和错误流](#WarningError)的消息，此外，如果 Runbook 已配置为记录详细记录和进度记录，则该选项卡还包含[详细流](#Verbose)和[进度记录](#Progress)。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-### Azure 经典管理门户
-
-可以从 Azure 经典管理门户中 Runbook 的“作业”选项卡查看 Runbook 作业的详细信息。作业的“摘要”将显示输入参数和[输出流](#Output)，此外，还显示有关作业的一般信息以及发生的任何异常。“历史记录”包含来自[输出流](#Output)以及[警告和错误流](#WarningError)的消息，此外，如果 Runbook 已配置为记录详细记录和进度记录，则该选项卡还包含[详细流](#Verbose)和[进度记录](#Progress)。
-
-[AZURE.ACN]}
+可以从 Azure [AZURE.ACN]{ 经典管理 [AZURE.ACN]} 门户中 Runbook 的“作业”选项卡查看 Runbook 作业的详细信息。作业的“摘要”将显示输入参数和[输出流](#Output)，此外，还显示有关作业的一般信息以及发生的任何异常。“历史记录”包含来自[输出流](#Output)以及[警告和错误流](#WarningError)的消息，此外，如果 Runbook 已配置为记录详细记录和进度记录，则该选项卡还包含[详细流](#Verbose)和[进度记录](#Progress)。
 
 ### Windows PowerShell
 
@@ -207,8 +185,8 @@ Windows PowerShell 使用 [preference 变量](http://technet.microsoft.com/zh-cn
 
 ![“图形创作作业流”视图](./media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
-从上面的屏幕截图可以看出，为图形 Runbook 启用详细日志记录和跟踪时，在“生产作业流”视图中会提供更多信息。此额外信息对于解决 Runbook 的生产问题是非常必要的，因此应仅为该目的启用它，而不是作为一种常规做法。    
-“跟踪”记录可以特别大量。使用图形 Runbook 跟踪，每个活动可以获取二至四条记录，具体取决于是配置了基本跟踪还是详细跟踪。  除非你需要此信息来跟踪 Runbook 进度以进行故障排除，否则你可能想要使跟踪保持关闭状态。
+从上面的屏幕截图可以看出，为图形 Runbook 启用详细日志记录和跟踪时，在“生产作业流”视图中会提供更多信息。此额外信息对于解决 Runbook 的生产问题是非常必要的，因此应仅为该目的启用它，而不是作为一种常规做法。
+“跟踪”记录可以特别大量。使用图形 Runbook 跟踪，每个活动可以获取二至四条记录，具体取决于是配置了基本跟踪还是详细跟踪。除非你需要此信息来跟踪 Runbook 进度以进行故障排除，否则你可能想要使跟踪保持关闭状态。
 
 **若要启用活动级别跟踪，请执行以下步骤。**
 
@@ -228,7 +206,7 @@ Windows PowerShell 使用 [preference 变量](http://technet.microsoft.com/zh-cn
 
 ## 后续步骤
 
-- 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅[跟踪 Runbook 作业](/documentation/articles/automation-runbook-execution/)
-- 若要了解如何设计和使用子 Runbook，请参阅 [Azure 自动化中的子 Runbook](/documentation/articles/automation-child-runbooks/)
+- 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅 [Track a runbook job（跟踪 Runbook 作业）](/documentation/articles/automation-runbook-execution/)
+- 若要了解如何设计和使用子 Runbook，请参阅 [Child runbooks in Azure Automation（Azure 自动化中的子 Runbook）](/documentation/articles/automation-child-runbooks/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="backup" 
-	ms.date="06/06/2015"
+	ms.date="07/04/2016"
 	wacn.date=""/>
 
 
@@ -36,15 +36,16 @@ DPM 的 Azure 备份支持以下方案。
 针对场中的每 1000 万个项，必须有至少 2 GB 的卷空间用于放置 DPM 文件夹。此空间对目录生成是必要的。为了使 DPM 恢复特定项（网站集合、站点、列表、文档库、文件夹、单个文档与列表项），目录生成将创建一个包含在每个内容数据库中的 URL 列表。你可以在 DPM 管理员控制台的“恢复”任务区域中，查看“可恢复项”窗格中的 URL 列表。
 
 ### SQL Server
-DPM 以 LocalSystem 帐户的形式运行。若要备份 SQL Server 数据库，DPM 需要对运行 SQL Server 的服务器的帐户具有 sysadmin 特权。备份之前，先在运行 SQL Server 的服务器上将 NT AUTHORITY\\SYSTEM 设置为 sysadmin。
+DPM 以 LocalSystem 帐户的形式运行。若要备份 SQL Server 数据库，DPM 需要对运行 SQL Server 的服务器的帐户具有 sysadmin 特权。备份之前，先在运行 SQL Server 的服务器上将 NT AUTHORITY\\SYSTEM 设置为 *sysadmin*。
 
 如果 SharePoint 场有使用 SQL Server 别名配置的 SQL Server 数据库，请在 DPM 将要保护的前端 Web 服务器上安装 SQL Server 客户端组件。
 
 ### SharePoint Server
 尽管性能取决于许多因素，例如 SharePoint 场的大小，但一般做法是使用一台 DPM 服务器来保护 25 TB 的 SharePoint 场。
 
-### DPM Update Rollup 5
-若要开始在 Azure 上保护 SharePoint 场，你需要安装 DPM 更新汇总 5 或更高版本。如果使用 SQL AlwaysOn 配置 SharePoint 场，更新汇总 5 将提供在 Azure 上保护该场的功能。有关详细信息，请参阅介绍 [DPM Update Rollup 5（DPM 更新汇总 5）](http://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)的博文
+### DPM 更新汇总 5
+若要开始在 Azure 上保护 SharePoint 场，你需要安装 DPM 更新汇总 5 或更高版本。如果使用 SQL AlwaysOn 配置 SharePoint 场，更新汇总 5 将提供在 Azure 上保护该场的功能。
+有关详细信息，请参阅介绍 [DPM Update Rollup 5](http://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)（DPM 更新汇总 5）的博文
 
 ### 不支持的功能
 - 保护 SharePoint 场的 DPM 不会保护搜索索引或应用程序服务数据库。你需要单独为这些数据库配置保护。
@@ -69,7 +70,7 @@ DPM 以 LocalSystem 帐户的形式运行。若要备份 SQL Server 数据库，
 
 ### 保护 SharePoint 场
 1. 在 DPM 管理员控制台的“保护”选项卡中，单击“新建”。
-    ![“新建保护”选项卡](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
+![“新建保护”选项卡](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
 
 2. 在“创建新保护组”向导的“选择保护组类型”页上，选择“服务器”，然后单击“下一步”。
 
@@ -81,7 +82,7 @@ DPM 以 LocalSystem 帐户的形式运行。若要备份 SQL Server 数据库，
 
     >[AZURE.NOTE] 在已安装 DPM 代理的情况下，你可以在向导中看到该服务器。DPM 还会显示其结构。由于已运行 ConfigureSharePoint.exe，DPM 将与 SharePoint VSS 写入器服务及其对应的 SQL Server 数据库通信，并识别 SharePoint 场结构、关联的内容数据库和任何对应项。
 
-4. 在“选择数据保护方法”页上，输入“保护组”的名称，然后选择偏好的“保护方法”。单击“下一步”。
+4. 在“选择数据保护方法”页上，输入“保护组”的名称，然后选择偏好的“保护方法”。单击**“下一步”**。
 
     ![选择数据保护方法](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
@@ -151,7 +152,7 @@ DPM 以 LocalSystem 帐户的形式运行。若要备份 SQL Server 数据库，
 
     ![DPM SharePoint 保护 7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
 
-6. 右键单击该项，然后选择“恢复”打开“恢复向导”。单击“下一步”。
+6. 右键单击该项，然后选择“恢复”打开“恢复向导”。单击**“下一步”**。
 
     ![复查恢复选择](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 
@@ -175,7 +176,7 @@ DPM 以 LocalSystem 帐户的形式运行。若要备份 SQL Server 数据库，
 
     ![暂存位置 2](./media/backup-azure-backup-sharepoint/staging-location2.png)
 
-10. 选择“指定恢复选项”，并将安全设置应用到 SharePoint 场，或应用恢复点的安全设置。单击“下一步”。
+10. 选择“指定恢复选项”，并将安全设置应用到 SharePoint 场，或应用恢复点的安全设置。单击**“下一步”**。
 
     ![恢复选项](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
@@ -220,13 +221,13 @@ DPM 以 LocalSystem 帐户的形式运行。若要备份 SQL Server 数据库，
 5. 此时，请按照[本文前面介绍的恢复步骤](#restore-a-sharepoint-item-from-disk-using-dpm)，从磁盘恢复 Sharepoint 内容数据库。
 
 ## 常见问题
-问：哪些 DPM 版本支持 SQL Server 2014 和 SQL 2012 (SP2)？<br>
+问：哪些 DPM 版本支持 SQL Server 2014 和 SQL 2012 (SP2)？<br> 
 答：DPM 2012 R2 更新汇总 4 支持两者。
 
-问：如果使用 SQL AlwaysOn（使用磁盘上保护）配置了 SharePoint，我是否能将 SharePoint 项恢复到原始位置？<br>
+问：如果使用 SQL AlwaysOn（使用磁盘上保护）配置了 SharePoint，我是否能将 SharePoint 项恢复到原始位置？<br> 
 答：可以，该项可以恢复到原始 SharePoint 站点。
 
-问：如果使用 SQL AlwaysOn 配置了 SharePoint，我是否能将 SharePoint 数据库恢复到原始位置？<br>
+问：如果使用 SQL AlwaysOn 配置了 SharePoint，我是否能将 SharePoint 数据库恢复到原始位置？<br> 
 答：由于 SharePoint 数据库是在 SQL AlwaysOn 中配置的，因此除非删除可用性组，否则无法修改它们。因此，DPM 无法将数据库还原到原始位置。你可以将 SQL Server 数据库恢复到另一个 SQL Server 实例。
 
 ## 后续步骤
@@ -234,4 +235,4 @@ DPM 以 LocalSystem 帐户的形式运行。若要备份 SQL Server 数据库，
 - 查看 [System Center 2012 - Data Protection Manager 发行说明](https://technet.microsoft.com/library/jj860415.aspx)
 - 查看 [System Center 2012 SP1 中的 Data Protection Manager 发行说明](https://technet.microsoft.com/library/jj860394.aspx)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0801_2016-->

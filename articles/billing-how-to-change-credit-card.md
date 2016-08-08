@@ -29,7 +29,7 @@
 ## 编辑现有信用卡的付款信息
 1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。在 [Azure 门户](https://portal.azure.com)中，可以通过选择“订阅”> 订阅名称 >“管理”来访问帐户中心。
 
-	**注意：**只有帐户管理员有权访问帐户中心。有关帐户管理员的详细信息，请参阅 [How to add or change Azure administrator roles（如何添加或更改 Azure 管理员角色）](billing-add-change-azure-subscription-administrator.md)。
+	**注意：**只有帐户管理员有权访问帐户中心。有关帐户管理员的详细信息，请参阅 [How to add or change Azure administrator roles](billing-add-change-azure-subscription-administrator.md)（如何添加或更改 Azure 管理员角色）。
 
 2. 在“单击订阅以查看详细信息和使用情况”下面，选择链接到信用卡的订阅。</br> ![selectsub](./media/billing-how-to-change-credit-card/selectsub.png)
 3. 在页面右侧，选择“更改付款方式”。</br> ![changesub](./media/billing-how-to-change-credit-card/changesub.png)
@@ -51,4 +51,4 @@
 3. 在页面右侧，选择“更改付款方式”。
 4. 在“选择付款方式”页上，依次选择信用卡旁边的下拉箭头、要使用的信用卡，然后选择 ![checkbutton](./media/billing-how-to-change-credit-card/checkbutton.png) 以关闭窗口。
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0801_2016-->

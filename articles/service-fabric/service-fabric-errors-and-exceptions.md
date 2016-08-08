@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="04/13/2016"
+   ms.date="07/11/2016"
    wacn.date=""/>
 
 # 使用 FabricClient API 时常见的异常和错误
@@ -40,4 +40,4 @@
 |InvalidSubjectName|使用者名称无效。|
 |InvalidAllowedCommonNameList|公用名字符串列表的格式无效。应是逗号分隔的列表。|
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0801_2016-->

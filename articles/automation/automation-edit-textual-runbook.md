@@ -13,17 +13,7 @@
 
 # 在 Azure 自动化中编辑文本 Runbook
 
-[AZURE.ACOM]{
-
-Azure 自动化中的文本编辑器可以用来编辑 [PowerShell Runbook](/documentation/articles/automation-runbook-types/#powershell-runbooks) 和 [PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/#powershell-workflow-runbooks)。该编辑器具有其他代码编辑器的典型功能（例如智能感知和颜色编码），并提供其他特殊功能来帮助你访问 Runbook 的常用资源。本文提供了使用该编辑器执行不同功能的详细步骤。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-Azure 自动化中的文本编辑器可以用来编辑 PowerShell 工作流 Runbook。该编辑器具有其他代码编辑器的典型功能（例如智能感知和颜色编码），并提供其他特殊功能来帮助你访问 Runbook 的常用资源。本文提供了使用该编辑器执行不同功能的详细步骤。
-
-[AZURE.ACN]}
+Azure 自动化中的文本编辑器可以用来编辑 [AZURE.ACOM]{ [PowerShell Runbook](/documentation/articles/automation-runbook-types/#powershell-runbooks) 和 [PowerShell 工作流 Runbook](/documentation/articles/automation-runbook-types/#powershell-workflow-runbooks)[AZURE.ACOM]} [AZURE.ACN]{ PowerShell 工作流 Runbook [AZURE.ACN]}。该编辑器具有其他代码编辑器的典型功能（例如智能感知和颜色编码），并提供其他特殊功能来帮助你访问 Runbook 的常用资源。本文提供了使用该编辑器执行不同功能的详细步骤。
 
 该文本编辑器包含的一项功能是将活动、资产和子 Runbook 的代码插入 Runbook 中。你不需要亲自键入代码，只需从可用资源列表中进行选择，然后即可将相应代码插入 Runbook 中。
 
@@ -32,10 +22,6 @@ Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布�
 [AZURE.ACOM]{
 
 若要使用[图形 Runbook](/documentation/articles/automation-runbook-types/#graphical-runbooks)，请参阅 [Azure 自动化中的图形创作](/documentation/articles/automation-graphical-authoring-intro/)。
-
-[AZURE.ACOM]}
-
-[AZURE.ACOM]{
 
 ## 使用 Azure 门户编辑 Runbook
 
@@ -159,4 +145,4 @@ Azure 自动化中的每个 Runbook 都有两个版本：草稿版和已发布�
 - [计划](/documentation/articles/automation-schedules/)
 - [变量](/documentation/articles/automation-variables/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

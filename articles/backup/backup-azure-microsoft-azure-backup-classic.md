@@ -16,10 +16,10 @@
 # 准备使用 Azure 备份服务器来备份工作负荷
 
 > [AZURE.SELECTOR]
-- [Azure 备份服务器](backup-azure-microsoft-azure-backup.md)
-- [SCDPM](backup-azure-dpm-introduction.md)
-- [Azure 备份服务器（经典）](backup-azure-microsoft-azure-backup-classic.md)
-- [SCDPM（经典）](backup-azure-dpm-introduction-classic.md)
+- [Azure 备份服务器](/documentation/articles/backup-azure-microsoft-azure-backup/)
+- [SCDPM](/documentation/articles/backup-azure-dpm-introduction/)
+- [Azure 备份服务器（经典）](/documentation/articles/backup-azure-microsoft-azure-backup-classic/)
+- [SCDPM（经典）](/documentation/articles/backup-azure-dpm-introduction-classic/)
 
 
 本文介绍如何准备环境，以使用 Azure 备份服务器来备份工作负荷。使用 Azure 备份服务器，可以从单个控制台保护应用程序工作负荷，例如 Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange 和 Windows 客户端。
@@ -39,7 +39,7 @@
 
 > [AZURE.NOTE] 建议在包含 Windows Server 2012 R2 Datacenter 的计算机上安装 Azure 备份服务器。最新版本的 Windows 操作系统会自动安装许多必备组件。
 
-如果你打算在将来某个时间将此服务器加入域中，建议在安装 Azure 备份服务器之前完成域加入活动。部署之后，不支持将现有 Azure 备份服务器计算机移到新域中。
+如果你打算在将来某个时间将此服务器加入域中，建议在安装 Azure 备份服务器之前完成域加入活动。部署之后，*不支持*将现有 Azure 备份服务器计算机移到新域中。
 
 ## 2\.备份保管库
 
@@ -64,7 +64,7 @@
     ![创建保管库 toast 通知](./media/backup-azure-microsoft-azure-backup/creating-vault.png)
 
 6. 将出现一条消息来确认保管库已成功创建，并且将在“恢复服务”页上将保管库列出为“活动”保管库。
-    ![备份保管库列表](./media/backup-azure-microsoft-azure-backup/backup_vaultslist.png)
+![备份保管库列表](./media/backup-azure-microsoft-azure-backup/backup_vaultslist.png)
 
   > [AZURE.IMPORTANT] 确保在创建保管库后立即选择适当的存储冗余选项。请在此[概述](../storage/storage-redundancy.md)中深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)选项。
 
@@ -86,7 +86,7 @@
     ![下载中心 1](./media/backup-azure-microsoft-azure-backup/downloadcenter1.png)
 
 3. 选择所有文件，然后单击“下一步”。下载 Microsoft Azure 备份下载页中的所有文件，并将所有文件放在同一个文件夹中。
-    ![下载中心 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
+![下载中心 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
     由于所有文件的下载大小合计超过了 3G，在 10Mbps 下载链路上可能需要 60 分钟才能完成下载。
 
@@ -124,7 +124,7 @@
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    备份到 Azure 需要有暂存位置。请确保暂存位置的空间至少为要备份到云的数据的 5%。在磁盘保护方面，安装完成之后需要配置独立的磁盘。有关存储池的详细信息，请参阅 [Configure storage pools and disk storage（配置存储池和磁盘存储）](https://technet.microsoft.com/library/hh758075.aspx)。
+    备份到 Azure 需要有暂存位置。请确保暂存位置的空间至少为要备份到云的数据的 5%。在磁盘保护方面，安装完成之后需要配置独立的磁盘。有关存储池的详细信息，请参阅 [Configure storage pools and disk storage](https://technet.microsoft.com/library/hh758075.aspx)（配置存储池和磁盘存储）。
 
 5. 为受限的本地用户帐户提供强密码，然后单击“下一步”。
 
@@ -155,7 +155,7 @@
 
 ### 添加备份存储
 
-第一个备份副本保存在已附加到 Azure 备份服务器计算机的存储中。有关添加磁盘的详细信息，请参阅 [Configure storage pools and disk storage（配置存储池和磁盘存储）](https://technet.microsoft.com/library/hh758075.aspx)。
+第一个备份副本保存在已附加到 Azure 备份服务器计算机的存储中。有关添加磁盘的详细信息，请参阅 [Configure storage pools and disk storage](https://technet.microsoft.com/library/hh758075.aspx)（配置存储池和磁盘存储）。
 
 > [AZURE.NOTE] 即使你打算将数据发送到 Azure，也需要添加备份存储。在当前的 Azure 备份服务器体系结构中，Azure 备份保管库将保存数据的第二个副本，而本地存储将保存第一个（必需的）备份副本。
 
@@ -172,10 +172,10 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。若�
 | 连接状态 | Azure 订阅 | 备份到 Azure| 备份到磁盘 | 从 Azure 还原 | 从磁盘还原 |
 | -------- | ------- | --------------------- | ------------------- | --------------------------- | ----------------------- |
 | 已连接 | 活动 | 允许 | 允许 | 允许 | 允许 |
-| 已连接 | Expired | 已停止 | 已停止 | 允许 | 允许 |
+| 已连接 | 已过期 | 已停止 | 已停止 | 允许 | 允许 |
 | 已连接 | 已取消预配 | 已停止 | 已停止 | 已停止且已删除 Azure 恢复点 | 已停止 |
 | 连接断开超过 15 天 | 活动 | 已停止 | 已停止 | 允许 | 允许 |
-| 连接断开超过 15 天 | Expired | 已停止 | 已停止 | 允许 | 允许 |
+| 连接断开超过 15 天 | 已过期 | 已停止 | 已停止 | 允许 | 允许 |
 | 连接断开超过 15 天 | 已取消预配 | 已停止 | 已停止 | 已停止且已删除 Azure 恢复点 | 已停止 |
 
 ### 连接断开后进行恢复
@@ -209,8 +209,8 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。若�
 
 请参阅这些文章，以深入了解如何使用 Microsoft Azure 备份服务器来保护工作负荷。
 
-- [SQL Server 备份](backup-azure-backup-sql.md)
-- [SharePoint Server 备份](backup-azure-backup-sharepoint.md)
-- [备用服务器备份](backup-azure-alternate-dpm-server.md)
+- [SQL Server 备份](/documentation/articles/backup-azure-backup-sql/)
+- [SharePoint Server 备份](/documentation/articles/backup-azure-backup-sharepoint/)
+- [备用服务器备份](/documentation/articles/backup-azure-alternate-dpm-server/)
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0801_2016-->

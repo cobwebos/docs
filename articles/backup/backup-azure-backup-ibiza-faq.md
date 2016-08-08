@@ -10,14 +10,14 @@
 
 <tags
     ms.service="backup"
-    ms.date="03/30/2016"
+    ms.date="07/01/2016"
     wacn.date=""/>
 
 # 公共预览版 Azure 备份服务 - 常见问题
 
 > [AZURE.SELECTOR]
-- [经典模式备份常见问题](backup-azure-backup-faq.md)
-- [ARM 模式备份常见问题](backup-azure-backup-ibiza-faq.md)
+- [经典模式备份常见问题](/documentation/articles/backup-azure-backup-faq/)
+- [ARM 模式备份常见问题](/documentation/articles/backup-azure-backup-ibiza-faq/)
 
 本文提供特定于 Azure 备份服务公共预览版的信息。本文在有新的常见问题时会更新，并补充 [Azure 备份常见问题](backup-azure-backup-faq)。Azure 备份常见问题提供整套有关 Azure 备份服务的问答。
 
@@ -43,4 +43,4 @@
 **问 1.对 Azure VM 的 ARM 支持是否有任何限制？** <br/>
 答 1.目前未提供适用于 ARM 的 PowerShell cmdlet。必须使用 Azure 门户 UI 将资源添加到资源组。
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0801_2016-->

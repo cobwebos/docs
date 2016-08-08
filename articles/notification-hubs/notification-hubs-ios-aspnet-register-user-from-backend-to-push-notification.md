@@ -4,18 +4,18 @@
 	services="notification-hubs"
 	documentationCenter="ios"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="03/28/2016"
+	ms.date="06/29/2016"
 	wacn.date=""/>
 
 # 通过使用 ASP.NET 注册推送通知的当前用户
 
 > [AZURE.SELECTOR]
-- [iOS](/documentation/articles/notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification)
+- [iOS](/documentation/articles/notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification/)
 
 
 
@@ -228,8 +228,8 @@
 [1]: ./media/notification-hubs-ios-aspnet-register-user-push-notifications/notification-hub-user-aspnet-ios2.png
 
 <!-- URLs. -->
-[使用通知中心通知用户]: /manage/services/notification-hubs/notify-users-aspnet
+[使用通知中心通知用户]: /documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-wns-notification/
 
-[通知中心入门]: /manage/services/notification-hubs/get-started-notification-hubs-ios
+[通知中心入门]: /documentation/articles/notification-hubs-ios-apple-push-notification-apns-get-started/
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0801_2016-->

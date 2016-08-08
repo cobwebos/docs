@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="05/19/2016"
+   ms.date="06/27/2016"
    wacn.date=""/>
 
 # Azure AD Connect：从旧版升级到最新版本
@@ -81,6 +81,6 @@
 5. 如果你有多个自定义规则，请针对所有自定义规则重复上述步骤。
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0801_2016-->

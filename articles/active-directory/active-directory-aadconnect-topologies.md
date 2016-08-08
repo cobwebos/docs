@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-    ms.date="05/19/2016"
+    ms.date="06/27/2016"
     wacn.date=""/>
 
 # Azure AD Connect 的拓扑
@@ -63,7 +63,7 @@ Azure AD Connect 同步中的默认配置假设：
 - 如果你有多个活动帐户或多个邮箱，同步引擎将选择其中一个并忽略其他的帐户或邮箱。
 - 没有其他活动帐户的链接邮箱不会导出到 Azure AD。用户帐户不会显示为任何组中的成员。DirSync 中的链接邮箱始终显示为普通邮箱，因此这项更改是有意的行为，目的是更好地支持多林方案。
 
-可以在[了解默认配置](/documentation/articles/active-directory-aadconnectsync-understanding-default-configuration)中找到更多详细信息。
+可以在[了解默认配置](/documentation/articles/active-directory-aadconnectsync-understanding-default-configuration/)中找到更多详细信息。
 
 ### 多个林，多个同步服务器连接到单个 Azure AD 目录
 ![不支持多林多同步](./media/active-directory-aadconnect-topologies/MultiForestMultiSyncUnsupported.png)
@@ -77,8 +77,8 @@ Azure AD Connect 同步中的默认配置假设：
 
 ![多林独立拓扑](./media/active-directory-aadconnect-topologies/MultiForestSeperateTopologies.png)
 
-在此环境中，本地的所有林都被视为单独的实体，并且没有用户出现在任何其他林中。
-每个林都有其自己的 Exchange 组织，并且林之间没有任何 GALSync。合并/收购之后或在其中每个业务单位在相互隔离的情况下运营的组织中，可能出现这种拓扑。在 Azure AD 中，这些林位于相同的组织中并与统一 GAL 一起出现。
+在此环境中，本地的所有林都被视为单独的实体，并且没有用户出现在任何其他林中。每个林都有其自己的 Exchange 组织，并且林之间没有任何 GALSync。
+合并/收购之后或在其中每个业务单位在相互隔离的情况下运营的组织中，可能出现这种拓扑。在 Azure AD 中，这些林位于相同的组织中并与统一 GAL 一起出现。
 在此图中，每个林中的每个对象会在 Metaverse 中出现一次，并在目标 Azure AD 目录中聚合。
 
 ### 多个林 – 匹配用户
@@ -137,7 +137,7 @@ Azure 建议组织在 Azure AD 中部署单个目录。
 
 主题 |  
 --------- | ---------
-使用管理单位委派 | [Azure AD 中的管理单元管理](/documentation/articles/active-directory-administrative-units-management)
+使用管理单位委派 | [Azure AD 中的管理单元管理](/documentation/articles/active-directory-administrative-units-management/)
 
 ![多林多目录](./media/active-directory-aadconnect-topologies/MultiForestMultiDirectory.png)
 
@@ -181,10 +181,10 @@ Azure AD 目录在设计上是隔离的。
 支持使用本地 FIM2010/MIM2016 在两个 Exchange 组织之间 GALsync 用户。一个组织中的用户将显示为另一组织中的外部用户/联系人。这些不同的本地 AD 可同步到它们自身的 Azure AD 目录。
 
 ## 后续步骤
-若要了解如何为这些方案安装 Azure AD Connect，请参阅[Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom)。
+若要了解如何为这些方案安装 Azure AD Connect，请参阅[Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom/)。
 
-了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis)配置的详细信息。
+了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis/)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0801_2016-->

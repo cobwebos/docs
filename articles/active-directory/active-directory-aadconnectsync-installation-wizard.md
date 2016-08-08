@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/11/2016"
+	ms.date="06/27/2016"
 	wacn.date=""/>
 
 
@@ -41,10 +41,10 @@
 ## 自定义同步选项
 此选项可用于更改同步配置。你会在自定义配置安装路径中看到一部分选项。即使一开始是使用快速安装也会看到。
 
-- [添加更多目录](/documentation/articles/active-directory-aadconnect-get-started-custom#connect-your-directories)。若要删除目录，请参阅[删除连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md#delete)。
-- [更改域和 OU 筛选](/documentation/articles/active-directory-aadconnect-get-started-custom#domain-and-ou-filtering)。
+- [添加更多目录](/documentation/articles/active-directory-aadconnect-get-started-custom/#connect-your-directories)。若要删除目录，请参阅[删除连接器](active-directory-aadconnectsync-service-manager-ui-connectors.md#delete)。
+- [更改域和 OU 筛选](/documentation/articles/active-directory-aadconnect-get-started-custom/#domain-and-ou-filtering)。
 - 删除组筛选。
-- [更改可选功能](/documentation/articles/active-directory-aadconnect-get-started-custom#optional-features)。
+- [更改可选功能](/documentation/articles/active-directory-aadconnect-get-started-custom/#optional-features)。
 
 初始安装中的其他选项既无法更改，也不能使用。这包括：
 
@@ -60,23 +60,23 @@
 ![列出环境中所有目录的页面](./media/active-directory-aadconnectsync-installation-wizard/refreshschema.png)
 
 ## 配置过渡模式
-此选项可让你启用和禁用服务器上的过渡模式。过渡模式及其使用方式的详细信息可在[操作](/documentation/articles/active-directory-aadconnectsync-operations#staging-mode)中找到。
+此选项可让你启用和禁用服务器上的过渡模式。过渡模式及其使用方式的详细信息可在[操作](/documentation/articles/active-directory-aadconnectsync-operations/#staging-mode)中找到。
 
-此选项会显示过渡模式当前是已启用还是已禁用：  
+此选项会显示过渡模式当前是已启用还是已禁用：
 ![同时显示过渡模式当前状态的选项](./media/active-directory-aadconnectsync-installation-wizard/stagingmodecurrentstate.png)
 
-若要更改状态，请选择此选项，并选中或取消选中复选框。  
+若要更改状态，请选择此选项，并选中或取消选中复选框。
 ![同时显示过渡模式当前状态的选项](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
 
 ## 更改用户登录
 此选项可让你从密码同步更改为联盟，反之亦然。但不能更改为“不配置”。
 
-有关此选项的详细信息，请参阅[用户登录](/documentation/articles/active-directory-aadconnect-user-signin#changing-user-sign-in-method)。
+有关此选项的详细信息，请参阅[用户登录](/documentation/articles/active-directory-aadconnect-user-signin/#changing-user-sign-in-method)。
 
 
 ## 后续步骤
-了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis)配置的详细信息。
+了解有关 [Azure AD Connect 同步](/documentation/articles/active-directory-aadconnectsync-whatis/)配置的详细信息。
 
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0801_2016-->

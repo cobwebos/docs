@@ -16,12 +16,12 @@
 # DocumentDB 的 MongoDB 协议支持示例
 若要使用这些示例，必须：
 
-- [创建](documentdb-create-mongodb-account.md)具有 MongoDB 协议支持的 DocumentDB 帐户。
+- [创建](/documentation/articles/documentdb-create-mongodb-account/)具有 MongoDB 协议支持的 DocumentDB 帐户。
 - 检索具有 MongoDB 协议支持的 DocumentDB 帐户的[连接字符串](documentdb-connect-mongodb-account.md)信息。
 
 ## 开始使用示例 ASP.NET MVC 任务列表应用程序
 
-可以参考 [Create a web app in Azure that connects to MongoDB running on a virtual machine（在 Azure 中创建连接到虚拟机上运行的 MongoDB 的 Web 应用）](../app-service-web/web-sites-dotnet-store-data-mongodb-vm.md)教程（最需做出少量的修改），快速设置一个连接到具有 MongoDB 协议支持的 DocumentDB 帐户的 MongoDB 应用程序（在本地或发布到 Azure Web 应用）。
+可以参考 [Create a web app in Azure that connects to MongoDB running on a virtual machine](../app-service-web/web-sites-dotnet-store-data-mongodb-vm.md)（在 Azure 中创建连接到虚拟机上运行的 MongoDB 的 Web 应用）教程（最需做出少量的修改），快速设置一个连接到具有 MongoDB 协议支持的 DocumentDB 帐户的 MongoDB 应用程序（在本地或发布到 Azure Web 应用）。
 
 1. 请遵循该教程，不过需要做出一项修改。将 Dal.cs 代码替换为以下内容：
 	
@@ -166,9 +166,9 @@
 
 ## 后续步骤
 
-- 阅读具有 MongoDB 协议支持的 DocumentDB [预览版开发指南](documentdb-mongodb-guidelines.md)。
-- 了解如何配合具有 MongoDB 协议支持的 DocumentDB 帐户[使用 MongoChef](documentdb-mongodb-mongochef.md)。
+- 阅读具有 MongoDB 协议支持的 DocumentDB [预览版开发指南](/documentation/articles/documentdb-mongodb-guidelines/)。
+- 了解如何配合具有 MongoDB 协议支持的 DocumentDB 帐户[使用 MongoChef](/documentation/articles/documentdb-mongodb-mongochef/)。
 
  
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0801_2016-->

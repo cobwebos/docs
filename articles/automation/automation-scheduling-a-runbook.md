@@ -13,31 +13,11 @@
 
 # 在 Azure 自动化中计划 Runbook
 
-[AZURE.ACOM]{
-
-若要将 Azure 自动化中的 Runbook 计划为在指定的时间启动，可以将它链接到一个或多个计划。可以在 Azure 经典管理门户和 Azure 门户中将 Runbook 的计划配置为运行一次或按每小时或每天计划重复运行，此外，你还可以将它们计划为每周、每月、每周或或每月的特定几天，或者每月的某一天运行。可将一个 Runbook 链接到多个计划，一个计划可以链接多个 Runbook。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-若要将 Azure 自动化中的 Runbook 计划为在指定的时间启动，可以将它链接到一个或多个计划。可以在 Azure 经典管理门户中将 Runbook 的计划配置为运行一次或按每小时或每天计划重复运行，此外，你还可以将它们计划为每周、每月、每周或或每月的特定几天，或者每月的某一天运行。可将一个 Runbook 链接到多个计划，一个计划可以链接多个 Runbook。
-
-[AZURE.ACN]}
+若要将 Azure 自动化中的 Runbook 计划为在指定的时间启动，可以将它链接到一个或多个计划。可以在 Azure 经典管理门户中将 Runbook 的计划配置为运行一次或按每小时或每天计划重复运行， [AZURE.ACOM]{ 此外，你还可以在 Azure 门户中 [AZURE.ACOM]} 将它们计划为每周、每月、每周或或每月的特定几天，或者每月的某一天运行。可将一个 Runbook 链接到多个计划，一个计划可以链接多个 Runbook。
 
 ## 创建计划
 
-[AZURE.ACOM]{
-
-可以使用 Azure 门户、经典管理门户或 Windows PowerShell 为 Runbook 创建新计划。也可以在使用 Azure 经典门户或 Azure 门户将 Runbook 链接到计划时，选择创建新计划。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-可以使用 Azure 经典管理门户或 Windows PowerShell 为 Runbook 创建新计划。也可以在使用 Azure 经典管理门户将 Runbook 链接到计划时，选择创建新计划。
-
-[AZURE.ACN]}
+可以使用 [AZURE.ACOM]{ Azure 门户、[AZURE.ACOM]} 经典管理门户或 Windows PowerShell为 Runbook 创建新计划。也可以在使用 Azure 经典门户、Azure 门户、Azure 经典管理门户将 Runbook 链接到计划时选择创建新计划。 [AZURE.ACOM]{ Azure 经典或 Azure 门户 [AZURE.ACOM]} [AZURE.ACN]{ Azure 经典管理门户 [AZURE.ACN]}。
 
 >[AZURE.NOTE] 将计划与 Runbook 相关联时，自动化会将模块的当前版本存储在你的帐户中，并将模块链接到该计划。这意味着，如果在创建计划时你的帐户中有 1.0 版的模块，然后将模块更新到版本 2.0，该计划将继续使用 1.0 版。若要使用更新后的模块版本，必须创建新计划。
 
@@ -112,17 +92,7 @@
 
 ### 使用 Windows PowerShell 将计划链接到 Runbook
 
-[AZURE.ACOM]{
-
-可以使用 [Register-AzureAutomationScheduledRunbook](http://msdn.microsoft.com/zh-cn/library/azure/dn690265.aspx) 将计划链接到经典 Runbook，或者使用 [Register-AzureRmAutomationScheduledRunbook](https://msdn.microsoft.com/zh-cn/library/mt603575.aspx) cmdlet（适用于 Azure 门户中的 Runbook）。可以使用 Parameters 参数为 Runbook 的参数指定值。有关指定参数值的详细信息，请参阅[在 Azure 自动化中启动 Runbook](/documentation/articles/automation-starting-a-runbook/)。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-你可以使用 [Register-AzureAutomationScheduledRunbook](http://msdn.microsoft.com/zh-cn/library/azure/dn690265.aspx) 将计划链接到 Runbook。可以使用 Parameters 参数为 Runbook 的参数指定值。有关指定参数值的详细信息，请参阅[在 Azure 自动化中启动 Runbook](/documentation/articles/automation-starting-a-runbook/)。
-
-[AZURE.ACN]}
+你可以使用 [Register-AzureAutomationScheduledRunbook](http://msdn.microsoft.com/zh-cn/library/azure/dn690265.aspx) 将计划链接到 [AZURE.ACOM]{ 经典 [AZURE.ACOM]} Runbook [AZURE.ACOM]{ 或 [Register-AzureRmAutomationScheduledRunbook](https://msdn.microsoft.com/zh-cn/library/mt603575.aspx) cmdlet Azure 门户中的 Runbook [AZURE.ACOM]}。可以使用 Parameters 参数为 Runbook 的参数指定值。有关指定参数值的详细信息，请参阅[在 Azure 自动化中启动 Runbook](/documentation/articles/automation-starting-a-runbook/)。
 
 以下示例命令演示了如何使用带参数的 Azure 服务管理 cmdlet 链接计划。
 
@@ -173,17 +143,7 @@
 
 ### 使用 Windows PowerShell 禁用计划
 
-[AZURE.ACOM]{
-
-可以使用 [Set-AzureAutomationSchedule](http://msdn.microsoft.com/zh-cn/library/azure/dn690270.aspx) cmdlet 更改经典 Runbook 的现有计划的属性，或者使用 [Set-AzureRmAutomationSchedule](https://msdn.microsoft.com/zh-cn/library/mt603566.aspx) cmdlet（适用于 Azure 门户中的 Runbook）。若要禁用计划，请为 **IsEnabled** 参数指定 **false**。
-
-[AZURE.ACOM]}
-
-[AZURE.ACN]{
-
-可以使用 [Set-AzureAutomationSchedule](http://msdn.microsoft.com/zh-cn/library/azure/dn690270.aspx) cmdlet 更改 Runbook 的现有计划的属性。若要禁用计划，请为 **IsEnabled** 参数指定 **false**。
-
-[AZURE.ACN]}
+你可以使用 [Set-AzureAutomationSchedule](http://msdn.microsoft.com/zh-cn/library/azure/dn690270.aspx) cmdlet 更改现有计划的属性。 [AZURE.ACOM]{ 经典 [AZURE.ACOM]} Runbook [AZURE.ACOM]{ 或 [Set-AzureRmAutomationSchedule](https://msdn.microsoft.com/zh-cn/library/mt603566.aspx) cmdlet Azure 门户中的 Runbook [AZURE.ACOM]}。若要禁用计划，请为 **IsEnabled** 参数指定 **false**。
 
 以下示例命令演示了如何使用 Azure 服务管理 cmdlet 禁用计划。
 
@@ -206,7 +166,7 @@
 
 ## 后续步骤
 
-- 若要了解有关使用计划的详细信息，请参阅[在 Azure 自动化中计划资产](/documentation/articles/automation-schedules/)
-- 若要在 Azure 自动化中开始使用 Runbook，请参阅[在 Azure 自动化中启动 Runbook](/documentation/articles/automation-starting-a-runbook/)
+- 若要了解有关使用计划的详细信息，请参阅 [Schedule Assets in Azure Automation（在 Azure 自动化中计划资产）](/documentation/articles/automation-schedules/)
+- 若要在 Azure 自动化中开始使用 Runbook，请参阅 [Starting a Runbook in Azure Automation（在 Azure 自动化中启动 Runbook）](/documentation/articles/automation-starting-a-runbook/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0801_2016-->

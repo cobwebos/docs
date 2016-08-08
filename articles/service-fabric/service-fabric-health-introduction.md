@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="04/25/2016"
+   ms.date="07/11/2016"
    wacn.date=""/>
 
 # Service Fabric 运行状况监视简介
@@ -17,7 +17,7 @@ Azure Service Fabric 引入了一个运行状况模型，该模型提供丰富�
 
 Service Fabric 组件使用此运行状况模型报告其当前状态。你可以使用相同的机制报告应用程序中的运行状况。特定于你的自定义条件的运行状况报告的质量和丰富程度将决定你能够针对运行的应用程序检测和修复问题的轻松程度。
 
-> [AZURE.NOTE] 我们根据需要为监视的升级启动运行状况子系统。Service Fabric 提供监视的升级，该升级了解如何在没有停机时间、无用户干预最小化，并具有完整的群集和应用程序可用性的情况下升级群集或应用程序。若要执行此操作，升级会基于配置的升级策略检查运行状况，并且仅当运行状况遵从所需的阈值时允许升级继续。否则，升级会自动回滚或暂停，以便让管理员有机会修复问题。若要了解有关应用程序升级的详细信息，请参阅[本文](/documentation/articles/service-fabric-application-upgrade)。
+> [AZURE.NOTE] 我们根据需要为监视的升级启动运行状况子系统。Service Fabric 提供监视的升级，该升级了解如何在没有停机时间、无用户干预最小化，并具有完整的群集和应用程序可用性的情况下升级群集或应用程序。若要执行此操作，升级会基于配置的升级策略检查运行状况，并且仅当运行状况遵从所需的阈值时允许升级继续。否则，升级会自动回滚或暂停，以便让管理员有机会修复问题。若要了解有关应用程序升级的详细信息，请参阅[此文](/documentation/articles/service-fabric-application-upgrade/)。
 
 ## 运行状况存储
 运行状况存储保留群集中关于实体的运行状况相关信息，以进行轻松的检索和评估。它作为 Service Fabric 保留的有状态服务进行实现，以确保高度可用性和可缩放性。运行状况存储是 **fabric:/System** 应用程序的一部分，并且只要群集已启动并正在运行，即可使用。
@@ -25,9 +25,9 @@ Service Fabric 组件使用此运行状况模型报告其当前状态。你可�
 ## 运行状况实体和层次结构
 运行状况实体采用逻辑层次结构进行组织，该结构会捕获不同实体之间的交互和依赖项。基于从 Service Fabric 组件接收的报告，运行状况存储自动生成实体和层次结构。
 
-运行状况实体镜像 Service Fabric 实体。（例如，**运行状况应用程序实体**匹配群集中部署的应用程序实例，**运行状况节点实体**匹配 Service Fabric 群集节点。） 运行状况层次结构捕获系统实体的交互并且是进行高级运行状况评估的基础。你可以通过 [Service Fabric 技术概述](/documentation/articles/service-fabric-technical-overview)了解 Service Fabric 的关键概念。有关应用程序的详细信息，请参阅 [Service Fabric 应用程序模型](/documentation/articles/service-fabric-application-model)。
+运行状况实体镜像 Service Fabric 实体。（例如，**运行状况应用程序实体**匹配群集中部署的应用程序实例，**运行状况节点实体**匹配 Service Fabric 群集节点。） 运行状况层次结构捕获系统实体的交互并且是进行高级运行状况评估的基础。你可以通过 [Service Fabric 技术概述](/documentation/articles/service-fabric-technical-overview/)了解 Service Fabric 的关键概念。有关应用程序的详细信息，请参阅 [Service Fabric 应用程序模型](/documentation/articles/service-fabric-application-model/)。
 
-利用运行状况实体和层次结构，你能够有效地报告、调试和监视群集和应用程序。运行状况模型为群集中许多移动片段的运行状况提供准确而“精细”的表示。
+利用运行状况实体和层次结构，你能够有效地报告、调试和监视群集和应用程序。运行状况模型为群集中许多移动片段的运行状况提供准确而精细的表示。
 
 ![运行状况实体。][1]
 运行状况实体基于父-子关系在层次结构中进行组织。
@@ -48,7 +48,7 @@ Service Fabric 组件使用此运行状况模型报告其当前状态。你可�
 
 - **副本**。表示有状态服务副本或无状态服务实例的运行状况。这是监视器和系统组件可针对应用程序进行报告的最小单位。对于有状态服务，示例如下：如果主要副本不能将操作复制到辅助副本以及复制未按预期进度继续执行，主要副本就会进行报告。此外，如果无状态的实例耗尽了资源或存在连接问题，就会进行报告。副本实体由分区 ID (GUID) 和副本或实例 ID（长型值）标识。
 
-- **DeployedApplication**。表示“在节点上运行的应用程序”的运行状况。已部署应用程序运行状况报告说明特定于节点上的应用程序的条件，该条件不能缩小到部署在同一个节点上的服务包。示例包括当不能在该节点上下载应用程序包以及当在节点上设置应用程序安全主体时出现问题时。已部署应用程序由应用程序名称 (URI) 和节点名称（字符串）标识。
+- **DeployedApplication**。表示在节点上运行的应用程序的运行状况。已部署应用程序运行状况报告说明特定于节点上的应用程序的条件，该条件不能缩小到部署在同一个节点上的服务包。示例包括当不能在该节点上下载应用程序包以及当在节点上设置应用程序安全主体时出现问题时。已部署应用程序由应用程序名称 (URI) 和节点名称（字符串）标识。
 
 - **DeployedServicePackage**。表示在群集节点中运行的应用程序的服务包运行状况。它说明特定于服务包的条件，该条件不会影响同一个应用程序的同一节点上的其他服务包。示例包括服务包中的代码包无法启动以及配置包无法读取。已部署服务包由应用程序名称 (URI)、节点名称（字符串）和服务清单名称（字符串）标识。
 
@@ -56,7 +56,8 @@ Service Fabric 组件使用此运行状况模型报告其当前状态。你可�
 
 运行状况层次结构由父-子关系组成。群集由节点和应用程序组成。应用程序包含服务和已部署的应用程序。已部署的应用程序包含已部署的服务包。服务具有分区，并且每个分区都有一个或多个副本。节点和已部署实体之间具有特殊关系。如果其机构系统组件（故障转移管理器服务）报告某一节点不正常，则它会影响已部署应用程序、服务包和在其上部署的副本。
 
-运行状况层次结构基于最新的运行状况报告表示系统的最新状态，该报告几乎是实时信息。基于应用程序特定的逻辑或监视的自定义条件，内部和外部的监视器可以针对相同实体进行报告。用户报告与系统报告共存。
+运行状况层次结构基于最新的运行状况报告表示系统的最新状态，该报告几乎是实时信息。
+基于应用程序特定的逻辑或监视的自定义条件，内部和外部的监视器可以针对相同实体进行报告。用户报告与系统报告共存。
 
 当设计大型云服务时，花时间规划如何报告和响应运行状况，可让该服务更轻松地进行调试、监视和后续操作。
 
@@ -81,7 +82,8 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 默认情况下，Service Fabric 针对父-子层次结构关系应用严格的规则（所有内容都必须正常）。只要其中一个子项具有一个不正常事件，父项则被视为不正常。
 
 ### 群集运行状况策略
-[群集运行状况策略](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.clusterhealthpolicy.aspx)用于评估群集运行状况状态和节点运行状况状态。可以在群集清单中对它进行定义。如果该策略不存在，则会使用默认策略（不容许失败）。群集运行状况策略包含：
+[群集运行状况策略](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.clusterhealthpolicy.aspx)用于评估群集运行状况状态和节点运行状况状态。可以在群集清单中对它进行定义。如果该策略不存在，则会使用默认策略（不容许失败）。
+群集运行状况策略包含：
 
 - [ConsiderWarningAsError](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.clusterhealthpolicy.considerwarningaserror.aspx)。指定是否在运行状况评估期间将“警告”运行状况报告视为错误。默认值：false。
 
@@ -89,23 +91,25 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 
 - [MaxPercentUnhealthyNodes](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes.aspx)。指定群集被视为“错误”之前可以保留不正常的节点的最大容忍百分比。在大型群集中，始终会有一些要关闭或需要修复的节点，因此应配置此百分比以便容忍这种情况。
 
-- [ApplicationTypeHealthPolicyMap](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap.aspx)。应用程序类型的运行状况策略对应可以在群集运行状况评估期间，用于描述特殊的应用程序类型。默认情况下，所有的应用程序都放入池，并使用 MaxPercentUnhealthyApplications 进行评估。如果有一个或多个特殊的应用程序类型，并且应该使用不同的方式来处理，则可将它们从全局池中取出，并根据映射中与其应用程序类型名称关联的百分比进行评估。例如，在群集中，有数千个不同类型的应用程序，以及某个特殊应用程序类型的多个控制应用程序实例。控制应用程序应该永远不发生错误。因此用户可以将全局的 MaxPercentUnhealthyApplications 指定为 20%，以容许一些失败，但如果应用程序类型为“ControlApplicationType”，请将 MaxPercentUnhealthyApplications 设为 0。如此一来，如果其中许多应用程序的状况不良，但低于全局状况不良的百分比，则将群集评估为 Warning。Warning 运行状况并不影响群集升级或由 Error 运行状况触发的其他监视。但即使只有一个控制应用程序发生错误都使群集运行状况发生错误，其可以恢复或防止群集升级。对于映射中定义的应用程序类型，所有应用程序实例都是从应用程序的全局池中所取出。系统使用映射中的特定 MaxPercentUnhealthyApplications 根据应用程序类型的应用程序总数来评估它们。所有其他应用程序都保留于全局池中，并使用 MaxPercentUnhealthyApplications 进行评估。
+- [ApplicationTypeHealthPolicyMap](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap.aspx)。应用程序类型的运行状况策略对应可以在群集运行状况评估期间，用于描述特殊的应用程序类型。默认情况下，所有的应用程序都放入池，并使用 MaxPercentUnhealthyApplications 进行评估。如果有一个或多个特殊的应用程序类型，并且应该使用不同的方式来处理，则可将它们从全局池中取出，并根据映射中与其应用程序类型名称关联的百分比进行评估。例如，在群集中，有数千个不同类型的应用程序，以及某个特殊应用程序类型的多个控制应用程序实例。控制应用程序应该永远不发生错误。因此用户可以将全局的 MaxPercentUnhealthyApplications 指定为 20%，以容许一些失败，但如果应用程序类型为“ControlApplicationType”，请将 MaxPercentUnhealthyApplications 设为 0。如此一来，如果其中许多应用程序的状况不良，但低于全局状况不良的百分比，则将群集评估为 Warning。Warning 运行状况并不影响群集升级或由 Error 运行状况触发的其他监视。但即使只有一个控制应用程序发生错误都使群集运行状况发生错误，其可以恢复或防止群集升级。
+对于映射中定义的应用程序类型，所有应用程序实例都是从应用程序的全局池中所取出。系统使用映射中的特定 MaxPercentUnhealthyApplications 根据应用程序类型的应用程序总数来评估它们。所有其他应用程序都保留于全局池中，并使用 MaxPercentUnhealthyApplications 进行评估。
 
 下面是群集清单的摘录。若要定义应用程序类型映射中的条目，请在参数名称前面添加“ApplicationTypeMaxPercentUnhealthyApplications-”，后接应用程序类型名称。
 
-```xml
-<FabricSettings>
-  <Section Name="HealthManager/ClusterHealthPolicy">
-    <Parameter Name="ConsiderWarningAsError" Value="False" />
-    <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
-    <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
-    <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
-  </Section>
-</FabricSettings>
-```
+
+	<FabricSettings>
+	  <Section Name="HealthManager/ClusterHealthPolicy">
+	    <Parameter Name="ConsiderWarningAsError" Value="False" />
+	    <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+	    <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+	    <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
+	  </Section>
+	</FabricSettings>
+
 
 ### 应用程序运行状况策略
-[应用程序运行状况策略](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.applicationhealthpolicy.aspx)说明如何对应用程序及其子项进行事件和子项状态聚合评估。它可以在应用程序清单（应用程序包中的 **ApplicationManifest.xml**）中定义。如果未指定任何策略，则当运行状况报告或子项处于“警告”或“错误”运行状况状态时，Service Fabric 会假设实体不正常。可配置的策略是：
+[应用程序运行状况策略](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.applicationhealthpolicy.aspx)说明如何对应用程序及其子项进行事件和子项状态聚合评估。它可以在应用程序清单（应用程序包中的 **ApplicationManifest.xml**）中定义。如果未指定任何策略，则当运行状况报告或子项处于“警告”或“错误”运行状况状态时，Service Fabric 会假设实体不正常。
+可配置的策略是：
 
 - [ConsiderWarningAsError](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx)。指定是否在运行状况评估期间将“警告”运行状况报告视为错误。默认值：false。
 
@@ -126,25 +130,25 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 
 下面是应用程序清单的摘录：
 
-```xml
-    <Policies>
-        <HealthPolicy ConsiderWarningAsError="true" MaxPercentUnhealthyDeployedApplications="20">
-            <DefaultServiceTypeHealthPolicy
-                   MaxPercentUnhealthyServices="0"
-                   MaxPercentUnhealthyPartitionsPerService="10"
-                   MaxPercentUnhealthyReplicasPerPartition="0"/>
-            <ServiceTypeHealthPolicy ServiceTypeName="FrontEndServiceType"
-                   MaxPercentUnhealthyServices="0"
-                   MaxPercentUnhealthyPartitionsPerService="20"
-                   MaxPercentUnhealthyReplicasPerPartition="0"/>
-            <ServiceTypeHealthPolicy ServiceTypeName="BackEndServiceType"
-                   MaxPercentUnhealthyServices="20"
-                   MaxPercentUnhealthyPartitionsPerService="0"
-                   MaxPercentUnhealthyReplicasPerPartition="0">
-            </ServiceTypeHealthPolicy>
-        </HealthPolicy>
-    </Policies>
-```
+
+	    <Policies>
+	        <HealthPolicy ConsiderWarningAsError="true" MaxPercentUnhealthyDeployedApplications="20">
+	            <DefaultServiceTypeHealthPolicy
+	                   MaxPercentUnhealthyServices="0"
+	                   MaxPercentUnhealthyPartitionsPerService="10"
+	                   MaxPercentUnhealthyReplicasPerPartition="0"/>
+	            <ServiceTypeHealthPolicy ServiceTypeName="FrontEndServiceType"
+	                   MaxPercentUnhealthyServices="0"
+	                   MaxPercentUnhealthyPartitionsPerService="20"
+	                   MaxPercentUnhealthyReplicasPerPartition="0"/>
+	            <ServiceTypeHealthPolicy ServiceTypeName="BackEndServiceType"
+	                   MaxPercentUnhealthyServices="20"
+	                   MaxPercentUnhealthyPartitionsPerService="0"
+	                   MaxPercentUnhealthyReplicasPerPartition="0">
+	            </ServiceTypeHealthPolicy>
+	        </HealthPolicy>
+	    </Policies>
+
 
 ## 运行状况评估
 用户和自动化服务可以随时评估任何实体的运行状况。若要评估实体运行状况，运行状况存储聚合实体上的所有运行状况报告，并评估其所有子项（如果适用）。运行状况聚合算法使用运行状况策略，这类策略指定如何评估运行状况报告以及如何聚合子项运行状况状态（如果适用）。
@@ -152,7 +156,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 ### 运行状况报告聚合
 一个实体可以具有由不同属性上的不同报告器（系统组件或监视器）发送的多个运行状况报告。聚合使用关联的运行状况策略，尤其是应用程序或群集运行状况策略的 ConsiderWarningAsError 成员。该策略指定如何评估警告。
 
-已聚合运行状况状态由实体上“最差”的运行状况报告触发。如果至少有一个“错误”运行状况报告，已聚合运行状况状态则为“错误”。
+已聚合运行状况状态由实体上最差的运行状况报告触发。如果至少有一个“错误”运行状况报告，已聚合运行状况状态则为“错误”。
 
 ![运行状况报告与“错误”报告聚合。][2]
 
@@ -188,7 +192,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 - 如果具有“错误”状态的子项遵从不正常子项的最大允许百分比，已聚合运行状况状态则为“警告”。
 
 ## 运行状况报告
-系统组件、系统结构应用程序和内部/外部监视器可以针对 Service Fabric 实体进行报告。报告器基于它们正在监视的条件对监视的实体的运行状况进行“本地”判断。它们无需查看任何全局状态或聚合数据。之所以不需要，原因是它会使报告器成为复杂的有机体，届时需要查看很多内容，以便推断要发送的信息。
+系统组件、系统结构应用程序和内部/外部监视器可以针对 Service Fabric 实体进行报告。报告器基于它们正在监视的条件对监视的实体的运行状况进行本地判断。它们无需查看任何全局状态或聚合数据。之所以不需要，原因是它会使报告器成为复杂的有机体，届时需要查看很多内容，以便推断要发送的信息。
 
 若要将运行状况数据发送到运行状况存储，报告器需要标识受影响的实体并创建运行状况报告。然后，报告可以通过使用 [FabricClient.HealthClient.ReportHealth](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.fabricclient.healthclient_members.aspx) 的 API、通过 PowerShell 或通过 REST 进行发送。
 
@@ -197,7 +201,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 
 - **SourceId**。唯一标识运行状况事件的报告器的字符串。
 
-- **实体标识符**。标识对其申请报告的实体。它因[实体类型](/documentation/articles/service-fabric-health-introduction#health-entities-and-hierarchy)而异：
+- **实体标识符**。标识对其申请报告的实体。它因[实体类型](/documentation/articles/service-fabric-health-introduction/#health-entities-and-hierarchy)而异：
 
   - 群集。无。
 
@@ -215,11 +219,11 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 
   - DeployedServicePackage。应用程序名称 (URI)、节点名称（字符串）和服务清单名称（字符串）。
 
-- **属性**。允许报告器对实体的特定属性的运行状况事件进行分类的“字符串”（不是固定的枚举）。例如，报告器 A 可以报告 Node01“存储”属性的运行状况，报告器 B 可以报告 Node01“连接”属性的运行状况。在运行状况存储中，这两个报告均被视为 Node01 实体的单独运行状况事件。
+- **属性**。允许报告器对实体的特定属性的运行状况事件进行分类的字符串（不是固定的枚举）。例如，报告器 A 可以报告 Node01“存储”属性的运行状况，报告器 B 可以报告 Node01“连接”属性的运行状况。在运行状况存储中，这两个报告均被视为 Node01 实体的单独运行状况事件。
 
 - **说明**。报告器用于提供有关运行状况事件的详细信息的字符串。**SourceId**、**属性**和 **HealthState** 应完整说明报告。说明中添加了用户可读的报告相关信息。这有助于让管理员和用户更容易理解。
 
-- **HealthState**。说明报告的运行状况状态的[枚举](/documentation/articles/service-fabric-health-introduction#health-states)。已接受值为“确定”、“警告”和“错误”。
+- **HealthState**。说明报告的运行状况状态的[枚举](/documentation/articles/service-fabric-health-introduction/#health-states)。已接受值为“确定”、“警告”和“错误”。
 
 - **TimeToLive**。指示运行状况报告的有效时间的时间跨度。结合 **RemoveWhenExpired** 时，它能够使运行状况存储知道如何评估过期的事件。默认情况下，此值为无穷大，表示报告将永远有效。
 
@@ -230,7 +234,7 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 每个运行状况报告都需要四种信息（SourceId、实体标识符、属性和 HealthState）。不允许 SourceId 字符串以前缀“**System.**”开头，该字符串是为系统报告保留的。对于相同实体，相同的源和属性只有一个报告。如果为相同的源和属性生成多个报告，它们会在运行状况客户端（如果按批处理）或在运行状况存储端覆盖彼此。根据序列号进行这种替换操作：较新的报告（具有更高的序列号）替换较旧的报告。
 
 ### 运行状况事件
-在内部，运行状况存储保留[运行状况事件](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.healthevent.aspx)，其中包含报告的所有信息以及其他元数据。这包括报告提供给运行状况客户端的时间，以及在服务器端修改该报告的时间。运行状况事件通过[运行状况查询](/documentation/articles/service-fabric-view-entities-aggregated-health#health-queries)返回。
+在内部，运行状况存储保留[运行状况事件](https://msdn.microsoft.com/zh-cn/library/azure/system.fabric.health.healthevent.aspx)，其中包含报告的所有信息以及其他元数据。这包括报告提供给运行状况客户端的时间，以及在服务器端修改该报告的时间。运行状况事件通过[运行状况查询](/documentation/articles/service-fabric-view-entities-aggregated-health/#health-queries)返回。
 
 已添加元数据包含：
 
@@ -253,85 +257,89 @@ Service Fabric 使用三种运行状况状态来说明实体是否正常：“�
 ## 示例：报告和评估应用程序运行状况
 下列示例在源 **MyWatchdog** 中的应用程序 **fabric:/WordCount** 上通过 PowerShell 发送运行状况报告。运行状况报告包含有关“错误”运行状况状态下的运行状况属性可用性的信息，含无限 TimeToLive。然后，它会查询应用程序运行状况，此查询会返回已聚合运行状况状态错误和运行状况事件列表中的已报告运行状况事件。
 
-```powershell
-PS C:\> Send-ServiceFabricApplicationHealthReport –ApplicationName fabric:/WordCount –SourceId "MyWatchdog" –HealthProperty "Availability" –HealthState Error
 
-PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount
+	PS C:\> Send-ServiceFabricApplicationHealthReport –ApplicationName fabric:/WordCount –SourceId "MyWatchdog" –HealthProperty "Availability" –HealthState Error
+
+	PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount
 
 
-ApplicationName                 : fabric:/WordCount
-AggregatedHealthState           : Error
-UnhealthyEvaluations            :
-                                  Error event: SourceId='MyWatchdog', Property='Availability'.
+	ApplicationName                 : fabric:/WordCount
+	AggregatedHealthState           : Error
+	UnhealthyEvaluations            :
+	                                  Error event: SourceId='MyWatchdog', Property='Availability'.
 
-ServiceHealthStates             :
-                                  ServiceName           : fabric:/WordCount/WordCountService
-                                  AggregatedHealthState : Error
+	ServiceHealthStates             :
+	                                  ServiceName           : fabric:/WordCount/WordCountService
+	                                  AggregatedHealthState : Error
 
-                                  ServiceName           : fabric:/WordCount/WordCountWebService
-                                  AggregatedHealthState : Ok
+	                                  ServiceName           : fabric:/WordCount/WordCountWebService
+	                                  AggregatedHealthState : Ok
 
-DeployedApplicationHealthStates :
-                                  ApplicationName       : fabric:/WordCount
-                                  NodeName              : _Node_0
-                                  AggregatedHealthState : Ok
+	DeployedApplicationHealthStates :
+	                                  ApplicationName       : fabric:/WordCount
+	                                  NodeName              : _Node_0
+	                                  AggregatedHealthState : Ok
 
-                                  ApplicationName       : fabric:/WordCount
-                                  NodeName              : _Node_2
-                                  AggregatedHealthState : Ok
+	                                  ApplicationName       : fabric:/WordCount
+	                                  NodeName              : _Node_2
+	                                  AggregatedHealthState : Ok
 
-                                  ApplicationName       : fabric:/WordCount
-                                  NodeName              : _Node_3
-                                  AggregatedHealthState : Ok
+	                                  ApplicationName       : fabric:/WordCount
+	                                  NodeName              : _Node_3
+	                                  AggregatedHealthState : Ok
 
-                                  ApplicationName       : fabric:/WordCount
-                                  NodeName              : _Node_4
-                                  AggregatedHealthState : Ok
+	                                  ApplicationName       : fabric:/WordCount
+	                                  NodeName              : _Node_4
+	                                  AggregatedHealthState : Ok
 
-                                  ApplicationName       : fabric:/WordCount
-                                  NodeName              : _Node_1
-                                  AggregatedHealthState : Ok
+	                                  ApplicationName       : fabric:/WordCount
+	                                  NodeName              : _Node_1
+	                                  AggregatedHealthState : Ok
 
-HealthEvents                    :
-                                  SourceId              : System.CM
-                                  Property              : State
-                                  HealthState           : Ok
-                                  SequenceNumber        : 360
-                                  SentAt                : 3/22/2016 7:56:53 PM
-                                  ReceivedAt            : 3/22/2016 7:56:53 PM
-                                  TTL                   : Infinite
-                                  Description           : Application has been created.
-                                  RemoveWhenExpired     : False
-                                  IsExpired             : False
-                                  Transitions           : Error->Ok = 3/22/2016 7:56:53 PM, LastWarning = 1/1/0001 12:00:00 AM
+	HealthEvents                    :
+	                                  SourceId              : System.CM
+	                                  Property              : State
+	                                  HealthState           : Ok
+	                                  SequenceNumber        : 360
+	                                  SentAt                : 3/22/2016 7:56:53 PM
+	                                  ReceivedAt            : 3/22/2016 7:56:53 PM
+	                                  TTL                   : Infinite
+	                                  Description           : Application has been created.
+	                                  RemoveWhenExpired     : False
+	                                  IsExpired             : False
+	                                  Transitions           : Error->Ok = 3/22/2016 7:56:53 PM, LastWarning = 1/1/0001 12:00:00 AM
 
-                                  SourceId              : MyWatchdog
-                                  Property              : Availability
-                                  HealthState           : Error
-                                  SequenceNumber        : 131032204762818013
-                                  SentAt                : 3/23/2016 3:27:56 PM
-                                  ReceivedAt            : 3/23/2016 3:27:56 PM
-                                  TTL                   : Infinite
-                                  Description           :
-                                  RemoveWhenExpired     : False
-                                  IsExpired             : False
-                                  Transitions           : Ok->Error = 3/23/2016 3:27:56 PM, LastWarning = 1/1/0001 12:00:00 AM
-```
+	                                  SourceId              : MyWatchdog
+	                                  Property              : Availability
+	                                  HealthState           : Error
+	                                  SequenceNumber        : 131032204762818013
+	                                  SentAt                : 3/23/2016 3:27:56 PM
+	                                  ReceivedAt            : 3/23/2016 3:27:56 PM
+	                                  TTL                   : Infinite
+	                                  Description           :
+	                                  RemoveWhenExpired     : False
+	                                  IsExpired             : False
+	                                  Transitions           : Ok->Error = 3/23/2016 3:27:56 PM, LastWarning = 1/1/0001 12:00:00 AM
+
 
 ## 运行状况模型用法
-利用运行状况模型，云服务和基础 Service Fabric 平台可进行缩放，因为监视和运行状况判断分布在群集内的不同监视器中。其他系统在群集级别具有单个集中式服务，该服务分析服务发出的所有“可能”有用的信息。此方法会妨碍其可伸缩性。此外，它不允许使用它们收集非常具体的信息来帮助识别问题和潜在问题，并尽可能接近根本原因。
+利用运行状况模型，云服务和基础 Service Fabric 平台可进行缩放，因为监视和运行状况判断分布在群集内的不同监视器中。
+其他系统在群集级别具有单个集中式服务，该服务分析服务发出的所有可能有用的信息。此方法会妨碍其可伸缩性。此外，它不允许使用它们收集非常具体的信息来帮助识别问题和潜在问题，并尽可能接近根本原因。
 
 运行状况模型大量用于监视和诊断、评估群集和应用程序运行状况以及监视的升级。其他服务使用运行状况数据执行自动修复、生成群集运行状况历史记录以及对某些条件发出警报。
 
 ## 后续步骤
-[查看 Service Fabric 运行状况报告](/documentation/articles/service-fabric-view-entities-aggregated-health)
+[查看 Service Fabric 运行状况报告](/documentation/articles/service-fabric-view-entities-aggregated-health/)
 
-[使用系统运行状况报告进行故障排除](/documentation/articles/service-fabric-understand-and-troubleshoot-with-system-health-reports)
+[使用系统运行状况报告进行故障排除](/documentation/articles/service-fabric-understand-and-troubleshoot-with-system-health-reports/)
 
-[添加自定义 Service Fabric 运行状况报告](/documentation/articles/service-fabric-report-health)
+[如何报告和检查服务运行状况](/documentation/articles/service-fabric-diagnostics-how-to-report-and-check-service-health/)
 
-[在本地监视和诊断服务](/documentation/articles/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally)
+[添加自定义 Service Fabric 运行状况报告](/documentation/articles/service-fabric-report-health/)
 
-[Service Fabric 应用程序升级](/documentation/articles/service-fabric-application-upgrade)
+[在本地监视和诊断服务](/documentation/articles/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/)
+
+[Service Fabric 应用程序升级](/documentation/articles/service-fabric-application-upgrade/)
  
-<!---HONumber=Mooncake_0523_2016-->
+
+<!---HONumber=Mooncake_0801_2016-->

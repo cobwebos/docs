@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/19/2016"
+	ms.date="06/27/2016"
 	ms.author="andkjell"/>
 
 # 使用 Azure AD Connect 排查连接问题
@@ -28,7 +28,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 
 
 
-还必须在代理服务器上打开所需的 URL。[Office 365 URLs and IP address ranges （Office 365 URL 和 IP 地址范围）](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中提供了正式列表。
+还必须在代理服务器上打开所需的 URL。[Office 365 URLs and IP address ranges（Office 365 URL 和 IP 地址范围）](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)中提供了正式列表。
 
 下表列出了连接到 Azure AD 时最起码需要的配置。此列表未包含任何可选功能，例如密码写回或 Azure AD Connect Health。本文中描述这些功能是为了帮助排查初始配置问题。
 
@@ -63,7 +63,7 @@ secure.aadcdn.microsoftonline p.com | HTTPS/443 | 用于 MFA。
 如果安装向导已成功连接到 Azure AD，但无法验证密码本身，你将看到此错误：
 ![badpassword](./media/active-directory-aadconnect-troubleshoot-connectivity/badpassword.png)
 
-- 密码是否为临时密码并且必须更改？ 它确实是正确的密码吗？ 请尝试登录到 https://login.microsoftonline.com （在 Azure AD Connect 服务器以外的另一台计算机上），然后验证该帐户是否可用。
+- 密码是否为临时密码并且必须更改？ 它确实是正确的密码吗？ 请尝试登录到 https://login.microsoftonline.com（在 Azure AD Connect 服务器以外的另一台计算机上），然后验证该帐户是否可用。
 
 ### 验证代理连接
 为了验证 Azure AD Connect 服务器是否确实与代理和 Internet 建立了连接，我们将使用一些 PowerShell 来查看代理是否允许 Web 请求。在 PowerShell 命令提示符下运行 `Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc`。（从技术上讲，第一个调用是对 https://login.microsoftonline.com 发出的并且是可行的，但另一个 URI 的响应速度更快。）
@@ -88,7 +88,7 @@ PowerShell 使用 machine.config 中的配置来联系代理。winhttp/netsh 中
 ## Azure AD Connect 与 Azure AD 之间的通信模式
 如果你已遵循上述步骤但仍无法连接，现在可以开始查看网络日志。本部分说明正常和成功的连接模式。此外，还将列出你在阅读网络日志时可能会忽略的常见辅助信息。
 
-- 将调用 https://dc.services.visualstudio.com 。不需要在代理中打开即可成功安装，可以忽略这些信息。
+- 将调用 https://dc.services.visualstudio.com。不需要在代理中打开即可成功安装，可以忽略这些信息。
 - 你将看到 DNS 解析列出要处于 DNS 命名空间 nsatc.net 的实际主机，以及不在 microsoftonline.com 下的其他命名空间。但是，实际服务器名称中不会有任何 Web 服务请求，因此不需要将它们添加到代理。
 - 终结点 adminwebservice 和 provisioningapi（请参阅下面的日志）是发现终结点，用于找出要使用的实际终结点，并且根据区域而有所不同。
 
@@ -101,26 +101,26 @@ PowerShell 使用 machine.config 中的配置来联系代理。winhttp/netsh 中
 --- | ---
 1/11/2016 8:31 | connect://login.microsoftonline.com:443
 1/11/2016 8:31 | connect://adminwebservice.microsoftonline.com:443
-1/11/2016 8:32 | connect://*bba800-anchor*.microsoftonline.com:443
+1/11/2016 8:32 | connect://bba800-anchor.microsoftonline.com:443
 1/11/2016 8:32 | connect://login.microsoftonline.com:443
 1/11/2016 8:33 | connect://provisioningapi.microsoftonline.com:443
-1/11/2016 8:33 | connect://*bwsc02-relay*.microsoftonline.com:443
+1/11/2016 8:33 | connect://bwsc02-relay.microsoftonline.com:443
 
 **配置**
 
 时间 | URL
 --- | ---
 1/11/2016 8:43 | connect://login.microsoftonline.com:443
-1/11/2016 8:43 | connect://*bba800-anchor*.microsoftonline.com:443
+1/11/2016 8:43 | connect://bba800-anchor.microsoftonline.com:443
 1/11/2016 8:43 | connect://login.microsoftonline.com:443
 1/11/2016 8:44 | connect://adminwebservice.microsoftonline.com:443
-1/11/2016 8:44 | connect://*bba900-anchor*.microsoftonline.com:443
+1/11/2016 8:44 | connect://bba900-anchor.microsoftonline.com:443
 1/11/2016 8:44 | connect://login.microsoftonline.com:443
 1/11/2016 8:44 | connect://adminwebservice.microsoftonline.com:443
-1/11/2016 8:44 | connect://*bba800-anchor*.microsoftonline.com:443
+1/11/2016 8:44 | connect://bba800-anchor.microsoftonline.com:443
 1/11/2016 8:44 | connect://login.microsoftonline.com:443
 1/11/2016 8:46 | connect://provisioningapi.microsoftonline.com:443
-1/11/2016 8:46 | connect://*bwsc02-relay*.microsoftonline.com:443
+1/11/2016 8:46 | connect://bwsc02-relay.microsoftonline.com:443
 
 **初始同步**
 
@@ -128,8 +128,8 @@ PowerShell 使用 machine.config 中的配置来联系代理。winhttp/netsh 中
 --- | ---
 1/11/2016 8:48 | connect://login.windows.net:443
 1/11/2016 8:49 | connect://adminwebservice.microsoftonline.com:443
-1/11/2016 8:49 | connect://*bba900-anchor*.microsoftonline.com:443
-1/11/2016 8:49 | connect://*bba800-anchor*.microsoftonline.com:443
+1/11/2016 8:49 | connect://bba900-anchor.microsoftonline.com:443
+1/11/2016 8:49 | connect://bba800-anchor.microsoftonline.com:443
 
 ## 身份验证错误
 本部分说明可能从 ADAL（Azure AD Connect 使用的身份验证库）和 PowerShell 返回的错误。其中说明的错误可帮助你了解后续步骤。
@@ -182,6 +182,6 @@ PowerShell 使用 machine.config 中的配置来联系代理。winhttp/netsh 中
 - 如果配置看起来正确，请按照[验证代理连接](#verify-proxy-connectivity)中的步骤，查看问题是否也出现在向导外部的位置。
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0801_2016-->
