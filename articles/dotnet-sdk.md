@@ -61,9 +61,9 @@
 
 [Azure 模拟器](http://msdn.microsoft.com/zh-cn/library/dn339018.aspx)模拟云服务环境，这样您就可以先在本地计算机上测试云服务项目，然后再将其部署到 Azure。
 
-###<a id="hdinsight"></a>HDInsight Tools for Visual Studio，和 Microsoft Hive ODBC 驱动程序
+###<a id="hdinsight"></a>Visual Studio 的 HDInsight 工具和 Microsoft Hive ODBC 驱动程序
 
-在服务器资源管理器中的 HDInsight 工具，可以导航 Hive 数据库和 HDInsight 群集的链接存储帐户、创建表，并创建和提交 Hive 查询。有关详细信息，请参阅 [HDInsight Hadoop Tools for Visual Studio 入门](hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md)。
+在服务器资源管理器中的 HDInsight 工具，可以导航 Hive 数据库和 HDInsight 群集的链接存储帐户、创建表，并创建和提交 Hive 查询。有关详细信息，请参阅 [适用于 Visual Studio 的 HDInsight Hadoop 工具入门](hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md)。
 
 ###用于 .NET 的 Microsoft Azure 库
 
