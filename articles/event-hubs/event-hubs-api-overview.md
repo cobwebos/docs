@@ -1,15 +1,15 @@
 <properties 
-   pageTitle="Azure 事件中心 API 概述 | Microsoft Azure"
-   description="汇总了一些重要的事件中心 .NET 客户端 API。"
-   services="event-hubs"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" />
+    pageTitle="Azure 事件中心 API 概述 | Azure"
+    description="汇总了一些重要的事件中心 .NET 客户端 API。"
+    services="event-hubs"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="event-hubs"
-   ms.date="01/26/2016"
-   wacn.date="" />
+    ms.service="event-hubs"
+    ms.date="07/11/2016"
+    wacn.date="" />
 
 # 事件中心 API 概述
 
@@ -175,9 +175,9 @@ public class SimpleEventProcessor : IEventProcessor
 
 若要了解有关事件中心方案的详细信息，请访问以下链接：
 
-- [什么是 Azure 事件中心？](/documentation/articles/event-hubs-what-is-event-hubs)
-- [事件中心概述](/documentation/articles/event-hubs-overview)
-- [事件中心编程指南](/documentation/articles/event-hubs-programming-guide)
+- [什么是 Azure 事件中心？](/documentation/articles/event-hubs-what-is-event-hubs/)
+- [事件中心概述](/documentation/articles/event-hubs-overview/)
+- [事件中心编程指南](/documentation/articles/event-hubs-programming-guide/)
 - [事件中心代码示例](http://code.msdn.microsoft.com/site/search?query=event hub&f[0].Value=event hubs&f[0].Type=SearchText&ac=5)
 
 下面提供了 .NET API 参考：
@@ -185,4 +185,4 @@ public class SimpleEventProcessor : IEventProcessor
 - [服务总线和事件中心 .NET API 参考](https://msdn.microsoft.com/zh-cn/library/azure/mt419900.aspx)
 - [事件处理程序主机 API 参考](https://msdn.microsoft.com/zh-cn/library/azure/mt445521.aspx)
 
-<!---HONumber=Mooncake_0321_2016-->
+<!---HONumber=Mooncake_0808_2016-->

@@ -9,15 +9,15 @@
 
 <tags 
 	ms.service="media-services" 
- 	ms.date="04/18/2016"   
+	ms.date="06/22/2016"  
 	wacn.date=""/>
 
 
 # 使用媒体服务 REST API 连接到媒体服务帐户
 
 > [AZURE.SELECTOR]
-- [.NET](/documentation/articles/media-services-dotnet-connect-programmatically)
-- [REST](/documentation/articles/media-services-rest-connect-programmatically)
+- [.NET](/documentation/articles/media-services-dotnet-connect-programmatically/)
+- [REST](/documentation/articles/media-services-rest-connect-programmatically/)
 
 本主题介绍如何在使用媒体服务 REST API 编程时获取与 Azure 媒体服务的编程连接。
 
@@ -25,18 +25,17 @@
 
 以下步骤描述了在使用媒体服务 REST API 连接到媒体服务时运用的最常见工作流：
 
-1. 获取访问令牌 
-2. 连接到媒体服务 URI 
+1. 获取访问令牌
+2. 连接到媒体服务 URI
 
-	>[AZURE.NOTE] 在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。
-	你必须对这个新 URI 进行后续调用。你还可能会收到包含 ODATA API 元数据说明的 HTTP/1.1 200 响应。
+	>[AZURE.NOTE] 在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。你必须对这个新 URI 进行后续调用。你还可能会收到包含 ODATA API 元数据说明的 HTTP/1.1 200 响应。
 
 3. 将后续 API 调用发布到新的 URL。
 
 	例如，如果在尝试连接后收到以下消息：
 
 		HTTP/1.1 301 Moved Permanently
-		Location: https://wamsbayclus001rest-hs.chinacloudapi.cn/api/
+		Location: https://wamsshaclus001rest-hs.chinacloudapp.cn/api/
 
 	则应该将后续 API 调用发布到 https://wamsbayclus001rest-hs.chinacloudapi.cn/api/。
 
@@ -99,11 +98,11 @@
 
 ###连接到媒体服务 URI
 
-媒体服务的根 URI 为 https://media.chinacloudapi.cn/ 。你最初应连接到此 URI，如果在响应中收到“301 重定向”，则应随后调用新 URI。此外，请勿在请求中使用任何自动重定向/跟踪逻辑。HTTP 谓词和请求正文将不会转发到新 URI。
+媒体服务的根 URI 为 https://media.chinacloudapi.cn/。你最初应连接到此 URI，如果在响应中收到“301 重定向”，则应随后调用新 URI。此外，请勿在请求中使用任何自动重定向/跟踪逻辑。HTTP 谓词和请求正文将不会转发到新 URI。
 
-请注意，用于上载和下载资产文件的根 URI 为 https://yourstorageaccount.blob.core.chinacloudapi.cn/ ，其中的存储帐户名为你在媒体服务帐户设置期间使用的同一帐户名。
+请注意，用于上载和下载资产文件的根 URI 为 https://yourstorageaccount.blob.core.chinacloudapi.cn/，其中的存储帐户名为你在媒体服务帐户设置期间使用的同一帐户名。
 
-以下示例演示了对媒体服务根 URI 发出的 HTTP 请求 (https://media.chinacloudapi.cn/) )。该请求将在响应中获取 301 重定向。后续请求使用新的 URI (https://wamsbayclus001rest-hs.chinacloudapi.cn/api/) )。
+以下示例演示了对媒体服务根 URI 发出的 HTTP 请求 (https://media.chinacloudapi.cn/)。该请求将在响应中获取 301 重定向。后续请求使用新的 URI (https://wamsbayclus001rest-hs.chinacloudapi.cn/api/)。
 
 **HTTP 请求**：
 	
@@ -161,6 +160,4 @@
 
 >[AZURE.NOTE] 获取新 URI 后，应该使用该 URI 来与媒体服务通信。
 
-
-
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0808_2016-->

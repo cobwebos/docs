@@ -4,12 +4,12 @@
 	services="notification-hubs" 
 	documentationCenter="" 
 	authors="wesmc7777"
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
 	ms.service="notification-hubs" 
-	ms.date="02/29/2016" 
+	ms.date="06/29/2016" 
 	wacn.date=""/>
 
 # 如何通过 Python 使用通知中心
@@ -24,10 +24,10 @@
 本主题中，我们将向你介绍如何：
 
 * 以 Python 构建 REST 客户端以获取通知中心功能。
-* 使用 Python 接口发送通知到通知中心 REST API。 
-* 获取 HTTP REST 请求/响应的转储以进行调试/培训。 
+* 使用 Python 接口发送通知到通知中心 REST API。
+* 获取 HTTP REST 请求/响应的转储以进行调试/培训。
 
-你可以按照你选定的移动平台的[入门教程](/documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification-wns-push-notification)以 Python 实现后端部分。
+你可以按照你选定的移动平台的[入门教程](/documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification-wns-push-notification/)以 Python 实现后端部分。
 
 > [AZURE.NOTE] 该示例仅限于发送通知，并不执行任何注册管理操作。
 
@@ -43,7 +43,7 @@
 	
 发送 Windows toast 通知：
 	
-	wns_payload = """<toast><visual><binding template="ToastText01"><text id="1">Hello world!</text></binding></visual></toast>"""
+	wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello world!</text></binding></visual></toast>"""
 	hub.send_windows_notification(wns_payload)
 	
 ## 实现
@@ -247,7 +247,9 @@
 以上方法将 HTTP POST 请求发送到你通知中心的 /messages 终结点，该请求具有发送通知的正确正文和标头。
 
 ### 使用调试属性启用详细的日志记录
-在初始化通知中心时启用调试属性将写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。我们最近添加了这个称为[通知中心 TestSend 属性](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx)的属性，它将返回有关通知发送结果的详细信息。若要使用它 - 请使用以下方法进行初始化：
+在初始化通知中心时启用调试属性将写出关于 HTTP 请求和响应转储的详细日志记录信息，以及详细的通知消息发送结果。
+我们最近添加了这个称为[通知中心 TestSend 属性](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx)的属性，它将返回有关通知发送结果的详细信息。
+若要使用它 - 请使用以下方法进行初始化：
 
 	hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
@@ -264,7 +266,7 @@
 
 ### Windows 应用商店和 Windows Phone 8.1（非 Silverlight）
 
-	wns_payload = """<toast><visual><binding template="ToastText01"><text id="1">Test</text></binding></visual></toast>"""
+	wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Test</text></binding></visual></toast>"""
 	hub.send_windows_notification(wns_payload)
 
 ### Windows Phone 8.0 和 8.1 Silverlight
@@ -313,11 +315,12 @@
 ## 示例:
 
 ### 启用调试属性
-如果在初始化 NotificationHub 时启用调试标志，你将会看到详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，你可以从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：![][1]
+如果在初始化 NotificationHub 时启用调试标志，你将会看到详细的 HTTP 请求和响应转储以及 NotificationOutcome，如下所示，你可以从中了解哪些 HTTP 标头传入请求以及从通知中心收到哪些 HTTP 响应：
+   	![][1]
 
 你将看到如详细的通知中心结果，例如
 
-- 当消息成功发送到推送通知服务时。 
+- 当消息成功发送到推送通知服务时。
 	
 		<Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
 
@@ -388,4 +391,4 @@
 [5]: ./media/notification-hubs-python-backend-how-to/TemplatedNotification.png
  
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0808_2016-->

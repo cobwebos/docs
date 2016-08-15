@@ -1,5 +1,5 @@
 <properties
-   pageTitle="共享访问签名概述 | Microsoft Azure"
+   pageTitle="共享访问签名概述 | Azure"
    description="共享访问签名是什么，其工作原理是怎样的，以及如何在 Node、PHP 和 C# 编程中使用它们。"
    services="service-bus,event-hubs"
    documentationCenter="na"
@@ -9,18 +9,18 @@
 
 <tags
    ms.service="service-bus"
-    ms.date="03/16/2016"
+    ms.date="06/22/2016"
    wacn.date=""/>
 
 # 共享访问签名（可能为英文页面）
 
-共享访问签名 (SAS) 是服务总线的主要安全机制，包括事件中心、中转消息传送（队列和主题）和中继消息传送。本文介绍共享访问签名、其工作原理以及如何以平台无关的方式使用它们。
+“共享访问签名”(SAS) 是服务总线的主要安全机制，包括事件中心、中转消息传送（队列和主题）和中继消息传送。本文介绍共享访问签名、其工作原理以及如何以平台无关的方式使用它们。
 
 ## SAS 概述
 
-共享访问签名是基于 SHA-256 安全哈希或 URI 的身份验证机制。SAS 是所有服务总线服务使用的非常强大的机制。在实际应用中，SAS 有两个组件： 共享访问策略和共享访问签名（通常称为令牌）。
+共享访问签名是基于 SHA-256 安全哈希或 URI 的身份验证机制。SAS 是所有服务总线服务使用的非常强大的机制。在实际应用中，SAS 有两个组件：共享访问策略和共享访问签名（通常称为令牌）。
 
-你可以在[对服务总线进行共享访问签名身份验证](/documentation/articles/service-bus-shared-access-signature-authentication)中找到有关共享访问签名与服务总线的更详细信息。
+你可以在[对服务总线进行共享访问签名身份验证](/documentation/articles/service-bus-shared-access-signature-authentication/)中找到有关共享访问签名与服务总线的更详细信息。
 
 ## 共享访问策略
 
@@ -188,7 +188,7 @@ ContentType: application/atom+xml;type=entry;charset=utf-8
 
 ```
 /// <summary>
-/// Send Claim Based Security (CBS) token
+/// Send claim-based security (CBS) token
 /// </summary>
 /// <param name="shareAccessSignature">Shared access signature (token) to send</param>
 private bool PutCbsToken(Connection connection, string sasToken)
@@ -239,7 +239,7 @@ private bool PutCbsToken(Connection connection, string sasToken)
 
 > [AZURE.NOTE] 请务必在 **SASL 身份验证机制设置为 EXTERNAL** 的情况下创建连接（而不是在不需要发送 SAS 令牌时使用的包含用户名与密码的默认 PLAIN）。
 
-接下来，发布者将创建两个 AMQP 链接来发送 SAS 令牌和接收来自服务的回复（令牌验证结果）。
+接下来，发布者将创建两个 AMQP 链接来发送 SAS 令牌和接收来自服务的回复（此令牌验证结果）。
 
 AMQP 消息包含一组属性，比简单消息包含更多信息。SAS 令牌是消息的正文（使用其构造函数）。**"ReplyTo"** 属性设置为用于在接收方链接上接收验证结果的节点名称（可以根据需要更改其名称，该节点将由服务动态创建）。服务使用最后三个应用程序/自定义属性来指示它需要执行哪种类型的操作。如 CBS 草案规范中所述，这些属性必须是**操作名称** ("put-token")、**令牌类型**（在此例中为“servicebus.windows.net:sastoken”），以及要应用令牌的**受众的“名称”**（整个实体）。
 
@@ -249,10 +249,10 @@ AMQP 消息包含一组属性，比简单消息包含更多信息。SAS 令牌�
 
 有关如何使用这些 SAS 令牌的详细信息，请参阅[服务总线 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/hh780717.aspx)。
 
-有关服务总线身份验证的详细信息，请参阅[服务总线身份验证和授权](/documentation/articles/service-bus-authentication-and-authorization)。
+有关服务总线身份验证的详细信息，请参阅[服务总线身份验证和授权](/documentation/articles/service-bus-authentication-and-authorization/)。
 
 此[博客文章](http://developers.de/blogs/damir_dobric/archive/2013/10/17/how-to-create-shared-access-signature-for-service-bus.aspx)中介绍了更多关于 C# 和 Java 脚本中的 SAS 的示例。
 
 [Azure 经典门户]: http://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0808_2016-->

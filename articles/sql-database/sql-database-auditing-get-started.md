@@ -9,8 +9,8 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="05/17/2016"
-	wacn.date="04/21/2016"/>
+	ms.date="07/10/2016"
+	wacn.date=""/>
  
 # SQL 数据库审核入门
 Azure SQL 数据库审核可以跟踪数据库事件，并将审核的事件写入 Azure 存储帐户中的审核日志。一般而言，可以在基本、标准和高级服务层中使用审核功能。
@@ -33,7 +33,7 @@ SQL 数据库审核可让你：
 - **报告**数据库活动。可以使用预配置的报告和仪表板快速开始使用活动和事件报告。
 - **分析**报告。可以查找可疑事件、异常活动和趋势。
 
-> [AZURE.NOTE] 现在，你可以使用新的**威胁检测**功能（目前以预览版提供），针对可能表示出现安全威胁的异常数据库活动接收前瞻性的警报。可以在审核配置边栏选项卡中启用和配置威胁检测。有关更多详细信息，请参阅[威胁检测入门](/documentation/articles/sql-database-threat-detection-get-started)。
+> [AZURE.NOTE] 现在，你可以使用新的**威胁检测**功能（目前以预览版提供），针对可能表示出现安全威胁的异常数据库活动接收前瞻性的警报。可以在审核配置边栏选项卡中启用和配置威胁检测。有关更多详细信息，请参阅[威胁检测入门](/documentation/articles/sql-database-threat-detection-get-started/)。
 
 你可以为以下事件类别配置审核：
 
@@ -53,12 +53,12 @@ SQL 数据库审核可让你：
 
 可以为特定数据库定义审核策略，也可以将审核策略定义为默认服务器策略。默认服务器审核策略将应用于服务器上所有未定义特定重写数据库审核策略的数据库。
 
-在设置审核之前，请检查是否正在使用[“下层客户端”](/documentation/articles/sql-database-auditing-and-dynamic-data-masking-downlevel-clients)。此外，如果你有严格的防火墙设置，请注意当启用审核时[将更改数据库的 IP 终结点](/documentation/articles/sql-database-auditing-and-dynamic-data-masking-downlevel-clients)。
+在设置审核之前，请检查是否正在使用[“下层客户端”](/documentation/articles/sql-database-auditing-and-dynamic-data-masking-downlevel-clients/)。此外，如果你有严格的防火墙设置，请注意当启用审核时[将更改数据库的 IP 终结点](/documentation/articles/sql-database-auditing-and-dynamic-data-masking-downlevel-clients/)。
 
 
 ##<a id="subheading-2"></a>为数据库设置审核
 
-1. 启动 [Azure 门户](https://portal.azure.cn) (https://portal.azure.cn) 。或者，你也可以启动 [Azure 管理门户](https://manage.windowsazure.cn/) (https://manage.windowsazure.cn/) 。请参考以下详细信息。
+1. 启动 [Azure 门户](https://portal.azure.cn) (https://portal.azure.cn)。或者，你也可以启动 [Azure 管理门户](https://manage.windowsazure.cn/) (https://manage.windowsazure.cn/)。请参考以下详细信息。
 
 2. 导航到你要审核的 SQL 数据库/SQL Server 的设置边栏选项卡。在“设置”边栏选项卡中，选择“审核和威胁检测”。
 
@@ -77,7 +77,7 @@ SQL 数据库审核可让你：
 
 	![导航窗格][3]
 
-7. 配置审核设置之后，你可以启用威胁检测并配置电子邮件，以接收安全警报。有关更多详细信息，请参阅 [Threat Detection Getting Started（威胁检测入门）](/documentation/articles/sql-database-threat-detection-get-started)。
+7. 配置审核设置之后，你可以启用威胁检测并配置电子邮件，以接收安全警报。有关更多详细信息，请参阅[威胁检测入门](/documentation/articles/sql-database-threat-detection-get-started/)页面。
 
 8. 单击“保存”。
 
@@ -97,7 +97,7 @@ SQL 数据库审核可让你：
 
 ##<a id="subheading-4"></a>使用 Azure 管理门户为数据库设置审核
 
-1. 启动 [Azure 管理门户](https://manage.windowsazure.cn) (https://manage.windowsazure.cn/) 。
+1. 启动 [Azure 管理门户](https://manage.windowsazure.cn) (https://manage.windowsazure.cn/)。
 
 2. 单击要审核的 SQL 数据库/SQL Server，然后单击“审核和安全性”选项卡。
 
@@ -136,7 +136,7 @@ SQL 数据库审核可让你：
 3. 返回审核配置边栏选项卡，将“存储访问密钥”从“辅助”切换为“主要”，然后单击“保存”。
 
 4. 返回存储 UI 并**重新生成**辅助访问密钥（为下一个密钥刷新周期做好准备）。
-  
+
 ##<a id="subheading-7"></a>自动化
 可以使用多个 PowerShell cmdlet 来配置 Azure SQL 数据库中的审核：
 
@@ -171,7 +171,4 @@ SQL 数据库审核可让你：
 [7]: ./media/sql-database-auditing-get-started/7_auditing_get_started_classic_portal_storage.png
 [8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_storage_key_rotation.png
 
-
- 
-
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0808_2016-->

@@ -34,7 +34,7 @@
 ## 关于 Node.js 模块
 
 在本演练中，我们将使用 Node.js 模块。模块是可加载的 JavaScript 包，可为你的应用程序提供特定功能。你通常会使用 Node.js NPM 命令行工具在 NPM 安装目录中安装模块，但一些模块（如 HTTP 模块）是作为核心 Node.js 包的一部分提供的。
-安装的模块保存在 Node.js 安装目录的根目录下的 node\_modules 目录中。node\_modules 目录中的每个模块都保留自己的 node\_modules 目录，其中包含它依赖的所有模块，每个必需的模块都有一个 node\_modules 目录。这种递归的目录结构表示了依赖关系链。
+安装的模块保存在 Node.js 安装目录的根目录下的 node_modules 目录中。node_modules 目录中的每个模块都保留自己的 node_modules 目录，其中包含它依赖的所有模块，每个必需的模块都有一个 node\_modules 目录。这种递归的目录结构表示了依赖关系链。
 
 这种依赖关系链结构会导致应用程序占用空间变大，但保证满足所有依赖项的要求，并且开发中使用的模块版本也将在生产中使用。这使得生产应用程序的行为更有预测性，并防止出现影响用户的版本控制问题。
 
@@ -263,7 +263,7 @@ server.js 文件将提供 Web API 服务器的大多数功能。我们要将大�
      audience: 'your application URL',
     // you cannot have users from multiple tenants sign in to your server unless you use the common endpoint
   // example: https://login.microsoftonline.com/common/.well-known/openid-configuration
-     identityMetadata: 'https://login.microsoftonline.com/<your client id>/.well-known/openid-configuration', 
+     identityMetadata: 'https://login.microsoftonline.com/<your tenant id>/.well-known/openid-configuration', 
      validateIssuer: true, // if you have validation on, you cannot have users from multiple tenants sign in to your server
      passReqToCallback: false,
      loggingLevel: 'info' // valid are 'info', 'warn', 'error'. Error always goes to stderr in Unix.
@@ -338,9 +338,9 @@ var serverURI = (process.env.PORT) ? config.creds.mongoose_auth_mongohq : config
 
 现在，我们已将这三个文件统一放在 REST API 服务中，接下来让我们的准备工作发挥作用。
 
-对于本演练，我们将使用 MongoDB 来存储**步骤 4** 中所述的任务。
+对于本演练，我们将使用 MongoDB 来存储***步骤 4*** 中所述的任务。
 
-回顾我们在 **步骤 11** 中创建的 `config.js` 文件，我们将数据库称为 `tasklist`，因为这是我们在 mogoose\_auth\_local 连接 URL 的末尾放置的内容。你无需事先在 MongoDB 中创建此数据库，当你首次运行服务器应用程序时，系统将创建此数据库（假定它不存在）。
+回顾我们在 ***步骤 11*** 中创建的 `config.js` 文件，我们将数据库称为 `tasklist`，因为这是我们在 mogoose\_auth\_local 连接 URL 的末尾放置的内容。你无需事先在 MongoDB 中创建此数据库，当你首次运行服务器应用程序时，系统将创建此数据库（假定它不存在）。
 
 现在，我们已告诉服务器要使用哪个 MongoDB 数据库，接下来我们需要编写一些附加的代码，以便为服务器任务创建模型和架构。
 
@@ -348,13 +348,13 @@ var serverURI = (process.env.PORT) ? config.creds.mongoose_auth_mongohq : config
 
 我们的架构模型非常简单，你可以根据需要对其进行扩展。
 
-NAME - 分配到任务的用户名。一个**字符串**。
+NAME - 分配到任务的用户名。一个***字符串***。
 
-TASK - 任务本身。一个**字符串**。
+TASK - 任务本身。一个***字符串***。
 
-DATE - 任务截止日期。一个**日期时间**
+DATE - 任务截止日期。一个***日期时间***
 
-COMPLETED - 任务是否已完成。一个**布尔值**
+COMPLETED - 任务是否已完成。一个***布尔值***
 
 #### 在代码中创建架构
 
@@ -383,7 +383,7 @@ var TaskSchema = new Schema({
 mongoose.model('Task', TaskSchema);
 var Task = mongoose.model('Task');
 ```
-从该代码中可以看到，我们将会创建架构，然后创建在定义**路由**时，将在整个代码中用于存储数据的模型对象。
+从该代码中可以看到，我们将会创建架构，然后创建在定义***路由***时，将在整个代码中用于存储数据的模型对象。
 
 ## 14\.为任务 REST API 服务器添加路由
 
@@ -938,4 +938,4 @@ Transfer-Encoding: chunked
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0808_2016-->

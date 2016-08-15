@@ -4,12 +4,12 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="jeffsta"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
 	ms.service="active-directory"
-	ms.date="04/20/2016"
+	ms.date="07/18/2016"
 	wacn.date=""/>
 
 # 管理 Azure Active Directory 中的自定义域名
@@ -72,8 +72,8 @@
 
 ## 后续步骤
 
--   [了解 Azure AD 中的域名](/documentation/articles/active-directory-add-domain-concepts)
+-   [了解 Azure AD 中的域名](/documentation/articles/active-directory-add-domain-concepts/)
 
--   [管理自定义域名](/documentation/articles/active-directory-add-manage-domain-names)
+-   [管理自定义域名](/documentation/articles/active-directory-add-manage-domain-names/)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0808_2016-->

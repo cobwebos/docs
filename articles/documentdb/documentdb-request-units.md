@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="documentdb"
-	ms.date="05/31/2016" 
+	ms.date="06/29/2016" 
 	wacn.date=""/>
 
 #DocumentDB 中的请求单位
@@ -36,7 +36,7 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 ##指定请求单位容量
 创建 DocumentDB 集合时，可以指定希望为集合保留的每秒请求单位的数量 (RU)。创建集合之后，将保留指定的 RU 的完整分配供集合使用。保证每个集合具有专用的和隔离的吞吐量特征。
 
-值得注意的是，DocumentDB 在保留模型上操作，也就是说，按照你所保留的吞吐量向你计费，无论你主动使用了多少该吞吐量均是如此。但是请记住，随着应用程序的负载、数据和使用情况模式的更改，可以通过 DocumentDB SDK 或使用 [Azure 门户](https://portal.azure.com)轻松增加或减少保留的 RU。有关扩大或缩小吞吐量的详细信息，请参阅 [DocumentDB performance levels（DocumentDB 性能级别）](/documentation/articles/documentdb-performance-levels)。
+值得注意的是，DocumentDB 在保留模型上操作，也就是说，按照你所保留的吞吐量向你计费，无论你主动使用了多少该吞吐量均是如此。但是请记住，随着应用程序的负载、数据和使用情况模式的更改，可以通过 DocumentDB SDK 或使用 [Azure 门户](https://portal.azure.com)轻松增加或减少保留的 RU。有关增加和减少吞吐量的详细信息，请参阅 [DocumentDB 性能级别](/documentation/articles/documentdb-performance-levels/)。
 
 ##请求单位注意事项
 在估计为 DocumentDB 集合保留的请求单位数量时，务必要考虑以下变量：
@@ -60,6 +60,9 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 - 文档创建（写入）
 - 文档读取
 - 文档删除
+- 文档更新
+
+此工具也支持根据你提供的示例文档预估数据存储需求。
 
 该工具易于使用：
 
@@ -67,15 +70,17 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 
 	![将文档上载到请求单位计算器][2]
 
-2. 输入所需的文档创建、读取和删除操作数目（以秒为单位）。
+2. 若要预估数据存储需求，请输入你预期要存储的文档总数。
+
+3. 输入所需的文档创建、读取、更新和删除操作数目（以秒为单位）。若要预估文档更新操作的请求单位费用，请上载上述步骤 1 中包含典型字段更新的示例文档的副本。例如，如果文档更新通常会修改名为 lastLogin 和 userVisits 的两个属性，则只要复制示例文档、更新这两个属性的值，并上载复制的文档。
 
 	![在请求单位计算器中输入吞吐量要求][3]
 
-3. 单击“计算”，然后查看结果。
+4. 单击“计算”，然后查看结果。
 
 	![请求单位计算器结果][4]
 
->[AZURE.NOTE]如果文档类型与已编制索引之属性的大小与数目截然不同，请将每个典型文档的类型示例上载到该工具，然后计算结果。
+>[AZURE.NOTE]如果你有多种文档类型，它们的索引属性大小和数目截然不同，则将每种*类型*的典型文档的示例上载到该工具，然后计算结果。
 
 ###使用 DocumentDB 请求费用响应标头
 每个来自 DocumentDB 服务的响应都包含一个包含用于请求的请求单位的自定义标头 (x-ms-request-charge)。此标头也可通过 DocumentDB SDK 访问。在 .NET SDK 中，RequestCharge 是 ResourceResponse 对象的属性。对于查询，在 Azure 门户中的 DocumentDB 查询资源管理器提供了用于执行的查询的请求费用信息。
@@ -84,11 +89,11 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 
 基于这一点，有一种方法可以估计应用程序所需的保留的吞吐量：记录与针对应用程序所使用的代表性文档运行典型操作相关联的请求单位费用，然后估计你预计每秒执行的操作数。也要确保测算并包含典型查询和 DocumentDB 脚本使用情况。
 
->[AZURE.NOTE]如果某些文档类型在大小和已编制索引的属性方面有很大不同，那么就要记录与每个典型文档类型相关联的适用操作的请求单位费用。
+>[AZURE.NOTE]如果你有多种文档类型，它们的索引属性大小和数目截然不同，则记录与每种类型的典型文档相关联的适用操作请求单位费用。
 
 例如：
 
-1. 记录创建（插入）典型文档的请求单位费用。 
+1. 记录创建（插入）典型文档的请求单位费用。
 2. 记录读取典型文档的请求单位费用。
 3. 记录更新典型文档的请求单位费用。
 3. 记录典型、常见文档查询的请求单位费用。
@@ -181,7 +186,7 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 在此示例中，我们认为平均吞吐量需求为 1,275 RU/s。舍入到最接近的百位数，我们会将此应用程序的集合设置为 1,300 RU/s。
 
 ##超过保留的吞吐量限制
-前面提到，请求单位消耗以每秒速率进行评估。对于超过集合设置的请求单位速率的应用程序，将限制对该集合的请求数，直到速率降低到保留级别之下。受到限制时，服务器将会抢先结束 RequestRateTooLarge（HTTP 状态代码 429）的请求并返回 x-ms-retry-after-ms 标头，该标头指示重试请求前用户必须等待的时间数量（以毫秒为单位）。
+前面提到，请求单位消耗以每秒速率进行评估。对于超过集合设置的请求单位速率的应用程序，将限制对该集合的请求数，直到速率降低到保留级别之下。被限制时，服务器将抢先结束请求、引发 RequestRateTooLargeException（HTTP 状态代码 429）并返回 x-ms-retry-after-ms 标头，该标头指示重试请求前用户必须等待的时间（以毫秒为单位）。
 
 	HTTP Status 429
 	Status Line: RequestRateTooLarge
@@ -193,16 +198,16 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 
 ##后续步骤
 
-若要了解有关 Azure DocumentDB 的保留吞吐量的详细信息，请浏览以下资源：
+若要了解有关 Azure DocumentDB 数据库的保留吞吐量的详细信息，请浏览以下资源：
  
 - [DocumentDB 定价](https://azure.microsoft.com/pricing/details/documentdb/)
-- [管理 DocumentDB 容量](/documentation/articles/documentdb-manage) 
-- [对 DocumentDB 中的数据进行建模](/documentation/articles/documentdb-modeling-data)
-- [DocumentDB 性能级别](/documentation/articles/documentdb-partition-data)
+- [管理 DocumentDB 容量](/documentation/articles/documentdb-manage/)
+- [对 DocumentDB 中的数据进行建模](/documentation/articles/documentdb-modeling-data/)
+- [DocumentDB 性能级别](/documentation/articles/documentdb-partition-data/)
 
-若要了解有关 DocumentDB 的详细信息，请参阅 Azure DocumentDB [文档](https://azure.microsoft.com/documentation/services/documentdb/)。
+要了解有关 DocumentDB 的详细信息，请参阅 Azure DocumentDB [文档](https://azure.microsoft.com/documentation/services/documentdb/)。
 
-若要开始使用 DocumentDB 进行规模和性能测试，请参阅 [Performance and Scale Testing with Azure DocumentDB（使用 Azure DocumentDB 进行性能和规模测试）](documentdb-performance-testing.md)。
+若要开始使用 DocumentDB 进行规模和性能测试，请参阅[使用 Azure DocumentDB 进行性能和规模测试](documentdb-performance-testing.md)。
 
 
 [1]: ./media/documentdb-request-units/queryexplorer.png
@@ -211,4 +216,4 @@ DocumentDB 通过保留资源提供了快速且可预测的性能，以满足应
 [4]: ./media/documentdb-request-units/RUEstimatorResults.png
 [5]: ./media/documentdb-request-units/RUCalculator2.png
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0808_2016-->

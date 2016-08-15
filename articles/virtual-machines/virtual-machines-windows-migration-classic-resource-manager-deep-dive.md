@@ -45,14 +45,13 @@
 | UDR | UDR | 在迁移到 Resource Manager 部署模型的过程中，将克隆与子网关联的用户定义路由。请注意，在迁移期间不会删除经典部署模型中的 UDR。但是，当迁移正在进行时，会阻止 UDR 的管理平面操作。 | | |
 | VM 网络配置中的 IP 转发属性 | NIC 中的 IP 转发属性 | VM 上的 IP 转发属性在迁移期间将转换为网络接口上的属性。 | | |
 | 具有多个 IP 的负载平衡器 | 具有多个公共 IP 资源的负载平衡器 | 与负载平衡器关联的每个公共 IP 都将转换为公共 IP 资源，并在迁移后与负载平衡器关联。 | | |
-| VM 上的内部 DNS 名称 | NIC 上的内部 DNS 名称 | 在迁移期间，将更新内部 DNS 后缀，以便与 Resource Manager 部署模型的后缀相匹配。请注意，在迁移之后，名称解析将继续工作。但是，与 VM 关联的后缀将会更改。 | | |
+| VM 上的内部 DNS 名称 | NIC 上的内部 DNS 名称 | 在迁移期间，VM 的内部 DNS 后缀将迁移到 NIC 上名为“InternalDomainNameSuffix”的只读属性。在迁移后，该后缀将保持不变，并且 VM 解决方案应继续像以前一样正常工作。 | | |
 
 ## 简单迁移的演练图解
 
 在下面的示例屏幕截图中，可以看到准备阶段过后包含 VM（不在虚拟网络中）的云服务的表示形式。
 
-![显示准备阶段过后经典表示形式的屏幕截图](./media/virtual-machines-windows-migration-classic-resource-manager/classic-migration-prepare-portal.png)
-![显示准备阶段过后 Resource Manager 表示形式的屏幕截图](./media/virtual-machines-windows-migration-classic-resource-manager/resourcemanager-migration-prepare-portal.png)
+![显示准备阶段过后经典表示形式的屏幕截图](./media/virtual-machines-windows-migration-classic-resource-manager/classic-migration-prepare-portal.png) ![显示准备阶段过后 Resource Manager 表示形式的屏幕截图](./media/virtual-machines-windows-migration-classic-resource-manager/resourcemanager-migration-prepare-portal.png)
 
 ## 后续步骤
 
@@ -63,4 +62,4 @@
 - [平台支持的从经典部署模型到 Azure Resource Manager 的 IaaS 资源迁移](/documentation/articles/virtual-machines-windows-migration-classic-resource-manager/)
 - [使用社区 PowerShell 脚本将经典虚拟机克隆到 Azure Resource Manager](/documentation/articles/virtual-machines-windows-migration-scripts/)
 
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0808_2016-->

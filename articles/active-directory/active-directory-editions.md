@@ -4,12 +4,12 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="MarkusVi"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="06/07/2016"
+	ms.date="07/08/2016"
 	wacn.date="" />
 
 # Azure Active Directory 版本
@@ -157,11 +157,11 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 | 免费版| 基本版| Premium Edition| 仅限 Office 365 应用 |
 | :-: | :-: | :-: | :-: |
-| 每个用户 10 个应用 [1]（预先集成的 SaaS 和开发人员集成的应用）| 每个用户 10 个应用 [1]（免费层 + 应用程序代理应用） | 无限制 [2]（免费层、基本层 + 自助应用集成模板）| 每个用户 10 个应用 [1]（预先集成的 SaaS 和开发人员集成的应用）|
+| 每个用户 10 个应用 (1) | 每个用户 10 个应用 (1) | 无限制 (2) | 每个用户 10 个应用 (1)|
 
 [1] 借助 Azure AD Free 和 Azure AD Basic，已获权访问 SaaS 应用的最终用户可以在其访问面板中看到最多 10 个应用并获得对这些应用的 SSO 访问权限。管理员可配置 SSO，并为使用 Free 和 Basic 的用户分配访问所需数量的 SaaS 应用的权限，但最终用户在其访问面板中一次只能看到 10 个应用。
 
-[2] 通过使用应用程序库菜单中提供的模板，自助集成支持 SAML、SCIM 或基于窗体的身份验证的任何应用程序。有关更多详细信息，请参阅 [Configuring single sign-on to applications that are not in the Azure Active Directory application gallery（针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录）](/documentation/articles/active-directory-saas-custom-apps/)。
+[2] 通过使用应用程序库菜单中提供的模板，自助集成支持 SAML、SCIM 或基于窗体的身份验证的任何应用程序。有关更多详细信息，请参阅 [针对不在 Azure Active Directory 应用程序库中的应用程序配置单一登录](/documentation/articles/active-directory-saas-custom-apps/)。
 
 **更多详细信息：**
 
@@ -271,8 +271,8 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 - [向“登录”和“访问面板”页添加公司品牌](/documentation/articles/active-directory-add-company-branding/)
 
-<br>
-<hr>
+
+
 #### 应用程序代理
 
 **类型：**基本功能
@@ -305,8 +305,8 @@ Office 365 订阅包括以下比较表中所述的其他 Azure Active Directory 
 
 - [服务级别协议](https://azure.microsoft.com/support/legal/sla/)
 
-<br>
-<hr>
+
+
 
 ## Premium 功能
 #### 自助组和应用管理/自助应用程序添加/动态组
@@ -371,7 +371,7 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 
 
-<br>
+
 
 #### Cloud App Discovery 
 
@@ -388,8 +388,8 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 - [使用 Cloud App Discovery 查找非托管的云应用程序](/documentation/articles/active-directory-cloudappdiscovery-whatis/)
 
-<br>
-<hr>
+
+
 #### Connect Health
 
 **类型：**高级功能
@@ -405,11 +405,11 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 - [在云中监视本地标识基础结构和同步服务](/documentation/articles/active-directory-aadconnect-health/)
 
-<br>
-<hr>
+
+
 #### 组帐户的自动密码滚动更新
 
-**类型：**高级功能
+**类型：**Premium 功能
 
 
 **可用性：**
@@ -419,12 +419,12 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 | | | ![勾选标记][12]| |
 
 
-<br>
-<hr>
-## Azure Active Directory Join — 仅适用于 Windows 10 的相关功能
+
+
+## Azure Active Directory Join – 仅适用于 Windows 10 的相关功能
 #### 让设备加入 Azure AD、Desktop SSO、Microsoft Passport for Azure AD 和 Administrator Bitlocker 恢复
 
-**类型：**Azure Active Directory Join — 仅适用于 Windows 10 的相关功能
+**类型：**Azure Active Directory Join - 仅适用于 Windows 10 的相关功能
 
 
 **可用性：**
@@ -434,11 +434,11 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 | ![勾选标记][12]| ![勾选标记][12]| ![勾选标记][12]| ![勾选标记][12]|
 
 
-<br>
+
 
 #### MDM 自动注册、自助 Bitlocker 恢复、其他本地管理员通过 Azure AD Join 加入 Windows 10 设备
 
-**类型：**Azure Active Directory Join — 仅适用于 Windows 10 的相关功能
+**类型：**Azure Active Directory Join - 仅适用于 Windows 10 的相关功能
 
 
 **可用性：**
@@ -450,7 +450,7 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 
 #### 企业状态漫游
 
-**类型：**Azure Active Directory Join — 仅适用于 Windows 10 的相关功能
+**类型：**Azure Active Directory Join - 仅适用于 Windows 10 的相关功能
 
 
 **可用性：**
@@ -490,4 +490,4 @@ Microsoft 标识管理器服务器软件权限随 Windows Server 许可证（任
 <!--Image references-->
 [12]: ./media/active-directory-editions/ic195031.png
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0808_2016-->

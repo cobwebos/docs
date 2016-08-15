@@ -9,17 +9,17 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="05/06/2016"
+   ms.date="06/01/2016"
    wacn.date=""/>
 
 # 管理 Azure SQL 数据仓库中的计算能力（Azure 门户）
 
 > [AZURE.SELECTOR]
-- [概述](/documentation/articles/sql-data-warehouse-overview-manage-compute)
-- [门户](/documentation/articles/sql-data-warehouse-manage-compute-portal.md)
-- [PowerShell](/documentation/articles/sql-data-warehouse-manage-compute-powershell)
-- [REST](/documentation/articles/sql-data-warehouse-manage-compute-rest-api)
-- [TSQL](/documentation/articles/sql-data-warehouse-manage-compute-tsql)
+- [概述](/documentation/articles/sql-data-warehouse-overview-manage-compute/)
+- [门户](/documentation/articles/sql-data-warehouse-manage-compute-portal.md/)
+- [PowerShell](/documentation/articles/sql-data-warehouse-manage-compute-powershell/)
+- [REST](/documentation/articles/sql-data-warehouse-manage-compute-rest-api/)
+- [TSQL](/documentation/articles/sql-data-warehouse-manage-compute-tsql/)
 
 
 通过扩大计算资源和内存来提升性能，从而满足工作负荷不断变化的需求。通过在非高峰时段缩减资源或同时暂停计算来节省成本。
@@ -30,7 +30,7 @@
 - 暂停计算
 - 恢复计算
 
-若要了解相关信息，请参阅[管理计算能力概述][]。
+若要了解相关信息，请参阅 [管理计算概述][]。
 
 <a name="scale-performance-bk"></a>
 <a name="scale-compute-bk"></a>
@@ -41,7 +41,7 @@
 
 更改计算资源：
 
-1. 打开“[Azure 门户][]”，打开你的数据库，然后单击“缩放”。
+1. 打开 [Azure 门户][]，打开你的数据库，然后单击“缩放”。
 
     ![单击“缩放”][1]
 
@@ -61,7 +61,7 @@
 
 暂停数据库：
 
-1. 打开“[Azure 门户][]”，并打开你的数据库。请注意，状态为“联机”。 
+1. 打开 [Azure 门户][]，并打开你的数据库。请注意，状态为“联机”。
 
     ![联机状态][6]
 
@@ -78,10 +78,9 @@
 
 ## 恢复计算
 
-[AZURE.INCLUDE [SQL Data Warehouse resume description（SQL 数据仓库恢复说明）](../includes/sql-data-warehouse-resume-description.md)]
-恢复数据库：
+[AZURE.INCLUDE [SQL Data Warehouse resume description（SQL 数据仓库恢复说明）](../includes/sql-data-warehouse-resume-description.md)] 恢复数据库：
 
-1. 打开“[Azure 门户][]”，并打开你的数据库。请注意，状态为“已暂停”。 
+1. 打开 [Azure 门户][]，并打开你的数据库。请注意，状态为“已暂停”。
 
     ![暂停数据库][4]
 
@@ -109,14 +108,14 @@
 [7]: ./media/sql-data-warehouse-manage-compute-portal/pause-confirm.png
 
 <!--Article references-->
-[管理概述]: /documentation/articles/sql-data-warehouse-overview-manage
-[管理计算能力概述]: /documentation/articles/sql-data-warehouse-overview-manage-compute
+[管理概述]: /documentation/articles/sql-data-warehouse-overview-manage/
+[Manage compute power overview]: /documentation/articles/sql-data-warehouse-overview-manage-compute/
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-[Azure 门户]: http://portal.azure.com/
+[Azure 门户]: http://portal.azure.cn/
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0808_2016-->

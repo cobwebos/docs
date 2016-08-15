@@ -5,20 +5,20 @@
 	description="本文介绍如何使用 Azure 媒体服务(AMS) 传送 AMS 使用 PlayReady 和 Widevine DRM 动态加密的流。PlayReady 许可证来自媒体服务 PlayReady 许可证服务器，而 Widevine 许可证则由 Axinom 许可证服务器传送。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="willzhan,Mingfeiy,rajputam,Juliako" 
+	authors="willzhan" 
 	manager="dwrede" 
 	editor=""/>
 
 <tags
 	ms.service="media-services"
-	ms.date="04/18/2016"   
+	ms.date="06/22/2016"   
 	wacn.date=""/>
 
 #使用 Axinom 将 Widevine 许可证传送到 Azure 媒体服务  
 
 > [AZURE.SELECTOR]
-- [castLabs](/documentation/articles/media-services-castlabs-integration)
-- [Axinom](/documentation/articles/media-services-axinom-integration)
+- [castLabs](/documentation/articles/media-services-castlabs-integration/)
+- [Axinom](/documentation/articles/media-services-axinom-integration/)
 
 ##概述
 
@@ -38,14 +38,14 @@ Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细�
 
 ##内容保护
 
-若要了解如何配置动态保护和密钥传递策略，请查看 Mingfei 的博客：[How to configure Widevine packaging with Azure Media Services](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)（如何通过 Azure 媒体服务配置 Widevine 打包）。
+若要了解如何配置动态保护和密钥传递策略，请查看 Mingfei 的博客：[如何通过 Azure 媒体服务配置 Widevine 打包](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)。
 
 你可以通过 multi-DRM 配置动态 CENC 保护，因为 DASH 流式处理具有下述两项特点：
 
 1. 适用于 MS Edge 和 IE11 的 PlayReady 保护，可能存在令牌授权限制。令牌限制策略必须附带由 Azure Active Directory 之类的安全令牌服务 (STS) 颁发的令牌；
-1. 针对 Chrome 的 Widevine 保护，可能要求使用其他 STS 颁发的令牌进行令牌身份验证。 
+1. 针对 Chrome 的 Widevine 保护，可能要求使用其他 STS 颁发的令牌进行令牌身份验证。
 
-请参阅 [JWT 令牌生成](/documentation/articles/media-services-axinom-integration#jwt-token-generation)部分，了解为何不能将 Azure Active Directory 用作 Axinom 的 Widevine 许可证服务器的 STS。
+请参阅 [JWT 令牌生成](/documentation/articles/media-services-axinom-integration/#jwt-token-generation)部分，了解为何不能将 Azure Active Directory 用作 Axinom 的 Widevine 许可证服务器的 STS。
 
 ###注意事项
 
@@ -54,7 +54,9 @@ Azure 媒体服务 (AMS) 已添加 Google Widevine 动态保护（有关详细�
 
 ##Azure Media Player 准备
 
-AMP v1.4.0 支持播放使用 PlayReady 和 Widevine DRM 进行动态打包的 AMS 内容。如果 Widevine 许可证服务器不需要令牌身份验证，则不需执行任何其他操作即可测试受 Widevine 保护的 DASH 内容。例如，AMP 团队提供了一个简单的[示例](http://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevine_notoken.html)，在该示例中，你可以看到它可以运行在使用 PlayReady 的 Edge 和 IE11 中以及使用 Widevine 的 Chrome 中。Axinom 提供的 Widevine 许可证服务器要求 JWT 令牌身份验证。需要通过 HTTP 标头“X-AxDRM-Message”提交带许可证请求的 JWT 令牌。为此，你需要在设置源之前在承载 AMP 的 Web 页中添加以下 javascript：
+AMP v1.4.0 支持播放使用 PlayReady 和 Widevine DRM 进行动态打包的 AMS 内容。
+如果 Widevine 许可证服务器不需要令牌身份验证，则不需执行任何其他操作即可测试受 Widevine 保护的 DASH 内容。例如，AMP 团队提供了一个简单的[示例](http://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevine_notoken.html)，在该示例中，你可以看到它可以运行在使用 PlayReady 的 Edge 和 IE11 中以及使用 Widevine 的 Chrome 中。
+Axinom 提供的 Widevine 许可证服务器要求 JWT 令牌身份验证。需要通过 HTTP 标头“X-AxDRM-Message”提交带许可证请求的 JWT 令牌。为此，你需要在设置源之前在承载 AMP 的 Web 页中添加以下 javascript：
 
 	<script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
 
@@ -188,14 +190,10 @@ Axinom Widevine 许可证服务器
 
 参数|使用方式
 ---|---
-通信密钥 ID|必须包括，在 JWT 令牌中作为声明“com\_key\_id”的值（参见[此](/documentation/articles/media-services-axinom-integration#jwt-token-generation)部分）。
-通信密钥|必须用作 JWT 令牌的签名密钥（参见[此](/documentation/articles/media-services-axinom-integration#jwt-token-generation)部分）。
-密钥种子|必须在提供了内容密钥 ID 的情况下用于生成内容密钥（参见[此](/documentation/articles/media-services-axinom-integration#content-protection)部分）。
-Widevine 许可证获取 URL|必须用于配置资产传送策略，以便进行 DASH 流式处理（参见[此](/documentation/articles/media-services-axinom-integration#content-protection)部分）。
-内容密钥 ID|必须包括，作为 JWT 令牌的授权消息声明值的一部分（参见[此](/documentation/articles/media-services-axinom-integration#jwt-token-generation)部分）。 
+通信密钥 ID|必须包括，在 JWT 令牌中作为声明“com\_key\_id”的值（参见[此](/documentation/articles/media-services-axinom-integration/#jwt-token-generation)部分）。
+通信密钥|必须用作 JWT 令牌的签名密钥（参见[此](/documentation/articles/media-services-axinom-integration/#jwt-token-generation)部分）。
+密钥种子|必须在提供了内容密钥 ID 的情况下用于生成内容密钥（参见[此](/documentation/articles/media-services-axinom-integration/#content-protection)部分）。
+Widevine 许可证获取 URL|必须用于配置资产传送策略，以便进行 DASH 流式处理（参见[此](/documentation/articles/media-services-axinom-integration/#content-protection)部分）。
+内容密钥 ID|必须包括，作为 JWT 令牌的授权消息声明值的一部分（参见[此](/documentation/articles/media-services-axinom-integration/#jwt-token-generation)部分）。 
 
-
-
-
-
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0808_2016-->

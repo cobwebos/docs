@@ -4,13 +4,12 @@
 	services="service-bus" 
 	documentationCenter="java" 
 	authors="sethmanheim" 
-	writer="sethm" 
 	manager="timlt" 
 	editor=""/>
 
 <tags 
 	ms.service="service-bus" 
-	ms.date="03/09/2016" 
+	ms.date="06/20/2016" 
 	wacn.date=""/>
 
 
@@ -20,11 +19,11 @@
 
 在 Service Bus 中支持 AMQP 1.0 意味着可以通过一系列使用有效的二进制协议的平台利用队列和发布/订阅中转消息传送功能。此外，你还可以生成由结合使用多个语言、框架和操作系统构建的组件组成的应用程序。
 
-本文说明如何从使用常用 Java 消息服务 (JMS) API 标准的 Java 应用程序使用服务总线中转消息传送功能（队列和发布/订阅主题）。有一个随附的说明如何使用 Service Bus .NET API 来执行相同操作的操作方法指南。使用 AMQP 1.0，可以同时使用以下两个指南来了解跨平台消息。
+本文说明如何从使用常用 Java 消息服务 (JMS) API 标准的 Java 应用程序使用服务总线消息传送功能（队列和发布/订阅主题）。有一个随附的说明如何使用 Service Bus .NET API 来执行相同操作的操作方法指南。使用 AMQP 1.0，可以同时使用以下两个指南来了解跨平台消息。
 
 ## 服务总线入门
 
-此指南假定你已具有包含名为“queue1”的队列的 Service Bus 命名空间。 如果没有，则可以使用 [Azure 经典门户](http://manage.windowsazure.cn)创建命名空间和队列。有关如何创建服务总线命名空间和队列的详细信息，请参阅[如何使用服务总线队列](/documentation/articles/service-bus-dotnet-get-started-with-queues/)。
+此指南假定你已具有包含名为“queue1”的队列的服务总线命名空间。如果没有，则可以使用 [Azure 经典门户](http://manage.windowsazure.cn)创建命名空间和队列。有关如何创建服务总线命名空间和队列的详细信息，请参阅[如何使用服务总线队列](/documentation/articles/service-bus-dotnet-get-started-with-queues/)。
 > [AZURE.NOTE] 分区队列和主题也支持 AMQP。有关详细信息，请参阅[分区消息实体](/documenatation/articles/service-bus-partitioning)和[针对服务总线分区队列和主题的 AMQP 1.0 支持](/documenatation/articles/service-bus-partitioned-queues-and-topics-amqp-overview)。
 
 ## 下载 AMQP 1.0 JMS 客户端库
@@ -33,10 +32,10 @@
 
 使用 Service Bus 构建和运行 JMS 应用程序时必须将以下 4 个 JAR 文件从 Apache Qpid JMS AMQP 1.0 分发存档添加到 Java CLASSPATH：
 
-*    geronimo-jms\_1.1\_spec-1.0.jar
-*    qpid-amqp-1-0-client-[version].jar
-*    qpid-amqp-1-0-client-jms-[version].jar
-*    qpid-amqp-1-0-common-[version].jar
+- geronimo-jms\_1.1\_spec-1.0.jar
+- qpid-amqp-1-0-client-[version].jar
+- qpid-amqp-1-0-client-jms-[version].jar
+- qpid-amqp-1-0-common-[version].jar
 
 ## 为 Java 应用程序编码
 
@@ -65,9 +64,9 @@ queue.QUEUE = queue1
 connectionfactory.[jndi_name] = [ConnectionURL]
 ```
 
-其中，**[jndi\_name]** 和 **[ConnectionURL]** 具有以下含义：
+其中，**[jndi_name]** 和 **[ConnectionURL]** 具有以下含义：
 
-- **[jndi\_name]**：ConnectionFactory 的逻辑名称。这是将使用 JNDI IntialContext.lookup() 方法在 Java 应用程序中解析的名称。
+- **[jndi_name]**：ConnectionFactory 的逻辑名称。这是将使用 JNDI IntialContext.lookup() 方法在 Java 应用程序中解析的名称。
 - **[ConnectionURL]**：向 AMQP 中转站提供包含所需信息的 JMS 库的 URL。
 
 **ConnectionURL** 的格式如下：
@@ -81,7 +80,7 @@ amqps://[SASPolicyName]:[SASPolicyKey]@[namespace].servicebus.windows.net
 - **[SASPolicyName]**：队列共享访问签名策略名称。
 - **[SASPolicyKey]**：队列共享访问签名策略密钥。
 
-> [AZURE.NOTE] 必须手动为密码进行 URL 编码。在 [http://www.w3schools.com/tags/ref\_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) 上提供了一个有用的 URL 编码实用工具。
+> [AZURE.NOTE] 必须手动为密码进行 URL 编码。在 [http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) 上提供了一个有用的 URL 编码实用工具。
 
 #### 配置目标
 
@@ -102,7 +101,7 @@ topic.[jndi_name] = [physical_name]
 - **[jndi\_name]**：目标的逻辑名称。这是将使用 JNDI IntialContext.lookup() 方法在 Java 应用程序中解析的名称。
 - **[physical\_name]**：应用程序向其发送或从该处接收消息的服务总线实体的名称。
 
-> [AZURE.NOTE] 在从 Service Bus 主题订阅中接收时，在 JNDI 中指定的物理名称应该是该主题的名称。在 JMS 应用程序代码中创建可持久订阅时提供该订阅名称。[服务总线 AMQP 1.0 开发人员指南](/documenatation/articles/service-bus-amqp-dotnet)提供了有关从 JMS 使用服务总线主题订阅的更多详细信息。
+> [AZURE.NOTE] 在从 Service Bus 主题订阅中接收时，在 JNDI 中指定的物理名称应该是该主题的名称。在 JMS 应用程序代码中创建可持久订阅时提供该订阅名称。[服务总线 AMQP 1.0 开发人员指南](/documenatation/articles/service-bus-amqp-dotnet/)提供了有关从 JMS 使用服务总线主题订阅的更多详细信息。
 
 ### 编写 JMS 应用程序
 
@@ -243,7 +242,7 @@ exit
 
 通过使用前面所述的示例 JMS 应用程序和从随附的指南[如何将 AMQP 1.0 用于 .NET 服务总线 .NET API](/documentation/articles/service-bus-dotnet-advanced-message-queuing/) 中选取的类似 .NET 应用程序，你可以在 .NET 和 Java 之间交换消息。
 
-有关使用服务总线和 AMQP 1.0 的跨平台消息传送的详细信息，请参阅[服务总线 AMQP 1.0 开发人员指南](/documenatation/articles/service-bus-amqp-dotnet)。
+有关使用服务总线和 AMQP 1.0 的跨平台消息传送的详细信息，请参阅[服务总线 AMQP 1.0 开发人员指南](/documenatation/articles/service-bus-amqp-dotnet/)。
 
 ### JMS 到 .NET
 
@@ -321,15 +320,14 @@ exit
 
 本操作方法指南演示了如何通过使用常用 JMS API 和 AMQP 1.0 通过 Java 使用 Service Bus 中转消息传送功能（队列和发布/订阅主题）。
 
-也可以通过其他语言（包括 .NET、C、Python 和 PHP）使用 Service Bus AMQP 1.0。使用这些不同语言构建的组件可以使用服务总线中的 AMQP 1.0 支持可靠且完全无损地交换消息。有关详细信息，请参阅[服务总线 AMQP 1.0 开发人员指南](/documenatation/articles/service-bus-amqp-dotnet)。
+也可以通过其他语言（包括 .NET、C、Python 和 PHP）使用 Service Bus AMQP 1.0。使用这些不同语言构建的组件可以使用服务总线中的 AMQP 1.0 支持可靠且完全无损地交换消息。有关详细信息，请参阅[服务总线 AMQP 1.0 开发人员指南](/documenatation/articles/service-bus-amqp-dotnet/)。
 
 ## 后续步骤
 
 * [Azure Service Bus 中的 AMQP 1.0 支持](/documentation/articles/service-bus-amqp-overview/)
 * [如何将 AMQP 1.0 与服务总线 .NET API 一起使用](/documentation/articles/service-bus-dotnet-advanced-message-queuing/)
-* [服务总线 AMQP 1.0 开发人员指南](/documenatation/articles/service-bus-amqp-dotnet)
-* [如何使用 Service Bus 队列](/documentation/articles/service-bus-dotnet-get-started-with-queues/)
+* [服务总线 AMQP 1.0 开发人员指南](/documenatation/articles/service-bus-amqp-dotnet/)
+* [如何使用 Service Bus 队列](service-bus-dotnet-get-started-with-queues.md)
 * [Java 开发人员中心](/develop/java/)。
 
-
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0808_2016-->

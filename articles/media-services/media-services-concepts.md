@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="05/11/2016" 
+	ms.date="06/22/2016"
 	wacn.date=""/>
 
 #Azure 媒体服务概念 
@@ -27,7 +27,7 @@
 确定要将哪些媒体内容上载和存储到资产中时，需注意以下事项：
 
 - 资产应仅包含一个唯一的媒体内容实例。例如，一段电视剧、电影或广告剪辑。
-- 资产不应包含多版视听文件或多段视听剪辑。其中一种不当使用资产的示例包括：尝试在资产中存储多段电视剧、广告或某一作品的不同拍摄角度。在资产中存储多版或多段视听文件会对提交编码作业、流式处理和保障资产后续在工作流中的传送造成困难。  
+- 资产不应包含多版视听文件或多段视听剪辑。其中一种不当使用资产的示例包括：尝试在资产中存储多段电视剧、广告或某一作品的不同拍摄角度。在资产中存储多版或多段视听文件会对提交编码作业、流式处理和保障资产后续在工作流中的传送造成困难。
 
 ###资产文件 
 [AssetFile](https://msdn.microsoft.com/zh-cn/library/azure/hh974275.aspx) 表示 Blob 容器中存储的实际视频或音频文件。一个资产文件始终与一个资产关联，而一个资产则可能包含一个或多个文件。如果资产文件对象未与 BLOB 容器中的数字文件关联，则媒体服务 Encoder 任务将失败。
@@ -90,17 +90,17 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 
 媒体服务所提供的动态打包可让你以媒体服务支持的流格式（MPEG DASH、HLS、Smooth Streaming、HDS）传送自适应比特率 MP4 或平滑流编码内容，而无须重新打包成这些流格式。
 
-若要使用[动态打包](/documentation/articles/media-services-dynamic-packaging-overview)，必须执行下列操作：
+若要使用[动态打包](/documentation/articles/media-services-dynamic-packaging-overview/)，必须执行下列操作：
 
 - 将夹层（源）文件编码成一组自适应比特率 MP4 文件或自适应比特率平滑流文件（本教程稍后将演示编码步骤）。
-- 针对你要传送内容的流式处理终结点，获取至少一个按需流式处理单位。有关详细信息，请参阅[如何缩放按需流式处理保留单位](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints/)。
+- 针对你要传送内容的流式处理终结点，获取至少一个按需流式处理单位。有关详细信息，请参阅[如何缩放按需流式处理保留单位](/documentation/articles/media-services-manage-origins/#scale_streaming_endpoints/)。
 
 媒体服务支持将在本文中介绍的以下按需编码器：
 
-- [媒体编码器标准版](/documentation/articles/media-services-encode-asset#media-encoder-standard)
+- [媒体编码器标准版](/documentation/articles/media-services-encode-asset/#media-encoder-standard)
 
 
-有关受支持的编码器的信息，请参阅[编码器](/documentation/articles/media-services-encode-asset)。
+有关受支持的编码器的信息，请参阅[编码器](/documentation/articles/media-services-encode-asset/)。
 
 
 ##实时流式处理
@@ -134,9 +134,9 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 
 有关详细信息，请参阅：
 
-- [使用能够使用 Azure 媒体服务执行实时编码的频道](/documentation/articles/media-services-manage-live-encoder-enabled-channels)
-- [使用从本地编码器接收多比特率实时流的频道](/documentation/articles/media-services-live-streaming-with-onprem-encoders)
-- [配额和限制](/documentation/articles/media-services-quotas-and-limitations)  
+- [使用能够使用 Azure 媒体服务执行实时编码的频道](/documentation/articles/media-services-manage-live-encoder-enabled-channels/)
+- [使用从本地编码器接收多比特率实时流的频道](/documentation/articles/media-services-live-streaming-with-onprem-encoders/)
+- [配额和限制](/documentation/articles/media-services-quotas-and-limitations/)
 
 ##保护内容
 
@@ -161,24 +161,24 @@ ArchiveWindowLength 还决定了客户端能够从当前实时位置按时间向
 
 有关详细信息，请参阅以下文章：
 
-[保护内容概述](/documentation/articles/media-services-content-protection-overview)
-[使用 AES-128 提供保护](/documentation/articles/media-services-protect-with-aes128)
-[使用 DRM 提供保护](/documentation/articles/media-services-protect-with-drm)
+[保护内容概述](/documentation/articles/media-services-content-protection-overview/)
+[使用 AES-128 提供保护](/documentation/articles/media-services-protect-with-aes128/)
+[使用 DRM 提供保护](/documentation/articles/media-services-protect-with-drm/)
 
 ##传送
 
 ###<a id="dynamic_packaging"></a>动态打包
 
-在使用媒体服务时，建议你始终将夹层文件编码为自适应比特率 MP4 集，然后使用[动态打包](/documentation/articles/media-services-dynamic-packaging-overview)将该集转换为所需的格式。
+在使用媒体服务时，建议你始终将夹层文件编码为自适应比特率 MP4 集，然后使用[动态打包](/documentation/articles/media-services-dynamic-packaging-overview/)将该集转换为所需的格式。
 
 
 ###流式处理终结点
 
 StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递给客户端播放器应用程序，也可以传递给内容交付网络 (CDN) 以进一步分发（Azure 媒体服务现在还提供了 Azure CDN 集成）。 StreamingEndpoint 服务的出站流可以是实时流，也可以是媒体服务帐户中的视频点播资产。此外，还可以通过调整扩展单元（也称为流单元）来控制 StreamingEndpoint 服务处理不断增长的带宽需求的能力。建议为生产环境中的应用程序分配一个或多个扩展单元。缩放单元提供能够以 200 Mbps 为增量购买的专用出口容量和附加功能（当前包括使用动态打包）。
 
-建议使用动态打包和/或动态加密。若要使用这些功能，你必须获取你计划从中流式传输内容的终结点的至少一个流式处理单位。有关详细信息，请参阅[缩放流式处理单位](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
+建议使用动态打包和/或动态加密。若要使用这些功能，你必须获取你计划从中流式传输内容的终结点的至少一个流式处理单位。有关详细信息，请参阅[缩放流式处理单位](/documentation/articles/media-services-manage-origins/#scale_streaming_endpoints)。
 
-默认情况下，每个媒体服务帐户最多可以包含 2 个流式处理终结点。若要请求更高的限制，请参阅[配额和限制](/documentation/articles/media-services-quotas-and-limitations)。
+默认情况下，每个媒体服务帐户最多可以包含 2 个流式处理终结点。若要请求更高的限制，请参阅[配额和限制](/documentation/articles/media-services-quotas-and-limitations/)。
 
 仅当 StreamingEndpoint 处于运行状态时才进行计费。
 
@@ -243,5 +243,4 @@ StreamingEndpoint 表示一个流服务，该服务可以直接将内容传递�
 
 		http://testendpoint-testaccount.streaming.mediaservices.chinacloudapi.cn/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=f4m-f4f) 
 
-
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0808_2016-->

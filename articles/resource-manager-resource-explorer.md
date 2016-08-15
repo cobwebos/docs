@@ -13,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="03/04/2016"
+   ms.date="05/16/2016"
    ms.author="stuartle;tomfitz"/>
 
 # 使用 Azure 资源浏览器查看和修改资源
@@ -67,13 +67,11 @@
 
 ![PowerShell](./media/resource-manager-resource-explorer/are-07-powershell.png)
 
-有关 Azure PowerShell cmdlet 的详细信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](./powershell-azure-resource-manager.md)
+有关 Azure PowerShell cmdlet 的详细信息，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](/documentation/articles/powershell-azure-resource-manager/)
 
 ## 摘要
 使用 ARM 时，资源浏览器可以是一个非常有用的工具。它是想办法使用 PowerShell 查询和进行更改的有效方法。如果你正在使用 REST API，它是在开始编写代码前开始使用和快速测试 API 调用的好办法。如果你要编写 ARM 模板，它会是了解资源层次结构和查找在何处放置配置的好办法，你可以在门户中进行更改，然后在资源浏览器中找到对应条目！
 
 有关详细信息，观看 [Scott Hanselman 和 David Ebbo 协作完成的第 9 频道视频](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Resource-Manager-Explorer-with-David-Ebbo)
 
-
-
-<!---HONumber=Mooncake_0405_2016-->
+<!---HONumber=Mooncake_0808_2016-->

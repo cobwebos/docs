@@ -9,7 +9,7 @@
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="04/04/2016"
+   ms.date="06/23/2016"
    wacn.date=""/>
 
 # 在 Azure 资源管理器模板中定义依赖关系
@@ -40,9 +40,9 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
       ...
     }
 
-如果需要在某个资源与通过 copy 循环创建的资源之间创建依赖关系（如上所示），可将 dependsOn 元素设置为该循环的名称。有关示例，请参阅[在 Azure 资源管理器中创建多个资源实例](/documentation/articles/resource-group-create-multiple)。
+如果需要在某个资源与通过 copy 循环创建的资源之间创建依赖关系（如上所示），可将 dependsOn 元素设置为该循环的名称。有关示例，请参阅[在 Azure 资源管理器中创建多个资源实例](/documentation/articles/resource-group-create-multiple/)。
 
-尽管您可能倾向使用 dependsOn 来映射您的资源之间的依赖关系，但请务必了解您这么做的理由，因为它会影响您的部署性能。例如，如果您这么做是因为想要记录资源的互连方式，那么，dependsOn 方法并不合适。DependsOn 的生命周期仅适合于部署而不适合于部署后。一旦部署完成，就无法查询这些依赖关系。如果您无意中阻止部署引擎使用应有的并行功能，则使用 dependsOn 将会给性能带来不利影响。若要对资源之间的关系进行记录并提供查询功能，则应改用[资源链接](/documentation/articles/resource-group-link-resources)。
+尽管您可能倾向使用 dependsOn 来映射您的资源之间的依赖关系，但请务必了解您这么做的理由，因为它会影响您的部署性能。例如，如果您这么做是因为想要记录资源的互连方式，那么，dependsOn 方法并不合适。DependsOn 的生命周期仅适合于部署而不适合于部署后。一旦部署完成，就无法查询这些依赖关系。如果您无意中阻止部署引擎使用应有的并行功能，则使用 dependsOn 将会给性能带来不利影响。若要对资源之间的关系进行记录并提供查询功能，则应改用[资源链接](/documentation/articles/resource-group-link-resources/)。
 
 ## 子资源
 
@@ -91,8 +91,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 
 ## 引用函数
 
-引用函数使表达式能够从其他 JSON 名值对或运行时资源中派生其值。引用表达式隐式声明一个资源依赖于另一个资源。
-以下 **propertyPath** 表示的属性是可选的，如果未指定数据，则引用将指向该资源。
+引用函数使表达式能够从其他 JSON 名值对或运行时资源中派生其值。引用表达式隐式声明一个资源依赖于另一个资源。以下 **propertyPath** 表示的属性是可选的，如果未指定数据，则引用将指向该资源。
 
     reference('resourceName').propertyPath
 
@@ -102,8 +101,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 
 ## 后续步骤
 
-- 若要了解有关创建 Azure 资源管理器模板的信息，请参阅[创作模板](/documentation/articles/resource-group-authoring-templates)。 
-- 有关模板的可用函数列表，请参阅[模板函数](/documentation/articles/resource-group-template-functions)。
+- 若要了解有关创建 Azure 资源管理器模板的信息，请参阅[创作模板](/documentation/articles/resource-group-authoring-templates/)。
+- 有关模板的可用函数列表，请参阅[模板函数](/documentation/articles/resource-group-template-functions/)。
 
-
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0808_2016-->

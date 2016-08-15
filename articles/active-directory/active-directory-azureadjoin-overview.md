@@ -4,13 +4,13 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""
 	tags="azure-classic-portal"/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="02/26/2016"
+	ms.date="06/23/2016"
 	wacn.date=""/>
 
 # 通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备
@@ -32,7 +32,7 @@ Azure AD Join 面向云优先/仅限云的企业 -- 通常是不具备本地 Win
 * **教育机构**：我们经常听到的一种方案是教育机构采用两种用户类型：教职员和学生。教职员被视为组织中较长期的成员，因此需要为他们创建本地帐户。但学生是组织中期限较短的成员，因此可在 Azure AD 中管理这些用户。这意味着，可以将目录范围推送到云而不是存储在本地。此外，这还意味着学生可以使用其 Azure AD 帐户登录 Windows，并在浏览器或 Office 应用程序中获取 Office 365 资源的访问权限。
 
 * **零售业**：客户提到的另一种方案是他们想要更轻松地管理季节性工作者。再次提醒，可以将较长期的全职员工的帐户创建为已加入域的计算机上的本地帐户。但季节性工作者是组织中期限较短的成员，因而需要在可更轻松转移用户许可证的位置管理这些用户。在具有 Office 365 许可证的云中创建这些用户帐户，让这些用户能够由于使用 Azure AD 帐户登录 Windows 和 Office 应用程序而获益。同时，在他们离开公司之后对他们的许可证保持更大的灵活性。
-* **其他企业**：即使你在本地 Active Directory 中维护用户，也仍可以享受到将用户添加 Azure AD 的好处。这是因为，Azure AD 为 Azure AD 和本地资源提供简化的加入体验、高效的设备管理、自动的移动设备管理注册和单一登录功能。  
+* **其他企业**：即使你在本地 Active Directory 中维护用户，也仍可以享受到将用户添加 Azure AD 的好处。这是因为，Azure AD 为 Azure AD 和本地资源提供简化的加入体验、高效的设备管理、自动的移动设备管理注册和单一登录功能。
 
 ## Azure AD Join 提供哪些功能？
 使用 Azure AD Join 可以获得以下优势：
@@ -49,7 +49,7 @@ Azure AD Join 面向云优先/仅限云的企业 -- 通常是不具备本地 Win
 * **自动的移动设备管理注册**：设备可以在连接到 Azure AD 时自动注册到移动设备管理中。此过程适用于 Microsoft Intune 与合作伙伴移动设备管理解决方案。使用 Intune 执行设备管理时，IT 管理员可在 SCCM 管理控制台中监视/管理已加入 Azure AD 的设备以及已加入域的设备。
 
 
-* **单一登录公司资源**：用户享有从 Windows 桌面到云中应用和资源（例如 Office 365）以及数千个通过 [Azure AD Connect](/documentation/articles/active-directory-azureadjoin-deployment-aadjoindirect) 依赖 Azure AD 进行身份验证的企业应用程序的单一登录。当已加入 Azure AD 的企业拥有设备位于企业网络时，这类设备也享有本地资源的 SSO，并且在通过 [Azure AD 应用程序代理](https://msdn.microsoft.com/library/azure/Dn768219.aspx)公开这些资源时，也可从任何地方享有 SSO。
+* **单一登录公司资源**：用户享有从 Windows 桌面到云中应用和资源（例如 Office 365）以及数千个通过 [Azure AD Connect](/documentation/articles/active-directory-azureadjoin-deployment-aadjoindirect/) 依赖 Azure AD 进行身份验证的企业应用程序的单一登录。当已加入 Azure AD 的企业拥有设备位于企业网络时，这类设备也享有本地资源的 SSO，并且在通过 [Azure AD 应用程序代理](https://msdn.microsoft.com/library/azure/Dn768219.aspx)公开这些资源时，也可从任何地方享有 SSO。
 
 
 * **OS 状态漫游**：辅助功能设置、网站和 Wi-Fi 密码等设置都会在企业拥有的设备上同步，且无需使用个人 Microsoft 帐户。
@@ -68,11 +68,11 @@ Azure AD Join 面向云优先/仅限云的企业 -- 通常是不具备本地 Win
 
 
 ## 其他信息
-* [面向企业的 Windows 10：在工作中使用设备的方式](/documentation/articles/active-directory-azureadjoin-windows10-devices-overview)
-* [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](/documentation/articles/active-directory-azureadjoin-user-upgrade)
-* [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](/documentation/articles/active-directory-azureadjoin-passport)
-* [了解 Azure AD Join 的使用方案](/documentation/articles/active-directory-azureadjoin-deployment-aadjoindirect)
-* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](/documentation/articles/active-directory-azureadjoin-devices-group-policy)
-* [设置 Azure AD Join](/documentation/articles/active-directory-azureadjoin-setup)
+* [面向企业的 Windows 10：在工作中使用设备的方式](/documentation/articles/active-directory-azureadjoin-windows10-devices-overview/)
+* [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](/documentation/articles/active-directory-azureadjoin-user-upgrade/)
+* [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](/documentation/articles/active-directory-azureadjoin-passport/)
+* [了解 Azure AD Join 的使用方案](/documentation/articles/active-directory-azureadjoin-deployment-aadjoindirect/)
+* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](/documentation/articles/active-directory-azureadjoin-devices-group-policy/)
+* [设置 Azure AD Join](/documentation/articles/active-directory-azureadjoin-setup/)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0808_2016-->

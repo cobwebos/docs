@@ -4,13 +4,13 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="femila"
-	manager="stevenpo"
+	manager="swadhwa"
 	editor=""
 	tags="azure-classic-portal"/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="02/26/2016"
+	ms.date="06/23/2016"
 	wacn.date=""/>
 
 # Azure AD Join 的使用方案和部署注意事项 
@@ -18,7 +18,7 @@
 ## Azure AD Join 的使用方案
 ### 方案 1：业务主要在云中进行
 
-如果你当前在云中操作和管理企业的标识，或者即将迁移到云，则你可以从 Azure Active Directory Join (Azure AD Join) 获益。你可以使用在 Azure AD 中创建的帐户来登录 Windows 10。通过[首次运行体验 (FRX) 过程](/documentation/articles/active-directory-azureadjoin-user-frx)或通过从[设置菜单](/documentation/articles/active-directory-azureadjoin-user-upgrade)加入 Azure AD，用户可将其计算机加入 Azure AD。用户还可以在浏览器或 Office 应用程序中通过单一登录 (SSO) 访问云资源（例如 Office 365）。
+如果你当前在云中操作和管理企业的标识，或者即将迁移到云，则你可以从 Azure Active Directory Join (Azure AD Join) 获益。你可以使用在 Azure AD 中创建的帐户来登录 Windows 10。通过[首次运行体验 (FRX) 过程](/documentation/articles/active-directory-azureadjoin-user-frx/)或通过从[设置菜单](/documentation/articles/active-directory-azureadjoin-user-upgrade/)加入 Azure AD，用户可将其计算机加入 Azure AD。用户还可以在浏览器或 Office 应用程序中通过单一登录 (SSO) 访问云资源（例如 Office 365）。
 
 ### 方案 2：教育机构
 
@@ -43,19 +43,19 @@
 ### 先决条件
 **在企业级别（管理员）**
 
-*	Azure 订阅配合 Azure Active Directory  
+*	Azure 订阅配合 Azure Active Directory
 
 **在用户级别**
 
 *	Windows 10（专业版和企业版）
 
 ### 管理员任务
-* [设置设备注册](/documentation/articles/active-directory-azureadjoin-setup)
+* [设置设备注册](/documentation/articles/active-directory-azureadjoin-setup/)
 
 ### 用户任务
-* [安装期间使用 Azure AD 设置新的 Windows 10 设备](/documentation/articles/active-directory-azureadjoin-user-frx)
-* [通过设置菜单使用 Azure AD 设置 Windows 10 设备](/documentation/articles/active-directory-azureadjoin-user-upgrade)
-* [将个人 Windows 10 设备加入你的组织](/documentation/articles/active-directory-azureadjoin-personal-device)
+* [安装期间使用 Azure AD 设置新的 Windows 10 设备](/documentation/articles/active-directory-azureadjoin-user-frx/)
+* [通过设置菜单使用 Azure AD 设置 Windows 10 设备](/documentation/articles/active-directory-azureadjoin-user-upgrade/)
+* [将个人 Windows 10 设备加入你的组织](/documentation/articles/active-directory-azureadjoin-personal-device/)
 
 
 
@@ -74,18 +74,18 @@
 
 ### 管理员任务
 
-* [设置设备注册](/documentation/articles/active-directory-azureadjoin-setup)
+* [设置设备注册](/documentation/articles/active-directory-azureadjoin-setup/)
 
 ### 用户任务
-* [将个人 Windows 10 设备加入你的组织](/documentation/articles/active-directory-azureadjoin-personal-device)
+* [将个人 Windows 10 设备加入你的组织](/documentation/articles/active-directory-azureadjoin-personal-device/)
 
 
 ## 其他信息
-* [面向企业的 Windows 10：在工作中使用设备的方式](/documentation/articles/active-directory-azureadjoin-windows10-devices-overview)
-* [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](/documentation/articles/active-directory-azureadjoin-user-upgrade)
-* [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](/documentation/articles/active-directory-azureadjoin-passport)
-* [了解 Azure AD Join 的使用方案](/documentation/articles/active-directory-azureadjoin-deployment-aadjoindirect)
-* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](/documentation/articles/active-directory-azureadjoin-devices-group-policy)
-* [设置 Azure AD Join](/documentation/articles/active-directory-azureadjoin-setup)
+* [面向企业的 Windows 10：在工作中使用设备的方式](/documentation/articles/active-directory-azureadjoin-windows10-devices-overview/)
+* [通过 Azure Active Directory Join 将云功能扩展到 Windows 10 设备](/documentation/articles/active-directory-azureadjoin-user-upgrade/)
+* [通过 Microsoft Passport 在不使用密码的情况下进行身份验证](/documentation/articles/active-directory-azureadjoin-passport/)
+* [了解 Azure AD Join 的使用方案](/documentation/articles/active-directory-azureadjoin-deployment-aadjoindirect/)
+* [Connect domain-joined devices to Azure AD for Windows 10 experiences（体验 Windows 10 时将已加入域的设备连接到 Azure AD）](/documentation/articles/active-directory-azureadjoin-devices-group-policy/)
+* [设置 Azure AD Join](/documentation/articles/active-directory-azureadjoin-setup/)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0808_2016-->

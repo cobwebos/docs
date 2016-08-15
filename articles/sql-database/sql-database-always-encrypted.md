@@ -11,14 +11,14 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="05/09/2016"
-	wacn.date="05/23/2016"/>
+	ms.date="07/18/2016"
+	wacn.date=""/>
 
 # 始终加密 - 使用数据库加密保护 SQL 数据库中的敏感数据并将加密密钥存储在 Windows 证书存储中
 
 > [AZURE.SELECTOR]
-- [Azure 密钥保管库](/documentation/articles/sql-database-always-encrypted-azure-key-vault)
-- [Windows 证书存储](/documentation/articles/sql-database-always-encrypted)
+- [Azure 密钥保管库](/documentation/articles/sql-database-always-encrypted-azure-key-vault/)
+- [Windows 证书存储](/documentation/articles/sql-database-always-encrypted/)
 
 
 本文演示如何使用 [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/zh-cn/library/hh213248.aspx) 中的[始终加密向导](https://msdn.microsoft.com/zh-cn/library/mt459280.aspx)，通过数据库加密来保护 SQL 数据库中的敏感数据，以及如何将加密密钥存储在 Windows 证书存储中。
@@ -36,15 +36,13 @@
 - 创建一个数据库表并加密部分列。
 - 创建一个可以从已加密列插入、选择和显示数据的应用程序。
 
-> [AZURE.NOTE] Azure SQL 数据库的始终加密目前为预览版。
-
 
 ## 先决条件
 
 在本教程中，你需要：
 
 - 在开始之前，你需要有 Azure 帐户和订阅。如果没有，请注册[试用版](/pricing/1rmb-trial)。
-- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/zh-cn/library/mt238290.aspx) 13.0.700.242 或更高版本。
+- [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/zh-cn/library/mt238290.aspx) 版本 13.0.700.242 或更高版本。
 - [.NET Framework 4.6](https://msdn.microsoft.com/zh-cn/library/w0x726c2.aspx) 或更高版本（在客户端计算机上）。
 - [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)。
 
@@ -56,11 +54,11 @@
 
 
 1. 打开 SSMS（如果未打开，单击“连接”>“数据库引擎...”，打开“连接到服务器”窗口）。
-2. 输入服务器名称和凭据。服务器名称可以在 SQL 数据库边栏选项卡以及你此前复制的连接字符串中找到。键入完整的服务器名称，例如 database.chinacloudapi.cn。
+2. 输入服务器名称和凭据。服务器名称可以在 SQL 数据库边栏选项卡以及你此前复制的连接字符串中找到。键入完整的服务器名称，包括 *database.chinacloudapi.cn*。
 
 	![复制连接字符串](./media/sql-database-always-encrypted/ssms-connect.png)
 
-3. 如果“新建防火墙规则”窗口打开，请登录到 Azure，使 SSMS 为你创建新的防火墙规则。
+3. 如果“新建防火墙规则”窗口打开，请登录到 Azure，让 SSMS 为你创建新的防火墙规则。
 
 
 ## 创建表
@@ -92,7 +90,7 @@
 SSMS 提供了一个向导，可以轻松地配置始终加密，只需为你设置列主密钥 (CMK)、列加密密钥 (CEK) 和已加密列即可。
 
 1. 展开“数据库”>“Clinic”>“表”。
-2. 右键单击“患者”表，然后选择“加密列...”以打开“始终加密”向导：
+2. 右键单击 **Patients** 表，然后选择“加密列...”以打开“始终加密”向导：
 
     ![加密列](./media/sql-database-always-encrypted/encrypt-columns.png)
 
@@ -155,10 +153,10 @@ SSMS 提供了一个向导，可以轻松地配置始终加密，只需为你设
 
 ## 修改连接字符串以启用始终加密
 
-本节只介绍如何在数据库连接字符串中启用始终加密。在下一节（即“始终加密示例控制台应用程序”）中，你需要实际修改刚创建的控制台应用。
+本节只介绍如何在数据库连接字符串中启用始终加密。在下一节（即“始终加密示例控制台应用程序”）中，你将实际修改刚创建的控制台应用。
 
 
-若要启用“始终加密”，你需要将“列加密设置”关键字添加到连接字符串中，并将其设置为“启用”。
+若要启用“始终加密”，你需要将 **Column Encryption Setting** 关键字添加到连接字符串中，并将其设置为 **Enabled**。
 
 你可以在连接字符串中直接进行该设置，也可以使用 [SqlConnectionStringBuilder](https://msdn.microsoft.com/zh-cn/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx) 进行设置。下一节中的示例应用程序演示如何使用 **SqlConnectionStringBuilder**。
 
@@ -174,7 +172,7 @@ SSMS 提供了一个向导，可以轻松地配置始终加密，只需为你设
 
 ### 通过 SqlConnectionStringBuilder 启用始终加密
 
-以下代码显示如何通过将 [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/zh-cn/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) 设置为[启用](https://msdn.microsoft.com/zh-cn/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx)来启用“始终加密”。
+以下代码显示了如何通过将 [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/zh-cn/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) 设置为 [Enabled](https://msdn.microsoft.com/zh-cn/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx) 来启用“始终加密”。
 
     // Instantiate a SqlConnectionStringBuilder.
     SqlConnectionStringBuilder connStringBuilder = 
@@ -517,7 +515,7 @@ SSMS 提供了一个向导，可以轻松地配置始终加密，只需为你设
 ## 后续步骤
 创建使用始终加密的数据库以后，你可能需要执行以下操作：
 
-- 从另一台计算机运行此示例。此示例无法访问加密密钥，因此无法访问明文数据，导致无法成功运行。 
+- 从另一台计算机运行此示例。此示例无法访问加密密钥，因此无法访问明文数据，导致无法成功运行。
 - [轮换使用和清除密钥](https://msdn.microsoft.com/zh-cn/library/mt607048.aspx)。
 - [迁移已使用始终加密加密的数据](https://msdn.microsoft.com/zh-cn/library/mt621539.aspx)
 - 将始终加密证书部署到其他客户端计算机。
@@ -531,4 +529,4 @@ SSMS 提供了一个向导，可以轻松地配置始终加密，只需为你设
 - [始终加密向导](https://msdn.microsoft.com/zh-cn/library/mt459280.aspx)
 - [始终加密博客](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted)
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0808_2016-->

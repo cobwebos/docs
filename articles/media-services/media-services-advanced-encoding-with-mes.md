@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="05/19/2016"    
+	ms.date="06/22/2016"   
 	wacn.date=""/>
 
 
@@ -17,17 +17,19 @@
 
 ##概述
 
-本主题演示如何使用媒体编码器标准版执行高级编码任务。本主题说明[如何使用 .NET 创建一个编码任务，以及用于执行此任务的作业](/documentation/articles/media-services-custom-mes-presets-with-dotnet#encoding_with_dotnet)。此外，还说明如何向编码任务提供自定义预设。有关预设所用元素的说明，请参阅[此文档](https://msdn.microsoft.com/zh-cn/library/mt269962.aspx)。
+本主题演示如何使用媒体编码器标准版执行高级编码任务。本主题演示[如何使用 .NET 创建编码任务和执行此任务的作业](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#encoding_with_dotnet)。此外，还说明如何向编码任务提供自定义预设。有关预设所用元素的说明，请参阅[此文档](https://msdn.microsoft.com/zh-cn/library/mt269962.aspx)。
 
 下面演示了执行以下编码任务的自定义预设：
 
-- [生成缩略图](/documentation/articles/media-services-custom-mes-presets-with-dotnet#thumbnails)
-- [修剪视频（裁剪）](/documentation/articles/media-services-custom-mes-presets-with-dotnet#trim_video)
-- [创建覆盖层](/documentation/articles/media-services-custom-mes-presets-with-dotnet#overlay)
-- [在输入不包含音频时插入静音曲目](/documentation/articles/media-services-custom-mes-presets-with-dotnet#silent_audio)
-- [禁用自动取消隔行扫描](/documentation/articles/media-services-custom-mes-presets-with-dotnet#deinterlacing)
-- [仅音频预设](/documentation/articles/media-services-custom-mes-presets-with-dotnet#audio_only)
-- [连接两个或更多个视频文件](/documentation/articles/media-services-custom-mes-presets-with-dotnet#concatenate)
+- [生成缩略图](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#thumbnails)
+- [修剪视频（裁剪）](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#trim_video)
+- [创建覆盖层](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#overlay)
+- [在输入不包含音频时插入静音曲目](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#silent_audio)
+- [禁用自动取消隔行扫描](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#deinterlacing)
+- [仅音频预设](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#audio_only)
+- [连接两个或更多个视频文件](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#concatenate)
+- [使用媒体编码器标准版裁剪视频](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#crop)
+
 
 ##<a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
 
@@ -35,11 +37,11 @@
 
 - 创建编码作业。
 - 获取对媒体编码器标准版编码器的引用。
-- 加载自定义 XML 或 JSON 预设。可以在某个文件中保存 XML 或 JSON（例如 [XML](/documentation/articles/media-services-custom-mes-presets-with-dotnet#xml) 或 [JSON](/documentation/articles/media-services-custom-mes-presets-with-dotnet#json)），然后使用以下代码加载该文件。
+- 加载自定义 XML 或 JSON 预设。可以在某个文件中保存 XML 或 JSON（例如 [XML](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#xml) 或 [JSON](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#json)），然后使用以下代码加载该文件。
 
-			// Load the XML (or JSON) from the local file.
-		    string configuration = File.ReadAllText(fileName);  
-- 将编码任务添加到作业。 
+		// Load the XML (or JSON) from the local file.
+	    string configuration = File.ReadAllText(fileName);  
+- 将编码任务添加到作业。
 - 指定要编码的输入资产。
 - 创建将包含所编码资产的输出资产。
 - 添加事件处理程序以检查作业进度。
@@ -255,7 +257,7 @@
 
 有关架构的信息，请参阅[此](https://msdn.microsoft.com/zh-cn/library/mt269962.aspx)主题。
 
-请务必仔细阅读[注意事项](/documentation/articles/media-services-custom-mes-presets-with-dotnet#considerations)部分。
+请务必仔细阅读[注意事项](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#considerations)部分。
 
 ###<a id="json"></a>JSON 预设
 
@@ -447,12 +449,13 @@
 
 	你可以随意混搭使用表示法。
 	
-	此外，Start 还支持特殊的宏 {Best}，它会尝试判断第一个“有意义”的内容帧。注意：（Start 设置为 {Best} 时，将忽略 Step 与 Range）
+	此外，Start 还支持特殊的宏 {Best}，它会尝试判断第一个“有意义”的内容帧。
+	注意：（Start 设置为 {Best} 时，将忽略 Step 与 Range）
 	
 	- 默认值：Start:{Best}
 - 需要显式提供每个图像格式的输出格式：Jpg/Png/BmpFormat。MES 会将 JpgVideo（如果已指定）与 JpgFormat 进行匹配，依此类推。OutputFormat 引入了新的图像编解码器特定宏 {Index}，需要为图像输出格式提供该宏一次（且只需一次）。
 
-##<a id="trim_video"></a>修剪视频（裁剪）
+##<a id="trim_video"></a>剪裁视频（剪辑）
 
 本部分说明如何修改编码器预设，以裁剪或修剪其输入为所谓的夹层文件或按需文件的输入视频。也可以使用编码器来剪辑或剪裁从实时流捕获或存档的资产 — [此博客](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)提供了详细信息。
 
@@ -853,7 +856,7 @@
 	</Preset>
 
 
-##<a id="silent_audio"></a>在输入不包含音频时插入静音音轨
+##<a id="silent_audio"></a>在输入不包含音频时插入静音曲目
 
 默认情况下，如果你要向编码器发送仅包含视频而不包含音频的输入，输出资产将包含仅有视频数据的文件。某些播放器可能无法处理此类输出流。对于这种方案，你可以使用此设置来强制编码器将静音曲目添加到输出。
 
@@ -976,7 +979,7 @@
 - 代码片段和 JSON 预设显示连接两个视频文件的示例。你可以将其扩展至两个以上的视频，方法是：
 
 	1. 重复调用 task. InputAssets.Add() 以便依次添加更多视频。
-	2. 通过按相同顺序添加更多条目，对 JSON 中的“Sources”元素进行相应编辑。 
+	2. 通过按相同顺序添加更多条目，对 JSON 中的“Sources”元素进行相应编辑。
 
 
 ###.NET 代码
@@ -1068,11 +1071,13 @@
 	    }
 	  ]
 	}
-	
 
+##<a id="crop"></a>使用媒体编码器标准版裁剪视频
+
+请参阅主题[《Crop videos with Media Encoder Standard》](/documentation/articles/media-services-crop-video/)（使用媒体编码器标准版裁剪视频）。
 
 ##另请参阅 
 
-[媒体服务编码概述](/documentation/articles/media-services-encode-asset)
+[媒体服务编码概述](/documentation/articles/media-services-encode-asset/)
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0808_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="在门户中创建 Active Directory 应用程序 | Azure"
-   description="介绍如何创建新的 Active Directory 应用程序和服务主体，在 Azure Resource Manager 中将此服务主体与基于角色的访问控制配合使用可以管理对资源的访问权限。"
+   pageTitle="在门户中创建服务主体 | Azure"
+   description="介绍如何创建新的 Active Directory 应用程序和服务主体，在 Azure 资源管理器中将此服务主体与基于角色的访问控制配合使用可以管理对资源的访问权限。"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -12,7 +12,13 @@
    ms.date="05/18/2016"
    wacn.date=""/>
 
-# 使用门户创建可访问资源的 Active Directory 应用程序
+# 使用门户创建可访问资源的 Active Directory 应用程序和服务主体
+
+> [AZURE.SELECTOR]
+- [PowerShell](resource-group-authenticate-service-principal.md)
+- [Azure CLI](resource-group-authenticate-service-principal-cli.md)
+- [门户](resource-group-create-service-principal-portal.md)
+
 
 当你的自动化进程或应用程序需要访问或修改资源时，必须设置 Active Directory 应用程序，并为其分配所需的权限。本主题演示如何通过门户执行这些步骤。目前，必须使用经典门户来创建一个新的 Active Directory 应用程序，然后切换到 Azure 门户，以便为该应用程序分配角色。
 
@@ -21,14 +27,14 @@
 1. 为应用程序创建 ID 和身份验证密钥，并在应用程序运行时提供这些凭据。对于运行时无需用户交互的自动化进程，使用此选项。
 2. 允许用户通过应用程序登录到 Azure，然后使用这些凭据来代表用户访问资源。对于由用户运行的应用程序，使用此选项。
 
-有关 Active Directory 概念的说明，请参阅[应用程序对象和服务主体对象](/documentation/articles/active-directory-application-objects)。
-有关 Active Directory 身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](/documentation/articles/active-directory-authentication-scenarios)。
+有关 Active Directory 概念的说明，请参阅[《Application Objects and Service Principal Objects》](/documentation/articles/active-directory-application-objects/)（应用程序对象和服务主体对象）。
+有关 Active Directory 身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](/documentation/articles/active-directory-authentication-scenarios/)。
 
-有关将应用程序集成到 Azure 以管理资源的详细步骤，请参阅[使用 Azure Resource Manager API 进行授权的开发人员指南](/documentation/articles/resource-manager-api-authentication)。
+有关将应用程序集成到 Azure 以管理资源的详细步骤，请参阅[《Developer's guide to authorization with the Azure Resource Manager API》](/documentation/articles/resource-manager-api-authentication/)（使用 Azure Resource Manager API 进行授权的开发人员指南）。
 
 ## 创建 Active Directory 应用程序
 
-1. 通过 [Azure 门户](https://manage.windowsazure.cn/)登录到你的 Azure 帐户。
+1. 通过[经典门户](https://manage.windowsazure.com/)登录到你的 Azure 帐户。
 
 2. 在左侧窗格中选择“Active Directory”。
 
@@ -62,7 +68,8 @@
 
      ![命名应用程序](./media/resource-group-create-service-principal-portal/tell-us-about-your-application.png)
 
-7. 填写应用程序的属性。对于“登录 URL”，请提供用于描述应用程序的网站 URI。将不验证该网站是否存在。对于“应用程序 ID URI”，请提供用于标识应用程序的 URI。
+7. 填写应用程序的属性。对于“登录 URL”，请提供用于描述应用程序的网站 URI。将不验证该网站是否存在。
+对于“应用程序 ID URI”，请提供用于标识应用程序的 URI。
 
      ![应用程序属性](./media/resource-group-create-service-principal-portal/app-properties.png)
 
@@ -130,7 +137,7 @@
 
 ## 将应用程序分配到角色
 
-如果应用程序在其自己的凭据下运行，则必须将应用程序分配到某个角色。你必须决定哪个角色表示应用程序的相应权限。若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](/documentation/articles/role-based-access-built-in-roles)。
+如果应用程序在其自己的凭据下运行，则必须将应用程序分配到某个角色。你必须决定哪个角色表示应用程序的相应权限。若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](/documentation/articles/role-based-access-built-in-roles/)。
 
 可将作用域设置为订阅、资源组或资源级别。作用域的较低级别将继承权限（例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其包含的所有资源）。
 
@@ -160,7 +167,7 @@
 
      ![显示](./media/resource-group-create-service-principal-portal/show-app.png)
 
-有关通过门户将用户和应用程序分配到角色的详细信息，请参阅[使用 Azure 管理门户管理访问权限](../role-based-access-control-configure/#manage-access-using-the-azure-management-portal)。
+有关通过门户将用户和应用程序分配到角色的详细信息，请参阅[使用 Azure 管理门户管理访问权限](/documentation/articles/role-based-access-control-configure/#manage-access-using-the-azure-management-portal)。
 
 ## 在代码中获取访问令牌
 
@@ -168,17 +175,16 @@
 
 你已可以以编程方式登录应用程序。
 
-- 有关 .NET 示例，请参阅 [Azure Resource Manager SDK for .NET](/documentation/articles/resource-manager-net-sdk)。
-- 有关 Java 示例，请参阅 [Azure Resource Manager SDK for Java](/documentation/articles/resource-manager-java-sdk)。
-- 有关 Python 示例，请参阅 [Resource Management Authentication for Python（适用于 Python 的资源管理身份验证）](https://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementauthentication.html)。
-- 有关 REST 示例，请参阅 [Resource Manager REST API](/documentation/articles/resource-manager-rest-api)。
+- 有关 .NET 示例，请参阅[《Azure Resource Manager SDK for .NET》](/documentation/articles/resource-manager-net-sdk/)。
+- 有关 Java 示例，请参阅[《Azure Resource Manager SDK for Java》](/documentation/articles/resource-manager-java-sdk/)。
+- 有关 Python 示例，请参阅[《Resource Management Authentication for Python》](https://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementauthentication.html)（适用于 Python 的资源管理身份验证）。
+- 有关 REST 示例，请参阅[《Resource Manager REST API》](/documentation/articles/resource-manager-rest-api/)。
 
-有关将应用程序集成到 Azure 以管理资源的详细步骤，请参阅[使用 Azure Resource Manager API 进行授权的开发人员指南](/documentation/articles/resource-manager-api-authentication)。
+有关将应用程序集成到 Azure 以管理资源的详细步骤，请参阅[《Developer's guide to authorization with the Azure Resource Manager API》](/documentation/articles/resource-manager-api-authentication/)（使用 Azure Resource Manager API 进行授权的开发人员指南）。
 
 ## 后续步骤
 
-- 若要了解如何指定安全策略，请参阅 [Azure 基于角色的访问控制](/documentation/articles/role-based-access-control-configure)。  
+- 若要了解如何指定安全策略，请参阅 [Azure 基于角色的访问控制](/documentation/articles/role-based-access-control-configure/)。
 - 有关这些步骤的演示视频，请参阅[使用 Azure Active Directory 启用 Azure 资源的编程管理](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory)。
 
-
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0808_2016-->

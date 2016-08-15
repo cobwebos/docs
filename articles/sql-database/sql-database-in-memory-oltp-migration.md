@@ -1,5 +1,5 @@
 <properties
-	pageTitle="In-Memory OLTP 改善 SQL 事务性能 | Microsoft Azure"
+	pageTitle="内存中 OLTP 改善 SQL 事务性能 | Azure"
 	description="利用 In-Memory OLTP 改善现有 SQL 数据库中的事务性能。"
 	services="sql-database"
 	documentationCenter=""
@@ -10,24 +10,25 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="02/11/2016"
+	ms.date="07/18/2016"
 	wacn.date=""/>
 
 
-# 使用 In-Memory（预览版）改善 SQL 数据库中的应用程序性能
+# 使用 In-Memory OLTP（预览版）改善 SQL 数据库中的应用程序性能
 
-请遵循以下步骤，使用 [In-Memory](/documentation/articles/sql-database-in-memory) 功能优化现有[高级](/documentation/articles/sql-database-service-tiers) Azure SQL 数据库的事务性能。
+[内存中 OLTP](/documentation/articles/sql-database-in-memory/)可用于提升[高级版](/documentation/articles/sql-database-service-tiers/) Azure SQL 数据库中 OLTP 工作负荷的性能，而无需提高性能级别。
 
+请按照以下步骤在现有数据库中采用内存中 OLTP。
 
-## 步骤 1：确保你的高级数据库支持 In-Memory
+## 步骤 1：确保你的高级数据库支持内存中 OLTP
 
 在 2015 年 11 月或之后创建的高级数据库支持 In-Memory 功能。可以通过运行以下 Transact-SQL 语句，来判断你的高级数据库是否支持 In-Memory 功能。如果返回的结果为 1（不是 0），则支持 In-Memory：
 
-```
-SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
-```
 
-*XTP* 代表极端事务处理 (Extreme Transaction Processing)
+	SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
+
+
+XTP 代表极端事务处理 (Extreme Transaction Processing)
 
 如果现有的数据库必须迁移到新的 V12 高级数据库，你可以使用以下方法导出再导入你的数据。
 
@@ -35,9 +36,9 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 使用以下方式之一将生产数据库导出到 bacpac：
 
-- [门户](https://manage.windowsazure.cn)中的“导出”功能。[](/documentation/articles/sql-database-export)
+- [门户](https://portal.azure.cn)中的[“导出”](/documentation/articles/sql-database-export/)功能。
 
-- [最新SSMS.exe](http://msdn.microsoft.com/zh-cn/library/mt238290.aspx) (SQL Server Management Studio) 中的“导出数据层应用程序”功能。
+- 最新 [SSMS.exe](http://msdn.microsoft.com/zh-cn/library/mt238290.aspx) (SQL Server Management Studio) 中的“导出数据层应用程序”功能。
  1. 在“对象资源管理器”中，展开“数据库”节点。
  2. 右键单击你的数据库节点。
  3. 单击“任务”>“导出数据层应用程序”。
@@ -48,9 +49,9 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 将 bacpac 导入新的高级数据库。
 
-1. 在 [Azure 门户](https://manage.windowsazure.cn)中，
+1. 在 [Azure 门户](https://portal.azure.cn)中，
  - 导航到服务器。
- - 选择“导入数据库”选项。[](/documentation/articles/sql-database-import)
+ - 选择“导入数据库”选项。[](/documentation/articles/sql-database-import/)
  - 选择一个高级定价层。
 
 2. 使用 SSMS 导入 bacpac：
@@ -81,11 +82,11 @@ SSMS 包含可以针对具有活动工作负荷的数据库运行的“事务性
 1. 使用 SSMS 连接到测试数据库。
 
 2. 若要避免在查询中用到 WITH (SNAPSHOT) 选项，请按照以下 T-SQL 语句中所示设置数据库选项：
-```
-ALTER DATABASE CURRENT
-	SET
-		MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
-```
+
+	ALTER DATABASE CURRENT
+		SET
+			MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
+
 
 
 ## 步骤 4：迁移表
@@ -133,10 +134,10 @@ ALTER DATABASE CURRENT
 
 7. 使用 INSERT...SELECT * INTO 将数据复制到内存优化表：
 	
-```
-INSERT INTO <new_memory_optimized_table>
-		SELECT * FROM <old_disk_based_table>;
-```
+
+	INSERT INTO <new_memory_optimized_table>
+			SELECT * FROM <old_disk_based_table>;
+
 
 
 ## 步骤 5（可选）：迁移存储过程
@@ -160,18 +161,18 @@ In-Memory 功能还可以修改存储过程，以改善性能。
 
 创建本机编译存储过程的 T-SQL 通常类似于以下模板：
 
-```
-CREATE PROCEDURE schemaname.procedurename
-	@param1 type1, …
-	WITH NATIVE_COMPILATION, SCHEMABINDING
-	AS
-		BEGIN ATOMIC WITH
-			(TRANSACTION ISOLATION LEVEL = SNAPSHOT,
-			LANGUAGE = N'your_language__see_sys.languages'
-			)
-		…
-		END;
-```
+
+	CREATE PROCEDURE schemaname.procedurename
+		@param1 type1, …
+		WITH NATIVE_COMPILATION, SCHEMABINDING
+		AS
+			BEGIN ATOMIC WITH
+				(TRANSACTION ISOLATION LEVEL = SNAPSHOT,
+				LANGUAGE = N'your_language__see_sys.languages'
+				)
+			…
+			END;
+
 
 - 就 TRANSACTION\_ISOLATION\_LEVEL 而言，SNAPSHOT 是本机编译存储过程最常用的值。但是，也支持其他值的子集：
  - REPEATABLE READ
@@ -209,7 +210,7 @@ CREATE PROCEDURE schemaname.procedurename
 - 读/写比率。
 
 
-若要修改并运行测试工作负荷，请考虑使用[此处](/documentation/articles/sql-database-in-memory)所示的 ostress.exe 便利工具。
+若要修改并运行测试工作负荷，请考虑使用[此处](/documentation/articles/sql-database-in-memory/)所示的 ostress.exe 便利工具。
 
 
 为了尽可能减少网络延迟，请在数据库所在的同一 Azure 地理区域运行测试。
@@ -219,9 +220,9 @@ CREATE PROCEDURE schemaname.procedurename
 
 建议你监视在生产环境中实施 In-Memory 后的性能影响：
 
-- [监视内存中存储](/documentation/articles/sql-database-in-memory-oltp-monitoring)。
+- [监视内存中存储](/documentation/articles/sql-database-in-memory-oltp-monitoring/)。
 
-- [使用动态管理视图监视 Azure SQL 数据库](/documentation/articles/sql-database-monitoring-with-dmvs)
+- [使用动态管理视图监视 Azure SQL 数据库](/documentation/articles/sql-database-monitoring-with-dmvs/)
 
 
 ## 相关链接
@@ -232,5 +233,4 @@ CREATE PROCEDURE schemaname.procedurename
 
 - [内存优化顾问](http://msdn.microsoft.com/zh-cn/library/dn284308.aspx)
 
-
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0808_2016-->

@@ -43,8 +43,8 @@
 
 - 	**aap-scheme** - 已在 XCode 项目中注册。它是其他应用程序与你联系的方式。可以在 Info.plist -> URL types -> URL Identifier 下找到此信息。如果尚未配置一个或多个方案，则你应该创建一个。
 - 	**bundle-id** - 这是在 XCode 项目设置中“identity”下可找到的捆绑标识符。
-	
-此快速入门代码的示例为：**msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart**
+
+此快速入门代码的示例为：***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
 ## 2.注册 DirectorySearcher 应用程序
 若要让应用程序获取令牌，首先需要在 Azure AD 租户中注册该应用程序，并授予它访问 Azure AD Graph API 的权限：
@@ -89,7 +89,7 @@ $ open QuickStart.xcworkspace
     -	`clientId` 是从门户复制的应用程序 clientId。
     -	`redirectUri` 是在门户中注册的 URL。
 
-## *4.使用 ADAL 从 Azure AD 获取令牌*
+## 4.使用 ADAL 从 Azure AD 获取令牌
 ADAL 遵守的基本原理是，每当应用程序需要访问令牌时，它只需调用 completionBlock `+(void) getToken : `，然后 ADAL 就会负责其余的工作。
 
 -	在 `QuickStart` 项目中，打开 `GraphAPICaller.m` 并找到靠近顶部位置的 `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` 注释。你将在此处通过 CompletionBlock 传递 ADAL 与 Azure AD 通信时所需的坐标，并告诉 ADAL 如何缓存令牌。
@@ -205,7 +205,7 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 
 ```
 - 当应用程序通过调用 `getToken(...)` 请求令牌时，ADAL 将尝试返回一个令牌，而不要求用户输入凭据。如果 ADAL 确定用户需要登录以获取令牌，将显示登录对话框，收集用户的凭据，并在身份验证成功后返回令牌。如果 ADAL 出于任何原因无法返回令牌，则会引发 `AdalException`。
-- 请注意，`AuthenticationResult` 对象包含 `tokenCacheStoreItem` 对象，后者可用于收集应用程序可能需要的信息。在快速入门项目中，`tokenCacheStoreItem` 用于确定身份验证是否已发生。 
+- 请注意，`AuthenticationResult` 对象包含 `tokenCacheStoreItem` 对象，后者可用于收集应用程序可能需要的信息。在快速入门项目中，`tokenCacheStoreItem` 用于确定身份验证是否已发生。
 
 
 ## 步骤 5：生成并运行应用程序
@@ -222,7 +222,8 @@ completionHandler:(void (^) (NSString*, NSError*))completionBlock;
 现在，你可以转到其他方案。你可能想要尝试：
 
 - [使用 Azure AD 保护 Node.JS Web API](active-directory-devquickstarts-webapi-nodejs.md)
-- 了解[如何使用 ADAL 在 iOS 上启用跨应用 SSO](active-directory-sso-ios.md)  
+- 了解[如何使用 ADAL 在 iOS 上启用跨应用 SSO](active-directory-sso-ios.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../includes/active-directory-devquickstarts-additional-resources)]
-<!---HONumber=Mooncake_0613_2016-->
+
+<!---HONumber=Mooncake_0808_2016-->

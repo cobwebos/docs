@@ -10,8 +10,8 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="05/13/2016"
-   wacn.date="05/23/2016"/>
+   ms.date="06/23/2016"
+   wacn.date=""/>
    
 # Azure SQL 数据库提供安全和保护
 
@@ -25,13 +25,13 @@ Azure SQL 数据库支持云中数以百万计的任务关键型数据库，它�
 
 你能做的只是希望不用访问昨天的备份或从灾难中进行恢复。但如果你发现自己处于这种情况时，SQL 数据库便能够帮助到你。凭借 99.99% 的可用性、自动备份、时间点还原、内置的异地复制以及故障转移选项，你便可以高正无忧了，因为你知道你的应用将能够正常安全地运行。
 
-[阅读文档](/documentation/articles/sql-database-business-continuity)
+[阅读文档](/documentation/articles/sql-database-business-continuity/)
 
 ## 最大的合规性项目组合
 
-SQL 数据库提供行业里最大的合规性项目组合。所以如果你需要 HIPPA 或 FERPA，或甚至是新加坡 MTCS 第 3 级，不用担心 - 我们的合规性项目组合已涵盖了这些标准。
+SQL 数据库提供行业里最大的合规性项目组合。所以如果你需要 HIPPA 合规性或 FERPA，或甚至是新加坡 MTCS 第 3 级，不用担心 - 我们的合规性项目组合已涵盖了这些标准。
 
-[阅读文档](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
+[阅读文档](https://www.trustcenter.cn/zh-cn/compliance/default.html)
 
 ## 保护层
 
@@ -44,14 +44,12 @@ SQL 数据库提供多层数据保护。通过在空闲时、运转中或使用�
 
 ## 后续步骤
 
-获取 [Azure 订阅](/pricing/1rmb-trial)，并[创建你的第一个 Azure SQL 数据库](/documentation/articles/sql-database-get-started)。
+获取 [Azure 订阅](/pricing/1rmb-trial)，并[创建你的第一个 Azure SQL 数据库](/documentation/articles/sql-database-get-started/)。
 
-## 了解详细信息
+## 其他资源
 
 浏览所有 [SQL 数据库的功能](/home/features/sql-database)。
  
-查看 [SQL 数据库技术概述](/documentation/articles/sql-database-technical-overview)。
+查看 [SQL 数据库技术概述](/documentation/articles/sql-database-technical-overview/)。
 
-
-
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0808_2016-->

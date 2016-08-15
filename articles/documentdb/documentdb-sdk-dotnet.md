@@ -9,16 +9,16 @@
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="06/14/2016" 
+	ms.date="07/15/2016" 
 	wacn.date=""/>
 
 # DocumentDB SDK
 
 > [AZURE.SELECTOR]
-- [.NET SDK](/documentation/articles/documentdb-sdk-dotnet)
-- [Node.js SDK](/documentation/articles/documentdb-sdk-node)
-- [Java SDK](/documentation/articles/documentdb-sdk-java)
-- [Python SDK](/documentation/articles/documentdb-sdk-python)
+- [.NET SDK](/documentation/articles/documentdb-sdk-dotnet/)
+- [Node.js SDK](/documentation/articles/documentdb-sdk-node/)
+- [Java SDK](/documentation/articles/documentdb-sdk-java/)
+- [Python SDK](/documentation/articles/documentdb-sdk-python/)
 
 ##DocumentDB .NET SDK
 
@@ -26,11 +26,22 @@
 <tr><td>**下载**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
 <tr><td>**文档**</td><td>[.NET SDK 参考文档](https://msdn.microsoft.com/library/azure/dn948556.aspx)</td></tr>
 <tr><td>**示例**</td><td>[.NET 代码示例](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)</td></tr>
-<tr><td>**入门**</td><td>[DocumentDB .NET SDK 入门](/documentation/articles/documentdb-get-started)</td></tr>
+<tr><td>**入门**</td><td>[DocumentDB .NET SDK 入门](/documentation/articles/documentdb-get-started/)</td></tr>
 <tr><td>**当前受支持的框架**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
 </table></br>
 
 ## 发行说明
+
+对于 .NET SDK 版本 1.9.0，当查询跨越 32 位进程中的多个分区时，如果试图提取分区路由信息，将出现已知问题。此问题会导致以下异常：System.BadImageFormatException: 未能加载文件或程序集 Microsoft.Azure.Documents.ServiceInterop.dll 或它的某一个依赖项。该模块应包含一个程序集清单，请将平台设置为 x64 并重新生成应用程序，以解决此问题。
+
+### <a name="1.9.0"/>[1\.9.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.9.0)
+  - 已将 .NET 客户端的默认连接模式更改为 ConnectionMode.Direct，以通过结合使用直接连接和 TCP 来提高性能。已弃用 ConnectionPolicy.ConnectionProtocol 属性并向 ConnectionMode 枚举添加一个 DirectHttps 值。
+  - 已修复全局复制帐户中的 Bug，此 Bug 会使 Upsert 调用定向至读取位置而非写入位置。
+  - 已添加 IDocumentClient 接口丢失的方法，包括：将 mediaStream 与选项作为参数的 UpsertAttachmentAsync 方法、将选项作为参数的 CreateAttachmentAsync 方法，以及将 querySpec 作为参数的 CreateOfferQuery 方法。
+  - 已解封 IDocumentClient 接口中公开的公共类。
+  - 已对分区集合添加并行查询支持。
+  - 已对分区集合添加跨分区排序依据支持。
+  
 
 ### <a name="1.8.0"/>[1\.8.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.8.0)
   - 添加了对多区域数据库帐户的支持。
@@ -50,10 +61,10 @@
   - 修复了用于将其打包为 Azure 云服务解决方案的一部分的 .NET SDK 的 Nuget 包中的 Bug。
   
 ### <a name="1.6.2"/>[1\.6.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.6.2)
-  - 实现了[分区集合](/documentation/articles/documentdb-partition-data)和[用户定义的性能级别](/documentation/articles/documentdb-performance-levels)。 
+  - 实现了[分区集合](/documentation/articles/documentdb-partition-data/)和[用户定义的性能级别](/documentation/articles/documentdb-performance-levels/)。
 
 ### <a name="1.5.3"/>[1\.5.3](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.3)
-  - **[已修复]** 查询 DocumentDB 终结点引发：System.Net.Http.HttpRequestException：将内容复制到流时出错。
+  - **[已修复]** 查询 DocumentDB 终结点引发：System.Net.Http.HttpRequestException: 将内容复制到流时出错。
 
 ### <a name="1.5.2"/>[1\.5.2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.5.2)
   - 扩展的 LINQ 支持，包括用于分页、条件表达式和范围比较的新运算符。
@@ -74,7 +85,7 @@
  - **[已过时]** UriFactory.CreateCollection --> 现在应使用 UriFactory.CreateDocumentCollection
  
 ### <a name="1.4.1"/>[1\.4.1](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.4.1)
- - **[已修复]** 使用非 en 区域性信息（如 NL-NL 等）时出现本地化问题。 
+ - **[已修复]** 使用非 en 区域性信息（如 nl-NL 等）时出现本地化问题。
  
 ### <a name="1.4.0"/>[1\.4.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.4.0)
   - 基于 ID 的路由
@@ -82,15 +93,15 @@
     - DocumentClient 上的新重载以采用 URI
   - 已在用于地理空间的 LINQ 中添加了 IsValid() 和 IsValidDetailed()
   - 增强的LINQ 提供程序支持
-    - **数学** - Abs、Acos、Asin、Atan、Ceiling、Cos、Exp、Floor、Log、Log10、Pow、Round、Sign、Sin、Sqrt、Tan、Truncate
-    - **字符串** - Concat、Contains、EndsWith、IndexOf、Count、ToLower、TrimStart、Replace、Reverse、TrimEnd、StartsWith、SubString、ToUpper
-    - **数组** - Concat、Contains、Count
+    - **数学** — Abs、Acos、Asin、Atan、Ceiling、Cos、Exp、Floor、Log、Log10、Pow、Round、Sign、Sin、Sqrt、Tan、Truncate
+    - **字符串** — Concat、Contains、EndsWith、IndexOf、Count、ToLower、TrimStart、Replace、Reverse、TrimEnd、StartsWith、SubString、ToUpper
+    - **数组** — Concat、Contains、Count
     - **IN** 运算符
 
 ### <a name="1.3.0"/>[1\.3.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.3.0)
   - 添加了对修改索引策略的支持
     - DocumentClient 中的新 ReplaceDocumentCollectionAsync 方法
-    - ResourceResponse 中的新 IndexTransformationProgress 属性<T>，用于跟踪索引策略更改的百分比进度
+    - ResourceResponse<T> 中的新 IndexTransformationProgress 属性，用于跟踪索引策略更改的百分比进度
     - DocumentCollection.IndexingPolicy 现在是可变的
   - 添加了对空间索引和查询的支持
     - 用于序列化/反序列化空间类型（如点和多边形）的新 Microsoft.Azure.Documents.Spatial 命名空间
@@ -98,15 +109,14 @@
   - **[已修复]**：从 linq 表达式生成的不正确的 SQL 查询 [#38](https://github.com/Azure/azure-documentdb-net/issues/38)
 
 ### <a name="1.2.0"/>[1\.2.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.2.0)
-- 对 Newtonsoft.Json v5.0.7 的依赖关系 
+- 对 Newtonsoft.Json v5.0.7 的依赖关系
 - 更改为支持 Order By
   - LINQ 提供程序支持 OrderBy() 或 OrderByDescending()
-  - 支持 Order By 的 IndexingPolicy 
+  - 支持 Order By 的 IndexingPolicy
   
-		**注意：可能非常重大的更改** 
+		**NB: 可能的重大更改** 
   
-    	如果你的现有代码使用自定义索引策略预配集合，那么你的现有代码将需要更新为支持新的 IndexingPolicy 类。如果你没有任何自定义索引策略，此更改不会影响你。 
- 
+    	如果你当前具有用自定义索引策略预配集合的代码，则现有代码将需要进行更新以支持新的 IndexingPolicy 类。如果你没有自定义索引策略，则此更改不会影响你。
 
 ### <a name="1.1.0"/>[1\.1.0](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/1.1.0)
 - 通过使用新的 HashPartitionResolver 和 RangePartitionResolver 类以及 IPartitionResolver 支持对数据进行分区
@@ -118,26 +128,27 @@
 - GA SDK
 
 > [AZURE.NOTE]
-预览版和 GA 版之间的 NuGet 程序包名称有所更改。从 **Microsoft.Azure.Documents.Client** 移动到了 **Microsoft.Azure.DocumentDB** <br/>
+预览版和 GA 版之间的 NuGet 程序包名称有所更改。从 **Microsoft.Azure.Documents.Client** 移到了 **Microsoft.Azure.DocumentDB** <br/>
 
 
 ### <a name="0.9.x-preview"/>[0\.9.x-preview](https://www.nuget.org/packages/Microsoft.Azure.Documents.Client)
 - 预览版 SDK[已过时]
 
 ## 发布和停用日期
-Microsoft 将在停用一款 SDK 之前至少 **12 个月**发出通知，以便顺利过渡到更新的/受支持的版本。
+Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。
 
 新特性和功能以及优化仅添加到当前 SDK，因此建议你始终尽早升级到最新 SDK 版本。
 
 使用已停用的 SDK 对 DocumentDB 发出的任何请求都将被服务拒绝。
 
 > [AZURE.WARNING]
-**1.0.0** 版之前的 Azure DocumentDB SDK for .NET 的所有版本都将在 **2016 年 2 月 29 日**停用。
+**1.0.0** 版之前的所有 Azure DocumentDB SDK for .NET 版本都将在 **2016 年 2 月 29 日**停用。
  
 <br/>
  
 | 版本 | 发布日期 | 停用日期 
 | ---	  | ---	         | ---
+| [1\.9.0](#1.9.0) | 2016 年 7 月 9 日 |---
 | [1\.8.0](#1.8.0) | 2016 年 6 月 14 日 |---
 | [1\.7.1](#1.7.1) | 2016 年 5 月 6 日 |---
 | [1\.7.0](#1.7.0) | 2016 年 4 月 26 日 |---
@@ -163,6 +174,6 @@ Microsoft 将在停用一款 SDK 之前至少 **12 个月**发出通知，以便
 
 ## 另请参阅
 
-要了解有关 DocumentDB 的详细信息，请参阅 [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) 服务页。
+要了解有关 DocumentDB 的详细信息，请参阅 [Microsoft Azure DocumentDB](/services/documentdb/) 服务页。
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0808_2016-->

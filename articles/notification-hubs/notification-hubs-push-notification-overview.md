@@ -2,14 +2,14 @@
 	pageTitle="Azure 通知中心"
 	description="了解如何在 Azure 中使用通知中心。代码示例是使用 .NET API 通过 C# 编写的。"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="notification-hubs"
 	documentationCenter=""/>
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="02/11/2016"
+	ms.date="06/29/2016"
 	wacn.date=""/>
 
 
@@ -49,12 +49,12 @@ Azure 通知中心提供易用的基础结构，使你能够从任何后端（�
 
 ##推送通知的工作原理
 
-推送通知通过称为平台通知系统 (PNS) 的特定于平台的基础结构进行传送。PNS 提供的功能有限（即，不支持广播和个性化设置），并且没有常见界面。例如，若要将通知发送给 Windows 应用商店应用程序，开发人员必须与 WNS（Windows 通知服务）联系，若要将通知发送给 iOS 设备，该开发人员必须与 APNS（Apple 推送通知服务）联系并第二次发送该消息。Azure 通知中心提供通用接口以及其他功能，以帮助支持跨平台推送通知。
+推送通知通过称为_平台通知系统_ (PNS) 的特定于平台的基础结构进行传送。PNS 提供的功能有限（即，不支持广播和个性化设置），并且没有常见界面。例如，若要将通知发送给 Windows 应用商店应用程序，开发人员必须与 WNS（Windows 通知服务）联系，若要将通知发送给 iOS 设备，该开发人员必须与 APNS（Apple 推送通知服务）联系并第二次发送该消息。Azure 通知中心提供通用接口以及其他功能，以帮助支持跨平台推送通知。
 
 但概括地说，所有平台通知系统都遵循相同的模式：
 
-1.  客户端应用程序与 PNS 联系以检索其句柄。句柄类型取决于系统。对于 WNS，它是 URI 或“通知通道”。 对于 APNS，它是令牌。
-2.  客户端应用将此句柄存储在应用后端中以供日后使用。对于 WNS，后端通常是云服务。对于 Apple，该系统称为提供程序。
+1.  客户端应用程序与 PNS 联系以检索其_句柄_。句柄类型取决于系统。对于 WNS，它是 URI 或“通知通道”。 对于 APNS，它是令牌。
+2.  客户端应用将此句柄存储在应用_后端_中以供日后使用。对于 WNS，后端通常是云服务。对于 Apple，该系统称为_提供程序_。
 3.  为发送推送通知，应用程序后端使用句柄与 PNS 联系以定位到特定客户端应用程序实例。
 4.  PNS 将通知转发到句柄所指定的设备。
 
@@ -103,7 +103,7 @@ Azure 通知中心提供易用的基础结构，使你能够从任何后端（�
 
 	- 分段：推送到由标记表达式定义的复杂段（例如，纽约市属于美国北部人群的设备）。
 
-	每台设备在将其句柄发送到通知中心时，都可以指定一个或多个标记。有关[标记]的详细信息。无需预设置或处理标记。标记提供了一种用于将通知发送给用户或兴趣组的简单方法。由于标记可以包含任何特定于应用程序的标识符（例如用户 ID 或组 ID），因此，使用它们将使应用程序后端不必再存储和管理设备句柄。
+	每台设备在将其句柄发送到通知中心时，都可以指定一个或多个_标记_。有关[标记]的详细信息。无需预设置或处理标记。标记提供了一种用于将通知发送给用户或兴趣组的简单方法。由于标记可以包含任何特定于应用程序的标识符（例如用户 ID 或组 ID），因此，使用它们将使应用程序后端不必再存储和管理设备句柄。
 
 - **个性化**：每个设备都可以有一个或多个模板，以实现按设备本地化和个性化设置，而不会影响后端代码。
 
@@ -156,10 +156,10 @@ Mobile Apps 开发人员可以借助以下工作流来利用通知中心：
   [iOS]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-apple-push-notification-apns-get-started
   [Android]: http://azure.microsoft.com/documentation/articles/notification-hubs-android-get-started
   [Windows Universal]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started-wns-push-notification-wns-push-notification
-  [Windows Phone]: /documentation/articles/notification-hubs-windows-mobile-push-notifications-mpns
-  [Kindle]: /documentation/articles/notification-hubs-kindle-amazon-adm-push-notification
-  [Xamarin.iOS]: /documentation/articles/partner-xamarin-notification-hubs-ios-apple-push-notification-apns-get-started
-  [Xamarin.Android]: /documentation/articles/partner-xamarin-notification-hubs-android-get-started
+  [Windows Phone]: /documentation/articles/notification-hubs-windows-mobile-push-notifications-mpns/
+  [Kindle]: /documentation/articles/notification-hubs-kindle-amazon-adm-push-notification/
+  [Xamarin.iOS]: /documentation/articles/partner-xamarin-notification-hubs-ios-apple-push-notification-apns-get-started/
+  [Xamarin.Android]: /documentation/articles/partner-xamarin-notification-hubs-android-get-started/
   [Microsoft.WindowsAzure.Messaging.NotificationHub]: http://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
   [Microsoft.ServiceBus.Notifications]: http://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
   [App Service Mobile Apps]: https://azure.microsoft.com/zh-cn/documentation/articles/app-service-mobile-value-prop/
@@ -167,4 +167,4 @@ Mobile Apps 开发人员可以借助以下工作流来利用通知中心：
   [Azure 门户]: https://portal.azure.cn
   [标记]: (http://msdn.microsoft.com/library/azure/dn530749.aspx)
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0808_2016-->

@@ -13,22 +13,26 @@
 	ms.tgt_pltfrm="na" 
 	ms.devlang="na" 
 	ms.topic="article" 
-	ms.date="06/10/2016" 
+	ms.date="06/30/2016" 
 	ms.author="tomfitz"/>
 
 # 使用 Resource Manager 模板和 Azure 门户部署资源
 
 > [AZURE.SELECTOR]
-- [PowerShell](/documentation/articles/resource-group-template-deploy)
-- [Azure CLI](/documentation/articles/resource-group-template-deploy-cli)
-- [门户](/documentation/articles/resource-group-template-deploy-portal)
-- [Visual Studio](/documentation/articles/vs-azure-tools-resource-groups-deployment-projects-create-deploy)
-- [REST API](/documentation/articles/resource-group-template-deploy-rest)
+- [PowerShell](/documentation/articles/resource-group-template-deploy/)
+- [Azure CLI](/documentation/articles/resource-group-template-deploy-cli/)
+- [门户](/documentation/articles/resource-group-template-deploy-portal/)
+- [REST API](/documentation/articles/resource-group-template-deploy-rest/)
+- [.NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
+- [Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
+- [节点](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
+- [Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
+- [Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
 
 
-本主题演示了如何将 [Azure 门户](https://manage.windowsazure.cn)与 [Azure Resource Manager](/documentation/articles/resource-group-overview) 配合使用，以部署 Azure 资源。若要了解有关管理资源的信息，请参阅[通过门户管理 Azure 资源](/documentation/articles/resource-group-portal)。
+本主题演示了如何将 [Azure 门户](https://manage.windowsazure.cn)与 [Azure Resource Manager](/documentation/articles/resource-group-overview/) 配合使用，以部署 Azure 资源。若要了解有关管理资源的信息，请参阅[《Manage Azure resources through portal》](/documentation/articles/resource-group-portal/)（通过门户管理 Azure 资源）。
 
-目前，并非每种服务都支持门户或资源管理器。对于这些服务，你需要使用[经典门户](https://manage.windowsazure.com)。若要了解每种服务的状态，请参阅 [Azure portal availability chart（Azure 门户可用性图表）](/features/azure-portal/availability/)。
+目前，并非每种服务都支持门户或资源管理器。对于这些服务，你需要使用[经典门户](https://manage.windowsazure.com)。若要了解每种服务的状态，请参阅[《Azure portal availability chart》](/features/azure-portal/availability/)（Azure 门户可用性图表）。
 
 ## 创建资源组
 
@@ -70,7 +74,7 @@
 
 ## 从自定义模板部署资源
 
-如果想要执行部署，但不使用应用商店中的任何模板，可以创建自定义模板来针对你的解决方案定义基础结构。若要了解有关创建模板的信息，请参阅[创作 Azure Resource Manager 模板](/documentation/articles/resource-group-authoring-templates)。
+如果想要执行部署，但不使用应用商店中的任何模板，可以创建自定义模板来针对你的解决方案定义基础结构。若要了解有关创建模板的信息，请参阅[创作 Azure 资源管理器模板](/documentation/articles/resource-group-authoring-templates/)。
 
 1. 若要通过门户部署自定义模板，请选择“新建”，并开始搜索“模板部署”，直至可以从选项中选择它。
 
@@ -84,7 +88,7 @@
 
     ![创建模板](./media/resource-group-template-deploy-portal/show-custom-template.png)
 
-    在编辑器中，添加用于定义要部署的资源的 JSON 语法。完成后，选择“保存”。有关编写 JSON 语法的指导，请参阅 [Resource Manager template walkthrough（Resource Manager 模板演练）](/documentation/articles/resource-manager-template-walkthrough)。
+    在编辑器中，添加用于定义要部署的资源的 JSON 语法。完成后，选择“保存”。有关编写 JSON 语法的指导，请参阅[《Resource Manager template walkthrough》](/documentation/articles/resource-manager-template-walkthrough/)（Resource Manager 模板演练）。
 
     ![编辑模板](./media/resource-group-template-deploy-portal/edit-template.png)
 
@@ -100,7 +104,7 @@
 
 ## 从保存到帐户中的模板部署资源
 
-该门户允许你将模板保存到 Azure 帐户，以便以后重新部署它。有关使用这些已保存模板的详细信息，请参阅 [Get started with private Templates on the Azure Portal（Azure 门户中的专用模板入门）](/documentation/articles/mytemplates-getstarted)。
+该门户允许你将模板保存到 Azure 帐户，以便以后重新部署它。有关使用这些已保存模板的详细信息，请参阅[《Get started with private Templates on the Azure Portal》](/documentation/articles/mytemplates-getstarted/)（Azure 门户中的专用模板入门）。
 
 1. 若要查找已保存模板，请选择“浏览”>“模板”。
 
@@ -116,13 +120,8 @@
 
 ## 后续步骤
 
-- 若要查看审核日志，请参阅 [Audit operations with Resource Manager（使用资源管理器执行审核操作）](/documentation/articles/resource-group-audit)。
-- 若要排查部署错误，请参阅 [Troubleshooting resource group deployments with Azure Portal（使用 Azure 门户对资源组部署进行故障排除）](/documentation/articles/resource-manager-troubleshoot-deployments-portal)。
-- 若要从部署或资源组中检索模板，请参阅[从现有资源导出 Azure Resource Manager 模板](/documentation/articles/resource-manager-export-template)。
+- 若要查看审核日志，请参阅[《Audit operations with Resource Manager》](/documentation/articles/resource-group-audit/)（使用 Resource Manager 的审核操作）。
+- 若要排查部署错误，请参阅[《Troubleshooting resource group deployments with Azure Portal》](/documentation/articles/resource-manager-troubleshoot-deployments-portal/)（使用 Azure 门户对资源组部署进行故障排除）。
+- 若要从部署或资源组中检索模板，请参阅[《Export Azure Resource Manager template from existing resources》](/documentation/articles/resource-manager-export-template/)（从现有资源导出 Azure Resource Manager 模板）。
 
-
-
-
-
-
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0808_2016-->

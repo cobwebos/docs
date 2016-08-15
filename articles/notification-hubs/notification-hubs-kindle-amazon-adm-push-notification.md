@@ -4,12 +4,12 @@
 	services="notification-hubs"
 	documentationCenter=""
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="02/29/2016"
+	ms.date="06/29/2016"
 	wacn.date=""/>
 
 # 通知中心入门（Kindle 应用）
@@ -18,8 +18,7 @@
 
 ##概述
 
-本教程演示如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。
-你将创建一个空白 Kindle 应用，它使用 Amazon Device Messaging (ADM) 接收推送通知。
+本教程演示如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。你将创建一个空白 Kindle 应用，它使用 Amazon Device Messaging (ADM) 接收推送通知。
 
 ##先决条件
 
@@ -278,4 +277,4 @@
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0808_2016-->

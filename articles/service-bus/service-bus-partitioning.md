@@ -8,7 +8,7 @@
     editor="" /> 
 <tags 
    ms.service="service-bus"
-    ms.date="05/06/2016"
+    ms.date="07/01/2016"
    wacn.date="" />
 
 # 分区消息传送实体
@@ -89,7 +89,7 @@ committableTransaction.Commit();
 
 若要将事务性消息发送到会话感知的主题或队列，消息必须设置 [BrokeredMessage.SessionId][] 属性。如果也指定了 [BrokeredMessage.PartitionKey][] 属性，它必须与 [SessionId][] 属性相同。如果它们不同，服务总线会返回 **InvalidOperationException** 异常。
 
-与常规（非分区）的队列或主题不同，不可能使用单一事务来将多条消息发送到不同会话。如果进行尝试，服务总线会返回**InvalidOperationException**异常。例如：
+与常规（非分区）的队列或主题不同，不可能使用单一事务来将多条消息发送到不同会话。如果进行尝试，服务总线会返回 **InvalidOperationException **异常。例如：
 
 ```
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -107,6 +107,19 @@ committableTransaction.Commit();
 
 Azure 服务总线支持从分区实体、向分区的实体或在分区的实体之间进行消息自动转发。若要启用消息自动转发，请在源队列或订阅上设置 [QueueDescription.ForwardTo][] 属性。如果该消息指定分区键（[SessionId][]、[PartitionKey][] 或 [MessageId][]），则该分区键用于目标实体。
 
+## 注意事项和指南
+
+- **高度一致性功能**：如果实体使用会话、重复检测或显式控制分区键等功能，则消息传送操作一定会路由至特定的片段。如果任何片段遇到过高的流量，或基础存储处于不正常状态，这些操作将失败，而且可用性会降低。整体来说，一致性仍然远高于非分区实体；只有一部分流量会遇到问题，而不是所有流量。
+- **管理**：必须在实体的所有片段上执行创建、更新及删除等操作。如果任何片段处于不正常状态，可能会导致这些操作失败。以“获取”操作来说，必须汇总来自所有片段的信息，例如消息计数。如果任何片段处于不正常状态，则实体可用性状态会报告为受限制。
+- **少量消息方案**：对于这类方案，尤其是当使用 HTTP 协议时，可能必须执行多次接收操作，才能获取所有消息。对于接收请求，前端会在所有片段上执行接收，并缓存所有收到的响应。相同连接上的后续接收请求将受益于此缓存，而且接收延迟将会缩短。不过，如果你有多个连接或使用 HTTP，则会针对每个请求建立新的连接。因此，不保证抵达相同的节点。如果现有的所有消息均被锁定，而且在另一个前端中缓存，接收操作会返回 **null**。消息最后会到期，你可以再次接收它们。建议使用 HTTP 保持连接。
+- **浏览/速览消息**：PeekBatch 不一定会返回 [MessageCount 属性](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queuedescription.messagecount.aspx)中指定的消息数目。这有两个常见的原因。其中一个原因是消息集合的汇总大小超过大小上限 256KB。另一个原因是，如果队列或主题的 [EnablePartitioning 属性](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queuedescription.enablepartitioning.aspx)设为 **true**，分区可能没有足够的消息来完成所请求的消息数目。一般情况下，如果应用程序想要接收特定数目的消息，它应该重复调用 [PeekBatch](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queueclient.peekbatch.aspx)，直到获得该数目的消息，或者已没有更多消息可速览为止。有关详细信息，包括代码示例，请参阅 [QueueClient.PeekBatch](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queueclient.peekbatch.aspx) 或 [SubscriptionClient.PeekBatch](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.subscriptionclient.peekbatch.aspx)。
+
+## 最新添加的功能
+
+- 分区实体现在支持添加或删除规则。与非分区实体不同的是，不支持在事务下执行这些操作。
+- AMQP 现在支持往返于分区实体发送和接收消息。
+- AMQP 现在支持以下操作：[成批发送](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queueclient.sendbatch.aspx)、[成批接收](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queueclient.receivebatch.aspx)、[按序列号接收](https://msdn.microsoft.com/zh-cn/library/azure/hh330765.aspx)、[速览](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queueclient.peek.aspx)、[续订锁定](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queueclient.renewmessagelock.aspx)、[计划消息](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queueclient.schedulemessageasync.aspx)、[取消计划的消息](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queueclient.cancelscheduledmessageasync.aspx)、[添加规则](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.ruledescription.aspx)、[删除规则](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.ruledescription.aspx)、[会话续订锁定](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagesession.renewlock.aspx)、[设置会话状态](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagesession.setstate.aspx)、[获取会话状态](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagesession.getstate.aspx)、[速览会话消息](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagesession.peek.aspx)和[枚举会话](https://msdn.microsoft.com/zh-cn/library/microsoft.servicebus.messaging.queueclient.getmessagesessionsasync.aspx)。
+
 ## 分区实体限制
 
 在其当前实现中，服务总线对分区的队列和主题施加以下限制：
@@ -123,7 +136,7 @@ Azure 服务总线支持从分区实体、向分区的实体或在分区的实�
 
 请参阅[针对服务总线分区队列和主题的 AMQP 1.0 支持][]的讨论，了解有关分区消息传送实体的详细信息。
 
-  [服务总线体系结构]: /documentation/articles/service-bus-architecture
+  [服务总线体系结构]: /documentation/articles/service-bus-architecture/
   [Azure 经典门户]: http://manage.windowsazure.cn
   [QueueDescription.EnablePartitioning]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queuedescription.enablepartitioning.aspx
   [TopicDescription.EnablePartitioning]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.topicdescription.enablepartitioning.aspx
@@ -138,6 +151,6 @@ Azure 服务总线支持从分区实体、向分区的实体或在分区的实�
   [MessagingFactorySettings.OperationTimeout]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx
   [OperationTimeout]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.messagingfactorysettings.operationtimeout.aspx
   [QueueDescription.ForwardTo]: https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queuedescription.forwardto.aspx
-  [针对服务总线分区队列和主题的 AMQP 1.0 支持]: /documentation/articles/service-bus-partitioned-queues-and-topics-amqp-overview
+  [针对服务总线分区队列和主题的 AMQP 1.0 支持]: /documentation/articles/service-bus-partitioned-queues-and-topics-amqp-overview/
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0808_2016-->

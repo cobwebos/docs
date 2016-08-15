@@ -1,5 +1,5 @@
 <properties
-  pageTitle="准备环境以使用 Azure 备份服务器来备份工作负荷 | Microsoft Azure"
+  pageTitle="准备环境以使用 Azure 备份服务器来备份工作负荷 | Azure"
   description="确保正确准备好你的环境，以使用 Azure 备份服务器来备份工作负荷"
   services="backup"
   documentationCenter=""
@@ -16,22 +16,20 @@
 # 准备使用 Azure 备份服务器来备份工作负荷
 
 > [AZURE.SELECTOR]
-- [Azure 备份服务器](backup-azure-microsoft-azure-backup.md)
-- [SCDPM](backup-azure-dpm-introduction.md)
-- [Azure 备份服务器（经典）](backup-azure-microsoft-azure-backup-classic.md)
-- [SCDPM（经典）](backup-azure-dpm-introduction-classic.md)
+- [Azure 备份服务器](/documentation/articles/backup-azure-microsoft-azure-backup/)
+- [SCDPM](/documentation/articles/backup-azure-dpm-introduction/)
+- [Azure 备份服务器（经典）](/documentation/articles/backup-azure-microsoft-azure-backup-classic)
+- [SCDPM（经典）](/documentation/articles/backup-azure-dpm-introduction-classic)
 
 本文介绍如何准备环境，以使用 Azure 备份服务器来备份工作负荷。
 
-> [AZURE.NOTE] Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 和经典部署模型](../resource-manager-deployment-model.md)。本文提供有关还原使用 Resource Manager 模型部署的 VM 的信息和过程。
+> [AZURE.NOTE] Azure 有两种用于创建和使用资源的部署模型：[Resource Manager 和经典部署模型](/documentation/articles/resource-manager-deployment-model)。本文提供有关还原使用 Resource Manager 模型部署的 VM 的信息和过程。
 
 使用 Azure 备份服务器，可以从单个控制台保护应用程序工作负荷，例如 Hyper-V VM、Microsoft SQL Server、SharePoint Server、Microsoft Exchange 和 Windows 客户端。
 
 >[AZURE.WARNING] Azure 备份服务器继承了 Data Protection Manager (DPM) 的工作负荷备份功能。本文提供了其中一些功能的 DPM 文档链接。不过，Azure 备份服务器不能在磁带上提供保护，也没有与 System Center 集成。
 
 ## 1\.Windows Server 计算机
-
-![步骤 1](./media/backup-azure-microsoft-azure-backup/step1.png)
 
 若要启动并运行 Azure 备份服务器，第一个步骤是部署一台 Windows Server 计算机。
 
@@ -70,7 +68,7 @@
 
 5. 单击“订阅”查看可用订阅列表。如果不确定要使用哪个订阅，请使用默认（或建议）的订阅。仅当组织帐户与多个 Azure 订阅关联时，才会有多个选项。
 
-6. 单击“资源组”查看可用资源组列表，或单击“新建”以创建新资源组。有关资源组的完整信息，请参阅 [Using the Azure Portal to deploy and manage your Azure resources（使用 Azure 门户部署和管理 Azure 资源）](../azure-portal/resource-group-portal.md)
+6. 单击“资源组”查看可用资源组列表，或单击“新建”以创建新资源组。有关资源组的完整信息，请参阅 [Azure Resource Manager 概述](/documentation/articles/resource-group-overview)
 
 7. 单击“位置”，为保管库选择地理区域。
 
@@ -79,7 +77,7 @@
 
 ### 设置存储复制
 
-存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。默认情况下，保管库具有异地冗余存储。如果这是你的主要备份，请将选项保持设置为异地冗余存储。如果你想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。请在 [Azure Storage replication overview（Azure 存储复制概述）](../storage/storage-redundancy.md)中深入了解[异地冗余](../storage/storage-redundancy.md#geo-redundant-storage)和[本地冗余](../storage/storage-redundancy.md#locally-redundant-storage)存储选项。
+存储复制选项可让你在异地冗余存储与本地冗余存储之间进行选择。默认情况下，保管库具有异地冗余存储。如果这是你的主要备份，请将选项保持设置为异地冗余存储。如果你想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。请在 [Azure 存储空间复制概述](/documentation/articles/storage-redundancy/)中深入了解[异地冗余](/documentation/articles/storage-redundancy#geo-redundant-storage)和[本地冗余](/documentation/articles/storage-redundancy/#locally-redundant-storage)存储选项。
 
 若要编辑存储复制设置，请执行以下操作：
 
@@ -96,7 +94,7 @@
 ### 下载软件包
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-2. 如果已打开恢复服务保管库，请转到步骤 3。如果未打开恢复服务保管库，而是在 Azure 门户中，请在“中心”菜单中单击“浏览”。
+2. 如果已打开恢复服务保管库，请转到步骤 3。如果未打开恢复服务保管库，而是位于 Azure 门户中，请在“中心”菜单中单击“浏览”。
 
     - 在资源列表中，键入“恢复服务”。
     - 当你开始键入时，会根据你的输入筛选该列表。出现“恢复服务保管库”时，请单击它。
@@ -111,7 +109,7 @@
 
     ![打开保管库边栏选项卡](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
 
-3. 默认情况下会打开“设置”边栏选项卡。如果设置边栏选项卡已关闭，请单击“设置”将它打开。
+3. 默认情况下会打开“设置”边栏选项卡。如果“设置”边栏选项卡已关闭，请单击“设置”将它打开。
 
     ![打开保管库边栏选项卡](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
 
@@ -154,7 +152,7 @@
 
 ![Microsoft Azure 备份安装向导](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-解压缩过程完成后，请选中相应的框，以启动刚刚解压缩 *setup.exe* 来开始安装 Microsoft Azure 备份服务器，然后单击“完成”按钮。
+解压缩过程完成后，请选中相应的框，以启动刚刚解压缩的 *setup.exe* 来开始安装 Microsoft Azure 备份服务器，然后单击“完成”按钮。
 
 ### 安装软件包
 
@@ -178,7 +176,7 @@
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    备份到 Azure 需要有暂存位置。请确保暂存位置的空间至少为要备份到云的数据的 5%。在磁盘保护方面，安装完成之后需要配置独立的磁盘。有关存储池的详细信息，请参阅 [Configure storage pools and disk storage（配置存储池和磁盘存储）](https://technet.microsoft.com/library/hh758075.aspx)。
+    备份到 Azure 需要有暂存位置。请确保暂存位置的空间至少为要备份到云的数据的 5%。在磁盘保护方面，安装完成之后需要配置独立的磁盘。有关存储池的详细信息，请参阅[配置存储池和磁盘存储](https://technet.microsoft.com/library/hh758075.aspx)。
 
 5. 为受限的本地用户帐户提供强密码，然后单击“下一步”。
 
@@ -209,13 +207,13 @@
 
 ### 添加备份存储
 
-第一个备份副本保存在已附加到 Azure 备份服务器计算机的存储中。有关添加磁盘的详细信息，请参阅 [Configure storage pools and disk storage（配置存储池和磁盘存储）](https://technet.microsoft.com/library/hh758075.aspx)。
+第一个备份副本保存在已附加到 Azure 备份服务器计算机的存储中。有关添加磁盘的详细信息，请参阅[配置存储池和磁盘存储](https://technet.microsoft.com/library/hh758075.aspx)。
 
 > [AZURE.NOTE] 即使你打算将数据发送到 Azure，也需要添加备份存储。在当前的 Azure 备份服务器体系结构中，Azure 备份保管库将保存数据的第二个副本，而本地存储将保存第一个（必需的）备份副本。
 
 ## 4\.网络连接
 
-Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。若要验证计算机是否已连接到 Azure，请在Azure 备份服务器 PowerShell 控制台中使用 ```Get-DPMCloudConnection``` cmdlet。如果该 cmdlet 的输出为 TRUE，则表示已建立连接，否则表示未建立连接。
+Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。若要验证计算机是否已连接到 Azure，请在Azure 备份服务器 PowerShell 控制台中使用 `Get-DPMCloudConnection` cmdlet。如果该 cmdlet 的输出为 TRUE，则表示已建立连接，否则表示未建立连接。
 
 同时，Azure 订阅必须处于正常运行状态。若要了解订阅的状态并对其进行管理，请登录到[订阅门户](https://account.windowsazure.com/Subscriptions)。
 
@@ -224,20 +222,20 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。若�
 | 连接状态 | Azure 订阅 | 备份到 Azure| 备份到磁盘 | 从 Azure 还原 | 从磁盘还原 |
 | -------- | ------- | --------------------- | ------------------- | --------------------------- | ----------------------- |
 | 已连接 | 活动 | 允许 | 允许 | 允许 | 允许 |
-| 已连接 | Expired | 已停止 | 已停止 | 允许 | 允许 |
+| 已连接 | 已过期 | 已停止 | 已停止 | 允许 | 允许 |
 | 已连接 | 已取消预配 | 已停止 | 已停止 | 已停止且已删除 Azure 恢复点 | 已停止 |
 | 连接断开超过 15 天 | 活动 | 已停止 | 已停止 | 允许 | 允许 |
 | 连接断开超过 15 天 | Expired | 已停止 | 已停止 | 允许 | 允许 |
 | 连接断开超过 15 天 | 已取消预配 | 已停止 | 已停止 | 已停止且已删除 Azure 恢复点 | 已停止 |
 
 ### 连接断开后进行恢复
-如果你的防火墙或代理导致无法访问 Azure，需要将防火墙/代理配置文件中的以下域地址列入白名单：
+如果你的防火墙或代理导致无法访问 Azure，需要将防火墙/代理配置文件中的以下域地址列入允许列表：
 
 - www.msftncsi.com
-- *.Microsoft.com
-- *.WindowsAzure.com
-- *.microsoftonline.com
-- *.windows.net
+- \*.Microsoft.com
+- \*.WindowsAzure.com
+- \*.microsoftonline.com
+- \*.windows.net
 
 在 Azure 备份服务器计算机上还原与 Azure 的连接之后，可执行的操作取决于 Azure 订阅状态。上表详细列出了有关计算机在“连接”之后允许的操作的信息。
 
@@ -245,13 +243,13 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。若�
 
 可以将 Azure 订阅从“已过期”或“已取消预配”状态更改为“活动”状态。但是，当状态不是“活动”时，此操作对产品的行为会造成某些影响：
 
-- “已取消预配”的订阅在取消预配的这段期间将失去功能。切换为“活动”后，将恢复产品的备份/还原功能。此外，只要以够长的保留期来保存本地磁盘上的备份数据，则还可以检索这些数据。但是，一旦订阅进入“已取消预配”状态，Azure 中的备份数据便会丢失且不可检索。
+- “已取消预配”的订阅在取消预配的这段期间将失去功能。切换为“活动”后，将恢复产品的备份/还原功能。此外，只要以够长的保留期来保存本地磁盘上的备份数据，则还可以检索这些数据。但是，一旦订阅进入“已取消预配”状态，Azure 中的备份数据便会无可挽回地丢失。
 - “已过期”的订阅只会在恢复“活动”状态之前失去功能。在订阅处于“已过期”期间计划的任何备份都不会运行。
 
 
 ## 故障排除
 
-如果 Microsoft Azure 备份服务器在安装阶段（或备份或还原时）失败并出现错误，请参阅此[错误代码文档](https://support.microsoft.com/kb/3041338)以获取详细信息。
+如果 Microsoft Azure 备份服务器在安装阶段（或者备份或还原时）失败并出现错误，请参阅此[错误代码文档](https://support.microsoft.com/kb/3041338)以获取详细信息。
 此外，还可以参考 [Azure 备份相关的常见问题](backup-azure-backup-faq.md)
 
 
@@ -261,8 +259,8 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。若�
 
 请参阅这些文章，以深入了解如何使用 Microsoft Azure 备份服务器来保护工作负荷。
 
-- [SQL Server 备份](backup-azure-backup-sql.md)
-- [SharePoint Server 备份](backup-azure-backup-sharepoint.md)
-- [备用服务器备份](backup-azure-alternate-dpm-server.md)
+- [SQL Server 备份](/documentation/articles/backup-azure-backup-sql/)
+- [SharePoint Server 备份](/documentation/articles/backup-azure-backup-sharepoint/)
+- [备用服务器备份](/documentation/articles/backup-azure-alternate-dpm-server/)
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0808_2016-->

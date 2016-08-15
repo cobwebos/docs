@@ -1,3 +1,5 @@
+<!-- not suitable for Mooncake -->
+
 <properties
 	pageTitle="对 SQL Server VM 进行自动修补 (Resource Manager) | Azure"
 	description="介绍 Azure 中运行的、使用 Resource Manager 的 SQL Server 虚拟机的自动修补功能。"
@@ -15,12 +17,12 @@
 # Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)
 
 > [AZURE.SELECTOR]
-- [资源管理器](/documentation/articles/virtual-machines-windows-sql-automated-patching)
-- [经典](/documentation/articles/virtual-machines-windows-classic-sql-automated-patching)
+- [资源管理器](/documentation/articles/virtual-machines-windows-sql-automated-patching/)
+- [经典](/documentation/articles/virtual-machines-windows-classic-sql-automated-patching/)
 
-自动修补将为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。只能在此维护时段内安装自动更新。对于 SQL Server，这可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。自动修补依赖 [SQL Server IaaS 代理扩展](/documentation/articles/virtual-machines-windows-sql-server-agent-extension)。
+自动修补将为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。只能在此维护时段内安装自动更新。对于 SQL Server，这可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。自动修补依赖 [SQL Server IaaS 代理扩展](/documentation/articles/virtual-machines-windows-sql-server-agent-extension/)。
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] 经典部署模型。若要查看本文的经典版本，请参阅 [在 Azure 虚拟机（经典）中对 SQL Server 进行自动修补](/documentation/articles/virtual-machines-windows-classic-sql-automated-patching)。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] 经典部署模型。若要查看本文的经典版本，请参阅[《Automated Patching for SQL Server in Azure Virtual Machines Classic》（在 Azure 虚拟机（经典）中对 SQL Server 进行自动修补）](/documentation/articles/virtual-machines-windows-classic-sql-automated-patching/)。
 
 ## 先决条件
 
@@ -39,9 +41,9 @@
 
 **Azure PowerShell**：
 
-- 如果你打算使用 PowerShell 配置自动修补，请[安装最新的 Azure PowerShell 命令](/documentation/articles/powershell-install-configure)。
+- 如果你打算使用 PowerShell 配置自动修补，请[安装最新的 Azure PowerShell 命令](/documentation/articles/powershell-install-configure/)。
 
->[AZURE.NOTE] 自动修补依赖 SQL Server IaaS 代理扩展。当前的 SQL 虚拟机库映像默认添加此扩展。有关详细信息，请参阅 [SQL Server IaaS 代理扩展](/documentation/articles/virtual-machines-windows-sql-server-agent-extension)。
+>[AZURE.NOTE] 自动修补依赖 SQL Server IaaS 代理扩展。当前的 SQL 虚拟机库映像默认添加此扩展。有关详细信息，请参阅 [SQL Server IaaS 代理扩展](/documentation/articles/virtual-machines-windows-sql-server-agent-extension/)。
 
 ## 设置
 
@@ -56,18 +58,31 @@
 |**修补程序类别**|重要说明|要下载并安装的更新类别。|
 
 ## 门户中的配置
+可以在预配期间或针对现有的 VM，使用 Azure 门户来配置自动修补。
 
-在 Resource Manager 部署模型中创建新的 SQL Server 虚拟机时，可以使用 [Azure 门户](https://portal.azure.cn/)配置自动修补。
+### 新的 VM
+在 Resource Manager 部署模型中创建新的 SQL Server 虚拟机时，可以使用 Azure 门户配置自动修补。
 
 在“SQL Server 设置”边栏选项卡中，选择“自动修补”。下面的 Azure 门户屏幕截图显示了“SQL 自动修补”边栏选项卡。
 
 ![Azure 门户中的 SQL 自动修补](./media/virtual-machines-windows-sql-automated-patching/azure-sql-arm-patching.png)
 
-若要了解上下文，请参阅有关[在 Azure 中预配 SQL Server 虚拟机](/documentation/articles/virtual-machines-windows-portal-sql-server-provision)的完整主题。
+若要了解上下文，请参阅有关[在 Azure 中预配 SQL Server 虚拟机](/documentation/articles/virtual-machines-windows-portal-sql-server-provision/)的完整主题。
 
-对于现有 SQL Server 虚拟机，必须使用 PowerShell 来配置自动修补设置。
+### 现有 VM
+对于现有的 SQL Server 虚拟机，请选择你的 SQL Server 虚拟机。然后选择“设置”边栏选项卡的“SQL Server 配置”部分。
 
->[AZURE.NOTE] 当你首次启用自动修补时，Azure 将在后台配置 SQL Server IaaS 代理。在此期间，Azure 门户可能不会显示已配置自动修补。请等待几分钟，以便安装和配置代理。之后，Azure 门户将反映新设置。
+![现有 VM 的 SQL 自动修补](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-existing-vms.png)
+
+在“SQL Server 配置”边栏选项卡的“自动修补”部分，单击“编辑”按钮。
+
+![配置现有 VM 的 SQL 自动修补](./media/virtual-machines-windows-sql-automated-patching/azure-sql-rm-patching-configuration.png)
+
+完成后，单击“SQL Server 配置”边栏选项卡底部的“确定”按钮，以保存你的更改。
+
+当你首次启用自动修补时，Azure 将在后台配置 SQL Server IaaS 代理。在此期间，Azure 门户可能不会显示已配置自动修补。请等待几分钟，以便安装和配置代理。之后，Azure 门户将反映新设置。
+
+>[AZURE.NOTE] 你也可以使用模板来配置自动修补。有关详细信息，请参阅[《Azure quickstart template for Automated Backup》（用于自动备份的 Azure 快速入门模板）](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autopatching-update)。
 
 ## 使用 PowerShell 进行配置
 
@@ -96,8 +111,8 @@
 
 ## 后续步骤
 
-有关其他可用自动化任务的信息，请参阅 [SQL Server IaaS 代理扩展](/documentation/articles/virtual-machines-windows-sql-server-agent-extension)。
+有关其他可用自动化任务的信息，请参阅 [SQL Server IaaS 代理扩展](/documentation/articles/virtual-machines-windows-sql-server-agent-extension/)。
 
-有关在 Azure VM 中运行 SQL Server 的详细信息，请参阅 [Azure 虚拟机中的 SQL Server 概述](/documentation/articles/virtual-machines-windows-sql-server-iaas-overview)。
+有关在 Azure VM 中运行 SQL Server 的详细信息，请参阅 [Azure 虚拟机中的 SQL Server 概述](/documentation/articles/virtual-machines-windows-sql-server-iaas-overview/)。
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0808_2016-->

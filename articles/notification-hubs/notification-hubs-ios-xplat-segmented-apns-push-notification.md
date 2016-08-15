@@ -4,12 +4,12 @@
 	services="notification-hubs"
 	documentationCenter="ios"
 	authors="wesmc7777"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="03/28/2016"
+	ms.date="06/29/2016"
 	wacn.date=""/>
 
 # 使用通知中心发送突发新闻
@@ -21,7 +21,7 @@
 
 本主题说明如何使用 Azure 通知中心将突发新闻通知广播到 iOS 应用程序。完成时，你可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。
 
-在创建通知中心的注册时，通过加入一个或多个标记来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标记的详细信息，请参阅[通知中心路由和标记表达式](/documentation/articles/notification-hubs-tags-segment-push-message)。
+在创建通知中心的注册时，通过加入一个或多个_标记_来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标记的详细信息，请参阅[通知中心路由和标记表达式](/documentation/articles/notification-hubs-tags-segment-push-message/)。
 
 
 ##先决条件
@@ -32,7 +32,7 @@
 
 第一步是向现有 Storyboard 添加 UI 元素，这些元素允许用户选择要注册的类别。用户选择的类别存储在设备上。应用程序启动时，使用所选类别作为标签在你的通知中心创建设备注册。
 
-1. 在 MainStoryboard\_iPhone.storyboard 中，从对象库添加以下组件：
+1. 在 MainStoryboard_iPhone.storyboard 中，从对象库添加以下组件：
 	+ 具有“Breaking News”文本的标签
 	+ 具有“World”、“Politics”、“Business”、“Technology”、“Science”、“Sports”类别文本的标签
 	+ 六个开关，每个类别一个。默认情况下，每个开关的 **State** 设置为 **Off**。
@@ -115,7 +115,7 @@
 
 
 
-	此类使用本地存储区存储和检索此设备将要接收的新闻类别。此外，它还包含了一个方法用于通过[模板](/documentation/articles/notification-hubs-templates-cross-platform-push-messages-cross-platform-push-messages-cross-platform-push-messages)注册来注册这些类别。
+	此类使用本地存储区存储和检索此设备将要接收的新闻类别。此外，它还包含了一个方法用于通过[模板](/documentation/articles/notification-hubs-templates-cross-platform-push-messages-cross-platform-push-messages-cross-platform-push-messages/)注册来注册这些类别。
 
 7. 在 AppDelegate.h 文件中，添加 Notifications.h 的导入语句，并添加 Notifications 类实例的属性：
 
@@ -126,7 +126,7 @@
 
 8. 在 AppDelegate.m 的 **didFinishLaunchingWithOptions** 方法中，于方法开头添加代码来初始化 notifications 实例：
  
-	在 hubinfo.h 中定义的 `HUBNAME` 和 `HUBLISTENACCESS` 内，`<hub name>` 和 `<connection string with listen access>` 占位符应已替换为你的通知中心的名称和你之前获取的 DefaultListenSharedAccessSignature 的连接字符串。
+	在 hubinfo.h 中定义的 `HUBNAME` 和 `HUBLISTENACCESS` 内，`<hub name>` 和 `<connection string with listen access>` 占位符应已替换为你的通知中心的名称和你之前获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
 
 		self.notifications = [[Notifications alloc] initWithConnectionString:HUBLISTENACCESS HubName:HUBNAME];
 
@@ -229,7 +229,7 @@
 通常，通知将由后端服务发送，但你也可以直接从应用发送突发新闻通知。为此，我们需要更新[通知中心入门][get-started]教程中所定义的 `SendNotificationRESTAPI` 方法。
 
 
-1. 在 ViewController.m 中，按如下所示更新 `SendNotificationRESTAPI` 方法，使其接受类别标记的参数并发送适当的[模板](/documentation/articles/notification-hubs-templates-cross-platform-push-messages-cross-platform-push-messages-cross-platform-push-messages)通知。
+1. 在 ViewController.m 中，按如下所示更新 `SendNotificationRESTAPI` 方法，使其接受类别标记的参数并发送适当的[模板](/documentation/articles/notification-hubs-templates-cross-platform-push-messages-cross-platform-push-messages-cross-platform-push-messages/)通知。
 
 		- (void)SendNotificationRESTAPI:(NSString*)categoryTag
 		{
@@ -253,7 +253,7 @@
 		    [request setValue:categoryTag forHTTPHeaderField:@"ServiceBusNotification-Tags"];
 
 			// Template notification
-	        json = [NSString stringWithFormat:@"{"messageParam":"Breaking %@ News : %@"}",
+	        json = [NSString stringWithFormat:@"{\"messageParam\":\"Breaking %@ News : %@\"}",
 	                categoryTag, self.notificationMessage.text];
 
 	        // Signify template notification format
@@ -344,9 +344,9 @@
 
 
 <!-- Images. -->
-[1]: ./media/notification-hubs-ios-xplat-segmented-apns-push-notification/notification-hub-breakingnews-subscribed.png
-[2]: ./media/notification-hubs-ios-xplat-segmented-apns-push-notification/notification-hub-breakingnews-ios1.png
-[3]: ./media/notification-hubs-ios-xplat-segmented-apns-push-notification/notification-hub-breakingnews-ios2.png
+[1]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-subscribed.png
+[2]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios1.png
+[3]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
 
 
 
@@ -357,11 +357,11 @@
 
 <!-- URLs. -->
 [How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
-[使用通知中心广播本地化的突发新闻]: /documentation/articles/notification-hubs-ios-xplat-localized-apns-push-notification
-[Notify users with Notification Hubs]: /documentation/articles/notification-hubs-aspnet-backend-ios-apple-apns-notification
+[使用通知中心广播本地化的突发新闻]: /documentation/articles/notification-hubs-ios-xplat-localized-apns-push-notification/
+[Notify users with Notification Hubs]: /documentation/articles/notification-hubs-aspnet-backend-ios-apple-apns-notification/
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
 [Azure 经典门户]: https://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0808_2016-->

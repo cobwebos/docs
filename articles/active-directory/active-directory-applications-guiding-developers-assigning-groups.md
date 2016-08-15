@@ -9,12 +9,8 @@
 
 <tags
 	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
 	ms.date="12/03/2015"
-	ms.author="inhenk"/>
+	wacn.date=""/>
 
 # Azure AD 和应用程序：将组分配到应用程序
 在将用户和组分配到应用程序之前，你必须要求用户分配。若要了解如何要求进行用户分配，请参阅[要求进行用户分配](active-directory-applications-guiding-developers-requiring-user-assignment.md)一文。
@@ -34,6 +30,6 @@
 10. 出现提示时单击“是”。
 
 ## 后续步骤
-[AZURE.INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
+[AZURE.INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0808_2016-->

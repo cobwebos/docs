@@ -4,20 +4,20 @@
 	services="media-services"
 	documentationCenter=""
 	authors="Juliako"
-	manager="dwrede"
+	manager="erikre"
 	editor=""/>
 
 <tags
 	ms.service="media-services"
-	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	wacn.date=""/>
 
 
 # 创建 Azure 媒体服务帐户
 
 > [AZURE.SELECTOR]
-- [门户](/documentation/articles/media-services-create-account)
-- [PowerShell](/documentation/articles/media-services-manage-with-powershell)
+- [门户](/documentation/articles/media-services-create-account/)
+- [PowerShell](/documentation/articles/media-services-manage-with-powershell/)
 - [REST](http://msdn.microsoft.com/zh-cn/library/azure/dn194267.aspx)
 
 
@@ -40,7 +40,7 @@
 
 -   **一个关联的存储帐户**。你的存储帐户是一个与你的媒体服务帐户关联的 Azure 存储帐户。该存储帐户为媒体文件提供了 Blob 存储，并且必须位于媒体服务帐户所在的地理区域内。创建媒体服务帐户时，你可以选择位于同一区域内的现有存储帐户，也可以在同一区域内创建新的存储帐户。如果你删除媒体服务帐户，相关存储帐户中的 Blob 不会被删除。
 
-<a id="quick">
+<a id="quick"></a>
 ## 使用“快速创建”创建媒体服务帐户
 
 1. 在 [Azure 管理门户][]中，依次单击“新建”、“媒体服务”和“快速创建”。
@@ -74,9 +74,9 @@
 
 ## 后续步骤
 
-- [使用 .NET SDK 开始传送点播视频 (VoD) 内容](/documentation/articles/media-services-dotnet-get-started)
+- [使用 .NET SDK 开始传送点播视频 (VoD) 内容](/documentation/articles/media-services-dotnet-get-started/)
 
-- [使用 .NET SDK 可创建频道，以执行从单比特率流到多比特率流的实时编码](/documentation/articles/media-services-dotnet-creating-live-encoder-enabled-channel)
+- [使用 .NET SDK 可创建频道，以执行从单比特率流到多比特率流的实时编码](/documentation/articles/media-services-dotnet-creating-live-encoder-enabled-channel/)
 
 <!-- Reusable paths. -->
 
@@ -90,4 +90,4 @@
 
   [Azure 管理门户]: http://manage.windowsazure.cn/
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0808_2016-->

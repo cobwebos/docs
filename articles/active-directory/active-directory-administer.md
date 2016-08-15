@@ -5,12 +5,12 @@
 	documentationCenter=""
 	authors="markusvi"
 	writer="markvi"
-	manager="stevenpo"
-	editor="LisaToft"/>
+	manager="femila"
+	editor=""/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="04/07/2016"
+	ms.date="07/13/2016"
 	wacn.date="" />
 
 # 管理 Azure AD 目录
@@ -45,7 +45,7 @@ Azure AD 在大多数 Microsoft 云服务的后面提供核心目录和身份管
 
 例如，如果你最初注册了 Windows Intune 订阅并完成了通过部署目录同步和/或单一登录服务器将本地 Active Directory 与 Azure AD 目录进一步集成所需的步骤，则可以注册其他 Microsoft 云服务（例如 Office 365），该服务也可以利用目前用于 Windows Intune 的目录集成优势。
 
-有关将本地目录与 Azure AD 集成的详细信息，请参阅[目录集成](active-directory-aadconnect)。
+有关将本地目录与 Azure AD 集成的详细信息，请参阅[目录集成](/documentation/articles/active-directory-aadconnect/)。
 
 ### 将 Azure AD 目录与新的 Azure 订阅相关联
 
@@ -87,7 +87,8 @@ Azure 管理门户、Office 365 管理中心、Microsoft Intune 帐户门户和 
 
 这些用于管理用户和组的帐户门户及关联的 Azure AD PowerShell cmdlet 均构建在 Azure AD 平台之上。
 
-如果你在上述服务之一的上下文中登录时使用任何门户（或 cmdlet）更改了组织数据，则当你下次在该服务的上下文中登录时，此更改也会显示在其他门户中，因为此数据在你订阅的 Microsoft 云服务之间共享。例如，如果使用 Office 365 管理中心阻止某个用户登录，则该操作会阻止该用户登录到你的组织当前订阅的任何其他服务。如果在 Microsoft Intune 帐户门户的上下文中请求相同的用户帐户，则会看到该用户被阻止。
+如果你在上述服务之一的上下文中登录时使用任何门户（或 cmdlet）更改了组织数据，则当你下次在该服务的上下文中登录时，此更改也会显示在其他门户中，因为此数据在你订阅的 Microsoft 云服务之间共享。
+例如，如果使用 Office 365 管理中心阻止某个用户登录，则该操作会阻止该用户登录到你的组织当前订阅的任何其他服务。如果在 Microsoft Intune 帐户门户的上下文中请求相同的用户帐户，则会看到该用户被阻止。
 
 ## 如何添加和管理多个目录？
 
@@ -144,4 +145,4 @@ Azure AD 要求删除目录之前必须符合特定的条件。这可以降低�
 [1]: ./media/active-directory-administer/aad_portals.png
 [2]: ./media/active-directory-administer/azure_tenants.png
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0808_2016-->

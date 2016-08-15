@@ -1,5 +1,5 @@
 <properties 
-    pageTitle="服务总线死信队列 | Microsoft Azure" 
+    pageTitle="服务总线死信队列 | Azure" 
     description="Azure 服务总线死信队列概述" 
     services="service-bus" 
     documentationCenter=".net" 
@@ -9,7 +9,7 @@
 
 <tags
     ms.service="service-bus"
-    ms.date="03/16/2016"
+    ms.date="06/21/2016"
     wacn.date=""/>
 
 # 服务总线死信队列概述
@@ -84,7 +84,7 @@ while(true)
 
 有关服务总线队列的详细信息，请参阅以下文章：
 
-- [比较 Azure 队列和服务总线队列](/documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted)
-- 如何使用[服务总线队列](/documentation/articles/service-bus-dotnet-how-to-use-queues)
+- [服务总线队列入门](/documentation/articles/service-bus-dotnet-get-started-with-queues/)
+- [比较 Azure 队列和服务总线队列](/documentation/articles/service-bus-azure-and-service-bus-queues-compared-contrasted/)
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0808_2016-->

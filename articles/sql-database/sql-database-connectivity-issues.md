@@ -10,21 +10,21 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="03/30/2016"
-	wacn.date="04/22/2016"/>
+	ms.date="06/27/2016"
+	wacn.date=""/>
 
 
 # 排查、诊断和防止 SQL 数据库中的 SQL 连接错误和暂时性错误
 
 本文介绍如何防止、排查、诊断和减少客户端应用程序在与 Azure SQL 数据库交互时发生的连接错误和暂时性错误。了解如何配置重试逻辑、生成连接字符串以及调整其他连接设置。
 
-<a id="i-transient-faults" name="i-transient-faults"></a>
+<a id="i-transient-faults" name="i-transient-faults">
 
 ## 暂时性错误（暂时性故障）
 
 暂时性错误（也称为暂时性故障）存在很快解决自身问题的根本原因。当 Azure 系统快速地将硬件资源转移到负载平衡更好的各种工作负荷时，偶尔会发生暂时性错误。大多数这些重新配置事件通常在 60 秒内就能完成。在进行这种重新配置的过程中，可能会遇到与 Azure SQL 数据库的连接性问题。连接到 Azure SQL 数据库的应用程序应当构建为能预见这些暂时性错误，并能通过在它们的代码内实现重试逻辑来处理它们，而不是以应用程序错误的形式呈现给用户。
 
-如果客户端程序使用 ADO.NET，系统将会引发 **SqlException**，使你的程序知道已发生暂时性错误。你可以将 **Number** 属性与 [SQL 数据库客户端应用程序的 SQL 错误代码](/documentation/articles/sql-database-develop-error-messages)主题顶部附近的暂时性错误列表进行比较。
+如果客户端程序使用 ADO.NET，系统将会引发 **SqlException**，使你的程序知道已发生暂时性错误。你可以将 **Number** 属性与 [SQL 数据库客户端应用程序的 SQL 错误代码](/documentation/articles/sql-database-develop-error-messages/)主题顶部附近的暂时性错误列表进行比较。
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -79,7 +79,7 @@
 
 我们建议在第一次重试前延迟 5 秒钟。如果在少于 5 秒的延迟后重试，云服务有超载的风险。对于后续的每次重试，延迟应以指数级增大，最大值为 60 秒。
 
-[SQL Server 连接池 (ADO.NET)](http://msdn.microsoft.com/zh-cn/library/8xx3tyca.aspx) 中提供了有关使用 ADO.NET 的客户端的*阻塞期*的说明。
+[SQL Server 连接池 (ADO.NET)](http://msdn.microsoft.com/zh-cn/library/8xx3tyca.aspx) 中提供了有关使用 ADO.NET 的客户端的阻塞期的说明。
 
 你还可能想要设置程序在自行终止之前的重试次数上限。
 
@@ -89,7 +89,7 @@
 
 以下位置提供了采用各种编程语言的重试逻辑代码示例：
 
-- [快速入门代码示例](/documentation/articles/sql-database-develop-quick-start-client-code-samples)
+- [用于 SQL 数据库和 SQL Server 的连接库](/documentation/articles/sql-database-libraries/)
 
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
@@ -214,8 +214,7 @@
 [AZURE.INCLUDE [sql-database-include-ip-address-22-v12portal](../includes/sql-database-include-ip-address-22-v12portal.md)]
 
 
-有关详细信息，请参阅
-[如何：在 SQL 数据库上配置防火墙设置](/documentation/articles/sql-database-configure-firewall-settings)
+有关详细信息，请参阅[如何：在 SQL 数据库上配置防火墙设置](/documentation/articles/sql-database-configure-firewall-settings/)
 
 
 <a id="c-connection-ports" name="c-connection-ports"></a>
@@ -238,11 +237,10 @@
 7. &gt;“新建规则”
 
 
-如果你的客户端程序托管在 Azure 虚拟机 (VM) 上，你应该阅读：<br/>[用于 ADO.NET 4.5 和 SQL 数据库 V12 的非 1433 端口](/documentation/articles/sql-database-develop-direct-route-ports-adonet-v12)。
+如果你的客户端程序托管在 Azure 虚拟机 (VM) 上，你应该阅读：<br/>[用于 ADO.NET 4.5 和 SQL 数据库 V12 的非 1433 端口](/documentation/articles/sql-database-develop-direct-route-ports-adonet-v12/)。
 
 
-有关配置端口和 IP 地址的背景信息，请参阅：
-[Azure SQL 数据库防火墙](/documentation/articles/sql-database-firewall-configure)
+有关配置端口和 IP 地址的背景信息，请参阅：[Azure SQL 数据库防火墙](/documentation/articles/sql-database-firewall-configure/)
 
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
@@ -307,22 +305,22 @@ ADO.NET 4.6.1：
 在 Windows 上，[PortQry.exe](http://www.microsoft.com/zh-cn/download/details.aspx?id=17148) 实用程序可能很有用。以下是在 Azure SQL 数据库服务器上查询端口情况，以及在便携式计算机上运行的的示例执行：
 
 
-```
-[C:\Users\johndoe]
->> portqry.exe -n johndoesvr9.database.chinacloudapi.cn -p tcp -e 1433
 
-Querying target system called:
- johndoesvr9.database.chinacloudapi.cn
+	[C:\Users\johndoe\]
+	>> portqry.exe -n johndoesvr9.database.chinacloudapi.cn -p tcp -e 1433
 
-Attempting to resolve name to IP address...
-Name resolved to 23.100.117.95
+	Querying target system called:
+	 johndoesvr9.database.chinacloudapi.cn
 
-querying...
-TCP port 1433 (ms-sql-s service): LISTENING
+	Attempting to resolve name to IP address...
+	Name resolved to 23.100.117.95
 
-[C:\Users\johndoe]
->>
-```
+	querying...
+	TCP port 1433 (ms-sql-s service): LISTENING
+
+	[C:\Users\johndoe\]
+	>>
+
 
 
 <a id="g-diagnostics-log-your-errors" name="g-diagnostics-log-your-errors"></a>
@@ -362,30 +360,30 @@ Enterprise Library 6 (EntLib60) 提供了 .NET 托管类来帮助进行日志记
 可以在 Azure SQL 数据库的日志中搜索有关问题事件的条目。在 **master** 数据库中尝试运行以下 Transact-SQL SELECT 语句：
 
 
-```
-SELECT
-   object_name
-  ,CAST(f.event_data as XML).value
-      ('(/event/@timestamp)[1]', 'datetime2')                      AS [timestamp]
-  ,CAST(f.event_data as XML).value
-      ('(/event/data[@name="error"]/value)[1]', 'int')             AS [error]
-  ,CAST(f.event_data as XML).value
-      ('(/event/data[@name="state"]/value)[1]', 'int')             AS [state]
-  ,CAST(f.event_data as XML).value
-      ('(/event/data[@name="is_success"]/value)[1]', 'bit')        AS [is_success]
-  ,CAST(f.event_data as XML).value
-      ('(/event/data[@name="database_name"]/value)[1]', 'sysname') AS [database_name]
-FROM
-  sys.fn_xe_telemetry_blob_target_read_file('el', null, null, null) AS f
-WHERE
-  object_name != 'login_event'  -- Login events are numerous.
-  and
-  '2015-06-21' < CAST(f.event_data as XML).value
-        ('(/event/@timestamp)[1]', 'datetime2')
-ORDER BY
-  [timestamp] DESC
-;
-```
+
+	SELECT
+	   object_name
+	  ,CAST(f.event_data as XML).value
+	      ('(/event/@timestamp)[1]', 'datetime2')                      AS [timestamp]
+	  ,CAST(f.event_data as XML).value
+	      ('(/event/data[@name="error"]/value)[1]', 'int')             AS [error]
+	  ,CAST(f.event_data as XML).value
+	      ('(/event/data[@name="state"]/value)[1]', 'int')             AS [state]
+	  ,CAST(f.event_data as XML).value
+	      ('(/event/data[@name="is_success"]/value)[1]', 'bit')        AS [is_success]
+	  ,CAST(f.event_data as XML).value
+	      ('(/event/data[@name="database_name"]/value)[1]', 'sysname') AS [database_name]
+	FROM
+	  sys.fn_xe_telemetry_blob_target_read_file('el', null, null, null) AS f
+	WHERE
+	  object_name != 'login_event'  -- Login events are numerous.
+	  and
+	  '2015-06-21' < CAST(f.event_data as XML).value
+	        ('(/event/@timestamp)[1]', 'datetime2')
+	ORDER BY
+	  [timestamp] DESC
+	;
+
 
 
 #### 将返回 sys.fn\_xe\_telemetry\_blob\_target\_read\_file 中的若干行
@@ -394,11 +392,11 @@ ORDER BY
 下面是返回行的类似内容。显示的 null 值在其他行中通常不是 null。
 
 
-```
-object_name                   timestamp                    error  state  is_success  database_name
 
-database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL        AdventureWorks
-```
+	object_name                   timestamp                    error  state  is_success  database_name
+
+	database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL        AdventureWorks
+
 
 
 <a id="l-enterprise-library-6" name="l-enterprise-library-6"></a>
@@ -416,11 +414,6 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 - [4 - 坚持不懈是一切成功的秘密：使用暂时性故障处理应用程序块](http://msdn.microsoft.com/zh-cn/library/dn440719%28v=pandp.60%29.aspx)
 
 
-在其重试逻辑中使用 EntLib60 的简短 C# 代码示例可从以下链接中找到：
-
-- [代码示例：Enterprise Library 6 中的用 C# 编写的用于连接 SQL 数据库的重试逻辑](/documentation/articles/sql-database-develop-entlib-csharp-retry-windows)
-
-
 > [AZURE.NOTE] EntLib60 的源代码可公开[下载](http://go.microsoft.com/fwlink/p/?LinkID=290898)。Microsoft 不打算对 EntLib 做进一步的功能或维护更新。
 
 <a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
@@ -430,7 +423,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 
 以下 EntLib60 类对重试逻辑特别有用。所有这些类都包含在 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 命名空间或其子级中：
 
-在命名空间 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 中：
+在命名空间 Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling 中：
 
 - **RetryPolicy** 类
  - **ExecuteAction** 方法
@@ -457,7 +450,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 
 - 免费[书籍下载：Microsoft Enterprise Library 版本 2 开发人员指南](http://www.microsoft.com/zh-cn/download/details.aspx?id=41145)
 
-- 最佳实践：[有关重试的一般性指南](/documentation/articles/best-practices-retry-general)深入探讨了重试逻辑。
+- 最佳实践：[有关重试的一般性指南](/documentation/articles/best-practices-retry-general/)深入探讨了重试逻辑。
 
 - [Enterprise Library - 暂时性故障处理应用程序块 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling) 的 NuGet 下载
 
@@ -475,8 +468,7 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 - 日志记录块可以从日志目标抽象化日志记录功能，使应用程序代码保持一致，无论目标日志记录存储的位置和类型为何。
 
 
-有关详细信息，请参阅：
-[5 - 像滚圆木一样容易：使用日志记录应用程序块](https://msdn.microsoft.com/zh-cn/library/dn440731%28v=pandp.60%29.aspx)
+有关详细信息，请参阅：[5 - 像滚圆木一样容易：使用日志记录应用程序块](https://msdn.microsoft.com/zh-cn/library/dn440731%28v=pandp.60%29.aspx)
 
 <a id="entlib60-istransient-method-source-code" name="entlib60-istransient-method-source-code"></a>
 
@@ -488,81 +480,80 @@ Enterprise Library 6 (EntLib60) 是 .NET 类的框架，可帮助你实施云服
 为了注重易读性，我们在此副本中删除了大量的 **//comment** 行。
 
 
-```
-public bool IsTransient(Exception ex)
-{
-  if (ex != null)
-  {
-    SqlException sqlException;
-    if ((sqlException = ex as SqlException) != null)
-    {
-      // Enumerate through all errors found in the exception.
-      foreach (SqlError err in sqlException.Errors)
-      {
-        switch (err.Number)
-        {
-            // SQL Error Code: 40501
-            // The service is currently busy. Retry the request after 10 seconds.
-            // Code: (reason code to be decoded).
-          case ThrottlingCondition.ThrottlingErrorNumber:
-            // Decode the reason code from the error message to
-            // determine the grounds for throttling.
-            var condition = ThrottlingCondition.FromError(err);
 
-            // Attach the decoded values as additional attributes to
-            // the original SQL exception.
-            sqlException.Data[condition.ThrottlingMode.GetType().Name] =
-              condition.ThrottlingMode.ToString();
-            sqlException.Data[condition.GetType().Name] = condition;
+	public bool IsTransient(Exception ex)
+	{
+	  if (ex != null)
+	  {
+	    SqlException sqlException;
+	    if ((sqlException = ex as SqlException) != null)
+	    {
+	      // Enumerate through all errors found in the exception.
+	      foreach (SqlError err in sqlException.Errors)
+	      {
+	        switch (err.Number)
+	        {
+	            // SQL Error Code: 40501
+	            // The service is currently busy. Retry the request after 10 seconds.
+	            // Code: (reason code to be decoded).
+	          case ThrottlingCondition.ThrottlingErrorNumber:
+	            // Decode the reason code from the error message to
+	            // determine the grounds for throttling.
+	            var condition = ThrottlingCondition.FromError(err);
 
-            return true;
+	            // Attach the decoded values as additional attributes to
+	            // the original SQL exception.
+	            sqlException.Data[condition.ThrottlingMode.GetType().Name] =
+	              condition.ThrottlingMode.ToString();
+	            sqlException.Data[condition.GetType().Name] = condition;
 
-          case 10928:
-          case 10929:
-          case 10053:
-          case 10054:
-          case 10060:
-          case 40197:
-          case 40540:
-          case 40613:
-          case 40143:
-          case 233:
-          case 64:
-            // DBNETLIB Error Code: 20
-            // The instance of SQL Server you attempted to connect to
-            // does not support encryption.
-          case (int)ProcessNetLibErrorCode.EncryptionNotSupported:
-            return true;
-        }
-      }
-    }
-    else if (ex is TimeoutException)
-    {
-      return true;
-    }
-    else
-    {
-      EntityException entityException;
-      if ((entityException = ex as EntityException) != null)
-      {
-        return this.IsTransient(entityException.InnerException);
-      }
-    }
-  }
+	            return true;
 
-  return false;
-}
-```
+	          case 10928:
+	          case 10929:
+	          case 10053:
+	          case 10054:
+	          case 10060:
+	          case 40197:
+	          case 40540:
+	          case 40613:
+	          case 40143:
+	          case 233:
+	          case 64:
+	            // DBNETLIB Error Code: 20
+	            // The instance of SQL Server you attempted to connect to
+	            // does not support encryption.
+	          case (int)ProcessNetLibErrorCode.EncryptionNotSupported:
+	            return true;
+	        }
+	      }
+	    }
+	    else if (ex is TimeoutException)
+	    {
+	      return true;
+	    }
+	    else
+	    {
+	      EntityException entityException;
+	      if ((entityException = ex as EntityException) != null)
+	      {
+	        return this.IsTransient(entityException.InnerException);
+	      }
+	    }
+	  }
+
+	  return false;
+	}
+
 
 
 ## 后续步骤
 
-- 有关其他常见的 Azure SQL 数据库连接问题的疑难解答，请访问 [Azure SQL 数据库的常见连接问题疑难解答](/documentation/articles/sql-database-troubleshoot-common-connection-issues)。
+- 有关其他常见的 Azure SQL 数据库连接问题的疑难解答，请访问 [Azure SQL 数据库的连接问题疑难解答](/documentation/articles/sql-database-troubleshoot-common-connection-issues/)。
 
 - [SQL Server 连接池 (ADO.NET)](http://msdn.microsoft.com/zh-cn/library/8xx3tyca.aspx)
 
 
 - [重试是 Apache 2.0 授权的通用重试库，它以 **Python** 编写，可以简化向几乎任何程序添加重试行为的任务。](https://pypi.python.org/pypi/retrying)
 
-
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0808_2016-->

@@ -2,14 +2,14 @@
 	pageTitle="使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频" 
 	description="本主题演示如何使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频。" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
 	documentationCenter=""/>
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016"  
+	ms.date="06/22/2016" 
 	wacn.date=""/>
 
 
@@ -50,7 +50,7 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。其目标�
 
 ##添加 DASH.js 播放器
 
-若要将 dash.js 引用实现添加到应用程序，需要从 1.0 版的 dash.js 项目中找到 dash.all.js 文件。此文件应保存到你的应用程序的 JavaScript 文件夹中。此文件是一个易用文件，将所有必要的 dash.js 代码一起提取到单个文件中。如果你浏览 dash.js 存储库，你将找到各个文件、测试代码以及更多内容，但如果你只想使用 dash.js，那么 dash.all.js 文件就是你所需的文件。
+若要将 dash.js 引用实现添加到应用程序，需要从 1.0 版本的 dash.js 项目中找到 dash.all.js 文件。此文件应保存到你的应用程序的 JavaScript 文件夹中。此文件是一个易用文件，将所有必要的 dash.js 代码一起提取到单个文件中。如果你浏览 dash.js 存储库，你将找到各个文件、测试代码以及更多内容，但如果你只想使用 dash.js，那么 dash.all.js 文件就是你所需的文件。
 
 若要将 dash.js 播放器添加到你的应用程序，请将脚本标记添加到 basicPlayer.html 的 head 部分中：
 
@@ -99,8 +99,8 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。其目标�
 
 ##另请参阅
 
-[开发视频播放器应用程序](/documentation/articles/media-services-develop-video-players)
+[开发视频播放器应用程序](/documentation/articles/media-services-develop-video-players/)
 
 [GitHub dash.js 存储库](https://github.com/Dash-Industry-Forum/dash.js)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0808_2016-->

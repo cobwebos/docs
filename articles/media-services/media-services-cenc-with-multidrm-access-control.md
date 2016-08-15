@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="media-services" 
-	ms.date="04/18/2016"     
+	ms.date="06/22/2016"  
 	wacn.date=""/>
 
 #使用多重 DRM 的 CENC 和访问控制：Azure 与 Azure 媒体服务的参考设计和实现
@@ -22,27 +22,27 @@ Azure Active Directory, Azure 媒体服务, Azure Media Player, 动态加密, �
 
 本文章涵盖以下主题：
 
-- [介绍](/documentation/articles/media-services-cenc-with-multidrm-access-control#introduction)
-	- [本文的概述](/documentation/articles/media-services-cenc-with-multidrm-access-control#overview-of-this-article)
-- [参考设计](/documentation/articles/media-services-cenc-with-multidrm-access-control#a-reference-design)
-- [将设计映射到技术以供实现](/documentation/articles/media-services-cenc-with-multidrm-access-control#mapping-design-to-technology-for-implementation)
-- [实现](/documentation/articles/media-services-cenc-with-multidrm-access-control#implementation)
-	- [实现过程](/documentation/articles/media-services-cenc-with-multidrm-access-control#implementation-procedures)
-	- [实现中的一些难点](/documentation/articles/media-services-cenc-with-multidrm-access-control#some-gotchas-in-implementation)
-- [有关实现的其他主题](/documentation/articles/media-services-cenc-with-multidrm-access-control#additional-topics-for-implementation)
-	- [使用 HTTP 还是 HTTPS](/documentation/articles/media-services-cenc-with-multidrm-access-control#http-or-https)
-	- [Azure Active Directory 签名密钥滚动更新](/documentation/articles/media-services-cenc-with-multidrm-access-control#azure-active-directory-signing-key-rollover)
-	- [访问令牌位于何处？](/documentation/articles/media-services-cenc-with-multidrm-access-control#where-is-the-access-token)
-	- [如何使用实时流？](/documentation/articles/media-services-cenc-with-multidrm-access-control#what-about-live-streaming)
-	- [如何使用 Azure 媒体服务外部的许可证服务器？](/documentation/articles/media-services-cenc-with-multidrm-access-control#what-about-license-servers-outside-of-azure-media-services)
-	- [如何使用自定义 STS？](/documentation/articles/media-services-cenc-with-multidrm-access-control#what-if-i-want-to-use-a-custom-sts)
-- [完成的系统和测试](/documentation/articles/media-services-cenc-with-multidrm-access-control#the-completed-system-and-test)
-	- [用户登录](/documentation/articles/media-services-cenc-with-multidrm-access-control#user-login)
-	- [使用 PlayReady 的加密媒体扩展](/documentation/articles/media-services-cenc-with-multidrm-access-control#using-encrypted-media-extensipons-for-playready)
-	- [使用 EME for Widevine](/documentation/articles/media-services-cenc-with-multidrm-access-control#using-eme-for-widevine)
-	- [未获授权的用户](/documentation/articles/media-services-cenc-with-multidrm-access-control#not-entitled-users)
-	- [运行自定义安全令牌服务](/documentation/articles/media-services-cenc-with-multidrm-access-control#running-custom-secure-token-service)
-- [摘要](/documentation/articles/media-services-cenc-with-multidrm-access-control#summary)
+- [介绍](/documentation/articles/media-services-cenc-with-multidrm-access-control/#introduction)
+	- [本文的概述](/documentation/articles/media-services-cenc-with-multidrm-access-control/#overview-of-this-article)
+- [参考设计](/documentation/articles/media-services-cenc-with-multidrm-access-control/#a-reference-design)
+- [将设计映射到技术以供实现](/documentation/articles/media-services-cenc-with-multidrm-access-control/#mapping-design-to-technology-for-implementation)
+- [实现](/documentation/articles/media-services-cenc-with-multidrm-access-control/#implementation)
+	- [实现过程](/documentation/articles/media-services-cenc-with-multidrm-access-control/#implementation-procedures)
+	- [实现中的一些难点](/documentation/articles/media-services-cenc-with-multidrm-access-control/#some-gotchas-in-implementation)
+- [有关实现的其他主题](/documentation/articles/media-services-cenc-with-multidrm-access-control/#additional-topics-for-implementation)
+	- [使用 HTTP 还是 HTTPS](/documentation/articles/media-services-cenc-with-multidrm-access-control/#http-or-https)
+	- [Azure Active Directory 签名密钥滚动更新](/documentation/articles/media-services-cenc-with-multidrm-access-control/#azure-active-directory-signing-key-rollover)
+	- [访问令牌位于何处？](/documentation/articles/media-services-cenc-with-multidrm-access-control/#where-is-the-access-token)
+	- [如何使用实时流？](/documentation/articles/media-services-cenc-with-multidrm-access-control/#what-about-live-streaming)
+	- [如何使用 Azure 媒体服务外部的许可证服务器？](/documentation/articles/media-services-cenc-with-multidrm-access-control/#what-about-license-servers-outside-of-azure-media-services)
+	- [如何使用自定义 STS？](/documentation/articles/media-services-cenc-with-multidrm-access-control/#what-if-i-want-to-use-a-custom-sts)
+- [完成的系统和测试](/documentation/articles/media-services-cenc-with-multidrm-access-control/#the-completed-system-and-test)
+	- [用户登录](/documentation/articles/media-services-cenc-with-multidrm-access-control/#user-login)
+	- [使用 PlayReady 的加密媒体扩展](/documentation/articles/media-services-cenc-with-multidrm-access-control/#using-encrypted-media-extensipons-for-playready)
+	- [使用 EME for Widevine](/documentation/articles/media-services-cenc-with-multidrm-access-control/#using-eme-for-widevine)
+	- [未获授权的用户](/documentation/articles/media-services-cenc-with-multidrm-access-control/#not-entitled-users)
+	- [运行自定义安全令牌服务](/documentation/articles/media-services-cenc-with-multidrm-access-control/#running-custom-secure-token-service)
+- [摘要](/documentation/articles/media-services-cenc-with-multidrm-access-control/#summary)
 
 ##介绍
 
@@ -155,7 +155,7 @@ DRM 子系统可能包含以下组件：
 
 
 
-1. 每月订阅：使用持久性许可证，以及一对多的内容密钥到资产的映射。例如，对于所有儿童影片，使用单个内容密钥进行加密。在这种情况下： 
+1. 每月订阅：使用持久性许可证，以及一对多的内容密钥到资产的映射。例如，对于所有儿童影片，使用单个内容密钥进行加密。在这种情况下：
 
 	所有儿童影片/设备的许可证总数 = 1
 
@@ -205,7 +205,7 @@ DRM 子系统可能包含以下组件：
 1. 对用户进行身份验证后，生成 JWT 令牌；
 1. JWT 令牌中包含的声明之一是“组”声明，包含“EntitledUserGroup”的组对象 ID。此声明用于传递“权利检查”。
 1. 播放器下载 CENC 保护内容的客户端清单，并可以“看到”以下信息：
-	1. 密钥 ID， 
+	1. 密钥 ID，
 	1. 内容受 CENC 保护，
 	1. 许可证获取 URL。
 
@@ -219,8 +219,8 @@ DRM 子系统可能包含以下组件：
 
 1. 准备测试资产：将测试视频编码/打包为 Azure 媒体服务中的多比特率分段 MP4。此资产不受 DRM 保护。DRM 保护稍后由动态保护完成。
 1. 创建密钥 ID 和内容密钥（可以选择从密钥种子中获取）。对于本教程，我们不需要密钥管理系统，因为只针对一些测试资产处理一组密钥 ID 和内容密钥；
-1. 使用 AMS API 来对测试资产配置多重 DRM 许可证传送服务。如果使用你公司或公司供应商的自定义许可证服务器，而不是 Azure 媒体服务中的许可证服务，则可以跳过此步骤，而是在配置许可证传送的步骤中指定许可证获取 URL。需要使用 AMS API 指定一些详细配置，例如不同 DRM 许可证服务的许可证策略限制、许可证响应模板，等等。目前，Azure 门户尚未提供此配置所需的 UI。可以在 Julia Kornich 的文档中找到 API 级别信息和示例代码：[使用 PlayReady 和/或 Widevine DRM 动态通用加密](/documentation/articles/media-services-protect-with-drm)。 
-1. 使用 AMS API 针对测试资产配置资产传送策略。可以在 Julia Kornich 的文档中找到 API 级别信息和示例代码：[使用 PlayReady 和/或 Widevine DRM 动态通用加密](/documentation/articles/media-services-protect-with-drm)。
+1. 使用 AMS API 来对测试资产配置多重 DRM 许可证传送服务。如果使用你公司或公司供应商的自定义许可证服务器，而不是 Azure 媒体服务中的许可证服务，则可以跳过此步骤，而是在配置许可证传送的步骤中指定许可证获取 URL。需要使用 AMS API 指定一些详细配置，例如不同 DRM 许可证服务的许可证策略限制、许可证响应模板，等等。目前，Azure 门户尚未提供此配置所需的 UI。可以在 Julia Kornich 的文档中找到 API 级别信息和示例代码：[使用 PlayReady 和/或 Widevine DRM 动态通用加密](/documentation/articles/media-services-protect-with-drm/)。
+1. 使用 AMS API 针对测试资产配置资产传送策略。可以在 Julia Kornich 的文档中找到 API 级别信息和示例代码：[使用 PlayReady 和/或 Widevine DRM 动态通用加密](/documentation/articles/media-services-protect-with-drm/)。
 1. 在 Azure 中创建和配置 Azure Active Directory 租户；
 1. 在 Azure Active Directory 租户中创建一些用户帐户和组：应该至少创建“EntitledUser”组，并将用户添加到此组。此组中的用户将可通过许可证获取的权利检查，而不在此组中的用户将无法通过身份验证检查，且无法获取任何许可证。成为此“EntitledUser”组的成员，是由 Azure AD 发出的 JWT 令牌中所需的“组”声明。此声明要求应该在配置多重 DRM 许可证传送服务步骤中指定。
 1. 创建 ASP.NET MVC 应用，用于托管你的视频播放器。此 ASP.NET 应用将根据 Azure Active Directory 租户受到用户身份验证的保护。对用户进行身份验证后，适当的声明将包含在获取的访问令牌中。建议在此步骤中使用 OpenID Connect API。需要安装以下 NuGet 包：
@@ -244,14 +244,14 @@ George 还撰写了一篇相关的博客文章：[Azure 媒体服务和动态加
 
 有关 Azure Active Directory 的详细信息：
 
-- 可以在 [Azure Active Directory 开发人员指南](/documentation/articles/active-directory-developers-guide)中找到面向开发人员的信息。
-- 可以在[管理 Azure AD 目录](/documentation/articles/active-directory-administer)中找到面向管理员的信息。
+- 可以在 [Azure Active Directory 开发人员指南](/documentation/articles/active-directory-developers-guide/)中找到面向开发人员的信息。
+- 可以在[管理 Azure AD 目录](/documentation/articles/active-directory-administer/)中找到面向管理员的信息。
 
 ### 实现中的一些难点
 
 实现中存在一些“难点”。希望以下“难点”列表可以帮助你在遇到问题时进行故障排除。
 
-1. **颁发者** URL 应以**“/”**结尾。  
+1. **颁发者** URL 应以**“/”**结尾。
 
 	**受众**应该是播放器应用程序客户端 ID，你也应该在颁发者 URL 的末尾添加**“/”**。
 
@@ -313,7 +313,7 @@ George 还撰写了一篇相关的博客文章：[Azure 媒体服务和动态加
 
 Azure AD 使用行业标准，通过 Azure AD 在本身与应用程序之间建立信任。具体而言，Azure AD 使用签名密钥，该密钥由公钥和私钥对组成。当 Azure AD 创建包含用户相关信息的安全令牌时，Azure AD 将使用私钥对令牌进行签名，然后将令牌发回给应用程序。若要验证该令牌是否有效且确实来自 Azure AD，应用程序必须使用由 Azure AD 公开，包含在租户的联合元数据文档中的公钥来验证令牌的签名。此公钥 – 以及衍生它的签名密钥 – 是由 Azure AD 中所有租户使用的同一个密钥。
 
-以下文档提供了有关 Azure AD 密钥滚动更新的详细信息：[有关 Azure AD 中签名密钥滚动更新的重要信息](http://msdn.microsoft.com/zh-cn/library/azure/dn641920.aspx/)。
+以下文档提供了有关 Azure AD 密钥滚动更新的详细信息：[有关 Azure AD 中签名密钥滚动更新的重要信息](/documentation/articles/active-directory-signing-key-rollover/)。
 
 在[公钥-私钥对](https://login.chinacloudapi.cn/common/discovery/keys/)之间，
 
@@ -339,9 +339,9 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 
 ### 访问令牌位于何处？
 
-如果你在[带有 OAuth 2.0 客户端凭据授权的应用程序标识](/documentation/articles/active-directory-authentication-scenarios#web-application-to-web-api)部分中查看 Web 应用如何调用 API 应用的话，就会发现身份验证流程如下：
+如果你在[带有 OAuth 2.0 客户端凭据授权的应用程序标识](/documentation/articles/active-directory-authentication-scenarios/#web-application-to-web-api)部分中查看 Web 应用如何调用 API 应用的话，就会发现身份验证流程如下：
 
-1.	用户在 Web 应用程序中登录到 Azure AD（请参阅 [Web 浏览器到 Web 应用程序](/documentation/articles/active-directory-authentication-scenarios#web-browser-to-web-application)）。
+1.	用户在 Web 应用程序中登录到 Azure AD（请参阅 [Web 浏览器到 Web 应用程序](/documentation/articles/active-directory-authentication-scenarios/#web-browser-to-web-application)）。
 2.	Azure AD 许可证终结点使用授权代码将用户代理重定向回到客户端应用程序。用户代理将授权代码返回给客户端应用程序的重定向 URI。
 3.	Web 应用程序需要获取访问令牌，以便通过 Web API 进行身份验证并检索所需的资源。它向 Azure AD 的令牌终结点发出一个请求，在其中提供凭据、客户端 ID 以及 Web API 的应用程序 ID URI。它将提供授权代码来证明已获得用户许可。
 4.	Azure AD 对应用程序进行身份验证并返回用来调用 Web API 的 JWT 访问令牌。
@@ -357,15 +357,15 @@ DRM 许可证传送服务始终会检查来自 Azure AD 的当前/有效公钥�
 
 1.	在 Azure AD 租户中
 
-	- 添加应用程序（资源）与登录 URL： 
+	- 添加应用程序（资源）与登录 URL：
 
 	https://[resource_name].chinacloudsites.cn/ 和
 
-	- 应用 ID URL： 
+	- 应用 ID URL：
 	
-	https://[aad_tenant_name].partner.onmschina.cn/[resource_name]； 
+	https://[aad_tenant_name].partner.onmschina.cn/[resource_name]；
 2.	为资源应用添加新的密钥；
-3.	更新应用程序清单文件，使 groupMembershipClaims 属性具有以下值："groupMembershipClaims": "All"；  
+3.	更新应用程序清单文件，使 groupMembershipClaims 属性具有以下值："groupMembershipClaims": "All"；
 4.	在指向播放器 Web 应用的 Azure AD 应用中的“对其他应用程序的权限”部分中，添加上述步骤 1 中添加的资源应用。在“委派权限”下面选中“访问 [资源名称]”复选框。这样便可授予 Web 应用创建访问令牌的权限以访问资源应用。如果你使用 Visual Studio 和 Azure Web 应用进行开发，应该对本地和已部署版本的 Web 应用这样做。
 	
 因此，Azure AD 颁发的 JWT 令牌确实是用于访问此“指针”资源的访问令牌。
@@ -505,6 +505,4 @@ Windows 10 的 Microsoft Edge 及 IE 11 中的 EME，允许支持 [PlayReady SL3
 - Azure、Azure 媒体服务和 Azure Media Player 的参考实现。
 - 同时还讨论到直接涉及设计和实现的某些主题。
 
-
-
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0808_2016-->

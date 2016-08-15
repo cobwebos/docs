@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="03/31/2016"
+	ms.date="06/21/2016"
 	wacn.date=""/>
 
 # 向 Azure Active Directory 添加新用户或具有 Microsoft 帐户的用户
@@ -27,11 +27,11 @@
 	- **具有现有 Microsoft 帐户的用户** — 将现有 Microsoft 使用者帐户添加到你的目录（例如 Outlook 帐户）
 
 5. 根据“用户类型”输入用户名（适用于新用户）或电子邮件地址（适用于具有 Microsoft 帐户的用户）。
-6. 在用户的“配置文件”页上，提供名字和姓氏、用户友好名称，并从“角色”列表中选择用户角色。有关用户和管理员角色的详细信息，请参阅 [Assigning administrator roles in Azure AD（在 Azure AD 中分配管理员角色）](active-directory-assign-admin-roles.md)。指定是否要为用户**启用 Multi-Factor Authentication**。
+6. 在用户的“配置文件”页上，提供名字和姓氏、用户友好名称，并从“角色”列表中选择用户角色。有关用户和管理员角色的详细信息，请参阅 [Assigning administrator roles in Azure AD](active-directory-assign-admin-roles.md)（在 Azure AD 中分配管理员角色）。指定是否要为用户**启用 Multi-Factor Authentication**。
 7. 在“获取临时密码”页上，选择“创建”。
 
-> [AZURE.IMPORTANT]
-> - 如果你所在的组织使用多个域，在添加用户帐户时你应知道以下问题：
+> [AZURE.IMPORTANT] 如果你所在的组织使用多个域，在添加用户帐户时你应知道以下问题：
+>
 > - 若要跨域添加具有相同用户主体名称 (UPN) 的用户帐户，例如，你可以**先**添加 geoffgrisso@contoso.onmicrosoft.com，**再**添加 geoffgrisso@contoso.com。
 > - **不要**在添加 geoffgrisso@contoso.onmicrosoft.com 之前添加 geoffgrisso@contoso.com。此顺序非常重要，事后想要撤消操作将很麻烦。
 
@@ -73,13 +73,13 @@
 
 ## 后续步骤
 
-- [在 Azure Active Directory 中添加来自其他目录或合作伙伴公司的用户](/documentation/articles/active-directory-create-users-external)
-- [管理 Azure AD](/documentation/articles/active-directory-administer)
-- [在 Azure AD 中管理密码](/documentation/articles/active-directory-manage-passwords)
-- [在 Azure AD 中管理组](/documentation/articles/active-directory-manage-groups)
+- [在 Azure Active Directory 中添加来自其他目录或合作伙伴公司的用户](/documentation/articles/active-directory-create-users-external/)
+- [管理 Azure AD](/documentation/articles/active-directory-administer/)
+- [在 Azure AD 中管理密码](/documentation/articles/active-directory-manage-passwords/)
+- [在 Azure AD 中管理组](/documentation/articles/active-directory-manage-groups/)
 
 <!--Image references-->
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0808_2016-->

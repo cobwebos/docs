@@ -10,13 +10,11 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="06/15/2016"
-	wacn.date="04/22/2016"/>
+	ms.date="07/06/2016"
+	wacn.date=""/>
 
 # 在 Azure SQL 数据库中监视数据库性能
-
 若要监视 Azure 中的 SQL 数据库的性能，首先需要监视所选数据库性能级别相关的资源利用率。监视功能可帮助你确定数据库是否超出容量，或者因资源超限而遇到问题，然后确定是否有必要调整数据库的性能级别和[服务层](/documentation/articles/sql-database-service-tiers/)。你可以使用 [Azure 门户](https://portal.azure.cn)中的图形工具或使用 SQL [动态管理视图](https://msdn.microsoft.com/zh-cn/library/ms188754.aspx)来监视数据库。
-
 
 ## 使用 Azure 门户监视数据库
 
@@ -25,7 +23,7 @@
 - CPU 百分比
 - DTU 百分比
 - 数据 IO 百分比
-- 存储百分比
+- 数据库大小百分比
 
 添加这些指标后，你可以继续在“监视”图表上查看它们，并可在“指标”窗口上查看更多详细信息。所有这四个指标均显示相对于数据库的 **DTU** 的平均利用率百分比。有关 DTU 的详细信息，请参阅[服务层](/documentation/articles/sql-database-service-tiers/)一文。
 
@@ -45,4 +43,4 @@
 
 对于弹性数据库池，可以使用本节中所述的技术来监视池中的单个数据库。但你还可以在总体上监视池。有关信息，请参阅[监视和管理弹性数据库池](/documentation/articles/sql-database-elastic-pool-manage-portal/)。
 
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0808_2016-->

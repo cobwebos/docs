@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="media-services"
-	ms.date="04/18/2016"    
+	ms.date="06/22/2016"    
 	wacn.date=""/>
 
 
@@ -18,7 +18,7 @@
 从 Microsoft Azure 媒体服务 2.2 开始，可以将多个存储帐户附加到一个媒体服务帐户。将多个存储帐户附加到一个媒体服务帐户这一功能具有以下优势：
 
 - 使多个存储帐户之间的资产实现负载平衡。
-- 缩放媒体服务以处理大量内容（目前，单个存储帐户的上限为 500 TB）。 
+- 缩放媒体服务以处理大量内容（目前，单个存储帐户的上限为 500 TB）。
 
 本主题演示如何使用 Azure 服务管理 REST API 将多个存储帐户附加到一个媒体服务帐户，此外还说明如何在使用媒体服务 SDK 创建资产时指定不同的存储帐户。
 
@@ -28,11 +28,11 @@
 
 - 附加到媒体服务帐户的所有存储帐户必须与媒体服务帐户位于同一数据中心。
 - 目前，存储帐户一旦附加到指定的媒体服务帐户便无法断开。
-- 主存储帐户是在创建媒体服务帐户创建时指定的帐户。目前，你无法更改默认存储帐户。 
+- 主存储帐户是在创建媒体服务帐户创建时指定的帐户。目前，你无法更改默认存储帐户。
 
 其他注意事项：
 
-构建流内容的 URL 时，媒体服务会使用 **IAssetFile.Name** 属性的值（如 http://{WAMSAccount}.origin.mediaservices.chinacloudapi.cn/{GUID}/{IAssetFile.Name}/streamingParameters.）。出于这个原因，不允许使用百分号编码。Name 属性的值不能含有任何以下保留的[百分号编码字符](http://zh.wikipedia.org/wiki/百分号编码#.E4.BF.9D.E7.95.99.E5.AD.97.E7.AC.A6.E7.9A.84.E7.99.BE.E5.88.86.E5.8F.B7.E7.BC.96.E7.A0.81)：!*'();:@&=+$,/?%#[]"。此外，文件扩展名中只能含有一个“.”。
+构建流内容的 URL 时，媒体服务会使用 **IAssetFile.Name** 属性的值（如 http://{WAMSAccount}.origin.mediaservices.chinacloudapi.cn/{GUID}/{IAssetFile.Name}/streamingParameters.）。出于这个原因，不允许使用百分号编码。Name 属性的值不能含有任何以下保留的[百分号编码字符](http://zh.wikipedia.org/wiki/百分号编码#.E4.BF.9D.E7.95.99.E5.AD.97.E7.AC.A6.E7.9A.84.E7.99.BE.E5.88.86.E5.8F.B7.E7.BC.96.E7.A0.81)：!*'();:@&=+$,/?%#"。此外，文件扩展名中只能含有一个“.”。
 
 ##使用 Azure 服务管理 REST API 附加存储帐户
 
@@ -150,12 +150,12 @@
 		            IJob job = _context.Jobs.Create("My encoding job");
 		            // Get a media processor reference, and pass to it the name of the 
 		            // processor to use for the specific task.
-		            IMediaProcessor processor = GetLatestMediaProcessorByName("Azure Media Encoder");
+		            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 		
 		            // Create a task with the encoding details, using a string preset.
 		            ITask task = job.Tasks.AddNew("My encoding task",
 		                processor,
-		                "H264 Broadband 720p",
+		                "H264 Multiple Bitrate 720p",
 		                Microsoft.WindowsAzure.MediaServices.Client.TaskOptions.ProtectedConfiguration);
 		
 		            // Specify the input asset to be encoded.
@@ -259,5 +259,4 @@
 		}
  
 
-
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0808_2016-->

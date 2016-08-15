@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="06/03/2016"
+   ms.date="06/30/2016"
    wacn.date=""/>
 
 # 将 SQL 代码迁移到 SQL 数据仓库
@@ -111,23 +111,22 @@ SQL 数据仓库不支持递归 CTE。递归 CTE 的迁移过程可能有点复�
 <!--Image references-->
 
 <!--Article references-->
-[Update 中的 ANSI Join]: /documentation/articles/sql-data-warehouse-develop-ctas
-[Delete 中的 ANSI Join]: /documentation/articles/sql-data-warehouse-develop-ctas
-[Merge 语句]: /documentation/articles/sql-data-warehouse-develop-ctas
-[INSERT..EXEC]: /documentation/articles/sql-data-warehouse-develop-temporary-tables
-[Transact-SQL 主题]: /documentation/articles/sql-data-warehouse-reference-tsql-statements
+[Update 中的 ANSI Join]: /documentation/articles/sql-data-warehouse-develop-ctas/
+[Delete 中的 ANSI Join]: /documentation/articles/sql-data-warehouse-develop-ctas/
+[Merge 语句]: /documentation/articles/sql-data-warehouse-develop-ctas/
+[INSERT..EXEC]: /documentation/articles/sql-data-warehouse-develop-temporary-tables/
+[Transact-SQL 主题]: /documentation/articles/sql-data-warehouse-reference-tsql-statements/
 
-[游标]: /documentation/articles/sql-data-warehouse-develop-loops
-[SELECT..INTO]: /documentation/articles/sql-data-warehouse-develop-ctas
-[结合 rollup / cube / grouping sets 选项的 Group By 子句]: /documentation/articles/sql-data-warehouse-develop-group-by-options
-[嵌套级别超过 8]: /documentation/articles/sql-data-warehouse-develop-transactions
-[通过视图更新]: /documentation/articles/sql-data-warehouse-develop-views
-[使用 select 分配变量]: /documentation/articles/sql-data-warehouse-develop-variable-assignment
-[动态 SQL 字符串没有 MAX 数据类型]: /documentation/articles/sql-data-warehouse-develop-dynamic-sql
-[development overview]: /documentation/articles/sql-data-warehouse-overview-develop
+[游标]: /documentation/articles/sql-data-warehouse-develop-loops/
+[SELECT..INTO]: /documentation/articles/sql-data-warehouse-develop-ctas/
+[结合 rollup / cube / grouping sets 选项的 Group By 子句]: /documentation/articles/sql-data-warehouse-develop-group-by-options/
+[嵌套级别超过 8]: /documentation/articles/sql-data-warehouse-develop-transactions/
+[通过视图更新]: /documentation/articles/sql-data-warehouse-develop-views/
+[使用 select 分配变量]: /documentation/articles/sql-data-warehouse-develop-variable-assignment/
+[动态 SQL 字符串没有 MAX 数据类型]: /documentation/articles/sql-data-warehouse-develop-dynamic-sql/
 
 <!--MSDN references-->
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0808_2016-->

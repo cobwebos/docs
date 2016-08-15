@@ -3,13 +3,13 @@
 	description="本主题概括介绍并比较了 Azure 按需媒体编码器。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,anilmur" 
-	manager="dwrede" 
+	authors="juliako" 
+	manager="erikre" 
 	editor=""/>
 
 <tags
 	ms.service="media-services"
- 	ms.date="02/25/2016"  
+	ms.date="06/22/2016" 
 	wacn.date=""/>
 
 #简要介绍并比较 Azure 按需媒体编码器
@@ -18,33 +18,34 @@
 
 Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项。
 
-一开始使用媒体服务时，了解编解码器与文件格式之间的区别很重要。编解码器是实现压缩/解压缩算法的软件，而文件格式是用于保存压缩视频的容器。
+一开始使用媒体服务时，了解编解码器与文件格式之间的区别很重要。
+编解码器是实现压缩/解压缩算法的软件，而文件格式是用于保存压缩视频的容器。
 
 媒体服务所提供的动态打包可让你以媒体服务支持的流格式（MPEG DASH、HLS、Smooth Streaming、HDS）传送自适应比特率 MP4 或平滑流编码内容，而无须重新打包成这些流格式。
 
-若要使用[动态打包](/documentation/articles/media-services-dynamic-packaging-overview)，必须执行下列操作：
+若要使用[动态打包](/documentation/articles/media-services-dynamic-packaging-overview/)，必须执行下列操作：
 
 - 将夹层（源）文件编码成一组自适应比特率 MP4 文件或自适应比特率平滑流文件（本教程稍后将演示编码步骤）。
-- 针对你要传送内容的流式处理终结点，获取至少一个按需流式处理单位。有关详细信息，请参阅[如何缩放按需流式处理保留单位](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
+- 针对你要传送内容的流式处理终结点，获取至少一个按需流式处理单位。有关详细信息，请参阅[如何缩放按需流式处理保留单位](/documentation/articles/media-services-manage-origins/#scale_streaming_endpoints)。
 
 媒体服务支持将在本文中介绍的以下按需编码器：
 
-- [媒体编码器标准版](/documentation/articles/media-services-encode-asset.md#media-encoder-standard)
-- [Azure Media Encoder](/documentation/articles/media-services-encode-asset.md#azure-media-encoder)
+- [媒体编码器标准版](/documentation/articles/media-services-encode-asset.md/#media-encoder-standard)
+- [Azure Media Encoder](/documentation/articles/media-services-encode-asset.md/#azure-media-encoder)
 
 本文简要概述了按需媒体编码器，并提供了指向介绍更多详细信息的文章的链接。本主题还提供了编码器的比较。
 
-请注意，默认情况下每个媒体服务帐户同时只能有一个活动的编码任务。你可以保留编码单元，使用它们可以同时运行多个编码任务，你购买的每个编码保留单位对应一个任务。有关信息，请参阅[缩放编码单位](/documentation/articles/media-services-portal-encoding-units)。
+请注意，默认情况下每个媒体服务帐户同时只能有一个活动的编码任务。你可以保留编码单元，使用它们可以同时运行多个编码任务，你购买的每个编码保留单位对应一个任务。有关信息，请参阅[缩放编码单位](/documentation/articles/media-services-portal-encoding-units/)。
 
 ##媒体编码器标准版
 
 ###如何使用
 
-[如何使用媒体编码器标准版进行编码](/documentation/articles/media-services-dotnet-encode-with-media-encoder-standard)
+[如何使用媒体编码器标准版进行编码](/documentation/articles/media-services-dotnet-encode-with-media-encoder-standard/)
 
 ###格式
 
-[格式和编解码器](/documentation/articles/media-services-media-encoder-standard-formats)
+[格式和编解码器](/documentation/articles/media-services-media-encoder-standard-formats/)
 
 ###预设
 
@@ -58,15 +59,15 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 
 ###生成缩略图
 
-有关信息，请参阅[如何使用媒体编码器标准生成缩略图](/documentation/articles/media-services-custom-mes-presets-with-dotnet#thumbnails)。
+有关信息，请参阅[如何使用媒体编码器标准生成缩略图](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#thumbnails)。
 
 ###修剪视频（裁剪）
 
-有关信息，请参阅[如何使用媒体编码器标准修剪视频](/documentation/articles/media-services-custom-mes-presets-with-dotnet#trim_video)。
+有关信息，请参阅[如何使用媒体编码器标准修剪视频](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#trim_video)。
 
 ###创建覆盖层
 
-有关信息，请参阅[如何使用媒体编码器标准创建覆盖层](/documentation/articles/media-services-custom-mes-presets-with-dotnet#overlay)。
+有关信息，请参阅[如何使用媒体编码器标准创建覆盖层](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#overlay)。
 
 ###另请参阅
 
@@ -76,11 +77,11 @@ Azure 媒体服务提供了多个用于在云中对媒体进行编码的选项�
 
 ###概述
 
-[在 Azure 媒体服务中引入高级编码](http://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
+[在 Azure 媒体服务中引入高级编码](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
 
 ###如何使用
 
-媒体编码器高级工作流使用复杂的工作流进行配置。可以使用[工作流设计器](/documentation/articles/media-services-workflow-designer)工具创建和更新工作流文件。
+媒体编码器高级工作流使用复杂的工作流进行配置。可以使用[工作流设计器](/documentation/articles/media-services-workflow-designer/)工具创建和更新工作流文件。
 
 [如何在 Azure 媒体服务中使用高级编码](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
 
@@ -155,7 +156,7 @@ MP3 (MPEG-1 Audio Layer 3)|是|是
 Windows Media 音频|是|是
 WAV/PCM|是|是
 [FLAC](https://en.wikipedia.org/wiki/FLAC)</a>|是|否
-[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format) |是|否
+[Opus](https://en.wikipedia.org/wiki/Opus_(audio_format)) |是|否
 [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a>|是|否
 
 
@@ -224,11 +225,11 @@ TransientError|涵盖暂时性问题（例如 Azure 存储空间发生暂时性�
 
 ##相关文章
 
-- [通过自定义媒体编码器标准预设执行高级编码任务](/documentation/articles/media-services-custom-mes-presets-with-dotnet)
-- [配额和限制](/documentation/articles/media-services-quotas-and-limitations)
+- [通过自定义媒体编码器标准预设执行高级编码任务](/documentation/articles/media-services-custom-mes-presets-with-dotnet/)
+- [配额和限制](/documentation/articles/media-services-quotas-and-limitations/)
 
  
 <!--Reference links in article-->
-[1]: /home/features/media-services/#price
+[1]: /pricing/details/media-services/
 
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0808_2016-->

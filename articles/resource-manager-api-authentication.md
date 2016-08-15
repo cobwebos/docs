@@ -8,7 +8,7 @@
    editor="tysonn" />
 <tags 
    ms.service="azure-resource-manager"
-   ms.date="04/18/2016"
+   ms.date="07/12/2016"
    wacn.date="" />
 
 
@@ -72,7 +72,7 @@
 
 Azure AD 还支持应用程序的证书凭据：创建自签名证书、保留私钥，以及将公钥添加到 Azure AD 应用程序注册。对于身份验证，应用程序会使用你的私钥将小负载发送到签名的 Azure AD，然后 Azure AD 使用注册的公钥来验证签名。
 
-有关配置证书的信息，请参阅 [Build service and daemon apps in Office 365](https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365)（在 Office 365 中构建服务和守护程序应用）。标题为“配置应用程序的 X.509 公共证书”部分提供了有关设置证书的分步说明。或者，请参阅 [Authenticating a service principal with Azure Resource Manager](/documentation/articles/resource-group-authenticate-service-principal)（通过 Azure 资源管理器对服务主体进行身份验证），获取有关通过 Azure PowerShell 或 Azure CLI 配置证书的示例。
+有关配置证书的信息，请参阅 [Build service and daemon apps in Office 365](https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365)（在 Office 365 中构建服务和守护程序应用）。标题为“配置应用程序的 X.509 公共证书”部分提供了有关设置证书的分步说明。或者，请参阅[通过 Azure Resource Manager 对服务主体进行身份验证](/documentation/articles/resource-group-authenticate-service-principal/)，获取有关通过 Azure PowerShell 或 Azure CLI 配置证书的示例。
 
 ## 对用户进行身份验证和获取访问令牌
 
@@ -82,7 +82,7 @@ Azure AD 还支持应用程序的证书凭据：创建自签名证书、保留�
 
 你必须要求用户提供两项信息：
 
-1. **目录域名**：与用户的 Azure 订阅关联的 Azure Active Directory 域名。必须将 OAuth 2.0 授权请求发送到此 Azure AD。用户可通过导航到 Azure 门户并选择右上角的帐户，来找到其 Azure AD 的域名。你可以向用户提供类似于下面的可视化说明： 
+1. **目录域名**：与用户的 Azure 订阅关联的 Azure Active Directory 域名。必须将 OAuth 2.0 授权请求发送到此 Azure AD。用户可通过导航到 Azure 门户并选择右上角的帐户，来找到其 Azure AD 的域名。你可以向用户提供类似于下面的可视化说明：
 
      ![](./media/resource-manager-api-authentication/show-directory.png)
    
@@ -121,7 +121,7 @@ OAuth2.0 授权请求查询字符串参数为：
 | resource | Azure 服务管理 API 的 URL 编码标识符：https://management.core.chinacloudapi.cn/ |
 | 作用域 | openid+profile
 | nonce | 数据片段，用于将授权请求绑定到返回的 id\_token，以确保授权响经过请求且未重播。
-| domain\_hint | live.com <br />注意：仅当用户使用 Microsoft 帐户管理其 Azure 订阅时，才可使用 domain\_hint 参数。
+| domain\_hint | live.com <br />**注意**：仅当用户使用 Microsoft 帐户管理其 Azure 订阅时，才可使用 domain\_hint 参数。
 | state | 选择性地指定你希望 Azure AD 与响应一起返回的任何状态数据。
 
 下面是一个示例 Open ID Connect 请求：
@@ -141,8 +141,8 @@ Azure AD 对用户进行身份验证，并根据需要请求用户向应用授�
 - **令牌计时**：检查 nbf 和 exp 声明，以确保令牌不会太新或太旧。惯常的做法是保留一些宽限时间（5 分钟）以适应时间偏差。
 - **颁发者**：检查 iss 声明以确保令牌颁发者是 Azure Active Directory：https://sts.windows.net/{tenant_id_of_the_directory}
 - **受众**：检查 aud 声明以确保为应用程序构建了令牌。该值必须是应用程序的客户端 ID。
-- **Nonce**：检查 nonce 声明以检查在授权请求中发送的 nonce 数据，确保应用程序已请求响应且未重播令牌。
-- **签名**：应用必须验证令牌是否已由 Azure Active Directory 签名。Azure AD 签名密钥经常滚动更新，因此应用必须每日轮询刷新的密钥，或在签名验证失败时签入刷新的密钥。有关详细信息，请参阅 [Important Information About Signing Key Rollover in Azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx)（有关 Azure AD 中签名密钥滚动更新的重要信息）。
+- **Nonce**：检查 nonce 声明（目的是检查在授权请求中发送的 nonce 数据），确保应用程序已请求响应且未重播令牌。
+- **签名**：应用必须验证令牌是否已由 Azure Active Directory 签名。Azure AD 签名密钥经常滚动更新，因此应用必须每日轮询刷新的密钥，或在签名验证失败时签入刷新的密钥。有关详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](/documentation/articles/active-directory-signing-key-rollover/)。
 
 验证 **id\_token** 后，使用 oid 声明值作为用户的不变且不可重复使用的标识符。将 **unique\_name** 或 upn/email 声明用作用户可读的用户显示名称。也可以针对显示目的使用可选的 given\_name/family\_name 声明。
 
@@ -150,9 +150,9 @@ Azure AD 对用户进行身份验证，并根据需要请求用户向应用授�
 
 既然应用程序已从 Azure AD 收到授权代码，现在你可以获取 Azure Resource Manager 的访问令牌。将 OAuth2.0 代码授予令牌请求发布到 Azure AD 令牌终结点：
 
-    http://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token
+    https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token
 
-[Authorization Code Grant Flow](https://msdn.microsoft.com/zh-cn/library/azure/dn645542.aspx)（授权代码授予流）主题中介绍了适用于此请求的查询字符串参数。
+[授权代码授予流](https://msdn.microsoft.com/zh-cn/library/azure/dn645542.aspx)主题介绍了适用于此请求的查询字符串参数。
 
 以下示例演示如何使用密码凭据来请求代码授予令牌：
 
@@ -163,7 +163,7 @@ Azure AD 对用户进行身份验证，并根据需要请求用户向应用授�
 
     grant_type=authorization_code&code=AAABAAAAiL9Kn2Z*****L1nVMH3Z5ESiAA&redirect_uri=http%3A%2F%2Flocalhost%3A62080%2FAccount%2FSignIn&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_secret=olna84E8*****goScOg%3D
 
-使用证书凭据时，请使用应用程序证书凭据的私钥来创建 JSON Web 令牌 (JWT) 并签名 (RSA SHA256)。[Authorization Code Grant Flow](https://msdn.microsoft.com/library/azure/dn645542.aspx)（授权代码授予流）中说明了该令牌的声明类型。请参考 [Active Directory Auth Library (.NET) code](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/master/src/ADAL.NET/CryptographyHelper.cs)（Active Directory 身份验证库 (.NET) 代码）来为客户端断言 JWT 令牌签名。
+使用证书凭据时，请使用应用程序证书凭据的私钥来创建 JSON Web 令牌 (JWT) 并签名 (RSA SHA256)。[授权代码授予流](https://msdn.microsoft.com/library/azure/dn645542.aspx)中说明了该令牌的声明类型。请参考 [Active Directory Auth Library (.NET) code](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/master/src/ADAL.NET/CryptographyHelper.cs)（Active Directory 身份验证库 (.NET) 代码）来为客户端断言 JWT 令牌签名。
 
 有关客户端身份验证的详细信息，请参阅 [Open ID Connect spec](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)（Open ID Connect 规范）。下面是一个[示例客户端断言 JWT 令牌](https://www.authnauthz.com/OAuth/ParseJWTToken?token=eyJhbGciOiJSUzI1NiIsIng1dCI6IlFwcXdKZnJNZ003ekJ4M1hkM2NSSFdkYVFsTSJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ud2luZG93cy5uZXRcL2FhbHRlc3RzLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQyODk2Mjk5MSwiaXNzIjoiOTA4M2NjYjgtOGE0Ni00M2U3LTg0MzktMWQ2OTZkZjk4NGFlIiwianRpIjoiMmYyMjczMzQtZGQ3YS00NzZkLWFlOTYtYzg4NDQ4YTkxZGM0IiwibmJmIjoxNDI4OTYyMzkxLCJzdWIiOiI5MDgzY2NiOC04YTQ2LTQzZTctODQzOS0xZDY5NmRmOTg0YWUifQ.UXQE9H-FlwxYQmRVG0-p7pAX9TFgiRXcYr7GhbcC7ndIPHKpZ5tfHWPEgBl3ZVRvF2l8uA7HEV86T7t2w7OHhHwLBoW7XTgj-17hnV1CY21MwjrebPjaPIVITiilekKiBASfW2pmss3MjeOYcnBV2MuUnIgt4A_iUbF_-opRivgI4TFT4n17_3VPlChcU8zJqAMpt3TcAxC3EXXfh10Mw0qFfdZKqQOQxKHjnL8y7Of9xeB9BBD_b22JNRv0m7s0cYRx2Cz0cUUHw-ipHhWaW7YwhVRMfK6BMkaDUgaie4zFkcgHb7rm1z0rM1CvzIqP-Mwu3oEqYpY9cYo8nEjMyA)。
 
@@ -186,9 +186,9 @@ Azure AD 对用户进行身份验证，并根据需要请求用户向应用授�
 
 成功的令牌响应将包含 Azure Resource Manager 的（用户 + 应用）访问令牌。应用程序将使用此访问令牌来代表用户访问 Resource Manager。Azure AD 颁发的访问令牌生存期为一小时。Web 应用程序不太可能需要更新（用户 + 应用）访问令牌 - 但如果需要，你可以使用应用程序在令牌响应中收到的刷新令牌。将 OAuth2.0 令牌请求发布到 Azure AD 令牌终结点：
 
-    http://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token
+    https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token
 
-[Authorization Code Grant Flow](https://msdn.microsoft.com/zh-cn/library/azure/dn645542.aspx)（授权代码授予流）中介绍了要在刷新请求中使用的参数。
+[授权代码授予流](https://msdn.microsoft.com/zh-cn/library/azure/dn645542.aspx)中介绍了要在刷新请求中使用的参数。
 
 以下示例演示如何使用刷新令牌：
 
@@ -251,7 +251,7 @@ ASP.net MVC 示例应用的 [UserCanManagerAccessForSubscription](https://github
 
 用户的帐户可以在多个 Azure Active Directory 中。用户最初可能未指定正确的目录名称 - 在此情况下，所需的订阅不会显示在列表中。
 
-[Resource Manager 列出租户](https://msdn.microsoft.com/library/azure/dn790536.aspx) API 可列出包含用户帐户的所有目录的标识符列表。你可以调用该 API 来确定用户帐户是否出现在多个目录中，并选择性地向用户显示如下所示的消息：“找不到所需的订阅? 它可能位于你所属的其他 Azure Active Directory 中。请单击此处切换目录。”
+[Resource Manager 列出租户](https://msdn.microsoft.com/library/azure/dn790536.aspx) API 可列出包含用户帐户的所有目录的标识符。你可以调用该 API 来确定用户帐户是否出现在多个目录中，并选择性地向用户显示如下所示的消息：“找不到所需的订阅? 它可能位于你所属的其他 Azure Active Directory 中。请单击此处切换目录。”
 
 ASP.NET MVC 示例应用的 [GetUserOrganizations](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L20) 方法可实现此调用。
 
@@ -284,10 +284,10 @@ ASP.NET MVC 示例应用的 [GetUserOrganizations](https://github.com/dushyantgi
 
 你只有 Azure Resource Manager 的访问令牌 - 需要获取新的访问令牌来调用 Azure AD 图形 API。Azure AD 中的每个应用程序都有权查询其本身的服务主体对象，因此我们不需要用户 + 应用访问令牌就能执行此操作，仅限应用的访问令牌已足够。
 
-<a id="app-azure-ad-graph"></a>
+<a id="app-azure-ad-graph">
 ### 获取 Azure AD 图形 API 的仅限应用的访问令牌
 
-若要对应用进行身份验证并获取 Azure AD 图形 API 的令牌，请向 Azure AD 令牌终结点发出客户端凭据授予 OAuth2.0 流令牌请求 (**http://login.microsoftonline.com/{directory\_domain\_name}/OAuth2/Token**)。
+若要对应用进行身份验证并获取 Azure AD 图形 API 的令牌，请向 Azure AD 令牌终结点发出客户端凭据授予 OAuth2.0 流令牌请求 (**https://login.microsoftonline.com/{directory\_domain\_name}/OAuth2/Token**)。
 
 ASP.net MVC 示例应用程序的 [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs#L73) 方法的第 73-77 行使用适用于 .NET 的 Active Directory 身份验证库来获取图形 API 的仅限应用的访问令牌。
 
@@ -297,7 +297,7 @@ ASP.net MVC 示例应用程序的 [GetObjectIdOfServicePrincipalInOrganization](
 |----|----
 | grant\_type | **client\_credentials**
 | client\_id | 应用程序的客户端 ID
-| resource | 正在针对访问令牌请求的资源的 URL 编码标识符。在本例中，Azure AD 图形 API 的标识符为：**https://graph.windows.net/**
+| resource | 正在针对访问令牌请求的资源的 URL 编码标识符。在此示例中，Azure AD 图形 API 的标识符为：**https://graph.windows.net/**
 | client\_secret 或 client\_assertion\_type + client\_assertion | 如果你的应用程序使用密码凭据，请使用 client\_secret。如果你的应用程序使用证书凭据，请使用 client\_assertion。
 
 客户端凭据授予令牌的示例请求：
@@ -413,7 +413,7 @@ ASP.net MVC 示例应用的 [GrantRoleToServicePrincipalOnSubscription](https://
 
 下一步是验证该应用是否对订阅拥有所需的访问权限。为此，你应该使用 Azure Resource Manager 的仅限应用的令牌在订阅上执行测试任务。测试任务应该验证你的应用程序是否确实对订阅拥有所需的访问权限，以执行脱机监视/管理。
 
-要获取 Azure Resource Manager 的仅限应用的访问令牌，请根据[获取 Azure AD 图形 API 的仅限应用的访问令牌](#app-azure-ad-graph)中的说明为资源参数使用不同的值：
+若要获取 Azure Resource Manager 的仅限应用的访问令牌，请根据[获取 Azure AD 图形 API 的仅限应用的访问令牌](#app-azure-ad-graph)中的说明为资源参数使用不同的值：
 
     https://management.core.windows.net/
 
@@ -440,5 +440,4 @@ ASP.net MVC 示例应用的 [RevokeRoleFromServicePrincipalOnSubscription 方法
 
 大功告成 - 用户现在可以使用你的应用程序来轻松连接和管理其 Azure 订阅。
 
-
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0808_2016-->

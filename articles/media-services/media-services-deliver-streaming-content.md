@@ -2,29 +2,29 @@
 	pageTitle="如何从媒体服务传送流内容" 
 	description="了解如何创建用于生成流 URL 的定位符。代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
 	documentationCenter=""/>
 
 <tags
 	ms.service="media-services"
-	ms.date="04/18/2016"
+	ms.date="06/22/2016"
 	wacn.date=""/>
 
 
 #如何：传送流内容
  
 > [AZURE.SELECTOR]
-- [REST](/documentation/articles/media-services-rest-deliver-streaming-content)
-- [.NET](/documentation/articles/media-services-deliver-streaming-content)
-- [门户](/documentation/articles/media-services-manage-content#publish)
+- [REST](/documentation/articles/media-services-rest-deliver-streaming-content/)
+- [.NET](/documentation/articles/media-services-deliver-streaming-content/)
+- [门户](/documentation/articles/media-services-manage-content/#publish)
 
 ##概述
 
-你可以通过创建 OnDemand 流式处理定位符并生成流 URL 来流式传输自适应比特率 MP4 集。[对资产进行编码](/documentation/articles/media-services-encode-asset)主题说明了如何编码成自适应比特率 MP4 集。
+你可以通过创建 OnDemand 流式处理定位符并生成流 URL 来流式传输自适应比特率 MP4 集。[对资产进行编码](/documentation/articles/media-services-encode-asset/)主题说明了如何编码成自适应比特率 MP4 集。
 
->[AZURE.NOTE]如果内容已加密，则在创建定位符之前配置资产传送策略（如[本](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy)主题中所述）。
+>[AZURE.NOTE]如果内容已加密，则在创建定位符之前配置资产传送策略（如[本](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy/)主题中所述）。
 
 你也可以使用 OnDemand 流式处理定位符生成指向可渐进式下载的 MP4 文件的 URL。
 
@@ -36,10 +36,10 @@
 
    1. 如果内容已加密，则定义访问策略。
    2. 创建 OnDemand 流式处理定位符。
-   3. 如果你想要流式处理，请获取资产中的流式处理清单文件 (.ism)。 
+   3. 如果你想要流式处理，请获取资产中的流式处理清单文件 (.ism)。
    		
-	如果你想要渐进式下载，请获取资产中的 MP4 文件名。  
-   4. 生成清单文件或 MP4 文件的 URL。 
+	如果你想要渐进式下载，请获取资产中的 MP4 文件名。
+   4. 生成清单文件或 MP4 文件的 URL。
    
 
 ###使用媒体服务 .NET SDK 
@@ -158,6 +158,7 @@
 
 ##另请参阅
 
-[下载资产](/documentation/articles/media-services-deliver-asset-download) 
-[配置资产传送策略](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy)
-<!---HONumber=Mooncake_0613_2016-->
+[下载资产](/documentation/articles/media-services-deliver-asset-download/)
+[配置资产传送策略](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy/)
+
+<!---HONumber=Mooncake_0808_2016-->

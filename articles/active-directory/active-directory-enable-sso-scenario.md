@@ -12,7 +12,7 @@
       ms.date="05/03/2016"
       wacn.date=""/>
 
-# 使用 Azure Active Directory (AD) 管理应用程序
+# 使用 Azure Active Directory 管理应用程序
 
 除了实际工作流或内容以外，企业对所有应用程序还会提出两个基本要求：
 
@@ -24,11 +24,11 @@
 
 在计算术语中：
 
-- 谁称为标识 — 用于管理用户和组
+- “谁”称为“标识” - 用于管理用户和组
 
-- 什么称为访问管理 — 用于管理对受保护资源的访问权限
+- “什么”称为“访问管理” - 用于管理对受保护资源的访问权限
 
-这两个组成部分统称为标识和访问管理 (IAM)，[Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) 小组将其定义为“允许适当的人员在适当的时间出于适当的理由访问适当的资源的安全策略”。
+这两个组成部分统称为“标识和访问管理 (IAM)”，[Gartner](http://www.gartner.com/it-glossary/identity-and-access-management-iam) 小组将其定义为“允许适当的人员在适当的时间出于适当的理由访问适当的资源的安全策略”。
 
 那么，这有什么问题呢？ 如果不使用一个集中式解决方案在一个位置管理 IAM：
 
@@ -50,7 +50,7 @@
 
 Azure Active Directory 是 Microsoft 的综合性标识即服务 (IDaaS) 解决方案，它可以：
 
-- 启用 IAM 作为云服务 
+- 启用 IAM 作为云服务
 
 - 提供中心访问管理、单一登录 (SSO) 及报告功能
 
@@ -130,6 +130,6 @@ Azure AD 提供预先集成的报告和监控功能，使你能够知道谁有�
 
 ## 另请参阅
 
-[有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
+[有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index/)
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0808_2016-->

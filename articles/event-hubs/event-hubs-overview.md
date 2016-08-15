@@ -1,14 +1,14 @@
 <properties 
-   pageTitle="Azure 事件中心的概述 | Microsoft Azure"
-   description="Azure 事件中心的简介和概述。"
-   services="event-hubs"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
-   editor="" />
+    pageTitle="Azure 事件中心概述 | Azure"
+    description="Azure 事件中心的简介和概述。"
+    services="event-hubs"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
+    editor="" />
 <tags 
-   ms.service="event-hubs"
-   ms.date="01/26/2016"
+    ms.service="event-hubs"
+    ms.date="04/15/2016"
    wacn.date="" />
 
 # Azure 事件中心概述
@@ -39,7 +39,7 @@ Azure 事件中心是一种事件处理服务，用于向云提供大规模的�
 
 分区数在创建事件中心时指定，它必须介于 2 和 32 之间（默认值为 4）。分区是一种数据组织机制，主要与消费应用程序中所需的下游并行度而不是事件中心吞吐量相关。因此，事件中心内分区数的选择与你预期获得的并发读取者数目直接相关。创建事件中心后，分区计数不可更改，因此你应该从长远预期并行度考虑此数字。可以通过联系服务总线团队来增加 32 个分区这一限制。
 
-尽管分区是可识别的并且可以直接向其发送数据，但通常最好不要向特定分区发送数据，而可以使用“[事件发布者](#event-publisher)”和“[发布者策略](#capacity-and-security)”部分中介绍的更高级构造。
+尽管分区是可识别的并且可以直接向其发送数据，但通常最好不要向特定分区发送数据，而可以使用“事件发布者”和“发布者策略”部分中介绍的更高级构造[](#event-publisher)[](#capacity-and-security)。
 
 事件数据在事件中心上下文中，消息称为事件数据。事件数据包含事件的正文、用户定义的属性包和有关事件的各种元数据，例如，它在分区中的偏移量，以及它在流序列中的编号。分区中填充了事件数据的序列。
 
@@ -47,7 +47,7 @@ Azure 事件中心是一种事件处理服务，用于向云提供大规模的�
 
 向事件中心发送事件或数据的任何实体都称为事件发布者。事件发布者可以使用 HTTPS 或 AMQP 1.0 发布事件。事件发布者使用共享访问签名 (SAS) 令牌在事件中心上标识自身，并且可以包含唯一标识，或使用常见的 SAS 令牌，具体取决于方案的要求。
 
-有关使用 SAS 的详细信息，请参阅[使用服务总线进行共享访问签名身份验证](/documentation/articles/service-bus-shared-access-signature-authentication)。
+有关使用 SAS 的详细信息，请参阅[使用服务总线进行共享访问签名身份验证](/documentation/articles/service-bus-shared-access-signature-authentication/)。
 
 ### 常见的发布者任务
 
@@ -55,7 +55,7 @@ Azure 事件中心是一种事件处理服务，用于向云提供大规模的�
 
 #### 获取 SAS 令牌
 
-共享访问签名 (SAS) 是事件中心的身份验证机制。服务总线在命名空间和事件中心级别提供 SAS 策略。SAS 令牌是从 SAS 密钥生成的，它是以特定格式编码的 URL 的 SHA 哈希。使用密钥（策略）和令牌的名称，可以重新生成哈希，并因此对发送者进行身份验证。通常，为事件发布者创建的 SAS 令牌只对特定的事件中心具有**发送**权限。此 SAS 令牌 URL 机制是“发布者策略”中介绍的发布者标识的基础。有关使用 SAS 的详细信息，请参阅[使用服务总线进行共享访问签名身份验证](/documentation/articles/service-bus-shared-access-signature-authentication)。
+共享访问签名 (SAS) 是事件中心的身份验证机制。服务总线在命名空间和事件中心级别提供 SAS 策略。SAS 令牌是从 SAS 密钥生成的，它是以特定格式编码的 URL 的 SHA 哈希。使用密钥（策略）和令牌的名称，可以重新生成哈希，并因此对发送者进行身份验证。通常，为事件发布者创建的 SAS 令牌只对特定的事件中心具有**发送**权限。此 SAS 令牌 URL 机制是“发布者策略”中介绍的发布者标识的基础。有关使用 SAS 的详细信息，请参阅[使用服务总线进行共享访问签名身份验证](/documentation/articles/service-bus-shared-access-signature-authentication/)。
 
 #### 发布事件
 
@@ -144,11 +144,11 @@ Azure 事件中心是一种事件处理服务，用于向云提供大规模的�
 
 	//<my namespace>.servicebus.chinacloudapi.cn/<event hub name>/publishers/<my publisher name>
 
-你不需要提前创建发布者名称，但它们必须与发布事件时使用的 SAS 令牌匹配，以确保发布者标识保持独立。有关 SAS 的详细信息，请参阅[使用服务总线进行共享访问签名身份验证](/documentation/articles/service-bus-shared-access-signature-authentication)。使用发布者策略时，**PartitionKey** 值将设置为发布者名称。若要正常工作，这些值必须匹配。
+你不需要提前创建发布者名称，但它们必须与发布事件时使用的 SAS 令牌匹配，以确保发布者标识保持独立。有关 SAS 的详细信息，请参阅[使用服务总线进行共享访问签名身份验证](/documentation/articles/service-bus-shared-access-signature-authentication/)。使用发布者策略时，**PartitionKey** 值将设置为发布者名称。若要正常工作，这些值必须匹配。
 
 ## 摘要
 
-Azure 事件中心提供缩放性超高的事件与遥测处理服务，可用于任何规模的常见应用和用户工作流监视。由于能够以较低的延迟和极高的规模提供发布订阅功能，事件中心可以充当大数据的“入口”。借助基于发布者的标识和吊销列表，可以将这些功能扩展到常见的物联网方案。有关开发事件中心应用程序的详细信息，请参阅[事务中心编程指南](/documentation/articles/event-hubs-programming-guide)。
+Azure 事件中心提供缩放性超高的事件与遥测处理服务，可用于任何规模的常见应用和用户工作流监视。由于能够以较低的延迟和极高的规模提供发布订阅功能，事件中心可以充当大数据的“入口”。借助基于发布者的标识和吊销列表，可以将这些功能扩展到常见的物联网方案。有关开发事件中心应用程序的详细信息，请参阅[事务中心编程指南](/documentation/articles/event-hubs-programming-guide/)。
 
 ## 后续步骤
 
@@ -159,8 +159,9 @@ Azure 事件中心提供缩放性超高的事件与遥测处理服务，可用�
 - 使用服务总线队列的[队列消息解决方案]。
 
 [Azure 经典门户]: http://manage.windowsazure.cn
-[事件中心教程]: /documentation/articles/hdinsight-apache-storm-tutorial-get-started
+[事件中心教程]: /documentation/articles/event-hubs-csharp-ephcs-getstarted/
 [使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Event-Hub-286fd097
-[队列消息解决方案]: /documentation/articles/cloud-services-dotnet-multi-tier-app-using-service-bus-queues
+[队列消息解决方案]: /documentation/articles/cloud-services-dotnet-multi-tier-app-using-service-bus-queues/
  
-<!---HONumber=Mooncake_0321_2016--->
+
+<!---HONumber=Mooncake_0808_2016-->

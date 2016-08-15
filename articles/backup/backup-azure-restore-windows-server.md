@@ -8,7 +8,7 @@
    editor=""/>
 
 <tags
-         ms.service="backup"
+	 ms.service="backup"
 	 ms.date="05/10/2016"
 	 wacn.date=""/>
 # 使用 Resource Manager 部署模型将文件还原到 Windows Server 或 Windows 客户端计算机
@@ -24,7 +24,7 @@
 
 在这两种情况下，都将从 Azure 恢复服务保管库检索数据。
 
-[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)]经典部署模型。
+[AZURE.INCLUDE [了解部署模型](../includes/learn-about-deployment-models-rm-include.md)] 经典部署模型。
 
 ## 将数据恢复到同一台计算机
 如果你意外删除了某个文件并想要在同一台计算机（备份位置）中还原文件，以下步骤可帮助你恢复数据。
@@ -69,9 +69,9 @@
 
 这些步骤中使用的术语包括：
 
-- *源计算机* – 从中创建备份并且当前不可用的原始计算机。
-- *目标计算机* – 要将数据恢复到的计算机。
-- *示例保管库* – 源计算机和目标计算机注册到的恢复服务保管库。<br/>
+- 源计算机 – 从中创建备份并且当前不可用的原始计算机。
+- 目标计算机 – 要将数据恢复到的计算机。
+- 示例保管库 – 源计算机和目标计算机注册到的恢复服务保管库。<br/>
 
 > [AZURE.NOTE] 从一台计算机创建的备份无法在运行更低版本操作系统的计算机上还原。例如，如果备份是从 Windows 7 计算机创建的，它可以在 Windows 8 或更高版本的计算机上还原。但是，如果反过来则无法还原。
 
@@ -110,6 +110,6 @@
 11. 提供输入后，单击“恢复”，随即将会触发在提供的目标中还原备份文件的操作。
 
 ## 后续步骤
-- 恢复文件和文件夹后，你可以[管理备份](backup-azure-manage-windows-server.md)。
+- 恢复文件和文件夹后，你可以[管理备份](/documentation/articles/backup-azure-manage-windows-server/)。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0808_2016-->

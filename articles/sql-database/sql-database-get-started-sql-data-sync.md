@@ -3,14 +3,14 @@
 	description="本教程帮助你 Azure SQL 数据同步（预览版）入门。"
 	services="sql-database"
 	documentationCenter=""
-	authors="jhubbard"
+	authors="jennieHubbard"
 	manager="jhubbard"
 	editor=""/>
 
 <tags
 	ms.service="sql-database"
-	ms.date="04/04/2016"
-	wacn.date="04/22/2016"/>
+	ms.date="07/11/2016"
+	wacn.date=""/>
 
 
 #Azure SQL 数据同步入门（预览版）
@@ -36,7 +36,8 @@
 
 
 ## 步骤 2：添加客户端代理
-仅当你要在同步组中包含本地 SQL Server 数据库时，才需要执行此步骤。如果你的同步组只具有 SQL 数据库实例，则请跳到步骤 4。
+仅当你要在同步组中包含本地 SQL Server 数据库时，才需要执行此步骤。
+如果你的同步组只具有 SQL 数据库实例，则请跳到步骤 4。
 
 <a id="InstallRequiredSoftware"></a>
 ### 步骤 2a：安装必要的软件
@@ -44,7 +45,7 @@
 
 - **.NET Framework 4.0**
 
- 你可以从[此处](http://go.microsoft.com/fwlink/?linkid=205836)安装 .NET Framework 4.0。
+ 从[此处](http://go.microsoft.com/fwlink/?linkid=205836)安装 .NET Framework 4.0。
 
 - **Microsoft SQL Server 2008 R2 SP1 System CLR Types (x86)**
 
@@ -194,10 +195,10 @@
 有关 SQL 数据库和 SQL 数据同步的其他信息，请参阅：
 
 * [下载完整的 SQL 数据同步技术文档](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)
-* [SQL 数据库概述](/documentation/articles/sql-database-technical-overview)
+* [SQL 数据库概述](/documentation/articles/sql-database-technical-overview/)
 * [数据库生命周期管理](https://msdn.microsoft.com/zh-cn/library/jj907294.aspx)
  
 
  
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0808_2016-->

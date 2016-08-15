@@ -2,14 +2,14 @@
 	pageTitle="动态打包概述"
 	description="主题提供动态打包的概述。"
 	authors="Juliako"
-	manager="dwrede"
+	manager="erikre"
 	editor=""
 	services="media-services"
 	documentationCenter=""/>
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016" 
+	ms.date="06/22/2016" 
 	wacn.date=""/>
 
 
@@ -30,11 +30,11 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS、X
 ![动态编码](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 
->[AZURE.NOTE]若要利用动态打包，首先必须获取你计划从中传送内容的流式处理终结点的至少一个点播流单元。有关详细信息，请参阅[如何缩放媒体服务](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
+>[AZURE.NOTE]若要利用动态打包，首先必须获取你计划从中传送内容的流式处理终结点的至少一个点播流单元。有关详细信息，请参阅[如何缩放媒体服务](/documentation/articles/media-services-manage-origins/#scale_streaming_endpoints)。
 
 ##常见方案
 
-1. 上载一个输入文件（称为夹层文件）。例如，H.264、MP4 或 WMV（有关受支持格式的列表，请参阅[媒体编码器标准支持的格式](/documentation/articles/media-services-media-encoder-standard-formats)）。
+1. 上载一个输入文件（称为夹层文件）。例如，H.264、MP4 或 WMV（有关受支持格式的列表，请参阅[媒体编码器标准支持的格式](/documentation/articles/media-services-media-encoder-standard-formats/)）。
 
 1. 将夹层文件编码为 H.264 MP4 自适应比特率集。
 
@@ -47,13 +47,13 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS、X
 
 若要准备用于动态流式传输的资产，可以使用两个选项：
 
-1. [上载主文件](/documentation/articles/media-services-dotnet-upload-files)。
-2. [使用标准编码器标准编码器生成 H.264 MP4 自适应比特率集](/documentation/articles/media-services-dotnet-encode-with-media-encoder-standard)。
-3. [Stream your content]/documentation/articles/(media-services-deliver-content-overview).
+1. [上传主文件](/documentation/articles/media-services-dotnet-upload-files/)。
+2. [使用标准编码器标准编码器生成 H.264 MP4 自适应比特率集](/documentation/articles/media-services-dotnet-encode-with-media-encoder-standard/)。
+3. [流式传输内容](/documentation/articles/media-services-deliver-content-overview/).
 
 - 或 -
  
-1. 上载预先编码的 MP4 文件。 
+1. 上载预先编码的 MP4 文件。
 
 	>[AZURE.NOTE] 不建议使用此选项。
 	
@@ -68,5 +68,4 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS、X
 - Dolby Digital MP4 文件。
 - Dolby Digital 平滑流文件。
 
-
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0808_2016-->

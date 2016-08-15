@@ -4,12 +4,12 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags 
 	ms.service="media-services" 
-	ms.date="03/27/2016"    
+	ms.date="06/22/2016"    
 	wacn.date=""/>
 
 
@@ -17,16 +17,16 @@
 
 ##概述
 
-本主题演示如何使用媒体编码器标准版执行高级编码任务。本主题说明[如何使用 .NET 创建一个编码任务，以及用于执行此任务的作业](/documentation/articles/media-services-custom-mes-presets-with-dotnet#encoding_with_dotnet)。此外，还说明如何向编码任务提供自定义预设。有关预设所用元素的说明，请参阅[此文档](https://msdn.microsoft.com/zh-cn/library/mt269962.aspx)。
+本主题演示如何使用媒体编码器标准版执行高级编码任务。本主题演示[如何使用 .NET 创建编码任务和执行此任务的作业](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#encoding_with_dotnet)。此外，还说明如何向编码任务提供自定义预设。有关预设所用元素的说明，请参阅[此文档](https://msdn.microsoft.com/zh-cn/library/mt269962.aspx)。
 
 下面演示了执行以下编码任务的自定义预设：
 
-- [生成缩略图](/documentation/articles/media-services-custom-mes-presets-with-dotnet#thumbnails)
-- [修剪视频（裁剪）](/documentation/articles/media-services-custom-mes-presets-with-dotnet#trim_video)
-- [创建覆盖层](/documentation/articles/media-services-custom-mes-presets-with-dotnet#overlay)
-- [在输入不包含音频时插入静音曲目](/documentation/articles/media-services-custom-mes-presets-with-dotnet#silent_audio)
-- [禁用自动取消隔行扫描](/documentation/articles/media-services-custom-mes-presets-with-dotnet#deinterlacing)
-- [仅音频预设](/documentation/articles/media-services-custom-mes-presets-with-dotnet#audio_only)
+- [生成缩略图](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#thumbnails)
+- [修剪视频（裁剪）](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#trim_video)
+- [创建覆盖层](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#overlay)
+- [在输入不包含音频时插入静音曲目](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#silent_audio)
+- [禁用自动取消隔行扫描](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#deinterlacing)
+- [仅音频预设](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#audio_only)
 
 ##<a id="encoding_with_dotnet"></a>使用媒体服务 .NET SDK 进行编码
 
@@ -34,11 +34,11 @@
 
 - 创建编码作业。
 - 获取对媒体编码器标准版编码器的引用。
-- 加载自定义 XML 或 JSON 预设。可以在某个文件中保存 XML 或 JSON（例如 [XML](/documentation/articles/media-services-custom-mes-presets-with-dotnet#xml) 或 [JSON](/documentation/articles/media-services-custom-mes-presets-with-dotnet#json)），然后使用以下代码加载该文件。
+- 加载自定义 XML 或 JSON 预设。可以在某个文件中保存 XML 或 JSON（例如 [XML](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#xml) 或 [JSON](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#json)），然后使用以下代码加载该文件。
 
 			// Load the XML (or JSON) from the local file.
 		    string configuration = File.ReadAllText(fileName);  
-- 将编码任务添加到作业。 
+- 将编码任务添加到作业。
 - 指定要编码的输入资产。
 - 创建将包含所编码资产的输出资产。
 - 添加事件处理程序以检查作业进度。
@@ -240,7 +240,7 @@
 
 有关架构的信息，请参阅[此主题](https://msdn.microsoft.com/zh-cn/library/mt269962.aspx)。
 
-请务必仔细阅读[注意事项](/documentation/articles/media-services-custom-mes-presets-with-dotnet#considerations)部分。
+请务必仔细阅读[注意事项](/documentation/articles/media-services-custom-mes-presets-with-dotnet/#considerations)部分。
 
 ###<a id="json"></a>JSON 预设
 
@@ -432,7 +432,7 @@
 
 	你可以随意混搭使用表示法。
 	
-	此外，Start 还支持特殊的宏 {Best}，它会尝试判断第一个“有意义”的内容帧。 
+	此外，Start 还支持特殊的宏 {Best}，它会尝试判断第一个“有意义”的内容帧。
 	注意：（Start 设置为 {Best} 时，将忽略 Step 与 Range）
 	
 	- 默认值：Start:{Best}
@@ -947,6 +947,6 @@
 
 ##另请参阅 
 
-[媒体服务编码概述](/documentation/articles/media-services-encode-asset)
+[媒体服务编码概述](/documentation/articles/media-services-encode-asset/)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0808_2016-->
