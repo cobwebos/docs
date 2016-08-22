@@ -9,4 +9,4 @@
 
 有关这些限制的更多详细信息以及有关定价的信息，请参阅[通知中心定价](/pricing/details/notification-hubs/)。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0815_2016-->

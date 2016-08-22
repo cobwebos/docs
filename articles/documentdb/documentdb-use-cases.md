@@ -1,16 +1,18 @@
 <properties 
-    pageTitle="常见 DocumentDB 用例 | Microsoft Azure" 
+    pageTitle="常见 DocumentDB 用例 | Azure" 
     description="了解 DocumentDB 最常见的五个用例：用户生成的内容、事件日志记录、目录数据、用户首选项数据和物联网 (IoT)。" 
     services="documentdb" 
     authors="h0n" 
     manager="jhubbard" 
     editor="monicar" 
-    documentationCenter=""/>
+    documentationCenter=""/>  
+
 
 <tags 
     ms.service="documentdb" 
-    ms.date="04/04/2016" 
-    wacn.date=""/>
+    ms.date="07/08/2016" 
+    wacn.date=""/>  
+
 
 # 常见 DocumentDB 用例
 本文概述了 DocumentDB 的几个常见用例。本文中的建议可以作为使用 DocumentDB 开发应用程序的一个起点。
@@ -29,7 +31,7 @@ Azure DocumentDB 是一种通用型 NoSQL 数据库，广泛用于应用程序�
 
 - DocumentDB 采用本机方式对数据进行分区，以实现高可用性和可伸缩性。
 - DocumentDB 采用由 SSD 提供支持的存储，具有低延迟毫秒级响应时间。
-- DocumentDB 支持最终、会话和受限停滞等一致性级别，从而实现较低的价格/性能比。 
+- DocumentDB 支持最终、会话和受限停滞等一致性级别，从而实现较低的价格/性能比。
 - DocumentDB 提供了灵活的数据友好型定价模式，独立测量存储和吞吐量。
 - DocumentDB 保留的吞吐量模型使你可以考虑读取/写入数量而不考虑基础硬件的 CPU/内存/IOP。
 - DocumentDB 的设计使你可以扩展到每天约数十亿个请求的大规模请求量。
@@ -55,7 +57,7 @@ DocumentDB 的一个常见用例就是存储和查询 Web 和移动应用程序�
    
 与事件日志数据相关的主要用例通常有两个。第一个用例是对数据的子集执行即席查询以进行故障排除。在故障排除期间，通常将按时间顺序从日志中检索数据的子集。然后，通过筛选包含错误级别或错误消息的数据集进行深入探究。这就是在 DocumentDB 中存储事件日志的优越之处。由于 DocumentDB 中存储的日志数据默认自动编制索引，因此可以随时进行查询。此外，还可以按时间顺序在多个数据分区中保存日志数据。根据保留策略，可以将较旧的日志滚动到不常访问的存储区。
 
-第二个用例是对大型日志数据脱机执行长时间运行数据分析作业。此用例的示例包括服务器可用性分析、应用程序错误分析和点击流数据分析。通常使用 Hadoop 执行这些类型的分析。使用 DocumentDB 的 Hadoop 连接器，DocumentDB 数据库可用作 Pig、Hive 和 Map/Reduce 作业的数据源和接收器。有关 DocumentDB 的 Hadoop 连接器的详细信息，请参阅[使用 DocumentDB 和 HDInsight 运行 Hadoop 作业](/documentation/articles/documentdb-run-hadoop-with-hdinsight)。
+第二个用例是对大型日志数据脱机执行长时间运行数据分析作业。此用例的示例包括服务器可用性分析、应用程序错误分析和点击流数据分析。通常使用 Hadoop 执行这些类型的分析。使用 DocumentDB 的 Hadoop 连接器，DocumentDB 数据库可用作 Pig、Hive 和 Map/Reduce 作业的数据源和接收器。有关 DocumentDB 的 Hadoop 连接器的详细信息，请参阅[使用 DocumentDB 和 HDInsight 运行 Hadoop 作业](/documentation/articles/documentdb-run-hadoop-with-hdinsight/)。
 
 ## 游戏
 数据库层是游戏应用程序的关键组件。新式游戏可在移动/控制台客户端执行图形处理，但需依赖云传输自定义的个性化内容，例如游戏中的统计数据、社交媒体集成以及高分排行榜。游戏要求读取和写入具有极低的延迟，以提供具有吸引力的游戏内体验，并且数据库层需要在新游戏发布和功能更新期间处理请求率的高峰和低谷。
@@ -95,9 +97,9 @@ Microsoft Azure 提供了可为 IoT 用例所利用的丰富服务。Azure IoT �
 - [Halo](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/)。Halo 5（光环 5）使用 Azure DocumentDB 实现社交游戏玩法。
 - [Cortana Analytics Gallery](https://azure.microsoft.com/blog/cortana-analytics-gallery-a-scalable-community-site-built-on-azure-documentdb/)。Cortana Analytics Gallery - 构建在 Azure DocumentDB 基础之上的可扩展社区网站。
 - [Breeze](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18602)。领先集成商使用灵活的云技术在几分钟内为跨国公司提供全球见解。
-- [News Republic](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18639)。让新闻更智能，以便为订阅的市民提供有目的性的信息。 
+- [News Republic](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18639)。让新闻更智能，以便为订阅的市民提供有目的性的信息。
 - [SGS International](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18653)。为了在全球范围内保持颜色一致，大品牌求救于 SGS。而 SGS 采用 Azure。
-- [Telenor](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18608)。全球领先企业 Telenor 使用云以初创企业的速度发展。 
+- [Telenor](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18608)。全球领先企业 Telenor 使用云以初创企业的速度发展。
 - [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667)。未来的存储依赖于数据的快速搜索和轻松流动。
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0815_2016-->

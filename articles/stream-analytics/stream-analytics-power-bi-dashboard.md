@@ -6,12 +6,14 @@
 	documentationCenter=""
 	authors="jeffstokes72"
 	manager="paulettm"
-	editor="cgronlun"/>
+	editor="cgronlun"/>  
+
 
 <tags
 	ms.service="stream-analytics"
-	ms.date="05/03/2016"
-	wacn.date=""/>
+	ms.date="06/30/2016"
+	wacn.date=""/>  
+
 
 #  流分析和 Power BI：针对流式数据的实时分析仪表板
 
@@ -21,19 +23,17 @@ Azure 流分析允许你利用领先的商业智能工具 Microsoft Power BI。�
 
 在本文中，你将了解如何使用 Power BI 作为 Azure 流分析作业的输出，以便创建你自己的自定义商业智能工具，同时充分利用实时仪表板。
 
-> [AZURE.NOTE] 目前，Azure 门户不支持创建和配置 Power BI 输出，仅 Azure 经典门户支持该操作。
-
 ## 先决条件
 
 * Microsoft Azure 帐户
-* 流分析作业的输入，提供可用的流式数据。流分析接受 Azure 事件中心或 Azure Blob 存储提供的输入。  
+* 流分析作业的输入，提供可用的流式数据。流分析接受 Azure 事件中心或 Azure Blob 存储提供的输入。
 * 用于 Power BI 的工作或学校帐户
 
 ## 创建 Azure 流分析作业
 
 在 [Azure 经典门户](https://manage.windowsazure.com)中，单击“新建”>“数据服务”>“流分析”>“快速创建”。
 
-指定以下值，然后单*“创建流分析作业”：
+指定以下值，然后单击**“创建流分析作业”**：
 
 * **作业名称** - 输入作业名称。例如，**DeviceTemperatures**。
 * **区域** - 选择要在其中放置作业的区域。考虑将作业和事件中心放在同一区域，以确保获得理想的性能，避免在不同区域之间传输数据引发的费用。
@@ -41,7 +41,8 @@ Azure 流分析允许你利用领先的商业智能工具 Microsoft Power BI。�
 
 单击左窗格中的**“流分析”**，列出流分析作业。
 
-![graphic1][graphic1]
+![graphic1][graphic1]  
+
 
 > [AZURE.TIP] 新作业在列出时的状态将为**“未启动”**。请注意，页面底部的**“启动”**按钮已禁用。这是正常现象，因为你必须先配置作业的输入、输出、查询等，然后才能启动作业。
 
@@ -74,20 +75,24 @@ Azure 流分析允许你利用领先的商业智能工具 Microsoft Power BI。�
 
 1.  单击页面顶部的**“输出”**，然后单击**“添加输出”**。你将看到 Power BI 被列为输出选项。
 
-    ![graphic2][graphic2]
+    ![graphic2][graphic2]  
+
 
 2.  选择 **Power BI**，然后单击右侧的按钮。
 3.  你会看到如下所示的屏幕：
 
-    ![graphic3][graphic3]
+    ![graphic3][graphic3]  
+
 
 4.  在此步骤中，请提供流分析作业输出的工作或学校帐户。如果你已经有一个 Power BI 帐户，请选择**“立即授权”**。如果没有，则选择**“立即注册”**。[下面是一个很好的博客，为你介绍了 Power BI 注册的详细信息](http://blogs.technet.com/b/powerbisupport/archive/2015/02/06/power-bi-sign-up-walkthrough.aspx)。
 
-    ![graphic11][graphic11]
+    ![graphic11][graphic11]  
+
 
 5.  接下来，你会看到如下所示的屏幕：
 
-    ![graphic4][graphic4]
+    ![graphic4][graphic4]  
+
 
 提供如下所示的值：
 
@@ -128,7 +133,8 @@ Azure 流分析允许你利用领先的商业智能工具 Microsoft Power BI。�
 
 转到 [Powerbi.com](https://powerbi.com)，用你的工作或学校帐户登录。如果流分析作业查询输出了结果，你会看到你的数据集已经创建：
 
-![graphic5][graphic5]
+![graphic5][graphic5]  
+
 
 若要创建仪表板，请转到“仪表板”选项，然后创建新的仪表板。
 
@@ -144,15 +150,18 @@ Azure 流分析允许你利用领先的商业智能工具 Microsoft Power BI。�
 
 然后，你会自动获得如下所示的图表：
 
-![graphic8][graphic8]
+![graphic8][graphic8]  
+
 
 在值部分，单击 temp 的下拉列表，针对温度选择**“平均”**，然后在图表中单击**“可视化”**并选择**“折线图”**：
 
-![graphic9][graphic9]
+![graphic9][graphic9]  
+
 
 现在，你将获得平均值随时间变化的折线图。使用如下所示的固定选项，你可以将此项固定到此前创建的仪表板：
 
-![graphic10][graphic10]
+![graphic10][graphic10]  
+
 
 现在，当你查看包含这个已固定报告的仪表板时，你会看到报告的实时更新。尝试更改事件中的数据，例如添加一个峰值温度或类似的变化，你就会看到反映在仪表板中的实时效果。
 
@@ -166,11 +175,13 @@ Power BI 同时部署并行性和吞吐量约束，如下所述：[https://power
 
 由于这些因素，Power BI 最适合可通过 Azure 流分析来大幅减少数据加载的案例。我们建议你使用 TumblingWindow 或 HoppingWindow 来确保数据推送速率最多为 1 次推送/秒，并且你的查询满足吞吐量要求 – 你可以使用以下公式来计算提供你的窗口所需的值（以秒为单位）：
 
-![equation1](./media/stream-analytics-power-bi-dashboard/equation1.png)
+![equation1](./media/stream-analytics-power-bi-dashboard/equation1.png)  
+
 
 例如，如果你每秒有 1,000 个设备在发送数据，并且你使用的 Power BI Pro SKU 支持 1,000,000 行/小时，而你需要获取每个设备在 Power BI 上的平均数据，则每个设备最多可以每 4 秒进行一次推送（如下所示）：
 
-![equation2](./media/stream-analytics-power-bi-dashboard/equation2.png)
+![equation2](./media/stream-analytics-power-bi-dashboard/equation2.png)  
+
 
 这意味着，我们需要将原始查询更改为：
 
@@ -197,11 +208,24 @@ Power BI 同时部署并行性和吞吐量约束，如下所述：[https://power
 
 如果自作业创建后或上次身份验证后更改了密码，你需要重新对 Power BI 帐户进行身份验证。如果在 Azure Active Directory (AAD) 租户上配置了 Multi-Factor Authentication (MFA)，还需要每 2 周续订一次 Power BI 授权。此问题的症状是没有作业输出，并且操作日志存在“验证用户错误”：
 
-![graphic12][graphic12]
+![graphic12][graphic12]  
+
+
+同样，如果作业尝试在令牌已过期时启动，将发生错误并且作业启动将失败。此错误将看起来如下所示：
+
+![PowerBI 验证错误](./media/stream-analytics-power-bi-dashboard/stream-analytics-power-bi-dashboard-token-expire.png)  
+
+ 
 
 要解决此问题，请停止正在运行的作业并转到你的 Power BI 输出。单击“续订授权”链接，并在“上次停止时间”重新启动你的工作以避免数据丢失。
 
-![graphic13][graphic13]
+![PowerBI 验证续订](./media/stream-analytics-power-bi-dashboard/stream-analytics-power-bi-dashboard-token-renew.png)  
+
+
+使用 Power BI 刷新授权后，你将在授权区域中看到绿色警报：
+
+![PowerBI 验证续订](./media/stream-analytics-power-bi-dashboard/stream-analytics-power-bi-dashboard-token-renewed.png)  
+
 
 ## 获取帮助
 如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=AzureStreamAnalytics)
@@ -229,4 +253,4 @@ Power BI 同时部署并行性和吞吐量约束，如下所述：[https://power
 [graphic12]: ./media/stream-analytics-power-bi-dashboard/12-stream-analytics-power-bi-dashboard.png
 [graphic13]: ./media/stream-analytics-power-bi-dashboard/13-stream-analytics-power-bi-dashboard.png
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0815_2016-->

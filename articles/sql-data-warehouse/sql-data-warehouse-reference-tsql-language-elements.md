@@ -1,16 +1,18 @@
 <properties
-   pageTitle="SQL 数据仓库 Transact-SQL 语言元素 | Microsoft Azure"
+   pageTitle="SQL 数据仓库 Transact-SQL 语言元素 | Azure"
    description="用于 SQL 数据仓库的 Transact-SQL 语言元素的参考内容链接列表。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="barbkess"
    manager="barbkess"
-   editor=""/>
+   editor=""/>  
+
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="01/21/2016"
-   wacn.date=""/>
+   ms.date="06/28/2016"
+   wacn.date=""/>  
+
 
 # 语言元素
 
@@ -130,6 +132,7 @@
 - [ERROR\_SEVERITY](https://msdn.microsoft.com/zh-cn/library/ms178567.aspx)
 - [ERROR\_STATE](https://msdn.microsoft.com/zh-cn/library/ms180031.aspx)
 - [EXP](https://msdn.microsoft.com/zh-cn/library/ms179857.aspx)
+- [FIRST\_VALUE](https://msdn.microsoft.com/zh-cn/library/hh213018.aspx)
 - [FLOOR](https://msdn.microsoft.com/zh-cn/library/ms178531.aspx)
 - [GETDATE](https://msdn.microsoft.com/zh-cn/library/ms188383.aspx)
 - [GETUTCDATE](https://msdn.microsoft.com/zh-cn/library/ms178635.aspx)
@@ -140,6 +143,7 @@
 - [ISNULL](https://msdn.microsoft.com/zh-cn/library/ms184325.aspx)
 - [ISNUMERIC](https://msdn.microsoft.com/zh-cn/library/ms186272.aspx)
 - [LAG](https://msdn.microsoft.com/zh-cn/library/hh231256.aspx)
+- [LAST\_VALUE](https://msdn.microsoft.com/zh-cn/library/hh231517.aspx)
 - [LEAD](https://msdn.microsoft.com/zh-cn/library/hh213125.aspx)
 - [LEFT](https://msdn.microsoft.com/zh-cn/library/ms177601.aspx)
 - [LEN](https://msdn.microsoft.com/zh-cn/library/ms190329.aspx)
@@ -163,10 +167,12 @@
 - [PATINDEX](https://msdn.microsoft.com/zh-cn/library/ms188395.aspx)
 - [PERCENTILE\_CONT](https://msdn.microsoft.com/zh-cn/library/hh231473.aspx)
 - [PERCENTILE\_DISC](https://msdn.microsoft.com/zh-cn/library/hh231327.aspx)
+- [PERCENT\_RANK](https://msdn.microsoft.com/zh-cn/library/hh213573.aspx)
 - [PI](https://msdn.microsoft.com/zh-cn/library/ms189512.aspx)
 - [POWER](https://msdn.microsoft.com/zh-cn/library/ms174276.aspx)
 - [QUOTENAME](https://msdn.microsoft.com/zh-cn/library/ms176114.aspx)
 - [RADIANS](https://msdn.microsoft.com/zh-cn/library/ms189742.aspx)
+- [RAND](https://msdn.microsoft.com/zh-cn/library/ms177610.aspx)
 - [RANK](https://msdn.microsoft.com/zh-cn/library/ms176102.aspx)
 - [REPLACE](https://msdn.microsoft.com/zh-cn/library/ms186862.aspx)
 - [REPLICATE](https://msdn.microsoft.com/zh-cn/library/ms174383.aspx)
@@ -279,8 +285,8 @@
 <!--Image references-->
 
 <!--Article references-->
-[SQL Data Warehouse development overview]: /documentation/articles/sql-data-warehouse-overview-reference
+[SQL 数据仓库参考概述]: /documentation/articles/sql-data-warehouse-overview-reference/
 
 <!--MSDN references-->
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0815_2016-->

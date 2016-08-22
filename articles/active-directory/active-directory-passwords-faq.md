@@ -4,15 +4,20 @@
 	services="active-directory" 
 	documentationCenter="" 
 	authors="asteen" 
-	manager="kbrint" 
-	editor="billmath"/>
+	manager="femila"
+	editor="curtand"/>  
+
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="02/16/2016" 
-	wacn.date=""/>
+	ms.date="07/12/2016"
+	wacn.date=""/>  
+
 
 # 密码管理常见问题
+
+> [AZURE.IMPORTANT] **你是否因登录时遇到问题而浏览至此？** 如果是这样，[可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
+
 下面是与密码管理相关的所有方面的一些常见问题。
 
 如果你不知道问题的答案，或者要对所面临的具体问题寻求帮助，你可以参阅以下内容，查看我们是否涵盖了该问题。如果此处未涉及该问题，不用担心！ 你可以随意提出 [Azure AD 论坛](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)上所未涵盖的问题，我们将尽快予以解答。
@@ -27,7 +32,7 @@
 ## 密码重置注册
  - **问：我的用户是否可以注册其自己的密码重置数据？**
  
- > **答：**可以。只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户（网址为 http://aka.ms/ssprsetup ）来注册他们用于密码重置的身份验证信息。用户还可以通过以下方式进行注册：转到访问面板 (http://myapps.microsoft.com )，单击配置文件选项卡，然后单击“注册密码重置”选项。阅读“如何为用户配置密码重置”，了解如何为你的用户配置密码重置。
+ > **答：**可以。只要已经启用密码重置功能并且用户已获得许可，他们就可以访问密码重置注册门户（网址为 http://aka.ms/ssprsetup）来注册他们用于密码重置的身份验证信息。用户还可以通过以下方式进行注册：转到访问面板 (http://myapps.microsoft.com)，单击配置文件选项卡，然后单击“注册密码重置”选项。阅读“如何为用户配置密码重置”，了解如何为你的用户配置密码重置。
  
  - **问：我能否代表我的用户定义密码重置数据？**
  
@@ -35,7 +40,7 @@
  
  - **问：我能否从本地同步安全问题数据？**
  
- > **答：**目前还不行，但我们正在考虑这一点。
+ > **答：**目前还不行，但我们正在考虑实现。
  
  - **问：我的用户在注册数据时能否选择不让其他用户看到？**
  
@@ -72,11 +77,12 @@
  
  > **答：**密码重置门户不但会显示你的组织徽标，而且还支持你配置指向某一自定义电子邮件或 URL 的“请与管理员联系”链接。密码重置发送的任何电子邮件都将在电子邮件正文中包括你的组织的徽标、颜色（在本例中为红色）、名称，以及自定义的发件人姓名。请参阅下面所示的包含所有品牌化元素的一个示例。若要了解更多信息，请阅读“自定义密码重置的外观”。
 
-  ![][001]
+  ![][001]  
+
 
  - **问：我如何告知我的用户到何处重置他们的密码？**
  
- > **答：**你可以直接将用户转到 https://passwordreset.microsoftonline.com ，也可以告知他们单击任何学校或工作 ID 登录屏幕中的“无法访问你的帐户”链接。你可以在你的用户能够轻松访问的任何位置随意发布这些链接（或创建指向它们的 URL 重定向）。
+ > **答：**你可以直接将用户转到 https://passwordreset.microsoftonline.com，也可以告知他们单击任何学校或工作 ID 登录屏幕中的“无法访问你的帐户”链接。你可以在你的用户能够轻松访问的任何位置随意发布这些链接（或创建指向它们的 URL 重定向）。
 
  - **问：我能否在移动设备上使用此页面？**
  
@@ -92,7 +98,7 @@
 
  - **问：我能否针对不同的区域设置设定不同的安全问题？**
  
- > **答：**目前还不行，但我们正在考虑这一点。
+ > **答：**目前还不行，但我们正在考虑实现。
 
  - **问：我们可以为“安全问题”身份验证选项配置多少个问题？**
  
@@ -141,7 +147,8 @@
  
  > **答：**单击报告顶部的列标签最右侧的小放大镜，即可筛选密码管理报告（请参阅屏幕截图）。如果希望进行更丰富的筛选，可以将报告下载到 excel 并创建数据透视表。
 
-  ![][002]
+  ![][002]  
+
 
  - **问：密码管理报告中存储的事件数目上限是多少？**
 
@@ -178,25 +185,26 @@
 
  - **问：密码写回是否安全？ 如何确保我不会受到黑客攻击？**
  
- > **答：**是的。密码写回具有极高的安全性。若要阅读有关密码写回服务实施的 4 个安全层的详细信息，请查看“密码写回的工作原理”中的[密码写回安全模型](/documentation/articles/active-directory-passwords-learn-more#password-writeback-security-model)。
+ > **答：**是的。密码写回具有极高的安全性。若要阅读有关密码写回服务实施的 4 个安全层的详细信息，请查看“密码写回的工作原理”中的[密码写回安全模型](/documentation/articles/active-directory-passwords-learn-more/#password-writeback-security-model)。
 
 
-<br/> <br/> <br/>
+
 
 ## 密码重置文档的链接
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* [**重置自己的密码**](/documentation/articles/active-directory-passwords-update-your-own-password) — 了解如何以系统用户的身份重置或更改自己的密码
-* [**工作原理**](/documentation/articles/active-directory-passwords-how-it-works) - 了解六个不同的服务组件及其功能
-* [**入门**](/documentation/articles/active-directory-passwords-getting-started) - 了解如何让用户重置及更改云密码或本地密码
-* [**自定义**](/documentation/articles/active-directory-passwords-customize) - 了解如何根据组织的需求自定义服务的外观和行为
-* [**最佳实践**](/documentation/articles/active-directory-passwords-best-practices) - 了解如何快速部署且有效管理组织的密码
-* [**深入分析**](/documentation/articles/active-directory-passwords-get-insights) - 了解集成式报告功能
-* [**故障排除**](/documentation/articles/active-directory-passwords-troubleshoot) - 了解如何快速排查服务的问题
-* [**了解更多**](/documentation/articles/active-directory-passwords-learn-more) - 深入探索服务工作原理的技术细节
+* [**重置自己的密码**](/documentation/articles/active-directory-passwords-update-your-own-password/) - 了解如何以系统用户的身份重置或更改自己的密码
+* [**工作原理**](/documentation/articles/active-directory-passwords-how-it-works/) - 了解六个不同的服务组件及其功能
+* [**入门**](/documentation/articles/active-directory-passwords-getting-started/) - 了解如何让用户重置及更改云密码或本地密码
+* [**自定义**](/documentation/articles/active-directory-passwords-customize/) - 了解如何根据组织的需求自定义服务的外观和行为
+* [**最佳实践**](/documentation/articles/active-directory-passwords-best-practices/) - 了解如何快速部署且有效管理组织的密码
+* [**深入分析**](/documentation/articles/active-directory-passwords-get-insights/) - 了解集成式报告功能
+* [**故障排除**](/documentation/articles/active-directory-passwords-troubleshoot/) - 了解如何快速排查服务的问题
+* [**了解更多**](/documentation/articles/active-directory-passwords-learn-more/) - 深入探索服务工作原理的技术细节
 
 
 [001]: ./media/active-directory-passwords-faq/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-faq/002.jpg "Image_002.jpg"
  
-<!---HONumber=Mooncake_0620_2016-->
+
+<!---HONumber=Mooncake_0815_2016-->

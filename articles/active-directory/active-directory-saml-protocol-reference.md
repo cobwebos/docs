@@ -5,12 +5,14 @@
 	documentationCenter=".net"
 	authors="priyamohanram"
 	manager="mbaldwin"
-	editor=""/>
+	editor=""/>  
+
 
 <tags
 	ms.service="active-directory"
 	ms.date="06/23/2016"
-	wacn.date=""/>
+	wacn.date=""/>  
+
 
 
 # Azure Active Directory 如何使用 SAML 协议
@@ -29,6 +31,6 @@ Azure Active Directory 公开特定于租户的和公用的（独立于租户的
 
 - 独立于租户的终结点位于 `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`。此终结点地址中显示 **common**，而不是租户域名或 ID。
 
-有关 Azure AD 发布的联合元数据文档的信息，请参阅 [Federation Metadata（联合元数据）](/documentation/articles/active-directory-federation-metadata)。
+有关 Azure AD 发布的联合元数据文档的信息，请参阅 [Federation Metadata](/documentation/articles/active-directory-federation-metadata)（联合元数据）。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0815_2016-->

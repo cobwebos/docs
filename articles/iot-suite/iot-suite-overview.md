@@ -6,12 +6,14 @@
 	documentationCenter=""
 	authors="dominicbetts"
 	manager="timlt"
-	editor=""/>
+	editor=""/>  
+
 
 <tags
      ms.service="iot-suite"
-     ms.date="02/19/2016"
-     wacn.date="05/17/2016"/>
+     ms.date="05/23/2016"
+     wacn.date="05/17/2016"/>  
+
 
 # Azure IoT 套件是什么？
 
@@ -23,7 +25,7 @@ Azure 物联网 (IoT) 服务提供有各种功能。这些企业级服务让你�
 - 可视化实时和历史数据
 - 与后端办公系统集成
 
-为了提供这些功能，Azure IoT 套件将多个 Azure 服务与自定义扩展打包在一起作为“预配置解决方案”。预配置解决方案是常见 IoT 解决方案模式的基础实现，可帮助你减少交付 IoT 解决方案所花费的时间。通过使用 [IoT 软件开发工具包][lnk-sdks]，你可以自定义和扩展这些解决方案来满足你自己的需求。也可以使用这些解决方案作为开发新 IoT 解决方案时的示例或模板。
+为了提供这些功能，Azure IoT 套件将多个 Azure 服务与自定义扩展打包在一起作为预配置解决方案。预配置解决方案是常见 IoT 解决方案模式的基础实现，可帮助你减少交付 IoT 解决方案所花费的时间。通过使用 [IoT 软件开发工具包][lnk-sdks]，你可以自定义和扩展这些解决方案来满足你自己的需求。也可以使用这些解决方案作为开发新 IoT 解决方案时的示例或模板。
 
 ## Azure IoT 套件中的 Azure IoT 服务
 
@@ -41,7 +43,7 @@ Azure 物联网 (IoT) 服务提供有各种功能。这些企业级服务让你�
 
 ## 预配置解决方案
 
-IoT 套件包含预配置解决方案，可让你快速地开始使用，并浏览 Azure IoT 套件使其可行的常见 IoT 方案，例如“远程监视”和“预见性维护”。你可以将这些解决方案部署到 Azure 订阅，然后运行完整的端到端 IoT 方案。
+IoT 套件包含预配置解决方案，可让你快速地开始使用，并浏览 Azure IoT 套件使其可行的常见 IoT 方案，例如远程监视和预见性维护。你可以将这些解决方案部署到 Azure 订阅，然后运行完整的端到端 IoT 方案。
 
 ## 后续步骤
 
@@ -61,9 +63,9 @@ IoT 套件包含预配置解决方案，可让你快速地开始使用，并浏�
 [lnk-document-db]: /documentation/services/documentdb/
 [lnk-power-bi]: https://powerbi.microsoft.com/
 [lnk-web-apps]: /documentation/services/app-service/web/
-[iot-suite-what-is-azure-iot]: /documentation/articles/iot-suite-what-is-azure-iot
-[lnk-what-are-preconfig]: /documentation/articles/iot-suite-what-are-preconfigured-solutions
-[lnk-preconfig-start]: /documentation/articles/iot-suite-getstarted-preconfigured-solutions
+[iot-suite-what-is-azure-iot]: /documentation/articles/iot-suite-what-is-azure-iot/
+[lnk-what-are-preconfig]: /documentation/articles/iot-suite-what-are-preconfigured-solutions/
+[lnk-preconfig-start]: /documentation/articles/iot-suite-getstarted-preconfigured-solutions/
 [lnk-iot-hub]: /documentation/services/iot-hub/
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0815_2016-->

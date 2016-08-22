@@ -6,13 +6,14 @@
  documentationCenter=""
  authors="YuriDio"
  manager="timlt"
- editor=""/>
+ editor=""/>  
+
 
 <tags
  ms.service="iot-suite"
- ms.date="04/05/2016"
+ ms.date="06/22/2016"
  wacn.date="05/17/2016"/>
 
-[AZURE.INCLUDE [iot-security-architecture](../includes/iot-security-architecture.md)]
+[AZURE.INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0815_2016-->

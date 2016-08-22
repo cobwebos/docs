@@ -6,12 +6,14 @@
  documentationCenter=""
  authors="dominicbetts"
  manager="timlt"
- editor=""/>
+ editor=""/>  
+
 
 <tags
  ms.service="iot-suite"
- ms.date="03/02/2016"
- wacn.date="05/17/2016"/>
+ ms.date="05/25/2016"
+ wacn.date="05/17/2016"/>  
+
 
 # Azure IoT 套件预配置解决方案是什么？
 
@@ -30,14 +32,14 @@ Azure IoT 套件预配置解决方案是你可以使用订阅部署到 Azure 的
 
 | 解决方案 | 数据提取 | 设备标识 | 命令和控制 | 规则和操作 | 预测分析 |
 |------------------------|-----|-----|-----|-----|-----|
-| [远程监控][lnk-remote-monitoring] |是 |是 |是 |是 |- |
-| [预见性维护][lnk-predictive-maintenance] |是 |是 |是 |是 |是 |
+| [远程监视][lnk-preconf-get-started] |是 |是 |是 |是 |- |
+| [主动维护][lnk-predictive-maintenance] |是 |是 |是 |是 |是 |
 
-- “数据提取”：向云中大规模输入数据。
-- “设备标识”：管理每个连接设备的唯一标识。
-- “命令和控制”：从云中向设备发送消息，使设备采取某些操作。
-- “规则和操作”：解决方案后端使用规则作用于特定设备到云的数据。
-- “预测分析”：解决方案后端将对设备到云数据的分析应用到预测应何时发生特定操作。例如，分析飞机发动机遥测数据来确定发动机维护何时到期。
+- 数据提取：向云中大规模输入数据。
+- 设备标识：管理每个连接设备的唯一标识。
+- 命令和控制：从云中向设备发送消息，使设备采取某些操作。
+- 规则和操作：解决方案后端使用规则作用于特定设备到云的数据。
+- 预测分析：解决方案后端将对设备到云数据的分析应用到预测应何时发生特定操作。例如，分析飞机发动机遥测数据来确定发动机维护何时到期。
 
 ## 远程监控预配置解决方案概述
 
@@ -53,12 +55,12 @@ Azure IoT 套件预配置解决方案是你可以使用订阅部署到 Azure 的
 
 在远程监控预配置解决方案中，当设备首次连接到 IoT 中心时，发送到 IoT 中心的设备信息消息列出了设备可以响应的命令的清单。在远程监控预配置解决方案中，这些命令为：
 
-- “Ping 设备”：设备通过确认响应此命令。这对于检查设备是否仍然活动且正在侦听很有用。
-- “开始遥测”：指示设备开始发送遥测数据。
-- “停止遥测”：指示设备停止发送遥测数据。
-- “更改设置点温度”：控制设备发送的模拟的温度遥测值。这对于测试后端逻辑很有用。
-- “诊断遥测”：控制设备是否应将外部温度作为遥测数据发送。
-- “更改设备状态”：设置设备报告的设备状态的元数据属性。这对于测试后端逻辑很有用。
+- Ping 设备：设备通过确认响应此命令。这对于检查设备是否仍然活动且正在侦听很有用。
+- 开始遥测：指示设备开始发送遥测数据。
+- 停止遥测：指示设备停止发送遥测数据。
+- 更改设置点温度：控制设备发送的模拟的温度遥测值。这对于测试后端逻辑很有用。
+- 诊断遥测：控制设备是否应将外部温度作为遥测数据发送。
+- 更改设备状态：设置设备报告的设备状态的元数据属性。这对于测试后端逻辑很有用。
 
 你可以在该解决方案中添加更多可以发出相同遥测数据和对相同命令作出响应的模拟设备。
 
@@ -75,9 +77,9 @@ IoT 中心通过服务端遥测数据读取终结点使收到的遥测数据可�
 此预配置的解决方案使用三种 [Azure 流分析][lnk-asa] (ASA) 作业筛选设备的遥测数据流：
 
 
-- “DeviceInfo 作业” - 将数据输出到事件中心，该中心将第一次连接设备或者设备响应**更改设备状态**命令时发送的特定于设备注册的消息路由到解决方案设备注册表（一种 DocumentDB 数据库）。 
-- “遥测数据作业” - 将所有原始遥测数据发送到 Azure blob 存储进行冷存储，并计算在解决方案仪表板中显示的遥测汇总数据。
-- “规则作业” -筛选超出了任何规则阈值的遥测数据流，并将数据输出到事件中心。当规则触发时，解决方案门户仪表板视图在警报历史记录表中将该事件作为新行显示，并根据解决方案门户中的规则和操作视图上定义的设置触发操作。
+- DeviceInfo 作业 - 将数据输出到事件中心，该中心将第一次连接设备或者设备响应**更改设备状态**命令时发送的特定于设备注册的消息路由到解决方案设备注册表（一种 DocumentDB 数据库）。
+- 遥测数据作业 - 将所有原始遥测数据发送到 Azure blob 存储进行冷存储，并计算在解决方案仪表板中显示的遥测汇总数据。
+- 规则作业 -筛选超出了任何规则阈值的遥测数据流，并将数据输出到事件中心。当规则触发时，解决方案门户仪表板视图在警报历史记录表中将该事件作为新行显示，并根据解决方案门户中的规则和操作视图上定义的设置触发操作。
 
 在此预配置的解决方案中，ASA 作业是典型的 [IoT 解决方案体系结构][lnk-what-is-azure-iot]中 **IoT 解决方案后端**的组成部分。
 
@@ -85,7 +87,7 @@ IoT 中心通过服务端遥测数据读取终结点使收到的遥测数据可�
 
 在此预配置的解决方案中，事件处理器是典型的 [IoT 解决方案体系结构][lnk-what-is-azure-iot]中 **IoT 解决方案后端**的组成部分。
 
-**DeviceInfo** 和**规则** ASA 作业将其输出发送到事件中心以传递到其他后端服务。该解决方案使用在 [WebJob][lnk-web-job] 中运行的 [EventPocessorHost][lnk-event-processor] 实例从这些事件中心读取消息。**EventProcessorHost** 使用 **DeviceInfo** 数据更新 DocumentDB 数据库中的设备数据，使用**规则**数据调用逻辑应用和更新解决方案门户中显示的警报。
+**DeviceInfo** 和**规则** ASA 作业将其输出发送到事件中心以传递到其他后端服务。该解决方案使用 [Web 作业][lnk-web-job]中运行的 [EventPocessorHost][lnk-event-processor] 实例从这些事件中心读取消息。**EventProcessorHost** 使用 **DeviceInfo** 数据更新 DocumentDB 数据库中的设备数据，使用**规则**数据调用逻辑应用和更新解决方案门户中显示的警报。
 
 ## 设备标识注册表和 DocumentDB
 
@@ -120,17 +122,16 @@ IoT 中心通过服务端遥测数据读取终结点使收到的遥测数据可�
 
 [img-remote-monitoring-arch]: ./media/iot-suite-what-are-preconfigured-solutions/remote-monitoring-arch1.png
 [img-dashboard]: ./media/iot-suite-what-are-preconfigured-solutions/dashboard.png
-[lnk-remote-monitoring]: /documentation/articles/iot-suite-remote-monitoring-sample-walkthrough
-[lnk-what-is-azure-iot]: /documentation/articles/iot-suite-what-is-azure-iot
+[lnk-what-is-azure-iot]: /documentation/articles/iot-suite-what-is-azure-iot/
 [lnk-asa]: /documentation/services/stream-analytics/
 [lnk-event-processor]: /documentation/articles/event-hubs-programming-guide/#event-processor-host
-[lnk-web-job]: /documentation/articles/web-sites-create-web-jobs
+[lnk-web-job]: /documentation/articles/web-sites-create-web-jobs/
 [lnk-document-db]: /documentation/services/documentdb/
 [lnk-identity-registry]: /documentation/articles/iot-hub-devguide/#device-identity-registry
-[lnk-suite-overview]: /documentation/articles/iot-suite-overview
-[lnk-preconf-get-started]: /documentation/articles/iot-suite-getstarted-preconfigured-solutions
-[lnk-predictive-maintenance]: /documentation/articles/iot-suite-predictive-overview
+[lnk-suite-overview]: /documentation/articles/iot-suite-overview/
+[lnk-preconf-get-started]: /documentation/articles/iot-suite-getstarted-preconfigured-solutions/
+[lnk-predictive-maintenance]: /documentation/articles/iot-suite-predictive-overview/
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0815_2016-->

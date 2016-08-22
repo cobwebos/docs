@@ -1,5 +1,6 @@
 <!-- not suitable for Mooncake -->
 
+
 <properties 
 	pageTitle="在 Eclipse 中创建 Azure 的 Hello World Web 应用 | Azure" 
 	description="本教程说明如何使用 Azure Toolkit for Eclipse 创建适用于 Azure 的 Hello World Web 应用。" 
@@ -11,8 +12,9 @@
 
 <tags
 	ms.service="app-service-web"
-	ms.date="06/07/2016"
-	wacn.date=""/>
+	ms.date="06/24/2016"
+	wacn.date=""/>  
+
 
 # 在 Eclipse 中创建 Azure 的 Hello World Web 应用
 
@@ -24,8 +26,8 @@
  
 ## 先决条件
 
-* Java 开发人员工具包 (JDK) 1.7 或更高版本。
-* Eclipse IDE for Java EE Developers, Indigo 或更高版本。可以从 <http://www.eclipse.org/downloads/> 下载。
+* Java 开发人员工具包 (JDK) 1.8 或更高版本。
+* Eclipse IDE for Java EE Developers，Luna 或更高版本。可以从 <http://www.eclipse.org/downloads/> 下载。
 * 分发基于 Java 的 Web 服务器或应用程序服务器，例如 Apache Tomcat 或 Jetty。
 * Azure 订阅，可以从 <https://azure.microsoft.com/free/> 或 </pricing/overview/> 获取。
 * Azure Toolkit for Eclipse。有关详细信息，请参阅[安装 Azure Toolkit for Eclipse]。
@@ -44,13 +46,14 @@
 
 1. 在 Eclipse 的项目资源管理器视图中，展开“MyHelloWorld”。右键单击“WebContent”，单击“新建”，然后单击“JSP 文件”。
 
-1. 在“新建 JSP 文件”对话框中，将文件命名为 index.jsp。将父文件夹保留为 **MyHelloWorld/WebContent**。
+1. 在“新建 JSP 文件”对话框中，将文件命名为“index.jsp”，将父文件夹保留为“MyHelloWorld/WebContent”，然后单击“下一步”。
 
 1. 基于本教程的目的，在“选择 JSP 模板”对话框中选择“新建 JSP 文件(html)”，然后单击“完成”。
 
 1. 在 Eclipse 中打开 index.jsp 文件后，添加文本以便在现有 `<body>` 元素中动态显示 **Hello World!**。更新后的 `<body>` 内容应类似于以下示例：
 
-   `<body><b><% out.println("Hello World!"); %></b></body>`
+   `<body><b><% out.println("Hello World!"); %></b></body>`  
+
 
 1. 保存 index.jsp。
 
@@ -62,24 +65,29 @@
 
 1. 在上下文菜单中选择“Azure”，然后单击“发布为 Azure Web 应用...”
 
-   ![][03]
+   ![][03]  
+
    
    另外，如果你已在项目资源管理器中选择 Web 应用程序项目，则可单击工具栏中的“发布”下拉按钮，然后从该处选择“发布为 Azure Web 应用”：
    
-   ![][14]
+   ![][14]  
+
    
 1. 如果你尚未从 Eclipse 登录到 Azure 中，系统会提示你登录 Azure 帐户：
 
-   ![][04]
+   ![][04]  
+
    
    注意：如果你有多个 Azure 帐户，部分提示会在登录过程中显示多次，即使这些提示看起来是相同的。发生此情况时，请遵循登录指示继续操作。
 1. 在成功登录 Azure 帐户后，“管理订阅”对话框将显示与你的凭据关联的订阅列表。如果列出了多个订阅，而你只想使用其中几个帐户，你可以选择取消选中要使用的订阅。选择订阅后，单击“关闭”。
 
-   ![][05]
+   ![][05]  
+
    
 1. 当“部署到 Azure Web 应用容器”对话框出现时，它将显示前面创建的所有 Web 应用容器；如果尚未创建任何容器，列表将是空白的。
 
-   ![][06]
+   ![][06]  
+
    
 1. 如果前面尚未创建 Azure Web 应用容器，或你想要将应用程序发布到新的容器，请使用以下步骤。否则，请选择现有的 Web 应用容器，并跳到下面的步骤 7。
 
@@ -95,15 +103,15 @@
 
   1. 在“Web 容器”下拉菜单中，为应用程序选择适当的软件。
 
-        当前，你可以从 Tomcat 8、Tomcat 7 或 Jetty 9 中选择。Azure 将提供所选软件的最新分发版，并且该版本将基于由 JDK 8 创建并由 Azure 提供的 JDK 最新分发版运行。
+        目前，你可以从 Tomcat 8、Tomcat 7 或 Jetty 9 中进行选择。所选软件的最近分配将由 Azure 提供，并且将在由 Oracle 创建、Azure 提供的 JDK 8 的最近分配上运行。
 
   1. 在“订阅”下拉菜单中，选择要用于此部署的订阅。
 
   1. 在“资源组”下拉菜单中，选择要与 Web 应用关联的资源组。
 
-        注意：使用 Azure 资源组可以将相关资源组织在一起，以便于执行删除等操作。
+        注意：Azure 资源组允许你将相关资源一起分为一组，以便可以一起进行操作，比如将它们一起删除。
 
-        可以选择现有资源组（如果有）并跳到下面的步骤 g，或者按照以下这些步骤创建新的资源组：
+        可以选择一个现有资源组（如果有），跳至下面的步骤 g，或使用以下这些步骤创建一个新的资源组：
 
       * 单击“新建...”
 
@@ -119,9 +127,9 @@
 
   1. “App Service 计划”下拉菜单列出了与选定资源组关联的 App Service 计划。
 
-        注意：App Service 计划指定了你的 Web 应用的位置、定价层以及计算实例大小等信息。单个 App Service 计划可用于多个 Web 应用，这也是从特定 Web 应用部署单独维护它的原因。
+        注意：App Service 计划指定如 Web 应用的位置、定价层和计算实例大小之类的信息。单个 App Service 计划可以用于多个 Web 应用，这就是为什么它与特定的 Web 应用部署分别进行维护的原因。
 
-        可以选择现有 App Service 计划（如果有）并跳到下面的步骤 h，或者按照以下这些步骤创建新的 App Service 计划：
+        可以选择一个现有 App Service 计划（如果有），跳至下面的步骤 h，或使用以下这些步骤创建一个新的 App Service 计划：
 
       * 单击“新建...”
 
@@ -141,13 +149,14 @@
 
         ![][10]
 
-  1. 单击“确定”完成新 Web 应用容器的创建。
+  1. 单击“确定”完成创建新的 Web 应用容器。
 
-        等待 Web 应用容器列表刷新，这需要几秒，然后，你新创建的 Web 应用容器应在列表中处于选中状态。
+        等待几秒钟，待 Web 应用容器的列表进行刷新，现在你新创建的 Web 应用容器应已在列表中选择。
 
 1. 现在你已准备好完成将 Web 应用部署到 Azure 的初始部署：
 
-    ![][11]
+    ![][11]  
+
 
     单击“确定”将 Java 应用程序部署到选定的 Web 应用容器。
 
@@ -185,9 +194,10 @@
 显示“Azure 资源管理器”视图后，使用以下步骤来停止 Web 应用：
 
 1. 展开“Azure”节点。
-2. 展开“Web Apps”节点。 
+2. 展开“Web Apps”节点。
 3. 右键单击所需的 Web 应用。
-5. 出现上下文菜单时，单击“停止”。![][13]
+5. 出现上下文菜单时，单击“停止”。
+![][13]
 
 ## 后续步骤
 
@@ -195,32 +205,37 @@
 
 - [适用于 Eclipse 的 Azure 工具包]
   - [安装 Azure Toolkit for Eclipse]
-  - *在 Eclipse 中创建 Azure 的 Hello World Web 应用（本文）*
+  - 在 Eclipse 中创建 Azure 的 Hello World Web 应用（本文）
   - [Azure Toolkit for Eclipse 的新增功能]
 - [Azure Toolkit for IntelliJ]
   - [安装 Azure Toolkit for IntelliJ]
   - [在 IntelliJ 中创建 Azure 的 Hello World Web 应用]
+  - [Azure Toolkit for IntelliJ 中的新增功能]
 
 有关将 Azure 与 Java 配合使用的详细信息，请参阅 [Azure Java 开发人员中心]。
 
 有关创建 Azure Web Apps 的其他信息，请参阅 [Web Apps 概述]。
 
-[AZURE.INCLUDE [app-service-web-try-app-service](../includes/app-service-web-try-app-service.md)]
+[AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
 <!-- URL List -->
 
-[Azure Toolkit for Eclipse]: /documentation/articles/azure-toolkit-for-eclipse
-[适用于 Eclipse 的 Azure 工具包]: /documentation/articles/azure-toolkit-for-eclipse
-[Azure Toolkit for IntelliJ]: /documentation/articles/azure-toolkit-for-intellij
-[在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: /documentation/articles/app-service-web-intellij-create-hello-world-web-app
-[安装 Azure Toolkit for Eclipse]: /documentation/articles/azure-toolkit-for-eclipse-installation
-[安装 Azure Toolkit for IntelliJ]: /documentation/articles/azure-toolkit-for-intellij-installation
-[Azure Toolkit for Eclipse 的新增功能]: /documentation/articles/azure-toolkit-for-eclipse-whats-new
+
+[Azure Toolkit for Eclipse]: /documentation/articles/azure-toolkit-for-eclipse/
+[适用于 Eclipse 的 Azure 工具包]: /documentation/articles/azure-toolkit-for-eclipse/
+[Azure Toolkit for IntelliJ]: /documentation/articles/azure-toolkit-for-intellij/
+[Create a Hello World Web App for Azure in Eclipse]: /documentation/articles/app-service-web-eclipse-create-hello-world-web-app/
+[在 IntelliJ 中创建 Azure 的 Hello World Web 应用]: /documentation/articles/app-service-web-intellij-create-hello-world-web-app/
+[安装 Azure Toolkit for Eclipse]: /documentation/articles/azure-toolkit-for-eclipse-installation/
+[安装 Azure Toolkit for IntelliJ]: /documentation/articles/azure-toolkit-for-intellij-installation/
+[Azure Toolkit for Eclipse 的新增功能]: /documentation/articles/azure-toolkit-for-eclipse-whats-new/
+[Azure Toolkit for IntelliJ 中的新增功能]: /documentation/articles/azure-toolkit-for-intellij-whats-new/
 
 [Azure Java 开发人员中心]: /develop/java/
-[Web Apps 概述]: /home/features/web-site
+[Web Apps 概述]: /home/features/web-site/
 
 <!-- IMG List -->
+
 
 [01]: ./media/app-service-web-eclipse-create-hello-world-web-app/01-Web-Page.png
 [02]: ./media/app-service-web-eclipse-create-hello-world-web-app/02-Dynamic-Web-Project.png
@@ -238,4 +253,4 @@
 [14]: ./media/app-service-web-eclipse-create-hello-world-web-app/14-publishDropdownButton.png
 [15]: ./media/app-service-web-eclipse-create-hello-world-web-app/15-New-Azure-Web-Container.png
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0815_2016-->

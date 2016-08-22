@@ -2,15 +2,17 @@
 	pageTitle="Widevine 许可证模板概述" 
 	description="本主题概述了用于配置 Widevine 许可证的 Widevine 许可证模板。" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
-	documentationCenter=""/>
+	documentationCenter=""/>  
+
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016"  
-	wacn.date=""/>
+	ms.date="06/22/2016"  
+	wacn.date=""/>  
+
 
 #Widevine 许可证模板概述
 
@@ -101,7 +103,7 @@ policy\_overrides. renew\_with\_usage | 布尔值。true 或 false |指示开始
 
 ##会话初始化
 
-名称 | 值 | 说明
+Name | 值 | 说明
 ---|---|---
 provider\_session\_token | Base64 编码的字符串 |此会话令牌将传回到许可证，并存在于后续的续订中。会话令牌不在会话之外保存。 
 provider\_client\_token | Base64 编码的字符串 | 要在许可证响应中返回的客户端令牌。如果许可证请求包含客户端令牌，则忽略此值。客户端令牌将在许可证会话之外保存。
@@ -196,6 +198,6 @@ override\_provider\_client\_token | 布尔值。true 或 false |如果为 false 
 
 ##另请参阅
 
-[使用 PlayReady 和/或 Widevine DRM 动态通用加密](/documentation/articles/media-services-protect-with-drm)
+[使用 PlayReady 和/或 Widevine DRM 动态通用加密](/documentation/articles/media-services-protect-with-drm/)
 
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0815_2016-->

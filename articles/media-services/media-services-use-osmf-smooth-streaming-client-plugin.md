@@ -5,11 +5,12 @@
 	documentationCenter="" 
 	authors="juliako" 
 	manager="dwrede" 
-	editor=""/>
+	editor=""/>  
 
-<tags
-	ms.service="media-services"
-	ms.date="05/03/2016"
+
+<tags 
+	ms.service="media-services" 
+	ms.date="06/22/2016"
 	wacn.date=""/>
 
 
@@ -198,8 +199,8 @@ package
 
 以下代码段演示如何动态加载 SS for OSMF 插件以及如何使用 OSMF MediaFactory 类播放基本视频。在包含 SS for OSMF 代码之前，如果要使用 FILE 协议进行加载，请将“MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf”动态插件复制到项目文件夹；如果要进行 HTTP 加载，请将该插件复制到 Web 服务器下。不需要在项目引用中包含“MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swc”。
 
-```
-package
+ 
+package 
 {
 	
 	import flash.display.*;
@@ -330,17 +331,16 @@ package
 		
 	}
 }
-```
 
 ##Strobe Media Playback 与 SS OSMF 动态插件
 
 适用于 OSMF 的平滑流式处理动态插件与 [Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html) 兼容。你可以使用 SS for OSMF 插件向 SMP 添加平滑流式处理内容播放功能。为此，请在进行 HTTP 加载时，使用以下步骤将“MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf”复制到 Web 服务器下：
 
-1.	浏览 [Strobe Media Playback 设置页](http://osmf.org/dev/2.0gm/setup.html)。 
-2.	将 src 设置为平滑流式处理源（例如 http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest） 
+1.	浏览 [Strobe Media Playback 设置页](http://osmf.org/dev/2.0gm/setup.html)。
+2.	将 src 设置为平滑流式处理源（例如 http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest）
 3.	进行所需的配置更改，然后单击“Preview and Update”（预览并更新）。
  
-	**注意** 你的内容 Web 服务器需要有效的 crossdomain.xml。 
+	**注意** 你的内容 Web 服务器需要有效的 crossdomain.xml。
 4.	使用常用的文本编辑器将该代码复制并粘贴到一个简单的 HTML 页，如以下示例所示：
 
 
@@ -401,4 +401,4 @@ package
 
 [适用于 OSMF 的 Microsoft 自适应流式处理插件更新](https://azure.microsoft.com/blog/2014/10/27/microsoft-adaptive-streaming-plugin-for-osmf-update/)
 
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0815_2016-->

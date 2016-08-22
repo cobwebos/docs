@@ -5,12 +5,14 @@
    documentationCenter="na"
    authors="tfitzmac"
    manager="wpickett"
-   editor=""/>
+   editor=""/>  
+
 
 <tags
    ms.service="azure-resource-manager"
-   ms.date="04/04/2016"
-   wacn.date=""/>
+   ms.date="06/23/2016"
+   wacn.date=""/>  
+
 
 # 密钥保管库模板架构
 
@@ -54,37 +56,39 @@
 
 下表描述了需要在架构中设置的值。
 
-| 名称 | 值 |
+| Name | 值 |
 | ---- | ---- | 
 | type | 枚举<br />必需<br />**Microsoft.KeyVault/vaults**<br /><br />要创建的资源类型。 |
-| apiVersion | 枚举<br />必需<br />**2015-06-01** 或 **2014-12-19-preview**<br /><br />要用于创建该资源的 API 版本。 | 
-| name | 字符串<br />必需<br />在 Azure 中唯一的名称。<br /><br />要创建的密钥保管库的名称。请考虑在命名约定中使用 [uniqueString](resource-group-template-functions.md#uniquestring) 函数来创建唯一名称，如以下示例中所示。 |
+| apiVersion | 枚举<br /><br />**2015-06-01** 或 **2014-12-19-preview**<br /><br />用于创建资源的 API 版本。 | 
+| 名称 | 字符串<br />必需<br />在 Azure 中唯一的名称。<br /><br />要创建的密钥保管库的名称。请考虑在命名约定中使用 [uniqueString](resource-group-template-functions.md#uniquestring) 函数来创建唯一名称，如以下示例中所示。 |
 | location | 字符串<br />必需<br />密钥保管库的有效区域。若要确定有效的区域，请参阅[支持的区域](resource-manager-supported-services.md#supported-regions)。<br /><br />托管密钥保管库的区域。 |
 | properties | 对象<br />必需<br />[properties 对象](#properties)<br /><br />一个对象，用于指定要创建的密钥保管库的类型。 |
 | 资源 | 数组<br />可选<br />允许的值：[密钥保管库机密资源](resource-manager-template-keyvault-secret.md)<br /><br />密钥保管库的子资源。 |
 
-<a id="properties" /></a>
+<a id="properties" />
 ### 属性对象
 
-| 名称 | 值 |
+| Name | 值 |
 | ---- | ---- | 
 | enabledForDeployment | 布尔值<br />可选<br />**true** 或 **false**<br /><br />指定是否已为虚拟机或 Service Fabric 部署启用了保管库。 |
-| enabledForTemplateDeployment | 布尔值<br />可选<br />**true** 或 **false**<br /><br />指定是否在 Resource Manager 模板部署中启用了保管库。有关详细信息，请参阅 [Pass secure values during deployment（在部署期间传递安全值）](resource-manager-keyvault-parameter.md) |
+| enabledForTemplateDeployment | 布尔值<br />可选<br />**true** 或 **false**<br /><br />指定是否在 Resource Manager 模板部署中启用了保管库。有关详细信息，请参阅[在部署期间传递安全值](resource-manager-keyvault-parameter.md) |
 | enabledForVolumeEncryption | 布尔值<br />可选<br />**true** 或 **false**<br /><br />指定是否为卷加密启用了保管库。 |
-| tenantId | 字符串<br />必需<br />**全局唯一标识符**<br /><br />订阅的租户标识符。可以使用 [Get-AzureRMSubscription](https://msdn.microsoft.com/library/azure/mt619284.aspx) PowerShell cmdlet 或 **azure account show** Azure CLI 命令来检索该值。 |
+| tenantId | 字符串<br />必需<br />**全局唯一标识符**<br /><br />订阅的租户标识符。可以使用 [Get-AzureRmSubscription](https://msdn.microsoft.com/library/azure/mt619284.aspx) PowerShell cmdlet 或 **azure account show** Azure CLI 命令来检索该值。 |
 | accessPolicies | 数组<br />必需<br />[accessPolicies 对象](#accesspolicies)<br /><br />最多包含 16 个对象的数组，指定用户或服务主体的权限。 |
 | sku | 对象<br />必需<br />[sku 对象](#sku)<br /><br />密钥保管库的 SKU。 |
 
-<a id="accesspolicies" /></a>
+<a id="accesspolicies" />  
+
 ### properties.accessPolicies 对象
 
 | 名称 | 值 |
 | ---- | ---- | 
 | tenantId | 字符串<br />必需<br />**全局唯一标识符**<br /><br />包含此访问策略中 **objectId** 的 Azure Active Directory 租户的租户标识符 |
-| objectId | 字符串<br />必需<br />**全局唯一标识符**<br /><br />将有权访问保管库的 Azure Active Directory 用户或服务主体的对象标识符。可以通过 [Get-AzureRMADUser](https://msdn.microsoft.com/library/azure/mt679001.aspx) 或 [Get-AzureRMADServicePrincipal](https://msdn.microsoft.com/library/azure/mt678992.aspx) PowerShell cmdlet，或者 **azure ad user** 或 **azure ad sp** Azure CLI 命令来检索该值。 |
+| objectId | 字符串<br />必需<br />**全局唯一标识符**<br /><br />将有权访问保管库的 Azure Active Directory 用户或服务主体的对象标识符。可以通过 [Get-AzureRmADUser](https://msdn.microsoft.com/library/azure/mt679001.aspx) 或 [Get-AzureRmADServicePrincipal](https://msdn.microsoft.com/library/azure/mt678992.aspx) PowerShell cmdlet，或者 **azure ad user** 或 **azure ad sp** Azure CLI 命令来检索该值。 |
 | 权限 | 对象<br />必需<br />[permissions 对象](#permissions)<br /><br />向 Active Directory 对象授予的对此保管库的权限。 |
 
-<a id="permissions" /></a>
+<a id="permissions" />  
+
 ### properties.accessPolicies.permissions 对象
 
 | 名称 | 值 |
@@ -92,12 +96,13 @@
 | 密钥 | 数组<br />必需<br />**all**、**backup**、**create**、**decrypt**、**delete**、**encrypt**、**get**、**import**、**list**、**restore**、**sign**、**unwrapkey**、**update**、**verify**、**wrapkey**<br /><br />向此 Active Directory 对象授予的，对此保管库中密钥的权限。必须将此值指定为一个或多个允许值的数组。 |
 | secrets | 数组<br />必需<br />**all**、**delete**、**get**、**list**、**set**<br /><br />向此 Active Directory 对象授予的，对此保管库中机密的权限。必须将此值指定为一个或多个允许值的数组。 |
 
-<a id="sku" /></a>
+<a id="sku" />  
+
 ### properties.sku 对象
 
-| 名称 | 值 |
+| Name | 值 |
 | ---- | ---- | 
-| name | 枚举<br />必需<br />**standard** 或 **premium** <br /><br />要使用的 KeyVault 服务层。标准支持机密和软件保护的密钥。高级版添加了对 HSM 保护密钥的支持。 |
+| 名称 | 枚举<br />必需<br />**standard** 或 **premium**<br /><br />要使用的 KeyVault 服务层。标准支持机密和软件保护的密钥。高级版添加了对 HSM 保护密钥的支持。 |
 | family | 枚举<br />必需<br />**A** <br /><br />要使用的 SKU 系列。 |
  
 	
@@ -118,13 +123,13 @@
             "tenantId": {
                 "type": "string",
                 "metadata": {
-                   "description": "Tenant Id for the subscription and use assigned access to the vault. Available from the Get-AzureRMSubscription PowerShell cmdlet"
+                   "description": "Tenant ID for the subscription and use assigned access to the vault. Available from the Get-AzureRmSubscription PowerShell cmdlet"
                 }
             },
             "objectId": {
                 "type": "string",
                 "metadata": {
-                    "description": "Object Id of the AAD user or service principal that will have access to the vault. Available from the Get-AzureRMADUser or the Get-AzureRMADServicePrincipal cmdlets"
+                    "description": "Object ID of the AAD user or service principal that will have access to the vault. Available from the Get-AzureRmADUser or the Get-AzureRmADServicePrincipal cmdlets"
                 }
             },
             "keysPermissions": {
@@ -238,8 +243,7 @@
 
 ## 后续步骤
 
-- 有关密钥保管库的一般信息，请参阅 [Azure 密钥保管库入门](/documentation/articles/key-vault-get-started)。
-- 有关在部署模板时引用密钥保管库机密的示例，请参阅[在部署期间传递安全值](/documentation/articles/resource-manager-keyvault-parameter)。
+- 有关密钥保管库的一般信息，请参阅 [Azure 密钥保管库入门](/documentation/articles/key-vault-get-started/)。
+- 有关在部署模板时引用密钥保管库机密的示例，请参阅[在部署期间传递安全值](/documentation/articles/resource-manager-keyvault-parameter/)。
 
-
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0815_2016-->

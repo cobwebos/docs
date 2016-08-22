@@ -5,7 +5,8 @@
 	documentationCenter=""
 	authors="dstrockis"
 	manager="mbaldwin"
-	editor=""/>
+	editor=""/>  
+
 
 <tags
 	ms.service="active-directory"
@@ -51,19 +52,47 @@ v2.0 终结点目前不支持此流，也就是说，应用只能在发生交互
 
 在新的应用程序注册门户中注册的应用目前限制为一组有限的 redirect\_uri 值。Web 应用和服务的 redirect\_uri 必须以方案或 `https` 开头，而所有其他平台的 redirect\_uri 必须使用 `urn:ietf:oauth:2.0:oob` 的硬编码值。
 
-若要了解如何在新的应用程序注册门户中注册应用，请参阅[此文](/documentation/articles/active-directory-v2-app-registration)。
+## 重定向 URI 的限制
+对于 Web 应用，redirect\_uri 值必须全部共享单个 DNS 域。例如，不能注册具有 redirect\_uris 的 Web 应用程序：
+
+`https://login-east.contoso.com`  
+`https://login-west.contoso.com`
+
+注册系统会将现有 redirect\_uri 的完整 DNS 名称与要添加的 redirect\_uri 的 DNS 名称相比较。如果新 redirect\_uri 的完整 DNS 名称与现有 redirect\_uri 的 DNS 名称不完全匹配，或者新 redirect\_uri 的完整 DNS 名称不是现有 redirect\_uri 的子域，则添加请求将失败。例如，如果应用当前拥有以下 redirect\_uri：
+
+`https://login.contoso.com`  
+
+
+则可以添加：
+
+`https://login.contoso.com/new`
+
+因为它与 DNS 名称完全匹配，或：
+
+`https://new.login.contoso.com`  
+
+
+因为它是 login.contoso.com 的 DNS 子域。如果你希望拥有使用 login-east.contoso.com 和 login-west.contoso.com 作为 redirect\_uris 的应用，则必须按顺序添加以下 redirect\_uris：
+
+`https://contoso.com`  
+`https://login-east.contoso.com`  
+`https://login-west.contoso.com`  
+
+可以添加后两个 redirect\_uri，因为它们是第一个 (contoso.com) 的子域。即将发布的版本中将取消此限制。
+
+若要了解如何在新的应用程序注册门户中注册应用，请参阅[此文](active-directory-v2-app-registration.md)。
 
 ## 服务和 API 限制
 v2.0 终结点目前支持登录所有已在新应用程序注册门户中注册的应用，前提是该应用已在[支持的身份验证流](/documentation/articles/active-directory-v2-flows)列表中列出。但是，这些应用只能获取 OAuth 2.0 访问令牌来访问非常有限的资源集。v2.0 终结点只为以下项目颁发 access\_token：
 
 - 请求令牌的应用。如果逻辑应用包含多个不同的组件或层，则应用可为自身获取 access\_token。若要查看此方案的工作方式，请参阅[入门](/documentation/articles/active-directory-appmodel-v2-overview#getting-started)教程。
-- Outlook 邮件、日历和联系人 REST API，全都位于 https://outlook.office.com。 若要了解如何编写访问这些 API 的应用，请参阅 [Office Getting Started](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)（Office 入门）教程。
+- Outlook 邮件、日历和联系人 REST API，全都位于 https://outlook.office.com。若要了解如何编写访问这些 API 的应用，请参阅 [Office 入门](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2)教程。
 - Microsoft 图形 API。若要了解 Microsoft Graph 和可用的所有数据，请访问 [https://graph.microsoft.io](https://graph.microsoft.io)。
 
 目前不支持其他服务。将来会添加更多的 Microsoft Online 服务，并支持自定义构建的 Web API 和服务。
 
 ## 库和 SDK 限制
-为了帮助你试用，我们提供了与 v2.0 终结点兼容的 Active Directory 身份验证库体验版。但是，此版本的 ADAL 处于预览状态 - 目前不受支持，未来几个月将有大幅改动。如果你想要尽快让应用配合 v2.0 终结点一起运行，[入门](/documentation/articles/active-directory-appmodel-v2-overview#getting-started)部分中提供了有关使用 ADAL for .NET、iOS、Android 和 Javascript 的代码示例。
+为了帮助你试用，我们提供了与 v2.0 终结点兼容的 Active Directory 身份验证库体验版。但是，此版本的 ADAL 处于预览状态 - 目前不受支持，未来几个月将有大幅改动。如果你想要尽快让应用配合 v2.0 终结点一起运行，[入门](/documentation/articles/active-directory-appmodel-v2-overview/#getting-started)部分中提供了有关使用 ADAL for .NET、iOS、Android 和 Javascript 的代码示例。
 
 如果你想要在生产应用程序中使用 v2.0 终结点，可使用以下选项：
 
@@ -93,4 +122,4 @@ Azure Active Directory 服务提供一组开发人员功能（v2.0 终结点尚�
 - Azure AD 用户的组声明
 - 应用程序角色和角色声明
 
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0815_2016-->

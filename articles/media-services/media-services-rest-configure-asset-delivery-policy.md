@@ -5,22 +5,24 @@
 	documentationCenter="" 
 	authors="Juliako" 
 	manager="dwrede" 
-	editor=""/>
+	editor=""/>  
+
 
 <tags
 	ms.service="media-services"
- 	ms.date="03/14/2016"  
-	wacn.date=""/>
+	ms.date="06/22/2016"  
+	wacn.date=""/>  
+
 
 #如何：配置资产传送策略
 
-[AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../includes/media-services-selector-asset-delivery-policy.md)]
+[AZURE.INCLUDE [media-services-selector-asset-delivery-policy](../../includes/media-services-selector-asset-delivery-policy.md)]
 
 如果你打算传送动态加密的资产，媒体服务内容传送工作流中的步骤之一是为资产配置传送策略。资产传送策略告知媒体服务你希望如何传送资产：应该将资产动态打包成哪种流式处理协议（例如 MPEG DASH、HLS、平滑流或全部），是否要动态加密资产以及如何加密（信封或常用加密）。
 
 本主题介绍为何以及如何创建和配置资产传送策略。
 
->[AZURE.NOTE]若要使用动态打包和动态加密，必须确保至少有一个缩放单位（也称为流式处理单位）。有关详细信息，请参阅[如何缩放媒体服务](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
+>[AZURE.NOTE]若要使用动态打包和动态加密，必须确保至少有一个缩放单位（也称为流式处理单位）。有关详细信息，请参阅[如何缩放媒体服务](/documentation/articles/media-services-manage-origins/#scale_streaming_endpoints)。
 >
 >此外，你的资产必须包含一组自适应比特率 MP4 或自适应比特率平滑流文件。
 
@@ -48,21 +50,21 @@ HDS
 
 	{streaming endpoint name-media services account name}.streaming.mediaservices.chinacloudapi.cn/{locator ID}/{filename}.ism/Manifest(format=f4m-f4f)
 
-有关如何发布资产和生成流 URL 的说明，请参阅[生成流 URL](/documentation/articles/media-services-deliver-streaming-content)。
+有关如何发布资产和生成流 URL 的说明，请参阅[生成流 URL](/documentation/articles/media-services-deliver-streaming-content/)。
 
 
 ##注意事项
 
 - 如果某个资产存在 OnDemand（流式处理）定位符，则不能与该资产关联的 AssetDeliveryPolicy。在删除策略之前，建议先从资产中删除该策略。
 - 如果未设置资产传送策略，则无法在存储加密的资产上创建流式处理定位符。如果资产未经过存储加密，则即使未设置资产传送策略，系统也可让你顺利地创建定位符和流式处理资产。
-- 可将多个资产传送策略关联到单个资产，但只能指定一种方法来处理给定的 AssetDeliveryProtocol。也就是说，如果你尝试链接两个指定 AssetDeliveryProtocol.SmoothStreaming 协议的传送策略，则会导致出错，因为当客户端发出平滑流请求时，系统不知道你要应用哪个策略。  
-- 如果你的资产包含现有的流式处理定位符，则不能将新策略链接到该资产、取消现有策略与资产的链接，或者更新与该资产关联的传送策略。必须先删除流式传输定位符，再调整策略，然后重新创建流式传输定位符。在重新创建流式处理定位符时可以使用同一个 locatorId，但应确保该操作不会导致客户端出现问题，因为内容可能已被来源或下游 CDN 缓存。  
+- 可将多个资产传送策略关联到单个资产，但只能指定一种方法来处理给定的 AssetDeliveryProtocol。也就是说，如果你尝试链接两个指定 AssetDeliveryProtocol.SmoothStreaming 协议的传送策略，则会导致出错，因为当客户端发出平滑流请求时，系统不知道你要应用哪个策略。
+- 如果你的资产包含现有的流式处理定位符，则不能将新策略链接到该资产、取消现有策略与资产的链接，或者更新与该资产关联的传送策略。必须先删除流式传输定位符，再调整策略，然后重新创建流式传输定位符。在重新创建流式处理定位符时可以使用同一个 locatorId，但应确保该操作不会导致客户端出现问题，因为内容可能已被来源或下游 CDN 缓存。
  
 >[AZURE.NOTE] 使用媒体服务 REST API 时，需注意以下事项：
 >
->访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use)。
+>访问媒体服务中的实体时，必须在 HTTP 请求中设置特定标头字段和值。有关详细信息，请参阅[媒体服务 REST API 开发的设置](/documentation/articles/media-services-rest-how-to-use/)。
 
->在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。必须按[使用 REST API 连接到媒体服务](/documentation/articles/media-services-rest-connect_programmatically)中所述对新的 URI 执行后续调用。
+>在成功连接到 https://media.chinacloudapi.cn 之后，你将接收到指定另一个媒体服务 URI 的 301 重定向。必须根据[使用 REST API 连接到媒体服务](/documentation/articles/media-services-rest-connect_programmatically/)中所述对新的 URI 执行后续调用。
 
 
 ##清除资产传送策略 
@@ -75,7 +77,7 @@ HDS
 
 请求：
 	  
-	POST https://media.chinacloudapi.cn/api/AssetDeliveryPolicies HTTP/1.1
+	POST https://https://wamsshaclus001rest-hs.chinacloudapp.cn/api/AssetDeliveryPolicies HTTP/1.1
 	Content-Type: application/json
 	DataServiceVersion: 1.0;NetFx
 	MaxDataServiceVersion: 3.0;NetFx
@@ -84,7 +86,7 @@ HDS
 	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=zbbef702-e769-2233-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423397827&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&HMACSHA256=Szo6lbJAvL3dyecAeVmyAnzv3mGzfUNClR5shk9Ivbk%3d
 	x-ms-version: 2.11
 	x-ms-client-request-id: 4651882c-d7ad-4d5e-86ab-f07f47dcb41e
-	Host: media.chinacloudapi.cn
+	Host: https://wamsshaclus001rest-hs.chinacloudapp.cn 
 	
 	{"Name":"Clear Policy",
 	"AssetDeliveryProtocol":7,
@@ -97,7 +99,7 @@ HDS
 	Cache-Control: no-cache
 	Content-Length: 363
 	Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-	Location: https://media.chinacloudapi.cn/api/AssetDeliveryPolicies('nb%3Aadpid%3AUUID%3A92b0f6ba-3c9f-49b6-a5fa-2a8703b04ecd')
+	Location: https://https://wamsshaclus001rest-hs.chinacloudapp.cn/api/AssetDeliveryPolicies('nb%3Aadpid%3AUUID%3A92b0f6ba-3c9f-49b6-a5fa-2a8703b04ecd')
 	Server: Microsoft-IIS/8.5
 	x-ms-client-request-id: 4651882c-d7ad-4d5e-86ab-f07f47dcb41e
 	request-id: 6aedbf93-4bc2-4586-8845-fd45590136af
@@ -108,7 +110,7 @@ HDS
 	Strict-Transport-Security: max-age=31536000; includeSubDomains
 	Date: Sun, 08 Feb 2015 06:21:27 GMT
 	
-	{"odata.metadata":"https://media.chinacloudapi.cn/api/$metadata#AssetDeliveryPolicies/@Element",
+	{"odata.metadata":"https://https://wamsshaclus001rest-hs.chinacloudapp.cn/api/$metadata#AssetDeliveryPolicies/@Element",
 	"Id":"nb:adpid:UUID:92b0f6ba-3c9f-49b6-a5fa-2a8703b04ecd",
 	"Name":"Clear Policy",
 	"AssetDeliveryProtocol":7,
@@ -123,7 +125,7 @@ HDS
 
 请求：
 
-	POST https://media.chinacloudapi.cn/api/Assets('nb%3Acid%3AUUID%3A86933344-9539-4d0c-be7d-f842458693e0')/$links/DeliveryPolicies HTTP/1.1
+	POST https://https://wamsshaclus001rest-hs.chinacloudapp.cn/api/Assets('nb%3Acid%3AUUID%3A86933344-9539-4d0c-be7d-f842458693e0')/$links/DeliveryPolicies HTTP/1.1
 	DataServiceVersion: 1.0;NetFx
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json
@@ -132,9 +134,9 @@ HDS
 	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=zbbef702-e769-3344-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423397827&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&HMACSHA256=Szo6lbJAvL3dyecAeVmyAnzv3mGzfUNClR5shk9Ivbk%3d
 	x-ms-version: 2.11
 	x-ms-client-request-id: 56d2763f-6e72-419d-ba3c-685f6db97e81
-	Host: media.chinacloudapi.cn
+	Host: https://wamsshaclus001rest-hs.chinacloudapp.cn
 	
-	{"uri":"https://media.chinacloudapi.cn/api/AssetDeliveryPolicies('nb%3Aadpid%3AUUID%3A92b0f6ba-3c9f-49b6-a5fa-2a8703b04ecd')"}
+	{"uri":"https://https://wamsshaclus001rest-hs.chinacloudapp.cn/api/AssetDeliveryPolicies('nb%3Aadpid%3AUUID%3A92b0f6ba-3c9f-49b6-a5fa-2a8703b04ecd')"}
 
 响应：
 
@@ -145,7 +147,7 @@ HDS
 
 ###创建 EnvelopeEncryption 类型的内容密钥，并将其链接到资产
 
-在指定 DynamicEnvelopeEncryption 传送策略时，需要确保将你的资产链接到 EnvelopeEncryption 类型的内容密钥。有关详细信息，请参阅：[创建内容密钥](/documentation/articles/media-services-rest-create-contentkey)。
+在指定 DynamicEnvelopeEncryption 传送策略时，需要确保将你的资产链接到 EnvelopeEncryption 类型的内容密钥。有关详细信息，请参阅：[创建内容密钥](/documentation/articles/media-services-rest-create-contentkey/)。
 
 
 ###<a id="get_delivery_url"></a>获取传送 URL
@@ -156,7 +158,7 @@ HDS
 
 请求：
 	
-	POST https://media.chinacloudapi.cn/api/ContentKeys('nb:kid:UUID:dc88f996-2859-4cf7-a279-c52a9d6b2f04')/GetKeyDeliveryUrl HTTP/1.1
+	POST https://https://wamsshaclus001rest-hs.chinacloudapp.cn/api/ContentKeys('nb:kid:UUID:dc88f996-2859-4cf7-a279-c52a9d6b2f04')/GetKeyDeliveryUrl HTTP/1.1
 	Content-Type: application/json
 	MaxDataServiceVersion: 3.0;NetFx
 	Accept: application/json
@@ -164,7 +166,7 @@ HDS
 	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423452029&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&HMACSHA256=IEXV06e3drSIN5naFRBdhJZCbfEqQbFZsGSIGmawhEo%3d
 	x-ms-version: 2.11
 	x-ms-client-request-id: 569d4b7c-a446-4edc-b77c-9fb686083dd8
-	Host: media.chinacloudapi.cn
+	Host: https://wamsshaclus001rest-hs.chinacloudapp.cn
 	Content-Length: 21
 	
 	{"keyDeliveryType":2}
@@ -184,7 +186,7 @@ HDS
 	Strict-Transport-Security: max-age=31536000; includeSubDomains
 	Date: Sun, 08 Feb 2015 21:42:30 GMT
 	
-	{"odata.metadata":"media.chinacloudapi.cn/api/$metadata#Edm.String","value":"https://amsaccount1.keydelivery.mediaservices.chinacloudapi.cn/?KID=dc88f996-2859-4cf7-a279-c52a9d6b2f04"}
+	{"odata.metadata":"https://wamsshaclus001rest-hs.chinacloudapp.cn/api/$metadata#Edm.String","value":"https://amsaccount1.keydelivery.mediaservices.chinacloudapi.cn/?KID=dc88f996-2859-4cf7-a279-c52a9d6b2f04"}
 
 
 ###创建资产传送策略
@@ -196,7 +198,7 @@ HDS
 
 请求：
 
-	POST https://media.chinacloudapi.cn/api/AssetDeliveryPolicies HTTP/1.1
+	POST https://https://wamsshaclus001rest-hs.chinacloudapp.cn/api/AssetDeliveryPolicies HTTP/1.1
 	Content-Type: application/json
 	DataServiceVersion: 1.0;NetFx
 	MaxDataServiceVersion: 3.0;NetFx
@@ -206,7 +208,7 @@ HDS
 	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423480651&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&HMACSHA256=T2FG3tIV0e2ETzxQ6RDWxWAsAzuy3ez2ruXPhrBe62Y%3d
 	x-ms-version: 2.11
 	x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
-	Host: media.chinacloudapi.cn
+	Host: https://wamsshaclus001rest-hs.chinacloudapp.cn
 	
 	{"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\\/\\/amsaccount1.keydelivery.mediaservices.chinacloudapi.cn\\/"}]"}
 
@@ -217,7 +219,7 @@ HDS
 	Cache-Control: no-cache
 	Content-Length: 460
 	Content-Type: application/json;odata=minimalmetadata;streaming=true;charset=utf-8
-	Location: media.chinacloudapi.cn/api/AssetDeliveryPolicies('nb%3Aadpid%3AUUID%3Aec9b994e-672c-4a5b-8490-a464eeb7964b')
+	Location: https://wamsshaclus001rest-hs.chinacloudapp.cn/api/AssetDeliveryPolicies('nb%3Aadpid%3AUUID%3Aec9b994e-672c-4a5b-8490-a464eeb7964b')
 	Server: Microsoft-IIS/8.5
 	x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
 	request-id: c2a1ac0e-9644-474f-b38f-b9541c3a7c5f
@@ -227,7 +229,7 @@ HDS
 	Strict-Transport-Security: max-age=31536000; includeSubDomains
 	Date: Mon, 09 Feb 2015 05:24:38 GMT
 	
-	{"odata.metadata":"media.chinacloudapi.cn/api/$metadata#AssetDeliveryPolicies/@Element","Id":"nb:adpid:UUID:ec9b994e-672c-4a5b-8490-a464eeb7964b","Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\\/\\/amsaccount1.keydelivery.mediaservices.chinacloudapi.cn\\/"}]","Created":"2015-02-09T05:24:38.9167436Z","LastModified":"2015-02-09T05:24:38.9167436Z"}
+	{"odata.metadata":"https://wamsshaclus001rest-hs.chinacloudapp.cn/api/$metadata#AssetDeliveryPolicies/@Element","Id":"nb:adpid:UUID:ec9b994e-672c-4a5b-8490-a464eeb7964b","Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":4,"AssetDeliveryPolicyType":3,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\\/\\/amsaccount1.keydelivery.mediaservices.chinacloudapi.cn\\/"}]","Created":"2015-02-09T05:24:38.9167436Z","LastModified":"2015-02-09T05:24:38.9167436Z"}
 
 
 ###将资产与资产传送策略相链接
@@ -238,7 +240,7 @@ HDS
 
 ###创建 CommonEncryption 类型的内容密钥，并将其链接到资产
 
-在指定 DynamicCommonEncryption 传送策略时，需要确保将你的资产链接到 CommonEncryption 类型的内容密钥。有关详细信息，请参阅：[创建内容密钥](/documentation/articles/media-services-rest-create-contentkey)。
+在指定 DynamicCommonEncryption 传送策略时，需要确保将你的资产链接到 CommonEncryption 类型的内容密钥。有关详细信息，请参阅：[创建内容密钥](/documentation/articles/media-services-rest-create-contentkey/)。
 
 
 ###获取传送 URL
@@ -254,7 +256,7 @@ HDS
 
 请求：
 
-	POST https://media.chinacloudapi.cn/api/AssetDeliveryPolicies HTTP/1.1
+	POST https://https://wamsshaclus001rest-hs.chinacloudapp.cn/api/AssetDeliveryPolicies HTTP/1.1
 	Content-Type: application/json
 	DataServiceVersion: 1.0;NetFx
 	MaxDataServiceVersion: 3.0;NetFx
@@ -264,7 +266,7 @@ HDS
 	Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amsaccount1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423480651&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.chinacloudapi.cn%2f&HMACSHA256=T2FG3tIV0e2ETzxQ6RDWxWAsAzuy3ez2ruXPhrBe62Y%3d
 	x-ms-version: 2.11
 	x-ms-client-request-id: fff319f6-71dd-4f6c-af27-b675c0066fa7
-	Host: media.chinacloudapi.cn
+	Host: https://wamsshaclus001rest-hs.chinacloudapp.cn
 	
 	{"Name":"AssetDeliveryPolicy","AssetDeliveryProtocol":1,"AssetDeliveryPolicyType":4,"AssetDeliveryConfiguration":"[{"Key":2,"Value":"https:\\/\\/amsaccount1.keydelivery.mediaservices.chinacloudapi.cn\/PlayReady\/"}]"}
 
@@ -443,6 +445,4 @@ HDS
         WidevineLicenseAcquisitionUrl
     }
 
-
-
-<!---HONumber=Mooncake_0328_2016-->
+<!---HONumber=Mooncake_0815_2016-->

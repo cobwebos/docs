@@ -4,24 +4,26 @@
 	services="notification-hubs"
 	documentationCenter="windows"
 	authors="wesmc7777"
-	manager="dwrede"
-	editor=""/>
+	manager="erikre"
+	editor=""/>  
+
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="03/28/2016" 
-	wacn.date=""/>
+	ms.date="06/29/2016" 
+	wacn.date=""/>  
+
 
 # 使用通知中心发送突发新闻
 
-[AZURE.INCLUDE [notification-hubs-selector-breaking-news](../includes/notification-hubs-selector-breaking-news.md)]
+[AZURE.INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 
 ##概述
 
-本主题演示如何使用 Azure 通知中心将突发新闻通知广播到 Windows Phone 8.0/8.1 Silverlight 应用。如果你要以 Windows 应用商店或 Phone 8.1 应用为目标，请参阅 [Windows Universal](/documentation/articles/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns) 版本。完成时，你可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。
+本主题演示如何使用 Azure 通知中心将突发新闻通知广播到 Windows Phone 8.0/8.1 Silverlight 应用。如果你要以 Windows 应用商店或 Phone 8.1 应用为目标，请参阅 [Windows Universal](/documentation/articles/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns/) 版本。完成时，你可以注册感兴趣的突发新闻类别并仅接收这些类别的推送通知。此方案对于很多应用程序来说是常见模式，在其中必须将通知发送到以前声明过对它们感兴趣的一组用户，这样的应用程序有 RSS 阅读器、针对音乐迷的应用程序等。
 
-在创建通知中心的注册时，通过加入一个或多个标记来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标记的详细信息，请参阅[通知中心路由和标记表达式](/documentation/articles/notification-hubs-tags-segment-push-message)。
+在创建通知中心的注册时，通过加入一个或多个_标记_来启用广播方案。将通知发送到标签时，已注册该标签的所有设备将接收通知。因为标签是简单的字符串，它们不必提前设置。有关标记的详细信息，请参阅[通知中心路由和标记表达式](/documentation/articles/notification-hubs-tags-segment-push-message/)。
 
 ##先决条件
 
@@ -183,10 +185,10 @@
         }
 
 
-    此类使用隔离存储区存储此设备要接收的新闻类别。它还包含用于通过[模板](notification-hubs-templates-cross-platform-push-messages-cross-platform-push-messages)通知注册来注册这些类别的方法。
+    此类使用隔离存储区存储此设备要接收的新闻类别。它还包含用于通过[模板](/documentation/articles/notification-hubs-templates-cross-platform-push-messages/)通知注册来注册这些类别的方法。
 
 
-4. 在 App.xaml.cs 项目文件中，将以下属性添加到 **App** 类：将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心名称和前面获取的 DefaultListenSharedAccessSignature 的连接字符串。
+4. 在 App.xaml.cs 项目文件中，将以下属性添加到 **App** 类：将 `<hub name>` 和 `<connection string with listen access>` 占位符替换为通知中心名称和前面获取的 *DefaultListenSharedAccessSignature* 的连接字符串。
 
 		public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
 
@@ -260,7 +262,7 @@
 
 ##发送带标记的通知
 
-[AZURE.INCLUDE [notification-hubs-send-categories-template](../includes/notification-hubs-send-categories-template.md)]
+[AZURE.INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 ##运行应用并生成通知
 
@@ -310,10 +312,9 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
 
 <!-- URLs.-->
+
 [通知中心入门]: /documentation/articles/notification-hubs-windows-mobile-push-notifications-mpns/
-[Use Notification Hubs to broadcast localized breaking news]: /documentation/articles/breakingnews-localized-wp8
+
 [Notify users with Notification Hubs]: /documentation/articles/mobile-services-dotnet-backend-windows-store-dotnet-push-notifications-app-users/
 
-
-
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0815_2016-->

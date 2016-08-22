@@ -6,12 +6,14 @@
 	documentationCenter=""
 	authors="jeffstokes72"
 	manager="paulettm"
-	editor="cgronlun"/>
+	editor="cgronlun"/>  
+
 
 <tags
 	ms.service="stream-analytics"
-	ms.date="06/15/2016"
-	wacn.date=""/>
+	ms.date="07/13/2016"
+	wacn.date=""/>  
+
 # 数据连接：了解从事件到流分析的数据流输入
 
 连接到流分析的数据连接是数据源提供的事件所组成的数据流。这称为“输入”。 流分析与 Azure 数据流源（事件中心、IoT 中心和 Blob 存储）进行第一类集成，这些数据流源可能与你的分析作业来自同一个 Azure 订阅，也可能来自不同的 Azure 订阅。
@@ -34,7 +36,7 @@
 
 ### 使用者组
 
-应对每个流分析事件中心输入进行配置，使之拥有自己的使用者组。如果作业包含自联接或多个输入，部分输入可能会由下游的多个读取器读取，这会影响单个使用者组中的读取器数目。为了避免超出针对事件中心设置的每个分区每个使用者组 5 个读取器的限制，最好是为每个流分析作业指定一个使用者组。请注意还有一项限制，即每个事件中心最多只能有 20 个使用者组。有关详细信息，请参阅[事件中心编程指南](/documentation/articles/event-hubs-programming-guide)。
+应对每个流分析事件中心输入进行配置，使之拥有自己的使用者组。如果作业包含自联接或多个输入，部分输入可能会由下游的多个读取器读取，这会影响单个使用者组中的读取器数目。为了避免超出针对事件中心设置的每个分区每个使用者组 5 个读取器的限制，最好是为每个流分析作业指定一个使用者组。请注意还有一项限制，即每个事件中心最多只能有 20 个使用者组。有关详细信息，请参阅[事件中心编程指南](/documentation/articles/event-hubs-programming-guide/)。
 
 ### 将事件中心配置为输入数据流
 
@@ -113,7 +115,9 @@ Azure Iot 中心是已针对 IoT 进行优化，具有高度可缩放性的发�
 
 对于需要将大量非结构化数据存储在云中的情况，Blob 存储提供了一种经济高效且可伸缩的解决方案。通常情况下，可以将 [Blob 存储](/services/storage/blobs/)中的数据视为“静态”数据，但这些数据可以作为数据流由流分析进行处理。流分析使用 Blob 存储输入的一种常见情况是进行日志处理，即首先从某个系统捕获遥测数据，然后根据需要对这些数据进行分析和处理以提取有意义的数据。
 
-需要注意的是，流分析中 Blob 存储事件的默认时间戳是上次修改 blob 的时间戳，即 *isBlobLastModifiedUtcTime*。若要在事件负载中使用时间戳以流方式处理数据，必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) 关键字。
+需要注意的是，流分析中 Blob 存储事件的默认时间戳是上次修改 blob 的时间戳，即 isBlobLastModifiedUtcTime。若要在事件负载中使用时间戳以流方式处理数据，必须使用 [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) 关键字。
+
+另请注意，CSV 格式的输入**需要**标头行，以便为数据集定义字段。而且，标头行字段必须都**唯一**。
 
 > [AZURE.NOTE] 流分析不支持将内容添加到现有 Blob。流分析只会查看 Blob 一次，在这项读取操作后所做的任何更改都不会得到处理。最佳实践是一次性上载所有数据，而不要在 Blob 存储中添加其他任何事件。
 
@@ -196,17 +200,18 @@ Azure Iot 中心是已针对 IoT 进行优化，具有高度可缩放性的发�
 ## 后续步骤
 你已经了解了 Azure 中针对流分析作业的数据连接选项。若要了解流分析的更多内容，请参阅：
 
-- [Azure 流分析入门](/documentation/articles/stream-analytics-get-started)
-- [缩放 Azure 流分析作业](/documentation/articles/stream-analytics-scale-jobs)
+- [Azure 流分析入门](/documentation/articles/stream-analytics-get-started/)
+- [缩放 Azure 流分析作业](/documentation/articles/stream-analytics-scale-jobs/)
 - [Azure 流分析查询语言参考](https://msdn.microsoft.com/zh-cn/library/azure/dn834998.aspx)
 - [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/dn835031.aspx)
 
 <!--Link references-->
-[stream.analytics.developer.guide]: /documentation/articles/stream-analytics-developer-guide
-[stream.analytics.scale.jobs]: /documentation/articles/stream-analytics-scale-jobs
-[stream.analytics.introduction]: /documentation/articles/stream-analytics-introduction
-[stream.analytics.get.started]: /documentation/articles/stream-analytics-get-started
+
+[stream.analytics.developer.guide]: /documentation/articles/stream-analytics-developer-guide/
+[stream.analytics.scale.jobs]: /documentation/articles/stream-analytics-scale-jobs/
+[stream.analytics.introduction]: /documentation/articles/stream-analytics-introduction/
+[stream.analytics.get.started]: /documentation/articles/stream-analytics-get-started/
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0815_2016-->

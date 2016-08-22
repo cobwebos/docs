@@ -1,7 +1,8 @@
 <!-- not suitable for Mooncake -->
 
+
 <properties 
-	pageTitle="使用工作流设计器创建高级编码工作流" 
+	pageTitle="使用工作流设计器创建高级编码工作流 | Azure" 
 	description="了解如何使用工作流设计器创建高级编码工作流。" 
 	services="media-services" 
 	documentationCenter="" 
@@ -11,8 +12,9 @@
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/08/2016"  
-	wacn.date=""/>
+	ms.date="06/22/2016"
+	wacn.date=""/>  
+
 
 
 #使用工作流设计器创建高级编码工作流
@@ -28,18 +30,18 @@
 你可以创建的工作流示例包括：
 
 - 基于决策的工作流，该类工作流将检查要解析的源内容，并且仅编码所需的输出跟踪。这有助于消除因无意中增加源内容而生成的多余跟踪。
-- 可使用多个输入文件来支持标题、覆盖和拼结在一起的内容。 
+- 可使用多个输入文件来支持标题、覆盖和拼结在一起的内容。
 
-你还可以使用此工具来修改任何[已发布工作流](/documentation/articles/media-services-workflow-designer#existing_workflows)。
+你还可以使用此工具来修改任何[已发布工作流](/documentation/articles/media-services-workflow-designer/#existing_workflows)。
 
 >[AZURE.NOTE]若要获取工作流设计器工具的副本，请联系 mepd@microsoft.com。
 
 
-创建工作流文件后，可将其作为资产上载，然后用于对媒体文件编码。有关如何使用 **.NET** 通过**媒体编码器高级工作流**编码的信息，请参阅[使用媒体编码器高级工作流进行高级编码](/documentation/articles/media-services-encode-with-premium-workflow)。
+创建工作流文件后，可将其作为资产上载，然后用于对媒体文件编码。有关如何使用 **.NET** 通过**媒体编码器高级工作流**编码的信息，请参阅[使用媒体编码器高级工作流进行高级编码](/documentation/articles/media-services-encode-with-premium-workflow/)。
 
 ##<a id="existing_workflows"></a>修改现有工作流
 
-可以使用设计器工具修改默认的[已发布工作流](/documentation/articles/media-services-workflow-designer#existing_workflows)。可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认工作流文件。该文件夹还包含这些文件的相关说明。
+可以使用设计器工具修改默认的[已发布工作流](/documentation/articles/media-services-workflow-designer/#existing_workflows)。可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认工作流文件。该文件夹还包含这些文件的相关说明。
 
 以下视频演示如何使用设计器。
 
@@ -75,19 +77,8 @@
 
 
 
-##媒体服务学习路径
-
-[AZURE.INCLUDE [media-services-learning-paths-include](../includes/media-services-learning-paths-include.md)]
-
-##提供反馈
-
-[AZURE.INCLUDE [media-services-user-voice-include](../includes/media-services-user-voice-include.md)]
-
-
-如果你需要支持或对在工作流设计器工具中创建自定义工作流有疑问，请发送电子邮件到 mepd@microsoft.com。
-
 ##另请参阅
 
 [Azure 高级编码器工作流设计器培训视频](http://johndeutscher.com/2015/07/06/azure-premium-encoder-workflow-designer-training-videos/)
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0815_2016-->

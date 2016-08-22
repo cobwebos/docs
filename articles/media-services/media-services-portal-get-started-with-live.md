@@ -3,22 +3,23 @@
 	description="本教程将指导你完成实施一个基本媒体服务实时传送视频流应用程序的步骤，在该应用程序中，某个通道将从本地实时编码器接收多比特率实时流。"
 	services="media-services"
 	documentationCenter=""
-	authors="Juliako,cenkdin" 
-	manager="dwrede" 
-	editor=""/>
+	authors="Juliako,cenkdin"
+	manager="erikre"
+	editor=""/>  
+
 
 <tags
 	ms.service="media-services"
-	ms.date="04/25/2016"  
+	ms.date="06/22/2016" 
 	wacn.date=""/>
 
 
 # 使用 Azure 管理门户创建从本地编码器接收多比特率实时流的通道
 
-[AZURE.INCLUDE [media-services-selector-manage-channels](../includes/media-services-selector-manage-channels.md)]
+[AZURE.INCLUDE [media-services-selector-manage-channels](../../includes/media-services-selector-manage-channels.md)]
 
 
-本教程将指导你完成实施一个基本媒体服务实时传送视频流应用程序的步骤，在该应用程序中，某个通道将从本地实时编码器接收多比特率实时流。有关使用通道和相关组件的详细概述，请参阅[使用从本地编码器接收多比特率实时流的通道](/documentation/articles/media-services-live-streaming-with-onprem-encoders)。
+本教程将指导你完成实施一个基本媒体服务实时传送视频流应用程序的步骤，在该应用程序中，某个通道将从本地实时编码器接收多比特率实时流。有关使用通道和相关组件的详细概述，请参阅[使用从本地编码器接收多比特率实时流的通道](/documentation/articles/media-services-live-streaming-with-onprem-encoders/)。
 
 在本教程中，将使用 Azure 管理门户完成以下任务：
 
@@ -33,8 +34,8 @@
 ## 先决条件
 以下是完成本教程所需具备的条件。
 
-- 若要完成本教程，你需要一个 Azure 帐户。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/?WT.mc_id=A261C142F)。 
-- 一个媒体服务帐户。若要创建媒体服务帐户，请参阅[创建帐户](/documentation/articles/media-services-create-account)。
+- 若要完成本教程，你需要一个 Azure 帐户。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/?WT.mc_id=A261C142F)。
+- 一个媒体服务帐户。若要创建媒体服务帐户，请参阅[创建帐户](/documentation/articles/media-services-create-account/)。
 - 可以发送多比特率实时流的摄像头和编码器。
 
 
@@ -44,7 +45,7 @@
 
 使用实时流时，本地实时编码器（在本例中为 Wirecast）会将多比特率实时流引入你的通道。当用户请求流时，媒体服务会使用动态打包将源流重新打包成自适应比特率流（HLS、DASH 或平滑流）。
 
-若要利用动态打包，你需要获取计划从中传送内容的流式处理终结点的至少一个流式处理单元。
+若要利用动态打包，你需要获取计划从中传送内容的*流式处理终结点*的至少一个流式处理单元。
 
 若要更改流式处理保留单元数，请执行以下操作：
 
@@ -62,7 +63,7 @@
 
 >[AZURE.NOTE] 当前，将流式处理单位的任何正值设置回“无”可将流式处理功能禁用最多 1 小时。
 >
-> 为 24 小时期间指定的最大单位数将用于计算成本。有关定价详细信息，请参阅 [媒体服务定价详细信息](/home/features/media-services/#price)。
+> 为 24 小时期间指定的最大单位数将用于计算成本。有关定价详细信息，请参阅 [媒体服务定价详细信息](/pricing/details/media-services/)。
 
 
 ## 创建通道
@@ -84,7 +85,7 @@
 
 ![ingesturls](./media/media-services-portal-get-started-with-live/media-services-ingest-urls.png)
 
-有关引入 URL 的详细信息，请参阅[使用本地编码器向通道发送多比特率实时流](/documentation/articles/media-services-live-streaming-with-onprem-encoders)。
+有关引入 URL 的详细信息，请参阅[使用本地编码器向通道发送多比特率实时流](/documentation/articles/media-services-live-streaming-with-onprem-encoders/)。
 
 ## 配置实时编码器并引入实时流
 
@@ -173,7 +174,7 @@
 
 {流式处理终结点名称-媒体服务帐户名称}.streaming.mediaservices.chinacloudapi.cn/{定位符 ID}/{文件名}.ism/Manifest(format=mpd-time-csf)
 
-有关传送内容的详细信息，请参阅[传送内容](/documentation/articles/media-services-deliver-content-overview)。
+有关传送内容的详细信息，请参阅[传送内容](/documentation/articles/media-services-deliver-content-overview/)。
 
 你可以使用 [AMS 播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)播放平滑流，或使用 iOS 和 Android 设备播放 HLS 版本 3。
 
@@ -197,8 +198,9 @@
 - [使用 Azure 管理门户开始实时流式处理](https://azure.microsoft.com/blog/getting-started-with-live-streaming-using-the-azure-management-portal/)
 
 <!-- URLs. -->
+
 [Azure Management Portal]: http://manage.windowsazure.cn/
 
 <!-- Images -->
 
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0815_2016-->

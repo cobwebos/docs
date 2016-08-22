@@ -1,15 +1,16 @@
 <properties
-	pageTitle="使用 Azure 媒体视频缩略图创建视频摘要"
+	pageTitle="使用 Azure 媒体视频缩略图创建视频摘要 | Azure"
 	description="视频摘要可通过自动选择来自源视频的有趣片段帮助你创建长视频的摘要。当你要提供有关长视频内容的快速概述时，这很有用。"
 	services="media-services"
 	documentationCenter=""
 	authors="juliako"
 	manager="erikre"
-	editor=""/>
+	editor=""/>  
+
 
 <tags
 	ms.service="media-services"
-	ms.date="04/14/2016"   
+	ms.date="06/22/2016"   
 	wacn.date=""/>
 
 #使用 Azure 媒体视频缩略图创建视频摘要
@@ -33,7 +34,7 @@
 
 [视频缩略图结果](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.chinacloudapi.cn%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
-##任务配置（预设值）
+##任务配置（预设）
 
 使用 **Azure 媒体视频缩略图**创建视频缩略图时，必须指定配置预设值。以上缩略图示例使用以下 JSON 基本配置创建：
 
@@ -72,7 +73,7 @@ maxMotionThumbnailDurationInSecs|指定生成的整个视频的时长的整数�
 以下程序演示如何：
 
 1. 创建资产并将媒体文件上传到资产。
-1. 使用基于包含以下 json 预设值的配置文件的视频缩略图任务，创建一个作业。 
+1. 使用基于包含以下 json 预设值的配置文件的视频缩略图任务，创建一个作业。
 		
 		{				
 			"version": "1.0",
@@ -258,7 +259,8 @@ maxMotionThumbnailDurationInSecs|指定生成的整个视频的时长的整数�
 
 ##相关链接
 
-[Azure 媒体服务分析概述](/documentation/articles/media-services-analytics-overview)
+[Azure Media Services Analytics Overview（Azure 媒体服务分析概述）](/documentation/articles/media-services-analytics-overview/)
 
-[Azure 媒体分析演示](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-<!---HONumber=Mooncake_0509_2016-->
+[Azure Media Analytics demos（Azure 媒体分析演示）](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+
+<!---HONumber=Mooncake_0815_2016-->

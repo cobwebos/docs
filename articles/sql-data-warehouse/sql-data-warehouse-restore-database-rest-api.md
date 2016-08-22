@@ -3,18 +3,16 @@
    description="用于还原 SQL 数据仓库的 REST API 任务。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="elfisher"
+   authors="sonyama"
    manager="barbkess"
-   editor=""/>
+   editor=""/>  
+
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/10/2016"
-   ms.author="elfish;barbkess;sonyama"/>
+   ms.date="06/28/2016"
+   wacn.date=""/>  
+
 
 # 还原 Azure SQL 数据仓库 (REST API)
 
@@ -57,28 +55,30 @@
 
 <!--Image references-->
 
+
 <!--Article references-->
-[Azure SQL 数据库业务连续性概述]: ./sql-database-business-continuity.md
-[确认已恢复的数据库]: ./sql-database-recovered-finalize.md
-[How to install and configure Azure PowerShell]: ./powershell-install-configure.md
-[概述]: ./sql-data-warehouse-restore-database-overview.md
-[门户]: ./sql-data-warehouse-restore-database-portal.md
-[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
+[Azure SQL 数据库业务连续性概述]: /documentation/articles/sql-database-business-continuity/
+[确认已恢复的数据库]: /documentation/articles/sql-database-recovered-finalize/
+[How to install and configure Azure PowerShell]: /documentation/articles/powershell-install-configure/
+[概述]: /documentation/articles/sql-data-warehouse-restore-database-overview/
+[门户]: /documentation/articles/sql-data-warehouse-restore-database-portal/
+[PowerShell]: /documentation/articles/sql-data-warehouse-restore-database-powershell/
+[REST]: /documentation/articles/sql-data-warehouse-restore-database-rest-api/
 
 <!--MSDN references-->
-[创建数据库还原请求]: https://msdn.microsoft.com/library/azure/dn509571.aspx
-[数据库操作状态]: https://msdn.microsoft.com/library/azure/dn720371.aspx
-[获取可还原的已删除数据库]: https://msdn.microsoft.com/library/azure/dn509574.aspx
-[列出可还原的已删除数据库]: https://msdn.microsoft.com/library/azure/dn509562.aspx
-[Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/library/mt693390.aspx
+[创建数据库还原请求]: https://msdn.microsoft.com/zh-cn/library/azure/dn509571.aspx
+[数据库操作状态]: https://msdn.microsoft.com/zh-cn/library/azure/dn720371.aspx
+[获取可还原的已删除数据库]: https://msdn.microsoft.com/zh-cn/library/azure/dn509574.aspx
+[列出可还原的已删除数据库]: https://msdn.microsoft.com/zh-cn/library/azure/dn509562.aspx
+[Restore-AzureRmSqlDatabase]: https://msdn.microsoft.com/zh-cn/library/mt693390.aspx
 
 
 <!--Blog references-->
 [如何查看和提高 DTU 配额]: https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/
 
 <!--Other Web references-->
-[Azure Portal]: https://portal.azure.com/
+
+[Azure Portal]: https://portal.azure.cn/
 [Microsoft Web Platform Installer]: https://aka.ms/webpi-azps
 
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0815_2016-->

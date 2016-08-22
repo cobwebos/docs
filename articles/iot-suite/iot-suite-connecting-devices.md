@@ -6,21 +6,23 @@
    documentationCenter="na"
    authors="dominicbetts"
    manager="timlt"
-   editor=""/>
+   editor=""/>  
+
 
 <tags
    ms.service="iot-suite"
-   ms.date="05/09/2016"
-   wacn.date="05/17/2016"/>
+   ms.date="07/14/2016"
+   wacn.date="05/17/2016"/>  
+
 
 
 # 将设备连接到远程监视预配置解决方案 (Windows)
 
-[AZURE.INCLUDE [iot-suite-selector-connecting](../includes/iot-suite-selector-connecting.md)]
+[AZURE.INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
 ## 在 Windows 上创建 C 示例解决方案
 
-以下步骤演示如何在 Visual Studio 中使用 C 程序创建一个与远程监视预配置解决方案通信的简单客户端应用程序。
+以下步骤演示如何使用 Visual Studio 以 C 语言创建一个简单的客户端应用程序，用来与远程监视预配置解决方案通信。
 
 在 Visual Studio 2015 中创建初学者项目并添加 IoT 中心设备客户端 NuGet 包：
 
@@ -38,21 +40,29 @@
     - Microsoft.Azure.IoTHub.IoTHubClient
     - Microsoft.Azure.IoTHub.HttpTransport
 
-## 添加代码以指定简单 IoT 中心设备的行为
+6. 在“解决方案资源管理器”中，右键单击“RMDevice”项目，然后单击“属性”打开该项目的“属性页”对话框。有关详细信息，请参阅 [Setting Visual C++ Project Properties][lnk-c-project-properties]（设置 Visual C++ 项目属性）。
+
+7. 单击“Linker”文件夹，然后单击“输入”属性页。
+
+8. 将 **crypt32.lib** 添加到“其他依赖项”属性。单击“确定”，然后再次单击“确定”以保存项目属性值。
+
+## 指定 IoT 中心设备的行为
 
 IoT 中心客户端库使用一个模型来指定设备发送到 IoT 中心的消息的格式以及设备所响应的来自 IoT 中心的命令的格式。
 
 1. 在 Visual Studio 中，打开 RMDevice.c 文件。将现有 `#include` 语句替换为以下内容：
 
-	
-	    #include "iothubtransporthttp.h"
-	    #include "schemalib.h"
-	    #include "iothub_client.h"
-	    #include "serializer.h"
-	    #include "schemaserializer.h"
+    ```
+    #include "iothubtransporthttp.h"
+    #include "schemalib.h"
+    #include "iothub_client.h"
+    #include "serializer.h"
+    #include "schemaserializer.h"
+    #include "azure_c_shared_utility/threadapi.h"
+    #include "azure_c_shared_utility/platform.h"
+    ```
 
-
-2. 在 `#include` 语句之后添加以下变量声明。将占位符值 [Device Id] 和 [Device Key] 替换为来自远程监视解决方案仪表板的设备值。使用来自仪表板的 IoT 中心主机名替换 [IoTHub Name]。例如，如果 IoT 中心主机名是 **contoso.azure-devices.net**，则将 [IoTHub Name] 替换为 contoso：
+2. 在 `#include` 语句之后添加以下变量声明。将占位符值 [Device Id] 和 [Device Key] 替换为来自远程监视解决方案仪表板的设备值。使用来自仪表板的 IoT 中心主机名替换 [IoTHub Name]。例如，如果 IoT 中心主机名是 **contoso.azure-devices.net**，则将 [IoTHub Name] 替换为 **contoso**：
 
 
 	    static const char* deviceId = "[Device Id]";
@@ -100,11 +110,11 @@ IoT 中心客户端库使用一个模型来指定设备发送到 IoT 中心的�
 	    END_NAMESPACE(Contoso);
 
 
-## 添加代码以实现设备的行为
+## 实现设备的行为
 
-现在必须添加实现模型中定义的行为的代码。你会添加在设备从中心收到命令时要执行的函数以及用于将模拟遥测发送到中心的代码。
+现在必须添加实现模型中定义的行为的代码。
 
-1. 添加在设备收到模型中定义的 **SetTemperature** 和 **SetHumidity** 命令时执行的以下函数：
+1. 添加在设备从 IoT 中心接收 **SetTemperature** 和 **SetHumidity** 命令时执行的以下函数：
 
 
 	    EXECUTE_COMMAND_RESULT SetTemperature(Thermostat* thermostat, int temperature)
@@ -205,6 +215,8 @@ IoT 中心客户端库使用一个模型来指定设备发送到 IoT 中心的�
 	        config.iotHubName = hubName;
 	        config.iotHubSuffix = hubSuffix;
 	        config.protocol = HTTP_Protocol;
+	        config.deviceSasToken = NULL;
+	        config.protocolGatewayHostName = NULL;
 	        iotHubClientHandle = IoTHubClient_Create(&config);
 	        if (iotHubClientHandle == NULL)
 	        {
@@ -348,9 +360,11 @@ IoT 中心客户端库使用一个模型来指定设备发送到 IoT 中心的�
 
 6. 单击“生成”，然后单击“生成解决方案”以生成设备应用程序。
 
-7. 在“解决方案资源管理器”中，右键单击“RMDevice”项目，单击“调试”，然后单击“启动新实例”以生成并运行示例。在应用程序将示例遥测发送到 IoT 中心时，控制台会显示消息。
+7. 在“解决方案资源管理器”中，右键单击“RMDevice”项目，单击“调试”，然后单击“启动新实例”以运行示例。在应用程序将示例遥测发送到 IoT 中心和接收命令时，控制台会显示消息。
 
-[AZURE.INCLUDE [iot-suite-visualize-connecting](../includes/iot-suite-visualize-connecting.md)]
+[AZURE.INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 
 
-<!---HONumber=Mooncake_0523_2016-->
+[lnk-c-project-properties]: https://msdn.microsoft.com/zh-cn/library/669zx6zc.aspx
+
+<!---HONumber=Mooncake_0815_2016-->

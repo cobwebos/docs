@@ -1,29 +1,33 @@
 <properties
 	pageTitle="在门户中的自动缩放云服务 | Azure"
-	description="了解如何使用门户在 Azure 中为云服务 Web 角色或辅助角色配置自动缩放规则。"
+	description="（经典）了解如何使用经典门户在 Azure 中为云服务 Web 角色或辅助角色配置自动缩放规则。"
 	services="cloud-services"
 	documentationCenter=""
 	authors="Thraka"
 	manager="timlt"
-	editor=""/>
+	editor=""/>  
+
 
 <tags
 	ms.service="cloud-services"
-	ms.date="04/06/2016"
-	wacn.date="04/20/2016"/>
+	ms.date="06/22/2016"
+	wacn.date="04/20/2016"/>  
+
 
 
 # 如何自动缩放云服务
 
 在 Azure 管理门户的“缩放”页中，你可以手动缩放 Web 角色或辅助角色，或者根据 CPU 负载或消息队列启用自动缩放。
 
->[AZURE.NOTE] 本文着重于云服务 Web 和辅助角色。如果你直接创建虚拟机，该虚拟机将托管在云服务中。其中有些信息适用于这些类型的虚拟机。缩放虚拟机的可用性集其实只是根据配置的缩放规则将其关闭或打开。有关虚拟机和可用性集的详细信息，请参阅 [Manage the Availability of Virtual Machines（管理虚拟机的可用性）](/documentation/articles/virtual-machines-windows-classic-configure-availability)
+在 Azure 经典门户的“缩放”页中，你可以手动缩放 Web 角色或辅助角色，或者根据 CPU 负载或消息队列启用自动缩放。
+
+>[AZURE.NOTE] 本文着重于云服务 Web 和辅助角色。如果你直接创建虚拟机（经典），该虚拟机将托管在云服务中。其中有些信息适用于这些类型的虚拟机。缩放虚拟机的可用性集其实只是根据配置的缩放规则将其关闭或打开。有关虚拟机和可用性集的详细信息，请参阅 [Manage the Availability of Virtual Machines（管理虚拟机的可用性）](../virtual-machines/virtual-machines-windows-classic-configure-availability.md)
 
 在配置应用程序的缩放之前，应考虑以下信息：
 
-- 缩放受内核使用情况影响。角色实例越大，使用的核心越多。你只能在你的订阅的内核限制内缩放应用程序。例如，如果你的订阅的上限是二十个内核，并且你通过两个中等规模的云服务（一共四个内核）运行某个应用程序，则对于订阅中的其他云服务部署，你只能扩展十六个内核。有关大小的详细信息，请参阅 [Cloud Service Sizes（云服务的大小）](/documentation/articles/cloud-services-sizes-specs)。
+- 缩放受内核使用情况影响。角色实例越大，使用的核心越多。你只能在你的订阅的内核限制内缩放应用程序。例如，如果你的订阅的上限是二十个内核，并且你通过两个中等规模的云服务（一共四个内核）运行某个应用程序，则对于订阅中的其他云服务部署，你只能扩展十六个内核。有关大小的详细信息，请参阅 [Cloud Service Sizes（云服务的大小）](/documentation/articles/cloud-services-sizes-specs/)。
 
-- 你必须先创建队列并使其与角色关联，然后才能基于消息阈值缩放应用程序。有关详细信息，请参阅[如何使用队列存储服务](/documentation/articles/storage-dotnet-how-to-use-queues)。
+- 你必须先创建队列并使其与角色关联，然后才能基于消息阈值缩放应用程序。有关详细信息，请参阅[如何使用队列存储服务](/documentation/articles/storage-dotnet-how-to-use-queues/)。
 
 - 你可以缩放链接到云服务的资源。有关链接资源的更多信息，请参见[如何：将资源链接到云服务](/documentation/articles/cloud-services-how-to-manage/#how-to-link-a-resource-to-a-cloud-service)。
 
@@ -46,7 +50,8 @@
 
 单击你要更改的每个角色对应的“设置计划时间”按钮。
 
-![基于计划的云服务自动缩放][scale_schedules]
+![基于计划的云服务自动缩放][scale_schedules]  
+
 
 
 
@@ -68,10 +73,9 @@
 
     ![手动缩放云服务角色][manual_scale]
 
-    如果需要更多实例，你可能需要更改[云服务虚拟机大小](/documentation/articles/cloud-services-sizes-specs)。
+    如果需要更多实例，你可能需要更改[云服务虚拟机大小](/documentation/articles/cloud-services-sizes-specs/)。
 
-6. 单击“保存”。  
-将基于你的选择添加或删除角色实例。
+6. 单击“保存”。将基于你的选择添加或删除角色实例。
 
 >[AZURE.TIP] 每当你看到 ![][tip_icon] 时，将鼠标移到其上可以获取特定设置的功能的相关帮助。
 
@@ -92,7 +96,8 @@
 
 5. 现在，你可以设置角色实例的最小和最大范围、目标 CPU 使用量（以触发向上缩放），以及向上和向下缩放的实例数目。
 
-![按 CPU 负载缩放云服务角色][cpu_scale]
+![按 CPU 负载缩放云服务角色][cpu_scale]  
+
 
 >[AZURE.TIP] 每当你看到 ![][tip_icon] 时，将鼠标移到其上可以获取特定设置的功能的相关帮助。
 
@@ -114,7 +119,8 @@
 
 4. 现在，你可以设置角色实例的最小和最大范围、每个实例要处理的队列和队列消息数，以及扩展和缩减的实例数目。
 
-![按消息队列缩放云服务角色][queue_scale]
+![按消息队列缩放云服务角色][queue_scale]  
+
 
 >[AZURE.TIP] 每当你看到 ![][tip_icon] 时，将鼠标移到其上可以获取特定设置的功能的相关帮助。
 
@@ -144,4 +150,4 @@
 [scale_popup]: ./media/cloud-services-how-to-scale/schedules-dialog.png
 [linked_resource]: ./media/cloud-services-how-to-scale/linked-resources.png
 
-<!---HONumber=Mooncake_0503_2016-->
+<!---HONumber=Mooncake_0815_2016-->

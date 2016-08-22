@@ -2,22 +2,24 @@
 	pageTitle="使用 PowerShell 管理 Azure 媒体服务帐户" 
 	description="了解如何使用 PowerShell cmdlet 管理 Azure 媒体服务帐户。" 
 	authors="Juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
-	documentationCenter=""/>
+	documentationCenter=""/>  
+
 
 <tags
 	ms.service="media-services"
-	ms.date="04/18/2016"
-	wacn.date=""/>
+	ms.date="06/22/2016"
+	wacn.date=""/>  
+
 
 
 #使用 PowerShell 管理 Azure 媒体服务帐户
 
 > [AZURE.SELECTOR]
-- [门户](/documentation/articles/media-services-create-account)
-- [PowerShell](/documentation/articles/media-services-manage-with-powershell)
+- [门户](/documentation/articles/media-services-create-account/)
+- [PowerShell](/documentation/articles/media-services-manage-with-powershell/)
 - [REST](http://msdn.microsoft.com/zh-cn/library/azure/dn194267.aspx)
 
 > [AZURE.NOTE] 若要创建 Azure 媒体服务帐户，你必须有一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 <a href="/pricing/1rmb-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure 试用</a>。
@@ -31,7 +33,7 @@
 
 ##安装 Microsoft Azure PowerShell Cmdlet
 
-若要安装最新的 Azure PowerShell cmdlet，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)
+若要安装最新的 Azure PowerShell cmdlet，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure/)
 
 ##选择 Azure 订阅
 
@@ -95,7 +97,7 @@ Azure 媒体服务使用 Azure 存储空间来存储媒体内容。当你创建�
 
 ##重新生成媒体服务访问密钥
 
-如果你想要更新媒体服务主访问密钥或辅助访问密钥，请使用 [New-AzureMediaServicesKey](https://msdn.microsoft.com/zh-cn/library/azure/dn495215.aspx)。 
+如果你想要更新媒体服务主访问密钥或辅助访问密钥，请使用 [New-AzureMediaServicesKey](https://msdn.microsoft.com/zh-cn/library/azure/dn495215.aspx)。
 你需要提供帐户名并指定你想要重新生成的密钥（主密钥或辅助密钥）。
 
 如果你不希望 PowerShell 提出确认问题，请指定 -Force 开关。
@@ -110,4 +112,5 @@ Azure 媒体服务使用 Azure 存储空间来存储媒体内容。当你创建�
 
 
  
-<!---HONumber=Mooncake_0620_2016-->
+
+<!---HONumber=Mooncake_0815_2016-->

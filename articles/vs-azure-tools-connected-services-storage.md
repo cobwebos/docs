@@ -5,11 +5,13 @@
    documentationCenter="na"
    authors="TomArcher"
    manager="douge"
-   editor="" />
+   editor="" />  
+
 <tags 
    ms.service="visual-studio-online"
    ms.date="04/18/2016"
-   wacn.date="" />
+   wacn.date="" />  
+
 
 # 使用 Visual Studio 连接服务添加 Azure 存储空间
 
@@ -72,9 +74,9 @@
 
 完成该对话框后，Visual Studio 将添加引用并修改特定配置文件。具体更改情况取决于项目类型。
 
- - 对于 ASP.NET 项目，请参阅[完成的操作 – ASP.NET 项目](http://go.microsoft.com/fwlink/p/?LinkId=513126)。 
- - 对于 ASP.NET 5 项目，请参阅[完成的操作 – ASP.NET 5 项目](http://go.microsoft.com/fwlink/p/?LinkId=513124)。 
- - 有关云服务项目（Web 角色和辅助角色），请参阅[完成的操作 – 云服务项目](http://go.microsoft.com/fwlink/p/?LinkId=516965)。 
+ - 对于 ASP.NET 项目，请参阅[完成的操作 – ASP.NET 项目](http://go.microsoft.com/fwlink/p/?LinkId=513126)。
+ - 对于 ASP.NET 5 项目，请参阅[完成的操作 – ASP.NET 5 项目](http://go.microsoft.com/fwlink/p/?LinkId=513124)。
+ - 有关云服务项目（Web 角色和辅助角色），请参阅[完成的操作 – 云服务项目](http://go.microsoft.com/fwlink/p/?LinkId=516965)。
  - 对于 WebJob 项目，请参阅[完成的操作 – WebJob 项目](/documentation/articles/vs-storage-webjobs-what-happened/)。
 
 ## 后续步骤
@@ -90,5 +92,4 @@
 
      - [azure.microsoft.com 上的存储文档](/documentation/services/storage/)
 
-
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0815_2016-->

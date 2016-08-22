@@ -5,18 +5,19 @@
    documentationCenter=""
    authors="ronitr"
    manager="jhubbard"
-   editor="v-romcal"/>
+   editor="v-romcal"/>  
+
 
 <tags
    ms.service="sql-database"
-   ms.date="04/11/2016"
-   wacn.date="04/22/2016"/>
+   ms.date="07/10/2016"
+   wacn.date=""/>
 
 
 # SQL 数据库动态数据屏蔽入门（Azure 门户）
 
 > [AZURE.SELECTOR]
-- [Dynamic Data Masking - Azure Management portal](/documentation/articles/sql-database-dynamic-data-masking-get-started-portal)
+- [动态数据屏蔽 - Azure 管理门户](/documentation/articles/sql-database-dynamic-data-masking-get-started-portal/)
 
 ## 概述
 
@@ -60,7 +61,7 @@ DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段�
 
 ## 使用 Azure 门户为数据库设置动态数据屏蔽
 
-1. 启动 Azure 门户 ([https://manage.windowsazure.cn](https://manage.windowsazure.cn))。
+1. 启动 Azure 门户 ([https://portal.azure.cn](https://portal.azure.cn))。
 
 2. 导航到你要屏蔽的敏感数据所在数据库的设置边栏选项卡。
 
@@ -105,4 +106,4 @@ DDM 建议引擎会将数据库中的某些字段标记为可能的敏感字段�
 
 请参阅[对 Azure SQL 数据库的操作](https://msdn.microsoft.com/zh-cn/library/dn505719.aspx)。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0815_2016-->

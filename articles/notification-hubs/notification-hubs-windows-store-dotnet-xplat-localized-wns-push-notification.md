@@ -4,19 +4,21 @@
 	services="notification-hubs"
 	documentationCenter="windows"
 	authors="wesmc7777"
-	manager="dwrede"
-	editor=""/>
+	manager="erikre"
+	editor=""/>  
+
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="03/28/2016" 
-	wacn.date=""/>
+	ms.date="06/29/2016" 
+	wacn.date=""/>  
+
 
 # 使用通知中心发送本地化的突发新闻
 
 > [AZURE.SELECTOR]
-- [Windows 应用商店 C#](/documentation/articles/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification)
-- [iOS](/documentation/articles/notification-hubs-ios-xplat-localized-apns-push-notification)
+- [Windows 应用商店 C#](/documentation/articles/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/)
+- [iOS](/documentation/articles/notification-hubs-ios-xplat-localized-apns-push-notification/)
 
 ##概述
 
@@ -40,9 +42,7 @@
 
 ##模板概念
 
-在[使用通知中心发送突发新闻]中，你构建了一个使用**标记**订阅不同新闻类别通知的应用程序。
-但是，很多应用程序针对多个市场，需要本地化。这意味着通知内容本身必须本地化且传递到正确的设备组。
-在本主题中，我们将演示如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
+在[使用通知中心发送突发新闻]中，你构建了一个使用**标记**订阅不同新闻类别通知的应用程序。但是，很多应用程序针对多个市场，需要本地化。这意味着通知内容本身必须本地化且传递到正确的设备组。在本主题中，我们将演示如何使用通知中心的**模板**功能轻松传递本地化的突发新闻通知。
 
 注意：发送本地化的通知的一种方式是创建每个标签的多个版本。例如，要支持英语、法语和汉语，我们需要三种不同的标签用于世界新闻：“world\_en”、“world\_fr”和“world\_ch”。我们然后必须将世界新闻的本地化版本分别发送到这些标签。在本主题中，我们使用模板来避免增生标签和发送多个消息的要求。
 
@@ -58,15 +58,15 @@
 
 	<toast>
 	  <visual>
-	    <binding template="ToastText01">
-	      <text id="1">$(News_English)</text>
+	    <binding template=\"ToastText01\">
+	      <text id=\"1\">$(News_English)</text>
 	    </binding>
 	  </visual>
 	</toast>
 
 
 
-模板是很强大的功能，你可以在[模板](/documentation/articles/notification-hubs-templates-cross-platform-push-messages-cross-platform-push-messages-cross-platform-push-messages)一文中了解其更多信息。
+模板是很强大的功能，你可以在[模板](/documentation/articles/notification-hubs-templates-cross-platform-push-messages-cross-platform-push-messages-cross-platform-push-messages/)一文中了解其更多信息。
 
 
 ##应用程序用户界面
@@ -108,7 +108,7 @@
 
 ##构建 Windows 应用商店客户端应用程序
 
-1. 在 Notifications 类中，将一个区域设置参数添加到 StoreCategoriesAndSubscribe 和 SubscribeToCateories 方法。
+1. 在 Notifications 类中，将一个区域设置参数添加到 *StoreCategoriesAndSubscribe* 和 *SubscribeToCateories* 方法。
 
         public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
         {
@@ -133,7 +133,7 @@
             return await hub.RegisterTemplateAsync(channel.Uri, templateBodyWNS, "localizedWNSTemplateExample", categories);
         }
 
-	请注意，不是调用 RegisterNativeAsync 方法，我们调用的是 RegisterTemplateAsync：我们将注册特定的通知格式，在其中模板依赖于区域设置。我们还提供模板的名称（“localizedWNSTemplateExample”），因为我们可能要注册多个模板（例如一个用于 toast 通知，一个用于磁贴），需要命名它们以便可以更新或删除它们。
+	请注意，不是调用 *RegisterNativeAsync* 方法，我们调用的是 *RegisterTemplateAsync*：我们将注册特定的通知格式，在其中模板依赖于区域设置。我们还提供模板的名称（“localizedWNSTemplateExample”），因为我们可能要注册多个模板（例如一个用于 toast 通知，一个用于磁贴），需要命名它们以便可以更新或删除它们。
 
 	请注意，如果一个设备使用同一标签注册多个模板，针对该标签的传入消息将导致多个通知发送到设备（每个通知对应一个模板）。当同一逻辑消息必须导致多个可视通知时，此行为很有用，例如在 Windows 应用商店应用程序显示徽章和 toast。
 
@@ -187,7 +187,7 @@
 
 ##从后端发送本地化的通知
 
-[AZURE.INCLUDE [notification-hubs-localized-back-end](../includes/notification-hubs-localized-back-end.md)]
+[AZURE.INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
 
 
 
@@ -204,6 +204,7 @@
 <!-- Images. -->
 
 <!-- URLs. -->
+
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
 [Notify users with Notification Hubs: Mobile Services]: /manage/services/notification-hubs/notify-users
@@ -212,11 +213,11 @@
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
+
 
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0815_2016-->

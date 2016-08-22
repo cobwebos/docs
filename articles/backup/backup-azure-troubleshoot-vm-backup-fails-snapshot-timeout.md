@@ -5,12 +5,14 @@
    documentationCenter=""
    authors="genlin"
    manager="jwhit"
-   editor=""/>
+   editor=""/>  
+
 
 <tags
     ms.service="backup"
-    ms.date="04/27/2016"
-    wacn.date=""/>
+    ms.date="07/14/2016"
+    wacn.date=""/>  
+
 
 # Azure VM 备份失败：无法与 VM 代理通信以获取快照状态 - 快照 VM 子任务超时
 
@@ -18,7 +20,7 @@
 
 注册和计划备份 Azure 备份的 Azure 虚拟机 (VM) 之后，Azure 服务通过与 VM 中的备份扩展通信来获取时间点快照，以便在计划的时间启动备份作业。某些情况可能造成无法触发快照，从而导致备份失败。本文提供排查 Azure VM 备份失败相关问题以及快照超时错误的步骤。
 
-[AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
+[AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## 症状
 
@@ -42,12 +44,12 @@ VM 无法根据部署要求访问 Internet，或者现有的限制阻止访问 A
 ### 解决方案
 在此方案中，请使用以下方法之一来解决问题：
 
-- 将 Azure 数据中心 IP 范围加入白名单
+- 将 Azure 数据中心 IP 范围加入允许列表
 - 为 HTTP 流量创建路径
 
-### 将 Azure 数据中心 IP 范围加入白名单
+### 将 Azure 数据中心 IP 范围加入允许列表
 
-1. 获取要加入白名单的 [Azure 数据中心 IP 列表](https://www.microsoft.com/download/details.aspx?id=41653)。
+1. 获取要加入允许列表的 [Azure 数据中心 IP 列表](https://www.microsoft.com/download/details.aspx?id=41653)。
 2. 使用 New-NetRoute cmdlet 取消阻止 IP。在 Azure VM 上提升权限的 PowerShell 窗口中运行此 cmdlet（以管理员身份运行）。
 3. 如果有允许访问 IP 的规则，请将规则添加到网络安全组 (NSG)。
 
@@ -56,7 +58,7 @@ VM 无法根据部署要求访问 Internet，或者现有的限制阻止访问 A
 1. 如果你指定了网络限制（例如 NSG），请部署 HTTP 代理服务器来路由流量。
 2. 如果你有网络安全组 (NSG)，请添加规则来允许从 HTTP 代理访问 Internet 。
 
-了解如何[为 VM 备份设置 HTTP 代理](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups)。
+了解如何[为 VM 备份设置 HTTP 代理](/documentation/articles/backup-azure-vms-prepare/#using-an-http-proxy-for-vm-backups)。
 
 ## 原因 2：VM 中安装的 Microsoft Azure VM 代理已过时（适用于 Linux VM）
 
@@ -68,9 +70,9 @@ VM 无法根据部署要求访问 Internet，或者现有的限制阻止访问 A
 
     如果此进程未运行，请使用以下命令来重新启动它。
 
-    对于 Ubuntu：```service walinuxagent start```
+    对于 Ubuntu：`service walinuxagent start`
 
-    对于其他分发版：```service waagent start```
+    对于其他分发版：`service waagent start`
 
 
 3. [配置自动重新启动代理](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash)。
@@ -101,7 +103,11 @@ VM 无法根据部署要求访问 Internet，或者现有的限制阻止访问 A
 1. 确认 iaasvmprovider 服务已启用，并且启动类型为自动。
 2. 如果配置并非如此，请启用该服务以确定下一次备份是否成功。
 
-如果还是无法更新或加载备份扩展，可以通过安装扩展来强制重新加载 VMSnapshot 扩展。下一次备份尝试将重新加载扩展。
+对于 Linux 来宾：
+
+VMSnapshot Linux（备份使用的扩展）的最新版本是 1.0.91.0
+
+如果还是无法更新或加载备份扩展，可以通过卸载扩展来强制重新加载 VMSnapshot 扩展。下一次备份尝试将重新加载扩展。
 
 ### 卸载扩展
 
@@ -126,6 +132,6 @@ VM 备份依赖于向底层存储发出快照命令。如果备份无法访问�
 | 由于在 RDP 中关闭了 VM，VM 状态报告不正确。如果在 RDP 中关闭了虚拟机，请检查门户，以确定其中是否正确反映了该 VM 状态。 | 如果不正确，请在门户中使用 VM 仪表板上的“关闭”选项来关闭 VM。 |
 | 同一个云服务中的许多 VM 配置为同时备份。 | 最佳做法是使同一云服务中的 VM 分开执行不同的备份计划。 |
 | VM 在运行时使用了很高的 CPU 或内存。 | 如果 VM 在运行时使用了很高的 CPU（使用率超过 90%）或内存，快照任务将排入队列、延迟并最终超时。在这种情况下，请尝试进行按需备份。 |
-|VM 无法从 DHCP 获取主机/结构地址。|必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。如果 VM 无法从 DHCP 响应 245 获取主机/结构地址，则无法下载或运行任何扩展。如果需要静态专用 IP 地址，你应该通过平台配置该 IP。VM 内的 DHCP 选项应保持启用。查看有关[设置静态内部专用 IP](../virtual-network/virtual-networks-reserved-private-ip.md) 的详细信息。|
+|VM 无法从 DHCP 获取主机/结构地址。|必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。如果 VM 无法从 DHCP 响应 245 获取主机/结构地址，则无法下载或运行任何扩展。如果需要静态专用 IP 地址，你应该通过平台配置该 IP。VM 内的 DHCP 选项应保持启用。查看有关[设置静态内部专用 IP](/documentation/articles/virtual-networks-reserved-private-ip/) 的详细信息。|
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0815_2016-->

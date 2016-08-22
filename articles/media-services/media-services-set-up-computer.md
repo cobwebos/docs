@@ -1,23 +1,25 @@
 <properties
-	pageTitle="设置你的环境 | Microsoft Azure"
+	pageTitle="设置环境 | Azure"
 	description="设置你的环境以使用 Azure 媒体服务进行开发。"
 	services="media-services"
 	documentationCenter=""
 	authors="Juliako"
-	manager="dwrede"
-	editor=""/>
+	manager="erikre"
+	editor=""/>  
+
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016"  
+	ms.date="06/22/2016"
 	wacn.date=""/>
 
 # 设置你的环境
 
 > [AZURE.SELECTOR]
-- [门户](/documentation/articles/media-services-create-account)
-- [PowerShell](/documentation/articles/media-services-manage-with-powershell)
-- [REST](https://msdn.microsoft.com/zh-cn/library/azure/dn167014.aspx) <a id="create_account"></a>
+- [门户](/documentation/articles/media-services-create-account/)
+- [PowerShell](/documentation/articles/media-services-manage-with-powershell/)
+- [REST](https://msdn.microsoft.com/zh-cn/library/azure/dn167014.aspx) 
+<a id="create_account"></a>
 
 以下步骤描述使用 Azure 媒体服务进行开发所要满足的先决条件。
 
@@ -30,14 +32,13 @@
 
 为开发环境选择“.NET”或“REST API”。
 
-[AZURE.INCLUDE [media-services-selector-setup](../includes/media-services-selector-setup.md)]
+[AZURE.INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
 
 <a id="connect"></a>
 ## 以编程方式连接
 
 选择“.NET”或“REST API”以编程方式连接到 Azure 媒体服务。
 
-[AZURE.INCLUDE [media-services-selector-connect](../includes/media-services-selector-connect.md)]
+[AZURE.INCLUDE [media-services-selector-connect](../../includes/media-services-selector-connect.md)]
 
-
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0815_2016-->

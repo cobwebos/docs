@@ -1,46 +1,31 @@
 <properties 
-pageTitle="云服务的常见启动任务 |Microsoft Azure" 
+pageTitle="云服务的常见启动任务 | Azure" 
 description="提供了一些你可能需要在云服务 Web 角色或辅助角色中执行的常见启动任务示例。" 
 services="cloud-services" 
 documentationCenter="" 
 authors="Thraka" 
 manager="timlt" 
 editor=""/>
+
 <tags 
 ms.service="cloud-services" 
-
-ms.date="12/07/2015" 
+ms.date="06/22/2016" 
 wacn.date=""/>
 
 # 常见的云服务启动任务
 
 本文提供了一些你可能需要在云服务中执行的常见启动任务示例。在角色启动之前，可以使用启动任务执行操作。你可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。
 
-参阅[本文](/documentation/articles/cloud-services-startup-tasks)可了解启动任务的工作方式，特别是如何创建定义启动任务的条目。
+参阅[本文](/documentation/articles/cloud-services-startup-tasks/)可了解启动任务的工作方式，特别是如何创建定义启动任务的条目。
 
 此处的许多任务使用
 
->[AZURE.NOTE]启动任务不适用于虚拟机，只适用于云服务 Web 角色和辅助角色。
+>[AZURE.NOTE] 启动任务不适用于虚拟机，只适用于云服务 Web 角色和辅助角色。
 
 
 ## 在角色启动之前定义环境变量
 
-可以通过向服务定义文件中的角色定义添加 [Runtime] 元素来定义整个角色的环境变量。
-
-```xml
-<ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
-    <WebRole name="WebRole1">
-        ...
-        <Runtime>
-            <Environment>
-                <Variable name="MyEnvironmentVariable" value="MyVariableValue" />
-            </Environment>
-        </Runtime>
-    </WebRole>
-</ServiceDefinition>
-```
-
-如果你需要为特定任务定义环境变量（不由其他任务共享），则可以使用 [Task] 元素内的 [Environment] 元素。
+如果你需要为特定任务定义环境变量，则可以使用 [Task] 元素内的 [Environment] 元素。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -57,7 +42,7 @@ wacn.date=""/>
 </ServiceDefinition>
 ```
 
-此外，变量还可以使用[有效的 Azure XPath 值](https://msdn.microsoft.com/zh-cn/library/azure/hh404006.aspx)引用有关部署的内容。请不要使用 `value` 属性，而是定义 [RoleInstanceValue] 子元素。
+此外，变量还可以使用[有效的 Azure XPath 值](/documentation/articles/cloud-services-role-config-xpath/)引用有关部署的内容。请不要使用 `value` 属性，而是定义 [RoleInstanceValue] 子元素。
 
 ```xml
 <Variable name="PathToStartupStorage">
@@ -68,23 +53,23 @@ wacn.date=""/>
 
 ## 使用 AppCmd.exe 配置 IIS 启动
 
-[AppCmd.exe](https://technet.microsoft.com/zh-cn/library/jj635852.aspx) 命令行工具在 Azure 上启动时可用于管理 IIS 设置。*AppCmd.exe* 提供对要在 Azure 上的启动任务中使用的配置设置的方便的命令行访问。使用 *AppCmd.exe*，可以为应用程序和站点添加、修改或删除网站设置。
+[AppCmd.exe](https://technet.microsoft.com/zh-cn/library/jj635852.aspx) 命令行工具在 Azure 上启动时可用于管理 IIS 设置。AppCmd.exe 提供对要在 Azure 上的启动任务中使用的配置设置的方便的命令行访问。使用 AppCmd.exe，可以为应用程序和站点添加、修改或删除网站设置。
 
-但是，在使用 *AppCmd.exe* 作为启动任务时有几点需要注意：
+但是，在使用 AppCmd.exe 作为启动任务时有几点需要注意：
 
 - 启动任务在重新启动之间可以运行多次。例如，如果角色回收，则可能发生这种情况。
-- 某些 *AppCmd.exe* 操作在多次执行时可能会生成错误。尝试将某个节添加到 *Web.config* 中两次会生成错误。
-- 如果启动任务返回非零退出代码或 **errorlevel**，则为失败。如果 *AppCmd.exe* 生成错误，则可能会发生这种情况。
+- 某些 AppCmd.exe 操作在多次执行时可能会生成错误。尝试将某个节添加到 Web.config 中两次会生成错误。
+- 如果启动任务返回非零退出代码或 **errorlevel**，则为失败。如果 AppCmd.exe 生成错误，则可能会发生这种情况。
 
-由于列出的原因，比较明智的做法通常是在调用 *AppCmd.exe* 之后检查 **errorlevel**，如果你使用 *.cmd* 文件包装对 *AppCmd.exe* 的调用，则很容易做到这一点。如果检测到已知的 **errorlevel** 响应，你可以忽略它，否则将其返回。下面的示例演示了这一点。
+由于列出的原因，比较明智的做法通常是在调用 AppCmd.exe 之后检查 **errorlevel**，如果你使用 .cmd 文件包装对 AppCmd.exe 的调用，则很容易做到这一点。如果检测到已知的 **errorlevel** 响应，你可以忽略它，否则将其返回。下面的示例演示了这一点。
 
-*AppCmd.exe* 返回的 errorlevel 在 winerror.h 文件中列出，并且还可以在 [MSDN](https://msdn.microsoft.com/zh-cn/library/windows/desktop/ms681382.aspx) 上看到。
+AppCmd.exe 返回的 errorlevel 在 winerror.h 文件中列出，并且还可以在 [MSDN](https://msdn.microsoft.com/zh-cn/library/windows/desktop/ms681382.aspx) 上看到。
 
 ### 示例
 
-此示例将 JSON 的压缩节和压缩条目添加到 *Web.config* 文件，其中包含错误处理和日志记录。
+此示例将 JSON 的压缩节和压缩条目添加到 Web.config 文件，其中包含错误处理和日志记录。
 
-此处显示了 [ServiceDefinition.csdef] 文件的相关节，其中包括将 [executionContext](https://msdn.microsoft.com/zh-cn/library/azure/gg557552.aspx#Task) 属性设为 `elevated` 以为 *AppCmd.exe* 提供足够的权限来更改 *Web.config* 文件中的设置：
+此处显示了 [ServiceDefinition.csdef] 文件的相关节，其中包括将 [executionContext](https://msdn.microsoft.com/zh-cn/library/azure/gg557552.aspx#Task) 属性设为 `elevated` 以为 AppCmd.exe 提供足够的权限来更改 Web.config 文件中的设置：
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -97,7 +82,7 @@ wacn.date=""/>
 </ServiceDefinition>
 ```
 
-Startup.cmd 批处理文件使用 AppCmd.exe 将 JSON 的压缩节和压缩条目添加到 *Web.config* 文件。使用 VERIFY.EXE 命令行程序将预期的 **errorlevel** 183 设为零。意外的 errorlevel 将记录到 StartupErrorLog.txt 中。
+Startup.cmd 批处理文件使用 AppCmd.exe 将 JSON 的压缩节和压缩条目添加到 Web.config 文件。使用 VERIFY.EXE 命令行程序将预期的 **errorlevel** 183 设为零。意外的 errorlevel 将记录到 StartupErrorLog.txt 中。
 
     REM   *** Add a compression section to the Web.config file. ***
     %windir%\system32\inetsrv\appcmd set config /section:urlCompression /doDynamicCompression:True /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
@@ -479,11 +464,11 @@ Startup2.cmd：
 
 ## 后续步骤
 
-查看云[服务模型和包](/documentation/articles/cloud-services-model-and-package)
+查看云[服务模型和包](/documentation/articles/cloud-services-model-and-package/)
 
-详细了解[任务](/documentation/articles/cloud-services-startup-tasks)的工作方式。
+详细了解[任务](/documentation/articles/cloud-services-startup-tasks/)的工作方式。
 
-[创建和部署](/documentation/articles/cloud-services-how-to-create-deploy-portal)云服务包。
+[创建和部署](/documentation/articles/cloud-services-how-to-create-deploy-portal/)云服务包。
 
 
 [ServiceDefinition.csdef]: /documentation/articles/cloud-services-model-and-package/#csdef
@@ -500,4 +485,4 @@ Startup2.cmd：
 [LocalResources]: https://msdn.microsoft.com/zh-cn/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/zh-cn/library/azure/gg557552.aspx#RoleInstanceValue
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=Mooncake_0815_2016-->

@@ -6,14 +6,16 @@
  documentationCenter=""
  authors="dominicbetts"
  manager="timlt"
- editor=""/>
+ editor=""/>  
+
 
 <tags
  ms.service="iot-suite"
- ms.date="03/02/2016"
- wacn.date="05/17/2016"/>
+ ms.date="05/25/2016"
+ wacn.date="05/17/2016"/>  
 
-[AZURE.INCLUDE [iot-azure-and-iot](../includes/iot-azure-and-iot.md)]
+
+[AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
 ## Azure IoT 套件
 
@@ -28,18 +30,18 @@ Azure IoT 套件是企业级解决方案，通过一组用于处理常见的 IoT
 有关 Azure 的 IoT 的更多信息，请查看以下资源：
 
 - [Azure IoT 套件概述][lnk-suite-overview]。
-- [IoT 预配置解决方案入门][lnk-preconfigured-solutions]。
+- [IoT 预配置解决方案入门][lnk-preconfigured-solutions]
 - [将设备与 IoT 套件远程监控解决方案相连接][lnk-connecting]。
 - [Azure IoT 中心]
 
-[lnk-suite-overview]: /documentation/articles/iot-suite-overview
-[lnk-connecting]: /documentation/articles/iot-suite-connecting-devices
-[lnk-preconfigured-solutions]: /documentation/articles/iot-suite-getstarted-preconfigured-solutions
+[lnk-suite-overview]: /documentation/articles/iot-suite-overview/
+[lnk-connecting]: /documentation/articles/iot-suite-connecting-devices/
+[lnk-preconfigured-solutions]: /documentation/articles/iot-suite-getstarted-preconfigured-solutions/
 [Azure IoT 中心]: /home/features/iot-hub/
 [Azure 事件中心]: /home/features/event-hubs/
 [Azure 流分析]: /home/features/stream-analytics/
 [Azure 机器学习]: /home/features/machine-learning/
 [Azure 存储空间]: /home/features/storage/
-[lnk-predictive-maintenance]: /documentation/articles/iot-suite-predictive-overview
+[lnk-predictive-maintenance]: /documentation/articles/iot-suite-predictive-overview/
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0815_2016-->

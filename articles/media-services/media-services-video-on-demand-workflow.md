@@ -4,12 +4,13 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
-	editor=""/>
+	manager="erikre" 
+	editor=""/>  
+
 
 <tags
 	ms.service="media-services"
- 	ms.date="05/03/2016"
+	ms.date="06/22/2016"
 	wacn.date=""/>
 
 
@@ -30,8 +31,8 @@
 
 1. 将优质夹层文件上载到资产中。
 	
-	建议向资产应用存储加密选项，以便在内容上载期间以及当内容在存储中处于静态时，为其提供保护。 
-1. 编码为自适应比特率 MP4 集。 
+	建议向资产应用存储加密选项，以便在内容上载期间以及当内容在存储中处于静态时，为其提供保护。
+1. 编码为自适应比特率 MP4 集。
 
 	建议向输出资产应用存储加密选项，以便保护静态内容。
 	
@@ -55,7 +56,7 @@
 2. 配置内容密钥授权策略。
 1. 配置资产传送策略（由动态打包和动态加密使用）。
 1. 通过创建 OnDemand 定位符来发布资产。
-1. 流式传输已发布的内容。 
+1. 流式传输已发布的内容。
 
 ###为内容编制索引
 
@@ -84,7 +85,7 @@
 
 ##概念
 
-有关与按需交付内容相关的概念，请参阅[媒体服务概念](/documentation/articles/media-services-concepts)。
+有关与按需交付内容相关的概念，请参阅[媒体服务概念](/documentation/articles/media-services-concepts/)。
 
 
 
@@ -92,4 +93,4 @@
 [vod-overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
  
 
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0815_2016-->

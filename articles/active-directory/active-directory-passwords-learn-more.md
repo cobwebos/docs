@@ -5,14 +5,19 @@
 	documentationCenter="" 
 	authors="asteen" 
 	manager="kbrint" 
-	editor="billmath"/>
+	editor="billmath"/>  
+
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="02/16/2016" 
-	wacn.date=""/>
+	ms.date="07/12/2016"
+	wacn.date=""/>  
+
 
 # 了解有关密码管理的详细信息
+
+> [AZURE.IMPORTANT] **你是否因登录时遇到问题而浏览至此？** 如果是这样，[可按以下方式更改和重置你的密码](active-directory-passwords-update-your-own-password.md)。
+
 如果你已部署密码管理，或只是想要在部署之前深入了解密码管理工作原理的技术细节，则本部分可让你大致了解该服务背后的技术概念。本部分将介绍以下内容：
 
 * [**密码写回概述**](#password-writeback-overview)
@@ -46,7 +51,8 @@
 
 这三个组件按下图所示配合工作：
 
-  ![][001]
+  ![][001]  
+
 
 当联合或密码哈希同步用户在云中重置或更改其密码时，将发生以下情况：
 
@@ -64,7 +70,8 @@
 ### 密码写回支持的方案
 下表介绍同步功能的各个版本支持哪些方案。通常情况下，如果要使用密码写回，我们强烈建议安装最新版本的 [Azure AD Connect](/documentation/articles/active-directory-aadconnect#download-azure-ad-connect)。
 
-  ![][002]
+  ![][002]  
+
 
 ### 密码写回安全模型
 密码写回是高度安全、极其可靠的服务。为确保你的信息受保护，我们启用了一个 4 层安全模型，如下所述。
@@ -166,7 +173,7 @@
             </td>
             <td>
               <p>AuthenticationPhone</p>
-              <p>或者</p>
+              <p>或</p>
               <p>MobilePhone</p>
               <p>（如果存在数据，则使用身份验证电话，否则将退回到移动电话字段）。</p>
               <p>例如 Set-MsolUser -UserPrincipalName JWarner@contoso.com -MobilePhone "+1 1234567890x1234"</p>
@@ -275,7 +282,7 @@
 * 身份验证电子邮件
 
 ####只能使用注册 UI 设置的数据
-只能通过 SSPR 注册 UI (https://aka.ms/ssprsetup)) 访问以下字段：
+只能通过 SSPR 注册 UI (https://aka.ms/ssprsetup) 访问以下字段：
 
 * 安全问答
 
@@ -361,7 +368,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 ## 密码重置文档的链接
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* [**重置自己的密码**](/documentation/articles/active-directory-passwords-update-your-own-password) - 了解如何以系统用户的身份重置或更改自己的密码
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样，[可按以下方式更改和重置你的密码](/documentation/articles/active-directory-passwords-update-your-own-password/)。
 * [**工作原理**](/documentation/articles/active-directory-passwords-how-it-works) - 了解六个不同的服务组件及其功能
 * [**入门**](/documentation/articles/active-directory-passwords-getting-started) - 了解如何让用户重置及更改云密码或本地密码
 * [**自定义**](/documentation/articles/active-directory-passwords-customize) - 了解如何根据组织的需求自定义服务的外观和行为
@@ -375,4 +382,5 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 [001]: ./media/active-directory-passwords-learn-more/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
  
-<!---HONumber=Mooncake_0620_2016-->
+
+<!---HONumber=Mooncake_0815_2016-->

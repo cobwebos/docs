@@ -5,7 +5,8 @@
 	documentationCenter=".net"
 	authors="priyamohanram"
 	manager="mbaldwin"
-	editor=""/>
+	editor=""/>  
+
 
 <tags
 	ms.service="active-directory"
@@ -15,13 +16,13 @@
 
 # 使用 OAuth 2.0 和 Azure Active Directory 来授权访问 Web 应用程序
 
-[AZURE.INCLUDE [active-directory-protocols](../includes/active-directory-protocols.md)]
+[AZURE.INCLUDE [active-directory-protocols](../../includes/active-directory-protocols.md)]
 
 Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Azure AD 租户中的 Web 应用程序和 Web API。本指南与语言无关，介绍在不使用我们的任何开放源代码库的情况下，如何发送和接收 HTTP 消息。
 
 [OAuth 2.0 规范第 4.1 部分](https://tools.ietf.org/html/rfc6749#section-4.1)描述了 OAuth 2.0 授权代码流。它用于在大部分的应用类型（包括 Web 应用和本机安装的应用）中执行身份验证与授权。
 
-[AZURE.INCLUDE [active-directory-protocols-getting-started](../includes/active-directory-protocols-getting-started.md)]
+[AZURE.INCLUDE [active-directory-protocols-getting-started](../../includes/active-directory-protocols-getting-started.md)]
 
 
 ## OAuth 2.0 授权流
@@ -132,7 +133,7 @@ Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Az
 
 | 参数 | | 说明 |
 | ----------------------- | ------------------------------- | --------------------- |
-| tenant | 必填 | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
+| tenant | 必填 | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.partner.onmschina.cn` 或 `common` |
 | client\_id | 必填 | 将应用注册到 Azure AD 时，分配给应用的应用程序 ID。可以在 Azure 经典门户中找到此信息。单击“Active Directory”，单击目录，单击应用程序，然后单击“配置” |
 | grant\_type | 必填 | 必须是授权代码流的 `authorization_code`。 |
 | 代码 | 必填 | 在上一部分中获取的 `authorization_code` |
@@ -166,7 +167,7 @@ Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Az
 | 参数 | 说明 |
 | ----------------------- | ------------------------------- |
 | access\_token | 请求的访问令牌。应用程序可以使用此令牌来验证受保护的资源，例如 Web API。 |
-| token\_type | 指示令牌类型值。Azure AD 唯一支持的类型是 Bearer。有关持有者令牌的详细信息，请参阅 [OAuth2.0 Authorization Framework: Bearer Token Usage (RFC 6750)（OAuth2.0 授权框架：持有者令牌用法 (RFC 6750)）](http://www.rfc-editor.org/rfc/rfc6750.txt) |
+| token\_type | 指示令牌类型值。Azure AD 唯一支持的类型是 Bearer。有关持有者令牌的详细信息，请参阅 [OAuth2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt)（OAuth2.0 授权框架：持有者令牌用法 (RFC 6750)） |
 | expires\_in | 访问令牌的有效期（以秒为单位）。 |
 | expires\_on | 访问令牌的过期时间。该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。此值用于确定缓存令牌的生存期。 |
 | resource | Web API 的应用 ID URI（受保护的资源）。|
@@ -199,7 +200,7 @@ Azure Active Directory (Azure AD) 使用 OAuth 2.0，使你能够授权访问 Az
 		}.
 
 
-`id_token` 参数包含以下声明类型。有关 JSON Web 令牌的详细信息，请参阅 [JWT IETF 草案规范](http://go.microsoft.com/fwlink/?LinkId=392344)。有关令牌类型和声明的详细信息，请阅读 [Supported Token and Claim Types（支持的令牌和声明类型）](active-directory-token-and-claims.md)。
+`id_token` 参数包含以下声明类型。有关 JSON Web 令牌的详细信息，请参阅 [JWT IETF 草案规范](http://go.microsoft.com/fwlink/?LinkId=392344)。有关令牌类型和声明的详细信息，请阅读[支持的令牌和声明类型](/documentation/articles/active-directory-token-and-claims/)。
 
 | 声明类型 | 说明 |
 |------------|-------------|
@@ -388,4 +389,4 @@ RFC 6750 规范为在响应中使用 WWW-Authenticate 标头和持有者方案�
 
 有关错误代码的描述和建议的客户端操作，请参阅[令牌终结点错误的错误代码](#error-codes-for-token-endpoint-errors)。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0815_2016-->

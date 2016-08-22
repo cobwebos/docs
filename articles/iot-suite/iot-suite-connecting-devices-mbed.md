@@ -6,23 +6,24 @@
    documentationCenter="na"
    authors="dominicbetts"
    manager="timlt"
-   editor=""/>
+   editor=""/>  
+
 
 <tags
    ms.service="iot-suite"
-   ms.date="04/26/2016"
+   ms.date="07/14/2016"
    wacn.date="05/17/2016"/>
 
 
 # 将设备连接到远程监视预配置解决方案 (mbed)
 
-[AZURE.INCLUDE [iot-suite-selector-connecting](../includes/iot-suite-selector-connecting.md)]
+[AZURE.INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-## 在 mbed 上生成并运行 C 示例解决方案
+## 生成并运行 C 示例解决方案
 
 以下说明介绍用于将[启用 mbed 的 Freescale FRDM-K64F][lnk-mbed-home] 设备连接到远程监视解决方案的步骤。
 
-### 将设备连接到网络和桌面计算机
+### 将 mbed 设备连接到网络和桌面计算机
 
 1. 使用以太网电缆将 mbed 设备连接到网络。此步骤是必需的，因为示例应用程序需要 Internet 访问。
 
@@ -32,21 +33,24 @@
 
 ### 创建 mbed 项目并导入示例代码
 
-1. 在 Web 浏览器中，转到 mbed.org [开发人员站点](https://developer.mbed.org)。如果你尚未注册，则会看到一个用于创建新帐户（它是免费的）的选项。否则，使用你的帐户凭据登录。然后在页面右上角单击“编译器”。这应使你进入工作区管理界面。
+1. 在 Web 浏览器中，转到 mbed.org [开发人员站点](https://developer.mbed.org/)。如果你尚未注册，则会看到一个用于创建新帐户（它是免费的）的选项。否则，使用你的帐户凭据登录。然后在页面右上角单击“编译器”。随后你将转到“工作区”界面。
 
 2. 请确保你使用的硬件平台出现在窗口右上角，或单击右角的图标以选择你的硬件平台。
 
 3. 在主菜单上单击“导入”。然后单击“单击此处”以从 mbed 球形徽标旁的 URL 链接导入。
 
-    ![][6]
+    ![][6]  
+
 
 4. 在弹出窗口中，输入示例代码 https://developer.mbed.org/users/AzureIoTClient/code/remote_monitoring/ 的链接，然后单击“导入”。
 
-    ![][7]
+    ![][7]  
 
-5. 可以在 mbed 编译器窗口中看到导入此项目会导入各种库。一些库由 Azure IoT 团队提供并维护（[azureiot\_common](https://developer.mbed.org/users/AzureIoTClient/code/azureiot_common)、，[iothub\_client](https://developer.mbed.org/users/AzureIoTClient/code/iothub_client)、[iothub\_amqp\_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_amqp_transport)、[azure\_uamqp](https://developer.mbed.org/users/AzureIoTClient/code/azure_uamqp)），而另其他库是 mbed 库目录中可用的第三方库。
 
-    ![][8]
+5. 可以在 mbed 编译器窗口中看到导入此项目也会导入各种库。一些库由 Azure IoT 团队提供并维护（[azureiot\_common](https://developer.mbed.org/users/AzureIoTClient/code/azureiot_common/)、，[iothub\_client](https://developer.mbed.org/users/AzureIoTClient/code/iothub_client/)、[iothub\_amqp\_transport](https://developer.mbed.org/users/AzureIoTClient/code/iothub_amqp_transport/)、[azure\_uamqp](https://developer.mbed.org/users/AzureIoTClient/code/azure_uamqp/)），而另其他库是 mbed 库目录中可用的第三方库。
+
+    ![][8]  
+
 
 6. 打开 remote\_monitoring\\remote\_monitoring.c 文件并在该文件中找到以下代码：
 
@@ -57,7 +61,7 @@
     static const char* hubSuffix = "[IoTHub Suffix, i.e. azure-devices.net]";
     ```
 
-7. 将 [Device Id] 和 [Device Key] 替换为设备数据以便使示例程序可以连接到 IoT 中心。使用 IoT 中心主机名替换 [IoTHub Name] 和 [IoTHub Suffix, i.e. azure-devices.net] 占位符。例如，如果 IoT 中心主机名是 contoso.azure-devices.net，则 contoso 是 **hubName**，其后的所有内容是 **hubSuffix**：
+7. 将 [Device Id] 和 [Device Key] 替换为设备数据以便使示例程序可以连接到 IoT 中心。使用 IoT 中心主机名替换 [IoTHub Name] 和 [IoTHub Suffix, i.e. azure-devices.net] 占位符。例如，如果 IoT 中心主机名是 **contoso.azure-devices.net**，则 **contoso** 是 **hubName**，其后的所有内容是 **hubSuffix**：
 
     ```
     static const char* deviceId = "mydevice";
@@ -66,7 +70,8 @@
     static const char* hubSuffix = "azure-devices.net";
     ```
 
-    ![][9]
+    ![][9]  
+
 
 ### 演练代码
 
@@ -183,7 +188,8 @@
 	}
 
 
-<a id="buildandrun"/></a>
+<a id="buildandrun"></a>  
+
 ### 生成并运行程序
 
 1. 单击“编译”以生成程序。可以安全地忽略任何警告，但是如果生成产生错误，请在更正它们之后再继续进行。
@@ -192,15 +198,17 @@
 
 3. 使用 SSH 客户端应用程序（如 PuTTY）连接到设备。可以通过检查 Windows 设备管理器来确定设备使用的串行端口。
 
-    ![][11]
+    ![][11]  
+
 
 4. 在 PuTTY 中，单击“串行”连接类型。设备通常以 9600 波特进行连接，因此在“速度”框中输入 9600。然后单击“打开”。
 
 5. 程序开始执行。如果程序未在连接时自动启动，则你可能必须重置板（按 CTRL+Break 或按板的重置按钮）。
 
-    ![][10]
+    ![][10]  
 
-[AZURE.INCLUDE [iot-suite-visualize-connecting](../includes/iot-suite-visualize-connecting.md)]
+
+[AZURE.INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 
 
 [6]: ./media/iot-suite-connecting-devices-mbed/mbed1.png
@@ -215,4 +223,4 @@
 [lnk-mbed-pcconnect]: https://developer.mbed.org/platforms/FRDM-K64F/#pc-configuration
 [lnk-serializer]: /documentation/articles/iot-hub-device-sdk-c-intro/#serializer
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0815_2016-->

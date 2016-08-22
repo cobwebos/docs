@@ -4,13 +4,15 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="xstof" 
-	manager="dwrede" 
-	editor=""/>
+	manager="erikre" 
+	editor=""/>  
+
 
 <tags 
 	ms.service="media-services" 
-	ms.date="04/25/2016"  
-	wacn.date=""/>
+	ms.date="07/11/2016"  
+	wacn.date=""/>  
+
 
 #高级媒体编码器高级工作流教程
 
@@ -22,44 +24,44 @@
 
 本文涵盖以下主题：
 
-- [将 MXF 编码为单比特率 MP4](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4)
-	- [启动新工作流](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_start_new) 
-	- [使用媒体文件输入](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_with_file_input)
-	- [检查媒体流](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_streams)
-	- [添加视频编码器用于生成 .MP4 文件](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_file_generation)
-	- [为音频流编码](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_audio)
-	- [将音频和视频流多路复用到 MP4 容器](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_audio_and_fideo)
-	- [写入 MP4 文件](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_writing_mp4)
-	- [从输出文件创建媒体服务资产](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_asset_from_output)
-	- [在本地测试完成的工作流](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_test)
-- [将 MXF 编码为多比特率 MP4 - 动态打包已启用](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_with_dyn_packaging)
-	- [添加一个或多个其他 MP4 输出](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_with_dyn_packaging_more_outputs)
-	- [配置文件输出名称](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_with_dyn_packaging_conf_output_names)
-	- [添加单独的音轨](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_with_dyn_packaging_audio_tracks)
-	- [添加 .ISM SMIL 文件](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_with_dyn_packaging_ism_file)
-- [将 MXF 编码为多比特率 MP4 - 增强的蓝图](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to__multibitrate_MP4)
-	- [要增强的工作流概述](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to__multibitrate_MP4_overview)
+- [将 MXF 编码为单比特率 MP4](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4)
+	- [启动新工作流](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_start_new)
+	- [使用媒体文件输入](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_with_file_input)
+	- [检查媒体流](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_streams)
+	- [添加视频编码器用于生成 .MP4 文件](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_file_generation)
+	- [为音频流编码](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_audio)
+	- [将音频和视频流多路复用到 MP4 容器](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_audio_and_fideo)
+	- [写入 MP4 文件](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_writing_mp4)
+	- [从输出文件创建媒体服务资产](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_asset_from_output)
+	- [在本地测试完成的工作流](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_test)
+- [将 MXF 编码为多比特率 MP4 - 动态打包已启用](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_with_dyn_packaging)
+	- [添加一个或多个其他 MP4 输出](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_with_dyn_packaging_more_outputs)
+	- [配置文件输出名称](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_with_dyn_packaging_conf_output_names)
+	- [添加单独的音轨](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_with_dyn_packaging_audio_tracks)
+	- [添加 .ISM SMIL 文件](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_with_dyn_packaging_ism_file)
+- [将 MXF 编码为多比特率 MP4 - 增强的蓝图](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to__multibitrate_MP4)
+	- [要增强的工作流概述](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to__multibitrate_MP4_overview)
 	- [文件命名约定](vMXF_to__multibitrate_MP4_file_naming)
-	- [将组件属性发布到工作流根目录](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to__multibitrate_MP4_publishing)
-	- [使生成的输出文件名依赖于发布的属性值](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to__multibitrate_MP4_output_files)
-- [将缩略图添加到多比特率 MP4 输出](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#thumbnails_to__multibitrate_MP4)
-	- [要将缩略图添加到的工作流概述](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#thumbnails_to_multibitrate_MP4_overview)
-	- [添加 JPG 编码](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#thumbnails_to__multibitrate_MP4__with_jpg)
-	- [处理颜色空间转换](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#thumbnails_to__multibitrate_MP4_color_space)
-	- [写入缩略图](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#thumbnails_to__multibitrate_MP4_writing_thumbnails)
-	- [在工作流中检测错误](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#thumbnails_to__multibitrate_MP4_errors)
-	- [已完成的工作流](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#thumbnails_to__multibitrate_MP4_finish)
-- [对多比特率 MP4 输出进行基于时间的修剪](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#time_based_trim)
-	- [要在其中开始添加修剪的工作流概述](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#time_based_trim_start)
-	- [使用流修剪器](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#time_based_trim_use_stream_trimmer)
-	- [已完成的工作流](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#time_based_trim_finish)
-- [引入脚本组件](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#scripting)
-	- [在工作流中编写脚本：Hello World](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#scripting_hello_world)
-- [对多比特率 MP4 输出进行基于帧的修剪](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#frame_based_trim)
-	- [要在其中开始添加修剪的蓝图概述](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#frame_based_trim_start)
-	- [使用剪辑列表 XML](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#frame_based_trim_clip_list)
-	- [通过脚本组件修改剪辑列表](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#frame_based_trim_modify_clip_list)
-	- [添加 ClippingEnabled 便利属性](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#frame_based_trim_clippingenabled_prop)
+	- [将组件属性发布到工作流根目录](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to__multibitrate_MP4_publishing)
+	- [使生成的输出文件名依赖于发布的属性值](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to__multibitrate_MP4_output_files)
+- [将缩略图添加到多比特率 MP4 输出](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#thumbnails_to__multibitrate_MP4)
+	- [要将缩略图添加到的工作流概述](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#thumbnails_to_multibitrate_MP4_overview)
+	- [添加 JPG 编码](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#thumbnails_to__multibitrate_MP4__with_jpg)
+	- [处理颜色空间转换](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#thumbnails_to__multibitrate_MP4_color_space)
+	- [写入缩略图](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#thumbnails_to__multibitrate_MP4_writing_thumbnails)
+	- [在工作流中检测错误](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#thumbnails_to__multibitrate_MP4_errors)
+	- [已完成的工作流](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#thumbnails_to__multibitrate_MP4_finish)
+- [对多比特率 MP4 输出进行基于时间的修剪](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#time_based_trim)
+	- [要在其中开始添加修剪的工作流概述](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#time_based_trim_start)
+	- [使用流修剪器](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#time_based_trim_use_stream_trimmer)
+	- [已完成的工作流](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#time_based_trim_finish)
+- [引入脚本组件](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#scripting)
+	- [在工作流中编写脚本：Hello World](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#scripting_hello_world)
+- [对多比特率 MP4 输出进行基于帧的修剪](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#frame_based_trim)
+	- [要在其中开始添加修剪的蓝图概述](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#frame_based_trim_start)
+	- [使用剪辑列表 XML](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#frame_based_trim_clip_list)
+	- [通过脚本组件修改剪辑列表](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#frame_based_trim_modify_clip_list)
+	- [添加 ClippingEnabled 便利属性](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#frame_based_trim_clippingenabled_prop)
 
 ##<a id="MXF_to_MP4"></a>将 MXF 编码为单比特率 MP4
  
@@ -73,7 +75,7 @@
 
 - 主源文件
 - 剪辑列表 XML
-- 输出文件/资产  
+- 输出文件/资产
 
 ![新编码工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-transcode-blueprint.png)
 
@@ -220,7 +222,7 @@
 
 在本演练中，我们将使用来自单个 .MXF 输入文件 AAC 编码的音频来创建一组多比特率 MP4 文件。
 
-想要将多比特率资产输出用于结合 Azure 媒体服务提供的动态打包功能时，需要对每个不同的比特率与分辨率生成多个 GOP 对齐的 MP4 文件。为此，[将 MXF 编码为单比特率 MP4](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4) 演练提供了不错的起点。
+想要将多比特率资产输出用于结合 Azure 媒体服务提供的动态打包功能时，需要对每个不同的比特率与分辨率生成多个 GOP 对齐的 MP4 文件。为此，可以先完成[将 MXF 编码为单比特率 MP4](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4) 演练部分。
 
 ![启动工作流](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-starting-workflow.png)
 
@@ -266,12 +268,11 @@
 
 我们已将多个文件添加到输出资产。这使得需要确定每个输出文件的文件名彼此不同，并甚至可能应用文件命名约定，使得能够从文件名清楚知道要处理的是什么。
 
-文件输出命名可以通过设计器中的表达式来控制。打开其中一个“文件输出”组件的属性窗格，然后打开“文件属性”的表达式编辑器。我们的第一个输出文件是通过以下表达式设置的（请参阅有关[从 MXF 到单比特率 MP4 输出](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4)的教程）：
+文件输出命名可以通过设计器中的表达式来控制。打开其中一个“文件输出”组件的属性窗格，然后打开“文件属性”的表达式编辑器。我们的第一个输出文件是通过以下表达式设置的（请参阅有关[从 MXF 到单比特率 MP4 输出](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4)的教程）：
 
 	${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}.MP4
 
-这意味着我们的文件名由两个变量决定：要写入的输出目录和源文件基本名称。前者在工作流根目录上公开为属性，后者则由传入的文件决定。请注意，输出目录是用于本地测试的目录；当 Azure 媒体服务中基于云的媒体处理器执行工作流时，此属性由工作流引擎重写。
-若要提供这两个输出文件一致的输出命名，请将第一个文件命名表达式更改为：
+这意味着我们的文件名由两个变量决定：要写入的输出目录和源文件基本名称。前者在工作流根目录上公开为属性，后者则由传入的文件决定。请注意，输出目录是用于本地测试的目录；当 Azure 媒体服务中基于云的媒体处理器执行工作流时，此属性由工作流引擎重写。若要提供这两个输出文件一致的输出命名，请将第一个文件命名表达式更改为：
 
 	${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_640x360_1.MP4
 
@@ -332,7 +333,7 @@
 
 ##<a id="MXF_to__multibitrate_MP4"></a>将 MXF 编码为多比特率 MP4 - 增强的蓝图
 
-在[前一个工作流演练](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_with_dyn_packaging)中，我们已了解单个 MXF 输入资产如何转换成输出资产，其具有多比特率 MP4 文件、仅限音频的 MP4 文件和用于与 Azure 媒体服务动态打包结合使用的清单文件。
+在[前一个工作流演练](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_with_dyn_packaging)中，我们已了解单个 MXF 输入资产如何转换成输出资产，其具有多比特率 MP4 文件、仅限音频的 MP4 文件和用于与 Azure 媒体服务动态打包结合使用的清单文件。
 
 本演练将演示如何增强一些方面并提高其方便性。
 
@@ -419,7 +420,7 @@
 
 ##<a id="thumbnails_to__multibitrate_MP4"></a>将缩略图添加到多比特率 MP4 输出
 
-从[通过 MXF 输入生成多比特率 MP4 输出](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在要将缩略图添加到输出。
+从[通过 MXF 输入生成多比特率 MP4 输出](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在要将缩略图添加到输出。
 
 ###<a id="thumbnails_to__multibitrate_MP4_overview"></a>要将缩略图添加到的工作流概述
 
@@ -524,7 +525,7 @@
 
 ##<a id="time_based_trim"></a>对多比特率 MP4 输出进行基于时间的修剪
 
-从[通过 MXF 输入生成多比特率 MP4 输出](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在将基于时间戳修剪源视频。
+从[通过 MXF 输入生成多比特率 MP4 输出](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在将基于时间戳修剪源视频。
 
 ###<a id="time_based_trim_start"></a>要在其中开始添加修剪的工作流概述
 
@@ -595,7 +596,7 @@
 - **processInputScript**
 - **lifeCycleScript**
 
-脚本组件的文档更详细说明了上述各个脚本。在[下一部分](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#frame_based_trim)，**realizeScript** 脚本组件将用于在工作流启动时快速构造剪辑列表 XML。在组件安装期间调用此脚本，这种情况在其生命周期中只发生一次。
+脚本组件的文档更详细说明了上述各个脚本。在[下一部分](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#frame_based_trim)，**realizeScript** 脚本组件将用于在工作流启动时快速构造剪辑列表 XML。在组件安装期间调用此脚本，这种情况在其生命周期中只发生一次。
 
 
 ###<a id="scripting_hello_world"></a>在工作流中编写脚本：Hello World
@@ -654,7 +655,7 @@
 
 ##<a id="frame_based_trim"></a>对多比特率 MP4 输出进行基于帧的修剪
 
-从[通过 MXF 输入生成多比特率 MP4 输出](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在将基于帧计数修剪源视频。
+从[通过 MXF 输入生成多比特率 MP4 输出](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#MXF_to_MP4_with_dyn_packaging)的工作流开始，我们现在将基于帧计数修剪源视频。
 
 ###<a id="frame_based_trim_start"></a>要在其中开始添加修剪的蓝图概述
 
@@ -694,7 +695,7 @@
 
 不过，相对于当执行本地执行时发生的情况，在 Azure 媒体服务中执行的工作流中，此完全相同的剪辑列表 XML 将不有相同的效果。Azure 高级编码器启动时，每次都会根据提供给编码作业的输入文件生成剪辑列表 XML。这意味着，我们在 XML 上执行的任何更改不幸地被重写。
 
-若要避免剪辑列表 XML 在编码作业开始时被擦除，我们可以在工作流启动之后快速重新生成它。通过称为“脚本组件”的组件即可以采取这种自定义操作。有关详细信息，请参阅[引入脚本组件](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials#scripting)。
+若要避免剪辑列表 XML 在编码作业开始时被擦除，我们可以在工作流启动之后快速重新生成它。通过称为“脚本组件”的组件即可以采取这种自定义操作。有关详细信息，请参阅[引入脚本组件](/documentation/articles/media-services-media-encoder-premium-workflow-tutorials/#scripting)。
 
 
 将脚本组件拖放到设计器图面上，并重命名为“SetClipListXML”。
@@ -848,7 +849,8 @@
 
 如前面一样，将一个新属性发布到类型为“BOOLEAN”、名为“ClippingEnabled”的工作流的根目录。
 
-![已发布用于启用剪辑的属性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-enable-clip.png)
+![已发布用于启用剪辑的属性](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-enable-clip.png)  
+
 
 *已发布用于启用剪辑的属性*
 
@@ -968,12 +970,12 @@
 
 [如何在 Azure 媒体服务中使用高级编码](http://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 
-[使用 Azure 媒体服务对按需内容进行编码](/documentation/articles/media-services-encode-asset#media_encoder_premium_workflow)
+[使用 Azure 媒体服务对按需内容进行编码](/documentation/articles/media-services-encode-asset/#media_encoder_premium_workflow)
 
-[Media Encoder Premium Workflow 格式和编解码器](/documentation/articles/media-services-premium-workflow-encoder-formats)
+[Media Encoder Premium Workflow 格式和编解码器](/documentation/articles/media-services-premium-workflow-encoder-formats/)
 
-[示例工作流文件](https://github.com/AzureMediaServicesSamples/Encoding-Presets/tree/master/VoD/MediaEncoderPremiumWorkfows)
+[示例工作流文件](http://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
 
-[Azure 媒体服务资源管理器工具](https://github.com/Azure/Azure-Media-Services-Explorer/releases/tag/v3.36.0.0)
+[Azure 媒体服务资源管理器工具](https://github.com/Azure/Azure-Media-Services-Explorer/releases/tag/v3.42.0.0)
 
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0815_2016-->

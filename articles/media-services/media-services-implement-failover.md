@@ -4,24 +4,27 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="Juliako" 
-	manager="dwrede" 
-	editor=""/>
+	manager="erikre" 
+	editor=""/>  
+
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016"  
-	wacn.date=""/>
+	ms.date="06/22/2016" 
+	wacn.date=""/>  
+
 
 #实现故障转移流式处理方案
 
-本演练演示如何将内容 (blob) 从一个资产复制到另一个资产，以便处理按需流式处理的冗余。此方案适用于想要将其 CDN 设置为当我们的某个数据中心出现中断时，在两个数据中心之间进行故障转移的客户。本演练使用 Microsoft Azure 媒体服务 SDK、Microsoft Azure 媒体服务 REST API 和 Azure 存储空间 SDK 来演示以下任务。
+本演练演示如何将内容 (blob) 从一个资产复制到另一个资产，以便处理按需流式处理的冗余。此方案适用于想要将其 CDN 设置为当我们的某个数据中心出现中断时，在两个数据中心之间进行故障转移的客户。
+本演练使用 Microsoft Azure 媒体服务 SDK、Microsoft Azure 媒体服务 REST API 和 Azure 存储空间 SDK 来演示以下任务。
 
 1. 在“数据中心 A”中设置一个媒体服务帐户。
 1. 将一个夹层文件上载到源资产中。
-1. 将该资产编码成多比特率 MP4 文件。 
+1. 将该资产编码成多比特率 MP4 文件。
 1. 为源资产创建一个只读 SAS 定位器，以获取对关联到源资产的存储帐户中的容器的读取权限。
 1. 从上一步创建的只读 SAS 定位器中获取源资产的容器名称。我们需要使用这些信息在存储帐户（本主题后面将会介绍）之间复制 BLOB。
-1. 为通过编码任务创建的资产创建源定位器。 
+1. 为通过编码任务创建的资产创建源定位器。
 
 然后，若要处理故障转移，请执行以下操作：
 
@@ -29,25 +32,25 @@
 1. 在目标媒体服务帐户中创建一个目标空资产。
 1. 为目标空资产创建一个写入 SAS 定位器，以获取对关联到目标资产的目标存储帐户中的容器的写入权限。
 1. 使用 Azure 存储空间 SDK 在“数据中心 A”中的源存储帐户与“数据中心 B”中的目标存储帐户（这些存储帐户与所需资产关联）之间复制 blob（资产文件）。
-1. 将复制到目标 blob 容器的 blob（资产文件）与目标资产关联。 
-1. 在“数据中心 B”中为资产创建源定位器，并指定为“数据中心 A”中的资产生成的定位器 ID。 
-1. 这样，便会提供 URL 的相对路径相同（只有基本 URL 不同）的流式处理 URL。 
+1. 将复制到目标 blob 容器的 blob（资产文件）与目标资产关联。
+1. 在“数据中心 B”中为资产创建源定位器，并指定为“数据中心 A”中的资产生成的定位器 ID。
+1. 这样，便会提供 URL 的相对路径相同（只有基本 URL 不同）的流式处理 URL。
  
 然后，若要处理任何中断情况，可以在这些源定位器之上创建 CDN。
 
 请注意以下事项：
 
 - 当前版本的媒体服务 SDK 不支持使用指定的定位器 ID 创建定位器。若要完成此任务，我们将使用媒体服务 REST API。
-- 当前版本的媒体服务 SDK 不支持以编程方式生成会将资产与资产文件关联的 IAssetFile 信息。若要完成此任务，我们将使用 CreateFileInfos 媒体服务 REST API。 
-- 不支持使用存储加密资产 (AssetCreationOptions.StorageEncrypted) 进行复制（因为两个媒体服务帐户中的加密密钥将会有所不同）。 
-- 如果你想要利用动态打包，则必须先获取至少一个按需流式处理保留单位。有关详细信息，请参阅[动态打包资产](/documentation/articles/media-services-dynamic-packaging-overview)。
+- 当前版本的媒体服务 SDK 不支持以编程方式生成会将资产与资产文件关联的 IAssetFile 信息。若要完成此任务，我们将使用 CreateFileInfos 媒体服务 REST API。
+- 不支持使用存储加密资产 (AssetCreationOptions.StorageEncrypted) 进行复制（因为两个媒体服务帐户中的加密密钥将会有所不同）。
+- 如果你想要利用动态打包，则必须先获取至少一个按需流式处理保留单位。有关详细信息，请参阅[动态打包资产](/documentation/articles/media-services-dynamic-packaging-overview/)。
  
 
 >[AZURE.NOTE]请考虑将媒体服务[复制器工具](http://replicator.codeplex.com/)用作备用选项，以手动实现故障转移流式处理方案。此工具可用于在两个媒体服务帐户之间复制资产。
 
 ##先决条件
  
-- 在新的或现有的 Azure 订阅中拥有两个媒体服务帐户。请参阅[如何创建媒体服务帐户](/documentation/articles/media-services-create-account)。
+- 在新的或现有的 Azure 订阅中拥有两个媒体服务帐户。请参阅[如何创建媒体服务帐户](/documentation/articles/media-services-create-account/)。
 - 操作系统：Windows 7、Windows 2008 R2 或 Windows 8。
 - .NET Framework 4.5 或 .NET Framework 4。
 - Visual Studio 2010 SP1 或更高版本（专业版、高级专业版、旗舰版或学习版）。
@@ -57,7 +60,7 @@
 在本部分中，你将创建和设置一个 C# 控制台应用程序项目。
 
 1. 使用 Visual Studio 创建包含 C# 控制台应用程序项目的新解决方案。针对“名称”输入“HandleRedundancyForOnDemandStreaming”，然后单击“确定”。
-1. 在与 HandleRedundancyForOnDemandStreaming.csproj 项目文件相同的级别上创建 SupportFiles 文件夹。在 SupportFiles 文件夹下创建 OutputFiles 和 MP4Files 文件夹。将一个 .mp4 文件复制到 MP4Files 文件夹（在本示例中使用 BigBuckBunny.mp4 文件）。 
+1. 在与 HandleRedundancyForOnDemandStreaming.csproj 项目文件相同的级别上创建 SupportFiles 文件夹。在 SupportFiles 文件夹下创建 OutputFiles 和 MP4Files 文件夹。将一个 .mp4 文件复制到 MP4Files 文件夹（在本示例中使用 BigBuckBunny.mp4 文件）。
 1. 使用 **Nuget** 添加对媒体服务相关 DLL 的引用。在 Visual Studio 主菜单中，选择“工具”->“库程序包管理器”->“程序包管理器控制台”。在控制台窗口中，键入 Install-Package windowsazure.mediaservices，然后按 Enter。
 1. 添加此项目所需的其他引用：System.Configuration、System.Runtime.Serialization 和 System.Web。
 1. 将默认添加到 Programs.cs 文件中的 using 语句替换为以下语句：
@@ -182,7 +185,7 @@
 		        CopyBlobsFromDifferentStorage(containerName, targetContainerName, StorageNameSource, StorageKeySource, StorageNameTarget, StorageKeyTarget);
 		
 		
-		        // 6.Use the CreateFileInfos Media Services REST API to automatically generate all the IAssetFile's for the target asset. 
+		        // 6.Use the CreateFileInfos Media Services REST API to automatically generate all the IAssetFile’s for the target asset. 
 		        //      This API call is not supported in the current Media Services SDK for .NET. 
 		        CreateFileInfosForAssetWithRest(_contextTarget, targetAsset, MediaServicesAccountNameTarget, MediaServicesAccountKeyTarget);
 		
@@ -778,7 +781,7 @@
 		{
 		    if (string.IsNullOrEmpty(mediaServicesApiServerUri))
 		    {
-		        mediaServicesApiServerUri = "https://media.chinacloudapi.cn/api/";
+		        mediaServicesApiServerUri = "https://wamsshaclus001rest-hs.chinacloudapp.cn/api/";
 		    }
 		    if (!mediaServicesApiServerUri.EndsWith("/"))
 		        mediaServicesApiServerUri = mediaServicesApiServerUri + "/";
@@ -791,13 +794,13 @@
 		    XmlDocument xmlResponse = null;
 		
 		    StringBuilder sb = new StringBuilder();
-		    sb.Append("{ "AssetId" : "" + assetId + """);
-		    sb.Append(", "AccessPolicyId" : "" + accessPolicyId + """);
-		    sb.Append(", "Type" : "" + locatorType + """);
+		    sb.Append("{ \"AssetId\" : \"" + assetId + "\"");
+		    sb.Append(", \"AccessPolicyId\" : \"" + accessPolicyId + "\"");
+		    sb.Append(", \"Type\" : \"" + locatorType + "\"");
 		    if (startTime != DateTime.MinValue)
-		        sb.Append(", "StartTime" : "" + startTime.ToString("G", CultureInfo.CreateSpecificCulture("zh-cn")) + """);
+		        sb.Append(", \"StartTime\" : \"" + startTime.ToString("G", CultureInfo.CreateSpecificCulture("en-us")) + "\"");
 		    if (!string.IsNullOrEmpty(locatorIdToReplicate))
-		        sb.Append(", "Id" : "" + locatorIdToReplicate + """);
+		        sb.Append(", \"Id\" : \"" + locatorIdToReplicate + "\"");
 		    sb.Append("}");
 		
 		    string requestbody = sb.ToString();
@@ -865,7 +868,7 @@
 		{
 		    if (String.IsNullOrEmpty(mediaServicesApiServerUri))
 		    {
-		        mediaServicesApiServerUri = "https://media.chinacloudapi.cn/api/";
+		        mediaServicesApiServerUri = "https://wamsshaclus001rest-hs.chinacloudapp.cn/api/";
 		    }
 		    if (!mediaServicesApiServerUri.EndsWith("/"))
 		        mediaServicesApiServerUri = mediaServicesApiServerUri + "/";
@@ -959,4 +962,4 @@
 
 现在，你可以使用流量管理器在两个数据中心之间路由请求，因此可在任何中断情况下进行故障转移。
 
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0815_2016-->

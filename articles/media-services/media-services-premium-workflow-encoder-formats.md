@@ -1,23 +1,25 @@
 <!-- not suitable for Mooncake -->
 
+
 <properties 
 	pageTitle="Media Encoder Premium Workflow 格式和编解码器" 
 	description="本主题概述 Media Encoder Premium Workflow 的格式和编解码器" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,anilmur" 
-	manager="dwrede" 
+	authors="juliako" 
+	manager="erik43" 
 	editor=""/>
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016"    
-	wacn.date=""/>
+	ms.date="06/22/2016"    
+	wacn.date=""/>  
+
 
 #Media Encoder Premium Workflow 格式和编解码器
 
 
-**请注意**，本主题中所述的 Media Encoder Premium Workflow 媒体处理器在中国不可用。
+>[AZURE.NOTE]本主题中所述的 Media Encoder Premium Workflow 媒体处理器在中国不可用。
 
 本文档包含的输入和输出文件格式及编解码器列表受 **Media Encoder Premium Workflow** 公开预览版编码器支持。
 
@@ -78,7 +80,7 @@
 - Windows Media/ASF
 - AVI（8 位/10 位未压缩）
 - 平滑流文件格式 (PIFF 1.3)
-- MPEG-TS 
+- MPEG-TS
 
 
 ###输出视频编解码器
@@ -125,7 +127,4 @@
 
 如果输入视频不包含隐藏式字幕，输出资产仍将包含一个空的 TTML 文件。
 
-
-
-
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0815_2016-->

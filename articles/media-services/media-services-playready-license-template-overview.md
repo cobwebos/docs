@@ -2,15 +2,17 @@
 	pageTitle="媒体服务 PlayReady 许可证模板概述" 
 	description="本主题概述了用于配置 PlayReady 许可证的 PlayReady 许可证模板。" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor="" 
 	services="media-services" 
-	documentationCenter=""/>
+	documentationCenter=""/>  
+
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016"  
-	wacn.date=""/>
+ 	ms.date="06/22/2016"  
+	wacn.date=""/>  
+
 
 #媒体服务 PlayReady 许可证模板概述
 
@@ -20,13 +22,13 @@ Azure 媒体服务现在提供有用于传送 Microsoft PlayReady 许可证的�
 以下是你可以指定的 PlayReady 许可证限制的一些示例：
 
 - 该许可证开始生效的日期/时间。
-- 许可证过期时的日期/时间值。 
+- 许可证过期时的日期/时间值。
 - 要在客户端的永久性存储区保存的许可证。永久性许可证通常用于允许脱机播放内容。
-- 播放器必须具有的要播放你的内容的最低安全级别。 
-- 音频\\视频内容的输入控件的输出保护级别。 
+- 播放器必须具有的要播放你的内容的最低安全级别。
+- 音频\\视频内容的输入控件的输出保护级别。
 - 有关详细信息，请参阅 [PlayReady 符合性规则](https://www.microsoft.com/playready/licensing/compliance/)文档中的输出控件部分 (3.5)。
 
->[AZURE.NOTE]目前，只能配置 PlayReady 许可证（此权限是必需的）的 PlayRight。PlayRight 赋予客户端播放内容的权限。PlayRight 还允许配置特定于播放的限制。有关详细信息，请参阅 [PlayReadyPlayRight](/documentation/articles/media-services-playready-license-template-overview#PlayReadyPlayRight)。
+>[AZURE.NOTE]目前，只能配置 PlayReady 许可证（此权限是必需的）的 PlayRight。PlayRight 赋予客户端播放内容的权限。PlayRight 还允许配置特定于播放的限制。有关详细信息，请参阅 [PlayReadyPlayRight](/documentation/articles/media-services-playready-license-template-overview/#PlayReadyPlayRight)。
 
 若要使用媒体服务配置 PlayReady 许可证，必须配置媒体服务 PlayReady 许可证模板。该模板在 XML 中定义。
 
@@ -45,13 +47,13 @@ Azure 媒体服务现在提供有用于传送 Microsoft PlayReady 许可证的�
 
 XML 符合 PlayReady 许可证模板 XML 架构部分中定义的 PlayReady 许可证模板 XML 架构。
 
-媒体服务还可定义一组可用于序列化到 XML 和从 XML 反序列化的 .NET 类。有关主类的描述，请参阅用于配置许可证模板的[媒体服务 .NET 类](/documentation/articles/media-services-playready-license-template-overview#classes)。
+媒体服务还可定义一组可用于序列化到 XML 和从 XML 反序列化的 .NET 类。有关主类的描述，请参阅用于配置许可证模板的[媒体服务 .NET 类](/documentation/articles/media-services-playready-license-template-overview/#classes)。
 
-有关使用 .NET 类来配置 PlayReady 许可证模板的端到端示例，请参阅[使用 PlayReady 动态加密和许可证传送服务](/documentation/articles/media-services-protect-with-drm)。
+有关使用 .NET 类来配置 PlayReady 许可证模板的端到端示例，请参阅[使用 PlayReady 动态加密和许可证传送服务](/documentation/articles/media-services-protect-with-drm/)。
 
 ##<a id="classes"></a>用于配置许可证模板的媒体服务 .NET 类
 
-以下是用于配置媒体服务 PlayReady 许可证模板的主要 .NET 类。这些类映射到 [PlayReady 许可证模板 XML 架构](/documentation/articles/media-services-playready-license-template-overview#schema)中定义的类型。
+以下是用于配置媒体服务 PlayReady 许可证模板的主要 .NET 类。这些类映射到 [PlayReady 许可证模板 XML 架构](/documentation/articles/media-services-playready-license-template-overview/#schema)中定义的类型。
 
 [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) 类用于序列化到媒体服务许可证模板 XML 序列化和从该 XML 进行反序列化。
 
@@ -71,9 +73,9 @@ XML 符合 PlayReady 许可证模板 XML 架构部分中定义的 PlayReady 许�
 
 [PlayReadyPlayRight](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx) - 此类表示 PlayReady 许可证的 PlayRight。它会授予用户播放许可证中和 PlayRight 本身（用于播放特定策略）配置的零个或多个限制的制约内容的权限。PlayRight 上的很多策略都与输出限制有关，输出限制用于控制可以播放的内容的输出类型和使用给定输出时必须使用的任何限制。例如，如果启用了 DigitalVideoOnlyContentRestriction，DRM 运行时将只允许通过数字输出显示视频（将不允许模拟视频输出传递内容）。
 
->[AZURE.IMPORTANT]这些限制类型可以非常强大，但也会影响使用者体验。如果输出保护配置了太多限制，内容可能会无法在某些客户端上播放。有关详细信息，请参阅 PlayReady 符合性规则文档。
+>[AZURE.IMPORTANT]这些限制类型可以非常强大，但也会影响使用者体验。如果输出保护配置了太多限制，内容可能会无法在某些客户端上播放。有关详细信息，请参阅 [PlayReady 符合性规则](https://www.microsoft.com/playready/licensing/compliance/)文档。
 
-有关 Silverlight 支持的保护级别的示例，请参阅：[Silverlight 支持的输出保护](https://msdn.microsoft.com/zh-cn/library/cc838192(v=VS.95).aspx#Silverlight_Support_for_Output_Protection).
+有关 Silverlight 支持的保护级别的示例，请参阅：[Silverlight 支持的输出保护](https://msdn.microsoft.com/zh-cn/library/cc838192(v=VS.95).aspx#Silverlight_Support_for_Output_Protection)。
 
 ##<a id="schema"></a>PlayReady 许可证模板 XML 架构
 	
@@ -298,6 +300,4 @@ XML 符合 PlayReady 许可证模板 XML 架构部分中定义的 PlayReady 许�
 	  <xs:element name="ScmsRestriction" nillable="true" type="tns:ScmsRestriction" />
 	</xs:schema>
 
-
-
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0815_2016-->

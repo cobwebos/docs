@@ -1,20 +1,17 @@
 <properties
-   pageTitle="还原 Azure SQL 数据仓库（门户）| Microsoft Azure"
+   pageTitle="还原 Azure SQL 数据仓库（门户）| Azure"
    description="用于还原 SQL 数据仓库的 Azure 门户任务。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="elfisher"
+   authors="sonyam"
    manager="barbkess"
-   editor=""/>
+   editor=""/>  
+
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/17/2016"
-   ms.author="elfish;barbkess;sonyama;nicw"/>
+   ms.date="06/28/2016"
+   wacn.date=""/>
 
 # 还原 Azure SQL 数据仓库（门户）
 
@@ -101,12 +98,12 @@
 <!--Image references-->
 
 <!--Article references-->
-[Azure SQL 数据库业务连续性概述]: ./sql-database-business-continuity.md
-[概述]: ./sql-data-warehouse-restore-database-overview.md
-[门户]: ./sql-data-warehouse-restore-database-portal.md
-[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
-[确认已恢复的数据库]: ./sql-database-recovered-finalize.md
+[Azure SQL 数据库业务连续性概述]: /documentation/articles/sql-database-business-continuity/
+[概述]: /documentation/articles/sql-data-warehouse-restore-database-overview/
+[门户]: /documentation/articles/sql-data-warehouse-restore-database-portal/
+[PowerShell]: /documentation/articles/sql-data-warehouse-restore-database-powershell/
+[REST]: /documentation/articles/sql-data-warehouse-restore-database-rest-api/
+[确认已恢复的数据库]: /documentation/articles/sql-database-recovered-finalize/
 
 <!--MSDN references-->
 
@@ -114,6 +111,7 @@
 [如何查看和提高 DTU 配额]: https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/
 
 <!--Other Web references-->
-[Azure 门户]: https://portal.azure.com/
 
-<!---HONumber=Mooncake_0711_2016-->
+[Azure 门户]: https://portal.azure.cn/
+
+<!---HONumber=Mooncake_0815_2016-->

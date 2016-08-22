@@ -4,13 +4,15 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
-	editor=""/>
+	manager="erikre" 
+	editor=""/>  
+
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016"  
-	wacn.date=""/>
+	ms.date="06/22/2016" 
+	wacn.date=""/>  
+
 
 
 #如何缩放媒体服务  
@@ -25,13 +27,13 @@
 
 ##<a id="streaming_endpoins"></a>流式处理保留单位
 
-有关详细信息，请参阅[缩放流式处理单位](/documentation/articles/media-services-manage-origins#scale_streaming_endpoints)。
+有关详细信息，请参阅[缩放流式处理单位](/documentation/articles/media-services-manage-origins/#scale_streaming_endpoints)。
 
 ##<a id="encoding_reserved_units"></a>编码保留单位
 
 有关缩放编码单位的详细信息，请参阅以下**门户**和 **.NET** 主题。
 
-[AZURE.INCLUDE [media-services-selector-scale-encoding-units](../includes/media-services-selector-scale-encoding-units.md)]
+[AZURE.INCLUDE [media-services-selector-scale-encoding-units](../../includes/media-services-selector-scale-encoding-units.md)]
 
 请注意，编码和索引任务的保留单位相同。
 
@@ -39,7 +41,4 @@
 
 有关详细信息，请参阅[跨多个存储帐户管理媒体服务资产](https://msdn.microsoft.com/zh-cn/library/azure/dn271889.aspx)和[使用 Azure 存储空间](https://msdn.microsoft.com/zh-cn/library/azure/dn767951.aspx)。
 
-
-
-
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0815_2016-->

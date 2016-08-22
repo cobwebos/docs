@@ -4,13 +4,15 @@
    services="sql-database"
    documentationCenter=""
    authors="ronitr"
-   manager="jeffreyg"
-   editor="v-romcal"/>
+   manager="jhubbard"
+   editor="v-romcal"/>  
+
 
 <tags
    ms.service="sql-database"
-   ms.date="10/29/2015"
-   wacn.date=""/>
+   ms.date="07/10/2016"
+   wacn.date=""/>  
+
 
 
 # SQL 数据库威胁检测入门
@@ -19,15 +21,14 @@
 
 威胁检测会检测异常的数据库活动，指出数据库有潜在的安全威胁。威胁检测目前以预览版形式提供，V12 版 Azure SQL 数据库支持此功能。
 
-威胁检测提供新的安全层，在发生异常活动时会提供安全警报，让客户检测潜在威胁并做出响应。用户可以使用 [Azure SQL 数据库审核](/documentation/articles/sql-database-auditing-get-started)来探查可疑事件，判断这些可疑事件是否是因为有人尝试访问、破坏或利用数据库中的数据而生成的。
-你不必是安全专家，也不需要管理先进的安全监视系统，就能使用威胁检测轻松解决数据库的潜在威胁。
+威胁检测提供新的安全层，在发生异常活动时会提供安全警报，让客户检测潜在威胁并做出响应。用户可以使用 [Azure SQL 数据库审核](/documentation/articles/sql-database-auditing-get-started/)来探查可疑事件，判断这些可疑事件是否是因为有人尝试访问、破坏或利用数据库中的数据而生成的。你不必是安全专家，也不需要管理先进的安全监视系统，就能使用威胁检测轻松解决数据库的潜在威胁。
 
 威胁检测会检测异常的数据库活动，指出潜在的 SQL 注入企图。SQL 注入是 Internet 上常见的 Web 应用程序安全问题之一，用于攻击数据驱动的应用程序。攻击者利用应用程序漏洞将恶意 SQL 语句注入应用程序入口字段，以破坏或修改数据库中的数据。
 
 
 ## 为数据库设置威胁检测
 
-1. 启动 Azure 门户 ([https://manage.windowsazure.cn](https://manage.windowsazure.cn))。
+1. 启动 Azure 门户 ([https://portal.azure.cn](https://portal.azure.cn))。
 
 2. 导航到你要监视的 SQL 数据库的配置边栏选项卡。在“设置”边栏选项卡中，选择“审核和威胁检测”。
 
@@ -48,7 +49,7 @@
 
 ## 检测到可疑事件时探查异常数据库活动
 
-1. 检测到异常数据库活动时，你将收到电子邮件通知。<br/>
+1. 检测到异常数据库活动时，你将收到电子邮件通知。<br/> 
 电子邮件将提供可疑安全事件的相关信息，包括异常活动的性质、数据库名称、服务器名称和事件时间。此外，还会提供可能原因和建议操作的相关信息，以帮助你调查和缓解数据库的潜在威胁。<br/>
 
 	![导航窗格][4]
@@ -61,7 +62,7 @@
 
 	![导航窗格][6]
 
-4. 在“审核记录”边栏选项卡中，单击“在 Excel 中打开”以打开预配置的 Excel 模板，以导入发生可疑事件前后的审核日志，并运行更深入的分析。<br/>
+4. 在“审核记录”边栏选项卡中，单击“在 Excel 中打开”以打开预配置的 Excel 模板，以导入发生可疑事件前后的审核日志，并运行更深入的分析。<br/> 
 **注意：**在 Excel 2010 或更高版本中，需要配置 Power Query 和“快速合并”设置
 
 	![导航窗格][7]
@@ -78,6 +79,7 @@
 
 
 <!--Image references-->
+
 [1]: ./media/sql-database-threat-detection-get-started/1_td_click_on_settings.png
 [2]: ./media/sql-database-threat-detection-get-started/2_td_turn_on_auditing.png
 [3]: ./media/sql-database-threat-detection-get-started/3_td_turn_on_threat_detection.png
@@ -88,4 +90,4 @@
 [8]: ./media/sql-database-threat-detection-get-started/8_td_excel_fast_combine.png
 [9]: ./media/sql-database-threat-detection-get-started/9_td_excel_parameters.png
 
-<!---HONumber=Mooncake_0118_2016-->
+<!---HONumber=Mooncake_0815_2016-->

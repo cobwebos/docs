@@ -4,20 +4,21 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
-	editor=""/>
+	manager="erikre" 
+	editor=""/>  
+
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016"  
-	wacn.date=""/>
+	ms.date="06/22/2016" 
+	wacn.date=""/>  
+
 
 
 #配额和限制
 
 本主题介绍与 Microsoft Azure 媒体服务关联的配额和限制。
 
-[AZURE.INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
+[AZURE.INCLUDE [azure-mediaservices-limits](../../includes/azure-mediaservices-limits.md)]
 
-
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=Mooncake_0815_2016-->

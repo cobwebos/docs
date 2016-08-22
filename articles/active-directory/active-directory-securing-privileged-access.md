@@ -5,7 +5,8 @@
 	documentationCenter=""
 	authors="kgremban"
 	manager="femila"
-	editor="mwahl"/>
+	editor="mwahl"/>  
+
 
 <tags
 	ms.service="active-directory"
@@ -19,7 +20,7 @@
 
 若要保护管理访问权限以对抗顽固的对手，需要避免这些管理帐户和系统曝露于风险之中。越来越多的用户开始通过云服务获取特权访问。这包括 Office365 全局管理员、Azure 订阅管理员和拥有 VM 或 SaaS 应用管理访问权限的用户。
 
-Microsoft 建议遵循 [Securing Privileged Access（保护特权访问）](https://technet.microsoft.com/library/mt631194.aspx)中的路线图。
+Microsoft 建议遵循 [Securing Privileged Access](https://technet.microsoft.com/library/mt631194.aspx)（保护特权访问）中的路线图。
 
 对于使用 Azure Active Directory 来管理 Azure、Office 365 或其他 Microsoft 服务和应用程序访问权限的客户而言，是否可以应用这些原则将取决于用户帐户是由 Active Directory 进行管理和身份验证，还是在 Azure Active Directory 中进行管理和身份验证。以下部分提供了有关用于支持保护特权访问的 Azure AD 功能的详细信息。
 
@@ -33,7 +34,7 @@ Azure Multi-Factor Authentication 可帮助保护对数据和应用程序的访�
 
 >[AZURE.VIDEO windows-azure-multi-factor-authentication]
 
-有关详细信息，请参阅 [MFA for Office 365 and MFA for Azure（对 Office 365 的 MFA 和对 Azure 的 MFA）](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/)。
+有关详细信息，请参阅 [MFA for Office 365 and MFA for Azure](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/)（对 Office 365 的 MFA 和对 Azure 的 MFA）。
 
 ## 时间约束的特权
 
@@ -68,12 +69,13 @@ Azure Multi-Factor Authentication 可帮助保护对数据和应用程序的访�
 - 启用[条件访问控制](/documentation/articles/active-directory-conditional-access/)
 
 
-有关构建完整安全路线图的详细信息，请参阅 [Microsoft Cloud Security for Enterprise Architects（针对企业结构设计的 Microsoft 云安全性）](http://aka.ms/securecustomer)文档中的“Customer responsibilities and roadmap”（客户责任和路线图）部分。有关运用 Microsoft 服务来帮助实现其中任一主题所述功能的详细信息，请联系 Microsoft 代表或访问我们的[网络安全解决方案网页](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx)。
+有关构建完整安全路线图的详细信息，请参阅 [Microsoft Cloud Security for Enterprise Architects](http://aka.ms/securecustomer)（针对企业结构设计的 Microsoft 云安全性）文档中的“Customer responsibilities and roadmap”（客户责任和路线图）部分。有关运用 Microsoft 服务来帮助实现其中任一主题所述功能的详细信息，请联系 Microsoft 代表或访问我们的[网络安全解决方案网页](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx)。
 
 <!--Image references-->
+
 [1]: ./media/active-directory-privileged-identity-management-configure/Search_PIM.png
 [2]: ./media/active-directory-privileged-identity-management-configure/PIM_Dash.png
 [3]: ./media/active-directory-identityprotection/29.png
 [4]: ./media/active-directory-conditional-access/conditionalaccess-saas-apps.png
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0815_2016-->

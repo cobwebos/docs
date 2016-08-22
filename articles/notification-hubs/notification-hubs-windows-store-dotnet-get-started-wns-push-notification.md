@@ -4,26 +4,28 @@
 	services="notification-hubs"
 	documentationCenter="windows"
 	authors="wesmc7777"
-	manager="dwrede"
-	editor="dwrede"/>
+	manager="erikre"
+	editor="erikre"/>  
+
 
 <tags
 	ms.service="notification-hubs"
-	ms.date="03/28/2016"
-	wacn.date=""/>
+	ms.date="06/29/2016"
+	wacn.date=""/>  
+
 
 # 通知中心入门（Windows 应用商店应用）
 
-[AZURE.INCLUDE [notification-hubs-selector-get-started](../includes/notification-hubs-selector-get-started.md)]
+[AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ##概述
 
-本教程演示如何使用 Azure 通知中心将推送通知发送到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用程序。如果你要以 Windows Phone 8.1 Silverlight 为目标，请参阅 [Windows Phone](/documentation/articles/notification-hubs-windows-mobile-push-notifications-mpns) 版本。在本教程中，你将创建一个空白 Windows 应用商店应用，它使用 Windows 推送通知服务 (WNS) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。
+本教程演示如何使用 Azure 通知中心将推送通知发送到 Windows 应用商店或 Windows Phone 8.1（非 Silverlight）应用程序。如果你要以 Windows Phone 8.1 Silverlight 为目标，请参阅 [Windows Phone](/documentation/articles/notification-hubs-windows-mobile-push-notifications-mpns/) 版本。在本教程中，你将创建一个空白 Windows 应用商店应用，它使用 Windows 推送通知服务 (WNS) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。
 
 
 ## 开始之前
 
-[AZURE.INCLUDE [notification-hubs-hero-slug](../includes/notification-hubs-hero-slug.md)]
+[AZURE.INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
 
 可以在 GitHub 上的[此处](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal)找到本教程的已完成代码。
 
@@ -37,7 +39,7 @@
 
 + 有效的 Windows 应用商店帐户
 
-+ 一个有效的 Azure 帐户<br/>如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](/pricing/free-trial/)。
++ 一个有效的 Azure 帐户<br/>如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](/pricing/1rmb-trial-full/?form-type=identityauth)。
 
 完成本教程是学习有关 Windows 应用商店应用程序的所有其他通知中心教程的先决条件。
 
@@ -74,7 +76,7 @@
 
 7. （可选）对 Windows Phone 应用商店应用项目重复步骤 4-6。
 
-8. 返回新应用的“[Windows 开发人员中心](http://go.microsoft.com/fwlink/p/?LinkID=266582)”页，单击“服务”，单击“推送通知”，然后在“Windows 推送通知服务(WNS)和 Microsoft Azure 移动服务”下面单击“Live 服务站点”。
+8. 返回新应用的“Windows 开发人员中心”页，单击“服务”，单击“推送通知”，然后在“Windows 推送通知服务(WNS)和 Microsoft Azure 移动服务”下面单击“Live 服务站点”。[](http://go.microsoft.com/fwlink/p/?LinkID=266582)
 
    	![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-win8-app-live-services.png)
 
@@ -87,7 +89,7 @@
 
 ##配置通知中心
 
-[AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../includes/notification-hubs-portal-create-new-hub.md)]
+[AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 <ol start="7">
 <li><p>选择顶部的“配置”选项卡，输入你在前一部分中从 WNS 获取的“客户端密码”和“包 SID”值，然后单击“保存”。<b></b><b></b><b></b><b></b></p>
@@ -170,7 +172,8 @@
 
 在 [Azure 经典门户]中通过通知中心上的调试选项卡（如以下屏幕中所示）来发送通知，可以在应用中测试通知的接收情况。
 
-![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-debug.png)
+![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-debug.png)  
+
 
 通常，推送通知是在后端服务（例如，移动服务，或者使用兼容库的 ASP.NET）中发送的。如果你的后端没有可用的库，则你也可以使用 REST API 直接发送通知消息。
 
@@ -180,11 +183,11 @@
 
 * **Microsoft Azure 通知中心 .NET SDK**：在 Visual Studio 的 Nuget 包管理器中，运行 [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
-* **Node.js**：[如何通过 Node.js 使用通知中心](/documentation/articles/notification-hubs-nodejs-push-notification-tutorial)。
+* **Node.js**：[如何通过 Node.js 使用通知中心](/documentation/articles/notification-hubs-nodejs-push-notification-tutorial/)。
 
-* **Azure Mobile Apps**：有关如何从通知中心集成的 Azure 移动服务发送通知的示例，请参阅 [Add push notifications for Mobile Apps（为 Mobile Apps 添加推送通知）](/documentation/articles/app-service-mobile-windows-store-dotnet-get-started-push)。
+* **Azure Mobile Apps**：有关如何从通知中心集成的 Azure 移动服务发送通知的示例，请参阅[为 Mobile Apps 添加推送通知](/documentation/articles/app-service-mobile-windows-store-dotnet-get-started-push/)。
 
-* **Java/PHP**：有关如何使用 REST API 发送通知的示例，请参阅“如何通过 Java/PHP 使用通知中心”([Java](/documentation/articles/notification-hubs-java-push-notification-tutorial) | [PHP](/documentation/articles/notification-hubs-php-push-notification-tutorial))。
+* **Java/PHP**：有关如何使用 REST API 发送通知的示例，请参阅“如何通过 Java/PHP 使用通知中心”([Java](/documentation/articles/notification-hubs-java-push-notification-tutorial/) | [PHP](/documentation/articles/notification-hubs-php-push-notification-tutorial/))。
 
 
 ## （可选）通过控制台应用发送通知
@@ -256,6 +259,7 @@
 
 
 <!-- Images. -->
+
 [2]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-windows-universal-app.png
 [3]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-win8-app.png
 [4]: ./media/notification-hubs-windows-store-dotnet-get-started/mobile-services-select-app-name.png
@@ -270,6 +274,7 @@
 [20]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-windows-universal-app-install-package.png
 
 <!-- URLs. -->
+
 [Azure 经典门户]: https://manage.windowsazure.cn/
 [通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
 
@@ -280,4 +285,4 @@
 [磁贴目录]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx
 [锁屏提醒]: http://msdn.microsoft.com/library/windows/apps/hh779719.aspx
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0815_2016-->

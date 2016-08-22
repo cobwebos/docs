@@ -6,12 +6,14 @@
 	authors="ealsur" 
 	manager="" 
 	editor="" 
-	documentationCenter=""/>
+	documentationCenter=""/>  
+
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="03/28/2016" 
-	wacn.date=""/>
+	ms.date="06/29/2016" 
+	wacn.date=""/>  
+
 
 # 使用 DocumentDB 进行社交
 
@@ -58,7 +60,7 @@
 
 可以使用单个查询获得，且无需联接。这种方法更简单且更直观，且在预算方面，它所需要的资源更少，但得到的结果更好。
 
-Azure DocumentDB 可确保所有属性通过其[自动索引](/documentation/articles/documentdb-indexing)功能进行索引，此功能甚至可以进行[自定义](/documentation/articles/documentdb-indexing-policies)。自由架构方法可以让我们存储具有不同和动态结构的文档，也许明天我们希望帖子上显示一系列类别或与其关联的哈希标记，我们不需要执行任何额外操作，DocumentDB 将自行使用添加的属性处理新文档。
+Azure DocumentDB 可确保所有属性通过其[自动索引](/documentation/articles/documentdb-indexing/)功能进行索引，此功能甚至可以进行[自定义](/documentation/articles/documentdb-indexing-policies/)。自由架构方法可以让我们存储具有不同和动态结构的文档，也许明天我们希望帖子上显示一系列类别或与其关联的哈希标记，我们不需要执行任何额外操作，DocumentDB 将自行使用添加的属性处理新文档。
 
 可以将对帖子的评论视为具有父属性的其他帖子（这可以简化我们的对象映射）。
 
@@ -96,11 +98,38 @@ Azure DocumentDB 可确保所有属性通过其[自动索引](/documentation/art
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-我们可以有一个“最新”流（其中帖子按创建日期排序）和一个“最热门”流（其中包括在过去 24 小时内获得了更多赞的帖子），甚至还可以基于逻辑点赞粉丝和兴趣为每个用户实现客户流，且它仍然可以是一个帖子列表。虽然如何生成这些列表还是一个问题，但读取性能仍然不受阻碍。一旦我们获得其中一个列表之后，我们就可以使用 [IN 运算符](/documentation/articles/documentdb-sql-query#where-clause) 向 DocumentDB 发布单个查询以一次性获取帖子的所有页面。
+我们可以有一个“最新”流（其中帖子按创建日期排序）和一个“最热门”流（其中包括在过去 24 小时内获得了更多赞的帖子），甚至还可以基于逻辑点赞粉丝和兴趣为每个用户实现客户流，且它仍然可以是一个帖子列表。虽然如何生成这些列表还是一个问题，但读取性能仍然不受阻碍。一旦我们获得其中一个列表之后，我们就可以使用 [IN 运算符](/documentation/articles/documentdb-sql-query/#where-clause) 向 DocumentDB 发布单个查询以一次性获取帖子的所有页面。
 
-可以使用 [Azure App Service](/services/app-service/) 的后台进程 - [Web 作业](/documentation/articles/web-sites-create-web-jobs) - 来构建源流。创建一个帖子后，可以通过使用 [Azure 存储空间](https://azure.microsoft.com/services/storage/)[队列](/documentation/articles/storage-dotnet-how-to-use-queues)和 Web 作业（通过 [Azure Webjobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk) 触发）触发后台处理，从而根据我们自己的自定义逻辑实现流内的帖子传播。
+可以使用 [Azure App Service](/services/app-service/) 的后台进程 - [Web 作业](/documentation/articles/web-sites-create-web-jobs/) - 来构建源流。创建一个帖子后，可以通过使用 [Azure 存储空间](/documentation/services/storage/)[队列](/documentation/articles/storage-dotnet-how-to-use-queues/)和 Web 作业（通过 [Azure Webjobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk/) 触发）触发后台处理，从而根据我们自己的自定义逻辑实现流内的帖子传播。
 
 通过使用这种相同的技术创建最终一致性环境还可以以延迟方式处理评分和点赞。
+
+至于关注者，则需要有更多的技巧来处理。DocumentDB 的文档大小限制为 512Kb，因此你可以考虑使用以下结构，以文档形式存储关注者：
+
+    {
+    	"id":"234d-sd23-rrf2-552d",
+    	"followersOf": "dse4-qwe2-ert4-aad2",
+    	"followers":[
+    		"ewr5-232d-tyrg-iuo2",
+    		"qejh-2345-sdf1-ytg5",
+    		//...
+    		"uie0-4tyg-3456-rwjh"
+    	]
+    }
+
+这可能适用于有数千位关注者的用户，但是，如果有一些名人添加我们的行列，此处理方法最终将达到文档大小上限。
+
+为了解决此问题，我们可以使用一种混合方法。我们可以在用户统计信息文档中存储关注者人数：
+
+    {
+    	"id":"234d-sd23-rrf2-552d",
+    	"user": "dse4-qwe2-ert4-aad2",
+    	"followers":55230,
+    	"totalPosts":452,
+    	"totalPoints":11342
+    }
+
+然后使用一个[扩展](https://github.com/richorama/AzureStorageExtensions#azuregraphstore)，将实际的关注者图形存储在 Azure 存储表中，以允许进行简单的“A 关注 B”存储和检索。这样，我们就可以将确切的关注者列表的检索过程（当我们需要它时）委托给 Azure 存储表，但为了快速查找数字，我们仍继续使用 DocumentDB。
 
 ## “阶梯”模式和数据重复
 
@@ -142,15 +171,20 @@ Azure DocumentDB 可确保所有属性通过其[自动索引](/documentation/art
         "id":"dse4-qwe2-ert4-aad2",
         "name":"John",
         "surname":"Doe",
+        "username":"johndoe"
         "email":"john@doe.com",
-        "twitterHandle":"@john",
-        "totalPoints":100,
-        "totalPosts":24,
-        "following":{
-            "count":2,
-            "list":[
-                UserChunk1, UserChunk2
-            ]
+        "twitterHandle":"@john"
+    }
+
+贴子内容如下所示：
+
+    {
+        "id":"1234-asd3-54ts-199a",
+        "title":"Awesome post!",
+        "date":"2016-01-02",
+        "createdBy":{
+        	"id":"dse4-qwe2-ert4-aad2",
+    		"username":"johndoe"
         }
     }
 
@@ -160,13 +194,13 @@ Azure DocumentDB 可确保所有属性通过其[自动索引](/documentation/art
 
 幸运的是，用户将生成大量内容。并且我们应能够提供搜索和查找可能在其内容流中不直接显示的内容的能力，也许是由于我们未关注创建者，或者也许是因为我们只是想要尽力找到 6 个月之前我们发布的旧帖子。
 
-好在我们使用的是 Azure DocumentDB，因此，可以使用 [Azure 搜索](https://azure.microsoft.com/services/search/) 在几分钟内轻松实现搜索引擎，而无需键入一行代码（显然，搜索过程和 UI 除外）。
+好在我们使用的是 Azure DocumentDB，因此，可以使用 [Azure 搜索](/documentation/services/search/) 在几分钟内轻松实现搜索引擎，而无需键入一行代码（显然，搜索过程和 UI 除外）。
 
 为什么会这么简单？
 
-Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/library/azure/dn946891.aspx)的内容，这是在数据存储库中挂钩的后台处理程序，可以自动添加、更新或删除索引中的对象。它们支持 [Azure SQL 数据库索引器](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure Blob 索引器](/documentation/articles/search-howto-indexing-azure-blob-storage)和 [Azure DocumentDB 索引器](/documentation/articles/documentdb-search-indexer)。将信息从 DocumentDB 转换至 Azure 搜索比较简单，因为这两者都采用 JSON 格式存储数据，我们只需[创建索引](/documentation/articles/search-create-index-portal)并映射我们想要编制索引的文档的属性即可，几分钟后（取决于数据的大小），便可通过云基础结构中最好的搜索即服务解决方案搜索所有内容。
+Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/library/azure/dn946891.aspx)的内容，这是在数据存储库中挂钩的后台处理程序，可以自动添加、更新或删除索引中的对象。它们支持 [Azure SQL 数据库索引器](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure Blob 索引器](/documentation/articles/search-howto-indexing-azure-blob-storage/)和 [Azure DocumentDB 索引器](/documentation/articles/documentdb-search-indexer/)。将信息从 DocumentDB 转换至 Azure 搜索比较简单，因为这两者都采用 JSON 格式存储数据，我们只需[创建索引](/documentation/articles/search-create-index-portal/)并映射我们想要编制索引的文档的属性即可，几分钟后（取决于数据的大小），便可通过云基础结构中最好的搜索即服务解决方案搜索所有内容。
 
-有关 Azure 搜索的详细信息，请访问[Hitchhiker’s Guide to Search（搜索漫游指南）](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)。
+有关 Azure 搜索的详细信息，请访问 [Hitchhiker’s Guide to Search（搜索漫游指南）](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)。
 
 ## 基础知识
 
@@ -178,7 +212,9 @@ Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/libra
 
 由于想要深入了解，你可能会认为自己需要更多数学科学方面的知识才能提取出简单数据库和文件之外的这些模式和信息，其实不然。
 
-[Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)（[Cortana Intelligence 套件](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx)的一部分）是一个全面托管的云服务，使你可以在简单的拖放界面中使用算法创建工作流、为 [R] (https://en.wikipedia.org/wiki/R_(programming_language)) 中你自己的算法进行编码，或使用部分已生成的或现有的 API（如[文本分析](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[内容审查方](https://www.microsoft.com/moderator)或[建议](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)）。
+[Azure 机器学习](/documentation/services/machine-learning/)（[Cortana Intelligence 套件](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx)的一部分）是一个全面托管的云服务，使你可以在简单的拖放界面中使用算法创建工作流、为 [R] (https://en.wikipedia.org/wiki/R_(programming_language)) 中你自己的算法进行编码，或使用部分已生成的或现有的 API（如[文本分析](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2)、[内容审查方](https://www.microsoft.com/moderator)或[建议](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2)）。
+
+为了实现上述任何一种机器学习方案，我们可以使用 [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) 引入不同源的信息，并使用 [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) 来处理信息，并生成可由 Azure 机器学习处理的输出。
 
 ## 结束语
 
@@ -190,7 +226,8 @@ Azure 搜索可实现它们称之为[索引器](https://msdn.microsoft.com/libra
 
 ## 后续步骤
 
-阅读[对 DocumentDB 中的数据进行建模](/documentation/articles/documentdb-modeling-data)一文，了解有关数据建模的详细信息。如需了解 DocumentDB 其他用例信息，请参阅 [DocumentDB 的常见用例](/documentation/articles/documentdb-use-cases)。
+阅读 [Modeling data in DocumentDB（为 DocumentDB 中的数据建模）](/documentation/articles/documentdb-modeling-data/)一文，了解有关数据建模的详细信息。如需了解 DocumentDB 其他用例信息，请参阅 [Common DocumentDB use cases（DocumentDB 的常见用例）](/documentation/articles/documentdb-use-cases/)。
 
-或跟随 [DocumentDB 学习路径](/documentation/learning-paths/documentdb/)了解关于 DocumentDB 的详细信息。
-<!---HONumber=Mooncake_0627_2016-->
+或遵照 [DocumentDB 学习路径](/documentation/learning-paths/documentdb/)了解有关 DocumentDB 的详细信息。
+
+<!---HONumber=Mooncake_0815_2016-->

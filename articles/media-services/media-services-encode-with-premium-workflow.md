@@ -1,18 +1,20 @@
 <!-- not suitable for Mooncake -->
 
+
 <properties 
 	pageTitle="使用 Media Encoder Premium Workflow 进行高级编码" 
 	description="了解如何使用 Media Encoder Premium Workflow 进行编码。代码示例用 C# 编写且使用适用于 .NET 的媒体服务 SDK。" 
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,anilmur" 
-	manager="dwrede" 
+	authors="juliako" 
+	manager="erikre" 
 	editor=""/>
 
 <tags
 	ms.service="media-services"
-	ms.date="05/15/2016" 
-	wacn.date=""/>
+	ms.date="06/22/2016" 
+	wacn.date=""/>  
+
 
 #使用 Media Encoder Premium Workflow 进行高级编码
 
@@ -24,17 +26,17 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 以下主题概述了与**媒体编码器高级工作流**相关的详细信息：
 
-- [Media Encoder Premium Workflow 支持的格式](/documentation/articles/media-services-premium-workflow-encoder-formats) — 介绍 **Media Encoder Premium Workflow** 支持的文件格式和编解码器。
+- [媒体编码器高级工作流支持的格式](/documentation/articles/media-services-premium-workflow-encoder-formats/) – 介绍**媒体编码器高级工作流**支持的文件格式和编解码器。
 
-- [比较编码器](/documentation/articles/media-services-encode-asset#compare_encoders)部分比较了 **Media Encoder Premium Workflow** 和 **Media Encoder Standard** 的编码功能。
+- [比较编码器](/documentation/articles/media-services-encode-asset/#compare_encoders)部分比较了**媒体编码器高级工作流**和**媒体编码器标准版**的编码功能。
 
 本主题演示如何在**媒体编码器高级工作流**中使用 .NET 进行编码。
 
-**媒体编码器高级工作流**的编码任务需要一个名为“工作流文件”的独立配置文件。这些文件的扩展名为 .workflow，是使用[工作流设计器](/documentation/articles/media-services-workflow-designer)工具创建的。
+**媒体编码器高级工作流**的编码任务需要一个名为“工作流文件”的独立配置文件。这些文件的扩展名为 .workflow，是使用[工作流设计器](/documentation/articles/media-services-workflow-designer/)工具创建的。
 
 ##编码
 
-**媒体编码器高级工作流**的编码任务需要一个名为“工作流文件”的独立配置文件。这些文件的扩展名为 .workflow，是使用[工作流设计器](/documentation/articles/media-services-workflow-designer)工具创建的。
+**媒体编码器高级工作流**的编码任务需要一个名为“工作流文件”的独立配置文件。这些文件的扩展名为 .workflow，是使用[工作流设计器](/documentation/articles/media-services-workflow-designer/)工具创建的。
 
 
 你也可以从[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)获取默认的工作流文件该文件夹还包含这些文件的相关说明。
@@ -45,10 +47,10 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 将执行以下步骤：
  
-1. 创建资产并上载工作流文件。 
+1. 创建资产并上载工作流文件。
 2. 创建资产并上载源媒体文件。
 3. 获取“Media Encoder Premium Workflow”媒体处理器。
-4. 创建作业和任务。 
+4. 创建作业和任务。
 
 	在大多数情况下，该任务的配置字符串为空（如以下示例中所示）。在某些高级方案中（要求你动态设置运行时属性），你需要为编码任务提供 XML 字符串。此类方案的示例包括：创建一个覆盖层、并行或依序媒体拼接、字幕。
 5. 向该任务添加输入资产。
@@ -57,11 +59,12 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 
 	b.第二个 – 视频资产。
 	
-	**注意：**必须将工作流资产添加到媒体资产前面的任务。此任务的配置字符串应为空。
+	**注意：**必须将工作流资产添加到媒体资产前面的任务。
+此任务的配置字符串应为空。
 
 6. 提交编码作业。
 
-下面是一个完整示例。有关如何为媒体服务 .NET 开发进行设置的信息，请参阅[使用 .NET 进行媒体服务开发](/documentation/articles/media-services-dotnet-how-to-use)。
+下面是一个完整示例。有关如何为媒体服务 .NET 开发进行设置的信息，请参阅[使用 .NET 进行媒体服务开发](/documentation/articles/media-services-dotnet-how-to-use/)。
 
 
  	using System; 
@@ -263,7 +266,4 @@ Microsoft Azure 媒体服务即将推出**媒体编码器高级工作流**媒体
 	    }
 	}
 
-
-
-
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0815_2016-->

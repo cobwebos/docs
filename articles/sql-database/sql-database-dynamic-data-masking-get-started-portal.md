@@ -5,17 +5,18 @@
    documentationCenter=""
    authors="ronitr"
    manager="jhubbard"
-   editor=""/>
+   editor=""/>  
+
 
 <tags
    ms.service="sql-database"
-   ms.date="04/11/2016"
-   wacn.date="04/22/2016"/>
+   ms.date="07/10/2016"
+   wacn.date=""/>
 
 # SQL 数据库动态数据屏蔽入门（Azure 管理门户）
 
 > [AZURE.SELECTOR]
-- [Dynamic Data Masking - Azure Portal](/documentation/articles/sql-database-dynamic-data-masking-get-started)
+- [动态数据屏蔽 - Azure 门户](/documentation/articles/sql-database-dynamic-data-masking-get-started/)
 
 ## 概述
 
@@ -30,7 +31,7 @@ SQL 数据库动态数据屏蔽通过向无特权用户屏蔽敏感数据来控�
 可以在 Azure 管理门户中数据库的“审核和安全性”选项卡下设置动态数据屏蔽策略。
 
 
-> [AZURE.NOTE] 若要在 Azure 门户中设置动态数据屏蔽，请参阅 [SQL 数据库动态数据屏蔽入门（Azure 门户）](/documentation/articles/sql-database-dynamic-data-masking-get-started)。
+> [AZURE.NOTE] 若要在 Azure 门户中设置动态数据屏蔽，请参阅 [SQL 数据库动态数据屏蔽入门（Azure 门户）](/documentation/articles/sql-database-dynamic-data-masking-get-started/)。
 
 
 ### 动态数据屏蔽权限
@@ -55,7 +56,7 @@ Azure 数据库管理员、服务器管理员或安全主管角色可以配置�
 | **自定义文本** | **公开第一个和最后一个字符**，并在中间添加一个自定义填充字符串的屏蔽方法。如果原始字符串短于公开的前缀和后缀，则只使用填充字符串。<br/>前缀[填充字符]后缀<br/><br/>![导航窗格](./media/sql-database-dynamic-data-masking-get-started-portal/2_DDM_Custom_text.png) |
 
 
-<a name="Anchor1"></a>
+<a name="Anchor1">
 
 ## 使用 Azure 管理门户为数据库设置动态数据屏蔽
 
@@ -69,7 +70,8 @@ Azure 数据库管理员、服务器管理员或安全主管角色可以配置�
 
 	>[AZURE.TIP] 若要使应用程序层向应用程序特权用户显示敏感数据，请添加应用程序查询数据库时需要使用的 SQL 用户或 AAD 标识。强烈建议在此列表中包含最少量的特权用户，以最大程度地降低泄露敏感数据的风险。
 
-	![导航窗格](./media/sql-database-dynamic-data-masking-get-started-portal/4_ddm_policy_classic_portal.png)
+	![导航窗格](./media/sql-database-dynamic-data-masking-get-started-portal/4_ddm_policy_classic_portal.png)  
+
 
 5. 在页面底部的菜单栏中，单击“添加屏蔽”打开屏蔽规则配置窗口。
 
@@ -77,7 +79,8 @@ Azure 数据库管理员、服务器管理员或安全主管角色可以配置�
 
 7. 从敏感数据屏蔽类别列表中选择“屏蔽函数”。
 
-	![导航窗格](./media/sql-database-dynamic-data-masking-get-started-portal/5_DDM_Add_Masking_Rule_Classic_Portal.png)
+	![导航窗格](./media/sql-database-dynamic-data-masking-get-started-portal/5_DDM_Add_Masking_Rule_Classic_Portal.png)  
+
 
 8. 在数据屏蔽规则窗口中单击“确定”，以更新动态数据屏蔽策略中的屏蔽规则集。
 
@@ -86,7 +89,7 @@ Azure 数据库管理员、服务器管理员或安全主管角色可以配置�
 
 ## 使用 Transact-SQL 语句为数据库设置动态数据屏蔽
 
-请参阅 [Dynamic Data Masking（动态数据屏蔽）](https://msdn.microsoft.com/zh-cn/library/mt130841.aspx)。
+请参阅 [Dynamic Data Masking](https://msdn.microsoft.com/zh-cn/library/mt130841.aspx)（动态数据屏蔽）。
 
 ## 使用 Powershell cmdlet 为数据库设置动态数据屏蔽
 
@@ -96,4 +99,4 @@ Azure 数据库管理员、服务器管理员或安全主管角色可以配置�
 
 请参阅[对 Azure SQL 数据库的操作](https://msdn.microsoft.com/zh-cn/library/dn505719.aspx)。
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0815_2016-->

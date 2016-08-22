@@ -6,18 +6,20 @@
 	authors="MightyPen" 
 	manager="jhubbard" 
 	editor="" 
-	tags=""/>
+	tags=""/>  
+
 
 
 <tags 
 	ms.service="sql-database" 
-	ms.date="06/08/2016" 
-	wacn.date="06/02/2016"/>
+	ms.date="06/24/2016" 
+	wacn.date=""/>  
+
 
 
 # SQL 数据库中扩展事件的事件文件目标代码
 
-[AZURE.INCLUDE [sql-database-xevents-selectors-1-include](../includes/sql-database-xevents-selectors-1-include.md)]
+[AZURE.INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
 你需要一个完整的代码示例来可靠捕获和报告扩展事件的信息。
 
@@ -45,7 +47,7 @@
  - 你可以选择快速[创建一个 **AdventureWorksLT** 演示数据库](/documentation/articles/sql-database-get-started/)。
 
 
-- SQL Server Management Studio (ssms.exe) 2015 年 8 月预览版或更高版本。 
+- SQL Server Management Studio (ssms.exe) 2015 年 8 月预览版或更高版本。
 可从以下位置下载最新的 ssms.exe：
  - 标题为[下载 SQL Server Management Studio](http://msdn.microsoft.com/zh-cn/library/mt238290.aspx) 的主题。
  - [直接指向下载位置的链接。](http://go.microsoft.com/fwlink/?linkid=616025)
@@ -83,175 +85,175 @@
 &nbsp;
 
 
-```
-## TODO: Before running, find all 'TODO' and make each edit!!
 
-#--------------- 1 -----------------------
+	## TODO: Before running, find all 'TODO' and make each edit!!
 
-
-# You can comment out or skip this Add-AzureAccount
-# command after the first run.
-# Current PowerShell environment retains the successful outcome.
-
-'Expect a pop-up window in which you log in to Azure.'
+	#--------------- 1 -----------------------
 
 
-Add-AzureAccount -EnvironmentName AzureChinaCloud
+	# You can comment out or skip this Add-AzureAccount
+	# command after the first run.
+	# Current PowerShell environment retains the successful outcome.
 
-#-------------- 2 ------------------------
-
-
-'
-TODO: Edit the values assigned to these variables, especially the first few!
-'
-
-# Ensure the current date is between
-# the Expiry and Start time values that you edit here.
-
-$subscriptionName    = 'YOUR_SUBSCRIPTION_NAME'
-$policySasExpiryTime = '2016-01-28T23:44:56Z'
-$policySasStartTime  = '2015-08-01'
+	'Expect a pop-up window in which you log in to Azure.'
 
 
-$storageAccountName     = 'gmstorageaccountxevent'
-$storageAccountLocation = 'China North'
-$contextName            = 'gmcontext'
-$containerName          = 'gmcontainerxevent'
-$policySasToken         = 'gmpolicysastoken'
+	Add-AzureAccount -EnvironmentName AzureChinaCloud
+
+	#-------------- 2 ------------------------
 
 
-# Leave this value alone, as 'rwl'.
-$policySasPermission = 'rwl'
+	'
+	TODO: Edit the values assigned to these variables, especially the first few!
+	'
 
-#--------------- 3 -----------------------
+	# Ensure the current date is between
+	# the Expiry and Start time values that you edit here.
 
-
-# The ending display lists your Azure subscriptions.
-# One should match the $subscriptionName value you assigned
-#   earlier in this PowerShell script. 
-
-'Choose an existing subscription for the current PowerShell environment.'
-
-
-Select-AzureSubscription -SubscriptionName $subscriptionName
+	$subscriptionName    = 'YOUR_SUBSCRIPTION_NAME'
+	$policySasExpiryTime = '2016-01-28T23:44:56Z'
+	$policySasStartTime  = '2015-08-01'
 
 
-#-------------- 4 ------------------------
+	$storageAccountName     = 'gmstorageaccountxevent'
+	$storageAccountLocation = 'China North'
+	$contextName            = 'gmcontext'
+	$containerName          = 'gmcontainerxevent'
+	$policySasToken         = 'gmpolicysastoken'
 
 
-'
-Clean-up the old Azure Storage Account after any previous run, 
-before continuing this new run.'
+	# Leave this value alone, as 'rwl'.
+	$policySasPermission = 'rwl'
+
+	#--------------- 3 -----------------------
 
 
-If ($storageAccountName)
-{
-    Remove-AzureStorageAccount -StorageAccountName $storageAccountName
-}
+	# The ending display lists your Azure subscriptions.
+	# One should match the $subscriptionName value you assigned
+	#   earlier in this PowerShell script. 
 
-#--------------- 5 -----------------------
-
-[System.DateTime]::Now.ToString()
-
-'
-Create a storage account. 
-This might take several minutes, will beep when ready.
-  ...PLEASE WAIT...'
-
-New-AzureStorageAccount `
-    -StorageAccountName $storageAccountName `
-    -Location           $storageAccountLocation
-
-[System.DateTime]::Now.ToString()
-
-[System.Media.SystemSounds]::Beep.Play()
+	'Choose an existing subscription for the current PowerShell environment.'
 
 
-'
-Get the primary access key for your storage account.
-'
+	Select-AzureSubscription -SubscriptionName $subscriptionName
 
 
-$primaryAccessKey_ForStorageAccount = `
-    (Get-AzureStorageKey `
-        -StorageAccountName $storageAccountName).Primary
-
-"`$primaryAccessKey_ForStorageAccount = $primaryAccessKey_ForStorageAccount"
-
-'Azure Storage Account cmdlet completed.
-Remainder of PowerShell .ps1 script continues.
-'
-
-#--------------- 6 -----------------------
+	#-------------- 4 ------------------------
 
 
-# The context will be needed to create a container within the storage account.
-
-'Create a context object from the storage account and its primary access key.
-'
-
-$context = New-AzureStorageContext `
-    -StorageAccountName $storageAccountName `
-    -StorageAccountKey  $primaryAccessKey_ForStorageAccount
+	'
+	Clean-up the old Azure Storage Account after any previous run, 
+	before continuing this new run.'
 
 
-'Create a container within the storage account.
-'
+	If ($storageAccountName)
+	{
+	    Remove-AzureStorageAccount -StorageAccountName $storageAccountName
+	}
+
+	#--------------- 5 -----------------------
+
+	[System.DateTime]::Now.ToString()
+
+	'
+	Create a storage account. 
+	This might take several minutes, will beep when ready.
+	  ...PLEASE WAIT...'
+
+	New-AzureStorageAccount `
+	    -StorageAccountName $storageAccountName `
+	    -Location           $storageAccountLocation
+
+	[System.DateTime]::Now.ToString()
+
+	[System.Media.SystemSounds]::Beep.Play()
 
 
-$containerObjectInStorageAccount = New-AzureStorageContainer `
-    -Name    $containerName `
-    -Context $context
+	'
+	Get the primary access key for your storage account.
+	'
 
 
-'Create a security policy to be applied to the SAS token.
-'
+	$primaryAccessKey_ForStorageAccount = `
+	    (Get-AzureStorageKey `
+	        -StorageAccountName $storageAccountName).Primary
 
-New-AzureStorageContainerStoredAccessPolicy `
-    -Container  $containerName `
-    -Context    $context `
-    -Policy     $policySasToken `
-    -Permission $policySasPermission `
-    -ExpiryTime $policySasExpiryTime `
-    -StartTime  $policySasStartTime 
+	"`$primaryAccessKey_ForStorageAccount = $primaryAccessKey_ForStorageAccount"
 
-'
-Generate a SAS token for the container.
-'
-Try
-{
-    $sasTokenWithPolicy = New-AzureStorageContainerSASToken `
-        -Name    $containerName `
-        -Context $context `
-        -Policy  $policySasToken
-}
-Catch 
-{
-    $Error[0].Exception.ToString()
-}
+	'Azure Storage Account cmdlet completed.
+	Remainder of PowerShell .ps1 script continues.
+	'
 
-#-------------- 7 ------------------------
+	#--------------- 6 -----------------------
 
 
-'Display the values that YOU must edit into the Transact-SQL script next!:
-'
+	# The context will be needed to create a container within the storage account.
 
-"storageAccountName: $storageAccountName"
-"containerName:      $containerName"
-"sasTokenWithPolicy: $sasTokenWithPolicy"
+	'Create a context object from the storage account and its primary access key.
+	'
 
-'
-REMINDER: sasTokenWithPolicy here might start with "?" character, which you must exclude from Transact-SQL.
-'
+	$context = New-AzureStorageContext `
+	    -StorageAccountName $storageAccountName `
+	    -StorageAccountKey  $primaryAccessKey_ForStorageAccount
 
-'
-(Later, return here to delete your Azure Storage account. See the preceding - Remove-AzureStorageAccount -StorageAccountName $storageAccountName)'
 
-'
-Now shift to the Transact-SQL portion of the two-part code sample!'
+	'Create a container within the storage account.
+	'
 
-# EOFile
-```
+
+	$containerObjectInStorageAccount = New-AzureStorageContainer `
+	    -Name    $containerName `
+	    -Context $context
+
+
+	'Create a security policy to be applied to the SAS token.
+	'
+
+	New-AzureStorageContainerStoredAccessPolicy `
+	    -Container  $containerName `
+	    -Context    $context `
+	    -Policy     $policySasToken `
+	    -Permission $policySasPermission `
+	    -ExpiryTime $policySasExpiryTime `
+	    -StartTime  $policySasStartTime 
+
+	'
+	Generate a SAS token for the container.
+	'
+	Try
+	{
+	    $sasTokenWithPolicy = New-AzureStorageContainerSASToken `
+	        -Name    $containerName `
+	        -Context $context `
+	        -Policy  $policySasToken
+	}
+	Catch 
+	{
+	    $Error[0].Exception.ToString()
+	}
+
+	#-------------- 7 ------------------------
+
+
+	'Display the values that YOU must edit into the Transact-SQL script next!:
+	'
+
+	"storageAccountName: $storageAccountName"
+	"containerName:      $containerName"
+	"sasTokenWithPolicy: $sasTokenWithPolicy"
+
+	'
+	REMINDER: sasTokenWithPolicy here might start with "?" character, which you must exclude from Transact-SQL.
+	'
+
+	'
+	(Later, return here to delete your Azure Storage account. See the preceding - Remove-AzureStorageAccount -StorageAccountName $storageAccountName)'
+
+	'
+	Now shift to the Transact-SQL portion of the two-part code sample!'
+
+	# EOFile
+
 
 
 &nbsp;
@@ -289,204 +291,204 @@ PowerShell 脚本在结束时输出了几个命名值。你必须编辑 Transact
 &nbsp;
 
 
-> [AZURE.WARNING] 之前 PowerShell 脚本生成的 SAS 密钥值可能以“?”（问号）开头。在以下 T-SQL 脚本中使用 SAS 密钥时，必须删除了前导“?”。
+> [AZURE.WARNING] 之前 PowerShell 脚本生成的 SAS 密钥值可能以“?”（问号）开头。在以下 T-SQL 脚本中使用 SAS 密钥时，必须*删除前导“?”*。否则，安全性可能会阻止你的操作。
 
 
 &nbsp;
 
 
-```
----- TODO: First, run the PowerShell portion of this two-part code sample.
----- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
 
----- Transact-SQL code for Event File target on Azure SQL Database.
+	---- TODO: First, run the PowerShell portion of this two-part code sample.
+	---- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
 
-
-SET NOCOUNT ON;
-GO
+	---- Transact-SQL code for Event File target on Azure SQL Database.
 
 
-----  Step 1.  Establish one little table, and  ---------
-----  insert one row of data.
+	SET NOCOUNT ON;
+	GO
 
 
-IF EXISTS
-	(SELECT * FROM sys.objects
-		WHERE type = 'U' and name = 'gmTabEmployee')
-BEGIN
-	DROP TABLE gmTabEmployee;
-END
-GO
+	----  Step 1.  Establish one little table, and  ---------
+	----  insert one row of data.
 
 
-CREATE TABLE gmTabEmployee
-(
-	EmployeeGuid         uniqueIdentifier   not null  default newid()  primary key,
-	EmployeeId           int                not null  identity(1,1),
-	EmployeeKudosCount   int                not null  default 0,
-	EmployeeDescr        nvarchar(256)          null
-);
-GO
+	IF EXISTS
+		(SELECT * FROM sys.objects
+			WHERE type = 'U' and name = 'gmTabEmployee')
+	BEGIN
+		DROP TABLE gmTabEmployee;
+	END
+	GO
 
 
-INSERT INTO gmTabEmployee ( EmployeeDescr )
-	VALUES ( 'Jane Doe' );
-GO
+	CREATE TABLE gmTabEmployee
+	(
+		EmployeeGuid         uniqueIdentifier   not null  default newid()  primary key,
+		EmployeeId           int                not null  identity(1,1),
+		EmployeeKudosCount   int                not null  default 0,
+		EmployeeDescr        nvarchar(256)          null
+	);
+	GO
 
 
-------  Step 2.  Create key, and  ------------
-------  Create credential (your Azure Storage container must already exist).
+	INSERT INTO gmTabEmployee ( EmployeeDescr )
+		VALUES ( 'Jane Doe' );
+	GO
 
 
-IF NOT EXISTS
-	(SELECT * FROM sys.symmetric_keys
-		WHERE symmetric_key_id = 101)
-BEGIN
-	CREATE MASTER KEY ENCRYPTION BY PASSWORD = '0C34C960-6621-4682-A123-C7EA08E3FC46' -- Or any newid().
-END
-GO
+	------  Step 2.  Create key, and  ------------
+	------  Create credential (your Azure Storage container must already exist).
 
 
-IF EXISTS
-	(SELECT * FROM sys.database_scoped_credentials
-		-- TODO: Assign AzureStorageAccount name, and the associated Container name.
-		WHERE name = 'https://gmstorageaccountxevent.blob.core.chinacloudapi.cn/gmcontainerxevent')
-BEGIN
-	DROP DATABASE SCOPED CREDENTIAL
-		-- TODO: Assign AzureStorageAccount name, and the associated Container name.
-		[https://gmstorageaccountxevent.blob.core.chinacloudapi.cn/gmcontainerxevent] ;
-END
-GO
+	IF NOT EXISTS
+		(SELECT * FROM sys.symmetric_keys
+			WHERE symmetric_key_id = 101)
+	BEGIN
+		CREATE MASTER KEY ENCRYPTION BY PASSWORD = '0C34C960-6621-4682-A123-C7EA08E3FC46' -- Or any newid().
+	END
+	GO
 
 
-CREATE
-	DATABASE SCOPED
-	CREDENTIAL
-		-- use '.blob.',   and not '.queue.' or '.table.' etc.
-		-- TODO: Assign AzureStorageAccount name, and the associated Container name.
-		[https://gmstorageaccountxevent.blob.core.chinacloudapi.cn/gmcontainerxevent]
-	WITH
-		IDENTITY = 'SHARED ACCESS SIGNATURE',  -- "SAS" token.
-		-- TODO: Paste in the long SasToken string here for Secret, but exclude any leading '?'.
-		SECRET = 'sv=2014-02-14&sr=c&si=gmpolicysastoken&sig=EjAqjo6Nu5xMLEZEkMkLbeF7TD9v1J8DNB2t8gOKTts%3D'
-	;
-GO
+	IF EXISTS
+		(SELECT * FROM sys.database_scoped_credentials
+			-- TODO: Assign AzureStorageAccount name, and the associated Container name.
+			WHERE name = 'https://gmstorageaccountxevent.blob.core.chinacloudapi.cn/gmcontainerxevent')
+	BEGIN
+		DROP DATABASE SCOPED CREDENTIAL
+			-- TODO: Assign AzureStorageAccount name, and the associated Container name.
+			[https://gmstorageaccountxevent.blob.core.chinacloudapi.cn/gmcontainerxevent] ;
+	END
+	GO
 
 
-------  Step 3.  Create (define) an event session.  --------
-------  The event session has an event with an action,
-------  and a has a target.
+	CREATE
+		DATABASE SCOPED
+		CREDENTIAL
+			-- use '.blob.',   and not '.queue.' or '.table.' etc.
+			-- TODO: Assign AzureStorageAccount name, and the associated Container name.
+			[https://gmstorageaccountxevent.blob.core.chinacloudapi.cn/gmcontainerxevent]
+		WITH
+			IDENTITY = 'SHARED ACCESS SIGNATURE',  -- "SAS" token.
+			-- TODO: Paste in the long SasToken string here for Secret, but exclude any leading '?'.
+			SECRET = 'sv=2014-02-14&sr=c&si=gmpolicysastoken&sig=EjAqjo6Nu5xMLEZEkMkLbeF7TD9v1J8DNB2t8gOKTts%3D'
+		;
+	GO
 
-IF EXISTS
-	(SELECT * from sys.database_event_sessions
-		WHERE name = 'gmeventsessionname240b')
-BEGIN
+
+	------  Step 3.  Create (define) an event session.  --------
+	------  The event session has an event with an action,
+	------  and a has a target.
+
+	IF EXISTS
+		(SELECT * from sys.database_event_sessions
+			WHERE name = 'gmeventsessionname240b')
+	BEGIN
+		DROP
+			EVENT SESSION
+				gmeventsessionname240b
+		    ON DATABASE;
+	END
+	GO
+
+
+	CREATE
+		EVENT SESSION
+			gmeventsessionname240b
+		ON DATABASE
+
+		ADD EVENT
+			sqlserver.sql_statement_starting
+				(
+				ACTION (sqlserver.sql_text)
+				WHERE statement LIKE 'UPDATE gmTabEmployee%'
+				)
+		ADD TARGET
+			package0.event_file
+				(
+				-- TODO: Assign AzureStorageAccount name, and the associated Container name.
+				-- Also, tweak the .xel file name at end, if you like.
+				SET filename =
+					'https://gmstorageaccountxevent.blob.core.chinacloudapi.cn/gmcontainerxevent/anyfilenamexel242b.xel'
+				)
+		WITH
+			(MAX_MEMORY = 10 MB,
+			MAX_DISPATCH_LATENCY = 3 SECONDS)
+		;
+	GO
+
+
+	------  Step 4.  Start the event session.  ----------------
+	------  Issue the SQL Update statements that will be traced.
+	------  Then stop the session.
+
+	------  Note: If the target fails to attach,
+	------  the session must be stopped and restarted.
+
+	ALTER
+		EVENT SESSION
+			gmeventsessionname240b
+		ON DATABASE
+		STATE = START;
+	GO
+
+
+	SELECT 'BEFORE_Updates', EmployeeKudosCount, * FROM gmTabEmployee;
+
+	UPDATE gmTabEmployee
+		SET EmployeeKudosCount = EmployeeKudosCount + 2
+		WHERE EmployeeDescr = 'Jane Doe';
+
+	UPDATE gmTabEmployee
+		SET EmployeeKudosCount = EmployeeKudosCount + 13
+		WHERE EmployeeDescr = 'Jane Doe';
+
+	SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
+	GO
+
+
+	ALTER
+		EVENT SESSION
+			gmeventsessionname240b
+		ON DATABASE
+		STATE = STOP;
+	GO
+
+
+	-------------- Step 5.  Select the results. ----------
+
+	SELECT
+			*, 'CLICK_NEXT_CELL_TO_BROWSE_ITS_RESULTS!' as [CLICK_NEXT_CELL_TO_BROWSE_ITS_RESULTS],
+			CAST(event_data AS XML) AS [event_data_XML]  -- TODO: In ssms.exe results grid, double-click this cell!
+		FROM
+			sys.fn_xe_file_target_read_file
+				(
+					-- TODO: Fill in Storage Account name, and the associated Container name.
+					'https://gmstorageaccountxevent.blob.core.chinacloudapi.cn/gmcontainerxevent/anyfilenamexel242b',
+					null, null, null
+				);
+	GO
+
+
+	-------------- Step 6.  Clean up. ----------
+
 	DROP
 		EVENT SESSION
 			gmeventsessionname240b
-	    ON DATABASE;
-END
-GO
+		ON DATABASE;
+	GO
 
+	DROP DATABASE SCOPED CREDENTIAL
+		-- TODO: Assign AzureStorageAccount name, and the associated Container name.
+		[https://gmstorageaccountxevent.blob.core.chinacloudapi.cn/gmcontainerxevent]
+		;
+	GO
 
-CREATE
-	EVENT SESSION
-		gmeventsessionname240b
-	ON DATABASE
+	DROP TABLE gmTabEmployee;
+	GO
 
-	ADD EVENT
-		sqlserver.sql_statement_starting
-			(
-			ACTION (sqlserver.sql_text)
-			WHERE statement LIKE 'UPDATE gmTabEmployee%'
-			)
-	ADD TARGET
-		package0.event_file
-			(
-			-- TODO: Assign AzureStorageAccount name, and the associated Container name.
-			-- Also, tweak the .xel file name at end, if you like.
-			SET filename =
-				'https://gmstorageaccountxevent.blob.core.chinacloudapi.cn/gmcontainerxevent/anyfilenamexel242b.xel'
-			)
-	WITH
-		(MAX_MEMORY = 10 MB,
-		MAX_DISPATCH_LATENCY = 3 SECONDS)
-	;
-GO
+	PRINT 'Use PowerShell Remove-AzureStorageAccount to delete your Azure Storage account!';
+	GO
 
-
-------  Step 4.  Start the event session.  ----------------
-------  Issue the SQL Update statements that will be traced.
-------  Then stop the session.
-
-------  Note: If the target fails to attach,
-------  the session must be stopped and restarted.
-
-ALTER
-	EVENT SESSION
-		gmeventsessionname240b
-	ON DATABASE
-	STATE = START;
-GO
-
-
-SELECT 'BEFORE_Updates', EmployeeKudosCount, * FROM gmTabEmployee;
-
-UPDATE gmTabEmployee
-	SET EmployeeKudosCount = EmployeeKudosCount + 2
-	WHERE EmployeeDescr = 'Jane Doe';
-
-UPDATE gmTabEmployee
-	SET EmployeeKudosCount = EmployeeKudosCount + 13
-	WHERE EmployeeDescr = 'Jane Doe';
-
-SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
-GO
-
-
-ALTER
-	EVENT SESSION
-		gmeventsessionname240b
-	ON DATABASE
-	STATE = STOP;
-GO
-
-
--------------- Step 5.  Select the results. ----------
-
-SELECT
-		*, 'CLICK_NEXT_CELL_TO_BROWSE_ITS_RESULTS!' as [CLICK_NEXT_CELL_TO_BROWSE_ITS_RESULTS],
-		CAST(event_data AS XML) AS [event_data_XML]  -- TODO: In ssms.exe results grid, double-click this cell!
-	FROM
-		sys.fn_xe_file_target_read_file
-			(
-				-- TODO: Fill in Storage Account name, and the associated Container name.
-				'https://gmstorageaccountxevent.blob.core.chinacloudapi.cn/gmcontainerxevent/anyfilenamexel242b',
-				null, null, null
-			);
-GO
-
-
--------------- Step 6.  Clean up. ----------
-
-DROP
-	EVENT SESSION
-		gmeventsessionname240b
-	ON DATABASE;
-GO
-
-DROP DATABASE SCOPED CREDENTIAL
-	-- TODO: Assign AzureStorageAccount name, and the associated Container name.
-	[https://gmstorageaccountxevent.blob.core.chinacloudapi.cn/gmcontainerxevent]
-	;
-GO
-
-DROP TABLE gmTabEmployee;
-GO
-
-PRINT 'Use PowerShell Remove-AzureStorageAccount to delete your Azure Storage account!';
-GO
-```
 
 
 &nbsp;
@@ -495,12 +497,12 @@ GO
 如果当你运行脚本时无法附加目标，则你必须停止再重新启动事件会话：
 
 
-```
-ALTER EVENT SESSION ... STATE = STOP;
-GO
-ALTER EVENT SESSION ... STATE = START;
-GO
-```
+
+	ALTER EVENT SESSION ... STATE = STOP;
+	GO
+	ALTER EVENT SESSION ... STATE = START;
+	GO
+
 
 
 &nbsp;
@@ -517,48 +519,56 @@ GO
 &nbsp;
 
 
-```
-<event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">
-  <data name="state">
-    <value>0</value>
-    <text>Normal</text>
-  </data>
-  <data name="line_number">
-    <value>5</value>
-  </data>
-  <data name="offset">
-    <value>148</value>
-  </data>
-  <data name="offset_end">
-    <value>368</value>
-  </data>
-  <data name="statement">
-    <value>UPDATE gmTabEmployee
-    SET EmployeeKudosCount = EmployeeKudosCount + 2
-    WHERE EmployeeDescr = 'Jane Doe'</value>
-  </data>
-  <action name="sql_text" package="sqlserver">
-    <value>
 
-SELECT 'BEFORE_Updates', EmployeeKudosCount, * FROM gmTabEmployee;
+	<event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">
+	  <data name="state">
+	    <value>0</value>
+	    <text>Normal</text>
+	  </data>
+	  <data name="line_number">
+	    <value>5</value>
+	  </data>
+	  <data name="offset">
+	    <value>148</value>
+	  </data>
+	  <data name="offset_end">
+	    <value>368</value>
+	  </data>
+	  <data name="statement">
+	    <value>UPDATE gmTabEmployee
+	    SET EmployeeKudosCount = EmployeeKudosCount + 2
+	    WHERE EmployeeDescr = 'Jane Doe'</value>
+	  </data>
+	  <action name="sql_text" package="sqlserver">
+	    <value>
 
-UPDATE gmTabEmployee
-    SET EmployeeKudosCount = EmployeeKudosCount + 2
-    WHERE EmployeeDescr = 'Jane Doe';
+	SELECT 'BEFORE_Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
-UPDATE gmTabEmployee
-    SET EmployeeKudosCount = EmployeeKudosCount + 13
-    WHERE EmployeeDescr = 'Jane Doe';
+	UPDATE gmTabEmployee
+	    SET EmployeeKudosCount = EmployeeKudosCount + 2
+	    WHERE EmployeeDescr = 'Jane Doe';
 
-SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
-</value>
-  </action>
-</event>
-```
+	UPDATE gmTabEmployee
+	    SET EmployeeKudosCount = EmployeeKudosCount + 13
+	    WHERE EmployeeDescr = 'Jane Doe';
 
+	SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
+	</value>
+	  </action>
+	</event>
 
 
+&nbsp;
 
+
+前面的 Transact-SQL 脚本使用以下系统函数来读取 event\_file：
+
+- [sys.fn\_xe\_file\_target\_read\_file (Transact-SQL)](http://msdn.microsoft.com/zh-cn/library/cc280743.aspx)
+
+
+用于查看扩展事件数据的高级选项的说明可在此处获取：
+
+- [扩展事件的目标数据的高级视图](http://msdn.microsoft.com/zh-cn/library/mt752502.aspx)
 
 &nbsp;
 
@@ -582,20 +592,15 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 ## 详细信息
 
 
-有关 Azure SQL 数据库中扩展事件的主要主题是：
-
-- [SQL 数据库中的扩展事件](/documentation/articles/sql-database-xevent-db-diff-from-svr/) - 有关 Azure SQL 数据库中扩展事件的主要主题。
- - 对比 Azure SQL 数据库与 Microsoft SQL Server 的扩展事件的不同方面。
-
-
-- [SQL 数据库中扩展事件的环形缓冲区目标代码](/documentation/articles/sql-database-xevent-code-ring-buffer/) - 提供一个可以快速方便上手的辅助代码示例，但该示例主要适用于简单测试，而对于大型活动则不够可靠。
-
-
 有关 Azure 存储空间服务中帐户和容器的详细信息，请参阅：
 
 - [如何通过 .NET 使用 Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs/)
 - [命名和引用容器、Blob 与元数据](http://msdn.microsoft.com/zh-cn/library/azure/dd135715.aspx)
 - [使用根容器](http://msdn.microsoft.com/zh-cn/library/azure/ee395424.aspx)
+- [第 1 课：在 Azure 容器上创建存储访问策略和共享访问签名](http://msdn.microsoft.com/zh-cn/library/dn466430.aspx)
+- [第 2 课：使用共享访问签名创建 SQL Server 凭据](http://msdn.microsoft.com/zh-cn/library/dn466435.aspx)
+
+
 
 
 <!--
@@ -604,5 +609,4 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0815_2016-->

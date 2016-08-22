@@ -5,17 +5,19 @@
 	documentationCenter="" 
 	authors="Juliako" 
 	manager="erikre" 
-	editor=""/>
+	editor=""/>  
+
 
 <tags 
 	ms.service="media-services" 
-	ms.date="02/24/2016" 
-	wacn.date=""/>
+	ms.date="06/22/2016"
+	wacn.date=""/>  
+
 
 
 #使用 Azure 媒体服务传送 DRM 许可证或 AES 密钥
 
-Azure 媒体服务 (AMS) 可让你引入、编码、添加内容保护，以及流式传输内容（有关详细信息，请参阅[此文章](/documentation/articles/media-services-protect-with-drm)）。但是，有些客户只想使用 AMS 来传送许可证和/或密钥，并使用他们的本地服务器来进行编码、加密和流式传输。本文说明如何使用 AMS 来传送 PlayReady 和/或 Widevine 许可证，但使用本地服务器来完成其余部分。
+Azure 媒体服务 (AMS) 可让你引入、编码、添加内容保护，以及流式传输内容（有关详细信息，请参阅[此文章](/documentation/articles/media-services-protect-with-drm/)）。但是，有些客户只想使用 AMS 来传送许可证和/或密钥，并使用他们的本地服务器来进行编码、加密和流式传输。本文说明如何使用 AMS 来传送 PlayReady 和/或 Widevine 许可证，但使用本地服务器来完成其余部分。
 
 
 ## 概述
@@ -35,7 +37,7 @@ Azure 媒体服务 (AMS) 可让你引入、编码、添加内容保护，以及�
 
 ##.NET 代码示例
 
-本主题中的代码示例演示如何创建通用内容密钥，并获取 PlayReady 或 Widevine 许可证获取 URL。你需要从 AMS 获取以下信息片段并配置本地服务器： **内容密钥** 、 **密钥 ID** 、 **许可证获取 URL** 。配置本地服务器后，你可以从自己的流服务器进行流式传输。由于加密的流指向 AMS 许可证服务器，播放器将从 AMS 请求许可证。如果你选择令牌身份验证，AMS 许可证服务器将验证通过 HTTPS 发送的令牌，然后（如果有效）将许可证传回给播放器。（代码示例仅演示了如何创建通用内容密钥，并获取 PlayReady 或 Widevine 许可证获取 URL。如果你想要传送 AES-128 密钥，则需要创建信封内容密钥，并获取密钥获取 URL，[此文章](/documentation/articles/media-services-protect-with-aes128)介绍了具体的操作）。
+本主题中的代码示例演示如何创建通用内容密钥，并获取 PlayReady 或 Widevine 许可证获取 URL。你需要从 AMS 获取以下信息片段并配置本地服务器：内容密钥、密钥 ID、许可证获取 URL。配置本地服务器后，你可以从自己的流服务器进行流式传输。由于加密的流指向 AMS 许可证服务器，播放器将从 AMS 请求许可证。如果你选择令牌身份验证，AMS 许可证服务器将验证通过 HTTPS 发送的令牌，然后（如果有效）将许可证传回给播放器。（代码示例仅演示了如何创建通用内容密钥，并获取 PlayReady 或 Widevine 许可证获取 URL。如果你想要传送 AES-128 密钥，则需要创建信封内容密钥，并获取密钥获取 URL，[此文章](/documentation/articles/media-services-protect-with-aes128/)介绍了具体的操作）。
 	
 	
 	using System;
@@ -212,7 +214,7 @@ Azure 媒体服务 (AMS) 可让你引入、编码、添加内容保护，以及�
 	        static private string ConfigurePlayReadyLicenseTemplate()
 	        {
 	            // The following code configures PlayReady License Template using .NET classes
-	            // and returns the XML string.
+	            // and returns the XML string
 	
 	            //The PlayReadyLicenseResponseTemplate class represents the template 
 	            //for the response sent back to the end user. 
@@ -335,9 +337,10 @@ Azure 媒体服务 (AMS) 可让你引入、编码、添加内容保护，以及�
 
 ##另请参阅
 
-[使用 PlayReady 和/或 Widevine DRM 动态通用加密](/documentation/articles/media-services-protect-with-drm)
+[使用 PlayReady 和/或 Widevine DRM 动态通用加密](/documentation/articles/media-services-protect-with-drm/)
 
-[使用 AES-128 动态加密和密钥传送服务](/documentation/articles/media-services-protect-with-aes128)
+[使用 AES-128 动态加密和密钥传送服务](/documentation/articles/media-services-protect-with-aes128/)
 
-[使用合作伙伴将 Widevine 许可证传送到 Azure 媒体服务](/documentation/articles/media-services-licenses-partner-integration)
-<!---HONumber=Mooncake_0328_2016-->
+[使用合作伙伴将 Widevine 许可证传送到 Azure 媒体服务](/documentation/articles/media-services-licenses-partner-integration/)
+
+<!---HONumber=Mooncake_0815_2016-->

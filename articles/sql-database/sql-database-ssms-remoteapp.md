@@ -4,12 +4,14 @@
 	services="sql-database"
 	documentationCenter=""
 	authors="adhurwit"
-	manager=""/>
+	manager=""/>  
+
 
 <tags
 	ms.service="sql-database"
-	ms.date="04/12/2016"
-	wacn.date="04/22/2016"/>
+	ms.date="07/05/2016"
+	wacn.date=""/>  
+
 
 # 在 Azure RemoteApp 中使用 SQL Server Management Studio 连接到 SQL 数据库
 
@@ -20,7 +22,7 @@
 
 ## Azure RemoteApp 中的 SSMS
 
-Azure RemoteApp 是 Azure 中的 RDS 服务，用于交付应用程序。你可以在此处了解其详细信息：[什么是 RemoteApp？](/documentation/articles/remoteapp-whatis)
+Azure RemoteApp 是 Azure 中的 RDS 服务，用于交付应用程序。你可以在此处了解其详细信息：[什么是 RemoteApp？](/documentation/articles/remoteapp-whatis/)
 
 在 Azure RemoteApp 中运行 SSMS 所获得的体验与在本地运行 SSMS 相同。
 
@@ -53,8 +55,7 @@ Azure RemoteApp 是 Azure 中的 RDS 服务，用于交付应用程序。你可�
 
 ### 2\.从 SQL Express 安装 SSMS
 
-转到新的 VM，导航到此下载页面：
-[Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/zh-cn/download/details.aspx?id=42299)
+转到新的 VM，导航到此下载页面：[Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/zh-cn/download/details.aspx?id=42299)
 
 有一个仅下载 SSMS 的选项。下载后，请进入安装目录，然后运行安装程序以安装 SSMS。
 
@@ -76,7 +77,7 @@ sysprep 在完成后会关闭 VM。
 
 当 VM 停止运行以后，可在当前门户中查找并捕获它。
 
-若要详细了解如何捕获映像，请参阅[捕获使用经典部署模型创建的 Azure Windows 虚拟机的映像](/documentation/articles/virtual-machines-windows-classic-capture-image)
+若要详细了解如何捕获映像，请参阅[捕获使用经典部署模型创建的 Azure Windows 虚拟机的映像](/documentation/articles/virtual-machines-windows-classic-capture-image/)
 
 
 ### 5\.添加到 Azure RemoteApp 模板映像
@@ -140,7 +141,7 @@ sysprep 在完成后会关闭 VM。
 
 完成所有上述步骤以后，你就能够运行 Azure RemoteApp 客户端并使用分配的用户登录。你会看到作为应用程序之一显示的 SSMS，并可根据需要来运行它，就像它是安装在你的计算机上且具有 Azure SQL Server 访问权限一样。
 
-有关如何连接到 SQL 数据库的详细信息，请参阅[使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例性的 T-SQL 查询](/documentation/articles/sql-database-connect-query-ssms)。
+有关如何连接到 SQL 数据库的详细信息，请参阅[使用 SQL Server Management Studio 连接到 SQL 数据库并执行示例性的 T-SQL 查询](/documentation/articles/sql-database-connect-query-ssms/)。
 
 
 这就是本文的全部内容。请尽情享受其中的乐趣！
@@ -148,6 +149,7 @@ sysprep 在完成后会关闭 VM。
 
 
 <!--Image references-->
+
 [1]: ./media/sql-database-ssms-remoteapp/ssms.png
 [2]: ./media/sql-database-ssms-remoteapp/newcloudcollection.png
 [3]: ./media/sql-database-ssms-remoteapp/mfa.png
@@ -155,4 +157,4 @@ sysprep 在完成后会关闭 VM。
 [5]: ./media/sql-database-ssms-remoteapp/publish.png
 [6]: ./media/sql-database-ssms-remoteapp/user.png
 
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0815_2016-->

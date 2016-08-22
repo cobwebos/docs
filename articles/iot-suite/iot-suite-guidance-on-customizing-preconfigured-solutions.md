@@ -6,12 +6,14 @@
 	documentationCenter=".net"
 	authors="stevehob"
 	manager="timlt"
-	editor=""/>
+	editor=""/>  
+
 
 <tags
      ms.service="iot-suite"
-     ms.date="03/02/2016"
-     wacn.date="05/17/2016"/>
+     ms.date="06/27/2016"
+     wacn.date="05/17/2016"/>  
+
 
 # 自定义预配置解决方案
 
@@ -30,14 +32,14 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 
 远程监视解决方案包含三个 [Azure 流分析](/home/features/stream-analytics)作业，这些作业可实现针对解决方案显示的设备信息、遥测数据及规则逻辑。
 
-[远程监视预配置解决方案演练](/documentation/articles/iot-suite-remote-monitoring-sample-walkthrough)深入介绍了这三个流分析作业及其语法。
+[远程监视预配置解决方案演练](/documentation/articles/iot-suite-remote-monitoring-sample-walkthrough/)深入介绍了这三个流分析作业及其语法。
 
 你可以直接编辑这些作业以更改逻辑，或添加特定于你的方案的逻辑。你可以按以下方式查找流分析作业：
  
 1. 转到 [Azure 门户](https://portal.azure.cn)。
-2. 导航到名称与 IoT 解决方案相同的资源组。 
-3. 选择要修改的 Azure 流分析作业。 
-4. 在命令集中选择“停止”以停止作业。 
+2. 导航到名称与 IoT 解决方案相同的资源组。
+3. 选择要修改的 Azure 流分析作业。
+4. 在命令集中选择“停止”以停止作业。
 5. 编辑输入、查询及输出。
 
     简单修改的目的在于更改**规则**作业的查询，以便使用**“<”**而不是**“>”**。编辑规则时，解决方案门户仍会显示**“>”**，不过因为基础作业中的更改，你会发现行为已翻转。
@@ -54,7 +56,7 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 
 最常见的扩展活动之一是使用方案特定的设备。使用设备的方法有数种。这些方法包括更改模拟设备以符合你的方案，或使用 [IoT 设备 SDK][] 将物理设备连接到解决方案。
 
-有关向远程监视预配置解决方案添加设备的分步指南，请参阅 [Iot 套件连接设备](/documentation/articles/iot-suite-connecting-devices)和[远程监视 C SDK 示例](https://github.com/Azure/azure-iot-sdks/tree/master/c/serializer/samples/remote_monitoring)（旨在搭配远程监视预配置解决方案）。
+有关向远程监视预配置解决方案添加设备的分步指南，请参阅 [Iot 套件连接设备](/documentation/articles/iot-suite-connecting-devices/)和[远程监视 C SDK 示例](https://github.com/Azure/azure-iot-sdks/tree/master/c/serializer/samples/remote_monitoring)（旨在搭配远程监视预配置解决方案）。
 
 ### 创建你自己的模拟设备
 
@@ -62,9 +64,28 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 
 远程监视预配置解决方案中的预配置模拟器是发出温度和湿度遥测的冷却设备，当你分叉 GitHub 存储库后，可以在 [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) 项目中修改模拟器。
 
+### 模拟设备的可用位置
+
+默认的位置集为美国华盛顿州西雅图/雷德蒙德。可以 [SampleDeviceFactory.cs][lnk-sample-device-factory] 中更改这些位置。
+
+
 ### 生成并使用你自己的（物理）设备
 
 [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) 提供用于将各种设备类型（语言和操作系统）连接到 IoT 解决方案中的库。
+
+## 修改仪表板限制
+
+### 仪表板下拉列表中显示的设备数
+
+默认值为 200。可以在 [DashboardController.cs][lnk-dashboard-controller] 中更改此数字。
+
+### 必应地图控件中显示的图钉数
+
+默认值为 200。可以在 [TelemetryApiController.cs][lnk-telemetry-api-controller-01] 中更改此数字。
+
+### 遥测图形的时间段
+
+默认值为 10 分钟。可以在 [TelmetryApiController.cs][lnk-telemetry-api-controller-02] 中更改此值。
 
 ## 手动设置应用程序角色
 
@@ -133,7 +154,11 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 有关 IoT 设备的详细信息，请参阅 [Azure IoT 开发人员站点](/develop/iot)以查找链接和文档。
 
 [IoT 设备 SDK]: /documentation/articles/iot-hub-sdks-summary/
-[lnk-permissions]: /documentation/articles/iot-suite-permissions
+[lnk-permissions]: /documentation/articles/iot-suite-permissions/
+[lnk-dashboard-controller]: https://github.com/Azure/azure-iot-remote-monitoring/blob/3fd43b8a9f7e0f2774d73f3569439063705cebe4/DeviceAdministration/Web/Controllers/DashboardController.cs#L27
+[lnk-telemetry-api-controller-01]: https://github.com/Azure/azure-iot-remote-monitoring/blob/3fd43b8a9f7e0f2774d73f3569439063705cebe4/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L27
+[lnk-telemetry-api-controller-02]: https://github.com/Azure/azure-iot-remote-monitoring/blob/e7003339f73e21d3930f71ceba1e74fb5c0d9ea0/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L25
+[lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
 [lnk-classic-portal]: https://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0815_2016-->

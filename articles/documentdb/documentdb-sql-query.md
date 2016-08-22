@@ -1,17 +1,19 @@
 <properties 
-	pageTitle="DocumentDB 的 SQL 语法和 SQL 查询 | Microsoft Azure" 
+	pageTitle="DocumentDB 的 SQL 语法和 SQL 查询 | Azure" 
 	description="了解有关 DocumentDB（一种 NoSQL 数据库）的 SQL 语法、数据库概念和 SQL 查询。SQL 可在 DocumentDB 中作为 JSON 查询语言使用。" 
 	keywords="sql 语法, sql 查询, sql 查询, json 查询语言, 数据库概念和 sql 查询"
 	services="documentdb" 
 	documentationCenter="" 
 	authors="arramac" 
 	manager="jhubbard" 
-	editor="monicar"/>
+	editor="monicar"/>  
+
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="03/30/2016" 
-	wacn.date=""/>
+	ms.date="07/07/2016" 
+	wacn.date=""/>  
+
 
 # DocumentDB 中的 SQL 查询和 SQL 语法
 Microsoft Azure DocumentDB 通过将 SQL（结构化查询语言）用作 JSON 查询语言来支持查询文档。DocumentDB 是真正无架构的。凭借其对数据库引擎内 JSON 数据模型的直接承诺，它可以提供 JSON 文档的自动索引，而无需显式架构或创建辅助索引。
@@ -19,7 +21,7 @@ Microsoft Azure DocumentDB 通过将 SQL（结构化查询语言）用作 JSON �
 在设计 DocumentDB 的查询语言时，我们有两个目标：
 
 -	我们希望支持 SQL，而不是发明一种新的 JSON 查询语言。SQL 是最常见和最常用的查询语言之一。DocumentDB SQL 提供了一种正式的编程模型，用于对 JSON 文档进行丰富查询。
--	由于 JSON 文档数据库能够在数据库引擎中直接执行 JavaScript，我们希望将 JavaScript 的编程模型用作我们的查询语言的基础。DocumentDB SQL 植根于 JavaScript 的类型系统、表达式计算和函数调用中。而这反过来为关系投影、跨 JSON 文档的分层导航、自联接、空间查询以及调用完全采用 JavaScript 编写的用户定义的函数 (UDF) 和其他功能提供了自然编程模型。 
+-	由于 JSON 文档数据库能够在数据库引擎中直接执行 JavaScript，我们希望将 JavaScript 的编程模型用作我们的查询语言的基础。DocumentDB SQL 植根于 JavaScript 的类型系统、表达式计算和函数调用中。而这反过来为关系投影、跨 JSON 文档的分层导航、自联接、空间查询以及调用完全采用 JavaScript 编写的用户定义的函数 (UDF) 和其他功能提供了自然编程模型。
 
 我们相信这些功能是减少应用程序和数据库之间冲突的关键，并且对于开发人员的工作效率来说是至关重要的。
 
@@ -30,7 +32,8 @@ Microsoft Azure DocumentDB 通过将 SQL（结构化查询语言）用作 JSON �
 然后，返回到本文中，我们将从 SQL 查询教程开始，指导你完成一些简单的 JSON 文档和 SQL 命令。
 
 ## DocumentDB 中的 SQL 命令入门
-为了解 DocumentDB SQL 在工作时的情况，让我们以一些简单的 JSON 文档开始，并对它完成一些简单的查询。考虑以下两个关于两个家庭的 JSON 文档。请注意，使用 DocumentDB，我们不需要显式创建任何架构或辅助索引。我们只需将 JSON 文档插入到 DocumentDB 集合中并随后进行查询。这里，我们有一个包含 Andersen 家庭、父母、子女（以及他们的宠物）、地址和注册信息的简单 JSON 文档。该文档拥有字符串、数字、布尔、数组和嵌套属性。
+为了解 DocumentDB SQL 在工作时的情况，让我们以一些简单的 JSON 文档开始，并对它完成一些简单的查询。考虑以下两个关于两个家庭的 JSON 文档。请注意，使用 DocumentDB，我们不需要显式创建任何架构或辅助索引。我们只需将 JSON 文档插入到 DocumentDB 集合中并随后进行查询。
+这里，我们有一个包含 Andersen 家庭、父母、子女（以及他们的宠物）、地址和注册信息的简单 JSON 文档。该文档拥有字符串、数字、布尔、数组和嵌套属性。
 
 **文档**
 
@@ -153,9 +156,9 @@ Microsoft Azure DocumentDB 通过将 SQL（结构化查询语言）用作 JSON �
 
 我们希望通过我们目前已看到的示例让你注意到 DocumentDB 查询语言一些值得注意的方面：
  
--	由于 DocumentDB SQL 适用于 JSON 值，因此它可以处理三种形式的实体，而不是行和列。因此，该语言可让你在任意深度引用树的节点，如 `Node1.Node2.Node3…..Nodem`，这类似于引用 `<table>.<column>` 的两个部分引用的关系 SQL。   
--	结构化查询语言适用于无架构的数据。因此，需要动态绑定类型系统。相同的表达式在不同文档上可能会产生不同的类型。查询的结果是一个有效的 JSON 值，但不保证它为固定的架构。  
--	DocumentDB 仅支持严格的 JSON 文档。这意味着类型系统和表达式仅限于处理 JSON 类型。有关更多详细信息，请参阅 [JSON specification（JSON 规范）](http://www.json.org/)。  
+-	由于 DocumentDB SQL 适用于 JSON 值，因此它可以处理三种形式的实体，而不是行和列。因此，该语言可让你在任意深度引用树的节点，如 `Node1.Node2.Node3…..Nodem`，这类似于引用 `<table>.<column>` 的两个部分引用的关系 SQL。
+-	结构化查询语言适用于无架构的数据。因此，需要动态绑定类型系统。相同的表达式在不同文档上可能会产生不同的类型。查询的结果是一个有效的 JSON 值，但不保证它为固定的架构。
+-	DocumentDB 仅支持严格的 JSON 文档。这意味着类型系统和表达式仅限于处理 JSON 类型。有关更多详细信息，请参阅 [JSON specification（JSON 规范）](http://www.json.org/)。
 -	DocumentDB 集合是 JSON 文档的一个无构架容器。集合中，文档内和跨文档的数据实体的关系是按包含关系隐式捕获的，而不是按主键和外键关系。考虑到稍后将在本文中讨论文档内联接，因此这是一个值得注意的重要方面。
 
 ## DocumentDB 索引
@@ -166,7 +169,7 @@ Microsoft Azure DocumentDB 通过将 SQL（结构化查询语言）用作 JSON �
 
 因此，在我们设计 DocumentDB 索引子系统时，我们设定了以下目标：
 
--	在无需架构的情况下索引文档：索引子系统不需要任何架构信息或对文档的架构做出任何假设。 
+-	在无需架构的情况下索引文档：索引子系统不需要任何架构信息或对文档的架构做出任何假设。
 
 -	支持高效、层次丰富的关系型查询：索引高效地支持 DocumentDB 查询语言，包括支持分层和关系投影。
 
@@ -191,7 +194,8 @@ Microsoft Azure DocumentDB 通过将 SQL（结构化查询语言）用作 JSON �
 ## FROM 子句
 `FROM <from_specification>` 子句是可选的，除非稍后在查询中对源进行筛选或投影。此子句的目的在于指定必须对其执行查询的数据源。通常情况下，整个集合作为源，但可以改为指定集合的子集作为源。
 
-一个类似 `SELECT * FROM Families` 的查询指示整个家庭集合是要枚举的源。特殊标识符 ROOT 可以用来表示集合，而不使用集合名称来表示。以下列表包含每个查询需要强制执行的规则：
+一个类似 `SELECT * FROM Families` 的查询指示整个家庭集合是要枚举的源。特殊标识符 ROOT 可以用来表示集合，而不使用集合名称来表示。
+以下列表包含每个查询需要强制执行的规则：
 
 - 集合可以使用别名，如 `SELECT f.id FROM Families AS f` 或只需为 `SELECT f.id FROM Families f`。这里的 `f` 等效于 `Families`。`AS` 是可选的关键字，用于为标识符取别名。
 
@@ -296,7 +300,7 @@ WHERE 子句（**`WHERE <filter_condition>`**）是可选的。它指定由源�
 <td>=、!=、&lt;、>、&lt;=、>=、&lt;></td>
 </tr>
 <tr>
-<td>String</td>	
+<td>字符串</td>	
 <td>||（连接）</td>
 </tr>
 </table>  
@@ -548,7 +552,7 @@ WHERE 子句（**`WHERE <filter_condition>`**）是可选的。它指定由源�
 对于其他比较运算符（如 >、>=、!=、< 和 <=），以下规则适用：
 
 -	跨类型比较结果为 Undefined。
--	两个对象或两个数组之间比较结果为 Undefined。   
+-	两个对象或两个数组之间比较结果为 Undefined。
 
 如果筛选器中标量表达式的结果为 Undefined，则相应的文档不会包含在结果中，因为 Undefined 在逻辑上不等于“True”。
 
@@ -573,7 +577,7 @@ WHERE 子句（**`WHERE <filter_condition>`**）是可选的。它指定由源�
 ### 逻辑（AND、OR 和 NOT）运算符
 逻辑运算符对布尔值进行运算。下表显示了这些运算符的逻辑真值表。
 
-或者|True|False|Undefined
+或|True|False|Undefined
 ---|---|---|---
 True|True|True|True
 False|True|False|Undefined
@@ -603,8 +607,6 @@ IN 关键字可用于检查指定的值是否与列表中的任意值匹配。�
     SELECT *
     FROM Families 
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
-
-IN 等效于链接多个 OR 子句，但是由于可以使用单一索引处理它，因此 DocumentDB 支持对 IN 子句内指定的参数数量实现更高[限制](/documentation/articles/documentdb-limits)。
 
 ### 三元 (?) 和联合 (??) 运算符
 三元和联合运算符可以用于生成条件表达式，类似于常用的编程语言（如 C# 和 JavaScript）。
@@ -862,8 +864,8 @@ DocumentDB SQL 的另一个重要功能是数组/对象创建。请注意，在�
 	]
 
 
-###* 运算符
-支持使用特殊运算符 (*) 按原样投影文档。在使用时，它必须仅为投影的字段。当类似 `SELECT * FROM Families f` 的查询有效时，`SELECT VALUE * FROM Families f ` 和 `SELECT *, f.id FROM Families f ` 无效。
+###\*运算符：
+支持使用特殊运算符 (\*) 按原样投影文档。在使用时，它必须仅为投影的字段。当类似 `SELECT * FROM Families f` 的查询有效时，`SELECT VALUE * FROM Families f ` 和 `SELECT *, f.id FROM Families f ` 无效。
 
 **查询**
 
@@ -1050,7 +1052,7 @@ TOP 关键字可用于限制来自查询中的值的数量。当 TOP 与 ORDER B
 ### 联接
 在关系数据库中，跨表联接的要求是非常重要的。设计规范化的架构是一项逻辑要求。与此相反，DocumentDB 则处理无架构文档的非规范化数据模型。这在逻辑上等效于“自联接”。
 
-语言支持的语法是 <from_source1> JOIN <from_source2> JOIN ...JOIN <from_sourceN>。总体而言，此语法返回一组 **N** 元组（带有 **N** 个值的元组）。每个元组拥有通过对它们相应的集遍历所有集合别名所产生的值。换言之，这是加入联接的集的完整叉积。
+语言支持的语法为 < from\_source1 > JOIN < from\_source2 > JOIN ...JOIN < from\_sourceN >。总体而言，此语法返回一组 **N** 元组（带有 **N** 个值的元组）。每个元组拥有通过对它们相应的集遍历所有集合别名所产生的值。换言之，这是加入联接的集的完整叉积。
 
 下面的示例演示了 JOIN 子句是如何工作的。在下面的示例中，由于源中每个文档和空集的叉积为空，因此结果为空。
 
@@ -1114,7 +1116,7 @@ TOP 关键字可用于限制来自查询中的值的数量。当 TOP 与 ORDER B
 
 -	在数组中扩展每个子元素 **c**。
 -	应用具有文档 **f** 的根的叉积，这些文档具有已在第一步中合并的每个子元素 **c**。
--	最后，单独投影根对象 **f** 名称属性。 
+-	最后，单独投影根对象 **f** 名称属性。
 
 第一个文档 (`AndersenFamily`) 仅包含一个子元素，因此结果集仅包含与此文档对应的单个对象。第二个文档 (`WakefieldFamily`) 包含两个子元素。因此，叉积会为每个子女生成单独的对象，从而产生两个对象，每个对象分别与此文档对应。请注意，这两个文档中的根字段将会是相同的，就如你在叉积中所预期的一样。
 
@@ -1169,7 +1171,7 @@ JOIN 真正实用的地方通过以其他方式难以投影的形式基于叉积
 		}
 	}
 
-`AndersenFamily` 有一个拥有一只宠物的孩子。因此，叉积从此家庭中生成一行 (1*1*1)。尽管 WakefieldFamily 有两个孩子，但只有一个孩子“Jesse”拥有宠物。Jesse 拥有 2 只宠物。因此叉积从此家庭中生成 1*1*2 = 2 行。
+`AndersenFamily` 有一个拥有一只宠物的孩子。因此，叉积从此家庭中生成一行 (1\*1\*1)。尽管 WakefieldFamily 有两个孩子，但只有一个孩子“Jesse”拥有宠物。Jesse 拥有 2 只宠物。因此叉积从此家庭中生成 1\*1\*2 = 2 行。
 
 在接下来的示例中，可以根据 `pet` 进行额外的筛选。这排除了宠物名称不是“Shadow”的所有元组。请注意，我们能够从数组中生成元组，根据元组的任意元素进行筛选以及投影元素的任何组合。
 
@@ -1199,7 +1201,7 @@ JOIN 真正实用的地方通过以其他方式难以投影的形式基于叉积
 ## JavaScript 集成
 DocumentDB 根据存储过程和触发器，为对集合直接执行基于 JavaScript 的应用程序逻辑提供编程模型。这允许以下两种情况：
 
--	借助直接在数据库引擎内深度集成 JavaScript 运行时，能够对集合中的文档执行高性能事务性 CRUD 操作和查询。 
+-	借助直接在数据库引擎内深度集成 JavaScript 运行时，能够对集合中的文档执行高性能事务性 CRUD 操作和查询。
 -	控制流、变量范围和分配的自然建模和将异常处理基元与数据库事务集成。有关 DocumentDB 对 JavaScript 集成的支持的更多详细信息，请参阅《JavaScript 服务器端可编程性》文档。
 
 ###用户定义的函数 (UDF)
@@ -2220,7 +2222,7 @@ DocumentDB 通过 HTTP 提供开放的 RESTful 编程模型。可以使用 Azure
 
 如果查询的结果无法包含在一页内，那么 REST API 通过 `x-ms-continuation-token` 响应标头返回继续标记。客户端可以通过在后续结果中包含该标头对结果进行分页。可以通过 `x-ms-max-item-count` 数量标头控制每页的结果数。
 
-若要管理查询的数据一致性策略，请使用 `x-ms-consistency-level` 标头（如所有的 REST API 请求）。对于会话一致性，还需要回显查询请求中最新的 `x-ms-session-token` Cookie 标头。请注意，查询集合的索引策略也可以影响查询结果的一致性。使用默认的索引策略设置，集合的索引始终与文档内容保持同步，且查询结果将与为数据选择的一致性匹配。如果索引策略太放松而具有延迟，那么查询会返回过时的结果。有关详细信息，请参阅 [DocumentDB Consistency Levels（DocumentDB 一致性级别）][consistency-levels]。
+若要管理查询的数据一致性策略，请使用 `x-ms-consistency-level` 标头（如所有的 REST API 请求）。对于会话一致性，还需要回显查询请求中最新的 `x-ms-session-token` Cookie 标头。请注意，查询集合的索引策略也可以影响查询结果的一致性。使用默认的索引策略设置，集合的索引始终与文档内容保持同步，且查询结果将与为数据选择的一致性匹配。如果索引策略太放松而具有延迟，那么查询会返回过时的结果。有关详细信息，请参阅 [DocumentDB Consistency Levels][consistency-levels]（DocumentDB 一致性级别）。
 
 如果为集合配置的索引策略不能支持指定的查询，那么 DocumentDB 服务器会返回 400“错误的请求”。在对为哈希（等式）查找配置的路径，以及从索引中显式排除的路径进行范围查询时，将返回此内容。当索引不可用时，可通过指定 `x-ms-documentdb-query-enable-scan` 标头以允许查询执行扫描。
 
@@ -2229,7 +2231,7 @@ DocumentDB 通过 HTTP 提供开放的 RESTful 编程模型。可以使用 Azure
 
 
 	foreach (var family in client.CreateDocumentQuery(collectionLink, 
-	    "SELECT * FROM Families f WHERE f.id = "AndersenFamily""))
+	    "SELECT * FROM Families f WHERE f.id = \"AndersenFamily\""))
 	{
 	    Console.WriteLine("\tRead {0} from SQL", family);
 	}
@@ -2362,17 +2364,17 @@ DocumentDB 使用存储过程和触发器，为对集合直接执行基于 JavaS
 4.	[DocumentDB Consistency Levels（DocumentDB 一致性级别）][consistency-levels]
 5.	ANSI SQL 2011 [http://www.iso.org/iso/iso\_catalogue/catalogue\_tc/catalogue\_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 6.	JSON [http://json.org/](http://json.org/)
-7.	Javascript 规范 [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
-8.	LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
+7.	Javascript 规范 [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
+8.	LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx)
 9.	针对大型数据库的查询评估技术 [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
 10.	Query Processing in Parallel Relational Database Systems, IEEE Computer Society Press, 1994
 11.	Lu, Ooi, Tan, Query Processing in Parallel Relational Database Systems, IEEE Computer Society Press, 1994.
 12.	Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: A Not-So-Foreign Language for Data Processing, SIGMOD 2008.
-13.     G.Graefe.The Cascades framework for query optimization.IEEE Data Eng.Bull., 18(3): 1995.
+13.     G. Graefe. The Cascades framework for query optimization. IEEE Data Eng. Bull., 18(3): 1995.
 
 
 [1]: ./media/documentdb-sql-query/sql-query1.png
 [introduction]: /documentation/articles/documentdb-introduction
 [consistency-levels]: /documentation/articles/documentdb-consistency-levels
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0815_2016-->

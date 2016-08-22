@@ -5,25 +5,29 @@
    documentationCenter="na" 
    authors="yuemlu" 
    manager="timlt" 
-   editor=""/>
+   editor=""/>  
+
 
 <tags
    ms.service="cloud-services"
-   ms.date="06/15/2016"
+   ms.date="07/13/2016"
    wacn.date="05/17/2016"/>
 
 # Azure 来宾 OS 版本和 SDK 兼容性对照表
 提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。此信息将帮助你在来宾 OS 停用之前规划升级路径。如果你根据 [Azure 来宾 OS 更新设置][]中所述将角色配置为使用自动进行来宾 OS 更新，则不一定要阅读本页面。
 
-> [AZURE.IMPORTANT] 本页面适用于在来宾 OS 顶层运行的云服务 Web 角色和辅助角色，而**不适用**于 IaaS 虚拟机。
+> [AZURE.IMPORTANT] 本页面适用于在来宾 OS 顶层运行的云服务 Web 角色和辅助角色，而不适用于 IaaS 虚拟机。
 
 <!-- -->
+
 
 > [AZURE.TIP] 订阅[来宾 OS 更新 RSS 源][rss]，以接收有关所有来宾 OS 更改的最新通知。
 
 不太确定什么是来宾 OS 或者来宾 OS 的工作原理？ 请阅读[此部分](#how-it-works)。
 
 ## 新闻更新
+###### **2016 年 7 月 13 日**
+7 月版来宾 OS 将从 2016 年 7 月 13 日开始推出，预计于 2016 年 8 月 12 日正式发行。
 
 ###### **2016 年 6 月 15 日**
 6 月版来宾 OS 将从 2016 年 6 月 15 日开始推出，预计于 2016 年 7 月 14 日正式发行。
@@ -57,9 +61,10 @@
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | ------------------------------ | --------------- | ------------- | ---- |
-| WA-GUEST-OS-4.33\_201606-01 | 2016* 年 7 月 14 日 | 4\.35 发行后 | TBD |
+| WA-GUEST-OS-4.34\_201607-01 | 2016 年 8 月 12 日* | 4\.36 发行后 | TBD |
+| WA-GUEST-OS-4.33\_201606-01 | 2016 年 7 月 13 日 | 4\.35 发行后 | TBD |
 | WA-GUEST-OS-4.32\_201605-01 | 2016 年 6 月 10 日 | 4\.34 发行后 | TBD |
-| WA-GUEST-OS-4.31\_201604-01 | 2016 年 5 月 2 日 | 4\.33 发行后 | TBD |
+| WA-GUEST-OS-4.31\_201604-01 | 2016 年 5 月 2 日 | 2016 年 8 月 13 日 | TBD |
 | WA-GUEST-OS-4.30\_201603-01 | 2016 年 4 月 7 日 | 2016 年 7 月 10 日 | TBD |
 | WA-GUEST-OS-4.29\_201602-02 | 2016 年 3 月 12 日 | 2016 年 6 月 2 日 | TBD |
 | WA-GUEST-OS-4.28\_201601-01 | 2016 年 2 月 12 日 | 2016 年 5 月 7 日 | TBD | 
@@ -84,9 +89,10 @@
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | ------------------------------ | -------------- | ------------- | --- |
-| WA-GUEST-OS-3.40\_201606-01 | 2016* 年 7 月 14 日 | 3\.42 发行后 | TBD |
+| WA-GUEST-OS-3.41\_201607-01 | 2016 年 8 月 12 日* | 3\.43 发行后 | TBD |
+| WA-GUEST-OS-3.40\_201606-01 | 2016 年 7 月 13 日 | 3\.42 发行后 | TBD |
 | WA-GUEST-OS-3.39\_201605-01 | 2016 年 6 月 10 日 | 3\.41 发行后 | TBD |
-| WA-GUEST-OS-3.38\_201604-01 | 2016 年 5 月 2 日 | 3\.40 发行后 | TBD |
+| WA-GUEST-OS-3.38\_201604-01 | 2016 年 5 月 2 日 | 2016 年 8 月 13 日 | TBD |
 | WA-GUEST-OS-3.37\_201603-01 | 2016 年 4 月 7 日 | 2016 年 7 月 10 日 | TBD |
 | WA-GUEST-OS-3.36\_201602-02 | 2016 年 3 月 12 日 | 2016 年 6 月 2 日 | TBD |
 | WA-GUEST-OS-3.35\_201601-01 | 2016 年 2 月 12 日 | 2016 年 5 月 7 日 | TBD |
@@ -112,9 +118,10 @@
 
 | 配置字符串 | 发行日期 | 停用日期 | 失效日期 |
 | ------------------------------ | ------------- | ------------  | --- |
-| WA-GUEST-OS-2.52\_201606-01 | 2016* 年 7 月 14 日 | 2\.54 发行后 | TBD |
+| WA-GUEST-OS-2.53\_201607-01 | 2016 年 8 月 12 日* | 2\.55 发行后 | TBD |
+| WA-GUEST-OS-2.52\_201606-01 | 2016 年 7 月 13 日 | 2\.54 发行后 | TBD |
 | WA-GUEST-OS-2.51\_201605-01 | 2016 年 6 月 10 日 | 2\.53 发行后 | TBD |
-| WA-GUEST-OS-2.50\_201604-01 | 2016 年 5 月 2 日 | 2\.52 发行后 | TBD |
+| WA-GUEST-OS-2.50\_201604-01 | 2016 年 5 月 2 日 | 2016 年 8 月 13 日 | TBD |
 | WA-GUEST-OS-2.49\_201603-01 | 2016 年 4 月 7 日 | 2016 年 7 月 10 日 | TBD |
 | WA-GUEST-OS-2.48\_201602-02 | 2016 年 3 月 12 日 | 2016 年 6 月 2 日 | TBD |
 | WA-GUEST-OS-2.47\_201601-01 | 2016 年 2 月 12 日 | 2016 年 5 月 7 日 | TBD |
@@ -146,7 +153,7 @@
 ## 来宾 OS 版本信息
 来宾 OS 发行版有三个重要的日期：**发行日期**、**停用日期**和**失效日期**。来宾 OS 在门户中可用，并可选作目标来宾 OS。当来宾 OS 到达**停用**日期时，将从 Azure 中删除。但是，面向该来宾 OS 的任何云服务仍会正常运行。
 
-在**停用**日期与**失效**日期之间有一个缓冲期，可让你轻松地从一个来宾 OS 版本转换到新的版本。如果你正在使用自动更新版的来宾 OS，则始终可以获得最新版本，而无需担心失效的问题。
+在**停用**日期与**失效**日期之间有一个缓冲期，可让你轻松地从一个来宾 OS 版本转换到新的版本。如果你正在使用*自动更新版*的来宾 OS，则始终可以获得最新版本，而无需担心失效的问题。
 
 **失效**日期过后，仍旧使用该来宾 OS 的所有云服务将被停止、删除或强行升级。你可以在[此处][retirepolicy]了解有关停用策略的详细信息。
 
@@ -188,7 +195,7 @@ Azure 不断地发布更新。来宾 OS 只不过是此类更新的其中一种�
 [此处][retirepolicy]解释了来宾 OS 可支持性和停用策略。
 
 [Install .NET on a Cloud Service Role]: /documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
-[Azure 来宾 OS 更新设置]: /documentation/articles/cloud-services-how-to-configure
+[Azure 来宾 OS 更新设置]: /documentation/articles/cloud-services-how-to-configure/
 [rss]: http://sxp.microsoft.com/feeds/3.0/msdntn/WindowsAzureOSUpdates
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
 [Microsoft Security Advisory 3009008]: https://technet.microsoft.com/zh-cn/library/security/3009008.aspx
@@ -203,9 +210,9 @@ Azure 不断地发布更新。来宾 OS 只不过是此类更新的其中一种�
 [update guest os portal]: https://msdn.microsoft.com/zh-cn/library/gg433101.aspx
 [update guest os svc]: https://msdn.microsoft.com/zh-cn/library/gg456324.aspx
 [restarts]: http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx
-[patches]: /documentation/articles/cloud-services-guestos-msrc-releases
-[retirepolicy]: /documentation/articles/cloud-services-guestos-retirement-policy
-[fam1retire]: /documentation/articles/cloud-services-guestos-family1-retirement
+[patches]: /documentation/articles/cloud-services-guestos-msrc-releases/
+[retirepolicy]: /documentation/articles/cloud-services-guestos-retirement-policy/
+[fam1retire]: /documentation/articles/cloud-services-guestos-family1-retirement/
  
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0815_2016-->

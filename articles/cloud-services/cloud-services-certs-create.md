@@ -5,11 +5,12 @@
 	documentationCenter=".net" 
 	authors="Thraka" 
 	manager="timlt" 
-	editor=""/>
+	editor=""/>  
+
 
 <tags 
 	ms.service="cloud-services" 
-	ms.date="04/19/2016"
+	ms.date="07/05/2016"
 	wacn.date="05/17/2016"/>
 
 # Azure 云服务证书概述
@@ -17,7 +18,7 @@
 
 在 Azure 中使用的证书是 x.509 v3 证书，且可由另一个受信任的证书进行签名或可进行自签名。自签名的证书由其自己的创建者进行签名，因此，默认情况下不受信任。大多数浏览器可以忽略这一点。自签名的证书仅应由自己在开发和测试云服务时使用。
 
-Azure 使用的证书可以包含一个私钥或公钥。证书具有指纹，它提供了一种可对证书进行明确识别的方法。该指纹用于在 Azure [配置文件](/documentation/articles/cloud-services-configure-ssl-certificate)中识别云服务应使用的证书。
+Azure 使用的证书可以包含一个私钥或公钥。证书具有指纹，它提供了一种可对证书进行明确识别的方法。该指纹用于在 Azure [配置文件](/documentation/articles/cloud-services-configure-ssl-certificate/)中识别云服务应使用的证书。
 
 ## 什么是服务证书？
 服务证书被附加到云服务，可实现与服务之间的安全通信。例如，如果你部署了 Web 角色，将需要提供可对公开的 HTTPS 终结点进行身份验证的证书。在你的服务定义中定义的服务证书会自动部署到运行你的角色实例的虚拟机。
@@ -47,7 +48,7 @@ Azure 使用的证书可以包含一个私钥或公钥。证书具有指纹，�
 * 使用者名称必须与用于访问云服务的域匹配。
     > 你无法获取 chinacloudapp.cn 域（或与 Azure 相关的任何域）的 SSL 证书；该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。例如，**contoso.net**，而不是 **contoso.chinacloudapp.cn**。
 * 至少为 2048 位加密。
-* **仅服务证书**：客户端证书必须驻留在*个人*证书存储区。
+* **仅服务证书**：客户端证书必须驻留在个人证书存储区。
 
 有两种简单的方法可在 Windows 上创建证书，即使用 `makecert.exe` 实用程序或 IIS。
 
@@ -63,6 +64,12 @@ $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
 
+如果你想要[在管理门户中使用此证书](/documentation/articles/azure-api-management-certs/)，请将它导出到 **.cer** 文件：
+
+```powershell
+Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
+```
+
 ### Internet 信息服务 (IIS)
 
 在 internet 上有许多页面，包含了有关如何使用 IIS 实现此操作的信息。[此处](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html)就是一个很棒的页面，我认为其说明很不错。
@@ -71,14 +78,14 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 你可以使用 Java [创建证书](/documentation/articles/java-create-azure-website-using-java-sdk/#create-a-certificate)。
 
 ### Linux
-[本文](/documentation/articles/virtual-machines-linux-ssh-from-linux)介绍如何通过 SSH 创建证书。
+[本文](/documentation/articles/virtual-machines-linux-ssh-from-linux/)介绍如何通过 SSH 创建证书。
 
 ## 后续步骤
 
-[上载服务证书到 Azure 经典门户](/documentation/articles/cloud-services-configure-ssl-certificate)（或 [Azure 门户](/documentation/articles/cloud-services-configure-ssl-certificate-portal)）。
+[上载服务证书到 Azure 经典门户](/documentation/articles/cloud-services-configure-ssl-certificate/)（或 [Azure 门户](/documentation/articles/cloud-services-configure-ssl-certificate-portal/)）。
 
-将[管理 API 证书](/documentation/articles/azure-api-management-certs)上载到 Azure 经典门户。
+将[管理 API 证书](/documentation/articles/azure-api-management-certs/)上载到 Azure 经典门户。
 
 >[AZURE.NOTE] Azure 门户不使用管理证书来访问 API，而是使用用户帐户。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0815_2016-->

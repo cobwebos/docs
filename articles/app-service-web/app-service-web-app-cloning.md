@@ -1,5 +1,6 @@
 <!-- not suitable for Mooncake -->
 
+
 <properties
 	pageTitle="使用 PowerShell 克隆 Web 应用"
 	description="了解如何使用 PowerShell 将 Web 应用克隆到新的 Web 应用。"
@@ -12,20 +13,22 @@
 <tags
 	ms.service="app-service-web"
 	ms.date="01/13/2016"
-	wacn.date=""/>
+	wacn.date=""/>  
+
 
 # 使用 PowerShell 克隆 Azure Web 应用#
 
 在发行的 Azure PowerShell 版本 1.1.0 中，为 New-AzureRMWebApp 添加了新选项，可让用户将现有的 Web 应用克隆到不同区域或相同区域中新建的应用。这样，客户就可以跨不同区域部署许多应用。
 
-应用克隆目前仅支持高级层 App Service 计划。新功能使用与 Web Apps 备份功能相同的限制，具体请参阅[在 Azure 中备份 Web 应用](/documentation/articles/web-sites-backup)。
+应用克隆目前仅支持高级层 App Service 计划。新功能使用与 Web Apps 备份功能相同的限制，具体请参阅[在 Azure 中备份 Web 应用](/documentation/articles/web-sites-backup/)。
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../includes/app-service-web-to-api-and-mobile.md)]
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
+若要了解如何使用基于 Azure Resource Manager 的 Azure PowerShell cmdlet 来管理 Web Apps，请查看[适用于 Azure Web 应用的基于 Azure Resource Manager 的 PowerShell 命令](/documentation/articles/app-service-web-app-azure-resource-manager-powershell/)
 
 ## 克隆现有应用 ##
 
-方案：用户想要将位于中国东部区域的现有 Web 应用内容克隆到位于中国北部区域的新 Web 应用。结合 -SourceWebApp 选项使用 ARM 版本的 PowerShell cmdlet 来创建新的 Web 应用，即可实现此目的。
+方案：用户想要将位于中国东部区域的现有 Web 应用内容克隆到位于中国北部区域的新 Web 应用。结合 -SourceWebApp 选项使用 Azure Resource Manager 版本的 PowerShell cmdlet 来创建新的 Web 应用，即可实现此目的。
 
 如果知道包含源 Web 应用的资源组名称，我们就可以使用以下 PowerShell 命令来获取源 Web 应用的信息（在本例中，该应用名为 source-webapp）：
 
@@ -75,17 +78,17 @@
 
 ## 在克隆应用时配置流量管理器 ##
 
-创建多区域 Web 应用并配置 Azure 流量管理器以将流量路由到所有这些 Web 应用是一种确保客户应用高可用性的重要方案，当克隆现有的 Web 应用时，你可以选择将两个 Web 应用连接到新的流量管理器配置文件或现有的配置文件 — 请注意，仅支持 ARM 版本的流量管理器。
+创建多区域 Web 应用并配置 Azure 流量管理器以将流量路由到所有这些 Web 应用是一种确保客户应用高可用性的重要方案，当克隆现有的 Web 应用时，你可以选择将两个 Web 应用连接到新的流量管理器配置文件或现有的配置文件 — 请注意，仅支持 Azure Resource Manager 版本的流量管理器。
 
 ### 在克隆应用时创建新的流量管理器配置文件 ###
 
-方案：用户想要将 Web 应用克隆到另一个区域，同时配置包含两个 Web 应用的 ARM 流量管理器配置文件。下面演示了如何在新 Web 应用中创建源 Web 应用的克隆，同时配置新的流量管理器配置文件：
+方案：用户想要将 Web 应用克隆到另一个区域，同时配置包含两个 Web 应用的 Azure Resource Manager 流量管理器配置文件。下面演示了如何在新 Web 应用中创建源 Web 应用的克隆，同时配置新的流量管理器配置文件：
 
     $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "China East" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileName newTrafficManagerProfile
 
 ### 将新克隆的 Web 应用添加到现有的流量管理器配置文件 ###
 
-方案：用户已有一个 ARM 流量管理器配置文件，现在想要将两个 Web 应用添加为终结点。为此，我们首先需要组合现有的流量管理器配置文件 ID，并需要订阅 ID、资源组名称和现有的流量管理器配置文件名称。
+方案：用户已有一个 Azure Resource Manager 流量管理器配置文件，现在想要将两个 Web 应用添加为终结点。为此，我们首先需要组合现有的流量管理器配置文件 ID，并需要订阅 ID、资源组名称和现有的流量管理器配置文件名称。
 
     $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<Your resource group name goes here>/providers/Microsoft.TrafficManagerProfiles/ExistingTrafficManagerProfileName"
 
@@ -104,13 +107,15 @@
 - 不会克隆简易身份验证设置
 - 不会克隆 Kudu 扩展
 - 不会克隆 TiP 规则
+- 将不会克隆数据库内容
 
 
 ### 参考 ###
-- [使用 Azure 门户克隆 Web 应用](/documentation/articles/app-service-web-app-cloning-portal)
-- [在 Azure 中备份 Web 应用](/documentation/articles/web-sites-backup)
+- [适用于 Azure Web 应用的基于 Azure Resource Manager 的 PowerShell 命令](/documentation/articles/app-service-web-app-azure-resource-manager-powershell/)
+- [使用 Azure 门户克隆 Web 应用](/documentation/articles/app-service-web-app-cloning-portal/)
+- [在 Azure 中备份 Web 应用](/documentation/articles/web-sites-backup/)
 - [Azure 流量管理器预览版对 Azure 资源管理器的支持](../../articles/traffic-manager/traffic-manager-powershell-arm.md)
-- [Azure 环境简介](/documentation/articles/app-service-app-service-environment-intro)
-- [将 Azure PowerShell 与 Azure 资源管理器配合使用](/documentation/articles/powershell-azure-resource-manager)
+- [Azure 环境简介](/documentation/articles/app-service-app-service-environment-intro/)
+- [将 Azure PowerShell 与 Azure 资源管理器配合使用](/documentation/articles/powershell-azure-resource-manager/)
 
-<!---HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0815_2016-->

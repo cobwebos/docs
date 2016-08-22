@@ -5,20 +5,21 @@
 	documentationCenter="java" 
 	authors="rmcmurray" 
 	manager="wpickett" 
-	editor="jimbe"/>
+	editor="jimbe"/>  
+
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016"  
+	ms.date="06/22/2016"   
 	wacn.date=""/>
 
 #如何将媒体服务与 Java 结合使用
 
-[AZURE.INCLUDE [media-services-selector-get-started](../includes/media-services-selector-get-started.md)]
+[AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 ##<a id="setup-account"></a>为媒体服务设置 Azure 帐户
 
-若要设置你的媒体服务帐户，请使用 Azure 管理门户。请参阅主题[如何创建媒体服务帐户](/documentation/articles/media-services-create-account)。在 Azure 管理门户中创建帐户后，便可以设置你的计算机以进行媒体服务开发。
+若要设置你的媒体服务帐户，请使用 Azure 管理门户。请参阅主题[如何创建媒体服务帐户](/documentation/articles/media-services-create-account/)。在 Azure 管理门户中创建帐户后，便可以设置你的计算机以进行媒体服务开发。
 
 ##<a id="setup-dev"></a>完成设置以进行媒体服务开发
 
@@ -26,14 +27,14 @@
 
 ###先决条件
 
--   在新的或现有的 Azure 订阅中拥有一个媒体服务帐户。请参阅主题[如何创建媒体服务帐户](/documentation/articles/media-services-create-account)。
+-   在新的或现有的 Azure 订阅中拥有一个媒体服务帐户。请参阅主题[如何创建媒体服务帐户](/documentation/articles/media-services-create-account/)。
 -   适用于 Java 的 Azure 库，可以从 [Azure Java 开发人员中心][]安装。
 
 ##<a if="connect"></a>如何将媒体服务与 Java 结合使用
 
 以下代码演示了如何创建一个资产、如何将媒体文件上载到该资产、如何使用任务运行某个作业以转换该资产，以及如何创建一个定位符用于流式传输你的视频。
 
-在使用此代码之前，需要设置一个媒体服务帐户。有关设置帐户的信息，请参阅[如何创建媒体服务帐户](/documentation/articles/media-services-create-account)。
+在使用此代码之前，需要设置一个媒体服务帐户。有关设置帐户的信息，请参阅[如何创建媒体服务帐户](/documentation/articles/media-services-create-account/)。
 
 将 `clientId` 和 `clientSecret` 变量替换为你的值。该代码还依赖于本地存储的文件。你需要提供自己的文件以供使用。
 	
@@ -69,7 +70,7 @@
 	public class HelloMediaServices
 	{
 		// Media Services account credentials configuration
-		private static String mediaServiceUri = "https://media.chinacloudapi.cn/API/";
+		private static String mediaServiceUri = "https://wamsshaclus001rest-hs.chinacloudapp.cn /API/";
 		private static String oAuthUri = "https://wamsprodglobal001acs.accesscontrol.chinacloudapi.cn/v2/OAuth2-13";
 		private static String clientId = "account name";
 		private static String clientSecret = "account key";
@@ -179,8 +180,8 @@
 	        // Create a task with the specified Media Processor
 	        String outputAssetName = String.format("%s as %s", assetToEncode.getName(), encodingPreset);
 	        String taskXml = "<taskBody><inputAsset>JobInputAsset(0)</inputAsset>"
-	                + "<outputAsset assetCreationOptions="0"" // AssetCreationOptions.None
-	                + " assetName="" + outputAssetName + "">JobOutputAsset(0)</outputAsset></taskBody>";
+	                + "<outputAsset assetCreationOptions=\"0\"" // AssetCreationOptions.None
+	                + " assetName=\"" + outputAssetName + "\">JobOutputAsset(0)</outputAsset></taskBody>";
 	
 	        Task.CreateBatchOperation task = Task.create(mediaProcessor.getId(), taskXml)
 	                .setConfiguration(encodingPreset).setName("Encoding");
@@ -259,9 +260,11 @@
 
 <!-- URLs. -->
 
+
   [Azure Java 开发人员中心]: /develop/java/
   [适用于 Java 的 Azure 库文档]: http://azure.github.io/azure-sdk-for-java/
-  [Media Services Client Development]: /documentation/articles/media-services-develop-video-players
+  [Media Services Client Development]: /documentation/articles/media-services-develop-video-players/
 
  
-<!---HONumber=Mooncake_0620_2016-->
+
+<!---HONumber=Mooncake_0815_2016-->

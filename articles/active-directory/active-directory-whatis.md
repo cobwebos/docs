@@ -4,13 +4,15 @@
     services="active-directory"
     documentationCenter=""
     authors="markusvi"
-    manager="stevenpo"
-    editor=""/>
+    manager="femila"
+    editor=""/>  
+
 
 <tags 
 	ms.service="active-directory" 
-    ms.date="04/07/2016"
-	wacn.date="" />
+    	ms.date="07/13/2016"
+	wacn.date="" />  
+
 
 
 # 什么是 Azure Active Directory？
@@ -35,14 +37,15 @@ Azure AD 还包含整套标识管理功能，例如多重身份验证、设备�
 
 
 
-<center>![Azure AD Connect 堆栈](./media/active-directory-whatis/Azure_Active_Directory.png) </center>
+<center>![Azure AD Connect 堆栈](./media/active-directory-whatis/Azure_Active_Directory.png)
+</center>
 
 
 ## Azure AD 的可靠性如何？
 
 Azure AD 的多租户、地理分布、高可用性设计意味着你可以依赖它来解决最关键的业务需求。在全球运转的 28 个可自动故障转移的数据中心使你能够体会到 Azure AD 的高度可靠，即使数据中心发生服务中断，你的目录数据也至少会在两个以上的地域分散的数据中心保留副本，而且可让你立即访问。
 
-有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
+有关详细信息，请参阅[服务级别协议](/support/legal/sla/)。
 
 
 
@@ -65,11 +68,11 @@ Azure AD 的多租户、地理分布、高可用性设计意味着你可以依�
 
 ## 如何入门？
 -	如果你是 IT 管理员：
- - [立即试用！](https://azure.microsoft.com/trial/get-started-active-directory/)- 你现在就可以使用此链接注册 30 天免费试用版，然后在不到 5 分钟内部署第一个云解决方案
+ - [立即试用！](/documentation/services/identity/)- 你现在就可以使用此链接注册 30 天免费试用版，然后在不到 5 分钟内部署第一个云解决方案
  - 阅读“Azure AD 入门”，获取有关如何设置和快速运行 Azure AD 租户的提示与技巧
 -	如果你是开发人员：
- - 查看 Azure Active Directory 的[开发人员指南](active-directory-developers-guide.md) 
- - [开始试用](https://azure.microsoft.com/trial/get-started-active-directory/) – 立即注册 30 天免费试用版，开始将你的应用集成到 Azure AD
+ - 查看 Azure Active Directory 的[开发人员指南](/documentation/articles/active-directory-developers-guide/)
+ - [开始试用](c/documentation/services/identity/) – 立即注册 30 天免费试用版，开始将你的应用集成到 Azure AD
 
 
 
@@ -78,26 +81,26 @@ Azure AD 的多租户、地理分布、高可用性设计意味着你可以依�
 我们提供了大量的有用在线资源，以帮助你了解 Azure AD 的方方面面。下面是一些可帮助你快速入门的佳作：
 
 
-- [使用 Azure AD Connect 启用目录的混合管理](active-directory-aadconnect)
+- [使用 Azure AD Connect 启用目录的混合管理](/documentation/articles/active-directory-aadconnect/)
 
-- [在互联世界中提高安全性](multi-factor-authentication)
+- [在互联世界中提高安全性](/documentation/articles/multi-factor-authentication/)
 
-- [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](active-directory-saas-app-provisioning)
+- [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](/documentation/articles/active-directory-saas-app-provisioning/)
 
-- [Azure AD 报告入门](active-directory-reporting-getting-started)
+- [Azure AD 报告入门](/documentation/articles/active-directory-reporting-getting-started/)
 
-- [从任意位置管理密码](articles/active-directory-passwords)
+- [从任意位置管理密码](/documentation/articles/active-directory-passwords/)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？](active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](/documentation/articles/active-directory-appssoaccess-whatis/)
 
-- [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](active-directory-saas-app-provisioning)
+- [Azure Active Directory SaaS 应用程序的自动化用户设置和取消设置](/documentation/articles/active-directory-saas-app-provisioning/)
 
-- [如何提供对本地应用程序的安全远程访问](active-directory-application-proxy-get-started)
+- [如何提供对本地应用程序的安全远程访问](/documentation/articles/active-directory-application-proxy-get-started/)
 
-- [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups)
+- [使用 Azure Active Directory 组管理对资源的访问](/documentation/articles/active-directory-manage-groups/)
 
-- [什么是 Microsoft Azure Active Directory 许可？](active-directory-licensing-what-is)
+- [什么是 Microsoft Azure Active Directory 许可？](/documentation/articles/active-directory-licensing-what-is/)
 
-- [如何发现本组织中使用的未经认可的云应用](active-directory-cloudappdiscovery-whatis)
+- [如何发现本组织中使用的未经认可的云应用](/documentation/articles/active-directory-cloudappdiscovery-whatis/)
 
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=Mooncake_0815_2016-->

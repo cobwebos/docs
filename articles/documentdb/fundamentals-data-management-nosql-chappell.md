@@ -5,7 +5,8 @@
 	manager="jhubbard" 
 	services="documentdb, storage, hdinsight" 
 	documentationCenter="" 
-	authors="mimig1"/>
+	authors="mimig1"/>  
+
 
 <tags 
 	ms.service="multiple" 
@@ -19,16 +20,16 @@
 
 如果是这样，我们有两项资源可供你使用：
 
-- [NoSQL 与 SQL](documentdb-nosql-vs-sql.md) 一文。本文讨论 NoSQL 与 SQL 之间的区别，并为你提供来自 Microsoft 的 NoSQL 和 SQL 产品简介。
+- [NoSQL 与 SQL](/documentation/articles/documentdb-nosql-vs-sql/) 一文。本文讨论 NoSQL 与 SQL 之间的区别，并为你提供来自 Microsoft 的 NoSQL 和 SQL 产品简介。
 - 由 David Chappell 撰写的 [Understanding NoSQL on Microsoft Azure（了解 Microsoft Azure 上的 NoSQL）](http://go.microsoft.com/fwlink/p/?LinkId=330292)白皮书。本白皮书提供了以下内容：
 
  - 区分由应用程序读取和写入的操作数据与用于提供商业智能 (BI) 的分析数据，以帮助确定符合你需求的技术。
  - 关系技术的简要概述。
  - 每种 Azure NoSQL 技术的简介：DocumentDB、表存储、HBase 和 HDInsight。
- - NoSQL 技术与 Azure SQL 数据库的比较。 
- - 何时使用 DocumentDB、表存储、HBase、HDInsight 与 SQL 数据库。
+ - NoSQL 技术与 Azure SQL 数据库的比较。
+ - 何时使用 Azure DocumentDB、表存储、HBase、HDInsight 与 SQL 数据库。
 
 
  
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0815_2016-->
