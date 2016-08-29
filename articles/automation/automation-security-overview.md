@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure 自动化安全"
+   pageTitle="Azure 自动化安全性 | Azure"
    description="本文概述了 Azure 自动化中自动化帐户的自动化安全性以及可供使用的不同身份验证方法。"
    services="automation"
    documentationCenter=""
@@ -9,12 +9,11 @@
    keywords="自动化安全性, 安全的自动化" />
 <tags
 	ms.service="automation"
-	ms.date="07/06/2016"
+	ms.date="07/29/2016"
 	wacn.date=""/>
 
 # Azure 自动化安全性
-
-Azure 自动化可让你自动针对 Azure 和本地中的资源执行任务。 [AZURE.ACOM]{，并与其他云提供商如 Amazon Web Services (AWS) [AZURE.ACOM]}。为了使 Runbook 执行所需操作，Runbook 必须有权使用订阅中所需的最小权限来安全地访问资源。  
+Azure 自动化可让你自动针对 Azure 和本地中的资源执行任务。为了使 Runbook 执行所需操作，Runbook 必须有权使用订阅中所需的最小权限来安全地访问资源。
 本文将介绍 Azure 自动化支持的各种身份验证方案，并介绍如何根据你需要管理的单个或多个环境来入门。
 
 ## 自动化帐户概述
@@ -22,23 +21,9 @@ Azure 自动化可让你自动针对 Azure 和本地中的资源执行任务。 
 
 每个自动化帐户的自动化资源与单个 Azure 区域相关联，但自动化帐户可以管理任何区域中的资源。在不同区域中创建自动化帐户的主要原因是，你的策略要求数据和资源隔离到特定的区域。
 
-[AZURE.ACOM]{
+所有使用 Azure Resource Manager 和 Azure 自动化中的 Azure cmdlet 对资源执行的任务必须使用 Azure Active Directory 组织标识基于凭据的身份验证向 Azure 进行身份验证。基于证书的身份验证是使用 Azure 服务管理模式的原始身份验证方法，但是安装很复杂。在 2014 年引入了使用 Azure AD 用户向 Azure 进行身份验证，不仅简化了配置身份验证帐户的过程，也支持使用在 Azure Resource Manager 和经典资源模式下均可使用的单个用户帐户向 Azure 进行非交互式身份验证的功能。
 
->[AZURE.NOTE]无法在 Azure 经典管理门户中访问使用 Azure 门户创建的自动化帐户及其包含的资源。如果你想要使用 Windows PowerShell 来管理这些帐户或其资源，必须使用 Azure 资源管理器模块。
-
-[AZURE.ACOM]}
-
-所有使用 Azure Resource Manager (ARM) 和 Azure 自动化中的 Azure cmdlet 对资源执行的任务必须使用 Azure Active Directory 组织标识基于凭据的身份验证向 Azure 进行身份验证。基于证书的身份验证是使用 Azure 服务管理 (ASM) 模式的原始身份验证方法，但是安装很复杂。在 2014 年引入了使用 Azure AD 用户向 Azure 进行身份验证，不仅简化了配置身份验证帐户的过程，也支持使用在 ASM 和 ARM 模式下均可使用的单个用户帐户向 Azure 进行非交互式身份验证的功能。
-
-我们最近发布了另一个更新，在其中创建自动化帐户时，我们现将自动创建 Azure AD 服务主体对象。这称为 Azure 运行方式帐户，是使用 Azure Resource Manager 的 Runbook 自动化的默认身份验证方法。
-
-基于角色的访问控制在 ARM 模式下可用，以向 Azure AD 用户帐户和服务主体授予允许的操作，并对该服务主体进行身份验证。请阅读 [Azure 自动化中基于角色的访问控制](/documentation/articles/automation-role-based-access-control/)一文，了解帮助开发用于管理自动化权限的模型的详细信息。
-
-[AZURE.ACOM]{
-
-在你的数据中心的混合 Runbook 辅助角色上运行或针对 AWS 中的计算服务的 Runbook 不能使用通常用于针对 Azure 资源进行 Runbook 身份验证的相同方法。这是因为这些资源在 Azure 外部运行，因此，它们需要在自动化中定义自己的安全凭据，以便向需要在本地访问的资源进行身份验证。
-
-[AZURE.ACOM]}
+基于角色的访问控制在 Azure Resource Manager 中可用，向 Azure AD 用户帐户和运行方式帐户授予允许的操作，并对该服务主体进行身份验证。请阅读 [Azure 自动化中基于角色的访问控制](/documentation/articles/automation-role-based-access-control/)一文，了解帮助开发用于管理自动化权限的模型的详细信息。
 
 ## 身份验证方法
 
@@ -47,10 +32,7 @@ Azure 自动化可让你自动针对 Azure 和本地中的资源执行任务。 
 方法 | 环境 | 文章
 ----------|----------|----------
 Azure AD 用户帐户 | Azure 资源管理器和 Azure 服务管理 | [Authenticate Runbooks with Azure AD User account（使用 Azure AD 用户帐户进行 Runbook 身份验证）](/documentation/articles/automation-sec-configure-aduser-account/)
-Azure AD 服务主体对象 | Azure 资源管理器 | [AZURE.ACOM]{ [使用 Azure 运行方式帐户进行 Runbook 身份验证](/documentation/articles/automation-sec-configure-azure-runas-account/) [AZURE.ACOM]} [AZURE.ACN]{ 使用 Azure 运行方式帐户进行 Runbook 身份验证 [AZURE.ACN]}
-|[AZURE.ACOM]{|
-Windows 身份验证 | 本地数据中心 | [对混合 Runbook 辅助角色进行 Runbook 身份验证](/documentation/articles/automation-hybrid-runbook-worker/)
-AWS 凭据 | Amazon Web Services | [Authenticate Runbooks with Amazon Web Services (AWS)（使用 Amazon Web Services (AWS) 进行 Runbook 身份验证）](/documentation/articles/automation-sec-configure-aws-account/)
-|[AZURE.ACOM]}|
+Azure 运行方式帐户 | Azure 资源管理器 | [Authenticate Runbooks with Azure Run As account（使用 Azure 运行方式帐户进行 Runbook 身份验证）](/documentation/articles/automation-sec-configure-azure-runas-account/)
+Azure 经典运行方式帐户 | Azure 服务管理 | 使用 Azure 运行方式帐户进行 Runbook 身份验证
 
-<!---HONumber=Mooncake_0801_2016-->
+<!---HONumber=Mooncake_0822_2016-->

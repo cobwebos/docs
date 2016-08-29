@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="05/12/2016"
+	ms.date="08/08/2016"
 	wacn.date=""/>
 
 # 后续步骤以及如何管理 Azure AD Connect
@@ -50,7 +50,7 @@
 
 <center>![云](./media/active-directory-aadconnect-whats-next/startsynch.png)</center>
 
-有关“Azure AD Connect 同步：计划程序”的详细信息，请参阅 [Azure AD Connect 计划程序](/documentation/articles/active-directory-aadconnectsync-feature-scheduler)
+有关“Azure AD Connect 同步：计划程序”的详细信息，请参阅 [Azure AD Connect 计划程序](/documentation/articles/active-directory-aadconnectsync-feature-scheduler/)
 
 
 ## Azure AD Connect 中提供的其他任务
@@ -61,15 +61,15 @@
 ![联接规则](./media/active-directory-aadconnect-whats-next/addtasks.png)
 
 
-其他任务 | 说明 
+其他任务 | 说明
 ------------- | ------------- |
 查看选定的方案 |可让你查看当前的 Azure AD Connect 解决方案。这包括常规设置、同步的目录、同步设置，等等。
 自定义同步选项 | 可让你更改当前的配置，包括在配置中添加其他 Active Directory 林，或启用同步选项，例如用户、组、设备或密码回写。
 启用暂存模式 | 可让你暂存稍后将要同步的信息，但不会将任何内容导出到 Azure AD 或 Active Directory。这样，你便可以在同步之前进行预览。
 
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
  
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0822_2016-->

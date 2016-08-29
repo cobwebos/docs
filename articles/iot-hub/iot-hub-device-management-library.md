@@ -3,7 +3,7 @@
  description="Azure IoT 中心设备管理 (DM) 客户端库"
  services="iot-hub"
  documentationCenter=""
- authors="CarlosAlayo"
+ authors="juanjperez"
  manager="timlt"
  editor=""/>
 
@@ -148,7 +148,7 @@ LWM2M 数据模型引入了对象和资源的概念：
 
 - Intel Edison 固件更新示例：通过使用 Intel Edison 设备启用的设备管理功能的示例。请参阅 [iotdm\_edison\_sample][lnk-edison-sample]。
 - 模拟设备示例：在 Linux 和 Windows 设备上运行的平台独立设备示例。请参阅 [iotdm\_simple\_sample][lnk-simple-sample]
-- 若要了解有关 LWM2M 对象的详细信息，请参阅 [OMA LWM2M object and resource registry（OMA LWM2M 对象和资源注册表）][lnk-oma]
+- 若要了解有关 LWM2M 对象的详细信息，请参阅 [OMA LWM2M object and resource registry][lnk-oma]（OMA LWM2M 对象和资源注册表）
 
 ## 附录：目前支持的 LWM2M 对象和资源
 
@@ -156,17 +156,17 @@ LWM2M 数据模型引入了对象和资源的概念：
 
 | 资源名称 | 允许在资源上执行的远程操作 | 类型 | 范围和单位 | 说明 |
 |-----------------|--------------------------------------|---------|-----------------|-------------|
-| 制造商 | 读取 | String | | 制造商名称 |
+| 制造商 | 读取 | 字符串 | | 制造商名称 |
 | ModelNumber | 读取 | String | | 模型标识符（制造商指定的字符串） |
 | DeviceType | 读取 | String | | 设备的类型（制造商指定的字符串）<br/>注意：这会映射到服务器端 API **SystemPropertyNames.DeviceDescription** |
-| 序列号 | 读取 | String | | 设备的序列号 |
-| FirmwareVersion | 读取 | String | | 设备的当前固件版本 |
+| 序列号 | 读取 | 字符串 | | 设备的序列号 |
+| FirmwareVersion | 读取 | 字符串 | | 设备的当前固件版本 |
 | HardwareVersion | 读取 | String | | 设备的当前硬件版本 |
 | 重新启动 | 执行 | | | 重新启动设备。 |
 | FactoryReset | 执行 | | | 执行设备的出厂重置，使设备具有与初始部署时相同的配置。 |
 | CurrentTime | 读取<br/>写入 | 时间 | | 设备的当前 UNIX 时间。客户端应负责每隔一秒就提高此时间值。<br/>DM 服务器能够写入此资源，使客户端与服务器上的时间同步。 |
 | UTCOffset | 读取<br/>写入 | String | | UTC 时差生效。 |
-| 时区 | 读取<br/>写入 | String | | 指示设备所在的时区。 |
+| 时区 | 读取<br/>写入 | 字符串 | | 指示设备所在的时区。 |
 | MemoryFree | 读取 | 整数 | KB | 可存储设备中的数据和软件的当前估计可用存储空间内存 |
 | MemoryTotal | 读取 | 整数 | KB | 可以存储设备中的数据和软件的存储空间的总量 |
 | BatteryLevel | 读取 | 整数 | 0-100% | 当前电池剩余电量百分比（从 0 到 100） |
@@ -196,7 +196,7 @@ LWM2M 数据模型引入了对象和资源的概念：
 
 | 资源名称 | 操作 | 类型 | 范围和单位 | 说明 |
 |---------------|------------|--------|-----------------|-------------|
-| 名称 | 读取写入 | String | | 唯一地标识要读取或更新的设备配置的名称。 |
+| 名称 | 读取写入 | 字符串 | | 唯一地标识要读取或更新的设备配置的名称。 |
 | 值 | 读取写入 | String | | 唯一地标识要读取或更新的配置值。 |
 | 应用 | 执行 | | | 对设备应用配置更改。 |
 
@@ -209,8 +209,8 @@ LWM2M 数据模型引入了对象和资源的概念：
 - [使用网关 SDK 模拟设备][lnk-gateway]
 - [使用 Azure 门户管理 IoT 中心][lnk-portal]
 [img-library-overview]: ./media/iot-hub-device-management-library/library.png
-[lnk-dm-overview]: /documentation/articles/iot-hub-device-management-overview/
-[lnk-get-started]: /documentation/articles/iot-hub-device-management-get-started/
+[lnk-dm-overview]: /documentation/articles/iot-hub/iot-hub-device-management-overview/
+[lnk-get-started]: /documentation/articles/iot-hub/iot-hub-device-management-get-started/
 [lnk-simple-sample]: https://github.com/Azure/azure-iot-sdks/tree/dmpreview/c/iotdm_client/samples/iotdm_simple_sample
 [lnk-edison-sample]: https://github.com/Azure/azure-iot-sdks/tree/dmpreview/c/iotdm_client/samples/iotdm_edison_sample
 [Azure IoT Hub device SDK]: https://github.com/Azure/azure-iot-sdks/tree/dmpreview/c
@@ -225,9 +225,9 @@ LWM2M 数据模型引入了对象和资源的概念：
 [lnk-github2]: https://github.com/Azure/azure-iot-sdks/tree/dmpreview/c/iotdm_client/lwm2m_objects
 [lnk-oma]: http://technical.openmobilealliance.org/Technical/technical-information/omna/lightweight-m2m-lwm2m-object-registry
 
-[lnk-design]: /documentation/articles/iot-hub-guidance/
-[lnk-devguide]: /documentation/articles/iot-hub-devguide/
-[lnk-gateway]: /documentation/articles/iot-hub-linux-gateway-sdk-simulated-device/
-[lnk-portal]: /documentation/articles/iot-hub-manage-through-portal/
+[lnk-design]: /documentation/articles/iot-hub/iot-hub-guidance/
+[lnk-devguide]: /documentation/articles/iot-hub/iot-hub-devguide/
+[lnk-gateway]: /documentation/articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device/
+[lnk-portal]: /documentation/articles/iot-hub/iot-hub-manage-through-portal/
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0822_2016-->

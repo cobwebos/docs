@@ -9,7 +9,7 @@
 
 <tags
      ms.service="iot-hub"
-     ms.date="07/16/2016"
+     ms.date="08/08/2016"
      wacn.date=""/>
 
 # OS 平台和硬件与设备 SDK 的兼容性
@@ -29,6 +29,10 @@ Azure IoT 库在以下操作系统平台上进行了测试：
 |Raspbian Linux| 3\.18 |
 |Ubuntu Linux| 14\.04 |
 |Yocto Linux|2\.1 |
+
+|Android OS 平台 | 版本|
+|:---------------|:------------:|
+|Android| > 4.2|
 
 |Windows OS 平台 | 版本|
 |:---------------|:------------:|
@@ -140,14 +144,14 @@ Azure IoT 库在以下操作系统平台上进行了测试：
 - [使用 Azure 门户管理 IoT 中心][lnk-portal]
 
 
+[lnk-iot-suite]: /documentation/suites/iot-suite/
 
+[lnk-protocols]: /documentation/articles/iot-hub/iot-hub-protocol-gateway/
+[lnk-compare]: /documentation/articles/iot-hub/iot-hub-compare-event-hubs/
+[lnk-scaling]: /documentation/articles/iot-hub/iot-hub-scaling/
+[lnk-devguide]: /documentation/articles/iot-hub/iot-hub-devguide/
+[lnk-dmui]: /documentation/articles/iot-hub/iot-hub-device-management-ui-sample/
+[lnk-gateway]: /documentation/articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device/
+[lnk-portal]: /documentation/articles/iot-hub/iot-hub-manage-through-portal/
 
-[lnk-protocols]: /documentation/articles/iot-hub-protocol-gateway/
-[lnk-compare]: /documentation/articles/iot-hub-compare-event-hubs/
-[lnk-scaling]: /documentation/articles/iot-hub-scaling/
-[lnk-devguide]: /documentation/articles/iot-hub-devguide/
-[lnk-dmui]: /documentation/articles/iot-hub-device-management-ui-sample/
-[lnk-gateway]: /documentation/articles/iot-hub-linux-gateway-sdk-simulated-device/
-[lnk-portal]: /documentation/articles/iot-hub-manage-through-portal/
-
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0822_2016-->

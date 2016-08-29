@@ -74,6 +74,25 @@ IoT 中心还允许设备使用 X.509 证书向 IoT 中心进行身份验证。I
         // console.log("signature:" + token);
         return token;
     };
+ 
+ 为方便比较，下面提供了等效的 Python 代码：
+ 
+    from base64 import b64encode, b64decode
+    from hashlib import sha256
+    from hmac import HMAC
+    from urllib import urlencode
+    
+    def generate_sas_token(uri, key, policy_name='device', expiry=3600):
+        ttl = time() + expiry
+        sign_key = "%s\n%d" % (uri, int(ttl))
+        signature = b64encode(HMAC(b64decode(key), sign_key, sha256).digest())
+     
+        return 'SharedAccessSignature ' + urlencode({
+            'sr' :  uri,
+            'sig': signature,
+            'se' : str(int(ttl)),
+            'skn': policy_name
+        })
 
 > [AZURE.NOTE] 由于 IoT 中心计算机会验证令牌的有效期，因此生成令牌的计算机的时间偏差必须很小。
 
@@ -90,7 +109,7 @@ IoT 中心还允许设备使用 X.509 证书向 IoT 中心进行身份验证。I
 | 终结点 | 功能 |
 | ----- | ----------- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` | 发送设备到云的消息。 |
-| `{iot hub host name}/devices/{deviceId}/devicebound` | 接收云到设备的消息。 |
+| `{iot hub host name}/devices/{deviceId}/devicebound`  | 接收云到设备的消息。 |
 
 ### 使用标识注册表中的对称密钥
 
@@ -159,7 +178,7 @@ IoT 中心还允许设备使用 X.509 证书向 IoT 中心进行身份验证。I
 | `{iot hub host name}/devices` | 创建、更新、检索和删除设备标识。 |
 | `{iot hub host name}/messages/events` | 接收设备到云的消息 |
 | `{iot hub host name}/servicebound/feedback` | 接收云到设备的消息的反馈。 |
-| `{iot hub host name}/devicebound` | 发送云到设备的消息。 |
+| `{iot hub host name}/devicebound`  | 发送云到设备的消息。 |
 
 例如，使用名为 **registryRead** 的预创建共享访问策略生成的服务所创建的令牌将包含以下参数：
 
@@ -168,11 +187,11 @@ IoT 中心还允许设备使用 X.509 证书向 IoT 中心进行身份验证。I
 * 策略名称：`registryRead`，
 * 任何过期时间。
 
-    var endpoint ="myhub.azure-devices.net/devices";
-    var policyName = 'device';
-    var policyKey = '...';
+    var 终结点为“myhub.azure-devices.net/devices”；
+    var 策略名称为“device”；
+    var 策略密钥为“...”；
 
-    var token = generateSasToken(endpoint, policyKey, policyName, 60);
+    var 令牌为 generateSasToken(终结点, 策略密钥, 策略名称, 60)；
 
 授权读取所有设备标识权限的安全令牌是：
 
@@ -219,7 +238,7 @@ await registryManager.AddDeviceAsync(device);
 
 ## 在运行时操作期间使用 X.509 客户端证书
 
-[适用于 .NET 的 Azure IoT 设备 SDK][lnk-client-sdk]（版本 1.0.11+）支持使用 X.509 客户端证书。
+[用于 .NET 的 Azure IoT 设备 SDK][lnk-client-sdk]（版本 1.0.11+）支持使用 X.509 客户端证书。
 
 ### C# 支持
 
@@ -234,14 +253,14 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 ```
 
 [lnk-apis-sdks]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
-[lnk-guidance-security]: /documentation/articles/iot-hub-guidance/#customauth
-[lnk-devguide-security]: /documentation/articles/iot-hub-devguide/#security
-[lnk-azure-protocol-gateway]: /documentation/articles/iot-hub-protocol-gateway
+[lnk-guidance-security]: /documentation/articles/iot-hub/iot-hub-guidance/#customauth
+[lnk-devguide-security]: /documentation/articles/iot-hub/iot-hub-devguide/#security
+[lnk-azure-protocol-gateway]: /documentation/articles/iot-hub/iot-hub-protocol-gateway/
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdks/blob/master/tools/DeviceExplorer/doc/how_to_use_device_explorer.md
 
 [OpenSSL]: https://www.openssl.org/
-[Windows SelfSignedCertificate]: https://technet.microsoft.com/library/hh848633
+[Windows SelfSignedCertificate]: https://technet.microsoft.com/zh-cn/library/hh848633
 [lnk-service-sdk]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/service
 [lnk-client-sdk]: https://github.com/Azure/azure-iot-sdks/tree/master/csharp/device
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0822_2016-->

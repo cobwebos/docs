@@ -9,7 +9,7 @@
 
 <tags
    ms.service="active-directory"
-   ms.date="06/27/2016"
+   ms.date="08/04/2016"
    wacn.date=""/>
 
 # Azure AD Connect 同步：计划程序
@@ -56,11 +56,17 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 
 计划程序配置存储在 Azure AD 中。如果你设有暂存服务器，主服务器上的任何更改还将影响暂存服务器（IsStagingModeEnabled 除外）。
 
+### CustomizedSyncCycleInterval
+语法：`Set-ADSyncScheduler -CustomizedSyncCycleInterval d.HH:mm:ss` d - 天，HH - 小时，mm - 分钟，ss - 秒
+
+示例：`Set-ADSyncScheduler -CustomizedSyncCycleInterval 03:00:00` 将计划程序更改为每隔 3 小时运行一次。
+
+示例：`Set-ADSyncScheduler -CustomizedSyncCycleInterval 1.0:0:0` 将计划程序更改为每天运行一次。
+
 ## 启动计划程序
 默认情况下，计划程序将每 30 分钟运行一次。在某些情况下，你可能想要在已计划的周期之间运行同步周期，或者需要运行不同的类型。
 
-**增量同步周期** 
-增量同步周期包括以下步骤：
+**增量同步周期** 增量同步周期包括以下步骤：
 
 - 在所有连接器上增量导入
 - 在所有连接器上增量同步
@@ -68,12 +74,12 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 
 你可能会有必须立即同步的紧急更改，这就是为什么需要手动运行周期的原因。如果需要手动运行周期，则从 PowerShell 运行 `Start-ADSyncSyncCycle -PolicyType Delta`。
 
-**完全同步周期**
+**完全同步周期** 
 如果进行了以下任一配置更改，则需要运行完全同步周期（也称为Initial）：
 
 - 从源目录中添加了更多要导入的对象或属性
 - 更改了同步规则
-- 更改了[筛选设置](active-directory-aadconnectsync-configure-filtering.md)，因此应包含不同的对象数
+- 更改了[筛选设置](/documentation/articles/active-directory-aadconnectsync-configure-filtering/)，因此应包含不同的对象数
 
 如果进行了上述某项更改，则需要运行完全同步周期，以便同步引擎有机会重新合并连接器空间。完全同步周期包括以下步骤：
 
@@ -98,16 +104,16 @@ Azure AD Connect 同步会使用计划程序同步本地目录中发生的更改
 计划程序仍处于活动状态，并将在下次有机会时重新启动。
 
 ## 自定义计划程序
-本节中所述的 cmdlet 仅在内部版本 [1\.1.130.0](/documentation/articles/active-directory-aadconnect-version-history/#111300) 及更高版本中提供。
+本节中所述的 cmdlet 仅在内部版本 [1.1.130.0](/documentation/articles/active-directory-aadconnect-version-history/#111300) 及更高版本中提供。
 
 如果内置的计划程序不符合你的要求，则可以使用 PowerShell 计划连接器。
 
 ### Invoke-ADSyncRunProfile
 可以用这种方式为连接器启动配置文件：
 
-```
-Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name of profile"
-```
+
+	Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name of profile"
+
 
 用于[连接器名称](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-connectors/)和[运行配置文件名称](/documentation/articles/active-directory-aadconnectsync-service-manager-ui-connectors/#configure-run-profiles)的名称可以在[同步服务管理器 UI](/documentation/articles/active-directory-aadconnectsync-service-manager-ui/) 中找到。
 
@@ -129,11 +135,11 @@ Invoke-ADSyncRunProfile -ConnectorName "name of connector" -RunProfileName "name
 ### Get-ADSyncConnectorRunStatus
 还可以监视同步引擎以了解它是忙还是空闲。如果同步引擎处于空闲状态且未运行连接器，则此 cmdlet 将返回一个空结果。如果连接器正在运行，它将返回连接器的名称。
 
-```
-Get-ADSyncConnectorRunStatus
-```
 
-![连接器运行状态](./media/active-directory-aadconnectsync-feature-scheduler/getconnectorrunstatus.png)
+	Get-ADSyncConnectorRunStatus
+
+
+![连接器运行状态](./media/active-directory-aadconnectsync-feature-scheduler/getconnectorrunstatus.png) 
 在上图中，第一行来自同步引擎处于空闲的状态。第二行来自 Azure AD 连接器正在运行时。
 
 ## 计划程序和安装向导
@@ -144,4 +150,4 @@ Get-ADSyncConnectorRunStatus
 
 了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
 
-<!---HONumber=Mooncake_0801_2016-->
+<!---HONumber=Mooncake_0822_2016-->

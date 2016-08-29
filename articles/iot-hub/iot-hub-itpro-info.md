@@ -1,4 +1,4 @@
-e<properties
+<properties
  pageTitle="面向 IT 专业人员的 Azure IoT 中心信息 | Azure"
  description="帮助 IT 专业人员使用 Azure IoT 中心的信息，例如端口要求和安全背景信息。"
  services="iot-hub"
@@ -9,8 +9,9 @@ e<properties
 
 <tags
  ms.service="iot-hub"
- ms.date="04/29/2016"
- wacn.date=""/>
+ ms.date="08/09/2016"
+ wacn.date=""/>  
+
 
 # 配置和管理对 IoT 中心的访问权限
 
@@ -32,7 +33,7 @@ e<properties
 
 ## IoT 中心和安全性
 
-只有已注册到 IoT 中心的设备才能与该 IoT 中心通信。已注册的设备必须获得 *DeviceConnect* 权限。设备通过包含令牌（该令牌在设备发出的每个请求中封装设备唯一 ID）来标识自身，中心将检查令牌的有效性，以及设备是否未列入方块列表（*DeviceConnect* 权限已吊销）。
+只有已注册到 IoT 中心的设备才能与该 IoT 中心通信。已注册的设备必须获得 *DeviceConnect* 权限。设备通过包含令牌（该令牌在设备发出的每个请求中封装设备唯一 ID）来标识自身，中心将检查令牌的有效性，以及设备是否未列入方块列表（*DeviceConnect* 权限已吊销）。有关 IoT 中心支持的令牌的信息，请参阅[使用 IoT 中心安全令牌和 X.509 证书][lnk-tokens]
 
 对 IoT 中心内的其他管理终结点的访问权限也是通过一组权限进行控制的：*iothubowner*、*service*、*registryRead* 和 *registryReadWrite*。连接到 IoT 中心的所有客户端管理应用程序都必须包含具有相应权限的令牌。
 
@@ -47,12 +48,12 @@ e<properties
 - [使用 UI 示例探索设备管理][lnk-dmui]
 - [使用网关 SDK 模拟设备][lnk-gateway]
 
-[lnk-iothub]: /documentation/articles/iot-hub-what-is-iot-hub/
-[lnk-devguide]: /documentation/articles/iot-hub-devguide/#security
-[lnk-manage-portal]: /documentation/articles/iot-hub-manage-through-portal/
-[lnk-design]: /documentation/articles/iot-hub-guidance/
-[lnk-devguide]: /documentation/articles/iot-hub-devguide/
-[lnk-dmui]: /documentation/articles/iot-hub-device-management-ui-sample/
-[lnk-gateway]: /documentation/articles/iot-hub-linux-gateway-sdk-simulated-device/
+[lnk-devguide]: /documentation/articles/iot-hub/iot-hub-devguide/#security
 
-<!---HONumber=Mooncake_0725_2016-->
+[lnk-design]: /documentation/articles/iot-hub/iot-hub-guidance/
+[lnk-devguide]: /documentation/articles/iot-hub/iot-hub-devguide/
+[lnk-dmui]: /documentation/articles/iot-hub/iot-hub-device-management-ui-sample/
+[lnk-gateway]: /documentation/articles/iot-hub/iot-hub-linux-gateway-sdk-simulated-device/
+[lnk-tokens]: /documentation/articles/iot-hub/iot-hub-sas-tokens/
+
+<!---HONumber=Mooncake_0822_2016-->

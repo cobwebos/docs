@@ -3,15 +3,16 @@
 	description="用户通过自助组管理可以在 Azure Active Directory 中创建和管理安全组或 Office 365 组，还可以请求安全组或 Office 365 组成员身份。"
 	services="active-directory"
 	documentationCenter=""
-	authors="curtand"
-	manager="stevenpo"
+  	authors="curtand"
+	manager="femila"
 	editor=""
 	/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="06/14/2016"
-	wacn.date=""/>
+	ms.date="08/10/2016"
+	wacn.date=""/>  
+
 
 # 为自助组管理设置 Azure Active Directory
 
@@ -19,11 +20,9 @@
 
 自助组管理当前由两个基本方案组成：委派组管理和自助组管理。
 
-- **委托组管理**
-	以管理对公司所用 SaaS 应用程序的访问权限的管理员为例。由于有许多加入者和离开者，管理这些访问权限变得越来越繁琐，因此该管理员要求业务所有者创建一个新组。管理员将该应用程序的访问权限分配给新组，并添加到所有人员已访问该应用程序的组。然后，业务所有者可以添加更多用户，而这些用户将自动预配到该应用程序中。业务所有者无需等待管理员管理用户的访问权限。如果管理员将相同的权限授予不同业务组中的管理员，则该人员也可以管理自己的用户的访问权限。业务所有者和管理员都无法查看或管理彼此的用户。该管理员仍然可以看到有权访问该应用程序的所有用户，并可根据需要阻止访问权限。
+- **委托组管理** — 以管理对公司所用 SaaS 应用程序的访问权限的管理员为例。由于有许多加入者和离开者，管理这些访问权限变得越来越繁琐，因此该管理员要求业务所有者创建一个新组。管理员将该应用程序的访问权限分配给新组，并添加到所有人员已访问该应用程序的组。然后，业务所有者可以添加更多用户，而这些用户将自动预配到该应用程序中。业务所有者无需等待管理员管理用户的访问权限。如果管理员将相同的权限授予不同业务组中的管理员，则该人员也可以管理自己的用户的访问权限。业务所有者和管理员都无法查看或管理彼此的用户。该管理员仍然可以看到有权访问该应用程序的所有用户，并可根据需要阻止访问权限。
 
-- **自助组管理**
-	以下是该方案的一个示例：两个用户都拥有独立设置的 SharePoint Online 站点。他们都想为对方的团队提供对其站点的访问权限。若要实现此目的，他们可以在 Azure AD 中创建一个组，然后各自在 SharePoint Online 中选择该组并为该组提供对其站点的访问权限。当有人想要访问时，他们从访问面板发出请求，获得批准后便可自动访问这两个 SharePoint Online 站点。后来，他们中的一人决定，允许访问其站点的所有人也访问特定的 SaaS 应用程序。SaaS 应用程序的管理员可以将此应用程序的访问权限添加到 SharePoint Online 站点。从那以后，他批准的任何请求都将提供对这两个 SharePoint Online 站点以及该 SaaS 应用程序的访问权限。
+- **自助组管理** — 以下是该方案的一个示例：两个用户都拥有独立设置的 SharePoint Online 站点。他们都想为对方的团队提供对其站点的访问权限。若要实现此目的，他们可以在 Azure AD 中创建一个组，然后各自在 SharePoint Online 中选择该组并为该组提供对其站点的访问权限。当有人想要访问时，他们从访问面板发出请求，获得批准后便可自动访问这两个 SharePoint Online 站点。后来，他们中的一人决定，允许访问其站点的所有人也访问特定的 SaaS 应用程序。SaaS 应用程序的管理员可以将此应用程序的访问权限添加到 SharePoint Online 站点。从那以后，他批准的任何请求都将提供对这两个 SharePoint Online 站点以及该 SaaS 应用程序的访问权限。
 
 ## 为最终用户启用自助组管理功能
 
@@ -43,11 +42,11 @@
 
 这些文章提供了有关 Azure Active Directory 的更多信息。
 
-* [使用 Azure Active Directory 组管理对资源的访问](/documentation/articles/active-directory-manage-groups)
+* [使用 Azure Active Directory 组管理对资源的访问](/documentation/articles/active-directory-manage-groups/)
 
-* [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-* [什么是 Azure Active Directory？](/documentation/articles/active-directory-whatis)
+* [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index/)
+* [什么是 Azure Active Directory？](/documentation/articles/active-directory-whatis/)
 
-* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
+* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0822_2016-->

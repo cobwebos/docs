@@ -9,13 +9,14 @@
    tags="azure-sql-data-warehouse"/>
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="04/29/2016"
-   wacn.date=""/>
+   ms.date="08/08/2016"
+   wacn.date=""/>  
 
-# 使用 Azure 数据工厂加载数据
+
+# 使用 Azure 数据工厂加载数据 
 
 > [AZURE.SELECTOR]
-- [数据工厂][]
+- [Data Factory][]
 - [PolyBase][]
 - [BCP][]
 
@@ -37,9 +38,9 @@
 
    + **Azure 存储 Blob**：此教程使用 Azure 存储 Blob 作为 Azure 数据工厂管道的数据源，因此，你需要拥有一个可用于存储示例数据的 Azure 存储 Blob。如果还没有，请学习如何[创建一个存储帐户][]。
 
-   + **SQL 数据仓库**：此教程将 Azure 存储 Blob 的数据移动到 SQL 数据仓库，因此需要一个加载有 AdventureWorksDW 示例数据的联机数据仓库。如果还没有数据仓库，请学习如何[预配一个][Create a SQL Data Warehouse]。如果拥有数据仓库但未用示例数据进行预配，你可以[手动加载][Load sample data into SQL Data Warehouse]。
+   + **SQL 数据仓库**：此教程将 Azure 存储 Blob 的数据移动到 SQL 数据仓库，因此需要一个加载有 AdventureWorksDW 示例数据的联机数据仓库。如果还没有数据仓库，请学习如何[预配一个][Create a SQL Data Warehouse]。如果拥有数据仓库但未用示例数据进行预配，可以[手动加载][Load sample data into SQL Data Warehouse]。
 
-   + **Azure 数据工厂**：Azure 数据工厂将完成实际加载，因此你需要有一个可用于构建数据移动管道的 Azure 数据工厂。如果还没有，请在 [Azure 数据工厂入门（数据工厂编辑器）][]的步骤 1 中学习如何创建一个 Azure 数据工厂。
+   + **Azure 数据工厂**：Azure 数据工厂将完成实际加载，因此需要有一个可用于构建数据移动管道的 Azure 数据工厂。如果还没有，请在 [Azure 数据工厂入门（数据工厂编辑器）][]的步骤 1 中学习如何创建一个 Azure 数据工厂。
 
    + **AZCopy**：你需要 AZCopy 以便将示例数据从你的本地客户端复制到你的 Azure 存储 Blob。有关安装说明，请参阅 [AZCopy 文档][]。
 
@@ -144,7 +145,7 @@
 
 ## 步骤 3：创建并运行管道
 
-最后，我们将在 Azure 数据工厂中设置并运行管道。此操作将完成实际的数据移动。可以在[此处](/documentation/articles/data-factory-azure-sql-data-warehouse-connector)找到可以使用 SQL 数据仓库和 Azure 数据工厂完成的操作的完整视图。
+最后，我们将在 Azure 数据工厂中设置并运行管道。此操作将完成实际的数据移动。可以在[此处](/documentation/articles/data-factory-azure-sql-data-warehouse-connector/)找到可以使用 SQL 数据仓库和 Azure 数据工厂完成的操作的完整视图。
 
 在“创作和部署”部分中，依次单击“更多命令”和“新建管道”。创建管道后，可以使用以下代码将数据传送到数据仓库：
 
@@ -201,7 +202,7 @@
 要了解详细信息，请先查看：
 
 - [Azure 数据工厂学习路径][]。
-- [Azure SQL 数据仓库连接器][]。这是有关将 Azure 数据工厂和 Azure SQL 数据仓库配合使用的核心参考主题。
+- [Azure SQL 数据仓库连接器][]。这是将 Azure 数据工厂和 Azure SQL 数据仓库配合使用的核心参考主题。
 
 
 这些主题提供有关 Azure 数据工厂的详细信息。它们讨论 Azure SQL 数据库或 HDinsight，但该信息也适用于 Azure SQL 数据仓库。
@@ -213,26 +214,27 @@
 <!--Image references-->
 
 <!--Article references-->
-[AZCopy 文档]: /documentation/articles/storage-use-azcopy
-[Azure SQL 数据仓库连接器]: /documentation/articles/data-factory-azure-sql-data-warehouse-connector
-[BCP]: /documentation/articles/sql-data-warehouse-load-with-bcp
-[Create a SQL Data Warehouse]: /documentation/articles/sql-data-warehouse-get-started-provision
+[AZCopy 文档]: /documentation/articles/storage-use-azcopy/
+[Azure SQL 数据仓库连接器]: /documentation/articles/data-factory-azure-sql-data-warehouse-connector/
+[BCP]: /documentation/articles/sql-data-warehouse-load-with-bcp/
+[Create a SQL Data Warehouse]: /documentation/articles/sql-data-warehouse-get-started-provision/
 [创建一个存储帐户]: /documentation/articles//storage-create-storage-account.md#create-a-storage-account
-[数据工厂]: /documentation/articles/sql-data-warehouse-get-started-load-with-azure-data-factory
-[Azure 数据工厂入门（数据工厂编辑器）]: /documentation/articles/data-factory-build-your-first-pipeline-using-editor
-[Azure 数据工厂简介]: /documentation/articles/data-factory-introduction
-[Load sample data into SQL Data Warehouse]: /documentation/articles/sql-data-warehouse-get-started-manually-load-samples
-[Move data to and from Azure SQL Data Warehouse using Azure Data Factory]: /documentation/articles/data-factory-azure-sql-data-warehouse-connector
-[PolyBase]: /documentation/articles/sql-data-warehouse-get-started-load-with-polybase
-[实际方案教程]: /documentation/articles/data-factory-tutorial
-[教程：将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库]: /documentation/articles/data-factory-get-started
-[教程：Azure 数据工厂入门]: /documentation/articles/data-factory-build-your-first-pipeline
+[Data Factory]: /documentation/articles/sql-data-warehouse-get-started-load-with-azure-data-factory/
+[Azure 数据工厂入门（数据工厂编辑器）]: /documentation/articles/data-factory-build-your-first-pipeline-using-editor/
+[Azure 数据工厂简介]: /documentation/articles/data-factory-introduction/
+[Load sample data into SQL Data Warehouse]: /documentation/articles/sql-data-warehouse-get-started-manually-load-samples/
+[Move data to and from Azure SQL Data Warehouse using Azure Data Factory]: /documentation/articles/data-factory-azure-sql-data-warehouse-connector/
+[PolyBase]: /documentation/articles/sql-data-warehouse-get-started-load-with-polybase/
+[实际方案教程]: /documentation/articles/data-factory-tutorial/
+[教程：将数据从 Azure 存储 Blob 复制到 Azure SQL 数据库]: /documentation/articles/data-factory-get-started/
+[教程：Azure 数据工厂入门]: /documentation/articles/data-factory-build-your-first-pipeline/
 
 <!--MSDN references-->
 
 <!--Other Web references-->
+
 [Azure 数据工厂学习路径]: https://azure.microsoft.com/documentation/learning-paths/data-factory
 [Azure 门户]: https://portal.azure.com
 [下载示例数据]: https://migrhoststorage.blob.core.windows.net/adfsample/FactInternetSales.csv
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0822_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/12/2016"
+	ms.date="08/08/2016"
 	wacn.date=""/>
 
 
@@ -87,11 +87,11 @@
 
 请使用以下步骤来删除 Microsoft Online 信任，然后更新原始域。
 
-2.  在 AD FS 联合服务器上，打开“AD FS 管理”。 
+2.  在 AD FS 联合服务器上，打开“AD FS 管理”。
 2.  展开左侧的“信任关系”和“信赖方信任”
 3.  删除右侧的“Microsoft Office 365 标识平台”项。
 ![删除 Microsoft Online](./media/active-directory-multiple-domains/trust4.png)
-1.  在已安装[适用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx)的计算机上运行以下命令：`$cred=Get-Credential`。  
+1.  在已安装[适用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx)的计算机上运行以下命令：`$cred=Get-Credential`。
 2.  输入要联合的 Azure AD 域的全局管理员用户名和密码
 2.  在 PowerShell 中输入 `Connect-MsolService -Credential $cred`
 4.  在 PowerShell 中输入 `Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain`。这是针对原始域输入的。因此，使用上述域后，命令将是：`Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
@@ -99,7 +99,7 @@
 
 使用以下步骤通过 PowerShell 添加新的顶级域
 
-1.  在已安装[适用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx)的计算机上运行以下命令：`$cred=Get-Credential`。  
+1.  在已安装[适用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx)的计算机上运行以下命令：`$cred=Get-Credential`。
 2.  输入要联合的 Azure AD 域的全局管理员用户名和密码
 2.  在 PowerShell 中输入 `Connect-MsolService -Credential $cred`
 3.  在 PowerShell 中输入 `New-MsolFederatedDomain –SupportMultipleDomain –DomainName`
@@ -151,8 +151,8 @@
     
 	    `c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^((.*)([.|@]))?(?<domain>[^.]*[.].*)$", "http://${domain}/adfs/services/trust/"));`
 	
-![替换声明](./media/active-directory-multiple-domains/sub2.png)
+![替换声明](./media/active-directory-multiple-domains/sub2.png)  
+
 5.	单击“确定”。单击“应用”。单击“确定”。关闭“AD FS 管理”。
 
-
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0822_2016-->

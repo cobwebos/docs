@@ -8,9 +8,9 @@
 	authors="steved0x"
 	manager="douge"
 	editor="tysonn" />
-<tags
+<tags 
 	ms.service="cache"
-	ms.date="07/07/2016"
+	ms.date="07/25/2016"
 	wacn.date=""/>
 
 # 如何配置 Azure Redis 缓存
@@ -132,8 +132,7 @@ Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
 
 有关详细信息，请参阅 [Redis 密钥空间通知](http://redis.io/topics/notifications)。有关示例代码，请参阅 [Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 示例中的 [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) 文件。
 
-<a name="recommendations">
-## Redis 缓存顾问
+## <a name="recommendations"></a>Redis 缓存顾问
 
 “建议”边栏选项卡会显示适用于你的缓存的建议。在正常操作期间，不会显示任何建议。
 
@@ -178,8 +177,7 @@ Azure Redis 缓存在“设置”边栏选项卡上提供以下设置。
 
 ![Redis 缓存定价层](./media/cache-configure/pricing-tier.png)
 
-<a name="cluster-size">
-### Redis 群集大小
+### <a name="cluster-size"></a>Redis 群集大小
 
 单击“(预览) Redis 群集大小”可更改正在运行并且已启用群集的高级缓存的群集大小。
 
@@ -315,7 +313,8 @@ Azure 门户中的“用户”部分对基于角色的访问控制 (RBAC) 提供
 
 >[AZURE.NOTE] 无法使用 `StackExchange.Redis.IServer.ConfigSet` 方法更改本部分中的设置。如果使用此部分中的任一命令调用此方法，将引发如下异常：
 >
->`StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
+>`StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`  
+
 >  
 >任何可配置的值（例如 **max-memory-policy**）都可以通过 Azure 门户或命令行管理工具（例如 Azure CLI 或 PowerShell）进行配置。
 
@@ -329,8 +328,7 @@ Azure 门户中的“用户”部分对基于角色的访问控制 (RBAC) 提供
 |lua-event-limit|500|这是脚本事件队列的最大大小。|
 |client-output-buffer-limit normalclient-output-buffer-limit pubsub|0 0 032mb 8mb 60|客户端输出缓冲区限制可用于强制断开处于某种原因（一个常见原因是发布/订阅客户端处理消息的速度慢于发布者提供消息的速度）而未从服务器快速读取数据的客户端的连接。有关详细信息，请参阅 [http://redis.io/topics/clients](http://redis.io/topics/clients)。|
 
-<a name="databases"></a> 
-<sup>1</sup>每个 Azure Redis 缓存定价层的 `databases` 限制是不同的，可以在创建缓存时进行设置。如果在创建缓存期间未指定 `databases` 设置，则默认值为 16。
+<a name="databases"></a> <sup>1</sup>每个 Azure Redis 缓存定价层的 `databases` 限制是不同的，可以在创建缓存时进行设置。如果在创建缓存期间未指定 `databases` 设置，则默认值为 16。
 
 -	基本缓存和标准缓存
 	-	C0 (250 MB) 缓存 - 最多支持 16 个数据库
@@ -351,8 +349,7 @@ Azure 门户中的“用户”部分对基于角色的访问控制 (RBAC) 提供
 >[AZURE.NOTE] `databases` 设置只能在创建缓存期间配置，并且只能使用 PowerShell、CLI 或其他管理客户端进行配置。有关在创建缓存期间使用 PowerShell 配置 `databases` 的示例，请参阅 [New-AzureRmRedisCache](/documentation/articles/cache-howto-manage-redis-cache-powershell/#databases)。
 
 
-<a name="maxclients"></a> 
-<sup>2</sup>`maxclients` 对于每个 Azure Redis 缓存定价层都是不同的。
+<a name="maxclients"></a> <sup>2</sup>`maxclients` 对于每个 Azure Redis 缓存定价层都是不同的。
 
 -	基本缓存和标准缓存
 	-	C0 (250 MB) 缓存 - 最多支持 256 个连接
@@ -388,10 +385,11 @@ Azure 门户中的“用户”部分对基于角色的访问控制 (RBAC) 提供
 
 可以使用 **Redis 控制台**向 Azure Redis 缓存实例安全地发布命令，此操作适用于标准缓存和高级缓存。
 
->[AZURE.IMPORTANT] Redis 控制台无法使用 VNET 或群集。
+>[AZURE.IMPORTANT] Redis 控制台无法使用 VNET、群集和数据库（数据库 0 除外）。
 >
 >-	[VNET](/documentation/articles/cache-how-to-premium-vnet/) - 如果缓存是 VNET 的一部分，则只有 VNET 中的客户端可以访问缓存。Redis 控制台使用的 redis cli.exe 客户端承载于不属于 VNET 的 VM 上，因此该控制台无法连接到你的缓存。
 >-	[群集](/documentation/articles/cache-how-to-premium-clustering/) - Redis 控制台使用目前不支持群集的 redis-cli.exe 客户端。GitHub 上 Redis 存储库的[不稳定](http://redis.io/download)分支中的 redis-cli 实用程序在使用 `-c` 开关启动时，会实现基本支持。有关详细信息，请参阅 [http://redis.io](http://redis.io) 上的 [Redis 群集教程](http://redis.io/topics/cluster-tutorial)中的[操作群集](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)。
+>-	每次提交命令时，Redis 控制台都会新建一个与数据库 0 的连接。不能使用 `SELECT` 命令选择其他数据库，因为每当有命令时数据库都将重置为 0。有关运行 Redis 命令（包括更改为不同的数据库）的信息，请参阅 [如何运行 Redis 命令？](/documentation/articles/cache-faq/#how-can-i-run-redis-commands)
 
 要访问 Redis 控制台，则从“Redis 缓存”边栏选项卡单击“控制台”。
 
@@ -417,4 +415,4 @@ Azure 门户中的“用户”部分对基于角色的访问控制 (RBAC) 提供
 ## 后续步骤
 -	有关使用 Redis 命令的详细信息，请参阅[如何运行 Redis 命令？](/documentation/articles/cache-faq/#how-can-i-run-redis-commands)
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0822_2016-->

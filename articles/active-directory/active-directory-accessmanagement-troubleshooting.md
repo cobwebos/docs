@@ -5,13 +5,13 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""
 	/>
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="06/14/2016"
+	ms.date="08/10/2016"
 	wacn.date=""/>
 
 
@@ -25,12 +25,10 @@
 
 这些文章提供了有关 Azure Active Directory 的更多信息。
 
-* [使用 Azure Active Directory 组管理对资源的访问](/documentation/articles/active-directory-manage-groups)
-* [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-* [什么是 Azure Active Directory？](/documentation/articles/active-directory-whatis)
+* [使用 Azure Active Directory 组管理对资源的访问](/documentation/articles/active-directory-manage-groups/)
+* [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index/)
+* [什么是 Azure Active Directory？](/documentation/articles/active-directory-whatis/)
 
-* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
+* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
 
-
-
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0822_2016-->

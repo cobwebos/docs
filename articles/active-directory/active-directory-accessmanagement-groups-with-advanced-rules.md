@@ -5,12 +5,12 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="curtand"
-	manager="stevenpo"
+	manager="femila"
 	editor=""/>
 
 <tags
 	ms.service="active-directory" 
-	ms.date="06/14/2016"
+	ms.date="08/15/2016"
 	wacn.date=""/>
 
 
@@ -20,7 +20,7 @@
 
 ## 创建高级规则
 
-1. 在 [Azure 经典门户](https://manage.windowsazure.cn)中，选择“Active Directory”，然后打开你的组织的目录。
+1. 在 Azure 经典门户中，选择“Active Directory”，然后打开你的组织的目录。[](https://manage.windowsazure.cn)
 
 2. 选择“组”选项卡，然后打开要编辑的组。
 
@@ -33,8 +33,7 @@
 - 二进制运算符
 - 右侧常量
 
-完整的高级规则如下所示：(leftParameter binaryOperator "RightConstant")，其中，左括号和右括号是整个二进制表达式所必需的，双引号是右侧常量所必需的，左侧参数的语法为 user.property。一个高级规则可能包含由 -and、-or 和 -not 逻辑运算符分隔的多个二进制表达式。
-下面是正确构造的高级规则的示例：
+完整的高级规则如下所示：(leftParameter binaryOperator "RightConstant")，其中，左括号和右括号是整个二进制表达式所必需的，双引号是右侧常量所必需的，左侧参数的语法为 user.property。一个高级规则可能包含由 -and、-or 和 -not 逻辑运算符分隔的多个二进制表达式。下面是正确构造的高级规则的示例：
 
 - (user.department -eq "Sales") -or (user.department -eq "Marketing")
 - (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
@@ -57,7 +56,7 @@
 | 开头不为 | -notStartsWith |
 | 开头为 | -startsWith |
 | 不包含 | -notContains |
-| Contains | -contains |
+| 包含 | -contains |
 | 不匹配 | -notMatch |
 | 匹配 | -match |
 
@@ -134,7 +133,7 @@
 | passwordPolicies | None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword | (user.passwordPolicies -eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName | 任意字符串值或 $null | (user.physicalDeliveryOfficeName -eq "value") |
 | postalCode | 任意字符串值或 $null | (user.postalCode -eq "value") |
-| preferredLanguage | ISO 639-1 代码 | (user.preferredLanguage -eq "zh-CN") |
+| preferredLanguage | ISO 639-1 代码 | (user.preferredLanguage -eq "en-US") |
 | sipProxyAddress | 任意字符串值或 $null | (user.sipProxyAddress -eq "value") |
 | state | 任意字符串值或 $null | (user.state -eq "value") |
 | streetAddress | 任意字符串值或 $null | (user.streetAddress -eq "value") |
@@ -165,9 +164,10 @@
 
 (user.extensionAttribute15 -eq "Marketing")
 
-自定义属性从本地 Windows Server AD 或从连接的 SaaS 应用程序同步，采用“user.extension_[GUID]\__[Attribute]”格式，其中，[GUID] 是在 AAD 中创建该属性的应用程序在 AAD 中的唯一标识符，[Attribute] 是创建的属性的名称。下面是使用自定义属性的规则示例：
+自定义属性从本地 Windows Server AD 或从连接的 SaaS 应用程序同步，采用“user.extension_[GUID]\__[Attribute]”格式，其中，[GUID] 是在 AAD 中创建该属性的应用程序在 AAD 中的唯一标识符，[Attribute] 是创建的属性的名称。
+下面是使用自定义属性的规则示例：
 
-user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
+user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 可以通过使用图形资源管理器查询用户的属性，以及通过搜索属性名称来查找自定义属性名称。
 
@@ -193,15 +193,32 @@ user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 3. 保存此规则时，满足该规则的所有用户将会加入为该组的成员。最初填充该组可能需要几分钟时间。
 
 
+## 使用属性创建设备对象的规则
+
+还可以创建一个规则来为组中的成员身份选择设备对象。可以使用以下设备属性：
+
+| 属性 | 允许的值 | 使用情况 |
+|----------------------|---------------------------------|------------------------------------------------------|
+| displayName | 任意字符串值 | (device.displayName -eq "Rob Iphone”) |
+| deviceOSType | 任意字符串值 | (device.deviceOSType -eq "IOS") |
+| deviceOSVersion | 任意字符串值 | (device.OSVersion -eq "9.1") |
+| isDirSynced | true false null | (device.isDirSynced -eq "true") |
+| isManaged | true false null | (device.isManaged -eq "false") |
+| isCompliant | true false null | (device.isCompliant -eq "true") |
+
+> [AZURE.NOTE]
+无法在 Azure 经典门户中使用“简单规则”下拉列表创建这些设备规则。
+
+
 ## 其他信息
 这些文章提供了有关 Azure Active Directory 的更多信息。
 
-* [组的动态成员身份疑难解答](/documentation/articles/active-directory-accessmanagement-troubleshooting)
+* [组的动态成员身份疑难解答](/documentation/articles/active-directory-accessmanagement-troubleshooting/)
 
-* [使用 Azure Active Directory 组管理对资源的访问](/documentation/articles/active-directory-manage-groups)
+* [使用 Azure Active Directory 组管理对资源的访问](/documentation/articles/active-directory-manage-groups/)
 
-* [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index)
+* [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index/)
 
-* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect)
+* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0822_2016-->

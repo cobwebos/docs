@@ -9,7 +9,7 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="01/20/2016"
+   ms.date="08/10/2016"
    wacn.date=""/>
 
 # 服务状态
@@ -17,7 +17,7 @@
 
 例如，请考虑一个简单的计算器服务。此服务需要两个数字并返回总和。这是没有任何数据与之关联的纯无状态服务。
 
-现在，考虑相同的计算器，但除了计算总和，它还有方法返回上次所计算的总和。此服务现在有状态 -- 它包含写入的状态（计算新的总和时）和读取的状态（返回上次计算出的总和时）。
+现在，考虑相同的计算器，但除了计算总和，它还有方法返回上次所计算的总和。此服务现在有状态 — 它包含写入的状态（计算新的总和时）和读取的状态（返回上次计算出的总和时）。
 
 在 Azure Service Fabric 中，第一个服务称为无状态服务。第二个服务则称为有状态服务。
 
@@ -30,11 +30,11 @@
 
 有关 Service Fabric 概念的详细信息，请参阅以下内容：
 
-- [Service Fabric 服务的可用性](/documentation/articles/service-fabric-availability-services)
+- [Service Fabric 服务的可用性](/documentation/articles/service-fabric-availability-services/)
 
-- [Service Fabric 服务的可伸缩性](/documentation/articles/service-fabric-concepts-scalability)
+- [Service Fabric 服务的可伸缩性](/documentation/articles/service-fabric-concepts-scalability/)
 
-- [Service Fabric 服务分区](/documentation/articles/service-fabric-concepts-partitioning)
+- [Service Fabric 服务分区](/documentation/articles/service-fabric-concepts-partitioning/)
  
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0822_2016-->

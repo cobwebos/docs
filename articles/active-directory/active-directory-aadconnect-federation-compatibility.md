@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="07/14/2016"
+	ms.date="08/08/2016"
 	wacn.date=""/>
 
 # Azure AD 联合身份验证兼容性列表
@@ -18,7 +18,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 对于投资了非 Microsoft 联合解决方案的组织，本主题包含有关通过以下“Azure Active Directory 联合兼容性列表”中所列的非 Microsoft 标识提供者，为使用 Microsoft 联机服务的 Windows Server Active Directory 用户配置单一登录的指导。
 
 
-![](./media/active-directory-aadconnect-federation-compatibility/oxford2.jpg)   
+![](./media/active-directory-aadconnect-federation-compatibility/oxford2.jpg) 
 [Oxford Computer Group](http://oxfordcomputergroup.com/) 作为代表 Microsoft 的第三方，利用非 Microsoft 标识提供者针对 Azure Active Directory 的一组常见用例测试了这些单一登录体验。
 
 有关如何获取此处列出的第三方标识提供者的信息，请通过 [idp@oxfordcomputergroup.com](mailto:idp@oxfordcomputergroup.com) 与 Oxford Computer Group 联系。
@@ -33,7 +33,7 @@ Azure Active Directory 为 Office 365 和其他 Microsoft Online 服务提供单
 - [Optimal IDM Virtual Identity Server Federation Services](#optimal-idm-virtual-identity-server-federation-services)
 - [PingFederate 6.11](#pingfederate-611)
 - [PingFederate 7.2](#pingfederate-72)
-- [PingFederate 8.x](#pingfederate-8.x)
+- [PingFederate 8.x](#pingfederate-8x)
 - [Centrify](#centrify)
 - [IBM Tivoli Federated Identity Manager 6.2.2](#ibm-tivoli-federated-identity-manager-622)
 - [SecureAuth IdP 7.2.0](#secureauth-idp-720)
@@ -67,9 +67,9 @@ Azure Active Directory 可以通过与本地 Active-Directory 联合，或者在
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） | 支持 |无|
 |使用 ADAL 的现代应用程序，例如 Office 2016| 支持|无|
 
-有关将 Azure Active Directory 与 AD FS 配合使用的详细信息，请参阅 [Active Directory Federation Services (ADFS)（Active Directory 联合身份验证服务 (ADFS)](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs)
+有关将 Azure Active Directory 与 AD FS 配合使用的详细信息，请参阅 [Active Directory 联合身份验证服务 (ADFS)](/documentation/articles/active-directory-aadconnect-get-started-custom/#configuring-federation-with-ad-fs)
 
-有关将 Azure Active Directory 与密码同步配合使用的详细信息，请参阅 [Azure AD Connect](active-directory-aadconnect.md)。
+有关将 Azure Active Directory 与密码同步配合使用的详细信息，请参阅 [Azure AD Connect](/documentation/articles/active-directory-aadconnect/)。
 
 
 ## Optimal IDM Virtual Identity Server Federation Services 
@@ -82,7 +82,7 @@ Optimal IDM Virtual Identity Server Federation Services 可以对位于客户本
 | --------- | --------- |--------- |
 | 基于 Web 的客户端（如 Exchange Web Access 和 SharePoint Online） | 支持 |无|
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） | 支持 |Windows 集成身份验证|
-| 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） | 支持 |有关客户端访问策略的详细信息，请参阅 [Limiting Access to Office 365 Services Based on the Location of the Client（基于客户端位置限制其对 Office 365 服务的访问权限）](https://technet.microsoft.com/library/hh526961.aspx)。|
+| 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） | 支持 |有关客户端访问策略的详细信息，请参阅 [Limiting Access to Office 365 Services Based on the Location of the Client](https://technet.microsoft.com/library/hh526961.aspx)（基于客户端位置限制其对 Office 365 服务的访问权限）。|
 
 
 
@@ -154,7 +154,7 @@ Centrify 帮助提供针对 Office 365 的联合单一登录体验，而无需�
 | 富客户端应用程序（如 Lync、Office Subscription、CRM） | 支持 |无|
 | 多重格式电子邮件客户端（如 Outlook 和 ActiveSync） | 支持 |无|
 
-有关 IBM Tivoli Federated Identity Manager 的详细信息，请参阅 [IBM Security Access Manager for Microsoft Applications（Microsoft 应用程序的 IBM 安全访问管理）](http://www-01.ibm.com/support/docview.wss?uid=swg24029517)。
+有关 IBM Tivoli Federated Identity Manager 的详细信息，请参阅 [IBM Security Access Manager for Microsoft Applications](http://www-01.ibm.com/support/docview.wss?uid=swg24029517)（Microsoft 应用程序的 IBM 安全访问管理）。
 
 ## SecureAuth IdP 7.2.0 
 SecureAuth IdP 7.2.0 实施广泛使用的 WS 联合/WS 信任身份标准，以提供单一登录体验和属性交换框架。
@@ -319,7 +319,7 @@ Dell One Identity Cloud Access Manager 实施广泛使用的 WS 联合标识标�
 
 有关 Dell One Identity Cloud Access Manager 的详细信息，请参阅 [Dell One Identity Cloud Access Manager。](http://software.dell.com/products/cloud-access-manager)
 
- 有关如何配置此 STS 从而为你的 Office 365 用户提供单一登录体验的说明，请参阅 [Configure Office 365 Users（配置 Office 365 用户）](http://documents.software.dell.com/dell-one-identity-cloud-access-manager/7.1/how-to-configure-microsoft-office-365)。
+ 有关如何配置此 STS 从而为你的 Office 365 用户提供单一登录体验的说明，请参阅 [Configure Office 365 Users](http://documents.software.dell.com/dell-one-identity-cloud-access-manager/7.1/how-to-configure-microsoft-office-365)（配置 Office 365 用户）。
 
 ## AuthAnvil Single Sign On 4.5 
 AuthAnvil Single Sign On 4.5 实施广泛使用的 WS 联合标识标准以提供单一登录和属性交换框架。
@@ -335,4 +335,4 @@ AuthAnvil Single Sign On 4.5 实施广泛使用的 WS 联合标识标准以提�
 
 有关详细信息，请参阅 [AuthAnvil 单一登录。](https://help.scorpionsoft.com/entries/26538603-How-can-I-Configure-Single-Sign-On-for-Office-365-)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0822_2016-->

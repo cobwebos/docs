@@ -9,14 +9,22 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="07/14/2016" 
-	wacn.date=""/>
+	ms.date="08/08/2016" 
+	wacn.date=""/>  
+
 
 # Azure AD Connect Health：版本发布历史记录
 
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。
 
 本文旨在帮助你跟踪已发布的版本。
+
+
+## 2016 年 7 月
+
+**新的预览功能：**
+
+- [用于 AD DS 的 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)。
 
 
 ## 2016 年 1 月
@@ -82,4 +90,4 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 ## 后续步骤
 有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](/documentation/articles/active-directory-aadconnect-health/)。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0822_2016-->

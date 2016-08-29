@@ -4,12 +4,12 @@
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
-   manager="coreysa"
+   manager="timlt"
    editor=""/>
 
 <tags
    ms.service="service-fabric"
-   ms.date="04/26/2016"
+   ms.date="07/19/2016"
    wacn.date=""/>
 
 # 管理多个环境的应用程序参数
@@ -57,7 +57,7 @@ DefaultValue 属性指定当给定的环境缺少更具体的参数时所要使�
 
 ### 每个环境的服务配置设置
 
-服务可以使用 [Service Fabric 应用程序模型](/documentation/articles/service-fabric-application-model)加入配置包，其中包含可在运行时读取的自定义键-值对。也可以通过在应用程序清单中指定 `ConfigOverride`，按环境区分这些设置的值。
+服务可以使用 [Service Fabric 应用程序模型](/documentation/articles/service-fabric-application-model/)加入配置包，其中包含可在运行时读取的自定义键值对。也可以通过在应用程序清单中指定 `ConfigOverride`，按环境区分这些设置的值。
 
 假设`Stateful1`服务的 Config\\Settings.xml 文件中存在以下设置：
 
@@ -99,7 +99,8 @@ Service Fabric 应用程序项目可以包含一个或多个应用程序参数�
 
 默认情况下，新应用程序包含两个应用程序参数文件，分别名为 Local.xml 和 Cloud.xml：
 
-![解决方案资源管理器中的应用程序参数文件][app-parameters-solution-explorer]
+![解决方案资源管理器中的应用程序参数文件][app-parameters-solution-explorer]  
+
 
 若要创建新的参数文件，只需复制并粘贴现有参数文件并为它指定新名称。
 
@@ -123,11 +124,11 @@ Service Fabric 应用程序项目可以包含一个或多个应用程序参数�
 
 ## 后续步骤
 
-若要深入了解本主题中所述的某些核心概念，请参阅 [Service Fabric 技术概述](/documentation/articles/service-fabric-technical-overview)。有关 Visual Studio 中其他可用应用管理功能的信息，请参阅[在 Visual Studio 中管理 Service Fabric 应用程序](/documentation/articles/service-fabric-manage-application-in-visual-studio)。
+若要深入了解本主题中所述的某些核心概念，请参阅 [Service Fabric 技术概述](/documentation/articles/service-fabric-technical-overview/)。有关 Visual Studio 中其他可用应用管理功能的信息，请参阅[在 Visual Studio 中管理 Service Fabric 应用程序](/documentation/articles/service-fabric-manage-application-in-visual-studio/)。
 
 <!-- Image references -->
 
 [publishdialog]: ./media/service-fabric-manage-multiple-environment-app-configuration/publish-dialog-choose-app-config.png
 [app-parameters-solution-explorer]: ./media/service-fabric-manage-multiple-environment-app-configuration/app-parameters-in-solution-explorer.png
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0822_2016-->

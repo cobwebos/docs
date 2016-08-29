@@ -10,8 +10,9 @@
 
 <tags 
 	ms.service="active-directory" 
-	ms.date="06/21/2016"
-	wacn.date=""/>
+	ms.date="08/10/2016"
+	wacn.date=""/>  
+
 
 # Azure Active Directory 中的专用组
 
@@ -41,15 +42,15 @@
 
 				(user.userType -ne "Guest")
 
-若要了解如何为动态组成员身份创建*高级*规则（可包含多个比较条件的规则），请参阅[使用属性创建高级规则](/documentation/articles/active-directory-accessmanagement-groups-with-advanced-rules/)。
+若要了解如何为动态组成员身份创建高级规则（可包含多个比较条件的规则），请参阅[使用属性创建高级规则](/documentation/articles/active-directory-accessmanagement-groups-with-advanced-rules/)。
 
 
 这些文章提供了有关 Azure Active Directory 的更多信息。
 
 * [使用 Azure Active Directory 组管理对资源的访问](/documentation/articles/active-directory-manage-groups/)
-* [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
+* [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index/)
 * [什么是 Azure Active Directory？](/documentation/articles/active-directory-whatis/)
 
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
 
-<!---HONumber=Mooncake_0801_2016-->
+<!---HONumber=Mooncake_0822_2016-->

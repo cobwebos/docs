@@ -9,14 +9,14 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="06/30/2016"
+   ms.date="07/29/2016"
    wacn.date=""/>
 
 # Azure SQL 数据仓库最佳实践
 
 本文包含一系列最佳实践，可让你从 Azure SQL 数据仓库获得最佳价格/性能比。文章中有些概念非常基本且很容易解释，而有些概念则更高级，本文中只涉及了表面。本文的目的是要提供一些基本指导，以及让对创建数据仓库时的一些重要考虑因素有所认知。每部分都将介绍一个概念，并提供哪里可以阅读深度介绍的详细文章。
 
-如果你刚开始使用 Azure SQL 数据仓库，千万别让本文吓到。主题的顺序主要按照重要性排列。如果你将重点放在前三个主题，一般不会有什么问题。当你更熟悉 SQL 数据仓库且能运用自如，请再回来看看其他主题。融会贯通不需要很长时间。一开始可能将有点不知所措，但经过一段时间和经验累积，这些主题对你来说将变得很基本。
+如果你刚开始使用 Azure SQL 数据仓库，千万别让本文吓到。主题的顺序主要按照重要性排列。如果你将重点放在前三个主题，一般不会有什么问题。更熟悉 SQL 数据仓库且能运用自如后，请再回来看看其他主题。融会贯通不需要很长时间。开始可能比较困难，但经过一段时间和经验累积，这些主题会变得很基础。
 
 ## 使用暂停和缩放来降低成本
 SQL 数据仓库的一个重要功能，是能够在不使用它时予以暂停，这将停止计算资源的计费。另一个重要功能是能够缩放资源。暂停和缩放可以通过 Azure 门户或通过 PowerShell 命令来完成。请熟悉这些功能，因为这些功能可以在数据仓库不使用时大幅降低成本。如果希望随时可访问数据仓库，建议将其缩放到最小的大小 (DW100)，而不是暂停。
@@ -76,7 +76,7 @@ SQL 数据仓库支持通过多种工具（包括 Azure 数据工厂、PolyBase�
 
 查询列存储表时，如果只选择需要的列，查询运行将更快速。
 
-另请参阅[表索引][]、[列存储索引指南][]
+另请参阅[表索引][]、[列存储索引指南][]、[重新生成列存储索引][]
 
 ## 使用较大的资源类来改善查询性能
 SQL 数据仓库使用资源组作为将内存分配给查询的一种方式。默认情况下，所有用户都分配有小型资源类，此类授予每个分布区 100 MB 内存。因为永远将有 60 个分布区，每个分布区有至少 100 MB，整个系统的总内存分配为 6000 MB 或者刚好接近6 GB。有些查询，例如大型联接或载入聚集列存储表，将受益于较大的内存分配。某些查询，例如纯扫描，则不会获得任何好处。另一方面，使用较大的资源类会影响并行访问，因此将所有的用户移到大型资源类之前，要先将这一点纳入考虑。
@@ -84,7 +84,7 @@ SQL 数据仓库使用资源组作为将内存分配给查询的一种方式。�
 另请参阅[并发性和工作负荷管理][]
 
 ## 使用较小的资源类来增加并发性
-如果注意到用户查询似乎长时间延迟，可能是用户在较大资源类中运行，占用大量的并发性位置，而导致其他查询排入队列。若要确认用户的查询是否被排入队列，请运行 `SELECT * FROM sys.dm_pdw_waits` 看看是否返回任何行。
+如果注意到用户查询似乎长时间延迟，可能是用户在较大资源类中运行，占用大量的并发性位置，而导致其他查询排入队列。若要确认用户的查询是否被排入队列，请运行 `SELECT * FROM sys.dm_pdw_waits` 来看是否返回了任何行。
 
 另请参阅[并发性和工作负荷管理][]、[sys.dm\_pdw\_waits][]
 
@@ -94,9 +94,9 @@ SQL 数据仓库有多个 DMV 可用于监视查询执行。以下监视相关�
 另请参阅[使用 DMV 监视工作负荷][]、[LABEL][]、[OPTION][]、[sys.dm\_exec\_sessions][]、[sys.dm\_pdw\_exec\_requests][]、[sys.dm\_pdw\_request\_steps][]、[sys.dm\_pdw\_sql\_requests][]、[sys.dm\_pdw\_dms\_workers]、[DBCC PDW\_SHOWEXECUTIONPLAN][]、[sys.dm\_pdw\_waits][]
 
 ## 其他资源
-另请参阅我们的[故障诊断][]一文，了解常见的问题和解决方案。
+另请参阅[故障诊断][]一文，了解常见的问题和解决方案。
 
-如果你在本文中没有找到所需内容，可尝试使用本页面左侧的“搜索文档”来搜索所有 Azure SQL 数据仓库文档。我们还创建了 [Azure SQL 数据仓库 MSDN 论坛][]，你可以向其他用户和 SQL 数据仓库的产品小组提出问题。我们将主动观察此论坛，以确保你的问题获得其他用户或我们的回答。如果你想要提出有关 Stack Overflow 的问题，请访问 [Azure SQL 数据仓库 Stack Overflow 论坛][]。
+如果你在本文中没有找到所需内容，可尝试使用本页面左侧的“搜索文档”来搜索所有 Azure SQL 数据仓库文档。我们还创建了 [Azure SQL 数据仓库 MSDN 论坛][]，您可以向其他用户和 SQL 数据仓库的产品小组提出问题。我们将主动观察此论坛，以确保你的问题获得其他用户或我们的回答。如果您有关于 Stack Overflow 方面的问题，请访问 [Azure SQL 数据仓库 Stack Overflow 论坛][]。
 
 最后，如需提出功能方面的请求，请使用 [Azure SQL 数据仓库反馈][]页。添加你的请求或对其他请求投赞成票对我们确定功能的优先级有很大的帮助。
 
@@ -111,6 +111,7 @@ SQL 数据仓库有多个 DMV 可用于监视查询执行。以下监视相关�
 [表数据分布]: /documentation/articles/sql-data-warehouse-tables-distribute
 [表索引]: /documentation/articles/sql-data-warehouse-tables-index
 [列存储索引质量差的原因]: /documentation/articles/sql-data-warehouse-tables-index#causes-of-poor-columnstore-index-quality
+[重新生成列存储索引]: /documentation/articles/sql-data-warehouse-tables-index#rebuilding-indexes-to-improve-segment-quality
 [表分区]: /documentation/articles/sql-data-warehouse-tables-partition
 [管理表统计信息]: /documentation/articles/sql-data-warehouse-tables-statistics
 [临时表]: /documentation/articles/sql-data-warehouse-tables-temporary
@@ -149,10 +150,11 @@ SQL 数据仓库有多个 DMV 可用于监视查询执行。以下监视相关�
 [列存储索引指南]: https://msdn.microsoft.com/zh-cn/library/gg492088.aspx
 
 <!--Other Web references-->
+
 [Selecting table distribution]: https://blogs.msdn.microsoft.com/sqlcat/2015/08/11/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/
 [Azure SQL 数据仓库反馈]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Azure SQL 数据仓库 MSDN 论坛]: https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse
 [Azure SQL 数据仓库 Stack Overflow 论坛]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Azure SQL Data Warehouse loading patterns and strategies]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/06/azure-sql-data-warehouse-loading-patterns-and-strategies
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0822_2016-->

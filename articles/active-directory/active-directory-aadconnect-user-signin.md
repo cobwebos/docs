@@ -9,8 +9,9 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="05/12/2016"
-	wacn.date=""/>
+	ms.date="08/08/2016"
+	wacn.date=""/>  
+
 
 
 
@@ -31,8 +32,7 @@ Azure AD Connect 可让用户使用同一组密码登录云和本地资源。你
 	- 使用设备注册、Azure AD 联接或 Intune MDM 策略对本地资源和云资源进行条件性访问
 
 ### 密码同步
-使用密码同步可将用户密码的哈希从本地 Active Directory 同步到 Azure AD。当密码在本地更改或重置时，新密码将立即同步到 Azure AD，使用户用来访问云资源的密码始终与本地相同。密码绝不将发送到 Azure AD，也不会以明文存储在 Azure AD 中。
-可将密码同步与密码写回一起使用，以便在 Azure AD 中启用自助密码重置。
+使用密码同步可将用户密码的哈希从本地 Active Directory 同步到 Azure AD。当密码在本地更改或重置时，新密码将立即同步到 Azure AD，使用户用来访问云资源的密码始终与本地相同。密码绝不将发送到 Azure AD，也不会以明文存储在 Azure AD 中。可将密码同步与密码写回一起使用，以便在 Azure AD 中启用自助密码重置。
 
 <center>![云](./media/active-directory-aadconnect-user-signin/passwordhash.png)</center>
 
@@ -70,19 +70,18 @@ Azure AD Connect 可让用户使用同一组密码登录云和本地资源。你
 
 ### Azure AD 中的用户主体名
 
-Azure AD Connect 向导将使用 userPrincipalName 属性，或让你指定要从本地用作 Azure AD 中的用户主体名的属性（在自定义安装中）。这是要用于登录 Azure AD 的值。如果用户主体名属性的值不对应于 Azure AD 中已验证的域，则 Azure AD 会将该值替换为默认的 .onmicrosoft.com 值。
+Azure AD Connect 向导将使用 userPrincipalName 属性，或让你指定要从本地用作 Azure AD 中的用户主体名的属性（在自定义安装中）。这是要用于登录 Azure AD 的值。如果用户主体名属性的值不对应于 Azure AD 中已验证的域，则 Azure AD 会将该值替换为默认的 .partner.onmschina.cn 值。
 
-Azure Active Directory 中的每个目录随附内置域名，格式为 contoso.onmicrosoft.com，可让你开始使用 Azure 或其他 Microsoft 服务。你可以使用自定义域来改善和简化登录体验。有关 Azure AD 中的自定义域名以及如何验证域的信息，请阅读 [Add your custom domain name to Azure Active Directory](active-directory-add-domain.md#add-your-custom-domain-name-to-azure-active-directory)（将自定义域名添加到 Azure Active Directory）
+Azure Active Directory 中的每个目录随附内置域名，格式为 contoso.partner.onmschina.cn，可让你开始使用 Azure 或其他 Microsoft 服务。你可以使用自定义域来改善和简化登录体验。有关 Azure AD 中的自定义域名以及如何验证域的信息，请阅读 [将自定义域名添加到 Azure Active Directory](<properties
 
 ## Azure AD 登录配置
 
 ### 使用 Azure AD Connect 配置 Azure AD 登录
-Azure AD 登录体验取决于 Azure AD是否能够匹配要同步到 Azure AD 目录中已验证的某个自定义域的用户的用户主体名后缀。Azure AD Connect 在配置 Azure AD 登录设置时将提供帮助，以便用户在云中的登录体验类似于本地体验。Azure AD Connect 将列出针对域定义的 UPN 后缀，尝试将它们与 Azure AD 中的自定义域进行匹配，并帮助你根据需要采取的相应操作。
-Azure AD 的登录页列出了针对本地 Active directory 定义的 UPN 后缀，并根据每个后缀显示相应的状态。状态值可以是下列其中一项：
+Azure AD 登录体验取决于 Azure AD是否能够匹配要同步到 Azure AD 目录中已验证的某个自定义域的用户的用户主体名后缀。Azure AD Connect 在配置 Azure AD 登录设置时将提供帮助，以便用户在云中的登录体验类似于本地体验。Azure AD Connect 将列出针对域定义的 UPN 后缀，尝试将它们与 Azure AD 中的自定义域进行匹配，并帮助你根据需要采取的相应操作。Azure AD 的登录页列出了针对本地 Active directory 定义的 UPN 后缀，并根据每个后缀显示相应的状态。状态值可以是下列其中一项：
 
 * 已验证：Azure AD Connect 可在 Azure AD 中找到匹配的已验证域，不需要采取任何操作
-* 未验证：Azure AD Connect 可在 Azure AD 中找到匹配的但未验证的自定义域。用户应验证自定义域，以确保用户的 UPN 后缀不会在同步之后更改为默认的 .onmicrosoft.com 后缀。
-* 未添加：Azure AD Connect 找不到对应于 UPN 后缀的自定义域。用户必须添加并验证对应于 UPN 后缀的自定义域，以确保用户的 UPN 后缀不会在同步之后更改为默认的 .onmicrosoft.com 后缀。
+* 未验证：Azure AD Connect 可在 Azure AD 中找到匹配的但未验证的自定义域。用户应验证自定义域，以确保用户的 UPN 后缀不会在同步之后更改为默认的 .partner.onmschina.cn 后缀。
+* 未添加：Azure AD Connect 找不到对应于 UPN 后缀的自定义域。用户必须添加并验证对应于 UPN 后缀的自定义域，以确保用户的 UPN 后缀不会在同步之后更改为默认的 .partner.onmschina.cn 后缀。
 
 Azure AD 的登录页列出了针对本地 Active Directory 定义的 UPN 后缀，以及 Azure AD 中对应的自定义域与当前验证状态。在自定义安装中，现在你可以在“Azure AD 登录”页上选择用户主体名的属性。
 
@@ -104,12 +103,12 @@ UserPrincipalName - 属性 userPrincipalName 是用户登录 Azure AD 和 Office
 ###### 快速设置/密码同步
 | 状态 | 对 Azure 用户登录体验的影响 |
 |:-------------:|:----------------------------------------|
-| 未添加 | 在这种情况下，Azure AD 目录中并未针对 contoso.com 添加任何自定义域。在本地具有后缀 @contoso.com 的 UPN 的用户将无法使用其本地 UPN 来登录 Azure。他们必须为默认的 Azure AD 目录添加后缀，以改用 Azure AD 提供的新 UPN。例如，如果你要将用户同步到 Azure AD 目录 azurecontoso.onmicrosoft.com，则为本地用户 user@contoso.com 指定 UPN user@azurecontoso.onmicrosoft.com|
+| 未添加 | 在这种情况下，Azure AD 目录中并未针对 contoso.com 添加任何自定义域。在本地具有后缀 @contoso.com 的 UPN 的用户将无法使用其本地 UPN 来登录 Azure。他们必须为默认的 Azure AD 目录添加后缀，以改用 Azure AD 提供的新 UPN。例如，如果你要将用户同步到 Azure AD 目录 azurecontoso.partner.onmschina.cn，则为本地用户 user@contoso.com 指定 UPN user@azurecontoso.partner.onmschina.cn|
 | 未验证 | 在这种情况下，我们已在 Azure AD 目录中添加自定义域 contoso.com，但它尚未验证。如果你不先验证域就继续同步用户，则 Azure AD 将为用户分配新 UPN，如同“未添加”方案中所做的一样。|
 | 已验证 | 在这种情况下，我们已在 Azure AD 中为 UPN 后缀添加并验证自定义域 contoso.com。用户可以使用其本地用户主体名（例如 user@contoso.com），在其同步到 Azure AD 之后登录到 Azure|
 
 ###### AD FS 联合
-你无法与 Azure AD 中的默认 .onmicrosoft.com 域或 Azure AD 中未验证的自定义域创建联合。当你运行 Azure AD Connect 向导时，如果选择要与未验证的域创建联合，Azure AD Connect 将发出提示，并提供要创建的、包含域 DNS 托管位置的所需记录。有关详细信息，请参阅[此文](active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation)。
+你无法与 Azure AD 中的默认 .partner.onmschina.cn 域或 Azure AD 中未验证的自定义域创建联合。当你运行 Azure AD Connect 向导时，如果选择要与未验证的域创建联合，Azure AD Connect 将发出提示，并提供要创建的、包含域 DNS 托管位置的所需记录。有关详细信息，请参阅 [此文](<properties
 
 如果选择的用户登录选项为“与 AD FS 联合”，则必须有一个自定义域才能继续在 Azure AD 中创建联合。在我们的介绍中，这意味着应在 Azure AD 目录中添加自定义域 contoso.com。
 
@@ -133,9 +132,10 @@ UserPrincipalName - 属性 userPrincipalName 是用户登录 Azure AD 和 Office
 
 ![连接到 Azure AD](./media/active-directory-aadconnect-user-signin/changeusersignin3.png)
 
->[AZURE.NOTE] 如果你只是要暂时切换到密码同步，请选中“不要转换用户帐户”。不选中该选项会导致将每个用户转换为联合登录
+>[AZURE.NOTE] 如果你只是要暂时切换到密码同步，请选中“不要转换用户帐户”。不选中该选项会导致将每个用户转换为联合用户，并可能需要花费几小时。
   
 ## 后续步骤
-了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。了解有关 [Azure AD Connect：设计概念](/documentation/articles/active-directory-aadconnect-design-concepts/)的详细信息
+了解有关[将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)的详细信息。
+了解有关 [Azure AD Connect：设计概念](/documentation/articles/active-directory-aadconnect-design-concepts/)的详细信息
 
-<!---HONumber=Mooncake_0801_2016-->
+<!---HONumber=Mooncake_0822_2016-->

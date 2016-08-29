@@ -9,7 +9,8 @@
 
 <tags
 	ms.service="active-directory"
-	ms.date="05/19/2016"
+
+	ms.date="08/08/2016"
 	wacn.date=""/>
 
 # 混合标识所需的端口和协议
@@ -78,6 +79,6 @@ HTTPS|443 (TCP/UDP)| 出站
 Azure 服务总线|5671 (TCP/UDP)| 出站
 
 ### 6b - 适用于 (AD FS/Sync) 和 Azure AD 的 Azure AD Connect Health 代理的终结点
-有关终结点的列表，请参阅 [Azure AD Connect Health 代理的要求部分](/documentation/articles/active-directory-aadconnect-health#requirements)
+有关终结点的列表，请参阅 [Azure AD Connect Health 代理的要求部分](/documentation/articles/active-directory-aadconnect-health/#requirements)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0822_2016-->
