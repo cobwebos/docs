@@ -72,4 +72,4 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 进行细致的访�
 - 请参阅 [RBAC 内置角色](/documentation/articles/role-based-access-built-in-roles)
 - 定义你在 [Azure RBAC 中的自定义角色](/documentation/articles/role-based-access-control-custom-roles)
 
-<!---HONumber=Mooncake_0627_2016-->
+<!----HONumber=Mooncake_0627_2016-->

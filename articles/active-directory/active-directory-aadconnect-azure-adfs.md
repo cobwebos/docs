@@ -323,4 +323,4 @@ AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。�
 * [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
 * [Configuring and managing your AD FS using Azure AD Connect（使用 Azure AD Connect 配置和管理 AD FS）](/documentation/articles/active-directory-aadconnectfed-whatis/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!----HONumber=Mooncake_0725_2016-->

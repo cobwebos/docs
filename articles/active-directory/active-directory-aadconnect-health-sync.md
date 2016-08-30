@@ -64,4 +64,4 @@
 * [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq/)
 * [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history/)
 
-<!---HONumber=Mooncake_0822_2016-->
+<!----HONumber=Mooncake_0822_2016-->

@@ -217,4 +217,4 @@ Azure AD Connect 概述 | [将本地标识与 Azure Active Directory 集成](/do
 使用自定义设置安装 | [Azure AD Connect 的自定义安装](/documentation/articles/active-directory-aadconnect-get-started-custom/)
 用于安装的帐户 | [有关 Azure AD Connect 帐户和权限的详细信息](/documentation/articles/active-directory-aadconnect-accounts-permissions/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!----HONumber=Mooncake_0725_2016-->

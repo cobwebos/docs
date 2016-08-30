@@ -379,4 +379,4 @@ Azure AD Connect 发行版或版本号为 **1.0.0419.0911** 或更高的 Azure A
 [031]: ./media/active-directory-passwords-getting-started/031.jpg "Image_031.jpg"
 [032]: ./media/active-directory-passwords-getting-started/032.jpg "Image_032.jpg"
 
-<!---HONumber=Mooncake_0815_2016-->
+<!----HONumber=Mooncake_0815_2016-->

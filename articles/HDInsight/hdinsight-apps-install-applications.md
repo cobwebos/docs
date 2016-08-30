@@ -120,4 +120,4 @@ HTTP 终结点凭据是你针对 HDInsight 群集配置的 HTTP 用户凭据；S
 - [使用脚本操作自定义基于 Linux 的 HDInsight 群集](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)：了解如何使用脚本操作来安装其他应用程序。
 - [使用 Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](/documentation/articles/hdinsight-hadoop-create-linux-clusters-arm-templates/)：了解如何调用 Resource Manager 模板来创建 HDInsight 群集。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!----HONumber=Mooncake_0725_2016-->

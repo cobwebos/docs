@@ -1288,4 +1288,4 @@ Azure 基于角色的访问控制附带了以下内置角色，可以将这些�
 [9]: ./media/role-based-access-control-configure/RBACInviteExtUser_NEW.png
 [10]: ./media/role-based-access-control-configure/RBACDirConfigTab.png
 
-<!---HONumber=71-->
+<!----HONumber=71-->

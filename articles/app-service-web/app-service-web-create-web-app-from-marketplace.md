@@ -194,4 +194,4 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 [WordPressDashboard2]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png
 [WordPressConfigure]: ./media/app-service-web-create-web-app-from-marketplace/wpconfigure.png
 
-<!---HONumber=Mooncake_0815_2016-->
+<!----HONumber=Mooncake_0815_2016-->
