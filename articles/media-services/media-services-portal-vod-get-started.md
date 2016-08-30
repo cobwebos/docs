@@ -219,4 +219,4 @@ Azure 门户提供了可用于测试视频的内容播放器。
 - 确保视频已发布。
 - 此*媒体播放器** 从默认的流式处理终结点播放。如果要从非默认流式处理终结点播放，请单击复制该 URL，然后使用其他播放器。例如 [Azure 媒体服务播放器](http://amsplayer.azurewebsites.net/azuremediaplayer.html)。
 
-<!---HONumber=Mooncake_0815_2016-->
+<!----HONumber=Mooncake_0815_2016-->

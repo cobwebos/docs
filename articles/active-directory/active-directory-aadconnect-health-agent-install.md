@@ -262,4 +262,4 @@ role 参数目前可接受以下值：
 * [使用用于同步的 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-sync/)
 * [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq/)
 
-<!---HONumber=Mooncake_0822_2016-->
+<!----HONumber=Mooncake_0822_2016-->

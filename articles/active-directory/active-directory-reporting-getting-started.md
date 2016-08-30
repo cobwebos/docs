@@ -152,4 +152,4 @@ Azure Active Directory 包括针对目录的安全报表、活动报表和审核
 
 > [AZURE.TIP]有关 Azure AD Reporting 的更多文档，请签出[查看访问和使用情况报表](/documentation/articles/active-directory-view-access-usage-reports)。
 
-<!---HONumber=67-->
+<!----HONumber=67-->
