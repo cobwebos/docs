@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="05/17/2016"
+	ms.date="08/03/2016"
 	wacn.date=""/>
 
 
@@ -21,13 +21,13 @@ Microsoft 一直努力确保所提供的服务始终可用。但有时候，各�
 
 每个客户都应准备好自己的灾难恢复计划，这很重要。从存储中断进行恢复时，通常需要操作人员和自动化过程的参与，目的是在正常运行状态下重新激活你的应用程序。制定你自己的灾难恢复计划时，请参阅以下 Azure 文档：
 
--   [Disaster Recovery and High Availability for Azure Applications（Azure 应用程序的灾难恢复和高可用性）](https://msdn.microsoft.com/zh-cn/library/azure/dn251004.aspx)
+-   [Azure 应用程序的灾难恢复和高可用性](/documentation/articles/resiliency-disaster-recovery-high-availability-azure-applications/)
 
--   [Azure 业务连续性技术指南](https://msdn.microsoft.com/zh-cn/library/azure/hh873027.aspx)
+-   [Azure 复原技术指南](/documentation/articles/resiliency-technical-guidance/)
 
 -   [Azure Site Recovery 服务](/home/features/site-recovery/)
 
--   [Azure 存储空间复制](/documentation/articles/storage-redundancy)
+-   [Azure 存储空间复制](/documentation/articles/storage-redundancy/)
 
 -   [Azure 备份服务](/home/features/backup/)
 
@@ -45,11 +45,11 @@ Microsoft 一直努力确保所提供的服务始终可用。但有时候，各�
 
 ### 选项 2：从辅助数据库复制数据
 
-如果你为存储帐户选择[读取访问异地冗余存储 (RA-GRS)](/documentation/articles/storage-redundancy#read-access-geo-redundant-storage)（推荐），你就可以从次要区域访问数据。你可以使用 [AzCopy](/documentation/articles/storage-use-azcopy)、[Azure PowerShell](/documentation/articles/storage-powershell-guide-full) 和 [Azure 数据移动库](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)之类的工具将数据从次要区域复制到不受影响区域的其他存储帐户中，然后将应用程序指向该存储帐户，以确保读取和写入可用性。
+如果为存储帐户选择[读取访问异地冗余存储 (RA-GRS)](/documentation/articles/storage-redundancy/#read-access-geo-redundant-storage)（推荐），就可以从次要区域访问数据。可以使用 [AzCopy](/documentation/articles/storage-use-azcopy/)、[Azure PowerShell](/documentation/articles/storage-powershell-guide-full/) 和 [Azure 数据移动库](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)之类的工具将数据从次要区域复制到不受影响区域的其他存储帐户中，然后将应用程序指向该存储帐户，以确保读取和写入可用性。
 
 ## 进行存储空间故障转移时会发生什么情况
 
-如果你选择了[异地冗余存储 (GRS)](/documentation/articles/storage-redundancy#geo-redundant-storage) 或 [读取访问地域冗余存储 (RA-GRS)](/documentation/articles/storage-redundancy#read-access-geo-redundant-storage)（推荐），Azure 存储空间会将你的数据持久保存在两个区域（主要区域和次要区域）。在这两个区域，Azure 存储空间始终维护你数据的多个副本。
+如果选择了[异地冗余存储 (GRS)](/documentation/articles/storage-redundancy/#geo-redundant-storage) 或 [读取访问地域冗余存储 (RA-GRS)](/documentation/articles/storage-redundancy/#read-access-geo-redundant-storage)（推荐），Azure 存储空间会将你的数据持久保存在两个区域（主要区域和次要区域）。在这两个区域，Azure 存储空间始终维护你数据的多个副本。
 
 当区域灾难影响你的主要区域时，我们会首先尝试还原该区域的服务。在很少的情况下，我们可能无法还原主要区域，具体取决于灾难的性质及其影响。在那种情况下，我们会进行异地故障转移。跨区域数据复制是一个可能有延迟的异步过程，因此，可能会丢失尚未复制到次要区域的更改。你可以通过查询[存储帐户的“上次同步时间”](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)，获取有关复制状态的详细信息。
 
@@ -72,10 +72,10 @@ Microsoft 一直努力确保所提供的服务始终可用。但有时候，各�
 
 -   VM 磁盘 – 使用 [Azure 备份服务](/home/features/backup/)备份 Azure虚拟机使用的 VM 磁盘。
 
--   块 Blob – 使用 [AzCopy](/documentation/articles/storage-use-azcopy)、[Azure PowerShell](/documentation/articles/storage-powershell-guide-full) 或 [Azure 数据移动库](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)创建每个块 Blob 的[快照](https://msdn.microsoft.com/zh-cn/library/azure/hh488361.aspx)，或者将 Blob 复制到其他区域的其他存储帐户。
+-   块 Blob – 使用 [AzCopy](/documentation/articles/storage-use-azcopy/)、[Azure PowerShell](/documentation/articles/storage-powershell-guide-full/) 或 [Azure 数据移动库](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)创建每个块 Blob 的[快照](https://msdn.microsoft.com/zh-cn/library/azure/hh488361.aspx)，或者将 Blob 复制到其他区域的其他存储帐户。
 
--   表 – 使用 [AzCopy](/documentation/articles/storage-use-azcopy) 将表数据导出到其他区域的其他存储帐户中。
+-   表 – 使用 [AzCopy](/documentation/articles/storage-use-azcopy/) 将表数据导出到其他区域的其他存储帐户中。
 
--   文件 – 使用 [AzCopy](/documentation/articles/storage-use-azcopy) 或 [Azure PowerShell](/documentation/articles/storage-powershell-guide-full) 将文件复制到其他区域的其他存储帐户。
+-   文件 – 使用 [AzCopy](/documentation/articles/storage-use-azcopy/) 或 [Azure PowerShell](/documentation/articles/storage-powershell-guide-full/) 将文件复制到其他区域的其他存储帐户。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0829_2016-->

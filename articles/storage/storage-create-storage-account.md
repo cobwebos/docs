@@ -9,29 +9,31 @@
 
 <tags
 	ms.service="storage"
-	ms.date="06/23/2016"
+	ms.date="07/26/2016"
 	wacn.date=""/>
 
 
 # 关于 Azure 存储帐户
 
-[AZURE.INCLUDE [storage-selector-portal-create-storage-account](../includes/storage-selector-portal-create-storage-account.md)]
+[AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
 ## 概述
 
 Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存储空间数据对象。存储帐户中的所有对象会作为组共同计费。默认情况下，只有你，即帐户所有者，才能使用你的帐户中的数据。
 
-[AZURE.INCLUDE [storage-account-types-include](../includes/storage-account-types-include.md)]
+[AZURE.INCLUDE [storage-account-types-include](../../includes/storage-account-types-include.md)]
 
 ## 存储帐户计费
 
-[AZURE.INCLUDE [storage-account-billing-include](../includes/storage-account-billing-include.md)]
+[AZURE.INCLUDE [storage-account-billing-include](../../includes/storage-account-billing-include.md)]
 
 > [AZURE.NOTE] 当你创建 Azure 虚拟机时，如果在部署位置中还没有存储帐户，则会在该位置自动创建一个存储帐户。因此，没有必要按照下面的步骤来创建虚拟机磁盘的存储帐户。存储帐户名称将基于虚拟机名称。请参阅 [Azure 虚拟机文档](/documentation/services/virtual-machines/)以了解更多详细信息。
 
 ## 存储帐户终结点
 
-存储在 Azure 存储空间中的每个对象都有唯一的 URL 地址。存储帐户名称构成该地址的子域。特定于每个服务的子域和域名的组合构成你的存储帐户的_终结点_。
+存储在 Azure 存储空间中的每个对象都有唯一的 URL 地址。存储帐户名称构成该地址的子域。特定于每个服务的子域和域名的组合构成你的存储帐户的 *终结点* 。
 
 例如，如果你的存储帐户名为 *mystorageaccount*，则你的存储帐户的默认终结点为：
 
@@ -97,7 +99,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 
 当你创建存储帐户时，Azure 将生成两个 512 位存储访问密钥，用于在用户访问该存储帐户时对其进行身份验证。通过提供两个存储访问密钥，Azure 使你能够在不中断存储服务的情况下重新生成用于访问该服务的密钥。
 
-> [AZURE.NOTE] 我们建议你避免与其他人共享你的存储访问密钥。若要允许不提供你的访问密钥即可访问存储空间资源，可使用_共享访问签名_。共享访问签名可用于访问你的帐户中的资源，访问时间间隔由你定义，访问权限由你指定。有关详细信息，请参阅[共享访问签名：了解 SAS 模型](/documentation/articles/storage-dotnet-shared-access-signature-part-1/)。
+> [AZURE.NOTE] 我们建议你避免与其他人共享你的存储访问密钥。若要允许不提供你的访问密钥即可访问存储空间资源，可使用 *共享访问签名* 。共享访问签名可用于访问你的帐户中的资源，访问时间间隔由你定义，访问权限由你指定。有关详细信息，请参阅[共享访问签名：了解 SAS 模型](/documentation/articles/storage-dotnet-shared-access-signature-part-1/)。
 
 #### 查看和复制存储访问密钥
 
@@ -119,7 +121,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 
 1. 更新应用程序代码中的连接字符串以引用存储帐户的辅助访问密钥。
 
-2. 为你的存储帐户重新生成主访问密钥。在“访问密钥”边栏选项卡上，单击“重新生成密钥1”，然后单击“是”以确认要生成新密钥。
+2. 为你的存储帐户重新生成主访问密钥。在“访问密钥”边栏选项卡上，单击“重新生成密钥 1”，然后单击“是”以确认要生成新密钥。
 
 3. 更新代码中的连接字符串以引用新的主访问密钥。
 
@@ -133,7 +135,7 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 
 若要删除与 Azure 虚拟机相关联的存储帐户，必须首先确保已删除所有虚拟机磁盘。如果不先删除虚拟机磁盘，则当你尝试删除存储帐户时，将看到如下错误消息：
 
-无法删除存储帐户 \<vm-storage-account-name>。无法删除存储帐户 \<vm-storage-account-name>: '存储帐户 \<vm-storage-account-name> 有一些活动映像和/或磁盘。删除此存储帐户前，请确保删除这些映像和/或磁盘。'。
+    Failed to delete storage account <vm-storage-account-name>. Unable to delete storage account <vm-storage-account-name>: 'Storage account <vm-storage-account-name> has some active image(s) and/or disk(s). Ensure these image(s) and/or disk(s) are removed before deleting this storage account.'.
 
 如果存储帐户使用经典部署模型，你可以通过在 [Azure 管理门户](https://manage.windowsazure.cn)中执行以下步骤来删除虚拟机磁盘：
 
@@ -153,4 +155,4 @@ Azure 存储帐户提供唯一的命名空间来存储和访问你的 Azure 存�
 - [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy/)
 - 访问 [Azure 存储空间团队博客](http://blogs.msdn.com/b/windowsazurestorage/)。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0829_2016-->

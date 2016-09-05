@@ -1,28 +1,31 @@
-<properties 
+<properties
 	pageTitle="如何通过 Java 使用文件存储 | Azure" 
-	description="了解如何使用 Azure 文件服务上载、下载、列出和删除文件。用 Java 编写的示例。" 
-	services="storage" 
-	documentationCenter="java" 
-	authors="rmcmurray" 
-	manager="wpickett" 
-	editor="jimbe" />
+	description="了解如何使用 Azure 文件服务上载、下载、列出和删除文件。用 Java 编写的示例。"
+	services="storage"
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
+	editor="" />  
 
-<tags
-	ms.service="storage"
-	ms.date="06/24/2016"
+<tags 
+	ms.service="storage" 
+
+	ms.date="08/11/2016"
 	wacn.date=""/>
 
 # 如何通过 Java 使用文件存储
 
-[AZURE.INCLUDE [storage-selector-file-include](../includes/storage-selector-file-include.md)]
+[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-files.md)]
 
 ## 概述
 
 在本指南中，你将学习如何针对 Azure 文件存储服务执行基本的操作。通过以 Java 编写的示例，你将学习如何创建共享和目录，以及如何上载、列出和删除文件。如果你不熟悉 Azure 的文件存储服务，则若要了解这些示例，你需要学习后续部分的概念。
 
-[AZURE.INCLUDE [storage-file-concepts-include](../includes/storage-file-concepts-include.md)]
+[AZURE.INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
+[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## 创建 Java 应用程序
 
@@ -213,6 +216,4 @@ Azure 文件存储共享至少包含文件所在的根目录。在本部分，�
 - [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 - [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy/)
 
-[Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
-
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0829_2016-->

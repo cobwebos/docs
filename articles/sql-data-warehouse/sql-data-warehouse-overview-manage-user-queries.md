@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="05/02/2016"
+   ms.date="08/08/2016"
    wacn.date=""/>
 
 # 在 Azure SQL 数据仓库中监视用户查询
@@ -35,12 +35,13 @@
 <!--Image references-->
 
 <!--Article references-->
-[查找长时间运行的查询]: /documentation/articles/sql-data-warehouse-manage-find-long-running-queries
-[并发性和工作负荷管理]: /documentation/articles/sql-data-warehouse-develop-concurrency
-[管理概述]: /documentation/articles/sql-data-warehouse-overview-manage
+[查找长时间运行的查询]: /documentation/articles/sql-data-warehouse-manage/
+[并发性和工作负荷管理]: /documentation/articles/sql-data-warehouse-develop-concurrency/
+[管理概述]: /documentation/articles/sql-data-warehouse-overview-manage/
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
-<!---HONumber=Mooncake_0620_2016-->
+
+<!---HONumber=Mooncake_0829_2016-->

@@ -6,8 +6,7 @@
  documentationCenter=""
  authors="aguilaaj"
  manager="timlt"
- editor=""/>  
-
+ editor=""/>
 
 <tags
  ms.service="iot-suite"
@@ -32,15 +31,15 @@ IoT 套件预见性维护预配置解决方案是一个用于商业应用场景�
 
 绿色项是表示飞机引擎的模拟设备。你可以在下面了解有关这些模拟设备的详细信息。
 
-灰色项表示实现设备管理功能的组件。当前的预见性维护预配置解决方案版本不会预配这些资源。若要了解有关设备管理的详细信息，请参阅[远程监视预配置解决方案][lnk-remote-monitoring]。
+灰色项表示实现 *设备管理* 功能的组件。当前的预见性维护预配置解决方案版本不会预配这些资源。若要了解有关设备管理的详细信息，请参阅[远程监视预配置解决方案][lnk-remote-monitoring]。
 
 ## 模拟设备
 
 在该预配置解决方案中，模拟设备代表飞机引擎。该解决方案预配了 2 个映射到单架飞机的引擎。每个引擎发出 4 种遥测：传感器 9、传感器 11、传感器 14 和传感器 15，以提供机器学习模型计算该引擎的剩余使用年限 (RUL) 所需的数据。每个模拟设备会将下列遥测消息发送到 IoT 中心：
 
-周期计数。一个周期表示 2 至 10 小时不等的已完成飞行，而在飞行时间内会每半小时捕获一次遥测数据。
+*周期计数* 。一个周期表示 2 至 10 小时不等的已完成飞行，而在飞行时间内会每半小时捕获一次遥测数据。
 
-遥测。有 4 个代表引擎属性的传感器。这些传感器一般标记为传感器 9、传感器 11、传感器 14 和传感器 15。这 4 个传感器代表足以从 RUL 的机器学习模型获取有用结果的遥测。此模型根据包含实际引擎传感器数据的公用数据集创建而来。有关如何根据原始数据集创建该模型的详细信息，请参阅 [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics]（Cortana Intelligence 库预见性维护模板）。
+*遥测* 。有 4 个代表引擎属性的传感器。这些传感器一般标记为传感器 9、传感器 11、传感器 14 和传感器 15。这 4 个传感器代表足以从 RUL 的机器学习模型获取有用结果的遥测。此模型根据包含实际引擎传感器数据的公用数据集创建而来。有关如何根据原始数据集创建该模型的详细信息，请参阅 [Cortana Intelligence Gallery Predictive Maintenance Template][lnk-cortana-analytics]（Cortana Intelligence 库预见性维护模板）。
 
 模拟设备可以处理从 IoT 中心发送的下列命令：
 
@@ -106,9 +105,12 @@ Web 应用程序中的此页面会使用 PowerBI JavaScript 控件（请参阅 [
 
 你已经运行预见性维护预配置解决方案，现在可能想要对其进行修改，请参阅[预配置解决方案自定义指南][lnk-customize]。
 
-[IoT Suite - Under The Hood - Predictive Maintenance（IoT 套件 - 幕后 -预见性维护）](http://social.technet.microsoft.com/wiki/contents/articles/33527.iot-suite-under-the-hood-predictive-maintenance.aspx)TechNet 博客文章提供有关预见性维护预配置解决方案的其他详细信息。
+[IoT Suite - Under The Hood - Predictive Maintenance](http://social.technet.microsoft.com/wiki/contents/articles/33527.iot-suite-under-the-hood-predictive-maintenance.aspx)（IoT 套件 - 幕后 -预见性维护）TechNet 博客文章提供有关预见性维护预配置解决方案的其他详细信息。
 
-  
+你还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
+
+- [有关 IoT 套件的常见问题][lnk-faq]
+- [从头开始保障 IoT 安全][lnk-security-groundup]
 [img-architecture]: ./media/iot-suite-predictive-walkthrough/architecture.png
 [img-resource-group]: ./media/iot-suite-predictive-walkthrough/resource-group.png
 [img-machine-learning]: ./media/iot-suite-predictive-walkthrough/machine-learning.png
@@ -118,9 +120,11 @@ Web 应用程序中的此页面会使用 PowerBI JavaScript 控件（请参阅 [
 
 [lnk-powerbi]: https://www.github.com/Microsoft/PowerBI-visuals
 [lnk_machine_learning]: /home/features/machine-learning/
-[lnk-remote-monitoring]: /documentation/articles/iot-suite-remote-monitoring-sample-walkthrough/
+[lnk-remote-monitoring]: /documentation/articles/iot-suite/iot-suite-remote-monitoring-sample-walkthrough/
 [lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
-[lnk-customize]: /documentation/articles/iot-suite-guidance-on-customizing-preconfigured-solutions/
+[lnk-customize]: /documentation/articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions/
+[lnk-faq]: /documentation/articles/iot-suite/iot-suite-faq/
+[lnk-security-groundup]: /documentation/articles/iot-suite/securing-iot-ground-up/
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

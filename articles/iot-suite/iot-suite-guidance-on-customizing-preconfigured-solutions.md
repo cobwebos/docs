@@ -6,8 +6,7 @@
 	documentationCenter=".net"
 	authors="stevehob"
 	manager="timlt"
-	editor=""/>  
-
+	editor=""/>
 
 <tags
      ms.service="iot-suite"
@@ -32,7 +31,7 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 
 远程监视解决方案包含三个 [Azure 流分析](/home/features/stream-analytics)作业，这些作业可实现针对解决方案显示的设备信息、遥测数据及规则逻辑。
 
-[远程监视预配置解决方案演练](/documentation/articles/iot-suite-remote-monitoring-sample-walkthrough/)深入介绍了这三个流分析作业及其语法。
+[远程监视预配置解决方案演练](/documentation/articles/iot-suite/iot-suite-remote-monitoring-sample-walkthrough/)深入介绍了这三个流分析作业及其语法。
 
 你可以直接编辑这些作业以更改逻辑，或添加特定于你的方案的逻辑。你可以按以下方式查找流分析作业：
  
@@ -56,7 +55,7 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 
 最常见的扩展活动之一是使用方案特定的设备。使用设备的方法有数种。这些方法包括更改模拟设备以符合你的方案，或使用 [IoT 设备 SDK][] 将物理设备连接到解决方案。
 
-有关向远程监视预配置解决方案添加设备的分步指南，请参阅 [Iot 套件连接设备](/documentation/articles/iot-suite-connecting-devices/)和[远程监视 C SDK 示例](https://github.com/Azure/azure-iot-sdks/tree/master/c/serializer/samples/remote_monitoring)（旨在搭配远程监视预配置解决方案）。
+有关向远程监视预配置解决方案添加设备的分步指南，请参阅 [Iot 套件连接设备](/documentation/articles/iot-suite/iot-suite-connecting-devices/)和[远程监视 C SDK 示例](https://github.com/Azure/azure-iot-sdks/tree/master/c/serializer/samples/remote_monitoring)（旨在搭配远程监视预配置解决方案）。
 
 ### 创建你自己的模拟设备
 
@@ -108,34 +107,35 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 7. 这会将一个 .json 文件下载到本地计算机。在所选的文本编辑器中打开此文件进行编辑。
 
 8. 在 .json 文件的第三行，你会看到：
- 
-		"appRoles" : [],
- 
-      将此代码替换为以下代码：
 
-	
-		  "appRoles": [
-		  {
-		  "allowedMemberTypes": [
-		  "User"
-		  ],
-		  "description": "Administrator access to the application",
-		  "displayName": "Admin",
-		  "id": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
-		  "isEnabled": true,
-		  "value": "Admin"
-		  },
-		  {
-		  "allowedMemberTypes": [
-		  "User"
-		  ],
-		  "description": "Read only access to device information",
-		  "displayName": "Read Only",
-		  "id": "e5bbd0f5-128e-4362-9dd1-8f253c6082d7",
-		  "isEnabled": true,
-		  "value": "ReadOnly"
-		  } ],
+  ```
+  "appRoles" : [],
+  ```
+  将此代码替换为以下代码：
 
+  ```
+  "appRoles": [
+  {
+  "allowedMemberTypes": [
+  "User"
+  ],
+  "description": "Administrator access to the application",
+  "displayName": "Admin",
+  "id": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
+  "isEnabled": true,
+  "value": "Admin"
+  },
+  {
+  "allowedMemberTypes": [
+  "User"
+  ],
+  "description": "Read only access to device information",
+  "displayName": "Read Only",
+  "id": "e5bbd0f5-128e-4362-9dd1-8f253c6082d7",
+  "isEnabled": true,
+  "value": "ReadOnly"
+  } ],
+  ```
 
 9. 保存更新后的 .json 文件（可以覆盖现有文件）。
 
@@ -151,14 +151,22 @@ Azure IoT 套件提供的预配置解决方案演示了套件中的服务如何�
 
 ## 后续步骤
 
-有关 IoT 设备的详细信息，请参阅 [Azure IoT 开发人员站点](/develop/iot)以查找链接和文档。
+若要详细了解自定义预配置解决方案的选项，请参阅：
 
-[IoT 设备 SDK]: /documentation/articles/iot-hub-sdks-summary/
-[lnk-permissions]: /documentation/articles/iot-suite-permissions/
+- [将逻辑应用连接到 Azure IoT 套件远程监视预配置解决方案][lnk-logicapp]
+- [配合使用动态遥测和远程监视预配置解决方案][lnk-dynamic]
+- [远程监视预配置解决方案中的设备信息元数据][lnk-devinfo]
+
+[lnk-logicapp]: /documentation/articles/iot-suite/iot-suite-logic-apps-tutorial/
+[lnk-dynamic]: /documentation/articles/iot-suite/iot-suite-dynamic-telemetry/
+[lnk-devinfo]: /documentation/articles/iot-suite/iot-suite-remote-monitoring-device-info/
+
+[IoT 设备 SDK]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
+[lnk-permissions]: /documentation/articles/iot-suite/iot-suite-permissions/
 [lnk-dashboard-controller]: https://github.com/Azure/azure-iot-remote-monitoring/blob/3fd43b8a9f7e0f2774d73f3569439063705cebe4/DeviceAdministration/Web/Controllers/DashboardController.cs#L27
 [lnk-telemetry-api-controller-01]: https://github.com/Azure/azure-iot-remote-monitoring/blob/3fd43b8a9f7e0f2774d73f3569439063705cebe4/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L27
 [lnk-telemetry-api-controller-02]: https://github.com/Azure/azure-iot-remote-monitoring/blob/e7003339f73e21d3930f71ceba1e74fb5c0d9ea0/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L25
 [lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
 [lnk-classic-portal]: https://manage.windowsazure.cn
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

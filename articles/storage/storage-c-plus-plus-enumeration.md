@@ -1,15 +1,15 @@
 <properties 
-    pageTitle="使用用于 C++ 的 Microsoft Azure 存储客户端库列出 Azure 存储资源 | Microsoft Azure" 
-    description="了解如何在用于 C++ 的 Microsoft Azure 存储客户端库中使用列表 API 来枚举容器、blob、队列、表和实体。" 
+    pageTitle="使用用于 C++ 的 Azure 存储空间客户端库列出 Azure 存储空间资源 | Azure" 
+    description="了解如何在用于 C++ 的 Azure 存储空间客户端库中使用列表 API 来枚举容器、blob、队列、表和实体。" 
     documentationCenter=".net" 
     services="storage"
-    authors="tamram" 
-    manager="carolz" 
-    editor=""/>
+    authors="tamram"
+    manager="carmonm"
+    editor="tysonn"/>
 <tags 
     ms.service="storage" 
    
-    ms.date="05/24/2016"
+    ms.date="07/24/2016"
     wacn.date=""/>
 
 # 使用 C++ 列出 Azure 存储资源
@@ -47,7 +47,7 @@
 
 云存储的规模决定了要使用分段列表。例如，你可能在 Azure blob 容器中有超过一百万个 blob，或者在 Azure 表中有十亿个以上的实体。这些不是理论上的数字，而是实际的客户使用情况。
 
-因此，要在单个响应中列出所有对象是不实际的。与之相反，你可以使用分页来列出对象。每个列表 API 都有分段重载。
+因此，要在单个响应中列出所有对象是不实际的。与之相反，你可以使用分页来列出对象。每个列表 API 都有 *分段* 重载。
 
 分段列表操作的响应包括：
 
@@ -77,15 +77,15 @@
 	}
 	while (!token.empty());
 
-请注意，一页中返回的结果数可以通过每个 API 的重载中的参数 max\_results 进行控制，例如：
+请注意，一页中返回的结果数可以通过每个 API 的重载中的参数 *max\_results* 进行控制，例如：
 
 	list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
 		blob_listing_details::values includes, int max_results, const continuation_token& token,
 		const blob_request_options& options, operation_context context)
 
-如果未指定 max\_results 参数，则会在单个页面中返回默认的最大值（最多 5000 个结果）。
+如果未指定 *max\_results* 参数，则会在单个页面中返回默认的最大值（最多 5000 个结果）。
 
-另请注意，针对 Azure 表存储进行查询时，可能不会返回任何记录，或者返回的记录数小于你所指定的 max\_results 参数的值，即使继续标记不为空。可能的一个原因是，查询可能无法在 5 秒钟内完成。只要继续标记不为空，查询就会继续，你的代码不应假定分段结果的大小。
+另请注意，针对 Azure 表存储进行查询时，可能不会返回任何记录，或者返回的记录数小于你所指定的 *max\_results* 参数的值，即使继续标记不为空。可能的一个原因是，查询可能无法在 5 秒钟内完成。只要继续标记不为空，查询就会继续，你的代码不应假定分段结果的大小。
 
 大多数情况下，建议采用分段列表编码模式，因为这样可以明确地了解列表或查询的进度，以及服务对每个请求是如何响应的。具体说来，对于 C++ 应用程序或服务来说，对列表进程进行低级别的控制可以更好地控制内存和性能。
 
@@ -125,7 +125,7 @@ SDK 中的此类贪婪列表 API 在 C#、Java 或 JavaScript Node.js 环境中�
 	    token = segment.continuation_token();
 	} while (!token.empty());
 
-你可以指定该段的 max\_results 参数，在请求数和内存使用量之间进行平衡，以便满足应用程序的性能要求。
+你可以指定该段的 *max\_results* 参数，在请求数和内存使用量之间进行平衡，以便满足应用程序的性能要求。
 
 此外，如果你使用了分段列表 API，但采用“贪婪”方式将数据存储在本地集合中，则我们也强烈建议你对代码进行重构，谨慎地应对数据处理规模扩大时将数据存储在本地集合中带来的问题。
 
@@ -174,11 +174,11 @@ SDK 中的此类贪婪列表 API 在 C#、Java 或 JavaScript Node.js 环境中�
 
 有关 Azure 存储空间以及用于 C++ 的客户端库的更多信息，请参阅以下资源。
 
--	[如何通过 C++ 使用 Blob 存储](/documentation/articles/storage-c-plus-plus-how-to-use-blobs)
--	[如何通过 C++ 使用表存储](/documentation/articles/storage-c-plus-plus-how-to-use-tables)
--	[如何通过 C++ 使用队列存储](/documentation/articles/storage-c-plus-plus-how-to-use-queues)
+-	[如何通过 C++ 使用 Blob 存储](/documentation/articles/storage-c-plus-plus-how-to-use-blobs/)
+-	[如何通过 C++ 使用表存储](/documentation/articles/storage-c-plus-plus-how-to-use-tables/)
+-	[如何通过 C++ 使用队列存储](/documentation/articles/storage-c-plus-plus-how-to-use-queues/)
 -	[适用于 C++ 的 Azure 存储客户端库 API 文档。](http://azure.github.io/azure-storage-cpp/)
 -	[Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 -	[Azure 存档文档](/documentation/services/storage/)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0829_2016-->

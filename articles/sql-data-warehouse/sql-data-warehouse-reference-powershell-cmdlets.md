@@ -5,12 +5,11 @@
    documentationCenter="NA"
    authors="sonyam"
    manager="barbkess"
-   editor=""/>  
-
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="05/18/2016"
+   ms.date="08/08/2016"
    wacn.date=""/>  
 
 
@@ -110,4 +109,4 @@ $resultDatabase = $database | Resume-AzureRmSqlDatabase
 
 [Microsoft Web 平台安装程序]: https://aka.ms/webpi-azps
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

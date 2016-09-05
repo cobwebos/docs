@@ -1,23 +1,29 @@
 <properties
-	pageTitle="如何将 Azure Redis 缓存与 Java 配合使用"
+	pageTitle="如何将 Azure Redis 缓存与 Java 配合使用 | Azure"
 	description="开始将 Azure Redis 缓存与 Java 配合使用"
 	services="redis-cache"
 	documentationCenter=""
 	authors="steved0x"
-	manager="dwrede"
+	manager="douge"
 	editor=""/>
 
 <tags
 	ms.service="cache"
-	ms.date="08/17/2015"
+	ms.date="05/31/2016"
 	wacn.date=""/>
 
 # 如何将 Azure Redis 缓存与 Java 配合使用
 
-Azure Redis 缓存可让你访问 Microsoft 管理的、专用安全的 Redis 缓存。可从 Microsoft Azure 内部的任何应用程序访问你的缓存。
+> [AZURE.SELECTOR]
+- [.NET](/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/)
+- [ASP.NET](/documentation/articles/cache-web-app-howto/)
+- [Node.js](/documentation/articles/cache-nodejs-get-started/)
+- [Java](/documentation/articles/cache-java-get-started/)
+- [Python](/documentation/articles/cache-python-get-started/)
 
-本主题说明如何开始将 Azure Redis 缓存与 Java 配合使用。
+Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。可从 Azure 内部的任何应用程序访问你的缓存。
 
+本主题说明如何将Azure Redis 缓存与 Java 配合使用。
 
 ## 先决条件
 
@@ -25,29 +31,22 @@ Azure Redis 缓存可让你访问 Microsoft 管理的、专用安全的 Redis �
 
 本教程使用 Jedis，但你可以使用 [http://redis.io/clients](http://redis.io/clients) 中列出的任何 Java 客户端。
 
-
 ## 在 Azure 上创建 Redis 缓存
 
-在 [Azure 管理门户预览版](http://go.microsoft.com/fwlink/?LinkId=398536)中，单击“新建”>“数据 + 存储”，然后选择“Redis 缓存”。
+[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-  ![][1]
+## 检索主机名和访问密钥
 
-输入 DNS 主机名。该名称的格式为 `<name>.redis.cache.windows.net`。单击“创建”。
-
-  ![][2]
-
-
-创建缓存后，在门户中单击它以查看缓存设置。单击“密钥”下的链接，然后复制主密钥。稍后需要使用此密钥进行身份验证。
-
-  ![][4]
+[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 
 ## 启用非 SSL 终结点
 
+某些 Redis 客户端不支持 SSL，默认情况下，[为新的 Azure Redis 缓存实例禁用了非 SSL 端口](/documentation/articles/cache-configure/#access-ports)。在编写本文时，[Jedis](https://github.com/xetorthio/jedis) 客户端不支持 SSL。
 
-单击“端口”下的链接，然后单击“只允许通过 SSL 访问”旁边的“否”。这样就会为缓存启用非 SSL 端口。Jedis 客户端当前不支持 SSL。
+[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
 
-  ![][3]
+
 
 
 ## 在缓存中添加一些内容并检索此内容
@@ -56,13 +55,13 @@ Azure Redis 缓存可让你访问 Microsoft 管理的、专用安全的 Redis �
 	import redis.clients.jedis.Jedis;
 	import redis.clients.jedis.JedisShardInfo;
 
-	/* Make sure your turn on non SSL port in Azure Redis using the Configuration section in the Azure portal */
+	/* Make sure you turn on non-SSL port in Azure Redis using the Configuration section in the Azure Portal */
 	public class App
 	{
 	  public static void main( String[] args )
 	  {
         /* In this line, replace <name> with your cache name: */
-	    JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6379);
+	    JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.chinacloudapi.cn", 6379);
 	    shardInfo.setPassword("<key>"); /* Use your access key. */
 	    Jedis jedis = new Jedis(shardInfo);
      	jedis.set("foo", "bar");
@@ -73,14 +72,7 @@ Azure Redis 缓存可让你访问 Microsoft 管理的、专用安全的 Redis �
 
 ## 后续步骤
 
-- [启用缓存诊断](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)，以便可以[监视](https://msdn.microsoft.com/library/azure/dn763945.aspx)缓存的运行状况。
+- [启用缓存诊断](https://msdn.microsoft.com/zh-cn/library/azure/dn763945.aspx#EnableDiagnostics)，以便可以[监视](https://msdn.microsoft.com/zh-cn/library/azure/dn763945.aspx)缓存的运行状况。
 - 阅读官方 [Redis 文档](http://redis.io/documentation)。
 
-
-<!--Image references-->
-[1]: ./media/cache-java-get-started/cache01.png
-[2]: ./media/cache-java-get-started/cache02.png
-[3]: ./media/cache-java-get-started/cache03.png
-[4]: ./media/cache-java-get-started/cache04.png
-
-<!---HONumber=71-->
+<!---HONumber=Mooncake_0829_2016-->

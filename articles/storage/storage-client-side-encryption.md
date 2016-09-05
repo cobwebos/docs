@@ -1,29 +1,30 @@
 <properties 
 	pageTitle="Microsoft Azure 存储空间的使用 .NET 客户端加密 | Azure" 
 	description="用于 .NET 的 Azure 存储客户端库支持客户端加密以及与 Azure 密钥保管库集成以实现 Azure 存储空间应用程序的最佳安全性。"
-	services="storage" 
-	documentationCenter=".net" 
-	authors="tamram" 
-	manager="carolz" 
-	editor=""/>
+	services="storage"
+	documentationCenter=".net"
+	authors="robinsh"
+	manager="carmonm"
+	editor="tysonn"/>  
+
 
 <tags 
 	ms.service="storage" 
-	ms.date="05/09/2016"
+	ms.date="08/03/2016"
 	wacn.date=""/>
 
 
 # Microsoft Azure 存储空间的客户端加密和 Azure 密钥保管库
 
-[AZURE.INCLUDE [storage-selector-client-side-encryption-include](../includes/storage-selector-client-side-encryption-include.md)]
+[AZURE.INCLUDE [storage-selector-client-side-encryption-include](../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## 概述
 
 [用于 .NET Nuget 包的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)支持在上载到 Azure 存储空间之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。此库还支持与 [Azure 密钥保管库](/home/features/key-vault)集成，以便管理存储帐户密钥。
 
-有关使用客户端的加密和 Azure 密钥保管库引导你完成加密 blob 的过程的分步教程，请参阅[使用 Azure 密钥保管库在 Azure 存储中加密和解密 blob](/documentation/articles/storage-encrypt-decrypt-blobs-key-vault)。
+有关使用客户端的加密和 Azure 密钥保管库引导你完成加密 blob 的过程的分步教程，请参阅[使用 Azure 密钥保管库在 Azure 存储中加密和解密 blob](/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)。
 
-有关使用 Java 的客户端加密，请参阅 [Azure 存储空间的使用 Java 客户端加密](/documentation/articles/storage-client-side-encryption-java)。
+有关使用 Java 的客户端加密，请参阅 [Azure 存储空间的使用 Java 客户端加密](/documentation/articles/storage-client-side-encryption-java/)。
 
 ## 通过信封技术加密和解密
 
@@ -60,7 +61,7 @@
 
 在加密过程中，客户端库将生成 16 字节的随机初始化向量 (IV) 和 32 字节的随机内容加密密钥 (CEK) 并将使用此信息对 Blob 数据执行信封加密。然后，已包装的 CEK 和一些附加加密元数据将与服务上的已加密 Blob 一起存储为 Blob 元数据。
 
-> [AZURE.WARNING] 如果您要针对 Blob 编辑或上载自己的元数据，需要确保此元数据已保留。如果您在没有此元数据的情况下上载新元数据，则已包装的 CEK、IV 和其他元数据将丢失，而 Blob 内容将永远无法再检索。
+> [AZURE.WARNING] 如果您要针对 Blob 编辑或上载自己的元数据，需要确保此元数据已保留。如果你在没有此元数据的情况下上载新元数据，则已包装的 CEK、IV 和其他元数据将丢失，而 Blob 内容将永远无法再检索。
 
 下载已加密的 Blob 需要使用 **DownloadTo***/**BlobReadStream** 便捷方法检索整个 Blob 的内容。将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
 
@@ -89,7 +90,7 @@
 1. 用户指定要加密的属性。
 2. 客户端库为每个实体生成 16 字节的随机初始化向量 (IV) 和 32 字节的随机内容加密密钥 (CEK)，并通过为每个属性派生新的 IV 来对要加密的单个属性执行信封加密。加密的属性存储为二进制数据。
 3. 然后，已包装的 CEK 和一些附加加密元数据将存储为两个附加保留属性。第一个保留属性 (\_ClientEncryptionMetadata1) 是一个字符串属性，保存有关 IV、版本和已包装的密钥的信息。第二个保留属性 (\_ClientEncryptionMetadata2) 是一个二进制属性，保存有关已加密的属性的信息。第二个属性 (\_ClientEncryptionMetadata2) 中的信息本身是加密的。
-4. 由于加密需要这两个附加保留属性，用户现在可能只有 250 个自定义属性，而不是 252 个。实体的总大小必须小于 1MB。
+4. 由于加密需要这两个附加保留属性，用户现在可能只有 250 个自定义属性，而不是 252 个。实体的总大小必须小于 1 MB。
 
 请注意，只有字符串属性可以加密。如果要对其他类型的属性进行加密，必须将它们转换为字符串。加密的字符串作为二进制属性存储在服务中，并在解密之后转换回字符串。
 
@@ -105,7 +106,7 @@
 
 ## Azure 密钥保管库
 
-Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。通过 Azure 密钥保管库，用户可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。有关详细信息，请参阅[什么是 Azure 密钥保管库？](/documentation/articles/key-vault-whatis)。
+Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密钥和机密。通过 Azure 密钥保管库，用户可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。有关详细信息，请参阅[什么是 Azure 密钥保管库？](/documentation/articles/key-vault-whatis/)。
 
 存储客户端库使用密钥保管库核心库，以便在整个 Azure 上提供一个通用框架进行管理密钥。用户还可以从使用密钥保管库扩展库中获得其他好处。扩展库围绕简单无缝的对称/RSA 本地和云密钥提供程序以及使用聚合和缓存提供有用的功能。
 
@@ -242,9 +243,9 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 ## 后续步骤
 
-- [教程：在 Azure 存储空间中使用 Azure 密钥保管库加密和解密 blob](/documentation/articles/storage-encrypt-decrypt-blobs-key-vault)
+- [教程：在 Azure 存储空间中使用 Azure 密钥保管库加密和解密 blob](/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)
 - 下载[适用于 .NET NuGet 包的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)
-- 下载 Azure 密钥保管库 NuGet [核心](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[客户端](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)和[扩展](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)包  
-- 访问 [Azure 密钥保管库文档](/documentation/articles/key-vault-whatis) 
+- 下载 Azure 密钥保管库 NuGet [核心](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[客户端](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)和[扩展](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)包
+- 访问 [Azure 密钥保管库文档](/documentation/articles/key-vault-whatis/)
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0829_2016-->

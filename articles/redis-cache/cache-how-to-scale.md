@@ -16,13 +16,13 @@
 
 >[AZURE.NOTE] Azure Redis 缓存缩放功能目前处于预览状态。
 
-Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。如果创建缓存后，你的应用程序的要求发生更改，可以使用 Azure PowerShell 缩放缓存的大小。
+Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能的选择更加灵活。如果创建缓存后，你的应用程序的要求发生更改，可以使用 [Azure 门户](https://portal.azure.cn)中的“更改定价层”边栏选项卡缩放缓存的大小。
 
 ## 何时缩放
 
-[访问 Redis 缓存监视数据](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring)示例演示了如何访问 Azure Redis 缓存的监视数据。
+你可以使用 Azure Redis 缓存的[监视](/documentation/articles/cache-how-to-monitor/)功能来监视你的缓存应用程序的运行状况和性能，并帮助确定是否需要缩放缓存。
 
-你可以使用以下指标帮助确定是否需要进行缩放。
+你可以监视以下指标以帮助确定是否需要进行缩放。
 
 -	Redis 服务器负载
 -	内存用量
@@ -31,9 +31,36 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
 如果确定缓存不再满足应用程序的要求，可以更改到适合应用程序的更大或更小缓存定价层。有关确定应使用哪个缓存定价层的详细信息，请参阅[我应当使用哪些 Redis 缓存产品/服务和大小](/documentation/articles/cache-faq/#what-redis-cache-offering-and-size-should-i-use)。
 
+## 缩放缓存
+若要缩放缓存，请在 [Azure 门户](https://portal.azure.cn)中[浏览到缓存](/documentation/articles/cache-configure/#configure-redis-cache-settings)，然后单击“设置”、“定价层”。
+
+也可以单击“Redis 缓存”边栏选项卡中的“定价层”部分。
+
+![定价层][redis-cache-pricing-tier-part]
+
+从“定价层”边栏选项卡选择所需的定价层，然后单击“选择”。
+
+![定价层][redis-cache-pricing-tier-blade]
+
+>[AZURE.NOTE] 你可以扩展到不同定价层，但有以下限制。
+>
+>-	不能从较高的定价层缩放到较低的定价层。
+>    -    不能从**高级**缓存向下缩放到**标准**或**基本**缓存。
+>    -    不能从**标准**缓存向下缩放到**基本**缓存。
+>-	可以从**基本**缓存缩放为**标准**缓存，但不能同时更改大小。如果你需要不同大小，则可以执行后续缩放操作以缩放为所需大小。
+>-	不能从**基本**缓存直接缩放到**高级**缓存。必须在一个缩放操作中从**基本**缩放到**标准**，然后在后续的缩放操作中从**标准**缩放到**高级**。
+>-	不能从较大的大小减小为 **C0 (250 MB)** 大小。
+
+当缓存缩放到新的定价层，将在“Redis 缓存”边栏选项卡中显示**缩放**状态。
+
+![扩展][redis-cache-scaling]
+
+缩放完成后，状态将从**缩放**更改为**运行**。
+
 ## 如何自动执行缩放操作
 
-你可以使用 Azure Redis 缓存 PowerShell cmdlet、Azure CLI 和 Azure 管理库 (MAML) 进行缩放。
+除了在 Azure 门户中缩放 Azure Redis 缓存实例以外，还可以使用 Azure Redis 缓存 PowerShell cmdlet、Azure CLI 和 Azure 管理库 (MAML) 进行缩放。
+
 -	[使用 PowerShell 进行缩放](#scale-using-powershell)
 -	[使用 Azure CLI 进行缩放](#scale-using-azure-cli)
 -	[使用 MAML 进行缩放](#scale-using-maml)
@@ -150,11 +177,7 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
 ### 如何判断缩放何时完成？
 
-在 Azure 中国区，目前无法在 Azure 门户预览版中管理 Redis 缓存，因此无法在门户中查看缩放状态。但是，可以使用以下 PowerShell 命令来获取缓存的状态：
-
-	Get-AzureRmRedisCache -ResourceGroupName myGroup -Name myRedisCache
-
-在大约 20 分钟后，可以运行以下命令查看缓存大小是否已更改。
+在 Azure 门户中可以看到进行中的缩放操作。缩放完成后，缓存状态将更改为**正在运行**。
 
 ### 为何此功能处于预览状态？
 
@@ -166,10 +189,11 @@ Azure Redis 缓存具有不同的缓存产品/服务，使缓存大小和功能�
 
   
 <!-- IMAGES -->
+
 [redis-cache-pricing-tier-part]: ./media/cache-how-to-scale/redis-cache-pricing-tier-part.png
 
 [redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
 
-<!---HONumber=AcomDC_0718_2016-->
+<!---HONumber=Mooncake_0829_2016-->

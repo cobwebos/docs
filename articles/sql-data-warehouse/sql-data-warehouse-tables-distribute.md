@@ -1,20 +1,17 @@
 <properties
-   pageTitle="在 SQL 数据仓库中分布表 | Microsoft Azure"
+   pageTitle="在 SQL 数据仓库中分布表 | Azure"
    description="开始在 Azure SQL 数据仓库中分布表。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
    manager="barbkess"
-   editor=""/>
+   editor=""/>  
+
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="07/11/2016"
-   ms.author="jrj;barbkess;sonyama"/>
+   ms.date="08/01/2016"
+   wacn.date=""/>
 
 # 在 SQL 数据仓库中分布表
 
@@ -187,7 +184,7 @@ from dbo.vTableSizes
 where two_part_name in 
     (
     select two_part_name
-    from dbo.vDistributionSkew 
+    from dbo.vTableSizes
     where row_count > 0
     group by two_part_name
     having min(row_count * 1.000)/max(row_count * 1.000) > .10
@@ -286,7 +283,9 @@ RENAME OBJECT [dbo].[FactInternetSales_ROUND_ROBIN] TO [FactInternetSales];
 
 ## 后续步骤
 
-有关表设计的详细信息，请参阅 [Distribute][]（分布）、[Index][]（索引）、[Partition][]（分区）、[Data Types][]（数据类型）、[Statistics][]（统计信息）和 [Temporary Tables][Temporary]（临时表）文章。有关最佳实践的概述，请参阅 [SQL Data Warehouse Best Practices][]（SQL 数据仓库最佳实践）。
+有关表设计的详细信息，请参阅 [Distribute][]（分布）、[Index][]（索引）、[Partition][]（分区）、[Data Types][]（数据类型）、[Statistics][]（统计信息）和 [Temporary Tables][Temporary]（临时表）文章。
+
+有关最佳实践的概述，请参阅 [SQL 数据仓库最佳实践][]。
 
 
 <!--Image references-->
@@ -305,7 +304,7 @@ RENAME OBJECT [dbo].[FactInternetSales_ROUND_ROBIN] TO [FactInternetSales];
 [统计信息]: ./sql-data-warehouse-tables-statistics.md
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
 [临时]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
+[SQL 数据仓库最佳实践]: ./sql-data-warehouse-best-practices.md
 [Query Monitoring]: ./sql-data-warehouse-manage-monitor.md
 [dbo.vTableSizes]: ./sql-data-warehouse-tables-overview.md#querying-table-sizes
 
@@ -314,4 +313,4 @@ RENAME OBJECT [dbo].[FactInternetSales_ROUND_ROBIN] TO [FactInternetSales];
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_0801_2016-->
+<!---HONumber=Mooncake_0829_2016-->

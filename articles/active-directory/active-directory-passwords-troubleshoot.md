@@ -5,13 +5,12 @@
 	documentationCenter="" 
 	authors="asteen" 
 	manager="femila"
-	editor="curtand"/>  
-
+	editor="curtand"/>
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="07/12/2016"
-	wacn.date=""/>  
+	ms.date="08/12/2016"
+	wacn.date=""/>
 
 
 # 如何排查密码管理问题
@@ -457,6 +456,20 @@
           </tr>
           <tr>
             <td>
+              <p>如果用户尝试重置密码或解锁启用了密码写回功能的帐户，则操作将失败。此外，解锁操作发生后，你将在 Azure AD Connect 事件日志中看到一个事件，其中包含：“同步引擎返回了一条错误 hr=800700CE，消息=文件名或扩展太长”。
+							</p>
+            </td>
+            <td>
+              <p>如果已从较旧版本的 Azure AD Connect 或 DirSync 升级，会出现此问题。升级到较旧版本的 Azure AD Connect 可为 Azure AD 管理代理帐户设置一个 254 个字符的密码（较新版本将设置一个 127 个字符长度的密码）。此类长密码适用于 AD 连接器导入和导出操作，但解锁操作不支持。
+							</p>
+            </td>
+            <td>
+              <p>[找到 Active Directory 帐户]Azure AD Connect 的(active-directory-aadconnect-accounts-permissions.md#active-directory-account)并重置密码，使密码包含不超过 127 个字符。然后，从“开始”菜单打开“同步服务”。导航到“连接器”并找到“Active Directory 连接器”。选择它，然后单击“属性”。导航到“凭据”页，然后输入新密码。选择“确定”，以关闭该页。
+							</p>
+            </td>
+          </tr>
+					<tr>
+            <td>
               <p>安装 Azure AD Connect 期间配置写回时出错。</p>
             </td>
             <td>
@@ -501,11 +514,11 @@
               <p>请确保你的防火墙允许以下各项的出站连接：</p>
               <ul>
                 <li class="unordered">
-										所有基于 TCP 443 (HTTPS) 的通信<br\><br\></li>
+										所有基于 TCP 443 (HTTPS) 的通信&lt;br>&lt;br></li>
               </ul>
               <ul>
                 <li class="unordered">
-										出站连接 <br\><br\></li>
+										出站连接 &lt;br>&lt;br></li>
               </ul>
               <p>
                 
@@ -1423,7 +1436,7 @@
 
 如果遇到 Azure AD Sync 密码写回组件的服务中断，可以使用以下快速步骤来解决此问题：
 
- - [重新启动 Azure AD Sync 服务](#restart-the-azure-AD-sync-service)
+ - [重新启动 Azure AD Sync 服务](#restart-the-azure-AD-Connect-sync-service)
  - [禁用再重新启用密码写回功能](#disable-and-re-enable-the-password-writeback-feature)
  - [安装最新版本的 Azure AD Connect](#install-the-latest-azure-ad-connect-release)
  - [排查密码写回问题](#troubleshoot-password-writeback)
@@ -1466,8 +1479,7 @@
 如果禁用再重新启用密码写回功能无法解决你遇到的问题，我们建议你接下来尝试重新安装 Azure AD Connect。
 
 ### 安装最新版本的 Azure AD Connect
-重新安装 Azure AD Connect 包可以解决所有可能会影响你在本地 AD 环境中连接到我们的云服务或管理你的密码的配置问题。
-我们建议你仅在尝试了上述前两个步骤后再执行此步骤。
+重新安装 Azure AD Connect 包可以解决所有可能会影响你在本地 AD 环境中连接到我们的云服务或管理你的密码的配置问题。我们建议你仅在尝试了上述前两个步骤后再执行此步骤。
 
  1.	可从[此处](/documentation/articles/active-directory-aadconnect/#download-azure-ad-connect)下载最新版本的 Azure AD Connect。
  2.	由于你已安装 Azure AD Connect，只需执行就地升级将 Azure AD Connect 安装更新到最新版本。
@@ -1487,7 +1499,7 @@
 ## 密码重置文档的链接
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* [**重置自己的密码**](/documentation/articles/active-directory-passwords-update-your-own-password/) - 了解如何以系统用户的身份重置或更改自己的密码
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样，[可按以下方式更改和重置你的密码](/documentation/articles/active-directory-passwords-update-your-own-password/)。
 * [**工作原理**](/documentation/articles/active-directory-passwords-how-it-works/) - 了解六个不同的服务组件及其功能
 * [**入门**](/documentation/articles/active-directory-passwords-getting-started/) - 了解如何让用户重置及更改云密码或本地密码
 * [**自定义**](/documentation/articles/active-directory-passwords-customize/) - 了解如何根据组织的需求自定义服务的外观和行为
@@ -1506,4 +1518,4 @@
 
  
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

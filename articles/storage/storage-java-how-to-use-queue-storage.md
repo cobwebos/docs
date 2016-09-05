@@ -1,20 +1,22 @@
-<properties 
+<properties
 	pageTitle="如何通过 Java 使用队列存储 | Azure" 
-	description="了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。用 Java 编写的示例。" 
-	services="storage" 
-	documentationCenter="java" 
-	authors="rmcmurray" 
-	manager="wpickett" 
-	editor="jimbe"/>
+	description="了解如何使用 Azure 队列服务创建和删除队列，以及插入、获取和删除消息。用 Java 编写的示例。"
+	services="storage"
+	documentationCenter="java"
+	authors="rmcmurray"
+	manager="wpickett"
+	editor=""/>
 
 <tags 
 	ms.service="storage" 
-	ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	wacn.date=""/>
 
 # 如何通过 Java 使用队列存储
 
-[AZURE.INCLUDE [storage-selector-queue-include](../includes/storage-selector-queue-include.md)]
+[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## 概述
 
@@ -22,9 +24,9 @@
 
 注意：为在 Android 设备上使用 Azure 存储的开发人员提供了 SDK。有关详细信息，请参阅 [Azure Storage SDK for Android][]。
 
-[AZURE.INCLUDE [storage-queue-concepts-include](../includes/storage-queue-concepts-include.md)]
+[AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
+[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## 创建 Java 应用程序
 
@@ -389,4 +391,4 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 [Azure 存储空间服务 REST API]: https://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0829_2016-->

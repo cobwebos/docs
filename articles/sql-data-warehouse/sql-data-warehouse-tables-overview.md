@@ -9,12 +9,9 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-services"
-   ms.date="06/29/2016"
-   ms.author="sonyama;barbkess;jrj"/>
+   ms.date="08/04/2016"
+   wacn.date=""/>  
+
 
 # 概述 SQL 数据仓库中的表
 
@@ -103,6 +100,7 @@ SELECT
 , nt.[name]                                                            AS  [node_table_name]
 , ROW_NUMBER() OVER(PARTITION BY nt.[name] ORDER BY (SELECT NULL))     AS  [node_table_name_seq]
 , tp.[distribution_policy_desc]                                        AS  [distribution_policy_name]
+, c.[name]                                                             AS  [distribution_column]
 , nt.[distribution_id]                                                 AS  [distribution_id]
 , i.[type]                                                             AS  [index_type]
 , i.[type_desc]                                                        AS  [index_type_desc]
@@ -122,18 +120,32 @@ SELECT
  - ([in_row_data_page_count] 
          + [row_overflow_used_page_count]+[lob_used_page_count])       AS  [index_space_page_count]
 , nps.[row_count]                                                      AS  [row_count]
-from sys.schemas s
-join sys.tables t                                         ON s.[schema_id] = t.[schema_id]
-join sys.indexes i                                        ON  t.[object_id]  = i.[object_id]
-                                                          AND i.[index_id]   <= 1
-join sys.pdw_table_distribution_properties tp             ON t.[object_id]   = tp.[object_id]
-join sys.pdw_table_mappings tm                            ON t.[object_id]   = tm.[object_id]
-join sys.pdw_nodes_tables nt                              ON tm.[physical_name]  = nt.[name]
-join sys.dm_pdw_nodes pn                                  ON  nt.[pdw_node_id]  = pn.[pdw_node_id]
-join sys.pdw_distributions di                             ON  nt.[distribution_id]  = di.[distribution_id]
-join sys.dm_pdw_nodes_db_partition_stats nps              ON nt.[object_id]   = nps.[object_id]
-                                                          AND nt.[pdw_node_id]  = nps.[pdw_node_id]
-                                                          AND nt.[distribution_id] = nps.[distribution_id]
+from 
+    sys.schemas s
+INNER JOIN sys.tables t
+    ON s.[schema_id] = t.[schema_id]
+INNER JOIN sys.indexes i
+    ON  t.[object_id] = i.[object_id]
+    AND i.[index_id] <= 1
+INNER JOIN sys.pdw_table_distribution_properties tp
+    ON t.[object_id] = tp.[object_id]
+INNER JOIN sys.pdw_table_mappings tm
+    ON t.[object_id] = tm.[object_id]
+INNER JOIN sys.pdw_nodes_tables nt
+    ON tm.[physical_name] = nt.[name]
+INNER JOIN sys.dm_pdw_nodes pn
+    ON  nt.[pdw_node_id] = pn.[pdw_node_id]
+INNER JOIN sys.pdw_distributions di
+    ON  nt.[distribution_id] = di.[distribution_id]
+INNER JOIN sys.dm_pdw_nodes_db_partition_stats nps
+    ON nt.[object_id] = nps.[object_id]
+    AND nt.[pdw_node_id] = nps.[pdw_node_id]
+    AND nt.[distribution_id] = nps.[distribution_id]
+LEFT OUTER JOIN (select * from sys.pdw_column_distribution_properties where distribution_ordinal = 1) cdp
+    ON t.[object_id] = cdp.[object_id]
+LEFT OUTER JOIN sys.columns c
+    ON cdp.[object_id] = c.[object_id]
+    AND cdp.[column_id] = c.[column_id]
 )
 , size
 AS
@@ -147,6 +159,7 @@ SELECT
 ,  [node_table_name]
 ,  [node_table_name_seq]
 ,  [distribution_policy_name]
+,  [distribution_column]
 ,  [distribution_id]
 ,  [index_type]
 ,  [index_type_desc]
@@ -184,37 +197,37 @@ FROM size
 ;
 ```
 
-创建 `dbo.vTableSizes` 以后，将使用此视图进行许多其他的有用查询。
-
-### 数据库空间摘要
-
-```sql
-SELECT
-	database_name
-,	SUM(row_count)				as total_row_count
-,	SUM(reserved_space_MB)		as total_reserved_space_MB
-,	SUM(data_space_MB)			as total_data_space_MB
-,	SUM(index_space_MB)			as total_index_space_MB
-,	SUM(unused_space_MB)		as total_unused_space_MB
-FROM dbo.vTableSizes
-GROUP BY database_name
-;
-```
-
 ### 表空间摘要
 
-```sql
-SELECT 
-     two_part_name
-,    SUM(row_count)                as table_row_count
-,    SUM(reserved_space_GB)        as table_reserved_space_GB
-,    SUM(data_space_GB)            as table_data_space_GB
-,    SUM(index_space_GB)            as table_index_space_GB
-,    SUM(unused_space_GB)        as table_unused_space_GB
-FROM dbo.vTableSizes
-GROUP BY two_part_name
-;
-```
+此查询返回行以及按表划分的空间。此查询适用于查看哪些表是你最大的表，以及这些表是按轮循机制分布的还是按哈希分布的。对于哈希分布表，此查询还显示分布列。大多数情况下，最大的表应该是哈希分布，并使用聚集列存储索引。
+
+
+	SELECT 
+	     database_name
+	,    schema_name
+	,    table_name
+	,    distribution_policy_name
+	,	  distribution_column
+	,    index_type_desc
+	,    COUNT(distinct partition_nmbr) as nbr_partitions
+	,    SUM(row_count)                 as table_row_count
+	,    SUM(reserved_space_GB)         as table_reserved_space_GB
+	,    SUM(data_space_GB)             as table_data_space_GB
+	,    SUM(index_space_GB)            as table_index_space_GB
+	,    SUM(unused_space_GB)           as table_unused_space_GB
+	FROM 
+	    dbo.vTableSizes
+	GROUP BY 
+	     database_name
+	,    schema_name
+	,    table_name
+	,    distribution_policy_name
+	,	  distribution_column
+	,    index_type_desc
+	ORDER BY
+	    table_reserved_space_GB desc
+	;
+
 
 ### 按分布类型划分的表空间
 
@@ -224,8 +237,8 @@ SELECT
 ,    SUM(row_count)                as table_type_row_count
 ,    SUM(reserved_space_GB)        as table_type_reserved_space_GB
 ,    SUM(data_space_GB)            as table_type_data_space_GB
-,    SUM(index_space_GB)            as table_type_index_space_GB
-,    SUM(unused_space_GB)        as table_type_unused_space_GB
+,    SUM(index_space_GB)           as table_type_index_space_GB
+,    SUM(unused_space_GB)          as table_type_unused_space_GB
 FROM dbo.vTableSizes
 GROUP BY distribution_policy_name
 ;
@@ -239,8 +252,8 @@ SELECT
 ,    SUM(row_count)                as table_type_row_count
 ,    SUM(reserved_space_GB)        as table_type_reserved_space_GB
 ,    SUM(data_space_GB)            as table_type_data_space_GB
-,    SUM(index_space_GB)            as table_type_index_space_GB
-,    SUM(unused_space_GB)        as table_type_unused_space_GB
+,    SUM(index_space_GB)           as table_type_index_space_GB
+,    SUM(unused_space_GB)          as table_type_unused_space_GB
 FROM dbo.vTableSizes
 GROUP BY index_type_desc
 ;
@@ -254,8 +267,8 @@ SELECT
 ,    SUM(row_count)                as total_node_distribution_row_count
 ,    SUM(reserved_space_MB)        as total_node_distribution_reserved_space_MB
 ,    SUM(data_space_MB)            as total_node_distribution_data_space_MB
-,    SUM(index_space_MB)            as total_node_distribution_index_space_MB
-,    SUM(unused_space_MB)        as total_node_distribution_unused_space_MB
+,    SUM(index_space_MB)           as total_node_distribution_index_space_MB
+,    SUM(unused_space_MB)          as total_node_distribution_unused_space_MB
 FROM dbo.vTableSizes
 GROUP BY     distribution_id
 ORDER BY    distribution_id
@@ -287,7 +300,7 @@ ORDER BY    distribution_id
 <!--MSDN references-->
 [CREATE TABLE]: https://msdn.microsoft.com/library/mt203953.aspx
 [RENAME]: https://msdn.microsoft.com/library/mt631611.aspx
-[DBCC PDW\_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
+[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
 [标识属性]: https://msdn.microsoft.com/library/ms186775.aspx
 [分配代理键解决方法]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/18/assigning-surrogate-key-to-dimension-tables-in-sql-dw-and-aps/
 [表约束]: https://msdn.microsoft.com/library/ms188066.aspx
@@ -302,4 +315,4 @@ ORDER BY    distribution_id
 
 <!--Other Web references-->
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=Mooncake_0829_2016-->

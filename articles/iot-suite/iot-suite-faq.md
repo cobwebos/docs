@@ -6,8 +6,7 @@
   documentationCenter=""
   authors="aguilaaj"
   manager="timlt"
-  editor=""/>  
-
+  editor=""/>
 
 <tags
   ms.service="iot-suite"
@@ -50,7 +49,7 @@
 
 5. 更改以下行，以包含为查询密钥复制的值：
    
-  `<setting name="MapApiQueryKey" value="" />`
+  `<setting name="MapApiQueryKey" value="" />`  
 
 
 ### 如果我具有 Azure for DreamSpark，是否可以创建预配置解决方案？
@@ -60,6 +59,15 @@
 
 请参阅 Eric Golpe 的博客文章[删除 Azure AD 租户的演练][lnk-delete-aad-tennant]。
 
+## 后续步骤
+
+你还可以浏览 IoT 套件预配置的解决方案的一些其他特性和功能：
+
+- [预见性维护预配置解决方案概述][lnk-predictive-overview]
+- [从头开始保障 IoT 安全][lnk-security-groundup]
+
+[lnk-predictive-overview]: /documentation/articles/iot-suite/iot-suite-predictive-overview/
+[lnk-security-groundup]: /documentation/articles/iot-suite/securing-iot-ground-up/
 [link-azuresupportticket]: https://portal.azure.cn/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
 [link-azuresublimits]: /documentation/articles/azure-subscription-service-limits/#iot-hub-limits
 [lnk-azure-portal]: https://portal.azure.cn
@@ -70,4 +78,4 @@
 [1rmb-trial]: /pricing/1rmb-trial
 [lnk-delete-aad-tennant]: http://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

@@ -10,8 +10,8 @@
 
 <tags
  ms.service="iot-suite"
- ms.date="03/02/2016"
  ms.date="07/18/2016"
+ wacn.date=""/>   
 
 # 远程监视预配置解决方案演练
 
@@ -31,7 +31,7 @@ IoT 套件远程监视[预配置解决方案][lnk-preconfigured-solutions]是适
 
 ## 模拟设备
 
-在该预配置解决方案中，模拟设备表示冷却设备（例如建筑物空调或设施空气处理单位）。当你部署预配置解决方案时，也会自动预配四个在 [Azure Web 作业][lnk-webjobs]中运行的模拟设备。模拟设备可让你轻松观测解决方案的行为，而不需要部署任何物理设备。若要部署实际的物理设备，请参阅 [Connect your device to the remote monitoring preconfigured solution][lnk-connectyourdevice]（将设备连接到远程监视预配置解决方案）教程。
+在该预配置解决方案中，模拟设备表示冷却设备（例如建筑物空调或设施空气处理单位）。当你部署预配置解决方案时，也会自动预配四个在 [Azure Web 作业][lnk-webjobs]中运行的模拟设备。模拟设备可让你轻松观测解决方案的行为，而不需要部署任何物理设备。若要部署实际的物理设备，请参阅 [Connect your device to the remote monitoring preconfigured solution][lnk-connect-rm]（将设备连接到远程监视预配置解决方案）教程。
 
 每个模拟设备可将以下消息类型发送到 IoT 中心：
 
@@ -93,82 +93,85 @@ SELECT * FROM DeviceDataStream Partition By PartitionId WHERE  ObjectType = 'Dev
 此作业将其输出发送到事件中心做进一步处理。
 
 **作业 2：规则**会针对每个设备的阈值评估传入温度和湿度遥测值。阈值在解决方案仪表板上的规则编辑器中设置。每个设备/值对按照时间戳存储在 Blob 中，流分析将读入该对作为**参考数据**。该作业会针对设备的设置阈值比较任何非空值。如果超过“>”条件，该作业将输出**警报**事件，表示已超过阈值，并且提供设备、值和时间戳值。此作业使用以下查询定义来识别应触发警报的遥测消息：
-	
-	WITH AlarmsData AS 
-	(
-	SELECT
-	     Stream.DeviceID,
-	     'Temperature' as ReadingType,
-	     Stream.Temperature as Reading,
-	     Ref.Temperature as Threshold,
-	     Ref.TemperatureRuleOutput as RuleOutput,
-	     Stream.EventEnqueuedUtcTime AS [Time]
-	FROM IoTTelemetryStream Stream
-	JOIN DeviceRulesBlob Ref ON Stream.DeviceID = Ref.DeviceID
-	WHERE
-	     Ref.Temperature IS NOT null AND Stream.Temperature > Ref.Temperature
-	
-	UNION ALL
-	
-	SELECT
-	     Stream.DeviceID,
-	     'Humidity' as ReadingType,
-	     Stream.Humidity as Reading,
-	     Ref.Humidity as Threshold,
-	     Ref.HumidityRuleOutput as RuleOutput,
-	     Stream.EventEnqueuedUtcTime AS [Time]
-	FROM IoTTelemetryStream Stream
-	JOIN DeviceRulesBlob Ref ON Stream.DeviceID = Ref.DeviceID
-	WHERE
-	     Ref.Humidity IS NOT null AND Stream.Humidity > Ref.Humidity
-	)
-	
-	SELECT *
-	INTO DeviceRulesMonitoring
-	FROM AlarmsData
-	
-	SELECT *
-	INTO DeviceRulesHub
-	FROM AlarmsData
+
+```
+WITH AlarmsData AS 
+(
+SELECT
+     Stream.DeviceID,
+     'Temperature' as ReadingType,
+     Stream.Temperature as Reading,
+     Ref.Temperature as Threshold,
+     Ref.TemperatureRuleOutput as RuleOutput,
+     Stream.EventEnqueuedUtcTime AS [Time]
+FROM IoTTelemetryStream Stream
+JOIN DeviceRulesBlob Ref ON Stream.DeviceID = Ref.DeviceID
+WHERE
+     Ref.Temperature IS NOT null AND Stream.Temperature > Ref.Temperature
+
+UNION ALL
+
+SELECT
+     Stream.DeviceID,
+     'Humidity' as ReadingType,
+     Stream.Humidity as Reading,
+     Ref.Humidity as Threshold,
+     Ref.HumidityRuleOutput as RuleOutput,
+     Stream.EventEnqueuedUtcTime AS [Time]
+FROM IoTTelemetryStream Stream
+JOIN DeviceRulesBlob Ref ON Stream.DeviceID = Ref.DeviceID
+WHERE
+     Ref.Humidity IS NOT null AND Stream.Humidity > Ref.Humidity
+)
+
+SELECT *
+INTO DeviceRulesMonitoring
+FROM AlarmsData
+
+SELECT *
+INTO DeviceRulesHub
+FROM AlarmsData
+```
 
 该作业将其输出发送到事件中心做进一步处理，并将每个警报的详细信息保存到 Blob 存储，解决方案仪表板可从该位置读取警报信息。
 
 **作业 3：遥测**会通过两种方法来操作传入设备遥测流。第一种方法会将设备的所有遥测消息发送到永久性 Blob 存储以进行长期存储。第二种方法会通过五分钟滑动窗口计算平均、最小和最大湿度值，并将此数据发送到 Blob 存储。解决方案仪表板从 Blob 存储读取遥测数据来填充图表。此作业使用下列查询定义：
 
-	
-	WITH 
-	    [StreamData]
-	AS (
-	    SELECT
-	        *
-	    FROM 
-	      [IoTHubStream] 
-	    WHERE
-	        [ObjectType] IS NULL -- Filter out device info and command responses
-	) 
-	
-	SELECT
-	    *
-	INTO
-	    [Telemetry]
-	FROM
-	    [StreamData]
-	
-	SELECT
-	    DeviceId,
-	    AVG (Humidity) AS [AverageHumidity], 
-	    MIN(Humidity) AS [MinimumHumidity], 
-	    MAX(Humidity) AS [MaxHumidity], 
-	    5.0 AS TimeframeMinutes 
-	INTO
-	    [TelemetrySummary]
-	FROM
-	    [StreamData]
-	WHERE
-	    [Humidity] IS NOT NULL
-	GROUP BY
-	    DeviceId, 
-	    SlidingWindow (mi, 5)
+```
+WITH 
+    [StreamData]
+AS (
+    SELECT
+        *
+    FROM 
+      [IoTHubStream] 
+    WHERE
+        [ObjectType] IS NULL -- Filter out device info and command responses
+) 
+
+SELECT
+    *
+INTO
+    [Telemetry]
+FROM
+    [StreamData]
+
+SELECT
+    DeviceId,
+    AVG (Humidity) AS [AverageHumidity], 
+    MIN(Humidity) AS [MinimumHumidity], 
+    MAX(Humidity) AS [MaxHumidity], 
+    5.0 AS TimeframeMinutes 
+INTO
+    [TelemetrySummary]
+FROM
+    [StreamData]
+WHERE
+    [Humidity] IS NOT NULL
+GROUP BY
+    DeviceId, 
+    SlidingWindow (mi, 5)
+```
 
 ## 事件中心
 
@@ -192,7 +195,7 @@ SELECT * FROM DeviceDataStream Partition By PartitionId WHERE  ObjectType = 'Dev
 ## Web 应用
 
 ### 远程监视仪表板
-Web 应用程序中的此页面使用 PowerBI javascript 控件（请参阅 [PowerBI-visuals repo（PowerBI 可视化效果存储库）](https://www.github.com/Microsoft/PowerBI-visuals)）来可视化设备发送的遥测数据。解决方案使用 ASA 遥测作业将遥测数据写入 Blob 存储。
+Web 应用程序中的此页面使用 PowerBI javascript 控件（请参阅 [PowerBI-visuals repo](https://www.github.com/Microsoft/PowerBI-visuals)（PowerBI 可视化效果存储库））来可视化设备发送的遥测数据。解决方案使用 ASA 遥测作业将遥测数据写入 Blob 存储。
 
 
 ### 设备管理门户
@@ -212,12 +215,16 @@ Web 应用程序中的此页面使用 PowerBI javascript 控件（请参阅 [Pow
 - [IoT Suite - Under The Hood - Remote Monitoring（IoT 套件 - 幕后 - 远程监视）](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx)
 - [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices（IoT 套件 - 远程监视 - 添加实时与模拟设备）](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx)
 
+你可以通过阅读以下文章继续开始使用 IoT 套件：
 
-[lnk-preconfigured-solutions]: /documentation/articles/iot-suite-what-are-preconfigured-solutions/
-[lnk-customize]: /documentation/articles/iot-suite-guidance-on-customizing-preconfigured-solutions/
-[lnk-connectyourdevice]: /documentation/articles/iot-suite-connecting-devices/
+- [将设备连接到远程监视预配置解决方案][lnk-connect-rm]
+- [azureiotsuite.com 站点权限][lnk-permissions]
+[lnk-preconfigured-solutions]: /documentation/articles/iot-suite/iot-suite-what-are-preconfigured-solutions/
+[lnk-customize]: /documentation/articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions/
 [lnk-iothub]: /documentation/services/iot-hub/
 [lnk-asa]: /documentation/services/stream-analytics/
 [lnk-webjobs]: /documentation/articles/websites-webjobs-resources/
+[lnk-connect-rm]: /documentation/articles/iot-suite/iot-suite-connecting-devices/
+[lnk-permissions]: /documentation/articles/iot-suite/iot-suite-permissions/
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

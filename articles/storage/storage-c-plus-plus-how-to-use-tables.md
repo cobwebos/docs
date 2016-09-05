@@ -1,28 +1,30 @@
 <properties 
     pageTitle="如何使用表存储 (C++) | Azure" 
-	description="使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。"
-    services="storage" 
-    documentationCenter=".net" 
-    authors="tamram" 
-    manager="adinah" 
-    editor=""/>
+    description="使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。"
+    services="storage"
+    documentationCenter=".net"
+    authors="tamram"
+    manager="carmonm"
+    editor="tysonn"/>
 
 <tags 
     ms.service="storage" 
-	ms.date="04/29/2016"
+    ms.date="07/26/2016"
     wacn.date=""/>
 
 # 如何通过 C++ 使用表存储
 
-[AZURE.INCLUDE [storage-selector-table-include](../includes/storage-selector-table-include.md)]
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
 ## 概述  
 本指南将演示如何使用 Azure 表存储服务执行常见方案。示例用 C++ 编写，并使用[适用于 C++ 的 Azure 存储空间客户端库](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)。涉及的方案包括**创建和删除表**，以及**使用表实体**。
 
 >[AZURE.NOTE] 本指南主要面向适用于 C++ 的 Azure 存储空间客户端库 1.0.0 版及更高版本。建议的版本是存储空间客户端库 2.2.0，它可以通过 [NuGet](http://www.nuget.org/packages/wastorage) 或 [GitHub](https://github.com/Azure/azure-storage-cpp/) 获得。
 
-[AZURE.INCLUDE [storage-table-concepts-include](../includes/storage-table-concepts-include.md)]
-[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
+[AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
+[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 
 ## 创建 C++ 应用程序  
@@ -30,8 +32,8 @@
 
 若要安装适用于 C++ 的 Azure 存储客户端库，你可以使用以下方法：
 
--	**Linux：**按照[适用于 C++ 的 Azure 存储空间客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明进行操作。  
--	**Windows：**在 Visual Studio 主菜单中，单击“工具”->“NuGet 程序包管理器”->“程序包管理器控制台”。在 [NuGet 包管理器控制台](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)窗口中键入以下命令，然后按 Enter。  
+-	**Linux：**按照[适用于 C++ 的 Azure 存储空间客户端库自述文件](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)页中提供的说明进行操作。
+-	**Windows：**在 Visual Studio 主菜单中，单击“工具”->“NuGet 程序包管理器”->“程序包管理器控制台”。在 [NuGet 程序包管理器控制台](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)窗口中输入以下命令，然后按 Enter。
 
 		Install-Package wastorage
 
@@ -42,12 +44,12 @@
 	#include "was/table.h"
 
 ## 设置 Azure 存储连接字符串  
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。运行客户端应用程序时，必须提供以下格式的存储连接字符串。使用[管理门户](https://manage.windowsazure.cn)中列出的存储帐户的存储帐户名称和存储访问密钥作为 *AccountName* 和 *AccountKey* 值。有关存储帐户和访问密钥的信息，请参阅[关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account)。此示例演示如何声明一个静态字段以保存连接字符串：
+Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。运行客户端应用程序时，必须提供以下格式的存储连接字符串。使用 [Azure 门户](https://portal.azure.cn)中列出的存储帐户的存储帐户名称和存储访问密钥作为 *AccountName* 和 *AccountKey* 值。有关存储帐户和访问密钥的信息，请参阅[关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account/)。此示例演示如何声明一个静态字段以保存连接字符串：
 
 	// Define the connection string with your values.
 	const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key;EndpointSuffix=core.chinacloudapi.cn"));
 
-若要在本地基于 Windows 的计算机中测试你的应用程序，可以使用随 [Azure SDK](/downloads/) 一起安装的 Azure [存储模拟器](/documentation/articles/storage-use-emulator)。存储模拟器是一种用于模拟本地开发计算机上提供的 Azure Blob、队列和表服务的实用程序。以下示例演示如何声明一个静态字段以将连接字符串保存到你的本地存储模拟器：
+若要在本地基于 Windows 的计算机中测试你的应用程序，可以使用随 [Azure SDK](/downloads/) 一起安装的 Azure [存储模拟器](/documentation/articles/storage-use-emulator/)。存储模拟器是一种用于模拟本地开发计算机上提供的 Azure Blob、队列和表服务的实用程序。以下示例演示如何声明一个静态字段以将连接字符串保存到你的本地存储模拟器：
 
 	// Define the connection string with Azure storage emulator.
 	const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
@@ -57,7 +59,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 下面的示例假定你使用了这两个方法之一来获取存储连接字符串。
 
 ## 检索你的连接字符串  
-可以使用 **cloud\_storage\_account** 类来表示你的存储帐户信息。若要从存储连接字符串中检索你的存储帐户信息，你可以使用 parse 方法。
+可以使用 **cloud\_storage\_account** 类来表示存储帐户信息。若要从存储连接字符串中检索你的存储帐户信息，你可以使用 parse 方法。
 
 	// Retrieve the storage account from the connection string.
 	azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -83,7 +85,7 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 	table.create_if_not_exists();  
 
 ## 将实体添加到表
-若要将实体添加到表，请创建一个新的 **table\_entity** 对象并将其传递到 **table\_operation::insert\_entity**。以下代码使用客户的名字作为行键，并使用姓氏作为分区键。实体的分区键和行键共同唯一地标识表中的实体。查询分区键相同的实体的速度快于查询分区键不同的实体的速度，但使用不同的分区键可实现更高的并行操作可伸缩性。有关详细信息，请参阅 [Microsoft Azure 存储性能和可伸缩性清单](/documentation/articles/storage-performance-checklist)。
+若要将实体添加到表，请创建一个新的 **table\_entity** 对象并将其传递到 **table\_operation::insert\_entity**。以下代码使用客户的名字作为行键，并使用姓氏作为分区键。实体的分区键和行键共同唯一地标识表中的实体。查询分区键相同的实体的速度快于查询分区键不同的实体的速度，但使用不同的分区键可实现更高的并行操作可伸缩性。有关详细信息，请参阅 [Microsoft Azure 存储性能和可伸缩性清单](/documentation/articles/storage-performance-checklist/)。
 
 以下代码创建了包含要存储的某些客户数据的 **table\_entity** 类的新实例。接下来，该代码调用 **table\_operation::insert\_entity** 以创建一个 **table\_operation** 对象，以便将实体插入表中，并将新的表实体与之关联。最后，该代码调用 **cloud\_table** 对象的 execute 方法。并且新的 **table\_operation** 向表服务发送请求，以将新的客户实体插入“people”表中。
 
@@ -163,10 +165,10 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 
 批处理操作的注意事项如下：
 
--	你在单次批处理操作中最多可以执行 100 个插入、删除、合并、替换、插入或合并以及插入或替换操作（可以是这些操作的任意组合）。  
--	批处理操作也可以包含检索操作，但前提是检索操作是批处理中仅有的操作。  
--	单次批处理操作中的所有实体都必须具有相同的分区键。  
--	批处理操作的数据负载限制为 4MB。  
+-	你在单次批处理操作中最多可以执行 100 个插入、删除、合并、替换、插入或合并以及插入或替换操作（可以是这些操作的任意组合）。
+-	批处理操作也可以包含检索操作，但前提是检索操作是批处理中仅有的操作。
+-	单次批处理操作中的所有实体都必须具有相同的分区键。
+-	批处理操作的数据负载限制为 4MB。
 
 ## 检索分区中的所有实体
 若要查询表以获取分区中的所有实体，请使用 **table\_query** 对象。以下代码示例指定了一个筛选器，以筛选分区键为“Smith”的实体。此示例会将查询结果中每个实体的字段输出到控制台。
@@ -404,11 +406,11 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 ## 后续步骤
 现在，你已了解表存储的基础知识，请打开以下链接了解有关 Azure 存储空间的详细信息：
 
--	[如何通过 C++ 使用 Blob 存储](/documentation/articles/storage-c-plus-plus-how-to-use-blobs)
--	[如何通过 C++ 使用队列存储](/documentation/articles/storage-c-plus-plus-how-to-use-queues)
--	[使用 C++ 列出 Azure 存储资源](/documentation/articles/storage-c-plus-plus-enumeration)
+-	[如何通过 C++ 使用 Blob 存储](/documentation/articles/storage-c-plus-plus-how-to-use-blobs/)
+-	[如何通过 C++ 使用队列存储](/documentation/articles/storage-c-plus-plus-how-to-use-queues/)
+-	[使用 C++ 列出 Azure 存储资源](/documentation/articles/storage-c-plus-plus-enumeration/)
 -	[适用于 C++ 的存储空间客户端库参考](http://azure.github.io/azure-storage-cpp)
 -	[Azure 存储空间文档](/documentation/services/storage/)
  
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0829_2016-->

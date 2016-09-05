@@ -18,8 +18,7 @@
 	
     - 若要方便访问帐户和以后将创建的资源，请选中“固定到仪表板”。
 
-4.	配置了新的 DocumentDB 帐户后，单击“创建”。要检查部署的状态，可在“启动板”监视进度。  
-	![启动板上的“创建”磁贴的屏幕截图 — 在线数据库创建者](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-3.png)
+4.	配置了新的 DocumentDB 帐户后，单击“创建”。要检查部署的状态，可在“启动板”监视进度。![启动板上的“创建”磁贴的屏幕截图 — 在线数据库创建者](./media/documentdb-create-dbaccount/create-nosql-db-databases-json-tutorial-3.png)
 
 	或者，可以从通知中心监视进度。
 
@@ -39,4 +38,4 @@
 [Next steps]: #NextSteps
 [documentdb-manage]: /documentation/articles/documentdb/documentdb-manage
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=Mooncake_0829_2016-->

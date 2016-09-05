@@ -4,18 +4,20 @@
 	services="storage"
 	documentationCenter=".net"
 	authors="tamram"
-	manager="adinah"
-	editor=""/>
+	manager="carmonm"
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
-	ms.date="06/09/2016"
+	ms.date="07/22/2016"
 	wacn.date=""/>
 
 
 # 通过 .NET 开始使用 Azure Blob 存储
 
-[AZURE.INCLUDE [storage-selector-blob-include](../includes/storage-selector-blob-include.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## 概述
 
@@ -32,16 +34,16 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 - [Microsoft Visual Studio](https://www.visualstudio.com/zh-cn/visual-studio-homepage-vs.aspx)
 - [适用于 .NET 的 Azure 存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
 - [适用于 .NET 的 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-- [Azure 存储帐户](/documentation/articles/storage-create-storage-account#create-a-storage-account)。
+- 一个 [Azure 存储帐户](/documentation/articles/storage-create-storage-account/#create-a-storage-account)。
 
 
-[AZURE.INCLUDE [storage-dotnet-client-library-version-include](../includes/storage-dotnet-client-library-version-include.md)]
+[AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
-[AZURE.INCLUDE [storage-blob-concepts-include](../includes/storage-blob-concepts-include.md)]
+[AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
+[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-[AZURE.INCLUDE [storage-development-environment-include](../includes/storage-development-environment-include.md)]
+[AZURE.INCLUDE [storage-development-environment-include](../../includes/storage-development-environment-include.md)]
 
 ### 添加命名空间声明
 
@@ -53,7 +55,7 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 
 ### 解析连接字符串
 
-[AZURE.INCLUDE [storage-cloud-configuration-manager-include](../includes/storage-cloud-configuration-manager-include.md)]
+[AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 ### 创建 Blob 服务客户端
 
@@ -65,7 +67,7 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 
 ## 创建容器
 
-[AZURE.INCLUDE [storage-container-naming-rules-include](../includes/storage-container-naming-rules-include.md)]
+[AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
 此示例演示如何创建一个容器（如果该容器不存在）：
 
@@ -349,25 +351,28 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 
 默认情况下，Azure 存储空间会限制拥有帐户访问密钥的帐户所有者的访问权限来保持数据安全。当你需要共享存储帐户中的 Blob 数据时，请注意不可危及帐户访问密钥的安全性。此外，可以加密 Blob 数据，以确保其在网络中传输时以及在 Azure 存储空间中时的安全性。
 
-[AZURE.INCLUDE [storage-account-key-note-include](../includes/storage-account-key-note-include.md)]
+[AZURE.INCLUDE [storage-account-key-note-include](../../includes/storage-account-key-note-include.md)]
 
 ### 控制对 Blob 数据的访问
 
 默认情况下，你的存储帐户中的 Blob 数据仅供存储帐户所有者访问。默认情况下，验证对 Blob 存储的请求需要帐户访问密钥。不过，你可能想要让特定的 Blob 数据可供其他用户使用。可以使用两个选项：
 
-- **匿名访问**：你可让容器或其 Blob 公开供匿名访问。有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](/documentation/articles/storage-manage-access-to-resources)。
-- **共享访问签名**：你可以为客户端提供共享访问签名 (SAS)，该共享访问签名可利用所指定的权限在所指定的时间间隔内，针对存储帐户中的资源提供委派访问权限。有关详细信息，请参阅[共享访问签名：了解 SAS 模型](/documentation/articles/storage-dotnet-shared-access-signature-part-1)。
+- **匿名访问**：你可让容器或其 Blob 公开供匿名访问。有关详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](/documentation/articles/storage-manage-access-to-resources/)。
+- **共享访问签名**：你可以为客户端提供共享访问签名 (SAS)，该共享访问签名可利用所指定的权限在所指定的时间间隔内，针对存储帐户中的资源提供委派访问权限。有关详细信息，请参阅[共享访问签名：了解 SAS 模型](/documentation/articles/storage-dotnet-shared-access-signature-part-1/)。
 
 ### 加密 Blob 数据
 
 Azure 存储空间支持在客户端和服务器上加密 Blob 数据：
 
-- **客户端加密**：用于 .NET 的存储客户端库支持在上传到 Azure 存储空间之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。此库还支持与 Azure 密钥保管库集成，以便管理存储帐户密钥。有关详细信息，请参阅 [Microsoft Azure 存储空间的使用 .NET 客户端加密](/documentation/articles/storage-client-side-encryption)。另请参阅[教程：在 Microsoft Azure 存储空间中使用 Azure 密钥保管库加密和解密 Blob](/documentation/articles/storage-encrypt-decrypt-blobs-key-vault)。
-- **服务器端加密**：Azure 存储空间现在支持服务器端加密。请参阅[静态数据的 Azure 存储空间服务加密（预览版）](/documentation/articles/storage-service-encryption)。
+- **客户端加密**：用于 .NET 的存储客户端库支持在上传到 Azure 存储空间之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。此库还支持与 Azure 密钥保管库集成，以便管理存储帐户密钥。有关详细信息，请参阅 [Microsoft Azure 存储空间的使用 .NET 客户端加密](/documentation/articles/storage-client-side-encryption/)。另请参阅[教程：在 Azure 存储空间中使用 Azure 密钥保管库加密和解密 blob](/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)。
+- **服务器端加密**：Azure 存储空间现在支持服务器端加密。请参阅[静态数据的 Azure 存储空间服务加密（预览版）](/documentation/articles/storage-service-encryption/)。
 
 ## 后续步骤
 
 现在，你已了解 Blob 存储的基础知识，可单击下面的链接了解详细信息。
+
+### Azure 存储空间资源管理器
+- [Azure 存储资源管理器 (MASE)](/documentation/articles/vs-azure-tools-storage-manage-with-storage-explorer/) 是 Microsoft 免费提供的独立应用，可用于在 Windows、OS X 和 Linux 上以可视方式处理 Azure 存储空间数据。
 
 ### Blob 存储参考
 
@@ -376,8 +381,8 @@ Azure 存储空间支持在客户端和服务器上加密 Blob 数据：
 
 ### 概念性指南
 
-- [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy)
-- [开始使用适用于 .NET 的文件存储](/documentation/articles/storage-dotnet-how-to-use-files)
+- [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy/)
+- [开始使用适用于 .NET 的文件存储](/documentation/articles/storage-dotnet-how-to-use-files/)
 - [如何通过 WebJobs SDK 使用 Azure Blob 存储](/documentation/articles/app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to)
 
   [Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
@@ -391,4 +396,5 @@ Azure 存储空间支持在客户端和服务器上加密 Blob 数据：
   [.NET client library reference]: https://msdn.microsoft.com/zh-cn/library/mt347887.aspx
   [REST API reference]: http://msdn.microsoft.com/zh-cn/library/azure/dd179355
  
-<!---HONumber=Mooncake_0711_2016-->
+
+<!---HONumber=Mooncake_0829_2016-->

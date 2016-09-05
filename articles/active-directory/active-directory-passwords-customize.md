@@ -9,8 +9,8 @@
 
 <tags 
 	ms.service="active-directory"  
-	ms.date="07/12/2016"
-	wacn.date=""/>
+	ms.date="08/03/2016"
+	wacn.date=""/>  
 
 
 # 自定义密码管理以符合组织的需求
@@ -848,7 +848,7 @@
                   <li class="unordered">
 												如果设置为“是”，则当某用户或管理员自己的密码被重置时，他（她）将会收到一个指示他或她的密码已被重置的通知。<br><br></li>
                   <li class="unordered">
-												此通知将以电子邮件形式发送到其密码被重置的用户的主电子邮件地址和备用（或身份验证）电子邮件地址。<br><br></li>
+												此通知将通过电子邮件发送到要重置其密码的用户的用户主体名称和备用（或身份验证）电子邮件地址。<br><br></li>
                 </ul>
               </td>
             </tr>
@@ -862,7 +862,7 @@
 ## 密码重置文档的链接
 以下是所有 Azure AD 密码重置文档页面的链接：
 
-* [**重置自己的密码**](/documentation/articles/active-directory-passwords-update-your-own-password/) - 了解如何以系统用户的身份重置或更改自己的密码
+* **你是否因登录时遇到问题而浏览至此？** 如果是这样，[可按以下方式更改和重置你的密码](/documentation/articles/active-directory-passwords-update-your-own-password/)。
 * [**工作原理**](/documentation/articles/active-directory-passwords-how-it-works/) - 了解六个不同的服务组件及其功能
 * [**入门**](/documentation/articles/active-directory-passwords-getting-started/) - 了解如何让用户重置及更改云密码或本地密码
 * [**最佳实践**](/documentation/articles/active-directory-passwords-best-practices/) - 了解如何快速部署且有效管理组织的密码
@@ -874,4 +874,4 @@
 
 [001]: ./media/active-directory-passwords-customize/001.jpg "Image_001.jpg"
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

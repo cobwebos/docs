@@ -6,13 +6,13 @@
   documentationCenter=""
   authors="aguilaaj"
   manager="timlt"
-  editor=""/>  
+  editor=""/>
 
 
 <tags
   ms.service="iot-suite"
-  ms.date="05/20/2016"
-  wacn.date=""/>  
+  ms.date="08/10/2016"
+  wacn.date=""/>
 
   
 # 教程：将逻辑应用连接到 Azure IoT 套件远程监视预配置解决方案
@@ -145,7 +145,7 @@ _如果你要查找有关如何预配远程监视预配置解决方案的演练�
 
     ``
     build.cmd cloud release demologicapp
-    ``
+    ``  
 
     
     生成脚本运行时，请务必使用首次预配解决方案时使用的相同 Azure 帐户、订阅、区域和 Active Directory 实例。
@@ -167,17 +167,21 @@ _如果你要查找有关如何预配远程监视预配置解决方案的演练�
 
 ## 后续步骤
 
-现在，你已使用逻辑应用将预配置的解决方案连接到业务流程，接下来可以详细了解[如何自定义预配置解决方案][lnk-customize]或者[如何将物理设备添加到解决方案][lnk-connect]。
+现在，你已使用逻辑应用将预配置解决方案连接到业务流程，接下来可以详细了解自定义预配置解决方案的选项：
 
-[lnk-internetofthings]: /documentation/suites/iot-suite/
-[lnk-getstarted]: /documentation/articles/iot-suite-getstarted-preconfigured-solutions/
-[lnk-customize]: /documentation/articles/iot-suite-guidance-on-customizing-preconfigured-solutions/
-[lnk-connect]: /documentation/articles/iot-suite-connecting-devices/
+- [配合使用动态遥测和远程监视预配置解决方案][lnk-dynamic]
+- [远程监视预配置解决方案中的设备信息元数据][lnk-devinfo]
+
+[lnk-dynamic]: /documentation/articles/iot-suite/iot-suite-dynamic-telemetry/
+[lnk-devinfo]: /documentation/articles/iot-suite/iot-suite-remote-monitoring-device-info/
+
+[lnk-internetofthings]: https://azure.microsoft.com/documentation/suites/iot-suite/
+[lnk-getstarted]: /documentation/articles/iot-suite/iot-suite-getstarted-preconfigured-solutions/
 [lnk-azureportal]: https://portal.azure.cn
-[lnk-logic-apps-actions]: ../connectors/apis-list.md
+[lnk-logic-apps-actions]: /documentation/articles/connectors/apis-list/
 [lnk-rmgithub]: https://github.com/Azure/azure-iot-remote-monitoring
 [lnk-devsetup]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/dev-setup.md
 [lnk-localdeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/local-deployment.md
 [lnk-clouddeploy]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Docs/cloud-deployment.md
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

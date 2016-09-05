@@ -6,12 +6,11 @@
   documentationCenter=""
   authors="aguilaaj"
   manager="timlt"
-  editor=""/>  
-
+  editor=""/>
 
 <tags
   ms.service="iot-suite"
-  ms.date="05/16/2016"
+  ms.date="08/10/2016"
   wacn.date="05/17/2016"/>
   
 # azureiotsuite.com 站点权限
@@ -36,7 +35,7 @@ AAD 角色可控制设置预配置解决方案以及在预配置解决方案中�
 
 **全局管理员：**对于每个 AAD 租户，可以存在许多个全局管理员。你在创建某个 AAD 租户时，默认情况下会成为该租户的全局管理员。全局管理员可以设置预配置解决方案，以及为 AAD 租户内的应用程序分配 **ADMINISTRATOR** 角色。但是，如果相同 AAD 租户中的其他用户创建应用程序，则向全局管理员授予的默认角色是 **IMPLICIT READ ONLY**。全局管理员可以使用 [Azure 经典门户][lnk-classic-portal]为应用程序分配角色。
 
-**域用户/组成员：**对于每个 AAD 租户，可以存在许多个域用户/成员。域用户可以通过 [azureiotsuite.com][lnk-azureiotsuite] 站点设置预配置解决方案。对于他们设置的应用程序，向他们授予的默认角色是 **ADMINISTRATOR**。他们可以使用 [azure-iot-solution][lnk-github-repo] 存储库中的 build.cmd 脚本创建应用程序，但是向他们授予的默认角色是 **IMPLICIT READONLY**，因为他们没有分配角色的权限。如果 AAD 租户中的其他用户创建应用程序，则默认情况下对于该应用程序，会向他们分配 **IMPLICIT READONLY** 角色。他们无法为应用程序分配角色；因此无法为应用程序添加用户或用户的角色（即使是他们设置的应用程序）。
+**域用户/组成员：**对于每个 AAD 租户，可以存在许多个域用户/成员。域用户可以通过 [azureiotsuite.com][lnk-azureiotsuite] 站点设置预配置解决方案。对于他们设置的应用程序，向他们授予的默认角色是 **ADMINISTRATOR**。他们可以使用 [azure-iot-remote-monitoring][lnk-rm-github-repo] 或 [azure-iot-predictive-maintenance][lnk-pm-github-repo] 存储库中的 build.cmd 脚本创建应用程序，但是向他们授予的默认角色是 **IMPLICIT READONLY**，因为他们没有分配角色的权限。如果 AAD 租户中的其他用户创建应用程序，则默认情况下对于该应用程序，会向他们分配 **IMPLICIT READONLY** 角色。他们无法为应用程序分配角色；因此无法为应用程序添加用户或用户的角色（即使是他们设置的应用程序）。
 
 **来宾用户/来宾：**对于每个 AAD 租户，可以存在许多个来宾用户/来宾。来宾用户在 AAD 租户中拥有有限的权利集。因此，来宾用户无法在 AAD 租户中设置预配置解决方案。
 
@@ -124,17 +123,22 @@ Azure 管理员角色可控制将 Azure 订阅映射到 AD 租户的能力。
 
 看看下图：
 
-![][img-flowchart]  
+![][img-flowchart]
 
-
-**为何在我具有 Azure 订阅时会出现以下错误？** 创建预配置解决方案需要 Azure 订阅。只需几分钟即可创建一个免费帐户。
+> [AZURE.NOTE] 如果在验证你是 AAD 租户的全局管理员和订阅的协同管理员后，继续看到此错误，请让你的帐户管理员删除该用户，并按以下顺序重新分配必要的权限：将用户添加为全局管理员，然后将用户添加为 Azure 订阅的协同管理员。如果问题仍然存在，请联系[帮助和支持][lnk-help-support]。
+**为何在我具有 Azure 订阅时会出现以下错误？** *创建预配置解决方案需要 Azure 订阅。只需几分钟即可创建一个免费帐户。*
 
 如果你确定具有 Azure 订阅，请验证订阅的租户映射，并确保在下拉列表中选择正确租户。如果验证了所需租户是正确的，请按照上图并验证订阅和此 AAD 租户的映射。
+
+## 后续步骤
+
+若要继续了解 IoT 套件，请参阅如何[自定义预配置解决方案][lnk-customize]。
 
 [img-flowchart]: media/iot-suite-permissions/flowchart.png
 
 [lnk-azureiotsuite]: https://www.azureiotsuite.com/
-[lnk-github-repo]: https://github.com/Azure/azure-iot-solution
+[lnk-rm-github-repo]: https://github.com/Azure/azure-iot-remote-monitoring
+[lnk-pm-github-repo]: https://github.com/Azure/azure-iot-predictive-maintenance
 [lnk-aad-admin]: /documentation/articles/active-directory-assign-admin-roles/
 [lnk-classic-portal]: https://manage.windowsazure.cn/
 [lnk-create-edit-users]: /documentation/articles/active-directory-create-users/
@@ -142,5 +146,7 @@ Azure 管理员角色可控制将 Azure 订阅映射到 AD 租户的能力。
 [lnk-service-admins]: /support/changing-service-admin-and-co-admin/
 [lnk-admin-roles]: /documentation/articles/billing-add-change-azure-subscription-administrator/
 [lnk-resource-cs]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/DeviceAdministration/Web/Security/RolePermissions.cs
+[lnk-help-support]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade
+[lnk-customize]: /documentation/articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions/
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

@@ -5,12 +5,11 @@
    documentationCenter="NA"
    authors="sonyam"
    manager="barbkess"
-   editor=""/>  
-
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="07/01/2016"
+   ms.date="07/18/2016"
    wacn.date=""/>
 
 # 排查 Azure SQL 数据仓库问题
@@ -47,6 +46,7 @@
 
 | 问题 | 解决方法 |
 | :----------------------------------| :---------------------------------------------- |
+| 消息 40847：无法执行操作，因为服务器将超过 45000 这一允许的数据库吞吐量单元配额。 | 请减少要尝试创建的数据库的 [DWU][]，或者[请求增加配额][]。|
 | 调查空间使用率 | 请参阅[表大小][]，了解系统的空间使用率。|
 | 管理表的帮助 | 有关管理表的帮助，请参阅[表概述][Overview]一文。本文还包含指向更详细主题的链接，如[表数据类型][Data types]、[分布表][Distribute]、[为表编制索引][Index]、[将表分区][Partition]、[维护表统计信息][Statistics]和[临时表][Temporary]。|
 
@@ -85,6 +85,8 @@
 [安全性概述]: /documentation/articles/sql-data-warehouse-overview-manage-security/
 [Create support ticket]: /documentation/articles/sql-data-warehouse-get-started-create-support-ticket/
 [缩放 SQL 数据仓库]: /documentation/articles/sql-data-warehouse-manage-compute-overview/
+[DWU]: /documentation/articles/sql-data-warehouse-overview-what-is#data-warehouse-units
+[请求增加配额]: /documentation/articles/sql-data-warehouse-get-started-create-support-ticket#request-quota-change
 [Learning how to monitor your queries]: /documentation/articles/sql-data-warehouse-manage-monitor/
 [预配说明]: /documentation/articles/sql-data-warehouse-get-started-provision/
 [为客户端 IP 配置服务器防火墙访问权限]: /documentation/articles/sql-data-warehouse-get-started-provision/#create-a-new-azure-sql-server-level-firewall
@@ -121,9 +123,9 @@
 [博客]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [CAT 团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN 论坛]: https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=AzureSQLDataWarehouse
+[MSDN 论坛]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse
 [Stack Overflow forum]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

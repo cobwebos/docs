@@ -5,8 +5,7 @@
 	documentationCenter="" 
 	authors="steved0x" 
 	manager="douge" 
-	editor=""/>  
-
+	editor=""/>
 
 <tags
 	ms.service="cache"
@@ -34,39 +33,35 @@ Azure Redis 缓存提供的 Redis 群集与[在 Redis 中实施](http://redis.io
 在 Azure 中，Redis 群集以主/副模型提供。在该模型中，每个分片都有一个带副本的主/副对，副本由 Azure Redis 缓存服务管理。
 
 ## 群集功能
+群集功能可在创建缓存期间在“新建 Redis 缓存”边栏选项卡中启用。
 
-在 Azure 中国区，只能通过 Azure PowerShell 或 Azure CLI 管理 Redis 缓存
+[AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
+群集功能在“Redis 群集”边栏选项卡上配置。
 
-[AZURE.INCLUDE [azurerm-azurechinacloud-environment-parameter](../../includes/azurerm-azurechinacloud-environment-parameter.md)]
+![群集功能][redis-cache-clustering]
 
-
-使用以下 PowerShell 脚本创建缓存：
-
-	$VerbosePreference = "Continue"
-
-	# Create a new cache with date string to make name unique. 
-	$cacheName = "MovieCache" + $(Get-Date -Format ('ddhhmm')) 
-	$location = "China North"
-	$resourceGroupName = "Default-Web-ChinaNorth"
-	
-	$movieCache = New-AzureRmRedisCache -Location $location -Name $cacheName  -ResourceGroupName $resourceGroupName -Size 6GB -Sku Premium -ShardCount 2
-
-群集中最多可以包含 10 个分片，上述脚本将创建“分片计数”为 2（可以是介于 1 和 10 之间的数字）的缓存。
+群集中最多可以有 10 个分片。单击“启用”，滑动滑块，或者针对“分片计数”键入 1 到 10 之间的一个数字，然后单击“确定”。
 
 每个分片都是一个由 Azure 管理的主/副缓存对，而缓存的总大小则通过将定价层中选择的缓存大小乘以分片数来计算。
 
-创建缓存后，即可连接到缓存并使用缓存，就像该缓存没有进行群集一样，而 Redis 则会将数据分布到整个缓存分片中。
+![群集功能][redis-cache-clustering-selected]  
+
+
+创建缓存后，即可连接到缓存并使用缓存，就像该缓存没有进行群集一样，而 Redis 则会将数据分布到整个缓存分片中。如果诊断[已启用](/documentation/articles/cache-how-to-monitor/#enable-cache-diagnostics)，则会分别为每个分片捕获相应的度量值，这些度量值可以在“Redis 缓存”边栏选项卡中[查看](/documentation/articles/cache-how-to-monitor/)。
 
 有关在 StackExchange.Redis 客户端中使用群集的示例代码，请参阅 [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 示例的 [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分。
 
 ## <a name="cluster-size"></a>更改正在运行的高级缓存上的群集大小
 
-可以使用以下命令更改正在运行的、已启用群集的高级缓存上的群集大小。
+若要更改正在运行并且已启用群集的高级缓存的群集大小，请在“设置”边栏选项卡中单击“(预览) Redis 群集大小”。
 
-	New-AzureRmRedisCache -Name $cacheName -ResourceGroupName $resourceGroupName -Size 13GB
+>[AZURE.NOTE] 请注意，虽然 Azure Redis 缓存高级层已发行公开上市版，但 Redis 群集大小功能目前以预览版提供。
 
-完成缩放需要花费几分钟的时间。有关详细信息，请参阅[如何缩放 Azure Redis 缓存](/documentation/articles/cache-how-to-scale/)。
+![Redis 群集大小][redis-cache-redis-cluster-size]  
+
+
+若要更改群集大小，请使用滑块，或在“分片计数”文本框中键入 1 到 10 之间的数字，然后单击“确定”进行保存。
 
 ## 群集功能常见问题
 
@@ -81,6 +76,7 @@ Azure Redis 缓存提供的 Redis 群集与[在 Redis 中实施](http://redis.io
 -	[我可以为以前创建的缓存配置群集功能吗？](#can-i-configure-clustering-for-a-previously-created-cache)
 -	[我可以为基本缓存或标准缓存配置群集功能吗？](#can-i-configure-clustering-for-a-basic-or-standard-cache)
 -	[能否在 Redis ASP.NET 会话状态和输出缓存提供程序中使用群集功能？](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
+-	[我在使用 StackExchange.Redis 和群集功能时出现 MOVE 异常，应该怎么办？](#i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do)
 
 ### 使用群集功能时，是否需要对客户端应用程序进行更改？
 
@@ -118,7 +114,7 @@ Azure Redis 缓存提供的 Redis 群集与[在 Redis 中实施](http://redis.io
 
 ### 启用群集功能后，如何连接到我的缓存？
 
-可以使用连接到未启用群集功能的缓存时使用的相同终结点、端口和密钥连接到你的缓存。Redis 在后端管理群集功能，因此不需要你通过客户端来管理它。
+连接到你的缓存时，可以使用的[终结点、端口和密钥](/documentation/articles/cache-configure/#properties)与你连接到未启用群集功能的缓存时使用的相同。Redis 在后端管理群集功能，因此不需要你通过客户端来管理它。
 
 ### 我可以直接连接到缓存的各个分片吗？
 
@@ -142,7 +138,7 @@ Azure Redis 缓存提供的 Redis 群集与[在 Redis 中实施](http://redis.io
 
 群集功能仅适用于高级缓存。
 
-## <a name="can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers"></a> # 能否在 Redis ASP.NET 会话状态和输出缓存提供程序中使用群集功能？
+### <a name="can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers"></a>能否在 Redis ASP.NET 会话状态和输出缓存提供程序中使用群集功能？
 
 -	**Redis 输出缓存提供程序** - 无需进行更改。
 -	**Redis 会话状态提供程序** - 若要使用群集功能，必须使用 [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 或更高版本，否则会引发异常。这是一项重大更改；有关详细信息，请参阅 [2\.0.0 版重大更改详细信息](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)。
@@ -156,7 +152,7 @@ Azure Redis 缓存提供的 Redis 群集与[在 Redis 中实施](http://redis.io
 
 -	[如何为高级 Azure Redis 缓存配置暂留](/documentation/articles/cache-how-to-premium-persistence/)
 -	[如何为高级 Azure Redis 缓存配置虚拟网络支持](/documentation/articles/cache-how-to-premium-vnet/)
-
+  
 <!-- IMAGES -->
 
 [redis-cache-clustering]: ./media/cache-how-to-premium-clustering/redis-cache-clustering.png
@@ -165,4 +161,4 @@ Azure Redis 缓存提供的 Redis 群集与[在 Redis 中实施](http://redis.io
 
 [redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

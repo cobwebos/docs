@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="05/18/2016"
+   ms.date="07/22/2016"
    wacn.date=""/>
 
 # 保护 SQL 数据仓库中的数据库
@@ -30,7 +30,7 @@
 
 连接安全性是指如何使用防火墙规则和连接加密来限制和保护数据库连接。
 
-服务器和数据库使用防火墙规则来拒绝源自未明确列入允许列表的 IP 地址的连接企图。若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 经典门户、REST API 或 PowerShell 创建服务器级防火墙规则。作为最佳实践，应该尽量通过服务器防火墙来限制允许的 IP 地址范围。若要从你的本地计算机访问 Azure SQL 数据仓库，请确保你的网络和本地计算机上的防火墙允许在 TCP 端口 1433 上的传出通信。有关详细信息，请参阅 [Azure SQL 数据库防火墙][]。
+服务器和数据库使用防火墙规则来拒绝源自未明确列入允许列表的 IP 地址的连接企图。若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 经典门户、REST API 或 PowerShell 创建服务器级防火墙规则。作为最佳实践，应该尽量通过服务器防火墙来限制允许的 IP 地址范围。若要从你的本地计算机访问 Azure SQL 数据仓库，请确保你的网络和本地计算机上的防火墙允许在 TCP 端口 1433 上的传出通信。有关详细信息，请参阅 [Azure SQL 数据库防火墙][]、[sp\_set\_firewall\_rule][] 和 [sp\_set\_database\_firewall\_rule][]。
 
 连接到 SQL 数据仓库时，可以在连接字符串中设置加密模式，以便对连接进行加密。为连接启用加密时，其语法因协议而异。导航到 Azure 门户中的数据库即可设置连接字符串。在“概要”下面，单击“显示数据库连接字符串”。
 
@@ -43,7 +43,7 @@
 
 但是，组织的用户最好使用不同的帐户进行验证。这样，你就可以限制授予应用程序的权限，并在应用程序代码容易受到 SQL 注入攻击的情况下降低恶意活动的风险。
 
-要创建 SQL Server 验证的用户，请使用服务器管理员登录名连接到服务器上的 **master** 数据库，并创建新的服务器登录名。
+若要创建 SQL Server 验证的用户，请使用服务器管理员登录名连接到服务器上的 **master** 数据库，并创建新的服务器登录名。
 
 
 	-- Connect to master database and create a login
@@ -54,6 +54,7 @@
 
     -- Connect to SQL DW database and create a database user
     CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
+
 
 有关在 SQL 数据库上进行身份验证的详细信息，请参阅[在 Azure SQL 数据库中管理数据库和登录名][]。有关更多对 SQL 数据仓库使用 Azure AD 预览的详细信息，请参阅 [使用 Azure Active Directory 身份验证连接到 SQL 数据仓库][]。
 
@@ -102,6 +103,8 @@ Azure SQL 数据仓库将会帮助你通过使用[透明数据加密][]来加密
 
 <!--MSDN references-->
 [Azure SQL 数据库防火墙]: https://msdn.microsoft.com/zh-cn/library/ee621782.aspx
+[sp\_set\_firewall\_rule]: https://msdn.microsoft.com/zh-cn/library/dn270017.aspx
+[sp\_set\_database\_firewall\_rule]: https://msdn.microsoft.com/zh-cn/library/dn270010.aspx
 [数据库角色]: https://msdn.microsoft.com/zh-cn/library/ms189121.aspx
 [在 Azure SQL 数据库中管理数据库和登录名]: https://msdn.microsoft.com/zh-cn/library/ee336235.aspx
 [权限]: https://msdn.microsoft.com/zh-cn/library/ms191291.aspx
@@ -112,4 +115,4 @@ Azure SQL 数据仓库将会帮助你通过使用[透明数据加密][]来加密
 <!--Other Web references-->
 [Azure 门户中基于角色的访问控制]: /documentation/articles/role-based-access-control-configure
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=Mooncake_0829_2016-->

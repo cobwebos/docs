@@ -5,12 +5,11 @@
    documentationCenter="NA"
    authors="lodipalm"
    manager="barbkess"
-   editor=""/>  
-
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="07/16/2016"
+   ms.date="07/23/2016"
    wacn.date=""/>  
 
 
@@ -164,6 +163,7 @@ Polybase 可让你使用熟悉的 T-SQL 命令来利用不同源中的数据。P
 [SQL Data Warehouse solution partners]: /documentation/articles/sql-data-warehouse-integrate-solution-partners/
 [集成工具概述]: /documentation/articles/sql-data-warehouse-overview-integrate/
 [备份和还原概述]: /documentation/articles/sql-data-warehouse-restore-database-overview/
+[Azure glossary]: /documentation/articles/azure-glossary-cloud-terminology/
 
 <!--MSDN references-->
 
@@ -172,7 +172,7 @@ Polybase 可让你使用熟悉的 T-SQL 命令来利用不同源中的数据。P
 [博客]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [CAT 团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Feature Requests]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN 论坛]: https://social.msdn.microsoft.com/Forums/azure/zh-cn/home?forum=AzureSQLDataWarehouse
+[MSDN 论坛]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
 [Stack Overflow 论坛]: http://stackoverflow.com/questions/tagged/azure-sqldw
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

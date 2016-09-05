@@ -4,12 +4,13 @@
 	services="active-directory"
 	documentationCenter=""
 	authors="asmalser-msft"
-	manager="terrylan"
-	editor=""/>
+	manager="femila"
+	editor=""/>  
+
 
 <tags
 	ms.service="active-directory"
-	ms.date="02/09/2016"
+	ms.date="08/15/2016"
 	wacn.date=""/>
 
 #Azure Active Directory 的应用程序访问与单一登录是什么？
@@ -58,7 +59,7 @@ Azure AD 支持通过三种不同的方式登录应用程序：
 
 Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协议的应用程序使用联合单一登录。
 
-另请参阅：[管理用于联合单一登录的证书](/documentation/articles/active-directory-sso-certs)
+另请参阅：[管理用于联合单一登录的证书](/documentation/articles/active-directory-sso-certs/)
 
 ###基于密码的单一登录
 
@@ -76,7 +77,7 @@ Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协�
 
 对于基于密码的 SSO，最终用户的浏览器可以是：
 
-- Windows 7 或更高版本上的 Internet Explorer 8、9、10 和 11（另请参阅 [IE Extension Deployment Guide（IE 扩展部署指南）](active-directory-saas-ie-group-policy.md)）
+- Windows 7 或更高版本上的 Internet Explorer 8、9、10 和 11（另请参阅 [IE Extension Deployment Guide](/documentation/articles/active-directory-saas-ie-group-policy/)（IE 扩展部署指南））
 - Chrome -- 在 Windows 7 或更高版本上，以及在 MacOS X 或更高版本上
 - Firefox 26.0 或更高版本 -- 在 Windows XP SP2 或更高版本上，以及在 Mac OS X 10.6 或更高版本上
 
@@ -93,7 +94,7 @@ Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协�
 
 在 Azure AD 中删除用户或更改其信息时，这些更改也会反映在 SaaS 应用程序中。这意味着，配置自动身份生命周期管理可使管理员能够从 SaaS 应用程序控制并提供自动预配和取消预配。在 Azure AD 中，这种身份生命周期管理的自动化通过用户预配启用。
 
-有关详细信息，请参阅[在 SaaS 应用程序中自动预配和取消预配用户](/documentation/articles/active-directory-saas-app-provisioning)
+有关详细信息，请参阅[在 SaaS 应用程序中自动预配和取消预配用户](/documentation/articles/active-directory-saas-app-provisioning/)
 
 ##Azure 应用程序库入门
 
@@ -117,11 +118,11 @@ Azure AD 允许对支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 协�
 
 如果在 Azure AD 应用程序库中找不到你的应用程序，你可以选择：
 
-*	**添加你使用的但未列出的应用** - 使用 Azure 管理门户内应用库中的“自定义”类别来连接组织正在使用但未列出的应用程序。你可以添加支持 SAML 2.0 的任何应用程序作为联合应用，或者添加具有 HTML 登录页的任何应用程序作为密码 SSO 应用。有关详细信息，请参阅[添加自己的应用程序](active-directory-saas-custom-apps.md)一文。
+*	**添加你使用的但未列出的应用** - 使用 Azure 管理门户内应用库中的“自定义”类别来连接组织正在使用但未列出的应用程序。你可以添加支持 SAML 2.0 的任何应用程序作为联合应用，或者添加具有 HTML 登录页的任何应用程序作为密码 SSO 应用。有关详细信息，请参阅[添加自己的应用程序](/documentation/articles/active-directory-saas-custom-apps/)一文。
 
 
 *	**添加正在开发的自有应用** - 如果你自己开发了应用程序，请遵照 Azure AD 开发人员文档中的指导原则使用 Azure AD 图形 API 来实施联合单一登录或预配。有关详细信息，请参阅以下资源：
-  * [Azure AD 的身份验证方案](active-directory-authentication-scenarios.md)
+  * [Azure AD 的身份验证方案](/documentation/articles/active-directory-authentication-scenarios/)
   * [https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet](https://github.com/AzureADSamples/WebApp-WebAPI-MultiTenant-OpenIdConnect-DotNet)
   * [https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore](https://github.com/AzureADSamples/NativeClient-WebAPI-MultiTenant-WindowsStore)
@@ -163,13 +164,13 @@ Azure AD 提供多种可自定义的方式来向组织中的用户部署应用�
 
 ###Azure AD 访问面板
 
-https://myapps.microsoft.com 上的访问面板是一个基于 Web 的门户，它允许在 Azure Active Directory 中拥有组织帐户的最终用户查看和启动 Azure AD 管理员已向他们授予其访问权限的基于云的应用程序。如果你是使用 [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/) 的最终用户，则还可以通过访问面板利用自助服务组管理功能。
+https://myapps.microsoft.com 上的访问面板是一个基于 Web 的门户，它允许在 Azure Active Directory 中拥有组织帐户的最终用户查看和启动 Azure AD 管理员已向他们授予其访问权限的基于云的应用程序。如果你是使用 [Azure Active Directory Premium](/pricing/details/identity/) 的最终用户，则还可以通过访问面板利用自助服务组管理功能。
 
 ![][3]
 
 访问面板是与 Azure 管理门户分开的，因此不要求用户拥有 Azure 订阅或 Office 365 订阅。
 
-有关 Azure AD 访问面板的详细信息，请参阅[访问面板简介](active-directory-saas-access-panel-introduction.md)。
+有关 Azure AD 访问面板的详细信息，请参阅[访问面板简介](/documentation/articles/active-directory-saas-access-panel-introduction/)。
 
 ###Office 365 应用程序启动器
 
@@ -207,14 +208,15 @@ Azure AD 还为支持基于密码单一登录、现有单一登录以及任何�
 
 ##相关文章
 
-- [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](active-directory-saas-tutorial-list.md)
-- [使用 Cloud App Discovery 查找未经认可的云应用程序](active-directory-cloudappdiscovery-whatis.md)
-- [Introduction to Managing Access to Apps（管理对应用的访问简介）](active-directory-managing-access-to-apps.md)
-- [比较 Azure AD 中用于管理外部标识的功能](active-directory-b2b-compare-external-identities.md)
+- [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index/)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](/documentation/articles/active-directory-saas-tutorial-list/)
+- [使用 Cloud App Discovery 查找未经认可的云应用程序](/documentation/articles/active-directory-cloudappdiscovery-whatis/)
+- [Introduction to Managing Access to Apps（管理对应用的访问简介）](/documentation/articles/active-directory-managing-access-to-apps/)
+- [比较 Azure AD 中用于管理外部标识的功能](/documentation/articles/active-directory-b2b-compare-external-identities/)
 
 
 <!--Image references-->
+
 [1]: ./media/active-directory-appssoaccess-whatis/onlineappgallery.png
 [2]: ./media/active-directory-appssoaccess-whatis/azuremgmtportal.png
 [3]: ./media/active-directory-appssoaccess-whatis/accesspanel.png
@@ -222,4 +224,4 @@ Azure AD 还为支持基于密码单一登录、现有单一登录以及任何�
 [5]: ./media/active-directory-appssoaccess-whatis/workdaymobile.png
 [6]: ./media/active-directory-appssoaccess-whatis/deeplink.png
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0829_2016-->

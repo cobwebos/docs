@@ -8,13 +8,13 @@
     editor="" />
 
 <tags 
-	ms.service="active-directory" 
-    ms.date="06/24/2016" 
-	wacn.date=""/>
+    ms.service="active-directory" 
+    ms.date="08/11/2016" 
+    wacn.date=""/>
 
 # 如何查看 Azure Access Control 服务返回的 SAML
 
-本指南将演示如何查看 Azure Access Control 服务 (ACS) 返回到您的应用程序的基础安全声明标记语言 (SAML)。本指南基于[如何使用 Eclipse 向 Azure 访问控制服务对 Web 用户进行身份验证][]主题，并提供了用于显示 SAML 信息的代码。完整的应用程序与下图中所示类似。
+本指南将演示如何查看 Azure Access Control 服务 (ACS) 返回到您的应用程序的基础安全声明标记语言 (SAML)。本指南基于[如何使用 Eclipse 通过 Azure 访问控制服务对 Web 用户进行身份验证][]主题，并提供了用于显示 SAML 信息的代码。完整的应用程序与下图中所示类似。
 
 ![示例 SAML 输出][saml_output]
 
@@ -190,7 +190,8 @@ Azure 访问服务控制筛选器是一个社区技术预览版。作为预发�
 [访问控制服务 2.0]: http://go.microsoft.com/fwlink/?LinkID=212360
 [使用 Eclipse 在 Azure 访问控制服务中对 Web 用户进行身份验证]: ../active-directory-java-authenticate-users-access-control-eclipse
 [如何使用 Eclipse 向 Azure 访问控制服务对 Web 用户进行身份验证]: ../active-directory-java-authenticate-users-access-control-eclipse
+[如何使用 Eclipse 通过 Azure 访问控制服务对 Web 用户进行身份验证]: ../active-directory-java-authenticate-users-access-control-eclipse
 [saml_output]: ./media/active-directory-java-view-saml-returned-by-access-control/SAML_Output.png
  
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=Mooncake_0829_2016-->

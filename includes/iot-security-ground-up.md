@@ -24,11 +24,11 @@ Azure IoT 套件提供独特的功能，从 IoT 设备预配、连接到及存�
 
 Azure 提供完整的云解决方案，其中结合了持续成长的集成式云服务（分析、机器学习服务、存储、安全、网络功能和 Web）集合，通过行业领先的承诺来为数据提供保护与隐私。我们的[假设性违规](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud)策略将通过由软件安全专家组成的专属“红队”，来模拟攻击、测试要检测的 Azure 能力、防范新兴威胁，以及从违规中恢复。我们的[全球事件响应](https://www.microsoft.com/TrustCenter/Security/DesignOpSecurity)团队夜以继日地工作，以减缓攻击与恶意活动造成的影响。该团队遵循事件管理、通信和恢复所创建的过程，并与内部和外部伙伴合作来使用可探索且可预测的接口。
 
-我们的系统提供持续的入侵检测和防护、服务攻击预防、定期渗透测试和法医式工具帮助识别与缓解威胁。[多重身份验证](/documentation/articles/multi-factor-authentication/)可为访问网络的最终用户提供额外的安全层。此外，对于应用程序和主机提供程序，我们提供访问控制、监视、反恶意软件、漏洞扫描、修补和配置管理。
+我们的系统提供持续的入侵检测和防护、服务攻击预防、定期渗透测试和法医式工具帮助识别与缓解威胁。[多重身份验证](/documentation/articles/multi-factor-authentication/multi-factor-authentication/)可为访问网络的最终用户提供额外的安全层。此外，对于应用程序和主机提供程序，我们提供访问控制、监视、反恶意软件、漏洞扫描、修补和配置管理。
 
 Azure IoT 套件使用内置于 Azure 平台的安全和隐私功能，以及我们针对所有 Microsoft 软件进行的安全开发和操作所提供的 SDL 和 OSA 过程。这些过程提供基础结构保护、网络保护，以及标识与管理功能，作为任何解决方案安全的基础。
 
-[IoT 套件](/documentation/articles/iot-suite-what-is-azure-iot/)内的 [Azure IoT 中心](/documentation/articles/iot-hub-what-is-iot-hub/)提供完全托管的服务，使用每一设备的安全凭据和访问控制，在 IoT 设备与 Azure 服务之间启用可靠且安全的双向通信，例如 [Azure 机器学习](/documentation/articles/machine-learning-what-is-machine-learning/)和 [Azure 流分析](/documentation/articles/stream-analytics-introduction/)。
+[IoT 套件](/documentation/articles/iot-suite/iot-suite-what-is-azure-iot/)内的 [Azure IoT 中心](/documentation/articles/iot-hub/iot-hub-what-is-iot-hub/)提供完全托管的服务，使用每一设备的安全凭据和访问控制，在 IoT 设备与 Azure 服务之间启用可靠且安全的双向通信，例如 [Azure 机器学习](/documentation/articles/machine-learning/machine-learning-what-is-machine-learning/)和 [Azure 流分析](/documentation/articles/stream-analytics/stream-analytics-introduction/)。
 
 为了以最佳方式传达内置于 Azure IoT 套件的安全和隐私功能，我们已将套件细分为三个主要安全领域。
 
@@ -38,7 +38,7 @@ Azure IoT 套件使用内置于 Azure 平台的安全和隐私功能，以及我
 
 当设备不在现场时，Azure IoT 套件将保护它们，方法是为每个设备提供唯一的标识密钥，在设备运行时，IoT 基础结构可用于与其进行通信。该过程非常快速且可轻松设置。使用用户选择的设备 ID 生成的密钥将形成令牌的基础，可以在设备和 Azure IoT 中心之间的所有通信中使用。
 
-设备 ID 可以在制造期间（例如硬件信任模块中的闪存）与设备关联，或者可以使用现有的固定标识作为代理（例如 CPU 序列号）。由于更改设备中的此识别信息并不简单，因此请务必引入逻辑设备 ID，以防万一基础设备硬件更改，逻辑设备可保持不变。在某些情况下，设备标识的关联将发生在设备部署期间（也就是已经过验证的现场工程师实际上将在与 IoT 解决方案后端通信的同时配置新设备）。[Azure IoT 中心标识注册表](/documentation/articles/iot-hub-devguide/)针对解决方案为设备标识和安全密钥提供安全存储。可将单个或一组设备标识添加到允许列表或阻止列表，以便完全控制设备访问。
+设备 ID 可以在制造期间（例如硬件信任模块中的闪存）与设备关联，或者可以使用现有的固定标识作为代理（例如 CPU 序列号）。由于更改设备中的此识别信息并不简单，因此请务必引入逻辑设备 ID，以防万一基础设备硬件更改，逻辑设备可保持不变。在某些情况下，设备标识的关联将发生在设备部署期间（也就是已经过验证的现场工程师实际上将在与 IoT 解决方案后端通信的同时配置新设备）。[Azure IoT 中心标识注册表](/documentation/articles/iot-hub/iot-hub-devguide/)针对解决方案为设备标识和安全密钥提供安全存储。可将单个或一组设备标识添加到允许列表或方块列表，以便完全控制设备访问。
  
 云中的 Azure IoT 中心访问控制策略，能够启用和禁用任何设备标识，必要时可提供方法来取消关联 IoT 部署中的设备。设备的这种关联和取消关联基于每个设备标识。
 
@@ -64,12 +64,11 @@ Azure IoT 套件使用内置于 Azure 平台的安全和隐私功能，以及我
 
 ### 安全处理和云中存储 
 
-通过加密通信以处理云中的数据，Azure IoT 套件有助于确保数据安全。这将提供弹性来实现额外加密并管理安全密钥。
-使用 Azure Active Directory (AAD) 进行用户身份验证和授权，Azure IoT 套件可以针对在云中的数据提供以策略为基础的授权模型，启用可审核和审查的轻松访问管理。此模型还能够以接近实时的方式吊销对云中数据以及连接到 Azure IoT 套件的设备的访问权限。
+通过加密通信以处理云中的数据，Azure IoT 套件有助于确保数据安全。这将提供弹性来实现额外加密并管理安全密钥。使用 Azure Active Directory (AAD) 进行用户身份验证和授权，Azure IoT 套件可以针对在云中的数据提供以策略为基础的授权模型，启用可审核和审查的轻松访问管理。此模型还能够以接近实时的方式吊销对云中数据以及连接到 Azure IoT 套件的设备的访问权限。
 
 将数据移到云中之后，可以在任何用户定义工作流中处理和存储数据。访问数据的每个部分根据所用的存储服务通过 Azure Active Directory 来控制。
    
-IoT 基础结构使用的所有密钥存储在云的安全存储中，并具有滚动更新能力，以防密钥需要重新预配。数据可以存储在 [DocumentDB](/documentation/articles/documentdb-introduction/) 或 [SQL 数据库](/documentation/articles/sql-database-faq/)中，启用所需安全级别的定义。此外，Azure 提供一种方式用于监视和审核对数据的所有访问权限，以提醒有任何入侵或未经授权的访问。
+IoT 基础结构使用的所有密钥存储在云的安全存储中，并具有滚动更新能力，以防密钥需要重新预配。数据可以存储在 [DocumentDB](/documentation/articles/documentdb/documentdb-introduction/) 或 [SQL 数据库](/documentation/articles/sql-database/sql-database-faq/)中，启用所需安全级别的定义。此外，Azure 提供一种方式用于监视和审核对数据的所有访问权限，以提醒有任何入侵或未经授权的访问。
 
 ## 结束语
 
@@ -88,4 +87,4 @@ Azure IoT 套件根据设计将构建安全措施，启用安全的资产监视�
 - [**Logic Apps**](/home/features/app-service/logic/)：Azure App Service 的 Logic Apps 功能可帮助你将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。Logic Apps 可让开发人员设计从触发过程开始，然后运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
 - [**Blob 存储**](/home/features/storage/)：可靠且符合经济效益的云存储，适用于设备要发送到云的数据。
 
-<!---HONumber=Mooncake_0801_2016-->
+<!---HONumber=Mooncake_0829_2016-->

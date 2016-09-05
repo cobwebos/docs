@@ -5,12 +5,13 @@
 	documentationCenter="java"
 	authors="rmcmurray"
 	manager="wpickett"
-	editor="jimbe"/>
+	editor=""/>
 
 <tags
 	ms.service="storage"
-	ms.date="06/24/2016"
-	wacn.date=""/>
+	ms.date="08/11/2016"
+	wacn.date=""/>  
+
 
 # 使用 Blob 存储的本地应用程序
 
@@ -27,7 +28,7 @@
 
 - 您已创建存储在路径 c:\\myimages\\image1.jpg 处的已命名本地图像文件。或者，在示例中修改 **FileInputStream** 构造函数以使用其他图像路径和文件名。
 
-[AZURE.INCLUDE [create-account-note](../includes/create-account-note.md)]
+[AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## 使用 Azure Blob 存储上载文件
 
@@ -67,6 +68,7 @@
 -   **CloudBlockBlob**：用于将本地图像文件上载到容器。
 
 <!-- -->
+
 
     CloudStorageAccount account;
     CloudBlobClient serviceClient;
@@ -358,4 +360,4 @@
 - [Azure 存储空间服务 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx)
 - [Azure 存储团队博客](http://blogs.msdn.com/b/windowsazurestorage/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0829_2016-->

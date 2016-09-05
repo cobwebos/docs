@@ -1,28 +1,30 @@
-<properties 
-    pageTitle="如何使用队列存储 (C++) | Microsoft Azure" 
-    description="了解如何在 Azure 中使用队列存储服务。示例用 C++ 编写。" 
-    services="storage" 
-    documentationCenter=".net" 
-    authors="tamram" 
-    manager="adinah" 
-    editor=""/>
+<properties
+    pageTitle="如何使用队列存储 (C++) | Azure"
+    description="了解如何在 Azure 中使用队列存储服务。示例用 C++ 编写。"
+    services="storage"
+    documentationCenter=".net"
+    authors="robinsh"
+    manager="carmonm"
+    editor="tysonn"/>
 
 <tags 
     ms.service="storage" 
-    ms.date="05/27/2016"
+    ms.date="08/03/2016"
     wacn.date=""/>
 
 # 如何通过 C++ 使用队列存储  
 
-[AZURE.INCLUDE [storage-selector-queue-include](../includes/storage-selector-queue-include.md)]
+[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## 概述
 本指南将演示如何使用 Azure 队列存储服务执行常见方案。示例用 C++ 编写，并使用[适用于 C++ 的 Azure 存储空间客户端库](http://github.com/Azure/azure-storage-cpp/blob/master/README.md)。介绍的方案包括“插入”、“查看”、“获取”和“删除”队列消息以及“创建和删除队列”。
 
 >[AZURE.NOTE] 本指南主要面向适用于 C++ 的 Azure 存储空间客户端库 1.0.0 版及更高版本。建议的版本是存储空间客户端库 2.2.0，它可以通过 [NuGet](http://www.nuget.org/packages/wastorage) 或 [GitHub](http://github.com/Azure/azure-storage-cpp/) 获得。
 
-[AZURE.INCLUDE [storage-queue-concepts-include](../includes/storage-queue-concepts-include.md)]
-[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
+[AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
+[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## 创建 C++ 应用程序  
 在本指南中，你将使用存储功能，这些功能可以在 C++ 应用程序中运行。
@@ -44,12 +46,12 @@
 
 ## 设置 Azure 存储连接字符串
 
-Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 AccountName 和 AccountKey 值使用 [Azure 门户](https://portal.azure.cn)中列出的存储帐户的名称和存储帐户的存储访问密钥。有关存储帐户和访问密钥的信息，请参阅[关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account)。此示例演示如何声明一个静态字段以保存连接字符串：
+Azure 存储客户端使用存储连接字符串来存储用于访问数据管理服务的终结点和凭据。在客户端应用程序中运行时，必须提供以下格式的存储连接字符串，并对 *AccountName* 和 *AccountKey* 值使用 [Azure 门户](https://portal.azure.cn)中列出的存储帐户的名称和存储帐户的存储访问密钥。有关存储帐户和访问密钥的信息，请参阅[关于 Azure 存储帐户](/documentation/articles/storage-create-storage-account/)。此示例演示如何声明一个静态字段以保存连接字符串：
 
 	// Define the connection-string with your values.
 	const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key;EndpointSuffix=core.chinacloudapi.cn"));
 
-若要在本地 Windows 计算机中测试您的应用程序，可以使用随同 [Azure SDK](/downloads/) 一起安装的 Microsoft Azure [存储模拟器](/documentation/articles/storage-use-emulator)。存储模拟器是一种用于模拟本地开发计算机上 Azure 中可用的 Blob、队列和表服务的实用程序。以下示例演示如何声明一个静态字段以将连接字符串保存到你的本地存储模拟器：
+若要在本地 Windows 计算机中测试您的应用程序，可以使用随同 [Azure SDK](/downloads/) 一起安装的 Microsoft Azure [存储模拟器](/documentation/articles/storage-use-emulator/)。存储模拟器是一种用于模拟本地开发计算机上 Azure 中可用的 Blob、队列和表服务的实用程序。以下示例演示如何声明一个静态字段以将连接字符串保存到你的本地存储模拟器：
 
 	// Define the connection-string with Azure Storage Emulator.
 	const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
@@ -226,12 +228,12 @@ Azure 存储客户端使用存储连接字符串来存储用于访问数据管�
 ## 后续步骤
 既然你已了解队列存储的基本知识，就可以按照以下链接了解有关 Azure 存储的详细信息。
 
--	[如何通过 C++ 使用 Blob 存储](/documentation/articles/storage-c-plus-plus-how-to-use-blobs)
--	[如何通过 C++ 使用表存储](/documentation/articles/storage-c-plus-plus-how-to-use-tables)
--	[使用 C++ 列出 Azure 存储资源](/documentation/articles/storage-c-plus-plus-enumeration)
+-	[如何通过 C++ 使用 Blob 存储](/documentation/articles/storage-c-plus-plus-how-to-use-blobs/)
+-	[如何通过 C++ 使用表存储](/documentation/articles/storage-c-plus-plus-how-to-use-tables/)
+-	[使用 C++ 列出 Azure 存储资源](/documentation/articles/storage-c-plus-plus-enumeration/)
 -	[适用于 C++ 的存储空间客户端库参考](http://azure.github.io/azure-storage-cpp)
 -	[Azure 存档文档](/documentation/services/storage/)
 
  
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0829_2016-->

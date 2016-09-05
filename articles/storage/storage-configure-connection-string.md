@@ -1,15 +1,16 @@
 <properties 
 	pageTitle="配置 Azure 存储空间的连接字符串 | Azure" 
 	description="配置 Azure 存储帐户的连接字符串。连接字符串包含在运行时从应用程序访问 Azure 存储帐户所需的身份验证信息。"
-	services="storage" 
-	documentationCenter="" 
-	authors="tamram" 
-	manager="adinah" 
-	editor="cgronlun"/>
+	services="storage"
+	documentationCenter=""
+	authors="tamram"
+	manager="carmonm"
+	editor="tysonn"/>
+
 
 <tags 
 	ms.service="storage" 
-	ms.date="06/08/2016"
+	ms.date="08/03/2016"
 	wacn.date=""/>
 
 # 配置 Azure 存储空间连接字符串
@@ -22,7 +23,7 @@
 - 在 Azure 中访问存储帐户。
 - 通过共享访问签名 (SAS) 访问 Azure 中的指定资源。
 
-[AZURE.INCLUDE [storage-account-key-note-include](../includes/storage-account-key-note-include.md)]
+[AZURE.INCLUDE [storage-account-key-note-include](../../includes/storage-account-key-note-include.md)]
 
 ## 存储连接字符串
 
@@ -38,9 +39,9 @@
 
 ## 创建存储模拟器的连接字符串
 
-[AZURE.INCLUDE [storage-emulator-connection-string-include](../includes/storage-emulator-connection-string-include.md)]
+[AZURE.INCLUDE [storage-emulator-connection-string-include](../../includes/storage-emulator-connection-string-include.md)]
 
-请参阅[使用 Azure 存储模拟器进行开发和测试](/documentation/articles/storage-use-emulator)以了解有关存储模拟器的更多信息。
+请参阅[使用 Azure 存储模拟器进行开发和测试](/documentation/articles/storage-use-emulator/)以了解有关存储模拟器的更多信息。
 
 ## 创建 Azure 存储帐户的连接字符串
 
@@ -71,7 +72,7 @@
 
 尽管连接字符串必须至少包含一个服务终结点，但每个服务终结点都是可选的。
 
-建议最好配合使用 HTTPS 与 SAS。有关共享访问签名的详细信息，请参阅 [Shared Access Signatures: Understanding the SAS Model（共享访问签名：了解 SAS 模型）](/documentation/articles/storage-dotnet-shared-access-signature-part-1)。
+建议最好配合使用 HTTPS 与 SAS。有关共享访问签名的详细信息，请参阅 [Shared Access Signatures: Understanding the SAS Model](/documentation/articles/storage-dotnet-shared-access-signature-part-1/)（共享访问签名：了解 SAS 模型）。
 
 >[AZURE.NOTE] 如果在配置文件的连接字符串中指定 SAS，可能需要为 URL 中的特殊字符编码。
 
@@ -153,12 +154,12 @@
 
 ## 分析连接字符串
 
-[AZURE.INCLUDE [storage-cloud-configuration-manager-include](../includes/storage-cloud-configuration-manager-include.md)]
+[AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
 
 ## 后续步骤
 
-- [使用 Azure 存储模拟器进行开发和测试](/documentation/articles/storage-use-emulator)
-- [Azure 存储资源管理器](/documentation/articles/storage-explorers)
+- [使用 Azure 存储模拟器进行开发和测试](/documentation/articles/storage-use-emulator/)
+- [Azure 存储资源管理器](/documentation/articles/storage-explorers/)
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0829_2016-->

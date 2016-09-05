@@ -5,12 +5,11 @@
    documentationCenter="NA"
    authors="sonyam"
    manager="barbkess"
-   editor=""/>  
-
+   editor=""/>
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="06/28/2016"
+   ms.date="07/18/2016"
    wacn.date=""/>
 
 # 还原 Azure SQL 数据仓库（门户）
@@ -25,7 +24,7 @@
 
 ## 开始之前
 
-**验证 DTU 容量。** 每个 SQL 数据仓库都由 SQL Server 逻辑服务器来承载。此逻辑服务器具有以 DTU 单位进行度量的容量限制。请务必确保承载数据库的 SQL Server 逻辑服务器对于所还原的数据库具有足够 DTU 容量，然后才能还原 SQL 数据仓库。有关[如何查看和提高 DTU 配额][]的详细信息，请参阅此博客文章。
+**验证 DTU 容量。** 每个 SQL 数据仓库都由一个具有默认 DTU 配额的 SQL 服务器（例如 myserver.database.chinacloudapi.cn）托管。在还原 SQL 数据仓库之前，请确保 SQL Server 的剩余 DTU 配额足够进行数据库还原。若要了解如何计算所需 DTU 或请求更多的 DTU，请参阅[请求 DTU 配额更改][]。
 
 
 ## 还原活动或暂停的数据库
@@ -97,6 +96,7 @@
 
 <!--Image references-->
 
+
 <!--Article references-->
 [Azure SQL 数据库业务连续性概述]: /documentation/articles/sql-database-business-continuity/
 [概述]: /documentation/articles/sql-data-warehouse-restore-database-overview/
@@ -104,14 +104,14 @@
 [PowerShell]: /documentation/articles/sql-data-warehouse-restore-database-powershell/
 [REST]: /documentation/articles/sql-data-warehouse-restore-database-rest-api/
 [确认已恢复的数据库]: /documentation/articles/sql-database-recovered-finalize/
+[请求 DTU 配额更改]: /documentation/articles/sql-data-warehouse-get-started-create-support-ticket#request-quota-change
 
 <!--MSDN references-->
 
 <!--Blog references-->
-[如何查看和提高 DTU 配额]: https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests/
 
 <!--Other Web references-->
 
 [Azure 门户]: https://portal.azure.cn/
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0829_2016-->

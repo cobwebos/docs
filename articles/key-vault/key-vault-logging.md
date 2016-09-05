@@ -9,11 +9,12 @@
 
 <tags
 	ms.service="key-vault"
-	ms.date="01/08/2016"
-	wacn.date=""/>
+	ms.date="07/15/2016"
+	wacn.date=""/>  
+
 
 # Azure 密钥保管库日志记录 #
-在大多数区域中提供了 Azure 密钥保管库。有关详细信息，请参阅[密钥保管库定价页](/home/features/key-vault/#price)。
+在大多数区域中提供了 Azure 密钥保管库。有关详细信息，请参阅[密钥保管库定价页](/pricing/details/key-vault/)。
 
 ## 介绍  
 在创建一个或多个密钥保管库之后，你可能想要监视密钥保管库的访问方式、时间和访问者。为此，你可以启用密钥保管库日志记录，以便在提供的 Azure 存储帐户中保存信息。系统自动为你指定的存储帐户创建了名为 **insights-logs-auditevent** 的新容器，你可以使用同一个存储帐户来收集多个密钥保管库的日志。
@@ -21,23 +22,23 @@
 最多在执行密钥保管库操作 10 分钟后，就能访问其日志记录信息。但大多数情况下不用等待这么长时间。存储帐户中的日志由完全你管理：
 
 - 请使用标准的 Azure 访问控制方法限制可访问日志的人员，以此保护日志。
-- 删除不想继续保留在存储帐户中的日志。 
+- 删除不想继续保留在存储帐户中的日志。
 
 请借助本教程开始使用 Azure 密钥保管库日志记录，并创建存储帐户，启用日志记录，以及解释收集到的日志信息。
 
 
->[AZURE.NOTE]  本教程不包含有关如何创建密钥保管库、密钥或机密的说明。有关这方面的信息，请参阅 [Azure 密钥保管库入门](/documentation/articles/key-vault-get-started)。或者，有关跨平台命令行接口说明，请参阅[此对应教程](/documentation/articles/key-vault-manage-with-cli)。
+>[AZURE.NOTE]  本教程不包含有关如何创建密钥保管库、密钥或机密的说明。有关这方面的信息，请参阅 [Get started with Azure Key Vault](/documentation/articles/key-vault-get-started/)（Azure 密钥保管库入门）。或者，有关跨平台命令行接口说明，请参阅[此对应教程](/documentation/articles/key-vault-manage-with-cli/)。
 >
 >目前，无法在 Azure 门户中配置 Azure 密钥保管库。请改用这些 Azure PowerShell 说明。
 
-有关 Azure 密钥保管库的概述信息，请参阅[什么是 Azure 密钥保管库？](/documentation/articles/key-vault-whatis)
+有关 Azure 密钥保管库的概述信息，请参阅[什么是 Azure 密钥保管库？](/documentation/articles/key-vault-whatis/)
 
 ## 先决条件
 
 若要完成本教程，你必须准备好以下各项：
 
-- 你正在使用的现有密钥保管库。  
-- Azure PowerShell，**最低版本为 1.0.1**。若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。如果你已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中键入 `(Get-Module azure -ListAvailable).Version`。  
+- 你正在使用的现有密钥保管库。
+- Azure PowerShell，**最低版本为 1.0.1**。若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure/)。如果你已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中键入 `(Get-Module azure -ListAvailable).Version`。
 - 足够的 Azure 存储空间用于保存密钥保管库日志。
 
 
@@ -57,14 +58,14 @@
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-有关配置 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。
+有关配置 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure/)。
 
 
 ## <a id="storage"></a>为日志创建新的存储帐户 ##
 
 尽管你可以使用现有的存储帐户来保存日志，但我们将专门创建一个新的存储帐户来保存密钥保管库日志。为方便起见，在稍后遇到必须指定此帐户的情况时，我们会将详细信息存储到名为 **sa** 的变量中。
 
-为了进一步简化管理，我们还使用了包含密钥保管库的同一个资源组。在[入门教程](/documentation/articles/key-vault-get-started)中，此资源组的名为 **ContosoResourceGroup**，我们继续使用“中国东部”位置。请根据情况将这些值替换成你自己的值：
+为了进一步简化管理，我们还使用了包含密钥保管库的同一个资源组。在[入门教程](/documentation/articles/key-vault-get-started/)中，此资源组的名为 **ContosoResourceGroup**，我们继续使用“中国东部”位置。请根据情况将这些值替换成你自己的值：
 
 	$sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name ContosoKeyVaultLogs -Type Standard_LRS -Location 'China East'
 
@@ -101,8 +102,8 @@
 - 记录所有已经过身份验证的 REST API 请求，包括由于访问权限、系统错误或错误请求而发生的失败请求。
 - 对密钥保管库本身执行的操作，包括创建、删除、设置密钥保管库访问策略，以及更新密钥保管库属性（例如标记）。
 - 对密钥保管库中的密钥和机密执行的操作，包括创建、修改或删除这些密钥或机密，以及签名、验证、加密、解密、包装和解包密钥、获取机密、列出密钥和机密及其版本。
+- 导致出现 401 响应的未经身份验证的请求。例如，请求不包含持有者令牌、格式不正确或已过期，或者包含无效的令牌。
 
-不记录未经身份验证的请求。
 
 ## <a id="access"></a>访问日志 ##
 
@@ -187,7 +188,7 @@
             	"callerIpAddress": "104.40.82.76",
             	"correlationId": "",
             	"identity": {"claim":{"http://schemas.microsoft.com/identity/claims/objectidentifier":"d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn":"live.com#username@outlook.com","appid":"1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},
-            	"properties": {"clientInfo":"azure-resource-manager/2.0","requestUri":"https://control-prod-wus.vaultcore.chinacloudapi.cn/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id":"https://contosokeyvault.vault.chinacloudapi.cn/","httpStatusCode":200}
+            	"properties": {"clientInfo":"azure-resource-manager/2.0","requestUri":"https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id":"https://contosokeyvault.vault.azure.net/","httpStatusCode":200}
         	}
     	]
 	}
@@ -217,7 +218,7 @@
 
 **operationName** 字段值采用 ObjectVerb 格式。例如：
 
-- 所有密钥保管库操作采用“Vault`<action>`”格式，例如 `VaultGet` 和 `VaultCreate`。 
+- 所有密钥保管库操作采用“Vault`<action>`”格式，例如 `VaultGet` 和 `VaultCreate`。
 
 - 所有密钥操作采用“Key`<action>`”格式，例如 `KeySign` 和 `KeyList`。
 
@@ -227,7 +228,7 @@
 
 | operationName | REST API 命令 |
 | ------------- |-------------|
-| Authentication | 通过 Azure Active Directory 终结点|
+| 身份验证 | 通过 Azure Active Directory 终结点|
 | VaultGet | [获取有关密钥保管库的信息](https://msdn.microsoft.com/zh-cn/library/azure/mt620026.aspx)|
 | VaultPut | [创建或更新密钥保管库](https://msdn.microsoft.com/zh-cn/library/azure/mt620025.aspx)|
 | VaultDelete | [删除密钥保管库](https://msdn.microsoft.com/zh-cn/library/azure/mt620022.aspx)|
@@ -260,11 +261,13 @@
 
 ## <a id="next"></a>后续步骤 ##
 
-有关在 web 应用程序中使用 Azure 密钥保管库的教程，请参阅[从 Web 应用程序使用 Azure 密钥保管库](/documentation/articles/key-vault-use-from-web-application)。
+有关在 Web 应用程序中使用 Azure 密钥保管库的教程，请参阅[从 Web 应用程序使用 Azure 密钥保管库](/documentation/articles/key-vault-use-from-web-application/)。
 
-有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](/documentation/articles/key-vault-developers-guide)。
+有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](/documentation/articles/key-vault-developers-guide/)。
 
 有关 Azure 密钥保管库的 Azure PowerShell 1.0 cmdlet 列表，请参阅 [Azure 密钥保管库 Cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/dn868052.aspx)。
  
 
-<!---HONumber=Mooncake_0215_2016-->
+有关使用 Azure 密钥保管库进行密钥轮替和日志审核的教程，请参阅 [How to setup Key Vault with end to end key rotation and auditing](/documentation/articles/key-vault-key-rotation-log-monitoring/)（如何使用端到端密钥轮替和审核设置密钥保管库）。
+
+<!---HONumber=Mooncake_0829_2016-->
