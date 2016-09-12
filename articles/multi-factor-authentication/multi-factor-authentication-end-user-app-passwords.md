@@ -9,8 +9,9 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="05/12/2016" 
-	wacn.date=""/>
+	ms.date="08/04/2016" 
+	wacn.date=""/>  
+
 
 
 
@@ -55,12 +56,17 @@
 1. 登录到 [Office 365 门户](https://login.microsoftonline.com/)。
 2. 在右上角选择小组件并选择“Office 365 设置”。
 3. 单击“其他安全性验证”。
-4. 在右侧，单击“更新用于帐户安全性的电话号码”链接。![设置](./media/multi-factor-authentication-end-user-manage/o365a.png)
-5. 随后你将转到可以更改设置的页面。![云](./media/multi-factor-authentication-end-user-manage/o365b.png)
+4. 在右侧，单击“更新用于帐户安全性的电话号码”链接。
+![设置](./media/multi-factor-authentication-end-user-manage/o365a.png)
+5. 随后你将转到可以更改设置的页面。
+![云](./media/multi-factor-authentication-end-user-manage/o365b.png)
 6. 在顶部的“其他安全性验证”旁边，单击“应用密码”。
-7. 单击“创建”。![云](./media/multi-factor-authentication-end-user-app-passwords-create-o365/apppass.png)
-8. 输入应用密码的名称，然后单击“下一步”。![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create1.png)
-9. 将应用密码复制到剪贴板，然后将它粘贴到你的应用。![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+7. 单击“创建”。
+![云](./media/multi-factor-authentication-end-user-app-passwords-create-o365/apppass.png)
+8. 输入应用密码的名称，然后单击“下一步”。
+![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create1.png)
+9. 将应用密码复制到剪贴板，然后将它粘贴到你的应用。
+![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 
 
 ### 使用 Office 365 门户删除应用密码
@@ -70,12 +76,17 @@
 1. 登录到 [Office 365 门户](https://login.microsoftonline.com/)。
 2. 在右上角选择小组件并选择“Office 365 设置”。
 3. 单击“其他安全性验证”。
-4. 在右侧，单击“更新用于帐户安全性的电话号码”链接。![设置](./media/multi-factor-authentication-end-user-manage/o365a.png)
-5. 随后你将转到可以更改设置的页面。![云](./media/multi-factor-authentication-end-user-manage/o365b.png)
+4. 在右侧，单击“更新用于帐户安全性的电话号码”链接。
+![设置](./media/multi-factor-authentication-end-user-manage/o365a.png)
+5. 随后你将转到可以更改设置的页面。
+![云](./media/multi-factor-authentication-end-user-manage/o365b.png)
 6. 在顶部的“其他安全性验证”旁边，单击“应用密码”。
-7. 在要删除的应用密码旁边，单击“删除”。![删除应用密码](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
-8. 单击“是”确认删除。![确认删除](./media/multi-factor-authentication-end-user-app-passwords/delete2.png)
-9. 删除应用密码后，可以单击“关闭”。![关闭](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
+7. 在要删除的应用密码旁边，单击“删除”。
+![删除应用密码](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
+8. 单击“是”确认删除。
+![确认删除](./media/multi-factor-authentication-end-user-app-passwords/delete2.png)
+9. 删除应用密码后，可以单击“关闭”。
+![关闭](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
 
 ## 使用 Myapps 门户创建和删除应用密码。
@@ -83,25 +94,35 @@
 
 ### 使用 Myapps 门户创建应用密码
 
-1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)	
+1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 在顶部选择配置文件。
-3. 选择“其他安全性验证”。![云](./media/multi-factor-authentication-end-user-manage/myapps1.png)
-4. 随后你将转到可以更改设置的页面。![设置](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
+3. 选择“其他安全性验证”。
+![云](./media/multi-factor-authentication-end-user-manage/myapps1.png)
+4. 随后你将转到可以更改设置的页面。
+![设置](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
 5. 在顶部的“其他安全性验证”旁边，单击“应用密码”。
-6. 单击“创建”。![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create3.png)
-7. 输入应用密码的名称，然后单击“下一步”。![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create1.png)
-8. 将应用密码复制到剪贴板，然后将它粘贴到你的应用。![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+6. 单击“创建”。
+![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create3.png)
+7. 输入应用密码的名称，然后单击“下一步”。
+![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create1.png)
+8. 将应用密码复制到剪贴板，然后将它粘贴到你的应用。
+![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 
 ### 使用 Myapps 门户删除应用密码
 
-1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)	
+1. 登录到 [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. 在顶部选择配置文件。
-3. 选择“其他安全性验证”。![云](./media/multi-factor-authentication-end-user-manage/myapps1.png)
-4. 随后你将转到可以更改设置的页面。![设置](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
+3. 选择“其他安全性验证”。
+![云](./media/multi-factor-authentication-end-user-manage/myapps1.png)
+4. 随后你将转到可以更改设置的页面。
+![设置](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
 5. 在顶部的“其他安全性验证”旁边，单击“应用密码”。
-6. 在要删除的应用密码旁边，单击“删除”。![删除应用密码](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
-7. 单击“是”确认删除。![确认删除](./media/multi-factor-authentication-end-user-app-passwords/delete2.png)
-8. 删除应用密码后，可以单击“关闭”。![关闭](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
+6. 在要删除的应用密码旁边，单击“删除”。
+![删除应用密码](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
+7. 单击“是”确认删除。
+![确认删除](./media/multi-factor-authentication-end-user-app-passwords/delete2.png)
+8. 删除应用密码后，可以单击“关闭”。
+![关闭](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
 
 ## 在 Azure 门户中创建应用密码
@@ -115,7 +136,8 @@
 3. 在验证页的顶部选择应用密码
 4. 单击“创建”。
 5. 输入应用密码的名称，然后单击“下一步”
-6. 将应用密码复制到剪贴板，然后将它粘贴到你的应用。![云](./media/multi-factor-authentication-end-user-app-passwords-create-azure/app2.png)
+6. 将应用密码复制到剪贴板，然后将它粘贴到你的应用。
+![云](./media/multi-factor-authentication-end-user-app-passwords-create-azure/app2.png)
 
 ### 在 Azure 门户中删除应用密码
 
@@ -124,6 +146,7 @@
 3. 在顶部的“其他安全性验证”旁边，单击“应用密码”。
 4. 在要删除的应用密码旁边，单击“删除”。
 5. 单击“是”确认删除。
-6. 删除应用密码后，可以单击“关闭”。![关闭](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
+6. 删除应用密码后，可以单击“关闭”。
+![关闭](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0905_2016-->

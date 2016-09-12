@@ -9,26 +9,28 @@
 
 <tags 
 	ms.service="storage" 
-    ms.date="06/24/2016"
+	ms.date="08/11/2016"
 	wacn.date=""/>
 
 
 
 # 如何通过 Node.js 使用 Blob 存储
 
-[AZURE.INCLUDE [storage-selector-blob-include](../includes/storage-selector-blob-include.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+<br/>  
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## 概述
 
 本文介绍如何使用 Blob 存储执行常见方案。相关示例是通过 Node.js API 编写的。涉及的方案包括如何上载、列出、下载和删除 Blob。
 
-[AZURE.INCLUDE [storage-blob-concepts-include](../includes/storage-blob-concepts-include.md)]
+[AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
+[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## 创建 Node.js 应用程序
 
-有关创建 Node.js 应用程序的说明，请参阅[在 Azure App Service 中创建 Node.js Web 应用]、、[使用 Windows PowerShell 生成 Node.js 应用程序并将其部署到 Azure 云服务]或[使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]。
+有关如何创建 Node.js 应用程序的说明，请参阅[在 Azure App Service 中创建 Node.js Web 应用]、[使用 Windows PowerShell 生成 Node.js 应用程序并将其部署到 Azure 云服务]或[使用 Web Matrix 生成 Node.js Web 应用并将其部署到 Azure]。
 
 ## 配置应用程序以访问存储
 
@@ -73,7 +75,7 @@ Azure 模块将读取环境变量 `AZURE_STORAGE_ACCOUNT`、`AZURE_STORAGE_ACCES
 
 > [AZURE.NOTE] 您可以匿名访问 Blob，只需使用 **createBlobServiceAnonymous** 并提供主机地址即可。例如，使用 `var blobSvc = azure.createBlobServiceAnonymous('https://myblob.blob.core.chinacloudapi.cn/');`。
 
-[AZURE.INCLUDE [storage-container-naming-rules-include](../includes/storage-container-naming-rules-include.md)]
+[AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
 若要创建一个新的容器，请使用 **createContainerIfNotExists**。以下代码示例将创建名为“mycontainer”的新容器：
 
@@ -115,7 +117,7 @@ Azure 模块将读取环境变量 `AZURE_STORAGE_ACCOUNT`、`AZURE_STORAGE_ACCES
 
 ### 筛选器
 
-你可以向使用 **BlobService** 执行的操作应用可选的筛选操作。筛选操作可包括日志记录、自动重试等。筛选器是实现具有签名的方法的对象：
+可以向使用 **BlobService** 执行的操作应用可选的筛选操作。筛选操作可包括日志记录、自动重试等。筛选器是实现具有签名的方法的对象：
 
 	function handle (requestOptions, next)
 
@@ -138,11 +140,11 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 若要将数据上载到块 Blob，可使用以下方法：
 
-* **createBlockBlobFromLocalFile** - 创建新的块 Blob 和上载文件的内容
+* **createBlockBlobFromLocalFile** - 创建新的块 Blob 并上载文件的内容
 
-* **createBlockBlobFromStream** - 创建新的块 Blob 和上载流的内容
+* **createBlockBlobFromStream** - 创建新的块 Blob 并上载流的内容
 
-* **createBlockBlobFromText** - 创建新的块 Blob 和上载字符串的内容
+* **createBlockBlobFromText** - 创建新的块 Blob 并上载字符串的内容
 
 * **createWriteStreamToBlockBlob** - 向块 Blob 提供写入流
 
@@ -160,15 +162,15 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 若要将数据上传到新的追加 Blob，可使用以下方法：
 
-* **createAppendBlobFromLocalFile** - 创建新的追加 Blob 并上传文件的内容
+* **createAppendBlobFromLocalFile** - 创建新的追加 Blob 并上载文件的内容
 
-* **createAppendBlobFromStream** - 创建新的追加 Blob 并上传流的内容
+* **createAppendBlobFromStream** - 创建新的追加 Blob 并上载流的内容
 
-* **createAppendBlobFromText** - 创建新的追加 Blob 并上传字符串的内容
+* **createAppendBlobFromText** - 创建新的追加 Blob 并上载字符串的内容
 
-* **createWriteStreamToNewAppendBlob** - 创建新的 Blob，然后向其提供要写入的流
+* **createWriteStreamToNewAppendBlob** - 创建新的追加 blob，然后向其提供要写入的流
 
-以下代码示例将 **test.txt** 文件的内容上传到 **myappendblob** 中。
+以下代码示例将 **test.txt** 文件的内容上载到 **myappendblob** 中。
 
 	blobSvc.createAppendBlobFromLocalFile('mycontainer', 'myappendblob', 'test.txt', function(error, result, response){
 	  if(!error){
@@ -190,7 +192,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 > [AZURE.NOTE] appendFromXXX API 将会执行某些客户端验证以快速失败，从而避免不必要的服务器调用。而 appendBlockFromXXX 则不会如此。
 
-以下代码示例将 **test.txt** 文件的内容上传到 **myappendblob** 中。
+以下代码示例将 **test.txt** 文件的内容上载到 **myappendblob** 中。
 
 	blobSvc.appendFromText('mycontainer', 'myappendblob', 'text to be appended', function(error, result, response){
 	  if(!error){
@@ -205,15 +207,15 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 * **createPageBlob** - 创建新的特定长度的页 Blob
 
-* **createPageBlobFromLocalFile** - 创建新的页 Blob 并上传文件的内容
+* **createPageBlobFromLocalFile** - 创建新的页 Blob 并上载文件的内容
 
-* **createPageBlobFromStream** - 创建新的页 Blob 并上传流的内容
+* **createPageBlobFromStream** - 创建新的页 Blob 并上载流的内容
 
 * **createWriteStreamToExistingPageBlob** - 向现有页 Blob 提供写入流
 
 * **createWriteStreamToNewPageBlob** - 创建新的页 Blob，然后向其提供要写入的流
 
-以下代码示例将 **test.txt** 文件的内容上传到 **mypageblob** 中。
+以下代码示例将 **test.txt** 文件的内容上载到 **mypageblob** 中。
 
 	blobSvc.createPageBlobFromLocalFile('mycontainer', 'mypageblob', 'test.txt', function(error, result, response){
 	  if(!error){
@@ -234,7 +236,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 	  }
 	});
 
-`result` 包含一个 `entries` 集合，该集合是一组用于描述每个 Blob 的对象。如果不能返回所有的 Blob，`result` 还将提供 `continuationToken`，这可用作第二个参数来检索其他条目。
+`result` 包含一个 `entries` 集合，该集合是一组用于描述每个 Blob 的对象。如果不能返回所有 Blob，`result` 还将提供 `continuationToken`，这可用作第二个参数来检索其他条目。
 
 ## 下载 Blob
 
@@ -281,7 +283,7 @@ Azure SDK for Node.js 中附带了两个实现了重试逻辑的筛选器，分�
 
 如果你需要允许多个客户端或实例同时写入块 Blob 或页 Blob，请使用 ETag。ETag 用于确定自从你第一次读取或创建某个容器或 Blob 以来，该容器或 Blob 是否被修改，这样就可以避免覆盖其他客户端或进程提交的更改。
 
-可以使用可选的 `options.accessConditions` 参数设置 ETag 条件。如果 Blob 已存在且具有 `etagToMatch` 所包含的 ETag 值，则以下代码示例将仅上传 **test.txt** 文件。
+可以使用可选的 `options.accessConditions` 参数设置 ETag 条件。如果 Blob 已存在且具有 `etagToMatch` 所包含的 ETag 值，则以下代码示例将仅上载 **test.txt** 文件。
 
 	blobSvc.createBlockBlobFromLocalFile('mycontainer', 'myblob', 'test.txt', { accessConditions: { EtagMatch: etagToMatch} }, function(error, result, response){
 	    if(!error){
@@ -412,4 +414,4 @@ ACL 是使用一组访问策略实施的，每个策略都有一个关联的 ID�
 [Azure Storage SDK for Node API 参考]: http://azure.github.io/azure-storage-node/
  
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0905_2016-->

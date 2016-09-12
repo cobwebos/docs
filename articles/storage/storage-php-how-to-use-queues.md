@@ -3,26 +3,29 @@
 	description="了解如何使用 Azure 队列存储服务创建和删除队列，以及插入、获取和删除消息。示例用 PHP 编写。"
 	documentationCenter="php"
 	services="storage"
-	authors="tfitzmac"
-	manager="adinah"
-	editor=""/>
+	authors="rmcmurray"
+	manager="wpickett"
+	editor=""/>  
+
 
 <tags
 	ms.service="storage"
-	ms.date="06/01/2016"
+	ms.date="08/11/2016"
 	wacn.date=""/>
 
 # 如何通过 PHP 使用队列存储
 
-[AZURE.INCLUDE [storage-selector-queue-include](../includes/storage-selector-queue-include.md)]
+[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
+<br/>  
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## 概述
 
 本指南将演示如何使用 Azure 队列存储服务执行常见方案。这些示例使用来自 Windows SDK for PHP 中的类编写。介绍的方案包括插入、扫视、获取和删除队列消息以及创建和删除队列。
 
-[AZURE.INCLUDE [storage-queue-concepts-include](../includes/storage-queue-concepts-include.md)]
+[AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
+[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## 创建 PHP 应用程序
 
@@ -32,19 +35,19 @@
 
 ## 获取 Azure 客户端库
 
-[AZURE.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
+[AZURE.INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
 ## 配置应用程序以访问队列存储
 
 若要使用 Azure 队列存储 API，你需要：
 
-1. 通过使用 [require\_once] 语句引用 autoloader 文件。
+1. 通过使用 [require_once] 语句引用 autoloader 文件。
 2. 引用可使用的所有类。
 
 下面的示例演示了如何包括 autoloader 文件并引用 **ServicesBuilder** 类。
 
 > [AZURE.NOTE]
-本示例（以及本文中的其他示例）假定你已通过 Composer 安装用于 Azure 的 PHP 客户端库。如果你已手动安装这些库，则将需要引用 `WindowsAzure.php` autoloader 文件。
+本示例（以及本文中的其他示例）假定你已通过 Composer 安装用于 Azure 的 PHP 客户端库。如果已手动安装这些库，则将需要引用 `WindowsAzure.php` autoloader 文件。
 
 	require_once 'vendor/autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
@@ -377,8 +380,7 @@
 有关详细信息，另请参阅 [PHP 开发人员中心](/develop/php/)。
 
 [download]: /documentation/articles/php-download-sdk/
-[require\_once]: http://www.php.net/manual/en/function.require-once.php
+[require_once]: http://www.php.net/manual/en/function.require-once.php
 [Azure Portal]: https://portal.azure.cn
 
-
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0905_2016-->

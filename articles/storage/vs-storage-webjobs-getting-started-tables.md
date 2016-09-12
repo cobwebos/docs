@@ -5,26 +5,28 @@
 	documentationCenter=""
 	authors="TomArcher"
 	manager="douge"
-	editor=""/>
+	editor=""/>  
 
 <tags 
-	ms.service="storage"
-	ms.date="05/08/2016"
+	ms.service="storage" 
+	ms.date="07/18/2016"
 	wacn.date=""/>
 
 # Azure 存储入门（Azure WebJob 项目）
 
+[AZURE.INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
+
 ## 概述
 
-本文章提供了 C# 代码示例，用于演示如何在 Azure 表存储服务中使用 Azure WebJobs SDK 版本 1.x。这些代码示例使用 [WebJobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk) 版本 1.x。
+本文章提供了 C# 代码示例，用于演示如何在 Azure 表存储服务中使用 Azure WebJobs SDK 版本 1.x。这些代码示例使用 [WebJobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk/) 版本 1.x。
 
-Azure 表存储服务使用户可以存储大量结构化数据。该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。Azure 表最适合存储结构化非关系型数据。有关详细信息，请参阅[通过 .NET 开始使用 Azure 表存储](storage-dotnet-how-to-use-tables.md#create-a-table)。
+Azure 表存储服务使用户可以存储大量结构化数据。该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。Azure 表最适合存储结构化非关系型数据。有关详细信息，请参阅 [Get started with Azure Table storage using .NET](storage-dotnet-how-to-use-tables.md#create-a-table)（通过 .NET 开始使用 Azure 表存储）。
 
 一些代码段显示了手动调用（即：不是使用触发器属性之一调用）的函数中使用的 **Table** 属性。
 
 ## 如何向表中添加实体
 
-若要将实体添加到表中，请使用具有 **ICollector<T>** 或 **IAsyncCollector<T>** 参数的 **Table** 属性，其中 **T** 指定你想要添加的实体的架构。属性构造函数使用指定表名称的字符串参数。
+若要将实体添加到表中，请使用具有 **ICollector<T>** 或 **IAsyncCollector<T>** 参数的 **Table** 属性，其中 **T** 指定要添加的实体的架构。属性构造函数使用指定表名称的字符串参数。
 
 下面的代码示例将 **Person** 实体添加到名为 *Ingress* 的表。
 
@@ -67,7 +69,8 @@ Azure 表存储服务使用户可以存储大量结构化数据。该服务是�
 
 “调用详细信息”页在运行时报告函数的进度（写入的实体数），并且为你提供中止的机会。
 
-![Ingress 函数正在运行](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
+![Ingress 函数正在运行](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)  
+
 
 该函数完成时，**调用详细信息**页会报告写入的行数。
 
@@ -137,16 +140,17 @@ Azure 表存储服务使用户可以存储大量结构化数据。该服务是�
 		    tableBinding.Execute(insertOperation);
 		}
 
-有关如何使用 **CloudTable** 对象的详细信息，请参阅[通过 .NET 开始使用 Azure 表存储](/documentation/articles/storage-dotnet-how-to-use-tables)。
+有关如何使用 **CloudTable** 对象的详细信息，请参阅 [Get started with Azure Table storage using .NET](/documentation/articles/storage-dotnet-how-to-use-tables/)（通过 .NET 开始使用 Azure 表存储）。
 
 ## 队列操作指南文章涵盖的相关主题
 
-有关如何处理队列消息触发的表处理，或者不特定于表处理的 WebJobs SDK 方案的信息，请参阅[开始使用 Azure 队列存储和 Visual Studio 连接服务（WebJob 项目）](/documentation/articles/vs-storage-webjobs-getting-started-queues)。
+有关如何处理队列消息触发的表处理，或者不特定于表处理的 WebJobs SDK 方案的信息，请参阅 [Getting started with Azure Queue storage and Visual Studio connected services (WebJob Projects)](/documentation/articles/vs-storage-webjobs-getting-started-queues/)（开始使用 Azure 队列存储和 Visual Studio 连接服务（Web 作业项目））。
 
 
 
 ## 后续步骤
 
-本文章提供了代码示例，演示如何处理用于操作 Azure 表的常见方案。有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 文档资源](/documentation/articles/websites-webjobs-resources)。
+本文章提供了代码示例，演示如何处理用于操作 Azure 表的常见方案。有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 文档资源](/documentation/articles/websites-webjobs-resources/)。
  
-<!---HONumber=Mooncake_0606_2016-->
+
+<!---HONumber=Mooncake_0905_2016-->

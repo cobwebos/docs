@@ -6,45 +6,46 @@
 	keywords="推送通知、推送通知、android 推送通知"
 	authors="wesmc7777"
 	manager="erikre"
-	editor=""/>
+	editor=""/>  
+
 <tags
 	ms.service="notification-hubs"
 	ms.date="07/05/2016"
-	ms.author="wesmc"/>
+	wacn.date=""/>
 
 # 通过 Azure 通知中心向 Android 发送推送通知
 
-[AZURE.INCLUDE [notification-hubs-selector-get-started](../includes/notification-hubs-selector-get-started.md)]
+[AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ##概述
 
-> [AZURE.IMPORTANT] 本主题演示了使用 Google Cloud Messaging (GCM) 的推送通知。如果你使用的是 Google 的 Firebase Cloud Messaging (FCM)，请参阅[使用 Azure 通知中心和 FCM 将推送通知发送到 Android](notification-hubs-android-push-notification-google-fcm-get-started.md)。
+> [AZURE.IMPORTANT] 本主题演示了使用 Google Cloud Messaging (GCM) 的推送通知。如果使用的是 Google 的 Firebase Cloud Messaging (FCM)，请参阅[使用 Azure 通知中心和 FCM 将推送通知发送到 Android](/documentation/articles/notification-hubs-android-push-notification-google-fcm-get-started/)。
 
 本教程演示如何使用 Azure 通知中心将推送通知发送到 Android 应用程序。
 你将创建一个空白 Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。
 
-[AZURE.INCLUDE [notification-hubs-hero-slug](../includes/notification-hubs-hero-slug.md)]
+[AZURE.INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
 
 可以从[此处](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted)的 GitHub 中下载本教程的已完成代码。
 
 
 ##先决条件
 
-> [AZURE.IMPORTANT] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-android-get-started)。
+> [AZURE.IMPORTANT] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](/pricing/1rmb-trial-full/?form-type=identityauth)。
 
-除了上面提到的有效的 Azure 帐户外，本教程只需要最新版本的 [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797)。
+除了上面提到的有效 Azure 帐户外，本教程只需要最新版本的 [Android Studio](http://go.microsoft.com/fwlink/?LinkId=389797)。
 
 完成本教程是学习有关 Android 应用的所有其他通知中心教程的先决条件。
 
 ##创建支持 Google Cloud Messaging 的项目
 
-[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../includes/mobile-services-enable-google-cloud-messaging.md)]
+[AZURE.INCLUDE [mobile-services-enable-Google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
 
 ##配置新通知中心
 
 
-[AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../includes/notification-hubs-portal-create-new-hub.md)]
+[AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 
 &emsp;&emsp;6.在“设置”边栏选项卡中选择“通知服务”，然后选择“Google (GCM)”。输入 API 密钥并单击“保存”。
@@ -69,7 +70,7 @@
 
 ###将 Google Play 服务添加到项目
 
-[AZURE.INCLUDE [添加 Play Services](../includes/notification-hubs-android-studio-add-google-play-services.md)]
+[AZURE.INCLUDE [添加 Play Services](../../includes/notification-hubs-android-studio-add-google-play-services.md)]
 
 ###添加 Azure 通知中心库
 
@@ -126,7 +127,7 @@
 
 4. 在 `</application>` 标记下面添加以下必要的 GCM 相关权限。请确保将 `<your package>` 替换为 `AndroidManifest.xml` 文件顶部显示的包名称。
 
-	有关这些权限的详细信息，请参阅 [Setup a GCM Client app for Android（设置适用于 Android 的 GCM 客户端应用）](https://developers.google.com/cloud-messaging/android/client#manifest)。
+	有关这些权限的详细信息，请参阅 [Setup a GCM Client app for Android](https://developers.google.com/cloud-messaging/android/client#manifest)（设置适用于 Android 的 GCM 客户端应用）。
 
 		<uses-permission android:name="android.permission.INTERNET"/>
 		<uses-permission android:name="android.permission.GET_ACCOUNTS"/>
@@ -146,10 +147,10 @@
 
 	确保在 `NotificationSettings` 类的以下代码中更新这三个占位符：
 	* **SenderId**：之前在 [Google 云控制台](http://cloud.google.com/console)中获取的项目编号。
-	* **HubListenConnectionString**：中心的 **DefaultListenAccessSignature** 连接字符串。你可以复制此连接字符串，方法是在 [Azure 门户]上你的中心的“设置”边栏选项卡上单击“访问策略”。
-	* **HubName**：使用 [Azure 门户]的中心边栏选项卡上显示的你的通知中心的名称。
+	* **HubListenConnectionString**：中心的 **DefaultListenAccessSignature** 连接字符串。您可以复制此连接字符串，方法是在 [Azure 门户]上您的中心的“设置”边栏选项卡上单击“访问策略”。
+	* **HubName**：使用 [Azure 门户]的中心边栏选项卡上显示的通知中心的名称。
 
-	`NotificationSettings` 代码：
+	`NotificationSettings`代码：
 
 		public class NotificationSettings {
 		    public static String SenderId = "<Your project number>";
@@ -228,8 +229,8 @@
 		                regID = hub.register(token).getRegistrationId();
 
 		                // If you want to use tags...
-						// Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-routing-tag-expressions/
-		                // regID = hub.register(token, "tag1,tag2").getRegistrationId();
+						// Refer to : https://azure.microsoft.com/zh-cn/documentation/articles/notification-hubs-routing-tag-expressions/
+		                // regID = hub.register(token, "tag1", "tag2").getRegistrationId();
 
 		                resultString = "Registered Successfully - RegId : " + regID;
 		                Log.i(TAG, resultString);		
@@ -321,7 +322,7 @@
 	    }
 
 
-9. 将其他这些方法添加到 `MainActivity`，以验证应用状态及报告应用状态。
+9. 将其他这些方法添加到 `MainActivity`，以验证和报告应用状态。
 
 	    @Override
 	    protected void onStart() {
@@ -359,7 +360,7 @@
 	    }
 
 
-10. `ToastNotify` 方法使用 *"Hello World"* `TextView` 控件持续在应用程序中报告状态和通知。在 activity\_main.xml 布局中，为该控件添加以下 ID。
+10. `ToastNotify` 方法使用 *"Hello World"* `TextView` 控件持续报告应用状态和通知。在 activity\_main.xml 布局中，为该控件添加以下 ID。
 
         android:id="@+id/text_hello"
 
@@ -377,7 +378,7 @@
 
 13. 为 `MyHandler` 类添加以下代码，使其成为 `com.microsoft.windowsazure.notifications.NotificationsHandler` 的子类。
 
-	此代码将重写 `OnReceive` 方法，因此处理程序将报告所收到的通知。处理程序还使用 `sendNotification()` 方法将推送通知发送到 Android 通知管理器。当应用未运行但收到通知时，应该执行 `sendNotification()` 方法。
+	此代码将重写 `OnReceive` 方法，因此处理程序将报告所收到的通知。处理程序还使用 `sendNotification()` 方法将推送通知发送到 Android 通知管理器。应用未运行但收到通知时，应执行 `sendNotification()` 方法。
 
 		public class MyHandler extends NotificationsHandler {
 		    public static final int NOTIFICATION_ID = 1;
@@ -426,15 +427,15 @@
 
 ##发送推送通知
 
-你可以通过在 [Azure 门户]中发送通知来测试你的应用程序接收推送通知的功能，如下所示，你可以在中心边栏选项卡中查找“故障排除”部分来进行此测试。
+您可以通过在 [Azure 门户]中发送通知来测试您的应用接收推送通知的功能，如下所示，您可以在中心边栏选项卡中查找“疑难解答”部分来进行此测试。
 
 ![Azure 通知中心 - 测试发送](./media/notification-hubs-android-get-started/notification-hubs-test-send.png)
 
-[AZURE.INCLUDE [notification-hubs-sending-notifications-from-the-portal](../includes/notification-hubs-sending-notifications-from-the-portal.md)]
+[AZURE.INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
 ## （可选）直接从应用程序发送推送通知
 
-通常，你会使用后端服务器发送通知。在某些情况下，你可能希望能够直接从客户端应用程序发送推送通知。本部分说明如何使用 [Azure 通知中心 REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx) 从客户端发送通知。
+通常，你会使用后端服务器发送通知。在某些情况下，你可能希望能够直接从客户端应用程序发送推送通知。本部分说明了如何使用 [Azure 通知中心 REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx) 从客户端发送通知。
 
 1. 在 Android Studio 的项目视图中展开“应用”>“src”>“main”>“res”>“layout”。打开 `activity_main.xml` 布局文件，然后单击“文本”选项卡以更新此文件的文本内容。使用以下代码更新此文件，此代码将添加新的 `Button` 和 `EditText` 控件，用于将推送通知消息发送到通知中心。将此代码添加到底部紧靠 `</RelativeLayout>` 前面的位置。
 
@@ -618,7 +619,7 @@
 	
 	                        // Include any tags
 	                        // Example below targets 3 specific tags
-	                        // Refer to : https://azure.microsoft.com/en-us/documentation/articles/notification-hubs-tags-segment-push-message/
+	                        // Refer to : https://azure.microsoft.com/zh-cn/documentation/articles/notification-hubs-routing-tag-expressions/
 	                        // urlConnection.setRequestProperty("ServiceBusNotification-Tags", 
 							//		"tag1 || tag2 || tag3");
 	
@@ -662,9 +663,9 @@
 
 ####模拟器中的推送通知
 
-如果你想要在模拟器中测试推送通知，请确保模拟器映像支持你为应用程序选择的 Google API 级别。如果你的映像不支持本机 Google API，那么此测试最终以 **SERVICE\_NOT\_AVAILABLE** 异常结束。
+如果你想要在模拟器中测试推送通知，请确保模拟器映像支持你为应用程序选择的 Google API 级别。如果映像不支持本机 Google API，那么此测试最终将以 **SERVICE\_NOT\_AVAILABLE** 异常结束。
 
-除上述条件外，请确保已将你的 Google 帐户添加到运行的模拟器的“设置”>“帐户”下。否则，尝试向 GCM 注册可能会导致 **AUTHENTICATION\_FAILED** 异常。
+除上述条件外，请确保已将您的 Google 帐户添加到运行的模拟器的“设置”>“帐户”下。否则，尝试向 GCM 注册可能会导致 **AUTHENTICATION\_FAILED** 异常。
 
 ####运行应用程序
 
@@ -674,9 +675,10 @@
 
 2. 输入一条要发送到已在中心注册的所有 Android 设备的通知消息。
 
-   	![测试 Android - 发送一条消息][19]
+   	![测试 Android - 发送一条消息][19]  
 
-3. 按“发送通知”。运行此应用程序的所有设备将显示一个包含此推送通知消息的 `AlertDialog` 实例。未运行此应用程序，但之前已注册推送通知的设备将在 Android 通知管理器中收到通知。从左上角向下轻扫即可查看通知。
+
+3. 按“发送通知”。运行此应用的所有设备将显示一个包含此推送通知消息的 `AlertDialog` 实例。未运行此应用程序，但之前已注册推送通知的设备将在 Android 通知管理器中收到通知。从左上角向下轻扫即可查看通知。
 
    	![测试 Android - 通知][21]
 
@@ -684,9 +686,9 @@
 
 建议下一步学习[使用通知中心向用户推送通知]教程。它将显示如何使用标记从 ASP.NET 后端将通知发送到目标特定的用户。
 
-如果要按兴趣组划分用户，可以查看 [Use Notification Hubs to send breaking news（使用通知中心发送最新消息）]教程。
+如果要按兴趣组划分用户，可以查看 [Use Notification Hubs to send breaking news]（使用通知中心发送最新消息）教程。
 
-若要了解有关通知中心的更多一般信息，请参阅 [Notification Hubs Guidance（通知中心指南）]。
+若要了解有关通知中心的更多一般信息，请参阅 [Notification Hubs Guidance]（通知中心指南）。
 
 <!-- Images. -->
 [6]: ./media/notification-hubs-android-get-started/notification-hub-android-new-class.png
@@ -714,13 +716,14 @@
 
 
 <!-- URLs. -->
+
 [Get started with push notifications in Mobile Services]: /documentation/articles/mobile-services-javascript-backend-android-get-started-push/
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
 [Azure Classic Portal]: https://manage.windowsazure.cn/
-[Notification Hubs Guidance（通知中心指南）]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [使用通知中心向用户推送通知]: /documentation/articles/notification-hubs-aspnet-backend-android-notify-users/
-[Use Notification Hubs to send breaking news（使用通知中心发送最新消息）]: /documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/
+[Use Notification Hubs to send breaking news]: /documentation/articles/notification-hubs-aspnet-backend-android-breaking-news/
 [Azure 门户]: https://portal.azure.cn
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0905_2016-->

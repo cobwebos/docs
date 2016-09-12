@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="05/09/2016"
+	ms.date="08/03/2016"
 	wacn.date=""/>
 
 # Microsoft Azure 存储性能和可伸缩性清单
@@ -25,7 +25,7 @@
 -	所有 Azure 存储服务（Blob、表、队列和文件）
 -	Blob
 -	表
--	队列  
+-	队列
 
 |完成|	区域|	类别|	问题
 |----|------|-----------|-----------
@@ -86,13 +86,13 @@
 
 -	[Blob 带宽和请求数/秒](#subheading16)
 -	[表实体数/秒](#subheading24)
--	[队列消息数/秒](#subheading39)  
+-	[队列消息数/秒](#subheading39)
 
 ####<a name="sub1bandwidth"></a>所有服务的带宽可伸缩性目标
 <!--
 At the time of writing, the bandwidth targets in the China for a geo-redundant storage (GRS) account are 10 gigabits per second (Gbps) for ingress (data sent to the storage account) and 20 Gbps for egress (data sent from the storage account). For a locally redundant storage (LRS) account, the limits are higher – 20 Gbps for ingress and 30 Gbps for egress.  
 -->
-国际带宽限制可能会较低，详情请参阅我们的[可伸缩性目标页](http://msdn.microsoft.com/zh-cn/library/azure/dn249410.aspx)。  
+国际带宽限制可能会较低，详情请参阅我们的[可伸缩性目标页](/documentation/articles/storage-scalability-targets/)。
 有关存储冗余选项的详细信息，请参阅下面[有用的资源](#sub1useful)中的链接。
 
 ####接近可伸缩性目标时应怎么办
@@ -101,21 +101,20 @@ At the time of writing, the bandwidth targets in the China for a geo-redundant s
 -	重新考虑导致你的应用程序接近或超过可伸缩性目标的工作负载。你能否对其进行另外的设计，以便使用较少的带宽、容量或处理事务？
 -	如果某个应用程序肯定会超出可伸缩性目标之一，则应创建多个存储帐户并将应用程序数据跨多个这样的存储帐户进行分区。如果你使用这种模式，则在设计你的应用程序时，必须确保能够在以后添加更多的存储帐户，以便进行负载平衡。在撰写本文之际，每个 Azure 订阅最多可以有 100 个存储帐户。存储帐户除了用于数据存储、事务处理或数据传输，并无其他开销。
 -	如果你的应用程序达到了带宽目标，可考虑压缩客户端的数据，以便减少将数据发送到存储服务所需的带宽。请注意，这虽然会节省带宽并改进网络性能，但也会带来某些负面影响。你可以评估一下这样操作对性能的影响，因为在客户端压缩和解压缩数据会有其他处理要求。此外，存储压缩数据会使问题解决起来更加困难，因为使用标准工具查看存储的数据可能会更困难。
--	如果您的应用程序达到了可伸缩性目标，则请确保对重试使用指数性的回退（请参阅[重试](#subheading14)）。这会确保你的应用程序不会一直进行快速重试，以免加重限制，不过，最好还是使用上述方法之一来确保你永远不会达到可伸缩性目标。  
+-	如果您的应用程序达到了可伸缩性目标，则请确保对重试使用指数性的回退（请参阅[重试](#subheading14)）。这会确保你的应用程序不会一直进行快速重试，以免加重限制，不过，最好还是使用上述方法之一来确保你永远不会达到可伸缩性目标。
 
 ####有用的资源
 以下链接提供了有关可伸缩性目标的更多详细信息：
--	有关可缩放性目标的信息，请参阅 [Azure Storage Scalability and Performance Targets（Azure 存储空间的可缩放性和性能目标）](/documentation/articles/storage-scalability-targets)。
--	有关存储冗余选项的信息，请参阅 [Azure Storage replication（Azure 存储空间复制）](/documentation/articles/storage-redundancy) 和博客文章 [Azure Storage Redundancy Options and Read Access Geo Redundant Storage（Azure 存储冗余选项和读取访问地域冗余存储）](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)。
--	有关 Azure 服务定价的最新信息，请参阅 [Azure pricing（Azure 定价）](/pricing/overview/)。  
-
+-	有关可缩放性目标的信息，请参阅 [Azure Storage Scalability and Performance Targets](/documentation/articles/storage-scalability-targets/)（Azure 存储的可缩放性和性能目标）。
+-	有关存储冗余选项的信息，请参阅 [Azure Storage replication](/documentation/articles/storage-redundancy/)（Azure 存储复制）和博客文章 [Azure Storage Redundancy Options and Read Access Geo Redundant Storage](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)（Azure 存储冗余选项和读取访问地域冗余存储）。
+-	有关 Azure 服务定价的最新信息，请参阅 [Azure pricing](/pricing/overview/)（Azure 定价）。
 ###<a name="subheading47"></a>分区命名约定
-Azure 存储空间使用基于范围的分区方案来对系统进行缩放和负载平衡。分区键用于将数据分区成多个范围，这些范围在整个系统上经过负载平衡。这意味着，命名约定，如词汇顺序（例如 msftpayroll、msftperformance、msftemployees 等等）或使用时间戳（log20160101、log20160102、log20160102 等等）将本身出租给可能共置于同一分区服务器中的分区，直到负载平衡操作将它们拆分成较小的范围。例如，容器中的所有 Bob 接受单个服务器的服务，直到这些 Blob 的负载需要进一步重新平衡分区范围。同样，一组名称按词汇顺序排列的少量负载帐户可以接受单个服务器的服务，直到其中一个或所有帐户的负载请求它们拆分到多个分区服务器。每个负载平衡操作可能在操作期间影响存储调用的延迟。系统处理某个分区流量激增的能力受到单个分区服务器可缩放性的限制，直到负载平衡操作着手重新平衡分区键范围。  
+Azure 存储空间使用基于范围的分区方案来对系统进行缩放和负载平衡。分区键用于将数据分区成多个范围，这些范围在整个系统上经过负载平衡。这意味着，命名约定，如词汇顺序（例如 msftpayroll、msftperformance、msftemployees 等等）或使用时间戳（log20160101、log20160102、log20160102 等等）将本身出租给可能共置于同一分区服务器中的分区，直到负载平衡操作将它们拆分成较小的范围。例如，容器中的所有 Bob 接受单个服务器的服务，直到这些 Blob 的负载需要进一步重新平衡分区范围。同样，一组名称按词汇顺序排列的少量负载帐户可以接受单个服务器的服务，直到其中一个或所有帐户的负载请求它们拆分到多个分区服务器。每个负载平衡操作可能在操作期间影响存储调用的延迟。系统处理某个分区流量激增的能力受到单个分区服务器可缩放性的限制，直到负载平衡操作着手重新平衡分区键范围。
 
 你可以遵循一些最佳实践来降低此类操作的频率。
 
--	仔细检查帐户、容器、Blob、表和队列使用的命名约定。考虑使用最符合需求的哈希函数，在帐户名前加上 3 位数哈希。  
--	如果使用时间戳记或数字标识符组织数据，必须确保使用的不是仅附加在后（或仅在前面加上）的流量模式。这些模式并不适合范围型的分区系统，并且可能导致所有流量进入单个分区并限制系统进行有效的负载平衡。例如，如果日常操作使用有时间戳的 Blob 对象，如 yyyymmdd，则该日常操作的所有流量都定向到由单个分区服务器服务的单个对象。查看每个 Blob 的限制和每个分区的限制是否符合需求，考虑是否需要将此操作拆分成多个 Blob。同样，如果在表中存储时序数据，则所有流量都可能定向到键命名空间的最后一个部分。如果必须使用时间戳或数字 ID，请在前面加上 3 位数哈希，或在时间戳前面加上时间的秒部分，如 ssyyyymmdd。如果定期执行列出和查询操作，请选择限制查询次数的哈希函数。对于其他情况，使用随机前缀便已足够。  
+-	仔细检查帐户、容器、Blob、表和队列使用的命名约定。考虑使用最符合需求的哈希函数，在帐户名前加上 3 位数哈希。
+-	如果使用时间戳记或数字标识符组织数据，必须确保使用的不是仅附加在后（或仅在前面加上）的流量模式。这些模式并不适合基于范围的分区系统，并且可能导致所有流量进入单个分区并限制系统进行有效的负载平衡。例如，如果日常操作使用有时间戳的 Blob 对象，如 yyyymmdd，则该日常操作的所有流量都定向到由单个分区服务器服务的单个对象。查看每个 Blob 的限制和每个分区的限制是否符合需求，考虑是否需要将此操作拆分成多个 Blob。同样，如果在表中存储时序数据，则所有流量都可能定向到键命名空间的最后一个部分。如果必须使用时间戳或数字 ID，请在 ID 前面加上 3 位数哈希，或在时间戳前面加上时间的秒部分，如 ssyyyymmdd。如果定期执行列出和查询操作，请选择限制查询次数的哈希函数。对于其他情况，使用随机前缀便已足够。
 -	有关 Azure 存储空间中使用的分区方案的其他信息，请参阅[此处](http://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)的 SOSP 文档。
 
 ###联网
@@ -129,7 +128,7 @@ Azure 存储空间使用基于范围的分区方案来对系统进行缩放和�
 请注意，因错误和数据包丢失而导致的网络状况会降低有效吞吐量，任何网络的使用都是这样。WireShark 或 NetMon 可用于诊断此问题。
 
 #####有用的资源
-有关虚拟机大小和分配带宽的详细信息，请参阅 [Windows VM sizes（Windows VM 大小）](/documentation/articles/virtual-machines-windows-sizes)或 [Linux VM sizes（Linux VM 大小）](/documentation/articles/virtual-machines-linux-sizes)。
+有关虚拟机大小和分配带宽的详细信息，请参阅 [Windows VM sizes](/documentation/articles/virtual-machines-windows-sizes/)（Windows VM 大小）或 [Linux VM sizes](/documentation/articles/virtual-machines-linux-sizes/)（Linux VM 大小）。
 
 ####<a name="subheading4"></a>位置
 在任何分布式环境中，将客户端放置在服务器附近可提供最佳性能。若要以最低的延迟访问 Azure 存储空间，则最好是将客户端放置在同一 Azure 区域内。例如，如果您的 Azure 网站使用 Azure 存储空间，则应将二者都放置在同一个区域（例如美国西部或亚洲东南部）。这会降低延迟和成本 — 在本文撰写之际，同一个区域的带宽使用是免费的。
@@ -149,9 +148,9 @@ Azure 存储空间使用基于范围的分区方案来对系统进行缩放和�
 这两种技术都可以帮助你避免在 Web 应用程序上出现不必要的负载（和瓶颈）。
 
 ####有用的资源
-有关 SAS 的详细信息，请参阅[共享访问签名，第 1 部分：了解 SAS 模型](/documentation/articles/storage-dotnet-shared-access-signature-part-1)。
+有关 SAS 的详细信息，请参阅[共享访问签名，第 1 部分：了解 SAS 模型](/documentation/articles/storage-dotnet-shared-access-signature-part-1/)。
 
-有关 CORS 的详细信息，请参阅 [Cross-Origin Resource Sharing (CORS) Support for the Azure Storage Services（对 Azure 存储空间服务的跨域资源共享 (CORS) 支持）](http://msdn.microsoft.com/zh-cn/library/azure/dn535601.aspx)。
+有关 CORS 的详细信息，请参阅 [Cross-Origin Resource Sharing (CORS) Support for the Azure Storage Services](http://msdn.microsoft.com/zh-cn/library/azure/dn535601.aspx)（对 Azure 存储空间服务的跨域资源共享 (CORS) 支持）。
 
 ###缓存
 ####<a name="subheading7"></a>获取数据
@@ -161,7 +160,7 @@ Azure 存储空间使用基于范围的分区方案来对系统进行缩放和�
 
 配置、查看以及始终被应用程序使用的其他数据都适合进行缓存。
 
-有关如何通过使用 .NET 获取 Blob 的属性来发现上次修改日期的示例，请参阅 [Set and Retrieve Properties and Metadata（设置和检索属性与元数据）](/documentation/articles/storage-properties-metadata)。有关条件性下载的详细信息，请参阅 [Conditionally Refresh a Local Copy of a Blob（有条件地刷新 Blob 的本地副本）](http://msdn.microsoft.com/zh-cn/library/azure/dd179371.aspx)。
+有关如何通过使用 .NET 获取 Blob 的属性来发现上次修改日期的示例，请参阅 [Set and Retrieve Properties and Metadata](/documentation/articles/storage-properties-metadata/)（设置和检索属性与元数据）。有关条件性下载的详细信息，请参阅 [Conditionally Refresh a Local Copy of a Blob](http://msdn.microsoft.com/zh-cn/library/azure/dd179371.aspx)（有条件地刷新 Blob 的本地副本）。
 
 ####<a name="subheading8"></a>批量上载数据
 在某些应用程序方案中，你可以将数据聚合在本地，然后将其定期批量上载，而不必立即上载每个数据片段。例如，Web 应用程序可以保留一个有关活动的日志文件：应用程序可以在活动发生时以表实体的形式上载每项活动的详细信息（这需要许多存储操作），也可以将活动详细信息保存到本地日志文件中，然后定期将所有活动详细信息以带分隔符的文件的方式上载到某个 Blob。如果每个日志条目的大小为 1KB，你可以在单个“放置 Blob”事务处理中上载数千个这样的条目（你可以在单个事务处理中上载一个最大大小为 64MB 的 Blob）。当然，如果本地计算机在上载之前崩溃，你可能会丢失某些日志数据：应用程序开发人员必须针对可能发生的客户端设备故障或上载失败情况进行相应的设计。如果活动数据需要在不同的时间范围进行下载（不仅仅是单个活动），则建议使用 Blob 而非表。
@@ -178,7 +177,7 @@ Azure 存储空间使用基于范围的分区方案来对系统进行缩放和�
 
 对于其他编程语言，请参阅该语言的文档以确定如何设置连接限制。
 
-有关其他信息，请参阅博客文章 [Web Services: Concurrent Connections（Web 服务：并发连接）](http://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx)。
+有关其他信息，请参阅博客文章 [Web Services: Concurrent Connections](http://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx)（Web 服务：并发连接）。
 
 ####<a name="subheading10"></a>如果对异步任务使用同步代码，则请增加线程池最小线程数
 此代码会增加线程池最小线程数：
@@ -190,7 +189,7 @@ Azure 存储空间使用基于范围的分区方案来对系统进行缩放和�
 ####<a name="subheading11"></a>充分利用 .NET 4.5 的垃圾收集功能
 将 .NET 4.5 或更高版本用于客户端应用程序，以便充分利用在服务器垃圾收集方面的性能改进。
 
-有关详细信息，请参阅以下文章：[An Overview of Performance Improvements in .NET 4.5（.NET 4.5 中的性能改进概述）](http://msdn.microsoft.com/zh-cn/magazine/hh882452.aspx)。
+有关详细信息，请参阅以下文章：[An Overview of Performance Improvements in .NET 4.5](http://msdn.microsoft.com/zh-cn/magazine/hh882452.aspx)（.NET 4.5 中的性能改进概述）。
 
 ###<a name="subheading12"></a>不受限制的并行度
 虽然提高并行度可以大幅提高性能，但在使用不受限制的并行度（对线程数和/或并行请求没有限制）来上载或下载数据，以及使用多个辅助角色来访问同一存储帐户中的多个分区（容器、队列或表分区）或访问同一分区中的多个项目时，应小心谨慎。如果并行度不受限制，你的应用程序可能会超出客户端设备的承受程度或超出存储帐户的可伸缩性目标，导致延迟和限制时间增长。
@@ -208,7 +207,7 @@ Azure 存储空间使用基于范围的分区方案来对系统进行缩放和�
 客户端库了解哪些错误可以重试，哪些不能。不过，如果你是针对存储 REST API 编写的自己的代码，则应记住某些错误不应重试：例如，400（请求错误）响应表示客户端应用程序发送的请求因格式不正常而无法处理。重新发送此请求每次都会导致相同的响应，因此没必要重试。如果你是针对存储 REST API 编写自己的代码，则需了解错误代码的意义，以及每个错误代码的合适重试方式（或者不进行重试）。
 
 ####有用的资源
-有关存储错误代码的详细信息，请参阅 Microsoft Azure 网站上的 [Status and Error Codes（状态和错误代码）](http://msdn.microsoft.com/zh-cn/library/azure/dd179382.aspx)。
+有关存储错误代码的详细信息，请参阅 Azure 网站上的 [Status and Error Codes](http://msdn.microsoft.com/zh-cn/library/azure/dd179382.aspx)（状态和错误代码）。
 
 ##Blob
 除了前面所述的适用于[所有服务](#allservices)的经过验证的做法，此外还有以下经过验证的做法，这些做法尤其适用于 Blob 服务。
@@ -226,7 +225,7 @@ Azure 存储空间使用基于范围的分区方案来对系统进行缩放和�
 ####<a name="subheading16"></a>每个 Blob 的带宽和操作
 你可以读取或写入单个 Blob，最大读/写速度为 60 MB/秒。这大约相当于 480 Mbps，超过许多客户端网络（包括客户端设备上的物理 NIC）的承受能力。此外，单个 Blob 每秒最多可支持 500 个请求。如果你的多个客户端需要读取同一 Blob，而且你可能会超过这些限制，则应考虑使用 CDN 来分发该 Blob。
 
-有关 Blob 的目标吞吐量的详细信息，请参阅 [Azure Storage Scalability and Performance Targets（Azure 存储空间的可缩放性和性能目标）](/documentation/articles/storage-scalability-targets)。
+有关 Blob 的目标吞吐量的详细信息，请参阅 [Azure Storage Scalability and Performance Targets](/documentation/articles/storage-scalability-targets/)（Azure 存储的可缩放性和性能目标）。
 
 ###复制和移动 Blob
 ####<a name="subheading17"></a>复制 Blob
@@ -236,18 +235,16 @@ Azure 存储空间使用基于范围的分区方案来对系统进行缩放和�
 
 请注意，在同一存储帐户内的复制通常会快速完成。
 
-有关详细信息，请参阅 [Copy Blob（复制 Blob）](http://msdn.microsoft.com/zh-cn/library/dd894037.aspx)。
+有关详细信息，请参阅 [Copy Blob](http://msdn.microsoft.com/zh-cn/library/dd894037.aspx)（复制 Blob）。
 
 ####<a name="subheading18"></a>使用 AzCopy
-Azure 存储团队发布了命令行工具“AzCopy”，该工具用于通过存储帐户来回批量传输多个 Blob，以及跨多个存储帐户进行批量传输。该工具已针对这种情况进行了优化，可以实现较高的传输速率。建议将其用于需要批量上载、批量下载和批量复制的情况。要了解关于它的详细信息并下载它，请参阅 [Transfer data with the AzCopy Command-Line Utility（使用 AzCopy 命令行实用工具传输数据）](/documentation/articles/storage-use-azcopy)。
+Azure 存储团队发布了命令行工具“AzCopy”，该工具用于通过存储帐户来回批量传输多个 Blob，以及跨多个存储帐户进行批量传输。该工具已针对这种情况进行了优化，可以实现较高的传输速率。建议将其用于需要批量上载、批量下载和批量复制的情况。要了解关于它的详细信息并下载它，请参阅 [Transfer data with the AzCopy Command-Line Utility](/documentation/articles/storage-use-azcopy/)（使用 AzCopy 命令行实用工具传输数据）。
 
-####<a name="subheading19"></a>Azure 导入/导出服务
-对于超大量的数据（大于 1TB），Azure 存储空间提供了导入/导出服务，允许用户通过寄送硬盘驱动器的方式从 Blob 存储上载和下载数据。你可以将数据置于硬盘驱动器上，然后将其寄送到 Microsoft 进行上载，也可以将空的硬盘驱动器寄给 Microsoft 来下载数据。有关详细信息，请参阅 [Use the Microsoft Azure Import/Export Service to Transfer Data to Blob Storage（使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中）](/documentation/articles/storage-import-export-service)。对于这种大小的数据，此方式可能比通过网络上载/下载要高效得多。
 
 ###<a name="subheading20"></a>使用元数据
 该 Blob 服务支持 head 请求，这其中可能包含有关 Blob 的元数据。例如，如果你的应用程序需要某张照片中的 EXIF 数据，则可以检索该照片，然后从中提取数据。为了节省带宽并改进性能，你的应用程序可能会在上载照片时将 EXIF 数据存储在 Blob 的元数据中：你可以随后检索元数据中的 EXIF 数据，只需使用 HEAD 请求即可，这样就可以在每次读取 Blob 时，显著节省带宽和提取 EXIF 数据所需的处理时间。在只需元数据而不需要 Blob 的完整内容时，这种方法很有用。请注意，每个 Blob 只能存储 8 KB 的元数据（该服务不会接受数据大小超过此要求的存储请求），因此如果数据大小不符合该要求，则可能无法使用这种方法。
 
-有关如何使用 .NET 获取 Blob 的元数据的示例，请参阅 [Set and Retrieve Properties and Metadata（设置和检索属性与元数据）](/documentation/articles/storage-properties-metadata)。
+有关如何使用 .NET 获取 Blob 的元数据的示例，请参阅 [Set and Retrieve Properties and Metadata](/documentation/articles/storage-properties-metadata/)（设置和检索属性与元数据）。
 
 ###快速上载
 若要快速上载 Blob，需要回答的第一个问题是：你是要上载一个还是多个 Blob？ 请使用以下指南来确定要使用的正确方法，具体取决于你的情况。
@@ -264,9 +261,9 @@ Azure 存储团队发布了命令行工具“AzCopy”，该工具用于通过�
 若要快速上载多个 Blob，请以并行方式上载。这要快于通过并行块上载方式一次上载一个 Blob，因为这种情况下上载会分布到存储服务的多个分区中。单个 Blob 仅支持 60 MB/秒（大约 480 Mbps）的吞吐量。默认情况下 [AzCopy](#subheading18) 以并行方式执行上载操作，建议用于这种情形。
 
 ###<a name="subheading23"></a>选择正确的 Blob 类型
-Azure 存储空间支持两种类型的 Blob：页Blob和块Blob。在使用情形已确定的情况下，选择何种 Blob 类型会影响到解决方案的执行情况和可伸缩性。需要以高效方式上载大量数据时，适合选择块 Blob：例如，客户端应用程序可能需要将照片或视频上载到 Blob 存储中。如果应用程序需要对数据执行随机写入，则应选择页 Blob：例如，Azure VHD 以页 Blob 方式存储。
+Azure 存储空间支持两种类型的 Blob：*页* Blob 和*块* Blob。在使用情形已确定的情况下，选择何种 Blob 类型会影响到解决方案的执行情况和可伸缩性。需要以高效方式上载大量数据时，适合选择块 Blob：例如，客户端应用程序可能需要将照片或视频上载到 Blob 存储中。如果应用程序需要对数据执行随机写入，则应选择页 Blob：例如，Azure VHD 以页 Blob 方式存储。
 
-有关详细信息，请参阅 [Understanding Block Blobs, Append Blobs, and Page Blobs（了解块 Blob、追加 Blob 和页 Blob）](http://msdn.microsoft.com/zh-cn/library/azure/ee691964.aspx)。
+有关详细信息，请参阅[了解块 Blob、追加 Blob 和页 Blob](http://msdn.microsoft.com/zh-cn/library/azure/ee691964.aspx)。
 
 ##表
 除了前面所述的适用于[所有服务](#allservices)的经过验证的做法，此外还有以下经过验证的做法，这些做法尤其适用于表服务。
@@ -286,7 +283,7 @@ Azure 存储空间支持两种类型的 Blob：页Blob和块Blob。在使用情�
 ####<a name="subheading25"></a>使用 JSON
 从存储服务 2013-08-15 版开始，表服务就支持使用 JSON 而非基于 XML 的 AtomPub 格式来传输表数据。这最多可以减少 75% 的负载大小，显著改进应用程序的性能。
 
-有关详细信息，请参阅文章 [Microsoft Azure Tables: Introducing JSON（Microsoft Azure 表：JSON 简介）](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)和 [Payload Format for Table Service Operations（表服务操作的有效负载格式）](http://msdn.microsoft.com/zh-cn/library/azure/dn535600.aspx)。
+有关详细信息，请参阅文章 [Microsoft Azure Tables: Introducing JSON](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)（Microsoft Azure 表：JSON 简介）和 [Payload Format for Table Service Operations](http://msdn.microsoft.com/zh-cn/library/azure/dn535600.aspx)（表服务操作的有效负载格式）。
 
 ####<a name="subheading26"></a>关闭 Nagle
 Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网络性能的方法。不过，该方法并非适用于所有情况（例如交互性很强的环境）。就 Azure 存储空间来说，Nagle 的算法会对表请求和队列服务请求的执行造成负面影响，应尽可能禁用。
@@ -298,18 +295,18 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 
 -	表设计
 -	高效的查询
--	高效的数据更新  
+-	高效的数据更新
 
 ####<a name="subheading27"></a>表和分区
 表划分为分区。存储在分区中的每个实体共享相同的分区键，并具有唯一的行键，用于在该分区中标识自己。分区具有好处，但也带来了可伸缩性限制。
 
 -	优点：您可以在同一个分区中更新单个事务、原子事务和批处理事务的实体，每种事务最多包含 100 个单独的存储操作（总大小限制为 4MB）。此外，假定需要检索相同数量的实体，则在单个分区中查询数据要比跨多个分区查询数据更高效（不过，如果需要查询表数据，则请阅读相关文章以获取更进一步的建议）。
--	可伸缩性限制：存储在单个分区中的实体的访问不能进行负载平衡，因为分区支持原子批处理事务。因此，总体说来单个表分区的可伸缩性目标低于表服务的相应目标。  
+-	可伸缩性限制：存储在单个分区中的实体的访问不能进行负载平衡，因为分区支持原子批处理事务。因此，总体说来单个表分区的可伸缩性目标低于表服务的相应目标。
 
 考虑到表和分区的这些特点，你应该采用以下设计源：
 
 -	你的客户端应用程序在同一逻辑工作单元中频繁更新或查询的数据应位于同一分区。这可能是因为你的应用程序需要聚合写入，或者是因为你需要充分利用原子批处理操作。此外，与跨分区的数据相比，单个分区中的数据可以在单个查询中更高效地进行查询。
--	你的客户端应用程序不在同一逻辑工作单元中插入/更新或查询（单个查询或批量更新）的数据应位于不同的分区中。必须指出的是，单个表中的分区键没有数量限制，因此即使设置数百万个分区键，那也不是问题，也不会影响性能。例如，如果您的应用程序是一个需要用户登录的热门网站，不妨使用用户 ID 作为分区键。  
+-	你的客户端应用程序不在同一逻辑工作单元中插入/更新或查询（单个查询或批量更新）的数据应位于不同的分区中。必须指出的是，单个表中的分区键没有数量限制，因此即使设置数百万个分区键，那也不是问题，也不会影响性能。例如，如果您的应用程序是一个需要用户登录的热门网站，不妨使用用户 ID 作为分区键。
 
 ####热分区
 热分区是指这样一种分区，即收到了某个帐户的过多流量，但又无法对其进行负载平衡，因为该分区为单个分区。一般情况下，热分区的创建有以下两种模式：
@@ -374,7 +371,7 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 ###<a name=subheading39"></a>可伸缩性限制
 单个队列可以处理大约 2,000 条消息（每条 1KB）/秒（在这里，每个 AddMessage、GetMessage 和 DeleteMessage 均计为一条消息）。如果这对你的应用程序来说还不够用，则应使用多个队列并将这些消息分散到队列中去。
 
-在 [Azure Storage Scalability and Performance Targets（Azure 存储空间的可缩放性和性能目标）](/documentation/articles/storage-scalability-targets)中查看最新的可伸缩性目标。
+在 [Azure Storage Scalability and Performance Targets](/documentation/articles/storage-scalability-targets/)（Azure 存储的可缩放性和性能目标）中查看最新的可伸缩性目标。
 
 ###<a name=subheading40"></a>关闭 Nagle
 请参阅有关表配置的部分，其中讨论了 Nagle 算法 — Nagle 算法通常不适合执行队列请求，应禁用。
@@ -388,20 +385,21 @@ Nagle 的算法已跨 TCP/IP 网络进行了广泛的实施，是一种改进网
 ###<a name=subheading43"></a>队列轮询间隔
 大多数应用程序会轮询获取队列中的消息，队列可能是适合该应用程序的事务的最大源之一。理智选择轮询间隔：轮询过于频繁可能导致你的应用程序接近队列的可伸缩性目标。不过，200,000 次事务仅收费 0.01 美元（在撰写本文时），一个处理器每秒轮询一次且持续一个月的成本不到 15 美分，因此成本通常不是影响你选择轮询间隔的一项因素。
 
-如需最新成本信息，请参阅 [Azure Storage Pricing（Azure 存储空间定价）](/home/features/storage#price)。
+如需最新成本信息，请参阅 [Azure Storage Pricing](/pricing/details/storage/)（Azure 存储定价）。
 
 ###<a name=subheading44"></a>UpdateMessage
 您可以使用“UpdateMessage”来增加不可见性超时或更新消息的状态信息。虽然此功能很强大，但请记住，每项“UpdateMessage”操作都会计入可伸缩性目标。不过，与作业每完成一步就将其从一个队列传到下一个队列的工作流相比，此方法可能要高效得多。使用“UpdateMessage”操作可以让您的应用程序将作业状态保存到消息，然后又可以继续工作，而不必在作业的每一步完成的时候，为了执行作业的下一步而将消息重新排队。
 
-有关详细信息，请参阅文章[如何：更改已排队消息的内容](/documentation/articles/storage-dotnet-how-to-use-queues#change-the-contents-of-a-queued-message)。
+有关详细信息，请参阅文章[如何：更改已排队消息的内容](/documentation/articles/storage-dotnet-how-to-use-queues/#change-the-contents-of-a-queued-message)。
 
 ###<a name=subheading45"></a>应用程序体系结构
 你应该使用队列，让你的应用程序体系结构具有可伸缩性。下面列出了一些方法，你可以通过这些方法，使用队列来提高应用程序的可伸缩性：
 
 -	你可以使用队列来创建需要处理的积压工作，并消除应用程序中的工作负载。例如，你可以将用户发出的执行处理器密集型工作（例如，调整已上载图像的大小）的请求排队。
--	你可以使用队列来分离应用程序的某些部分，以便对其进行独立的缩放操作。例如，Web 前端可以将用户提交的调查结果置于某个队列中，留待以后分析和存储。你可以添加更多的辅助角色实例，使之按要求处理队列数据。  
+-	你可以使用队列来分离应用程序的某些部分，以便对其进行独立的缩放操作。例如，Web 前端可以将用户提交的调查结果置于某个队列中，留待以后分析和存储。你可以添加更多的辅助角色实例，使之按要求处理队列数据。
 
 ##结束语
 本文讨论了部分最常用的、经过验证的做法，目的是优化使用 Azure 存储空间时的性能。我们建议每一位应用程序开发人员对照以上每条做法，对自己的应用程序进行评估，并考虑按照建议要求进行操作，以便优化使用 Azure 存储空间的应用程序的性能。
  
-<!---HONumber=Mooncake_0606_2016-->
+
+<!---HONumber=Mooncake_0905_2016-->

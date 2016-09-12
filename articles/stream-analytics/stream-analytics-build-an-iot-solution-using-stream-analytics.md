@@ -1,17 +1,18 @@
 <properties 
 	pageTitle="使用流分析构建 IOT 解决方案 | Microsoft Azure" 
 	description="使用收费站方案了解流分析 iot 解决方案的入门教程"
-	keywords=""
+	keywords="iot 解决方案, 开窗函数"
 	documentationCenter=""
 	services="stream-analytics"
 	authors="jeffstokes72" 
 	manager="paulettm" 
 	editor="cgronlun"
-/>
+/>  
+
 
 <tags 
 	ms.service="stream-analytics" 
-	ms.date="05/03/2016" 
+	ms.date="08/11/2016" 
 	wacn.date=""
 />
 
@@ -54,8 +55,8 @@
 ### 入口数据流
 
 入口数据流包含汽车进入收费站的相关信息。
-  
-  
+
+
 | 收费站 ID | EntryTime | LicensePlate | 状态 | 制造商 | 型号 | 汽车类型 | 车重 | 收费站 | 标记 |
 |---------|-------------------------|--------------|-------|--------|---------|--------------|----------------|------|-----------|
 | 1 | 2014-09-10 12:01:00.000 | JNB 7001 | NY | Honda | CRV | 1 | 0 | 7 | |
@@ -64,11 +65,11 @@
 | 2 | 2014-09-10 12:03:00.000 | XYZ 1003 | CT | Toyota | Corolla | 1 | 0 | 4 | |
 | 1 | 2014-09-10 12:03:00.000 | BNJ 1007 | NY | Honda | CRV | 1 | 0 | 5 | 789123456 |
 | 2 | 2014-09-10 12:05:00.000 | CDE 1007 | NJ | Toyota | 4x4 | 1 | 0 | 6 | 321987654 |
-  
+
 
 下面是每个列的简短说明：
-  
-  
+
+
 | TollID | 用于唯一标识收费亭的收费亭 ID |
 |--------------|----------------------------------------------------------------|
 | EntryTime | 汽车进入收费亭的日期和时间（世界协调时） |
@@ -85,8 +86,8 @@
 ### 出口数据流
 
 出口数据流包含汽车离开收费站的相关信息。
-  
-  
+
+
 | **TollId** | **ExitTime** | **LicensePlate** |
 |------------|------------------------------|------------------|
 | 1 | 2014-09-10T12:03:00.0000000Z | JNB 7001 |
@@ -97,8 +98,8 @@
 | 2 | 2014-09-10T12:07:00.0000000Z | CDE 1007 |
 
 下面是每个列的简短说明：
-  
-  
+
+
 | 列 | 说明 |
 |--------------|-----------------------------------------------------------------|
 | TollID | 用于唯一标识收费亭的收费亭 ID |
@@ -108,8 +109,8 @@
 ### 商用车注册数据
 
 我们将使用商用车注册数据库的静态快照。
-  
-  
+
+
 | LicensePlate | RegistrationId | Expired |
 |--------------|----------------|---------|
 | SVT 6023 | 285429838 | 1 |
@@ -117,16 +118,16 @@
 | BAC 1005 | 876133137 | 1 |
 | RIV 8632 | 992711956 | 0 |
 | SNY 7188 | 592133890 | 0 |
-| ELH 9896 | 678427724 | 1 |                      
+| ELH 9896 | 678427724 | 1 |
 
 下面是每个列的简短说明：
-  
-  
+
+
 | 列 | 说明 |
 |--------------|-----------------------------------------------------------------|
 | LicensePlate | 汽车的牌照号码 |
 | RegistrationId | RegistrationId |
-| Expired | 0 代表汽车注册仍有效，1 代表汽车注册已过期 |
+| 已过期 | 0 代表汽车注册仍有效，1 代表汽车注册已过期 |
 
 
 ## 设置 Azure 流分析的环境
@@ -147,7 +148,7 @@ GitHub 上 TollApp 文件夹中的 Setup.ps1 脚本可用于创建所有必要�
 
 下载并保存 [TollApp](http://download.microsoft.com/download/D/4/A/D4A3C379-65E8-494F-A8C5-79303FD43B0A/TollApp.zip) 支持文件夹和文件。
 
-**以管理员身份**打开“Microsoft Azure PowerShell”窗口。如果你没有 Azure PowerShell，请根据 [Install and configure Azure PowerShell（安装和配置 Azure PowerShell）](../powershell-install-configure.md)中的说明安装 Azure PowerShell。
+**以管理员身份**打开“Microsoft Azure PowerShell”窗口。如果你没有 Azure PowerShell，请根据 [Install and configure Azure PowerShell](../powershell-install-configure.md)（安装和配置 Azure PowerShell）中的说明安装 Azure PowerShell。
 
 Windows 会自动阻止从 Internet 下载的 ps1、dll 和 exe 文件。因此我们需要在运行脚本之前设置执行策略。确保以管理员身份运行 Azure PowerShell 窗口。运行“Set-ExecutionPolicy unrestricted”。出现提示时按“Y”键。
 
@@ -169,7 +170,7 @@ Windows 会自动阻止从 Internet 下载的 ps1、dll 和 exe 文件。因此�
 
 脚本将打开 Microsoft Azure 的“登录”页。输入你的帐户凭据。
 
-请注意，如果帐户有权访问多个订阅，系统将请求你输入用于本教程的订阅名称。
+请注意，如果帐户有权访问多个订阅，系统将要求输入用于本教程的订阅名称。
 
 脚本可能需要几分钟的时间来运行。完成后，输出应类似于下面的屏幕截图。
 
@@ -187,7 +188,7 @@ Windows 会自动阻止从 Internet 下载的 ps1、dll 和 exe 文件。因此�
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image8.png)
 
-你将在自己的订阅中看到所有可用命名空间。单击开头为“TollData”的项。（在本例中为 TollData4637388511）。单击“事件中心”选项卡。
+将在自己的订阅中看到所有可用命名空间。单击开头为“TollData”的项。（在本例中为 TollData4637388511）。单击“事件中心”选项卡。
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
 
@@ -219,7 +220,7 @@ Windows 会自动阻止从 Internet 下载的 ps1、dll 和 exe 文件。因此�
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15.png)
 
-复制服务器名称，但不要复制端口号（例如 服务器名称.database.windows.net）
+复制服务器名称，但不要复制端口号（例如 *服务器名称*.database.windows.net）
 
 ## 从 Visual Studio 连接到数据库
 
@@ -233,7 +234,7 @@ Windows 会自动阻止从 Internet 下载的 ps1、dll 和 exe 文件。因此�
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image16.png)
 
-3) 在“服务器名称”字段中，粘贴在上一部分从 Azure 门户复制的 SQL Server 名称（例如，服务器名称.database.windows.net）
+3) 在“服务器名称”字段中，粘贴在上一部分从 Azure 门户复制的 SQL Server 名称（例如，*服务器名称*.database.windows.net）
 
 4) 在“身份验证”字段中，选择“SQL Server 身份验证”
 
@@ -242,22 +243,22 @@ Windows 会自动阻止从 Internet 下载的 ps1、dll 和 exe 文件。因此�
 6) 选择“TollDataDB”作为数据库
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image17.jpg)
-    
+
 7) 单击“确定”。
 
 8) 打开“服务器资源管理器”
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image18.png)
-  
+
 9) 在 TollDataDB 数据库中可以看到 4 个已创建的表。
-  
+
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image19.jpg)
-  
+
 ## 事件生成器 - TollApp 示例项目
 
 PowerShell 脚本自动使用 TollApp 示例应用程序来开始发送事件。你不需要执行任何附加步骤。
 
-但是，如果你对实现的细节有兴趣，可以在 GitHub 中的 [samples/TollApp](https://github.com/streamanalytics/samples/tree/master/TollApp) 下面找到 TollApp 应用程序的源代码。
+但是，如果对实现的细节有兴趣，可以在 GitHub 中的 [samples/TollApp](https://aka.ms/azure-stream-analytics-toll-source) 下面找到 TollApp 应用程序的源代码。
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image20.png)
 
@@ -372,9 +373,9 @@ PowerShell 脚本自动使用 TollApp 示例应用程序来开始发送事件。
 
 我们看看能回答此问题的 Azure 流分析查询：
 
-    SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count
-    FROM EntryStream TIMESTAMP BY EntryTime
-    GROUP BY TUMBLINGWINDOW(minute, 3), TollId
+SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count
+FROM EntryStream TIMESTAMP BY EntryTime
+GROUP BY TUMBLINGWINDOW(minute, 3), TollId
 
 如上所示，Azure 流分析使用类似于 SQL 的查询语言再加上其他几个扩展功能，来启用查询在时间方面的指定功能。
 
@@ -414,11 +415,11 @@ PowerShell 脚本自动使用 TollApp 示例应用程序来开始发送事件。
 
 为此，需要联接包含 EntryTime 的流与包含 ExitTime 的流。我们将联接 TollId 和 LicencePlate 列中的流。JOIN 运算符要求指定一个临时弹性空间，以描述联接事件之间可接受的时间差。我们将使用 DATEDIFF 函数来指定事件之间的时间差不能超过 15 分钟。我们还将 DATEDIFF 函数应用到 Exit 及 Entry 时间，以计算汽车经过收费站的实际时间。请注意相比 JOIN 条件，在 SELECT 语句中使用 DATEDIFF 的差异。
 
-    SELECT EntryStream.TollId, EntryStream.EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute , EntryStream.EntryTime, ExitStream.ExitTime) AS DurationInMinutes
-    FROM EntryStream TIMESTAMP BY EntryTime
-    JOIN ExitStream TIMESTAMP BY ExitTime
-    ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStream.LicensePlate)
-    AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
+SELECT EntryStream.TollId, EntryStream.EntryTime, ExitStream.ExitTime, EntryStream.LicensePlate, DATEDIFF (minute , EntryStream.EntryTime, ExitStream.ExitTime) AS DurationInMinutes
+FROM EntryStream TIMESTAMP BY EntryTime
+JOIN ExitStream TIMESTAMP BY ExitTime
+ON (EntryStream.TollId= ExitStream.TollId AND EntryStream.LicensePlate = ExitStream.LicensePlate)
+AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 如要测试此查询，请更新作业的“查询”选项卡上的查询：
 
@@ -438,11 +439,11 @@ Azure 流分析可以使用静态数据快照来与临时数据流联接。为�
 
 如果某辆商用车已向收费公司注册，则可以直接通过收费亭，而不用停车接受检查。我们将使用商用车注册查找表来识别注册已过期的所有商用车。
 
-    SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId
-    FROM EntryStream TIMESTAMP BY EntryTime
-    JOIN Registration
-    ON EntryStream.LicensePlate = Registration.LicensePlate
-    WHERE Registration.Expired = '1'
+SELECT EntryStream.EntryTime, EntryStream.LicensePlate, EntryStream.TollId, Registration.RegistrationId
+FROM EntryStream TIMESTAMP BY EntryTime
+JOIN Registration
+ON EntryStream.LicensePlate = Registration.LicensePlate
+WHERE Registration.Expired = '1'
 
 请注意，若要测试使用引用数据的查询，需要定义引用数据的输入源，我们已在步骤 5 中完成此操作。
 
@@ -481,9 +482,9 @@ Azure 流分析可以使用静态数据快照来与临时数据流联接。为�
 
 Azure 流分析能够弹性缩放，并且能够处理较大的数据负载。Azure 流分析查询可以使用 **PARTITION BY** 子句来告诉系统此步骤将会扩展。PartitionId 是系统添加的特殊列，它与输入（事件中心）的分区 ID 匹配
 
-    SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
-    FROM EntryStream TIMESTAMP BY EntryTime PARTITION BY PartitionId
-    GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId    
+SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
+FROM EntryStream TIMESTAMP BY EntryTime PARTITION BY PartitionId
+GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 停止当前作业，更新“查询”选项卡中的查询，然后打开“缩放”选项卡。
 
@@ -532,4 +533,4 @@ Setup.ps1 脚本将创建 2 个 Azure 事件中心，以及 Azure SQL 数据库�
 
 ![](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image57.png)
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0905_2016-->

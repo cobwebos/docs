@@ -9,8 +9,9 @@
 
 <tags 
 	ms.service="multi-factor-authentication"  
-	ms.date="05/12/2016" 
-	wacn.date=""/>
+	ms.date="08/04/2016" 
+	wacn.date=""/>  
+
 
 
 
@@ -28,21 +29,21 @@
 
 > [AZURE.NOTE]  请注意，你的 IT 部门可能会禁用上述一个或多个选项。如果存在这种情况，在注册过程中这些禁用的选项将不可用。
 
-在确定验证方法后，你可以开始注册。使用[设置体验](/documentation/articles/multi-factor-authentication-end-user-first-time)链接开始逐步完成注册过程。
+在确定验证方法后，你可以开始注册。使用[设置体验](/documentation/articles/multi-factor-authentication-end-user-first-time/)链接开始逐步完成注册过程。
 
 
 ## 如何开始使用 Multi-Factor Authentication
 
-参考下列主题之一帮助自己入门。
+选择下面的主题之一以开始。
 
 主题|说明
 :------------- | :------------- | 
-[设置体验](/documentation/articles/multi-factor-authentication-end-user-first-time)| 介绍第一次设置 Multi-Factor Authentication 的过程。
-[登录体验](/documentation/articles/multi-factor-authentication-end-user-signin)|说明使用各种方法（例如电话或应用）登录时预期会发生的情况。
-[更改设置](/documentation/articles/multi-factor-authentication-end-user-manage-settings)|说明如何更改你的设置，例如电话号码或首选的注册方法。
-[有关应用密码的帮助](/documentation/articles/multi-factor-authentication-end-user-app-passwords)| 查找有关创建和使用应用密码的信息。
-[使用移动应用](/documentation/articles/multi-factor-authentication-azure-authenticator)|Azure 验证器应用可用于 [Windows Phone](http://www.windowsphone.com/zh-cn/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) 和 [IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458)。
+[设置体验](/documentation/articles/multi-factor-authentication-end-user-first-time/)| 介绍第一次设置 Multi-Factor Authentication 的过程。
+[登录体验](/documentation/articles/multi-factor-authentication-end-user-signin/)|说明使用各种方法（例如电话或应用）登录时预期会发生的情况。
+[更改设置](/documentation/articles/multi-factor-authentication-end-user-manage-settings/)|说明如何更改你的设置，例如电话号码或首选的注册方法。
+[有关应用密码的帮助](/documentation/articles/multi-factor-authentication-end-user-app-passwords/)| 查找有关创建和使用应用密码的信息。
+[使用移动应用](/documentation/articles/multi-factor-authentication-azure-authenticator/)|Azure 验证器应用可用于 [Windows Phone](http://www.windowsphone.com/zh-cn/store/app/azure-authenticator/03a5b2bf-6066-418f-b569-e8aecbc06e50)、[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) 和 [IOS](https://itunes.apple.com/us/app/azure-authenticator/id983156458)。
 
  
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0905_2016-->

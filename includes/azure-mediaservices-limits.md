@@ -26,6 +26,6 @@
 
 <sup>5</sup> 存储帐户必须来自同一 Azure 订阅。
 
-<sup>6</sup> 适用于大量不同策略（如适用于资产定位符的策略或 ContentKeyAuthorizationPolicy）的 1,000,000 个策略有限制。如果经常使用相同的天数/访问权限等，则应使用相同的策略 ID。
+<sup>6</sup> 不同的 AMS 策略限制为 1,000,000 个（例如，对于定位器策略或 ContentKeyAuthorizationPolicy）。如果经常使用相同的天数/访问权限等，则应使用相同的策略 ID。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0905_2016-->

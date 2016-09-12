@@ -5,17 +5,19 @@
 	documentationCenter=""
 	authors="TomArcher"
 	manager="douge"
-	editor=""/>
+	editor=""/>  
 
 <tags 
 	ms.service="storage" 
-	ms.date="05/08/2016"
+	ms.date="07/18/2016"
 	wacn.date=""/>
 
 # 开始使用表存储和 Visual Studio 连接服务 (ASP.NET)
 
+[AZURE.INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
+
 ## 概述
-本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 ASP.NET 项目中创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 表存储。本文向你展示如何使用 Azure 表执行常见任务，包括创建和删除表以及使用表实体。示例是用 C# 代码编写的，并使用了 [Azure .NET 存储客户端库](https://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx)。有关使用 Azure 表存储的更多常规信息，请参阅[通过 .NET 开始使用 Azure 表存储](/documentation/articles/storage-dotnet-how-to-use-tables)。
+本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 ASP.NET 项目中创建或引用 Azure 存储帐户之后，如何开始在 Visual Studio 中使用 Azure 表存储。本文向你展示如何使用 Azure 表执行常见任务，包括创建和删除表以及使用表实体。示例是用 C# 代码编写的，并使用了 [Azure .NET 存储客户端库](https://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx)。有关使用 Azure 表存储的更多常规信息，请参阅 [Get started with Azure Table storage using .NET](/documentation/articles/storage-dotnet-how-to-use-tables/)（通过 .NET 开始使用 Azure 表存储）。
 
 Azure 表存储使用户可以存储大量结构化数据。该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。Azure 表最适合存储结构化非关系型数据。
 
@@ -176,6 +178,6 @@ Azure 表存储使用户可以存储大量结构化数据。该服务是一个 N
 
 ## 后续步骤
 
-[AZURE.INCLUDE [vs-storage-dotnet-tables-next-steps](../includes/vs-storage-dotnet-tables-next-steps.md)]
+[AZURE.INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0905_2016-->

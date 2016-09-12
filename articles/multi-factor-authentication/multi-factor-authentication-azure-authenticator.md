@@ -9,7 +9,7 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	wacn.date=""/>
 
 
@@ -73,7 +73,7 @@
 
 ![添加帐户](./media/multi-factor-authentication-azure-authenticator/addaccount3.png)
 
-- 扫描该条形码。 
+- 扫描该条形码。
 
 ![添加帐户](./media/multi-factor-authentication-azure-authenticator/scan.png)
 
@@ -143,7 +143,7 @@
 
 ![添加帐户](./media/multi-factor-authentication-azure-authenticator/msaccount.png)
 
-- 完成该过程：输入帐户以下代码（在本例中为 875 756），然后将代码输入提供机密密钥的页面上的框中，然后单击“下一步”。  
+- 完成该过程：输入帐户以下代码（在本例中为 875 756），然后将代码输入提供机密密钥的页面上的框中，然后单击“下一步”。
 
 ![添加帐户](./media/multi-factor-authentication-azure-authenticator/verify.png)
 
@@ -163,4 +163,5 @@ iOS 上的 Azure 验证器移动应用支持 Touch ID。Azure Multi-Factor Authe
 若要从 Azure 验证器应用程序中删除个人帐户，只需点击该帐户。随后会出现“删除”选项。
 
 ![删除帐户](./media/multi-factor-authentication-azure-authenticator/remove.png)
-<!---HONumber=Mooncake_0530_2016-->
+
+<!---HONumber=Mooncake_0905_2016-->

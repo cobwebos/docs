@@ -9,20 +9,22 @@
 
 <tags
 	ms.service="storage"
-	ms.date="05/23/2016"
+	ms.date="07/26/2016"
 	wacn.date=""/>
 
 # 如何通过 Python 使用 Azure 文件存储
 
-[AZURE.INCLUDE [storage-selector-file-include](../includes/storage-selector-file-include.md)]
+[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
 
 ## 概述
 
-本文将演示如何使用文件存储执行常见方案。这些示例通过 Python 编写并使用 [Microsoft Azure Storage SDK for Python]。涉及的方案包括上传、列出、下载以及删除文件。
+本文将演示如何使用文件存储执行常见方案。这些示例用 Python 编写并使用 [Microsoft Azure Storage SDK for Python]。涉及的方案包括上传、列出、下载以及删除文件。
 
-[AZURE.INCLUDE [storage-file-concepts-include](../includes/storage-file-concepts-include.md)]
+[AZURE.INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
+[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## 创建共享
 
@@ -34,7 +36,7 @@
 
 	file_service = **FileService** (account_name='myaccount', account_key='mykey',endpoint_suffix='core.chinacloudapi.cn')
 
-在以下代码示例中，如果共享不存在，你可以使用 **FileService** 对象来创建它。
+在以下代码示例中，如果共享不存在，可以使用 **FileService** 对象来创建它。
 
 	file_service.create_share('myshare')
 
@@ -42,11 +44,11 @@
 
 Azure 文件存储共享至少包含文件所在的根目录。在本部分，你将学习如何将文件从本地存储上载到共享所在的根目录。
 
-若要创建文件并上传数据，请使用 **create\_file\_from\_path**、**create\_file\_from\_stream**、**create\_file\_from\_bytes** 或 **create\_file\_from\_text** 方法。这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
+若要创建文件并上载数据，请使用 **create\_file\_from\_path**、**create\_file\_from\_stream**、**create\_file\_from\_bytes** 或 **create\_file\_from\_text** 方法。这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
 
-**create\_file\_from\_path** 上传指定路径文件中的内容，而 **create\_file\_from\_stream** 上传已打开的文件/流中的内容。**create\_file\_from\_bytes** 上传字节数组，而 **create\_file\_from\_text** 使用指定的编码（默认为 UTF-8）上传指定的文本值。
+**create\_file\_from\_path** 从指定的路径上载文件的内容，而 **create\_file\_from\_stream** 上载已打开的文件/流中的内容。**create\_file\_from\_bytes** 上载字节数组，而 **create\_file\_from\_text** 使用指定的编码（默认为 UTF-8）上载指定的文本值。
 
-下面的示例将 **sunset.png** 文件的内容上传到 **myfile** 文件中。
+下面的示例将 **sunset.png** 文件的内容上载到 **myfile** 文件中。
 
 	from azure.storage.file import ContentSettings
 	file_service.create_file_from_path(
@@ -96,4 +98,4 @@ Azure 文件存储共享至少包含文件所在的根目录。在本部分，�
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0905_2016-->

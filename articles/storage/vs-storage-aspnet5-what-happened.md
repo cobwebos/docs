@@ -5,18 +5,19 @@
 	documentationCenter=""
 	authors="TomArcher"
 	manager="douge"
-	editor=""/>
+	editor=""/>  
 
 <tags 
 	ms.service="storage" 
-	ms.date="05/08/2016"
+
+	ms.date="08/15/2016"
 	wacn.date=""/>
 
 # 我的 ASP.NET 5 项目（Visual Studio Azure 存储连接服务）发生了什么情况？
 
 ## 已添加引用
 
-Azure 存储 NuGet 包已添加到你的 Visual Studio 项目。  
+Azure 存储 NuGet 包已添加到你的 Visual Studio 项目。
 此包添加了以下 .NET 引用：
 
 - **Microsoft.Data.Edm**
@@ -35,4 +36,5 @@ Azure 存储 NuGet 包已添加到你的 Visual Studio 项目。
 
 有关详细信息，请参阅 [ASP.NET 5](http://www.asp.net/vnext)。
  
-<!---HONumber=Mooncake_0606_2016-->
+
+<!---HONumber=Mooncake_0905_2016-->

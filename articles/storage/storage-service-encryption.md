@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="07/11/2016"
+	ms.date="08/03/2016"
 	wacn.date=""/>
 
 # 静态数据的 Azure 存储空间服务加密（预览版）
@@ -21,7 +21,7 @@
 ## 概述
 
 
-Azure 存储空间提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。在应用程序和 Azure 之间传输数据时，可以使用[客户端加密](/documentation/articles/storage-client-side-encryption/)、HTTPS 或 SMB 3.0 来保护数据。存储服务加密是 Azure 存储空间的新功能，在数据写入到 Azure 存储空间（支持块 Blob、页 Blob 和追加 Blob）时加密数据。可以针对使用 Azure Resource Manager (ARM) 部署模型的新存储帐户启用此功能，并且此功能适用于所有冗余级别（LRS、ZRS、GRS、RA-GRS）。存储服务加密适用于标准和高级存储，以完全透明的方式处理加密、解密和密钥管理。采用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)所有数据，它是现在最强有力的分组密码之一。以下“预览”部分详细说明了如何登记存储服务加密的预览程序。
+Azure 存储空间提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。在应用程序和 Azure 之间传输数据时，可以使用[客户端加密](/documentation/articles/storage-client-side-encryption/)、HTTPS 或 SMB 3.0 来保护数据。存储服务加密是 Azure 存储空间的新功能，在数据写入到 Azure 存储空间（支持块 Blob、页 Blob 和追加 Blob）时加密数据。可以针对使用 Azure Resource Manager 部署模型的新存储帐户启用此功能，并且此功能适用于所有冗余级别（LRS、GRS、RA-GRS）。存储服务加密适用于标准和高级存储，以完全透明的方式处理加密、解密和密钥管理。采用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)所有数据，它是现在最强有力的分组密码之一。以下“预览”部分详细说明了如何登记存储服务加密的预览程序。
 
 此屏幕截图显示如何使用 [Azure 门户](https://portal.azure.cn)查找存储服务加密设置。在此屏幕上，单击“加密”以继续。
 
@@ -33,9 +33,9 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 
 ##可用性
 
-对于标准存储，此功能当前可用于澳大利亚东南部、美国中部、东亚、美国东部 2、东南亚、西欧和美国西部。
+对于标准存储，此功能当前可用于澳大利亚东南部、加拿大中部、加拿大东部、美国中部、亚洲东部、美国东部、美国东部 2、美国中北部、欧洲北部、美国中南部、亚洲东南部、欧洲西部和美国西部。
 
-对于高级存储，此功能当前可用于澳大利亚东南部、美国中部、东亚、美国东部 2、东南亚、日本东部和美国西部。
+对于高级存储，此功能当前可用于澳大利亚东南部、加拿大中部、加拿大东部、美国中部、亚洲东部、美国东部、美国东部 2、日本东部、美国中北部、欧洲北部、美国中南部、亚洲东南部和美国西部。
 
 当我们在其他区域推出此功能时，将会更新本文档。
 
@@ -57,7 +57,7 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 
 -   现有数据 - SSE 只将加密启用加密之后新建的数据。例如，如果你创建新的 Resource Manager 存储帐户但未打开加密，然后将 blob 或存档 VHD 上传到该存储帐户，然后打开 SSE，则那些 Blob 不会被加密，除非重新写入或复制。
 
--   应用商店支持 - 针对使用[Azure 门户](https://portal.azure.cn)、PowerShell 和 Azure CLI 从应用商店创建的 VM 启用加密。VHD 基本映像将保持未加密状态；但是，在 VM 启动之后完成的任何写入将会加密。
+-   应用商店支持 - 针对使用（Azure 门户）[https://portal.azure.cn)、PowerShell 和 Azure CLI 从应用商店创建的 VM 启用加密。VHD 基本映像将保持未加密状态；但是，在 VM 启动之后完成的任何写入将会加密。
 
 -   表、队列和文件数据将不会加密。
 
@@ -73,7 +73,7 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 
 -   注册存储资源提供程序命名空间。只需针对尚未注册到 SRP 的订阅执行此操作。
 
-    `PS E:> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Storage" `
+    `PS E:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Storage" `
 
 -   若要注册该功能，可以使用 Register-AzureRmProviderFeature PowerShell cmdlet。
 
@@ -222,4 +222,4 @@ SSE 普及之后，我们将部署存储客户端库的更高版本，可让你�
 
 Azure 存储空间提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。有关详细信息，请访问[存储安全指南](/documentation/articles/storage-security-guide/)。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0905_2016-->

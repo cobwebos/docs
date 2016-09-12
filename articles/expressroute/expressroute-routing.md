@@ -3,20 +3,21 @@
    description="本页提供有关为 ExpressRoute 线路配置和管理路由的详细要求。"
    documentationCenter="na"
    services="expressroute"
-   authors="cherylmc"
-   manager="carmonm"
+   authors="ganesr"
+   manager="rossort"
    editor=""/>
 <tags
    ms.service="expressroute"
-   ms.date="06/01/2016"
-   wacn.date=""/>
+   ms.date="08/10/2016"
+   wacn.date=""/>  
+
 
 
 # ExpressRoute 路由要求  
 
 若要使用 ExpressRoute 连接到 Microsoft 云服务，你需要设置并管理路由。某些连接服务提供商以托管服务形式提供路由的设置和管理。请咨询连接服务提供商，以确定他们是否提供此类服务。如果不提供，则你必须遵守以下所述的要求。
 
-有关需要在设置后才能建立连接的路由会话的说明，请参阅[线路和路由域](/documentation/articles/expressroute-circuit-peerings)一文。
+有关需要在设置后才能建立连接的路由会话的说明，请参阅[线路和路由域](/documentation/articles/expressroute/expressroute-circuit-peerings/)一文。
 
 **注意：**Microsoft 不支持任何高可用性配置的路由器冗余协议（如 HSRP 和 VRRP）。我们依赖每个对等互连的一组冗余 BGP 会话来获得高可用性。
 
@@ -31,10 +32,10 @@
  - 必须为路由接口保留一个 /29 子网或两个 /30 子网。
  - 用于路由的子网可以是专用 IP 地址或公共 IP 地址。
  - 子网不得与客户保留用于 Microsoft 云的范围冲突。
- - 如果使用 /29 子网，它将拆分成两个 /30 子网。 
+ - 如果使用 /29 子网，它将拆分成两个 /30 子网。
 	 - 第一个 /30 子网用于主链路，第二个 /30 子网用于辅助链路。
 	 - 对于每个 /30 子网，必须在路由器上使用 /30 子网的第一个 IP 地址。Microsoft 使用 /30 子网的第二个 IP 地址来设置 BGP 会话。
-	 - 只有设置了两个 BGP 会话，我们的[可用性 SLA](https://azure.microsoft.com/support/legal/sla/) 才有效。  
+	 - 只有设置了两个 BGP 会话，我们的[可用性 SLA](https://azure.microsoft.com/support/legal/sla/) 才有效。
 
 #### 专用对等互连示例
 
@@ -51,8 +52,8 @@ a.b.c.d/29 拆分成 a.b.c.d/30 和 a.b.c.d+4/30 并通过预配 API 一路传�
 
 你必须使用自己的公共 IP 地址来设置 BGP 会话。Microsoft 必须能够通过路由 Internet 注册表和 Internet 路由注册表来验证 IP 地址的所有权。
 
-- 你必须使用一个唯一的 /29 子网或两个 /30 子网来为每条 ExpressRoute 线路（如果有多个）的每个对等互连设置 BGP 对等互连。 
-- 如果使用 /29 子网，它将拆分成两个 /30 子网。 
+- 你必须使用一个唯一的 /29 子网或两个 /30 子网来为每条 ExpressRoute 线路（如果有多个）的每个对等互连设置 BGP 对等互连。
+- 如果使用 /29 子网，它将拆分成两个 /30 子网。
 	- 第一个 /30 子网用于主链路，第二个 /30 子网用于辅助链路。
 	- 对于每个 /30 子网，必须在路由器上使用 /30 子网的第一个 IP 地址。Microsoft 使用 /30 子网的第二个 IP 地址来设置 BGP 会话。
 	- 只有设置了两个 BGP 会话，我们的[可用性 SLA](/support/legal/sla/) 才有效。
@@ -70,7 +71,7 @@ a.b.c.d/29 拆分成 a.b.c.d/30 和 a.b.c.d+4/30 并通过预配 API 一路传�
 
 ## 动态路由交换
 
-路由交换将通过 eBGP 协议进行。EBGP 会话在 MSEE 与路由器之间建立。不要求对 BGP 会话进行身份验证。如果需要，可以配置 MD5 哈希。有关配置 BGP 会话的信息，请参阅[配置路由](/documentation/articles/expressroute-howto-routing-classic)及[线路预配工作流和线路状态](/documentation/articles/expressroute-workflows)。
+路由交换将通过 eBGP 协议进行。EBGP 会话在 MSEE 与路由器之间建立。不要求对 BGP 会话进行身份验证。如果需要，可以配置 MD5 哈希。有关配置 BGP 会话的信息，请参阅[配置路由](/documentation/articles/expressroute/expressroute-howto-routing-classic/)及[线路预配工作流和线路状态](/documentation/articles/expressroute/expressroute-workflows/)。
 
 ## 自治系统编号
 
@@ -108,7 +109,7 @@ ExpressRoute 不能配置为传输路由器。你必须依赖连接服务提供�
 
 例如，如果你在阿姆斯特丹通过 ExpressRoute 连接到 Microsoft，则就能够访问在欧洲北部和欧洲西部托管的所有 Microsoft 云服务。
 
-有关地缘政治地区、关联的 Azure 区域和对应的 ExpressRoute 对等互连位置的详细列表，请参阅 [ExpressRoute 合作伙伴和对等位置](/documentation/articles/expressroute-locations)。
+有关地缘政治地区、关联的 Azure 区域和对应的 ExpressRoute 对等互连位置的详细列表，请参阅 [ExpressRoute 合作伙伴和对等位置](/documentation/articles/expressroute/expressroute-locations/)。
 
 可以针对每个地缘政治区域购买多个 ExpressRoute 线路。如果拥有多个连接，则可以从异地冗余中获得明显的高可用性优势。如果你多条 ExpressRoute 线路，将从 Microsoft 收到同一组公共对等互连和 Microsoft 对等互连路径的前缀。这意味着你可以使用多个路径从你的网络接入 Microsoft。这可能会导致在网络中做出欠佳的路由决策。因此，你可能会在不同的服务上遇到欠佳的连接体验。
 
@@ -165,10 +166,8 @@ Microsoft 使用适当的 BGP 社区值（表示托管前缀的区域）来标�
 
 - 配置 ExpressRoute 连接。
 
-	- [创建经典部署模型的 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-classic)或[使用 Azure Resource Manager 创建和修改 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-arm)
-	- [为经典部署模型配置路由](/documentation/articles/expressroute-howto-routing-classic)或[为 Resource Manager 部署模型配置路由](/documentation/articles/expressroute-howto-routing-arm)
-	- [将经典 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-classic)或[将 Resource Manager VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-arm)
+	- [创建经典部署模型的 ExpressRoute 线路](/documentation/articles/expressroute/expressroute-howto-circuit-classic/)或[使用 Azure Resource Manager 创建和修改 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-arm/)
+	- [为经典部署模型配置路由](/documentation/articles/expressroute/expressroute-howto-routing-classic/)或[为 Resource Manager 部署模型配置路由](/documentation/articles/expressroute-howto-routing-arm/)
+	- [将经典 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute/expressroute-howto-linkvnet-classic/)或[将 Resource Manager VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-arm/)
 
-
-
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0905_2016-->

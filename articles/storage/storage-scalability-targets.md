@@ -1,5 +1,5 @@
 <properties 
-   pageTitle="Azure 存储空间可伸缩性和性能目标 | Azure"
+   pageTitle="Azure 存储空间可伸缩性和性能目标 |Azure"
    description="了解有关 Azure 存储帐户的可伸缩性和性能目标的信息，包括标准和高级存储账户的容量、请求速率以及入站和出站带宽。了解每个 Azure 存储服务中各分区的性能目标。"
    services="storage"
    documentationCenter="na"
@@ -8,7 +8,7 @@
    editor="na" />
 <tags 
    ms.service="storage"
-   ms.date="07/18/2016"
+   ms.date="08/03/2016"
    wacn.date="" />
 
 # Azure 存储空间可伸缩性和性能目标
@@ -28,25 +28,25 @@
 
 ## Blob、队列、表和文件的可伸缩性目标
 
-[AZURE.INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
+[AZURE.INCLUDE [azure-storage-limits](../../includes/azure-storage-limits.md)]
 
 ## 虚拟机磁盘的可伸缩性目标
 
-[AZURE.INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
+[AZURE.INCLUDE [azure-storage-limits-vm-disks](../../includes/azure-storage-limits-vm-disks.md)]
 
 请参阅 [Windows VM 大小](/documentation/articles/virtual-machines-windows-sizes/)或 [Linux VM 大小](/documentation/articles/virtual-machines-linux-sizes/)了解其他详细信息。
 
 ### 标准存储帐户
 
-[AZURE.INCLUDE [azure-storage-limits-vm-disks-standard](../includes/azure-storage-limits-vm-disks-standard.md)]
+[AZURE.INCLUDE [azure-storage-limits-vm-disks-standard](../../includes/azure-storage-limits-vm-disks-standard.md)]
 
 ### 高级存储帐户
 
-[AZURE.INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
+[AZURE.INCLUDE [azure-storage-limits-vm-disks-premium](../../includes/azure-storage-limits-vm-disks-premium.md)]
 
 ## Azure 资源管理器的可伸缩性目标
 
-[AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
+[AZURE.INCLUDE [azure-storage-limits-azure-resource-manager](../../includes/azure-storage-limits-azure-resource-manager.md)]
 
 ## Azure 存储中的分区
 
@@ -79,4 +79,4 @@
 - [Microsoft Azure 存储性能和可伸缩性清单](/documentation/articles/storage-performance-checklist/)
 - [Microsoft Azure 存储：具有高度一致性的高可用云存储服务](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0905_2016-->

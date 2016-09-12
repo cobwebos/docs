@@ -5,18 +5,21 @@
 	documentationCenter=""
 	authors="TomArcher"
 	manager="douge"
-	editor=""/>
+	editor=""/>  
 
 <tags
 	ms.service="storage"
-	ms.date="05/08/2016"
+
+	ms.date="07/18/2016"
 	wacn.date=""/>
 
 # 开始使用 Azure Blob 存储和 Visual Studio 连接服务（WebJob 项目）
 
+[AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
+
 ## 概述
 
-本文章提供 C# 代码示例，用于演示如何在创建或更新 Azure blob 后触发进程。这些代码示例使用 [WebJobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk) 版本 1.x。当你使用 Visual Studio“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。
+本文章提供 C# 代码示例，用于演示如何在创建或更新 Azure blob 后触发进程。这些代码示例使用 [WebJobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk/) 版本 1.x。当你使用 Visual Studio“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。
 
 
 
@@ -24,11 +27,11 @@
 
 本部分说明如何使用 **BlobTrigger** 属性。
 
- **注意：**WebJobs SDK 会扫描日志文件，以观察新的或更改的 blob。此过程非常缓慢；创建 blob 之后数分钟或更长时间内可能仍不会触发函数。如果你的应用程序需要立即处理 blob，推荐的方法是在创建该 blob 时创建队列消息，并在处理该 blob 的函数上使用 [QueueTrigger](/documentation/articles/websites-dotnet-webjobs-sdk-storage-queues-how-to#trigger) 属性（而非 **BlobTrigger** 属性）。
+ **注意：**WebJobs SDK 会扫描日志文件，以观察新的或更改的 blob。此过程非常缓慢；创建 blob 之后数分钟或更长时间内可能仍不会触发函数。如果你的应用程序需要立即处理 blob，推荐的方法是在创建该 blob 时创建队列消息，并在处理该 blob 的函数上使用 [QueueTrigger](/documentation/articles/websites-dotnet-webjobs-sdk-storage-queues-how-to/#trigger) 属性（而非 **BlobTrigger** 属性）。
 
 ### Blob 名称和扩展名的单个占位符  
 
-以下代码示例将输入容器中显示的文本 blob 复制到输出容器中：
+以下代码示例将*输入*容器中显示的文本 blob 复制到*输出*容器中：
 
 		public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
 		    [Blob("output/{name}")] out string output)
@@ -36,7 +39,7 @@
 		    output = input.ReadToEnd();
 		}
 
-属性构造函数采用指定容器名称的字符串参数和 Blob 名称的占位符。在此示例中，如果在输入容器中创建了名为 *Blob1.txt* 的 blob，则该函数将在输出容器中创建名为 *Blob1.txt* 的 blob。
+属性构造函数采用指定容器名称的字符串参数和 Blob 名称的占位符。在此示例中，如果在*输入*容器中创建了名为 *Blob1.txt* 的 blob，则该函数将在*输出*容器中创建名为 *Blob1.txt* 的 blob。
 
 你可以指定包含 Blob 名称占位符的名称模式，如以下代码示例中所示：
 
@@ -46,9 +49,9 @@
 		    output = input.ReadToEnd();
 		}
 
-此代码只会复制名称以“original-”开头的 Blob。例如，将输入容器中的 *original-Blob1.txt* 复制到输出容器中的 *copy-Blob1.txt*。
+此代码只会复制名称以“original-”开头的 Blob。例如，将*输入*容器中的 *original-Blob1.txt* 复制到*输出*容器中的 *copy-Blob1.txt*。
 
-如果你需要指定的名称中包含大括号的 Blob 名称的名称模式，增加大括号。例如，如果你想要在映像容器中查找具有以下类似名称的 blob：
+如果你需要指定的名称中包含大括号的 Blob 名称的名称模式，增加大括号。例如，如果你想要在*映像*容器中查找具有以下类似名称的 blob：
 
 		{20140101}-soundfile.mp3
 
@@ -56,11 +59,11 @@
 
 		images/{{20140101}}-{name}
 
-在示例中，名称占位符值将为 *soundfile.mp3*。
+在示例中，*名称*占位符值将为 *soundfile.mp3*。
 
 ### 单独的 Blob 名称和扩展名占位符
 
-以下代码示例在将输入容器中显示的 blob 复制到输出容器中时更改文件扩展名。该代码将记录输入 blob 的扩展名，并将输出 blob 的扩展名设置为 *.txt*。
+以下代码示例在将*输入*容器中显示的 blob 复制到*输出*容器中时更改文件扩展名。该代码将记录*输入* blob 的扩展名，并将*输出* blob 的扩展名设置为 *.txt*。
 
 		public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
 		    [Blob("output/{name}.txt")] out string output,
@@ -142,7 +145,7 @@
 
 当 **BlobTrigger** 函数失败时，如果失败是暂时性错误导致的，则 SDK 会再次调用该函数。如果失败是由 Blob 的内容导致的，则该函数每次尝试处理 Blob 时都会失败。默认情况下，对于给定的 Blob，SDK 调用一个函数最多 5 次。如果第五次尝试失败，SDK 会将消息添加到名为 *webjobs-blobtrigger-poison* 的队列中。
 
-最大尝试次数可配置。将使用相同的 [MaxDequeueCount](/documentation/articles/websites-dotnet-webjobs-sdk-storage-queues-how-to#configqueue) 设置处理有害 blob 和有害队列消息。
+最大尝试次数可配置。将使用相同的 [MaxDequeueCount](/documentation/articles/websites-dotnet-webjobs-sdk-storage-queues-how-to/#configqueue) 设置处理有害 blob 和有害队列消息。
 
 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
@@ -193,7 +196,7 @@ SDK 自动反序列化 JSON 消息。下面是 **PoisonBlobMessage** 类：
 
 ### <a id="receipts"></a> Blob 回执
 
-WebJobs SDK 确保没有为相同的新 blob 或更新 blob 多次调用 **BlobTrigger** 函数。为此，它会维护 blob 回执，以确定是否已处理给定的 blob 版本。
+WebJobs SDK 确保没有为相同的新 blob 或更新 blob 多次调用 **BlobTrigger** 函数。为此，它会维护 *blob 回执*，以确定是否已处理给定的 blob 版本。
 
 Blob 回执在 AzureWebJobsStorage 连接字符串指定的 Azure 存储帐户中名为 *azure-webjobs-hosts* 的容器内存储。Blob 回执包含以下信息：
 
@@ -205,9 +208,9 @@ Blob 回执在 AzureWebJobsStorage 连接字符串指定的 Azure 存储帐户�
 
 如果您想要强制重新处理某个 blob，则可以从 *azure-webjobs-hosts* 容器中手动删除该 blob 的 blob 回执。
 
-## <a id="queues"></a> 队列文章涵盖的相关主题
+## <a id="queues"></a>队列文章涵盖的相关主题
 
-有关如何处理队列消息触发的 blob 处理，或者不特定于 blob 处理的 WebJobs SDK 方案的信息，请参阅[如何通过 WebJobs SDK 使用 Azure 队列存储](/documentation/articles/websites-dotnet-webjobs-sdk-storage-queues-how-to)。
+有关如何处理队列消息触发的 blob 处理，或者不特定于 blob 处理的 WebJobs SDK 方案的信息，请参阅[如何通过 WebJobs SDK 使用 Azure 队列存储](/documentation/articles/websites-dotnet-webjobs-sdk-storage-queues-how-to/)。
 
 该文章涵盖的相关主题包括：
 
@@ -223,6 +226,7 @@ Blob 回执在 AzureWebJobsStorage 连接字符串指定的 Azure 存储帐户�
 
 ## <a id="nextsteps"></a>后续步骤
 
-本文提供了代码示例，演示如何处理用于操作 Azure blob 的常见方案。有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 文档资源](/documentation/articles/websites-webjobs-resources)。
+本文提供了代码示例，演示如何处理用于操作 Azure blob 的常见方案。有关如何使用 Azure WebJobs 和 WebJobs SDK 的详细信息，请参阅 [Azure WebJobs 文档资源](/documentation/articles/websites-webjobs-resources/)。
  
-<!---HONumber=Mooncake_0606_2016-->
+
+<!---HONumber=Mooncake_0905_2016-->

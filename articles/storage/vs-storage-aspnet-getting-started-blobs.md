@@ -5,20 +5,23 @@
 	documentationCenter=""
 	authors="TomArcher"
 	manager="douge"
-	editor=""/>
+	editor=""/>  
 
 <tags
 	ms.service="storage"
-	ms.date="06/28/2016"
+
+	ms.date="07/18/2016"
 	wacn.date=""/>
 
 # 开始使用 blob 存储和 Visual Studio 连接服务 (ASP.NET)
+
+[AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## 概述
 
 本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 ASP.NET 应用中创建或引用 Azure 存储帐户之后，如何开始使用 Azure Blob 存储。本文演示如何创建 blob 容器和执行其他常见任务（如上载、列出、下载和删除 blob）。示例是用 C# 编写的，并使用了 [Azure .NET 存储客户端库](https://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx)。
 
- - 有关使用 Azure Blob 存储的更多常规信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs/)。
+ - 有关使用 Azure Blob 存储的更多常规信息，请参阅 [Get started with Azure Blob storage using .NET](/documentation/articles/storage-dotnet-how-to-use-blobs/)（通过 .NET 开始使用 Azure Blob 存储）。
  - 有关 ASP.NET 项目的详细信息，请参阅 [ASP.NET](http://www.asp.net)。
 
 
@@ -221,6 +224,6 @@ Azure Blob 存储支持块 Blob 和页 Blob。大多数情况下，推荐使用�
 
 ## 后续步骤
 
-[AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../includes/vs-storage-dotnet-blobs-next-steps.md)]
+[AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0905_2016-->

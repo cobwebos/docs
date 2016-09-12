@@ -9,20 +9,23 @@
 
 <tags 
 	ms.service="storage" 
-	ms.date="05/31/2016"
-	wacn.date=""/>
+	ms.date="07/26/2016"
+	wacn.date=""/>  
+
 
 # 如何通过 Python 使用队列存储
 
-[AZURE.INCLUDE [storage-selector-queue-include](../includes/storage-selector-queue-include.md)]
+[AZURE.INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## 概述
 
-本指南演示如何使用 Azure 队列存储服务执行常见方案。这些示例通过 Python 编写并使用 [Azure Storage SDK for Python]。介绍的方案包括“插入”、“查看”、“获取”和“删除”队列消息以及“创建和删除队列”。有关队列的详细信息，请参阅 [后续步骤] 部分。
+本指南演示如何使用 Azure 队列存储服务执行常见方案。这些示例用 Python 编写并使用 [Azure Storage SDK for Python]。介绍的方案包括“插入”、“查看”、“获取”和“删除”队列消息以及“创建和删除队列”。有关队列的详细信息，请参阅 [后续步骤] 部分。
 
-[AZURE.INCLUDE [storage-queue-concepts-include](../includes/storage-queue-concepts-include.md)]
+[AZURE.INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
+[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## 如何：创建队列
 
@@ -55,7 +58,7 @@
 
 ## 如何：取消消息的排队
 
-你的代码分两步从队列中删除消息。在调用 **get\_messages** 时，默认情况下你会获得队列中的下一条消息。从 **get\_messages** 返回的消息变得对从此队列读取消息的任何其他代码不可见。默认情况下，此消息将持续 30 秒不可见。若要完成从队列中删除消息，您还必须调用 **delete\_message**。此删除消息的两步过程可确保当您的代码因硬件或软件故障而无法处理消息时，您的其他代码实例可以获取同一消息并重试。你的代码在处理消息后会立即调用 **delete\_message**。
+你的代码分两步从队列中删除消息。在调用 **get\_messages** 时，默认情况下你会获得队列中的下一条消息。从 **get\_messages** 返回的消息变得对从此队列读取消息的任何其他代码不可见。默认情况下，此消息将持续 30 秒不可见。若要完成从队列中删除消息，您还必须调用 **delete\_message**。此删除消息的两步过程可确保当您的代码因硬件或软件故障而无法处理消息时，您的其他代码实例可以获取同一消息并重试。你的代码在处理消息后会立即调用 **delete\\_message**。
 
 	messages = queue_service.get_messages('taskqueue')
 	for message in messages:
@@ -103,4 +106,4 @@
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0905_2016-->

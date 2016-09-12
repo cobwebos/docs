@@ -3,27 +3,28 @@
 	description="了解如何通过 PHP 使用表服务来创建和删除表以及插入、删除和查询表。"
 	services="storage"
 	documentationCenter="php"
-	authors="tfitzmac"
-	manager="adinah"
+	authors="rmcmurray"
+	manager="wpickett"
 	editor=""/>
 
 <tags
 	ms.service="storage"
-	ms.date="06/01/2016"
+	ms.date="08/11/2016"
 	wacn.date=""/>
 
 
 # 如何通过 PHP 使用表存储
 
-[AZURE.INCLUDE [storage-selector-table-include](../includes/storage-selector-table-include.md)]
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/>  
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-tables.md)]
 
 ## 概述
 
 本指南演示如何使用 Azure 表服务执行常见任务。示例是用 PHP 编写的并使用了 [Azure SDK for PHP][download]。所涉及的任务包括“创建和删除表以及在表中插入、删除和查询实体”。有关 Azure 表服务的详细信息，请参阅[后续步骤](#next-steps)部分。
 
-[AZURE.INCLUDE [storage-table-concepts-include](../includes/storage-table-concepts-include.md)]
+[AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
+[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## 创建 PHP 应用程序
 
@@ -33,7 +34,7 @@
 
 ## 获取 Azure 客户端库
 
-[AZURE.INCLUDE [get-client-libraries](../includes/get-client-libraries.md)]
+[AZURE.INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
 ## 配置你的应用程序以访问表服务
 
@@ -44,7 +45,7 @@
 
 下面的示例演示了如何包括 autoloader 文件并引用 **ServicesBuilder** 类。
 
-> [AZURE.NOTE] 本示例（以及本文中的其他示例）假定您已通过 Composer 安装用于 Azure 的 PHP 客户端库。如果你已手动安装这些库，则需要引用 <code>WindowsAzure.php</code> autoloader 文件。
+> [AZURE.NOTE] 本示例（以及本文中的其他示例）假定您已通过 Composer 安装用于 Azure 的 PHP 客户端库。如果已手动安装这些库，则需要引用 <code>WindowsAzure.php</code> autoloader 文件。
 
 	require_once 'vendor/autoload.php';
 	use WindowsAzure\Common\ServicesBuilder;
@@ -246,7 +247,7 @@
 
 ## 检索分区中的一部分实体
 
-可以使用上一示例中使用的同一模式来检索分区中的部分实体。你检索的部分实体将由你使用的筛选器确定（有关详细信息，请参阅[查询表和实体][filters]）。下面的示例演示如何使用筛选器检索具有特定的 `Location` 和早于指定日期 `DueDate` 的所有实体。
+可以使用上一示例中使用的同一模式来检索分区中的部分实体。检索的实体子集将由所使用的筛选器确定（有关详细信息，请参阅[查询表和实体][filters]）。下面的示例演示如何使用筛选器检索具有特定的 `Location` 和早于指定日期的 `DueDate` 的所有实体。
 
 	require_once 'vendor/autoload.php';
 
@@ -474,4 +475,4 @@
 [filters]: http://msdn.microsoft.com/zh-cn/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/zh-cn/library/azure/dd894038.aspx
 
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0905_2016-->

@@ -5,14 +5,17 @@
 	documentationCenter=""
 	authors="TomArcher"
 	manager="douge"
-	editor=""/>
+	editor=""/>  
 
 <tags
-	ms.service="storage"	
-	ms.date="05/08/2016"
+	ms.service="storage"
+
+	ms.date="07/18/2016"
 	wacn.date=""/>
 
 # 开始使用队列存储和 Visual Studio 连接服务 (ASP.NET 5)
+
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ##概述
 
@@ -24,7 +27,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 
 **注意：**在 ASP.NET 5 中执行调用 Azure 存储空间的一些 API 是异步的。有关详细信息，请参阅[使用 Async 和 Await 进行异步编程](http://msdn.microsoft.com/zh-cn/library/hh191443.aspx)。下面的代码假定正在使用异步编程方法。
 
-- 有关以编程方式操作队列的详细信息，请参阅[通过 .NET 开始使用 Azure 队列存储](/documentation/articles/storage-dotnet-how-to-use-queues)。
+- 有关以编程方式操作队列的详细信息，请参阅 [Get started with Azure Queue storage using .NET](/documentation/articles/storage-dotnet-how-to-use-queues/)（通过 .NET 开始使用 Azure 队列存储）。
 - 有关 Azure 存储空间的常规信息，请参阅[存储空间文档](/documentation/services/storage/)。
 - 有关 Azure 云服务的常规信息，请参阅[云服务文档](/documentation/services/cloud-services/)。
 - 有关对 ASP.NET 应用程序进行编程的详细信息，请参阅 [ASP.NET](http://www.asp.net)。
@@ -94,7 +97,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 
 你的代码分两步从队列中删除消息（取消对消息的排队）。
 1. 调用 **GetMessageAsync**，以获得队列中的下一条消息。从 **GetMessageAsync** 返回的消息将变为对从此队列读取消息的任何其他代码不可见。默认情况下，此消息将持续 30 秒不可见。
-2.	若要完成从队列中删除消息的操作，请调用 **DeleteMessageAsync**。
+2. 若要完成从队列中删除消息的操作，请调用 **DeleteMessageAsync**。
 
 此删除消息的两步过程可确保，如果你的代码因硬件或软件故障而无法处理消息，则你的代码的其他实例可以获取相同消息并重试。以下代码将在处理消息后立即调用 **DeleteMessageAsync**。
 
@@ -134,7 +137,7 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 
 ## 共同使用 Async Await 模式和公用队列 API
 
-此示例演示如何共同使用 Async Await 模式和公用队列 API。示例代码会调用每个给定方法的异步版本，这可以通过每个方法的 Async 后修补程序体现。使用异步方法时，Async-Await 模式将暂停本地执行，直到调用完成。此行为允许当前的线程执行其他工作，这有助于避免性能瓶颈并提高应用程序的整体响应能力。有关在 .NET 中使用 Async-Await 模式的详细信息，请参阅 [Async 和 Await（C# 和 Visual Basic）](https://msdn.microsoft.com/zh-cn/library/hh191443.aspx)
+此示例演示如何共同使用 Async Await 模式和公用队列 API。示例代码会调用每个给定方法的异步版本，这可以通过每个方法的 Async 后修补程序体现。使用异步方法时，Async-Await 模式将暂停本地执行，直到调用完成。此行为允许当前的线程执行其他工作，这有助于避免性能瓶颈并提高应用程序的整体响应能力。有关在.NET 中使用 Async-Await 模式的详细信息，请参阅 [Async and Await (C# and Visual Basic)](https://msdn.microsoft.com/zh-cn/library/hh191443.aspx)（Async 和 Await（C# 和 Visual Basic））
 
     // Create a message to add to the queue.
     CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
@@ -160,6 +163,6 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 
 ##后续步骤
 
-[AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../includes/vs-storage-dotnet-queues-next-steps.md)]
+[AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0905_2016-->

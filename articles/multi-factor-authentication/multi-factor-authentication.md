@@ -10,8 +10,9 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="06/16/2016"
-	wacn.date="" />
+	ms.date="08/04/2016"
+	wacn.date="" />  
+
 
 # 什么是 Azure Multi-Factor Authentication？
 Multi-Factor Authentication (MFA) 是需要使用多个验证方法的身份验证方法，为用户登录和事务额外提供一层重要的安全保障。它需要以下验证方法中的两种或更多种来进行工作：
@@ -20,7 +21,7 @@ Multi-Factor Authentication (MFA) 是需要使用多个验证方法的身份验�
 - 你具有的某样东西（无法轻易复制的可信设备，如电话）
 - 你自身的特征（生物辨识系统）
 
-<center>![Username and Password](./media/multi-factor-authentication/pword.png) &#160;&#160;&#160;&#160;&#160;![Certificates](./media/multi-factor-authentication/phone.png) &#160;&#160;&#160;&#160;&#160;![Smart Phone](./media/multi-factor-authentication/hware.png) &#160;&#160;&#160;&#160;&#160;![Smart Card](./media/multi-factor-authentication/smart.png) &#160;&#160;&#160;&#160;&#160;![Virtual Smart Card](./media/multi-factor-authentication/vsmart.png) &#160;&#160;&#160;&#160;&#160;![Username and Password](./media/multi-factor-authentication/cert.png)</center>
+<center>![Username and Password](./media/multi-factor-authentication/pword.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Certificates](./media/multi-factor-authentication/phone.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Smart Phone](./media/multi-factor-authentication/hware.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Smart Card](./media/multi-factor-authentication/smart.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Virtual Smart Card](./media/multi-factor-authentication/vsmart.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Username and Password](./media/multi-factor-authentication/cert.png)</center>
 
 
 
@@ -122,19 +123,19 @@ MFA SDK | | | *需要 Multi-Factor Auth 提供程序和完整的 Azure 订阅
 
 1.	购买 Azure Multi-Factor Authentication 许可证并将其分配给用户。
 2.	购买随附了 Azure Multi-Factor Authentication 的许可证（例如 Azure Active Directory Premium、Enterprise Mobility Suite 或 Enterprise Cloud Suite）并将其分配给用户。
-3.	在 Azure 订阅中创建 Azure Multi-Factor Authentication 提供程序。如果你还没有 Azure 订阅，可以注册 Azure 试用版订阅。在试用过期之前，需要将试用订阅转换为正常订阅。
+3.	在 Azure 订阅中创建 Azure Multi-Factor Authentication 提供程序。如果还没有 Azure 订阅，可以注册 Azure 试用版订阅。在试用过期之前，需要将试用订阅转换为常规订阅。
 
-使用 Azure Multi-Factor Authentication 提供程序时，可根据两种使用模式针对 Azure 订阅计费：
+使用 Azure Multi-Factor Authentication 提供程序时，有两种使用模式（通过 Azure 订阅计费）可用：
 
 
 - **按用户**。通常适用于想要为固定数目的、需要定期进行身份验证的员工启用 Multi-Factor Authentication 的企业。
 - **按身份验证**。通常适用于想要为大量的、不定期需要身份验证的外部用户启用 Multi-Factor Authentication 的企业。
 
-Azure Multi-Factor Authentication 为云和服务器提供了可选择的验证方法。这表示你可以选择在多重身份验证中用户可使用哪些方法。当前此功能在 Multi-Factor Authentication 的云版本的公共预览中可用。有关更多信息，请参阅[可选择的验证方法](multi-factor-authentication-whats-next.md#selectable-verification-methods-public-preview)。
+Azure Multi-Factor Authentication 为云和服务器提供了可选择的验证方法。这表示你可以选择在多重身份验证中用户可使用哪些方法。当前此功能在 Multi-Factor Authentication 的云版本的公共预览中可用。有关更多信息，请参阅[可选择的验证方法](/documentation/articles/multi-factor-authentication-whats-next/#selectable-verification-methods-public-preview)。
 
 有关价格详细信息，请参阅 [Azure MFA 定价](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)。
 
-选择最适合你的组织的按用户或按使用量模式。接下来，若要开始使用，请参阅[入门](multi-factor-authentication-get-started.md)。
+选择最适合你的组织的按用户或按使用量模式。接下来，若要开始使用，请参阅[入门](/documentation/articles/multi-factor-authentication-get-started/)。
 
 ## 选择适合自己的多因素安全解决方案
 
@@ -145,7 +146,7 @@ Azure Multi-Factor Authentication 为云和服务器提供了可选择的验证�
 
 以下部分将提供有关如何做出判断的指导。
 
-### 我要保护什么？
+###<a name="what-am-i-trying-to-secure"></a> 我要保护什么？
 
 为了确定适当的 Multi-Factor Authentication 解决方案，首先我们必须回答一个问题：试图使用第二种身份验证方法来保护什么？它是 Azure 中的应用程序， 还是远程访问系统之类的系统？通过判断我们尝试保护的项目，就可以找出要在何处启用 Multi-Factor Authentication 这个问题的答案。
 
@@ -161,7 +162,7 @@ VPN、RDG 等远程访问系统| |* |
 
 
 
-### 用户位于何处
+###<a name="where-are-the-users-located"></a> 用户位于何处
 
 接下来，不论是云中的 Multi-Factor Authentication 还使用 MFA 服务器的本地 Multi-Factor Authentication，只要根据用户的所在位置，我们就能确定合适的解决方案。
 
@@ -200,12 +201,7 @@ MFA 报告 | ● | ●
 
 在确定是要使用云 Multi-Factor Authentication 还是本地 MFA 服务器后，接下来可以开始设置并使用 Azure Multi-Factor Authentication。**选择代表你的方案的图标！**
 
-<center>
+<center> 
+[![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](/documentation/articles/multi-factor-authentication-get-started-cloud/) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](/documentation/articles/multi-factor-authentication-get-started-server/) &#160;&#160;&#160;&#160;&#160; </center>
 
-
-
-
-[![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](/documentation/articles/multi-factor-authentication-get-started-cloud/)  &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160;
-</center>
-
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0905_2016-->

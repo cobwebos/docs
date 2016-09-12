@@ -5,14 +5,16 @@
 	documentationCenter=""
 	authors="TomArcher"
 	manager="douge"
-	editor=""/>
+	editor=""/>  
 
 <tags 
 	ms.service="storage" 
-	ms.date="05/08/2016"
+	ms.date="07/18/2016"
 	wacn.date=""/>
 
 # 开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET 5)
+
+[AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ##概述
 
@@ -20,7 +22,7 @@
 
 Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可在世界任何地方通过 HTTP 或 HTTPS 访问这些数据。单个 Blob 可以是任意大小。Blob 可以是图像、音频和视频文件、原始数据以及文档文件等。本文介绍通过使用 Visual Studio 中的“添加连接服务”对话框在 ASP.NET 5 项目中已创建 Azure 存储帐户之后，如何开始使用 blob 存储。
 
-正如文件位于文件夹中一样，存储 Blob 位于容器中。创建存储空间后，可以在存储空间中创建一个或多个容器。例如，在名为“Scrapbook”的存储空间中，可以在名为“images”的存储空间中创建容器，用于存储图片，还可以在名为“audio”的存储空间中创建另一个容器，用于存储音频文件。创建这些容器后，您可以向它们上载单独的 Blob 文件。有关以编程方式操作 blob 的详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs)。
+正如文件位于文件夹中一样，存储 Blob 位于容器中。创建存储空间后，可以在存储空间中创建一个或多个容器。例如，在名为“Scrapbook”的存储空间中，可以在名为“images”的存储空间中创建容器，用于存储图片，还可以在名为“audio”的存储空间中创建另一个容器，用于存储音频文件。创建这些容器后，您可以向它们上载单独的 Blob 文件。有关以编程方式操作 Blob 的详细信息，请参阅 [Get started with Azure Blob storage using .NET](/documentation/articles/storage-dotnet-how-to-use-blobs/)（通过 .NET 开始使用 Azure Blob 存储）。
 
 ##使用代码访问 blob 容器
 
@@ -122,7 +124,7 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
         }
     } while (token != null);
 
-还有其他方法来列出 Blob 容器内容。有关详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs#list-the-blobs-in-a-container)。
+还有其他方法来列出 Blob 容器内容。有关详细信息，请参阅 [Get started with Azure Blob storage using .NET](/documentation/articles/storage-dotnet-how-to-use-blobs/#list-the-blobs-in-a-container)（通过 .NET 开始使用 Azure Blob 存储）。
 
 ##下载 Blob
 若要下载 blob，请首先获取对该 blob 引用，然后调用 **DownloadToStreamAsync** 方法。下面的示例使用 **DownloadToStreamAsync** 方法将 blob 内容传输到稍后可以另存为本地文件的流对象。
@@ -136,7 +138,7 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
     	await blockBlob.DownloadToStreamAsync(fileStream);
 	}
 
-还有其他方法将 Blob 另存为文件。有关详细信息，请参阅[通过 .NET 开始使用 Azure Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs#download-blobs)。
+还有其他方法将 Blob 另存为文件。有关详细信息，请参阅 [Get started with Azure Blob storage using .NET](/documentation/articles/storage-dotnet-how-to-use-blobs/#download-blobs)（通过 .NET 开始使用 Azure Blob 存储）。
 
 ##删除 Blob
 若要删除 blob，请首先获取对该 blob 的引用，然后调用用于该 blob 的 **DeleteAsync** 方法。
@@ -149,6 +151,6 @@ Azure Blob 存储是一项可存储大量非结构化数据的服务，用户可
 
 ## 后续步骤
 
-[AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../includes/vs-storage-dotnet-blobs-next-steps.md)]
+[AZURE.INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0905_2016-->

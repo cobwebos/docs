@@ -1,6 +1,6 @@
 <properties
-   pageTitle="如何使用 Azure 门户配置 ExpressRoute 线路的路由 |Microsoft Azure"
-   description="本文将指导你完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。"
+   pageTitle="如何使用 Azure 门户配置 ExpressRoute 线路的路由 | Azure"
+   description="本文介绍创建和预配 ExpressRoute 线路的专用、公共对等互连的步骤。本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。"
    documentationCenter="na"
    services="expressroute"
    authors="cherylmc"
@@ -9,17 +9,18 @@
    tags="azure-resource-manager"/>
 <tags
    ms.service="expressroute"
-   ms.date="04/08/2016"
-   wacn.date=""/>
+   ms.date="07/19/2016"
+   wacn.date=""/>  
+
 
 # 创建和修改 ExpressRoute 线路的路由
 
 
 
 > [AZURE.SELECTOR]
-[Azure Portal - Resource Manager](/documentation/articles/expressroute-howto-routing-portal-resource-manager)
-[PowerShell - Resource Manager](/documentation/articles/expressroute-howto-routing-arm)
-[PowerShell - Classic](/documentation/articles/expressroute-howto-routing-classic)
+[Azure Portal - Resource Manager](/documentation/articles/expressroute/expressroute-howto-routing-portal-resource-manager/)
+[PowerShell - Resource Manager](/documentation/articles/expressroute/expressroute-howto-routing-arm/)
+[PowerShell - Classic](/documentation/articles/expressroute/expressroute-howto-routing-classic/)
 
 
 
@@ -27,12 +28,12 @@
 
 **关于 Azure 部署模型**
 
-[AZURE.INCLUDE [vpn-gateway-clasic-rm](../includes/vpn-gateway-classic-rm-include.md)]
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## 配置先决条件
 
-- 请确保你在开始配置之前已查看了[先决条件](/documentation/articles/expressroute-prerequisites)页、[路由要求](/documentation/articles/expressroute-routing)页和[工作流](/documentation/articles/expressroute-workflows)页。
-- 你必须有一个活动的 ExpressRoute 线路。在继续下一步之前，请按说明[创建 ExpressRoute 线路](/documentation/articles/expressroute-howto-circuit-arm)，并通过连接提供商启用该线路。ExpressRoute 线路必须处于已预配和已启用状态，你才能运行下述 cmdlet。
+- 在开始配置之前，请务必查看[先决条件](/documentation/articles/expressroute/expressroute-prerequisites/)页、[路由要求](/documentation/articles/expressroute/expressroute-routing/)页和[工作流](/documentation/articles/expressroute/expressroute-workflows/)页。
+- 你必须有一个活动的 ExpressRoute 线路。在继续下一步之前，请按说明[创建 ExpressRoute 线路](/documentation/articles/expressroute/expressroute-howto-circuit-arm/)，并通过连接提供商启用该线路。ExpressRoute 线路必须处于已预配和已启用状态，你才能运行下述 cmdlet。
 
 这些说明只适用于由提供第 2 层连接服务的服务提供商创建的线路。如果你的服务提供商提供第 3 层托管服务（通常是 IPVPN，如 MPLS），则连接服务提供商将为你设置和管理路由。
 
@@ -109,8 +110,8 @@
 
 2. 配置线路的 Azure 公共对等互连。在继续执行后续步骤之前，请确保已准备好以下各项：
 
-	- 主链路的 /30 子网。 
-	- 辅助链路的 /30 子网。 
+	- 主链路的 /30 子网。
+	- 辅助链路的 /30 子网。
 	- 用于设置此对等互连的所有 IP 地址必须都是有效的公共 IPv4 地址。
 	- 用于建立此对等互连的有效 VLAN ID。请确保线路中没有其他对等互连使用同一个 VLAN ID。
 	- 对等互连的 AS 编号。可以使用 2 字节和 4 字节 AS 编号。
@@ -225,13 +226,12 @@
 
 ## 后续步骤
 
-下一步，[将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute-howto-linkvnet-arm)。
+下一步，[将 VNet 链接到 ExpressRoute 线路](/documentation/articles/expressroute/expressroute-howto-linkvnet-arm/)。
 
--  有关 ExpressRoute 工作流的详细信息，请参阅 [ExpressRoute 工作流](/documentation/articles/expressroute-workflows)。
+-  有关 ExpressRoute 工作流的详细信息，请参阅 [ExpressRoute 工作流](/documentation/articles/expressroute/expressroute-workflows/)。
 
--  有关线路对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](/documentation/articles/expressroute-circuit-peerings)。
+-  有关线路对等互连的详细信息，请参阅 [ExpressRoute 线路和路由域](/documentation/articles/expressroute/expressroute-circuit-peerings/)。
 
--  有关使用虚拟网络的详细信息，请参阅[虚拟网络概述](/documentation/articles/virtual-networks-overview)。
+-  有关使用虚拟网络的详细信息，请参阅[虚拟网络概述](/documentation/articles/virtual-network/virtual-networks-overview/)。
 
-
-<!---HONumber=Mooncake_0509_2016-->
+<!---HONumber=Mooncake_0905_2016-->

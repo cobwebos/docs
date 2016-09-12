@@ -5,24 +5,28 @@
 	documentationCenter="python"
 	authors="emgerner-msft"
 	manager="wpickett"
-	editor=""/>
+	editor="tysonn"/>
 
 <tags
 	ms.service="storage"
-    ms.date="04/29/2016"
+	ms.date="07/26/2016"
 	wacn.date=""/>
 
 # 如何通过 Python 使用 Azure Blob 存储
 
-[AZURE.INCLUDE [storage-selector-blob-include](../includes/storage-selector-blob-include.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## 概述
 
+Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中的服务。Blob 存储可以存储任何类型的文本或二进制数据，例如文档、媒体文件或应用程序安装程序。Blob 存储也称为对象存储。
+
 本指南将演示如何使用 Blob 存储执行常见方案。这些示例通过 Python 编写并使用 [Azure Storage SDK for Python]。涉及的任务包括上载、列出、下载和删除 Blob。
 
-[AZURE.INCLUDE [storage-blob-concepts-include](../includes/storage-blob-concepts-include.md)]
+[AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
+[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## 创建容器
 
@@ -34,7 +38,7 @@
 
 	block_blob_service = BlockBlobService(account_name='myaccount', account_key='mykey', endpoint_suffix='core.chinacloudapi.cn')
 
-[AZURE.INCLUDE [storage-container-naming-rules-include](../includes/storage-container-naming-rules-include.md)]
+[AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
 在以下代码示例中，如果容器不存在，可以使用 **BlockBlobService** 对象来创建它。
 
@@ -55,7 +59,7 @@
 
 若要创建块 Blob 并上载数据，请使用 **create\_blob\_from\_path**、**create\_blob\_from\_stream**、**create\_blob\_from\_bytes** 或 **create\_blob\_from\_text** 方法。这些方法属于高级方法，用于在数据大小超过 64 MB 时执行必要的分块。
 
-**create\_blob\_from\_path** 上载指定路径文件中的内容，**create\_blob\_from\_stream** 上载已打开的文件/流中的内容。**create\_blob\_from\_bytes** 上载字节数组，**create\_blob\_from\_text** 使用指定的编码（默认为 UTF-8）上载指定的文本值。
+**create\_blob\_from\_path** 从指定的路径上载文件的内容，**create\_blob\_from\_stream** 上载已打开的文件/流中的内容。**create\_blob\_from\_bytes** 上载字节数组，**create\_blob\_from\_text** 使用指定的编码（默认为 UTF-8）上载指定的文本值。
 
 下面的示例将 **sunset.png** 文件的内容上载到 **myblob** Blob。
 
@@ -121,4 +125,4 @@
 [Azure 存储团队博客]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0905_2016-->

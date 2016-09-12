@@ -5,15 +5,16 @@
 	documentationCenter=""
 	authors="TomArcher"
 	manager="douge"
-	editor=""/>
+	editor=""/>  
 
 <tags
 	ms.service="storage"
-
-	ms.date="06/01/2016"
+	ms.date="08/15/2016"
 	wacn.date=""/>
 
 # 开始使用 Azure 队列存储和 Visual Studio 连接服务
+
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## 概述
 
@@ -21,7 +22,7 @@
 
 我们将向你展示如何在存储帐户中创建和访问 Azure 队列。此外，我们将展示如何执行基本的队列操作，例如添加、修改、读取和删除队列消息。示例是用 C# 代码编写的，并使用了 [Azure .NET 存储客户端库](https://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx)。有关 ASP.NET 的详细信息，请参阅 [ASP.NET](http://www.asp.net)。
 
-Azure 队列存储是一项可存储大量消息的服务，用户可以通过经验证的呼叫，使用 HTTP 或 HTTPS 从世界任何地方访问这些消息。一条队列消息的大小可达 64 KB，一个队列中可以包含数百万条消息，直至达到存储帐户的总容量限值。
+Azure 队列存储是一项可存储大量消息的服务，用户可以通过经验证的呼叫，使用 HTTP 或 HTTPS 从世界任何地方访问这些消息。一条队列消息的大小最多可为 64 KB，一个队列中可以包含数百万条消息，直至达到存储帐户的总容量限值。
 
 ## 使用代码访问队列
 
@@ -151,6 +152,6 @@ Azure 队列存储是一项可存储大量消息的服务，用户可以通过�
 
 ## 后续步骤
 
-[AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../includes/vs-storage-dotnet-queues-next-steps.md)]
+[AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0905_2016-->

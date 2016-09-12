@@ -1,21 +1,24 @@
 <properties 
-	pageTitle="如何通过 Ruby 使用 Blob 存储 | Azure" 
+	pageTitle="如何通过 Ruby 使用 Blob 存储（对象存储）| Azure" 
 	description="使用 Azure Blob 存储（对象存储）将非结构化数据存储在云中。"
-	services="storage" 
-	documentationCenter="ruby" 
-	authors="tfitzmac" 
-	manager="wpickett" 
+	services="storage"
+	documentationCenter="ruby"
+	authors="rmcmurray"
+	manager="wpickett"
 	editor=""/>
 
 <tags 
 	ms.service="storage" 
-    ms.date="06/24/2016"
-	wacn.date=""/>
+	ms.date="08/11/2016"
+	wacn.date=""/>  
+
 
 
 # 如何通过 Ruby 使用 Blob 存储
 
-[AZURE.INCLUDE [storage-selector-blob-include](../includes/storage-selector-blob-include.md)]
+[AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
+<br/>
+[AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## 概述
 
@@ -23,9 +26,9 @@ Azure Blob 存储是一种将非结构化数据作为对象/Blob 存储在云中
 
 本指南将演示如何使用 Blob 存储执行常见方案。相关示例是使用 Ruby API 编写的。涉及的任务包括“上载”、“列出”、“下载”和“删除”Blob。
 
-[AZURE.INCLUDE [storage-blob-concepts-include](../includes/storage-blob-concepts-include.md)]
+[AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
-[AZURE.INCLUDE [storage-create-account-include](../includes/storage-create-account-include.md)]
+[AZURE.INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## 创建 Ruby 应用程序
 
@@ -73,7 +76,7 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 ## 创建容器
 
-[AZURE.INCLUDE [storage-container-naming-rules-include](../includes/storage-container-naming-rules-include.md)]
+[AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
 使用 **Azure::Blob::BlobService** 对象可以对容器和 Blob 进行操作。若要创建容器，请使用 **create\_container()** 方法。
 
@@ -119,7 +122,8 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 
 ## 列出容器中的 Blob
 
-若要列出容器，请使用 **list\_containers()** 方法。若要列出容器中的 Blob，请使用 **list\_blobs()** 方法。
+若要列出容器，请使用 **list\_containers()** 方法。
+若要列出容器中的 Blob，请使用 **list\_blobs()** 方法。
 
 这将输出帐户的所有容器中的所有 Blog 的 URL。
 
@@ -153,4 +157,4 @@ Azure 模块将读取环境变量 **AZURE\_STORAGE\_ACCOUNT** 和 **AZURE\_STORA
 - GitHub 上的 [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) 存储库
 - [使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0905_2016-->

@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="storage"
-	ms.date="06/16/2016"
+	ms.date="08/03/2016"
 	wacn.date=""/>
 
 #Azure 存储空间安全指南
@@ -17,7 +17,6 @@
 ##概述
 
 Azure 存储空间提供配套的安全性功能，这些功能相辅相成，可让开发人员共同构建安全的应用程序。存储帐户本身可以通过基于角色的访问控制和 Azure Active Directory 来保护。在应用程序和 Azure 之间传输数据时，可以使用[客户端加密](/documentation/articles/storage-client-side-encryption/)、HTTPS 或 SMB 3.0 来保护数据。使用[存储服务加密 (SSE)](/documentation/articles/storage-service-encryption/) 写入 Azure 存储空间时，可将数据设置为自动加密。可以使用 [Azure 磁盘加密](/documentation/articles/azure-security-disk-encryption/)将虚拟机所用的 OS 和数据磁盘设置为进行加密。可以使用[共享访问签名](/documentation/articles/storage-dotnet-shared-access-signature-part-1/)来授予对 Azure 存储空间中数据对象的委派访问权限。
-
 
 本文将概述其中每项可配合 Azure 存储空间使用的安全功能。提供的文章链接提供每项功能的详细信息，让你轻松地进一步探讨每个主题。
 
@@ -49,7 +48,7 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 
 ##管理平面安全性
 
-管理平面包含影响存储帐户本身的操作。例如，你可以创建或删除存储帐户、获取订阅中的存储帐户列表、检索存储帐户密钥，或重新生成存储帐户密钥。
+管理平面包含影响存储帐户本身的操作。例如，可以创建或删除存储帐户、获取订阅中的存储帐户列表、检索存储帐户密钥，或重新生成存储帐户密钥。
 
 当你创建新的存储帐户时，可以选择经典或 Resource Manager 部署模型。在 Azure 中创建资源的经典模型只允许以孤注一掷的方式访问订阅，然后访问存储帐户。
 
@@ -83,7 +82,7 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 
     -	读取者 – 他们可以查看有关存储帐户的信息（机密除外）。例如，如果将存储帐户中拥有读取者权限的角色分配给某个用户，该用户就可以查看存储帐户的属性，但无法对属性进行任何更改或查看存储帐户密钥。
 
-    -	存储帐户参与者 – 他们可以管理存储帐户 – 他们可以读取订阅的资源组和资源，以及创建和管理订阅资源组部署。他们也可以访问存储帐户密钥，这又意味着他们可以访问数据平面。
+    -	存储帐户参与者 - 他们可以管理存储帐户 - 他们可以读取订阅的资源组和资源，以及创建和管理订阅资源组部署。他们也可以访问存储帐户密钥，这又意味着他们可以访问数据平面。
 
     -	用户访问管理员 – 他们可以管理对存储帐户的用户访问权限。例如，他们可将“读取者”权限授予特定的用户。
 
@@ -205,7 +204,7 @@ Azure 存储空间提供配套的安全性功能，这些功能相辅相成，�
 
 例如，你可以读取 Blob、写入队列、创建表，以及修改文件。其中的许多操作可以通过 Azure 门户或使用多种存储资源管理器应用程序中的一种来执行。你也可以编写代码来使用 REST API 或某个存储客户端库来执行这些操作。
 
-如[管理平面安全](#management-plane-security)部分中所述，对经典存储帐户的存储密钥的访问权限可以通过提供对 Azure 订阅的完全访问权限来授予。使用 Azure Resource Manager 模型来访问存储帐户的存储密钥可以通过基于角色的访问控制 (RBAC) 来控制。
+如[管理平面安全性](#management-plane-security)部分中所述，对经典存储帐户的存储密钥的访问权限可以通过提供对 Azure 订阅的完全访问权限来授予。使用 Azure Resource Manager 模型来访问存储帐户的存储密钥可以通过基于角色的访问控制 (RBAC) 来控制。
 
 ###如何使用共享访问签名和存储访问策略来委派对帐户中对象的访问权限
 
@@ -417,7 +416,7 @@ Azure 磁盘加密解决方案支持以下三种客户加密方案：
 
 -   与 Azure 密钥保管库集成
 
--   标准 [A、D 和 G 系列 IaaS VM](/home/features/virtual-machines/pricing/)
+-   标准 [A、D 和 G 系列 IaaS VM](/pricing/details/virtual-machines/)
 
 -   在使用 [Azure 资源管理器](/documentation/articles/resource-group-overview/)模型创建的 IaaS VM 上启用加密
 
@@ -630,4 +629,4 @@ Azure 存储空间允许你启用 CORS – 跨域资源共享。对于每个存�
 
 	此文介绍如何在较旧的 Windows 计算机中使用 FIPS 模式。
 
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0905_2016-->
