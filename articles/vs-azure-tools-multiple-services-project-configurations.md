@@ -5,11 +5,10 @@
    documentationCenter="na"
    authors="TomArcher"
    manager="douge"
-   editor="" />  
-
+   editor="" />
 <tags
    ms.service="multiple"
-   ms.date="06/01/2016"
+   ms.date="08/15/2016"
    wacn.date="" />
 
 # 使用多种服务配置来配置 Azure 项目
@@ -24,7 +23,7 @@ Azure Tools for Microsoft Visual Studio 提供可用于设置存储在这些文�
 
 ![VS\_Solution\_Explorer\_Roles\_Properties](./media/vs-azure-tools-multiple-services-project-configurations/IC784076.png)
 
-有关服务定义文件和服务配置文件的基础架构信息，请参阅 [Schema Reference（架构参考](https://msdn.microsoft.com/zh-cn/library/azure/dd179398.aspx)）。有关服务配置的详细信息，请参阅[如何配置云服务](/documentation/articles/cloud-services-how-to-configure/)。
+有关服务定义文件和服务配置文件的基础架构信息，请参阅 [Schema Reference](https://msdn.microsoft.com/zh-cn/library/azure/dd179398.aspx)（架构参考）。有关服务配置的详细信息，请参阅[如何配置云服务](/documentation/articles/cloud-services-how-to-configure/)。
 
 ## 配置角色属性
 
@@ -50,7 +49,7 @@ Web 角色的属性页与辅助角色的属性页类似，不过存在少许差�
 
 如果已添加 HTTPS 终结点，则按默认启用“HTTPS 终结点”选项，Visual Studio 除了为 HTTP 终结点启动浏览器之外，还将在开始调试时为此终结点启动浏览器。此处假设两个启动选项都已启用。
 
-诊断
+**诊断**
 
 默认情况下，将对 Web 角色启用诊断。Azure 云服务项目和存储帐户都设置为使用本地存储模拟器。准备好部署到 Azure 后，可以选择生成器按钮 (**…**) 来更新存储帐户，以便在云中使用 Azure 存储空间。可以根据需要或自动计划的间隔，将诊断数据传输到存储帐户。有关 Azure 诊断的详细信息，请参阅[在 Azure 云服务和虚拟机中启用诊断](./cloud-services/cloud-services-dotnet-diagnostics.md)。
 
@@ -82,7 +81,7 @@ Web 角色的属性页与辅助角色的属性页类似，不过存在少许差�
 
 ## “本地存储”页
 
-可以使用“本地存储”属性页来保留某个角色的一个或多个本地存储资源。本地存储资源是运行角色实例的 Azure 虚拟机的文件系统中的保留目录。有关如何使用本地存储资源的详细信息，请参阅[配置本地存储资源](/documentation/articles/cloud-services-configure-local-storage-resources/)。
+可以使用“本地存储”属性页来保留某个角色的一个或多个本地存储资源。本地存储资源是运行角色实例的 Azure 虚拟机的文件系统中的保留目录。
 
 ## “证书”页
 
@@ -107,4 +106,4 @@ Web 角色的属性页与辅助角色的属性页类似，不过存在少许差�
 |开发|在此页中，可以指定生成配置说明，以及运行任何生成后事件的条件。|
 |Web|在此页中，可以配置与 Web 服务器相关的设置。|
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0912_2016-->

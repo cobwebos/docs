@@ -4,18 +4,18 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="terrylan" 
-	editor="bryanla"/>
+	manager="stevenpo" 
+	editor="curtland"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="06/02/2015" 
+	ms.date="08/04/2016" 
 	wacn.date=""/>
 # 将 Azure Multi-Factor Authentication 服务器与 AD FS 2.0 配合使用来保护云和本地资源
 
 如果你的组织已与 Azure Active Directory 联合，并且你在本地或云中拥有要保护的资源，则可以通过使用 Azure Multi-Factor Authentication 服务器并将其配置为使用 AD FS（以便为高价值终结点触发 Multi-Factor Authentication）来保护这些资源。
 
-本文介绍如何将 Azure Multi-Factor Authentication 服务器与 AD FS 2.0 配合使用。有关有关配合 Windows Serve 2012 R2 AD FS 使用 Azure Multi-Factor Authentication 的信息，请参阅[将 Azure Multi-Factor Authentication 服务器与 Windows Serve 2012 R2 AD FS 配合使用来保护云和本地资源](/documentation/articles/multi-factor-authentication-get-started-adfs-w2k12)。
+本文介绍如何将 Azure Multi-Factor Authentication 服务器与 AD FS 2.0 配合使用。有关有关配合 Windows Serve 2012 R2 AD FS 使用 Azure Multi-Factor Authentication 的信息，请参阅[将 Azure Multi-Factor Authentication 服务器与 Windows Serve 2012 R2 AD FS 配合使用来保护云和本地资源](/documentation/articles/multi-factor-authentication-get-started-adfs-w2k12/)。
 
 
 ## AD FS 2.0 代理
@@ -27,10 +27,10 @@
 2. 单击“基于窗体”选项卡。
 3. 单击“添加...”按钮。
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/setup1.png)</center>
-4. 若要自动检测用户名、密码和域变量，请在“自动配置基于窗体的网站”对话框内输入登录 URL（例如 https://sso.contoso.com/adfs/ls ），然后单击“确定”。
+4. 若要自动检测用户名、密码和域变量，请在“自动配置基于窗体的网站”对话框内输入登录 URL（例如 https://sso.contoso.com/adfs/ls），然后单击“确定”。
 5. 如果所有用户均已导入或将导入到该服务器并接受 Multi-Factor Authentication，请选中“需要 Multi-Factor Authentication 用户匹配”框。如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。请参阅帮助文件，以了解有关此功能的其他信息。
 6. 如果无法自动检测到页变量，请单击“自动配置基于窗体的网站”对话框中的“手动指定...”按钮。
-7. 在“添加基于窗体的网站”对话框中，将 ADFS 登录页的 URL（例如 https://sso.contoso.com/adfs/ls ）输入到“提交 URL”字段中并输入应用程序名称（可选）。应用程序名称将出现在 Azure Multi-Factor Authentication 报告中，并可能会显示在短信或移动应用身份验证消息中。有关“提交 URL”的详细信息，请参阅帮助文件。
+7. 在“添加基于窗体的网站”对话框中，将 ADFS 登录页的 URL（例如 https://sso.contoso.com/adfs/ls）输入到“提交 URL”字段中并输入应用程序名称（可选）。应用程序名称将出现在 Azure Multi-Factor Authentication 报告中，并可能会显示在短信或移动应用身份验证消息中。有关“提交 URL”的详细信息，请参阅帮助文件。
 8. 将请求格式设置为“POST 或 GET”。
 9. 输入用户名变量 (ctl00$ContentPlaceHolder1$UsernameTextBox) 和密码变量 (ctl00$ContentPlaceHolder1$PasswordTextBox)。如果基于窗体的登录页显示域文本框，则也输入域变量。你可能需要在 Web 浏览器中导航到该登录页，右键单击该页并选择“查看源文件”，以在登录页中查找输入框的名称。
 10. 如果所有用户均已导入或将导入到该服务器并接受 Multi-Factor Authentication，请选中“需要 Multi-Factor Authentication 用户匹配”框。如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。
@@ -52,8 +52,8 @@
 23. 如果 LDAP 连接测试成功，请单击“确定”按钮。
 24. 接下来，单击“公司设置”图标，然后选择“用户名解析”选项卡。
 25. 选择“对匹配的用户名使用 LDAP 唯一标识符特性”单选按钮。
-26. 如果用户将以“域\用户名”格式在“ADFS 代理登录”窗体中输入其用户名，服务器在创建 LDAP 查询时需要能够将域与用户名剥离。可以通过注册表设置完成此操作。
-27. 在 64 位服务器上，打开注册表编辑器，并转到 HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor。如果在 32 位服务器上，请从路径中除去“Wow6432Node”。创建名为“UsernameCxz_stripPrefixDomain”的新 DWORD 注册表项，将其值设为 1。现在 Azure Multi-Factor Authentication 将保护 ADFS 代理。确保已将 Active Directory 中的用户导入服务器。如果你想将内部 IP 地址加入允许列表，以便在从这些位置登录网站时不需要双因素身份验证，请参阅下面的“受信任的 IP”部分。
+26. 如果用户将以“域\\用户名”格式在“ADFS 代理登录”窗体中输入其用户名，服务器在创建 LDAP 查询时需要能够将域与用户名剥离。可以通过注册表设置完成此操作。
+27. 在 64 位服务器上，打开注册表编辑器，并转到 HKEY\_LOCAL\_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor。如果在 32 位服务器上，请从路径中除去“Wow6432Node”。创建名为“UsernameCxz\_stripPrefixDomain”的新 DWORD 注册表项，将其值设为 1。现在 Azure Multi-Factor Authentication 将保护 ADFS 代理。确保已将 Active Directory 中的用户导入服务器。如果你想将内部 IP 地址加入允许列表，以便在从这些位置登录网站时不需要双因素身份验证，请参阅下面的“受信任的 IP”部分。
 
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/reg.png)</center>
 
@@ -65,7 +65,7 @@
 1. 在 Azure Multi-Factor Authentication 服务器内，单击左侧菜单中的“IIS 身份验证”图标。
 2. 单击“HTTP”选项卡。
 3. 单击“添加...”按钮。
-4. 在“添加基 URL”对话框的“基 URL”字段中输入执行 HTTP 身份验证的 ADFS 网站的 URL（例如 https://sso.domain.com/adfs/ls/auth/integrated ）并输入应用程序名称（可选）。应用程序名称将出现在 Azure Multi-Factor Authentication 报告中，并可能会显示在短信或移动应用身份验证消息中。
+4. 在“添加基 URL”对话框的“基 URL”字段中输入执行 HTTP 身份验证的 ADFS 网站的 URL（例如 https://sso.domain.com/adfs/ls/auth/integrated）并输入应用程序名称（可选）。应用程序名称将出现在 Azure Multi-Factor Authentication 报告中，并可能会显示在短信或移动应用身份验证消息中。
 5. 如果需要，请调整空闲超时和会话时间上限。
 6. 如果所有用户均已导入或将导入到该服务器并接受 Multi-Factor Authentication，请选中“需要 Multi-Factor Authentication 用户匹配”框。如果大量用户尚未导入到该服务器并且/或者将免除 Multi-Factor Authentication，请使该框处于未选中状态。请参阅帮助文件，以了解有关此功能的其他信息。
 7. 如果需要，请选中“Cookie 缓存”框。
@@ -89,4 +89,6 @@
 
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/trusted.png)</center>
 
-<!---HONumber=69-->
+ 
+
+<!---HONumber=Mooncake_0912_2016-->

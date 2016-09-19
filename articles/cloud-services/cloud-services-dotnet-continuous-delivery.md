@@ -9,7 +9,7 @@
 
 <tags
 	ms.service="cloud-services"
-	ms.date="05/08/2016"
+	ms.date="07/30/2016"
 	wacn.date="05/17/2016"/>
 
 # 在 Azure 中持续交付云服务
@@ -54,7 +54,7 @@
 
     您也可以将项目名称指定为 MSBuild 参数。如果未指定，则将使用当前目录。有关 MSBuild 命令行选项的详细信息，请参阅 [MSBuild 命令行参考](1)。
 
-4.  查找输出。默认情况下，此命令将创建与项目的根文件夹相关的目录，例如 *ProjectDir*\\bin\\*Configuration*\\app.publish\\。在生成 Azure 项目时，将生成两个文件，即包文件本身和附带的配置文件：
+4.  查找输出。默认情况下，此命令将创建与项目的根文件夹相关的目录，例如 *ProjectDir*\\bin\*Configuration*\\app.publish\\。在生成 Azure 项目时，将生成两个文件，即包文件本身和附带的配置文件：
 
     -   Project.cspkg
     -   ServiceConfiguration.*TargetProfile*.cscfg
@@ -79,7 +79,7 @@
 
 1.  在开发计算机上的 Visual Studio 中，从“视图”菜单中选择“团队资源管理器”，或选择 Ctrl+\\、Ctrl+M。在“团队资源管理器”窗口中，展开“生成”节点，或者选择“生成” 页，然后选择“新建生成定义”。
 
-    ![][0]
+    ![“新建生成定义”选项][0]
 
 2.  选择“触发器”选项卡，然后为希望生成包的时间指定所需条件。例如，指定“持续集成”可在进行源代码管理签入时生成包。
 
@@ -91,7 +91,7 @@
 
 6.  选择“MSBuild 参数”，并按上面步骤 2 中所述设置相应的 MSBuild 命令行参数。例如，输入 **/t:Publish /p:PublishDir=\\\myserver\\drops\** 可以生成一个包并将包文件复制到位置 \\\myserver\\drops\\：
 
-    ![][2]
+    ![MSBuild 参数][2]
 
     **注意：**通过将这些文件复制到公共共享，可以更轻松地手动从开发计算机部署包。
 
@@ -109,15 +109,15 @@
 
     重复按 Tab 键应会看到各个 Azure PowerShell 命令。
 
-4.  通过导入 .publishsettings 文件中的订阅信息来确认你能够连接到 Azure 订阅。
+4.  通过导入 .publishsettings 文件中的订阅信息来验证是否能够连接到 Azure 订阅。
 
-    `Import-AzurePublishSettingsFile ¨CEnvironment AzureChinaCloud c:\scripts\WindowsAzure\default.publishsettings`
+    `Import-AzurePublishSettingsFile –Environment AzureChinaCloud c:\scripts\WindowsAzure\default.publishsettings`
 
     然后输入该命令
 
     `Get-AzureSubscription`
 
-    这会显示有关你的订阅的信息。确认所有内容正确。
+    这会显示有关订阅的信息。确认所有内容正确。
 
 4.  将本文末尾提供的脚本模板保存到脚本文件夹，路径为 c:\\scripts\\WindowsAzure\**PublishCloudService.ps1**。
 
@@ -125,11 +125,11 @@
 
 6.  确保已在订阅中创建可通过发布脚本定位的有效云服务和存储帐户。存储帐户（Blob 存储）将用于在创建部署时上载和临时存储部署包和配置文件。
 
-    -   若要创建新的云服务，你可调用此脚本或使用 [Azure 经典门户](https://manage.windowsazure.cn)。云服务名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。
+    -   若要创建新的云服务，可以调用此脚本或使用 [Azure 经典门户](https://manage.windowsazure.cn)。云服务名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。
 
             New-AzureService -ServiceName "mytestcloudservice" -Location "China North" -Label "mytestcloudservice"
 
-    -   若要创建新的存储帐户，你可调用此脚本或使用 [Azure 经典门户](https://manage.windowsazure.cn)。存储帐户名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。您可尝试使用与云服务相同的名称。
+    -   若要创建新的存储帐户，可以调用此脚本或使用 [Azure 经典门户](https://manage.windowsazure.cn)。存储帐户名称将用作完全限定域名中的前缀，因此该名称必须是唯一的。您可尝试使用与云服务相同的名称。
 
             New-AzureStorageAccount -ServiceName "mytestcloudservice" -Location "China North" -Label "mytestcloudservice"
 
@@ -200,7 +200,7 @@
         PublishScriptLocation
         ServiceName
 
-    ![][3]
+    ![参数列表][3]
 
     相应的 XAML 与下面类似：
 
@@ -252,7 +252,7 @@
 
         -   String 类型的 PublishScriptFilePath
 
-            ![][4]
+            ![新建变量][4]
 
     4.  如果你使用的是 TFS 2012 或更低版本，请在新序列的开头添加一个 ConvertWorkspaceItem 活动。如果你使用的是 TFS 2013 或更高版本，请在新序列的开头添加一个 GetLocalPath 活动。对于 ConvertWorkspaceItem，请按如下所示设置属性：Direction=ServerToLocal, DisplayName='Convert publish script filename', Input=' PublishScriptLocation', Result='PublishScriptFilePath', Workspace='Workspace'。对于 GetLocalPath 活动，请将属性 IncomingPath 设置为“PublishScriptLocation”，将 Result 设置为“PublishScriptFilePath”。此活动将发布脚本的路径从 TFS 服务器位置（如果适用）转换为标准本地磁盘路径。
 
@@ -280,7 +280,7 @@
 
     发布工作流活动的最终结果将与设计器中的以下内容类似：
 
-    ![][5]
+    ![工作流活动][5]
 
     发布工作流活动的最终结果将与 XAML 中的以下内容类似：
 
@@ -339,7 +339,7 @@
 
     8.  SubscriptionName = 'default'
 
-    ![][6]
+    ![参数属性值][6]
 
 10. 保存对生成定义所做的更改。
 
@@ -551,7 +551,7 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
 
 ## 后续步骤
 
-若要在使用持续交付时启用远程调试，请参阅[使用连续交付功能发布到 Azure 时如何启用远程调试](/documentation/articles/cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging)。
+若要在使用持续交付时启用远程调试，请参阅[使用连续交付功能发布到 Azure 时如何启用远程调试](/documentation/articles/cloud-services/cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging/)。
 
   [Team Foundation 生成服务]: https://msdn.microsoft.com/zh-cn/library/ee259687.aspx
   [.NET Framework 4]: https://www.microsoft.com/zh-cn/download/details.aspx?id=17851
@@ -559,7 +559,7 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
   [.NET Framework 4.5.2]: https://www.microsoft.com/zh-cn/download/details.aspx?id=42643
   [扩大生成系统]: https://msdn.microsoft.com/zh-cn/library/dd793166.aspx
   [部署和配置生成服务器]: https://msdn.microsoft.com/zh-cn/library/ms181712.aspx
-  [Azure PowerShell cmdlet]: /documentation/articles/powershell-install-configure
+  [Azure PowerShell cmdlet]: /documentation/articles/powershell-install-configure/
   [the .publishsettings file]: https://manage.windowsazure.cn/download/publishprofile.aspx?wa=wsignin1.0
   [0]: ./media/cloud-services-dotnet-continuous-delivery/tfs-01bc.png
   [2]: ./media/cloud-services-dotnet-continuous-delivery/tfs-02.png
@@ -568,4 +568,4 @@ Write-Output "$(Get-Date -f $timeStampFormat) - Azure Cloud Service deploy scrip
   [5]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-05.png
   [6]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-06.png
 
-<!---HONumber=Mooncake_0523_2016-->
+<!---HONumber=Mooncake_0912_2016-->

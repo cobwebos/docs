@@ -5,17 +5,16 @@
    documentationCenter="na"
    authors="TomArcher"
    manager="douge"
-   editor="" />  
-
+   editor="" />
 <tags
    ms.service="multiple"
-   ms.date="05/08/2016"
+   ms.date="08/15/2016"
    wacn.date="" />  
 
 
 # 为 Azure 云服务和虚拟机配置诊断
 
-如果需要对 Azure 云服务或 Azure 虚拟机进行故障排除，使用 Visual Studio 可以更轻松地配置 Azure 诊断。Azure 诊断可以在运行云服务的虚拟机和虚拟机实例上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。有关 Azure 中诊断日志记录的详细信息，请参阅[在 Azure App Service 中启用网站的诊断日志记录](/documentation/articles/web-sites-enable-diagnostic-log/)。
+如果需要对 Azure 云服务或 Azure 虚拟机进行故障排除，使用 Visual Studio 可以更轻松地配置 Azure 诊断。Azure 诊断可以在运行云服务的虚拟机和虚拟机实例上捕获系统数据和日志记录数据，并将这些数据传输到所选的存储帐户中。有关 Azure 中诊断日志记录的详细信息，请参阅[在 Azure App Service 中启用 Web 应用的诊断日志记录](/documentation/articles/web-sites-enable-diagnostic-log/)。
 
 本主题演示如何在部署前后在 Visual Studio 和 Azure 虚拟机中启用和配置 Azure 诊断。它还演示如何选择要收集的诊断信息的类型以及如何在收集信息后查看这些信息。
 
@@ -39,13 +38,13 @@ Azure 诊断的配置方法有如下数种：
 
 - 在 Azure SDK 2.6 中，Visual Studio 在发布过程中通过诊断连接字符串使用相应的存储帐户信息配置诊断扩展。连接字符串让你为 Visual Studio 将在发布时使用的不同服务配置定义不同的存储帐户。但是，因为诊断插件已不再可用（在 Azure SDK 2.5 之后），.cscfg 文件本身不能启用诊断扩展。你必须通过工具（如 Visual Studio 或 PowerShell）单独启用扩展。
 
-- 为了简化使用 PowerShell 配置诊断扩展的过程，Visual Studio 的程序包输出还包含每个角色的诊断扩展的公共配置 XML。Visual Studio 使用诊断连接字符串来填充公共配置中存在的存储帐户信息。公共配置文件在“扩展”文件夹中创建，并遵循模式 PaaSDiagnostics.<RoleName>.PubConfig.xml。任何基于 PowerShell 的部署都可以使用此模式将每个配置映射到角色。
+- 为了简化使用 PowerShell 配置诊断扩展的过程，Visual Studio 的程序包输出还包含每个角色的诊断扩展的公共配置 XML。Visual Studio 使用诊断连接字符串来填充公共配置中存在的存储帐户信息。公共配置文件在“扩展”文件夹中创建，并遵循模式 PaaSDiagnostics.&lt;RoleName>.PubConfig.xml。任何基于 PowerShell 的部署都可以使用此模式将每个配置映射到角色。
 
-- .cscfg 文件中的连接字符串还由 Azure 门户用于访问诊断数据，使这些数据可以显示在“监视”选项卡中。需要连接字符串才能配置服务以在门户中显示详细监视数据。
+- .cscfg 文件中的连接字符串还由 [Azure 门户](http://go.microsoft.com/fwlink/p/?LinkID=525040)用于访问诊断数据，使这些数据可以显示在“监视”选项卡中。需要连接字符串才能配置服务以在门户中显示详细监视数据。
 
 ## 将项目迁移到 Azure SDK 2.6 和更高版本
 
-从 Azure SDK 2.5 迁移到 Azure SDK 2.6 或更高版本时，如果你在 .wadcfgx 文件中指定了诊断存储帐户，则该帐户将继续保留在那里。若要利用对不同存储配置使用不同存储帐户的灵活性，你必须手动将连接字符串添加到你的项目。如果你要从 Azure SDK 2.4 或更早版本将项目迁移到 Azure SDK 2.6，则将保留诊断连接字符串。但是，请注意 Azure SDK 2.6 中处理连接字符串的方式的更改，如上一部分中所述。
+从 Azure SDK 2.5 迁移到 Azure SDK 2.6 或更高版本时，如果你在 .wadcfgx 文件中指定了诊断存储帐户，则该帐户将继续保留在那里。若要针对不同存储配置充分使用不同存储帐户的灵活性，必须手动将连接字符串添加到项目。如果你将项目从 Azure SDK 2.4 或更低版本迁移到 Azure SDK 2.6，系统将保留诊断连接字符串。但是，请注意 Azure SDK 2.6 中处理连接字符串的方式的更改，如上一部分中所述。
 
 ### Visual Studio 如何确定诊断存储帐户
 
@@ -83,13 +82,11 @@ Azure 诊断的配置方法有如下数种：
 
 1. 在“诊断”部分中，确保“启用诊断”复选框已选中。
 
-    ![访问“启用诊断”选项](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796660.png)  
+    ![访问“启用诊断”选项](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796660.png)
 
+1. 选择省略号 (…) 按钮指定诊断数据要存储到的存储帐户。选择的存储帐户将是诊断数据的存储位置。
 
-1. 选择省略号 (...) 按钮以指定要将诊断数据存储到的存储帐户。所选的存储帐户将是存储诊断数据的位置。
-
-    ![指定要使用的存储帐户](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796661.png)  
-
+    ![指定要使用的存储帐户](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC796661.png)
 
 1. 在“创建存储连接字符串”对话框中，指定要使用 Azure 存储模拟器、Azure 订阅还是手动输入凭据进行连接。
 
@@ -102,7 +99,7 @@ Azure 诊断的配置方法有如下数种：
 
   - 如果你选择“手动输入凭据”选项，则系统会提示你输入要使用的 Azure 帐户的名称和密钥。
 
-1. 选择“配置”按钮，以查看“诊断配置”对话框。每个选项卡（“常规”和“日志目录”除外）表示你可以收集的诊断数据源。默认选项卡“常规”为你提供以下诊断数据收集选项：“仅限错误”、“所有信息”和“自定义计划”。默认选项“仅限错误”占用最少量的存储空间，因为该选项不传输警告或跟踪消息。“所有信息”选项传输的信息最多，因此就存储来说是成本最高的选项。
+1. 选择“配置”按钮查看“诊断配置”对话框。每个选项卡（“常规”和“日志目录”除外）表示你可以收集的诊断数据源。默认选项卡“常规”为你提供以下诊断数据收集选项：“仅限错误”、“所有信息”和“自定义计划”。默认选项“仅限错误”占用最少量的存储空间，因为该选项不传输警告或跟踪消息。“所有信息”选项传输的信息最多，因此就存储来说是成本最高的选项。
 
     ![启用 Azure 诊断和配置](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)  
 
@@ -374,4 +371,4 @@ RoleEntryPoint 的方法在 WAIISHost.exe 上下文中调用，而非 IIS。因�
 
 若要详细了解 Azure 中的诊断日志记录，请参阅[在 Azure 云服务和虚拟机中启用诊断](/documentation/articles/cloud-services-dotnet-diagnostics/)和[在 Azure App Service 中启用 Web 应用的诊断日志记录](/documentation/articles/web-sites-enable-diagnostic-log/)。
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0912_2016-->

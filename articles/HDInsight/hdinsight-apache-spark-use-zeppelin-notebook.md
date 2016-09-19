@@ -11,20 +11,20 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="05/16/2016"
+	ms.date="07/25/2016"
 	wacn.date=""/>
 
 
-# 在 HDInsight Linux 上的 Spark 群集中使用 Zeppelin 笔记本（预览版）
+# 在 HDInsight Linux 上的 Apache Spark 群集中使用 Zeppelin 笔记本
 
-了解如何在 Spark 群集上安装 Zeppelin 笔记本，以及如何使用 Zeppelin 笔记本。
+了解如何在 Apache Spark 群集上安装 Zeppelin 笔记本，以及如何使用 Zeppelin 笔记本运行 Spark 作业。
 
-> [AZURE.IMPORTANT] 适用于 HDInsight Spark 群集的 Zeppelin 笔记本产品只是为了展示如何在 Azure HDInsight Spark 环境中使用 Zeppelin。如果你要使用笔记本来操作 HDInsight Spark，我们建议改用 Jupyter 笔记本。Jupyter 笔记本还提供不同的内核选项（例如 Scala），并且功能会不断改善。有关如何使用 Jupyter 笔记本和 HDInsight Spark 的说明，请参阅 [Run Spark SQL queries using a Jupyter notebook（使用 Jupyter 笔记本运行 Spark SQL 查询）](/documentation/articles/hdinsight-apache-spark-jupyter-spark-sql#jupyter)。
+> [AZURE.IMPORTANT] 适用于 HDInsight Spark 群集的 Zeppelin 笔记本产品只是为了展示如何在 Azure HDInsight Spark 环境中使用 Zeppelin。如果你要使用笔记本来操作 HDInsight Spark，我们建议改用 Jupyter 笔记本。Jupyter 笔记本还提供不同的内核选项（例如 Scala），并且功能会不断改善。有关如何使用 Jupyter 笔记本和 HDInsight Spark 的说明，请参阅 [Run Spark SQL queries using a Jupyter notebook（使用 Jupyter 笔记本运行 Spark SQL 查询）](/documentation/articles/hdinsight-apache-spark-jupyter-spark-sql/#jupyter)。
 
 **先决条件：**
 
 * 在开始学习本教程之前，你必须有一个 Azure 订阅。请参阅[获取 Azure 试用版](/pricing/1rmb-trial/)。
-* Apache Spark 群集。有关说明，请参阅 [Create Apache Spark clusters in Azure HDInsight（在 Azure HDInsight 中创建 Apache Spark 群集）](/documentation/articles/hdinsight-provision-clusters-v1)。
+* Apache Spark 群集。有关说明，请参阅 [Create Apache Spark clusters in Azure HDInsight（在 Azure HDInsight 中创建 Apache Spark 群集）](/documentation/articles/hdinsight-apache-spark-jupyter-spark-sql/)。
 * SSH 客户端。对于 Linux 和 Unix 分发版或 Macintosh OS X，操作系统已随附 `ssh` 命令。对于 Windows，我们建议使用 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
 
 	> [AZURE.NOTE] 如果想要使用 `ssh` 或 PuTTY 以外的 SSH 客户端，请参阅客户端的文档，以了解如何建立 SSH 隧道。
@@ -35,13 +35,13 @@
 
 	> [AZURE.WARNING] 如果不使用类似于 FoxyProxy 的插件，则可以通过隧道路由所有通过浏览器发出的请求。这可能导致浏览器中的网页加载速度变慢。
 
-## 在创建群集过程中安装 Zeppelin
+## 在 Spark 群集上安装 Zeppelin
 
-可以使用脚本操作在 Spark 群集上安装 Zeppelin。脚本操作使用自定义脚本在群集上安装默认情况下未提供的组件。可以使用自定义脚本，通过 Azure 门户、HDInsight .NET SDK 或 Azure PowerShell 安装 Zeppelin。
+可以使用脚本操作在 Spark 群集上安装 Zeppelin。脚本操作使用自定义脚本在群集上安装默认情况下未提供的组件。可以使用自定义脚本，通过 Azure 门户、HDInsight .NET SDK 或 Azure PowerShell 安装 Zeppelin。可以在创建群集过程中或者在群集已启动并运行之后使用脚本安装 Zeppelin。以下部分中的链接提供了有关如何执行此操作的说明。
 
 ### 使用 Azure 门户
 
-有关如何使用 HDInsight .NET SDK 运行脚本操作以安装 Zeppelin 的说明，请参阅 [Customize HDInsight clusters using Script Action（使用脚本操作自定义 HDInsight 群集）](/documentation/articles/hdinsight-hadoop-customize-cluster-v1#use-a-script-action-from-the-azure-portal)。必须对该文章中的说明做出一些更改。
+有关如何在 Azure 门户中运行脚本操作安装 Zeppelin 的说明，请参阅 [Customize HDInsight clusters using Script Action（使用脚本操作自定义 HDInsight 群集）](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/#use-a-script-action-from-the-azure-portal)。必须对该文章中的说明做出一些更改。
 
 * 必须使用脚本来安装 Zeppelin。用于在 HDInsight 中的 Spark 群集上安装 Zeppelin 的自定义脚本可从以下链接获取：
 	* 对于 Spark 1.6.0 群集 - `https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark160-v01.sh`
@@ -53,7 +53,7 @@
 
 ### 使用 HDInsight .NET SDK
 
-有关如何使用 HDInsight .NET SDK 运行脚本操作以安装 Zeppelin 的说明，请参阅 [Customize HDInsight clusters using Script Action（使用脚本操作自定义 HDInsight 群集）](/documentation/articles/hdinsight-hadoop-customize-cluster-v1#use-a-script-action-from-the-hdinsight-net-sdk)。必须对该文章中的说明做出一些更改。
+有关如何在 HDInsight .NET SDK 中运行脚本操作安装 Zeppelin 的说明，请参阅 [Customize HDInsight clusters using Script Action（使用脚本操作自定义 HDInsight 群集）](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/#use-a-script-action-from-the-hdinsight-net-sdk)。必须对该文章中的说明做出一些更改。
 
 * 必须使用脚本来安装 Zeppelin。用于在 HDInsight 中的 Spark 群集上安装 Zeppelin 的自定义脚本可从以下链接获取：
 	* 对于 Spark 1.6.0 群集 - `https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark160-v01.sh`
@@ -70,7 +70,7 @@
 * 对于 Spark 1.6.0 群集 - `https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark160-v01.sh`
 * 对于 Spark 1.5.2 群集 - `https://hdiconfigactions.blob.core.windows.net/linuxincubatorzeppelinv01/install-zeppelin-spark151-v01.sh`
 
-[AZURE.INCLUDE [upgrade-powershell](../includes/hdinsight-use-latest-powershell.md)]
+[AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 
 	Login-AzureRMAccount
@@ -139,7 +139,7 @@
 
 执行以下步骤使用 PuTTY 创建 SSH 隧道。
 
-1. 打开 PuTTY 并输入你的连接信息。如果你不熟悉 PuTTY，请参阅 [Use SSH with Linux-based Hadoop on HDInsight from Windows（在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows)，以了解有关如何配合 HDInsight 使用 PuTTY 的信息。
+1. 打开 PuTTY 并输入你的连接信息。如果不熟悉 PuTTY，请参阅 [Use SSH with Linux-based Hadoop on HDInsight from Windows（在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用）](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/)，了解如何配合 HDInsight 使用 PuTTY。
 
 2. 在对话框左侧的“类别”部分中，依次展开“连接”和“SSH”，然后选择“隧道”。
 
@@ -209,11 +209,11 @@
 
 	![foxyproxy 选择模式](./media/hdinsight-apache-spark-use-zeppelin-notebook/selectmode.png)
 
-执行这些步骤后，只会通过 SSL 隧道路由包含字符串 __internal.chinacloudapp.cn__ 的 URL 的请求。
+执行这些步骤后，只会通过 SSL 隧道路由包含字符串 __hn0__ 的 URL 的请求。
 
 ## 访问 Zeppelin 笔记本
 
-设置 SSH 隧道后，可以遵循以下步骤，在 Spark 群集上访问 Zeppelin 笔记本。
+设置 SSH 隧道后，可以遵循以下步骤，在 Spark 群集上访问 Zeppelin 笔记本。本部分介绍如何运行 %sql 和 %hive 语句。
 
 1. 从 Web 浏览器打开以下终结点：
 
@@ -233,12 +233,14 @@
 
 	![Zeppelin 笔记本状态](./media/hdinsight-apache-spark-use-zeppelin-notebook/hdispark.newnote.connected.png "Zeppelin 笔记本状态")
 
-4. 将示例数据载入临时表。当你在 HDInsight 中创建 Spark 群集时，系统会将示例数据文件 **hvac.csv** 复制到 **\\HdiSamples\\SensorSampleData\\hvac** 下的关联存储帐户。
+### 运行 SQL 语句
+
+4. 将示例数据载入临时表。在 HDInsight 中创建 Spark 群集时，系统会将示例数据文件 **hvac.csv** 复制到 **\\HdiSamples\\SensorSampleData\\hvac** 下的关联存储帐户。
 
 	将以下代码段粘贴到新笔记本中默认创建的空白段落处。
 
 		// Create an RDD using the default Spark context, sc
-		val hvacText = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+		val hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 		
 		// Define a schema
 		case class Hvac(date: String, time: String, targettemp: Integer, actualtemp: Integer, buildingID: String)
@@ -295,56 +297,92 @@
 
 	![重新启动 Zeppelin 解释程序](./media/hdinsight-apache-spark-use-zeppelin-notebook/hdispark.zeppelin.restart.interpreter.png "重新启动 Zeppelin 解释程序")
 
+### 运行 hive 语句
+
+1. 在 Zeppelin 笔记本中，单击“解释程序”按钮。
+
+	![更新 Hive 解释程序](./media/hdinsight-apache-spark-use-zeppelin-notebook/zeppelin-update-hive-interpreter-1.png "更新 Hive 解释程序")
+
+2. 单击 **hive** 解释程序对应的“编辑”。
+
+	![更新 Hive 解释程序](./media/hdinsight-apache-spark-use-zeppelin-notebook/zeppelin-update-hive-interpreter-2.png "更新 Hive 解释程序")
+
+	更新以下属性。
+
+	* 将 **default.password** 设置为创建 HDInsight Spark 群集时为管理员用户指定的密码。
+	* 将 **default.url** 设置为 `jdbc:hive2://<spark_cluster_name>.azurehdinsight.cn:443/default;ssl=true?hive.server2.transport.mode=http;hive.server2.thrift.http.path=/hive2`。将 **<spark\_cluster\_name>** 替换为 Spark 群集的名称。
+	* 将 **default.user** 设置为创建群集时指定的管理员用户名。例如 *admin* 。
+
+3. 单击“保存”。当系统提示重新启动 hive 解释程序时，请单击“确定”。
+
+4. 创建新笔记本并运行以下语句，列出群集上的所有 hive 表。
+
+		%hive
+		SHOW TABLES
+
+	默认情况下，HDInsight 群集包含名为 **hivesampletable** 的示例表，因此应会出现以下输出。
+
+	![Hive 输出](./media/hdinsight-apache-spark-use-zeppelin-notebook/zeppelin-update-hive-interpreter-3.png "Hive 输出")
+
+5. 运行以下语句列出表中的记录。
+
+		%hive
+		SELECT * FROM hivesampletable LIMIT 5
+
+	此时应出现如下所示的输出。
+
+	![Hive 输出](./media/hdinsight-apache-spark-use-zeppelin-notebook/zeppelin-update-hive-interpreter-4.png "Hive 输出")
 
 ## <a name="seealso"></a>另请参阅
 
 
-* [概述：Azure HDInsight 上的 Apache Spark](/documentation/articles/hdinsight-apache-spark-overview)
+* [概述：Azure HDInsight 上的 Apache Spark](/documentation/articles/hdinsight-apache-spark-overview/)
 
 ### 方案
 
-* [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](/documentation/articles/hdinsight-apache-spark-use-bi-tools)
+* [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](/documentation/articles/hdinsight-apache-spark-use-bi-tools/)
 
-* [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](/documentation/articles/hdinsight-apache-spark-ipython-notebook-machine-learning)
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](/documentation/articles/hdinsight-apache-spark-ipython-notebook-machine-learning/)
 
-* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](/documentation/articles/hdinsight-apache-spark-machine-learning-mllib-ipython)
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](/documentation/articles/hdinsight-apache-spark-machine-learning-mllib-ipython/)
 
-* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-eventhub-streaming)
+* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-eventhub-streaming/)
 
-* [使用 HDInsight 中的 Spark 分析网站日志](/documentation/articles/hdinsight-apache-spark-custom-library-website-log-analysis)
+* [使用 HDInsight 中的 Spark 分析网站日志](/documentation/articles/hdinsight-apache-spark-custom-library-website-log-analysis/)
 
 ### 创建和运行应用程序
 
-* [使用 Scala 创建独立的应用程序](/documentation/articles/hdinsight-apache-spark-create-standalone-application)
+* [使用 Scala 创建独立的应用程序](/documentation/articles/hdinsight-apache-spark-create-standalone-application/)
 
-* [使用 Livy 在 Spark 群集中远程运行作业](/documentation/articles/hdinsight-apache-spark-livy-rest-interface)
+* [使用 Livy 在 Spark 群集中远程运行作业](/documentation/articles/hdinsight-apache-spark-livy-rest-interface/)
 
 ### 工具和扩展
 
-* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin)
+* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin/)
 
-* [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/)
+
+* [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels/)
+
+* [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-use-external-packages/)
+
+* [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-install-locally/)
 
 ### 管理资源
 
-* [管理 Azure HDInsight 中 Apache Spark 群集的资源](/documentation/articles/hdinsight-apache-spark-resource-manager)
+* [管理 Azure HDInsight 中 Apache Spark 群集的资源](/documentation/articles/hdinsight-apache-spark-resource-manager/)
+
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](/documentation/articles/hdinsight-apache-spark-job-debugging/)
 
 
-[hdinsight-versions]: /documentation/articles/hdinsight-component-versioning-v1
-[hdinsight-upload-data]: /documentation/articles/hdinsight-upload-data
-[hdinsight-storage]: /documentation/articles/hdinsight-hadoop-use-blob-storage
+[hdinsight-versions]: /documentation/articles/hdinsight-component-versioning-v1/
+[hdinsight-upload-data]: /documentation/articles/hdinsight-upload-data/
+[hdinsight-storage]: /documentation/articles/hdinsight-hadoop-use-blob-storage/
 
 [azure-purchase-options]: /pricing/overview/
 [azure-member-offers]: /pricing/member-offers/
 [azure-trial]: /pricing/1rmb-trial/
 [azure-management-portal]: https://manage.windowsazure.cn/
-[azure-create-storageaccount]: /documentation/articles/storage-create-storage-account
+[azure-create-storageaccount]: /documentation/articles/storage-create-storage-account/
 
-
-
-
-
-
-
-
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0912_2016-->

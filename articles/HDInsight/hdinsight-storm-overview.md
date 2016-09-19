@@ -10,7 +10,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="03/18/2016"
+	ms.date="07/27/2016"
 	wacn.date=""/>
 
 #Apache Storm on HDInsight 简介：面向 Hadoop 的实时分析
@@ -47,35 +47,35 @@ Apache Storm on HDInsight 是已集成到 Azure 环境中的托管群集。它�
 
 你可以在分钟数设置好新的 Storm on HDInsight 群集。指定群集名称、大小、管理员帐户和存储帐户。Azure 将创建该群集，包括示例拓扑和 Web 管理仪表板。
 
-> [AZURE.NOTE] 你也可以使用 [Azure CLI](/documentation/articles/xplat-cli-install) 或 [Azure PowerShell](/documentation/articles/powershell-install-configure) 预配 Storm 群集。
+> [AZURE.NOTE] 你也可以使用 [Azure CLI](/documentation/articles/xplat-cli-install/) 或 [Azure PowerShell](/documentation/articles/powershell-install-configure/) 预配 Storm 群集。
 
 在提交请求后的 15 分钟内，你就可以运行新的 Storm 群集，并准备好建立第一个实时分析管道。
 
 ###易于使用
 
-__对于基于 Windows 的 Storm on HDInsight 群集__，HDInsight Tools for Visual Studio 允许你创建 C# 和混合 C#/Java 拓扑，然后将它们提交到 Storm on HDInsight 群集。
+__对于基于 Windows 的 Storm on HDInsight 群集__，用于 Visual Studio 的 HDInsight 工具允许你创建 C# 和混合 C#/Java 拓扑，然后将它们提交到 Storm on HDInsight 群集。
 
 ![Storm 项目创建](./media/hdinsight-storm-overview/createproject.png)
 
-HDInsight Tools for Visual Studio 还提供了一个接口让你监视和管理群集上的 Storm 拓扑。
+用于 Visual Studio 的 HDInsight 工具还提供了一个接口让你监视和管理群集上的 Storm 拓扑。
 
 ![Storm 管理](./media/hdinsight-storm-overview/stormview.png)
 
-有关使用 HDInsight 工具创建 Storm 应用程序的示例，请参阅[使用 HDInsight Tools for Visual Studio 开发 C# Storm 拓扑](/documentation/articles/hdinsight-storm-develop-csharp-visual-studio-topology)。
+有关使用 HDInsight 工具创建 Storm 应用程序的示例，请参阅[使用用于 Visual Studio 的 HDInsight 工具开发 C# Storm 拓扑](/documentation/articles/hdinsight-storm-develop-csharp-visual-studio-topology/)。
 
-有关 HDInsight Tools for Visual Studio 的详细信息，请参阅 [HDInsight Tools for Visual Studio 入门](/documentation/articles/hdinsight-hadoop-visual-studio-tools-get-started)。
+有关用于 Visual Studio 的 HDInsight 工具的详细信息，请参阅 [用于 Visual Studio 的 HDInsight 工具入门](/documentation/articles/hdinsight-hadoop-visual-studio-tools-get-started/)。
 
 每个 Storm on HDInsight 群集还提供一个基于 Web 的 Storm 仪表板让提交、监视和管理群集上运行的 Storm 拓扑。
 
 ![Storm 仪表板](./media/hdinsight-storm-overview/dashboard.png)
 
-有关使用 Storm 仪表板的详细信息，请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](/documentation/articles/hdinsight-storm-deploy-monitor-topology)。
+有关使用 Storm 仪表板的详细信息，请参阅[在 HDInsight 上部署和管理 Apache Storm 拓扑](/documentation/articles/hdinsight-storm-deploy-monitor-topology/)。
 
 Storm on HDInsight 还支持通过**事件中心 Spout** 与 Azure 事件中心轻松集成。此组件的最新版本可在 [https://github.com/hdinsight/hdinsight-storm-examples/tree/master/lib/eventhubs](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/lib/eventhubs) 上获取。有关使用此组件的详细信息，请参阅以下文档。
 
-* [开发使用 Azure 事件中心的 C# 拓扑](/documentation/articles/hdinsight-storm-develop-csharp-event-hub-topology)
+* [开发使用 Azure 事件中心的 C# 拓扑](/documentation/articles/hdinsight-storm-develop-csharp-event-hub-topology/)
 
-* [开发使用 Azure 事件中心的 Java 拓扑](/documentation/articles/hdinsight-storm-develop-java-event-hub-topology)
+* [开发使用 Azure 事件中心的 Java 拓扑](/documentation/articles/hdinsight-storm-develop-java-event-hub-topology/)
 
 ###可靠性
 
@@ -99,7 +99,7 @@ Storm on HDInsight 附带全天候企业级支持。Storm on HDInsight 也提供
 
 ##实时分析常见用例
 
-以下是你可能使用 Apache storm on HDInsight 的一些常见方案。有关实际方案的信息，请阅读[公司如何使用 Storm](https://storm.incubator.apache.org/documentation/Powered-By.html)。
+以下是你可能使用 Apache storm on HDInsight 的一些常见方案。有关实际方案的信息，请阅读[公司如何使用 Storm](https://storm.apache.org/documentation/Powered-By.html)。
 
 * 物联网 (IoT)
 * 欺诈检测
@@ -144,17 +144,17 @@ Storm on HDInsight 群集支持 C#、Java 和 Python。
 
 ### C&#35;
 
-HDInsight Tools for Visual Studio 允许 .NET 开发人员以 C# 语言设计和实施拓扑。你也可以创建使用 Java 和 C# 组件的混合拓扑。
+用于 Visual Studio 的 HDInsight 工具允许 .NET 开发人员以 C# 语言设计和实施拓扑。你也可以创建使用 Java 和 C# 组件的混合拓扑。
 
-有关详细信息，请参阅[使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](/documentation/articles/hdinsight-storm-develop-csharp-visual-studio-topology)。
+有关详细信息，请参阅[使用 Visual Studio 开发 Apache Storm on HDInsight 的 C# 拓扑](/documentation/articles/hdinsight-storm-develop-csharp-visual-studio-topology/)。
 
 ###Java
 
 你遇到的大多数 Java 示例都是无格式 Java 或 Trident。Trident 是一个高级别抽象，可更轻松地执行联接、汇总、分组和筛选等操作。但是，Trident 作用于批量元组，其中原始 Java 解决方案一次将处理一个元组流。
 
-有关 Trident 的详细信息，请参阅 apache.org 上的 [Trident 教程](https://storm.incubator.apache.org/documentation/Trident-tutorial.html)。
+有关 Trident 的详细信息，请参阅 apache.org 上的 [Trident 教程](https://storm.apache.org/documentation/Trident-tutorial.html)。
 
-有关 Java 和 Trident 拓扑的示例，请参阅 [Storm 拓扑示例列表](/documentation/articles/hdinsight-storm-example-topology)或 HDInsight 群集上的 storm-starter 示例。
+有关 Java 和 Trident 拓扑的示例，请参阅 [Storm 拓扑示例列表](/documentation/articles/hdinsight-storm-example-topology/)或 HDInsight 群集上的 storm-starter 示例。
 
 storm-starter 示例位于基于 Windows 的群集上的 **%storm\_home%\\contrib\\storm-starter** 目录中。
 
@@ -182,7 +182,7 @@ Storm 可以提供不同级别的有保证的消息处理。例如，基本的 S
 
 批处理可以通过若干方式来实现。利用基本 Storm Java 拓扑，你可以在发出元组前使用简单计数器对 X 个元组进行批处理，或使用称为计时周期元组的内部计时机制每 X 秒发出一批元组。
 
-有关使用计时周期元组的示例，请参阅[使用 HDInsight 上的 Storm 和 HBase 分析传感器数据](/documentation/articles/hdinsight-storm-sensor-data-analysis)。
+有关使用计时周期元组的示例，请参阅[使用 HDInsight 上的 Storm 和 HBase 分析传感器数据](/documentation/articles/hdinsight-storm-sensor-data-analysis/)。
 
 如果你使用的是 Trident，则其基于批量处理元组。
 
@@ -196,17 +196,23 @@ Storm 可以提供不同级别的有保证的消息处理。例如，基本的 S
 
 有关此内容的示例，请参阅 [RollingTopWords](https://github.com/nathanmarz/storm-starter/blob/master/src/jvm/storm/starter/RollingTopWords.java) 示例。
 
+##Storm 使用哪种类型的日志记录？
+
+Storm 使用 Apache Log4j 来记录信息。默认情况下，将记录大量的数据，因此很难通过信息排序。可以让日志记录配置文件包括在 Storm 拓扑中，控制日志记录行为。
+
+有关演示如何配置日志记录的示例拓扑，请参阅适用于 HDInsight 上的 Storm 的 [Java-based WordCount（基于 Java 的 WordCount）](/documentation/articles/hdinsight-storm-develop-java-topology/)示例。
+
 ##后续步骤
 
 了解有关使用 HDInsight 中的 Apache Storm 构建实时分析解决方案的详细信息：
 
 * [Storm on HDInsight 入门][gettingstarted]
 
-* [Storm on HDInsight 的示例拓扑](/documentation/articles/hdinsight-storm-example-topology)
+* [Storm on HDInsight 的示例拓扑](/documentation/articles/hdinsight-storm-example-topology/)
 
-[stormtrident]: https://storm.incubator.apache.org/documentation/Trident-API-Overview.html
+[stormtrident]: https://storm.apache.org/documentation/Trident-API-Overview.html
 [samoa]: http://yahooeng.tumblr.com/post/65453012905/introducing-samoa-an-open-source-platform-for-mining
-[apachetutorial]: https://storm.incubator.apache.org/documentation/Tutorial.html
-[gettingstarted]: /documentation/articles/hdinsight-apache-storm-tutorial-get-started
+[apachetutorial]: https://storm.apache.org/documentation/Tutorial.html
+[gettingstarted]: /documentation/articles/hdinsight-apache-storm-tutorial-get-started/
 
-<!----HONumber=Mooncake_0411_2016-->
+<!---HONumber=Mooncake_0912_2016-->

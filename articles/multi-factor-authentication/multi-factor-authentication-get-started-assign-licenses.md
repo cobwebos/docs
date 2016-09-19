@@ -9,8 +9,9 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="05/12/2016" 
-	wacn.date=""/>
+	ms.date="08/04/2016" 
+	wacn.date=""/>  
+
 
 # 向用户分配 Azure MFA、Azure AD Premium 或企业移动性许可证
 
@@ -24,7 +25,7 @@
 3. 在“Active Directory”页上，双击要分配许可证的用户所在的目录。
 4. 在“目录”页的顶部，选择“许可证”。
 ![分配许可证](./media/multi-factor-authentication-get-started-assign-licenses/assign1.png)
-5. 在“许可证”页上，选择“Multi-Factor Authentication”、“Active Directory Premium”或“企业移动性套件”。如果只有其中的一项，则会自动选择该项。 
+5. 在“许可证”页上，选择“Multi-Factor Authentication”、“Active Directory Premium”或“企业移动性套件”。如果只有其中的一项，则会自动选择该项。
 6. 在页面的底部，单击“分配”。
 ![分配许可证](./media/multi-factor-authentication-get-started-assign-licenses/assign3.png)
 6. 在出现的框中，在你要分配许可证的用户或组的旁边**单击**。你应会看到一个**绿色复选标记**。
@@ -33,4 +34,4 @@
 8. 你应会看到一条消息指出分配了多少个许可证，以及有多少个许可证分配失败。单击“确定”。
 ![分配许可证](./media/multi-factor-authentication-get-started-assign-licenses/assign5.png)
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0912_2016-->

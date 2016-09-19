@@ -9,19 +9,19 @@
 
 <tags
     ms.service="sql-database"
-    ms.date="04/27/2016"
+    ms.date="07/19/2016"
     wacn.date="05/23/2016"/>
 
 # 使用 Azure 门户为 Azure SQL 数据库启动计划内或计划外故障转移
 
 
 > [AZURE.SELECTOR]
-- [Azure 门户](/documentation/articles/sql-database-geo-replication-failover-portal)
-- [PowerShell](/documentation/articles/sql-database-geo-replication-failover-powershell)
-- [Transact-SQL](/documentation/articles/sql-database-geo-replication-failover-transact-sql)
+- [Azure 门户](/documentation/articles/sql-database-geo-replication-failover-portal/)
+- [PowerShell](/documentation/articles/sql-database-geo-replication-failover-powershell/)
+- [T-SQL](/documentation/articles/sql-database-geo-replication-failover-transact-sql/)
 
 
-本文介绍了如何使用 [Azure 门户](http://portal.azure.cn)为辅助 SQL 数据库启动故障转移。若要配置异地复制，请参阅[为 Azure SQL 数据库配置异地复制](/documentation/articles/sql-database-geo-replication-portal)。
+本文介绍了如何使用 [Azure 门户](http://portal.azure.cn)为辅助 SQL 数据库启动故障转移。若要配置异地复制，请参阅[为 Azure SQL 数据库配置异地复制](/documentation/articles/sql-database-geo-replication-portal/)。
 
 
 ## 启动故障转移
@@ -43,18 +43,19 @@
 >[AZURE.NOTE] 如果发出命令时主数据库处于在线状态且正在提交事务，则可能会丢失某些数据。
 
 
-## 其他资源   
+## 后续步骤   
+
+- 若要了解如何使用活动异地复制进行灾难恢复，包括恢复前后步骤和执行灾难恢复演练，请参阅[灾难恢复演练](/documentation/articles/sql-database-disaster-recovery/)
+- 有关活动异地复制的 Sasha Nosov 博客文章，请参阅 [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)（聚焦异地复制新功能）
+- 若要了解如何设计云应用程序以使用活动异地复制，请参阅[设计云应用程序以使用异地复制实现业务连续性](/documentation/articles/sql-database-designing-cloud-solutions-for-disaster-recovery/)
+- 若要了解如何通过弹性数据库池使用活动异地复制，请参阅[弹性池灾难恢复策略](/documentation/articles/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/)。
+- 有关业务连续性概述，请参阅[业务连续性概述](/documentation/articles/sql-database-business-continuity/)
 
 
-- [灾难恢复练习](/documentation/articles/sql-database-disaster-recovery-drills)
-- [新异地复制功能的亮点](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication)
-- [将云应用程序设计为使用异地复制实现业务连续性](/documentation/articles/sql-database-designing-cloud-solutions-for-disaster-recovery)
-- [业务连续性概述](/documentation/articles/sql-database-business-continuity)
-- [SQL 数据库文档](/documentation/services/sql-databases)
 
 
 <!--Image references-->
 [1]: ./media/sql-database-geo-replication-failover-portal/failover.png
 [2]: ./media/sql-database-geo-replication-failover-portal/secondaries.png
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0912_2016-->

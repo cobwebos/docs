@@ -4,24 +4,24 @@
 	keywords="应用程序开发、数据库教程、Java 应用程序、Java Web 应用程序教程、documentdb、Azure、Microsoft Azure"
 	services="documentdb"
 	documentationCenter="java"
-	authors="aliuy"
+	authors="AndrewHoh"
 	manager="jhubbard"
 	editor="mimig"/>
 
 <tags
 	ms.service="documentdb"
-	ms.date="03/10/2016"
+	ms.date="08/11/2016"
 	wacn.date=""/>
 
 # 使用 DocumentDB 生成一个 Java Web 应用程序
 
 > [AZURE.SELECTOR]
-- [.NET](/documentation/articles/documentdb-dotnet-application)
-- [Node.js](/documentation/articles/documentdb-nodejs-application)
-- [Java](/documentation/articles/documentdb-java-application)
-- [Python](/documentation/articles/documentdb-python-application)
+- [.NET](/documentation/articles/documentdb-dotnet-application/)
+- [Node.js](/documentation/articles/documentdb-nodejs-application/)
+- [Java](/documentation/articles/documentdb-java-application/)
+- [Python](/documentation/articles/documentdb-python-application/)
 
-此 Java Web 应用程序教程演示了如何使用 [Microsoft Azure DocumentDB](https://portal.azure.com/#gallery/Microsoft.DocumentDB) 服务存储和访问托管在 Azure 网站上的 Java 应用程序中的数据。在本教程中，你将学习：
+此 Java Web 应用程序教程演示了如何使用 [Azure DocumentDB](https://portal.azure.cn/#gallery/Microsoft.DocumentDB) 服务存储和访问托管在 Azure 网站上的 Java 应用程序中的数据。本主题介绍以下内容：
 
 - 如何在 Eclipse 中构建基本 JSP 应用程序。
 - 如何借助 [DocumentDB Java SDK](https://github.com/Azure/azure-documentdb-java) 来使用 Azure DocumentDB 服务。
@@ -35,10 +35,10 @@
 ##<a id="Prerequisites"></a>此 Java Web 应用程序教程的先决条件
 在开始本应用程序开发教程前，你必须具有：
 
-- 有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+- 有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
 - [Java 开发工具包 (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 - [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)。
-- [已启用 Java 运行时环境（例如 Tomcat 或 Jetty）的 Azure 网站。](/documentation/articles/web-sites-java-get-started)
+- [已启用 Java 运行时环境（例如 Tomcat 或 Jetty）的 Azure 网站。](/documentation/articles/web-sites-java-get-started/)
 
 如果你是首次安装这些工具，那么你可以参考 coreservlets.com 网站的 [教程：安装 TomCat7 并将其与 Eclipse 一起使用](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) 文章的 Quick Start 部分提供的安装过程演练。
 
@@ -46,9 +46,9 @@
 
 让我们首先创建 DocumentDB 帐户。如果你已经有一个帐户，则可以跳到[步骤 2：创建 Java JSP 应用程序](#CreateJSP)。
 
-[AZURE.INCLUDE [documentdb-create-dbaccount](../includes/documentdb-create-dbaccount.md)]
+[AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-[AZURE.INCLUDE [documentdb-keys](../includes/documentdb-keys.md)]
+[AZURE.INCLUDE [documentdb-keys](../../includes/documentdb-keys.md)]
 
 ##<a id="CreateJSP"></a>步骤 2：创建 Java JSP 应用程序
 
@@ -746,7 +746,7 @@
  - 在“目标”框中，选择一个目标以保存 WAR 文件。
  - 单击“完成”。
 
-3. 现在你已经具有 WAR 文件，只需将它上载到 Azure 网站的 **webapps** 目录。有关上载此文件的说明，请参阅[将应用程序添加到 Azure 的 Java 网站](/documentation/articles/web-sites-java-add-app)。
+3. 现在你已经具有 WAR 文件，只需将它上载到 Azure 网站的 **webapps** 目录。有关上载此文件的说明，请参阅 [Adding an application to your Java website on Azure（将应用程序添加到 Azure 上的 Java 网站）](/documentation/articles/web-sites-java-add-app/)。
 
 	将 WAR 文件上载到 webapps 目录之后，运行时环境将检测到你已经添加了此文件，并将自动加载它。
 4. 若要查看你已完成的产品，请导航到 http://YOUR\_SITE\_NAME.azurewebsites.net/azure-documentdb-java-sample/ 然后开始添加你的任务！
@@ -760,7 +760,7 @@ GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 
 3. 在 Eclipse 中，在“文件”菜单上单击“导入”。
 4. 在“导入”窗口中，依次单击“Git”、“来自 Git 的项目”和“下一步”。
 5. 在“选择存储库源”屏幕上，单击“克隆 URI”。
-6. 在“源 Git 存储库”屏幕上，在“URI”框中输入 https://github.com/Azure-Samples/documentdb-java-todo-app.git ，然后单击“下一步”。
+6. 在“源 Git 存储库”屏幕上，在“URI”框中输入 https://github.com/Azure-Samples/documentdb-java-todo-app.git，然后单击“下一步”。
 7. 在“分支选择”屏幕上，确保已选择“master”，然后单击“下一步”。
 8. 在“本地目标”屏幕上，单击“浏览”选择要将存储库复制到的文件夹，然后单击“下一步”。
 9. 在“选择要用于导入项目的向导”屏幕上，确保已选择“导入现有项目”，然后单击“下一步”。
@@ -780,4 +780,4 @@ GitHub 上的 [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) 
 
 [1]: media/documentdb-java-application/keys.png
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0912_2016-->

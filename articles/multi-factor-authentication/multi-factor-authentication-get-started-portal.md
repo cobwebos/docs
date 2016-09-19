@@ -4,12 +4,12 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="swadhwa" 
+	manager="femila" 
 	editor="curtand"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="07/14/2015" 
+	ms.date="08/15/2016" 
 	wacn.date=""/>
 
 # 为 Azure Multi-Factor Authentication 服务器部署用户门户
@@ -26,19 +26,19 @@
 
 若要在与 Azure Multi-Factor Authentication 服务器所在的同一台服务器上安装用户门户，必须满足以下先决条件：
 
-- 需要安装 IIS，包括 asp.net 和 IIS 6 元数据库兼容性（适用于 IIS 7 或更高版本） 
+- 需要安装 IIS，包括 asp.net 和 IIS 6 元数据库兼容性（适用于 IIS 7 或更高版本）
 - 登录用户必须具有计算机和域的管理员权限（如果适用）。这是因为帐户需有创建 Active Directory 安全组的权限。
 
 ### 为 Azure Multi-Factor Authentication 服务器部署用户门户
 
-1. 在 Azure Multi-Factor Authentication 服务器中：单击左侧菜单中的“用户门户”图标，然后单击“安装用户门户”按钮。 
+1. 在 Azure Multi-Factor Authentication 服务器中：单击左侧菜单中的“用户门户”图标，然后单击“安装用户门户”按钮。
 1. 单击“下一步”。
 1. 单击“下一步”。
 1. 如果计算机已加入域，但保护用户门户与 Azure Multi-Factor Authentication 服务之间通信的 Active Directory 配置未完成，则将显示 Active Directory 步骤。单击“下一步”按钮可自动完成此配置。
 1. 单击“下一步”。
 1. 单击“下一步”。
 1. 单击“关闭”。
-1. 从任何计算机打开 Web 浏览器，然后导航到已安装用户门户的 URL（例如 https://www.publicwebsite.com/MultiFactorAuth ）。确保未显示证书警告或错误。
+1. 从任何计算机打开 Web 浏览器，然后导航到已安装用户门户的 URL（例如 https://www.publicwebsite.com/MultiFactorAuth）。确保未显示证书警告或错误。
 
 <center>![Setup](./media/multi-factor-authentication-get-started-portal/portal.png)</center>
 
@@ -76,18 +76,18 @@
 在不同的服务器上安装用户门户之前，请注意以下事项：
 
 - 在面向 Internet 的 Web 服务器上打开 Ｗeb 浏览器，并导航到已输入到 web.config 文件中的 Web 服务 SDK 的 URL，这会很有用。如果浏览器可以成功访问 Web 服务，它应提示你输入凭据。输入已输入到 web.config 文件中的用户名和密码（与文件中显示的完全相同）。确保未显示证书警告或错误。
-- 如果反向代理或防火墙目前位于用户门户 Web 服务器之前并执行 SSL 卸载，你可以编辑用户门户 web.config 文件，并向 <appSettings> 节中添加以下键，以便用户门户可以使用 http 而不是 https。<add key="SSL_REQUIRED" value="false"/>
+- 如果用户门户 Web 服务器前设有反向代理或防火墙，且它们正在卸载 SSL，则可编辑用户门户 web.config 文件并向 <appSettings> 部分添加以下键，以便用户门户可使用 http 而不是 https。<add key="SSL\_REQUIRED" value="false"/>
 
 #### 安装用户门户
 
-1. 在运行 Azure Multi-Factor Authentication 服务器的服务器上，打开 Windows 资源管理器，并导航到 Azure Multi-Factor Authentication 服务器所安装到的文件夹（例如 C:\Program Files\Multi-Factor Authentication Server）。为要安装用户门户的服务器相应地选择 32 位或 64 位版本的 MultiFactorAuthenticationUserPortalSetup 安装文件。将安装文件复制到面向 Internet 的服务器。
+1. 在运行 Azure Multi-Factor Authentication 服务器的服务器上，打开 Windows 资源管理器，并导航到 Azure Multi-Factor Authentication 服务器所安装到的文件夹（例如 C:\\Program Files\\Multi-Factor Authentication Server）。为要安装用户门户的服务器相应地选择 32 位或 64 位版本的 MultiFactorAuthenticationUserPortalSetup 安装文件。将安装文件复制到面向 Internet 的服务器。
 2. 在面向 Internet 的 Web 服务器上，必须使用管理员权限运行安装文件。执行此操作的最简单方法是，以管理员身份打开命令提示符，并导航到安装文件所复制到的位置。
 3. 运行 MultiFactorAuthenticationUserPortalSetup64 安装文件，并根据需要更改站点和虚拟目录的名称。
-4. 完成用户门户的安装后，请浏览到 C:\inetpub\wwwroot\MultiFactorAuth（或基于虚拟目录名称的相应目录）并编辑 web.config 文件。
-5. 找到 USE_WEB_SERVICE_SDK 键，并将值从 false 更改为 true。找到 WEB_SERVICE_SDK_AUTHENTICATION_USERNAME 和 WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD 键，并将其值设为属于“PhoneFactor 管理员”安全组的服务帐户的用户名和密码（请参见上面的“要求”部分）。请务必在行末引号之间输入用户名和密码 (value=""/>)。建议使用限定的用户名（例如“域\用户名”或“计算机\用户名”）
-6. 找到“pfup_pfwssdk_PfWsSdk”设置，并将值从“http://localhost:4898/PfWsSdk.asmx”更改为运行 Azure Multi-Factor Authentication 服务器的服务器上运行的 Web 服务 SDK 的 URL（例如 https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx ）。由于对此连接使用了 SSL，你必须按服务器名称（而非 IP 地址）引用 Web 服务 SDK，因为已针对服务器名称颁发 SSL 证书，而所用的 URL 必须与证书上的名称相匹配。如果服务器名称无法解析为面向 Internet 的服务器的 IP 地址，请在该服务器上的 hosts 文件中添加一个条目，以将 Azure Multi-Factor Authentication 服务器的名称映射到其 IP 地址。进行更改之后，保存 web.config 文件。
+4. 完成用户门户的安装后，请浏览到 C:\\inetpub\\wwwroot\\MultiFactorAuth（或基于虚拟目录名称的相应目录）并编辑 web.config 文件。
+5. 找到 USE\_WEB\_SERVICE\_SDK 键，并将值从 false 更改为 true。找到 WEB\_SERVICE\_SDK\_AUTHENTICATION\_USERNAME 和 WEB\_SERVICE\_SDK\_AUTHENTICATION\_PASSWORD 键，并将其值设为属于“PhoneFactor 管理员”安全组的服务帐户的用户名和密码（请参见上面的“要求”部分）。请务必在行末引号之间输入用户名和密码 (value=""/>)。建议使用限定的用户名（例如“域\\用户名”或“计算机\\用户名”）
+6. 找到 pfup\_pfwssdk\_PfWsSdk 设置，并将值从“http://localhost:4898/PfWsSdk.asmx”更改为 Azure 多重身份验证服务器上运行的 Web 服务 SDK 的 URL（如 https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx）。由于对此连接使用了 SSL，你必须按服务器名称（而非 IP 地址）引用 Web 服务 SDK，因为已针对服务器名称颁发 SSL 证书，而所用的 URL 必须与证书上的名称相匹配。如果服务器名称无法解析为面向 Internet 的服务器的 IP 地址，请在该服务器上的 hosts 文件中添加一个条目，以将 Azure Multi-Factor Authentication 服务器的名称映射到其 IP 地址。进行更改之后，保存 web.config 文件。
 7. 如果已安装用户门户的网站（例如默认网站）尚未与公开签名的证书绑定，请在服务器上安装证书（如果尚未安装），打开 IIS 管理器并将证书绑定到该网站。
-8. 从任何计算机打开 Web 浏览器，然后导航到已安装用户门户的 URL（例如 https://www.publicwebsite.com/MultiFactorAuth ）。确保未显示证书警告或错误。
+8. 从任何计算机打开 Web 浏览器，然后导航到已安装用户门户的 URL（例如 https://www.publicwebsite.com/MultiFactorAuth）。确保未显示证书警告或错误。
 
 
 
@@ -109,7 +109,7 @@ Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项�
 使用安全提问进行回退|允许你在 Multi-Factor Authentication 失败时使用安全提问。可以指定必须正确回答的安全提问数。
 允许用户关联第三方 OATH 令牌| 允许用户指定第三方 OATH 令牌。
 使用 OATH 令牌进行回退|在 Multi-Factor Authentication 未成功时允许使用 OATH 令牌。你也可以指定会话超时（以分钟为单位）。
-启用日志记录|在用户门户上启用日志记录。日志文件位于：C:\Program Files\Multi-Factor Authentication Server\Logs。
+启用日志记录|在用户门户上启用日志记录。日志文件位于：C:\\Program Files\\Multi-Factor Authentication Server\\Logs。
 
 启用这些设置后，当用户登录用户门户时，就会看到其中大部分的设置。
 
@@ -185,4 +185,4 @@ Azure Multi-Factor Authentication 服务器为用户门户提供了多个选项�
 
  
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0912_2016-->

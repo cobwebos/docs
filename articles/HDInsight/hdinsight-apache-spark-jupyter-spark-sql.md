@@ -12,7 +12,7 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="06/07/2016"
+	ms.date="07/25/2016"
 	wacn.date=""/>
 
 
@@ -22,7 +22,7 @@
 
    ![开始使用 HDInsight 中的 Apache Spark](./media/hdinsight-apache-spark-jupyter-spark-sql/hdispark.getstartedflow.png "HDInsight 中的 Apache Spark 入门教程。演示的步骤：创建存储帐户；创建群集；运行Spark SQL 语句")
 
-[AZURE.INCLUDE [delete-cluster-warning](../includes/hdinsight-delete-cluster-warning.md)]
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 **先决条件：**
 
@@ -32,16 +32,16 @@
     
 - **安全外壳 (SSH) 密钥（可选）**：可以使用密码或公钥来保护用于连接群集的 SSH 帐户。使用密码可以快速开始，如果想要快速创建群集并运行一些测试作业，则应使用此选项。使用密钥更安全，但是需要额外的设置。创建生产群集时，可能需要使用此方法。在本文中，我们将使用密码方法。有关如何创建 SSH 密钥并将其用于 HDInsight 的说明，请参阅以下文章：
 
-	-  在 Linux 计算机中 - [从 Linux、Unix 或 OS X 搭配使用 SSH 与基于 Linux 的 HDInsight (Hadoop)](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix)
+	-  在 Linux 计算机中 - [从 Linux、Unix 或 OS X 搭配使用 SSH 与基于 Linux 的 HDInsight (Hadoop)](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/)
     
-	-  在 Windows 计算机中 - [在 Windows 中将 SSH 与基于 Linux 的 HDInsight (Hadoop) 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows)。
+	-  在 Windows 计算机中 - [在 Windows 中将 SSH 与基于 Linux 的 HDInsight (Hadoop) 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/)。
 
->[AZURE.NOTE] 本文通过 ARM 模板创建使用 [Azure 存储 Blob 作为群集存储](/documentation/articles/hdinsight-hadoop-use-blob-storage)的 Spark 群集。除了使用 Azure 存储 Blob 作为默认存储外，还可以创建使用 [Azure 数据湖存储](/documentation/articles/data-lake-store-overview)作为附加存储的 Spark 群集。有关说明，请参阅 [Create an HDInsight cluster with Data Lake Store](/documentation/articles/data-lake-store-hdinsight-hadoop-use-portal)（创建具有数据湖存储的 HDInsight 群集）。
+>[AZURE.NOTE] 本文通过 ARM 模板创建使用 [Azure 存储 Blob 作为群集存储](/documentation/articles/hdinsight-hadoop-use-blob-storage/)的 Spark 群集。除了使用 Azure 存储 Blob 作为默认存储外，还可以创建使用 [Azure Data Lake Store](/documentation/articles/data-lake-store-overview/) 作为附加存储的 Spark 群集。有关说明，请参阅 [Create an HDInsight cluster with Data Lake Store（创建包含 Data Lake Store 的 HDInsight 群集）](/documentation/articles/data-lake-store-hdinsight-hadoop-use-portal/)。
 
 
 ## 创建 Spark 群集
 
-在本部分中，你将使用 Azure ARM 模板创建 HDInsight 3.4 版群集（Spark 1.6.1 版）。有关 HDInsight 版本及其 SLA 的信息，请参阅 [HDInsight 组件版本](/documentation/articles/hdinsight-component-versioning-v1)。有关其他群集创建方法，请参阅 [Create HDInsight clusters](/documentation/articles/hdinsight-provision-clusters-v1)（创建 HDInsight 群集）。
+在本部分中，你将使用 Azure ARM 模板创建 HDInsight 3.4 版群集（Spark 1.6.1 版）。有关 HDInsight 版本及其 SLA 的信息，请参阅 [HDInsight 组件版本](/documentation/articles/hdinsight-component-versioning-v1/)。有关其他群集创建方法，请参阅 [Create HDInsight clusters（创建 HDInsight 群集）](/documentation/articles/hdinsight-provision-clusters-v1/)。
 
 1. 单击下面的图像可在 Azure 门户中打开 ARM 模板。
 
@@ -63,8 +63,8 @@
 
 	> 有关如何将 SSH 与 HDInsight 配合使用的详细信息，请参阅以下文章之一：
 
-	> * [在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix)
-	> * [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows)
+	> * [在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/)
+	> * [在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-windows/)
 
     
 3\. 单击“确定”以保存参数。
@@ -84,7 +84,7 @@
 * **PySpark**（适用于以 Python 编写的应用程序）
 * **Spark**（适用于以 Scala 编写的应用程序）
 
-本文将使用 PySpark 内核。在 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels#why-should-i-use-the-new-kernels)（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）一文中，可以详细了解使用 PySpark 内核带来的好处。但是，使用 PySpark 内核的主要好处包括：
+本文将使用 PySpark 内核。在 [Kernels available on Jupyter notebooks with Spark HDInsight clusters（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels/#why-should-i-use-the-new-kernels)一文中，可以详细了解使用 PySpark 内核带来的好处。但是，使用 PySpark 内核的主要好处包括：
 
 * 不需要设置 Spark 和 Hive 的上下文。系统会自动为你设置。
 * 可以使用 cell magic（例如 `%%sql`）直接运行 SQL 或 Hive 查询，而不需要任何前置的代码片段。
@@ -121,7 +121,7 @@
 	将以下代码示例粘贴到空白单元格中，然后按 **SHIFT + ENTER**。此代码示例会将数据注册到名为 **hvac** 的临时表中。
 
 		# Load the data
-		hvacText = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+		hvacText = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 		
 		# Create the schema
 		hvacSchema = StructType([StructField("date", StringType(), False),StructField("time", StringType(), False),StructField("targettemp", IntegerType(), False),StructField("actualtemp", IntegerType(), False),StructField("buildingID", StringType(), False)])
@@ -135,7 +135,7 @@
 		# Register the data fram as a table to run queries against
 		hvacdf.registerTempTable("hvac")
 
-5. 由于你使用的是 PySpark 内核，因此现在可直接在刚才使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Spark HDInsight clusters](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels#why-should-i-use-the-new-kernels)（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）。
+5. 由于你使用的是 PySpark 内核，因此现在可直接在刚才使用 `%%sql` magic 创建的临时表 **hvac** 上运行 SQL 查询。有关 `%%sql` magic 以及可在 PySpark 内核中使用的其他 magic 的详细信息，请参阅 [Kernels available on Jupyter notebooks with Spark HDInsight clusters（包含 Spark HDInsight 群集的 Jupyter 笔记本上可用的内核）](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels/#why-should-i-use-the-new-kernels)。
 		
 		%%sql
 		SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = "6/1/13"
@@ -153,61 +153,63 @@
 
 ##删除群集
 
-[AZURE.INCLUDE [delete-cluster-warning](../includes/hdinsight-delete-cluster-warning.md)]
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
 ## 另请参阅
 
 
-* [概述：Azure HDInsight 上的 Apache Spark](/documentation/articles/hdinsight-apache-spark-overview)
+* [概述：Azure HDInsight 上的 Apache Spark](/documentation/articles/hdinsight-apache-spark-overview/)
 
 ### 方案
 
-* [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](/documentation/articles/hdinsight-apache-spark-use-bi-tools)
+* [Spark 和 BI：使用 HDInsight 中的 Spark 和 BI 工具执行交互式数据分析](/documentation/articles/hdinsight-apache-spark-use-bi-tools/)
 
-* [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](/documentation/articles/hdinsight-apache-spark-ipython-notebook-machine-learning)
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 对使用 HVAC 数据生成温度进行分析](/documentation/articles/hdinsight-apache-spark-ipython-notebook-machine-learning/)
 
-* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](/documentation/articles/hdinsight-apache-spark-machine-learning-mllib-ipython)
+* [Spark 和机器学习：使用 HDInsight 中的 Spark 预测食品检查结果](/documentation/articles/hdinsight-apache-spark-machine-learning-mllib-ipython/)
 
-* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-eventhub-streaming)
+* [Spark 流式处理：使用 HDInsight 中的 Spark 生成实时流式处理应用程序](/documentation/articles/hdinsight-apache-spark-eventhub-streaming/)
 
-* [使用 HDInsight 中的 Spark 分析网站日志](/documentation/articles/hdinsight-apache-spark-custom-library-website-log-analysis)
+* [使用 HDInsight 中的 Spark 分析网站日志](/documentation/articles/hdinsight-apache-spark-custom-library-website-log-analysis/)
+
+* [Application Insight telemetry data analysis using Spark in HDInsight（使用 HDInsight 中的 Spark 执行 Application Insight 遥测数据分析）](/documentation/articles/hdinsight-spark-analyze-application-insight-logs/)
 
 ### 创建和运行应用程序
 
-* [使用 Scala 创建独立的应用程序](/documentation/articles/hdinsight-apache-spark-create-standalone-application)
+* [使用 Scala 创建独立的应用程序](/documentation/articles/hdinsight-apache-spark-create-standalone-application/)
 
-* [使用 Livy 在 Spark 群集中远程运行作业](/documentation/articles/hdinsight-apache-spark-livy-rest-interface)
+* [使用 Livy 在 Spark 群集中远程运行作业](/documentation/articles/hdinsight-apache-spark-livy-rest-interface/)
 
 ### 工具和扩展
 
-* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin)
+* [使用适用于 IntelliJ IDEA 的 HDInsight 工具插件创建和提交 Spark Scala 应用程序](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin/)
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely)（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely（使用 IntelliJ IDEA 的 HDInsight 工具插件远程调试 Spark 应用程序）](/documentation/articles/hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely/)
 
-* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](/documentation/articles/hdinsight-apache-spark-use-zeppelin-notebook)
+* [在 HDInsight 上的 Spark 群集中使用 Zeppelin 笔记本](/documentation/articles/hdinsight-apache-spark-use-zeppelin-notebook/)
 
-* [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels)
+* [在 HDInsight 的 Spark 群集中可用于 Jupyter 笔记本的内核](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-kernels/)
 
-* [Use external packages with Jupyter notebooks](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-use-external-packages)（将外部包与 Jupyter 笔记本配合使用）
+* [Use external packages with Jupyter notebooks（将外部包与 Jupyter 笔记本配合使用）](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-use-external-packages/)
 
-* [Install Jupyter on your computer and connect to an HDInsight Spark cluster](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-install-locally)（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）
+* [Install Jupyter on your computer and connect to an HDInsight Spark cluster（在计算机上安装 Jupyter 并连接到 HDInsight Spark 群集）](/documentation/articles/hdinsight-apache-spark-jupyter-notebook-install-locally/)
 
 ### 管理资源
 
-* [管理 Azure HDInsight 中 Apache Spark 群集的资源](/documentation/articles/hdinsight-apache-spark-resource-manager)
+* [管理 Azure HDInsight 中 Apache Spark 群集的资源](/documentation/articles/hdinsight-apache-spark-resource-manager/)
 
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](/documentation/articles/hdinsight-apache-spark-job-debugging)
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight（跟踪和调试 HDInsight 中的 Apache Spark 群集上运行的作业）](/documentation/articles/hdinsight-apache-spark-job-debugging/)
 
 
-[hdinsight-versions]: /documentation/articles/hdinsight-component-versioning-v1
-[hdinsight-upload-data]: /documentation/articles/hdinsight-upload-data
-[hdinsight-storage]: /documentation/articles/hdinsight-hadoop-use-blob-storage
+[hdinsight-versions]: /documentation/articles/hdinsight-component-versioning-v1/
+[hdinsight-upload-data]: /documentation/articles/hdinsight-upload-data/
+[hdinsight-storage]: /documentation/articles/hdinsight-hadoop-use-blob-storage/
 
 [azure-purchase-options]: /pricing/overview/
 [azure-member-offers]: /pricing/member-offers/
 [azure-trial]: /pricing/1rmb-trial/
 [azure-management-portal]: https://manage.windowsazure.cn/
-[azure-create-storageaccount]: /documentation/articles/storage-create-storage-account
+[azure-create-storageaccount]: /documentation/articles/storage-create-storage-account/
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0912_2016-->

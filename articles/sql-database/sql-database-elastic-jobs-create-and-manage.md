@@ -1,5 +1,5 @@
 <properties
-	pageTitle="创建和管理扩大的 SQL Azure 数据库 | Micosoft Azure"
+	pageTitle="通过弹性作业创建和管理扩大的 Azure SQL 数据库 | Azure"
 	description="演练如何创建和管理弹性数据库作业。"
 	services="sql-database"
 	documentationCenter=""
@@ -9,23 +9,23 @@
 
 <tags
 	ms.service="sql-database"
-	ms.date="05/27/2016"
+	ms.date="07/27/2016"
 	wacn.date="05/23/2016"/>
 
-# 创建和管理扩大的 SQL Azure 数据库（预览版）
+# 通过弹性作业创建和管理扩大的 Azure SQL 数据库（预览）
 
 > [AZURE.SELECTOR]
-- [Azure 门户](/documentation/articles/sql-database-elastic-jobs-create-and-manage)
-- [PowerShell](/documentation/articles/sql-database-elastic-jobs-powershell)
+- [Azure 门户](/documentation/articles/sql-database-elastic-jobs-create-and-manage/)
+- [PowerShell](/documentation/articles/sql-database-elastic-jobs-powershell/)
 
 
-**弹性数据库作业**可以通过执行架构更改、凭据管理、引用数据更新、性能数据收集或租户（客户）遥测数据收集等管理操作，来简化多组数据库的管理。目前可以通过 Azure 门户和 PowerShell cmdlet 使用弹性数据库作业。但是，它在 Azure 门户中的功能被缩减，仅限针对[弹性数据库池（预览版）](/documentation/articles/sql-database-elastic-pool)中的所有数据库执行。若要访问其他功能并针对包含自定义集合或分片集（使用[弹性数据库客户端库](/documentation/articles/sql-database-elastic-scale-introduction)创建）的一组数据库执行脚本，请参阅[使用 PowerShell 创建和管理作业](/documentation/articles/sql-database-elastic-jobs-powershell)。有关作业的详细信息，请参阅[弹性数据库作业概述](/documentation/articles/sql-database-elastic-jobs-overview)。
+**弹性数据库作业**可以通过执行架构更改、凭据管理、引用数据更新、性能数据收集或租户（客户）遥测数据收集等管理操作，来简化多组数据库的管理。目前可以通过 Azure 门户和 PowerShell cmdlet 使用弹性数据库作业。但是，它在 Azure 门户中的功能被缩减，仅限针对[弹性数据库池（预览版）](/documentation/articles/sql-database-elastic-pool/)中的所有数据库执行。若要访问其他功能并针对包含自定义集合或分片集（使用[弹性数据库客户端库](/documentation/articles/sql-database-elastic-scale-introduction/)创建）的一组数据库执行脚本，请参阅[使用 PowerShell 创建和管理作业](/documentation/articles/sql-database-elastic-jobs-powershell/)。有关作业的详细信息，请参阅[弹性数据库作业概述](/documentation/articles/sql-database-elastic-jobs-overview/)。
 
 ## 先决条件
 
 * Azure 订阅。若要获取试用版，请参阅[试用](/pricing/1rmb-trial)。
-* 一个弹性数据库池。请参阅关于[弹性数据库池](/documentation/articles/sql-database-elastic-pool)
-* 安装弹性数据库作业服务组件。请参阅[安装弹性数据库作业服务](/documentation/articles/sql-database-elastic-jobs-service-installation)。
+* 一个弹性数据库池。请参阅关于[弹性数据库池](/documentation/articles/sql-database-elastic-pool/)
+* 安装弹性数据库作业服务组件。请参阅[安装弹性数据库作业服务](/documentation/articles/sql-database-elastic-jobs-service-installation/)。
 
 ## 创建作业
 
@@ -100,7 +100,7 @@
 ![检查失败的作业][4]
 
 
-[AZURE.INCLUDE [elastic-scale-include](../includes/elastic-scale-include.md)]
+[AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-jobs-create-and-manage/screen-1.png
@@ -111,4 +111,4 @@
 
  
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0912_2016-->

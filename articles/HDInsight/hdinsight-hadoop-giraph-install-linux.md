@@ -12,14 +12,14 @@
 
 <tags
 	ms.service="hdinsight"
-	ms.date="05/17/2016"
+	ms.date="08/02/2016"
 	wacn.date=""/>
 
 # 在 HDInsight Hadoop 群集上安装 Giraph 并使用 Giraph 处理大型图形
 
 你可以通过使用**脚本操作**自定义群集，在 Azure HDInsight 上 Hadoop 中的任何一种群集上安装 Giraph。
 
-在本主题中，你将学习如何使用脚本操作来安装 Giraph。一旦你已安装 Giraph，你还将了解如何将 Giraph 用于大多数典型应用程序，也就是处理大型图形。
+本主题介绍如何使用脚本操作安装 Giraph。一旦你已安装 Giraph，你还将了解如何将 Giraph 用于大多数典型应用程序，也就是处理大型图形。
 
 > [AZURE.NOTE] 本文中的信息特定于基于 Linux 的 HDInsight 群集。有关使用基于 Windows 的群集的信息，请参阅[在 HDInsight Hadoop 群集 (Windows) 上安装 Giraph](/documentation/articles/hdinsight-hadoop-giraph-install-v1/)
 
@@ -103,15 +103,11 @@
 
 3. 使用以下命令将数据存储到 HDInsight 群集的主存储中：
 
-		hadoop fs -copyFromLocal tiny_graph.txt /example/data/tiny_graph.txt
+		hdfs dfs -put tiny_graph.txt /example/data/tiny_graph.txt
 
-3. 使用以下命令获取群集头节点的完全限定域名 (FQDN)：
+4. 使用以下命令运行 SimpleShortestPathsComputation 示例。
 
-        hostname -f
-        
-4. 使用以下命令运行 SimpleShortestPathsComputation 示例。将 __HEADNODE__ 替换为上一个步骤所返回的 FQDN：
-
-		 hadoop jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=HEADNODE:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
+		 yarn jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=headnodehost:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
 
 	下表介绍了与此命令搭配使用的参数：
 
@@ -120,7 +116,7 @@
 	| `jar /usr/hdp/current/giraph/giraph-examples.jar` | 包含示例的 jar 文件。 |
 	| `org.apache.giraph.GiraphRunner` | 用于启动示例的类。 |
 	| `org.apache.giraph.examples.SimpleShortestPathsCoputation` | 将运行的示例。在此例中，它会计算图形中 ID 1 和其他所有 ID 之间的最短路径。 |
-	| `-ca mapred.job.tracker=HEADNODE:9010` | 群集的头节点。 |
+	| `-ca mapred.job.tracker=headnodehost:9010` | 群集的头节点。 |
 	| `-vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFromat` | 用于输入数据的输入格式。 |
 	| `-vip /example/data/tiny_graph.txt` | 输入数据文件。 |
 	| `-vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat` | 输出格式。在此例中，ID 和值是纯文本。 |
@@ -129,9 +125,9 @@
 
 	有关这些参数以及与 Giraph 示例搭配使用的其他参数的详细信息，请参阅 [Giraph quickstart（Giraph 快速入门）](http://giraph.apache.org/quick_start.html)。
 
-5. 该作业完成后，结果将存储在 __wasb:///example/out/shotestpaths__ 目录中。创建的文件将以 __part-m-\_\_ 开头，结尾的数字表示第一个文件、第二个文件，依此类推。使用以下命令查看输出：
+5. 该作业完成后，结果将存储在 __wasbs:///example/out/shotestpaths__ 目录中。创建的文件将以 __part-m-__ 开头，结尾的数字表示第一个文件、第二个文件，依此类推。使用以下命令查看输出：
 
-		hadoop fs -text /example/output/shortestpaths/*
+		hdfs dfs -text /example/output/shortestpaths/*
 
 	输出应如下所示：
 
@@ -150,10 +146,10 @@
 
 ## 后续步骤
 
-- [在 HDInsight 群集上安装并使用 Hue](/documentation/articles/hdinsight-hadoop-hue-linux/)。Hue 是一种 Web UI，可让你轻松创建、运行及保存 Pig 和 Hive 作业，以及浏览 HDInsight 群集的默认存储。
+- [Install and use Hue on HDInsight clusters（在 HDInsight 群集上安装并使用 Hue）](/documentation/articles/hdinsight-hadoop-hue-linux/)。Hue 是一种 Web UI，可让你轻松创建、运行及保存 Pig 和 Hive 作业，以及浏览 HDInsight 群集的默认存储。
 
-- [在 HDinsight 群集上安装 R](/documentation/articles/hdinsight-hadoop-r-scripts-linux/)：说明如何使用群集自定义在 HDInsight Hadoop 群集上安装和使用 R。R 是一种用于统计计算的开放源代码语言和环境。它提供了数百个内置统计函数及其自己的编程语言，可结合各方面的函数编程和面向对象的编程。它还提供了各种图形功能。
+- [Install R on HDInsight clusters（在 HDinsight 群集上安装 R）](/documentation/articles/hdinsight-hadoop-r-scripts-linux/)：说明如何使用群集自定义在 HDInsight Hadoop 群集上安装和使用 R。R 是一种用于统计计算的开放源代码语言和环境。它提供了数百个内置统计函数及其自己的编程语言，可结合各方面的函数编程和面向对象的编程。它还提供了各种图形功能。
 
 - [在 HDInsight 群集上安装 Solr](/documentation/articles/hdinsight-hadoop-solr-install-v1/)。使用群集自定义在 HDInsight Hadoop 群集上安装 Solr。Solr 允许你对存储的数据执行功能强大的搜索操作。
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0912_2016-->

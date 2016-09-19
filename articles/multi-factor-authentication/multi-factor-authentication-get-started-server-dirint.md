@@ -4,12 +4,12 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="swadhwa" 
+	manager="stevenpo" 
 	editor="curtand"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="07/14/2015" 
+	ms.date="08/04/2016" 
 	wacn.date=""/>
 
 # Azure MFA 服务器与 Active Directory 之间的目录集成
@@ -65,7 +65,7 @@ Azure Multi-Factor Authentication 提供以下 3 个选项。
 | 唯一标识符 | 输入用作容器、安全组和用户记录的唯一标识符的属性的属性名称。在 Active Directory 中，它通常是 objectGUID。在其他 LDAP 实现中，它可能是 entryUUID 或类似项。默认值为 objectGUID。 |
 | ...“选择属性”按钮 | 每个属性字段旁边都有一个“...”按钮，它将显示“选择属性”对话框，用于从列表中选择属性。<br><br>“选择属性”对话框。<br><br>注意：属性可以手动输入，并且不需要匹配属性列表中的属性。 |
 | 唯一标识符类型 | 选择唯一标识符属性的类型。在 Active Directory 中，objectGUID 属性的类型是 GUID。在其他 LDAP 实现中，该属性的类型可能是 ASCII 字节数组或字符串。默认值为 GUID。<br><br>注意：请务必正确设置此项，因为同步项按其唯一标识符进行引用，而唯一标识符类型用于直接在目录中查找对象。在目录实际上将值存储为 ASCII 字符的字节数组时，将此项设置为字符串会使同步无法正常执行。 |
-| 可分辨名称 | 输入包含每条记录的可分辨名称的属性的属性名称。在 Active Directory 中，它通常是 distinguishedName。在其他 LDAP 实现中，它可能是 entryDN 或类似项。默认值为 distinguishedName。<br><br>注意：如果只包含可分辨名称的属性不存在，则可以使用 adspath 属性。路径的“LDAP://<server>/”部分会自动脱离，只留下对象的可分辨名称。 |
+| 可分辨名称 | 输入包含每条记录的可分辨名称的属性的属性名称。在 Active Directory 中，它通常是 distinguishedName。在其他 LDAP 实现中，它可能是 entryDN 或类似项。默认值为 distinguishedName。<br><br>注意：如果只包含可分辨名称的属性不存在，则可以使用 adspath 属性。将自动剔除路径的“LDAP://<server>/”部分，仅留下对象的可分辨名称。 |
 | 容器名称 | 输入容器记录中包含名称的属性的属性名称。从 Active Directory 导入或添加同步项时，此属性的值将显示在容器层次结构中。默认值为 name。<br><br>注意：如果不同容器将不同属性用作其名称，则可以以分号分隔形式指定多个容器名称属性。容器对象上找到的第一个容器名称属性将用于显示其名称。 |
 | 安全组名称 | 输入安全组记录中包含名称的属性的属性名称。从 Active Directory 导入或添加同步项时，此属性的值将显示在“安全组”列表中。默认值为 name。 |
 | 用户 | 以下属性用于搜索、显示、导入和同步目录中的用户信息。 |
@@ -133,4 +133,4 @@ Multi-Factor Auth AdSync 服务使用 Microsoft 提供的 DirSync LDAP 服务器
 
 ![Multi-Factor-Auth 服务器](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0912_2016-->

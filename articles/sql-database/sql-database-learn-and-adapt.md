@@ -4,13 +4,13 @@
    keywords=""
    services="sql-database"
    documentationCenter=""
-   authors="carlrabeler"
+   authors="CarlRabeler"
    manager="jhubbard"
    editor=""/>
 
 <tags
    ms.service="sql-database"
-   ms.date="05/04/2016"
+   ms.date="07/19/2016"
    wacn.date="05/23/2016"/>
 
 # Azure SQL 数据库会自行学习和进行适应性调整
@@ -25,7 +25,7 @@ Azure SQL 数据库每天管理数以十亿计的事务和数以百万计的数�
 ## 威胁检测和警报  
 对于威胁和异常检测，SQL 数据库内置有行为分析、实时警报、可配置的威胁策略、审核日志和检测和修复异常模式的智能方式。
 
-[阅读文档](/documentation/articles/sql-database-threat-detection-get-started)
+[阅读文档](/documentation/articles/sql-database-threat-detection-get-started/)
 
 ## 自动优化
 SQL 数据库能够让你的应用以最佳性能运行。方法便是通过持续地学习你的应用的模式、适应性地自行调节其性能并自动优化，而无需你做任何事 - 因为我们知道你也并不想做什么。
@@ -48,12 +48,12 @@ SQL 数据库提供应用所需的自动管理和数据保护，以便你能够�
 
 ## 后续步骤
 
-获取 [Azure 订阅](/pricing/1rmb-trial)，并[创建你的第一个 Azure SQL 数据库](/documentation/articles/sql-database-get-started)。
+获取 [Azure 订阅](/pricing/1rmb-trial)，并[创建首个 Azure SQL 数据库](/documentation/articles/sql-database-get-started/)。
 
-## 了解详细信息
+## 其他资源
 
 浏览所有 [SQL 数据库的功能](/home/features/sql-database)。
  
-查看 [SQL 数据库技术概述](/documentation/articles/sql-database-technical-overview)。
+查看 [SQL 数据库技术概述](/documentation/articles/sql-database-technical-overview/)。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0912_2016-->

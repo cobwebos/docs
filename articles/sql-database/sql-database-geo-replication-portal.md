@@ -9,21 +9,21 @@
 
 <tags
     ms.service="sql-database"
-    ms.date="06/14/2016"
+    ms.date="07/14/2016"
     wacn.date="06/01/2016"/>
 
 # 使用 Azure 门户为 Azure SQL 数据库配置异地复制
 
 
 > [AZURE.SELECTOR]
-- [概述](/documentation/articles/sql-database-geo-replication-overview)
-- [Azure 门户](/documentation/articles/sql-database-geo-replication-portal)
-- [PowerShell](/documentation/articles/sql-database-geo-replication-powershell)
-- [T-SQL](/documentation/articles/sql-database-geo-replication-transact-sql)
+- [概述](/documentation/articles/sql-database-geo-replication-overview/)
+- [Azure 门户](/documentation/articles/sql-database-geo-replication-portal/)
+- [PowerShell](/documentation/articles/sql-database-geo-replication-powershell/)
+- [T-SQL](/documentation/articles/sql-database-geo-replication-transact-sql/)
 
 本文说明如何使用 [Azure 门户](http://portal.azure.cn)为 SQL 数据库配置活动异地复制。
 
-若要启动故障转移，请参阅[为 Azure SQL 数据库启动计划内或计划外故障转移](/documentation/articles/sql-database-geo-replication-failover-portal)。
+若要使用 Azure 门户启动故障转移，请参阅[使用 Azure 门户为 Azure SQL 数据库启动计划内或计划外故障转移](/documentation/articles/sql-database-geo-replication-failover-portal/)。
 
 >[AZURE.NOTE] 活动异地复制（可读辅助数据库）现在可供所有服务层中的所有数据库使用。非可读辅助类型将在 2017 年 4 月停用，现有的非可读数据库将自动升级到可读辅助数据库。
 
@@ -32,21 +32,16 @@
 - Azure 订阅。
 - 一个 Azure SQL 数据库数据库 - 需要复制到其他地理区域的主数据库。
 
-
-
 ## 添加辅助数据库
 
 以下步骤在异地复制合作关系中创建新的辅助数据库。
 
-若要添加辅助数据库，你必须是订阅所有者或共同所有者。
+只有订阅所有者或共同所有者才可添加辅助数据库。
 
-辅助数据库将使用与主数据库相同的名称，并将默认使用相同的服务级别。辅助数据库可以是可读或不可读，并且可以是单一数据库或弹性数据库。有关详细信息，请参阅[服务层](/documentation/articles/sql-database-service-tiers)。
+辅助数据库将使用与主数据库相同的名称，并将默认使用相同的服务级别。辅助数据库可以是可读或不可读，并且可以是单一数据库或弹性数据库。有关详细信息，请参阅[服务层](/documentation/articles/sql-database-service-tiers/)。
 创建辅助数据库并设定种子之后，开始将数据从主数据库复制到新的辅助数据库。
 
 > [AZURE.NOTE] 如果伙伴数据库已存在（例如，在终止旧的异地复制关系的情况下），命令将会失败。
-
-
-
 
 ### 添加辅助数据库
 
@@ -97,25 +92,10 @@
     ![确认删除][8]
 
 
-
-   
-
 ## 后续步骤
 
-- [为 Azure SQL 数据库启动计划内或计划外故障转移](/documentation/articles/sql-database-geo-replication-failover-portal)
-- [将云应用程序设计为使用异地复制实现业务连续性](/documentation/articles/sql-database-designing-cloud-solutions-for-disaster-recovery)
-- [灾难恢复练习](/documentation/articles/sql-database-disaster-recovery-drills)
-
-
-## 其他资源
-
-- [异地复制的安全性配置](/documentation/articles/sql-database-geo-replication-security-config)
-- [新异地复制功能的亮点](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication)
-- [SQL 数据库 BCDR 常见问题](/documentation/articles/sql-database-bcdr-faq)
-- [业务连续性概述](/documentation/articles/sql-database-business-continuity)
-- [活动异地复制](/documentation/articles/sql-database-geo-replication-overview)
-- [设计用于云灾难恢复的应用程序](/documentation/articles/sql-database-designing-cloud-solutions-for-disaster-recovery)
-- [确认已恢复的 Azure SQL 数据库](/documentation/articles/sql-database-recovered-finalize)
+- 若要深入了解活动异地复制，请参阅[活动异地复制](/documentation/articles/sql-database-geo-replication-overview/)
+- 有关业务连续性概述和应用场景，请参阅[业务连续性概述](/documentation/articles/sql-database-business-continuity/)
 
 
 <!--Image references-->
@@ -130,5 +110,4 @@
 [9]: ./media/sql-database-geo-replication-portal/seeding-complete.png
 [10]: ./media/sql-database-geo-replication-portal/failover.png
 
-
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0912_2016-->

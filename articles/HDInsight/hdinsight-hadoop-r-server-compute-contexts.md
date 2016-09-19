@@ -12,7 +12,7 @@
 
 <tags
 	ms.service="HDInsight"
-	ms.date="07/07/2016"
+	ms.date="07/21/2016"
 	wacn.date=""/>
 
 # 适用于 HDInsight（预览版）上的 R Server 计算上下文选项
@@ -23,12 +23,15 @@ Azure HDInsight（预览版）上的 Microsoft R Server 提供最新的基于 R 
 
 ## 边缘节点的计算上下文
 
-一般而言，在边缘节点上的 R Server 中运行的 R 脚本将在该节点上的 R 解释程序内运行。但是，调用 ScaleR 函数的步骤例外。ScaleR 调用将在计算环境中运行，而计算环境取决于你如何设置 ScaleR 计算上下文。从边缘节点运行 R 脚本时，计算上下文的可能值包括本地顺序 ('local')、本地并行 ('localpar')、Map Reduce 和 Spark，如下所示：
+一般而言，在边缘节点上的 R Server 中运行的 R 脚本将在该节点上的 R 解释程序内运行。但是，调用 ScaleR 函数的步骤例外。ScaleR 调用将在计算环境中运行，而计算环境取决于你如何设置 ScaleR 计算上下文。从边缘节点运行 R 脚本时，计算上下文的可能值包括本地顺序（“local”）、本地并行（“localpar”）、Map Reduce 和 Spark。
+
+“Local”和“localpar”选项的区别只体现在 rxExec 调用的执行方式。这两个选项都以并行方式跨所有可用核心执行其他 rx-function 调用，除非使用 ScaleR numCoresToUse 作了其他指定，例如，rxOptions(numCoresToUse=6)。 
+下面汇总了各种计算上下文选项
 
 | 计算上下文 | 设置方式 | 执行上下文 |
 |------------------|---------------------------------|---------------------------------------------------------------------------------------|
-| 本地顺序 | rxSetComputeContext('local') | 在边缘节点服务器上顺序（非并行）执行 |
-| 本地并行 | rxSetComputeContext('localpar') | 跨边缘节点服务器的各个核心并行化执行 |
+| 本地顺序 | rxSetComputeContext('local') | 跨边缘节点服务器的核心并行执行，但 rxExec 调用除外（这种调用是串行执行的） |
+| 本地并行 | rxSetComputeContext('localpar') | 跨边缘节点服务器的核心并行执行 |
 | Spark | RxSpark() | 通过 Spark 跨 HDI 群集的各个节点并行化分布式执行 |
 | Map Reduce | RxHadoopMR() | 通过 Map Reduce 跨 HDI 群集的各个节点并行化分布式执行 |
 
@@ -47,10 +50,10 @@ Azure HDInsight（预览版）上的 Microsoft R Server 提供最新的基于 R 
 
 鉴于这些原则，有一些用于选择计算上下文的常规经验规则：
 
-### 本地并行
+### Local
 
-- 如果要分析的数据量较小，并且不需要重复的分析，则直接将其流式处理为分析例程，并使用“localpar”。
-- 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统、导入到 XDF，并通过“localpar”分析。
+- 如果要分析的数据量较小，并且不需要重复的分析，则直接将其流式处理为分析例程，并使用“local”或“localpar”。
+- 如果要分析的数据量较小或者大小适中并且需要重复分析，可将其复制到本地文件系统，导入到 XDF，然后通过“local”或“localpar”进行分析。
 
 ### Hadoop Spark
 
@@ -78,4 +81,4 @@ Azure HDInsight（预览版）上的 Microsoft R Server 提供最新的基于 R 
 - [Add RStudio Server to HDInsight Premium（将 RStudio Server 添加到 HDInsight 高级版）](/documentation/articles/hdinsight-hadoop-r-server-install-r-studio/)
 - [Azure Storage options for R Server on HDInsight Premium（适用于 HDInsight 高级版上的 R Server 的 Azure 存储空间选项）](/documentation/articles/hdinsight-hadoop-r-server-storage/)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=Mooncake_0912_2016-->

@@ -5,12 +5,12 @@
 	keywords="身份验证服务器, azure multi factor authentication 应用激活页, 身份验证服务器下载" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="stevenpo" 
+	manager="femila" 
 	editor="curtand"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="05/12/2016" 
+	ms.date="08/15/2016" 
 	wacn.date=""/>
 
 # Azure Multi-Factor Authentication 服务器入门
@@ -20,7 +20,7 @@
 
 <center>![Cloud](./media/multi-factor-authentication-get-started-server/server2.png)</center>
 
-既然我们已经确定了是否使用本地 Multi-Factor Authentication，那么我们就开始下一步吧。本页介绍如何全新安装服务器，以及在本地 Active Directory 上对它进行设置。如果已安装 PhoneFactor 服务器，并正在寻求升级的方法，请参阅[升级到 Azure Mult-Factor Authentication 服务器](multi-factor-authentication-get-started-server-upgrade.md)；如果你正在寻找有关只安装 Web 服务的信息，请参阅[部署 Azure Multi-Factor Authentication 服务器移动应用 Web 服务](multi-factor-authentication-get-started-server-webservice.md)。
+既然我们已经确定了是否使用本地 Multi-Factor Authentication，那么我们就开始下一步吧。本页介绍如何全新安装服务器，以及在本地 Active Directory 上对它进行设置。如果已安装 PhoneFactor 服务器，并正在寻求升级的方法，请参阅[升级到 Azure Mult-Factor Authentication 服务器](/documentation/articles/multi-factor-authentication-get-started-server-upgrade/)；如果你正在寻找有关只安装 Web 服务的信息，请参阅[部署 Azure Multi-Factor Authentication 服务器移动应用 Web 服务](/documentation/articles/multi-factor-authentication-get-started-server-webservice/)。
 
 
 ## 下载 Azure Multi-Factor Authentication 服务器
@@ -37,8 +37,10 @@
 2. 在左侧选择“Active Directory”。
 3. 在“Active Directory”页的顶部，单击“Multi-Factor Auth 提供程序”
 4. 在底部单击“管理”
-5. 此时将打开一个新页面。单击“下载”。![下载](./media/multi-factor-authentication-sdk/download.png)
-6. 在“生成激活凭据”上方，单击“下载”。![下载](./media/multi-factor-authentication-get-started-server/download4.png)
+5. 此时将打开一个新页面。单击“下载”。
+![下载](./media/multi-factor-authentication-sdk/download.png)
+6. 在“生成激活凭据”上方，单击“下载”。
+![下载](./media/multi-factor-authentication-get-started-server/download4.png)
 7. 保存下载的内容。
 
 
@@ -49,9 +51,11 @@
 1. 以管理员身份登录到 Azure 门户。
 2. 在左侧选择“Active Directory”。
 3. 双击 Azure AD 的实例。
-4. 在顶部单击“配置” ![下载](./media/multi-factor-authentication-sdk/download2.png)
+4. 在顶部单击“配置”
+![下载](./media/multi-factor-authentication-sdk/download2.png)
 5. 在“Multi-Factor Authentication”下选择“管理服务设置”
-6. 在“服务设置”页上的屏幕底部单击“转到门户”。![下载](./media/multi-factor-authentication-get-started-server/servicesettings.png)
+6. 在“服务设置”页上的屏幕底部单击“转到门户”。
+![下载](./media/multi-factor-authentication-get-started-server/servicesettings.png)
 7. 此时将打开一个新页面。单击“下载”。
 8. 在“生成激活凭据”上方，单击“下载”。
 9. 保存下载的内容。
@@ -156,10 +160,10 @@ IP 子网|网络掩码|IP 范围
 - 电子邮件地址 - 可选
 - 电话号码 - 用于语音通话或短信身份验证
 - 设备令牌 - 用于移动应用身份验证
-- 身份验证模式 
-- 身份验证结果 
-- MFA 服务器名称 
-- MFA 服务器 IP 
+- 身份验证模式
+- 身份验证结果
+- MFA 服务器名称
+- MFA 服务器 IP
 - 客户端 IP – 如果可用
 
 
@@ -172,14 +176,14 @@ IP 子网|网络掩码|IP 范围
 
 方法|说明
 :------------- | :------------- | 
-[用户门户](/documentation/articles/multi-factor-authentication-get-started-portal)| 有关设置和配置用户门户的信息，包括部署和用户自助服务。
-[Active Directory 联合身份验证服务](/documentation/articles/multi-factor-authentication-get-started-adfs)|有关设置使用 AD FS 的 Azure Multi-Factor Authentication 的信息。
-[RADIUS 身份验证](/documentation/articles/multi-factor-authentication-get-started-server-radius)| 有关设置和配置使用 RADIUS 的 Azure MFA 服务器的信息。
-[IIS 身份验证](/documentation/articles/multi-factor-authentication-get-started-server-iis)|有关设置和配置使用 IIS 的 Azure MFA 服务器的信息。
-[Windows 身份验证](/documentation/articles/multi-factor-authentication-get-started-server-windows)| 有关设置和配置使用 Windows 身份验证的 Azure MFA 服务器的信息。
-[LDAP 身份验证](/documentation/articles/multi-factor-authentication-get-started-server-ldap)|有关设置和配置使用 LDAP 身份验证的 Azure MFA 服务器的信息。
-[使用 RADIUS 的远程桌面网关和 Azure Multi-Factor Authentication 服务器](/documentation/articles/multi-factor-authentication-get-started-server-rdg)| 有关设置和配置使用 RADIUS 的、具有远程桌面网关的 Azure MFA 服务器的信息。
-[与 Windows Server Active Directory 同步](/documentation/articles/multi-factor-authentication-get-started-server-dirint)|有关在 Active Directory 与 Azure MFA 服务器之间设置和配置同步的信息。
-[部署 Azure Multi-Factor Authentication 服务器移动应用 Web 服务](/documentation/articles/multi-factor-authentication-get-started-server-webservice)|有关设置和配置 Azure MFA 服务器 Web 服务的信息。
+[用户门户](/documentation/articles/multi-factor-authentication-get-started-portal/)| 有关设置和配置用户门户的信息，包括部署和用户自助服务。
+[Active Directory 联合身份验证服务](/documentation/articles/multi-factor-authentication-get-started-adfs/)|有关设置使用 AD FS 的 Azure Multi-Factor Authentication 的信息。
+[RADIUS 身份验证](/documentation/articles/multi-factor-authentication-get-started-server-radius/)| 有关设置和配置使用 RADIUS 的 Azure MFA 服务器的信息。
+[IIS 身份验证](/documentation/articles/multi-factor-authentication-get-started-server-iis/)|有关设置和配置使用 IIS 的 Azure MFA 服务器的信息。
+[Windows 身份验证](/documentation/articles/multi-factor-authentication-get-started-server-windows/)| 有关设置和配置使用 Windows 身份验证的 Azure MFA 服务器的信息。
+[LDAP 身份验证](/documentation/articles/multi-factor-authentication-get-started-server-ldap/)|有关设置和配置使用 LDAP 身份验证的 Azure MFA 服务器的信息。
+[使用 RADIUS 的远程桌面网关和 Azure Multi-Factor Authentication 服务器](/documentation/articles/multi-factor-authentication-get-started-server-rdg/)| 有关设置和配置使用 RADIUS 的、具有远程桌面网关的 Azure MFA 服务器的信息。
+[与 Windows Server Active Directory 同步](/documentation/articles/multi-factor-authentication-get-started-server-dirint/)|有关在 Active Directory 与 Azure MFA 服务器之间设置和配置同步的信息。
+[部署 Azure Multi-Factor Authentication 服务器移动应用 Web 服务](/documentation/articles/multi-factor-authentication-get-started-server-webservice/)|有关设置和配置 Azure MFA 服务器 Web 服务的信息。
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0912_2016-->

@@ -28,9 +28,9 @@ articles/sql-database/sql-database-get-started-tutorial.md
 5. 提供以下服务器属性的值：
 
  - 数据库名称
- - 订阅（仅当你有多个订阅时）
+ - 订阅（仅在具有多个订阅时）
  - 资源组（如果你是新手，请使用逻辑服务器的资源组）
- - 选择源（可以选择空白数据库、示例数据或数据库备份）
+ - 选择源（可选择空白数据库、示例数据或 Azure 数据库备份 - 若要迁移 SQL Server 本地数据库或使用 BCP 加载数据，请参阅本文末尾的链接）
  - 服务器（新的或现有的逻辑服务器）
  - 服务器管理员密码
  - 密码
@@ -47,4 +47,4 @@ articles/sql-database/sql-database-get-started-tutorial.md
 
      ![新数据库](./media/sql-database-create-new-database-portal/sql-database-create-new-database-portal-6.png)
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0912_2016-->

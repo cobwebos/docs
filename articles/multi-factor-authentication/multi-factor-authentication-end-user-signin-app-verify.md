@@ -10,8 +10,9 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="05/12/2016" 
-	wacn.date=""/>
+	ms.date="08/04/2016" 
+	wacn.date=""/>  
+
 
 # 在 Azure Multi-Factor Authentication 中使用验证码登录到移动应用
 
@@ -37,4 +38,5 @@
 
 
  
-<!---HONumber=Mooncake_0530_2016-->
+
+<!---HONumber=Mooncake_0912_2016-->

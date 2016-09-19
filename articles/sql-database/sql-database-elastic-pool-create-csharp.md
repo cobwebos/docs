@@ -3,13 +3,13 @@
     description="使用 C# 数据库开发技术在 Azure SQL 数据库中创建可缩放的弹性数据库池，以便可以在多个数据库之间共享资源。"
     services="sql-database"
     documentationCenter=""
-    authors="srinia"
+    authors="stevestein"
     manager="jhubbard"
     editor=""/>
 
 <tags
     ms.service="sql-database"
-    ms.date="07/05/2016"
+    ms.date="07/22/2016"
     wacn.date=""/>
 
 # 使用 C&#x23; 创建新的弹性数据库池
@@ -26,7 +26,7 @@
 
 下面的示例使用 [适用于 .NET 的 SQL 数据库库](https://msdn.microsoft.com/zh-cn/library/azure/mt349017.aspx)，因此如果没有安装此库，你需要在继续之前进行安装。你可以通过在 Visual Studio 中的[程序包管理器控制台](http://docs.nuget.org/Consume/Package-Manager-Console)（“工具”>“NuGet 程序包管理器”>“程序包管理器控制台”）中运行以下命令来安装此库：
 
-    PM> Install-Package Microsoft.Azure.Management.Sql –Pre
+    Install-Package Microsoft.Azure.Management.Sql –Pre
 
 ## 创建新池
 
@@ -70,7 +70,7 @@
 
 要将现有数据库移动到池，请参阅[将数据库移动到弹性池](/documentation/articles/sql-database-elastic-pool-manage-csharp/#Move-a-database-into-an-elastic-pool)。
 
-## 示例：使用 C&#x23 创建池
+## 示例：使用 C&#x23; 创建池
 
 此示例创建新的 Azure 资源组、新的 Azure SQL Server 实例和新的弹性池。
  
@@ -78,7 +78,7 @@
 运行此示例需要以下库。你可以通过在 Visual Studio 中的[程序包管理器控制台](http://docs.nuget.org/Consume/Package-Manager-Console)（“工具”>“NuGet 程序包管理器”>“程序包管理器控制台”）中运行以下命令来进行安装
 
     Install-Package Microsoft.Azure.Management.Sql –Pre
-    Install-Package Microsoft.Azure.Management.Resources –Pre
+    Install-Package Microsoft.Azure.Management.ResourceManager –Pre -Version 1.1.1-preview
     Install-Package Microsoft.Azure.Common.Authentication –Pre
 
 创建控制台应用并将 Program.cs 的内容替换为以下内容。若要获取所需的客户端 ID 和相关的值，请参阅[注册应用并获取所需的客户端值以便将你的应用连接到 SQL 数据库](/documentation/articles/sql-database-client-id-keys/)。使用 [Get-AzureRmSubscription](https://msdn.microsoft.com/zh-cn/library/mt619284.aspx) cmdlet 检索 subscriptionId 的值。
@@ -245,4 +245,4 @@
 - [SQL 数据库](/documentation/services/sql-databases)
 - [Azure 资源管理 API](https://msdn.microsoft.com/zh-cn/library/azure/dn948464.aspx)
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=Mooncake_0912_2016-->
