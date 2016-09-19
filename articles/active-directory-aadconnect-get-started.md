@@ -57,7 +57,7 @@
 
 下载 Azure AD Connect 后，使用以下步骤安装 Azure AD Connect。
 
-1. 以企业管理员身份登录到要安装 Azure AD Connect 的服务器
+1. 以企业管理员身份登录到要安装 Azure AD Connect 的服务器。
 2. 导航到 AzureADConnect.msi 并双击它
 3. 使用“快速”或“自定义”设置完成向导中的每个步骤
 4. 可选：使用测试用户帐户登录到云服务（如 Office 365）以进行测试。
