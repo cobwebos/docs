@@ -1,75 +1,63 @@
 <properties 
-	pageTitle="使用 FTP 在 Azure 网站中创建和部署 PHP-MySQL Web 应用" 
+	pageTitle="使用 FTP 在 Azure App Service 中创建和部署 PHP-MySQL Web 应用" 
 	description="本教程演示如何创建在 MySQL 中存储数据的 PHP Web 应用并使用 FTP 部署到 Azure。" 
 	services="app-service\web" 
 	documentationCenter="php" 
-	authors="tfitzmac" 
+	authors="rmcmurray" 
 	manager="wpickett" 
 	editor=""/>
 
 <tags
 	ms.service="app-service-web"
-	ms.date="10/01/2015"
+	ms.date="08/11/2016"
 	wacn.date=""/>
 
 
-#使用 FTP 在 Azure 网站中创建和部署 PHP-MySQL Web 应用
-
-> [AZURE.SELECTOR]
-- [.Net](/documentation/articles/web-sites-dotnet-get-started)
-- [Node.js](/documentation/articles/web-sites-nodejs-develop-deploy-mac)
-- [Java](/documentation/articles/web-sites-java-get-started)
-- [PHP - Git](/documentation/articles/web-sites-php-mysql-deploy-use-git)
-- [PHP - FTP](/documentation/articles/web-sites-php-mysql-deploy-use-ftp)
-- [Python](/documentation/articles/web-sites-python-ptvs-django-mysql)
+#使用 FTP 在 Azure App Service 中创建和部署 PHP-MySQL Web 应用
 
 本教程演示如何创建 PHP-MySQL Web 应用以及如何使用 FTP 部署该应用。本教程假定你已在计算机上安装 [PHP][install-php]、[MySQL][install-mysql]、Web 服务器和 FTP 客户端。本教程中的说明适用于任何操作系统，包括 Windows、Mac 和 Linux。完成本指南之后，你将拥有一个在 Azure 中运行的 PHP/MySQL Web 应用。
  
 你将学习以下内容：
 
-* 如何使用 Azure 管理门户创建 Web 应用和 MySQL 数据库。由于 Web Apps 默认已启用 PHP，因此运行 PHP 代码没有任何特殊要求。
+* 如何使用 Azure 门户创建 Web 应用和 MySQL 数据库。由于 Web 应用已默认启用 PHP，因此运行 PHP 代码没有任何特殊要求。
 * 如何使用 FTP 将应用程序发布到 Azure。
  
 通过按照本教程中的说明进行操作，你将在 PHP 中构建简单的注册 Web 应用。将在 Web 应用中托管应用程序。以下是已完成应用程序的屏幕快照：
 
 ![Azure PHP 网站][running-app]
 
-
 ##创建 Web 应用并设置 FTP 发布
 
 按照以下步骤创建 Web 应用和 MySQL 数据库：
 
-1. 登录到 [Azure 管理门户][management-portal]。
-2. 单击该门户左下的“+ 新建”图标。
+1. 登录到 [Azure 门户][management-portal]。
+2. 单击 Azure 门户左上角的“+ 新建”图标。
 
 	![创建新的 Azure 网站][new-website]
 
-3. 单击“网站”，然后单击“自定义创建”。
+3. 在搜索中键入“Web 应用 + MySQL”，然后单击“Web 应用 + MySQL”。
 
 	![自定义创建新的网站][custom-create]
-	
-	在“URL”中输入值，从“数据库”下拉列表中选择“新建 MySQL 数据库”，然后在“区域”下拉列表中选择网站的数据中心。单击对话框底部的箭头。
 
-	![填写网站详细信息][ Website-details]
+4. 单击“创建”。为资源组和新的服务计划输入唯一且有效的应用服务名称。
 
-4. 为数据库的“名称”输入一个值，在“区域”下拉列表中为数据库选择数据中心，并选中表明你同意法律条款的框。单击对话框底部的复选标记。
+    ![设置资源组名称][resource-group]
+
+
+6. 为新的数据库输入值，包括同意法律条款。
 
 	![新建 MySQL 数据库][new-mysql-db]
-
-	创建网站后，你将看到文本“创建网站 ‘[SITENAME]’ 成功完成”。现在，可以启用 FTP 发布了。
-
-5. 单击网站列表中显示的网站的名称以打开该网站的“快速启动”仪表板。
-
-	![打开网站仪表板][go-to-dashboard]
+	
+7. 创建 Web 应用后，用户将看到新的应用服务边栏选项卡。
 
 
-6. 在“快速启动”页的底部，单击“重置部署凭据”。
+6. 单击“设置”>“部署凭据”。
 
-	![重置部署凭据][reset-deployment-credentials]
+	![设置部署凭据][set-deployment-credentials]
 
-7. 若要启用 FTP 发布，必须提供用户名和密码。记下你创建的用户名和密码。
+7. 若要启用 FTP 发布，必须提供用户名和密码。保存凭据并记下创建的用户名和密码。
 
-	![创建发布凭据][portal-git-username-password]
+	![创建发布凭据][portal-ftp-username-password]
 
 ##在本地生成并测试应用
 
@@ -111,8 +99,8 @@
 		echo "<h3>Table created.</h3>";
 		?>
 
-	> [AZURE.NOTE]
-	> 需要使用本地 MySQL 用户名和密码更新 <code>$user</code> 和 <code>$pwd</code> 的值。
+	> [AZURE.NOTE] 
+	需要使用本地 MySQL 用户名和密码更新 <code>$user</code> 和 <code>$pwd</code> 的值。
 
 4. 打开 Web 浏览器并浏览到 [http://localhost/registration/createtable.php][localhost-createtable]。这将在数据库中创建 `registration_tbl` 表。
 
@@ -166,7 +154,7 @@
 		}
 
 	> [AZURE.NOTE]
-	> 同样，需要使用本地 MySQL 用户名和密码更新 <code>$user</code> 和 <code>$pwd</code> 的值。
+	同样，需要使用本地 MySQL 用户名和密码更新 <code>$user</code> 和 <code>$pwd</code> 的值。
 
 7. 在数据库连接代码后面添加用于将注册信息插入数据库的代码。
 
@@ -217,11 +205,15 @@
 
 若要连接到正在 Web Apps 中运行的 MySQL 数据库，你将需要连接信息。若要获取 MySQL 连接信息，请按照以下步骤操作：
 
+1. 在应用服务 Web 应用边栏选项卡中，单击资源组链接：
+
+	![选择资源组][select-resourcegroup]
+
 1. 在资源组中单击数据库：
 
 	![选择数据库][select-database]
 
-2. 在数据库摘要中选择“属性”。
+2. 在数据库摘要中，选择“设置”>“属性”。
 
     ![选择属性][select-properties]
 	
@@ -257,7 +249,7 @@
 
 1. 打开选择的 FTP 客户端。
 
-2. 将上文中记下的 `publishUrl` 属性中的*主机名部分*输入到 FTP 客户端。
+2. 将上文中记下的 `publishUrl` 属性中的 *主机名部分* 输入到 FTP 客户端。
 
 3. 将上面记下的 `userName` 和 `userPWD` 属性按原样输入到 FTP 客户端。
 
@@ -266,10 +258,11 @@
 连接后，您将能够根据需要上载和下载文件。确保将文件上载到根目录 `/site/wwwroot`。
 
 上载 `index.php` 和 `createtable.php` 之后，浏览到 **http://[site name].chinacloudsites.cn/createtable.php** 以创建用于应用程序的 MySQL 表，然后浏览到 **http://[site name].chinacloudsites.cn/index.php** 以开始使用应用程序。
+ 
+## 后续步骤
 
-[go-to-dashboard]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/go_to_dashboard.png
-[reset-deployment-credentials]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/reset-deployment-credentials.png
-[portal-git-username-password]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/git-deployment-credentials.png
+有关详细信息，请参阅 [PHP 开发中心](/develop/php/)。
+
 [install-php]: http://www.php.net/manual/en/install.php
 [install-mysql]: http://dev.mysql.com/doc/refman/5.6/en/installing.html
 [pdo-mysql]: http://www.php.net/manual/en/ref.pdo-mysql.php
@@ -286,12 +279,13 @@
 [resource-group]: ./media/web-sites-php-mysql-deploy-use-ftp/set_group.png
 [new-web-app]: ./media/web-sites-php-mysql-deploy-use-ftp/create_wa.png
 [select-database]: ./media/web-sites-php-mysql-deploy-use-ftp/select_database.png
+[select-resourcegroup]: ./media/web-sites-php-mysql-deploy-use-ftp/select_resourcegroup.png
 [select-properties]: ./media/web-sites-php-mysql-deploy-use-ftp/select_properties.png
 [note-properties]: ./media/web-sites-php-mysql-deploy-use-ftp/note-properties.png
 
 [connection-string-info]: ./media/web-sites-php-web-site-mysql-deploy-use-ftp/connection_string_info.png
-[management-portal]: https://manage.windowsazure.cn
+[management-portal]: https://portal.azure.cn
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
  
 
-<!-----HONumber=82-->
+<!---HONumber=Mooncake_0919_2016-->
