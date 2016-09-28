@@ -14,14 +14,15 @@
 # 使用 Azure PowerShell 创建可访问资源的 Active Directory 应用程序
 
 > [AZURE.SELECTOR]
-- [PowerShell](/documentation/articles/resource-group-authenticate-service-principal)
-- [Azure CLI](/documentation/articles/resource-group-authenticate-service-principal-cli)
-- [门户](/documentation/articles/resource-group-create-service-principal-portal)
+- [PowerShell](/documentation/articles/resource-group-authenticate-service-principal/)
+- [Azure CLI](/documentation/articles/resource-group-authenticate-service-principal-cli/)
+- [门户](/documentation/articles/resource-group-create-service-principal-portal/)
 
 
-本主题演示如何使用 [Azure PowerShell](/documentation/articles/powershell-install-configure) 创建 Active Directory (AD) 应用程序，如可访问你的订阅中的其他资源的自动化进程、应用程序或服务。借助 Azure Resource Manager，可以使用基于角色的访问控制向应用程序授予允许的操作。
+本主题演示如何使用 [Azure PowerShell](/documentation/articles/powershell-install-configure/) 创建 Active Directory (AD) 应用程序，如何访问订阅中的其他资源的自动化进程、应用程序或服务。借助 Azure Resource Manager，可以使用基于角色的访问控制向应用程序授予允许的操作。
 
-在本文中，你将创建两个对象 - AD 应用程序和服务主体。AD 应用程序位于注册了应用的租户中，并定义了要运行的进程。服务主体包含 AD 应用程序的标识，并用于分配权限。从 AD 应用程序可以创建多个服务主体。有关应用程序和服务主体的详细说明，请参阅[应用程序对象和服务主体对象](/documentation/articles/active-directory-application-objects)。有关 Active Directory 身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](/documentation/articles/active-directory-authentication-scenarios)。
+在本文中，你将创建两个对象 - AD 应用程序和服务主体。AD 应用程序位于注册了应用的租户中，并定义了要运行的进程。服务主体包含 AD 应用程序的标识，并用于分配权限。从 AD 应用程序可以创建多个服务主体。有关应用程序和服务主体的详细说明，请参阅[应用程序对象和服务主体对象](/documentation/articles/active-directory-application-objects/)
+。有关 Active Directory 身份验证的详细信息，请参阅 [Azure AD 的身份验证方案](/documentation/articles/active-directory-authentication-scenarios/)。
 
 有 2 个选项用于验证应用程序：
 
@@ -64,7 +65,7 @@
 
         New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
-2. 向服务主体授予对你的订阅的权限。在此示例中，你将要向服务主体授予读取订阅中所有资源的权限。对于 **ServicePrincipalName** 参数，请提供你在创建应用程序时使用的 **ApplicationId** 或 **IdentifierUris**。有关基于角色的访问控制的详细信息，请参阅 [Azure 基于角色的访问控制](./active-directory/role-based-access-control-configure.md)。
+2. 向服务主体授予对订阅的权限。在此示例中，需要向服务主体授予读取订阅中所有资源的权限。对于 **ServicePrincipalName** 参数，请提供你在创建应用程序时使用的 **ApplicationId** 或 **IdentifierUris**。有关基于角色的访问控制的详细信息，请参阅 [Azure 基于角色的访问控制](./active-directory/role-based-access-control-configure.md)。
 
         New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
@@ -84,7 +85,7 @@
 
         $subscription = Get-AzureRmSubscription
 
-     如果你的帐户链接到多个订阅，请提供订阅名称或 ID，以便获取你要使用的订阅。
+     如果帐户链接到多个订阅，请提供订阅名称或 ID，以便获取所要使用的订阅。
      
         $subscription = Get-AzureRmSubscription -SubscriptionName "Azure MSDN - Visual Studio Ultimate"
 
@@ -110,7 +111,7 @@
 
 在此部分中，你将执行相应步骤来创建使用证书的 AD 应用程序。
 
-1. 创建自签名证书。如果你使用 Windows 10 或 Windows Server 2016 Technical Preview，请运行以下命令： 
+1. 创建自签名证书。如果你使用 Windows 10 或 Windows Server 2016 Technical Preview，请运行以下命令：
 
         $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=exampleapp" -KeySpec KeyExchange
        
@@ -126,7 +127,7 @@
      
         Import-Module -Name c:\New-SelfSignedCertificateEx.ps1
         New-SelfSignedCertificateEx -Subject "CN=exampleapp" -KeySpec "Exchange" -FriendlyName "exampleapp"
-        $cert = Get-ChildItem -Path cert:\CurrentUser\My* -DnsName exampleapp
+        $cert = Get-ChildItem -Path cert:\CurrentUser\My\* -DnsName exampleapp
 
 2. 从证书检索密钥值。
 
@@ -162,7 +163,7 @@
 
         New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
-2. 向服务主体授予对你的订阅的权限。在此示例中，你将要向服务主体授予读取订阅中所有资源的权限。对于 **ServicePrincipalName** 参数，请提供你在创建应用程序时使用的 **ApplicationId** 或 **IdentifierUris**。有关基于角色的访问控制的详细信息，请参阅 [Azure 基于角色的访问控制](./active-directory/role-based-access-control-configure.md)。
+2. 向服务主体授予对订阅的权限。在此示例中，需要向服务主体授予读取订阅中所有资源的权限。对于 **ServicePrincipalName** 参数，请提供你在创建应用程序时使用的 **ApplicationId** 或 **IdentifierUris**。有关基于角色的访问控制的详细信息，请参阅 [Azure 基于角色的访问控制](./active-directory/role-based-access-control-configure.md)。
 
         New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
@@ -171,7 +172,7 @@
 在脚本中，将传入以服务主体身份登录所需的三个值。你将需要：
 
 - 应用程序 ID
-- 租户 ID 
+- 租户 ID
 - 证书指纹
 
 你已在前面的步骤中看到应用程序 ID 和证书指纹。但是，如果需要以后检索这些值，相应命令将与用于获取租户 ID 的命令一起显示在下面。
@@ -180,7 +181,7 @@
 
         (Get-AzureRmSubscription).TenantId 
 
-    或者，如果你有多个订阅，请提供订阅的名称：
+    或者，如果有多个订阅，请提供订阅的名称：
 
         (Get-AzureRmSubscription -SubscriptionName "Azure MSDN - Visual Studio Ultimate").TenantId
         
@@ -190,7 +191,7 @@
         
 3. 若要检索证书指纹，请使用：
 
-        (Get-ChildItem -Path cert:\CurrentUser\My* -DnsName exampleapp).Thumbprint
+        (Get-ChildItem -Path cert:\CurrentUser\My\* -DnsName exampleapp).Thumbprint
 
 ### 通过自动执行的 PowerShell 脚本提供证书
 
@@ -204,12 +205,10 @@
 
 ## 后续步骤
   
-- 有关 .NET 身份验证示例，请参阅 [Azure Resource Manager SDK for .NET](/documentation/articles/resource-manager-net-sdk)。
-- 有关 Java 身份验证示例，请参阅 [Azure Resource Manager SDK for Java](/documentation/articles/resource-manager-java-sdk)。 
-- 有关 Python 身份验证示例，请参阅 [Resource Management Authentication for Python（适用于 Python 的资源管理身份验证）](https://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementauthentication.html)。
-- 有关 REST 身份验证示例，请参阅 [Resource Manager REST API](/documentation/articles/resource-manager-rest-api)。
-- 有关将应用程序集成到 Azure 以管理资源的详细步骤，请参阅[使用 Azure Resource Manager API 进行授权的开发人员指南](/documentation/articles/resource-manager-api-authentication)。
+- 有关 .NET 身份验证示例，请参阅[用于 .NET 的 Azure Resource Manager SDK](/documentation/articles/resource-manager-net-sdk/)。
+- 有关 Java 身份验证示例，请参阅[用于 Java 的 Azure Resource Manager SDK](/documentation/articles/resource-manager-java-sdk/)。
+- 有关 Python 身份验证示例，请参阅 [Resource Management Authentication for Python](https://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagementauthentication.html)（适用于 Python 的资源管理身份验证）。
+- 有关 REST 身份验证示例，请参阅 [Resource Manager REST API](/documentation/articles/resource-manager-rest-api/)。
+- 有关将应用程序集成到 Azure 以管理资源的详细步骤，请参阅 [Developer's guide to authorization with the Azure Resource Manager API](/documentation/articles/resource-manager-api-authentication/)（使用 Azure Resource Manager API 进行授权的开发人员指南）。
 
-
-
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=Mooncake_0919_2016-->

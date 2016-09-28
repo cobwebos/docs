@@ -4,12 +4,12 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="stevenpo" 
+	manager="femila" 
 	editor="curtand"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="11/19/2015" 
+	ms.date="08/15/2016" 
 	wacn.date=""/>
 
 
@@ -41,21 +41,21 @@
 9. 可以重复执行步骤 4 到步骤 8 以添加其他 RADIUS 客户端。
 10. 单击“目标”选项卡。
 11. 如果 Azure Multi-Factor Authentication 服务器已安装在 Active Directory 环境中已加入域的服务器上，请选择“Windows 域”。
-12. 如果应针对 LDAP 目录对用户进行身份验证，请选择“LDAP 绑定”。使用 LDAP 绑定时，必须在“设置”选项卡上单击“目录集成”图标并编辑 LDAP 配置，以便服务器可以绑定到你的目录。可在 LDAP 代理配置指南中找到配置 LDAP 的说明。 
+12. 如果应针对 LDAP 目录对用户进行身份验证，请选择“LDAP 绑定”。使用 LDAP 绑定时，必须在“设置”选项卡上单击“目录集成”图标并编辑 LDAP 配置，以便服务器可以绑定到你的目录。可在 LDAP 代理配置指南中找到配置 LDAP 的说明。
 13. 如果用户应向其他 RADIUS 服务器进行身份验证，请选择“RADIUS 服务器”。
 14. 通过单击“添加...”按钮配置该服务器需要通过代理将 RADIUS 请求发送到的服务器。
 15. 在“添加 RADIUS 服务器”对话框中，输入 RADIUS 服务器的 IP 地址和共享机密。Azure Multi-Factor Authentication 服务器和 RADIUS 服务器上的共享机密将需要相同。如果 RADIUS 服务器使用不同端口，请更改身份验证端口和记帐端口。
-16. 单击“确定”按钮。 
+16. 单击“确定”按钮。
 17. 必须在其他 RADIUS 服务器中将 Azure Multi-Factor Authentication 服务器添加为 RADIUS 客户端，以便该 RADIUS 服务器处理 Azure Multi-Factor Authentication 服务器发送给它的访问请求。必须使用 Azure Multi-Factor Authentication 服务器中配置的共享机密。
-18. 可以重复执行此步骤以添加其他 RADIUS 服务器，并使用“上移”和“下移”按钮配置该服务器调用这些 RADIUS 服务器时应使用的顺序。这就完成了 Azure Multi-Factor Authentication 服务器配置。该服务器正在已配置端口上侦听来自已配置客户端的 RADIUS 访问请求。   
+18. 可以重复执行此步骤以添加其他 RADIUS 服务器，并使用“上移”和“下移”按钮配置该服务器调用这些 RADIUS 服务器时应使用的顺序。这就完成了 Azure Multi-Factor Authentication 服务器配置。该服务器正在已配置端口上侦听来自已配置客户端的 RADIUS 访问请求。
 
 
 ## RADIUS 客户端配置
 
 若要配置 RADIUS 客户端，请遵循以下准则：
 
-- 将你的设备/服务器配置为通过 RADIUS 向 Azure Multi-Factor Authentication 服务器的 IP 地址进行身份验证，后者将充当 RADIUS 服务器。 
-- 使用上面配置的共享机密。 
+- 将你的设备/服务器配置为通过 RADIUS 向 Azure Multi-Factor Authentication 服务器的 IP 地址进行身份验证，后者将充当 RADIUS 服务器。
+- 使用上面配置的共享机密。
 - 将 RADIUS 超时配置为 30-60 秒，以便有时间验证用户的凭据、执行 Multi-Factor Authentication、接收其响应，然后对 RADIUS 访问请求做出响应。
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0919_2016-->

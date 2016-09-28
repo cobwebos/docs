@@ -5,12 +5,11 @@
 	documentationCenter="" 
 	authors="Juliako" 
 	manager="erikre" 
-	editor=""/>  
-
+	editor=""/>
 
 <tags
 	ms.service="media-services"
-	ms.date="06/22/2016"
+	ms.date="08/07/2016"
 	wacn.date=""/>  
 
 
@@ -44,14 +43,14 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 2. Azure 媒体服务帐户。使用 Azure 管理门户、.NET 或 REST API 来创建 Azure 媒体服务帐户。有关详细信息，请参阅[创建帐户](/documentation/articles/media-services-create-account/)。
 3. （可选）设置开发环境。为开发环境选择“.NET”或“REST API”。有关详细信息，请参阅[设置环境](/documentation/articles/media-services-dotnet-how-to-use/)。
 
-	此外，请学习如何以编程方式进行[连接](/documentation/articles/media-services-dotnet-connect_programmatically/)。
+	此外，请学习如何以编程方式进行[连接](/documentation/articles/media-services-dotnet-connect-programmatically/)。
 4. （推荐）分配一个或多个缩放单位。建议为生产环境中的应用程序分配一个或多个扩展单元。有关详细信息，请参阅[管理流式处理终结点](/documentation/articles/media-services-manage-origins/)。
 
 ##概念和概述
 
 有关 Azure 媒体服务的概念，请参阅[概念](/documentation/articles/media-services-concepts/)。
 
-有关介绍 Azure 媒体服务所有主要组件的操作说明系列文章，请参阅 [Azure 媒体服务分步教程](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)。此系列文章全面概述了各个概念，并使用 AMSE 工具演示了 AME 任务。请注意 AMSE 工具是一种 Windows 工具。可以使用 [AMS SDK for.NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java) 或 [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) 以编程方式完成的大多数任务也可以使用此工具来完成。
+有关介绍 Azure 媒体服务所有主要组件的操作说明系列文章，请参阅 [Azure 媒体服务分步教程](https://docs.com/fukushima-shigeyuki/3439/english-azure-media-services-step-by-step-series)。此系列文章全面概述了各个概念，并使用 AMSE 工具演示了 AMS 任务。请注意 AMSE 工具是一种 Windows 工具。可以使用 [AMS SDK for.NET](https://github.com/Azure/azure-sdk-for-media-services)、[Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java) 或 [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php) 以编程方式完成的大多数任务也可以使用此工具来完成。
 
 ##<a id="vod_scenarios"></a>使用 Azure 媒体服务交付按需媒体：常见方案和任务
 
@@ -164,7 +163,8 @@ Microsoft Azure 媒体服务是一个可扩展的基于云的平台，使开发�
 
 下图显示的是实时流式处理工作流中所涉及的 AMS 平台的主要组成部分，该工作流中的频道能够通过媒体服务执行实时编码。
 
-![实时工作流][live-overview1]
+![实时工作流][live-overview1]  
+
 
 有关详细信息，请参阅[使用能够通过 Azure 媒体服务执行实时编码的频道](/documentation/articles/media-services-manage-live-encoder-enabled-channels/)。
 
@@ -211,4 +211,4 @@ Azure 媒体服务提供你所需的工具，以便你创建适用于大多数�
 [live-overview2]: ./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png
  
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0919_2016-->

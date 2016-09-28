@@ -1,38 +1,38 @@
 <properties 
-	pageTitle="DocumentDB 的 NoSQL Node.js 示例 | Microsoft Azure" 
+	pageTitle="DocumentDB 的 NoSQL Node.js 示例 | Azure" 
 	description="在 github 上找到 NoSQL Node.js 示例用于执行 DocumentDB 中的常见任务，包括 NoSQL 数据库中 JSON 文档的 CRUD 操作。" 
 	keywords="Node.js 示例"
 	services="documentdb" 
-	authors="mimig1" 
+	authors="AndrewHoh" 
 	manager="jhubbard" 
 	editor="monicar" 
 	documentationCenter="nodejs"/>
 
 <tags 
 	ms.service="documentdb" 
-	ms.date="03/22/2016" 
+	ms.date="04/18/2016" 
 	wacn.date=""/>
 
 
 # DocumentDB Node.js 示例
 
 > [AZURE.SELECTOR]
-- [.NET 示例](/documentation/articles/documentdb-dotnet-samples)
-- [Node.js 示例](/documentation/articles/documentdb-nodejs-samples)
-- [Python 示例](/documentation/articles/documentdb-python-samples)
+- [.NET 示例](/documentation/articles/documentdb-dotnet-samples/)
+- [Node.js 示例](/documentation/articles/documentdb-nodejs-samples/)
+- [Python 示例](/documentation/articles/documentdb-python-samples/)
 - [Azure 代码示例库](https://azure.microsoft.com/documentation/samples/?service=documentdb)
 
-对 DocumentDB 资源执行 CRUD 操作和其他常见操作的示例解决方案包括在 [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) GitHub 存储库。本文将提供：
+对 Azure DocumentDB 资源执行 CRUD 操作和其他常见操作的示例解决方案包含在 [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) GitHub 存储库中。本文将提供：
 
-- 指向每个 Node.js 示例项目文件中任务的链接。 
+- 指向每个 Node.js 示例项目文件中任务的链接。
 - 指向相关的 API 参考内容的链接。
 
 **先决条件**
 
 1. 你需要一个 Azure 帐户以使用这些 Node.js 示例：
-    - 可以[免费建立一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)：获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，你仍可以保留帐户和使用免费的 Azure 服务（如网站）。你的信用卡将永远不会付费，除非你显式更改设置并要求付费。
-   - 你可以[激活 Visual Studio 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)：Visual Studio 订阅每月为你提供可用来试用付费版 Azure 服务的信用额度。
-2. 你还需要 [Node.js SDK](/documentation/articles/documentdb-sdk-node)。 
+    - 可以打开一个 [Azure 帐户](/pricing/1rmb-trial)：获取可用来试用付费版 Azure 服务的信用额度，甚至在用完信用额度后，仍可以保留帐户和使用免费的 Azure 服务（如网站）。你的信用卡将永远不会付费，除非你显式更改设置并要求付费。
+   - 可以[激活 Visual Studio 订户权益](/pricing/member-offers/)：Visual Studio 订阅每月为你提供可用来试用付费版 Azure 服务的信用额度。
+2. 还需要 [Node.js SDK](/documentation/articles/documentdb-sdk-node/)。
 
     > [AZURE.NOTE] 每个示例都是独立的，自行对自身进行设置并在完成后自行进行清理。因此，这些示例对 [DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html) 发出多个调用。每次执行完此操作，均会按照正在创建的集合的性能层，向你的订阅收取使用 1 小时的费用。
 
@@ -93,7 +93,7 @@
 [在字符串路径上创建范围索引](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L349-L425) | [DocumentClient.queryDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#queryDocument)
 [使用默认 indexPolicy 创建集合，然后联机进行更新](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L519-L614) | [DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection)<br>[DocumentClient.replaceCollection#replaceCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html)
 
-有关索引的详细信息，请参阅 [DocumentDB 索引策略](/documentation/articles/documentdb-indexing-policies)。
+有关索引的详细信息，请参阅 [DocumentDB 索引策略](/documentation/articles/documentdb-indexing-policies/)。
 
 ## 服务器端编程示例
 
@@ -104,7 +104,7 @@
 [创建存储过程](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.ServerSideScripts/app.js#L44-L71) | [DocumentClient.createStoredProcedure](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createStoredProcedure)
 [执行存储过程](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.ServerSideScripts/app.js#L73-L90) | [DocumentClient.executeStoredProcedure](http://azure.github.io/azure-documentdb-node/DocumentClient.html#executeStoredProcedure)
 
-有关服务器端编程的详细信息，请参阅 [DocumentDB 服务器端编程：存储过程、数据库触发器和 UDF](/documentation/articles/documentdb-programming)。
+有关服务器端编程的详细信息，请参阅 [DocumentDB 服务器端编程：存储过程、数据库触发器和 UDF](/documentation/articles/documentdb-programming/)。
 
 ## 分区示例
 
@@ -114,7 +114,6 @@
 --- | ---
 [使用 HashPartitionResolver](https://github.com/Azure/azure-documentdb-node/blob/ce0fc3c4e70b0279091a1e03620a668d93a14fc2/samples/Partitioning/app.js#L53-L103) | [HashPartitionResolver](http://documentdb.com)
 
-有关在 DocumentDB 中对数据进行分区的详细信息，请参阅[在 DocumentDB 中对数据进行分区和缩放](/documentation/articles/documentdb-partition-data)。
+有关在 DocumentDB 中对数据进行分区的详细信息，请参阅[对 DocumentDB 中的数据进行分区和扩展](/documentation/articles/documentdb-partition-data/)。
 
-
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=Mooncake_0919_2016-->

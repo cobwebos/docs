@@ -9,7 +9,7 @@
 
 <tags
    ms.service="sql-database"
-   ms.date="05/05/2016"
+   ms.date="08/09/2016"
    wacn.date=""/>
 
 # Azure SQL 数据库 Query Performance Insight
@@ -24,7 +24,7 @@
 ## 先决条件
 
 - Query Performance Insight 仅适用于 Azure SQL 数据库 V12。
-- Query Performance Insight 要求在数据库中运行[查询存储](https://msdn.microsoft.com/zh-cn/library/dn817826.aspx)。如果尚未运行查询存储，门户将提示你打开查询存储。
+- Query Performance Insight 要求在数据库中运行[查询存储](https://msdn.microsoft.com/zh-cn/library/dn817826.aspx)。如果未运行查询存储，该门户会提示将其打开。
 
  
 ## 权限
@@ -41,13 +41,13 @@
 Query Performance Insight 很容易使用：
 
 - 查看排名靠前的资源消耗查询列表。
-- 选择单个查询以查看其详细信息。
-- 打开[SQL 数据库顾问](/documentation/articles/sql-database-index-advisor/)并检查是否有任何建议。
+- 要查看其详细信息，请选择单个查询。
+- 打开[SQL 数据库顾问](/documentation/articles/sql-database-advisor/)并检查是否有任何建议。
 - 放大查看详细信息。
 
     ![性能仪表板](./media/sql-database-query-performance/performance.png)
 
-> [AZURE.NOTE] SQL 数据库的查询存储区需要捕获几个小时的数据，才能提供查询性能洞察数据。如果在某段时间内数据库没有任何活动，或查询存储不处于活动状态，则在显示该期间时图表是空的。如果查询存储未运行，你随时可以启用它。
+> [AZURE.NOTE] SQL 数据库的查询存储区需要捕获几个小时的数据，才能提供查询性能洞察数据。如果在某段时间内数据库没有任何活动，或查询存储不处于活动状态，则显示该期间时图表为空。如果查询存储未运行，可随时启用它。
 
 
 
@@ -55,13 +55,13 @@ Query Performance Insight 很容易使用：
 
 在[门户](http://portal.azure.cn)中执行以下操作：
 
-1. 浏览到 SQL 数据库并单击“所有设置”>“性能”>“查询”。
+1. 浏览到 SQL 数据库并单击“设置”>“性能”>“查询”。
 
     ![Query Performance Insight][1]
 
     排位靠前的查询视图随即打开并列出 CPU 消耗量靠前的查询。
 
-1. 单击图表周围以获取详细信息。<br>最前面一行显示数据库的整体 DTU 百分比，条形显示所选查询在所选时间间隔内消耗的 CPU 百分比（例如，如果选择了“过去一周”，则每个条代表 1 天）。
+1. 单击图表周围了解详细信息。<br>最上一行显示数据库的总体 DTU 百分比。条形图显示所选间隔期间选定查询所使用的 CPU 百分比（例如，如果选择“过去一周”，每个条表示一天）。
 
     ![排名靠前的查询][2]
 
@@ -106,7 +106,7 @@ Query Performance Insight 很容易使用：
 - “此数据库的查询存储处于只读模式，不能收集性能见解数据。”
 - “查询存储参数没有针对 Query Performance Insight 进行优化设置。”
 
-当查询存储无法收集新数据时，通常会显示这些消息。若要解决此问题，你可以采用多种选择：
+当查询存储无法收集新数据时，通常会显示这些消息。要解决这些问题，有两种选择：
 
 -	更改查询存储的保留和捕获策略
 -	增加查询存储的大小
@@ -117,12 +117,12 @@ Query Performance Insight 很容易使用：
 有两种类型的保留策略：
 
 - 基于大小的保留策略 – 如果设置为“自动”，则会在快要达到最大大小时自动清除数据。
-- 基于时间的保留策略 - 默认设置为 30 天。也就是说，如果空间不足，存储查询会删除 30 天以前的查询信息。
+- 基于时间的保留策略 - 如果查询存储用完了空间，则会删除早于 30 天默认设置的查询信息。
 
 可以将捕获策略设置为：
 
-- **所有** - 捕获所有查询。这是默认选项。
-- **自动** - 将忽略不频繁的查询以及编译和执行持续时间很短的查询。执行计数、编译和运行时持续时间的阈值由内部决定。
+- **所有** - 捕获所有查询。**所有**是默认选项。
+- **自动** - 忽略不频繁的查询以及编译和执行持续时间很短的查询。执行计数、编译和运行时持续时间的阈值由内部决定。
 - **无** - 查询存储停止捕获新的查询。
 	
 建议将所有策略设置为“自动”，将清除策略设置为“30 天”：
@@ -136,12 +136,12 @@ Query Performance Insight 很容易使用：
     ALTER DATABASE [YourDB] 
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
 
-增加查询存储的大小。为此，可在连接到数据库以后发出以下查询：
+通过连接到数据库并发出以下查询，增加查询存储的大小：
 
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 
-清除查询存储。请注意，这样会删除当前位于查询存储中的所有信息：
+清除查询存储。删除查询存储中的所有当前信息：
 
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 
@@ -155,7 +155,7 @@ Query Performance Insight 可帮助你了解查询工作负荷的影响，以及
 
 ## 后续步骤
 
-有关改善 SQL 数据库性能的其他建议，请单击“Query Performance Insight”边栏选项卡上的“[SQL 数据库顾问](/docmentation/articles/sql-database-index-advisor/)”。
+有关改善 SQL 数据库性能的其他建议，请单击“Query Performance Insight”边栏选项卡上的[数据库顾问](/documentation/articles/sql-database-advisor/)。
 
 ![Performance Advisor](./media/sql-database-query-performance/ia.png)
 
@@ -165,7 +165,4 @@ Query Performance Insight 可帮助你了解查询工作负荷的影响，以及
 [2]: ./media/sql-database-query-performance/top-queries.png
 [3]: ./media/sql-database-query-performance/query-details.png
 
-
-
-
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=Mooncake_0919_2016-->

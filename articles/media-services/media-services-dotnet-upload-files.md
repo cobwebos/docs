@@ -4,19 +4,19 @@
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016" 
+ 	ms.date="07/18/2016" 
 	wacn.date=""/>
 
 
 
 #使用 .NET 将文件上载到媒体服务帐户
 
-[AZURE.INCLUDE [media-services-selector-upload-files](../includes/media-services-selector-upload-files.md)]
+[AZURE.INCLUDE [media-services-selector-upload-files](../../includes/media-services-selector-upload-files.md)]
 
 在媒体服务中，可以将数字文件上载（引入）到资产中。**资产**实体可以包含视频、音频、图像、缩略图集合、图文轨迹和隐藏字幕文件（以及有关这些文件的元数据。） 上载文件完成后，相关内容即安全地存储在云中供后续处理和流式处理。
 
@@ -24,20 +24,20 @@
 
 在创建资产时，可以指定以下加密选项。
 
-- **无** - 不使用加密。这是默认值。请注意，使用此选项时，你的内容在传送过程中或静态存储过程中都不会受到保护。如果计划使用渐进式下载交付 MP4，则使用此选项。 
+- **无** - 不使用加密。这是默认值。请注意，使用此选项时，你的内容在传送过程中或静态存储过程中都不会受到保护。如果计划使用渐进式下载交付 MP4，则使用此选项。
 - **CommonEncryption** - 上载经过常用加密或 PlayReady DRM 加密并受其保护的内容（例如，受 PlayReady DRM 保护的平滑流）时使用此选项。
 - **EnvelopeEncrypted** – 如果要上载使用 AES 加密的 HLS，请使用此选项。请注意，Transform Manager 必须已对文件进行编码和加密。
 - **StorageEncrypted** - 使用 AES-256 位加密在本地加密明文内容，然后将其上载到 Azure Storage 中以加密形式静态存储相关内容。受存储加密保护的资产将在编码前自动解密并放入经过加密的文件系统中，并可选择在重新上载为新的输出资产前重新加密。存储加密的主要用例是在磁盘上通过静态增强加密来保护高品质的输入媒体文件。
 
 	媒体服务为资产提供磁盘上的存储加密，而不是通过数字权限管理器 (DRM) 等线路提供加密。
 
-	如果你的资产已经过存储加密，则必须配置资产传送策略。有关详细信息，请参阅[配置资产传送策略](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy)。
+	如果你的资产已经过存储加密，则必须配置资产传送策略。有关详细信息，请参阅[配置资产传送策略](/documentation/articles/media-services-dotnet-configure-asset-delivery-policy/)。
 
-如果指定使用 **CommonEncrypted** 选项或 **EnvelopeEncypted** 选项加密资产，则需要将资产关联到 **ContentKey**。有关详细信息，请参阅[如何创建 ContentKey](/documentation/articles/media-services-dotnet-create-contentkey)。
+如果指定使用 **CommonEncrypted** 选项或 **EnvelopeEncypted** 选项加密资产，则需要将资产关联到 **ContentKey**。有关详细信息，请参阅[如何创建 ContentKey](/documentation/articles/media-services-dotnet-create-contentkey/)。
 
 如果指定使用 **StorageEncrypted** 选项加密资产，适用于 .NET 的媒体服务 SDK 将为资产创建 **StorateEncrypted** **ContentKey**。
 
->[AZURE.NOTE]构建流内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.chinacloudapi.cn/{GUID}/{IAssetFile.Name}/streamingParameters.）。出于这个原因，不允许使用百分号编码。**Name** 属性的值不能含有任何以下保留的[百分号编码字符](http://zh.wikipedia.org/wiki/百分号编码#.E4.BF.9D.E7.95.99.E5.AD.97.E7.AC.A6.E7.9A.84.E7.99.BE.E5.88.86.E5.8F.B7.E7.BC.96.E7.A0.81)：!*'();:@&=+$,/?%#[]"。此外，文件扩展名中只能含有一个“.”。
+>[AZURE.NOTE]构建流内容的 URL 时，媒体服务会使用 IAssetFile.Name 属性的值（如 http://{AMSAccount}.origin.mediaservices.chinacloudapi.cn/{GUID}/{IAssetFile.Name}/streamingParameters.）。出于这个原因，不允许使用百分号编码。**Name** 属性的值不能含有任何以下保留的[百分号编码字符](http://zh.wikipedia.org/wiki/百分号编码#.E4.BF.9D.E7.95.99.E5.AD.97.E7.AC.A6.E7.9A.84.E7.99.BE.E5.88.86.E5.8F.B7.E7.BC.96.E7.A0.81)：!*'();:@&=+$,/?%#"。此外，文件扩展名中只能含有一个“.”。
 
 本主题说明如何使用媒体服务.NET SDK 以及媒体服务.NET SDK 扩展将文件上载到媒体服务资产中。
 
@@ -50,7 +50,7 @@
 - 创建要与资产关联的 AssetFile 实例。
 - 创建用于定义权限以及资产访问持续时间的 AccessPolicy 实例。
 - 创建用于提供资产访问权限的 Locator 实例。
-- 将单个媒体文件上载到媒体服务。 
+- 将单个媒体文件上载到媒体服务。
 
 		
 		static public IAsset CreateAssetAndUploadSingleFile(AssetCreationOptions assetCreationOptions, string singleFilePath)
@@ -188,8 +188,7 @@
 	IAsset destAsset1 = _context.Assets.Create(name + "_asset_1", AssetCreationOptions.None);
 	IAsset destAsset2 = _context.Assets.Create(name + "_asset_2", AssetCreationOptions.None);
 
-一个 IngestManifestAsset 将一个资产与一个用于批量引入的批量 IngestManifest 相关联。它还关联构成每个资产的 AssetFiles。
-若要创建 IngestManifestAsset，请使用服务器上下文中的 Create 方法。
+一个 IngestManifestAsset 将一个资产与一个用于批量引入的批量 IngestManifest 相关联。它还关联构成每个资产的 AssetFiles。若要创建 IngestManifestAsset，请使用服务器上下文中的 Create 方法。
 
 以下示例演示如何添加两个新的 IngestManifestAssets，这两项将以前创建的两个资产关联到批量引入清单。每个 IngestManifestAsset 还关联一组将在批量引入期间为每个资产上载的文件。
 
@@ -225,7 +224,7 @@
 	    copytask.Start();
 	}
 
-以下代码示例中显示了用于上载本主题中使用的示例资源文件的代码。
+以下代码示例展示了用于上传本主题中使用的示例资产文件的代码。
 	
 	UploadBlobFile(manifest.BlobStorageUriForUpload, filename1);
 	UploadBlobFile(manifest.BlobStorageUriForUpload, filename2);
@@ -301,7 +300,7 @@
 ##后续步骤
 将资产上载到媒体服务后，请转到[如何获取媒体处理器][]主题。
 
-[如何获取媒体处理器]: /documentation/articles/media-services-get-media-processor
+[如何获取媒体处理器]: /documentation/articles/media-services-get-media-processor/
  
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0919_2016-->

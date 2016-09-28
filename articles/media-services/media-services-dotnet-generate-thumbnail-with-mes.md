@@ -1,23 +1,23 @@
 <properties 
 	pageTitle="如何使用媒体编码器标准通过 .NET 来生成缩略图" 
-	description="本主题说明如何使用媒体服务标准，通过 .NET 同时为资产编码并生成缩略图。" 
+	description="本主题介绍如何使用 .NET 通过媒体编码器标准同时对资产进行编码和生成缩略图。" 
 	services="media-services" 
 	documentationCenter="" 
 	authors="juliako" 
-	manager="dwrede" 
+	manager="erikre" 
 	editor=""/>
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016"
+ 	ms.date="07/18/2016"
 	wacn.date=""/>
 
 
 #如何使用媒体编码器标准通过 .NET 来生成缩略图
 
-本主题说明如何使用媒体服务 .NET SDK 来为资产编码，并使用媒体编码器标准生成缩略图。本主题将定义 XML 和 JSON 缩略图预设，用于创建同时执行编码和生成缩略图的任务。[此文档](https://msdn.microsoft.com/zh-cn/library/mt269962.aspx)包含这些预设所用的元素的说明。
+本主题介绍如何使用媒体服务 .NET SDK 通过媒体编码器标准来对资产进行编码和生成缩略图。本主题定义了 XML 和 JSON 缩略图预设，可用于创建同时执行编码和生成缩略图的任务。[此文档](https://msdn.microsoft.com/zh-cn/library/mt269962.aspx)包含这些预设所用的元素的说明。
 
-请务必仔细阅读[注意事项](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes#considerations)部分。
+请务必仔细阅读[注意事项](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes/#considerations)部分。
 
 ##示例
 
@@ -25,11 +25,11 @@
 
 - 创建编码作业。
 - 获取对媒体编码器标准版编码器的引用。
-- 加载预设 [XML](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes#xml) 或 [JSON](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes#json)，其中包含生成缩略图所需的编码预设和信息。可以在一个文件中保存此 [XML](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes#xml) 或 [JSON](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes#json)，并使用以下代码来加载该文件。
+- 加载预设 [XML](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes/#xml) 或 [JSON](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes/#json)，其中包含生成缩略图所需的编码预设和信息。可以在一个文件中保存此 [XML](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes/#xml) 或 [JSON](/documentation/articles/media-services-dotnet-generate-thumbnail-with-mes/#json)，并使用以下代码来加载该文件。
 
 			// Load the XML (or JSON) from the local file.
 		    string configuration = File.ReadAllText(fileName);  
-- 将一个编码任务添加到该作业。 
+- 将一个编码任务添加到该作业。
 - 指定要编码的输入资产。
 - 创建将包含所编码资产的输出资产。
 - 添加事件处理程序以检查作业进度。
@@ -368,5 +368,6 @@
 
 ##另请参阅 
 
-[媒体服务编码概述](/documentation/articles/media-services-encode-asset)
-<!---HONumber=Mooncake_0613_2016-->
+[媒体服务编码概述](/documentation/articles/media-services-encode-asset/)
+
+<!---HONumber=Mooncake_0919_2016-->

@@ -5,11 +5,13 @@
 	documentationCenter=""
 	authors="rothja"
 	manager="jeffreyg"
-	editor="monicar"/>
+	editor=""
+	tags="billing"
+	/>
 
 <tags
 	ms.service="multiple"
-	ms.date="06/08/2016"
+	ms.date="08/03/2016"
 	wacn.date=""/>
 
 # Azure 订阅和服务限制、配额和约束
@@ -22,13 +24,13 @@
 
 ## 限制和 Azure 资源管理器
 
-现在可以将多个 Azure 资源合并到单个 Azure 资源组中。在使用资源组时，以前针对全局的限制会通过 Azure 资源管理器在区域级别进行管理。有关 Azure 资源组的详细信息，请参阅[使用资源组管理 Azure 资源](/documentation/articles/resource-group-portal)。
+现在可以将多个 Azure 资源合并到单个 Azure 资源组中。在使用资源组时，以前针对全局的限制会通过 Azure 资源管理器在区域级别进行管理。有关 Azure 资源组的详细信息，请参阅 [Azure Resource Manager 概述](/documentation/articles/resource-group-overview/)。
 
-在下面的限制中，添加了一个新表以反映在使用 Azure 资源管理器时限制中的任何差异。例如，会存在一个**订阅限制**表和一个**订阅数限制 - Azure 资源管理器**表。如果某个限制同时适用于这两种方案，它将仅显示在第一个表中。除非另有说明，否则限制是跨所有区域的全局限制。
+在下面的限制中，添加了一个新表以反映在使用 Azure 资源管理器时限制中的任何差异。例如，会存在一个**订阅限制**表和一个**订阅数限制 - Azure Resource Manager** 表。如果某个限制同时适用于这两种方案，它将仅显示在第一个表中。除非另有说明，否则限制是跨所有区域的全局限制。
 
-> [AZURE.NOTE] 请务必强调 Azure 资源组中的资源配额是您的订阅可以访问的每个区域，而不像服务管理配额那样是可以访问的每个订阅。我们来使用核心配额作为示例。如果您需要根据对核心的支持请求增加配额，则需要决定您想要在哪个区域中使用多少核心，然后针对您希望的 Azure 资源组核心配额的数量和区域进行特定请求。因此，如果您需要在西欧使用 30 个核心以在那里运行您的应用程序，则应专门在西欧请求 30 个核心。但这不会增加您在任何其他区域的核心配额 -- 仅西欧会有 30 个核心配额。
+> [AZURE.NOTE] 请务必强调 Azure 资源组中的资源配额是用户的订阅可以访问的每个区域，而不像服务管理配额那样是可以访问的每个订阅。我们来使用核心配额作为示例。如果您需要根据对核心的支持请求增加配额，则需要决定您想要在哪个区域中使用多少核心，然后针对您希望的 Azure 资源组核心配额的数量和区域进行特定请求。因此，如果您需要在西欧使用 30 个核心以在那里运行您的应用程序，则应专门在西欧请求 30 个核心。但这不会增加您在任何其他区域的核心配额 -- 仅西欧会有 30 个核心配额。
 <!-- -->
-因此，你可能会发现考虑决定你在任何一个区域中的工作负荷所需的 Azure 资源组配额数量，以及请求你考虑在其中进行部署的每个区域的数量很有用。请参阅[部署问题疑难解答](/documentation/articles/resource-manager-common-deployment-errors)，了解有关发现你特定区域的当前配额的更多帮助。
+因此，你可能会发现考虑决定你在任何一个区域中的工作负荷所需的 Azure 资源组配额数量，以及请求你考虑在其中进行部署的每个区域的数量很有用。请参阅[部署问题疑难解答](/documentation/articles/resource-manager-common-deployment-errors/)，了解有关发现你特定区域的当前配额的更多帮助。
 
 
 ## 服务特定的限制
@@ -38,7 +40,7 @@
 - [App Service](#app-service-limits)
 - [Application Insights](#application-insights-limits)
 - [自动化](#automation-limits)
-- [Azure Redis Cache](#azure-redis-cache-limits)
+- [Azure Redis 缓存](#azure-redis-cache-limits)
 - [Azure RemoteApp](#azure-remoteapp-limits)
 - [备份](#backup-limits)
 - [批处理](#batch-limits)
@@ -120,7 +122,7 @@
 
 ### 存储限制
 
-有关存储帐户限制的详细信息，请参阅 [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets)。
+有关存储帐户限制的详细信息，请参阅 [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage-scalability-targets/)。
 
 #### 存储服务限制
 
@@ -130,7 +132,7 @@
 
 [AZURE.INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-有关其他详细信息，请参阅[虚拟机大小](/documentation/articles/virtual-machines-linux-sizes)。
+有关其他详细信息，请参阅[虚拟机大小](/documentation/articles/virtual-machines-linux-sizes/)。
 
 **标准存储帐户**
 
@@ -184,9 +186,9 @@
 
 定价层决定了搜索服务的容量和限制。层包括：
 
-- 免费层是多租户服务，与其他 Azure 订户共享，仅用于评估和小型开发项目。
-- 基本层为规模较小的生产工作负荷提供专用的计算资源，并为高可用查询工作负荷提供最多 3 个副本。
-- 标准层（S1、S2、S3、S3 高密度）适用于较大型生产工作负荷。标准层内有多个级别，以便你针对特定方案选择资源配置。
+- *免费层* 是多租户服务，与其他 Azure 订户共享，仅用于评估和小型开发项目。
+- *基本层* 为规模较小的生产工作负荷提供专用的计算资源，并为高可用查询工作负荷提供最多 3 个副本。
+- *标准层（S1、S2、S3、S3 高密度）* 适用于较大型生产工作负荷。标准层内有多个级别，以便你针对特定方案选择资源配置。
 
 **订阅限制**
 
@@ -234,11 +236,7 @@
 [AZURE.INCLUDE [azure-data-lake-analytics-limits](../includes/azure-data-lake-analytics-limits.md)]
 
 ### 流分析限制
-
-| 限制标识符 | 限制 | 注释 |
-|----------------- | ------------|--------- |
-| 每个区域每个订阅的最大流式处理单位数 | 50 | 增加订阅的流式处理单位数超过 50 的请求可通过联系 [Microsoft 支持](https://support.microsoft.com/zh-cn)发出。 |
-| 流式处理单位的最大吞吐量 | 1MB/秒* | 每个 SU 的最大吞吐量取决于方案。实际的吞吐量可能较低，具体取决于查询复杂性和分区。可在[扩展 Azure 流分析作业以增加吞吐量](../articles/stream-analytics/stream-analytics-scale-jobs.md)一文中找到更多详细信息。 |
+[AZURE.INCLUDE [stream-analytics-limits-table](../includes/stream-analytics-limits-table.md)]
 
 ### Active Directory 限制
 
@@ -290,7 +288,7 @@
 
 ### SQL 数据库限制
 
-有关 Azure SQL 数据库限制，请参阅 [SQL 数据库资源限制](/documentation/articles/sql-database-resource-limits)。
+有关 Azure SQL 数据库限制，请参阅 [SQL 数据库资源限制](/documentation/articles/sql-database-resource-limits/)。
 
 ## 另请参阅
 
@@ -298,6 +296,6 @@
 
 [Azure 的虚拟机和云服务大小](/documentation/articles/virtual-machines/virtual-machines-size-specs)
 
-[云服务的大小](/documentation/articles/cloud-services-sizes-specs)
+[云服务的大小](/documentation/articles/cloud-services-sizes-specs/)
 
-<!---HONumber=Mooncake_0627_2016-->
+<!---HONumber=Mooncake_0919_2016-->

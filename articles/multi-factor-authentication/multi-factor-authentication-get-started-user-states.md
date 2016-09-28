@@ -9,8 +9,9 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="05/12/2016" 
-	wacn.date=""/>
+	ms.date="08/04/2016" 
+	wacn.date=""/>  
+
 
 # Azure Multi-Factor Authentication 中的用户状态
 
@@ -45,8 +46,7 @@ Enabled |用户已加入 Multi-Factor Authentication。|否。它们继续工作
 4.  在顶部单击“用户”。
 5.  在页面底部，单击“管理 Multi-Factor Auth”。
 ![单击目录](./media/multi-factor-authentication-get-started-cloud/manage1.png)
-6.  此时将打开一个新的浏览器选项卡。找到要为其启用 Multi-Factor Authentication 的用户。你可能需要在顶部切换视图。确保状态为“已禁用”。
-![启用用户](./media/multi-factor-authentication-get-started-cloud/enable1.png)
+6.  此时将打开一个新的浏览器选项卡。找到要为其启用 Multi-Factor Authentication 的用户。你可能需要在顶部切换视图。确保状态为“已禁用”。![启用用户](./media/multi-factor-authentication-get-started-cloud/enable1.png)
 7.  **勾选**其名称旁边的框。
 7.  在右侧，单击“启用”。
 ![启用用户](./media/multi-factor-authentication-get-started-cloud/user1.png)
@@ -73,4 +73,4 @@ Enabled |用户已加入 Multi-Factor Authentication。|否。它们继续工作
 9.  然后，你应会看到该操作已成功。单击“关闭”。
 ![禁用用户](./media/multi-factor-authentication-get-started-user-states/userstate4.png)
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0919_2016-->

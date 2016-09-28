@@ -4,13 +4,14 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="swadhwa" 
+	manager="stevenpo" 
 	editor="curtand"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="07/14/2015" 
-	wacn.date=""/>
+	ms.date="08/04/2016" 
+	wacn.date=""/>  
+
 
 # Windows 身份验证和 Azure Multi-Factor Authentication 服务器
 
@@ -18,7 +19,7 @@
 
 -  只有在重新启动后，用于终端服务的 Azure Multi-Factor Authentication 才会生效。
 -  如果选中了“需要 Azure Multi-Factor Authentication 用户匹配”，而你未在用户列表中，则在重新启动后你将无法登录到计算机。
--  受信任 IP 依赖于应用程序是否可以为客户端 IP 提供身份验证。目前只支持终端服务。  
+-  受信任 IP 依赖于应用程序是否可以为客户端 IP 提供身份验证。目前只支持终端服务。
 
 
 
@@ -33,7 +34,8 @@
 
 ## 若要使用 Windows 身份验证保护应用程序，请使用以下过程。
 
-1. 在 Azure Multi-Factor Authentication 服务器中，单击“Windows 身份验证”图标。![Windows 身份验证](./media/multi-factor-authentication-get-started-server-windows/windowsauth.png)
+1. 在 Azure Multi-Factor Authentication 服务器中，单击“Windows 身份验证”图标。
+![Windows 身份验证](./media/multi-factor-authentication-get-started-server-windows/windowsauth.png)
 2. 选中“启用 Windows 身份验证”复选框。默认情况下，此框处于未选中状态。
 3. 使用“应用程序”选项卡，管理员可以为 Windows 身份验证配置一个或多个应用程序。
 4. 选择服务器或应用程序 - 指定是否启用服务器/应用程序。单击“确定”。
@@ -42,7 +44,7 @@
 7. 单击“添加...”按钮。
 8. 如果你想要跳过单个 IP 地址，请选择“单个 IP”。
 9. 如果你想要跳过整个 IP 范围，请选择“IP 范围”。示例：10.63.193.1-10.63.193.100。
-10. 如果你想要使用子网表示法指定 IP 范围，请选择“子网”。输入子网的起始 IP，然后从下拉列表中选取适当的子网掩码。 
+10. 如果你想要使用子网表示法指定 IP 范围，请选择“子网”。输入子网的起始 IP，然后从下拉列表中选取适当的子网掩码。
 11. 单击“确定”按钮。
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0919_2016-->

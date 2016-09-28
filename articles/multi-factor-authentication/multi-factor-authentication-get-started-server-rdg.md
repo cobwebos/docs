@@ -4,13 +4,14 @@
 	services="multi-factor-authentication" 
 	documentationCenter="" 
 	authors="billmath" 
-	manager="swadhwa" 
+	manager="femila" 
 	editor="curtand"/>
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="07/14/2015" 
-	wacn.date=""/>
+	ms.date="08/15/2016" 
+	wacn.date=""/>  
+
 
 # 使用 RADIUS 的远程桌面网关和 Azure Multi-Factor Authentication 服务器
 
@@ -51,8 +52,8 @@ RD 网关使用 NPS 将 RADIUS 请求发送到 Azure Multi-Factor Authentication
 1. 打开 Azure Multi-Factor Authentication 服务器，并单击“RADIUS 身份验证”图标。选中“启用 RADIUS 身份验证”复选框。
 2. 在“客户端”选项卡上，确保端口与 NPS 中配置的内容匹配，然后单击“添加...”按钮。添加 RD 网关服务器 IP 地址、应用程序名称（可选）和共享机密。Azure Multi-Factor Authentication 服务器和 RD 网关上的共享机密将需要相同。
 3. 单击“目标”选项卡，然后选择“RADIUS 服务器”单选按钮。
-4. 单击“添加...”按钮。输入 NPS 服务器的 IP 地址、共享机密和端口。除非使用中央 NPS，否则 RADIUS 客户端和 RADIUS 目标将是相同的。共享机密必须与 NPS 服务器的“RADIUS 客户端”部分中设置的共享机密相匹配。 
+4. 单击“添加...”按钮。输入 NPS 服务器的 IP 地址、共享机密和端口。除非使用中央 NPS，否则 RADIUS 客户端和 RADIUS 目标将是相同的。共享机密必须与 NPS 服务器的“RADIUS 客户端”部分中设置的共享机密相匹配。
 
 ![Radius 身份验证](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
-<!---HONumber=69-->
+<!---HONumber=Mooncake_0919_2016-->

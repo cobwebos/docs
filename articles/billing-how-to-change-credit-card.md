@@ -1,22 +1,18 @@
 <properties
 	pageTitle="如何更改用于支付 Azure 订阅的信用卡 | Microsoft Azure"
 	description="介绍如何更改用于支付 Azure 订阅的信用卡"
-	services="billing"
+	services=""
 	documentationCenter=""
 	authors="genlin"
-	manager="jarrettr"
-	editor="meerak"
+	manager="mbaldwin"
+	editor=""
 	tags="billing"
 	/>
 
 <tags
 	ms.service="billing"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/05/2016"
-	ms.author="genli"/>
+	ms.date="08/11/2016"
+	wacn.date=""/>
 
 # 如何更改用于支付 Azure 订阅的信用卡
 
@@ -25,6 +21,8 @@
 如果你更换了信用卡，但号码保持不变，则只需更新现有信用卡的详细信息即可，例如失效日期。
 
 如果信用卡号码由于丢失、失窃或失效而更改，则必须将新信用卡添加到帐户。这是因为信用卡号码更改时，卡片上的 CVV 安全代码也会更改。
+
+[AZURE.INCLUDE [support-disclaimer](../includes/support-disclaimer.md)]
 
 ## 编辑现有信用卡的付款信息
 1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。在 [Azure 门户](https://portal.azure.com)中，可以通过选择“订阅”> 订阅名称 >“管理”来访问帐户中心。
@@ -45,10 +43,12 @@
 5. 选择信用卡类型，并提供全部所需的信息。
 6. 选择“下一步”返回“选择付款方式”页。如果添加的信用卡有效，它将添加到可用付款方式列表。可以通过选择信用卡旁边的下拉箭头来查看所有可用的信用卡。
 
-## 更改用于支付 Azure 发票的信用卡
+## 更改用于支付 Azure 帐单的信用卡
 1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/Subscriptions)。
 2. 在“单击订阅以查看详细信息和使用情况”下面，选择要更新付款方式的订阅。
 3. 在页面右侧，选择“更改付款方式”。
-4. 在“选择付款方式”页上，依次选择信用卡旁边的下拉箭头、要使用的信用卡，然后选择 ![checkbutton](./media/billing-how-to-change-credit-card/checkbutton.png) 以关闭窗口。
+4. 在“选择付款方式”页上，依次选择信用卡旁边的下拉箭头、要使用的信用卡，然后选择 ![checkbutton](./media/billing-how-to-change-credit-card/checkbutton.png) 关闭窗口。
 
-<!---HONumber=Mooncake_0801_2016-->
+> [AZURE.NOTE] 若要删除不再将其用作 Azure 付款方式的信用卡，必须提供支持票证来请求协助。若要创建支持票证来删除信用卡，请参阅[如何创建针对 Azure 计费和订阅问题的支持票证](/documentation/articles/billing-how-to-create-billing-support-ticket)。
+
+<!---HONumber=Mooncake_0919_2016-->

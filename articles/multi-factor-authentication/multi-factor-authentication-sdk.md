@@ -9,10 +9,12 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="05/12/2016" 
+	ms.date="08/04/2016" 
 	wacn.date=""/>
 
 # 将 Multi-Factor Authentication 构建到自定义应用程序中 (SDK)
+
+> [AZURE.IMPORTANT]  即使你具有 Azure MFA、AAD 高级版或 EMS 许可证，如果想要下载 SDK，仍需要创建 Azure Multi-Factor Auth 提供程序。如果你创建 Azure Multi-Factor Auth 提供程序来实现此目的且已拥有许可证，则需要使用“每个启用的用户”模型来创建提供程序，并将该提供程序链接到包含 Azure MFA、Azure AD 高级版或 EMS 许可证的目录。这将确保你不被计费，除非正在使用 SDK 的唯一用户数大于你所拥有的许可证数。
 
 使用 Azure Multi-Factor Authentication 软件开发工具包 (SDK)，你可将电话呼叫和短信验证直接内置于 Azure AD 租户的应用程序的登录或事务处理流程中。
 
@@ -29,7 +31,7 @@ Multi-Factor Authentication SDK 的 API 结构相当简单。你可使用 Multi-
 
 ## 下载 Azure Multi-Factor Authentication SDK 
 
-可以使用两种不同的方法下载 Azure Multi-Factor Authentication SDK。两种方法都是通过 Azure 门户进行的。第一种方法是直接管理 Multi-Factor Auth 提供程序。第二种方法是通过服务设置。第二个选项需要 Multi-Factor Auth 提供程序或 Azure MFA、Azure AD Premium 或 Enterprise Mobility Suite 许可证。
+下载 Azure Multi-Factor SDK 需要 [Azure Multi-Factor Auth 提供程序](/documentation/articles/multi-factor-authentication-get-started-auth-provider/)。即使拥有 Azure MFA、Azure AD Premium 或企业移动性套件许可证，这还需要一个完整的 Azure 订阅。要下载 SDK，必须通过直接管理 Multi-Factor Auth 提供程序，或单击 MFA 服务设置页上的“转到门户”链接导航到多重管理门户。
 
 
 ### 从 Azure 门户下载 Azure Multi-Factor Authentication SDK
@@ -53,8 +55,8 @@ Multi-Factor Authentication SDK 的 API 结构相当简单。你可使用 Multi-
 2. 在左侧选择“Active Directory”。
 3. 双击 Azure AD 的实例。
 4. 在顶部单击“配置”
-5. 在“Multi-Factor Authentication”下选择“管理服务设置” ![下载](./media/multi-factor-authentication-sdk/download2.png)
-6. 在“服务设置”页上的屏幕底部单击“转到门户”。![下载](./media/multi-factor-authentication-sdk/download3a.png)
+5. 在“Multi-Factor Authentication”下选择“管理服务设置”  ![下载](./media/multi-factor-authentication-sdk/download2.png)
+6. 在“服务设置”页上的屏幕底部单击“转到门户”。 ![下载](./media/multi-factor-authentication-sdk/download3a.png)
 7. 此时将打开一个新页面。在左下方单击“SDK”。
 8. 选择所需的语言，然后单击一个关联的下载链接。
 9. 保存下载的内容。
@@ -187,5 +189,4 @@ Multi-Factor Authentication SDK 的 API 结构相当简单。你可使用 Multi-
 	    }
 	}
 
-
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0919_2016-->

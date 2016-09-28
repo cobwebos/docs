@@ -9,8 +9,9 @@
 
 <tags 
 	ms.service="multi-factor-authentication" 
-	ms.date="05/12/2016" 
-	wacn.date=""/>
+	ms.date="08/04/2016" 
+	wacn.date=""/>  
+
 
 # Azure Multi-Factor Authentication 中的报告
 
@@ -18,7 +19,7 @@ Azure Multi-Factor Authentication 提供了几个报告供你和你的组织使�
 
 你可以通过 Azure 管理门户访问报告。
 
-Name| 说明
+名称| 说明
 :------------- | :------------- | 
 使用情况 | 使用情况报告显示有关总体使用情况的信息、用户摘要和用户详细信息。
 服务器状态|此报告显示与帐户关联的 Multi-Factor Authentication 服务器的状态。
@@ -36,14 +37,13 @@ Name| 说明
 	- **选项 2**：选择你的目录，然后单击“配置”选项卡。在“Multi-Factor Authentication”部分下，单击“管理服务设置”。在“MFA 服务设置”页底部，单击“转到门户”链接。
 4.	Azure Multi-Factor Authentication 管理门户上的左侧导航栏中会显示“查看报告”部分。在这里，你可以选择上述报告。
 
-
- 
 <center>![Cloud](./media/multi-factor-authentication-manage-reports/report.png)</center>
 
 
 **其他资源**
 
-* [面向用户](/documentation/articles/multi-factor-authentication-end-user)
+* [面向用户](/documentation/articles/multi-factor-authentication-end-user/)
 * [MSDN 上的 Azure Multi-Factor Authentication](https://msdn.microsoft.com/zh-cn/library/azure/dn249471.aspx)
  
-<!---HONumber=Mooncake_0530_2016-->
+
+<!---HONumber=Mooncake_0919_2016-->

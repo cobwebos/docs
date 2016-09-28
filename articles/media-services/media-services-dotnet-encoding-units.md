@@ -3,13 +3,13 @@
 	description="了解如何使用 .NET 添加编码单元"  
 	services="media-services" 
 	documentationCenter="" 
-	authors="juliako,milangada,gtrifonov" 
-	manager="dwrede" 
+	authors="juliako" 
+	manager="erikre" 
 	editor=""/>
 
 <tags
 	ms.service="media-services"
- 	ms.date="04/18/2016"
+ 	ms.date="07/26/2016"
 	wacn.date=""/>
 
 
@@ -17,8 +17,8 @@
 
 
 > [AZURE.SELECTOR]
-- [门户](/documentation/articles/media-services-portal-encoding-units)
-- [.NET](/documentation/articles/media-services-dotnet-encoding-units)
+- [门户](/documentation/articles/media-services-portal-encoding-units/)
+- [.NET](/documentation/articles/media-services-dotnet-encoding-units/)
 - [REST](https://msdn.microsoft.com/zh-cn/library/azure/dn859236.aspx)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 - [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
@@ -52,22 +52,19 @@
 1. 单击[获取支持](https://manage.windowsazure.cn/?getsupport=true)。如果你尚未登录，系统将提示你输入凭据。
 
 1. 选择你的订阅。
- 
+
 1. 在支持类型下，选择“技术”。
- 
+
 1. 单击“创建票证”。
- 
+
 1. 在下一页显示的产品列表中选择“Azure 媒体服务”。
- 
+
 1. 选择适合你问题的“问题类型”。
- 
+
 1. 单击“继续”(Continue)。
- 
+
 1. 根据下一页上的说明进行操作，然后输入问题的详细信息。
- 
+
 1. 单击“提交”以创建该票证。
- 
 
-
-
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0919_2016-->

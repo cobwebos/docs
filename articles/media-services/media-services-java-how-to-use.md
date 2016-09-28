@@ -5,12 +5,11 @@
 	documentationCenter="java" 
 	authors="rmcmurray" 
 	manager="wpickett" 
-	editor="jimbe"/>  
-
+	editor="jimbe"/>
 
 <tags
 	ms.service="media-services"
-	ms.date="06/22/2016"   
+	ms.date="08/11/2016"   
 	wacn.date=""/>
 
 #如何将媒体服务与 Java 结合使用
@@ -180,8 +179,8 @@
 	        // Create a task with the specified Media Processor
 	        String outputAssetName = String.format("%s as %s", assetToEncode.getName(), encodingPreset);
 	        String taskXml = "<taskBody><inputAsset>JobInputAsset(0)</inputAsset>"
-	                + "<outputAsset assetCreationOptions=\"0\"" // AssetCreationOptions.None
-	                + " assetName=\"" + outputAssetName + "\">JobOutputAsset(0)</outputAsset></taskBody>";
+	                + "<outputAsset assetCreationOptions="0"" // AssetCreationOptions.None
+	                + " assetName="" + outputAssetName + "">JobOutputAsset(0)</outputAsset></taskBody>";
 	
 	        Task.CreateBatchOperation task = Task.create(mediaProcessor.getId(), taskXml)
 	                .setConfiguration(encodingPreset).setName("Encoding");
@@ -267,4 +266,4 @@
 
  
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0919_2016-->

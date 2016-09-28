@@ -5,12 +5,11 @@
 	documentationCenter=""
 	authors="Juliako"
 	manager="erikre"
-	editor=""/>  
-
+	editor=""/>
 
 <tags
 	ms.service="media-services"
-	ms.date="06/22/2016"
+	ms.date="07/27/2016"
 	wacn.date=""/>  
 
 
@@ -625,4 +624,4 @@
 		    }
 		}
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=Mooncake_0919_2016-->

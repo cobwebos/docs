@@ -4,19 +4,15 @@
 	services="billing"
 	documentationCenter=""
 	authors="genlin"
-	manager="jarrettr"
-	editor="meerak"
+	manager="mbaldwin"
+	editor=""
 	tags="billing"
 	/>
 
 <tags
 	ms.service="billing"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="03/08/2016"
-	ms.author="genli"/>
+	ms.date="07/25/2016"
+	wacn.date=""/>
 
 # 如何下载 Azure 帐单发票和每日使用数据
 
@@ -24,7 +20,8 @@
 
 1. 以帐户管理员身份登录到 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)。在 [Azure 门户](https://portal.azure.com)中，可以通过选择“订阅”> 订阅名称 >“管理”来访问帐户中心。
 
-	> [AZURE.NOTE] 只有帐户管理员有权访问帐户中心。有关帐户管理员的详细信息，请参阅 [How to add or change Azure administrator roles（如何添加或更改 Azure 管理员角色）](billing-add-change-azure-subscription-administrator.md)。
+	> [AZURE.NOTE] 只有帐户管理员有权访问帐户中心。有关如何找出谁是订阅的帐户管理员的详细信息，请参阅[常见问题](/documentation/articles/billing-subscription-transfer#faq)。
+	
 2. 选择需要下载其发票和使用信息的订阅。
 3. 选择“帐单历史记录”。</br>![billinghistory](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
 4. 可以查看过去六个计费周期以及当前未计费周期的对帐单。</br>![billingsum](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)</br>
@@ -32,4 +29,4 @@
 6. 选择“下载发票”来查看最后一份帐单的副本。</br>![DLInvoice](./media/billing-download-azure-invoice-daily-usage-date/DLInvoice1.png)
 7. 选择“下载使用信息”，以 CSV 文件形式下载每日使用数据。</br>![DLusage](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0919_2016-->

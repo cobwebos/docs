@@ -11,12 +11,8 @@
 
 <tags
 	ms.service="billing"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="03/31/2016"
-	ms.author="genli"/>
+	ms.date="08/11/2016"
+	wacn.date=""/>
 
 # 如何更改联系人电子邮件、地址和电话号码等 Azure 帐户的个人资料信息
 
@@ -33,7 +29,7 @@ Microsoft 使用帐户管理员个人资料中的电子邮件地址来通知与�
 
 ## 如何更改个人资料信息
 
-1.	以帐户管理员身份登录 [Azure 帐户中心](https://account.windowsazure.com/)，然后单击“个人资料”。或转到 https://account.windowsazure.com/Profile。
+1.	以帐户管理员身份登录 [Azure 帐户中心](https://account.windowsazure.cn/)，然后单击“个人资料”。或者转到 https://account.windowsazure.com/Profile。
 
 2.	选择“编辑详细信息”按钮，然后更新“个人资料”信息。
 
@@ -51,7 +47,7 @@ Microsoft 使用帐户管理员个人资料中的电子邮件地址来通知与�
 
 ### 更新个人资料地址也会更新信用卡帐单寄送地址吗？
 
-不会。你可以转到 Azure 帐户中心的[订阅页](https://account.windowsazure.com/subscriptions)更新与信用卡关联的帐单寄送地址。
+不会。可以转到 Azure 帐户中心的[订阅页](https://account.windowsazure.com/subscriptions)更新与信用卡关联的帐单寄送地址。
 
 ### 为什么不能更新国家/地区？
 
@@ -61,4 +57,4 @@ Microsoft 使用帐户管理员个人资料中的电子邮件地址来通知与�
 
 如果你注册新的 Azure 计费警报预览版功能，将通过指定的地址接收 Azure 计费警报电子邮件，无论是否更改过帐户管理员电子邮件地址。
 
-<!---HONumber=Mooncake_0606_2016-->
+<!---HONumber=Mooncake_0919_2016-->
