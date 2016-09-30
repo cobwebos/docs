@@ -80,4 +80,4 @@
 - 了解[弹性池](/documentation/articles/sql-database-elastic-pool/)的优点。
 - 了解如何[创建与后端 SQL 数据库连接的 Web 应用程序](/documentation/articles/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database/)。
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=Mooncake_0808_2016--->

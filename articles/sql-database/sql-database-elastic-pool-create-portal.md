@@ -114,4 +114,4 @@ SQL 数据库服务将评估使用量历史记录，并在比使用单一数据�
 - [使用 C# 管理 SQL 数据库弹性池](/documentation/article/sql-database-elastic-pool-manage-csharp/)
 - [Scaling out with Azure SQL Database（使用 Azure SQL 数据库进行扩展）](/documentation/article/sql-database-elastic-scale-introduction/)
 
-<!---HONumber=Mooncake_0912_2016-->
+<!---HONumber=Mooncake_0912_2016--->

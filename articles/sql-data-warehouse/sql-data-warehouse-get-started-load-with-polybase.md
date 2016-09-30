@@ -281,4 +281,4 @@ SQL 数据仓库不会自动创建或自动更新统计信息。因此，若要�
 [Create Database Scoped Credential (Transact-SQL)]: https://msdn.microsoft.com/zh-cn/library/mt270260.aspx
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/zh-cn/library/ms189450.aspx
 
-<!---HONumber=Mooncake_0801_2016-->
+<!---HONumber=Mooncake_0801_2016--->

@@ -91,4 +91,4 @@ Azure 虚拟网络 (VNet) 是你自己的网络在云中的表示形式。它是
 - 了解 [NSG](/documentation/articles/virtual-networks-nsg)。
 - 了解[用户定义的路由和 IP 转发](/documentation/articles/virtual-networks-udr-overview)。
 
-<!---HONumber=Mooncake_0418_2016-->
+<!---HONumber=Mooncake_0418_2016--->

@@ -315,4 +315,4 @@ namespace ConnectAndQuery_Example
 
 [50-VSCopyToOutputDirectoryProperty]: ./media/sql-database-connect-query/connqry-vs-appconfig-copytoputputdir-h.png
 
-<!---HONumber=Mooncake_0530_2016-->
+<!---HONumber=Mooncake_0530_2016--->

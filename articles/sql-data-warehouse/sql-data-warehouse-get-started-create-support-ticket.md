@@ -104,4 +104,4 @@
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL 数据仓库 MSDN 论坛]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=Mooncake_0822_2016--->
