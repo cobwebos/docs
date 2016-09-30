@@ -12,4 +12,4 @@
 <!-- URLs. -->
 [Azure 门户]: https://portal.azure.cn/
 
-<!---HONumber=Mooncake_0919_2016--->
+<!---HONumber=Mooncake_0919_2016---->
