@@ -114,4 +114,4 @@
 
 * 你也可以[使用 Powershell 创建 Windows VM](/documentation/articles/virtual-machines-windows-ps-create) 或[使用 Azure CLI 创建 Linux 虚拟机](/documentation/articles/virtual-machines-linux-quick-create-cli)。
 
-<!---HONumber=Mooncake_0613_2016-->
+<!---HONumber=Mooncake_0613_2016--->

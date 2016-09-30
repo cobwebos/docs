@@ -76,4 +76,4 @@ Stretch Database 面向包含大量冷数据的事务数据库，这些数据通
 [StretchOverviewImage2]: ./media/sql-server-stretch-database-overview/StretchDBOverview1.png
 [StretchOverviewImage3]: ./media/sql-server-stretch-database-overview/StretchDBOverview2.png
 
-<!---HONumber=Mooncake_0801_2016-->
+<!---HONumber=Mooncake_0801_2016--->

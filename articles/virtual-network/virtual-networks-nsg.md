@@ -239,4 +239,4 @@ NSG 包含两种类型的规则：入站规则和出站规则。在每组中，�
 [yellow]: ./media/virtual-network-nsg-overview/yellow.png
 [red]: ./media/virtual-network-nsg-overview/red.png
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=Mooncake_0307_2016--->

@@ -195,4 +195,4 @@
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 [StretchWizardImage9]: ./media/sql-server-stretch-database-wizard/stretchwiz9.png
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=Mooncake_0829_2016--->

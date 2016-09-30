@@ -175,4 +175,4 @@ Polybase 可让你使用熟悉的 T-SQL 命令来利用不同源中的数据。P
 [MSDN 论坛]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
 [Stack Overflow 论坛]: http://stackoverflow.com/questions/tagged/azure-sqldw
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=Mooncake_0829_2016--->

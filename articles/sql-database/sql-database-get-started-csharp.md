@@ -452,4 +452,4 @@ SQL 数据库包含在服务器中。服务器名称在所有 Azure SQL Server �
 [8]: ./media/sql-database-get-started-csharp/add-application2.png
 [9]: ./media/sql-database-get-started-csharp/clientid.png
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0711_2016--->

@@ -88,4 +88,4 @@
 
 现在，你已了解有关 SQL Database 层的信息，欢迎单击[免费试用](http://azure.microsoft.com/pricing/free-trial/)来试用这些层，并了解[如何创建第一个 SQL 数据库](sql-database-get-started.md)！
 
-<!--HONumber=55-->
+<!--HONumber=55--->

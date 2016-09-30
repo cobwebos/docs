@@ -398,4 +398,4 @@ Azure 提供了许多功能用于对正在运行的应用程序进行监视和�
 [image68]: ./media/tutorial-azureportal-devops/image68.png
 [image69]: ./media/tutorial-azureportal-devops/image69.png
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=Mooncake_0711_2016--->
