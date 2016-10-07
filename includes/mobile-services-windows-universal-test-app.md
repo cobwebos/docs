@@ -1,7 +1,7 @@
-﻿
+
 1. 按 F5 键以重新构建项目并启动 Windows Store 应用。
 
-2. 在应用中的**插入任务**中键入有意义的文本（例如 *完成教程*），然后单击**保存**。
+2. 在应用程序中的“插入 TodoItem”中键入有意义的文本（例如 *Complete the tutorial*），然后单击“保存”。
 
 	![](./media/mobile-services-windows-universal-test-app/mobile-quickstart-startup.png)
 
@@ -11,4 +11,6 @@
 
 	![](./media/mobile-services-windows-universal-test-app/mobile-quickstart-completed-wp8.png)
 	
-	请注意，在应用启动之后会从移动服务加载上一步中保存的数据。
+	请注意应用程序启动后从移动服务加载从上一步中保存的数据。
+
+<!---HONumber=AcomDC_0921_2016-->

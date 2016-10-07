@@ -13,6 +13,6 @@
     
 8. 为计划支持的每个设备平台重复执行前面三个步骤。
 
-[Azure 门户]: https://portal.azure.cn/
+[Azure 门户]: https://portal.azure.com/
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

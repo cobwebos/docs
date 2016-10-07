@@ -1,5 +1,5 @@
 <properties
-	pageTitle="如何将 Azure Redis 缓存与 Python 配合使用 | Azure"
+	pageTitle="如何将 Azure Redis 缓存与 Python 配合使用 | Microsoft Azure"
 	description="开始将 Azure Redis 缓存与 Python 配合使用"
 	services="redis-cache"
 	documentationCenter=""
@@ -9,18 +9,22 @@
 
 <tags
 	ms.service="cache"
-	ms.date="05/31/2016"
-	wacn.date=""/>  
+	ms.devlang="python"
+	ms.topic="hero-article"
+	ms.tgt_pltfrm="cache-redis"
+	ms.workload="tbd"
+	ms.date="08/16/2016"
+	ms.author="sdanie"/>  
 
 
 # 如何将 Azure Redis 缓存与 Python 配合使用
 
 > [AZURE.SELECTOR]
-- [.NET](/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/)
-- [ASP.NET](/documentation/articles/cache-web-app-howto/)
-- [Node.js](/documentation/articles/cache-nodejs-get-started/)
-- [Java](/documentation/articles/cache-java-get-started/)
-- [Python](/documentation/articles/cache-python-get-started/)
+- [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
+- [ASP.NET](cache-web-app-howto.md)
+- [Node.js](cache-nodejs-get-started.md)
+- [Java](cache-java-get-started.md)
+- [Python](cache-python-get-started.md)
 
 本主题说明如何将Azure Redis 缓存与 Python 配合使用。
 
@@ -41,7 +45,7 @@
 
 ## 启用非 SSL 终结点
 
-某些 Redis 客户端不支持 SSL，默认情况下，[为新的 Azure Redis 缓存实例禁用了非 SSL 端口](/documentation/articles/cache-configure/#access-ports)。在编写本文时，[redis-py](https://github.com/andymccurdy/redis-py) 客户端不支持 SSL。
+某些 Redis 客户端不支持 SSL，默认情况下，[为新的 Azure Redis 缓存实例禁用了非 SSL 端口](cache-configure.md#access-ports)。在编写本文时，[redis-py](https://github.com/andymccurdy/redis-py) 客户端不支持 SSL。
 
 [AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
 
@@ -50,7 +54,7 @@
 
 
 	>>> import redis
-	>>> r = redis.StrictRedis(host='<name>.redis.cache.chinacloudapi.cn',
+	>>> r = redis.StrictRedis(host='<name>.redis.cache.windows.net',
 	      port=6380, db=0, password='<key>', ssl=True)
 	>>> r.set('foo', 'bar')
 	True
@@ -65,4 +69,4 @@
 [1]: ./media/cache-python-get-started/redis-cache-new-cache-menu.png
 [2]: ./media/cache-python-get-started/redis-cache-cache-create.png
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="将自定义域名添加到 Azure Active Directory | Azure"
+	pageTitle="将自定义域名添加到 Azure Active Directory | Microsoft Azure"
 	description="如何将公司域名添加到 Azure Active Directory，以及如何验证域名。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,8 +9,12 @@
 
 <tags
 	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
 	ms.date="07/18/2016"
-	wacn.date=""/>
+	ms.author="curtand;jeffsta"/>
 
 # 将自定义域名添加到 Azure Active Directory
 
@@ -81,10 +85,10 @@
 
 ## 后续步骤
 
--   [分配包含自定义域名的用户名](/documentation/articles/active-directory-add-domain-add-users/)
--   [管理自定义域名](/documentation/articles/active-directory-add-manage-domain-names/)
--   [了解 Azure AD 中的域管理概念](/documentation/articles/active-directory-add-domain-concepts/)
--   [在用户登录时显示公司的品牌](/documentation/articles/active-directory-add-company-branding/)
+-   [分配包含自定义域名的用户名](active-directory-add-domain-add-users.md)
+-   [管理自定义域名](active-directory-add-manage-domain-names.md)
+-   [了解 Azure AD 中的域管理概念](active-directory-add-domain-concepts.md)
+-   [在用户登录时显示公司的品牌](active-directory-add-company-branding.md)
 -   [使用 PowerShell 管理 Azure AD 中的域名](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=AcomDC_0921_2016-->

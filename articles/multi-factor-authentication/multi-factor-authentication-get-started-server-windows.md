@@ -1,16 +1,20 @@
 <properties 
-	pageTitle="Windows 身份验证和 Azure Multi-Factor Authentication 服务器" 
-	description="本 Azure Multi-Factor Authentication 页面将会帮助你部署 Windows 身份验证和 Azure Multi-Factor Authentication 服务器。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="Windows 身份验证和 Azure Multi-Factor Authentication 服务器"
+	description="本 Azure Multi-Factor Authentication 页面将会帮助你部署 Windows 身份验证和 Azure Multi-Factor Authentication 服务器。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.date="08/04/2016" 
-	wacn.date=""/>  
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>  
 
 
 # Windows 身份验证和 Azure Multi-Factor Authentication 服务器
@@ -28,14 +32,13 @@
 
 
 >[AZURE.NOTE]不支持使用此功能为 Windows Server 2012 R2 上的终端服务提供安全保障。
- 
+
 
 
 
 ## 若要使用 Windows 身份验证保护应用程序，请使用以下过程。
 
-1. 在 Azure Multi-Factor Authentication 服务器中，单击“Windows 身份验证”图标。
-![Windows 身份验证](./media/multi-factor-authentication-get-started-server-windows/windowsauth.png)
+1. 在 Azure Multi-Factor Authentication 服务器中，单击“Windows 身份验证”图标。![Windows 身份验证](./media/multi-factor-authentication-get-started-server-windows/windowsauth.png)
 2. 选中“启用 Windows 身份验证”复选框。默认情况下，此框处于未选中状态。
 3. 使用“应用程序”选项卡，管理员可以为 Windows 身份验证配置一个或多个应用程序。
 4. 选择服务器或应用程序 - 指定是否启用服务器/应用程序。单击“确定”。
@@ -47,4 +50,4 @@
 10. 如果你想要使用子网表示法指定 IP 范围，请选择“子网”。输入子网的起始 IP，然后从下拉列表中选取适当的子网掩码。
 11. 单击“确定”按钮。
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

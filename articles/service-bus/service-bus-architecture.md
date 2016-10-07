@@ -1,15 +1,19 @@
 <properties 
-   pageTitle="服务总线体系结构 | Azure"
-   description="介绍 Azure 服务总线的消息处理体系结构。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
+    pageTitle="服务总线体系结构 | Microsoft Azure"
+    description="介绍 Azure 服务总线的消息和中继处理体系结构。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
     editor="" />
 <tags 
-   ms.service="service-bus"
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
     ms.date="07/11/2016"
-   wacn.date="" />
+    ms.author="sethm" />
 
 # 服务总线体系结构
 
@@ -17,9 +21,9 @@
 
 ## 服务总线缩放单位
 
-服务总线按缩放单位进行组织。缩放单位是部署单位，包含运行服务所需的全部组件。每个区域部署一个或多个服务总线缩放单位。
+服务总线按*缩放单位*进行组织。缩放单位是部署单位，包含运行服务所需的全部组件。每个区域部署一个或多个服务总线缩放单位。
 
-一个服务总线命名空间映射到一个缩放单位。缩放单位处理所有类型的服务总线实体：中继和中转消息实体（队列、主题、订阅）。服务总线缩放单位由以下组件构成：
+一个服务总线命名空间映射到一个缩放单位。缩放单位负责处理各种类型的服务总线实体：中继和中转消息传送实体（队列、主题、订阅）。服务总线缩放单位由以下组件构成：
 
 - **一组网关节点。** 网关节点对传入请求进行身份验证并处理中继请求。每个网关节点都有一个公共 IP 地址。
 
@@ -27,7 +31,7 @@
 
 - **一个网关存储。** 网关存储保存此缩放单位中定义的每个实体的数据。网关存储在 SQL Azure 数据库顶层实施。
 
-- **多个消息存储。** 消息存储保存此缩放单位中定义的所有队列、主题和订阅的消息。它还包含所有订阅数据。除非启用了[分区消息实体](/documentation/articles/service-bus-partitioning/)，否则队列或主题将映射到一个消息存储。订阅是存储在与其父主题相同的消息存储中。除了服务总线[高级消息传送](/documentation/articles/service-bus-premium-messaging/)外，消息存储在 SQL Azure 数据库顶层实施。
+- **多个消息存储。** 消息存储可保留在此缩放单位中定义的所有队列、主题和订阅的消息。它还包含所有订阅数据。除非启用了[分区消息实体](service-bus-partitioning.md)，否则队列或主题将映射到一个消息存储。订阅是存储在与其父主题相同的消息存储中。除了服务总线[高级消息传送](service-bus-premium-messaging.md)外，消息存储在 SQL Azure 数据库顶层实施。
 
 ## 容器
 
@@ -35,7 +39,7 @@
 
 ## 处理传入消息请求
 
-当客户端向服务总线发送请求时，Azure 负载平衡器将其路由到任何一个网关节点。网关节点将为请求授权。如果该请求涉及到某个消息实体（队列、主题、订阅），则网关节点将在网关存储中查找该实体，并判断实体位于哪个消息存储中。然后，它将查询哪些消息代理节点目前正在为此容器提供服务，并将请求发送到该消息代理节点。消息代理节点将处理请求并更新容器存储中的实体状态。然后，消息代理节点向网关节点发送响应，而网关节点向发出原始请求的客户端发送相应的响应。
+当客户端向服务总线发送请求时，Azure 负载平衡器将其路由到任何一个网关节点。网关节点将为请求授权。如果请求涉及某个消息传送实体（队列、主题、订阅），网关节点将在网关存储中查找该实体，并确定该实体位于哪个消息存储中。然后，它将查询哪些消息代理节点目前正在为此容器提供服务，并将请求发送到该消息代理节点。消息代理节点将处理请求并更新容器存储中的实体状态。然后，消息代理节点向网关节点发送响应，而网关节点向发出原始请求的客户端发送相应的响应。
 
 ![处理传入消息请求](./media/service-bus-architecture/IC690644.png)
 
@@ -51,8 +55,8 @@
 
 在阅读有关服务总线体系结构的概述后，请访问以下链接：
 
-- [服务总线消息传送概述](/documentation/articles/service-bus-messaging-overview/)
-- [服务总线基础知识](/documentation/articles/service-bus-fundamentals-hybrid-solutions/)
-- [使用服务总线队列的队列消息解决方案](/documentation/articles/service-bus-dotnet-multi-tier-app-using-service-bus-queues/)
+- [服务总线消息传送概述](service-bus-messaging-overview.md)
+- [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
+- [使用服务总线队列的队列消息解决方案](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=AcomDC_0921_2016-->

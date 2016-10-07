@@ -8,8 +8,12 @@
  editor=""/>
 <tags
  ms.service="scheduler"
- ms.date="06/30/2016"
- wacn.date=""/>
+ ms.workload="infrastructure-services"
+ ms.tgt_pltfrm="na"
+ ms.devlang="dotnet"
+ ms.topic="get-started-article"
+ ms.date="08/18/2016"
+ ms.author="krisragh"/>
 
 # 计划程序的概念、术语和实体层次结构
 
@@ -19,8 +23,8 @@
 
 |资源 | 说明 |
 |---|---|
-|**作业集合**|一个作业集合包含一组作业，并且维护该集合内各作业共享的设置、配额和限制。作业集合由订阅所有者创建，并基于使用情况或应用程序边界将作业组合在一起。它被约束到一个区域。通过作业集合，还可以强制执行配额以便约束对该集合中所有作业的使用。配额包括 MaxJobs 和 MaxRecurrence。|
-|**作业**|一个作业通过用于执行的简单或复杂策略定义单个重复发生的操作。操作可能包括 HTTP、存储队列、服务总线队列或服务总线主题请求。|
+|**作业集合**|一个作业集合包含一组作业，并且维护该集合内各作业共享的设置、配额和限制。作业集合由订阅所有者创建，可根据使用情况或应用程序边界将作业组合在一起。它被约束到一个区域。通过作业集合，还可以强制执行配额以便约束对该集合中所有作业的使用。配额包括 MaxJobs 和 MaxRecurrence。|
+|**作业**|一个作业通过用于执行的简单或复杂策略定义单个重复发生的操作。操作可以包括 HTTP、存储队列、服务总线队列或服务总线主题请求。|
 |**作业历史记录**|作业历史记录表示用于执行作业的详细信息。它包含成功与失败信息以及任何响应详细信息。|
 
 ## 计划程序实体管理
@@ -29,13 +33,13 @@
 
 |功能|说明和 URI 地址|
 |---|---|
-|**作业集合管理**|针对创建和修改作业集合和其中包含的作业的 GET、PUT 和 DELETE 支持。作业集合是针对作业以及指向配额和共享设置的映射的容器。配额（在后面介绍）的例子包括最大作业数和最小重复间隔 <p>PUT 和 DELETE：`https://management.core.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p><p>GET：`https://management.core.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p>
-|**作业管理**|针对创建和修改作业的 GET、PUT、POST、PATCH 和 DELETE 支持。所有作业都必须属于某一已存在的作业集合，因此没有显式创建 <p>`https://management.core.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`</p>|
-|**作业历史记录管理**|针对用于获取 60 天的作业执行历史记录（例如作业占用时间和作业执行结果）的 GET 支持。添加基于状态进行筛选的查询字符串参数支持 <P>`https://management.core.chinacloudapi.cn/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`</p>|
+|**作业集合管理**|针对创建和修改作业集合和其中包含的作业的 GET、PUT 和 DELETE 支持。作业集合是作业的容器，与配额和共享设置一一对应。配额（在后面介绍）示例包括最大作业数和最小重复间隔<p>PUT 和 DELETE：`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p><p>GET：`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p>
+|**作业管理**|针对创建和修改作业的 GET、PUT、POST、PATCH 和 DELETE 支持。所有作业都必须属于某一已存在的作业集合，因此没有显式创建。<p>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`</p>|
+|**作业历史记录管理**|针对用于获取 60 天的作业执行历史记录（例如作业占用时间和作业执行结果）的 GET 支持。添加基于状态进行筛选的查询字符串参数支持。<P>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`</p>|
 
 ## 作业类型
 
-存在多种作业类型：HTTP 作业（包括支持 SSL 的 HTTPS 作业）、队列存储作业、服务总线队列作业和服务总线主题作业。HTTP 作业适用于现有工作负载或服务的终结点。可以使用存储队列作业将消息发布到存储队列，因此这些作业适合使用存储队列的工作负荷。同样，服务总线作业适用于使用服务总线队列和主题的工作负荷。
+作业类型有多种：HTTP 作业（包括支持 SSL 的 HTTPS 作业）、存储队列作业、服务总线队列作业和服务总线主题作业。HTTP 作业适用于现有工作负载或服务的终结点。可以使用存储队列作业将消息发布到存储队列，因此这些作业适合使用存储队列的工作负荷。同样，服务总线作业适用于使用服务总线队列和主题的工作负荷。
 
 ## “作业”实体详述
 
@@ -121,7 +125,7 @@
 
 ## startTime
 
-“startTime”是开始时间，允许调用方以 [ISO-8601 格式](http://zh.wikipedia.org/wiki/ISO_8601)在线指定时区偏移量。
+“startTime”是开始时间，允许调用方以 [ISO-8601 格式](http://en.wikipedia.org/wiki/ISO_8601)在线指定时区偏移量。
 
 ## action 和 errorAction
 
@@ -143,46 +147,14 @@
 
 下面是服务总线主题操作的示例。
 
-	  "action": {
-	    "type": "serviceBusTopic",
-	    "serviceBusTopicMessage": {
-	      "topicPath": "t1",  
-	      "namespace": "mySBNamespace",
-	      "transportType": "netMessaging", // Can be either netMessaging or AMQP
-	      "authentication": {
-	        "sasKeyName": "QPolicy",
-	        "type": "sharedAccessKey"
-	        },
-	      "message": "Some message",
-	      "brokeredMessageProperties": {},
-	      "customMessageProperties": {
-	        "appname": "FromScheduler"
-	      }
-	    },
-	  }
+  "action": { "type": "serviceBusTopic", "serviceBusTopicMessage": { "topicPath": "t1", "namespace": "mySBNamespace", "transportType": "netMessaging", // Can be either netMessaging or AMQP "authentication": { "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message", "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, }
 
 下面是服务总线队列操作的示例：
 
 
-	  "action": {
-	    "serviceBusQueueMessage": {
-	      "queueName": "q1",  
-	      "namespace": "mySBNamespace",
-	      "transportType": "netMessaging", // Can be either netMessaging or AMQP
-	      "authentication": {  
-	        "sasKeyName": "QPolicy",
-	        "type": "sharedAccessKey"
-	      },
-	      "message": "Some message",  
-	      "brokeredMessageProperties": {},
-	      "customMessageProperties": {
-	          "appname": "FromScheduler"
-	      }
-	    },
-	    "type": "serviceBusQueue"
-	  }
+  "action": { "serviceBusQueueMessage": { "queueName": "q1", "namespace": "mySBNamespace", "transportType": "netMessaging", // Can be either netMessaging or AMQP "authentication": { "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message", "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, "type": "serviceBusQueue" }
 
-“errorAction”是错误处理程序，在主操作失败时调用的操作。你可以使用此变量调用错误处理终结点或发送用户通知。这可用于在主终结点不可用时（例如，在终结点的站点上出现灾难情形时）访问辅助终结点，或者可用于通知错误处理终结点。与主操作相似，错误操作可以是基于其他操作的简单或复合逻辑。若要了解如何创建一个 SAS 令牌，请参阅[创建和使用共享访问签名](https://msdn.microsoft.com/zh-CN/library/azure/jj721951.aspx)。
+“errorAction”是错误处理程序，在主操作失败时调用的操作。可以使用此变量调用错误处理终结点或发送用户通知。这可用于在主终结点不可用时（例如，在终结点的站点上出现灾难情形时）访问辅助终结点，或者可用于通知错误处理终结点。与主操作相似，错误操作可以是基于其他操作的简单或复合逻辑。若要了解如何创建一个 SAS 令牌，请参阅[创建和使用共享访问签名](https://msdn.microsoft.com/library/azure/jj721951.aspx)。
 
 ## recurrence
 
@@ -224,23 +196,22 @@
 
 ## 另请参阅
 
- [计划程序是什么？](/documentation/articles/scheduler-intro/)
+ [计划程序是什么？](scheduler-intro.md)
 
- [开始在管理门户中使用计划程序](/documentation/articles/scheduler-get-started-portal/)
+ [开始在 Azure 门户中使用计划程序](scheduler-get-started-portal.md)
 
- [Azure 计划程序中的计划和计费](/documentation/articles/scheduler-plans-billing/)
+ [Azure 计划程序中的计划和计费](scheduler-plans-billing.md)
 
- [如何使用 Azure 计划程序生成复杂的计划和高级循环](/documentation/articles/scheduler-advanced-complexity/)
+ [如何使用 Azure 计划程序生成复杂的计划和高级循环](scheduler-advanced-complexity.md)
 
- [Azure 计划程序 REST API 参考](https://msdn.microsoft.com/zh-CN/library/dn528946)
+ [Azure 计划程序 REST API 参考](https://msdn.microsoft.com/library/mt629143)
 
- [Azure 计划程序 PowerShell cmdlet 参考](/documentation/articles/scheduler-powershell-reference/)
+ [Azure 计划程序 PowerShell cmdlet 参考](scheduler-powershell-reference.md)
 
- [Azure 计划程序的高可用性和可靠性](/documentation/articles/scheduler-high-availability-reliability/)
+ [Azure 计划程序的高可用性和可靠性](scheduler-high-availability-reliability.md)
 
- [Azure 计划程序的限制、默认值和错误代码](/documentation/articles/scheduler-limits-defaults-errors/)
+ [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
 
- [Azure 计划程序出站身份验证](/documentation/articles/scheduler-outbound-authentication/)
- 
+ [Azure 计划程序出站身份验证](scheduler-outbound-authentication.md)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=AcomDC_0921_2016-->

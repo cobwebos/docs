@@ -39,9 +39,9 @@
 [5]: ./media/iot-hub-get-started-create-hub/create-iot-hub5.png
 
 <!-- Links -->
-[lnk-resource-groups]: /documentation/articles/azure-portal/resource-group-portal/
-[lnk-portal]: https://portal.azure.cn/
-[lnk-pricing]: /pricing/details/iot-hub/
-[lnk-access-control]: /documentation/articles/iot-hub/iot-hub-devguide/#accesscontrol
+[lnk-resource-groups]: ../articles/azure-portal/resource-group-portal.md
+[lnk-portal]: https://portal.azure.com/
+[lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
+[lnk-access-control]: ../articles/iot-hub/iot-hub-devguide.md#accesscontrol
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

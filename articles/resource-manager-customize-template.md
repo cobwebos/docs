@@ -1,5 +1,5 @@
 <properties
-	pageTitle="自定义导出的 Resource Manager 模板 | Azure"
+	pageTitle="自定义导出的 Resource Manager 模板 | Microsoft Azure"
 	description="向导出的 Azure Resource Manager 模板添加参数，并通过 Azure PowerShell 或 Azure CLI 重新部署该模板。"
 	services="azure-resource-manager"
 	documentationCenter=""
@@ -9,71 +9,77 @@
 
 <tags
 	ms.service="azure-resource-manager"
-	ms.date="05/10/2016"
-	wacn.date=""/>
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/01/2016"
+	ms.author="tomfitz"/>
 
 # 自定义导出的 Azure Resource Manager 模板
 
-本文演示如何修改导出的模板，以便可以以参数形式传入其他值。它基于[导出 Resource Manager 模板](/documentation/articles/resource-manager-export-template)一文中执行的步骤构建，但你不一定要先完成该文。你可以在本文中找到所需的模板和脚本。
+本文演示如何修改导出的模板，以便可以以参数形式传入其他值。它基于[导出 Resource Manager 模板](resource-manager-export-template.md)一文中执行的步骤构建，但你不一定要先完成该文。你可以在本文中找到所需的模板和脚本。
 
 ## 查看导出的模板
 
-如果你已完成[导出 Resource Manager 模板](resource-manager-export-template)，请打开已下载的模板。该模板名为 **template.json**。如果你有 Visual Studio 或 Visual Code，则可以使用这两种中的任一个来编辑模板。否则，可以使用任何 JSON 编辑器或文本编辑器。
+如果已完成[导出 Resource Manager 模板](resource-manager-export-template.md)，请打开已下载的模板。该模板名为 **template.json**。如果你有 Visual Studio 或 Visual Code，则可以使用这两种中的任一个来编辑模板。否则，可以使用任何 JSON 编辑器或文本编辑器。
 
 如果你尚未完成前面的演练，请创建一个名为 **template.json** 的文件，并将导出模板中的以下内容添加到该文件。
 
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "virtualNetworks_VNET_name": {
-                "defaultValue": "VNET",
-                "type": "String"
-            },
-            "storageAccounts_storagetf05092016_name": {
-                "defaultValue": "storagetf05092016",
-                "type": "String"
-            }
+```
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualNetworks_VNET_name": {
+            "defaultValue": "VNET",
+            "type": "String"
         },
-        "variables": {},
-        "resources": [
-            {
-                "comments": "Generalized from resource in walkthrough.",
-                "type": "Microsoft.Network/virtualNetworks",
-                "name": "[parameters('virtualNetworks_VNET_name')]",
-                "apiVersion": "2015-06-15",
-                "location": "northeurope",
-                "properties": {
-                    "addressSpace": {
-                        "addressPrefixes": [
-                            "10.0.0.0/16"
-                        ]
-                    },
-                    "subnets": [
-                        {
-                            "name": "default",
-                            "properties": {
-                                "addressPrefix": "10.0.0.0/24"
-                            }
-                        }
+        "storageAccounts_storagetf05092016_name": {
+            "defaultValue": "storagetf05092016",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource in walkthrough.",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('virtualNetworks_VNET_name')]",
+            "apiVersion": "2015-06-15",
+            "location": "northeurope",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.0.0.0/16"
                     ]
                 },
-                "dependsOn": []
+                "subnets": [
+                    {
+                        "name": "default",
+                        "properties": {
+                            "addressPrefix": "10.0.0.0/24"
+                        }
+                    }
+                ]
             },
-            {
-                "comments": "Generalized from resource in walkthrough.",
-                "type": "Microsoft.Storage/storageAccounts",
-                "name": "[parameters('storageAccounts_storagetf05092016_name')]",
-                "apiVersion": "2015-06-15",
-                "location": "northeurope",
-                "tags": {},
-                "properties": {
-                    "accountType": "Standard_RAGRS"
-                },
-                "dependsOn": []
-            }
-        ]
-    }
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource in walkthrough.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('storageAccounts_storagetf05092016_name')]",
+            "apiVersion": "2015-06-15",
+            "location": "northeurope",
+            "tags": {},
+            "properties": {
+                "accountType": "Standard_RAGRS"
+            },
+            "dependsOn": []
+        }
+    ]
+}
+```
 
 如果你要在虚拟网络所在的区域中创建相同类型的存储帐户以使用相同的地址前缀和相同的子网前缀进行每个部署，则 template.json 模板将能很好地工作。但是，Resource Manager 提供相关选项，因此使用它部署模板比这具有更大的灵活性。例如，在部署期间，你可能需要指定要创建的存储帐户的类型或要用于虚拟网络地址前缀和子网前缀的值。
 
@@ -166,35 +172,36 @@
 
 将 parameters.json 文件的内容替换为以下内容：
 
-    {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-      "contentVersion": "1.0.0.0",
-      "parameters": {
-        "storageAccount_prefix": {
-          "value": "storage"
-        },
-        "virtualNetwork_name": {
-          "value": "VNET"
-        }
-      }
+```
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccount_prefix": {
+      "value": "storage"
+    },
+    "virtualNetwork_name": {
+      "value": "VNET"
     }
+  }
+}
+```
 
 更新后的参数文件仅为没有默认值的参数提供值。如果你需要不同于默认值的值，则可以为其他参数提供值。
 
 ## 部署模板
 
-可以使用 Azure PowerShell 或 Azure 命令行界面 (CLI) 部署自定义的模板和参数文件。如果需要，请安装 [Azure PowerShell](/documentation/articles/powershell-install-configure) 或 [Azure CLI](/documentation/articles/xplat-cli-install)。你导出原始模板后，可以将下载的脚本与模板配合使用，也可以编写自己的脚本来部署模板。
-在本文中说明了这两个选项。
+可以使用 Azure PowerShell 或 Azure 命令行界面 (CLI) 部署自定义的模板和参数文件。如果需要，请安装 [Azure PowerShell](powershell-install-configure.md) 或 [Azure CLI](xplat-cli-install.md)。你导出原始模板后，可以将下载的脚本与模板配合使用，也可以编写自己的脚本来部署模板。在本文中说明了这两个选项。
 
 2. 若要使用你自己的脚本部署，请使用以下任一项。
 
      对于 PowerShell，运行：
 
         # login
-        Add-AzureRmAccount -EnvironmentName AzureChinaCloud
+        Add-AzureRmAccount
 
         # create a new resource group
-        New-AzureRmResourceGroup -Name ExportGroup -Location "China East"
+        New-AzureRmResourceGroup -Name ExportGroup -Location "West Europe"
 
         # deploy the template to the resource group
         New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExportGroup -TemplateFile {path-to-file}\template.json -TemplateParameterFile {path-to-file}\parameters.json
@@ -203,7 +210,7 @@
 
         azure login
 
-        azure group create -n ExportGroup -l "China East"
+        azure group create -n ExportGroup -l "West Europe"
 
         azure group deployment create -f {path-to-file}\azuredeploy.json -e {path-to-file}\parameters.json -g ExportGroup -n ExampleDeployment
 
@@ -221,9 +228,9 @@
 
 ## 后续步骤
 
-- [Resource Manager 模板演练](/documentation/articles/resource-manager-template-walkthrough)在本文中学习的内容的基础上构建，它将为更复杂的解决方案创建模板。它可帮助你了解有关可用资源的更多信息以及如何确定要提供的值。
-- 若要了解如何通过 PowerShell 导出模板，请参阅[将 Azure PowerShell 与 Azure Resource Manager 配合使用](/documentation/articles/powershell-azure-resource-manager)。
-- 若要了解如何通过 Azure CLI 导出模板，请参阅[将适用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用](/documentation/articles/xplat-cli-azure-resource-manager)。
-- 若要了解如何构造模板，请参阅[创作 Azure Resource Manager 模板](/documentation/articles/resource-group-authoring-templates)。
+- [Resource Manager 模板演练](resource-manager-template-walkthrough.md)基于在本文中学习的内容构建，它将为更复杂的解决方案创建模板。它可帮助你了解有关可用资源的更多信息以及如何确定要提供的值。
+- 若要了解如何通过 PowerShell 导出模板，请参阅 [Using Azure PowerShell with Azure Resource Manager](powershell-azure-resource-manager.md)（将 Azure PowerShell 与 Azure Resource Manager 配合使用）。
+- 若要了解如何通过 Azure CLI 导出模板，请参阅 [Use the Azure CLI for Mac, Linux, and Windows with Azure Resource Manager](xplat-cli-azure-resource-manager.md)（将用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用）。
+- 若要了解如何构建模板，请参阅[创作 Azure Resource Manager 模板](resource-group-authoring-templates.md)。
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=AcomDC_0921_2016-->

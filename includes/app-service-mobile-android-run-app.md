@@ -9,6 +9,6 @@
 
     ![](./media/mobile-services-android-get-started/mobile-quickstart-startup-android.png)
 
-[Azure 门户]: https://portal.azure.cn/
+[Azure 门户]: https://portal.azure.com/
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

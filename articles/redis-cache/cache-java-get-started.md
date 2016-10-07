@@ -1,5 +1,5 @@
 <properties
-	pageTitle="如何将 Azure Redis 缓存与 Java 配合使用 | Azure"
+   pageTitle="如何将 Azure Redis 缓存与 Java 配合使用 | Microsoft Azure"
 	description="开始将 Azure Redis 缓存与 Java 配合使用"
 	services="redis-cache"
 	documentationCenter=""
@@ -9,19 +9,23 @@
 
 <tags
 	ms.service="cache"
-	ms.date="05/31/2016"
-	wacn.date=""/>
+	ms.devlang="java"
+	ms.topic="hero-article"
+	ms.tgt_pltfrm="cache-redis"
+	ms.workload="tbd"
+	ms.date="08/24/2016"
+	ms.author="sdanie"/>
 
 # 如何将 Azure Redis 缓存与 Java 配合使用
 
 > [AZURE.SELECTOR]
-- [.NET](/documentation/articles/cache-dotnet-how-to-use-azure-redis-cache/)
-- [ASP.NET](/documentation/articles/cache-web-app-howto/)
-- [Node.js](/documentation/articles/cache-nodejs-get-started/)
-- [Java](/documentation/articles/cache-java-get-started/)
-- [Python](/documentation/articles/cache-python-get-started/)
+- [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
+- [ASP.NET](cache-web-app-howto.md)
+- [Node.js](cache-nodejs-get-started.md)
+- [Java](cache-java-get-started.md)
+- [Python](cache-python-get-started.md)
 
-Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。可从 Azure 内部的任何应用程序访问你的缓存。
+Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。可从 Microsoft Azure 内部的任何应用程序访问你的缓存。
 
 本主题说明如何将Azure Redis 缓存与 Java 配合使用。
 
@@ -42,7 +46,7 @@ Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。可�
 
 ## 启用非 SSL 终结点
 
-某些 Redis 客户端不支持 SSL，默认情况下，[为新的 Azure Redis 缓存实例禁用了非 SSL 端口](/documentation/articles/cache-configure/#access-ports)。在编写本文时，[Jedis](https://github.com/xetorthio/jedis) 客户端不支持 SSL。
+某些 Redis 客户端不支持 SSL，默认情况下，[为新的 Azure Redis 缓存实例禁用了非 SSL 端口](cache-configure.md#access-ports)。在编写本文时，[Jedis](https://github.com/xetorthio/jedis) 客户端不支持 SSL。
 
 [AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-non-ssl-port.md)]
 
@@ -61,7 +65,7 @@ Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。可�
 	  public static void main( String[] args )
 	  {
         /* In this line, replace <name> with your cache name: */
-	    JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.chinacloudapi.cn", 6379);
+	    JedisShardInfo shardInfo = new JedisShardInfo("<name>.redis.cache.windows.net", 6379);
 	    shardInfo.setPassword("<key>"); /* Use your access key. */
 	    Jedis jedis = new Jedis(shardInfo);
      	jedis.set("foo", "bar");
@@ -72,7 +76,7 @@ Azure Redis 缓存可让你访问 Microsoft 管理的专用 Redis 缓存。可�
 
 ## 后续步骤
 
-- [启用缓存诊断](https://msdn.microsoft.com/zh-cn/library/azure/dn763945.aspx#EnableDiagnostics)，以便可以[监视](https://msdn.microsoft.com/zh-cn/library/azure/dn763945.aspx)缓存的运行状况。
+- [启用缓存诊断](https://msdn.microsoft.com/library/azure/dn763945.aspx#EnableDiagnostics)，以便可以[监视](https://msdn.microsoft.com/library/azure/dn763945.aspx)缓存的运行状况。
 - 阅读官方 [Redis 文档](http://redis.io/documentation)。
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=AcomDC_0921_2016-->

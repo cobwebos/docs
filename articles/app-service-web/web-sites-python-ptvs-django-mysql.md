@@ -1,27 +1,34 @@
 <properties 
 	pageTitle="具有 Python Tools 2.2 for Visual Studio 的 Azure 上的 Django 和 MySQL" 
-	description="了解如何使用 Python Tools for Visual Studio 来创建在 MySQL 数据库实例中存储数据的 Django Web 应用，以及将应用部署到 Azure Web Apps 中。" 
+	description="了解如何使用 Python Tools for Visual Studio 来创建在 MySQL 数据库实例中存储数据的 Django Web 应用，以及将应用部署到 Azure App Service Web Apps 中。" 
 	services="app-service\web" 
 	documentationCenter="python" 
 	authors="huguesv" 
 	manager="wpickett" 
-	editor=""/>  
+	editor=""/>
 
-
-<tags
-	ms.service="app-service-web"
-	ms.date="06/01/2016"
-	wacn.date=""/>
+<tags 
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="python"
+	ms.topic="get-started-article" 
+	ms.date="07/07/2016"
+	ms.author="huvalo"/>
 
 # 具有 Python Tools 2.2 for Visual Studio 的 Azure 上的 Django 和 MySQL 
 
 [AZURE.INCLUDE [选项卡](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-在本教程中，你将使用 [Python Tools for Visual Studio](PTVS) 通过一个 PTVS 样本模板创建简单的轮询 Web 应用。你将了解如何使用在 Azure 上托管的 MySQL 服务、如何将 Web 应用配置为使用 MySQL，以及如何将 Web 应用发布到 [Azure Web Apps](/documentation/services/web-sites/) 中。
+在本教程中，你将使用 [Python Tools for Visual Studio](PTVS) 通过一个 PTVS 样本模板创建简单的轮询 Web 应用。了解如何使用在 Azure 上托管的 MySQL 服务、如何将 Web 应用配置为使用 MySQL，以及如何将 Web 应用发布到 [Azure App Service Web 应用](http://go.microsoft.com/fwlink/?LinkId=529714)中。
 
-请参阅 [Python 开发人员中心]以获取更多文章，这些文章介绍了如何通过 PTVS（使用 Bottle、Flask 和 Django Web 框架）、MongoDB、Azure 表存储、MySQL 和 SQL 数据库服务来开发 Azure Web Apps。虽然本文将着重介绍 Azure Web 应用，但 [Azure 云服务]的开发步骤也是类似的。
+> [AZURE.NOTE] 本教程中所包含的信息在下面的视频中也有提供：
+> 
+> [PTVS 2.1：具有 MySQL 的 Django 应用][video]
 
-## <a name="prerequisites"></a>先决条件
+请参阅 [Python 开发人员中心]，获取更多有关使用 PTVS 以及 Bottle、Flask 和 Django Web 框架、Azure 表存储、MySQL 以及 SQL 数据库服务开发 Azure App Service Web 应用的文章。虽然本文将着重介绍 App Service，但步骤与 [Azure 云服务]的开发步骤类似。
+
+## 先决条件
 
  - Visual Studio 2015
  - [Python 2.7（32 位）]或 [Python 3.4（32 位）]
@@ -31,6 +38,10 @@
  - Django 1.9 或更高版本
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
+
+<!-- This note should not render as part of the the previous include. -->
+
+> [AZURE.NOTE] 如果您想要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用 App Service](http://go.microsoft.com/fwlink/?LinkId=523751)，您可以在 App Service 中立即创建一个生存期较短的入门 Web 应用。不需要信用卡，也无需做出承诺。
 
 ## 创建项目
 
@@ -65,7 +76,8 @@
 
 1. 输入您同步数据库时创建的用户的凭证。
 
-    ![表单中的日志](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserLocalLogin.png)
+    ![表单中的日志](./media/web-sites-python-ptvs-django-mysql/PollsDjangoCommonBrowserLocalLogin.png)  
+
 
 1. 单击“创建样本轮询”。
 
@@ -83,15 +95,17 @@
 
 作为替代方法，可以在 Azure 上创建自己的虚拟机，然后亲自安装和管理 MySQL。
 
-您可通过以下步骤创建数据库。
+可以通过执行以下步骤以免费计划创建数据库。
 
-1. 登录到 [Azure 经典管理门户]。
+1. 登录到 [Azure 门户]。
 
-1.  在导航窗格的底部。
+1. 在导航窗格顶部，依次单击“新建”、“数据 + 存储”和“MySQL 数据库”。
 
-1.  依次单击“数据服务”、“Azure 上的 MySQL 数据库”和“快速创建”。
+1. 通过新建资源组来配置新的 MySQL 数据库，并为其选择相应的位置。
 
-1.  使用名称、版本等进行填充，然后单击“创建”。
+1. 创建 MySQL 数据库后，单击数据库边栏选项卡中的“属性”。
+
+1. 使用复制按钮将“连接字符串”的值复制到剪贴板上。
 
 ## 配置项目
 
@@ -119,7 +133,8 @@
 
 1. 使用 **pip** 安装包 `mysqlclient`。
 
-    ![安装包对话框](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLInstallPackage.png)
+    ![安装包对话框](./media/web-sites-python-ptvs-django-mysql/PollsDjangoMySQLInstallPackage.png)  
+
 
 1. 在“解决方案资源管理器”中，右键单击项目节点，选择“Python”，然后选择“Django 迁移”。然后选择“Django 创建超级用户”。
 
@@ -127,18 +142,24 @@
 
 1. 使用 `F5` 运行应用程序。使用“创建样本轮询”创建的轮询以及通过投票提交的数据会在 MySQL 数据库中进行序列化。
 
-## 将 Web 应用发布到 Azure
+## 将 Web 应用发布到 Azure App Service
 
-借助 Azure.NET SDK，你可以轻松地将 Web 应用部署到 Azure 中。
+借助 Azure.NET SDK，您可以轻松地将 Web 应用部署到 Azure App Service 中。
 
 1. 在“解决方案资源管理器”中，右键单击项目节点，然后选择“发布”。
 
-    ![发布 Web 对话框](./media/web-sites-python-ptvs-django-mysql/PollsCommonPublishWebSiteDialog.png)  
+    ![发布 Web 对话框](./media/web-sites-python-ptvs-django-mysql/PollsCommonPublishWebSiteDialog.png)
 
+1. 单击“Microsoft Azure App Service”。
 
-1.  单击“导入”，然后选择已下载的“发布配置文件”。
+1. 单击“新建”，新建一个 Web 应用。
 
-	如果你尚未创建 Web 应用，可以登录到 [Azure 经典管理门户](https://manage.windowsazure.cn/)创建一个，然后转到“仪表板”页，在“速览”下下载“发布配置文件”。
+1. 填写以下字段，然后单击“创建”：
+	- **Web 应用名称**
+	- **App Service 计划**
+	- **资源组**
+	- **区域**
+	- 保持“数据库服务器”的“无数据库”设置不变
 
 1. 接受其他所有默认值，然后单击**发布**。
 
@@ -156,7 +177,7 @@
 - [Python Tools for Visual Studio 文档]
   - [Web 项目]
   - [云服务项目]
-  - [在 Azure 中进行远程调试]
+  - [在 Microsoft Azure 上进行远程调试]
 - [Django 文档]
 - [MySQL]
 
@@ -166,11 +187,11 @@
 
 
 [Python 开发人员中心]: /develop/python/
-[Azure 云服务]: /documentation/articles/cloud-services-python-ptvs/
+[Azure 云服务]: ../cloud-services-python-ptvs.md
 
 <!--External Link references-->
 
-[Azure 经典管理门户]: https://manage.windowsazure.cn
+[Azure 门户]: https://portal.azure.com
 [Python Tools for Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.2 for Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 []: http://go.microsoft.com/fwlink/?LinkID=624025
@@ -179,11 +200,11 @@
 [Python 2.7（32 位）]: http://go.microsoft.com/fwlink/?LinkId=517190
 [Python 3.4（32 位）]: http://go.microsoft.com/fwlink/?LinkId=517191
 [Python Tools for Visual Studio 文档]: http://aka.ms/ptvsdocs
-[在 Azure 中进行远程调试]: http://go.microsoft.com/fwlink/?LinkId=624026
+[在 Microsoft Azure 上进行远程调试]: http://go.microsoft.com/fwlink/?LinkId=624026
 [Web 项目]: http://go.microsoft.com/fwlink/?LinkId=624027
 [云服务项目]: http://go.microsoft.com/fwlink/?LinkId=624028
 [Django 文档]: https://www.djangoproject.com/
 [MySQL]: http://www.mysql.com/
 [video]: http://youtu.be/oKCApIrS0Lo
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=AcomDC_0921_2016-->

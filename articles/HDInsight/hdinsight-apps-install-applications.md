@@ -1,23 +1,25 @@
-<!-- not suitable for Mooncake -->
-
 <properties
-   	pageTitle="在 HDInsight 上安装 Hadoop 应用程序 | Azure"
+   	pageTitle="在 HDInsight 上安装 Hadoop 应用程序 | Microsoft Azure"
    	description="了解如何在 HDInsight 上安装 HDInsight 应用程序。"
    	services="hdinsight"
    	documentationCenter=""
    	authors="mumian"
-   	manager="paulettm"
+   	manager="jhubbard"
    	editor="cgronlun"
 	tags="azure-portal"/>
 
 <tags
-	ms.service="hdinsight"
-	ms.date="06/29/2016"
-	wacn.date=""/>
+   	ms.service="hdinsight"
+   	ms.devlang="na"
+   	ms.topic="hero-article"
+   	ms.tgt_pltfrm="na"
+   	ms.workload="big-data"
+   	ms.date="09/14/2016"
+   	ms.author="jgao"/>
 
 # 安装 HDInsight 应用程序
 
-HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安装的应用程序。这些应用程序可能是 Microsoft、独立软件供应商 (ISV) 或你自己开发的。在本文中，你将了解如何安装已发布的应用程序。有关如何安装自己的应用程序，请参阅[安装自定义 HDInsight 应用程序](/documentation/articles/hdinsight-apps-install-custom-applications/)。
+HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安装的应用程序。这些应用程序可能是 Microsoft、独立软件供应商 (ISV) 或你自己开发的。在本文中，你将了解如何安装已发布的应用程序。有关安装自己的应用程序的信息，请参阅[安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。
 
 目前有一个已发布的应用程序：
 
@@ -25,11 +27,11 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 
 >[AZURE.NOTE] 目前只有 Azure HDInsight 3.2 版群集支持Datameer。
 
-本文提供的说明将使用 Azure 门户。你也可以从门户导出 Azure Resource Manager 模板或从供应商处获取 Resource Manage 模板的副本，然后使用 Azure PowerShell 和 Azure CLI 来部署模板。请参阅[使用 Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](/documentation/articles/hdinsight-hadoop-create-linux-clusters-arm-templates/)。
+本文提供的说明将使用 Azure 门户。也可以从门户导出 Azure Resource Manager 模板或从供应商处获取 Resource Manage 模板的副本，然后使用 Azure PowerShell 和 Azure CLI 部署模板。请参阅[使用 Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
 
 ## 先决条件
 
-如果想要在现有的 HDInsight 群集上安装 HDInsight 应用程序，必须有一个 HDInsight 群集。若要创建群集，请参阅[创建群集](/documentation/articles/hdinsight-hadoop-tutorial-get-started-windows-v1/#create-cluster)。也可以在创建 HDInsight 群集时安装 HDInsight 应用程序。
+如果想要在现有的 HDInsight 群集上安装 HDInsight 应用程序，必须有一个 HDInsight 群集。若要创建群集，请参阅[创建群集](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)。也可以在创建 HDInsight 群集时安装 HDInsight 应用程序。
 
 ## 将应用程序安装到现有群集
 
@@ -37,9 +39,9 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 
 **安装 HDInsight 应用程序**
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 在左侧菜单中单击“HDInsight 群集”。如果未看到，请单击“浏览”，然后单击“HDInsight 群集”。
-3. 单击某个 HDInsight 群集。如果没有，则必须先创建一个。请参阅[创建群集](/documentation/articles/hdinsight-hadoop-tutorial-get-started-windows-v1/#create-cluster)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左侧菜单中单击“HDInsight 群集”。如果未看到它，请单击“浏览”，然后单击“HDInsight 群集”。
+3. 单击某个 HDInsight 群集。如果没有群集，必须先创建一个。请参阅[创建群集](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)。
 4. 在“设置”边栏选项卡中，单击“常规”类别下的“应用程序”。“已安装的应用”边栏选项卡将列出所有已安装的应用程序。
 
     ![hdinsight 应用程序门户菜单](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
@@ -52,7 +54,7 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 
 	![hdinsight 应用程序可用应用程序](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
 
-6. 单击其中一个应用程序，接受法律条款，然后单击“选择”。
+6. 单击其中一个应用程序、接受法律条款，然后单击“选择”。
 
 可以通过门户通知查看安装状态（单击门户顶部的铃铛图标）。安装应用程序之后，应用程序会出现在“已安装的应用”边栏选项卡上。
 
@@ -62,20 +64,20 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 
 **安装 HDInsight 应用程序**
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 单击“新建”，单击“数据 + 分析”，然后单击“HDInsight”。
-3. 输入**群集名称**：此名称必须全局唯一。
-4. 单击“订阅”以选择将用于此群集的 Azure 订阅。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 依次单击“新建”、“数据 + 分析”和“HDInsight”。
+3. 输入“群集名称”：此名称必须全局唯一。
+4. 单击“订阅”，选择将用于此群集的 Azure 订阅。
 5. 单击“选择群集类型”，然后选择：
 
-    - **群集类型**：如果你不知道要选择哪种群集，请选择“Hadoop”。它是最受欢迎的群集类型。
+    - **群集类型**：如果不知道要选择哪种群集，请选择“Hadoop”。它是最受欢迎的群集类型。
     - **操作系统**：选择“Linux”。
-    - **版本**：如果不知道要选择哪个版本，请使用默认版本。有关详细信息，请参阅 [HDInsight 群集版本](/documentation/articles/hdinsight-component-versioning-v1/)。
-    - **群集层**：Azure HDInsight 提供两个类别的大数据云产品：标准层和高级层。有关详细信息，请参阅[群集层](/documentation/articles/hdinsight-provision-clusters-v1/#cluster-tiers)。
-6. 依次单击“应用程序”、其中一个已发布的应用程序，然后单击“选择”。
-6. 单击“凭据”，然后输入管理员用户的密码。此外，还必须输入“SSH 用户名”以及“密码”或“公钥”，这将用于验证 SSH 用户的身份。建议使用公钥。单击底部的“选择”以保存凭据配置。
-8. 单击“数据源”，选择其中一个现有的存储帐户，或创建新的存储帐户，作为群集的默认存储帐户。
-9. 单击“资源组”以选择现有的资源组，或单击“新建”以创建一个新的资源组
+    - **版本**：如果不知道要选择哪个版本，请使用默认版本。有关详细信息，请参阅 [HDInsight 群集版本](hdinsight-component-versioning.md)。
+    - **群集层**：Azure HDInsight 提供两个类别的大数据云产品：标准层和高级层。有关详细信息，请参阅[群集层](hdinsight-hadoop-provision-linux-clusters.md#cluster-tiers)。
+6. 依次单击“应用程序”、已发布应用程序之一和“选择”。
+6. 单击“凭据”，然后输入管理员用户的密码。此外，还必须输入“SSH 用户名”以及“密码”或“公钥”，这将用于验证 SSH 用户的身份。建议使用公钥。单击底部的“选择”，保存凭据配置。
+8. 单击“数据源”、选择现有存储帐户之一，或创建新的存储帐户，作为群集的默认存储帐户。
+9. 单击“资源组”选择现有资源组，或单击“新建”创建一个新资源组
 
 10. 在“新建 HDInsight 群集”边栏选项卡上，确保选中“固定到启动板”，然后单击“创建”。
 
@@ -85,8 +87,8 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
 
 **列出 HDInsight 应用程序并显示属性**
 
-1. 登录到 [Azure 门户](https://portal.azure.cn)。
-2. 在左侧菜单中单击“HDInsight 群集”。如果未看到，请单击“浏览”，然后单击“HDInsight 群集”。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+2. 在左侧菜单中单击“HDInsight 群集”。如果未看到它，请单击“浏览”，然后单击“HDInsight 群集”。
 3. 单击某个 HDInsight 群集。
 4. 在“设置”边栏选项卡中，单击“常规”类别下的“应用程序”。“已安装的应用”边栏选项卡将列出所有已安装的应用程序。
 
@@ -98,26 +100,27 @@ HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安�
     - 状态：应用程序状态。
     - 网页：已部署到边缘节点的 Web 应用程序的 URL（如果有）。此凭据与你针对群集配置的 HTTP 用户凭据相同。
     - HTTP 终结点：此凭据与你针对群集配置的 HTTP 用户凭据相同。
-    - SSH 终结点：可以使用 [SSH](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/) 连接到边缘节点。SSH 凭据与你针对群集配置的 SSH 用户凭据相同。
+    - SSH 终结点：可以使用 [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 连接到边缘节点。SSH 凭据与你针对群集配置的 SSH 用户凭据相同。
 
 6. 若要删除应用程序，请右键单击应用程序，然后单击上下文菜单中的“删除”。
 
 ## 连接到边缘节点
 
-你可以使用 HTTP 和 SSH 连接到边缘节点。[门户](#list-installed-hdinsight-apps-and-properties)中提供了终结点信息。有关使用 SSH 的详细信息，请参阅[在 Linux、Unix 和 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](/documentation/articles/hdinsight-hadoop-linux-use-ssh-unix/)。
+你可以使用 HTTP 和 SSH 连接到边缘节点。可在[门户](#list-installed-hdinsight-apps-and-properties)中找到终结点信息。有关使用 SSH 的详细信息，请参阅[在 Linux、Unix 和 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 HTTP 终结点凭据是你针对 HDInsight 群集配置的 HTTP 用户凭据；SSH 终结点凭据是你针对 HDInsight 群集配置的 SSH 凭据。
 
 ## 故障排除
 
-请参阅[排查安装问题](/documentation/articles/hdinsight-apps-install-custom-applications/#troubleshoot-the-installation)。
+请参阅[故障排除安装问题](hdinsight-apps-install-custom-applications.md#troubleshoot-the-installation)。
 
 ## 后续步骤
 
-- [安装自定义 HDInsight 应用程序](/documentation/articles/hdinsight-apps-install-custom-applications/)：了解如何将未发布的 HDInsight 应用程序部署到 HDInsight。
-- [发布 HDInsight 应用程序](/documentation/articles/hdinsight-apps-publish-applications/)：了解如何将自定义 HDInsight 应用程序发布到 Azure 应用商店。
-- [MSDN: Install an HDInsight application（MSDN：安装 HDInsight 应用程序）](https://msdn.microsoft.com/zh-cn/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
-- [使用脚本操作自定义基于 Linux 的 HDInsight 群集](/documentation/articles/hdinsight-hadoop-customize-cluster-v1/)：了解如何使用脚本操作来安装其他应用程序。
-- [使用 Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](/documentation/articles/hdinsight-hadoop-create-linux-clusters-arm-templates/)：了解如何调用 Resource Manager 模板来创建 HDInsight 群集。
+- [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)：了解如何将未发布的 HDInsight 应用程序部署到 HDInsight。
+- [发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)：了解如何将自定义 HDInsight 应用程序发布到 Azure 应用商店。
+- [MSDN：安装 HDInsight 应用程序](https://msdn.microsoft.com/library/mt706515.aspx)：了解如何定义 HDInsight 应用程序。
+- [使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)：了解如何使用脚本操作安装其他应用程序。
+- [使用 Resource Manager 模板在 HDInsight 中创建基于 Linux 的 Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)：了解如何调用 Resource Manager 模板创建 HDInsight 群集。
+- [在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)：了解如何使用空边缘节点访问 HDInsight 群集、测试 HDInsight 应用程序以及托管 HDInsight 应用程序。
 
-<!----HONumber=Mooncake_0725_2016-->
+<!---HONumber=AcomDC_0921_2016-->

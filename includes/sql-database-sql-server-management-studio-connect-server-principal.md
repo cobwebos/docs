@@ -1,41 +1,44 @@
-## 使用服务器级主体登录名连接到 Azure SQL 数据库
 
-执行以下步骤，使用 SSMS 和服务器级主体登录名连接到 Azure SQL 数据库。
 
-1. 在 Windows 搜索框中键入“Microsoft SQL Server Management Studio”，然后单击桌面应用以启动 SSMS。
+## 使用 SQL Server 身份验证连接到 Azure SQL 数据库
 
-2. 在“连接到服务器”窗口中，输入以下信息：
+以下步骤演示如何使用 SSMS 连接到 Azure SQL 服务器和数据库。如果没有服务器和数据库，请参阅[快速创建 SQL 数据库](../articles/sql-database/sql-database-get-started.md)部分，以创建一个。
+
+
+1. 在 Windows 搜索框中键入“**Microsoft SQL Server Management Studio**”，然后单击桌面应用以启动 SSMS。
+
+2. 在“**连接到服务器**”窗口，输入以下信息（如果 SSMS 已运行，请单击“**连接”>“数据库引擎**”，打开“**连接到服务器**”窗口）：
 
  - **服务器类型**：默认为数据库引擎；请不要更改此值。
- - **服务器名称**：输入托管你的 SQL 数据库的服务器名称，格式为 &lt;服务器名称>.**database.chinacloudapi.cn**
- - **身份验证类型**：如果你是新手，请选择“SQL 身份验证”。如果你已为 SQL 数据库逻辑服务器启用 Active Directory，可以选择“Active Directory 密码身份验证”或“Active Directory 集成身份验证”。
- - **用户名**：如果选择了“SQL 身份验证”或“Active Directory 密码身份验证”，请输入有权访问服务器上数据库的用户名。
- - **密码**：如果选择了“SQL 身份验证”或“Active Directory 密码身份验证”，请输入指定用户的密码。
+ - **服务器名称**：输入 Azure SQL 数据库服务器完全限定的名称，格式为：*&lt;服务器名称>*.**database.windows.net**
+ - **身份验证类型**：本文演示如何使用 **SQL Server 身份验证**进行连接。有关如何通过 Azure Active Directory 连接的详细信息，请参阅[使用 Active Directory 集成的身份验证进行连接](../articles/sql-database/sql-database-aad-authentication.md#connect-using-active-directory-integrated-authentication)，[使用 Active Directory 密码身份验证进行连接](../articles/sql-database/sql-database-aad-authentication.md#connect-using-active-directory-password-authentication)，以及[使用 Active Directory 通用身份验证进行连接](../articles/sql-database/sql-database-ssms-mfa-authentication.md)。
+ - **用户名**：输入对服务器上的数据库具有访问权限的用户名（例如，创建服务器时设置的*服务器管理员*）。
+ - **密码**：为指定用户输入密码（例如，创建服务器时设置的*密码*）。
    
-       ![SQL Server Management Studio：连接到 SQL 数据库服务器](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-1.png)
+       ![SQL Server Management Studio：连接到 SQL 数据库服务器](./media/sql-database-sql-server-management-studio-connect-server-principal/connect.png)
 
 3. 单击“连接”。
  
-4. 如果客户端 IP 地址没有 SQL 数据库逻辑服务器的访问权限，系统将提示你登录到 Azure 帐户并创建服务器级别的防火墙规则。如果你是 Azure 订阅管理员，请单击“登录”以创建服务器级别的防火墙规则。如果不是，请让 Azure 管理员创建服务器级别的防火墙规则。
- 
-      ![SQL Server Management Studio：连接到 SQL 数据库服务器](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-2.png)
- 
-1. 如果你是 Azure 订阅管理员并需要登录，当登录页出现时，请提供订阅的凭据并登录。
+4. 默认情况下，新的服务器没有定义的[防火墙规则](../articles/sql-database/sql-database-firewall-configure.md)，因此一开始便阻止客户端连接。如果服务器尚不具有允许特定 IP 地址进行连接的防火墙规则，SSMS 会提示为你创建服务器级防火墙规则。
 
-      ![登录](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-3.png)
+    单击**登录**，并创建服务器级防火墙规则。必须以 Azure 管理员身份创建服务器级防火墙规则。
  
-1. 成功登录到 Azure 后，请查看建议的服务器级别防火墙规则（可以修改它以允许某个 IP 地址范围），然后单击“确定”以创建防火墙规则并完成 SQL 数据库的连接。
+       ![SQL Server Management Studio：连接到 SQL 数据库服务器](./media/sql-database-sql-server-management-studio-connect-server-principal/newfirewallrule.png)
  
-      ![新的服务器级防火墙](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-4.png)
- 
-5. 如果凭据授予你访问权限，则对象资源管理器将会打开，现在你可以执行管理任务或查询数据。
+
+5. 在成功连接到 Azure SQL 数据库之后，**对象资源管理器**会打开，随后即可访问数据库来[执行管理任务或查询数据](../articles/sql-database/sql-database-manage-azure-ssms.md)。
  
      ![新的服务器级防火墙](./media/sql-database-sql-server-management-studio-connect-server-principal/connect-server-principal-5.png)
  
      
- ## 排查连接失败
+## 排查连接失败
 
-连接失败的最常见原因是服务器名称（记住，<*servername*> 是逻辑服务器（而非数据库）的名称）、用户名或密码错误，以及出于安全原因，服务器不允许进行连接。
+连接失败的最常见原因是服务器名称中的错误和网络连接问题。请记住，<*servername*> 是服务器而不是数据库的名称，需要提供完全限定的服务器名称：`<servername>.database.windows.net`
 
+此外，验证用户名和密码不包含任何拼写错误或多余的空格（用户名不区分大小写，但密码区分）。
 
-<!---HONumber=Mooncake_0503_2016-->
+还可以通过服务器名称显式设置如下所示的协议和端口号：`tcp:servername.database.windows.net,1433`
+
+网络连接问题也可能导致连接错误和超时。仅重试连接（如果你知道服务器名称、凭据和防火墙规则均正确）可能会成功。
+
+<!---HONumber=AcomDC_0921_2016-->

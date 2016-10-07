@@ -1,15 +1,19 @@
 <properties 
-   pageTitle="服务总线中转消息传送 REST 教程 | Azure"
-   description="中转消息传送 REST 教程。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
+    pageTitle="服务总线中转消息传送 REST 教程 | Microsoft Azure"
+    description="中转消息传送 REST 教程。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
     editor="" />
 <tags 
-   ms.service="service-bus"
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
     ms.date="06/03/2016"
-   wacn.date="" />
+    ms.author="sethm" />
 
 # 服务总线中转消息传送 REST 教程
 
@@ -25,13 +29,13 @@
 
 1. 在 [Azure 经典门户][]的主窗口中，单击在上一步中创建的命名空间的名称。
 
-3. 单击“配置”选项卡。
+1. 单击“配置”选项卡。
 
-4. 在“共享访问密钥生成器”部分中，记下与 **RootManageSharedAccessKey** 策略关联的“主密钥”，或将其复制到剪贴板。你将在本教程的后面部分使用此值。
+1. 在“共享访问密钥生成器”部分中，记下与 **RootManageSharedAccessKey** 策略关联的“主密钥”，或将其复制到剪贴板。你将在本教程的后面部分使用此值。
 
 ## 创建控制台客户端
 
-通过服务总线队列，你可以在第一个先进先出队列中存储消息。主题和订阅可实现发布/订阅模式；创建主题，然后创建与该主题关联的一个或多个订阅。当消息发送到主题时，就会立即发送到该主题的订户。
+通过服务总线队列，你可以在第一个先进先出队列中存储消息。主题和订阅可实现发布/订阅模式；创建一个主题，然后再创建一个或多个与该主题相关联的订阅。当消息发送到该主题时，它们会立即发送到该主题的订户。
 
 本教程中的代码将执行以下操作。
 
@@ -39,9 +43,9 @@
 
 - 创建队列、将消息发送到队列，并读取来自队列的消息。
 
-- 创建一个主题和对该主题的订阅，并向该订阅发送消息和读取来自该订阅的消息。
+- 创建一个主题、创建该主题的订阅，然后从该订阅发送并读取消息。
 
-- 从服务总线检索所有队列、主题和订阅信息（包括订阅规则）。
+- 从服务总线中检索所有队列、主题和订阅信息，包括订阅规则。
 
 - 删除队列、主题和订阅资源。
 
@@ -53,9 +57,9 @@
 
 1. 在“开始”菜单中右键单击 Visual Studio，以便以管理员身份启动该程序，然后单击“以管理员身份运行”。
 
-2. 创建新的控制台应用程序项目。依次单击“文件”菜单、“新建”和“项目”。在“新建项目”对话框中，选择“Visual C#”（如果不显示“Visual C#”，则在“其他语言”下方查看），再选择“控制台应用程序”模板，然后将其命名为 **Microsoft.ServiceBus.Samples**。使用默认“位置”。单击“确定”以创建该项目。
+1. 创建新的控制台应用程序项目。依次单击“文件”菜单、“新建”和“项目”。在“新建项目”对话框中，选择“Visual C#”（如果不显示“Visual C#”，则在“其他语言”下方查看），再选择“控制台应用程序”模板，然后将其命名为 **Microsoft.ServiceBus.Samples**。使用默认“位置”。单击“确定”以创建该项目。
 
-3. 在 Program.cs 中，确保 `using` 语句如下所示：
+1. 在 Program.cs 中，确保 `using` 语句如下所示：
 
 	```
 	using System;
@@ -67,9 +71,9 @@
 	using System.Xml;
 	```
 
-4. 如有需要，将该程序的命名空间从 Visual Studio 默认值重命名为 `Microsoft.ServiceBus.Samples`。
+1. 如有需要，将该程序的命名空间从 Visual Studio 默认值重命名为 `Microsoft.ServiceBus.Samples`。
 
-5. 在 `Program` 类中，添加以下全局变量：
+1. 在 `Program` 类中，添加以下全局变量：
 	
 	```
 	static string serviceNamespace;
@@ -78,7 +82,7 @@
 	const string sbHostName = "servicebus.windows.net";
 	```
 
-6. 在 `Main()` 中，粘贴以下代码：
+1. 在 `Main()` 中，粘贴以下代码：
 
 	```
 	Console.Write("Enter your service namespace: ");
@@ -221,7 +225,7 @@ private static string CreateQueue(string queueName, string token)
 	}
 	```
 
-2. 标准中转消息属性位于 `BrokerProperties` HTTP 标头中。中转站属性必须以 JSON 格式序列化。若要指定 30 秒的 **TimeToLive** 值并向消息添加消息标签“M1”，请在前面的示例所示的 `webClient.UploadData()` 调用之前添加以下代码：
+1. 标准中转消息属性位于 `BrokerProperties` HTTP 标头中。中转站属性必须以 JSON 格式序列化。若要指定 30 秒的 **TimeToLive** 值并向消息添加消息标签“M1”，请在前面的示例所示的 `webClient.UploadData()` 调用之前添加以下代码：
 
 	```
 	// Add brokered message properties "TimeToLive" and "Label"
@@ -230,7 +234,7 @@ private static string CreateQueue(string queueName, string token)
 
 	请注意，已添加并将继续添加中转消息属性。因此，发送请求必须指定支持属于请求一部分的所有中转消息属性的 API 版本。如果指定的 API 版本不支持中转消息属性，则忽略该属性。
 
-3. 自定义消息属性被定义为一组键值对。每个自定义属性都存储在其自身的 TPPT 标头中。若要添加自定义属性“Priority”和“Customer”，请在前面的示例所示的 `webClient.UploadData()` 调用之前直接添加以下代码：
+1. 自定义消息属性被定义为一组键值对。每个自定义属性都存储在其自身的 TPPT 标头中。若要添加自定义属性“Priority”和“Customer”，请在前面的示例所示的 `webClient.UploadData()` 调用之前直接添加以下代码：
 
 	```
 	// Add custom properties "Priority" and "Customer".
@@ -254,7 +258,7 @@ private static string ReceiveAndDeleteMessage(string resourceName)
     WebClient webClient = new WebClient();
     webClient.Headers[HttpRequestHeader.Authorization] = token;
 
-    byte[] response = webClient.UploadData(fullAddress, "DELETE", newbyte[0]);
+    byte[] response = webClient.UploadData(fullAddress, "DELETE", new byte[0]);
     string responseStr = Encoding.UTF8.GetString(response);
 
     Console.WriteLine(responseStr);
@@ -264,7 +268,7 @@ private static string ReceiveAndDeleteMessage(string resourceName)
 
 ## 创建主题和订阅
 
-下一步是编写使用 REST 样式的 HTTP PUT 命令来创建主题的方法。然后，编写创建对该主题的订阅的方法。
+下一步是编写使用 REST 样式的 HTTP PUT 命令创建主题的方法。然后，可以编写一种方法创建该主题的订阅。
 
 ### 创建主题
 
@@ -294,7 +298,7 @@ private static string CreateTopic(string topicName)
 
 ### 创建订阅
 
-以下代码将创建对上一步中创建的主题的订阅。在 `CreateTopic()` 定义后直接添加以下代码：
+以下代码用于创建在上一步骤中创建的主题的订阅。在 `CreateTopic()` 定义后直接添加以下代码：
 
 ```
 private static string CreateSubscription(string topicName, string subscriptionName)
@@ -625,9 +629,10 @@ namespace Microsoft.ServiceBus.Samples
 
 请参阅以下文章以了解更多信息：
 
-- [服务总线消息传送概述](/documentation/articles/service-bus-messaging-overview/)
-- [Azure 服务总线基础知识](/documentation/articles/service-bus-fundamentals-hybrid-solutions/)
-- [服务总线中继 REST 教程](/documentation/articles/service-bus-relay-rest-tutorial/)
-[Azure 经典门户]: http://manage.windowsazure.cn
+- [服务总线消息传送概述](service-bus-messaging-overview.md)
+- [Azure 服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
+- [服务总线中继 REST 教程](service-bus-relay-rest-tutorial.md)
 
-<!---HONumber=Mooncake_0718_2016-->
+[Azure 经典门户]: http://manage.windowsazure.com
+
+<!---HONumber=AcomDC_0921_2016-->

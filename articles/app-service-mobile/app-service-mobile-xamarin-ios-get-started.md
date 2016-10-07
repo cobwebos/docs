@@ -1,5 +1,5 @@
 <properties
-	pageTitle="适用于 Xamarin iOS 应用的 Azure 应用服务移动应用入门 | Azure"
+	pageTitle="适用于 Xamarin iOS 应用的 Azure App Service 移动应用入门 | Microsoft Azure"
 	description="按照本教程进行操作，开始使用移动应用进行 Xamarin.iOS 开发。"
 	services="app-service\mobile"
 	documentationCenter="xamarin"
@@ -9,8 +9,12 @@
 
 <tags
 	ms.service="app-service-mobile"
+	ms.workload="na"
+	ms.tgt_pltfrm="mobile-xamarin-ios"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
 	ms.date="08/04/2016"
-	wacn.date=""/>
+	ms.author="normesta"/>
 
 
 #创建 Xamarin iOS 应用
@@ -27,11 +31,11 @@
 
 若要完成本教程，您需要以下各项：
 
-* 有效的 Azure 帐户。如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
+* 有效的 Azure 帐户。如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
-* Visual Studio with Xamarin。有关说明，请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/zh-cn/library/mt613162.aspx)。
+* Visual Studio with Xamarin。有关说明，请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx)。
 
-* 安装了 Xcode v7.0 版或更高版本以及 Xamarin Studio Community 的 Mac。请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/zh-cn/library/mt613162.aspx) 和 [Mac 用户的设置、安装和验证](https://msdn.microsoft.com/zh-cn/library/mt488770.aspx) (MSDN)。
+* 安装了 Xcode v7.0 版或更高版本以及 Xamarin Studio Community 的 Mac。请参阅[设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 和 [Mac 用户的设置、安装和验证](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN)。
 
 >[AZURE.NOTE] 如果要在注册 Azure 帐户之前就开始使用 Azure 应用服务，请转到 [Try App Service](https://tryappservice.azure.com/?appServiceName=mobile)（试用应用服务）。在那里，可以立即在应用服务中创建短期的入门级移动应用 - 无需信用卡，也无需做出承诺。
 
@@ -75,11 +79,9 @@
 
 ##后续步骤
 
-* [向应用添加身份验证](/documentation/articles/app-service-mobile-xamarin-ios-get-started-users/)
-  <br/>了解如何使用标识提供者对应用的用户进行身份验证。
+* [向应用添加身份验证](app-service-mobile-xamarin-ios-get-started-users.md)<br/>了解如何使用标识提供者对应用的用户进行身份验证。
 
-* [向应用程序添加推送通知](/documentation/articles/app-service-mobile-xamarin-ios-get-started-push/)
-  <br/>了解如何向应用程序发送一条很基本的推送通知。
+* [向应用程序添加推送通知](app-service-mobile-xamarin-ios-get-started-push.md)<br/>了解如何向应用程序发送一条很基本的推送通知。
 
 <!-- Anchors. -->
 [Getting started with mobile app backends]: #getting-started
@@ -95,6 +97,7 @@
 [10]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[Azure 门户]: https://portal.azure.cn/
 
-<!---HONumber=Mooncake_0919_2016-->
+[Azure 门户]: https://portal.azure.com/
+
+<!---HONumber=AcomDC_0921_2016-->

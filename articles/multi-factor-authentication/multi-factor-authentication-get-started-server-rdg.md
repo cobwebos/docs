@@ -1,16 +1,20 @@
 <properties 
-	pageTitle="使用 RADIUS 的远程桌面网关和 Azure Multi-Factor Authentication 服务器" 
-	description="本 Azure Multi-Factor Authentication 页面将会帮助你部署使用 RADIUS 的远程桌面 (RD) 网关和 Azure Multi-Factor Authentication 服务器。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="femila" 
+	pageTitle="使用 RADIUS 的远程桌面网关和 Azure Multi-Factor Authentication 服务器"
+	description="本 Azure Multi-Factor Authentication 页面将会帮助你部署使用 RADIUS 的远程桌面 (RD) 网关和 Azure Multi-Factor Authentication 服务器。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.date="08/15/2016" 
-	wacn.date=""/>  
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/15/2016"
+	ms.author="kgremban"/>  
 
 
 # 使用 RADIUS 的远程桌面网关和 Azure Multi-Factor Authentication 服务器
@@ -56,4 +60,4 @@ RD 网关使用 NPS 将 RADIUS 请求发送到 Azure Multi-Factor Authentication
 
 ![Radius 身份验证](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,10 +1,8 @@
-若要使用 Azure 门户创建 VNet，请遵循以下步骤。请注意，提供的屏幕截图用作示例。请务必替换为你自己的值。
+若要使用 Azure 门户创建 VNet，请遵循以下步骤。请注意，提供的屏幕截图用作示例。请务必替换为你自己的值。有关使用虚拟网络的详细信息，请参阅[虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
 
-有关使用虚拟网络的详细信息，请参阅 [Virtual Network Overview](/documentation/articles/virtual-networks-overview)（虚拟网络概述）。
+1. 从浏览器导航到 [Azure 门户](http://portal.azure.com)。如有必要，请使用 Azure 帐户登录。
 
-1. 从浏览器导航到 [Azure 门户](http://manage.windowsazure.cn)。如有必要，请使用 Azure 帐户登录。
-
-2. 单击“新建”>“网络”>“虚拟网络”。
+2. 依次单击“新建”**>**“网络”**>**“虚拟网络”。
 
 	![VNetBlade](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal650.png)
 
@@ -17,13 +15,13 @@
 
 	![创建虚拟网络边栏选项卡](./media/vpn-gateway-basic-vnet-rm-portal-include/createavnet250.png)
 
-5. 确认“订阅”正确无误。你可以使用下拉列表更改订阅。
+5. 验证“订阅”是否正确。可使用下拉列表更改订阅。
 
-6. 单击“资源组”并选择现有的资源组，或键入新的资源组名称以创建新的资源组。如果要创建新组，请根据计划的配置值来命名资源组。有关资源组的详细信息，请访问 [Azure 资源管理器概述](/documentation/articles/resource-group-overview/#resource-groups)。
+6. 单击“资源组”，然后选择现有资源组，或通过键入新的资源组名称创建新资源组。如果要创建新组，请根据计划的配置值来命名资源组。有关资源组的详细信息，请访问 [Azure 资源管理器概述](resource-group-overview.md#resource-groups)。
 
 7. 接下来，选择 VNet 的“位置”设置。请注意，该位置决定了你要部署到此 VNet 的资源所在的位置。以后，在不重新部署资源的情况下，将无法更改此位置。
 
-8. 如果你希望能够在仪表板上轻松查找 VNet，请选择“固定到仪表板”，然后单击“创建”。
+8. 如果你希望能够在仪表板上轻松找到 VNet，请选择“固定到仪表板”，然后单击“创建”。
 	
 	![固定到仪表板](./media/vpn-gateway-basic-vnet-rm-portal-include/pintodashboard150.png)
 
@@ -32,4 +30,4 @@
 
 	![创建虚拟网络磁贴](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png)
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=AcomDC_0921_2016-->

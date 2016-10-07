@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Stretch Database 概述 | Azure"
+	pageTitle="延伸数据库概述 | Microsoft Azure"
 	description="了解 Stretch Database 如何透明、安全地将冷数据迁移到 Microsoft Azure 云。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
@@ -9,14 +9,18 @@
 
 <tags
 	ms.service="sql-server-stretch-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
 	ms.date="06/27/2016"
-	wacn.date=""/>
+	ms.author="douglasl"/>
 
 # 延伸数据库概述
 
 Stretch Database 可以透明、安全地将冷数据迁移到 Microsoft Azure 云。
 
-如果只是想要立即开始使用 Stretch Database，请参阅 [Get started by running the Enable Database for Stretch Wizard](/documentation/articles/sql-server-stretch-database-wizard/)（通过运行“启用数据库延伸”向导开始操作）。
+如果只是想要立即开始使用 Stretch Database，请参阅[通过运行“为数据库启用延伸”向导开始操作](sql-server-stretch-database-wizard.md)。
 
 ## 延伸数据库的优势是什么？
 延伸数据库提供以下优势：
@@ -61,19 +65,19 @@ Stretch Database 可以透明、安全地将冷数据迁移到 Microsoft Azure �
 ## 哪种类型的数据库和表符合延伸数据库条件？
 Stretch Database 面向包含大量冷数据的事务数据库，这些数据通常存储在少量的表中。这些表可能包含超过十亿行。
 
-如果使用 SQL Server 2016 的临时表功能，则可以使用延伸数据库将关联的所有或部分历史记录表迁移到 Azure 上的高性价比存储中。有关详细信息，请参阅[管理版本由系统控制的临时表中历史数据的保留期](https://msdn.microsoft.com/zh-cn/library/mt637341.aspx)。
+如果使用 SQL Server 2016 的临时表功能，则可以使用延伸数据库将关联的所有或部分历史记录表迁移到 Azure 上的高性价比存储中。有关详细信息，请参阅[管理版本由系统控制的临时表中历史数据的保留期](https://msdn.microsoft.com/library/mt637341.aspx)。
 
-使用 SQL Server 2016 升级顾问的一项功能 - 延伸数据库顾问 - 可以识别符合延伸数据库条件的数据库和表。有关详细信息，请参阅[识别符合 Stretch Database 条件的数据库和表](/documentation/articles/sql-server-stretch-database-identify-databases/)。若要详细了解潜在的阻碍性问题，请参阅 [Stretch Database 的限制](/documentation/articles/sql-server-stretch-database-limitations/)。
+使用 SQL Server 2016 升级顾问的一项功能 - 延伸数据库顾问 - 可以识别符合延伸数据库条件的数据库和表。有关详细信息，请参阅[识别符合 Stretch Database 条件的数据库和表](sql-server-stretch-database-identify-databases.md)。若要了解有关潜在阻碍性问题的详细信息，请参阅 [Stretch Database 的限制](sql-server-stretch-database-limitations.md)。
 
 ## 体验延伸数据库
 **借助 AdventureWorks 示例数据库体验延伸数据库。** 若要获取 AdventureWorks 示例数据库，请从[此处](https://www.microsoft.com/download/details.aspx?id=49502)至少下载数据库文件以及示例和脚本文件。将示例数据库还原到 SQL Server 2016 实例后，解压缩示例文件，然后从 Stretch DB 文件夹打开 Stretch DB Samples 文件。运行此文件中的脚本可以查看启用延伸数据库之前和之后数据所用的空间，跟踪数据迁移的进度，以及确认在数据迁移期间和之后是否可以继续查询现有数据和插入新数据。
 
 ## 后续步骤
-**识别符合延伸数据库条件的数据库和表。** 下载 SQL Server 2016 升级顾问并运行延伸数据库顾问，以识别符合延伸数据库条件的数据库和表。延伸数据库顾问还可识别阻碍性问题。有关详细信息，请参阅[识别符合 Stretch Database 条件的数据库和表](/documentation/articles/sql-server-stretch-database-identify-databases/)。
+**识别符合延伸数据库条件的数据库和表。** 下载 SQL Server 2016 升级顾问并运行延伸数据库顾问，以识别符合延伸数据库条件的数据库和表。延伸数据库顾问还可识别阻碍性问题。有关详细信息，请参阅[识别符合 Stretch Database 条件的数据库和表](sql-server-stretch-database-identify-databases.md)。
 
 <!--Image references-->
 [StretchOverviewImage1]: ./media/sql-server-stretch-database-overview/StretchDBOverview.png
 [StretchOverviewImage2]: ./media/sql-server-stretch-database-overview/StretchDBOverview1.png
 [StretchOverviewImage3]: ./media/sql-server-stretch-database-overview/StretchDBOverview2.png
 
-<!---HONumber=Mooncake_0801_2016--->
+<!---HONumber=AcomDC_0921_2016-->

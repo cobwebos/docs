@@ -1,27 +1,33 @@
 <properties
-   pageTitle="在 Windows 中的基于 Linux 的群集上将 SSH 密钥与 Hadoop 配合使用 | Azure"
+   pageTitle="在 Windows 中的基于 Linux 的群集上将 SSH 密钥与 Hadoop 配合使用 | Microsoft Azure"
    description="了解如何创建和使用 SSH 密钥，以便向基于 Linux 的 HDInsight 群集进行身份验证。使用 PuTTY SSH 客户端从基于 Windows 的客户端连接群集。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
-   manager="paulettm"
+   manager="jhubbard"
    editor="cgronlun"
-   tags="azure-portal"/>
+	tags="azure-portal"/>
 
 <tags
-   ms.service="hdinsight" 
-   ms.date="09/15/2015"
-   wacn.date=""/>
+   ms.service="hdinsight"
+   ms.devlang="na"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="big-data"
+   ms.date="08/30/2016"
+   ms.author="larryfr"/>
 
-#在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用（预览版）
+#在 Windows 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用
 
 > [AZURE.SELECTOR]
-- [Windows](hdinsight-hadoop-linux-use-ssh-windows)
-- [Linux, Unix, OS X](hdinsight-hadoop-linux-use-ssh-unix)
+- [Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
+- [Linux、Unix、OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-[安全外壳 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) 允许你使用命令行界面在基于 Liux 的 HDInsight 群集上远程执行操作。本文档提供有关如何通过使用 PuTTY SSH 客户端在基于 Windows 的客户端中连接到 HDInsight 的信息。
+[安全外壳 (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) 允许你使用命令行接口在基于 Linux 的 HDInsight 群集上远程执行操作。本文档提供有关如何通过使用 PuTTY SSH 客户端在基于 Windows 的客户端中连接到 HDInsight 的信息。
 
-> [AZURE.NOTE]本文中的步骤假设你使用的是基于 Windows 的客户端。如果你使用的是 Linux、Unix 或 OS X 客户端，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix)。
+> [AZURE.NOTE] 本文中的步骤假设你使用的是基于 Windows 的客户端。如果你使用的是 Linux、Unix 或 OS X 客户端，请参阅[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)。
+>
+> 如果你有 Windows 10 并[在 Windows 的 Ubuntu 上使用 Bash](https://msdn.microsoft.com/commandline/wsl/about)，则可以按照[在 Linux、Unix 或 OS X 中的 HDInsight 上将 SSH 与基于 Linux 的 Hadoop 配合使用](hdinsight-hadoop-linux-use-ssh-unix.md)文档中所述的步骤进行操作。
 
 ##先决条件
 
@@ -29,9 +35,11 @@
 
 * 支持 HTML5 的现代 Web 浏览器。
 
-或者
+或
 
-* [适用于 Mac、Linux 和 Windows 的 Azure CLI](/documentation/articles/xplat-cli)。
+* [Azure CLI](../xplat-cli-install.md)。
+
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
 ##什么是 SSH？
 
@@ -40,10 +48,6 @@ SSH 是用于登录远程服务器以及在其上远程执行命令的实用工�
 ###SSH 用户名
 
 SSH 用户名是用于向 HDInsight 群集进行身份验证的名称。如果在群集创建过程中指定 SSH 用户名，则将在群集中的所有节点上创建此用户。创建群集后，可以使用此用户名连接到 HDInsight 群集头节点。然后，可以从头节点连接到各个辅助节点。
-
-> [AZURE.NOTE]SSH 用户名必须是唯一的。由于 SSH 用户名要在 HDInsight 群集上创建用户帐户，因此它不能与 HDInsight 创建的现有用户冲突。以下是保留供在 HDInsight 群集上运行的服务使用的名称，它们不能用作 SSH 用户名：
->
-> root、hdiuser、storm、hbase、ubuntu、zookeeper、hdfs、yarn、mapred、hbase、hive、oozie、falcon、sqoop、admin、tez、hcat、hdinsight-zookeeper。
 
 ###SSH 密码或公钥
 
@@ -72,16 +76,16 @@ SSH 用户可以使用密码或公钥进行身份验证。密码仅仅是你编�
 4. 为了提高安全性，你可以在“密钥通行短语”字段中输入通行短语，然后在“确认通行短语”字段中键入相同值。
 
 	![通行短语](./media/hdinsight-hadoop-linux-use-ssh-windows/key.png)
-	
-	> [AZURE.NOTE]强烈建议你为密钥使用安全的通行短语。但是，如果你忘记了通行短语，将没有办法恢复它。
+
+	> [AZURE.NOTE] 强烈建议你为密钥使用安全的通行短语。但是，如果你忘记了通行短语，将没有办法恢复它。
 
 5. 单击“保存私钥”以在 **.ppk** 文件中保存密钥。在基于 Linux 的 HDInsight 群集上进行身份验证时，将要用到此密钥。
 
-	> [AZURE.NOTE]应该将此密钥存储在安全位置，因为它可以用来访问基于 Linux 的 HDInsight 群集。
+	> [AZURE.NOTE] 应该将此密钥存储在安全位置，因为它可以用来访问基于 Linux 的 HDInsight 群集。
 
 6. 单击“保存公钥”以在 **.txt** 文件中保存此密钥。当你以后创建其他基于 Linux 的 HDInsight 群集时，可以重复使用该公钥。
 
-	> [AZURE.NOTE]公钥也显示在 PuTTYGen 的顶部。你可以右键单击此字段，复制值，并将其粘贴到窗体中，例如 Azure 门户中的 HDInsight 向导。
+	> [AZURE.NOTE] 公钥也显示在 PuTTYGen 的顶部。使用 Azure 门户创建群集时，可以右键单击此字段、复制值，然后将其粘贴到窗体中。
 
 ##创建基于 Linux 的 HDInsight 群集
 
@@ -89,23 +93,25 @@ SSH 用户可以使用密码或公钥进行身份验证。密码仅仅是你编�
 
 * **Azure 门户** - 使用基于 Web 的门户创建群集。
 
-* **Azure 跨平台命令行界面 (xplat-cli)** - 使用命令行命令创建群集。
+* **适用于 Mac、Linux 和 Windows 的 Azure CLI** - 使用命令行命令来创建群集。
 
-上述每种方法都将需要公钥。有关创建基于 Linux 的 HDInsight 群集的完整信息，请参阅<a href="/documentation/articles/hdinsight-hadoop-provision-linux-clusters/" target="_blank">预配基于 Linux 的 HDInsight 群集</a>。
+上述每种方法都将需要公钥。有关创建基于 Linux 的 HDInsight 群集的完整信息，请参阅[预配基于 Linux 的 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 ###Azure 门户
 
-使用该门户创建基于 Linux 的 HDInsight 群集时，你必须采用以下形式输入用户名和密码或公钥：
+使用 [Azure 门户][preview-portal]创建基于 Linux 的 HDInsight 群集时，必须输入“SSH 用户名”，然后选择输入“密码”或“SSH 公钥”。
+
+如果选择“SSH 公钥”，可以将公钥（显示在 PuttyGen 中的__Public key for pasting into OpenSSH authorized\_keys file__ 字段）粘贴到 __SSH PublicKey__ 字段中，也可以选择“选择文件”浏览并选择包含该公钥的文件。
 
 ![要求提供公钥的窗体图像](./media/hdinsight-hadoop-linux-use-ssh-windows/ssh-key.png)
 
 这将为指定的用户创建登录名，并启用密码身份验证或 SSH 密钥身份验证。
 
-###Azure 跨平台命令行界面
+###适用于 Mac、Linux 和 Windows 的 Azure 命令行接口
 
-你可以使用 <a href="/documentation/articles/xplat-cli/" target="_brad">Azure 跨平台命令行界面</a>来通过 `azure hdinsight cluster create` 命令创建新群集。
+你可以使用[适用于 Mac、Linux 和 Windows 的 Azure CLI](../xplat-cli-install.md) 来通过 `azure hdinsight cluster create` 命令创建新群集。
 
-有关使用此命令的详细信息，请参阅<a href="/documentation/articles/hdinsight-hadoop-provision-linux-clusters/" target="_blank">使用自定义选项在 HDInsight 中预配 Hadoop Linux 群集</a>。
+有关使用此命令的详细信息，请参阅[使用自定义选项在 HDInsight 中预配 Hadoop Linux 群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 ##连接到基于 Linux 的 HDInsight 群集
 
@@ -119,7 +125,11 @@ SSH 用户可以使用密码或公钥进行身份验证。密码仅仅是你编�
 
 	![putty 接口，选择私钥](./media/hdinsight-hadoop-linux-use-ssh-windows/puttykey.png)
 
-3. 在“类别”中，选择“会话”。在“PuTTY 会话的基本选项”屏幕中，将 HDInsight 服务器的 SSH 地址输入到“主机名(或 IP 地址)”字段中。SSH 地址是群集名称后接 **-ssh.azurehdinsight.cn**。例如 **mycluster-ssh.azurehdinsight.cn**。
+3. 在“类别”中，选择“会话”。在“PuTTY 会话的基本选项”屏幕中，将 HDInsight 服务器的 SSH 地址输入到“主机名(或 IP 地址)”字段中。连接到群集时，可能有两个可以使用的 SSH 地址：
+
+    * __头节点地址__：若要连接到群集的头节点，请使用群集名称，该名称后接 **-ssh.azurehdinsight.net**。例如，**mycluster-ssh.azurehdinsight.net**。
+    
+    * __边缘节点地址__：如果要连接到 HDInsight 群集中的 R Server，可以使用地址 __RServer.CLUSTERNAME.ssh.azurehdinsight.net__（其中 CLUSTERNAME 是群集的名称）连接到 R Server 边缘节点。例如，__RServer.mycluster.ssh.azurehdinsight.net__。
 
 	![已输入 ssh 地址的 putty 接口](./media/hdinsight-hadoop-linux-use-ssh-windows/puttyaddress.png)
 
@@ -127,11 +137,11 @@ SSH 用户可以使用密码或公钥进行身份验证。密码仅仅是你编�
 
 5. 单击“打开”以连接到群集。
 
-	> [AZURE.NOTE]如果这是第一次连接到群集，你将收到安全警报。这是一般警报。选择“是”缓存服务器的 RSA2 密钥以继续。
+	> [AZURE.NOTE] 如果这是第一次连接到群集，你将收到安全警报。这是一般警报。选择“是”缓存服务器的 RSA2 密钥以继续。
 
 6. 出现提示时，请输入你在创建群集时输入的用户。如果你为用户提供了密码，则系统仍将提示你输入该密码。
 
-> [AZURE.NOTE]上述步骤假设你使用的是要连接到 HDInsight 群集上 headnode0 的端口 22。如果使用端口 23，将连接到 headnode1。有关头节点的详细信息，请参阅 [HDInsight 中的 Hadoop 群集的可用性和可靠性](/documentation/articles/hdinsight-high-availability-linux)。
+> [AZURE.NOTE] 上述步骤假设你使用的是要连接到 HDInsight 群集上主要头节点的端口 22。如果使用端口 23，将连接到次要头节点。有关头节点的详细信息，请参阅 [HDInsight 中的 Hadoop 群集的可用性和可靠性](hdinsight-high-availability-linux.md)。
 
 ###连接到从节点
 
@@ -147,7 +157,7 @@ SSH 用户可以使用密码或公钥进行身份验证。密码仅仅是你编�
 
 3. 在“浏览”对话框出现时，选择包含密钥的 .ppk 文件，然后单击“打开”。此时将向 Pageant 添加密钥，在连接到群集时，Pageant 将向 PuTTY 提供该密钥。
 
-    > [AZURE.IMPORTANT]如果你使用了 SSH 密钥保护帐户，则必须完成以前的步骤，然后才能连接到辅助节点。
+    > [AZURE.IMPORTANT] 如果你使用了 SSH 密钥保护帐户，则必须完成以前的步骤，然后才能连接到辅助节点。
 
 4. 打开 PuTTY。
 
@@ -161,23 +171,23 @@ SSH 用户可以使用密码或公钥进行身份验证。密码仅仅是你编�
 
 7. 在建立连接后，使用以下方式检索你的群集节点列表。将 *ADMINPASSWORD* 替换为你的群集管理员帐户的密码。将 *CLUSTERNAME* 替换为群集名称。
 
-        curl --user admin:ADMINPASSWORD https://CLUSTERNAME.azurehdinsight.cn/api/v1/hosts
+        curl --user admin:ADMINPASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/hosts
 
     这将返回群集节点的 JSON 格式的信息，包括 `host_name`，其中包含每个节点的完全限定域名 (FQDN)。下面是由 **curl** 命令返回的 `host_name` 条目的示例：
 
-        "host_name" : "workernode0.workernode-0-e2f35e63355b4f15a31c460b6d4e1230.j1.internal.chinacloudapp.cn"
+        "host_name" : "workernode0.workernode-0-e2f35e63355b4f15a31c460b6d4e1230.j1.internal.cloudapp.net"
 
 8. 一旦有你要连接到的从节点的列表，就可以在 PuTTY 会话中使用以下命令打开到从节点的连接：
 
         ssh USERNAME@FQDN
 
-    将 *USERNAME* 替换为你的 SSH 用户名，并将 *FQDN* 替换为辅助节点的 FQDN。例如，`workernode0.workernode-0-e2f35e63355b4f15a31c460b6d4e1230.j1.internal.chinacloudapp.cn`。
+    将 *USERNAME* 替换为你的 SSH 用户名，并将 *FQDN* 替换为辅助节点的 FQDN。例如，`workernode0.workernode-0-e2f35e63355b4f15a31c460b6d4e1230.j1.internal.cloudapp.net`。
 
-    > [AZURE.NOTE]如果你使用密码对 SSH 会话进行身份验证，则系统将提示你重新输入该密码。如果你使用 SSH 密钥，则连接应在没有任何提示的情况下完成。
+    > [AZURE.NOTE] 如果你使用密码对 SSH 会话进行身份验证，则系统将提示你重新输入该密码。如果你使用 SSH 密钥，则连接应在没有任何提示的情况下完成。
 
-9. 在建立会话后，你的 PuTTY 会话的提示符将从 `username@headnode` 更改为 `username@workernode`，指示你已连接到辅助节点。你此时运行的任何命令都将在从节点上运行。
+9. 在建立会话后，你的 PuTTY 会话的提示符将从 `username@hn#-clustername` 更改为 `username@wn#-clustername`，指示你已连接到辅助节点。你此时运行的任何命令都将在从节点上运行。
 
-10. 在辅助节点上执行完操作后，使用 `exit` 命令来关闭辅助节点的会话。这将使你返回到 `username@headnode` 提示符。
+10. 在辅助节点上执行完操作后，使用 `exit` 命令来关闭辅助节点的会话。这将使你返回到 `username@hn#-clustername` 提示符。
 
 ##添加更多帐户
 
@@ -187,15 +197,15 @@ SSH 用户可以使用密码或公钥进行身份验证。密码仅仅是你编�
 
 2. 在群集的 SSH 会话中，使用以下命令添加新用户：
 
-		sudo adduser --disabled-password <username> 
+		sudo adduser --disabled-password <username>
 
 	这将创建一个新的用户帐户，但会禁用密码身份验证。
 
 3. 使用以下命令，创建用于保存密钥的目录和文件：
 
-		sudo mkdir -p /home/<username>/.ssh
-		sudo touch /home/<username>/.ssh/authorized_keys
-		sudo nano /home/<username>/.ssh/authorized_keys
+        sudo mkdir -p /home/<username>/.ssh
+        sudo touch /home/<username>/.ssh/authorized_keys
+        sudo nano /home/<username>/.ssh/authorized_keys
 
 4. 当 nano 编辑器打开时，请复制并粘贴新用户帐户的公钥内容。最后，使用 **Ctrl-X** 保存文件并退出编辑器。
 
@@ -211,19 +221,20 @@ SSH 用户可以使用密码或公钥进行身份验证。密码仅仅是你编�
 
 可以使用 SSH 来以隧道方式将本地请求（例如 Web 请求）传送到 HDInsight 群集。然后，请求将路由到请求的资源，就像它是来源于 HDInsight 群集头节点一样。
 
-> [AZURE.IMPORTANT]访问某些 Hadoop 服务的 Web UI 需要使用 SSH 隧道。例如，作业历史记录 UI 或资源管理器 UI 只能使用 SSH 隧道访问。
+> [AZURE.IMPORTANT] 访问某些 Hadoop 服务的 Web UI 需要使用 SSH 隧道。例如，作业历史记录 UI 或资源管理器 UI 只能使用 SSH 隧道访问。
 
-有关创建和使用 SSH 隧道的详细信息，请参阅[使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI](/documentation/articles/hdinsight-linux-ambari-ssh-tunnel)。
+有关创建和使用 SSH 隧道的详细信息，请参阅[使用 SSH 隧道访问 Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie 和其他 Web UI](hdinsight-linux-ambari-ssh-tunnel.md)。
 
 ##后续步骤
 
 既然你了解了如何使用 SSH 密钥进行身份验证，就可以学习如何在 HDInsight 上将 MapReduce 与 Hadoop 配合使用。
 
-* [将 Hive 与 HDInsight 配合使用](/documentation/articles/hdinsight-use-hive/)
+* [将 Hive 与 HDInsight 配合使用](hdinsight-use-hive.md)
 
-* [将 Pig 与 HDInsight 配合使用](/documentation/articles/hdinsight-use-pig/)
+* [将 Pig 与 HDInsight 配合使用](hdinsight-use-pig.md)
 
-* [将 MapReduce 作业与 HDInsight 配合使用](/documentation/articles/hdinsight-use-mapreduce/)
- 
+* [将 MapReduce 作业与 HDInsight 配合使用](hdinsight-use-mapreduce.md)
 
-<!----HONumber=74-->
+[preview-portal]: https://portal.azure.com/
+
+<!---HONumber=AcomDC_0921_2016-->

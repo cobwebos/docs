@@ -1,5 +1,5 @@
 <properties
-	pageTitle="创建在移动应用中使用的通用 Windows 平台 (UWP) | Azure"
+	pageTitle="创建在移动应用中使用的通用 Windows 平台 (UWP) | Microsoft Azure"
 	description="按照本教程进行操作，开始使用 C#、Visual Basic 或 JavaScript 通过 Azure 移动应用后端进行通用 Windows 平台 (UWP) 应用开发。"
 	services="app-service\mobile"
 	documentationCenter="windows"
@@ -9,8 +9,12 @@
 
 <tags
 	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
 	ms.date="08/11/2016"
-	wacn.date=""/>
+	ms.author="glenga"/>
 
 #创建 Windows 应用
 
@@ -18,7 +22,7 @@
 
 ##概述
 
-本教程说明如何向通用 Windows 平台 (UWP) 应用添加基于云的后端服务。有关详细信息，请参阅[什么是移动应用](/documentation/articles/app-service-mobile-value-prop/)。以下是完整应用的截屏：
+本教程说明如何向通用 Windows 平台 (UWP) 应用添加基于云的后端服务。有关详细信息，请参阅[什么是移动应用](app-service-mobile-value-prop.md)。以下是完整应用的截屏：
 
 ![已完成的桌面应用](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed-desktop.png) 在桌面上运行。
 
@@ -30,7 +34,7 @@
 
 若要完成本教程，您需要以下各项：
 
-* 有效的 Azure 帐户。如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
+* 有效的 Azure 帐户。如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用，即使在试用期结束之后仍可继续使用这些应用。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
 
 * [Visual Studio Community 2015] 或更高版本。
 
@@ -60,7 +64,7 @@
 
 4. 将 UWP 应用设为启动项目后，按 F5 键部署和运行该应用。
 
-5. 在应用的“插入 TodoItem”文本框中键入有意义的文本（例如 *Complete the tutorial* ），然后单击“保存”。
+5. 在应用的“插入 TodoItem”文本框中键入有意义的文本（例如 *Complete the tutorial*），然后单击“保存”。
 
 	![Windows 快速入门完整桌面](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 
@@ -74,20 +78,18 @@
 
 ##后续步骤
 
-* [向应用添加身份验证](/documentation/articles/app-service-mobile-windows-store-dotnet-get-started-users/) 
-  了解如何使用标识提供者对应用的用户进行身份验证。
+* [向应用添加身份验证](app-service-mobile-windows-store-dotnet-get-started-users.md) 了解如何使用标识提供者对应用的用户进行身份验证。
 
-* [向应用添加推送通知](/documentation/articles/app-service-mobile-windows-store-dotnet-get-started-push/) 
-  了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
+* [向应用添加推送通知](app-service-mobile-windows-store-dotnet-get-started-push.md) 了解如何为应用添加推送通知支持，以及如何将移动应用后端配置为使用 Azure 通知中心发送推送通知。
 
-* [为应用启用脱机同步](/documentation/articles/app-service-mobile-windows-store-dotnet-get-started-offline-data/) 
-  了解如何使用移动应用后端向应用添加脱机支持。脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
+* [为应用启用脱机同步](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) 了解如何使用移动应用后端向应用添加脱机支持。脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。
 
 <!-- Anchors. -->
 <!-- Images. -->
 <!-- URLs. -->
+
 [Mobile App SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Azure portal]: https://portal.azure.cn/
+[Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2015]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

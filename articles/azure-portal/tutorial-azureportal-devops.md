@@ -1,5 +1,5 @@
 <properties
-	pageTitle="教程：使用 Azure 门户进行开发运营 | Azure"
+	pageTitle="教程：使用 Azure 门户进行开发运营 | Microsoft Azure"
 	description="了解 Azure 门户中的各种 DevOps 工作流。"
 	services="azure-portal"
 	documentationCenter=""
@@ -9,8 +9,12 @@
 
 <tags
 	ms.service="multiple"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="hero-article"
 	ms.date="06/05/2016"
-	wacn.date=""/>
+	ms.author="mlearned"/>
 
 # 教程：使用 Azure 门户进行开发运营
 
@@ -26,13 +30,13 @@ Azure 平台提供各式各样的灵活 DevOps（开发运营）工作流。在�
 
 ## 创建 Web 应用程序和启用连续部署
 
-创建一个要在本教程余下部分中使用的、包含 [Azure App Service](/documentation/services/app-service/) 的 Web 应用。首先，你要启用从源代码存储库到正在运行的 Azure 环境的连续部署。
+创建一个要在本教程余下部分中使用的、包含 [Azure App Service](https://azure.microsoft.com/services/app-service/) 的 Web 应用。首先，你要启用从源代码存储库到正在运行的 Azure 环境的连续部署。
 
 1.  登录到 Azure 门户
 
-2.  选择“应用程序服务”&gt;“添加”图标并输入名称，选择订阅，然后创建新的资源组作为服务的容器。
+2.  依次选择“应用服务”&gt;“添加图标”并输入名称、选择你的订阅，然后创建要用作该服务容器的新资源组。
 
-    资源组可让你管理解决方案的各个方面，例如计费、部署和监视，所有这些操作都可以通过 [Azure Resource Manager](/documentation/articles/resource-group-overview/) 以单个组的形式完成。
+    资源组可让你管理解决方案的各个方面，例如计费、部署和监视，所有这些操作都可以通过 [Azure Resource Manager](https://azure.microsoft.com/documentation/articles/resource-group-overview/) 以单个组的形式完成。
 
 	![image1][image1]
 
@@ -323,9 +327,9 @@ Azure 提供了许多功能用于对正在运行的应用程序进行监视和�
 
 ## 后续步骤 
 
-* Azure Resource Manager 对于在 Azure 平台中启用 DevOps 至关重要。有关详细信息，请访问 [Azure Resource Manager overview](/documentation/articles/resource-group-overview)（Azure Resource Manager 概述）。
+* Azure Resource Manager 对于在 Azure 平台中启用 DevOps 至关重要。有关详细信息，请访问 [Azure Resource Manager 概述](../resource-group-overview.md)。
 
-* 有关 Azure App Service 部署的详细信息，请访问 [Deploy your app to Azure App Service](/documentation/articles/web-sites-deploy)（将应用部署到 Azure App Service）
+* 有关 Azure App Service 部署的详细信息，请访问 [将应用部署到 Azure App Service](../app-service-web/web-sites-deploy.md)
 
 
 [image1]: ./media/tutorial-azureportal-devops/image1.png
@@ -398,4 +402,4 @@ Azure 提供了许多功能用于对正在运行的应用程序进行监视和�
 [image68]: ./media/tutorial-azureportal-devops/image68.png
 [image69]: ./media/tutorial-azureportal-devops/image69.png
 
-<!---HONumber=Mooncake_0711_2016--->
+<!---HONumber=AcomDC_0921_2016-->

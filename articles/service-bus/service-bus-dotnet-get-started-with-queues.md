@@ -1,5 +1,5 @@
 <properties
-    pageTitle="服务总线队列入门 | Azure"
+    pageTitle="服务总线队列入门 | Microsoft Azure"
     description="如何编写用于服务总线消息传送的 C# 控制台应用程序"
     services="service-bus"
     documentationCenter=".net"
@@ -9,12 +9,16 @@
 
 <tags
     ms.service="service-bus"
-    ms.date="06/07/2016"
-    wacn.date=""/>
+    ms.devlang="tbd"
+    ms.topic="hero-article"
+    ms.tgt_pltfrm="dotnet"
+    ms.workload="na"
+    ms.date="08/23/2016"
+    ms.author="jotaub;sethm"/>
 
 # 服务总线队列入门
 
-[AZURE.INCLUDE [service-bus-selector-queues](../includes/service-bus-selector-queues.md)]
+[AZURE.INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 ## 将要完成的任务
 
@@ -34,19 +38,19 @@
 
 2. Azure 订阅。
 
-[AZURE.INCLUDE [create-account-note](../includes/create-account-note.md)]
+[AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
 ## 1\.使用 Azure 门户创建命名空间
 
 如果你已创建服务总线命名空间，请跳转到[使用 Azure 门户创建队列](#2-create-a-queue-using-the-azure-portal)部分。
 
-[AZURE.INCLUDE [service-bus-create-namespace-portal](../includes/service-bus-create-namespace-portal.md)]
+[AZURE.INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## 2\.使用 Azure 门户创建队列
 
 如果你已创建服务总线队列，请跳转到[将消息发送到队列](#3-send-messages-to-the-queue)部分。
 
-[AZURE.INCLUDE [service-bus-create-queue-portal](../includes/service-bus-create-queue-portal.md)]
+[AZURE.INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
 ## 3\.将消息发送到队列
 
@@ -107,13 +111,13 @@
     }
     ```
   
-3. 运行该程序，并检查 Azure 经典门户。请注意，**队列长度**值现在应为 1。
+3. 运行该程序，并检查 Azure 门户。单击命名空间“概述”边栏选项卡中的队列名称。请注意，“活动消息计数”值现在应为 1。
     
-      ![队列长度][queue-length-send]
+      ![消息计数][queue-message]
     
 ## 4\.从队列接收消息
 
-1. 创建新的控制台应用程序并添加对服务总线 NuGet 包的引用，类似于上面的发送应用程序。
+1. 创建新的控制台应用程序并添加对服务总线 NuGet 程序包的引用，类似于前面的发送应用程序。
 
 2. 在 Program.cs 文件顶部添加以下 `using` 语句。
   
@@ -167,26 +171,25 @@
     }
     ```
   
-4. 运行该程序，并检查门户。请注意，**队列长度**值现在应为 0。
+4. 运行该程序，并检查门户。请注意，“队列长度”值现在应为 0。
 
-    ![队列长度][queue-length-receive]
+    ![队列长度][queue-message-receive]
   
 祝贺你！ 你已创建队列、发送和接收消息。
 
 ## 后续步骤
 
-签出 [GitHub 存储库](https://github.com/Azure-Samples/azure-servicebus-messaging-samples)，该存储库中包含演示 Azure 服务总线消息传送的一些更高级功能的示例。
+查看 [GitHub 存储库](https://github.com/Azure-Samples/azure-servicebus-messaging-samples)中的示例，了解 Azure 服务总线消息传送的一些更高级的功能。
 
 <!--Image references-->
 
 [nuget-pkg]: ./media/service-bus-dotnet-get-started-with-queues/nuget-package.png
-[queue-length-send]: ./media/service-bus-dotnet-get-started-with-queues/queue-length-send.png
-[queue-length-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-length-receive.png
+[queue-message]: ./media/service-bus-dotnet-get-started-with-queues/queue-message.png
+[queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive.png
 
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
 
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 
-
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=AcomDC_0921_2016-->

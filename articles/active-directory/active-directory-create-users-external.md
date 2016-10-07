@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 Azure Active Directory 中添加来自其他目录或合作伙伴公司的用户 | Azure"
+	pageTitle="在 Azure Active Directory 中添加来自其他目录或合作伙伴公司的用户 | Microsoft Azure"
 	description="介绍如何在 Azure Active Directory 中添加用户或更改用户信息，包括外部用户和来宾用户。"
 	services="active-directory"
 	documentationCenter=""
@@ -9,16 +9,24 @@
 
 <tags
 	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
 	ms.date="08/02/2016"
-	wacn.date=""/>
+	ms.author="curtand"/>
 
 # 在 Azure Active Directory 中添加来自其他目录或合作伙伴公司的用户
 
-本文介绍了如何从 Azure Active Directory 中的其他目录添加用户或添加合作伙伴公司中的用户。有关添加你组织中的新用户和添加具有 Microsoft 帐户的用户的信息，请参阅[将新用户添加到 Azure Active Directory](/documentation/articles/active-directory-create-users/)。默认情况下，添加的用户没有管理员权限，但你随时可以向他们分配角色。
+> [AZURE.SELECTOR]
+- [Azure 门户](active-directory-create-users-external-azure-portal.md)
+- [Azure 经典门户](active-directory-create-users-external.md)
+
+本文介绍了如何从 Azure Active Directory 中的其他目录添加用户或添加合作伙伴公司中的用户。有关添加你组织中的新用户和添加具有 Microsoft 帐户的用户的信息，请参阅[将新用户添加到 Azure Active Directory](active-directory-create-users.md)。默认情况下，添加的用户没有管理员权限，但你随时可以向他们分配角色。
 
 ## 添加用户
 
-1. 使用充当目录全局管理员的帐户登录到 [Azure 经典门户](https://manage.windowsazure.cn)。
+1. 使用充当目录全局管理员的帐户登录到 [Azure 经典门户](https://manage.windowsazure.com)。
 
 2. 选择 **Active Directory**，然后打开你的目录。
 
@@ -27,16 +35,16 @@
 4. 在“告诉我们有关此用户的信息”页上的“用户类型”下，选择下列其中一项：
 
 	- **另一个 Azure AD 目录中的用户** - 将源自另一个 Azure AD 目录的用户帐户添加到你的目录。仅当你也是另一目录的成员时，才可以选择该目录中的用户。
-	- **合作伙伴公司的用户** - 邀请并授权合作伙伴公司用户使用目录（请参阅 [Azure Active Directory B2B 协作](/documentation/articles/active-directory-b2b-what-is-azure-ad-b2b/)）。你需要[上传指定电子邮件地址的 CSV 文件](/documentation/articles/active-directory-b2b-references-csv-file-format/)。
+	- **合作伙伴公司的用户** - 邀请并授权合作伙伴公司用户使用目录（请参阅 [Azure Active Directory B2B 协作](active-directory-b2b-what-is-azure-ad-b2b.md)）。你需要[上传指定电子邮件地址的 CSV 文件](active-directory-b2b-references-csv-file-format.md)。
 
-6. 在用户的“配置文件”页上，提供名字和姓氏、用户友好名称，并从“角色”列表中选择用户角色。有关用户和管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](/documentation/articles/active-directory-assign-admin-roles/)。指定是否要为用户**启用 Multi-Factor Authentication**。
+6. 在用户的“配置文件”页上，提供名字和姓氏、用户友好名称，并从“角色”列表中选择用户角色。有关用户和管理员角色的详细信息，请参阅[在 Azure AD 中分配管理员角色](active-directory-assign-admin-roles.md)。指定是否要为用户**启用 Multi-Factor Authentication**。
 
 7. 在“获取临时密码”页上，选择“创建”。
 
 > [AZURE.IMPORTANT] 如果你所在的组织使用多个域，在添加用户帐户时你应知道以下问题：
 >
-> - 若要跨域添加具有相同用户主体名称 (UPN) 的用户帐户，例如，你可以**先**添加 geoffgrisso@contoso.onmschina.cn，**再**添加 geoffgrisso@contoso.com。
-> - **不要**在添加 geoffgrisso@contoso.onmschina.cn 之前添加 geoffgrisso@contoso.com。此顺序非常重要，事后想要撤消操作将很麻烦。
+> - 若要跨域添加具有相同用户主体名称 (UPN) 的用户帐户，例如，你可以**先**添加 geoffgrisso@contoso.onmicrosoft.com，**再**添加 geoffgrisso@contoso.com。
+> - **不要**在添加 geoffgrisso@contoso.onmicrosoft.com 之前添加 geoffgrisso@contoso.com。此顺序非常重要，事后想要撤消操作将很麻烦。
 
 如果你更改身份与本地 Active Directory 服务同步的用户的信息，则无法更改 Azure 经典门户中的用户信息。若要更改该用户信息，请使用本地 Active Directory 管理工具。
 
@@ -75,9 +83,9 @@
 
 ## 后续步骤
 
-- [向 Azure Active Directory 添加新用户](/documentation/articles/active-directory-create-users/)
-- [管理 Azure AD](/documentation/articles/active-directory-administer/)
-- [在 Azure AD 中管理密码](/documentation/articles/active-directory-manage-passwords/)
-- [在 Azure AD 中管理组](/documentation/articles/active-directory-manage-groups/)
+- [向 Azure Active Directory 添加新用户](active-directory-create-users.md)
+- [管理 Azure AD](active-directory-administer.md)
+- [在 Azure AD 中管理密码](active-directory-manage-passwords.md)
+- [在 Azure AD 中管理组](active-directory-manage-groups.md)
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=AcomDC_0921_2016-->

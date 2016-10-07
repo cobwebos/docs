@@ -20,17 +20,22 @@ EventProcessorHost 是一个 Java 类，通过从事件中心管理持久检查�
 
 ###EventProcessor Host 创建一个 Java 项目
 
-事件中心的 Java 客户端库可用于 [Maven 中央存储库](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22)中的 Maven 项目，并且可以使用 Maven 项目文件中的以下依赖项声明进行引用：
+事件中心的 Java 客户端库可用于 [Maven 中央存储库][Maven Package]中的 Maven 项目，并且可以使用 Maven 项目文件中的以下依赖项声明进行引用：
 
 ``` XML
 <dependency>
 	<groupId>com.microsoft.azure</groupId>
 	<artifactId>azure-eventhubs</artifactId>
-	<version>0.7.2</version>
+	<version>{VERSION}</version>
+</dependency>
+<dependency>
+	<groupId>com.microsoft.azure</groupId>
+	<artifactId>azure-eventhubs-eph</artifactId>
+	<version>{VERSION}</version>
 </dependency>
 ```
  
-对于不同类型的生成环境，你可以从 [Maven 中央存储库](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22)或 [GitHub 上的版本分发点](https://github.com/Azure/azure-event-hubs/releases)显式获取最新发布的 JAR 文件。
+对于不同类型的生成环境，你可以从 [Maven 中央存储库][Maven Package]或 [GitHub 上的版本分发点](https://github.com/Azure/azure-event-hubs/releases)显式获取最新发布的 JAR 文件。
 
 1. 对于下面的示例，请首先在你最喜欢的 Java 开发环境中为控制台/shell 应用程序创建一个新的 Maven 项目。该类将称为 ```ErrorNotificationHandler```。
 
@@ -181,16 +186,17 @@ EventProcessorHost 是一个 Java 类，通过从事件中心管理持久检查�
 	final String storageAccountKey = "---StorageAccountKey----";
 	```
 
-> [AZURE.NOTE] 本教程使用了一个 EventProcessorHost 实例。若要增加吞吐量，建议运行多个 EventProcessorHost 实例。在那些情况下，为了对接收到的事件进行负载平衡，各个不同实例会自动相互协调。如果希望多个接收方都各自处理全部事件，则必须使用 **ConsumerGroup** 概念。在从不同计算机中接收事件时，根据部署 EventProcessorHost 实例的计算机（或角色）来指定该实例的名称可能会很有用。
+> [AZURE.NOTE] 本教程使用了一个 EventProcessorHost 实例。若要增加吞吐量，建议运行多个 EventProcessorHost 实例。在那些情况下，为了对接收到的事件进行负载平衡，各个不同实例会自动相互协调。如果希望多个接收方都各自处理*全部*事件，则必须使用 **ConsumerGroup** 概念。在从不同计算机中接收事件时，根据部署 EventProcessorHost 实例的计算机（或角色）来指定该实例的名称可能会很有用。
 
 <!-- Links -->
-[Event Hubs Overview]: /documentation/articles/event-hubs-overview/
-[Azure 存储帐户]: /documentation/articles/storage-create-storage-account/
-[Azure 经典门户]: http://manage.windowsazure.cn
+[Event Hubs Overview]: event-hubs-overview.md
+[Azure 存储帐户]: ../storage/storage-create-storage-account.md
+[Azure 经典门户]: http://manage.windowsazure.com
+[Maven Package]: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22
 
 <!-- Images -->
-[11]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp2.png
-[12]: ./media/service-bus-event-hubs-getstarted/create-eph-csharp3.png
 
+[11]: ./media/service-bus-event-hubs-get-started-receive-ephjava/create-eph-csharp2.png
+[12]: ./media/service-bus-event-hubs-get-started-receive-ephjava/create-eph-csharp3.png
 
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=AcomDC_0921_2016-->

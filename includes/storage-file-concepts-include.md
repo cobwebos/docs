@@ -10,7 +10,7 @@
 
 - 迁移依赖文件共享在 Azure 虚拟机或云服务中运行的本地应用程序，而无需进行昂贵的重写操作
 - 存储共享的应用程序设置，例如在配置文件中进行存储
-- 在共享位置存储诊断数据，如日志、指标和故障转储 
+- 在共享位置存储诊断数据，如日志、指标和故障转储
 - 存储开发或管理 Azure 虚拟机或云服务所需的工具和实用工具
 
 ## 文件存储概念
@@ -19,7 +19,7 @@
 
 ![files-concepts][files-concepts]
 
--   **存储帐户：**对 Azure 存储服务的所有访问都要通过存储帐户来完成。有关存储帐户容量的详细信息，请参阅 [Azure 存储空间可伸缩性和性能目标](/documentation/articles/storage/storage-scalability-targets)。
+-   **存储帐户：**对 Azure 存储服务的所有访问都要通过存储帐户来完成。有关存储帐户容量的详细信息，请参阅 [Azure 存储空间可伸缩性和性能目标](../articles/storage/storage-scalability-targets.md)。
 
 -   **共享：**文件存储共享是 Azure 中的 SMB 文件共享。所有目录和文件都必须在父共享中创建。一个帐户可以包含无限数量的共享，一个共享可以存储无限数量的文件，直到达到文件共享的 5TB 总容量限制为止。
 
@@ -27,13 +27,12 @@
 
 -	**文件：**共享中的文件。文件大小最大可以为 1 TB。
 
--   **URL 格式：**可使用以下 URL 格式对文件寻址：https://`<storage
-    account>`.file.core.chinacloudapi.cn/`<share>`/`<目录/目录>`/`<file>`
+-   **URL 格式：**使用以下 URL 格式对文件寻址：https://`<storage account>`.file.core.windows.net/`<share>`/`<directory/directories>`/`<file>`
     
-    可使用以下示例 URL 寻址上图中的文件：`http://samples.file.core.chinacloudapi.cn/logs/CustomLogs/Log1.txt`
+    可使用以下示例 URL 寻址上图中的文件：`http://samples.file.core.windows.net/logs/CustomLogs/Log1.txt`
 
-有关如何命名共享、目录和文件的详细信息，请参阅[命名和引用共享、目录、文件和元数据](http://msdn.microsoft.com/zh-cn/library/azure/dn167011.aspx)。
+有关如何命名共享、目录和文件的详细信息，请参阅[命名和引用共享、目录、文件和元数据](http://msdn.microsoft.com/library/azure/dn167011.aspx)。
 
 [files-concepts]: ./media/storage-file-concepts-include/files-concepts.png
 
-<!---HONumber=Mooncake_0307_2016-->
+<!---HONumber=AcomDC_0921_2016-->

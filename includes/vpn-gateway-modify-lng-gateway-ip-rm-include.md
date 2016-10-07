@@ -7,7 +7,7 @@
 使用下面的示例，将值替换为自己的值。
 
 	New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
-	-Location "China North" -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24') `
+	-Location "West US" -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24') `
 	-GatewayIpAddress "5.4.3.2" -ResourceGroupName MyRGName
 
 
@@ -16,7 +16,7 @@
 如果网关连接已存在，首先需要删除该连接。然后，可修改网关 IP 地址并重新创建一个新的连接。这将导致 VPN 连接中断一段时间。
 
 
->[AZURE.IMPORTANT] 不要删除 VPN 网关。如果将其删除，则必须返回执行相应步骤来重新创建它，并使用将分配到新创建的网关的 IP 地址来重新配置本地路由器。
+>[AZURE.IMPORTANT] 不要删除 VPN 网关。如果执行此操作，则必须返回执行相应步骤重新创建它，并使用将分配到新创建网关的 IP 地址重新配置本地路由器。
  
 
 1. 删除连接。可使用 `Get-AzureRmVirtualNetworkGatewayConnection` cmdlet 找到连接的名称。
@@ -27,10 +27,10 @@
 2. 修改 GatewayIpAddress 值。如有必要，此时也可修改地址前缀。请注意，这将覆盖现有的本地网络网关设置。修改时使用本地网络网关的现有名称，以覆盖这些设置。如果不这样做，将创建一个新的本地网络网关，而不是修改现有本地网络网关。
 
 		New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
-		-Location "China North" -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24') `
+		-Location "West US" -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24') `
 		-GatewayIpAddress "104.40.81.124" -ResourceGroupName MyRGName
 
-3. 创建连接。在此示例中，我们将配置 IPsec 连接类型。重新创建连接时，请使用针对配置指定的连接类型。有关其他连接类型，请参阅 [PowerShell cmdlet](https://msdn.microsoft.com/zh-cn/library/mt603611.aspx) 页面。若要获取 VirtualNetworkGateway 名称，可运行 `Get-AzureRmVirtualNetworkGateway` cmdlet。
+3. 创建连接。在此示例中，我们将配置 IPsec 连接类型。重新创建连接时，请使用针对配置指定的连接类型。有关其他连接类型，请参阅 [PowerShell cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) 页面。若要获取 VirtualNetworkGateway 名称，可运行 `Get-AzureRmVirtualNetworkGateway` cmdlet。
 
 	设置变量：
 
@@ -40,9 +40,9 @@
 	创建连接：
 	
 		New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName -ResourceGroupName MyRGName `
-		-Location "China North" `
+		-Location "West US" `
 		-VirtualNetworkGateway1 $vnetgw `
 		-LocalNetworkGateway2 $local `
 		-ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

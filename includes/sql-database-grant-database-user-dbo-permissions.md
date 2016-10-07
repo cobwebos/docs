@@ -22,4 +22,4 @@
 
      ![SQL Server Management Studio：连接到 SQL 数据库服务器](./media/sql-database-grant-database-user-dbo-permissions/sql-database-grant-database-user-dbo-permissions-1.png)
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=AcomDC_0921_2016-->

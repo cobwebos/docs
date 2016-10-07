@@ -10,6 +10,6 @@
 4. 单击“创建”。稍等几分钟，等服务部署成功后再继续。
 
 <!-- URLs. -->
-[Azure 门户]: https://portal.azure.cn/
+[Azure 门户]: https://portal.azure.com/
 
-<!---HONumber=Mooncake_0919_2016---->
+<!---HONumber=AcomDC_0921_2016-->

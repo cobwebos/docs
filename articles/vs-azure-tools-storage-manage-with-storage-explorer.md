@@ -1,22 +1,26 @@
 <properties
-	pageTitle="存储资源管理器（预览版）入门 | Azure"
+	pageTitle="存储资源管理器（预览版）入门 | Microsoft Azure"
 	description="使用存储空间资源管理器（预览版）管理 Azure 存储空间资源"
-	services="visual-studio-online"
+	services="storage"
 	documentationCenter="na"
 	authors="TomArcher"
 	manager="douge"
 	editor="" />
 
  <tags
-	ms.service="visual-studio-online"
-	ms.date="07/30/2016"
-	wacn.date="" />
+	ms.service="storage"
+	ms.devlang="multiple"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/17/2016"
+	ms.author="tarcher" />
 
 # 存储资源管理器（预览版）入门
 
 ## 概述 
 
-Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可用于在 Windows、OSX 和 Linux 上轻松处理 Azure 存储数据。在本文中，你将了解如何通过各种方式连接到 Azure 存储帐户并对其进行管理。
+Microsoft Azure 存储资源管理器（预览版）是一款独立应用，可用于在 Windows、OS X 和 Linux 上轻松处理 Azure 存储数据。在本文中，你将了解如何通过各种方式连接到 Azure 存储帐户并对其进行管理。
 
 ![Microsoft Azure 存储资源管理器（预览版）][15]
 
@@ -225,4 +229,4 @@ Azure 订阅管理员可以临时通过 [SAS（共享访问签名）](storage/st
 [23]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-icon.png
 [24]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-azure-storage-next.png
 
-<!---HONumber=Mooncake_0912_2016-->
+<!---HONumber=AcomDC_0921_2016-->

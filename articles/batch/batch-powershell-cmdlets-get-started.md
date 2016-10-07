@@ -1,5 +1,5 @@
 <properties
-   pageTitle="Azure Batch PowerShell 入门 | Azure"
+   pageTitle="Azure Batch PowerShell 入门 | Microsoft Azure"
    description="快速介绍可用于管理 Azure Batch 服务的 Azure PowerShell cmdlet"
    services="batch"
    documentationCenter=""
@@ -9,24 +9,28 @@
 
 <tags
    ms.service="batch"
-   ms.date="04/21/2016"
-   wacn.date=""/>
+   ms.devlang="NA"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="powershell"
+   ms.workload="big-compute"
+   ms.date="07/28/2016"
+   ms.author="danlep"/>
 
 # Azure 批处理 PowerShell cmdlet 入门
-本文将简要介绍可用于管理 Batch 帐户和处理 Batch 资源（例如池、作业和任务）的 Azure PowerShell cmdlet。你可以通过 Batch cmdlet 执行许多相同的任务，而 Batch cmdlet 可通过 Batch API 和 Azure 门户来执行。本文基于 Azure PowerShell 1.0 或更高版本中的 cmdlet。
+通过 Azure Batch PowerShell cmdlet，你可以执行许多与通过 Batch API、Azure 门户和 Azure 命令行界面执行的相同任务并为它们编写脚本。本文将简要介绍可用于管理 Batch 帐户和处理 Batch 资源（例如池、作业和任务）的 cmdlet。本文基于 Azure PowerShell 1.6.0 版本中的 cmdlet。
 
 如需 Batch cmdlet 的完整列表和详细的 cmdlet 语法，请参阅 [Azure Batch cmdlet 参考](https://msdn.microsoft.com/library/azure/mt125957.aspx)。
 
 
 ## 先决条件
 
-* **Azure PowerShell** - 有关 Azure PowerShell 的下载和安装说明，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure)。 
+* **Azure PowerShell** - 有关 Azure PowerShell 的下载和安装说明，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
    
-    * 由于 Azure Batch cmdlet 随附在 Azure Resource Manager 模块中，因此需要运行 **Login-AzureRmAccount** cmdlet 才能连接到订阅。 
+    * 由于 Azure Resource Manager 模块中随附了 Azure Batch cmdlet，你需要运行 **Login-AzureRmAccount** cmdlet 以连接到你的订阅。
     
     * 建议你经常更新 Azure PowerShell 以利用服务更新和增强功能。
     
-* **注册到 Batch 提供程序命名空间（一次性操作）**- 在使用 Batch 帐户之前，你必须注册到 Batch 提供程序命名空间。此操作只需在订阅时执行一次。运行以下 cmdlet：
+* **注册到 Batch 提供程序命名空间（一次性操作）**- 在使用 Batch 帐户之前，你必须注册到 Batch 提供程序命名空间。此操作每个订阅仅需执行一次。运行以下 cmdlet：
 
         Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Batch
 
@@ -41,7 +45,7 @@
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
 
-然后，在资源组中创建新的 Batch 帐户，此时还应该为 <*account\_name*> 指定帐户名，以及批处理服务可用的位置。帐户创建可能需要几分钟才能完成。例如：
+然后，在资源组中创建新的 Batch 帐户，为 <*account\_name*> 中的帐户指定帐户名，还要指定资源组的位置和名称。创建 Batch 帐户可能需要一些时间才能完成。例如：
 
 
     New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName MyBatchResourceGroup
@@ -90,14 +94,20 @@
 ## 创建和修改 Batch 资源
 使用 **New-AzureBatchPool**、**New-AzureBatchJob** 和 **New-AzureBatchTask** 等 cmdlet 在 Batch 帐户下创建资源。可以使用相应的 **Get-** 和 **Set-** cmdlet 来更新现有资源的属性，以及使用 **Remove-** cmdlet 来删除 Batch 帐户下的资源。
 
+使用这些 cmdlet 时，除了传递 BatchContext 对象，还需要创建或传递包含详细的资源设置的对象，如以下示例所示。请参阅每个 cmdlet 的详细帮助说明来了解其他示例。
+
 ### 创建 Batch 池
 
-例如，以下 cmdlet 可创建新的 Batch 池，该池在配置后可以使用包含系列 3 最新操作系统版本 (Windows Server 2012) 映像的小型虚拟机，计算节点的目标数由自动缩放公式而定。在本示例中，公式为 **$TargetDedicated=3**，表示池中的计算节点数最多为 3。**BatchContext** 参数将先前定义的变量 *$context* 指定为 BatchAccountContext 对象。
+创建或更新 Batch 池时，为计算节点上的操作系统选择云服务配置或虚拟机配置（请参阅 [Batch 功能概述](batch-api-basics.md#pool)）。你的选择将决定是使用其中一个 [Azure 来宾 OS 版本](../cloud-services/cloud-services-guestos-update-matrix.md#releases)还是 Azure 应用商店中其中一个受支持的 Linux 或 Windows VM 映像为你的计算节点创建映像。
+
+运行 **New-AzureBatchPool** 时，传递 PSCloudServiceConfiguration 或 PSVirtualMachineConfiguration 对象中的操作系统设置。例如，以下 cmdlet 可以在云服务配置中新建包含小型计算节点的 Batch 池，这些节点是使用系列 3 最新操作系统版本 (Windows Server 2012) 映像的。在此，**CloudServiceConfiguration** 参数指定 *$configuration* 变量作为 PSCloudServiceConfiguration 对象。**BatchContext** 参数将先前定义的变量 *$context* 指定为 BatchAccountContext 对象。
 
 
-    New-AzureBatchPool -Id "MyAutoScalePool" -VirtualMachineSize "Small" -OSFamily "3" -TargetOSVersion "*" -AutoScaleFormula '$TargetDedicated=3;' -BatchContext $Context
+    $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(3,"*")
+    
+    New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -AutoScaleFormula '$TargetDedicated=4;' -BatchContext $context
 
->[AZURE.NOTE]目前，Batch PowerShell cmdlet 仅支持计算节点的云服务配置。这可让你选择要在计算节点上运行的，某个 Azure 来宾 OS 版本的 Windows Server 操作系统。有关 Batch 池的其他计算节点配置选项，请使用 Batch SDK 或 Azure CLI。
+通过自动缩放公式确定新池中的目标计算节点数。在本示例中，公式为 **$TargetDedicated=4**，表示池中的计算节点数最多为 4。
 
 ## 查询池、作业、任务以及其他详细信息
 
@@ -153,8 +163,8 @@ OData 筛选器的替代方法是使用 **Id** 参数。若要查询 ID 为“my
 
 
 ## 后续步骤
-* 有关详细的 cmdlet 语法和示例，请参阅 [Azure Batch cmdlet reference（Azure Batch cmdlet 参考）](https://msdn.microsoft.com/library/azure/mt125957.aspx)。
+* 有关详细的 cmdlet 语法和示例，请参阅 [Azure Batch cmdlet reference](https://msdn.microsoft.com/library/azure/mt125957.aspx)（Azure Batch cmdlet 参考）。
 
-* 有关如何减少项数和有关针对 Batch 查询返回的信息类型的详细信息，请参阅 [Query the Batch service efficiently（有效地查询 Batch 服务）](batch-efficient-list-queries.md)。
+* 有关如何减少项数和有关针对 Batch 查询返回的信息类型的详细信息，请参阅[有效地查询 Batch 服务](batch-efficient-list-queries.md)。
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=AcomDC_0921_2016-->

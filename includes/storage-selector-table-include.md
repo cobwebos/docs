@@ -1,10 +1,10 @@
 > [AZURE.SELECTOR]
-- [.NET](/documentation/articles/storage-dotnet-how-to-use-tables)
-- [Node.js](/documentation/articles/storage-nodejs-how-to-use-table-storage)
-- [Java](/documentation/articles/storage-java-how-to-use-table-storage)
-- [C++](/documentation/articles/storage-c-plus-plus-how-to-use-tables)
-- [PHP](/documentation/articles/storage-php-how-to-use-table-storage)
-- [Ruby](/documentation/articles/storage-ruby-how-to-use-table-storage)
-- [Python](/documentation/articles/storage-python-how-to-use-table-storage)
+- [.NET](../articles/storage/storage-dotnet-how-to-use-tables.md)
+- [Node.js](../articles/storage/storage-nodejs-how-to-use-table-storage.md)
+- [Java](../articles/storage/storage-java-how-to-use-table-storage.md)
+- [C++](../articles/storage/storage-c-plus-plus-how-to-use-tables.md)
+- [PHP](../articles/storage/storage-php-how-to-use-table-storage.md)
+- [Ruby](../articles/storage/storage-ruby-how-to-use-table-storage.md)
+- [Python](../articles/storage/storage-python-how-to-use-table-storage.md)
 
-<!---HONumber=70-->
+<!---HONumber=AcomDC_0921_2016-->

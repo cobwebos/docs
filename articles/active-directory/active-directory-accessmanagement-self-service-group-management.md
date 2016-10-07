@@ -1,17 +1,21 @@
 <properties
-	pageTitle="为自助服务应用程序访问管理设置 Azure Active Directory | Azure"
+	pageTitle="为自助式应用程序访问管理设置 Azure Active Directory | Microsoft Azure"
 	description="用户通过自助组管理可以在 Azure Active Directory 中创建和管理安全组或 Office 365 组，还可以请求安全组或 Office 365 组成员身份。"
 	services="active-directory"
 	documentationCenter=""
-  	authors="curtand"
+  authors="curtand"
 	manager="femila"
 	editor=""
 	/>
 
-<tags 
-	ms.service="active-directory" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
 	ms.date="08/10/2016"
-	wacn.date=""/>  
+	ms.author="curtand"/>  
 
 
 # 为自助组管理设置 Azure Active Directory
@@ -26,7 +30,7 @@
 
 ## 为最终用户启用自助组管理功能
 
-1. 在 [Azure 经典门户](https://manage.windowsazure.cn)中，打开 Azure AD 目录。
+1. 在 [Azure 经典门户](https://manage.windowsazure.com)中，打开 Azure AD 目录。
 
 2. 在“配置”选项卡上，将“委托组管理”设置为“已启用”。
 
@@ -42,11 +46,14 @@
 
 这些文章提供了有关 Azure Active Directory 的更多信息。
 
-* [使用 Azure Active Directory 组管理对资源的访问](/documentation/articles/active-directory-manage-groups/)
+* [使用 Azure Active Directory 组管理对资源的访问](active-directory-manage-groups.md)
 
-* [有关 Azure Active Directory 中应用程序管理的文章索引](/documentation/articles/active-directory-apps-index/)
-* [什么是 Azure Active Directory？](/documentation/articles/active-directory-whatis/)
+* [用于配置组设置的 Azure Active Directory cmdlet](active-directory-accessmanagement-groups-settings-cmdlets.md)
 
-* [将本地标识与 Azure Active Directory 集成](/documentation/articles/active-directory-aadconnect/)
+* [有关 Azure Active Directory 中应用程序管理的文章索引](active-directory-apps-index.md)
 
-<!---HONumber=Mooncake_0822_2016-->
+* [什么是 Azure Active Directory？](active-directory-whatis.md)
+
+* [将本地标识与 Azure Active Directory 集成](active-directory-aadconnect.md)
+
+<!---HONumber=AcomDC_0921_2016-->

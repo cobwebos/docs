@@ -1,5 +1,5 @@
 <properties
-   pageTitle="在 Visual Studio 中创建你的第一个 Service Fabric 应用程序 | Azure"
+   pageTitle="在 Visual Studio 中创建你的第一个 Service Fabric 应用程序 | Microsoft Azure"
    description="使用 Visual Studio 创建、部署和调试 Service Fabric 应用程序"
    services="service-fabric"
    documentationCenter=".net"
@@ -9,8 +9,12 @@
 
 <tags
    ms.service="service-fabric"
-   ms.date="06/10/2016"
-   wacn.date=""/>
+   ms.devlang="dotNet"
+   ms.topic="hero-article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="NA"
+   ms.date="08/26/2016"
+   ms.author="ryanwi"/>
 
 # 在 Visual Studio 中创建你的第一个 Azure Service Fabric 应用程序
 
@@ -18,9 +22,13 @@ Service Fabric SDK 包含一个用于 Visual Studio 的外接程序，它可提�
 
 ## 先决条件
 
-开始之前，请确保已[设置开发环境](/documentation/articles/service-fabric-get-started/)。
+开始之前，请确保已[设置开发环境](service-fabric-get-started.md)。
 
+## 视频演练
 
+下面的视频介绍了本教程中的步骤：
+
+>[AZURE.VIDEO creating-your-first-service-fabric-application-in-visual-studio]
 
 ## 创建应用程序
 
@@ -38,7 +46,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 	![Visual Studio 中的新建服务对话框][2]
 
-	>[AZURE.NOTE] 有关选项的详细信息，请参阅 [Service Fabric 编程模型概述](/documentation/articles/service-fabric-choose-framework/)。
+	>[AZURE.NOTE] 有关选项的详细信息，请参阅 [Service Fabric 编程模型概述](service-fabric-choose-framework.md)。
 
 	Visual Studio 会创建应用程序项目和有状态服务项目，并在解决方案资源管理器中显示它们。
 
@@ -52,7 +60,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 	- **应用程序定义**：包括 *ApplicationPackageRoot* 下的应用程序清单。关联应用程序参数文件位于 *ApplicationParameters* 下，它们定义应用程序并使您可以专门为给定环境对其进行配置。
 
-    有关服务项目的内容概述，请参阅 [Reliable Services 入门](/documentation/articles/service-fabric-reliable-services-quick-start/)。
+    有关服务项目的内容概述，请参阅 [Reliable Services 入门](service-fabric-reliable-services-quick-start.md)。
 
 ## 部署和调试应用程序
 
@@ -80,7 +88,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 	本地群集包含在单台计算机上托管的五个节点。它会模拟一个五节点群集，其中节点处于不同计算机上。让我们在本地群集上取下一个节点，以模拟丢失一台计算机的情况，同时练习 Visual Studio 调试器。
 
-    >[AZURE.NOTE] 项目模板发出的应用程序诊断事件会使用包含的 `ServiceEventSource` 类。有关详细信息，请参阅[如何在本地监视和诊断服务](/documentation/articles/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/)。
+    >[AZURE.NOTE] 项目模板发出的应用程序诊断事件会使用包含的 `ServiceEventSource` 类。有关详细信息，请参阅[如何在本地监视和诊断服务](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)。
 
 4. 在服务项目中查找派生自 StatefulService 的类（例如 MyStatefulService），然后在 `RunAsync` 方法的第一行上设置断点。
 
@@ -90,7 +98,7 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
     ![从本地群集管理器启动 Service Fabric 资源管理器][systray-launch-sfx]
 
-    Service Fabric Explorer 提供群集的可视表示形式--包括部署到其中的应用程序集和构成它的物理节点集。要了解有关 Service Fabric Explorer 的详细信息，请参阅[可视化群集](/documentation/articles/service-fabric-visualizing-your-cluster/)。
+    Service Fabric Explorer 提供群集的可视表示形式--包括部署到其中的应用程序集和构成它的物理节点集。要了解有关 Service Fabric Explorer 的详细信息，请参阅[可视化群集](service-fabric-visualizing-your-cluster.md)。
 
 6. 在左窗格中，展开“群集”>“节点”，然后查找运行代码的节点。
 
@@ -102,8 +110,15 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 8. 返回到诊断事件查看器并观察消息。请注意，计数器在继续递增，即使事件实际上来自不同的节点。
 
-    ![故障转移之后的诊断事件查看器][diagnostic-events-viewer-detail-post-failover]  
+    ![故障转移之后的诊断事件查看器][diagnostic-events-viewer-detail-post-failover]
 
+## 切换群集模式
+
+默认情况下，本地开发群集配置为作为一个 5 节点的群集运行，这有助于调试跨多个节点部署的服务。不过，将应用程序部署到 5 节点的开发群集中可能需要一些时间。如果想要快速循环访问代码更改，而不需要在 5 个节点上运行应用，可以将开发群集切换至单节点模式。若要在单节点群集上运行代码，请右键单击系统托盘中的“本地群集管理器”，然后依次选择“切换群集模式”->“单节点”。
+
+![切换群集模式][switch-cluster-mode]
+
+更改群集节点后，开发群集将重置，在该群集上预配或运行的所有应用程序都将删除。
 
 ## 清理
 
@@ -115,9 +130,10 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 
 ## 后续步骤
 
-- 了解如何[在 Azure 中创建群集](/documentation/articles/service-fabric-cluster-creation-via-portal/)或[在 Windows 上创建独立群集](/documentation/articles/service-fabric-cluster-creation-for-windows-server/)。
-- 尝试使用 [Reliable Services](/documentation/articles/service-fabric-reliable-services-quick-start/) 或 [Reliable Actors](/documentation/articles/service-fabric-reliable-actors-get-started/) 编程模型创建服务。
-- 了解如何使用 [Web 服务前端](/documentation/articles/service-fabric-add-a-web-frontend/)向 Internet 服务公开服务。
+- 了解如何[在 Azure 中创建群集](service-fabric-cluster-creation-via-portal.md)或[在 Windows 上创建独立群集](service-fabric-cluster-creation-for-windows-server.md)。
+- 尝试使用 [Reliable Services](service-fabric-reliable-services-quick-start.md) 或 [Reliable Actors](service-fabric-reliable-actors-get-started.md) 编程模型创建服务。
+- 了解如何使用 [Web 服务前端](service-fabric-add-a-web-frontend.md)向 Internet 服务公开服务。
+- 演练[动手实验](https://msdnshared.blob.core.windows.net/media/2016/07/SF-Lab-Part-I.docx)并创建一个无状态服务、配置监视和运行状况报告，然后执行应用程序升级。
 
 <!-- Image References -->
 
@@ -132,5 +148,6 @@ Service Fabric 应用程序可以包含一个或多个服务，每个服务都�
 [systray-launch-sfx]: ./media/service-fabric-create-your-first-application-in-visual-studio/launch-sfx.png
 [diagnostic-events-viewer-detail-post-failover]: ./media/service-fabric-create-your-first-application-in-visual-studio/diagnostic-events-viewer-detail-post-failover.png
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
+[switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

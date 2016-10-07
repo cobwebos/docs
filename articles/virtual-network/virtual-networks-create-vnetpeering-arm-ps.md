@@ -1,19 +1,21 @@
-<!-- not suitable for Mooncake -->
-
 <properties
-   pageTitle="使用 Powershell cmdlet 创建 VNet 对等互连 | Azure"
+   pageTitle="使用 Powershell cmdlet 创建 VNet 对等互连 | Microsoft Azure"
    description="了解如何在 Resource Manager 中使用 Azure 门户创建虚拟网络。"
    services="virtual-network"
    documentationCenter=""
-   authors="narayanannamalai"
+   authors="NarayanAnnamalai"
    manager="jefco"
    editor=""
    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-network"
-	ms.date="08/02/2016"
-	wacn.date=""/>
+   ms.service="virtual-network"
+   ms.devlang="na"
+   ms.topic="hero-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/14/2016"
+   ms.author="narayanannamalai; annahar"/>
 
 # 使用 Powershell cmdlet 创建 VNet 对等互连
 
@@ -25,20 +27,20 @@
 
 若要使用 PowerShell 创建 VNet 对等互连，请执行以下步骤：
 
-1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](/documentation/articles/powershell-install-configure/)（如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
+1. 如果你从未使用过 Azure PowerShell，请参阅 [How to Install and Configure Azure PowerShell](../powershell-install-configure.md)（如何安装和配置 Azure PowerShell），并始终按照说明进行操作，以登录到 Azure 并选择你的订阅。
 
-        Note: PowerShell cmdlet for managing VNet peering is shipped with [Azure PowerShell 1.6.](http://www.powershellgallery.com/packages/Azure/1.6.0)
+        > [AZURE.NOTE] PowerShell cmdlet for managing VNet peering is shipped with [Azure PowerShell 1.6.](http://www.powershellgallery.com/packages/Azure/1.6.0)
 
 2. 读取虚拟网络对象：
 
         $vnet1 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet1
         $vnet2 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet2
-	
+
 3. 若要建立 VNet 对等互连，需要创建两个链接，每个方向各一个。下一步将首先创建从 VNet1 到 VNet2 的 VNet 对等互连链接：
 
-        Add-AzureRmVirtualNetworkPeering -name LinkToVNet2 -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.id 
+        Add-AzureRmVirtualNetworkPeering -name LinkToVNet2 -VirtualNetwork $vnet1 -RemoteVirtualNetworkId $vnet2.id
 
-        Output shows:
+    输出显示：
 
         Name			: LinkToVNet2
         Id: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet1/virtualNetworkPeerings/LinkToVNet2
@@ -58,9 +60,9 @@
 
 4. 此步骤将创建 VNet2 到 VNet1 的 VNet 对等互连链接：
 
-        Add-AzureRmVirtualNetworkPeering -name LinkToVNet1 -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.id 
+        Add-AzureRmVirtualNetworkPeering -name LinkToVNet1 -VirtualNetwork $vnet2 -RemoteVirtualNetworkId $vnet1.id
 
-        Output shows:
+    输出显示：
 
         Name			: LinkToVNet1
         Id				: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet2/virtualNetworkPeerings/LinkToVNet1
@@ -82,7 +84,7 @@
 
         Get-AzureRmVirtualNetworkPeering -VirtualNetworkName vnet1 -ResourceGroupName vnet101 -Name linktovnet2
 
-        Output shows:
+    输出显示：
 
 		Name			: LinkToVNet2
 		Id				: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet1/virtualNetworkPeerings/LinkToVNet2
@@ -115,7 +117,7 @@
         $LinktoVNet2.AllowForwardedTraffic = $true
         Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinktoVNet2
 
-        You can run Get-AzureRmVirtualNetworkPeering to double check the property value after the change.  From the output, you can see AllowForwardedTraffic changes set to True after running the above cmdlets. 
+    可以运行 Get-AzureRmVirtualNetworkPeering，仔细检查更改后的属性值。运行上述 cmdlet 后，可以在输出中看到 AllowForwardedTraffic 更改设置为 True。
 
         Name			: LinkToVNet2
         Id			: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/vnet101/providers/Microsoft.Network/virtualNetworks/vnet1/virtualNetworkPeerings/LinkToVNet2
@@ -133,7 +135,7 @@
         RemoteGateways		: null
         RemoteVirtualNetworkAddressSpace : null
 
-	此方案中的对等互连建立好后，应该能够启动两个 Vnet 中的任何虚拟机之间的连接。默认情况下，“允许虚拟网络访问”为“True”，且 VNet 对等互连将设置正确的 ACL 以允许 Vnet 之间的通信。仍可应用网络安全组 (NSG) 规则来阻止特定子网或虚拟机之间的连接，从而实现两个虚拟网络之间访问权限的细粒度控制。有关创建 NSG 规则的详细信息，请参阅此[文章](/documentation/articles/virtual-networks-create-nsg-arm-ps/)。
+	此方案中的对等互连建立好后，应该能够启动两个 Vnet 中的任何虚拟机之间的连接。默认情况下，“允许虚拟网络访问”为“True”，且 VNet 对等互连将设置正确的 ACL 以允许 Vnet 之间的通信。仍可应用网络安全组 (NSG) 规则来阻止特定子网或虚拟机之间的连接，从而实现两个虚拟网络之间访问权限的细粒度控制。有关创建 NSG 规则的详细信息，请参阅此[文章](virtual-networks-create-nsg-arm-ps.md)。
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-crosssub-include](../../includes/virtual-networks-create-vnetpeering-scenario-crosssub-include.md)]
 
@@ -143,7 +145,7 @@
 
         New-AzureRmRoleAssignment -SignInName <UserB ID> -RoleDefinitionName "Network Contributor" -Scope /subscriptions/<Subscription-A-ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/VNet5
 
-        This is not a requirement, peering can be established even if users individually raise peering requests for thier respective Vnets as long as the requests match. Adding a privileged user of the other VNet as a user in the local VNet makes it easier to do the setup. 
+    这不是必须的，只要请求匹配，即使用户分别提出针对各个 Vnet 的对等互连请求，也可建立对等互连。添加其他 VNet 的特权用户作为本地 VNet 中的用户可以更轻松地进行设置。
 
 2. 使用订阅 B 的特权用户 B 帐户登录到 Azure，并运行以下 cmdlet：
 
@@ -174,7 +176,7 @@
 
         Add-AzureRmVirtualNetworkPeering -name LinkToVNet1 -VirtualNetwork $HubVNet -RemoteVirtualNetworkId $vnet1.id
 
-2. 对等互连建立后，可以参考此[文章](/documentation/articles/virtual-network-create-udr-arm-ps/)，定义用户定义的路由 (UDR)，以便通过虚拟设备重定向 VNet1 流量以使用其功能。在路由中指定下一个跃点地址时，可以在对等 VNet HubVNet 中将其设置为虚拟装置的 IP 地址。下面是一个示例：
+2. 对等互连建立后，可以参考此[文章](virtual-network-create-udr-arm-ps.md)，定义用户定义的路由 (UDR)，以便通过虚拟设备重定向 VNet1 流量以使用其功能。在路由中指定下一个跃点地址时，可以在对等 VNet HubVNet 中将其设置为虚拟装置的 IP 地址。下面是一个示例：
 
         $route = New-AzureRmRouteConfig -Name TestNVA -AddressPrefix 10.3.0.0/16 -NextHopType VirtualAppliance -NextHopIpAddress 192.0.1.5
 
@@ -186,17 +188,50 @@
 
         Set-AzureRmVirtualNetwork -VirtualNetwork $vnet1
 
+[AZURE.INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
+
+若要使用 PowerShell 在经典虚拟网络和 Azure Resource Manager 虚拟网络之间创建 VNet 对等互连，请按照以下步骤进行操作：
+
+1. 读取 Azure Resource Manager 虚拟网络 **VNET1** 的虚拟网络对象，如下所示：$vnet1 = Get-AzureRmVirtualNetwork -ResourceGroupName vnet101 -Name vnet1
+
+2. 若要在此情况下建立对等互连，只需建立一个链接即可，具体而言就是从 **VNET1** 到 **VNET2** 的链接。执行此步骤需要先了解经典 VNet 的资源 ID。资源组 ID 格式如下所示：/subscriptions/SubscriptionID/resourceGroups/ResourceGroupName/providers/Microsoft.ClassicNetwork/virtualNetworks/VirtualNetworkName
+
+    请务必将 SubscriptionID、ResourceGroupName 和 VirtualNetworkName 替换为相应的名称。
+
+    这可以通过以下方法实现：
+
+        Add-AzureRmVirtualNetworkPeering -name LinkToVNet2 -VirtualNetwork $vnet1 -RemoteVirtualNetworkId /subscriptions/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.ClassicNetwork/virtualNetworks/VNET2
+
+3. 创建 VNet 对等互连链接后，可以看到链接状态，如下面的输出中所示：
+
+        Name                             : LinkToVNet2
+        Id                               : /subscriptions/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/virtualNetworks/VNET1/virtualNetworkPeerings/LinkToVNet2
+        Etag                             : W/"acecbd0f-766c-46be-aa7e-d03e41c46b16"
+        ResourceGroupName                : MyResourceGroup
+        VirtualNetworkName               : VNET1
+        PeeringState                     : Connected
+        ProvisioningState                : Succeeded
+        RemoteVirtualNetwork             : {
+                                         "Id": "/subscriptions/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.ClassicNetwork/virtualNetworks/VNET2"
+                                       }
+        AllowVirtualNetworkAccess        : True
+        AllowForwardedTraffic            : False
+        AllowGatewayTransit              : False
+        UseRemoteGateways                : False
+        RemoteGateways                   : null
+        RemoteVirtualNetworkAddressSpace : null
+
 ## 删除 VNet 对等互连
 
 1.	为了删除 VNet 对等互连，需要运行以下 cmdlet：
 
         Remove-AzureRmVirtualNetworkPeering  
-    
+
         remove both links, as shown below:
 
-        Remove-AzureRmVirtualNetworkPeering -ResourceGroupName vnet101 -VirtualNetworkName vnet1 -Name linktovnet2 
-        Remove-AzureRmVirtualNetworkPeering -ResourceGroupName vnet101 -VirtualNetworkName vnet1 -Name linktovnet2 
+        Remove-AzureRmVirtualNetworkPeering -ResourceGroupName vnet101 -VirtualNetworkName vnet1 -Name linktovnet2
+        Remove-AzureRmVirtualNetworkPeering -ResourceGroupName vnet101 -VirtualNetworkName vnet1 -Name linktovnet2
 
 2. 删除 VNET 对等互连中的一个链接后，该对等链接状态将为断开。在此状态下，在对等链接状态更改为已启动之前无法重新创建链接。建议先删除这两个链接，然后再重新创建 VNet 对等互连。
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

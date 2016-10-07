@@ -2,7 +2,7 @@
 
 欢迎使用 Microsoft Azure 与物联网 (IoT)。本文将介绍一种 IoT 解决方案体系结构架构，其中描述了你可以使用 Azure 服务部署的 IoT 解决方案的一般特征。IoT 解决方案在可能以百万计的设备间需要安全的双向通信，例如，使用自动化及预测分析的解决方案后端可呈现来自设备到云的事件流的洞察信息。
 
-当你使用 Azure 服务来实现此 IoT 解决方案体系结构时，Azure IoT 中心是重要的构建块，而 IoT 套件可针对特定 IoT 方案提供此体系结构的完整端对端实现。例如，"远程监视"解决方案可让你监视设备的状态（如自动贩卖机），而"预测性维护"可帮助你预测设备的维护需求（例如远端抽水站的水泵），以及避免意外停机。
+当你使用 Azure 服务来实现此 IoT 解决方案体系结构时，Azure IoT 中心是重要的构建块，而 IoT 套件可针对特定 IoT 方案提供此体系结构的完整端对端实现。例如，*远程监视*解决方案可让你监视设备的状态（如自动贩卖机），而*预测性维护*可帮助你预测设备的维护需求（例如远端抽水站的水泵），以及避免意外停机。
 
 ## IoT 解决方案体系结构
 
@@ -28,13 +28,13 @@ IoT 项目面临的最大挑战之一是如何可靠且安全地将设备连接�
 
 除了上述需求之外，所有 IoT 解决方案还必须提供可扩展性、安全性和可靠性。使用传统技术（例如 Web 容器和消息传送代理）时，所产生的一系列连接需求不仅难以实现，而且实现起来非常耗时。使用 Azure IoT 中心和 IoT 设备 SDK 可以更轻松地实现符合这些要求的解决方案。
 
-设备可以直接与云网关终结点通信；如果设备无法使用任何云网关支持的协议，则可以通过执行协议转换的中间网关（例如 [IoT 中心协议网关][lnk-protocol-gateway]）进行连接。例如，从通用行业协议 (CIP) 到 AMQPS。
+设备可以直接与云网关终结点通信；或者如果设备无法使用任何云网关支持的通信协议，可以通过执行协议转换的中间网关（例如 [IoT 中心协议网关][lnk-protocol-gateway]）进行连接。例如，从通用行业协议 (CIP) 到 AMQPS。
 
 ### 数据处理和分析
 
 在云中，IoT 解决方案后端是解决方案中大部份数据的处理位置，具体而言，筛选及汇总遥测数据并将其路由到其他服务。IoT 解决方案后端：
 
-- 接收大规模来自设备的遥测数据，并确定如何处理和存储该数据。 
+- 接收大规模来自设备的遥测数据，并确定如何处理和存储该数据。
 - 可能允许你从云向特定设备发送命令。
 - 提供可让你预配设备并控制哪些设备能够连接到基础结构的设备注册功能。
 - 可让你跟踪设备状态并监视其活动。
@@ -52,9 +52,9 @@ IoT 解决方案可以包含自动反馈循环。例如，后端中的分析模�
 [img-solution-architecture]: ./media/iot-azure-and-iot/iot-reference-architecture.png
 [img-dashboard]: ./media/iot-azure-and-iot/iot-suite.png
 
-[lnk-machinelearning]: /services/machine-learning/
+[lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
 [Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
-[lnk-protocol-gateway]: /documentation/articles/iot-hub-protocol-gateway
+[lnk-protocol-gateway]: ../articles/iot-hub/iot-hub-protocol-gateway.md
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties
-   pageTitle="如何创建 SQL 数据仓库的支持票证 | Azure"
+   pageTitle="如何创建 SQL 数据仓库的支持票证 | Microsoft Azure"
    description="如何在 SQL 数据仓库中创建支持票证。"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -9,8 +9,12 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="07/18/2016"
-   wacn.date=""/>
+   ms.devlang="NA"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
+   ms.date="09/01/2016"
+   ms.author="sonyama;barbkess"/>
 
 # 如何创建 SQL 数据仓库的支持票证
  
@@ -28,14 +32,14 @@
 
     ![新建支持请求](./media/sql-data-warehouse-get-started-create-support-ticket/create-support-request.png)
     
-    <a name="request-quota-change"></a>
+    <a name="request-quota-change">
 
 4. 选择“请求类型”。
 
     ![请求类型](./media/sql-data-warehouse-get-started-create-support-ticket/request-type.png)  
 
     
-    >[AZURE.NOTE]  默认情况下，每个 SQL server (例如 myserver.database.windows.net) 具有 45,000 的 **DTU 配额**。此配额仅仅只是安全限制。可以通过创建支持票证并选择“配额”作为请求类型来增加配额。若要计算 DTU 的需求，您需要了解 SQL 数据仓库每 100 [DWU][] 使用 750 DTU。因此，45,000 的默认配额最多能够创建一个 DW6000 (45,000 / 750) 或几个使用更少 DWU 的较小数据库。例如，如果要在 SQL Server 上托管两个 DW6000，则应请求 90,000 的 DTU 配额。您可以在门户中的 SQL server 边栏选项卡中查看您当前的 DTU 消耗量。已暂停和未暂停的数据库都计入 DTU 配额。
+    >[AZURE.NOTE]  默认情况下，每个 SQL server (例如 myserver.database.windows.net) 具有 45,000 的 **DTU 配额**。此配额仅仅只是安全限制。可以通过创建支持票证并选择“配额”作为请求类型来增加配额。若要计算 DTU 需求，请将所需的 [DWU][] 总数乘以 7.5。例如，如果想要在一个 SQL Server 上托管两个 DW6000，应请求 90,000 的 DTU 配额。您可以在门户中的 SQL server 边栏选项卡中查看您当前的 DTU 消耗量。已暂停和未暂停的数据库都计入 DTU 配额。
 
 5. 选择发生了您要报告其问题的数据库所在的**订阅**。
 
@@ -85,23 +89,23 @@
  
 
 <!--Article references--> 
-[DWU]: /documentation/articles/sql-data-warehouse-overview-what-is#data-warehouse-units
+[DWU]: ./sql-data-warehouse-overview-what-is.md#data-warehouse-units
 
 <!--MSDN references--> 
 
 <!--Other web references--> 
-[Azure 门户]: https://portal.azure.cn/
-[Azure support plan]: /support/plans/?WT.mc_id=Support_Plan_510979/
-[Azure 支持计划]: /support/plans/?WT.mc_id=Support_Plan_510979/
-[开发人员支持]: /support/plans/developer/
-[标准支持]: /support/plans/standard/
-[专业直接]: /support/plans/prodirect/
-[专业直接支持]: /support/plans/prodirect/
-[顶级]: /support/plans/premier/
-[顶级支持]: /support/plans/premier/
-[Azure 支持常见问题]: /support/faq/
+[Azure 门户]: https://portal.azure.com/
+[Azure support plan]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
+[Azure 支持计划]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
+[开发人员支持]: https://azure.microsoft.com/support/plans/developer/
+[标准支持]: https://azure.microsoft.com/support/plans/standard/
+[专业直接]: https://azure.microsoft.com/support/plans/prodirect/
+[专业直接支持]: https://azure.microsoft.com/support/plans/prodirect/
+[顶级]: https://azure.microsoft.com/support/plans/premier/
+[顶级支持]: https://azure.microsoft.com/support/plans/premier/
+[Azure 支持常见问题]: https://azure.microsoft.com/support/faq/
 [Microsoft Premier 在线门户]: https://premier.microsoft.com/
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
 [Azure SQL 数据仓库 MSDN 论坛]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-<!---HONumber=Mooncake_0822_2016--->
+<!---HONumber=AcomDC_0921_2016-->

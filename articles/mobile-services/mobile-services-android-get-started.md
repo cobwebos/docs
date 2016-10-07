@@ -7,23 +7,27 @@
 	manager="reikre"
 	editor=""/>
 
-<tags 
-	ms.service="mobile-services" 
-	ms.date="04/08/2016"
-	wacn.date=""/>
+<tags
+	ms.service="mobile-services"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="java"
+	ms.topic="hero-article"
+	ms.date="07/21/2016"
+	ms.author="ricksal"/>
 
 # 适用于 Android 的移动服务入门（JavaScript 后端）
 
-[AZURE.INCLUDE [mobile-services-selector-get-started](../includes/mobile-services-selector-get-started.md)]
+[AZURE.INCLUDE [mobile-services-selector-get-started](../../includes/mobile-services-selector-get-started.md)]
 
 &nbsp;
 
-[AZURE.INCLUDE [mobile-service-note-mobile-apps](../includes/mobile-services-note-mobile-apps.md)]
-> 有关本主题的对应的 Mobile Apps 版本，请参阅[在 Azure Mobile Apps 中创建 Android 应用](/documentation/articles/app-service-mobile-android-get-started)。
+[AZURE.INCLUDE [mobile-service-note-mobile-apps](../../includes/mobile-services-note-mobile-apps.md)]
+> 有关本主题的对等移动应用版本，请参阅[在 Azure 移动应用中创建 Android 应用](../app-service-mobile/app-service-mobile-android-get-started.md)。
 
 本教程说明如何使用 Azure 移动服务向 Android 应用程序添加基于云的后端服务。在本教程中，你将要创建一个新的移动服务，以及一个在新移动服务中存储应用程序数据的简单**待办事项列表**应用程序。
 
-
+> [AZURE.VIDEO mobile-get-started-android]
 
 以下是完成的应用程序的屏幕快照：
 
@@ -35,12 +39,12 @@
 
 下载的快速入门项目包含适用于 Android 的 Azure 移动服务 SDK。
 
-> [AZURE.IMPORTANT] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用](/pricing/1rmb-trial/)。
+> [AZURE.IMPORTANT] 若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AE564AB28)。
 
 
 ## 创建新的移动服务
 
-[AZURE.INCLUDE [mobile-services-create-new-service](../includes/mobile-services-create-new-service.md)]
+[AZURE.INCLUDE [mobile-services-create-new-service](../../includes/mobile-services-create-new-service.md)]
 
 ## 创建新的 Android 应用程序
 
@@ -48,7 +52,7 @@
 
 在本部分中，你将要创建一个连接到移动服务的新的 Android 应用程序。
 
-1.  在 **Azure 经典门户**中单击“移动服务”，然后单击你刚刚创建的移动服务。
+1.  在 Azure 经典门户中，单击“移动服务”，然后单击刚刚创建的移动服务。
 
 2. 在快速入门选项卡中，单击“选择平台”下的“Android”，然后展开“创建新的 Android 应用程序”。
 
@@ -67,31 +71,27 @@
 
 ## 运行 Android 应用程序
 
-[AZURE.INCLUDE [mobile-services-run-your-app](../includes/mobile-services-android-get-started.md)]
+[AZURE.INCLUDE [mobile-services-run-your-app](../../includes/mobile-services-android-get-started.md)]
 
 
 ## <a name="next-steps"></a>后续步骤
 完成快速入门后，请了解如何在移动服务中执行其他重要任务：
 
-* [数据处理入门]
-  <br/>了解有关使用移动服务存储和查询数据的详细信息。
+* [数据处理入门]<br/>了解有关使用移动服务存储和查询数据的详细信息。
 
-* [身份验证入门]
-  <br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
+* [身份验证入门]<br/>了解如何使用标识提供程序对应用程序的用户进行身份验证。
 
-* [推送通知入门 ]
-  <br/>了解如何向应用程序发送一条很基本的推送通知。
+* [推送通知入门 ]<br/>了解如何向应用程序发送一条很基本的推送通知。
 
 
-[AZURE.INCLUDE [app-service-disqus-feedback-slug](../includes/app-service-disqus-feedback-slug.md)]
+[AZURE.INCLUDE [app-service-disqus-feedback-slug](../../includes/app-service-disqus-feedback-slug.md)]
 
 
 <!-- URLs. -->
-[Get started (Eclipse)]: /documentation/articles/mobile-services-android-get-started-ec
-[数据处理入门]: /documentation/articles/mobile-services-android-get-started-data
-[身份验证入门]: /documentation/articles/mobile-services-android-get-started-users
-[推送通知入门 ]: /documentation/articles/mobile-services-javascript-backend-android-get-started-push
+[Get started (Eclipse)]: mobile-services-android-get-started-ec.md
+[数据处理入门]: mobile-services-android-get-started-data.md
+[身份验证入门]: mobile-services-android-get-started-users.md
+[推送通知入门 ]: mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 
-
-<!---HONumber=Mooncake_0516_2016-->
+<!---HONumber=AcomDC_0921_2016-->

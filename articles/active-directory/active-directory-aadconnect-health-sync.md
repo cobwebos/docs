@@ -1,6 +1,6 @@
 
 <properties
-	pageTitle="使用 Azure AD Connect Health 进行同步 | Azure"
+	pageTitle="使用 Azure AD Connect Health 进行同步 | Microsoft Azure"
 	description="本页与 Azure AD Connect Health 相关，介绍如何监视 Azure AD Connect 同步。"
 	services="active-directory"
 	documentationCenter=""
@@ -8,14 +8,18 @@
 	manager="stevenpo"
 	editor="curtand"/>
 
-<tags 
-	ms.service="active-directory" 
+<tags
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
 	ms.date="08/08/2016"
-	wacn.date=""/>
+	ms.author="billmath"/>  
 
 
 # 使用用于同步的 Azure AD Connect Health
-以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅[在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs/)。
+以下文档专门介绍如何使用 Azure AD Connect Health 来监视 Azure AD Connect (Sync)。有关使用 Azure AD Connect Health 监视 AD FS 的信息，请参阅[在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)。此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅[在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)。
 
 ![用于同步的 Azure AD Connect Health](./media/active-directory-aadconnect-health-sync/sync.png)
 
@@ -57,11 +61,12 @@
 
 ## 相关链接
 
-* [Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health/)
-* [Azure AD Connect Health 代理安装](/documentation/articles/active-directory-aadconnect-health-agent-install/)
-* [Azure AD Connect Health 操作](/documentation/articles/active-directory-aadconnect-health-operations/)
-* [在 AD FS 中使用 Azure AD Connect Health](/documentation/articles/active-directory-aadconnect-health-adfs/)
-* [Azure AD Connect Health 常见问题](/documentation/articles/active-directory-aadconnect-health-faq/)
-* [Azure AD Connect Health 版本历史记录](/documentation/articles/active-directory-aadconnect-health-version-history/)
+* [Azure AD Connect Health](active-directory-aadconnect-health.md)
+* [Azure AD Connect Health 代理安装](active-directory-aadconnect-health-agent-install.md)
+* [Azure AD Connect Health 操作](active-directory-aadconnect-health-operations.md)
+* [在 AD FS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adfs.md)
+* [在 AD DS 中使用 Azure AD Connect Health](active-directory-aadconnect-health-adds.md)
+* [Azure AD Connect Health 常见问题](active-directory-aadconnect-health-faq.md)
+* [Azure AD Connect Health 版本历史记录](active-directory-aadconnect-health-version-history.md)
 
-<!----HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

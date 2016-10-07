@@ -16,7 +16,7 @@
 
 如果已创建了网关连接并且想要添加或删除包含在您本地网关中的 IP 地址前缀，将需要按顺序执行以下步骤。这将导致 VPN 连接中断一段时间。更新前缀时，需要先删除该连接、修改前缀，然后创建一个新的连接。在以下示例中，请确保将值更改为自己的值。
 
->[AZURE.IMPORTANT] 不要删除 VPN 网关。如果将其删除，则必须返回执行相应的步骤以重新创建它，并使用新设置重新配置本地路由器。
+>[AZURE.IMPORTANT] 不要删除 VPN 网关。如果你这样做，则将不得不返回执行相应的步骤以重新创建它，并使用新设置重新配置本地路由器。
  
 1. 删除连接。
 
@@ -33,7 +33,7 @@
 		Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
 		-AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
 
-4. 创建连接。在此示例中，我们将配置 IPsec 连接类型。重新创建连接时，请使用针对配置指定的连接类型。有关其他连接类型，请参阅 [PowerShell cmdlet](https://msdn.microsoft.com/zh-cn/library/mt603611.aspx) 页面。
+4. 创建连接。在此示例中，我们将配置 IPsec 连接类型。重新创建连接时，请使用针对配置指定的连接类型。有关其他连接类型，请参阅 [PowerShell cmdlet](https://msdn.microsoft.com/library/mt603611.aspx) 页面。
 
  	设置 VirtualNetworkGateway 的变量。
 
@@ -43,9 +43,9 @@
 
 
 		New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `
-		-ResourceGroupName MyRGName -Location 'China North' `
+		-ResourceGroupName MyRGName -Location 'West US' `
 		-VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
 		-ConnectionType IPsec `
 		-RoutingWeight 10 -SharedKey 'abc123'
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,16 +1,20 @@
 <properties 
-	pageTitle="RADIUS 身份验证和 Azure Multi-Factor Authentication 服务器" 
-	description="本 Azure Multi-Factor Authentication 页面将会帮助你部署 RADIUS 身份验证和 Azure Multi-Factor Authentication 服务器。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="femila" 
+	pageTitle="RADIUS 身份验证和 Azure Multi-Factor Authentication 服务器"
+	description="本 Azure Multi-Factor Authentication 页面将会帮助你部署 RADIUS 身份验证和 Azure Multi-Factor Authentication 服务器。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.date="08/15/2016" 
-	wacn.date=""/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/15/2016"
+	ms.author="kgremban"/>
 
 
 
@@ -19,9 +23,7 @@
 使用“RADIUS 身份验证”部分，你可以为 Azure Multi-Factor Authentication 服务器启用和配置 RADIUS 身份验证。RADIUS 是一种标准协议，用于接受身份验证请求并处理这些请求。Azure Multi-Factor Authentication 服务器充当 RADIUS 服务器，并在 RADIUS 客户端（例如 VPN 设备）和身份验证目标（可以是 Active Directory (AD)、LDAP 目录或其他 RADIUS 服务器）之间插入，用于添加 Azure Multi-Factor Authentication。要使 Azure Multi-Factor Authentication起作用，必须将 Azure Multi-Factor Authentication 服务器配置为可以同时与客户端服务器和身份验证目标进行通信。Azure Multi-Factor Authentication 服务器将接受来自 RADIUS 客户端的请求，针对身份验证目标验证凭据，添加 Azure Multi-Factor Authentication，并将响应发送回 RADIUS 客户端。只有主要身份验证和 Azure Multi-Factor Authentication 都成功，整个身份验证才成功。
 
 >[AZURE.NOTE]
->MFA 服务器仅支持 PAP（密码身份验证协议），充当 RADIUS 服务器时，还支持 MSCHAPv2（Microsoft 的质询握手身份验证协议）RADIUS 协议。当 MFA 服务器充当另一台 RADIUS 服务器（例如 Microsoft NPS）的代理时，可支持 EAP（可扩展的身份验证协议）等协议，但前提是该 RADIUS 服务器支持该协议。
-></br>
->如果在此配置中使用其他协议，单向 SMS 和 OATH 令牌将不起作用，因为 MFA 服务器无法使用该协议发起成功的 RADIUS 质询响应。
+MFA 服务器仅支持 PAP（密码身份验证协议），充当 RADIUS 服务器时，还支持 MSCHAPv2（Microsoft 的质询握手身份验证协议）RADIUS 协议。当 MFA 服务器充当另一台 RADIUS 服务器（例如 Microsoft NPS）的代理时，可支持 EAP（可扩展的身份验证协议）等协议，但前提是该 RADIUS 服务器支持该协议。</br>如果在此配置中使用其他协议，单向 SMS 和 OATH 令牌将不起作用，因为 MFA 服务器无法使用该协议发起成功的 RADIUS 质询响应。
 
 
 ![Radius 身份验证](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
@@ -58,4 +60,4 @@
 - 使用上面配置的共享机密。
 - 将 RADIUS 超时配置为 30-60 秒，以便有时间验证用户的凭据、执行 Multi-Factor Authentication、接收其响应，然后对 RADIUS 访问请求做出响应。
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

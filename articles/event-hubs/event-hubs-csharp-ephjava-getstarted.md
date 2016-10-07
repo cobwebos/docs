@@ -1,5 +1,5 @@
 <properties
-	pageTitle="通过 C# 使用事件中心入门 | Azure"
+	pageTitle="通过 C# 使用事件中心入门 | Microsoft Azure"
 	description="遵循本教程开始使用 Azure 事件中心，以通过 C# 发送事件，并使用 EventProcessorHost 通过 Java 接收事件。"
 	services="event-hubs"
 	documentationCenter=""
@@ -9,12 +9,17 @@
 
 <tags
 	ms.service="event-hubs"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="hero-article"
 	ms.date="06/16/2016"
-	wacn.date=""/>
+	ms.author="jotaub"/>  
+
 
 # 事件中心入门
 
-[AZURE.INCLUDE [service-bus-selector-get-started](../includes/service-bus-selector-get-started.md)]
+[AZURE.INCLUDE [service-bus-selector-get-started](../../includes/service-bus-selector-get-started.md)]
 
 ## 介绍
 
@@ -22,23 +27,23 @@
 
 本教程说明如何使用 Azure 经典门户创建事件中心。此外，还将说明如何使用以 C# 编写的控制台应用程序将消息收集到事件中心，以及如何使用 Java 事件处理程序主机库并行检索这些消息。
 
-为了完成本教程，你需要有：
+若要完成本教程，你需要以下各项：
 
 + [Microsoft Visual Studio](http://visualstudio.com)
 
-+ 有效的 Azure 帐户。<br/>如果你没有帐户，只需几分钟的时间就能创建一个免费帐户。有关详细信息，请参阅 [Azure 免费试用版](/pricing/free-trial/?WT.mc\_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F target="\_blank")。
++ 有效的 Azure 帐户。<br/>如果你没有帐户，只需几分钟的时间就能创建一个免费帐户。有关详细信息，请参阅 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fzh-CN%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F target="\_blank")。
 
-[AZURE.INCLUDE [event-hubs-create-event-hub](../includes/event-hubs-create-event-hub.md)]
+[AZURE.INCLUDE [event-hubs-create-event-hub](../../includes/event-hubs-create-event-hub.md)]
 
-[AZURE.INCLUDE [service-bus-event-hubs-get-started-send-csharp](../includes/service-bus-event-hubs-get-started-send-csharp.md)]
+[AZURE.INCLUDE [service-bus-event-hubs-get-started-send-csharp](../../includes/service-bus-event-hubs-get-started-send-csharp.md)]
 
-[AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-ephjava](../includes/service-bus-event-hubs-get-started-receive-ephjava.md)]
+[AZURE.INCLUDE [service-bus-event-hubs-get-started-receive-ephjava](../../includes/service-bus-event-hubs-get-started-receive-ephjava.md)]
 
 ## 运行应用程序
 
 现在，你已准备就绪，可以运行应用程序了。
 
-1.	运行 **Receiver** 项目。
+1.	运行“Receiver”项目。
 
 	![][21]
 
@@ -60,11 +65,11 @@
 [22]: ./media/event-hubs-csharp-ephjava-getstarted/cs-send.png
 
 <!-- Links -->
-[Azure classic portal]: https://manage.windowsazure.cn/
-[事件中心概述]: /documentation/articles/event-hubs-overview
+[Azure classic portal]: https://manage.windowsazure.com/
+[事件中心概述]: event-hubs-overview.md
 [使用事件中心的完整示例应用程序]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 [使用事件中心扩大事件处理]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3
-[队列消息解决方案]: /documentation/articles/service-bus-dotnet-multi-tier-app-using-service-bus-queues
+[队列消息解决方案]: ../service-bus/service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
  
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=AcomDC_0921_2016-->

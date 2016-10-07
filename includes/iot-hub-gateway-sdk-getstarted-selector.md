@@ -1,15 +1,15 @@
 > [AZURE.SELECTOR]
-- [Linux](/documentation/articles/iot-hub-linux-gateway-sdk-get-started)
-- [Windows](/documentation/articles/iot-hub-windows-gateway-sdk-get-started)
+- [Linux](../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md)
+- [Windows](../articles/iot-hub/iot-hub-windows-gateway-sdk-get-started.md)
 
-本文详细介绍了 [Hello World sample code（Hello World 示例代码）][lnk-helloworld-sample]，说明了 [Azure IoT Gateway SDK（Azure IoT 网关 SDK）][lnk-gateway-sdk]体系结构的基本组件。该示例使用网关 SDK 生成一个简单的网关，每隔 5 秒将“hello world”消息记录到文件中。
+本文详细介绍了 [Hello World sample code][lnk-helloworld-sample]（Hello World 示例代码），说明了 [Azure IoT Gateway SDK][lnk-gateway-sdk]（Azure IoT 网关 SDK）体系结构的基本组件。该示例使用网关 SDK 生成一个简单的网关，每隔 5 秒将“hello world”消息记录到文件中。
 
 本文介绍的内容包括：
 
-- **概念**：通过概念来大致了解相关组件，这些组件组成你使用网关 SDK 创建的网关。  
+- **概念**：通过概念来大致了解相关组件，这些组件组成你使用网关 SDK 创建的网关。
 - **Hello World 示例体系结构**：说明如何将概念应用到 Hello World 示例，以及如何将这些组件组合到一起。
 - **如何生成示例**：生成示例所需的步骤。
-- **如何运行示例**：运行示例所需的步骤。 
+- **如何运行示例**：运行示例所需的步骤。
 - **典型输出**：运行示例时预期获得的输出的示例。
 - **代码段**：代码段的集合，显示 Hello World 示例如何实现重要的网关组件。
 
@@ -47,8 +47,8 @@
 
 Hello World 示例体现了上一部分所述概念。Hello World 示例所实现的网关具有一个管道，该管道包含两个模块：
 
--	hello world 模块每 5 秒创建一条消息，并将该消息传递给记录器模块。
--	记录器 模块将接收的消息写入文件。
+-	*hello world* 模块每 5 秒创建一条消息，并将该消息传递给记录器模块。
+-	*记录器* 模块将接收的消息写入文件。
 
 ![][4]
 
@@ -60,16 +60,18 @@ Hello World 示例体现了上一部分所述概念。Hello World 示例所实�
 
 ![][5]
 
-上图显示了 Hello World 示例的体系结构，同时显示了在 [repository（存储库）][lnk-gateway-sdk]中对示例不同部分进行实施的源文件的相对路径。请自行浏览代码，或使用下面的代码段作为指导。
+上图显示了 Hello World 示例的体系结构，同时显示了在 [repository][lnk-gateway-sdk]（存储库）中对示例不同部分进行实施的源文件的相对路径。请自行浏览代码，或使用下面的代码段作为指导。
 
 <!-- Images -->
-[1]: ./media/iot-hub-gateway-sdk-getstarted-selector/modules.png
-[2]: ./media/iot-hub-gateway-sdk-getstarted-selector/modules_2.png
-[3]: ./media/iot-hub-gateway-sdk-getstarted-selector/messages_1.png
-[4]: ./media/iot-hub-gateway-sdk-getstarted-selector/high_level_architecture.png
-[5]: ./media/iot-hub-gateway-sdk-getstarted-selector/detailed_architecture.png
+[1]: media/iot-hub-gateway-sdk-getstarted-selector/modules.png
+[2]: media/iot-hub-gateway-sdk-getstarted-selector/modules_2.png
+[3]: media/iot-hub-gateway-sdk-getstarted-selector/messages_1.png
+[4]: media/iot-hub-gateway-sdk-getstarted-selector/high_level_architecture.png
+[5]: media/iot-hub-gateway-sdk-getstarted-selector/detailed_architecture.png
 
 <!-- Links -->
+
 [lnk-helloworld-sample]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/hello_world
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
-<!---HONumber=Mooncake_0523_2016-->
+
+<!---HONumber=AcomDC_0921_2016-->

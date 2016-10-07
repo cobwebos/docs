@@ -25,18 +25,19 @@
 2. 在线搜索“WindowsAzure.Storage”，然后单击“安装”以安装存储客户端库和依赖项。
 3. 在线搜索“ConfigurationManager”，然后单击“安装”以安装 Azure Configuration Manager。
 
->[AZURE.NOTE] [Azure SDK for .NET](/downloads/) 中也包含存储客户端库包。但是我们建议同时从 NuGet 安装存储客户端库，以确保始终使用客户端库的最新版本。
+>[AZURE.NOTE] [用于 .NET 的 Azure SDK ](https://azure.microsoft.com/downloads/) 中也包含存储客户端库包。但是我们建议同时从 NuGet 安装存储客户端库，以确保始终使用客户端库的最新版本。
 >
 >用于 .NET 的存储空间客户端库中的 ODataLib 依赖项可通过在 NuGet （而非 WCF 数据服务）上获得的 ODataLib 包（5.0.2 版和更高版本）来解析。ODataLib 库可直接下载或者通过 NuGet 由代码项目引用。存储空间客户端库使用的具体 ODataLib 包为 [OData](http://nuget.org/packages/Microsoft.Data.OData/5.0.2)、[Edm](http://nuget.org/packages/Microsoft.Data.Edm/5.0.2) 和 [Spatial](http://nuget.org/packages/System.Spatial/5.0.2)。尽管这些库由 Azure 表存储类使用，但是用存储空间客户端库进行编程时，它们是必需的依赖项。
+
 
 ### 确定目标环境
 
 可从两个环境中选择用于运行本指南中示例的环境：
 
 - 可针对云中的 Azure 存储帐户运行代码。
-- 可针对 Azure 存储模拟器运行代码。存储模拟器是模拟云中 Azure 存储帐户的本地环境。应用程序处于开发阶段时，可以选择使用模拟器免费测试和调试代码。模拟器使用已知帐户和密钥。有关详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](/documentation/articles/storage-use-emulator)
+- 可针对 Azure 存储模拟器运行代码。存储模拟器是模拟云中 Azure 存储帐户的本地环境。应用程序处于开发阶段时，可以选择使用模拟器免费测试和调试代码。模拟器使用已知帐户和密钥。有关更多详细信息，请参阅[使用 Azure 存储模拟器进行开发和测试](../articles/storage/storage-use-emulator.md)
 
-如果你以云中的存储帐户为目标，请从 Azure 门户复制存储帐户的主访问密钥。有关详细信息，请参阅[查看和复制存储访问密钥](/documentation/articles/storage-create-storage-account#view-and-copy-storage-access-keys)。
+如果你以云中的存储帐户为目标，请从 Azure 门户复制存储帐户的主访问密钥。有关详细信息，请参阅[查看和复制存储访问密钥](../articles/storage/storage-create-storage-account.md#view-and-copy-storage-access-keys)。
 
 > [AZURE.NOTE] 您可以指向存储模拟器以避免引发与 Azure 存储空间有关的任何费用。但是，如果您确实选择指向云中的 Azure 存储帐户，则执行此教程的费用将会忽略不计。
 
@@ -44,7 +45,7 @@
 
 用于 .NET 的 Azure 存储空间客户端库支持使用存储连接字符串来配置终结点和用于访问存储服务的凭据。维护存储连接字符串的最佳方法在配置文件中。
 
-有关连接字符串的详细信息，请参阅[配置 Azure 存储空间的连接字符串](/documentation/articles/storage-configure-connection-string)。
+有关连接字符串的详细信息，请参阅[配置 Azure 存储的连接字符串](../articles/storage/storage-configure-connection-string.md)。
 
 > [AZURE.NOTE] 您的存储帐户密钥类似于您的存储帐户的根密码。始终要小心保护存储帐户密钥。避免将其分发给其他用户、对其进行硬编码或将其保存在其他人可以访问的纯文本文件中。如果认为密钥可能已泄漏，请使用 Azure 门户重新生成密钥。
 
@@ -55,17 +56,16 @@
 	        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5.2" />
 	    </startup>
   		<appSettings>
-    		<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key;EndpointSuffix=core.chinacloudapi.cn" />
+    		<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key" />
   		</appSettings>
 	</configuration>
 
 例如，配置设置将类似于：
 
-	<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=nYV0gln6fT7mvY+rxu2iWAEyzPKITGkhM88J8HUoyofvK7C6fHcZc2kRZp6cKgYRUM74lHI84L50Iau1+9hPjB==;EndpointSuffix=core.chinacloudapi.cn" />
+	<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=nYV0gln6fT7mvY+rxu2iWAEyzPKITGkhM88J8HUoyofvK7C6fHcZc2kRZp6cKgYRUM74lHI84L50Iau1+9hPjB==" />
 
 若要以存储模拟器为目标，可使用映射到已知帐户名称和密钥的快捷方式。在这种情况下，连接字符串设置将如下：
 
 	<add key="StorageConnectionString" value="UseDevelopmentStorage=true;" />
 
-
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=AcomDC_0921_2016-->

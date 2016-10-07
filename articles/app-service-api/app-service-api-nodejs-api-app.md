@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure 应用服务中的 Node.js API 应用 | Azure"
+	pageTitle="Azure App Service 中的 Node.js API 应用 | Microsoft Azure"
 	description="了解如何创建 Node.js RESTful API 并将其部署到 Azure 应用服务中的 API 应用。"
 	services="app-service\api"
 	documentationCenter="node"
@@ -9,23 +9,27 @@
 
 <tags
 	ms.service="app-service-api"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="node"
+	ms.topic="get-started-article"
 	ms.date="05/26/2016"
-	wacn.date=""/>
+	ms.author="rachelap"/>
 
 # 构建 Node.js RESTful API 并将它部署到 Azure 中的 API 应用
 
 [AZURE.INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
-本教程说明如何创建一个简单的 [Node.js](http://nodejs.org) API，并使用 [Git](http://git-scm.com) 将其部署到 [Azure 应用服务](/documentation/articles/app-service-value-prop-what-is/)中的 [API 应用](/documentation/articles/app-service-api-apps-why-best-platform/)。可以使用任何能够运行 Node.js 的操作系统，使用 cmd.exe 或 bash 等命令行工具执行所有任务。
+本教程说明如何创建一个简单的 [Node.js](http://nodejs.org) API，并使用 [Git](http://git-scm.com) 将其部署到 [Azure 应用服务](../app-service/app-service-value-prop-what-is.md)中的 [API 应用](app-service-api-apps-why-best-platform.md)。可以使用任何能够运行 Node.js 的操作系统，使用 cmd.exe 或 bash 等命令行工具执行所有任务。
 
 ## 先决条件
 
-1. Azure 帐户（[在此处建立免费帐户](/pricing/1rmb-trial/)）
+1. Microsoft Azure 帐户（[在此处打开免费帐户](https://azure.microsoft.com/pricing/free-trial/)）
 1. 已安装 [Node.js](http://nodejs.org)（本示例假设使用 Node.js 4.2.2 版）
 2. 已安装 [Git](https://git-scm.com/)
 1. [GitHub](https://github.com/) 帐户
 
-尽管应用服务支持多种将代码部署到 API 应用的方法，但本教程只演示 Git 方法，并假设读者具备使用 Git 的基础知识。有关其他部署方法的相关信息，请参阅 [Deploy your app to Azure App Service](/documentation/articles/web-sites-deploy/)（将应用部署到 Azure 应用服务）。
+尽管应用服务支持多种将代码部署到 API 应用的方法，但本教程只演示 Git 方法，并假设读者具备使用 Git 的基础知识。有关其他部署方法的相关信息，请参阅 [Deploy your app to Azure App Service](../app-service-web/web-sites-deploy.md)（将应用部署到 Azure 应用服务）。
 
 ## 获取示例代码
 
@@ -39,7 +43,7 @@
 
 ## 根据 Swagger 元数据创建（自动生成）Node.js 代码基架
 
-[Swagger](http://swagger.io/) 是描述 RESTful API 的元数据的文件格式。Azure 应用服务提供 [Swagger 元数据的内置支持](/documentation/articles/app-service-api-metadata/)。本教程部分为 API 开发工作流建模，将在其中先创建 Swagger 元数据，然后以此创建（自动生成）API 服务器代码基架。
+[Swagger](http://swagger.io/) 是描述 RESTful API 的元数据的文件格式。Azure 应用服务提供 [Swagger 元数据的内置支持](app-service-api-metadata.md)。本教程部分为 API 开发工作流建模，将在其中先创建 Swagger 元数据，然后以此创建（自动生成）API 服务器代码基架。
 
 >[AZURE.NOTE] 如果不想要了解如何从 Swagger 元数据文件创建 Node.js 代码基架，可以跳过本部分。如果只想将示例代码部署到新 API 应用，请直接转到[在 Azure 中创建 API 应用](#createapiapp)部分。
 
@@ -50,13 +54,13 @@
 		npm install -g yo
 		npm install -g generator-swaggerize
 
-	Swaggerize 是一款工具，可生成 Swagger 元数据文件描述的 API 服务器代码。要使用的 Swagger 文件名为 *api.json* ，它位于克隆的存储库的 *start* 文件夹中。
+	Swaggerize 是一款工具，可生成 Swagger 元数据文件描述的 API 服务器代码。要使用的 Swagger 文件名为 *api.json*，它位于克隆的存储库的 *start* 文件夹中。
 
 2. 导航到 *start* 文件夹，然后执行 `yo swaggerize` 命令。Swaggerize 将询问一系列问题。请在 **what to call this project** 中输入“contactlist”、在 **path to swagger document** 中输入“api.json”，在 **Express, Hapi, or Restify** 中输入“express”。
 
 		yo swaggerize
 
-	![Swaggerize 命令行](./media/app-service-api-nodejs-api-app/swaggerize-command-line.png)
+	![Swaggerize 命令行](media/app-service-api-nodejs-api-app/swaggerize-command-line.png)
     
 	**注意**：如果在此步骤中遇到错误，下一步骤将解释如何进行修复。
 
@@ -76,13 +80,13 @@
 
 		npm install --save jsonpath
         
-    ![Jsonpath 安装](./media/app-service-api-nodejs-api-app/jsonpath-install.png)
+    ![Jsonpath 安装](media/app-service-api-nodejs-api-app/jsonpath-install.png)
 
 1. 安装 **swaggerize-ui** NPM 模块。
 
 		npm install --save swaggerize-ui
         
-    ![Swaggerize UI 安装](./media/app-service-api-nodejs-api-app/swaggerize-ui-install.png)
+    ![Swaggerize UI 安装](media/app-service-api-nodejs-api-app/swaggerize-ui-install.png)
 
 ### 自定义基架代码
 
@@ -157,45 +161,46 @@
 
 1. 浏览到 **http://localhost:8000/contacts** 时，可以看到联系人列表的 JSON 输出（或者系统会提示下载，具体取决于所用的浏览器）。
 
-    ![所有联系人 API 调用](./media/app-service-api-nodejs-api-app/all-contacts-api-call.png)
+    ![所有联系人 API 调用](media/app-service-api-nodejs-api-app/all-contacts-api-call.png)
 
 1. 浏览到 **http://localhost:8000/contacts/2** 时，可以看到该 ID 值表示的联系人。
 
-    ![特定联系人 API 调用](./media/app-service-api-nodejs-api-app/specific-contact-api-call.png)
+    ![特定联系人 API 调用](media/app-service-api-nodejs-api-app/specific-contact-api-call.png)
 
 1. Swagger JSON 数据通过 **/swagger** 终结点提供：
 
-    ![联系人 Swagger Json](./media/app-service-api-nodejs-api-app/contacts-swagger-json.png)
+    ![联系人 Swagger Json](media/app-service-api-nodejs-api-app/contacts-swagger-json.png)
 
 1. Swagger UI 通过 **/docs** 终结点提供。在 Swagger UI 中，可以使用丰富的 HTML 客户端功能测试 API。
 
-    ![Swagger UI](./media/app-service-api-nodejs-api-app/swagger-ui.png)
+    ![Swagger UI](media/app-service-api-nodejs-api-app/swagger-ui.png)
 
 ## <a id="createapiapp"></a>创建新的 API 应用
 
 本部分介绍如何使用 Azure 门户在 Azure 中创建新的 API 应用。此 API 应用代表 Azure 提供的、用于运行代码的计算资源。后续部分会将代码部署到新 API 应用。
 
-1. 浏览到 [Azure 门户](https://portal.azure.cn/)。
+1. 浏览到 [Azure 门户](https://portal.azure.com/)。
 
 1. 单击“新建”>“Web + 移动”>“API 应用”。
 
-    ![门户中的新 API 应用](./media/app-service-api-nodejs-api-app/new-api-app-portal.png)
+    ![门户中的新 API 应用](media/app-service-api-nodejs-api-app/new-api-app-portal.png)  
 
-4. 输入在 *chinacloudsites.cn* 域中唯一的**应用名称**，例如，在 NodejsAPIApp 后面加上一个编号即可使其保持唯一。
 
-	例如，如果名称为 `NodejsAPIApp`，则 URL 为 `nodejsapiapp.chinacloudsites.cn`。
+4. 输入在 *azurewebsites.net* 域中唯一的“应用名称”，例如，在 NodejsAPIApp 后面加上一个编号即可使其保持唯一。
+
+	例如，如果名称为 `NodejsAPIApp`，则 URL 为 `nodejsapiapp.azurewebsites.net`。
 
 	如果输入的名称已被使用，右侧会出现红色感叹号。
 
 6. 在“资源组”下拉列表中单击“新建”，然后在“新建资源组名称”中输入“NodejsAPIAppGroup”或其他喜好的名称。
 
-	[资源组](/documentation/articles/resource-group-overview/)是 Azure 资源的集合，例如 API 应用、数据库和 VM。在本教程中，最好创建新的资源组，因为这样可以通过一个步骤轻松删除针对本教程创建的所有 Azure 资源。
+	[资源组](../resource-group-overview.md)是 Azure 资源的集合，例如 API 应用、数据库和 VM。在本教程中，最好创建新的资源组，因为这样可以通过一个步骤轻松删除针对本教程创建的所有 Azure 资源。
 
 4. 单击“应用服务计划/位置”，然后单击“新建”。
 
 	![创建应用服务计划](./media/app-service-api-nodejs-api-app/newappserviceplan.png)
 
-	在以下步骤中，你将为新资源组创建 App Service 计划。应用服务计划指定 API 应用运行所在的计算资源。例如，如果你选择免费层，则 API 应用程序将在共享 VM 上运行；如果你选择某些付费层，则它在专用 VM 上运行。有关应用服务计划的信息，请参阅 [App Service plans overview](/documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/)（应用服务计划概述）。
+	在以下步骤中，你将为新资源组创建 App Service 计划。应用服务计划指定 API 应用运行所在的计算资源。例如，如果你选择免费层，则 API 应用程序将在共享 VM 上运行；如果你选择某些付费层，则它在专用 VM 上运行。有关应用服务计划的信息，请参阅 [App Service plans overview](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)（应用服务计划概述）。
 
 5. 在“应用服务计划”边栏选项卡中输入“NodejsAPIAppPlan”或其他喜好的名称。
 
@@ -221,7 +226,7 @@
 
 	门户将显示“API 应用”和“设置”边栏选项卡。
 
-    ![门户中的 API 应用和“设置”边栏选项卡](./media/app-service-api-nodejs-api-app/portalapiappblade.png)
+    ![门户中的 API 应用和“设置”边栏选项卡](media/app-service-api-nodejs-api-app/portalapiappblade.png)
 
 1. 在“设置”边栏选项卡中，向下滚动到“发布”部分，然后单击“部署凭据”。
  
@@ -229,19 +234,19 @@
 
 	稍后要使用这些凭据将 Node.js 代码发布到 API 应用。
 
-    ![部署凭据](./media/app-service-api-nodejs-api-app/deployment-credentials.png)
+    ![部署凭据](media/app-service-api-nodejs-api-app/deployment-credentials.png)
 
 1. 在“设置”边栏选项卡中，单击“部署源”>“选择源”>“本地 Git 存储库”，然后单击“确定”。
 
-    ![创建 Git 存储库](./media/app-service-api-nodejs-api-app/create-git-repo.png)
+    ![创建 Git 存储库](media/app-service-api-nodejs-api-app/create-git-repo.png)
 
 1. 创建 Git 存储库后，此边栏选项卡将改为显示活动部署。由于这是新存储库，因此列表中没有活动的部署。
 
-    ![没有活动的部署](./media/app-service-api-nodejs-api-app/no-active-deployments.png)
+    ![没有活动的部署](media/app-service-api-nodejs-api-app/no-active-deployments.png)
 
 1. 复制 Git 存储库 URL。为此，请导航到新 API 应用的边栏选项卡并查看边栏选项卡的“概要”部分。请注意“概要”部分中的“Git 克隆 URL”。将鼠标悬停在此 URL 上时，右侧会显示一个图标用于将此 URL 复制到剪贴板。单击此图标复制该 URL。
 
-    ![从门户获取 Git URL](./media/app-service-api-nodejs-api-app/get-the-git-url-from-the-portal.png)
+    ![从门户获取 Git URL](media/app-service-api-nodejs-api-app/get-the-git-url-from-the-portal.png)
 
     **注意**：下一部分需要用到 Git 克隆 URL，因此，请务必暂时将它保存在某个位置。
 
@@ -257,7 +262,7 @@
 
         git init
 
-     ![新的本地 Git 存储库](./media/app-service-api-nodejs-api-app/new-local-git-repo.png)
+     ![新的本地 Git 存储库](media/app-service-api-nodejs-api-app/new-local-git-repo.png)
 
 1. 执行以下命令添加 API 应用存储库的 Git 远程设置。
 
@@ -270,7 +275,7 @@
         git add .
         git commit -m "initial revision"
 
-    ![Git 提交输出](./media/app-service-api-nodejs-api-app/git-commit-output.png)
+    ![Git 提交输出](media/app-service-api-nodejs-api-app/git-commit-output.png)
 
 1. 运行以下命令将代码推送到 Azure。当系统提示输入密码时，请输入前面在 Azure 门户中创建的密码。
 
@@ -280,11 +285,11 @@
 
 1. 在浏览器中，导航回到 API 应用的“部署”边栏选项卡，然后会看到部署正在进行。
 
-    ![部署正在进行](./media/app-service-api-nodejs-api-app/deployment-happening.png)
+    ![部署正在进行](media/app-service-api-nodejs-api-app/deployment-happening.png)
 
     同时，命令行接口将显示当前的部署状态。
 
-    ![Node Js 部署正在进行](./media/app-service-api-nodejs-api-app/node-js-deployment-happening.png)
+    ![Node Js 部署正在进行](media/app-service-api-nodejs-api-app/node-js-deployment-happening.png)
 
 	完成部署后，“部署”边栏选项卡将显示已在 API 应用中成功部署代码更改。
 
@@ -292,13 +297,13 @@
  
 3. 复制“API 应用”边栏选项卡的“概要”部分中的“URL”。
 
-    ![部署已完成](./media/app-service-api-nodejs-api-app/deployment-completed.png)
+    ![部署已完成](media/app-service-api-nodejs-api-app/deployment-completed.png)
 
-1. 使用 Postman 或 Fiddler 等 REST API 客户端（或 Web 浏览器）提供联系人API 调用的 URL，即 API 应用的 `/contacts` 终结点。该 URL 为 `https://{your API app name}.chinacloudsites.cn/contacts`
+1. 使用 Postman 或 Fiddler 等 REST API 客户端（或 Web 浏览器）提供联系人API 调用的 URL，即 API 应用的 `/contacts` 终结点。该 URL 为 `https://{your API app name}.azurewebsites.net/contacts`
 
     对此终结点发出 GET 请求时，可获取 API 应用的 JSON 输出。
 
-    ![Postman Hitting API](./media/app-service-api-nodejs-api-app/postman-hitting-api.png)
+    ![Postman Hitting API](media/app-service-api-nodejs-api-app/postman-hitting-api.png)
 
 2. 在浏览器中转到 `/docs` 终结点，尝试在 Azure 中运行 Swagger UI。
 
@@ -306,6 +311,6 @@
 
 ## 后续步骤
 
-现已成功创建 API 应用并在其中部署 Node.js API 代码。下一篇教程介绍如何[借助 CORS 从 JavaScript 客户端使用 API 应用](/documentation/articles/app-service-api-cors-consume-javascript/)。
+现已成功创建 API 应用并在其中部署 Node.js API 代码。下一篇教程说明如何[借助 CORS 从 JavaScript 客户端使用 API 应用](app-service-api-cors-consume-javascript.md)。
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

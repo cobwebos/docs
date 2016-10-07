@@ -9,8 +9,12 @@
 
 <tags
 	ms.service="app-service-api"
-	ms.date="06/01/2016"
-	wacn.date=""/>
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="java"
+	ms.topic="get-started-article"
+	ms.date="08/31/2016"
+	ms.author="rachelap"/>
 
 # 在 Azure 应用服务中生成和部署 Java API 应用
 
@@ -23,7 +27,7 @@
 1. [Java 开发人员工具包 8]（或更高版本）
 1. 已在开发计算机上安装 [Maven]
 1. 已在开发计算机上安装 [Git]
-1. [Azure] 订阅付费版或[试用]版
+1. [Microsoft Azure] 的付费或[免费试用版]订阅
 1. HTTP 测试应用程序，如 [Postman]
 
 ## 使用 Swagger.IO 创建 API 基架
@@ -127,7 +131,7 @@
             }
         }
 
-1. 导航到[在线 Swagger 编辑器]。在该位置，单击“文件”->“粘贴 JSON”菜单项。
+1. 导航到“在线 Swagger 编辑器”。[]在该位置，单击“文件”->“粘贴 JSON”菜单项。
 
     ![“粘贴 JSON”菜单项][paste-json]
 
@@ -299,19 +303,19 @@
 
 <!-- URL List -->
 
-[App Service API CORS]: /documentation/articles/app-service-api-cors-consume-javascript/
-[Azure 门户]: https://portal.azure.cn/
-[Document DB Java SDK]: /documentation/articles/documentdb-java-application/
-[试用]: /pricing/1rmb-trial/
+[App Service API CORS]: app-service-api-cors-consume-javascript.md
+[Azure 门户]: https://portal.azure.com/
+[Document DB Java SDK]: ../documentdb/documentdb-java-application.md
+[免费试用版]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: http://www.git-scm.com/
 [Java Developer Center]: /develop/java/
 [Java 开发人员工具包 8]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [Jax-RS]: https://jax-rs-spec.java.net/
 [Maven]: https://maven.apache.org/
-[Azure]: https://www.azure.cn/
-[在线 Swagger 编辑器]: http://editor.swagger.io/
+[Microsoft Azure]: https://azure.microsoft.com/
+[]: http://editor.swagger.io/
 [Postman]: https://www.getpostman.com/
-[用于 Java 的存储 SDK]: /documentation/articles/storage-java-how-to-use-blob-storage/
+[用于 Java 的存储 SDK]: ../storage/storage-java-how-to-use-blob-storage.md
 [Swagger]: http://swagger.io/
 [Swagger 编辑器]: http://editor.swagger.io/
 [Visual Studio Code]: https://code.visualstudio.com
@@ -334,4 +338,4 @@
 [copy-git-repo-url]: ./media/app-service-api-java-api-app/copy-git-repo-url.png
 [postman-calling-azure-contacts]: ./media/app-service-api-java-api-app/postman-calling-azure-contacts.png
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

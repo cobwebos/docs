@@ -7,11 +7,14 @@
 	manager="carmonm"
 	editor="tysonn"/>
 
-
-<tags 
-	ms.service="storage" 
-	ms.date="07/21/2016"
-	wacn.date=""/>
+<tags
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/20/2016"
+	ms.author="vamshik;tamram"/>
 
 # Microsoft Azure 存储空间简介
 
@@ -25,7 +28,7 @@ Azure 存储空间是依赖于持续性、可用性和可缩放性来满足客�
 - 如何通过冗余和复制确保 Azure 存储数据的持久性
 - 接下来要到何处去构建你的第一个 Azure 存储应用程序
 
-若要快速启动并运行 Azure 存储空间，请参阅[在 5 分钟内开始使用 Azure 存储空间](/documentation/articles/storage-getting-started-guide/)
+若要快速启动并运行 Azure 存储，请参阅[在 5 分钟内开始使用 Azure 存储](storage-getting-started-guide.md)。
 
 有关可配合 Azure 存储空间使用的工具、库和其他资源的详细信息，请参阅下面的[后续步骤](#next-steps)。
 
@@ -43,7 +46,7 @@ Azure 存储空间使用了一个自动分区系统，它可以根据流量自�
 
 Azure 存储空间支持使用各种操作系统（包括 Windows 和 Linux）及各种编程语言（包括 .NET、Java、Node.js、Python、Ruby、PHP、C++ 和移动编程语言）的客户端以方便开发。Azure 存储空间还通过简单的 REST API 公开数据资源，这些 REST API 可供能够通过 HTTP/HTTPS 发送和接收数据的任何客户端使用。
 
-Azure 高级存储提供高性能、低延迟的磁盘支持，适合在 Azure 虚拟机上运行的 I/O 密集型工作负载。有了 Azure 高级存储，你就可以将多个持久性数据磁盘附加到虚拟机，并根据性能要求对其进行配置。每个数据磁盘在 Azure 高级存储中都有一个后备 SSD 磁盘，以确保最高的 I/O 性能。有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](/documentation/articles/storage-premium-storage/)。
+Azure 高级存储提供高性能、低延迟的磁盘支持，适合在 Azure 虚拟机上运行的 I/O 密集型工作负载。有了 Azure 高级存储，你就可以将多个持久性数据磁盘附加到虚拟机，并根据性能要求对其进行配置。每个数据磁盘在 Azure 高级存储中都有一个后备 SSD 磁盘，以确保最高的 I/O 性能。有关详细信息，请参阅[高级存储：适用于 Azure 虚拟机工作负荷的高性能存储](storage-premium-storage.md)。
 
 ## Azure 存储服务介绍
 
@@ -82,7 +85,7 @@ Blob 存储提供三种类型的 Blob：块 Blob、追加 Blob 和页 Blob（磁
 - 追加 Blob 类似于块 Blob，但针对追加追加操作进行了优化。追加 Blob 仅可以通过将新的块添加到末尾来进行更新。对于需要新数据只能写入到 Blob 结尾的情况，例如日志记录，追加 Blob 是一个不错的选择 。
 - 页 Blob 进行了相应的优化来表示 IaaS 磁盘和支持随机写入，并且最大可以为 1 TB。Azure 虚拟机网络连接的 IaaS 磁盘是一个 VHD，存储为页 Blob。
 
-对于网络限制使得通过线缆向 Blob 存储上传或从其下载数据不可行的每个大型数据集，你可以将硬盘驱动器发送到 Microsoft 以直接通过数据中心导入或导出数据。请参阅[使用 Azure 导入/导出服务将数据传输到 Blob 存储中](/documentation/articles/storage-import-export-service/)。
+对于网络限制使得通过线缆向 Blob 存储上传或从其下载数据不可行的每个大型数据集，你可以将硬盘驱动器发送到 Microsoft 以直接通过数据中心导入或导出数据。请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中](storage-import-export-service.md)。
 
 ## 表存储
 
@@ -126,42 +129,51 @@ Azure 文件存储提供了基于云的 SMB 文件共享，这样你可以将依
 
 最后，你可以指定一个容器及其 Blob 或某个特定的 Blob 可供公开访问。当你指定某个容器或 Blob 为公用的时，任何人都可以匿名读取它，不需要进行身份验证。公用容器和 Blob 非常适用于公开在网站上托管的资源，例如媒体和文档。若要降低全球受众的网络延迟，你可以通过 Azure CDN 来缓存网站使用的 Blob 数据。
 
-有关共享访问签名的详细信息，请参阅[共享访问签名：了解 SAS 模型](/documentation/articles/storage-dotnet-shared-access-signature-part-1/)。有关安全访问你的存储帐户的详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](/documentation/articles/storage-manage-access-to-resources/)和 [Azure 存储服务身份验证](https://msdn.microsoft.com/zh-cn/library/azure/dd179428.aspx)。
+有关共享访问签名的详细信息，请参阅[使用共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md)。有关安全访问你的存储帐户的详细信息，请参阅[管理对容器和 Blob 的匿名读取访问](storage-manage-access-to-resources.md)和 [Azure 存储服务身份验证](https://msdn.microsoft.com/library/azure/dd179428.aspx)。
 
 ## 用于实现持久性和高可用性的复制
 
-始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性，并且即使在遇到临时硬件故障时也符合[存储空间 SLA](/support/legal/sla/storage/) 要求。
+始终复制 Microsoft Azure 存储帐户中的数据以确保持久性和高可用性，并且即使在遇到临时硬件故障时也符合[存储空间 SLA](https://azure.microsoft.com/support/legal/sla/storage/) 要求。
 
-
+有关每个区域中提供了哪些服务的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/#services)。
 
 创建存储帐户时，必须选择以下复制选项之一：
 
 - **本地冗余存储 (LRS)。** 本地冗余存储保留数据的三个副本。LRS 将在单个区域中的单个设施内复制三次。LRS 可以保护你的数据免受普通的硬件故障损害，但无法保护你的数据免受单个设施故障的损害。
-  
+
 	LRS 以折扣价格提供。为获得最大持久性，我们建议你使用下文所述的地域冗余存储。
 
 
+- **区域冗余存储 (ZRS)。** 区域冗余存储保留数据的三个副本。ZRS 在两到三个设施之间复制三次（在单个区域内或两个区域之间），提供比 LRS 更高的持久性。ZRS 在单个区域内确保数据持久保存。
+
+	ZRS 提供比 LRS 更高级别的持久性；不过，为获得最大持久性，我们建议你使用下文所述的地域冗余存储。
+
+	> [AZURE.NOTE] ZRS 当前仅适用于块 blob，并且仅支持版本 2014-02-14 和更高版本。
+	>
+	> 在创建存储帐户并选择 ZRS 后，你无法将其转换为使用任何其他类型的复制，反之亦然。
 
 - 异地冗余存储 (GRS)。GRS 维护你的数据的六个副本。使用 GRS 时，你的数据将在主区域内复制三次，并且还在离主区域数百英里的辅助区域中复制三次，从而提供最高级别的持久性。当主区域中发生故障时，Azure 存储空间将故障转移到辅助区域。GRS 在两个不同的区域中确保你的数据持久保存。
 
+	有关主配对和辅助配对（按区域）的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/)。
+
 - 读取访问异地冗余存储 (RA-GRS)。默认情况下，在你创建存储帐户时便为存储帐户启用了读取访问异地冗余存储。读取访问地域冗余存储将你的数据复制到一个辅助地理位置，同时提供对你在辅助位置中的数据的读访问权限。读取访问地域冗余存储允许你从主位置或辅助位置访问数据，以防其中一个位置不可用。
 
-	> [AZURE.IMPORTANT] 创建存储帐户后，你可以更改复制数据的方式。但请注意，如果你从 LRS 切换到 GRS 或 RA-GRS，可能会产生额外的一次性数据传输费用。
- 
-有关存储复制选项的其他详细信息，请参阅 [Azure 存储空间复制](/documentation/articles/storage-redundancy/)。
+	> [AZURE.IMPORTANT] 创建存储帐户后，你可以更改复制数据的方式，除非你在创建该帐户时指定了 ZRS。但请注意，如果你从 LRS 切换到 GRS 或 RA-GRS，可能会产生额外的一次性数据传输费用。
 
-有关存储帐户复制的定价信息，请参阅 [Azure 存储空间定价](/pricing/details/storage/)。
+有关存储复制选项的其他详细信息，请参阅 [Azure 存储空间复制](storage-redundancy.md)。
+
+有关存储帐户复制的定价信息，请参阅 [Azure 存储空间定价](https://azure.microsoft.com/pricing/details/storage/)。
 
 有关 Azure 存储空间持久性的体系结构详细信息，请参阅 [SOSP Paper - Azure Storage: A Highly Available Cloud Storage Service with Strong Consistency](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)（SOSP 论文 - Azure 存储空间：具有高度一致性的高可用云存储服务）。
 
 
 ## 将数据传输到和移出 Azure 存储空间
 
-你可以使用 AzCopy 命令行实用程序复制存储帐户内或跨存储帐户的 blob、文件和表数据。有关详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy/)。
+你可以使用 AzCopy 命令行实用程序复制存储帐户内或跨存储帐户的 blob、文件和表数据。有关详细信息，请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)。
 
 AzCopy 在 [Azure 数据移动库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)的基础上构建，当前以预览版提供。
 
-
+利用 Azure 导入/导出服务提供的方法，通过邮寄给 Azure 数据中心的硬盘，将 Blob 数据导入到存储帐户中或从存储帐户中导出。有关导入/导出服务的详细信息，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中](storage-import-export-service.md)。
 
 ## 定价
 
@@ -173,35 +185,35 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 
 ### Azure 存储数据服务
 
-- [存储服务 REST API](http://msdn.microsoft.com/zh-cn/library/azure/dd179355.aspx)
+- [存储服务 REST API](http://msdn.microsoft.com/library/azure/dd179355.aspx)
 - [适用于 .NET、Windows Phone 和 Windows 运行时的存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
 - [适用于 C++ 的存储客户端库 ](https://github.com/Azure/azure-storage-cpp)
 - [适用于 Java/Android 的存储空间客户端库](/develop/java/)
-- [适用于 Node.js 的存储空间客户端库](http://azure.github.io/azure-storage-node/)
+- [适用于 Node.js 的存储空间客户端库](http://dl.windowsazure.com/nodestoragedocs/index.html)
 - [适用于 PHP 的存储空间客户端库](/develop/php/)
 - [适用于 Ruby 的存储空间客户端库](/develop/ruby/)
 - [适用于 Python 的存储空间客户端库](/develop/python/)
-- [适用于 PowerShell 1.0 的存储空间 Cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/mt269418.aspx)
+- [适用于 PowerShell 1.0 的存储空间 Cmdlet](https://msdn.microsoft.com/library/azure/mt269418.aspx)
 
 ### Azure 存储空间管理服务
 
-- [存储资源提供程序 REST API 参考](https://msdn.microsoft.com/zh-cn/library/azure/mt163683.aspx)
-- [适用于 .NET 的存储资源提供程序客户端库](https://msdn.microsoft.com/zh-cn/library/azure/mt131037.aspx)
-- [适用于 PowerShell 1.0 的存储资源提供程序 Cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/mt607151.aspx)
-- [存储服务管理 REST API (Classic)](https://msdn.microsoft.com/zh-cn/library/azure/ee460790.aspx)
+- [存储资源提供程序 REST API 参考](https://msdn.microsoft.com/library/azure/mt163683.aspx)
+- [适用于 .NET 的存储资源提供程序客户端库](https://msdn.microsoft.com/library/azure/mt131037.aspx)
+- [适用于 PowerShell 1.0 的存储资源提供程序 Cmdlet](https://msdn.microsoft.com/library/azure/mt607151.aspx)
+- [存储服务管理 REST API (Classic)](https://msdn.microsoft.com/library/azure/ee460790.aspx)
 
 ### Azure 存储空间数据移动服务
 
-- [存储导入/导出服务 REST API](https://msdn.microsoft.com/zh-cn/library/azure/dn529096.aspx)
+- [存储导入/导出服务 REST API](https://msdn.microsoft.com/library/azure/dn529096.aspx)
 - [适用于 .NET 的存储数据移动客户端库](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/)
 
 ### 工具和实用程序
 
-- [Azure 存储空间资源管理器](http://storageexplorer.com/)
-- [Azure 存储客户端工具](/documentation/articles/storage-explorers/)
-- [Azure SDK 和工具](/downloads/)
-- [Azure 存储模拟器](http://www.microsoft.com/en-in/download/details.aspx?id=43709)
-- [Azure PowerShell](/documentation/articles/powershell-install-configure/)
+- [Azure 存储空间资源管理器](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+- [Azure 存储客户端工具](storage-explorers.md)
+- [Azure SDK 和工具](https://azure.microsoft.com/tools/)
+- [Azure 存储模拟器](http://www.microsoft.com/download/details.aspx?id=43709)
+- [Azure PowerShell](../powershell-install-configure.md)
 - [AzCopy 命令行实用程序](http://aka.ms/downloadazcopy)
 
 ## 后续步骤
@@ -210,50 +222,50 @@ Azure 存储空间资源可以通过任何发出 HTTP/HTTPS 请求的语言来�
 
 ### 文档
 
-- [Azure 存档文档](/documentation/services/storage/)
+- [Azure 存档文档](https://azure.microsoft.com/documentation/services/storage/)
 
 ### 面向管理员
 
-- [对 Azure 存储空间使用 Azure PowerShell](/documentation/articles/storage-powershell-guide-full/)
-- [将 Azure CLI 用于 Azure 存储空间](/documentation/articles/storage-azure-cli/)
+- [对 Azure 存储空间使用 Azure PowerShell](storage-powershell-guide-full.md)
+- [将 Azure CLI 用于 Azure 存储空间](storage-azure-cli.md)
 
 ### 面向 .NET 开发人员
 
-- [通过 .NET 开始使用 Azure Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs/)
-- [通过 .NET 开始使用 Azure 表存储](/documentation/articles/storage-dotnet-how-to-use-tables/)
-- [通过 .NET 开始使用 Azure 队列存储](/documentation/articles/storage-dotnet-how-to-use-queues/)
-- [在 Windows 上开始使用 Azure 文件存储](/documentation/articles/storage-dotnet-how-to-use-files/)
+- [通过 .NET 开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md)
+- [通过 .NET 开始使用 Azure 表存储](storage-dotnet-how-to-use-tables.md)
+- [通过 .NET 开始使用 Azure 队列存储](storage-dotnet-how-to-use-queues.md)
+- [在 Windows 上开始使用 Azure 文件存储](storage-dotnet-how-to-use-files.md)
 
 ### 面向 Java/Android 开发人员
 
-- [如何通过 Java 使用 Blob 存储](/documentation/articles/storage-java-how-to-use-blob-storage/)
-- [如何通过 Java 使用表存储](/documentation/articles/storage-java-how-to-use-table-storage/)
-- [如何通过 Java 使用队列存储](/documentation/articles/storage-java-how-to-use-queue-storage/)
-- [如何通过 Java 使用文件存储](/documentation/articles/storage-java-how-to-use-file-storage/)
+- [如何通过 Java 使用 Blob 存储](storage-java-how-to-use-blob-storage.md)
+- [如何通过 Java 使用表存储](storage-java-how-to-use-table-storage.md)
+- [如何通过 Java 使用队列存储](storage-java-how-to-use-queue-storage.md)
+- [如何通过 Java 使用文件存储](storage-java-how-to-use-file-storage.md)
 
 ### 面向 Node.js 开发人员
 
-- [如何通过 Node.js 使用 Blob 存储](/documentation/articles/storage-nodejs-how-to-use-blob-storage/)
-- [如何通过 Node.js 使用表存储](/documentation/articles/storage-nodejs-how-to-use-table-storage/)
-- [如何通过 Node.js 使用队列存储](/documentation/articles/storage-nodejs-how-to-use-queues/)
+- [如何通过 Node.js 使用 Blob 存储](storage-nodejs-how-to-use-blob-storage.md)
+- [如何通过 Node.js 使用表存储](storage-nodejs-how-to-use-table-storage.md)
+- [如何通过 Node.js 使用队列存储](storage-nodejs-how-to-use-queues.md)
 
 ### 面向 PHP 开发人员
 
-- [如何通过 PHP 使用 Blob 存储](/documentation/articles/storage-php-how-to-use-blobs/)
-- [如何通过 PHP 使用表存储](/documentation/articles/storage-php-how-to-use-table-storage/)
-- [如何通过 PHP 使用队列存储](/documentation/articles/storage-php-how-to-use-queues/)
+- [如何通过 PHP 使用 Blob 存储](storage-php-how-to-use-blobs.md)
+- [如何通过 PHP 使用表存储](storage-php-how-to-use-table-storage.md)
+- [如何通过 PHP 使用队列存储](storage-php-how-to-use-queues.md)
 
 ### 面向 Ruby 开发人员
 
-- [如何通过 Ruby 使用 Blob 存储](/documentation/articles/storage-ruby-how-to-use-blob-storage/)
-- [如何通过 Ruby 使用表存储](/documentation/articles/storage-ruby-how-to-use-table-storage/)
-- [如何通过 Ruby 使用队列存储](/documentation/articles/storage-ruby-how-to-use-queue-storage/)
+- [如何通过 Ruby 使用 Blob 存储](storage-ruby-how-to-use-blob-storage.md)
+- [如何通过 Ruby 使用表存储](storage-ruby-how-to-use-table-storage.md)
+- [如何通过 Ruby 使用队列存储](storage-ruby-how-to-use-queue-storage.md)
 
 ### 面向 Python 开发人员
 
-- [如何通过 Python 使用 Blob 存储](/documentation/articles/storage-python-how-to-use-blob-storage/)
-- [如何通过 Python 使用表存储](/documentation/articles/storage-python-how-to-use-table-storage/)
-- [如何通过 Python 使用队列存储](/documentation/articles/storage-python-how-to-use-queue-storage/)
-- [如何通过 Python 使用文件存储](/documentation/articles/storage-python-how-to-use-file-storage/)
+- [如何通过 Python 使用 Blob 存储](storage-python-how-to-use-blob-storage.md)
+- [如何通过 Python 使用表存储](storage-python-how-to-use-table-storage.md)
+- [如何通过 Python 使用队列存储](storage-python-how-to-use-queue-storage.md)
+- [如何通过 Python 使用文件存储](storage-python-how-to-use-file-storage.md)
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=AcomDC_0921_2016-->

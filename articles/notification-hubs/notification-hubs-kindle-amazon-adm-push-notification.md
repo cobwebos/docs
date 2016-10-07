@@ -1,5 +1,5 @@
 <properties
-	pageTitle="适用于 Kindle 应用的 Azure 通知中心入门 | Azure"
+	pageTitle="Azure 通知中心入门（Kindle 应用）| Microsoft Azure"
 	description="在本教程中，你将了解如何使用 Azure 通知中心将推送通知发送到 Kindle 应用程序。"
 	services="notification-hubs"
 	documentationCenter=""
@@ -9,12 +9,16 @@
 
 <tags
 	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-kindle"
+	ms.devlang="Java"
+	ms.topic="hero-article"
 	ms.date="06/29/2016"
-	wacn.date=""/>
+	ms.author="wesmc"/>
 
 # 通知中心入门（Kindle 应用）
 
-[AZURE.INCLUDE [notification-hubs-selector-get-started](../includes/notification-hubs-selector-get-started.md)]
+[AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ##概述
 
@@ -277,4 +281,4 @@
 [6]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-new-java-class.png
 [7]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-notification.png
 
-<!---HONumber=Mooncake_0808_2016-->
+<!---HONumber=AcomDC_0921_2016-->

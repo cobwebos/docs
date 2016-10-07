@@ -1,5 +1,5 @@
 <properties
-	pageTitle="使用 Azure 通知中心和必应空间数据发送地域隔离的推送通知 | Azure"
+	pageTitle="使用 Azure 通知中心和必应空间数据发送地域隔离的推送通知 | Microsoft Azure"
 	description="在本教程中，你将学习如何使用 Azure 通知中心和必应空间数据来传送基于位置的推送通知。"
 	services="notification-hubs"
 	documentationCenter="windows"
@@ -10,21 +10,25 @@
 
 <tags
 	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows-phone"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
 	ms.date="05/31/2016"
-	wacn.date=""/>
+	ms.author="dendeli"/>
     
 # 使用 Azure 通知中心和必应空间数据发送地域隔离的推送通知
  
- > [AZURE.NOTE] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](/pricing/free-trial/?WT.mc_id=A0E0E5C02)。
+ > [AZURE.NOTE] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02)。
 
 在本教程中，你将学习如何从通用 Windows 平台应用程序，使用 Azure 通知中心和必应空间数据来传送基于位置的推送通知。
 
 ##先决条件
 首先，需要确保满足所有的软件和服务先决条件：
 
-* [Visual Studio 2015 Update 1](https://www.visualstudio.com/zh-cn/downloads/download-visual-studio-vs.aspx) 或更高版本（[Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409) 也行）。 
-* 最新版本的 [Azure SDK](https://azure.microsoft.com/downloads/)。 
-* [必应地图开发人员中心帐户](https://www.bingmapsportal.com/)（你可以免费创建一个帐户并将此帐户与 Microsoft 帐户相关联）。 
+* [Visual Studio 2015 Update 1](https://www.visualstudio.com/zh-CN/downloads/download-visual-studio-vs.aspx) 或更高版本（[Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409) 也行）。
+* 最新版本的 [Azure SDK](https://azure.microsoft.com/downloads/)。
+* [必应地图开发人员中心帐户](https://www.bingmapsportal.com/)（你可以免费创建一个帐户并将此帐户与 Microsoft 帐户相关联）。
 
 ##入门
 
@@ -38,8 +42,8 @@
     
 需要指定以下参数才能让终结点正常工作：
 
-* **数据源 ID** 和**数据源名称** – 在必应地图 API 中，数据源包含各种分门别类的元数据，例如营业地点和营业时间。你可以在此了解其相关信息。 
-* **实体名称** – 要用作通知参照点的实体。 
+* **数据源 ID** 和**数据源名称** – 在必应地图 API 中，数据源包含各种分门别类的元数据，例如营业地点和营业时间。你可以在此了解其相关信息。
+* **实体名称** – 要用作通知参照点的实体。
 * **必应地图 API 密钥** – 这是前面创建必应开发人员中心帐户时获取的密钥。
  
 接下来，让我们深入了解上述各个元素的设置。
@@ -372,10 +376,10 @@
 
 首先，你可能需要确保地域隔离区是动态的。需要对必应 API 进行一些额外的处理，才能在现有数据源内上载新边界。有关该主题的详细信息，请参阅[必应空间数据服务 API 文档](https://msdn.microsoft.com/library/ff701734.aspx)。
 
-其次，由于你要确保向正确的参与者执行传送，因此可以通过[标记](/documentation/articles/notification-hubs-tags-segment-push-message)来锁定这些人。
+其次，由于你要确保向正确的参与者执行传送，因此可以通过[标记](notification-hubs-tags-segment-push-message.md)锁定这些人。
 
 上面所示的解决方案描述了一种方案，其中可能有各种不同的目标平台，因此我们并未限制只有系统特定的功能才能使用地域隔离。也就是说，通用 Windows 平台可以提供现成的[地域隔离区检测](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence)功能。
 
-有关通知中心功能的详细信息，请访问我们的[文档门户](/documentation/services/notification-hubs/)。
+有关通知中心功能的详细信息，请访问我们的[文档门户](https://azure.microsoft.com/documentation/services/notification-hubs/)。
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=AcomDC_0921_2016-->

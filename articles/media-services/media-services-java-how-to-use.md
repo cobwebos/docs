@@ -1,5 +1,5 @@
 <properties 
-	pageTitle="如何将 Azure 媒体服务与 Java 配合使用" 
+	pageTitle="使用 Java 按需传送内容入门 | Microsoft Azure" 
 	description="介绍如何使用 Azure 媒体服务执行编码、加密和流式处理资源等常见任务。" 
 	services="media-services" 
 	documentationCenter="java" 
@@ -7,35 +7,39 @@
 	manager="wpickett" 
 	editor="jimbe"/>
 
-<tags
-	ms.service="media-services"
-	ms.date="08/11/2016"   
-	wacn.date=""/>
+<tags 
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="get-started-article"
+	ms.date="08/17/2016"   
+	ms.author="robmcm"/>
 
-#如何将媒体服务与 Java 结合使用
+# 使用 Java 按需传送内容入门
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-##<a id="setup-account"></a>为媒体服务设置 Azure 帐户
+##针对媒体服务设置 Azure 帐户
 
-若要设置你的媒体服务帐户，请使用 Azure 管理门户。请参阅主题[如何创建媒体服务帐户](/documentation/articles/media-services-create-account/)。在 Azure 管理门户中创建帐户后，便可以设置你的计算机以进行媒体服务开发。
+若要设置你的媒体服务帐户，请使用 Azure 经典门户。请参阅主题[如何创建媒体服务帐户](media-services-create-account.md)。在 Azure 经典门户中创建帐户后，可以设置你的计算机以进行媒体服务开发。
 
-##<a id="setup-dev"></a>完成设置以进行媒体服务开发
+##完成设置以进行媒体服务开发
 
 本部分介绍使用用于 Java 的媒体服务 SDK 进行媒体服务开发需要满足的一般性先决条件。
 
 ###先决条件
 
--   在新的或现有的 Azure 订阅中拥有一个媒体服务帐户。请参阅主题[如何创建媒体服务帐户](/documentation/articles/media-services-create-account/)。
+-   在新的或现有的 Azure 订阅中拥有一个媒体服务帐户。请参阅主题[如何创建媒体服务帐户](media-services-create-account.md)。
 -   适用于 Java 的 Azure 库，可以从 [Azure Java 开发人员中心][]安装。
 
-##<a if="connect"></a>如何将媒体服务与 Java 结合使用
+##如何：将媒体服务与 Java 配合使用
 
-以下代码演示了如何创建一个资产、如何将媒体文件上载到该资产、如何使用任务运行某个作业以转换该资产，以及如何创建一个定位符用于流式传输你的视频。
+以下代码演示了如何创建资产、将媒体文件上载到该资产、使用任务运行某个作业以转换该资产，以及创建定位符流式传输视频。
 
-在使用此代码之前，需要设置一个媒体服务帐户。有关设置帐户的信息，请参阅[如何创建媒体服务帐户](/documentation/articles/media-services-create-account/)。
+在使用此代码之前，需要设置一个媒体服务帐户。有关设置帐户的信息，请参阅[如何创建媒体服务帐户](media-services-create-account.md)。
 
-将 `clientId` 和 `clientSecret` 变量替换为你的值。该代码还依赖于本地存储的文件。你需要提供自己的文件以供使用。
+将“clientId”和“clientSecret”变量替换为你自己的值。该代码还依赖于本地存储的文件。你需要提供自己的文件以供使用。
 	
 	import java.io.*;
 	import java.security.NoSuchAlgorithmException;
@@ -69,8 +73,8 @@
 	public class HelloMediaServices
 	{
 		// Media Services account credentials configuration
-		private static String mediaServiceUri = "https://wamsshaclus001rest-hs.chinacloudapp.cn /API/";
-		private static String oAuthUri = "https://wamsprodglobal001acs.accesscontrol.chinacloudapi.cn/v2/OAuth2-13";
+		private static String mediaServiceUri = "https://media.windows.net/API/";
+		private static String oAuthUri = "https://wamsprodglobal001acs.accesscontrol.windows.net/v2/OAuth2-13";
 		private static String clientId = "account name";
 		private static String clientSecret = "account key";
 		private static String scope = "urn:WindowsAzureMediaServices";
@@ -251,6 +255,13 @@
 	}
 
 
+##媒体服务学习路径
+
+[AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
+
+##提供反馈
+
+[AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
 ##其他资源
@@ -259,11 +270,10 @@
 
 <!-- URLs. -->
 
-
-  [Azure Java 开发人员中心]: /develop/java/
-  [适用于 Java 的 Azure 库文档]: http://azure.github.io/azure-sdk-for-java/
-  [Media Services Client Development]: /documentation/articles/media-services-develop-video-players/
+  [Azure Java 开发人员中心]: http://azure.microsoft.com/develop/java/
+  [适用于 Java 的 Azure 库文档]: http://dl.windowsazure.com/javadoc/
+  [Media Services Client Development]: http://msdn.microsoft.com/library/windowsazure/dn223283.aspx
 
  
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

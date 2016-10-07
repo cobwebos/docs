@@ -1,7 +1,7 @@
 | | **经典部署** | **Resource Manager 部署**|
 |-----------------------------|-------------|---------------------|
-| **管理门户** | 不支持 | 不支持 |
+| **经典门户** | 不支持 | 不支持 |
 | **Azure 门户** | 不支持 | 不支持 |
-| **PowerShell** | [文章](/documentation/articles/expressroute-howto-coexist-classic) | 不支持 |
+| **PowerShell** | [文章](../articles/expressroute/expressroute-howto-coexist-classic.md) | [文章](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
 
-<!---HONumber=Mooncake_0425_2016-->
+<!---HONumber=AcomDC_0921_2016-->

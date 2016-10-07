@@ -1,131 +1,149 @@
 <properties 
-   pageTitle="关于 VPN 网关 | Azure"
-   description="了解 Azure 虚拟网络的 VPN 网关。"
+   pageTitle="关于 VPN 网关 | Microsoft Azure"
+   description="了解 Azure 虚拟网络的 VPN 网关连接。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager,azure-service-management"/>
-<tags
-	ms.service="vpn-gateway"
-	ms.date="07/20/2016"
-	wacn.date=""/>  
+<tags 
+   ms.service="vpn-gateway"
+   ms.devlang="na"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/21/2016"
+   ms.author="cherylmc" />  
 
 
 # 关于 VPN 网关
 
-VPN 网关是设置的集合，这些设置用于在虚拟网络和本地位置之间发送网络流量。本文的各个部分将讨论与 VPN 网关相关的设置。VPN 网关用于站点到站点、点到站点以及 ExpressRoute 连接。VPN 网关还用于在 Azure 内的多个虚拟网络之间发送流量（VNet 到 VNet）。
 
-可将 VPN 网关添加到虚拟网络以创建连接。每个虚拟网络只能有一个 VPN 网关，而且每个连接都有特定的配置步骤。有关连接关系图，请参阅 [VPN 网关连接拓扑](/documentation/articles/vpn-gateway-topology/)。
+虚拟网络网关用于在 Azure 虚拟网络和本地位置之间以及 Azure 中的虚拟网络之间（VNet 到 VNet）发送网络流量。配置 VPN 网关时，必须创建并配置虚拟网络网关和虚拟网络网关连接。
 
-## <a name="gwsku"></a>网关 SKU
+在 Resource Manager 部署模型中，创建虚拟网络网关资源时，可以指定多个设置。必需的设置之一是“-GatewayType”。有两种虚拟网络网关类型：Vpn 和 ExpressRoute。
 
-在创建 VPN 网关时，你需要指定想要使用的网关 SKU。网关 SKU 适用于 ExpressRoute 和 VPN 网关类型。网关 SKU 之间并无定价差异。有关定价的信息，请参阅 [VPN 网关定价](/pricing/details/vpn-gateway/)。有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 技术概述](/documentation/articles/expressroute-introduction/)。
+通过专用连接发送网络流量时，使用的网关类型是“ExpressRout”。这也称为 ExpressRoute 网关。通过公共连接发送加密的网络流量时，使用的网关类型是“Vpn”。这称为 VPN 网关。站点到站点连接、点到站点连接和 VNet 到 VNet 连接都使用 VPN 网关。
 
-共有 3 种 VPN 网关 SKU：
+对于每种网关类型，每个虚拟网络只能有一个虚拟网络网关。例如，可以有一个使用 -GatewayType ExpressRoute 的虚拟网络网关和一个使用 -GatewayType Vpn 的虚拟网络网关。本文重点介绍 VPN 网关。有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 技术概述](../expressroute/expressroute-introduction.md)。
 
-- 基本
-- 标准
-- HighPerformance
+## 定价
 
-以下示例将 `-GatewaySku` 指定为 *Standard*。
+[AZURE.INCLUDE [vpn-gateway-about-pricing-include](../../includes/vpn-gateway-about-pricing-include.md)]
 
-	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'China North' -IpConfigurations $gwipconfig -GatewaySku Standard -GatewayType Vpn -VpnType RouteBased
 
-###  <a name="aggthroughput"></a>按 SKU 和网关类型列出的估计聚合吞吐量
+## 网关 SKU
 
+[AZURE.INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
+
+###  <a name="skugw"></a>按 SKU 和网关类型列出的估计聚合吞吐量
 
 下表显示网关类型和估计的聚合吞吐量。此表适用于 Resource Manager 与经典部署模型。
 
 [AZURE.INCLUDE [vpn-gateway-table-gwtype-aggthroughput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-## <a name="gwtype"></a>网关类型
+## 配置 VPN 网关
 
-网关类型指定网关本身如何进行连接，它是 Resource Manager 部署模型的必需配置设置。请勿将网关类型与 VPN 类型混为一谈，后者指定的是 VPN 的路由类型。`-GatewayType` 的可用值为：
+配置 VPN 网关时，使用的说明取决于用于创建虚拟网络的部署模型。例如，如果使用经典部署模型创建的 VNet，则使用经典部署模型的指导原则和说明来创建及配置 VPN 网关设置。有关部署模型的详细信息，请参阅[了解 Resource Manager 和经典部署模型](../resource-manager-deployment-model.md)。
 
-- Vpn
-- ExpressRoute
+VPN 网关连接依赖于使用特定设置配置的多个资源。大多数资源可以单独配置，虽然在某些情况下它们必须按特定顺序配置。开始时可以使用一个配置工具（如 Azure 门户）创建和配置资源。然后可以决定切换到另一个工具（如 PowerShell）配置其他资源或修改现有资源（如果适用）。目前，无法在 Azure 门户中配置每个资源和资源设置。每个连接拓扑的文章中的说明指定了何时需要特定配置工具。有关 VPN 网关的各个资源和设置的信息，请参阅[关于 VPN 网关设置](vpn-gateway-about-vpn-gateway-settings.md)。
 
+以下部分包含的表列出了：
 
-此 Resource Manager 部署模型示例将 -GatewayType 指定为 *Vpn*。在创建网关时，你必须确保用于配置的网关类型正确。
+- 可用的部署模型
+- 可用的配置工具
+- 直接转到某篇文章的链接（如果可用）
 
-	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'China North' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
+使用关系图和说明来帮助选择符合要求的连接拓扑。关系图显示了主要的基准拓扑，但可以使用关系图作为准则生成更复杂的配置。
 
-## <a name="connectiontype"></a>连接类型
+## 站点到站点和多站点
 
-每个配置需要特定的连接类型。`-ConnectionType` 的可用 Resource Manager PowerShell 值为：
+### 站点到站点
 
-- IPsec
-- Vnet2Vnet
-- ExpressRoute
-- VPNClient
+站点到站点 (S2S) VPN 网关连接是通过 IPsec/IKE（IKEv1 或 IKEv2）VPN 隧道建立的连接。此类型的连接要求位于本地的 VPN 设备分配有一个公共 IP 地址，并且不位于 NAT 后面。S2S 连接可以用于跨界和混合配置。
 
-在以下示例中，我们将创建站点到站点连接，这需要“IPsec”连接类型。
-
-	New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg -Location 'China North' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
-
-## <a name="vpntype"></a>VPN 类型
-
-每个配置需要特定的 VPN 类型才能正常运行。如果要合并两个配置，例如创建连往相同 VNet 的站点到站点连接和点到站点连接，你必须使用同时符合这两个连接要求的 VPN 类型。
-
-在点到站点和站点到站点并存连接的情况下，使用 Azure Resource Manager 部署模型时必须使用基于路由的 VPN 类型，而使用经典部署模式时必须使用动态网关。
-
-在创建配置时，需选择连接所需的 VPN 类型。
-
-有两种 VPN 类型：
-
-[AZURE.INCLUDE [vpn-gateway-vpntype](../../includes/vpn-gateway-vpntype-include.md)]
-
-此 Resource Manager 部署模型示例将 `-VpnType` 指定为 *RouteBased*。在创建网关时，你必须确保用于配置的 -VpnType 正确。
-
-	New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg -Location 'China North' -IpConfigurations $gwipconfig -GatewayType Vpn -VpnType RouteBased
-
-##  <a name="requirements"></a>网关要求
-
-[AZURE.INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
+![S2S 连接](./media/vpn-gateway-about-vpngateways/demos2s.png "站点到站点")
 
 
-## <a name="gwsub"></a>网关子网
+### 多站点
 
-若要配置 VPN 网关，需要先为 VNet 创建网关子网。网关子网必须命名为 *GatewaySubnet* 才能正常工作。此名称可以让 Azure 知道此子网将用于网关。<BR>如果使用的是经典管理门户，在门户界面中，网关子网将自动命名为 *Gateway*。这仅特定于在经典管理门户中查看网关子网。在此示例中，子网实际上是在 Azure 中作为 *GatewaySubnet* 创建的，可以在 Azure 门户和 PowerShell 中以这种方式进行查看。
+可以在 VNet 与多个本地网络之间创建和配置 VPN 网关连接。使用多个连接时，必须使用 RouteBased VPN 类型（适用于经典 VNet 的动态网关）。由于一个 VNet 只能有一个 VPN 网关，因此通过网关的所有连接都共享可用带宽。这通常称为“多站点”连接。
+ 
 
-网关子网的最小大小完全取决于你要创建的配置。尽管某些配置的网关子网最小可以创建为 /29，但建议创建 /28 或更大（/28、/27、/26 等）的网关子网。
+![多站点连接](./media/vpn-gateway-about-vpngateways/demomulti.png "多站点")
 
-创建较大的网关可防止违反网关大小限制。例如，如果你创建网关子网大小为 /29 的网关，并且想要配置站点到站点/ExpressRoute 并存配置，则必须删除网关、删除网关子网、将网关子网创建为 /28 或更大，然后重新创建网关。
+### 适用于站点到站点和多站点的部署模型和方法
 
-如果一开始就创建较大的网关子网，以后就可以在向网络环境添加配置功能时节省时间。
+[AZURE.INCLUDE [vpn-gateway-table-site-to-site](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-以下示例显示了名为 GatewaySubnet 的网关子网。可以看到，CIDR 表示法指定了 /27，这可提供足够的 IP 地址供大多数现有配置使用。
+## VNet 到 VNet
 
-	Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
+将一个虚拟网络连接到另一个虚拟网络（VNet 到 VNet）类似于将 VNet 连接到本地站点位置。这两种连接类型都使用 VPN 网关来提供使用 IPsec/IKE 的安全隧道。甚至可以将 VNet 到 VNet 通信与多站点连接配置组合使用。这样，便可以建立将跨界连接与虚拟网络间连接相结合的网络拓扑。
 
->[AZURE.IMPORTANT] 确保未对 GatewaySubnet 应用网络安全组 (NSG)，因为这可能会导致连接失败。
+连接的 VNet 可以：
 
-
-
-## <a name="lng"></a>本地网关
-
-局域网网关通常是指你的本地位置。在经典部署模型中，局域网网关称为本地站点。指定局域网网关的名称（即本地 VPN 设备的公共 IP 地址），并指定位于本地位置的地址前缀。Azure 将查看网络流量的目标地址前缀、查阅你为局域网网关指定的配置，并相应地路由数据包。你可以根据需要修改这些地址前缀。
+- 在相同或不同区域中
+- 在相同或不同订阅中
+- 在相同或不同部署模型中
 
 
-### 修改地址前缀 - Resource Manager
+![VNet 到 VNet 连接](./media/vpn-gateway-about-vpngateways/demov2v.png "vnet-to-vnet")
 
-修改地址前缀的过程根据是否已创建 VPN 网关而有所不同。请参阅以下文章部分：[修改本地网关的地址前缀](/documentation/articles/vpn-gateway-create-site-to-site-rm-powershell/#modify)。
+#### 部署模型之间的连接
 
-在以下示例中，你可以看到要指定名为 MyOnPremiseWest 的局域网网关，其中包含两个 IP 地址前缀。
+Azure 当前有两种部署模型：经典模型和 Resource Manager 模型。如果 Azure 已经使用了一段时间，则您的 Azure VM 和实例角色可能是在经典 VNet 上运行。而较新的 VM 和角色实例可能是在 Resource Manager 中创建的 VNet 上运行。可以在 VNet 之间创建连接，以允许一个 VNet 中的资源直接与另一个 VNet 中的资源进行通信。
 
-	New-AzureRmLocalNetworkGateway -Name MyOnPremisesWest -ResourceGroupName testrg -Location 'China North' -GatewayIpAddress '23.99.221.164' -AddressPrefix @('10.0.0.0/24','20.0.0.0/24')	
+#### VNet 对等互连
 
-### 修改地址前缀 - 经典部署
+可能能够使用 VNet 对等互连来创建连接，前提是虚拟网络符合特定要求。VNet 对等互连不使用虚拟网络网关。[VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)当前处于预览状态。
 
-如果需要在使用经典部署模型时修改本地站点，则可以使用经典管理门户中的“局域网”配置页，或直接修改网络配置文件 NETCFG.XML。
 
+### 适用于 VNet 到 VNet 的部署模型和方法
+
+[AZURE.INCLUDE [vpn-gateway-table-vnet-to-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
+
+
+## 点到站点
+
+点到站点 (P2S) VPN 网关连接可让用户创建从单个客户端计算机到虚拟网络的安全连接。P2S 是基于 SSTP（安全套接字隧道协议）的 VPN 连接。P2S 连接不需要 VPN 设备或面向公众的 IP 地址即可运行。从客户端计算机启动 VPN 连接即可建立 VPN 连接。如果要从远程位置（例如，从家里或会议室）连接到 VNet，或者只有几个客户端需要连接到 VNet，此解决方案将非常有用。可以通过同一 VPN 网关将 P2S 连接与 S2S 连接结合使用，前提是这两种连接的所有配置要求都兼容。
+
+
+![点到站点连接](./media/vpn-gateway-about-vpngateways/demop2s.png "点到站点")
+
+### 适用于点到站点的部署模型和方法
+
+[AZURE.INCLUDE [vpn-gateway-table-point-to-site](../../includes/vpn-gateway-table-point-to-site-include.md)]
+
+
+## ExpressRoute
+
+[AZURE.INCLUDE [expressroute-intro](../../includes/expressroute-intro-include.md)]
+
+在 ExpressRoute 连接中，虚拟网络网关配置了网关类型“ExpressRoute”，而不是“Vpn”。有关 ExpressRoute 的详细信息，请参阅 [ExpressRoute 技术概述](../expressroute/expressroute-introduction.md)。
+
+
+## 站点到站点和 ExpressRoute 的共存连接
+
+ExpressRoute 是从 WAN （不通过公共 Internet）到 Microsoft 服务（包括 Azure）的直接专用连接。站点到站点 VPN 流量以加密方式通过公共 Internet 传输。能够为同一个虚拟网络配置站点到站点 VPN 和 ExpressRoute 连接有诸多优点。
+
+可以将站点到站点 VPN 配置为 ExpressRoute 的安全故障转移路径，或者使用站点到站点 VPN 连接到不属于你的网络但却已通过 ExpressRoute 进行连接的站点。请注意，这要求对于同一虚拟网络使用两个虚拟网络网关，一个网关使用 -GatewayType Vpn，和另一个网关使用 -GatewayType ExpressRoute。
+
+
+![共存连接](./media/vpn-gateway-about-vpngateways/demoer.png "expressroute-site2site")
+
+
+### 适用于 S2S 和 ExpressRoute 的部署模型和方法
+
+[AZURE.INCLUDE [vpn-gateway-table-coexist](../../includes/vpn-gateway-table-coexist-include.md)]
 
 
 ## 后续步骤
 
-请参阅 [VPN 网关常见问题](/documentation/articles/vpn-gateway-vpn-faq/)了解详细信息之后，再继续规划和设计您的配置。
+规划 VPN 网关配置。请参阅 [VPN 网关规划和设计](vpn-gateway-plan-design.md)以及[将本地网络连接到 Azure](../guidance/guidance-connecting-your-on-premises-network-to-azure.md)。
+
+
+
 
 
 
@@ -133,4 +151,4 @@ VPN 网关是设置的集合，这些设置用于在虚拟网络和本地位置�
 
  
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

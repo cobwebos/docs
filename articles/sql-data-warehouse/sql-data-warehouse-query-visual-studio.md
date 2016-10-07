@@ -108,4 +108,4 @@
 [6]: media/sql-data-warehouse-query-visual-studio/run-query.png
 [7]: media/sql-data-warehouse-query-visual-studio/query-results.png
 
-<!---HONumber=Mooncake_0711_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="通过运行“为数据库启用延伸向导”开始操作 | Azure"
+	pageTitle="通过运行“为数据库启用延伸”向导开始操作 | Microsoft Azure"
 	description="了解如何通过运行“为数据库启用延伸向导”，来为延伸数据库配置数据库。"
 	services="sql-server-stretch-database"
 	documentationCenter=""
@@ -9,14 +9,18 @@
 
 <tags
 	ms.service="sql-server-stretch-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="hero-article"
 	ms.date="08/05/2016"
-	wacn.date=""/>
+	ms.author="douglasl"/>
 
 # 通过运行“为数据库启用延伸向导”开始操作
 
 若要为延伸数据库配置数据库，请运行“为数据库启用延伸向导”。本主题介绍必须在该向导中输入的信息以及必须选择的选项。
 
-若要了解有关 Stretch Database 的详细信息，请参阅 [Stretch Database](/documentation/articles/sql-server-stretch-database-overview/)。
+若要了解有关 Stretch Database 的详细信息，请参阅 [Stretch Database](sql-server-stretch-database-overview.md)。
 
  >   [AZURE.NOTE] 若要在以后禁用 Stretch Database，请记住，针对表或数据库禁用 Stretch Database 不会删除远程对象。若要删除远程表或远程数据库，必须使用 Azure 管理门户。远程对象在手动删除之前，会持续产生 Azure 费用。
 
@@ -156,31 +160,31 @@
 ## <a name="Results"></a>结果
 查看结果。
 
-若要监视数据迁移的状态，请参阅[数据迁移的监视和故障排除 (Stretch Database)](/documentation/articles/sql-server-stretch-database-monitor/)。
+若要监视数据迁移的状态，请参阅[数据迁移的监视和故障排除 (Stretch Database)](sql-server-stretch-database-monitor.md)。
 
 ![Stretch Database 向导的“结果”页][StretchWizardImage9]
 
 ## <a name="KnownIssues"></a>排查向导问题
-**延伸数据库向导失败。** 如果延伸数据库尚未在服务器级别启用，而你在不使用系统管理员权限的情况下运行向导来启用延伸数据库，则向导将会失败。请求系统管理员在本地服务器实例上启用延伸数据库，然后再次运行向导。有关详细信息，请参阅[先决条件：在服务器上启用 Stretch Database 所需的权限](/documentation/articles/sql-server-stretch-database-enable-database/#EnableTSQLServer)。
+**延伸数据库向导失败。** 如果延伸数据库尚未在服务器级别启用，而你在不使用系统管理员权限的情况下运行向导来启用延伸数据库，则向导将会失败。请求系统管理员在本地服务器实例上启用延伸数据库，然后再次运行向导。有关详细信息，请参阅[先决条件：在服务器上启用 Stretch Database 所需的权限](sql-server-stretch-database-enable-database.md#EnableTSQLServer)。
 
 ## 后续步骤
 为延伸数据库启用其他表。监视数据迁移与管理已启用延伸的数据库和表。
 
--   参阅[为表启用 Stretch Database](/documentation/articles/sql-server-stretch-database-enable-table/) 来启用其他表。
+-   参阅[为表启用 Stretch Database](sql-server-stretch-database-enable-table.md) 来启用其他表。
 
--   参阅[数据迁移的监视和故障排除](/documentation/articles/sql-server-stretch-database-monitor/)来查看数据迁移的状态。
+-   参阅[数据迁移的监视和故障排除](sql-server-stretch-database-monitor.md)来查看数据迁移的状态。
 
--   [暂停和恢复延伸数据库](/documentation/articles/sql-server-stretch-database-pause/)
+-   [暂停和恢复延伸数据库](sql-server-stretch-database-pause.md)
 
--   [延伸数据库的管理和故障排除](/documentation/articles/sql-server-stretch-database-manage/)
+-   [延伸数据库的管理和故障排除](sql-server-stretch-database-manage.md)
 
--   [备份启用了延伸的数据库](/documentation/articles/sql-server-stretch-database-backup/)
+-   [备份启用了延伸的数据库](sql-server-stretch-database-backup.md)
 
 ## 另请参阅
 
-[为数据库启用延伸数据库](/documentation/articles/sql-server-stretch-database-enable-database/)
+[为数据库启用延伸数据库](sql-server-stretch-database-enable-database.md)
 
-[为表启用延伸数据库](/documentation/articles/sql-server-stretch-database-enable-table/)
+[为表启用延伸数据库](sql-server-stretch-database-enable-table.md)
 
 [StretchWizardImage1]: ./media/sql-server-stretch-database-wizard/stretchwiz1.png
 [StretchWizardImage2]: ./media/sql-server-stretch-database-wizard/stretchwiz2.png
@@ -195,4 +199,4 @@
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 [StretchWizardImage9]: ./media/sql-server-stretch-database-wizard/stretchwiz9.png
 
-<!---HONumber=Mooncake_0829_2016--->
+<!---HONumber=AcomDC_0921_2016-->

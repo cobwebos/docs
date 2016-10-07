@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 Azure 应用服务移动应用中创建 iOS 应用 | Azure"
+	pageTitle="在 Azure App Service 移动应用中创建 iOS 应用 | Microsoft Azure"
 	description="遵循本教程开始使用 Azure 移动应用后端以 Objective-C 或 Swift 进行 iOS 开发"
 	services="app-service\mobile"
 	documentationCenter="ios"
@@ -9,8 +9,12 @@
 
 <tags
 	ms.service="app-service-mobile"
-	ms.date="06/30/2016"
-	wacn.date=""/>
+	ms.workload="na"
+	ms.tgt_pltfrm="mobile-ios"
+	ms.devlang="objective-c"
+	ms.topic="hero-article"
+	ms.date="08/17/2016"
+	ms.author="krisragh"/>
 
 #创建 iOS 应用
 
@@ -18,15 +22,10 @@
 
 ## 概述
 
-本教程说明如何将云后端服务 [Azure 移动应用](/documentation/articles/app-service-mobile-value-prop/)添加到 iOS 应用。首先将创建新的移动后端。然后，使用一个简单的_待办事项列表_ iOS 应用在 Azure 中存储数据。
+本教程说明如何将云后端服务 [Azure 移动应用](app-service-mobile-value-prop.md)添加到 iOS 应用。首先将创建新的移动后端。然后，使用一个简单的_待办事项列表_ iOS 应用在 Azure 中存储数据。
 
-## 先决条件
+若要完成本教程，需要一台 Mac 和[一个 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)
 
-若要完成本教程，您需要以下各项：
-
-* [有效的 Azure 帐户](/pricing/1rmb-trial/)
-* 装有 [Visual Studio Community 2013] 或更高版本的电脑
-* 装有 Xcode 7.3 或更高版本的 Mac
 
 ## 步骤 I：创建新的 Azure 移动应用后端
 
@@ -44,8 +43,9 @@
 <!-- Images. -->
 
 <!-- URLs -->
-[Azure portal]: https://portal.azure.cn/
+
+[Azure portal]: https://portal.azure.com/
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

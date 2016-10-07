@@ -1,5 +1,5 @@
 <properties
-	pageTitle="通过 .NET 开始使用 Azure 表存储 | Azure"
+	pageTitle="通过 .NET 开始使用 Azure 表存储 | Microsoft Azure"
 	description="使用 Azure 表存储（一种 NoSQL 数据存储）将结构化数据存储在云中。"
 	services="storage"
 	documentationCenter=".net"
@@ -9,15 +9,18 @@
 
 <tags
 	ms.service="storage"
-	ms.date="07/23/2016"
-	wacn.date=""/>  
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
+	ms.date="09/20/2016"
+	ms.author="gusapost;tamram"/>  
 
 
 
 # 通过 .NET 开始使用 Azure 表存储
 
-[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-<br/>
+[AZURE.INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)] <br/>  
 [AZURE.INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## 概述
@@ -34,12 +37,17 @@ Azure 表存储是一种将结构化的 NoSQL 数据存储在云中的服务。�
 
 **先决条件：**
 
-- [Microsoft Visual Studio](https://www.visualstudio.com/zh-cn/visual-studio-homepage-vs.aspx)
+- [Microsoft Visual Studio](https://www.visualstudio.com/zh-CN/visual-studio-homepage-vs.aspx)
 - [适用于 .NET 的 Azure 存储空间客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
 - [适用于 .NET 的 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-- 一个 [Azure 存储帐户](/documentation/articles/storage-create-storage-account/#create-a-storage-account)
+- 一个 [Azure 存储帐户](storage-create-storage-account.md#create-a-storage-account)
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
+
+### 更多示例
+
+有关使用表存储的其他示例，请参阅[在 .NET 中使用 Azure 表存储入门](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/)。可以下载示例应用程序并运行，或在 GitHub 上浏览代码。
+
 
 [AZURE.INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -51,7 +59,7 @@ Azure 表存储是一种将结构化的 NoSQL 数据存储在云中的服务。�
 
 将下列 `using` 语句添加到 `program.cs` 文件顶部：
 
-	using Microsoft.Azure; // Namespace for CloudConfigurationManager 
+	using Microsoft.Azure; // Namespace for CloudConfigurationManager
 	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
     using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
 
@@ -75,19 +83,19 @@ Azure 表存储是一种将结构化的 NoSQL 数据存储在云中的服务。�
 	// Retrieve the storage account from the connection string.
 	CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
 	    CloudConfigurationManager.GetSetting("StorageConnectionString"));
-	
+
 	// Create the table client.
 	CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
 	// Retrieve a reference to the table.
     CloudTable table = tableClient.GetTableReference("people");
-		
+
     // Create the table if it doesn't exist.
     table.CreateIfNotExists();
 
 ## 将实体添加到表
 
-实体使用派生自 **TableEntity** 的自定义类映射到 C# 对象。若要将实体添加到表，请创建用于定义实体的属性的类。以下代码定义将客户的名字和姓氏分别用作行键和分区键的实体类。实体的分区键和行键共同唯一地标识表中的实体。查询分区键相同的实体的速度快于查询分区键不同的实体的速度，但使用不同的分区键可实现更高的并行操作可伸缩性。对于应存储在表服务中的任何属性，该属性必须是公开 `get` 和 `set` 的受支持类型的公共属性。此外，你的实体类型 *必须* 公开不带参数的构造函数。
+实体使用派生自 **TableEntity** 的自定义类映射到 C# 对象。若要将实体添加到表，请创建用于定义实体的属性的类。以下代码定义将客户的名字和姓氏分别用作行键和分区键的实体类。实体的分区键和行键共同唯一地标识表中的实体。查询分区键相同的实体的速度快于查询分区键不同的实体的速度，但使用不同的分区键可实现更高的并行操作可伸缩性。对于应存储在表服务中的任何属性，该属性必须是公开 `get` 和 `set` 的受支持类型的公共属性。此外，你的实体类型*必须*公开不带参数的构造函数。
 
     public class CustomerEntity : TableEntity
     {
@@ -409,7 +417,7 @@ Azure 表存储是一种将结构化的 NoSQL 数据存储在云中的服务。�
 
 ## 以异步方式检索页中的实体
 
-如果你正在读取大量实体，并且想要在检索进行时处理/显示实体，而非等待返回全部实体，则可以通过使用分段查询检索实体。此示例显示如何通过 Async-Await 模式以页面形式返回结果，这样就不会在等待返回大量结果时阻止操作的执行。有关在 .NET 中使用 Async-Await 模式的详细信息，请参阅 [使用 Async 和 Await 进行异步编程（C# 和 Visual Basic）](https://msdn.microsoft.com/zh-cn/library/hh191443.aspx)。
+如果你正在读取大量实体，并且想要在检索进行时处理/显示实体，而非等待返回全部实体，则可以通过使用分段查询检索实体。此示例显示如何通过 Async-Await 模式以页面形式返回结果，这样就不会在等待返回大量结果时阻止操作的执行。有关在 .NET 中使用 Async-Await 模式的详细信息，请参阅 [使用 Async 和 Await 进行异步编程（C# 和 Visual Basic）](https://msdn.microsoft.com/library/hh191443.aspx)。
 
     // Initialize a default TableQuery to retrieve all the entities in the table.
     TableQuery<CustomerEntity> tableQuery = new TableQuery<CustomerEntity>();
@@ -437,16 +445,17 @@ Azure 表存储是一种将结构化的 NoSQL 数据存储在云中的服务。�
 
 现在，你已了解有关表存储的基础知识，请按照下面的链接了解更复杂的存储任务：
 
+- 有关表存储的更多示例，请参阅 [.NET 中的 Azure 表存储入门](https://azure.microsoft.com/documentation/samples/storage-table-dotnet-getting-started/)。
 - 查看表服务参考文档，了解有关可用 API 的完整详情：
-    - [.NET 存储客户端库参考](https://msdn.microsoft.com/zh-cn/library/mt347887.aspx)
-    - [REST API 参考](http://msdn.microsoft.com/zh-cn/library/azure/dd179355)
-- 了解如何使用 [Azure WebJobs SDK](/documentation/articles/websites-dotnet-webjobs-sdk-get-started/) 简化你编写的用于 Azure 存储空间的代码
+    - [.NET 存储客户端库参考](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    - [REST API 参考](http://msdn.microsoft.com/library/azure/dd179355)
+- 了解如何使用 [Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md) 简化你编写的用于 Azure 存储空间的代码
 - 查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
-    - [通过 .NET 开始使用 Azure Blob 存储](/documentation/articles/storage-dotnet-how-to-use-blobs/)来存储非结构化数据。
-    - [如何在 .NET 应用程序中使用 Azure SQL 数据库](/documentation/articles/sql-database-dotnet-how-to-use/)来存储关系数据。
+    - [通过 .NET 开始使用 Azure Blob 存储](storage-dotnet-how-to-use-blobs.md)来存储非结构化数据。
+    - [如何在 .NET 应用程序中使用 Azure SQL 数据库](sql-database-dotnet-how-to-use.md)来存储关系数据。
 
   [Download and install the Azure SDK for .NET]: /develop/net/
-  [Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/zh-cn/library/azure/ee405487.aspx
+  [Creating an Azure Project in Visual Studio]: http://msdn.microsoft.com/library/azure/ee405487.aspx
 
   [Blob5]: ./media/storage-dotnet-how-to-use-table-storage/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-table-storage/blob6.png
@@ -455,12 +464,12 @@ Azure 表存储是一种将结构化的 NoSQL 数据存储在云中的服务。�
   [Blob9]: ./media/storage-dotnet-how-to-use-table-storage/blob9.png
 
   [“Upsert 和查询投影介绍”博客文章]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
-  [.NET Client Library reference]: https://msdn.microsoft.com/zh-cn/library/mt347887.aspx
+  [.NET Client Library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [Azure Storage Team blog]: http://blogs.msdn.com/b/windowsazurestorage/
-  [Configure Azure Storage connection strings]: http://msdn.microsoft.com/zh-cn/library/azure/ee758697.aspx
+  [Configure Azure Storage connection strings]: http://msdn.microsoft.com/library/azure/ee758697.aspx
   [OData]: http://nuget.org/packages/Microsoft.Data.OData/5.0.2
   [Edm]: http://nuget.org/packages/Microsoft.Data.Edm/5.0.2
   [Spatial]: http://nuget.org/packages/System.Spatial/5.0.2
   [How to: Programmatically access Table storage]: #tablestorage
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=AcomDC_0921_2016-->

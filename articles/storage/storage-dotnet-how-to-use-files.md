@@ -1,5 +1,5 @@
 <properties
-	pageTitle="在 Windows 上开始使用 Azure 文件存储 | Azure"
+	pageTitle="在 Windows 上开始使用 Azure 文件存储 | Microsoft Azure"
 	description="使用 Azure 文件存储在云中存储文件数据和从 Azure 虚拟机 (VM) 或从运行 Windows 的本地应用程序装载你的云文件共享。"
 	services="storage"
 	documentationCenter=".net"
@@ -7,36 +7,43 @@
 	manager="aungoo"
 	editor="tysonn" />
 
-<tags
-	ms.service="storage"
+<tags ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
 	ms.date="07/26/2016"
-	wacn.date="" />
+	ms.author="minet;robinsh" />
 
 # 在 Windows 上开始使用 Azure 文件存储
 
-[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
-<br/>
-[AZURE.INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
+[AZURE.INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)] <br/> [AZURE.INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
 
 ## 概述
 
-Azure 文件存储是一种使用标准[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/zh-cn/library/windows/desktop/aa365233.aspx)在云中提供文件共享的服务。支持 SMB 2.1 和 SMB 3.0。通过 Azure 文件存储，你可以将依赖文件共享的旧版应用程序快速迁移到 Azure 且无成本高昂的重写。在 Azure 虚拟机或云服务中或者从本地客户端运行的应用程序可以在云中装载文件共享，就像桌面应用程序装载典型的 SMB 共享一样。之后，任意数量的应用程序组件可以装载并同时访问文件存储共享。
+Azure 文件存储是一种使用标准[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)在云中提供文件共享的服务。支持 SMB 2.1 和 SMB 3.0。通过 Azure 文件存储，你可以将依赖文件共享的旧版应用程序快速迁移到 Azure 且无成本高昂的重写。在 Azure 虚拟机或云服务中或者从本地客户端运行的应用程序可以在云中装载文件共享，就像桌面应用程序装载典型的 SMB 共享一样。之后，任意数量的应用程序组件可以装载并同时访问文件存储共享。
 
 由于文件存储共享是标准的 SMB 文件共享，在 Azure 中运行的应用程序可以通过文件系统 I/O API 访问共享中的数据。因此，开发人员可以利用其现有代码和技术迁移现有应用程序。IT 专业人员在管理 Azure 应用程序的过程中，可以使用 PowerShell cmdlet 来创建、装载和管理文件存储共享。
 
-可以使用 [Azure 门户](https://portal.azure.cn)、Azure 存储空间 PowerShell cmdlet、Azure 存储空间客户端库或 Azure 存储空间 REST API 来创建 Azure 文件共享。此外，由于这些文件共享是 SMB 共享，因此你还可以通过标准的和熟悉的文件系统 API 来访问它们。
+可以使用 [Azure 门户](https://portal.azure.com)、Azure 存储空间 PowerShell cmdlet、Azure 存储空间客户端库或 Azure 存储空间 REST API 来创建 Azure 文件共享。此外，由于这些文件共享是 SMB 共享，因此你还可以通过标准的和熟悉的文件系统 API 来访问它们。
 
-有关通过 Linux 使用文件存储的信息，请参阅[如何通过 Linux 使用 Azure 文件存储](/documentation/articles/storage-how-to-use-files-linux/)。
+有关通过 Linux 使用文件存储的信息，请参阅[如何通过 Linux 使用 Azure 文件存储](storage-how-to-use-files-linux.md)。
 
-有关文件存储的可伸缩性和性能目标的信息，请参阅 [Azure Storage Scalability and Performance Targets](/documentation/articles/storage-scalability-targets/#scalability-targets-for-blobs-queues-tables-and-files)（Azure 存储空间可缩放性和性能目标）。
+有关文件存储的可伸缩性和性能目标的信息，请参阅 [Azure Storage Scalability and Performance Targets](storage-scalability-targets.md#scalability-targets-for-blobs-queues-tables-and-files)（Azure 存储空间可缩放性和性能目标）。
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
 [AZURE.INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
 
+## 视频：通过 Windows 使用 Azure 文件存储
+
+下面是演示如何在 Windows 上创建和使用 Azure 文件共享的视频。
+
+> [AZURE.VIDEO azure-file-storage-with-windows]
+
 ## 关于本教程
 
-此入门教程演示使用 Azure 文件存储的基础知识。在本教程中，我们将：
+此入门教程演示使用 Microsoft Azure 文件存储的基础知识。在本教程中，我们将：
 
 - 使用 Azure 门户或 PowerShell 创建新的 Azure 文件共享、添加目录、将本地文件上载到该共享，以及列出该目录中的文件。
 - 装载文件共享，就像装载任何 SMB 共享一样。
@@ -48,11 +55,11 @@ Azure 文件存储是一种使用标准[服务器消息块 (SMB) 协议](https:/
 	- 将文件复制到同一存储帐户中的一个 Blob。
 - 使用 Azure 存储空间度量值进行故障排除
 
-现在所有存储帐户均支持文件存储，因此你可以使用现有存储帐户，也可以创建新的存储帐户。请参阅 [How to create a storage account](/documentation/articles/storage-create-storage-account/#create-a-storage-account)（如何创建存储帐户），了解有关创建新存储帐户的信息。
+现在所有存储帐户均支持文件存储，因此你可以使用现有存储帐户，也可以创建新的存储帐户。请参阅 [How to create a storage account](storage-create-storage-account.md#create-a-storage-account)（如何创建存储帐户），了解有关创建新存储帐户的信息。
 
 ## 使用 Azure 门户管理文件共享
 
-[Azure 门户](https://portal.azure.cn)提供了方便客户管理文件共享的用户界面。在门户中，你可以：
+[Azure 门户](https://portal.azure.com)提供了方便客户管理文件共享的用户界面。在门户中，你可以：
 
 - 创建文件共享
 - 将文件上载到文件共享以及从文件共享下载文件。
@@ -127,7 +134,7 @@ Azure 文件存储是一种使用标准[服务器消息块 (SMB) 协议](https:/
 
 ### 为 Azure 存储空间安装 PowerShell cmdlet
 
-若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。有关安装点和安装说明，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure/)。
+若要准备使用 PowerShell，请下载并安装 Azure PowerShell cmdlet。有关安装点和安装说明，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
 
 > [AZURE.NOTE] 建议你下载并安装最新的 Azure PowerShell 模块或升级到最新模块。
 
@@ -135,7 +142,7 @@ Azure 文件存储是一种使用标准[服务器消息块 (SMB) 协议](https:/
 
 ### 为存储帐户和密钥创建上下文
 
-现在，将创建存储帐户上下文。该上下文封装了存储帐户名称和帐户密钥。有关从 [Azure 门户](https://portal.azure.cn)复制帐户密钥的说明，请参阅[查看和复制存储访问密钥](/documentation/articles/storage-create-storage-account/#view-and-copy-storage-access-keys)。
+现在，将创建存储帐户上下文。该上下文封装了存储帐户名称和帐户密钥。有关从 [Azure 门户](https://portal.azure.com)复制帐户密钥的说明，请参阅[查看和复制存储访问密钥](storage-create-storage-account.md#view-and-copy-storage-access-keys)。
 
 请将下面示例中的 `storage-account-name` 和 `storage-account-key` 替换为你的存储帐户名称和密钥。
 
@@ -151,7 +158,7 @@ Azure 文件存储是一种使用标准[服务器消息块 (SMB) 协议](https:/
 
 现在，你在文件存储中已有一个文件共享。接下来，我们将添加目录和文件。
 
-> [AZURE.IMPORTANT] 文件共享的名称必须是全部小写。有关命名文件共享和文件的完整详细信息，请参阅[命名和引用共享、目录、文件和元数据](https://msdn.microsoft.com/zh-cn/library/azure/dn167011.aspx)。
+> [AZURE.IMPORTANT] 文件共享的名称必须是全部小写。有关命名文件共享和文件的完整详细信息，请参阅[命名和引用共享、目录、文件和元数据](https://msdn.microsoft.com/library/azure/dn167011.aspx)。
 
 ### 在文件共享中创建目录
 
@@ -186,7 +193,7 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
     # copy a blob to a file directory
     Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -DestShareName hello -DestFilePath hellodir/hello2copy.txt -DestContext $ctx -Context $ctx
 
-## 装载文件共享 
+## 装载文件共享
 
 由于支持 SMB 3.0，文件存储现在支持加密和持久保留 SMB 3.0 客户端中的句柄。支持加密意味着 SMB 3.0 客户端可以从任意位置装载文件共享，这些位置包括：
 
@@ -197,28 +204,28 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 当客户端访问文件存储时，所使用的 SMB 版本取决于操作系统支持的 SMB 版本。下表提供了有关 Windows 客户端支持的摘要。有关 [SMB 版本](http://blogs.technet.com/b/josebda/archive/2013/10/02/windows-server-2012-r2-which-version-of-the-smb-protocol-smb-1-0-smb-2-0-smb-2-1-smb-3-0-or-smb-3-02-you-are-using.aspx)的更多详细信息，请参阅此博客。
 
 | Windows 客户端 | 支持的 SMB 版本 |
-|------------------------|-----------------------|
-| Windows 7              | SMB 2.1               |
-| Windows Server 2008 R2 | SMB 2.1               |
-| Windows 8              | SMB 3.0               |
-| Windows Server 2012    | SMB 3.0               |
-| Windows Server 2012 R2 | SMB 3.0               |
-| Windows 10             | SMB 3.0               |
+|:-----------------------|:----------------------|
+| Windows 7 | SMB 2.1 |
+| Windows Server 2008 R2 | SMB 2.1 |
+| Windows 8 | SMB 3.0 |
+| Windows Server 2012 | SMB 3.0 |
+| Windows Server 2012 R2 | SMB 3.0 |
+| Windows 10 | SMB 3.0 |
 
 ### 从运行 Windows 的 Azure 虚拟机装载文件共享
 
 为了演示如何装载 Azure 文件共享，现在我们将创建一个运行 Windows 的 Azure 虚拟机，并远程登录到它内部以装载共享。
 
 
-1. 首先，按照[在 Azure 门户中创建 Windows 虚拟机](/documentation/articles/virtual-machines-windows-hero-tutorial/)中的说明创建新的 Azure 虚拟机。
-2. 接下来，按照[使用 Azure 门户登录到 Windows 虚拟机](/documentation/articles/virtual-machines-windows-connect-logon/)中的说明远程登录到虚拟机。
+1. 首先，按照[在 Azure 门户中创建 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md)中的说明创建新的 Azure 虚拟机。
+2. 接下来，按照[使用 Azure 门户登录到 Windows 虚拟机](../virtual-machines/virtual-machines-windows-connect-logon.md)中的说明远程登录到虚拟机。
 3. 在该虚拟机上打开 PowerShell 窗口。
 
 ### 保存虚拟机的存储帐户凭据
 
 装载到文件共享之前，先在虚拟机上保存存储帐户凭据。当虚拟机重新启动时，此步骤允许 Windows 自动重新连接到文件共享。若要持久保存帐户凭据，请在虚拟机上的 PowerShell 窗口中运行 `cmdkey` 命令。请将 `<storage-account-name>` 替换为你的存储帐户名称，将 `<storage-account-key>` 替换为你的存储帐户密钥。
 
-	cmdkey /add:<storage-account-name>.file.core.chinacloudapi.cn /user:<storage-account-name> /pass:<storage-account-key>
+	cmdkey /add:<storage-account-name>.file.core.windows.net /user:<storage-account-name> /pass:<storage-account-key>
 
 现在，当虚拟机重新启动时，Windows 将重新连接到你的文件共享。可以通过在 PowerShell 窗口中运行 `net use` 命令来验证是否已重新连接共享。
 
@@ -228,23 +235,23 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 
 建立与虚拟机的远程连接后，便可以使用以下语法运行 `net use` 命令来装载文件共享了。请将 `<storage-account-name>` 替换为你的存储帐户名称，将 `<share-name>` 替换为你的文件存储共享名称。
 
-    net use <drive-letter>: \<storage-account-name>.file.core.chinacloudapi.cn<share-name>
+    net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name>
 
 	example :
-	net use z: \\samples.file.core.chinacloudapi.cn\logs
+	net use z: \\samples.file.core.windows.net\logs
 
 由于你已在上一步中保存了存储帐户凭据，因此你无需随 `net use` 命令提供这些凭据。如果你尚未保存凭据，请作为传递给 `net use` 命令的参数提供凭据，如以下示例所示。
 
-    net use <drive-letter>: \<storage-account-name>.file.core.chinacloudapi.cn<share-name> /u:<storage-account-name> <storage-account-key>
+    net use <drive-letter>: \<storage-account-name>.file.core.windows.net<share-name> /u:<storage-account-name> <storage-account-key>
 
 	example :
-	net use z: \\samples.file.core.chinacloudapi.cn\logs /u:samples <storage-account-key>
+	net use z: \\samples.file.core.windows.net\logs /u:samples <storage-account-key>
 
-现在，你可以使用虚拟机中的文件存储共享，就像使用任何其他驱动器一样。你可以从命令提示符发出标准文件命令，也可以从文件资源管理器查看已装载的共享及其内容。你也可以在虚拟机中运行代码，以便访问使用标准 Windows 文件 I/O API 的文件共享，例如 .NET Framework 中由 [System.IO 命名空间](http://msdn.microsoft.com/zh-cn/library/gg145019.aspx)提供的文件共享。
+现在，你可以使用虚拟机中的文件存储共享，就像使用任何其他驱动器一样。你可以从命令提示符发出标准文件命令，也可以从文件资源管理器查看已装载的共享及其内容。你也可以在虚拟机中运行代码，以便访问使用标准 Windows 文件 I/O API 的文件共享，例如 .NET Framework 中由 [System.IO 命名空间](http://msdn.microsoft.com/library/gg145019.aspx)提供的文件共享。
 
 你还可以通过远程登录到角色中从 Azure 云服务中运行的角色装载文件共享。
 
-### 从运行 Windows 的本地客户端装载文件共享 
+### 从运行 Windows 的本地客户端装载文件共享
 
 若要从本地客户端装载文件共享，必须首先执行以下步骤：
 
@@ -255,7 +262,7 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 
 ## 使用文件存储进行开发
 
-若要编写调用文件存储的代码，可以使用适用于 .NET 和 Java 的存储客户端库或 Azure 存储 REST API。本部分中的示例演示如何通过在桌面上运行的简单控制台应用程序使用[用于 .NET 的 Azure 存储客户端库](https://msdn.microsoft.com/zh-cn/library/mt347887.aspx)处理文件共享。
+若要编写调用文件存储的代码，可以使用适用于 .NET 和 Java 的存储客户端库或 Azure 存储 REST API。本部分中的示例演示如何通过在桌面上运行的简单控制台应用程序使用[用于 .NET 的 Azure 存储客户端库](https://msdn.microsoft.com/library/mt347887.aspx)处理文件共享。
 
 ### 创建控制台应用程序，并获取程序集
 
@@ -265,11 +272,11 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 2. 提供控制台应用程序的名称，然后单击“确定”。
 3. 创建项目后，在解决方案资源管理器中右键单击该项目并选择“管理 NuGet 包”。在线搜索“WindowsAzure.Storage”，然后单击“安装”以安装适用于 .NET 的 Azure 存储客户端库包和依赖项。
 
-此文章中的代码示例还使用 [Azure Configuration Manager 库](https://msdn.microsoft.com/zh-cn/library/azure/mt634646.aspx)从控制台应用程序中的 app.config 文件中检索存储连接字符串。使用 Azure Configuration Manager，你可以在运行时检索连接字符串，无论你的应用程序是在 Azure 中运行还是从桌面、移动、或 Web 应用程序中运行。
+此文章中的代码示例还使用 [Microsoft Azure Configuration Manager 库](https://msdn.microsoft.com/library/azure/mt634646.aspx)从控制台应用程序中的 app.config 文件中检索存储连接字符串。使用 Azure Configuration Manager，可以在运行时检索连接字符串，无论你的应用程序是在 Microsoft Azure 中运行还是从桌面设备、移动设备或 Web 应用程序中运行。
 
 若要安装 Azure Configuration Manager 包，请在“解决方案资源管理器”中右键单击项目，然后选择“管理 NuGet 包”。在线搜索“ConfigurationManager”，然后单击“安装”以安装包。
 
-不一定要使用 Azure Configuration Manager。还可以使用 API，例如 .NET Framework 的 [ConfigurationManager 类](https://msdn.microsoft.com/zh-cn/library/system.configuration.configurationmanager.aspx)。
+不一定要使用 Azure Configuration Manager。还可以使用 API，例如 .NET Framework 的 [ConfigurationManager 类](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx)。
 
 ### 将存储帐户凭据保存到 app.config 文件
 
@@ -281,7 +288,7 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 	        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
 	    </startup>
 	    <appSettings>
-	        <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=StorageAccountKeyEndingIn==;EndpointSuffix=core.chinacloudapi.cn" />
+	        <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=StorageAccountKeyEndingIn==" />
 	    </appSettings>
 	</configuration>
 
@@ -419,13 +426,13 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
         Console.WriteLine(fileSas.DownloadText());
     }
 
-有关创建和使用共享访问签名的更多信息，请参阅[共享访问签名：了解 SAS 模型](/documentation/articles/storage-dotnet-shared-access-signature-part-1/)和[创建 SAS 并将 SAS 用于 Blob 存储](/documentation/articles/storage-dotnet-shared-access-signature-part-2/)。
+有关创建和使用共享访问签名的更多信息，请参阅[使用共享访问签名 (SAS)](storage-dotnet-shared-access-signature-part-1.md) 和[创建 SAS 并将其与 Blob 存储结合使用](storage-dotnet-shared-access-signature-part-2.md)。
 
 ### 复制文件
 
 从 Azure 存储空间客户端库的 5.x 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。在后续部分中，我们将演示如何以编程方式执行这些复制操作。
 
-还可以使用 AzCopy 将一个文件复制到另一个文件或将一个 Blob 复制到一个文件，反之亦然。请参阅[使用 AzCopy 命令行实用程序传输数据](/documentation/articles/storage-use-azcopy/)。
+还可以使用 AzCopy 将一个文件复制到另一个文件或将一个 Blob 复制到一个文件，反之亦然。请参阅[使用 AzCopy 命令行实用程序传输数据](storage-use-azcopy.md)。
 
 > [AZURE.NOTE] 如果将一个 Blob 复制到一个文件，或将一个文件复制到一个 Blob，必须使用共享访问签名 (SAS) 对源对象进行身份验证，即使你在同一存储帐户内进行复制。
 
@@ -526,7 +533,7 @@ Get-AzureStorageFile 将返回任何传入的目录对象的文件和目录列�
 
 Azure 存储空间分析现在支持用于文件存储的指标。使用指标数据，可以跟踪请求和诊断问题。
 
-可以从 [Azure 门户](https://portal.azure.cn)为文件存储启用指标。你还可以通过 REST API 或存储客户端库中的类似物之一调用“设置文件服务属性”操作，以编程方式启用指标。
+可以从 [Azure 门户](https://portal.azure.com)为文件存储启用指标。你还可以通过 REST API 或存储客户端库中的类似物之一调用“设置文件服务属性”操作，以编程方式启用指标。
 
 下面的代码示例演示如何使用适用于 .NET 的存储客户端库启用文件存储的指标。
 
@@ -586,13 +593,13 @@ Azure 存储空间分析现在支持用于文件存储的指标。使用指标�
 	仅通过 REST API 或客户端库支持 SAS。通过 SMB 协议装载文件共享时，不能使用 SAS 委派对其内容的访问权限。
 
 2. **Azure 文件共享是在 Internet 上公开可见，还是只能通过 Azure 对其进行访问？**
- 
+
 	只要端口 445（TCP 出站）处于打开状态且客户端支持 SMB 3.0 协议（*例如*，Windows 8 或 Windows Server 2012），文件共享就可通过 Internet 使用。
 
 3. **Azure 虚拟机与文件共享之间的网络流量是否算作对订阅计费的外部带宽？**
 
 	如果文件共享和虚拟机位于不同的区域，则它们之间的流量将作为外部带宽收费。
- 
+
 4. **如果是虚拟机和同一区域中的文件共享之间的网络流量，是免费吗？**
 
 	是的。如果流量在同一区域，是免费的。
@@ -604,7 +611,7 @@ Azure 存储空间分析现在支持用于文件存储的指标。使用指标�
 6. **故障转移群集的“文件共享见证”是 Azure 文件存储的使用案例之一吗？**
 
 	目前，不支持此功能。
- 
+
 7. **当前仅通过 LRS 或 GRS 复制文件存储，对吗？**
 
 	我们计划支持 RA-GRS，但尚没有共享时间表。
@@ -631,37 +638,37 @@ Azure 存储空间分析现在支持用于文件存储的指标。使用指标�
 
 13. **发布了修复 Azure 文件慢速性能问题的修补程序**
 
-	Windows 团队最近发布了一个修补程序，旨在修复客户从 Windows 8.1 计算机或 Windows Server 2012 R2 服务器访问 Azure 文件存储时遇到的慢速性能问题。有关详细信息，请查看相关的知识库文章：[Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2](https://support.microsoft.com/zh-cn/kb/3114025)（从 Windows 8.1 或 Server 2012 R2 访问 Azure 文件存储时性能降低）。
+	Windows 团队最近发布了一个修补程序，旨在修复客户从 Windows 8.1 计算机或 Windows Server 2012 R2 服务器访问 Azure 文件存储时遇到的慢速性能问题。有关详细信息，请查看相关的知识库文章：[Slow performance when you access Azure Files Storage from Windows 8.1 or Server 2012 R2](https://support.microsoft.com/zh-CN/kb/3114025)（从 Windows 8.1 或 Server 2012 R2 访问 Azure 文件存储时性能降低）。
 
 14. **通过 IBM MQ 使用 Azure 文件存储**
 
-	IBM 已发布相关文档来指导 IBM MQ 客户通过其服务配置 Azure 文件存储。有关详细信息，请查阅 [How to setup IBM MQ Multi instance queue manager with Azure File Service](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)（如何通过 Azure 文件服务来设置 IBM MQ 多实例队列管理器）。
+	IBM 已发布相关文档来指导 IBM MQ 客户通过其服务配置 Azure 文件存储。有关详细信息，请查阅[如何通过 Microsoft Azure 文件服务设置 IBM MQ 多实例队列管理器](https://github.com/ibm-messaging/mq-azure/wiki/How-to-setup-IBM-MQ-Multi-instance-queue-manager-with-Microsoft-Azure-File-Service)。
 
 ## 后续步骤
 
 请参阅以下链接以获取有关 Azure 文件存储的更多信息。
 
-### 概念性文章
+### 概念性文章和视频
 
 - [Azure 文件存储：适用于 Windows 和 Linux 的顺畅的云 SMB 文件系统](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-- [如何通过 Linux 使用 Azure 文件存储](/documentation/articles/storage-how-to-use-files-linux/)
+- [如何通过 Linux 使用 Azure 文件存储](storage-how-to-use-files-linux.md)
 
 ### 文件存储的工具支持
 
-- [对 Azure 存储空间使用 Azure PowerShell](/documentation/articles/storage-powershell-guide-full/)
-- [如何对 Azure 存储空间使用 AzCopy](/documentation/articles/storage-use-azcopy/)
-- [将 Azure CLI 用于 Azure 存储空间](/documentation/articles/storage-azure-cli/#create-and-manage-file-shares)
+- [对 Azure 存储空间使用 Azure PowerShell](storage-powershell-guide-full.md)
+- [如何对 Microsoft Azure 存储空间使用 AzCopy](storage-use-azcopy.md)
+- [将 Azure CLI 用于 Azure 存储空间](storage-azure-cli.md#create-and-manage-file-shares)
 
 ### 引用
 
-- [.NET 存储客户端库参考](https://msdn.microsoft.com/zh-cn/library/azure/dn261237.aspx)
-- [文件服务 REST API 参考](http://msdn.microsoft.com/zh-cn/library/azure/dn167006.aspx)
+- [.NET 存储客户端库参考](https://msdn.microsoft.com/library/azure/dn261237.aspx)
+- [文件服务 REST API 参考](http://msdn.microsoft.com/library/azure/dn167006.aspx)
 
 ### 博客文章
 
 - [Azure 文件存储现已正式发布](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
 - [Azure 文件存储内部](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-- [Introducing Azure File Service（Azure 文件服务简介）](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-- [Persisting connections to Azure Files（持久连接到 Azure 文件）](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [Microsoft Azure 文件服务简介](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [将连接保存到 Microsoft Azure 文件中](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=AcomDC_0921_2016-->

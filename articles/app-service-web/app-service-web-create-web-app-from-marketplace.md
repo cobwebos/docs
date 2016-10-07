@@ -1,8 +1,5 @@
-<!-- not suitable for Mooncake -->
-
-
 <properties
-	pageTitle="通过 Azure 应用商店创建 Web 应用 | Azure"
+	pageTitle="通过 Azure 应用商店创建 Web 应用 | Microsoft Azure"
 	description="了解如何使用 Azure 门户从 Azure 应用商店创建新的 WordPress Web 应用。"
 	services="app-service\web"
 	documentationCenter=""
@@ -12,8 +9,12 @@
 
 <tags
 	ms.service="app-service-web"
-	ms.date="07/11/2016"
-	wacn.date=""/>
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/20/2016"
+	ms.author="robmcm"/>
 
 <!-- Note: This article replaces web-sites-php-web-site-gallery.md -->
 
@@ -26,8 +27,8 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 
 在本教程中，你将了解如何：
 
-* 在 Azure 中查找和创建基于 Azure 应用商店模板的 Web 应用。
-* 配置适用于新 Web 应用的 Azure 设置。
+* 在 Azure App Service 中查找和创建基于 Azure 应用商店模板的 Web 应用。
+* 配置适用于新 Web 应用的 Azure App Service 设置。
 * 启动和管理 Web 应用。
 
 在本教程中，你将从 Azure 应用商店部署一个 WordPress 博客站点。完成本教程中的步骤后，你将在云中启动并运行自己的 WordPress 站点。
@@ -38,11 +39,11 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 在本教程中部署的 WordPress 站点使用 MySQL 作为数据库。如果想要改用 SQL 数据库作为数据库，请参阅 [Project Nami]（Nami 项目），Azure 应用商店中也提供了该项目。
 
 > [AZURE.NOTE]
-若要完成本教程，你需要一个 Azure 帐户。如果你没有帐户，可以[激活你的 Visual Studio 订户权益][activate]，或者[注册试用帐户][trial]。
+若要完成本教程，您需要一个 Microsoft Azure 帐户。如果没有帐户，可以[激活 Visual Studio 订户权益][activate]，或者[注册免费试用帐户][free trial]。
 >
-> 如果你想在注册 Azure 帐户之前就开始使用 Azure，请访问 [Try Azure Web App]（试用 Azure Web 应用）。在那里，你可以立刻在 Azue 中创建短期的入门级 Web 应用 -- 无需信用卡，也无需做出承诺。
+> 如果要在注册 Azure 帐户之前开始使用 Azure App Service，请转到[试用应用服务]。在那里，可立刻在应用服务中创建短期的入门级 Web 应用 -- 无需信用卡，也无需做出承诺。
 
-## 在 Azure 中查找和创建 Web 应用
+## 在 Azure App Service 中查找和创建 Web 应用
 
 1. 登录到 [Azure 门户]。
 
@@ -56,10 +57,9 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 	
 1. 阅读完 WordPress 应用的说明后，单击“创建”。
 
-	![创建 WordPress Web 应用][MarketplaceCreate]  
+	![创建 WordPress Web 应用][MarketplaceCreate]
 
-
-## 配置适用于新 Web 应用的 Azure 设置
+## 配置适用于新 Web 应用的 Azure App Service 设置。
 
 1. 创建新的 Web 应用后，将显示 WordPress 设置边栏选项卡，你可以使用它来完成以下步骤：
 
@@ -68,7 +68,7 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 
 1. 在“Web 应用”框中输入 Web 应用的名称。
 
-	该名称在 chinacloudsites.cn 域中必须是唯一的，因为 Web 应用的 URL 将是 *{name}*.chinacloudsites.cn。如果你输入的名称不是唯一的，则会在文本框中显示一个红色的感叹号。
+	该名称在 azurewebsites.net 域中必须是唯一的，因为 Web 应用的 URL 将是 *{name}*.azurewebsites.net。如果你输入的名称不是唯一的，则会在文本框中显示一个红色的感叹号。
 
 	![配置 WordPress Web 应用名称][ConfigAppName]  
 
@@ -108,10 +108,9 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 
 1. 在“WordPress”边栏选项卡中，接受法律条款，然后单击“创建”。
 
-	![完成 Web 应用设置并单击“确定”][ConfigFinished]  
+	![完成 Web 应用设置并单击“确定”][ConfigFinished]
 
-
-	Azure 通常会在不到一分钟内创建好 Web 应用。你可以单击门户页顶部的铃铛图标来观看进度。
+	Azure App Service 通常在不到一分钟内创建好 Web 应用。你可以单击门户页顶部的铃铛图标来观看进度。
 
 	![进度指示器][ConfigProgress]
 
@@ -151,30 +150,28 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 
 在本教程中，你已了解如何从 Azure 应用商店创建和部署一个示例 Web 应用。
 
-有关如何使用 Azure Web Apps 的详细信息，请参阅页面左侧（针对宽屏浏览器窗口）或页面顶部（针对窄屏浏览器窗口）的链接。
+有关如何使用应用服务 Web 应用的详细信息，请参阅页面左侧（针对宽屏浏览器窗口）或页面顶部（针对窄屏浏览器窗口）的链接。
 
-有关在 Azure 上开发 WordPress Web 应用的详细信息，请参阅[在 Azure Web 应用中开发 WordPress][WordPressOnAzure]。
+有关在 Azure 上开发 WordPress Web 应用的详细信息，请参阅[在 Azure App Service 上开发 WordPress][WordPressOnAzure]。
 
 <!-- URL List -->
 
-
-[PHP]: /develop/php/
-[.NET]: /develop/net/
-[Node.js]: /develop/nodejs/
-[Java]: /develop/java/
-[Python]: /develop/python/
+[PHP]: https://azure.microsoft.com/develop/php/
+[.NET]: https://azure.microsoft.com/develop/net/
+[Node.js]: https://azure.microsoft.com/develop/nodejs/
+[Java]: https://azure.microsoft.com/develop/java/
+[Python]: https://azure.microsoft.com/develop/python/
 [activate]: https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/
-[trial]: /pricing/1rmb-trial/
-[Try Azure Web App]: https://tryappservice.azure.com/
-[ResourceGroups]: /documentation/articles/resource-group-overview/
-[AzureAppServicePlans]: /documentation/articles/azure-web-sites-web-hosting-plans-in-depth-overview/
+[free trial]: https://azure.microsoft.com/pricing/free-trial/
+[试用应用服务]: http://go.microsoft.com/fwlink/?LinkId=523751
+[ResourceGroups]: ../resource-group-overview.md
+[AzureAppServicePlans]: ../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md
 [ApplicationInsights]: https://azure.microsoft.com/services/application-insights/
-[Azure 门户]: https://portal.azure.cn/
+[Azure 门户]: https://portal.azure.com/
 [Project Nami]: http://projectnami.org/
-[WordPressOnAzure]: /documentation/articles/develop-wordpress-on-app-service-web-apps/
+[WordPressOnAzure]: ./develop-wordpress-on-app-service-web-apps.md
 
 <!-- IMG List -->
-
 
 [MarketplaceStart]: ./media/app-service-web-create-web-app-from-marketplace/marketplacestart.png
 [MarketplaceSearch]: ./media/app-service-web-create-web-app-from-marketplace/marketplacesearch.png
@@ -194,4 +191,4 @@ Azure 应用商店提供了由 Microsoft、第三方公司和开源软件计划�
 [WordPressDashboard2]: ./media/app-service-web-create-web-app-from-marketplace/wpdashboard2.png
 [WordPressConfigure]: ./media/app-service-web-create-web-app-from-marketplace/wpconfigure.png
 
-<!----HONumber=Mooncake_0815_2016-->
+<!---HONumber=AcomDC_0921_2016-->

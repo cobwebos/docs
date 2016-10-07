@@ -1,19 +1,21 @@
-<!-- not suitable for Mooncake -->
-
 <properties
-   pageTitle="使用 Azure 门户创建 VNet 对等互连 | Azure"
+   pageTitle="使用 Azure 门户创建 VNet 对等互连 | Microsoft Azure"
    description="了解如何在 Resource Manager 中使用 Azure 门户创建虚拟网络。"
    services="virtual-network"
    documentationCenter=""
-   authors="narayanannamalai"
+   authors="NarayanAnnamalai"
    manager="jefco"
    editor=""
    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-network"
-	ms.date="08/02/2016"
-	wacn.date=""/>
+   ms.service="virtual-network"
+   ms.devlang="na"
+   ms.topic="hero-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="09/14/2016"
+   ms.author="narayanannamalai;annahar"/>
 
 # 使用 Azure 门户创建虚拟网络对等互连
 
@@ -25,7 +27,7 @@
 
 若要通过 Azure 门户基于上述方案创建 VNet 对等互连，请执行下面的步骤。
 
-1. 从浏览器导航到 http://portal.azure.cn，如有必要，请使用 Azure 帐户登录。
+1. 从浏览器导航到 http://portal.azure.com，如有必要，请使用 Azure 帐户登录。
 2. 若要建立 VNET 对等互连，需要在两个 VNet 之间创建两个链接，每个方向各一个。可先创建 VNET1 到 VNET2 的 VNET 对等互连链接。在门户中，单击“浏览”> 选择“虚拟网络”
 
 	![在 Azure 门户中创建 VNet 对等互连](./media/virtual-networks-create-vnetpeering-arm-portal/figure01.png)
@@ -58,7 +60,7 @@
 
 	![最终链接状态 2](./media/virtual-networks-create-vnetpeering-arm-portal/figure08.png)
 
-10. 请注意：仅在两个链接均连接的情况下建立 VNET 对等互连。
+    > [AZURE.NOTE] 仅在两个链接均连接的情况下建立 VNET 对等互连。
 
 每个链接有几个可配置属性：
 
@@ -73,7 +75,7 @@ VNet 对等互连中的每个链接都具有上述这组属性。从门户中，
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-crosssub-include](../../includes/virtual-networks-create-vnetpeering-scenario-crosssub-include.md)]
 
-1. 从浏览器导航到 http://portal.azure.cn，如有必要，请使用 Azure 帐户登录。
+1. 从浏览器导航到 http://portal.azure.com，如有必要，请使用 Azure 帐户登录。
 2. 在此示例中，我们将使用两个订阅 - 订阅 A 和订阅 B，以及各自的特权用户 - 用户 A 和用户 B
 3. 在门户中，单击“浏览”，然后选择“虚拟网络”单击 VNET，并单击“添加”。
 
@@ -89,9 +91,9 @@ VNet 对等互连中的每个链接都具有上述这组属性。从门户中，
 
     ![RBAC2](./media/virtual-networks-create-vnetpeering-arm-portal/figure11.png)
 
-    请注意：可以在浏览器中同时注销和登录两个用户会话，以确保成功启用授权。
+    > [AZURE.NOTE] 可以在浏览器中同时注销和登录两个用户会话，以确保成功启用授权。
 
-6. 作为用户 A 登录到门户，导航到 VNET3 边栏选项卡，单击“对等互连”，勾选“我知道我的资源 ID”复选框并使用以下格式键入 VNET5 的资源 ID。
+6. 以用户 A 身份登录到门户、导航到 VNET3 边栏选项卡、单击“对等互连”、选中“我知道我的资源 ID”复选框，然后采用以下格式键入 VNET5 的资源 ID。
 
     /subscriptions/<Subscription- ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/VirtualNetwork/<VNET name>
 
@@ -105,19 +107,41 @@ VNet 对等互连中的每个链接都具有上述这组属性。从门户中，
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-transit-include](../../includes/virtual-networks-create-vnetpeering-scenario-transit-include.md)]
 
-1. 第一步，建立从 HubVnet 到 VNET1 的 VNET 对等互连链接。请注意没有为该链接选择“允许转发的流量”选项。
+1. 第一步，建立从 HubVnet 到 VNET1 的 VNET 对等互连链接。请注意，没有为该链接选择“允许转发的流量”选项。
 
     ![基本对等互连](./media/virtual-networks-create-vnetpeering-arm-portal/figure14.png)
 
-2. 第二步，可以创建从 VNET1 到 HubVnet 的对等互连链接。请注意，要选择“允许转发的流量”选项。
+2. 第二步，可以创建从 VNET1 到 HubVnet 的对等互连链接。请注意，已选择“允许转发的流量”选项。
 
     ![基本对等互连](./media/virtual-networks-create-vnetpeering-arm-portal/figure15a.png)
 
-3. 对等互连建立后，可以参考此[文章](/documentation/articles/virtual-network-create-udr-arm-ps/)，定义用户定义的路由 (UDR)，以便通过虚拟设备重定向 VNet1 流量以使用其功能。在路由中指定下一个跃点地址时，可以在对等 VNet HubVNet 中将其设置为虚拟装置的 IP 地址。
+3. 对等互连建立后，可以参考此[文章](virtual-network-create-udr-arm-ps.md)，定义用户定义的路由 (UDR)，以便通过虚拟设备重定向 VNet1 流量以使用其功能。在路由中指定下一个跃点地址时，可以在对等 VNet HubVNet 中将其设置为虚拟装置的 IP 地址。
+
+
+[AZURE.INCLUDE [virtual-networks-create-vnet-scenario-asmtoarm-include](../../includes/virtual-networks-create-vnetpeering-scenario-asmtoarm-include.md)]
+
+
+
+1. 从浏览器导航到 http://portal.azure.com，如有必要，请使用 Azure 帐户登录。
+
+2. 若要在此情况下建立 VNET 对等互连，只需要在 Azure Resource Manager 中的虚拟网络与经典中的虚拟网络之间创建一个链接。即从 **VNET1** 到 **VNET2** 的链接。在门户中，单击“浏览”> 选择“虚拟网络”
+
+3. 在“虚拟网络”边栏选项卡中，选择“VNET1”。依次单击“对等互连”和“添加”。
+
+4. 在“添加对等互连”边栏选项卡中，为链接命名。这里将它命名为 **LinkToVNet2**。在“对等详细信息”下，选择“经典”。
+
+5. 然后选择订阅和对等虚拟网络 **VNET2**。然后，单击“确定”。
+
+    ![使 VNet1 与 VNet2 链接起来](./media/virtual-networks-create-vnetpeering-arm-portal/figure18.png)
+
+6. 创建此 VNet 对等互连链接后，两个虚拟网络将对等互连，并且你将看到以下内容：
+
+    ![检查对等互连连接](./media/virtual-networks-create-vnetpeering-arm-portal/figure19.png)
+
 
 ## 删除 VNet 对等互连
 
-1.	从浏览器导航到 http://portal.azure.cn，如有必要，请使用 Azure 帐户登录。
+1.	从浏览器导航到 http://portal.azure.com，如有必要，请使用 Azure 帐户登录。
 2.	转到“虚拟网络”边栏选项卡，单击“对等互连”，单击要删除的链接，单击“删除”按钮。
 
     ![删除1](./media/virtual-networks-create-vnetpeering-arm-portal/figure15.png)
@@ -128,4 +152,4 @@ VNet 对等互连中的每个链接都具有上述这组属性。从门户中，
 
 4. 在此状态下，在对等链接状态更改为已启动之前无法重新创建链接。建议先删除这两个链接，然后再重新创建 VNet 对等互连。
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

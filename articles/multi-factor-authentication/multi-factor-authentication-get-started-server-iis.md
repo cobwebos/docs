@@ -1,16 +1,20 @@
 <properties 
-	pageTitle="IIS 身份验证和 Azure Multi-Factor Authentication 服务器" 
-	description="本 Azure Multi-Factor Authentication 页面将会帮助你部署 IIS 身份验证和 Azure Multi-Factor Authentication 服务器。" 
-	services="multi-factor-authentication" 
-	documentationCenter="" 
-	authors="billmath" 
-	manager="stevenpo" 
+	pageTitle="IIS 身份验证和 Azure Multi-Factor Authentication 服务器"
+	description="本 Azure Multi-Factor Authentication 页面将会帮助你部署 IIS 身份验证和 Azure Multi-Factor Authentication 服务器。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
 	editor="curtand"/>
 
-<tags 
-	ms.service="multi-factor-authentication" 
-	ms.date="08/04/2016" 
-	wacn.date=""/>
+<tags
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 # IIS 身份验证
 
@@ -73,4 +77,4 @@
 3. 显示“添加受信任 IP”对话框时，选择“单个 IP”、“IP 范围”或“子网”单选按钮。
 4. 输入应加入允许列表的 IP 地址、IP 地址范围或子网。如果输入子网，请选择适当的子网掩码，然后单击“确定”按钮。现已添加允许列表。
 
-<!---HONumber=Mooncake_0919_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,27 +1,31 @@
 <properties
-   pageTitle="Azure AD Reporting：入门"
-   description="Azure AD Reporting：入门"
+   pageTitle="Azure Active Directory Reporting：入门 | Microsoft Azure"
+   description="在 Azure Active Directory Reporting 中列出各种可用报告"
    services="active-directory"
    documentationCenter=""
-   authors="curtand"
-   manager="mbaldwin"
+   authors="dhanyahk"
+   manager="stevenpo"
    editor=""/>
 
 <tags
    ms.service="active-directory"
-   ms.date="06/30/2015"
-   wacn.date=""/>
+   ms.devlang="na"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="na"
+   ms.workload="identity"
+   ms.date="03/07/2016"
+   ms.author="dhanyahk"/>
 
-# Azure AD Reporting 入门
+# Azure Active Directory Reporting 入门
 
 ## 作用
 
-Azure Active Directory 包括针对目录的安全报表、活动报表和审核报表。下面是包含的报表列表：
+Azure Active Directory (Azure AD) 包括针对目录的安全报表、活动报表和审核报表。下面是包含的报表列表：
 
 ### 安全报表
 
 - 从未知源登录
-- 多次失败后的登录
+- 多次失败后登录
 - 从多个地理区域登录
 - 从具有可疑活动的 IP 地址登录
 - 异常登录活动
@@ -44,7 +48,7 @@ Azure Active Directory 包括针对目录的安全报表、活动报表和审核
 
 - 目录审核报表
 
-> [AZURE.TIP]有关 Azure AD Reporting 的更多文档，请签出[查看访问和使用情况报表](/documentation/articles/active-directory-view-access-usage-reports)。
+> [AZURE.TIP] 有关 Azure AD Reporting 的详细文档，请参阅[查看访问和使用情况报表](active-directory-view-access-usage-reports.md)。
 
 
 
@@ -57,26 +61,26 @@ Azure Active Directory 包括针对目录的安全报表、活动报表和审核
 
 - 首先，对用户进行身份验证（成功或失败），相关结果会存储在 Azure Active Directory 服务数据库中。
 - 定期处理所有最近的登录。此时，安全和异常活动算法将搜索所有最近登录中的可疑活动。
-- 处理后，通过 Azure 管理门户编写和缓存报表，并提供相关服务。
+- 处理后，通过 Azure 经典门户编写和缓存报表，并提供相关服务。
 
 ### 报表生成时间
 
-由于大量身份验证和登录都是通过 Azure AD 平台进行处理的，因此，处理的最近登录为平均 1 小时内的登录。在极少数情况下，处理最近的登录可能需要 8 小时时间。
+由于大量身份验证和登录都通过 Azure AD 平台进行处理，因此，处理的最近登录为平均 1 小时内的登录。在极少数情况下，处理最近的登录可能最多需要 8 小时。
 
-你可以通过检查每个报表顶部的帮助文本来查找最近处理的登录。
+你可以通过检查每个报表顶部的帮助文本查找最近处理的登录。
 
 ![每个报表顶部的帮助文本](./media/active-directory-reporting-getting-started/reportingWatermark.PNG)
 
-> [AZURE.TIP]有关 Azure AD Reporting 的更多文档，请签出[查看访问和使用情况报表](/documentation/articles/active-directory-view-access-usage-reports)。
+> [AZURE.TIP] 有关 Azure AD Reporting 的详细文档，请参阅[查看访问和使用情况报表](active-directory-view-access-usage-reports.md)。
 
 
 
 ## 入门
 
 
-### 登录到 Azure 管理门户
+### 登录 Azure 经典门户
 
-首先，你需要以全局管理员或合规性管理员身份登录到 [Azure 管理门户](https://manage.windowsazure.cn)。此外，你还必须是 Azure 订阅服务管理员或共同管理员，或正在使用“访问 Azure AD”的 Azure 订阅。
+首先，需要以全局管理员或合规性管理员身份登录 [Azure 经典门户](https://manage.windowsazure.com)。此外，你还必须是 Azure 订阅服务管理员或共同管理员，或正在使用“访问 Azure AD”的 Azure 订阅。
 
 ### 导航到报表
 
@@ -88,7 +92,7 @@ Azure Active Directory 包括针对目录的安全报表、活动报表和审核
 
 ### 浏览每个报表
 
-导航到每个报表以查看所收集的数据和处理的登录。可在[此处](/documentation/articles/active-directory-reporting-what-it-is)查看所有报表的列表。
+导航到每个报表，查看所收集的数据和处理的登录。可以在此处找到[所有报表列表](active-directory-reporting-guide.md)。
 
 ![所有报表](./media/active-directory-reporting-getting-started/reportsMain.png)
 
@@ -100,7 +104,7 @@ Azure Active Directory 包括针对目录的安全报表、活动报表和审核
 
 ![“下载”按钮](./media/active-directory-reporting-getting-started/downloadButton.png)
 
-> [AZURE.TIP]有关 Azure AD Reporting 的更多文档，请签出[查看访问和使用情况报表](/documentation/articles/active-directory-view-access-usage-reports)。
+> [AZURE.TIP] 有关 Azure AD Reporting 的详细文档，请参阅[查看访问和使用情况报告](active-directory-view-access-usage-reports.md)。
 
 
 
@@ -120,7 +124,7 @@ Azure Active Directory 包括针对目录的安全报表、活动报表和审核
 
 ### 与 Azure AD Reporting API 集成
 
-请参阅 [Reporting API 入门](/documentation/articles/active-directory-reporting-api-getting-started)。
+请参阅 [Reporting API 入门](active-directory-reporting-api-getting-started.md)。
 
 ### 对用户使用 Multi-Factor Authentication
 
@@ -130,7 +134,7 @@ Azure Active Directory 包括针对目录的安全报表、活动报表和审核
 
 ![位于屏幕底部的“Multi-Factor Authentication”按钮](./media/active-directory-reporting-getting-started/mfaButton.png)
 
-> [AZURE.TIP]有关 Azure AD Reporting 的更多文档，请签出[查看访问和使用情况报表](/documentation/articles/active-directory-view-access-usage-reports)。
+> [AZURE.TIP] 有关 Azure AD Reporting 的详细文档，请参阅[查看访问和使用情况报表](active-directory-view-access-usage-reports.md)。
 
 
 
@@ -140,16 +144,16 @@ Azure Active Directory 包括针对目录的安全报表、活动报表和审核
 
 ### 审核事件
 
-了解 [Azure Active Directory Reporting 审核事件](/documentation/articles/active-directory-reporting-audit-events)目录中要审核的事件。
+了解对 [Azure Active Directory Reporting 审核事件](active-directory-reporting-audit-events.md)的目录中的哪些事件进行审核。
 
 ### API 集成
 
-请参阅 [Reporting API 入门](/documentation/articles/active-directory-reporting-api-getting-started)和 [API 参考文档](https://msdn.microsoft.com/zh-cn/library/azure/mt126081.aspx)。
+请参阅 [Reporting API 入门](active-directory-reporting-api-getting-started.md)和 [API 参考文档](https://msdn.microsoft.com/library/azure/mt126081.aspx)。
 
 ### 联系方式
 
-如有反馈或任何疑问，或者需要获取帮助，请发送电子邮件至 [aadreportinghelp@microsoft.com](mailto:aadreportinghelp@microsoft.com)！
+向 [aadreportinghelp@microsoft.com](mailto:aadreportinghelp@microsoft.com) 发送电子邮件，提供反馈、获取帮助或提交你可能遇到的任何问题。
 
-> [AZURE.TIP]有关 Azure AD Reporting 的更多文档，请签出[查看访问和使用情况报表](/documentation/articles/active-directory-view-access-usage-reports)。
+> [AZURE.TIP] 有关 Azure AD Reporting 的详细文档，请参阅[查看访问和使用情况报告](active-directory-view-access-usage-reports.md)。
 
-<!----HONumber=67-->
+<!---HONumber=AcomDC_0921_2016-->

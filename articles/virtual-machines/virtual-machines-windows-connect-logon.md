@@ -1,7 +1,5 @@
-<!-- Ibiza portal: tested -->
-
 <properties
-	pageTitle="连接到 Windows Server VM | Azure"
+	pageTitle="连接到 Windows Server VM | Microsoft Azure"
 	description="了解如何使用 Azure 门户和 Resource Manager 部署模型连接并登录到 Windows VM。"
 	services="virtual-machines-windows"
 	documentationCenter=""
@@ -12,17 +10,21 @@
 
 <tags
 	ms.service="virtual-machines-windows"
-	ms.date="05/05/2016"
-	wacn.date=""/>
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="07/28/2016"
+	ms.author="cynthn"/>
 
 # 如何连接并登录到运行 Windows 的 Azure 虚拟机 
 
 
-你将在 Azure 门户中使用“连接”按钮来启动远程桌面 (RDP) 会话。首先连接到虚拟机，然后登录。
+可以使用 Azure 门户中的“连接”按钮来启动远程桌面 (RDP) 会话。首先连接到虚拟机，然后登录。
 
 ## 连接到虚拟机
 
-1. 如果你尚未登录 [Azure 门户](https://portal.azure.cn/)，请先登录。
+1. 如果你尚未登录 [Azure 门户](https://portal.azure.com/)，请先登录。
 
 2.	在“中心”菜单中，单击“虚拟机”。
 
@@ -32,15 +34,15 @@
 
 	![显示如何连接到 VM 的 Azure 门户屏幕截图。](./media/virtual-machines-windows-connect-logon/connect.png)
 	
- > [AZURE.TIP] 如果门户中的“连接”按钮灰显，并且你未通过 [Express Route](/documentation/articles/expressroute-introduction) 或[站点到站点 VPN](/documentation/articles/vpn-gateway-howto-site-to-site-resource-manager-portal) 连接连接到 Azure，则必须先为 VM 创建并分配一个公共 IP 地址才能使用 RDP。你可以深入了解 [Azure 中的公共 IP 地址](/documentation/articles/virtual-network-ip-addresses-overview-arm)。
+ > [AZURE.TIP] 如果门户中的“连接”按钮灰显，并且你未通过 [Express Route](../expressroute/expressroute-introduction.md) 或[站点到站点 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 连接连接到 Azure，则必须首先为 VM 创建并分配一个公共 IP 地址，然后才能使用 RDP。详细了解 [Azure 中的公共 IP 地址](../virtual-network/virtual-network-ip-addresses-overview-arm.md)。
 
 ## 登录到虚拟机
 
-[AZURE.INCLUDE [virtual-machines-log-on-win-server](../includes/virtual-machines-log-on-win-server.md)]
+[AZURE.INCLUDE [virtual-machines-log-on-win-server](../../includes/virtual-machines-log-on-win-server.md)]
 
 
 ## 后续步骤
 
-如果在尝试连接时遇到故障，请参阅[对基于 Windows 的 Azure 虚拟机的远程桌面连接进行故障排除](/documentation/articles/virtual-machines-windows-troubleshoot-rdp-connection)。此文将指导你完成诊断和解决常见问题。
+如果在尝试连接时遇到故障，请参阅[故障排除远程桌面连接](virtual-machines-windows-troubleshoot-rdp-connection.md)。此文将指导你完成诊断和解决常见问题。
 
-<!---HONumber=Mooncake_0704_2016-->
+<!---HONumber=AcomDC_0921_2016-->

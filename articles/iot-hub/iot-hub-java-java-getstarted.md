@@ -1,6 +1,6 @@
 <properties
-	pageTitle="适用于 Java 的 Azure IoT 中心入门 | Azure"
-	description="适用于 Java 的 Azure IoT 中心入门教程。配合 Microsoft Azure IoT SDK 使用 Azure IoT 中心和 Java 来实施物联网解决方案。"
+	pageTitle="适用于 Java 的 Azure IoT 中心入门 | Microsoft Azure"
+	description="适用于 Java 的 Azure IoT 中心入门教程。将 Azure IoT 中心和 Java 与 Microsoft Azure IoT SDK 配合使用，实施物联网解决方案。"
 	services="iot-hub"
 	documentationCenter="java"
 	authors="dominicbetts"
@@ -9,8 +9,12 @@
 
 <tags
      ms.service="iot-hub"
+     ms.devlang="java"
+     ms.topic="hero-article"
+     ms.tgt_pltfrm="na"
+     ms.workload="na"
      ms.date="08/11/2016"
-     wacn.date=""/>  
+     ms.author="dobett"/>  
 
 
 # 适用于 Java 的 Azure IoT 中心入门
@@ -31,13 +35,13 @@
 
 + Maven 3。<br/>[准备开发环境][lnk-dev-setup]介绍了如何在 Windows 或 Linux 上安装本教程所用的 Maven。
 
-+ 有效的 Azure 帐户。（如果你没有帐户，可以创建一个试用帐户，只需几分钟即可完成。有关详细信息，请参阅 [Azure 试用][lnk-free-trial]。）
++ 有效的 Azure 帐户。（如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用][lnk-free-trial]。）
 
 [AZURE.INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 最后，请记下“主密钥”值，然后单击“消息传送”。在“消息传送”边栏选项卡上，记下“与事件中心兼容的名称”和“与事件中心兼容的终结点”。创建 **read-d2c-messages** 应用程序时，将要用到这三个值。
 
-    ![][6]
+![][6]
 
 现在，你已创建 IoT 中心并获取了 IoT 中心主机名、IoT 中心连接字符串、IoT 中心主密钥、与事件中心兼容的名称及与事件中心兼容的终结点，接下来需要完成本教程。
 
@@ -475,22 +479,21 @@
 [43]: ./media/iot-hub-java-java-getstarted/usage.png
 
 <!-- Links -->
+[lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 
-[lnk-transient-faults]: https://msdn.microsoft.com/zh-cn/library/hh680901(v=pandp.50).aspx
-
-[lnk-eventhubs-tutorial]: /documentation/articles/event-hubs/event-hubs-csharp-ephcs-getstarted/
-[lnk-devguide-identity]: /documentation/articles/iot-hub/iot-hub-devguide/#identityregistry
-[lnk-event-hubs-overview]: /documentation/articles/event-hubs/event-hubs-overview/
+[lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
+[lnk-devguide-identity]: iot-hub-devguide.md#identityregistry
+[lnk-event-hubs-overview]: ../event-hubs/event-hubs-overview.md
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/java-devbox-setup.md
-[lnk-process-d2c-tutorial]: /documentation/articles/iot-hub/iot-hub-csharp-csharp-process-d2c/
+[lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
 
-[lnk-hub-sdks]: /documentation/articles/iot-hub/iot-hub-sdks-summary/
-[lnk-free-trial]: /pricing/1rmb-trial/
-[lnk-portal]: https://portal.azure.cn/
+[lnk-hub-sdks]: iot-hub-sdks-summary.md
+[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[lnk-portal]: https://portal.azure.com/
 
-[lnk-device-management]: /documentation/articles/iot-hub/iot-hub-device-management-get-started/
-[lnk-gateway-SDK]: /documentation/articles/iot-hub/iot-hub-linux-gateway-sdk-get-started/
-[lnk-connect-device]: /develop/iot/
+[lnk-device-management]: iot-hub-device-management-get-started.md
+[lnk-gateway-SDK]: iot-hub-linux-gateway-sdk-get-started.md
+[lnk-connect-device]: https://azure.microsoft.com/develop/iot/
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

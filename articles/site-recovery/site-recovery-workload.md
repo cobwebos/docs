@@ -9,15 +9,19 @@
 
 <tags 
 	ms.service="site-recovery" 
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="na"
+	ms.workload="storage-backup-recovery" 
 	ms.date="07/06/2016" 
-	wacn.date=""/>
+	ms.author="raynew"/>
 
 # 可以通过 Azure Site Recovery 保护哪些工作负荷？
 
 
 本文说明可以使用 Azure Site Recovery 保护哪些工作负荷和应用程序。
 
-请将任何评论或问题发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/Forums/zh-cn/home?forum=hypervrecovmgr)。
+请将任何评论或问题发布到本文底部，或者发布到 [Azure 恢复服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)。
 
 ## 概述
 
@@ -67,7 +71,7 @@ Active Directory 和 DNS 基础结构对于大多数企业应用而言至关重�
 
 你可以使用站点恢复，为 Active Directory 和 DNS 创建一个完整的自动化灾难恢复计划。例如，如果想要将 SharePoint 和 SAP 从主站点故障转移到辅助站点，可以先设置可故障转移 Active Directory 的恢复计划，然后设置额外的应用特定计划，以故障转移依赖于 Active Directory 的其他应用。
 
-[详细了解](/documentation/articles/site-recovery-active-directory/)如何保护 Active Directory 和 DNS。
+[详细了解](site-recovery-active-directory.md)如何保护 Active Directory 和 DNS。
 
 ## 保护 SQL Server
 
@@ -79,7 +83,7 @@ SQL Server 是本地数据中心许多业务应用的数据服务基础。站点
 - 在出现高峰负载时使用站点恢复扩展 SQL Server，让这些负载“迸发”到 Azure 中更大型的 IaaS 虚拟机中。
 - 简单的 SQL Server 灾难恢复测试。你可以运行测试故障转移来分析数据，并可以运行合规性检查，且不影响生产环境。
 
-[详细了解](/documentation/articles/site-recovery-sql/)如何保护 SQL Server。
+[详细了解](site-recovery-sql.md)如何保护 SQL Server。
 
 ##保护 SharePoint
 
@@ -143,6 +147,6 @@ Azure Site Recovery 可通过以下方式帮助你保护 Dynamics AX ERP 解决�
 
 ## 后续步骤
 
-[准备](/documentation/articles/site-recovery-best-practices/) Site Recovery 部署
+为 Site Recovery 部署做[准备](site-recovery-best-practices.md)
 
-<!---HONumber=Mooncake_0725_2016-->
+<!---HONumber=AcomDC_0921_2016-->

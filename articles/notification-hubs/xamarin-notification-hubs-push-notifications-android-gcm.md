@@ -1,15 +1,18 @@
 <properties
-	pageTitle="适用于 Xamarin.Android 应用的通知中心入门 | Azure"
+	pageTitle="通知中心入门（Xamarin.Android 应用）| Microsoft Azure"
 	description="在本教程中，你将了解如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。"
 	authors="wesmc7777"
 	manager="erikre"
 	editor=""
 	services="notification-hubs"
-	documentationCenter="xamarin"/>  
-
+	documentationCenter="xamarin"/>
 
 <tags
 	ms.service="notification-hubs"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-xamarin-android"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
 	ms.date="06/29/2016"
 	ms.author="wesmc"/>
 
@@ -19,8 +22,7 @@
 
 ##概述
 
-本教程说明如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。
-你将创建一个空白 Xamarin.Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。[NotificationHubs][GitHub] 应用程序示例中提供了完成的代码。
+本教程说明如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。你将创建一个空白 Xamarin.Android 应用，它使用 Google Cloud Messaging (GCM) 接收推送通知。完成后，你将能够使用通知中心将推送通知广播到运行你的应用的所有设备。[NotificationHubs][GitHub] 应用程序示例中提供了完成的代码。
 
 本教程演示使用通知中心的简单广播方案。
 
@@ -44,7 +46,7 @@
 
 完成本教程是学习有关 Xamarin.Android 应用的所有其他通知中心教程的先决条件。
 
-> [AZURE.IMPORTANT] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](/pricing/free-trial/)。
+> [AZURE.IMPORTANT] 若要完成本教程，你必须有一个有效的 Azure 帐户。如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fzh-CN%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F)。
 
 ##启用 Google Cloud Messaging
 
@@ -385,8 +387,8 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 下面是你可能想要查看的有关发送通知的其他教程列表：
 
 - ASP.NET：请参阅[使用通知中心向用户推送通知]。
-- Azure 通知中心 Java SDK：有关从 Java 发送通知的信息，请参阅[如何通过 Java 使用通知中心](/documentation/articles/notification-hubs-java-push-notification-tutorial/)。这种方法已在 Eclipse for Android 开发环境中进行测试。
-- PHP：请参阅[如何通过 PHP 使用通知中心](/documentation/articles/notification-hubs-php-push-notification-tutorial/)。
+- Azure 通知中心 Java SDK：有关从 Java 发送通知的信息，请参阅[如何通过 Java 使用通知中心](notification-hubs-java-push-notification-tutorial.md)。这种方法已在 Eclipse for Android 开发环境中进行测试。
+- PHP：请参阅[如何通过 PHP 使用通知中心](notification-hubs-php-push-notification-tutorial.md)。
 
 
 在本教程的后续小节中，你将使用 .NET 控制台应用和移动服务通过节点脚本来发送通知。
@@ -420,7 +422,7 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
         private static async void SendNotificationAsync()
         {
             NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
-            await hub.SendGcmNativeNotificationAsync("{ \"data\" : {\"message\":\"Hello from Azure!\"}}");
+            await hub.SendGcmNativeNotificationAsync("{ "data" : {"message":"Hello from Azure!"}}");
         }
 
 6. 在 **Main** 方法中添加下列行：
@@ -499,23 +501,24 @@ Xamarin 组件应用商店中提供的 Google Cloud Messaging Client 可以简�
 
 
 <!-- URLs. -->
-
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[移动服务入门]: /documentation/articles/partner-xamarin-mobile-services-android-get-started/#create-new-service
-[Azure 经典门户]: https://manage.windowsazure.cn/
+[移动服务入门]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
+[JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
+
+[Azure 经典门户]: https://manage.windowsazure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
 [通知中心指南]: http://msdn.microsoft.com/library/jj927170.aspx
 [针对 Android 的通知中心操作指南]: http://msdn.microsoft.com/library/dn282661.aspx
 
-[使用通知中心向用户推送通知]: /documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-wns-notification/
-[使用通知中心将通知推送到用户]: /documentation/articles/notification-hubs-aspnet-backend-windows-dotnet-wns-notification/
-[使用通知中心发送突发新闻]: /documentation/articles/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns/
+[使用通知中心向用户推送通知]: /manage/services/notification-hubs/notify-users-aspnet
+[使用通知中心将通知推送到用户]: /manage/services/notification-hubs/notify-users-aspnet
+[使用通知中心发送突发新闻]: /manage/services/notification-hubs/breaking-news-dotnet
 [GCMClient Component page]: http://components.xamarin.com/view/GCMClient
 [Xamarin.NotificationHub GitHub page]: https://github.com/SaschaDittmann/Xamarin.NotificationHub
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Google Cloud Messaging 客户端组件]: http://components.xamarin.com/view/GCMClient/
 [Azure 消息传送组件]: http://components.xamarin.com/view/azure-messaging
 
-<!---HONumber=Mooncake_0815_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="导出 Azure Resource Manager 模板 | Azure"
+	pageTitle="导出 Azure Resource Manager 模板 | Microsoft Azure"
 	description="使用 Azure Resource Manager 从现有资源组导出模板。"
 	services="azure-resource-manager"
 	documentationCenter=""
@@ -9,8 +9,12 @@
 
 <tags
 	ms.service="azure-resource-manager"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
 	ms.date="08/03/2016"
-	wacn.date=""/>
+	ms.author="tomfitz"/>
 
 # 从现有资源导出 Azure Resource Manager 模板
 
@@ -27,7 +31,7 @@
 
 ## 创建存储帐户
 
-1. 在 [Azure 门户](https://portal.azure.cn)中，选择“新建”>“数据 + 存储”>“存储帐户”。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“新建”>“数据 + 存储”>“存储帐户”。
 
       ![创建存储](./media/resource-manager-export-template/create-storage.png)
 
@@ -108,7 +112,7 @@
           ]
         }
  
-这是用于创建你的存储帐户的实际模板。请注意，该模板包含的参数可用于部署不同类型的存储帐户。若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](/documentation/articles/resource-group-authoring-templates)（创作 Azure Resource Manager 模板）。有关可在模板中使用的函数的完整列表，请参阅 [Azure Resource Manager template functions](/documentation/articles/resource-group-template-functions)（Azure Resource Manager 模板函数）。
+创建你的存储帐户时使用的就是此模板。请注意，该模板包含的参数可用于部署不同类型的存储帐户。若要详细了解模板的结构，请参阅 [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)（创作 Azure Resource Manager 模板）。有关可在模板中使用的函数的完整列表，请参阅 [Azure Resource Manager template functions](resource-group-template-functions.md)（Azure Resource Manager 模板函数）。
 
 
 ## 添加虚拟网络
@@ -127,7 +131,7 @@
 
       ![设置警报](./media/resource-manager-export-template/create-vnet.png)
 
-3. 在虚拟网络已成功部署到资源组后，再次查看部署历史记录。现在，将看到两个部署。如果看不到第二个部署，则可能需要关闭资源组边栏选项卡，然后重新打开它。选择更新的部署。
+3. 在虚拟网络已成功部署到资源组后，再次查看部署历史记录。现在，将看到两个部署。如果看不到第二个部署，可能需要关闭资源组边栏选项卡，然后重新打开它。选择更新的部署。
 
       ![部署历史记录](./media/resource-manager-export-template/deployment-history.png)
 
@@ -335,8 +339,8 @@
 
 祝贺你！ 你已学习如何从门户中创建的资源导出模板。
 
-- 在本教程的第二部分中，你将通过向刚下载的模板添加更多参数来自定义该模板，并通过脚本重新部署该模板。请参阅 [Customize and re-deploy exported template](/documentation/articles/resource-manager-customize-template/)（自定义和重新部署导出的模板）。
-- 若要了解如何通过 PowerShell 导出模板，请参阅 [Using Azure PowerShell with Azure Resource Manager](/documentation/articles/powershell-azure-resource-manager/)（将 Azure PowerShell 与 Azure Resource Manager 配合使用）。
-- 若要了解如何通过 Azure CLI 导出模板，请参阅 [Use the Azure CLI for Mac, Linux, and Windows with Azure Resource Manager](/documentation/articles/xplat-cli-azure-resource-manager/)（将用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用）。
+- 在本教程的第二部分中，通过添加更多参数自定义下载的模板，然后使用脚本重新部署该模板。请参阅[自定义和重新部署导出的模板](resource-manager-customize-template.md)。
+- 若要了解如何通过 PowerShell 导出模板，请参阅 [Using Azure PowerShell with Azure Resource Manager](powershell-azure-resource-manager.md)（将 Azure PowerShell 与 Azure Resource Manager 配合使用）。
+- 若要了解如何通过 Azure CLI 导出模板，请参阅 [Use the Azure CLI for Mac, Linux, and Windows with Azure Resource Manager](xplat-cli-azure-resource-manager.md)（将用于 Mac、Linux 和 Windows 的 Azure CLI 与 Azure Resource Manager 配合使用）。
 
-<!---HONumber=Mooncake_0912_2016-->
+<!---HONumber=AcomDC_0921_2016-->

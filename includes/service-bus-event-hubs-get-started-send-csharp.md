@@ -4,15 +4,15 @@
 
 1. 在 Visual Studio 中，使用**控制台应用程序**项目模板创建一个新的 Visual C# 桌面应用项目。将该项目命名为 **Sender**。
 
-   	![][7]
+	![](./media/service-bus-event-hubs-getstarted-send-csharp/create-sender-csharp1.png)
 
 2. 在“解决方案资源管理器”中，右键单击该解决方案，然后单击“为解决方案管理 NuGet 包”。
 
 3. 单击“浏览”选项卡，然后搜索 `Microsoft Azure Service Bus`。确保在“版本”框中指定项目名称（“Sender”）。单击“安装”并接受使用条款。
 
-	![][8]
+	![](./media/service-bus-event-hubs-getstarted-send-csharp/create-sender-csharp2.png)
 
-	这样便会下载、安装 <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus/">Azure 服务总线库 NuGet 包</a>并添加对它的引用。
+	Visual Studio 下载、安装 [Azure 服务总线库 NuGet 包](https://www.nuget.org/packages/WindowsAzure.ServiceBus)并添加对它的引用。
 
 4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
 
@@ -54,7 +54,7 @@
 	}
 	```
 
-	此方法会不断地将事件发送到事件中心，迟延为 200 毫秒。
+	此方法不断将事件发送到事件中心，延迟为 200 毫秒。
 
 7. 最后，在 **Main** 方法中添加以下行：
 
@@ -65,8 +65,4 @@
 	SendingRandomMessages();
 	```
 
-
-<!-- Images -->
-[7]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp1.png
-[8]: ./media/service-bus-event-hubs-getstarted/create-sender-csharp2.png
-<!---HONumber=Mooncake_0620_2016-->
+<!---HONumber=AcomDC_0921_2016-->

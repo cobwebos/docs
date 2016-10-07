@@ -1,4 +1,5 @@
 > [AZURE.SELECTOR]
-- [Windows cluster](/documentation/articles/hdinsight-hbase-tutorial-get-started)
+- [Linux 群集](../articles/hdinsight/hdinsight-hbase-tutorial-get-started-linux.md)
+- [Windows 群集](../articles/hdinsight/hdinsight-hbase-tutorial-get-started.md)
 
-<!---HONumber=Mooncake_0104_2016-->
+<!---HONumber=AcomDC_0921_2016-->

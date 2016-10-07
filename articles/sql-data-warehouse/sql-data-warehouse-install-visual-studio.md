@@ -1,5 +1,5 @@
 <properties
-   pageTitle="安装适用于 SQL 数据仓库的 Visual Studio 和 SSDT | Azure"
+   pageTitle="安装适用于 SQL 数据仓库的 Visual Studio 和 SSDT | Microsoft Azure"
    description="安装适用于 Azure SQL 数据仓库的 Visual Studio 和 SQL Server 开发工具 (SSDT)"
    services="sql-data-warehouse"
    documentationCenter="NA"
@@ -9,8 +9,12 @@
 
 <tags
    ms.service="sql-data-warehouse"
-   ms.date="07/23/2016"
-   wacn.date=""/>  
+   ms.devlang="NA"
+   ms.topic="get-started-article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="data-services"
+   ms.date="08/16/2016"
+   ms.author="sonyama;barbkess"/>  
 
 
 # 安装适用于 SQL 数据仓库的 Visual Studio 2015 和 SSDT
@@ -47,12 +51,11 @@
 <!--Image references-->
 
 <!--Articles-->
-[连接]: ./sql-data-warehouse-get-started-connect.md
+[连接]: ./sql-data-warehouse-query-visual-studio.md
 
 <!--Other-->
-
 [下载 Visual Studio 2015]: https://www.visualstudio.com/downloads/
 [安装 Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
-[SSDT 下载]: https://msdn.microsoft.com/zh-cn/library/mt204009.aspx
+[SSDT 下载]: https://msdn.microsoft.com/library/mt204009.aspx
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties
- pageTitle="Azure 门户中的 Azure 计划程序入门 | Azure"
+ pageTitle="Azure 门户中的 Azure 计划程序入门 | Microsoft Azure"
  description="Azure 门户中的 Azure 计划程序入门"
  services="scheduler"
  documentationCenter=".NET"
@@ -8,8 +8,12 @@
  editor=""/>
 <tags
  ms.service="scheduler"
+ ms.workload="infrastructure-services"
+ ms.tgt_pltfrm="na"
+ ms.devlang="dotnet"
+ ms.topic="hero-article"
  ms.date="08/10/2016"
- wacn.date=""/>
+ ms.author="krisragh"/>
 
 # Azure 门户中的 Azure 计划程序入门
 
@@ -17,7 +21,7 @@
 
 ## 创建作业
 
-1.  登录到 [Azure 门户](https://portal.azure.cn/)。
+1.  登录到 [Azure 门户](https://portal.azure.com/)。
 
 2.  单击“+新建”> 在搜索框中键入“计划程序”> 在结果中选择“计划程序”> 单击“创建”。
 
@@ -98,7 +102,7 @@
 
 如果想要更改快速创建向导中创建的计划，此处能够重新配置该计划。
 
-这是[作业中生成复杂计划和高级重复执行](/documentation/articles/scheduler-advanced-complexity/)的机会
+这是[作业中生成复杂计划和高级重复执行](scheduler-advanced-complexity.md)的机会
 
 可以更改开始日期与时间、重复计划以及结束日期与时间（如果该作业是重复进行的。）
 
@@ -135,23 +139,23 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 计划程序进行�
 
 ## 另请参阅
 
- [计划程序是什么？](/documentation/articles/scheduler-intro/)
+ [计划程序是什么？](scheduler-intro.md)
 
- [计划程序的概念、术语和实体层次结构](/documentation/articles/scheduler-concepts-terms/)
+ [计划程序概念、术语和实体层次结构](scheduler-concepts-terms.md)
 
- [Azure 计划程序中的计划和计费](/documentation/articles/scheduler-plans-billing/)
+ [Azure 计划程序中的计划和计费](scheduler-plans-billing.md)
 
- [如何使用 Azure 计划程序生成复杂的计划和高级重复执行](/documentation/articles/scheduler-advanced-complexity/)
+ [如何使用 Azure 计划程序生成复杂的计划和高级循环](scheduler-advanced-complexity.md)
 
- [计划程序 REST API 参考](https://msdn.microsoft.com/zh-CN/library/dn528946)
+ [计划程序 REST API 参考](https://msdn.microsoft.com/library/mt629143)
 
- [计划程序 PowerShell Cmdlet 参考](/documentation/articles/scheduler-powershell-reference/)
+ [计划程序 PowerShell Cmdlet 参考](scheduler-powershell-reference.md)
 
- [计划程序的高可用性和可靠性](/documentation/articles/scheduler-high-availability-reliability/)
+ [计划程序高可用性和可靠性](scheduler-high-availability-reliability.md)
 
- [计划程序的限制、默认值和错误代码](/documentation/articles/scheduler-limits-defaults-errors/)
+ [计划程序限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
 
- [计划程序出站身份验证](/documentation/articles/scheduler-outbound-authentication/)
+ [计划程序出站身份验证](scheduler-outbound-authentication.md)
 
 
 [marketplace-create]: ./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png
@@ -181,4 +185,4 @@ Azure 基于角色的访问控制 (RBAC) 可用于对 Azure 计划程序进行�
 [14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
 [15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
 
-<!---HONumber=Mooncake_0822_2016-->
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,5 +1,5 @@
 <properties
-	pageTitle="Azure 密钥保管库入门 | Azure"
+	pageTitle="Azure 密钥保管库入门 | Microsoft Azure"
 	description="本教程将会帮助你开始使用 Azure 密钥保管库在 Azure 中创建强化容器，以存储和管理 Azure 中的加密密钥和机密。"
 	services="key-vault"
 	documentationCenter=""
@@ -9,12 +9,16 @@
 
 <tags
 	ms.service="key-vault"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="hero-article"
 	ms.date="07/15/2016"
-	wacn.date=""/>  
+	ms.author="cabailey"/>  
 
 
 # Azure 密钥保管库入门 #
-在大多数区域中提供了 Azure 密钥保管库。有关详细信息，请参阅[密钥保管库定价页](/pricing/details/key-vault/)。
+在大多数区域中提供了 Azure 密钥保管库。有关详细信息，请参阅[密钥保管库定价页](https://azure.microsoft.com/pricing/details/key-vault/)。
 
 ## 介绍  
 本教程将会帮助你开始使用 Azure 密钥保管库在 Azure 中创建强化容器（保管库），以存储和管理 Azure 中的加密密钥和机密。本教程将指导你完成使用 Azure PowerShell 创建包含密钥或密码（稍后可用于 Azure 应用程序）的保管库程序。然后，将会说明应用程序如何使用该密钥或密码。
@@ -23,20 +27,20 @@
 
 >[AZURE.NOTE]  本教程未说明如何编写其中一个步骤所包括的 Azure 应用程序，但说明了如何授权应用程序使用密钥保管库中的密钥或机密。
 >
->目前，无法在 Azure 门户中配置 Azure 密钥保管库。请改用这些 Azure PowerShell 说明。或者，有关跨平台命令行接口说明，请参阅[此对应教程](/documentation/articles/key-vault-manage-with-cli/)。
+>目前，无法在 Azure 门户中配置 Azure 密钥保管库。请改用这些 Azure PowerShell 说明。或者，有关跨平台命令行接口说明，请参阅[此对应教程](key-vault-manage-with-cli.md)。
 
-有关 Azure 密钥保管库的概述信息，请参阅[什么是 Azure 密钥保管库？](/documentation/articles/key-vault-whatis/)
+有关 Azure 密钥保管库的概述信息，请参阅[什么是 Azure 密钥保管库？](key-vault-whatis.md)
 
 ## 先决条件
 
 若要完成本教程，你必须准备好以下各项：
 
-- Azure 订阅。如果你没有订阅，可以注册[试用版](/pricing/1rmb-trial)。
-- Azure PowerShell，**最低版本为 1.1.0**。若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure/)。如果你已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中键入 `(Get-Module azure -ListAvailable).Version`。如果已安装 Azure PowerShell 版本 0.9.1 到 0.9.8，仍可以使用本教程，但需要进行一些细微更改。例如，必须使用 `Switch-AzureMode AzureResourceManager` 命令，并且某些 Azure 密钥保管库命令已更改。有关版本 0.9.1 到 0.9.8 的密钥保管库 cmdlet 的列表，请参阅 [Azure 密钥保管库 Cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/dn868052(v=azure.98).aspx)。
-- 配置为使用你在本教程中所创建的密钥或密码的应用程序。你可以从 [Microsoft 下载中心](http://www.microsoft.com/zh-cn/download/details.aspx?id=45343)获取示例应用程序。有关说明，请参阅随附的自述文件。
+- Microsoft Azure 订阅。如果没有，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+- Azure PowerShell，**最低版本为 1.1.0**。若要安装 Azure PowerShell 并将其与 Azure 订阅相关联，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。如果你已安装了 Azure PowerShell，但不知道版本，请在 Azure PowerShell 控制台中键入 `(Get-Module azure -ListAvailable).Version`。如果已安装 Azure PowerShell 版本 0.9.1 到 0.9.8，仍可以使用本教程，但需要进行一些细微更改。例如，必须使用 `Switch-AzureMode AzureResourceManager` 命令，并且某些 Azure 密钥保管库命令已更改。有关版本 0.9.1 到 0.9.8 的密钥保管库 cmdlet 的列表，请参阅 [Azure 密钥保管库 Cmdlet](https://msdn.microsoft.com/library/azure/dn868052(v=azure.98).aspx)。
+- 配置为使用你在本教程中所创建的密钥或密码的应用程序。你可以从 [Microsoft 下载中心](http://www.microsoft.com/zh-CN/download/details.aspx?id=45343)获取示例应用程序。有关说明，请参阅随附的自述文件。
 
 
-本教程专为 Azure PowerShell 新手设计，但它假定你了解基本概念，如模块、cmdlet 和会话。有关详细信息，请参阅 [Windows PowerShell 入门](https://technet.microsoft.com/zh-cn/library/hh857337.aspx)。
+本教程专为 Azure PowerShell 新手设计，但它假定你了解基本概念，如模块、cmdlet 和会话。有关详细信息，请参阅 [Windows PowerShell 入门](https://technet.microsoft.com/library/hh857337.aspx)。
 
 若要获取你在本教程中看到的任何 cmdlet 的详细帮助，请使用 **Get-Help** cmdlet。
 
@@ -48,15 +52,15 @@
 
 还可阅读以下教程以熟悉如何在 Azure PowerShell 中使用 Azure 资源管理器：
 
-- [如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure/)
-- [将 Azure PowerShell 用于资源管理器](/documentation/articles/powershell-azure-resource-manager/)
+- [如何安装和配置 Azure PowerShell](../powershell-install-configure.md)
+- [将 Azure PowerShell 用于资源管理器](../powershell-azure-resource-manager.md)
 
 
 ## <a id="connect"></a>连接到订阅 ##
 
 启动 Azure PowerShell 会话，然后使用以下命令登录你的 Azure 帐户：
 
-    Login-AzureRmAccount -EnvironmentName AzureChinaCloud
+    Login-AzureRmAccount 
 
 请注意，如果你使用特定的 Azure 实例（例如 Azure Government），请结合此命令使用 -Environment 参数。例如：`Login-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)`
 
@@ -70,23 +74,23 @@
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-有关配置 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/documentation/articles/powershell-install-configure/)。
+有关配置 Azure PowerShell 的详细信息，请参阅[如何安装和配置 Azure PowerShell](../powershell-install-configure.md)。
 
 
 ## <a id="resource"></a>创建新的资源组 ##
 
 使用 Azure 资源管理器时，会在资源组中创建所有相关资源。在本教程中，我们将创建名为 **ContosoResourceGroup** 的新资源组：
 
-	New-AzureRmResourceGroup –Name 'ContosoResourceGroup' –Location 'China East'
+	New-AzureRmResourceGroup –Name 'ContosoResourceGroup' –Location 'East Asia'
 
 
 ## <a id="vault"></a>创建密钥保管库 ##
 
-使用 [New-AzureRmKeyVault](https://msdn.microsoft.com/zh-cn/library/azure/mt603736.aspx) cmdlet 创建密钥保管库。此 cmdlet 包含三个必需参数：**资源组名称**、**密钥保管库名称**和**地理位置**。
+使用 [New-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt603736.aspx) cmdlet 创建密钥保管库。此 cmdlet 包含三个必需参数：**资源组名称**、**密钥保管库名称**和**地理位置**。
 
-例如，如果使用的保管库名称为 **ContosoKeyVault**，资源组名称为 **ContosoResourceGroup**，位置为**中国东部**，请键入：
+例如，如果使用的保管库名称为 **ContosoKeyVault**，资源组名称为 **ContosoResourceGroup**，位置为**亚洲东部**，请键入：
 
-    New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'China East'
+    New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia'
 
 此 cmdlet 的输出会显示你刚刚创建的密钥保管库属性。两个最重要的属性是：
 
@@ -95,12 +99,12 @@
 
 你的 Azure 帐户现已获取在此密钥保管库上执行任何作业的授权。而且没有其他人有此授权。
 
->[AZURE.NOTE]  如果在尝试创建新的密钥保管库时看到错误“未注册使用命名空间‘Microsoft.KeyVault’的订阅”，请运行 `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"`，然后重新运行 New-AzureRmKeyVault 命令。有关详细信息，请参阅 [Register-AzureRmProvider](https://msdn.microsoft.com/zh-cn/library/mt679020.aspx)。
+>[AZURE.NOTE]  如果在尝试创建新的密钥保管库时看到错误“未注册使用命名空间‘Microsoft.KeyVault’的订阅”，请运行 `Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"`，然后重新运行 New-AzureRmKeyVault 命令。有关详细信息，请参阅 [Register-AzureRmProvider](https://msdn.microsoft.com/library/mt679020.aspx)。
 >
 
 ## <a id="add"></a>将密钥或机密添加到保管库 ##
 
-如果你希望 Azure 密钥保管库为你创建一个受软件保护的密钥，请使用 [Add-AzureKeyVaultKey](https://msdn.microsoft.com/zh-cn/library/azure/dn868048.aspx) cmdlet，并键入以下内容：
+如果你希望 Azure 密钥保管库为你创建一个受软件保护的密钥，请使用 [Add-AzureKeyVaultKey](https://msdn.microsoft.com/library/azure/dn868048.aspx) cmdlet，并键入以下内容：
 
     $key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey' -Destination 'Software'
 
@@ -168,8 +172,7 @@
 
 ## <a id="authorize"></a>授权应用程序使用密钥或机密 ##
 
-若要授权应用程序访问保管库中的密钥或机密，请使用
- [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/zh-cn/library/azure/mt603625.aspx) cmdlet。
+若要授权应用程序访问保管库中的密钥或机密，请使用 [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625.aspx) cmdlet。
 
 例如，如果保管库名称是 **ContosoKeyVault**，要授权的应用程序的客户端 ID 为 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed，而你希望授权应用程序使用保管库中的密钥来进行解密和签名，请运行以下命令：
 
@@ -181,10 +184,38 @@
 
 	Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToSecrets Get
 
+## <a id="HSM"></a>如果你要使用硬件安全模块 (HSM) ##
+
+为了提高可靠性，你可以在硬件安全模块 (HSM) 中导入或生成永不超出 HSM 边界的密钥。这些 HSM 都通过 FIPS 140-2 第 2 级验证。如果此要求对你不适用，请跳过本部分并转到[删除密钥保管库以及关联的密钥和机密](#delete)。
+
+若要创建这些受 HSM 保护的密钥，你必须具有[支持 HSM 保护密钥的保管库订阅](https://azure.microsoft.com/pricing/free-trial/)。另外，Azure China 不提供此功能。
+
+
+创建保管库时，添加 **-SKU** 参数：
+
+
+	New-AzureRmKeyVault -VaultName 'ContosoKeyVaultHSM' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -SKU 'Premium'
+
+
+
+你可以将软件保护的密钥（如前所示）和 HSM 保护的密钥添加到此保管库。若要创建受 HSM 保护的密钥，请将 **-Destination** 参数设为“HSM”：
+
+	$key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -Destination 'HSM'
+
+你可以使用以下命令，从计算机上的 .PFX 文件导入密钥。此命令会将密钥导入到密钥保管库服务中的 HSM：
+
+	$key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\softkey.pfx' -KeyFilePassword $securepfxpwd -Destination 'HSM'
+
+
+下一个命令会导入“自带密钥”(BYOK) 包。这样，你就可以在本地 HSM 中生成密钥，并将其传输到密钥保管库服务中的 HSM，而密钥不会超出 HSM 界限：
+
+	$key = Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMKey' -KeyFilePath 'c:\ITByok.byok' -Destination 'HSM'
+
+有关如何生成此 BYOK 包的详细说明，请参阅[如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥](key-vault-hsm-protected-keys.md)。
 
 ## <a id="delete"></a>删除密钥保管库以及关联的密钥和机密 ##
 
-如果你不再需要密钥保管库及其包含的密钥或机密，可以使用 [Remove-AzureRmKeyVault](https://msdn.microsoft.com/zh-cn/library/azure/mt619485.aspx) cmdlet 来删除密钥保管库：
+如果你不再需要密钥保管库及其包含的密钥或机密，可以使用 [Remove-AzureRmKeyVault](https://msdn.microsoft.com/library/azure/mt619485.aspx) cmdlet 来删除密钥保管库：
 
 	Remove-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
@@ -206,11 +237,13 @@
 
 ## <a id="next"></a>后续步骤 ##
 
-有关在 web 应用程序中使用 Azure 密钥保管库的后续教程，请参阅[从 Web 应用程序使用 Azure 密钥保管库](/documentation/articles/key-vault-use-from-web-application/)。
+有关在 web 应用程序中使用 Azure 密钥保管库的后续教程，请参阅[从 Web 应用程序使用 Azure 密钥保管库](key-vault-use-from-web-application.md)。
 
-有关 Azure 密钥保管库的最新 Azure PowerShell cmdlet 列表，请参阅 [Azure 密钥保管库 Cmdlet](https://msdn.microsoft.com/zh-cn/library/azure/dn868052.aspx)。
+若要查看如何使用密钥保管库，请参阅 [Azure 密钥保管库日志记录](key-vault-logging.md)。
+
+有关 Azure 密钥保管库的最新 Azure PowerShell cmdlet 列表，请参阅 [Azure 密钥保管库 Cmdlet](https://msdn.microsoft.com/library/azure/dn868052.aspx)。
  
 
-有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](/documentation/articles/key-vault-developers-guide/)。
+有关编程参考，请参阅 [Azure 密钥保管库开发人员指南](key-vault-developers-guide.md)。
 
-<!---HONumber=Mooncake_0829_2016-->
+<!---HONumber=AcomDC_0921_2016-->

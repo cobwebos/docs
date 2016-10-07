@@ -1,15 +1,19 @@
 <properties 
-   pageTitle="服务总线中转消息传送 .NET 教程 | Azure"
-   description="中转消息传送 .NET 教程。"
-   services="service-bus"
-   documentationCenter="na"
-   authors="sethmanheim"
-   manager="timlt"
+    pageTitle="服务总线中转消息传送 .NET 教程 | Microsoft Azure"
+    description="中转消息传送 .NET 教程。"
+    services="service-bus"
+    documentationCenter="na"
+    authors="sethmanheim"
+    manager="timlt"
     editor="" />
 <tags 
-   ms.service="service-bus"
+    ms.service="service-bus"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
     ms.date="05/25/2016"
-   wacn.date="" />
+    ms.author="sethm" />
 
 # 服务总线中转消息传送 .NET 教程
 
@@ -21,7 +25,7 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 
 ## 简介和先决条件
 
-队列为一个或多个竞争使用方提供“先入先出 (FIFO)”消息传递方式。FIFO 表示接收方通常按照消息排队的临时顺序来接收并处理消息，并且每条消息将仅由一个消息使用方接收并处理。使用队列的主要优点是实现应用程序组件的暂时分离：换而言之，创建方和使用方无需同时发送和接收消息，因为消息被持久存储在队列中。相关的优点是负载分级，它允许创建方和使用方以不同速率发送和接收消息。
+队列为一个或多个竞争使用方提供“先入先出 (FIFO)”消息传递方式。FIFO 表示接收方通常按照消息排队的临时顺序来接收并处理消息，并且每条消息将仅由一个消息使用方接收并处理。使用队列的主要优点是实现应用程序组件的*暂时分离*：换而言之，创建方和使用方无需同时发送和接收消息，因为消息被持久存储在队列中。相关的优点是*负载分级*，它允许创建方和使用方以不同速率发送和接收消息。
 
 以下是开始本教程之前应遵循的一些管理步骤和前提步骤。首先是创建服务命名空间，并获取共享的访问签名 (SAS) 密钥。命名空间为每个通过服务总线公开的应用程序提供应用程序边界。创建服务命名空间时，系统将自动生成 SAS 密钥。服务命名空间与 SAS 密钥的组合提供了一个凭据，服务总线可用其验证应用程序访问权限。
 
@@ -41,12 +45,11 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 
 1. 在“开始”菜单中右键单击 Visual Studio，以便以管理员身份启动该程序，然后单击“以管理员身份运行”。
 
-2. 创建新的控制台应用程序项目。单击“文件”菜单并选择“新建”，然后单击“项目”。在“新建项目”对话框中，选择“Visual C#”（如果不显示“Visual C#”，则在“其他语言”下方查看），单击“控制台应用程序”模板，然后将其命名为 **QueueSample**。使用默认“位置”。单击“确定”以创建该项目。
+1. 创建新的控制台应用程序项目。单击“文件”菜单并选择“新建”，然后单击“项目”。在“新建项目”对话框中，选择“Visual C#”（如果不显示“Visual C#”，则在“其他语言”下方查看），单击“控制台应用程序”模板，然后将其命名为 **QueueSample**。使用默认“位置”。单击“确定”以创建该项目。
 
 1. 使用 NuGet 包管理器将服务总线库添加到你的项目：
 	1. 在“解决方案资源管理器”中，右键单击“QueueSample”项目，然后单击“管理 NuGet 程序包”。
-	2. 在“管理 Nuget 包”对话框中，单击“浏览”选项卡，搜索“Azure 服务总线”，然后单击“安装”。
-<br />
+	2. 在“管理 Nuget 包”对话框中，单击“浏览”选项卡，搜索“Azure 服务总线”，然后单击“安装”。<br />
 1. 在解决方案资源管理器中，双击 Program.cs 文件以在 Visual Studio 编辑器中将其打开。将命名空间名称从其默认名称 `QueueSample` 更改为 `Microsoft.ServiceBus.Samples`。
 
 	```
@@ -55,7 +58,7 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 	    ...
 	```
 
-2. 修改 `using` 语句，如以下代码中所示。
+1. 修改 `using` 语句，如以下代码中所示。
 
 	```
 	using System;
@@ -67,7 +70,7 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 	using Microsoft.ServiceBus.Messaging;
 	```
 
-3. 创建一个名为 Data.csv 的文本文件，并将以下逗号分隔文本中的内容复制到其中。
+1. 创建一个名为 Data.csv 的文本文件，并将以下逗号分隔文本中的内容复制到其中。
 
 	```
 	IssueID,IssueTitle,CustomerID,CategoryID,SupportPackage,Priority,Severity,Resolved
@@ -90,9 +93,9 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 
 	保存并关闭 Data.csv 文件，并记住保存位置。
 
-4. 在解决方案资源管理器中，右键单击项目的名称（此示例中为 **QueueSample**），并依次单击“添加”和“现有项”。
+1. 在解决方案资源管理器中，右键单击项目的名称（此示例中为 **QueueSample**），并依次单击“添加”和“现有项”。
 
-5. 浏览到你在步骤 6 中创建的 Data.csv 文件。单击该文件，然后单击“添加”。确保选择了文件类型列表中的“所有文件”(*.*)。
+1. 浏览到你在步骤 6 中创建的 Data.csv 文件。单击该文件，然后单击“添加”。确保选择了文件类型列表中的“所有文件”(*.*)。
 
 ### 创建用于解析消息列表的方法
 
@@ -101,14 +104,14 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 	```
 	namespace Microsoft.ServiceBus.Samples
 	{
-	    publicclass Program
+	    class Program
 	    {
 	
-	        privatestatic DataTable issues;
-	        privatestatic List<BrokeredMessage> MessageList;
+	        private static DataTable issues;
+	        private static List<BrokeredMessage> MessageList;
 	```
 
-2. 在 `Main()` 之外，定义 `ParseCSV()` 方法，用于解析 Data.csv 中的消息列表并将消息加载到 [DataTable](https://msdn.microsoft.com/zh-cn/library/azure/system.data.datatable.aspx) 表，如下所示。该方法将返回 **DataTable** 对象。
+1. 在 `Main()` 之外，定义 `ParseCSV()` 方法，用于解析 Data.csv 中的消息列表并将消息加载到 [DataTable](https://msdn.microsoft.com/library/azure/system.data.datatable.aspx) 表，如下所示。该方法将返回 **DataTable** 对象。
 
 	```
 	static DataTable ParseCSVFile()
@@ -145,7 +148,7 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 	}
 	```
 
-3. 在 `Main()` 方法中，添加一条用于调用 `ParseCSVFile()` 方法的语句：
+1. 在 `Main()` 方法中，添加一条用于调用 `ParseCSVFile()` 方法的语句：
 
 	```
 	public static void Main(string[] args)
@@ -200,7 +203,7 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 	```
 	namespace Microsoft.ServiceBus.Samples
 	{
-	    publicclass Program
+	    public class Program
 	    {
 	
 	        private static DataTable issues;
@@ -213,7 +216,7 @@ Azure 服务总线提供两个综合性消息传送解决方案：一是通过�
 	        …
 	```
 
-2. 接下来，创建一个函数，用于接受并存储服务命名空间和 SAS 密钥。在 `Main()` 之外添加此方法。例如：
+1. 接下来，创建一个函数，用于接受并存储服务命名空间和 SAS 密钥。在 `Main()` 之外添加此方法。例如：
 
 	```
 	static void CollectUserInput()
@@ -412,13 +415,13 @@ namespace Microsoft.ServiceBus.Samples
 	MessagingFactory factory = MessagingFactory.Create(ServiceBusEnvironment.CreateServiceUri("sb", "<yourNamespace>", string.Empty), credentials);
 	```
 
-3. 接下来，使用 [QueueClient](https://msdn.microsoft.com/zh-cn/library/azure/microsoft.servicebus.messaging.queueclient.aspx) 类创建队列对象。在最后一步中添加的代码后直接添加以下代码：
+1. 接下来，使用 [QueueClient](https://msdn.microsoft.com/library/azure/microsoft.servicebus.messaging.queueclient.aspx) 类创建队列对象。在最后一步中添加的代码后直接添加以下代码：
 
 	```
 	QueueClient myQueueClient = factory.CreateQueueClient("IssueTrackingQueue");
 	```
 
-4. 然后添加以下代码，用于循环遍历你之前创建的中转消息列表，并将其中每条消息发送到队列。在上一步中的 `CreateQueueClient()` 声明后直接添加以下代码：
+1. 然后添加以下代码，用于循环遍历你之前创建的中转消息列表，并将其中每条消息发送到队列。在上一步中的 `CreateQueueClient()` 声明后直接添加以下代码：
 	
 	```
 	// Send messages
@@ -645,14 +648,14 @@ namespace Microsoft.ServiceBus.Samples
 
 ## 后续步骤
 
-本教程介绍了如何使用服务总线中转消息传送功能构建服务总线客户端应用程序和服务。有关使用服务总线[中继消息传送](/documentation/articles/service-bus-messaging-overview/#Relayed-messaging)的类似教程，请参阅[服务总线中继消息传送教程](/documentation/articles/service-bus-relay-tutorial/)。
+本教程介绍了如何使用服务总线中转消息传送功能构建服务总线客户端应用程序和服务。有关使用服务总线[中继消息传送](service-bus-messaging-overview.md#Relayed-messaging)的类似教程，请参阅[服务总线中继消息传送教程](service-bus-relay-tutorial.md)。
 
-若要了解有关[服务总线](/home/features/messaging)的详细信息，请参阅以下主题。
+若要了解有关[服务总线](https://azure.microsoft.com/services/service-bus/)的详细信息，请参阅以下主题。
 
-- [服务总线消息传送概述](/documentation/articles/service-bus-messaging-overview/)
-- [服务总线基础知识](/documentation/articles/service-bus-fundamentals-hybrid-solutions/)
-- [服务总线体系结构](/documentation/articles/service-bus-architecture/)
+- [服务总线消息传送概述](service-bus-messaging-overview.md)
+- [服务总线基础知识](service-bus-fundamentals-hybrid-solutions.md)
+- [服务总线体系结构](service-bus-architecture.md)
 
-[Azure 经典门户]: http://manage.windowsazure.cn
+[Azure 经典门户]: http://manage.windowsazure.com
 
-<!---HONumber=Mooncake_0718_2016-->
+<!---HONumber=AcomDC_0921_2016-->
